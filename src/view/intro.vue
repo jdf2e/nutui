@@ -3,17 +3,15 @@
         <div class="logo"></div>
         <p>NutUI是一个基于Vue2.0的轻量级移动端组件库，大部分组件来自「京东APP」、「京东ME」、「京东M站」中的实际项目。</p>
         <h5>安装</h5>
-        <h6>1，首先安装京东私有npm客户端jnpm</h6>
-        <pre><code v-highlight>npm install @jd/jnpm -g --registry=http://registry.m.jd.com</code></pre>
-        <h6>2，使用jnpm安装NutUI</h6>
-        <pre><code v-highlight>jnpm install @jdcfe/nutui --save-dev</code></pre>
+        <h6>1，使用npm安装NutUI</h6>
+        <pre><code v-highlight>npm install nutui --save</code></pre>
         <h6>3，在项目中引入</h6>
-        <pre><code v-highlight>import NutUI from '@jdcfe/nutui'</code></pre>
+        <pre><code v-highlight>import NutUI from 'nutui'</code></pre>
         <h6>4，初始化</h6>
         <pre><code v-highlight>NutUI.install(Vue)</code></pre>
         <p>通过以上步骤即可完成整个NutUI组件库的安装，这是推荐的使用方式。</p>
         <p>您还可以根据需要只引用部分组件。</p>
-        <pre><code v-highlight>import Mask from '@jdcfe/nutui/src/package/mask/index'
+        <pre><code v-highlight>import Mask from 'nutui/src/package/mask/index'
 
 export default {
     data(){
@@ -40,8 +38,6 @@ export default {
 <pre><code v-highlight>this.$dialog(options);</code></pre>
 <p>提示框（Toast）组件</p>
 <pre><code v-highlight>this.$toast(msg,during);</code></pre>
-<h5>使用项目</h5>
-<p><a href="http://cf.jd.com/pages/viewpage.action?pageId=100290301" target="_blank">点击查看</a></p>
 <h5>联系我们</h5>
 <p>如果您在使用组件的过程中遇到了什么问题，或者有什么意见建议，都欢迎与我们联系：<a href="mailto:lifeifan1@jd.com">lifeifan1@jd.com</a></p>
 

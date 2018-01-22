@@ -5,8 +5,8 @@
 #### 安装
 
 ``` bash
-1、 使用jpm安装nutui
-jnpm install nutui --save
+1、 使用npm安装nutui
+npm install nutui --save
 ```
 
 #### 引用完整组件库

@@ -14,8 +14,7 @@
     "build": "npm run clean && cross-env NODE_ENV=production webpack -p --hide-modules --progress",
     "add": "node scripts/addComponent"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "files": [
     "src",
     "dist/nutui.js"
@@ -31,11 +30,6 @@
     },
     {
       "name": "Switch",
-      "type": "component"
-    },
-    {
-      "name": "Coupon",
-      "chnName": "优惠券",
       "type": "component"
     },
     {
@@ -120,43 +114,27 @@
       "type": "component"
     },
     {
-      "name": "Webp",
-      "chnName": "webp图片过滤器",
-      "type": "filter"
-    },
-    {
       "name": "InfiniteLoading",
       "type": "component"
     },
     {
       "name": "NumOperate",
-      "chnName": "数字加减操作",
       "type": "component"
     },
     {
       "name": "Radio",
-      "chnName": "单选",
       "type": "component"
     },
     {
-      "name": "ImgSet",
-      "chnName": "图片设置",
-      "type": "filter",
-      "showDemo":false
-    },
-    {
       "name": "Checkbox",
-      "chnName": "复选框",
       "type": "component"
     },
     {
       "name": "RadioGroup",
-      "chnName": "单选组",
       "type": "component"
     },
     {
       "name": "Slider",
-      "chnName": "滑块",
       "type": "component"
     },
     {
@@ -165,13 +143,11 @@
     },
     {
       "name": "PictureView",
-      "chnName": "浏览大图",
       "type": "component",
       "erp": "zhangshijie6"
     },
     {
       "name": "Popup",
-      "chnName": "可自定义内容的弹出框",
       "type": "component"
     }
   ],

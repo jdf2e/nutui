@@ -64,16 +64,12 @@ webpackConfig.plugins = [
         template: './src/demo.html',
         chunks:['demo']
     }),
-    /*new ExtractTextPlugin({
-        filename: 'nutui.css'
-    }),*/
     new webpack.optimize.UglifyJsPlugin({
         compress: false
     }),
     new webpack.BannerPlugin('NutUI v' + config.version + ' ' + new Date().toString()),
     new CopyWebpackPlugin([
-        { from: path.join(__dirname, "./src/asset/"), to: path.join(__dirname, "./dist/asset") },
-        /* { from: path.join(__dirname, "./src/default.html"), to: path.join(__dirname, "./dist/default.html") } */
+        { from: path.join(__dirname, "./src/asset/"), to: path.join(__dirname, "./dist/asset") }
     ])
 ];
 
@@ -101,7 +97,7 @@ if (isProduction) {
     webpackConfig.devServer = {
         contentBase: path.resolve(__dirname, 'dist'),
         compress: true, //gzip压缩
-        host:'192.168.191.1',
+        //host:'192.168.191.1',
         historyApiFallback: true
     };
 }

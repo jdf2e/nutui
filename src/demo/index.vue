@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <h1 class="logo">NutUI</h1>
-    <p>NutUI是一套基于Vue2的轻量级移动端组件库。[<a href="/index.html">文档</a>] [<a href="http://git.jd.com/lifeifan3/NutUI">代码</a>]</p>
+    <p>NutUI是一套基于Vue2的轻量级移动端组件库。[<a href="/index.html">文档</a>] [<a href="https://github.com/jdf2e/nutui.git">代码</a>]</p>
     <ul>
       <li v-for="cpt in packages"><router-link :to="'/'+cpt.name" v-if="cpt.showDemo !== false">{{cpt.name}}</router-link></li>
     </ul>
