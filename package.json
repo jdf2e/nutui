@@ -1,0 +1,206 @@
+{
+  "name": "nutui",
+  "description": "A mobile component library based on vue2",
+  "version": "1.0.0",
+  "author": "jdc-fe",
+  "main": "dist/nutui.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jdf2e/nutui.git"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "dev": "npm run clean && webpack-dev-server -d --open --progress",
+    "build": "npm run clean && cross-env NODE_ENV=production webpack -p --hide-modules --progress",
+    "add": "node scripts/addComponent"
+  },
+  "dependencies": {
+  },
+  "files": [
+    "src",
+    "dist/nutui.js"
+  ],
+  "packages": [
+    {
+      "name": "Dialog",
+      "type": "method"
+    },
+    {
+      "name": "Toast",
+      "type": "method"
+    },
+    {
+      "name": "Switch",
+      "type": "component"
+    },
+    {
+      "name": "Coupon",
+      "chnName": "优惠券",
+      "type": "component"
+    },
+    {
+      "name": "Loading",
+      "type": "method"
+    },
+    {
+      "name": "Uploader",
+      "type": "component",
+      "erp": "lifeifan3"
+    },
+    {
+      "name": "Image",
+      "type": "component"
+    },
+    {
+      "name": "Mask",
+      "type": "component"
+    },
+    {
+      "name": "BackTop",
+      "type": "component"
+    },
+    {
+      "name": "TextBox",
+      "type": "component"
+    },
+    {
+      "name": "Swiper",
+      "type": "component"
+    },
+    {
+      "name": "Tab",
+      "type": "component"
+    },
+    {
+      "name": "TelInput",
+      "type": "component"
+    },
+    {
+      "name": "Steps",
+      "type": "component"
+    },
+    {
+      "name": "Rate",
+      "type": "component"
+    },
+    {
+      "name": "Price",
+      "type": "component"
+    },
+    {
+      "name": "Timer",
+      "type": "component"
+    },
+    {
+      "name": "Handle",
+      "type": "filter"
+    },
+    {
+      "name": "FormatDateTime",
+      "type": "component"
+    },
+    {
+      "name": "SearchBar",
+      "type": "component"
+    },
+    {
+      "name": "CeilingLamp",
+      "type": "component"
+    },
+    {
+      "name": "Select",
+      "type": "component"
+    },
+    {
+      "name": "Badge",
+      "type": "component"
+    },
+    {
+      "name": "Drag",
+      "type": "component"
+    },
+    {
+      "name": "Webp",
+      "chnName": "webp图片过滤器",
+      "type": "filter"
+    },
+    {
+      "name": "InfiniteLoading",
+      "type": "component"
+    },
+    {
+      "name": "NumOperate",
+      "chnName": "数字加减操作",
+      "type": "component"
+    },
+    {
+      "name": "Radio",
+      "chnName": "单选",
+      "type": "component"
+    },
+    {
+      "name": "ImgSet",
+      "chnName": "图片设置",
+      "type": "filter",
+      "showDemo":false
+    },
+    {
+      "name": "Checkbox",
+      "chnName": "复选框",
+      "type": "component"
+    },
+    {
+      "name": "RadioGroup",
+      "chnName": "单选组",
+      "type": "component"
+    },
+    {
+      "name": "Slider",
+      "chnName": "滑块",
+      "type": "component"
+    },
+    {
+      "name": "Lazyload",
+      "type": "directive"
+    },
+    {
+      "name": "PictureView",
+      "chnName": "浏览大图",
+      "type": "component",
+      "erp": "zhangshijie6"
+    },
+    {
+      "name": "Popup",
+      "chnName": "可自定义内容的弹出框",
+      "type": "component"
+    }
+  ],
+  "devDependencies": {
+    "vue": "^2.3.3",
+    "autoprefixer": "^7.1.2",
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.5.1",
+    "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^2.28.0",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.6.2",
+    "vue-loader": "^12.1.0",
+    "vue-resource": "^1.3.4",
+    "vue-router": "^2.6.0",
+    "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "^2.3.3",
+    "vuex": "^2.3.1",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}

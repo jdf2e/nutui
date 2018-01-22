@@ -1,0 +1,201 @@
+<template>
+    <div>
+        <h1>Swiper</h1>
+        <p>一种只支持移动端的触摸滑动组件。</p>
+        <a class="button button-primary" href="/demo.html#/swiper" target="_blank">Demo</a>
+
+        <h5>Props</h5>
+        <div class="tbl-wrapper">
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>默认值</th>
+              <th>可选值</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>direction</td>
+              <td>swiper滑动方向</td>
+              <td>String</td>
+              <td>"vertical"</td>
+              <td>"vertical"/"horizontal"</td>
+            </tr>
+            <tr>
+              <td>paginationVisible</td>
+              <td>分页显示与否</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>true/false</td>
+            </tr>
+            <tr>
+              <td>paginationClickable</td>
+              <td>分页是否可以点击</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>true/false</td>
+            </tr>
+            <tr>
+              <td>loop</td>
+              <td>是否循环</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>true/false</td>
+            </tr>
+            <tr>
+              <td>speed</td>
+              <td>过渡动画执行时间</td>
+              <td>Number</td>
+              <td>500</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>autoPlay</td>
+              <td>自动轮播，轮播默认是循环模式</td>
+              <td>Boolean</td>
+              <td>0</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>lazyLoad</td>
+              <td>图片是否支持lazyload加载，默认是 不lazyload</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>flase/true</td>
+            </tr>
+            <tr>
+              <td>lazyLoadingurl</td>
+              <td>loading图片url</td>
+              <td>String</td>
+              <td>'STATIC/loading.gif'</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>lazyLoaderrorUrl</td>
+              <td>loading图片出错时候垫底图</td>
+              <td>String</td>
+              <td>''</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>freeMode</td>
+              <td>自由切换模式</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>flase/true</td>
+            </tr>
+            <tr>
+              <td>initPage</td>
+              <td>设置初始时候显示的页</td>
+              <td>Number</td>
+              <td>1</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>type</td>
+              <td>切换的模式，单个切换，还是自由切换（自动贴合）</td>
+              <td>String</td>
+              <td>'single'</td>
+              <td>'single/multiple'</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <h5>Methods</h5>
+        <div class="tbl-wrapper">
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>方法名</th>
+              <th>说明</th>
+              <th>参数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>next</td>
+              <td>去下一页</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>prev</td>
+              <td>去上一页</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>setPage</td>
+              <td>设置显示当前页码页</td>
+              <td>pageNumber</td>
+            </tr>
+            <tr>
+              <td>updateSlidesBindEvent</td>
+              <td>如果动态更新slides，可以重新调用updateSlidesEvent 绑定事件,在异步函数赋值之后，重新绑定，绑定的方法：在nut-swiper上加一个ref="demo1",在函数中用this.$refs.demo1.updateSlidesBindEvent(pageSize) 重新绑定事件 ,pageSize 可以在更新bind后，重新设置pageSize</td>
+              <td>pageSize</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <h5>Events</h5>
+        <div class="tbl-wrapper">
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>事件名</th>
+              <th>说明</th>
+              <th>回调参数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>slideChangeStart</td>
+              <td>改变页开始时回调函数</td>
+              <td>pageNumber,el</td>
+            </tr>
+            <tr>
+              <td>slideChangeEnd</td>
+              <td>改变页时回调函数</td>
+              <td>pageNumber,el</td>
+            </tr>
+            <tr>
+              <td>slideRevertStart</td>
+              <td>拖动没有改变页时开始时回调函数</td>
+              <td>pageNumber,el</td>
+            </tr>
+            <tr>
+              <td>slideRevertEnd</td>
+              <td>拖动没有改变页结束时回调函数</td>
+              <td>pageNumber,el</td>
+            </tr>
+            <tr>
+              <td>slideMove</td>
+              <td>拖动过程中的回调函数</td>
+              <td>offset,el</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+    </div>
+
+
+</template>
+
+<script>
+export default {
+    data(){
+        return{
+        }
+    },
+    methods:{
+     
+    },
+    mounted:function(){
+
+    }
+}
+</script>
+
+<style lang="scss">
+</style>

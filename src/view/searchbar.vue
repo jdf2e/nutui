@@ -1,0 +1,132 @@
+<template>
+	<div>
+		<h1>SearchBar</h1>
+		<p>一种可以自定义内容的搜索框。</p>
+		<a class="button button-primary" href="/demo.html#/searchbar" target="_blank">Demo</a>
+		<h5>Props</h5>
+        <div class="tbl-wrapper">
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>默认值</th>
+              <th>可选值</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>height</td>
+              <td>输入框的高度，单位为rem</td>
+              <td>String</td>
+              <td>'0.6'</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>width</td>
+              <td>右侧搜索按钮的宽度，单位为rem</td>
+              <td>String</td>
+              <td>'0.6'</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>color</td>
+              <td>右侧文字搜索按钮字体颜色</td>
+              <td>String</td>
+              <td>'#222'</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>textInfo</td>
+              <td>右侧文字搜索按钮文案</td>
+              <td>String</td>
+              <td>'搜索'</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>icon</td>
+              <td>输入框前面icon及右侧图标搜索按钮icon链接</td>
+              <td>String</td>
+              <td></td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>hasIcon</td>
+              <td>是否显示输入框前面的icon</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>placeText</td>
+              <td>输入框placeholder内容</td>
+              <td>String</td>
+              <td>'请输入内容...'</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>hasSearchButton</td>
+              <td>是否显示右侧搜索按钮</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>hasTextButton</td>
+              <td>右侧搜索按钮是否为文字按钮</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>--</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <h5>Events</h5>
+        <div class="tbl-wrapper">
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>事件名</th>
+              <th>说明</th>
+              <th>回调</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>focus</td>
+              <td>输入框获取焦点时触发事件</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>input</td>
+              <td>输入框输入内容时触发事件</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>blur</td>
+              <td>输入框失去焦点时触发事件</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>submit</td>
+              <td>默认提交事件</td>
+              <td>--</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+	</div>
+</template>
+<script>
+	export default {
+	    data() {
+	        return {
+	        }
+	    },
+	    methods:{
+	    	
+	    }
+	}
+</script>
+<style></style>
