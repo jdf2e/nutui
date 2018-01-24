@@ -1,8 +1,9 @@
 <p align="center">
   <a href="http://nutui.jd.com">
-    <img alt="whistle logo" src="http://nutui.jd.com/asset/img/nutui-logo.png">
+    <img alt="nutui logo" src="http://nutui.jd.com/asset/img/nutui-logo.png">
   </a>
 </p>
+
 # NutUI
 
 [![version](https://img.shields.io/badge/version-1.0-blue.svg?style=flat-square)](http://nutui.jd.com/)
