@@ -4,6 +4,7 @@
   </a>
 </p>
 # NutUI
+
 [![version](https://img.shields.io/badge/version-1.0-blue.svg?style=flat-square)](http://nutui.jd.com/)
 [![license](https://img.shields.io/badge/license-MIT-yellow.svg?style=flat-square)](http://nutui.jd.com/)
 
