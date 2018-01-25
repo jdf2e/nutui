@@ -15,8 +15,7 @@
     "add": "node scripts/addComponent"
   },
   "dependencies": {
-    "babel-runtime": "^6.26.0",
-    "vue": "^2.3.3"
+    "babel-runtime": "^6.26.0"
   },
   "files": [
     "src",
@@ -154,7 +153,11 @@
       "type": "component"
     }
   ],
+  "peerDependencies": {
+    "vue": "^2.3.3"
+  },
   "devDependencies": {
+    "vue": "^2.3.3",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
