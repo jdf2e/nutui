@@ -1,8 +1,8 @@
 <template>
     <div>
         <h1>Drag</h1>
-        <p>一种Icon拖动吸边组件。</p>
-        <a class="button-primary button" href="/demo.html#/drag">DEMO</a>
+        <p>一种ICON拖动吸边组件</p>
+        <a class="button-primary button" href="/demo.html#/drag" target="_blank">DEMO</a>
         <h5 class="staticTitle">基本用法</h5>
         <!-- DEMO区域 -->
         <!-- <nut-drag :direction="direction"
@@ -152,7 +152,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.button-primary{
+/* .button-primary{
     display: inline-block;
     height: 38px;
     padding: 0 10px;
@@ -178,5 +178,5 @@ export default {
 }
 .drag-tip{
     margin-bottom: 0;
-}
+} */
 </style>

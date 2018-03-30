@@ -3,7 +3,7 @@
         <slot>请选择</slot>
     </div>
 </template>
-<style  lang="scss" scoped></style>
+<style  lang="scss"></style>
 <script>
     import Vue from 'vue';
     import dateSwiper from './dateSwiper.vue';

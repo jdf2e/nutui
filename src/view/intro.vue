@@ -3,32 +3,22 @@
         <div class="logo"></div>
         <p>NutUI是一个基于Vue2.0的轻量级移动端组件库，大部分组件来自「京东APP」、「京东ME」、「京东M站」中的实际项目。</p>
         <h5>安装</h5>
-        <h6>1，使用npm安装NutUI</h6>
-        <pre><code v-highlight>npm install nutui --save</code></pre>
-        <h6>3，在项目中引入</h6>
-        <pre><code v-highlight>import NutUI from 'nutui'</code></pre>
-        <h6>4，初始化</h6>
+        <h6>1，安装nutui</h6>
+        <pre><code v-highlight>npm install @jdf2e/nutui --save</code></pre>
+        <h6>2，在项目中引入</h6>
+        <pre><code v-highlight>import NutUI from '@jdf2e/nutui'</code></pre>
+        <h6>3，初始化</h6>
         <pre><code v-highlight>NutUI.install(Vue)</code></pre>
-        <p>通过以上步骤即可完成整个NutUI组件库的安装，这是推荐的使用方式。</p>
-        <p>您还可以根据需要只引用部分组件。</p>
-        <pre><code v-highlight>import Mask from 'nutui/src/package/mask/index'
-
-export default {
-    data(){
-    },
-    components: {
-        'nut-mask':Mask
-    },
-    methods:{
-    }
-}</code></pre>
-        <p>按需引用需要注意，这种方式使用的是未编译的组件源码：</p>
-        <ol>
-          <li>需要自行处理组件的依赖关系，将其依赖的组件先行引入</li>
-          <li>需要在自己的项目里使用babel对ES6编译</li>
-          <li>如果该组件用到了SCSS，则需要使用者自行处理vue单文件中的SCSS编译</li>
-        </ol>
-
+        <p>通过以上步骤即可完成整个NutUI组件库的安装。</p>
+        <h5>自定义构建（按需引用）</h5>
+        <p>本组件库支持自定义构建（1.1.0版本以上），您可以根据需要只打包部分组件。</p>
+        <p>1，在项目目录下执行</p>
+        <pre><code v-highlight>npm install</code></pre>
+        <p>2，执行自定义构建命令</p>
+        <pre><code v-highlight>npm run custom</code></pre>
+        <p>3, 在列表中，选择所有您需要打包的组件，然后按下回车键即开始构建</p>
+        <img src="../asset/img/custom-build.png" alt="">
+        <p>4，片刻之后，自定义构建出的nutui.js文件会出现在dist目录下。在项目中引入和初始化的操作同上</p>
 
         <h5>使用方法</h5>
 <p>使用方法大致分为两类。</p>
@@ -38,8 +28,10 @@ export default {
 <pre><code v-highlight>this.$dialog(options);</code></pre>
 <p>提示框（Toast）组件</p>
 <pre><code v-highlight>this.$toast(msg,during);</code></pre>
+<h5>使用项目</h5>
+<p><a href="http://cf.jd.com/pages/viewpage.action?pageId=100290301" target="_blank">点击查看</a></p>
 <h5>联系我们</h5>
-<p>如果您在使用组件的过程中遇到了什么问题，或者有什么意见建议，都欢迎与我们联系：<a href="mailto:lifeifan1@jd.com">lifeifan1@jd.com</a></p>
+<p>如果您在使用组件的过程中遇到了什么问题，或者有什么意见建议，都欢迎与我们联系：<a href="mailto:nutui@jd.com">nutui@jd.com</a></p>
 
     </div>
 </template>
@@ -48,7 +40,7 @@ export default {
 export default {
     data(){
         return{
-          demo1:`<nut-mask :visible="true"></nut-mask>`
+          demo1:`<nut-mask :visible.sync="true"></nut-mask>`
         }
     },
     components: {

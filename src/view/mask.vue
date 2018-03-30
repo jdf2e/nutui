@@ -2,7 +2,7 @@
     <div>
         <h1>Mask</h1>
         <p>通用遮罩层，通常被其他组件依赖，亦可单独使用。</p>
-        <nut-mask :visible.sync="maskShow" :closeOnClickModal="false" @open-mask="maskOpen" @close-mask="maskClose"></nut-mask>
+        <nut-mask :visible.sync="maskShow" @open-mask="maskOpen" @close-mask="maskClose"></nut-mask>
         <a class="button button-primary" href="javascript:;" @click="maskShow = true">Demo</a>
         <pre><code v-highlight v-text="demo"></code></pre>
         <pre><code v-highlight>export default {
@@ -21,7 +21,7 @@
     }
 }</code></pre>
 
-        <h5>Options</h5>
+        <h5>Props</h5>
         <div class="tbl-wrapper">
           <table class="u-full-width">
             <thead>

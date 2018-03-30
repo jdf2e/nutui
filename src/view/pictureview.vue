@@ -5,10 +5,6 @@
       <h5>依赖</h5>
       <p>Swiper</p>
       <a class="button button-primary" href="/demo.html#/pictureview" target="_blank">Demo</a>
-      <!-- <div class="pic-box">
-          <span v-for="(item, index) in picBox" @click="setPicShow(index)"><img :src="item"></span>
-      </div>
-            <nut-pictureview :visible="picShow" :bgColor="coverColor" :imgArr="picBox" :initNum="picShowNum" :pagination="showPage" @close-pic="setPicHide"></nut-pictureview> -->
       <pre><code v-highlight v-text="demo1"></code></pre>
       <pre><code v-highlight v-text="demo2"></code></pre>
       <h5>Props</h5>
@@ -91,15 +87,10 @@
 export default {
     data(){
       return{
-        picShow:false,
-        picShowNum:1,
-        showPage:true,
-        coverColor:'rgba(0,0,0,.7)',
-        picBox:['http://img10.360buyimg.com/n1/s368x368_jfs/t15451/283/338246331/345534/6b69d792/5a2a07c2N38f87e33.jpg','http://img10.360buyimg.com/n1/s368x368_jfs/t2590/194/2825053760/121163/21a0bec9/577335b9N8990670f.jpg','http://misc.360buyimg.com/mtd/pc/common/img/no_login.jpg'],
         demo1:`<div class="pic-box">
     <span v-for="(item, index) in picBox" @click="setPicShow(index)"><img :src="item"></span>
 </div>
-<nut-pictureview :visible="picShow" :bgColor="coverColor" :imgArr="picBox" :initNum="picShowNum" :pagination="showPage" @close-pic="setPicHide"></nut-pictureview>`,
+<nut-pictureview :visible.sync="picShow" :bgColor="coverColor" :imgArr="picBox" :initNum="picShowNum" :pagination="showPage" @close-pic="closeDo"></nut-pictureview>`,
         demo2:`export default {
   data(){
     return{
@@ -117,21 +108,15 @@ export default {
       this.picShowNum = index+1;
       this.picShow = true;
     },
-    setPicHide(){
-      this.picShow = false;
+    closeDo(){
+      console.log('关闭了')
     }
   }
 }`,
       }
     },
     methods:{
-      setPicShow(index){
-        this.picShowNum = index+1;
-        this.picShow = true;
-      },
-      setPicHide(){
-        this.picShow = false;
-      }
+      
     }
 }
 </script>

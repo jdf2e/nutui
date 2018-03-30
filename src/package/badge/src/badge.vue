@@ -40,7 +40,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
     .nut-badge {
       position: relative;
       sup {

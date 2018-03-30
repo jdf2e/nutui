@@ -7,7 +7,7 @@
         <pre><code v-highlight v-text="demo"></code></pre>
         <!-- DEMO区域 -->
         <a class="button button-primary" href="/demo.html#/ceilinglamp" target="_blank">Demo</a>
-        <h5>展示效果</h5>
+        <br>
 
 
         <h5>Props</h5>
@@ -70,9 +70,14 @@ import Vue from 'vue';
 export default {
     data(){
         return{
-          demo:'<nut-ceilinglamp :fixedTop="fixedTop" :fixedType = "fixedType" :screenNum = "screenNum">'+
-                  '<div class="ceildiv">我能自动固定到顶部</div>'+
-                '</nut-ceilinglamp>'
+          demo:`<nut-ceilinglamp 
+:fixedTop = "fixedTop" 
+:fixedType = "fixedType" 
+:screenNum = "screenNum">
+    <div class="ceildiv">
+        我能自动固定到顶部
+    </div>
+</nut-ceilinglamp>`
         }
     }
 }

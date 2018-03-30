@@ -1,9 +1,9 @@
 <template>
     <div>
         <h1>Rate</h1>
-        <p>评分组件，可以配置图片，如果不配置originalPath参数的话，默认为五角星</p>
+        <p>评分组件，可以配置ICON，默认为五角星</p>
         <!-- DEMO区域 -->
-        <h5><a href="/demo.html#/rate">示例</a></h5>
+        <h5><a class="button button-primary" href="/demo.html#/rate" target="_blank">demo</a></h5>
         <p>默认用法</p>
 
         <pre><code v-highlight v-text="demo1"></code></pre>
@@ -105,7 +105,7 @@ export default {
     },
     methods:{
         changeRate(index){
-            console.log(index);
+            //console.log(index);
         }
     }
 }

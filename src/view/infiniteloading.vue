@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>InfiniteLoading</h1>
-        <p>无限加载，多用于列表页面，当数据条数过多时，滑动到屏幕底部，加载下一页数据。</p>
+        <p>无限加载，多用于列表页面，当数据条数过多时，滑动到屏幕底部，加载下一页数据</p>
         <a class="button button-primary" href="/demo.html#/infiniteLoading" target="_blank">Demo</a>
         <pre><code v-highlight v-text="teml1"></code></pre>
         <pre><code v-highlight v-text="teml2"></code></pre>
@@ -80,8 +80,13 @@
 export default {
     data(){
         return{
-            teml1:`<nut-infiniteloading @on-refresh="onRefresh" @on-infinite="onInfinite" :noMore="noMore">
-    <div v-for="item in resultList">{{item}}</div>
+            teml1:`<nut-infiniteloading 
+@on-refresh="onRefresh" 
+@on-infinite="onInfinite" 
+:noMore="noMore">
+    <div v-for="item in resultList">
+        {{item}}
+    </div>
 </nut-infiniteloading>`,
             teml2:`export default {
     data(){

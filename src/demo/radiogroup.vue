@@ -5,14 +5,13 @@
         
         <h5>示例</h5>
         <p>默认用法</p>
-        <nut-radiogroup :radiosData="data1"></nut-radiogroup>
+        <nut-radiogroup :data="data1"></nut-radiogroup>
         
         <p>回调事件</p>
-        <nut-radiogroup :radiosData="data2" @radio-check="test1"></nut-radiogroup>
+        <nut-radiogroup :data="data2" :inline="true" @radio-check="radioChecked"></nut-radiogroup>
         
         <p>禁用选项</p>
-        <nut-radiogroup :className="'radiolist'" :radiosData="data3" @radio-check="change"></nut-radiogroup>
-        
+        <nut-radiogroup :className="'radiolist'" :data="data3" @radio-check="radioChecked2"></nut-radiogroup>
         
     </div>
 </template>
@@ -23,10 +22,7 @@ import Vue from 'vue';
 export default {
     data(){
         return{
-            data2:[
-                {id:10,name:'test',value:'是'},
-                {id:12,name:'test',value:'否'},
-            ],
+            
             data1:[
                 {id:1,name:'test1',value:1},
                 {id:2,name:'test1',value:2},
@@ -34,23 +30,78 @@ export default {
                 {id:4,name:'test1',value:4},
                 {id:5,name:'test1',value:5}
             ],
+            data2:[
+                {id:10,name:'test',value:'是',checked:true},
+                {id:12,name:'test',value:'否'},
+            ],
             data3:[
                 {id:11,name:'test2',value:'足球'},
-                {id:22,name:'test2',value:'篮球'},
+                {id:22,name:'test2',value:'篮球',checked:true},
                 {id:33,name:'test2',value:'羽毛球'},
                 {id:44,name:'test2',value:'乒乓球',disabled:true},
                 {id:55,name:'test2',value:'排球'}
             ],
+            demo1:`<nut-radiogroup :data="data1"></nut-radiogroup>
+data(){
+    return{
+        data1:[
+            {id:1,name:'test1',value:1},
+            {id:2,name:'test1',value:2},
+            {id:3,name:'test1',value:3},
+            {id:4,name:'test1',value:4},
+            {id:5,name:'test1',value:5}
+        ],
+    }
+},`,
+            demo2:`<nut-radiogroup 
+:data="data2" 
+:inline="true"
+@radio-check="radioChecked">
+</nut-radiogroup>
+data(){
+  return{
+      data2:[
+          {id:10,name:'test',value:'是',checked:true},
+          {id:12,name:'test',value:'否'},
+      ],
+  }
+},
+methods:{
+    radioChecked(item,index,event){
+        alert(item.value);
+    }
+}`,
+            demo3:`<nut-radiogroup 
+:className="'radiolist'" 
+:data="data3" 
+@radio-check="radioChecked2">
+</nut-radiogroup>
+data(){
+  return{
+      data3:[
+          {id:11,name:'test2',value:'足球'},
+          {id:22,name:'test2',value:'篮球',checked:true},
+          {id:33,name:'test2',value:'羽毛球'},
+          {id:44,name:'test2',value:'乒乓球',disabled:true},
+          {id:55,name:'test2',value:'排球'}
+      ],
+  }
+},
+methods:{
+    radioChecked2(item,index,event){
+        console.log(item,index,event);
+    }
+}`,     
         }
     },
     components: {
     },
     methods:{
-        test1(item){
-            alert(item.value+'checked');
+        radioChecked(item,index,event){
+            alert(item.value);
         },
-        change(item,index){
-            console.log(index,event.target.name,event.target.checked,);
+        radioChecked2(item,index,event){
+            console.log(item,index,event);
         }
     }
 }
@@ -61,4 +112,5 @@ export default {
     display: inline-block;
     width: 100px;
 }
+
 </style>

@@ -5,7 +5,7 @@
       <div class="pic-box">
           <span v-for="(item, index) in picBox" @click="setPicShow(index)"><img :src="item"></span>
       </div>
-	    <nut-pictureview :visible="picShow" :bgColor="coverColor" :imgArr="picBox" :initNum="picShowNum" :pagination="showPage" @close-pic="setPicHide"></nut-pictureview>
+	    <nut-pictureview :visible.sync="picShow" :bgColor="coverColor" :imgArr="picBox" :initNum="picShowNum" :pagination="showPage" @close-pic="closeDo"></nut-pictureview>
       
      
     </div>
@@ -29,8 +29,8 @@ export default {
         this.picShowNum = index+1;
         this.picShow = true;
       },
-      setPicHide(){
-        this.picShow = false;
+      closeDo(){
+        console.log('关闭了')
       }
     }
 }

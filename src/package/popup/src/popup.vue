@@ -1,13 +1,13 @@
 <template>
     <transition name="currentTransition">
-        <div id="randomId" class="nut-popup-wrapper" v-show="visible" @click="closePopup">
-            <div class="nut-popup" @click.stop @touchmove.stop>
+        <div v-bind:id="randomId" class="nut-popup-wrapper" v-if="visible" @click="closePopup">
+            <div class="nut-popup" @click.stop @touchmove.stop :style="{height: height}">
                 <div v-if="configItems.popupHeaderVisible == undefined ? true : configItems.popupHeaderVisible" class="nut-popup-header">
                     <div v-if="configItems.hasCloseBtn == undefined ? true : configItems.hasCloseBtn">
                         <span @click="closePopup" class="nut-popup-close">×</span>
                     </div>
                     <div v-else class="header-oper-container">
-                        <span class="oper-text text-cancel" @click="cancelClick(cancelClose, $event)">{{configItems.cancelText == undefined ? '取消' : configItems.cancelText}}</span>
+                        <span class="oper-text text-cancel" @click="cancelClick(configItems.cancelClose == undefined ? true : configItems.cancelClose, $event)">{{configItems.cancelText == undefined ? '取消' : configItems.cancelText}}</span>
                         <span class="oper-text text-ok" @click="okClick($event)">{{configItems.okText == undefined ? '确定' : configItems.okText}}</span>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                         </button>
                     </div>
                     <div v-else class="footer-btn-container">
-                        <button class="nut-popup-btn nut-popup-cancel" @click="cancelBtnClick(cancelAutoClose,$event)">
+                        <button class="nut-popup-btn nut-popup-cancel" @click="cancelBtnClick(configItems.cancelAutoClose == undefined ? true : configItems.cancelClose, $event)">
                             {{configItems.cancelBtnText == undefined ? '取 消' : configItems.cancelBtnText}}
                         </button>
                         <button class="nut-popup-btn nut-popup-ok" @click="okBtnClick($event)">
@@ -47,26 +47,35 @@ export default {
         }
     },
     mounted: function() {
+        var _this = this;
+        let height = _this.configItems.popupHeight.height;
+        setTimeout(function() {
+            _this.height = height;
+        }, 0);
     },
     data() {
         return {
             visible: this.popupVisible,
-            randomId: ''
+            randomId: '',
+            height: 0
         };
     },
+
     methods: {
-        isFunction(fn) {
-            return Object.prototype.toString.call(fn) === '[object Function]';
+        closePopup(event) {
+            if (this.configItems.autoClose == undefined ? true : this.configItems.autoClose) {
+                this.visible = false;
+            } else {
+                this.$emit('close-popup', event);
+            }
         },
-        maskClick() {
-            this.closePopup();
-        },
-        closePopup() {
-            this.visible = false;
-        },
-        cancelClick(event) {
-            this.$emit('cancel-click', event);
-            this.closePopup();
+        cancelClick(cancelClose, event) {
+            if (cancelClose) {
+                this.$emit('cancel-click', event);
+                this.closePopup();
+            } else {
+                this.$emit('cancel-click', event);
+            }
         },
         okClick(event) {
             this.$emit('ok-click', event);
@@ -74,9 +83,13 @@ export default {
         onlyOneBtnClick(event) {
             this.$emit('onlyone-btn-click', event);
         },
-        cancelBtnClick(event) {
-            this.$emit('cancel-btn-click', event);
-            this.closePopup();
+        cancelBtnClick(cancelAutoClose, event) {
+            if (cancelAutoClose) {
+                this.$emit('cancel-btn-click', event);
+                this.closePopup();
+            } else {
+                this.$emit('cancel-btn-click', event);
+            }
         },
         okBtnClick(event) {
             this.$emit('ok-btn-click', event);
@@ -113,16 +126,16 @@ export default {
     left: 0;
     right: 0;
     width: 100%;
-    height: 70%;
+    height: 0;
     background-color: #fff;
     border-top: 1px solid #dadada;
     z-index: 250;
-    display: block;
-    -webkit-animation: spec-menu-move .5s 1 ease 0s;
-    -moz-animation: spec-menu-move .5s 1 ease 0s;
-    -ms-animation: spec-menu-move .5s 1 ease 0s;
-    -o-animation: spec-menu-move .5s 1 ease 0s;
-    animation: spec-menu-move .5s 1 ease 0s;
+    transition:  height 0.3s;
+    // -webkit-animation: spec-menu-move .5s 1 ease 0s;
+    // -moz-animation: spec-menu-move .5s 1 ease 0s;
+    // -ms-animation: spec-menu-move .5s 1 ease 0s;
+    // -o-animation: spec-menu-move .5s 1 ease 0s;
+    // animation: spec-menu-move .5s 1 ease 0s;
 }
 .header-oper-container{
     height: 30px;
@@ -186,9 +199,9 @@ export default {
     background-color: #f23030;
     color: #fff;
 }
-@-webkit-keyframes spec-menu-move{0%{height:0}100%{height:70%}}
-@-moz-keyframes spec-menu-move{0%{height:0}100%{height:70%}}
-@-ms-keyframes spec-menu-move{0%{height:0}100%{height:70%}}
-@-o-keyframes spec-menu-move{0%{height:0}100%{height:70%}}
-@keyframes spec-menu-move{0%{height:0}100%{height:70%}}
+// @-webkit-keyframes spec-menu-move{0%{height:0}100%{height:70%}}
+// @-moz-keyframes spec-menu-move{0%{height:0}100%{height:70%}}
+// @-ms-keyframes spec-menu-move{0%{height:0}100%{height:70%}}
+// @-o-keyframes spec-menu-move{0%{height:0}100%{height:70%}}
+// @keyframes spec-menu-move{0%{height:0}100%{height:70%}}
 </style>

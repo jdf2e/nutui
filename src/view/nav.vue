@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import Conf from "../../package.json";
+import Conf from "../../config.json";
 export default {
   data() {
     return {

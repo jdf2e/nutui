@@ -1,16 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Conf from '../package.json';
+import Conf from '../config.json';
 
-import Index from './demo/index.vue';
-import DemoNav from './demo/demonav.vue';
-
-let demos = {};
-//组件示例页面
-Conf.packages.map(item=>{
-    if(item.showDemo === false) return;
-    demos[item.name] = require('./demo/'+item.name.toLowerCase()+'.vue');
-});
+/* import Index from './demo/index.vue';
+import DemoNav from './demo/demonav.vue'; */
+const Index = () => import('./demo/index.vue');
+const DemoNav = () => import('./demo/demonav.vue');
 
 
 Vue.use(VueRouter);
@@ -24,20 +19,22 @@ const routes = [
     path: '/index', 
     components:{
         main:Index,
-        demonav:DemoNav
+        demonav:DemoNav,
     }
   },
 ];
 
-for(let name in demos){
-    routes.push({
-      path: '/'+name.toLowerCase(), 
-      components:{
-        main:demos[name],
-        demonav:DemoNav
-      }
-    });
-}
+//组件示例页面
+Conf.packages.map(item => {
+  if (item.showDemo === false) return;
+  routes.push({
+    path: '/' + item.name.toLowerCase(),
+    components: {
+      main: () => import('./demo/' + item.name.toLowerCase() + '.vue'),
+      demonav: DemoNav
+    }
+  });
+});
 
 const router = new VueRouter({
   routes,

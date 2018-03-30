@@ -1,0 +1,184 @@
+<template>
+    <div>
+        <h1>advertisemask</h1>
+        <p>一种用于打开APP后显示的图片广告弹层。</p>
+        <h5>示例</h5>
+        <a class="button button-primary" href="/demo.html#/advertisemask" target="_blank">Demo</a>
+        <p>默认用法</p>
+        <pre><code v-highlight v-text="demo1"></code></pre>
+
+        <h5>Props</h5>
+        <div class="tbl-wrapper">
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>默认值</th>
+              <th>可选值</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>imgSrc</td>
+              <td>广告图片的来源，必填项</td>
+              <td>String</td>
+              <td>''</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>linkHref</td>
+              <td>点击按钮跳转的链接地址</td>
+              <td>String</td>
+              <td>'javascript:void(0)'</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>picWidth</td>
+              <td>广告图片的宽度，必填项（单位：rem）</td>
+              <td>Number</td>
+              <td>--</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>picHeight</td>
+              <td>广告图片的高度，必填项（单位：rem）</td>
+              <td>Number</td>
+              <td>--</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>clickMask</td>
+              <td>点击遮罩层是否关闭</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>true/false</td>
+            </tr>
+            <tr>
+              <td>showClose</td>
+              <td>是否显示关闭按钮</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>true/false</td>
+            </tr>
+            <tr>
+              <td>closeTop</td>
+              <td>关闭按钮相对于整个屏幕距离顶部的距离（单位：rem）</td>
+              <td>Number</td>
+              <td>3</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>closeRight</td>
+              <td>关闭按钮相对于整个屏幕距离右侧的距离（单位：rem）</td>
+              <td>Number</td>
+              <td>3</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>closeScale</td>
+              <td>关闭按钮放大倍数</td>
+              <td>Number</td>
+              <td>1</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>circleShow</td>
+              <td>是否显示关闭按钮外侧圆圈</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>true/false</td>
+            </tr>
+            <tr>
+              <td>initShow</td>
+              <td>是否显示广告蒙层</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>true/false</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <h5>Events</h5>
+        <div class="tbl-wrapper">
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>事件名</th>
+              <th>说明</th>
+              <th>回调参数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>jumpTo</td>
+              <td>点击跳转按钮时触发的回调事件</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>closeMask</td>
+              <td>点击关闭按钮时触发的回调事件</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>maskClose</td>
+              <td>遮罩层隐藏时触发</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>maskOpen</td>
+              <td>遮罩层显示时触发</td>
+              <td>--</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+    </div>
+</template>
+
+<script>
+import Vue from 'vue';
+export default {
+    data(){
+        return{
+          initShow:true,
+          demo1:
+`<nut-advertisemask 
+  imgSrc="/asset/img/advertising/adver.png"
+  linkHref = 'https://m.jd.com/'
+  :picWidth="5" 
+  :picHeight="6"
+  :clickMask="true" 
+  :showClose='true'
+  :showBtn='true'
+  :closeTop="3"
+  :closeRight="0.8"
+  :closeScale="1.2"
+  :circleShow="true"
+  :initShow.sync="initShow"
+  @jumpTo="jumpToFun"
+  @closeMask="closeMaskFun"
+  @maskClose="maskClose"
+  @maskOpen="maskOpen"
+  >
+</nut-advertisemask>`,
+        }
+    },
+    components: {
+      
+    },
+    methods:{
+      jumpToFun(){
+        console.log('点击了跳转');
+      },
+      closeMaskFun(){
+        console.log('关闭了蒙层');
+      }
+    }
+}
+</script>
+
+<style>
+
+</style>

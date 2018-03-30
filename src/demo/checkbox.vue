@@ -36,5 +36,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.nut-checkbox{
+    display:inline-block;
+    margin-bottom:0;
+}
 </style>

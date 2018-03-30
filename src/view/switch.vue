@@ -2,15 +2,12 @@
     <div>
         <h1>Switch</h1>
         <p>一种滑动开关，通过点击使按钮左右滑动，同时触发对应的开关状态。</p>
-        <h5>示例</h5>
+        <a class="button-primary button" href="/demo.html#/switch" target="_blank">DEMO</a>
         <p>默认用法</p>
-        <nut-switch :active="true"></nut-switch>
         <pre><code v-highlight v-text="demo1"></code></pre>
         <p>自定义颜色</p>
-        <nut-switch :height="30" :width="60" activeBgColor="#9ABB82" inActiveBgColor="#EAE7E2" btnColor="#CBDDDD"></nut-switch>
         <pre><code v-highlight v-text="demo2"></code></pre>
         <p>ON/OFF事件</p>
-        <nut-switch @switch-on="switchOnEvt" @switch-off="switchOffEvt"></nut-switch>
         <pre><code v-highlight v-text="demo3"></code></pre>
         <pre><code v-highlight v-text="demo4"></code></pre>
         
@@ -29,7 +26,7 @@
           </thead>
           <tbody>
             <tr>
-              <td>active</td>
+              <td>active.sync</td>
               <td>开关状态</td>
               <td>Boolean</td>
               <td>false</td>
@@ -37,16 +34,16 @@
             </tr>
             <tr>
               <td>width</td>
-              <td>组件宽度</td>
+              <td>组件宽度（单位rem）</td>
               <td>Number</td>
-              <td>40</td>
+              <td>0.8</td>
               <td>--</td>
             </tr>
             <tr>
               <td>height</td>
-              <td>组件高度</td>
+              <td>组件高度（单位rem）</td>
               <td>Number</td>
-              <td>20</td>
+              <td>0.4</td>
               <td>--</td>
             </tr>
             <tr>
@@ -108,7 +105,7 @@ export default {
     data(){
         return{
           demo1:`<nut-switch :active="true"></nut-switch>`,
-          demo2:`<nut-switch :height="30" :width="60" activeBgColor="#9ABB82" inActiveBgColor="#EAE7E2" btnColor="#CBDDDD"></nut-switch>`,
+          demo2:`<nut-switch :height="0.3" :width="0.6" activeBgColor="#9ABB82" inActiveBgColor="#EAE7E2" btnColor="#CBDDDD"></nut-switch>`,
           demo3:`<nut-switch @switch-on="switchOnEvt" @switch-off="switchOffEvt"></nut-switch>`,
           demo4:`export default {
     methods:{

@@ -1,11 +1,18 @@
 <template>
     <div>
         <h1>Select</h1>
-        <p>从页面底部弹出的select选择器，支持多级选择及异步请求的多级选择。</p>
+        <p>从页面底部弹出的select选择器，支持多级选择及异步请求的多级选择</p>
 
         <a class="button button-primary" href="/demo.html#/select" target="_blank">Demo</a>
 
         <pre><code v-highlight>{{demo1.txt}}</code></pre>
+        <pre><code v-highlight>export default {
+  methods:{
+    demo1Change(val) {
+      this.demo1.selected = val.join('-');
+    }
+  }
+}</code></pre>
 
         <h5>Props</h5>
         <div class="tbl-wrapper">
@@ -132,16 +139,12 @@ export default {
         return{
           demo1: {
             txt: `<nut-select class="demo1-select" 
-                  :selected="demo1.selected" 
-                  :data="demo1.data" 
-                  @change="demo1Change">{{demo1.selected}}</nut-select>
-                  export default {
-                    methods:{
-                      demo1Change(val) {
-                        this.demo1.selected = val.join('-');
-                      }
-                    }
-                  }`
+:selected="demo1.selected" 
+:data="demo1.data" 
+@change="demo1Change">
+    {{demo1.selected}}
+</nut-select>
+`
           },
         }
     },

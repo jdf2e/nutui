@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>弹出框</h1>
+        <h1>Popup</h1>
         <p>可自定义内容的弹窗框</p>
         
         <!-- <a class="button button-primary" href="javascript:;" @click="popupDemo1">Demo</a> -->
@@ -8,8 +8,9 @@
         <!-- DEMO区域 -->
         <!-- <nut-switch :height="30" :width="60" @switch-on="switchOn" @switch-off="switchOff"></nut-switch> -->
         <!-- DEMO代码 -->
-        <pre><code v-highlight>this.$dialog(options);</code></pre>
-        <h5>props</h5>
+        <pre><code v-highlight v-text="demo">
+        </code></pre>
+        <h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
           <thead>
@@ -37,6 +38,20 @@
               <td>--</td>
             </tr>
             <tr>
+              <td>configItems.randomId</td>
+              <td>设置popup组件的顶层id</td>
+              <td>String</td>
+              <td>''</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>configItems.autoClose</td>
+              <td>是否自动关闭蒙层（如果是，需要将popupVisible增加.sync修饰符）</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>true/false</td>
+            </tr>
+            <tr>
               <td>configItems.popupHeaderVisible</td>
               <td>是否显示头部</td>
               <td>Boolean</td>
@@ -56,6 +71,13 @@
               <td>String</td>
               <td>取消</td>
               <td>--</td>
+            </tr>
+            <tr>
+              <td>configItems.cancelClose</td>
+              <td>点击头部取消是否关闭面板</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>true/false</td>
             </tr>
             <tr>
               <td>configItems.okText</td>
@@ -91,6 +113,13 @@
               <td>String</td>
               <td>取消</td>
               <td>--</td>
+            </tr>
+            <tr>
+              <td>configItems.cancelAutoClose</td>
+              <td>点击底部取消按钮是否关闭面板</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>true/false</td>
             </tr>
             <tr>
               <td>configItems.okBtnText</td>
@@ -145,7 +174,13 @@
 </template>
 
 <script>
-
+export default{
+  data() {
+    return {
+      demo: `<nut-popup :popupVisible.sync="variable"></nut-popup>  `
+    }
+  }
+}
 </script>
 
 <style lang="scss" scope>

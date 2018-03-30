@@ -53,6 +53,21 @@ webpackConfig.module = {
     }, ]
 };
 
+/* webpackConfig.resolve = {
+    alias: {
+        'vue$': 'vue/dist/vue.common.js'
+    }
+}; */
+
+webpackConfig.externals = {
+    'vue': {
+        root: 'Vue',
+        commonjs: 'vue',
+        commonjs2: 'vue',
+        amd: 'vue'
+    }
+};
+
 webpackConfig.plugins = [
     new HtmlWebpackPlugin({
         filename: path.resolve(__dirname, './dist/index.html'),
@@ -64,12 +79,18 @@ webpackConfig.plugins = [
         template: './src/demo.html',
         chunks:['demo']
     }),
-    new webpack.optimize.UglifyJsPlugin({
-        compress: false
-    }),
+    /*new ExtractTextPlugin({
+        filename: 'nutui.css'
+    }),*/
+    /* new webpack.optimize.UglifyJsPlugin({
+        mangle: {
+            keep_fnames: true
+        }
+    }), */
     new webpack.BannerPlugin('NutUI v' + config.version + ' ' + new Date().toString()),
     new CopyWebpackPlugin([
-        { from: path.join(__dirname, "./src/asset/"), to: path.join(__dirname, "./dist/asset") }
+        { from: path.join(__dirname, "./src/asset/"), to: path.join(__dirname, "./dist/asset") },
+        { from: path.join(__dirname, "./src/default.html"), to: path.join(__dirname, "./dist/default.html") }
     ])
 ];
 

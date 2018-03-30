@@ -1,16 +1,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Conf from '../package.json';
+import Conf from '../config.json';
 
-import Nav from './view/nav.vue';
-import Intro from './view/intro.vue';
-import Phone from './view/phone.vue';
-let views = {};
-//组件文档页面
-Conf.packages.map(item=>{
-  views[item.name] = require('./view/'+item.name.toLowerCase()+'.vue');
-});
-
+/* import Nav from './view/nav.vue';
+import Intro from './view/intro.vue'; */
+//import Phone from './view/phone.vue';
+const Nav = () => import('./view/nav.vue');
+const Intro = () => import('./view/intro.vue');
+const Phone = () => import('./view/phone.vue');
 
 Vue.use(VueRouter);
 
@@ -36,15 +33,22 @@ const routes = [
   }
 ];
 
-for(let name in views){
-    routes.push({
-      path: '/'+name.toLowerCase(), 
-      components:{
-        nav:Nav,
-        main:views[name],
-      }
-    });
-}
+//组件文档页面
+Conf.packages.map(item => {
+  //views[item.name] = require('./view/'+item.name.toLowerCase()+'.vue');
+  //views[item.name] = () => import('./view/' + item.name.toLowerCase() + '.vue');
+  routes.push({
+    path: '/' + item.name.toLowerCase(),
+    components: {
+      nav: Nav,
+      main: () => import('./view/' + item.name.toLowerCase() + '.vue'),
+    }
+  });
+});
+
+/* for(let name in views){
+    
+} */
 
 const router = new VueRouter({
       routes,

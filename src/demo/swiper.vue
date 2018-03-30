@@ -4,18 +4,19 @@
         <p>一种只支持移动端的触摸滑动组件，请在手机上查看此组件示例。</p>
 
         <p>横向无缝切换</p>
-        
-        <nut-swiper 
+
+        <nut-swiper
             :pagination-visible="true"
             direction="horizontal"
-             ref="demo1">
+             ref="demo1"
+             @slideChangeEnd="slideChangeEnd">
             <div v-for="item in dataItem" class="nut-swiper-silde"><span>page{{item.name}}</span></div>
-          
+
         </nut-swiper>
 
         <p>横向切换</p>
-        
-        <nut-swiper 
+
+        <nut-swiper
             :pagination-visible="true"
             :performanceMode="true"
             direction="horizontal">
@@ -26,9 +27,11 @@
 
 
         <p>横向循环切换</p>
-         <nut-swiper 
+         <nut-swiper
             :pagination-visible="true"
-            :autoPlay="2000"
+            :loop="true"
+             @slideChangeEnd="slideChangeEnd"
+             @slideChangeStart="slideChangeStart"
             direction="horizontal">
             <div class="nut-swiper-silde"><span>page 1</span></div>
             <div class="nut-swiper-silde"><span>page 2</span></div>
@@ -37,7 +40,7 @@
 
 
         <p>竖向循环切换</p>
-        <nut-swiper 
+        <nut-swiper
             :pagination-visible="false"
             :autoPlay="5000"
             direction="vertical">
@@ -46,9 +49,22 @@
             <div class="nut-swiper-silde"><span>page 3</span></div>
         </nut-swiper>
 
+        <p>竖向切换</p>
+
+        <nut-swiper
+            id="fullScreen"
+            :pagination-visible="false"
+             :performanceMode="true"
+              @slideChangeEnd="slideChangeEnd"
+               @slideChangeStart="slideChangeStart"
+            direction="vertical">
+            <div class="nut-swiper-silde"><span >page 1{{this.move}}</span></div>
+            <div class="nut-swiper-silde"><span>page 2{{this.move}}</span></div>
+            <div class="nut-swiper-silde"><span>page 3{{this.move}}</span></div>
+        </nut-swiper>
 
         <p>多层切换</p>
-        <nut-swiper 
+        <nut-swiper
             :pagination-visible="true"
             direction="horizontal"
             id="nutSwiperMore">
@@ -71,7 +87,7 @@
 
 
         <p>lazyLoad切换</p>
-        <nut-swiper 
+        <nut-swiper
             :pagination-visible="false"
             direction="horizontal"
             id="nutSwiperLazyLoad"
@@ -120,12 +136,12 @@
                 <p>柔韧耐用，保鲜安全</p>
               </div>
             </div>
-           
+
         </nut-swiper>
 
 
         <p>freeMode 不自动贴合</p>
-        <nut-swiper 
+        <nut-swiper
             direction="horizontal"
             :freeMode="true"
             id="nutSwiperFree"
@@ -147,7 +163,7 @@
 
 
         <p>类似日历、地址，滚动范围超过一个silde 应该停留在当前手指停的地方，而不是只滚动一屏</p>
-        <nut-swiper 
+        <nut-swiper
             direction="horizontal"
             id="nutSwiperFree"
             type="multiple"
@@ -177,14 +193,14 @@
 export default {
     data(){
         return{
-          demo1:` <nut-swiper 
+          demo1:` <nut-swiper
             :pagination-visible="true"
             direction="horizontal"
              ref="demo1">
             <div v-for="item in dataItem" class="nut-swiper-silde"><span>page{{item.name}}</span></div>
-          
+
         </nut-swiper>`,
-          demo2:`<nut-swiper 
+          demo2:`<nut-swiper
             :pagination-visible="true"
             :performanceMode="true"
             direction="horizontal">
@@ -192,7 +208,7 @@ export default {
             <div class="nut-swiper-silde"><span>page 2</span></div>
             <div class="nut-swiper-silde"><span>page 3</span></div>
         </nut-swiper>`,
-          demo3:`<nut-swiper 
+          demo3:`<nut-swiper
             :pagination-visible="true"
             :autoPlay="2000"
             direction="horizontal">
@@ -200,7 +216,7 @@ export default {
             <div class="nut-swiper-silde"><span>page 2</span></div>
             <div class="nut-swiper-silde"><span>page 3</span></div>
         </nut-swiper>`,
-          demo4:`<nut-swiper 
+          demo4:`<nut-swiper
             :pagination-visible="false"
             :autoPlay="5000"
             direction="vertical">
@@ -208,7 +224,7 @@ export default {
             <div class="nut-swiper-silde"><span>page 2</span></div>
             <div class="nut-swiper-silde"><span>page 3</span></div>
         </nut-swiper>`,
-          demo5:`<nut-swiper 
+          demo5:`<nut-swiper
             :pagination-visible="true"
             id="nutSwiperMore"
             direction="horizontal">
@@ -228,7 +244,7 @@ export default {
               <div >page 9</div>
             </div>
         </nut-swiper>`,
-        demo6:`<nut-swiper 
+        demo6:`<nut-swiper
             :pagination-visible="false"
             direction="horizontal"
             id="nutSwiperLazyLoad"
@@ -277,9 +293,9 @@ export default {
                 <p>柔韧耐用，保鲜安全</p>
               </div>
             </div>
-           
+
         </nut-swiper>`,
-        demo7:`<nut-swiper 
+        demo7:`<nut-swiper
             direction="horizontal"
             :freeMode="true"
             id="nutSwiperFree"
@@ -291,7 +307,7 @@ export default {
             <div class="nut-swiper-silde"><span>page 5</span></div>
             <div class="nut-swiper-silde"><span>page 6</span></div>
         </nut-swiper>`,
-        demo8:`<nut-swiper 
+        demo8:`<nut-swiper
             direction="horizontal"
             id="nutSwiperFree"
             type="multiple"
@@ -311,12 +327,22 @@ export default {
             <div class="nut-swiper-silde"><span>page 6</span></div>
         </nut-swiper>`,
          dataItem:null,
+         move:1,
         }
     },
     methods:{
-     
+     slideChangeStart:function(currentPage,el,type){
+      console.log(type);
+
+     },
+     slideChangeEnd:function(currentPage,el){
+        console.log(currentPage);
+     },
+
     },
     mounted:function(){
+
+
       setTimeout(()=>{
         this.dataItem=[{"name":1},{"name":2},{"name":3},{"name":4},{"name":5},{"name":6}];
         this.$refs.demo1.updateSlidesBindEvent(2);
@@ -328,63 +354,72 @@ export default {
 <style lang="scss">
 #mySwiperDemo{ ///只为了不影响 依赖nut-swiper 的样式  实际项目中可以不加这个id
   .nut-swiper-silde{
-  color:#fff;
-  font-size:24px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-.nut-swiper-silde:nth-child(2n){
-  background-color: red;
-}
-.nut-swiper-silde:nth-child(2n+1){
-  background-color: green;
-}
-#nutSwiperMore{
-  .nut-swiper-silde>div{
-    
-    background-color:#fff;
-    width:30%;
-    margin:0 1.6%;
-    color:#333;
-    height:70%;
+    color:#fff;
+    font-size:24px;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     display: flex;
+  }
+  .nut-swiper-silde:nth-child(2n){
+    background-color: red;
+  }
+  .nut-swiper-silde:nth-child(2n+1){
+    background-color: green;
+  }
+  #nutSwiperMore{
+    .nut-swiper-silde>div{
+
+      background-color:#fff;
+      width:30%;
+      margin:0 1.6%;
+      color:#333;
+      height:70%;
+      justify-content: center;
+      align-items:center;
+      display: flex;
+
+    }
+  }
+  #nutSwiperLazyLoad{
+    .nut-swiper-silde>div{
+      //flex:1;
+      //height:70%;
+      background-color:#fff;
+      color:#333;
+      width:30%;
+      margin:0 1.6%;
+
+      img{
+        max-width: 100%;
+      }
+      p{
+        font-size: 12px;
+        line-height: 18px;
+        height:36px;
+        overflow: hidden;
+      }
+    }
 
   }
-}
-#nutSwiperLazyLoad{
-  .nut-swiper-silde>div{
-    //flex:1;
-    //height:70%;
-    background-color:#fff;
-    color:#333;
-    width:30%;
-    margin:0 1.6%;
-    
-    img{
-      max-width: 100%;
-    }
-    p{
+  #nutSwiperFree{
+
+    .nut-swiper-silde{
+      width:100px;
       font-size: 12px;
-      line-height: 18px;
-      height:36px;
-      overflow: hidden;
+      background-color:#ccc;
+      margin-right:10px;
+
     }
   }
-  
-}
-#nutSwiperFree{
-  
-  .nut-swiper-silde{
-    width:100px;
-    font-size: 12px;
-    background-color:#ccc;
-    margin-right:10px;
 
+  #fullScreen
+  {
+    height:600px;
+    .nut-swiper-silde{
+      height:100%;
+      width:100%;
+    }
   }
-}
 
 }
 

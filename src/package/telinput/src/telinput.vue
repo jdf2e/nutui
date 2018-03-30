@@ -144,7 +144,7 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 	.nut-telinput-box{
 		display: inline-block;
 		position: relative;

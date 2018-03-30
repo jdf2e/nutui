@@ -2,14 +2,14 @@
   <div @click="wrapperClick" class="sys-box">
     <!-- <vue-progress-bar></vue-progress-bar> -->
     <div class="sys-header"><div class="sys-inner"><a href="./default.html" class="sys-logo">NutUI</a><ul class="sys-menu">
-          <li><a href="https://github.com/jdf2e/nutui.git">Github</a></li>
+          <li><a href="http://git.jd.com/lifeifan3/NutUI">GitLab</a></li>
         </ul><a href="javascript:;" class="sys-nav-btn" @click.stop="toggleMenu()">组件</a></div></div>
     <div class="sys-container">
     	<router-view class="view sys-nav" v-show="navShow" @click.stop name="nav"></router-view>
     	<router-view class="view sys-main" name="main"></router-view>
         <router-view class="view sys-phone" name="phone"></router-view>
     </div>
-    <div class="sys-footer"><div class="sys-inner"><span>© 2018 <a href="mailto:lifeifan1@jd.com" target="_blank">JDC</a>. All Rights Reserved.</span></div></div>
+    <div class="sys-footer"><div class="sys-inner"><span>© 2018 <a href="https://jdc.jd.com/" target="_blank">JDC</a>. All Rights Reserved.</span></div></div>
   </div>
 </template>
 <script>

@@ -7,7 +7,7 @@
         <pre><code v-highlight>this.$dialog(options);</code></pre>
         <h5>示例</h5>
         <p>自定义标题和内容</p>
-        <a class="button button-primary" href="javascript:;" @click="showDialog1">自定义标题和内容</a>
+        
         <pre><code v-highlight>@click="showDialog1"</code></pre>
         <pre><code v-highlight>export default {
     methods:{
@@ -22,7 +22,6 @@
     }
 }</code></pre>
         <p>移除右上角关闭按钮、标题栏、按钮栏</p>
-        <a class="button button-primary" href="javascript:;" @click="showDialog2">移除右上角关闭按钮</a>  <a class="button button-primary" href="javascript:;" @click="showDialog3">移除标题栏</a>  <a class="button button-primary" href="javascript:;" @click="showDialog4">移除按钮栏</a>
                 <pre><code v-highlight>@click="showDialog2" | @click="showDialog3" | @click="showDialog4"</code></pre>
         <pre><code v-highlight>export default {
     methods:{
@@ -55,7 +54,6 @@
     }
 }</code></pre>
         <p>事件</p>
-        <a class="button button-primary" href="javascript:;" @click="showDialog5">事件</a>
         <pre><code v-highlight>export default {
     methods:{
       'showDialog5':function(){

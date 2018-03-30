@@ -1,5 +1,5 @@
 <template>
-    <div class="nut-switch" :class="{active:isActive}" @click="toggle" :style="{height:height+'px',width:width+'px',background:isActive?activeBgColor:inActiveBgColor}"><div class="nut-switch-btn" :style="{height:height+'px',width:height+'px',left:isActive?(width-height)+'px':'0',background:btnColor}"></div></div>
+    <div class="nut-switch" :class="{active:isActive}" @click="toggle" :style="{height:height+'rem',width:width+'rem',background:isActive?activeBgColor:inActiveBgColor}"><div class="nut-switch-btn" :style="{height:height+'rem',width:height+'rem',left:isActive?(width-height)+'rem':'0',background:btnColor}"></div></div>
 </template>
 <script>
 export default {
@@ -11,11 +11,11 @@ export default {
     },
     height: {
       type: [String, Number],
-      default: 20
+      default: .4
     },
     width: {
       type: [String, Number],
-      default: 40
+      default: .8
     },
     activeBgColor: {
       type: String,
@@ -45,9 +45,11 @@ export default {
   },
   methods: {
     toggle() {
-      this.isActive = !this.isActive;
+      const status = this.isActive;
+      this.isActive = !status;
       setTimeout(() => {
-        this.$emit(this.isActive ? "switch-on" : "switch-off");
+        this.$emit(status ? "switch-on" : "switch-off");
+        this.$emit('update:active', !status);
       }, 300);
     }
   }
@@ -57,8 +59,6 @@ export default {
 .nut-switch {
   position: relative;
   display: inline-block;
-  width: 40px;
-  height: 20px;
   background: #fdfdfd;
   border-radius: 1000px;
   border: 2px solid rgba(50, 50, 50, 0.1);
@@ -66,8 +66,6 @@ export default {
   .nut-switch-btn {
     position: absolute;
     left: 0;
-    height: 20px;
-    width: 20px;
     background: #fff;
     border-radius: 50%;
     box-sizing: border-box;

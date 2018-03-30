@@ -162,7 +162,7 @@ export default {
     },
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
     .nut-tab{
         position: relative;
         border:1px solid #eee;

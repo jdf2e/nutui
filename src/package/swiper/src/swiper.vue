@@ -1,19 +1,20 @@
 <template>
-    <div class="nut-swiper" 
+    <div class="nut-swiper"
         :class="[direction,{'dragging':dragging}]"
-        @touchstart="_onTouchStart($event)">
+        @touchstart="_onTouchStart($event)"
+        @mousedown="_onTouchStart($event)">
         <div class="nut-swiper-wrap"
             :style="{
                     'transform':'translate3d('+translateX+'px,'+translateY+'px,0)',
                     'transition-duration':transitionDuration+'ms',
                     '-webkit-transform':'translate3d('+translateX+'px,'+translateY+'px,0)',
                     '-webkit-transition-duration':transitionDuration+'ms'
-                    }" 
+                    }"
             @transitionend="_onTransitionEnd">
             <slot></slot>
         </div>
         <div class="nut-swiper-pagination" v-show="paginationVisible">
-            <span class="swiper-pagination-bullet" :class="{'active':index+1 ===currentPage}" v-for="(slide,index) in slideEls" @click="paginationClickable && setPage(index+1)">   
+            <span class="swiper-pagination-bullet" :class="{'active':index+1 ===currentPage}" v-for="(slide,index) in slideEls" @click="paginationClickable && setPage(index+1)">
             </span>
         </div>
     </div>
@@ -101,7 +102,7 @@ export default {
     },
     methods: {
         next(sPage){
-            
+
             if(sPage && this.type==='multiple'){
                 if(sPage < this.slideEls.length){
                     this.setPage(sPage+1);
@@ -115,13 +116,13 @@ export default {
             let page = this.currentPage;
             if(page <this.slideEls.length || this.isLoop){
 
-                this.setPage(page + 1);
+                this.setPage(page + 1,false,'next');
             }else{
                 this._revert();
             }
         },
         prev(sPage){
-           
+
             if(sPage && this.type==='multiple'){
                 if(sPage > 0){
                     this.setPage(sPage+1);
@@ -133,13 +134,13 @@ export default {
             }
             let page = this.currentPage;
             if(page > 1 || this.isLoop){
-                this.setPage(page - 1);
+                this.setPage(page - 1,false,'prev');
             }else{
                 this._revert();
             }
         },
-        setPage(page,noAnimation){
-            this.lastPage = this.currentPage;
+        setPage(page,noAnimation,cType){
+
             if(page === 0){
                 this.currentPage = this.slideEls.length;
             }else if(page === this.slideEls.length + 1){
@@ -147,7 +148,6 @@ export default {
             }else{
                 this.currentPage = page;
             }
-
             if(this.isLoop){
                 if(this.delta === 0){
                     this._setTranslate(this._getTranslateOfPage(this.lastPage));
@@ -159,11 +159,13 @@ export default {
                         let selectedSlide = this.$el.querySelector('.nut-swiper-silde-selected');
                         selectedSlide && selectedSlide.classList.remove('nut-swiper-silde-selected');
                         this.slideEls[this.currentPage-1].classList.add('nut-swiper-silde-selected');
+                        this.lastPage = this.currentPage;
                         return;
                     }
-                    this._onTransitionStart();
+                    this._onTransitionStart(cType);
                 },0);
             }else{
+                setTimeout(()=>{
                 this._setTranslate(this._getTranslateOfPage(page));
 
                 if(noAnimation) {
@@ -171,9 +173,11 @@ export default {
                     let selectedSlide = this.$el.querySelector('.nut-swiper-silde-selected');
                     selectedSlide && selectedSlide.classList.remove('nut-swiper-silde-selected');
                     this.slideEls[this.currentPage-1].classList.add('nut-swiper-silde-selected');
+                    this.lastPage = this.currentPage;
                     return;
                 };
-                this._onTransitionStart();
+                this._onTransitionStart(cType);
+                  },0);
             }
         },
         isHorizontal(){
@@ -199,9 +203,9 @@ export default {
                 }else{
                     this.setPage(this.currentPage,true);
                 }
-                
+
                 this.lazyLoad && this._imgLazyLoad();//第一次进来时候
-                
+
             });
         },
         _getSlideDistance(el){
@@ -221,6 +225,8 @@ export default {
         _onTouchStart(e){
             this.swiperWrap.addEventListener('touchmove',this._onTouchMove,false);
             this.swiperWrap.addEventListener('touchend',this._onTouchEnd,false);
+            this.swiperWrap.addEventListener('mousemove',this._onTouchMove,false);
+            this.swiperWrap.addEventListener('mouseup',this._onTouchEnd,false);
             this.startPos = this._getTouchPos(e);
             this.delta = 0;
             if(!this.freeMode){
@@ -230,9 +236,10 @@ export default {
             this.dragging = true;
             this.transitionDuration = 0;
             this.stopAutoPlay = true;
-            
+
         },
         _onTouchMove(e){
+
             if(!this.dragging){
                 return;
             }
@@ -288,6 +295,8 @@ export default {
             }
             this.swiperWrap.removeEventListener('touchmove',this._onTouchMove,false);
             this.swiperWrap.removeEventListener('touchend',this._onTouchEnd,false);
+            this.swiperWrap.removeEventListener('mousemove',this._onTouchMove,false);
+            this.swiperWrap.removeEventListener('mouseup',this._onTouchEnd,false);
         },
 
         _revert(){
@@ -297,32 +306,34 @@ export default {
             let key = this.isHorizontal() ? 'pageX' : 'pageY';
             return  e.changedTouches ? e.changedTouches[0][key] : e[key];
         },
-        _onTransitionStart(){
+        _onTransitionStart(cType){
             this.transitioning = true;
             this.transitionDuration = this.speed;
             this.lazyLoad && this._imgLazyLoad(1);//1 表示是动画切换到下一屏幕
-            
             if(this._isPageChanged()){
-                this.$emit('slideChangeStart',this.currentPage,this.$el);
+                this.$emit('slideChangeStart',this.currentPage,this.$el,cType);
             }else{
-                this.$emit('slideRevertStart',this.currentPage,this.$el);
+                this.$emit('slideRevertStart',this.currentPage,this.$el,cType);
             }
         },
         _onTransitionEnd(){
+
             this.transitioning = false;
             this.transitionDuration = 0;
             this.delta = 0;
-            //添加select cls
-            let selectedSlide = this.$el.querySelector('.nut-swiper-silde-selected');
-            selectedSlide && selectedSlide.classList.remove('nut-swiper-silde-selected');
-            this.slideEls[this.currentPage-1].classList.add('nut-swiper-silde-selected');
             if(this._isPageChanged()){
                 this.$emit('slideChangeEnd',this.currentPage,this.$el);
             }else{
                 this.$emit('slideRevertEnd',this.currentPage,this.$el);
             }
+            this.lastPage = this.currentPage;
+            //添加select cls
+            let selectedSlide = this.$el.querySelector('.nut-swiper-silde-selected');
+            selectedSlide && selectedSlide.classList.remove('nut-swiper-silde-selected');
+            this.slideEls[this.currentPage-1].classList.add('nut-swiper-silde-selected');
         },
         _isPageChanged(){
+
             return this.lastPage !== this.currentPage;
         },
         _setTranslate(value){
@@ -331,7 +342,7 @@ export default {
         },
         _getTranslate(){
             let translateName = this.isHorizontal() ? 'translateX' : 'translateY';
-            return this[translateName]; 
+            return this[translateName];
         },
         _getTranslateOfPage(page){
             if(page === 0) return 0;
@@ -339,7 +350,7 @@ export default {
             let _this = this;
             return -[].reduce.call(this.slideEls,function(total,el,i){
                 return i > page - 2 ?  total : total + _this.oneSlideTranslate;
-               
+
             },0) + this.translateOffset;
 
         },
@@ -380,7 +391,7 @@ export default {
                   window.mozRequestAnimationFrame    ||
                   function( callback ){
                     window.setTimeout(callback, 1000 / 60);
-                  }; 
+                  };
         },
         _imgLazyLoad(type){
             let requestAniFrame = this._requestAniFrame();
@@ -398,7 +409,7 @@ export default {
                     img.src = src;
                     img.onload = function(){
                         item.src = src;
-                        item.classList.remove('nut-swiper-lazyload'); 
+                        item.classList.remove('nut-swiper-lazyload');
                     }
                     img.onerror= function(){
                         item.src = this.lazyLoaderrorUrl;
@@ -425,18 +436,18 @@ export default {
 
     },
     created:function(){
-            
+
       console.log('swiper created!');
     },
     mounted:function(){
         this._onTouchMove  = this._onTouchMove.bind(this);
         this._onTouchEnd = this._onTouchEnd.bind(this);
         this.updateSlidesBindEvent();
-        
+
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .nut-swiper {
     position: relative;
     overflow: hidden;
@@ -455,6 +466,7 @@ export default {
         -webkit-flex-shrink: 0;
         width: 100%;
         height: 100%;
+        cursor: default;
     }
     &.horizontal .nut-swiper-wrap {
         flex-direction: row;

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Select</h1>
-        <p>从页面底部弹出的select选择器，支持多级选择及异步请求的多级选择。</p>
+        <p>从页面底部弹出的select选择器，支持多级选择及异步请求的多级选择。(请在手机上查看)</p>
         <!-- DEMO区域 -->
         <h5>示例</h5>
 
@@ -14,8 +14,9 @@
         <nut-select
         :selected="demo2.selected" 
         :data="demo2.data"
-        @change="demo2Change">
-        <slot><button>{{demo2.selected}}</button></slot>
+        @change="demo2Change"
+        class="demo-select">
+        <slot><a class="button button-primary">{{demo2.selected}}</a></slot>
         </nut-select>
         <!-- DEMO代码 -->
         
@@ -26,8 +27,9 @@
         :data="demo3.data"
         :async = true
         @change="demo3Change"
-        @slideEnd="slideEnd">
-        <slot><button>{{demo3.selected}}</button></slot>
+        @slideEnd="slideEnd"
+        class="demo-select">
+        <slot><a class="button button-primary">{{demo3.selected}}</a></slot>
         </nut-select>
         <!-- DEMO代码 -->
         
@@ -131,14 +133,14 @@ export default {
         for(var i = 0; i < val.length; i++) {
           arr.push(val[i].n);
         }
-        this.demo1.selected = arr.join('-');
+        this.demo2.selected = arr.join('-');
       },      
       demo3Change(val) {
         var arr = [];
         for(var i = 0; i < val.length; i++) {
           arr.push(val[i].n);
         }
-        this.demo1.selected = arr.join('-');
+        this.demo3.selected = arr.join('-');
       },
       slideEnd(val, $select) {
         console.log(val);
@@ -157,5 +159,8 @@ export default {
   line-height: 40px;
   padding-left: 10px;
   display: block;
+}
+.demo-select {
+  width: 100%;
 }
 </style>

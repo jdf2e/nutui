@@ -1,10 +1,10 @@
+import Vue from 'vue';
 /**
  * 用于处理对象数组
  * 大多是项目中遇到的一些关于数据处理的问题
  * 大部分是关于js一些没法处理对象的补充
  * 或者有些是为了方便自己的记忆
  */
-import Vue from 'vue';
 class _D {
     //传入参数
     constructor(parma) {

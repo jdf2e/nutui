@@ -7,7 +7,7 @@
 
         <pre><code v-highlight v-text="demo1"></code></pre>
 
-        <h5>Options</h5>
+        <h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
           <thead>

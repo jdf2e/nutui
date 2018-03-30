@@ -6,7 +6,7 @@
 
 # NutUI
 
-[![version](https://img.shields.io/badge/version-1.0-blue.svg?style=flat-square)](http://nutui.jd.com/)
+[![version](https://img.shields.io/badge/version-1.1-blue.svg?style=flat-square)](http://nutui.jd.com/)
 [![license](https://img.shields.io/badge/license-MIT-yellow.svg?style=flat-square)](http://nutui.jd.com/)
 
 > 基于Vue 2.0的移动端轻量级UI组件库
@@ -14,45 +14,39 @@
 # 安装
 
 ``` bash
-1、 使用npm安装nutui
-npm install nutui --save
+npm install @jdf2e/nutui --save
 ```
 
 #### 引用完整组件库
 ``` bash
 1、 在入口文件（如app.js）中引入
-import NutUI from 'nutui'
+import NutUI from '@jdf2e/nutui'
 
 2、 初始化
 NutUI.install(Vue)
 ```
+通过以上步骤即可完成整个NutUI组件库的安装。
 
-
-#### 按需引用
+#### 自定义构建（按需引用）
+本组件库支持自定义构建（1.1.0版本以上），您可以根据需要只打包部分组件。
 ``` bash
-import Mask from 'nutui/src/package/mask/index'
+1，在项目目录下执行
+npm install
 
-export default {
-    data(){
-    },
-    components: {
-        'nut-mask':Mask
-    },
-    methods:{
-    }
-}
+2，执行自定义构建命令
+npm run custom
+
+3, 在列表中，选择所有您需要打包的组件，然后按下回车键即开始构建
+
+4，片刻之后，自定义构建出的nutui.js文件会出现在dist目录下。在项目中引入和初始化的操作同上
 ```
-###### 按需引用需要注意，这种方式使用的是未编译的组件源码：
-* 需要自行处理组件的依赖关系，将其依赖的组件先行引入
-* 需要在自己的项目里使用babel对ES6编译
-* 如果该组件用到了SCSS，则需要使用者自行处理vue单文件中的SCSS编译
 
 # 组件用法
 ###### 组件从使用方法上大致分为两类。
 *  一类是扩展 HTML 元素，典型的Vue组件形式，使用方式类似原生HTML元素。
 ``` bash
 如遮罩层（Mask）组件，直接使用nut-mask标签即可
-<nut-mask :visible="true"><nut-mask>
+<nut-mask :visible.sync="true"><nut-mask>
 ```
 *  另一类是Vue构造器的扩展组件，使用方式类似jQuery/Zepto方法。
 ``` bash
@@ -62,6 +56,9 @@ this.$dialog(options);
 this.$toast(msg,during);
 ```
 每个组件的使用方式请参考具体组件[文档](http://nutui.jd.com/index.html#/intro)。
+
+# 联系我们
+[nutui@jd.com](mailto:nutui@jd.com)
 
 # License
 [MIT](https://github.com/jdf2e/nutui/blob/master/LICENSE)

@@ -3,7 +3,7 @@
         <h1>InfiniteLoading</h1>
         <p>无限加载，多用于列表页面，当数据条数过多时，滑动到屏幕底部，加载下一页数据。</p>
         <nut-infiniteloading @on-refresh="onRefresh" @on-infinite="onInfinite" :noMore="noMore">
-            <div v-for="item in resultList">{{item}}</div>
+            <div v-for="item in resultList" class="item-li">{{item}}</div>
         </nut-infiniteloading>
     </div>
 </template>
@@ -33,7 +33,7 @@ export default {
             let self = this;
             //模拟异步
             setTimeout(function(){
-                let queryList = [1,2,3,4,5,6,7,8,9,10];
+                let queryList = [1,2,3,4,5,6,7,8,9,10,11,12,13];
                 if(self.page == 1){
                     self.resultList = queryList;
                 } else {
@@ -99,5 +99,14 @@ export default {
 </script>
 
 <style>
-
+.item-li {
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #e7e7e7;
+}
+.no-more {
+    text-align: center;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1>Formatdatetime</h1>
-        <p>将时间戳或者已格式化的时间字符串转换成指定格式。</p>
+        <h1>FormatDatetime</h1>
+        <p>将时间戳或者已格式化的时间字符串转换成指定格式</p>
         <h5>示例</h5>
         
 
@@ -14,7 +14,7 @@
         <div><nut-formatdatetime datetime="1280977330748" dateformat="hh:ii"></nut-formatdatetime></div>
         <pre><code v-highlight v-text="demo4"></code></pre>
 
-        <h5>Options</h5>
+        <h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
           <thead>

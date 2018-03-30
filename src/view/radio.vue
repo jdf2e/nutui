@@ -1,16 +1,24 @@
 <template>
-    <div>
+    <div class="radio-demo">
         <h1>Radio</h1>
-        <p>单项选择</p>
+        <p>单选按钮</p>
         <!-- DEMO区域 -->
         <!-- <nut-switch :height="30" :width="60" @switch-on="switchOn" @switch-off="switchOff"></nut-switch> -->
         <h5>示例</h5>
         <p>默认用法</p>
-        <nut-radio></nut-radio>
-        <pre><code v-highlight v-text="demo1" ></code></pre>
+        <nut-radio :checked.sync="radio1"></nut-radio> 
+        <p>radio1: {{radio1}}</p>
+        <pre><code v-highlight v-text="demo1"></code></pre>
         <p>点击触发回调</p>
-        <nut-radio @input-check="inputCheck"></nut-radio>
+        <nut-radio value="vv" @input-check="callback"></nut-radio>
         <pre><code v-highlight v-text="demo2"></code></pre>
+        <pre><code v-highlight>export default {
+  methods:{
+      callback(checkedStatus,event){
+            alert(checkedStatus);
+      }
+  }
+}</code></pre>
         <p>禁用选项</p>
         <nut-radio :disabled="true"></nut-radio>
         <nut-radio></nut-radio>
@@ -43,7 +51,7 @@
               <td>--</td>
             </tr>
             <tr>
-              <td>checked</td>
+              <td>checked.sync</td>
               <td>是否选中</td>
               <td>Boolean</td>
               <td>false</td>
@@ -51,7 +59,7 @@
             </tr>
             <tr>
               <td>disabled</td>
-              <td>禁用选项</td>
+              <td>是否禁用</td>
               <td>Boolean</td>
               <td>false</td>
               <td>true/false</td>
@@ -75,7 +83,7 @@
             <tr>
               <td>input-check</td>
               <td>选择时触发回调函数</td>
-              <td></td>
+              <td>是否选中、value、事件对象</td>
             </tr>
           </tbody>
         </table>
@@ -89,29 +97,29 @@ import Vue from 'vue';
 export default {
     data(){
         return{
-            demo1:`<nut-radio></nut-radio>`,
-            demo2:`<nut-radio @input-check="checked"></nut-radio>
-methods:{
-    inputCheck(){
-        alert('checked');
-    }
-}`,
+            radio1:false,
+            demo1:`<nut-radio :checked.sync="radio1"></nut-radio>`,
+            demo2:`<nut-radio 
+ @input-check="callback">
+</nut-radio>`,
             demo3:`<nut-radio :disabled="true"></nut-radio>
-<nut-radio></nut-radio>`,
-            
+<nut-radio></nut-radio>`,       
         }
     },
     components: {
     },
     methods:{
-        inputCheck(){
-            alert('checked');
-            console.log(event.target.checked);
+        callback(checked,value,event){
+            alert(value);
+            console.log(event);
         }
     }
 }
 </script>
 
 <style>
-
+.radio-demo .nut-radio{
+  display: inline-block;
+  margin-right:5px;
+}
 </style>

@@ -99,7 +99,7 @@ a:hover {
     overflow-x: auto;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 415px) {
     .phone {
         display: none;
     }
@@ -115,7 +115,7 @@ a:hover {
     display: none;
 }
 
-@media (min-width: 400px) {
+@media (min-width: 415px) {
     .sys-box {
         min-width: 1300px
     }

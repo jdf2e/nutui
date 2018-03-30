@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Badge</h1>
-        <p>出现在按钮、图标旁的数字或状态标记。</p>        
+        <p>出现在按钮、图标旁的数字或状态标记</p>        
         <h5>示例</h5>
         <p>默认用法</p>
         <nut-badge :value="12" class="item"><button>普通模式</button></nut-badge>
@@ -23,7 +23,7 @@
         <nut-badge :isDot="true" class="item">文字内容</nut-badge>
         <pre><code v-highlight v-text="demo5"></code></pre>
 
-        <h5>Options</h5>
+        <h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
           <thead>

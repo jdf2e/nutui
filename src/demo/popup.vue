@@ -8,7 +8,7 @@
         <a class="button button-primary" href="javascript:;" @click="popupDemo3">header含有两个操作按钮</a>
         <a class="button button-primary" href="javascript:;" @click="popupDemo4">仅含有关闭按钮</a>
         <a class="button button-primary" href="javascript:;" @click="popupDemo5">默认示例</a>
-        <nut-popup :popupVisible.sync="visible1" :configItems="popup[0]" @cancel-btn-click="cancelBtnFn" @ok-btn-click="okBtnFn"></nut-popup>
+        <nut-popup :popupVisible.sync="visible1" :configItems="popup[0]" @cancel-btn-click="cancelBtnFn" @ok-btn-click="okBtnFn" @close-popup="closeMask"></nut-popup>
         <nut-popup :popupVisible.sync="visible2" :configItems="popup[1]" @onlyone-btn-click="onlyOneBtnFn"></nut-popup>
         <nut-popup :popupVisible.sync="visible3" :configItems="popup[2]" @cancel-click="cancelFn" @ok-click="okFn"></nut-popup>
         <nut-popup :popupVisible.sync="visible4" :configItems="popup[3]"></nut-popup>
@@ -27,8 +27,13 @@ export default {
           visible5: false,
           popup: [
             {
+              randomId: '0',
               hasCloseBtn: true,
-              btnAmount: 2
+              btnAmount: 2,
+              popupHeight: {
+                height: '100px'
+              },
+              cancelAutoClose: false
             },
             {
               hasCloseBtn: true,
@@ -70,11 +75,15 @@ export default {
       onlyOneBtnFn(e) {
         console.log('onlyOneBtnFn')
       },
-      cancelFn(e) {
+      cancelFn(e) { 
         console.log('cancelFn');
       },
       okFn(e) {
         console.log('okFn');
+      },
+      closeMask(e) {
+        console.log('closePopup');
+        this.visible1 = false;
       }
     }
 }

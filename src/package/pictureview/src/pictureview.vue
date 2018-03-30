@@ -51,6 +51,8 @@ export default {
     methods: {
         closePic() {
             this.$emit('close-pic');
+            this.$emit('update:visible',false);
+            
         },
         cancleTouch(){
             return false;

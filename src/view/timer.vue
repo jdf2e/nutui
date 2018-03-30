@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Timer</h1>
-        <p>倒计时组件。</p>
+        <p>倒计时组件</p>
         <h5>示例</h5>
         <pre><code v-highlight v-text="demo"></code></pre>
         <h5>展示效果</h5>

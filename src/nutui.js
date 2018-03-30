@@ -1,12 +1,12 @@
-import 'babel-polyfill';
-import Conf from '../package.json';
+// import 'babel-polyfill';
+import { version,packages } from '../config.json';
 const components = {};
 const methods = {};
 const filters = {};
 const directives = {};
 
 
-Conf.packages.map(item=>{
+packages.map(item=>{
     const pkg = require('./package/' + item.name.toLowerCase() + '/index.js').default;
     if (!pkg) return;
     if (item.type =='component'){
@@ -42,7 +42,7 @@ const install = function(Vue, opts = {}) {
 
   for (let cptName in filters) {
     if (filters[cptName] && filters[cptName].name) {
-      Vue.filter(filters[cptName].name, filters[cptName]);
+      Vue.filter(cptName, filters[cptName]);
     }
   }
 
@@ -62,7 +62,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 
 const API = Object.assign({
-    version: Conf.version,
+    version: version,
     install
 },components,filters,directives,methods);
 

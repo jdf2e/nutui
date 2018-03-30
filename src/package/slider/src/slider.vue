@@ -1,37 +1,50 @@
 <template>
-    <div class="nut-slider">
-    	<ul class="nut-number" :style="{width:lineWidth}">
-    	    <li v-for="(item,index) in num+1" :class="{cur: index==numIndex}">{{index}}</li>
-    	</ul>
-    	<div class="nut-slider-wrapper">
-    		<div class="nut-ruler">
-    		    <span v-for="item in num"></span>
-    		</div>
-	    	<div class="nut-slider-wrap" @click.self="clickBar" ref="slider" :value="currentValue">
-	    	    <template v-if="stepPoint">
-	    	        <div class="nut-slider-stop" v-for="item in stops" :style="{ 'left': item + '%' }" @click.self="clickBar"></div>
-	    	    </template>
-	    	    <div class="nut-slider-bar" :style="barStyle" @click.self="clickBar"></div>
-	    	    <div v-if="range"
-                     class="nut-slider-button-wrap"
-                     :style="{left: maxPosition + '%'}"
-                     @touchstart="touchFun($event, 'max')"
-                     @mousedown="touchFun($event, 'max')">
-                     <div :class="buttonClassName"></div>
+    <div :class="classes">
+       
+        <div class="nut-slider-wrap" ref="slider" @click.self="sliderClick">
+            <input type="hidden" :name="name" :value="exportValue">
+            <template v-if="showStops">
+                <div class="nut-slider-stop" v-for="item in stops" :style="{ 'left': item + '%' }" @click.self="sliderClick"></div>
+            </template>
+            <template v-if="showNums">
+                <ul class="nut-number" :style="{width:lineWidth}">
+                    <li v-for="(item,index) in rulerNums"
+                    :class="{cur: index==numIndex}" 
+                    :key="index"
+                     :style="{ 'left': item + '%' }">{{index}}</li>
+                </ul>
+            </template>
+            <div class="nut-slider-bar" :style="barStyle" @click.self="sliderClick"></div>
+            <template v-if="range">
+                <div
+                    class="nut-slider-button-wrap"
+                    :style="{left: firstPosition + '%'}"
+                    @mousedown="onFirstButtonDown">
+                    
+                        <div class="nut-slider-button"></div>
+
                 </div>
                 <div
-	    	        class="nut-slider-button-wrap"
-	    	        :style="{left: minPosition + '%'}"
-	    	        @touchstart="touchFun($event, 'min')"
-	    	        @mousedown="touchFun($event, 'min')">
-	    	        <div :class="buttonClassName"></div>
-	    	    </div>
-	    	    
-	    	</div>
-    	</div>
+                    class="nut-slider-button-wrap"
+                    :style="{left: secondPosition + '%'}"
+                    @mousedown="onSecondButtonDown">
+                        <div class="nut-slider-button"></div>
+                </div>
+            </template>
+            <template v-else>
+                <div
+                    class="nut-slider-button-wrap"
+                    :style="{left: singlePosition + '%'}"
+                    @mousedown="onFirstButtonDown">
+                        <div class="nut-slider-button"></div>
+                </div>
+            </template>
+        </div>
     </div>
 </template>
 <script>
+    
+   
 function oneOf (value, validList) {
     for (let i = 0; i < validList.length; i++) {
         if (value === validList[i]) {
@@ -40,17 +53,16 @@ function oneOf (value, validList) {
     }
     return false;
 }
+
 export default {
-    name:'nut-slider',
+    name: 'nut-slider',
+
+    
     props: {
-        num: {
-            type: Number,
-            default: 10
+        showNums: {
+            type: Boolean,
+            default: true
         },
-    	clickMore: {
-    		type: Boolean,
-    		default: true
-    	},
         min: {
             type: Number,
             default: 0
@@ -67,6 +79,10 @@ export default {
             type: Boolean,
             default: false
         },
+        clickMore: {
+            type: Boolean,
+            default: false
+        },
         value: {
             type: [Number, Array],
             default: 0
@@ -75,70 +91,74 @@ export default {
             type: Boolean,
             default: false
         },
-        stepPoint: {
+        showInput: {
             type: Boolean,
             default: false
         },
-        name: {
-            type: String
+        showStops: {
+            type: Boolean,
+            default: true
+        },
+        tipFormat: {
+            type: Function,
+            default (val) {
+                return val;
+            }
+        },
+        showTip: {
+            type: String,
+            default: 'hover',
+            validator (value) {
+                return oneOf(value, ['hover', 'always', 'never']);
+            }
         }
     },
     data () {
-        const val = this.checkLimits(Array.isArray(this.value) ? this.value : [this.value]);
         return {
-        	numIndex: this.value/10,
-            currentValue: val,
+   
             dragging: false,
-            pointerDown: '',
+            firstDragging: false,
+            secondDragging: false,
             startX: 0,
             currentX: 0,
+            numIndex: 112,
             startPos: 0,
             newPos: null,
-            oldValue: [this.value, this.value]
+            oldSingleValue: this.value,
+            oldFirstValue: this.value[0],
+            oldSecondValue: this.value[1],
+            singlePosition: (this.value - this.min) / (this.max - this.min) * 100,
+            firstPosition: (this.value[0] - this.min) / (this.max - this.min) * 100,
+            secondPosition: (this.value[1] - this.min) / (this.max - this.min) * 100
         };
     },
-    watch: {
-        value (val) {
-            val = this.checkLimits(Array.isArray(val) ? val : [val]);
-            if (val[0] !== this.currentValue[0] || val[1] !== this.currentValue[1]) {
-                this.currentValue = val;
-            }
-        },
-        currentValue (val) {
-            const exportValue = this.range ? val : val[0];
-        }
-    },
     computed: {
-        lineWidth(){
-            return this.rateWidth+'px';
-        },
-        buttonClassName () {
+        classes () {
             return [
-                'nut-slider-button',
+                `nut-slider`,
                 {
-                    ['nut-slider-button-dragging']: this.pointerDown === 'min'
+                    [`nut-slider-input`]: this.showInput && !this.range,
+                    [`nut-slider-range`]: this.range,
+                    [`nut-slider-disabled`]: this.disabled
                 }
             ];
         },
-        minPosition () {
-            const val = this.currentValue;
-            return (val[0] - this.min) / (this.max - this.min) * 100;
-        },
-        maxPosition: function () {
-            const val = this.currentValue;
-            return (val[1] - this.min) / (this.max - this.min) * 100;
-        },
+        
         barStyle () {
-            const style = {
-                width: (this.currentValue[0] - this.min) / (this.max - this.min) * 100 + '%'
-            };
+            let style;
             if (this.range) {
-                style.left = (this.currentValue[0] - this.min) / (this.max - this.min) * 100 + '%';
-                style.width = (this.currentValue[1] - this.currentValue[0]) / (this.max - this.min) * 100 + '%';
+                style = {
+                    width: (this.value[1] - this.value[0]) / (this.max - this.min) * 100 + '%',
+                    left: (this.value[0] - this.min) / (this.max - this.min) * 100 + '%'
+                };
+            } else {
+                style = {
+                    width: (this.value - this.min) / (this.max - this.min) * 100 + '%'
+                };
             }
             return style;
         },
-        stops () {
+        stops() {
             let stopCount = (this.max - this.min) / this.step;
             let result = [];
             let stepWidth = 100 * this.step / (this.max - this.min);
@@ -147,109 +167,53 @@ export default {
             }
             return result;
         },
+        rulerNums () {
+            let count = (this.max - this.min) / this.step;
+            let result = [];
+            let stepWidth = 100 * this.step / (this.max - this.min);
+            for (let i = 0; i <= count; i++) {
+                result.push(i * stepWidth);
+            }
+    
+            return result;
+        },
         sliderWidth () {
             return parseInt(this.getStyle(this.$refs.slider, 'width'), 10);
         },
+        tipDisabled () {
+            return this.tipFormat(this.value[0]) === null || this.showTip === 'never';
+        }
+    },
+    watch: {
+        value (val) {
+            
+            this.updateValue(val);
+            this.$emit('on-input', this.value);
+        },
+        exportValue (values) {
+            this.updateValue(val);
+            this.$emit('on-input', value);
+        }
     },
     methods: {
-        touchFun (event, type) {
-            if (this.disabled) return;
-            event.preventDefault();
-            this.pointerDown = type;
-            this.touchStartFun(event);
-            window.addEventListener('mousemove', this.touchMoveFun, false);
-            window.addEventListener('touchmove', this.touchMoveFun, false);
-            window.addEventListener('mouseup', this.touchEndFun, false);
-            window.addEventListener('touchend', this.touchEndFun, false);
-        },	
-        touchStartFun (event) {
-            this.dragging = false;
-            this.startX = this.getPointerX(event);
-            if(this.pointerDown == "min"){   //判断是哪一个按钮
-            	this.startPos = parseInt(this.minPosition);
-            }else if(this.pointerDown == "max"){
-            	this.startPos = parseInt(this.maxPosition);
-            }
-        },
-        touchMoveFun (event) {
-            this.dragging = true;
-            this.currentX = this.getPointerX(event);
-            const diff = (this.currentX - this.startX) / this.sliderWidth * 100;
-            this.newPos = this.startPos + diff;
-            this.changeButtonPosition(this.newPos);
-        },
-        touchEndFun () {
-            if (this.dragging) {
-                this.dragging = false;
-                this.changeButtonPosition(this.newPos);
-            }
-            this.pointerDown = '';
-            window.removeEventListener('mousemove', this.touchMoveFun, false);
-            window.removeEventListener('touchmove', this.touchMoveFun, false);
-            window.removeEventListener('mouseup', this.touchEndFun, false);
-            window.removeEventListener('touchend', this.touchEndFun, false);
-        },
-        changeButtonPosition (newPos, forceType) {
-            const type = forceType || this.pointerDown;
-            const index = type === 'min' ? 0 : 1;
-            if (type === 'min') newPos = this.checkLimits([newPos, this.maxPosition])[0];
-            else newPos = this.checkLimits([this.minPosition, newPos])[1];
-            const lengthPerStep = 100 / ((this.max - this.min) / this.step);
-            const steps = Math.round(newPos / lengthPerStep);
-            const value = this.currentValue;
-            value[index] = Math.round(steps * lengthPerStep * (this.max - this.min) * 0.01 + this.min);
-            this.currentValue = [...value];
-            if (!this.dragging) {
-                if (this.currentValue[index] !== this.oldValue[index]) {
-                    const exportValue = this.range ? this.currentValue : this.currentValue[0];
-                    this.$emit('on-change', exportValue);
-                    this.$emit("touch-end", this.currentValue[0]);
-                    this.changeValue(this.currentValue[0]);
-                    this.dispatch('FormItem', 'on-form-change', exportValue);
-                    this.oldValue[index] = this.currentValue[index];
+        ready () {
+            if (this.range) {
+                const isArray = Array.isArray(this.value);
+                if (!isArray || (isArray && this.value.length != 2) || (isArray && (isNaN(this.value[0]) || isNaN(this.value[1])))) {
+                    this.value = [this.min, this.max];
+                } else {
+                    this.updateValue(this.value, true);
                 }
-            }
-        },
-        clickBar: function (event) {
-        	if (!this.clickMore) return;
-            if (this.disabled) return;
-            const currentX = this.getPointerX(event);
-            const sliderOffsetLeft = this.$refs.slider.getBoundingClientRect().left;
-            const newPos = (currentX - sliderOffsetLeft) / this.sliderWidth * 100;
-            if (!this.range || newPos <= this.minPosition) this.changeButtonPosition(newPos, 'min');
-            else if (newPos >= this.maxPosition) this.changeButtonPosition(newPos, 'max');
-            else this.changeButtonPosition(newPos, ((newPos - this.firstPosition) <= (this.secondPosition - newPos)) ? 'min' : 'max');
-        },
-        dispatch(componentName, eventName, params) {
-            let parent = this.$parent || this.$root;
-            let name = parent.$options.name;
-            while (parent && (!name || name !== componentName)) {
-                parent = parent.$parent;
-                if (parent) {
-                    name = parent.$options.name;
+            } else {
+                if (typeof this.value !== 'number') {
+                    this.value = this.min;
                 }
+                this.updateValue(this.value);
             }
-            if (parent) {
-                parent.$emit.apply(parent, [eventName].concat(params));
-            }
-        },
-        changeValue(val){
-            var index = parseInt(val/10);
-            this.numIndex = index;
-        },
-        getPointerX (e) {
-            return e.type.indexOf('touch') !== -1 ? e.touches[0].clientX : e.clientX;
-        },
-        checkLimits ([min, max]) {
-            min = Math.max(0, min);
-            min = Math.min(100, min);
-            max = Math.max(0, min, max);
-            max = Math.min(100, max);
-            return [min, max];
         },
         camelCase(name) {
-        	const SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g;
-        	const MOZ_HACK_REGEXP = /^moz([A-Z])/;
+            const SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g;
+            const MOZ_HACK_REGEXP = /^moz([A-Z])/;
             return name.replace(SPECIAL_CHARS_REGEXP, function(_, separator, letter, offset) {
                 return offset ? letter.toUpperCase() : letter;
             }).replace(MOZ_HACK_REGEXP, 'Moz$1');
@@ -266,88 +230,347 @@ export default {
             } catch(e) {
                 return element.style[styleName];
             }
+        },
+        dispatch(componentName, eventName, params) {
+            let parent = this.$parent || this.$root;
+            let name = parent.$options.name;
+
+            while (parent && (!name || name !== componentName)) {
+                parent = parent.$parent;
+
+                if (parent) {
+                    name = parent.$options.name;
+                }
+            }
+            if (parent) {
+                parent.$emit.apply(parent, [eventName].concat(params));
+            }
+        },
+        updateValue (val, init = false) {
+            if (this.range) {
+                let value = [...val];
+                if (init) {
+                    if (value[0] > value[1]) {
+                        value = [this.min, this.max];
+                    }
+                } else {
+                    if (value[0] > value[1]) {
+                        value[0] = value[1];
+                    }
+                }
+                if (value[0] < this.min) {
+                    value[0] = this.min;
+                }
+                if (value[0] > this.max) {
+                    value[0] = this.max;
+                }
+                if (value[1] < this.min) {
+                    value[1] = this.min;
+                }
+                if (value[1] > this.max) {
+                    value[1] = this.max;
+                }
+                if (this.value[0] === value[0] && this.value[1] === value[1]) return;
+                this.value = value;
+                this.setFirstPosition(this.value[0]);
+                this.setSecondPosition(this.value[1]);
+            } else {
+                if (val < this.min) {
+                    this.value = this.min;
+                }
+                if (val > this.max) {
+                    this.value = this.max;
+                }
+                this.setFirstPosition(this.value);
+            }
+        },
+        sliderClick (event) {
+            
+            if (this.disabled) return;
+            if (!this.clickMore) return;
+            const currentX = event.clientX;
+            const sliderOffsetLeft = this.$refs.slider.getBoundingClientRect().left;
+            const newPos = (currentX - sliderOffsetLeft) / this.sliderWidth * 100;
+            if (this.range) {
+                let type = '';
+                if (newPos <= this.firstPosition) {
+                    type = 'First';
+                } else if (newPos >= this.secondPosition) {
+                    type = 'Second';
+                } else {
+                    if ((newPos - this.firstPosition) <= (this.secondPosition - newPos)) {
+                        type = 'First';
+                    } else {
+                        type = 'Second';
+                    }
+                }
+                this[`change${type}Position`](newPos);
+            } else {
+                this.changeSinglePosition(newPos);
+            }
+        },
+        // for single use
+        onFirstButtonDown (event) {
+            if (this.disabled) return;
+            event.preventDefault();
+            this.onSingleDragStart(event);
+            window.addEventListener('mousemove', this.onSingleDragging);
+            window.addEventListener('mouseup', this.onSingleDragEnd);
+        },
+        onSingleDragStart (event) {
+            this.dragging = true;
+            this.startX = event.clientX;
+            this.startPos = parseInt(this.singlePosition, 10);
+        },
+        onSingleDragging (event) {
+            if (this.dragging) {
+                
+                this.currentX = event.clientX;
+                const diff = (this.currentX - this.startX) / this.sliderWidth * 100;
+                this.newPos = this.startPos + diff;
+                this.changeSinglePosition(this.newPos);
+            }
+        },
+        onSingleDragEnd () {
+            if (this.dragging) {
+                this.dragging = false;
+            
+                this.changeSinglePosition(this.newPos);
+                window.removeEventListener('mousemove', this.onSingleDragging);
+                window.removeEventListener('mouseup', this.onSingleDragEnd);
+            }
+        },
+        changeSinglePosition (newPos) {
+            if (newPos >= 0 && (newPos <= 100)) {
+                const lengthPerStep = 100 / ((this.max - this.min) / this.step);
+                const steps = Math.round(newPos / lengthPerStep);
+                this.value = Math.round(steps * lengthPerStep * (this.max - this.min) * 0.01 + this.min);
+                this.setFirstPosition(this.value);
+                if (!this.dragging) {
+                    if (this.value !== this.oldSingleValue) {
+                        this.$emit('on-change', this.value);
+                        this.$emit('touch-end', this.value);
+                        this.dispatch('on-form-change', this.value);
+                        this.oldSingleValue = this.value;
+                    }
+
+                    //this.$emit('touch-end', this.value);
+                }
+            }
+        },
+        setFirstPosition (val) {
+            this.singlePosition = (val - this.min) / (this.max - this.min) * 100;
+        },
+        handleInputChange (val) {
+
+            this.value = val;
+            this.setFirstPosition(val);
+            this.$emit('on-change', this.value);
+            this.dispatch('on-form-change', this.value);
+        },
+        // for range use first
+        onFirstButtonDown (event) {
+            if (this.disabled) return;
+            event.preventDefault();
+            this.onFirstDragStart(event);
+            window.addEventListener('mousemove', this.onFirstDragging);
+            window.addEventListener('mouseup', this.onFirstDragEnd);
+        },
+        onFirstDragStart (event) {
+            this.firstDragging = true;
+            this.startX = event.clientX;
+            this.startPos = parseInt(this.firstPosition, 10);
+        },
+        onFirstDragging (event) {
+            if (this.firstDragging) {
+               
+                this.currentX = event.clientX;
+                const diff = (this.currentX - this.startX) / this.sliderWidth * 100;
+                this.newPos = this.startPos + diff;
+                this.changeFirstPosition(this.newPos);
+            }
+        },
+        onFirstDragEnd () {
+            if (this.firstDragging) {
+                this.firstDragging = false;
+                
+                this.changeFirstPosition(this.newPos);
+                window.removeEventListener('mousemove', this.onFirstDragging);
+                window.removeEventListener('mouseup', this.onFirstDragEnd);
+            }
+        },
+        changeFirstPosition (newPos) {
+            if (newPos >= 0 && (newPos <= this.secondPosition)) {
+                const lengthPerStep = 100 / ((this.max - this.min) / this.step);
+                const steps = Math.round(newPos / lengthPerStep);
+                this.value = [Math.round(steps * lengthPerStep * (this.max - this.min) * 0.01 + this.min), this.value[1]];
+                this.setFirstPosition(this.value[0]);
+                if (!this.firstDragging) {
+                    if (this.value[0] !== this.oldFirstValue) {
+                        this.$emit('on-change', this.value);
+                        this.$emit('touch-end', this.value);
+                        this.dispatch('on-form-change', this.value);
+                        this.oldFirstValue = this.value[0];
+                    }
+                }
+                
+            }
+        },
+        setFirstPosition (val) {
+            this.firstPosition = (val - this.min) / (this.max - this.min) * 100;
+        },
+        // for range use second
+        onSecondButtonDown (event) {
+            if (this.disabled) return;
+            event.preventDefault();
+            this.onSecondDragStart(event);
+            window.addEventListener('mousemove', this.onSecondDragging);
+            window.addEventListener('mouseup', this.onSecondDragEnd);
+        },
+        onSecondDragStart (event) {
+            this.secondDragging = true;
+            this.startX = event.clientX;
+            this.startPos = parseInt(this.secondPosition, 10);
+        },
+        onSecondDragging (event) {
+            if (this.secondDragging) {
+                
+                this.currentX = event.clientX;
+                const diff = (this.currentX - this.startX) / this.sliderWidth * 100;
+                this.newPos = this.startPos + diff;
+                this.changeSecondPosition(this.newPos);
+            }
+        },
+        onSecondDragEnd () {
+            if (this.secondDragging) {
+                this.secondDragging = false;
+                
+                this.changeSecondPosition(this.newPos);
+                window.removeEventListener('mousemove', this.onSecondDragging);
+                window.removeEventListener('mouseup', this.onSecondDragEnd);
+            }
+        },
+        changeSecondPosition (newPos) {
+            if (newPos >= this.firstPosition && (newPos <= 100)) {
+                const lengthPerStep = 100 / ((this.max - this.min) / this.step);
+                const steps = Math.round(newPos / lengthPerStep);
+                this.value = [this.value[0], Math.round(steps * lengthPerStep * (this.max - this.min) * 0.01 + this.min)];
+                this.setSecondPosition(this.value[1]);
+                if (!this.secondDragging) {
+                    if (this.value[1] !== this.oldSecondValue) {
+                        this.$emit('on-change', this.value);
+                        this.$emit('touch-end', this.value);
+                        this.dispatch('on-form-change', this.value);
+                        this.oldSecondValue = this.value[1];
+                    }
+                    //this.$emit('touch-end', this.value);
+                }
+            }
+        },
+        setSecondPosition (val) {
+            this.secondPosition = (val - this.min) / (this.max - this.min) * 100;
         }
+    },
+    
+
+
+    mounted () {
+        
     }
-}
+};
 </script>
 <style lang="scss">
 .nut-slider {
     line-height: normal;
+    padding-top: 30px;
+    .nut-number{
+        list-style-type:none;
+        margin:0;
+        padding:0;
+        position: relative;
+        width: 100%;
+
+        //margin-bottom:0.6rem;
+        font-size: 0.21rem;
+        li{
+            position: absolute;
+            margin:0;
+            padding:0;
+            top: -30px;
+            transform: translateX(-50%);
+        }
+        .cur{
+            color: #3895ff;
+        }
+    }  
     .nut-slider-wrap {
         width: 100%;
-        height: 4px;
-        margin: 16px auto;
+        height: 0.08rem;
         background-color: #e9eaec;
-        border-radius: 3px;
+        border-radius: 0.06rem;
         vertical-align: middle;
         position: relative;
         cursor: pointer;
+        width: 90%;
+        margin: 0 auto;
     }
-}
 
-
-.nut-slider-button-wrap {
-    width: 18px;
-    height: 18px;
-    text-align: center;
-    background-color: transparent;
-    position: absolute;
-    top: -5px;
-    transform: translateX(-50%);
-    .ivu-tooltip {
-        display: block;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+    .nut-slider-button-wrap {
+        width: 0.36rem;
+        height: 0.36rem;
+        text-align: center;
+        background-color: transparent;
+        position: absolute;
+        top: -0.10rem;
+        transform: translateX(-50%);
+        
     }
-}
-
-
-.nut-slider-button {
-    width: 12px;
-    height: 12px;
-    border: 2px solid #57a3f3;
-    border-radius: 50%;
-    background-color: #fff;
-    transition: all .2s linear;
-}
-
-.nut-slider-button-dragging{
-    border-color: #2d8cf0;
-    //transform: scale(1.5);
-}
-
-.nut-slider-button:hover {
-    cursor: -webkit-grab;
-    cursor: grab;
-    border-color: #2d8cf0;
-    //transform: scale(1.5);
-}
-
-.nut-slider-button-dragging{
-    cursor: -webkit-grabbing;
-    cursor: grabbing;
-    &:hover {
-    	cursor: -webkit-grabbing;
-    	cursor: grabbing;
+    .nut-slider-box{
+        height: 2.06rem;
+        background: #fff;
+        padding: 0.25rem 0.32rem;
+        h2{
+            font-size: 0.3rem;
+            margin-bottom: 0.23rem
+        }
     }
-}
+    .box-grey{
+        background: #F8F8F8;
+    }
 
-.nut-slider-bar {
-    height: 4px;
-    background: #57a3f3;
-    border-radius: 3px;
-    position: absolute;
-}
+    .nut-slider-button {
+        width: 0.3rem;
+        height: 0.3rem;
+        border: 2px solid #57a3f3;
+        border-radius: 50%;
+        background-color: #fff;
+        transition: all .2s linear;
+    }
 
-.nut-slider-stop {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: #ccc;
-    transform: translateX(-50%);
+
+
+    .nut-slider-button:hover {
+        cursor: -webkit-grab;
+        cursor: grab;
+        border-color: #2d8cf0;
+        
+    }
+    .nut-slider-bar {
+        height: 0.08rem;
+        background: #57a3f3;
+        border-radius: 0.06rem;
+        position: absolute;
+    }
+
+    .nut-slider-stop {
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        
+        border-left: 1px solid #ccc;
+        transform: translateX(-50%);
+    }
+
 }
 
 .nut-slider-disabled {
@@ -363,87 +586,62 @@ export default {
         border-color: #ccc;
     
     }
-    .nut-slider-button-dragging {
-		border-color: #ccc;
-    }
+    
     .nut-slider-button:hover {
-		border-color: #ccc;
+        border-color: #ccc;
     }
-    .nut-slider-button-dragging{
+    
+    .nut-slider-button:hover{
         cursor: not-allowed;
-    }
-    .nut-slider-button-dragging:hover,.nut-slider-button:hover{
-    	cursor: not-allowed;
     }
 }
 
 
 .nut-slider-input{
-	.nut-slider-wrap {
-	    width: auto;
-	    margin-right: 100px;
-	}
-	.ivu-input-number {
-	    float: right;
-	    margin-top: -14px;
-	}
+    .nut-slider-wrap {
+        width: auto;
+        margin-right: 2rem;
+    }
+    .ivu-input-number {
+        float: right;
+        margin-top: -0.28rem;
+    }
 
 } 
-//demo1
 
+//demo1
+.nut-slider-wrapper{
+    margin: 40px 15px 0;
+    height: 0.24rem;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    position: relative;
+}
 .nut-slider{
-    .nut-slider-wrapper{
-        position: relative;
-        height: 12px;
-    }
+    margin-bottom: 0.5rem;
     .nut-slider-wrap{
-        width: 90%;
+        border: 1px solid #ccc;
     }
-    .nut-slider-button-dragging{
-        border-color: #2d8cf0;
-        //transform: scale(1)
-    }
+   
     .nut-slider-button:hover {
         cursor: -webkit-grab;
         cursor: grab;
-        border-color: #2d8cf0;
-        //transform: scale(1);
+        
     }
     .nut-slider-button-wrap{
-        top: -15px;
-        transform: translateX(-110%);
+        top: -0.06rem;
     }
-    .nut-slider-button{
-        width: 36px;
-        height: 36px;
-        border: 2px solid #999;
-    }
+    
     .nut-slider-bar{
-        background: #33C3F0;
-        height: 12px;
-
+        background: #3895ff;
+        height: 0.2rem;
+        height: 100%;
     }
     .nut-slider-wrap{
-        height: 12px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
+        height: 0.24rem;
+        background: transparent;
+        
     }
-    .nut-number{
-        list-style-type:none;
-        margin:0;
-        padding:0;
-        display: flex;
-        margin-bottom:29px;
-        li{
-            flex:1;
-            margin:0;
-            padding:0;
-            text-align:center;
-        }
-        .cur{
-            color: #33C3F0;
-        }
-    }   
 }
 
 </style>

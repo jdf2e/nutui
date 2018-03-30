@@ -1,8 +1,8 @@
 <template>
     <div class="nut-radiogroup">
-    	<div class="radio-item" :class="className" v-for="(radio,index) in radiosData">
-    		<nut-radio :name="radio.name" :class="{'choose':index == thisIdx}" :value="radio.value" :id="radio.id" :disabled="radio.disabled" @input-check="updateInput(radio,index,$event)"></nut-radio>
-    		<label :for="radio.id">{{ radio.value }}</label> 
+    	<div class="radio-item" :style="{'display':inline?'inline-block':'block'}" v-for="(radio,index) in data" :key="radio.id">
+    		<nut-radio :name="radio.name" :class="{'choose':radio.checked}" :value="radio.value" :id="radio.id" :checked="radio.checked" :disabled="radio.disabled" @input-check="updateInput(radio,index,$event)"></nut-radio>
+    		<label :for="radio.id">{{ radio.label || radio.value }}</label> 
     	</div>
     </div>
 </template>
@@ -10,28 +10,21 @@
 export default {
     name:'nut-radiogroup',
     props: {
-    	radiosData:{
+    	data:{
     		type: Array, 
             required:true,
-    	},
-        className: { 
-        	type: String, 
-            default:'',
-        }, 
-        /*id: { 
-        	type: [String,Number], 
-            default:0,
-        },*/ 
-        
+        },
+        inline:{
+            type:Boolean,
+            default:false
+        } 
     },
     data() {
         return {
-        	thisIdx:-1
         };
     },
     methods: {
     	updateInput(item,index,event) {
-    		this.thisIdx = index;
             this.$emit('radio-check',item,index,event); 
         }
     }
@@ -42,10 +35,14 @@ export default {
 	height:30px;
     display: flex;
     align-items: center;
-    margin-right: 10px;
-    input,label{
+    margin-right: 20px;
+    .nut-radio,label{
     	margin:0;
     	display:inline-block;
+        vertical-align: middle;
+    }
+    label{
+        margin-left:5px;
     }
 }
 </style>

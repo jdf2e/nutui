@@ -1,20 +1,12 @@
 <template>
   <div>
     <router-view class="demo-nav" name="demonav"></router-view>
-    <router-view class="demo" name="main"></router-view>
+    <keep-alive include="index">
+      <router-view class="demo" name="main"></router-view>
+    </keep-alive>
   </div>
 </template>
 <script>
-export default {
-    data(){
-        return{
-        }
-    },
-    components: {
-    },
-    methods:{
-    }
-}
 </script>
 <style lang="scss">
 [v-cloak] {

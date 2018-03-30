@@ -84,7 +84,7 @@
         }
     }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
     .nut-swiper-silde {
         height: 0.7rem!important;
         line-height: 0.7rem;

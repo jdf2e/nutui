@@ -1,0 +1,262 @@
+{
+  "version": "1.1.0",
+  "packages": [
+    {
+      "name": "Dialog",
+      "type": "method",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Toast",
+      "type": "method",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Switch",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Coupon",
+      "chnName": "优惠券",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Loading",
+      "type": "method",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Uploader",
+      "type": "component",
+      "erp": "",
+      "showDemo": false,
+      "email": ""
+    },
+    {
+      "name": "Image",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Mask",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "BackTop",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "TextBox",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Swiper",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Tab",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "TelInput",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Steps",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Rate",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Price",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Timer",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Handle",
+      "type": "filter",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "FormatDateTime",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "SearchBar",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "CeilingLamp",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Select",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Badge",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Drag",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Webp",
+      "chnName": "webp图片过滤器",
+      "type": "filter",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "InfiniteLoading",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "NumOperate",
+      "chnName": "数字加减操作",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Radio",
+      "chnName": "单选按钮",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "RadioGroup",
+      "chnName": "单选按钮组",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "ImgSet",
+      "chnName": "图片设置",
+      "type": "filter",
+      "erp": "",
+      "showDemo": false,
+      "email": ""
+    },
+    {
+      "name": "Checkbox",
+      "chnName": "复选按钮",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "CheckboxGroup",
+      "chnName": "复选按钮组",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Slider",
+      "chnName": "滑块",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Lazyload",
+      "type": "directive",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "PictureView",
+      "chnName": "浏览大图",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Popup",
+      "chnName": "可自定义内容的弹出框",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "SideslipButton",
+      "chnName": "侧滑操作",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "DatePicker",
+      "chnName": "弹窗日历组件",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "AdvertiseMask",
+      "chnName": "广告蒙层",
+      "type": "component",
+      "erp": "",
+      "email": ""
+    },
+    {
+      "name": "Dpg",
+      "chnName": "Dpg图片过滤器",
+      "type": "filter",
+      "erp": "",
+      "email": ""
+    }
+  ]
+}

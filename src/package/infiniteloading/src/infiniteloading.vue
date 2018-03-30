@@ -11,9 +11,9 @@
             <slot>
             </slot>
             <footer class="load-more">
-                <slot name="load-more">
+                <slot name="load-more" v-if="infiniteLoading">
                     <!--<span v-if="downFlag&&!noMore"><span>上拉加载更多</span></span>-->
-                    <div class="no-more" v-if="infiniteLoading">加载中……</div>
+                    <div class="no-more">加载中……</div>
                 </slot>
             </footer>
             <div class="no-more" v-if="noMore">没有更多信息了</div>
@@ -213,5 +213,6 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+
 </style>

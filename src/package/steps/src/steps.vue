@@ -100,7 +100,7 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 p{
     margin-bottom:0 !important;
 }

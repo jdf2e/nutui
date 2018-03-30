@@ -1,7 +1,8 @@
-const conf = require('../package.json');
+const conf = require('../config.json');
 const readline = require('readline');
 const fs = require('fs');
 const path = require('path');
+const inquirer = require('inquirer');
 
 let newCpt = {};
 
@@ -11,39 +12,49 @@ let rl = readline.createInterface({
 });
 
 
-let getCptName = () => {
-    return new Promise((resolve, reject) => {
-        rl.question('组件英文名(每个单词的首字母都大写，如TextBox):', (answer) => {
-            newCpt.name = answer;
-            resolve();
-        });
-    });
-};
-
-let getChnName = () => {
-    return new Promise((resolve, reject) => {
-        rl.question('组件中文名(十个字以内):', (answer) => {
-            newCpt.chnName = answer;
-            resolve();
-        });
-    });
-};
-
-let getType = () => {
-    return new Promise((resolve, reject) => {
-        rl.question('组件类型(component/filter/directive/method):', (answer) => {
-            newCpt.type = answer || 'component';
-            resolve();
-        });
-    });
-};
-
 function init() {
-    getCptName().then(() => {
-        return getChnName();
-    }).then(() => {
-        return getType();
-    }).then(() => {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: '组件英文名(每个单词的首字母都大写，如TextBox)：',
+            validate: function (value) {
+                var pass = value && value.match(/^[A-Z]/);
+                if (pass) {
+                    return true;
+                }
+                return '不能为空，且每个单词的首字母都要大写，如TextBox';
+            }
+        },
+        {
+            type: 'input',
+            name: 'chnName',
+            message: '组件中文名(十个字以内)：'
+        },
+        {
+            type: 'list',
+            name: 'type',
+            message: '请选择组件类型：',
+            choices: ['component', 'filter', 'directive', 'method']
+        },
+        {
+            type: 'confirm',
+            name: 'showDemo',
+            message: '是否需要DEMO页面?',
+            default: true
+        },
+        {
+            type: 'input',
+            name: 'erp',
+            message: 'ERP'
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Email'
+        },
+    ]).then(answers => {
+        newCpt = answers;
         createNew();
     });
 }
@@ -146,10 +157,10 @@ function addToPackageJson() {
     return new Promise((resolve, reject) => {
         conf.packages.push(newCpt);
         const dirPath = path.join(__dirname, `../`);
-        const filePath = path.join(dirPath, `package.json`);
+        const filePath = path.join(dirPath, `config.json`);
         fs.writeFile(filePath, JSON.stringify(conf, null, 2), (err) => {
             if (err) throw err;
-            resolve(`修改package.json文件成功`);
+            resolve(`修改config.json文件成功`);
         });
     });
 }
@@ -168,6 +179,7 @@ function createNew() {
     }).then(() => {
         return addToPackageJson();
     }).then(() => {
+        console.log('组件模板生成完毕，请开始你的表演~');
         process.exit();
     });
 }
