@@ -6,7 +6,7 @@
   "main": "dist/nutui.js",
   "repository": {
     "type": "git",
-    "url": "git@git.jd.com:lifeifan3/NutUI.git"
+    "url": "https://github.com/jdf2e/nutui.git"
   },
   "scripts": {
     "clean": "rm -rf dist",
