@@ -28,10 +28,10 @@
             this[this.options.isPreview ? 'preview' : 'uploader']()
         }
         showMsg (msg) {
-            if ($.isFunction(this.options.showMsgFn)) {
+            if (typeof(this.options.showMsgFn)=='function') {
                 this.options.showMsgFn(msg);
             } else {
-                toast.show(msg);
+                console.log(msg);
             }
         }
         check (file) {

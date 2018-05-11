@@ -1,9 +1,10 @@
 <template>
     <div>
 
-        <h1>Backtop</h1>
-        <p>一种返回页面顶部的快捷按钮，点击后会立即返回页面顶部。多用于页面过长时，方便用户返回头部查看信息。</p>
-        <nut-gotop :bottom="80" :right="30" :screenNum="0.5"></nut-gotop>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
+        <nut-gotop :bottom="0.8" :right="0.5" :screenNum="0.5"></nut-gotop>
        
       
       <div style="height:1500px;">

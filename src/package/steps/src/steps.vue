@@ -2,8 +2,8 @@
     <div class="nut-steps" :class="stepsId">
         <div class="progress-list-box" v-for="(item,index) in stepTitleList">
             <div :class="['progress-list', {'left-border' : index !== stepTitleList.length-1}]">
-                <div class="gap no-border" v-if="index==0" :style="{height: titleTop+'px'}"></div>
-                <div class="gap"  :style="{height: titleTop+'px'}" v-else></div>
+                <div class="gap no-border" v-if="index==0" :style="{height: titleTop+'rem'}"></div>
+                <div class="gap"  :style="{height: titleTop+'rem'}" v-else></div>
                 <template v-if="item.icon">
                     <div :class="['title', {'red' : index <active}]">
                         {{item.stepTitle}}
@@ -50,7 +50,7 @@ export default {
         },
         titleTop:{
             type:Number,
-            default:15 
+            default:0.3 
         }
     },
     data() {
@@ -108,16 +108,17 @@ p{
     display:none;
 }
 .nut-steps{
-    margin-top: 10px;
+    background:#fff;
+    margin-top: 0.2rem;
     .progress-list-box{
         overflow: hidden;
-        padding-left: 20px;
-        padding-right: 17px;
+        padding-left: 0.4rem;
+        padding-right: 0.34rem;
         position: relative;
         &:after{
             position: absolute;
             bottom:0;
-            left: 55px;
+            left: 1.1rem;
             content: '';
             width: 100%;
             height: 1px;
@@ -127,23 +128,23 @@ p{
     .progress-list{
         position: relative;
         .gap{
-            padding-left: 15px;
-            height: 15px;
+            padding-left: 0.3rem;
+            height: 0.3rem;
             border-left: 1px solid #eee;
         }
         .no-border{
             border-left: 0;
         }
         .title{
-            padding-left: 20px;
-            line-height: 20px;
+            padding-left: 0.4rem;
+            line-height: 0.4rem;
             color:#000;
-            font-size: 14px;
+            font-size: 0.28rem;
             position: relative;
             text-align:left;
             .red-round{
-                width: 30px;
-                height: 30px;
+                width: 0.6rem;
+                height: 0.6rem;
                 background-color: #ffdfde;
                 border-radius: 50%;
                 position: absolute;
@@ -151,11 +152,11 @@ p{
                 transform: translate(-50%,-50%);
                 left: 0;
                 b{
-                    font-size: 12px;
+                    font-size: 0.24rem;
                     position: absolute;
-                    width: 20px;
-                    height: 20px;
-                    line-height: 20px;
+                    width: 0.4rem;
+                    height: 0.4rem;
+                    line-height: 0.4rem;
                     text-align: center;
                     border-radius: 50%;
                     background-color:red;
@@ -167,10 +168,10 @@ p{
                 }
             }
             .grey-round{
-                font-size: 12px;
-                width: 30px;
-                height: 30px;
-                line-height: 30px;
+                font-size: 0.24rem;
+                width: 0.6rem;
+                height: 0.6rem;
+                line-height: 0.6rem;
                 text-align: center;
                 background-color: #ccc;
                 border-radius: 50%;
@@ -180,11 +181,11 @@ p{
                 left: 0;
                 b{
                     font-style:normal;
-                    font-size: 12px;
+                    font-size: 0.24rem;
                     position: absolute;
-                    width: 20px;
-                    height: 20px;
-                    line-height: 20px;
+                    width: 0.4rem;
+                    height: 0.4rem;
+                    line-height: 0.4rem;
                     text-align: center;
                     border-radius: 50%;
                     background-color:#999;
@@ -208,16 +209,16 @@ p{
         }
         .content{
             color: #666;
-            font-size: 12px;
-            padding-top: 5px;
-            padding-bottom: 5px;
+            font-size: 0.24rem;
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
             p{
-                margin-left: 15px;
-                height: 17px;
-                line-height: 17px;
-                margin-bottom: 8px;
+                margin-left: 0.3rem;
+                height: 0.34rem;
+                line-height: 0.34rem;
+                margin-bottom: 0.16rem;
                 span{
-                    margin-right: 5px;
+                    margin-right: 0.1rem;
                 }
             }
             .warm-grey{
@@ -233,7 +234,7 @@ p{
     .left-border{
         &:before{
             position: absolute;
-            top:30px;
+            top:0.6rem;
             left: 0;
             content: '';
             width: 1px;
@@ -244,13 +245,13 @@ p{
 }
 .img-box{
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 0.4rem;
+    height: 0.4rem;
     top:50%;
     transform: translate(-50%,-50%);
     left: 50%;
 }
 .nut-steps-content{
-     padding-left: 35px;
+     padding-left: 0.7rem;
 }
 </style>

@@ -8,16 +8,16 @@
     <li>
         组件/Components
         <ul>
-            <li v-for="cpt in packages" v-if="['component','method'].indexOf(cpt.type)!==-1"><router-link :to="'/'+cpt.name" :class="{ current:path=='/'+cpt.name }">{{cpt.name}}</router-link></li>
+            <li v-for="cpt in packages" v-if="['component','method'].indexOf(cpt.type)!==-1"><router-link :to="{name:cpt.name}" :class="{ current:path=='/'+cpt.name }">{{cpt.name}}<span class="chnn">{{cpt.chnName || '组件' }}</span></router-link></li>
         </ul>
     <li>过滤器/Filters
         <ul>
-            <li v-for="cpt in packages" v-if="cpt.type==='filter'"><router-link :to="'/'+cpt.name" :class="{ current:path=='/'+cpt.name }">{{cpt.name}}</router-link></li>
+            <li v-for="cpt in packages" v-if="cpt.type==='filter'"><router-link :to="{name:cpt.name}" :class="{ current:path=='/'+cpt.name }">{{cpt.name}}<span class="chnn">{{cpt.chnName || '组件' }}</span></router-link></li>
         </ul>
     </li>
     <li>指令/Directives
         <ul>
-            <li v-for="cpt in packages" v-if="cpt.type==='directive'"><router-link :to="'/'+cpt.name" :class="{ current:path=='/'+cpt.name }">{{cpt.name}}</router-link></li>
+            <li v-for="cpt in packages" v-if="cpt.type==='directive'"><router-link :to="'/'+cpt.name" :class="{ current:path=='/'+cpt.name }">{{cpt.name}}<span class="chnn">{{cpt.chnName || '组件' }}</span></router-link></li>
         </ul></li>
     </li>
     </ul>
@@ -58,9 +58,16 @@ export default {
 <style lang="scss" scoped>
 a {
   text-decoration: none;
+  
 }
 .current {
   color: #ff0000;
+}
+.chnn{
+  margin-left: 5px;
+  color: #999;
+  font-size: 12px;
+ 
 }
 .pcdemo{
   display: none;

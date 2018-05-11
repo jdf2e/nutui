@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Image</h1>
-        <p>图片加载组件，支持检测环境加载webp格式图片，支持设置加载中和加载失败占位图。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
 
         <p>开启webp时，如果浏览器支持，组件尝试在给定的url后加“.webp”,若请求失败则自动重新请求一次原始url(不含“.webp”)，如果还失败则请求errorImg。</p>
         <div style="width:100%;overflow:hidden;">

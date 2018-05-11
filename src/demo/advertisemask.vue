@@ -1,7 +1,9 @@
 <template>
     <div>
-        <h1>advertisemask</h1>
-        <p>一种用于打开APP后显示的图片广告弹层。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
+        
         <h5>示例</h5>
         <p>默认用法</p>
          <nut-advertisemask 

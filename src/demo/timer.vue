@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Timer</h1>
-        <p>倒计时组件。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
 
         <nut-timer :timespacer="6000000000"></nut-timer>
                

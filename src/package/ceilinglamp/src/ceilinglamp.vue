@@ -10,7 +10,7 @@ export default {
     name:'nut-ceilinglamp',
     props: {
     	fixedTop: {
-            type: Number,
+            type: [Number,String],
             default: 0
         },
         fixedType:{
@@ -22,11 +22,11 @@ export default {
             default:''
         },
         screenNum: {
-            type: Number,
+            type: [Number,String],
             default: 0
         },
         zIndex: {
-            type: Number,
+            type: [Number,String],
             default: 1001
         }
     },

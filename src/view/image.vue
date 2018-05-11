@@ -1,29 +1,34 @@
 <template>
     <div>
-        <h1>Image</h1>
-        <p>图片加载组件，支持检测环境加载webp格式图片，支持设置加载中和加载失败占位图。</p>
+      <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="图片加载组件，支持检测环境加载webp格式图片，支持设置加载中和加载失败占位图。" 
+        :showQrCode="true"></nut-docheader>
         <h5>示例</h5>
-        <p>开启webp时，如果浏览器支持，组件尝试在给定的url后加“.webp”,若请求失败则自动重新请求一次原始url(不含“.webp”)，如果还失败则请求errorImg。</p>
+        <h6>开启webp时，如果浏览器支持，组件尝试在给定的url后加“.webp”,若请求失败则自动重新请求一次原始url(不含“.webp”)，如果还失败则请求errorImg。</h6>
         <div style="width:100%;overflow:hidden;">
-            <nut-image imgSrc="//img10.360buyimg.com/n1/s368x368_jfs/t15451/283/338246331/345534/6b69d792/5a2a07c2N38f87e33.jpg" :webp="true"></nut-image>
-        <pre><code v-highlight v-text="demo1"></code></pre>
-        <p>自定义loading占位图（模拟低速网络环境可看到）</p>
+            <nut-image imgSrc="//img10.360buyimg.com/n1/s368x368_jfs/t15451/283/338246331/345534/6b69d792/5a2a07c2N38f87e33.jpg" :webp="true"></nut-image></div>
+        <nut-codebox :code="demo1"></nut-codebox>
+        
+        <h6>自定义loading占位图（模拟低速网络环境可看到）</h6>
         <div style="width:100%;overflow:hidden;">
             <nut-image imgSrc="//img30.360buyimg.com/vip/jfs/t11617/103/1999233618/120608/7aff545e/5a0d6e25N89c245dd.jpg" loadingImg="//static-o2o.360buyimg.com/daojia/new/images/icon/newLoading.gif"></nut-image></div>
-        </div>
-        <pre><code v-highlight v-text="demo2"></code></pre>
-        <p>自定义加载失败时的占位图</p>
+        
+        <nut-codebox :code="demo2"></nut-codebox>
+        <h6>自定义加载失败时的占位图</h6>
         <div style="width:100%;overflow:hidden;">
             <nut-image imgSrc="//img10.360buyimg.com/test" errorImg="//misc.360buyimg.com/mtd/pc/common/img/no_login.jpg"></nut-image>
-        </div>        
-        <pre><code v-highlight v-text="demo3"></code></pre>
-        <p>事件</p>
+        </div>       
+        <nut-codebox :code="demo3"></nut-codebox> 
+        <h6>事件</h6>
         <div style="width:100%;overflow:hidden;">
             <nut-image imgSrc="http://img10.360buyimg.com/n1/s368x368_jfs/t2590/194/2825053760/121163/21a0bec9/577335b9N8990670f.jpg" :webp="true" @image-load-complete="imgLoadComplete"></nut-image>
         </div>
-        <div>加载结果：{{rst}}</div>    
-        <pre><code v-highlight v-text="demo4"></code></pre>
-        <pre><code v-highlight>export default {
+        <div>加载结果：{{rst}}</div>  
+        <nut-codebox :code="demo4"></nut-codebox> 
+        <nut-codebox code="export default {
     data(){
         return{
             rst:'',
@@ -34,7 +39,7 @@
             this.rst = result;
         }
     }
-}</code></pre>
+}"></nut-codebox>
         <h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
@@ -124,34 +129,34 @@
 
 <script>
 export default {
-    data(){
-        return{
-            demo1:`<nut-image 
+  data() {
+    return {
+      demo1: `<nut-image 
 imgSrc="//img10.360buyimg.com/n1/s368x368_jfs/t15451/283/338246331/345534/6b69d792/5a2a07c2N38f87e33.jpg" 
 :webp="true">
 </nut-image>`,
-            demo2:`<nut-image 
+      demo2: `<nut-image 
 imgSrc="//img30.360buyimg.com/vip/jfs/t11617/103/1999233618/120608/7aff545e/5a0d6e25N89c245dd.jpg" 
 loadingImg="//static-o2o.360buyimg.com/daojia/new/images/icon/newLoading.gif">
 </nut-image>`,
-            demo3:`<nut-image 
+      demo3: `<nut-image 
 imgSrc="//img10.360buyimg.com/test" 
 errorImg="//misc.360buyimg.com/mtd/pc/common/img/no_login.jpg">
 </nut-image>`,
-            demo4:`<nut-image 
+      demo4: `<nut-image 
 imgSrc="//img10.360buyimg.com/n1/s368x368_jfs/t2590/194/2825053760/121163/21a0bec9/577335b9N8990670f.jpg" 
 :webp="true" 
 @image-load-complete="imgLoadComplete">
 </nut-image>`,
-            rst:'',
-        }
-    },
-    methods:{
-        imgLoadComplete(img,result){
-            this.rst = result;
-        }
+      rst: ""
+    };
+  },
+  methods: {
+    imgLoadComplete(img, result) {
+      this.rst = result;
     }
-}
+  }
+};
 </script>
 
 <style>

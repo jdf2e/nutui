@@ -57,7 +57,7 @@ export default {
         
     }
     .nut-checkbox:checked{
-        background: #F23030 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><line x1='2' y1='5' x2='5' y2='7' stroke='#fff'></line><line x1='4' y1='7' x2='9' y2='2' stroke='#fff'></line></svg>") no-repeat center;
+        background: #F23030 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Cline x1='2' y1='5' x2='5' y2='7' stroke='%23fff'%3E%3C/line%3E%3Cline x1='4' y1='7' x2='9' y2='2' stroke='%23fff'%3E%3C/line%3E%3C/svg%3E") no-repeat center;
         border:1px solid #F23030;
 	    border-radius: 10%;
 	    background-size: cover;

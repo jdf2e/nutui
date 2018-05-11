@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Webp</h1>
-        <p>过滤器。在支持webp格式的浏览器上给图片url加上“.webp”扩展名。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <h5>示例</h5>
         <div style="width:100%;overflow:hidden;">
             <img :src="imgUrl | webp" alt=""/>

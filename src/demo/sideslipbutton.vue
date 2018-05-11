@@ -1,9 +1,10 @@
 <template>
     <div>
-        <h1>SideslipButton</h1>
-        <p>左划展示操作按钮，例如删除、收藏、加入购物车等按钮。(请在手机上查看)</p>       
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>      
         <!-- DEMO区域 -->
-        <nut-sideslipbutton @slide-left="slideLeft" @slide-right="slideRight" @slide-no="slideNo">
+        <nut-sideslipbutton @slide-left="slideLeft" @slide-right="slideRight" @slide-no="slideNo" :during="0.2">
             <div slot="slidedom" class="slidedom">
                 <div class="addr">
                     <p class="name-mobile">159****8888</p>

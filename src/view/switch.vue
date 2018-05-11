@@ -1,16 +1,21 @@
 <template>
     <div>
-        <h1>Switch</h1>
-        <p>一种滑动开关，通过点击使按钮左右滑动，同时触发对应的开关状态。</p>
-        <a class="button-primary button" href="/demo.html#/switch" target="_blank">DEMO</a>
-        <p>默认用法</p>
-        <pre><code v-highlight v-text="demo1"></code></pre>
-        <p>自定义颜色</p>
-        <pre><code v-highlight v-text="demo2"></code></pre>
-        <p>ON/OFF事件</p>
-        <pre><code v-highlight v-text="demo3"></code></pre>
-        <pre><code v-highlight v-text="demo4"></code></pre>
-        
+        <nut-docheader
+        :name="$route.name"
+        :chName="$route.params.chnName"
+        type="Component"
+        desc="一种滑动开关，通过点击使按钮左右滑动，同时触发对应的开关状态。"
+        :showQrCode="true"></nut-docheader>
+        <!-- <a class="button-primary button" href="/demo.html#/switch" target="_blank">DEMO</a> -->
+        <h6>默认用法</h6>
+        <nut-codebox :code="demo1" :imgUrl="['../asset/img/demo/switch1.png','../asset/img/demo/switch2.png']"></nut-codebox>
+        <h6>自定义颜色</h6>
+        <nut-codebox :code="demo2" :imgUrl="['../asset/img/demo/switch3.png','../asset/img/demo/switch4.png']"></nut-codebox>
+        <h6>ON/OFF事件</h6>
+        <nut-codebox :code="demo3"></nut-codebox>
+        <nut-codebox :code="demo4"></nut-codebox>
+
+
 
         <h5>Props</h5>
         <div class="tbl-wrapper">
@@ -104,9 +109,20 @@
 export default {
     data(){
         return{
-          demo1:`<nut-switch :active="true"></nut-switch>`,
-          demo2:`<nut-switch :height="0.3" :width="0.6" activeBgColor="#9ABB82" inActiveBgColor="#EAE7E2" btnColor="#CBDDDD"></nut-switch>`,
-          demo3:`<nut-switch @switch-on="switchOnEvt" @switch-off="switchOffEvt"></nut-switch>`,
+          demo1:`<nut-switch
+:active="true"
+></nut-switch>`,
+          demo2:`<nut-switch
+:height="0.3"
+:width="0.6"
+activeBgColor="#9ABB82"
+inActiveBgColor="#EAE7E2"
+btnColor="#CBDDDD"
+></nut-switch>`,
+          demo3:`<nut-switch
+@switch-on="switchOnEvt"
+@switch-off="switchOffEvt"
+></nut-switch>`,
           demo4:`export default {
     methods:{
       switchOnEvt(){

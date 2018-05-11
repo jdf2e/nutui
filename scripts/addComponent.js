@@ -32,9 +32,14 @@ function init() {
             message: '组件中文名(十个字以内)：'
         },
         {
-            type: 'list',
+            type: 'input',
+            name: 'desc',
+            message: '组件描述(五十个字以内)：'
+        },
+        {
+            type: 'rawlist',
             name: 'type',
-            message: '请选择组件类型：',
+            message: '请选择组件类型(输入编号)：',
             choices: ['component', 'filter', 'directive', 'method']
         },
         {
@@ -43,7 +48,7 @@ function init() {
             message: '是否需要DEMO页面?',
             default: true
         },
-        {
+        /* {
             type: 'input',
             name: 'erp',
             message: 'ERP'
@@ -52,7 +57,7 @@ function init() {
             type: 'input',
             name: 'email',
             message: 'Email'
-        },
+        }, */
     ]).then(answers => {
         newCpt = answers;
         createNew();

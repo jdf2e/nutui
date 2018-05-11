@@ -1,6 +1,8 @@
 <template>
     <transition name="toastfade">
-        <div class="nut-toast" v-show="visible"><span v-html="msg"></span></div>
+        <div class="nut-toast" v-show="visible" :class="{'center':center}" :style="{'bottom':center?'auto':bottom+'rem'}">
+          <span v-html="msg" :style="{'text-align':textAlignCenter?'center':'left','font-size':fontSize+'rem','background-color':bgColor}"></span>
+        </div>
     </transition>
 </template>
 <script>
@@ -13,6 +15,11 @@ export default {
       visible: false,
       during: 2000, //显示时间(毫秒)
       timer: null,
+      center:true,
+      bottom:1.5,
+      fontSize:0.28,
+      textAlignCenter:true,
+      bgColor:'rgba(0, 0, 0, 0.7)',
       textTimer: null
     };
   },
@@ -56,8 +63,7 @@ export default {
 .nut-toast {
   position: fixed;
   left: 0;
-  top: 50%;
-  margin-top: -2rem;
+  bottom:1.5rem;
   width: 100%;
   text-align: center;
   pointer-events: none;
@@ -74,7 +80,13 @@ export default {
     color: #fff;
     font-size: 0.28rem;
   }
+  &.center{
+    top:50%;
+    transform: translateY(-50%);
+  }
 }
+
+
 
 .toastfade-enter-active {
   transition: opacity 0.1s;

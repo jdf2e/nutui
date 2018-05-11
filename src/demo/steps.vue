@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Steps</h1>
-        <p>一种可以自定义具体内容的steps进度条。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <h5>示例</h5>
         <p>默认用法</p>
         <nut-steps stepsId="step1">
@@ -11,7 +12,7 @@
         </nut-steps>
         
         <p>可配置活动数值，显示进度数字以及title具体每个进度条的高度</p>
-        <nut-steps stepsId="step2" :active="2" :showNum='true' :titleTop="20">
+        <nut-steps stepsId="step2" :active="2" :showNum='true' :titleTop="0.4">
           <nut-step stepTitle="您的订单已经发往北京"><p>2017-12-12</p></nut-step>
           <nut-step stepTitle="您的订单已经到达上海"><p>2017-12-11</p></nut-step>
           <nut-step stepTitle="快递公司已揽件"><p>2017-12-10</p></nut-step>

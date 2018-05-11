@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Price</h1>
-        <p>商品价格组件，支持小数点前后应用不同样式、千位分隔、人民币符号等功能。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <br>
         <div><nut-price  :price="10010" :needSymbol="false" :thousands="true"></nut-price></div>
         <br>

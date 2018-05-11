@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Handle</h1>
-        <p>项目中用到过相关处理处理的方法这个是vue的过滤器，也可以单独用里面的函数过滤。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <!-- DEMO区域 -->
         <!-- <nut-switch :height="30" :width="60" @switch-on="switchOn" @switch-off="switchOff"></nut-switch> -->
         

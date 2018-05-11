@@ -1,12 +1,23 @@
 <template>
     <div>
-        <h1>Price</h1>
-        <p>商品价格组件，支持小数点前后应用不同样式、千位分隔、人民币符号等功能</p>
+      <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="商品价格组件，支持小数点前后应用不同样式、千位分隔、人民币符号等功能。" 
+        :showQrCode="true"></nut-docheader>
         <h5>示例</h5>
-        <pre><code v-highlight v-text="demo"></code></pre>
-        <h5>展示效果</h5>
-        带人民币符号，并且以千分位展示：<nut-price  :price="1010" :needSymbol="true" :thousands="true"></nut-price><br><br>
-        不带人民币符号，并且不以千分位展示：<nut-price  :price="1010" :needSymbol="false" :thousands="false"></nut-price>
+        <!-- <pre><code v-highlight v-text="demo"></code></pre>
+        <h5>展示效果</h5> -->
+        <h6>带人民币符号，且千位分隔</h6>
+        <nut-price :price="1010" :needSymbol="true" :thousands="true"></nut-price><br><br>
+        <nut-codebox :code="demo1"></nut-codebox>        
+
+        <h6>不带人民币符号，关闭千位分隔，小数点后显示一位</h6>
+        <nut-price :price="1010" :needSymbol="false" :thousands="false" :decimalDigits="1"></nut-price>
+        <nut-codebox :code="demo2"></nut-codebox>  
+            
+        
         <br><br>
         <h5>Props</h5>
         <div class="tbl-wrapper">
@@ -61,7 +72,17 @@
 export default {
     data(){
       return {
-        demo:`<nut-price  :price="1010" :needSymbol="true" :thousands="true"></nut-price>`
+        demo1:`<nut-price  
+:price="1010" 
+:needSymbol="true" 
+:thousands="true"
+></nut-price>`,
+        demo2:`<nut-price  
+:price="1010" 
+:needSymbol="false" 
+:thousands="false" 
+:decimalDigits="1"
+></nut-price>`
       }
     },
     methods:{

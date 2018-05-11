@@ -1,31 +1,39 @@
 <template>
     <div>
-        <h1>ImgSet</h1>
-        <p>过滤器。处理类似'jfs/t169/69/654078710/298522/f1faa01a/53951722N73ecf645.jpg'这种图片路径的数据，可配置访问渠道、尺寸、业务，前提是该图片必须是在京东的图片系统上，具体更多细节参数设置可移步以下文档查看：<a href="http://storage.jd.com/doc/jd-image.pdf" target="_blank">http://storage.jd.com/doc/jd-image.pdf</a></p>
-        <h5>示例1：图片按照100px*100px的尺寸展示</h5>
+        <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Filter" 
+        desc="京东图片系统图片过滤器，可配置访问渠道、尺寸、业务等。" 
+        :showQrCode="true"></nut-docheader>
+        <!-- <h1>ImgSet</h1> -->
+        <h6>处理类似'jfs/t169/69/654078710/298522/f1faa01a/53951722N73ecf645.jpg'这种图片路径的数据，可配置访问渠道、尺寸、业务，前提是该图片必须是在京东的图片系统上，具体更多细节参数设置可移步以下文档查看：<a href="http://storage.jd.com/doc/jd-image.pdf" target="_blank">http://storage.jd.com/doc/jd-image.pdf</a></h6>
+        <h5>示例</h5>
+        <h6>图片按照100px*100px的尺寸展示</h6>
         <div style="width:100%;overflow:hidden;">
             <img :src="imgUrl | imgSet({width:100,height:100})" alt="" style="border: 1px solid #ddd;"/>
         </div>
-        <pre><code v-highlight v-text="demo1"></code></pre>
-        <pre><code v-highlight>export default {
+        <nut-codebox :code="demo1"></nut-codebox>
+        <!-- <pre><code v-highlight v-text="demo1"></code></pre> -->
+        <nut-codebox code="export default {
     data(){
         return{
             imgUrl:'jfs/t169/69/654078710/298522/f1faa01a/53951722N73ecf645.jpg'
         }
     }
-}</code></pre>
+}"></nut-codebox>
         
-        <h5>示例2：图片是移动端pop业务</h5>
+        <h6>图片是移动端pop业务</h6>
         <div style="width:100%;overflow:hidden;">
             <img :src="imgUrl | imgSet({width:200,height:200,host:2,business:'pop'})" alt="" style="border: 1px solid #ddd;"/>
         </div>
-        <pre><code v-highlight v-text="demo1"></code></pre>
+        <nut-codebox :code="demo2"></nut-codebox>
 
-        <h5>示例3：图片以直径为400px的圆形裁剪，以200px*200px的尺寸展示</h5>
+        <h6>图片以直径为400px的圆形裁剪，以200px*200px的尺寸展示</h6>
         <div style="width:100%;overflow:hidden;">
             <img :src="imgUrl | imgSet({width:200,height:200,postfix:'!c400'})" alt=""  style="border: 1px solid #ddd;"/>
         </div>
-        <pre><code v-highlight v-text="demo3"></code></pre>
+        <nut-codebox :code="demo3"></nut-codebox>
 
         <h5>Props</h5>
         <div class="tbl-wrapper">

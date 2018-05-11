@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Lazyload</h1>
-        <p>页面滚动到图片时进行加载，当图片完全加载完成之后替换初始的loading图片。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <!-- DEMO区域 -->
         <!-- <nut-switch :height="30" :width="60" @switch-on="switchOn" @switch-off="switchOff"></nut-switch> -->
         
@@ -38,13 +39,8 @@ export default {
 </script>
 
 <style>
-.test{
-
-  /*width: 790px;
-  height: 340px;*/
-  background: red;
-}
 img{
+  display:block;
   max-width:100%;
 }
 </style>

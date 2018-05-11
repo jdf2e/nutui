@@ -1,12 +1,14 @@
 <template>
     <div>
-        <h1>Lazyload</h1>
-        <p>页面滚动到图片时进行加载，当图片完全加载完成之后替换初始的loading图片。</p>
-        <!-- DEMO区域 -->
-        <!-- <nut-switch :height="30" :width="60" @switch-on="switchOn" @switch-off="switchOff"></nut-switch> -->
-        
-        <!-- DEMO代码 -->
-        <pre>
+      <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Filter" 
+        desc="图片懒加载。" 
+        :showQrCode="true"></nut-docheader>
+        <h5>示例</h5>
+        <nut-codebox :code="demo1"></nut-codebox>
+        <!-- <pre>
           <code v-highlight>&lt;div v-nut-lazyload='{
       "imgLoading":"http://page.jd.com/virtuals/ijipiao/1.3/css/i/loading.gif",
       "distance":40,
@@ -15,7 +17,7 @@
     }'&gt;
   &lt;img data-src="url" lazyload/&gt;
 &lt;/div&gt;</code>
-        </pre>
+        </pre> -->
         <h5>Options</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
@@ -67,13 +69,13 @@
           </tbody>
         </table>
         </div>
-        <div 
+<!--         <div 
         v-nut-lazyload='{          
           "height":100
         }'
            >
           <img lazyload class="test" v-for="items in test" :data-src="items">         
-         </div>
+         </div> -->
         </div>
     </div>
    <!--  //-->
@@ -86,12 +88,14 @@ import lazyload from '../package/lazyload/index.js';
 export default {
     data(){
         return{
-          "test":
-          [
-          "https://img30.360buyimg.com/da/jfs/t14185/125/556275389/303641/97b4c333/5a0e37bfN9b72d735.jpg?"+Number(new Date), 
-          "https://img20.360buyimg.com/da/jfs/t10597/214/1767280119/107853/e81bef25/59e5deffN82945fbf.jpg?"+Number(new Date),
-          "https://img14.360buyimg.com/da/jfs/t11074/294/1802222077/76562/336432ea/5a096c9dNda606baa.jpg?"+Number(new Date),
-          "https://img30.360buyimg.com/jgsq-productsoa/jfs/t13666/342/466703104/65783/7022b077/5a0c193cN9124d3e0.jpg?"+Number(new Date)]
+          demo1:`<div v-nut-lazyload='{
+      "imgLoading":"http://page.jd.com/virtuals/ijipiao/1.3/css/i/loading.gif",
+      "distance":40,
+      "element":"[lazyload]",
+      "failImg":'url'
+    }'>
+  <img data-src="url" lazyload/>
+</div>`,
         }
     },
     methods:{

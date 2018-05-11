@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Ceilinglamp</h1>
-        <p>页面滑动到一定距离时页面顶部展示的吸顶条，常用于导航栏和搜索条。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <nut-ceilinglamp :fixedTop="fixedTop" :fixedType = "fixedType" :arrivalEl="arrivalEl">
           <div class="ceildiv">我能自动固定到顶部</div>
         </nut-ceilinglamp>

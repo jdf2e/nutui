@@ -1,18 +1,24 @@
 <template>
     <div>
-        <h1>FormatDatetime</h1>
-        <p>将时间戳或者已格式化的时间字符串转换成指定格式</p>
+      <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="日期时间格式化组件，用于将时间戳或者已格式化的时间字符串转换成指定格式。" 
+        :showQrCode="true"></nut-docheader>
         <h5>示例</h5>
         
-
         <div><nut-formatdatetime :datetime="1280977330748" dateformat="yyyy-mm-dd hh:ii:ss"></nut-formatdatetime></div>
-        <pre><code v-highlight v-text="demo1"></code></pre>
+        <nut-codebox :code="demo1"></nut-codebox>
+        <br>
         <div><nut-formatdatetime datetime="2015-02-18 15:23:48" dateformat="mm/dd/yyyy hh:ii:ss"></nut-formatdatetime></div>
-        <pre><code v-highlight v-text="demo2"></code></pre>
+        <nut-codebox :code="demo2"></nut-codebox>
+        <br>
         <div><nut-formatdatetime datetime="1280977330748" dateformat="yyyy-mm-dd"></nut-formatdatetime></div>
-        <pre><code v-highlight v-text="demo3"></code></pre>
+        <nut-codebox :code="demo3"></nut-codebox>
+        <br>
         <div><nut-formatdatetime datetime="1280977330748" dateformat="hh:ii"></nut-formatdatetime></div>
-        <pre><code v-highlight v-text="demo4"></code></pre>
+        <nut-codebox :code="demo4"></nut-codebox>
 
         <h5>Props</h5>
         <div class="tbl-wrapper">
@@ -53,10 +59,22 @@ import Vue from 'vue';
 export default {
     data(){
         return{
-          demo1:'<nut-formatdatetime :datetime="1280977330748" dateformat="yyyy-mm-dd hh:ii:ss"></nut-formatdatetime>',
-          demo2:'<nut-formatdatetime datetime="2015-02-18 15:23:48" dateformat="mm/dd/yyyy hh:ii:ss"></nut-formatdatetime>',
-          demo3:'<nut-formatdatetime datetime="1280977330748" dateformat="yyyy-mm-dd"></nut-formatdatetime>',
-          demo4:'<nut-formatdatetime datetime="1280977330748" dateformat="hh:ii"></nut-formatdatetime>',
+          demo1:`<nut-formatdatetime 
+:datetime="1280977330748" 
+dateformat="yyyy-mm-dd hh:ii:ss"
+></nut-formatdatetime>`,
+          demo2:`<nut-formatdatetime 
+datetime="2015-02-18 15:23:48" 
+dateformat="mm/dd/yyyy hh:ii:ss"
+></nut-formatdatetime>`,
+          demo3:`<nut-formatdatetime 
+datetime="1280977330748" 
+dateformat="yyyy-mm-dd"
+></nut-formatdatetime>`,
+          demo4:`<nut-formatdatetime 
+datetime="1280977330748" 
+dateformat="hh:ii"
+></nut-formatdatetime>`,
         }
     }
 }

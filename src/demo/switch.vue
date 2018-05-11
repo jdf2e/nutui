@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Switch</h1>
-        <p>一种滑动开关，通过点击使按钮左右滑动，同时触发对应的开关状态。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <p>默认用法</p>
         <p>{{swActive}}</p>
         <nut-switch :active.sync="swActive"></nut-switch>

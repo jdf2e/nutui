@@ -1,45 +1,65 @@
 <template>
-    <div class="nut-datepicker nut-datepicker-red">
+    <div class="nut-datepicker nut-datepicker-red" ref="datepicker">
     	<nut-popup :popupVisible="isFold" :configItems="popupParams" @cancel-btn-click="cancel" @ok-btn-click="confirm" @close-popup="cancel">
 			<div class="nut-datepicker-wrap">
 				<div class="nut-datepicker-header">
 					<div class="nut-datepicker-year">
-						<em @click="switchYear('prev')">&lt;</em>
+						<em @click="switchYear('prev')" class="nut-datepicker-year-prev">&lt;</em>
 						<span>{{swtichDateParams.year}}年</span>
-						<em @click="switchYear('next')">&gt;</em>
+						<em @click="switchYear('next')" class="nut-datepicker-year-next">&gt;</em>
 					</div>
 					<div class="nut-datepicker-months">
-						<em @click="switchMonth('prev')">&lt;</em>
+						<em @click="switchMonth('prev')" class="nut-datepicker-months-prev">&lt;</em>
 						<span>{{swtichDateParams.month}}月</span>
-						<em @click="switchMonth('next')">&gt;</em>
+						<em @click="switchMonth('next')"  class="nut-datepicker-months-next">&gt;</em>
 					</div>
 				</div>
 				<div class="nut-datepicker-week">
 					<span v-for="week of weekArr">{{week}}</span>
 				</div>
-				<!-- <nut-swiper
-		            :pagination-visible="false"
-		            :stopAutoPlay="true"
-		            :autoPlay= "false"
-		            :loop="true"
-		            direction="horizontal"
-		            @slideChangeStart="slideChange"
-		            ref="picker"> -->
-		            <div class="nut-datepicker-days nut-swiper-silde">
-						<div class="nut-datepicker-item">
-							<template v-for="obj of currMonthData">
-								<span :class="[obj.type, {'active': obj.active}]" @click="chooseDays(obj);">{{obj.day}}</span>
-							</template>
+				<div class="nut-datepicker-days" :style="{'width': width}">
+					<div class="nut-datepicker-panel"
+						:style="{
+		                    'transform':'translate3d(' + translateX + '%, 0, 0)',
+		                    'transition-duration':transitionDuration+'ms',
+		                    '-webkit-transform':'translate3d(' + translateX + '%, 0, 0)',
+		                    '-webkit-transition-duration':transitionDuration+'ms'
+		                }">
+			            <div class="nut-datepicker-silde"
+			            	:style="{'width': width}"
+			            	@touchstart="touchStart($event, 1)"
+			            	@touchend="touchEnd($event, 1)"
+			            >
+							<div class="nut-datepicker-item">
+								<template v-for="obj of currMonthData">
+									<span :class="[obj.type, {'active': obj.active}]" @click="chooseDays(obj);">{{obj.day}}</span>
+								</template>
+							</div>
+						</div>
+						<div class="nut-datepicker-silde"
+							:style="{'width': width}"
+			            	@touchstart="touchStart($event, 2)"
+			            	@touchend="touchEnd($event, 2)"
+			            >
+							<div class="nut-datepicker-item">
+								<template v-for="obj of currMonthData">
+									<span :class="[obj.type, {'active': obj.active}]" @click="chooseDays(obj);">{{obj.day}}</span>
+								</template>
+							</div>
+						</div>
+						<div class="nut-datepicker-silde"
+						    :style="{'width': width}"
+			            	@touchstart="touchStart($event, 3)"
+			            	@touchend="touchEnd($event, 3)"
+			            >
+							<div class="nut-datepicker-item">
+								<template v-for="obj of currMonthData">
+									<span :class="[obj.type, {'active': obj.active}]" @click="chooseDays(obj);">{{obj.day}}</span>
+								</template>
+							</div>
 						</div>
 					</div>
-					<!-- <div class="nut-datepicker-days nut-swiper-silde">
-						<div class="nut-datepicker-item">
-							<template v-for="obj of currMonthData">
-								<span :class="[obj.type, {'active': obj.active}]" @click="chooseDays(obj);">{{obj.day}}#{{test}}</span>
-							</template>
-						</div>
-					</div>
-		        </nut-swiper> -->
+				</div>
 			</div>
     	</nut-popup>
     </div>
@@ -47,7 +67,6 @@
 <script>
 import Vue from 'vue';
 import popup from './../../popup/index.js';
-//import swiper from './../../swiper/index.js';
 import Utils from './utils.js';
 popup.install(Vue);
 export default {
@@ -80,13 +99,20 @@ export default {
                },
         	},
         	weekArr: ['日', '一', '二', '三', '四', '五', '六'],
+        	width: '7.5rem',
         	curDate: null,
         	currDateParams: {},
         	swtichDateParams: {},
-        	currMonthData:[]
+        	currMonthData:[],
+        	translateX: -33.3,
+        	transitionDuration: 200
         };
     },
     methods: {
+    	updateWidth() {
+			this.width = document.documentElement.clientWidth + 'px';
+    	},
+
     	breakUpDate() {
     		let _this = this;
     		/*let currDate = /^[1-2][0-9][0-9][0-9]-[0-1]{0,1}[0-9]-[0-3]{0,1}[0-9]$/.test(_this.params.curDate) ? _this.params.curDate : Utils.date2Str(new Date());
@@ -152,12 +178,10 @@ export default {
 				case 'prev':
 					_this.swtichDateParams.year = _this.swtichDateParams.year == 1 ? _this.swtichDateParams.year: -- _this.swtichDateParams.year;
 					_this.initRenderMonth();
-					//!isSlideChange && _this.$refs.picker.prev();
 					break;
 				case 'next':
 					++ _this.swtichDateParams.year;
 					_this.initRenderMonth();
-					//!isSlideChange && _this.$refs.picker.next();
 					break;
 			}
     	},
@@ -166,7 +190,6 @@ export default {
 			let _this = this;
 			switch(params) {
 				case 'prev':
-					//!isSlideChange && _this.$refs.picker.prev();
 					if (_this.swtichDateParams.month == 1) {
 						_this.swtichDateParams.month = 12;
 						_this.switchYear('prev', isSlideChange);
@@ -176,7 +199,6 @@ export default {
 					}
 					break;
 				case 'next':
-					//!isSlideChange && _this.$refs.picker.next();
 					if (_this.swtichDateParams.month == 12) {
 						_this.swtichDateParams.month = 1;
 						_this.switchYear('next', isSlideChange);
@@ -211,7 +233,7 @@ export default {
 			params.active = !params.active;
 			_this.currDateParams.year = _this.swtichDateParams.year;
 			_this.currDateParams.month = Utils.getNumTwoBit(_this.swtichDateParams.month);
-			_this.currDateParams.day = params.day;
+			_this.currDateParams.day = Utils.getNumTwoBit(params.day);
 			!this.isConfirmBtn && this.confirm();
     	},
 
@@ -221,11 +243,53 @@ export default {
 
         confirm() {
         	this.$emit('confirm', this.currDateParams);
-        }
+        },
+
+		// 拖动
+        touchStart(e, index){
+			this.startX = e.targetTouches[0].pageX;
+			this.startY = e.targetTouches[0].pageY;
+		},
+
+		touchEnd(e, index){
+			let _this = this;
+			this.endX = e.changedTouches[0].pageX;
+			this.endY = e.changedTouches[0].pageY;
+			let dy = this.endY - this.startY;
+            let dx = this.endX - this.startX;
+
+
+			if (dx < -20 && Math.abs(dx) > 20 ) {
+				if( Math.abs(this.translateX) == '66.6') {
+					this.transitionDuration = 0;
+					this.translateX = 0;
+				}
+				setTimeout(function() {
+					_this.switchMonth('prev');
+					_this.transitionDuration = 200;
+				    _this.translateX = index < 3 ? -33.3 * index : -33.3;
+				}, 0);
+
+			} else if (dx > 20 &&  Math.abs(dx) > 20) {
+				if( Math.abs(this.translateX) == '0') {
+					this.transitionDuration = 0;
+					this.translateX = -66.6;
+				}
+				setTimeout(function() {
+					_this.switchMonth('next');
+					_this.transitionDuration = 200;
+				    _this.translateX = index > 1 ? 33.3 * (2-index) : -33.3;
+				}, 0);
+			}
+		}
     },
 
     created(){
     	this.breakUpDate();
+    },
+
+    mounted() {
+        this.updateWidth()
     }
 }
 </script>
@@ -250,8 +314,7 @@ export default {
     flex: 1;
 }
 .nut-datepicker-header{
-	padding-top: 0.1rem;
-	height: 0.6rem;
+	height: 0.8rem;
 }
 .nut-datepicker-year, .nut-datepicker-months{
 	float: left;
@@ -260,15 +323,23 @@ export default {
 	font-size: 0.28rem;
 	em{
 		height: 0.4rem;
-		padding: 0.1rem 0.2rem;
-		font-size: 0.36rem;
+		font-size: 0.4rem;
 		font-style: normal;
 		line-height: 0.36rem;
+		&.nut-datepicker-months-next{
+			padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+		}
+		&.nut-datepicker-year-prev{
+			padding: 0.2rem 0.5rem 0.2rem 0.2rem;
+		}
+		&.nut-datepicker-months-prev, &.nut-datepicker-year-next{
+			padding: 0.2rem 0.5rem;
+		}
 	}
 	span{
 		flex: 1;
 		height: 0.4rem;
-		padding: 0.1rem 0.2rem;
+		padding: 0.2rem;
 		color: #666;
 		text-align: center;
 		line-height: 0.4rem;
@@ -276,7 +347,7 @@ export default {
 }
 .nut-datepicker-week{
 	display: flex;
-	padding: 0.2rem 0 0.1rem;
+	padding: 0.1rem 0;
 	height: 0.4rem;
 	border-bottom: 1px solid #e4393c;
 	text-align: center;
@@ -287,6 +358,23 @@ export default {
 }
 .nut-datepicker-days{
 	padding: 0.2rem 0;
+	height: 3.6rem;
+	width: 7.5rem;
+	background-color: #fff;
+	overflow: hidden;
+	.nut-datepicker-silde{
+		width: 7.5rem;
+		flex: 1;
+	}
+	.nut-datepicker-silde, .nut-datepicker-panel{
+		height: 100%;
+	}
+	.nut-datepicker-panel{
+		width: 22.5rem;
+		display: flex;
+		flex-direction: row;
+		transition-timing-function: ease-in;
+	}
 }
 .nut-datepicker-item{
 	display: flex;

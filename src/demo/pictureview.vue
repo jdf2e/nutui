@@ -1,16 +1,13 @@
 <template>
     <div>
-	    <h1>PictureView</h1>
-	    <p>浏览大图组件</p>
+	    <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
       <div class="pic-box">
           <span v-for="(item, index) in picBox" @click="setPicShow(index)"><img :src="item"></span>
       </div>
-	    <nut-pictureview :visible.sync="picShow" :bgColor="coverColor" :imgArr="picBox" :initNum="picShowNum" :pagination="showPage" @close-pic="closeDo"></nut-pictureview>
-      
-     
+	    <nut-pictureview :visible.sync="picShow" :bgColor="coverColor" :imgArr="picBox" :initNum="picShowNum" :pagination="showPage" @close-pic="closeDo"></nut-pictureview>      
     </div>
-
-
 </template>
 
 <script>

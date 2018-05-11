@@ -1,28 +1,28 @@
 <template>
     <div>
-        <h1>Drag</h1>
-        <p>一种ICON拖动吸边组件</p>
-        <a class="button-primary button" href="/demo.html#/drag" target="_blank">DEMO</a>
-        <h5 class="staticTitle">基本用法</h5>
+        <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="吸边拖拽组件。" 
+        :showQrCode="true"></nut-docheader>
+        <!-- <a class="button-primary button" href="/demo.html#/drag" target="_blank">DEMO</a> -->
+        <h5>基本用法</h5>
         <!-- DEMO区域 -->
         <!-- <nut-drag :direction="direction"
                   :boundary="boundary"
         ></nut-drag> -->
         <!-- DEMO代码 -->
-        <div>
-            <p class="drag-tip">1、可控制移动方向，垂直移动(h)，水平移动(v)</p>
-        </div>
+        <h6>可控制移动方向，垂直移动(h)，水平移动(v)</h6>
+        <nut-codebox :code="demo1"></nut-codebox>
+        <!-- <pre><code v-highlight v-text="demo1"></code></pre> -->
+        <h6>可设置距离边界的值来限制拖动范围</h6>
+        <nut-codebox :code="demo2"></nut-codebox>
+        <!-- <pre><code v-highlight v-text="demo2"></code></pre> -->
         
-        <pre><code v-highlight v-text="demo1"></code></pre>
-        <div>
-            <p class="drag-tip">2、可设置距离边界的值来限制拖动范围</p> 
-        </div>
-        <pre><code v-highlight v-text="demo2"></code></pre>
-        
-        <div>
-            <p class="drag-tip">3、可设置是否吸边</p> 
-        </div>
-        <pre><code v-highlight v-text="demo3"></code></pre>
+        <h6>可设置是否吸边</h6>
+        <nut-codebox :code="demo3"></nut-codebox>
+        <!-- <pre><code v-highlight v-text="demo3"></code></pre> -->
         <h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
@@ -116,9 +116,15 @@ export default {
         return{
             direction: 'h',
             boundary: {top: 200, bottom: 20, left: 0, right: 20},
-            demo1:`<nut-drag direction="h"></nut-drag>`,
-            demo2:`<nut-drag :boundary="{top: 20, bottom: 20}"></nut-drag>`,
-            demo3:`<nut-drag :isSide="true"></nut-drag>`,
+            demo1:`<nut-drag 
+direction="h"
+></nut-drag>`,
+            demo2:`<nut-drag 
+:boundary="{top: 20, bottom: 20}"
+></nut-drag>`,
+            demo3:`<nut-drag 
+:isSide="true"
+></nut-drag>`,
         }
     },
     methods:{

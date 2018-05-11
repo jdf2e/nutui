@@ -1,13 +1,17 @@
 <template>
     <div>
-        <h1>Slider</h1>
-        <p>一种滑块组件。</p>
-        <a class="button-primary button" href="/demo.html#/slider" target="_blank">DEMO</a>
+      <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="滑块组件。" 
+        :showQrCode="true"></nut-docheader>
+        <!-- <a class="button-primary button" href="/demo.html#/slider" target="_blank">DEMO</a> -->
         
-        <h5 class="staticTitle">基本用法</h5>
+        <h5>基本用法</h5>
         <!-- DEMO区域 --> 
-        <nut-slider  :value="[10,20]" :step="10" :min="0" @touch-end="afterTouch" range></nut-slider>  
-        <pre><code v-highlight v-text="demo1"></code></pre>
+        <!-- <nut-slider  :value="10" :step="10" :min="0" @touch-end="afterTouch"></nut-slider>   -->
+        <nut-codebox :code="demo1" imgUrl="../asset/img/demo/slider.png">></nut-codebox>
         
         <h5>Props</h5>
         <div class="tbl-wrapper">
@@ -93,7 +97,12 @@
 export default {
     data(){
         return{
-            demo1:`<nut-slider  :value="10" :step="10" :min="10" @touch-end="afterTouch"></nut-slider>`
+            demo1:`<nut-slider  
+:value="10" 
+:step="10" 
+:min="10" 
+@touch-end="afterTouch"
+></nut-slider>`
         }
     },
     methods:{

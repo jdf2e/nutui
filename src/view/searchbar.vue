@@ -1,8 +1,29 @@
 <template>
 	<div>
-		<h1>SearchBar</h1>
-		<p>一种可以自定义内容的搜索框。</p>
-		<a class="button button-primary" href="/demo.html#/searchbar" target="_blank">Demo</a>
+		<nut-docheader
+        :name="$route.name"
+        :chName="$route.params.chnName"
+        type="Component"
+        desc="搜索栏。"
+        :showQrCode="true"></nut-docheader>
+		<!-- <a class="button button-primary" href="/demo.html#/searchbar" target="_blank">Demo</a> -->
+        <!-- <h6>搜索栏。</h6> -->
+        <!-- DEMO区域 -->
+        <h5>示例</h5>
+        <h6>默认用法</h6>
+        <nut-codebox :code="demo1" :imgUrl="['../asset/img/demo/searchBar1.png']"></nut-codebox>
+       <!--  <pre><code v-highlight v-text="demo1"></code></pre> -->
+        <h6>右侧搜索按钮可根据需要进行配置</h6>
+        <nut-codebox :code="demo2" :imgUrl="['../asset/img/demo/searchBar2.png']"></nut-codebox>
+        <!-- <pre><code v-highlight v-text="demo2"></code></pre> -->
+        <h6>可配置输入框前面是否显示搜索图标（图标可配置）、输入框高度、右侧是否显示文字按钮以及文字按钮宽度、显示文字、文字颜色</h6>
+        <nut-codebox :code="demo3" :imgUrl="['../asset/img/demo/searchBar3.png']"></nut-codebox>
+        <!-- <pre><code v-highlight v-text="demo3"></code></pre> -->
+        <h6>可配置获取输入框焦点事件、输入事件、失去焦点事件、默认提交事件</h6>
+        <nut-codebox :code="demo4" :imgUrl="['../asset/img/demo/searchBar1.png']"></nut-codebox>
+        <nut-codebox :code="demo5"></nut-codebox>
+        <!-- <pre><code v-highlight v-text="demo4"></code></pre>
+        <pre><code v-highlight v-text="demo5"></code></pre> -->
 		<h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
@@ -122,10 +143,58 @@
 	export default {
 	    data() {
 	        return {
+                demo1: `<nut-searchbar  placeText="请输入自定义文案"></nut-searchbar>`,
+                demo2: `<nut-searchbar
+  placeText="请输入自定义文案"
+  :hasSearchButton="false"
+></nut-searchbar>`,
+                demo3: `<nut-searchbar
+  placeText="ERP/姓名/邮箱"
+  :hasIcon="true"
+  :hasTextButton="true"
+  textInfo="搜索"
+  width="1"
+  height="1"
+  color="#f23030"
+></nut-searchbar>`,
+                demo4: `<nut-searchbar
+  placeText="请输入自定义文案"
+  @focus="focusFun"
+  @input="inputFun"
+  @blur="blurFun"
+  @submit="submitFun"
+></nut-searchbar>`,
+                demo5: `export default {
+    methods: {
+        focusFun() {
+            console.log('获取焦点操作！');
+        },
+        inputFun() {
+            alert('您正在输入...');
+        },
+        blurFun() {
+            console.log('您已失去焦点！');
+        },
+        submitFun() {
+            console.log('默认提交操作！');
+        }
+    }
+}`
 	        }
 	    },
 	    methods:{
-	    	
+            focusFun() {
+                console.log('获取焦点操作！');
+            },
+            inputFun() {
+                alert('您正在输入...');
+            },
+            blurFun() {
+                console.log('您已失去焦点！');
+            },
+            submitFun() {
+                console.log('默认提交操作！');
+            }
 	    }
 	}
 </script>

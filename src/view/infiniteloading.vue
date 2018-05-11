@@ -1,10 +1,18 @@
 <template>
     <div>
-        <h1>InfiniteLoading</h1>
-        <p>无限加载，多用于列表页面，当数据条数过多时，滑动到屏幕底部，加载下一页数据</p>
-        <a class="button button-primary" href="/demo.html#/infiniteLoading" target="_blank">Demo</a>
-        <pre><code v-highlight v-text="teml1"></code></pre>
-        <pre><code v-highlight v-text="teml2"></code></pre>
+        <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="无限加载组件。" 
+        :showQrCode="true"></nut-docheader>
+        <!-- <h1>InfiniteLoading</h1>
+        <p>无限加载，多用于列表页面，当数据条数过多时，滑动到屏幕底部，加载下一页数据</p> -->
+        <!-- <a class="button button-primary" href="/demo.html#/infiniteLoading" target="_blank">Demo</a> -->
+        <h5>示例</h5>
+        <nut-codebox :code="teml1"></nut-codebox>
+        <nut-codebox :code="teml2"></nut-codebox>
+        
         <h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">

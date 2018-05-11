@@ -1,310 +1,58 @@
 {
-  "name": "@jdcfe/nutui",
-  "description": "基于Vue2的移动端UI组件库",
-  "version": "1.1.1",
-  "author": "jdc-fe-rd2",
-  "main": "dist/nutui.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jdf2e/nutui.git"
-  },
-  "scripts": {
-    "clean": "rm -rf dist",
-    "dev": "npm run clean && webpack-dev-server -d --open --progress",
-    "build": "npm run clean && cross-env NODE_ENV=production webpack -p --hide-modules --progress",
-    "add": "node scripts/addComponent",
-    "custom": "node scripts/customBuild && npm run clean && cross-env NODE_ENV=production webpack --config webpack.config.custom.js -p --hide-modules --progress && rm -rf custom.json && rm -rf src/nutui-custom.js"
-  },
-  "dependencies": {
-    "babel-runtime": "^6.26.0"
-  },
-  "files": [
-    "src",
-    "dist/nutui.js"
-  ],
-  "packages": [
-    {
-      "name": "Dialog",
-      "type": "method",
-      "erp": "",
-      "email": ""
+    "name": "@nutui/nutui",
+    "description": "基于Vue2的移动端UI组件库",
+    "version": "1.2.0",
+    "author": "jdc-fe-rd2",
+    "main": "dist/nutui.js",
+    "repository": {
+        "type": "git",
+        "url": "git@git.jd.com:lifeifan3/NutUI.git"
     },
-    {
-      "name": "Toast",
-      "type": "method",
-      "erp": "",
-      "email": ""
+    "scripts": {
+        "clean": "rm -rf dist",
+        "dev": "npm run clean && webpack-dev-server -d --open --progress",
+        "build": "npm run clean && cross-env NODE_ENV=production webpack --hide-modules --progress",
+        "add": "node scripts/addComponent",
+        "custom": "node scripts/customBuild && npm run clean && cross-env NODE_ENV=production webpack --config webpack.config.custom.js --hide-modules --progress && rm -rf custom.json && rm -rf src/nutui-custom.js"
     },
-    {
-      "name": "Switch",
-      "type": "component",
-      "erp": "",
-      "email": ""
+    "dependencies": {
+        "babel-runtime": "^6.26.0"
     },
-    {
-      "name": "Coupon",
-      "chnName": "优惠券",
-      "type": "component",
-      "erp": "",
-      "email": ""
+    "files": [
+        "src",
+        "dist/nutui.js"
+    ],
+    "peerDependencies": {
+        "vue": "^2.3.3"
     },
-    {
-      "name": "Loading",
-      "type": "method",
-      "erp": "",
-      "email": "l"
-    },
-    {
-      "name": "Uploader",
-      "type": "component",
-      "erp": "",
-      "showDemo": false,
-      "email": ""
-    },
-    {
-      "name": "Image",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Mask",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "BackTop",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "TextBox",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Swiper",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Tab",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "TelInput",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Steps",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Rate",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Price",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Timer",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Handle",
-      "type": "filter",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "FormatDateTime",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "SearchBar",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "CeilingLamp",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Select",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Badge",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Drag",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Webp",
-      "chnName": "webp图片过滤器",
-      "type": "filter",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "InfiniteLoading",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "NumOperate",
-      "chnName": "数字加减操作",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Radio",
-      "chnName": "单选按钮",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "RadioGroup",
-      "chnName": "单选按钮组",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "ImgSet",
-      "chnName": "图片设置",
-      "type": "filter",
-      "erp": "",
-      "showDemo": false,
-      "email": ""
-    },
-    {
-      "name": "Checkbox",
-      "chnName": "复选按钮",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "CheckboxGroup",
-      "chnName": "复选按钮组",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Slider",
-      "chnName": "滑块",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Lazyload",
-      "type": "directive",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "PictureView",
-      "chnName": "浏览大图",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "Popup",
-      "chnName": "可自定义内容的弹出框",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "SideslipButton",
-      "chnName": "侧滑操作",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "DatePicker",
-      "chnName": "弹窗日历组件",
-      "type": "component",
-      "erp": "",
-      "email": ""
-    },
-    {
-      "name": "AdvertiseMask",
-      "chnName": "广告蒙层",
-      "type": "component",
-      "erp": "",
-      "email": ""
+    "devDependencies": {
+        "autoprefixer": "^7.1.2",
+        "babel-core": "^6.0.0",
+        "babel-loader": "^6.0.0",
+        "babel-plugin-syntax-dynamic-import": "^6.18.0",
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-polyfill": "^6.23.0",
+        "babel-preset-env": "^1.5.1",
+        "copy-webpack-plugin": "^4.0.1",
+        "cross-env": "^3.0.0",
+        "css-loader": "^0.25.0",
+        "extract-text-webpack-plugin": "^2.1.2",
+        "file-loader": "^0.9.0",
+        "html-loader": "^0.4.5",
+        "html-webpack-plugin": "^2.28.0",
+        "node-sass": "^4.8.3",
+        "postcss-loader": "^2.0.6",
+        "sass-loader": "^6.0.6",
+        "style-loader": "^0.18.2",
+        "svg-sprite-loader": "^3.7.3",
+        "url-loader": "^0.6.2",
+        "vue": "^2.3.3",
+        "vue-loader": "^12.1.0",
+        "vue-qriously": "^1.1.1",
+        "vue-router": "^2.6.0",
+        "vue-style-loader": "^3.0.1",
+        "vue-template-compiler": "^2.3.3",
+        "webpack": "^2.6.1",
+        "webpack-dev-server": "^2.4.5"
     }
-  ],
-  "peerDependencies": {
-    "vue": "^2.3.3"
-  },
-  "devDependencies": {
-    "autoprefixer": "^7.1.2",
-    "babel-core": "^6.0.0",
-    "babel-loader": "^6.0.0",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-env": "^1.5.1",
-    "copy-webpack-plugin": "^4.0.1",
-    "cross-env": "^3.0.0",
-    "css-loader": "^0.25.0",
-    "extract-text-webpack-plugin": "^2.1.2",
-    "file-loader": "^0.9.0",
-    "html-loader": "^0.4.5",
-    "html-webpack-plugin": "^2.28.0",
-    "node-sass": "^4.8.3",
-    "postcss-loader": "^2.0.6",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.18.2",
-    "url-loader": "^0.6.2",
-    "vue": "^2.3.3",
-    "vue-loader": "^12.1.0",
-    "vue-resource": "^1.3.4",
-    "vue-router": "^2.6.0",
-    "vue-style-loader": "^3.0.1",
-    "vue-template-compiler": "^2.3.3",
-    "vuex": "^2.3.1",
-    "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5"
-  }
 }

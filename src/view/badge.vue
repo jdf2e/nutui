@@ -1,27 +1,32 @@
 <template>
     <div>
-        <h1>Badge</h1>
-        <p>出现在按钮、图标旁的数字或状态标记</p>        
+        <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="数字或状态标记，一般展示在按钮或文字旁。" 
+        :showQrCode="true"></nut-docheader>
+        <!-- <h6>出现在按钮、图标旁的数字或状态标记</h6>         -->
         <h5>示例</h5>
-        <p>默认用法</p>
+        <h6>默认用法</h6>
         <nut-badge :value="12" class="item"><button>普通模式</button></nut-badge>
-        <pre><code v-highlight v-text="demo1"></code></pre>
+        <nut-codebox :code="demo1"></nut-codebox>
 
-        <p>Max用法</p>
+        <h6>Max用法</h6>
         <nut-badge :value="200" :max="99" class="item"><button>max模式</button></nut-badge>
-        <pre><code v-highlight v-text="demo2"></code></pre>
+        <nut-codebox :code="demo2"></nut-codebox>
 
-        <p>文字用法</p>
+        <h6>文字用法</h6>
         <nut-badge value="new" class="item"><button>文字用法</button></nut-badge>
-        <pre><code v-highlight v-text="demo3"></code></pre>
+        <nut-codebox :code="demo3"></nut-codebox>
 
-        <p>小圆点</p>
+        <h6>小圆点</h6>
         <nut-badge :isDot="true" class="item"><button>小圆点</button></nut-badge>
-        <pre><code v-highlight v-text="demo4"></code></pre>
+        <nut-codebox :code="demo4"></nut-codebox>
 
-        <p>文字内容</p>
+        <h6>文字内容</h6>
         <nut-badge :isDot="true" class="item">文字内容</nut-badge>
-        <pre><code v-highlight v-text="demo5"></code></pre>
+        <nut-codebox :code="demo5"></nut-codebox>
 
         <h5>Props</h5>
         <div class="tbl-wrapper">

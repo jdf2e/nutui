@@ -1,7 +1,7 @@
 <template>
     <transition name="currentTransition">
         <div v-bind:id="randomId" class="nut-popup-wrapper" v-if="visible" @click="closePopup">
-            <div class="nut-popup" @click.stop @touchmove.stop :style="{height: height}">
+            <div class="nut-popup" @click.stop @touchmove.stop :style="{'height': height}">
                 <div v-if="configItems.popupHeaderVisible == undefined ? true : configItems.popupHeaderVisible" class="nut-popup-header">
                     <div v-if="configItems.hasCloseBtn == undefined ? true : configItems.hasCloseBtn">
                         <span @click="closePopup" class="nut-popup-close">×</span>
@@ -48,10 +48,17 @@ export default {
     },
     mounted: function() {
         var _this = this;
-        let height = _this.configItems.popupHeight.height;
-        setTimeout(function() {
-            _this.height = height;
-        }, 0);
+        
+        if (_this.configItems.popupHeight != undefined) {
+            let height = this.configItems.popupHeight.height;
+            setTimeout(function() {
+                _this.height = height;
+            }, 0);
+        } else {
+            setTimeout(function() {
+                _this.height = '70%';
+            }, 0);
+        }
     },
     data() {
         return {

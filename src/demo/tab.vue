@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Tab</h1>
-        <p>一种用于tab切换的选项卡，支持内容区自定义元素。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <!-- DEMO区域 -->
         <h5>示例</h5>
         <p>默认用法</p>

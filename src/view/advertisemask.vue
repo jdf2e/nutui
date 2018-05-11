@@ -1,11 +1,18 @@
 <template>
     <div>
-        <h1>advertisemask</h1>
-        <p>一种用于打开APP后显示的图片广告弹层。</p>
+      <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="广告图片弹层。" 
+        :showQrCode="true"></nut-docheader>
+        <!-- <h1>advertisemask</h1>
+        <p>一种用于打开APP后显示的图片广告弹层。</p> -->
         <h5>示例</h5>
-        <a class="button button-primary" href="/demo.html#/advertisemask" target="_blank">Demo</a>
-        <p>默认用法</p>
-        <pre><code v-highlight v-text="demo1"></code></pre>
+        <!-- <a class="button button-primary" href="/demo.html#/advertisemask" target="_blank">Demo</a> -->
+        <h6>默认用法</h6>
+        <nut-codebox :code="demo1" imgUrl="../asset/img/demo/advertisemask.png"></nut-codebox>
+        <!-- <pre><code v-highlight v-text="demo1"></code></pre> -->
 
         <h5>Props</h5>
         <div class="tbl-wrapper">

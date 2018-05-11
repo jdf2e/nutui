@@ -1,7 +1,8 @@
 <template>
 	<div>
-        <h1>SearchBar</h1>
-        <p>一种可以自定义内容的搜索框。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <h5>示例用法</h5>
         <p>默认用法</p>
         <nut-searchbar  

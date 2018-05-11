@@ -1,37 +1,47 @@
 <template>
     <div>
-        <h1>TextBox</h1>
-        <p>多行文本输入框，带有字数提示、字数限制等功能。</p>
+      <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="多行文本输入框，支持字数提示、字数限制等功能。" 
+        :showQrCode="true"></nut-docheader>
+        <!-- <h1>TextBox</h1>
+        <h6>多行文本输入框，带有字数提示、字数限制等功能。</h6> -->
        
         <h5>示例</h5>
-        <p>默认用法</p>
-        <nut-textbox></nut-textbox>
-        <pre><code v-highlight v-text="demo1"></code></pre>
+        <h6>默认用法</h6>
+        <nut-codebox code="<nut-textbox></nut-textbox>" imgUrl="../asset/img/demo/textbox1.png"></nut-codebox>
+        <!-- <nut-textbox></nut-textbox> -->
 
-        <p>自定义高度:100px</p>
-        <nut-textbox :txtAreaH="100" :maxNum="300"></nut-textbox>
-        <pre><code v-highlight v-text="demo2"></code></pre>
+        <h6>自定义高度:5rem</h6>
+        <nut-codebox code="<nut-textbox :txtAreaH='5' :maxNum='300'></nut-textbox>" imgUrl="../asset/img/demo/textbox2.png"></nut-codebox>
 
-        <p>自定义提示语</p>
-        <nut-textbox :placeText="'请填写详细情况请填写详细情况'"></nut-textbox>
-        <pre><code v-highlight v-text="demo3"></code></pre>
+        <h6>自定义提示语</h6>
+        <nut-codebox code="<nut-textbox placeText='请填写详细情况'></nut-textbox>" imgUrl="../asset/img/demo/textbox3.png"></nut-codebox>
+        
 
-        <p>自定义字数限制</p>
-        <nut-textbox :maxNum="100"></nut-textbox>
-        <pre><code v-highlight v-text="demo4"></code></pre>
+        <h6>自定义字数限制</h6>
+        <nut-codebox code="<nut-textbox :maxNum='100'></nut-textbox>"></nut-codebox>
+        
+        <h6>限制字数不可超出</h6>
+        <nut-codebox code="<nut-textbox :switchMax='true' 
+        :maxNum='10' 
+        :txtAreaH='2' 
+        textBgColor='#efefef'>
+      </nut-textbox>" imgUrl="../asset/img/demo/textbox4.png"></nut-codebox>
+        
 
-        <p>限制字数不可超出</p>
-        <nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="20" textBgColor="#efefef"></nut-textbox>
-        <pre><code v-highlight v-text="demo5"></code></pre>
+        <h6>字数超出报错</h6>
+        <nut-codebox :code="demo6" imgUrl="../asset/img/demo/textbox5.png"></nut-codebox>
+        <nut-codebox :code="demo66"></nut-codebox>
 
-        <p>字数超出报错</p>
-        <nut-textbox :maxNum="10" :txtAreaH="20"  @errorFunc="overLength" ></nut-textbox>
-        <pre><code v-highlight v-text="demo6"></code></pre>
+        <h6>自定义文本框背景色</h6>
+        <nut-codebox :code="demo7" imgUrl="../asset/img/demo/textbox6.png"></nut-codebox>
 
-        <p>自定义文本框背景色</p>
-        <nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="20" textBgColor="#feefef"></nut-textbox>
-        <pre><code v-highlight v-text="demo7"></code></pre>
-
+        <h6>不显示字数限制</h6>
+        <nut-codebox :code="demo8" imgUrl="../asset/img/demo/textbox7.png"></nut-codebox>
+        
         <h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
@@ -48,9 +58,9 @@
             <tr>
               <td>txtAreaH</td>
               <td>文本框高度</td>
-              <td>String</td>
-              <td>50</td>
-              <td>--</td>
+              <td>Number</td>
+              <td>1rem</td>
+              <td></td>
             </tr>
             <tr>
               <td>placeText</td>
@@ -78,6 +88,13 @@
               <td>设置输入框背景色</td>
               <td>String</td>
               <td>#fff</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>limitShow</td>
+              <td>不显示字数限制</td>
+              <td>Boolean</td>
+              <td>true</td>
               <td>--</td>
             </tr>
           </tbody>
@@ -111,21 +128,41 @@ export default {
     data(){
         return{
             demo1:`<nut-textbox></nut-textbox>`,
-            demo2:`<nut-textbox :txtAreaH="100"></nut-textbox>`,
-            demo3:`<nut-textbox :placeText='"请填写详细情况请填写详细情况"'></nut-textbox>`,
-            demo4:`<nut-textbox :maxNum="100"></nut-textbox>`,
-            demo5:`<nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="20"></nut-textbox>`,
-            demo6:`<nut-textbox :maxNum="10" txtAreaH="20"  @errorFunc="overLength" ></nut-textbox>
-methods:{
-    overLength(){
-        alert("字数超出");
-    }
+            demo2:`<nut-textbox 
+:txtAreaH="10"
+></nut-textbox>`,
+            demo3:`<nut-textbox 
+placeText="请填写详细情况"
+></nut-textbox>`,
+            demo4:`<nut-textbox 
+:maxNum="100"
+></nut-textbox>`,
+            demo5:`<nut-textbox 
+:switchMax="true" 
+:maxNum="10" 
+:txtAreaH="2"
+></nut-textbox>`,
+            demo6:`<nut-textbox 
+:maxNum="10" 
+txtAreaH="2"  
+@errorFunc="overLength" 
+></nut-textbox>`,
+            demo66:`export default {
+  methods:{
+      overLength(){
+          alert("字数超出");
+      }
+  }
 }`,
             demo7:`<nut-textbox 
 :switchMax="true" 
 :maxNum="10" 
-:txtAreaH="20" 
+:txtAreaH="2" 
 textBgColor="#feefef">
+</nut-textbox>`,
+
+            demo8:`<nut-textbox 
+:limitShow="false">
 </nut-textbox>`,
         }
     },
@@ -138,4 +175,7 @@ textBgColor="#feefef">
 </script>
 
 <style lang="scss" scoped>
+.txt-area{
+    padding: 0.1rem 0.2rem 1.5rem;
+}
 </style>

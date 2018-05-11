@@ -6,8 +6,7 @@
                     <span class="nut-dialog-title">{{title}}</span>
                     <a href="javascript:;" v-if="!noCloseBtn" @click="closeBtnClick($event)" class="nut-dialog-close">
                         <svg>
-                            <line x1="0" y1="0" x2="10" y2="10" class="line" />
-                            <line x1="10" y1="0" x2="0" y2="10" class="line" />
+                            <use xlink:href="#close2" />
                         </svg>
                     </a>
                 </div>
@@ -22,6 +21,7 @@
     </transition>
 </template>
 <script>
+import closeIcon from '../../../asset/img/svg/close2.svg';
 export default {
     name: 'nut-dialog',
     data() {

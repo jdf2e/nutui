@@ -1,18 +1,29 @@
 <template>
     <div>
-        <h1>CheckboxGroup</h1>
-        <p>复选按钮组，多用于多选题</p>
+        <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="复选按钮组。" 
+        :showQrCode="true"></nut-docheader>
         
         <h5>示例</h5>
-        <p>默认用法</p>
+        <h6>默认用法</h6>
         <nut-checkboxgroup :data="data1"></nut-checkboxgroup>
-        <pre><code v-highlight v-text="demo1"></code></pre>
-        <p>回调事件</p>
+        <nut-codebox :code="demo1"></nut-codebox>
+        <nut-codebox :code="demo11"></nut-codebox>
+        <!-- <pre><code v-highlight v-text="demo1"></code></pre> -->
+        <h6>回调事件</h6>
         <nut-checkboxgroup :data="data2" @change="checkboxgroupChange"></nut-checkboxgroup>
-        <pre><code v-highlight v-text="demo2"></code></pre>
-        <p>禁用选项</p>
+        <nut-codebox :code="demo2"></nut-codebox>        
+        <nut-codebox :code="demo22"></nut-codebox>        
+        <!-- <pre><code v-highlight v-text="demo2"></code></pre> -->
+        <h6>禁用选项</h6>
         <nut-checkboxgroup :inline="true" :data="data3"></nut-checkboxgroup>
-        <pre><code v-highlight v-text="demo3"></code></pre>
+        <nut-codebox :code="demo3"></nut-codebox>        
+        <nut-codebox :code="demo33"></nut-codebox>        
+        <nut-codebox :code="demo333"></nut-codebox>        
+        <!-- <pre><code v-highlight v-text="demo3"></code></pre> -->
         
         <h5>Props</h5>
         <div class="tbl-wrapper">
@@ -92,63 +103,64 @@ export default {
                 {id:44,name:'test2',value:'乒乓球',disabled:true,checked:false},
                 {id:55,name:'test2',value:'排球',checked:true}
             ],
-            demo1:`<nut-checkboxgroup :data="data1"></nut-checkboxgroup>
-data(){
-    return{
-        data1:[
-            {id:1,name:'test1',value:1},
-            {id:2,name:'test1',value:2},
-            {id:3,name:'test1',value:3},
-            {id:4,name:'test1',value:4},
-            {id:5,name:'test1',value:5}
-        ],
+            demo1:`<nut-checkboxgroup :data="data1"></nut-checkboxgroup>`,
+            demo11:`export default {
+    data(){
+        return{
+            data1:[
+                {id:1,name:'test1',value:1},
+                {id:2,name:'test1',value:2},
+                {id:3,name:'test1',value:3},
+                {id:4,name:'test1',value:4},
+                {id:5,name:'test1',value:5}
+            ]
+        }
     }
-},`,
+}`,
             demo2:`<nut-checkboxgroup 
 :data="data2" 
 @change="test1">
-</nut-checkboxgroup>
-data(){
-  return{
-      data2:[
-          {id:10,name:'test',value:'是',label:'是',checked:true},
-          {id:12,name:'test',value:'否',label:'否',checked:false},
-      ],
-  }
-},
-methods:{
-    
-    test1(item){
-        alert(item.value+'checked:'+event.target.checked);
+</nut-checkboxgroup>`,
+            demo22:`export default {
+    data(){
+        return{
+            data2:[
+                {id:10,name:'test',value:'是',label:'是',checked:true},
+                {id:12,name:'test',value:'否',label:'否',checked:false},
+            ]
+        }
     },
+    methods:{
+        test1(item){
+            alert(item.value+'checked:'+event.target.checked);
+        }
+    }
 }`,
             demo3:`<nut-checkboxgroup 
 :data="data3" 
 @change="change">
-</nut-checkboxgroup>
-data(){
-    return{
-        data3:[
-            {id:11,name:'test2',value:'足球',},
-            {id:22,name:'test2',value:'篮球',checked:false},
-            {id:33,name:'test2',value:'羽毛球',checked:false},
-            {id:44,name:'test2',value:'乒乓球',disabled:true,checked:false},
-            {id:55,name:'test2',value:'排球',checked:true}
-        ],
+</nut-checkboxgroup>`,
+            demo33:`export default {
+    data(){
+        return{
+            data3:[
+                {id:11,name:'test2',value:'足球',},
+                {id:22,name:'test2',value:'篮球',checked:false},
+                {id:33,name:'test2',value:'羽毛球',checked:false},
+                {id:44,name:'test2',value:'乒乓球',disabled:true,checked:false},
+                {id:55,name:'test2',value:'排球',checked:true}
+            ]
+        }
+    },
+    methods:{
+        change(item,index){
+            console.log(index,event.target.value,event.target.checked);
+        }
     }
-},
-methods:{
-  change(item,index){
-      console.log(index,event.target.value,event.target.checked,);
-  }
-}
-
-<style>
-.nut-checkboxgroup .checkboxlist{
+}`,         demo333:`.nut-checkboxgroup .checkboxlist{
     display: inline-block;
     width: 100px;
-}
-</style>`,     
+}`
         }
     },
     components: {

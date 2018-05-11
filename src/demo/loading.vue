@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Loading</h1>
-        <p>“加载中”提示蒙层。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <a class="button button-primary" href="javascript:;" @click="showLoading1">自定义ICON</a>
         
         <a class="button button-primary" href="javascript:;" @click="showLoading2">禁止点击关闭，4秒后自动关闭</a>

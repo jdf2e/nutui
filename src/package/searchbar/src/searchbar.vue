@@ -38,7 +38,7 @@ export default {
     	},
     	icon: {
     		type: String,
-    		default: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpCOTgzOEJFRkQzMzExMUU3OEQxN0RFREM1OENBQjQ1OCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpCOTgzOEJGMEQzMzExMUU3OEQxN0RFREM1OENBQjQ1OCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkI5ODM4QkVERDMzMTExRTc4RDE3REVEQzU4Q0FCNDU4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkI5ODM4QkVFRDMzMTExRTc4RDE3REVEQzU4Q0FCNDU4Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+N/65fwAAAedJREFUeNq81s1LVFEcxvG5viQIES4yzfoL2gRujFqYOqsSqWDCCFw0mki0yl3WZsCtQQsFU8gJQwZqkpABGSUQhKKFMIi0KpnM6WVlBOHc/B54BmKYOfeOd+oHn8VwX557z7nn/MZJpVKh/1E1lmP1iOAZPuAn9vEJ87iBI0GDrmITcTRhGlHcwiSOYgZbuO4nqK7ody3GcQ9P8BCfy1zbggd6ux4MI+83yITc1ZAlPB7yC0awhOdwcdvP0JnhGtUQJSqY50X0YxA3vYLMpD7CU81LpfUKU4ihwRZ0DSc05oetmOYtYgu6jGV8DBCU1T16bUHn8aYK63IV52xBbdiuQlBWU+CUC3K0EwStP15f3Q5aqxB0CrulAgtB7zRPQasTG7Y3eokwTgcIMXPTjaQtaAE/MBYgyKzB75izBf3SRhott+A8Kqx97r7uZd1UTd+5gFmdvOgzpE/X7uG13350R+0hqb5z0hJgtpvHeKH2cAwrOO6nTeTVJtYxgQG1gTUtAVeLuwOX1HWHtKmmcUZhF/H17xs7lv8MjWrXV3AWzXqwb3irt44rLKTjhbAMupDzE1RcjriWc8qG1VS4vbge5+R084zC0gqvKMhvFYct/augQpj5IN7jd6mvrpplvrr2wo8DAQYAy31vGZhb+/0AAAAASUVORK5CYII='
+    		default: ''
     	},
     	hasIcon: {
     		type: Boolean,
@@ -63,7 +63,7 @@ export default {
     },
     data() {
         return {
-
+			defaultIcon:`data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23BDBDBD' d='M15.504 13.616l-3.79-3.223c-.392-.353-.811-.514-1.149-.499a6 6 0 1 0-.672.672c-.016.338.146.757.499 1.149l3.223 3.79c.552.613 1.453.665 2.003.115s.498-1.452-.115-2.003zM6 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8z'/%3E%3C/svg%3E`,
         }
     },
     computed: {
@@ -90,7 +90,7 @@ export default {
     	},
     	searchBgIcon() {
     		let icon;
-    		icon = 'url(' + this.icon + ')';
+    		icon = 'url("'+(this.icon||this.defaultIcon)+'")';
     		return icon;
     	}
     },

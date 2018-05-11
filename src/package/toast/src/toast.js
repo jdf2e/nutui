@@ -24,7 +24,7 @@ let Toast = function (...params) {
         instance = new ToastConstructor({
             data: {
                 msg: params[0] || '',
-                during: params[1] || 2000
+                during: params[1] || 2000,
             }
         });
     }

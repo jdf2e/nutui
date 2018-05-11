@@ -1,7 +1,8 @@
 <template>
     <div>
-          <h1>DatePicker</h1>
-        <p>一种弹窗日历组件。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <h5>示例</h5>
         <p>默认不选择日期</p>
         <div class="data-picker" @click="openDatePicker">{{dateParams.curDate}}</div>

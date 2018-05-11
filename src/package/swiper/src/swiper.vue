@@ -101,6 +101,7 @@ export default {
         };
     },
     methods: {
+        
         next(sPage){
 
             if(sPage && this.type==='multiple'){
@@ -148,24 +149,22 @@ export default {
             }else{
                 this.currentPage = page;
             }
+
             if(this.isLoop){
-                if(this.delta === 0){
-                    this._setTranslate(this._getTranslateOfPage(this.lastPage));
+                
+                this._setTranslate(this._getTranslateOfPage(page));
+                if(noAnimation) {
+                    //添加select cls
+                    let selectedSlide = this.$el.querySelector('.nut-swiper-silde-selected');
+                    selectedSlide && selectedSlide.classList.remove('nut-swiper-silde-selected');
+                    this.slideEls[this.currentPage-1].classList.add('nut-swiper-silde-selected');
+                    this.lastPage = this.currentPage;
+                    return;
                 }
-                setTimeout(()=>{
-                    this._setTranslate(this._getTranslateOfPage(page));
-                    if(noAnimation) {
-                        //添加select cls
-                        let selectedSlide = this.$el.querySelector('.nut-swiper-silde-selected');
-                        selectedSlide && selectedSlide.classList.remove('nut-swiper-silde-selected');
-                        this.slideEls[this.currentPage-1].classList.add('nut-swiper-silde-selected');
-                        this.lastPage = this.currentPage;
-                        return;
-                    }
-                    this._onTransitionStart(cType);
-                },0);
+                this._onTransitionStart(cType);
+                
             }else{
-                setTimeout(()=>{
+                
                 this._setTranslate(this._getTranslateOfPage(page));
 
                 if(noAnimation) {
@@ -177,7 +176,7 @@ export default {
                     return;
                 };
                 this._onTransitionStart(cType);
-                  },0);
+                
             }
         },
         isHorizontal(){
@@ -206,6 +205,8 @@ export default {
 
                 this.lazyLoad && this._imgLazyLoad();//第一次进来时候
 
+
+
             });
         },
         _getSlideDistance(el){
@@ -231,7 +232,11 @@ export default {
             this.delta = 0;
             if(!this.freeMode){
                 this.startTranslate = this._getTranslateOfPage(this.currentPage);
+                if(this.loop){
+                    this._setTranslate(this.startTranslate);
+                }
             }
+
             this.startTime = new Date().getTime();
             this.dragging = true;
             this.transitionDuration = 0;
@@ -289,10 +294,10 @@ export default {
                 }else{
                     this._revert();
                 }
-                setTimeout(()=>{
-                    this.stopAutoPlay = false;
-                },this.speed);
+
+              
             }
+
             this.swiperWrap.removeEventListener('touchmove',this._onTouchMove,false);
             this.swiperWrap.removeEventListener('touchend',this._onTouchEnd,false);
             this.swiperWrap.removeEventListener('mousemove',this._onTouchMove,false);
@@ -331,6 +336,8 @@ export default {
             let selectedSlide = this.$el.querySelector('.nut-swiper-silde-selected');
             selectedSlide && selectedSlide.classList.remove('nut-swiper-silde-selected');
             this.slideEls[this.currentPage-1].classList.add('nut-swiper-silde-selected');
+
+            this.stopAutoPlay = false;
         },
         _isPageChanged(){
 
@@ -437,7 +444,7 @@ export default {
     },
     created:function(){
 
-      console.log('swiper created!');
+     
     },
     mounted:function(){
         this._onTouchMove  = this._onTouchMove.bind(this);

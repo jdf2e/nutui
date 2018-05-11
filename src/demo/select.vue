@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Select</h1>
-        <p>从页面底部弹出的select选择器，支持多级选择及异步请求的多级选择。(请在手机上查看)</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <!-- DEMO区域 -->
         <h5>示例</h5>
 

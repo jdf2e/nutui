@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Popup</h1>
-        <p>可自定义内容的弹窗框</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         
         <a class="button button-primary" href="javascript:;" @click="popupDemo1">footer含两个操作按钮</a>
         <a class="button button-primary" href="javascript:;" @click="popupDemo2">footer仅有一个按钮</a>

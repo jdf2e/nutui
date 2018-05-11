@@ -1,12 +1,18 @@
 <template>
     <div>
-	    <h1>PictureView</h1>
-	    <p>浏览大图组件</p>
+	    <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="图片查看器，支持左右滑动切换。" 
+        :showQrCode="true"></nut-docheader>
       <h5>依赖</h5>
-      <p>Swiper</p>
-      <a class="button button-primary" href="/demo.html#/pictureview" target="_blank">Demo</a>
-      <pre><code v-highlight v-text="demo1"></code></pre>
-      <pre><code v-highlight v-text="demo2"></code></pre>
+      <h6>Swiper</h6>
+      <!-- <a class="button button-primary" href="/demo.html#/pictureview" target="_blank">Demo</a> -->
+      <h5>示例</h5>
+      <nut-codebox :code="demo1" imgUrl="../asset/img/demo/pictureview.png"></nut-codebox>
+      <nut-codebox :code="demo2"></nut-codebox>
+
       <h5>Props</h5>
       <div class="tbl-wrapper">
         <table class="u-full-width">
@@ -88,9 +94,18 @@ export default {
     data(){
       return{
         demo1:`<div class="pic-box">
-    <span v-for="(item, index) in picBox" @click="setPicShow(index)"><img :src="item"></span>
+    <span v-for="(item, index) in picBox" @click="setPicShow(index)">
+      <img :src="item">
+    </span>
 </div>
-<nut-pictureview :visible.sync="picShow" :bgColor="coverColor" :imgArr="picBox" :initNum="picShowNum" :pagination="showPage" @close-pic="closeDo"></nut-pictureview>`,
+<nut-pictureview 
+:visible.sync="picShow" 
+:bgColor="coverColor" 
+:imgArr="picBox" 
+:initNum="picShowNum" 
+:pagination="showPage" 
+@close-pic="closeDo"
+></nut-pictureview>`,
         demo2:`export default {
   data(){
     return{

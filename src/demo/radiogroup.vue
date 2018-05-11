@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>RadioGroup</h1>
-        <p>单项选择数组，多用于单选题</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         
         <h5>示例</h5>
         <p>默认用法</p>

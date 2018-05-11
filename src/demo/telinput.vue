@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Telinput</h1>
-        <p>带有间隔的电话输入框，支持自定义间隔位数，带有基本电话校验。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <!-- DEMO区域 -->
         <!-- <nut-switch :height="30" :width="60" @switch-on="switchOn" @switch-off="switchOff"></nut-switch> -->
         <h5>示例</h5>
@@ -11,7 +12,7 @@
         <p>自定义输入框宽高、带有清除按钮</p>
         <nut-telinput 
           telWidth="50%" 
-          telHeight="50" 
+          telHeight="1" 
           :clearPic="true"
         ></nut-telinput>
         
@@ -19,8 +20,8 @@
         <nut-telinput 
         :gapone="3" 
         :gapsec="7" 
-        telWidth="250" 
-        telHeight="50" 
+        telWidth="4" 
+        telHeight="1" 
         :clearPic="true"
         tipsInfo="请输入正确的电话号码"
         placeText="请输入自定义文案"

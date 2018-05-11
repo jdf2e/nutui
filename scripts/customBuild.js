@@ -34,7 +34,7 @@ inquirer
                 }
             });
         });
-        fs.readFile(path.join(__dirname, '../src/nutui-custom-tpl.js'), 'utf8', function (err, data) {
+        fs.readFile(path.join(__dirname, './customBuildTpl.js'), 'utf8', function (err, data) {
           fs.writeFile(path.join(__dirname, '../src/nutui-custom.js'), str + data, (err) => {
             if (err) throw err;
             console.log(`生成nutui-custom.js文件成功`);

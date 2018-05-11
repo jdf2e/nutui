@@ -1,12 +1,22 @@
 <template>
     <div>
-        <h1>Timer</h1>
-        <p>倒计时组件</p>
+      <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="倒计时组件。" 
+        :showQrCode="true"></nut-docheader>
         <h5>示例</h5>
-        <pre><code v-highlight v-text="demo"></code></pre>
-        <h5>展示效果</h5>
         <nut-timer :timespacer="6000000000"  @end-timer="endTimer"></nut-timer>
-        <p></p>
+        <nut-codebox :code="demo"></nut-codebox>     
+        <nut-codebox code="export default {
+    methods:{
+      endTimer() {
+        console.log('倒计时结束了！');
+      }
+    }
+}"></nut-codebox>     
+
         <h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
@@ -22,7 +32,7 @@
           <tbody>
             <tr>
               <td>timespacer</td>
-              <td>需要倒计时的间隔，单位ms</td>
+              <td>需要倒计时的毫秒数</td>
               <td>Number</td>
               <td>0</td>
               <td>--</td>
@@ -43,7 +53,7 @@
           <tbody>
             <tr>
               <td>end-timer</td>
-              <td>倒计时结束后回调</td>
+              <td>倒计时结束时触发</td>
               <td>--</td>
             </tr>
           </tbody>
@@ -58,12 +68,15 @@
 export default {
     data(){
       return {
-        demo:`<nut-timer :timespacer="6000000000" @end-timer="endTimer"></nut-timer>`
+        demo:`<nut-timer 
+:timespacer="6000000000" 
+@end-timer="endTimer"
+></nut-timer>`
       }
     },
     methods:{
       endTimer() {
-        console.log('倒计时结束了！！')
+        console.log('倒计时结束了！');
       }
     }
 }

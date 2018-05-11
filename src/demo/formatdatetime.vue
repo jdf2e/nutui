@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>FormatDatetime</h1>
-        <p>将时间戳或者已格式化的时间字符串转换成指定格式。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <br>
         <div><nut-formatdatetime :datetime="1280977330748" dateformat="yyyy-mm-dd hh:ii:ss"></nut-formatdatetime></div>
         <br>

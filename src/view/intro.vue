@@ -3,11 +3,11 @@
         <div class="logo"></div>
         <p>NutUI是一个基于Vue2.0的轻量级移动端组件库，大部分组件来自「京东APP」、「京东ME」、「京东M站」中的实际项目。</p>
         <h5>安装</h5>
-        <h6>1，安装nutui</h6>
-        <pre><code v-highlight>npm install @jdf2e/nutui --save</code></pre>
-        <h6>2，在项目中引入</h6>
+        <p>1，使用npm安装NutUI</p>
+        <pre><code v-highlight>npm install @nutui/nutui --save</code></pre>
+        <p>2，引用完整组件库</p>
         <pre><code v-highlight>import NutUI from '@jdf2e/nutui'</code></pre>
-        <h6>3，初始化</h6>
+        <p>3，初始化</p>
         <pre><code v-highlight>NutUI.install(Vue)</code></pre>
         <p>通过以上步骤即可完成整个NutUI组件库的安装。</p>
         <h5>自定义构建（按需引用）</h5>
@@ -28,11 +28,10 @@
 <pre><code v-highlight>this.$dialog(options);</code></pre>
 <p>提示框（Toast）组件</p>
 <pre><code v-highlight>this.$toast(msg,during);</code></pre>
-<h5>使用项目</h5>
-<p><a href="http://cf.jd.com/pages/viewpage.action?pageId=100290301" target="_blank">点击查看</a></p>
 <h5>联系我们</h5>
 <p>如果您在使用组件的过程中遇到了什么问题，或者有什么意见建议，都欢迎与我们联系：<a href="mailto:nutui@jd.com">nutui@jd.com</a></p>
-
+<h5>使用项目</h5>
+<p>如果您在项目里使用了NutUI，欢迎告知。</p>
     </div>
 </template>
 
@@ -40,7 +39,9 @@
 export default {
     data(){
         return{
-          demo1:`<nut-mask :visible.sync="true"></nut-mask>`
+          demo1:`<nut-mask 
+:visible.sync="maskShow">
+</nut-mask>`
         }
     },
     components: {
@@ -56,6 +57,9 @@ export default {
   height:120px;
   background:url(../asset/img/nutui-logo3.png) center no-repeat;
   background-size:contain;
+}
+img{
+    max-width:100%;
 }
 @media (max-width: 400px) {
     .logo{

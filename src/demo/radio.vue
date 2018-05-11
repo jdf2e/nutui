@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Radio</h1>
-        <p>单选按钮</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <!-- DEMO区域 -->
         <!-- <nut-switch :height="30" :width="60" @switch-on="switchOn" @switch-off="switchOff"></nut-switch> -->
         <h5>示例</h5>

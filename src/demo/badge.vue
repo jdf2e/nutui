@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Badge</h1>
-        <p>出现在按钮、图标旁的数字或状态标记。</p>        
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>       
 
         <p>默认用法</p>
         <nut-badge :value="12" class="item"><button>普通模式</button></nut-badge>

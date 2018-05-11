@@ -1,18 +1,22 @@
 <template>
     <div class="nut-telinput">
-    	<div class="nut-telinput-box" :style="{width:telBorderWidth,height:telBorderHeight}">
-	    	<input type="tel" name="tel" class="nut-telnum" :placeholder="placeText" v-model="telNumber" 
-	    	v-on:keydown="preNumFun(telNumber)" 
+    	<div class="nut-telinput-box" :style="{width:telBorderWidth+'rem',height:telBorderHeight+'rem'}">
+	    	<input ref="input" type="tel" name="tel" class="nut-telnum" :placeholder="placeText" v-model="telNumber"
+	    	v-on:keydown="preNumFun(telNumber)"
 	    	v-on:keyup="currNumFun(telNumber)"
 	    	maxLength="13"
 	    	/>
-	    	<b :class="['nut-clear',{'tel-hide':telhide}]" v-on:click="clearNum()" v-if="clearPic"></b>
+	    	<b :class="['nut-clear',{'tel-hide':telhide}]" v-on:click="clearNum()" v-if="clearPic"><svg>
+  <use xlink:href="#close3"></use>
+</svg></b>
     	</div>
     	<i :class="['nut-tips',{'tel-info':telinfo}]" v-if="tipsFlag && tipsPosition=='left'">{{tipsInfo}}</i>
     	<div :class="['nut-tips',{'tel-info':telinfo}]" v-if="tipsFlag && tipsPosition== 'bottom'">{{tipsInfo}}</div>
     </div>
 </template>
 <script>
+import closeIcon from '../../../asset/img/svg/close3.svg';
+
 export default {
     name:'nut-telinput',
     props: {
@@ -30,11 +34,11 @@ export default {
     	},
     	telWidth:{
     		type:String,
-    		default:'195',
+    		default:'4',
     	},
     	telHeight:{
     		type:String,
-    		default:'38',
+    		default:'1',
     	},
     	clearPic:{
     		type:Boolean,
@@ -63,7 +67,7 @@ export default {
         telBorderWidth:function(){
            let telWidth;
            if(this.telWidth.indexOf('%') == -1) {
-                telWidth = this.telWidth + 'px';
+                telWidth = this.telWidth;
            }else{
                 telWidth = this.telWidth;
            }
@@ -72,19 +76,22 @@ export default {
         telBorderHeight:function(){
            let telHeight;
            if(this.telHeight.indexOf('%') == -1) {
-                telHeight = this.telHeight + 'px';
+        
+                telHeight = this.telHeight;
            }else{
+   
                 telHeight = this.telHeight;
            }
            return telHeight;
         },
-        
+
     },
     methods: {
     	clearNum:function(){
     		this.telNumber='';
     		this.tipsFlag=false;
             this.telhide = true;
+            this.$refs.input.focus();
     		this.$emit('clear');
     	},
     	preNumFun:function(value){
@@ -103,7 +110,7 @@ export default {
 	    				this.firstVer=false;
 	    				this.tipsFlag=false;
 		    			this.$emit('pass-test',gapNum);
-                        
+
 	    			}
 	    		}else{
 	    				this.firstVer=true;
@@ -111,9 +118,9 @@ export default {
                         if(this.telNumber.length == 13){
                             this.telinfo = false;
                         }else{
-                            this.$emit('error-tel',gapNum);   
+                            this.$emit('error-tel',gapNum);
                         }
-                        
+
 	    		}
 	    		this.telhide = false;
     		}else{
@@ -145,32 +152,38 @@ export default {
 }
 </script>
 <style lang="scss">
+.nut-telinput{
 	.nut-telinput-box{
 		display: inline-block;
 		position: relative;
+		vertical-align: middle;
 	}
     .nut-telnum{
         width:100%;
-        height:100%;
-        padding-right:30px;
-        padding: 6px 10px;
+        height:1rem;
+        padding-right:0.6rem;
+        padding: 0.12rem 0.2rem;
         background-color: #fff;
         border: 1px solid #D1D1D1;
-        border-radius: 4px;
+        border-radius: 0.08rem;
+		vertical-align: top;
         box-shadow: none;
         box-sizing: border-box;
     }
     .nut-clear{
-        width:20px;
-        height: 20px;
+        width: 0.4rem;
+        height: 0.4rem;
         position: absolute;
-        right: 10px;
+        right: 0.2rem;
         top:50%;
         cursor: pointer;
-        transform: translate(0,-50%);
-        background-size:90%,90%;
-        background-repeat: no-repeat;
-        background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAMmaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzA2NyA3OS4xNTc3NDcsIDIwMTUvMDMvMzAtMjM6NDA6NDIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0M0JBNDMzNkFFN0IxMUU3QTQwMkNDOEQzRUIyNjE1MiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0M0JBNDMzN0FFN0IxMUU3QTQwMkNDOEQzRUIyNjE1MiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQzQkE0MzM0QUU3QjExRTdBNDAyQ0M4RDNFQjI2MTUyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQzQkE0MzM1QUU3QjExRTdBNDAyQ0M4RDNFQjI2MTUyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+m3Kv8AAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAB4UExURUxpcc3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1M3O1P///9HS2Pf3+PX199DR19HR1/Hy89bX3OHi5uLj5ora9soAAAAddFJOUwBYBq1M6YDqAxCW+eiSlFeTBcXs+Mb6kceBxOtN/OaQ6wAAAPRJREFUKM+F09kWgiAQBuDRQLK03NqbXLJ8/zdMY0DGrP4r5Dt4BhgATFJx2EVFEe0OIoVpwkChzSUIuXoRskSeg8sVfmS1tLrAmSyMJzibjdYtfsn2XbP8xnKoP6CPZ2mmm/ahBwGAT/vtbhV5U99aPVI+CFpSVuS91neaFBAjd1cxgTMyZ4oZOEc9OFNUsEbmTHHNuP+zrZ9YMa0r5goypveSeTZujGpmnthjsTty/Qp+rketrXn0/lDNlTzaxtlfZ65k7kLLp14c/mwHasfNz2b614p/Gnl4BpP6pDd5RKd8xPwUfryyVMRHud/LYyx8O/kCftBPhGhpEogAAAAASUVORK5CYII=');
+        transform: translateY(-50%);
+		svg{
+			width:100%;
+			color:#999;
+			height:100%;
+			vertical-align: top;
+		}
     }
     .tel-hide{
         display:none;
@@ -178,10 +191,12 @@ export default {
 	.nut-tips{
 		font-style:normal;
 		color:red;
-        font-size: 12px;
+		padding:.1rem 0;
+        font-size: 0.24rem;
+		vertical-align: middle;
 	}
     .tel-info{
         display:none;
     }
-
+}
 </style>

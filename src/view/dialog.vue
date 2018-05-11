@@ -1,15 +1,13 @@
 <template>
     <div>
-        <h1>Dialog</h1>
-        <p>一种对话框，支持按钮交互。</p>
-        <a class="button button-primary" href="/demo.html#/dialog" target="_blank">Demo</a>
+        <nut-docheader 
+        :name="$route.name"
+        :showQrCode="true"></nut-docheader>
         <h5>基本用法</h5>
-        <pre><code v-highlight>this.$dialog(options);</code></pre>
+        <nut-codebox code="this.$dialog(options);"></nut-codebox>
         <h5>示例</h5>
-        <p>自定义标题和内容</p>
-        
-        <pre><code v-highlight>@click="showDialog1"</code></pre>
-        <pre><code v-highlight>export default {
+        <h6>自定义标题和内容</h6>
+        <nut-codebox code="export default {
     methods:{
       'showDialog1'(){
             const options = {
@@ -20,11 +18,11 @@
             this.$dialog(options);
       }
     }
-}</code></pre>
-        <p>移除右上角关闭按钮、标题栏、按钮栏</p>
-                <pre><code v-highlight>@click="showDialog2" | @click="showDialog3" | @click="showDialog4"</code></pre>
-        <pre><code v-highlight>export default {
+}" imgUrl="../asset/img/demo/dialog1.png"></nut-codebox>
+        <h6>移除右上角关闭按钮、标题栏、按钮栏</h6>
+        <nut-codebox code="export default {
     methods:{
+      //移除右上角按钮
       'showDialog2':function(){
             const options = {
                     'title':'自定义Dialog标题',
@@ -34,6 +32,7 @@
 
             this.$dialog(options);
       },
+      //移除顶部标题栏
       'showDialog3':function(){
             const options = {
                     'content':'小屏或移动端浏览效果最佳',
@@ -42,6 +41,7 @@
 
             this.$dialog(options);
       },
+      //移除底部按钮栏
       'showDialog4':function(){
             const options = {
                     'title':'自定义Dialog标题',
@@ -52,22 +52,25 @@
             this.$dialog(options);
       },
     }
-}</code></pre>
-        <p>事件</p>
-        <pre><code v-highlight>export default {
+}"  :imgUrl="['../asset/img/demo/dialog2.png','../asset/img/demo/dialog3.png','../asset/img/demo/dialog4.png']"></nut-codebox>
+        <h6>事件</h6>
+        <nut-codebox code="export default {
     methods:{
       'showDialog5':function(){
             const options = {
                     'title':'自定义Dialog标题',
                     'content':'小屏或移动端浏览效果最佳',
+                    //确定按钮事件
                     'onOkBtn'(event){
                       alert('okBtn');
                       this.close(); //关闭对话框
                     },
+                    //取消按钮事件
                     'onCancelBtn'(event){
                       alert('cancelBtn');
                       //return false;  //阻止默认“关闭对话框”的行为
                     },
+                    //右上角关闭按钮事件
                     'onCloseBtn'(event){
                       alert('closeBtn');
                       //return false;  //阻止默认“关闭对话框”的行为
@@ -80,7 +83,7 @@
 
             this.$dialog(options);
       }
-}</code></pre>
+}"></nut-codebox>
 
         <h5>Options</h5>
         <div class="tbl-wrapper">
@@ -222,69 +225,17 @@
 
 <script>
 export default {
-    methods:{
-      'showDialog1':function(){
-            const options = {
-                    'title':'自定义Dialog标题',
-                    'content':'小屏或移动端浏览效果最佳'
-                  };
-
-            this.$dialog(options);
-      },
-      'showDialog2':function(){
-            const options = {
-                    'title':'自定义Dialog标题',
-                    'content':'小屏或移动端浏览效果最佳',
-                    'noCloseBtn': true
-                  };
-
-            this.$dialog(options);
-      },
-      'showDialog3':function(){
-            const options = {
-                    'content':'小屏或移动端浏览效果最佳',
-                    'noHeader': true
-                  };
-
-            this.$dialog(options);
-      },
-      'showDialog4':function(){
-            const options = {
-                    'title':'自定义Dialog标题',
-                    'content':'小屏或移动端浏览效果最佳',
-                    'noFooter': true
-                  };
-
-            this.$dialog(options);
-      },
-      'showDialog5':function(){
-            const options = {
-                    'title':'自定义Dialog标题',
-                    'content':'小屏或移动端浏览效果最佳',
-                    'onOkBtn'(event){
-                      alert('okBtn');
-                      this.close(); //关闭对话框
-                    },
-                    'onCancelBtn'(event){
-                      alert('cancelBtn');
-                      //return false;  //阻止默认“关闭对话框”的行为
-                    },
-                    'onCloseBtn'(event){
-                      alert('closeBtn');
-                      //return false;  //阻止默认“关闭对话框”的行为
-                    },
-                    'closeCallback'(target){
-                      alert('will close');
-                    }
-                  };
-
-            this.$dialog(options);
-      },
-
-
-    }
-}
+  data() {
+    return {
+      demo1: ``
+    };
+  },
+  mounted(){
+  },
+  methods: {}
+};
 </script>
 
 <style lang="scss">
+
 </style>

@@ -1,28 +1,33 @@
 <template>
     <div>
-      <h1>NumOperate</h1>
-      <p>商品数量操作控件</p>
+      <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="商品数量加减组件。" 
+        :showQrCode="true"></nut-docheader>
+      <!-- <h6>商品数量操作控件</h6> -->
       <h5>示例</h5>
-      <a class="button button-primary" href="/demo.html#/numoperate" target="_blank">Demo</a>
-      <p>默认用法</p>
+      <!-- <a class="button button-primary" href="/demo.html#/numoperate" target="_blank">Demo</a> -->
+      <h6>默认用法</h6>
       <!-- <num-operate></num-operate> -->
-      <pre><code v-highlight v-text="demo1"></code></pre>
-      <p>初始状态减号按钮置灰</p>
+      <nut-codebox :code="demo1" imgUrl="../asset/img/demo/numoperate1.png"></nut-codebox>
+      <h6>初始状态减号按钮置灰</h6>
       <!-- <num-operate :gery="isGrey"></num-operate> -->
-      <pre><code v-highlight v-text="demo2"></code></pre>
-      <pre><code v-highlight v-text="demo3"></code></pre>
-      <p>设置初始值为3</p>
+      <nut-codebox :code="demo2" imgUrl="../asset/img/demo/numoperate2.png"></nut-codebox>
+      <!-- <nut-codebox :code="demo3"></nut-codebox> -->
+      <h6>设置初始值为3</h6>
       <!-- <num-operate :init="initNum"></num-operate> -->
-      <pre><code v-highlight v-text="demo4"></code></pre>
-      <pre><code v-highlight v-text="demo5"></code></pre>
-      <p>点击增加和减少时获取当前数量</p>
+      <nut-codebox :code="demo4" imgUrl="../asset/img/demo/numoperate3.png"></nut-codebox>
+      <!-- <nut-codebox :code="demo5"></nut-codebox> -->
+      <h6>点击增加和减少时获取当前数量</h6>
       <!-- <num-operate @add="changeNum" @reduce="changeNum"></num-operate> -->
-      <pre><code v-highlight v-text="demo6"></code></pre>
-      <pre><code v-highlight v-text="demo7"></code></pre>
-      <p>设置最大值为4</p>
+      <nut-codebox :code="demo6"></nut-codebox>
+      <nut-codebox :code="demo7"></nut-codebox>
+      <h6>设置最大值为4</h6>
       <!-- <num-operate :max="maxNum"></num-operate> -->
-      <pre><code v-highlight v-text="demo8"></code></pre>
-      <pre><code v-highlight v-text="demo9"></code></pre>
+      <nut-codebox :code="demo8" imgUrl="../asset/img/demo/numoperate4.png"></nut-codebox>
+      <!-- <nut-codebox :code="demo9"></nut-codebox> -->
       <!-- <num-add :setGery="isGrey"  @add="changeNum" :setMax="maxNum" @reduce="changeNum" :setInit="initNum"></num-add> -->
 
       <h5>Props</h5>
@@ -98,46 +103,23 @@ export default {
     data(){
       return{
         demo1:`<num-operate></num-operate>`,
-        demo2:`<num-operate :gery="isGrey"></num-operate>`,
-        demo3:`export default {
-  data(){
-    return{
-      isGrey:true,
-    }
-  },
-}`,
-        demo4:`<num-operate :init="initNum"></num-operate>`,
-        demo5:`export default {
-  data(){
-    return{
-      initNum:3,
-    }
-  },
-}`,
+        demo2:`<num-operate :gery="true"></num-operate>`,
+        demo4:`<num-operate :init="3"></num-operate>`,
         demo6:`<num-operate @add="changeNum" @reduce="changeNum"></num-operate>`,
         demo7:`export default {
   data(){
     return{
-      resNum:0,
+      resNum:0
     }
   },
   methods:{
     changeNum(num){
       this.resNum = num;
       alert(this.resNum);
-    },
-  },
-
-}`,
-        demo8:`<num-operate :max="maxNum"></num-operate>`,
-        demo9:`export default {
-  data(){
-    return{
-      maxNum:4,
     }
-  },
-
+  }
 }`,
+        demo8:`<num-operate :max="4"></num-operate>`,
         resNum:0,
         maxNum:4,
         isGrey:true,

@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Drag</h1>
-        <p>一种Icon拖动吸边组件。(请在手机上查看)</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <!-- DEMO区域 -->
         <nut-drag :direction="direction"
                   :boundary="boundary"

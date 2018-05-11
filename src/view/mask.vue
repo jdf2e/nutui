@@ -1,11 +1,15 @@
 <template>
     <div>
-        <h1>Mask</h1>
-        <p>通用遮罩层，通常被其他组件依赖，亦可单独使用。</p>
-        <nut-mask :visible.sync="maskShow" @open-mask="maskOpen" @close-mask="maskClose"></nut-mask>
-        <a class="button button-primary" href="javascript:;" @click="maskShow = true">Demo</a>
-        <pre><code v-highlight v-text="demo"></code></pre>
-        <pre><code v-highlight>export default {
+        <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="通用遮罩层，通常被其他组件依赖，亦可单独使用。" 
+        :showQrCode="true"></nut-docheader>
+
+        <h5>示例</h5>
+        <nut-codebox :code="demo"></nut-codebox>
+        <nut-codebox code="export default {
     data(){
         return{
           maskShow:false
@@ -19,7 +23,7 @@
         console.log('maskClose方法执行了');
       }
     }
-}</code></pre>
+}"></nut-codebox>
 
         <h5>Props</h5>
         <div class="tbl-wrapper">
@@ -98,7 +102,11 @@
 export default {
   data() {
     return {
-      demo: `<nut-mask :visible.sync="maskShow" @open-mask="maskOpen" @close-mask="maskClose"></nut-mask>`,
+      demo: `<nut-mask 
+:visible.sync="maskShow" 
+@open-mask="maskOpen" 
+@close-mask="maskClose"
+></nut-mask>`,
       maskShow: false
     };
   },

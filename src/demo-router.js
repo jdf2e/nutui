@@ -27,12 +27,14 @@ const routes = [
 //组件示例页面
 Conf.packages.map(item => {
   if (item.showDemo === false) return;
+  const pkgName =  item.name.toLowerCase()
   routes.push({
-    path: '/' + item.name.toLowerCase(),
+    path: '/' + item.name,
     components: {
-      main: () => import('./demo/' + item.name.toLowerCase() + '.vue'),
+      main: () => import('./demo/' + pkgName + '.vue'),
       demonav: DemoNav
-    }
+    },
+    name:item.name
   });
 });
 

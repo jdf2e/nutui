@@ -78,6 +78,12 @@ export default {
                 formData.append(key, this.attach[key]);
             }
             opt.formData = formData;
+
+            opt.showMsgFn = (msg)=>{
+                this.$emit('showMsg',msg); 
+                console.log(msg);
+            }
+
             new Uploader(opt);
         }
     }

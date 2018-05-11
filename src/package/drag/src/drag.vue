@@ -7,11 +7,11 @@
 export default {
 	name:'nut-drag',
 	props: {
-		'isSide':{ 
+		'isSide':{
 			type: Boolean,
 			default: true
 		},
-		'unit': { 
+		'unit': {
 			type: String,
 			default: 'px'
 		},
@@ -19,7 +19,7 @@ export default {
 			type: String,
 			default: 'h'
 		},
-		'width': { 
+		'width': {
 			type: [Number,String],
 			default: 50
 		},
@@ -31,14 +31,14 @@ export default {
 			type: [Number,String],
 			default: 11
 		},
-		'opacity': { 
+		'opacity': {
 			type: [Number,String],
 			default: 1
 		},
-		'boundary':{ 
+		'boundary':{
 			type: Object,
 			default: function(){
-				return  { 
+				return  {
 					top:0,
 					left:0,
 					right:0,
@@ -69,7 +69,7 @@ export default {
 		};
 	},
 	methods: {
-		getElementInfo(){ 
+		getElementInfo(){
 			let el = document.querySelector('.nut-drag');
 			let domElem = document.documentElement;
 			this.elWidth = el.offsetWidth;
@@ -79,8 +79,8 @@ export default {
 			let distance = this.screenWidth - this.elWidth - el.offsetLeft;
 			el.style.zIndex = this.zIndex;
 			el.style.opacity = this.opacity;
-			el.style.width = this.width + this.unit;; 
-			el.style.height = this.height + this.unit;; 
+			el.style.width = this.width + this.unit;;
+			el.style.height = this.height + this.unit;;
 			if (this.boundary.left != 0) {
 				el.style.left = this.boundary.left + this.unit;
 			}else{
@@ -90,9 +90,9 @@ export default {
 				el.style.top = this.boundary.top + this.unit;
 			}else{
 				el.style.bottom = this.boundary.bottom + this.unit;
-			}		
+			}
 		},
-		touchStart(e){ 
+		touchStart(e){
 			let target = e.currentTarget;
 			this.startTime = new Date();
 			this.startTop = target.offsetTop;
@@ -100,11 +100,11 @@ export default {
 			target.addEventListener('touchmove', this.touchMove, false);
 			target.addEventListener('touchend', this.touchEnd, false);
 		},
-		touchMove(e){  
+		touchMove(e){
 			e.preventDefault();
 			let target = e.currentTarget;
 			if (e.targetTouches.length == 1) {
-				let touch = e.targetTouches[0]; 
+				let touch = e.targetTouches[0];
 				let currX = touch.clientX;
 				let currY = touch.clientY;
 				let rightLocation = this.screenWidth - this.elWidth - this.boundary.right;
@@ -123,10 +123,10 @@ export default {
 				}
 				if(this.direction!='v'){
 					target.style.top = currY - this.elHeight/2 + this.unit;
-				}	
+				}
 			}
 		},
-		touchEnd(e){ 
+		touchEnd(e){
 			e.preventDefault();
 			let target = e.currentTarget;
 			this.endTime = new Date();
@@ -169,17 +169,17 @@ export default {
 				}
 			}
 			if(this.direction!='h' && Math.abs(distanceX)>20){
-				target.style.left = currX  + this.unit;  
+				target.style.left = currX  + this.unit;
 			}
 			if(this.direction!='v' && Math.abs(distanceY)>20){
 				target.style.top = currY - this.elHeight/2 + this.unit;
-			}  
+			}
 		}
 	},
 	mounted(){
 		this.$nextTick( () => {
 			this.getElementInfo();
-		})		
+		})
 	}
 }
 </script>

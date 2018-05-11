@@ -1,18 +1,29 @@
 <template>
     <div>
-        <h1>RadioGroup</h1>
-        <p>单项选择数组，多用于单选题</p>
+        <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="单选按钮组。" 
+        :showQrCode="true"></nut-docheader>
         
         <h5>示例</h5>
-        <p>默认用法</p>
+        <h6>默认用法</h6>
         <nut-radiogroup :data="data1"></nut-radiogroup>
-        <pre><code v-highlight v-text="demo1"></code></pre>
-        <p>回调事件</p>
+        <nut-codebox :code="demo1"></nut-codebox>        
+        <nut-codebox :code="demo11"></nut-codebox>        
+        <!-- <pre><code v-highlight v-text="demo1"></code></pre> -->
+        <h6>回调事件</h6>
         <nut-radiogroup :data="data2" :inline="true" @radio-check="radioChecked"></nut-radiogroup>
-        <pre><code v-highlight v-text="demo2"></code></pre>
-        <p>禁用选项</p>
+        <nut-codebox :code="demo2"></nut-codebox>        
+        <nut-codebox :code="demo22"></nut-codebox>        
+        <!-- <pre><code v-highlight v-text="demo2"></code></pre> -->
+        <h6>禁用选项</h6>
         <nut-radiogroup :className="'radiolist'" :data="data3" @radio-check="radioChecked2"></nut-radiogroup>
-        <pre><code v-highlight v-text="demo3"></code></pre>
+        <nut-codebox :code="demo3"></nut-codebox>
+        <nut-codebox :code="demo33"></nut-codebox>
+        
+        <!-- <pre><code v-highlight v-text="demo3"></code></pre> -->
         
         <h5>Props</h5>
         <div class="tbl-wrapper">
@@ -93,57 +104,63 @@ export default {
                 {id:44,name:'test2',value:'乒乓球',disabled:true},
                 {id:55,name:'test2',value:'排球'}
             ],
-            demo1:`<nut-radiogroup :data="data1"></nut-radiogroup>
-data(){
-    return{
-        data1:[
-            {id:1,name:'test1',value:1},
-            {id:2,name:'test1',value:2},
-            {id:3,name:'test1',value:3},
-            {id:4,name:'test1',value:4},
-            {id:5,name:'test1',value:5}
-        ],
+            demo1:`<nut-radiogroup :data="data1"></nut-radiogroup>`,
+            demo11:`export default {
+    data(){
+        return{
+            data1:[
+                {id:1,name:'test1',value:1},
+                {id:2,name:'test1',value:2},
+                {id:3,name:'test1',value:3},
+                {id:4,name:'test1',value:4},
+                {id:5,name:'test1',value:5}
+            ]
+        }
     }
-},`,
+}`,
             demo2:`<nut-radiogroup 
 :data="data2" 
 :inline="true"
 @radio-check="radioChecked">
-</nut-radiogroup>
-data(){
-  return{
-      data2:[
-          {id:10,name:'test',value:'是',checked:true},
-          {id:12,name:'test',value:'否'},
-      ],
-  }
-},
-methods:{
-    radioChecked(item,index,event){
-        alert(item.value);
+</nut-radiogroup>`,
+            demo22:`export default {
+    data(){
+        return{
+            data2:[
+                {id:10,name:'test',value:'是',checked:true},
+                {id:12,name:'test',value:'否'},
+            ]
+        }
+    },
+    methods:{
+        radioChecked(item,index,event){
+            alert(item.value);
+        }
     }
 }`,
             demo3:`<nut-radiogroup 
 :className="'radiolist'" 
 :data="data3" 
 @radio-check="radioChecked2">
-</nut-radiogroup>
-data(){
-  return{
-      data3:[
-          {id:11,name:'test2',value:'足球'},
-          {id:22,name:'test2',value:'篮球',checked:true},
-          {id:33,name:'test2',value:'羽毛球'},
-          {id:44,name:'test2',value:'乒乓球',disabled:true},
-          {id:55,name:'test2',value:'排球'}
-      ],
-  }
-},
-methods:{
-    radioChecked2(item,index,event){
-        console.log(item,index,event);
+</nut-radiogroup>`,         
+            demo33:`export default {
+    data(){
+        return{
+            data3:[
+                {id:11,name:'test2',value:'足球'},
+                {id:22,name:'test2',value:'篮球',checked:true},
+                {id:33,name:'test2',value:'羽毛球'},
+                {id:44,name:'test2',value:'乒乓球',disabled:true},
+                {id:55,name:'test2',value:'排球'}
+            ]
+        }
+    },
+    methods:{
+        radioChecked2(item,index,event){
+            console.log(item,index,event);
+        }
     }
-}`,     
+}`
         }
     },
     components: {

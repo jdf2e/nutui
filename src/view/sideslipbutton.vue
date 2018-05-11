@@ -1,11 +1,15 @@
 <template>
     <div>
-        <h1>SideslipButton</h1>
-        <p>左划展示操作按钮，例如删除、收藏等按钮。</p>
-        <a class="button button-primary" href="/demo.html#/sideslipbutton" target="_blank">Demo</a>
-        <!-- DEMO区域 -->
+        <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="左划展示操作按钮，例如删除、收藏等按钮。" 
+        :showQrCode="true"></nut-docheader>
         <!-- DEMO代码 -->
-        <pre><code v-highlight v-text="demo"></code></pre>
+        <h5>示例</h5>
+        <nut-codebox :code="demo" imgUrl="../asset/img/demo/sideslipbutton.jpg"></nut-codebox>
+        
         <h5>Props</h5>
         <div class="tbl-wrapper">
           <table class="u-full-width">
@@ -72,7 +76,7 @@
 export default {
     data(){
         return{
-            demo: `<nut-sideslipbutton @slide-left="slideLeft" @slide-right="slideRight" @slide-no="slideNo">
+            demo: `<nut-sideslipbutton @slide-left="slideLeft" @slide-right="slideRight" @slide-no="slideNo" :during="0.5">
     <div slot="slidedom" class="slidedom">
         <div class="addr">
             <p class="name-mobile">159****8888</p>

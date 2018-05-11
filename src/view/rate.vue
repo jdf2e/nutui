@@ -1,16 +1,20 @@
 <template>
     <div>
-        <h1>Rate</h1>
-        <p>评分组件，可以配置ICON，默认为五角星</p>
+        <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="评分组件，支持配置ICON。" 
+        :showQrCode="true"></nut-docheader>
         <!-- DEMO区域 -->
-        <h5><a class="button button-primary" href="/demo.html#/rate" target="_blank">demo</a></h5>
-        <p>默认用法</p>
-
-        <pre><code v-highlight v-text="demo1"></code></pre>
-        <p>可配置图片路径，需同时配置图片的高度和宽度</p>
+        <!-- <h5><a class="button button-primary" href="/demo.html#/rate" target="_blank">demo</a></h5> -->
+        <h6>默认用法</h6>
+        <nut-codebox :code="demo1"  imgUrl="../asset/img/demo/rate1.png"></nut-codebox>
+        <!-- <pre><code v-highlight v-text="demo1"></code></pre> -->
+        <h6>可配置图片路径，需同时配置图片的高度和宽度</h6>
         <!-- DEMO代码 -->
-        
-        <pre><code v-highlight v-text="demo2" ></code></pre>
+        <nut-codebox :code="demo2"  imgUrl="../asset/img/demo/rate2.png"></nut-codebox>
+        <!-- <pre><code v-highlight v-text="demo2" ></code></pre> -->
         <h5>Props</h5>
         <div class="tbl-wrapper">
             <table class="u-full-width">
@@ -49,14 +53,14 @@
                   <td>picHeight</td>
                   <td>评分图片的高度,单位rem</td>
                   <td>Number</td>
-                  <td>0.31</td>
+                  <td>0.5</td>
                   <td>--</td>
                 </tr>
                 <tr>
                   <td>picWidth</td>
                   <td>评分图片的宽度，单位rem</td>
                   <td>Number</td>
-                  <td>0.32</td>
+                  <td>0.5</td>
                   <td>--</td>
                 </tr>
                 <tr>
@@ -95,11 +99,18 @@
 export default {
     data(){
         return{
-            demo1:
-`<nut-rate :num="5"   @changeRate="changeRate"></nut-rate>`,
-            demo2:
-`<nut-rate :num="10"  :currValue="2" originalPath="初始图片路径" 
-:picWidth="0.32" :picHeight="0.31" activePath="激活图片路径" @change-rate="changeRate"></nut-rate>`
+            demo1:`<nut-rate 
+:num="5"
+:currValue="3" 
+></nut-rate>`,
+            demo2:`<nut-rate 
+:num="10"  
+:currValue="4" 
+originalPath="初始图片路径" 
+:picWidth="0.32" 
+:picHeight="0.31" 
+activePath="激活图片路径" 
+></nut-rate>`
         }
         
     },

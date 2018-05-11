@@ -1,7 +1,8 @@
 <template>
     <div>
-      <h1>NumOperate</h1>
-      <p>商品数量操作控件</p>
+      <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
       <p>默认用法</p>
       <num-operate></num-operate>
       <p>初始状态减号按钮置灰</p>

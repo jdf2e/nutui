@@ -1,37 +1,26 @@
 <template>
     <div>
-        <h1>Telinput</h1>
-        <p>带有间隔的电话输入框，支持自定义间隔位数，带有基本电话校验。</p>
+      <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="电话号码输入框，支持自定义间隔位数，支持基本电话号码校验。" 
+        :showQrCode="true"></nut-docheader>
         <!-- DEMO区域 -->
         <!-- <nut-switch :height="30" :width="60" @switch-on="switchOn" @switch-off="switchOff"></nut-switch> -->
         <h5>示例</h5>
-        <p>默认用法</p>
-        <nut-telinput></nut-telinput>
-        <pre><code v-highlight v-text="demo1"></code></pre>
-        <p>自定义输入框宽高、带有清除按钮</p>
-        <nut-telinput 
-          telWidth="50%" 
-          telHeight="50" 
-          :clearPic="true"
-        ></nut-telinput>
-        <pre><code v-highlight v-text="demo2"></code></pre>
-        <p>增加回调函数，且提示信息位置在输入框下面</p>
-        <nut-telinput 
-        :gapone="3" 
-        :gapsec="7" 
-        telWidth="250" 
-        telHeight="50" 
-        :clearPic="true"
-        tipsInfo="请输入正确的电话号码"
-        placeText="请输入自定义文案"
-        tipsPosition="bottom"
-        class="input-telnum"
-        @pass-test="passTest"
-        @clear="clear"
-        @error-tel="errorTel"
-        ></nut-telinput>
-        <pre><code v-highlight v-text="demo3"></code></pre>
-        <pre><code v-highlight v-text="demo5"></code></pre>
+        <h6>默认用法</h6>
+        
+        <nut-codebox code="<nut-telinput></nut-telinput>" :imgUrl="['../asset/img/demo/telinput1.png']"></nut-codebox>        
+        <!-- <pre><code v-highlight v-text="demo1"></code></pre> -->
+        <h6>自定义输入框宽高、带有清除按钮</h6>
+        
+        <nut-codebox :code="demo2" :imgUrl="['../asset/img/demo/telinput2.png']"></nut-codebox>        
+        
+        <h6>增加回调函数，且提示信息位置在输入框下面</h6>
+       
+        <nut-codebox :code="demo3" :imgUrl="['../asset/img/demo/telinput3.png']"></nut-codebox>        
+        <nut-codebox :code="demo5"></nut-codebox>        
         <h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
@@ -63,14 +52,14 @@
               <td>telWidth</td>
               <td>输入框的宽度，支持数字和百分比</td>
               <td>String</td>
-              <td>195(单位px)</td>
+              <td>4(单位rem)</td>
               <td>--</td>
             </tr>
             <tr>
               <td>telHeight</td>
               <td>输入框的高度，支持数字和百分比</td>
               <td>String</td>
-              <td>38(单位px)</td>
+              <td>1(单位rem)</td>
               <td>--</td>
             </tr>
             <tr>
@@ -147,15 +136,15 @@ export default {
           demo2:
 `<nut-telinput 
   telWidth="50%" 
-  telHeight="50" 
+  telHeight="1" 
   :clearPic="true"
 ></nut-telinput>`,
           demo3:
 `<nut-telinput 
 :gapone="3" 
 :gapsec="7" 
-telWidth="250"
-telHeight="50" 
+telWidth="4"
+telHeight="1" 
 :clearPic="true"
 tipsInfo="请输入正确的电话号码"
 placeText="请输入自定义文案"

@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>InfiniteLoading</h1>
-        <p>无限加载，多用于列表页面，当数据条数过多时，滑动到屏幕底部，加载下一页数据。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <nut-infiniteloading @on-refresh="onRefresh" @on-infinite="onInfinite" :noMore="noMore">
             <div v-for="item in resultList" class="item-li">{{item}}</div>
         </nut-infiniteloading>

@@ -1,25 +1,16 @@
 <template>
     <div>
-        <h1>Handle</h1>
-        <p>项目中用到过相关处理处理的方法这个是vue的过滤器，也可以单独用里面的函数过滤。</p>       
-        <!-- DEMO代码 -->
-        <pre>
-          <code v-highlight>//直接用
-var b=[1,7,9,3,4,5,6];
-nut_handle(b).min()//数组最小值
-//当指令用
-&lt;span
-  message2 | nut_handle({
-    name:'like',
-    option:{
-      key:'name',
-      value:'l',
-      replaceStr:'李'
-      }
-  }) 
-&gt;
-&lt;/span&gt;</code>
-        </pre>
+        <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Filter" 
+        desc="用来处理数据的过滤器" 
+        :showQrCode="true"></nut-docheader>     
+        <h5>示例</h5>       
+        <h6>过滤器使用例子取最小值</h6>  
+        <nut-codebox :code="demo1"></nut-codebox>
+        <h6>模糊查询</h6> 
+        <nut-codebox :code="demo2"></nut-codebox>
         <h5>Options</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
@@ -124,29 +115,6 @@ nut_handle(b).min()//数组最小值
           </tbody>
         </table>
         </div>
-        <div>例子1：{{message}}</div>
-        <br>
-        <span >最小值：{{message | 
-          nut_handle({
-            name:'min'
-          })  
-        }}</span>
-        <br>
-        <span>去重：{{message | 
-          nut_handle({
-            name:'arycutRepeat'
-          })
-        }}</span>
-        <div>例子2：{{message2}}</div>
-        <br>
-        <span>模糊匹配{{message2 | nut_handle({
-          name:'like',
-          option:{
-            key:'name',
-            value:'l',
-            replaceStr:'李'
-           }
-        })}}</span>
   </div>
   
    <!--  //-->
@@ -158,6 +126,8 @@ nut_handle(b).min()//数组最小值
  export default {
     data(){
         return{
+        demo1:'<span >最小值：{{message | nut_handle({ name:"min"})}}</span>',
+        demo2:"<span>模糊匹配{{message2 | nut_handle({name:'like', option:{ key:'name', value:'l',replaceStr:'李'}})}}</span>",
         message:[1,2,2,3,3,4,6,7],
         message2: [{
           name:"lilinsen",

@@ -1,18 +1,24 @@
 <template>
     <div>
-        <h1>Select</h1>
-        <p>从页面底部弹出的select选择器，支持多级选择及异步请求的多级选择</p>
+        <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="下拉选择面板，从页面底部弹出，支持多级联动选择及异步请求。" 
+        :showQrCode="true"></nut-docheader>
+        <!-- <p>从页面底部弹出的select选择器，支持多级选择及异步请求的多级选择</p> -->
 
-        <a class="button button-primary" href="/demo.html#/select" target="_blank">Demo</a>
-
-        <pre><code v-highlight>{{demo1.txt}}</code></pre>
-        <pre><code v-highlight>export default {
-  methods:{
-    demo1Change(val) {
-      this.demo1.selected = val.join('-');
-    }
-  }
-}</code></pre>
+        <!-- <a class="button button-primary" href="/demo.html#/select" target="_blank">Demo</a> -->
+        <h5>示例</h5>
+        <h6>默认用法</h6>
+        <nut-codebox :code="demo.code1" :imgUrl="['../asset/img/demo/select1.png']"></nut-codebox>
+        <nut-codebox :code="demo.code11"></nut-codebox>
+        <h6>显示内容自定义Slot</h6>
+        <nut-codebox :code="demo.code2" :imgUrl="['../asset/img/demo/select2.png']"></nut-codebox>
+        <nut-codebox :code="demo.code22"></nut-codebox>
+        <h6>异步加载</h6>
+        <nut-codebox :code="demo.code3" :imgUrl="['../asset/img/demo/select3.png']"></nut-codebox>
+        <nut-codebox :code="demo.code33"></nut-codebox>
 
         <h5>Props</h5>
         <div class="tbl-wrapper">
@@ -137,16 +143,83 @@ import Vue from 'vue';
 export default {
     data(){
         return{
-          demo1: {
-            txt: `<nut-select class="demo1-select" 
+          demo:{
+            code1: `<nut-select class="demo1-select" 
 :selected="demo1.selected" 
 :data="demo1.data" 
 @change="demo1Change">
     {{demo1.selected}}
-</nut-select>
-`
-          },
+</nut-select>`,
+          code11:`export default {
+    data(){
+        return{
+          demo1: {
+              data: [
+                {"n": "北京", "s": [{"n": "海淀区"},{"n": "通州区"}]},
+                {"n": "上海", "s": [{"n": "浦东新区"},{"n": "其他区"}]},
+                {"n": "河北省", "s": [{"n": "石家庄市", "s": [{"n": "城东区"},{"n": "城西区"}]},{"n":"秦皇岛市"}]},
+                {"n": "上海", "s": [{"n": "浦东新区"},{"n": "其他区"}]},
+                {"n": "上海", "s": [{"n": "浦东新区"},{"n": "其他区"}]},
+                {"n": "上海", "s": [{"n": "浦东新区"},{"n": "其他区"}]},
+                {"n": "上海", "s": [{"n": "浦东新区"},{"n": "其他区"}]},
+                {"n": "上海", "s": [{"n": "浦东新区"},{"n": "其他区"}]},
+                {"n": "上海", "s": [{"n": "浦东新区"},{"n": "其他区"}]}
+              ],
+              selected: '河北省-石家庄市-城东区'
+          }
         }
+    }   
+}`,
+          code2: `
+          <nut-select
+  :selected="demo2.selected" 
+  :data="demo2.data"
+  @change="demo2Change"
+  class="demo-select">
+  <slot><a class="button button-primary">{{demo2.selected}}</a></slot>
+</nut-select>`,
+        code22:`export default {
+    data(){
+        return{
+            demo2: {
+                selected: '2018-11',
+                data: [
+                    {"n":"2017","s":[{"n":"1"},{"n":"2"},{"n":"3"},{"n":"4"},{"n":"5"},{"n":"6"},{"n":"7"},{"n":"8"},{"n":"9"},{"n":"10"},{"n":"11"},{"n":"12"}]},
+                    {"n":"2018","s":[{"n":"1"},{"n":"2"},{"n":"3"},{"n":"4"},{"n":"5"},{"n":"6"},{"n":"7"},{"n":"8"},{"n":"9"},{"n":"10"},{"n":"11"},{"n":"12"}]},
+                    {"n":"2019","s":[{"n":"1"},{"n":"2"},{"n":"3"},{"n":"4"},{"n":"5"},{"n":"6"},{"n":"7"},{"n":"8"},{"n":"9"},{"n":"10"},{"n":"11"},{"n":"12"}]},
+                    {"n":"2020","s":[{"n":"1"},{"n":"2"},{"n":"3"},{"n":"4"},{"n":"5"},{"n":"6"},{"n":"7"},{"n":"8"},{"n":"9"},{"n":"10"},{"n":"11"},{"n":"12"}]},
+                    {"n":"2021","s":[{"n":"1"},{"n":"2"},{"n":"3"},{"n":"4"},{"n":"5"},{"n":"6"},{"n":"7"},{"n":"8"},{"n":"9"},{"n":"10"},{"n":"11"},{"n":"12"}]},
+                    {"n":"2022","s":[{"n":"1"},{"n":"2"},{"n":"3"},{"n":"4"},{"n":"5"},{"n":"6"},{"n":"7"},{"n":"8"},{"n":"9"},{"n":"10"},{"n":"11"},{"n":"12"}]},
+                    {"n":"2023","s":[{"n":"1"},{"n":"2"},{"n":"3"},{"n":"4"},{"n":"5"},{"n":"6"},{"n":"7"},{"n":"8"},{"n":"9"},{"n":"10"},{"n":"11"},{"n":"12"}]}
+                ]
+            }
+        }
+    }   
+}`,
+    code3: `    
+<nut-select
+  :selected="demo3.selected" 
+  :data="demo3.data"
+  :async = true
+  @change="demo3Change"
+  @slideEnd="slideEnd"
+  class="demo-select">
+  <slot><a class="button button-primary">{{demo3.selected}}</a></slot>
+</nut-select>`,
+    code33:`export default {
+    data(){
+        return{
+            demo3: {
+              selected: '1',
+              data: [
+                {"n":"1"},{"n":"2"},{"n":"3"},{"n":"4"},{"n":"5"},{"n":"6"}
+              ]
+            }
+        }
+    }   
+}`,
+    }
+    }
     },
     methods:{
     }

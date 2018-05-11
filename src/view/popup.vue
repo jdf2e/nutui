@@ -1,15 +1,32 @@
 <template>
     <div>
-        <h1>Popup</h1>
-        <p>可自定义内容的弹窗框</p>
+        <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="弹出面板，可自定义内容，通常作为基础组件被其他组件依赖。" 
+        :showQrCode="true"></nut-docheader>
+        <!-- <p>可自定义内容的弹窗框</p> -->
         
         <!-- <a class="button button-primary" href="javascript:;" @click="popupDemo1">Demo</a> -->
-        <a class="button button-primary" href="/demo.html#/Popup" target="_blank">Demo</a>
+        <!-- <a class="button button-primary" href="/demo.html#/Popup" target="_blank">Demo</a> -->
         <!-- DEMO区域 -->
         <!-- <nut-switch :height="30" :width="60" @switch-on="switchOn" @switch-off="switchOff"></nut-switch> -->
         <!-- DEMO代码 -->
-        <pre><code v-highlight v-text="demo">
-        </code></pre>
+        <h5>示例</h5>
+        <h6>footer含两个操作按钮</h6>
+        <nut-codebox :code="demo1" :imgUrl="['../asset/img/demo/popup1.png']"></nut-codebox>
+        <h6>footer仅有一个按钮</h6>
+        <nut-codebox :code="demo2" :imgUrl="['../asset/img/demo/popup2.png']"></nut-codebox>
+        <h6>header含有两个操作按钮</h6>
+        <nut-codebox :code="demo3" :imgUrl="['../asset/img/demo/popup3.png']"></nut-codebox>
+        <h6>仅含有关闭按钮</h6>
+        <nut-codebox :code="demo4" :imgUrl="['../asset/img/demo/popup4.png']"></nut-codebox>
+        <h6>默认示例</h6>
+        <nut-codebox :code="demo5" :imgUrl="['../asset/img/demo/popup5.png']"></nut-codebox>
+        <nut-codebox :code="demo6"></nut-codebox>
+        <!-- <pre><code v-highlight v-text="demo">
+        </code></pre> -->
         <h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
@@ -177,7 +194,104 @@
 export default{
   data() {
     return {
-      demo: `<nut-popup :popupVisible.sync="variable"></nut-popup>  `
+      demo1: `<nut-popup 
+:popupVisible.sync="visible1" 
+:configItems="popup[0]" 
+@cancel-btn-click="cancelBtnFn" 
+@ok-btn-click="okBtnFn" 
+@close-popup="closeMask">
+</nut-popup>`,
+      demo2: `<nut-popup 
+:popupVisible.sync="visible2" 
+:configItems="popup[1]" 
+@onlyone-btn-click="onlyOneBtnFn">
+</nut-popup>`,
+      demo3: `<nut-popup 
+:popupVisible.sync="visible3" 
+:configItems="popup[2]" 
+@cancel-click="cancelFn" 
+@ok-click="okFn">
+</nut-popup>`,
+      demo4: `<nut-popup 
+:popupVisible.sync="visible4" 
+:configItems="popup[3]">
+</nut-popup>`,
+      demo5: `<nut-popup 
+:popupVisible.sync="visible5" 
+:configItems="{}">
+</nut-popup>`,
+      demo6: `
+export default {
+    data(){
+        return{
+          visible1: false,
+          visible2: false,
+          visible3: false,
+          visible4: false,
+          visible5: false,
+          popup: [
+            {
+              randomId: '0',
+              hasCloseBtn: true,
+              btnAmount: 2,
+              popupHeight: {
+                height: '100px'
+              },
+              cancelAutoClose: false
+            },
+            {
+              hasCloseBtn: true,
+              btnAmount: 1
+            },
+            {
+              hasCloseBtn: false,
+              popupFooterVisible: false
+            },
+            {
+              hasCloseBtn: true,
+              popupFooterVisible: false
+            }
+          ]
+        }
+    },
+    methods:{
+      popupDemo1() {
+        this.visible1 = true;
+      },
+      popupDemo2() {
+        this.visible2 = true;
+      },
+      popupDemo3() {
+        this.visible3 = true;
+      },
+      popupDemo4() {
+        this.visible4 = true;
+      },
+      popupDemo5() {
+        this.visible5 = true;
+      },
+      cancelBtnFn(e) {
+        console.log(e.target);
+      },
+      okBtnFn(e) {
+        console.log(e.target);
+      },
+      onlyOneBtnFn(e) {
+        console.log('onlyOneBtnFn')
+      },
+      cancelFn(e) { 
+        console.log('cancelFn');
+      },
+      okFn(e) {
+        console.log('okFn');
+      },
+      closeMask(e) {
+        console.log('closePopup');
+        this.visible1 = false;
+      }
+    }
+}
+      `
     }
   }
 }

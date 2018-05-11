@@ -8,12 +8,12 @@ var autoprefixer = require('autoprefixer');
 var webpackConfig = module.exports = {};
 
 webpackConfig.entry = {
-    nutui:'./src/nutui-custom.js'
+    nutui: './src/nutui-custom.js'
 };
 
 webpackConfig.output = {
     path: path.resolve(__dirname, 'dist'),
-    publicPath:"/",
+    publicPath: "/",
     filename: 'nutui.js',
     library: 'nutui',
     libraryTarget: 'umd',
@@ -23,16 +23,19 @@ webpackConfig.output = {
 webpackConfig.module = {
     rules: [{
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader', 'postcss-loader' ]
+        use: ['style-loader', 'css-loader', 'postcss-loader']
     }, {
         test: /\.scss$/,
-        use: [ 'style-loader', 'css-loader', 'sass-loader', 'postcss-loader' ]
+        use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
     }, {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
             postcss: [autoprefixer()]
         }
+    }, {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader'
     }, {
         test: /\.js$/,
         loader: 'babel-loader',
@@ -47,11 +50,6 @@ webpackConfig.module = {
     }, ]
 };
 
-/* webpackConfig.resolve = {
-    alias: {
-        'vue$': 'vue/dist/vue.common.js'
-    }
-}; */
 
 webpackConfig.externals = {
     'vue': {
@@ -63,22 +61,27 @@ webpackConfig.externals = {
 };
 
 webpackConfig.plugins = [
+    new webpack.LoaderOptionsPlugin({
+        minimize: false
+    }),
     new webpack.optimize.UglifyJsPlugin({
-        compress: false
+        ecma: 6,
+        compress: {
+            warnings: false
+        }
     }),
     new webpack.BannerPlugin('NutUI v' + config.version + ' ' + new Date().toString())
 ];
 
-    webpackConfig.devtool = '#cheap-module-source-map';
-    webpackConfig.plugins = (webpackConfig.plugins || []).concat([
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"'
-            },
-            'CONFIG':config
-        }),
-        new webpack.LoaderOptionsPlugin({
-            minimize: false
-        })
-    ])
-
+webpackConfig.devtool = '#cheap-module-source-map';
+webpackConfig.plugins = (webpackConfig.plugins || []).concat([
+    new webpack.DefinePlugin({
+        'process.env': {
+            NODE_ENV: '"production"'
+        },
+        'CONFIG': config
+    }),
+    new webpack.LoaderOptionsPlugin({
+        minimize: false
+    })
+]);

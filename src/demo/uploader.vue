@@ -1,12 +1,11 @@
 <template>
     <div>
-        <h1>Uploader</h1>
-        <p>文件异步上传组件，支持预览本地图片。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <div id="previewBox" v-html="preview"></div>
         <div id="progressBox">{{ progress }}</div>
-        <nut-uploader url="" :preview="true" @start="uploadStart" @progress="uploadProgress" @success="uploadSuccess" @failure="uploadFailure" @preview="uploadPreview"></nut-uploader>
-       
-
+        <nut-uploader url="" :preview="true" @start="uploadStart" @progress="uploadProgress" @success="uploadSuccess" @failure="uploadFailure" @preview="uploadPreview" @showMsg="errTip"></nut-uploader>
     </div>
 </template>
 
@@ -35,6 +34,9 @@ export default {
       },
       uploadFailure(file, responseTxt){
         alert('上传失败！');
+      },
+      errTip(msg){
+        alert(msg);
       }
     }
 }

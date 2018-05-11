@@ -1,34 +1,36 @@
 <template>
     <transition name="nut-mask-fade">
         <!-- <div class="nut-mask" @click="modalClick" :class="[customClass]" v-show="visible"><slot></slot></div> -->
-        <div class="nut-gotop" v-show="visible" :style="{bottom:bottom+'px',right:right+'px'}" :screenNum="screenNum">
-            <a href="javascript:;" class="nut-gotop-item" @click="goTop"><!-- Top -->
-               <svg>
-                    <line x1="10" y1="8" x2="20" y2="18" class="line" />
-                    <line x1="10" y1="8" x2="0" y2="18" class="line" />
-                    <line x1="10" y1="8" x2="10" y2="32" class="line" />
+        <div class="nut-gotop" v-show="visible" :style="{bottom:bottom+'rem',right:right+'rem'}" :screenNum="screenNum">
+            <a href="javascript:;" class="nut-gotop-item" @click="goTop">
+                <svg>
+                    <use xlink:href="#arrow-thin-up" :style="{'color':arrowColor}" />
                 </svg>
             </a>
-
         </div>
     </transition>
 </template>
 <script>
+import arrowTopIcon from '../../../asset/img/svg/arrow-thin-up.svg';
 export default {
     name:'nut-gotop',
     props: {
         'bottom':{
             type:[String, Number],
-            default:80
+            default:0.8
         },
         'right':{
             type:[String, Number],
-            default:30
+            default:0.3
         },
         'screenNum': {
             type:Number,
             default: 0.5
         },
+        'arrowColor':{
+            type:String,
+            default:'#000000'
+        }
     },
     data() {
         return {

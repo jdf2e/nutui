@@ -1,28 +1,44 @@
 <template>
     <div class="radio-demo">
-        <h1>Radio</h1>
-        <p>单选按钮</p>
+      <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="单选按钮。" 
+        :showQrCode="true"></nut-docheader>
         <!-- DEMO区域 -->
         <!-- <nut-switch :height="30" :width="60" @switch-on="switchOn" @switch-off="switchOff"></nut-switch> -->
         <h5>示例</h5>
-        <p>默认用法</p>
+        <h6>默认用法</h6>
         <nut-radio :checked.sync="radio1"></nut-radio> 
-        <p>radio1: {{radio1}}</p>
-        <pre><code v-highlight v-text="demo1"></code></pre>
-        <p>点击触发回调</p>
+        <div>radio1: {{radio1}}</div>
+        <nut-codebox :code="demo1"></nut-codebox>        
+        <!-- <pre><code v-highlight v-text="demo1"></code></pre> -->
+        <h6>点击触发回调</h6>
         <nut-radio value="vv" @input-check="callback"></nut-radio>
-        <pre><code v-highlight v-text="demo2"></code></pre>
-        <pre><code v-highlight>export default {
+        <nut-codebox :code="demo2"></nut-codebox>        
+        <!-- <pre><code v-highlight v-text="demo2"></code></pre> -->
+        <nut-codebox code="export default {
   methods:{
       callback(checkedStatus,event){
             alert(checkedStatus);
       }
   }
-}</code></pre>
-        <p>禁用选项</p>
+}"></nut-codebox>
+        
+        <!-- <pre><code v-highlight>export default {
+  methods:{
+      callback(checkedStatus,event){
+            alert(checkedStatus);
+      }
+  }
+}</code></pre> -->
+        <h6>禁用选项</h6>
         <nut-radio :disabled="true"></nut-radio>
         <nut-radio></nut-radio>
-        <pre><code v-highlight v-text="demo3"></code></pre>
+        <nut-codebox :code="demo3"></nut-codebox>        
+        
+        <!-- <pre><code v-highlight v-text="demo3"></code></pre> -->
         <h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
@@ -98,11 +114,15 @@ export default {
     data(){
         return{
             radio1:false,
-            demo1:`<nut-radio :checked.sync="radio1"></nut-radio>`,
+            demo1:`<nut-radio 
+:checked.sync="radio1"
+></nut-radio>`,
             demo2:`<nut-radio 
- @input-check="callback">
-</nut-radio>`,
-            demo3:`<nut-radio :disabled="true"></nut-radio>
+@input-check="callback"
+></nut-radio>`,
+            demo3:`<nut-radio 
+:disabled="true"
+></nut-radio>
 <nut-radio></nut-radio>`,       
         }
     },

@@ -1,15 +1,16 @@
 <template>
     <div>
-        <h1>TextBox</h1>
-        <p>带有字数提示的输入框，超出最大字数提示超出错误</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
        
         <h5>示例</h5>
         <p>默认用法</p>
         <nut-textbox></nut-textbox>
         
 
-        <p>自定义高度:100px</p>
-        <nut-textbox :txtAreaH="100" :maxNum="300"></nut-textbox>
+        <p>自定义高度:5rem</p>
+        <nut-textbox :txtAreaH="5" :maxNum="300"></nut-textbox>
        
 
         <p>自定义提示语</p>
@@ -21,15 +22,18 @@
         
 
         <p>限制字数不可超出</p>
-        <nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="20" textBgColor="#efefef"></nut-textbox>
+        <nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="2" textBgColor="#efefef"></nut-textbox>
         
 
         <p>字数超出报错</p>
-        <nut-textbox :maxNum="10" :txtAreaH="20"  @errorFunc="overLength" ></nut-textbox>
+        <nut-textbox :maxNum="10" :txtAreaH="2"  @errorFunc="overLength" ></nut-textbox>
         
 
         <p>自定义文本框背景色</p>
-        <nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="20" textBgColor="#feefef"></nut-textbox>
+        <nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="2" textBgColor="#feefef"></nut-textbox>
+
+        <p>不显示字数限制</p>
+        <nut-textbox :limitShow="false" :maxNum="10" ></nut-textbox>
        
         
     </div>
@@ -56,6 +60,11 @@ methods:{
 :maxNum="10" 
 :txtAreaH="20" 
 textBgColor="#feefef">
+</nut-textbox>`,
+            demo8:`<nut-textbox 
+:limitShow="false"
+:switchMax="true" 
+:maxNum="10" >
 </nut-textbox>`,
         }
     },

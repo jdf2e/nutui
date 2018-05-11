@@ -1,30 +1,18 @@
 <template>
     <div>
-        <h1>Uploader</h1>
-        <p>文件异步上传组件，支持预览本地图片。</p>
+        <nut-docheader 
+        :name="$route.name" 
+        :chName="$route.params.chnName" 
+        type="Component" 
+        desc="文件异步上传组件，支持预览本地图片。" 
+        :showQrCode="false"></nut-docheader>
+        <h5>示例</h5>
         <div id="previewBox" v-html="preview"></div>
         <div id="progressBox">{{ progress }}</div>
-        <nut-uploader url="" :preview="true" @start="uploadStart" @progress="uploadProgress" @success="uploadSuccess" @failure="uploadFailure" @preview="uploadPreview"></nut-uploader>
-        <pre><code v-highlight v-text="demo"></code></pre>
-        <pre><code v-highlight>export default {
-    methods:{
-      uploadStart(){
-        console.log('start');
-      },
-      uploadProgress(file, loaded, total){
-        this.progress = '上传进度：'+loaded/total*100+'%';
-      },
-      uploadPreview(previewFile){
-        this.preview ='本地预览图：<img src="'+previewFile+'" alt=""/>';
-      },
-      uploadSuccess(file, responseTxt){
-        alert('上传成功！');
-      },
-      uploadFailure(file, responseTxt){
-        alert('上传失败！');
-      }
-    }
-}</code></pre>
+        <nut-uploader url="" :preview="true" @start="uploadStart" @progress="uploadProgress" @success="uploadSuccess" @failure="uploadFailure" @preview="uploadPreview" @showMsg="errTip"></nut-uploader>
+
+        <nut-codebox :code="demo"></nut-codebox>
+        <nut-codebox :code="demo2"></nut-codebox>
         <h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
@@ -112,6 +100,11 @@
               <td>上传进度</td>
               <td>file:文件；responseTxt:服务端响应内容。注意：数据传输层面失败(xhr.status !== 200)时触发此函数，业务逻辑层面的失败需要在success回调中根据相关字段判断，具体由接口决定</td>
             </tr>
+            <tr>
+              <td>showMsg</td>
+              <td>指定方法接收处理组件抛出的错误信息</td>
+              <td>唯一参数为提示信息内容</td>
+            </tr>
           </tbody>
         </table>
         </div>
@@ -122,8 +115,39 @@
 export default {
     data(){
         return{
-          demo:`<nut-uploader url="" :preview="true" @start="uploadStart" @progress="uploadProgress"
- @success="uploadSuccess" @failure="uploadFailure" @preview="uploadPreview"></nut-uploader>`,
+          demo:`<nut-uploader 
+ url="" 
+ :preview="true" 
+ @start="uploadStart" 
+ @progress="uploadProgress"
+ @success="uploadSuccess" 
+ @failure="uploadFailure" 
+ @preview="uploadPreview"
+ @showMsg="errTip">
+ </nut-uploader>`,
+          demo2:`export default {
+    methods:{
+      uploadStart(){
+        console.log('start');
+      },
+      uploadProgress(file, loaded, total){
+        this.progress = '上传进度：'+loaded/total*100+'%';
+      },
+      uploadPreview(previewFile){
+        this.preview ='本地预览图：<img src="'+previewFile+'" alt=""/>';
+      },
+      uploadSuccess(file, responseTxt){
+        alert('上传成功！');
+      },
+      uploadFailure(file, responseTxt){
+        alert('上传失败！');
+      },
+      //此方法用于接收和处理组件内部抛出的错误信息，如所选文件大小超过限制、文件类型不正确等等
+      errTip(msg){ 
+        alert(msg); 
+      }
+    }
+}`,
           preview:'',
           progress:''
         }
@@ -143,6 +167,9 @@ export default {
       },
       uploadFailure(file, responseTxt){
         alert('上传失败！');
+      },
+      errTip(msg){
+        alert(msg);
       }
     }
 }

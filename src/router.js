@@ -2,9 +2,6 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Conf from '../config.json';
 
-/* import Nav from './view/nav.vue';
-import Intro from './view/intro.vue'; */
-//import Phone from './view/phone.vue';
 const Nav = () => import('./view/nav.vue');
 const Intro = () => import('./view/intro.vue');
 const Phone = () => import('./view/phone.vue');
@@ -13,10 +10,12 @@ Vue.use(VueRouter);
 
 const routes = [
   { 
+    name:'/',
   	path: '/', 
     redirect: '/intro'
   },
   { 
+    name:'intro',
     path: '/intro', 
     components:{
       nav:Nav,
@@ -24,6 +23,7 @@ const routes = [
     }
   },
   { 
+    name:'nutdemo',
     path: '/nutdemo', 
     components:{
       nav:Nav,
@@ -35,20 +35,15 @@ const routes = [
 
 //组件文档页面
 Conf.packages.map(item => {
-  //views[item.name] = require('./view/'+item.name.toLowerCase()+'.vue');
-  //views[item.name] = () => import('./view/' + item.name.toLowerCase() + '.vue');
   routes.push({
-    path: '/' + item.name.toLowerCase(),
+    name: item.name,
+    path: '/' + item.name,
     components: {
       nav: Nav,
       main: () => import('./view/' + item.name.toLowerCase() + '.vue'),
     }
   });
 });
-
-/* for(let name in views){
-    
-} */
 
 const router = new VueRouter({
       routes,

@@ -166,8 +166,8 @@ export default {
     .nut-tab{
         position: relative;
         border:1px solid #eee;
-        padding: 10px;
-        font-size: 12px;
+        padding: 0.2rem;
+        font-size: 0.24rem;
         background:#fff;
     }
     .nut-tab-leftnav{
@@ -179,14 +179,14 @@ export default {
         border-bottom: 0;
         width: 100%;
         display: flex;
-        height: 50px;
-        line-height: 50px;   
+        height: 1rem;
+        line-height: 1rem;   
     }
     .nut-tab-title-leftnav{
         border-bottom:1px solid #F5F7FA;
         border-top:1px solid #F5F7FA;
         border-right: 0;
-        width: 100px;
+        width: 2rem;
         display: flex;
         flex-direction: column; 
         .nut-title-nav{
@@ -208,7 +208,7 @@ export default {
     .nut-tab-title-rightnav{
         border:1px solid #fff;
         border-left: 0;
-        width: 100px;
+        width: 2rem;
         display: flex;
         flex-direction: column; 
         .nut-tab-active{
@@ -225,8 +225,8 @@ export default {
         border-bottom: 0;
         width: 100%;
         display: flex;
-        height: 50px;
-        line-height: 50px; 
+        height: 1rem;
+        line-height: 1rem; 
         .nut-tab-active{
              .nut-tab-link{
                 border: 0;
@@ -258,15 +258,15 @@ export default {
         display: flex;
         align-items:center;
         justify-content:center;
-        font-size:12px;
+        font-size:0.24rem;
         background: #fff;
         text-decoration:none;
     }
     .nut-tab-icon{
         display: inline-block;
-        margin-right: 5px;
-        width: 20px;
-        height: 20px;
+        margin-right: 0.1rem;
+        width: 0.4rem;
+        height: 0.4rem;
         background-repeat: no-repeat; 
     }
     .nut-tab-active{
@@ -282,7 +282,7 @@ export default {
         border-left: 1px solid #eee;
         .nut-title-nav{
             border: 1px solid #eee;
-            border-left: 0px;
+            border-left: 0;
         }
         .nut-tab-link{
             background: #fff;
@@ -299,7 +299,7 @@ export default {
 
     }*/
     .nut-tab-item {  
-        height: 300px;
+        height: 6rem;
         border:1px solid #F5F7FA;
         
         width: 100%;

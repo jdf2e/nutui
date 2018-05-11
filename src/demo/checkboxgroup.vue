@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>CheckboxGroup</h1>
-        <p>复选按钮组，多用于多项选择</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         
         <p>默认用法</p>
         <nut-checkboxgroup :data="data1"></nut-checkboxgroup>

@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>Mask</h1>
-        <p>通用遮罩层，通常作为基础组件被其他组件依赖，亦可单独使用。</p>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
         <nut-mask :visible.sync="maskShow"></nut-mask>
         <a class="button button-primary" href="javascript:;" @click="maskShow = true">基础示例</a>
         

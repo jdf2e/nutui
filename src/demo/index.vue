@@ -1,9 +1,10 @@
 <template>
   <div class="wrapper">
     <h1 class="logo">NutUI</h1>
-    <p>NutUI是一套基于Vue2的轻量级移动端组件库。[<a href="/index.html">文档</a>] [<a href="http://git.jd.com/lifeifan3/NutUI">代码</a>]</p>
+    <div class="version">Version {{version}}</div>
+    <p>NutUI是一套基于Vue2的轻量级移动端组件库。[<a href="/index.html">文档</a>] [<a href="https://github.com/jdf2e/nutui">代码</a>]</p>
     <ul>
-      <template v-for="cpt in packages"><li v-if="cpt.showDemo !== false"><router-link :to="'/'+cpt.name">{{cpt.name}}</router-link></li></template>
+      <template v-for="cpt in packages"><li v-if="cpt.showDemo !== false"><router-link :to="{name:cpt.name}">{{cpt.name}}<span>{{cpt.chnName}}</span></router-link></li></template>
     </ul>
   </div>
 </template>
@@ -37,6 +38,11 @@ export default {
   font-size:0;
   margin:15px auto;
 }
+.version{
+  text-align:center;
+  font-size:12px;
+  color:rgb(129, 129, 129);
+}
 p{
   text-align:center;
   color:#888;
@@ -60,6 +66,11 @@ li{
     padding:20px;
     text-decoration: none;
     color:#000;
+  }
+  span{
+    margin-left:10px;
+    font-size:14px;
+    color:rgb(167, 167, 167);
   }
 }
 </style>

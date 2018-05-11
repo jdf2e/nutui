@@ -1,8 +1,8 @@
 <template>
     <div class="nut-textbox">
-        <div class="txt-area" :class="{'error':errorState}" :style="{background:textBgColor}">
-            <textarea :placeholder="placeText" :style="{height:txtAreaHeight+'px'}" v-model="textInfo" @input="txtIptLength" :switchMax="switchMax" :maxlength="iptMaxlength"></textarea>
-            <span>{{txtNum}}/{{maxNum}}</span>
+        <div class="txt-area" :class="{'error':errorState,'num-none':limitShow == false}" :style="{background:textBgColor}">
+            <textarea :placeholder="placeText" :style="{height:txtAreaHeight+'rem'}" v-model="textInfo" @input="txtIptLength" :switchMax="switchMax" :maxlength="iptMaxlength"></textarea>
+            <span v-show="limitShow">{{txtNum}}/{{maxNum}}</span>
         </div>
     </div>
 </template>
@@ -11,7 +11,7 @@ export default {
     name:'nut-textbox',
     props: {
     	maxNum:{
-    		type:Number,
+    		type:[String,Number],
     		default:50,
     	},
     	placeText:{
@@ -20,7 +20,7 @@ export default {
     	},
     	txtAreaH:{
     		type:[String,Number],
-    		default:50,
+    		default:1,
     	},
     	switchMax:{
     		type:Boolean,
@@ -30,7 +30,11 @@ export default {
             type:String,
             default:'#fff'
         },
-        
+        limitShow:{
+            type:Boolean,
+            default:true,
+        }
+       
     },
     data() {
         return {
@@ -73,24 +77,26 @@ export default {
 	background:#fff;
     .txt-area{
         border: 1px solid #ececee;
-	    padding: 5px 10px 30px;
+	    padding: 0.1rem 0.2rem 0.5rem;
 	    position: relative;
+        &.num-none{
+            padding: 0.1rem 0.2rem;
+        }
         textarea{
             resize: none;
 		    width: 100%;
-		    /* min-height: 50px; */
 		    border: none;
 		    outline: none;
 		    margin: 0;
-		    padding: 0px;
+		    padding: 0;
 		    background: transparent;
             display:block;
         }
         span{
             color: #666;
 		    position: absolute;
-		    right: 10px;
-		    bottom: 5px;
+		    right: 0.1rem;
+		    bottom: 0.05rem;
 		    font-size:12px;
         }
         &.error{
