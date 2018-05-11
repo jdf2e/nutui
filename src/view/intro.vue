@@ -6,7 +6,7 @@
         <p>1，使用npm安装NutUI</p>
         <pre><code v-highlight>npm install @nutui/nutui --save</code></pre>
         <p>2，引用完整组件库</p>
-        <pre><code v-highlight>import NutUI from '@jdf2e/nutui'</code></pre>
+        <pre><code v-highlight>import NutUI from '@nutui/nutui'</code></pre>
         <p>3，初始化</p>
         <pre><code v-highlight>NutUI.install(Vue)</code></pre>
         <p>通过以上步骤即可完成整个NutUI组件库的安装。</p>

@@ -1,12 +1,12 @@
 {
     "name": "@nutui/nutui",
     "description": "基于Vue2的移动端UI组件库",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "author": "jdc-fe-rd2",
     "main": "dist/nutui.js",
     "repository": {
         "type": "git",
-        "url": "git@git.jd.com:lifeifan3/NutUI.git"
+        "url": "https://github.com/jdf2e/nutui.git"
     },
     "scripts": {
         "clean": "rm -rf dist",
