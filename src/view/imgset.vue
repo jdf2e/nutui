@@ -7,7 +7,7 @@
         desc="京东图片系统图片过滤器，可配置访问渠道、尺寸、业务等。" 
         :showQrCode="true"></nut-docheader>
         <!-- <h1>ImgSet</h1> -->
-        <h6>处理类似'jfs/t169/69/654078710/298522/f1faa01a/53951722N73ecf645.jpg'这种图片路径的数据，可配置访问渠道、尺寸、业务，前提是该图片必须是在京东的图片系统上，具体更多细节参数设置可移步以下文档查看：<a href="http://storage.jd.com/doc/jd-image.pdf" target="_blank">http://storage.jd.com/doc/jd-image.pdf</a></h6>
+        <h6>处理类似'jfs/t169/69/654078710/298522/f1faa01a/53951722N73ecf645.jpg'这种图片路径的数据，可配置访问渠道、尺寸、业务，前提是该图片必须是在京东的图片系统上</h6>
         <h5>示例</h5>
         <h6>图片按照100px*100px的尺寸展示</h6>
         <div style="width:100%;overflow:hidden;">
