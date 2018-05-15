@@ -48,7 +48,7 @@
       "chnName": "评分",
       "type": "component",
       "desc": "评分组件，支持配置ICON。"
-    }, 
+    },
     {
       "name": "Price",
       "chnName": "价格",
@@ -60,7 +60,8 @@
       "chnName": "返回顶部",
       "type": "component",
       "desc": "返回页面顶部的快捷按钮。"
-    }, {
+    },
+    {
       "name": "TextBox",
       "chnName": "文本框",
       "type": "component",
@@ -96,19 +97,22 @@
       "type": "component",
       "showDemo": true,
       "desc": "电梯楼层组件。"
-    }, {
+    },
+    {
       "name": "LuckyCard",
       "chnName": "刮刮卡",
       "type": "component",
       "showDemo": true,
       "desc": "刮刮卡，通常用于抽奖活动场景。"
-    }, {
+    },
+    {
       "name": "Signature",
       "chnName": "签名",
       "type": "component",
       "showDemo": true,
       "desc": "签名组件。"
-    }, {
+    },
+    {
       "name": "SlideCalendar",
       "chnName": "日期时间滑动选择",
       "type": "component",
@@ -157,7 +161,8 @@
       "chnName": "搜索栏",
       "type": "component",
       "desc": "搜索栏。"
-    }, {
+    },
+    {
       "name": "CeilingLamp",
       "chnName": "吸顶条",
       "type": "component",
@@ -272,6 +277,13 @@
       "type": "component",
       "desc": "图片选取组件。",
       "showDemo": true
+    },
+    {
+      "name": "Test",
+      "chnName": "asds",
+      "desc": "asdsadfdf",
+      "type": "filter",
+      "showDemo": false
     }
   ]
 }
