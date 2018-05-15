@@ -1,7 +1,7 @@
 {
   "name": "@nutui/nutui",
   "description": "基于Vue2的移动端UI组件库",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "author": "jdc-fe-rd2",
   "main": "dist/nutui.js",
   "repository": {
