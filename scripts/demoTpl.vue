@@ -6,7 +6,6 @@
         ></nut-demoheader>
 
         <!-- DEMO区域 -->
-        <!-- <nut-switch :height="30" :width="60" @switch-on="switchOn" @switch-off="switchOff"></nut-switch> -->
     </div>
 </template>
 

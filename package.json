@@ -2,7 +2,7 @@
   "name": "@nutui/nutui",
   "description": "基于Vue2的移动端UI组件库",
   "version": "1.2.3",
-  "author": "jdc-fe-rd2",
+  "author": "jdc-fe",
   "main": "dist/nutui.js",
   "repository": {
     "type": "git",
@@ -19,8 +19,16 @@
     "babel-runtime": "^6.26.0"
   },
   "files": [
+    "dist/nutui.js",
     "src",
-    "dist/nutui.js"
+    "scripts",
+    ".babelrc",
+    ".gitignore",
+    "config.json",
+    "package.json",
+    "postcss.config.js",
+    "webpack.config.custom.js",
+    "webpack.config.js"
   ],
   "peerDependencies": {
     "vue": "^2.3.3"
