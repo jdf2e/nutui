@@ -1,5 +1,9 @@
 <template>
-    <div class="nut-choose"></div>
+    <div class="nut-choose">
+    <nut-mask 
+		:visible.sync="maskShow"
+		></nut-mask>
+    </div>
 </template>
 <script>
 export default {
@@ -7,7 +11,9 @@ export default {
     props: {
     },
     data() {
-        return {};
+        return {
+        	maskShow: false
+        };
     },
     methods: {
     }

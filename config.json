@@ -280,8 +280,8 @@
     },
     {
       "name": "Choose",
-      "chnName": "抽屉式选择（���(含地址选�)）",
-      "desc": "多用于�地址��选择，�默可配置参数",
+      "chnName": "抽屉式选择(含地址选�)",
+      "desc": "多用于地址选择，可配置参数",
       "type": "component",
       "showDemo": true
     }
