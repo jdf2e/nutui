@@ -34,6 +34,13 @@
               <td>true</td>
             </tr>
             <tr>
+              <td>short</td>
+              <td>短的面板还是长的面板</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>true</td>
+            </tr>
+            <tr>
               <td>needCache</td>
               <td>弹层打开后再关闭是否需要缓存下来数据，以备下次打开使用</td>
               <td>Boolean</td>

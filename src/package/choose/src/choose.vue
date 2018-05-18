@@ -2,10 +2,10 @@
 
     <div class="nut-choose" v-show="visibile">
         <transition name="maskfade">
-            <div class="mask" @click="maskClose" v-show="visibile"></div>
+            <div class="mask" @click="maskClose" v-show="areaShow"></div>
         </transition>
         <transition name="popup">
-            <div :class="{area:true,'short-area':short}" @click.stop v-show="visibile">
+            <div :class="{area:true,'short-area':short}" @click.stop v-show="areaShow">
                 <div class="area-title">
                      <span class="area-title-txt">{{ title }}</span>
                      <a href='javascript:;' class='area-close' @click="maskClose">
@@ -96,6 +96,7 @@ export default {
                     this.resetData();
                 }
             } else {
+                this.areaShow = true;
                 if(!this.needCache) {
                     this.$emit('init-choose');
                 }
@@ -117,13 +118,14 @@ export default {
     },
     methods: {
         maskClose() {
+            this.areaShow = false;
             clearTimeout(this.timer);
             this.timer = setTimeout(()=>{
                 if(!this.needCache) {
                     this.resetData();
                 }
                 this.$emit('close-choose');
-            },400);
+            },300);
         },
         resetData() {
             this.list = [];
