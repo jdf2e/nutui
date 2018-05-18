@@ -48,7 +48,7 @@ export default {
     },
     mounted: function() {
         var _this = this;
-        
+
         if (_this.configItems.popupHeight != undefined) {
             let height = this.configItems.popupHeight.height;
             setTimeout(function() {
@@ -121,6 +121,7 @@ export default {
     height: 100%;
     left: 0;
     top: 0;
+    z-index: 9999;
     background: rgba(0, 0, 0, .5);
     font-size: 16px;
     display: flex;

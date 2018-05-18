@@ -164,9 +164,9 @@ export default {
         return{
             isFold: false,
             dateParams: {
-                curDate: '2018-01-27',
-                minDate: '2018-01-24',
-                maxDate: '2018-07-26'
+                curDate: '2018-01-12',
+                minDate: '2018-01-08',
+                maxDate: '2018-01-26'
             }
         }
     },

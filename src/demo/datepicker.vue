@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nut-demoheader 
+        <nut-demoheader
         :name="$route.name"
         ></nut-demoheader>
         <h5>示例</h5>
@@ -28,9 +28,9 @@ export default {
                 curDate: '请选择日期'
             },
             dateParams1: {
-                curDate: '2018-01-27',
-                minDate: '2018-01-24',
-                maxDate: '2018-07-26'
+                curDate: '2018-01-12',
+                minDate: '2018-01-08',
+                maxDate: '2018-01-26'
             },
             dateParams2: {
                 curDate: '请选择日期'
