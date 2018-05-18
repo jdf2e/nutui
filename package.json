@@ -1,10 +1,16 @@
 {
   "name": "@nutui/nutui",
   "description": "基于Vue2的移动端UI组件库",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "author": "jdc-fe",
   "main": "dist/nutui.js",
-  "keywords": ["nutui", "vue", "webpack", "vue component","jdc"],
+  "keywords": [
+    "nutui",
+    "vue",
+    "webpack",
+    "vue component",
+    "jdc"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jdf2e/nutui.git"
