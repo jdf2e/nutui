@@ -1,0 +1,216 @@
+body {
+    font-family: 'Microsoft YaHei';
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FF0000;
+}
+
+.sys-header {
+    height: 50px;
+    background: #FAFBFC;
+    border-bottom: 1px solid #E1E4E8;
+}
+
+.sys-header .sys-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.sys-logo {
+    background: url(../img/nutui-logo.png) no-repeat;
+    background-size: contain;
+    height: 36px;
+    width: 160px;
+    font-size: 0;
+}
+
+.sys-inner {
+    height: 100%;
+}
+
+.sys-menu {
+    display: none;
+    margin: 0;
+}
+
+.sys-menu li {
+    display: inline-block;
+    margin: 0 20px 0 0;
+}
+
+.sys-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    max-width: 90%;
+    min-width: 200px;
+    z-index: 100;
+    overflow-y:auto;
+    background: #FAFBFC;
+    box-sizing: border-box;
+    padding: 20px;
+    border-right: 1px solid #E1E4E8;
+}
+.sys-nav ul{
+    padding-left:1px;
+}
+
+.sys-footer {
+    height: 50px;
+    font-size: 12px;
+    text-align: center;
+    border-top: 1px solid #E1E4E8;
+}
+
+.sys-footer .sys-inner {
+    line-height: 50px;
+}
+
+.sys-footer a {
+    color: inherit;
+}
+
+.sys-footer span {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    margin: 0 auto;
+    padding-left: 34px;
+    background: url(../img/nutui-logo2.png) left center no-repeat;
+    background-size: 25px;
+}
+
+.sys-container {
+    min-height: 400px;
+    max-width: 1200px;
+}
+
+.sys-main {
+    padding: 10px;
+}
+
+.sys-main .tbl-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+.doc-head{
+    position:relative;
+}
+.doc-qr-code{
+    position: absolute;
+    right:10px;
+    top:0px;
+    margin:0;
+    
+}
+.doc-qr-code img{
+    width:150px;
+    height:150px;
+    padding:4px;
+    border:1px solid #CCC;
+    background:#FFF;
+}
+.doc-qr-code figcaption {
+    font-size:12px;
+    color:rgba(193,193,193,0.9);
+    text-align:center;
+}
+hr{
+    margin:15px 0;
+}
+.doc-head{
+    margin-bottom:35px;
+}
+.doc-desc{
+    border-left:5px solid #E1E1E1;
+    padding-left:10px;
+    max-width:700px;
+}
+@media (max-width: 415px) {
+    .phone {
+        display: none;
+    }
+    .sys-header .sys-inner {
+        padding: 0 10px;
+    }
+    .qc-box,
+    .doc-qr-code {
+        display: none;
+    }
+}
+
+.nutdemo {
+    display: none;
+}
+
+@media (min-width: 415px) {
+    .sys-box {
+        min-width: 1300px
+    }
+    .nutdemo {
+        display: list-item;
+    }
+    .sys-header {
+        height: 100px;
+        padding: 0 50px;
+    }
+    .sys-header .sys-nav-btn {
+        display: none;
+    }
+    .sys-logo {
+        height: 60px;
+    }
+    .sys-menu {
+        display: inline-block;
+    }
+    .sys-container {
+        display: flex;
+        min-width: 1200px;
+        min-height: 800px;
+        margin: 15px auto;
+        padding: 0px 50px;
+    }
+    .sys-main {
+        flex: 1;
+        overflow: hidden;
+        padding: 0;
+    }
+    .sys-nav {
+        display: block !important;
+        position: static;
+        width: 270px;
+        z-index: 0;
+        overflow-y:hidden;
+        padding: 0 30px 0 0;
+        box-sizing: content-box;
+        background: none;
+        border: none;
+    }
+    .sys-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"]{
+    font-size:12px;
+}
+
+h6{
+    box-sizing:border-box;
+    border-left:8px solid #33C3F0;
+    padding-left:10px;
+}
+
