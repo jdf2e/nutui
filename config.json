@@ -277,6 +277,13 @@
       "type": "component",
       "desc": "图片选取组件。",
       "showDemo": true
+    },
+    {
+      "name": "Choose",
+      "chnName": "抽屉式选择(地址级联)",
+      "desc": "多用于地址选择，每一层级的列表参数需在调用时自定义",
+      "type": "component",
+      "showDemo": true
     }
   ]
 }
