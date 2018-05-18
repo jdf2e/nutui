@@ -108,7 +108,11 @@ export default {
                         "name": "长宁"
                         }
                     ];
+                }else{
+                    self.locationName = self.cityName+' '+self.provinceName
+                    self.closeChoose();
                 }
+
                 
             }
             if(level == 2) {
