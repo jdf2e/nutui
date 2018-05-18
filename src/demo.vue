@@ -9,6 +9,9 @@
 <script>
 </script>
 <style lang="scss">
+*{
+  -webkit-tap-highlight-color: transparent;
+}
 [v-cloak] {
   display: none;
 }
