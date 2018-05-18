@@ -44,6 +44,7 @@
 			            <div class="nut-datepicker-silde"
 			            	:style="{'width': width}"
 			            	@touchstart="touchStart($event, 1)"
+			            	@touchmove="touchMove($event, 1)"
 			            	@touchend="touchEnd($event, 1)"
 			            >
 							<div class="nut-datepicker-item">
@@ -55,6 +56,7 @@
 						<div class="nut-datepicker-silde"
 							:style="{'width': width}"
 			            	@touchstart="touchStart($event, 2)"
+			            	@touchmove="touchMove($event, 2)"
 			            	@touchend="touchEnd($event, 2)"
 			            >
 							<div class="nut-datepicker-item">
@@ -66,6 +68,7 @@
 						<div class="nut-datepicker-silde"
 						    :style="{'width': width}"
 			            	@touchstart="touchStart($event, 3)"
+			            	@touchmove="touchMove($event, 3)"
 			            	@touchend="touchEnd($event, 3)"
 			            >
 							<div class="nut-datepicker-item">
@@ -262,11 +265,21 @@ export default {
         	this.$emit('confirm', this.currDateParams);
         },
 
-		// 拖动
+
         touchStart(e, index){
 			this.startX = e.targetTouches[0].pageX;
 			this.startY = e.targetTouches[0].pageY;
 		},
+
+		touchMove(e, index){
+			this.endX = e.changedTouches[0].pageX;
+			this.endY = e.changedTouches[0].pageY;
+			let dy = this.endY - this.startY;
+            let dx = this.endX - this.startX;
+            if ((Math.abs(dx) > Math.abs(dy))) {
+		        e.preventDefault();
+		     }
+        },
 
 		touchEnd(e, index){
 			let _this = this;
