@@ -11,6 +11,10 @@
 
 > 基于Vue 2.0的移动端轻量级UI组件库
 
+<p align="center">
+    <img alt="" src="http://nutui.jd.com/asset/img/erweima.jpg">
+</p>
+
 # 安装
 
 ``` bash
@@ -20,10 +24,10 @@ npm install @nutui/nutui --save
 
 #### 引用完整组件库
 ``` bash
-1、 在入口文件（如app.js）中引入
+1，在入口文件（如app.js）中引入
 import NutUI from '@nutui/nutui'
 
-2、 初始化
+2，初始化
 NutUI.install(Vue)
 ```
 通过以上步骤即可完成整个NutUI组件库的安装。
@@ -47,7 +51,7 @@ npm run custom
 *  一类是扩展 HTML 元素，典型的Vue组件形式，使用方式类似原生HTML元素。
 ``` bash
 如遮罩层（Mask）组件，直接使用nut-mask标签即可
-<nut-mask :visible.sync="true"><nut-mask>
+<nut-mask :visible.sync="maskShow"><nut-mask>
 ```
 *  另一类是Vue构造器的扩展组件，使用方式类似jQuery/Zepto方法。
 ``` bash

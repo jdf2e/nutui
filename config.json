@@ -277,13 +277,6 @@
       "type": "component",
       "desc": "图片选取组件。",
       "showDemo": true
-    },
-    {
-      "name": "Choose",
-      "chnName": "抽屉式选择(含地址选�)",
-      "desc": "多用于地址选择，可配置参数",
-      "type": "component",
-      "showDemo": true
     }
   ]
 }
