@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.2.5",
   "packages": [
     {
       "name": "DatePicker",
@@ -280,8 +280,8 @@
     },
     {
       "name": "Choose",
-      "chnName": "抽屉式选择(含地址选�)",
-      "desc": "多用于地址选择，可配置参数",
+      "chnName": "抽屉式选择(地址级联)",
+      "desc": "多用于地址选择，每一层级的列表参数需在调用时自定义",
       "type": "component",
       "showDemo": true
     }
