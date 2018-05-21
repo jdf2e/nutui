@@ -280,8 +280,8 @@
     },
     {
       "name": "Choose",
-      "chnName": "抽屉式选择(地址级联)",
-      "desc": "多用于地址选择，每一层级的列表参数需在调用时自定义",
+      "chnName": "级联选择面板",
+      "desc": "级联选择面板。多用于地区选择，支持异步拉取数据。",
       "type": "component",
       "showDemo": true
     }

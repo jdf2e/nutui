@@ -4,7 +4,7 @@ var config = require('./package.json');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-//var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 
 var webpackConfig = module.exports = {};
@@ -109,9 +109,9 @@ if (isProduction) {
         new webpack.LoaderOptionsPlugin({
             minimize: false
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            ecma: 6,
-            compress: {
+        new UglifyJsPlugin({
+            uglifyOptions: {
+                ecma: 8,
                 warnings: false
             }
         })

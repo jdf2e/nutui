@@ -3,6 +3,7 @@ var path = require('path');
 var config = require('./custom.json');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 
 var webpackConfig = module.exports = {};
@@ -64,24 +65,22 @@ webpackConfig.plugins = [
     new webpack.LoaderOptionsPlugin({
         minimize: false
     }),
-    new webpack.optimize.UglifyJsPlugin({
-        ecma: 6,
-        compress: {
+    new UglifyJsPlugin({
+        uglifyOptions: {
+            ecma: 8,
             warnings: false
         }
     }),
-    new webpack.BannerPlugin('NutUI v' + config.version + ' ' + new Date().toString())
-];
-
-webpackConfig.devtool = '#cheap-module-source-map';
-webpackConfig.plugins = (webpackConfig.plugins || []).concat([
+    new webpack.BannerPlugin('NutUI v' + config.version + ' ' + new Date().toString()),
     new webpack.DefinePlugin({
-        'process.env': {
-            NODE_ENV: '"production"'
-        },
-        'CONFIG': config
+            'process.env': {
+                NODE_ENV: '"production"'
+            },
+            'CONFIG': config
     }),
     new webpack.LoaderOptionsPlugin({
         minimize: false
     })
-]);
+];
+
+webpackConfig.devtool = '#cheap-module-source-map';

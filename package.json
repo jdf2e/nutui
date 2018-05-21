@@ -61,6 +61,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "svg-sprite-loader": "^3.7.3",
+    "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^0.6.2",
     "vue": "^2.3.3",
     "vue-loader": "^12.1.0",

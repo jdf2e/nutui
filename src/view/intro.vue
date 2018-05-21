@@ -1,11 +1,11 @@
 <template>
     <div class="wrapper">
         <div class="logo"></div>
-        <p>NutUI是一个基于Vue2.0的轻量级移动端组件库，大部分组件来自「京东APP」、「京东ME」、「京东M站」中的实际项目。</p>
+        <h6>NutUI是一套拥有电商基因的基于Vue2.0的轻量级移动端开源组件库，大部分组件来自「京东APP」、「京东ME」、「京东M站」中的实际项目。</h6>
         <h5>安装</h5>
-        <p>1，使用npm安装NutUI</p>
+        <p>1，推荐使用npm安装NutUI</p>
         <pre><code v-highlight>npm install @nutui/nutui --save</code></pre>
-        <p>2，引用完整组件库</p>
+        <p>2，通常在webpack入口页面（app.js或main.js）引用完整组件库</p>
         <pre><code v-highlight>import NutUI from '@nutui/nutui'</code></pre>
         <p>3，初始化</p>
         <pre><code v-highlight>NutUI.install(Vue)</code></pre>
@@ -16,15 +16,15 @@
         <pre><code v-highlight>npm install</code></pre>
         <p>2，执行自定义构建命令</p>
         <pre><code v-highlight>npm run custom</code></pre>
-        <p>3, 在列表中，选择所有您需要打包的组件，然后按下回车键即开始构建</p>
+        <p>3，在列表中，选择所有您需要打包的组件，然后按下回车键即开始构建</p>
         <img src="../asset/img/custom-build.png" alt="">
         <p>4，片刻之后，自定义构建出的nutui.js文件会出现在dist目录下。在项目中引入和初始化的操作同上</p>
 
         <h5>使用方法</h5>
 <p>使用方法大致分为两类。</p>
-<p>一类是扩展 HTML 元素，典型的Vue组件形式，使用方式类似原生HTML元素。如遮罩层（Mask）组件，直接使用标签即可。</p>
+<p>1，扩展 HTML 元素，典型的Vue组件形式，使用方式类似原生HTML标签。如遮罩层（Mask）组件，直接使用标签即可。</p>
 <pre><code v-highlight v-text="demo1"></code></pre>
-<p>另一类是Vue构造器的扩展组件，使用方式类似jquery/Zepto方法。如对话框（Dialog）组件。</p>
+<p>2，挂在Vue.prototype上的实例方法，在需要的地方调用即可。如对话框（Dialog）组件。</p>
 <pre><code v-highlight>this.$dialog(options);</code></pre>
 <p>提示框（Toast）组件</p>
 <pre><code v-highlight>this.$toast(msg,during);</code></pre>

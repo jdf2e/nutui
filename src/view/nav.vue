@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import Conf from "../../config.json";
+//import Conf from "../../config.json";
 export default {
   data() {
     return {
@@ -49,8 +49,8 @@ export default {
     },
   },
   created() {
-    this.packages = Conf.packages;
-    this.version = Conf.version;
+    this.packages = this.NUTCONF.packages;
+    this.version = this.NUTCONF.version;
   }
 };
 </script>
