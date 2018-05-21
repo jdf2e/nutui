@@ -5,6 +5,7 @@
         ></nut-demoheader>
         <br>
         <div>
+            <span>申请地区：{{locationName}}</span>
             <a href="javascript:;" class="button button-primary" @click="showChoose = true">点我出现</a>
         </div>
         <nut-choose 
@@ -27,7 +28,12 @@ export default {
       return {
         showChoose: false,
         loading: false,
-        chooseData: []
+        chooseData: [],
+        locationName:'',
+        cityId:'',
+        cityName:'',
+        provinceName:'',
+        provinceId:'',
       }
     },
     methods:{
@@ -74,18 +80,45 @@ export default {
             console.log(item);
             let self = this;
             if(level == 1) {
-                self.chooseData = [
-                    {
-                    "id": 2816,
-                    "name": "密云区"
-                    },
-                    {
-                    "id": 72,
-                    "name": "朝阳区"
-                    }
-                ];
+                self.cityId = item.id;
+                self.cityName =item.name;
+                if(item.id == 1){
+                    self.chooseData = [
+                        {
+                        "id": 2816,
+                        "name": "密云区"
+                        },
+                        {
+                        "id": 72,
+                        "name": "朝阳区"
+                        }
+                    ];
+                }else if(item.id==2){
+                    self.chooseData = [
+                        {
+                        "id": 21,
+                        "name": "浦东新区"
+                        },
+                        {
+                        "id": 22,
+                        "name": "徐汇区"
+                        },
+                        {
+                        "id": 22,
+                        "name": "长宁"
+                        }
+                    ];
+                }else{
+                    self.locationName = self.cityName+' '+self.provinceName
+                    self.closeChoose();
+                }
+
+                
             }
             if(level == 2) {
+                self.provinceId = item.id;
+                self.provinceName = item.name;
+                self.locationName = self.cityName+' '+self.provinceName
                 self.closeChoose();
             }
             //以下注释的代码为地址数据的调用方式，注释打开即可使用，访问url可联系组件开发人员
@@ -102,6 +135,9 @@ export default {
                 }
             });*/
         }
+    },
+    mounted(){
+
     }
 }
 </script>
