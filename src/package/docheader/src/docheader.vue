@@ -34,18 +34,6 @@ export default {
       type: String,
       default: ""
     },
-    /* chnName: {
-      type: String,
-      default: ""
-    }, */
-    /* desc: {
-      type: String,
-      default: ""
-    }, */
-    /* type: {
-      type: String,
-      default: "Component"
-    }, */
     showQrCode:{
       type: Boolean,
       default: true

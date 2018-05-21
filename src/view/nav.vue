@@ -84,7 +84,7 @@ a {
 .tot{
   font-size:12px;
 }
- @media (max-width: 400px){
+ @media (max-width: 415px){
     .pcdemo{
       display: list-item;
     }
