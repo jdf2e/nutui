@@ -19,6 +19,7 @@
       }
     }
 }" imgUrl="../asset/img/demo/dialog1.png"></nut-codebox>
+
         <h6>移除右上角关闭按钮、标题栏、按钮栏</h6>
         <nut-codebox code="export default {
     methods:{

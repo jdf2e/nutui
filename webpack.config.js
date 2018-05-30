@@ -80,11 +80,6 @@ webpackConfig.plugins = [
     /*new ExtractTextPlugin({
         filename: 'nutui.css'
     }),*/
-    /* new webpack.optimize.UglifyJsPlugin({
-        mangle: {
-            keep_fnames: true
-        }
-    }), */
     new webpack.BannerPlugin('NutUI v' + config.version + ' ' + new Date().toString()),
     new CopyWebpackPlugin([{
             from: path.join(__dirname, "./src/asset/"),

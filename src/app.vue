@@ -35,7 +35,7 @@ export default {
             handler:function(to, from){
                 this.path = to.path;
             }
-        }
+        },
     },
     methods:{
     	toggleMenu:function(){

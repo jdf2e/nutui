@@ -11,10 +11,14 @@ const DemoNav = () => import('./demo/demonav.vue');
 Vue.use(VueRouter);
 
 const routes = [
-  { 
-  	path: '/', 
+  {
+    path: '*',
     redirect: '/index'
   },
+/*   { 
+  	path: '/', 
+    redirect: '/index'
+  }, */
   { 
     path: '/index', 
     components:{

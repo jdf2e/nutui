@@ -11,6 +11,18 @@
     "vue component",
     "jdc"
   ],
+  "files": [
+    "dist/nutui.js",
+    "src",
+    "scripts",
+    ".babelrc",
+    ".gitignore",
+    "config.json",
+    "package.json",
+    "postcss.config.js",
+    "webpack.config.custom.js",
+    "webpack.config.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jdf2e/nutui.git"
@@ -25,18 +37,6 @@
   "dependencies": {
     "babel-runtime": "^6.26.0"
   },
-  "files": [
-    "dist/nutui.js",
-    "src",
-    "scripts",
-    ".babelrc",
-    ".gitignore",
-    "config.json",
-    "package.json",
-    "postcss.config.js",
-    "webpack.config.custom.js",
-    "webpack.config.js"
-  ],
   "peerDependencies": {
     "vue": "^2.3.3"
   },
