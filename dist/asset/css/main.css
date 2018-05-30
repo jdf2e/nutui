@@ -134,6 +134,9 @@ hr{
     padding-left:10px;
     max-width:700px;
 }
+/* .m-logo{
+    display:none;
+} */
 @media (max-width: 415px) {
     .phone {
         display: none;
@@ -150,7 +153,9 @@ hr{
 .nutdemo {
     display: none;
 }
-
+.pc-logo{
+    display:none;
+}
 @media (min-width: 415px) {
     .sys-box {
         min-width: 1300px
@@ -162,13 +167,13 @@ hr{
         height: 100px;
         padding: 0 50px;
     }
-    .sys-header .sys-nav-btn {
+    .sys-header .sys-nav-btn,.m-logo {
         display: none;
     }
     .sys-logo {
         height: 60px;
     }
-    .sys-menu {
+    .sys-menu,.pc-logo {
         display: inline-block;
     }
     .sys-container {

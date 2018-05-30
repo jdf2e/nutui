@@ -1,5 +1,5 @@
 {
-  "version": "1.2.5",
+  "version": "1.2.7",
   "packages": [
     {
       "name": "DatePicker",
@@ -276,6 +276,13 @@
       "chnName": "图片选取",
       "type": "component",
       "desc": "图片选取组件。",
+      "showDemo": true
+    },
+    {
+      "name": "Choose",
+      "chnName": "级联选择面板",
+      "desc": "级联选择面板。多用于地区选择，支持异步拉取数据。",
+      "type": "component",
       "showDemo": true
     }
   ]

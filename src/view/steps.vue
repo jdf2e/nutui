@@ -80,22 +80,53 @@ export default {
     data(){
         return{
           demo1:
-`<nut-steps stepsId="step1">
-  <nut-step stepTitle="您的订单已经发往北京"><p>2017-12-12</p></nut-step>
-  <nut-step stepTitle="您的订单已经到达上海"><p>2017-12-11</p></nut-step>
-  <nut-step stepTitle="快递公司已揽件"><p>2017-12-10</p></nut-step>
+`<nut-steps 
+stepsId="step1"
+>
+  <nut-step 
+   stepTitle="您的订单已经发往北京"
+  ><p>2017-12-12</p></nut-step>
+  <nut-step 
+  stepTitle="您的订单已经到达上海"
+  ><p>2017-12-11</p></nut-step>
+  <nut-step 
+  stepTitle="快递公司已揽件"
+  ><p>2017-12-10</p></nut-step>
 </nut-steps>`,
           demo2:
-`<nut-steps stepsId="step2" :active="2" :showNum='true' :titleTop="0.4">
-  <nut-step stepTitle="您的订单已经发往北京"><p>2017-12-12</p></nut-step>
-  <nut-step stepTitle="您的订单已经到达上海"><p>2017-12-11</p></nut-step>
-  <nut-step stepTitle="快递公司已揽件"><p>2017-12-10</p></nut-step>
+`<nut-steps 
+stepsId="step2" 
+:active="2" 
+:showNum="true"
+:titleTop="0.4"
+>
+  <nut-step 
+  stepTitle="您的订单已经发往北京"
+  ><p>2017-12-12</p></nut-step>
+  <nut-step 
+  stepTitle="您的订单已经到达上海"
+  ><p>2017-12-11</p></nut-step>
+  <nut-step 
+  stepTitle="快递公司已揽件"
+  ><p>2017-12-10</p></nut-step>
 </nut-steps>`,
 demo3:
-`<nut-steps stepsId="step3" :active="1">
-  <nut-step stepTitle="您的订单已经发往北京" icon="图片地址1"><p>2017-12-12</p></nut-step>
-  <nut-step stepTitle="您的订单已经到达上海" icon="图片地址2"><p>2017-12-11</p></nut-step>
-  <nut-step stepTitle="快递公司已揽件" icon="图片地址2"><p>2017-12-10</p></nut-step>
+`<nut-steps 
+stepsId="step3" 
+:active="1"
+>
+  <nut-step 
+  stepTitle="您的订单已经发往北京" 
+  icon="图片地址1"
+  ><p>2017-12-12</p></nut-step>
+  <nut-step 
+  stepTitle="您的订单已经到达上海" 
+  icon="图片地址2"
+  ><p>2017-12-11</p></nut-step>
+  <nut-step 
+  stepTitle="快递公司已揽件" 
+  icon="图片地址2"
+  ><p>2017-12-10</p></nut-step>
 </nut-steps>`
         }
     },

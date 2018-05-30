@@ -1,10 +1,28 @@
 {
   "name": "@nutui/nutui",
-  "description": "基于Vue2的移动端UI组件库",
-  "version": "1.2.5",
+  "description": "基于Vue2的轻量级移动端UI组件库",
+  "version": "1.2.7",
   "author": "jdc-fe",
   "main": "dist/nutui.js",
-  "keywords": ["nutui", "vue", "webpack", "vue component","jdc"],
+  "keywords": [
+    "nutui",
+    "vue",
+    "webpack",
+    "vue component",
+    "jdc"
+  ],
+  "files": [
+    "dist/nutui.js",
+    "src",
+    "scripts",
+    ".babelrc",
+    ".gitignore",
+    "config.json",
+    "package.json",
+    "postcss.config.js",
+    "webpack.config.custom.js",
+    "webpack.config.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jdf2e/nutui.git"
@@ -19,18 +37,6 @@
   "dependencies": {
     "babel-runtime": "^6.26.0"
   },
-  "files": [
-    "dist/nutui.js",
-    "src",
-    "scripts",
-    ".babelrc",
-    ".gitignore",
-    "config.json",
-    "package.json",
-    "postcss.config.js",
-    "webpack.config.custom.js",
-    "webpack.config.js"
-  ],
   "peerDependencies": {
     "vue": "^2.3.3"
   },
@@ -55,6 +61,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "svg-sprite-loader": "^3.7.3",
+    "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^0.6.2",
     "vue": "^2.3.3",
     "vue-loader": "^12.1.0",

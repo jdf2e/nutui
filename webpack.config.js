@@ -4,7 +4,7 @@ var config = require('./package.json');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-//var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 
 var webpackConfig = module.exports = {};
@@ -80,11 +80,6 @@ webpackConfig.plugins = [
     /*new ExtractTextPlugin({
         filename: 'nutui.css'
     }),*/
-    /* new webpack.optimize.UglifyJsPlugin({
-        mangle: {
-            keep_fnames: true
-        }
-    }), */
     new webpack.BannerPlugin('NutUI v' + config.version + ' ' + new Date().toString()),
     new CopyWebpackPlugin([{
             from: path.join(__dirname, "./src/asset/"),
@@ -109,9 +104,9 @@ if (isProduction) {
         new webpack.LoaderOptionsPlugin({
             minimize: false
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            ecma: 6,
-            compress: {
+        new UglifyJsPlugin({
+            uglifyOptions: {
+                ecma: 8,
                 warnings: false
             }
         })

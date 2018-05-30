@@ -18,13 +18,13 @@
 # 安装
 
 ``` bash
-使用npm安装NutUI
+推荐使用npm安装NutUI
 npm install @nutui/nutui --save
 ```
 
 #### 引用完整组件库
 ``` bash
-1，在入口文件（如app.js）中引入
+1，在webpack入口文件（如app.js或main.js）中引入
 import NutUI from '@nutui/nutui'
 
 2，初始化
@@ -41,7 +41,7 @@ npm install
 2，执行自定义构建命令
 npm run custom
 
-3, 在出现的组件列表中，选择所有您需要打包的组件，然后按下回车键即开始构建
+3，在出现的组件列表中，选择所有您需要打包的组件，然后按下回车键即开始构建
 
 4，片刻之后，自定义构建出的nutui.js文件会出现在dist目录下
 
@@ -55,7 +55,7 @@ npm run custom
 如遮罩层（Mask）组件，直接使用nut-mask标签即可
 <nut-mask :visible.sync="maskShow"><nut-mask>
 ```
-*  另一类是Vue构造器的扩展组件，使用方式类似jQuery/Zepto方法。
+*  另一类是挂在Vue.prototype上的实例方法，在需要的地方调用即可。
 ``` bash
 如对话框（Dialog）组件
 this.$dialog(options);

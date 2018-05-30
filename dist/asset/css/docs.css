@@ -134,7 +134,7 @@ html {
     background-size: 281px;
 }
 .tel-demo {display: none;}
-@media (max-width: 400px){
+@media (max-width: 414px){
    .tm-logo {
         margin: 10px 0 20px 0; 
         width:180px;
