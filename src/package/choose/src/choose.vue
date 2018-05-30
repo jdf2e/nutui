@@ -17,12 +17,22 @@
                 </div>
                 <div class="area-con">
                     <ul class="area-tab-tit">
-                        <li v-for="(data, index) in tempDatas" 
-                            :class="{curr:tabIndex == index + 1,red:!data.item||!data.item[contentKey]}"
-                            @click="getCurrList(index)">
-                                {{data.item && data.item[contentKey]||'请选择'}}
+                        <template v-if="tempDatas.length ==1">
+                            <li v-for="(data, index) in tempDatas" 
+                                :class="{curr:tabIndex == index + 1,red:!data.item||!data.item.name}"
+                            >
+                                    {{data.item && data.item.name||'请选择'}}
+                                </li>
                             </li>
-                        </li>
+                        </template>
+                        <template v-else>
+                            <li v-for="(data, index) in tempDatas" 
+                                :class="{curr:tabIndex == index + 1,red:!data.item||!data.item.name}"
+                                @click="getCurrList(index)">
+                                    {{data.item && data.item.name||'请选择'}}
+                                </li>
+                            </li>
+                        </template>
                     </ul>
                     <div class="area-tab-con">
                         <ul>
