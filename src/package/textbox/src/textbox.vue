@@ -68,6 +68,8 @@ export default {
            	}else{
                 this.errorState = false;
            	}
+            this.$emit('inputFunc',this.textInfo);
+
         }
     }
 }
