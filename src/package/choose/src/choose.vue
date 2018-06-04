@@ -115,6 +115,7 @@ export default {
         'listData'(val,oldVal){
             if(val){
                 this.list = val;
+                 this.$refs.areaTabCon.scrollTop = 0;
                 if(this.tabIndex < this.tempDatas.length){
                    this.tempDatas =  this.tempDatas.slice(0,this.tabIndex);
                 }
