@@ -28,7 +28,7 @@
     "url": "https://github.com/jdf2e/nutui.git"
   },
   "scripts": {
-    "clean": "rm -rf dist",
+    "clean": "node scripts/rmDist",
     "dev": "npm run clean && webpack-dev-server -d --open --progress",
     "build": "npm run clean && cross-env NODE_ENV=production webpack --hide-modules --progress",
     "add": "node scripts/addComponent",
@@ -59,6 +59,7 @@
     "inquirer": "^5.2.0",
     "node-sass": "^4.8.3",
     "postcss-loader": "^2.0.6",
+    "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "svg-sprite-loader": "^3.7.3",
