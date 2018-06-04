@@ -27,6 +27,7 @@ body{
   padding: 8px;
   padding-top: 40px;
   min-height:100vh;
+  box-sizing:border-box;
 }
 .button-primary {
     display: block;
