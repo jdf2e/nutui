@@ -289,7 +289,7 @@ export default {
             let dx = this.endX - this.startX;
 
 
-			if (dx < -20 && Math.abs(dx) > 20 ) {
+			if (dx > 20 &&  Math.abs(dx) > 20) {
 				if( Math.abs(this.translateX) == '66.6') {
 					this.transitionDuration = 0;
 					this.translateX = 0;
@@ -300,7 +300,7 @@ export default {
 				    _this.translateX = index < 3 ? -33.3 * index : -33.3;
 				}, 0);
 
-			} else if (dx > 20 &&  Math.abs(dx) > 20) {
+			} else if (dx < -20 && Math.abs(dx) > 20) {
 				if( Math.abs(this.translateX) == '0') {
 					this.transitionDuration = 0;
 					this.translateX = -66.6;
