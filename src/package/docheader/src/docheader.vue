@@ -14,8 +14,10 @@
                 <use xlink:href="#method"/>
               </svg>
               <figure v-if="showQrCode" class="doc-qr-code">
-                <qriously :value="'http://nutui.jd.com/demo.html#/'+name" :size="150" />
-                <figcaption>手机扫描二维码，查看DEMO</figcaption>
+                <a :href="origin+'/demo.html#/'+name" target="_blank">
+                  <qriously :value="origin+'/demo.html#/'+name" :size="150" />
+                  <figcaption>手机扫描二维码，查看DEMO</figcaption>
+                </a>
               </figure>
           <hr>
           <div class="doc-desc">{{cpt.desc}}</div>
@@ -41,7 +43,7 @@ export default {
   },
   data() {
     return {
-
+      origin:'',
     };
   },
   computed: {
@@ -59,6 +61,7 @@ export default {
 
   },
   mounted() {
+    this.origin = window.location.origin;
   }
 };
 </script>

@@ -35,7 +35,8 @@
     "custom": "node scripts/customBuild && npm run clean && cross-env NODE_ENV=production webpack --config webpack.config.custom.js --hide-modules --progress && rm -rf custom.json && rm -rf src/nutui-custom.js"
   },
   "dependencies": {
-    "babel-runtime": "^6.26.0"
+    "babel-runtime": "^6.26.0",
+    "vueg": "^1.3.4"
   },
   "peerDependencies": {
     "vue": "^2.3.3"

@@ -33,9 +33,9 @@
     },
     {
       "name": "Loading",
-      "chnName": "加载等待蒙层",
+      "chnName": "加载等待提示",
       "type": "method",
-      "desc": "Loading蒙层,一般用于加载等待等场景。"
+      "desc": "加载等待提示组件,一般用于加载等待等场景。"
     },
     {
       "name": "Swiper",
