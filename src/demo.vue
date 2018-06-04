@@ -22,11 +22,11 @@ body{
 }
 .demo-wrapper{
   background-color:#F8F8F8;
+  min-height:100vh;
 }
 .demo{
   padding: 8px;
   padding-top: 40px;
-  min-height:100vh;
   box-sizing:border-box;
 }
 .button-primary {
