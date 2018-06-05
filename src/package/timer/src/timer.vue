@@ -9,11 +9,33 @@
             'timespacer':{
                 type: [Number,String],
                 default: 0
+            },
+            'starttime': {
+                type: [Number,String],
+                default: 0
+            },
+            'endtime': {
+                type: [Number,String],
+                default: 0
+            },
+            'formater': {
+                type: [Number,Date],
+                default: 'hh:mm:ss'
+            }
+        },
+        mounted() {
+            let self = this;
+            this.time();
+            if(self.starttime!=0 && self.endtime!=0) {
+                self.endtime = (self.endtime instanceof Date)?self.endtime:(new Date(self.endtime));
+                self.starttime = (self.starttime instanceof Date)?self.starttime:(new Date(self.starttime));
+                self.timespace = self.endtime.getTime() - self.starttime.getTime();
             }
         },
         computed: {
             timerSecond() {
-                return this.formatMs(this.timespace);
+                let self = this;
+                return self.dateFormater(self.timespace);
             }
         },
         data() {
@@ -21,9 +43,6 @@
                 timer: '',
                 timespace: this.timespacer
             }
-        },
-        created() {
-            this.time();
         },
         methods: {
             //倒计时
@@ -35,18 +54,31 @@
                         self.$emit('end-timer');
                         clearInterval(self.timer);
                     }
-                    
                 }, 1000);
             },
-            //毫秒数格式化成为hh:mm:ss
-            formatMs(ms) {
-                let self = this;
-                let h = Math.floor(ms / 1000 / 60 / 60 % 24);
-                let m = Math.floor(ms / 1000 / 60 % 60);
-                let s = Math.floor(ms / 1000 % 60);
-                let hms = (h < 10 ? ('0' + h) : h) + ':' + (m < 10 ? ('0' + m) : m) + ':' + (s < 10 ? ('0' + s) : s);
-                return hms;
+            dateFormater: function(ms) {
+                /*日期字典*/
+                var timeMap = {
+                    'd': Math.floor(ms / 1000 / 60 / 60 / 24 % 24), //日 
+                    'h': Math.floor(ms / 1000 / 60 / 60 % 24), //小时 
+                    'm': Math.floor(ms / 1000 / 60 % 60), //分 
+                    's': Math.floor(ms / 1000 % 60), //秒 
+                };
+                var formater = this.formater;
+                /*正则替换*/
+                return formater.replace(/([yMdhmsS])+/g, function(all, t) {
+                    var v = timeMap[t];
+                    if ((String(v)).length < all.length) {
+                        var zero = '';
+                        for (var i = 0; i < all.length - String(v).length; i++) {
+                            zero += '0';
+                        }
+                        return zero + v;
+                    }
+                    return v;
+                });
             }
+
         }
     }
 </script>
