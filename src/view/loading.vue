@@ -4,17 +4,15 @@
         :name="$route.name" 
         :chName="$route.params.chnName" 
         type="Component" 
-        desc="加载等待蒙层。" 
         :showQrCode="true"></nut-docheader>
-        <!-- <h1>Loading</h1>
-        <p>“加载中”提示蒙层。</p> -->
+
         <h5>依赖</h5>
         <h6>Mask</h6>
         <h5>基本用法</h5>
         <nut-codebox code="this.$loading(options);"></nut-codebox>
-        <!-- <a class="button button-primary" href="javascript:;" @click="showLoading">Demo</a> -->
+
         <h5>示例</h5>
-        <nut-codebox :code="demo"></nut-codebox>
+        <nut-codebox :code="demo" imgUrl="../asset/img/demo/loading1.png"></nut-codebox>
         <nut-codebox code="export default {
     data(){
         return{
@@ -23,15 +21,14 @@
     },
     mounted(){
       this.loading = this.$loading({
-        maxDuring:5000,
-        iconUrl:'//misc.360buyimg.com/mtd/pc/o2_toolbar/1.0.0/home/images/loading.gif'
+        fade:true
       });
     },
     methods:{
-      showLoading(options){
+      showLoading(){
         this.loading.show();
       },
-      hideLoading(options){
+      hideLoading(){
         this.loading.hide();
       },
     }
@@ -52,6 +49,13 @@
             </thead>
             <tbody>
               <tr>
+                <td>mini</td>
+                <td>迷你模式（非全屏），默认</td>
+                <td>Boolean</td>
+                <td>true</td>
+                <td>--</td>
+              </tr>
+              <tr>
                 <td>maxDuring</td>
                 <td>最大展示时长</td>
                 <td>Number</td>
@@ -62,7 +66,7 @@
                 <td>bgColor</td>
                 <td>遮罩层颜色</td>
                 <td>String</td>
-                <td>'rgba(0,0,0,.5)'</td>
+                <td>mini模式：'rgba(0,0,0,.7)'<br>非mini模式：'rgba(0,0,0,.5)'</td>
                 <td>支持HEX、RGBA</td>
               </tr>
               <tr>
@@ -73,25 +77,59 @@
                 <td>--</td>
               </tr>
               <tr>
+                <td>iconRotate</td>
+                <td>ICON无限旋转动画，mini模式默认开启</td>
+                <td>Boolean</td>
+                <td>mini模式：true<br>非mini模式：false</td>
+                <td>--</td>
+              </tr>
+              <tr>
                 <td>text</td>
                 <td>提示文字</td>
                 <td>String</td>
-                <td>'加载中...'</td>
+                <td>mini模式：''<br>非mini模式：'加载中...'</td>
                 <td>--</td>
-              </tr>
               </tr>
               <tr>
                 <td>textColor</td>
                 <td>文字颜色</td>
                 <td>String</td>
-                <td>'#000000'</td>
+                <td>mini模式：'#FFFFFF'<br>非mini模式：'#000000'</td>
                 <td>支持HEX、RGBA</td>
               </tr>
               <tr>
-                <td>userClose</td>
-                <td>是否允许用户点击关闭</td>
-                <td>Boolean</td>
-                <td>true</td>
+                <td>fontSize</td>
+                <td>文字大小，单位rem</td>
+                <td>Number/String</td>
+                <td>mini模式：0.22<br>非mini模式：0.28</td>
+                <td>支持HEX、RGBA</td>
+              </tr>
+              <tr>
+                <td>height</td>
+                <td>mini模式框体高度，单位rem</td>
+                <td>Number/String</td>
+                <td>'auto'</td>
+                <td>--</td>
+              </tr>
+              <tr>
+                <td>width</td>
+                <td>mini模式框体宽度，单位rem</td>
+                <td>Number/String</td>
+                <td>'auto'</td>
+                <td>--</td>
+              </tr>
+              <tr>
+                <td>borderRadius</td>
+                <td>mini模式圆角边框</td>
+                <td>String</td>
+                <td>'10%'</td>
+                <td>--</td>
+              </tr>
+              <tr>
+                <td>padding</td>
+                <td>mini模式内边距，单位rem</td>
+                <td>String</td>
+                <td>'0.3'</td>
                 <td>--</td>
               </tr>
               <tr>
@@ -111,23 +149,13 @@
 export default {
     data(){
         return{
-          loading:null,
           demo:`<a href="javascript:;" @click="showLoading">Demo</a>`
         }
     },
     mounted(){
-      this.loading = this.$loading({
-        maxDuring:5000,
-        iconUrl:'//misc.360buyimg.com/mtd/pc/o2_toolbar/1.0.0/home/images/loading.gif'
-      });
+
     },
     methods:{
-      showLoading(options){
-        this.loading.show();
-      },
-      hideLoading(options){
-        this.loading.hide();
-      },
     }
 }
 </script>

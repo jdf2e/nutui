@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="demo-wrapper">
     <router-view class="demo-nav" name="demonav"></router-view>
     <keep-alive include="index">
-      <router-view class="demo" name="main"></router-view>
+      <router-view class="demo" name="main" v-transition></router-view>
     </keep-alive>
   </div>
 </template>
@@ -20,9 +20,14 @@ body{
     background:#F8F8F8;
     margin: 0;
 }
+.demo-wrapper{
+  background-color:#F8F8F8;
+}
 .demo{
   padding: 8px;
   padding-top: 40px;
+  min-height:100vh;
+  box-sizing:border-box;
 }
 .button-primary {
     display: block;
