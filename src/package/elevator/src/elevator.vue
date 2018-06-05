@@ -127,6 +127,7 @@ export default {
             }
         },
         onPointerMove(e){
+            e.preventDefault();
             let fontSize = this.getFontSize();
             let dataArrayLength = this.dataArray.length;
             let navHeight = document.getElementById('nut-elevator-nav').clientHeight;

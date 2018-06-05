@@ -284,6 +284,13 @@
       "desc": "级联选择面板。多用于地区选择，支持异步拉取数据。",
       "type": "component",
       "showDemo": true
+    },
+    {
+      "name": "QRCode",
+      "chnName": "二维码生成组件",
+      "desc": "一种可以配置的二维码生成组件",
+      "type": "component",
+      "showDemo": false
     }
   ]
 }
