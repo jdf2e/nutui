@@ -64,15 +64,15 @@
             <tr>
               <td>starttime</td>
               <td>倒计时起始时间，可以为ms格式，可以是时间格式</td>
-              <td>String</td>
-              <td>2018-06-05</td>
+              <td>Number | String | Date</td>
+              <td>0</td>
               <td>--</td>
             </tr>
             <tr>
               <td>startend</td>
               <td>倒计时结束时间，可以为ms格式，可以是时间格式</td>
-              <td>String</td>
-              <td>2018-06-05</td>
+              <td>Number String | Date</td>
+              <td>0</td>
               <td>--</td>
             </tr>
           </tbody>
@@ -119,8 +119,11 @@ export default {
       }
     },
     methods:{
-      endTimer() {
-        console.log('倒计时结束了！');
+      endTimer1() {
+        console.log('示例1倒计时结束了！');
+      },
+      endTimer2() {
+        console.log('示例2倒计时结束了！');
       }
     }
 }

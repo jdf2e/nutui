@@ -15,11 +15,11 @@
                 default: 0
             },
             'endtime': {
-                type: [Number,String],
+                type: [Number,String,Date],
                 default: 0
             },
             'formater': {
-                type: [Number,Date],
+                type: [Number,String,Date],
                 default: 'hh:mm:ss'
             }
         },
