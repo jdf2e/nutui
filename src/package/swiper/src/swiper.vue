@@ -336,7 +336,9 @@ export default {
             let selectedSlide = this.$el.querySelector('.nut-swiper-silde-selected');
             selectedSlide && selectedSlide.classList.remove('nut-swiper-silde-selected');
             this.slideEls[this.currentPage-1].classList.add('nut-swiper-silde-selected');
-
+            if(this.loop){
+                 this._setTranslate(this._getTranslateOfPage(this.currentPage));
+            }
             this.stopAutoPlay = false;
         },
         _isPageChanged(){

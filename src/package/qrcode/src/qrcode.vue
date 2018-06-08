@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import QRCode from 'qrcodejs2'
+import QRCode from './qrcode.js';
 export default {
     name:'nut-qrcode',
     props: {
