@@ -31,7 +31,7 @@
 					</div>
 				</div>
 				<div class="nut-datepicker-week">
-					<span v-for="week of weekArr">{{week}}</span>
+					<span v-for="week of weekArr" key="week">{{week}}</span>
 				</div>
 				<div class="nut-datepicker-days" :style="{'width': width}">
 					<div class="nut-datepicker-panel"
