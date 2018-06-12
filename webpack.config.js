@@ -122,7 +122,7 @@ if (isProduction) {
     webpackConfig.devServer = {
         contentBase: path.resolve(__dirname, 'dist'),
         compress: true, //gzip压缩
-        // host:'10.0.39.18',
+        //host:'10.0.39.18',
         historyApiFallback: true
     };
 }
