@@ -14,7 +14,7 @@ let rl = readline.createInterface({
 
 function init() {
     inquirer.prompt([
-        {
+        { 
             type: 'input',
             name: 'name',
             message: '组件英文名(每个单词的首字母都大写，如TextBox)：',
@@ -134,7 +134,7 @@ function createView() {
         const fileName = 'viewTpl.vue';
 
         const sourceFile = path.join(__dirname, './' + fileName);
-        const destPath = path.join(__dirname, '../src/demo/', nameLc + '.vue');
+        const destPath = path.join(__dirname, '../src/view/', nameLc + '.vue');
 
         const readStream = fs.createReadStream(sourceFile);
         const writeStream = fs.createWriteStream(destPath);
@@ -149,7 +149,7 @@ function createDemo() {
         const fileName = 'demoTpl.vue';
 
         const sourceFile = path.join(__dirname, './' + fileName);
-        const destPath = path.join(__dirname, '../src/view/', nameLc + '.vue');
+        const destPath = path.join(__dirname, '../src/demo/', nameLc + '.vue');
 
         const readStream = fs.createReadStream(sourceFile);
         const writeStream = fs.createWriteStream(destPath);
