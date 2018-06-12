@@ -4,6 +4,7 @@
             <template v-for="(value,index) in num">
                 <li 
                     @click="touchEvn(index)"
+                    v-bind:key="index"
                     :style="{backgroundImage: 'url('+(index<isActive?activeUrl:originalUrl)+')',height:picHeight+'rem',width:picWidth+'rem'}"
                     class='nut-list'>
                 </li>

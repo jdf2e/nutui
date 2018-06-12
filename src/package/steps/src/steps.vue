@@ -1,6 +1,6 @@
 <template>
     <div class="nut-steps" :class="stepsId">
-        <div class="progress-list-box" v-for="(item,index) in stepTitleList">
+        <div class="progress-list-box" v-for="(item,index) in stepTitleList" v-bind:key="index">
             <div :class="['progress-list', {'left-border' : index !== stepTitleList.length-1}]">
                 <div class="gap no-border" v-if="index==0" :style="{height: titleTop+'rem'}"></div>
                 <div class="gap"  :style="{height: titleTop+'rem'}" v-else></div>

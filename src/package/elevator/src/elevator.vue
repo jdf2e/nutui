@@ -4,13 +4,14 @@
             id="nut-elevator-ul"
             >
             <li 
-            v-for="(item,index) in dataArray" 
-            key="item.title"
+            v-for="item in dataArray" 
+            v-bind:key="item.title"
             class="nut-list-title" 
             >
                 <h3 class="nut-list-h" :id="item.title">{{item.title}}</h3>
                 <ul class="nut-people-list">
                     <li v-for="(list,idx) in item.list" 
+                    v-bind:key="idx"
                     class="nut-list-name" 
                     :id="list.id?list.id:'list'+item.title+idx"
                     @click="clickList(list,item)"
@@ -23,7 +24,8 @@
             @touchstart="onPointerMove($event)"
             @touchend="onPointerEnd($event)"
             >
-            <li v-for="(item,index) in dataArray" 
+            <li v-for="(item,index) in dataArray"
+            v-bind:key="index" 
             :id="'nav'+index"
             class="nut-nav-list" 
             :style="{height:navListHeight+'rem'}"
