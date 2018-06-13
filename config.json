@@ -33,9 +33,9 @@
     },
     {
       "name": "Loading",
-      "chnName": "加载等待蒙层",
+      "chnName": "加载等待提示",
       "type": "method",
-      "desc": "Loading蒙层,一般用于加载等待等场景。"
+      "desc": "加载等待提示组件,一般用于加载等待等场景。"
     },
     {
       "name": "Swiper",
@@ -284,6 +284,13 @@
       "desc": "级联选择面板。多用于地区选择，支持异步拉取数据。",
       "type": "component",
       "showDemo": true
+    },
+    {
+      "name": "QRCode",
+      "chnName": "二维码生成组件",
+      "desc": "一种可以配置的二维码生成组件",
+      "type": "component",
+      "showDemo": false
     }
   ]
 }

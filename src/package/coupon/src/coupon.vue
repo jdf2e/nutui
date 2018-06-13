@@ -135,11 +135,10 @@ $unBeanColor: #c2c2c2;
             height: 0.6rem;
             em{
                 display: inline-block;
-                height: 0.3rem;
                 width: 0.72rem;
+                padding: 0.01rem 0;
                 border-radius: 3px;
                 margin-right: 0.06rem;
-                line-height: 0.3rem;
                 font-style: normal;
                 text-align: center;
                 font-size: 0.2rem;

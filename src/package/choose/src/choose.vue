@@ -34,7 +34,7 @@
                             </li>
                         </template>
                     </ul>
-                    <div class="area-tab-con">
+                    <div class="area-tab-con" ref="areaTabCon">
                         <ul>
                             <li v-for="item in list" :class="{curr:item[onlyKey] == currItem[onlyKey]}" @click="getNextList(item)">{{item[contentKey]}}</li>
                         </ul>

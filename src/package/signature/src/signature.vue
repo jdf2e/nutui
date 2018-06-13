@@ -14,7 +14,7 @@ export default {
     name:'nut-signature',
     props: {
 	    lineWidth:  {
-            type: String,
+            type: Number,
             default: 2
         },
 	    strokeStyle:   {
@@ -64,7 +64,7 @@ export default {
 	        _this.moveEventHandler=  _this.moveEventHandler.bind(_this),
 	        _this.endEventHandler= _this.endEventHandler.bind(_this)
 	        _this.$refs.canvas.addEventListener(_this.events[1], _this.moveEventHandler, false);
-	        document.addEventListener(_this.events[2], _this.endEventHandler, false);
+	        _this.$refs.canvas.addEventListener(_this.events[2], _this.endEventHandler, false);
 
 	    },
 
@@ -89,7 +89,7 @@ export default {
 
 	        let _this = this;
 	        _this.$refs.canvas.removeEventListener(_this.events[1], _this.moveEventHandler, false);
-	        document.removeEventListener(_this.events[2], _this.endEventHandler, false);
+	        _this.$refs.canvas.removeEventListener(_this.events[2], _this.endEventHandler, false);
 	    },
 
 	    clear() {
