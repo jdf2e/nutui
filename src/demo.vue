@@ -1,7 +1,7 @@
 <template>
   <div class="demo-wrapper">
     <router-view class="demo-nav" name="demonav"></router-view>
-    <keep-alive include="index">
+    <keep-alive include="index" exclude="luckycard,lazyload">
       <router-view class="demo" name="main" v-transition></router-view>
     </keep-alive>
   </div>
