@@ -2,7 +2,9 @@
     <div class="nut-tab" :class="{'nut-tab-leftnav' : positionNavCss}">
         <template v-if="positionNav=='top'">
             <div :class="['nut-tab-title',tabType]">
-                <span v-for="(value,index) in tabTitleList" v-on:click="switchTab(index,$event)" class="nut-title-nav-list" 
+                <span v-for="(value,index) in tabTitleList"  
+                v-bind:key="index"
+                v-on:click="switchTab(index,$event)" class="nut-title-nav-list" 
                 :class="['nut-title-nav',{'nut-tab-active' : activeIndex == index}]"
                 >
                 <a :href="value.href" class="nut-tab-link" v-on:click="switchTabLink(index,$event)">
@@ -17,7 +19,9 @@
         </template>
         <template v-else-if="positionNav=='left'">
                 <div :class="['nut-tab-title-leftnav',tabType]">
-                    <span v-for="(value,index) in tabTitleList" v-on:click="switchTab(index,$event)" class="nut-title-nav-leftnav" 
+                    <span v-for="(value,index) in tabTitleList" 
+                    v-bind:key="index"
+                    v-on:click="switchTab(index,$event)" class="nut-title-nav-leftnav" 
                     :class="['nut-title-nav',{'nut-tab-active' : activeIndex == index}]"
                     >
                     <a :href="value.href" class="nut-tab-link" v-on:click="switchTabLink(index,$event)">
@@ -35,7 +39,9 @@
                     <slot></slot>
                 </div>
                 <div :class="['nut-tab-title-rightnav',tabType]">
-                    <span v-for="(value,index) in tabTitleList" v-on:click="switchTab(index,$event)" class="nut-title-nav-leftnav" 
+                    <span v-for="(value,index) in tabTitleList" 
+                    v-bind:key="index"
+                    v-on:click="switchTab(index,$event)" class="nut-title-nav-leftnav" 
                     :class="['nut-title-nav',{'nut-tab-active' : activeIndex == index}]"
                     >
                     <a :href="value.href" class="nut-tab-link" v-on:click="switchTabLink(index,$event)">
@@ -50,7 +56,9 @@
                 <slot></slot>
             </div> 
                 <div :class="['nut-tab-title-bottomnav',tabType]">
-                <span v-for="(value,index) in tabTitleList" v-on:click="switchTab(index,$event)" class="nut-title-nav-list" 
+                <span v-for="(value,index) in tabTitleList" 
+                v-bind:key="index"
+                v-on:click="switchTab(index,$event)" class="nut-title-nav-list" 
                 :class="['nut-title-nav',{'nut-tab-active' : activeIndex == index}]"
                 >
                 <a :href="value.href" class="nut-tab-link" v-on:click="switchTabLink(index,$event)">

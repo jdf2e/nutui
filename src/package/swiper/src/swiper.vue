@@ -2,7 +2,7 @@
     <div class="nut-swiper"
         :class="[direction,{'dragging':dragging}]"
         @touchstart="_onTouchStart($event)"
-        @mousedown="_onTouchStart($event)">
+        @mousedown="_onTouchStart($event)" @touchMove.stop>
         <div class="nut-swiper-wrap"
             :style="{
                     'transform':'translate3d('+translateX+'px,'+translateY+'px,0)',
@@ -14,7 +14,7 @@
             <slot></slot>
         </div>
         <div class="nut-swiper-pagination" v-show="paginationVisible">
-            <span class="swiper-pagination-bullet" :class="{'active':index+1 ===currentPage}" v-for="(slide,index) in slideEls" @click="paginationClickable && setPage(index+1)">
+            <span class="swiper-pagination-bullet" :class="{'active':index+1 ===currentPage}" v-for="(slide,index) in slideEls" @click="paginationClickable && setPage(index+1)" :key="index">
             </span>
         </div>
     </div>

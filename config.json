@@ -245,6 +245,7 @@
       "name": "Handle",
       "chnName": "工具函数",
       "type": "filter",
+      "showDemo":false,
       "desc": "工具函数。"
     },
     {

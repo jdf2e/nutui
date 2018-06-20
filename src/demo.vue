@@ -1,7 +1,7 @@
 <template>
   <div class="demo-wrapper">
     <router-view class="demo-nav" name="demonav"></router-view>
-    <keep-alive include="index">
+    <keep-alive include="index" exclude="luckycard,lazyload">
       <router-view class="demo" name="main" v-transition></router-view>
     </keep-alive>
   </div>
@@ -22,11 +22,11 @@ body{
 }
 .demo-wrapper{
   background-color:#F8F8F8;
+  min-height:100vh;
 }
 .demo{
   padding: 8px;
   padding-top: 40px;
-  min-height:100vh;
   box-sizing:border-box;
 }
 .button-primary {
