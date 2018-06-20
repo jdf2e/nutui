@@ -177,43 +177,51 @@ p{
     .box-image{
         img{
             display:block;
-            margin:0 auto;
+            //margin:0 auto;
             box-shadow: 0px 15px 38px 1px #eee;
-            animation: lightSpeedIn 1s linear both;
-            @-webkit-keyframes lightSpeedIn{
+            animation: bounceInRight 1s linear both;
+            @-webkit-keyframes bounceInRight{
+
+                from, 60%, 75%, 90%, to {
+                    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                }
                 from {
-                    -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
-                    transform: translate3d(100%, 0, 0) skewX(-30deg);
                     opacity: 0;
+                    -webkit-transform: translate3d(3000px, 0, 0);
+                    transform: translate3d(3000px, 0, 0);
                 }
                 60% {
-                    -webkit-transform: skewX(20deg);
-                    transform: skewX(20deg);
                     opacity: 1;
+                    -webkit-transform: translate3d(-25px, 0, 0);
+                    transform: translate3d(-25px, 0, 0);
                 }
-                80% {
-                    -webkit-transform: skewX(-5deg);
-                    transform: skewX(-5deg);
-                    opacity: 1;
+                75% {
+                    -webkit-transform: translate3d(10px, 0, 0);
+                    transform: translate3d(10px, 0, 0);
+                }
+                90% {
+                    -webkit-transform: translate3d(-5px, 0, 0);
+                    transform: translate3d(-5px, 0, 0);
                 }
                 to {
                     -webkit-transform: none;
                     transform: none;
-                    opacity: 1;
                 }
+                }
+        
             }
-        }
     }
 }
 .logos{
     padding:0px;
     margin:0px;
-    width:80%;
+    //width:80%;
     margin:0 auto;
     box-sizing:border-box;
     list-style-type:none;
     display:flex;
-    justify-content: center;
+    //justify-content: center;
     li{
         float:left;
         padding:0px;
