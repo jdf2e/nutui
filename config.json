@@ -292,6 +292,13 @@
       "desc": "一种可以配置的二维码生成组件",
       "type": "component",
       "showDemo": false
+    },
+    {
+      "name": "Animate",
+      "chnName": "动画指令",
+      "desc": "基于animate.css的动画指令",
+      "type": "directive",
+      "showDemo": true
     }
   ]
 }
