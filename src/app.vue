@@ -1,7 +1,7 @@
 <template>
   <div @click="wrapperClick" class="sys-box">
     <!-- <vue-progress-bar></vue-progress-bar> -->
-    <div class="sys-header"><div class="sys-inner"><a href="javascript:;" class="sys-logo pc-logo">NutUI</a>
+    <div class="sys-header"><div class="sys-inner"><a href="//nutui.jd.com/" class="sys-logo pc-logo">NutUI</a>
     <a href="javascript:;" @click.stop="toggleMenu()"  class="sys-logo m-logo">NutUI</a>
     <ul class="sys-menu">
           <li><a href="https://github.com/jdf2e/nutui" class="github">

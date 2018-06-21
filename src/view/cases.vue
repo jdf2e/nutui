@@ -2,7 +2,7 @@
     <div class="wrapper">
         <h1 class="title-box">实践案例</h1>
         <p>从NUTUI诞生起，就逐渐应用在多个项目中，相信以后会有越来越多的项目接入到NUTUI中。以下是应用了NUTUI的项目示例。</p>
-        <h4 class="nav-box"><b class="icon"></b>京东APP</h4>
+        <h4 class="nav-box"><b class="icon"></b>京东&nbsp;APP</h4>
         <div class="box" v-for="(item,index) in appList" v-bind:key="index">
             <p class="box-title"><b class="title-round"></b>{{item.title}}</p>
             <div class="box-entry">{{item.entry}}</div>
@@ -11,10 +11,18 @@
                 <img :src='item.imageSrc' width="350px" />
             </div>
         </div>
-        <h4 class="nav-box"><b class="icon"></b>京东ME</h4>
+        <h4 class="nav-box"><b class="icon"></b>京东&nbsp;ME</h4>
         <ul class="logos">
             <li v-for="(list,index) in meList" v-bind:key="index">
                 <img class="logos-img" :src="list.imageSrc"/>
+                <p class="logos-text">{{list.title}}</p>
+            </li>
+        </ul>
+        <div class="line"></div>
+        <h4 class="nav-box"><b class="icon"></b>大客户</h4>
+        <ul class="logos">
+            <li v-for="(list,index) in clientList" v-bind:key="index">
+                <img class="logos-img client-img" :src="list.imageSrc"/>
                 <p class="logos-text">{{list.title}}</p>
             </li>
         </ul>
@@ -36,19 +44,19 @@ export default {
           appList:[
             {
               title:'会员PLUS',
-              entry:'访问入口：京东APP首页—PLUS会员',
+              entry:'京东APP首页—PLUS会员',
               intro:'京东为向核心客户提供更优质的购物体验，推出了京东PLUS会员，包含购物回馈、自营运费补贴、畅读电子书、退换无忧、专属客服和专享商品等权益，全方位提升和丰富网购特权。',
               imageSrc:'//img10.360buyimg.com/uba/jfs/t23413/151/250900924/114472/8b24b17f/5b2a2b55Ndc255cf7.png'
             },
             {
               title:'京保养',
-              entry:'访问入口： 京东APP-车保养-京保养',
+              entry:'京东APP-车保养-京保养',
               intro:'京保养实现了汽车服务市场的业务快速接入，提供购买保养套餐后的绑车、预约门店进行保养等一系列移动端线上操作功能，让用户购买一次，多个门店可选择并进行爱车保养。',
               imageSrc:'//img11.360buyimg.com/uba/jfs/t20998/154/1477000841/77697/dc24002b/5b2a0f0eNfcdaa2f2.jpg'
             },
             {
               title:'宽带办理',
-              entry:'访问入口： 京东APP-充值缴费-宽带办理',
+              entry:'京东APP-充值缴费-宽带办理',
               intro:'宽带项目作为电商进入客户家庭的关键入口，利用运营商现有渠道，能集约对接各省市运营商，且支持线下/第三方各渠道下单。',
               imageSrc:'//img11.360buyimg.com/uba/jfs/t22624/176/252723731/122091/20837dc4/5b2a17baNe4cc750f.png'
             }
@@ -65,6 +73,20 @@ export default {
             {
                 title:'一线支援',
                 imageSrc:'../asset/img/cases/online_icon.png',
+            },
+            {
+                title:'e维平台',
+                imageSrc:'../asset/img/cases/e_platform.png',
+            },
+            {
+                title:'差旅服务',
+                imageSrc:'../asset/img/cases/travel.png',
+            }
+          ],
+          clientList:[
+            {
+                title:'年节福利',
+                imageSrc:'../asset/img/cases/jingxi.png',
             }
           ],
           otherList:[
@@ -100,7 +122,7 @@ p{
 }
 .nav-box{
     display:inline-block;
-    font-size: 24px;
+    font-size: 26px;
     height:25px;
     line-height: 25px;
     color:#a38249;
@@ -147,11 +169,10 @@ p{
 }
 .box{
     border-bottom:2px solid #eee;
-    margin-bottom:10px;
+    margin-bottom:20px;
     padding-bottom:40px;
     .box-title{
         font-size: 20px;
-        margin-top:40px;
         margin-bottom:0px;
         font-weight:bold;
         .title-round{
@@ -277,6 +298,11 @@ p{
             background-repeat:no-repeat;
             background-position:center center;
         } 
+        .client-img{
+            width:85px;
+            height:65px;
+            background-size:85px 65px;
+        }
         .other-img{
             width:65px;
             height:65px;
@@ -289,5 +315,6 @@ p{
 }
 .line{
     border-bottom:2px solid #eee;
+    margin-bottom:20px;
 }
 </style>
