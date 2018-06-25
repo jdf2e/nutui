@@ -299,6 +299,13 @@
       "desc": "基于animate.css的动画指令",
       "type": "directive",
       "showDemo": true
+    },
+    {
+      "name": "Progress",
+      "chnName": "进度条",
+      "desc": "进度条",
+      "type": "component",
+      "showDemo": true
     }
   ]
 }
