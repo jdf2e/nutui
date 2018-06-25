@@ -37,6 +37,13 @@
                 <td>true</td>
                 <td>true/false</td>
               </tr>
+              <tr>
+                <td>customClass</td>
+                <td>自定义样式名</td>
+                <td>String</td>
+                <td> </td>
+                <td> </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -76,16 +83,21 @@
 export default {
     data(){
         return{
-            demo: `<nut-sideslipbutton @slide-left="slideLeft" @slide-right="slideRight" @slide-no="slideNo" :during="0.5">
-    <div slot="slidedom" class="slidedom">
-        <div class="addr">
-            <p class="name-mobile">159****8888</p>
-            <p class="full-addr">北京市大兴区亦庄经济开发中心京东大厦B座</p>
-        </div>
-        <a class="addr-edit" href="javascript:void(0)"></a>
-    </div>
-    <div slot="slideoper" class="slideoper">删除/收藏</div>
-</nut-sideslipbutton>`
+            demo: `<nut-sideslipbutton 
+        @slide-left="slideLeft" 
+        @slide-right="slideRight" 
+        @slide-no="slideNo" 
+        during="0.2" 
+        customClass="aaaaa">
+            <div slot="slidedom" class="slidedom">
+                <div class="addr">
+                    <p class="name-mobile">159****8888</p>
+                    <p class="full-addr">北京市大兴区亦庄经济开发中心京东大厦B座</p>
+                </div>
+                <a class="addr-edit" href="javascript:void(0)"></a>
+            </div>
+            <div slot="slideoper" class="slideoper">删除/收藏</div>
+        </nut-sideslipbutton>`
         }
     },
     methods:{

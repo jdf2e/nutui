@@ -5,7 +5,7 @@ import Conf from '../config.json';
 const Nav = () => import('./view/nav.vue');
 const Intro = () => import('./view/intro.vue');
 const Phone = () => import('./view/phone.vue');
-
+const Cases = () => import('./view/cases.vue');
 Vue.use(VueRouter);
 
 const routes = [
@@ -29,6 +29,13 @@ const routes = [
       nav:Nav,
       phone:Phone,
       
+    }
+  },
+  { 
+    name:'cases',
+    path: '/cases', 
+    components:{
+      main:Cases,
     }
   }
 ];

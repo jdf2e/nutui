@@ -106,7 +106,7 @@
             font-size: 0.28rem!important;
             width: 100%;
             height: 2.5rem!important;
-            padding-top: 1.4rem!important;
+            padding-top: 1.40rem!important;
         }
         .nut-swiper-silde-selected {
             color: #333!important;
@@ -133,7 +133,7 @@
     }
     .selected-bg {
         position: absolute;
-        margin-top: 1.4rem;
+        margin-top: 1.39rem;
         height: 0.7rem;
         width: 100%;
         border-top: 0.01rem solid #f0f0f0;

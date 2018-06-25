@@ -11,7 +11,7 @@
             direction="horizontal"
              ref="demo1"
              @slideChangeEnd="slideChangeEnd">
-            <div v-for="item in dataItem" class="nut-swiper-silde"><span>page{{item.name}}</span></div>
+            <div v-for="item in dataItem" class="nut-swiper-silde" :key="item.name"><span>page{{item.name}}</span></div>
 
         </nut-swiper>
 

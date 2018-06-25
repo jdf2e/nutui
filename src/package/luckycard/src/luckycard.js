@@ -3,21 +3,11 @@
  *
  * Copyright (c) 2015 Frans Lee dmon@foxmail.com
  *
- * https://github.com/Franslee/lucky-card
- *
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
  *
  * Version:  1.0.3
- *
- * Update:
- *          1.0.1 Fixed a bug with "coverImg".(Thanks to dongnanyanhai reported the problem) 2015-11-10
- *          1.0.2 Fixed a bug when page can be scrolling.(Thanks to agileago's report & Tomatoo's pull) 2016-03-17
- *          1.0.3 Fixed some bugs. 2017-08-17
- *
  */
-/* ;
-(function(window, document, undefined) { */
     'use strict';
 
     /**
@@ -194,7 +184,6 @@
         /* this.scratchDiv = document.getElementById('scratch');*/
         if (!this.scratchDiv) return;
         this.cardDiv = this.scratchDiv.querySelector('.nut-content'); 
-        console.log(this.cardDiv);
         if (!this.cardDiv) return;
         
         this.cHeight = this.cardDiv.clientHeight;
@@ -213,19 +202,5 @@
     LuckyCard.case = function(settings, callback) {
         return new LuckyCard(settings, callback);
     };
-
-
-/*     if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
-        define(function() {
-            return LuckyCard;
-        });
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = LuckyCard.case;
-        module.exports.LuckyCard = LuckyCard;
-    } else {
-        window.LuckyCard = LuckyCard;
-    }
-
-})(window, document); */
 
 export default LuckyCard.case;

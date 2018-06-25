@@ -34,7 +34,7 @@
                             </li>
                         </template>
                     </ul>
-                    <div class="area-tab-con">
+                    <div class="area-tab-con" ref="areaTabCon">
                         <ul>
                             <li v-for="item in list" :class="{curr:item[onlyKey] == currItem[onlyKey]}" @click="getNextList(item)">{{item[contentKey]}}</li>
                         </ul>
@@ -115,6 +115,7 @@ export default {
         'listData'(val,oldVal){
             if(val){
                 this.list = val;
+                 this.$refs.areaTabCon.scrollTop = 0;
                 if(this.tabIndex < this.tempDatas.length){
                    this.tempDatas =  this.tempDatas.slice(0,this.tabIndex);
                 }

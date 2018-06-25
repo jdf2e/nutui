@@ -17,7 +17,7 @@ export default {
     },
     methods:{
         goback(){
-            if (self != top) { 
+            if (self != top || history.length===1) { 
                 this.$router.push('./index');
             }else{
                 history.back();

@@ -3,8 +3,6 @@
         <nut-demoheader 
         :name="$route.name"
         ></nut-demoheader>
-        <!-- DEMO区域 -->
-        <!-- <nut-switch :height="30" :width="60" @switch-on="switchOn" @switch-off="switchOff"></nut-switch> -->
         
         <!-- DEMO代码 -->
         <div 
@@ -29,6 +27,7 @@ import Vue from 'vue';
 import lazyload from '../package/lazyload/index.js';
 
 export default {
+    name:'lazyload',
     data(){
         return{
         }

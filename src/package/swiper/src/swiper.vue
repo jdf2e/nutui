@@ -2,7 +2,7 @@
     <div class="nut-swiper"
         :class="[direction,{'dragging':dragging}]"
         @touchstart="_onTouchStart($event)"
-        @mousedown="_onTouchStart($event)">
+        @mousedown="_onTouchStart($event)" @touchMove.stop>
         <div class="nut-swiper-wrap"
             :style="{
                     'transform':'translate3d('+translateX+'px,'+translateY+'px,0)',
@@ -14,7 +14,7 @@
             <slot></slot>
         </div>
         <div class="nut-swiper-pagination" v-show="paginationVisible">
-            <span class="swiper-pagination-bullet" :class="{'active':index+1 ===currentPage}" v-for="(slide,index) in slideEls" @click="paginationClickable && setPage(index+1)">
+            <span class="swiper-pagination-bullet" :class="{'active':index+1 ===currentPage}" v-for="(slide,index) in slideEls" @click="paginationClickable && setPage(index+1)" :key="index">
             </span>
         </div>
     </div>
@@ -336,7 +336,9 @@ export default {
             let selectedSlide = this.$el.querySelector('.nut-swiper-silde-selected');
             selectedSlide && selectedSlide.classList.remove('nut-swiper-silde-selected');
             this.slideEls[this.currentPage-1].classList.add('nut-swiper-silde-selected');
-
+            if(this.loop){
+                 this._setTranslate(this._getTranslateOfPage(this.currentPage));
+            }
             this.stopAutoPlay = false;
         },
         _isPageChanged(){

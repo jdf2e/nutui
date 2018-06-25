@@ -6,7 +6,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var autoprefixer = require('autoprefixer');
-
 var webpackConfig = module.exports = {};
 var isProduction = process.env.NODE_ENV === 'production';
 
@@ -33,11 +32,14 @@ webpackConfig.module = {
         use: ['style-loader', 'css-loader', 'postcss-loader']
     }, {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
+            use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
     }, {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
+            loaders: {
+                scss: 'vue-style-loader!css-loader!sass-loader'
+            },
             postcss: [autoprefixer()]
         }
     }, {
@@ -122,7 +124,7 @@ if (isProduction) {
     webpackConfig.devServer = {
         contentBase: path.resolve(__dirname, 'dist'),
         compress: true, //gzip压缩
-        //host:'192.168.191.1',
+        //host:'10.0.39.18',
         historyApiFallback: true
     };
 }

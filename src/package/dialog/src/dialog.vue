@@ -112,6 +112,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index:9998;
 }
 
 .nut-dialog {
@@ -203,19 +204,23 @@ export default {
     font-size: .32rem;
     border: none;
     background: transparent;
-    border-radius:0;
     &.disabled {
         background: #DADADA;
         color: #A3A3A3;
     }
+    &:only-child{
+        border-radius: 0 0 .2rem .2rem;
+    }
 }
 
 .nut-dialog-ok {
+    border-radius: 0 0 .2rem 0;
     background: #F23030;
     color: #FFF;
 }
 
 .nut-dialog-cancel {
+    border-radius: 0 0 0 .2rem;
     border-top: 1px solid #E0E0E0;
 }
 
