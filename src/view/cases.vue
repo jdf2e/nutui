@@ -22,7 +22,11 @@
         <h4 class="nav-box"><b class="icon"></b>大客户</h4>
         <ul class="logos">
             <li v-for="(list,index) in clientList" v-bind:key="index">
-                <img class="logos-img client-img" :src="list.imageSrc"/>
+                <div class="client-big" v-if="list.title == '生活衫德'">
+                    <img class="logos-img client-bigimg" :src="list.imageSrc"/>
+                </div>
+                
+                <img class="logos-img client-img" :src="list.imageSrc" v-if="list.title !== '生活衫德'"/>
                 <p class="logos-text">{{list.title}}</p>
             </li>
         </ul>
@@ -87,6 +91,10 @@ export default {
             {
                 title:'年节福利',
                 imageSrc:'../asset/img/cases/jingxi.png',
+            },
+            {
+                title:'生活衫德',
+                imageSrc:'../asset/img/cases/shande_icon.png',
             }
           ],
           otherList:[
@@ -302,6 +310,18 @@ p{
             width:85px;
             height:65px;
             background-size:85px 65px;
+        }
+        .client-big{
+            width:85px;
+            height:65px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .client-bigimg{
+            width:89px;
+            height:36px;
+            background-size:89px 36px;
         }
         .other-img{
             width:65px;
