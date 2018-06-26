@@ -1,10 +1,11 @@
 <template>
     <div class="nut-progress">
-        <div class="nut-progress-cont" :style="{height}">
+        <div :class="['nut-progress-cont', showText !== 'out'? 'nut-progress-in': 'nut-progress-out']" :style="{height}">
             <div class="nut-progress-bar" :style="{background: color, width: per}">
-                <div class="nut-progress-text" :style="{lineHeight: height}" v-if="showText">{{per}}</div>
+                <div class="nut-progress-text" :style="{lineHeight: height}" v-if="showText !== 'out'">{{per}}</div>
             </div>
         </div>
+        <div class="nut-progress-text" :style="{lineHeight: height}" v-if="showText === 'out'">{{per}}</div>
     </div>
 </template>
 <script>
@@ -24,8 +25,8 @@ export default {
             default: '.06rem'
         },
         showText: {
-            type: Boolean,
-            default: false
+            type: String,
+            default: 'in'
         }
     },
     computed: {
@@ -66,6 +67,16 @@ export default {
     float: right;
     font-size: .14rem;
     color: #fff;
-    margin-right: 5px;
+}
+.nut-progress-in{
+    .nut-progress-text{
+        margin-right: 5px;
+    }
+}
+.nut-progress-out{
+    margin-right: 50px;
+    &+.nut-progress-text{
+        width: 50px;
+    }
 }
 </style>

@@ -3,15 +3,26 @@
         <nut-demoheader 
         :name="$route.name"
         ></nut-demoheader>
-        <p>默认用法</p>
-        <nut-codebox code="<nut-progress percent='15' />" />
-        <nut-progress percent="15" />
-        <p>设置高度和颜色</p>
-        <nut-codebox code="<nut-progress height='0.15rem' color='#F54C12' />" />
-        <nut-progress height="0.15rem" color="#F54C12" />
-        <p>显示进度数</p>
-        <nut-codebox code="<nut-progress height='0.25rem' percent='20' :showText='true' />" />
-        <nut-progress percent="15" :showText="true" />
+        <h5>示例</h5>
+        <h6>默认用法</h6>
+        <nut-codebox code="<nut-progress 
+percent='15'
+height='10px' />" />
+        <div class="cont">
+          <nut-progress percent="15" height="10px" />
+        </div>
+        <h6>设置高度和颜色</h6>
+        <nut-codebox code="<nut-progress 
+height='10px' 
+color='#F54C12' />" />
+        <div class="cont">
+          <nut-progress height="10px" color="#F54C12" percent="23" />
+        </div>
+        <h6>显示进度数</h6>
+        <nut-codebox code="<nut-progress height='0.25rem' percent='20' showText='out' />" />
+        <div class="cont">
+          <nut-progress percent="20" showText="out" height="20px" />
+        </div>
     </div>
 </template>
 
@@ -26,5 +37,7 @@ export default {
 </script>
 
 <style>
-
+.cont{
+  width: 450px;
+}
 </style>
