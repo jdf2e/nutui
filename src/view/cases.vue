@@ -115,6 +115,7 @@ export default {
 <style lang="scss" scoped>
 .wrapper{
     padding-bottom:50px;
+    background:#fff;
 }
 .title-box{
     color: #0f0649;
