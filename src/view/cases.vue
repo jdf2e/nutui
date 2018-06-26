@@ -85,6 +85,10 @@ export default {
             {
                 title:'差旅服务',
                 imageSrc:'../asset/img/cases/travel.png',
+            },
+            {
+                title:'职能停车场',
+                imageSrc:'../asset/img/cases/car_stop.png',
             }
           ],
           clientList:[
