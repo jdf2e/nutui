@@ -22,11 +22,11 @@
         <h4 class="nav-box"><b class="icon"></b>大客户</h4>
         <ul class="logos">
             <li v-for="(list,index) in clientList" v-bind:key="index">
-                <div class="client-big" v-if="list.title == '生活衫德'">
+                <div class="client-big" v-if="list.title == '生活杉德'">
                     <img class="logos-img client-bigimg" :src="list.imageSrc"/>
                 </div>
                 
-                <img class="logos-img client-img" :src="list.imageSrc" v-if="list.title !== '生活衫德'"/>
+                <img class="logos-img client-img" :src="list.imageSrc" v-if="list.title !== '生活杉德'"/>
                 <p class="logos-text">{{list.title}}</p>
             </li>
         </ul>
@@ -47,7 +47,7 @@ export default {
         return{
           appList:[
             {
-              title:'会员PLUS',
+              title:'PLUS会员',
               entry:'京东APP首页—PLUS会员',
               intro:'京东为向核心客户提供更优质的购物体验，推出了京东PLUS会员，包含购物回馈、自营运费补贴、畅读电子书、退换无忧、专属客服和专享商品等权益，全方位提升和丰富网购特权。',
               imageSrc:'//img10.360buyimg.com/uba/jfs/t23413/151/250900924/114472/8b24b17f/5b2a2b55Ndc255cf7.png'
@@ -87,7 +87,7 @@ export default {
                 imageSrc:'../asset/img/cases/travel.png',
             },
             {
-                title:'职能停车场',
+                title:'智能停车场',
                 imageSrc:'../asset/img/cases/car_stop.png',
             }
           ],
@@ -97,7 +97,7 @@ export default {
                 imageSrc:'../asset/img/cases/jingxi.png',
             },
             {
-                title:'生活衫德',
+                title:'生活杉德',
                 imageSrc:'../asset/img/cases/shande_icon.png',
             }
           ],
