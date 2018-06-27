@@ -1,8 +1,8 @@
 <template>
     <div>
-        <nut-demoheader 
-        :name="$route.name"
-        ></nut-demoheader>
+        <nut-docheader 
+        :name="$route.name" 
+        :showQrCode="true"></nut-docheader>
         <h5>示例</h5>
         <h6>默认用法</h6>
         <nut-codebox code="<nut-progress 
