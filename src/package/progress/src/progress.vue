@@ -26,7 +26,7 @@ export default {
         },
         showText: {
             type: String,
-            default: 'in'
+            default: 'out'
         }
     },
     computed: {
@@ -50,6 +50,9 @@ export default {
 }
 </script>
 <style lang="scss">
+.nut-progress{
+    position: relative;
+}
 .nut-progress-cont{
     border-radius: 100px;
     background-color: #ebeef5;
@@ -74,9 +77,13 @@ export default {
     }
 }
 .nut-progress-out{
-    margin-right: 50px;
+    margin-right: 38px;
     &+.nut-progress-text{
-        width: 50px;
+        width: 31px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: #666;
     }
 }
 </style>
