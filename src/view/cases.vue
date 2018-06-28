@@ -256,6 +256,7 @@ p{
     list-style-type:none;
     display:flex;
     //justify-content: center;
+    flex-wrap: wrap;
     li{
         float:left;
         padding:0px;
