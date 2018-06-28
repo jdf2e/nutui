@@ -8,7 +8,7 @@
             <div class="box-entry">{{item.entry}}</div>
             <div class="box-intro">{{item.intro}}</div>
             <div class="box-image">
-                <img :src='item.imageSrc' width="350px" />
+                <img :src='item.imageSrc' class="images" />
             </div>
         </div>
         <h4 class="nav-box"><b class="icon"></b>京东&nbsp;ME</h4>
@@ -244,6 +244,14 @@ p{
                 }
                 }
         
+            }
+            .images{
+                width:350px
+            }
+            @media (max-width: 450px) {
+                .images{
+                    width:250px
+                }
             }
     }
 }
