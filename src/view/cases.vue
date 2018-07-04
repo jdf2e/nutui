@@ -89,6 +89,14 @@ export default {
             {
                 title:'智能停车场',
                 imageSrc:'../asset/img/cases/car_stop.png',
+            },
+            {
+                title:'访客预约',
+                imageSrc:'../asset/img/cases/visitor.png',
+            },
+            {
+                title:'京东福利',
+                imageSrc:'../asset/img/cases/fuli.png',
             }
           ],
           clientList:[
