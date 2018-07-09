@@ -8,7 +8,7 @@
             <div class="box-entry">{{item.entry}}</div>
             <div class="box-intro">{{item.intro}}</div>
             <div class="box-image">
-                <img :src='item.imageSrc' width="350px" />
+                <img :src='item.imageSrc' class="images" />
             </div>
         </div>
         <h4 class="nav-box"><b class="icon"></b>京东&nbsp;ME</h4>
@@ -22,7 +22,11 @@
         <h4 class="nav-box"><b class="icon"></b>大客户</h4>
         <ul class="logos">
             <li v-for="(list,index) in clientList" v-bind:key="index">
-                <img class="logos-img client-img" :src="list.imageSrc"/>
+                <div class="client-big" v-if="list.title == '生活杉德'">
+                    <img class="logos-img client-bigimg" :src="list.imageSrc"/>
+                </div>
+                
+                <img class="logos-img client-img" :src="list.imageSrc" v-if="list.title !== '生活杉德'"/>
                 <p class="logos-text">{{list.title}}</p>
             </li>
         </ul>
@@ -43,7 +47,7 @@ export default {
         return{
           appList:[
             {
-              title:'会员PLUS',
+              title:'PLUS会员',
               entry:'京东APP首页—PLUS会员',
               intro:'京东为向核心客户提供更优质的购物体验，推出了京东PLUS会员，包含购物回馈、自营运费补贴、畅读电子书、退换无忧、专属客服和专享商品等权益，全方位提升和丰富网购特权。',
               imageSrc:'//img10.360buyimg.com/uba/jfs/t23413/151/250900924/114472/8b24b17f/5b2a2b55Ndc255cf7.png'
@@ -59,6 +63,12 @@ export default {
               entry:'京东APP-充值缴费-宽带办理',
               intro:'宽带项目作为电商进入客户家庭的关键入口，利用运营商现有渠道，能集约对接各省市运营商，且支持线下/第三方各渠道下单。',
               imageSrc:'//img11.360buyimg.com/uba/jfs/t22624/176/252723731/122091/20837dc4/5b2a17baNe4cc750f.png'
+            },
+            {
+              title:'TELink联合校招',
+              entry:'京东APP-校园生活-大学生活-校园招聘',
+              intro:'Telink无界选人移动端业务旨在联合企业、校园、学生，进行无界联合招聘，为联合招聘提供移动端的支持。与校园业务结合达成合作。京东校园协调全国2000余所院校的500万认证学生资源以及各品牌方，开展线下校园招聘会，并提供TElink无界招聘在京东app的专属入口。',
+              imageSrc:'//img14.360buyimg.com/uba/jfs/t21133/306/1869282378/85523/4acb84e9/5b3c8ca6Nec7cf1b3.jpg'
             }
           ],
           meList:[
@@ -81,12 +91,28 @@ export default {
             {
                 title:'差旅服务',
                 imageSrc:'../asset/img/cases/travel.png',
+            },
+            {
+                title:'智能停车场',
+                imageSrc:'../asset/img/cases/car_stop.png',
+            },
+            {
+                title:'访客预约',
+                imageSrc:'../asset/img/cases/visitor.png',
+            },
+            {
+                title:'京东福利',
+                imageSrc:'../asset/img/cases/fuli.png',
             }
           ],
           clientList:[
             {
                 title:'年节福利',
                 imageSrc:'../asset/img/cases/jingxi.png',
+            },
+            {
+                title:'生活杉德',
+                imageSrc:'../asset/img/cases/shande_icon.png',
             }
           ],
           otherList:[
@@ -107,6 +133,7 @@ export default {
 <style lang="scss" scoped>
 .wrapper{
     padding-bottom:50px;
+    background:#fff;
 }
 .title-box{
     color: #0f0649;
@@ -232,6 +259,14 @@ p{
                 }
         
             }
+            .images{
+                width:350px
+            }
+            @media (max-width: 450px) {
+                .images{
+                    width:250px
+                }
+            }
     }
 }
 .logos{
@@ -243,6 +278,7 @@ p{
     list-style-type:none;
     display:flex;
     //justify-content: center;
+    flex-wrap: wrap;
     li{
         float:left;
         padding:0px;
@@ -302,6 +338,18 @@ p{
             width:85px;
             height:65px;
             background-size:85px 65px;
+        }
+        .client-big{
+            width:85px;
+            height:65px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .client-bigimg{
+            width:89px;
+            height:36px;
+            background-size:89px 36px;
         }
         .other-img{
             width:65px;
