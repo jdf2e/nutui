@@ -10,7 +10,7 @@
         </div>
         <nut-choose 
         :visibile="showChoose"
-        :needCache="true"
+        :needCache="false"
         @init-choose="initChoose" 
         @close-choose="closeChoose" 
         @choose-item="closeItem"
