@@ -3,14 +3,40 @@
         <h1 class="title-box">实践案例</h1>
         <p>从NUTUI诞生起，就逐渐应用在多个项目中，相信以后会有越来越多的项目接入到NUTUI中。以下是应用了NUTUI的项目示例。</p>
         <h4 class="nav-box"><b class="icon"></b>京东&nbsp;APP</h4>
-        <div class="box" v-for="(item,index) in appList" v-bind:key="index">
-            <p class="box-title"><b class="title-round"></b>{{item.title}}</p>
-            <div class="box-entry">{{item.entry}}</div>
-            <div class="box-intro">{{item.intro}}</div>
-            <div class="box-image">
-                <img :src='item.imageSrc' class="images" />
-            </div>
+        <div class="app-box">
+            <div class="pre-btn" v-on:click="nextPage"><b class="pre-btn-icon"></b></div>
+            <div class="next-btn" v-on:click="prePage"><b class="next-btn-icon"></b></div>
+            <nut-swiper
+               :pagination-visible="true"
+               direction="horizontal"
+               :performanceMode="true"
+               ref="appShow"
+               :speed="1000"
+               @slideChangeStart="slideChangeStart">
+                <div v-for="item in appList" class="nut-swiper-silde box">
+                    <div class="box-image">
+                        <img :src='item.imageSrc' class="images" />
+                    </div>
+                    <div class="box-info">
+                        <div class="info">
+                            <p class="box-title"><b class="title-round"></b>{{item.title}}<b class="title-round-sec"></b></p>
+                            <div class="box-entry"><b class="entry-icon"></b>{{item.entry}}</div>
+                            <div class="introduce">
+                                <p class="introduce-title">业务简介</p>
+                                <p class="introduce-content">{{item.intro}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone-bg"></div>
+                    <div class="intro-part">
+                        <h2>{{item.title}}</h2>
+                        <p class="intro-entry">{{item.entry}}</p>
+                        <p class="intro-content">{{item.intro}}</p>
+                    </div>
+                </div>
+            </nut-swiper>            
         </div>
+
         <h4 class="nav-box"><b class="icon"></b>京东&nbsp;ME</h4>
         <ul class="logos">
             <li v-for="(list,index) in meList" v-bind:key="index">
@@ -45,6 +71,9 @@
 export default {
     data(){
         return{
+          currentPage:1,
+          screenWidth: document.body.clientWidth,
+          move:1,
           appList:[
             {
               title:'PLUS会员',
@@ -67,7 +96,7 @@ export default {
             {
               title:'TELink联合校招',
               entry:'京东APP-校园生活-大学生活-校园招聘',
-              intro:'Telink无界选人移动端业务旨在联合企业、校园、学生，进行无界联合招聘，为联合招聘提供移动端的支持。与校园业务结合达成合作。京东校园协调全国2000余所院校的500万认证学生资源以及各品牌方，开展线下校园招聘会，并提供TElink无界招聘在京东app的专属入口。',
+              intro:'Telink无界选人移动端业务旨在联合企业、校园、学生，进行无界联合招聘，为联合招聘提供移动端的支持。与校园业务结合达成合作。',
               imageSrc:'//img14.360buyimg.com/uba/jfs/t21133/306/1869282378/85523/4acb84e9/5b3c8ca6Nec7cf1b3.jpg'
             }
           ],
@@ -125,7 +154,38 @@ export default {
     },
     components: {
     },
+    mounted () {
+        const that = this
+        window.onresize = () => {
+            return (() => {
+                window.screenWidth = document.body.clientWidth
+                that.screenWidth = window.screenWidth
+            })()
+        }
+    },
+    watch: {
+            screenWidth (val) {
+                if (!this.timer) {
+                    this.screenWidth = val
+                    this.timer = true
+                    let that = this
+                    setTimeout(function () {
+                        that.$refs.appShow.updateSlidesBindEvent(this.currentPage);
+                        that.timer = false
+                    }, 400)
+                }
+            }
+    },
     methods:{
+        nextPage(){
+            this.$refs.appShow.prev();
+        },
+        prePage(){
+            this.$refs.appShow.next();
+        },
+        slideChangeStart:function(currentPage,el,type){
+          this.currentPage = currentPage;
+         },
     }
 }
 </script>
@@ -195,22 +255,59 @@ p{
     }
 }
 .box{
-    border-bottom:2px solid #eee;
     margin-bottom:20px;
     padding-bottom:40px;
+    display: flex;
+    position: relative;
     .box-title{
         font-size: 20px;
         margin-bottom:0px;
         font-weight:bold;
+        background: #B1C07B;
+        height: 90px;
+        line-height: 90px;
+        border-radius: 10px;
+        color: #fff;
+        text-align: center;
         .title-round{
             display:inline-block;
             width:10px;
             height:10px;
-            background:#314659;
+            background:#fff;
             border-radius:50%;
-            margin-right:10px;
-            margin-bottom: 2px;
+            margin:0 10px 2px 10px;
+            position: relative;
+            &:before{
+                content: '';
+                width: 200px;
+                position: absolute;
+                top: 3px;
+                left: -209px;
+                height: 2px;
+                background: #fff;
+            };
         }
+        .title-round-sec{
+            display:inline-block;
+            width:10px;
+            height:10px;
+            background:#fff;
+            border-radius:50%;
+            margin:0 10px 2px 10px;
+            position: relative;
+            &:after{
+                content: '';
+                width: 200px;
+                position: absolute;
+                top: 3px;
+                left: 20px;
+                height: 2px;
+                background: #fff;
+            };
+        }
+        &:hover{
+            background: #7eb026;
+        };
     }
     .box-entry, .box-intro{
         font-size: 16px;
@@ -221,52 +318,82 @@ p{
     .box-entry{
         color:#2d336a;
         margin-bottom:10px;
+        display: flex;
+        align-items: center;
+        height: 80px;
+        font-size: 18px;
+        .entry-icon{
+           display: inline-block;
+           width: 30px;
+           height: 30px;
+           background: url('../asset/img/cases/entry.png'); 
+           background-size: 100% 100%;
+           margin-right: 20px;
+           &:hover{
+             animation: shake 1s linear both;
+           };
+        }
+        @-webkit-keyframes shake{
+            from, to {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                -webkit-transform: translate3d(-10px, 0, 0);
+                transform: translate3d(-10px, 0, 0);
+            }
+            20%, 40%, 60%, 80% {
+                -webkit-transform: translate3d(10px, 0, 0);
+                transform: translate3d(10px, 0, 0);
+            }
+        }
+    }
+    .introduce{
+        border:1px solid #dfd9e7;
+        background:#fff;
+        p{
+            padding: 10px 20px;
+            margin-bottom: 0;
+        }
+    }
+    .introduce-title{
+        border-bottom: 1px solid #dfd9e7;
     }
     .box-image{
+        //background: red;
+        width: 391px;
+        padding: 130px 26px 0 0;
         img{
+            float: right;
             display:block;
-            //margin:0 auto;
             box-shadow: 0px 15px 38px 1px #eee;
-            animation: bounceInRight 1s linear both;
-            @-webkit-keyframes bounceInRight{
-
-                from, 60%, 75%, 90%, to {
-                    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-                    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-                }
-                from {
-                    opacity: 0;
-                    -webkit-transform: translate3d(3000px, 0, 0);
-                    transform: translate3d(3000px, 0, 0);
-                }
-                60% {
-                    opacity: 1;
-                    -webkit-transform: translate3d(-25px, 0, 0);
-                    transform: translate3d(-25px, 0, 0);
-                }
-                75% {
-                    -webkit-transform: translate3d(10px, 0, 0);
-                    transform: translate3d(10px, 0, 0);
-                }
-                90% {
-                    -webkit-transform: translate3d(-5px, 0, 0);
-                    transform: translate3d(-5px, 0, 0);
-                }
-                to {
-                    -webkit-transform: none;
-                    transform: none;
-                }
-                }
-        
-            }
-            .images{
-                width:350px
-            }
-            @media (max-width: 450px) {
-                .images{
-                    width:250px
-                }
-            }
+        }
+        .images{
+            width:311px
+        }
+    }
+    .box-info{
+        flex: 1;
+        display: flex;
+        padding-left: 50px;
+        align-items: center;
+        .info{
+            //height: 410px;
+            flex: 1;
+            background:rgba(239,244,242,0.7);
+            border-radius: 10px;
+            border-top:2px solid #799303;
+            padding: 20px 30px;
+        }
+    }
+    .phone-bg{
+        position: absolute;
+        width: 377px;
+        height: 800px;
+        background: url('../asset/img/cases/phone_ui.png') no-repeat;
+        background-size: 100% 100%;
+        left: 48px;
+        top: 10px;
     }
 }
 .logos{
@@ -283,7 +410,7 @@ p{
         float:left;
         padding:0px;
         margin:20px;
-        width:80px;
+        //width:80px;
         display:flex;
         flex-direction: column;
         justify-content: center;
@@ -364,5 +491,151 @@ p{
 .line{
     border-bottom:2px solid #eee;
     margin-bottom:20px;
+}
+.app-box{
+    position: relative;
+}
+.pre-btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50px;
+    width: 65px;
+    height: 80px;
+    background:rgba(0,0,0,0.1);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    .pre-btn-icon{
+        display: block;
+        background:url('../asset/img/cases/dir_btn.png');
+        background-position: 0px -66px;
+        width: 37px;
+        height: 74px;
+    }
+    &:hover{
+        background:rgba(0,0,0,0.2);
+    }
+    &:hover .pre-btn-icon{
+        background:url('../asset/img/cases/dir_btn.png');
+        background-position: 0px -265px;
+    };
+}
+.next-btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0px;
+    width: 65px;
+    height: 80px;
+    background:rgba(0,0,0,0.1);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    .next-btn-icon{
+        display: block;
+        background:url('../asset/img/cases/dir_btn.png');
+        background-position: 38px -66px;
+        width: 37px;
+        height: 74px;
+    }
+    &:hover{
+        background:rgba(0,0,0,0.2);
+    }
+    &:hover .next-btn-icon{
+        background:url('../asset/img/cases/dir_btn.png');
+        background-position: 38px -265px;
+    };
+}
+.intro-part{
+    display: none;
+    width: 315px;
+    background:rgba(0,0,0,0.5);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 101;
+    padding: 15px;
+    height: 176px;
+    //padding-bottom: 25px;
+    box-sizing: border-box;
+    border-bottom-left-radius: 46px;
+    border-bottom-right-radius: 46px;
+    h2{
+        color: #fff;
+        font-size: 18px;
+        padding: 0;
+        margin:0;
+        letter-spacing: 1px;
+    }
+    .intro-entry{
+        color: #fff;
+        font-size: 14px;
+        padding: 0;
+        margin:0;
+        border-bottom: 1px solid #fff;
+        padding-bottom: 5px;
+    }
+    .intro-content{
+        color: #fff;
+        font-size: 12px;
+        padding: 0;
+        margin:0;
+        line-height: 18px;
+        margin-top: 8px;
+    }
+}
+
+
+
+//swiper
+
+.nut-swiper{
+    height:800px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 87px;
+}
+@media (max-width: 450px) {
+    .box .box-info{
+        display: none;
+    }
+    .box .phone-bg{
+        width: 325px;
+        height: 620px;
+        top: 5px;
+        left: 50%;
+        transform:translateX(-50%); 
+    }
+    .box .box-image .images{
+        width: 281px;
+        height: 430px;
+    }
+    .nut-swiper .nut-swiper-silde{
+        display: flex;
+        justify-content: center;
+    }
+    .box .box-image{
+        width: 100%;
+        padding: 95px 0 0 0;
+        display: flex;
+        justify-content: center;
+    }
+    .nut-swiper{
+        height: 580px;
+    }
+    .next-btn{
+        display: none;
+    }
+    .pre-btn{
+        display: none;
+    }
+    .intro-part{
+        display: block;
+    }
 }
 </style>
