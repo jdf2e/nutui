@@ -9,6 +9,7 @@
                     </div>
                     <div class="selected-bg"></div>
                     <div class="date-swiper-con">
+                        <div v-if='selectShow' class="select-mask">{{txt}}</div>
                         <template v-for="(d, idx) in swiperData">
                             <nut-swiper :date-swiper-index= 'idx' :ref='"dw"+idx'
                             direction="vertical"
@@ -32,12 +33,20 @@
         name: 'nut-date-swiper',
         data() {
             return {
+                selectShow: false,
+                txt: '',
                 maskShow: true,
                 data: [],
                 callbackParam: [],
                 nodeKey: 'a',
                 selectIndexs: [],
             }
+        },
+
+        mounted: function() {
+            this.loading = this.$loading({
+                fade: true
+            })
         },
         computed: {
             swiperData() {
@@ -55,6 +64,7 @@
                         }
                     }
                 }
+                
             }
         },
         methods: {
@@ -101,12 +111,23 @@
         .date-swiper-con {
             display: flex;
         }
+        .select-mask {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            text-align: center;
+            color: #fff;
+            line-height: 3.56rem;
+            background: rgba(0,0,0,.5);
+        }
         .date-swiper {
             color: #dedede!important;
             font-size: 0.28rem!important;
             width: 100%;
             height: 2.5rem!important;
             padding-top: 1.40rem!important;
+            transition: .5s all;
         }
         .nut-swiper-silde-selected {
             color: #333!important;
