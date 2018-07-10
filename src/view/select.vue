@@ -103,7 +103,7 @@
           <tbody>
             <tr>
               <td>slideEnd</td>
-              <td>当异步开启时，每当滑动结束时触发</td>
+              <td>当异步开启时，每当滑动结束时触发，切记注意判断的时间，否则会造成死循环。</td>
               <td>[数据数据],数据索引对应列（用于更新数据）</td>
             </tr>
             <tr>
@@ -130,6 +130,16 @@
               <td>updateSelect</td>
               <td>当异步开启时，动态添加第二列时调用</td>
               <td>符合列表数据结构（nodeKey与childKey）</td>
+            </tr>
+            <tr>
+              <td>showSelectMask</td>
+              <td>显示蒙层，主要用于异步操作时，防止多次请求</td>
+              <td>蒙曾显示文字，默认：数据加载中...</td>
+            </tr>
+            <tr>
+              <td>hideSelectMask</td>
+              <td>隐藏蒙层，异步时更新数据完成之后，去掉蒙层使用</td>
+              <td>无</td>
             </tr>
           </tbody>
         </table>

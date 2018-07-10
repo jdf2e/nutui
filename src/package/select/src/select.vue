@@ -34,10 +34,14 @@
         },
         data() {
             return {
-                swiperCacheData: []
+                swiperCacheData: [],
+                dateSwiper: {}
             }
         },
         mounted: function() {
+            this.loading = this.$loading({
+                fade: true
+            })
         },
         computed: {
             cacheSelected() {
@@ -47,8 +51,8 @@
         methods: {
             initSwiper(selector) {
                 this.swiperCacheData = [];
-                this.swiperData(this.data, 0, true);
                 this.dateSwiper = new Vue(dateSwiper).$mount(`#${selector}>div`);
+                this.swiperData(this.data, 0, true);
                 this.dateSwiper.data = this.swiperCacheData;
                 this.dateSwiper.nodeKey = this.nodeKey;
                 this.dateSwiper.$on('change', this.change);
@@ -128,6 +132,7 @@
                         this.swiperData(children, obj.hie+1, false);
                     }
                 }
+                this.showSelectMask();
                 this.$emit('slideEnd', this.getSelectedIndexs(), this);
             },            
             getSelectedIndexs() {
@@ -147,6 +152,13 @@
                 }else {
                     console.warn("【select】组件---调用【updateSelect】时，数据有问题");
                 }
+            },
+            showSelectMask(txt) {
+                this.dateSwiper.selectShow = true;
+                this.dateSwiper.txt = txt || '数据加载中...';
+            },
+            hideSelectMask() {
+                this.dateSwiper.selectShow = false;
             }
         }
     }

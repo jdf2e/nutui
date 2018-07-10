@@ -156,9 +156,13 @@ export default {
         this.demo3.selected = arr.join('-');
       },
       slideEnd(val, $select) {
-        console.log(val);
-        if(val.length<3) {
-          $select.updateSelect([{"n": parseInt(Math.random()*10)},{"n": parseInt(Math.random()*10)}]);          
+        $select.showSelectMask('我可以自定义，为了让你看到我延迟2s消失');
+        if(val.length < 3) {
+            $select.updateSelect([{"n": parseInt(Math.random()*10)},{"n": parseInt(Math.random()*10)}]);           
+        }else {
+          setTimeout(function() {
+            $select.hideSelectMask();
+          },2000)
         }
       }
     }
