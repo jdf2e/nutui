@@ -16,6 +16,7 @@
 
 <script>
 export default {
+  name:'luckycard',
   data() {
     return {
         coverImage:'../asset/img/luckycard-demo.png'

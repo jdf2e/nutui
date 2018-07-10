@@ -41,6 +41,14 @@
 
         <h6>不显示字数限制</h6>
         <nut-codebox :code="demo8" imgUrl="../asset/img/demo/textbox7.png"></nut-codebox>
+
+        <h6>输入回调返回文字</h6>
+        <nut-textbox 
+          :maxNum="10" 
+          txtAreaH="2"  
+          @inputFunc="inputText" 
+          ></nut-textbox>
+        <nut-codebox :code="demo9" ></nut-codebox>
         
         <h5>Props</h5>
         <div class="tbl-wrapper">
@@ -116,6 +124,11 @@
               <td>输入字数超过限定字数时触发事件</td>
               <td>--</td>
             </tr>
+            <tr>
+              <td>inputText</td>
+              <td>文字输入事件回调，默认传回输入文本</td>
+              <td>--</td>
+            </tr>
           </tbody>
         </table>
         </div>
@@ -164,11 +177,22 @@ textBgColor="#feefef">
             demo8:`<nut-textbox 
 :limitShow="false">
 </nut-textbox>`,
+            demo9:` <nut-textbox :maxNum="10" txtAreaH="2" @inputFunc="inputText" ></nut-textbox>
+export default {
+  methods:{
+      inputText(val){
+           alert(val);
+      }
+  }
+}`
         }
     },
     methods:{
         overLength(){
             alert('字数超出');
+        },
+        inputText(val){
+           alert(val);
         }
     }
 }

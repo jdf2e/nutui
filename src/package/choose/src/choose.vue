@@ -101,7 +101,7 @@ export default {
     watch:{
         'visibile'(val,oldVal){
             if(!val) {
-                this.$emit('close-choose');
+                // this.$emit('close-choose');
                 if(!this.needCache) {
                     this.resetData();
                 }
@@ -146,6 +146,7 @@ export default {
         },
         getNextList(item){
             this.tempDatas[this.tabIndex-1].item = item;
+            this.currItem = item;
             this.$emit('choose-item',item,this.tabIndex);
         },
         getCurrList(index){

@@ -35,7 +35,8 @@
         <p>不显示字数限制</p>
         <nut-textbox :limitShow="false" :maxNum="10" ></nut-textbox>
        
-        
+        <h6>输入回调返回文字</h6>
+        <nut-textbox  :maxNum="10" txtAreaH="2" @inputFunc="inputText" ></nut-textbox>
     </div>
 </template>
 
@@ -71,6 +72,9 @@ textBgColor="#feefef">
     methods:{
         overLength(){
             alert('字数超出');
+        },
+        inputText(val){
+           alert(val);
         }
     }
 }
