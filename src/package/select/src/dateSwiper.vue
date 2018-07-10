@@ -9,7 +9,7 @@
                     </div>
                     <div class="selected-bg"></div>
                     <div class="date-swiper-con">
-                        <div v-if='selectShow' class="select-mask">{{txt}}</div>
+                        <div v-show='selectShow' class="select-mask">{{txt}}</div>
                         <template v-for="(d, idx) in swiperData">
                             <nut-swiper :date-swiper-index= 'idx' :ref='"dw"+idx'
                             direction="vertical"
@@ -42,12 +42,6 @@
                 selectIndexs: [],
             }
         },
-
-        mounted: function() {
-            this.loading = this.$loading({
-                fade: true
-            })
-        },
         computed: {
             swiperData() {
                 return this.data;
@@ -56,11 +50,12 @@
         watch:{
             data() {
                 for (var prop in this.$refs) {
-                    if(this.$refs[prop][0]) {
-                        var idx = parseInt(this.$refs[prop][0].$el.getAttribute('date-swiper-index'));
+                    var $dom = this.$refs[prop][0];
+                    if($dom) {
+                        var idx = parseInt($dom.$el.getAttribute('date-swiper-index'));
                         if(this.data[idx]) {
-                            this.$refs[prop][0].setPage(this.data[idx].selected, true);
-                            this.$refs[prop][0].updateSlidesBindEvent();
+                            $dom.setPage(this.data[idx].selected, true);
+                            $dom.updateSlidesBindEvent();
                         }
                     }
                 }
@@ -94,7 +89,7 @@
         }
     }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     .nut-swiper-silde {
         height: 0.7rem!important;
         line-height: 0.7rem;

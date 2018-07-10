@@ -3,7 +3,7 @@
         <slot>请选择</slot>
     </div>
 </template>
-<style  lang="scss"></style>
+<style  lang="scss" scoped></style>
 <script>
     import Vue from 'vue';
     import dateSwiper from './dateSwiper.vue';
@@ -132,7 +132,9 @@
                         this.swiperData(children, obj.hie+1, false);
                     }
                 }
-                this.showSelectMask();
+                if(this.async) {
+                    this.showSelectMask();
+                }
                 this.$emit('slideEnd', this.getSelectedIndexs(), this);
             },            
             getSelectedIndexs() {
@@ -151,6 +153,9 @@
                     this.swiperData(data, this.swiperCacheData.length, false);
                 }else {
                     console.warn("【select】组件---调用【updateSelect】时，数据有问题");
+                }
+                if(hideMask) {
+                    this.hideSelectMask();
                 }
             },
             showSelectMask(txt) {
