@@ -2,7 +2,7 @@
     <div class="nut-swiper"
         :class="[direction,{'dragging':dragging}]"
         @touchstart="_onTouchStart($event)"
-        @mousedown="_onTouchStart($event)" @touchMove.stop>
+        @mousedown="_onTouchStart($event)" >
         <div class="nut-swiper-wrap"
             :style="{
                     'transform':'translate3d('+translateX+'px,'+translateY+'px,0)',
