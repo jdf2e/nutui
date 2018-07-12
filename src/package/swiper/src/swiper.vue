@@ -250,7 +250,7 @@ export default {
             }
             this.delta = this._getTouchPos(e) - this.startPos;
             if((this.isHorizontal() && Math.abs(this.delta) > 0) || this.isVertical()){
-                e.preventDefault();
+                //e.preventDefault();
             }
             let isQuickAction = new Date().getTime() -this.startTime < 200;
             if(!this.performanceMode && !isQuickAction){
