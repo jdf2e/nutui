@@ -8,7 +8,8 @@
                     'transform':'translate3d('+translateX+'px,'+translateY+'px,0)',
                     'transition-duration':transitionDuration+'ms',
                     '-webkit-transform':'translate3d('+translateX+'px,'+translateY+'px,0)',
-                    '-webkit-transition-duration':transitionDuration+'ms'
+                    '-webkit-transition-duration':transitionDuration+'ms',
+                    'transition-timing-function':'ease'
                     }"
             @transitionend="_onTransitionEnd">
             <slot></slot>
@@ -232,7 +233,7 @@ export default {
             this.delta = 0;
             if(!this.freeMode){
                 this.startTranslate = this._getTranslateOfPage(this.currentPage);
-                if(this.loop){
+                if(this.isLoop){
                     this._setTranslate(this.startTranslate);
                 }
             }
@@ -336,7 +337,7 @@ export default {
             let selectedSlide = this.$el.querySelector('.nut-swiper-silde-selected');
             selectedSlide && selectedSlide.classList.remove('nut-swiper-silde-selected');
             this.slideEls[this.currentPage-1].classList.add('nut-swiper-silde-selected');
-            if(this.loop){
+            if(this.isLoop){
                  this._setTranslate(this._getTranslateOfPage(this.currentPage));
             }
             this.stopAutoPlay = false;
