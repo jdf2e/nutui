@@ -394,7 +394,7 @@ p{
             position: absolute;
             width: 312px;
             height: 589px;
-            background: url(/img/phone_bg.png) no-repeat;
+            background: url('../asset/img/cases/phone_icon.png'); 
             background-size: 100% 100%;
             left: 114px;
             top: 72px;
@@ -611,15 +611,15 @@ p{
     }
     .box .phone-bg{
         width: 302px;
-    height: 561px;
-    top: 10px;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
+        height: 561px;
+        top: 10px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
     }
     .box .box-image .images{
         width: 255px;
-    height: 454px;
+        height: 454px;
     }
     .nut-swiper .nut-swiper-silde{
         display: flex;
