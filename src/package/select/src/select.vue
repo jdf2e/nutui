@@ -147,7 +147,7 @@
             change(val) {
                 this.$emit('change', val);
             },
-            updateSelect(data) {
+            updateSelect(data, hideMask) {
                 //填充下一级
                 if(data instanceof Array && data.length >0){
                     this.swiperData(data, this.swiperCacheData.length, false);
