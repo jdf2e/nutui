@@ -282,7 +282,7 @@ p{
                 width: 180px;
                 position: absolute;
                 top: 3px;
-                left: -209px;
+                left: -192px;
                 height: 2px;
                 background: #fff;
             };
@@ -393,7 +393,7 @@ p{
     .phone-bg{
             position: absolute;
             width: 312px;
-            height: 589px;
+            height: 567px;
             background: url('../asset/img/cases/phone_icon.png'); 
             background-size: 100% 100%;
             left: 114px;
@@ -559,11 +559,11 @@ p{
     };
 }
 .intro-part{
-        display: none;
+    display: none;
     width: 275px;
     background: rgba(0, 0, 0, 0.6);
     position: absolute;
-    bottom: 165px;
+    bottom: 124px;
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
@@ -618,7 +618,7 @@ p{
         transform: translateX(-50%);
     }
     .box .box-image .images{
-        width: 255px;
+        width: 267px;
         height: 454px;
     }
     .nut-swiper .nut-swiper-silde{
@@ -627,12 +627,12 @@ p{
     }
     .box .box-image{
         width: 100%;
-        padding: 79px 0 0 0;
+        padding: 44px 0 0 3px;
         display: flex;
         justify-content: center;
     }
     .nut-swiper{
-        height: 660px;
+        height: 620px;
     }
     .next-btn{
         display: none;
