@@ -378,8 +378,8 @@ p{
     .box-info{
         flex: 1;
         display: flex;
-        padding-left: 100px;
-        padding-right:100px;
+        padding-left: 90px;
+        padding-right:110px;
         align-items: center;
         .info{
             //height: 410px;
@@ -534,7 +534,7 @@ p{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 35px;
+    right: 45px;
     width: 65px;
     height: 80px;
     background:rgba(0,0,0,0.1);

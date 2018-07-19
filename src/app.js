@@ -45,7 +45,7 @@ var joinUsHtml =  `我不知道你来自哪里？亦不知道你将去何方？
 加入我们，加入JDC-前端开发部！你，必将改变亿万人民的生活！
 
 欢迎点击 http://jdc.jd.com ， 或者关注公众号“全栈探索”来了解我们，
-还犹豫什么？欢迎将简历投至： yfzhoutao@jd.com  (请注明来自console)
+还犹豫什么？快将简历投至： yfzhoutao@jd.com  (请注明来自console)
 我们在这里等你哦！`
     if (window.console && console.log && navigator.userAgent.toLowerCase().match(/chrome\/([\d.]+)/)) {
         joinUsHtml = joinUsHtml.replace(/%c/g, '');
