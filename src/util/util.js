@@ -7,12 +7,12 @@ function requestAniFrame() {
             window.setTimeout(callback, 1000 / 60);
         };
 }
-//是否出现在视口内（水平方向）
+//是否出现在视口内（垂直方向）
 function verInViewport(el, viewHeight) {
     var rect = el.getBoundingClientRect();
     return (rect.top > 0 && rect.top < viewHeight);
 }
-//是否出现在视口内（垂直方向）
+//是否出现在视口内（水平方向）
 function horInViewport(el, viewWidth) {
     var rect = el.getBoundingClientRect();
     return (rect.left > 0 && rect.left < viewWidth);
