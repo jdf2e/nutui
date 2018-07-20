@@ -264,8 +264,8 @@ p{
         margin-bottom:0px;
         font-weight:bold;
         background: #B1C07B;
-        height: 90px;
-        line-height: 90px;
+        height: 75px;
+        line-height: 75px;
         border-radius: 10px;
         color: #fff;
         text-align: center;
@@ -279,10 +279,10 @@ p{
             position: relative;
             &:before{
                 content: '';
-                width: 200px;
+                width: 180px;
                 position: absolute;
                 top: 3px;
-                left: -209px;
+                left: -192px;
                 height: 2px;
                 background: #fff;
             };
@@ -297,7 +297,7 @@ p{
             position: relative;
             &:after{
                 content: '';
-                width: 200px;
+                width: 180px;
                 position: absolute;
                 top: 3px;
                 left: 20px;
@@ -317,10 +317,9 @@ p{
     }
     .box-entry{
         color:#2d336a;
-        margin-bottom:10px;
         display: flex;
         align-items: center;
-        height: 80px;
+        height: 70px;
         font-size: 18px;
         .entry-icon{
            display: inline-block;
@@ -358,24 +357,29 @@ p{
     }
     .introduce-title{
         border-bottom: 1px solid #dfd9e7;
+        font-size:15px;
+    }
+    .introduce-content{
+        font-size:14px;
     }
     .box-image{
-        //background: red;
         width: 391px;
-        padding: 130px 26px 0 0;
+    padding: 108px 0px 0 19px;
+
         img{
             float: right;
             display:block;
-            box-shadow: 0px 15px 38px 1px #eee;
+            //box-shadow: 0px 15px 38px 1px #eee;
         }
         .images{
-            width:311px
+            width: 277px
         }
     }
     .box-info{
         flex: 1;
         display: flex;
-        padding-left: 50px;
+        padding-left: 90px;
+        padding-right:110px;
         align-items: center;
         .info{
             //height: 410px;
@@ -387,14 +391,17 @@ p{
         }
     }
     .phone-bg{
-        position: absolute;
-        width: 377px;
-        height: 800px;
-        background: url('../asset/img/cases/phone_ui.png') no-repeat;
-        background-size: 100% 100%;
-        left: 48px;
-        top: 10px;
+            position: absolute;
+            width: 312px;
+            height: 567px;
+            background: url('../asset/img/cases/phone_icon.png'); 
+            background-size: 100% 100%;
+            left: 114px;
+            top: 72px;
+            z-index: -1;
     }
+
+
 }
 .logos{
     padding:0px;
@@ -499,7 +506,7 @@ p{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 50px;
+    left: 57px;
     width: 65px;
     height: 80px;
     background:rgba(0,0,0,0.1);
@@ -527,7 +534,7 @@ p{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 0px;
+    right: 45px;
     width: 65px;
     height: 80px;
     background:rgba(0,0,0,0.1);
@@ -553,19 +560,17 @@ p{
 }
 .intro-part{
     display: none;
-    width: 315px;
-    background:rgba(0,0,0,0.5);
+    width: 275px;
+    background: rgba(0, 0, 0, 0.6);
     position: absolute;
-    bottom: 0;
+    bottom: 124px;
     left: 50%;
+    -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     z-index: 101;
     padding: 15px;
     height: 176px;
-    //padding-bottom: 25px;
     box-sizing: border-box;
-    border-bottom-left-radius: 46px;
-    border-bottom-right-radius: 46px;
     h2{
         color: #fff;
         font-size: 18px;
@@ -596,24 +601,25 @@ p{
 //swiper
 
 .nut-swiper{
-    height:800px;
+    height:750px;
     border-bottom: 2px solid #eee;
-    padding-bottom: 87px;
+    //padding-bottom: 87px;
 }
 @media (max-width: 450px) {
     .box .box-info{
         display: none;
     }
     .box .phone-bg{
-        width: 325px;
-        height: 620px;
-        top: 5px;
+        width: 302px;
+        height: 561px;
+        top: 10px;
         left: 50%;
-        transform:translateX(-50%); 
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
     }
     .box .box-image .images{
-        width: 281px;
-        height: 430px;
+        width: 267px;
+        height: 454px;
     }
     .nut-swiper .nut-swiper-silde{
         display: flex;
@@ -621,12 +627,12 @@ p{
     }
     .box .box-image{
         width: 100%;
-        padding: 95px 0 0 0;
+        padding: 44px 0 0 3px;
         display: flex;
         justify-content: center;
     }
     .nut-swiper{
-        height: 580px;
+        height: 620px;
     }
     .next-btn{
         display: none;
@@ -636,6 +642,7 @@ p{
     }
     .intro-part{
         display: block;
+
     }
 }
 </style>
