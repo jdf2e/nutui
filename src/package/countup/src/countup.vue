@@ -49,13 +49,10 @@ export default {
     },
     methods: {
     	countChange(){
-    		let endNum = this.endNum;
-    		let initNum = this.initNum;
-    		let speed = this.speed;
-    		let toFixed = this.toFixed;
+            let {endNum, initNum, speed, toFixed} = this;
     		let countTimer = setInterval(()=>{
     			if(initNum > endNum){//减少
-    				if(this.current <= endNum || this.current <= speed){
+    				if(this.current <= endNum || this.current <= speed){//数字减小，有可能导致current小于speed
 	    				this.current = endNum.toFixed(toFixed);
 	    				clearInterval(countTimer);
 					}else{
@@ -76,11 +73,13 @@ export default {
 </script>
 <style lang="scss">
 .nut-countup{
-	color:#96C40F;
+    display:inline-block;
+    padding:5px;
+	color:red;
 	font-size:0.8rem;
 	font-weight:bold;
 	text-align:center;
-	height:1.6rem;
-	line-height:1.6rem;
+    margin-bottom:10px;
+    border-radius:6px;
 }
 </style>

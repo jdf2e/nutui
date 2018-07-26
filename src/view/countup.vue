@@ -69,18 +69,20 @@ export default {
     data(){
         return{
             demo1:
-        `<nut-countup :initNum='0' :endNum='200'>
+`<nut-countup :initNum='0' :endNum='200'>
 </nut-countup>
+
 <nut-countup :initNum='150.00' 
-        :endNum='0.00' 
-        :speed='2.62' 
-        :toFixed='2'>
+:endNum='0.00' 
+:speed='2.62' 
+:toFixed='2'>
 </nut-countup>
+
 <nut-countup :initNum='1000.00' 
-        :endNum='0.00' 
-        :speed='6.3' 
-        :startNum='startNum' 
-        :toFixed='2'>
+:endNum='0.00'
+:speed='6.3'  
+:startFlag='startNum'
+:toFixed='2'>
 </nut-countup>`
         }
     },
