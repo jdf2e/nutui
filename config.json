@@ -245,7 +245,7 @@
       "name": "Handle",
       "chnName": "工具函数",
       "type": "filter",
-      "showDemo":false,
+      "showDemo": false,
       "desc": "工具函数。"
     },
     {
@@ -304,6 +304,13 @@
       "name": "Progress",
       "chnName": "进度条",
       "desc": "进度条",
+      "type": "component",
+      "showDemo": true
+    },
+    {
+      "name": "CountUp",
+      "chnName": "数字滚动组件",
+      "desc": "可用于数字滚动变化",
       "type": "component",
       "showDemo": true
     }
