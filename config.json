@@ -310,14 +310,21 @@
     {
       "name": "LazyComponent",
       "chnName": "组件懒加载",
-      "desc": "用来实现组件的懒加载",      
+      "desc": "用来实现组件的懒加载",
       "type": "component",
       "showDemo": true
     },
-    {      
+    {
       "name": "CountUp",
       "chnName": "数字滚动组件",
       "desc": "可用于数字滚动变化",
+      "type": "component",
+      "showDemo": true
+    },
+    {
+      "name": "Map",
+      "chnName": "地图",
+      "desc": "vue版的腾讯地图",
       "type": "component",
       "showDemo": true
     }
