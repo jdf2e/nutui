@@ -8,7 +8,6 @@
         :showQrCode="true"></nut-docheader>
         <h5>示例</h5>
         <nut-codebox :code="demo1"></nut-codebox>
-
         <h5>Props</h5>
         <div class="tbl-wrapper">
             <table class="u-full-width">
@@ -52,8 +51,7 @@
                 </tr>
             </tbody>
             </table>
-        </div>
-        
+        </div>        
         <h5>Events</h5>
         <div class="tbl-wrapper">
             <table class="u-full-width">
@@ -93,8 +91,7 @@
             </tbody>
             </table>
         </div>
-    </div>
-    </div>
+    </div>    
 </template>
 
 <script>
