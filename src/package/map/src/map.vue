@@ -5,9 +5,14 @@
 export default {
     name:'nut-map',
     props: {
+        //地图的秘钥
         key:{
             type:String,
             default:"MNFBZ-3F2AJ-655FS-F7GI2-PM5WV-SJBIO"
+        },
+        option:{
+            type:Object,
+            default:{}
         }
     },
     data() {
@@ -18,7 +23,7 @@ export default {
             let that = this;
             return new Promise(function (resolve, reject) {
                     window.init = function () {
-                        resolve(qq)//注意这里
+                        resolve(qq)
                     }
                     var script = document.createElement("script");
                     script.type = "text/javascript";
@@ -28,9 +33,18 @@ export default {
             })
         },
         init(tt){
-            console.log(tt);
+            //console.log(tt);
+            let propsOptions = this.option;
+            let center =new tt.maps.LatLng(propsOptions.center[0],propsOptions.center[1]);
+            let mapZoomType =  tt.maps.MapZoomType[propsOptions.MapZoomType];
+            let MapTypeId = tt.maps.MapTypeId[propsOptions.MapTypeId];
+            let options = Object.assign(propsOptions,{
+                center:center,
+              mapZoomType:mapZoomType,
+              MapTypeId:MapTypeId
+            });
             let elm = document.querySelector('#nutuiMapTencent');
-            let map  = new tt.maps.Map(elm)
+            let map  = new tt.maps.Map(elm,options)
         }
     },
     mounted(){

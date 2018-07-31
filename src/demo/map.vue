@@ -4,7 +4,7 @@
         <nut-demoheader 
         :name="$route.name"
         ></nut-demoheader>
-        <nut-map class="map-box"></nut-map>
+        <nut-map class="map-box" :option="options"></nut-map>
         <!-- DEMO区域 -->
     </div>
 </template>
@@ -13,6 +13,17 @@
 export default {
     data(){
         return{
+            options:{
+                center:[39.914850, 116.403765],
+                zoom: 15,
+                minZoom:2,                
+                maxZoom:18,
+                mapZoomType:'CENTER',
+                MapTypeId:'SATELLITE',
+                draggable: true,
+                scrollwheel: true,
+                disableDoubleClickZoom: true
+            }
         }
     },
     methods:{
