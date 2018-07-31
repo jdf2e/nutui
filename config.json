@@ -327,6 +327,13 @@
       "desc": "vue版的腾讯地图",
       "type": "component",
       "showDemo": true
+    },
+    {
+      "name": "Shortpwd",
+      "chnName": "短密码弹层",
+      "desc": "6位短密码弹层",
+      "type": "component",
+      "showDemo": true
     }
   ]
 }
