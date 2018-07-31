@@ -245,7 +245,7 @@
       "name": "Handle",
       "chnName": "工具函数",
       "type": "filter",
-      "showDemo":false,
+      "showDemo": false,
       "desc": "工具函数。"
     },
     {
@@ -304,6 +304,13 @@
       "name": "Progress",
       "chnName": "进度条",
       "desc": "进度条",
+      "type": "component",
+      "showDemo": true
+    },
+    {
+      "name": "LazyComponent",
+      "chnName": "组件懒加载",
+      "desc": "用来实现组件的懒加载",
       "type": "component",
       "showDemo": true
     }
