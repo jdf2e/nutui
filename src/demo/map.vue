@@ -4,7 +4,7 @@
         <nut-demoheader 
         :name="$route.name"
         ></nut-demoheader>
-
+        <nut-map class="map-box"></nut-map>
         <!-- DEMO区域 -->
     </div>
 </template>
@@ -21,4 +21,8 @@ export default {
 </script>
 
 <style lang="scss">
+.map-box{
+    width: 100%;
+    height: 200px;
+}
 </style>

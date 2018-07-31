@@ -200,9 +200,7 @@ export default {
     },}
 </script>
 <style lang="scss" scoped>
-.nut-modulelazyloading{
-    position: relative;
-}
+
 .loading-component-init{  
     text-align: center;    
     width: 100%;
