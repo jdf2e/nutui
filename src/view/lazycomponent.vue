@@ -26,22 +26,22 @@
                     <td>viewport</td>
                     <td>组件所在的视口，如果组件是在页面容器内滚动，视口就是该容器</td>
                     <td>HTMLElement</td>
-                    <td>null，代表视窗</td>
-                    <td>true</td>
+                    <td>null，代表视图最外层</td>
+                    <td>HTMLElement</td>
                 </tr>
                 <tr>
                     <td>direction</td>
                     <td>视口的滚动方向</td>
                     <td>HTMLElement</td>
-                    <td>vertical，horizontal</td>
-                    <td>true</td>
+                    <td>vertical（竖直），horizontal（横向）</td>
+                    <td>vertical</td>
                 </tr>
                 <tr>
                     <td>threshold</td>
                     <td>预加载暴露值, css单位</td>
                     <td>String</td>
-                    <td>'10px'</td>
                     <td>'0px'</td>
+                    <td>'--px'</td>
                 </tr>
                 <tr>
                     <td>tagName</td>
@@ -101,7 +101,14 @@
 export default {
     data(){
         return{
-            demo1:`test`
+            demo1:`        <nut-lazycomponent class="demo">
+             <!--预加载loading可以自定义不传则系统默认 -->
+            <div class="loading" slot="loading" v-html="svg"></div>   
+            <!--需要预加载的模块 -->
+            <div class="cp-box">
+                 我是模块13
+            </div>
+        </nut-lazycomponent> `
         }
     },
     methods:{
