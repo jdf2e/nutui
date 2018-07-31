@@ -132,6 +132,10 @@ export default {
             {
                 title:'京东福利',
                 imageSrc:'../asset/img/cases/fuli.png',
+            },
+            {
+                title:'生活圈',
+                imageSrc:'../asset/img/cases/life_icon.png',
             }
           ],
           clientList:[
