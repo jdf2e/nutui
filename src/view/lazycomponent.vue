@@ -31,24 +31,24 @@
                 </tr>
                 <tr>
                     <td>direction</td>
-                    <td>组件所在的视口，如果组件是在页面容器内滚动，视口就是该容器</td>
+                    <td>视口的滚动方向</td>
                     <td>HTMLElement</td>
-                    <td>null，代表视窗</td>
+                    <td>vertical，horizontal</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>threshold</td>
-                    <td>组件所在的视口，如果组件是在页面容器内滚动，视口就是该容器</td>
-                    <td>HTMLElement</td>
-                    <td>null，代表视窗</td>
-                    <td>true</td>
+                    <td>预加载暴露值, css单位</td>
+                    <td>String</td>
+                    <td>'10px'</td>
+                    <td>'0px'</td>
                 </tr>
                 <tr>
                     <td>tagName</td>
-                    <td>组件所在的视口，如果组件是在页面容器内滚动，视口就是该容器</td>
+                    <td>组件外层的元素</td>
                     <td>HTMLElement</td>
-                    <td>null，代表视窗</td>
-                    <td>true</td>
+                    <td>div</td>
+                    <td>--</td>
                 </tr>
             </tbody>
             </table>
