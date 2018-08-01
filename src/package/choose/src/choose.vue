@@ -78,6 +78,10 @@ export default {
         short:{
             type:Boolean,
             default:false,
+        },
+        loading:{
+            type:Boolean,
+            default:false,
         }
     },
     mounted() {
@@ -96,6 +100,7 @@ export default {
             tempDatas:[],
             tabIndex:0,
             currItem:{},
+            isLoading:false,
         };
     },
     watch:{
@@ -129,6 +134,9 @@ export default {
                 this.tabIndex += 1;
 
             }
+        },
+        loading(val,oldVal){
+            this.isLoading = val;
         }
     },
     methods: {
@@ -149,6 +157,9 @@ export default {
             this.currItem = {};
         },
         getNextList(item){
+            if(this.isLoading){
+                return;
+            }
             this.tempDatas[this.tabIndex-1].item = item;
             this.currItem = item;
             this.$emit('choose-item',item,this.tabIndex);
