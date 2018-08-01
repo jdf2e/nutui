@@ -165,6 +165,9 @@ export default {
             this.$emit('choose-item',item,this.tabIndex);
         },
         getCurrList(index){
+            if(this.isLoading){
+                return;
+            }
             this.list = this.tempDatas[index].list || [];
             this.currItem = this.tempDatas[index].item ;
             this.tabIndex = index + 1;
