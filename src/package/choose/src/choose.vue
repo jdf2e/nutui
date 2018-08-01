@@ -114,16 +114,20 @@ export default {
         },
         'listData'(val,oldVal){
             if(val){
-                this.list = val;
-                 this.$refs.areaTabCon.scrollTop = 0;
+                this.$refs.areaTabCon.scrollTop = 0;
                 if(this.tabIndex < this.tempDatas.length){
                    this.tempDatas =  this.tempDatas.slice(0,this.tabIndex);
                 }
+                if(val.length == 0){
+                    return;
+                }
+                this.list = val;
                 this.tempDatas.push({
                     list:val,
                     item:{}
                 });
                 this.tabIndex += 1;
+
             }
         }
     },
