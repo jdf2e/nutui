@@ -327,6 +327,13 @@
       "desc": "vue版的腾讯地图",
       "type": "component",
       "showDemo": true
+    },
+    {
+      "name": "ParallaxScroll",
+      "chnName": "视差滚动",
+      "desc": "用于页面展示的视差滚动",
+      "type": "component",
+      "showDemo": true
     }
   ]
 }
