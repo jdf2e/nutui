@@ -141,6 +141,9 @@ export default {
     },
     methods: {
         maskClose() {
+            if(this.isLoading){
+                return;
+            }
             this.areaShow = false;
             clearTimeout(this.timer);
             this.timer = setTimeout(()=>{
