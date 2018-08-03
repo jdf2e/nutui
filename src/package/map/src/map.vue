@@ -1,6 +1,17 @@
 <template>
     <div class="nutui-mapbox">
-        <div class="search"><input type="text" @keyup="searchKeyword" v-model="Keyword"/></div>
+        <div class="search">
+            
+            <div class="text-msg">
+                <input class="inpt-box" type="text" @keyup="searchKeywordlike" v-model="Keyword" />
+                <span class="city-box">{{fristCity}}</span>
+            </div>
+            <ul v-show="suggestShow" class="suggest-box">
+                <li v-for="(item,index) of address" :key="index" @click="searchcomplete(item.location)">
+                    <span v-html="item.title"></span><span class="city-box" v-html="item.city"></span><span class="adrs-box" v-html="item.address"></span>
+                </li>
+            </ul>
+        </div>
         <div class="nut-map" :id="option.id"></div>
     </div>
     
@@ -12,13 +23,22 @@
     -->
 </template>
 <script>
+import ajax from "./ajax.js";
 export default {
     name:'nut-map',
     props: {
         //地图的秘钥
         key:{
             type:String,
-            default:"MNFBZ-3F2AJ-655FS-F7GI2-PM5WV-SJBIO"
+            default:"K3HBZ-ZSA3U-BMUVL-BUEEN-FL6JT-XUFLM"
+        },
+        keySky:{
+            type:String,
+            default:""
+        },
+        sn:{
+            type:String,
+            default:"136884f65834d7996cb7f3e0e4d4caca"
         },
         option:{
             type:Object,
@@ -32,17 +52,201 @@ export default {
             tc:null,           
             searchService:null,
             markerArrays:[],
-            searchMarkers:[]
+            searchMarkers:[],
+            searchreslut:[],
+            fristCity:'北极',
+            suggestShow:true,
+            address:[
+        {
+            "id": "14876786431467227136",
+            "title": "地铁1号线",
+            "address": "镇海路-23123123213231231231231231233-岩内",
+            "category": "基础设施:交通设施:地铁线路",
+            "type": 5,
+            "location": {
+                "lat": 24.450615,
+                "lng": 118.082858
+            },
+            "adcode": 350203,
+            "province": "福建省",
+            "city": "厦门市",
+            "district": "思明区"
+        },
+        {
+            "id": "15082332840100312374",
+            "title": "地铁1号线",
+            "address": "象峰--福州火车南站",
+            "category": "基础设施:交通设施:地铁线路",
+            "type": 5,
+            "location": {
+                "lat": 26.14359,
+                "lng": 119.329783
+            },
+            "adcode": 350111,
+            "province": "福建省",
+            "city": "福州市",
+            "district": "晋安区"
+        },
+        {
+            "id": "14090015977020043361",
+            "title": "地铁1号线",
+            "address": "富锦路--莘庄",
+            "category": "基础设施:交通设施:地铁线路",
+            "type": 5,
+            "location": {
+                "lat": 31.392403,
+                "lng": 121.42472
+            },
+            "adcode": 310113,
+            "province": "上海市",
+            "city": "上海市",
+            "district": "宝山区"
+        },
+        {
+            "id": "13416315680889077364",
+            "title": "地铁1号线",
+            "address": "福州火车南站--象峰",
+            "category": "基础设施:交通设施:地铁线路",
+            "type": 5,
+            "location": {
+                "lat": 25.985704,
+                "lng": 119.390658
+            },
+            "adcode": 350104,
+            "province": "福建省",
+            "city": "福州市",
+            "district": "仓山区"
+        },
+        {
+            "id": "13122401339403299943",
+            "title": "地铁1号线",
+            "address": "四惠东--苹果园",
+            "category": "基础设施:交通设施:地铁线路",
+            "type": 5,
+            "location": {
+                "lat": 39.908484,
+                "lng": 116.515367
+            },
+            "adcode": 110105,
+            "province": "北京市",
+            "city": "北京市",
+            "district": "朝阳区"
+        },
+        {
+            "id": "15603161543018241560",
+            "title": "地铁1号线",
+            "address": "下沙江滨--湘湖",
+            "category": "基础设施:交通设施:地铁线路",
+            "type": 5,
+            "location": {
+                "lat": 30.287741,
+                "lng": 120.38175
+            },
+            "adcode": 330104,
+            "province": "浙江省",
+            "city": "杭州市",
+            "district": "江干区"
+        },
+        {
+            "id": "11340020417067312772",
+            "title": "地铁1号线",
+            "address": "霞浦--高桥西",
+            "category": "基础设施:交通设施:地铁线路",
+            "type": 5,
+            "location": {
+                "lat": 29.89056,
+                "lng": 121.856639
+            },
+            "adcode": 330206,
+            "province": "浙江省",
+            "city": "宁波市",
+            "district": "北仑区"
+        },
+        {
+            "id": "15625709373494634863",
+            "title": "地铁1号线",
+            "address": "科学城--韦家碾",
+            "category": "基础设施:交通设施:地铁线路",
+            "type": 5,
+            "location": {
+                "lat": 30.391156,
+                "lng": 104.072393
+            },
+            "adcode": 510116,
+            "province": "四川省",
+            "city": "成都市",
+            "district": "双流区"
+        },
+        {
+            "id": "16422220751550941105",
+            "title": "地铁1号线",
+            "address": "岩内--镇海路",
+            "category": "基础设施:交通设施:地铁线路",
+            "type": 5,
+            "location": {
+                "lat": 24.643125,
+                "lng": 118.070151
+            },
+            "adcode": 350211,
+            "province": "福建省",
+            "city": "厦门市",
+            "district": "集美区"
+        },
+        {
+            "id": "16939387505286070840",
+            "title": "地铁1号线",
+            "address": "财经大学--刘园",
+            "category": "基础设施:交通设施:地铁线路",
+            "type": 5,
+            "location": {
+                "lat": 39.063931,
+                "lng": 117.2772
+            },
+            "adcode": 120103,
+            "province": "天津市",
+            "city": "天津市",
+            "district": "河西区"
+        }
+    ]
         };
     },
     methods: {
+        
+        searchKeywordlike(e){  
+            //按回车 选取列表第一个         
+            if(e.keyCode == 13&&this.address[0]){
+               this.searchcomplete(this.address[0].location);
+               return;
+            }
+             this.searchKeyword();
+            //正常输入则显示查询列表
+            let keyword = this.Keyword;//搜索关键字
+            let that = this;
+            //查询
+            keyword&&ajax({
+                    url:'http://apis.map.qq.com/ws/place/v1/suggestion',
+                    type:"JSONP",
+                    data:{
+                        keyword:keyword,                        
+                        key:that.key,
+                        sn:that.sn
+                    }
+                }).then(res=>{              
+                    that.suggestShow = true;      
+                    console.log(res.data)                    
+                    that.address = res.data;
+                    that.fristCity = res.data[0]&&res.data[0].city;  
+            })
+        },
+        // 有城市搜索
         searchKeyword(){
+            //以知城市进行搜索
                 let markers = this.searchMarkers;
                 let markerArrays = this.markerArrays;
                 var keyword = this.Keyword;//搜索关键字
-                var region = '衡水';//城市
+                var region = this.fristCity;//城市
                 var pageIndex = 1;
-                var pageCapacity = 10;// 设置每页搜索结果数
+                var pageCapacity = 100;// 设置每页搜索结果数
                 this.clearOverlays(markers);
                 this.clearOverlays(markerArrays);
                 //根据输入的城市设置搜索范围
@@ -53,13 +257,39 @@ export default {
                 this.searchService.setPageCapacity(pageCapacity);
                 //根据输入的关键字在搜索范围内检索
                 this.searchService.search(keyword);
-                //根据输入的关键字在圆形范围内检索
-                //var region = new qq.maps.LatLng(39.916527,116.397128);
-                //searchService.searchNearBy(keyword, region , 2000);
-                //根据输入的关键字在矩形范围内检索
-                //region = new qq.maps.LatLngBounds(new qq.maps.LatLng(39.936273,116.440043),new qq.maps.LatLng(39.896775,116.354212));
-                //searchService.searchInBounds(keyword, region);
-        },  
+        },
+        closeSuggest(){
+            this.suggestShow = false;
+        },
+        searchcomplete(res){           
+            let map = this.map;
+            let tc = this.tc;
+            let searchMarkers = this.searchMarkers;             
+                let markerArrays = this.markerArrays;
+            //  清除之前的点
+            this.clearOverlays(searchMarkers);
+            this.clearOverlays(markerArrays);
+            //更新地图
+            let location = new tc.maps.LatLng(res.lat,res.lng);     
+            let infoWin = new tc.maps.InfoWindow({
+                map: map
+            });
+            let latlngBounds = new tc.maps.LatLngBounds();
+            var marker = new tc.maps.Marker({
+                map: map
+            });     
+
+            marker.setPosition(location);  
+            searchMarkers.push(marker);
+            this.searchMarkers = searchMarkers
+            tc.maps.event.addListener(marker, 'click', function() {
+                infoWin.open();
+                infoWin.setPosition(location);
+            });
+            latlngBounds.extend(location);
+            map.fitBounds(latlngBounds);
+            this.closeSuggest();
+        },
         getMap() {
             //初始化地图信息 
             let that = this;
@@ -164,6 +394,7 @@ export default {
                                 searchMarkers.push(marker);
                                 tc.maps.event.addListener(marker, 'click', function() {
                                     infoWin.open();
+                                    console.log(pois);
                                     infoWin.setContent('<div style="width:280px;height:100px;">' + 'POI的ID为：' +
                                         pois[n].id + '，POI的名称为：' + pois[n].name + '，POI的地址为：' + pois[n].address + '，POI的类型为：' + pois[n].type + '</div>');
                                     infoWin.setPosition(pois[n].latLng);
@@ -236,19 +467,100 @@ export default {
 <style lang="scss">
 .nutui-mapbox{
     position: relative;
+    width: 100%;
+    height: 100%;    
     .search{
-        position: absolute;
+        position: relative;
         z-index: 2;
-        top: 26px;
-        left: 71px;
+        // top: 26px;
+        // left: 71px;
     }
     .nut-map{
+        //position: absolute;
+        width: 100%;
+        height: 6rem;
+        // top:0;
+        // left:0;
+        // z-index: 1;
+    }
+}
+.search{
+    .inpt-box{
         position: absolute;
         width: 100%;
         height: 100%;
+        padding:0 .4rem;
         top:0;
-        left:0;
+        left: 0;
+        z-index: 2;
+        box-sizing: border-box;
+        background: none;
+        border:none;
+        //opacity: 0;
+        &:focus{
+            outline: none;
+        }
+    }
+    .text-msg{
+        position: relative;
         z-index: 1;
+        width:100%;
+        height: .8rem;
+        line-height: .8rem;
+        padding:0 .4rem;
+        background: #fff;
+        box-sizing: border-box;
+        border:1px solid rgb(83, 153, 245);
+        .city-box{
+            position: absolute;
+            right: .4rem;
+            top:50%;
+            transform: translateY(-50%);
+            background:  rgb(83, 153, 245);
+            color:#fff;
+            padding:0 .1rem;
+            border-radius: .1rem;     
+            line-height: .4rem;
+            height: .4rem;
+            font-size:.18rem;      
+        }
+    }
+}
+.suggest-box{
+    position: absolute;
+    width: 100%;
+    list-style: none;
+    background: #fff;
+    border:1px solid rgb(221, 229, 241);
+    overflow: hidden;
+    height: 3rem;
+    border-top:none;
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    li{
+        border-top:1px solid rgb(221, 229, 241);
+        height: .6rem;
+        line-height: .6rem;
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: .24rem;
+        padding:0 .2rem;
+        .city-box{
+            background:  rgb(83, 153, 245);
+            color:#fff;
+            padding:0 .1rem;
+            border-radius: .1rem;
+            margin:0 .1rem;
+        }
+        .adrs-box{
+            color: #666;
+            font-size:.12rem;
+        }
+    }
+    
+    li:first-child{
+        border-top:none;
     }
 }
 </style>
