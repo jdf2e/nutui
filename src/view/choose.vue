@@ -41,6 +41,13 @@
               <td>true</td>
             </tr>
             <tr>
+              <td>loading</td>
+              <td>是否还在异步加载数据中</td>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>true</td>
+            </tr>
+            <tr>
               <td>needCache</td>
               <td>弹层打开后再关闭是否需要缓存下来数据，以备下次打开使用</td>
               <td>Boolean</td>

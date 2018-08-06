@@ -78,6 +78,10 @@ export default {
         short:{
             type:Boolean,
             default:false,
+        },
+        loading:{
+            type:Boolean,
+            default:false,
         }
     },
     mounted() {
@@ -96,6 +100,7 @@ export default {
             tempDatas:[],
             tabIndex:0,
             currItem:{},
+            isLoading:false,
         };
     },
     watch:{
@@ -114,21 +119,31 @@ export default {
         },
         'listData'(val,oldVal){
             if(val){
-                this.list = val;
-                 this.$refs.areaTabCon.scrollTop = 0;
+                this.$refs.areaTabCon.scrollTop = 0;
                 if(this.tabIndex < this.tempDatas.length){
                    this.tempDatas =  this.tempDatas.slice(0,this.tabIndex);
                 }
+                if(val.length == 0){
+                    return;
+                }
+                this.list = val;
                 this.tempDatas.push({
                     list:val,
                     item:{}
                 });
                 this.tabIndex += 1;
+
             }
+        },
+        loading(val,oldVal){
+            this.isLoading = val;
         }
     },
     methods: {
         maskClose() {
+            if(this.isLoading){
+                return;
+            }
             this.areaShow = false;
             clearTimeout(this.timer);
             this.timer = setTimeout(()=>{
@@ -145,11 +160,17 @@ export default {
             this.currItem = {};
         },
         getNextList(item){
+            if(this.isLoading){
+                return;
+            }
             this.tempDatas[this.tabIndex-1].item = item;
             this.currItem = item;
             this.$emit('choose-item',item,this.tabIndex);
         },
         getCurrList(index){
+            if(this.isLoading){
+                return;
+            }
             this.list = this.tempDatas[index].list || [];
             this.currItem = this.tempDatas[index].item ;
             this.tabIndex = index + 1;

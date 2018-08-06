@@ -97,18 +97,14 @@ export default {
             window.addEventListener("scroll",that.listenElm)
         },
         listenElm(){
-            let that = this;   
-            if(that.timer){
-                clearTimeout(that.timer);
-            } 
-            that.timer  = setTimeout(()=>{
-                if(that.NewIntersectionObserver({direction:that.direction})){
+            let that = this;  
+            this.requestAnimationFrame(() => {
+                 if(that.NewIntersectionObserver({direction:that.direction})){
                     that.showComponent();
                     //移除监听
                     window.removeEventListener("scroll",that.listenElm)
                 }
-            },100)        
-            
+            })              
         },
         //是否可见判断
         Intersections(entries){               
@@ -204,9 +200,7 @@ export default {
     },}
 </script>
 <style lang="scss" scoped>
-.nut-modulelazyloading{
-    position: relative;
-}
+
 .loading-component-init{  
     text-align: center;    
     width: 100%;

@@ -310,14 +310,35 @@
     {
       "name": "LazyComponent",
       "chnName": "组件懒加载",
-      "desc": "用来实现组件的懒加载",      
+      "desc": "用来实现组件的懒加载",
       "type": "component",
       "showDemo": true
     },
-    {      
+    {
       "name": "CountUp",
       "chnName": "数字滚动组件",
       "desc": "可用于数字滚动变化",
+      "type": "component",
+      "showDemo": true
+    },
+    {
+      "name": "Map",
+      "chnName": "地图",
+      "desc": "vue版的腾讯地图",
+      "type": "component",
+      "showDemo": true
+    },
+    {
+      
+      "name": "Shortpwd",
+      "chnName": "短密码弹层",
+      "desc": "6位短密码弹层",
+      "type": "component",
+      "showDemo": true
+    },{
+      "name": "ParallaxScroll",
+      "chnName": "视差滚动",
+      "desc": "用于页面展示的视差滚动",
       "type": "component",
       "showDemo": true
     }
