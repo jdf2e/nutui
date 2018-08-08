@@ -1,6 +1,7 @@
 <template>
     <div class="wrapper">
         <div class="logo"></div>
+        <div class="ver-info">当前版本号：{{version}}（组件数量：{{total}}）</div>
         <h6>NutUI是一套拥有电商基因的基于Vue2.0的轻量级移动端开源组件库，大部分组件来自「京东APP」、「京东ME」、「京东M站」中的实际项目。</h6>
         <h5>安装</h5>
         <p>1，推荐使用npm安装NutUI</p>
@@ -12,7 +13,7 @@
         <p>通过以上步骤即可完成整个NutUI组件库的安装。</p>
         <h5>自定义构建（按需引用）</h5>
         <p>本组件库支持自定义构建（1.1.0版本以上），您可以根据需要只打包部分组件。</p>
-        <p>1，在项目目录下执行</p>
+        <p>1，在NutUI项目目录下执行</p>
         <pre><code v-highlight>npm install</code></pre>
         <p>2，执行自定义构建命令</p>
         <pre><code v-highlight>npm run custom</code></pre>
@@ -41,12 +42,18 @@ export default {
         return{
           demo1:`<nut-mask 
 :visible.sync="maskShow">
-</nut-mask>`
+</nut-mask>`,
+          total:'--',
+          version:'--'
         }
     },
     components: {
     },
     methods:{
+    },
+    created() {
+        this.total = this.NUTCONF.packages.length || '--';
+        this.version = this.NUTCONF.version;
     }
 }
 </script>
@@ -57,6 +64,14 @@ export default {
   height:120px;
   background:url(../asset/img/nutui-logo3.png) center no-repeat;
   background-size:contain;
+}
+.ver-info{
+    text-align:center;
+    font-size:12px;
+    color:#333;
+    span{
+        margin-left:30px;
+    }
 }
 img{
     max-width:100%;
