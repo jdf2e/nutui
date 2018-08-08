@@ -90,7 +90,7 @@ export default {
             }
         }    
         if(temAry.length==0){
-          that.resloutempty= "搜索结果为空...";
+          that.resloutempty= "未匹配到相关内容...";
           that.reslouts = [];
         }else{
           that.resloutempty = "";
@@ -155,6 +155,8 @@ a {
        padding:0 .5rem;
        box-sizing: border-box;
        text-indent: 15px;
+       appearance: none;
+       font-size:14px;
        border:1px solid rgba(233, 230, 230, 0.72);
     }
     .c-l{
@@ -169,6 +171,7 @@ a {
   text-align: center;
   color:#999;
   height: 100px;
+  font-size:14px;
   line-height: 100px;
 }
 .tot{
