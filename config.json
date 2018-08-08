@@ -330,17 +330,12 @@
     },
     {
       
-      "name": "Shortpwd",
+      "name": "ShortPwd",
       "chnName": "短密码弹层",
       "desc": "6位短密码弹层",
       "type": "component",
       "showDemo": true
-    },{
-      "name": "ParallaxScroll",
-      "chnName": "视差滚动",
-      "desc": "用于页面展示的视差滚动",
-      "type": "component",
-      "showDemo": true
     }
+    
   ]
 }

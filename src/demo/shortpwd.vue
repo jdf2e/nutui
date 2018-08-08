@@ -1,6 +1,11 @@
 <template>
+
     <div class="wrapper">
-        <a href="javascript:;" @click="showShortpwd">点击打开短密码框</a>
+        <nut-demoheader 
+        :name="$route.name"
+        ></nut-demoheader>
+        <br>
+        <a href="javascript:;" @click="showShortpwd" class="button button-primary" >点击打开短密码框</a>
         <nut-shortpwd  :show="isShow"  @close="shortpwdClose"/>
     </div>
 </template>
