@@ -1,7 +1,7 @@
-import Shortpwd from './src/shortpwd.vue';
+import ShortPwd from './src/shortpwd.vue';
 
-Shortpwd.install = function(Vue) {
-  Vue.component(Shortpwd.name, Shortpwd);
+ShortPwd.install = function(Vue) {
+  Vue.component(ShortPwd.name, ShortPwd);
 };
 
-export default Shortpwd;
+export default ShortPwd;
