@@ -26,7 +26,7 @@
           </ul></li>
       </li>
     </ul>
-    <ul if-else>
+    <ul v-if="searchKeyWork">
       <li v-for="(item,index) in reslouts" :key="index" >
         <router-link :to="{name:item.name}" :class="{ current:path=='/'+item.name }">{{item.name}}<span class="chnn">{{item.chnName || '组件' }}</span></router-link>
       </li>
@@ -58,7 +58,8 @@ export default {
   },
   methods: {
     clearSearch(){
-      this.searchKeyWork ="";
+      this.searchKeyWork =null;
+      this.reslouts = [];
     }    
   },
   watch: {
