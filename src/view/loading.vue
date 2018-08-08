@@ -139,6 +139,13 @@
                 <td>false</td>
                 <td>--</td>
               </tr>
+              <tr>
+                <td>customClass</td>
+                <td>增加一个自定义class</td>
+                <td>String</td>
+                <td>''</td>
+                <td>--</td>
+              </tr>
             </tbody>
           </table>
         </div>

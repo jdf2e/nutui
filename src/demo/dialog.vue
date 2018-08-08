@@ -62,6 +62,7 @@ export default {
       },
       'showDialog4':function(){
             const options = {
+                    'customClass':'my-dialog',
                     'title':'自定义Dialog标题',
                     'content':'小屏或移动端浏览效果最佳',
                     'noFooter': true

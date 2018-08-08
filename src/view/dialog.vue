@@ -121,6 +121,13 @@
               <td>--</td>
             </tr>
             <tr>
+              <td>customClass</td>
+              <td>新增一个自定义class</td>
+              <td>String</td>
+              <td>''</td>
+              <td>--</td>
+            </tr>
+            <tr>
               <td>noCloseBtn</td>
               <td>是否隐藏关闭按钮</td>
               <td>Boolean</td>

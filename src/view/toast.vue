@@ -99,6 +99,13 @@
               <td>--</td>
             </tr>
             <tr>
+              <td>object.customClass</td>
+              <td>新增一个自定义class</td>
+              <td>String</td>
+              <td>''</td>
+              <td>--</td>
+            </tr>
+            <tr>
               <td>object.center</td>
               <td>Toast位置是否居中</td>
               <td>Boolean</td>

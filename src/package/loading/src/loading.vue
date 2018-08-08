@@ -1,5 +1,5 @@
 <template>
-	<nut-mask :visible.sync="visible" :color="mini?'transparent':bgColor" :fade="fade" :closeOnClickModal="userClose" class="nut-loading">
+	<nut-mask :visible.sync="visible" :color="mini?'transparent':bgColor" :fade="fade" :closeOnClickModal="userClose" :class="['nut-loading',customClass]">
         <div class="inner" :style="{'background-color':mini?bgColor:'transparent','height':mini?height+'rem':'auto','width':mini?width+'rem':'auto','border-radius':borderRadius,'padding':padding+'rem'}">
             <span class="nut-loading-icon" :class="{'rotate':iconRotate}" v-if="mini||iconUrl">
                 <img :src="iconUrl" v-if="iconUrl" alt=""/>
@@ -27,6 +27,7 @@ export default {
             timer: null,
             bgColor:'rgba(0,0,0,.5)',
             iconUrl:'',
+            customClass:'',
             userClose:true,
             padding:'0.3',
             text:'加载中...',

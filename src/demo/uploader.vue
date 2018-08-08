@@ -5,7 +5,7 @@
         ></nut-demoheader>
         <div id="previewBox" v-html="preview"></div>
         <div id="progressBox">{{ progress }}</div>
-        <nut-uploader url="" :preview="true" @start="uploadStart" @progress="uploadProgress" @success="uploadSuccess" @failure="uploadFailure" @preview="uploadPreview" @showMsg="errTip"></nut-uploader>
+        <nut-uploader url="" :preview="true" @start="uploadStart" @progress="uploadProgress" @success="uploadSuccess" @failure="uploadFailure" @preview="uploadPreview" @showMsg="errTip" @afterChange="clearInput"></nut-uploader>
     </div>
 </template>
 
@@ -34,6 +34,10 @@ export default {
       },
       uploadFailure(file, responseTxt){
         alert('上传失败！');
+      },
+      clearInput(input,event){
+        //change事件触发后，清空value值，选相同文件时可再次触发change事件
+        input.value = '';
       },
       errTip(msg){
         alert(msg);

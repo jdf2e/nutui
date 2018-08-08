@@ -7,10 +7,6 @@ import Uploader from './uploader.js';
 export default {
     name:'nut-uploader',
     props: {
-        /*'fileInputName':{
-            type:String,
-            default:''
-        },*/
         'url':{
             type:String,
             default:''
@@ -34,6 +30,9 @@ export default {
             default(){
                 return {};
             }
+        },
+        'changeEvtCallback':{
+            type:Function
         }
     },
     data() {
@@ -68,10 +67,15 @@ export default {
              };
         },
         upload($event){
-            if(!this.url) alert('请先配置上传url！');
-            var tar = $event.target;
-            var formData = new FormData;
-            var opt = this.createUploaderOpts();
+            const tar = $event.target;
+            if(!this.url) {
+                alert('请先配置上传url！');
+                this.$emit('afterChange',tar,$event);
+                return;
+            }
+
+            const formData = new FormData;
+            const opt = this.createUploaderOpts();
             if(this.preview) opt.previewData = tar.files[0];
             formData.append(tar.name, tar.files[0]);
             for(let key of Object.keys(this.attach)){
@@ -83,8 +87,9 @@ export default {
                 this.$emit('showMsg',msg); 
                 console.log(msg);
             }
-
             new Uploader(opt);
+
+            this.$emit('afterChange',tar,$event);
         }
     }
 }

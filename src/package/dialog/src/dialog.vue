@@ -1,6 +1,6 @@
 <template>
     <transition name="fade">
-        <div class="nut-dialog-wrapper" :id="id" v-show="visible" @click="modalClick">
+        <div :class="['nut-dialog-wrapper',customClass]" :id="id" v-show="visible" @click="modalClick">
             <div class="nut-dialog" :class="{'nut-dialog-no-header':noHeader}" @click.stop @touchmove.stop>
                 <div class="nut-dialog-header">
                     <span class="nut-dialog-title">{{title}}</span>
@@ -44,6 +44,7 @@ export default {
             'onCloseBtn': null,
             'onCancelBtn': null,
             'closeCallback':null,
+            'customClass':'',
         }
     },
     methods: {

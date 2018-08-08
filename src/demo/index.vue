@@ -2,7 +2,7 @@
   <div class="wrapper">
     <h1 class="logo">NutUI</h1>
     <div class="version">Version {{version}}</div>
-    <p>NutUI是一套基于Vue2的轻量级移动端组件库。[<a href="/index.html">文档</a>] [<a href="https://github.com/jdf2e/nutui">代码</a>]</p>
+    <p>NutUI是一套基于Vue2的轻量级移动端组件库。<br>[<a href="/index.html">文档</a>] [<a href="https://github.com/jdf2e/nutui">代码</a>]</p>
     <ul>
       <template v-for="cpt in packages"><li v-if="cpt.showDemo !== false"><router-link :to="{name:cpt.name}">{{cpt.name}}<span>{{cpt.chnName}}</span></router-link></li></template>
     </ul>

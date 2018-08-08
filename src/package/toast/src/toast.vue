@@ -1,6 +1,6 @@
 <template>
     <transition name="toastfade">
-        <div class="nut-toast" v-show="visible" :class="{'center':center}" :style="{'bottom':center?'auto':bottom+'rem'}">
+        <div :class="['nut-toast',{'center':center},customClass]" v-show="visible" :style="{'bottom':center?'auto':bottom+'rem'}">
           <span v-html="msg" :style="{'text-align':textAlignCenter?'center':'left','font-size':fontSize+'rem','background-color':bgColor}"></span>
         </div>
     </transition>
@@ -16,6 +16,7 @@ export default {
       during: 2000, //显示时间(毫秒)
       timer: null,
       center:true,
+      customClass:'',
       bottom:1.5,
       fontSize:0.28,
       textAlignCenter:true,
