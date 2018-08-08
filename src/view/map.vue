@@ -14,21 +14,106 @@
             <table class="u-full-width">
             <thead>
                 <tr>
-                <th>参数</th>
-                <th>说明</th>
-                <th>类型</th>
-                <th>默认值</th>
-                <th>可选值</th>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>默认值</th>
+                    <th>可选值</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <tr> 
+                    <td>search</td>
+                    <td>地图是否有搜索栏</td>
+                    <td>Boolean</td>
+                    <td>true </td>
+                    <td>false</td>
                 </tr>
+                <tr>
+                    <td>location</td>
+                    <td>地图是否需要有定位当前位置功能</td>
+                    <td>Boolean</td>
+                    <td>true </td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>option</td>
+                    <td>用来配置地图初始化的参数包含id、marks和options</td>
+                    <td>Object</td>
+                    <td>--</td>
+                    <td>--</td>
+                </tr>                
+                <tr>
+                    <td>option.id</td>
+                    <td>创建地图的ID</td>
+                    <td>String</td>
+                    <td>--</td>
+                    <td>--</td>
+                </tr>   
+                <tr>
+                    <td>option.options</td>
+                    <td>地图的初始化配置参数</td>
+                    <td>Object</td>
+                    <td><a href="https://lbs.qq.com/javascript_v2/doc/mapoptions.html" target="_blank">同腾讯map API</a></td>
+                    <td>--</td>
+                </tr>
+                <tr>
+                    <td>option.options.center</td>
+                    <td>地图的初始化配置参数 与 腾讯map API 差异</td>
+                    <td>Array</td>
+                    <td>[--,--]</td>
+                    <td>['lat：Number','lng:Number']</td>
+                </tr>
+                <tr>
+                    <td>option.options.MapZoomType</td>
+                    <td>地图的初始化配置参数 与 腾讯map API 差异</td>
+                    <td>String</td>
+                    <td>'DEFAULT'</td>
+                    <td>'CENTER'</td>
+                </tr>
+                <tr>
+                    <td>option.options.MapTypeId</td>
+                    <td>地图的初始化配置参数 与 腾讯map API 差异</td>
+                    <td>String</td>
+                    <td>'ROADMAP'</td>
+                    <td>'ROADMAP'该地图类型显示普通的街道地图。<br>,'SATELLITE'该地图类型显示卫星图像。<br>,'HYBRID'该地图类型显示卫星图像上的主要街道透明层。</td>
+                </tr>
+                <tr>
+                    <td>option.markers</td>
+                    <td>用来配置地图的坐标显示</td>
+                    <td>Object</td>
+                    <td><a href="https://lbs.qq.com/javascript_v2/doc/marker.html" target="_blank">同腾讯map API</a></td>
+                    <td>--</td>
+                </tr>
+                 <tr>
+                    <td>option.markers.icon</td>
+                    <td>marker的自定义图片</td>
+                    <td>url</td>
+                    <td>--</td>
+                    <td>--</td>
+                </tr>
+                <tr>
+                    <td>option.markers.visible</td>
+                    <td>是否可见 默认可见</td>
+                    <td>Boolean</td>
+                    <td>true</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>option.markers.animation</td>
+                    <td>设置动画</td>
+                    <td>String</td>
+                    <td>true</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>option.markers.draggable</td>
+                    <td>设置是否可以拖拽 默认不可以拖拽</td>
+                    <td>Boolean</td>
+                    <td>false</td>
+                    <td>true</td>
+                </tr>
+                 
             </tbody>
             </table>
         </div>
@@ -45,13 +130,37 @@
             </thead>
             <tbody>
                 <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                    <td>option.markers.info</td>
+                    <td>添加信息窗口,用于展示当前信息</td>
+                    <td>fn</td>
+                    <td>--</td>
+                    <td>(res)=>{
+                        res //为当前mark信息
+                        return '<div></div>'
+                        }</td>
+                </tr>
+                <tr>
+                    <td>option.markers.click</td>
+                    <td>用于click事件回调返回当前marker信息</td>
+                    <td>fn</td>
+                    <td>--</td>
+                    <td>(res)=>{
+                        res //为当前mark信息                        
+                        }</td>
+                </tr>
+                <tr>
+                    <td>option.markers.dragend</td>
+                    <td>用于drag事件回调返回当前marker信息</td>
+                    <td>fn</td>
+                    <td>--</td>
+                    <td>(res)=>{
+                        res //为当前mark信息                        
+                        }</td>
                 </tr>
             </tbody>
             </table>
-        </div>
+        </div>       
+        
     </div>   
 </template>
 

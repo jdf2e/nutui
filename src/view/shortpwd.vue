@@ -1,6 +1,15 @@
 <template>
     <div>
-        
+        <nut-docheader 
+        :name="$route.name"
+        :chName="$route.params.chnName" 
+        type="Component" 
+        :showQrCode="true"
+        ></nut-docheader>
+        <h5>示例</h5>
+        <h6>使用实例</h6>
+        <nut-codebox code="<nut-shortpwd  :show=‘isShow’ @close=‘shortpwdClose’/>" 
+        imgUrl="http://img14.360buyimg.com/uba/jfs/t25372/227/245284728/74774/296adb9/5b69732eNad2c0231.png"></nut-codebox>
         <h5>Props</h5>
         <div class="tbl-wrapper">
         <table class="u-full-width">
