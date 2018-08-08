@@ -330,7 +330,7 @@
     },
     {
       
-      "name": "Shortpwd",
+      "name": "ShortPwd",
       "chnName": "短密码弹层",
       "desc": "6位短密码弹层",
       "type": "component",
