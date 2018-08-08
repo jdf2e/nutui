@@ -116,7 +116,7 @@ export default {
                             }
                         }).then(res=>{              
                             that.suggestShow = true;      
-                            console.log(res.data)     
+                            ////console.log(res.data)     
                             if(res.data){
                                 that.address = res.data;
                                 that.fristCity = res.data[0]&&res.data[0].city;     
@@ -173,12 +173,12 @@ export default {
             this.closeSuggest();
         },
         marker(lc){    
-            console.log(lc)             
+            ////console.log(lc)             
             let tc = this.tc;
             //当前的地图
             let map = this.map;
             let searchMarkers = this.searchMarkers;    
-            console.log(searchMarkers) 
+            ////console.log(searchMarkers) 
             //设置坐标点
             let marker = new tc.maps.Marker({
                 map: map,
@@ -217,7 +217,7 @@ export default {
                 //标记Marker点击事件
                 if(markerOption.click){
                     tc.maps.event.addListener(marker, 'click', function() {
-                        console.log(marker.getPosition())
+                        //console.log(marker.getPosition())
                         if(markerOption.click){
                             markerOption.click(marker)
                         }
@@ -232,7 +232,7 @@ export default {
                 //设置Marker停止拖动事件
                 if(markerOption.dragend){
                     tc.maps.event.addListener(marker, 'dragend', function() {
-                      console.log(marker.getPosition())
+                      //console.log(marker.getPosition())
                         if(markerOption.marker){
                             markerOption.click(marker)
                         }
@@ -281,7 +281,7 @@ export default {
                                 searchMarkers.push(marker);
                                 tc.maps.event.addListener(marker, 'click', function() {
                                     infoWin.open();
-                                    console.log(pois);
+                                    //console.log(pois);
                                     infoWin.setContent('<div style="width:280px;height:100px;">' + 'POI的ID为：' +
                                         pois[n].id + '，POI的名称为：' + pois[n].name + '，POI的地址为：' + pois[n].address + '，POI的类型为：' + pois[n].type + '</div>');
                                     infoWin.setPosition(pois[n].latLng);
@@ -296,12 +296,12 @@ export default {
                 },
                 //若服务请求失败，则运行以下函数
                 error: function(val) {
-                    console.log("出错了。",val);
+                    //console.log("出错了。",val);
                 }
             });
         },
         init(){
-            //console.log(tt);
+            ////console.log(tt);
             let tt = this.tc;
             let propsOptions = this.option.options; 
             let langs = {
