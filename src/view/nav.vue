@@ -1,7 +1,10 @@
 <template>
     <div class="nav">
         <div class="info">
-          <input class="s-b" placeholder="请输入搜索内容" type="search" v-model="searchKeyWork">
+          <input class="s-b" placeholder="请输入搜索内容" type="search" v-model="searchKeyWork" @click.stop>
+          <svg v-if="searchKeyWork" class="c-l" width="18" height="18" @click.stop="clearSearch">
+              <use xlink:href="#close3"/>
+          </svg>
         </div>
     <ul v-if="!searchKeyWork">
       <li><router-link to="/intro" :class="{ current:path=='/intro' }">指南</router-link></li>
@@ -27,12 +30,15 @@
       <li v-for="(item,index) in reslouts" :key="index" >
         <router-link :to="{name:item.name}" :class="{ current:path=='/'+item.name }">{{item.name}}<span class="chnn">{{item.chnName || '组件' }}</span></router-link>
       </li>
+      <li v-if="resloutempty" class="l-s">{{resloutempty}}</li>
     </ul>
+    
     </div>
 </template>
 
 <script>
 //import Conf from "../../config.json";
+import closeIcon from '../asset/img/svg/close3.svg';
 export default {
   data() {
     return {
@@ -40,7 +46,9 @@ export default {
       packages: [],
       version: "",
       searchKeyWork:"",
-      reslouts:[]
+      reslouts:[],
+      resloutempty:'',
+      timeOut:null
     };
   },
   computed:{
@@ -48,7 +56,11 @@ export default {
       return this.packages.length || '--';
     }
   },
-  methods: {},
+  methods: {
+    clearSearch(){
+      this.searchKeyWork ="";
+    }    
+  },
   watch: {
     $route: {
       immediate: true,
@@ -58,21 +70,34 @@ export default {
     },
     searchKeyWork(val){
       let packages = this.packages;
-      let temAry = [];      
-      for(let index=0,item;item=packages[index];index++) {
-          let ishas = false;
-          for(let key in item) {
-            if(item[key]&&typeof item[key]== "string" &&item[key].indexOf(val)>-1){                  
-              ishas = true;     
-            }            
-          }
-          if(ishas){
-            temAry.push(item); 
-          }
-           
+      let temAry = [];
+      let timeOut = this.timeOut;    
+      let that = this;     
+      if(timeOut){
+        clearTimeout(timeOut)
       }
-      console.log(temAry)
-      this.reslouts = temAry;
+      setTimeout(()=>{
+        for(let index=0,item;item=packages[index];index++) {
+            let ishas = false;
+            for(let key in item) {
+              if(item[key]&&typeof item[key]== "string" &&item[key].toLowerCase().indexOf(val.toLowerCase())>-1){                  
+                ishas = true;     
+              }            
+            }
+            if(ishas){
+              temAry.push(item); 
+            }
+        }    
+        if(temAry.length==0){
+          that.resloutempty= "搜索结果为空...";
+          that.reslouts = [];
+        }else{
+          that.resloutempty = "";
+          that.reslouts = temAry;
+        }
+      },200);
+      
+      
     }
   },
   created() {
@@ -83,6 +108,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+ input::-webkit-input-placeholder{
+            color:#ccc;
+        }
+        input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+            color:#ccc;
+        }
+        input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+            color:#ccc;
+        }
+        input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+            color:#ccc;
+        }
 a {
   text-decoration: none;
   
@@ -103,17 +140,35 @@ a {
     color: #999;
     padding: 8px 0;
     margin-bottom: 10px;
-    border-bottom: 1px dashed #ccc;
+    // border-bottom: 1px dashed #ccc;
     display: flex;
     align-items: baseline;
     justify-content: space-between;   
-    
+    position: relative;
     .s-b{
       display: block;
        align-items:center;
         flex-grow:2;
        margin:0;
+       border-radius: 20px;
+       padding:0 .5rem;
+       box-sizing: border-box;
+       text-indent: 15px;
+       border:1px solid rgba(233, 230, 230, 0.72);
     }
+    .c-l{
+      position: absolute;
+      right: 10px;
+      top:50%;
+      transform: translateY(-50%);
+    }
+}
+.l-s{
+  list-style: none;
+  text-align: center;
+  color:#999;
+  height: 100px;
+  line-height: 100px;
 }
 .tot{
   font-size:12px;

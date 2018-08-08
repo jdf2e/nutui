@@ -38,10 +38,10 @@ export default {
         },
     },
     methods:{
-    	toggleMenu:function(){
+    	toggleMenu:function(){           
     		this.navShow = !this.navShow;
     	},
-    	wrapperClick:function(){
+    	wrapperClick:function(){           
     		this.navShow = false;
     	}
     }

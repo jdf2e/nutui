@@ -8,7 +8,7 @@
         :showQrCode="true"></nut-docheader>
         <h5>示例</h5>
         <nut-codebox :code="demo1"></nut-codebox>
-
+        <nut-codebox :code="demo2"></nut-codebox>
         <h5>Props</h5>
         <div class="tbl-wrapper">
             <table class="u-full-width">
@@ -160,42 +160,47 @@
         
     </div>   
 </template>
-
 <script>
 export default {
     data(){
         return{
-            demo1:`<nut-map class="map-box" :location="true" :option="map1"></nut-map>
- map1:{
-    id:'test1',        
-    options:{                
-        center:[39.914850, 116.403765],
-        zoomControl: false,
-        zoom: 15,
-        minZoom:2,                
-        maxZoom:18,
-        mapZoomType:'CENTER',
-        draggable: true,
-        scrollwheel: true,
-        disableDoubleClickZoom: true
-    },
-    marker:{          
-            animation:'BOUNCE', //'BOUNCE'反复弹跳'DOWN'落下,'DROP'从天而降,'UP'升起              
-            draggable: false,
-            //自定义Marker图标为大头针样式    
-            icon:"../../asset/img/map/mark.svg",           
-            //设置Marker标题，鼠标划过Marker时显示
-            title: '测试',
-            //设置Marker的可见性，为true时可见,false时不可见
-            visible: true,
-            click:(res)=>{
-                console.log(res)
-            },
-            info:(res)=>{
-                console.log(res);
-                return '';
+            demo1:`<nut-map class="map-box" :location="true" :option="map1"></nut-map>`,
+demo2:`export default {
+    data(){
+        return{
+            map1:{
+                id:'test1',        
+                options:{                
+                    center:[39.914850, 116.403765],
+                    zoomControl: false,
+                    zoom: 15,
+                    minZoom:2,                
+                    maxZoom:18,
+                    mapZoomType:'CENTER',
+                    draggable: true,
+                    scrollwheel: true,
+                    disableDoubleClickZoom: true
+                },
+                marker:{          
+                        animation:'BOUNCE', //'BOUNCE'反复弹跳'DOWN'落下,'DROP'从天而降,'UP'升起              
+                        draggable: false,
+                        //自定义Marker图标为大头针样式    
+                        icon:"../../asset/img/map/mark.svg",           
+                        //设置Marker标题，鼠标划过Marker时显示
+                        title: '测试',
+                        //设置Marker的可见性，为true时可见,false时不可见
+                        visible: true,
+                        click:(res)=>{
+                            console.log(res)
+                        },
+                        info:(res)=>{
+                            console.log(res);
+                            return '';
+                        }
+                }                
             }
-    }                
+        }
+    }
 }`
         }
     },
