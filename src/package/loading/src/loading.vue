@@ -13,9 +13,13 @@
 </template>
 <script>
 import loadingIcon from '../../../asset/img/svg/loading.svg';
+import nutMask from '../../mask/index.js';
 export default {
     name:'nut-loading',
-        data() {
+    components:{
+        'nut-mask':nutMask
+    },
+    data() {
         return {
             mini:true,
             visible: false,
