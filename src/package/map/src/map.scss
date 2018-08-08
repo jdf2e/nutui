@@ -1,0 +1,121 @@
+.nutui-mapbox{
+    position: relative;
+    width: 100%;
+    height: 100%;    
+    .search{
+        position: relative;
+        z-index: 2;        
+    }
+    .nut-map{       
+        position: absolute;
+        width: 100%;
+        height: 100%;   
+        top:0;
+        left: 0;
+    }
+    .search{
+        .inpt-box{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding:0 .4rem;
+            top:0;
+            left: 0;
+            z-index: 2;
+            box-sizing: border-box;
+            background: none;
+            border:none;
+            //opacity: 0;
+            &:focus{
+                outline: none;
+            }
+        }
+        .title-box{
+            font-size: .24rem;        
+            float: left;
+            opacity: 0;
+        }
+        .text-msg{
+            position: relative;
+            z-index: 1;
+            width:100%;
+            height: 1.1rem;
+            line-height: 1.1rem;
+            padding:0 .4rem;
+            background: #fff;
+            box-sizing: border-box;
+            border:1px solid #f4f4f4;
+            .city-box,.adr-box{            
+                background:  rgb(83, 153, 245);
+                color:#fff;
+                padding:0 .1rem;
+                border-radius: .1rem;     
+                line-height: .4rem;
+                height: .4rem;
+                font-size:.18rem;      
+            }
+            .city-box{
+                position: absolute;
+                right: .2rem;
+                top:50%;
+                transform: translateY(-50%);
+            }
+            .adr-box{
+                background:  rgba(226, 10, 10, 0.5);
+                margin:0 .05rem;
+                vertical-align: text-top;
+            }       
+        }
+    }
+    .suggest-box{
+        position: absolute;
+        top:1.2rem;
+        width: 100%;
+        list-style: none;
+        background: rgba(255, 255, 255, 0.9);
+        border:1px solid rgb(221, 229, 241);        
+        box-shadow: 1px 5px 5px #f4f4f4;
+        box-sizing: border-box;
+        margin:0;
+        padding:0;
+        li{
+            font-size: .24rem;
+            padding:0 .06rem 0 .3rem;
+            display: flex;
+            align-items:center;
+            .mark{
+                width: .5rem;
+                text-align: center;         
+                img{
+                    width: .25rem;
+                }
+            }
+            .msg{
+                padding:.38rem 0 .34rem 0;
+                border-top:1px solid #f4f4f4;
+                flex-grow:2;
+                flex-basis: auto;
+                .tit{
+                    font-size: .28rem;
+                    color:#333;
+                }
+                .adr{
+                    font-size:.24rem;
+                    color:#999;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }      
+            .msg:first-child{
+                border-top:none;
+            }
+        }
+    }
+    .map-ca{
+        position: absolute;
+        z-index: 3;
+        left: .1rem;
+        bottom: .8rem;
+    }
+}

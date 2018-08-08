@@ -1,18 +1,32 @@
 <template>
     <div class="nutui-mapbox">
-        <div class="search">
-            
-            <div class="text-msg">
-                <input class="inpt-box" type="text" @keyup="searchKeywordlike" v-model="Keyword" />
-                <span class="city-box">{{fristCity}}</span>
+        <div class="search">            
+            <div v-if="search" class="text-msg">
+                <input placeholder="请输入搜索内容" class="inpt-box" type="sreach" @keyup="searchKeywordlike" v-model="Keyword" />
+                <span class="title-box">{{Keyword}}</span>
+                <span v-if="fristCity" class="city-box">{{fristCity}}</span>               
             </div>
-            <ul v-show="suggestShow" class="suggest-box">
-                <li v-for="(item,index) of address" :key="index" @click="searchcomplete(item.location)">
-                    <span v-html="item.title"></span><span class="city-box" v-html="item.city"></span><span class="adrs-box" v-html="item.address"></span>
+            <ul v-show="suggestShow&&address.length>0" class="suggest-box">
+                <li v-for="(item,index) of address" :key="index" @click="searchcomplete(item)" class="list">
+                    <div class="mark">                        
+                         <svg width="18" height="18">
+                            <use xlink:href="#location"/>
+                        </svg>
+                        </div>
+                    <div class="msg">
+                        <div class="tit" v-html="item.title"></div>
+                        <div class="adr">{{item.address}}</div>                       
+                    </div>
+                    
                 </li>
             </ul>
         </div>
-        <div class="nut-map" :id="option.id"></div>
+        <!-- 定位 -->
+        <svg v-if="location" class="map-ca" width="30" height="30" @click="getlocationApp">
+            <use xlink:href="#getlocation"/>
+        </svg>
+        <!-- 地图 -->
+        <div @click="closeSuggest" class="nut-map" :id="option.id"></div>
     </div>
     
     <!-- 
@@ -23,7 +37,12 @@
     -->
 </template>
 <script>
-import ajax from "./ajax.js";
+import './map.scss';
+import jsonp from "./jsonp.js";
+import getMap from './tcMap.js';
+import latSvg from '../../../asset/img/map/location.svg';
+import getlocation from '../../../asset/img/map/getlocation.svg';
+import getolocation from './location.js';
 export default {
     name:'nut-map',
     props: {
@@ -43,9 +62,17 @@ export default {
         option:{
             type:Object,
             default:{}
-        }        
+        },
+        search:{
+            type:Boolean,
+            default:true
+        },
+        location:{
+            type:Boolean,
+            default:true
+        }    
     },
-    data() {
+    data() {       
         return {
             Keyword:'',
             map:null,
@@ -54,209 +81,74 @@ export default {
             markerArrays:[],
             searchMarkers:[],
             searchreslut:[],
-            fristCity:'北极',
+            fristCity:'',
+            fristAddress:'',
+            firstTitle:"",
             suggestShow:true,
-            address:[
-        {
-            "id": "14876786431467227136",
-            "title": "地铁1号线",
-            "address": "镇海路-23123123213231231231231231233-岩内",
-            "category": "基础设施:交通设施:地铁线路",
-            "type": 5,
-            "location": {
-                "lat": 24.450615,
-                "lng": 118.082858
-            },
-            "adcode": 350203,
-            "province": "福建省",
-            "city": "厦门市",
-            "district": "思明区"
-        },
-        {
-            "id": "15082332840100312374",
-            "title": "地铁1号线",
-            "address": "象峰--福州火车南站",
-            "category": "基础设施:交通设施:地铁线路",
-            "type": 5,
-            "location": {
-                "lat": 26.14359,
-                "lng": 119.329783
-            },
-            "adcode": 350111,
-            "province": "福建省",
-            "city": "福州市",
-            "district": "晋安区"
-        },
-        {
-            "id": "14090015977020043361",
-            "title": "地铁1号线",
-            "address": "富锦路--莘庄",
-            "category": "基础设施:交通设施:地铁线路",
-            "type": 5,
-            "location": {
-                "lat": 31.392403,
-                "lng": 121.42472
-            },
-            "adcode": 310113,
-            "province": "上海市",
-            "city": "上海市",
-            "district": "宝山区"
-        },
-        {
-            "id": "13416315680889077364",
-            "title": "地铁1号线",
-            "address": "福州火车南站--象峰",
-            "category": "基础设施:交通设施:地铁线路",
-            "type": 5,
-            "location": {
-                "lat": 25.985704,
-                "lng": 119.390658
-            },
-            "adcode": 350104,
-            "province": "福建省",
-            "city": "福州市",
-            "district": "仓山区"
-        },
-        {
-            "id": "13122401339403299943",
-            "title": "地铁1号线",
-            "address": "四惠东--苹果园",
-            "category": "基础设施:交通设施:地铁线路",
-            "type": 5,
-            "location": {
-                "lat": 39.908484,
-                "lng": 116.515367
-            },
-            "adcode": 110105,
-            "province": "北京市",
-            "city": "北京市",
-            "district": "朝阳区"
-        },
-        {
-            "id": "15603161543018241560",
-            "title": "地铁1号线",
-            "address": "下沙江滨--湘湖",
-            "category": "基础设施:交通设施:地铁线路",
-            "type": 5,
-            "location": {
-                "lat": 30.287741,
-                "lng": 120.38175
-            },
-            "adcode": 330104,
-            "province": "浙江省",
-            "city": "杭州市",
-            "district": "江干区"
-        },
-        {
-            "id": "11340020417067312772",
-            "title": "地铁1号线",
-            "address": "霞浦--高桥西",
-            "category": "基础设施:交通设施:地铁线路",
-            "type": 5,
-            "location": {
-                "lat": 29.89056,
-                "lng": 121.856639
-            },
-            "adcode": 330206,
-            "province": "浙江省",
-            "city": "宁波市",
-            "district": "北仑区"
-        },
-        {
-            "id": "15625709373494634863",
-            "title": "地铁1号线",
-            "address": "科学城--韦家碾",
-            "category": "基础设施:交通设施:地铁线路",
-            "type": 5,
-            "location": {
-                "lat": 30.391156,
-                "lng": 104.072393
-            },
-            "adcode": 510116,
-            "province": "四川省",
-            "city": "成都市",
-            "district": "双流区"
-        },
-        {
-            "id": "16422220751550941105",
-            "title": "地铁1号线",
-            "address": "岩内--镇海路",
-            "category": "基础设施:交通设施:地铁线路",
-            "type": 5,
-            "location": {
-                "lat": 24.643125,
-                "lng": 118.070151
-            },
-            "adcode": 350211,
-            "province": "福建省",
-            "city": "厦门市",
-            "district": "集美区"
-        },
-        {
-            "id": "16939387505286070840",
-            "title": "地铁1号线",
-            "address": "财经大学--刘园",
-            "category": "基础设施:交通设施:地铁线路",
-            "type": 5,
-            "location": {
-                "lat": 39.063931,
-                "lng": 117.2772
-            },
-            "adcode": 120103,
-            "province": "天津市",
-            "city": "天津市",
-            "district": "河西区"
-        }
-    ]
+            timeSet:null,
+            delay:500,
+            address:[],
+            svgLc:latSvg
         };
     },
-    methods: {
-        
+    methods: {        
+        //模糊查询
         searchKeywordlike(e){  
-            //按回车 选取列表第一个         
-            if(e.keyCode == 13&&this.address[0]){
-               this.searchcomplete(this.address[0].location);
-               return;
-            }
-             this.searchKeyword();
             //正常输入则显示查询列表
             let keyword = this.Keyword;//搜索关键字
             let that = this;
+            //按回车 选取列表第一个         
+            if(keyword&&e.keyCode == 13&&this.address[0]){               
+               this.fristAddress =this.address[0].address;
+               that.searchKeyword();
+               return;
+            }
             //查询
-            keyword&&ajax({
-                    url:'http://apis.map.qq.com/ws/place/v1/suggestion',
-                    type:"JSONP",
-                    data:{
-                        keyword:keyword,                        
-                        key:that.key,
-                        sn:that.sn
-                    }
-                }).then(res=>{              
-                    that.suggestShow = true;      
-                    console.log(res.data)                    
-                    that.address = res.data;
-                    that.fristCity = res.data[0]&&res.data[0].city;  
-            })
+            if(keyword){  
+                this.requestAnimationFrame(()=>{                    
+                    jsonp({
+                            url:'http://apis.map.qq.com/ws/place/v1/suggestion',
+                            type:"JSONP",
+                            data:{
+                                keyword:keyword,                        
+                                key:that.key,
+                                sn:that.sn
+                            }
+                        }).then(res=>{              
+                            that.suggestShow = true;      
+                            console.log(res.data)     
+                            if(res.data){
+                                that.address = res.data;
+                                that.fristCity = res.data[0]&&res.data[0].city;     
+                            }               
+                    })
+                }) 
+            } else {
+                this.address = [];
+            }
         },
         // 有城市搜索
         searchKeyword(){
             //以知城市进行搜索
                 let markers = this.searchMarkers;
                 let markerArrays = this.markerArrays;
-                var keyword = this.Keyword;//搜索关键字
-                var region = this.fristCity;//城市
-                var pageIndex = 1;
-                var pageCapacity = 100;// 设置每页搜索结果数
-                this.clearOverlays(markers);
-                this.clearOverlays(markerArrays);
-                //根据输入的城市设置搜索范围
-                this.searchService.setLocation(region);
-                //设置搜索页码
-                this.searchService.setPageIndex(pageIndex);
-                //设置每页的结果数
-                this.searchService.setPageCapacity(pageCapacity);
-                //根据输入的关键字在搜索范围内检索
-                this.searchService.search(keyword);
+                let keyword = this.Keyword;//搜索关键字
+                let region = this.fristCity;//城市
+                if(region){
+                    let pageIndex = 1;
+                    let pageCapacity = 20;// 设置每页搜索结果数
+                    this.clearOverlays(markers);
+                    this.clearOverlays(markerArrays);
+                    //根据输入的城市设置搜索范围
+                    this.searchService.setLocation(region);
+                    //设置搜索页码
+                    this.searchService.setPageIndex(pageIndex);
+                    //设置每页的结果数
+                    this.searchService.setPageCapacity(pageCapacity);
+                    //根据输入的关键字在搜索范围内检索
+                    this.searchService.search(keyword);
+                    this.closeSuggest();
+                }                
         },
         closeSuggest(){
             this.suggestShow = false;
@@ -265,99 +157,93 @@ export default {
             let map = this.map;
             let tc = this.tc;
             let searchMarkers = this.searchMarkers;             
-                let markerArrays = this.markerArrays;
+            let markerArrays = this.markerArrays;
             //  清除之前的点
             this.clearOverlays(searchMarkers);
             this.clearOverlays(markerArrays);
+            this.marker(res.location);            
+            this.searchMarkers = searchMarkers;
             //更新地图
-            let location = new tc.maps.LatLng(res.lat,res.lng);     
-            let infoWin = new tc.maps.InfoWindow({
-                map: map
-            });
+            let location = new tc.maps.LatLng(res.location.lat,res.location.lng); 
             let latlngBounds = new tc.maps.LatLngBounds();
-            var marker = new tc.maps.Marker({
-                map: map
-            });     
-
-            marker.setPosition(location);  
-            searchMarkers.push(marker);
-            this.searchMarkers = searchMarkers
-            tc.maps.event.addListener(marker, 'click', function() {
-                infoWin.open();
-                infoWin.setPosition(location);
-            });
             latlngBounds.extend(location);
             map.fitBounds(latlngBounds);
+            this.Keyword = res.title;
+            this.fristCity = res.city;
             this.closeSuggest();
         },
-        getMap() {
-            //初始化地图信息 
-            let that = this;
-            let tcMapScript = document.querySelector('#tcMapScript');
-            return new Promise(function (resolve, reject) {
-                    window.initTcMap = function () {     
-                        window.tcMap = qq;                    
-                        resolve(qq);
-                    };
-                    if(!tcMapScript){
-                        var script = document.createElement("script");
-                        script.id="tcMapScript"
-                        script.type = "text/javascript";
-                        script.src = "http://map.qq.com/api/js?v=2.exp&callback=initTcMap&key="+that.key;
-                        script.onerror = reject;
-                        document.head.appendChild(script);
-                    }else{
-                        if(window.tcMap){
-                            resolve(window.tcMap);
-                        }
-
-                    }
-                    
-            })
-        },
-        marker(){            
+        marker(lc){    
+            console.log(lc)             
             let tc = this.tc;
             //当前的地图
             let map = this.map;
-            //地图显示的中心点（标记点）            
-            let markers = this.option.markers; 
-            //渲染坐标
-            for(let index=0,item;item=markers[index];index++){
-                //添加显示地图
-                item = Object.assign(item,{
-                    map:map
-                });                
-                //添加位置
-                if(item.position&&item.position[0]&&item.position[1]) {
-                    let position = new tc.maps.LatLng(item.position[0],item.position[1]);
-                    item = Object.assign(item,{                    
-                        position:position
+            let searchMarkers = this.searchMarkers;    
+            console.log(searchMarkers) 
+            //设置坐标点
+            let marker = new tc.maps.Marker({
+                map: map,
+                position: new tc.maps.LatLng(lc.lat,lc.lng)
+            });            
+            searchMarkers.push(marker);
+            this.searchMarkers = searchMarkers;                   
+            let markerOption = this.option.marker; 
+            if(markerOption){   
+                //是否可见 默认可见
+                if(!markerOption.visible){
+                    marker.setVisible(markerOption.visible);
+                }
+                //设置动画
+                if(markerOption.animation){
+                    marker.setAnimation(tc.maps.MarkerAnimation[markerOption.animation]);
+                }
+                //设置是否可以拖拽 默认不可以拖拽
+                if(markerOption.draggable){
+                    marker.setDraggable(true);
+                }  
+                //设置自定义图片                     
+                if(markerOption.icon){                
+                    let icon = new tc.maps.MarkerImage(markerOption.icon);
+                    marker.setIcon(icon);
+                } 
+                if(markerOption.title) {
+                    marker.setTitle(markerOption.title);
+                }
+                // //添加信息窗口
+                if(markerOption.info){
+                    var info = new tc.maps.InfoWindow({
+                        map: map
                     });
                 }
-                //添加动画                
-                if(item.animation){
-                    let animation = tc.maps.MarkerAnimation[item.animation];
-                    item = Object.assign(item,{                    
-                        animation:animation
-                    });
-                }
-                //添加地图icon
-                if(item.icon){
-                    let icon = new tc.maps.MarkerImage(item.icon);
-                    item = Object.assign(item,{                    
-                        icon:icon
-                    });
-                }
-                //添加地图阴影
-                if(item.shadow){
-                    let shadow = new tc.maps.MarkerImage(item.shadow);
-                    item = Object.assign(item,{                    
-                        shadow:shadow
+                //标记Marker点击事件
+                if(markerOption.click){
+                    tc.maps.event.addListener(marker, 'click', function() {
+                        console.log(marker.getPosition())
+                        if(markerOption.click){
+                            markerOption.click(marker)
+                        }
+                        if(markerOption.info){
+                            info.open();
+                            info.setContent(markerOption.info(marker));
+                            info.setPosition(marker.getPosition());
+                        }
+                        
                     });
                 }                
-                let marker = new tc.maps.Marker(item);
-                this.markerArrays.push(marker)
-            }            
+                //设置Marker停止拖动事件
+                if(markerOption.dragend){
+                    tc.maps.event.addListener(marker, 'dragend', function() {
+                      console.log(marker.getPosition())
+                        if(markerOption.marker){
+                            markerOption.click(marker)
+                        }
+                        if(markerOption.info){
+                            info.open();
+                            info.setContent(markerOption.info(marker));
+                            info.setPosition(marker.getPosition());
+                        }
+                    });
+                }
+            }      
         },
         clearOverlays(overlays) {
             let overlay;
@@ -375,20 +261,21 @@ export default {
                 //检索成功的回调函数
                 complete: function(results) {
                     //设置回调函数参数
-                    var pois = results.detail.pois;
+                    let pois = results.detail.pois;
                     if(pois){
-                        var infoWin = new tc.maps.InfoWindow({
+                        let infoWin = new tc.maps.InfoWindow({
                             map: map
                         });
-                        var latlngBounds = new tc.maps.LatLngBounds();
-                        for (var i = 0, l = pois.length; i < l; i++) {
-                            var poi = pois[i];
+                        let latlngBounds = new tc.maps.LatLngBounds();
+                        for (let i = 0, l = pois.length; i < l; i++) {
+                            let poi = pois[i];
                             //扩展边界范围，用来包含搜索到的Poi点
                             latlngBounds.extend(poi.latLng);        
                             (function(n) {
-                                var marker = new tc.maps.Marker({
+                                let marker = new tc.maps.Marker({
                                     map: map
                                 });
+                                
                                 marker.setPosition(pois[n].latLng);        
                                 marker.setTitle(i + 1);
                                 searchMarkers.push(marker);
@@ -417,6 +304,10 @@ export default {
             //console.log(tt);
             let tt = this.tc;
             let propsOptions = this.option.options; 
+            let langs = {
+                 lat:propsOptions.center[0],
+                    lng:propsOptions.center[1]
+            }
             //
             let center = null; 
             let id = this.option.id;
@@ -445,122 +336,61 @@ export default {
             let elm = document.querySelector('#'+id);
             this.map  = new tt.maps.Map(elm,propsOptions);
             //是否创建一个marker 检索
-            this.$nextTick(()=>{
-                this.marker();
+            this.$nextTick(()=>{                
+                this.marker(langs);
                 this.newSearchService();
             })     
             //是否有检索功能
-
+        },
+        requestAnimationFrame (callback) {
+            let delay = this.delay;
+            let timeSet = this.timeSet;
+            if(timeSet){
+                clearTimeout(timeSet);
+            }
+            this.timeSet = setTimeout(() => {                              
+                    callback()
+                }, delay)        
+        },
+        getlocationApp(){
+            let that = this;
+            let tc = this.tc;
+            getolocation().then(()=>{
+                let geolocation = new tc.maps.Geolocation();
+                geolocation.getLocation(ops=>{                    
+                    // res.location.lat,res.location.lng
+                    if(ops){
+                        let res = {
+                            location:{
+                                lat:ops.lat,
+                                lng:ops.lng
+                            }
+                        }                        
+                         that.searchcomplete(res);
+                    }
+                   
+                })
+            })
         }
     },
     mounted(){
         let that = this;
-        this.getMap().then(
+        let key = that.key;
+        getMap(key).then(
             qq=>{
                 that.tc = qq;
                 that.init();
+                if(that.location){
+                    that.getlocationApp();
+                }
+                
             }
         );
+        // 定位当前
+        
     }
 }
 </script>
 <style lang="scss">
-.nutui-mapbox{
-    position: relative;
-    width: 100%;
-    height: 100%;    
-    .search{
-        position: relative;
-        z-index: 2;
-        // top: 26px;
-        // left: 71px;
-    }
-    .nut-map{
-        //position: absolute;
-        width: 100%;
-        height: 6rem;
-        // top:0;
-        // left:0;
-        // z-index: 1;
-    }
-}
-.search{
-    .inpt-box{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        padding:0 .4rem;
-        top:0;
-        left: 0;
-        z-index: 2;
-        box-sizing: border-box;
-        background: none;
-        border:none;
-        //opacity: 0;
-        &:focus{
-            outline: none;
-        }
-    }
-    .text-msg{
-        position: relative;
-        z-index: 1;
-        width:100%;
-        height: .8rem;
-        line-height: .8rem;
-        padding:0 .4rem;
-        background: #fff;
-        box-sizing: border-box;
-        border:1px solid rgb(83, 153, 245);
-        .city-box{
-            position: absolute;
-            right: .4rem;
-            top:50%;
-            transform: translateY(-50%);
-            background:  rgb(83, 153, 245);
-            color:#fff;
-            padding:0 .1rem;
-            border-radius: .1rem;     
-            line-height: .4rem;
-            height: .4rem;
-            font-size:.18rem;      
-        }
-    }
-}
-.suggest-box{
-    position: absolute;
-    width: 100%;
-    list-style: none;
-    background: #fff;
-    border:1px solid rgb(221, 229, 241);
-    overflow: hidden;
-    height: 3rem;
-    border-top:none;
-    box-sizing: border-box;
-    margin:0;
-    padding:0;
-    li{
-        border-top:1px solid rgb(221, 229, 241);
-        height: .6rem;
-        line-height: .6rem;
-        white-space: nowrap;
-        overflow: hidden;
-        font-size: .24rem;
-        padding:0 .2rem;
-        .city-box{
-            background:  rgb(83, 153, 245);
-            color:#fff;
-            padding:0 .1rem;
-            border-radius: .1rem;
-            margin:0 .1rem;
-        }
-        .adrs-box{
-            color: #666;
-            font-size:.12rem;
-        }
-    }
-    
-    li:first-child{
-        border-top:none;
-    }
-}
+
 </style>
