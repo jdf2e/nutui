@@ -13,7 +13,7 @@ function jsonp (options){
     url = url + '?'+params;  
     return new Promise(function (resolve, reject) {
         window.onBack = (res)=>{
-            console.log(res);                  
+                  
             resolve(res);
             setTimeout(() => {
                 let needDelete = document.querySelector('#'+creatTime);

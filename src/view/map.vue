@@ -125,25 +125,23 @@
                 <tr>
                 <th>事件名</th>
                 <th>说明</th>
-                <th>回调参数</th>
+                <th colspan="2">回调参数</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>option.markers.info</td>
                     <td>添加信息窗口,用于展示当前信息</td>
-                    <td>fn</td>
-                    <td>--</td>
+                    <td>fn</td>                    
                     <td>(res)=>{
                         res //为当前mark信息
-                        return '<div></div>'
+                        return  '信息'//为想要显示的信息
                         }</td>
                 </tr>
                 <tr>
                     <td>option.markers.click</td>
                     <td>用于click事件回调返回当前marker信息</td>
-                    <td>fn</td>
-                    <td>--</td>
+                    <td>fn</td>                    
                     <td>(res)=>{
                         res //为当前mark信息                        
                         }</td>
@@ -151,8 +149,7 @@
                 <tr>
                     <td>option.markers.dragend</td>
                     <td>用于drag事件回调返回当前marker信息</td>
-                    <td>fn</td>
-                    <td>--</td>
+                    <td>fn</td>                   
                     <td>(res)=>{
                         res //为当前mark信息                        
                         }</td>
@@ -168,7 +165,38 @@
 export default {
     data(){
         return{
-            demo1:`test`
+            demo1:`<nut-map class="map-box" :location="true" :option="map1"></nut-map>
+ map1:{
+    id:'test1',        
+    options:{                
+        center:[39.914850, 116.403765],
+        zoomControl: false,
+        zoom: 15,
+        minZoom:2,                
+        maxZoom:18,
+        mapZoomType:'CENTER',
+        draggable: true,
+        scrollwheel: true,
+        disableDoubleClickZoom: true
+    },
+    marker:{          
+            animation:'BOUNCE', //'BOUNCE'反复弹跳'DOWN'落下,'DROP'从天而降,'UP'升起              
+            draggable: false,
+            //自定义Marker图标为大头针样式    
+            icon:"../../asset/img/map/mark.svg",           
+            //设置Marker标题，鼠标划过Marker时显示
+            title: '测试',
+            //设置Marker的可见性，为true时可见,false时不可见
+            visible: true,
+            click:(res)=>{
+                console.log(res)
+            },
+            info:(res)=>{
+                console.log(res);
+                return '';
+            }
+    }                
+}`
         }
     },
     methods:{
