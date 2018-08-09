@@ -225,5 +225,6 @@ export default {
 }
 .demo{
     padding:5px;
+    padding-top:40px;
 }
 </style>
