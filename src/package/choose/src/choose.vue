@@ -23,7 +23,7 @@
                             >
                                     {{data.item && data.item.name||'请选择'}}
                                 </li>
-                            </li>
+                          
                         </template>
                         <template v-else>
                             <li v-for="(data, index) in tempDatas" 
@@ -31,7 +31,6 @@
                                 @click="getCurrList(index)">
                                     {{data.item && data.item.name||'请选择'}}
                                 </li>
-                            </li>
                         </template>
                     </ul>
                     <div class="area-tab-con" ref="areaTabCon">
