@@ -11,7 +11,7 @@
             direction="horizontal"
              ref="demo1"
              @slideChangeEnd="slideChangeEnd">
-            <div v-for="item in dataItem" class="nut-swiper-silde" :key="item.name"><span>page{{item.name}}</span></div>
+            <div v-for="item in dataItem" class="nut-swiper-slide" :key="item.name"><span>page{{item.name}}</span></div>
 
         </nut-swiper>
 
@@ -21,9 +21,9 @@
             :pagination-visible="true"
             :performanceMode="true"
             direction="horizontal">
-            <div class="nut-swiper-silde"><span>page 1</span></div>
-            <div class="nut-swiper-silde"><span>page 2</span></div>
-            <div class="nut-swiper-silde"><span>page 3</span></div>
+            <div class="nut-swiper-slide"><span>page 1</span></div>
+            <div class="nut-swiper-slide"><span>page 2</span></div>
+            <div class="nut-swiper-slide"><span>page 3</span></div>
         </nut-swiper>
 
 
@@ -34,9 +34,9 @@
              @slideChangeEnd="slideChangeEnd"
              @slideChangeStart="slideChangeStart"
             direction="horizontal">
-            <div class="nut-swiper-silde"><span>page 1</span></div>
-            <div class="nut-swiper-silde"><span>page 2</span></div>
-            <div class="nut-swiper-silde"><span>page 3</span></div>
+            <div class="nut-swiper-slide"><span>page 1</span></div>
+            <div class="nut-swiper-slide"><span>page 2</span></div>
+            <div class="nut-swiper-slide"><span>page 3</span></div>
         </nut-swiper>
 
 
@@ -45,9 +45,9 @@
             :pagination-visible="false"
             :autoPlay="5000"
             direction="vertical">
-            <div class="nut-swiper-silde"><span>page 1</span></div>
-            <div class="nut-swiper-silde"><span>page 2</span></div>
-            <div class="nut-swiper-silde"><span>page 3</span></div>
+            <div class="nut-swiper-slide"><span>page 1</span></div>
+            <div class="nut-swiper-slide"><span>page 2</span></div>
+            <div class="nut-swiper-slide"><span>page 3</span></div>
         </nut-swiper>
 
         <p>竖向切换</p>
@@ -59,9 +59,9 @@
               @slideChangeEnd="slideChangeEnd"
                @slideChangeStart="slideChangeStart"
             direction="vertical">
-            <div class="nut-swiper-silde"><span >page 1{{this.move}}</span></div>
-            <div class="nut-swiper-silde"><span>page 2{{this.move}}</span></div>
-            <div class="nut-swiper-silde"><span>page 3{{this.move}}</span></div>
+            <div class="nut-swiper-slide"><span >page 1{{this.move}}</span></div>
+            <div class="nut-swiper-slide"><span>page 2{{this.move}}</span></div>
+            <div class="nut-swiper-slide"><span>page 3{{this.move}}</span></div>
         </nut-swiper>
 
         <p>多层切换</p>
@@ -69,17 +69,17 @@
             :pagination-visible="true"
             direction="horizontal"
             id="nutSwiperMore">
-            <div class="nut-swiper-silde">
+            <div class="nut-swiper-slide">
               <div>page 1</div>
               <div>page 2</div>
               <div>page 3</div>
             </div>
-            <div class="nut-swiper-silde">
+            <div class="nut-swiper-slide">
               <div>page 4</div>
               <div>page 5</div>
               <div>page 6</div>
             </div>
-            <div class="nut-swiper-silde">
+            <div class="nut-swiper-slide">
               <div>page 7</div>
               <div>page 8</div>
               <div>page 9</div>
@@ -95,7 +95,7 @@
             :lazyLoad="true"
             lazyLoadingUrl="//static.360buyimg.com/exploit/mplus/2.1.81/css/i/loading.gif"
             lazyLoaderrorUrl="">
-            <div class="nut-swiper-silde">
+            <div class="nut-swiper-slide">
               <div>
                 <img data-src="//img11.360buyimg.com/n3/s300x300_jfs/t2029/269/1342378600/94347/c088416b/56581d53Ne97b6442.jpg" class="nut-swiper-lazyload"/>
                 <p>牙膏牙膏吃牙膏</p>
@@ -109,7 +109,7 @@
                 <p>妙洁 保鲜袋背心型食品袋中号200只装 可提携易打结</p>
               </div>
             </div>
-            <div class="nut-swiper-silde">
+            <div class="nut-swiper-slide">
               <div>
                 <img data-src="//img11.360buyimg.com/n3/s300x300_jfs/t3826/185/3277282028/320781/8fbf1015/587c2fcaNc3741a59.jpg" class="nut-swiper-lazyload"/>
                 <p>全棉灭菌免换洗</p>
@@ -123,7 +123,7 @@
                 <p>训练宝宝咀嚼力</p>
               </div>
             </div>
-            <div class="nut-swiper-silde">
+            <div class="nut-swiper-slide">
               <div>
                 <img data-src="//img11.360buyimg.com/n3/s300x300_jfs/t13924/18/765396019/118800/71bda7ea/5a13878fN35292d9b.jpg" class="nut-swiper-lazyload"/>
                 <p>得力(deli)S01黑色0.5mm经典办公按动中性笔水性笔子弹头签字笔 12支/盒</p>
@@ -147,41 +147,41 @@
             :freeMode="true"
             id="nutSwiperFree"
             >
-            <div class="nut-swiper-silde"><span>page 1</span></div>
-            <div class="nut-swiper-silde"><span>page 2</span></div>
-            <div class="nut-swiper-silde"><span>page 3</span></div>
-            <div class="nut-swiper-silde"><span>page 4</span></div>
-            <div class="nut-swiper-silde"><span>page 5</span></div>
-            <div class="nut-swiper-silde"><span>page 6</span></div>
+            <div class="nut-swiper-slide"><span>page 1</span></div>
+            <div class="nut-swiper-slide"><span>page 2</span></div>
+            <div class="nut-swiper-slide"><span>page 3</span></div>
+            <div class="nut-swiper-slide"><span>page 4</span></div>
+            <div class="nut-swiper-slide"><span>page 5</span></div>
+            <div class="nut-swiper-slide"><span>page 6</span></div>
 
-            <div class="nut-swiper-silde"><span>page 1</span></div>
-            <div class="nut-swiper-silde"><span>page 2</span></div>
-            <div class="nut-swiper-silde"><span>page 3</span></div>
-            <div class="nut-swiper-silde"><span>page 4</span></div>
-            <div class="nut-swiper-silde"><span>page 5</span></div>
-            <div class="nut-swiper-silde"><span>page 6</span></div>
+            <div class="nut-swiper-slide"><span>page 1</span></div>
+            <div class="nut-swiper-slide"><span>page 2</span></div>
+            <div class="nut-swiper-slide"><span>page 3</span></div>
+            <div class="nut-swiper-slide"><span>page 4</span></div>
+            <div class="nut-swiper-slide"><span>page 5</span></div>
+            <div class="nut-swiper-slide"><span>page 6</span></div>
         </nut-swiper>
 
 
-        <p>类似日历、地址，滚动范围超过一个silde 应该停留在当前手指停的地方，而不是只滚动一屏</p>
+        <p>类似日历、地址，滚动范围超过一个slide 应该停留在当前手指停的地方，而不是只滚动一屏</p>
         <nut-swiper
             direction="horizontal"
             id="nutSwiperFree"
             type="multiple"
             >
-            <div class="nut-swiper-silde"><span>page 1</span></div>
-            <div class="nut-swiper-silde"><span>page 2</span></div>
-            <div class="nut-swiper-silde"><span>page 3</span></div>
-            <div class="nut-swiper-silde"><span>page 4</span></div>
-            <div class="nut-swiper-silde"><span>page 5</span></div>
-            <div class="nut-swiper-silde"><span>page 6</span></div>
+            <div class="nut-swiper-slide"><span>page 1</span></div>
+            <div class="nut-swiper-slide"><span>page 2</span></div>
+            <div class="nut-swiper-slide"><span>page 3</span></div>
+            <div class="nut-swiper-slide"><span>page 4</span></div>
+            <div class="nut-swiper-slide"><span>page 5</span></div>
+            <div class="nut-swiper-slide"><span>page 6</span></div>
 
-            <div class="nut-swiper-silde"><span>page 1</span></div>
-            <div class="nut-swiper-silde"><span>page 2</span></div>
-            <div class="nut-swiper-silde"><span>page 3</span></div>
-            <div class="nut-swiper-silde"><span>page 4</span></div>
-            <div class="nut-swiper-silde"><span>page 5</span></div>
-            <div class="nut-swiper-silde"><span>page 6</span></div>
+            <div class="nut-swiper-slide"><span>page 1</span></div>
+            <div class="nut-swiper-slide"><span>page 2</span></div>
+            <div class="nut-swiper-slide"><span>page 3</span></div>
+            <div class="nut-swiper-slide"><span>page 4</span></div>
+            <div class="nut-swiper-slide"><span>page 5</span></div>
+            <div class="nut-swiper-slide"><span>page 6</span></div>
         </nut-swiper>
 
 
@@ -222,7 +222,7 @@ export default {
 
 <style lang="scss">
 #mySwiperDemo{ ///只为了不影响 依赖nut-swiper 的样式  实际项目中可以不加这个id
-  .nut-swiper-silde{
+  .nut-swiper-slide{
     color:#fff;
     font-size:24px;
     justify-content: center;
@@ -230,14 +230,14 @@ export default {
     display: flex;
     background-color:gray;
   }
-  .nut-swiper-silde:nth-child(2n){
+  .nut-swiper-slide:nth-child(2n){
     background-color: red;
   }
-  .nut-swiper-silde:nth-child(2n+1){
+  .nut-swiper-slide:nth-child(2n+1){
     background-color: green;
   }
   #nutSwiperMore{
-    .nut-swiper-silde>div{
+    .nut-swiper-slide>div{
 
       background-color:#fff;
       width:30%;
@@ -251,7 +251,7 @@ export default {
     }
   }
   #nutSwiperLazyLoad{
-    .nut-swiper-silde>div{
+    .nut-swiper-slide>div{
       //flex:1;
       //height:70%;
       background-color:#fff;
@@ -273,7 +273,7 @@ export default {
   }
   #nutSwiperFree{
 
-    .nut-swiper-silde{
+    .nut-swiper-slide{
       width:100px;
       font-size: 12px;
       background-color:#ccc;
@@ -285,7 +285,7 @@ export default {
   #fullScreen
   {
     height:600px;
-    .nut-swiper-silde{
+    .nut-swiper-slide{
       height:100%;
       width:100%;
     }
