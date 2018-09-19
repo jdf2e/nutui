@@ -10,7 +10,7 @@
         <!-- DEMO代码 -->
     </div>
 </template>
-// <script>
+<script>
 // export default {
 //     data(){
 //         return{

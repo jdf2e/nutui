@@ -1,6 +1,6 @@
 <template>
   <div id="nut-drag" class="nut-drag" @touchstart="touchStart($event)" >
-      <span>{{visible}}</span>
+      <span>{{visible,boundary.right}}</span>
     <div v-if="!visible"  class="navBtn_open" @click="openBtnClick($event)"></div>
     <div class="foot-box-wrapper" v-if="visible">
         <div class="foot-box">
@@ -29,7 +29,7 @@
                 </a>
             <!-- </router-link> -->
             <a href="javascript:void(0)">
-                <i class="navBtn-close" @click="closeBtnClick()"></i>
+                <i class="navBtn-close" @click.stop="closeBtnClick()"></i>
             </a>
         </div>
     </div>
@@ -132,7 +132,6 @@ export default {
     closeBtnClick() {
       this.visible=false;
       this.boundary.right = null;
-      console.log(this,'000');
       
     },
     // drag中的方法
