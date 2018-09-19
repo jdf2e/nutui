@@ -329,14 +329,18 @@
       "showDemo": true
     },
     {
-      
       "name": "ShortPwd",
       "chnName": "短密码弹层",
       "desc": "6位短密码弹层",
       "type": "component",
       "showDemo": true
+    },
+    {
+      "name": "NavBar",
+      "chnName": "拖动导航栏",
+      "desc": "用来解决深层页面跳转其他页面困难的问题， 初始化的时候是一个圆点，当我们需要跳转其他页面的时候，点击打开就行，同时支持拖动圆点",
+      "type": "component",
+      "showDemo": true
     }
-   
-    
   ]
 }
