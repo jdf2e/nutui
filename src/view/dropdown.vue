@@ -128,13 +128,13 @@ export default {
   data() {
     return {
       options: ['一','二','三','四'],
-      options2: [{name: '张三', id: 1}, {name: '李四', id: 2}, {name: '王五', id: 3}, {name: '马六', id: 4}, {name: '王八蛋', id: 5}],
+      options2: [{name: '张三', id: 1}, {name: '李四', id: 2}, {name: '王五', id: 3}, {name: '马六', id: 4}, {name: '王久', id: 5}],
       code: `
         export default {
           data() {
             retuen {
               options: ['一','二','三','四'],
-              options2: [{name: '张三', id: 1}, {name: '李四', id: 2}, {name: '王五', id: 3}, {name: '马六', id: 4}, {name: '王八蛋', id: 5}],
+              options2: [{name: '张三', id: 1}, {name: '李四', id: 2}, {name: '王五', id: 3}, {name: '马六', id: 4}, {name: '王久', id: 5}],
             }
           },
           methods: {
