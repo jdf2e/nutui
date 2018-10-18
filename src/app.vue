@@ -12,7 +12,7 @@
     	<router-view class="view sys-main" name="main"></router-view>
         <router-view class="view sys-phone" name="phone"></router-view>
     </div>
-    <div class="sys-footer"><div class="sys-inner"><span>© 2018 <a href="https://jdc.jd.com/" target="_blank">JDC</a>. All Rights Reserved.</span></div></div>
+    <div class="sys-footer"><div class="sys-inner"><span>Copyright © 2017~2018 <a href="https://jdc.jd.com/" target="_blank">JDC</a>. All Rights Reserved.</span></div></div>
   </div>
 </template>
 <script>
