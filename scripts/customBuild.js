@@ -34,15 +34,25 @@ inquirer
                 }
             });
         });
-        fs.readFile(path.join(__dirname, './customBuildTpl.js'), 'utf8', function (err, data) {
-          fs.writeFile(path.join(__dirname, '../src/nutui-custom.js'), str + data, (err) => {
-            if (err) throw err;
-            console.log(`生成nutui-custom.js文件成功`);
-          });
-        });
 
         fs.writeFile(destPath, JSON.stringify(choices, null, 2), (err) => {
             if (err) throw err;
             console.log(`生成配置文件custom.json成功`);
+
+            fs.readFile(path.join(__dirname, './customBuildTpl.js'), 'utf8', function (err, data) {
+              fs.writeFile(path.join(__dirname, '../src/nutui-custom.js'), str + data, (err) => {
+                if (err) throw err;
+                console.log(`生成nutui-custom.js文件成功`);
+    
+                console.log([
+                  '', 
+                  'if there are some errors about "JavaScript heap out of memory",', 
+                  'you can have a read about "https://www.npmjs.com/package/increase-memory-limit"',
+                  ''
+                ].join('\n'));
+              });
+            });
         });
+        
   });
+  

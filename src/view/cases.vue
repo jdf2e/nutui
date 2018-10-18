@@ -13,7 +13,7 @@
                ref="appShow"
                :speed="1000"
                @slideChangeStart="slideChangeStart">
-                <div v-for="item in appList" class="nut-swiper-silde box">
+                <div v-for="item in appList" class="nut-swiper-slide box">
                     <div class="box-image">
                         <img :src='item.imageSrc' class="images" />
                     </div>
@@ -136,6 +136,10 @@ export default {
             {
                 title:'生活圈',
                 imageSrc:'../asset/img/cases/life_icon.png',
+            },
+            {
+                title:'桌面极速报障',
+                imageSrc:'../asset/img/cases/maintain.png',
             }
           ],
           clientList:[
@@ -408,7 +412,7 @@ p{
 
 }
 .logos{
-    padding:0px;
+    padding:0px 30px;
     margin:0px;
     //width:80%;
     margin:0 auto;

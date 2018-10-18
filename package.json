@@ -28,11 +28,12 @@
     "url": "https://github.com/jdf2e/nutui.git"
   },
   "scripts": {
-    "clean": "node scripts/rmDist",
+    "clean": "node scripts/rmDist dist",
     "dev": "npm run clean && webpack-dev-server -d --open --progress",
     "build": "npm run clean && cross-env NODE_ENV=production webpack --hide-modules --progress",
     "add": "node scripts/addComponent",
-    "custom": "node scripts/customBuild && npm run clean && cross-env NODE_ENV=production webpack --config webpack.config.custom.js --hide-modules --progress && rm -rf custom.json && rm -rf src/nutui-custom.js"
+    "custom": "node scripts/customBuild && npm run clean && cross-env NODE_ENV=production webpack --config webpack.config.custom.js --hide-modules --progress",
+    "postcustom": "node scripts/rmDist custom.json src/nutui-custom.js"
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",

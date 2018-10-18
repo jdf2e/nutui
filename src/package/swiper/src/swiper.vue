@@ -97,7 +97,7 @@ export default {
             timer:null,// 自动播放计数器
             stopAutoPlay:false,//停止自动播放
             swiperWrap:null,// swiperWrap dom
-            oneSlideTranslate:0,//一个slide 的距离用于判断，手指停在第几个silde上了
+            oneSlideTranslate:0,//一个slide 的距离用于判断，手指停在第几个slide上了
 
         };
     },
@@ -156,9 +156,9 @@ export default {
                 this._setTranslate(this._getTranslateOfPage(page));
                 if(noAnimation) {
                     //添加select cls
-                    let selectedSlide = this.$el.querySelector('.nut-swiper-silde-selected');
-                    selectedSlide && selectedSlide.classList.remove('nut-swiper-silde-selected');
-                    this.slideEls[this.currentPage-1].classList.add('nut-swiper-silde-selected');
+                    let selectedSlide = this.$el.querySelector('.nut-swiper-slide-selected');
+                    selectedSlide && selectedSlide.classList.remove('nut-swiper-slide-selected');
+                    this.slideEls[this.currentPage-1].classList.add('nut-swiper-slide-selected');
                     this.lastPage = this.currentPage;
                     return;
                 }
@@ -170,9 +170,9 @@ export default {
 
                 if(noAnimation) {
                     //添加select cls
-                    let selectedSlide = this.$el.querySelector('.nut-swiper-silde-selected');
-                    selectedSlide && selectedSlide.classList.remove('nut-swiper-silde-selected');
-                    this.slideEls[this.currentPage-1].classList.add('nut-swiper-silde-selected');
+                    let selectedSlide = this.$el.querySelector('.nut-swiper-slide-selected');
+                    selectedSlide && selectedSlide.classList.remove('nut-swiper-slide-selected');
+                    this.slideEls[this.currentPage-1].classList.add('nut-swiper-slide-selected');
                     this.lastPage = this.currentPage;
                     return;
                 };
@@ -334,9 +334,9 @@ export default {
             }
             this.lastPage = this.currentPage;
             //添加select cls
-            let selectedSlide = this.$el.querySelector('.nut-swiper-silde-selected');
-            selectedSlide && selectedSlide.classList.remove('nut-swiper-silde-selected');
-            this.slideEls[this.currentPage-1].classList.add('nut-swiper-silde-selected');
+            let selectedSlide = this.$el.querySelector('.nut-swiper-slide-selected');
+            selectedSlide && selectedSlide.classList.remove('nut-swiper-slide-selected');
+            this.slideEls[this.currentPage-1].classList.add('nut-swiper-slide-selected');
             if(this.isLoop){
                  this._setTranslate(this._getTranslateOfPage(this.currentPage));
             }
@@ -470,7 +470,7 @@ export default {
         transition: all 0ms ease;
         -webkit-transition: all 0ms ease;
     }
-    .nut-swiper-silde {
+    .nut-swiper-slide {
         overflow: hidden;
         flex-shrink: 0;
         -webkit-flex-shrink: 0;

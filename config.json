@@ -14,6 +14,12 @@
       "desc": "一种对话框，支持按钮交互。"
     },
     {
+      "name": "Dropdown",
+      "chnName": "下拉选择",
+      "type": "component",
+      "desc": "下拉选择组件"
+    },
+    {
       "name": "Toast",
       "chnName": "无焦点提示",
       "type": "method",
@@ -333,6 +339,13 @@
       "name": "ShortPwd",
       "chnName": "短密码弹层",
       "desc": "6位短密码弹层",
+      "type": "component",
+      "showDemo": true
+    },
+    {
+      "name": "FooterCom",
+      "chnName": "公共底部菜单",
+      "desc": "公共底部菜单",
       "type": "component",
       "showDemo": true
     }

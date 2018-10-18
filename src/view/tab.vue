@@ -167,6 +167,64 @@ demo5:
 }
 .customer-css .nut-tab-link[data-v-240d0c90]{
   width:100%;
+}`, demo1:
+`<nut-tab @tab-switch="tabSwitch">
+    <nut-tab-panel tabTitle="页签名称1">11</nut-tab-panel>
+    <nut-tab-panel tabTitle="页签名称2">
+      <h2>22</h2>
+    </nut-tab-panel>
+    <nut-tab-panel tabTitle="页签名称3">33</nut-tab-panel>
+    <nut-tab-panel tabTitle="页签名称4">44</nut-tab-panel>
+</nut-tab>`,
+        demo2:
+`<nut-tab @tab-switch="tabSwitch"  positionNav="left">
+    <nut-tab-panel tabTitle="页签1">11</nut-tab-panel>
+    <nut-tab-panel tabTitle="页签2" iconUrl="图片地址">
+      <h2>22</h2>
+    </nut-tab-panel>
+    <nut-tab-panel tabTitle="页签3">33</nut-tab-panel>
+    <nut-tab-panel tabTitle="页签4">44</nut-tab-panel>
+</nut-tab>`,
+        demo3:
+`<nut-tab @tab-switch="tabSwitch" :contentShow="false">
+    <nut-tab-panel tabTitle="页签1">11</nut-tab-panel>
+    <nut-tab-panel tabTitle="页签2" tabLink="http://www.baidu.com">
+      <h2>22</h2>
+    </nut-tab-panel>
+    <nut-tab-panel tabTitle="页签3" tabLink="http://www.jd.com">33</nut-tab-panel>
+</nut-tab>`,
+        demo4:
+`<nut-tab 
+  :defIndex="1"
+  class="customer-css" 
+  @tab-switch="tabSwitch"
+  :contentShow="true"
+  >
+      <nut-tab-panel tabTitle="页签1">11</nut-tab-panel>
+      <nut-tab-panel tabTitle="页签2">
+        <h2>22</h2>
+      </nut-tab-panel>
+      <nut-tab-panel tabTitle="页签3">33</nut-tab-panel>
+      <nut-tab-panel tabTitle="页签4">44</nut-tab-panel>
+  </nut-tab>`,
+demo5:
+`.customer-css .nut-tab-active .nut-tab-link[data-v-240d0c90]{
+  border-bottom: 1px solid #0E90D2;
+  background: #F5F7FA;
+}
+.customer-css .nut-title-nav-list[data-v-240d0c90]{
+  background: #fff;
+  border-left: 1px solid #F5F7FA;
+}
+.customer-css .nut-title-nav-list[data-v-240d0c90]:first-child{
+  border-left: 0;
+};
+.customer-css .nut-tab-active[data-v-240d0c90]{
+  background: #F5F7FA;
+  border: 0;
+}
+.customer-css .nut-tab-link[data-v-240d0c90]{
+  width:100%;
 }`,
 
         }
