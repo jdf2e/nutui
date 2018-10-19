@@ -7,7 +7,7 @@
                 v-on:click="switchTab(index,$event)" class="nut-title-nav-list" 
                 :class="['nut-title-nav',{'nut-tab-active' : activeIndex == index}]"
                 >
-                <a :href="value.href" class="nut-tab-link" v-on:click="switchTabLink(index,$event)">
+                <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event)">
                 <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
                 {{value.tabTitle}}
                 </a>
@@ -24,7 +24,7 @@
                     v-on:click="switchTab(index,$event)" class="nut-title-nav-leftnav" 
                     :class="['nut-title-nav',{'nut-tab-active' : activeIndex == index}]"
                     >
-                    <a :href="value.href" class="nut-tab-link" v-on:click="switchTabLink(index,$event)">
+                    <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event)">
                     <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
                     {{value.tabTitle}}
                     </a>
@@ -44,7 +44,7 @@
                     v-on:click="switchTab(index,$event)" class="nut-title-nav-leftnav" 
                     :class="['nut-title-nav',{'nut-tab-active' : activeIndex == index}]"
                     >
-                    <a :href="value.href" class="nut-tab-link" v-on:click="switchTabLink(index,$event)">
+                    <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event)">
                     <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
                     {{value.tabTitle}}
                     </a>
@@ -61,7 +61,7 @@
                 v-on:click="switchTab(index,$event)" class="nut-title-nav-list" 
                 :class="['nut-title-nav',{'nut-tab-active' : activeIndex == index}]"
                 >
-                <a :href="value.href" class="nut-tab-link" v-on:click="switchTabLink(index,$event)">
+                <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event)">
                 <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
                 {{value.tabTitle}}
                 </a>
@@ -120,6 +120,7 @@ export default {
                         let item ={
                         'tabTitle':slot[i].data.attrs.tabTitle,
                         'iconUrl':slot[i].data.attrs.iconUrl,
+                        'clstag': slot[i].data.attrs.clstag,
                         'href':slot[i].data.attrs.tabLink?slot[i].data.attrs.tabLink:'javascript:void(0)',
                        }
                        this.tabTitleList.push(item);

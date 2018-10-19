@@ -32,7 +32,7 @@
 <h5>联系我们</h5>
 <p>如果您在使用组件的过程中遇到了什么问题，或者有什么意见建议，都欢迎与我们联系：<a href="mailto:nutui@jd.com">nutui@jd.com</a></p>
 <h5>使用项目</h5>
-<p><router-link  tag="a" to="/cases" :class="{ current:path=='/cases' }" target='_blank'>点击查看正在使用项目。</router-link>如果您在项目里使用了NutUI，欢迎告知。</p>
+<p><router-link  tag="a" :to="{path:'/cases',query:{time:currTime}}" :class="{ current:path=='/cases' }" target='_blank'>点击查看正在使用项目。</router-link>如果您在项目里使用了NutUI，欢迎告知。</p>
     </div>
 </template>
 
@@ -44,7 +44,8 @@ export default {
 :visible.sync="maskShow">
 </nut-mask>`,
           total:'--',
-          version:'--'
+          version:'--',
+          currTime:new Date().getTime()
         }
     },
     components: {
@@ -81,4 +82,5 @@ img{
         height:100px;
     }
 }
+
 </style>
