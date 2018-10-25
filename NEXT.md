@@ -1,16 +1,16 @@
-<p style="background:#6D73;padding:10px;text-align:center">NutUI 2.0计划</p>
+#NutUI 2.0计划
 
 目前 NutUI 2.0 版正在紧锣密鼓的开发中。
 
 <img src="http://img11.360buyimg.com/uba/jfs/t1/3443/17/12056/37762/5bd17892Ef40b38fd/0154d1c7c651a079.gif">
 
-主要方向是组件的<b style="color:#f00">精品化</b>和<b style="color:#f00">跨平台</b>，从网站到组件全面提升用户体验，我们的目标是：
+主要方向是组件的**精品化**和**跨平台**，从网站到组件全面提升用户体验，我们的目标是：
 
 <img src="http://img11.360buyimg.com/uba/jfs/t1/6849/6/2522/310293/5bd17b79E953215d8/9a7d799ce0ca8b84.png">
 
 虽然只是 beta 版本，但是是新组建库的一大步！
 
-<p style="font-size:16px;background:#dff;padding:10px 20px;letter-spacing:2px;text-align:center">新版本的NutUI将具备以下特性：</p>
+>新版本的NutUI将具备以下特性：
 
 
 <ul>
