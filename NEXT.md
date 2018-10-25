@@ -1,4 +1,4 @@
-#NutUI 2.0计划
+**NutUI 2.0计划
 
 目前 NutUI 2.0 版正在紧锣密鼓的开发中。
 
@@ -13,47 +13,15 @@
 >新版本的NutUI将具备以下特性：
 
 
-<ul>
-<li style="list-style-type:none;">
-<b style="margin-right:10px;color:green">特性1</b>
-<span style="color:green">跨平台，提交的Vue组件自动生成微信小程序组件</span>
-</li>
-<li style="list-style-type:none;">
-<b style="margin-right:10px;color:#054261">特性2</b>
-<span style="color:#054261">脚手架升级webpack 4.0，构建速度大幅提升</span>
-</li>
-<li style="list-style-type:none;">
-<b style="margin-right:10px;color:green">特性3</b>
-<span style="color:green">网站页面设计由设计师小姐姐把持，组件严格按照京东APP最新UI规范开发</span>
-</li>
-<li style="list-style-type:none;">
-<b style="margin-right:10px;color:#054261">特性4</b>
-<span style="color:#054261">统一的动效</span>
-</li>
-<li style="list-style-type:none;">
-<b style="margin-right:10px;color:green">特性5</b>
-<span style="color:green">更方便、更灵活、更优雅的按需引用方式</span>
-</li>
-<li style="list-style-type:none;">
-<b style="margin-right:10px;color:#054261">特性6</b>
-<span style="color:#054261">组件内建文案支持多语言（国际化）</span>
-</li>
-<li style="list-style-type:none;">
-<b style="margin-right:10px;color:green">特性7</b>
-<span style="color:green">支持自定义主题</span>
-</li>
-<li style="list-style-type:none;">
-<b style="margin-right:10px;color:#054261">特性8</b>
-<span style="color:#054261">基于MD文件自动生成文档</span>
-</li>
-<li style="list-style-type:none;">
-<b style="margin-right:10px;color:green">特性9</b>
-<span style="color:green">支持自动化测试和持续集成</span>
-</li>
-<li style="list-style-type:none;">
-<b style="margin-right:10px;color:#054261">特性10</b>
-<span style="color:#054261">官网将支持PWA</span>
-</li>
-</ul>
-<hr/>
+- 特性1 跨平台，提交的Vue组件自动生成微信小程序组件
+- 特性2 脚手架升级webpack 4.0，构建速度大幅提升
+- 特性3 网站页面设计由设计师小姐姐把持，组件严格按照京东APP最新UI规范开发
+- 特性4 统一的动效
+- 特性5 更方便、更灵活、更优雅的按需引用方式
+- 特性6 组件内建文案支持多语言（国际化）
+- 特性7 支持自定义主题
+- 特性8 基于MD文件自动生成文档
+- 特性9 支持自动化测试和持续集成
+- 特性10 官网将支持PWA
+------------------------------------------------------
 如果你有好的建议，欢迎反馈给我们。邮箱是 nutui@jd.com;
