@@ -340,6 +340,13 @@
       "desc": "6位短密码弹层",
       "type": "component",
       "showDemo": true
+    },
+    {
+      "name": "Scroller",
+      "chnName": "下拉刷新上拉加载组件",
+      "desc": "可下拉刷新上拉加载的容器组件",
+      "type": "component",
+      "showDemo": true
     }
   ]
 }
