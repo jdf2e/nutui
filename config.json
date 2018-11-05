@@ -340,6 +340,13 @@
       "desc": "6位短密码弹层",
       "type": "component",
       "showDemo": true
+    },
+    {
+      "name": "FooterCom",
+      "chnName": "公共底部菜单",
+      "desc": "公共底部菜单",
+      "type": "component",
+      "showDemo": true
     }
   ]
 }
