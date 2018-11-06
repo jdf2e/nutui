@@ -335,7 +335,6 @@
       "showDemo": true
     },
     {
-      
       "name": "ShortPwd",
       "chnName": "短密码弹层",
       "desc": "6位短密码弹层",
@@ -348,8 +347,13 @@
       "desc": "公共底部菜单",
       "type": "component",
       "showDemo": true
+    },
+    {
+      "name": "Marquee",
+      "chnName": "跑马灯",
+      "desc": "文字以及内容的横向纵向轮播",
+      "type": "component",
+      "showDemo": true
     }
-   
-    
   ]
 }
