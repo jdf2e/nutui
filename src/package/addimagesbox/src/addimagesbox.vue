@@ -1,7 +1,7 @@
 <template>
     <div class="nut-addimagesbox">
         <div v-html="icon"></div>
-        <input  @change="addImg" class="addImgs" type="file" name="files" multiple="multiple" accept="image/*">
+        <input ref="uploadInput"  @change="addImg" class="addImgs" type="file" name="files" multiple="multiple" accept="image/*">
     </div>
 </template>
 <script>
@@ -93,7 +93,8 @@ export default {
                         });  
                     }                                        
                 }                
-                                   
+                
+                this.$refs.uploadInput.value = '';                                
         },
          preview(data){
                 let that = this;
