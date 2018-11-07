@@ -1,5 +1,5 @@
 {
-  "version": "1.2.9",
+  "version": "1.3.1",
   "packages": [
     {
       "name": "DatePicker",
@@ -345,6 +345,13 @@
       "name": "Scroller",
       "chnName": "下拉刷新上拉加载组件",
       "desc": "可下拉刷新上拉加载的容器组件",
+      "type": "component",
+      "showDemo": true
+    }, 
+    {
+      "name": "FooterCom",
+      "chnName": "公共底部菜单",
+      "desc": "公共底部菜单",
       "type": "component",
       "showDemo": true
     }

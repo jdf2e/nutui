@@ -6,7 +6,7 @@
 
 # NutUI
 
-[![version](https://img.shields.io/badge/version-1.2-blue.svg?style=flat-square)](http://nutui.jd.com/)
+[![version](https://img.shields.io/badge/version-1.3-blue.svg?style=flat-square)](http://nutui.jd.com/)
 [![license](https://img.shields.io/badge/license-MIT-yellow.svg?style=flat-square)](http://nutui.jd.com/)
 
 > 基于Vue 2.0的移动端轻量级UI组件库

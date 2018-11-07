@@ -212,16 +212,16 @@ export default {
    :performanceMode="true"
    ref="demo1"
    @slideChangeEnd="slideChangeEnd">
-    <div v-for="item in dataItem" class="nut-swiper-silde"><span>page{{item.name}}</span></div>
+    <div v-for="item in dataItem" class="nut-swiper-slide"><span>page{{item.name}}</span></div>
 </nut-swiper>`,
           demo2:
 `<nut-swiper
     :pagination-visible="false"
     :performanceMode="true"
     direction="vertical">
-    <div class="nut-swiper-silde"><span>page 1</span></div>
-    <div class="nut-swiper-silde"><span>page 2</span></div>
-    <div class="nut-swiper-silde"><span>page 3</span></div>
+    <div class="nut-swiper-slide"><span>page 1</span></div>
+    <div class="nut-swiper-slide"><span>page 2</span></div>
+    <div class="nut-swiper-slide"><span>page 3</span></div>
 </nut-swiper>`,
           demo3:
 `<nut-swiper
@@ -229,27 +229,27 @@ export default {
     @slideChangeEnd="slideChangeEnd"
     @slideChangeStart="slideChangeStart"
     direction="horizontal">
-    <div class="nut-swiper-silde"><span>page 1</span></div>
-    <div class="nut-swiper-silde"><span>page 2</span></div>
-    <div class="nut-swiper-silde"><span>page 3</span></div>
+    <div class="nut-swiper-slide"><span>page 1</span></div>
+    <div class="nut-swiper-slide"><span>page 2</span></div>
+    <div class="nut-swiper-slide"><span>page 3</span></div>
 </nut-swiper>`,
           demo4:
 `<nut-swiper
     :pagination-visible="true"
     :loop="true"
     direction="horizontal">
-    <div class="nut-swiper-silde"><span>page 1</span></div>
-    <div class="nut-swiper-silde"><span>page 2</span></div>
-    <div class="nut-swiper-silde"><span>page 3</span></div>
+    <div class="nut-swiper-slide"><span>page 1</span></div>
+    <div class="nut-swiper-slide"><span>page 2</span></div>
+    <div class="nut-swiper-slide"><span>page 3</span></div>
 </nut-swiper>`,
           demo5:
 `<nut-swiper
     :pagination-visible="false"
     :autoPlay="1000"
     direction="vertical">
-    <div class="nut-swiper-silde"><span>page 1</span></div>
-    <div class="nut-swiper-silde"><span>page 2</span></div>
-    <div class="nut-swiper-silde"><span>page 3</span></div>
+    <div class="nut-swiper-slide"><span>page 1</span></div>
+    <div class="nut-swiper-slide"><span>page 2</span></div>
+    <div class="nut-swiper-slide"><span>page 3</span></div>
 </nut-swiper>`,
           demo6:
 `<nut-swiper
@@ -259,7 +259,7 @@ export default {
     :lazyLoad="true"
     lazyLoadingUrl="//static.360buyimg.com/exploit/mplus/2.1.81/css/i/loading.gif"
     lazyLoaderrorUrl="">
-    <div class="nut-swiper-silde">
+    <div class="nut-swiper-slide">
       <div>
         <img data-src="//img11.360buyimg.com/n3/s300x300_jfs/t2029/269/1342378600/94347/c088416b/56581d53Ne97b6442.jpg" class="nut-swiper-lazyload"/>
         <p>牙膏牙膏吃牙膏</p>
@@ -273,7 +273,7 @@ export default {
         <p>妙洁 保鲜袋背心型食品袋中号200只装 可提携易打结</p>
       </div>
     </div>
-    <div class="nut-swiper-silde">
+    <div class="nut-swiper-slide">
       <div>
         <img data-src="//img11.360buyimg.com/n3/s300x300_jfs/t3826/185/3277282028/320781/8fbf1015/587c2fcaNc3741a59.jpg" class="nut-swiper-lazyload"/>
         <p>全棉灭菌免换洗</p>
@@ -287,7 +287,7 @@ export default {
         <p>训练宝宝咀嚼力</p>
       </div>
     </div>
-    <div class="nut-swiper-silde">
+    <div class="nut-swiper-slide">
       <div>
         <img data-src="//img11.360buyimg.com/n3/s300x300_jfs/t13924/18/765396019/118800/71bda7ea/5a13878fN35292d9b.jpg" class="nut-swiper-lazyload"/>
         <p>得力(deli)S01黑色0.5mm经典办公按动中性笔水性笔子弹头签字笔 12支/盒</p>

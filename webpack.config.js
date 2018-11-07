@@ -20,7 +20,8 @@ webpackConfig.entry = {
 webpackConfig.output = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: "/",
-    filename: '[name].js',
+    filename: "[name].js",
+    chunkFilename: "[name].[hash].js",
     library: 'nutui',
     libraryTarget: 'umd',
     umdNamedDefine: true
@@ -72,6 +73,7 @@ webpackConfig.plugins = [
     new HtmlWebpackPlugin({
         filename: path.resolve(__dirname, './dist/index.html'),
         template: './src/index.html',
+        hash:true,
         chunks: ['app']
     }),
     new HtmlWebpackPlugin({
