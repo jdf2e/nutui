@@ -10,8 +10,7 @@
         <h6>示例</h6>
         <div class="scroller-container">
           <nut-scroller 
-            :on-refresh="onRefresh"
-            :on-infinite="onInfinite">
+            :onRefresh="onRefresh" :onInfinite="onInfinite">
             <div v-for="(item, index) in list" :key="index" class="content-item">{{'滚动区域的内容' + (index + 1)}}</div>
           </nut-scroller>
         </div>
@@ -162,8 +161,10 @@ export default {
                 setTimeout(() => {
                   if (this.list && this.list.length < 30) {
                     this.list = [...this.list, ...Array(10)]
+                    done(true);
+                    return
                   }
-                  done()
+                  done(false) // 回传没有更多数据的标识
                 }, 2000)
               }
             }
@@ -186,8 +187,10 @@ export default {
       setTimeout(() => {
         if (this.list && this.list.length < 30) {
           this.list = [...this.list, ...Array(10)]
+          done(true);
+          return
         }
-        done()
+        done(false)
       }, 2000)
     }
   }
