@@ -342,6 +342,13 @@
       "showDemo": true
     },
     {
+      "name": "Scroller",
+      "chnName": "下拉刷新上拉加载组件",
+      "desc": "可下拉刷新上拉加载的容器组件",
+      "type": "component",
+      "showDemo": true
+    }, 
+    {
       "name": "FooterCom",
       "chnName": "公共底部菜单",
       "desc": "公共底部菜单",
