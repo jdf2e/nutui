@@ -1,5 +1,9 @@
 const rimraf = require('rimraf');
 
-rimraf('dist',function(err){
-    console.log('rimraf:'+(err||'success'));
+let files = process.argv.slice(2);
+
+files.length && files.forEach(function(file) {
+    rimraf.sync(file);
+    console.log('rm '+file+' success!');
 });
+

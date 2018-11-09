@@ -60,7 +60,7 @@ export default {
     data(){
         return{
           demo1:
-`<nut-tab @tabSwitch="tab-switch">
+`<nut-tab @tab-switch="tabSwitch">
     <nut-tab-panel tabTitle="页签名称1">11</nut-tab-panel>
     <nut-tab-panel tabTitle="页签名称2">
       <h2>22</h2>
@@ -69,7 +69,7 @@ export default {
     <nut-tab-panel tabTitle="页签名称4">44</nut-tab-panel>
 </nut-tab>`,
         demo2:
-`<nut-tab @tabSwitch="tab-switch" positionNav="left">
+`<nut-tab @tab-switch="tabSwitch"  positionNav="left">
     <nut-tab-panel tabTitle="页签1">11</nut-tab-panel>
     <nut-tab-panel tabTitle="页签2" iconUrl="图片地址">
       <h2>22</h2>
@@ -78,7 +78,7 @@ export default {
     <nut-tab-panel tabTitle="页签4">44</nut-tab-panel>
 </nut-tab>`,
         demo3:
-`<nut-tab @tabSwitch="tab-switch" :contentShow="false">
+`<nut-tab @tab-switch="tabSwitch" :contentShow="false">
     <nut-tab-panel tabTitle="页签1">11</nut-tab-panel>
     <nut-tab-panel tabTitle="页签2" tabLink="http://www.baidu.com">
       <h2>22</h2>
@@ -87,18 +87,18 @@ export default {
 </nut-tab>`,
         demo4:
 `<nut-tab 
-:defIndex="1"
-class="customer-css" 
-@tabSwitch="tab-switch"
-:contentShow="true"
->
-    <nut-tab-panel tabTitle="页签1">11</nut-tab-panel>
-    <nut-tab-panel tabTitle="页签2">
-      <h2>22</h2>
-    </nut-tab-panel>
-    <nut-tab-panel tabTitle="页签3">33</nut-tab-panel>
-    <nut-tab-panel tabTitle="页签4">44</nut-tab-panel>
-</nut-tab>`,
+  :defIndex="1"
+  class="customer-css" 
+  @tab-switch="tabSwitch"
+  :contentShow="true"
+  >
+      <nut-tab-panel tabTitle="页签1">11</nut-tab-panel>
+      <nut-tab-panel tabTitle="页签2">
+        <h2>22</h2>
+      </nut-tab-panel>
+      <nut-tab-panel tabTitle="页签3">33</nut-tab-panel>
+      <nut-tab-panel tabTitle="页签4">44</nut-tab-panel>
+  </nut-tab>`,
 demo5:
 `.customer-css .nut-tab-active .nut-tab-link[data-v-240d0c90]{
   border-bottom: 1px solid #0E90D2;
