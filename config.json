@@ -1,5 +1,5 @@
 {
-  "version": "1.2.9",
+  "version": "1.3.1",
   "packages": [
     {
       "name": "DatePicker",
@@ -338,6 +338,34 @@
       "name": "ShortPwd",
       "chnName": "短密码弹层",
       "desc": "6位短密码弹层",
+      "type": "component",
+      "showDemo": true
+    },
+    {
+      "name": "NavBar",
+      "chnName": "拖动导航栏",
+      "desc": "用来解决深层页面跳转其他页面困难的问题， 初始化的时候是一个圆点，当我们需要跳转其他页面的时候，点击打开就行，同时支持拖动圆点",
+      "type": "component",
+      "showDemo": true
+    },
+    {
+      "name": "Scroller",
+      "chnName": "下拉刷新上拉加载组件",
+      "desc": "可下拉刷新上拉加载的容器组件",
+      "type": "component",
+      "showDemo": true
+    }, 
+    {
+      "name": "FooterCom",
+      "chnName": "公共底部菜单",
+      "desc": "公共底部菜单",
+      "type": "component",
+      "showDemo": true
+    },
+    {
+      "name": "Marquee",
+      "chnName": "跑马灯",
+      "desc": "文字以及内容的横向纵向轮播",
       "type": "component",
       "showDemo": true
     }

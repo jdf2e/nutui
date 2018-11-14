@@ -629,7 +629,7 @@ p{
         width: 267px;
         height: 454px;
     }
-    .nut-swiper .nut-swiper-silde{
+    .nut-swiper .nut-swiper-slide{
         display: flex;
         justify-content: center;
     }
