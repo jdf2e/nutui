@@ -27,8 +27,8 @@
             let self = this;
             this.time();
             if(self.starttime!=0 && self.endtime!=0) {
-                self.endtime = (self.endtime instanceof Date)?self.endtime:(new Date(self.endtime));
-                self.starttime = (self.starttime instanceof Date)?self.starttime:(new Date(self.starttime));
+                self.endtime = (self.endtime instanceof Date)?self.endtime:(new Date(self.endtime.replace(/\-/g, "/")));
+                self.starttime = (self.starttime instanceof Date)?self.starttime:(new Date(self.starttime.replace(/\-/g, "/")));
                 self.timespace = self.endtime.getTime() - self.starttime.getTime();
             }
         },
@@ -57,13 +57,26 @@
                 }, 1000);
             },
             dateFormater: function(ms) {
+                let day = Math.floor(ms / (1000 * 60 * 60 * 24));
+                    ms = ms - day * (1000 * 60 * 60 * 24);
+                let hour = Math.floor(ms / (1000 * 60 * 60));
+                    ms = ms - hour * (1000 * 60 * 60);
+                let minute = Math.floor(ms / (1000 * 60 ));
+                    ms = ms - minute * (1000 * 60 );
+                let second = Math.floor(ms / 1000);
                 /*日期字典*/
                 var timeMap = {
-                    'd': Math.floor(ms / 1000 / 60 / 60 / 24 % 24), //日 
-                    'h': Math.floor(ms / 1000 / 60 / 60 % 24), //小时 
-                    'm': Math.floor(ms / 1000 / 60 % 60), //分 
-                    's': Math.floor(ms / 1000 % 60), //秒 
+                    'd': day, //日
+                    'h': hour, //小时
+                    'm': minute, //分
+                    's': second, //秒
                 };
+                // var timeMap = {
+                //     'd': Math.floor(ms / 1000 / 60 / 60 / 24 % 24), //日 
+                //     'h': Math.floor(ms / 1000 / 60 / 60 % 24), //小时 
+                //     'm': Math.floor(ms / 1000 / 60 % 60), //分 
+                //     's': Math.floor(ms / 1000 % 60), //秒 
+                // };
                 var formater = this.formater;
                 /*正则替换*/
                 return formater.replace(/([yMdhmsS])+/g, function(all, t) {
