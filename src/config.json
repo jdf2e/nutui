@@ -82,7 +82,7 @@
       "desc": "复选多个选项",
       "type": "component",
       "showDemo": true,
-      "author": "叶文文"
+      "author": "Vicky.Ye"
     },
     {
       "version": "1.0.0",
@@ -202,7 +202,7 @@
       "desc": "成组出现的复选按钮组件",
       "type": "component",
       "showDemo": true,
-      "author": "叶文文"
+      "author": "Vicky.Ye"
     },
     {
       "version": "1.0.0",
