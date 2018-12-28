@@ -24,7 +24,7 @@ describe('Rating.vue', () => {
     
     it('点击评分', () => {
         wrapper.findAll('.nut-rating-item').at(2).trigger('click');
-        expect(wrapper.findAll('.nut-rating-item').at(4).is('.nut-rating-active')).toBe(true)
+        expect(wrapper.findAll('.nut-rating-item').at(2).is('.nut-rating-active')).toBe(true)
     });
 
 });
