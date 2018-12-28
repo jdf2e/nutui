@@ -72,7 +72,7 @@
       "desc": "底部弹出动作面板",
       "type": "component",
       "showDemo": true,
-      "author": "songchenglin3"
+      "author": "iris"
     },
     {
       "version": "1.0.0",
@@ -112,7 +112,7 @@
       "desc": "选择面板",
       "type": "component",
       "showDemo": true,
-      "author": "songchenglin3"
+      "author": "iris"
     },
     {
       "version": "1.0.0",
@@ -142,7 +142,7 @@
       "desc": "日期选择",
       "type": "component",
       "showDemo": true,
-      "author": "songchenglin3"
+      "author": "iris"
     },
     {
       "version": "1.0.0",
@@ -272,7 +272,7 @@
       "desc": "日历",
       "type": "component",
       "showDemo": true,
-      "author": "songchenglin3"
+      "author": "iris"
     },
     {
       "version": "1.0.0",
