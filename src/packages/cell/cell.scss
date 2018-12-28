@@ -1,0 +1,66 @@
+.nut-cell {
+    display: block;
+    padding: 0 10px;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    &.nut-cell-link:active {
+        background-color: $light-color !important;
+    }
+    .nut-cell-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 48px;
+        @include nut-cell-border;
+    }
+    .nut-cell-left {
+        flex: 1;
+        flex-direction: column;
+    }
+    .nut-cell-title {
+        display: block;
+        line-height: $line-height-base;
+        font-size: $font-size-base;
+        color: $title-color;
+    }
+    .nut-cell-sub-title {
+        display: block;
+        line-height: 1;
+        font-size: $font-size-small;
+        color: $text-color;
+        margin-top: 5px;
+        &:empty {
+            display: none;
+        }
+    }
+    .nut-cell-right {
+        display: flex;
+        align-items: center;
+        font-size: $font-size-small;
+        color: $text-color;
+    }
+    .nut-cell-icon {
+        display: flex;
+        align-items: center;
+        img {
+            height: 14px;
+            margin-left: 10px;
+        }
+    }
+    &:first-of-type {
+        @include nut-cell-border;
+        .nut-cell-box {
+            background-image: none;
+        }
+    }
+    &:last-of-type {
+        @include nut-cell-border;
+        background-position: bottom;
+    }
+    &:only-of-type {
+        background: linear-gradient(rgba($dark-color, .5), rgba($dark-color, .5)) bottom, linear-gradient(rgba($dark-color, .5), rgba($dark-color, .5)) top;
+        background-size: 100% 1px;
+        background-repeat: no-repeat;
+    }
+}

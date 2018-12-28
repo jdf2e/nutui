@@ -1,0 +1,97 @@
+.nut-progress {
+    position: relative;
+    display: flex;
+    .nut-progress-outer {
+        flex: 1;
+        background-color: #f3f3f3;
+        border-radius: 100px;
+        overflow: hidden;
+        height: 12px;
+        .nut-progress-inner {
+            width: 30%;
+            height: 100%;
+            background-color: #1890ff;
+            -webkit-transition: all .4s;
+            transition: all .4s;
+            position: relative;
+            .nut-progress-text {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                color: #FFF;
+            }
+        }
+        .nut-active {
+            &:before {
+                content: '';
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: #fff;
+                border-radius: 10px;
+                animation: nut-progress-active 2s ease-in-out infinite;
+            }
+        }
+        @keyframes nut-progress-active {
+            0% {
+                opacity: .1;
+                width: 0
+            }
+            20% {
+                opacity: .5;
+                width: 0
+            }
+            to {
+                opacity: 0;
+                width: 100%
+            }
+        }
+        &.nut-progress-small {
+            height: 12px;
+            .nut-progress-text {
+                font-size: 12px;
+                line-height: 12px;
+            }
+        }
+        &.nut-progress-base {
+            height: 16px;
+            .nut-progress-text {
+                font-size: 12px;
+                line-height: 16px;
+            }
+        }
+        &.nut-progress-large {
+            height: 20px;
+            .nut-progress-text {
+                font-size: 20px;
+                line-height: 20px;
+            }
+        }
+    }
+    .nut-progress-outer-part {
+        width: 90%;
+    }
+    .nut-progress-text {
+        padding: 0 5px;
+        font-size: 12px;
+        line-height: 1;
+    }
+    .nut-icon-success {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        background: url('#{$assetsPath}/img/success.png') no-repeat;
+        background-size: cover;
+    }
+    .nut-icon-fail {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        background: url('#{$assetsPath}/img/wrong.png') no-repeat;
+        background-size: cover;
+    }
+}

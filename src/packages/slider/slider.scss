@@ -1,0 +1,79 @@
+$nut-slider-color: $primary-color;
+$nut-slider-handle-shadow-color: rgba(mix($primary-color , #ccc, 98%), 0.5); 
+$nut-slider-handle-bg-color: #ffffff;
+$nut-slider-label-bg-color: $primary-color;
+$nut-slider-label-text-color: #ffffff;
+.nut-slider {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  margin: 0 10px;
+  .nut-slider-box {
+    flex: 1;
+    position: relative;
+    height: 2px;
+    background-color: $nut-slider-color;
+  }
+  .nut-slider-Handle {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    user-select: none;
+    transform: translate(-50%, -50%);
+    height: 20px;
+    width: 20px;
+    border: solid 2px $nut-slider-color;
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: none;
+    transition: box-shadow, border-width 0.5s ease-in;
+    background-color: $nut-slider-handle-bg-color;
+    &.nut-slider-ani {
+      border-width: 8px;
+      box-shadow: 0 0 0 4px $nut-slider-handle-shadow-color;
+      transition-timing-function: ease-out;
+      .nut-slider-label {
+        opacity: 1;
+        transform: translate(-50%, -160%);
+      }
+    }
+  }
+  .nut-slider-label {
+    pointer-events: none;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: opacity, transform 0.2s linear;
+    transform: translate(-50%, -100%);
+    font-size: 12px;
+    padding: 5px;
+    background-color: $nut-slider-label-bg-color;
+    color: $nut-slider-label-text-color;
+    border-radius: 4px;
+    z-index: 9999;
+    &.nut-slider-label-always {
+      opacity: 1;
+      transform: translate(-50%, -160%);
+    }
+    &::after {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -6px);
+      height: 12px;
+      width: 12px;
+      content: "▼";
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      text-align: center;
+      color: $nut-slider-color;
+    }
+  }
+  .nut-slider-left-text {
+    margin-right: 15px;
+  }
+  .nut-slider-right-text {
+    margin-left: 15px;
+  }
+}

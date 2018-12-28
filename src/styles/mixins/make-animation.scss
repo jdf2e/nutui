@@ -1,0 +1,16 @@
+@mixin make-animation($keyframeName, $timingFun: $animation-timing-fun, $duration: $animation-duration) {
+    .#{$keyframeName}-enter-active, .#{$keyframeName}In,
+    .#{$keyframeName}-leave-active, .#{$keyframeName}Out {
+        animation-duration: $duration;
+        animation-fill-mode: both;
+        animation-timing-function: $timingFun;
+    }
+    
+    .#{$keyframeName}-enter-active, .#{$keyframeName}In {
+        animation-name: #{$keyframeName}In;
+    }
+
+    .#{$keyframeName}-leave-active, .#{$keyframeName}Out {
+        animation-name: #{$keyframeName}Out;
+    }
+}

@@ -1,0 +1,97 @@
+@mixin small {
+    height: $btn-height-small;
+    padding: 0 $btn-height-small/2;
+    font-size: $font-size-small;
+}
+.nut-button{
+    cursor: pointer;
+    height: $btn-height-big;
+    padding: 0 $btn-height-big;
+    outline: none;
+    font-size: $font-size-base;
+    color: $btn-gradient-color;
+    background: $btn-gradient-bg;
+    border: none;
+    box-sizing: border-box;
+    &[disabled] {
+        cursor: not-allowed;
+        background: $btn-disable-bg;
+        color: $btn-disable-color;
+    }
+    // type-label
+    .txt-icon {
+        vertical-align: text-top;
+        width: $btn-icon-height-big;
+        height: $btn-icon-height-big;
+        margin-right: $btn-icon-margin;
+        color: $primary-color;
+    }
+    &.red {
+        background: $btn-default-bg;
+        border: $border-width-base solid $primary-color;
+        color: $primary-color;
+    }
+    &.gray {
+        background: $light-color;
+        color: $title-color;
+    }
+    &.light {
+        color: $title-color;
+        background: $btn-default-bg;
+        border: $border-width-base solid $dark-color;
+    }
+    &.lightred {
+        background: $btn-label-light-bg;
+        color: $title-color;
+        border: none; 
+    }
+    &.primary {
+        background: $primary-color;
+        color: $btn-primary-color;
+    }
+    &.default {
+        background: $btn-default-bg;
+        color: $title-color;
+        border: $border-width-base solid $btn-default-border;
+    }
+    &.actived {
+        background: $btn-label-light-bg;
+        color: $primary-color;
+        border: $border-width-base solid $primary-color;
+    }
+    &.dashed { 
+        background: $btn-default-bg;
+        color: $title-color;
+        border: $border-width-base dashed $dark-color;
+    }
+    // 通栏样式
+    &.block {
+        width: 100%;
+        border-radius: 0;
+    }
+    // size-小号
+    &.small {
+        height: $btn-height-small;
+        padding: 0 $btn-height-small/2;
+        font-size: $font-size-small;
+    }
+    &.no-txt-small {
+        width: $btn-height-small;
+        padding: 0;
+        .txt-icon {
+            margin: 0;
+        }
+    }
+    &.no-txt {
+        width: $btn-height-big;
+        padding: 0;
+        .txt-icon {
+            margin: 0;
+        }
+    }
+
+    // shape-圆角
+    &.circle {
+        border-radius: $btn-border-radius-large
+    }
+}

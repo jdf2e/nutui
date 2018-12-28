@@ -1,0 +1,21 @@
+@-webkit-keyframes nutSlideRightIn{
+    from {
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-webkit-keyframes nutSlideRightOut{
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        visibility: hidden;
+        transform: translate3d(100%, 0, 0);
+    } 
+}  
+
+// 适合右侧菜单
+@include make-animation(nutSlideRight);

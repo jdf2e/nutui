@@ -1,0 +1,32 @@
+html,body{
+    width:100%;
+}
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .5s ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+    opacity: 0
+}
+
+h4 {
+    margin: 20px 0 10px;
+}
+
+.demo-list {
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
+    h4 {
+        padding: 0 8px;
+        box-sizing: border-box;
+    }
+}
+
+p {
+    font-size: 12px;
+    margin: 5px 10px;
+    color: #666;
+}

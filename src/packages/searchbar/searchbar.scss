@@ -1,0 +1,62 @@
+@import '../../styles/index.scss';
+@import "../../styles/animation/pulse";
+.nut-searchbar {
+	display: flex;
+	flex-flow:row;
+	.search-input {
+		flex: 1;
+		padding-left: 10px;
+		margin-right: 10px;
+	    background-color: $light-color;
+	    border-radius: 20px;
+	    form {
+	    	position: relative;
+	    	margin-right: 10px;
+	    	.nut-icon {
+	    		float: left;
+	    		margin: 10px 0 0 10px;
+	    	}
+	    	.close-icon {
+	    		display: none;
+	    		&.show {
+	    			display: inline-block;
+	    		}
+	    	}
+	    	.nut-icon-circle-cross {
+	    		position: absolute;
+	    		right: 5px;
+	    		top: 0;
+	    	}
+	    }
+	    i {
+	    	display: inline-block;
+	    }
+	    input {
+    	    min-width: 80%;
+		    flex: 1;
+		    padding: 10px 0;
+		    margin-left: 10px;
+		    background-color: $light-color;
+		    border-color: transparent;
+		    outline: none;
+	    }
+	    &.focus {
+	    	box-shadow: 0px 0px 5px 0px $light-color;
+	    }
+	    &.nut-search-ani {
+            animation: nutPulse $animation-duration;
+        }
+	}
+	.btn-search {
+		display: inline-block;
+		line-height: 2;
+		text-align: center;
+		color: $title-color;
+	}
+	a {
+		text-decoration: none;
+	}
+	.nut-icon {
+		vertical-align: middle;
+	}
+}

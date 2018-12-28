@@ -1,0 +1,126 @@
+@import "../../styles/animation/slide-up";
+@import "../../styles/animation/slide-right";
+.nut-calendar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    // height: 80%;
+    background-color: #FFF;
+    font-size: $font-size-base;
+    display: flex;
+    flex-direction: column;
+    padding-top: 72px;
+    overflow: hidden;
+    z-index: 1000001;
+}
+.nut-calendar-control{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 70px;
+    width: 100%;
+    text-align: center;
+    background-color: #FFF;
+    //border-bottom: 1px solid $light-color;
+    z-index: 1;
+    .nut-calendar-cancel-btn,
+    .nut-calendar-confirm-btn{
+        width: 60px;
+        color: $primary-color;
+        position: absolute;
+        top: 0;
+        line-height: 40px;
+    }
+    .nut-calendar-confirm-btn{
+        right: 0;
+    }
+    .nut-calendar-cancel-btn{
+        left: 0;
+    }
+    .nut-calendar-title{
+        margin: 0 60px;
+        line-height: 40px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .nut-calendar-week{
+        display: flex;
+        //border-top: 1px solid $light-color;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        span{
+            flex: 1;
+            &:first-child, &:last-child{
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+.nut-calendar-months{
+    width: 100%;
+    flex: 1;
+    .nut-calendar-months-panel{
+        padding-bottom: 10px;
+        position: relative;
+        width: 100%; 
+        height: auto;
+    }
+    .nut-calendar-loading-tip{
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        position: absolute;
+        top: -50px;
+        left: 0;
+        right: 0;
+        color: $text-color;
+        font-size: $font-size-small;
+    }
+    .nut-calendar-month-title{
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: $body-background;
+    }
+    .nut-calendar-month-con{
+        overflow: hidden;
+        // .nut-calendar-month-item{
+        //     display: flex;
+        // }
+        .nut-calendar-month-day{
+            //flex: 1;
+            float: left;
+            width: 14.28%;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            //font-size: $font-size-large;
+            &-active{
+                background-color: $primary-color;
+                color: #FFF;
+            }
+            &-disabled{
+                color: $disabled-bg;
+            }
+            &-choose{
+                background-color: mix($primary-color , #FFF, 20%);
+                color: #FFF;
+            }
+            span{
+                padding: 3px 0;
+            }
+            .nut-calendar-day-tip{
+                font-size: $font-size-small;
+            }
+        }
+    }
+}

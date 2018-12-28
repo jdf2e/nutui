@@ -1,0 +1,82 @@
+@import "../../styles/animation/pulse";
+
+.nut-checkbox{
+    margin-right: 10px;
+    .nut-checkbox-label {
+        pointer-events: none;
+        vertical-align: middle;
+    }
+    input{
+        position: relative;
+        -webkit-appearance: none;
+        border: 1px solid $border-color-base;
+        border-radius: 1%;
+        background-size: cover;
+        outline: 0;
+        opacity: 1;
+        vertical-align:middle;
+        margin-top: 0;
+        &::after {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            content: '';
+            width: 0;
+            height: 0;
+            transform: translate(-50%, -50%);
+            background: $primary-color;
+            border-radius: 1%;
+            opacity: 0;
+            pointer-events: none;
+        }
+        &:checked {
+            @include nut-checkbox-bg('FFFFFF');
+            background-color: $primary-color;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-color: $primary-color;
+            background-size: 60%;
+            box-shadow: 0 4px 6px 0 rgba($primary-color, 0.15);
+            &:not(:disabled).nut-checkbox-ani::after {
+                animation: nutPulse $animation-duration;
+            }
+        }
+        &:disabled {
+            background-color: $disabled-bg;
+            border-color: $disabled-color;
+            box-shadow: none;
+            &:checked {
+                @include nut-checkbox-bg('999999');
+                background-color: $disabled-bg;
+            }
+        }
+
+    }
+    &.nut-checkbox-size-base {
+        input {
+            width: 19px;
+            height: 19px;
+        }
+        .nut-checkbox-label {
+            font-size: $font-size-base;
+        }
+    }
+    &.nut-checkbox-size-small {
+        input {
+            width: 16px;
+            height: 16px;
+        }
+        .nut-checkbox-label {
+            font-size: $font-size-small;
+        }
+    }
+    &.nut-checkbox-size-large {
+        input {
+            width: 22px;
+            height: 22px;
+        }
+        .nut-checkbox-label {
+            font-size: $font-size-large;
+        }
+    }
+}

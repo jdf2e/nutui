@@ -1,0 +1,24 @@
+@keyframes nutSlideDownIn {
+    from {
+        transform: translate3d(0, -100%, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes nutSlideDownOut {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        visibility: hidden;
+        transform: translate3d(0, -100%, 0);
+    }
+}
+
+// 适合弹出通知 
+@include make-animation(nutSlideDown);

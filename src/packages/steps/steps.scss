@@ -1,0 +1,119 @@
+.clearfix {
+  zoom: 1
+}
+
+.clearfix:after {
+  display: block;
+  height: 0;
+  clear: both;
+  content: "";
+  visibility: hidden;
+}
+
+.nut-steps {}
+
+.nut-step {
+  position: relative;
+  font-size: 14px;
+  color: #999;
+
+  .nut-step-line {
+    position: absolute;
+    top: 0;
+    left: 14px;
+    height: 100%;
+    width: 1px;
+
+  }
+
+  .nut-step-index {
+    position: relative;
+    z-index: 99;
+    float: left;
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+    line-height: 26px;
+    text-align: center;
+    border-radius: 50%;
+  }
+
+  .nut-step-main {
+    padding-left: 40px;
+
+    .nut-step-title {
+      line-height: 28px;
+      font-weight: 600;
+    }
+
+    .nut-step-content {
+      padding-bottom: 10px;
+      line-height: 20px;
+      font-size: 12px;
+    }
+  }
+
+  &.nut-step-last {
+    .nut-step-line {
+      display: none;
+    }
+  }
+
+  &.nut-step-status- {
+    &wait {
+      .nut-step-line {
+        background: #ccc;
+      }
+
+      .nut-step-index {
+        color: #999;
+        border: 1px solid #ccc;
+        background: #ffffff;
+      }
+    }
+
+    &finish {
+      .nut-step-line {
+        background: mix($primary-color , #0f0, 50%);
+      }
+
+      .nut-step-index {
+        border: 1px solid mix($primary-color , #0f0, 50%);
+        background: #ffffff;
+        color: mix($primary-color , #0f0, 50%);
+      }
+    }
+
+    &process {
+      .nut-step-line {
+        background: #ccc;
+      }
+
+      .nut-step-main {
+        color: #666;
+      }
+
+      .nut-step-index {
+        border: 1px solid mix($primary-color , #0f0, 50%);
+        background: mix($primary-color , #0f0, 50%);
+        color: #ffffff;
+      }
+    }
+
+    &error {
+      .nut-step-line {
+        background: #ccc;
+      }
+
+      .nut-step-main {
+        color: $primary-color;
+      }
+
+      .nut-step-index {
+        border: 1px solid $primary-color;
+        background: #ffffff;
+        color: $primary-color; 
+      }
+    }
+  }
+}

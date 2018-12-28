@@ -1,0 +1,78 @@
+$nut-range-handle-bg-color: #ffffff;
+$nut-range-label-text-color: #ffffff;
+.nut-range {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  margin: 0 10px;
+  .nut-range-box {
+    flex: 1;
+    position: relative;
+    height: 3px;
+    border-radius: 5px;
+  }
+  .nut-range-area{
+    position: absolute;
+    top: 0px;
+    height: 3px;
+    z-index: 123;
+  }
+  .nut-range-label {
+    pointer-events: none;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: opacity, transform 0.2s linear;
+    transform: translate(-50%, -100%);
+    font-size: 12px;
+    padding: 5px;
+    color: $nut-range-label-text-color;
+    border-radius: 4px;
+    z-index: 9999;
+    &.nut-range-label-always {
+      opacity: 1;
+      transform: translate(-50%, -160%);
+    }
+    .nut-range-after {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -6px);
+      height: 12px;
+      width: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+  .nut-range-left-text {
+    margin-right: 15px;
+  }
+  .nut-range-right-text {
+    margin-left: 15px;
+	}
+	.nut-range-Handle {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    user-select: none;
+    transform: translate(-50%, -50%);
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: none;
+    transition: box-shadow, border-width 0.5s ease-in;
+    background-color: $nut-range-handle-bg-color;
+    z-index: 124;
+    &.nut-range-ani {
+      border-width: 8px!important;
+      transition-timing-function: ease-out;
+      .nut-range-label {
+        opacity: 1;
+        transform: translate(-50%, -160%);
+      }
+    }
+	}
+}

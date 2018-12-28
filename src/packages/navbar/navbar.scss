@@ -1,0 +1,56 @@
+.nut-navbar {
+    height: 40px;
+    line-height: 40px;
+    background-color: #fff;
+    position: relative;
+    .nav-left {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        height: 40px;
+        line-height: 40px;
+        margin-top: -20px;
+        font-size: 14px;
+        .back {
+            float: left;
+            margin-right: 8px;
+            .back-icon {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                background: url("data:image/svg+xml, %3Csvg width='19' height='36' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.552 35.569a1.5 1.5 0 0 1-2.121-.017c-5.952-6.05-9.905-10.1-15.857-16.15a2 2 0 0 1 0-2.804c5.952-6.05 9.905-10.1 15.857-16.15a1.5 1.5 0 1 1 2.138 2.104C12.847 8.368 9.125 12.184 3.403 18c5.722 5.816 9.444 9.632 15.166 15.448a1.5 1.5 0 0 1-.017 2.121z' fill='%239E9E9E' fill-rule='evenodd'/%3E%3C/svg%3E") no-repeat;
+                background-size: contain;
+                vertical-align: middle;
+            }
+        }
+    }
+    .nav-center {
+        .nav-title {
+            width: auto;
+            margin: 0 80px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: center;
+        }
+    }
+    .nav-right {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        height: 40px;
+        line-height: 40px;
+        margin-top: -20px;
+        font-size: 14px;
+        .more {
+            float: right;
+            margin-left: 8px;
+            .more-icon {
+                &:after {
+                    content: "•••";
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
