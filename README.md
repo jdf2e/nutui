@@ -1,4 +1,6 @@
 # NutUI 2
+![npm version](https://img.shields.io/npm/v/@nutui/nutui.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=v2)](https://github.com/jdf2e/nutui/)
+ 
 一套移动端轻量级Vue组件库
     
 ![NutUI](http://img11.360buyimg.com/uba/jfs/t1/11117/21/3608/18942/5c20ab52E35e5a500/02e3c1f89cd3dad1.png)
