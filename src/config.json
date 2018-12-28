@@ -16,7 +16,7 @@
       "chnName": "开关",
       "type": "component",
       "showDemo": true,
-      "desc": "一种滑动开关，通过点击使按钮左右滑动，同时触发对应的开关状态。"
+      "desc": "一种滑动开关，通过点击使按钮左右滑动，同时触发对应的开关状态"
     },
     {
       "name": "Radio",
@@ -25,7 +25,7 @@
       "chnName": "单选按钮",
       "type": "component",
       "showDemo": true,
-      "desc": "单选按钮，可组合成单选按钮组。"
+      "desc": "单选按钮，可组合成单选按钮组"
     },
     {
       "name": "Cell",
@@ -34,7 +34,7 @@
       "chnName": "列表项",
       "type": "component",
       "showDemo": true,
-      "desc": "列表项，可组合成列表。"
+      "desc": "列表项，可组合成列表"
     },
     {
       "name": "Dialog",
@@ -43,7 +43,7 @@
       "chnName": "对话框",
       "type": "method",
       "showDemo": true,
-      "desc": "一种对话框，支持遮罩层，支持按钮交互。"
+      "desc": "一种对话框，支持遮罩层，支持按钮交互"
     },
     {
       "name": "Icon",
@@ -129,7 +129,7 @@
       "name": "Price",
       "sort": "0",
       "chnName": "商品价格",
-      "desc": "商品价格组件，支持小数点前后应用不同样式、千位分隔、人民币符号等功能。",
+      "desc": "商品价格组件，支持小数点前后应用不同样式、千位分隔、人民币符号等功能",
       "type": "component",
       "showDemo": true,
       "author": "liaoyanli5"
