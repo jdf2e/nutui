@@ -7,7 +7,7 @@
                 direction="horizontal"
                 :paginationVisible="pagination"
                 ref="picReload">
-                <div class="nut-swiper-silde" v-for="(item, index) in imgArr">
+                <div class="nut-swiper-slide" v-for="(item, index) in imgArr" :key="index">
                     <img :src="item">
                 </div>
             </nut-swiper>
@@ -82,7 +82,7 @@ export default {
     justify-content:center;
     .nut-swiper{
         height: 4rem;
-        .nut-swiper-silde{
+        .nut-swiper-slide{
             display: flex;
             align-items: center;
             justify-content:center;

@@ -19,7 +19,7 @@
                             :speed="250"
                             @slideChangeEnd="slideEnd"
                             >
-                                <div class="nut-swiper-silde" v-for="item in d.data"><span>{{item[nodeKey]}}</span></div>
+                                <div class="nut-swiper-slide" v-for="item in d.data"><span>{{item[nodeKey]}}</span></div>
                             </nut-swiper>
                         </template>                    
                     </div>                
@@ -90,7 +90,7 @@
     }
 </script>
 <style lang="scss" scoped>
-    .nut-swiper-silde {
+    .nut-swiper-slide {
         height: 0.7rem!important;
         line-height: 0.7rem;
         text-align: center;
@@ -124,7 +124,7 @@
             padding-top: 1.40rem!important;
             transition: .5s all;
         }
-        .nut-swiper-silde-selected {
+        .nut-swiper-slide-selected {
             color: #333!important;
         }
     }

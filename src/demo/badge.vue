@@ -48,8 +48,17 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
     .item {
         display: inline-block;
+    }
+    button {
+        appearance: none;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        background: #fff;
+        border: 1px solid #ccc;
+        outline: none;
     }
 </style>
