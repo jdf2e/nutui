@@ -9,6 +9,10 @@ rimraf('./dist/sites/demo', function (err) {
     if(err) console.log(err);
 });
 
+rimraf('./dist/sites/demo.html', function (err) {
+    if (err) console.log(err);
+});
+
 module.exports = merge(baseConf, {
     mode: 'production',
     devtool: 'cheap-module-source-map',

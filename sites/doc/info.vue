@@ -3,7 +3,7 @@
   <ol class="nav-l-1">
     <dt>指南</dt>
     <dd :class="curName=='intr' ?'l-1 curs':'l-1'">
-      <a href="#/index">介绍</a>
+      <a href="#/doc">介绍</a>
     </dd>
     <dd :class="curName=='fastStart' ?'l-1 curs':'l-1'">
       <a href="#/start">快速上手</a>

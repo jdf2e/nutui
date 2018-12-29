@@ -7,7 +7,7 @@ const Carefree = require('@nutui/carefree');
 module.exports = merge(baseConf, {
     mode: 'development',
     output: {
-        publicPath: '/',
+        publicPath: '',
     },
     devtool: 'cheap-module-eval-source-map',
     plugins:[
@@ -24,7 +24,8 @@ module.exports = merge(baseConf, {
         })
     ],
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist'),
+        contentBase: path.resolve(__dirname, 'dist/sites/'),
+        index: 'demo.html',
         compress: true, //gzip压缩
         historyApiFallback: true,
     }

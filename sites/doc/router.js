@@ -19,7 +19,11 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '*',
-    redirect: '/doc'
+    redirect: '/index'
+  },
+  {
+    path: '/',
+    redirect: '/index'
   },
   {
     path:'/index',

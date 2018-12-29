@@ -4,7 +4,7 @@
             <b class="go-btn"></b>
         </div>
         <div class="title">{{title}}</div>
-        <a class="home" :href="'http://git.jd.com/jdcfe/NutUI2/blob/dev/src/demo/'+title.toLowerCase()+'.vue'"></a>
+        <a class="home" :href="'https://github.com/jdf2e/nutui/tree/master/src/packages/'+title.toLowerCase()+'/demo.vue'"></a>
     </div>
 </template>
 

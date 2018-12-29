@@ -12,11 +12,15 @@ module.exports = merge(webpackBaseConf, {
         app: './sites/doc/app.js',
     },
     output: {
-        path: path.resolve(__dirname, '../dist/sites/doc/'),
-        chunkFilename: 'js/[name].[hash:5].js',
-        filename: isDev ? 'js/[name].js' : 'js/[name].[hash].js'
+        publicPath: '/',
+        path: path.resolve(__dirname, '../dist/sites/'),
+        chunkFilename: 'doc/js/[name].[hash:5].js',
+        filename: isDev ? 'doc/js/[name].js' : 'doc/js/[name].[hash].js'
     },
     module: {
+        rules: [
+
+        ]
     },
     plugins: [
         new mdtohtml({
@@ -33,10 +37,11 @@ module.exports = merge(webpackBaseConf, {
             nohead:true
         }),
         new HtmlWebpackPlugin({
-            template: './sites/doc/index.html'
+            template: './sites/doc/index.html',
+            filename: 'default.html'
         }),
         new MiniCssExtractPlugin({
-            filename: isDev ? 'css/[name].css' : 'css/[name].[hash].css'
+            filename: isDev ? 'doc/css/[name].css' : 'doc/css/[name].[hash].css'
         })
     ]
 });

@@ -15,10 +15,10 @@
           <div class="menu">
             <ul>
               <li>
-                <a href="/#/doc">指南</a>
+                <a href="default.html#/doc">指南</a>
               </li>
               <li>
-                <a href="/#/ActionSheet">组件</a>
+                <a href="default.html#/ActionSheet">组件</a>
               </li>
               <li>
                 <a href="/demo.html#/index" class="qrcode top-qr" target="_blank">示例
@@ -43,7 +43,7 @@
           <div class="mouseDiv" id="mouseDiv"></div>
           <p class="title">NutUI</p>
           <p class="sub-title">一套轻量级移动端Vue / 微信小程序组件库</p>
-          <a href="/#/doc" class="blue-btn">开始使用</a>
+          <a href="default.html#/doc" class="blue-btn">开始使用</a>
           <a href="javascript:;" class="qrcode btn">
             扫码体验
             <a>
@@ -501,7 +501,7 @@ export default {
       height: 26px;
       width: 26px;
       font-size: 0;
-      background: url(" ./asset/css/i/github.png") 0 0 no-repeat;
+      background: url("./asset/css/i/github.png") 0 0 no-repeat;
       vertical-align: middle;
       position: relative;
       top: -1px;

@@ -11,8 +11,9 @@ module.exports = merge(baseConf, {
     },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist'),
+        contentBase: path.resolve(__dirname, 'dist/sites'),
         compress: true,
+        index: 'default.html',
         historyApiFallback: true,
     }
 });

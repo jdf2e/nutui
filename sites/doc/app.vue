@@ -32,7 +32,7 @@
         </div>
         <ul class="list">
           <li class="cur">
-            <a href>指南</a>
+            <a href="default.html#/doc">指南</a>
           </li>        
           <li>
             <a class="qrcode demoLink" href="/demo.html#/index" target="_blank">示例             
@@ -68,10 +68,10 @@
             <div class="bg">
               <img src="./asset/css/i/phtitle.png" alt="">
               <div>
-                <input type="text" readonly :value="'http://127.0.0.1:8081/index.html#/'+routerName">
+                <input type="text" readonly :value="'http://nutui.jd.com/demo.html#/'+routerName">
               </div>
             </div>
-            <iframe :src="'http://127.0.0.1:8081/index.html#/'+routerName"></iframe>
+            <iframe :src="'/demo.html#/'+routerName"></iframe>
           </div>
         </div>
     </div>

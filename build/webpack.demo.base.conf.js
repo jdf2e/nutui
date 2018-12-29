@@ -14,9 +14,10 @@ module.exports = merge(webpackBaseConf, {
         app: './sites/demo/app.js',
     },
     output: {
-        path: path.resolve(__dirname, '../dist/sites/demo/'),
-        chunkFilename: 'js/[name].[hash:5].js',
-        filename: isDev ? 'js/[name].js' : 'js/[name].[hash].js'
+        publicPath: '/',
+        path: path.resolve(__dirname, '../dist/sites/'),
+        chunkFilename: 'demo/js/[name].[hash:5].js',
+        filename: isDev ? 'demo/js/[name].js' : 'demo/js/[name].[hash].js'
     },
     module: {
         rules: [
@@ -40,7 +41,7 @@ module.exports = merge(webpackBaseConf, {
             filename:'demo.html'
         }),
         new MiniCssExtractPlugin({
-            filename: isDev ? 'css/[name].css' : 'css/[name].[hash].css'
+            filename: isDev ? 'demo/css/[name].css' : 'demo/css/[name].[hash].css'
         })
     ]
 });
