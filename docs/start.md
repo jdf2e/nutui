@@ -56,8 +56,6 @@ npm i @nutui/separate-import -D
 {
   "plugins": [
     ["@nutui/babel-plugin-separate-import", {
-        "libraryName": "@nutui/nutui",
-        "libraryDirectory": "dist/packages",
         "style": "css"
     }]
   ]

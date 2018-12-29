@@ -6,7 +6,7 @@
   <div class="md-swaper" @click="clearSearch" v-else>
     <div class="hder">
       <div class="logo">
-        <img src="./asset/css/i/nut.png" alt>{{version}}
+        <img src="./asset/css/i/nut.png" alt> <span class="version">{{version}}</span>
       </div>
       <div class="h-nav">
         <div class="search-box">
@@ -35,7 +35,7 @@
             <a href>指南</a>
           </li>        
           <li>
-            <a class="qrcode demoLink" :href="'http://nutui.jd.com/index.html#/'+routerName">示例             
+            <a class="qrcode demoLink" href="/demo.html#/index" target="_blank">示例             
                 <a :href="routerName">
                   <span>请使用手机扫码体验</span><img :src="codeurl" alt="">
                 </a>
@@ -87,6 +87,7 @@
 import "./asset/css/common.scss";
 import "./asset/css/style-blue.scss";
 import Conf from "../../src/config.json";
+import PackageJson from "../../package.json";
 export default {
   name: "App",
   data() {
@@ -147,7 +148,6 @@ export default {
       }
     },
     fetchData(obj) {  
-      console.log(obj);
       this.routerName = obj.name;
       this.showPhone = false;
       for (let i = 0, item; (item = Conf.packages[i]); i++) {
@@ -192,7 +192,7 @@ export default {
     let that = this;
     this.packages = Conf.packages;   
     let name = this.$route.name;
-    this.version = Conf.version; 
+    this.version = PackageJson.version; 
     for (let i = 0, item; (item = Conf.packages[i]); i++) {
       if (name == item.name) {
         this.showPhone = true;
@@ -250,6 +250,11 @@ export default {
     color:#999;
     font-size: 12px;
   }
+  .version{
+    display:inline-block;
+    margin-top:7px;
+    vertical-align: bottom;
+  }
 
   .h-nav {
     display: flex;
@@ -257,7 +262,11 @@ export default {
     align-items: center;
     width: 100%;
     select{
-      margin:0 23px;
+      width:74px;
+      height:28px;
+      margin-top:18px;
+      margin-left:20px;
+      font-size:12px;
     }
     .search-box {
       height: 22px;

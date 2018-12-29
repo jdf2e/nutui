@@ -15,7 +15,7 @@
       <ul>
         <template v-for="cpt in packages">
           <li v-if="cpt.showDemo !== false && cpt.sort == sortIdx" :key="cpt.name">
-            <a :href="'./index.html#/'+cpt.name">
+            <a :href="'./demo.html#/'+cpt.name">
               {{cpt.name}}
               <span>{{cpt.chnName}}</span>
             </a>

@@ -14,10 +14,11 @@ module.exports = merge(baseConf, {
         new Carefree({
             upload: true,
             publicPath: '//page.jd.com/exploit/nutui2/',
+            qrcodeUrl: 'http://page.jd.com/exploit/nutui2/demo.html',
             ftp: {
                 host: '192.168.181.73',
                 port: 3000,
-                source: 'dist/demo',
+                source: 'dist/sites/demo',
                 target: '/var/www/html/page.jd.com/exploit/nutui2/'
             }
         })

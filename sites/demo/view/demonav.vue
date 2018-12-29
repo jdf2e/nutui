@@ -37,7 +37,7 @@ export default {
             return this.showPath.substring(1);
         },
         hrefUrl(){
-            return './index.html#'+this.showPath;
+            return './demo.html#'+this.showPath;
         }
     },
     watch:{

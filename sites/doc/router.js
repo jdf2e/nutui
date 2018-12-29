@@ -3,9 +3,10 @@ import VueRouter from 'vue-router';
 import Conf from '../../src/config.json';
 import vueg from 'vueg';
 import 'vueg/css/transition-min.css';
-import frontCover from './default.vue';
- 
 
+
+import frontCover from './index.vue';
+ 
  const Index = () => import('./info.vue');
  const Intro = () => import('./page/intro.vue');
  const Start = () => import('./page/start.vue');
@@ -18,16 +19,16 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '*',
-    redirect: '/index'
+    redirect: '/doc'
   },
   {
-    path:'/default',
+    path:'/index',
     name:'frontcover',
     component:frontCover
     
   },
   {    
-    path: '/index',
+    path: '/doc',
     name:'intr',
     components: {
       demonav: Index,

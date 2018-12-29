@@ -33,7 +33,7 @@
 ## 链接
 * [意见反馈](https://github.com/jdf2e/nutui/issues)
 * [更新日志](https://github.com/jdf2e/nutui/releases)
-* [示例工程模板命令行工具(gaea-cli)](https://github.com/jdf2e/Gaea4)
+* [模板工程命令行工具(Gaea-cli)](https://github.com/jdf2e/Gaea4)
 * 联系我们：nutui@jd.com
 
 

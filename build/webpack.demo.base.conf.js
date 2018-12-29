@@ -36,7 +36,8 @@ module.exports = merge(webpackBaseConf, {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './sites/demo/index.html'
+            template: './sites/demo/index.html',
+            filename:'demo.html'
         }),
         new MiniCssExtractPlugin({
             filename: isDev ? 'css/[name].css' : 'css/[name].[hash].css'
