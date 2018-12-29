@@ -16,7 +16,8 @@
       "chnName": "开关",
       "type": "component",
       "showDemo": true,
-      "desc": "一种滑动开关，通过点击使按钮左右滑动，同时触发对应的开关状态"
+      "desc": "一种滑动开关，通过点击使按钮左右滑动，同时触发对应的开关状态",
+      "author": "Frans"
     },
     {
       "name": "Radio",
@@ -25,7 +26,8 @@
       "chnName": "单选按钮",
       "type": "component",
       "showDemo": true,
-      "desc": "单选按钮，可组合成单选按钮组"
+      "desc": "单选按钮，可组合成单选按钮组",
+      "author": "Frans"
     },
     {
       "name": "Cell",
@@ -34,7 +36,8 @@
       "chnName": "列表项",
       "type": "component",
       "showDemo": true,
-      "desc": "列表项，可组合成列表"
+      "desc": "列表项，可组合成列表",
+      "author": "Frans"
     },
     {
       "name": "Dialog",
@@ -43,7 +46,8 @@
       "chnName": "对话框",
       "type": "method",
       "showDemo": true,
-      "desc": "一种对话框，支持遮罩层，支持按钮交互"
+      "desc": "一种对话框，支持遮罩层，支持按钮交互",
+      "author": "Frans"
     },
     {
       "name": "Icon",
@@ -52,7 +56,8 @@
       "chnName": "图标",
       "type": "component",
       "showDemo": true,
-      "desc": "网页小图标。"
+      "desc": "网页小图标。",
+      "author": "Frans"
     },
     {
       "version": "1.0.0",
