@@ -1,0 +1,38 @@
+
+.nut-row-flex{
+	display: flex;
+	&:after{
+		display:none;
+	}
+	.nut-col{
+		float: none;
+	}
+}
+.nut-col{
+	float: left;
+	box-sizing: border-box;
+}
+.nut-col-12{
+	width: 50%;
+}
+.nut-col-8{
+	width: 33.33333%;
+}
+.nut-col-6{
+	width: 25%;
+}
+.nut-col-4{
+	width: 16.66667%;
+}
+.nut-col-offset-12{
+	margin-left: 50%;
+}
+.nut-col-offset-8{
+	margin-left: 33.33333%;
+}
+.nut-col-offset-6{
+	margin-left: 25%;
+}
+.nut-col-offset-4{
+	margin-left: 16.66667%;
+}

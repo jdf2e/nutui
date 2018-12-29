@@ -1,0 +1,9 @@
+@mixin semi-transparent-colors($attribute, $color, $background){ 
+    $percent: alpha($color) * 100%; 
+    $opaque: opacify($color,1); 
+    $solid-color: mix($opaque,$background,$percent); 
+    @if ($percent < 100%) {
+        #{$attribute}: $solid-color; 
+    }
+    #{$attribute}: $color;
+}

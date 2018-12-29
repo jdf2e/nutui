@@ -1,0 +1,44 @@
+.nut-buttongroup{
+    display: flex;
+    width: 100%;
+    &.circle {
+        border-radius: $btn-border-radius-large;
+        .nut-button {
+            &:nth-child(1) {
+                border-top-left-radius: $btn-border-radius-large;
+                border-bottom-left-radius: $btn-border-radius-large;
+            }
+            &:nth-last-child(1) {
+                border-top-right-radius: $btn-border-radius-large;
+                border-bottom-right-radius: $btn-border-radius-large;
+            }
+        }
+    }
+    &.menu {
+        height: $btn-menu-height;
+        font-size: $font-size-small;        
+        .nut-button {
+            position: relative;
+            height: $btn-menu-height;
+            width: 100%;
+            padding: 0;
+            font-size: $btn-icon-height-small;
+        }
+        .txt-icon {
+            display: block;
+            margin: 0 auto;
+            width: $btn-menu-icon-height;
+            height: $btn-menu-icon-height;
+        }
+        .nut-badge {
+            flex: 1;
+            -webkit-flex: 1;
+        }
+    }
+    .nut-button {
+        flex: 1;
+        -webkit-flex: 1;
+        border: 1px solid transparent;
+    }
+
+}

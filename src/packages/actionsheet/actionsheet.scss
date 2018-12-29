@@ -1,0 +1,56 @@
+@import "../../styles/animation/fade";
+@import "../../styles/animation/slide-up";
+.nut-actionsheet-mask{
+    @include fix-fullscreen();
+}
+.nut-actionsheet-panel{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: $zindex-actionsheet;
+    background-color: $body-background;
+}
+.nut-actionsheet-modal{
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    background-color: #FFF;
+    border-bottom: 1px solid $light-color;
+    .nut-actionsheet-title, .nut-actionsheet-sub-title{
+        padding: 5px 0;
+    }
+    .nut-actionsheet-title{
+        font-size: $font-size-base;
+        color: $title-color;
+    }
+    .nut-actionsheet-sub-title{
+        font-size: $font-size-small;
+        color: $title-color;
+    }
+}
+.nut-actionsheet-menu{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.nut-actionsheet-cancel, .nut-actionsheet-item{
+    height: 24px;
+    padding: 10px;
+    line-height: 24px;
+    font-size: $font-size-base;
+    color: $title-color;
+    text-align: center;
+    background-color: #FFF;
+}
+.nut-actionsheet-item {
+    border-bottom: 1px solid $light-color;
+}
+.nut-actionsheet-item-active{
+    color: $primary-color;
+}
+.nut-actionsheet-cancel{
+    margin-top: 5px;
+    border-top: 1px solid $light-color;
+}

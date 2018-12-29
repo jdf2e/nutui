@@ -1,0 +1,27 @@
+.nut-badge {
+    position: relative;
+    display: inline-block;
+    sup {
+      position: absolute;
+      height: 18px;
+      line-height: 18px;
+      padding: 0 5px;
+      background-color: #fff;
+      border: 1px solid $primary-color;
+      color: $primary-color;
+      font-size: 10px;
+      border-radius: 10px;
+      z-index: $zindex-mask;
+    }
+    .nut-badge__content {
+      transform: translateY(-50%) translateX(100%);
+    }
+    .is-dot {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      right: 5px;
+      border-radius: 10px;
+      background: $primary-color;
+    }
+  }

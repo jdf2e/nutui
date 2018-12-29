@@ -1,71 +1,50 @@
-<p align="center">
-  <a href="http://nutui.jd.com">
-    <img alt="nutui logo" src="http://nutui.jd.com/asset/img/nutui-logo.png">
-  </a>
-</p>
+# NutUI 2
+![npm version](https://img.shields.io/npm/v/@nutui/nutui.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=v2)](https://github.com/jdf2e/nutui/)
+ 
+一套移动端轻量级Vue组件库
+    
+![NutUI](http://img11.360buyimg.com/uba/jfs/t1/11117/21/3608/18942/5c20ab52E35e5a500/02e3c1f89cd3dad1.png)
 
-# NutUI
 
-[![version](https://img.shields.io/badge/version-1.3-blue.svg?style=flat-square)](http://nutui.jd.com/)
-[![license](https://img.shields.io/badge/license-MIT-yellow.svg?style=flat-square)](http://nutui.jd.com/)
+## 特性
 
-> 基于Vue 2.0的移动端轻量级UI组件库
+* 跨平台，自动转微信小程序组件（稍后上线，敬请期待）
+* 30+ 京东移动端项目正在使用
+* 基于京东APP 7.0 视觉规范
+* 支持按需加载
+* 详尽的文档和示例
+* 支持定制主题
+* 支持多语言（国际化）
+* 支持 TypeScript
+* 支持服务端渲染（Vue SSR）
+* 配套有基于Webpack的构建工具，可快速创建已内置本组件库的Vue工程
 
-<p align="center">
-    <img alt="" src="http://nutui.jd.com/asset/img/erweima.jpg">
-</p>
+> 如需使用 1.x 版本，请指定版本号，如：  `npm i @nutui/nutui@1.3.2 -S`
 
-# 安装
+## 支持环境
 
-``` bash
-推荐使用npm安装NutUI
-npm install @nutui/nutui --save
-```
+* Android 4.0+
+* iOS 8.0+
+* 支持 Vue 服务端渲染
 
-#### 引用完整组件库
-``` bash
-1，在webpack入口文件（如app.js或main.js）中引入
-import NutUI from '@nutui/nutui'
+## 版本
 
-2，初始化
-NutUI.install(Vue)
-```
-通过以上步骤即可完成整个NutUI组件库的安装。
+* 稳定版：![npm](https://img.shields.io/npm/v/@nutui/nutui.svg)
 
-#### 自定义构建（按需引用）
-本组件库支持自定义构建（1.1.0版本以上），您可以根据需要只打包部分组件。
-``` bash
-1，在NutUI项目目录下执行
-npm install
+> 你还可以订阅： https://github.com/jdf2e/nutui/releases.atom 来获得稳定版发布的通知。
 
-2，执行自定义构建命令
-npm run custom
+## 安装使用
 
-3，在出现的组件列表中，选择所有您需要打包的组件，然后按下回车键即开始构建
+具体安装使用方法请参考 NutUI 官网 http://nutui.jd.com
 
-4，片刻之后，自定义构建出的nutui.js文件会出现在dist目录下
+## 链接
+* [意见反馈](https://github.com/jdf2e/nutui/issues)
+* [更新日志](https://github.com/jdf2e/nutui/releases)
+* [按需加载插件](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)
+* [模板工程命令行工具(Gaea-cli)](https://github.com/jdf2e/Gaea4)
+* 联系我们：nutui@jd.com
 
-5，在项目中引入和初始化的操作同上
-```
 
-# 组件用法
-###### 组件从使用方法上大致分为两类。
-*  一类是扩展 HTML 元素，典型的Vue组件形式，使用方式类似原生HTML元素。
-``` bash
-如遮罩层（Mask）组件，直接使用nut-mask标签即可
-<nut-mask :visible.sync="maskShow"><nut-mask>
-```
-*  另一类是挂在Vue.prototype上的实例方法，在需要的地方调用即可。
-``` bash
-如对话框（Dialog）组件
-this.$dialog(options);
-提示框（Toast）组件
-this.$toast(msg,during);
-```
-每个组件的使用方式请参考具体组件[文档](http://nutui.jd.com/index.html#/intro)。
+## 开源协议
 
-# 联系我们
-[nutui@jd.com](mailto:nutui@jd.com)
-
-# License
-[MIT](https://github.com/jdf2e/nutui/blob/master/LICENSE)
+本项目基于 **MIT** 协议

@@ -1,0 +1,29 @@
+// @keyframes nutPulse{
+//     from {
+//         width: 100%;
+//         height: 100%;
+//         opacity: 0;
+//     }
+//     70% {
+//         width: 150%;
+//         height: 150%;
+//         opacity: 0.4;
+//     }
+//     to {
+//         width: 200%;
+//         height: 200%;
+//         opacity: 0;
+//    }
+// }
+@keyframes nutPulse{
+    0% {
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+    }
+    100% {
+        width: 180%;
+        height: 180%;
+        opacity: 0;
+    }
+}

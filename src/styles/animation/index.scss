@@ -1,0 +1,35 @@
+// Animation
+%common-animation{
+    animation-duration: $animationDuration;
+    animation-fill-mode: both;
+    animation-timing-function: $animationTimingFun;
+   
+}
+
+@mixin make-animation($keyframeName) {
+    .#{$keyframeName}-enter-active, .#{$keyframeName}In,
+    .#{$keyframeName}-leave-active, .#{$keyframeName}Out {
+        @extend %common-animation;
+        // @if $timingFun { 
+        //     animation-timing-function: $timingFun;
+        // } 
+        // @if $duration { 
+        //      animation-duration: $duration;
+        // } 
+    }
+    
+    .#{$keyframeName}-enter-active, .#{$keyframeName}In {
+        animation-name: #{$keyframeName}In;
+       
+    }
+
+    .#{$keyframeName}-leave-active, .#{$keyframeName}Out {
+        animation-name: #{$keyframeName}Out;
+    }
+}
+
+@import 'fade.scss';
+@import 'zoom.scss';
+@import 'slide.scss';
+@import 'drop.scss';
+@import 'bounce.scss';  

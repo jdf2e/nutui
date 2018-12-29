@@ -1,0 +1,26 @@
+@keyframes nutZoomIn {
+    from {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes nutZoomOut {
+    from {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+@include make-animation(nutZoom);

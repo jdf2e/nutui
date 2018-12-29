@@ -1,0 +1,70 @@
+.nut-switch {
+    position: relative;
+    display: inline-block;
+    background: #FFF;
+    border-radius: 1000px;
+    vertical-align: bottom;
+    box-sizing:content-box;
+    border: 2px $border-style-base $border-color-base;
+    transition: all $transition-duration $animation-timing-fun;
+    .nut-switch-btn {
+        position: absolute;
+        left: 0;
+        background: $border-color-base;
+        border: 2px solid #FFF;
+        border-radius: 50%;
+        box-sizing: border-box;
+        transition: all $transition-duration $animation-timing-fun;
+    }
+    &.nut-switch-active {
+        border-color: $border-color-active;
+        .nut-switch-btn {
+            background-color: $primary-color;
+        }
+    }
+    &.nut-switch-disabled {
+        opacity: .6;
+    }
+}
+
+.nut-switch-small {
+    height: 14px;
+    width: 32px;
+    .nut-switch-btn {
+        height: 14px;
+        width: 14px;
+    }
+    &.nut-switch-active {
+        .nut-switch-btn {
+            left: 18px;
+        }
+    }
+}
+
+.nut-switch-base {
+    height: 20px;
+    width: 46px;
+    .nut-switch-btn {
+        height: 20px;
+        width: 20px;
+    }
+    &.nut-switch-active {
+        .nut-switch-btn {
+            left: 26px;
+        }
+    }
+}
+
+.nut-switch-large {
+    height: 28px;
+    width: 58px;
+    .nut-switch-btn {
+        height: 28px;
+        width: 28px;
+    }
+    &.nut-switch-active {
+        .nut-switch-btn {
+            left: 30px;
+        }
+    }
+}
