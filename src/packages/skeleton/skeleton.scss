@@ -26,7 +26,7 @@
         -webkit-animation: backpos 0.9s ease-in-out 0s infinite;
         animation: backpos 0.9s ease-in-out 0s infinite;
     }
-    .skeleton-bac-content {
+    .skeleton-bac-content{
         overflow: hidden;
     }
 }
@@ -44,7 +44,7 @@
 }
 
 .vue-skeleton-square-wrap {
-    justify-content: center; // align-items:center;
+    justify-content: center;
     display: flex;
     flex-direction: column;
     .vue-skeleton-square {
