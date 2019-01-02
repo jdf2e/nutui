@@ -6,20 +6,24 @@ import App from './App.vue';
 import router from './router';
 import Conf from '../../src/config.json';
 import NutUI from '../../src/nutui';
-import en from '../../src/locales/lang/en-US';
-import demoEN from './lang/en-US';
+// import en from '../../src/locales/lang/en-US';
+// import demoEN from './lang/en-US';
 import './asset/css/common.scss';
+
+import './asset/img/logo_share.png';
 
 Vue.config.productionTip = false;
 
-Object.assign(en, demoEN);
+// Object.assign(en, demoEN);
 
-Vue.use(NutUI, {
-  locale: 'en-US',
-  lang: en
-});
+// Vue.use(NutUI, {
+//   locale: 'en-US',
+//   lang: en
+// });
 
-Vue.locale = () => {};
+NutUI.install(Vue);
+
+//Vue.locale = () => {};
 
 // const i18n = new VueI18n({
 //   locale: 'en-US',

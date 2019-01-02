@@ -1,5 +1,5 @@
 <template>
-    <div class="demo-list">
+    <div class="range-demo demo-list">
         <h4>基本用法</h4>
         <div>
             <nut-cell>
@@ -11,6 +11,22 @@
             </nut-cell>
             <nut-cell>
                     <span slot="title">{{val1[0]}},{{val1[1]}}</span>
+            </nut-cell>
+        </div>
+
+        <h4>显示标签文字</h4>
+        <div>
+            <nut-cell class="my-range">
+                <span slot="title">
+                <nut-range 
+                    :rangeValues.sync="val3" 
+                    :range="[-10,10]" 
+                    :showLabelAlways="true" 
+                    :showLabel="true"
+                    :showRangeTxt="true"></nut-range></span>
+            </nut-cell>
+            <nut-cell>
+                    <span slot="title">{{val3[0]}},{{val3[1]}}</span>
             </nut-cell>
         </div>
         
@@ -28,23 +44,6 @@
                     <span slot="title">{{val2[0]}},{{val2[1]}}</span>
             </nut-cell>
         </div>
-        
-        <h4>显示标签文字</h4>
-        <div>
-            <nut-cell>
-                <span slot="title">
-                <nut-range 
-                    color="#31ccec"
-                    :rangeValues.sync="val3" 
-                    :range="[-10,10]" 
-                    :showLabelAlways="true" 
-                    :showLabel="true"
-                    :showRangeTxt="true"></nut-range></span>
-            </nut-cell>
-            <nut-cell>
-                    <span slot="title">{{val3[0]}},{{val3[1]}}</span>
-            </nut-cell>
-        </div>
     </div>
 </template>
 
@@ -60,4 +59,20 @@ export default {
   methods: {}
 };
 </script>
+
+<style lang="scss">
+.range-demo{
+    .nut-cell:first-child{
+        .nut-cell-title{
+            padding:0 30px;
+        }
+        &.my-range{
+           .nut-cell-title{
+                padding:0;
+            } 
+        }
+    }
+}
+</style>
+
 

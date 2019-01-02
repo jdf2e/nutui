@@ -1,6 +1,6 @@
 <template>
     <div >
-    <nut-skeleton>
+    <nut-skeleton class="my-skeleton">
         
         <row padding="15px 10px 0 ">
 
@@ -50,3 +50,10 @@ export default {
     
 }
 </script>
+<style lang="scss" scoped>
+
+.my-skeleton{
+    padding-top:60px;
+    z-index:998;
+}
+</style>

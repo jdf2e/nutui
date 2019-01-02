@@ -55,7 +55,7 @@ export default {
 
 <style lang="scss" scoped>
 .item {
-  margin: 0 20px;
+  margin: 10px 20px;
 }
 .demo-w {
   margin: 20px 0;

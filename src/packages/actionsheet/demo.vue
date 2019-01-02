@@ -2,39 +2,39 @@
     <div class="demo-list">
         <h4>基本用法(选择类)</h4>
         <div>
-            <nut-cell :showIcon="true">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="switchActionSheet('isVisible')">
                 <span slot="title"><label>性别</label></span>
-                <div slot="desc" class="selected-option" @click="switchActionSheet('isVisible')">{{sex}}</div>
+                <div slot="desc" class="selected-option">{{sex}}</div>
             </nut-cell>
-            <nut-cell :showIcon="true">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="switchActionSheet('isVisible1')">
                 <span slot="title"><label>年龄</label></span>
                 <span slot="sub-title">带取消按钮~~~~</span>
-                <div slot="desc" class="selected-option" @click="switchActionSheet('isVisible1')">{{agespec}}</div>
+                <div slot="desc" class="selected-option">{{agespec}}</div>
             </nut-cell>
-            <nut-cell :showIcon="true">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="switchActionSheet('isVisible2')">
                 <span slot="title"><label>年龄</label></span>
                 <span slot="sub-title">高亮选中项~~~~</span>
-                <div slot="desc" class="selected-option" @click="switchActionSheet('isVisible2')">{{age}}</div>
+                <div slot="desc" class="selected-option">{{age}}</div>
             </nut-cell>
-            <nut-cell :showIcon="true">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="switchActionSheet('isVisible3')">
                 <span slot="title"><label>星座</label></span>
                 <span slot="sub-title">设置列表项展示使用参数~~~~</span>
-                <div slot="desc" class="selected-option"  @click="switchActionSheet('isVisible3')">{{constellation}}</div>
+                <div slot="desc" class="selected-option">{{constellation}}</div>
             </nut-cell>
         </div>
         <h4>提示类</h4>
         <div>
-            <nut-cell>
+            <nut-cell  :isLink="true" @click.native="switchActionSheet('isVisible4')">
                 <span slot="title"><label>我就列表测试数据</label></span>
                 <span slot="sub-title">我是描述~~~~</span>
-                <div slot="desc" class="selected-option"  @click="switchActionSheet('isVisible4')">删除本条</div>
+                <div slot="desc" class="selected-option">删除本条</div>
             </nut-cell>
         </div>
         <h4>自定义类</h4>
         <div>
-            <nut-cell>
+            <nut-cell :isLink="true" @click.native="switchActionSheet('isVisible5')">
                 <span slot="title"><label>内容自定义</label></span>
-                <div slot="desc" class="selected-option"  @click="switchActionSheet('isVisible5')">打开</div>
+                <div slot="desc" class="selected-option">打开</div>
             </nut-cell>
         </div>
         <!-- demo -->

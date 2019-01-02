@@ -1,5 +1,5 @@
 <div style="text-align:center; margin:10px 0 30px;">
-    <img width="120" src="http://img11.360buyimg.com/uba/jfs/t1/11117/21/3608/18942/5c20ab52E35e5a500/02e3c1f89cd3dad1.png" alt="NutUI2" />
+    <img width="150" src="http://img14.360buyimg.com/uba/jfs/t1/8543/6/11560/22014/5c2c6136E8023ac0a/6abbd9de10999c48.png" alt="NutUI2" />
     <h1>NutUI 2</h1>
     <p style="color:#455A64;">一套移动端轻量级Vue组件库</p>
 </div>

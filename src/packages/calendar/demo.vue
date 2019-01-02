@@ -1,32 +1,32 @@
 <template>
     <div class="demo-list">
         <h4>基本用法</h4>
-        <nut-cell :showIcon="true">
+        <nut-cell :showIcon="true" @click.native="switchPicker('isVisible')">
             <span slot="title"><label>日期选择</label></span>
             <span slot="sub-title">没有默认日期~~~</span>
             <div slot="desc" class="selected-option" >
-                <span class="show-value"  @click="switchPicker('isVisible')">{{date ? `${date} ${dateWeek}` : '请选择日期'}}</span>
+                <span class="show-value">{{date ? `${date} ${dateWeek}` : '请选择日期'}}</span>
             </div>
         </nut-cell>
-        <nut-cell :showIcon="true">
+        <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible2')">
             <span slot="title"><label>日期选择</label></span>
             <span slot="sub-title">有默认日期，选择后自动回填的~~~</span>
             <div slot="desc" class="selected-option" >
-                <span class="show-value"  @click="switchPicker('isVisible2')">{{date2 ? date2 : '请选择日期'}}</span>
+                <span class="show-value">{{date2 ? date2 : '请选择日期'}}</span>
             </div>
         </nut-cell>
-        <nut-cell :showIcon="true">
+        <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible1')">
             <span slot="title"><label>日期区间选择</label></span>
             <span slot="sub-title">有默认日期~~~</span>
             <div slot="desc" class="selected-option" >
-                <span class="show-value"  @click="switchPicker('isVisible1')">{{date1 ? `${date1[0]}至${date1[1]}`  : '请选择日期'}}</span>
+                <span class="show-value">{{date1 ? `${date1[0]}至${date1[1]}`  : '请选择日期'}}</span>
             </div>
         </nut-cell>
-        <nut-cell :showIcon="true">
+        <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible3')">
             <span slot="title"><label>日期区间选择</label></span>
             <span slot="sub-title">不限制开始结束时间~~~</span>
             <div slot="desc" class="selected-option" >
-                <span class="show-value"  @click="switchPicker('isVisible3')">{{date3 ? `${date3[0]}至${date3[1]}`  : '请选择日期'}}</span>
+                <span class="show-value">{{date3 ? `${date3[0]}至${date3[1]}`  : '请选择日期'}}</span>
             </div>
         </nut-cell>
         <!-- demo-->

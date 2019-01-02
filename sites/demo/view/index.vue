@@ -49,7 +49,17 @@ export default {
   created() {
     this.packages = Conf.packages;
     this.version = Conf.version;
-    this.sorts = Conf.sorts;
+    //this.sorts = Conf.sorts;
+
+    this.sorts = [
+      "数据录入",
+      "操作反馈",
+      "数据展示",
+      "导航组件",
+      "布局组件",
+      "基础组件"
+    ];
+    
     this.foldStatus = Array(this.sorts.length)
       .join(",")
       .split(",")

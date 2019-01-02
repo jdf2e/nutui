@@ -18,7 +18,7 @@ module.exports = merge(baseConf, {
             ftp: {
                 host: '192.168.181.73',
                 port: 3000,
-                source: 'dist/sites/demo',
+                source: 'dist/sites',
                 target: '/var/www/html/page.jd.com/exploit/nutui2/'
             }
         })

@@ -36,16 +36,18 @@
 	position: relative;
 	.tips{
 		position: absolute;
-		min-width: 18px;
-		min-height: 18px;
+		min-width: 14px;
+		min-height: 14px;
 		display: flex;
 		justify-content:center;
 		align-items: center;
-		padding:0px;
+		padding:0;
 		border:1px solid $border-color-active;
 		border-radius: 50%;
-		top: -12px;
-		right: 0px;
+		top: -10px;
+		right: 0;
+		background:#fff;
+		box-shadow: 0 0 0 1px #fff;
 		transform: translateX(60%);
 		font-size: $font-size-small;
 		color: $primary-color;
