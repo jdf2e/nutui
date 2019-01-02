@@ -2,25 +2,25 @@
     <div class="demo-list">
         <h4>基本用法</h4>
         <div>
-            <nut-cell :showIcon="true">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible0')">
                 <span slot="title"><label>年月选择</label></span>
                 <span slot="sub-title">不联动多列~~~</span>
-                <div slot="desc" class="selected-option" @click="switchPicker('isVisible0')">{{date ? date : '请选择'}}</div>
+                <div slot="desc" class="selected-option">{{date ? date : '请选择'}}</div>
             </nut-cell>
-            <nut-cell :showIcon="true">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible')">
                 <span slot="title"><label>城市选择</label></span>
                 <span slot="sub-title">联动~~~</span>
                 <div slot="desc" class="selected-option" >
-                    <span class="btn" @click="modifyCity">修改为指定的城市</span>
-                    <span class="show-value"  @click="switchPicker('isVisible')">{{city ? city : '请选择'}}</span>
+                    <span class="btn" @click.stop.prevent="modifyCity">修改为指定的城市</span>
+                    <span class="show-value">{{city ? city : '请选择'}}</span>
                 </div>
             </nut-cell>
-            <nut-cell :showIcon="true">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible1')">
                 <span slot="title"><label>年选择</label></span>
                 <span slot="sub-title">单列~~~</span>
                 <div slot="desc" class="selected-option" >
-                    <span class="btn" @click="modifyYear">修改为指定的年份</span>
-                    <span class="show-value"  @click="switchPicker('isVisible1')">{{year ? year : '请选择'}}</span>
+                    <span class="btn" @click.stop.prevent="modifyYear">修改为指定的年份</span>
+                    <span class="show-value">{{year ? year : '请选择'}}</span>
                 </div>
             </nut-cell>
         </div>

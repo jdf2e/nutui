@@ -5,7 +5,7 @@
       <h4>带有tips的文本标签栏</h4>
       <nut-tabbar @tab-switch="tabSwitch2" type="card" :tabbarList="tabList2"></nut-tabbar>
       <h4>固定底部，可跳转页面</h4>
-  		<nut-tabbar @tab-switch="tabSwitch3" :tabbarList="tabList3" :bottom="true">  
+  		<nut-tabbar @tab-switch="tabSwitch3" :tabbarList="tabList3" :bottom="true" class="my-tabbar">  
       </nut-tabbar>
     </div>
 </template>
@@ -134,3 +134,13 @@
   }
 };
 </script>
+<style lang="scss">
+.my-tabbar{
+  padding-top:5px;
+  border-top:1px solid #f2f2f2;
+  .tips{
+    top:-5px;
+    right:10px;
+  }
+}
+</style>
