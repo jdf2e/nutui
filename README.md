@@ -1,5 +1,5 @@
 # NutUI 2
-![npm version](https://img.shields.io/npm/v/@nutui/nutui.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=v2)](https://github.com/jdf2e/nutui/)
+![npm version](https://img.shields.io/npm/v/@nutui/nutui.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=v2)](https://github.com/jdf2e/nutui/) ![license](https://img.shields.io/npm/l/@nutui/nutui.svg)
  
 一套移动端轻量级Vue组件库
     
@@ -17,7 +17,7 @@
 * 支持多语言（国际化）
 * 支持 TypeScript
 * 支持服务端渲染（Vue SSR）
-* 配套有基于Webpack的构建工具，可快速创建已内置本组件库的Vue工程
+* 配套有基于Webpack的构建工具，可快速创建已内置本组件库的Vue工程 
 
 > 如需使用 1.x 版本，请指定版本号，如：  `npm i @nutui/nutui@1.3.2 -S`
 
