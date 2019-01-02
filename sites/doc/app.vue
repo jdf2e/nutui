@@ -6,7 +6,7 @@
   <div class="md-swaper" @click="clearSearch" v-else>
     <div class="hder">
       <div class="logo">
-        <img src="./asset/css/i/nut.png" alt> <span class="version">{{version}}</span>
+        <a href="default.html#/index" class="logo-link"><img src="./asset/css/i/nut.png" alt></a> <span class="version">{{version}}</span>
       </div>
       <div class="h-nav">
         <div class="search-box">
@@ -37,7 +37,7 @@
           <li>
             <a class="qrcode demoLink" href="/demo.html#/index" target="_blank">示例             
                 <a :href="routerName">
-                  <span>请使用手机扫码体验</span><img :src="codeurl" alt="">
+                  <span>请使用手机扫码体验</span><img src="http://img13.360buyimg.com/uba/jfs/t1/14144/37/3433/5890/5c26d976E7cd98b80/94583409233081cc.png" alt="">
                 </a>
             </a>
           </li>
@@ -239,6 +239,9 @@ export default {
     display: flex;
     align-items:center;
     flex-shrink: 0;    
+    .logo-link{
+      display:inline-block;
+    }
     img{
         display: block;
         width: 120px;
@@ -492,6 +495,15 @@ body {
   height: auto;
   a{
     z-index: 9999;
+  }
+  &.qrcode{
+    span{
+      line-height: 64px;
+    }
+    img{
+      width:150px;
+      height:150px;
+    }
   }
 }
 </style>

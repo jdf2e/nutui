@@ -19,7 +19,7 @@
                             
                         </ul>
                     </div>
-                    <img src="#{$assetsPath}/img/cursor.gif" class="nut-fake-cursor" :style="fakeCursorStyle"/>
+                    <img src="../../assets/img/cursor.gif" class="nut-fake-cursor" :style="fakeCursorStyle"/>
                     <div class="nut-forget" v-if="link !=''">
                         <a :href="link">{{nutTranslate('lang.shortpassword.tip2')}}</a>
                     </div>
