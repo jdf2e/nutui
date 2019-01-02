@@ -9,27 +9,7 @@
         <a href="default.html#/index" class="logo-link"><img src="./asset/css/i/nut.png" alt></a> <span class="version">{{version}}</span>
       </div>
       <div class="h-nav">
-        <div class="search-box">
-          <input
-            @focus="onfocus"
-            @input="search"
-            @keyup="choseList"
-            v-model="searchVal"
-            class="search"
-            type="text"
-            placeholder="在NutUI中搜索"
-          >
-          <!-- <transition name="fade"> -->
-            <ul class="search-list" v-if="searchList.length>0">
-              <li :class="searchCurName==item.chnName?'cur':''" @click="checklist(item)" v-for="(item,index) in searchList" :key="index">
-                <router-link :to="{name:item.name}">
-                  {{item.name}}
-                  <span>{{item.chnName}}</span>
-                </router-link>
-              </li>
-            </ul>
-          <!-- </transition> -->
-        </div>
+        <search/>
         <ul class="list">
           <li class="cur">
             <a href="default.html#/doc">指南</a>
@@ -88,6 +68,7 @@ import "./asset/css/common.scss";
 import "./asset/css/style-blue.scss";
 import Conf from "../../src/config.json";
 import PackageJson from "../../package.json";
+import search from './search.vue';
 export default {
   name: "App",
   data() {
@@ -110,6 +91,9 @@ export default {
     //    }
     //  },
     $route: "fetchData"
+  },
+  components:{
+    search
   },
   methods: {
     openwindow(val){      

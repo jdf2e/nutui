@@ -98,7 +98,12 @@ function createdFile(output, sorce,ishasCode) {
           <div v-html="content"></div>
         </div>`+ res + '</div></template>' + jsroot;
         var buf = new Buffer(bufs);
-        fs.writeSync(fd, buf, 0, buf.length, 0);
+        if( typeof fd  == 'number'){
+            fs.writeSync(fd, buf, 0, buf.length, 0);
+         }else{
+             console.log(pathSrc,'有问题')
+         }
+       
     })
 }
 function fileDisplay(filePath,outPath,nohead) {

@@ -8,9 +8,7 @@
           <span class="logo">NUTUI
             <s></s>
           </span>
-          <span class="search">
-            <input type="text" placeholder="在nutui中搜索" class="search-input">
-          </span>
+          <search/>
 
           <div class="menu">
             <ul>
@@ -64,7 +62,7 @@
 import * as THREE from "three";
 import TWEEN from "@tweenjs/tween.js";
 import Detector from "./asset/js/Detector.js";
-
+import search from './search.vue';
 export default {
   name: "frontCover",
   data() {
@@ -72,6 +70,9 @@ export default {
       timer: null,
       notWebgl: true
     };
+  },
+  components:{
+    search
   },
   methods: {
     openwindow(val) {
@@ -466,6 +467,8 @@ export default {
     width: 100%;
     z-index: 999;
     height: 64px;
+    display: flex;
+		 align-items:center;
   }
   .menu {
     position: absolute;
