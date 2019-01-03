@@ -554,6 +554,11 @@ export default {
       line-height: 64px;
       cursor: pointer;
       color: #fff;
+      & > a{
+        display:block;
+        height:100%;
+        line-height: 64px;
+      }
       a {
         color: #fff;
         text-decoration: none;
@@ -657,6 +662,7 @@ export default {
     }
     .btn,.blue-btn{
       border:1px solid #5396ff;
+      background:#fff;
       color:#5396ff;
       width:130px;
       height:40px;
@@ -681,7 +687,8 @@ export default {
     opacity: 1;
     &.top-qr {
       a {
-        left: -88px;
+        left: -65px;
+        top:60px;
       }
     }
     a {
