@@ -1,5 +1,5 @@
 # NutUI 2
-![npm version](https://img.shields.io/npm/v/@nutui/nutui.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=v2)](https://github.com/jdf2e/nutui/) ![license](https://img.shields.io/npm/l/@nutui/nutui.svg) [![Coverage Status](https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master)](https://coveralls.io/github/jdf2e/nutui?branch=master)
+![npm version](https://img.shields.io/npm/v/@nutui/nutui.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=v2)](https://github.com/jdf2e/nutui/) ![license](https://img.shields.io/npm/l/@nutui/nutui.svg) [![Coverage Status](https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=v2)](https://coveralls.io/github/jdf2e/nutui?branch=v2)
  
 一套移动端轻量级Vue组件库
     
@@ -35,11 +35,13 @@
 
 ## 示例
 
-![扫码体验]（http://img13.360buyimg.com/uba/s320x320_jfs/t1/14144/37/3433/5890/5c26d976E7cd98b80/94583409233081cc.jpg）
+![npm version](http://img13.360buyimg.com/uba/s320x320_jfs/t1/14144/37/3433/5890/5c26d976E7cd98b80/94583409233081cc.jpg)
 
 ## 安装使用
 
 具体安装使用方法请参考 NutUI 官网 http://nutui.jd.com
+
+文档：[2.x](http://nutui.jd.com/default.html#/start) | [1.x](http://nutui.jd.com/1x/index.html#/intro)
 
 ## 链接
 * [意见反馈](https://github.com/jdf2e/nutui/issues)
