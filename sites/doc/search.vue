@@ -33,70 +33,80 @@ export default {
              searchIndex:0,
         }
     },   
+    mounted() {
+      let list = document.querySelector('.search-list');
+      let that = this;
+      window.addEventListener('click',that.closelist)
+    },
     methods:{
+        closelist(){           
+            this.searchList = [];
+            this.searchCurName='';
+            this.searchIndex=0;          
+        },
         onfocus(e) {
-      e.target.select();
-    },
-    clearSearch() {
-      this.searchList = [];
-    },
-    search(e) {
-      let val = e.target.value.toLowerCase();     
-       this.searchIndex=0;
-      if (val) {
-        let packages = this.packages;
-        let list = [];
-        for (let i = 0, item; (item = packages[i]); i++) {
-          let cn = item.chnName.toLowerCase();
-          let en = item.name.toLowerCase();
-          if (cn.indexOf(val) > -1 || en.indexOf(val) > -1) {
-            list.push(item);
-          }
-        }
-        this.searchList = list;
-      }else{
+            e.target.select();
+          },
+          clearSearch() {
+            this.searchList = [];
+          },    
+          search(e) {
+            let val = e.target.value.toLowerCase();     
+            this.searchIndex=0;
+            if (val) {
+              let packages = this.packages;
+              let list = [];
+              for (let i = 0, item; (item = packages[i]); i++) {
+                let cn = item.chnName.toLowerCase();
+                let en = item.name.toLowerCase();
+                if (cn.indexOf(val) > -1 || en.indexOf(val) > -1) {
+                  list.push(item);
+                }
+              }
+              this.searchList = list;
+            }else{
 
-           this.checklist()
-      }
-    },
-     checklist() {
-      this.searchVal = "";
-      this.searchList = [];
-      this.searchCurName='';
-      this.searchIndex=0;
-    },
-    choseList(e){
-      console.log(e)
-      let searchIndex = this.searchIndex;
-      if(e.keyCode==40){
-        searchIndex++;
-      }
-      if(e.keyCode==38){
-         searchIndex--;
-      }
-      if(searchIndex<0){
-        searchIndex = 0;
-      }      
-      let searchList = this.searchList;
-      if(searchList.length>0){       
-           console.log(searchList[searchIndex])
-       let chnName = searchList[searchIndex].name;
-      
-       if(chnName){
-         this.searchCurName = chnName;
-         this.searchIndex = searchIndex;
-         if(e.keyCode==13){
-            this.$router.push({
-                path:'/'+searchList[searchIndex].name
-            })
-           this.searchCurName='';
-           this.searchIndex=0;
-           this.searchList=[];
-           this.searchVal='';
-        }
-       }       
-      }
-    },
+                this.checklist()
+            }
+          },
+          checklist() {
+            this.searchVal = "";
+            this.searchList = [];
+            this.searchCurName='';
+            this.searchIndex=0;
+          },
+          choseList(e){
+            console.log(e)
+            let searchIndex = this.searchIndex;
+            if(e.keyCode==40){
+              searchIndex++;
+            }
+            if(e.keyCode==38){
+              searchIndex--;
+            }
+            if(searchIndex<0){
+              searchIndex = 0;
+            }      
+            let searchList = this.searchList;
+            if(searchList.length>0){       
+                console.log(searchList[searchIndex])
+            let chnName = searchList[searchIndex].name;
+            
+            if(chnName){
+              this.searchCurName = chnName;
+              this.searchIndex = searchIndex;
+              if(e.keyCode==13){
+                  this.$router.push({
+                      path:'/'+searchList[searchIndex].name
+                  })
+                this.searchCurName='';
+                this.searchIndex=0;
+                this.searchList=[];
+                this.searchVal='';
+              }
+            }       
+            }
+          }
     }
 }
 </script>

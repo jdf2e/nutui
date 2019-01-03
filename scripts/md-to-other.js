@@ -101,7 +101,7 @@ function createdFile(output, sorce,ishasCode) {
         if( typeof fd  == 'number'){
             fs.writeSync(fd, buf, 0, buf.length, 0);
          }else{
-             console.log(pathSrc,'有问题')
+             console.log(pathSrc,' typeof fd ！= number 请改正文件')
          }
        
     })

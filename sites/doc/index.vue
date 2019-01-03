@@ -34,10 +34,10 @@
           <div class="menu">
             <ul>
               <li>
-                <a href="default.html#/doc">指南</a>
+                <a href="#/doc">指南</a>
               </li>
               <li>
-                <a href="default.html#/ActionSheet">组件</a>
+                <a href="#/ActionSheet">组件</a>
               </li>
               <li>
                 <a href="/demo.html#/index" class="qrcode top-qr" target="_blank">示例
@@ -62,7 +62,7 @@
           <div class="mouseDiv" id="mouseDiv"></div>
           <p class="title">NutUI</p>
           <p class="sub-title">一套轻量级移动端Vue / 微信小程序组件库</p>
-          <a href="default.html#/doc" class="blue-btn">开始使用</a>
+          <a href="#/doc" class="blue-btn">开始使用</a>
           <a href="javascript:;" class="qrcode btn">
             扫码体验
             <a>
