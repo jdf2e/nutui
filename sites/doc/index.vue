@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <template v-if="notWebgl">
-      <div class="css-animation">
+      <div class="css-animation" >
 				<div class="blue-bg">
 					<span class="phone"></span>
 					<span class="goods"></span>
@@ -88,7 +88,8 @@ export default {
   data() {
     return {
       timer: null,
-      notWebgl: true
+      notWebgl: true,
+      isSmall:false
     };
   },
   components:{
@@ -462,6 +463,13 @@ export default {
   created() {},
   mounted() {
     this.$nextTick(() => {
+      
+      //获取浏览器宽度
+      let windowWidth = document.body.clientWidth;
+     if(windowWidth<=990){
+        this.isSmall = true;
+     }
+
       this.notWebgl = true;
       // if (!Detector.webgl) {
       //   //Detector.addGetWebGLMessage();
@@ -526,7 +534,7 @@ export default {
 
 .container{
   position: relative;
-  min-width:990px;
+  min-width:1210px;
 }
 .wrapper {
   position: absolute;
@@ -869,4 +877,5 @@ export default {
 		}
 	}
 }
+
 </style>
