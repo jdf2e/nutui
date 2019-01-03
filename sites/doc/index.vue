@@ -1,9 +1,30 @@
 <template>
   <div>
-    <template v-if="notWebgl"></template>
+    <template v-if="notWebgl">
+      <div class="css-aimation">
+				<div class="blue-bg">
+					<span class="phone"></span>
+					<span class="goods"></span>
+					<span class="nut"></span>
+					<span class="people"></span>
+					<span class="flower">
+						<span class="leaf_2"></span>
+						<span class="leaf_1"></span>
+						<span class="leaf_4"></span>
+						<span class="leaf_3"></span>
+					
+						<span class="flowerpot"></span>
+
+					</span>
+					<span class="fengche"></span>
+				</div>
+
+			</div>
+    </template>
     <template v-else>
       <canvas id="output"></canvas>
-      <div class="wrapper">
+    </template>
+     <div class="wrapper">
         <div class="header">
           <span class="logo">NUTUI
             <s></s>
@@ -54,7 +75,6 @@
           </a>
         </div>
       </div>
-    </template>
   </div>
 </template>
 
@@ -442,18 +462,68 @@ export default {
   created() {},
   mounted() {
     this.$nextTick(() => {
-      if (!Detector.webgl) {
-        //Detector.addGetWebGLMessage();
-      } else {
-        this.notWebgl = false;
-        this.threeAnimation();
-      }
+      this.notWebgl = true;
+      // if (!Detector.webgl) {
+      //   //Detector.addGetWebGLMessage();
+      // } else {
+      //   this.notWebgl = false;
+      //   this.threeAnimation();
+      // }
     });
   },
   destroyed() {}
 };
 </script>
 <style lang="scss" scoped>
+
+@keyframes fadeInLeft {
+	from {
+		opacity: 0;
+		transform: translate3d(-100%,0,0);
+	}
+	to{
+		opacity: 1;
+		transform: translate3d(0,0,0);
+	}
+}
+@keyframes leafShake {
+	form,to{
+		transform:rotate(0);
+		transform-origin: bottom;
+	}
+	20%,
+	60%{
+		transform: rotate(2deg);
+		transform-origin: bottom;
+	}
+	40%,
+	80%{
+		transform: rotate(-2deg);
+		transform-origin: bottom;
+	}
+
+}
+
+@keyframes fadeInRight {
+	from {
+		opacity: 0;
+		transform: translate3d(100%,0,0);
+	}
+	to{
+		opacity: 1;
+		transform: translate3d(0,0,0);
+	}
+}
+
+@keyframes fadeIn{
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
 .wrapper {
   position: fixed;
   top: 0;
@@ -572,29 +642,31 @@ export default {
       margin-left: -250px;
       margin-top: -50px;
     }
-    .title {
+    .title{
       font-size: 42px;
-      color: #333;
+      color:#333;
       font-weight: bold;
+      animation:  fadeInLeft 1s both;
     }
-    .sub-title {
-      font-size: 24px;
-      color: #333;
-      padding-top: 30px;
-      padding-bottom: 100px;
+    .sub-title{
+      font-size:24px;
+      color:#333;
+      padding-top:30px;
+      padding-bottom:100px;
+      animation:  fadeInLeft 1s both 0.5s;
     }
-    .btn,
-    .blue-btn {
-      border: 1px solid #5396ff;
-      color: #5396ff;
-      width: 130px;
-      height: 40px;
-      line-height: 40px;
+    .btn,.blue-btn{
+      border:1px solid #5396ff;
+      color:#5396ff;
+      width:130px;
+      height:40px;
+      line-height:40px;
       text-align: center;
       display: inline-block;
-      font-size: 14px;
+      font-size:14px;
       text-decoration: none;
       border-radius: 20px;
+      animation:  fadeInLeft 1s both 1.2s;
     }
     .blue-btn {
       color: #fff;
@@ -653,5 +725,135 @@ export default {
       }
     }
   }
+}
+
+.css-aimation{
+	position: relative;
+	transform: scale3d(1.06,1.06,1.06);
+
+	.blue-bg{
+		background:url('//img12.360buyimg.com/uba/jfs/t1/22824/40/3136/6504/5c24a3f4E76fdafde/802d02d1ec5d3d55.png') 0 0 no-repeat;
+		height:757px;
+		width:963px;
+		background-size:100% 100%;
+		position: absolute;
+		right:0;
+		top:0;
+
+		.phone{
+			background:url('//img10.360buyimg.com/uba/jfs/t1/19171/19/3175/23282/5c24a440Ee2a94261/45321aeaf173f237.png') 0 0 no-repeat;
+			height:419px;
+			width:227px;
+			background-size:100% 100%;
+			position:absolute;
+			right:350px;
+			top:250px;
+			display: inline-block;
+		}
+		.goods{
+			background:url('//img14.360buyimg.com/uba/jfs/t1/21115/40/3224/5652/5c24a411E03ef9eb6/83781b97e59da905.png') 0 0 no-repeat;
+			height:165px;
+			width:117px;
+			background-size:100% 100%;
+			position:absolute;
+			display:inline-block;
+			top:500px;
+			right:710px;
+		}
+		.people{
+			background:url('//img12.360buyimg.com/uba/jfs/t1/9330/16/10894/8662/5c24a42aE708692b3/14455d20eca1ccee.png');
+			width:184px;
+			height:334px;
+			background-size:100% 100%;
+			position:absolute;
+			top:334px;
+			right:500px;
+		}
+		.flower{
+			position: absolute;
+			right:195px;
+			top:510px;
+			height:160px;
+			width:208px;
+			.leaf_1{
+				position: absolute;
+				background:url(./asset/css/i/leaf_1.png) 0 0 no-repeat;
+				height:113px;
+				width:60px;
+				background-size:100% 100%;
+				bottom:36px;
+				right:79px;
+				animation:leafShake 8s infinite ;
+
+			}
+			.leaf_2{
+				position: absolute;
+				background:url(./asset/css/i/leaf_2.png) 0 0 no-repeat;
+				height:64px;
+				width:66px;
+				background-size:100% 100%;
+				bottom:36px;
+				right:35px;
+				animation:leafShake 8s infinite 0.6s;
+				
+
+			}
+			.leaf_3{
+				
+				position: absolute;
+				background:url(./asset/css/i/leaf_3.png) 0 0 no-repeat;
+				height:28px;
+				width:64px;
+				background-size:100% 100%;
+				bottom:38px;
+				right:42px;
+				//animation:leafShake 3s infinite 0.5s;
+			}
+			.leaf_4{
+				position: absolute;
+				background:url(./asset/css/i/leaf_4.png) 0 0 no-repeat;
+				height:113px;
+				width:99px;
+				background-size:100% 100%;
+				bottom:38px;
+				left:2px;
+				//animation:leafShake 3s infinite 0.2s;
+			}
+			.flowerpot{
+				position: absolute;
+				background:url(./asset/css/i/flowerpot.png) 0 0 no-repeat;
+				height:42px;
+				width:130px;
+				bottom:0;
+				right:5px;
+				background-size:100% 100%;
+				
+
+			}
+		}
+		.nut{
+			position: absolute;
+			height:46px;
+			width:46px;
+			background:url(./asset/css/i/nut-icon.png) 0 0 no-repeat;
+			background-size:100% 100%;
+			top:308px;
+			right:493px;
+			animation:fadeInRight 2s both;
+		
+		
+		}
+		.fengche{
+			position:absolute;
+			background:url(./asset/css/i/fengche.png) 0 0 no-repeat;
+			background-size:100% 100%;
+			width:679px;
+			height:476px;
+			top:195px;
+			right:180px;
+			animation: fadeIn 1s both 2s;
+
+		}
+	}
 }
 </style>
