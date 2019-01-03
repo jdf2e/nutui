@@ -9,7 +9,7 @@ describe('Cell.vue', () => {
     });
     
     it('文案展示', () => {
-        wrapper.setData({ title: '测试title', subTitle: '测试subTitle', desc: '测试desc', showIcon:true });
+        wrapper.setProps({ title: '测试title', subTitle: '测试subTitle', desc: '测试desc', showIcon:true });
 
         return Vue.nextTick().then(function () {
             expect(wrapper.find('.nut-cell-title').text()).toBe('测试title');
@@ -21,7 +21,7 @@ describe('Cell.vue', () => {
     });
 
     it('链接', () => {
-        wrapper.setData({ title: '测试title', subTitle: '测试subTitle', desc: '测试desc', showIcon: true, isLink: true, linkUrl:'http://m.jd.com' });
+        wrapper.setProps({ title: '测试title', subTitle: '测试subTitle', desc: '测试desc', showIcon: true, isLink: true, linkUrl:'http://m.jd.com' });
 
         return Vue.nextTick().then(function () {
             expect(wrapper.classes('nut-cell-link')).toBe(true);

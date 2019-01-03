@@ -8,7 +8,7 @@ describe('ImagePicker.vue',() => {
     });
 
     it('点击删除图片',() => {
-        wrapper.setData({
+        wrapper.setProps({
             imgList:[{
                 id:1,
                 src:"//img1.360buyimg.com/da/jfs/t1/4436/26/9691/78074/5bad0668E7ce89ec6/c234b749ae9e7332.jpg"
