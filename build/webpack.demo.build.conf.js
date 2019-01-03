@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const baseConf = require('./webpack.demo.base.conf.js');
 const merge = require('webpack-merge');
+const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const rimraf = require('rimraf');
@@ -21,7 +23,10 @@ module.exports = merge(baseConf, {
             'process.env': {
                 NODE_ENV: '"production"'
             }
-        })
+        }),
+        new CopyWebpackPlugin([
+            { from: path.join(__dirname, "../sites/demo/asset/img/favicon.ico"), to: path.join(__dirname, "../dist/sites/")}
+        ]),
     ],
     optimization: {
         minimizer: [

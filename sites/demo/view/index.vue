@@ -4,17 +4,17 @@
     <div class="version">NutUI 2.0</div>
     <p>NutUI 是一套轻量级移动端Vue组件库。</p>
     <div
-      :class="['demo-list-box',{'unfold':foldStatus[sortIdx]}]"
-      v-for="(sortName,sortIdx) in sorts"
-      :key="sortIdx"
+      :class="['demo-list-box',{'unfold':foldStatus[item]}]"
+      v-for="item in sorts"
+      :key="item"
     >
-      <h4 @click="toggleFold(sortIdx)">
-        {{sortName}}
+      <h4 @click="toggleFold(item)">
+        {{oriSorts[item]}}
         <i></i>
       </h4>
       <ul>
         <template v-for="cpt in packages">
-          <li v-if="cpt.showDemo !== false && cpt.sort == sortIdx" :key="cpt.name">
+          <li v-if="cpt.showDemo !== false && cpt.sort == item" :key="cpt.name">
             <a :href="'./demo.html#/'+cpt.name">
               {{cpt.name}}
               <span>{{cpt.chnName}}</span>
@@ -35,7 +35,8 @@ export default {
       path: "",
       packages: {},
       sortedPackages: [],
-      sorts: [],
+      oriSorts:[],
+      sorts: [1,2,0,3,4,5],
       foldStatus: [],
       version: ""
     };
@@ -49,16 +50,7 @@ export default {
   created() {
     this.packages = Conf.packages;
     this.version = Conf.version;
-    //this.sorts = Conf.sorts;
-
-    this.sorts = [
-      "数据录入",
-      "操作反馈",
-      "数据展示",
-      "导航组件",
-      "布局组件",
-      "基础组件"
-    ];
+    this.oriSorts = Conf.sorts;
     
     this.foldStatus = Array(this.sorts.length)
       .join(",")
