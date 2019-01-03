@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="container">
     <template v-if="notWebgl">
-      <div class="css-aimation">
+      <div class="css-animation">
 				<div class="blue-bg">
 					<span class="phone"></span>
 					<span class="goods"></span>
@@ -524,8 +524,12 @@ export default {
 	}
 }
 
+.container{
+  position: relative;
+  min-width:990px;
+}
 .wrapper {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
@@ -539,6 +543,7 @@ export default {
     height: 64px;
     display: flex;
 		 align-items:center;
+     position: relative;
   }
   .menu {
     position: absolute;
@@ -734,8 +739,10 @@ export default {
   }
 }
 
-.css-aimation{
-	position: relative;
+.css-animation{
+	position: absolute;
+  top:0;
+  right:0;
 	transform: scale3d(1.06,1.06,1.06);
 
 	.blue-bg{
