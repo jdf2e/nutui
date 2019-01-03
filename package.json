@@ -24,8 +24,9 @@
     "build": "npm run build:prod && npm run build:prodmin && npm run build:disp",
     "eslint": "eslint src/packages/**/*.{js,vue}",
     "add": "node scripts/createCptTpl.js",
-    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha-webpack --webpack-config build/webpack.test.conf.js --require test/setup.js src/packages/*/__test__/**.spec.js",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "test": "cross-env NODE_ENV=test  mocha-webpack --webpack-config build/webpack.test.conf.js --require test/setup.js src/packages/*/__test__/**.spec.js",
+    "cover": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text npm run test",
+    "test:watch": "npm run test --watch"
   },
   "repository": {
     "type": "git",
@@ -48,6 +49,7 @@
     "autoprefixer": "9.1.3",
     "clipboard": "2.0.1",
     "highlight.js": "^9.13.1",
+    "path": "^0.12.7",
     "postcss-loader": "3.0.0",
     "vue": "2.5.17",
     "vue-i18n": "8.1.0",
@@ -61,6 +63,7 @@
     "@babel/core": "7.1.2",
     "@babel/plugin-syntax-dynamic-import": "7.0.0",
     "@babel/plugin-transform-runtime": "7.1.0",
+    "istanbul-instrumenter-loader": "^3.0.1",
     "@babel/preset-env": "7.1.0",
     "@nutui/carefree": "^0.4.0",
     "@tweenjs/tween.js": "17.2.0",
