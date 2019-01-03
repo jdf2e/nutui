@@ -646,7 +646,7 @@ export default {
     }
   }
   .content {
-    padding: 250px 0 0 8.8%;
+    padding:15% 0 0 8.8%;
     z-index: 999;
     position: relative;
     .mouseDiv {
