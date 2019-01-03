@@ -66,7 +66,7 @@
 <script>
 import "./asset/css/common.scss";
 import "./asset/css/style-blue.scss";
-import Conf from "../../src/config.json";
+import { packages } from "../../src/config.json";
 import PackageJson from "../../package.json";
 import search from './search.vue';
 export default {
@@ -134,7 +134,7 @@ export default {
     fetchData(obj) {  
       this.routerName = obj.name;
       this.showPhone = false;
-      for (let i = 0, item; (item = Conf.packages[i]); i++) {
+      for (let i = 0, item; (item = packages[i]); i++) {
         if (obj.name == item.name) {
           this.showPhone = true;
         }
@@ -174,10 +174,10 @@ export default {
   },
   created() {
     let that = this;
-    this.packages = Conf.packages;   
+    this.packages = packages;   
     let name = this.$route.name;
     this.version = PackageJson.version; 
-    for (let i = 0, item; (item = Conf.packages[i]); i++) {
+    for (let i = 0, item; (item = packages[i]); i++) {
       if (name == item.name) {
         this.showPhone = true;
       }

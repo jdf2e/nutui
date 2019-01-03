@@ -539,7 +539,6 @@ export default {
     top: 0;
     min-width: 990px;
     width: 100%;
-    z-index: 999;
     height: 64px;
     display: flex;
 		 align-items:center;

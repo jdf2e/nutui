@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Conf from "../../../src/config.json";
+import { packages,sorts } from "../../../src/config.json";
 export default {
   name: "index",
   data() {
@@ -37,8 +37,7 @@ export default {
       sortedPackages: [],
       oriSorts:[],
       sorts: [1,2,0,3,4,5],
-      foldStatus: [],
-      version: ""
+      foldStatus: []
     };
   },
   methods: {
@@ -48,9 +47,8 @@ export default {
     }
   },
   created() {
-    this.packages = Conf.packages;
-    this.version = Conf.version;
-    this.oriSorts = Conf.sorts;
+    this.packages = packages;
+    this.oriSorts = sorts;
     
     this.foldStatus = Array(this.sorts.length)
       .join(",")
