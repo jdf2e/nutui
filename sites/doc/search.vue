@@ -75,8 +75,7 @@ export default {
             this.searchCurName='';
             this.searchIndex=0;
           },
-          choseList(e){
-            console.log(e)
+          choseList(e){           
             let searchIndex = this.searchIndex;
             if(e.keyCode==40){
               searchIndex++;
@@ -89,7 +88,7 @@ export default {
             }      
             let searchList = this.searchList;
             if(searchList.length>0){       
-                console.log(searchList[searchIndex])
+             
             let chnName = searchList[searchIndex].name;
             
             if(chnName){
