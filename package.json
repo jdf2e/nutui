@@ -1,7 +1,7 @@
 {
   "name": "@nutui/nutui",
-  "version": "2.0.0-beta.1",
-  "description": "一套移动端轻量级Vue组件库",
+  "version": "2.0.0-beta.2",
+  "description": "一套轻量级移动端Vue组件库",
   "typings": "dist/types/index.d.ts",
   "main": "dist/nutui.js",
   "files": [
@@ -24,8 +24,8 @@
     "build": "npm run build:prod && npm run build:prodmin && npm run build:disp",
     "eslint": "eslint src/packages/**/*.{js,vue}",
     "add": "node scripts/createCptTpl.js",
-    "test": "cross-env NODE_ENV=test  mocha-webpack --webpack-config build/webpack.test.conf.js --require test/setup.js src/packages/*/__test__/**.spec.js",
-    "cover": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text npm run test",
+    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text  mocha-webpack --webpack-config build/webpack.test.conf.js --require test/setup.js src/packages/*/__test__/**.spec.js",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "test:watch": "npm run test --watch"
   },
   "repository": {
@@ -63,6 +63,7 @@
     "@babel/core": "7.1.2",
     "@babel/plugin-syntax-dynamic-import": "7.0.0",
     "@babel/plugin-transform-runtime": "7.1.0",
+    "istanbul-instrumenter-loader": "^3.0.1",
     "@babel/preset-env": "7.1.0",
     "@nutui/carefree": "^0.4.0",
     "@tweenjs/tween.js": "17.2.0",
@@ -82,6 +83,7 @@
     "chalk": "2.4.1",
     "copy": "0.3.2",
     "copy-webpack-plugin": "4.5.4",
+    "coveralls": "^3.0.2",
     "cross-env": "5.2.0",
     "css-loader": "1.0.0",
     "eslint": "4.19.1",

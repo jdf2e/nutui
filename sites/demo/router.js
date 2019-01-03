@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Conf from '../../src/config.json';
+import { packages } from '../../src/config.json';
 import vueg from 'vueg';
 import 'vueg/css/transition-min.css';
 
@@ -30,7 +30,7 @@ const routes = [
 ];
 
 //组件示例页面
-Conf.packages.map(item => {
+packages.map(item => {
   if (item.showDemo === false) return;
   const pkgName =  item.name.toLowerCase();
   routes.push({

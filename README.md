@@ -1,5 +1,5 @@
 # NutUI 2
-![npm version](https://img.shields.io/npm/v/@nutui/nutui.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=v2)](https://github.com/jdf2e/nutui/)
+![npm version](https://img.shields.io/npm/v/@nutui/nutui.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=v2)](https://github.com/jdf2e/nutui/) [![Coverage Status](https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=v2)](https://coveralls.io/github/jdf2e/nutui?branch=v2) ![license](https://img.shields.io/npm/l/@nutui/nutui.svg)
  
 一套移动端轻量级Vue组件库
     
@@ -17,9 +17,9 @@
 * 支持多语言（国际化）
 * 支持 TypeScript
 * 支持服务端渲染（Vue SSR）
-* 配套有基于Webpack的构建工具，可快速创建已内置本组件库的Vue工程
+* 配套有基于Webpack的构建工具，可快速创建已内置本组件库的Vue工程 
 
-> 如需使用 1.x 版本，请指定版本号，如：  `npm i @nutui/nutui@1.3.2 -S`
+> 如需使用 1.x 版本，安装时请指定版本号，如：  `npm i @nutui/nutui@1.3.2 -S`
 
 ## 支持环境
 
@@ -33,9 +33,17 @@
 
 > 你还可以订阅： https://github.com/jdf2e/nutui/releases.atom 来获得稳定版发布的通知。
 
+## 示例
+
+![npm version](http://img13.360buyimg.com/uba/s300x300_jfs/t1/14144/37/3433/5890/5c26d976E7cd98b80/94583409233081cc.jpg)
+
 ## 安装使用
 
-具体安装使用方法请参考 NutUI 官网 http://nutui.jd.com
+具体安装使用方法请参考 NutUI 官网 
+
+http://nutui.jd.com
+
+文档：[2.X](http://nutui.jd.com/default.html#/start) | [1.X](http://nutui.jd.com/1x/index.html#/intro)
 
 ## 链接
 * [意见反馈](https://github.com/jdf2e/nutui/issues)
