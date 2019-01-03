@@ -142,7 +142,7 @@ export default {
     li {
     height: 40px;
     line-height: 40px;
-
+    font-size:12px;
     a {
         display: inline-block;
         box-sizing: border-box;

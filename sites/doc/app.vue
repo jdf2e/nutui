@@ -286,7 +286,7 @@ export default {
       li {
         height: 40px;
         line-height: 40px;
-
+        font-size:14px;
         a {
           display: inline-block;
           box-sizing: border-box;
