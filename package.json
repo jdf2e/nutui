@@ -24,7 +24,8 @@
     "build": "npm run build:prod && npm run build:prodmin && npm run build:disp",
     "eslint": "eslint src/packages/**/*.{js,vue}",
     "add": "node scripts/createCptTpl.js",
-    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha-webpack --webpack-config build/webpack.test.conf.js --require test/setup.js src/packages/*/__test__/**.spec.js"
+    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha-webpack --webpack-config build/webpack.test.conf.js --require test/setup.js src/packages/*/__test__/**.spec.js",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -78,6 +79,7 @@
     "chalk": "2.4.1",
     "copy": "0.3.2",
     "copy-webpack-plugin": "4.5.4",
+    "coveralls": "^3.0.2",
     "cross-env": "5.2.0",
     "css-loader": "1.0.0",
     "eslint": "4.19.1",

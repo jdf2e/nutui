@@ -6,13 +6,13 @@
   <div class="md-swaper" @click="clearSearch" v-else>
     <div class="hder">
       <div class="logo">
-        <a href="default.html#/index" class="logo-link"><img src="./asset/css/i/nut.png" alt></a> <span class="version">{{version}}</span>
+        <a href="#/index" class="logo-link"><img src="./asset/css/i/nut.png" alt></a> <span class="version">{{version}}</span>
       </div>
       <div class="h-nav">
         <search/>
         <ul class="list">
           <li class="cur">
-            <a href="default.html#/doc">指南</a>
+            <a href="#/doc">指南</a>
           </li>        
           <li>
             <a class="qrcode demoLink" href="/demo.html#/index" target="_blank">示例             
