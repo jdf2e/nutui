@@ -33,6 +33,10 @@
 
 > 你还可以订阅： https://github.com/jdf2e/nutui/releases.atom 来获得稳定版发布的通知。
 
+## 示例
+
+![扫码体验]（http://img13.360buyimg.com/uba/s320x320_jfs/t1/14144/37/3433/5890/5c26d976E7cd98b80/94583409233081cc.jpg）
+
 ## 安装使用
 
 具体安装使用方法请参考 NutUI 官网 http://nutui.jd.com
