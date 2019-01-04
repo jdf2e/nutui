@@ -2,57 +2,57 @@
     <div class="demo-list">
         <h4>基本用法</h4>
         <div>
-            <nut-cell :showIcon="true" @click.native="textToast1('我只传了文案一个参数')">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="textToast1('我只传了文案一个参数')">
                 <span slot="title"><label>只传文案</label></span>
             </nut-cell>
-            <nut-cell :showIcon="true" @click.native="textToast2('我传了文案和显示时长两个参数，多行文字默认居中展示',5000)">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="textToast2('我传了文案和显示时长两个参数，多行文字默认居中展示',5000)">
                 <span slot="title"><label>设置显示时长</label></span>
             </nut-cell>
-            <nut-cell :showIcon="true" @click.native="sucToast('操作成功')">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="sucToast('操作成功')">
                 <span slot="title"><label>Success</label></span>
             </nut-cell>
-            <nut-cell :showIcon="true" @click.native="failToast('操作失败')">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="failToast('操作失败')">
                 <span slot="title"><label>Fail</label></span>
             </nut-cell>
-            <nut-cell :showIcon="true" @click.native="warnToast('操作警告')">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="warnToast('操作警告')">
                 <span slot="title"><label>Warn</label></span>
             </nut-cell>
         </div>
         <h4>加载提示</h4>
         <div>
-            <nut-cell :showIcon="true" @click.native="showLoading()">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="showLoading()">
                 <span slot="title"><label>Loading</label></span>
                 <span slot="desc">默认不自动消失</span>
             </nut-cell>
-            <nut-cell :showIcon="true" @click.native="hideLoading()">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="hideLoading()">
                 <span slot="title"><label>隐藏Loading</label></span>
                 <span slot="desc">点击手动隐藏上面的Loading</span>
             </nut-cell>
-            <nut-cell :showIcon="true" @click.native="showLoading2()">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="showLoading2()">
                 <span slot="title"><label>Loading</label></span>
                 <span slot="desc">带文案+自动消失</span>
             </nut-cell>
         </div>
         <h4>自定义样式</h4>
         <div>
-            <nut-cell :showIcon="true" @click.native="cusBgToast('我修改了背景色和透明度')">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="cusBgToast('我修改了背景色和透明度')">
                 <span slot="title"><label>自定义背景色和透明度</label></span>
             </nut-cell>
-            <nut-cell :showIcon="true" @click.native="cusClassToast('我增加了一个名为 my-class 自定义class')">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="cusClassToast('我有一个名为 my-class 自定义class')">
                 <span slot="title"><label>自定义class</label></span>
             </nut-cell>
-            <nut-cell :showIcon="true" @click.native="cusIconToast('自定义Icon')">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="cusIconToast('自定义Icon')">
                 <span slot="title"><label>自定义Icon</label></span>
             </nut-cell>
         </div>
-        <h4>共享实例</h4>
-        <p>id相同时，将共享一个实例，新的内容和设置将取代旧的，二者不能同时出现。loading类型默认拥有相同id，即共享一个实例，其他类型默认不共享。</p>
+        <h4>不共享实例</h4>
+        <p>如果不指定id，多个Toast默认将共享一个实例（loading类型与其他类型实例不共享），新的内容和设置将取代旧的，多个Toast不能同时出现。如果不需要共享实例，可以给其设置id。例如，以下两个栗子分别设置了不同id，它们可以同时出现。</p>
         <div>
-            <nut-cell :showIcon="true" @click.native="idToast1('我设置了id为123')">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="idToast1('我设置了id为123')">
                 <span slot="title"><label>我设置了id为123</label></span>
             </nut-cell>
-            <nut-cell :showIcon="true" @click.native="idToast2('我也设置了id，值也是123')">
-                <span slot="title"><label>我也设置了id，值也是123</label></span>
+            <nut-cell :showIcon="true" :isLink="true" @click.native="idToast2('我设置了id为321')">
+                <span slot="title"><label>我设置了id为321</label></span>
             </nut-cell>
         </div>
     </div>
@@ -96,7 +96,7 @@ export default {
       this.loading2 = this.$toast.loading('加载中...',{duration:3000});
     },
     cusBgToast(msg){
-      this.$toast.text(msg,{bgColor:'rgba(50, 50, 50, 0.9)'});
+      this.$toast.text(msg,{bgColor:'rgba(50, 50, 50, 0.6)'});
     },
     cusClassToast(msg) {
       this.$toast.text(msg,{customClass:'my-class'});
@@ -108,7 +108,7 @@ export default {
       this.$toast.success(msg,{id:123});
     },
     idToast2(msg){
-      this.$toast.text(msg,{id:123,duration:4000});
+      this.$toast.text(msg,{id:321,duration:4000});
     }
   }
 };

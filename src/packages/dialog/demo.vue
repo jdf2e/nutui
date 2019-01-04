@@ -89,9 +89,9 @@ export default {
     },
     showDialog5: function() {
       const options = {
-        okBtnTxt: 'qwe',
-        title: "自定义Dialog标题",
-        content: "小屏或移动端浏览效果最佳",
+        okBtnTxt: '好 的',
+        title: "事件",
+        content: "点击按钮触发事件",
         closeBtn:true,
         onOkBtn(event) {
           alert("okBtn");

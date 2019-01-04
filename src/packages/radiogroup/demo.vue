@@ -1,6 +1,8 @@
 <template>
     <div>
-      <nut-radiogroup :groupData="myData">
+      <nut-radiogroup>
+          <nut-radio label="禁用">备选项1</nut-radio>
+          <nut-radio label="禁用2">备选项2</nut-radio>
       </nut-radiogroup>
     </div>
 </template>
