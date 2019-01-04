@@ -52,15 +52,6 @@ export default {
     methods: {
         closeItem:function(value,e){
             this.$emit('delete-tabs',value); 
-            /*if ( e && e.preventDefault ) {
-                e.preventDefault();
-                e.stopPropagation(); 
-            }  
-            else {
-                 window.event.cancelBubble = true; 
-                 window.event.returnValue = false;
-            }
-            return false; */
         },
         switchTabs:function(value,index){
             let newArr = [...this.tabList];
