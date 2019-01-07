@@ -61,7 +61,7 @@ export default {
         bgStyle () {
             const style = {};
             style.width = this.percentage + '%';
-            style.backgroundColor = this.strokeColor;
+            style.backgroundColor = this.strokeColor || '';
             return style;
         },
         statusIcon () {

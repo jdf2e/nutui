@@ -36,11 +36,7 @@
 </template>
 
 <script>
-import Button from './../button/button.vue';
 export default {
-  components: {
-    'nut-button': Button
-  },
   data() {
     return {
     };

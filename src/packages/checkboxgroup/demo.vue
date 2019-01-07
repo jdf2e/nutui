@@ -68,17 +68,7 @@
 </template>
 
 <script>
-import nutcell from "../cell/cell.vue";
-import nutcheckboxgroup from "./checkboxgroup.vue";
-import "../cell/cell.scss";
-import "./checkboxgroup.scss";
-
-
 export default {
-    components: {
-        [nutcell.name]: nutcell,
-        [nutcheckboxgroup.name]:nutcheckboxgroup
-    },
     data() {
         return {
             result:'',

@@ -34,6 +34,12 @@
                 right:0;
                 bottom:0;
                 margin:auto;
+                width:20px;
+                height:20px;
+                color:$primary-color;
+                svg{
+                    fill:currentColor;
+                }
             }
             input[type="file"]{
                 position: absolute;

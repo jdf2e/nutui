@@ -42,13 +42,7 @@
 </template>
 
 <script>
-import nutcell from "../cell/cell.vue";
-import nutrating from "./rating.vue";
 export default {
-    components: {
-        [nutcell.name]: nutcell,
-        [nutrating.name]: nutrating,
-    },
     data(){
         return{
             val:4,

@@ -111,15 +111,7 @@
 </template>
 
 <script>
-import nutcell from "../cell/cell.vue";
-import nutdatepicker from "../datepicker/datepicker.vue";
-import "../cell/cell.scss";
-import "../datepicker/datepicker.scss";
 export default {
-    components: {
-        [nutcell.name]: nutcell,
-        [nutdatepicker.name]: nutdatepicker
-    },
     data() {
         return {
             isVisible: false,

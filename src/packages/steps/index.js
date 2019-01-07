@@ -14,4 +14,4 @@ Step.install = function (Vue) {
 export default {
   Steps,
   Step
-}
+};

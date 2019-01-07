@@ -22,7 +22,7 @@ module.exports = merge(webpackBaseConf, {
     module: {
         rules: [
             //自定义主题
-            /*{
+            {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
                     {
@@ -32,7 +32,7 @@ module.exports = merge(webpackBaseConf, {
                         },
                     }
                 ],
-            }*/
+            }
         ]
     },
     plugins: [

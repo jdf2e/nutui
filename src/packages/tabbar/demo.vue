@@ -11,11 +11,7 @@
 </template>
 
 <script>
-	import tabbar from "./tabbar.vue";
-  export default {
-  components: {
-    [tabbar.name]: tabbar,
-  },
+export default {
   data() {
     return {
       tabList1:[
