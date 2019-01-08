@@ -11,7 +11,7 @@
                      {{percentage}}%
                 </template>
                 <template v-else-if="status=='success' || 'wrong'">
-                    <icon :class="statusIcon"></icon>
+                    <i :class="statusIcon"></i>
                 </template>
             </slot>
         </div>
