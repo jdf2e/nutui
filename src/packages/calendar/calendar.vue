@@ -2,7 +2,7 @@
     <transition :name="animation">
         <div class="nut-calendar" v-show="isVisible">
             <div class="nut-calendar-control">
-                <span class="nut-calendar-confirm-btn" @click="confirm" v-if="(type == 'range' && currDate && currDate.length == 2) || type != 'change'">{{nutTranslate('lang.okBtnTxt')}}</span>
+                <span class="nut-calendar-confirm-btn" @click="confirm" v-if="(type == 'range' && currDate && currDate.length == 2) || type != 'range'">{{nutTranslate('lang.okBtnTxt')}}</span>
                 <span class="nut-calendar-cancel-btn"  @click="closeActionSheet">{{nutTranslate('lang.cancelText')}}</span>
                 <div class="nut-calendar-title">{{title || nutTranslate('lang.calendar.title')}}</div>
                 <div class="nut-calendar-week">
