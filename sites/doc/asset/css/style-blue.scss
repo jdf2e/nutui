@@ -4,20 +4,20 @@
     h1 {
         font-size: 28px;
         font-weight: 700;
-        margin:10px 0;
+        margin: 10px 0;
         color: #333333;
     }
     p {
         font-size: 14px;
-        margin:10px 0;
+        margin: 10px 0;
     }
     h1+p,
     h1+p+p,
     h1+p+p {
         color: #333333;
-    } 
+    }
     h2 {
-        margin:30px 0 15px;
+        margin: 30px 0 15px;
         font-size: 22px;
         font-weight: 400;
         color: #333333;
@@ -25,8 +25,9 @@
     h2+p,
     h2+p+p {
         color: #3F4449;
-    } 
+    }
     h3 {
+        margin: 20px 0 10px;
         font-size: 18px;
         font-weight: 400;
         color: #333333;
@@ -34,11 +35,11 @@
     h3+p,
     h3+p+p {
         color: #3F4449;
-    } 
+    }
     h4 {
         font-size: 14px;
         font-weight: normal;
-        margin:15px 0;
+        margin: 15px 0;
         color: #666666;
     }
     h4+p,
@@ -48,8 +49,7 @@
     }
     h4+p::nth-child(n) {
         color: #666666;
-    } 
-
+    }
     blockquote {
         padding: 0;
         margin: 0;
@@ -68,22 +68,22 @@
             font-style: normal;
         }
     }
-    ul {       
+    ul {
         border-radius: 3px;
-        padding: 5px 20px;       
+        padding: 5px 20px;
         list-style: none;
-        p{
-            margin:0;
+        p {
+            margin: 0;
         }
-        ul{
-            margin:0;
-            padding:0;
+        ul {
+            margin: 0;
+            padding: 0;
         }
         li {
             font-size: 14px;
             color: #455A64;
             padding: 7px;
-            line-height: 20px;  
+            line-height: 20px;
             display: flex;
             align-items: center;
         }
@@ -101,7 +101,7 @@
         background: #F2F4F5;
         border-radius: 3px;
         padding: 13px 40px;
-        li {           
+        li {
             line-height: 20px;
             padding: 7px 0 0 10px;
             font-size: 14px;
@@ -110,8 +110,8 @@
     }
     ul,
     ol,
-    p,table
-     {
+    p,
+    table {
         em {
             color: #8cade9;
             font-style: normal;
@@ -167,10 +167,10 @@
         white-space: unset;
         word-break: break-all;
     }
-    a{
+    a {
         color: #5396ff;
         text-decoration: none;
-        &:hover{
+        &:hover {
             text-decoration: underline;
         }
     }
