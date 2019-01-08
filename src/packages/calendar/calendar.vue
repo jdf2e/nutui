@@ -2,7 +2,7 @@
     <transition :name="animation">
         <div class="nut-calendar" v-show="isVisible">
             <div class="nut-calendar-control">
-                <span class="nut-calendar-confirm-btn" @click="confirm" v-if="(type == 'change' && currDate && currDate.length == 2) || type != 'change'">{{nutTranslate('lang.okBtnTxt')}}</span>
+                <span class="nut-calendar-confirm-btn" @click="confirm" v-if="(type == 'range' && currDate && currDate.length == 2) || type != 'change'">{{nutTranslate('lang.okBtnTxt')}}</span>
                 <span class="nut-calendar-cancel-btn"  @click="closeActionSheet">{{nutTranslate('lang.cancelText')}}</span>
                 <div class="nut-calendar-title">{{title || nutTranslate('lang.calendar.title')}}</div>
                 <div class="nut-calendar-week">
@@ -44,7 +44,7 @@ export default {
         },
         animation: {
             type: String,
-            default: 'nutSlideRight'
+            default: 'nutSlideUp'
         },
         isAutoBackFill: {
             type: Boolean,
@@ -162,7 +162,7 @@ export default {
                     this.monthsData.push(monthInfo);
                 } else {
                     this.unLoadNext = true;
-                }
+                }   
             } else {
                 if (!this.startData || Utils.compareDate(`${this.startData[0]}-${this.startData[1]}-01`,`${curData[0]}-${curData[1]}-${curData[2]}`)) {
                     this.monthsData.unshift(monthInfo);
