@@ -34,7 +34,7 @@ export default {
 	      	default: ''
 	    },
 	    value:{
-	    	default: true
+	    	required:true
 	    },
 	    trueValue: {
             default: true
