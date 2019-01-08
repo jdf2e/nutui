@@ -10,7 +10,7 @@
 								background: mainColor
 							}">
 						</div>
-            <Movebar 
+            <nut-range-bar 
                 :initLeft="initLeft1" 
                 @getPos="getPosLeft"
                 :showLabelAlways="showLabelAlways"
@@ -18,7 +18,7 @@
                 :current="currentLeft"
                 :ani.sync="ani"
 								:mainColor="mainColor"/>
-            <Movebar 
+            <nut-range-bar 
                 :initLeft="initLeft2" 
                 @getPos="getPosRight"
                 :showLabelAlways="showLabelAlways"
@@ -51,7 +51,7 @@ function toRGBA(c, opacity) {
 export default {
   name: "nut-range",
   components: {
-    Movebar
+    [Movebar.name]: Movebar
   },
   props: {
     rangeValues: {
