@@ -4,6 +4,7 @@ import "core-js/modules/es6.array.iterator";
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
+import Conf from '../../src/config.json';
 import NutUI from '../../src/nutui';
 // import en from '../../src/locales/lang/en-US';
 // import demoEN from './lang/en-US';
@@ -49,8 +50,7 @@ const app = new Vue({
   template: '<App/>'
 })
 
-//Vue.prototype.NUTCONF = Conf;
-
+Vue.prototype.NUTCONF = Conf;
 
 let pageLoading = app.$toast.loading();
 

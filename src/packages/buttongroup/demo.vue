@@ -22,19 +22,7 @@
 </template>
 
 <script>
-
-import Button from './../button/button.vue';
-import ButtonGroup from './buttongroup.vue';
-import Badge from './../badge/badge.vue';
 export default {
-  components: {
-    'nut-button':  Button,
-    'nut-button-group': ButtonGroup,
-    'nut-badge': Badge
-  },
-  methods: {
-      
-  }
 };
 </script>
 

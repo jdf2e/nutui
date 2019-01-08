@@ -1,6 +1,7 @@
 <template>
     <div class="nut-radiogroup">
-        <nut-radio v-for="rdo in gData" :key="rdo.id" :label="rdo.label">{{rdo.text}}</nut-radio>
+        <slot></slot>
+        <!-- <nut-radio v-for="rdo in gData" :key="rdo.id" :label="rdo.label">{{rdo.text}}</nut-radio> -->
     </div>
 </template>
 <script>
@@ -22,6 +23,7 @@ export default {
     methods: {
     },
     mounted(){
+        console.log(1234,this);
     }
 }
 </script>

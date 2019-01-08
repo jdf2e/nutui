@@ -65,15 +65,7 @@
 </template>
 
 <script>
-import nutcell from "../cell/cell.vue";
-import nutcalendar from "../calendar/calendar.vue";
-import "../cell/cell.scss";
-import "../calendar/calendar.scss";
 export default {
-    components: {
-        [nutcell.name]: nutcell,
-        [nutcalendar.name]: nutcalendar
-    },
     data() {
         return {
             isVisible: false,

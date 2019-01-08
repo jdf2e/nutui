@@ -16,11 +16,7 @@
 </template>
 
 <script>
-import nutImagepicker from './imagepicker.vue';
 export default {
-  components: {
-    [nutImagepicker.name]:nutImagepicker
-  },
   data() {
     return {
       imgList1:[

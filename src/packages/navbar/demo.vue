@@ -24,11 +24,7 @@
 </template>
 
 <script>
-import nutNavBar from './navbar.vue';
 export default {
-  components: {
-    [nutNavBar.name]: nutNavBar
-  },
   data() {
     return {};
   },

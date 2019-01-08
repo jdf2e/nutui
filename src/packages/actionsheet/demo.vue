@@ -84,15 +84,7 @@
 </template>
 
 <script>
-import nutcell from "../cell/cell.vue";
-import nutactionsheet from "./actionsheet.vue";
-import "../cell/cell.scss";
-import "./actionsheet.scss";
 export default {
-    components: {
-        [nutcell.name]: nutcell,
-        [nutactionsheet.name]: nutactionsheet
-    },
     data() {
         return {
             sex: '请选择',

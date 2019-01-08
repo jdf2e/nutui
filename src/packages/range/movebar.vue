@@ -5,7 +5,7 @@
         @touchmove="onTouchMove"
         @touchend="onTouchEnd" 
         @click="onTouchEnd" 
-        :style="{'left': posi + 'px', border: '2px solid ' + mainColor, boxShadow: ani? '0 0 0 4px '+ subColor: ''}">
+        :style="{left: posi + 'px', borderColor: mainColor, boxShadow: ani? '0 0 0 4px '+ subColor: ''}">
         <span 
             :class="['nut-range-label', {'nut-range-label-always': showLabelAlways}]" 
             v-if="showLabel" :style="{background: mainColor}">

@@ -15,12 +15,7 @@
 </template>
 
 <script>
-import nutNoticeBar from './noticebar.vue';
-
 export default {
-  components: {
-    [nutNoticeBar.name]: nutNoticeBar
-  },
   methods:{
     hello() {
       console.log('hello world');

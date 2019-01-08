@@ -42,7 +42,6 @@ export default {
     return {}
   },
   mounted(){
-    
   },
   methods: {
     changeEvt(event) {

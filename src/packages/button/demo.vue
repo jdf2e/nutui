@@ -65,13 +65,7 @@
 </template>
 
 <script>
-import Button from './button.vue';
-import ButtonGroup from './../buttongroup/buttongroup.vue';
 export default {
-  components: {
-    'nut-button': Button,
-    'nut-button-group': ButtonGroup
-  },
   methods: {
       clickHandler() {
         alert('我点击了按钮');
@@ -91,5 +85,4 @@ export default {
   padding: 10px;
   background: #fff;
 }
-
 </style>
