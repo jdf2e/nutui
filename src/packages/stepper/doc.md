@@ -56,10 +56,10 @@
 
 | 字段 | 说明 | 类型 | 默认值 
 | ----- | ----- | ----- | ----- 
-| init | 初始值 | Number | 1
+| init | 初始值 | Number, String | 1
 | min | 最小值 | Number, String | 0
 | max | 最大值 | Number, String | Infinity
-| step | 步长 | Number | 1
+| step | 步长 | Number, String | 1
 | readonly | 是否只读 | Boolean | false
 | transition | 是否需要过渡效果 | Boolean | true
 | simple | 是否显示简单版 | Boolean | true

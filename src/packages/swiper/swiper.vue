@@ -305,9 +305,7 @@ export default {
             let requestAniFrame = this._requestAniFrame();
             let imgLazyLoadEl;
             requestAniFrame(()=>{
-                console.log(232323);
                 imgLazyLoadEl = this.swiperWrap.querySelectorAll('.nut-img-lazyload');
-                console.log(imgLazyLoadEl);
                 if(type == 1){
                     imgLazyLoadEl = this.slideEls[this.currentPage - 1].querySelectorAll('.nut-img-lazyload');
                 }
