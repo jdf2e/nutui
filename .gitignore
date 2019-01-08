@@ -5,3 +5,7 @@ yarn-error.log
 package-lock.json
 src/nutui-custom.js
 custom.json
+.nyc_output/
+coverage/
+dist/
+sites/
