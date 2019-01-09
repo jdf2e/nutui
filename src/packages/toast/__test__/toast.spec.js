@@ -42,7 +42,7 @@ describe('Toast.vue', () => {
 
     it('图标', () => {
         wrapper.setData({ msg: '测试文案', visible: true, type:'success' });
-        
+
         return Vue.nextTick().then(function () {
             expect(wrapper.contains('.nut-toast-has-icon')).toBe(true);
         })
