@@ -330,6 +330,16 @@
       "author": "Frans"
     },
     {
+      "name": "RadioGroup",
+      "version": "1.0.0",
+      "sort": "1",
+      "chnName": "单选按钮组",
+      "type": "component",
+      "showDemo": false,
+      "desc": "单选按钮组",
+      "author": "Frans"
+    },
+    {
       "version": "1.0.0",
       "name": "CheckBox",
       "sort": "1",

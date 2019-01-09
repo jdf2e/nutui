@@ -6,4 +6,4 @@ Radio.install = function(Vue) {
 };
 
 
-export default Radio
+export default Radio;
