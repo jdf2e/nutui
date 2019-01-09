@@ -81,8 +81,8 @@ describe('Tab.vue', () => {
     });
     it('点击tab标签', () => {
     	return Vue.nextTick().then(function () {
-            wrapper.findAll('.nut-title-nav-list').at(0).trigger('click');
-            expect(wrapper.findAll('.nut-title-nav-list').at(0).is('.nut-tab-active')).toBe(true)
+            wrapper.findAll('.nut-title-nav-list').at(1).trigger('click');
+            expect(wrapper.findAll('.nut-title-nav-list').at(1).is('.nut-tab-active')).toBe(true)
       })
         
     });
