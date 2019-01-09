@@ -123,7 +123,7 @@ export default {
                 let slot = [...this.$slots.default];
                 this.tabTitleList = [];
                 this.initTab(slot); 
-            },0);
+            },50);    
         }
     },
     computed:{
@@ -139,8 +139,9 @@ export default {
         },
     },
     mounted() {
-        let slot = [...this.$slots.default];
-        this.initTab(slot);   
+        this.$nextTick(()=>{
+            this.$slots.default && this.initTab(this.$slots.default); 
+        })     
     },
     methods: {
         closeItem:function(value){
