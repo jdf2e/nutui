@@ -1,4 +1,5 @@
-import { version, packages } from './config.json';
+import { version } from '../package.json';
+import { packages } from './config.json';
 import { locale } from './locales';
 
 const components = {};
@@ -69,7 +70,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 // }, components, filters, directives, methods);
 
 const API = {
-    version: version,
+    version,
     locale,
     install,
     ...components,

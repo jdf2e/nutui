@@ -10,10 +10,10 @@
       </div>
 
       <h4>常规按钮组</h4>
-      <nut-button-group>
+      <nut-buttongroup>
         <nut-button type="light">重置</nut-button>
         <nut-button>确定</nut-button>
-      </nut-button-group>
+      </nut-buttongroup>
 
       <h4>通栏按钮</h4>
       <div>
@@ -65,13 +65,7 @@
 </template>
 
 <script>
-import Button from './button.vue';
-import ButtonGroup from './../buttongroup/buttongroup.vue';
 export default {
-  components: {
-    'nut-button': Button,
-    'nut-button-group': ButtonGroup
-  },
   methods: {
       clickHandler() {
         alert('我点击了按钮');
@@ -91,5 +85,4 @@ export default {
   padding: 10px;
   background: #fff;
 }
-
 </style>

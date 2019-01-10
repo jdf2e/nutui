@@ -5,6 +5,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const moment = require('moment');
 const isDev = process.env.NODE_ENV === 'development';
 var test = process.env.NODE_ENV === 'test';
+const path = require('path');
 module.exports = {
     stats: {
         entrypoints: false,
@@ -18,8 +19,14 @@ module.exports = {
     },
     module: {
         rules: [
-            test ? { test: /\.css$/, loader: 'style!css' } : {},
+            test ? {
+                test: /\.(js|ts)/,
+                include: path.resolve('src'), // instrument only testing sources with Istanbul, after ts-loader runs
+                loader: 'istanbul-instrumenter-loader'
+            }: {},
+            test ? { test: /\.css$/, use: [{loader: 'style!css'}] } : {},
             test ? { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' } : {},
+            test ? { test: /\.scss$/, use: [{loader: 'sass-loader', options:{data: `@import "./src/styles/index.scss"; `,} }]} : {},
             !test ?{
                 test: /\.(sa|sc|c)ss$/,
                 use: [

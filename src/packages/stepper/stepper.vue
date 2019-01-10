@@ -48,7 +48,7 @@ export default {
             default: true,
         },
         init: {
-            type: Number,
+            type: [Number, String],
             default: 1,
         },
         min: {
@@ -60,7 +60,7 @@ export default {
             default: Infinity,
         },
         step: {
-            type: Number,
+            type: [Number, String],
             default: 1
         },
         readonly: {

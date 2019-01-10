@@ -10,7 +10,7 @@
             <div class="nut-menu-panel" v-show="isVisible">
                 <div class="menu-simple" v-if="type === 'simple' && !$slots.custom">
                     <ul>
-                        <li v-for="(item,index) in list" :key="index" :class="item.selected ? 'selected' : ''" @click="selectedItem(item,index)">
+                        <li v-for="(item,index) in datalist" :key="index" :class="item.selected ? 'selected' : ''" @click="selectedItem(item,index)">
                             {{item.text}}
                             <span v-if="item.selected"><nut-icon type="tick" color="#f0250f"></nut-icon></span>
                         </li>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="menu-multiple-style1" v-if="type === 'multiple' && mulstyle === 'style1'" >
                     <ul>
-                        <li v-for="(item,index) in list" :key="index" :class="{selected:item.selected ? true : false,col2:col == 2 ? true : false,col3:col == 3 ? true : false}" @click="selectMutiple(index)">
+                        <li v-for="(item,index) in datalist" :key="index" :class="{selected:item.selected ? true : false,col2:col == 2 ? true : false,col3:col == 3 ? true : false}" @click="selectMutiple(index)">
                             <nut-checkbox v-model="item.selected" size="small" :disabled="!item.selected && max <= list.filter(value => value.selected == true).length ? true : false">{{item.text}}</nut-checkbox>
                         </li>
                     </ul>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="menu-multiple-style2" v-if="type === 'multiple' && mulstyle === 'style2'">
                     <ul>
-                        <li v-for="(item,index) in list" :key="index" :class="{selected:item.selected ? true : false,col2:col == 2 ? true : false,col3:col == 3 ? true : false}" @click="selectMutiple(index)">
+                        <li v-for="(item,index) in datalist" :key="index" :class="{selected:item.selected ? true : false,col2:col == 2 ? true : false,col3:col == 3 ? true : false}" @click="selectMutiple(index)">
                             <a href="javascript:void(0);">{{item.text}}</a>
                         </li>
                     </ul>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="menu-multiple-style3" v-if="type === 'multiple' && mulstyle === 'style3'">
                     <ul>
-                        <li v-for="(item,index) in list" :key="index" :class="{selected:item.selected ? true : false,col2:col == 2 ? true : false,col3:col == 3 ? true : false}" @click="selectMutiple(index)">
+                        <li v-for="(item,index) in datalist" :key="index" :class="{selected:item.selected ? true : false,col2:col == 2 ? true : false,col3:col == 3 ? true : false}" @click="selectMutiple(index)">
                             <label>{{item.text}}</label>
                         </li>
                     </ul>
@@ -60,6 +60,7 @@
 import CheckBox from '../checkbox/checkbox.vue';
 import Button from '../button/button.vue';
 import ButtonGroup from '../buttongroup/buttongroup.vue';
+import Icon from '../icon/icon.vue';
 import locale from "../../mixins/locale";
 export default {
     name:'nut-menu',
@@ -67,7 +68,8 @@ export default {
     components:{
         'nut-button':  Button,
         'nut-button-group': ButtonGroup,
-        'nut-checkbox':CheckBox
+        'nut-checkbox':CheckBox,
+        'nut-icon':Icon
     },
     props: {
         isAnimation:{//是否有动画效果
@@ -93,6 +95,10 @@ export default {
         max:{
             type:[String,Number],
             default:5
+        },
+        custom:{
+            type:String,
+            default:""
         },
         list:{
             type:Array,

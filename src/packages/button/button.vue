@@ -1,5 +1,5 @@
 <template>
-    <button :class="btnCls" :disabled="disabled" @click="clickHandler">
+    <button :class="clsStyle" :disabled="disabled" @click="clickHandler">
         <nut-icon class="txt-icon" v-if="icon != ''" :type="icon" :color="this.color"></nut-icon>
         <span :style="{color:this.color}"><slot></slot></span>
     </button>
@@ -41,31 +41,24 @@ export default {
     components: {
         'nut-icon': Icon
     },
-    data() {
-        return {
-            btnCls: ''
-        };
-    },
-    mounted() {
-        this.initStyle();
-        this.initIcon();
-    },
-    methods: {
-        initStyle() {
-            this.btnCls = `nut-button ${this.type} ${this.shape}`;
-            this.btnCls += this.small ? ' small': '';
-            this.btnCls += this.block ? ' block': '';
-            this.btnCls += this.label ? ' label': '';
-        },
-        initIcon() {
+    computed: {
+        clsStyle() {
+            let cls = 'nut-button ';
+            cls += `${this.type} ${this.shape}`;
+            cls += this.small ? ' small': '';
+            cls += this.block ? ' block': '';
+            cls += this.label ? ' label': '';
             if(!this.$slots.default) {
                 if(this.small) {
-                    this.btnCls += ' no-txt-small';
+                    cls += ' no-txt-small';
                 }else {
-                    this.btnCls += ' no-txt';
+                    cls += ' no-txt';
                 }
-            }            
-        },
+            }
+            return cls;
+        }
+    },
+    methods: {
         clickHandler() {
             this.$emit('click');
         }

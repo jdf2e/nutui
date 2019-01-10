@@ -5,9 +5,11 @@ import Vue from 'vue';
 
 describe('Checkbox.vue', () => {
     const wrapper = shallowMount(Checkbox, {
-
+        propsData:{
+            value:true
+        }
     });
-
+    
     it('尺寸设置为base', () => {
         wrapper.setProps({ size: 'base' });
 

@@ -21,7 +21,6 @@ import 'highlight.js/styles/github.css';
 //import prettify from 'google-code-prettify/src/prettify';
 //import  'google-code-prettify/src/prettify.css';
 //import  'google-code-prettify/styles/sunburst.css';
-import Conf from '../../src/config.json';
  //import qrcode from './qrcode/index.js';
 import codes from 'qrcode';
  //import NutUI from '../../src/nutui.js';
@@ -37,6 +36,7 @@ new Vue({
   router,
   components: { App },
   template: '<App/>'
-})
-Vue.prototype.NUTCONF = Conf;
+});
+
+//Vue.prototype.NUTCONF = Conf;
 

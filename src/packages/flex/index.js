@@ -4,6 +4,7 @@ import './flex.scss';
 Row.install = function(Vue) {
   Vue.component(Flex.name, Row);
 };
+
 Col.install = function(Vue) {
   Vue.component(Flex.name, Col);
 };
@@ -11,4 +12,4 @@ Col.install = function(Vue) {
 export default {
 	Row,
 	Col
-}
+};

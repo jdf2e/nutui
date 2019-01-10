@@ -123,7 +123,7 @@ export default {
                 let slot = [...this.$slots.default];
                 this.tabTitleList = [];
                 this.initTab(slot); 
-            },0);
+            },50);    
         }
     },
     computed:{
@@ -139,8 +139,9 @@ export default {
         },
     },
     mounted() {
-        let slot = [...this.$slots.default];
-        this.initTab(slot);   
+        this.$nextTick(()=>{
+            this.$slots.default && this.initTab(this.$slots.default); 
+        })     
     },
     methods: {
         closeItem:function(value){
@@ -229,13 +230,14 @@ export default {
         },
         switchTab:function(index,event,disable){
             if(!disable && event.target.className.indexOf('nut-title-nav')!==-1){
+                this.activeIndex=index;
                 this.initX= parseInt(this.navWidth * index);
                 let nutTab = event.target.parentNode.parentNode;
                 let items =  this.positionNav=='bottom' || this.positionNav=='right' ?nutTab.children[0].children : nutTab.children[1].children;
                 for(let i=0;i<items.length;i++){
-                    if(i===index){
+                    if(i==index){
                         this.removeClass(items[i],'hide');
-                        this.activeIndex=index;
+                        
                     }else{
                         this.addClass(items[i],'hide');
                     }

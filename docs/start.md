@@ -20,11 +20,22 @@ yarn add @nutui/nutui
 
 > 默认安装最新版，如需使用 1.x 版本，请指定版本号，如：  `npm i @nutui/nutui@1.3.2 -S`
 
-#### 浏览器引入
+#### 页面引入
 
-在浏览器中使用 script 和 link 标签直接引入文件，并使用全局变量 nutui。我们在 npm 发布包内的 dist 目录下提供了 **nutui.js** **nutui.css** 以及 **nutui.min.js** **nutui.min.css**。
+在页面中使用 script 和 link 标签直接引入文件，并使用全局变量 nutui。我们在 npm 发布包内的 dist 目录下提供了 **nutui.js** **nutui.css** 以及 **nutui.min.js** **nutui.min.css**。
 
-> 我们推荐使用 *NPM* 或 *YARN* 方式安装，不推荐浏览器中直接引入的用法
+当然你也可以通过CDN的方式引入。
+
+```html
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.css">
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<!-- 引入组件库 -->
+<script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.js"></script>
+```
+
+> 在页面中直接引入，将无法使用 **主题换肤** 等功能。我们推荐使用 *NPM* 或 *YARN* 方式安装，不推荐在页面中直接引入的用法
 
 ## 加载示例
 
@@ -91,6 +102,9 @@ Button.install(Vue);
 ```html
 <nut-switch :active="true" size="base"></nut-switch>
 ```
-2.组件具体用法以文档为准
 
-3.组件使用过程中如有问题或建议，欢迎[反馈](https://github.com/jdf2e/nutui/issues)
+2.组件 css 单位使用的是 **px**，如果你的项目中需要 **rem** 单位，可借助一些工具进行转换，比如 webpack 的 [px2rem-loader](https://www.npmjs.com/package/px2rem-loader)、postcss 的 [postcss-plugin-px2rem](https://www.npmjs.com/package/postcss-plugin-px2rem) 插件
+
+3.组件具体用法以文档为准
+
+4.组件使用过程中如有问题或建议，欢迎[反馈](https://github.com/jdf2e/nutui/issues)

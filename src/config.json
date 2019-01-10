@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1",
+  "version": "2.0.0",
   "sorts": [
     "数据展示",
     "数据录入",
@@ -9,26 +9,6 @@
     "基础组件"
   ],
   "packages": [
-    {
-      "name": "Switch",
-      "version": "1.0.0",
-      "sort": "1",
-      "chnName": "开关",
-      "type": "component",
-      "showDemo": true,
-      "desc": "一种滑动开关，通过点击使按钮左右滑动，同时触发对应的开关状态",
-      "author": "Frans"
-    },
-    {
-      "name": "Radio",
-      "version": "1.0.0",
-      "sort": "1",
-      "chnName": "单选按钮",
-      "type": "component",
-      "showDemo": true,
-      "desc": "单选按钮，可组合成单选按钮组",
-      "author": "Frans"
-    },
     {
       "name": "Cell",
       "version": "1.0.0",
@@ -81,16 +61,6 @@
     },
     {
       "version": "1.0.0",
-      "name": "CheckBox",
-      "sort": "1",
-      "chnName": "复选按钮",
-      "desc": "复选多个选项",
-      "type": "component",
-      "showDemo": true,
-      "author": "Vicky.Ye"
-    },
-    {
-      "version": "1.0.0",
       "name": "Tab",
       "sort": "3",
       "chnName": "选项卡",
@@ -131,20 +101,20 @@
     },
     {
       "version": "1.0.0",
-      "name": "Price",
-      "sort": "0",
-      "chnName": "商品价格",
-      "desc": "商品价格组件，支持小数点前后应用不同样式、千位分隔、人民币符号等功能",
-      "type": "component",
-      "showDemo": true,
-      "author": "liaoyanli5"
-    },
-    {
-      "version": "1.0.0",
       "name": "DatePicker",
       "sort": "1",
       "chnName": "日期选择",
       "desc": "日期选择",
+      "type": "component",
+      "showDemo": true,
+      "author": "iris"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Calendar",
+      "sort": "1",
+      "chnName": "日历",
+      "desc": "日历",
       "type": "component",
       "showDemo": true,
       "author": "iris"
@@ -201,13 +171,13 @@
     },
     {
       "version": "1.0.0",
-      "name": "CheckBoxGroup",
-      "sort": "1",
-      "chnName": "复选按钮组",
-      "desc": "成组出现的复选按钮组件",
+      "name": "Price",
+      "sort": "0",
+      "chnName": "商品价格",
+      "desc": "商品价格组件，支持小数点前后应用不同样式、千位分隔、人民币符号等功能",
       "type": "component",
       "showDemo": true,
-      "author": "Vicky.Ye"
+      "author": "liaoyanli5"
     },
     {
       "version": "1.0.0",
@@ -271,16 +241,6 @@
     },
     {
       "version": "1.0.0",
-      "name": "Calendar",
-      "sort": "1",
-      "chnName": "日历",
-      "desc": "日历",
-      "type": "component",
-      "showDemo": true,
-      "author": "iris"
-    },
-    {
-      "version": "1.0.0",
       "name": "Rating",
       "sort": "1",
       "chnName": "评分",
@@ -298,16 +258,6 @@
       "type": "component",
       "showDemo": true,
       "author": "wangnan31"
-    },
-    {
-      "version": "1.0.0",
-      "name": "ImagePicker",
-      "sort": "1",
-      "chnName": "图片选择器",
-      "desc": "图片选择器",
-      "type": "component",
-      "showDemo": true,
-      "author": "苏子刚"
     },
     {
       "version": "1.0.0",
@@ -348,6 +298,66 @@
       "sort": "1",
       "showDemo": true,
       "author": "lemon"
+    },
+    {
+      "version": "1.0.0",
+      "name": "ImagePicker",
+      "sort": "1",
+      "chnName": "图片选择器",
+      "desc": "图片选择器",
+      "type": "component",
+      "showDemo": true,
+      "author": "苏子刚"
+    },
+    {
+      "name": "Switch",
+      "version": "1.0.0",
+      "sort": "1",
+      "chnName": "开关",
+      "type": "component",
+      "showDemo": true,
+      "desc": "一种滑动开关，通过点击使按钮左右滑动，同时触发对应的开关状态",
+      "author": "Frans"
+    },
+    {
+      "name": "Radio",
+      "version": "1.0.0",
+      "sort": "1",
+      "chnName": "单选按钮",
+      "type": "component",
+      "showDemo": true,
+      "desc": "单选按钮，可组合成单选按钮组",
+      "author": "Frans"
+    },
+    {
+      "name": "RadioGroup",
+      "version": "1.0.0",
+      "sort": "1",
+      "chnName": "单选按钮组",
+      "type": "component",
+      "showDemo": false,
+      "desc": "单选按钮组",
+      "author": "Frans"
+    },
+    {
+      "version": "1.0.0",
+      "name": "CheckBox",
+      "sort": "1",
+      "chnName": "复选按钮",
+      "desc": "复选多个选项",
+      "type": "component",
+      "showDemo": true,
+      "author": "Vicky.Ye"
+    },
+    {
+      "version": "1.0.0",
+      "name": "CheckBoxGroup",
+      "sort": "1",
+      "chnName": "复选按钮组",
+      "desc": "成组出现的复选按钮组件",
+      "type": "component",
+      "showDemo": true,
+      "author": "Vicky.Ye"
     },
     {
       "version":"1.0.0",

@@ -11,11 +11,11 @@
                 v-show="isVisible"
             >
                 <div class="nut-actionsheet-custom"  v-if="$slots.custom">
-                    <slot name="custom">{{custom}}</slot>
+                    <slot name="custom" v-html="custom"></slot>
                 </div>
                 <dl class="nut-actionsheet-modal" v-if="$slots.title || $slots.subTitle ">
-                    <dt class="nut-actionsheet-title"><slot name="title">{{title}}</slot></dt>
-                    <dd class="nut-actionsheet-sub-title"><slot name="sub-title">{{subTitle}}</slot></dd>
+                    <dt class="nut-actionsheet-title"><slot name="title" v-html="title"></slot></dt>
+                    <dd class="nut-actionsheet-sub-title"><slot name="sub-title" v-html="subTitle"></slot></dd>
                 </dl>
                 <ul class="nut-actionsheet-menu" >
                     <li class="nut-actionsheet-item" 

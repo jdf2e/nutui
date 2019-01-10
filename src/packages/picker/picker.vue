@@ -2,9 +2,9 @@
     <nut-actionsheet :is-visible="isVisible" @close="closeActionSheet">
         <div class="nut-picker" slot="custom" :class="customClassName ? customClassName : null">
             <div class="nut-picker-control">
-                <span class="nut-picker-confirm-btn"  @click="closeActionSheet">{{nutTranslate('lang.okBtnTxt')}}</span>
+                <span class="nut-picker-confirm-btn"  @click="closeActionSheet">{{nutTranslate('lang.cancelText')}}</span>
                 <div class="nut-picker-title">{{title ? title : ''}}</div>
-                <span class="nut-picker-cancel-btn" @click="confirm">{{nutTranslate('lang.cancelText')}}</span>
+                <span class="nut-picker-cancel-btn" @click="confirm">{{nutTranslate('lang.okBtnTxt')}}</span>
             </div>
             <div class="nut-picker-panel">
                 <template v-for="(item, index) of listData" >

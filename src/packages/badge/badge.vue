@@ -15,7 +15,7 @@ export default {
   name: 'nut-badge',
   props: {
     value: {
-      type: String
+      type: [String,Number]
     },
     max: {
       type: Number,

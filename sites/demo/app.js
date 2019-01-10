@@ -1,4 +1,3 @@
-//import 'babel-polyfill';
 import "core-js/modules/es6.promise";
 import "core-js/modules/es6.array.iterator";
 import Vue from 'vue';
@@ -8,6 +7,8 @@ import Conf from '../../src/config.json';
 import NutUI from '../../src/nutui';
 // import en from '../../src/locales/lang/en-US';
 // import demoEN from './lang/en-US';
+
+
 import './asset/css/common.scss';
 
 import './asset/img/logo_share.png';
@@ -51,7 +52,6 @@ const app = new Vue({
 })
 
 Vue.prototype.NUTCONF = Conf;
-
 
 let pageLoading = app.$toast.loading();
 

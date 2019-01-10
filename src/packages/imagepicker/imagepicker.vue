@@ -3,7 +3,7 @@
         <div class="img-list">
             <transition-group :name="animation?'nutEase':''">
                 <div class="img-item"
-                        v-for="item in this.imgList"
+                        v-for="item in this.list"
                         :key="item.id"
                         :style="{'width':width + 'px','height':height + 'px','marginRight':margin + 'px'}"
                         @click="delMode == 'tap' ? deleteImg(item.id) : preview(item.id)"
@@ -14,9 +14,9 @@
                 <a href="javascript:;"><img :src="item.src" alt=""></a>
                 </div>
             </transition-group>
-            <div class="add-icon" :style="{'width':width + 'px','height':height + 'px'}" v-show="this.imgList.length < this.max">
-                <nut-icon type="plus" color="#F0250F"></nut-icon>
-                <input type="file" name="files" :multiple="!ismultiple ? multiple : ''" :accept="accept"  @change="addImg" />
+            <div class="add-icon" :style="{'width':width + 'px','height':height + 'px'}" v-show="this.list.length < this.max">
+                <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g fill-rule="evenodd"><rect y="6" width="16" height="4" rx="2"></rect><rect transform="rotate(90 8 8)" y="6" width="16" height="4" rx="2"></rect></g></svg></i>
+                <input type="file" name="files" :multiple="!ismultiple ? 'multiple' : ''" :accept="accept"  @change="addImg" />
             </div>
         </div>
     </div>
@@ -72,10 +72,12 @@ export default {
     },
     data() {
         return {
-            timeOutEvent:0
+            timeOutEvent:0,
+            list:[]
         };
     },
     mounted() {
+        this.list = this.imgList;
     },
     methods: {
         addImg(event){
@@ -85,9 +87,9 @@ export default {
 
             let fileArr = Array.from(file);
 
-            if (file.length > self.max - self.imgList.length) {
+            if (file.length > self.max - self.list.length) {
 
-                fileArr = fileArr.filter((item,index) => index < self.max - self.imgList.length);
+                fileArr = fileArr.filter((item,index) => index < self.max - self.list.length);
             }
 
             if (self.autoUpload) {//自动上传
@@ -99,7 +101,7 @@ export default {
                 fileArr.forEach((item,index) => {
                     let reader = new FileReader();
                     reader.onload = function(evt) {
-                        self.imgList.push({
+                        self.list.push({
                             id:Math.random(),
                             src:evt.target.result
                         });
@@ -120,7 +122,7 @@ export default {
             });
         },
         deleteImg(id) {
-            this.imgList = this.imgList.filter(item => item.id != id);
+            this.list = this.list.filter(item => item.id != id);
             this.$emit('imgMsg',{
                 code:3,
                 msg:id

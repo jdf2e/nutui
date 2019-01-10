@@ -1,15 +1,15 @@
 <template>
     <div>
-        <h4>{{nutTranslate('demo.cell.h4_1', {subTitle: nutTranslate('demo.cell.h4_1sesc')})}}</h4>
+        <h4>基本用法</h4>
         <div>
-            <nut-cell :title="nutTranslate('demo.cell.h4_1title')" :desc="nutTranslate('demo.cell.h4_1sesc')">
+            <nut-cell title="我是标题" desc="描述文字">
             </nut-cell>
-            <nut-cell :showIcon="true" :title="nutTranslate('demo.cell.h4_1title')" :subTitle="nutTranslate('demo.cell.h4_1subtitle')" :desc="nutTranslate('demo.cell.h4_1desc')">
+            <nut-cell :showIcon="true" title="我是标题" subTitle="我是副标题" desc="展示默认ICON">
             </nut-cell>
-            <nut-cell :isLink="true" linkUrl="//m.jd.com" :showIcon="true" :title="nutTranslate('demo.cell.h4_1link')">
+            <nut-cell :isLink="true" linkUrl="//m.jd.com" :showIcon="true" title="带链接">
             </nut-cell>
         </div>
-        <h4>{{nutTranslate('demo.cell.h4_2')}}</h4>
+        <h4>通过Slot插槽分发内容</h4>
         <div>
             <nut-cell :isLink="true" :showIcon="true">
                 <span slot="title">我是主标题</span>

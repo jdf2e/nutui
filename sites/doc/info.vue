@@ -50,7 +50,7 @@
 </div>
 </template>
 <script>
-import Conf from "../../src/config.json";
+import { sorts,packages } from "../../src/config.json";
 export default {
   name: "index",
   data() {
@@ -58,7 +58,6 @@ export default {
       path: "",
       packages: {},
       sortedPackages: [],
-      version: "",
       cur: [],
       curName: ""
     };
@@ -134,13 +133,12 @@ export default {
   },
   created() {
     let nameRt = this.$route.name;
-    let packgs = Conf.packages;
+    let packgs = packages;
     
-    this.cur = Conf.sorts
+    this.cur = sorts
     this.curName = nameRt;
     this.packages = packgs;
-    this.version = Conf.version;
-    this.sorts = Conf.sorts;
+    this.sorts = sorts;
   }
 };
 </script>
