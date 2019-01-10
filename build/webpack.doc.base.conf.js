@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const merge = require('webpack-merge');
 
-const mdtohtml = require('../scripts/md-to-other');
+const mdtohtml = require('../scripts/mdToVue');
 const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = merge(webpackBaseConf, {
