@@ -9,15 +9,15 @@ describe('noticebar.vue',() => {
         }
     });
 
-    it('默认用法',() => {
-        wrapper.setData({
-            type:'simple'
-        });
+    // it('默认用法',() => {
+    //     wrapper.setData({
+    //         type:'simple'
+    //     });
 
-        return Vue.nextTick().then(function() {
-            expect(wrapper.findAll('li').at(1).classes('selected')).toBe(true);
-        })
-    });
+    //     return Vue.nextTick().then(function() {
+    //         expect(wrapper.findAll('li').at(1).classes('selected')).toBe(true);
+    //     })
+    // });
 
     // it('多选-style1',() => {
     //     wrapper.setProps({
