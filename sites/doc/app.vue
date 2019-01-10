@@ -379,6 +379,7 @@ export default {
         border: none;
         width: 389px;
         height: 612px;
+        background:#FFF;
         padding: 5px 5px 5px 5px;
         box-sizing: border-box;
       }

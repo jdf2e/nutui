@@ -53,7 +53,7 @@ NutUI.install(Vue);
 
 以下两种方式都可以实现只加载用到的组件，从而减少加载的文件体积。
 
-### 1. 使用 webpack 插件 **[@nutui/babel-plugin-seperate-import](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)** 
+### 1. 使用 webpack 插件 **[@nutui/babel-plugin-seperate-import](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)** (推荐)
 
 首先安装 **@nutui/separate-import** 插件
 
@@ -72,7 +72,7 @@ npm i @nutui/separate-import -D
   ]
 }
 ```
-> style 选项值为 "css" 时加载组件对应的css文件，为 "scss" 时加载对应的scss文件。无style选项时，不自动加载样式。
+> style 选项值为 "css" 时加载组件对应的css文件，为 "scss" 时加载对应的scss文件。无style选项时，不自动加载样式文件。
 
 接下来，我们就可以在项目里只引入用到的组件了。默认情况下，样式也无需单独引入。插件会自动将代码转换为方式二的手动引入方式。
 
