@@ -24,7 +24,7 @@
     "build": "npm run build:prod && npm run build:prodmin && npm run build:disp",
     "eslint": "eslint src/packages/**/*.{js,vue}",
     "add": "node scripts/createCptTpl.js",
-    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text  mocha-webpack --webpack-config build/webpack.test.conf.js --require test/setup.js src/packages/noticebar/__test__/**.spec.js",
+    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text  mocha-webpack --webpack-config build/webpack.test.conf.js --require test/setup.js src/packages/*/__test__/**.spec.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "test:watch": "npm run test --watch"
   },
