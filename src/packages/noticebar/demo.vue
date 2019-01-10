@@ -14,7 +14,8 @@
     <nut-noticebar
       :mode="true"
       @click="hello"
-    >华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！</nut-noticebar>
+    >华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！
+    </nut-noticebar>
     <h4>通告栏模式--链接模式</h4>
     <nut-noticebar
       text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
