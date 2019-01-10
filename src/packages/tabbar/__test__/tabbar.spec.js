@@ -21,7 +21,7 @@ describe('Tabbar.vue', () => {
     });
 
     
-    it('点击评分', () => {
+    it('点击tab标签', () => {
     	wrapper.setData({ tabList: [
     	        {
     	          'tabTitle':'百度',
@@ -45,6 +45,11 @@ describe('Tabbar.vue', () => {
             expect(wrapper.findAll('.tabbar-nav').at(1).is('.curr')).toBe(true)
         })
         
-    });
+	});
+	it('tab标签标题', () => {
+		return Vue.nextTick().then(function () {
+		   expect(wrapper.findAll('.tabbar-nav-word').at(0).text()).toBe('百度');
+		})
+	});
 
 });

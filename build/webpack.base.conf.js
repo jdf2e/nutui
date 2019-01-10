@@ -24,8 +24,9 @@ module.exports = {
                 include: path.resolve('src'), // instrument only testing sources with Istanbul, after ts-loader runs
                 loader: 'istanbul-instrumenter-loader'
             }: {},
-            test ? { test: /\.css$/, loader: 'style!css' } : {},
+            test ? { test: /\.css$/, use: [{loader: 'style!css'}] } : {},
             test ? { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' } : {},
+            test ? { test: /\.scss$/, use: [{loader: 'sass-loader', options:{data: `@import "./src/styles/index.scss"; `,} }]} : {},
             !test ?{
                 test: /\.(sa|sc|c)ss$/,
                 use: [
