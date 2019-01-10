@@ -1,6 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
 import Range, {toRGBA} from '../range.vue';
-import Vue from 'vue';
 
 describe('Range.vue', () => {
 
