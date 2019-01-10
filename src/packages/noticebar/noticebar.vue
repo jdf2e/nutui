@@ -6,7 +6,7 @@
     :style="barStyle"
     @click="$emit('click')"
   >
-    <div v-if="leftIcon" class="left-icon" :style="{'background-image':`url(${iconBg})`}">
+    <div  class="left-icon" v-if="iconShow" :style="{'background-image':`url(${iconBg})`}">
     </div>
     <div ref="wrap" class="wrap">
       <div
@@ -71,6 +71,13 @@ export default {
     };
   },
   computed: {
+    iconShow(){
+      if(this.leftIcon=='close'){
+        return false;
+      }else{
+        return true;
+      }
+    },
     barStyle() {
       return {
         color: this.color,

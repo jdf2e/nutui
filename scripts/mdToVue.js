@@ -1,7 +1,7 @@
 const fs = require('fs');
 var path = require('path');
 let marked = require('marked');
-
+let package =require("../package.json") ;
 if (!marked) {
     console.log('you need npm i marked -D!');
 }
@@ -76,6 +76,7 @@ let jsroot = `<script>export default {
 //插入
 function insert(sorce) {
     var insert = sorce.indexOf('</h1>');
+    
     if (insert > -1) {
         return sorce.substring(0, insert) + '<i class="qrcode"><a :href="demourl"><span>请使用手机扫码体验</span><img :src="codeurl" alt=""></a></i>' + sorce.substring(insert, sorce.length);
     } else {
@@ -86,6 +87,7 @@ function insert(sorce) {
 ///创建一个空文件
 function createdFile(output, sorce,ishasCode) {
     var pathSrc = output;
+    sorce = sorce.replace(/@latest/g,'@'+package.version)
     if(!ishasCode){       
         var res = insert(sorce);
     }   else{

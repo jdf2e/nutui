@@ -1,80 +1,84 @@
 <template>
   <div class="container">
     <template v-if="notWebgl">
-      <div class="css-animation" >
-				<div class="blue-bg">
-					<span class="phone"></span>
-					<span class="goods"></span>
-					<span class="nut"></span>
-					<span class="people"></span>
-					<span class="flower">
-						<span class="leaf_2"></span>
-						<span class="leaf_1"></span>
-						<span class="leaf_4"></span>
-						<span class="leaf_3"></span>
-					
-						<span class="flowerpot"></span>
-
-					</span>
-					<span class="fengche"></span>
-				</div>
-
-			</div>
+      <div class="css-animation">
+        <div class="blue-bg">
+          <span class="phone"></span>
+          <span class="goods"></span>
+          <span class="nut"></span>
+          <span class="people"></span>
+          <span class="flower">
+            <span class="leaf_2"></span>
+            <span class="leaf_1"></span>
+            <span class="leaf_4"></span>
+            <span class="leaf_3"></span>
+            <span class="flowerpot"></span>
+          </span>
+          <span class="fengche"></span>
+        </div>
+      </div>
     </template>
     <template v-else>
       <canvas id="output"></canvas>
     </template>
-     <div class="wrapper">
-        <div class="header">
-          <span class="logo">NUTUI
-            <s></s>
-          </span>
-          <search/>
+    <div class="wrapper">
+      <div class="header">
+        <span class="logo">
+          NUTUI
+          <s></s>
+        </span>
+        <search/>
 
-          <div class="menu">
-            <ul>
-              <li>
-                <a href="#/doc">指南</a>
-              </li>
-              <li>
-                <a href="#/ActionSheet">组件</a>
-              </li>
-              <li>
-                <a href="/demo.html#/index" class="qrcode top-qr" target="_blank">示例
-                  <a>
-                    <span>请使用手机扫码体验</span>
-                    <img
-                      src="http://img13.360buyimg.com/uba/jfs/t1/14144/37/3433/5890/5c26d976E7cd98b80/94583409233081cc.png"
-                      alt
-                    >
-                  </a>
+        <div class="menu">
+          <ul>
+            <li>
+              <a href="#/doc">指南</a>
+            </li>
+            <li>
+              <a href="#/ActionSheet">组件</a>
+            </li>
+            <li>
+              <a href="/demo.html#/index" class="qrcode top-qr" target="_blank">
+                示例
+                <a>
+                  <span>请使用手机扫码体验</span>
+                  <img
+                    src="http://img13.360buyimg.com/uba/jfs/t1/14144/37/3433/5890/5c26d976E7cd98b80/94583409233081cc.png"
+                    alt
+                  >
                 </a>
-              </li>
-            </ul>
-            <select @change="openwindow">
-              <option value="2">2.X</option>
-              <option value="1">1.X</option>
-            </select>
-            <a href="https://github.com/jdf2e/nutui" title="Github" target="_blank" class="github-icon">github</a>
-          </div>
-        </div>
-        <div class="content">
-          <div class="mouseDiv" id="mouseDiv"></div>
-          <p class="title">NutUI</p>
-          <p class="sub-title">一套轻量级移动端Vue / 微信小程序组件库</p>
-          <a href="#/doc" class="blue-btn">开始使用</a>
-          <a href="javascript:;" class="qrcode btn">
-            扫码体验
-            <a>
-              <span>请使用手机扫码体验</span>
-              <img
-                src="http://img13.360buyimg.com/uba/jfs/t1/14144/37/3433/5890/5c26d976E7cd98b80/94583409233081cc.png"
-                alt
-              >
-            </a>
-          </a>
+              </a>
+            </li>
+          </ul>
+          <select @change="openwindow">
+            <option value="2">2.X</option>
+            <option value="1">1.X</option>
+          </select>
+          <a
+            href="https://github.com/jdf2e/nutui"
+            title="Github"
+            target="_blank"
+            class="github-icon"
+          >github</a>
         </div>
       </div>
+      <div class="content">
+        <div class="mouseDiv" id="mouseDiv"></div>
+        <p class="title">NutUI</p>
+        <p class="sub-title">一套京东风格的轻量级移动端Vue组件库</p>
+        <a href="#/doc" class="blue-btn">开始使用</a>
+        <a href="javascript:;" class="qrcode btn">
+          扫码体验
+          <a>
+            <span>请使用手机扫码体验</span>
+            <img
+              src="http://img13.360buyimg.com/uba/jfs/t1/14144/37/3433/5890/5c26d976E7cd98b80/94583409233081cc.png"
+              alt
+            >
+          </a>
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -82,17 +86,17 @@
 // import * as THREE from "three";
 // import TWEEN from "@tweenjs/tween.js";
 // import Detector from "./asset/js/Detector.js";
-import search from './search.vue';
+import search from "./search.vue";
 export default {
   name: "frontCover",
   data() {
     return {
       timer: null,
       notWebgl: true,
-      isSmall:false
+      isSmall: false
     };
   },
-  components:{
+  components: {
     search
   },
   methods: {
@@ -100,7 +104,7 @@ export default {
       if (val.target.value == 1) {
         window.location.href = " http://nutui.jd.com/1x/";
       }
-    },
+    }
     // threeAnimation() {
     //   this.timer = setTimeout(() => {
     //     //获取视窗宽高
@@ -463,12 +467,11 @@ export default {
   created() {},
   mounted() {
     this.$nextTick(() => {
-      
       //获取浏览器宽度
       let windowWidth = document.body.clientWidth;
-     if(windowWidth<=990){
+      if (windowWidth <= 990) {
         this.isSmall = true;
-     }
+      }
 
       this.notWebgl = true;
       // if (!Detector.webgl) {
@@ -483,58 +486,57 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-
 @keyframes fadeInLeft {
-	from {
-		opacity: 0;
-		transform: translate3d(-100%,0,0);
-	}
-	to{
-		opacity: 1;
-		transform: translate3d(0,0,0);
-	}
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 @keyframes leafShake {
-	form,to{
-		transform:rotate(0);
-		transform-origin: bottom;
-	}
-	20%,
-	60%{
-		transform: rotate(2deg);
-		transform-origin: bottom;
-	}
-	40%,
-	80%{
-		transform: rotate(-2deg);
-		transform-origin: bottom;
-	}
-
+  form,
+  to {
+    transform: rotate(0);
+    transform-origin: bottom;
+  }
+  20%,
+  60% {
+    transform: rotate(2deg);
+    transform-origin: bottom;
+  }
+  40%,
+  80% {
+    transform: rotate(-2deg);
+    transform-origin: bottom;
+  }
 }
 
 @keyframes fadeInRight {
-	from {
-		opacity: 0;
-		transform: translate3d(100%,0,0);
-	}
-	to{
-		opacity: 1;
-		transform: translate3d(0,0,0);
-	}
+  from {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
-@keyframes fadeIn{
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.container{
+.container {
   position: relative;
-  min-width:1210px;
+  min-width: 1260px;
 }
 .wrapper {
   position: absolute;
@@ -549,8 +551,8 @@ export default {
     width: 100%;
     height: 64px;
     display: flex;
-		 align-items:center;
-     position: relative;
+    align-items: center;
+    position: relative;
   }
   .menu {
     position: absolute;
@@ -566,9 +568,9 @@ export default {
       line-height: 64px;
       cursor: pointer;
       color: #fff;
-      & > a{
-        display:block;
-        height:100%;
+      & > a {
+        display: block;
+        height: 100%;
         line-height: 64px;
       }
       a {
@@ -608,7 +610,7 @@ export default {
     position: relative;
     s {
       background: url(./asset/css/i/nut.png) 0 0 no-repeat;
-      background-size:contain;
+      background-size: contain;
       height: 46px;
       width: 120px;
       display: inline-block;
@@ -646,7 +648,7 @@ export default {
     }
   }
   .content {
-    padding:15% 0 0 8.8%;
+    padding: 15% 0 0 8.8%;
     z-index: 999;
     position: relative;
     .mouseDiv {
@@ -659,37 +661,46 @@ export default {
       margin-left: -250px;
       margin-top: -50px;
     }
-    .title{
+    .title {
       font-size: 42px;
-      color:#333;
+      color: #333;
       font-weight: bold;
-      animation:  fadeInLeft 1s both;
+      animation: fadeInLeft 1s both;
     }
-    .sub-title{
-      font-size:24px;
-      color:#333;
-      padding-top:30px;
-      padding-bottom:100px;
-      animation:  fadeInLeft 1s both 0.5s;
+    .sub-title {
+      font-size: 24px;
+      color: #333;
+      padding-top: 30px;
+      padding-bottom: 100px;
+      animation: fadeInLeft 1s both 0.5s;
     }
-    .btn,.blue-btn{
-      border:1px solid #5396ff;
-      background:#fff;
-      color:#5396ff;
-      width:130px;
-      height:40px;
-      line-height:40px;
+    .btn,
+    .blue-btn {
+      border: 1px solid rgba(83,150,255,1);
+      background: #fff;
+      color: rgba(83,150,255,1);
+      width: 130px;
+      height: 40px;
+      line-height: 40px;
       text-align: center;
       display: inline-block;
-      font-size:14px;
+      font-size: 14px;
       text-decoration: none;
       border-radius: 20px;
-      animation:  fadeInLeft 1s both 1.2s;
+      animation: fadeInLeft 1s both 1.2s;
+      &:hover,&:active{
+        border-color:rgba(83,150,255,.8);
+        color: rgba(83,150,255,.8);
+      }
     }
     .blue-btn {
       color: #fff;
-      background: #5396ff;
+      background: rgba(83,150,255,1);
       margin-right: 40px;
+      &:hover,&:active{
+        background: rgba(83,150,255,.8);
+        color: rgba(255,255,255,.8);
+      }
     }
   }
   .qrcode {
@@ -700,7 +711,7 @@ export default {
     &.top-qr {
       a {
         left: -65px;
-        top:60px;
+        top: 60px;
       }
     }
     a {
@@ -746,136 +757,144 @@ export default {
   }
 }
 
-.css-animation{
-	position: absolute;
-  top:0;
-  right:0;
-	transform: scale3d(1.06,1.06,1.06);
+.css-animation {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: scale3d(1.06, 1.06, 1.06);
 
-	.blue-bg{
-		background:url('//img12.360buyimg.com/uba/jfs/t1/22824/40/3136/6504/5c24a3f4E76fdafde/802d02d1ec5d3d55.png') 0 0 no-repeat;
-		height:757px;
-		width:963px;
-		background-size:100% 100%;
-		position: absolute;
-		right:0;
-		top:0;
+  .blue-bg {
+    background: url("//img12.360buyimg.com/uba/jfs/t1/22824/40/3136/6504/5c24a3f4E76fdafde/802d02d1ec5d3d55.png")
+      0 0 no-repeat;
+    height: 757px;
+    width: 963px;
+    background-size: 100% 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
 
-		.phone{
-			background:url('//img10.360buyimg.com/uba/jfs/t1/19171/19/3175/23282/5c24a440Ee2a94261/45321aeaf173f237.png') 0 0 no-repeat;
-			height:419px;
-			width:227px;
-			background-size:100% 100%;
-			position:absolute;
-			right:350px;
-			top:250px;
-			display: inline-block;
-		}
-		.goods{
-			background:url('//img14.360buyimg.com/uba/jfs/t1/21115/40/3224/5652/5c24a411E03ef9eb6/83781b97e59da905.png') 0 0 no-repeat;
-			height:165px;
-			width:117px;
-			background-size:100% 100%;
-			position:absolute;
-			display:inline-block;
-			top:500px;
-			right:710px;
-		}
-		.people{
-			background:url('//img12.360buyimg.com/uba/jfs/t1/9330/16/10894/8662/5c24a42aE708692b3/14455d20eca1ccee.png');
-			width:184px;
-			height:334px;
-			background-size:100% 100%;
-			position:absolute;
-			top:334px;
-			right:500px;
-		}
-		.flower{
-			position: absolute;
-			right:195px;
-			top:510px;
-			height:160px;
-			width:208px;
-			.leaf_1{
-				position: absolute;
-				background:url(./asset/css/i/leaf_1.png) 0 0 no-repeat;
-				height:113px;
-				width:60px;
-				background-size:100% 100%;
-				bottom:36px;
-				right:79px;
-				animation:leafShake 8s infinite ;
-
-			}
-			.leaf_2{
-				position: absolute;
-				background:url(./asset/css/i/leaf_2.png) 0 0 no-repeat;
-				height:64px;
-				width:66px;
-				background-size:100% 100%;
-				bottom:36px;
-				right:35px;
-				animation:leafShake 8s infinite 0.6s;
-				
-
-			}
-			.leaf_3{
-				
-				position: absolute;
-				background:url(./asset/css/i/leaf_3.png) 0 0 no-repeat;
-				height:28px;
-				width:64px;
-				background-size:100% 100%;
-				bottom:38px;
-				right:42px;
-				//animation:leafShake 3s infinite 0.5s;
-			}
-			.leaf_4{
-				position: absolute;
-				background:url(./asset/css/i/leaf_4.png) 0 0 no-repeat;
-				height:113px;
-				width:99px;
-				background-size:100% 100%;
-				bottom:38px;
-				left:2px;
-				//animation:leafShake 3s infinite 0.2s;
-			}
-			.flowerpot{
-				position: absolute;
-				background:url(./asset/css/i/flowerpot.png) 0 0 no-repeat;
-				height:42px;
-				width:130px;
-				bottom:0;
-				right:5px;
-				background-size:100% 100%;
-				
-
-			}
-		}
-		.nut{
-			position: absolute;
-			height:46px;
-			width:46px;
-			background:url(./asset/css/i/nut-icon.png) 0 0 no-repeat;
-			background-size:100% 100%;
-			top:308px;
-			right:493px;
-			animation:fadeInRight 2s both;
-		
-		
-		}
-		.fengche{
-			position:absolute;
-			background:url(./asset/css/i/fengche.png) 0 0 no-repeat;
-			background-size:100% 100%;
-			width:679px;
-			height:476px;
-			top:195px;
-			right:180px;
-			animation: fadeIn 1s both 2s;
-
-		}
-	}
+    .phone {
+      background: url("//img10.360buyimg.com/uba/jfs/t1/19171/19/3175/23282/5c24a440Ee2a94261/45321aeaf173f237.png")
+        0 0 no-repeat;
+      height: 419px;
+      width: 227px;
+      background-size: 100% 100%;
+      position: absolute;
+      right: 350px;
+      top: 250px;
+      display: inline-block;
+    }
+    .goods {
+      background: url("//img14.360buyimg.com/uba/jfs/t1/21115/40/3224/5652/5c24a411E03ef9eb6/83781b97e59da905.png")
+        0 0 no-repeat;
+      height: 165px;
+      width: 117px;
+      background-size: 100% 100%;
+      position: absolute;
+      display: inline-block;
+      top: 500px;
+      right: 710px;
+    }
+    .people {
+      background: url("//img12.360buyimg.com/uba/jfs/t1/9330/16/10894/8662/5c24a42aE708692b3/14455d20eca1ccee.png");
+      width: 184px;
+      height: 334px;
+      background-size: 100% 100%;
+      position: absolute;
+      top: 334px;
+      right: 500px;
+    }
+    .flower {
+      position: absolute;
+      right: 195px;
+      top: 510px;
+      height: 160px;
+      width: 208px;
+      .leaf_1 {
+        position: absolute;
+        background: url(./asset/css/i/leaf_1.png) 0 0 no-repeat;
+        height: 113px;
+        width: 60px;
+        background-size: 100% 100%;
+        bottom: 36px;
+        right: 79px;
+        animation: leafShake 8s infinite;
+      }
+      .leaf_2 {
+        position: absolute;
+        background: url(./asset/css/i/leaf_2.png) 0 0 no-repeat;
+        height: 64px;
+        width: 66px;
+        background-size: 100% 100%;
+        bottom: 36px;
+        right: 35px;
+        animation: leafShake 8s infinite 0.6s;
+      }
+      .leaf_3 {
+        position: absolute;
+        background: url(./asset/css/i/leaf_3.png) 0 0 no-repeat;
+        height: 28px;
+        width: 64px;
+        background-size: 100% 100%;
+        bottom: 38px;
+        right: 42px;
+        //animation:leafShake 3s infinite 0.5s;
+      }
+      .leaf_4 {
+        position: absolute;
+        background: url(./asset/css/i/leaf_4.png) 0 0 no-repeat;
+        height: 113px;
+        width: 99px;
+        background-size: 100% 100%;
+        bottom: 38px;
+        left: 2px;
+        //animation:leafShake 3s infinite 0.2s;
+      }
+      .flowerpot {
+        position: absolute;
+        background: url(./asset/css/i/flowerpot.png) 0 0 no-repeat;
+        height: 42px;
+        width: 130px;
+        bottom: 0;
+        right: 5px;
+        background-size: 100% 100%;
+      }
+    }
+    .nut {
+      position: absolute;
+      height: 46px;
+      width: 46px;
+      background: url(./asset/css/i/nut-icon.png) 0 0 no-repeat;
+      background-size: 100% 100%;
+      top: 308px;
+      right: 493px;
+      animation: fadeInRight 2s both;
+    }
+    .fengche {
+      position: absolute;
+      background: url(./asset/css/i/fengche.png) 0 0 no-repeat;
+      background-size: 100% 100%;
+      width: 679px;
+      height: 476px;
+      top: 195px;
+      right: 180px;
+      animation: fadeIn 1s both 2s;
+    }
+  }
 }
-
+@media screen and (max-width: 1500px) {
+    .css-animation{
+      .blue-bg{
+        transform: translateX(155px);
+      }
+    }
+    .wrapper{
+      .content{
+        padding-left:5%;
+      }
+      .menu{
+        right:6%;
+      }
+    }
+}
 </style>

@@ -1,9 +1,10 @@
-<div style="text-align:center; margin:10px 0 30px;">
-    <img width="150" src="http://img14.360buyimg.com/uba/jfs/t1/8543/6/11560/22014/5c2c6136E8023ac0a/6abbd9de10999c48.png" alt="NutUI2" />
-    <h1>NutUI 2</h1>
-    <p style="color:#455A64;">一套移动端轻量级Vue组件库</p>
-</div>
+# NutUI 2
 
+NutUI是一套京东风格的移动端Vue组件库，开发和服务于移动Web界面的企业级前中后台产品。
+
+<div style="margin:30px 0;">
+    <img src="http://img14.360buyimg.com/uba/jfs/t1/8543/6/11560/22014/5c2c6136E8023ac0a/6abbd9de10999c48.png" width="150" alt="NutUI">
+</div>
 
 ## 特性
 
@@ -31,6 +32,8 @@
 > 你还可以订阅： https://github.com/jdf2e/nutui/releases.atom 来获得稳定版发布的通知。
 
 ## 链接
+* [Vue官方文档](http://cn.vuejs.org/)
+* [Webpack](http://webpack.github.io/)
 * [意见反馈](https://github.com/jdf2e/nutui/issues)
 * [更新日志](https://github.com/jdf2e/nutui/releases)
 * [模板工程命令行工具(Gaea-cli)](https://github.com/jdf2e/Gaea4)

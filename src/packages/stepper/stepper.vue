@@ -56,7 +56,7 @@ export default {
             default: Infinity,
         },
         step: {
-            type: Number,
+            type: [Number, String],
             default: 1
         },
         readonly: {
