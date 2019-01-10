@@ -9,8 +9,8 @@
         height: 12px;
         .nut-progress-inner {
             width: 30%;
-            height: 100%;
-            background-color: #1890ff;
+            height: 100%; //background-color: #1890ff;
+            background-color: $primary-color; 
             -webkit-transition: all .4s;
             transition: all .4s;
             position: relative;

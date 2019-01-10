@@ -34,10 +34,6 @@
 </template>
 <script>
 	export default {
-	    data() {
-	        return {
-	        }
-	    },
 	    methods:{
 	    	focusFun() {
 	    		console.log('获取焦点操作！');

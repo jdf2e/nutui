@@ -1,27 +1,28 @@
 <template>
-    <div class="nut-radiogroup">
-        <nut-radio v-for="rdo in gData" :key="rdo.id" :label="rdo.label">{{rdo.text}}</nut-radio>
-    </div>
+  <div class="nut-radiogroup">
+    <slot></slot>
+  </div>
 </template>
 <script>
 export default {
-    name:'nut-radiogroup',
-    props: {
-        groupData:{
-            type:Array,
-            default(){
-                return [];
-            }
-        }
+  name: "nut-radiogroup",
+  props: {
+    value: {
+      type: [String, Number, Boolean],
+      default: false
     },
-    data() {
-        return {
-            gData:this.groupData
-        };
+    disabled: {
+      type: Boolean,
+      default: false
     },
-    methods: {
+    size: {
+      type: String,
+      default: "base"
     },
-    mounted(){
+    animated: {
+      type: Boolean,
+      default: true
     }
-}
+  }
+};
 </script>

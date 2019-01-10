@@ -28,5 +28,6 @@ module.exports = merge(baseConf, {
         index: 'demo.html',
         compress: true, //gzip压缩
         historyApiFallback: true,
+        disableHostCheck: true
     }
 });

@@ -10,7 +10,7 @@
 								background: mainColor
 							}">
 						</div>
-            <Movebar 
+            <nut-range-bar 
                 :initLeft="initLeft1" 
                 @getPos="getPosLeft"
                 :showLabelAlways="showLabelAlways"
@@ -18,7 +18,7 @@
                 :current="currentLeft"
                 :ani.sync="ani"
 								:mainColor="mainColor"/>
-            <Movebar 
+            <nut-range-bar 
                 :initLeft="initLeft2" 
                 @getPos="getPosRight"
                 :showLabelAlways="showLabelAlways"
@@ -51,7 +51,7 @@ function toRGBA(c, opacity) {
 export default {
   name: "nut-range",
   components: {
-    Movebar
+    [Movebar.name]: Movebar
   },
   props: {
     rangeValues: {
@@ -111,13 +111,13 @@ export default {
       return this.total / this.level;
 		},
 		mainColor() {
-			return toRGBA(this.color);
+			return this.color?toRGBA(this.color):'';
 		},
 		boxColor() {
-			return toRGBA(this.color, 0.3);
+			return this.color?toRGBA(this.color, 0.3):'';
 		},
 		subColor() {
-			return toRGBA(this.color, 0.5);
+			return this.color?toRGBA(this.color, 0.5):'';
 		}
   },
   methods: {

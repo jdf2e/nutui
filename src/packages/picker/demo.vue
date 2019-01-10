@@ -56,15 +56,7 @@
 </template>
 
 <script>
-import nutcell from "../cell/cell.vue";
-import nutpicker from "./picker.vue";
-import "../cell/cell.scss";
-import "./picker.scss";
 export default {
-    components: {
-        [nutcell.name]: nutcell,
-        [nutpicker.name]: nutpicker
-    },
     data() {
         return {
             date: null,

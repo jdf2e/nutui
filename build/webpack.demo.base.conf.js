@@ -22,17 +22,17 @@ module.exports = merge(webpackBaseConf, {
     module: {
         rules: [
             //自定义主题
-            /*{
-                test: /\.(sa|sc|c)ss$/,
-                use: [
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            data: `@import "./sites/demo/asset/css/custom.scss";@import "./src/styles/index.scss"; `,
-                        },
-                    }
-                ],
-            }*/
+            // {
+            //     test: /\.(sa|sc|c)ss$/,
+            //     use: [
+            //         {
+            //             loader: 'sass-loader',
+            //             options: {
+            //                 data: `@import "./sites/demo/asset/css/custom.scss";@import "./src/styles/index.scss"; `,
+            //             },
+            //         }
+            //     ],
+            // }
         ]
     },
     plugins: [

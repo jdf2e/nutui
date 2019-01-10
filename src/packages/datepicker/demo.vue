@@ -2,46 +2,46 @@
     <div class="demo-list">
         <h4>基本用法</h4>
         <div>
-            <nut-cell :showIcon="true">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible')">
                 <span slot="title"><label>日期选择</label></span>
                 <span slot="sub-title">每列不显示中文~~~</span>
                 <div slot="desc" class="selected-option" >
-                    <span class="show-value"  @click="switchPicker('isVisible')">{{date ? date : '请选择日期'}}</span>
+                    <span class="show-value">{{date ? date : '请选择日期'}}</span>
                 </div>
             </nut-cell>
-            <nut-cell :showIcon="true">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible1')">
                 <span slot="title"><label>日期选择</label></span>
                 <span slot="sub-title">限制开始结束时间~~~</span>
                 <div slot="desc" class="selected-option" >
-                    <span class="show-value"  @click="switchPicker('isVisible1')">{{date1 ? date1 : '请选择日期'}}</span>
+                    <span class="show-value">{{date1 ? date1 : '请选择日期'}}</span>
                 </div>
             </nut-cell>
-            <nut-cell :showIcon="true">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible2')">
                 <span slot="title"><label>日期时间选择</label></span>
                 <span slot="sub-title">有默认值，限制开始结束时间~~~</span>
                 <div slot="desc" class="selected-option" >
-                    <span class="show-value"  @click="switchPicker('isVisible2')">{{datetime ? datetime : '请选择'}}</span>
+                    <span class="show-value">{{datetime ? datetime : '请选择'}}</span>
                 </div>
             </nut-cell>
-            <nut-cell :showIcon="true">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible3')">
                 <span slot="title"><label>时间选择</label></span>
                 <span slot="sub-title">12小时制~~~</span>
                 <div slot="desc" class="selected-option" >
-                    <span class="show-value"  @click="switchPicker('isVisible3')">{{time ? `${time} ${amOrPm}` : '请选择时间'}}</span>
+                    <span class="show-value">{{time ? `${time} ${amOrPm}` : '请选择时间'}}</span>
                 </div>
             </nut-cell>
-            <nut-cell :showIcon="true">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible4')">
                 <span slot="title"><label>时间选择</label></span>
                 <span slot="sub-title">限制开始结束小时~~~</span>
                 <div slot="desc" class="selected-option" >
-                    <span class="show-value"  @click="switchPicker('isVisible4')">{{time1 ? time1 : '请选择时间'}}</span>
+                    <span class="show-value">{{time1 ? time1 : '请选择时间'}}</span>
                 </div>
             </nut-cell>
-            <nut-cell :showIcon="true">
+            <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible5')">
                 <span slot="title"><label>时间选择</label></span>
                 <span slot="sub-title">分钟数递增步长设置~~~</span>
                 <div slot="desc" class="selected-option" >
-                    <span class="show-value"  @click="switchPicker('isVisible5')">{{time2 ? time2 : '请选择时间'}}</span>
+                    <span class="show-value">{{time2 ? time2 : '请选择时间'}}</span>
                 </div>
             </nut-cell>
         </div>
@@ -111,15 +111,7 @@
 </template>
 
 <script>
-import nutcell from "../cell/cell.vue";
-import nutdatepicker from "../datepicker/datepicker.vue";
-import "../cell/cell.scss";
-import "../datepicker/datepicker.scss";
 export default {
-    components: {
-        [nutcell.name]: nutcell,
-        [nutdatepicker.name]: nutdatepicker
-    },
     data() {
         return {
             isVisible: false,

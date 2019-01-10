@@ -15,5 +15,6 @@ module.exports = merge(baseConf, {
         compress: true,
         index: 'default.html',
         historyApiFallback: true,
+        disableHostCheck: true
     }
 });

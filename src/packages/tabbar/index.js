@@ -5,4 +5,4 @@ TabBar.install = function(Vue) {
   Vue.component(TabBar.name, TabBar);
 };
 
-export default TabBar
+export default TabBar;

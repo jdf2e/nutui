@@ -28,7 +28,7 @@ export default {
   },
   created() {
       if(types.indexOf(this.type)===-1){
-        console.error('nut-icon组件type值有误，无此icon!');
+        console.error('nut-icon组件type值('+this.type+')有误，无此icon!');
       }else{
         this.icon = require('../../assets/svg/'+this.type+'.svg');
       }

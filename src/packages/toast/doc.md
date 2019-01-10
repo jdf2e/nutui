@@ -76,16 +76,16 @@ this.$toast.loading('加载中...',{
 
 ## 共享实例
 
-id相同时，将共享一个实例，新的内容和设置将取代旧的，二者不能同时出现。loading类型默认拥有相同id，即共享一个实例，其他类型默认不共享。
+Toast的id如果相同，将共享一个实例。如果不设置id，多个Toast将拥有相同的id默认值，它们将共享一个实例（loading类型与其他类型实例不共享），新的内容和设置将取代旧的，多个Toast不能同时出现。如果不需要共享实例，可以给其设置id。
 
 ```javascript
-//二者id相同，共享一个实例
+//二者id不同，不会共享一个实例
 this.$toast.success(msg,{
     id:123
 });
 
 this.$toast.text(msg,{
-    id:123,
+    id:321,
     duration:4000
 });
 ```
