@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.0-beta.3",
   "description": "一套轻量级移动端Vue组件库",
   "typings": "dist/types/index.d.ts",
   "main": "dist/nutui.js",
@@ -24,7 +24,7 @@
     "build": "npm run build:prod && npm run build:prodmin && npm run build:disp",
     "eslint": "eslint src/packages/**/*.{js,vue}",
     "add": "node scripts/createCptTpl.js",
-    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text  mocha-webpack --webpack-config build/webpack.test.conf.js --require test/setup.js src/packages/picker/__test__/**.spec.js",
+    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text  mocha-webpack --webpack-config build/webpack.test.conf.js --require test/setup.js src/packages/*/__test__/**.spec.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "test:watch": "npm run test --watch"
   },

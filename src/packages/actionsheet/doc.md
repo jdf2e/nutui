@@ -12,7 +12,7 @@
 ```html
 <nut-actionsheet :is-visible="isVisible1" 
     @close="switchActionSheet('isVisible1')"
-    :cancelTxt="`取消`"
+    cancelTxt="取消"
     :menu-items="menuItems2"
     @choose="chooseItemAgeSpec"
 ></nut-actionsheet>
@@ -39,8 +39,8 @@
 ```html
 <nut-actionsheet :is-visible="isVisible4" 
     :menu-items="menuItems4" 
-    :chooseTagValue="`确定`"
-    :cancelTxt="`取消`"
+    chooseTagValue="确定"
+    cancelTxt="取消"
     @close="switchActionSheet('isVisible4')"
 >
     <span slot="title"><label>确定删除吗？</label></span>
