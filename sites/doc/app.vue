@@ -362,12 +362,12 @@ export default {
   .showPhone {
     padding-right: 25px;
     //margin-left: 20px;
-    width: 375px;
+    width: 360px;
     flex-shrink: 0;
     position: relative;
     .ph {
-      height: 631px;
-      width: 375px;
+      height: 611px;
+      width: 360px;
       position: fixed;
       border-radius: 55px;
       top: 100px;
@@ -377,14 +377,14 @@ export default {
       box-shadow: 0px 0px 9px 5px #eee;
       iframe {
         border: none;
-        width: 375px;
-        height: 562px;
+        width: 360px;
+        height: 542px;
         padding: 0;
         box-sizing: border-box;
       }
     }
     .bg {
-      width: 375px;
+      width: 360px;
       height: 64px;
       padding-top: 5px;
       background: linear-gradient(rgba(55, 55, 55, 0.98), #545456);
@@ -493,14 +493,18 @@ body {
     }
   }
 }
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1500px) {
   .demo-wrapper {
     .showPhone{
-      width:360px;
+      width:320px;
       .ph{
-        width:360px;
+        width:320px;
+        height: 581px;
         &>div,iframe{
-          width:360px;
+          width:320px;
+        }
+        iframe{
+          height:512px;
         }
       }
     }

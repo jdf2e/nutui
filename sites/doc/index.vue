@@ -676,9 +676,9 @@ export default {
     }
     .btn,
     .blue-btn {
-      border: 1px solid #5396ff;
+      border: 1px solid rgba(83,150,255,1);
       background: #fff;
-      color: #5396ff;
+      color: rgba(83,150,255,1);
       width: 130px;
       height: 40px;
       line-height: 40px;
@@ -688,11 +688,19 @@ export default {
       text-decoration: none;
       border-radius: 20px;
       animation: fadeInLeft 1s both 1.2s;
+      &:hover,&:active{
+        border-color:rgba(83,150,255,.8);
+        color: rgba(83,150,255,.8);
+      }
     }
     .blue-btn {
       color: #fff;
-      background: #5396ff;
+      background: rgba(83,150,255,1);
       margin-right: 40px;
+      &:hover,&:active{
+        background: rgba(83,150,255,.8);
+        color: rgba(255,255,255,.8);
+      }
     }
   }
   .qrcode {

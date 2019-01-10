@@ -81,16 +81,6 @@
     },
     {
       "version": "1.0.0",
-      "name": "Picker",
-      "sort": "1",
-      "chnName": "选择面板",
-      "desc": "选择面板",
-      "type": "component",
-      "showDemo": true,
-      "author": "iris"
-    },
-    {
-      "version": "1.0.0",
       "name": "TabBar",
       "sort": "3",
       "chnName": "标签栏",
@@ -101,20 +91,20 @@
     },
     {
       "version": "1.0.0",
-      "name": "DatePicker",
+      "name": "Calendar",
       "sort": "1",
-      "chnName": "日期选择",
-      "desc": "日期选择",
+      "chnName": "日历",
+      "desc": "日历",
       "type": "component",
       "showDemo": true,
       "author": "iris"
     },
     {
       "version": "1.0.0",
-      "name": "Calendar",
+      "name": "DatePicker",
       "sort": "1",
-      "chnName": "日历",
-      "desc": "日历",
+      "chnName": "日期选择",
+      "desc": "日期选择",
       "type": "component",
       "showDemo": true,
       "author": "iris"
@@ -158,6 +148,16 @@
       "type": "component",
       "showDemo": true,
       "author": "hufeng10"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Picker",
+      "sort": "1",
+      "chnName": "选择面板",
+      "desc": "选择面板",
+      "type": "component",
+      "showDemo": true,
+      "author": "iris"
     },
     {
       "version": "1.0.0",
