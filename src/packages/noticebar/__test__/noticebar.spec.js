@@ -9,46 +9,34 @@ describe('noticebar.vue',() => {
         }
     });
 
-    // it('默认用法',() => {
-    //     wrapper.setData({
-    //         type:'simple'
-    //     });
+    it('禁用滚动',() => {
+        wrapper.setProps({
+            scrollable:false
+        });
 
-    //     return Vue.nextTick().then(function() {
-    //         expect(wrapper.findAll('li').at(1).classes('selected')).toBe(true);
-    //     })
-    // });
+        return Vue.nextTick().then(function() {
+            // console.log(wrapper.find('.content').classes('van-ellipsis'),'test');
+            
+            expect(wrapper.find('.content').classes('van-ellipsis')).toBe(true);
+        })
+    });
 
-    // it('多选-style1',() => {
-    //     wrapper.setProps({
-    //         type:'multiple',
-    //         mulstyle:'style1'
-    //     });
+    it('通告栏模式--关闭模式',() => {
+        wrapper.setProps({
+            mode:true
+        });
 
-    //     return Vue.nextTick().then(function() {
-    //         expect(wrapper.find('.menu-multiple-style1').isVisible()).toBe(true);
-    //     })
-    // })
+        return Vue.nextTick().then(function() {
+            expect(wrapper.find('.right-icon').isVisible()).toBe(true);
+        })
+    })
 
-    // it('多选-style2',() => {
-    //     wrapper.setProps({
-    //         type:'multiple',
-    //         mulstyle:'style2'
-    //     });
-
-    //     return Vue.nextTick().then(function() {
-    //         expect(wrapper.find('.menu-multiple-style2').isVisible()).toBe(true);
-    //     })
-    // })
-
-    // it('多选-style3',() => {
-    //     wrapper.setProps({
-    //         type:'multiple',
-    //         mulstyle:'style3'
-    //     });
-
-    //     return Vue.nextTick().then(function() {
-    //         expect(wrapper.find('.menu-multiple-style3').isVisible()).toBe(true);
-    //     })
-    // })
+    it('左边图标不显示',() => {
+        wrapper.setProps({
+            leftIcon:'close',
+        });
+        return Vue.nextTick().then(function() {
+            expect(wrapper.find('.left-icon').exists()).toBe(false);
+        })
+    })
 });
