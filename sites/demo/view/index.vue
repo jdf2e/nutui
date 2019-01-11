@@ -2,7 +2,7 @@
   <div class="demo-list-wrapper">
     <h1 class="logo"></h1>
     <div class="version">NutUI 2.0</div>
-    <p>NutUI 是一套轻量级移动端Vue组件库。</p>
+    <p>NutUI 是一套京东风格的移动端Vue组件库</p>
     <div
       :class="['demo-list-box',{'unfold':foldStatus[item]}]"
       v-for="item in sorts"

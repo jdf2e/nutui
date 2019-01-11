@@ -4,7 +4,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper init="1"></nut-stepper>
+          <nut-stepper v-model="val1"></nut-stepper>
         </span>
       </nut-cell>
     </div>
@@ -12,7 +12,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper init="25" min="1" max="100"></nut-stepper>
+          <nut-stepper v-model="val2" :min="5" :max="100"></nut-stepper>
         </span>
       </nut-cell>
     </div>
@@ -20,7 +20,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper init="10" step="5"></nut-stepper>
+          <nut-stepper v-model="val3" :step="5"></nut-stepper>
         </span>
       </nut-cell>
     </div>
@@ -28,7 +28,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper readonly></nut-stepper>
+          <nut-stepper v-model="val4" readonly></nut-stepper>
         </span>
       </nut-cell>
     </div>
@@ -36,7 +36,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper :simple="false"></nut-stepper>
+          <nut-stepper v-model="val5" :simple="false"></nut-stepper>
         </span>
       </nut-cell>
     </div>
@@ -44,7 +44,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper :transition="false" :simple="false"></nut-stepper>
+          <nut-stepper v-model="val6" :transition="false" :simple="false"></nut-stepper>
         </span>
       </nut-cell>
     </div>
@@ -53,6 +53,16 @@
 
 <script>
 export default {
+  data() {
+    return {
+      val1: 0,
+      val2: 12,
+      val3: 5,
+      val4: 0,
+      val5: 0,
+      val6: 0
+    }
+  },
 };
 </script>
 

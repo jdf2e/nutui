@@ -73,7 +73,7 @@ export default {
         endDate: {
             type: String,
             //default: null
-            default: Utils.getDay(155)
+            default: Utils.getDay(365)
         },
     },
     data() {

@@ -1,7 +1,7 @@
 const fs = require('fs');
 var path = require('path');
 let marked = require('marked');
-let version =require("../src/config.json") ;
+let package =require("../package.json") ;
 if (!marked) {
     console.log('you need npm i marked -D!');
 }
@@ -87,10 +87,7 @@ function insert(sorce) {
 ///创建一个空文件
 function createdFile(output, sorce,ishasCode) {
     var pathSrc = output;
-    if(sorce.indexOf('latest')>0){
-        console.log(version.version,'版本号')
-        sorce = sorce.replace('latest',version.version)
-    }
+    sorce = sorce.replace(/@latest/g,'@'+package.version)
     if(!ishasCode){       
         var res = insert(sorce);
     }   else{

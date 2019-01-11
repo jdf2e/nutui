@@ -11,7 +11,7 @@
     @close="switchPicker('isVisible')"
     @choose="setChooseValue"
     :start-date="`2018-10-11`"
-    :end-date="`2019-11-11`"
+    :end-date="`2020-11-11`"
 >
 </nut-calendar>
 ```
@@ -68,8 +68,8 @@ export default {
             isVisible3: false,
             date: null,
             dateWeek: null,
-            date1: ['2018-12-22', '2019-01-08'],
-            date2: '2018-11-22',
+            date1: ['2018-12-22', '2020-01-08'],
+            date2: Utils.getDay(30), // 当前日期之后的30天
             date3: null
             
         };

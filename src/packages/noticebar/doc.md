@@ -44,7 +44,7 @@
 | leftIcon | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | String | 空
 | color | 是否禁用 | String | 空
 | background | 是否禁用 | String | 空
-| delay | 是否禁用 | [String,Number] | 1
+| delay | 是否禁用 | String/Number | 1
 | scrollable | 是否禁用 | Boolean | true
 | speed | 是否禁用 | Number | 50
 
