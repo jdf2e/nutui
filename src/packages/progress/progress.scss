@@ -9,8 +9,8 @@
         height: 12px;
         .nut-progress-inner {
             width: 30%;
-            height: 100%; //background-color: #1890ff;
-            background-color: $primary-color; 
+            height: 100%;
+            background-color: $primary-color;
             -webkit-transition: all .4s;
             transition: all .4s;
             position: relative;
@@ -25,29 +25,27 @@
         .nut-active {
             &:before {
                 content: '';
-                opacity: 0;
                 position: absolute;
                 top: 0;
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: #fff;
                 border-radius: 10px;
-                animation: nut-progress-active 2s ease-in-out infinite;
+                animation: progressActive 2s ease-in-out infinite;
             }
         }
-        @keyframes nut-progress-active {
+        @keyframes progressActive {
             0% {
-                opacity: .1;
-                width: 0
+                background: rgba(255, 255, 255, .1);
+                width: 0;
             }
             20% {
-                opacity: .5;
-                width: 0
+                background: rgba(255, 255, 255, .5);
+                width: 0;
             }
             to {
-                opacity: 0;
-                width: 100%
+                background: rgba(255, 255, 255, 0);
+                width: 100%;
             }
         }
         &.nut-progress-small {
