@@ -35,7 +35,7 @@
             @close="switchPicker('isVisible')"
             @choose="setChooseValue"
             :start-date="`2018-10-11`"
-            :end-date="`2019-11-11`"
+            :end-date="`2020-11-11`"
         >
         </nut-calendar>
         <nut-calendar :is-visible="isVisible2"
@@ -65,6 +65,7 @@
 </template>
 
 <script>
+import Utils from "../../utils/date.js";
 export default {
     data() {
         return {
@@ -74,8 +75,8 @@ export default {
             isVisible3: false,
             date: null,
             dateWeek: null,
-            date1: ['2018-12-22', '2019-01-08'],
-            date2: '2018-11-22',
+            date1: ['2018-12-22', '2020-01-08'],
+            date2: Utils.getDay(30),
             date3: null
             
         };
