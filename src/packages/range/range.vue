@@ -48,6 +48,7 @@ function toRGBA(c, opacity) {
 	return toRGBA('#ff0000', opacity);
 }
 
+export {toRGBA};
 export default {
   name: "nut-range",
   components: {

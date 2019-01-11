@@ -51,10 +51,10 @@
             <div class="bg">
               <img src="./asset/css/i/phtitle.png" alt>
               <div>
-                <input type="text" readonly :value="'http://nutui.jd.com/demo.html#/'+routerName+'?ver='+version">
+                <input type="text" readonly :value="'http://nutui.jd.com/demo.html#/'+routerName">
               </div>
             </div>
-            <iframe :src="'/demo.html#/'+routerName+'?ver='+version"></iframe>
+            <iframe :src="'//nutui.jd.com/demo.html#/'+routerName+'?ver='+version"></iframe>
           </div>
         </div>
       </div>
@@ -362,12 +362,12 @@ export default {
   .showPhone {
     padding-right: 25px;
     //margin-left: 20px;
-    width: 375px;
+    width: 360px;
     flex-shrink: 0;
     position: relative;
     .ph {
-      height: 681px;
-      width: 389px;
+      height: 611px;
+      width: 360px;
       position: fixed;
       border-radius: 55px;
       top: 100px;
@@ -377,23 +377,23 @@ export default {
       box-shadow: 0px 0px 9px 5px #eee;
       iframe {
         border: none;
-        width: 389px;
-        height: 612px;
-        padding: 5px 5px 5px 5px;
+        width: 360px;
+        height: 542px;
+        padding: 0;
         box-sizing: border-box;
       }
     }
     .bg {
-      width: 389px;
+      width: 360px;
       height: 64px;
       padding-top: 5px;
       background: linear-gradient(rgba(55, 55, 55, 0.98), #545456);
       text-align: center;
       img {
-        width: 350px;
+        width: 90%;
       }
       input {
-        width: 350px;
+        width: 90%;
         height: 28px;
         line-height: 28px;
         color: #fff;
@@ -490,6 +490,23 @@ body {
     img {
       width: 150px;
       height: 150px;
+    }
+  }
+}
+@media screen and (max-width: 1500px) {
+  .demo-wrapper {
+    .showPhone{
+      width:320px;
+      .ph{
+        width:320px;
+        height: 581px;
+        &>div,iframe{
+          width:320px;
+        }
+        iframe{
+          height:512px;
+        }
+      }
     }
   }
 }
