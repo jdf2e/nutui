@@ -23,7 +23,7 @@ describe('noticebar.vue',() => {
 
     it('通告栏模式--关闭模式',() => {
         wrapper.setProps({
-            mode:true
+            closeMode:true
         });
 
         return Vue.nextTick().then(function() {
