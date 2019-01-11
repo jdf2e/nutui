@@ -5,7 +5,6 @@ import Stepper from '../stepper.vue';
 describe('Stepper.vue', () => {
     const wraper = shallowMount(Stepper, {
         propsData: {
-            // v-model
             value: 0
         }
     });

@@ -2,11 +2,11 @@
 
 ## 推荐工程
 
-我们提供一个命令行工具 [Gaea-cli](https://www.npmjs.com/package/gaea-cli) ，可用来快速生成一个已经内置了本组件库的基于 Webpack 的 Vue 项目工程。基于这个工程开发项目，可省去大量配置和调试环境的时间，也可略过下面组件库安装使用部分内容直接进入开发阶段。
+我们提供一个命令行工具 [Gaea CLI](https://www.npmjs.com/package/gaea-cli) ，可用来快速生成一个已经内置了本组件库的基于 Webpack 的 Vue 项目工程。基于这个工程开发项目，可省去大量配置和调试环境的时间，也可略过下面组件库安装使用部分内容直接进入开发阶段。
 
 ## 安装
 
-* 推荐使用 NPM 或 YARN 安装（推荐）
+* 通过 NPM 或 YARN 安装（推荐）
 
 #### NPM
 ```bash
@@ -77,9 +77,9 @@ CDN 引入示例
 
 > 在页面中直接引入，将无法使用 **主题换肤** 等功能。我们推荐使用 *NPM* 或 *YARN* 方式安装，不推荐在页面中直接引入的用法
 
-* 通过 **Vue-cli** 图形化界面安装
+* 通过 **Vue CLI** 图形化界面安装
 
-如果你的项目是使用 [Vue-cli](https://cli.vuejs.org/zh/) 脚手架搭建，那么你还可以通过 **Vue-cli** 提供的图形化界面安装 **NutUI** ：在图形化界面的 **依赖** 界面，点击右上角 **安装依赖** 按钮，搜索 **@nutui/nutui** 安装即可。
+如果你的项目是使用 [Vue CLI](https://cli.vuejs.org/zh/) 脚手架搭建，那么你还可以通过 **Vue CLI** 提供的图形化界面安装 **NutUI** ：在图形化界面的 **依赖** 界面，点击右上角 **安装依赖** 按钮，搜索 **@nutui/nutui** 安装即可。
 
 ## 加载示例
 
@@ -99,10 +99,10 @@ NutUI.install(Vue);
 
 ### 1. 使用 webpack 插件 **[@nutui/babel-plugin-seperate-import](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)** (推荐)
 
-首先安装 **@nutui/separate-import** 插件
+首先安装 **@nutui/babel-plugin-separate-import** 插件
 
 ```bash
-npm i @nutui/separate-import -D
+npm i @nutui/babel-plugin-separate-import -D
 ```
 
 然后配置一下 **.babelrc** 文件
@@ -134,7 +134,7 @@ Picker.install(Vue);
 import Vue from 'vue';
 import Button from '@nutui/nutui/dist/packages/button/button.js';  // 加载构建后的JS
 import '@nutui/nutui/dist/packages/button/button.css';  //加载构建后的CSS
-//主题定制等场景需要加载SCSS
+//主题定制等场景需要加载SCSS,而不是构建后的CSS
 //import '@nutui/nutui/dist/packages/button/button.scss'; 
 
 Button.install(Vue);
@@ -147,7 +147,7 @@ Button.install(Vue);
 <nut-switch :active="true" size="base"></nut-switch>
 ```
 
-2.组件 css 单位使用的是 **px**，如果你的项目中需要 **rem** 单位，可借助一些工具进行转换，比如 webpack 的 [px2rem-loader](https://www.npmjs.com/package/px2rem-loader)、postcss 的 [postcss-plugin-px2rem](https://www.npmjs.com/package/postcss-plugin-px2rem) 插件
+2.组件 css 单位使用的是 **px**，如果你的项目中需要 **rem** 单位，可借助一些工具进行转换，比如 webpack 的 [px2rem-loader](https://www.npmjs.com/package/px2rem-loader)、postcss 的 [postcss-plugin-px2rem](https://www.npmjs.com/package/postcss-plugin-px2rem) 插件等
 
 3.组件具体用法以文档为准
 
