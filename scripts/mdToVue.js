@@ -5,9 +5,6 @@ let version =require("../src/config.json") ;
 if (!marked) {
     console.log('you need npm i marked -D!');
 }
-
-
-//let commomOption = null;
 //插入 默认的 script 标签
 let jsroot = `<script>export default {
     data(){
@@ -73,7 +70,10 @@ let jsroot = `<script>export default {
   }
 }
 </script>`;
-//插入
+/**
+ * 
+ * @param {text} sorce 替换 头部信息 
+ */
 function insert(sorce) {
     var insert = sorce.indexOf('</h1>');
     
@@ -85,6 +85,12 @@ function insert(sorce) {
 
 }
 ///创建一个空文件
+/**
+ * 
+ * @param {string} output  输出路径
+ * @param {string} sorce  文件源
+ * @param {boole} ishasCode  是否需要二维码 
+ */
 function createdFile(output, sorce,ishasCode) {
     var pathSrc = output;
     if(sorce.indexOf('latest')>0){
@@ -111,6 +117,12 @@ function createdFile(output, sorce,ishasCode) {
        
     })
 }
+/**
+ * 
+ * @param {string} filePath  监听路径
+ * @param {*} outPath 输出路径
+ * @param {*} nohead 是否有头文件
+ */
 function fileDisplay(filePath,outPath,nohead) {
     var rendererMd = new marked.Renderer();
     marked.setOptions({
@@ -185,9 +197,5 @@ function MdToHtml(commomOption) {
     //获取所有的md 转html的结果
     fileDisplay(commomOption.entry,commomOption.output,commomOption.nohead);
 }
-
-MdToHtml.prototype.apply = function (compiler) {
-    //  console.log(compiler,'lls')
-};
 
 module.exports = MdToHtml;
