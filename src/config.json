@@ -137,7 +137,7 @@
       "desc": "滑动取值控件",
       "type": "component",
       "showDemo": true,
-      "author": "hufeng10"
+      "author": "Frans"
     },
     {
       "version": "1.0.0",
@@ -147,7 +147,7 @@
       "desc": "区间选择器组件",
       "type": "component",
       "showDemo": true,
-      "author": "hufeng10"
+      "author": "famanoder"
     },
     {
       "version": "1.0.0",
@@ -277,7 +277,7 @@
       "type": "component",
       "sort": "1",
       "showDemo": true,
-      "author": "hufeng10"
+      "author": "famanoder"
     },
     {
       "version": "1.0.0",

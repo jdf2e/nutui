@@ -4,7 +4,7 @@ import znCH from './lang/zn-CH'
 let defaultMessages = {};
 
 let merged = false;
-let vueI18nHandler = function() {
+const vueI18nHandler = function() {
     const vuei18n = Object.getPrototypeOf(this || Vue).$t;
     if (typeof vuei18n === 'function' && !!Vue.locale) {
         if (!merged) {
