@@ -581,6 +581,7 @@ export default {
       line-height: 64px;
       cursor: pointer;
       color: #fff;
+      position: relative;
       & > a {
         display: block;
         height: 100%;
@@ -598,8 +599,28 @@ export default {
       margin-left: 20px;
       font-size: 12px;
     }
-    li:hover {
-      border-bottom: 2px solid #fff;
+    
+    li::before{
+      content:'';
+      position: absolute;
+      top:0;
+      left:100%;
+      width:0;
+      height:100%;
+      border-bottom:2px solid #fff;
+      transition:0.2s all linear;
+
+    }
+    li:hover:before{
+      width:100%;
+      top:0;
+      left:0;
+      transition-delay:0.1s;
+      border-bottom-color:#fff;
+      z-index:-1;
+    }
+    li:hover ~ li::before{
+      left:0;
     }
     .github-icon {
       display: inline-block;
