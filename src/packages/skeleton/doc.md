@@ -1,5 +1,7 @@
 # Skeleton 骨架屏
 
+在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。
+
 ## 长方形
 
 ```html
@@ -54,7 +56,7 @@
 </column>
 ```
 
-## Props
+## Prop
 
 layout（row|column）
 

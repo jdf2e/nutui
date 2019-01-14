@@ -38,7 +38,7 @@ body{
     font-size:16px;
     margin: 0;
     color:#2e2d2d;
-    font-family: PingHei,Lucida Grande,Lucida Sans Unicode,STHeiti,Helvetica,Arial,Verdana,"sans-serif","PingHei-light",SimHei,"Droid Sans";  
+    font-family: PingHei,"Microsoft YaHei","Lucida Grande","Lucida Sans Unicode",STHeiti,Helvetica,Arial,Verdana,"sans-serif","PingHei-light",SimHei,"Droid Sans";  
 }
 .demo-wrapper{
   width:100%;

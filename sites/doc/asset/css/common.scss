@@ -139,30 +139,31 @@ pre {
     position: relative;
     max-width: 100%;
     overflow: auto;
-    i {
+    &>i {
         cursor: pointer;
         position: absolute;
+        top:10px;
+        width:16px;
+        height:16px;
+        background-repeat: no-repeat;
+        background-size:cover;
+        opacity: .8;
+        &:hover{
+            opacity: 1;
+        }
     }
     [toast="toast"] {
-        top: 10px;
         right: 10px;
-        width: 28px;
-        height: 28px;
-        background: url(./i/all.png) no-repeat center;
-        border-radius: 4px;
+        background-image: url(./i/all.png);
         &:hover {
-            background: #D5E5FF url(./i/all.png) no-repeat center;
+            background-color: #D5E5FF;
         }
     }
     [copy="copy"] {
-        top: 10px;
         right: 40px;
-        width: 28px;
-        height: 28px;
-        background: url(./i/cp.png) no-repeat center;
-        border-radius: 4px;
+        background-image: url(./i/cp.png);
         &:hover {
-            background: #D5E5FF url(./i/cp.png) no-repeat center;
+            background-color: #D5E5FF;
         }
     }
 }

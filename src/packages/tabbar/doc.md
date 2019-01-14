@@ -151,7 +151,7 @@ export default {
 ```
 
 
-### 表格
+### Prop
 
 ### nut-tabbar
 

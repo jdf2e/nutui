@@ -148,7 +148,7 @@ RadioGroup整体禁用
 ```
 **RadioGroup** 也支持新增自定义class
 
-## Props
+## Prop
 
 ### Radio
 
