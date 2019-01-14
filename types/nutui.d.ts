@@ -30,7 +30,7 @@ export declare class Progress extends UIComponent {}
 export declare class Radio extends UIComponent {}
 export declare class RadioGroup extends UIComponent {}
 export declare class Range extends UIComponent {}
-export declare class Rating extends UIComponent {}
+export declare class Rate extends UIComponent {}
 export declare class Row extends UIComponent {}
 export declare class SearchBar extends UIComponent {}
 export declare class ShortPassword extends UIComponent {}

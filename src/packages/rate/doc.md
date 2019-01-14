@@ -1,39 +1,39 @@
-# Rating 评分
+# Rate 评分
 
 用于快速的评级操作，或对评价进行展示。
 
 ## 基础用法
 
 ```html
-<nut-rating>
-</nut-rating>
+<nut-rate>
+</nut-rate>
 ```
 
 绑定事件
 
 ```html
-<nut-rating 
+<nut-rate 
     @click="onClick"
 >
-</nut-rating>
+</nut-rate>
 ```
 
 自定义尺寸
 
 ```html
-<nut-rating 
+<nut-rate 
     :size="35"
 >
-</nut-rating>
+</nut-rate>
 ```
 
 自定义ICON
 
 ```html
-<nut-rating
+<nut-rate
     :checkedIcon="icon1"
     :uncheckedIcon="icon2"
-></nut-rating>
+></nut-rate>
 ```
 
 ## Prop

@@ -241,7 +241,7 @@
     },
     {
       "version": "1.0.0",
-      "name": "Rating",
+      "name": "Rate",
       "sort": "1",
       "chnName": "评分",
       "desc": "用于快速的评级操作，或对评价进行展示。",
