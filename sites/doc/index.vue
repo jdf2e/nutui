@@ -1,29 +1,22 @@
 <template>
   <div class="container">
     <template v-if="notWebgl">
-
-      <div class="css-animation" >
-				
-          <span class="blue-bg"></span>
-					<span class="phone"></span>
-					<span class="goods"></span>
-					<span class="nut"></span>
-					<span class="people"></span>
-					<span class="flower">
-						<span class="leaf_2"></span>
-						<span class="leaf_1"></span>
-						<span class="leaf_4"></span>
-						<span class="leaf_3"></span>
-					
-						<span class="flowerpot"></span>
-
-					</span>
-					<span class="fengche"></span>
-			
-
-			</div>
-
-      
+      <div class="css-animation">
+        <span class="blue-bg"></span>
+        <span class="phone"></span>
+        <span class="goods"></span>
+        <span class="nut"></span>
+        <span class="people"></span>
+        <span class="flower">
+          <span class="leaf_2"></span>
+          <span class="leaf_1"></span>
+          <span class="leaf_4"></span>
+          <span class="leaf_3"></span>
+          
+          <span class="flowerpot"></span>
+        </span>
+        <span class="fengche"></span>
+      </div>
     </template>
     <template v-else>
       <canvas id="output"></canvas>
@@ -777,7 +770,6 @@ export default {
   }
 }
 
-<<<<<<< HEAD
 .css-animation{
 	position: absolute;
   top:0;
@@ -910,134 +902,7 @@ export default {
 			animation: fadeIn 1s both 2s;
 
 		}
-	}
 
-=======
-.css-animation {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: scale3d(1.06, 1.06, 1.06);
-
-  .blue-bg {
-    background: url("//img12.360buyimg.com/uba/jfs/t1/22824/40/3136/6504/5c24a3f4E76fdafde/802d02d1ec5d3d55.png")
-      0 0 no-repeat;
-    height: 757px;
-    width: 963px;
-    background-size: 100% 100%;
-    position: absolute;
-    right: 0;
-    top: 0;
->>>>>>> fd9c2b1a875256700418a2f379f3e4c67e1c1f84
-
-    .phone {
-      background: url("//img10.360buyimg.com/uba/jfs/t1/19171/19/3175/23282/5c24a440Ee2a94261/45321aeaf173f237.png")
-        0 0 no-repeat;
-      height: 419px;
-      width: 227px;
-      background-size: 100% 100%;
-      position: absolute;
-      right: 350px;
-      top: 250px;
-      display: inline-block;
-    }
-    .goods {
-      background: url("//img14.360buyimg.com/uba/jfs/t1/21115/40/3224/5652/5c24a411E03ef9eb6/83781b97e59da905.png")
-        0 0 no-repeat;
-      height: 165px;
-      width: 117px;
-      background-size: 100% 100%;
-      position: absolute;
-      display: inline-block;
-      top: 500px;
-      right: 710px;
-    }
-    .people {
-      background: url("//img12.360buyimg.com/uba/jfs/t1/9330/16/10894/8662/5c24a42aE708692b3/14455d20eca1ccee.png");
-      width: 184px;
-      height: 334px;
-      background-size: 100% 100%;
-      position: absolute;
-      top: 334px;
-      right: 500px;
-    }
-    .flower {
-      position: absolute;
-      right: 195px;
-      top: 510px;
-      height: 160px;
-      width: 208px;
-      .leaf_1 {
-        position: absolute;
-        background: url(./asset/css/i/leaf_1.png) 0 0 no-repeat;
-        height: 113px;
-        width: 60px;
-        background-size: 100% 100%;
-        bottom: 36px;
-        right: 79px;
-        animation: leafShake 8s infinite;
-      }
-      .leaf_2 {
-        position: absolute;
-        background: url(./asset/css/i/leaf_2.png) 0 0 no-repeat;
-        height: 64px;
-        width: 66px;
-        background-size: 100% 100%;
-        bottom: 36px;
-        right: 35px;
-        animation: leafShake 8s infinite 0.6s;
-      }
-      .leaf_3 {
-        position: absolute;
-        background: url(./asset/css/i/leaf_3.png) 0 0 no-repeat;
-        height: 28px;
-        width: 64px;
-        background-size: 100% 100%;
-        bottom: 38px;
-        right: 42px;
-        //animation:leafShake 3s infinite 0.5s;
-      }
-      .leaf_4 {
-        position: absolute;
-        background: url(./asset/css/i/leaf_4.png) 0 0 no-repeat;
-        height: 113px;
-        width: 99px;
-        background-size: 100% 100%;
-        bottom: 38px;
-        left: 2px;
-        //animation:leafShake 3s infinite 0.2s;
-      }
-      .flowerpot {
-        position: absolute;
-        background: url(./asset/css/i/flowerpot.png) 0 0 no-repeat;
-        height: 42px;
-        width: 130px;
-        bottom: 0;
-        right: 5px;
-        background-size: 100% 100%;
-      }
-    }
-    .nut {
-      position: absolute;
-      height: 46px;
-      width: 46px;
-      background: url(./asset/css/i/nut-icon.png) 0 0 no-repeat;
-      background-size: 100% 100%;
-      top: 308px;
-      right: 493px;
-      animation: fadeInRight 2s both;
-    }
-    .fengche {
-      position: absolute;
-      background: url(./asset/css/i/fengche.png) 0 0 no-repeat;
-      background-size: 100% 100%;
-      width: 679px;
-      height: 476px;
-      top: 195px;
-      right: 180px;
-      animation: fadeIn 1s both 2s;
-    }
-  }
 }
 @media screen and (max-width: 1500px) {
     .css-animation{
