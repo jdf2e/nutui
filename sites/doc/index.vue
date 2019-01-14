@@ -541,9 +541,11 @@ export default {
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform:rotate(20deg);
   }
   to {
     opacity: 1;
+    transform:rotate(0deg);
   }
 }
 
@@ -920,7 +922,7 @@ export default {
 			height:476px;
 			top:195px;
 			right:180px;
-			animation: fadeIn 1s both 2s;
+			animation: fadeIn 2s both 2s;
 
 		}
 
