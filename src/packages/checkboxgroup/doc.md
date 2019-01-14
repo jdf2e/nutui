@@ -201,7 +201,7 @@ methods: {
 </nut-checkboxgroup>
 ```
 
-## API
+## Prop
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 

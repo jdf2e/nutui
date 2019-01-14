@@ -2,11 +2,11 @@
   <div
     v-show="showNoticeBar"
     class="nut-noticebar"
-    :class="{ withicon: mode,close:mode }"
+    :class="{ withicon: closeMode,close:closeMode }"
     :style="barStyle"
     @click="$emit('click')"
   >
-    <div v-if="leftIcon" class="left-icon" :style="{'background-image':`url(${iconBg})`}">
+    <div  class="left-icon" v-if="iconShow" :style="{'background-image':`url(${iconBg})`}">
     </div>
     <div ref="wrap" class="wrap">
       <div
@@ -20,7 +20,7 @@
         <slot>{{ text }}</slot>
       </div>
     </div>
-    <div v-if="mode" class="right-icon"  @click="onClickIcon">
+    <div v-if="closeMode" class="right-icon"  @click="onClickIcon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
         <g fill-rule="evenodd">
           <path
@@ -37,7 +37,7 @@ export default {
   name: "nut-noticebar",
   props: {
     text: String,
-    mode: {
+    closeMode: {
       type: Boolean,
       default: false
     },
@@ -71,6 +71,13 @@ export default {
     };
   },
   computed: {
+    iconShow(){
+      if(this.leftIcon=='close'){
+        return false;
+      }else{
+        return true;
+      }
+    },
     barStyle() {
       return {
         color: this.color,
@@ -118,7 +125,7 @@ export default {
   },
   methods: {
     onClickIcon() {
-      this.showNoticeBar = !this.mode;
+      this.showNoticeBar = !this.closeMode;
     },
     onAnimationEnd() {
       this.firstRound = false;

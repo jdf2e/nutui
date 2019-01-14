@@ -1,5 +1,7 @@
 # Toast 吐司
 
+轻提示。
+
 ## 基本用法
 
 ```javascript

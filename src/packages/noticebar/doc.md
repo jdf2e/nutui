@@ -18,7 +18,7 @@
 ## 通告栏模式--关闭模式
 ```html
     <nut-noticebar
-      :mode="true"
+      :closeMode="true"
       @click="hello"
     >华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！
     </nut-noticebar>
@@ -35,16 +35,16 @@
 
 
 
-## Props
+## Prop
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | text | 提示的信息 | String | 空
-| mode | 是否启用关闭模式 | Boolean | false
-| leftIcon | 是否禁用 | String | 空
+| closeMode | 是否启用关闭模式 | Boolean | false
+| leftIcon | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | String | 空
 | color | 是否禁用 | String | 空
 | background | 是否禁用 | String | 空
-| delay | 是否禁用 | [String,Number] | 1
+| delay | 是否禁用 | String/Number | 1
 | scrollable | 是否禁用 | Boolean | true
 | speed | 是否禁用 | Number | 50
 

@@ -1,4 +1,4 @@
-# tabbar 标签栏
+# Tabbar 标签栏
 
 ## 基本用法
 
@@ -151,7 +151,7 @@ export default {
 ```
 
 
-### 表格
+### Prop
 
 ### nut-tabbar
 

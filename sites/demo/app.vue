@@ -14,9 +14,15 @@ export default {
       inIframe:false
     }
   },
-  created(){
+  mounted(){
     if (window.self != window.top) { 
       this.inIframe = true;
+    }
+
+    if (window.navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|IEMobile|MQQBrowser|JUC|Windows Phone)/i)) {
+      window.isMobile = true;
+    } else {
+      window.isMobile = false;
     }
   }
 }
@@ -32,7 +38,7 @@ body{
     font-size:16px;
     margin: 0;
     color:#2e2d2d;
-    font-family: PingHei,Lucida Grande,Lucida Sans Unicode,STHeiti,Helvetica,Arial,Verdana,"sans-serif","PingHei-light",SimHei,"Droid Sans";  
+    font-family: PingHei,"Microsoft YaHei","Lucida Grande","Lucida Sans Unicode",STHeiti,Helvetica,Arial,Verdana,"sans-serif","PingHei-light",SimHei,"Droid Sans";  
 }
 .demo-wrapper{
   width:100%;

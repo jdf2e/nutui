@@ -3,7 +3,7 @@
         <h4>基本用法</h4>
         <div>
             <nut-cell>
-                <span slot="title"><nut-rating v-model="val"></nut-rating></span>
+                <span slot="title"><nut-rate v-model="val"></nut-rate></span>
             </nut-cell>
             <nut-cell>
                 <span slot="title">当前分数：{{val}}分</span>
@@ -13,7 +13,7 @@
         <h4>事件</h4>
         <div>
             <nut-cell>
-                <span slot="title"><nut-rating @click="onClick"></nut-rating></span>
+                <span slot="title"><nut-rate @click="onClick"></nut-rate></span>
             </nut-cell>
             <nut-cell>
                 <span slot="title">结果：{{result}}</span>
@@ -23,19 +23,19 @@
         <h4>自定义尺寸</h4>
         <div>
             <nut-cell>
-                <span slot="title"><nut-rating
+                <span slot="title"><nut-rate
                 :size="35"
-                ></nut-rating></span>
+                ></nut-rate></span>
             </nut-cell>
         </div>
 
         <h4>自定义ICON</h4>
         <div>
             <nut-cell>
-                <span slot="title"><nut-rating
+                <span slot="title"><nut-rate
                 :checkedIcon="icon1"
                 :uncheckedIcon="icon2"
-                ></nut-rating></span>
+                ></nut-rate></span>
             </nut-cell>
         </div>
     </div>

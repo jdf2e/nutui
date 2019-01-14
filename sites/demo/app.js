@@ -3,6 +3,7 @@ import "core-js/modules/es6.array.iterator";
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
+import './view/mixin.vue';
 import Conf from '../../src/config.json';
 import NutUI from '../../src/nutui';
 // import en from '../../src/locales/lang/en-US';

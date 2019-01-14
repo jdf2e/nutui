@@ -1,5 +1,7 @@
 # ActionSheet 动作面板
 
+从底部弹出的动作菜单面板。
+
 ## 基本用法
 ```html
 <nut-actionsheet :is-visible="isVisible" 
@@ -151,7 +153,7 @@ export default {
 };
 ```
 
-## Props
+## Prop
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
