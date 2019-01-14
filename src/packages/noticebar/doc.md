@@ -40,7 +40,7 @@
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | text | 提示的信息 | String | 空
-| mode | 是否启用关闭模式 | Boolean | false
+| closeMode | 是否启用关闭模式 | Boolean | false
 | leftIcon | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | String | 空
 | color | 是否禁用 | String | 空
 | background | 是否禁用 | String | 空
