@@ -2,7 +2,8 @@
   <div class="container">
     <template v-if="notWebgl">
       <div class="css-animation" >
-				<div class="blue-bg">
+				
+          <span class="blue-bg"></span>
 					<span class="phone"></span>
 					<span class="goods"></span>
 					<span class="nut"></span>
@@ -17,7 +18,7 @@
 
 					</span>
 					<span class="fengche"></span>
-				</div>
+			
 
 			</div>
     </template>
@@ -494,6 +495,19 @@ export default {
 		transform: translate3d(0,0,0);
 	}
 }
+
+@keyframes fadeInRightAndTop{
+  from{
+    opacity: 0;
+    transform: translate(100%,100%,0);
+    transform: scale3d(1,1,1);
+  }
+  to{
+    opacity: 1;
+    transform:translate3d(0,0,0);
+    transform: scale3d(1.06,1.06,1.06);
+  }
+}
 @keyframes leafShake {
 	form,to{
 		transform:rotate(0);
@@ -751,7 +765,10 @@ export default {
 	position: absolute;
   top:0;
   right:0;
-	transform: scale3d(1.06,1.06,1.06);
+  height:757px;
+	width:963px;
+  animation: fadeInRightAndTop 1.2s 1;
+  transform: scale3d(1.06,1.06,1.06);
 
 	.blue-bg{
 		background:url('//img12.360buyimg.com/uba/jfs/t1/22824/40/3136/6504/5c24a3f4E76fdafde/802d02d1ec5d3d55.png') 0 0 no-repeat;
@@ -761,7 +778,7 @@ export default {
 		position: absolute;
 		right:0;
 		top:0;
-
+  }
 		.phone{
 			background:url('//img10.360buyimg.com/uba/jfs/t1/19171/19/3175/23282/5c24a440Ee2a94261/45321aeaf173f237.png') 0 0 no-repeat;
 			height:419px;
@@ -852,7 +869,7 @@ export default {
 				
 
 			}
-		}
+    }
 		.nut{
 			position: absolute;
 			height:46px;
@@ -877,6 +894,6 @@ export default {
 
 		}
 	}
-}
+
 
 </style>
