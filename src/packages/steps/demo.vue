@@ -2,8 +2,8 @@
   <div>
     <h4>正常流程</h4>
     <nut-steps :current="current">
-      <nut-step title="已完成" content=""></nut-step>
-      <nut-step title="" content="这里是该步骤的描述信息"></nut-step>
+      <nut-step title="已完成" content></nut-step>
+      <nut-step title content="这里是该步骤的描述信息"></nut-step>
       <nut-step title="进行中" content="这里是该步骤的描述信息"></nut-step>
       <nut-step title="待进行" content="这里是该步骤的描述信息"></nut-step>
       <nut-step title="待进行" content="这里是该步骤的描述信息"></nut-step>
@@ -16,7 +16,6 @@
       <nut-step title="待进行" content="这里是该步骤的描述信息"></nut-step>
       <nut-step title="待进行" content="这里是该步骤的描述信息"></nut-step>
     </nut-steps>
-    <!-- <p class="next-step" @click="next">下一步</p> -->
   </div>
 </template>
 
@@ -37,8 +36,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nut-steps{
-  margin-left:10px;
+.nut-steps {
+  margin-left: 10px;
 }
 .next-step {
   text-align: center;

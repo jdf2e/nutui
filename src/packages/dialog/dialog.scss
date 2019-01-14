@@ -159,6 +159,9 @@ body.dialog-open {
         color: $primary-color;
         border-top: 1px solid $light-color;
     }
+    &:active{
+        opacity: .7;
+    }
 }
 
 .nut-dialog-ok {

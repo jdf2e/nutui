@@ -11,7 +11,7 @@
                      {{percentage}}%
                 </template>
                 <template v-else-if="status=='success' || 'wrong'">
-                    <icon :class="statusIcon"></icon>
+                    <i :class="statusIcon"></i>
                 </template>
             </slot>
         </div>
@@ -61,7 +61,7 @@ export default {
         bgStyle () {
             const style = {};
             style.width = this.percentage + '%';
-            style.backgroundColor = this.strokeColor;
+            style.backgroundColor = this.strokeColor || '';
             return style;
         },
         statusIcon () {

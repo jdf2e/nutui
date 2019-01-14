@@ -1,87 +1,90 @@
 <template>
- <div>
-  <div v-if="routerName == 'frontcover' || routerName == ''">
-     <router-view ></router-view>
-  </div>
-  <div class="md-swaper" @click="clearSearch" v-else>
-    <div class="hder">
-      <div class="logo">
-        <a href="#/index" class="logo-link"><img src="./asset/css/i/nut.png" alt></a> <span class="version">{{version}}</span>
-      </div>
-      <div class="h-nav">
-        <search/>
-        <ul class="list">
-          <li class="cur">
-            <a href="#/doc">指南</a>
-          </li>        
-          <li>
-            <a class="qrcode demoLink" href="/demo.html#/index" target="_blank">示例             
-                <a :href="routerName">
-                  <span>请使用手机扫码体验</span><img src="http://img13.360buyimg.com/uba/jfs/t1/14144/37/3433/5890/5c26d976E7cd98b80/94583409233081cc.png" alt="">
-                </a>
-            </a>
-          </li>
-          <li>
-            <select @change="openwindow">
-                <option value="2">
-                    2.X
-                </option>
-                <option value="1">
-                    1.X
-                </option>
-            </select>
-          </li>
-          <li class="github">
-
-            <a target="_back" href="https://github.com/jdf2e/nutui"></a>
-          </li>
-        </ul>
-      </div>
+  <div>
+    <div v-if="routerName == 'frontcover' || routerName == ''">
+      <router-view></router-view>
     </div>
-    <div class="demo-wrapper">
-      <router-view class="demo-nav" name="demonav"></router-view>
+    <div class="md-swaper" @click="clearSearch" v-else>
+      <div class="hder">
+        <div class="logo">
+          <a href="#/index" class="logo-link">
+            <img src="./asset/css/i/nut.png" alt>
+          </a>
+          <span class="version">{{version}}</span>
+        </div>
+        <div class="h-nav">
+          <search/>
+          <ul class="list">
+            <li class="cur">
+              <a href="#/doc">指南</a>
+            </li>
+            <li>
+              <a class="qrcode demoLink" href="/demo.html#/index" target="_blank">
+                示例
+                <a :href="routerName">
+                  <span>请使用手机扫码体验</span>
+                  <img
+                    src="http://img13.360buyimg.com/uba/jfs/t1/14144/37/3433/5890/5c26d976E7cd98b80/94583409233081cc.png"
+                    alt
+                  >
+                </a>
+              </a>
+            </li>
+            <li>
+              <select @change="openwindow">
+                <option value="2">2.X</option>
+                <option value="1">1.X</option>
+              </select>
+            </li>
+            <li class="github">
+              <a target="_back" href="https://github.com/jdf2e/nutui"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="demo-wrapper">
+        <router-view class="demo-nav" name="demonav"></router-view>
         <keep-alive include="index">
           <router-view class="doc-cont" name="main"></router-view>
         </keep-alive>
         <div v-if="showPhone" class="showPhone">
           <div class="ph">
             <div class="bg">
-              <img src="./asset/css/i/phtitle.png" alt="">
+              <img src="./asset/css/i/phtitle.png" alt>
               <div>
                 <input type="text" readonly :value="'http://nutui.jd.com/demo.html#/'+routerName">
               </div>
             </div>
-            <iframe :src="'/demo.html#/'+routerName"></iframe>
+            <iframe :src="'//nutui.jd.com/demo.html#/'+routerName+'?ver='+version"></iframe>
           </div>
         </div>
-    </div>
-    <div class="foot">Copyright © 2018~2019
-      <a href="//jdc.jd.com" target="_blank">JDC</a>-
-      <a target="_blank" href="http://fe.jd.com/">前端开发部</a>
+      </div>
+      <div class="foot">
+        Copyright © 2018~2019
+        <a href="//jdc.jd.com" target="_blank">JDC</a>-
+        <a target="_blank" href="http://fe.jd.com/">前端开发部</a>
+      </div>
     </div>
   </div>
-  
- </div>
 </template>
 <script>
 import "./asset/css/common.scss";
 import "./asset/css/style-blue.scss";
-import Conf from "../../src/config.json";
-import PackageJson from "../../package.json";
-import search from './search.vue';
+import { packages } from "../../src/config.json";
+import { version } from "../../package.json";
+import search from "./search.vue";
 export default {
   name: "App",
   data() {
     return {
-      packages: "",
+      packages,
       searchList: [],
       searchVal: "",
       routerName: "",
       showPhone: false,
-      searchCurName:'',
-      searchIndex:0,
-      codeurl:'',
-      version:''
+      searchCurName: "",
+      searchIndex: 0,
+      codeurl: "",
+      version
     };
   },
   watch: {
@@ -92,57 +95,60 @@ export default {
     //  },
     $route: "fetchData"
   },
-  components:{
+  components: {
     search
   },
   methods: {
-    openwindow(val){      
-      if(val.target.value==1){
-        window.location.href=" http://nutui.jd.com/1x/"
+    openwindow(val) {
+      if (val.target.value == 1) {
+        window.location.href = " http://nutui.jd.com/1x/";
       }
     },
-    choseList(e){
-      console.log(e)
+    choseList(e) {
       let searchIndex = this.searchIndex;
-      if(e.keyCode==40){
+      if (e.keyCode == 40) {
         searchIndex++;
       }
-      if(e.keyCode==38){
-         searchIndex--;
+      if (e.keyCode == 38) {
+        searchIndex--;
       }
-      if(searchIndex<0){
+      if (searchIndex < 0) {
         searchIndex = 0;
-      }      
+      }
       let searchList = this.searchList;
-      if(searchList.length>0){       
-       let chnName = searchList[searchIndex].chnName;
-       if(chnName){
-         this.searchCurName = chnName;
-         this.searchIndex = searchIndex;
-         if(e.keyCode==13){
-          this.$router.push({
-            path:'/'+searchList[searchIndex].name
-          })
-           this.searchCurName='';
-           this.searchIndex=0;
-           this.searchList=[];
-           this.searchVal='';
+      if (searchList.length > 0) {
+        let chnName = searchList[searchIndex].chnName;
+        if (chnName) {
+          this.searchCurName = chnName;
+          this.searchIndex = searchIndex;
+          if (e.keyCode == 13) {
+            this.$router.push({
+              path: "/" + searchList[searchIndex].name
+            });
+            this.searchCurName = "";
+            this.searchIndex = 0;
+            this.searchList = [];
+            this.searchVal = "";
+          }
         }
-       }       
       }
     },
-    fetchData(obj) {  
+    fetchData(obj) {
       this.routerName = obj.name;
       this.showPhone = false;
-      for (let i = 0, item; (item = Conf.packages[i]); i++) {
+      for (let i = 0, item; (item = packages[i]); i++) {
         if (obj.name == item.name) {
           this.showPhone = true;
         }
       }
       let that = this;
-      this.qrcode.toDataURL('http://nutui.jd.com/index.html#/'+that.routerName,{width:170},(err,url)=>{
-        that.codeurl = url
-      })
+      this.qrcode.toDataURL(
+        "http://nutui.jd.com/index.html#/" + that.routerName,
+        { width: 170 },
+        (err, url) => {
+          that.codeurl = url;
+        }
+      );
     },
     onfocus(e) {
       e.target.select();
@@ -168,21 +174,18 @@ export default {
     checklist(obj) {
       this.searchVal = "";
       this.searchList = [];
-      this.searchCurName='';
-      this.searchIndex=0;
+      this.searchCurName = "";
+      this.searchIndex = 0;
     }
   },
   created() {
     let that = this;
-    this.packages = Conf.packages;   
     let name = this.$route.name;
-    this.version = PackageJson.version; 
-    for (let i = 0, item; (item = Conf.packages[i]); i++) {
+    for (let i = 0, item; (item = packages[i]); i++) {
       if (name == item.name) {
         this.showPhone = true;
       }
     }
-     
   }
 };
 </script>
@@ -215,31 +218,31 @@ export default {
   display: flex;
   align-items: center;
   margin-bottom: 50px;
-  z-index:42;
+  z-index: 42;
   .logo {
-    width: 295px;   
+    width: 295px;
     height: 65px;
     border-right: 1px solid #d8d8d8;
     display: flex;
-    align-items:center;
-    flex-shrink: 0;    
-    .logo-link{
-      display:inline-block;
+    align-items: center;
+    flex-shrink: 0;
+    .logo-link {
+      display: inline-block;
     }
-    img{
-        display: block;
-        width: 120px;
-        height: 46px;
-        flex-grow: 0;
-        flex-shrink:0;
-         margin: 0 10px 0 30px;
-    }   
-    color:#999;
+    img {
+      display: block;
+      width: 120px;
+      height: 46px;
+      flex-grow: 0;
+      flex-shrink: 0;
+      margin: 0 10px 0 30px;
+    }
+    color: #999;
     font-size: 12px;
   }
-  .version{
-    display:inline-block;
-    margin-top:7px;
+  .version {
+    display: inline-block;
+    margin-top: 7px;
     vertical-align: bottom;
   }
 
@@ -248,12 +251,12 @@ export default {
     padding-left: 42px;
     align-items: center;
     width: 100%;
-    select{
-      width:74px;
-      height:28px;
-      margin-top:18px;
-      margin-left:20px;
-      font-size:12px;
+    select {
+      width: 74px;
+      height: 28px;
+      margin-top: 18px;
+      margin-left: 20px;
+      font-size: 12px;
     }
     .search-box {
       height: 22px;
@@ -286,7 +289,7 @@ export default {
       li {
         height: 40px;
         line-height: 40px;
-        font-size:14px;
+        font-size: 14px;
         a {
           display: inline-block;
           box-sizing: border-box;
@@ -303,12 +306,12 @@ export default {
           }
         }
       }
-      .cur{
-          background: #6096ff;
+      .cur {
+        background: #6096ff;
+        color: #fff;
+        a {
           color: #fff;
-          a {
-            color: #fff;
-          }
+        }
       }
     }
   }
@@ -317,7 +320,7 @@ export default {
     list-style: none;
     margin-left: auto;
     li {
-      padding:0 10px;
+      padding: 0 10px;
       height: 63px;
       line-height: 63px;
       text-align: center;
@@ -349,7 +352,7 @@ export default {
 
 .demo-wrapper {
   display: flex;
-  width:100%;
+  width: 100%;
 
   //padding: 0 20px 0 0;
   .demo-nav {
@@ -357,14 +360,14 @@ export default {
     flex-shrink: 0;
   }
   .showPhone {
-    padding-right:25px;
+    padding-right: 25px;
     //margin-left: 20px;
-    width: 375px;
+    width: 360px;
     flex-shrink: 0;
     position: relative;
     .ph {
-      height: 681px;
-      width: 389px;
+      height: 611px;
+      width: 360px;
       position: fixed;
       border-radius: 55px;
       top: 100px;
@@ -374,23 +377,23 @@ export default {
       box-shadow: 0px 0px 9px 5px #eee;
       iframe {
         border: none;
-        width: 389px;
-        height: 612px;
-        padding: 5px 5px 5px 5px;
-        box-sizing: border-box;       
+        width: 360px;
+        height: 542px;
+        padding: 0;
+        box-sizing: border-box;
       }
-    }    
+    }
     .bg {
-      width: 389px;
+      width: 360px;
       height: 64px;
-      padding-top:5px;
-      background: linear-gradient(rgba(55,55,55,.98),#545456);
+      padding-top: 5px;
+      background: linear-gradient(rgba(55, 55, 55, 0.98), #545456);
       text-align: center;
-      img{
-        width: 350px;
+      img {
+        width: 90%;
       }
-      input{           
-        width: 350px;
+      input {
+        width: 90%;
         height: 28px;
         line-height: 28px;
         color: #fff;
@@ -400,9 +403,9 @@ export default {
         white-space: nowrap;
         overflow-x: scroll;
         border: none;
-        margin-top:5px;
+        margin-top: 5px;
         padding: 0 5px;
-        &:focus{
+        &:focus {
           outline: none;
         }
       }
@@ -443,9 +446,9 @@ body {
 }
 .doc-cont {
   padding: 8px 40px 8px 0;
-  margin-left:50px;
+  margin-left: 50px;
   box-sizing: border-box;
-  flex:1;
+  flex: 1;
   min-width: 500px;
 }
 // .button-primary {
@@ -471,22 +474,39 @@ body {
 //   background-color: #33c3f0;
 //   border-color: #33c3f0;
 // }
-.demoLink{
+.demoLink {
   background: #fff;
   position: relative;
   z-index: 99999;
   width: auto;
   height: auto;
-  a{
+  a {
     z-index: 9999;
   }
-  &.qrcode{
-    span{
+  &.qrcode {
+    span {
       line-height: 64px;
     }
-    img{
-      width:150px;
-      height:150px;
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+}
+@media screen and (max-width: 1500px) {
+  .demo-wrapper {
+    .showPhone{
+      width:320px;
+      .ph{
+        width:320px;
+        height: 581px;
+        &>div,iframe{
+          width:320px;
+        }
+        iframe{
+          height:512px;
+        }
+      }
     }
   }
 }

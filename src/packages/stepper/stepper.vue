@@ -5,7 +5,7 @@
             :class="{'nut-stepper-grey': num - step < min}"
             v-html="require('../../assets/svg/minus.svg')">
         </span>
-        <input type="number" v-model="num" @input="numchange" :min="min" :max="max" :readonly="readonly" :style="{visibility:showNum? 'visible': 'hidden'}" />
+        <input type="number" :value="num | maxv(min)" @input="numchange" :min="min" :max="max" :readonly="readonly" :style="{visibility:showNum? 'visible': 'hidden'}" />
         <div 
             :class="['nut-stepper-fake', showAddAnim? 'nut-stepper-transition': 'nut-stepper-none-transition']"
             :style="{
@@ -47,10 +47,6 @@ export default {
             type: Boolean,
             default: true,
         },
-        init: {
-            type: Number,
-            default: 1,
-        },
         min: {
             type: [Number, String],
             default: 0,
@@ -60,7 +56,7 @@ export default {
             default: Infinity,
         },
         step: {
-            type: Number,
+            type: [Number, String],
             default: 1
         },
         readonly: {
@@ -70,21 +66,31 @@ export default {
         transition: {
             type: Boolean,
             default: true
+        },
+        value: {
+            type: [String, Number],
+            required: true
         }
     },
     data() {
         return {
-            num: this.init,
+            num: this.value,
             showNum: true,
             showAddAnim: false,
             showReduceAnim: false,
-            animNum: [this.init, this.init],
+            animNum: [this.value, this.value],
             animTranslate_add: 0,
             animTranslate_: -100
         }
     },
+    filters: {
+        maxv(v, min) {
+            return Math.max(v, min);
+        }
+    },
     methods: {
         numchange() {
+            this.$emit('input', this.num);
             this.$emit('change', this.num);
         },
         add() {
@@ -108,6 +114,7 @@ export default {
                 };
             }
             this.$emit('add', this.num);
+            this.$emit('input', this.num); 
             this.$emit('change', this.num); 
         },
         animEnd() {
@@ -134,6 +141,7 @@ export default {
                 }    
             }
             this.$emit('reduce', this.num);
+            this.$emit('input', this.num);
             this.$emit('change', this.num);
         },
 

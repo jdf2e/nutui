@@ -1,11 +1,12 @@
 # 快速上手
 
 ## 推荐工程
-我们提供一个命令行工具 [Gaea-cli](https://www.npmjs.com/package/gaea-cli) ，可用来快速生成一个已经内置了本组件库的基于 Webpack 的 Vue 项目工程。基于这个工程开发项目，可省去大量配置和调试环境的时间，也可略过下面组件库安装使用部分内容直接进入开发阶段。
+
+我们提供一个命令行工具 [Gaea CLI](https://www.npmjs.com/package/gaea-cli) ，可用来快速生成一个已经内置了本组件库的基于 Webpack 的 Vue 项目工程。基于这个工程开发项目，可省去大量配置和调试环境的时间，也可略过下面组件库安装使用部分内容直接进入开发阶段。
 
 ## 安装
 
-推荐使用 NPM 或 YARN 安装
+* 通过 NPM 或 YARN 安装（推荐）
 
 #### NPM
 ```bash
@@ -20,11 +21,65 @@ yarn add @nutui/nutui
 
 > 默认安装最新版，如需使用 1.x 版本，请指定版本号，如：  `npm i @nutui/nutui@1.3.2 -S`
 
-#### 浏览器引入
+* 页面直接引用
 
-在浏览器中使用 script 和 link 标签直接引入文件，并使用全局变量 nutui。我们在 npm 发布包内的 dist 目录下提供了 **nutui.js** **nutui.css** 以及 **nutui.min.js** **nutui.min.css**。
+在页面中使用 script 和 link 标签直接引入文件，**NutUI** 将会自动注册。我们在 npm 发布包内的 dist 目录下提供了 **nutui.js** **nutui.css** 以及 **nutui.min.js** **nutui.min.css**。
 
-> 我们推荐使用 *NPM* 或 *YARN* 方式安装，不推荐浏览器中直接引入的用法
+当然你也可以通过 CDN 的方式引入， 可以在 **jsdelivr** 和 **unpkg** 等公共 CDN 上获取到 NutUI。我们推荐链接到一个你可以手动更新的指定版本号。
+
+```html
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.css">
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<!-- 引入组件库 -->
+<script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.js"></script>
+```
+
+CDN 引入示例
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.css">
+</head>
+<body>
+    <div id="app">
+        <nut-button @click="showDialog">
+            Button
+        </nut-button>
+    </div>
+
+    <!-- 引入Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <!-- 引入NutUI组件库 -->
+    <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            methods: {
+                showDialog() {
+                    this.$dialog({
+                        title: "确定删除此订单？",
+                        content: "删除后将从你的记录里消失，无法找回"
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+> 在页面中直接引入，将无法使用 **主题换肤** 等功能。我们推荐使用 *NPM* 或 *YARN* 方式安装，不推荐在页面中直接引入的用法
+
+* 通过 **Vue CLI** 图形化界面安装
+
+如果你的项目是使用 [Vue CLI](https://cli.vuejs.org/zh/) 脚手架搭建，那么你还可以通过 **Vue CLI** 提供的图形化界面安装 **NutUI** ：在图形化界面的 **依赖** 界面，点击右上角 **安装依赖** 按钮，搜索 **@nutui/nutui** 安装即可。
 
 ## 加载示例
 
@@ -42,12 +97,12 @@ NutUI.install(Vue);
 
 以下两种方式都可以实现只加载用到的组件，从而减少加载的文件体积。
 
-### 1. 使用 webpack 插件 **[@nutui/babel-plugin-seperate-import](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)** 
+### 1. 使用 webpack 插件 **[@nutui/babel-plugin-seperate-import](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)** (推荐)
 
-首先安装 **@nutui/separate-import** 插件
+首先安装 **@nutui/babel-plugin-separate-import** 插件
 
 ```bash
-npm i @nutui/separate-import -D
+npm i @nutui/babel-plugin-separate-import -D
 ```
 
 然后配置一下 **.babelrc** 文件
@@ -61,7 +116,7 @@ npm i @nutui/separate-import -D
   ]
 }
 ```
-> style 选项值为 "css" 时加载组件对应的css文件，为 "scss" 时加载对应的scss文件。无style选项时，不自动加载样式。
+> style 选项值为 "css" 时加载组件对应的css文件，为 "scss" 时加载对应的scss文件。无style选项时，不自动加载样式文件。
 
 接下来，我们就可以在项目里只引入用到的组件了。默认情况下，样式也无需单独引入。插件会自动将代码转换为方式二的手动引入方式。
 
@@ -79,7 +134,7 @@ Picker.install(Vue);
 import Vue from 'vue';
 import Button from '@nutui/nutui/dist/packages/button/button.js';  // 加载构建后的JS
 import '@nutui/nutui/dist/packages/button/button.css';  //加载构建后的CSS
-//主题定制等场景需要加载SCSS
+//主题定制等场景需要加载SCSS,而不是构建后的CSS
 //import '@nutui/nutui/dist/packages/button/button.scss'; 
 
 Button.install(Vue);
@@ -91,6 +146,9 @@ Button.install(Vue);
 ```html
 <nut-switch :active="true" size="base"></nut-switch>
 ```
-2.组件具体用法以文档为准
 
-3.组件使用过程中如有问题或建议，欢迎[反馈](https://github.com/jdf2e/nutui/issues)
+2.组件 css 单位使用的是 **px**，如果你的项目中需要 **rem** 单位，可借助一些工具进行转换，比如 webpack 的 [px2rem-loader](https://www.npmjs.com/package/px2rem-loader)、postcss 的 [postcss-plugin-px2rem](https://www.npmjs.com/package/postcss-plugin-px2rem) 插件等
+
+3.组件具体用法以文档为准
+
+4.组件使用过程中如有问题或建议，欢迎[反馈](https://github.com/jdf2e/nutui/issues)

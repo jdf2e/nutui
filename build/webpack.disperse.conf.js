@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const config = require('../package.json');
 const cptConf = require('../src/config.json');
 const webpackBaseConf = require('./webpack.base.conf.js');
 const path = require('path');

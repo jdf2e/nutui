@@ -9,4 +9,4 @@ skeleton.skeletonSquare = skeletonSquare;
 skeleton.skeletonRow = skeletonRow;
 skeleton.skeletonColumn = skeletonColumn;
 
-export default skeleton
+export default skeleton;

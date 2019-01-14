@@ -46,7 +46,7 @@
         <!-- demo(带取消按钮） -->
         <nut-actionsheet :is-visible="isVisible1" 
             @close="switchActionSheet('isVisible1')"
-            :cancelTxt="`取消`"
+            cancelTxt="取消"
             :menu-items="menuItems2"
             @choose="chooseItemAgeSpec"
         ></nut-actionsheet>
@@ -68,7 +68,7 @@
         <nut-actionsheet :is-visible="isVisible4" 
             :menu-items="menuItems4" 
             :chooseTagValue="`确定`"
-            :cancelTxt="`取消`"
+            cancelTxt="取消"
             @close="switchActionSheet('isVisible4')"
         >
             <span slot="title"><label>确定删除吗？</label></span>
@@ -84,15 +84,7 @@
 </template>
 
 <script>
-import nutcell from "../cell/cell.vue";
-import nutactionsheet from "./actionsheet.vue";
-import "../cell/cell.scss";
-import "./actionsheet.scss";
 export default {
-    components: {
-        [nutcell.name]: nutcell,
-        [nutactionsheet.name]: nutactionsheet
-    },
     data() {
         return {
             sex: '请选择',

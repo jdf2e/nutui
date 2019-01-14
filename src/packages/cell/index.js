@@ -5,4 +5,4 @@ Cell.install = function(Vue) {
   Vue.component(Cell.name, Cell);
 };
 
-export default Cell
+export default Cell;

@@ -1,11 +1,23 @@
 <template>
-    <div class="nut-slider">
-        <div class="nut-slider-left-text" v-if="showRangeTxt">{{ range[0] }}</div>
-        <div class="nut-slider-box" @click="onClick">
-            <div :class="['nut-slider-Handle',{'nut-slider-ani':ani}]" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" @click="onTouchEnd" :style="{'left':posi+'px'}"><span :class="['nut-slider-label',{'nut-slider-label-always':showLabelAlways}]" v-if="showLabel">{{current}}</span></div>
-        </div>
-        <div class="nut-slider-right-text" v-if="showRangeTxt">{{ range[1] }}</div>
+  <div class="nut-slider">
+    <div class="nut-slider-left-text" v-if="showRangeTxt">{{ range[0] }}</div>
+    <div class="nut-slider-box" @click="onClick">
+      <div
+        :class="['nut-slider-Handle',{'nut-slider-ani':ani}]"
+        @touchstart="onTouchStart"
+        @touchmove="onTouchMove"
+        @touchend="onTouchEnd"
+        @click="onTouchEnd"
+        :style="{'left':posi+'px'}"
+      >
+        <span
+          :class="['nut-slider-label',{'nut-slider-label-always':showLabelAlways}]"
+          v-if="showLabel"
+        >{{current}}</span>
+      </div>
     </div>
+    <div class="nut-slider-right-text" v-if="showRangeTxt">{{ range[1] }}</div>
+  </div>
 </template>
 <script>
 export default {
@@ -75,7 +87,7 @@ export default {
       this.setPosi(posi);
     },
     setVal(posi) {
-      const trans = posi / this.box.clientWidth * this.total;
+      const trans = (posi / this.box.clientWidth) * this.total;
       this.current = Math.round(trans / this.cell) * this.cell + this.range[0];
       this.$emit("input", this.current);
     },
