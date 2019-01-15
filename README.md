@@ -3,23 +3,25 @@
  
 一套移动端轻量级Vue组件库
     
-![NutUI](http://img11.360buyimg.com/uba/jfs/t1/11117/21/3608/18942/5c20ab52E35e5a500/02e3c1f89cd3dad1.png)
+![NutUI](https://img11.360buyimg.com/uba/jfs/t1/11117/21/3608/18942/5c20ab52E35e5a500/02e3c1f89cd3dad1.png)
 
 
 ## 特性
 
 * 跨平台，自动转微信小程序组件（稍后上线，敬请期待）
+* 全新的架构
 * 30+ 京东移动端项目正在使用
-* 基于京东APP 7.0 视觉规范
+* 参照京东APP 7.0 视觉规范
 * 支持按需加载
 * 详尽的文档和示例
 * 支持定制主题
 * 支持多语言（国际化）
 * 支持 TypeScript
 * 支持服务端渲染（Vue SSR）
+* 单元测试加持
 * 配套有基于Webpack的构建工具，可快速创建已内置本组件库的Vue工程 
 
-> 如需使用 1.x 版本，安装时请指定版本号，如：  `npm i @nutui/nutui@1.3.2 -S`
+> 如需使用 1.x 版本，安装时请指定版本号，如： `npm i @nutui/nutui@1.3.2 -S`
 
 ## 支持环境
 
@@ -29,7 +31,7 @@
 
 ## 版本
 
-* 稳定版：![npm](https://img.shields.io/npm/v/@nutui/nutui.svg)
+* 稳定版：[![npm](https://img.shields.io/npm/v/@nutui/nutui.svg)](https://www.npmjs.com/package/@nutui/nutui)
 
 > 你还可以订阅： https://github.com/jdf2e/nutui/releases.atom 来获得稳定版发布的通知。
 
@@ -41,9 +43,9 @@
 
 具体安装使用方法请参考 NutUI 官网 
 
-http://nutui.jd.com
+https://nutui.jd.com
 
-文档：[2.X](http://nutui.jd.com/default.html#/start) | [1.X](http://nutui.jd.com/1x/index.html#/intro)
+文档：[2.X](https://nutui.jd.com/default.html#/start) | [1.X](https://nutui.jd.com/1x/index.html#/intro)
 
 ## 链接
 * [意见反馈](https://github.com/jdf2e/nutui/issues)
