@@ -263,6 +263,7 @@ export default {
       height: 22px;
       min-width: 300px;
       position: relative;
+      float:left;
       input {
         width: 100%;
       }
