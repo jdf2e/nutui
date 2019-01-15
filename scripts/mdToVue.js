@@ -194,5 +194,7 @@ function MdToHtml(commomOption) {
     //获取所有的md 转html的结果
     fileDisplay(commomOption.entry,commomOption.output,commomOption.nohead);
 }
-
+MdToHtml.prototype.apply = function (compiler) {
+    //  console.log(compiler,'lls')
+};
 module.exports = MdToHtml;
