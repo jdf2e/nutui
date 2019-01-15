@@ -68,7 +68,7 @@ export default {
             isVisible3: false,
             date: null,
             dateWeek: null,
-            date1: ['2018-12-22', '2020-01-08'],
+            date1: ['2018-12-22', '2019-01-08'],
             date2: Utils.getDay(30), // 当前日期之后的30天
             date3: null
             

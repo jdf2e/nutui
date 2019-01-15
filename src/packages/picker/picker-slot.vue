@@ -91,7 +91,9 @@ export default {
                 // 设置滚动距离为lineSpacing的倍数值
                 let endMove = Math.round(updateMove / this.lineSpacing) * this.lineSpacing;
                 this.setTransform(endMove, type, time);
-                this.setChooseValue(endMove);
+                // this.timer = setTimeout(() => {
+                    this.setChooseValue(endMove);
+                // }, time / 2); 
             } else {
                 this.setTransform(updateMove);
             }
