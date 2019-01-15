@@ -53,6 +53,8 @@
         <nut-calendar :is-visible="isVisible1"
             :default-value="date1"
             type="range"
+            :start-date="null"
+            :end-date="null"
             @close="switchPicker('isVisible1')"
             @choose="setChooseValue1"
         >
@@ -80,7 +82,7 @@ export default {
             isVisible3: false,
             date: null,
             dateWeek: null,
-            date1: ['2018-12-22', '2020-01-08'],
+            date1: ['2018-12-22', '2019-01-08'],
             date2: Utils.getDay(30),
             date3: null
             
