@@ -61,7 +61,7 @@ let jsroot = `<script>export default {
           return res.previousElementSibling
         }
     });    
-    let demourl = 'http://nutui.jd.com/demo.html#'+that.$route.path;
+    let demourl = 'https://nutui.jd.com/demo.html#'+that.$route.path;
 
     this.demourl = demourl;
     this.qrcode.toDataURL(demourl,{width:170},(err,url)=>{

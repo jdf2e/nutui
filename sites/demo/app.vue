@@ -18,12 +18,6 @@ export default {
     if (window.self != window.top) { 
       this.inIframe = true;
     }
-
-    if (window.navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|IEMobile|MQQBrowser|JUC|Windows Phone)/i)) {
-      window.isMobile = true;
-    } else {
-      window.isMobile = false;
-    }
   }
 }
 </script>

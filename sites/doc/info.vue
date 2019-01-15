@@ -1,56 +1,57 @@
 <template>
-<div class="main-menu lt-nv">
-  <ol class="nav-l-1">
-    <dt>指南</dt>
-    <dd :class="curName=='intr' ?'l-1 curs':'l-1'">
-      <a href="#/doc">介绍</a>
-    </dd>
-    <dd :class="curName=='fastStart' ?'l-1 curs':'l-1'">
-      <a href="#/start">快速上手</a>
-    </dd>
-    <dd :class="curName=='theme' ?'l-1 curs':'l-1'">
-      <a href="#/theme">主题定制</a>
-    </dd>
-    <dd :class="curName== 'international' ?'l-1 curs':'l-1'">
-      <a href="#/international">国际化</a>
-    </dd>
-    <dd :class="curName=='update' ?'l-1 curs':'l-1'">
-      <a href="https://github.com/jdf2e/nutui/releases" target="_blank">更新日志</a>
-    </dd>
-  </ol>
-  <ol>
-    <dt>组件</dt>
-    <dd
-      class="l-1"
-      @click="selectNav(nameObj.name)"
-      :class="cur.indexOf(nameObj.name)>-1&&'cur'"
-      v-for="(nameObj,index) in sortedPackages"
-      :key="index"
-    >
-      <div class="l-c-i">
-        <span>{{nameObj.name}}</span>
-        <i class="pt"></i>
-      </div>
-      <ul class="l-2" v-if="cur.indexOf(nameObj.name)>-1">
-        <template v-for="cpt in nameObj.ary">
-          <li
-            v-on:click.stop="listCheck(cpt)"
-            :class="curName==cpt.name ?'curs':''"
-            :key="cpt.name" v-if="cpt.showDemo"
-          >
-            <router-link :to="{name:cpt.name}">
-              {{cpt.name}}
-              <span>{{cpt.chnName}}</span>
-            </router-link>
-          </li>
-        </template>
-      </ul>
-    </dd>
-  </ol>
-</div>
+  <div class="main-menu lt-nv">
+    <ol class="nav-l-1">
+      <dt>指南</dt>
+      <dd :class="curName=='intr' ?'l-1 curs':'l-1'">
+        <a href="#/intro">介绍</a>
+      </dd>
+      <dd :class="curName=='fastStart' ?'l-1 curs':'l-1'">
+        <a href="#/start">快速上手</a>
+      </dd>
+      <dd :class="curName=='theme' ?'l-1 curs':'l-1'">
+        <a href="#/theme">主题定制</a>
+      </dd>
+      <dd :class="curName== 'international' ?'l-1 curs':'l-1'">
+        <a href="#/international">国际化</a>
+      </dd>
+      <dd :class="curName=='update' ?'l-1 curs':'l-1'">
+        <a href="https://github.com/jdf2e/nutui/releases" target="_blank">更新日志</a>
+      </dd>
+    </ol>
+    <ol>
+      <dt>组件</dt>
+      <dd
+        class="l-1"
+        @click="selectNav(nameObj.name)"
+        :class="cur.indexOf(nameObj.name)>-1&&'cur'"
+        v-for="(nameObj,index) in sortedPackages"
+        :key="index"
+      >
+        <div class="l-c-i">
+          <span>{{nameObj.name}}</span>
+          <i class="pt"></i>
+        </div>
+        <ul class="l-2" v-if="cur.indexOf(nameObj.name)>-1">
+          <template v-for="cpt in nameObj.ary">
+            <li
+              v-on:click.stop="listCheck(cpt)"
+              :class="curName==cpt.name ?'curs':''"
+              :key="cpt.name"
+              v-if="cpt.showDemo"
+            >
+              <router-link :to="{name:cpt.name}">
+                {{cpt.name}}
+                <span>{{cpt.chnName}}</span>
+              </router-link>
+            </li>
+          </template>
+        </ul>
+      </dd>
+    </ol>
+  </div>
 </template>
 <script>
-import { sorts,packages } from "../../src/config.json";
+import { sorts, packages } from "../../src/config.json";
 export default {
   name: "index",
   data() {
@@ -93,29 +94,29 @@ export default {
           ary: temp[key]
         });
       }
-      let routeName = this.$route.name
+      let routeName = this.$route.name;
       this.sortedPackages = tempAry;
-       tempAry.map(list=>{
+      tempAry.map(list => {
         let showParentNode = false;
-        list.ary.map(ary=>{
-          if(ary.name==routeName){
-            showParentNode=true;
+        list.ary.map(ary => {
+          if (ary.name == routeName) {
+            showParentNode = true;
           }
-        })
-        if(showParentNode){
-          that.cur.push(list.name)
+        });
+        if (showParentNode) {
+          that.cur.push(list.name);
         }
-      })
+      });
     },
     $route: "fetchData"
   },
   methods: {
     fetchData(obj) {
       let that = this;
-      this.curName = obj.name;    
-      let sortedPackages = this.sortedPackages;      
-     
-      this.selectNav( obj.name) 
+      this.curName = obj.name;
+      let sortedPackages = this.sortedPackages;
+
+      this.selectNav(obj.name);
     },
     listCheck(obj) {
       // this.curName = obj.name;
@@ -134,8 +135,8 @@ export default {
   created() {
     let nameRt = this.$route.name;
     let packgs = packages;
-    
-    this.cur = sorts
+
+    this.cur = sorts;
     this.curName = nameRt;
     this.packages = packgs;
     this.sorts = sorts;
@@ -151,25 +152,26 @@ export default {
   opacity: 0;
   height: 0;
 }
-ul,ol {
+ul,
+ol {
   margin: 0;
   list-style: none;
   padding: 0;
 }
 
-dt{
-  font-size:16px;
+dt {
+  font-size: 16px;
   font-weight: 500;
-  text-indent:35px;
-  color:#5b657b;
-  margin:10px 0;
+  text-indent: 35px;
+  color: #5b657b;
+  margin: 10px 0;
 }
 
-dd{
-  margin:0;
-  &>a{
-    display:block;
-    height:100%;
+dd {
+  margin: 0;
+  & > a {
+    display: block;
+    height: 100%;
     cursor: pointer;
   }
 }
@@ -257,19 +259,16 @@ dd{
       }
     }
   }
-  .nav-l-1{
-    dd:hover{   
-    transition: all 0.5;
-    background: rgba(83, 150, 255, 0.14);
-    border-right: 4px solid #5396ff;   
+  .nav-l-1 {
+    dd:hover {
+      transition: all 0.5;
+      background: rgba(83, 150, 255, 0.14);
+      border-right: 4px solid #5396ff;
       a,
       span {
         color: #5396ff;
       }
     }
-  } 
-  
-
-  
+  }
 }
 </style>
