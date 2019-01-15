@@ -1,5 +1,10 @@
 <template>
   <div class="demo-list-wrapper">
+    <!-- <nut-noticebar
+      :closeMode="true"
+      v-if="cacheHasNewVersion"
+    >本页面有更新，请<a href="javascript:window.location.reload();">刷新页面</a>。</nut-noticebar> -->
+
     <h1 class="logo"></h1>
     <div class="version">NutUI 2.0</div>
     <p>NutUI 是一套京东风格的移动端Vue组件库</p>
