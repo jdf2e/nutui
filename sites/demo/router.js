@@ -65,7 +65,6 @@ const options = {
   tabsDisable: false, //值为true时，tabs间的转场没有动画，默认为false
   shadow: false, //值为false，转场时没有阴影的层次效果
   disable: false, //禁用转场动画，默认为false，嵌套路由默认为true
-  nuxt: false //若使用后端渲染框架Nuxt，需要将此设为true，默认为false
 };
 
 Vue.use(vueg, router, options);
