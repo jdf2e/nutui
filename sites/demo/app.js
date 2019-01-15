@@ -9,12 +9,15 @@ import NutUI from '../../src/nutui';
 // import en from '../../src/locales/lang/en-US';
 // import demoEN from './lang/en-US';
 
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 
 import './asset/css/common.scss';
 
 import './asset/img/logo_share.png';
 
 Vue.config.productionTip = false;
+
+
 
 // Object.assign(en, demoEN);
 
@@ -24,6 +27,7 @@ Vue.config.productionTip = false;
 // });
 
 NutUI.install(Vue);
+
 
 //Vue.locale = () => {};
 
@@ -50,7 +54,38 @@ const app = new Vue({
   router,
   components: { App },
   template: '<App/>'
-})
+});
+
+OfflinePluginRuntime.install({
+  onUpdating: () => {
+    console.log('SW Event:', 'onUpdating');
+  },
+  onUpdateReady: () => {
+    console.log('SW Event:', 'onUpdateReady');
+    OfflinePluginRuntime.applyUpdate();
+  },
+  onUpdated: () => {
+    console.log('SW Event:', 'onUpdated');
+    console.log('PWA缓存有更新，需要刷新页面');
+
+    app.$dialog({
+      title: "您正在浏览的页面有更新，请刷新",
+      noCloseBtn: true,
+      noOkBtn: true,
+      cancelBtnTxt: "刷新页面",
+      closeOnClickModal:false,
+      onCancelBtn(){
+        window.location.reload();
+      }
+    });
+
+    //window.location.reload();
+  },
+
+  onUpdateFailed: () => {
+    console.log('SW Event:', 'onUpdateFailed');
+  }
+});
 
 Vue.prototype.NUTCONF = Conf;
 

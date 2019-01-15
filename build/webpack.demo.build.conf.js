@@ -4,6 +4,7 @@ const merge = require('webpack-merge');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const rimraf = require('rimraf');
 
@@ -27,6 +28,17 @@ module.exports = merge(baseConf, {
         new CopyWebpackPlugin([
             { from: path.join(__dirname, "../sites/demo/asset/img/favicon.ico"), to: path.join(__dirname, "../dist/sites/")}
         ]),
+        new CopyWebpackPlugin([
+            { from: path.join(__dirname, "../sites/demo/asset/img/pwa_logo.png"), to: path.join(__dirname, "../dist/sites/img/") }
+        ]),
+        new CopyWebpackPlugin([
+            { from: path.join(__dirname, "../sites/demo/asset/manifest.json"), to: path.join(__dirname, "../dist/sites/demo/") }
+        ]),
+        new OfflinePlugin({
+            ServiceWorker: {
+                events: true
+            }
+        })
     ],
     optimization: {
         minimizer: [
