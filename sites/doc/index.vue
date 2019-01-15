@@ -32,7 +32,7 @@
         <div class="menu">
           <ul>
             <li>
-              <a href="#/doc">指南</a>
+              <a href="#/intro">指南</a>
             </li>
             <li>
               <a href="#/ActionSheet">组件</a>
@@ -66,7 +66,7 @@
         <div class="mouseDiv" id="mouseDiv"></div>
         <p class="title">NutUI</p>
         <p class="sub-title">一套京东风格的轻量级移动端Vue组件库</p>
-        <a href="#/doc" class="blue-btn">开始使用</a>
+        <a href="#/intro" class="blue-btn">开始使用</a>
         <a href="javascript:;" class="qrcode btn">
           扫码体验
           <a>
@@ -102,7 +102,7 @@ export default {
   methods: {
     openwindow(val) {
       if (val.target.value == 1) {
-        window.location.href = " http://nutui.jd.com/1x/";
+        window.location.href = " https://nutui.jd.com/1x/";
       }
     }
     // threeAnimation() {
@@ -497,16 +497,16 @@ export default {
   }
 }
 
-@keyframes fadeInRightAndTop{
-  from{
+@keyframes fadeInRightAndTop {
+  from {
     opacity: 0;
-    transform: translate(100%,100%,0);
-    transform: scale3d(1,1,1);
+    transform: translate(100%, 100%, 0);
+    transform: scale3d(1, 1, 1);
   }
-  to{
+  to {
     opacity: 1;
-    transform:translate3d(0,0,0);
-    transform: scale3d(1.06,1.06,1.06);
+    transform: translate3d(0, 0, 0);
+    transform: scale3d(1.06, 1.06, 1.06);
   }
 }
 @keyframes leafShake {
@@ -541,11 +541,11 @@ export default {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform:rotate(20deg);
+    transform: rotate(20deg);
   }
   to {
     opacity: 1;
-    transform:rotate(0deg);
+    transform: rotate(0deg);
   }
 }
 
@@ -601,42 +601,43 @@ export default {
       margin-left: 20px;
       font-size: 12px;
     }
-    
-    li::before{
-      content:'';
-      position: absolute;
-      top:0;
-      left:100%;
-      width:0;
-      height:100%;
-      border-bottom:2px solid #fff;
-      transition:0.2s all linear;
 
+    li::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 0;
+      height: 100%;
+      border-bottom: 2px solid #fff;
+      transition: 0.2s all linear;
     }
-    li:hover:before{
-      width:100%;
-      top:0;
-      left:0;
-      transition-delay:0.1s;
-      border-bottom-color:#fff;
-      z-index:-1;
+    li:hover:before {
+      width: 100%;
+      top: 0;
+      left: 0;
+      transition-delay: 0.1s;
+      border-bottom-color: #fff;
+      z-index: -1;
     }
-    li:hover ~ li::before{
-      left:0;
+    li:hover ~ li::before {
+      left: 0;
     }
     .github-icon {
       display: inline-block;
       height: 26px;
       width: 26px;
       font-size: 0;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 16 16' version='1.1' width='24' aria-hidden='true'%3E%3Cpath fill-rule='evenodd' fill='%23ffffff' d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 16 16' version='1.1' width='24' aria-hidden='true'%3E%3Cpath fill-rule='evenodd' fill='rgb(255,255,255)' d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z'%3E%3C/path%3E%3C/svg%3E")
+        no-repeat;
       vertical-align: middle;
       position: relative;
       top: -1px;
       margin-left: 35px;
       cursor: pointer;
-      &:hover,&:active{
-        opacity: .7;
+      &:hover,
+      &:active {
+        opacity: 0.7;
       }
     }
   }
@@ -715,9 +716,9 @@ export default {
     }
     .btn,
     .blue-btn {
-      border: 1px solid rgba(83,150,255,1);
+      border: 1px solid rgba(83, 150, 255, 1);
       background: #fff;
-      color: rgba(83,150,255,1);
+      color: rgba(83, 150, 255, 1);
       width: 130px;
       height: 40px;
       line-height: 40px;
@@ -727,18 +728,20 @@ export default {
       text-decoration: none;
       border-radius: 20px;
       animation: fadeInLeft 1s both 1.2s;
-      &:hover,&:active{
-        border-color:rgba(83,150,255,.8);
-        color: rgba(83,150,255,.8);
+      &:hover,
+      &:active {
+        border-color: rgba(83, 150, 255, 0.8);
+        color: rgba(83, 150, 255, 0.8);
       }
     }
     .blue-btn {
       color: #fff;
-      background: rgba(83,150,255,1);
+      background: rgba(83, 150, 255, 1);
       margin-right: 40px;
-      &:hover,&:active{
-        background: rgba(83,150,255,.8);
-        color: rgba(255,255,255,.8);
+      &:hover,
+      &:active {
+        background: rgba(83, 150, 255, 0.8);
+        color: rgba(255, 255, 255, 0.8);
       }
     }
   }
@@ -796,153 +799,146 @@ export default {
   }
 }
 
-.css-animation{
-	position: absolute;
-  top:0;
-  right:0;
-  height:757px;
-	width:963px;
+.css-animation {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 757px;
+  width: 963px;
   animation: fadeInRightAndTop 1.2s 1;
-  transform: scale3d(1.06,1.06,1.06);
+  transform: scale3d(1.06, 1.06, 1.06);
 
-	.blue-bg{
-		background:url('//img12.360buyimg.com/uba/jfs/t1/22824/40/3136/6504/5c24a3f4E76fdafde/802d02d1ec5d3d55.png') 0 0 no-repeat;
-		height:757px;
-		width:963px;
-		background-size:100% 100%;
-		position: absolute;
-		right:0;
-		top:0;
+  .blue-bg {
+    background: url("//img12.360buyimg.com/uba/jfs/t1/22824/40/3136/6504/5c24a3f4E76fdafde/802d02d1ec5d3d55.png")
+      0 0 no-repeat;
+    height: 757px;
+    width: 963px;
+    background-size: 100% 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
-		.phone{
-			background:url('//img10.360buyimg.com/uba/jfs/t1/19171/19/3175/23282/5c24a440Ee2a94261/45321aeaf173f237.png') 0 0 no-repeat;
-			height:419px;
-			width:227px;
-			background-size:100% 100%;
-			position:absolute;
-			right:350px;
-			top:250px;
-			display: inline-block;
-		}
-		.goods{
-			background:url('//img14.360buyimg.com/uba/jfs/t1/21115/40/3224/5652/5c24a411E03ef9eb6/83781b97e59da905.png') 0 0 no-repeat;
-			height:165px;
-			width:117px;
-			background-size:100% 100%;
-			position:absolute;
-			display:inline-block;
-			top:500px;
-			right:710px;
-		}
-		.people{
-			background:url('//img12.360buyimg.com/uba/jfs/t1/9330/16/10894/8662/5c24a42aE708692b3/14455d20eca1ccee.png');
-			width:184px;
-			height:334px;
-			background-size:100% 100%;
-			position:absolute;
-			top:334px;
-			right:500px;
-		}
-		.flower{
-			position: absolute;
-			right:195px;
-			top:510px;
-			height:160px;
-			width:208px;
-			.leaf_1{
-				position: absolute;
-				background:url(./asset/css/i/leaf_1.png) 0 0 no-repeat;
-				height:113px;
-				width:60px;
-				background-size:100% 100%;
-				bottom:36px;
-				right:79px;
-				animation:leafShake 8s infinite ;
-
-			}
-			.leaf_2{
-				position: absolute;
-				background:url(./asset/css/i/leaf_2.png) 0 0 no-repeat;
-				height:64px;
-				width:66px;
-				background-size:100% 100%;
-				bottom:36px;
-				right:35px;
-				animation:leafShake 8s infinite 0.6s;
-				
-
-			}
-			.leaf_3{
-				
-				position: absolute;
-				background:url(./asset/css/i/leaf_3.png) 0 0 no-repeat;
-				height:28px;
-				width:64px;
-				background-size:100% 100%;
-				bottom:38px;
-				right:42px;
-				//animation:leafShake 3s infinite 0.5s;
-			}
-			.leaf_4{
-				position: absolute;
-				background:url(./asset/css/i/leaf_4.png) 0 0 no-repeat;
-				height:113px;
-				width:99px;
-				background-size:100% 100%;
-				bottom:38px;
-				left:2px;
-				//animation:leafShake 3s infinite 0.2s;
-			}
-			.flowerpot{
-				position: absolute;
-				background:url(./asset/css/i/flowerpot.png) 0 0 no-repeat;
-				height:42px;
-				width:130px;
-				bottom:0;
-				right:5px;
-				background-size:100% 100%;
-				
-
-			}
+  .phone {
+    background: url("//img10.360buyimg.com/uba/jfs/t1/19171/19/3175/23282/5c24a440Ee2a94261/45321aeaf173f237.png")
+      0 0 no-repeat;
+    height: 419px;
+    width: 227px;
+    background-size: 100% 100%;
+    position: absolute;
+    right: 350px;
+    top: 250px;
+    display: inline-block;
+  }
+  .goods {
+    background: url("//img14.360buyimg.com/uba/jfs/t1/21115/40/3224/5652/5c24a411E03ef9eb6/83781b97e59da905.png")
+      0 0 no-repeat;
+    height: 165px;
+    width: 117px;
+    background-size: 100% 100%;
+    position: absolute;
+    display: inline-block;
+    top: 500px;
+    right: 710px;
+  }
+  .people {
+    background: url("//img12.360buyimg.com/uba/jfs/t1/9330/16/10894/8662/5c24a42aE708692b3/14455d20eca1ccee.png");
+    width: 184px;
+    height: 334px;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 334px;
+    right: 500px;
+  }
+  .flower {
+    position: absolute;
+    right: 195px;
+    top: 510px;
+    height: 160px;
+    width: 208px;
+    .leaf_1 {
+      position: absolute;
+      background: url(./asset/css/i/leaf_1.png) 0 0 no-repeat;
+      height: 113px;
+      width: 60px;
+      background-size: 100% 100%;
+      bottom: 36px;
+      right: 79px;
+      animation: leafShake 8s infinite;
     }
-		.nut{
-			position: absolute;
-			height:46px;
-			width:46px;
-			background:url(./asset/css/i/nut-icon.png) 0 0 no-repeat;
-			background-size:100% 100%;
-			top:308px;
-			right:493px;
-			animation:fadeInRight 2s both;
-		
-		
-		}
-		.fengche{
-			position:absolute;
-			background:url(./asset/css/i/fengche.png) 0 0 no-repeat;
-			background-size:100% 100%;
-			width:679px;
-			height:476px;
-			top:195px;
-			right:180px;
-			animation: fadeIn 2s both 2s;
-
-		}
-
+    .leaf_2 {
+      position: absolute;
+      background: url(./asset/css/i/leaf_2.png) 0 0 no-repeat;
+      height: 64px;
+      width: 66px;
+      background-size: 100% 100%;
+      bottom: 36px;
+      right: 35px;
+      animation: leafShake 8s infinite 0.6s;
+    }
+    .leaf_3 {
+      position: absolute;
+      background: url(./asset/css/i/leaf_3.png) 0 0 no-repeat;
+      height: 28px;
+      width: 64px;
+      background-size: 100% 100%;
+      bottom: 38px;
+      right: 42px;
+      //animation:leafShake 3s infinite 0.5s;
+    }
+    .leaf_4 {
+      position: absolute;
+      background: url(./asset/css/i/leaf_4.png) 0 0 no-repeat;
+      height: 113px;
+      width: 99px;
+      background-size: 100% 100%;
+      bottom: 38px;
+      left: 2px;
+      //animation:leafShake 3s infinite 0.2s;
+    }
+    .flowerpot {
+      position: absolute;
+      background: url(./asset/css/i/flowerpot.png) 0 0 no-repeat;
+      height: 42px;
+      width: 130px;
+      bottom: 0;
+      right: 5px;
+      background-size: 100% 100%;
+    }
+  }
+  .nut {
+    position: absolute;
+    height: 46px;
+    width: 46px;
+    background: url(./asset/css/i/nut-icon.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+    top: 308px;
+    right: 493px;
+    animation: fadeInRight 2s both;
+  }
+  .fengche {
+    position: absolute;
+    background: url(./asset/css/i/fengche.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+    width: 679px;
+    height: 476px;
+    top: 195px;
+    right: 180px;
+    animation: fadeIn 2s both 2s;
+  }
 }
 @media screen and (max-width: 1500px) {
-    .css-animation{
-      .blue-bg{
-        transform: translateX(155px);
-      }
+  .css-animation {
+    .blue-bg {
+      transform: translateX(155px);
     }
-    .wrapper{
-      .content{
-        padding-left:5%;
-      }
-      .menu{
-        right:6%;
-      }
+  }
+  .wrapper {
+    .content {
+      padding-left: 5%;
     }
+    .menu {
+      right: 6%;
+    }
+  }
 }
 </style>

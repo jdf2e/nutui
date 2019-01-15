@@ -3,16 +3,13 @@
     <!-- <nut-noticebar
       :closeMode="true"
       v-if="cacheHasNewVersion"
-    >本页面有更新，请<a href="javascript:window.location.reload();">刷新页面</a>。</nut-noticebar> -->
+    >本页面有更新，请<a href="javascript:window.location.reload();">刷新页面</a>。</nut-noticebar>-->
+    <iframe src="https://ghbtns.com/github-btn.html?user=jdf2e&repo=nutui&type=star&count=true" class="star-btn" frameborder="0" scrolling="0" width="55px" height="20px"></iframe>
 
     <h1 class="logo"></h1>
     <div class="version">NutUI 2.0</div>
     <p>NutUI 是一套京东风格的移动端Vue组件库</p>
-    <div
-      :class="['demo-list-box',{'unfold':foldStatus[item]}]"
-      v-for="item in sorts"
-      :key="item"
-    >
+    <div :class="['demo-list-box',{'unfold':foldStatus[item]}]" v-for="item in sorts" :key="item">
       <h4 @click="toggleFold(item)">
         {{oriSorts[item]}}
         <i></i>
@@ -32,7 +29,7 @@
 </template>
 
 <script>
-import { packages,sorts } from "../../../src/config.json";
+import { packages, sorts } from "../../../src/config.json";
 export default {
   name: "index",
   data() {
@@ -40,8 +37,8 @@ export default {
       path: "",
       packages: {},
       sortedPackages: [],
-      oriSorts:[],
-      sorts: [1,2,0,3,4,5],
+      oriSorts: [],
+      sorts: [1, 2, 0, 3, 4, 5],
       foldStatus: []
     };
   },
@@ -54,7 +51,7 @@ export default {
   created() {
     this.packages = packages;
     this.oriSorts = sorts;
-    
+
     this.foldStatus = Array(this.sorts.length)
       .join(",")
       .split(",")
@@ -75,6 +72,11 @@ export default {
 .demo-list-wrapper {
   padding: 8px;
   box-sizing: border-box;
+  .star-btn{
+    position:absolute;
+    top:15px;
+    right:10px;
+  }
   .logo {
     background: url(../asset/img/logo.png) no-repeat;
     background-size: contain;
@@ -82,6 +84,8 @@ export default {
     width: 100px;
     text-align: center;
     margin: 5px auto 15px;
+    animation: swing 2.5s;
+
   }
   .version {
     text-align: center;
@@ -99,12 +103,18 @@ export default {
   width: 95%;
   background: #fff;
   border-radius: 5px;
+  max-height:55px;
+  transition: max-height 1s;
+  overflow:hidden;
   h4 {
     position: relative;
     margin: 0;
     height: 50px;
     line-height: 50px;
     padding: 0 15px;
+    &:active {
+      background-color: rgba(200, 200, 200, 0.1);
+    }
     i {
       position: absolute;
       right: 15px;
@@ -120,6 +130,8 @@ export default {
     }
   }
   &.unfold {
+    max-height:1000px;
+    transition: max-height 1s;
     h4 i {
       transform: rotate(-180deg);
     }
@@ -161,5 +173,34 @@ li {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+@-webkit-keyframes swing {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -40deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, -40deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 25deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, 25deg);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -10deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, -10deg);
+  }
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+  }
 }
 </style>
