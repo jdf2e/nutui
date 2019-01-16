@@ -18,6 +18,7 @@
     "dev": "npm run dev:demo",
     "dev:carefree": "cross-env NODE_ENV=carefree carefree_env=dev webpack -w --colors --progress --config build/webpack.demo.dev.conf.js",
     "build:doc": "cross-env NODE_ENV=production webpack --hide-modules --progress --config build/webpack.doc.build.conf.js",
+    "build:site": "npm run build:demo && npm run build:doc",
     "build:prod": "cross-env NODE_ENV=production webpack --hide-modules --progress --config build/webpack.prod.conf.js && node scripts/createIndexScss.js",
     "build:prodmin": "cross-env NODE_ENV=production webpack --hide-modules --progress --config build/webpack.prod.mini.conf.js",
     "build:disp": "cross-env NODE_ENV=production webpack --hide-modules --progress --config build/webpack.disperse.conf.js",

@@ -112,13 +112,12 @@ export default {
   width: 95%;
   background: #fff;
   border-radius: 5px;
-  max-height:55px;
-  transition: max-height 1s;
   overflow:hidden;
   h4 {
     position: relative;
     margin: 0;
     height: 50px;
+    font-weight: normal;
     line-height: 50px;
     padding: 0 15px;
     &:active {
@@ -139,8 +138,6 @@ export default {
     }
   }
   &.unfold {
-    max-height:1000px;
-    transition: max-height 1s;
     h4 i {
       transform: rotate(-180deg);
     }

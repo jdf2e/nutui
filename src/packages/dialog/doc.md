@@ -36,9 +36,21 @@ this.$dialog({
         
 ```
 
+## 页面滚动锁定
+
+**lockBgScroll** 值设为 **true** 时，可在弹窗出现时锁定页面滚动，且不影响窗体内部滚动。
+
+```javascript
+this.$dialog({
+        title: "背景滚动锁定",
+        lockBgScroll:true,
+        content:"弹窗弹出后，页面滚动锁止。在窗体和遮罩层上滑动时，页面不再跟随滚动。"
+});
+```
+
 ## 图片弹窗
 
-**type**值为 **image** 时为图片弹窗，需要配置一张图片，可带链接（非必须）。默认展示关闭按钮。点击图片触发 **onClickImageLink** 事件，返回**false**可阻止默认的跳转链接行为。
+**type** 值为 **image** 时为图片弹窗，需要配置一张图片，可带链接（非必须）。默认展示关闭按钮。点击图片触发 **onClickImageLink** 事件，返回**false**可阻止默认的跳转链接行为。
 
 ```javascript
 this.$dialog({

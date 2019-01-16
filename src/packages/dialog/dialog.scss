@@ -114,7 +114,7 @@ body.dialog-open {
     padding: 30px 20px 20px;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex: 0 1 auto;
 }
 
 .nut-dialog-content {
@@ -141,7 +141,7 @@ body.dialog-open {
 .nut-dialog-btn {
     display: block;
     width: 100%;
-    height:100%;
+    height: 100%;
     flex: 1;
     font-size: $font-size-base;
     border: none;
@@ -158,7 +158,7 @@ body.dialog-open {
         color: $primary-color;
         border-top: 1px solid $light-color;
     }
-    &:active{
+    &:active {
         opacity: .7;
     }
 }
@@ -172,6 +172,7 @@ body.dialog-open {
 .nut-dialog-cancel {
     border-radius: 0 0 0 5px;
     border-top: 1px solid $light-color;
+    background: #FFF;
 }
 
 // .fade-enter-active {
