@@ -1,8 +1,7 @@
 @import "../../styles/animation/fade";
 @import "../../styles/animation/ease";
 body.dialog-open {
-    position: fixed; //width: 100%;
-    //overflow:hidden;
+    position: fixed;
 }
 
 .nut-dialog-wrapper {

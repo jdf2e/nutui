@@ -32,7 +32,7 @@ const routes = [
     
   },
   {    
-    path: '/doc',
+    path: '/intro',
     name:'intr',
     components: {
       demonav: Index,
