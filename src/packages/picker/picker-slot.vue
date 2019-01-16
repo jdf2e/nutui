@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-picker-list pd-select-item">
+  <div class="nut-picker-list">
     <div class="nut-picker-mask"></div>
     <div class="nut-picker-indicator"></div>
     <div class="nut-picker-content">
@@ -153,7 +153,6 @@ export default {
     mounted() {
         this.$nextTick(() => {
             this.modifyStatus(true);
-            
             // 监听
             this.$el.addEventListener('touchstart', this.touchStart);
             this.$el.addEventListener('touchmove', this.touchMove);
