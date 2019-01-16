@@ -136,6 +136,7 @@
 |----- | ----- | ----- | ----- 
 | value | 显示的内容 | String | -
 | max | value为数值时，最大值 | Number | 10000
+| zIndex | 徽标的z-index值 | Number | 10
 | isDot | 是否为小点 | Boolean | false
 | hidden | 是否隐藏 | Boolean | false
 | top   | 上下偏移量，支持单位设置，可设置为：5px、5rem等 | String | 0

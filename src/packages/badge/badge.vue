@@ -36,13 +36,18 @@ export default {
     right: {
       type: String,
       default: '0'
+    },
+    zIndex: {
+      type: Number,
+      default: 10
     }
   },
   data() {
     return {
       stl: {
         top: this.top,
-        right: this.right
+        right: this.right,
+        zIndex: this.zIndex
       }
     }
   },
