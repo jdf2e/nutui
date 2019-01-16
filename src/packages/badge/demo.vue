@@ -24,7 +24,7 @@
       <h4>小圆点</h4>
       <div class="demo-w">
         <nut-badge :isDot="true" class="item"><div class="demo-svg"></div></nut-badge>
-        <nut-badge :isDot="true" class="item">文字内容</nut-badge>
+        <nut-badge :isDot="true" class="item">购物车</nut-badge>
         <nut-badge :isDot="true" :max="99" class="item"><nut-button>购物车</nut-button></nut-badge>
       </div>
 
