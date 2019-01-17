@@ -142,14 +142,17 @@ body.dialog-open {
     display: block;
     width: 100%;
     height: 100%;
+    position: relative;
     flex: 1;
     font-size: $font-size-base;
-    border: none;
+    border:none;
     background: transparent;
     appearance: none;
     outline: none;
+    user-select: none;
     &.disabled {
         background: $btn-disable-bg;
+        background-origin: border-box;
         color: $btn-disable-color;
     }
     &:only-child {
@@ -158,14 +161,12 @@ body.dialog-open {
         color: $primary-color;
         border-top: 1px solid $light-color;
     }
-    &:active {
-        opacity: .7;
-    }
 }
 
 .nut-dialog-ok {
     border-radius: 0 0 5px 0;
     background: $btn-gradient-bg;
+    background-origin: border-box;
     color: $btn-gradient-color;
 }
 
