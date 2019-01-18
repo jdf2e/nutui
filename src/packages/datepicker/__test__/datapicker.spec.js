@@ -55,7 +55,7 @@ describe('DatePicker.vue', () => {
         return Vue.nextTick().then(function () {
             expect(wrapper.findAll('.nut-picker-list').length).toBe(3)
             expect(wrapper.findAll('.nut-picker-list').at(0).findAll('.nut-picker-item').at(0).text()).toBe('12时')
-            expect(wrapper.findAll('.nut-picker-list-panel').at(2).attributes('style')).toBe('-webkit-transform: translateY(-36px);');
+            expect(wrapper.findAll('.nut-picker-list-panel').at(2).attributes('style')).toBe('-webkit-transform: translate3d(0, -36px, 0);');
         })
     });
     
