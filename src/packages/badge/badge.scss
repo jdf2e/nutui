@@ -4,9 +4,11 @@
     sup {
       position: absolute;
       height: 18px;
+      min-width: 8px;
       line-height: 18px;
       padding: 0 5px;
       background-color: #fff;
+      text-align: center;
       border: 1px solid $primary-color;
       color: $primary-color;
       font-size: 10px;

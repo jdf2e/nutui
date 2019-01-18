@@ -9,6 +9,7 @@
     }
     p {
         font-size: 14px;
+        line-height: 1.8;
         margin: 10px 0;
     }
     h1+p,
@@ -122,9 +123,10 @@
             background: #F7F7F7;
             border: 1px solid #ECECEC;
             border-radius: 2px;
-            font-size: 12px;
+            font-size: 13px;
+            line-height: 1;
             color: #3F536E;
-            padding: 5px 5px;
+            padding: 3px 5px;
             margin: 0 5px;
         }
     }

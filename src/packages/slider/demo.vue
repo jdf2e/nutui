@@ -91,10 +91,7 @@ export default {
       val6: 0
     };
   },
-  methods: {},
-  mounted() {
-    this.isMobile = window.isMobile;
-  }
+  methods: {}
 };
 </script>
 

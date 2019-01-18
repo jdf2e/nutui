@@ -1,7 +1,7 @@
 const fs = require('fs');
 var path = require('path');
 let marked = require('marked');
-let package =require("../package.json") ;
+let package = require("../package.json");
 if (!marked) {
     console.log('you need npm i marked -D!');
 }
@@ -40,33 +40,35 @@ let jsroot = `<script>export default {
     }
   },
   mounted(){   
-    let that = this;
-    let pre = document.querySelectorAll('pre');     
-    for(let i=0,item;item = pre[i];i++){      
-      item.classList.toggle('prettyprint');   
-      let creatC = document.createElement('i');
-      creatC.setAttribute('copy','copy');    
-      creatC.setAttribute('data-clipboard-action','copy');
-      creatC.setAttribute('data-clipboard-target','code');
-      creatC.setAttribute('class','copy')
-      let creatA = document.createElement('i');
-      creatA.setAttribute('toast','toast');  
-      item.appendChild(creatC);
-      item.appendChild(creatA);      
-    }   
+    //let that = this;
+    //let pre = document.querySelectorAll('pre');     
+    // for(let i=0,item;item = pre[i];i++){      
+    //   item.classList.toggle('prettyprint');   
+    //   let creatC = document.createElement('i');
+    //   creatC.setAttribute('copy','copy');    
+    //   creatC.setAttribute('data-clipboard-action','copy');
+    //   creatC.setAttribute('data-clipboard-target','code');
+    //   creatC.setAttribute('class','copy')
+    //   let creatA = document.createElement('i');
+    //   creatA.setAttribute('toast','toast');  
+    //   item.appendChild(creatC);
+    //   item.appendChild(creatA);      
+    // }
 
-    let copy = this.copy;
-    new copy('.copy',{
-        target:res => {         
-          return res.previousElementSibling
-        }
-    });    
-    let demourl = 'https://nutui.jd.com/demo.html#'+that.$route.path;
+    this.$nextTick(()=>{
+        let copy = this.copy;
+        new copy('.copy',{
+            target:res => {         
+            return res.previousElementSibling
+            }
+        });    
+        let demourl = 'https://nutui.jd.com/demo.html#'+this.$route.path;
 
-    this.demourl = demourl;
-    this.qrcode.toDataURL(demourl,{width:170},(err,url)=>{
-      that.codeurl = url
-    })
+        this.demourl = demourl;
+        this.qrcode.toDataURL(demourl,{width:170},(err,url)=>{
+            this.codeurl = url
+        });
+    });
   }
 }
 </script>`;
@@ -76,7 +78,7 @@ let jsroot = `<script>export default {
  */
 function insert(sorce) {
     var insert = sorce.indexOf('</h1>');
-    
+
     if (insert > -1) {
         return sorce.substring(0, insert) + '<i class="qrcode"><a :href="demourl"><span>请使用手机扫码体验</span><img :src="codeurl" alt=""></a></i>' + sorce.substring(insert, sorce.length);
     } else {
@@ -91,27 +93,26 @@ function insert(sorce) {
  * @param {string} sorce  文件源
  * @param {boole} ishasCode  是否需要二维码 
  */
-function createdFile(output, sorce,ishasCode) {
+function createdFile(output, sorce, ishasCode) {
     var pathSrc = output;
-    sorce = sorce.replace(/@latest/g,'@'+package.version)
-    if(!ishasCode){       
+
+    if (!ishasCode) {
         var res = insert(sorce);
-    }   else{
-       var  res = sorce;
+    } else {
+        var res = sorce;
     }
     fs.open(pathSrc, "w+", (err, fd) => {
         var bufs = `<template><div  @click="dsCode">
         <div v-if="content" class="layer">
-          <span class="close-box" @click="closelayer"></span>
-          <div v-html="content"></div>
+          <pre><span class="close-box" @click="closelayer"></span><div v-html="content"></div></pre>
         </div>`+ res + '</div></template>' + jsroot;
         var buf = new Buffer(bufs);
-        if( typeof fd  == 'number'){
+        if (typeof fd == 'number') {
             fs.writeSync(fd, buf, 0, buf.length, 0);
-         }else{
-             console.log(pathSrc,' typeof fd ！= number 请改正文件')
-         }
-       
+        } else {
+            console.log(pathSrc, ' typeof fd ！= number 请改正文件')
+        }
+
     })
 }
 /**
@@ -120,8 +121,37 @@ function createdFile(output, sorce,ishasCode) {
  * @param {*} outPath 输出路径
  * @param {*} nohead 是否有头文件
  */
-function fileDisplay(filePath,outPath,nohead) {
+function fileDisplay(filePath, outPath, nohead) {
     var rendererMd = new marked.Renderer();
+
+    rendererMd.code = function (code, infostring, escaped) {
+        var lang = (infostring || '').match(/\S*/)[0];
+        if (this.options.highlight) {
+            var out = this.options.highlight(code, lang);
+            if (out != null && out !== code) {
+                escaped = true;
+                code = out;
+            }
+        }
+
+        if (!lang) {
+            return '<pre><code>'
+                + (escaped ? code : escape(code, true))
+                + '</code></pre>';
+        }
+
+        if (lang === 'html') {
+            code = code.replace(/@latest/g, '@' + package.version)
+        }
+
+        return '<pre class="prettyprint"><span class="lang">' + lang + '</span><code class="'
+            + this.options.langPrefix
+            + escape(lang, true)
+            + '">'
+            + (escaped ? code : escape(code, true))
+            + '</code><i class="copy" copy="copy" data-clipboard-action="copy" data-clipboard-target="code" title="复制代码"></i><i toast="toast" title="全屏"></i></pre>\n';
+    };
+
     marked.setOptions({
         renderer: rendererMd,
         highlight: function (code) {
@@ -140,7 +170,7 @@ function fileDisplay(filePath,outPath,nohead) {
                 fs.stat(filedir, (err, stats) => {
                     if (!err) {
                         if (stats.isDirectory()) {
-                            fileDisplay(filedir,outPath,nohead)
+                            fileDisplay(filedir, outPath, nohead)
                         } else {
                             //判断文件类型是否是md文件
                             if (/.md$/.test(filedir)) {
@@ -159,13 +189,13 @@ function fileDisplay(filePath,outPath,nohead) {
                                     }
                                     let newName = fileNames.reverse().join('').split('-');
                                     let resName = '';
-                                    if(newName.indexOf('doc')>-1){
+                                    if (newName.indexOf('doc') > -1) {
                                         resName = newName[newName.length - 2]
-                                    }else{
+                                    } else {
                                         resName = newName[newName.length - 1]
                                     }
-                                    
-                                    createdFile(outPath + '/' + resName + '.vue', html,nohead)
+
+                                    createdFile(outPath + '/' + resName + '.vue', html, nohead)
                                 });
                                 //文件监听
                                 let fsWatcher = fs.watchFile(filedir, {
@@ -177,7 +207,7 @@ function fileDisplay(filePath,outPath,nohead) {
                                         let html = marked(data);
                                         let filedirarry = filedir.split('/');
                                         let fileNames = filedirarry[filedirarry.length - 2];
-                                        createdFile(outPath + '/' + fileNames + '.vue', html,nohead)
+                                        createdFile(outPath + '/' + fileNames + '.vue', html, nohead)
                                     });
                                 });
                             }
@@ -190,9 +220,9 @@ function fileDisplay(filePath,outPath,nohead) {
 }
 //md转 其他格式类型
 function MdToHtml(commomOption) {
-   // commomOption = options;
+    // commomOption = options;
     //获取所有的md 转html的结果
-    fileDisplay(commomOption.entry,commomOption.output,commomOption.nohead);
+    fileDisplay(commomOption.entry, commomOption.output, commomOption.nohead);
 }
 MdToHtml.prototype.apply = function (compiler) {
     //  console.log(compiler,'lls')

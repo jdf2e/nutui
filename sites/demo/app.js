@@ -74,6 +74,7 @@ OfflinePluginRuntime.install({
       noOkBtn: true,
       cancelBtnTxt: "刷新页面",
       closeOnClickModal:false,
+      lockBgScroll:true,
       onCancelBtn(){
         window.location.reload();
       }

@@ -1,8 +1,7 @@
 @import "../../styles/animation/fade";
 @import "../../styles/animation/ease";
 body.dialog-open {
-    position: fixed; //width: 100%;
-    //overflow:hidden;
+    position: fixed;
 }
 
 .nut-dialog-wrapper {
@@ -115,7 +114,7 @@ body.dialog-open {
     padding: 30px 20px 20px;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex: 0 1 auto;
 }
 
 .nut-dialog-content {
@@ -142,15 +141,18 @@ body.dialog-open {
 .nut-dialog-btn {
     display: block;
     width: 100%;
-    height:100%;
+    height: 100%;
+    position: relative;
     flex: 1;
     font-size: $font-size-base;
-    border: none;
+    border:none;
     background: transparent;
     appearance: none;
     outline: none;
+    user-select: none;
     &.disabled {
         background: $btn-disable-bg;
+        background-origin: border-box;
         color: $btn-disable-color;
     }
     &:only-child {
@@ -159,20 +161,19 @@ body.dialog-open {
         color: $primary-color;
         border-top: 1px solid $light-color;
     }
-    &:active{
-        opacity: .7;
-    }
 }
 
 .nut-dialog-ok {
     border-radius: 0 0 5px 0;
     background: $btn-gradient-bg;
+    background-origin: border-box;
     color: $btn-gradient-color;
 }
 
 .nut-dialog-cancel {
     border-radius: 0 0 0 5px;
     border-top: 1px solid $light-color;
+    background: #FFF;
 }
 
 // .fade-enter-active {

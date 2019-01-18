@@ -112,7 +112,7 @@
                 this.$refs.demo1.updateEvent(1);
                 this.$refs.demo2.updateEvent();
                 this.$refs.demo3.updateEvent();
-                 this.$refs.demo5.updateEvent();
+                this.$refs.demo5.updateEvent();
 
 
                 this.$refs.demo4.updateEvent();

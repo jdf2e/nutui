@@ -47,6 +47,20 @@
         </span>
       </nut-cell>
     </div>
+    <h4>背景滚动锁定</h4>
+    <p>lockBgScroll值设为true时，可在弹窗出现时锁定页面滚动，且不影响窗体内部滚动。</p>
+    <div>
+      <nut-cell :isLink="true" :showIcon="true" @click.native="showDialog8">
+        <span slot="title">
+          <label>背景滚动锁定</label>
+        </span>
+      </nut-cell>
+      <nut-cell :isLink="true" :showIcon="true" @click.native="showDialog9">
+        <span slot="title">
+          <label>窗体内部滚动不影响页面滚动</label>
+        </span>
+      </nut-cell>
+    </div>
     <h4>共享实例</h4>
     <p>如果给Dialog设置id(推荐)，则该Dialog再次弹出时依旧使用该实例，不再新建实例。如果多个Dialog的id相同，则共享一个实例。</p>
     <div>
@@ -147,6 +161,25 @@ export default {
         title: "注册说明",
         content:
           "原账号为您本人所有，建议直接登录或找回密码。原账号内的订单资产可能丢失，可联系京东客服找回。"
+      });
+    },
+    showDialog8: function() {
+      this.$dialog({
+        title: "背景滚动锁定",
+        lockBgScroll:true,
+        content:"弹窗弹出后，页面滚动锁止。在窗体和遮罩层上滑动时，页面不再跟随滚动。",
+        noOkBtn: true,
+        cancelBtnTxt: "我知道了"
+      });
+    },
+    showDialog9: function() {
+      this.$dialog({
+        title: "窗体内部滚动不影响页面滚动",
+        lockBgScroll:true,
+        content:
+          "弹窗弹出后，页面滚动锁止。页面不跟随弹窗内部的滚动而滚动。<br><br><br><br><br><br><br>弹窗弹出后，页面滚动锁止。页面不跟随弹窗内部的滚动而滚动。<br><br><br><br><br><br><br>弹窗弹出后，页面滚动锁止。页面不跟随弹窗内部的滚动而滚动。<br><br><br><br><br><br><br>弹窗弹出后，页面滚动锁止。页面不跟随弹窗内部的滚动而滚动。<br><br><br><br><br><br><br>弹窗弹出后，页面滚动锁止。页面不跟随弹窗内部的滚动而滚动。",
+        noOkBtn: true,
+        cancelBtnTxt: "我知道了"
       });
     },
     showImageDialog: function() {

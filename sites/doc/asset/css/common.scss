@@ -136,7 +136,12 @@ pre {
     position: relative;
     max-width: 100%;
     overflow: auto;
-    &>i {
+    .code-wrapper{
+        width:100%;
+        overflow:auto;
+    }
+    [toast="toast"],
+    [copy="copy"] {
         cursor: pointer;
         position: absolute;
         top: 10px;
@@ -173,10 +178,21 @@ pre {
     }
 } // 代码显示
 pre {
+    position: relative;
     background: #F2F4F5;
     border-radius: 4px;
     border: none;
     padding: 20px;
+    &>span {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        font-style: italic;
+        font-size: 12px;
+        color: #999;
+        text-shadow: 1px 1px #FFF;
+        user-select: none;
+    }
 }
 
 .kwd {
@@ -219,15 +235,17 @@ pre {
         color: #fff;
         font-size: 24px;
         position: absolute;
-        top: 25px;
+        top: 10px;
         right: 14px;
         z-index: 30;
-        width: 28px;
-        height: 28px;
+        width: 16px;
+        height: 16px;
         background: url(../css/i/close.png) no-repeat center;
+        background-size: cover;
         cursor: pointer;
         &:hover {
-            background: #D5E5FF url(../css/i/close.png) no-repeat center;
+            background-color: #D5E5FF;
+            background-image: url(../css/i/close.png);
         }
     }
     [toast="toast"] {
@@ -235,12 +253,12 @@ pre {
     }
     pre {
         background: none;
-        padding: 50px 100px 30px 30px;
+        padding: 0 30px;
         max-width: 100%;
         max-height: 800px;
         overflow: auto;
-        [copy="copy"] {
-            right: 47px;
+        &>i,.lang {
+            display: none;
         }
     } // .kwd{
     //     color:#ffb560;;
@@ -270,6 +288,6 @@ pre {
 
 pre.prettyprint {
     code {
-        font: 14px/24px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        font: 13px/24px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
     }
 }

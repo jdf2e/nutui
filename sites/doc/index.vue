@@ -43,7 +43,7 @@
                 <a>
                   <span>请使用手机扫码体验</span>
                   <img
-                    src="http://img13.360buyimg.com/uba/jfs/t1/14144/37/3433/5890/5c26d976E7cd98b80/94583409233081cc.png"
+                    src="https://img14.360buyimg.com/uba/jfs/t1/32118/11/559/2782/5c3d81ecEbda0c0f1/5f2b637d11817204.png"
                     alt
                   >
                 </a>
@@ -72,7 +72,7 @@
           <a>
             <span>请使用手机扫码体验</span>
             <img
-              src="http://img13.360buyimg.com/uba/jfs/t1/14144/37/3433/5890/5c26d976E7cd98b80/94583409233081cc.png"
+              src="https://img14.360buyimg.com/uba/jfs/t1/32118/11/559/2782/5c3d81ecEbda0c0f1/5f2b637d11817204.png"
               alt
             >
           </a>
