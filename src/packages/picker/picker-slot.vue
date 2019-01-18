@@ -1,14 +1,23 @@
 <template>
   <div class="nut-picker-list">
-    <div class="nut-picker-mask"></div>
-    <div class="nut-picker-indicator"></div>
+    <div class="nut-picker-roller" ref="roller">
+        <div class="nut-picker-roller-item" 
+            :class="{'nut-picker-roller-item-hidden': isHidden(index + 1)}"
+            v-for="(item,index) in listData"
+            :style="setRollerStyle(index + 1)"
+            :key="index">
+                {{item}}
+        </div>
+    </div>
     <div class="nut-picker-content">
         <div class="nut-picker-list-panel" ref="list">
-            <div class="nut-picker-item" v-for="(item,index) in listData "
+            <div class="nut-picker-item" v-for="(item,index) in listData"
                 :key="index">{{item}}
             </div>
         </div>
     </div>
+    <div class="nut-picker-mask"></div>
+    <div class="nut-picker-indicator"></div>
 </div>
 </template>
 <script>
@@ -29,7 +38,7 @@ export default {
         isUpdate: {
             type: Boolean,
             default: false
-        },
+        }
     },
     data() {
         return {
@@ -39,9 +48,11 @@ export default {
                 startTime: 0, 
                 endTime: 0
             },
+            currIndex: 1,
             transformY: 0,
             scrollDistance: 0,
             lineSpacing: 36,
+            rotation: 20,
             timer: null
         }
     },
@@ -64,16 +75,29 @@ export default {
                 }, 10); 
             } 
         },
-        setTransform(translateY = 0, type, time = 1000) {
+
+        setRollerStyle(index) {
+            return `transform: rotate3d(1, 0, 0, ${-this.rotation * index}deg) translate3d(0px, 0px, 104px)`;
+        },
+
+        isHidden(index) {
+            if (index >= this.currIndex + 8 || index <= this.currIndex - 8) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+
+        setTransform(translateY = 0, type, time = 1000, deg) {
             if (type === 'end') {
                 this.$refs.list.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`;
-                //this.$refs.list.style.transition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`;
+                this.$refs.roller.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`;
             } else {
                 this.$refs.list.style.webkitTransition = '';
-                //this.$refs.list.style.transition = '';
+                this.$refs.roller.style.webkitTransition = '';
             }
-            this.$refs.list.style.webkitTransform = `translateY(${translateY}px)`;
-            //this.$refs.list.style.transform = `translateY(${translateY}px)`;
+            this.$refs.list.style.webkitTransform = `translate3d(0, ${translateY}px, 0)`;
+            this.$refs.roller.style.webkitTransform = `rotate3d(1, 0, 0, ${deg})`;
             this.scrollDistance = translateY;
         },
 
@@ -90,12 +114,23 @@ export default {
 
                 // 设置滚动距离为lineSpacing的倍数值
                 let endMove = Math.round(updateMove / this.lineSpacing) * this.lineSpacing;
-                this.setTransform(endMove, type, time);
-                // this.timer = setTimeout(() => {
+                let deg = `${(Math.abs(Math.round(endMove / this.lineSpacing)) + 1) * this.rotation}deg`;
+                this.setTransform(endMove, type, time, deg);
+                this.timer = setTimeout(() => {
                     this.setChooseValue(endMove);
-                // }, time / 2); 
+                }, time / 2); 
+
+                this.currIndex = (Math.abs(Math.round(endMove/ this.lineSpacing)) + 1);
             } else {
-                this.setTransform(updateMove);
+                let deg = '0deg';
+                if (updateMove < 0) {
+                    deg = `${(Math.abs(updateMove / this.lineSpacing) + 1) * this.rotation}deg`;
+                } else {
+                    deg = `${((-updateMove / this.lineSpacing) + 1) * this.rotation}deg`;
+                }
+                
+                this.setTransform(updateMove, null, null, deg);
+                this.currIndex = (Math.abs(Math.round(updateMove/ this.lineSpacing)) + 1);
             }
         },
 
@@ -144,6 +179,7 @@ export default {
         modifyStatus (type, defaultValue) {
             defaultValue = defaultValue ? defaultValue : this.defaultValue;
             let index = this.listData.indexOf(defaultValue);
+            this.currIndex = index === -1 ? 1 : (index + 1);
             let move = index === -1 ? 0 : (index * this.lineSpacing);
             type && this.setChooseValue(-move);
             this.setMove(-move);
@@ -168,3 +204,4 @@ export default {
     }
 }
 </script>
+
