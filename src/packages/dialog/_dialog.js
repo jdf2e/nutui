@@ -1,6 +1,7 @@
 import Vue from 'vue';
+import settings from './dialog.vue';
 
-let DialogConstructor = Vue.extend(require('./dialog.vue').default);
+let DialogConstructor = Vue.extend(settings);
 
 let instances = {};
 

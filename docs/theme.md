@@ -35,7 +35,7 @@ $dark-color: #DADADA;
 
 修改 webpack 配置文件中 **sass-loader** 的配置。在 **options** 的 **data** 属性值中，先后 import 你自定义的 SCSS 文件（如 `custom.scss`）和 NutUI 的样式变量配置文件（路径为 **dist/styles/variable.scss**）。
 
-```js
+```javascript
 {
     test: /\.(sa|sc)ss$/,
     use: [
