@@ -552,6 +552,8 @@ export default {
 .container {
   position: relative;
   min-width: 1260px;
+  height:870px;
+  overflow: hidden;
 }
 .wrapper {
   position: absolute;
