@@ -145,7 +145,7 @@ body.dialog-open {
     position: relative;
     flex: 1;
     font-size: $font-size-base;
-    border:none;
+    border: none;
     background: transparent;
     appearance: none;
     outline: none;
@@ -161,9 +161,6 @@ body.dialog-open {
         color: $primary-color;
         border-top: 1px solid $light-color;
     }
-    &:active {
-        background: $btn-gradient-active-bg;
-    }
 }
 
 .nut-dialog-ok {
@@ -171,38 +168,18 @@ body.dialog-open {
     background: $btn-gradient-bg;
     background-origin: border-box;
     color: $btn-gradient-color;
+    &:active {
+        background: $btn-gradient-active-bg;
+    }
 }
 
 .nut-dialog-cancel {
     border-radius: 0 0 0 5px;
     border-top: 1px solid $light-color;
     background: #FFF;
+    background-origin: border-box;
+    &:active {
+        border-top: 1px solid #CCC;
+        background: #CCC;
+    }
 }
-
-// .fade-enter-active {
-//     animation: zoomIn 0.3s forwards;
-// }
-// @keyframes zoomIn {
-//     0% {
-//         opacity: 0;
-//         transform: scale3d(1.3, 1.3, 1.3);
-//     }
-//     50% {
-//         opacity: 1;
-//     }
-// }
-// @keyframes zoomOut {
-//     0% {
-//         opacity: 1;
-//     }
-//     50% {
-//         opacity: 0;
-//         transform: scale3d(1.3, 1.3, 1.3);
-//     }
-//     100% {
-//         opacity: 0;
-//     }
-// }
-// .fade-leave-active {
-//     animation: zoomOut 0.3s forwards;
-// }
