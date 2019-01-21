@@ -243,19 +243,20 @@ export default {
             }
         },
         _onTransitionEnd(){
-            this.transitionDuration = 0;
-            this.delta = 0;
-            this.lastPage = this.currentPage;
-            this._slideClassHandle();
-            if(this.isLoop){
-                this._setTranslate(this._getTranslateOfPage(this.currentPage));
-            }
-            this.stopAutoPlay = false;
             if(this._isPageChanged()){
                 this.$emit('slideChangeEnd',this.currentPage,this.$el);
             }else{
                 this.$emit('slideRevertEnd',this.currentPage,this.$el);
             }
+            this.transitionDuration = 0;
+            this.delta = 0;
+            this.lastPage = this.currentPage;
+          
+            this._slideClassHandle();
+            if(this.isLoop){
+                this._setTranslate(this._getTranslateOfPage(this.currentPage));
+            }
+            this.stopAutoPlay = false;
 
         },
         _isPageChanged(){

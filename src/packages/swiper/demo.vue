@@ -62,6 +62,9 @@
             ref="demo5"
             :lazyLoad="true"
              :paginationVisible="true"
+             @slideChangeEnd="slideChangeEnd"
+             @slideMove="slideMove"
+             @slideChangeStart="slideChangeStart"
         >
              <div  v-for="(item,index) in dataImgItem" :key="index"  class="nut-swiper-slide ">
                 <img :data-src="item.imgSrc"  style="max-width:100%;" class="nut-img-lazyload"/> 
@@ -118,6 +121,17 @@
                 this.$refs.demo4.updateEvent();
 
             },300)
+        },
+        methods:{
+            slideChangeEnd(page){
+                console.log(page);
+            },
+            slideMove(page){
+                console.log(page);
+            },
+            slideChangeStart(page){
+                console.log(page);
+            }
         }
     }
 </script>
