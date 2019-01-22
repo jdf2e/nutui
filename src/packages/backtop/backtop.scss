@@ -1,0 +1,28 @@
+.nut-backtop{
+    z-index: 1111;
+    position: fixed;
+    cursor: pointer;
+    display: none;
+    line-height: 0;
+    &.show {
+        display: block;
+    }
+
+    &-main {
+        background-color: rgba(0,0,0,.3);
+        border-radius: 2px;
+        box-shadow: 0 1px 3px rgba(0,0,0,.2);
+        transition: all .2s ease-in-out;
+        
+        &:hover {
+            background-color: rgba(0,0,0,.5);
+        }
+    }
+
+    i{
+        color: #fff;
+        font-size: 24px;
+        padding: 8px 12px;
+        line-height: 0;
+    }
+}

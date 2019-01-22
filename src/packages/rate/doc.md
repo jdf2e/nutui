@@ -43,5 +43,11 @@
 | total | star 总数 | Number | 5
 | value | 当前 star 数，可以使用 v-model 双向绑定数据 | Number | 3
 | size | star 大小 | Number | 25
+| spacing | 两个star的间距 | Number | 20
 | uncheckedIcon | 使用图标(未选中) | String | -
 | checkedIcon | 使用图标(选中) | String | -
+
+## Events
+| 字段 | 说明 | 回调参数 
+|----- | ----- | ----- 
+| click | 点击star市触发 | star的index
