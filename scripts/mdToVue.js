@@ -72,7 +72,7 @@ function insert(sorce) {
  */
 function createdFile(output, sorce, ishasCode) {
     var pathSrc = output;
-
+    
     if (!ishasCode) {
         var res = insert(sorce);
     } else {
@@ -201,12 +201,32 @@ function fileDisplay(param) {
             // })
             ismd(item,res=>{
                 //res md文件处理结果           
-                createdFile(param.output + '/' + res.mdName + '.vue', res.html, param.needCode)
+                createdFile(param.output + res.mdName + '.vue', res.html, param.needCode)
             })
         })    
     });
 }
 //md转 其他格式类型
+/**
+ * 
+ * @outPath {String} 输出的文件目录 
+ */
+function ishasOutFile(outPath,callback){
+    fs.stat(outPath,(err,res)=>{       
+        if(err){
+            fs.mkdir(outPath,erro=>{
+                if(erro){
+                    
+                }else{                  
+                    callback()
+                }
+               
+            })
+        }else{
+            callback()
+        }
+    })
+}
 /**
  * 
  * @param {entry} 文件读取路径 
@@ -221,8 +241,12 @@ function MdToHtml(commomOption) {
         needCode:true
     }
     params = Object.assign(params,commomOption);    
-    //获取所有的md 转html的结果
-    fileDisplay(params);
+    //检查输出路径
+    ishasOutFile(params.output,()=>{
+         //获取所有的md 转html的结果
+        fileDisplay(params);
+    });
+   
 }
 //用于后期的扩展暂时没想到
 MdToHtml.prototype.apply = function (compiler) {
