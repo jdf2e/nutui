@@ -27,14 +27,16 @@ module.exports = merge(webpackBaseConf, {
             entry:'./src',
             output:'./sites/doc/view/',
             template:'./doc-site/template.html',
-            nav:'left'
+            nav:'left',
+            needCode:true
         }),
         new mdtohtml({
             entry:'./docs',
             output:'./sites/doc/page/',
             template:'./doc-site/template.html',
             nav:'left',
-            nohead:true
+            needCode:false
+           
         }),
         new HtmlWebpackPlugin({
             template: './sites/doc/index.html',

@@ -71,7 +71,7 @@ function insert(sorce) {
  */
 function createdFile(output, sorce, ishasCode) {
     var pathSrc = output;    
-    if (!ishasCode) {
+    if (ishasCode) {
         var res = insert(sorce);
     } else {
         var res = sorce;
@@ -173,11 +173,7 @@ function fileDisplay(param) {
     readDirRecur(param.entry, function(filePath) {    
         //文件列表
         
-        fileList.map(item=>{       
-            // ismd(item).then(res=>{
-            //     //res md文件处理结果           
-            //     createdFile(param.output + '/' + res.mdName + '.vue', res.html, param.needCode)
-            // })
+        fileList.map(item=>{  
             ismd(item,res=>{
                 //res md文件处理结果           
                 createdFile(param.output + res.mdName + '.vue', res.html, param.needCode)
