@@ -24,6 +24,7 @@
 >
 </nut-backtop>
 ```
+
 ```javascript
 export default {
   methods: {
