@@ -2,11 +2,6 @@
     <div :class="['nut-backtop', {'show': backTop}]" :style="styles" @click="goto">
         <slot>
             <div class="nut-backtop-main">
-                <nut-icon 
-                    type="top" 
-                    color="#f0250f"
-                >
-                </nut-icon>
             </div>
         </slot>
     </div>
@@ -22,11 +17,11 @@
             },
             bottom: {
                 type: Number,
-                default: 30
+                default: 20
             },
             right: {
                 type: Number,
-                default: 30
+                default: 10
             },
             duration: {
                 type: Number,
