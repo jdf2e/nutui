@@ -134,7 +134,7 @@ function readDirRecur(fileSrc, callback) {
  */
 function ismd(src){
     //判断文件类型是否是md文件    
-    let filedir = src;
+    let filedir = src;  
         return new Promise((resolve,reject)=>{
             if (/.md$/.test(filedir)) {
             //文件读取
@@ -189,6 +189,7 @@ function fileDisplay(param) {
     // 获取文件
     readDirRecur(param.entry, function(filePath) {    
         //文件列表
+        
         fileList.map(item=>{       
             ismd(item).then(res=>{
                 //res md文件处理结果           
