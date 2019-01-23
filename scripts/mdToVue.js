@@ -65,7 +65,7 @@ function insert(sorce) {
 }
 ///创建一个空文件
 /**
- * 
+ * 修复中 
  * @param {string} output  输出路径
  * @param {string} sorce  文件源
  * @param {boole} ishasCode  是否需要二维码 
