@@ -132,10 +132,10 @@ function readDirRecur(fileSrc, callback) {
  * 判断是否位md文件 并进行操作
  * @src {string} 打开的文件目录
  */
-function ismd(src){
+function ismd(src,callback){
     //判断文件类型是否是md文件    
     let filedir = src;  
-        return new Promise((resolve,reject)=>{
+        //return new Promise((resolve,reject)=>{
             if (/.md$/.test(filedir)) {
             //文件读取
                 fs.readFile(filedir, 'utf-8', (err, data) => {
@@ -149,17 +149,21 @@ function ismd(src){
                         //如果不是doc命名的文件
                         mdName = opensName;
                     } 
-                    resolve({
+                    callback({
                         mdName:mdName,
                         html:html
                     })
+                    // resolve({
+                    //     mdName:mdName,
+                    //     html:html
+                    // })
                     //创建文件
                     
                 });
             }else{
-                reject('nomd')
+                //reject('nomd')
             }
-        })
+        //})
                 
     
 }
@@ -191,7 +195,11 @@ function fileDisplay(param) {
         //文件列表
         
         fileList.map(item=>{       
-            ismd(item).then(res=>{
+            // ismd(item).then(res=>{
+            //     //res md文件处理结果           
+            //     createdFile(param.output + '/' + res.mdName + '.vue', res.html, param.needCode)
+            // })
+            ismd(item,res=>{
                 //res md文件处理结果           
                 createdFile(param.output + '/' + res.mdName + '.vue', res.html, param.needCode)
             })
