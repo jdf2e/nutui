@@ -8,7 +8,6 @@ if (!marked) {
 // 基本配置文件信息
 let {version} = require("../package.json");
 //vue js脚本
-let jsroot = require('./mdtoVueroot');
 //获取所有文件列表
 let fileList  = [];
 // maked文件配置
@@ -71,29 +70,23 @@ function insert(sorce) {
  * @param {boole} ishasCode  是否需要二维码 
  */
 function createdFile(output, sorce, ishasCode) {
-    var pathSrc = output;
-    
+    var pathSrc = output;    
     if (!ishasCode) {
         var res = insert(sorce);
     } else {
         var res = sorce;
     }
-    fs.open(pathSrc, "w+", (err, fd) => {
-        var bufs = `<template><div  @click="dsCode">
+    var bufs = `<template><div  @click="dsCode">
         <div v-if="content" class="layer">
           <pre><span class="close-box" @click="closelayer"></span><div v-html="content"></div></pre>
-        </div>`+ res + '</div></template>' + jsroot;
-
-        var buf = new Buffer(bufs);
-        if (typeof fd == 'number') {
-            fs.writeSync(fd, buf, 0, buf.length, 0);
-        } else {
-            console.log(pathSrc, ' typeof fd ！= number 请改正文件')
-        }
-
+        </div>`+ res + `</div></template><script>import root from '../root.js';
+        export default {
+            mixins:[root]
+        }</script>`;
+    fs.writeFile(pathSrc,bufs,'utf8',(err)=>{
+       
     })
 }
-
 /**
  * 目录读取，找到跟文件
  * @fileSrc {string} 打开文件路径
@@ -106,8 +99,7 @@ function readDirRecur(fileSrc, callback) {
         ++count == files.length && callback()
       }  
       files.forEach(function(file) {
-        var fullPath = fileSrc + '/' + file;
-  
+        var fullPath = fileSrc + '/' + file;  
         fs.stat(fullPath, function(err, stats) {
           if (stats.isDirectory()) {
               return readDirRecur(fullPath, checkEnd);
@@ -126,8 +118,6 @@ function readDirRecur(fileSrc, callback) {
       files.length === 0 && callback()
     })
 }
-  
-  
 /**
  * 判断是否位md文件 并进行操作
  * @src {string} 打开的文件目录
@@ -135,37 +125,26 @@ function readDirRecur(fileSrc, callback) {
 function ismd(src,callback){
     //判断文件类型是否是md文件    
     let filedir = src;  
-        //return new Promise((resolve,reject)=>{
-            if (/.md$/.test(filedir)) {
-            //文件读取
-                fs.readFile(filedir, 'utf-8', (err, data) => {
-                    let html = marked(data); 
-                    let mdName = "";
-                    let opensName = filedir.replace(/(^.*\/|.md)/g,"");                    
-                    //如果是doc文件以前缀 为
-                    if (opensName === 'doc') {
-                        mdName = filedir.replace(/(^.*packages\/|\/doc\.md)/g,'');
-                    } else {
-                        //如果不是doc命名的文件
-                        mdName = opensName;
-                    } 
-                    callback({
-                        mdName:mdName,
-                        html:html
-                    })
-                    // resolve({
-                    //     mdName:mdName,
-                    //     html:html
-                    // })
-                    //创建文件
-                    
-                });
-            }else{
-                //reject('nomd')
-            }
-        //})
-                
-    
+    //return new Promise((resolve,reject)=>{
+    if (/.md$/.test(filedir)) {
+    //文件读取
+        fs.readFile(filedir, 'utf-8', (err, data) => {
+            let html = marked(data); 
+            let mdName = "";
+            let opensName = filedir.replace(/(^.*\/|.md)/g,"");                    
+            //如果是doc文件以前缀 为
+            if (opensName === 'doc') {
+                mdName = filedir.replace(/(^.*packages\/|\/doc\.md)/g,'');
+            } else {
+                //如果不是doc命名的文件
+                mdName = opensName;
+            } 
+            callback({
+                mdName:mdName,
+                html:html
+            })   
+        });
+    }
 }
 //文件监听
 function filelisten(){    

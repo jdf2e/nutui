@@ -1,5 +1,4 @@
-//插入 默认的 script 标签
-let jsroot=  `<script>export default {
+var myMixin ={
     data(){
         return {
           content:'',
@@ -7,7 +6,7 @@ let jsroot=  `<script>export default {
           demourl:''
         }
       },
-      methods:{
+    methods:{
         closelayer(){
           this.content = '';
         },
@@ -25,29 +24,14 @@ let jsroot=  `<script>export default {
               }
           });   
         },  
-    dsCode(e){
-      let tag = e.target;
-      if(tag.attributes.toast){
-        this.toast(e)  
-      }      
-    }
+        dsCode(e){
+            let tag = e.target;
+            if(tag.attributes.toast){
+                this.toast(e)  
+            }      
+        }
   },
   mounted(){   
-    //let that = this;
-    //let pre = document.querySelectorAll('pre');     
-    // for(let i=0,item;item = pre[i];i++){      
-    //   item.classList.toggle('prettyprint');   
-    //   let creatC = document.createElement('i');
-    //   creatC.setAttribute('copy','copy');    
-    //   creatC.setAttribute('data-clipboard-action','copy');
-    //   creatC.setAttribute('data-clipboard-target','code');
-    //   creatC.setAttribute('class','copy')
-    //   let creatA = document.createElement('i');
-    //   creatA.setAttribute('toast','toast');  
-    //   item.appendChild(creatC);
-    //   item.appendChild(creatA);      
-    // }
-
     this.$nextTick(()=>{
         let copy = this.copy;
         new copy('.copy',{
@@ -56,7 +40,6 @@ let jsroot=  `<script>export default {
             }
         });    
         let demourl = 'https://nutui.jd.com/demo.html#'+this.$route.path;
-
         this.demourl = demourl;
         this.qrcode.toDataURL(demourl,{width:170},(err,url)=>{
             this.codeurl = url
@@ -64,5 +47,4 @@ let jsroot=  `<script>export default {
     });
   }
 }
-</script>`;
-module.exports= jsroot ;
+module.exports = myMixin;
