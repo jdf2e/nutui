@@ -47,7 +47,7 @@
 | uncheckedIcon | 使用图标(未选中) | String | -
 | checkedIcon | 使用图标(选中) | String | -
 
-## Events
+## Event
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 
 | click | 点击star市触发 | star的index
