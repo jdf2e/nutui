@@ -140,7 +140,10 @@ function fileReadStar(filedir,callback){
 }
 /**
  * 判断是否位md文件 并进行操作
+ * 判断文件是否有改动
  * @src {string} 打开的文件目录
+ * @hasobj {obj} hash对象
+ * @callback {fn} 回调函数
  */
 function ismd(src,hasobj,callback){
     //判断文件类型是否是md文件    
@@ -180,7 +183,7 @@ function ismd(src,hasobj,callback){
  */
 function checkIsexists (path,callback){  
     let pathFileName = path.replace(/[^a-zA-Z]/g,'');
-    let cacheName = './'+pathFileName+'hashCache.text';
+    let cacheName = './local'+pathFileName+'.cache';
     fs.exists(cacheName, res=>{
         console.log(res)
         if(!res){
