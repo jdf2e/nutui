@@ -1,10 +1,12 @@
 const fs = require('fs');
 var path = require('path');
+let { hashElement } = require('folder-hash');
 //marked转换工具
 let marked = require('marked');
 if (!marked) {
     console.log('you need npm i marked -D!');
 }
+
 // 基本配置文件信息
 let {version} = require("../package.json");
 //vue js脚本
@@ -118,33 +120,129 @@ function readDirRecur(fileSrc, callback) {
       files.length === 0 && callback()
     })
 }
+function fileReadStar(filedir,callback){
+    fs.readFile(filedir, 'utf-8', (err, data) => {
+        let html = marked(data); 
+        let mdName = "";
+        let opensName = filedir.replace(/(^.*\/|.md)/g,"");                    
+        //如果是doc文件以前缀 为
+        if (opensName === 'doc') {
+            mdName = filedir.replace(/(^.*packages\/|\/doc\.md)/g,'');
+        } else {
+            //如果不是doc命名的文件
+            mdName = opensName;
+        } 
+        callback({
+            mdName:mdName,
+            html:html
+        })   
+    });
+}
 /**
  * 判断是否位md文件 并进行操作
  * @src {string} 打开的文件目录
  */
-function ismd(src,callback){
+function ismd(src,hasobj,callback){
     //判断文件类型是否是md文件    
     let filedir = src;  
     //return new Promise((resolve,reject)=>{
     if (/.md$/.test(filedir)) {
-    //文件读取
-        fs.readFile(filedir, 'utf-8', (err, data) => {
-            let html = marked(data); 
-            let mdName = "";
-            let opensName = filedir.replace(/(^.*\/|.md)/g,"");                    
-            //如果是doc文件以前缀 为
-            if (opensName === 'doc') {
-                mdName = filedir.replace(/(^.*packages\/|\/doc\.md)/g,'');
-            } else {
-                //如果不是doc命名的文件
-                mdName = opensName;
-            } 
-            callback({
-                mdName:mdName,
-                html:html
-            })   
-        });
+        if(hasobj.fileText){
+            let hasHObjs = hasobj;
+            hashElement(filedir).then(res=>{                
+                if(hasHObjs.fileText.indexOf(res.hash)==-1){
+                    //执行写入
+                    //同时更新缓存
+                    fs.writeFileSync(hasHObjs.cachePath,
+                        hasHObjs.fileText+'|'+res.hash
+                        ,'utf-8');
+
+                    fileReadStar(filedir,(obj)=>{
+                        callback(obj)
+                    })
+                }
+            })
+        }else{
+            //如果没有hash 直接做下一部
+            fileReadStar(filedir,(obj)=>{
+                callback(obj)
+            })
+        }
+        //对md文件存储 hash       
+        //文件读取
+        
     }
+}
+/**
+ * 检查文件是否存折
+ * @param {*} path 
+ * @param {*} callback 
+ */
+function checkIsexists (path,callback){  
+    let pathFileName = path.replace(/[^a-zA-Z]/g,'');
+    let cacheName = './'+pathFileName+'hashCache.text';
+    fs.exists(cacheName, res=>{
+        console.log(res)
+        if(!res){
+            fs.writeFile(cacheName,'','utf8',()=>{
+                callback(cacheName)
+            })
+        }else{
+            callback(cacheName)
+        }
+    }) 
+}
+
+let outhash = [];
+function pushHash(obj){ 
+    //紧紧插入md文件hash                       
+    if(/\.md$/.test(obj.name)&&obj['hash']){
+        outhash.push(obj.hash);
+    }
+    if(obj['children']&&obj['children'].length>0){
+        obj['children'].map(res=>{
+            pushHash(res)
+        })
+    }              
+}
+//hash 对比
+/**
+ * 初始化检查是否有md文件 hash
+ * 如果没有 hash 创建一个 json文件并把 md文件 hash进去 用来做缓存
+ * 初始化获取所有md文件的 hash
+ * @param {*} path 
+ */
+function comparehash(path,callback){
+    checkIsexists(path,(cachePath)=>{       
+        //获取文件内容
+        let fileText = fs.readFileSync(cachePath,'utf-8');        
+         //获取文件 hash    
+        hashElement(path, {
+            folders: { exclude: ['.*', 'node_modules', 'test_coverage'] },
+            files: { include: ['*.md'],exclude:['*.js','*.vue','*.scss','__test__'] }
+        }).then(hash => {           
+                if(fileText){
+                    //如果有内容
+                    callback({
+                        fileText:fileText,
+                        cachePath:cachePath
+                    })
+                }else{
+                    pushHash(hash)
+                    console.log(outhash)
+                    fs.writeFileSync(cachePath,outhash.join('|'),'utf-8');
+                    //如果没有内容
+                    callback({
+                        fileText:fileText,
+                        cachePath:cachePath
+                    })
+                }
+        })
+        .catch(error => {
+            return console.error('hashing failed:', error);
+        }); 
+    })
+     
 }
 //文件监听
 function filelisten(){    
@@ -169,17 +267,20 @@ function filelisten(){
  * @needCode {boolen} 是否需要二维码 默认 true
  */
 function fileDisplay(param) {
-    // 获取文件
-    readDirRecur(param.entry, function(filePath) {    
-        //文件列表
-        
-        fileList.map(item=>{  
-            ismd(item,res=>{
-                //res md文件处理结果           
-                createdFile(param.output + res.mdName + '.vue', res.html, param.needCode)
-            })
-        })    
+    //检查文件是否第一次初始化并获取hash
+    comparehash(param.entry,(hashMsgObj)=>{
+        // 获取文件
+        readDirRecur(param.entry, function(filePath) {    
+            //文件列表        
+            fileList.map(item=>{              
+                ismd(item,hashMsgObj,res=>{
+                    //res md文件处理结果           
+                    createdFile(param.output + res.mdName + '.vue', res.html, param.needCode)
+                })
+            })    
+        });
     });
+    
 }
 //md转 其他格式类型
 /**

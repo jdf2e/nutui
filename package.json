@@ -83,6 +83,7 @@
     "eslint-plugin-vue": "4.7.1",
     "expect": "23.6.0",
     "file-loader": "1.1.11",
+    "folder-hash": "^2.1.2",
     "friendly-errors-webpack-plugin": "1.7.0",
     "google-code-prettify": "1.0.5",
     "has": "1.0.3",
