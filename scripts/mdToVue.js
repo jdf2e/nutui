@@ -195,7 +195,9 @@ function checkIsexists (path,callback){
         }
     }) 
 }
-
+/**
+ * 执行文件缓存
+ */
 let outhash = [];
 function pushHash(obj){ 
     //紧紧插入md文件hash                       
@@ -224,22 +226,21 @@ function comparehash(path,callback){
             folders: { exclude: ['.*', 'node_modules', 'test_coverage'] },
             files: { include: ['*.md'],exclude:['*.js','*.vue','*.scss','__test__'] }
         }).then(hash => {           
-                if(fileText){
-                    //如果有内容
-                    callback({
-                        fileText:fileText,
-                        cachePath:cachePath
-                    })
-                }else{
-                    pushHash(hash)
-                    console.log(outhash)
-                    fs.writeFileSync(cachePath,outhash.join('|'),'utf-8');
-                    //如果没有内容
-                    callback({
-                        fileText:fileText,
-                        cachePath:cachePath
-                    })
-                }
+            if(fileText){
+                //如果有内容
+                callback({
+                    fileText:fileText,
+                    cachePath:cachePath
+                })
+            }else{
+                pushHash(hash)               
+                fs.writeFileSync(cachePath,outhash.join('|'),'utf-8');
+                //如果没有内容
+                callback({
+                    fileText:fileText,
+                    cachePath:cachePath
+                })
+            }
         })
         .catch(error => {
             return console.error('hashing failed:', error);
