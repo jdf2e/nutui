@@ -44,6 +44,8 @@ export declare class Tab extends UIComponent {}
 export declare class Tabbar extends UIComponent {}
 export declare class TabPanel extends UIComponent {}
 export declare class Toast extends UIComponent {}
+export declare class BackTop extends UIComponent {}
+export declare class Scroller extends UIComponent {}
 
 export interface InstallationOptions {
     locale?: any
