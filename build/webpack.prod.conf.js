@@ -7,6 +7,10 @@ const webpackBaseConf = require('./webpack.base.conf.js');
 const rimraf = require('rimraf');
 const merge = require('webpack-merge');
 
+rimraf('./dist/sites/', function (err) {
+    if (err) console.log(err);
+});
+
 rimraf('./dist/nutui.js', function (err) {
     if (err) console.log(err);
 });
