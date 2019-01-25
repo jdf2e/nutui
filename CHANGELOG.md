@@ -2,7 +2,7 @@
 
 `2019-1-25`
 
-* :sparkles: 新增`BackTop`返回顶部组件
+* :sparkles: 新增返回顶部`BackTop`组件
 * :bug: 修复`Swiper`组件 slideChangeEnd 事件的一个bug
 * :zap: `Rate`组件增加允许设置只读和间距
 * :zap: 文档MD转Vue增加文件缓存功能，提升文档预览和构建速度

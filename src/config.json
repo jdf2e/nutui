@@ -398,7 +398,7 @@
       "desc": "滚动组件",
       "type": "component",
       "sort": "1",
-      "showDemo": true,
+      "showDemo": false,
       "author": "iris"
     },
     {
