@@ -36,12 +36,12 @@ rendererMd.code = function (code, infostring, escaped) {
         code = code.replace(/@latest/g, '@' + version)
     }
 
-    return '<pre class="prettyprint"><span class="lang">' + lang + '</span><code class="'
+    return '<pre class="prettyprint"><span class="lang">' + lang + '</span><div class="code-wrapper"><code class="'
         + this.options.langPrefix
         + escape(lang, true)
         + '">'
         + (escaped ? code : escape(code, true))
-        + '</code><i class="copy" copy="copy" data-clipboard-action="copy" data-clipboard-target="code" title="复制代码"></i><i toast="toast" title="全屏"></i></pre>\n';
+        + '</code></div><i class="copy" copy="copy" data-clipboard-action="copy" data-clipboard-target="code" title="复制代码"></i><i toast="toast" title="全屏"></i></pre>\n';
 };
 marked.setOptions({
     renderer: rendererMd,

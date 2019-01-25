@@ -2,15 +2,15 @@
 
 NutUI是一套京东风格的移动端Vue组件库，开发和服务于移动Web界面的企业级前中后台产品。
 
+<div style="margin:30px 0;">
+    <img src="http://img14.360buyimg.com/uba/jfs/t1/8543/6/11560/22014/5c2c6136E8023ac0a/6abbd9de10999c48.png" width="150" alt="NutUI">
+</div>
+
 <iframe src="https://ghbtns.com/github-btn.html?user=jdf2e&repo=nutui&type=star&count=true" frameborder="0" scrolling="0" width="60px" height="20px"></iframe>
 
 <iframe src="https://ghbtns.com/github-btn.html?user=jdf2e&repo=nutui&type=watch&count=true&v=2" frameborder="0" scrolling="0" width="70px" height="20px"></iframe>
 
 <iframe src="https://ghbtns.com/github-btn.html?user=jdf2e&repo=nutui&type=fork&count=true" frameborder="0" scrolling="0" width="60px" height="20px"></iframe>
-
-<div style="margin:30px 0;">
-    <img src="http://img14.360buyimg.com/uba/jfs/t1/8543/6/11560/22014/5c2c6136E8023ac0a/6abbd9de10999c48.png" width="150" alt="NutUI">
-</div>
 
 ## 特性
 
