@@ -41,21 +41,21 @@ export default {
 
 ## 设置样式
 ```html
-<nut-switch 
+<nut-backtop 
   :bottom="20"
   :right="20"
   :zIndex="10"
 >
-</nut-switch>
+</nut-backtop>
 ```
 
 
 ## 设置动画持续时间
 ```html
-<nut-switch 
+<nut-backtop 
   :duration="1000"  
 >
-</nut-switch>
+</nut-backtop>
 ```
 
 
