@@ -88,7 +88,8 @@ this.$dialog({
 | noFooter | 是否隐藏底部按钮栏 | Boolean | false
 | noOkBtn | 是否隐藏确定按钮 | Boolean | false
 | noCancelBtn | 是否隐藏取消按钮 | Boolean | false
-| okBtnTxt | 确定按钮文案 | String | ”确定“
+| cancelBtnTxt | 取消按钮文案 | String | ”取 s消“
+| okBtnTxt | 确定按钮文案 | String | ”确 定“
 | okBtnDisabled | 禁用确定按钮 | Boolean | false
 | cancelAutoClose | 取消按钮是否默认关闭弹窗 | Boolean | true
 | textAlign | 文字对齐方向，可选值同css的text-align | String | "center"

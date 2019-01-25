@@ -9,7 +9,7 @@
           <a href="#/index" class="logo-link">
             <img src="./asset/css/i/nut.png" alt>
           </a>
-          <span class="version">{{version}}</span>
+          <span class="version">v{{version}}</span>
         </div>
         <div class="h-nav">
           <search/>
