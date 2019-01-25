@@ -16,7 +16,7 @@
 ```html
 <nut-cell 
   :isLink = "true"
-  title = "左侧主标题" 
+  title = "左侧主标题" 312312312423423423423
   subTitle = "左侧副标题"
   desc="右侧描述文字">
 </nut-cell>
