@@ -38,9 +38,9 @@ export default {
             type:String,
             default:null
         },
-        testProp:{
-            type:String,
-            default:null
+        readOnly:{
+            type:Boolean,
+            default: false
         },
         spacing:{
             type:[String,Number],
@@ -57,9 +57,14 @@ export default {
     },
     methods: {
         onClick($event,idx){
-            this.current = idx;
-            this.$emit('input',idx);
-            this.$emit('click',idx);
+            if(this.readOnly){
+                this.$emit('input',this.current);
+                this.$emit('click',this.current);
+            }else{
+                this.current = idx;
+                this.$emit('input',idx);
+                this.$emit('click',idx);
+            }
         }
     }
 }
