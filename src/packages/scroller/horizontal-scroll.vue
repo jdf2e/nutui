@@ -2,7 +2,7 @@
     <div class="nut-hor-scroll" rel="wrapper">
         <div class="nut-hor-list" ref="list">
             <slot name="list"></slot>
-            <div class="nut-hor-control" v-if="isUnMore && $slots.more && isShowLoadMore()">
+            <div class="nut-hor-control" v-if="isUnMore && $slots.more && isShowLoadMore">
                 <slot name="more"></slot>
             </div>
         </div>
@@ -44,20 +44,48 @@ export default {
             },
             transformX: 0,
             scrollDistance: 0,
-            timer: null
+            timer: null,
+            isShowLoadMore: false
         }
     },
     methods: {
-        isShowLoadMore() {
-            this.$nextTick(() => {
-                let wrapH = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-                let listH = this.listData.length * this.lineSpacing;
-                if (wrapH <= listH) {
-                    return true;
-                } else {
-                    return false;
+        requestAnimationFrame(){
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame || 
+                function(callback){
+                    window.setTimeout(callback, 1000 / 60);
                 }
-            });
+        },
+
+        loazyLoadImg() {
+            let imgLazyLoadEl;
+            this.requestAnimationFrame()(() => {
+                imgLazyLoadEl = this.$refs.list.querySelectorAll('img');
+                imgLazyLoadEl.forEach((item, index) => {
+                    if (!item.getAttribute('src')) {
+                        let src = item.getAttribute('data-src');
+                        let img = new Image();
+                        img.src = src;
+                        console.log(src);
+                        img.onload = ()=>{
+                            item.src = src;
+                        }
+                        img.onerror = ()=>{
+                            item.classList.add('load-err');
+                        }
+                    }
+                });
+            })
+        },
+
+        isShow() {
+            let wrapH = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            let listH = this.listData.length * this.lineSpacing;
+            if (wrapH <= listH) {
+                this.isShowLoadMore =  true;
+            } else {
+                this.isShowLoadMore = false;
+            }
         },
         setTransform(translateX = 0, type, time = 500) {
             if (type === 'end') {
@@ -132,7 +160,7 @@ export default {
 
             // 释放跳转之类
             if (this.isUnMore && move < 0 && (move + this.transformX) < maxMove - 50) {
-                //this.$emit('jump');
+                this.$emit('jump');
             }
             
             // 加载更多
@@ -155,6 +183,8 @@ export default {
 
     mounted() {
         this.$nextTick(() => {
+            this.isShow();
+            // this.loazyLoadImg();
             // 监听
             this.$el.addEventListener('touchstart', this.touchStart);
             this.$el.addEventListener('touchmove', this.touchMove);
