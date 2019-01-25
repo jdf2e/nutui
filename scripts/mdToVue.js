@@ -1,12 +1,14 @@
 const fs = require('fs');
 var path = require('path');
+//hash获取工具
 let { hashElement } = require('folder-hash');
 //marked转换工具
 let marked = require('marked');
 if (!marked) {
     console.log('you need npm i marked -D!');
 }
-
+//文件监听
+let Chokidar = require('chokidar');
 // 基本配置文件信息
 let {version} = require("../package.json");
 //vue js脚本
@@ -249,19 +251,20 @@ function comparehash(path,callback){
      
 }
 //文件监听
-function filelisten(){    
-    let fsWatcher = fs.watchFile(filedir, {
+function filelisten(param){  
+    let watcher = Chokidar.watch(param.entry,{
         persistent: true,
-        persistent: 1000
-    }, (err, data) => {
-        //  console.log(err,data,filedir);
-        fs.readFile(filedir, 'utf-8', (err, data) => {
-            let html = marked(data);
-            let filedirarry = filedir.split('/');
-            let fileNames = filedirarry[filedirarry.length - 2];
-            createdFile(outPath + fileNames + '.vue', html, nohead)
-        });
-    });
+        usePolling: true,
+    })
+    let log = console.dir.bind(console);
+    let watchAction = function({event, eventPath}){      
+        // 这里进行文件更改后的操作
+        fileReadStar(eventPath,(res)=>{           
+            createdFile(param.output + res.mdName + '.vue', res.html, param.needCode)
+        })
+    }
+    watcher.on('change', path => watchAction({event: 'change', eventPath: path}))
+    .on('unlink', path => watchAction({event: 'remove', eventPath: path}));
 }
 /**
  * 文件转md
@@ -273,7 +276,8 @@ function filelisten(){
 function fileDisplay(param) {
     //检查文件是否第一次初始化并获取hash
     comparehash(param.entry,(hashMsgObj)=>{
-        // 获取文件
+        
+        // 获取目录下所有文件
         readDirRecur(param.entry, function(filePath) {    
             //文件列表        
             fileList.map(item=>{              
@@ -286,21 +290,20 @@ function fileDisplay(param) {
     });
     
 }
-//md转 其他格式类型
+
 /**
- * 
+ * 输出的文件目录 是否存在
  * @outPath {String} 输出的文件目录 
  */
 function ishasOutFile(outPath,callback){
     fs.stat(outPath,(err,res)=>{       
         if(err){
-            fs.mkdir(outPath,erro=>{
-                if(erro){
-                    
+            fs.mkdir(outPath,err=>{
+                if(err){
+                    console.log(err)
                 }else{                  
                     callback()
-                }
-               
+                }               
             })
         }else{
             callback()
@@ -325,6 +328,8 @@ function MdToHtml(commomOption) {
     ishasOutFile(params.output,()=>{
          //获取所有的md 转html的结果
         fileDisplay(params);
+        //文件监听 
+        filelisten(params);
     });
    
 }
