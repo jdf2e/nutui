@@ -69,7 +69,7 @@ OfflinePluginRuntime.install({
     console.log('PWA缓存有更新，需要刷新页面');
 
     app.$dialog({
-      title: "您正在浏览的页面有更新，请刷新",
+      title: "当前页面有新版本，请刷新",
       noCloseBtn: true,
       noOkBtn: true,
       cancelBtnTxt: "刷新页面",

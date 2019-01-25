@@ -109,7 +109,7 @@ export default {
       this.$toast.text(msg, { duration });
     },
     sucToast(msg) {
-      this.$toast.success(msg);
+      this.$toast.success(msg, { duration:8000 });
     },
     failToast(msg) {
       this.$toast.fail(msg);

@@ -16,6 +16,7 @@
             <a :href="'./demo.html#/'+cpt.name">
               {{cpt.name}}
               <span>{{cpt.chnName}}</span>
+              <nut-rate class="cpt-rec" v-if="cpt.star" :total="5" :value="cpt.star" :size="8" :spacing="3" :readOnly="true"></nut-rate>
             </a>
           </li>
         </template>
@@ -151,12 +152,13 @@ export default {
     border-top: 1px solid #edeef1;
     border-radius: 2px;
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 30'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M-11 0h30v30h-30z'/%3E%3Cpath d='M7.757 15C5.241 10.755 2.727 6.51.21 2.266A1.5 1.5 0 0 1 2.79.736l8 13.499c.28.472.28 1.058 0 1.53l-8 13.5a1.499 1.499 0 1 1-2.58-1.53L7.757 15z' fill='rgb(132,132,132)' /%3E%3C/g%3E%3C/svg%3E")
-      no-repeat right 15px center;
+      no-repeat right 10px center;
     background-size: 10px 10px;
     a {
-      display: block;
+      display: flex;
+      align-items:center;
       height: 100%;
-      padding: 20px;
+      padding: 20px 10px 20px 10px;
       text-decoration: none;
       color: #2e2d2d;
     }
@@ -176,7 +178,10 @@ li {
   margin: 0;
   padding: 0;
 }
-
+.cpt-rec{
+  display:inline-flex;
+  margin-left:5px;
+}
 @-webkit-keyframes swing {
   from {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);

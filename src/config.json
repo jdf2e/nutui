@@ -26,6 +26,7 @@
       "type": "method",
       "showDemo": true,
       "desc": "模态弹窗，支持按钮交互，支持图片弹窗。",
+      "star": 5,
       "author": "Frans"
     },
     {
@@ -46,6 +47,7 @@
       "desc": "轻提示。",
       "type": "method",
       "showDemo": true,
+      "star": 4,
       "author": "Frans"
     },
     {
@@ -56,6 +58,7 @@
       "desc": "从底部弹出的动作菜单面板。",
       "type": "component",
       "showDemo": true,
+      "star": 5,
       "author": "iris"
     },
     {
@@ -66,6 +69,7 @@
       "desc": "常用于平级区域大块内容的的收纳和展现。",
       "type": "component",
       "showDemo": true,
+      "star": 3,
       "author": "甄玉磊"
     },
     {
@@ -86,6 +90,7 @@
       "desc": "用于不同模块以之间的切换",
       "type": "component",
       "showDemo": true,
+      "star": 3,
       "author": "甄玉磊"
     },
     {
@@ -96,6 +101,7 @@
       "desc": "日历",
       "type": "component",
       "showDemo": true,
+      "star": 5,
       "author": "iris"
     },
     {
@@ -106,6 +112,7 @@
       "desc": "日期选择",
       "type": "component",
       "showDemo": true,
+      "star": 5,
       "author": "iris"
     },
     {
@@ -129,6 +136,16 @@
       "author": "wangyue"
     },
     {
+      "name": "Switch",
+      "version": "1.0.0",
+      "sort": "1",
+      "chnName": "开关",
+      "type": "component",
+      "showDemo": true,
+      "desc": "滑动开关，通过点击使按钮左右滑动，同时触发对应的开关状态",
+      "author": "Frans"
+    },
+    {
       "version": "1.0.0",
       "name": "Slider",
       "sort": "1",
@@ -136,6 +153,7 @@
       "desc": "滑动输入器，用于在数值区间/自定义区间内进行选择。",
       "type": "component",
       "showDemo": true,
+      "star": 4,
       "author": "Frans"
     },
     {
@@ -146,6 +164,7 @@
       "desc": "区间选择器组件",
       "type": "component",
       "showDemo": true,
+      "star": 4,
       "author": "famanoder"
     },
     {
@@ -156,6 +175,7 @@
       "desc": "提供多个选项集合供用户选择其中一项。",
       "type": "component",
       "showDemo": true,
+      "star": 5,
       "author": "iris"
     },
     {
@@ -246,16 +266,18 @@
       "desc": "用于快速的评级操作，或对评价进行展示。",
       "type": "component",
       "showDemo": true,
+      "star": 4,
       "author": "永无止晋"
     },
     {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "name": "Swiper",
       "chnName": "滑动切换",
       "sort": "0",
       "desc": "常用于一组图片或卡片轮播，当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。",
       "type": "component",
       "showDemo": true,
+      "star": 5,
       "author": "wangnan31"
     },
     {
@@ -276,6 +298,7 @@
       "type": "component",
       "sort": "1",
       "showDemo": true,
+      "star": 3,
       "author": "famanoder"
     },
     {
@@ -307,16 +330,6 @@
       "type": "component",
       "showDemo": true,
       "author": "苏子刚"
-    },
-    {
-      "name": "Switch",
-      "version": "1.0.0",
-      "sort": "1",
-      "chnName": "开关",
-      "type": "component",
-      "showDemo": true,
-      "desc": "滑动开关，通过点击使按钮左右滑动，同时触发对应的开关状态",
-      "author": "Frans"
     },
     {
       "name": "Radio",
@@ -359,25 +372,44 @@
       "author": "Vicky.Ye"
     },
     {
-      "version":"1.0.0",
-      "name":"ShortPassword",
-      "chnName":"短密码",
-      "des":"短密码",
-      "type":"component",
-      "sort":"1",
+      "version": "1.0.0",
+      "name": "ShortPassword",
+      "chnName": "短密码",
+      "des": "短密码",
+      "type": "component",
+      "sort": "1",
       "showDemo": true,
       "author": "wangnan31"
-
     },
     {
-      "version":"1.0.0",
-      "name":"Skeleton",
-      "chnName":"骨架屏",
-      "des":"在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果",
-      "type":"component",
-      "sort":"0",
+      "version": "1.0.0",
+      "name": "Skeleton",
+      "chnName": "骨架屏",
+      "des": "在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果",
+      "type": "component",
+      "sort": "0",
       "showDemo": true,
       "author": "wangnan31"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Scroller",
+      "chnName": "滚动",
+      "desc": "滚动组件",
+      "type": "component",
+      "sort": "1",
+      "showDemo": false,
+      "author": "iris"
+    },
+    {
+      "version": "1.0.0",
+      "name": "BackTop",
+      "chnName": "回到顶部",
+      "desc": "用于页面内容高度过长，快捷回到顶部使用。",
+      "type": "component",
+      "sort": "2",
+      "showDemo": true,
+      "author": "永无止晋"
     }
   ]
 }
