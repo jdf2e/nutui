@@ -359,25 +359,34 @@
       "author": "Vicky.Ye"
     },
     {
-      "version":"1.0.0",
-      "name":"ShortPassword",
-      "chnName":"短密码",
-      "des":"短密码",
-      "type":"component",
-      "sort":"1",
+      "version": "1.0.0",
+      "name": "ShortPassword",
+      "chnName": "短密码",
+      "des": "短密码",
+      "type": "component",
+      "sort": "1",
       "showDemo": true,
       "author": "wangnan31"
-
     },
     {
-      "version":"1.0.0",
-      "name":"Skeleton",
-      "chnName":"骨架屏",
-      "des":"在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果",
-      "type":"component",
-      "sort":"0",
+      "version": "1.0.0",
+      "name": "Skeleton",
+      "chnName": "骨架屏",
+      "des": "在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果",
+      "type": "component",
+      "sort": "0",
       "showDemo": true,
       "author": "wangnan31"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Scroller",
+      "chnName": "滚动",
+      "desc": "滚动组件",
+      "type": "component",
+      "sort": "1",
+      "showDemo": true,
+      "author": "iris"
     }
   ]
 }
