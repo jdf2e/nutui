@@ -321,7 +321,8 @@ function MdToHtml(commomOption) {
     let params = {
         entry:'',
         output:'',
-        needCode:true
+        needCode:true,
+        isbuild:true
     }
     params = Object.assign(params,commomOption);    
     //检查输出路径
@@ -329,7 +330,10 @@ function MdToHtml(commomOption) {
          //获取所有的md 转html的结果
         fileDisplay(params);
         //文件监听 
-        filelisten(params);
+        if(params.isbuild){
+            filelisten(params);
+        }   
+        
     });
    
 }
