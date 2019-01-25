@@ -51,7 +51,6 @@ h4 {
   box-sizing: border-box;
 }
 .demo {
-  padding-left: 8px;
-  padding-right: 8px;
+  padding:0 8px 20px 8px;
 }
 </style>

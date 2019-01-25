@@ -4,8 +4,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router';
 import copy from 'clipboard';
-
-
+import backtop from './compents/backtop/backtop.js';
+import  './compents/backtop/backtop.css';
+backtop.install(Vue);
 import 'highlight.js/styles/github.css';
 
 

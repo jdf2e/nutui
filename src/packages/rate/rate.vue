@@ -4,7 +4,12 @@
             class="nut-rate-item" 
             :class="['nut-rate-item',{'nut-rate-active':n<=current}]" 
             v-for="n in total" :key="n" @click="onClick($event,n)" 
-            :style="{'height':size+'px','width':size+'px','backgroundImage':n<=current?checkedIcon:uncheckedIcon}">
+            :style="{
+                'height':size+'px',
+                'width':size+'px',
+                'marginRight':spacing+'px',
+                'backgroundImage':n<=current?checkedIcon:uncheckedIcon
+            }">
         </span>
     </div>
 </template>
@@ -33,10 +38,14 @@ export default {
             type:String,
             default:null
         },
-        testProp:{
-            type:String,
-            default:null
-        } 
+        readOnly:{
+            type:Boolean,
+            default: false
+        },
+        spacing:{
+            type:[String,Number],
+            default: 20
+        },
     },
     data() {
         return {
@@ -48,9 +57,14 @@ export default {
     },
     methods: {
         onClick($event,idx){
-            this.current = idx;
-            this.$emit('input',idx);
-            this.$emit('click',idx);
+            if(this.readOnly){
+                this.$emit('input',this.current);
+                this.$emit('click',this.current);
+            }else{
+                this.current = idx;
+                this.$emit('input',idx);
+                this.$emit('click',idx);
+            }
         }
     }
 }
