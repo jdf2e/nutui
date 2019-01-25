@@ -10,3 +10,7 @@ sites/doc/view
 sites/doc/page
 package-lock.json
 yarn.lock
+docshashCache.text
+srchashCache.text
+localsrc.cache
+localdocs.cache
