@@ -1,5 +1,5 @@
 const fs = require('fs');
-var path = require('path');
+const path = require('path');
 //hash获取工具
 let { hashElement } = require('folder-hash');
 //marked转换工具
@@ -83,7 +83,7 @@ function createdFile(output, sorce, ishasCode) {
     var bufs = `<template><div  @click="dsCode">
         <div v-if="content" class="layer">
           <pre><span class="close-box" @click="closelayer"></span><div v-html="content"></div></pre>
-        </div>`+ res + `<nut-backtop></nut-backtop></div></template><script>import root from '../root.js';
+        </div>`+ res + `<nut-backtop :right="50" :bottom="50"></nut-backtop></div></template><script>import root from '../root.js';
         export default {
             mixins:[root]
         }</script>`;
@@ -187,7 +187,6 @@ function checkIsexists (path,callback){
     let pathFileName = path.replace(/[^a-zA-Z]/g,'');
     let cacheName = './local'+pathFileName+'.cache';
     fs.exists(cacheName, res=>{
-        console.log(res)
         if(!res){
             fs.writeFile(cacheName,'','utf8',()=>{
                 callback(cacheName)
