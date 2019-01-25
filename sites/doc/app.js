@@ -7,8 +7,6 @@ import copy from 'clipboard';
 import backtop from './compents/backtop/backtop.js';
 import  './compents/backtop/backtop.css';
 backtop.install(Vue);
-console.log(backtop)
-debugger
 import 'highlight.js/styles/github.css';
 
 
