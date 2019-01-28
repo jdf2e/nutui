@@ -1,4 +1,4 @@
-
+import hide from './compents/hidden/hidden.vue';
 
 var myMixin ={
     data(){
@@ -8,6 +8,9 @@ var myMixin ={
           demourl:''
         }
       },
+    components:{
+        hide
+    },
     methods:{
         closelayer(){
           this.content = '';

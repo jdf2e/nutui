@@ -36,12 +36,12 @@ rendererMd.code = function (code, infostring, escaped) {
         code = code.replace(/@latest/g, '@' + version)
     }
 
-    return '<pre class="prettyprint"><span class="lang">' + lang + '</span><div class="code-wrapper"><code class="'
+    return '<hide><pre class="prettyprint"><span class="lang">' + lang + '</span><div class="code-wrapper"><code class="'
         + this.options.langPrefix
         + escape(lang, true)
         + '">'
         + (escaped ? code : escape(code, true))
-        + '</code></div><i class="copy" copy="copy" data-clipboard-action="copy" data-clipboard-target="code" title="复制代码"></i><i toast="toast" title="全屏"></i></pre>\n';
+        + '</code></div><i class="copy" copy="copy" data-clipboard-action="copy" data-clipboard-target="code" title="复制代码"></i><i toast="toast" title="全屏"></i></pre></hide>\n';
 };
 marked.setOptions({
     renderer: rendererMd,
@@ -320,7 +320,8 @@ function MdToHtml(commomOption) {
     let params = {
         entry:'',
         output:'',
-        needCode:true
+        needCode:true,
+        isbuild:true
     }
     params = Object.assign(params,commomOption);    
     //检查输出路径
@@ -328,7 +329,10 @@ function MdToHtml(commomOption) {
          //获取所有的md 转html的结果
         fileDisplay(params);
         //文件监听 
-        filelisten(params);
+        if(params.isbuild){
+            filelisten(params);
+        }   
+        
     });
    
 }

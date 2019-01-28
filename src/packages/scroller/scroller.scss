@@ -3,6 +3,20 @@
 .nut-scroller{
     display: flex;
     height: 100%;
+    img{
+        display: block;
+        height: 100%;
+        width: 100%;
+        background-image: url(../../assets/img/img-loading.png);
+    }
+    img, .load-err{
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: 50%;
+    }
+    .load-err{
+        background-image: url(../../assets/img/img-error.png);
+    }
 }
 // 横向滚动 
 .nut-hor-scroll{
