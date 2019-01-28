@@ -12,7 +12,34 @@
                 @loadMore="loadMoreHor"
                 @jump="jump()"
             >
-                <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData" :key="index">{{index}}</div>
+                <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData" :key="index">
+                    <div class="nut-scroller-item-img">
+                        <img src="" alt="" data-src="//m.360buyimg.com/babel/s452x452_jfs/t17869/89/1529579560/27020/8b71651a/5aced5aeN993e3538.jpg">
+                    </div>
+                    <dl class="nut-scroller-item-info">
+                        <dt>防水升级版 蓝 迷你小音</dt>
+                        <dd>2018-02-25</dd>
+                    </dl>
+                </div>
+                <slot slot="more"><div class="nut-hor-jump-more">释放查看更多</div></slot>
+            </nut-scroller>
+        </div>
+        <h4>横向小于一屏</h4>
+        <div class="hor-panel">
+            <nut-scroller :list-data="listData3"  
+                :is-un-more="isUnMore3" 
+                :is-loading="isLoading3"
+                @loadMore="loadMoreHor3"
+            >
+                <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData3" :key="index">
+                    <div class="nut-scroller-item-img">
+                        <img src="" alt="" data-src="//m.360buyimg.com/babel/s452x452_jfs/t17869/89/1529579560/27020/8b71651a/5aced5aeN993e3538.jpg">
+                    </div>
+                    <dl class="nut-scroller-item-info">
+                        <dt>防水升级版 蓝牙音箱 小音</dt>
+                        <dd>2018-02-25</dd>
+                    </dl>
+                </div>
                 <slot slot="more"><div class="nut-hor-jump-more">释放查看更多</div></slot>
             </nut-scroller>
         </div>
@@ -27,7 +54,13 @@
             > 
                 <div slot="list" class="nut-vert-list-panel">
                     <div class="nut-vert-list-item" v-for="(item, index) of listData1" :key="index">
-                        {{index}}
+                        <div class="nut-scroller-item-img">
+                            <img src="" alt="" data-src="//m.360buyimg.com/babel/s452x452_jfs/t17869/89/1529579560/27020/8b71651a/5aced5aeN993e3538.jpg">
+                        </div>
+                        <dl class="nut-scroller-item-info">
+                            <dt>防水升级版 蓝牙音箱 低音炮 IPX7设计 户外便携音响 迷你小音</dt>
+                            <dd>2018-02-25</dd>
+                        </dl>
                     </div>
                 </div>
             </nut-scroller>
@@ -43,7 +76,13 @@
             > 
                 <div slot="list" class="nut-vert-list-panel">
                     <div class="nut-vert-list-item" v-for="(item, index) of listData2" :key="index">
-                        {{index}}
+                        <div class="nut-scroller-item-img">
+                            <img src="" alt="" data-src="" class="load-err">
+                        </div>
+                        <dl class="nut-scroller-item-info">
+                            <dt>防水升级版 蓝牙音箱 低音炮 IPX7设计 户外便携音响 迷你小音</dt>
+                            <dd>2018-02-25</dd>
+                        </dl>
                     </div>
                 </div>
             </nut-scroller>
@@ -58,6 +97,7 @@ export default {
             listData: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
             listData1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
             listData2: [1, 2],
+            listData3: [1],
             isUnMore: false,
             isLoading: false,
             maxPages: 3,
@@ -69,7 +109,10 @@ export default {
             maxPages2: 1,
             isUnMore2: false,
             isLoading2: false,
-            page2: 2
+            page2: 2,
+            isUnMore3: false,
+            isLoading3: false,
+            page3: 2
         };
     },
 
@@ -80,11 +123,28 @@ export default {
                 this.isUnMore = true;
                 this.isLoading = false;
             } else {
+                clearTimeout(this.timers);
                 this.timer = setTimeout(() => {
-                    this.page == ++this.page;
+                    this.page = ++this.page;
                     this.listData = [...this.listData, ...[11, 12, 13, 14, 15, 16, 17, 18, 19, 20]];
                     console.log(this.listData);
                     this.isLoading = false;
+                }, 300);
+            }
+        },
+
+        loadMoreHor3() {
+            this.isLoading3 = true;
+            if (this.page3 > this.maxPages2) {
+                this.isUnMor3 = true;
+                this.isLoading3 = false;
+            } else {
+                clearTimeout(this.timers);
+                this.timer = setTimeout(() => {
+                    this.page3 = ++this.page3;
+                    this.listData3 = [...this.listData3, ...[11, 12, 13, 14, 15, 16, 17, 18, 19, 20]];
+                    console.log(this.listData3);
+                    this.isLoading3 = false;
                 }, 300);
             }
         },
@@ -100,22 +160,26 @@ export default {
                 this.isUnMore1 = true;
                 this.isLoading1 = false;
             } else {
+                clearTimeout(this.timers);
                 this.timer = setTimeout(() => {
                     this.page1 = ++this.page1;
+                    this.isLoading1 = false;
                     this.listData1 = [...this.listData1, ...[11, 12, 13, 14, 15, 16, 17, 18, 19, 20]];
                     console.log(this.listData1);
-                    this.isLoading1 = false;
+                    
                 }, 2000);
             }
         },
 
         pulldown() {
             this.isLoading1 = true;
+            clearTimeout(this.timers);
             this.timer = setTimeout(() => {
                 this.page1 = 2;
-                this.listData1 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
                 this.isLoading1 = false;
                 this.isUnMore1 = false;
+                this.listData1 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+                
             }, 2000);
         },
 
@@ -126,22 +190,24 @@ export default {
                 this.isUnMore2 = true;
                 this.isLoading2 = false;
             } else {
+                clearTimeout(this.timers);
                 this.timer = setTimeout(() => {
                     this.page2 = ++this.page1;
+                    this.isLoading2 = false;
                     this.listData2 = [...this.listData1, ...[11, 12, 13, 14, 15, 16, 17, 18, 19, 20]];
                     console.log(this.listData1);
-                    this.isLoading2 = false;
                 }, 2000);
             }
         },
 
         pulldown2() {
             this.isLoading2 = true;
+            clearTimeout(this.timers);
             this.timer = setTimeout(() => {
                 this.page2 = 2;
-                this.listData2 = [11, 12];
                 this.isLoading2 = false;
                 this.isUnMore2 = false;
+                this.listData2 = [11, 12, 13, 14, 15, 16];
             }, 2000);
         }
     },
@@ -154,7 +220,7 @@ export default {
 
 <style lang="scss" scoped>
 .hor-panel{
-    height: 100px;
+    height: 80px;
     background-color: mix($primary-color, #FFF, 10%);
 }
 .nut-hor-list{
@@ -163,12 +229,13 @@ export default {
         align-content: center;
         justify-content: center;
         flex-shrink: 0;
-        width: 200px;
-        height: 100px;
+        width: 180px;
+        height: 60px;
+        padding: 10px;
+        margin-left: 10px;
         background-color: mix($primary-color, #FFF, 90%);
         color: #FFF;
-        line-height: 100px;
-        margin-left: 10px;
+        line-height: 100px; 
     }
 }
 .nut-hor-jump-more{
@@ -179,7 +246,28 @@ export default {
     text-align: center;
     color: $primary-color;
 }
-
+.nut-scroller-item-img{
+    height: 58px;
+    width: 58px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+dl, dt, dd{
+    margin: 0;
+}
+.nut-scroller-item-info{
+    flex: 1;
+    padding-left: 10px;
+    line-height: 20px;
+    dt{
+        font-size: 14px;
+    }
+    dd{
+        margin-left: 0;
+        font-size: 12px;
+    }
+}
 .vert-panel{
     height: 400px; 
     padding: 10px; 
@@ -187,13 +275,11 @@ export default {
 }
 .nut-vert-list-panel{
     .nut-vert-list-item{
-        width: 100%;
-        height: 100px;
+        display: flex;
+        height: 60px;
+        padding: 10px;
         margin-bottom: 10px;
         background-color: mix($primary-color, #FFF, 90%);
-        font-size: 12px;
-        text-align: center;
-        line-height: 100px;
         color: #FFF;
     }
 }
