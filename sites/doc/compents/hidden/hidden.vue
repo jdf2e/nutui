@@ -61,6 +61,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.eidt-box{
+    padding-bottom:30px;
+    background: #F2F4F5;
+}
 .show{   
     overflow:hidden;
     position: relative;
@@ -72,7 +76,7 @@ export default {
     height: 30px;
     width: 100%;
     bottom: 0;
-    background: linear-gradient(rgba(255, 255, 255, 0.5),#fff);
+    background: linear-gradient(rgba(255, 255, 255, 0.2),#fafafa);
     position: absolute;
     z-index: 999 ;
     text-align: center;
