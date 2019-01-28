@@ -1,5 +1,5 @@
 <template>
-
+<div class="swap">
     <div 
         class="eidt-box"
         :class="{
@@ -8,8 +8,9 @@
         }" 
         :style="siteHeight" 
         style="transition: all .2s;">
-        <slot></slot>
-        <div v-if="heightSlot>300" class="bar" @click="showall">
+        <slot></slot>        
+    </div>
+    <div v-if="heightSlot>300" class="bar" @click="showall">
             <svg  width="20" viewBox="0,0 20,10">
                 <path v-if="isShow" d="M 0,5 
                             L10,10 
@@ -21,7 +22,8 @@
                 </path>
             </svg>
         </div>
-    </div>
+</div>
+    
 </template>
 <script>
 export default {
@@ -61,7 +63,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.eidt-box{
+.swap{
+    position: relative;
     padding-bottom:30px;
     background: #F2F4F5;
 }
