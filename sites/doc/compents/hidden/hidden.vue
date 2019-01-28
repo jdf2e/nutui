@@ -1,5 +1,5 @@
 <template>
-
+<div class="swap">
     <div 
         class="eidt-box"
         :class="{
@@ -8,8 +8,9 @@
         }" 
         :style="siteHeight" 
         style="transition: all .2s;">
-        <slot></slot>
-        <div v-if="heightSlot>300" class="bar" @click="showall">
+        <slot></slot>        
+    </div>
+    <div :title="titleMsg" v-if="heightSlot>400" class="bar" @click="showall">
             <svg  width="20" viewBox="0,0 20,10">
                 <path v-if="isShow" d="M 0,5 
                             L10,10 
@@ -21,7 +22,8 @@
                 </path>
             </svg>
         </div>
-    </div>
+</div>
+    
 </template>
 <script>
 export default {
@@ -33,7 +35,8 @@ export default {
             isShow:true,
             isHide:false,
             //  盒子高度
-            heightSlot:0
+            heightSlot:0,
+            titleMsg:'点击展开'
         }
     },
     methods:{
@@ -42,25 +45,32 @@ export default {
             this.isHide = !this.isHide;
             if(this.isHide){
                 this.siteHeight = {height:this.heightSlot+ 'px'};
+                this.titleMsg = '点击收起'
             }else{
                 this.siteHeight = {
-                height:'300px'
-            }
+                    height:'400px'
+                }
+            this.titleMsg = '点击展开'
             }
             
         }
     },
     mounted(){     
         this.heightSlot = this.$slots.default[0].elm.offsetHeight;
-        if(this.heightSlot<300){
-            this.siteHeight = {height:this.heightSlot + 'px'};
+        if(this.heightSlot<400){
+            this.siteHeight = {height:this.heightSlot + 'px'};           
         }else{
-            this.siteHeight = {height:'300px'};
+            this.siteHeight = {height:'300px'};          
         }
     }
 }
 </script>
 <style lang="scss" scoped>
+.swap{
+    position: relative;
+    padding-bottom:30px;
+    background: #F2F4F5;
+}
 .show{   
     overflow:hidden;
     position: relative;
@@ -72,10 +82,11 @@ export default {
     height: 30px;
     width: 100%;
     bottom: 0;
-    background: linear-gradient(rgba(255, 255, 255, 0.5),#fff);
+    background: linear-gradient(rgba(255, 255, 255, 0.2),#fafafa);
     position: absolute;
     z-index: 999 ;
     text-align: center;
+    cursor: pointer;
     svg{
         vertical-align: bottom;
     }
