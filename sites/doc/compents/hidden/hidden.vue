@@ -41,7 +41,7 @@ export default {
             this.isShow = !this.isShow;
             this.isHide = !this.isHide;
             if(this.isHide){
-                this.siteHeight = {height:this.heightSlot +30+ 'px'};
+                this.siteHeight = {height:this.heightSlot+ 'px'};
             }else{
                 this.siteHeight = {
                 height:'300px'
@@ -72,7 +72,7 @@ export default {
     height: 30px;
     width: 100%;
     bottom: 0;
-    background: linear-gradient(#fff,rgba(255, 255, 255, 0));
+    background: linear-gradient(rgba(255, 255, 255, 0.5),#fff);
     position: absolute;
     z-index: 999 ;
     text-align: center;
