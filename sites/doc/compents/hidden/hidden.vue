@@ -10,7 +10,7 @@
         style="transition: all .2s;">
         <slot></slot>        
     </div>
-    <div v-if="heightSlot>300" class="bar" @click="showall">
+    <div :title="titleMsg" v-if="heightSlot>400" class="bar" @click="showall">
             <svg  width="20" viewBox="0,0 20,10">
                 <path v-if="isShow" d="M 0,5 
                             L10,10 
@@ -35,7 +35,8 @@ export default {
             isShow:true,
             isHide:false,
             //  盒子高度
-            heightSlot:0
+            heightSlot:0,
+            titleMsg:'点击展开'
         }
     },
     methods:{
@@ -44,20 +45,22 @@ export default {
             this.isHide = !this.isHide;
             if(this.isHide){
                 this.siteHeight = {height:this.heightSlot+ 'px'};
+                this.titleMsg = '点击收起'
             }else{
                 this.siteHeight = {
-                height:'300px'
-            }
+                    height:'400px'
+                }
+            this.titleMsg = '点击展开'
             }
             
         }
     },
     mounted(){     
         this.heightSlot = this.$slots.default[0].elm.offsetHeight;
-        if(this.heightSlot<300){
-            this.siteHeight = {height:this.heightSlot + 'px'};
+        if(this.heightSlot<400){
+            this.siteHeight = {height:this.heightSlot + 'px'};           
         }else{
-            this.siteHeight = {height:'300px'};
+            this.siteHeight = {height:'300px'};          
         }
     }
 }
@@ -83,6 +86,7 @@ export default {
     position: absolute;
     z-index: 999 ;
     text-align: center;
+    cursor: pointer;
     svg{
         vertical-align: bottom;
     }
