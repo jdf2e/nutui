@@ -1,5 +1,9 @@
 <template>
-<div class="swap">
+<div class="swap"
+    :class="{
+        hasPadding:heightSlot>400
+    }"
+>
     <div 
         class="eidt-box"
         :class="{
@@ -68,8 +72,11 @@ export default {
 <style lang="scss" scoped>
 .swap{
     position: relative;
-    padding-bottom:30px;
+   
     background: #F2F4F5;
+}
+.hasPadding{
+     padding-bottom:30px;
 }
 .show{   
     overflow:hidden;
