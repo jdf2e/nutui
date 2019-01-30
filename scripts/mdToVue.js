@@ -185,7 +185,7 @@ function ismd(src,hasobj,callback){
  */
 function checkIsexists (path,callback){  
     let pathFileName = path.replace(/[^a-zA-Z]/g,'');
-    let cacheName = './local'+pathFileName+'.cache';
+    let cacheName = './scripts/local'+pathFileName+'.cache';
     fs.exists(cacheName, res=>{
         if(!res){
             fs.writeFile(cacheName,'','utf8',()=>{
