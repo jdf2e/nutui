@@ -1,5 +1,9 @@
 <template>
-<div class="swap">
+<div class="swap"
+    :class="{
+        hasPadding:heightSlot>400
+    }"
+>
     <div 
         class="eidt-box"
         :class="{
@@ -58,7 +62,7 @@ export default {
     mounted(){     
         this.heightSlot = this.$slots.default[0].elm.offsetHeight;
         if(this.heightSlot<400){
-            this.siteHeight = {height:this.heightSlot + 'px'};           
+            this.siteHeight = {height:''};           
         }else{
             this.siteHeight = {height:'300px'};          
         }
@@ -68,8 +72,12 @@ export default {
 <style lang="scss" scoped>
 .swap{
     position: relative;
-    padding-bottom:30px;
+   
     background: #F2F4F5;
+    margin: 16px 0;
+}
+.hasPadding{
+     padding-bottom:30px;
 }
 .show{   
     overflow:hidden;
@@ -82,7 +90,7 @@ export default {
     height: 30px;
     width: 100%;
     bottom: 0;
-    background: linear-gradient(rgba(255, 255, 255, 0.2),#fafafa);
+    background: linear-gradient(rgba(255, 255, 255, 0),#fafafa);
     position: absolute;
     z-index: 999 ;
     text-align: center;
