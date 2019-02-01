@@ -293,3 +293,24 @@ pre.prettyprint {
         font: 13px/24px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
     }
 }
+// 书签样式
+.markList{
+    position: fixed;
+    right: 10px;
+    top:65px;
+    background: #fff;
+    border:1px solid #efefef;
+    padding:10px 10px 10px 20px!important;    
+    
+    li:before{
+        display: none!important;
+        
+    }
+    
+    .level2{
+        padding-left: 10px;
+    }
+    .level3{
+        padding-left: 30px;
+    }
+}

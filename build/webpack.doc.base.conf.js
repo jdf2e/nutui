@@ -29,7 +29,8 @@ module.exports = merge(webpackBaseConf, {
             template:'./doc-site/template.html',
             nav:'left',
             needCode:true,
-            isbuild:isDev
+            isbuild:isDev,
+            hasMarkList:false
         }),
         new mdtohtml({
             entry:'./docs',
