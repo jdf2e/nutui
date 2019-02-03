@@ -46,7 +46,8 @@
   "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "7.0.0",
-    "@babel/runtime": "7.1.2"
+    "@babel/runtime": "7.1.2",
+    "intersection-observer": "^0.5.1"
   },
   "peerDependencies": {
     "vue": "2.5.17"

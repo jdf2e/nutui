@@ -14,6 +14,8 @@ let {version} = require("../package.json");
 //vue js脚本
 //获取所有文件列表
 let fileList  = [];
+let Articlehead = '';
+let Articleheadcount = 0;
 // maked文件配置
 var rendererMd = new marked.Renderer();
 //maked文件规则
@@ -42,6 +44,17 @@ rendererMd.code = function (code, infostring, escaped) {
         + '">'
         + (escaped ? code : escape(code, true))
         + '</code></div><i class="copy" copy="copy" data-clipboard-action="copy" data-clipboard-target="code" title="复制代码"></i><i toast="toast" title="全屏"></i></pre></hide>\n';
+};
+rendererMd.heading = function (text,level){
+   
+    // 如果需要 marklist；
+   
+    if(level==2){
+        Articleheadcount++; 
+        Articlehead +=`<li @click="leavelchose(`+Articleheadcount+`)" :class="levalcur==`+Articleheadcount+`?'cur':''"  class="level`+Articleheadcount+'"><a href="#head'+Articleheadcount+'">'+text.substr(0,10)+'</a></li>';
+    }
+
+    return "<h"+level+" class='visibility' id='head"+Articleheadcount+"'>"+ text +"</h"+level+">"; 
 };
 marked.setOptions({
     renderer: rendererMd,
@@ -73,9 +86,9 @@ function insert(sorce) {
  * @param {string} sorce  文件源
  * @param {boole} ishasCode  是否需要二维码 
  */
-function createdFile(output, sorce, ishasCode) {
+function createdFile(output, sorce, param) {
     var pathSrc = output;    
-    if (ishasCode) {
+    if (param.needCode) {
         var res = insert(sorce);
     } else {
         var res = sorce;
@@ -83,13 +96,15 @@ function createdFile(output, sorce, ishasCode) {
     var bufs = `<template><div  @click="dsCode">
         <div v-if="content" class="layer">
           <pre><span class="close-box" @click="closelayer"></span><div v-html="content"></div></pre>
-        </div>`+ res + `<nut-backtop :right="50" :bottom="50"></nut-backtop></div></template><script>import root from '../root.js';
+        </div>`+ res + (param.hasMarkList?'<ul class="markList">' +Articlehead + '</ul>':'')+
+        `<nut-backtop :right="50" :bottom="50"></nut-backtop></div></template><script>import root from '../root.js';
         export default {
             mixins:[root]
-        }</script>`;
-    fs.writeFile(pathSrc,bufs,'utf8',(err)=>{
+        }</script>`;       
+        Articlehead = '';
+        Articleheadcount = 0;      
        
-    })
+    fs.writeFile(pathSrc,bufs,'utf8',(err)=>{ })
 }
 /**
  * 目录读取，找到跟文件
@@ -259,12 +274,13 @@ function filelisten(param){
     let watchAction = function({event, eventPath}){      
         // 这里进行文件更改后的操作
         fileReadStar(eventPath,(res)=>{           
-            createdFile(param.output + res.mdName + '.vue', res.html, param.needCode)
+            createdFile(param.output + res.mdName + '.vue', res.html, param)
         })
     }
     watcher.on('change', path => watchAction({event: 'change', eventPath: path}))
     .on('unlink', path => watchAction({event: 'remove', eventPath: path}));
 }
+
 /**
  * 文件转md
  * @param {obj} 
@@ -275,18 +291,19 @@ function filelisten(param){
 function fileDisplay(param) {
     //检查文件是否第一次初始化并获取hash
     comparehash(param.entry,(hashMsgObj)=>{
-        
+                
         // 获取目录下所有文件
         readDirRecur(param.entry, function(filePath) {    
             //文件列表        
             fileList.map(item=>{              
                 ismd(item,hashMsgObj,res=>{
                     //res md文件处理结果           
-                    createdFile(param.output + res.mdName + '.vue', res.html, param.needCode)
+                    createdFile(param.output + res.mdName + '.vue', res.html, param)
                 })
             })    
         });
     });
+   
     
 }
 
@@ -309,6 +326,35 @@ function ishasOutFile(outPath,callback){
         }
     })
 }
+// function checkLoacl(){
+//     var selfFile = './scripts/mdToVue.js';
+//     //获取文件内容
+       
+//     checkIsexists(selfFile,(fileName)=>{
+//         let fileText = fs.readFileSync(fileName,'utf-8');  
+//     })
+//     //检查本文件是否被改动
+//     hashElement('./scripts/mdToVue.js').then(hash => {           
+//         if(fileText){
+//             //如果有内容
+//             callback({
+//                 fileText:fileText,
+//                 cachePath:cachePath
+//             })
+//         }else{
+//             pushHash(hash)               
+//             fs.writeFileSync(cachePath,outhash.join('|'),'utf-8');
+//             //如果没有内容
+//             callback({
+//                 fileText:fileText,
+//                 cachePath:cachePath
+//             })
+//         }
+//     })
+//     .catch(error => {
+//         return console.error('hashing failed:', error);
+//     }); 
+// }
 /**
  * 
  * @param {entry} 文件读取路径 
@@ -321,9 +367,11 @@ function MdToHtml(commomOption) {
         entry:'',
         output:'',
         needCode:true,
-        isbuild:true
+        isbuild:true,
+        hasMarkList:true
     }
     params = Object.assign(params,commomOption);    
+    
     //检查输出路径
     ishasOutFile(params.output,()=>{
          //获取所有的md 转html的结果
