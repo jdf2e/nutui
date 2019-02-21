@@ -1,6 +1,3 @@
-
-
-import('intersection-observer');
 function isVisibility(param){
     
     let domLists = document.querySelectorAll(param);
