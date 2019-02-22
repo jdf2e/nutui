@@ -8,7 +8,7 @@
 
 ```html
 <nut-swiper
-    :paginationVisibile="true"
+    :paginationVisible="true"
     direction="horizontal"
     ref="demo1"
     
@@ -23,7 +23,6 @@
 
 ```html
 <nut-swiper
-    :paginationVisibile="true"
     direction="horizontal"
     ref="demo2"
     :canDragging="false"
@@ -41,7 +40,6 @@
 
 ```html
 <nut-swiper
-    :paginationVisibile="true"
     direction="horizontal"
     ref="demo3"
     :loop="true"
