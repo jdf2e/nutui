@@ -8,16 +8,16 @@ A light mobile Toolkit based on Vue
 
 ## Features
 
-* Cross-platform，auto conversion WeChat components（coming soon）
+* Cross-platform，automatically convert to WeChat Mini Program components（coming soon）
 * New structure
 * Used by 30+ JD mobile projects
 * Refer to JD APP 7.0 visual specification
-* Support on-demand loading
+* On-demand loading Support
 * Detailed documents and examples
-* Support customize themes
-* Support multiple languages (Internationalization)
-* Support TypeScript
-* Support Vue Server-side Rendering（Vue SSR）
+* Customize themes Support
+* Multiple languages Support (Internationalization)
+* TypeScript Support
+* Vue Server-side Rendering Support（Vue SSR）
 * Unit test blessing
 * A Webpack-based build tool is available to quickly create a Vue project with this component library built in 
 
@@ -55,6 +55,6 @@ Documents：[2.X](https://nutui.jd.com/default.html#/start) | [1.X](https://nutu
 * Contact us：nutui@jd.com
 
 
-## LGPL
+## Open Source LICENSE
 
 Based on **MIT** LICENSE
