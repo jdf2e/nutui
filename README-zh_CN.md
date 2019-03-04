@@ -5,6 +5,7 @@
     
 ![NutUI](https://img11.360buyimg.com/uba/jfs/t1/11117/21/3608/18942/5c20ab52E35e5a500/02e3c1f89cd3dad1.png)
 
+简体中文 | [English](./README.md)
 
 ## 特性
 
