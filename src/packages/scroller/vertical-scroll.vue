@@ -9,7 +9,7 @@
                 </div>
             </div>
             <slot name="list"></slot>
-            <div class="nut-vert-loadmore" v-if="!isUnMore && isShowLoadMore()">
+            <div class="nut-vert-loadmore" v-if="!isUnMore && isShowLoadMore">
                 <div class="nut-vert-load-txt" v-if="!isLoading">{{loadMoreTxt}}</div>
                 <div class="nut-vert-load-status" v-else>
                     <span class="nut-vert-loading"></span>
@@ -49,6 +49,10 @@ export default {
         unloadMoreTxt: {
             type: String,
             default: '没有更多了'
+        },
+        isLazyLoadImg: {
+            type: Boolean,
+            default: false
         }
     },
     watch: {
@@ -57,6 +61,9 @@ export default {
                 clearTimeout(this.timer);
                 this.setTransform(this.realMove, 'end', 0);
             }
+        },
+        'isUnMore': function() {
+            this.isShow();
         }
     },
     data() {
@@ -71,21 +78,20 @@ export default {
             scrollDistance: 0,
             timer: null,
             timerEmit: null,
-            realMove: 0
+            realMove: 0,
+            isShowLoadMore: false
         }
     },
 
     methods: {
-        isShowLoadMore() {
-            this.$nextTick(() => {
-                let wrapH = this.$refs.wrapper.offsetHeight;
-                let listH = this.$refs.list.offsetHeight;
-                if (wrapH <= listH) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
+        isShow() {
+            let wrapH = this.$refs.wrapper.offsetHeight;
+            let listH = this.$refs.list.offsetHeight;
+            if (wrapH <= listH) {
+                this.isShowLoadMore = true;
+            } else {
+                this.isShowLoadMore = false;
+            }
         },
 
         setTransform(translateY = 0, type, time = 500) {
@@ -189,6 +195,7 @@ export default {
 
     mounted() {
         this.$nextTick(() => {
+            this.isShow();
             // 监听
             this.$el.addEventListener('touchstart', this.touchStart);
             this.$el.addEventListener('touchmove', this.touchMove);

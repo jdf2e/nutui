@@ -44,7 +44,7 @@
       <div class="demo-wrapper">
         <router-view class="demo-nav" name="demonav"></router-view>
         <keep-alive include="index">
-          <router-view class="doc-cont" name="main"></router-view>
+          <router-view class="doc-cont" :class="showPhone?'':'docpad'" name="main"></router-view>
         </keep-alive>
         <div v-if="showPhone" class="showPhone">
           <div class="ph">
@@ -454,10 +454,14 @@ body {
 }
 .doc-cont {
   padding: 8px 40px 8px 0;
+  
   margin-left: 50px;
   box-sizing: border-box;
   flex: 1;
   min-width: 500px;
+}
+.docpad{
+   padding: 8px 200px 8px 0;
 }
 // .button-primary {
 //   display: block;

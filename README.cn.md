@@ -5,7 +5,6 @@ A light mobile Toolkit based on Vue
     
 ![NutUI](https://img11.360buyimg.com/uba/jfs/t1/11117/21/3608/18942/5c20ab52E35e5a500/02e3c1f89cd3dad1.png)
 
-English | [简体中文](./README-zh_CN.md)
 
 ## Features
 
@@ -13,12 +12,12 @@ English | [简体中文](./README-zh_CN.md)
 * New structure
 * Used by 30+ JD mobile projects
 * Refer to JD APP 7.0 visual specification
-* On-demand loading Support
+* On-demand loading support
 * Detailed documents and examples
-* Customize themes Support
-* Multiple languages Support (Internationalization)
-* TypeScript Support
-* Vue Server-side Rendering Support（Vue SSR）
+* Customize themes support
+* Multiple languages support (Internationalization)
+* TypeScript support
+* Vue Server-side Rendering support（Vue SSR）
 * Unit test blessing
 * A Webpack-based build tool is available to quickly create a Vue project with this component library built in 
 

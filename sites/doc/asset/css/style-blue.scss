@@ -1,6 +1,7 @@
 .doc-cont {
     margin: 0 0 0 60px;
     position: relative;
+   
     h1 {
         font-size: 30px;
         font-weight: 700;
@@ -177,5 +178,18 @@
         &:hover {
             text-decoration: underline;
         }
+    }
+}
+// 书签样式
+.markList{      
+
+    a{
+        color:#666;
+    }
+    .cur{
+        a{
+            color:#5396ff;
+        }
+       
     }
 }

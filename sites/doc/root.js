@@ -1,14 +1,21 @@
-
-
+import hide from './compents/hidden/hidden.vue';
+import vb from './asset/js/isVisibiliy.js';
 var myMixin ={
     data(){
         return {
           content:'',
           codeurl:'',
-          demourl:''
+          demourl:'',
+          levalcur:1
         }
       },
+    components:{
+        hide
+    },
     methods:{
+        leavelchose(index){
+          this.levalcur = index;
+        },
         closelayer(){
           this.content = '';
         },
@@ -33,7 +40,15 @@ var myMixin ={
             }      
         }
   },
-  mounted(){   
+  mounted(){  
+    let visb = vb('.visibility');
+    visb.then(res=>{
+      let id  = res.target.id;
+      let index =Number(id.replace(/head/,''));       
+      if(index>0){
+        this.levalcur = index
+      }
+    })
     this.$nextTick(()=>{
         let copy = this.copy;
         new copy('.copy',{

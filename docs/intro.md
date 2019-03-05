@@ -26,6 +26,10 @@ NutUI是一套京东风格的移动端Vue组件库，开发和服务于移动Web
 * 单元测试加持
 * 配套有基于Webpack的构建工具，可快速创建已内置本组件库的Vue工程
 
+## 示例
+
+![NutUI Demo](https://img14.360buyimg.com/uba/s260x260_jfs/t1/32118/11/559/2782/5c3d81ecEbda0c0f1/5f2b637d11817204.png)
+
 ## 支持环境
 
 * Android 4.0+

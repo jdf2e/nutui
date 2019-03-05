@@ -22,6 +22,7 @@
         </template>
       </ul>
     </div>
+    <div id="demo-footer">京东用户体验设计部（JDC） · 前端开发部</div>
   </div>
 </template>
 
@@ -67,6 +68,13 @@ export default {
 
 <style lang="scss" scoped>
 .demo-list-wrapper {
+  #demo-footer{
+    font-size:10px;
+    color:#BBB;
+    text-shadow:1px 1px #FFF;
+    text-align: center;
+    margin:10px 0;
+  }
   position: relative;
   padding: 8px;
   box-sizing: border-box;

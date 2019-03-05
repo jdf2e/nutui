@@ -66,7 +66,7 @@ describe('PickerSlot.vue', () => {
 
     it('设置默认值', () => {
         return Vue.nextTick().then(function () {
-            expect(wrapper.find('.nut-picker-list-panel').attributes('style')).toBe('-webkit-transform: translate3d(0, -36px, 0);');
+            expect(wrapper.find('.nut-picker-list-panel').attributes('style')).toContain('translate3d(0, -36px, 0)');
         })
     });
 });

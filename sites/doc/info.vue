@@ -52,6 +52,7 @@
 </template>
 <script>
 import { sorts, packages } from "../../src/config.json";
+
 export default {
   name: "index",
   data() {
@@ -63,6 +64,7 @@ export default {
       curName: ""
     };
   },
+ 
   watch: {
     packages() {
       // const compare = (obj1, obj2) => {

@@ -4,6 +4,7 @@
         :style="{
             width:width,
             padding:padding,
+            'align-items':center
         }"    
     >
         <slot></slot>
@@ -26,6 +27,10 @@
             padding:{
                 type:String,
                 default:"0 0 0 0"
+            },
+            center:{
+                type:String,
+                default:"flex-start"
             }
         },
     }

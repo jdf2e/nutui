@@ -136,6 +136,7 @@ pre {
     position: relative;
     max-width: 100%;
     overflow: auto;
+    margin
     .code-wrapper{
         width:100%;
         overflow:auto;
@@ -183,6 +184,7 @@ pre {
     border-radius: 4px;
     border: none;
     padding: 20px;
+    margin: 0;
     &>span {
         position: absolute;
         right: 5px;
@@ -290,4 +292,20 @@ pre.prettyprint {
     code {
         font: 13px/24px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
     }
+}
+// 书签样式
+.markList{
+    position: fixed;
+    right: 10px;
+    top: 100px;
+    background: #fff;
+    border:1px solid #efefef;
+    padding:10px 10px 10px 20px!important;    
+    border-right: none;
+    li:before{
+        display: none!important;
+        
+    }
+    
+    
 }
