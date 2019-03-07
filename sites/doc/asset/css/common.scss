@@ -297,11 +297,11 @@ pre.prettyprint {
 .markList{
     position: fixed;
     right: 10px;
-    top:65px;
+    top: 100px;
     background: #fff;
     border:1px solid #efefef;
     padding:10px 10px 10px 20px!important;    
-    
+    border-right: none;
     li:before{
         display: none!important;
         
