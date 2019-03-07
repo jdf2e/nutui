@@ -4,15 +4,11 @@
       <span class="nut-cd-block">{{plainText}}</span>
     </template>
     <template v-else>
-      <template v-if="resttime.d > 0">
+      <template v-if="resttime.d > 0 && showDays">
         <span class="nut-cd-block">{{resttime.d}}</span>
         <span class="nut-cd-dot">天</span>
       </template>
-      <span class="nut-cd-block">{{resttime.h}}</span>
-      <span class="nut-cd-dot">:</span>
-      <span class="nut-cd-block">{{resttime.m}}</span>
-      <span class="nut-cd-dot">:</span>
-      <span class="nut-cd-block">{{resttime.s}}</span>
+      <span class="nut-cd-block">{{resttime.h}}</span><span class="nut-cd-dot">:</span><span class="nut-cd-block">{{resttime.m}}</span><span class="nut-cd-dot">:</span><span class="nut-cd-block">{{resttime.s}}</span>
     </template>
   </span>
 </template>
@@ -63,13 +59,16 @@ function restTime(t) {
 const countdownTimer = {
   name: 'CountDown',
   data() {
-    const rest = this.rest;
     return {
-      restTime: rest
+      restTime: 0
     }
   },
   props: {
     paused: {
+      default: false,
+      type: Boolean
+    },
+    showDays: {
       default: false,
       type: Boolean
     },
@@ -85,45 +84,51 @@ const countdownTimer = {
       default: 1000,
       type: Number
     },
-    remoteCurrTime: {
-      // 服务器时间戳
-      default: null,
-      type: Number
+    startTime: {
+      // 可以是服务器当前时间
+      default: Date.now(),
+      type: [Number, String]
+    },
+    endTime: {
+      default: Date.now(),
+      type: [Number, String]
     }
   },
   computed: {
     resttime() {
-      return restTime(this.restTime);
+      const rest = restTime(this.restTime);
+      const {d, h, m, s} = rest;
+      if(!this.showDays && d > 0) {
+        rest.h += d * 24;
+        rest.d = 0;
+      }
+      return rest;
     },
     plainText() {
       const {d, h, m, s} = this.resttime;
-      return `${d > 0? d + '天': h}小时${m}分${s}秒`;
+
+      return `${d > 0 && this.showDays? d + '天': h}小时${m}分${s}秒`;
     }
   },
   created() {
     if(this.interval > 0) {
-      let start = 0;
+      let _start = 0;
       const curr = Date.now();
-      if(this.remoteCurrTime) {
-        const diffTime = curr - this.remoteCurrTime;
-        this.restTime += diffTime;
-      }
-      const countdown = () => {
-        
-        if(this.restTime > 0) {
-          let _curr = Date.now();
-          if(parseInt((_curr - curr) / this.interval) === start + 1) {
-            start ++;
-            if(!this.paused) {
-              this.restTime -= 1000;
-            }
-          }
-          window.requestAnimationFrame(countdown);
-        }else{
-          console.log('stoped', this.restTime);
+      const start = new Date(+this.startTime).getTime();
+      const end = new Date(+this.endTime).getTime();
+      const diffTime = curr - start;
+      
+      this.restTime = end - (start + diffTime);
+      this.timer = setInterval(() => {
+        let restTime = end - (new Date().getTime() + diffTime);
+        restTime -= 1000;
+        this.restTime = restTime;
+        if(restTime < 0) {
+          this.restTime = 0;
+          clearInterval(this.timer);
         }
-      }
-      window.requestAnimationFrame(countdown);
+      }, 1000);
+      
     }
   }
 }
