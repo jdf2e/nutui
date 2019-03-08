@@ -62,7 +62,7 @@
       <div class="foot">
         Copyright © 2018~2019
         <a href="//jdc.jd.com" target="_blank">JDC</a>-
-        <a target="_blank" class="qrcode2" href="http://fe.jd.com/">前端开发部
+        <a target="_blank" class="qrcode2" href="#">前端开发部
             <a>
                 <img
                   src="./asset/css/i/explor.png"
