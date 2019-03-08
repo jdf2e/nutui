@@ -410,6 +410,16 @@
       "sort": "2",
       "showDemo": true,
       "author": "永无止晋"
+    },
+    {
+      "version": "1.0.0",
+      "name": "CountDown",
+      "chnName": "倒计时",
+      "desc": "倒计时组件",
+      "type": "component",
+      "sort": "0",
+      "showDemo": true,
+      "author": "famanoder"
     }
   ]
 }
