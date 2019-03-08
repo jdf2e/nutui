@@ -14,7 +14,7 @@
 </nut-cell>
 ```
 
-**isLink**为true，有点击状态。
+**isLink**值为true时有点击状态。
 
 ```html
 <nut-cell 
