@@ -1,3 +1,6 @@
+# Cell 列表项
+
+列表项，可组成列表。
 
 ## 基本用法
 
@@ -11,18 +14,18 @@
 </nut-cell>
 ```
 
-设置**isLink**为true，则有点击状态。
+**isLink**为true，有点击状态。
 
 ```html
 <nut-cell 
   :isLink = "true"
-  title = "左侧主标题" 312312312423423423423
+  title = "左侧主标题"
   subTitle = "左侧副标题"
   desc="右侧描述文字">
 </nut-cell>
 ```
 
-设置**linkUrl**，则点击可跳转。
+设置**linkUrl**，点击可跳转。
 
 ```html
 <nut-cell 
