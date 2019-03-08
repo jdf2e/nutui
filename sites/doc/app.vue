@@ -377,7 +377,7 @@ export default {
 
   //padding: 0 20px 0 0;
   .demo-nav {
-    width: 200px;
+    width: 294px;
     flex-shrink: 0;
   }
   .showPhone {
