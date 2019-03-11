@@ -3,31 +3,31 @@
       <h4>基本用法</h4>
       <div>
         <nut-cell>
-          <count-down slot="title" :endTime="end" />
+          <nut-countdown slot="title" :endTime="end" />
         </nut-cell>
       </div>
       <h4>显示天</h4>
       <div>
         <nut-cell>
-          <count-down slot="title" :endTime="end" showDays/>
+          <nut-countdown slot="title" :endTime="end" showDays/>
         </nut-cell>
       </div>
       <h4>以服务端的时间为准</h4>
       <div>
         <nut-cell>
-          <count-down slot="title" :startTime="serverTime" :endTime="end" />
+          <nut-countdown slot="title" :startTime="serverTime" :endTime="end" />
         </nut-cell>
       </div>
       <h4>显示为 天时分秒</h4>
       <div>
         <nut-cell>
-          <count-down slot="title" showDays showPlainText :endTime="end" />
+          <nut-countdown slot="title" showDays showPlainText :endTime="end" />
         </nut-cell>
       </div>
       <h4>控制开始和暂停的倒计时</h4>
       <div>
         <nut-cell>
-          <count-down slot="title" :endTime="end" :paused="paused" />
+          <nut-countdown slot="title" :endTime="end" :paused="paused" />
           <div slot="desc">
             <nut-button type="default" small shape="circle" @click="toggle">
               <b style="font-size: 14px;">{{paused ? 'start': 'stop'}}</b>
