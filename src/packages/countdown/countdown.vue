@@ -60,7 +60,9 @@ const countdownTimer = {
   name: 'CountDown',
   data() {
     return {
-      restTime: 0
+      restTime: 0,
+      p: 0,
+      _curr: 0
     }
   },
   props: {
@@ -106,6 +108,15 @@ const countdownTimer = {
       return `${d > 0 && this.showDays? d + '天' + h: h}小时${m}分${s}秒`;
     }
   },
+  watch: {
+    paused(v, ov) {
+      if(!ov) {
+        this._curr = Date.now();
+      }else{
+        this.p += (Date.now() - this._curr);
+      }
+    }
+  },
   created() {
     if(this.interval > 0) {
       let _start = 0;
@@ -117,13 +128,15 @@ const countdownTimer = {
       this.restTime = end - (start + diffTime);
       this.timer = setInterval(() => {
         if(!this.paused) {
-          let restTime = end - (new Date().getTime() + diffTime);
+          let restTime = end - (new Date().getTime() - this.p + diffTime);
           restTime -= 1000;
           this.restTime = restTime;
           if(restTime < 0) {
             this.restTime = 0;
             clearInterval(this.timer);
           }
+        }else{
+          // 暂停
         }
       }, this.interval);
       
