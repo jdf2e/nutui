@@ -136,10 +136,9 @@ pre {
     position: relative;
     max-width: 100%;
     overflow: auto;
-    margin
-    .code-wrapper{
-        width:100%;
-        overflow:auto;
+    margin .code-wrapper {
+        width: 100%;
+        overflow: auto;
     }
     [toast="toast"],
     [copy="copy"] {
@@ -259,33 +258,11 @@ pre {
         max-width: 100%;
         max-height: 800px;
         overflow: auto;
-        &>i,.lang {
+        &>i,
+        .lang {
             display: none;
         }
-    } // .kwd{
-    //     color:#ffb560;;
-    // }
-    // .pln{
-    //     color: #3d74ff;
-    // }
-    // .tag{
-    //     color:#288cff;
-    // }
-    // .atn{
-    //     color:#0dade4;
-    // }
-    // .pun{
-    //     color: #fff;
-    // }
-    // .atv{
-    //     color: #005cc5;
-    // }
-    // .com{
-    //     color :#055a2a;
-    // }
-    // .str{
-    //     color: #fff;
-    // }
+    }
 }
 
 pre.prettyprint {
@@ -293,19 +270,16 @@ pre.prettyprint {
         font: 13px/24px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
     }
 }
+
 // 书签样式
-.markList{
+.markList {
     position: fixed;
     right: 10px;
     top: 100px;
     background: #fff;
-    border:1px solid #efefef;
-    padding:10px 10px 10px 20px!important;    
-    border-right: none;
-    li:before{
-        display: none!important;
-        
+    border-left: 1px solid #efefef;
+    padding: 0 10px 0 20px !important;
+    li:before {
+        display: none !important;
     }
-    
-    
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="demo-list">
     <h4>基本用法</h4>
-    <p>无人民符号，有千位分隔</p>
+    <p>无人民币符号，有千位分隔</p>
     <div>
       <nut-cell>
         <span slot="title">
