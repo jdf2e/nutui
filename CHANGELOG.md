@@ -1,3 +1,15 @@
+## 2.0.4
+
+`2019-3-12`
+
+* :sparkles: 新增构建CommonJS包
+* :sparkles: 新增倒计时`CountDown`组件
+* :bug: 修复`Rate`组件样式兼容问题
+* :bug: 修复两个组件测试用例问题
+* :zap: 优化`Swiper`组件
+* :zap: 文档增加目录功能
+* :zap: 新增英文版README.md
+
 ## 2.0.3
 
 `2019-1-25`
