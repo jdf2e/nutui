@@ -4,7 +4,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper v-model="val1"></nut-stepper>
+          <nut-stepper :value.sync="val1"></nut-stepper>
         </span>
       </nut-cell>
     </div>
@@ -12,7 +12,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper v-model="val2" :min="5" :max="100"></nut-stepper>
+          <nut-stepper :value.sync="val2" :min="5" :max="100"></nut-stepper>
         </span>
       </nut-cell>
     </div>
@@ -20,7 +20,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper v-model="val3" :step="5"></nut-stepper>
+          <nut-stepper :value.sync="val3" :step="5"></nut-stepper>
         </span>
       </nut-cell>
     </div>
@@ -28,7 +28,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper v-model="val4" readonly></nut-stepper>
+          <nut-stepper :value.sync="val4" readonly></nut-stepper>
         </span>
       </nut-cell>
     </div>
@@ -36,7 +36,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper v-model="val5" :simple="false"></nut-stepper>
+          <nut-stepper :value.sync="val5" :simple="false"></nut-stepper>
         </span>
       </nut-cell>
     </div>
@@ -44,7 +44,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper v-model="val6" :transition="false" :simple="false"></nut-stepper>
+          <nut-stepper :value.sync="val6" :transition="false" :simple="false"></nut-stepper>
         </span>
       </nut-cell>
     </div>

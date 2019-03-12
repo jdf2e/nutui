@@ -89,8 +89,12 @@ export default {
         }
     },
     methods: {
-        numchange() {
-            this.$emit('input', this.num);
+        numchange(e) {
+            let v = e.target.value;
+            if(v > this.max) v = this.max;
+            if(v < this.min) v = this.min;
+            this.num = v;
+            this.$emit('update:value', this.num);
             this.$emit('change', this.num);
         },
         add() {
@@ -113,8 +117,8 @@ export default {
                     });
                 };
             }
-            this.$emit('add', this.num);
-            this.$emit('input', this.num); 
+            this.$emit('update:value', this.num);
+            this.$emit('add', this.num); 
             this.$emit('change', this.num); 
         },
         animEnd() {
@@ -140,8 +144,8 @@ export default {
                     }); 
                 }    
             }
+            this.$emit('update:value', this.num);
             this.$emit('reduce', this.num);
-            this.$emit('input', this.num);
             this.$emit('change', this.num);
         },
 
