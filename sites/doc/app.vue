@@ -42,7 +42,8 @@
         </div>
       </div>
       <div class="demo-wrapper">
-        <router-view class="demo-nav" name="demonav"></router-view>
+        <router-view class="demo-nav"></router-view>
+        
         <keep-alive include="index">
           <router-view class="doc-cont" :class="showPhone?'':'docpad'" name="main"></router-view>
         </keep-alive>
@@ -61,7 +62,17 @@
       <div class="foot">
         Copyright © 2018~2019
         <a href="//jdc.jd.com" target="_blank">JDC</a>-
-        <a target="_blank" href="http://fe.jd.com/">前端开发部</a>
+        <a target="_blank" class="qrcode2" href="javascript:;">前端开发部
+            <a>
+                <img
+                  src="./asset/css/i/explor.png"
+                  alt
+                >
+               <svg class="strange" width="10" viewBox="0,0 6,5">
+                 <polygon points="0,0 3,5 6,0" fill="#fff"/>
+               </svg>
+              </a>
+        </a>
       </div>
     </div>
   </div>
@@ -72,6 +83,7 @@ import "./asset/css/style-blue.scss";
 import { packages } from "../../src/config.json";
 import { version } from "../../package.json";
 import search from "./search.vue";
+import leftNav from './info.vue'
 export default {
   name: "App",
   data() {
@@ -96,7 +108,8 @@ export default {
     $route: "fetchData"
   },
   components: {
-    search
+    search,
+    leftNav
   },
   methods: {
     openwindow(val) {
@@ -364,7 +377,7 @@ export default {
 
   //padding: 0 20px 0 0;
   .demo-nav {
-    width: 200px;
+    width: 294px;
     flex-shrink: 0;
   }
   .showPhone {
@@ -462,6 +475,32 @@ body {
 }
 .docpad{
    padding: 8px 200px 8px 0;
+}
+.qrcode2{
+  position: relative;
+  &:hover{
+   a{
+      display: block;
+   }
+  }
+  a{
+    position: absolute;
+    line-height: 12px;
+    background: #fff;
+    color: #333;
+    bottom:25px;
+    left: -30px;
+    font-size: 14px;
+    display: none;
+  }
+  .strange{
+    position: absolute;
+    left: 63px;
+  }
+  img{
+     width: 140px;
+     
+  }
 }
 // .button-primary {
 //   display: block;

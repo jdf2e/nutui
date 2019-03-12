@@ -19,7 +19,7 @@
                             
                         </ul>
                     </div>
-                    <img src="../../assets/img/cursor.gif" class="nut-fake-cursor" :style="fakeCursorStyle"/>
+                    <!-- <img src="../../assets/img/cursor.gif" class="nut-fake-cursor" :style="fakeCursorStyle"/> -->
                     <div class="nut-forget" v-if="link !=''">
                         <a :href="link">{{nutTranslate('lang.shortpassword.tip2')}}</a>
                     </div>
@@ -54,10 +54,10 @@ export default {
 		return{
 			shortpwdValue:'',
 			regExp:/^[0-9]*$/,
-			fakeCursorStyle:{
-				display:'none',
-				left:'0px'
-			},
+			// fakeCursorStyle:{
+			// 	display:'none',
+			// 	left:'0px'
+			// },
 			fakeInputItems:[
 				{
 					id:1,
@@ -117,15 +117,15 @@ export default {
 				if(val.length < 6){
 					let num = this.$refs.nutFakeList.offsetLeft + 26;
 					var left = val.length*54 + num;
-					this.fakeCursorStyle = {
-						'left':left+'px',
-						'display':'block'
-					}
+					// this.fakeCursorStyle = {
+					// 	'left':left+'px',
+					// 	'display':'block'
+					// }
 					
 				}else{
-					this.fakeCursorStyle = {
-						'display':'none'
-					}
+					// this.fakeCursorStyle = {
+					// 	'display':'none'
+					// }
 					this.$refs.realInput.blur();
 					
 					this.timer = setTimeout(()=>{

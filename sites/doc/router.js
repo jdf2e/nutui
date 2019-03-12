@@ -35,7 +35,7 @@ const routes = [
     path: '/intro',
     name:'intr',
     components: {
-      demonav: Index,
+      default: Index,
       main: Intro,     
     }
   },
@@ -43,7 +43,7 @@ const routes = [
     path: '/international',
     name:'international',
     components: {
-      demonav: Index,
+      default: Index,
       main: International,     
     }
   },
@@ -51,7 +51,7 @@ const routes = [
     path: '/start',
     name:'start',
     components: {
-      demonav: Index,
+      default: Index,
       main: Start,     
     }
   },
@@ -59,7 +59,7 @@ const routes = [
     path: '/theme',
     name:'theme',
     components: {
-      demonav: Index,
+      default: Index,
       main: Theme,     
     }
   }
@@ -71,7 +71,7 @@ packages.map(item => {
   routes.push({
     path: '/' + item.name,
     components: {      
-      demonav: Index,
+      default: Index,
       main: () => import('./view/' + pkgName + '.vue')
     },
     name: item.name
