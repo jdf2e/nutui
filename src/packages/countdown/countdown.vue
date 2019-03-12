@@ -57,7 +57,7 @@ function restTime(t) {
 };
 
 const countdownTimer = {
-  name: 'CountDown',
+  name: 'nut-countdown',
   data() {
     return {
       restTime: 0,
