@@ -201,9 +201,14 @@ export default {
         },
         _onTouchMove(e){
             if(!this.dragging) return;
-            this.delta = this._getTouchPos(e) - this.startPos;
-            let  isQuickAction = (new Date().getTime() - this.startTime) < 200;
-            if(this.canDragging && !isQuickAction){
+            if(this.isHorizontal()){
+                this.delta = this._getTouchPos(e).x - this.startPos.x;
+            }else{
+                this.delta = this._getTouchPos(e).y - this.startPos.y;
+            }
+            //let  isQuickAction = (new Date().getTime() - this.startTime) < 200;
+            if(this.canDragging && this._computePreventDefault(e)){
+                e.preventDefault();
                 this.lazyLoad && this._imgLazyLoad();
                 this._setTranslate(this.startTranslate + this.delta);
                 this.$emit('slideMove',this._getTranslate(),this.$el);
@@ -229,9 +234,22 @@ export default {
         _revert(){
             this.setPage(this.currentPage,true);
         },
+         _computePreventDefault(e){
+            let pos = this._getTouchPos(e);
+            let xDis = Math.abs(this.startPos.x - pos.x);
+            let yDis = Math.abs(this.startPos.y - pos.y);
+            if ( xDis <= 5 && xDis >=0){
+                return false;
+            }else if( yDis > 5 && yDis/xDis > 0.5 ){
+                return false;
+            }else{
+                return true;
+            }
+        },
         _getTouchPos(e){
-            let key = this.isHorizontal() ?'pageX':'pageY';
-            return e.changedTouches ? e.changedTouches[0][key] :e[key];
+            let x = e.changedTouches ? e.changedTouches[0]['pageX'] :e['pageX'];
+            let y = e.changedTouches ? e.changedTouches[0]['pageY'] :e['pageY'];
+            return {x,y}
         },
         _onTransitionStart(type){
             this.transitionDuration = this.speed;
