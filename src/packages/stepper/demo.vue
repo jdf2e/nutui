@@ -6,6 +6,9 @@
         <span slot="title">
           <nut-stepper :value.sync="val1"></nut-stepper>
         </span>
+        <span slot="desc">
+          value: {{val1}} <button @click="reduce">-</button> <button @click="add">+</button> 
+        </span>
       </nut-cell>
     </div>
     <h4>设置最大最小值</h4>
@@ -48,6 +51,7 @@
         </span>
       </nut-cell>
     </div>
+    
   </div>
 </template>
 
@@ -61,6 +65,14 @@ export default {
       val4: 0,
       val5: 0,
       val6: 0
+    }
+  },
+  methods: {
+    add() {
+      this.val1 = Number(this.val1) + 1;
+    },
+    reduce() {
+      this.val1 = Math.max(Number(this.val1) - 1, 0);
     }
   },
 };

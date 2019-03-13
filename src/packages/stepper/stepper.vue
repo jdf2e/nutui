@@ -88,6 +88,12 @@ export default {
             return Math.max(v, min);
         }
     },
+    watch: {
+        value(v, ov) {
+            this.num = v;
+            this.$emit('change', this.num);
+        }
+    },
     methods: {
         numchange(e) {
             let v = e.target.value;
