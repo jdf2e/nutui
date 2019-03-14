@@ -1,6 +1,7 @@
 <template>
-  <div class="main-menu lt-nv " v-stickto>
-    <ol class="nav-l-1">
+  <div class="main-menu lt-nv">
+    <div class="left-nav-fixed">
+        <ol class="nav-l-1">
       <dt>指南</dt>
       <dd :class="curName=='intr' ?'l-1 curs':'l-1'">
         <a href="#/intro">介绍</a>
@@ -18,7 +19,7 @@
         <a href="https://github.com/jdf2e/nutui/releases" target="_blank">更新日志</a>
       </dd>
     </ol>
-    <ol>
+    <ol class="cplist">
       <dt>组件</dt>
       <dd
         class="l-1"
@@ -48,11 +49,13 @@
         </ul>
       </dd>
     </ol>
+    </div>
+    
   </div>
 </template>
 <script>
 import { sorts, packages } from "../../src/config.json";
-
+import { version } from "../../package.json";
 export default {
   name: "index",
   data() {
@@ -61,7 +64,8 @@ export default {
       packages: {},
       sortedPackages: [],
       cur: [],
-      curName: ""
+      curName: "",
+      version:version
     };
   },
  
@@ -146,6 +150,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+
 .fade-enter-active,
 .fade-leave-active {
   transition: all 1s;
@@ -177,17 +182,17 @@ dd {
     cursor: pointer;
   }
 }
-
+.cplist{
+  padding-bottom: 20px;
+}
+.left-nav-fixed{
+  margin-top:115px;
+  
+}
 .lt-nv {
   font-size: 14px;
   width: 295px;
   border-right: 1px solid #d8d8d8;
-  background: #fff;
-  height: 100%;
-  overflow: hidden;
-  overflow-y: auto;
-  padding-bottom: 60px;
-  box-sizing: border-box;
   a,
   span {
     text-decoration: none;

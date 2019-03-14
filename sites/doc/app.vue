@@ -5,13 +5,14 @@
     </div>
     <div class="md-swaper" @click="clearSearch" v-else>
       <div class="hder">
-        <div class="logo">
+         <div class="logo">
           <a href="#/index" class="logo-link">
             <img src="./asset/css/i/nut.png" alt>
           </a>
           <span class="version">v{{version}}</span>
         </div>
         <div class="h-nav">
+          
           <search/>
           <ul class="list">
             <li class="cur">
@@ -42,8 +43,12 @@
         </div>
       </div>
       <div class="demo-wrapper">
-       
-         <div v-if="showPhone" class="showPhone">
+        <router-view class="demo-nav fixed-box"></router-view>
+        
+        <keep-alive include="index">
+          <router-view class="doc-cont fl-right" :class="showPhone?'':'docpad'" name="main"></router-view>
+        </keep-alive>
+        <div v-if="showPhone" class="showPhone">
           <div class="ph">
             <div class="bg">
               <img src="./asset/css/i/phtitle.png" alt>
@@ -53,15 +58,7 @@
             </div>
             <iframe :src="'//nutui.jd.com/demo.html#/'+routerName+'?ver='+version"></iframe>
           </div>
-        </div> 
-        <keep-alive include="index">
-          <router-view class="doc-cont wrapper-right" :class="showPhone?'':'docpad'" name="main"></router-view>
-        </keep-alive>
-        <div class="left-nav">
-          <router-view class="demo-nav"></router-view>
         </div>
-         
-       
       </div>
       <div class="foot">
         Copyright © 2018~2019
@@ -85,22 +82,22 @@
 import "./asset/css/common.scss";
 import "./asset/css/style-blue.scss";
 import { packages } from "../../src/config.json";
-import { version } from "../../package.json";
 import search from "./search.vue";
-import leftNav from './info.vue'
+import leftNav from './info.vue';
+import { version } from "../../package.json";
 export default {
   name: "App",
   data() {
     return {
       packages,
+      version,
       searchList: [],
       searchVal: "",
       routerName: "",
       showPhone: false,
       searchCurName: "",
       searchIndex: 0,
-      codeurl: "",
-      version
+      codeurl: ""     
     };
   },
   watch: {
@@ -207,6 +204,16 @@ export default {
 };
 </script>
 <style lang="scss">
+.fixed-box{
+  position: fixed;
+  z-index: 9;  
+  height: 100%;
+  overflow:hidden;
+  overflow-y: auto;
+  top:0;  
+  background: #fff;
+  box-sizing: border-box;
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -237,13 +244,13 @@ export default {
   align-items: center;
   margin-bottom: 50px;
   z-index: 42;
-  .logo {
-    width: 295px;
-    height: 65px;
-    border-right: 1px solid #d8d8d8;
+    .logo {
+    width: 293px;
+    height: 65px;   
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    border-right: 1px solid #d8d8d8;
     .logo-link {
       display: inline-block;
     }
@@ -263,12 +270,12 @@ export default {
     margin-top: 7px;
     vertical-align: bottom;
   }
-  
+
   .h-nav {
     display: flex;
     padding-left: 42px;
     align-items: center;
-    width: 100%;
+    width: 100%;   
     select {
       width: 74px;
       height: 28px;
@@ -378,18 +385,11 @@ export default {
 .demo-wrapper {
   display: flex;
   width: 100%;
-   justify-content:flex-end;
-   flex-direction:row-reverse;
+
   //padding: 0 20px 0 0;
   .demo-nav {
     width: 294px;
     flex-shrink: 0;
-  }
-  .left-nav{
-    width: 295px;
-  }
-  .wrapper-right{
-    // margin-left: 300px;
   }
   .showPhone {
     padding-right: 25px;
@@ -443,6 +443,9 @@ export default {
       }
     }
   }
+  .fl-right{
+    margin-left: 310px;
+  }
 }
 .foot {
   height: 120px;
@@ -455,7 +458,7 @@ export default {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding-left: 295px;
+  padding-left: 300px;
   box-sizing: border-box;
   a {
     color: #fff;
