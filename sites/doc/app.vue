@@ -5,12 +5,7 @@
     </div>
     <div class="md-swaper" @click="clearSearch" v-else>
       <div class="hder">
-        <div class="logo">
-          <a href="#/index" class="logo-link">
-            <img src="./asset/css/i/nut.png" alt>
-          </a>
-          <span class="version">v{{version}}</span>
-        </div>
+        
         <div class="h-nav">
           <search/>
           <ul class="list">
@@ -42,10 +37,10 @@
         </div>
       </div>
       <div class="demo-wrapper">
-        <router-view class="demo-nav"></router-view>
+        <router-view class="demo-nav fixed-box"></router-view>
         
         <keep-alive include="index">
-          <router-view class="doc-cont" :class="showPhone?'':'docpad'" name="main"></router-view>
+          <router-view class="doc-cont fl-right" :class="showPhone?'':'docpad'" name="main"></router-view>
         </keep-alive>
         <div v-if="showPhone" class="showPhone">
           <div class="ph">
@@ -81,7 +76,6 @@
 import "./asset/css/common.scss";
 import "./asset/css/style-blue.scss";
 import { packages } from "../../src/config.json";
-import { version } from "../../package.json";
 import search from "./search.vue";
 import leftNav from './info.vue'
 export default {
@@ -95,8 +89,7 @@ export default {
       showPhone: false,
       searchCurName: "",
       searchIndex: 0,
-      codeurl: "",
-      version
+      codeurl: ""     
     };
   },
   watch: {
@@ -203,6 +196,14 @@ export default {
 };
 </script>
 <style lang="scss">
+.fixed-box{
+  position: fixed;
+  z-index: 99999;
+  background: #fff;
+  height: 100%;
+  overflow-y: scroll;
+  top:0;
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -233,27 +234,7 @@ export default {
   align-items: center;
   margin-bottom: 50px;
   z-index: 42;
-  .logo {
-    width: 295px;
-    height: 65px;
-    border-right: 1px solid #d8d8d8;
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    .logo-link {
-      display: inline-block;
-    }
-    img {
-      display: block;
-      width: 120px;
-      height: 46px;
-      flex-grow: 0;
-      flex-shrink: 0;
-      margin: 0 10px 0 30px;
-    }
-    color: #999;
-    font-size: 12px;
-  }
+
   .version {
     display: inline-block;
     margin-top: 7px;
@@ -265,6 +246,7 @@ export default {
     padding-left: 42px;
     align-items: center;
     width: 100%;
+    margin-left: 300px;
     select {
       width: 74px;
       height: 28px;
@@ -432,6 +414,9 @@ export default {
       }
     }
   }
+  .fl-right{
+    margin-left: 310px;
+  }
 }
 .foot {
   height: 120px;
@@ -444,6 +429,8 @@ export default {
   position: absolute;
   bottom: 0;
   width: 100%;
+  padding-left: 300px;
+  box-sizing: border-box;
   a {
     color: #fff;
     text-decoration: none;
