@@ -186,6 +186,8 @@ dd {
   height: 100%;
   overflow: hidden;
   overflow-y: auto;
+  padding-bottom: 60px;
+  box-sizing: border-box;
   a,
   span {
     text-decoration: none;
