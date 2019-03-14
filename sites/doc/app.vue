@@ -234,7 +234,7 @@ export default {
   display: flex;
 }
 .hder {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   background: #ffffff;
