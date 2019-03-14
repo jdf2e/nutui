@@ -1,11 +1,5 @@
 <template>
   <div class="main-menu lt-nv">
-    <div class="logo">
-      <a href="#/index" class="logo-link">
-        <img src="./asset/css/i/nut.png" alt>
-      </a>
-      <span class="version">v{{version}}</span>
-    </div>
     <ol class="nav-l-1">
       <dt>指南</dt>
       <dd :class="curName=='intr' ?'l-1 curs':'l-1'">
@@ -24,7 +18,7 @@
         <a href="https://github.com/jdf2e/nutui/releases" target="_blank">更新日志</a>
       </dd>
     </ol>
-    <ol class="cplist">
+    <ol>
       <dt>组件</dt>
       <dd
         class="l-1"
@@ -58,7 +52,7 @@
 </template>
 <script>
 import { sorts, packages } from "../../src/config.json";
-import { version } from "../../package.json";
+
 export default {
   name: "index",
   data() {
@@ -67,8 +61,7 @@ export default {
       packages: {},
       sortedPackages: [],
       cur: [],
-      curName: "",
-      version:version
+      curName: ""
     };
   },
  
@@ -153,27 +146,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-  .logo {
-    width: 295px;
-    height: 65px;
-    border-right: 1px solid #d8d8d8;
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    .logo-link {
-      display: inline-block;
-    }
-    img {
-      display: block;
-      width: 120px;
-      height: 46px;
-      flex-grow: 0;
-      flex-shrink: 0;
-      margin: 0 10px 0 30px;
-    }
-    color: #999;
-    font-size: 12px;
-  }
 .fade-enter-active,
 .fade-leave-active {
   transition: all 1s;
@@ -205,9 +177,7 @@ dd {
     cursor: pointer;
   }
 }
-.cplist{
-  padding-bottom: 20px;
-}
+
 .lt-nv {
   font-size: 14px;
   width: 295px;
