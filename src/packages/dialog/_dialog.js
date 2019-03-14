@@ -16,8 +16,9 @@ let Dialog = function (options) {
         inst = Object.assign(instances[options['id']], options);
     } else {
         inst = new DialogConstructor({
-            data: options
+            propsData: options
         });
+
         if (options['id']) {
             instances[options['id']] = inst;
         }

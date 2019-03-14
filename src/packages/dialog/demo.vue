@@ -75,6 +75,17 @@
         </span>
       </nut-cell>
     </div>
+    <h4>高级用法</h4>
+    <p>如果Dialog内容有复杂交互，建议以组件形式来使用Dialog。</p>
+    <div>
+      <nut-cell :isLink="true" :showIcon="true" @click.native="dialogShow=true">
+        <span slot="title">
+          <label>以组件形式调用Dialog</label>
+        </span>
+      </nut-cell>
+    </div>
+    <!-- 以组件形式调用Dialog -->
+    <nut-dialog title="组件形式调用" :visible="dialogShow" @close="dialogShow=false"><a href="javascript:;"  @click="dialogShow=false" :noCancelBtn="true">点我可以直接关闭对话框</a></nut-dialog>
   </div>
 </template>
 
@@ -84,6 +95,11 @@ import { locale as i18n } from "../../locales";
 
 export default {
   mixins: [locale],
+  data(){
+    return {
+      dialogShow:false
+    };
+  },
   methods: {
     showDialog1: function() {
       const options = {
