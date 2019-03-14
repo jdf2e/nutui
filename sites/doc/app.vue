@@ -42,12 +42,8 @@
         </div>
       </div>
       <div class="demo-wrapper">
-        <router-view class="demo-nav"></router-view>
-        
-        <keep-alive include="index">
-          <router-view class="doc-cont" :class="showPhone?'':'docpad'" name="main"></router-view>
-        </keep-alive>
-        <div v-if="showPhone" class="showPhone">
+       
+         <div v-if="showPhone" class="showPhone">
           <div class="ph">
             <div class="bg">
               <img src="./asset/css/i/phtitle.png" alt>
@@ -57,7 +53,15 @@
             </div>
             <iframe :src="'//nutui.jd.com/demo.html#/'+routerName+'?ver='+version"></iframe>
           </div>
+        </div> 
+        <keep-alive include="index">
+          <router-view class="doc-cont wrapper-right" :class="showPhone?'':'docpad'" name="main"></router-view>
+        </keep-alive>
+        <div class="left-nav">
+          <router-view class="demo-nav"></router-view>
         </div>
+         
+       
       </div>
       <div class="foot">
         Copyright © 2018~2019
@@ -259,7 +263,7 @@ export default {
     margin-top: 7px;
     vertical-align: bottom;
   }
-
+  
   .h-nav {
     display: flex;
     padding-left: 42px;
@@ -374,11 +378,18 @@ export default {
 .demo-wrapper {
   display: flex;
   width: 100%;
-
+   justify-content:flex-end;
+   flex-direction:row-reverse;
   //padding: 0 20px 0 0;
   .demo-nav {
     width: 294px;
     flex-shrink: 0;
+  }
+  .left-nav{
+    width: 295px;
+  }
+  .wrapper-right{
+    // margin-left: 300px;
   }
   .showPhone {
     padding-right: 25px;
@@ -444,6 +455,8 @@ export default {
   position: absolute;
   bottom: 0;
   width: 100%;
+  padding-left: 295px;
+  box-sizing: border-box;
   a {
     color: #fff;
     text-decoration: none;

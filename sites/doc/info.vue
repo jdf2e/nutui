@@ -1,5 +1,5 @@
 <template>
-  <div class="main-menu lt-nv">
+  <div class="main-menu lt-nv " v-stickto>
     <ol class="nav-l-1">
       <dt>指南</dt>
       <dd :class="curName=='intr' ?'l-1 curs':'l-1'">
@@ -182,6 +182,10 @@ dd {
   font-size: 14px;
   width: 295px;
   border-right: 1px solid #d8d8d8;
+  background: #fff;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
   a,
   span {
     text-decoration: none;
