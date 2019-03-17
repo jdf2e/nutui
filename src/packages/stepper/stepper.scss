@@ -84,6 +84,8 @@
     }
     .nut-stepper-grey{
         color: #ececee;
-        fill: #cecece;
+        svg{
+            fill: #cecece!important;
+        }
     }
 }

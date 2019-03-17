@@ -4,7 +4,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper :value.sync="val1"></nut-stepper>
+          <nut-stepper :value.sync="val1" :max="12"></nut-stepper>
         </span>
         <span slot="desc">
           value: {{val1}} <button @click="reduce">-</button> <button @click="add">+</button> 
@@ -47,7 +47,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper :value.sync="val6" :transition="false" :simple="false"></nut-stepper>
+          <nut-stepper :value.sync="val6" :transition="false" :simple="false" :max="999"></nut-stepper>
         </span>
       </nut-cell>
     </div>
