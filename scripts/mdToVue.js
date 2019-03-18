@@ -295,7 +295,7 @@ function fileDisplay(param) {
             let reslength = res.length;    
             let routers = [];            
             res.map((item,index)=>{   //数组化文件   
-                ismd(item,hashMsgObj,res=>{
+                ismd(item.path,hashMsgObj,res=>{
                     //res md文件处理结果           
                     createdFile(param.output + res.mdName + '.vue', res.html, param)
                 })
