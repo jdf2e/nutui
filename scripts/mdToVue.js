@@ -7,6 +7,7 @@ let marked = require('marked');
 if (!marked) {
     console.log('you need npm i marked -D!');
 }
+var nodeFilelist  = require('node-filelist');
 //文件监听
 let Chokidar = require('chokidar');
 // 基本配置文件信息
@@ -261,8 +262,7 @@ function comparehash(path,callback){
         .catch(error => {
             return console.error('hashing failed:', error);
         }); 
-    })
-     
+    })     
 }
 //文件监听
 function filelisten(param){  
@@ -290,21 +290,18 @@ function filelisten(param){
  */
 function fileDisplay(param) {
     //检查文件是否第一次初始化并获取hash
-    comparehash(param.entry,(hashMsgObj)=>{
-                
-        // 获取目录下所有文件
-        readDirRecur(param.entry, function(filePath) {    
-            //文件列表        
-            fileList.map(item=>{              
+    comparehash(param.entry,(hashMsgObj)=>{ 
+        nodeFilelist.read([param.entry],{"ext":"md"},res=>{    
+            let reslength = res.length;    
+            let routers = [];            
+            res.map((item,index)=>{   //数组化文件   
                 ismd(item,hashMsgObj,res=>{
                     //res md文件处理结果           
                     createdFile(param.output + res.mdName + '.vue', res.html, param)
                 })
-            })    
-        });
-    });
-   
-    
+            })     
+        })
+    });  
 }
 
 /**
@@ -326,35 +323,6 @@ function ishasOutFile(outPath,callback){
         }
     })
 }
-// function checkLoacl(){
-//     var selfFile = './scripts/mdToVue.js';
-//     //获取文件内容
-       
-//     checkIsexists(selfFile,(fileName)=>{
-//         let fileText = fs.readFileSync(fileName,'utf-8');  
-//     })
-//     //检查本文件是否被改动
-//     hashElement('./scripts/mdToVue.js').then(hash => {           
-//         if(fileText){
-//             //如果有内容
-//             callback({
-//                 fileText:fileText,
-//                 cachePath:cachePath
-//             })
-//         }else{
-//             pushHash(hash)               
-//             fs.writeFileSync(cachePath,outhash.join('|'),'utf-8');
-//             //如果没有内容
-//             callback({
-//                 fileText:fileText,
-//                 cachePath:cachePath
-//             })
-//         }
-//     })
-//     .catch(error => {
-//         return console.error('hashing failed:', error);
-//     }); 
-// }
 /**
  * 
  * @param {entry} 文件读取路径 
