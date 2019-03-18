@@ -61,31 +61,19 @@
         </span>
       </nut-cell>
     </div>
-    <h4>共享实例</h4>
-    <p>如果给Dialog设置id(推荐)，则该Dialog再次弹出时依旧使用该实例，不再新建实例。如果多个Dialog的id相同，则共享一个实例。</p>
-    <div>
-      <nut-cell :isLink="true" :showIcon="true" @click.native="showIdDialog1">
-        <span slot="title">
-          <label>设置id为"myDialog"</label>
-        </span>
-      </nut-cell>
-      <nut-cell :isLink="true" :showIcon="true" @click.native="showIdDialog2">
-        <span slot="title">
-          <label>同样设置id为"myDialog"</label>
-        </span>
-      </nut-cell>
-    </div>
     <h4>高级用法</h4>
-    <p>如果Dialog内容有复杂交互，建议以组件形式来使用Dialog。</p>
+    <p>如果Dialog内容有复杂交互，可使用Dialog的标签式用法。</p>
     <div>
       <nut-cell :isLink="true" :showIcon="true" @click.native="dialogShow=true">
         <span slot="title">
-          <label>以组件形式调用Dialog</label>
+          <label>以标签形式调用Dialog</label>
         </span>
       </nut-cell>
     </div>
-    <!-- 以组件形式调用Dialog -->
-    <nut-dialog title="组件形式调用" :visible="dialogShow" @close="dialogShow=false"><a href="javascript:;"  @click="dialogShow=false" :noCancelBtn="true">点我可以直接关闭对话框</a></nut-dialog>
+    <!-- 以标签形式调用Dialog -->
+    <nut-dialog title="标签形式调用" :visible="dialogShow" @close="dialogShow=false">
+      <a href="javascript:;" @click="dialogShow=false" :noCancelBtn="true">点我可以直接关闭对话框</a>
+    </nut-dialog>
   </div>
 </template>
 
@@ -95,9 +83,9 @@ import { locale as i18n } from "../../locales";
 
 export default {
   mixins: [locale],
-  data(){
+  data() {
     return {
-      dialogShow:false
+      dialogShow: false
     };
   },
   methods: {
@@ -182,8 +170,9 @@ export default {
     showDialog8: function() {
       this.$dialog({
         title: "背景滚动锁定",
-        lockBgScroll:true,
-        content:"弹窗弹出后，页面滚动锁止。在窗体和遮罩层上滑动时，页面不再跟随滚动。",
+        lockBgScroll: true,
+        content:
+          "弹窗弹出后，页面滚动锁止。在窗体和遮罩层上滑动时，页面不再跟随滚动。",
         noOkBtn: true,
         cancelBtnTxt: "我知道了"
       });
@@ -191,8 +180,9 @@ export default {
     showDialog9: function() {
       this.$dialog({
         title: "《桃花行》",
-        lockBgScroll:true,
-        content:"桃花帘外东风软，<br>桃花帘内晨妆懒。<br>帘外桃花帘内人，<br>人与桃花隔不远。<br>东风有意揭帘栊，<br>花欲窥人帘不卷。<br>桃花帘外开仍旧，<br>帘中人比桃花瘦。<br>花解怜人花也愁，<br>隔帘消息风吹透。<br>风透帘栊花满庭，<br>庭前春色倍伤情。<br>闲苔院落帘空卷，<br>斜日栏干人自凭。<br>凭栏人向东风泣，<br>茜裙偷傍桃花立。<br>桃花桃叶乱纷纷，<br>花绽新红叶凝碧。<br>树树烟封一万株，<br>烘照楼台红模糊。<br>天机烧破鸳鸯锦，<br>春色欲酣珊瑚枕。<br>侍女金盆进水来，<br>香泉欲蘸胭脂冷。<br>胭脂鲜艳何相类，<br>花之颜色人之泪。<br>若将人泪比桃花，<br>泪自长流花自媚。<br>泪眼看花泪易乾，<br>泪乾春尽花憔悴。<br>憔悴花枝憔悴人，<br>花飞人倦易黄昏。<br>一声杜宇春归尽，<br>寂寞帘栊空月痕。",
+        lockBgScroll: true,
+        content:
+          "桃花帘外东风软，<br>桃花帘内晨妆懒。<br>帘外桃花帘内人，<br>人与桃花隔不远。<br>东风有意揭帘栊，<br>花欲窥人帘不卷。<br>桃花帘外开仍旧，<br>帘中人比桃花瘦。<br>花解怜人花也愁，<br>隔帘消息风吹透。<br>风透帘栊花满庭，<br>庭前春色倍伤情。<br>闲苔院落帘空卷，<br>斜日栏干人自凭。<br>凭栏人向东风泣，<br>茜裙偷傍桃花立。<br>桃花桃叶乱纷纷，<br>花绽新红叶凝碧。<br>树树烟封一万株，<br>烘照楼台红模糊。<br>天机烧破鸳鸯锦，<br>春色欲酣珊瑚枕。<br>侍女金盆进水来，<br>香泉欲蘸胭脂冷。<br>胭脂鲜艳何相类，<br>花之颜色人之泪。<br>若将人泪比桃花，<br>泪自长流花自媚。<br>泪眼看花泪易乾，<br>泪乾春尽花憔悴。<br>憔悴花枝憔悴人，<br>花飞人倦易黄昏。<br>一声杜宇春归尽，<br>寂寞帘栊空月痕。",
         noOkBtn: true,
         cancelBtnTxt: "我知道了"
       });
@@ -208,28 +198,6 @@ export default {
           return false; //返回false可阻止默认的链接跳转行为
         }
       });
-    },
-    showIdDialog1: function() {
-      const options = {
-        id: "myDialog",
-        title: "我的ID是myDialog",
-        content: "只会新建一个实例",
-        noOkBtn: true,
-        closeBtn: true
-      };
-
-      this.$dialog(options);
-    },
-    showIdDialog2: function() {
-      const options = {
-        id: "myDialog",
-        title: "我的ID也是myDialog",
-        content: "与上一个弹窗共享一个实例。",
-        noOkBtn: true,
-        cancelBtnTxt: "我知道了"
-      };
-
-      this.$dialog(options);
     }
   }
 };

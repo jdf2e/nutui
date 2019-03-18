@@ -229,7 +229,7 @@ export default {
   background: #fff;
   min-height: 100vh;
   min-width: 1000px;
-  padding: 115px 0 200px 0;
+  padding: 85px 0 200px 0;
   box-sizing: border-box;
   display: flex;
 }
@@ -444,7 +444,7 @@ export default {
     }
   }
   .fl-right{
-    margin-left: 310px;
+    margin-left: 320px;
   }
 }
 .foot {

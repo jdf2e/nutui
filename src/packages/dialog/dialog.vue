@@ -23,8 +23,15 @@
           <template v-else>
             <div class="nut-dialog-body">
               <span class="nut-dialog-title" v-html="title" v-if="title"></span>
-              <div class="nut-dialog-content" v-if="$slots.default" :style="{textAlign}"><slot></slot></div>
-              <div class="nut-dialog-content" v-html="content" v-else-if="content" :style="{textAlign}"></div>
+              <div class="nut-dialog-content" v-if="$slots.default" :style="{textAlign}">
+                <slot></slot>
+              </div>
+              <div
+                class="nut-dialog-content"
+                v-html="content"
+                v-else-if="content"
+                :style="{textAlign}"
+              ></div>
             </div>
             <div class="nut-dialog-footer" v-if="!noFooter">
               <button
@@ -53,7 +60,8 @@ const lockMaskScroll = (bodyCls => {
   let scrollTop;
   return {
     afterOpen: function() {
-      scrollTop = document.scrollingElement.scrollTop || document.body.scrollTop;
+      scrollTop =
+        document.scrollingElement.scrollTop || document.body.scrollTop;
       document.body.classList.add(bodyCls);
       document.body.style.top = -scrollTop + "px";
     },
@@ -69,99 +77,99 @@ const lockMaskScroll = (bodyCls => {
 export default {
   name: "nut-dialog",
   mixins: [locale],
-  props:{
-      id: {
-        default:null
-      },
-      title: {
-        default:""
-      },
-      content: {
-        default:""
-      },
-      type: {
-        default:""
-      },
-      link: {
-        default:""
-      },
-      imgSrc:{
-        default:""
-      },
-      animation: {
-        type:Boolean,
-        default:true
-      },
-      lockBgScroll: {
-        type:Boolean,
-        default:false
-      },
-      visible: {
-        type:Boolean,
-        default:false
-      },
-      closeBtn: {
-        type:Boolean,
-        default:false
-      },
-      closeOnClickModal: {
-        type:Boolean,
-        default:true
-      },
-      noFooter: {
-        type:Boolean,
-        default:false
-      },
-      noOkBtn: {
-        type:Boolean,
-        default:false
-      },
-      noCancelBtn: {
-        type:Boolean,
-        default:false
-      },
-      cancelBtnTxt: {
-        default:""
-      },
-      okBtnTxt: {
-        default:""
-      },
-      okBtnDisabled: {
-        type:Boolean,
-        default:false
-      },
-      cancelAutoClose: {
-        type:Boolean,
-        default:true
-      },
-      textAlign: {
-        default:"center"
-      },
-      onOkBtn: {
-        default:null
-      },
-      onCloseBtn: {
-        default:null
-      },
-      onCancelBtn: {
-        default:null
-      },
-      closeCallback: {
-        default:null
-      },
-      onClickImageLink: {
-        default:null
-      },
-      maskBgStyle: {
-        default:""
-      },
-      customClass: {
-        default:""
-      }
+  props: {
+    id: {
+      default: null
+    },
+    title: {
+      default: ""
+    },
+    content: {
+      default: ""
+    },
+    type: {
+      default: ""
+    },
+    link: {
+      default: ""
+    },
+    imgSrc: {
+      default: ""
+    },
+    animation: {
+      type: Boolean,
+      default: true
+    },
+    lockBgScroll: {
+      type: Boolean,
+      default: false
+    },
+    visible: {
+      type: Boolean,
+      default: false
+    },
+    closeBtn: {
+      type: Boolean,
+      default: false
+    },
+    closeOnClickModal: {
+      type: Boolean,
+      default: true
+    },
+    noFooter: {
+      type: Boolean,
+      default: false
+    },
+    noOkBtn: {
+      type: Boolean,
+      default: false
+    },
+    noCancelBtn: {
+      type: Boolean,
+      default: false
+    },
+    cancelBtnTxt: {
+      default: ""
+    },
+    okBtnTxt: {
+      default: ""
+    },
+    okBtnDisabled: {
+      type: Boolean,
+      default: false
+    },
+    cancelAutoClose: {
+      type: Boolean,
+      default: true
+    },
+    textAlign: {
+      default: "center"
+    },
+    onOkBtn: {
+      default: null
+    },
+    onCloseBtn: {
+      default: null
+    },
+    onCancelBtn: {
+      default: null
+    },
+    closeCallback: {
+      default: null
+    },
+    onClickImageLink: {
+      default: null
+    },
+    maskBgStyle: {
+      default: ""
+    },
+    customClass: {
+      default: ""
+    }
   },
   data() {
     return {
-      curVisible: this.visible
+      curVisible: false
     };
   },
   methods: {
@@ -170,21 +178,24 @@ export default {
       this.close("modal");
     },
     close(target) {
-      this.$emit('close',target);
-      this.$emit('close-callback',target);
-      if (typeof(this.closeCallback) === "function" && this.closeCallback(target) === false) {
+      this.$emit("close", target);
+      this.$emit("close-callback", target);
+      if (
+        typeof this.closeCallback === "function" &&
+        this.closeCallback(target) === false
+      ) {
         return;
       }
       this.curVisible = false;
     },
     okBtnClick() {
-      this.$emit('ok-btn-click');
+      this.$emit("ok-btn-click");
       if (typeof this.onOkBtn === "function") {
         this.onOkBtn.call(this);
       }
     },
     cancelBtnClick(autoClose) {
-      this.$emit('ok-btn-click');
+      this.$emit("ok-btn-click");
       if (typeof this.onCancelBtn === "function") {
         if (this.onCancelBtn.call(this) === false) return;
       }
@@ -203,21 +214,20 @@ export default {
       if (this.link) location.href = this.link;
     }
   },
-  created(){
+  created() {
   },
   watch: {
     visible: {
       handler(val) {
         this.curVisible = val;
-        if (this.lockBgScroll) {
-          if (val) {
-            lockMaskScroll.afterOpen();
-          } else {
-            lockMaskScroll.beforeClose();
-          }
-        }
       },
       immediate: true
+    },
+    curVisible(val) {
+        if (this.lockBgScroll) {
+          //锁定or解锁页面滚动
+          lockMaskScroll[val?'afterOpen':'beforeClose']();
+        }
     }
   }
 };
