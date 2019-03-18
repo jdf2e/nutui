@@ -7,6 +7,7 @@ let marked = require('marked');
 if (!marked) {
     console.log('you need npm i marked -D!');
 }
+var nodeFilelist  = require('node-filelist');
 //文件监听
 let Chokidar = require('chokidar');
 // 基本配置文件信息
@@ -293,15 +294,25 @@ function fileDisplay(param) {
     comparehash(param.entry,(hashMsgObj)=>{
                 
         // 获取目录下所有文件
-        readDirRecur(param.entry, function(filePath) {    
-            //文件列表        
-            fileList.map(item=>{              
+        // readDirRecur(param.entry, function(filePath) {    
+        //     //文件列表        
+        //     fileList.map(item=>{              
+        //         ismd(item,hashMsgObj,res=>{
+        //             //res md文件处理结果           
+        //             createdFile(param.output + res.mdName + '.vue', res.html, param)
+        //         })
+        //     })    
+        // });
+        nodeFilelist.read([param.entry],{"ext":"md"},res=>{    
+            let reslength = res.length;    
+            let routers = [];            
+            res.map((item,index)=>{   //数组化文件   
                 ismd(item,hashMsgObj,res=>{
                     //res md文件处理结果           
                     createdFile(param.output + res.mdName + '.vue', res.html, param)
                 })
-            })    
-        });
+            })     
+        })
     });
    
     

@@ -103,6 +103,7 @@
     "mocha": "5.2.0",
     "mocha-webpack": "2.0.0-beta.0",
     "moment": "2.22.2",
+    "node-filelist": "^1.0.0",
     "node-notifier": "5.2.1",
     "node-sass": "4.9.3",
     "nyc": "10.0.0",
