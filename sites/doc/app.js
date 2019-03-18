@@ -8,8 +8,8 @@ import backtop from './compents/backtop/backtop.js';
 import  './compents/backtop/backtop.css';
 backtop.install(Vue);
 import 'highlight.js/styles/github.css';
-
-
+import VueStickto from './compents/vue-stickto/VueStickto.js';
+Vue.use(VueStickto)
 import codes from 'qrcode';
 
 

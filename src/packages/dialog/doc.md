@@ -11,6 +11,19 @@ this.$dialog({
 });
 ```
 
+## ID
+
+同一个页面中，id相同的Dialog的DOM只会同时存在一个，不指定id时，id的默认值为**nut-dialog-default-id**。
+
+```javascript
+this.$dialog({
+  id:'my-dialog',
+  title: "确定删除此订单？",
+  content: "删除后将从你的记录里消失，无法找回"
+});
+```
+> 如果希望同时弹出多个Dialog，请给不同的Dialog设置不同的id。
+
 ## 事件
 ```javascript
 this.$dialog({
@@ -64,16 +77,24 @@ this.$dialog({
 });
 ```
 
-## 共享实例
+## 标签式写法
 
-如果给Dialog设置**id**(推荐)，则该Dialog再次弹出时依旧使用该实例，不再新建实例。如果多个Dialog的**id**相同，则共享一个实例。
+如果Dialog内容有复杂交互，可使用Dialog的标签式用法。
+
+```html
+<nut-dialog title="标签形式调用" :visible="dialogShow" @close="dialogShow=false">
+    <a href="javascript:;" @click="dialogShow=false" :noCancelBtn="true">点我可以直接关闭对话框</a>
+</nut-dialog>
+```
 
 ```javascript
-this.$dialog({
-  id:"myDialog",
-  title: "我的ID是myDialog",
-  content: "只会新建一个实例"
-});
+export default {
+  data() {
+    return {
+      dialogShow: false
+    };
+  }
+}
 ```
 
 ## API

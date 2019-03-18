@@ -42,7 +42,7 @@ $dark-color: #DADADA;
         {
             loader: 'sass-loader',
             options: {
-                data: `@import "./asset/css/custom.scss"; @import "@nutui/nutui/styles/variable.scss"; `,
+                data: `@import "./asset/css/custom.scss"; @import "@nutui/nutui/dist/styles/index.scss"; `,
             }
         }
     ]

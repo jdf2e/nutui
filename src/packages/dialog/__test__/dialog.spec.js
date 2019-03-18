@@ -8,7 +8,7 @@ describe('Dialog.vue', () => {
     });
 
     it('可见', () => {
-        wrapper.setData({ title: '测试标题', visible: true });
+        wrapper.setProps({ title: '测试标题', visible: true });
 
         return Vue.nextTick().then(function () {
             expect(wrapper.find('.nut-dialog-mask').isVisible()).toBe(true);
@@ -17,7 +17,7 @@ describe('Dialog.vue', () => {
     });
 
     it('隐藏', () => {
-        wrapper.setData({ title: '测试标题', visible: false });
+        wrapper.setProps({ title: '测试标题', visible: false });
 
         return Vue.nextTick().then(function () {
             expect(wrapper.find('.nut-dialog-box').isVisible()).toBe(false);
@@ -25,7 +25,7 @@ describe('Dialog.vue', () => {
     });
 
     it('内容文案展示', () => {
-        wrapper.setData({ content: '测试文案', visible:true });
+        wrapper.setProps({ content: '测试文案', visible:true });
 
         return Vue.nextTick().then(function () {
             expect(wrapper.find('.nut-dialog-content').exists()).toBe(true);
@@ -33,7 +33,7 @@ describe('Dialog.vue', () => {
     });
 
     it('标题文案展示', () => {
-        wrapper.setData({ title: '测试标题', visible: true });
+        wrapper.setProps({ title: '测试标题', visible: true });
 
         return Vue.nextTick().then(function () {
             expect(wrapper.find('.nut-dialog-title').exists()).toBe(true);
@@ -41,7 +41,7 @@ describe('Dialog.vue', () => {
     });
 
     it('隐藏底栏', () => {
-        wrapper.setData({ title: '测试标题', visible: true, noFooter:true });
+        wrapper.setProps({ title: '测试标题', visible: true, noFooter:true });
 
         return Vue.nextTick().then(function () {
             expect(wrapper.find('.nut-dialog-footer').exists()).toBe(false);
@@ -49,7 +49,7 @@ describe('Dialog.vue', () => {
     }); 
 
     it('隐藏确定键', () => {
-        wrapper.setData({ title: '测试标题', visible: true, noOkBtn: true });
+        wrapper.setProps({ title: '测试标题', visible: true, noOkBtn: true });
 
         return Vue.nextTick().then(function () {
             expect(wrapper.find('.nut-dialog-ok').exists()).toBe(false);
@@ -57,7 +57,7 @@ describe('Dialog.vue', () => {
     });
 
     it('图片弹窗', () => {
-        wrapper.setData({
+        wrapper.setProps({
             visible: true, 
             type: 'image', 
             link: "http://m.jd.com",

@@ -2,10 +2,20 @@
     <div :class="{'nut-stepper': !simple, 'nut-stepper-simple': simple}">
         <span 
             @click="reduce()" 
-            :class="{'nut-stepper-grey': num - step < min}"
+            :class="{'nut-stepper-grey': isGray}"
             v-html="require('../../assets/svg/minus.svg')">
         </span>
-        <input type="number" :value="num | maxv(min)" @input="numchange" :min="min" :max="max" :readonly="readonly" :style="{visibility:showNum? 'visible': 'hidden'}" />
+        <input 
+         type="number" 
+         :min="minNum" 
+         :max="max" 
+         :readonly="readonly" 
+         :value="num | maxv(minNum, max)" 
+         :style="{visibility:showNum? 'visible': 'hidden'}"
+         @input="numchange" 
+         @keyup="checknum"
+         @focus="focus"
+         @blur="blur" />
         <div 
             :class="['nut-stepper-fake', showAddAnim? 'nut-stepper-transition': 'nut-stepper-none-transition']"
             :style="{
@@ -74,7 +84,10 @@ export default {
     },
     data() {
         return {
+            tempNum: '',
+            focusing: false,
             num: this.value,
+            minNum: this.min,
             showNum: true,
             showAddAnim: false,
             showReduceAnim: false,
@@ -84,18 +97,71 @@ export default {
         }
     },
     filters: {
-        maxv(v, min) {
-            return Math.max(v, min);
+        maxv(v, min, max) {
+            let val = v;
+            if(val > max) val = max;
+            if(val < min) val = min;
+            return val;
+        }
+    },
+    watch: {
+        value(v, ov) {
+            if(v > this.max) v = this.max;
+            if(v < this.minNum) v = this.minNum;
+            this.num = v;
+            this.$emit('change', this.num);
+        }
+    },
+    computed: {
+        isGray() {
+            return (this.focusing? this.tempNum: this.num) - this.step < this.min;
         }
     },
     methods: {
-        numchange() {
-            this.$emit('input', this.num);
+        focus(e) {
+            if(this.readonly) return;
+            // clear val temporary when focus, e...s
+            const v = this.num;
+            this.tempNum = v;
+            this.minNum = '';
+            // this.num = '';
+            this.focusing = true;
+        },
+        blur(e) {
+            if(this.readonly) return;
+            let v = e.target.value;
+            this.minNum = this.min;
+            this.focusing = false;
+            if(v) {
+                if(v > this.max) v = this.max;
+                if(v < this.minNum) v = this.minNum;
+                this.num = v;
+            }else{
+                this.num = this.tempNum;
+            }
+        },
+        checknum(e) {
+            let v = e.target.value;
+            // this.minNum = this.min;
+            this.focusing = false;
+            if(v > this.max) v = this.max;
+            if(v < this.minNum) v = this.minNum;
+            e.target.value = v;
+            this.num = v;
+        },
+        numchange(e) {
+            let v = e.target.value;
+            
+            if(v > this.max) v = this.max;
+            if(v < this.minNum) v = this.minNum;
+            e.target.value = v;
+            this.num = v;
+            this.$emit('update:value', this.num);
             this.$emit('change', this.num);
         },
         add() {
             this.num = Number(this.num);
-            if(this.num <= this.max - this.step && this.max > this.min) {
+            if(this.num <= this.max - this.step && this.max > this.minNum) {
                 let [n1, n2] = this.num.toString().split('.');
                 let fixedLen = n2? n2.length: 0;
                 this.num = parseFloat((Number(n1) + Number(this.step)) + (n2? '.'+n2: '')).toFixed(fixedLen);
@@ -113,8 +179,8 @@ export default {
                     });
                 };
             }
-            this.$emit('add', this.num);
-            this.$emit('input', this.num); 
+            this.$emit('update:value', this.num);
+            this.$emit('add', this.num); 
             this.$emit('change', this.num); 
         },
         animEnd() {
@@ -122,7 +188,7 @@ export default {
             this.showNum = true;
         },
         reduce(){
-            if(this.num - this.step >= this.min) {
+            if(this.num - this.step >= this.minNum) {
                 let [n1, n2] = this.num.toString().split('.');
                 let fixedLen = n2? n2.length: 0;
                 this.num = parseFloat((Number(n1) - this.step) + (n2? '.'+n2: '')).toFixed(fixedLen);
@@ -140,8 +206,8 @@ export default {
                     }); 
                 }    
             }
+            this.$emit('update:value', this.num);
             this.$emit('reduce', this.num);
-            this.$emit('input', this.num);
             this.$emit('change', this.num);
         },
 

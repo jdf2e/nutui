@@ -5,13 +5,14 @@
     </div>
     <div class="md-swaper" @click="clearSearch" v-else>
       <div class="hder">
-        <div class="logo">
+         <div class="logo">
           <a href="#/index" class="logo-link">
             <img src="./asset/css/i/nut.png" alt>
           </a>
           <span class="version">v{{version}}</span>
         </div>
         <div class="h-nav">
+          
           <search/>
           <ul class="list">
             <li class="cur">
@@ -42,10 +43,10 @@
         </div>
       </div>
       <div class="demo-wrapper">
-        <router-view class="demo-nav"></router-view>
+        <router-view class="demo-nav fixed-box"></router-view>
         
         <keep-alive include="index">
-          <router-view class="doc-cont" :class="showPhone?'':'docpad'" name="main"></router-view>
+          <router-view class="doc-cont fl-right" :class="showPhone?'':'docpad'" name="main"></router-view>
         </keep-alive>
         <div v-if="showPhone" class="showPhone">
           <div class="ph">
@@ -81,22 +82,22 @@
 import "./asset/css/common.scss";
 import "./asset/css/style-blue.scss";
 import { packages } from "../../src/config.json";
-import { version } from "../../package.json";
 import search from "./search.vue";
-import leftNav from './info.vue'
+import leftNav from './info.vue';
+import { version } from "../../package.json";
 export default {
   name: "App",
   data() {
     return {
       packages,
+      version,
       searchList: [],
       searchVal: "",
       routerName: "",
       showPhone: false,
       searchCurName: "",
       searchIndex: 0,
-      codeurl: "",
-      version
+      codeurl: ""     
     };
   },
   watch: {
@@ -203,6 +204,16 @@ export default {
 };
 </script>
 <style lang="scss">
+.fixed-box{
+  position: fixed;
+  z-index: 9;  
+  height: 100%;
+  overflow:hidden;
+  overflow-y: auto;
+  top:0;  
+  background: #fff;
+  box-sizing: border-box;
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -218,12 +229,12 @@ export default {
   background: #fff;
   min-height: 100vh;
   min-width: 1000px;
-  padding: 115px 0 200px 0;
+  padding: 85px 0 200px 0;
   box-sizing: border-box;
   display: flex;
 }
 .hder {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   background: #ffffff;
@@ -233,13 +244,13 @@ export default {
   align-items: center;
   margin-bottom: 50px;
   z-index: 42;
-  .logo {
-    width: 295px;
-    height: 65px;
-    border-right: 1px solid #d8d8d8;
+    .logo {
+    width: 293px;
+    height: 65px;   
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    border-right: 1px solid #d8d8d8;
     .logo-link {
       display: inline-block;
     }
@@ -264,7 +275,7 @@ export default {
     display: flex;
     padding-left: 42px;
     align-items: center;
-    width: 100%;
+    width: 100%;   
     select {
       width: 74px;
       height: 28px;
@@ -432,6 +443,9 @@ export default {
       }
     }
   }
+  .fl-right{
+    margin-left: 320px;
+  }
 }
 .foot {
   height: 120px;
@@ -444,6 +458,8 @@ export default {
   position: absolute;
   bottom: 0;
   width: 100%;
+  padding-left: 300px;
+  box-sizing: border-box;
   a {
     color: #fff;
     text-decoration: none;

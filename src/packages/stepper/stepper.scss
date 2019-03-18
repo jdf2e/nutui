@@ -66,7 +66,8 @@
         align-items: center;
         justify-content: center;
         svg{
-            width: 11px;
+            width: $stepperbar-width;
+            fill: $stepperbar-color;
         }
     }
     input{
@@ -79,9 +80,12 @@
         box-sizing: border-box; 
         outline: none;
         font-family: initial;
+        color: $stepper-color;
     }
     .nut-stepper-grey{
         color: #ececee;
-        fill: #cecece;
+        svg{
+            fill: #cecece!important;
+        }
     }
 }

@@ -35,10 +35,16 @@ const install = function (Vue, opts = {}) {
     if(opts.locale) {
         Vue.config.lang = opts.locale;
     }
+    
     if(opts.lang) locale(Vue.config.lang, opts.lang);
 
     for (let cptName in methods) {
-        Vue.prototype['$' + cptName.toLowerCase()] = methods[cptName];
+        if (Array.isArray(methods[cptName])){
+            Vue.prototype['$' + cptName.toLowerCase()] = methods[cptName][0];
+            Vue.component(methods[cptName][1].name, methods[cptName][1]);
+        }else{
+            Vue.prototype['$' + cptName.toLowerCase()] = methods[cptName];
+        }
     }
 
     for (let cptName in components) {

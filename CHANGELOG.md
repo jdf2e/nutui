@@ -1,3 +1,12 @@
+## 2.0.5
+
+`2019-3-18`
+
+* :sparkles: `Dialog`组件新增支持标签形式用法
+* :bug: 修复`DatePicker`组件按需加载scss文件样式丢失的问题
+* :zap: 官网布局优化
+* :zap: 文档内容完善
+
 ## 2.0.4
 
 `2019-3-12`
@@ -5,6 +14,7 @@
 * :sparkles: 新增构建CommonJS包
 * :sparkles: 新增倒计时`CountDown`组件
 * :bug: 修复`Rate`组件样式兼容问题
+* :bug: 修复`ShortPassword`组件小屏设备样式兼容问题
 * :bug: 修复两个组件测试用例问题
 * :zap: 优化`Swiper`组件
 * :zap: 文档增加目录功能

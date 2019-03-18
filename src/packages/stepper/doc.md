@@ -6,7 +6,7 @@
 
 ```html
 <nut-stepper 
-    init="1"
+    :value.sync="val1"
 ></nut-stepper>
 ```
 
@@ -14,9 +14,9 @@
 
 ```html
 <nut-stepper 
-    init="100" 
-    min="1" 
-    max="100"
+    :value.sync="val2" 
+    :min="5" 
+    :max="100"
 ></nut-stepper>
 ```
 
@@ -24,8 +24,8 @@
 
 ```html
 <nut-stepper 
-    init="10"
-    step="5"
+    :value.sync="val3" 
+    :step="5"
 ></nut-stepper>
 ```
 
@@ -58,7 +58,7 @@
 
 | 字段 | 说明 | 类型 | 默认值 
 | ----- | ----- | ----- | ----- 
-| init | 初始值 | Number, String | 1
+| value | 初始值 | Number, String | 1
 | min | 最小值 | Number, String | 0
 | max | 最大值 | Number, String | Infinity
 | step | 步长 | Number, String | 1
