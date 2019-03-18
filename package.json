@@ -15,7 +15,7 @@
     "dev:demo": "cross-env NODE_ENV=development webpack-dev-server -d --open --progress --config build/webpack.demo.dev.conf.js",
     "build:demo": "cross-env NODE_ENV=production webpack --hide-modules --progress --config build/webpack.demo.build.conf.js",
     "dev:doc": "cross-env NODE_ENV=development webpack-dev-server -d --open -w --progress --config build/webpack.doc.dev.conf.js",
-    "dev:clear":"node scripts/clearcache.js",
+    "dev:clear": "node scripts/clearcache.js",
     "dev": "npm run dev:demo",
     "dev:carefree": "cross-env NODE_ENV=carefree carefree_env=dev webpack -w --colors --progress --config build/webpack.demo.dev.conf.js",
     "build:doc": "cross-env NODE_ENV=production webpack --hide-modules --progress --config build/webpack.doc.build.conf.js",
