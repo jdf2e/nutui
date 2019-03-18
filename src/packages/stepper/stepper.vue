@@ -124,7 +124,7 @@ export default {
             const v = this.num;
             this.tempNum = v;
             this.minNum = '';
-            this.num = '';
+            // this.num = '';
             this.focusing = true;
         },
         blur(e) {
@@ -142,7 +142,7 @@ export default {
         },
         checknum(e) {
             let v = e.target.value;
-            this.minNum = this.min;
+            // this.minNum = this.min;
             this.focusing = false;
             if(v > this.max) v = this.max;
             if(v < this.minNum) v = this.minNum;
