@@ -38,7 +38,7 @@ English | [简体中文](./README-zh_CN.md)
 
 ## Examples
 
-![NutUI Demo](https://img14.360buyimg.com/uba/jfs/t1/32118/11/559/2782/5c3d81ecEbda0c0f1/5f2b637d11817204.png)
+![NutUI Demo](https://img14.360buyimg.com/uba/s260x260_jfs/t1/32118/11/559/2782/5c3d81ecEbda0c0f1/5f2b637d11817204.png)
 
 ## Installation
 
