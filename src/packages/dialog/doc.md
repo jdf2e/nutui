@@ -13,7 +13,7 @@ this.$dialog({
 
 ## ID
 
-同一个页面中，id相同的Dialog的DOM只会同时存在一个，如果希望同时弹出多个Dialog，请给不同的Dialog设置不同的id。不指定id时，id的默认值为**nut-dialog-default-id**。
+同一个页面中，id相同的Dialog的DOM只会同时存在一个，不指定id时，id的默认值为**nut-dialog-default-id**。
 
 ```javascript
 this.$dialog({
@@ -22,6 +22,7 @@ this.$dialog({
   content: "删除后将从你的记录里消失，无法找回"
 });
 ```
+> 如果希望同时弹出多个Dialog，请给不同的Dialog设置不同的id。
 
 ## 事件
 ```javascript
