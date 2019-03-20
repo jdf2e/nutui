@@ -18,17 +18,20 @@ export default {
     },
     data() {
         return {
-            classObject:{
-                'nut-col-12':this.span == '12',
-                'nut-col-8':this.span == '8',
-                'nut-col-6':this.span == '6',
-                'nut-col-4':this.span == '4',
-                'nut-col-offset-12':this.offset == '12',
-                'nut-col-offset-8':this.offset == '8',
-                'nut-col-offset-6':this.offset == '6',
-                'nut-col-offset-4':this.offset == '4'
-            }
+            classObject:{}
         };
+    },
+    watch:{
+        span:{
+          handler(val){
+            if(val){
+                this.classObject = {
+                    ['nut-col-'+val]:this.span == val,
+                }
+            }
+          },
+          immediate: true
+        }
     },
     methods: {
     }

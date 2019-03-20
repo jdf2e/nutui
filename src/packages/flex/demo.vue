@@ -35,8 +35,8 @@
         <nut-col :span="6">
           <div class="flex-content">span:6</div>
         </nut-col>
-        <nut-col :span="6">
-          <div class="flex-content flex-content-light">span:6</div>
+        <nut-col :span="myValue">
+          <div class="flex-content flex-content-light">span:{{myValue}}</div>
         </nut-col>
       </nut-row>
     </div>
@@ -304,6 +304,16 @@
 
 <script>
 export default {
+  data() {
+      return {
+          myValue:4
+      };
+  },
+  methods:{
+    text(){
+      this.myValue++;
+    }
+  }
 };
 </script>
 
