@@ -25,9 +25,19 @@ export default {
         span:{
           handler(val){
             if(val){
-                this.classObject = {
+                this.classObject = Object.assign(this.classObject,{
                     ['nut-col-'+val]:this.span == val,
-                }
+                })
+            }
+          },
+          immediate: true
+        },
+        offset:{
+          handler(val){
+            if(val){
+                this.classObject = Object.assign(this.classObject,{
+                    ['nut-col-offset-'+val]:this.offset == val,
+                })
             }
           },
           immediate: true

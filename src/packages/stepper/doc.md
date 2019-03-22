@@ -65,3 +65,13 @@
 | readonly | 是否只读 | Boolean | false
 | transition | 是否需要过渡效果 | Boolean | true
 | simple | 是否显示简单版 | Boolean | true
+
+## Event
+
+| 字段 | 说明 | 回调参数
+|----- | ----- | -----
+| add | 点击加时触发事件 ｜ value
+| reduce | 点击减时触发事件 ｜ value
+| change | 值改变时触发事件 ｜ value
+| blur | 输入框失去焦点时触发事件 | value
+| focus | 输入框获取焦点时触发事件 | value

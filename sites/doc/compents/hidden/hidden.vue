@@ -9,20 +9,19 @@
         :class="{
             show:isShow,
             hide:isHide
-        }" 
-        :style="siteHeight" 
-        style="transition: all .2s;">
+        }"         
+        >
         <slot></slot>        
     </div>
     <div :title="titleMsg" v-if="heightSlot>400" class="bar" @click="showall">
             <svg  width="20" viewBox="0,0 20,10">
                 <path v-if="isShow" d="M 0,5 
                             L10,10 
-                            L 20,5" fill="#fff" stroke="#999">                    
+                            L 20,5" fill="none" stroke="#000">                    
                 </path>
                 <path v-if="!isShow" d="M 0,5 
                             L10,0 
-                            L 20,5" fill="#fff" stroke="#999">                    
+                            L 20,5" fill="none" stroke="#000">                    
                 </path>
             </svg>
         </div>
@@ -70,6 +69,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.eidt-box{
+    transition: all .5s;
+}
 .swap{
     position: relative;
    
@@ -82,9 +84,11 @@ export default {
 .show{   
     overflow:hidden;
     position: relative;
+     max-height: 400px;
 }
 .hide{    
     position: relative;
+    max-height: 2000px;
 }
 .bar{
     height: 30px;
