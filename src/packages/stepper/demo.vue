@@ -68,11 +68,11 @@ export default {
     }
   },
   methods: {
-    focus(v) {
-      // console.log('focus,', v)
+    focus(e, v) {
+      console.log('focus,', e, v)
     },
-    blur(v) {
-      // console.log('focus,', v)
+    blur(e, v) {
+      console.log('blur,', e, v)
     },
     add() {
       this.val1 = Number(this.val1) + 1;

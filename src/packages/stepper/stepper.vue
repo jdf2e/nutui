@@ -126,10 +126,10 @@ export default {
             this.minNum = '';
             // this.num = '';
             this.focusing = true;
-            this.$emit('focus', this.num);
+            this.$emit('focus', e, this.num);
         },
         blur(e) {
-            if(this.readonly) return this.$emit('focus', this.num);
+            if(this.readonly) return this.$emit('blur', e, this.num);
             let v = e.target.value;
             this.minNum = this.min;
             this.focusing = false;
@@ -140,7 +140,7 @@ export default {
             }else{
                 this.num = this.tempNum;
             }
-            this.$emit('focus', this.num);
+            this.$emit('blur', e, this.num);
         },
         checknum(e) {
             let v = e.target.value;
