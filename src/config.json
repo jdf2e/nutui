@@ -398,7 +398,7 @@
       "desc": "滚动组件",
       "type": "component",
       "sort": "1",
-      "showDemo": false,
+      "showDemo": true,
       "author": "iris"
     },
     {
@@ -420,6 +420,16 @@
       "sort": "0",
       "showDemo": true,
       "author": "famanoder"
+    },
+    {
+      "version": "1.0.0",
+      "name": "InfiniteLoading",
+      "chnName": "无限加载",
+      "desc": "无限加载",
+      "type": "component",
+      "sort": "1",
+      "showDemo": true,
+      "author": "iris"
     }
   ]
 }
