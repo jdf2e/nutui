@@ -4,10 +4,10 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper :value.sync="val1" :max="12"></nut-stepper>
+          <nut-stepper @focus="focus" :blur="blur" :value.sync="val1" :max="12"></nut-stepper>
         </span>
         <span slot="desc">
-          value: {{val1}} <button @click="reduce">-</button> <button @click="add">+</button> 
+          value: {{val1}} <button @click="reduce" class="demo-btn">-</button> <button @click="add" class="demo-btn">+</button> 
         </span>
       </nut-cell>
     </div>
@@ -68,6 +68,12 @@ export default {
     }
   },
   methods: {
+    focus(e, v) {
+      console.log('focus,', e, v)
+    },
+    blur(e, v) {
+      console.log('blur,', e, v)
+    },
     add() {
       this.val1 = Number(this.val1) + 1;
     },
@@ -79,4 +85,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.demo-btn{
+  border: 1px solid #ddd;
+  background: #eee;
+  border-radius: 4px;
+  outline: none;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: all .35s;
+  &:hover{
+    background: #ddd;
+  }
+}
 </style>

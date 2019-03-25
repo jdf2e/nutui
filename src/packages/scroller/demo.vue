@@ -6,44 +6,29 @@
         >此 Demo 在 PC 端浏览器与移动端浏览器体验差异较大，建议在 Android 或 iOS 设备上体验。</nut-noticebar>
         <h4>横向用法</h4>
         <div class="hor-panel">
-            <nut-scroller :list-data="listData"  
-                :is-un-more="isUnMore" 
-                :is-loading="isLoading"
-                @loadMore="loadMoreHor"
-                @jump="jump()"
-            >
+            <nut-scroller @jump="jump()">
                 <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData" :key="index">
-                    <div class="nut-scroller-item-img">
-                        <img src="" alt="" data-src="//m.360buyimg.com/babel/s452x452_jfs/t17869/89/1529579560/27020/8b71651a/5aced5aeN993e3538.jpg">
-                    </div>
                     <dl class="nut-scroller-item-info">
                         <dt>防水升级版 蓝 迷你小音</dt>
                         <dd>2018-02-25</dd>
                     </dl>
                 </div>
-                <slot slot="more"><div class="nut-hor-jump-more">释放查看更多</div></slot>
+                <slot slot="more"><div class="nut-hor-jump-more">查看更多</div></slot>
             </nut-scroller>
         </div>
         <h4>横向小于一屏</h4>
         <div class="hor-panel">
-            <nut-scroller :list-data="listData3"  
-                :is-un-more="isUnMore3" 
-                :is-loading="isLoading3"
-                @loadMore="loadMoreHor3"
-            >
+            <nut-scroller @jump="jump()">
                 <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData3" :key="index">
-                    <div class="nut-scroller-item-img">
-                        <img src="" alt="" data-src="//m.360buyimg.com/babel/s452x452_jfs/t17869/89/1529579560/27020/8b71651a/5aced5aeN993e3538.jpg">
-                    </div>
                     <dl class="nut-scroller-item-info">
                         <dt>防水升级版 蓝牙音箱 小音</dt>
                         <dd>2018-02-25</dd>
                     </dl>
                 </div>
-                <slot slot="more"><div class="nut-hor-jump-more">释放查看更多</div></slot>
+                <slot slot="more" ><div class="nut-hor-jump-more">查看更多</div></slot>
             </nut-scroller>
         </div>
-        <h4>竖向用法</h4>
+        <h4>纵向用法</h4>
         <div class="vert-panel">
             <nut-scroller
                 :is-un-more="isUnMore1" 
@@ -54,18 +39,15 @@
             > 
                 <div slot="list" class="nut-vert-list-panel">
                     <div class="nut-vert-list-item" v-for="(item, index) of listData1" :key="index">
-                        <div class="nut-scroller-item-img">
-                            <img src="" alt="" data-src="//m.360buyimg.com/babel/s452x452_jfs/t17869/89/1529579560/27020/8b71651a/5aced5aeN993e3538.jpg">
-                        </div>
                         <dl class="nut-scroller-item-info">
-                            <dt>防水升级版 蓝牙音箱 低音炮 IPX7设计 户外便携音响 迷你小音</dt>
+                            <dt>{{index}}防水升级版 蓝牙音箱 低音炮 IPX7设计 户外便携音响 迷你小音</dt>
                             <dd>2018-02-25</dd>
                         </dl>
                     </div>
                 </div>
             </nut-scroller>
         </div>
-        <h4>竖向不满一屏用法</h4>
+        <h4>纵向不满一屏用法</h4>
         <div class="vert-panel">
             <nut-scroller
                 :is-un-more="isUnMore2" 
@@ -76,11 +58,8 @@
             > 
                 <div slot="list" class="nut-vert-list-panel">
                     <div class="nut-vert-list-item" v-for="(item, index) of listData2" :key="index">
-                        <div class="nut-scroller-item-img">
-                            <img src="" alt="" data-src="" class="load-err">
-                        </div>
                         <dl class="nut-scroller-item-info">
-                            <dt>防水升级版 蓝牙音箱 低音炮 IPX7设计 户外便携音响 迷你小音</dt>
+                            <dt>{{index}}防水升级版 蓝牙音箱 低音炮 IPX7设计 户外便携音响 迷你小音</dt>
                             <dd>2018-02-25</dd>
                         </dl>
                     </div>
@@ -94,15 +73,11 @@
 export default {
     data() {
         return {
-            listData: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            listData1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            listData: new Array(20),
+            listData1: new Array(20),
             listData2: [1, 2],
             listData3: [1],
-            isUnMore: false,
-            isLoading: false,
-            maxPages: 3,
-            page: 2,
-            timers: null,
+            maxPages: 4,
             isUnMore1: false,
             isLoading1: false,
             page1: 2,
@@ -110,47 +85,12 @@ export default {
             isUnMore2: false,
             isLoading2: false,
             page2: 2,
-            isUnMore3: false,
-            isLoading3: false,
-            page3: 2
+            timers: null,
         };
     },
 
     methods: {
-        loadMoreHor() {
-            this.isLoading = true;
-            if (this.page > this.maxPages) {
-                this.isUnMore = true;
-                this.isLoading = false;
-            } else {
-                clearTimeout(this.timers);
-                this.timer = setTimeout(() => {
-                    this.page = ++this.page;
-                    this.listData = [...this.listData, ...[11, 12, 13, 14, 15, 16, 17, 18, 19, 20]];
-                    console.log(this.listData);
-                    this.isLoading = false;
-                }, 300);
-            }
-        },
-
-        loadMoreHor3() {
-            this.isLoading3 = true;
-            if (this.page3 > this.maxPages2) {
-                this.isUnMor3 = true;
-                this.isLoading3 = false;
-            } else {
-                clearTimeout(this.timers);
-                this.timer = setTimeout(() => {
-                    this.page3 = ++this.page3;
-                    this.listData3 = [...this.listData3, ...[11, 12, 13, 14, 15, 16, 17, 18, 19, 20]];
-                    console.log(this.listData3);
-                    this.isLoading3 = false;
-                }, 300);
-            }
-        },
-
         jump() {
-            console.log('跳转');
             location.href = 'http://www.jd.com';
         },
 
@@ -162,12 +102,11 @@ export default {
             } else {
                 clearTimeout(this.timers);
                 this.timer = setTimeout(() => {
-                    this.page1 = ++this.page1;
                     this.isLoading1 = false;
-                    this.listData1 = [...this.listData1, ...[11, 12, 13, 14, 15, 16, 17, 18, 19, 20]];
-                    console.log(this.listData1);
-                    
-                }, 2000);
+                    this.isUnMore1 = false;
+                    this.listData1 = new Array(20 * this.page1);
+                    this.page1 = ++this.page1;
+                }, 300);
             }
         },
 
@@ -175,12 +114,11 @@ export default {
             this.isLoading1 = true;
             clearTimeout(this.timers);
             this.timer = setTimeout(() => {
-                this.page1 = 2;
                 this.isLoading1 = false;
                 this.isUnMore1 = false;
-                this.listData1 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-                
-            }, 2000);
+                this.listData1 = new Array(20);
+                this.page1 = 2;
+            }, 300);
         },
 
 
@@ -192,11 +130,11 @@ export default {
             } else {
                 clearTimeout(this.timers);
                 this.timer = setTimeout(() => {
-                    this.page2 = ++this.page1;
                     this.isLoading2 = false;
-                    this.listData2 = [...this.listData1, ...[11, 12, 13, 14, 15, 16, 17, 18, 19, 20]];
-                    console.log(this.listData1);
-                }, 2000);
+                     this.isUnMore2 = false;
+                    this.listData2 = new Array(20 * this.page2);
+                    this.page2 = ++this.page1;
+                }, 300);
             }
         },
 
@@ -204,11 +142,11 @@ export default {
             this.isLoading2 = true;
             clearTimeout(this.timers);
             this.timer = setTimeout(() => {
-                this.page2 = 2;
                 this.isLoading2 = false;
                 this.isUnMore2 = false;
-                this.listData2 = [11, 12, 13, 14, 15, 16];
-            }, 2000);
+                this.listData2 = new Array(10);
+                this.page2 = 2;
+            }, 300);
         }
     },
     
@@ -221,7 +159,8 @@ export default {
 <style lang="scss" scoped>
 .hor-panel{
     height: 80px;
-    background-color: mix($primary-color, #FFF, 10%);
+    background-color: #e0e0e0;
+    display: flex;
 }
 .nut-hor-list{
     .nut-hor-list-item{
@@ -233,18 +172,22 @@ export default {
         height: 60px;
         padding: 10px;
         margin-left: 10px;
-        background-color: mix($primary-color, #FFF, 90%);
-        color: #FFF;
+        background-color: #FFF;
+        color: #000;
         line-height: 100px; 
     }
 }
 .nut-hor-jump-more{
+    display: flex;
+    align-items: center;
     height: 100%;
     width: 20px;
-    padding: 5px 10px;
+    padding: 0 5px;
+    margin-left: 10px;
     font-size: 12px;
     text-align: center;
     color: $primary-color;
+    background-color: #fff;
 }
 .nut-scroller-item-img{
     height: 58px;
@@ -271,7 +214,7 @@ dl, dt, dd{
 .vert-panel{
     height: 400px; 
     padding: 10px; 
-    background-color: mix($primary-color, #FFF, 10%);
+    background-color: #e1e1e1;
 }
 .nut-vert-list-panel{
     .nut-vert-list-item{
@@ -279,8 +222,12 @@ dl, dt, dd{
         height: 60px;
         padding: 10px;
         margin-bottom: 10px;
-        background-color: mix($primary-color, #FFF, 90%);
-        color: #FFF;
+        //background-color: mix($primary-color, #FFF, 90%);
+        background-color: #FFF;
+        color: #000;
     }
 }
 </style>
+
+
+ 
