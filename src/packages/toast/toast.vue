@@ -1,7 +1,7 @@
 <template>
   <transition name="toastfade">
     <div :id="id"
-      :class="['nut-toast',{'nut-toast-center':center},{'nut-toast-has-icon':type},{'nut-loading':type=='loading'},customClass,'nut-toast-'+size]"
+      :class="['nut-toast',{'nut-toast-center':center},{'nut-toast-has-icon':type},{'nut-toast-cover':cover},{'nut-loading':type=='loading'},customClass,'nut-toast-'+size]"
       v-show="visible"
       :style="{'bottom':center?'auto':bottom+'px'}"
     >
@@ -42,6 +42,7 @@ export default {
         bgColor: "rgba(46, 46, 46, 0.7)",
         onClose:null,
         textTimer: null,
+        cover:false,
         timeStamp:null
     };
   },

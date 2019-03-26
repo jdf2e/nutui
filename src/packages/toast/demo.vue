@@ -38,19 +38,19 @@
         <span slot="title">
           <label>Loading</label>
         </span>
-        <span slot="desc">默认不自动消失</span>
+        <span slot="desc">带文案+带透明遮罩（默认）+自动消失</span>
+      </nut-cell>
+      <nut-cell :showIcon="true" :isLink="true" @click.native="showLoading2()">
+        <span slot="title">
+          <label>Loading</label>
+        </span>
+        <span slot="desc">不自动消失+不带遮罩</span>
       </nut-cell>
       <nut-cell :showIcon="true" :isLink="true" @click.native="hideLoading()">
         <span slot="title">
           <label>隐藏Loading</label>
         </span>
         <span slot="desc">点击手动隐藏上面的Loading</span>
-      </nut-cell>
-      <nut-cell :showIcon="true" :isLink="true" @click.native="showLoading2()">
-        <span slot="title">
-          <label>Loading</label>
-        </span>
-        <span slot="desc">带文案+自动消失</span>
       </nut-cell>
     </div>
     <h4>自定义样式</h4>
@@ -118,15 +118,15 @@ export default {
       this.$toast.warn(msg);
     },
     showLoading() {
+      this.$toast.loading("加载中...", { duration: 3000 });
+    },
+    showLoading2() {
       if (this.loading) return;
-      this.loading = this.$toast.loading();
+      this.loading = this.$toast.loading("", { cover: false });
     },
     hideLoading() {
       this.loading && this.loading.hide();
       this.loading = null;
-    },
-    showLoading2() {
-      this.loading2 = this.$toast.loading("加载中...", { duration: 3000 });
     },
     cusBgToast(msg) {
       this.$toast.text(msg, { bgColor: "rgba(50, 50, 50, 0.6)" });

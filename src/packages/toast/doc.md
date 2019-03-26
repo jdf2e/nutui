@@ -64,15 +64,16 @@ export default {
 ## 加载提示
 
 ```javascript
-//Loading类型，默认不会自动消失
+//Loading类型，默认不会自动消失，带透明遮罩
 this.loading = this.$toast.loading();
 
 //手动关闭上面的Loading
 this.loading.hide();
 
-//带文字，自动消失
+//带文字，自动消失，不要遮罩
 this.$toast.loading('加载中...',{ 
-    duration:3000
+    duration:3000,
+    cover:false
 });
 ```
 
@@ -132,5 +133,6 @@ this.$toast.loading(msg,{icon:"data:image/svg+xml,%3Csvg fill="#FFFFFF" xmlns='h
 | option.customClass | 增加自定义class | String | ""
 | option.icon | 自定义图标，Data URI格式 | String | ""
 | option.size | 尺寸，small/base/large三选一 | String | "base"
+| option.cover | 透明遮罩，loading类型默认打开 | Boolean | loading类型true/其他false
 | option.loadingRotate | loading图标是否旋转，仅对loading类型生效 | Boolean | true
 | option.onClose | 关闭时触发的事件 | function | null

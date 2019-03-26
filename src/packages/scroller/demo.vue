@@ -4,7 +4,8 @@
             :closeMode="true"
             v-if="!isMobile"
         >此 Demo 在 PC 端浏览器与移动端浏览器体验差异较大，建议在 Android 或 iOS 设备上体验。</nut-noticebar>
-        <h4>横向使用</h4>
+        <h4>横向滑动</h4>
+        <p>支持惯性和吸边回弹，支持滑动到底跳转链接。</p>
         <div class="hor-panel">
             <nut-scroller @jump="jump()">
                 <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData" :key="index">
@@ -28,7 +29,7 @@
                 <slot slot="more" ><div class="nut-hor-jump-more">查看更多</div></slot>
             </nut-scroller>
         </div>
-        <h4>纵向使用</h4>
+        <h4>纵向滑动</h4>
         <p>支持下拉刷新、上拉加载更多。</p>
         <div class="vert-panel">
             <nut-scroller

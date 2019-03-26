@@ -31,6 +31,7 @@ function _getInstance(obj) {
         bgColor: "rgba(36, 36, 36, 0.8)",
         onClose:null,
         textTimer: null,
+        cover:false,  //透明遮罩层
         timeStamp:null
       };
   
@@ -97,6 +98,7 @@ let Toast = {
     obj.id = obj.id || 'loading';
     obj.msg = msg;
     obj.type = 'loading';
+    obj.cover = typeof(obj.cover)!=='undefined'?obj.cover:true; //loading类型默认打开遮罩层
     obj.duration = obj.duration || 0;
     return _getInstance(obj);
   }
