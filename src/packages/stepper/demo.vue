@@ -74,7 +74,8 @@ export default {
     blur(e, v) {
       console.log('blur,', e, v)
     },
-    add() {
+    add(v) {
+      console.log(v)
       this.val1 = Number(this.val1) + 1;
     },
     reduce() {

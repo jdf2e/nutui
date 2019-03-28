@@ -10,7 +10,7 @@
     // overflow: hidden;
     .nut-hor-list{
         height: 100%;
-        display: flex;
+        display: inline-flex;
         flex-direction: row;
         box-orient: horizontal;
         box-direction: normal;

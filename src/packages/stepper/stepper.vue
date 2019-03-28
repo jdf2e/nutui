@@ -180,10 +180,11 @@ export default {
                         this.animTranslate_add = 0;
                     });
                 };
+                this.$emit('update:value', this.num);
+                this.$emit('add', this.num); 
+                this.$emit('change', this.num); 
             }
-            this.$emit('update:value', this.num);
-            this.$emit('add', this.num); 
-            this.$emit('change', this.num); 
+            
         },
         animEnd() {
             // unbind
@@ -207,10 +208,11 @@ export default {
                         this.animTranslate_ = -100;
                     }); 
                 }    
+                this.$emit('update:value', this.num);
+                this.$emit('reduce', this.num);
+                this.$emit('change', this.num);
             }
-            this.$emit('update:value', this.num);
-            this.$emit('reduce', this.num);
-            this.$emit('change', this.num);
+            
         },
 
     }
