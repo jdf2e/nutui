@@ -1,7 +1,7 @@
 <template>
     <div class="nut-vert-scroll" ref="wrapper">
-        <div class="nut-vert-list" ref="list">
-            <div class="nut-vert-pulldown">
+        <div class="nut-vert-list" ref="list" :style="{'min-height': listMinHeightStyle}">
+            <div class="nut-vert-pulldown" v-if="isFirstPull">
                 <div class="nut-vert-pulldown-txt" v-if="!isLoading">{{pulldownTxt}}</div>
                 <div class="nut-vert-pulldown-status" v-else>
                     <span class="nut-vert-loading"></span>
@@ -9,15 +9,17 @@
                 </div>
             </div>
             <slot name="list"></slot>
-            <div class="nut-vert-loadmore" v-if="!isUnMore && isShowLoadMore">
-                <div class="nut-vert-load-txt" v-if="!isLoading">{{loadMoreTxt}}</div>
-                <div class="nut-vert-load-status" v-else>
-                    <span class="nut-vert-loading"></span>
-                    <span class="nut-vert-loading-txt">加载中...</span>
-                </div>
-            </div>
-            <div v-else-if="isUnMore" class="nut-vert-unloadmore" >
-                <div class="nut-vert-unloadmore-txt">{{unloadMoreTxt}}</div>
+            <div class="nut-vert-loadmore" >
+                <template v-if="!isUnMore && isShowLoadMore">
+                    <!-- <div class="nut-vert-load-txt" >{{loadMoreTxt}}</div> -->
+                    <div class="nut-vert-load-status" v-if="isLoading">
+                        <span class="nut-vert-loading"></span>
+                        <span class="nut-vert-loading-txt">加载中...</span>
+                    </div>
+                </template>
+                <template v-else-if="isUnMore">
+                    <div class="nut-vert-unloadmore-txt">{{unloadMoreTxt}}</div>
+                </template>
             </div>
         </div>
     </div>
@@ -28,7 +30,7 @@ export default {
     props: {
         stretch: {
             type: Number,
-            default: 50
+            default: 100
         },
         isUnMore: {
             type: Boolean,
@@ -50,10 +52,10 @@ export default {
             type: String,
             default: '没有更多了'
         },
-        isLazyLoadImg: {
-            type: Boolean,
-            default: false
-        }
+        threshold: {
+            type: Number,
+            default: 100
+        },
     },
     watch: {
         'isLoading': function(status) {
@@ -79,7 +81,9 @@ export default {
             timer: null,
             timerEmit: null,
             realMove: 0,
-            isShowLoadMore: false
+            isShowLoadMore: false,
+            listMinHeightStyle: 'auto',
+            isFirstPull: true
         }
     },
 
@@ -87,10 +91,13 @@ export default {
         isShow() {
             let wrapH = this.$refs.wrapper.offsetHeight;
             let listH = this.$refs.list.offsetHeight;
-            if (wrapH <= listH) {
+            if (wrapH < listH) {
                 this.isShowLoadMore = true;
+                this.listMinHeightStyle = 'auto'
             } else {
                 this.isShowLoadMore = false;
+                this.isFirstPull = true;
+                this.listMinHeightStyle = `${wrapH}px`;
             }
         },
 
@@ -110,26 +117,29 @@ export default {
             let maxMove = -this.$refs.list.offsetHeight + h;
             if (type === 'end') {
                 if (updateMove > 0) {
-                    updateMove = 50;
-                    this.realMove = 0;
-                    if (!this.isLoading) {
-                        clearTimeout(this.timerEmit);
-                        this.timerEmit = setTimeout(() => {
-                            this.$emit('pulldown');
-                        }, time / 2);
-                    }
-                } else if (updateMove < maxMove) {
-                    if (maxMove <= 0) {
-                        updateMove = maxMove;
+                    if (!this.isShowLoadMore || this.isFirstPull) {
+                        updateMove = 50;
+                        this.realMove = 0;
+                        if (!this.isLoading) {
+                            clearTimeout(this.timerEmit);
+                            this.timerEmit = setTimeout(() => {
+                                this.$emit('pulldown');
+                            }, time / 2);
+                        }
                     } else {
+                        this.isFirstPull = true;
                         updateMove = 0;
+                    }
+                } else if (updateMove < maxMove + this.threshold) {
+                    if (updateMove < maxMove) {
+                        updateMove = maxMove;
                     }
                     this.realMove = maxMove;
                     if (!this.isLoading && !this.isUnMore) {
-                        clearTimeout(this.timerEmit);
-                        this.timerEmit = setTimeout(() => {
+                        //clearTimeout(this.timerEmit);
+                        //this.timerEmit = setTimeout(() => {
                             this.$emit('loadMore');
-                        }, time / 2);
+                        // }, time / 2);
                     }
                 }
                 if (updateMove == 50 && !this.isLoading) {
@@ -140,11 +150,11 @@ export default {
                 }
                 this.setTransform(updateMove, type, time)
             } else {
-                // if (updateMove > 0 && updateMove > this.stretch) {
-                //     updateMove = this.stretc;
-                // } else if (updateMove < maxMove - this.stretch) {
-                //     updateMove = maxMove - this.stretch;
-                // }
+                if (updateMove > 0 && updateMove > this.stretch) {
+                    updateMove = this.stretch;
+                } else if (updateMove < maxMove - this.stretch) {
+                    updateMove = maxMove - this.stretch;
+                }
                 this.setTransform(updateMove, null, null);
             }
         },
@@ -164,7 +174,9 @@ export default {
             this.touchParams.lastY = changedTouches.pageY;
             this.touchParams.lastTime = event.timestamp || Date.now();
             let move = this.touchParams.lastY - this.touchParams.startY;
-
+            if (move < 0 && this.isShowLoadMore && this.isFirstPull) {
+                this.isFirstPull = false;
+            }
             this.setMove(move);
         },
 

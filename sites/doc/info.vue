@@ -228,6 +228,7 @@ dd {
     }
   }
   .l-c-i {
+    cursor: pointer;
     position: relative;
     span {
       padding: 0 0 0 35px;

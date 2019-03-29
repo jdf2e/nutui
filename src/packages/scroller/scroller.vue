@@ -5,23 +5,22 @@
                 :stretch="stretch"
                 :is-un-more="isUnMore"
                 :is-loading="isLoading"
+                :threshold="threshold"
+                :pulldown-txt="pulldownTxt"
+                :load-more-txt="loadMoreTxt"
+                :unload-more-txt="unloadMoreTxt"
                 @loadMore="loadMore"
                 @pulldown="pulldown"
             >
                 <slot name="list"  slot="list"></slot>
+
             </nut-vert-scroll>
         </template>
         <template v-else-if="type === 'horizontal'">
-            <nut-hor-scroll :list-data="listData"
-                :line-spacing="lineSpacing"
-                :stretch="stretch"
-                :is-un-more="isUnMore"
-                :is-loading="isLoading"
-                @loadMore="loadMore"
-                @jump="jump"
-            >
+            <nut-hor-scroll :stretch="stretch" @jump="jump">
                 <slot name="list"  slot="list"></slot>
                 <slot name="more"  slot="more"></slot>
+                <slot name="arrow" slot="arrow"></slot>
             </nut-hor-scroll>
         </template>
     </div>
@@ -34,19 +33,11 @@ export default {
     props: {
         type: {
             type: String,
-            default: 'horizontal' // horizontal vertical
-        },
-        listData: {
-            type: Array,
-            default: () => []
-        },
-        lineSpacing: {
-            type: Number,
-            default: 210
+            default: 'horizontal' 
         },
         stretch: {
             type: Number,
-            default: 200
+            default: 100
         },
         isUnMore: {
             type: Boolean,
@@ -55,6 +46,22 @@ export default {
         isLoading: {
             type: Boolean,
             default: false
+        },
+        threshold: {
+            type: Number,
+            default: 100
+        },
+        pulldownTxt: {
+            type: String,
+            default: '下拉刷新'
+        },
+        loadMoreTxt: {
+            type: String,
+            default: '上拉加载'
+        },
+        unloadMoreTxt: {
+            type: String,
+            default: '没有更多了'
         }
     },
     data() {

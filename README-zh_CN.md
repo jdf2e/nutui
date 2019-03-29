@@ -46,7 +46,7 @@
 
 https://nutui.jd.com
 
-文档：[2.X](https://nutui.jd.com/default.html#/start) | [1.X](https://nutui.jd.com/1x/index.html#/intro)
+文档：[2.x](https://nutui.jd.com/default.html#/start) | [1.x](https://nutui.jd.com/1x/index.html#/intro)
 
 ## 链接
 * [意见反馈](https://github.com/jdf2e/nutui/issues)

@@ -57,7 +57,7 @@ $dark-color: #DADADA;
 
 ```javascript
 import NutUI from '@nutui/nutui';
-import '@nutui/nutui/nutui.scss';
+import '@nutui/nutui/dist/nutui.scss';
 ```
 
 2.未使用插件，手动按需引用组件时，需手动引入组件对应的 SCSS 文件。

@@ -31,6 +31,9 @@
     height: 252px;
     overflow: hidden;
     text-align: center;
+    .nut-picker-list-panel{
+        transform-style: preserve-3d;
+    }
     .nut-picker-mask{
         position: absolute;
         top: 0;

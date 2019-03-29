@@ -16,7 +16,7 @@
             </transition-group>
             <div class="add-icon" :style="{'width':width + 'px','height':height + 'px'}" v-show="this.list.length < this.max">
                 <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g fill-rule="evenodd"><rect y="6" width="16" height="4" rx="2"></rect><rect transform="rotate(90 8 8)" y="6" width="16" height="4" rx="2"></rect></g></svg></i>
-                <input type="file" name="files" :multiple="!ismultiple ? 'multiple' : ''" :accept="accept"  @change="addImg" />
+                <input type="file" name="files" :multiple="ismultiple ? 'multiple' : ''" :accept="accept"  @change="addImg" />
             </div>
         </div>
     </div>

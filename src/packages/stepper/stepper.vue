@@ -126,9 +126,10 @@ export default {
             this.minNum = '';
             // this.num = '';
             this.focusing = true;
+            this.$emit('focus', e, this.num);
         },
         blur(e) {
-            if(this.readonly) return;
+            if(this.readonly) return this.$emit('blur', e, this.num);
             let v = e.target.value;
             this.minNum = this.min;
             this.focusing = false;
@@ -139,6 +140,7 @@ export default {
             }else{
                 this.num = this.tempNum;
             }
+            this.$emit('blur', e, this.num);
         },
         checknum(e) {
             let v = e.target.value;
@@ -178,10 +180,11 @@ export default {
                         this.animTranslate_add = 0;
                     });
                 };
+                this.$emit('update:value', this.num);
+                this.$emit('add', this.num); 
+                this.$emit('change', this.num); 
             }
-            this.$emit('update:value', this.num);
-            this.$emit('add', this.num); 
-            this.$emit('change', this.num); 
+            
         },
         animEnd() {
             // unbind
@@ -205,10 +208,11 @@ export default {
                         this.animTranslate_ = -100;
                     }); 
                 }    
+                this.$emit('update:value', this.num);
+                this.$emit('reduce', this.num);
+                this.$emit('change', this.num);
             }
-            this.$emit('update:value', this.num);
-            this.$emit('reduce', this.num);
-            this.$emit('change', this.num);
+            
         },
 
     }

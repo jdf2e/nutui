@@ -18,6 +18,13 @@
             font-size: $font-size-large;
         }
     }
+    &.nut-toast-cover {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+        height: 100%;
+    }
     .nut-toast-inner {
         position: relative;
         display: inline-block;

@@ -93,6 +93,13 @@ NutUI.install(Vue);
 
 > 注意：这种方式将会导入所有组件
 
+> 服务端渲染请引入NutUI的 **commonjs** 版本 **nutui.common.js**
+
+```javascript
+//服务端渲染使用NutUI的commonjs版本
+import NutUI from '@nutui/nutui/dist/nutui.common.js';
+```
+
 ## 按需加载
 
 以下两种方式都可以实现只加载用到的组件，从而减少加载的文件体积。

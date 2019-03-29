@@ -170,7 +170,7 @@
 | next | 去下一页 | -
 | prev | 去上一页 | -
 | setPage |  设置当前显示第几页 | number
-| updateEvent | 异步数据渲染slide，都需要重新调用方法，绑定事件，如【横向无缝滑动】this.$ref.demo1.update(1)。也提供设置初始页面 | number
+| updateEvent | 异步数据渲染slide，都需要重新调用方法，绑定事件，如【横向无缝滑动】this.$refs.demo1.update(1)。也提供设置初始页面 | number
 
 ## Events
 | 字段 | 说明 | 回调参数 

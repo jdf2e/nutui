@@ -1,3 +1,16 @@
+## 2.0.9
+
+`2019-3-29`
+
+* :sparkles: feat: 新增局部滚动组件`Scroller`
+* :sparkles: feat: 新增无限加载组件`InfiniteLoading`
+* :sparkles: upd: 吐司组件`Toast`支持配置遮罩层，loading类型默认开启
+* :sparkles: upd: `flex`组件允许动态改变nut-col的:span的值 
+* :bug: fix: 修复`RadioGroup`组件按需加载css报错的问题（感谢@451761830反馈）
+* :bug: fix: 修复引用scss报错的问题
+* :bug: fix: 修复`Imagepicker`组件multiple属性逻辑错误问题（感谢@liuyanqing反馈）
+* :zap: doc: 文档内容完善
+
 ## 2.0.8
 
 `2019-3-19`
