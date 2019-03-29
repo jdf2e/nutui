@@ -10,7 +10,6 @@ import root from '../root.js';
                 let id  = res.target.id;
                 let index =id.replace(/head/,'');                
                 let li = document.querySelector('.level'+index);
-                console.log(li,index)
                 if(li){
                   
                 }

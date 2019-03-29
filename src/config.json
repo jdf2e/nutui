@@ -397,7 +397,8 @@
       "chnName": "滚动",
       "desc": "滚动组件",
       "type": "component",
-      "sort": "1",
+      "sort": "0",
+      "star": 5,
       "showDemo": true,
       "author": "iris"
     },
@@ -427,7 +428,8 @@
       "chnName": "无限加载",
       "desc": "无限加载",
       "type": "component",
-      "sort": "1",
+      "sort": "0",
+      "star": 4,
       "showDemo": true,
       "author": "iris"
     }

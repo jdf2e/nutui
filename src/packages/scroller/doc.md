@@ -45,7 +45,7 @@
     <div slot="list" class="nut-vert-list-panel">
         <div class="nut-vert-list-item" v-for="(item, index) of listData1" :key="index">
             <dl class="nut-scroller-item-info">
-                <dt>{{index}}防水升级版 蓝牙音箱 低音炮 IPX7设计 户外便携音响 迷你小音</dt>
+                <dt>防水升级版 蓝牙音箱 低音炮 IPX7设计 户外便携音响 迷你小音</dt>
                 <dd>2018-02-25</dd>
             </dl>
         </div>
@@ -66,7 +66,7 @@
     <div slot="list" class="nut-vert-list-panel">
         <div class="nut-vert-list-item" v-for="(item, index) of listData2" :key="index">
             <dl class="nut-scroller-item-info">
-                <dt>{{index}}防水升级版 蓝牙音箱 低音炮 IPX7设计 户外便携音响 迷你小音</dt>
+                <dt>防水升级版 蓝牙音箱 低音炮 IPX7设计 户外便携音响 迷你小音</dt>
                 <dd>2018-02-25</dd>
             </dl>
         </div>
