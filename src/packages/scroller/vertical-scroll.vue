@@ -117,20 +117,18 @@ export default {
             let maxMove = -this.$refs.list.offsetHeight + h;
             if (type === 'end') {
                 if (updateMove > 0) {
-                    if (!this.isShowLoadMore || this.isFirstPull) {
+                    this.realMove = 0;
+                    if ((!this.isShowLoadMore || this.isFirstPull ) && !this.isLoading && updateMove > 20) {
                         updateMove = 50;
-                        this.realMove = 0;
-                        if (!this.isLoading) {
-                            clearTimeout(this.timerEmit);
-                            this.timerEmit = setTimeout(() => {
-                                this.$emit('pulldown');
-                            }, time / 2);
-                        }
+                        clearTimeout(this.timerEmit);
+                        this.timerEmit = setTimeout(() => {
+                            this.$emit('pulldown');
+                        }, time / 2);
                     } else {
                         this.isFirstPull = true;
                         updateMove = 0;
                     }
-                } else if (updateMove < maxMove + this.threshold) {
+                } else if (updateMove < 0 && updateMove < maxMove + this.threshold) {
                     if (updateMove < maxMove) {
                         updateMove = maxMove;
                     }

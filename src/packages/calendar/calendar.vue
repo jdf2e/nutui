@@ -148,6 +148,7 @@ export default {
         },
         
         getMonth(curData, type) {
+            
             let preMonthDays = Utils.getMonthPreDay(curData[0], curData[1]);
             let currMonthDays = Utils.getMonthDays(curData[0], curData[1]);
             let nextMonthDays = 42 - preMonthDays - currMonthDays;
@@ -158,7 +159,7 @@ export default {
                 monthData: [...this.getDaysStatus(preMonthDays, 'prev'), ...this.getDaysStatus(currMonthDays, 'curr')]
             };
             if (type == 'next') {
-                if (!this.endData || Utils.compareDate(`${curData[0]}-${curData[1]}-${curData[2]}`, `${this.endData[0]}-${this.endData[1]}-31`)) {
+                if (!this.endData || !Utils.compareDate(`${this.endData[0]}-${this.endData[1]}-${Utils.getMonthDays(this.endData[0], this.endData[1])}`, `${curData[0]}-${curData[1]}-${curData[2]}`)) {
                     this.monthsData.push(monthInfo);
                 } else {
                     this.unLoadNext = true;
