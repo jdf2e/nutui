@@ -2,6 +2,7 @@
 .nut-scroller{
     display: flex;
     height: 100%;
+    overflow: hidden;
 }
 // 横向滚动 
 .nut-hor-scroll{
@@ -10,6 +11,7 @@
     // overflow: hidden;
     .nut-hor-list{
         height: 100%;
+        touch-action: none;
         display: inline-flex;
         flex-direction: row;
         box-orient: horizontal;
@@ -26,6 +28,7 @@
     overflow: hidden;
     .nut-vert-list{
         width: 100%;
+        touch-action: none;
         position: relative;
     }
     .nut-vert-pulldown{
