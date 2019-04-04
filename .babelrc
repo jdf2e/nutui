@@ -3,7 +3,7 @@
     [
       "@babel/preset-env",
       {
-        "modules": "commonjs",
+        "modules": false,
         "targets": {
           "browsers": [
             "Android >= 4",

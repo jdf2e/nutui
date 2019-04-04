@@ -1,5 +1,3 @@
-
-
 const path = require('path');
 const baseConf = require('./webpack.demo.base.conf.js');
 const merge = require('webpack-merge');

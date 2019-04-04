@@ -1,5 +1,7 @@
+import packages from './packages.js';
+
 import { version } from '../package.json';
-import { packages } from './config.json';
+import { packages as pkgList } from './config.json';
 import { locale } from './locales';
 
 const components = {};
@@ -7,14 +9,12 @@ const methods = {};
 const filters = {};
 const directives = {};
 
-packages.map(item => {
-    const cptName = item.name.toLowerCase();
-    const pkg = require('./packages/' + cptName + '/index.js').default;
-    require('./packages/' + cptName + '/' + cptName + '.scss');
+pkgList.map(item => {
+    const pkg = packages[item.name];
     if (!pkg) return;
     if (item.type == 'component') {
         if (pkg.name) {
-            components[item.name] = pkg;
+            components[pkg.name] = pkg;
         } else {
             for (let n in pkg) {
                 components[n] = pkg[n];

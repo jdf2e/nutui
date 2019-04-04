@@ -11,12 +11,6 @@ let newCpt = {
     version: '1.0.0'
 };
 
-let rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-
 function init() {
     inquirer.prompt([
         {
@@ -187,7 +181,7 @@ function createDir() {
     }
     copy(path.join(__dirname, './__template__/**.*'), destPath, function (err, file) {
         if (err) {
-            console.log('创建文件夹出错！');
+            console.log('拷贝__template__目录失败！');
         }
         createNew();
     });

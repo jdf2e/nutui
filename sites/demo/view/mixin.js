@@ -1,6 +1,4 @@
-<script>
-import Vue from "vue";
-Vue.mixin({
+export default {
   data() {
     return {
       isMobile: false,
@@ -20,5 +18,4 @@ Vue.mixin({
   mounted() {
     this.isMobile = this.checkIsMob();
   }
-});
-</script>
+};
