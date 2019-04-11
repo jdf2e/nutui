@@ -34,6 +34,7 @@ module.exports = merge(webpackBaseConf, {
         filename: 'nutui.min.js',
         library: 'nutui',
         libraryTarget: 'umd',
+        globalObject: 'this',
         umdNamedDefine: true
     },
     plugins: [

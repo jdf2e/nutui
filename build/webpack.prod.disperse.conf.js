@@ -53,6 +53,7 @@ module.exports = merge(webpackBaseConf, {
         filename: '[name]/[name].js',
         library: '[name]',
         libraryTarget: 'umd',
+        globalObject: 'this',
         umdNamedDefine: true
     },
     externals: {
@@ -76,7 +77,8 @@ module.exports = merge(webpackBaseConf, {
         ]),
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: '"production"'
+                NODE_ENV: '"production"',
+                PROD_TYPE: '"disp"'
             }
         })
     ],

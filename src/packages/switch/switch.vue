@@ -1,7 +1,11 @@
 <template>
-    <div class="nut-switch" :class="[{'nut-switch-active':isActive},'nut-switch-'+size,{'nut-switch-disabled':disabled}]" @click="toggle">
-      <div class="nut-switch-btn"></div>
-    </div>
+  <div
+    class="nut-switch"
+    :class="[{'nut-switch-active':isActive},'nut-switch-'+size,{'nut-switch-disabled':disabled}]"
+    @click="toggle"
+  >
+    <div class="nut-switch-btn"></div>
+  </div>
 </template>
 <script>
 export default {
@@ -13,11 +17,11 @@ export default {
     },
     size: {
       type: String,
-      default: 'base'
+      default: "base"
     },
-    disabled:{
-      type:Boolean,
-      default:false
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -36,12 +40,12 @@ export default {
   methods: {
     toggle() {
       const status = this.isActive;
-      if(!this.disabled){
-          this.isActive = !status;
+      if (!this.disabled) {
+        this.isActive = !status;
       }
-      
+
       setTimeout(() => {
-        this.$emit('change',this.isActive);
+        this.$emit("change", this.isActive);
         this.$emit("update:active", this.isActive);
       }, 300);
     }
