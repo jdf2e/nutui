@@ -105,7 +105,7 @@ NutUI.install(Vue);
 npm i @nutui/babel-plugin-separate-import -D
 ```
 
-然后配置一下 **.babelrc** 文件
+然后配置一下babel的配置文件
 
 ```bash
 {

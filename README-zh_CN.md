@@ -51,6 +51,7 @@ https://nutui.jd.com
 ## 链接
 * [意见反馈](https://github.com/jdf2e/nutui/issues)
 * [更新日志](https://github.com/jdf2e/nutui/releases)
+* [案例征集](https://github.com/jdf2e/nutui/issues/16)
 * [按需加载插件](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)
 * [模板工程命令行工具(Gaea-cli)](https://github.com/jdf2e/Gaea4)
 * 联系我们：nutui@jd.com

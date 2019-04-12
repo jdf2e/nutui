@@ -52,6 +52,7 @@ NutUI是一套京东风格的移动端Vue组件库，开发和服务于移动Web
 * [Webpack](http://webpack.github.io/)
 * [意见反馈](https://github.com/jdf2e/nutui/issues)
 * [更新日志](https://github.com/jdf2e/nutui/releases)
+* [案例征集](https://github.com/jdf2e/nutui/issues/16)
 * [模板工程命令行工具(Gaea CLI)](https://www.npmjs.com/package/gaea-cli)
 * 联系我们：nutui@jd.com
 
