@@ -2,7 +2,6 @@ import { version } from '../package.json';
 import { packages as pkgList } from './config.json';
 import { locale } from './locales';
 
-
 import Cell from './packages/cell/index.js';
 import './packages/cell/cell.scss';
 import Dialog from './packages/dialog/index.js';

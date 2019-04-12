@@ -1,9 +1,9 @@
 const conf = require('../src/config.json');
-const readline = require('readline');
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
 const copy = require('copy');
+const createPkgDeclare = require('./createPkgDeclare');
 
 let sorts = [...conf.sorts];
 
@@ -110,7 +110,7 @@ Vue.${newCpt.type}(${newCpt.name}.name, ${newCpt.name});
 
 export default ${newCpt.name}`;
 
-        const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`);
+        const dirPath = path.join(__dirname, `../src/packages/${nameLc}`);
         const filePath = path.join(dirPath, `index.js`);
         if (!fs.existsSync(dirPath)) {
             fs.mkdirSync(dirPath);
@@ -143,7 +143,7 @@ export default {
     }
 }
 </script>`;
-        const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`);
+        const dirPath = path.join(__dirname, `../src/packages/${nameLc}`);
         const filePath = path.join(dirPath, `${nameLc}.vue`);
         if (!fs.existsSync(dirPath)) {
             fs.mkdirSync(dirPath);
@@ -161,7 +161,7 @@ function createScss() {
         let content = `.nut-${nameLc}{
 
 }`;
-        const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`);
+        const dirPath = path.join(__dirname, `../src/packages/${nameLc}`);
         const filePath = path.join(dirPath, `${nameLc}.scss`);
         if (!fs.existsSync(dirPath)) {
             fs.mkdirSync(dirPath);
@@ -175,7 +175,7 @@ function createScss() {
 
 function createDir() {
     const nameLc = newCpt.name.toLowerCase();
-    const destPath = path.join(__dirname, '../src/packages/' + nameLc + '/');
+    const destPath = path.join(__dirname, '../src/packages/' + nameLc);
     if (!fs.existsSync(destPath)) {
         fs.mkdirSync(destPath);
     }
@@ -211,6 +211,7 @@ function createNew() {
     }).then(() => {
         return addToPackageJson();
     }).then(() => {
+        createPkgDeclare(newCpt.name);
         console.log('组件模板生成完毕，请开始你的表演~');
         process.exit();
     });
