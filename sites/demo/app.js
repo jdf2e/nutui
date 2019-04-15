@@ -3,7 +3,7 @@ import "core-js/modules/es6.array.iterator";
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
-import './view/mixin.vue';
+import mixin from './view/mixin.js';
 import Conf from '../../src/config.json';
 import NutUI from '../../src/nutui';
 // import en from '../../src/locales/lang/en-US';
@@ -48,6 +48,8 @@ NutUI.install(Vue);
 // });
 // Vue.prototype.$i18n = i18n;
 // Vue.use(VueI18n);
+
+Vue.mixin(mixin);
 
 const app = new Vue({
   el: '#demo',

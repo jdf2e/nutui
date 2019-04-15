@@ -1,6 +1,6 @@
 import hide from './compents/hidden/hidden.vue';
 import vb from './asset/js/isVisibiliy.js';
-var myMixin ={
+const myMixin ={
     data(){
         return {
           content:'',
@@ -64,4 +64,5 @@ var myMixin ={
     });
   }
 }
-module.exports = myMixin;
+
+export default myMixin;

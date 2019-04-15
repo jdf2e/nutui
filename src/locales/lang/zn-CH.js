@@ -3,10 +3,8 @@ import Vue from 'vue'
 
 const lang = {
     lang: {
-        dialog: {
-            okBtnTxt: '确 定',
-            cancelBtnTxt: '取 消'
-        },
+        okBtnTxt: '确 定',
+        cancelBtnTxt: '取 消',
         calendar: {
             loadPrevMonth: '加载上一个月',
             noMoreMonth: '没有更早月份~',
@@ -31,8 +29,11 @@ const lang = {
             step: '步骤',
             stepDesc: '步骤描述'
         },
-        okBtnTxt: '确定',
-        cancelText: '取消'
+        uploader:{
+            xmlError:'对不起，您的浏览器不支持本组件！',
+            typeError: '不支持上传该类型文件',
+            limitError: '文件大小超过限制'
+        }
     }
 }
 

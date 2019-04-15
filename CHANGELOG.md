@@ -1,3 +1,18 @@
+## 2.1.0
+
+`2019-4-15`
+
+* :sparkles: feat: 新增上传组件`Uploader`
+* :sparkles: feat: 服务端渲染新增支持按需加载
+* :sparkles: chore: UMD包支持commonjs规范，服务端渲染不再需要引commonjs版的构建包了
+* :sparkles: chore: 大幅削减完整版构建包体积
+* :sparkles: chore: 自动创建新组件配置和模板功能优化
+* :sparkles: test: 单元测试功能优化
+* :sparkles: upd: `Scroller`组件优化
+* :sparkles: upd: `Picker`组件优化 
+* :bug: fix: 修复`Dialog`组件取消按钮触发事件错误的问题
+* :zap: doc: 文档内容修改完善
+
 ## 2.0.9
 
 `2019-3-29`

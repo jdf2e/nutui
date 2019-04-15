@@ -51,6 +51,7 @@ Documents：[2.X](https://nutui.jd.com/default.html#/start) | [1.X](https://nutu
 ## Links
 * [Feedback](https://github.com/jdf2e/nutui/issues)
 * [Change Logs](https://github.com/jdf2e/nutui/releases)
+* [Case collection](https://github.com/jdf2e/nutui/issues/16)
 * [On-demand plugins](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)
 * [Template project command line tool(Gaea-cli)](https://github.com/jdf2e/Gaea4)
 * Contact us：nutui@jd.com

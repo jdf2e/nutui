@@ -19,15 +19,7 @@ module.exports = {
     },
     module: {
         rules: [
-            test ? {
-                test: /\.(js|ts)/,
-                include: path.resolve('src'), // instrument only testing sources with Istanbul, after ts-loader runs
-                loader: 'istanbul-instrumenter-loader'
-            }: {},
-            test ? { test: /\.css$/, use: [{loader: 'style!css'}] } : {},
-            test ? { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' } : {},
-            test ? { test: /\.scss$/, use: [{loader: 'sass-loader', options:{data: `@import "./src/styles/index.scss"; `,} }]} : {},
-            !test ?{
+            !test ? {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -86,7 +78,9 @@ module.exports = {
     },
     plugins: [
         new webpack.BannerPlugin({
-            banner: "NutUI2(" + config.version + ") - [filebase], [hash], " + moment().format()
+            banner: `NutUI v${config.version} - [filebase], [hash], ${moment().format()}
+(c) 2017-2018 JDC
+Released under the MIT License.`
         }),
         new VueLoaderPlugin()
     ],

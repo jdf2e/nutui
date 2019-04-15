@@ -26,7 +26,7 @@ module.exports = merge(baseConf, {
     devServer: {
         contentBase: path.resolve(__dirname, 'dist/sites/'),
         index: 'demo.html',
-        compress: true, //gzip压缩
+        compress: true,
         historyApiFallback: true,
         disableHostCheck: true
     }

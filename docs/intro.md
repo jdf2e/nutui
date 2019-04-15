@@ -40,9 +40,8 @@ NutUI是一套京东风格的移动端Vue组件库，开发和服务于移动Web
 
 * UMD版 **nutui.js**
 * UMD压缩版 **nutui.min.js**
-* CommonJS版 **nutui.common.js**
 
-> AMD 环境、Webpack 等构建工具环境建议使用 UMD 版，非模块化环境（如通过 `<script>` 标签直接引用）建议使用 UMD 压缩版，服务端渲染请使用 CommonJS 版本。
+> AMD 环境、Webpack 等构建工具环境、服务端建议使用 UMD 版，非模块化环境（如通过 `<script>` 标签直接引用）建议使用 UMD 压缩版。
 
 最新稳定版：![npm](https://img.shields.io/npm/v/@nutui/nutui.svg)
 
@@ -53,6 +52,7 @@ NutUI是一套京东风格的移动端Vue组件库，开发和服务于移动Web
 * [Webpack](http://webpack.github.io/)
 * [意见反馈](https://github.com/jdf2e/nutui/issues)
 * [更新日志](https://github.com/jdf2e/nutui/releases)
+* [案例征集](https://github.com/jdf2e/nutui/issues/16)
 * [模板工程命令行工具(Gaea CLI)](https://www.npmjs.com/package/gaea-cli)
 * 联系我们：nutui@jd.com
 

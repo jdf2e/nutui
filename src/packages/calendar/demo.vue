@@ -67,7 +67,7 @@
             @close="switchPicker('isVisible3')"
             @choose="setChooseValue3"
         >
-        </nut-calendar>
+        </nut-calendar> 
     </div>
 </template>
 

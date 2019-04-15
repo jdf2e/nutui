@@ -4,6 +4,17 @@ declare class UIComponent extends Vue {
     static install (vue: typeof Vue): void
 }
 
+export interface InstallationOptions {
+    locale?: any
+    lang?: any
+}
+
+export const version: string
+
+export const locale: (l:any) => void
+
+export function install (vue: typeof Vue, options: InstallationOptions): void
+
 export declare class ActionSheet extends UIComponent {}
 export declare class Badge extends UIComponent {}
 export declare class Button extends UIComponent {}
@@ -47,15 +58,4 @@ export declare class Toast extends UIComponent {}
 export declare class BackTop extends UIComponent {}
 export declare class Scroller extends UIComponent {}
 export declare class CountDown extends UIComponent {}
-
-export interface InstallationOptions {
-    locale?: any
-    lang?: any
-}
-
-export const version: string
-
-export const locale: (l:any) => void
-
-export function install (vue: typeof Vue, options: InstallationOptions): void
-
+export declare class Uploader extends UIComponent {}

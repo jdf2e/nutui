@@ -75,7 +75,7 @@ CDN 引入示例
 </html>
 ```
 
-> 在页面中直接引入，将无法使用 **主题换肤** 等功能。我们推荐使用 *NPM* 或 *YARN* 方式安装，不推荐在页面中直接引入的用法
+> 在页面中直接引入，将无法使用 **主题定制** 等功能。我们推荐使用 *NPM* 或 *YARN* 方式安装，不推荐在页面中直接引入的用法
 
 * 通过 **Vue CLI** 图形化界面安装
 
@@ -93,13 +93,6 @@ NutUI.install(Vue);
 
 > 注意：这种方式将会导入所有组件
 
-> 服务端渲染请引入NutUI的 **commonjs** 版本 **nutui.common.js**
-
-```javascript
-//服务端渲染使用NutUI的commonjs版本
-import NutUI from '@nutui/nutui/dist/nutui.common.js';
-```
-
 ## 按需加载
 
 以下两种方式都可以实现只加载用到的组件，从而减少加载的文件体积。
@@ -112,7 +105,7 @@ import NutUI from '@nutui/nutui/dist/nutui.common.js';
 npm i @nutui/babel-plugin-separate-import -D
 ```
 
-然后配置一下 **.babelrc** 文件
+然后配置一下babel的配置文件
 
 ```bash
 {

@@ -132,8 +132,9 @@ export default {
             let moveTime = this.touchParams.lastTime - this.touchParams.startTime;
             this.touchEvent(changedTouches, (move, maxMove) => {
                 //if (moveTime <= 300) {
+                if (Math.abs(move) > 100) {
                     move = move * 2;
-                //}
+                }
 
                 // 释放跳转之类
                 if (move < 0 && (move + this.transformX) < maxMove - 20 && this.isFirstShow) {
@@ -145,7 +146,7 @@ export default {
                     //move = maxMove - this.transformX;
                 }
 
-                if (moveTime <= 300) {
+                if (moveTime <= 300 ) {
                     moveTime = moveTime + 500;
                     this.setMove(move, 'end', moveTime);
                 } else {

@@ -38,14 +38,14 @@
                 class="nut-dialog-btn nut-dialog-cancel"
                 v-if="!noCancelBtn"
                 @click="cancelBtnClick(cancelAutoClose)"
-              >{{cancelBtnTxt || nutTranslate('lang.dialog.cancelBtnTxt')}}</button>
+              >{{cancelBtnTxt || nutTranslate('lang.cancelBtnTxt')}}</button>
               <button
                 class="nut-dialog-btn nut-dialog-ok"
                 v-if="!noOkBtn"
                 :class="{'disabled':okBtnDisabled}"
                 :disabled="okBtnDisabled"
                 @click="okBtnClick"
-              >{{okBtnTxt || nutTranslate('lang.dialog.okBtnTxt')}}</button>
+              >{{okBtnTxt || nutTranslate('lang.okBtnTxt')}}</button>
             </div>
           </template>
         </div>
@@ -195,7 +195,7 @@ export default {
       }
     },
     cancelBtnClick(autoClose) {
-      this.$emit("ok-btn-click");
+      this.$emit("cancel-btn-click");
       if (typeof this.onCancelBtn === "function") {
         if (this.onCancelBtn.call(this) === false) return;
       }
@@ -214,8 +214,7 @@ export default {
       if (this.link) location.href = this.link;
     }
   },
-  created() {
-  },
+  created() {},
   watch: {
     visible: {
       handler(val) {
@@ -224,10 +223,10 @@ export default {
       immediate: true
     },
     curVisible(val) {
-        if (this.lockBgScroll) {
-          //锁定or解锁页面滚动
-          lockMaskScroll[val?'afterOpen':'beforeClose']();
-        }
+      if (this.lockBgScroll) {
+        //锁定or解锁页面滚动
+        lockMaskScroll[val ? "afterOpen" : "beforeClose"]();
+      }
     }
   }
 };

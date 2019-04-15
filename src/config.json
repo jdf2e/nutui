@@ -432,6 +432,16 @@
       "star": 4,
       "showDemo": true,
       "author": "iris"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Uploader",
+      "chnName": "上传",
+      "desc": "文件上传组件",
+      "type": "component",
+      "sort": "5",
+      "showDemo": true,
+      "author": "林如风"
     }
   ]
 }
