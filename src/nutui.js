@@ -1,7 +1,6 @@
 import { version } from '../package.json';
 import { packages as pkgList } from './config.json';
 import { locale } from './locales';
-
 import Cell from './packages/cell/index.js';
 import './packages/cell/cell.scss';
 import Dialog from './packages/dialog/index.js';
@@ -86,121 +85,121 @@ import InfiniteLoading from './packages/infiniteloading/index.js';
 import './packages/infiniteloading/infiniteloading.scss';
 
 const packages = {
-    Cell,
-    Dialog,
-    Icon,
-    Toast,
-    ActionSheet,
-    Tab,
-    TabPanel,
-    TabBar,
-    Calendar,
-    DatePicker,
-    NavBar,
-    NoticeBar,
-    Switch,
-    Slider,
-    Range,
-    Picker,
-    Progress,
-    Price,
-    Flex,
-    Col,
-    Row,
-    Steps,
-    Button,
-    Badge,
-    Rate,
-    Swiper,
-    Menu,
-    Stepper,
-    ButtonGroup,
-    SearchBar,
-    ImagePicker,
-    Radio,
-    RadioGroup,
-    CheckBox,
-    CheckBoxGroup,
-    ShortPassword,
-    Skeleton,
-    Scroller,
-    BackTop,
-    CountDown,
-    InfiniteLoading,
+  Cell,
+  Dialog,
+  Icon,
+  Toast,
+  ActionSheet,
+  Tab,
+  TabPanel,
+  TabBar,
+  Calendar,
+  DatePicker,
+  NavBar,
+  NoticeBar,
+  Switch,
+  Slider,
+  Range,
+  Picker,
+  Progress,
+  Price,
+  Flex,
+  Col,
+  Row,
+  Steps,
+  Button,
+  Badge,
+  Rate,
+  Swiper,
+  Menu,
+  Stepper,
+  ButtonGroup,
+  SearchBar,
+  ImagePicker,
+  Radio,
+  RadioGroup,
+  CheckBox,
+  CheckBoxGroup,
+  ShortPassword,
+  Skeleton,
+  Scroller,
+  BackTop,
+  CountDown,
+  InfiniteLoading,
 };
 
 const components = {};
 const methods = {};
 const filters = {};
 const directives = {};
-
 pkgList.map(item => {
-    const pkg = packages[item.name];
-    if (!pkg) return;
-    if (item.type == 'component') {
-        if (pkg.name) {
-            components[pkg.name] = pkg;
-        } else {
-            for (let n in pkg) {
-                components[n] = pkg[n];
-            }
-        }
-    } else if (item.type == 'method') {
-        methods[item.name] = pkg;
-    } else if (item.type == 'filter') {
-        filters[item.name] = pkg;
-    } else if (item.type == 'directive') {
-        directives[item.name] = pkg;
+  const pkg = packages[item.name];
+  if (!pkg) return;
+
+  if (item.type == 'component') {
+    if (pkg.name) {
+      components[pkg.name] = pkg;
+    } else {
+      for (let n in pkg) {
+        components[n] = pkg[n];
+      }
     }
+  } else if (item.type == 'method') {
+    methods[item.name] = pkg;
+  } else if (item.type == 'filter') {
+    filters[item.name] = pkg;
+  } else if (item.type == 'directive') {
+    directives[item.name] = pkg;
+  }
 });
 
 const install = function (Vue, opts = {}) {
-    if (install.installed) return;
+  if (install.installed) return;
 
-    if(opts.locale) {
-        Vue.config.lang = opts.locale;
-    }
-    
-    if(opts.lang) locale(Vue.config.lang, opts.lang);
+  if (opts.locale) {
+    Vue.config.lang = opts.locale;
+  }
 
-    for (let cptName in methods) {
-        if (Array.isArray(methods[cptName])){
-            Vue.prototype['$' + cptName.toLowerCase()] = methods[cptName][0];
-            Vue.component(methods[cptName][1].name, methods[cptName][1]);
-        }else{
-            Vue.prototype['$' + cptName.toLowerCase()] = methods[cptName];
-        }
-    }
+  if (opts.lang) locale(Vue.config.lang, opts.lang);
 
-    for (let cptName in components) {
-        if (components[cptName] && components[cptName].name) {
-            Vue.component(components[cptName].name, components[cptName]);
-        }
+  for (let cptName in methods) {
+    if (Array.isArray(methods[cptName])) {
+      Vue.prototype['$' + cptName.toLowerCase()] = methods[cptName][0];
+      Vue.component(methods[cptName][1].name, methods[cptName][1]);
+    } else {
+      Vue.prototype['$' + cptName.toLowerCase()] = methods[cptName];
     }
+  }
 
-    for (let cptName in filters) {
-        if (filters[cptName] && filters[cptName].name) {
-            Vue.filter(cptName, filters[cptName]);
-        }
+  for (let cptName in components) {
+    if (components[cptName] && components[cptName].name) {
+      Vue.component(components[cptName].name, components[cptName]);
     }
+  }
 
-    for (let cptName in directives) {
-        if (directives[cptName] && directives[cptName].name) {
-            Vue.directive(directives[cptName].name, directives[cptName]);
-        }
+  for (let cptName in filters) {
+    if (filters[cptName] && filters[cptName].name) {
+      Vue.filter(cptName, filters[cptName]);
     }
+  }
+
+  for (let cptName in directives) {
+    if (directives[cptName] && directives[cptName].name) {
+      Vue.directive(directives[cptName].name, directives[cptName]);
+    }
+  }
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue);
+  install(window.Vue);
 }
 
 export default {
-    version,
-    locale,
-    install,
-    ...components,
-    ...filters,
-    ...directives,
-    ...methods
+  version,
+  locale,
+  install,
+  ...components,
+  ...filters,
+  ...directives,
+  ...methods
 };

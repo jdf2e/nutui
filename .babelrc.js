@@ -22,9 +22,9 @@ const plugins = [
 ];
 
 
-if (process.env["NODE_ENV"] === "test") {
-    presets[0][1].modules = "commonjs";
-}
+// if (process.env["NODE_ENV"] === "test") {
+//     presets[0][1].modules = "commonjs";
+// }
 
 // if (process.env["NODE_ENV"] === "production" && process.env["PROD_TYPE"] === "disp") {
 //     presets[0][1].useBuiltIns = false;
