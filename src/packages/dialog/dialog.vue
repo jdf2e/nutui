@@ -38,14 +38,14 @@
                 class="nut-dialog-btn nut-dialog-cancel"
                 v-if="!noCancelBtn"
                 @click="cancelBtnClick(cancelAutoClose)"
-              >{{cancelBtnTxt || nutTranslate('lang.dialog.cancelBtnTxt')}}</button>
+              >{{cancelBtnTxt || nutTranslate('lang.cancelBtnTxt')}}</button>
               <button
                 class="nut-dialog-btn nut-dialog-ok"
                 v-if="!noOkBtn"
                 :class="{'disabled':okBtnDisabled}"
                 :disabled="okBtnDisabled"
                 @click="okBtnClick"
-              >{{okBtnTxt || nutTranslate('lang.dialog.okBtnTxt')}}</button>
+              >{{okBtnTxt || nutTranslate('lang.okBtnTxt')}}</button>
             </div>
           </template>
         </div>

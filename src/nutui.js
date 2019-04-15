@@ -83,6 +83,8 @@ import CountDown from './packages/countdown/index.js';
 import './packages/countdown/countdown.scss';
 import InfiniteLoading from './packages/infiniteloading/index.js';
 import './packages/infiniteloading/infiniteloading.scss';
+import Uploader from "./packages/uploader/index.js";
+import "./packages/uploader/uploader.scss";
 
 const packages = {
   Cell,
@@ -126,6 +128,7 @@ const packages = {
   BackTop,
   CountDown,
   InfiniteLoading,
+  Uploader
 };
 
 const components = {};

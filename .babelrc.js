@@ -26,8 +26,8 @@ const plugins = [
 //     presets[0][1].modules = "commonjs";
 // }
 
-// if (process.env["NODE_ENV"] === "production" && process.env["PROD_TYPE"] === "disp") {
-//     presets[0][1].useBuiltIns = false;
-// }
+if (process.env["DOC_TYPE"] === "true") {
+    presets[0][1].modules = "commonjs";
+}
 
 module.exports = { presets, plugins };
