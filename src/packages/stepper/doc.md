@@ -65,6 +65,7 @@
 | readonly | 是否只读 | Boolean | false
 | transition | 是否需要过渡效果 | Boolean | true
 | simple | 是否显示简单版 | Boolean | true
+| decimalPlaces | 设置保留的小数位 | Number | 0
 
 ## Event
 

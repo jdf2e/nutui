@@ -80,7 +80,11 @@ export default {
         value: {
             type: [String, Number],
             required: true
-        }
+        },
+        decimalPlaces: {
+            type: Number,
+            default: 0
+        } 
     },
     data() {
         return {
@@ -105,11 +109,14 @@ export default {
         }
     },
     watch: {
-        value(v, ov) {
-            if(v > this.max) v = this.max;
-            if(v < this.minNum) v = this.minNum;
-            this.num = v;
-            this.$emit('change', this.num);
+        value: {
+            handler(v, ov) {
+                if(v > this.max) v = this.max;
+                if(v < this.minNum) v = this.minNum;
+                this.num = v > 0? this.fixedDecimalPlaces(v): v;
+                this.$emit('change', this.num);
+            },
+            immediate: true
         }
     },
     computed: {
@@ -161,12 +168,16 @@ export default {
             this.$emit('update:value', this.num);
             this.$emit('change', this.num);
         },
+        fixedDecimalPlaces(v) {
+            return Number(v).toFixed(this.decimalPlaces);
+            // .replace(/(\d+\.[^0]*)0+$/, '$1').replace(/\.$/, '')
+        },
         add() {
             this.num = Number(this.num);
             if(this.num <= this.max - this.step && this.max > this.minNum) {
-                let [n1, n2] = this.num.toString().split('.');
+                let [n1, n2] = this.fixedDecimalPlaces(this.num + Number(this.step)).split('.');
                 let fixedLen = n2? n2.length: 0;
-                this.num = parseFloat((Number(n1) + Number(this.step)) + (n2? '.'+n2: '')).toFixed(fixedLen);
+                this.num = parseFloat(n1 + (n2? '.'+n2: '')).toFixed(fixedLen);
                 if(this.transition) {
                     this.showNum = false;
                     this.showAddAnim = true;
@@ -192,9 +203,9 @@ export default {
         },
         reduce(){
             if(this.num - this.step >= this.minNum) {
-                let [n1, n2] = this.num.toString().split('.');
+                let [n1, n2] = this.fixedDecimalPlaces(this.num - Number(this.step)).split('.');
                 let fixedLen = n2? n2.length: 0;
-                this.num = parseFloat((Number(n1) - this.step) + (n2? '.'+n2: '')).toFixed(fixedLen);
+                this.num = parseFloat(n1 + (n2? '.'+n2: '')).toFixed(fixedLen);
                 if(this.transition) {
                     this.showNum = false;
                     this.showAddAnim = false;
