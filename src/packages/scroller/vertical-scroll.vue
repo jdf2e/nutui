@@ -158,7 +158,7 @@ export default {
         },
 	
 	    touchStart(event) {
-            event.preventDefault();
+            // event.preventDefault();
 
             let changedTouches = event.changedTouches[0];
             this.touchParams.startY = changedTouches.pageY;
@@ -167,6 +167,7 @@ export default {
         },
 
         touchMove(event) {
+            event.preventDefault();
 
             let changedTouches = event.changedTouches[0];
             this.touchParams.lastY = changedTouches.pageY;
@@ -179,7 +180,7 @@ export default {
         },
 
         touchEnd(event) {
-            event.preventDefault();
+            // event.preventDefault();
 
             let changedTouches = event.changedTouches[0];
             this.touchParams.lastY = changedTouches.pageY;

@@ -48,8 +48,8 @@
 export default {
   data() {
     return {
-      serverTime: 1551943874069,
-      end: 1559334689373,
+      serverTime: Date.now() - 30 * 1000,
+      end: Date.now() + 2 * 60 * 60 * 1000,
       paused: false
     };
   },

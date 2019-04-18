@@ -4,7 +4,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper @focus="focus" :blur="blur" :value.sync="val1" :max="12"></nut-stepper>
+          <nut-stepper @focus="focus" :blur="blur" :value.sync="val1" :max="12" :step="0.1" :decimalPlaces="1" @add="add"></nut-stepper>
         </span>
         <span slot="desc">
           value: {{val1}} <button @click="reduce" class="demo-btn">-</button> <button @click="add" class="demo-btn">+</button> 
@@ -59,7 +59,7 @@
 export default {
   data() {
     return {
-      val1: 0,
+      val1: 1,
       val2: 12,
       val3: 5,
       val4: 0,
@@ -76,7 +76,7 @@ export default {
     },
     add(v) {
       console.log(v)
-      this.val1 = Number(this.val1) + 1;
+      // this.val1 = Number(this.val1) + 1;
     },
     reduce() {
       this.val1 = Math.max(Number(this.val1) - 1, 0);
