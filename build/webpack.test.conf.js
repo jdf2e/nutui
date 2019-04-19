@@ -1,4 +1,5 @@
 
+const path = require('path');
 const prodConf = require('./webpack.prod.conf.js');
 const merge = require('webpack-merge');
 
@@ -11,7 +12,8 @@ module.exports = merge(prodConf, {
                 use: {
                     loader: 'istanbul-instrumenter-loader',
                     options: { esModules: true }
-                }
+                },
+                include: path.resolve(__dirname, '../src/')
             },
             {
                 test: /\.css$/,

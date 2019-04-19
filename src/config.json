@@ -442,6 +442,16 @@
       "sort": "5",
       "showDemo": true,
       "author": "林如风"
+    },
+    {
+      "version": "1.0.0",
+      "name": "TextInput",
+      "chnName": "文本框",
+      "desc": "单行文本框",
+      "type": "component",
+      "sort": "1",
+      "showDemo": true,
+      "author": "Frans"
     }
   ]
 }

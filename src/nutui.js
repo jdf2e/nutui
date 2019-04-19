@@ -85,6 +85,8 @@ import InfiniteLoading from './packages/infiniteloading/index.js';
 import './packages/infiniteloading/infiniteloading.scss';
 import Uploader from "./packages/uploader/index.js";
 import "./packages/uploader/uploader.scss";
+import TextInput from "./packages/textinput/index.js";
+import "./packages/textinput/textinput.scss";
 
 const packages = {
   Cell,
@@ -128,7 +130,8 @@ const packages = {
   BackTop,
   CountDown,
   InfiniteLoading,
-  Uploader
+  Uploader,
+  TextInput
 };
 
 const components = {};
