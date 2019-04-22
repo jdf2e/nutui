@@ -1,3 +1,14 @@
+## 2.1.1
+
+`2019-4-22`
+
+* :sparkles: feat: 新增文本框组件`TextInput`
+* :sparkles: chore: 优化单元测试配置
+* :sparkles: upd: `Stepper`组件新增支持小数
+* :bug: fix: 修复`CountDown`组件在iOS上某些场景下的一个问题
+* :bug: fix: 修复`Scroller`内部元素无法触发点击事件的问题
+* :bug: fix: 修复国际化语言包一处错误
+
 ## 2.1.0
 
 `2019-4-15`

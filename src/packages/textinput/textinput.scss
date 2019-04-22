@@ -1,0 +1,47 @@
+.nut-textinput {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    input {
+        flex: 1;
+        height: 40px;
+        appearance: none;
+        font-size: 14px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        border: 1px solid #DDDFE6;
+        background-color: '#FFFFFF';
+        padding: 0 30px 0 10px;
+
+        &::-webkit-input-placeholder {
+            color: #C1C4CB;
+            font-style: normal;
+        }
+    }
+
+    .nut-textinput-clear {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 20px;
+        width: 20px;
+
+        svg {
+            fill: #999999;
+        }
+    }
+}
+
+.nut-textinput-disabled {
+    input {
+        background-color: #F5F7FA;
+        border-color: #E5E7ED;
+        color: #999999;
+
+        &::-webkit-input-placeholder {
+            color: #D1D3D9;
+        }
+    }
+}

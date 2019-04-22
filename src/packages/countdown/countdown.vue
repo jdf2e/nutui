@@ -85,11 +85,19 @@ const countdownTimer = {
     startTime: {
       // 可以是服务器当前时间
       default: Date.now(),
-      type: [Number, String]
+      type: [Number, String],
+      validator(v) {
+        const dateStr = (new Date(v)).toString().toLowerCase();
+        return dateStr !== 'invalid date';
+      }
     },
     endTime: {
       default: Date.now(),
-      type: [Number, String]
+      type: [Number, String],
+      validator(v) {
+        const dateStr = (new Date(v)).toString().toLowerCase();
+        return dateStr !== 'invalid date';
+      }
     }
   },
   computed: {
@@ -111,24 +119,32 @@ const countdownTimer = {
   watch: {
     paused(v, ov) {
       if(!ov) {
-        this._curr = Date.now();
+        this._curr = this.getTimeStamp();
       }else{
-        this.p += (Date.now() - this._curr);
+        this.p += (this.getTimeStamp() - this._curr);
       }
+    }
+  },
+  methods: {
+    getTimeStamp(timeStr) {
+      if(!timeStr) return Date.now();
+      let t = timeStr;
+      t = t > 0? +t: t.toString().replace(/\-/g, '/');
+      return new Date(t).getTime();
     }
   },
   created() {
     if(this.interval > 0) {
       let _start = 0;
       const curr = Date.now();
-      const start = new Date(+this.startTime).getTime();
-      const end = new Date(+this.endTime).getTime();
+      const start = this.getTimeStamp(this.startTime);
+      const end = this.getTimeStamp(this.endTime);
       const diffTime = curr - start;
       
       this.restTime = end - (start + diffTime);
       this.timer = setInterval(() => {
         if(!this.paused) {
-          let restTime = end - (new Date().getTime() - this.p + diffTime);
+          let restTime = end - (this.getTimeStamp() - this.p + diffTime);
           restTime -= 1000;
           this.restTime = restTime;
           if(restTime < 0) {

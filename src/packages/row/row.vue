@@ -77,7 +77,6 @@ export default {
     mounted() {
         let slot = [...this.$slots.default];
         this.initCol(slot);
-        console.log(slot); 
     },
 }
 </script>

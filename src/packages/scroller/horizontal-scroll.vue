@@ -89,7 +89,7 @@ export default {
         },
 	
 	    touchStart(event) {
-            event.preventDefault();
+            // event.preventDefault();
 
             let changedTouches = event.changedTouches[0];
             this.touchParams.startX = changedTouches.pageX;
