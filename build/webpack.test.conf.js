@@ -13,7 +13,7 @@ module.exports = merge(prodConf, {
                     loader: 'istanbul-instrumenter-loader',
                     options: { esModules: true }
                 },
-                include: path.resolve(__dirname, '../src/')
+                include: path.resolve(__dirname, '../src/packages/')
             },
             {
                 test: /\.css$/,
