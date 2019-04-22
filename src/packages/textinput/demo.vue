@@ -4,7 +4,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-textinput v-model="val" label="基本用法：" placeholder="请输入内容"></nut-textinput>
+          <nut-textinput v-model="val" label="基本用法：" placeholder="请输入内容" />
         </span>
       </nut-cell>
       <nut-cell>
@@ -15,22 +15,22 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-textinput :clearBtn="false" v-model="val2" label="无清空按钮：" placeholder="请输入内容"></nut-textinput>
+          <nut-textinput :clearBtn="false" v-model="val2" label="无清空按钮：" placeholder="请输入内容" />
         </span>
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-textinput :disabled="true" label="禁用状态：" placeholder="请输入内容"></nut-textinput>
+          <nut-textinput :disabled="true" label="禁用状态：" placeholder="请输入内容" />
         </span>
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-textinput placeholder="请输入密码" v-model="val3" label="密码框：" type="password"></nut-textinput>
+          <nut-textinput placeholder="请输入密码" v-model="val3" label="密码框：" type="password" />
         </span>
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-textinput placeholder="请输入内容" v-model="val4" label="无边框：" :hasBorder="false"></nut-textinput>
+          <nut-textinput placeholder="请输入内容" v-model="val4" label="无边框：" :hasBorder="false" />
         </span>
       </nut-cell>
     </div>
@@ -44,12 +44,12 @@
             label="限制文字数："
             :outline="false"
             :hasBorder="false"
-          ></nut-textinput>
+          />
         </span>
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-textinput placeholder="请输入内容" v-model="val5" readonly label="只读：" :outline="false"></nut-textinput>
+          <nut-textinput placeholder="请输入内容" v-model="val5" readonly label="只读：" :outline="false" />
         </span>
       </nut-cell>
     </div>
@@ -64,7 +64,7 @@
             @blur="onBlur"
             v-model="val6"
             :hasBorder="false"
-          ></nut-textinput>
+          />
         </span>
       </nut-cell>
       <nut-cell>
@@ -75,7 +75,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-textinput class="my-input" v-model="val7" placeholder="请输入搜索内容"></nut-textinput>
+          <nut-textinput class="my-input" v-model="val7" placeholder="请输入搜索内容" />
         </span>
       </nut-cell>
     </div>
