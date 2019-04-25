@@ -8,6 +8,7 @@
         @touchmove="onTouchMove"
         @touchend="onTouchEnd"
         @click="onTouchEnd"
+        @touchcancel="onTouchEnd"
         :style="{'left':posi+'px'}"
       >
         <span
@@ -20,6 +21,7 @@
   </div>
 </template>
 <script>
+import requestAniFrame from '../../utils/raf.js';
 export default {
   name: "nut-slider",
   props: {
@@ -59,7 +61,8 @@ export default {
       handle: null,
       posi: null,
       level: null,
-      ani: false
+      ani: false,
+      scheduledAnimationFrame:false
     };
   },
   computed: {
@@ -72,19 +75,27 @@ export default {
   },
   methods: {
     onTouchStart(event) {
-      event.preventDefault();
+      if (event.cancelable) {
+        event.preventDefault();
+      }
       this.ani = true;
     },
     onTouchMove(event) {
-      event.preventDefault();
-      event.stopPropagation();
-      event.cancelBubble = true;
-      const evt = event.touches[0];
-      const pageScrollLeft =
-        document.documentElement.scrollLeft || document.body.scrollLeft;
-      this.boxLeft = this.box.getBoundingClientRect().left;
-      const posi = evt.pageX - this.boxLeft - pageScrollLeft;
-      this.setPosi(posi);
+      if (event.cancelable) {
+        event.preventDefault();
+      }
+
+      if (this.scheduledAnimationFrame) return;
+
+      this.scheduledAnimationFrame = true;
+      requestAniFrame(() => {
+          this.scheduledAnimationFrame = false;
+          const evt = event.touches[0];
+          const pageScrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+          this.boxLeft = this.box.getBoundingClientRect().left;
+          const posi = evt.pageX - this.boxLeft - pageScrollLeft;
+          this.setPosi(posi);
+      });
     },
     setVal(posi) {
       const trans = (posi / this.box.clientWidth) * this.total;
@@ -102,12 +113,16 @@ export default {
       this.setVal(posi);
     },
     onTouchEnd(event) {
-      event.preventDefault();
+      if (event.cancelable) {
+        event.preventDefault();
+      }
       this.posi = this.valToPosi();
       this.ani = false;
     },
     onClick(event) {
-      event.preventDefault();
+      if (event.cancelable) {
+        event.preventDefault();
+      }
       const pageScrollLeft =
         document.documentElement.scrollLeft || document.body.scrollLeft;
       this.boxLeft = this.box.getBoundingClientRect().left;
