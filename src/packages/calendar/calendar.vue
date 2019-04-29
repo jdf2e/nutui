@@ -165,7 +165,7 @@ export default {
                     this.unLoadNext = true;
                 }   
             } else {
-                if (!this.startData || Utils.compareDate(`${this.startData[0]}-${this.startData[1]}-01`,`${curData[0]}-${curData[1]}-${curData[2]}`)) {
+                if (!this.startData || !Utils.compareDate(`${curData[0]}-${curData[1]}-${curData[2]}`, `${this.startData[0]}-${this.startData[1]}-01`)) {
                     this.monthsData.unshift(monthInfo);
                 } else {
                     this.unLoadPrev = true;
