@@ -60,4 +60,12 @@
 | showDays | 是否显示天 | Boolean | false
 | showPlainText | 显示为纯文本 | Boolean | false
 | paused | 是否暂停 | Boolean | false
-| interval | 间隔时间 | Number | 1000
+
+
+## Event
+
+| 字段 | 说明 | 回调参数
+| ----- | ----- | ----- | -----
+| on-end | 倒计时结束时 | 剩余时间戳
+| on-paused | 暂停时 | 剩余时间戳
+| on-restart | 暂停时 | 剩余时间戳
