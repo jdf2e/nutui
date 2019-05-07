@@ -3,7 +3,6 @@ const webpackBaseConf = require('./webpack.base.conf.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const merge = require('webpack-merge');
-
 const mdtohtml = require('../scripts/mdToVue');
 const isDev = process.env.NODE_ENV === 'development';
 

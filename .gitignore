@@ -14,3 +14,6 @@ docshashCache.text
 srchashCache.text
 localsrc.cache
 localdocs.cache
+cache/src.cache
+cache/mdToVue.cache
+cache/docs.cache
