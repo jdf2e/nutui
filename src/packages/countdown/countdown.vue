@@ -45,7 +45,7 @@ function restTime(t) {
     const d = ts >= ds? parseInt(ts / ds): 0;
     const h = ts - d*ds >= hs? parseInt((ts - d*ds) / hs): 0;
     const m = ts - d*ds - h*hs >= ms? parseInt((ts - d*ds - h*hs) / ms): 0;
-    const s = parseInt((ts - d*ds - h*hs - m*ms) / 1000);
+    const s = Math.round((ts - d*ds - h*hs - m*ms) / 1000);
     
     if(d >= 0) rest.d = d + '';
     if(h >= 0) rest.h = fill2(h);
@@ -78,13 +78,8 @@ const countdownTimer = {
       default: false,
       type: Boolean
     },
-    interval: {
-      default: 1000,
-      type: Number
-    },
     startTime: {
       // 可以是服务器当前时间
-      default: Date.now(),
       type: [Number, String],
       validator(v) {
         const dateStr = (new Date(v)).toString().toLowerCase();
@@ -92,7 +87,6 @@ const countdownTimer = {
       }
     },
     endTime: {
-      default: Date.now(),
       type: [Number, String],
       validator(v) {
         const dateStr = (new Date(v)).toString().toLowerCase();
@@ -120,8 +114,10 @@ const countdownTimer = {
     paused(v, ov) {
       if(!ov) {
         this._curr = this.getTimeStamp();
+        this.$emit('on-paused', this.restTime);
       }else{
         this.p += (this.getTimeStamp() - this._curr);
+        this.$emit('on-restart', this.restTime);
       }
     }
   },
@@ -134,29 +130,26 @@ const countdownTimer = {
     }
   },
   created() {
-    if(this.interval > 0) {
-      let _start = 0;
-      const curr = Date.now();
-      const start = this.getTimeStamp(this.startTime);
-      const end = this.getTimeStamp(this.endTime);
-      const diffTime = curr - start;
-      
-      this.restTime = end - (start + diffTime);
-      this.timer = setInterval(() => {
-        if(!this.paused) {
-          let restTime = end - (this.getTimeStamp() - this.p + diffTime);
-          restTime -= 1000;
-          this.restTime = restTime;
-          if(restTime < 0) {
-            this.restTime = 0;
-            clearInterval(this.timer);
-          }
-        }else{
-          // 暂停
+    const delay = 1000;
+    const curr = Date.now();
+    const start = this.getTimeStamp(this.startTime || curr);
+    const end = this.getTimeStamp(this.endTime || curr);
+    const diffTime = curr - start;
+
+    this.restTime = end - (start + diffTime);
+    this.timer = setInterval(() => {
+      if(!this.paused) {
+        let restTime = end - (Date.now() - this.p + diffTime);
+        this.restTime = restTime;
+        if(restTime < delay) {
+          this.restTime = 0;
+          this.$emit('on-end');
+          clearInterval(this.timer);
         }
-      }, this.interval);
-      
-    }
+      }else{
+        // 暂停
+      }
+    }, delay);
   }
 }
 countdownTimer.restTime = restTime;

@@ -66,6 +66,7 @@
         align-items: center;
         justify-content: center;
         svg{
+            vertical-align: top;
             width: $stepperbar-width;
             fill: $stepperbar-color;
         }
@@ -85,6 +86,7 @@
     .nut-stepper-grey{
         color: #ececee;
         svg{
+            vertical-align: top;
             fill: #cecece!important;
         }
     }

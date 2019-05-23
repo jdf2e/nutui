@@ -15,7 +15,7 @@
     </div>
 </template>
 <script>
-
+import requestAniFrame from '../../utils/raf.js';
 export default {
   name: "nut-range-bar",
   props: {
@@ -42,7 +42,8 @@ export default {
   data() {
     return {
       box: null,
-      posi: 0
+      posi: 0,
+      scheduledAnimationFrame:false
     };
   },
   watch: {
@@ -52,17 +53,26 @@ export default {
   },
   methods: {
     onTouchStart(event) {
-      event.preventDefault();
+      if (event.cancelable) {
+        event.preventDefault();
+      }
       this.$emit('update:ani', true);
     },
     onTouchMove(event) {
-      event.preventDefault();
-      const evt = event.touches[0];
-      const pageScrollLeft =
-        document.documentElement.scrollLeft || document.body.scrollLeft;
-      this.boxLeft = this.box.getBoundingClientRect().left;
-      const posi = evt.pageX - this.boxLeft - pageScrollLeft;
-      this.setPosi(posi);
+      if (event.cancelable) {
+        event.preventDefault();
+      }
+      if (this.scheduledAnimationFrame) return;
+      this.scheduledAnimationFrame = true;
+      requestAniFrame(() => {
+          this.scheduledAnimationFrame = false;
+          const evt = event.touches[0];
+          const pageScrollLeft =
+            document.documentElement.scrollLeft || document.body.scrollLeft;
+          this.boxLeft = this.box.getBoundingClientRect().left;
+          const posi = evt.pageX - this.boxLeft - pageScrollLeft;
+          this.setPosi(posi);
+      });
     },
     setPosi(posi) {
       if (posi < 0 || posi > this.box.clientWidth) return;

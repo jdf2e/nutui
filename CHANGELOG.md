@@ -1,3 +1,17 @@
+## 2.1.2
+
+`2019-5-23`
+
+* :sparkles: upd(Slider): 优化了拖动性能
+* :sparkles: upd(Range): 优化了拖动性能
+* :sparkles: upd(Switch): 优化了快速点击场景下的问题
+* :sparkles: upd(CountDown): 优化了diffTime/restTime & 新增了一些事件
+* :bug: fix(Calendar极值问题): 修复了极值问题
+* :zap: chore: 优化了MD文档编译缓存机制
+* :zap: chore: 不再单独构建commonjs包
+* :zap: doc: 文档内容修改完善
+
+
 ## 2.1.1
 
 `2019-4-22`
