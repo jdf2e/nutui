@@ -78,7 +78,9 @@ describe('Switch.vue', () => {
         wrapper.trigger('click');
 
         return Vue.nextTick().then(function () {
-            expect(wrapper.contains('.nut-switch-active')).toBe(true);
+            setTimeout(() => {
+                expect(wrapper.contains('.nut-switch-active')).toBe(true);
+            }, 350);
         });
     });
 
