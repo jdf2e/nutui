@@ -5,7 +5,7 @@
 常规按钮组
 
 ```html
-<nut-button-group>
+<nut-buttongroup>
   <nut-button 
     type="light"
   >
@@ -14,13 +14,13 @@
   <nut-button>
     确定
   </nut-button>
-</nut-button-group>
+</nut-buttongroup>
 ```
 
 圆角按钮组
 
 ```html
-<nut-button-group 
+<nut-buttongroup 
   shape="circle"
 >
   <nut-button 
@@ -31,13 +31,13 @@
   <nut-button>
     确定
   </nut-button>
-</nut-button-group>
+</nut-buttongroup>
 ```
 
 页面底部功能，配合Badge使用
 
 ``` html
-<nut-button-group 
+<nut-buttongroup 
   type="menu"
 >
   <nut-button 
@@ -81,7 +81,7 @@
   >
     成功
   </nut-button>
-</nut-button-group>
+</nut-buttongroup>
 ```
 
 ## Prop
