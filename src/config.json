@@ -452,6 +452,16 @@
       "sort": "1",
       "showDemo": true,
       "author": "Frans"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Avatar",
+      "chnName": "头像",
+      "desc": "用来表示用户或事物，支持图片或字符展示。",
+      "type": "component",
+      "sort": "5",
+      "showDemo": true,
+      "author": "zhenyulei"
     }
   ]
 }
