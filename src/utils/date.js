@@ -47,7 +47,8 @@ let Utils = {
 	 * @return {string}
 	 */
 	getNumTwoBit: function(n) {
-	    return (n > 9 ? '' : '0') + n;
+	    const nn = Number(n);
+	    return (nn > 9 ? '' : '0') + nn;
 	},
 
 	/**
