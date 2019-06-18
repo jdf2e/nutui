@@ -1,5 +1,5 @@
 <template>
-    <div :style="styles" :class="['nut-avatar', 'avatar-'+size,'avatar-'+shape]">
+    <div :style="styles" :class="['nut-avatar', 'avatar-'+size,'avatar-'+shape]" @click="activeAvatar">
         <i class="icon" :style="iconStyles"></i>
         <span class="text"><slot></slot></span>
     </div>
@@ -30,13 +30,13 @@ export default {
         }
     },
     computed:{
-        styles:function(){
+        styles(){
             return {
                 'background':this.bgColor + ' url('+this.bgImage+')'+'no-repeat',
                 'backgroundSize':'100%'
             }
         },
-        iconStyles:function(){
+        iconStyles(){
             return {
                 'backgroundImage': 'url('+this.bgIcon+')'
             }
@@ -46,6 +46,9 @@ export default {
         return {};
     },
     methods: {
+        activeAvatar(){
+            this.$emit('activeAvatar');
+        }
     }
 }
 </script>

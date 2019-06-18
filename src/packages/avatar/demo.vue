@@ -24,6 +24,8 @@
       <div class="white-bg">
         <nut-avatar bgIcon="http://img10.360buyimg.com/uba/jfs/t1/69001/30/2126/550/5d06f947Effd02898/95f18e668670e598.png"></nut-avatar>
       </div>
+      <h4>点击头像有触发事件</h4>
+      <div class="white-bg"><nut-avatar @activeAvatar="activeAvatar"></nut-avatar></div>
     </div>
 </template>
 
@@ -36,7 +38,9 @@ export default {
     return {};
   },
   methods: {
-      
+      activeAvatar(){
+        console.log('点击了头像');
+      }
   }
 };
 </script>
