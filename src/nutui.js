@@ -134,7 +134,7 @@ const packages = {
   InfiniteLoading,
   Uploader,
   TextInput,
-  Avatar: Avatar
+  Avatar
 };
 
 const components = {};
