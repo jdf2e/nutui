@@ -18,7 +18,9 @@
 ## 设置大小
 
 ```html
-<nut-avatar :size="30"></nut-avatar>
+<nut-avatar size="large"></nut-avatar>
+<nut-avatar size="normal"></nut-avatar>
+<nut-avatar size="small"></nut-avatar>
 ```
 
 ## 设置头像的形状类型
@@ -32,10 +34,6 @@
 <nut-avatar :size="30" bgIcon="">U</nut-avatar>
 ```
 
-## 设置头像右上角的徽标
-```html
-<nut-avatar :dot="13"></nut-avatar>
-```
 ## 设置头像背景图片
 ```html
 <nut-avatar 
@@ -49,14 +47,26 @@ bgIcon="" bgImage="http://img30.360buyimg.com/uba/jfs/t1/84318/29/2102/10483/5d0
 </nut-avatar>
 ```
 
+## 点击头像有触发事件
+```html
+<nut-avatar @activeAvatar="activeAvatar">
+</nut-avatar>
+```
+
 
 ## Prop
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | bgColor | 设置头像背景色 | String | #eee
-| size | 设置头像的大小，也就是宽和高，单位是px | Number | 40
+| size | 设置头像的大小，提供三种：large /normal/small | String | normal
 | shape | 设置头像的形状，默认是圆形，可以设置为square方形 | String | --
-| doc | 设置带徽标的头像，默认为0，为0时不显示徽标 | Number | 0
 | bgImage | 设置头像的背景图片 | String | --
 | bgIcon | 设置头像的icon图标 | String | --
+
+
+## Event
+
+| 字段 | 说明 | 回调参数 
+|----- | ----- | ----- 
+| activeAvatar | 点击头像有触发事件 | -- 

@@ -10,7 +10,7 @@ export default {
     props: {
         size:{
             type:String,
-            default:'mormal'
+            default:'normal'
         },
         shape:{
             type:String,

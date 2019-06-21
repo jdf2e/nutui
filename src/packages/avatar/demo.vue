@@ -3,13 +3,13 @@
       <h4>默认用法,有三种尺寸</h4>
         <div class="white-bg">
           <nut-avatar size="large"></nut-avatar>
-          <nut-avatar size="mormal"></nut-avatar>
+          <nut-avatar size="normal"></nut-avatar>
           <nut-avatar size="small"></nut-avatar>
         </div>
       <h4>可以修改头像的形状类型</h4>
       <div class="white-bg">
         <nut-avatar size="large" shape="square"></nut-avatar>
-        <nut-avatar size="mormal" shape="square"></nut-avatar>
+        <nut-avatar size="normal" shape="square"></nut-avatar>
         <nut-avatar size="small" shape="square"></nut-avatar>
       </div>
       <h4>可以修改头像的背景色</h4>
