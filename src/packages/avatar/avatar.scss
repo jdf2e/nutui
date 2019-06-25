@@ -1,0 +1,62 @@
+.nut-avatar{
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+    .icon{
+        width:50%;
+        height: 50%;
+        background-size:100% 100%;
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+    }
+    .text{
+        display: inline-block;
+        width:100%;
+        text-align: center;
+        overflow: hidden;
+    }
+    .dot{
+        position: absolute;
+        min-width: 18px;
+        min-height: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+        text-align: center;
+        border-radius: 50%;
+        background:red;
+        top:-4px;
+        right: -5px;
+        color: #fff;
+        font-size: 12px;
+        transform: scale(0.8);
+        line-height: 1;
+    }
+}
+.avatar-large{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+}
+.avatar-small{
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+}
+.avatar-normal{
+    width:32px;
+    height: 32px;
+    line-height: 32px;
+}
+.avatar-round{
+    border-radius: 50%
+}
+.avatar-square{
+    border-radius: 5px;
+}
