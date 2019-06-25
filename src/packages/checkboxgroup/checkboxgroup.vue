@@ -1,6 +1,6 @@
 <template>
     <div :class="['nut-checkboxgroup',{'vertical':vertical},customClass]" >
-        <div class="checkbox-item" v-for="(item,index) in checkBoxData" :key="item[keys.id]">
+        <div class="checkbox-item" v-for="(item,index) in initData" :key="item[keys.id]">
             <nut-checkbox 
             :name="name||item[keys.name]" 
             :disabled=" disabled || item[keys.disabled]" 
