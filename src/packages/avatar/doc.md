@@ -11,11 +11,15 @@
 ## 设置背景色
 
 ```html
-<nut-avatar bgColor="#87d068"></nut-avatar>
+<nut-avatar 
+    bgColor="#87d068"
+></nut-avatar>
 ```
 
 
 ## 设置大小
+
+内置 **smal** / **normal** / **large** 三种尺寸规格
 
 ```html
 <nut-avatar size="large"></nut-avatar>
@@ -25,31 +29,42 @@
 
 ## 设置头像的形状类型
 ```html
-<nut-avatar shape="square"></nut-avatar>
+<nut-avatar 
+  shape="square"
+></nut-avatar>
 ```
 
 
 ## 设置头像的文本内容
 ```html
-<nut-avatar :size="30" bgIcon="">U</nut-avatar>
+<nut-avatar 
+  :size="30"
+  bgIcon=""
+>U</nut-avatar>
 ```
 
 ## 设置头像背景图片
 ```html
 <nut-avatar 
-bgIcon="" bgImage="http://img30.360buyimg.com/uba/jfs/t1/84318/29/2102/10483/5d0704c1Eb767fa74/fc456b03fdd6cbab.png">
+  bgIcon="" 
+  bgImage="http://img30.360buyimg.com/uba/jfs/t1/84318/29/2102/10483/5d0704c1Eb767fa74/fc456b03fdd6cbab.png"
+>
 </nut-avatar>
 ```
 
-## 设置头像icon图标
+## 设置头像Icon图标
 ```html
-<nut-avatar bgIcon="http://img10.360buyimg.com/uba/jfs/t1/69001/30/2126/550/5d06f947Effd02898/95f18e668670e598.png">
+<nut-avatar
+  bgIcon="http://img10.360buyimg.com/uba/jfs/t1/69001/30/2126/550/5d06f947Effd02898/95f18e668670e598.png"
+>
 </nut-avatar>
 ```
 
 ## 点击头像有触发事件
 ```html
-<nut-avatar @activeAvatar="activeAvatar">
+<nut-avatar 
+  @activeAvatar="activeAvatar"
+>
 </nut-avatar>
 ```
 
@@ -69,4 +84,4 @@ bgIcon="" bgImage="http://img30.360buyimg.com/uba/jfs/t1/84318/29/2102/10483/5d0
 
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 
-| activeAvatar | 点击头像有触发事件 | -- 
+| activeAvatar | 点击头像触发事件 | -- 

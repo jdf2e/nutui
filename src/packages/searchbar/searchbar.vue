@@ -16,7 +16,7 @@
 	    		</span>
 	    	</form>
     	</div>
-    	<a href="javascript:;" class="btn-search" v-if="hasSearchButton">
+    	<a href="javascript:;" class="btn-search" v-if="hasSearchButton" @click="submitFun">
     		<span v-if="hasTextButton">{{textInfo || nutTranslate('lang.searchbar.textInfo')}}</span>
     		<nut-icon type="search" v-else width="20" height="20"></nut-icon>
     	</a>
@@ -72,23 +72,23 @@ export default {
     },
     methods: {
     	//清空 input 输入
-    	clearInput: function() {
+    	clearInput() {
     		this.value = '';
     		this.hasCloseIcon = false;
     	},
-    	focusFun: function() {
+    	focusFun() {
     		this.inputFocusAnimation = true;
     		this.$emit('focus');
     	},
-    	inputFun: function() {
+    	inputFun() {
     		this.hasCloseIcon = this.value ? true:false;
     		this.$emit('input', this.value);
     	},
-    	blurFun: function() {
+    	blurFun() {
     		this.inputFocusAnimation = false;
     		this.$emit('blur', this.value);
     	},
-        submitFun: function() {
+        submitFun() {
             this.$emit('submit', this.value);
         }
     }

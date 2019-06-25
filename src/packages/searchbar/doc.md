@@ -1,5 +1,7 @@
 # SearchBar 搜索栏
 
+> 依赖 **Icon** 组件
+
 ## 基本用法
 
 ```html
@@ -87,4 +89,4 @@ export default {
 | focus | 输入框获取焦点时触发事件 | 无
 | input | 输入框输入内容时触发事件 | 无
 | blur | 输入框失去焦点时触发事件 | 无
-| submit | 默认提交事件 | 无
+| submit | 默认提交事件，点击右侧Icon或文字也会触发 | 无
