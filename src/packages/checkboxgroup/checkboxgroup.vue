@@ -78,6 +78,7 @@ export default {
     data() {
         return {
             ignoreChange: false,
+            initData:[],
         	checkboxValues: [],
             initialValue: JSON.parse(JSON.stringify(this.value))
         };
@@ -85,6 +86,13 @@ export default {
     components: {
 	    [nutcheckbox.name]: nutcheckbox
 	},
+    watch: {
+        checkBoxData(val){
+            if(val){
+                this.initData = val || [];
+            }
+        }
+    },
     methods: {
         isObject(obj) {
             return obj !== null && typeof obj === 'object';
