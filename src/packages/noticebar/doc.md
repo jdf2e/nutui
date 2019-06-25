@@ -36,19 +36,19 @@
 
 ## Prop
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| text | 提示的信息 | String | 空
-| closeMode | 是否启用关闭模式 | Boolean | false
-| leftIcon | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | String | 空
-| color | 是否禁用 | String | 空
-| background | 是否禁用 | String | 空
-| delay | 是否禁用 | String/Number | 1
-| scrollable | 是否禁用 | Boolean | true
-| speed | 是否禁用 | Number | 50
+| 字段       | 说明                                                       | 类型          | 默认值 |
+| ---------- | ---------------------------------------------------------- | ------------- | ------ |
+| text       | 提示的信息                                                 | String        | 空     |
+| closeMode  | 是否启用关闭模式                                           | Boolean       | false  |
+| leftIcon   | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | String        | 空     |
+| color      | 导航栏的文字颜色                                           | String        | 空     |
+| background | 导航栏的背景颜色                                           | String        | 空     |
+| delay      | 延时多少秒                                                 | String/Number | 1      |
+| scrollable | 是否可以滚动                                               | Boolean       | true   |
+| speed      | 移动375px需要用的时间                                      | Number        | 6      |
 
 ## Event
 
-| 字段 | 说明 | 回调参数
-|----- | ----- | -----
-| click | 外层点击事件回调 | 无 
+| 字段  | 说明             | 回调参数 |
+| ----- | ---------------- | -------- |
+| click | 外层点击事件回调 | 无       |
