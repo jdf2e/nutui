@@ -18,6 +18,7 @@ rimraf('./dist/nutui.min.css', function (err) {
 
 module.exports = merge(webpackBaseConf, {
     mode: 'production',
+    devtool: 'source-map',
     entry: {
         nutui: './src/nutui.js',
     },
