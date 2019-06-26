@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const config = require('../package.json');
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpackBaseConf = require('./webpack.base.conf.js');

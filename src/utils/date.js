@@ -23,8 +23,8 @@ let Utils = {
      * @return {Number}
      */
     getMonthPreDay: function(year, month) {
-        var date = new Date(year + '/' + month + '/01');
-        var day = date.getDay();
+        let date = new Date(year + '/' + month + '/01');
+        let day = date.getDay();
         if (day == 0) {
             day = 7;
         }
@@ -47,8 +47,8 @@ let Utils = {
 	 * @return {string}
 	 */
 	getNumTwoBit: function(n) {
-	    const nn = Number(n);
-	    return (nn > 9 ? '' : '0') + nn;
+		n = Number(n);
+		return (n > 9 ? '' : '0') + n;
 	},
 
 	/**

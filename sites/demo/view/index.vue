@@ -22,11 +22,12 @@
         </template>
       </ul>
     </div>
-    <div id="demo-footer" @click="showCode">京东用户体验设计部（JDC） · 前端开发部</div>
+    <div id="demo-footer">京东用户体验设计部（JDC） · 前端开发部 · v{{version}}</div>
   </div>
 </template>
 
 <script>
+import { version } from '../../../package.json';
 import { packages, sorts } from "../../../src/config.json";
 export default {
   name: "index",
@@ -34,6 +35,7 @@ export default {
     return {
       path: "",
       packages: {},
+      version,
       sortedPackages: [],
       oriSorts: [],
       sorts: [1, 2, 0, 3, 4, 5],
@@ -41,16 +43,16 @@ export default {
     };
   },
   methods: {
-    showCode(){
-        this.$dialog({
-          type:"image",
-          link:"",
-          imgSrc:"https://img14.360buyimg.com/imagetools/s350x350_jfs/t1/23439/7/11643/155926/5c90d554E7f03c831/bd45cd0ee2daa2fa.jpg.dpg",
-          onClickImageLink(){
-            return false;  //返回false可阻止默认的链接跳转行为
-          }
-        });
-    },
+    // showCode(){
+    //     this.$dialog({
+    //       type:"image",
+    //       link:"",
+    //       imgSrc:"https://img14.360buyimg.com/imagetools/s350x350_jfs/t1/23439/7/11643/155926/5c90d554E7f03c831/bd45cd0ee2daa2fa.jpg.dpg",
+    //       onClickImageLink(){
+    //         return false;  //返回false可阻止默认的链接跳转行为
+    //       }
+    //     });
+    // },
     toggleFold(idx) {
       this.foldStatus.splice(idx, 1, !this.foldStatus[idx]);
       sessionStorage.setItem("foldStatus", JSON.stringify(this.foldStatus));

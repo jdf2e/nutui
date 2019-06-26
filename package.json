@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "一套轻量级移动端Vue组件库",
   "typings": "dist/types/index.d.ts",
   "main": "dist/nutui.js",
@@ -51,7 +51,7 @@
     "intersection-observer": "^0.5.1"
   },
   "peerDependencies": {
-    "vue": "2.5.17"
+    "vue": "^2.6.10"
   },
   "devDependencies": {
     "@babel/cli": "7.1.2",
@@ -98,7 +98,7 @@
     "jest-serializer-vue": "2.0.2",
     "jsdom": "13.0.0",
     "jsdom-global": "3.0.2",
-    "marked": "0.5.1",
+    "marked": "^0.6.1",
     "mini-css-extract-plugin": "0.4.1",
     "mocha": "5.2.0",
     "mocha-webpack": "2.0.0-beta.0",
@@ -122,22 +122,21 @@
     "sass-loader": "7.1.0",
     "sass-resources-loader": "1.3.3",
     "semver": "5.5.1",
-    "shelljs": "0.8.2",
+    "shelljs": "^0.8.3",
     "style-loader": "0.22.1",
     "svg-sprite-loader": "3.9.2",
     "three": "^0.99.0",
     "uglifyjs-webpack-plugin": "1.3.0",
     "url-loader": "1.1.1",
-    "vue": "2.5.17",
+    "vue": "^2.6.10",
     "vue-i18n": "8.1.0",
     "vue-jest": "2.6.0",
-    "vue-loader": "15.4.0",
+    "vue-loader": "^15.7.0",
     "vue-router": "^3.0.2",
-    "vue-style-loader": "4.1.2",
-    "vue-template-compiler": "2.5.17",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10",
     "vueg": "1.3.4",
     "webpack": "4.25.0",
-    "webpack-bundle-analyzer": "2.13.1",
     "webpack-cli": "3.1.0",
     "webpack-dev-server": "3.1.11",
     "webpack-merge": "4.1.4",

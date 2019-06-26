@@ -87,6 +87,8 @@ import Uploader from "./packages/uploader/index.js";
 import "./packages/uploader/uploader.scss";
 import TextInput from "./packages/textinput/index.js";
 import "./packages/textinput/textinput.scss";
+import Avatar from "./packages/avatar/index.js";
+import "./packages/avatar/avatar.scss";
 
 const packages = {
   Cell,
@@ -131,7 +133,8 @@ const packages = {
   CountDown,
   InfiniteLoading,
   Uploader,
-  TextInput
+  TextInput,
+  Avatar
 };
 
 const components = {};
