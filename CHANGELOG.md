@@ -1,3 +1,15 @@
+## 2.1.3
+
+`2019-6-26`
+
+* :sparkles: feat: 新增头像组件`Avatar`
+* :sparkles: upd(SearchBar): 右侧文字或按钮增加事件，优化样式
+* :sparkles: upd(CountDown): 更新了单元测试用例
+* :sparkles: upd(NoticeBar): 优化了滚动速度
+* :sparkles: upd(date.js): 完善了`getNumTwoBit`方法( Thx to liu-dongyu)
+* :zap: chore: 更新部分依赖包版本
+* :zap: doc: 文档内容修改完善
+
 ## 2.1.2
 
 `2019-5-23`

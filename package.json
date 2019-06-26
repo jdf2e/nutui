@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "一套轻量级移动端Vue组件库",
   "typings": "dist/types/index.d.ts",
   "main": "dist/nutui.js",
