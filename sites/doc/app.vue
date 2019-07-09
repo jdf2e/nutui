@@ -13,8 +13,11 @@
         </div>
         <div class="h-nav">
           
-          <search/>
+        <search/>
+        <div class="joinus">
+          <a href="/joinus"></a>
           <img src="./asset/css/i/jion_us.gif" alt="">
+        </div>          
           <ul class="list">
             <li class="cur">
               <a href="#/intro">指南</a>
@@ -438,6 +441,18 @@ export default {
   }
   .fl-right{
     margin-left: 320px;
+  }
+}
+.joinus{
+  position: relative;
+  margin-left: auto;
+  a{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
   }
 }
 .foot {
