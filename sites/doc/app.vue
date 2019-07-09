@@ -274,6 +274,7 @@ export default {
     width: 100%;   
     background: #fff;
     z-index: 999;
+    border-bottom:1px solid #f2f2f2;
     select {
       width: 74px;
       height: 28px;
