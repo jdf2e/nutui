@@ -60,3 +60,4 @@ export declare class Scroller extends UIComponent {}
 export declare class CountDown extends UIComponent {}
 export declare class Uploader extends UIComponent {}
 export declare class TextInput extends UIComponent {}
+export declare class Avatar extends UIComponent {}

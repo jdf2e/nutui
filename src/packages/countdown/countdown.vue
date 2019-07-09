@@ -4,7 +4,7 @@
       <span class="nut-cd-block">{{plainText}}</span>
     </template>
     <template v-else>
-      <template v-if="resttime.d > 0 && showDays">
+      <template v-if="resttime.d >= 0 && showDays">
         <span class="nut-cd-block">{{resttime.d}}</span>
         <span class="nut-cd-dot">天</span>
       </template>
@@ -99,7 +99,7 @@ const countdownTimer = {
       const rest = restTime(this.restTime);
       const {d, h, m, s} = rest;
       if(!this.showDays && d > 0) {
-        rest.h = Number(rest.h) + d * 24;
+        rest.h = fill2(Number(rest.h) + d * 24);
         rest.d = 0;
       }
       return rest;
@@ -154,7 +154,8 @@ const countdownTimer = {
 }
 countdownTimer.restTime = restTime;
 
-export {restTime};
+// export fill2 for test
+export {restTime, fill2};
 export default countdownTimer; 
 </script>
 

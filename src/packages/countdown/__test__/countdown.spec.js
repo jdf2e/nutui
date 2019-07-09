@@ -1,5 +1,5 @@
 import {shallowMount} from '@vue/test-utils';
-import CountDown, {restTime} from '../countdown.vue';
+import CountDown, {restTime, fill2} from '../countdown.vue';
 
 describe('CountDown.vue', () => {
     const end = 1559334689373;
@@ -10,9 +10,9 @@ describe('CountDown.vue', () => {
     });
     it('默认显示时分秒', () => {
         const rest = restTime(end - Date.now());
-        const h = Number(rest.d) * 24 + Number(rest.h);
+        const h = fill2(Number(rest.d) * 24 + Number(rest.h));
         const text_h = wrapper.findAll('.nut-cd-block').at(0).text();
-        expect(h).toBe(Number(text_h));
+        expect(h).toBe(text_h);
         expect(h).toBe(wrapper.vm.resttime.h);
     });
 

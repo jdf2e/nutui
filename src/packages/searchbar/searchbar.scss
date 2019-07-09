@@ -13,7 +13,7 @@
 	    	margin-right: 10px;
 	    	.nut-icon {
 	    		float: left;
-	    		margin: 10px 0 0 10px;
+	    		margin: 8px 0 0 10px;
 	    	}
 	    	.close-icon {
 	    		display: none;
@@ -47,9 +47,9 @@
         }
 	}
 	.btn-search {
-		display: inline-block;
-		line-height: 2;
-		text-align: center;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 		color: $title-color;
 	}
 	a {

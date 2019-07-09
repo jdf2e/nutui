@@ -64,17 +64,7 @@
       <div class="foot">
         Copyright © 2018~2019
         <a href="//jdc.jd.com" target="_blank">JDC</a>-
-        <a target="_blank" class="qrcode2" href="javascript:;">前端开发部
-            <a>
-                <img
-                  src="./asset/css/i/explor.png"
-                  alt
-                >
-               <svg class="strange" width="10" viewBox="0,0 6,5">
-                 <polygon points="0,0 3,5 6,0" fill="#fff"/>
-               </svg>
-              </a>
-        </a>
+        <a target="_blank" href="javascript:;">前端开发部</a>
       </div>
     </div>
   </div>
@@ -495,32 +485,7 @@ body {
 .docpad{
    padding: 8px 200px 8px 0;
 }
-.qrcode2{
-  position: relative;
-  &:hover{
-   a{
-      display: block;
-   }
-  }
-  a{
-    position: absolute;
-    line-height: 12px;
-    background: #fff;
-    color: #333;
-    bottom:25px;
-    left: -30px;
-    font-size: 14px;
-    display: none;
-  }
-  .strange{
-    position: absolute;
-    left: 63px;
-  }
-  img{
-     width: 140px;
-     
-  }
-}
+
 // .button-primary {
 //   display: block;
 //   margin: 50px 0;
