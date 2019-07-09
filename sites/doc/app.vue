@@ -14,6 +14,7 @@
         <div class="h-nav">
           
           <search/>
+          <img src="./asset/css/i/jion_us.gif" alt="">
           <ul class="list">
             <li class="cur">
               <a href="#/intro">指南</a>
@@ -276,6 +277,8 @@ export default {
     padding-left: 42px;
     align-items: center;
     width: 100%;   
+    background: #fff;
+    z-index: 999;
     select {
       width: 74px;
       height: 28px;
