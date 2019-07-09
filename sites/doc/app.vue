@@ -223,7 +223,7 @@ export default {
   position: relative;
   background: #fff;
   min-height: 100vh;
-  min-width: 1000px;
+  min-width: 1200px;
   padding: 85px 0 200px 0;
   box-sizing: border-box;
   display: flex;
@@ -239,6 +239,7 @@ export default {
   align-items: center;
   margin-bottom: 50px;
   z-index: 42;
+  min-width: 1200px;
     .logo {
     width: 293px;
     height: 65px;   
