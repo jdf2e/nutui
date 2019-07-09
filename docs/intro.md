@@ -55,7 +55,7 @@ NutUI是一套京东风格的移动端Vue组件库，开发和服务于移动Web
 * [案例征集](https://github.com/jdf2e/nutui/issues/16)
 * [模板工程命令行工具(Gaea CLI)](https://www.npmjs.com/package/gaea-cli)
 * 联系我们：nutui@jd.com
-* [加入我们](/joinus)
+* [加入我们](#/joinus)
 
 
 ## 开源协议
