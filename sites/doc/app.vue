@@ -14,11 +14,12 @@
         <div class="h-nav">
           
         <search/>
-        <div class="joinus">
-          <a href="/joinus"></a>
-          <img src="./asset/css/i/jion_us.gif" alt="">
-        </div>          
+               
           <ul class="list">
+            <li class="joinus">
+              <a href="/joinus"></a>
+              <img src="./asset/css/i/jion_us.gif" alt="">
+            </li>   
             <li class="cur">
               <a href="#/intro">指南</a>
             </li>
@@ -341,6 +342,7 @@ export default {
     display: flex;
     list-style: none;
     margin-left: auto;
+    align-items: center;
     li {
       padding: 0 10px;
       height: 63px;
@@ -375,6 +377,22 @@ export default {
         }
       }
     }
+    .joinus{
+  position: relative;  
+  height: 40px;
+  border-radius: 3px;
+  overflow: hidden;
+  padding:0;
+  margin-right: 20px;
+  a{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+  }
+}
   }
 }
 
@@ -443,18 +461,7 @@ export default {
     margin-left: 320px;
   }
 }
-.joinus{
-  position: relative;
-  margin-left: auto;
-  a{
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    top:0;
-    left: 0;
-  }
-}
+
 .foot {
   height: 120px;
   background: #0a0a0a;
