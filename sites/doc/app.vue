@@ -17,7 +17,7 @@
                
           <ul class="list">
             <li class="joinus">
-              <a href="/joinus"></a>
+              <a href="#/joinus"></a>
               <img src="./asset/css/i/jion_us.gif" alt="">
             </li>   
             <li class="cur">
