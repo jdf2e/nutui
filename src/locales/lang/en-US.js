@@ -2,8 +2,6 @@ import Vue from 'vue'
 
 const lang = {
     lang: {
-        okBtnTxt: 'Ok',
-        cancelBtnTxt: 'Cancel',
         calendar: {
             loadPrevMonth: 'Load the last month',
             noMoreMonth: 'No earlier month~',
@@ -34,7 +32,8 @@ const lang = {
             limitError: 'File size exceeded the limit'
         }
         okBtnTxt: 'Ok',
-        cancelText: 'Cancel'
+        cancelText: 'Cancel',
+        cancelBtnTxt: 'Cancel',
     }
 }
 
