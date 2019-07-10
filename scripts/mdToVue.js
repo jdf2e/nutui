@@ -65,9 +65,13 @@ class mdVue{
             folders: { exclude: ['.*', 'node_modules', 'test_coverage'] },
             files: { include: ['*.md']},
             matchBasename: true
-        }).then(hash => {           
+        }).then(hash => {        
+
             nodeFilelist.read([_that.options.entry],{"ext":'md'}, res => {                  
-                res.map(item =>{
+                res.map((item,index) =>{
+                    if(index == 30){
+                        debugger
+                    }
                     let fileSplits = item.path.split(path.sep);
                     let fileName = fileSplits.pop();
                     if(_that.isDoc(fileName)){
@@ -76,17 +80,27 @@ class mdVue{
                         fileName = fileName.replace(/\.md/,'');
                     }
                     if(_that.needHandleFiles[fileName]){                   
-                        _that.read(item.path).then(res=>{
-                            _that.headHandle();
-                            _that.markHandle();
-                            let html = _that.marked(res);                                
-                            _that.write({
-                                outsrc:_that.options.output,
-                                name:fileName + '.vue',
-                                html:html
-                            });
-                        })
-                    }                   
+                        // _that.read(item.path).then(res=>{
+                        //     _that.headHandle();
+                        //     _that.markHandle();
+                        //     let html = _that.marked(res);                                
+                        //     _that.write({
+                        //         outsrc:_that.options.output,
+                        //         name:fileName + '.vue',
+                        //         html:html
+                        //     });
+                        // })
+                    }
+                    _that.read(item.path).then(res=>{
+                        _that.headHandle();
+                        _that.markHandle();
+                        let html = _that.marked(res);                                
+                        _that.write({
+                            outsrc:_that.options.output,
+                            name:fileName + '.vue',
+                            html:html
+                        });
+                    })               
                 });
             });
         })

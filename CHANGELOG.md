@@ -1,3 +1,13 @@
+## 2.1.4
+
+`2019-7-10`
+
+* :sparkles: upd(SearchBar): 增加props控制内部Icon尺寸和颜色
+* :bug: fix(Skeleton): 修复文档无法查看的问题
+* :bug: fix: 修复国际化语言包一处错误
+* :zap: chore: 优化服务端渲染
+* :zap: doc: 新增加入我们页面
+
 ## 2.1.3
 
 `2019-6-26`

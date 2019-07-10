@@ -13,8 +13,13 @@
         </div>
         <div class="h-nav">
           
-          <search/>
+        <search/>
+               
           <ul class="list">
+            <li class="joinus">
+              <a href="#/joinus"></a>
+              <img src="./asset/css/i/jion_us.gif" alt="">
+            </li>   
             <li class="cur">
               <a href="#/intro">指南</a>
             </li>
@@ -63,17 +68,7 @@
       <div class="foot">
         Copyright © 2018~2019
         <a href="//jdc.jd.com" target="_blank">JDC</a>-
-        <a target="_blank" class="qrcode2" href="javascript:;">前端开发部
-            <a>
-                <img
-                  src="./asset/css/i/explor.png"
-                  alt
-                >
-               <svg class="strange" width="10" viewBox="0,0 6,5">
-                 <polygon points="0,0 3,5 6,0" fill="#fff"/>
-               </svg>
-              </a>
-        </a>
+        <a target="_blank" href="javascript:;">前端开发部</a>
       </div>
     </div>
   </div>
@@ -228,7 +223,7 @@ export default {
   position: relative;
   background: #fff;
   min-height: 100vh;
-  min-width: 1000px;
+  min-width: 1200px;
   padding: 85px 0 200px 0;
   box-sizing: border-box;
   display: flex;
@@ -244,6 +239,7 @@ export default {
   align-items: center;
   margin-bottom: 50px;
   z-index: 42;
+  min-width: 1200px;
     .logo {
     width: 293px;
     height: 65px;   
@@ -276,6 +272,9 @@ export default {
     padding-left: 42px;
     align-items: center;
     width: 100%;   
+    background: #fff;
+    z-index: 999;
+    border-bottom:1px solid #f2f2f2;
     select {
       width: 74px;
       height: 28px;
@@ -345,6 +344,7 @@ export default {
     display: flex;
     list-style: none;
     margin-left: auto;
+    align-items: center;
     li {
       padding: 0 10px;
       height: 63px;
@@ -379,6 +379,22 @@ export default {
         }
       }
     }
+    .joinus{
+  position: relative;  
+  height: 40px;
+  border-radius: 3px;
+  overflow: hidden;
+  padding:0;
+  margin-right: 20px;
+  a{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+  }
+}
   }
 }
 
@@ -447,6 +463,7 @@ export default {
     margin-left: 320px;
   }
 }
+
 .foot {
   height: 120px;
   background: #0a0a0a;
@@ -492,32 +509,7 @@ body {
 .docpad{
    padding: 8px 200px 8px 0;
 }
-.qrcode2{
-  position: relative;
-  &:hover{
-   a{
-      display: block;
-   }
-  }
-  a{
-    position: absolute;
-    line-height: 12px;
-    background: #fff;
-    color: #333;
-    bottom:25px;
-    left: -30px;
-    font-size: 14px;
-    display: none;
-  }
-  .strange{
-    position: absolute;
-    left: 63px;
-  }
-  img{
-     width: 140px;
-     
-  }
-}
+
 // .button-primary {
 //   display: block;
 //   margin: 50px 0;
