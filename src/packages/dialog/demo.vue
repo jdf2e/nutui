@@ -71,7 +71,8 @@
       </nut-cell>
     </div>
     <!-- 以标签形式调用Dialog -->
-    <nut-dialog title="标签形式调用" :visible="dialogShow" @ok-btn-click="dialogShow=false" @cancel-btn-click="dialogShow=false" @close="dialogShow=false">
+    <nut-dialog title="标签形式调用" :visible="dialogShow" :cancelAutoClose="false" @ok-btn-click="dialogShow=false" @cancel-btn-click="dialogShow=false" @close="dialogShow=false">
+      
       <a href="javascript:;" @click="dialogShow=false" :noCancelBtn="true">点我可以直接关闭对话框</a>
     </nut-dialog>
   </div>

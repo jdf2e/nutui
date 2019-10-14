@@ -27,6 +27,7 @@ module.exports = merge(baseConf, {
         contentBase: path.resolve(__dirname, 'dist/sites/'),
         index: 'demo.html',
         compress: true,
+        noInfo: true,      
         historyApiFallback: true,
         disableHostCheck: true
     }

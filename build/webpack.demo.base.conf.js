@@ -18,7 +18,7 @@ module.exports = merge(webpackBaseConf, {
         path: path.resolve(__dirname, '../dist/sites/'),
         chunkFilename: 'demo/js/[name].[hash:5].js',
         filename: isDev ? 'demo/js/[name].js' : 'demo/js/[name].[hash].js'
-    },
+    },    
     module: {
         rules: [
             //自定义主题

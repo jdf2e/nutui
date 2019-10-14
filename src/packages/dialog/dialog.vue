@@ -195,6 +195,7 @@ export default {
       }
     },
     cancelBtnClick(autoClose) {
+      debugger
       this.$emit("cancel-btn-click");
       if (typeof this.onCancelBtn === "function") {
         if (this.onCancelBtn.call(this) === false) return;
