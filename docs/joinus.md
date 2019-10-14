@@ -26,4 +26,4 @@
 
 ### 简历投递：
 
-yfzhoutao@jd.com
+nutui@jd.com
