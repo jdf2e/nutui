@@ -3,14 +3,21 @@ const config = require('../package.json');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const moment = require('moment');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+var WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const isDev = process.env.NODE_ENV === 'development';
 var test = process.env.NODE_ENV === 'test';
 const path = require('path');
+const HappyPack = require('happypack');
+const os = require('os');
+const chalk= require('chalk');
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 module.exports = {
     stats: {
         entrypoints: false,
         children: false
     },
+    stats: 'errors-only',
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
@@ -22,6 +29,7 @@ module.exports = {
             !test ? {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
+                    'cache-loader',
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
@@ -40,6 +48,7 @@ module.exports = {
             {
                 test: /\.vue$/,
                 use: [
+                    'cache-loader',
                     {
                         loader: 'vue-loader',
                         options: {
@@ -63,9 +72,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader'
-                }
+                use: ['happypack/loader?id=Babel']
             }, 
             {
                 test: /\.(png|jpg|gif|webp)$/,
@@ -82,6 +89,27 @@ module.exports = {
 (c) 2017-2018 JDC
 Released under the MIT License.`
         }),
-        new VueLoaderPlugin()
+        new HappyPack({
+            //用id来标识 happypack处理那里类文件
+          id: 'Babel',
+          //如何处理  用法和loader 的配置一样
+          loaders: [{
+            loader: 'babel-loader?cacheDirectory=true',
+          }],
+          //共享进程池
+          threadPool: happyThreadPool,
+          //允许 HappyPack 输出日志
+          verbose: false,
+        }),       
+        new VueLoaderPlugin(),
+        new ProgressBarPlugin({
+            format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',      
+            clear: false, 
+            width: 100
+          }),
+          new WebpackBuildNotifierPlugin({
+            title: "My Project Webpack Build",        
+            suppressSuccess: true
+          })
     ],
 }
