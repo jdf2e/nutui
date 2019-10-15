@@ -28,8 +28,7 @@ module.exports = {
         rules: [
             !test ? {
                 test: /\.(sa|sc|c)ss$/,
-                use: [
-                    'cache-loader',
+                use: [                    
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
