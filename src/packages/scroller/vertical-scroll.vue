@@ -56,12 +56,18 @@ export default {
             type: Number,
             default: 100
         },
+        propsTime: {
+            type:Number,
+            default: 3000
+        }
     },
     watch: {
         'isLoading': function(status) {
             if (!status && this.realMove === 0) {
                 clearTimeout(this.timer);
-                this.setTransform(this.realMove, 'end', 0);
+                this.timer = setTimeout(() => {
+                    this.setTransform(this.realMove, 'end', 0);
+                }, this.propsTime);
             }
         },
         'isUnMore': function() {
