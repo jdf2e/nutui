@@ -56,20 +56,18 @@ export default {
             type: Number,
             default: 100
         },
-        propstime: {
+        propsTime: {
             type:Number,
-            default:3000
+            default: 3000
         }
     },
     watch: {
         'isLoading': function(status) {
             if (!status && this.realMove === 0) {
-               clearTimeout(this.outTimer);
-               this.outTimer = setTimeout(()=>{
-                    clearTimeout(this.timer);
-                    this.setTransform(this.realMove, 'end', 0); 
-                },this.propstime)
-                
+                clearTimeout(this.timer);
+                this.timer = setTimeout(() => {
+                    this.setTransform(this.realMove, 'end', 0);
+                }, this.propsTime);
             }
         },
         'isUnMore': function() {
@@ -91,8 +89,7 @@ export default {
             realMove: 0,
             isShowLoadMore: false,
             listMinHeightStyle: 'auto',
-            isFirstPull: true,
-            outTimer:null
+            isFirstPull: true
         }
     },
 
