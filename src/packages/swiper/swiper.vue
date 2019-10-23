@@ -73,7 +73,18 @@ export default {
         },
         lazyLoadUrl:{
             type:String,
-            default:'//img10.360buyimg.com/n1/s375x375_jfs/t1/811/7/9399/13031/5bab45c8E2614735e/a4e343007567442c.png'
+            default:''
+        },
+        swiperData:{
+            type:[Array],
+            default:function(){
+                return [];
+            }
+        }
+    },
+    watch:{
+        swiperData(newValue,oldValue){
+            this.updateEvent();
         }
     },
     data(){
@@ -139,7 +150,24 @@ export default {
             return this.direction === HORIZONTAL;
         },
         isVertical(){
-            return this.direction === VERTICAL;
+            return this.direction === VERTICAL; 
+        },
+        renderLazyDom(slideEls){
+            slideEls.forEach((item,index)=>{
+                let src = item.getAttribute('data-src');
+                if(item.className!="nut-swiper-slide nut-swiper-slide-selected"){
+                    var dom=document.createElement("div");
+                     //jd 图片占位图)
+                    if(this.lazyLoadUrl){ 
+                        dom.style.backgroundImage=`url('${this.lazyLoadUrl}')`;
+                        dom.className="nut-lazy img";
+                    }else{
+                        dom.className="nut-lazy preloader";
+                    }
+                    item.appendChild(dom);
+                }
+            })
+            return true;
         },
         updateEvent(pageSize){
             this.$nextTick(()=>{
@@ -157,7 +185,7 @@ export default {
                     }
                     this.isLoop && this._createLoop(); 
                     this.setPage(this.currentPage, false);
-                    this.lazyLoad  && this._imgLazyLoad();
+                    this.lazyLoad && this.renderLazyDom(this.slideEls) && this._imgLazyLoad();
                 },0)
                 
 
@@ -209,7 +237,6 @@ export default {
             //let  isQuickAction = (new Date().getTime() - this.startTime) < 200;
             if(this.canDragging && this._computePreventDefault(e)){
                 e.preventDefault();
-                this.lazyLoad && this._imgLazyLoad();
                 this._setTranslate(this.startTranslate + this.delta);
                 this.$emit('slideMove',this._getTranslate(),this.$el);
             }
@@ -328,14 +355,16 @@ export default {
                 if(type == 1){
                     imgLazyLoadEl = this.slideEls[this.currentPage - 1].querySelectorAll('.nut-img-lazyload');
                 }
-               
                 imgLazyLoadEl.forEach((item,index)=>{
                     if(!this._checkInView(item) && type != 1) return;
                     let src = item.getAttribute('data-src');
-                    item.src = this.lazyLoadUrl;//jd 图片占位图
                     let img = new Image();
                     img.src = src;
                     img.onload = ()=>{
+                        let lazyLoadingEle = item.parentElement.querySelector('.nut-lazy');
+                        if(lazyLoadingEle){
+                            item.parentElement.removeChild(lazyLoadingEle);
+                        }
                         item.src = src;
                         item.classList.remove('nut-img-lazyload');
                     }

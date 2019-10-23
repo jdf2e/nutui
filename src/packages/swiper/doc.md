@@ -10,8 +10,8 @@
 <nut-swiper
     :paginationVisible="true"
     direction="horizontal"
+    :swiperData="dataItem"
     ref="demo1"
-    
 >
     <div  v-for="(item,index) in dataItem" :key="index"  class="nut-swiper-slide">
         <span>page{{item.name}}</span>
@@ -24,10 +24,10 @@
 ```html
 <nut-swiper
     direction="horizontal"
-    ref="demo2"
+    :swiperData="dataItem"
     :canDragging="false"
     :paginationVisible="true"
-    
+    ref="demo2"
 >
     <div  v-for="(item,index) in dataItem" :key="index"  class="nut-swiper-slide">
         <span>page{{item.name}}</span>
@@ -41,11 +41,10 @@
 ```html
 <nut-swiper
     direction="horizontal"
-    ref="demo3"
     :loop="true"
     :canDragging="false"
     :paginationVisible="true"
-    
+    ref="demo3"
 >
     <div  class="nut-swiper-slide gray" >
         <span>page 1</span>
@@ -67,9 +66,8 @@
 ```html
  <nut-swiper
     direction="vertical"
-    ref="dem4"
     :autoPlay="3000"
-    id="dome4"
+    ref="demo4"
 >
     <div  class="nut-swiper-slide gray" >
         <span>page 1</span>
@@ -91,9 +89,10 @@
 ```html
 <nut-swiper
     direction="horizontal"
-    ref="demo4"
+    :swiperData="dataImgItem"
     :lazyLoad="true"
-        :paginationVisible="true"
+    :paginationVisible="true"
+    ref="demo5"
 >
         <div  v-for="(item,index) in dataImgItem" :key="index"  class="nut-swiper-slide ">
         <img :data-src="item.imgSrc"   style="max-width:100%; max-height:100%" class="nut-img-lazyload"/> 
@@ -106,7 +105,7 @@
     export default{
         data(){
             return{
-                dataItem:null,
+                dataItem:[],
                 dataImgItem:[],
             }
         },
@@ -136,12 +135,6 @@
                         imgSrc:'//m.360buyimg.com/mobilecms/s843x843_jfs/t1/27233/9/354/82863/5c090a0eEe2a350d8/aaa6686ce133e364.jpg'
                     }
                 ];
-                
-                this.$refs.demo1.updateEvent(1);
-                this.$refs.demo2.updateEvent();
-
-                this.$refs.demo4.updateEvent();
-
             },300)
         }
     }
@@ -162,6 +155,7 @@
 | initPage | 设置初始时候显示的页 | Number | 1
 | lazyLoad | 是否懒加载图片 | Boolean | false
 | lazyLoadUrl | 懒加载的默认展示图片 | String | -
+| swiperData | 异步数据渲染slide时，必须绑定对应数组 | Array | -
 
 ## Methods
 
@@ -170,7 +164,6 @@
 | next | 去下一页 | -
 | prev | 去上一页 | -
 | setPage |  设置当前显示第几页 | number
-| updateEvent | 异步数据渲染slide，都需要重新调用方法，绑定事件，如【横向无缝滑动】this.$refs.demo1.update(1)。也提供设置初始页面 | number
 
 ## Events
 | 字段 | 说明 | 回调参数 
