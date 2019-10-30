@@ -100,6 +100,35 @@ export default {
 </nut-uploader>   
 ```
 
+自定义 headers & formData 使用
+```html
+<nut-uploader
+  :name="name"
+  :url="url"
+  :headers="headers"
+  :attach="formData"
+  >
+  <nut-button small>上传</nut-button>
+</nut-uploader>   
+```
+```javascript
+export default { 
+  data() {
+    return {
+      url:'https://my-json-server.typicode.com/linrufeng/demo/posts', 
+      name:'testname',
+      headers:{
+        token:'test'
+      },
+      formData:{
+        f1:'test',
+        f2:'test1'
+      },
+    };
+  },
+}
+```
+
 与进度条组件 **Progress** 结合使用
 
 ```html
@@ -122,7 +151,8 @@ export default {
 | clearInput | 是否需要清空input内容，设为true支持重复选择上传同一个文件 | Boolean | false
 | maxSize | 可以设定最大上传文件的大小（字节） | Number | 5242880
 | acceptType | 可以上传文件的类型 | Array | ['image/jpeg', 'image/png', 'image/gif', 'image/bmp']
-| attach | 附加上传的信息 | Object | {}
+| attach | 附加上传的信息formData | Object | {}
+| headers | 自定义headers | Object | {}
 | xhrState | 接口响应的成功状态（status）值 | Number | 200
 | typeError | 文件类型错误提示文案 | String | "不支持上传该类型文件"
 | limitError | 文件大小超过限制提示文案 | String | "文件大小超过限制"

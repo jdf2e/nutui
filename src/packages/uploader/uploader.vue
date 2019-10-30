@@ -43,6 +43,12 @@ export default {
         return {};
       }
     },
+    headers:{
+      type: Object,
+      default() {
+        return {};
+      }
+    },
     changeEvtCallback: {
       type: Function
     },
@@ -77,6 +83,7 @@ export default {
         $el: {},
         url: this.url, //图片上传地址
         formData: null,
+        headers: {}, //自定义headers
         isPreview: this.isPreview, //是否开启本地预览
         previewData: null,
         maxSize: this.maxSize, //允许上传的文件最大字节
@@ -139,6 +146,7 @@ export default {
         formData.append(key, this.attach[key]);
       }
       opt.formData = formData;
+      opt.headers = this.headers || {};
       opt.showMsgFn = msg => {
         this.$emit("showMsg", msg);
       };
