@@ -85,7 +85,7 @@ module.exports = {
     plugins: [
         new webpack.BannerPlugin({
             banner: `NutUI v${config.version} - [filebase], [hash], ${moment().format()}
-(c) 2017-2018 JDC
+(c) 2017-2019 JDC
 Released under the MIT License.`
         }),
         new HappyPack({
@@ -105,10 +105,12 @@ Released under the MIT License.`
             format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',      
             clear: false, 
             width: 100
-          }),
-          new WebpackBuildNotifierPlugin({
-            title: "My Project Webpack Build",        
+        }),
+        new WebpackBuildNotifierPlugin({
+            title: "NutUI Webpack Build",        
             suppressSuccess: true
-          })
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
     ],
 }

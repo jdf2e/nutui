@@ -58,10 +58,10 @@
             <div class="bg">
               <img src="./asset/css/i/phtitle.png" alt>
               <div>
-                <input type="text" readonly :value="'https://nutui.jd.com/demo.html#/'+routerName">
+                <input type="text" readonly :value="demourl+routerName">
               </div>
             </div>
-            <iframe :src="'//nutui.jd.com/demo.html#/'+routerName+'?ver='+version"></iframe>
+            <iframe :src="demourl+routerName+'?ver='+version"></iframe>
           </div>
         </div>
       </div>
@@ -92,7 +92,8 @@ export default {
       showPhone: false,
       searchCurName: "",
       searchIndex: 0,
-      codeurl: ""     
+      codeurl: "",
+      demourl: location.origin + '/demo.html#/'
     };
   },
   watch: {

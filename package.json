@@ -12,7 +12,8 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "dev": "npm run dev:demo",
+    "dev": "npm run dev:new",
+    "dev:new": "cross-env NODE_ENV=development DOC_TYPE=true webpack-dev-server -d --open  --config build/webpack.dev.conf.js",
     "dev:carefree": "cross-env NODE_ENV=carefree carefree_env=dev webpack -w --colors --progress --config build/webpack.demo.dev.conf.js",
     "dev:demo": "cross-env NODE_ENV=development webpack-dev-server -d --open  --config build/webpack.demo.dev.conf.js",
     "dev:doc": "cross-env NODE_ENV=development DOC_TYPE=true webpack-dev-server -d --open -w --progress --config build/webpack.doc.dev.conf.js",
