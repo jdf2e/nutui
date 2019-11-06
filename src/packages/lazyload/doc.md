@@ -9,7 +9,7 @@
     <h4>背景图懒加载</h4>
     <div v-lazy:background-image="imageArray[1]"></div>
     <h4>懒加载模块</h4>
-    <lazy-component @show="handler">
+    <lazy-component>
       <img :src="imageArray[2]" />
     </lazy-component>
     <h4>错误、加载中 图片设置</h4>

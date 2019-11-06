@@ -27,7 +27,18 @@ yarn add @nutui/nutui
 
 当然你也可以通过 CDN 的方式引入， 可以在 **jsdelivr** 和 **unpkg** 等公共 CDN 上获取到 NutUI。我们推荐链接到一个你可以手动更新的指定版本号。
 
+```html 开发环境版本，包含了有帮助的命令行警告
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.css">
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.js"></script>
+```
+或者
 ```html
+<!-- 生产环境版本，优化了尺寸和速度 -->
 <!-- 引入样式 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.css">
 <!-- 引入Vue -->
