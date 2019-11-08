@@ -31,15 +31,15 @@
 </nut-datepicker>
 ```
 
-日期时间选择（有默认值，限制开始结束时间）
+日期时间选择（有默认值，限制开始结束时间，限制到时分）
 
 ```html
 <nut-datepicker 
     :is-visible="isVisible2"
     title="请选择日期时间" 
     type="datetime"
-    startDate="1991-11-10"
-    endDate="2019-10-05"
+    startDate="2000-11-10 12:08"
+    endDate="2030-10-05 10:04"
     defaultValue="2018-11-02 11:08"
     @close="switchPicker('isVisible2')"
     @choose="setChooseValue2"
@@ -152,8 +152,8 @@ export default {
 | isShowChinese | 每列是否展示中文 | Boolean | true
 | title | 设置标题 | String | null
 | defaultValue | 默认值 | String | null
-| startDate | 设置标题 | String | '2000-01-01'
-| endDate | 设置标题 | String | 今天
+| startDate | 开始日期 | String | '2000-01-01'
+| endDate | 结束日期 | String | 今天
 | startHour | 开始小时 | Number | 1
 | endHour | 结束小时 | Number | 23
 
