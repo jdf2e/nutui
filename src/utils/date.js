@@ -91,6 +91,18 @@ let Utils = {
      * @return {Boolean}
      */
     compareDate: function (date1, date2) {
+        let startTime = new Date(date1.replace('-', '/').replace('-', '/'));
+        let endTime = new Date(date2.replace('-', '/').replace('-', '/'));
+        if (startTime >= endTime) {
+            return false;
+        }
+        return true;
+	},
+	/**
+     * 时间比较
+     * @return {Boolean}
+     */
+    compareDateArr: function (date1, date2) {
 		let startTime = new Date();
 		startTime.setFullYear(date1[0],date1[1],date1[2]);
 		startTime.setHours(date1[3],date1[4])

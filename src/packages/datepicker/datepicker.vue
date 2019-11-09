@@ -116,7 +116,7 @@ export default {
                 this.endDateArr = Utils.date2Str(new Date());
             }
             // 结束时间小于开始时间，结束时间重置为开始时间
-            if (Utils.compareDate(this.endDateArr, this.startDateArr)) {
+            if (Utils.compareDateArr(this.endDateArr, this.startDateArr)) {
                 // this.endDate = this.startDate;
                 this.endDateArr=this.startDateArr;
             }
