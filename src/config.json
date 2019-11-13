@@ -462,6 +462,16 @@
       "sort": "5",
       "showDemo": true,
       "author": "zhenyulei"
+    },
+    {
+      "version": "1.0.0",
+      "name": "lazyload",
+      "chnName": "图片懒加载",
+      "desc": "图片懒加载",
+      "type": "component",
+      "sort": "0",
+      "showDemo": true,
+      "author": "zhuzhida"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "一套轻量级移动端Vue组件库",
   "typings": "dist/types/index.d.ts",
   "main": "dist/nutui.js",
@@ -12,7 +12,8 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "dev": "npm run dev:demo",
+    "dev": "npm run dev:new",
+    "dev:new": "cross-env NODE_ENV=development DOC_TYPE=true webpack-dev-server -d --open  --config build/webpack.dev.conf.js",
     "dev:carefree": "cross-env NODE_ENV=carefree carefree_env=dev webpack -w --colors --progress --config build/webpack.demo.dev.conf.js",
     "dev:demo": "cross-env NODE_ENV=development webpack-dev-server -d --open  --config build/webpack.demo.dev.conf.js",
     "dev:doc": "cross-env NODE_ENV=development DOC_TYPE=true webpack-dev-server -d --open -w --progress --config build/webpack.doc.dev.conf.js",
@@ -136,6 +137,7 @@
     "vue": "^2.6.10",
     "vue-i18n": "8.1.0",
     "vue-jest": "2.6.0",
+    "vue-lazyload": "1.3.3",
     "vue-loader": "15.4.0",
     "vue-router": "^3.0.2",
     "vue-style-loader": "^4.1.2",

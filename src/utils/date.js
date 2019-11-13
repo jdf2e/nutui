@@ -99,6 +99,22 @@ let Utils = {
         return true;
 	},
 	/**
+     * 时间比较
+     * @return {Boolean}
+     */
+    compareDateArr: function (date1, date2) {
+		let startTime = new Date();
+		startTime.setFullYear(date1[0],date1[1],date1[2]);
+		startTime.setHours(date1[3],date1[4])
+		let endTime = new Date();
+		endTime.setFullYear(date2[0],date2[1],date2[2]);
+		endTime.setHours(date2[3],date2[4])
+        if (startTime >= endTime) {
+            return false;
+        }
+        return true;
+	},
+	/**
      * 时间是否相等
      * @return {Boolean}
      */
@@ -109,7 +125,48 @@ let Utils = {
             return true;
         }
         return false;
-	}
+	},
+	getDateArr(str){
+		return [
+			this.getYear(str),
+			this.getMonth(str),
+			this.getDate(str),
+			this.getHour(str),
+			this.getMinute(str)
+		]
+	},
+
+	isDateString(str) {
+		return /\d{4}(\-|\/|.)\d{1,2}\1\d{1,2}/.test(str) || /^([01][0-9]|2[0-3])(:[0-5][0-9]){1,2}$/.test(str);
+	},
+
+	getYear(value) {
+		return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[0] : value.getFullYear();
+	},
+
+	getMonth(value) {
+		return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[1] : value.getMonth() + 1;
+	},
+
+	getDate(value) {
+		return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[2] : value.getDate();
+	},
+
+	getHour(value) {
+		if (this.isDateString(value)) {
+			const str = value.split(' ')[1] || '00:00:00';
+			return str.split(':')[0];
+		}
+		return value.getHours();
+	},
+
+	getMinute(value) {
+		if (this.isDateString(value)) {
+			const str = value.split(' ')[1] || '00:00:00';
+			return str.split(':')[1];
+		}
+		return value.getMinutes();
+	},
 };
 
 export default Utils;

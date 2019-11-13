@@ -1,3 +1,13 @@
+## 2.1.7
+
+`2019-11-13`
+* :sparkles: upd(swiper): 异步加载不需主动调用updateEvent事件、懒加载方式优化
+* :sparkles: upd(uploader): 增加自定义header功能
+* :sparkles: feat: 新增图片懒加载组件`LazyLoad`
+* :zap: chore(webpack): 构建环境多入口模式（构建环境支持 doc文档和mobile 示例 同时调试）；热更新配置，公共模块
+* :zap: doc: start.md 文档修改
+* :bug: fix: datepicker 组件bug修复(异步修改startDate,endDate,defaultValue字段无响应；时间限制支持到时、分)
+
 ## 2.1.6
 
 `2019-10-15`

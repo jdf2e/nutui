@@ -61,3 +61,5 @@ export declare class CountDown extends UIComponent {}
 export declare class Uploader extends UIComponent {}
 export declare class TextInput extends UIComponent {}
 export declare class Avatar extends UIComponent {}
+export declare class Infiniteloading extends UIComponent {}
+export declare class Lazyload extends UIComponent {}
