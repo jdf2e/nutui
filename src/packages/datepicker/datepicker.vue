@@ -244,7 +244,7 @@ export default {
                 
                 let resHour = undefined;
                 if(startEqualState && endEqualState){
-                    if(hour >= parseInt(startHour) && hour <= parseInt(startHour)){
+                    if(hour >= parseInt(startHour) && hour <= parseInt(endHour)){
                         resHour = hour;
                     }
                 }
