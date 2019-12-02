@@ -58,7 +58,7 @@ export default {
         },
         propsTime: {
             type:Number,
-            default: 3000
+            default: 0
         }
     },
     watch: {
@@ -146,12 +146,12 @@ export default {
                         // }, time / 2);
                     }
                 }
-                if (updateMove == 50 && !this.isLoading) {
-                    clearTimeout(this.timer);
-                    this.timer = setTimeout(() => {
-                        this.setTransform(this.realMove, 'end', null);
-                    }, 3000);
-                }
+                // if (updateMove == 50 && !this.isLoading) {
+                //     clearTimeout(this.timer);
+                //     this.timer = setTimeout(() => {
+                //         this.setTransform(this.realMove, 'end', null);
+                //     }, 3000);
+                // }
                 this.setTransform(updateMove, type, time)
             } else {
                 if (updateMove > 0 && updateMove > this.stretch) {

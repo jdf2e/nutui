@@ -36,6 +36,7 @@
                 :is-un-more="isUnMore1" 
                 :is-loading="isLoading1"
                 :type="'vertical'"
+                :propsTime="0"
                 @loadMore="loadMoreVert"
                 @pulldown="pulldown"
             > 
@@ -121,7 +122,7 @@ export default {
                 this.isUnMore1 = false;
                 this.listData1 = new Array(20);
                 this.page1 = 2;
-            }, 300);
+            }, 3000);
         },
 
 
