@@ -10,6 +10,12 @@ export default {
     current: {
       type: Number
     },
+    source: {
+      type: Array,
+      default() {
+        return [];
+      }
+    },
     status: {
       validator(value) {
         return ["wait", "process", "finish", "error"].includes(value);
@@ -50,17 +56,27 @@ export default {
           child.currentStatus += " nut-step-last";
         }
       });
+    },
+    init() {
+      if (this.$slots.default) {
+        this.steps = this.$slots.default
+          .filter(vnode => !!vnode.componentInstance)
+          .map(node => node.componentInstance);
+        this.updateChildProps(true);
+      }
     }
   },
   mounted() {
-    this.steps = this.$slots.default
-      .filter(vnode => !!vnode.componentInstance)
-      .map(node => node.componentInstance);
-    this.updateChildProps(true);
+    this.init();
   },
   watch: {
     current() {
       this.updateChildProps();
+    },
+    source() {
+      this.$nextTick(() => {
+        this.init();
+      });
     }
   }
 };
