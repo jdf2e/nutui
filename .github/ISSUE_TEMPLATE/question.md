@@ -1,8 +1,8 @@
 ---
 name: Question
 about: 问我们一个关于这个项目的问题
-title: ''
-labels: ''
+title: '[question]'
+labels: 'question'
 assignees: ''
 
 ---

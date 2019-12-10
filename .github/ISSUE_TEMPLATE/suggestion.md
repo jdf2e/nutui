@@ -1,8 +1,8 @@
 ---
 name: Suggestion
 about: 为这个项目提出一个建议
-title: ''
-labels: ''
+title: '[suggest]'
+labels: 'help wanted'
 assignees: ''
 
 ---

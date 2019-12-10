@@ -1,8 +1,8 @@
 ---
 name: 'Bug Report'
 about: '创建错误报告以帮助我们改进。'
-title: ''
-labels: ''
+title: '[bug]'
+labels: 'bug'
 assignees: ''
 
 ---
