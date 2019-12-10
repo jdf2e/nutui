@@ -1,6 +1,6 @@
 ---
-name: '缺陷问题反馈'
-about: '如何正确的提出一个 Issue'
+name: 'Bug Report'
+about: '创建错误报告以帮助我们改进。'
 title: ''
 labels: ''
 assignees: ''
@@ -32,3 +32,5 @@ assignees: ''
 - **操作系统**：
 - **Node 版本**：
 - **NutUI 版本**：
+- **Vue 版本**：
+- **引用方式**：  CDN / NPM ？
