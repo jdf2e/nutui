@@ -9,7 +9,7 @@
             :size="item.size ? item.size : size"
             
             :id="item[keys.id]"
-            :checked="isOptionCheckedByDefault(item)"
+            :checked.sync="item.checked"
             
             
             v-model="checkboxValues[index]"
@@ -79,13 +79,29 @@ export default {
         return {
             ignoreChange: false,
         	checkboxValues: [],
-            initialValue: JSON.parse(JSON.stringify(this.value))
+            initialValue: []
         };
     },
     components: {
 	    [nutcheckbox.name]: nutcheckbox
-	},
+    },
+    watch:{
+        value(){
+            this.init();
+        }
+    },
+    mounted(){
+        this.init()
+    },
     methods: {
+        init(){
+            this.initialValue = this.value;
+            this.checkBoxData.map(item=>{
+                if(typeof item ==="object"){
+                    item.checked = this.isOptionCheckedByDefault(item)
+                }
+            })
+        },
         isObject(obj) {
             return obj !== null && typeof obj === 'object';
         },
