@@ -9,7 +9,6 @@ English | [简体中文](./README-zh_CN.md)
 
 ## Features
 
-* Cross-platform，automatically convert to WeChat Mini Program components（coming soon）
 * New structure
 * Used by 30+ JD mobile projects
 * Refer to JD APP 7.0 visual specification

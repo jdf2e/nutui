@@ -1,8 +1,8 @@
 ---
-name: '缺陷问题反馈'
-about: '如何正确的提出一个 Issue'
-title: ''
-labels: ''
+name: 'Bug Report'
+about: '创建错误报告以帮助我们改进。'
+title: '[bug]'
+labels: 'bug'
 assignees: ''
 
 ---
@@ -11,7 +11,7 @@ assignees: ''
 感谢您向我们反馈问题，为了高效的解决问题，我们期望你能提供以下信息：
 -->
 
-## What happens?
+## 问题描述
 <!-- 清晰的描述下遇到的问题。-->
 
 ## 最小可复现仓库
@@ -32,3 +32,5 @@ assignees: ''
 - **操作系统**：
 - **Node 版本**：
 - **NutUI 版本**：
+- **Vue 版本**：
+- **引用方式**：  CDN / NPM ？

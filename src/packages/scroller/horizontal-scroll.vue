@@ -1,5 +1,5 @@
 <template>
-    <div class="nut-hor-scroll" rel="wrapper">
+    <div class="nut-hor-scroll" ref="wrapper">
         <div class="nut-hor-list" ref="list">
             <slot name="list"></slot>
 	         <div class="nut-hor-control" v-if="$slots.more && isShowLoadMore">
@@ -37,7 +37,7 @@ export default {
     },
     methods: {
         isShow() {
-            let wrapH = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            let wrapH = this.$refs.wrapper.clientWidth;
             let listH = this.$refs.list.offsetWidth;
             if (wrapH <= listH) {
                 this.isShowLoadMore =  true;
@@ -60,7 +60,7 @@ export default {
 
         setMove(move, type, time) {
             let updateMove = move + this.transformX;
-            let w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            let w = this.$refs.wrapper.clientWidth;
             let offsetWidth = this.$refs.list.offsetWidth;
             if (type === 'end') {
                 if (updateMove > 0) {
@@ -107,7 +107,7 @@ export default {
             if (!(Math.abs(move) > 20 && Math.abs(move) > Math.abs(moveY))) {
                 return false;
             } else {
-                let w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                let w = this.$refs.wrapper.clientWidth;
                 let maxMove = -this.$refs.list.offsetWidth + w;
                 callback && callback(move, maxMove, moveY);
             }

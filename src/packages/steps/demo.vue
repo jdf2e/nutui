@@ -16,6 +16,10 @@
       <nut-step title="待进行" content="这里是该步骤的描述信息"></nut-step>
       <nut-step title="待进行" content="这里是该步骤的描述信息"></nut-step>
     </nut-steps>
+    <h4>动态加载(2s后渲染)</h4>
+    <nut-steps :current="current2" :source="titles">
+      <nut-step :key="index" v-for="(item,index) in titles" :title="item" content="这里是该步骤的描述信息"></nut-step>
+    </nut-steps>
   </div>
 </template>
 
@@ -24,8 +28,16 @@ export default {
   components: {},
   data() {
     return {
-      current: 3
+      current: 3,
+      titles: [],
+      current2: 0
     };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.titles = ["已完成", "已完成", "进行中"];
+      this.current2 = 3;
+    }, 2000);
   },
   methods: {
     next() {

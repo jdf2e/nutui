@@ -259,6 +259,9 @@ export default {
                 }else{
                     resHour = hour;
                 }
+                if(resHour == 0){
+                    resHour = '0';
+                }
                 return resHour ? `${resHour}${this.chinese[3]}` : undefined;
             })
             return hours.filter(item => item);
@@ -292,8 +295,10 @@ export default {
                 }else{
                     resMinute = minute;
                 }
-                return resMinute ? `${resMinute}${this.chinese[4]}` : undefined;
-                
+                if(resMinute == 0){ 
+                    resMinute = '0'; 
+                }
+                return resMinute % this.minuteStep == 0 ? `${resMinute}${this.chinese[4]}` : undefined;
             })
             return minutes.filter(item => item);
         },

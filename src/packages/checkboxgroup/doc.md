@@ -1,6 +1,6 @@
 # CheckboxGroup 复选按钮
 
-## 基本用法
+## 基本用法(2s后动态更新)
 
 ```html
 <nut-checkboxgroup  
@@ -10,7 +10,7 @@
 ```
 
 ```javascript
- data() {
+data() {
     return {
     	data:[
             {id:11,value:'选项A',label:'选项A'},
@@ -20,6 +20,11 @@
         ],
         group: ['选项A'],
     };
+},
+mounted(){
+    setTimeout(() => {
+        this.group.push('选项B')
+    }, 2000);
 }
 ```
 v-model绑定的数组选项对应data的value值，控制选项是否选中，如代码所示，‘选项A’被勾选。如果group为空那么所有选项未选中。
