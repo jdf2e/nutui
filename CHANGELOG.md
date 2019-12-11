@@ -1,3 +1,18 @@
+## 2.1.8
+
+`2019-12-11`
+* :bug: fix(calendar)：修复日历组件点击确定触发close事件,closes #175
+* :bug: fix(checkboxgroup)：修复checkboxgroup 无法实现双向数据绑定,closes #126
+* :bug: fix(steps)：修复steps组件动态加载数据报错,closes #178
+* :bug: fix(scroller)：修复horizontal-scroll 固定宽度滑动计算bug
+* :sparkles: upd(scroller)：优化 vertical-scroll 模式不能设置动画的执行时间,closes #161
+* :sparkles: upd(datepicker)：优化DatePicker中minuteStep支持到datetime类型
+* :sparkles: feat: 新增移动端 pc端，JS自动切换 
+* :zap: style(lazyLoad)：修改lazyLoad Demo 样式
+* :zap: doc: 修改README-zh_CN.md、README.md、intro.md 文档
+* :zap: doc: 修改ISSUE_TEMPLATE 提交ISSUE模板
+* :zap: doc: 修改checkbox Demo文档
+
 ## 2.1.7
 
 `2019-11-13`
