@@ -66,7 +66,7 @@ export default {
             if (!status && this.realMove === 0) {
                 clearTimeout(this.timer);
                 this.timer = setTimeout(() => {
-                    this.setTransform(this.realMove, 'end', 0);
+                    this.setTransform(this.realMove, 'end', null);
                 }, this.propsTime);
             }
         },
