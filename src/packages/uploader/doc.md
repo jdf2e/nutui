@@ -157,6 +157,7 @@ export default {
 | typeError | 文件类型错误提示文案 | String | "不支持上传该类型文件"
 | limitError | 文件大小超过限制提示文案 | String | "文件大小超过限制"
 | xmlError | 浏览器不支持本组件时的提示文案 | String | "对不起，您的浏览器不支持本组件！"
+| withCredentials | 支持发送 cookie 凭证信息 | Boolean | fasle
 
 ## Event
 

@@ -71,6 +71,10 @@ export default {
     limitError: {
       type: String,
       default: ''
+    },
+    withCredentials: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -90,6 +94,7 @@ export default {
         acceptType: this.acceptType, //允许上传的文件类型
         xhrState: this.xhrState,
         clearInput: this.clearInput,
+        withCredentials: this.withCredentials,//支持发送 cookie 凭证信息
         xmlError: this.xmlError || this.nutTranslate('lang.uploader.xmlError'),
         typeError: this.typeError || this.nutTranslate('lang.uploader.typeError'),
         limitError: this.limitError || this.nutTranslate('lang.uploader.limitError'),
