@@ -148,7 +148,34 @@ export default {
 
            
         },
-        
+        toggleAll(checked) {
+            if (checked === false) {
+                this.$emit("input", []);
+                return;
+            }
+            if(checked === true){
+                this.checkBoxData.map(item => {
+                    item.checked = true;
+                });
+            }
+            if (!checked) {
+                this.checkBoxData.map(item => {
+                    item.checked = !item.checked;
+                });
+            }
+
+            let value = [],
+                label = [];
+            let resData = this.checkBoxData.filter(item => {
+                if (item.checked) {
+                value.push(item.value);
+                label.push(item.label);
+                }
+                return item.checked;
+            });
+            this.$emit("input",value);
+            this.$emit("change", value, label, null);
+        }
     }
 }
 </script>
