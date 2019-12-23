@@ -5,7 +5,7 @@
 ```html
 <nut-imagepicker
   @imgMsg="imgMsg" 
-  :imgList="imgList1"
+  :imgList.sync="imgList1"
 >
 </nut-imagepicker>
 ```
@@ -18,7 +18,7 @@
   :width="120" 
   :height="120" 
   :margin="10" 
-  :imgList="imgList2"
+  :imgList.sync="imgList2"
 >
 </nut-imagepicker>
 ```
@@ -82,10 +82,11 @@ export default {
     };
   },
   methods: {
-    imgMsg:(data) => {
+    imgMsg(data){
       if(data.code == 1) {
         alert('upload');
       }
+      console.log(this.imgList2)
       console.log(data);//code 1 自动上传  2 不上传只展示图片  3 删除图片  4 预览图片
     }
   }
@@ -105,7 +106,7 @@ export default {
 | ismultiple | 是否开启多张图片上传 | Boolean | false
 | delMode | 删除图片的方式（tap、longtap） | String | tap
 | autoUpload | 选择完成之后是否直接上传 | Boolean | false
-| imgList | 图片列表 | Array | []
+| imgList | 图片列表 （注意：绑定时必须`:imgList.sync`,加sync修饰符） | Array | []
 
 ## Event
 

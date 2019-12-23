@@ -123,6 +123,7 @@ export default {
         },
         deleteImg(id) {
             this.list = this.list.filter(item => item.id != id);
+            this.$emit('update:imgList',this.list)
             this.$emit('imgMsg',{
                 code:3,
                 msg:id
