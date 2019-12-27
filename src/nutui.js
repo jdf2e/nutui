@@ -90,7 +90,8 @@ import "./packages/textinput/textinput.scss";
 import Avatar from "./packages/avatar/index.js";
 import "./packages/avatar/avatar.scss";
 import Lazyload from "./packages/lazyload/index.js";
-
+import "./packages/textbox/textbox.scss";
+import TextBox from "./packages/textbox/index.js";
 
 const packages = {
   Cell,
@@ -136,7 +137,9 @@ const packages = {
   InfiniteLoading,
   Uploader,
   TextInput,
-  Avatar
+  TextBox,
+  Avatar,
+  
 };
 
 const components = {};

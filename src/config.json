@@ -472,6 +472,16 @@
       "sort": "0",
       "showDemo": true,
       "author": "zhuzhida"
+    },
+    {
+      "version": "1.0.0",
+      "name": "TextBox",
+      "chnName": "文本域",
+      "desc": "文本域",
+      "type": "component",
+      "sort": "1",
+      "showDemo": true,
+      "author": "guoxiaoxiao"
     }
   ]
 }
