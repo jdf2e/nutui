@@ -92,6 +92,8 @@ import "./packages/avatar/avatar.scss";
 import Lazyload from "./packages/lazyload/index.js";
 import "./packages/textbox/textbox.scss";
 import TextBox from "./packages/textbox/index.js";
+import Elevator from "./packages/elevator/index.js";
+import "./packages/elevator/elevator.scss";
 
 const packages = {
   Cell,
@@ -139,7 +141,7 @@ const packages = {
   TextInput,
   TextBox,
   Avatar,
-  
+  Elevator: Elevator
 };
 
 const components = {};
@@ -149,6 +151,7 @@ const directives = {};
 pkgList.map(item => {
   const pkg = packages[item.name];
   if (!pkg) return;
+
   if (item.type == 'component') {
     if (pkg.name) {
       components[pkg.name] = pkg;

@@ -155,7 +155,7 @@
 | initPage | 设置初始时候显示的页 | Number | 1
 | lazyLoad | 是否懒加载图片 | Boolean | false
 | lazyLoadUrl | 懒加载的默认展示图片 | String | -
-| swiperData | 异步数据渲染slide时，必须绑定对应数组 | Array | -
+| swiperData | 异步数据渲染slide时，必须绑定对应数组（v2.1.7以上支持） | Array | -
 
 ## Methods
 

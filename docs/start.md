@@ -86,6 +86,41 @@ CDN 引入示例
 </html>
 ```
 
+CDN 按需加载引入示例
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <div id="app">
+      <nut-button>cdn按需加载</nut-button>
+    </div>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/packages/button/button.css"
+    />
+    <!-- 引入Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 引入组件库 -->
+    <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/packages/button/button.js"></script>
+    <script>
+      Vue.component(button.default.name, button.default);
+      new Vue({
+        el: "#app"
+      });
+    </script>
+  </body>
+</html>
+```
+
 > 在页面中直接引入，将无法使用 **主题定制** 等功能。我们推荐使用 *NPM* 或 *YARN* 方式安装，不推荐在页面中直接引入的用法
 
 * 通过 **Vue CLI** 图形化界面安装
