@@ -492,6 +492,16 @@
       "sort": "3",
       "showDemo": true,
       "author": "zhenyulei"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Popup",
+      "chnName": "弹出层",
+      "desc": "弹出层",
+      "type": "component",
+      "sort": "5",
+      "showDemo": true,
+      "author": "杨凯旋"
     }
   ]
 }
