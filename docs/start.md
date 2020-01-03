@@ -153,7 +153,7 @@ npm i @nutui/babel-plugin-separate-import -D
 
 然后配置一下babel的配置文件
 
-```bash
+``` bash
 {
   "plugins": [
     ["@nutui/babel-plugin-separate-import", {
@@ -175,7 +175,7 @@ Picker.install(Vue);
 ```
 如果需要按需加载 scss 文件（如需要自定义主题）时，除了需要把 style 选项值设为为 **scss** 外，还需要修改 webpack 配置文件的 sass-loader 配置，如下所示：
 
-```
+``` bash
 {
     loader: 'sass-loader',
     options: {
@@ -183,6 +183,28 @@ Picker.install(Vue);
     }
 }
 ```
+
+`vue.config.js` VueCLI3 配置方式 
+
+``` bash
+module.exports = {
+    css: {
+        loaderOptions: {
+            // 给 sass-loader 传递选项
+            scss: {
+                // @/ 是 src/ 的别名
+                // 注意：在 sass-loader v7 中，这个选项名是 "data"
+                prependData: ` 
+                @import "@/assets/custom_theme.scss";
+                @import "@nutui/nutui/dist/styles/index.scss";
+                `,
+            }
+        },
+    }
+}
+```
+
+> VueCLI 3 相关Demo 请查看 [NutUI Demo](https://github.com/richard1015/nutui-demo)
 
 ### 2. 手动引入
 

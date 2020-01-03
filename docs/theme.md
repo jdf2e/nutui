@@ -49,6 +49,26 @@ $dark-color: #DADADA;
 }
 ```
 
+如果你的项目使用的是VueCLI 3以上版本 请修改 `vue.config.js` 进行配置
+
+``` bash
+module.exports = {
+    css: {
+        loaderOptions: {
+            // 给 sass-loader 传递选项
+            scss: {
+                // @/ 是 src/ 的别名
+                // 注意：在 sass-loader v7 中，这个选项名是 "data"
+                prependData: ` 
+                @import "@/assets/custom_theme.scss";
+                @import "@nutui/nutui/dist/styles/index.scss";
+                `,
+            }
+        },
+    }
+}
+```
+
 ### 第三步：引用组件样式时引用 SCSS 文件
 
 在主题定制场景下，项目中引用组件时，需要引入 **SCSS** 文件，而不是 **CSS** 文件。分三种情况：
@@ -80,3 +100,5 @@ import '@nutui/nutui/dist/packages/button/button.scss';
   ]
 }
 ```
+
+> VueCLI 3 相关Demo 请查看 [NutUI Demo](https://github.com/richard1015/nutui-demo)
