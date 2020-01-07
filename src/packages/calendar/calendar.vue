@@ -145,6 +145,10 @@ export default {
         },
 
         getDaysStatus(days, type) {
+            // 修复当某个月的1号是周日时，月份下方会空出来一行
+            if (type == 'prev' && days >= 7) {
+                days -= 7;
+            }  
             return Array.from(Array(days), (v,k) => { 
                 return {
                     day: (k + 1),
