@@ -65,8 +65,8 @@ describe('Calendar.vue', () => {
         wrapper.findAll('.nut-calendar-month-item').at(1).findAll('.nut-calendar-month-day').at(14).trigger('click');
         wrapper.findAll('.nut-calendar-month-item').at(1).findAll('.nut-calendar-month-day').at(16).trigger('click');
         return Vue.nextTick().then(function () {
-            expect(wrapper.findAll('.nut-calendar-month-item').at(1).findAll('.nut-calendar-month-day-active').at(0).text()).toBe('8 开始');
-            expect(wrapper.findAll('.nut-calendar-month-item').at(1).findAll('.nut-calendar-month-day-active').at(1).text()).toBe('10 结束');
+            expect(wrapper.findAll('.nut-calendar-month-item').at(1).findAll('.nut-calendar-month-day-active').at(0).text()).toBe('15 开始');
+            expect(wrapper.findAll('.nut-calendar-month-item').at(1).findAll('.nut-calendar-month-day-active').at(1).text()).toBe('17 结束');
         })
     });
    
