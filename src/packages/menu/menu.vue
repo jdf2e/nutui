@@ -62,6 +62,23 @@ import Button from '../button/button.vue';
 import ButtonGroup from '../buttongroup/buttongroup.vue';
 import Icon from '../icon/icon.vue';
 import locale from "../../mixins/locale";
+const lockMaskScroll = (bodyCls => {
+  let scrollTop;
+  return {
+    afterOpen: function() {
+      scrollTop =
+        document.scrollingElement.scrollTop || document.body.scrollTop;
+      document.body.classList.add(bodyCls);
+      document.body.style.top = -scrollTop + "px";
+    },
+    beforeClose: function() {
+      if (document.body.classList.contains(bodyCls)) {
+        document.body.classList.remove(bodyCls);
+        document.scrollingElement.scrollTop = scrollTop;
+      }
+    }
+  };
+})("dialog-open");
 export default {
     name:'nut-menu',
     mixins: [locale],
@@ -110,7 +127,9 @@ export default {
         }
     },
     watch: {
-
+        isVisible(val) {
+            lockMaskScroll[val ? "afterOpen" : "beforeClose"]();
+        }
     },
     data() {
         return {
