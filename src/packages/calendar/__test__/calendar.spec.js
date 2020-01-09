@@ -27,7 +27,7 @@ describe('Calendar.vue', () => {
     it('选择日期', () => {
         wrapper.findAll('.nut-calendar-month-item').at(0).findAll('.nut-calendar-month-day').at(10).trigger('click');
         return Vue.nextTick().then(function () {
-            expect(wrapper.findAll('.nut-calendar-month-item').at(0).findAll('.nut-calendar-month-day-active').at(0).text()).toBe('8');
+            expect(wrapper.findAll('.nut-calendar-month-item').at(0).findAll('.nut-calendar-month-day-active').at(0).text()).toBe('12');
 
         })
     });
