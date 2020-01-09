@@ -3,7 +3,7 @@
         <nut-elevator 
         :dataArray="dataList"  
         :showIndicator="true"
-        :navHeight="40"
+        :navHeight="30"
         :otherHeight="60"
         :initIndex="0" 
         :hiddenTime='500'
