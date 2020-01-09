@@ -229,7 +229,7 @@
           <div class="flex-content flex-content-height">1</div>
         </nut-col>
         <nut-col :span="12">
-          <div class="flex-content flex-content-light">顶部对齐 -- flex-start</div>
+          <div class="flex-content flex-content-light">顶部对齐 - flex-start</div>
         </nut-col>
         <nut-col :span="6">
           <div class="flex-content flex-content-height">3</div>
@@ -242,7 +242,7 @@
           <div class="flex-content flex-content-height">1</div>
         </nut-col>
         <nut-col :span="12">
-          <div class="flex-content flex-content-light">居中对齐 -- center</div>
+          <div class="flex-content flex-content-light">居中对齐 - center</div>
         </nut-col>
         <nut-col :span="6">
           <div class="flex-content flex-content-height">3</div>
@@ -255,7 +255,7 @@
           <div class="flex-content flex-content-height">1</div>
         </nut-col>
         <nut-col :span="12">
-          <div class="flex-content flex-content-light">底部对齐 -- flex-end</div>
+          <div class="flex-content flex-content-light">底部对齐 - flex-end</div>
         </nut-col>
         <nut-col :span="6">
           <div class="flex-content flex-content-height">3</div>
@@ -328,7 +328,6 @@ export default {
   margin-bottom: 10px;
 }
 .flex-content {
-  height: 30px;
   line-height: 30px;
   color: #fff;
   text-align: center;

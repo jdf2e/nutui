@@ -88,7 +88,7 @@ export default {
 }
 .hide{    
     position: relative;
-    max-height: 2000px;
+    max-height: 4000px;
 }
 .bar{
     height: 30px;

@@ -472,6 +472,36 @@
       "sort": "0",
       "showDemo": true,
       "author": "zhuzhida"
+    },
+    {
+      "version": "1.0.0",
+      "name": "TextBox",
+      "chnName": "文本域",
+      "desc": "文本域",
+      "type": "component",
+      "sort": "1",
+      "showDemo": true,
+      "author": "guoxiaoxiao"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Elevator",
+      "chnName": "电梯楼层",
+      "desc": "类似于电梯楼层，组件可以跟着右侧索引而滑动",
+      "type": "component",
+      "sort": "3",
+      "showDemo": true,
+      "author": "zhenyulei"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Popup",
+      "chnName": "弹出层",
+      "desc": "弹出层",
+      "type": "component",
+      "sort": "5",
+      "showDemo": true,
+      "author": "杨凯旋"
     }
   ]
 }

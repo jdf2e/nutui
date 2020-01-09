@@ -147,17 +147,17 @@
 ```html
 <nut-row type="flex" gutter="10" align="flex-start">
     <nut-col :span="12">
-        <div class="flex-content flex-content-light">顶部对齐 -- flex-start</div>
+        <div class="flex-content flex-content-light">顶部对齐 - flex-start</div>
     </nut-col>
 </nut-row>
 <nut-row type="flex" gutter="10" align="center">
     <nut-col :span="12">
-        <div class="flex-content flex-content-light">居中对齐 -- center</div>
+        <div class="flex-content flex-content-light">居中对齐 - center</div>
     </nut-col>
 </nut-row>
 <nut-row type="flex" gutter="10" align="flex-end">
     <nut-col :span="12">
-        <div class="flex-content flex-content-light">底部对齐 -- flex-end</div>
+        <div class="flex-content flex-content-light">底部对齐 - flex-end</div>
     </nut-col>
 </nut-row>
 

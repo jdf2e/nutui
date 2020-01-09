@@ -44,7 +44,50 @@
 </nut-picker>
 ```
 
+## 联动（省市区）自定义数据
+
+```html
+<nut-picker
+    :is-visible="isVisible2"
+    title="请选择城市"
+    :default-value-data="defaultValueData"
+    :list-data="custmerCityData"
+    @close="switchPicker('isVisible2')"
+    @confirm="setChooseValueCustmer"
+    @choose="updateChooseValueCustmer"
+    @close-update="closeUpdateChooseValueCustmer"
+></nut-picker>
+```
+
 ```javascript
+const APIData = [
+  {
+    label: 1,
+    array: [
+      {
+        label: 3,
+        value: "朝阳区"
+      },
+      {
+        label: 4,
+        value: "海淀区"
+      }
+    ]
+  },
+  {
+    label: 2,
+    array: [
+      {
+        label: 5,
+        value: "测试1"
+      },
+      {
+        label: 6,
+        value: "测试2"
+      }
+    ]
+  }
+];
 export default {
     data() {
         return {
@@ -79,7 +122,20 @@ export default {
             year: null,
             isVisible1: false,
             listData1: [['2010', '2011', '2012', '2013', '2014', '2015', '2016','2017', '2018' ]],
+            custmerCityData: [
+                [{
+                    label: 1,
+                    value: "北京"
+                },
+                {
+                    label: 2,
+                    value: "上海"
+                }]
+            ],
+            cityCustmer: null,
+            isVisible2: false,
             defaultValueData1: null
+            };
         };
     },
     created() {
@@ -130,7 +186,23 @@ export default {
         closeUpdateChooseValue(self, chooseData) {
             this.updateLinkage(self, chooseData[0], 1, chooseData[1], chooseData);
         },
-
+        setChooseValueCustmer(chooseData) {
+            var str = chooseData.map(item => item.value).join("-");
+            this.cityCustmer = str;
+        },
+        closeUpdateChooseValueCustmer(self, chooseData) {
+            this.setChooseValueCustmer(chooseData);
+        },
+        updateChooseValueCustmer(self, index, resValue, cacheValueData) {
+            let { label, value } = resValue;
+            //此处模拟查询API
+            setTimeout(() => {
+                var resItems = APIData.find(item => item.label == label);
+                if (resItems && resItems.array.length) {
+                this.$set(this.custmerCityData, index + 1, resItems.array);
+                }
+            }, 100);
+        },
         modifyCity() {
             this.updateLinkage('', '重庆', 1, '重庆');
             this.defaultValueData = ['重庆', '重庆'];

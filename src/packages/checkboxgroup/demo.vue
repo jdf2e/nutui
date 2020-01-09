@@ -3,9 +3,12 @@
         <h4>基本用法(2s后动态更新)</h4>
         <div>
             <nut-cell>
-                <span slot="title"><nut-checkboxgroup  :checkBoxData="data1" v-model="group1"></nut-checkboxgroup></span>
+                <span slot="title"><nut-checkboxgroup ref="checkboxGroup" :checkBoxData="data1" v-model="group1"></nut-checkboxgroup></span>
             </nut-cell>
             <p>{{group1}}</p>
+            <nut-button small @click="checkAll(true)">全选</nut-button>
+            <nut-button small @click="checkAll(false)">取消全选</nut-button>
+            <nut-button small @click="checkAll()">反选</nut-button>
         </div>
 
         <h4>禁用状态</h4>
@@ -132,7 +135,9 @@ export default {
             alert('已选值:['+ val+']，当前选择值：'+ label);
            
         },
-        
+        checkAll(state){
+            this.$refs.checkboxGroup.toggleAll(state);
+        }
     }
 };
 </script>

@@ -79,7 +79,7 @@ export default {
   mixins: [locale],
   props: {
     id: {
-      default: null
+      default: ""
     },
     title: {
       default: ""

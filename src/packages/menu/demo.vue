@@ -11,7 +11,6 @@
       @close="switchMenu('isVisible1',1)"
       @choose="chooseMenu"
     ></nut-menu>
-
     <h4>多选style1(一、二、三)列</h4>
     <div class="list list2">
       <span slot="title" @click="switchMenu('isVisible2',2)" ref="title2">京东物流</span>
@@ -362,11 +361,11 @@ export default {
       }
       this.visible[`${param}`] = !this.visible[`${param}`];
     },
-    chooseMenu(item, index) {
-      this.switchMenu("isVisible1", 1);
-      this.list1.map((value, key) => (value.selected = false));
-      this.$set(this.list1[index], "selected", true);
-      this.$refs.title1.innerText = item.text;
+    chooseMenu(item, index, list) {
+      this.switchMenu("isVisible" + this.titlenum, 1);
+      this['list'+this.titlenum].map((value, key) => (value.selected = false));
+      this.$set(this['list'+this.titlenum][index], "selected", true);
+      this.$refs[`title${this.titlenum}`].innerText = item.text;
     },
 
     reset(list) {

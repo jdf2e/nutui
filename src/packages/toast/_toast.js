@@ -15,7 +15,7 @@ function _showToast() {
 
 function _getInstance(obj) {
   let opt = {
-        id:"default",
+        id:new Date().getTime(),
         msg: "",
         visible: false,
         duration: 2000, //显示时间(毫秒)

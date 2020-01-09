@@ -5,6 +5,7 @@ class IdaUploader {
            url: '',
            formData: null,
            headers: {}, //自定义headers
+           withCredentials:false,//支持发送 cookie 凭证信息
            isPreview: true, //是否开启本地预览
            previewData: null,
            maxSize: 0, //允许上传的文件最大字节,0为不限制
@@ -92,7 +93,7 @@ class IdaUploader {
                    }
                }
            };
-           xhr.withCredentials = true;
+           xhr.withCredentials = options.withCredentials;
            xhr.open('POST', options.url, true);
            // headers
            for (let key in options.headers) {
