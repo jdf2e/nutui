@@ -225,7 +225,26 @@ Button.install(Vue);
 <nut-switch :active="true" size="base"></nut-switch>
 ```
 
-2.组件 css 单位使用的是 **px**，如果你的项目中需要 **rem** 单位，可借助一些工具进行转换，比如 webpack 的 [px2rem-loader](https://www.npmjs.com/package/px2rem-loader)、postcss 的 [postcss-plugin-px2rem](https://www.npmjs.com/package/postcss-plugin-px2rem) 插件等
+2.组件 css 单位使用的是 **px**，如果你的项目中需要 **rem** 单位，可借助一些工具进行转换，比如 [webpack](https://www.webpackjs.com/) 的 [px2rem-loader](https://www.npmjs.com/package/px2rem-loader)、[postcss](https://github.com/postcss/postcss) 的 [postcss-plugin-px2rem](https://www.npmjs.com/package/postcss-plugin-px2rem) 插件等
+
+VueCLI3 配置示例 `vue.config.js`
+``` javascript
+const pxtorem = require('postcss-pxtorem');
+module.exports = {
+    css: {
+        loaderOptions: {
+          postcss: {
+            plugins: [
+              pxtorem({
+                rootValue: 37.5,
+                propList: ['*']
+              })
+            ]
+          }
+        }
+      }
+}
+```
 
 3.组件具体用法以文档为准
 

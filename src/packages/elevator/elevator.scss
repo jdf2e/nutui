@@ -10,30 +10,53 @@
 .nut-list-title{
     list-style-type:none;
     width:100%;
-    margin-bottom:20px;
+    //margin-bottom:20px;
 }
 .nut-list-h{
+    font-weight: normal;
     height: 30px;
     line-height: 30px;
     padding-left: 20px;
-    background: #eee;
+    background: #f6f6f6;
     margin: 0px;
+    font-size: 14px;
+    color: #323233;
 }
 .nut-people-list{
     padding: 0px;
     padding-left: 20px;
 }
 .nut-list-name{
+    font-size: 14px;
+    color: #323233;
     list-style-type:none;
-    height: 40px;
-    line-height: 40px;
-    border-bottom: 1px solid #ccc;
+    height: 44px;
+    line-height: 44px;
+    position: relative;
+    &:after{
+        position: absolute;
+        box-sizing: border-box;
+        content: ' ';
+        pointer-events: none;
+        right: 0;
+        bottom: 0;
+        left: 16px;
+        border-bottom: 1px solid #ebedf0;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+    &:last-child{
+        &:after{
+            border-bottom: 0px;
+        }
+    }
 }
 .nut-elevator-nav{
-    background: #fff;
+    //background: #fff;
     text-align: center;
-    border:1px solid #ccc;
+    //border:1px solid #ccc;
     width: 50px;
+    font-size: 12px;
     position:fixed;
     top:50%;
     right: 0px;
@@ -44,6 +67,9 @@
         list-style-type:none;
         height: 40px;
         line-height: 40px;
+    }
+    .nut-nav-curr{
+        color:rgb(7, 193, 96);
     }
 }
 .nut-big-box{

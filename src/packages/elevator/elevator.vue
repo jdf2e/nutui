@@ -28,6 +28,7 @@
             v-bind:key="index" 
             :id="'nav'+index"
             class="nut-nav-list" 
+            :class="{'nut-nav-curr':item.title==currTitle}"
             :style="{height:navListHeight+'px'}"
             @click="clickNav(item.title,index)"
             >{{item.title}}</li>
