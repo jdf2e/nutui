@@ -2,7 +2,7 @@
   <transition name="toastfade">
     <div :id="id"
       :class="['nut-toast',{'nut-toast-center':center},{'nut-toast-has-icon':type},{'nut-toast-cover':cover},{'nut-loading':type=='loading'},customClass,'nut-toast-'+size]"
-      v-show="visible"
+      v-if="visible"
       :style="{'bottom':center?'auto':bottom+'px'}"
     >
       <div
@@ -26,7 +26,7 @@ export default {
   props: {},
   data() {
     return {
-        id:null,
+        id:"",
         msg: "",
         visible: false,
         duration: 2000, //显示时间(毫秒)

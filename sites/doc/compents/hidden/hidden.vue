@@ -88,7 +88,7 @@ export default {
 }
 .hide{    
     position: relative;
-    max-height: 2000px;
+    max-height: 4000px;
 }
 .bar{
     height: 30px;
@@ -96,7 +96,7 @@ export default {
     bottom: 0;
     background: linear-gradient(rgba(255, 255, 255, 0),#fafafa);
     position: absolute;
-    z-index: 999 ;
+    z-index: 1 ;
     text-align: center;
     cursor: pointer;
     svg{

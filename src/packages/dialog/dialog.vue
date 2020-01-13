@@ -79,7 +79,7 @@ export default {
   mixins: [locale],
   props: {
     id: {
-      default: null
+      default: ""
     },
     title: {
       default: ""
@@ -194,12 +194,16 @@ export default {
         this.onOkBtn.call(this);
       }
     },
-    cancelBtnClick(autoClose) {
+    cancelBtnClick(autoClose) {      
+      if(!autoClose){
+        return
+      }
       this.$emit("cancel-btn-click");
       if (typeof this.onCancelBtn === "function") {
         if (this.onCancelBtn.call(this) === false) return;
       }
-      autoClose && this.close("cancelBtn");
+      this.close("cancelBtn");
+         
     },
     closeBtnClick() {
       if (typeof this.onCloseBtn === "function") {

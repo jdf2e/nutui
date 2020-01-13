@@ -4,6 +4,8 @@ class IdaUploader {
        this.options = {
            url: '',
            formData: null,
+           headers: {}, //自定义headers
+           withCredentials:false,//支持发送 cookie 凭证信息
            isPreview: true, //是否开启本地预览
            previewData: null,
            maxSize: 0, //允许上传的文件最大字节,0为不限制
@@ -75,7 +77,9 @@ class IdaUploader {
    uploader () {
        const xhr = new XMLHttpRequest();
        let options = this.options;
-       let formData = options.formData;       
+       let formData = options.formData;      
+       
+       
        if (xhr.upload) {    
            xhr.upload.addEventListener('progress', (e) => {
                this.triggerFunc.call(options, options.onProgress)(formData, e.loaded, e.total);
@@ -89,8 +93,12 @@ class IdaUploader {
                    }
                }
            };
-           xhr.withCredentials = true;
+           xhr.withCredentials = options.withCredentials;
            xhr.open('POST', options.url, true);
+           // headers
+           for (let key in options.headers) {
+                xhr.setRequestHeader(key, options.headers[key])
+           }
            this.triggerFunc.call(options, options.onStart)();          
            xhr.send(formData);
            if(options.clearInput){

@@ -9,22 +9,15 @@
 	    background-color: $light-color;
 	    border-radius: 20px;
 	    form {
+			display:flex;
+			align-items:center;
 	    	position: relative;
 	    	margin-right: 10px;
-	    	.nut-icon {
-	    		float: left;
-	    		margin: 8px 0 0 10px;
-	    	}
 	    	.close-icon {
 	    		display: none;
 	    		&.show {
-	    			display: inline-block;
+	    			display: inline-flex;
 	    		}
-	    	}
-	    	.nut-icon-circle-cross {
-	    		position: absolute;
-	    		right: 5px;
-	    		top: 0;
 	    	}
 	    }
 	    i {

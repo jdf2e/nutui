@@ -2,8 +2,6 @@ import Vue from 'vue'
 
 const lang = {
     lang: {
-        okBtnTxt: 'Ok',
-        cancelBtnTxt: 'Cancel',
         calendar: {
             loadPrevMonth: 'Load the last month',
             noMoreMonth: 'No earlier month~',
@@ -32,9 +30,10 @@ const lang = {
             xmlError: 'Sorry, your browser does not support this component!',
             typeError: 'This type of file is not supported',
             limitError: 'File size exceeded the limit'
-        }
+        },
         okBtnTxt: 'Ok',
-        cancelText: 'Cancel'
+        cancelText: 'Cancel',
+        cancelBtnTxt: 'Cancel',
     }
 }
 

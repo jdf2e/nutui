@@ -1,6 +1,6 @@
 <template>
     <transition :name="animation">
-        <div class="nut-calendar" v-show="isVisible">
+        <div class="nut-calendar" v-show="childIsVisible">
             <div class="nut-calendar-control">
                 <span class="nut-calendar-confirm-btn" @click="confirm" v-if="(type == 'range' && currDate && currDate.length == 2) || type != 'range'">{{nutTranslate('lang.okBtnTxt')}}</span>
                 <span class="nut-calendar-cancel-btn"  @click="closeActionSheet">{{nutTranslate('lang.cancelBtnTxt')}}</span>
@@ -76,9 +76,15 @@ export default {
             default: Utils.getDay(365)
         },
     },
+    watch:{
+        isVisible(newValue,oldValue){
+            this.childIsVisible = newValue;
+        }
+    },
     data() {
         const week = this.nutTranslate('lang.calendar.week');
         return {
+            childIsVisible: false,
             currDate: null,
             week: week.split(','),
             unLoadPrev: false,
@@ -139,6 +145,10 @@ export default {
         },
 
         getDaysStatus(days, type) {
+            // 修复：当某个月的1号是周日时，月份下方会空出来一行
+            if (type == 'prev' && days >= 7) {
+                days -= 7;
+            }  
             return Array.from(Array(days), (v,k) => { 
                 return {
                     day: (k + 1),
@@ -245,7 +255,8 @@ export default {
         confirm() {
             if ((this.isRange && this.chooseData.length == 2) || !this.isRange) {
                 this.$emit('choose', this.chooseData);  
-                this.$emit('close');
+                this.childIsVisible = false;
+                this.$emit('update:is-visible', false);
             }
         },
 
@@ -259,6 +270,8 @@ export default {
         },
 
         closeActionSheet() {
+            this.childIsVisible = false;
+            this.$emit('update:is-visible', false);
             this.$emit('close');
             this.resetRender();
         },

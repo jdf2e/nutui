@@ -1,16 +1,21 @@
 # CheckboxGroup 复选按钮
 
-## 基本用法
+## 基本用法(2s后动态更新)
 
 ```html
-<nut-checkboxgroup  
-	:checkBoxData="data">
-	v-model="group"
+<nut-checkboxgroup
+    ref="checkboxGroup"
+	:checkBoxData="data"
+	v-model="group">
 </nut-checkboxgroup>
+<p>{{group1}}</p>
+<nut-button small @click="checkAll(true)">全选</nut-button>
+<nut-button small @click="checkAll(false)">取消全选</nut-button>
+<nut-button small @click="checkAll()">反选</nut-button>
 ```
 
 ```javascript
- data() {
+data() {
     return {
     	data:[
             {id:11,value:'选项A',label:'选项A'},
@@ -20,6 +25,16 @@
         ],
         group: ['选项A'],
     };
+},
+mounted(){
+    setTimeout(() => {
+        this.group.push('选项B')
+    }, 2000);
+},
+methods:{
+    checkAll(state){
+        this.$refs.checkboxGroup.toggleAll(state);
+    }
 }
 ```
 v-model绑定的数组选项对应data的value值，控制选项是否选中，如代码所示，‘选项A’被勾选。如果group为空那么所有选项未选中。
@@ -218,4 +233,12 @@ methods: {
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 
 | change | 值变化时触发 | 当前已选中项的状态（values），当前选中项值（label），event
+
+## CheckboxGroup 方法
+
+#### 通过 ref 可以获取到 CheckboxGroup 实例并调用实例方法
+
+| 方法名 | 说明 | 参数 
+|----- | ----- | ----- 
+| toggleAll | 切换所有复选框的选中状态 | checked?: boolean
 

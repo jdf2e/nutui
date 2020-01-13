@@ -4,8 +4,7 @@
         <nut-swiper
             :paginationVisibile="true"
             direction="horizontal"
-            ref="demo1"
-            
+            :swiperData="dataImgItem"
         >
            <div  v-for="(item,index) in dataImgItem" :key="index"  class="nut-swiper-slide ">
                 <img :src="item.imgSrc"   style="max-width:100%;"/> 
@@ -17,10 +16,9 @@
         <nut-swiper
             :paginationVisibile="true"
             direction="horizontal"
-            ref="demo2"
+            :swiperData="dataImgItem"
             :canDragging="false"
             :paginationVisible="true"
-            
         >
              <div  v-for="(item,index) in dataImgItem" :key="index"  class="nut-swiper-slide ">
                 <img :src="item.imgSrc"   style="max-width:100%;" /> 
@@ -32,11 +30,10 @@
          <nut-swiper
             :paginationVisibile="true"
             direction="horizontal"
-            ref="demo3"
+            :swiperData="dataImgItem"
             :loop="true"
             :canDragging="false"
             :paginationVisible="true"
-            
         >
              <div  v-for="(item,index) in dataImgItem" :key="index"  class="nut-swiper-slide ">
                 <img :src="item.imgSrc"   style="max-width:100%;" /> 
@@ -48,8 +45,8 @@
          <h4>纵向自动播放</h4>
           <nut-swiper
             direction="vertical"
-            ref="demo4"
             :autoPlay="3000"
+            :swiperData="dataImgItem"
         >
              <div  v-for="(item,index) in dataImgItem" :key="index"  class="nut-swiper-slide ">
                 <img :src="item.imgSrc"   style="max-width:100%;" /> 
@@ -59,7 +56,8 @@
         <h4>滑动懒加载图片</h4>
         <nut-swiper
             direction="horizontal"
-            ref="demo5"
+            :paginationClickable="true"
+            :swiperData="dataImgItem"
             :lazyLoad="true"
              :paginationVisible="true"
              @slideChangeEnd="slideChangeEnd"
@@ -81,7 +79,7 @@
     export default{
         data(){
             return{
-                dataItem:null,
+                dataItem:[],
                 dataImgItem:[],
             }
         },
@@ -112,14 +110,6 @@
                     }
                 ];
                 
-                this.$refs.demo1.updateEvent(1);
-                this.$refs.demo2.updateEvent();
-                this.$refs.demo3.updateEvent();
-                this.$refs.demo5.updateEvent();
-
-
-                this.$refs.demo4.updateEvent();
-
             },300)
         },
         methods:{

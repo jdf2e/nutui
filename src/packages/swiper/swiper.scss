@@ -17,6 +17,33 @@
         width:100%;
         height:100%;
         cursor: default;
+        position: relative;
+        @keyframes nut-preloader-spin{100%{transform:rotate(360deg)}}
+        .nut-lazy{
+            &.img{
+                width: 100%;
+                height: 100%;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+            &.preloader{
+                width: 42px;
+                height: 42px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -21px;
+                margin-top: -21px;
+                z-index: 10;
+                transform-origin: 50%;
+                animation: nut-preloader-spin 1s infinite linear;
+                box-sizing: border-box;
+                border: 4px solid #fff;
+                border-radius: 50%;
+                border-top-color: transparent;
+            }
+        }
+        
     }
     &.horizontal .nut-swiper-wrap{
         flex-direction: row;

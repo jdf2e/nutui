@@ -1,0 +1,22 @@
+.lazyloadDemo {
+    img {
+      width: 100%;
+      background-color: #ddd;
+    }
+    > div {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background-size: 100% 100%;
+      background-color: #ddd;
+    }
+    img[lazy="loading"] {
+      /*your style here*/
+    }
+    img[lazy="error"] {
+      /*your style here*/
+    }
+    img[lazy="loaded"] {
+      /*your style here*/
+    }
+  }

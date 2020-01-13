@@ -9,6 +9,7 @@
                 :pulldown-txt="pulldownTxt"
                 :load-more-txt="loadMoreTxt"
                 :unload-more-txt="unloadMoreTxt"
+                :props-time="propsTime"
                 @loadMore="loadMore"
                 @pulldown="pulldown"
             >
@@ -62,6 +63,10 @@ export default {
         unloadMoreTxt: {
             type: String,
             default: '没有更多了'
+        },
+        propsTime: {
+            type:Number,
+            default: 0
         }
     },
     data() {

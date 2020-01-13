@@ -2,7 +2,7 @@
     <div :class="['nut-searchbar',customClass ? customClass : '']">
     	<div class="search-input" :class="[animation ? 'nut-search-ani':'',inputFocusAnimation?'focus':'']">
 	    	<form action="" id="input-form" @submit="submitFun">
-	    		<nut-icon type="search" v-if="hasIcon" width="20" height="20"></nut-icon>
+	    		<nut-icon type="search" v-if="hasIcon" :size="searchIconSize" :color="searchIconColor"></nut-icon>
 	    		<input type="text"
 	    		v-model="value"
 	    		:placeholder="placeText || nutTranslate('lang.searchbar.placeText')"
@@ -12,18 +12,17 @@
 	    		>
 	    		<span class="close-icon" :class="hasCloseIcon ? 'show':''"
 	    		@click="clearInput">
-	    			<nut-icon type="circle-cross" width="15" height="15"></nut-icon>
+	    			<nut-icon type="circle-cross" :size="clearIconSize" :color="clearIconColor"></nut-icon>
 	    		</span>
 	    	</form>
     	</div>
     	<a href="javascript:;" class="btn-search" v-if="hasSearchButton" @click="submitFun">
     		<span v-if="hasTextButton">{{textInfo || nutTranslate('lang.searchbar.textInfo')}}</span>
-    		<nut-icon type="search" v-else width="20" height="20"></nut-icon>
+    		<nut-icon type="search" v-else :size="searchBtnIconSize" :color="searchBtnIconColor"></nut-icon>
     	</a>
     </div>
 </template>
 <script>
-
 import nuticon from "../icon/icon.vue";
 import locale from "../../mixins/locale";
 export default {
@@ -34,6 +33,30 @@ export default {
     		type: Boolean,
     		default: false
     	},
+		searchIconSize: {
+			type: String,
+			default: '20px'
+		},
+		searchIconColor: {
+			type: String,
+			default: '#2e2d2d'
+		},
+		searchBtnIconSize: {
+			type: String,
+			default: '20px'
+		},
+		searchBtnIconColor: {
+			type: String,
+			default: '#2e2d2d'
+		},
+		clearIconSize:{
+			type: String,
+			default: '15px'
+		},
+		clearIconColor: {
+			type: String,
+			default: '#2e2d2d'
+		},
     	placeText: {
 			type: String
 		},

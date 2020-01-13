@@ -123,7 +123,7 @@ export default {
                 this.isUnMore1 = false;
                 this.listData1 = new Array(20);
                 this.page1 = 2;
-            }, 300);
+            }, 3000);
         },
 
 
@@ -169,6 +169,7 @@ export default {
 | stretch | 拉伸范围 | Number | 100
 | isUnMore | 是否没有更多 | Boolean | false
 | isLoading | 是否正在加载 | Boolean | false
+| propsTime | type=vertical时，加载成功后pulldownTxt停留时间，单位为 ms | Number | 0
 | threshold | 距离底部多少开始加载 | Number | 100
 | pulldownTxt | 下拉展示文案 | String | '下拉刷新'
 | loadMoreTxt | 上拉展示文案 | String | '上拉加载'

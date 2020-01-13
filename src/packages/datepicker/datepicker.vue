@@ -79,6 +79,9 @@ export default {
             cacheDefaultData: [],
             cacheListData: [],
             updateYear: null,
+            updateMonth: null,
+            updateDay: null,
+            updateHour: null,
             use12Hours: ['上午', '下午'], 
             chinese: !this.isShowChinese ? new Array(5).fill('') : this.type == 'time' ? ['时', '分', ''] : ['年', '月', '日', '时', '分']
         };
@@ -89,14 +92,36 @@ export default {
     created() {
         this.init();
     },
+    computed: {
+        dateRange(){
+            const {startDate,endDate,defaultValue}=this;
+            return {startDate,endDate,defaultValue};
+        }
+    },
+    watch:{
+        dateRange(newValue,oldValue){
+            this.init();
+        },
+    },
     methods: {
         init() {
-            // 结束时间小于开始时间，结束时间重置为开始时间
-            if (Utils.compareDate(this.endDate, this.startDate)) {
-                this.endDate = this.startDate;
+            if(this.startDate && Utils.isDateString(this.startDate)){
+                this.startDateArr = Utils.getDateArr(this.startDate);
+            }else{
+                this.startDateArr = Utils.getDateArr('2000-01-01');
             }
-            this.startDateArr = this.startDate.replace(/-/g, '/').split('/');
-            this.endDateArr = this.endDate.replace(/-/g, '/').split('/');
+            if(this.endDate && Utils.isDateString(this.endDate)){
+                this.endDateArr = Utils.getDateArr(this.endDate);
+            }else{
+                this.endDateArr = Utils.date2Str(new Date());
+            }
+            // 结束时间小于开始时间，结束时间重置为开始时间
+            if (Utils.compareDateArr(this.endDateArr, this.startDateArr)) {
+                // this.endDate = this.startDate;
+                this.endDateArr=this.startDateArr;
+            }
+            // this.startDateArr = this.startDate.replace(/-/g, '/').split('/');
+            // this.endDateArr = this.endDate.replace(/-/g, '/').split('/');
             this.initListData();
         },
 
@@ -104,10 +129,23 @@ export default {
             this.resetDefaultValue();
             switch (this.type) {
                 case 'date': 
-                    this.cacheListData = [...[this.getYears(), this.getMonths(this.defaultValueData[0]), this.getDays(this.defaultValueData[0], this.defaultValueData[1])]];
+                    this.cacheListData = [...[
+                        this.getYears(), 
+                        this.getMonths(this.defaultValueData[0]), 
+                        this.getDays(this.defaultValueData[0], 
+                        this.defaultValueData[1])
+                        ]
+                    ];
                     break;
                 case 'datetime': 
-                    this.cacheListData = [...[this.getYears(), this.getMonths(this.defaultValueData[0]), this.getDays(this.defaultValueData[0], this.defaultValueData[1]), this.getHours(), this.getMinutes()]];
+                    this.cacheListData = [...[
+                        this.getYears(), 
+                        this.getMonths(this.defaultValueData[0]), 
+                        this.getDays(this.defaultValueData[0], this.defaultValueData[1]), 
+                        this.getChangeHours(this.defaultValueData[0], this.defaultValueData[1], this.defaultValueData[2]), 
+                        this.getChangeMinutes(this.defaultValueData[0], this.defaultValueData[1], this.defaultValueData[2], this.defaultValueData[3])
+                        ]
+                    ];
                     break;
                 case 'time': 
                     this.cacheListData = [...[this.getHours(), this.getMinutes()]];
@@ -121,14 +159,14 @@ export default {
 
         resetDefaultValue() {
             let cacheDefaultValue = null;
-            if (!this.defaultValue) { 
+            if (!this.defaultValue || !Utils.isDateString(this.defaultValue)) { 
                 switch (this.type) {
                     case 'time': 
                         cacheDefaultValue = `00:00`;
                         break;
                     case 'date': 
                     case 'datetime': 
-                        cacheDefaultValue = `${this.startDateArr[0]}-${this.startDateArr[1]}-${this.startDateArr[2]} 00:00`;
+                        cacheDefaultValue = `${this.startDateArr[0]}-${this.startDateArr[1]}-${this.startDateArr[2]} ${this.startDateArr[3]}:${this.startDateArr[4]}`;
                         break;
                 }
             } else {
@@ -147,6 +185,9 @@ export default {
                 }
                 this.cacheDefaultData = this.getCacheData(cacheData);  
                 this.updateYear =  this.cacheDefaultData[0];  
+                this.updateMonth =  this.cacheDefaultData[1];  
+                this.updateDay =  this.cacheDefaultData[2];  
+                this.updateHour =  this.cacheDefaultData[3];  
             }
             this.defaultValueData = [...this.cacheDefaultData];
         },
@@ -189,6 +230,77 @@ export default {
                 }
             });
             return days.filter(item => item);
+        },
+
+        getChangeHours(year,month,day){
+            year = this.removeChinese(year);
+            month = this.removeChinese(month).padStart(2,'0');
+            day = this.removeChinese(day).padStart(2,'0');
+            let hours = Array.from(Array(24).keys()).map(hour=>{
+                let startEqualState = (year == this.startDateArr[0] && month == this.startDateArr[1] && day == this.startDateArr[2]);
+                let endEqualState = (year == this.endDateArr[0] && month == this.endDateArr[1] && day == this.endDateArr[2]);
+                let startHour = this.startDateArr[3],
+                    endHour = this.endDateArr[3];
+                
+                let resHour = undefined;
+                if(startEqualState && endEqualState){
+                    if(hour >= parseInt(startHour) && hour <= parseInt(endHour)){
+                        resHour = hour;
+                    }
+                }
+                else if(startEqualState){
+                    if(hour >= parseInt(startHour)){
+                        resHour = hour;
+                    }
+                }else if(endEqualState){
+                    if(hour <= parseInt(endHour)){
+                        resHour = hour;
+                    }
+                }else{
+                    resHour = hour;
+                }
+                if(resHour == 0){
+                    resHour = '0';
+                }
+                return resHour ? `${resHour}${this.chinese[3]}` : undefined;
+            })
+            return hours.filter(item => item);
+        },
+        
+        getChangeMinutes(year,month,day,hour){
+            year = this.removeChinese(year);
+            month = this.removeChinese(month).padStart(2,'0');
+            day = this.removeChinese(day).padStart(2,'0');
+            hour = this.removeChinese(hour).padStart(2,'0');
+            let minutes = Array.from(Array(60).keys()).map(minute=>{
+                let startEqualState = (year == this.startDateArr[0] && month == this.startDateArr[1] && day == this.startDateArr[2] && hour == this.startDateArr[3]);
+                let endEqualState = (year == this.endDateArr[0] && month == this.endDateArr[1] && day == this.endDateArr[2] && hour == this.endDateArr[3]);
+                let startMinute = this.startDateArr[4],
+                    endMinute = this.endDateArr[4];
+                
+                let resMinute = undefined;
+                if(startEqualState && endEqualState){
+                    if(minute >= parseInt(startMinute) && minute <= parseInt(endMinute)){
+                        resMinute = minute;
+                    }
+                }
+                else if(startEqualState){
+                    if(minute >= parseInt(startMinute)){
+                        resMinute = minute;
+                    }
+                }else if(endEqualState){
+                    if(minute <= parseInt(endMinute)){
+                        resMinute = minute;
+                    }
+                }else{
+                    resMinute = minute;
+                }
+                if(resMinute == 0){ 
+                    resMinute = '0'; 
+                }
+                return resMinute % this.minuteStep == 0 ? `${resMinute}${this.chinese[4]}` : undefined;
+            })
+            return minutes.filter(item => item);
         },
 
         getHours() {
@@ -251,7 +363,7 @@ export default {
             }
             value = this.removeChinese(value);
             switch (index) {
-                case 1:
+                case 1://year
                     this.updateYear = value;
                     this.listData.splice(index, 1, this.getMonths(value));
                     chooseValue = chooseValue ? chooseValue : cacheValueData[index];
@@ -262,7 +374,8 @@ export default {
                     self && self.updateChooseValue(self, index, chooseValue);
                     this.updateLinkage(self, 2, cacheValueData[index], null, cacheValueData)
                     break;
-                case 2:
+                case 2://month
+                    this.updateMonth = value;
                     this.listData.splice(index, 1, this.getDays(parseInt(this.updateYear), value));
                     chooseValue = chooseValue ? chooseValue : cacheValueData[index];
                     let curDaysData = this.listData[index];
@@ -277,15 +390,40 @@ export default {
                     }
                     
                     self && self.updateChooseValue(self, index, chooseValue);
+                    this.updateLinkage(self, 3, cacheValueData[index], null, cacheValueData)
                     break;
+                case 3://day
+                    this.updateDay = value;
+                    this.listData.splice(index, 1, this.getChangeHours(parseInt(this.updateYear),parseInt(this.updateMonth),value));
+                    chooseValue = chooseValue ? chooseValue : cacheValueData[index];
+                    let curHoursData = this.listData[index];
+                    if (curHoursData.indexOf(chooseValue) === -1) {
+                        chooseValue = curHoursData[0];
+                    }
+                    self && self.updateChooseValue(self, index, chooseValue);
+                    this.updateLinkage(self, 4, cacheValueData[index], null, cacheValueData)
+                    break;
+                case 4://hour
+                    this.updateHour = value;
+                    this.listData.splice(index, 1, this.getChangeMinutes(parseInt(this.updateYear),parseInt(this.updateMonth),parseInt(this.updateDay),parseInt(this.updateHour),value));
+                    chooseValue = chooseValue ? chooseValue : cacheValueData[index];
+                    let curMinuteData = this.listData[index];
+                    if (curMinuteData.indexOf(chooseValue) === -1) {
+                        chooseValue = curMinuteData[0];
+                    }
+                    self && self.updateChooseValue(self, index, chooseValue);
             }
         },
 
         updateChooseValue(self, index, value, cacheValueData) {
             switch (index) {
-                case 0:
-                case 1:
+                case 0://year
+                case 1://month
+                case 2://day
+                case 3://hour
                     this.updateLinkage(self, (index + 1), value, null, cacheValueData);
+                    break;
+                case 4://min
                     break;
             }
         },

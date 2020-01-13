@@ -48,6 +48,7 @@
             :name="name"
             :url="url"
             :xhrState="stateNum"
+            :headers="headers"
             @success="demoSuccess"
             @fail="demoFail"
             @progress="progress"
@@ -67,6 +68,28 @@
             :showText="true"
             strokeWidth="12"
           />
+        </span>
+        <div slot="desc"></div>
+      </nut-cell>
+    </div>
+
+    <p>自定义headers&formData</p>
+    <div>
+      <nut-cell>
+        <span slot="title">
+          <nut-uploader
+            :name="name"
+            :url="url"
+            :xhrState="stateNum"
+            :headers="headers"
+            :attach="formData"
+            @success="demoSuccess"
+            @fail="demoFail"
+            @preview="preview"
+            @showMsg="showMsg1"
+          >
+            <nut-button small>上传</nut-button>
+          </nut-uploader>
         </span>
         <div slot="desc"></div>
       </nut-cell>
@@ -112,6 +135,13 @@ export default {
       name: "test1",
       stateNum: 201,
       block: "block",
+      headers:{
+        token:'test'
+      },
+      formData:{
+        f1:'test',
+        f2:'test1'
+      },
       progressNum: 0,
       previewImg: null,
       previewImg2: null,

@@ -14,7 +14,6 @@ NutUI是一套京东风格的移动端Vue组件库，开发和服务于移动Web
 
 ## 特性
 
-* 跨平台，自动转微信小程序组件（稍后上线，敬请期待）
 * 30+ 京东移动端项目正在使用
 * 基于京东APP 7.0 视觉规范
 * 支持按需加载
@@ -55,6 +54,7 @@ NutUI是一套京东风格的移动端Vue组件库，开发和服务于移动Web
 * [案例征集](https://github.com/jdf2e/nutui/issues/16)
 * [模板工程命令行工具(Gaea CLI)](https://www.npmjs.com/package/gaea-cli)
 * 联系我们：nutui@jd.com
+* [加入我们](#/joinus)
 
 
 ## 开源协议

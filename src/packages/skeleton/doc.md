@@ -23,9 +23,7 @@
 ## 横向排列
 
 ```html
-<row 
-    padding="15px 10px 0"
->
+<row  padding="15px 10px 0">
     <skeleton-square 
         width="200px"
     ></skeleton-square>

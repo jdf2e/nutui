@@ -35,36 +35,36 @@
             </div>
         </nut-cell>
         <!-- demo-->
-        <nut-calendar :is-visible="isVisible"
+        <nut-calendar :is-visible.sync="isVisible"
             :default-value="date"
-            @close="switchPicker('isVisible')"
+            @close="switchPickerClose('isVisible')"
             @choose="setChooseValue"
             :start-date="`2018-10-11`"
             :end-date="`2020-11-11`"
         >
         </nut-calendar>
-        <nut-calendar :is-visible="isVisible2"
+        <nut-calendar :is-visible.sync="isVisible2"
             :default-value="date2"
             :is-auto-back-fill="true"
-            @close="switchPicker('isVisible2')"
+            @close="switchPickerClose('isVisible2')"
             @choose="setChooseValue2"
         >
         </nut-calendar>
-        <nut-calendar :is-visible="isVisible1"
+        <nut-calendar :is-visible.sync="isVisible1"
             :default-value="date1"
             type="range"
             :start-date="null"
             :end-date="null"
-            @close="switchPicker('isVisible1')"
+            @close="switchPickerClose('isVisible1')"
             @choose="setChooseValue1"
         >
         </nut-calendar>
-        <nut-calendar :is-visible="isVisible3"
+        <nut-calendar :is-visible.sync="isVisible3"
             :default-value="date3"
             type="range"
             :start-date="null"
             :end-date="null"
-            @close="switchPicker('isVisible3')"
+            @close="switchPickerClose('isVisible3')"
             @choose="setChooseValue3"
         >
         </nut-calendar> 
@@ -89,8 +89,11 @@ export default {
         };
     },
     methods: {
-       switchPicker(param) {
-            this[`${param}`] = !this[`${param}`];
+        switchPickerClose(param){
+            console.log('close:' + param)
+        },
+        switchPicker(param) {
+            this[`${param}`] = true;
         },
         setChooseValue(param) {
             this.date = param[3];

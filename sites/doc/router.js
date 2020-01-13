@@ -12,6 +12,7 @@ import frontCover from './index.vue';
  const Start = () => import('./page/start.vue');
  const International = () => import('./page/international.vue');
  const Theme = () => import('./page/theme.vue');
+ const JoinUs = () => import('./page/joinus.vue');
  //const Update = () => import('./page/changelog.vue');
 
 Vue.use(VueRouter);
@@ -61,6 +62,14 @@ const routes = [
     components: {
       default: Index,
       main: Theme,     
+    }
+  },
+  {
+    path: '/joinus',
+    name: 'joinus',
+    components: {
+      default: Index,
+      main: JoinUs,
     }
   }
 ];

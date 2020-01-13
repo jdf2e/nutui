@@ -80,7 +80,13 @@ export default {
 | hasTextButton | 右侧搜索按钮是否为文字按钮 | Boolean | false
 | textInfo | 右侧文字搜索按钮文案 | String | '搜索'
 | animation | 是否需要默认的搜索框显示动画 | Boolean | true
-| customClass | 自定义 class | String | ' '
+| customClass | 自定义 class | String | ''
+| searchIconSize | Search 图标的尺寸 | String | '20px'
+| searchIconColor | Search 图标的颜色 | String | '#2e2d2d'
+| searchBtnIconSize | 搜索按钮图标的尺寸 | String | '20px'
+| searchBtnIconColor | 搜索按钮图标的颜色 | String | '#2e2d2d'
+| clearIconSize | 清空按钮图标的尺寸 | String | '15px'
+| clearIconColor | 清空按钮图标的颜色 | String | '#2e2d2d'
 
 ## Event
 

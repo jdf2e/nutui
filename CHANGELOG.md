@@ -1,3 +1,76 @@
+## 2.1.9
+
+`2020-01-09`
+
+* :sparkles: feat(CheckboxGroup)：增加全选、反选功能 @richard1015
+* :sparkles: feat(uploader)：上传组件支持withCredentials参数 #190 @richard1015
+* :sparkles: feat：新增popup组件 @yangkaixuan
+* :sparkles: feat：新增Elevator电梯楼层组件 @zhenyulei
+* :sparkles: feat：新增textbox文本域组件 @guoxiao158
+* :bug: fix(calendar)：修复日历组件 当某个月的1号是周日时，月份下方会空出来一行 @irisSong
+* :bug: fix(menu)：修复组件多实例bug #182 @Ymm0008
+* :bug: fix(col)：修复组件中文字超出时样式问题 @richard1015
+* :bug: fix(imagepicker)：imgList双向绑定问题 #187 @richard1015
+* :bug: fix(toast)：修复toast多实例关闭事件冲突 #181 @guoxiao158
+* :zap: doc：修改（picker自定义数据demo；cdn按需加载；VueCLI3按需加载）； @richard1015
+
+## 2.1.8
+
+`2019-12-11`
+* :bug: fix(calendar)：修复日历组件点击确定触发close事件,closes #175
+* :bug: fix(checkboxgroup)：修复checkboxgroup 无法实现双向数据绑定,closes #126
+* :bug: fix(steps)：修复steps组件动态加载数据报错,closes #178
+* :bug: fix(scroller)：修复horizontal-scroll 固定宽度滑动计算bug
+* :sparkles: upd(scroller)：优化 vertical-scroll 模式不能设置动画的执行时间,closes #161
+* :sparkles: upd(datepicker)：优化DatePicker中minuteStep支持到datetime类型
+* :sparkles: feat: 新增移动端 pc端，JS自动切换 
+* :zap: style(lazyLoad)：修改lazyLoad Demo 样式
+* :zap: doc: 修改README-zh_CN.md、README.md、intro.md 文档
+* :zap: doc: 修改ISSUE_TEMPLATE 提交ISSUE模板
+* :zap: doc: 修改checkbox Demo文档
+
+## 2.1.7
+
+`2019-11-13`
+* :sparkles: upd(swiper): 异步加载不需主动调用updateEvent事件、懒加载方式优化
+* :sparkles: upd(uploader): 增加自定义header功能
+* :sparkles: feat: 新增图片懒加载组件`LazyLoad`
+* :zap: chore(webpack): 构建环境多入口模式（构建环境支持 doc文档和mobile 示例 同时调试）；热更新配置，公共模块
+* :zap: doc: start.md 文档修改
+* :bug: fix: datepicker 组件bug修复(异步修改startDate,endDate,defaultValue字段无响应；时间限制支持到时、分)
+
+## 2.1.6
+
+`2019-10-15`
+* :bug: fix: 修复dialog picker scroller组件问题
+
+## 2.1.5
+
+`2019-7-10`
+* :bug: fix: 修复国际化语言包一处错误
+
+## 2.1.4
+
+`2019-7-10`
+
+* :sparkles: upd(SearchBar): 增加props控制内部Icon尺寸和颜色
+* :bug: fix(Skeleton): 修复文档无法查看的问题
+* :bug: fix: 修复国际化语言包一处错误
+* :zap: chore: 优化服务端渲染
+* :zap: doc: 新增加入我们页面
+
+## 2.1.3
+
+`2019-6-26`
+
+* :sparkles: feat: 新增头像组件`Avatar`
+* :sparkles: upd(SearchBar): 右侧文字或按钮增加事件，优化样式
+* :sparkles: upd(CountDown): 更新了单元测试用例
+* :sparkles: upd(NoticeBar): 优化了滚动速度
+* :sparkles: upd(date.js): 完善了`getNumTwoBit`方法( Thx to liu-dongyu)
+* :zap: chore: 更新部分依赖包版本
+* :zap: doc: 文档内容修改完善
+
 ## 2.1.2
 
 `2019-5-23`

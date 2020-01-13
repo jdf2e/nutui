@@ -9,7 +9,7 @@
             :size="item.size ? item.size : size"
             
             :id="item[keys.id]"
-            :checked="isOptionCheckedByDefault(item)"
+            :checked.sync="item.checked"
             
             
             v-model="checkboxValues[index]"
@@ -80,11 +80,12 @@ export default {
             ignoreChange: false,
             initData:[],
         	checkboxValues: [],
-            initialValue: JSON.parse(JSON.stringify(this.value))
+            initialValue: []
         };
     },
     components: {
 	    [nutcheckbox.name]: nutcheckbox
+<<<<<<< HEAD
 	},
     watch: {
         checkBoxData(val){
@@ -93,7 +94,26 @@ export default {
             }
         }
     },
+=======
+    },
+    watch:{
+        value(){
+            this.init();
+        }
+    },
+    mounted(){
+        this.init()
+    },
+>>>>>>> bdc43e45aac0759a451aae314da010a87bbc8ae6
     methods: {
+        init(){
+            this.initialValue = this.value;
+            this.checkBoxData.map(item=>{
+                if(typeof item ==="object"){
+                    item.checked = this.isOptionCheckedByDefault(item)
+                }
+            })
+        },
         isObject(obj) {
             return obj !== null && typeof obj === 'object';
         },
@@ -140,7 +160,34 @@ export default {
 
            
         },
-        
+        toggleAll(checked) {
+            if (checked === false) {
+                this.$emit("input", []);
+                return;
+            }
+            if(checked === true){
+                this.checkBoxData.map(item => {
+                    item.checked = true;
+                });
+            }
+            if (!checked) {
+                this.checkBoxData.map(item => {
+                    item.checked = !item.checked;
+                });
+            }
+
+            let value = [],
+                label = [];
+            let resData = this.checkBoxData.filter(item => {
+                if (item.checked) {
+                value.push(item.value);
+                label.push(item.label);
+                }
+                return item.checked;
+            });
+            this.$emit("input",value);
+            this.$emit("change", value, label, null);
+        }
     }
 }
 </script>

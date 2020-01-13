@@ -63,7 +63,10 @@ export default {
   	watch:{
   		value(){
   			this.isChecked = this.looseEqual(this.value,this.trueValue)
-  		}
+		},
+	    checked(newValue,oldValue){
+			this.isChecked = newValue;
+		}
   	},
 	data() {
 		
@@ -73,6 +76,7 @@ export default {
 	},
 	
 	mounted(){
+		this.$emit('update:checked',this.isChecked ? this.trueValue : this.falseValue,this.label);
 		this.$emit('input', this.isChecked ? this.trueValue : this.falseValue,this.label);
 	},
 	methods: {

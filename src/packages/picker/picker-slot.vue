@@ -5,14 +5,14 @@
             :class="{'nut-picker-roller-item-hidden': isHidden(index + 1)}"
             v-for="(item,index) in listData"
             :style="setRollerStyle(index + 1)"
-            :key="index">
-                {{item}}
+            :key="item.label ? item.label : index">
+                {{item.value ? item.value : item}}
         </div>
     </div>
     <div class="nut-picker-content">
         <div class="nut-picker-list-panel" ref="list">
             <div class="nut-picker-item" v-for="(item,index) in listData"
-                :key="index">{{item}}
+                :key="item.label ? item.label : index">{{item.value ? item.value : item}}
             </div>
         </div>
     </div>

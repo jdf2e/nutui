@@ -116,7 +116,7 @@ data() {
 ```html
 <nut-checkbox 
 	v-model="checkbox1" 
-	@changeEvt="checkboxChange">
+	@change="checkboxChange">
 	change事件
 </nut-checkbox>
 ```
@@ -135,7 +135,7 @@ methods: {
 <nut-checkbox 
 	v-model="checkbox1"
 	:label="'选项值'"  
-	@changeEvt="getChange">
+	@change="getChange">
 	备选项
 </nut-checkbox>
 ```

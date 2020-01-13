@@ -6,9 +6,9 @@
 
 ```html
 <nut-calendar 
-    :is-visible="isVisible"
+    :is-visible.sync="isVisible"
     :default-value="date"
-    @close="switchPicker('isVisible')"
+    @close="switchPickerClose('isVisible')"
     @choose="setChooseValue"
     :start-date="`2018-10-11`"
     :end-date="`2020-11-11`"
@@ -20,10 +20,10 @@
 
 ```html
 <nut-calendar 
-    :is-visible="isVisible2"
+    :is-visible.sync="isVisible2"
     :default-value="date2"
     :is-auto-back-fill="true"
-    @close="switchPicker('isVisible2')"
+    @close="switchPickerClose('isVisible2')"
     @choose="setChooseValue2"
 >
 </nut-calendar>
@@ -33,10 +33,10 @@
 
 ```html
 <nut-calendar 
-    :is-visible="isVisible1"
+    :is-visible.sync="isVisible1"
     :default-value="date1"
     type="range"
-    @close="switchPicker('isVisible1')"
+    @close="switchPickerClose('isVisible1')"
     @choose="setChooseValue1"
 >
 </nut-calendar>
@@ -46,13 +46,13 @@
 
 ```html
 <nut-calendar 
-    :is-visible="isVisible3"
+    :is-visible.sync="isVisible3"
     :default-value="date3"
     type="range"
     :start-date="null"
     :end-date="null"
     :animation="`nutSlideUp`"
-    @close="switchPicker('isVisible3')"
+    @close="switchPickerClose('isVisible3')"
     @choose="setChooseValue3"
 >
 </nut-calendar>
@@ -75,8 +75,11 @@ export default {
         };
     },
     methods: {
-       switchPicker(param) {
-            this[`${param}`] = !this[`${param}`];
+        switchPickerClose(param){
+            console.log('close:' + param)
+        },
+        switchPicker(param) {
+            this[`${param}`] = true;
         },
         setChooseValue(param) {
             this.date = param[3];
@@ -100,7 +103,7 @@ export default {
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | type | 类型，日期选择'one'，区间选择'range' | String | 'one'
-| isVisible | 是否可见 | Boolean | false
+| isVisible | 是否可见（注意：绑定时必须`:is-visible.sync`,加sync修饰符） | Boolean | false
 | animation | 日历进入方向，右滑'nutSlideRight'， 上拉'nutSlideUp' | String | 'nutSlideRight' 
 | isAutoBackFill | 是否自动回填 | Boolean | false
 | isOpenRangeSelect | 是否开启区间选择 | Boolean | false
