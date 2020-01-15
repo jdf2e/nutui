@@ -95,6 +95,7 @@ import TextBox from "./packages/textbox/index.js";
 import Elevator from "./packages/elevator/index.js";
 import "./packages/elevator/elevator.scss";
 import Popup from "./packages/popup/index.js";
+import "./packages/popup/popup.scss";
 const packages = {
   Cell,
   Dialog,
