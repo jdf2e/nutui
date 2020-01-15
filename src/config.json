@@ -486,7 +486,7 @@
     {
       "version": "1.0.0",
       "name": "Elevator",
-      "chnName": "电梯楼层组件",
+      "chnName": "电梯楼层",
       "desc": "类似于电梯楼层，组件可以跟着右侧索引而滑动",
       "type": "component",
       "sort": "3",

@@ -59,6 +59,10 @@ export default {
         propsTime: {
             type:Number,
             default: 0
+        },
+        scrollTo: {
+            type: Number,
+            default: 1
         }
     },
     watch: {
@@ -72,6 +76,12 @@ export default {
         },
         'isUnMore': function() {
             this.isShow();
+        },
+        'scrollTo': function(val) {
+            if (typeof val === 'number' && !isNaN(val) && val <= 0 ) {
+                this.setTransform(val, null, 500);
+                this.$emit('scrollToCbk');
+            }
         }
     },
     data() {

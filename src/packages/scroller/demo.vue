@@ -6,8 +6,9 @@
         >此 Demo 在 PC 端浏览器与移动端浏览器体验差异较大，建议在 Android 或 iOS 设备上体验。</nut-noticebar>
         <h4>横向滑动</h4>
         <p>支持惯性和吸边回弹，支持滑动到底跳转链接。</p>
+        <p><nut-button type="light" shape="circle" small @click="scrollToPosHor()">返回第一个</nut-button></p>
         <div class="hor-panel">
-            <nut-scroller @jump="jump()">
+            <nut-scroller @jump="jump()" @scrollToCbk="scrollToCbkHor" :scrollTo="scrollToHor">
                 <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData" :key="index">
                     <dl class="nut-scroller-item-info">
                         <dt>防水升级版 蓝 迷你小音</dt>
@@ -26,19 +27,21 @@
                         <dd>2018-02-25</dd>
                     </dl>
                 </div>
-                <slot slot="more" ><div class="nut-hor-jump-more">查看更多</div></slot>
             </nut-scroller>
         </div>
         <h4>纵向滑动</h4>
         <p>支持下拉刷新、上拉加载更多。</p>
+        <p><nut-button type="light" shape="circle" small @click="scrollToPos()">返回列表顶部</nut-button></p>
         <div class="vert-panel">
             <nut-scroller
                 :is-un-more="isUnMore1" 
                 :is-loading="isLoading1"
                 :type="'vertical'"
                 :propsTime="0"
+                :scrollTo="scrollTo"
                 @loadMore="loadMoreVert"
                 @pulldown="pulldown"
+                @scrollToCbk="scrollToCbk"
             > 
                 <div slot="list" class="nut-vert-list-panel">
                     <div class="nut-vert-list-item" v-for="(item, index) of listData1" :key="index">
@@ -90,12 +93,31 @@ export default {
             isLoading2: false,
             page2: 2,
             timers: null,
+            scrollTo: 1,
+            scrollToHor: 1
         };
     },
 
     methods: {
         jump() {
             location.href = 'http://www.jd.com';
+        },
+
+        scrollToCbk() {
+            this.scrollTo = 1;
+        },
+
+        scrollToCbkHor() {
+            this.scrollToHor = 1;
+        },
+
+        scrollToPosHor() {
+            this.scrollToHor = 0;
+            
+        },
+
+        scrollToPos() {
+            this.scrollTo = 0;
         },
 
         loadMoreVert() {

@@ -16,6 +16,18 @@ export default {
         stretch: {
             type: Number,
             default: 40
+        },
+        scrollTo: {
+            type: Number,
+            default: 1
+        }
+    },
+    watch: {
+        'scrollTo': function(val) {
+            if (typeof val === 'number' && !isNaN(val) && val <= 0 ) {
+                this.setTransform(val, null, 500);
+                this.$emit('scrollToCbk');
+            }
         }
     },
     data() {
