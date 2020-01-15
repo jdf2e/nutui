@@ -107,6 +107,7 @@ export default {
         },
         clickNav(title,index){
             this.currBox =true;
+            this.currTitle = title;
             setTimeout(()=>{
                 this.currBox =false;
             },this.hiddenTime);
@@ -118,6 +119,7 @@ export default {
         moveFun(title,index){
             let titleBox = document.getElementById(title);
             titleBox.scrollIntoView();
+            
         },
         onPointerEnd(e){
             let fontSize = this.getFontSize();

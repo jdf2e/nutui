@@ -1,6 +1,9 @@
 .nut-elevator{
     overflow: scroll;
     background:#FFF; 
+    &::-webkit-scrollbar{
+        display:none; 
+    }
 }
 .nut-elevator-ul{
     width: 100%;
