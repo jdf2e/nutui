@@ -1,4 +1,9 @@
 .nut-elevator{
+    position: fixed;
+    top:40px;
+    width: 100%;
+}
+.nut-main{
     overflow: scroll;
     background:#FFF; 
     &::-webkit-scrollbar{
