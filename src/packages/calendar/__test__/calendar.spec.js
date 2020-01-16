@@ -6,7 +6,9 @@ import Vue from 'vue';
 describe('Calendar.vue', () => {
     const wrapper = shallowMount(Calendar, {
         propsData: { 
-            defaultValue: '2022-01-12'
+            defaultValue: '2022-01-12',
+            startDate: '2020-02-01',
+            endDate:'2028-04-11'
         }
     });
 
@@ -19,7 +21,7 @@ describe('Calendar.vue', () => {
 
     it('设置默认日期', () => {
         return Vue.nextTick().then(function () {
-            expect(wrapper.findAll('.nut-calendar-month-title').at(0).text()).toBe('2021年01月');
+            expect(wrapper.findAll('.nut-calendar-month-title').at(0).text()).toBe('2022年01月');
             expect(wrapper.findAll('.nut-calendar-month-item').at(0).find('.nut-calendar-month-day-active').text()).toBe('12');
         })
     });
@@ -27,7 +29,7 @@ describe('Calendar.vue', () => {
     it('选择日期', () => {
         wrapper.findAll('.nut-calendar-month-item').at(0).findAll('.nut-calendar-month-day').at(10).trigger('click');
         return Vue.nextTick().then(function () {
-            expect(wrapper.findAll('.nut-calendar-month-item').at(0).findAll('.nut-calendar-month-day-active').at(0).text()).toBe('6');
+            expect(wrapper.findAll('.nut-calendar-month-item').at(0).findAll('.nut-calendar-month-day-active').at(0).text()).toBe('5');
 
         })
     });
