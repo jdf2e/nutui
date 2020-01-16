@@ -1,44 +1,45 @@
 <template>
-    <div class="nut-elevator" id="nut-elevator" :style="{height:wrapHeight+'px'}">
-        <ul class="nut-elevator-ul" 
-            id="nut-elevator-ul"
-            >
-            <li 
-            v-for="item in dataArray" 
-            v-bind:key="item.title"
-            class="nut-list-title" 
-            >
-                <h3 class="nut-list-h" :id="item.title">{{item.title}}</h3>
-                <ul class="nut-people-list">
-                    <li v-for="(list,idx) in item.list" 
-                    v-bind:key="idx"
-                    class="nut-list-name" 
-                    :id="list.id?list.id:'list'+item.title+idx"
-                    @click="clickList(list,item)"
-                    >{{list.name}}</li>
+        <div class="nut-elevator"  :style="{height:wrapHeight+'px'}">
+            <div class="nut-main" :style="{height:wrapHeight+'px'}">
+                <ul class="nut-elevator-ul" 
+                    id="nut-elevator-ul"
+                    >
+                    <li 
+                    v-for="item in dataArray" 
+                    v-bind:key="item.title"
+                    class="nut-list-title" 
+                    >
+                        <h3 class="nut-list-h" :id="item.title">{{item.title}}</h3>
+                        <ul class="nut-people-list">
+                            <li v-for="(list,idx) in item.list" 
+                            v-bind:key="idx"
+                            class="nut-list-name" 
+                            :id="list.id?list.id:'list'+item.title+idx"
+                            @click="clickList(list,item)"
+                            >{{list.name}}</li>
+                        </ul>
+                    </li>
                 </ul>
-            </li>
-        </ul>
-        <ul class="nut-elevator-nav" id="nut-elevator-nav" 
-            @touchmove="onPointerMove($event)"
-            @touchstart="onPointerMove($event)"
-            @touchend="onPointerEnd($event)"
-            >
-            <li v-for="(item,index) in dataArray"
-            v-bind:key="index" 
-            :id="'nav'+index"
-            class="nut-nav-list" 
-            :class="{'nut-nav-curr':item.title==currTitle}"
-            :style="{height:navListHeight+'px'}"
-            @click="clickNav(item.title,index)"
-            >{{item.title}}</li>
-        </ul>
-        <template v-if="showIndicator">
-            <div class="nut-big-box" v-show="currBox">
-                {{currTitle}}
+                <ul class="nut-elevator-nav" id="nut-elevator-nav" 
+                    @touchmove="onPointerMove($event)"
+                    @touchstart="onPointerMove($event)"
+                    @touchend="onPointerEnd($event)"
+                    >
+                    <li v-for="(item,index) in dataArray"
+                    v-bind:key="index" 
+                    :id="'nav'+index"
+                    class="nut-nav-list" 
+                    :style="{height:navListHeight+'px'}"
+                    @click="clickNav(item.title,index)"
+                    >{{item.title}}</li>
+                </ul>
+                <template v-if="showIndicator">
+                    <div class="nut-big-box" v-show="currBox">
+                        {{currTitle}}
+                    </div>
+                </template>
             </div>
-        </template>
-    </div>
+        </div>  
 </template>
 <script>
 export default {
@@ -107,6 +108,7 @@ export default {
         },
         clickNav(title,index){
             this.currBox =true;
+            this.currTitle = title;
             setTimeout(()=>{
                 this.currBox =false;
             },this.hiddenTime);
@@ -118,6 +120,7 @@ export default {
         moveFun(title,index){
             let titleBox = document.getElementById(title);
             titleBox.scrollIntoView();
+            
         },
         onPointerEnd(e){
             let fontSize = this.getFontSize();

@@ -10,15 +10,22 @@
                 :load-more-txt="loadMoreTxt"
                 :unload-more-txt="unloadMoreTxt"
                 :props-time="propsTime"
+                :scroll-to="scrollTo"
                 @loadMore="loadMore"
                 @pulldown="pulldown"
+                @scrollToCbk="scrollToCbk"
             >
                 <slot name="list"  slot="list"></slot>
 
             </nut-vert-scroll>
         </template>
         <template v-else-if="type === 'horizontal'">
-            <nut-hor-scroll :stretch="stretch" @jump="jump">
+            <nut-hor-scroll 
+            :stretch="stretch" 
+            :scroll-to="scrollTo"
+            @jump="jump" 
+            @scrollToCbk="scrollToCbk"
+        >
                 <slot name="list"  slot="list"></slot>
                 <slot name="more"  slot="more"></slot>
                 <slot name="arrow" slot="arrow"></slot>
@@ -67,6 +74,10 @@ export default {
         propsTime: {
             type:Number,
             default: 0
+        },
+        scrollTo: {
+            type: Number,
+            default: 1
         }
     },
     data() {
@@ -87,6 +98,10 @@ export default {
 
         pulldown() {
             this.$emit('pulldown');
+        },
+
+        scrollToCbk() {
+            this.$emit('scrollToCbk');
         }
     }
 }
