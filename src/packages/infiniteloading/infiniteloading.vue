@@ -137,10 +137,14 @@ export default {
     },
 
     activated() {
-        this.scrollListener();
+        if(this.keepAlive){
+            this.keepAlive = false;
+            this.scrollListener();
+        }
     },
 
     deactivated() {
+        this.keepAlive = true;
         window.removeEventListener('scroll', this.handleScroll, false);
         window.removeEventListener('resize', this.handleScroll, false);
     },
