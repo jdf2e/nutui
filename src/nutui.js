@@ -95,6 +95,9 @@ import TextBox from "./packages/textbox/index.js";
 import Elevator from "./packages/elevator/index.js";
 import "./packages/elevator/elevator.scss";
 import Popup from "./packages/popup/index.js";
+import LeftSlip from "./packages/leftslip/index.js";
+import "./packages/leftslip/leftslip.scss";
+
 const packages = {
   Cell,
   Dialog,
@@ -142,7 +145,8 @@ const packages = {
   TextBox,
   Avatar,
   Elevator,
-  Popup
+  Popup,
+  LeftSlip
 };
 
 const components = {};

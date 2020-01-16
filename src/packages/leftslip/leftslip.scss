@@ -1,0 +1,60 @@
+.nut-leftslip {
+    position: relative;
+    overflow: hidden;
+    &:first-child .slip-main {
+        border-top: 1px solid #d8d8d8;
+    }
+    .slip-main {
+        padding: 10px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        border-bottom: 1px solid #d8d8d8;
+        background: #fff;
+    }
+    .leftslip-item {
+        transition: all 0.6s ease;
+    }
+    .delbtn{
+        position: absolute;
+        right: -80px;
+        top: 0;
+        width: 40px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // transform: translateX(100%);
+        background: #ff4949;
+        color: #fff;
+        padding: 0 5px;
+        font-size: 14px;
+        span{
+            // width: 40px;
+            display: block;
+        }
+    }
+    .slipbtns {
+        position: absolute;
+        right: -0px;
+        top: 0;
+        // width: 80px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(100%);
+        
+        a {
+            display: flex;
+            width: 40px;
+            background: #ff4949;
+            color: #fff;
+            height: 100%;
+            padding: 0 5px;
+            font-size: 14px;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
