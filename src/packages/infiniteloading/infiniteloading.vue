@@ -136,6 +136,10 @@ export default {
         }
     },
 
+    activated() {
+        this.scrollListener();
+    },
+
     deactivated() {
         window.removeEventListener('scroll', this.handleScroll, false);
         window.removeEventListener('resize', this.handleScroll, false);
