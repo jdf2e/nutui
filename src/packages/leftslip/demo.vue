@@ -4,7 +4,9 @@
         <div>
             <nut-leftslip>
                 <div slot="slip-main" class="slip-main">向左滑动我</div>
-                <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a><a href="javascript:;" class="favorite">收藏</a></div>
+                <div slot="slipbtns" class="slipbtns"
+                    ><a href="javascript:;" @click="delSlipItem">删除</a><a href="javascript:;" class="favorite">收藏</a></div
+                >
             </nut-leftslip>
         </div>
         <p>单个按钮</p>
@@ -13,33 +15,29 @@
                 <div slot="slip-main" class="slip-main">单一按钮</div>
                 <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a></div>
             </nut-leftslip>
-            <nut-leftslip onlyDel @oneDelete="oneDel($event)">
-                <div slot="slip-main" class="slip-main">向左滑一键删除</div>
-                <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a></div>
+            <nut-leftslip onlyDel @oneDelete="oneDel" ref="leftslip1">
+                <div slot="slip-main" class="slip-main">向左滑滑滑~一键删除</div>
             </nut-leftslip>
         </div>
         <p>多个按钮</p>
         <div>
             <nut-leftslip>
-                <div slot="slip-main" class="slip-main">
-                    {{ 111 }}
-                </div>
+                <div slot="slip-main" class="slip-main">向左滑动，多个按钮有超出限制哦~</div>
                 <div slot="slipbtns" class="slipbtns"
                     ><a href="javascript:;">删除</a>
                     <a href="javascript:;" class="favorite">收藏</a>
-                    <a href="javascript:;" class="favorite">收藏</a>
-                    <a href="javascript:;" class="favorite">收藏</a>
-                    <a href="javascript:;" class="favorite">收藏</a>
-                    <a href="javascript:;" class="favorite">收藏1</a>
+                    <a href="javascript:;" class="favorite org1"><nut-icon type="trolley" size="20px" color="#fff"></nut-icon></a>
+                    <a href="javascript:;" class="favorite org2"><nut-icon type="cross" size="15px" color="#fff"></nut-icon></a>
+                    <a href="javascript:;" class="favorite org3">确认</a>
+                    <a href="javascript:;" class="favorite org1">加购物车</a>
                     <a href="javascript:;" class="favorite">收藏2</a>
                     <a href="javascript:;" class="favorite">收藏3</a>
-                    <a href="javascript:;" class="favorite">收藏4</a>
                 </div>
             </nut-leftslip>
         </div>
         <p>列表</p>
         <div>
-            <nut-leftslip v-for="(item, index) in list" :key="index">
+            <nut-leftslip v-for="(item, index) in list" :key="item.id" ref="leftslip">
                 <div slot="slip-main" class="slip-main">
                     <div class="addr">
                         <p class="name-mobile">{{ item.tel }}</p>
@@ -61,26 +59,30 @@ export default {
     data() {
         return {
             list: [
-                {addr: '北京市大兴区亦庄经济开发中心京东大厦B座1', tel: '159****8888'},
-                {addr: '北京市大兴区亦庄经济开发中心京东大厦B座2', tel: '159****8888'},
-                {addr: '北京市大兴区亦庄经济开发中心京东大厦B座3', tel: '159****8888'},
-                {addr: '北京市大兴区亦庄经济开发中心京东大厦B座4', tel: '159****8888'},
-                {addr: '北京市大兴区亦庄经济开发中心京东大厦B座5', tel: '159****8888'},
-                {addr: '北京市大兴区亦庄经济开发中心京东大厦B座6', tel: '159****8888'},
-                {addr: '北京市大兴区亦庄经济开发中心京东大厦B座7', tel: '159****8888'},
-                {addr: '北京市大兴区亦庄经济开发中心京东大厦B座8', tel: '159****8888'}
+                {id: 'add1', addr: '北京市大兴区亦庄经济开发中心京东大厦B座1', tel: '159****8888'},
+                {id: 'add2', addr: '北京市大兴区亦庄经济开发中心京东大厦B座2', tel: '159****8888'},
+                {id: 'add3', addr: '北京市大兴区亦庄经济开发中心京东大厦B座3', tel: '159****8888'},
+                {id: 'add4', addr: '北京市大兴区亦庄经济开发中心京东大厦B座4', tel: '159****8888'},
+                {id: 'add5', addr: '北京市大兴区亦庄经济开发中心京东大厦B座5', tel: '159****8888'},
+                {id: 'add6', addr: '北京市大兴区亦庄经济开发中心京东大厦B座6', tel: '159****8888'},
+                {id: 'add7', addr: '北京市大兴区亦庄经济开发中心京东大厦B座7', tel: '159****8888'},
+                {id: 'add8', addr: '北京市大兴区亦庄经济开发中心京东大厦B座8', tel: '159****8888'}
             ]
         };
     },
     methods: {
+        delSlipItem(e) {
+            console.log(e.target);
+        },
         delItem(index) {
-            console.log(1);
             this.list.splice(index, 1);
         },
-        oneDel(ev) {
-            console.log(ev.target);
-            alert('是否删除？');
-            ev.target.remove();
+        onlyDelBtnClick(par) {
+            // console.log(par);
+            par.remove();
+        },
+        oneDel(par) {
+            par.remove();
         }
     }
 };
@@ -131,6 +133,15 @@ export default {
     a {
         &.favorite {
             background: #ccc;
+        }
+        &.org1 {
+            background: #ff9800;
+        }
+        &.org2 {
+            background: #ffc107;
+        }
+        &.org3 {
+            background: #ff5722;
         }
     }
 }

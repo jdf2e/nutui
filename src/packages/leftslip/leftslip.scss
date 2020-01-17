@@ -17,9 +17,9 @@
     }
     .delbtn{
         position: absolute;
-        right: -80px;
+        right: -50px;
         top: 0;
-        width: 40px;
+        min-width: 40px;
         height: 100%;
         display: flex;
         align-items: center;
@@ -31,7 +31,13 @@
         font-size: 14px;
         span{
             // width: 40px;
-            display: block;
+            display: flex;
+            position: absolute;
+            right: 0;
+            width: 50px;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
         }
     }
     .slipbtns {
@@ -44,7 +50,6 @@
         align-items: center;
         justify-content: center;
         transform: translateX(100%);
-        
         a {
             display: flex;
             width: 40px;
@@ -55,6 +60,7 @@
             font-size: 14px;
             align-items: center;
             justify-content: center;
+            text-align: center;
         }
     }
 }
