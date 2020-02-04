@@ -58,6 +58,49 @@
       v-model="showRight"
       :style="{ width: '20%', height: '100%' }"
     ></nut-popup>
+    <h2 class="title">关闭图标</h2>
+    <nut-cell
+      isLink
+      title="关闭图标"
+      :showIcon="true"
+      @click.native="showIcon = true">
+    </nut-cell>
+    <nut-popup
+      position="bottom"
+      closeable 
+      v-model="showIcon"
+      :style="{ height: '20%' }"
+    ></nut-popup>
+
+    <nut-cell
+      isLink
+      title="图标位置"
+      :showIcon="true"
+      @click.native="showIconPosition = true">
+    </nut-cell>
+    <nut-popup
+      position="bottom"
+      closeable 
+      close-icon-position="top-left"
+      v-model="showIconPosition"
+      :style="{ height: '20%' }"
+    ></nut-popup>
+
+
+    <nut-cell
+      isLink
+      title="自定义图标"
+      :showIcon="true"
+      @click.native="showCloseIcon = true">
+    </nut-cell>
+    <nut-popup
+      position="bottom"
+      closeable 
+      close-icon="tick"
+      v-model="showCloseIcon"
+      :style="{ height: '20%' }"
+    ></nut-popup>
+
 
     <h2 class="title">圆角弹框</h2>
     <nut-cell
@@ -85,7 +128,10 @@ export default {
       showBottom: false,
       showLeft: false,
       showRight: false,
-      showRound: false
+      showIcon: false,
+      showRound: false,
+      showIconPosition: false,
+      showCloseIcon: false
     };
   },
   methods: {
