@@ -1,6 +1,6 @@
 <template>
   <transition name="popup-fade">
-    <div v-show="show" class="bg nut-mask" @click="onClick"></div>
+    <div v-show="show" class="bg nut-mask" ></div>
   </transition>
 </template>
 <script>
@@ -8,16 +8,7 @@ export default {
   name: "nut-popup-mask",
   props: {
     show: { type: Boolean, default: true }
-  },
-  data() {
-    return {};
-  },
-
-  methods: {
-    onClick() {
-      this.$emit("input", false);
-    }
-  }
+  },    
 };
 </script>
 <style lang="scss" scoped>
