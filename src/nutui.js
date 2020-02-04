@@ -96,6 +96,9 @@ import Elevator from "./packages/elevator/index.js";
 import "./packages/elevator/elevator.scss";
 import Popup from "./packages/popup/index.js";
 import "./packages/popup/popup.scss";
+import TabSelect from "./packages/tabselect/index.js";
+import "./packages/tabselect/tabselect.scss";
+
 const packages = {
   Cell,
   Dialog,
@@ -143,7 +146,8 @@ const packages = {
   TextBox,
   Avatar,
   Elevator,
-  Popup
+  Popup,
+  TabSelect: TabSelect
 };
 
 const components = {};
@@ -171,7 +175,7 @@ pkgList.map(item => {
   }
 });
 
-const install = function(Vue, opts = {}) {
+const install = function (Vue, opts = {}) {
   if (install.installed) return;
 
   if (opts.locale) {
@@ -209,8 +213,7 @@ const install = function(Vue, opts = {}) {
 
   Vue.use(Lazyload, {
     lazyComponent: true,
-    loading:
-      "//img12.360buyimg.com/imagetools/jfs/t1/73967/28/14561/916/5dc142e4E0666555b/bf33454553c6035e.png"
+    loading: "//img12.360buyimg.com/imagetools/jfs/t1/73967/28/14561/916/5dc142e4E0666555b/bf33454553c6035e.png"
   });
 };
 

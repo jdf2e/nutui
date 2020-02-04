@@ -502,6 +502,16 @@
       "sort": "5",
       "showDemo": true,
       "author": "杨凯旋"
+    },
+    {
+      "version": "1.0.0",
+      "name": "TabSelect",
+      "chnName": "分类选择",
+      "desc": "",
+      "type": "component",
+      "sort": "3",
+      "showDemo": true,
+      "author": "dsj"
     }
   ]
 }
