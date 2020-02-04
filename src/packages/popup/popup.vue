@@ -6,7 +6,9 @@
       class="popup-box"
       :class="[`popup-${position}`, { round }]"
     >
-      <slot></slot>
+        <slot></slot>
+        <nut-icon v-if='closeable' @click.native='$emit("input", false)' :type="closeIcon" size="12px"  class="nutui-popup__close-icon" :class="'nutui-popup__close-icon--'+closeIconPosition">
+        </nut-icon>
     </div>
   </transition>
 </template>
@@ -27,6 +29,18 @@ export default {
     overlay: {
       type: Boolean,
       default: true
+    },
+    closeable:{
+        type: Boolean,
+        default: false 
+    },
+    closeIconPosition: {
+      type: String,
+      default: 'top-right'
+    },
+    closeIcon:{
+        type: String,
+        default: 'cross'
     },
     round: Boolean
   },

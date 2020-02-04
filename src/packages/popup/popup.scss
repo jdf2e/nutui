@@ -1,8 +1,9 @@
+$popup-close-icon-margin: 16px; 
 .popup-fade-enter-active {
-    animation: 0.2s nut-fade-in;
+    animation: 0.3s nut-fade-in;
   }
   .popup-fade-leave-active {
-    animation: 0.2s nut-fade-out;
+    animation: 0.3s nut-fade-out;
   }
   
   .popup-slide {
@@ -68,7 +69,7 @@
     max-height: 100%;
     overflow-y: auto;
     background-color: #fff;
-    transition: transform 0.2s;
+    transition: transform 0.3s;
     -webkit-overflow-scrolling: touch;
     z-index: 2028;
   }
@@ -93,3 +94,41 @@
   }
  
   
+ 
+
+.nutui-popup{
+    &__close-icon{
+        position: absolute;
+        z-index: 1;
+        color: #969799;
+        font-size: 18px;
+        cursor: pointer;
+       
+        &:active {
+            opacity: .7;
+        }
+
+        &--top-left {
+            top: $popup-close-icon-margin;
+            left: $popup-close-icon-margin;
+        }
+
+        &--top-right {
+            top: $popup-close-icon-margin;
+            right: $popup-close-icon-margin;
+        }
+
+        &--bottom-left {
+            bottom: $popup-close-icon-margin;
+            left: $popup-close-icon-margin;
+        }
+
+        &--bottom-right {
+            right: $popup-close-icon-margin;
+            bottom: $popup-close-icon-margin;
+        }
+    }
+}
+ 
+
+ 
