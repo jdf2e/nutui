@@ -2,6 +2,7 @@
   <div class="nut-tabselect">
     <nut-popup
       round
+      closeable  
       v-model="isShow"
       position="bottom"
       :style="{ height: '457px' }"

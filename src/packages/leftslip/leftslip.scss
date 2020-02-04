@@ -1,7 +1,7 @@
 .nut-leftslip {
     position: relative;
     overflow: hidden;
-    &:first-child .slip-main {
+    &:first-child .nut-slip-main {
         border-top: 1px solid #d8d8d8;
     }
     .slip-main {
@@ -12,12 +12,12 @@
         border-bottom: 1px solid #d8d8d8;
         background: #fff;
     }
-    .leftslip-item {
+    .nut-leftslip-item {
         transition: all 0.6s ease;
     }
-    .delbtn{
+    .delbtn {
         position: absolute;
-        right: -50px;
+        right: -52px;
         top: 0;
         min-width: 40px;
         height: 100%;
@@ -29,7 +29,7 @@
         color: #fff;
         padding: 0 5px;
         font-size: 14px;
-        span{
+        span {
             // width: 40px;
             display: flex;
             position: absolute;
@@ -42,7 +42,7 @@
     }
     .slipbtns {
         position: absolute;
-        right: -0px;
+        right: 0;
         top: 0;
         // width: 80px;
         height: 100%;
