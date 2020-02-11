@@ -48,7 +48,7 @@ export default {
 设置 round 属性后，弹窗会根据弹出位置添加不同的圆角样式
 
 ```html
-<van-popup v-model="show" round position="bottom" :style="{ height: '20%' }" />
+<nut-popup v-model="show" round position="bottom" :style="{ height: '20%' }" />
 ```
 
 ## API
