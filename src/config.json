@@ -505,6 +505,16 @@
             "sort": "2",
             "showDemo": true,
             "author": "vickyYE"
+        },
+        {
+          "version": "1.0.0",
+          "name": "TabSelect",
+          "chnName": "分类选择",
+          "desc": "两级分类选择",
+          "type": "component",
+          "sort": "3",
+          "showDemo": true,
+          "author": "dsj"
         }
     ]
 }

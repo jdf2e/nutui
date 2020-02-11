@@ -97,6 +97,8 @@ import './packages/elevator/elevator.scss';
 import Popup from './packages/popup/index.js';
 import LeftSlip from './packages/leftslip/index.js';
 import './packages/leftslip/leftslip.scss';
+import TabSelect from "./packages/tabselect/index.js";
+import "./packages/tabselect/tabselect.scss";
 
 import './packages/popup/popup.scss';
 const packages = {
@@ -147,7 +149,8 @@ const packages = {
     Avatar,
     Elevator,
     Popup,
-    LeftSlip
+    LeftSlip,
+    TabSelect: TabSelect
 };
 
 const components = {};
