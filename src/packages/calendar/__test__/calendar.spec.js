@@ -6,7 +6,9 @@ import Vue from 'vue';
 describe('Calendar.vue', () => {
     const wrapper = shallowMount(Calendar, {
         propsData: { 
-            defaultValue: '2020-01-12'
+            defaultValue: '2022-01-12',
+            startDate: '2020-02-01',
+            endDate:'2028-04-11'
         }
     });
 
@@ -19,7 +21,7 @@ describe('Calendar.vue', () => {
 
     it('设置默认日期', () => {
         return Vue.nextTick().then(function () {
-            expect(wrapper.findAll('.nut-calendar-month-title').at(0).text()).toBe('2020年01月');
+            expect(wrapper.findAll('.nut-calendar-month-title').at(0).text()).toBe('2022年01月');
             expect(wrapper.findAll('.nut-calendar-month-item').at(0).find('.nut-calendar-month-day-active').text()).toBe('12');
         })
     });
@@ -27,7 +29,7 @@ describe('Calendar.vue', () => {
     it('选择日期', () => {
         wrapper.findAll('.nut-calendar-month-item').at(0).findAll('.nut-calendar-month-day').at(10).trigger('click');
         return Vue.nextTick().then(function () {
-            expect(wrapper.findAll('.nut-calendar-month-item').at(0).findAll('.nut-calendar-month-day-active').at(0).text()).toBe('12');
+            expect(wrapper.findAll('.nut-calendar-month-item').at(0).findAll('.nut-calendar-month-day-active').at(0).text()).toBe('5');
 
         })
     });
@@ -36,9 +38,9 @@ describe('Calendar.vue', () => {
     const wrapper = shallowMount(Calendar, {
         propsData: { 
             type: 'range',
-            defaultValue: ['2020-02-22', '2020-02-25'],
-            startDate: '2020-02-01',
-            endDate:'2020-04-11'
+            defaultValue: ['2022-02-22', '2022-02-25'],
+            startDate: '2022-02-01',
+            endDate:'2022-04-11'
         }
     });
 
@@ -55,7 +57,7 @@ describe('Calendar.vue', () => {
     });
     it('设置默认日期', () => {
         return Vue.nextTick().then(function () {
-            expect(wrapper.findAll('.nut-calendar-month-title').at(0).text()).toBe('2020年02月');
+            expect(wrapper.findAll('.nut-calendar-month-title').at(0).text()).toBe('2022年02月');
             expect(wrapper.findAll('.nut-calendar-month-item').at(0).findAll('.nut-calendar-month-day-active').at(0).text()).toBe('22 开始');
             expect(wrapper.findAll('.nut-calendar-month-item').at(0).findAll('.nut-calendar-month-day-active').at(1).text()).toBe('25 结束');
         })
@@ -65,8 +67,8 @@ describe('Calendar.vue', () => {
         wrapper.findAll('.nut-calendar-month-item').at(1).findAll('.nut-calendar-month-day').at(14).trigger('click');
         wrapper.findAll('.nut-calendar-month-item').at(1).findAll('.nut-calendar-month-day').at(16).trigger('click');
         return Vue.nextTick().then(function () {
-            expect(wrapper.findAll('.nut-calendar-month-item').at(1).findAll('.nut-calendar-month-day-active').at(0).text()).toBe('15 开始');
-            expect(wrapper.findAll('.nut-calendar-month-item').at(1).findAll('.nut-calendar-month-day-active').at(1).text()).toBe('17 结束');
+            expect(wrapper.findAll('.nut-calendar-month-item').at(1).findAll('.nut-calendar-month-day-active').at(0).text()).toBe('13 开始');
+            expect(wrapper.findAll('.nut-calendar-month-item').at(1).findAll('.nut-calendar-month-day-active').at(1).text()).toBe('15 结束');
         })
     });
    

@@ -6,7 +6,9 @@
       class="popup-box"
       :class="[`popup-${position}`, { round }]"
     >
-      <slot></slot>
+        <slot></slot>
+        <nut-icon v-if='closeable' @click.native='$emit("input", false)' :type="closeIcon" size="12px"  class="nutui-popup__close-icon" :class="'nutui-popup__close-icon--'+closeIconPosition">
+        </nut-icon>
     </div>
   </transition>
 </template>
@@ -27,6 +29,18 @@ export default {
     overlay: {
       type: Boolean,
       default: true
+    },
+    closeable:{
+        type: Boolean,
+        default: false 
+    },
+    closeIconPosition: {
+      type: String,
+      default: 'top-right'
+    },
+    closeIcon:{
+        type: String,
+        default: 'cross'
     },
     round: Boolean
   },
@@ -99,98 +113,3 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-.popup-fade-enter-active {
-  animation: 0.2s van-fade-in;
-}
-.popup-fade-leave-active {
-  animation: 0.2s van-fade-out;
-}
-
-.popup-slide {
-  &-top-enter,
-  &-top-leave-active {
-    transform: translate(0, -100%);
-  }
-  &-right-enter,
-  &-right-leave-active {
-    transform: translate(100%, 0);
-  }
-
-  &-bottom-enter,
-  &-bottom-leave-active {
-    transform: translate(0, 100%);
-  }
-
-  &-left-enter,
-  &-left-leave-active {
-    transform: translate(-100%, 0);
-  }
-}
-
-.popup-center {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.popup-bottom {
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  &.round {
-    border-radius: 25px 25px 0 0;
-  }
-}
-.popup-right {
-  top: 0;
-  right: 0;
-  &.round {
-    border-radius: 25px 0 0 25px;
-  }
-}
-
-.popup-left {
-  top: 0;
-  left: 0;
-  &.round {
-    border-radius: 0 25px 25px 0;
-  }
-}
-.popup-top {
-  top: 0;
-  left: 0;
-  width: 100%;
-  &.round {
-    border-radius: 0 0 25px 25px;
-  }
-}
-.popup-box {
-  position: fixed;
-  max-height: 100%;
-  overflow-y: auto;
-  background-color: #fff;
-  transition: transform 0.2s;
-  -webkit-overflow-scrolling: touch;
-  z-index: 2028;
-}
-@keyframes van-fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes van-fade-out {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-</style>

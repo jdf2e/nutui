@@ -1,0 +1,129 @@
+.nut-tabselect {
+  .nut-tab {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .nav-bar {
+    display: none;
+  }
+  .nut-tab-item {
+    padding: 0;
+  }
+  .nut-tab-link {
+    font-size: 14px;
+  }
+  .nut-tab-title {
+    border: none;
+    height: auto;
+    line-height: auto;
+    padding-left: 18px;
+    .nut-title-nav-list {
+      flex: none;
+      padding: 0 13px;
+      height: 30px;
+      line-height: 30px;
+      border: 1px solid #333;
+      border-radius: 15px;
+      margin-right: 15px;
+      a {
+        color: #333;
+      }
+    }
+    .nut-tab-active {
+      border-color: #e2231a;
+      background: #fcedeb;
+      a {
+        color: #e2231a;
+      }
+    }
+  }
+  .nut-tab-inner {
+    .nut-tab-title-leftnav {
+      min-width: 158px;
+    }
+    .nut-title-nav {
+      height: 40px;
+      line-height: 40px;
+      background: #f4f4f4;
+      padding-left: 18px;
+    }
+    .nut-tab-active {
+      background: #fff;
+    }
+    .nut-tab-link {
+      line-height: inherit;
+      font-size: 14px;
+    }
+    .nut-tab-item {
+      padding: 0 10px 0 17px;
+    }
+    .nut-tab-panel {
+      max-height: 280px;
+      overflow-y: auto;
+    }
+  }
+  .nut-tab-title-leftnav {
+    border: none;
+    max-height: 280px;
+    overflow-y: auto;
+    .nut-title-nav {
+      border: none;
+    }
+  }
+  .nut-tabselect-main-title {
+    margin: 12px 0 8px 18px;
+    font-size: 18px;
+    line-height: 25px;
+    color: #000;
+    font-weight: bold;
+  }
+  .nut-tabselect-sub-title {
+    margin: 22px 0 11px 18px;
+    line-height: 20px;
+    color: #666;
+    font-size: 14px;
+  }
+
+  .nut-tab-panel li {
+    height: 29px;
+    line-height: 29px;
+    color: #333;
+    border: 1px solid #999999;
+    padding-left: 15px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    &.nut-tab-panel-list-active {
+      color: #e2231a;
+      border: 1px solid #e2231a;
+      background: #fcedeb;
+    }
+  }
+  .popup-bottom.round {
+    border-radius: 12px 12px 0px 0px;
+  }
+  .nut-tabselect-btn {
+    display: flex;
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 18px;
+    a {
+      flex: 1;
+      height: 30px;
+      line-height: 30px;
+      background: linear-gradient(
+        135deg,
+        rgba(242, 20, 12, 1) 0%,
+        rgba(242, 39, 12, 1) 70%,
+        rgba(242, 77, 12, 1) 100%
+      );
+      border-radius: 15px;
+      color: #fff;
+      text-align: center;
+    }
+  }
+}

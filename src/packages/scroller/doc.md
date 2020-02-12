@@ -174,6 +174,7 @@ export default {
 | pulldownTxt | 下拉展示文案 | String | '下拉刷新'
 | loadMoreTxt | 上拉展示文案 | String | '上拉加载'
 | unloadMoreTxt | 没有更多数据展示文案 | String | '没有更多了'
+| scrollTo | 滚动到指定位置，只能设置复数，需要配合scrollToCbk使用 | Number | 1
 
 ## Event
 
@@ -182,3 +183,4 @@ export default {
 | pulldown | 下拉刷新回调 | -
 | loadMore | 上拉加载回调 | -
 | jump | 查看更多跳转回调 | -
+| scrollToCbk | 滚动到指定位置之后，scrollTo参数设置成默认值 | -

@@ -35,12 +35,20 @@ export default {
 <nut-popup v-model="show" position="top" :style="{ height: '20%' }" />
 ```
 
+## 关闭图标
+
+设置closeable属性后，会在弹出层的右上角显示关闭图标，并且可以通过close-icon属性自定义图标，使用close-icon-position属性可以自定义图标位置
+
+```html
+<nut-popup position="bottom" closeable  close-icon="tick" v-model="showCloseIcon" :style="{ height: '20%' }" close-icon-position="top-left"></nut-popup>
+```
+
 ## 圆角弹窗
 
 设置 round 属性后，弹窗会根据弹出位置添加不同的圆角样式
 
 ```html
-<van-popup v-model="show" round position="bottom" :style="{ height: '20%' }" />
+<nut-popup v-model="show" round position="bottom" :style="{ height: '20%' }" />
 ```
 
 ## API
@@ -53,3 +61,7 @@ export default {
 | duration   | 动画时长，单位秒                         | Number  | -      |
 | round      | 是否显示圆角                             | boolean | -      |
 | transition | 动画类名，等价于 transtion 的 name 属性  | string  | -      |
+| closeable  | 是否显示关闭图标                        | Boolean  | false     |
+| close-icon | 关闭图标名称                  | string  | cross     |
+| close-icon-position | 关闭图标位置，可选值为top-left bottom-left bottom-right | string  | top-right  |
+

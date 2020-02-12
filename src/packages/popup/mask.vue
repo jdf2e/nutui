@@ -1,6 +1,6 @@
 <template>
   <transition name="popup-fade">
-    <div v-show="show" class="bg nut-mask" @click="onClick"></div>
+    <div v-show="show" class="bg nut-mask" ></div>
   </transition>
 </template>
 <script>
@@ -8,24 +8,15 @@ export default {
   name: "nut-popup-mask",
   props: {
     show: { type: Boolean, default: true }
-  },
-  data() {
-    return {};
-  },
-
-  methods: {
-    onClick() {
-      this.$emit("input", false);
-    }
-  }
+  },    
 };
 </script>
 <style lang="scss" scoped>
 .popup-fade-enter-active {
-  animation: 0.3s van-fade-in;
+  animation: 0.3s nut-fade-in;
 }
 .popup-fade-leave-active {
-  animation: 0.3s van-fade-out;
+  animation: 0.3s nut-fade-out;
 }
 .bg {
   position: fixed;
@@ -37,7 +28,7 @@ export default {
   z-index: 99;
 }
 
-@keyframes van-fade-in {
+@keyframes nut-fade-in {
   from {
     opacity: 0;
   }
@@ -47,7 +38,7 @@ export default {
   }
 }
 
-@keyframes van-fade-out {
+@keyframes nut-fade-out {
   from {
     opacity: 1;
   }

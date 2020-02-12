@@ -88,5 +88,5 @@ export default {
 | value | 当前input值，可使用 v-model 双向绑定数据 | String | ''
 | label | 文本框前面的标签 | String | ''
 | disabled | 是否禁用 | Boolean | false
-| clearBtn | 是否需要情况按钮 | Boolean | true
+| clearBtn | 是否需要清空按钮 | Boolean | true
 | hasBorder | 是否需要边框 | Boolean | true
