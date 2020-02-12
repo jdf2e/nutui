@@ -1,3 +1,15 @@
+## 2.2.0
+
+`2020-02-12`
+
+* :sparkles: feat(TabSelect)：新增TabSelect组件送货时间 @dushoujun
+* :sparkles: feat(LeftSlip)：新增LeftSlip组件 @vickyYE
+* :sparkles: feat(Scroller)：组件新增滚动到指定位置事件 @irisSong
+* :bug: fix(datepicker) 部分手机样式不兼容 #191 @irisSong
+* :bug: fix(datepicker) 将手机字体调大后放大镜效果错乱 #193 @irisSong
+* :bug: fix(InfiniteLoading) keep-alive 场景scoll事件未卸载 #199 @irisSong
+* :bug: fix(popup)：修复无法按需加载、文档文案错误 @yangkaixuan
+
 ## 2.1.9
 
 `2020-01-09`
