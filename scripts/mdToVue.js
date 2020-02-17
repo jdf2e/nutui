@@ -6,6 +6,7 @@ let { version } = require("../package.json");
 let marked = require('marked');
 let contrast = require('./contrast');
 let rimraf = require("rimraf");
+let Chokidar = require('chokidar');
 if (!marked) {
     console.log('you need npm i marked -D!');
 }
@@ -33,6 +34,7 @@ class mdVue{
                 _that.needHandleFiles = res;
                 _that.ishasOutFile(_that.options.output).then(res=>{
                     _that.star();
+                      _that.filelisten()
                 });  
             })  
         })
@@ -59,6 +61,35 @@ class mdVue{
         
     }
     apply(){} 
+    filelisten(){
+        let _that = this;
+        let watcher = Chokidar.watch(_that.options.entry,{
+            persistent: true,
+            usePolling: true,
+        });
+        let log = console.dir.bind(console);
+        let watchAction = function({event, eventPath}){      
+            // 这里进行文件更改后的操作
+            // fileReadStar(eventPath,(res)=>{           
+            //     createdFile(param.output + res.mdName + '.vue', res.html, param.needCode)
+            // })
+            console.log(path.join(__dirname,JSON.stringify(eventPath)))
+            _that.vueDesWrite(eventPath)
+            // "d:\workplace\nutui\docs\international.md"
+            // _that.read(eventPath).then(res=>{
+            //     _that.headHandle();
+            //     _that.markHandle();
+            //     let html = _that.marked(res);                                
+            //     _that.write({
+            //         outsrc:_that.options.output,
+            //         name:fileName + '.vue',
+            //         html:html
+            //     });
+            // }) 
+        }
+        watcher.on('change', path => watchAction({event: 'change', eventPath: path}))
+        .on('unlink', path => watchAction({event: 'remove', eventPath: path}));
+    }
     star(){  
         let _that = this;        
         hashElement(_that.options.entry, {
@@ -68,40 +99,70 @@ class mdVue{
         }).then(hash => {        
 
             nodeFilelist.read([_that.options.entry],{"ext":'md'}, res => {                  
-                res.map((item,index) =>{
-                    if(index == 30){
-                        debugger
-                    }
-                    let fileSplits = item.path.split(path.sep);
-                    let fileName = fileSplits.pop();
-                    if(_that.isDoc(fileName)){
-                            fileName = fileSplits.pop();
-                    }else{
-                        fileName = fileName.replace(/\.md/,'');
-                    }
-                    if(_that.needHandleFiles[fileName]){                   
-                        // _that.read(item.path).then(res=>{
-                        //     _that.headHandle();
-                        //     _that.markHandle();
-                        //     let html = _that.marked(res);                                
-                        //     _that.write({
-                        //         outsrc:_that.options.output,
-                        //         name:fileName + '.vue',
-                        //         html:html
-                        //     });
-                        // })
-                    }
-                    _that.read(item.path).then(res=>{
-                        _that.headHandle();
-                        _that.markHandle();
-                        let html = _that.marked(res);                                
-                        _that.write({
-                            outsrc:_that.options.output,
-                            name:fileName + '.vue',
-                            html:html
-                        });
-                    })               
+                res.map((item,index) =>{   
+                    _that.vueDesWrite(item.path)             
+                    // let fileSplits = item.path.split(path.sep);
+                    // let fileName = fileSplits.pop();
+                    // if(_that.isDoc(fileName)){
+                    //         fileName = fileSplits.pop();
+                    // }else{
+                    //     fileName = fileName.replace(/\.md/,'');
+                    // }
+                    // if(_that.needHandleFiles[fileName]){                   
+                    //     // _that.read(item.path).then(res=>{
+                    //     //     _that.headHandle();
+                    //     //     _that.markHandle();
+                    //     //     let html = _that.marked(res);                                
+                    //     //     _that.write({
+                    //     //         outsrc:_that.options.output,
+                    //     //         name:fileName + '.vue',
+                    //     //         html:html
+                    //     //     });
+                    //     // })
+                    // }
+                    // _that.read(item.path).then(res=>{
+                    //     _that.headHandle();
+                    //     _that.markHandle();
+                    //     let html = _that.marked(res);                                
+                    //     _that.write({
+                    //         outsrc:_that.options.output,
+                    //         name:fileName + '.vue',
+                    //         html:html
+                    //     });
+                    // })               
                 });
+            });
+        })
+    }
+    vueDesWrite(getpath){
+        let _that = this;
+        let fileSplits = getpath.split(path.sep);
+        let fileName = fileSplits.pop();
+        if(_that.isDoc(fileName)){
+                fileName = fileSplits.pop();
+        }else{
+            fileName = fileName.replace(/\.md/,'');
+        }
+        if(_that.needHandleFiles[fileName]){                   
+            // _that.read(item.path).then(res=>{
+            //     _that.headHandle();
+            //     _that.markHandle();
+            //     let html = _that.marked(res);                                
+            //     _that.write({
+            //         outsrc:_that.options.output,
+            //         name:fileName + '.vue',
+            //         html:html
+            //     });
+            // })
+        }
+        _that.read(getpath).then(res=>{
+            _that.headHandle();
+            _that.markHandle();
+            let html = _that.marked(res);                                
+            _that.write({
+                outsrc:_that.options.output,
+                name:fileName + '.vue',
+                html:html
             });
         })
     }
