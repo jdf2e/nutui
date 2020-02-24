@@ -2,7 +2,7 @@
     display: block;
     padding: 0 10px;
     text-decoration: none;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
     outline: none;
     &.nut-cell-link:active {
         background-color: $light-color !important;
