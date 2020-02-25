@@ -1,18 +1,29 @@
 <template>
-    <a :class="['nut-cell',{'nut-cell-link':isLink}]" :href="linkUrl||'javascript:;'" :style="{'background-color':bgColor}">
-        <div class="nut-cell-box">
+    <a :class="['nut-cell',{'nut-cell-link':isLink}]" 
+    :href="linkUrl" 
+    :style="{'background-color':bgColor}"
+    :target="target"
+    @click="jumpPage">
+        <div class="nut-cell-box" @click="clickCell">
+            <slot name='avatar'></slot>
             <div class="nut-cell-left">
                 <span class="nut-cell-title"><slot name="title">{{title}}</slot></span>
                 <span class="nut-cell-sub-title"><slot name="sub-title">{{subTitle}}</slot></span>
             </div>
             <div class="nut-cell-right">
                 <span class="nut-cell-desc"><slot name="desc">{{desc}}</slot></span>
-                <span class="nut-cell-icon"><slot name="icon" v-if="showIcon"><img src="data:image/svg+xml,%3Csvg viewBox='0 0 5 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.215 9.757l3.577-4.17a.931.931 0 0 0 0-1.173L1.215.244a.642.642 0 0 0-1.007 0 .929.929 0 0 0 0 1.172L3.283 5 .208 8.584a.93.93 0 0 0 0 1.173.643.643 0 0 0 1.007 0z' fill='rgb(200,200,205)'/%3E%3C/svg%3E" alt=""></slot></span>
+                <span class="nut-cell-icon">
+                <slot name="icon" v-if="showIcon">
+                  <nut-icon type="right" size="15px" color="#848484"></nut-icon>
+                </slot>
+                </span>
             </div>
         </div>
     </a>
 </template>
 <script>
+import Icon from '../icon/icon.vue';
+
 export default {
   name: "nut-cell",
   props: {
@@ -34,20 +45,40 @@ export default {
     },
     linkUrl: {
       type: String,
-      default: null
+      default: "javascript:void(0)"
     },
     showIcon: {
       type: Boolean,
       default: false
     },
-    bgColor: {
-      type: String,
-      default: "#FFFFFF"
+    bgColor:{
+      type:String,
+      default:"#fff"
+    },
+    to:{
+      type:String,
+      default:""
+    },
+    target:{
+      type:String,
+      default:"_self"
     }
+  },
+  components:{
+    'nut-icon':Icon
   },
   data() {
     return {};
   },
-  methods: {}
+  methods:{
+    clickCell(){
+      this.$emit('click-cell')
+    },
+    jumpPage(){
+      if(!this.to) return false;
+      this.$router.push(this.to)
+    }
+  }
+
 };
 </script>
