@@ -8,7 +8,7 @@
       @click.native="showBasic = true"
     >
     </nut-cell>
-    <nut-popup :style="{ padding: '30px 50px' }" v-model="showBasic" >正文</nut-popup>
+    <nut-popup :style="{ padding: '30px 50px' }"   v-model="showBasic" >正文</nut-popup>
 
     <h2 class="title">弹出位置</h2>
 
@@ -116,6 +116,16 @@
       position="bottom"
       :style="{ height: '20%' }"
     ></nut-popup>
+
+    <h2 class="title">指定挂载节点</h2>
+    <nut-cell
+      isLink
+      title="指定挂载节点"
+      :showIcon="true"
+      @click.native="getContainer = true"
+    >
+    </nut-cell>
+    <nut-popup :style="{ padding: '30px 50px' }"  get-container="body"  v-model="getContainer" >body</nut-popup>
   </div>
 </template>
 <script>
@@ -131,10 +141,11 @@ export default {
       showIcon: false,
       showRound: false,
       showIconPosition: false,
-      showCloseIcon: false
+      showCloseIcon: false,
+      getContainer:false
     };
   },
-  methods: {
+  methods: {     
     show() {
       this.isShow = true;
     }

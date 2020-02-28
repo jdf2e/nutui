@@ -18,17 +18,17 @@
 ```html
 <div>
     <nut-leftslip>
-        <div slot="slip-main" class="slip-main">单一按钮</div>
+        <div slot="slip-main" class="slip-main">自定义单一按钮</div>
         <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a></div>
     </nut-leftslip>
 </div>
 ```
 
-### 单个按钮左滑一键删除
+### 单个按钮一键删除
 
 ```html
-<nut-leftslip onlyDel @oneDelete="oneDel">
-    <div slot="slip-main" class="slip-main">向左滑滑滑~一键删除</div>
+<nut-leftslip onlyDelBtn @oneDelete="oneDel">
+    <div slot="slip-main" class="slip-main">单一按钮点击一键删除</div>
 </nut-leftslip>
 ```
 
@@ -106,11 +106,11 @@ export default {
 
 ## Prop
 
-| 字段           | 说明                                           | 类型    | 默认值 |
-| -------------- | ---------------------------------------------- | ------- | ------ |
-| slot:slip-main | 列表主内容自定义区域                           | html    | -      |
-| slot:slipbtns  | 左滑按钮自定义区域                             | html    | -      |
-| onlyDel        | 显示只有一个删除按钮的列表样式（支持一键删除） | Boolean | false  |
+| 字段           | 说明                 | 类型    | 默认值 |
+| -------------- | -------------------- | ------- | ------ |
+| slot:slip-main | 列表主内容自定义区域 | html    | -      |
+| slot:slipbtns  | 左滑按钮自定义区域   | html    | -      |
+| onlyDelBtn     | 设置单一删除按钮     | Boolean | false  |
 
 ## Event
 

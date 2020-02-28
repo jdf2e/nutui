@@ -1,16 +1,24 @@
 <template>
     <div class="nut-leftslip">
         <div class="nut-leftslip-item" ref="slipItem" :style="deleteSlider">
-            <div @touchstart="touchStart($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)">
+            <div
+                class="nut-leftslip-item-main"
+                @touchstart="touchStart($event)"
+                @touchmove="touchMove($event)"
+                @touchend="touchEnd($event)"
+            >
                 <slot name="slip-main"></slot>
             </div>
 
-            <div v-if="onlyDel" class="delbtn" ref="delBtn"
-                ><div :style="delBtnStyle" class="trans"></div><span @click.prevent="onlyDelClick($event)">删除</span></div
-            >
-            <div v-else>
+            <!-- <div v-if="onlyDelBtn" class="delbtn" ref="delBtn">
+                <div :style="delBtnStyle" class="trans"></div>
+                <span @click.prevent="onlyDelClick($event)">删除</span></div
+            > -->
+            <div class="nut-leftslip-item-btn">
                 <!-- <a @click.prevent="onlyDelClick($event)">删除</a> -->
-                <slot name="slipbtns"></slot>
+                <slot name="slipbtns">
+                    <a class="nut-delet-btn" @click.prevent="onlyDelClick($event)" v-if="onlyDelBtn">删除</a>
+                </slot>
             </div>
         </div>
     </div>
@@ -19,7 +27,11 @@
 export default {
     name: 'nut-leftslip',
     props: {
-        onlyDel: {
+        onlyDelBtn: {
+            type: Boolean,
+            default: false
+        },
+        btnSlipDel: {
             type: Boolean,
             default: false
         }
@@ -39,7 +51,7 @@ export default {
     },
     mounted() {
         this.$nextTick(() => {
-            if (this.onlyDel) {
+            if (this.onlyDelBtn) {
                 return;
             }
             for (var slot of this.$slots.slipbtns) {
@@ -82,7 +94,7 @@ export default {
             let parentElement = e.currentTarget.parentElement;
             //获取删除按钮的宽度，此宽度为滑块左滑的最大距离
             let itemWd = this.$refs.slipItem.offsetWidth;
-            let wd = this.onlyDel ? 40 : this.buttonWidth;
+            let wd = this.onlyDelBtn ? 40 : this.buttonWidth;
 
             if (e.touches.length == 1) {
                 // 滑动时距离浏览器左侧实时距离
@@ -92,14 +104,14 @@ export default {
                     //起始位置减去 实时的滑动的距离，得到手指实时偏移距离
                     this.disX = this.startX - this.moveX;
                     // console.log(this.disX);
-                    if (this.onlyDel) {
+                    if (this.onlyDelBtn) {
                         //单一删除，左滑一键删除
                         if (this.disX < 0 || this.disX == 0) {
                             this.deleteSlider = 'transform:translateX(0px)';
                         }
                         this.deleteSlider = 'transform:translateX(-' + this.disX + 'px)';
                         this.delBtnStyle = 'width:' + this.disX + 'px';
-                        parentElement.dataset.type = 1;//设置滑动展开隐藏标志位，左滑展开为1，右滑或复位为0
+                        parentElement.dataset.type = 1; //设置滑动展开隐藏标志位，左滑展开为1，右滑或复位为0
                     } else {
                         // 如果是向右滑动或者不滑动，不改变滑块的位置
                         if (this.disX < wd / 4 || this.disX == 0) {
@@ -126,14 +138,14 @@ export default {
             e = e || event;
             let parentElement = e.currentTarget.parentElement;
             let itemWd = this.$refs.slipItem.offsetWidth;
-            let wd = this.onlyDel ? 40 : this.buttonWidth;
+            let wd = this.onlyDelBtn ? 40 : this.buttonWidth;
             if (e.changedTouches.length == 1) {
                 let endY = e.changedTouches[0].clientY;
                 if (Math.abs(this.startY - endY) < 40) {
                     let endX = e.changedTouches[0].clientX;
                     this.disX = this.startX - endX;
                     // console.log('touchEndthis.disX:', this.disX);
-                    if (this.onlyDel) {
+                    if (this.onlyDelBtn) {
                         //单一按钮，左滑一键删除
                         if (this.disX < 0 || this.disX == 0) {
                             this.deleteSlider = 'transform:translateX(0px)';
@@ -172,19 +184,18 @@ export default {
         },
         restSlide() {
             let listItems = document.querySelectorAll('.nut-leftslip-item');
-            
+
             // 复位
             for (let i = 0; i < listItems.length; i++) {
                 listItems[i].style = 'transform:translateX(0' + 'px)';
-                listItems[i].dataset.type = 0;//是否展开标志位默认0，左滑展开为1，右滑隐藏为0
+                listItems[i].dataset.type = 0; //是否展开标志位默认0，左滑展开为1，右滑隐藏为0
             }
-            if(this.onlyDel){
+            if (this.onlyDelBtn) {
                 let delBtns = document.querySelectorAll('.delbtn .trans');
                 for (let j = 0; j < delBtns.length; j++) {
                     delBtns[j].style = '';
                 }
             }
-            
         }
     }
 };

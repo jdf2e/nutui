@@ -12,12 +12,15 @@
         <p>单个按钮</p>
         <div>
             <nut-leftslip>
-                <div slot="slip-main" class="slip-main">单一按钮</div>
+                <div slot="slip-main" class="slip-main">自定义单一按钮</div>
                 <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a></div>
             </nut-leftslip>
-            <nut-leftslip onlyDel @oneDelete="oneDel" ref="leftslip1">
-                <div slot="slip-main" class="slip-main">向左滑滑滑~一键删除</div>
+            <nut-leftslip onlyDelBtn @oneDelete="oneDel">
+                <div slot="slip-main" class="slip-main">单一按钮点击一键删除</div>
             </nut-leftslip>
+            <!-- <nut-leftslip onlyDelBtn @oneDelete="oneDel" ref="leftslip1">
+                <div slot="slip-main" class="slip-main">向左滑滑滑~一键删除</div>
+            </nut-leftslip> -->
         </div>
         <p>多个按钮</p>
         <div>
@@ -76,10 +79,6 @@ export default {
         },
         delItem(index) {
             this.list.splice(index, 1);
-        },
-        onlyDelBtnClick(par) {
-            // console.log(par);
-            par.remove();
         },
         oneDel(par) {
             par.remove();

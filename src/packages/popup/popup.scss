@@ -71,7 +71,7 @@ $popup-close-icon-margin: 16px;
     background-color: #fff;
     transition: transform 0.3s;
     -webkit-overflow-scrolling: touch;
-    z-index: 2028;
+    z-index: 100;
   }
   @keyframes nut-fade-in {
     from {
@@ -93,7 +93,9 @@ $popup-close-icon-margin: 16px;
     }
   }
  
-  
+  .nut-overflow-hidden{
+    overflow: hidden !important;
+  }
  
 
 .nutui-popup{
