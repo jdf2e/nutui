@@ -40,6 +40,21 @@
             height: 100%;
         }
     }
+    .nut-delet-btn{
+        position: absolute;
+        right: -50px;
+        top: 0;
+        min-width: 40px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // transform: translateX(100%);
+        background: #ff4949;
+        color: #fff;
+        padding: 0 5px;
+        font-size: 14px;
+    }
     .slipbtns {
         position: absolute;
         right: 0;

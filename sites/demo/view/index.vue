@@ -3,7 +3,7 @@
     <a href="https://github.com/jdf2e/nutui/" target="_blank" class="github-btn">Github</a>
 
     <h1 class="logo"></h1>
-    <div class="version">NutUI 2.0</div>
+    <div class="version">NutUI {{version}}</div>
     <p>一套京东风格的移动端Vue组件库</p>
     <div :class="['demo-list-box',{'unfold':foldStatus[item]}]" v-for="item in sorts" :key="item">
       <h4 @click="toggleFold(item)">
@@ -38,7 +38,7 @@ export default {
       version,
       sortedPackages: [],
       oriSorts: [],
-      sorts: [1, 2, 0, 3, 4, 5],
+      sorts: [1, 2, 0, 3, 4, 5, 6],
       foldStatus: []
     };
   },

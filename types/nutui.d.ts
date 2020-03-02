@@ -68,3 +68,4 @@ export declare class LeftSlip extends UIComponent {}
 export declare class TabSelect extends UIComponent {}
 export declare class Popup extends UIComponent {}
 
+export declare class LuckDraw extends UIComponent {}

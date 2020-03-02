@@ -1,520 +1,538 @@
 {
-    "sorts": ["数据展示", "数据录入", "操作反馈", "导航组件", "布局组件", "基础组件"],
-    "packages": [
-        {
-            "name": "Cell",
-            "version": "1.0.0",
-            "sort": "4",
-            "chnName": "列表项",
-            "type": "component",
-            "showDemo": true,
-            "desc": "列表项，可组合成列表",
-            "author": "Frans"
-        },
-        {
-            "name": "Dialog",
-            "version": "1.0.0",
-            "sort": "2",
-            "chnName": "对话框",
-            "type": "method",
-            "showDemo": true,
-            "desc": "模态弹窗，支持按钮交互，支持图片弹窗。",
-            "star": 5,
-            "author": "Frans"
-        },
-        {
-            "name": "Icon",
-            "version": "1.0.0",
-            "sort": "5",
-            "chnName": "图标",
-            "type": "component",
-            "showDemo": true,
-            "desc": "网页小图标。",
-            "author": "Frans"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Toast",
-            "sort": "2",
-            "chnName": "吐司",
-            "desc": "轻提示。",
-            "type": "method",
-            "showDemo": true,
-            "star": 4,
-            "author": "Frans"
-        },
-        {
-            "version": "1.0.0",
-            "name": "ActionSheet",
-            "sort": "2",
-            "chnName": "动作面板",
-            "desc": "从底部弹出的动作菜单面板。",
-            "type": "component",
-            "showDemo": true,
-            "star": 5,
-            "author": "iris"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Tab",
-            "sort": "3",
-            "chnName": "选项卡",
-            "desc": "常用于平级区域大块内容的的收纳和展现。",
-            "type": "component",
-            "showDemo": true,
-            "star": 3,
-            "author": "甄玉磊"
-        },
-        {
-            "version": "1.0.0",
-            "name": "TabPanel",
-            "sort": "3",
-            "chnName": "选项卡",
-            "desc": "标签栏 选项卡组件",
-            "type": "component",
-            "showDemo": false,
-            "author": "甄玉磊"
-        },
-        {
-            "version": "1.0.0",
-            "name": "TabBar",
-            "sort": "3",
-            "chnName": "标签栏",
-            "desc": "用于不同模块以之间的切换",
-            "type": "component",
-            "showDemo": true,
-            "star": 3,
-            "author": "甄玉磊"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Calendar",
-            "sort": "1",
-            "chnName": "日历",
-            "desc": "日历",
-            "type": "component",
-            "showDemo": true,
-            "star": 5,
-            "author": "iris"
-        },
-        {
-            "version": "1.0.0",
-            "name": "DatePicker",
-            "sort": "1",
-            "chnName": "日期选择",
-            "desc": "日期选择",
-            "type": "component",
-            "showDemo": true,
-            "star": 5,
-            "author": "iris"
-        },
-        {
-            "version": "1.0.0",
-            "name": "NavBar",
-            "sort": "3",
-            "chnName": "导航栏",
-            "desc": "移动端头部导航栏",
-            "type": "component",
-            "showDemo": true,
-            "author": "lishaoqi"
-        },
-        {
-            "version": "1.0.0",
-            "name": "NoticeBar",
-            "sort": "3",
-            "chnName": "公告栏",
-            "desc": "移动端公告栏",
-            "type": "component",
-            "showDemo": true,
-            "author": "wangyue"
-        },
-        {
-            "name": "Switch",
-            "version": "1.0.0",
-            "sort": "1",
-            "chnName": "开关",
-            "type": "component",
-            "showDemo": true,
-            "desc": "滑动开关，通过点击使按钮左右滑动，同时触发对应的开关状态",
-            "author": "Frans"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Slider",
-            "sort": "1",
-            "chnName": "滑块",
-            "desc": "滑动输入器，用于在数值区间/自定义区间内进行选择。",
-            "type": "component",
-            "showDemo": true,
-            "star": 4,
-            "author": "Frans"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Range",
-            "sort": "1",
-            "chnName": "区间选择器",
-            "desc": "区间选择器组件",
-            "type": "component",
-            "showDemo": true,
-            "star": 4,
-            "author": "famanoder"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Picker",
-            "sort": "1",
-            "chnName": "拾取器",
-            "desc": "提供多个选项集合供用户选择其中一项。",
-            "type": "component",
-            "showDemo": true,
-            "star": 5,
-            "author": "iris"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Progress",
-            "sort": "2",
-            "chnName": "进度条",
-            "desc": "展示操作或任务的当前进度，比如上传文件。",
-            "type": "component",
-            "showDemo": true,
-            "author": "张毓飞"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Price",
-            "sort": "0",
-            "chnName": "商品价格",
-            "desc": "商品价格组件，支持小数点前后应用不同样式、千位分隔、人民币符号等功能",
-            "type": "component",
-            "showDemo": true,
-            "author": "liaoyanli5"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Flex",
-            "sort": "4",
-            "chnName": "Flex布局",
-            "desc": "Flex布局速简便地创建布局",
-            "type": "component",
-            "showDemo": true,
-            "author": "秦伟伟"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Col",
-            "sort": "4",
-            "chnName": "Flex布局",
-            "desc": "Flex布局速简便地创建布局",
-            "type": "component",
-            "showDemo": false,
-            "author": "秦伟伟"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Row",
-            "sort": "4",
-            "chnName": "Flex布局",
-            "desc": "Flex布局速简便地创建布局",
-            "type": "component",
-            "showDemo": false,
-            "author": "秦伟伟"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Steps",
-            "sort": "0",
-            "chnName": "步骤条",
-            "desc": "拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。",
-            "type": "component",
-            "showDemo": true,
-            "author": "宋其斌"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Button",
-            "sort": "5",
-            "chnName": "按钮",
-            "desc": "各式各样的按钮",
-            "type": "component",
-            "showDemo": true,
-            "author": "杨磊"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Badge",
-            "sort": "0",
-            "chnName": "徽标",
-            "desc": "出现在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息",
-            "type": "component",
-            "showDemo": true,
-            "author": "杨磊"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Rate",
-            "sort": "1",
-            "chnName": "评分",
-            "desc": "用于快速的评级操作，或对评价进行展示。",
-            "type": "component",
-            "showDemo": true,
-            "star": 4,
-            "author": "永无止晋"
-        },
-        {
-            "version": "1.0.1",
-            "name": "Swiper",
-            "chnName": "滑动切换",
-            "sort": "0",
-            "desc": "常用于一组图片或卡片轮播，当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。",
-            "type": "component",
-            "showDemo": true,
-            "star": 5,
-            "author": "wangnan31"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Menu",
-            "sort": "3",
-            "chnName": "菜单",
-            "desc": "菜单",
-            "type": "component",
-            "showDemo": true,
-            "author": "苏子刚"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Stepper",
-            "chnName": "步进器",
-            "desc": "通过点击按钮控制数字加减",
-            "type": "component",
-            "sort": "1",
-            "showDemo": true,
-            "star": 3,
-            "author": "famanoder"
-        },
-        {
-            "version": "1.0.0",
-            "name": "ButtonGroup",
-            "chnName": "按钮组",
-            "desc": "用于页面底部的按钮组",
-            "type": "component",
-            "sort": "5",
-            "showDemo": true,
-            "author": "杨磊"
-        },
-        {
-            "version": "1.0.0",
-            "name": "SearchBar",
-            "chnName": "搜索栏",
-            "desc": "搜索栏",
-            "type": "component",
-            "sort": "1",
-            "showDemo": true,
-            "author": "lemon"
-        },
-        {
-            "version": "1.0.0",
-            "name": "ImagePicker",
-            "sort": "1",
-            "chnName": "图片选择器",
-            "desc": "图片选择器",
-            "type": "component",
-            "showDemo": true,
-            "author": "苏子刚"
-        },
-        {
-            "name": "Radio",
-            "version": "1.0.0",
-            "sort": "1",
-            "chnName": "单选按钮",
-            "type": "component",
-            "showDemo": true,
-            "desc": "单选按钮，可组合成单选按钮组",
-            "author": "Frans"
-        },
-        {
-            "name": "RadioGroup",
-            "version": "1.0.0",
-            "sort": "1",
-            "chnName": "单选按钮组",
-            "type": "component",
-            "showDemo": false,
-            "desc": "单选按钮组",
-            "author": "Frans"
-        },
-        {
-            "version": "1.0.0",
-            "name": "CheckBox",
-            "sort": "1",
-            "chnName": "复选按钮",
-            "desc": "复选多个选项",
-            "type": "component",
-            "showDemo": true,
-            "author": "Vicky.Ye"
-        },
-        {
-            "version": "1.0.0",
-            "name": "CheckBoxGroup",
-            "sort": "1",
-            "chnName": "复选按钮组",
-            "desc": "成组出现的复选按钮组件",
-            "type": "component",
-            "showDemo": true,
-            "author": "Vicky.Ye"
-        },
-        {
-            "version": "1.0.0",
-            "name": "ShortPassword",
-            "chnName": "短密码",
-            "des": "短密码",
-            "type": "component",
-            "sort": "1",
-            "showDemo": true,
-            "author": "wangnan31"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Skeleton",
-            "chnName": "骨架屏",
-            "des": "在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果",
-            "type": "component",
-            "sort": "0",
-            "showDemo": true,
-            "author": "wangnan31"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Scroller",
-            "chnName": "滚动",
-            "desc": "滚动组件",
-            "type": "component",
-            "sort": "0",
-            "star": 5,
-            "showDemo": true,
-            "author": "iris"
-        },
-        {
-            "version": "1.0.0",
-            "name": "BackTop",
-            "chnName": "回到顶部",
-            "desc": "用于页面内容高度过长，快捷回到顶部使用。",
-            "type": "component",
-            "sort": "2",
-            "showDemo": true,
-            "author": "永无止晋"
-        },
-        {
-            "version": "1.0.0",
-            "name": "CountDown",
-            "chnName": "倒计时",
-            "desc": "倒计时组件",
-            "type": "component",
-            "sort": "0",
-            "showDemo": true,
-            "author": "famanoder"
-        },
-        {
-            "version": "1.0.0",
-            "name": "InfiniteLoading",
-            "chnName": "无限加载",
-            "desc": "无限加载",
-            "type": "component",
-            "sort": "0",
-            "star": 4,
-            "showDemo": true,
-            "author": "iris"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Uploader",
-            "chnName": "上传",
-            "desc": "文件上传组件",
-            "type": "component",
-            "sort": "5",
-            "showDemo": true,
-            "author": "林如风"
-        },
-        {
-            "version": "1.0.0",
-            "name": "TextInput",
-            "chnName": "文本框",
-            "desc": "单行文本框",
-            "type": "component",
-            "sort": "1",
-            "showDemo": true,
-            "author": "Frans"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Avatar",
-            "chnName": "头像",
-            "desc": "用来表示用户或事物，支持图片或字符展示。",
-            "type": "component",
-            "sort": "5",
-            "showDemo": true,
-            "author": "zhenyulei"
-        },
-        {
-            "version": "1.0.0",
-            "name": "lazyload",
-            "chnName": "图片懒加载",
-            "desc": "图片懒加载",
-            "type": "component",
-            "sort": "0",
-            "showDemo": true,
-            "author": "zhuzhida"
-        },
-        {
-            "version": "1.0.0",
-            "name": "TextBox",
-            "chnName": "文本域",
-            "desc": "文本域",
-            "type": "component",
-            "sort": "1",
-            "showDemo": true,
-            "author": "guoxiaoxiao"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Elevator",
-            "chnName": "电梯楼层",
-            "desc": "类似于电梯楼层，组件可以跟着右侧索引而滑动",
-            "type": "component",
-            "sort": "3",
-            "showDemo": true,
-            "author": "zhenyulei"
-        },
-        {
-            "version": "1.0.0",
-            "name": "Popup",
-            "chnName": "弹出层",
-            "desc": "弹出层",
-            "type": "component",
-            "sort": "5",
-            "showDemo": true,
-            "author": "杨凯旋"
-        },
-        {
-            "version": "1.0.0",
-            "name": "LeftSlip",
-            "chnName": "左滑删除",
-            "desc": "手势左滑删除元素",
-            "type": "component",
-            "sort": "2",
-            "showDemo": true,
-            "author": "vickyYE"
-        },
-        {
-          "version": "1.0.0",
-          "name": "TabSelect",
-          "chnName": "分类选择",
-          "desc": "两级分类选择",
-          "type": "component",
-          "sort": "3",
-          "showDemo": true,
-          "author": "dsj"
-        }
-    ]
+  "sorts": [
+    "数据展示",
+    "数据录入",
+    "操作反馈",
+    "导航组件",
+    "布局组件",
+    "基础组件",
+    "业务组件"
+  ],
+  "packages": [
+    {
+      "name": "Cell",
+      "version": "1.0.0",
+      "sort": "4",
+      "chnName": "列表项",
+      "type": "component",
+      "showDemo": true,
+      "desc": "列表项，可组合成列表",
+      "author": "Frans"
+    },
+    {
+      "name": "Dialog",
+      "version": "1.0.0",
+      "sort": "2",
+      "chnName": "对话框",
+      "type": "method",
+      "showDemo": true,
+      "desc": "模态弹窗，支持按钮交互，支持图片弹窗。",
+      "star": 5,
+      "author": "Frans"
+    },
+    {
+      "name": "Icon",
+      "version": "1.0.0",
+      "sort": "5",
+      "chnName": "图标",
+      "type": "component",
+      "showDemo": true,
+      "desc": "网页小图标。",
+      "author": "Frans"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Toast",
+      "sort": "2",
+      "chnName": "吐司",
+      "desc": "轻提示。",
+      "type": "method",
+      "showDemo": true,
+      "star": 4,
+      "author": "Frans"
+    },
+    {
+      "version": "1.0.0",
+      "name": "ActionSheet",
+      "sort": "2",
+      "chnName": "动作面板",
+      "desc": "从底部弹出的动作菜单面板。",
+      "type": "component",
+      "showDemo": true,
+      "star": 5,
+      "author": "iris"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Tab",
+      "sort": "3",
+      "chnName": "选项卡",
+      "desc": "常用于平级区域大块内容的的收纳和展现。",
+      "type": "component",
+      "showDemo": true,
+      "star": 3,
+      "author": "甄玉磊"
+    },
+    {
+      "version": "1.0.0",
+      "name": "TabPanel",
+      "sort": "3",
+      "chnName": "选项卡",
+      "desc": "标签栏 选项卡组件",
+      "type": "component",
+      "showDemo": false,
+      "author": "甄玉磊"
+    },
+    {
+      "version": "1.0.0",
+      "name": "TabBar",
+      "sort": "3",
+      "chnName": "标签栏",
+      "desc": "用于不同模块以之间的切换",
+      "type": "component",
+      "showDemo": true,
+      "star": 3,
+      "author": "甄玉磊"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Calendar",
+      "sort": "1",
+      "chnName": "日历",
+      "desc": "日历",
+      "type": "component",
+      "showDemo": true,
+      "star": 5,
+      "author": "iris"
+    },
+    {
+      "version": "1.0.0",
+      "name": "DatePicker",
+      "sort": "1",
+      "chnName": "日期选择",
+      "desc": "日期选择",
+      "type": "component",
+      "showDemo": true,
+      "star": 5,
+      "author": "iris"
+    },
+    {
+      "version": "1.0.0",
+      "name": "NavBar",
+      "sort": "3",
+      "chnName": "导航栏",
+      "desc": "移动端头部导航栏",
+      "type": "component",
+      "showDemo": true,
+      "author": "lishaoqi"
+    },
+    {
+      "version": "1.0.0",
+      "name": "NoticeBar",
+      "sort": "3",
+      "chnName": "公告栏",
+      "desc": "移动端公告栏",
+      "type": "component",
+      "showDemo": true,
+      "author": "wangyue"
+    },
+    {
+      "name": "Switch",
+      "version": "1.0.0",
+      "sort": "1",
+      "chnName": "开关",
+      "type": "component",
+      "showDemo": true,
+      "desc": "滑动开关，通过点击使按钮左右滑动，同时触发对应的开关状态",
+      "author": "Frans"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Slider",
+      "sort": "1",
+      "chnName": "滑块",
+      "desc": "滑动输入器，用于在数值区间/自定义区间内进行选择。",
+      "type": "component",
+      "showDemo": true,
+      "star": 4,
+      "author": "Frans"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Range",
+      "sort": "1",
+      "chnName": "区间选择器",
+      "desc": "区间选择器组件",
+      "type": "component",
+      "showDemo": true,
+      "star": 4,
+      "author": "famanoder"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Picker",
+      "sort": "1",
+      "chnName": "拾取器",
+      "desc": "提供多个选项集合供用户选择其中一项。",
+      "type": "component",
+      "showDemo": true,
+      "star": 5,
+      "author": "iris"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Progress",
+      "sort": "2",
+      "chnName": "进度条",
+      "desc": "展示操作或任务的当前进度，比如上传文件。",
+      "type": "component",
+      "showDemo": true,
+      "author": "张毓飞"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Price",
+      "sort": "0",
+      "chnName": "商品价格",
+      "desc": "商品价格组件，支持小数点前后应用不同样式、千位分隔、人民币符号等功能",
+      "type": "component",
+      "showDemo": true,
+      "author": "liaoyanli5"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Flex",
+      "sort": "4",
+      "chnName": "Flex布局",
+      "desc": "Flex布局速简便地创建布局",
+      "type": "component",
+      "showDemo": true,
+      "author": "秦伟伟"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Col",
+      "sort": "4",
+      "chnName": "Flex布局",
+      "desc": "Flex布局速简便地创建布局",
+      "type": "component",
+      "showDemo": false,
+      "author": "秦伟伟"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Row",
+      "sort": "4",
+      "chnName": "Flex布局",
+      "desc": "Flex布局速简便地创建布局",
+      "type": "component",
+      "showDemo": false,
+      "author": "秦伟伟"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Steps",
+      "sort": "0",
+      "chnName": "步骤条",
+      "desc": "拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。",
+      "type": "component",
+      "showDemo": true,
+      "author": "宋其斌"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Button",
+      "sort": "5",
+      "chnName": "按钮",
+      "desc": "各式各样的按钮",
+      "type": "component",
+      "showDemo": true,
+      "author": "杨磊"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Badge",
+      "sort": "0",
+      "chnName": "徽标",
+      "desc": "出现在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息",
+      "type": "component",
+      "showDemo": true,
+      "author": "杨磊"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Rate",
+      "sort": "1",
+      "chnName": "评分",
+      "desc": "用于快速的评级操作，或对评价进行展示。",
+      "type": "component",
+      "showDemo": true,
+      "star": 4,
+      "author": "永无止晋"
+    },
+    {
+      "version": "1.0.1",
+      "name": "Swiper",
+      "chnName": "滑动切换",
+      "sort": "0",
+      "desc": "常用于一组图片或卡片轮播，当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。",
+      "type": "component",
+      "showDemo": true,
+      "star": 5,
+      "author": "wangnan31"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Menu",
+      "sort": "3",
+      "chnName": "菜单",
+      "desc": "菜单",
+      "type": "component",
+      "showDemo": true,
+      "author": "苏子刚"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Stepper",
+      "chnName": "步进器",
+      "desc": "通过点击按钮控制数字加减",
+      "type": "component",
+      "sort": "1",
+      "showDemo": true,
+      "star": 3,
+      "author": "famanoder"
+    },
+    {
+      "version": "1.0.0",
+      "name": "ButtonGroup",
+      "chnName": "按钮组",
+      "desc": "用于页面底部的按钮组",
+      "type": "component",
+      "sort": "5",
+      "showDemo": true,
+      "author": "杨磊"
+    },
+    {
+      "version": "1.0.0",
+      "name": "SearchBar",
+      "chnName": "搜索栏",
+      "desc": "搜索栏",
+      "type": "component",
+      "sort": "1",
+      "showDemo": true,
+      "author": "lemon"
+    },
+    {
+      "version": "1.0.0",
+      "name": "ImagePicker",
+      "sort": "1",
+      "chnName": "图片选择器",
+      "desc": "图片选择器",
+      "type": "component",
+      "showDemo": true,
+      "author": "苏子刚"
+    },
+    {
+      "name": "Radio",
+      "version": "1.0.0",
+      "sort": "1",
+      "chnName": "单选按钮",
+      "type": "component",
+      "showDemo": true,
+      "desc": "单选按钮，可组合成单选按钮组",
+      "author": "Frans"
+    },
+    {
+      "name": "RadioGroup",
+      "version": "1.0.0",
+      "sort": "1",
+      "chnName": "单选按钮组",
+      "type": "component",
+      "showDemo": false,
+      "desc": "单选按钮组",
+      "author": "Frans"
+    },
+    {
+      "version": "1.0.0",
+      "name": "CheckBox",
+      "sort": "1",
+      "chnName": "复选按钮",
+      "desc": "复选多个选项",
+      "type": "component",
+      "showDemo": true,
+      "author": "Vicky.Ye"
+    },
+    {
+      "version": "1.0.0",
+      "name": "CheckBoxGroup",
+      "sort": "1",
+      "chnName": "复选按钮组",
+      "desc": "成组出现的复选按钮组件",
+      "type": "component",
+      "showDemo": true,
+      "author": "Vicky.Ye"
+    },
+    {
+      "version": "1.0.0",
+      "name": "ShortPassword",
+      "chnName": "短密码",
+      "des": "短密码",
+      "type": "component",
+      "sort": "1",
+      "showDemo": true,
+      "author": "wangnan31"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Skeleton",
+      "chnName": "骨架屏",
+      "des": "在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果",
+      "type": "component",
+      "sort": "0",
+      "showDemo": true,
+      "author": "wangnan31"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Scroller",
+      "chnName": "滚动",
+      "desc": "滚动组件",
+      "type": "component",
+      "sort": "0",
+      "star": 5,
+      "showDemo": true,
+      "author": "iris"
+    },
+    {
+      "version": "1.0.0",
+      "name": "BackTop",
+      "chnName": "回到顶部",
+      "desc": "用于页面内容高度过长，快捷回到顶部使用。",
+      "type": "component",
+      "sort": "2",
+      "showDemo": true,
+      "author": "永无止晋"
+    },
+    {
+      "version": "1.0.0",
+      "name": "CountDown",
+      "chnName": "倒计时",
+      "desc": "倒计时组件",
+      "type": "component",
+      "sort": "0",
+      "showDemo": true,
+      "author": "famanoder"
+    },
+    {
+      "version": "1.0.0",
+      "name": "InfiniteLoading",
+      "chnName": "无限加载",
+      "desc": "无限加载",
+      "type": "component",
+      "sort": "0",
+      "star": 4,
+      "showDemo": true,
+      "author": "iris"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Uploader",
+      "chnName": "上传",
+      "desc": "文件上传组件",
+      "type": "component",
+      "sort": "5",
+      "showDemo": true,
+      "author": "林如风"
+    },
+    {
+      "version": "1.0.0",
+      "name": "TextInput",
+      "chnName": "文本框",
+      "desc": "单行文本框",
+      "type": "component",
+      "sort": "1",
+      "showDemo": true,
+      "author": "Frans"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Avatar",
+      "chnName": "头像",
+      "desc": "用来表示用户或事物，支持图片或字符展示。",
+      "type": "component",
+      "sort": "5",
+      "showDemo": true,
+      "author": "zhenyulei"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Lazyload",
+      "chnName": "图片懒加载",
+      "desc": "图片懒加载",
+      "type": "component",
+      "sort": "0",
+      "showDemo": true,
+      "author": "zhuzhida"
+    },
+    {
+      "version": "1.0.0",
+      "name": "TextBox",
+      "chnName": "文本域",
+      "desc": "文本域",
+      "type": "component",
+      "sort": "1",
+      "showDemo": true,
+      "author": "guoxiaoxiao"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Elevator",
+      "chnName": "电梯楼层",
+      "desc": "类似于电梯楼层，组件可以跟着右侧索引而滑动",
+      "type": "component",
+      "sort": "3",
+      "showDemo": true,
+      "author": "zhenyulei"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Popup",
+      "chnName": "弹出层",
+      "desc": "弹出层",
+      "type": "component",
+      "sort": "5",
+      "showDemo": true,
+      "author": "杨凯旋"
+    },
+    {
+      "version": "1.0.0",
+      "name": "LeftSlip",
+      "chnName": "左滑删除",
+      "desc": "手势左滑删除元素",
+      "type": "component",
+      "sort": "2",
+      "showDemo": true,
+      "author": "vickyYE"
+    },
+    {
+      "version": "1.0.0",
+      "name": "TabSelect",
+      "chnName": "分类选择",
+      "desc": "两级分类选择",
+      "type": "component",
+      "sort": "6",
+      "showDemo": true,
+      "author": "dsj"
+    },
+    {
+      "version": "1.0.0",
+      "name": "LuckDraw",
+      "chnName": "转盘抽奖",
+      "desc": "可设置中奖奖品，转动时间，中奖标识等",
+      "type": "component",
+      "sort": "6",
+      "showDemo": true,
+      "author": "ymm"
+    }
+  ]
 }

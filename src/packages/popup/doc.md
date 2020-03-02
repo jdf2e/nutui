@@ -64,4 +64,21 @@ export default {
 | closeable  | 是否显示关闭图标                        | Boolean  | false     |
 | close-icon | 关闭图标名称                  | string  | cross     |
 | close-icon-position | 关闭图标位置，可选值为top-left bottom-left bottom-right | string  | top-right  |
+| overlay-class | 自定义遮罩层类名 | string  |   |
+| overlay-style | 自定义遮罩层样式 | object  |   |
+| lock-scroll | 是否锁定背景滚动 | boolean  |  true |
+| close-on-click-overlay	 | 是否在点击遮罩层后关闭 | boolean  |  true |
+| get-container | 指定挂载节点 | string   |   |
 
+
+## Event
+
+| 事件名       | 说明                                     |  
+| ---------- | ---------------------------------------- |  
+| click    |	点击弹出层时触发	                     | 
+| open    |		打开弹出层时触发                     | 
+| close    |	关闭弹出层时触发	                     | 
+| opened    |	打开弹出层且动画结束后触发	                     | 
+| closed    |	关闭弹出层且动画结束后触发	                     | 
+| click-overlay    |	点击遮罩层时触发	                     | 
+ 
