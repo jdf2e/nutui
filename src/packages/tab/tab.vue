@@ -104,7 +104,13 @@ export default {
         'closable':{
             type:Boolean,
             default:false,
-        }
+        },
+        'initData':{
+            type:Array,
+            default:function(){
+                return [];
+            }
+        }     
     },
     data() {
         return {
@@ -118,12 +124,13 @@ export default {
         };
     },
     watch:{
-       positionNav:function(){
+       initData:function(){
             setTimeout(()=>{
                 let slot = [...this.$slots.default];
                 this.tabTitleList = [];
-                this.initTab(slot); 
-            },50);    
+                this.activeIndex = this.defIndex;
+                this.initTab(slot);  
+            },100);    
         }
     },
     computed:{
@@ -172,8 +179,8 @@ export default {
                        this.tabTitleList.push(item);
                        let slotElm = slot[i].elm;
                        if(slotElm){
-                        this.addClass(slotElm,'hide');
-                            if(this.isShowTab * 2 == i) {
+                            this.addClass(slotElm,'hide');
+                            if(this.isShowTab == i) {
                                 this.removeClass(slotElm,'hide')
                             }
                        }                
