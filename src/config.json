@@ -5,7 +5,8 @@
     "操作反馈",
     "导航组件",
     "布局组件",
-    "基础组件"
+    "基础组件",
+    "业务组件"
   ],
   "packages": [
     {
@@ -465,7 +466,7 @@
     },
     {
       "version": "1.0.0",
-      "name": "lazyload",
+      "name": "Lazyload",
       "chnName": "图片懒加载",
       "desc": "图片懒加载",
       "type": "component",
@@ -519,7 +520,7 @@
       "chnName": "分类选择",
       "desc": "两级分类选择",
       "type": "component",
-      "sort": "3",
+      "sort": "6",
       "showDemo": true,
       "author": "dsj"
     },
@@ -529,7 +530,7 @@
       "chnName": "转盘抽奖",
       "desc": "可设置中奖奖品，转动时间，中奖标识等",
       "type": "component",
-      "sort": "3",
+      "sort": "6",
       "showDemo": true,
       "author": "ymm"
     }
