@@ -1,6 +1,6 @@
 <template>
   <transition name="popup-fade">
-    <div v-show="show" class="bg nut-mask" :class="className"></div>
+    <div v-show="show" class="popup-bg nut-mask" :class="className"></div>
   </transition>
 </template>
 <script>
