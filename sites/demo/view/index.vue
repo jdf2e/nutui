@@ -38,7 +38,7 @@ export default {
       version,
       sortedPackages: [],
       oriSorts: [],
-      sorts: [1, 2, 0, 3, 4, 5],
+      sorts: [1, 2, 0, 3, 4, 5, 6],
       foldStatus: []
     };
   },
