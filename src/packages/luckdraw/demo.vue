@@ -49,27 +49,27 @@
           {
             id: 'xiaomi',
             prizeName: '小米手机',
-            prizeImg: '//m.360buyimg.com/mobilecms/s843x843_jfs/t1/96788/40/337/73706/5dabd0e2E1f166028/7120ca2b421cb0a0.jpg!q70.dpg.webp',
+            prizeImg: 'https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/96788/40/337/73706/5dabd0e2E1f166028/7120ca2b421cb0a0.jpg!q70.dpg.webp',
           },
           {
             id: 'blue',
             prizeName: '蓝牙耳机',
-            prizeImg: '//m.360buyimg.com/mobilecms/s843x843_jfs/t1/65070/13/4325/183551/5d26e23fE09ab2010/a94eaff8242e6c63.jpg!q70.dpg.webp',
+            prizeImg: 'https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/65070/13/4325/183551/5d26e23fE09ab2010/a94eaff8242e6c63.jpg!q70.dpg.webp',
           },
           {
             id: 'apple',
             prizeName: 'apple watch',
-            prizeImg: '//m.360buyimg.com/mobilecms/s843x843_jfs/t1/105083/3/4010/126031/5de4aa51E1c7fefc6/0288f4cf3016e061.jpg!q70.dpg.webp',
+            prizeImg: 'https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/105083/3/4010/126031/5de4aa51E1c7fefc6/0288f4cf3016e061.jpg!q70.dpg.webp',
           },
           {
             id: 'fruit',
             prizeName: '迪士尼苹果',
-            prizeImg: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/47486/35/13399/356858/5da3cde2E9b3ec40f/3b3a56d54d5db565.jpg!q80.dpg.webp',
+            prizeImg: 'https://m.360buyimg.com/mobilecms/s750x750_jfs/t1/47486/35/13399/356858/5da3cde2E9b3ec40f/3b3a56d54d5db565.jpg!q80.dpg.webp',
           },
           {
             id: 'fish',
             prizeName: '海鲜套餐',
-            prizeImg: '//m.360buyimg.com/mobilecms/s843x843_jfs/t1/109529/24/1330/283533/5dfc836fE33d8ce6b/372adb638802710a.jpg!q70.dpg.webp',
+            prizeImg: 'https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/109529/24/1330/283533/5dfc836fE33d8ce6b/372adb638802710a.jpg!q70.dpg.webp',
           },
           {
             id: 'thanks',
