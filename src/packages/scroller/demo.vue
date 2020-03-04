@@ -42,6 +42,7 @@
                 @loadMore="loadMoreVert"
                 @pulldown="pulldown"
                 @scrollToCbk="scrollToCbk"
+                @scrollChange="scrollChange"
             > 
                 <div slot="list" class="nut-vert-list-panel">
                     <div class="nut-vert-list-item" v-for="(item, index) of listData1" :key="index">
@@ -115,7 +116,9 @@ export default {
             this.scrollToHor = 0;
             
         },
-
+        scrollChange(event){
+            console.log(event)
+        },
         scrollToPos() {
             this.scrollTo = 0;
         },
