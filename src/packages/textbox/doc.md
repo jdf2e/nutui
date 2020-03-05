@@ -64,12 +64,9 @@ export default {
     };
   },
   methods: {
-    onFocus() {
-      console.log("focus事件触发！");
-    },
-    onBlur() {
-      console.log("blur事件触发！");
-    }
+     inputText(val){
+           alert(val);
+        }
   }
 };
 ```

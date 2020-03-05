@@ -54,7 +54,7 @@
   </div>
 </template>
 <script>
-import locale from "../../mixins/locale";
+import locale from '../../mixins/locale';
 
 const lockMaskScroll = (bodyCls => {
   let scrollTop;
@@ -63,7 +63,7 @@ const lockMaskScroll = (bodyCls => {
       scrollTop =
         document.scrollingElement.scrollTop || document.body.scrollTop;
       document.body.classList.add(bodyCls);
-      document.body.style.top = -scrollTop + "px";
+      document.body.style.top = -scrollTop + 'px';
     },
     beforeClose: function() {
       if (document.body.classList.contains(bodyCls)) {
@@ -72,29 +72,35 @@ const lockMaskScroll = (bodyCls => {
       }
     }
   };
-})("dialog-open");
+})('dialog-open');
 
 export default {
-  name: "nut-dialog",
+  name: 'nut-dialog',
   mixins: [locale],
   props: {
     id: {
-      default: ""
+      type: String,
+      default: ''
     },
     title: {
-      default: ""
+       type: String,
+      default: ''
     },
     content: {
-      default: ""
+       type: String,
+      default: ''
     },
     type: {
-      default: ""
+       type: String,
+      default: ''
     },
     link: {
-      default: ""
+       type: String,
+      default: ''
     },
     imgSrc: {
-      default: ""
+       type: String,
+      default: ''
     },
     animation: {
       type: Boolean,
@@ -129,10 +135,12 @@ export default {
       default: false
     },
     cancelBtnTxt: {
-      default: ""
+       type: String,
+      default: ''
     },
     okBtnTxt: {
-      default: ""
+       type: String,
+      default: ''
     },
     okBtnDisabled: {
       type: Boolean,
@@ -143,28 +151,36 @@ export default {
       default: true
     },
     textAlign: {
-      default: "center"
+      type: String,
+      default: 'center'
     },
     onOkBtn: {
+      type: Object,
       default: null
     },
     onCloseBtn: {
+      type: Object,
       default: null
     },
     onCancelBtn: {
+      type: Object,
       default: null
     },
     closeCallback: {
+      type: Object,
       default: null
     },
     onClickImageLink: {
+      type: Object,
       default: null
     },
     maskBgStyle: {
-      default: ""
+      type: String,
+      default: ''
     },
     customClass: {
-      default: ""
+      type: String,
+      default: ''
     }
   },
   data() {
@@ -174,14 +190,14 @@ export default {
   },
   methods: {
     modalClick() {
-      if (!this.closeOnClickModal) return;
-      this.close("modal");
+      if (!this.closeOnClickModal) {return};
+      this.close('modal');
     },
     close(target) {
-      this.$emit("close", target);
-      this.$emit("close-callback", target);
+      this.$emit('close', target);
+      this.$emit('close-callback', target);
       if (
-        typeof this.closeCallback === "function" &&
+        typeof this.closeCallback === 'function' &&
         this.closeCallback(target) === false
       ) {
         return;
@@ -189,8 +205,8 @@ export default {
       this.curVisible = false;
     },
     okBtnClick() {
-      this.$emit("ok-btn-click");
-      if (typeof this.onOkBtn === "function") {
+      this.$emit('ok-btn-click');
+      if (typeof this.onOkBtn === 'function') {
         this.onOkBtn.call(this);
       }
     },
@@ -198,27 +214,26 @@ export default {
       if(!autoClose){
         return
       }
-      this.$emit("cancel-btn-click");
-      if (typeof this.onCancelBtn === "function") {
-        if (this.onCancelBtn.call(this) === false) return;
+      this.$emit('cancel-btn-click');
+      if (typeof this.onCancelBtn === 'function') {
+        if (this.onCancelBtn.call(this) === false) {return};
       }
-      this.close("cancelBtn");
+      this.close('cancelBtn');
          
     },
     closeBtnClick() {
-      if (typeof this.onCloseBtn === "function") {
-        if (this.onCloseBtn.call(this) === false) return;
+      if (typeof this.onCloseBtn === 'function') {
+        if (this.onCloseBtn.call(this) === false) {return};
       }
-      this.close("closeBtn");
+      this.close('closeBtn');
     },
     //图片类型弹窗中的链接点击事件，默认跳转
     imageLinkClick() {
       if (this.onClickImageLink && this.onClickImageLink.call(this) === false)
-        return;
-      if (this.link) location.href = this.link;
+       { return};
+      if (this.link) {location.href = this.link};
     }
   },
-  created() {},
   watch: {
     visible: {
       handler(val) {
@@ -229,7 +244,7 @@ export default {
     curVisible(val) {
       if (this.lockBgScroll) {
         //锁定or解锁页面滚动
-        lockMaskScroll[val ? "afterOpen" : "beforeClose"]();
+        lockMaskScroll[val ? 'afterOpen' : 'beforeClose']();
       }
     }
   }

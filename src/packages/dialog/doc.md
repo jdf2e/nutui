@@ -109,7 +109,7 @@ export default {
 | noFooter | 是否隐藏底部按钮栏 | Boolean | false
 | noOkBtn | 是否隐藏确定按钮 | Boolean | false
 | noCancelBtn | 是否隐藏取消按钮 | Boolean | false
-| cancelBtnTxt | 取消按钮文案 | String | ”取 s消“
+| cancelBtnTxt | 取消按钮文案 | String | ”取 消“
 | okBtnTxt | 确定按钮文案 | String | ”确 定“
 | okBtnDisabled | 禁用确定按钮 | Boolean | false
 | cancelAutoClose | 取消按钮是否默认关闭弹窗 | Boolean | true
@@ -124,4 +124,4 @@ export default {
 | link | 点击图片跳转的Url，仅对图片类型弹窗有效 | String | -
 | imgSrc | 图片Url，仅对图片类型弹窗有效 | String | -
 | animation | 是否开启默认动效 | Boolean | true
-| lockBgScroll | 锁定遮罩层滚动，不影响弹窗内部滚动（实验性质） | Boolean | false
+| lockBgScroll | 锁定遮罩层滚动，不影响弹窗内部滚动（实验性质）会给body添加posotion:fix属性，注意 | Boolean | false

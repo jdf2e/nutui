@@ -75,26 +75,7 @@
       
       <a href="javascript:;" @click="dialogShow=false" :noCancelBtn="true">点我可以直接关闭对话框</a>
     </nut-dialog>
-    <nut-actionsheet :is-visible="isEditor" > 
-      <div slot="custom"> 
-        <nut-cell title="选择货品" :showIcon="true" :isLink="true" @click.native="isItem=true"> 
-          <div slot="desc" class="selected-option">{{item.name!='' ? item.name : '请选择'}}</div>
-        </nut-cell> 
-        <nut-cell :isLink="true" > 
-          <div slot="title" class="selected-option">
-          <nut-textinput v-model="item.num" :hasBorder="false" placeholder="请输入数量" :clearBtn="true" :disabled="false"/> </div> 
-        </nut-cell>
-        <nut-cell :isLink="true" > 
-           <div slot="title" class="selected-option"> 
-             <nut-textinput v-model="item.price" :hasBorder="false" placeholder="请输入价格" :clearBtn="true" :disabled="false"/> 
-          </div> 
-        </nut-cell> 
-        <nut-buttongroup shape="circle" style="margin-top:10px;padding:10px;">
-           <nut-button color="#333" style="background:#eee" @click.native="isEditor=false"> 取消 </nut-button> 
-           <nut-button style="background:#42b983" @click.native="addItem"> 确定 </nut-button> 
-        </nut-buttongroup>
-      </div> 
-    </nut-actionsheet>
+   
   </div>
 </template>
 
@@ -107,7 +88,7 @@ export default {
   data() {
     return {
       dialogShow: false,
-      isEditor:true,
+      isEditor:false,
       item:{
         
       }
