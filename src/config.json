@@ -17,7 +17,7 @@
       "type": "component",
       "showDemo": true,
       "desc": "列表项，可组合成列表",
-      "author": "Frans"
+      "author": "Frans、玉磊"
     },
     {
       "name": "Dialog",
@@ -28,7 +28,7 @@
       "showDemo": true,
       "desc": "模态弹窗，支持按钮交互，支持图片弹窗。",
       "star": 5,
-      "author": "Frans"
+      "author": "Frans、肖晓"
     },
     {
       "name": "Icon",
@@ -49,7 +49,7 @@
       "type": "method",
       "showDemo": true,
       "star": 4,
-      "author": "Frans"
+      "author": "Frans、张宇"
     },
     {
       "version": "1.0.0",
@@ -207,7 +207,7 @@
       "desc": "Flex布局速简便地创建布局",
       "type": "component",
       "showDemo": true,
-      "author": "秦伟伟"
+      "author": "秦伟伟,苏子刚"
     },
     {
       "version": "1.0.0",
@@ -217,7 +217,7 @@
       "desc": "Flex布局速简便地创建布局",
       "type": "component",
       "showDemo": false,
-      "author": "秦伟伟"
+      "author": "秦伟伟,苏子刚"
     },
     {
       "version": "1.0.0",
@@ -227,7 +227,7 @@
       "desc": "Flex布局速简便地创建布局",
       "type": "component",
       "showDemo": false,
-      "author": "秦伟伟"
+      "author": "秦伟伟,苏子刚"
     },
     {
       "version": "1.0.0",
@@ -411,7 +411,7 @@
       "type": "component",
       "sort": "2",
       "showDemo": true,
-      "author": "永无止晋"
+      "author": "永无止晋、richard1015"
     },
     {
       "version": "1.0.0",
@@ -472,7 +472,7 @@
       "type": "component",
       "sort": "0",
       "showDemo": true,
-      "author": "zhuzhida"
+      "author": "richard1015"
     },
     {
       "version": "1.0.0",

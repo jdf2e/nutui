@@ -15,8 +15,8 @@
 ```html
 <nut-progress
     percentage="30"
-    strokeColor="#8e71c7" 
-    strokeWidth="12"
+    stroke-color="#8e71c7" 
+    stroke-width="12"
 >
 </nut-progress>
 ```
@@ -25,7 +25,7 @@
 ```html
 <nut-progress 
     percentage="50"
-    :showText="false"
+    :show-text="false"
 >
 </nut-progress>
 ```
@@ -34,8 +34,8 @@
 ```html
 <nut-progress 
     percentage="60" 
-    :textInside="true" 
-    strokeWidth="24"
+    :text-inside="true" 
+    stroke-width="24"
 ></nut-progress>
 ```
 设置状态显示
@@ -43,20 +43,20 @@
 ```html
 <nut-progress 
     percentage="30" 
-    strokeColor="#f30" 
+    stroke-color="#f30" 
     status="active"
 >
 </nut-progress>
 <nut-progress 
     percentage="50"
-    strokeColor="#f30"
-    strokeWidth="15"
+    stroke-color="#f30"
+    stroke-width="15"
     status="wrong"
 >
 </nut-progress>
 <nut-progress 
     percentage="100" 
-    :strokeWidth="15" 
+    :stroke-width="15" 
     status="success"
 >
 </nut-progress>
@@ -85,9 +85,9 @@
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
 | percentage | 百分比 | Number | 0
-| strokeColor | 进度条背景色 | String | #1890ff
-| strokeWidth | 进度条高度 | String | ''
+| stroke-color | 进度条背景色 | String | #1890ff
+| stroke-width | 进度条高度 | String | ''
 | size | 进度条及文字尺寸，可选值small/base/large | String | -
-| showText | 是否显示进度条文字内容 | Boolean | true
-| textInside | 进度条文字显示位置 | Boolean | false
+| show-text | 是否显示进度条文字内容 | Boolean | true
+| text-inside | 进度条文字显示位置 | Boolean | false
 | status | 进度条当前状态,可选值text/active/wrong/success | String | text

@@ -66,7 +66,7 @@
         </div>
       </div>
       <div class="foot">
-        Copyright © 2018~2019
+        Copyright © 2018~2020
         <a href="//jdc.jd.com" target="_blank">JDC</a>-
         <a target="_blank" href="javascript:;">前端开发部</a>
       </div>
