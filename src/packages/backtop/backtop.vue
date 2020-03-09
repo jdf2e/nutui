@@ -1,5 +1,5 @@
 <template>
-  <div :class="['nut-backtop', {'show': backTop}]" :style="styles" @click="goto">
+  <div :class="['nut-backtop', {'show': backTop}]" :style="styles" @click.stop="click">
     <slot>
       <div class="nut-backtop-main"></div>
     </slot>
@@ -25,6 +25,14 @@ export default {
       type: Number,
       default: 1000
     },
+    isAnimation: {
+      type: Boolean,
+      default: true
+    },
+    elId: {
+      type: String,
+      default: ""
+    },
     zIndex: {
       type: Number,
       default: 1111
@@ -32,17 +40,30 @@ export default {
   },
   data() {
     return {
-      backTop: false
+      backTop: false,
+      scrollEl: window
     };
   },
   mounted() {
-    window.addEventListener("scroll", this.handleScroll, false);
-    window.addEventListener("resize", this.handleScroll, false);
+    this.init();
   },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll, false);
-    window.removeEventListener("resize", this.handleScroll, false);
+
+  activated() {
+    if (this.keepAlive) {
+      this.keepAlive = false;
+      this.init();
+    }
   },
+
+  deactivated() {
+    this.keepAlive = true;
+    this.removeEventListener();
+  },
+
+  destroyed() {
+    this.removeEventListener();
+  },
+
   computed: {
     styles() {
       return {
@@ -53,68 +74,76 @@ export default {
     }
   },
   methods: {
-    handleScroll() {
-      this.backTop = window.pageYOffset >= this.distance;
+    addEventListener() {
+      this.scrollEl.addEventListener("scroll", this.scrollListener, false);
+      this.scrollEl.addEventListener("resize", this.scrollListener, false);
     },
-    goto() {
-      const sTop =
-        document.documentElement.scrollTop || document.body.scrollTop;
-      this.scrollTop(window, sTop, 0, this.duration);
-      this.$emit("click");
+    removeEventListener() {
+      this.scrollEl.removeEventListener("scroll", this.scrollListener, false);
+      this.scrollEl.removeEventListener("resize", this.scrollListener, false);
     },
-    scrollTop(el, from = 0, to, duration = 500, endCallback) {
-      this.el = el;
-      let lastTime = 0;
+    requestAniFrame() {
+      return (
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        }
+      );
+    },
+    initCancelAniFrame() {
       let vendors = ["webkit", "moz"];
       for (
         let x = 0;
         x < vendors.length && !window.requestAnimationFrame;
         ++x
       ) {
-        window.requestAnimationFrame =
-          window[vendors[x] + "RequestAnimationFrame"];
         window.cancelAnimationFrame =
           window[vendors[x] + "CancelAnimationFrame"] ||
           window[vendors[x] + "CancelRequestAnimationFrame"];
       }
-
-      if (!window.requestAnimationFrame) {
-        window.requestAnimationFrame = function(callback, element) {
-          let currTime = new Date().getTime();
-          let timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
-          let id = window.setTimeout(function() {
-            callback(currTime + timeToCall);
-          }, timeToCall);
-          lastTime = currTime + timeToCall;
-          return id;
-        };
-      }
-      if (!window.cancelAnimationFrame) {
-        window.cancelAnimationFrame = function(id) {
-          clearTimeout(id);
-        };
-      }
-      const difference = Math.abs(from - to);
-      const step = Math.ceil((difference / duration) * 50);
-
-      this.scroll(from, to, step, endCallback);
     },
-    scroll(start, end, step, endCallback) {
-      if (start === end) {
-        endCallback && endCallback();
-        return;
+    init() {
+      if (this.elId && document.getElementById(this.elId)) {
+        this.scrollEl = document.getElementById(this.elId);
       }
-
-      let d = start + step > end ? end : start + step;
-      if (start > end) {
-        d = start - step < end ? end : start - step;
-      }
-      if (this.el === window) {
-        window.scrollTo(d, d);
+      this.addEventListener();
+      this.initCancelAniFrame();
+    },
+    scrollListener() {
+      this.scrollTop =
+        this.scrollEl.pageYOffset !== undefined
+          ? this.scrollEl.pageYOffset
+          : this.scrollEl.scrollTop;
+      this.backTop = this.scrollTop >= this.distance;
+    },
+    click() {
+      this.startTime = +new Date();
+      this.isAnimation && this.duration > 0
+        ? this.scrollAnimation()
+        : this.scroll();
+    },
+    scrollAnimation() {
+      const self = this;
+      var cid = self.requestAniFrame()(function fn() {
+        var t =
+          self.duration -
+          Math.max(0, self.startTime - +new Date() + self.duration);
+        var y = (t * -self.scrollTop) / self.duration + self.scrollTop;
+        self.scroll(y);
+        cid = self.requestAniFrame()(fn);
+        if (t == self.duration) {
+          window.cancelAnimationFrame(cid);
+        }
+      });
+    },
+    scroll(y = 0) {
+      if (this.scrollEl === window) {
+        window.scrollTo(0, y);
       } else {
-        this.el.scrollTop = d;
+        this.scrollEl.scrollTop = y;
       }
-      window.requestAnimationFrame(() => this.scroll(d, end, step));
     }
   }
 };

@@ -31,11 +31,11 @@ let currentOptions = {
 };
 
 function _showToast() {
-  instance.vm = instance.$mount();
-  document.body.appendChild(instance.$el);
-  Vue.nextTick(() => {
-    instance.visible = true;
-  });
+    instance.vm = instance.$mount();
+    document.body.appendChild(instance.$el);
+    Vue.nextTick(() => {
+        instance.visible = true;
+    });
 }
 
 function _getInstance(obj) {
@@ -58,8 +58,8 @@ function _getInstance(obj) {
     opt["id"] && (instanceArr[opt["id"]] = instance);
   }
 
-  _showToast();
-  return instance;
+    _showToast();
+    return instance;
 }
 
 function errorMsg(msg) {
