@@ -91,6 +91,21 @@
     <nut-col :span="6">
         <div class="flex-content flex-content-light">2</div>
     </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content">3</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content flex-content-light">4</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content">5</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content flex-content-light">6</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content">7</div>
+    </nut-col>
 </nut-row>
 <nut-row type="flex" flexWrap="wrap" :gutter="10">
     <nut-col :span="6">
@@ -99,6 +114,21 @@
     <nut-col :span="6">
         <div class="flex-content flex-content-light">2</div>
     </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content">3</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content flex-content-light">4</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content">5</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content flex-content-light">6</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content">7</div>
+    </nut-col>
 </nut-row>
 <nut-row type="flex" flexWrap="reverse" :gutter="10">
     <nut-col :span="6">
@@ -106,6 +136,21 @@
     </nut-col>
     <nut-col :span="6">
         <div class="flex-content flex-content-light">2</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content">3</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content flex-content-light">4</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content">5</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content flex-content-light">6</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content">7</div>
     </nut-col>
 </nut-row>
 
@@ -118,8 +163,20 @@
     <nut-col :span="6">
         <div class="flex-content">start</div>
     </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content flex-content-light">start</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content">start</div>
+    </nut-col>
 </nut-row>
 <nut-row type="flex" justify="center">
+    <nut-col :span="6">
+        <div class="flex-content">center</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content flex-content-light">center</div>
+    </nut-col>
     <nut-col :span="6">
         <div class="flex-content">center</div>
     </nut-col>
@@ -128,13 +185,31 @@
     <nut-col :span="6">
         <div class="flex-content">end</div>
     </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content flex-content-light">end</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content">end</div>
+    </nut-col>
 </nut-row>
 <nut-row type="flex" justify="space-between">
     <nut-col :span="6">
         <div class="flex-content">between</div>
     </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content flex-content-light">between</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content">between</div>
+    </nut-col>
 </nut-row>
 <nut-row type="flex" justify="space-around">
+    <nut-col :span="6">
+        <div class="flex-content">around</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content flex-content-light">around</div>
+    </nut-col>
     <nut-col :span="6">
         <div class="flex-content">around</div>
     </nut-col>
@@ -146,18 +221,36 @@
 
 ```html
 <nut-row type="flex" gutter="10" align="flex-start">
+    <nut-col :span="6">
+        <div class="flex-content flex-content-height">1</div>
+    </nut-col>
     <nut-col :span="12">
         <div class="flex-content flex-content-light">顶部对齐 - flex-start</div>
     </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content flex-content-height">3</div>
+    </nut-col>
 </nut-row>
 <nut-row type="flex" gutter="10" align="center">
+    <nut-col :span="6">
+        <div class="flex-content flex-content-height">1</div>
+    </nut-col>
     <nut-col :span="12">
         <div class="flex-content flex-content-light">居中对齐 - center</div>
     </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content flex-content-height">3</div>
+    </nut-col>
 </nut-row>
 <nut-row type="flex" gutter="10" align="flex-end">
+    <nut-col :span="6">
+        <div class="flex-content flex-content-height">1</div>
+    </nut-col>
     <nut-col :span="12">
         <div class="flex-content flex-content-light">底部对齐 - flex-end</div>
+    </nut-col>
+    <nut-col :span="6">
+        <div class="flex-content flex-content-height">3</div>
     </nut-col>
 </nut-row>
 
@@ -210,12 +303,12 @@
 | tag | 自定义元素标签 | String | div
 | justify | Flex 主轴对齐方式，可选值为 start end center space-around space-between | String | start
 | align | Flex 交叉轴对齐方式，可选值为 flex-start center flex-end | String | flex-start
-| flexWrap | Flex是否换行，可选值为 nowrap wrap reverse | String | nowrap
+| flex-wrap | Flex是否换行，可选值为 nowrap wrap reverse | String | nowrap
 
 ### col
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| span | 列元素宽度 | String/Number | -
+| span | 列元素宽度（共分为24份，例如设置一行3个，那么span值为8） | String/Number | -
 | offset | 列元素偏移距离 | String/Number | - 
 
