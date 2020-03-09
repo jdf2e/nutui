@@ -1,5 +1,5 @@
 <template>
-    <div class="nut-luckdraw" ref="luckdraw" :style="{width:luckWidth, height:luckheight}">
+    <div class="nut-luckdraw" ref="luckdraw" :style="{width:luckWidth, height:luckHeight}">
         <div class="lucktable" :style="{transform: rotateAngle, transition: rotateTransition}">
             <canvas id="canvas" ref="canvas">
                 浏览器版本过低
@@ -22,7 +22,7 @@ export default {
       luckWidth: {
         required: true
       },
-      luckheight: {
+      luckHeight: {
         required: true
       },
       prizeList: {
@@ -105,7 +105,7 @@ export default {
         this.rotateAngle = `rotate(${rotateAngle}deg)`;
         this.rotateTransition = `transform ${turnsTime}s cubic-bezier(0.250, 0.460, 0.455, 0.995)`;
         setTimeout(() => {
-          this.$emit('endTurns');
+          this.$emit('end-turns');
         }, turnsTime * 1000 + 500)
       },
     },
