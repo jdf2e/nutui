@@ -125,6 +125,7 @@ export default {
             }
             this.$refs.list.style.webkitTransform = `translate3d(0, ${translateY}px, 0)`;
             this.scrollDistance = translateY;
+            this.$emit('scrollChange',translateY);
         },
 
         setMove(move, type, time) {

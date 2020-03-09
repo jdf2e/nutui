@@ -14,6 +14,7 @@
                 @loadMore="loadMore"
                 @pulldown="pulldown"
                 @scrollToCbk="scrollToCbk"
+                @scrollChange="scrollChange"
             >
                 <slot name="list"  slot="list"></slot>
 
@@ -102,6 +103,9 @@ export default {
 
         scrollToCbk() {
             this.$emit('scrollToCbk');
+        },
+        scrollChange(event){
+            this.$emit('scrollChange',event);
         }
     }
 }

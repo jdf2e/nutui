@@ -48,7 +48,17 @@ this.$dialog({
 });
         
 ```
-
+## 关闭dialog不销毁实例
+```javascript
+ this.$dialog({
+        animation: false, //禁用弹出动效
+        title: "注册说明",
+        canDestroy:false,
+        content:
+          "原账号为您本人所有，建议直接登录或找回密码。原账号内的订单资产可能丢失，可联系京东客服找回。"
+      });
+        
+```
 ## 页面滚动锁定
 
 **lockBgScroll** 值设为 **true** 时，可在弹窗出现时锁定页面滚动，且不影响窗体内部滚动。
@@ -79,7 +89,7 @@ this.$dialog({
 
 ## 标签式写法
 
-如果Dialog内容有复杂交互，可使用Dialog的标签式用法。
+如果Dialog内容有复杂交互，可使用Dialog的标签式用法。注意标签使用的时候，属性不建议使用驼峰，推荐使用如下写法
 
 ```html
 <nut-dialog title="标签形式调用" :visible="dialogShow" @ok-btn-click="dialogShow=false" @cancel-btn-click="dialogShow=false" @close="dialogShow=false">
@@ -101,7 +111,8 @@ export default {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| id | 标识符，相同者共享一个实例 | String/Number | -
+| id | 标识符，相同者共享一个实例 | String/Number | nut-dialog-default-id
+| canDestroy | 是否关闭弹窗时销毁实例 | Beelean | true
 | title | 标题 | String | -
 | content | 内容，支持HTML | String | -
 | type | 弹窗类型，值为**image**时为图片弹窗 | String | -
@@ -109,7 +120,7 @@ export default {
 | noFooter | 是否隐藏底部按钮栏 | Boolean | false
 | noOkBtn | 是否隐藏确定按钮 | Boolean | false
 | noCancelBtn | 是否隐藏取消按钮 | Boolean | false
-| cancelBtnTxt | 取消按钮文案 | String | ”取 s消“
+| cancelBtnTxt | 取消按钮文案 | String | ”取 消“
 | okBtnTxt | 确定按钮文案 | String | ”确 定“
 | okBtnDisabled | 禁用确定按钮 | Boolean | false
 | cancelAutoClose | 取消按钮是否默认关闭弹窗 | Boolean | true
@@ -124,4 +135,4 @@ export default {
 | link | 点击图片跳转的Url，仅对图片类型弹窗有效 | String | -
 | imgSrc | 图片Url，仅对图片类型弹窗有效 | String | -
 | animation | 是否开启默认动效 | Boolean | true
-| lockBgScroll | 锁定遮罩层滚动，不影响弹窗内部滚动（实验性质） | Boolean | false
+| lockBgScroll | 锁定遮罩层滚动，不影响弹窗内部滚动（实验性质）会给body添加posotion:fix属性，注意 | Boolean | false

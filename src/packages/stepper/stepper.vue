@@ -193,7 +193,6 @@ export default {
                 };
                 this.$emit('update:value', this.num);
                 this.$emit('add', this.num); 
-                this.$emit('change', this.num); 
             }
             
         },
@@ -221,7 +220,6 @@ export default {
                 }    
                 this.$emit('update:value', this.num);
                 this.$emit('reduce', this.num);
-                this.$emit('change', this.num);
             }
             
         },

@@ -1,5 +1,5 @@
 <template>
-  <div class="back-top-demo">
+  <div class="back-top-demo" id="backtopid">
     <h3>《再别康桥》</h3>
     <p>徐志摩</p>
     <p>轻轻的我走了，正如我轻轻的来；</p>
@@ -38,7 +38,7 @@
     <p>乡愁是一湾浅浅的海峡</p>
     <p>我在这头</p>
     <p>大陆在那头</p>
-    
+
     <h3>《盼望》</h3>
     <p>席慕容</p>
     <p>其实我盼望的</p>
@@ -53,6 +53,28 @@
     <p>回首时</p>
     <p>那短短的一瞬</p>
     <nut-backtop @click="handleClick"></nut-backtop>
+    <nut-backtop :bottom="120" :is-animation="false" @click="handleClick">
+      <div
+        style="background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    display: flex;
+    height: 44px;
+    width: 44px;
+    align-items: center;
+    justify-content: center;"
+      >无</div>
+    </nut-backtop>
+    <nut-backtop :bottom="70" @click="handleClick">
+      <div
+        style="background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    display: flex;
+    height: 44px;
+    width: 44px;
+    align-items: center;
+    justify-content: center;"
+      >Top</div>
+    </nut-backtop>
   </div>
 </template>
 

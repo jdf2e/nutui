@@ -94,7 +94,7 @@
 
 <script>
 import locale from "../../mixins/locale";
-import { locale as i18n } from "../../locales";
+
 
 export default {
   mixins: [locale],

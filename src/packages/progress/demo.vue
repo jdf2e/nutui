@@ -5,7 +5,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="30" strokeColor="#8e71c7"/>
+          <nut-progress percentage="30" stroke-color="#8e71c7"/>
         </span>
       </nut-cell>
     </div>
@@ -13,7 +13,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="50" :showText="false" strokeWidth="24"/>
+          <nut-progress percentage="50" :show-text="false" stroke-width="24"/>
         </span>
       </nut-cell>
     </div>
@@ -29,7 +29,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="60" :textInside="true"/>
+          <nut-progress percentage="60" :text-inside="true"/>
         </span>
       </nut-cell>
     </div>
@@ -37,7 +37,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="30" :textInside="true" size="small">
+          <nut-progress percentage="30" :text-inside="true" :size="size">
             <slot>
               <span>small</span>
             </slot>
@@ -46,7 +46,7 @@
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="50" :textInside="true" size="base">
+          <nut-progress percentage="50" :text-inside="true" size="base">
             <slot>
               <span>base</span>
             </slot>
@@ -55,7 +55,7 @@
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="70" :textInside="true" size="large">
+          <nut-progress percentage="70" :text-inside="true" size="large">
             <slot>
               <span>large</span>
             </slot>
@@ -67,17 +67,17 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="30" strokeColor="#1890ff" status="active"/>
+          <nut-progress percentage="30" stroke-color="#1890ff" status="active"/>
         </span>
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="50" strokeWidth="15" status="wrong"/>
+          <nut-progress percentage="50" :stroke-width="strokeWidth" status="wrong"/>
         </span>
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="100" strokeColor="#1890ff" strokeWidth="15" status="success"/>
+          <nut-progress percentage="100" stroke-color="#1890ff" stroke-width="15" status="success"/>
         </span>
       </nut-cell>
     </div>
@@ -102,8 +102,15 @@
 export default {
   data() {
     return {
-      val: 0
+      val: 0,
+      strokeWidth:15,
+      size:'small'
     };
+  },
+  mounted(){
+    setTimeout(() => {
+      this.size='large';
+    }, 3000);
   },
   methods: {
     setAddVal() {

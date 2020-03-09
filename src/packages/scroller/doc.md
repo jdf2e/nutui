@@ -184,3 +184,4 @@ export default {
 | loadMore | 上拉加载回调 | -
 | jump | 查看更多跳转回调 | -
 | scrollToCbk | 滚动到指定位置之后，scrollTo参数设置成默认值 | -
+| scrollChange | 实时监听滚动y轴坐标,type vertical时生效 | 滑动高度
