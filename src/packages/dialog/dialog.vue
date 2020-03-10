@@ -1,5 +1,5 @@
 <template>
-  <div
+  <div  v-if="destroy"
     :class="['nut-dialog-wrapper',customClass,{'nut-dialog-image-wrapper':type==='image'}]"
     :id="id"
   >
@@ -155,28 +155,32 @@ export default {
       default: 'center'
     },
     onOkBtn: {
-      type: Object,
+      type: Function,
       default: null
     },
     onCloseBtn: {
-      type: Object,
+      type: Function,
       default: null
     },
     onCancelBtn: {
-      type: Object,
+      type: Function,
       default: null
     },
     closeCallback: {
-      type: Object,
+      type: Function,
       default: null
     },
     onClickImageLink: {
-      type: Object,
+      type: Function,
       default: null
     },
     maskBgStyle: {
       type: String,
       default: ''
+    },
+    canDestroy:{
+      type: Boolean,
+      default: true
     },
     customClass: {
       type: String,
@@ -185,17 +189,25 @@ export default {
   },
   data() {
     return {
-      curVisible: false
+      curVisible: false,
+      destroy:false
     };
+  },
+  created(){
+    this.destroy=true
   },
   methods: {
     modalClick() {
       if (!this.closeOnClickModal) {return};
       this.close('modal');
     },
+    todestroy(){
+      this.canDestroy? this.destroy=false:"";
+    },
     close(target) {
       this.$emit('close', target);
       this.$emit('close-callback', target);
+      this.todestroy();
       if (
         typeof this.closeCallback === 'function' &&
         this.closeCallback(target) === false

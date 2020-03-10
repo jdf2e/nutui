@@ -1,5 +1,5 @@
 <template>
-    <div class="nut-row" :class="classObject" :style="styleObject">
+    <div class="nut-row" :class="getClassObject()">
     	<slot></slot>
     </div>
 </template>
@@ -32,46 +32,34 @@ export default {
             default:'nowrap'
         }
     },
-    data() {
-        return {
-            classObject:{
-                'nut-row-flex' : this.type == 'flex',
-                'nut-row-justify-center':this.justify == 'center',
-                'nut-row-justify-end':this.justify == 'end',
-                'nut-row-justify-space-between':this.justify == 'space-between',
-                'nut-row-justify-space-around':this.justify == 'space-around',
-                'nut-row-align-center':this.align == 'center',
-                'nut-row-align-flex-end':this.align == 'flex-end',
-                'nut-row-flex-wrap':this.flexWrap == 'wrap',
-                'nut-row-flex-reverse':this.flexWrap == 'reverse'
-            },
-            styleObj:{
-                'margin-left':-this.gutter+'px',
-                'margin-right':-this.gutter+'px'
-            }
-        };
-    },
     computed:{
-        styleObject(){
-            if(this.gutter!=''){
-                return function(){
-                    this.styleObj;
-                }
-            }
+        getGutter() {
+            return `${this.gutter}px`
         }
     },
     methods: {
-        initCol:function(slot){
+        initCol(slot){
             for(let i = 0;i<slot.length;i++){
                 let tag = slot[i].tag;
                 if(typeof tag == 'string'){
                     if(tag.indexOf('nut-col') != -1) {
                         var slotElm = slot[i].elm;
-                        slotElm.style.paddingLeft = this.gutter+'px';
-                        slotElm.style.paddingRight = this.gutter+'px';
+                        slotElm.style.paddingLeft = this.getGutter;
+                        slotElm.style.paddingRight = this.getGutter;
                     }
                 }
             }
+        },
+        getClass(prefix, type) {
+            return prefix ? (type ? `nut-row-${prefix}-${type}` : '') : `nut-row-${type}`;
+        },
+        getClassObject() {
+            return `
+                ${this.getClass('',this.type)}  
+                ${this.getClass('justify',this.justify)} 
+                ${this.getClass('align',this.align)} 
+                ${this.getClass('flex',this.flexWrap)}
+                `
         }
     },
     mounted() {

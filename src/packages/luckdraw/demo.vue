@@ -9,14 +9,14 @@
     <nut-luckdraw
       class="drawTable"
       ref="luckDrawPrize"
-      :luckWidth="luckWidth"
-      :luckheight="luckheight"
-      :prizeList="prizeList"
-      :turnsNumber="turnsNumber"
-      :turnsTime="turnsTime"
-      :prizeIndex="prizeIndex"
-      :styleOpt="styleOpt"
-      @endTurns="endTurns"
+      :luck-width="luckWidth"
+      :luck-height="luckheight"
+      :prize-list="prizeList"
+      :turns-number="turnsNumber"
+      :turns-time="turnsTime"
+      :prize-index="prizeIndex"
+      :style-opt="styleOpt"
+      @end-turns="endTurns"
     >
       <template slot="item" slot-scope="scope">
         <div class="drawTable-name">{{ scope.item.prizeName }}</div>
@@ -115,6 +115,7 @@
       },
       // 已经转动完转盘触发的函数
       endTurns() {
+        console.log(123)
         // 提示中奖
         this.$dialog({
           content: `恭喜中奖！！！${this.prizeList[this.prizeIndex].prizeName}`,
