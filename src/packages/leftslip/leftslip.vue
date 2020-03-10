@@ -4,7 +4,7 @@
             <div
                 class="nut-leftslip-item-main"
                 @touchstart="touchStart($event)"
-                @touchmove="touchMove($event)"
+                @touchmove.stop.prevent="touchMove($event)"
                 @touchend="touchEnd($event)"
             >
                 <slot name="slip-main"></slot>
