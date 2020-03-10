@@ -1,6 +1,6 @@
 <template>
     <div class="nut-actionsheet">
-        <transition :name="isAnimation?'nutFade':''">
+        <transition :name="isAnimation?'nutFade':''" v-if="isShowMask">
             <div class="nut-actionsheet-mask"  
                 @click="clickActionSheetMask" 
                 v-show="isVisible"
@@ -10,24 +10,24 @@
             <div class="nut-actionsheet-panel"  
                 v-show="isVisible"
             >
-                <div class="nut-actionsheet-custom"  v-if="$slots.custom">
-                    <slot name="custom" v-html="custom"></slot>
+                <div class="nut-actionsheet-custom"  slot-scope>
+                    <slot name="custom" ></slot>
                 </div>
                 <dl class="nut-actionsheet-modal" v-if="$slots.title || $slots.subTitle ">
-                    <dt class="nut-actionsheet-title"><slot name="title" v-html="title"></slot></dt>
-                    <dd class="nut-actionsheet-sub-title"><slot name="sub-title" v-html="subTitle"></slot></dd>
+                    <dt class="nut-actionsheet-title"><slot name="title" slot-scope></slot></dt>
+                    <dd class="nut-actionsheet-sub-title"><slot name="sub-title" slot-scope></slot></dd>
                 </dl>
                 <ul class="nut-actionsheet-menu" >
                     <li class="nut-actionsheet-item" 
-                        :class="{'nut-actionsheet-item-active': isHighlight(item)}"
+                        :class="{'nut-actionsheet-item-active': isHighlight(item), 'nut-actionsheet-item-disabled': item.disable}"
                         v-for="(item, index) of menuItems"
                         :key="index"
-                        @click="chooseItem(item)"
+                        @click="chooseItem(item, index)"
                     >{{item[optionTag]}}</li>
                 </ul>
                 <div class="nut-actionsheet-cancel" 
                     v-if="cancelTxt"
-                    @click="closeActionSheet" 
+                    @click="cancelActionSheet" 
                 >{{cancelTxt}}</div>
             </div>
         </transition>
@@ -41,9 +41,21 @@ export default {
             type: Boolean,
             default: true
         },
+        isLockBgScroll: {
+            type: Boolean,
+            default: false
+        },
         isVisible: {
             type: Boolean,
             default: false
+        },
+        isShowMask: {
+            type: Boolean,
+            default: true
+        },
+        isClickChooseClose: {
+            type: Boolean,
+            default: true
         },
         isClickCloseMask: {
             type: Boolean,
@@ -72,23 +84,40 @@ export default {
     watch: {
         isVisible (value) {
             !!value && this.$emit('open');
+            if (this.isLockBgScroll) {
+                if (value) {
+                    document.body.classList.add('nut-overflow-hidden');
+                } else {
+                    document.body.classList.remove('nut-overflow-hidden');
+                }
+            }
         }
     },
     methods: {
         isHighlight(item) {
             return (this.chooseTagValue && this.chooseTagValue == item[this.optionTag]) || this.chooseTagValue === 0;
         },
+
         closeActionSheet() {
             this.$emit('close');
         },
 
-        clickActionSheetMask() {
-            !!this.isClickCloseMask && this.closeActionSheet();
+        cancelActionSheet() {
+            this.closeActionSheet();
+            this.$emit('cancel');
         },
 
-        chooseItem(item) {
-            this.closeActionSheet();
-            this.$emit('choose', item);
+        clickActionSheetMask() {
+            this.isClickCloseMask && this.closeActionSheet();
+        },
+
+        chooseItem(item, index) {
+            if (!item.disable) {
+                if (this.isClickChooseClose) {
+                    this.closeActionSheet();
+                }
+                this.$emit('choose', item, index);
+            }
         }
     }
 }

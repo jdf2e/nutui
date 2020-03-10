@@ -3,17 +3,17 @@
 ## 基本用法
 
 ```html
-<luck-draw
+<nut-luckdraw
   class="drawTable"
   ref="luckDrawPrize"
-  :luckWidth="luckWidth"
-  :luckheight="luckheight"
-  :prizeList="prizeList"
-  :turnsNumber="turnsNumber"
-  :turnsTime="turnsTime"
-  :prizeIndex="prizeIndex"
-  :styleOpt="styleOpt"
-  @endTurns="endTurns"
+  :luck-width="luckWidth"
+  :luck-height="luckheight"
+  :prize-list="prizeList"
+  :turns-number="turnsNumber"
+  :turns-time="turnsTime"
+  :prize-index="prizeIndex"
+  :style-opt="styleOpt"
+  @end-turns="endTurns"
 >
   <template slot="item" slot-scope="scope">
     <div class="drawTable-name">{{ scope.item.prizeName }}</div>
@@ -21,7 +21,7 @@
       <img :src="scope.item.prizeImg">
     </div>
   </template>
-</luck-draw>
+</nut-luckdraw>
 <div @click="startTurns" class="pointer" :style="pointerStyle"></div>
 ```
 
@@ -133,12 +133,12 @@ export default {
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | ref | 当前转盘的类名,转动的时候根据类名执行回调函数 | String | luckDrawPrize
-| luckWidth | 转盘的宽度 | String | 300px
-| luckHeight | 转盘的高度 | String | 300px
-| prizeList | 奖品列表 | Array | -
-| turnsNumber | 转动的圈数 | Number | 5
-| turnsTime | 从开始转动到结束所用时间 | Number | 5(单位是秒)
-| styleOpt | 转盘中的样式，包括每个扇区的背景颜色，扇区的边框颜色 | Object | {prizeBgColors: [],borderColor: ''}
+| luck-width | 转盘的宽度 | String | 300px
+| luck-height | 转盘的高度 | String | 300px
+| prize-list | 奖品列表 | Array | -
+| turns-number | 转动的圈数 | Number | 5
+| turns-time | 从开始转动到结束所用时间 | Number | 5(单位是秒)
+| style-opt | 转盘中的样式，包括每个扇区的背景颜色，扇区的边框颜色 | Object | {prizeBgColors: [],borderColor: ''}
 | pointerStyle | 转盘中指针的样式，包括背景图片、大小等 | Object | {width: '80px',height: '80px'}
 
 
@@ -147,4 +147,4 @@ export default {
 
 | 字段 | 说明 | 回调参数
 |----- | ----- | -----
-| endTurns | 转盘中停止转动后的回调函数 | - 
+| end-turns | 转盘中停止转动后的回调函数 | - 
