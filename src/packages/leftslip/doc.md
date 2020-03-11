@@ -24,21 +24,6 @@
 </div>
 ```
 
-### 单个按钮一键删除
-
-```html
-<nut-leftslip onlyDelBtn @oneDelete="oneDel">
-    <div slot="slip-main" class="slip-main">单一按钮点击一键删除</div>
-</nut-leftslip>
-```
-
-```javascript
-export default {
-    oneDel(par) {
-        par.remove();
-    }
-};
-```
 
 ### 多个按钮
 
@@ -110,10 +95,4 @@ export default {
 | -------------- | -------------------- | ------- | ------ |
 | slot:slip-main | 列表主内容自定义区域 | html    | -      |
 | slot:slipbtns  | 左滑按钮自定义区域   | html    | -      |
-| onlyDelBtn     | 设置单一删除按钮     | Boolean | false  |
 
-## Event
-
-| 字段      | 说明                       | 回调参数 |
-| --------- | -------------------------- | -------- |
-| oneDelete | 单一删除按钮模式下删除事件 | 无       |
