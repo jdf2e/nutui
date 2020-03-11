@@ -1,5 +1,5 @@
 <template>
-    <div class="nut-video">
+    <div class="nut-video" ref="videocon">
         <video
             ref="video"
             class="nut-videoplayer"
@@ -8,14 +8,19 @@
             :autoplay="options.autoplay"
             :loop="options.loop"
             :controls="options.controls"
+            :poster="options.poster"
+            @error="handleError"
         >
             <source v-for="source in sources" :src="source.src" :type="source.type" :key="source.src" />
         </video>
-        <div class="playing-mask" @click="play">
-            <div class="nut-video-play-btn" v-show="!state.playing"></div>
-        </div>
-
+        <div class="playing-mask" @click="play"></div>
+        <div class="nut-video-play-btn" v-show="!state.playing" @click="play"></div>
         <div class="nut-video-controller"></div>
+        <!-- 错误弹窗 -->
+        <div class="nut-video-error" v-show="state.isError">
+            <p class="lose">视频加载失败</p>
+            <p class="retry" @click="retry">点击重试</p>
+        </div>
     </div>
 </template>
 <script>
@@ -34,14 +39,14 @@ export default {
             default() {
                 return {
                     autoplay: false, //是否自动播放
-                    volume: 0.9,
+                    volume: 0.5,
                     poster: '',
-                    noScrub: false,
                     loop: false,
                     controls: true,
                     muted: false, //是否静音
                     disabled: false, //禁止操作
-                    playsinline: false //行内展示
+                    playsinline: false, //行内展示
+                    
                 };
             },
             required: true
@@ -59,68 +64,79 @@ export default {
                 vol: 0.5, //音量
                 currentTime: 0, //当前时间
                 fullScreen: false,
-                playing: false //是否正在播放
+                playing: false, //是否正在播放
+                isLoading: false,
+                isEnd: false,
+                isError: false
             }
         };
     },
     mounted() {
         this.init();
-        // this.$refs.video.addEventListener('durationchange', e => {
-        //     this.duration = e.target.duration;
-        // });
-        // this.$refs.video.addEventListener('timeupdate', e => {
-        //     this.currentTime = e.target.currentTime;
-        //     this.progress = (e.target.currentTime / this.duration) * 100;
-        // });
-        // this.$refs.video.addEventListener('playing', e => {
-        //     this.playing = true;
-        // });
-        // this.$refs.video.addEventListener('pause', e => {
-        //     this.playing = false;
-        // });
-        // this.$refs.video.addEventListener('ended', e => {
-        //     this.playing = false;
-        // });
     },
     methods: {
         init() {
-            // this.video = this.$refs.video;
-            // let {autoplay, playsinline} = this.options;
+            this.video = this.$el.getElementsByTagName('video')[0]
             if (this.options.autoplay) {
                 this.play();
             }
 
             if (this.options.playsinline) {
-                this.$refs.video.setAttribute('playsinline', this.options.playsinline);
-                this.$refs.video.setAttribute('webkit-playsinline', this.options.playsinline);
-                this.$refs.video.setAttribute('x5-playsinline', this.options.playsinline);
-                this.$refs.video.setAttribute('x5-video-player-type', 'h5');
-                // this.$refs.video.setAttribute('x5-video-player-fullscreen', false);
+                this.video.setAttribute('playsinline', this.options.playsinline);
+                this.video.setAttribute('webkit-playsinline', this.options.playsinline);
+                this.video.setAttribute('x5-playsinline', this.options.playsinline);
+                this.video.setAttribute('x5-video-player-type', 'h5');
+                this.video.setAttribute('x5-video-player-fullscreen', false);
             }
+            this.volumeHandle();
+            
+            this.video.addEventListener('play', ()=>{
+                this.state.playing = true;
+            });
+            this.video.addEventListener('pause', ()=>{
+                this.state.playing = false;
+            });
         },
         play() {
             this.state.playing = !this.state.playing;
+            
             if (this.options.autoplay && this.options.disabled) {
                 this.state.playing = true;
                 return false;
             }
-            if (this.$refs.video) {
+            if (this.video) {
                 if (this.state.playing) {
-                    this.$refs.video.play();
-                    // this.mouseLeaveVideo();
-                    this.$refs.video.addEventListener('timeupdate', this.timeline);
-                    this.$refs.video.addEventListener('ended', e => {
-                        this.state.playing = false;
-                        // this.video.pos.current = 0;
-                        // this.$refs.video.currentTime = 0;
-                    });
+                    this.video.play();
+                    this.video.addEventListener('ended', this.playEnded);
+                    this.$emit('play', this.video)
+                    
                 } else {
-                    this.$refs.video.pause();
+                    this.video.pause();
+                    this.$emit('pause', this.video)
                 }
             }
         },
-        togglePlay() {}
+        volumeHandle(){
+            this.state.vol = this.video.volume
+        },
+        playEnded(){
+            this.state.playing = false;
+            this.video.currentTime = 0;
+            // console.log('ended')
+            this.$emit('playend', this.video)
+        },
+        // 数据加载出错
+        handleError() {
+            // console.log('error')
+            this.state.isError = true;
+        },
+        // 点击重新加载
+        retry() {
+            this.state.isError = false;
+            this.init();
+        },
     },
-    beforeDestroy() {}
+    beforeDestroy() {
+    }
 };
 </script>
