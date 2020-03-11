@@ -259,7 +259,7 @@ export default {
 | is-click-choose-close | 是否点击列表项后立即关闭 | Boolean | true
 | is-click-close-mask | 是否点击mask蒙层关闭 | Boolean | true
 | cancel-txt | 取消文案 | String | 取消
-| choose-tag-value | 已选值，如果填写，高亮显示 | String | 空
+| choose-tag-value | 已选值，如果填写，高亮显示 | String | -
 | menu-items | 列表项 | Array | []
 | option-tag | 设置列表项展示使用参数 | String | name
 
