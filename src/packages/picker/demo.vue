@@ -289,6 +289,7 @@ export default {
         var resItems = APIData.find(item => item.label == label);
         if (resItems && resItems.array.length) {
           this.$set(this.custmerCityData, index + 1, resItems.array);
+          self.updateChooseValue(self, index + 1, resItems.array[0]);
         }
       }, 100);
     },
