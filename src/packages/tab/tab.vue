@@ -133,7 +133,7 @@ export default {
             },100);  
            },
            immediate:true,
-           deep:true
+        //    deep:true 如果有该值存在，则TabSelect组件无法正常使用。
        }
     },
     computed:{
