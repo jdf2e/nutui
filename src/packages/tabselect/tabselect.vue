@@ -1,16 +1,16 @@
 <template>
-  <div class="nut-tabselect">
+  <div class="nut-tabselect" v-if="list.length">
     <nut-popup
       round
-      closeable  
+      closeable
       v-model="isShow"
       position="bottom"
       :style="{ height: '457px' }"
     >
       <div class="nut-tabselect-main-title" v-html="mainTitle"></div>
-      <nut-tab @tab-switch="tabSwitchOuter">
+      <nut-tab @tab-switch="tabSwitchOuter" :init-data="list">
         <nut-tab-panel
-          v-for="(value, idx) in tabList"
+          v-for="(value, idx) in list"
           v-bind:key="value.tabTitle"
           :tabTitle="value.tabTitle"
         >
@@ -19,6 +19,7 @@
             @tab-switch="tabSwitchInner"
             positionNav="left"
             class="nut-tab-inner"
+            :init-data="value.children"
           >
             <nut-tab-panel
               v-for="(item, index) in value.children"
@@ -106,7 +107,8 @@ export default {
       level0: 0,
       level1: new Set([0]),
       level2: new Set(["0-0"]),
-      allChoose: new Set([this.getText(0, 0, 0)])
+      allChoose: new Set([this.getText(0, 0, 0)]),
+      list: []
     };
   },
   components: {
@@ -121,28 +123,44 @@ export default {
       if (!val) {
         this.$emit("close");
       }
+    },
+    tabList(val) {
+      this.list = val;
+      this.level0 = 0;
+      this.level1 = new Set([0]);
+      this.level2 = new Set(["0-0"]);
+      this.allChoose = new Set([this.getText(0, 0, 0)]);
+      this.emit();
     }
   },
   mounted() {
+    this.list = this.tabList;
+    this.allChoose = new Set([this.getText(0, 0, 0)]);
     this.emit();
   },
   methods: {
     emit() {
       this.$emit(
         "choose",
-        (this.tabList[this.level0] && this.tabList[this.level0].tabTitle) || "",
+        (this.list &&
+          this.list[this.level0] &&
+          this.list[this.level0].tabTitle) ||
+          "",
         [...this.allChoose]
       );
     },
     getText(idx, index, sIndex) {
       const tab =
-        (this.tabList[idx] && this.tabList[idx].children[index]) || {};
+        (this.list && this.list[idx] && this.list[idx].children[index]) || {};
       const subTit = tab.tabTitle;
       const content =
         (tab.content && tab.content[sIndex]) || this.defaultContent[sIndex];
       return subTit + " " + content;
     },
     tabSwitchOuter: function(index, event) {
+      this.list.map(item => {
+        item.children = item.children.concat();
+      });
       this.level0 = index;
       this.level1 = new Set([0]);
       this.level2 = new Set(["0-0"]);
@@ -169,7 +187,7 @@ export default {
       }
       if (!this.multiple) {
         this.level2 = new Set([index + "-" + sIndex]);
-        this.allChoose = new Set([this.getText(index, 0, 0)]);
+        this.allChoose = new Set([this.getText(idx, index, sIndex)]);
       } else {
         if (this.max !== Infinity && this.max === this.level2.size) {
           return;

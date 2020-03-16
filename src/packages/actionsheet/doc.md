@@ -2,74 +2,26 @@
 
 从底部弹出的动作菜单面板。
 
-## 基本用法
+## 基本用法(选择类)
+
+默认
 ```html
+<div @click.native="switchActionSheet">
+    <span class="title"><label>性别</label></span>
+    <span class="selected-option">{{sex}}</span>
+</div>
 <nut-actionsheet :is-visible="isVisible" 
-    @close="switchActionSheet('isVisible')"
+    @close="switchActionSheet"
     :menu-items="menuItems"
     @choose="chooseItem"
 ></nut-actionsheet>
 ```
-## 带取消按钮
-```html
-<nut-actionsheet :is-visible="isVisible1" 
-    @close="switchActionSheet('isVisible1')"
-    cancelTxt="取消"
-    :menu-items="menuItems2"
-    @choose="chooseItemAgeSpec"
-></nut-actionsheet>
-```
-## 高亮已选项
-```html
-<nut-actionsheet :is-visible="isVisible2" 
-    :menu-items="menuItems2"
-    :chooseTagValue="age"
-    @close="switchActionSheet('isVisible2')"
-    @choose="chooseItemAge"
-></nut-actionsheet>
-```
-## 设置列表项展示使用参数
-```html
-<nut-actionsheet :is-visible="isVisible3" 
-    :menu-items="menuItems3"
-    :optionTag="`title`"
-    @close="switchActionSheet('isVisible3')"
-    @choose="chooseItemConstellation"
-></nut-actionsheet>
-```
-## 提示
-```html
-<nut-actionsheet :is-visible="isVisible4" 
-    :menu-items="menuItems4" 
-    chooseTagValue="确定"
-    cancelTxt="取消"
-    @close="switchActionSheet('isVisible4')"
->
-    <span slot="title"><label>确定删除吗？</label></span>
-    <span slot="sub-title">删除之后不能，描述信息，删除之后不能，描述信息</span>
-</nut-actionsheet>
-```
-## 自定义内容
-```html
-<nut-actionsheet :is-visible="isVisible5" 
-    @close="switchActionSheet('isVisible5')"
->
-    <div slot="custom" class="custom-wrap"><span>自定义</span></div>
-</nut-actionsheet>
-```
 ```javascript
-import nutactionsheet from "./actionsheet.vue";
-import "./actionsheet.scss";
 export default {
-    components: {
-        [nutactionsheet.name]: nutactionsheet
-    },
     data() {
         return {
             sex: '请选择',
-            agespec: '请选择',
             isVisible: false,
-            isVisible1: false,
             menuItems: [
                 {
                     'name': '男',
@@ -79,75 +31,218 @@ export default {
                     'name': '女',
                     'value': 1
                 }
-            ],
-            age: '请选择',
-            isVisible2: false,
-            menuItems2: [
-                {
-                    'name': '20岁以下',
-                    'value': 0
-                },
-                {
-                    'name': '20~40岁',
-                    'value': 1
-                },
-                {
-                    'name': '40~60岁',
-                    'value': 2
-                },
-                {
-                    'name': '60以上',
-                    'value': 3
-                }
-            ],
-            constellation: '请选择',
-            isVisible3: false,
-            menuItems3: [
-                {
-                    'title': '天蝎座',
-                    'value': 0
-                },
-                {
-                    'title': '巨蟹座',
-                    'value': 1
-                },
-                {
-                    'title': '双鱼座',
-                    'value': 2
-                },
-                {
-                    'title': '水瓶座',
-                    'value': 3
-                }
-            ],
-            isVisible4: false,
-            menuItems4: [
-                {
-                    'name': '确定'
-                } 
-            ],
-            isVisible5: false,
+            ]
         };
     },
     methods: {
-        switchActionSheet(param) {
-            this[`${param}`] = !this[`${param}`];
+        switchActionSheet() {
+            this.isVisible = !this.isVisible;
         },
 
         chooseItem(itemParams) {
             this.sex = itemParams.name;
+        }
+    }
+};
+```
+
+带取消按钮
+```html
+<div @click.native="switchActionSheet">
+    <span class="title"><label>性别</label></span>
+    <span class="selected-option">{{sex}}</span>
+</div>
+ <nut-actionsheet :is-visible="isVisible" 
+    @close="switchActionSheet"
+    :menu-items="menuItems"
+    @choose="chooseItem"
+    cancelTxt="取消"
+></nut-actionsheet>
+```
+```javascript
+export default {
+    data() {
+        return {
+            sex: '请选择',
+            isVisible: false,
+            menuItems: [
+                {
+                    'name': '男',
+                    'value': 0
+                },
+                {
+                    'name': '女',
+                    'value': 1
+                }
+            ]
+        };
+    },
+    methods: {
+        switchActionSheet() {
+            this.isVisible = !this.isVisible;
         },
 
-        chooseItemAgeSpec(itemParams) {
-            this.agespec = itemParams.name;
+        chooseItem(itemParams) {
+            this.sex = itemParams.name;
+        }
+    }
+};
+```
+
+高亮已选项
+```html
+<div @click.native="switchActionSheet">
+    <span class="title"><label>性别</label></span>
+    <span class="selected-option">{{sex}}</span>
+</div>
+<nut-actionsheet :is-visible="isVisible" 
+    @close="switchActionSheet"
+    :menu-items="menuItems"
+    @choose="chooseItem"
+    :chooseTagValue="sex"
+></nut-actionsheet>
+```
+```javascript
+export default {
+    data() {
+        return {
+            sex: '请选择',
+            isVisible: false,
+            menuItems: [
+                {
+                    'name': '男',
+                    'value': 0
+                },
+                {
+                    'name': '女',
+                    'value': 1
+                }
+            ]
+        };
+    },
+    methods: {
+        switchActionSheet() {
+            this.isVisible = !this.isVisible;
         },
 
-        chooseItemAge(itemParams) {
-            this.age = itemParams.name;
+        chooseItem(itemParams) {
+            this.sex = itemParams.name;
+        }
+    }
+};
+```
+
+设置禁用状态
+```html
+<div @click.native="switchActionSheet">
+    <span class="title"><label>性别</label></span>
+    <span class="selected-option">{{sex}}</span>
+</div>
+<nut-actionsheet :is-visible="isVisible" 
+    @close="switchActionSheet"
+    :menu-items="menuItems"
+    @choose="chooseItem"
+    :chooseTagValue="sex"
+></nut-actionsheet>
+```
+```javascript
+export default {
+    data() {
+        return {
+            sex: '请选择',
+            isVisible: false,
+            menuItems: [
+                {
+                    'name': '男',
+                    'value': 0,
+                    'disable': false
+                },
+                {
+                    'name': '女',
+                    'value': 1,
+                    'disable': true
+                }
+            ]
+        };
+    },
+    methods: {
+        switchActionSheet() {
+            this.isVisible = !this.isVisible;
         },
 
-        chooseItemConstellation(itemParams) {
-            this.constellation = itemParams.title;
+        chooseItem(itemParams) {
+            this.sex = itemParams.name;
+        }
+    }
+};
+```
+
+## 提示
+```html
+<div @click.native="switchActionSheet">
+    <span class="title"><label>我就列表测试数据</label></span>
+    <span class="sub-title">我是描述~~~~</span>
+    <div class="selected-option">删除本条</div>
+</div>
+<nut-actionsheet :is-visible="isVisible" 
+    :menu-items="menuItems4" 
+    chooseTagValue="确定"
+    cancelTxt="取消"
+    @close="switchActionSheet"
+    @choos="choose"
+>
+    <span slot="title"><label>确定删除吗？</label></span>
+    <span slot="sub-title">删除之后不能，描述信息，删除之后不能，描述信息</span>
+</nut-actionsheet>
+```
+```javascript
+export default {
+    data() {
+        return {
+            sex: '请选择',
+            isVisible: false,
+            menuItems: [
+                {
+                     'name': '确定'
+                }
+            ]
+        };
+    },
+    methods: {
+        switchActionSheet() {
+            this.isVisible = !this.isVisible;
+        },
+
+        choose(itemParams) {
+            
+        }
+    }
+};
+```
+
+## 自定义内容
+```html
+<div @click.native="switchActionSheet">
+    <span class="title"><label>内容自定义</label></span>
+    <div class="selected-option">打开</div>
+</div>
+<nut-actionsheet :is-visible="isVisible" 
+    @close="switchActionSheet"
+>
+    <div slot="custom" class="custom-wrap"><span>自定义</span></div>
+</nut-actionsheet>
+```
+```javascript
+
+export default {
+    data() {
+        return {
+            isVisible: false
+        }   
+    },
+    methods: {
+        switchActionSheet() {
+            this.isVisible = !this.isVisible;
         }
     }
 };
@@ -157,12 +252,24 @@ export default {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| isVisible | 是否可见 | Boolean | false
-| isClickCloseMask | 是否点击mask蒙层关闭 | Boolean | true
-| cancelTxt | 取消文案 | String | 取消
-| chooseTagValue | 已选值，如果填写，高亮显示 | String | 空
-| menuItems | 列表项 | Array | []
-| optionTag | 设置列表项展示使用参数 | String | name
+| is-animation | 是否开启动画 | Boolean | true
+| is-lock-bg-scroll | 是否锁定背景滚动 | Boolean | false
+| is-visible | 是否可见 | Boolean | false
+| is-show-mask | 是否显示背景遮罩 | Boolean | true
+| is-click-choose-close | 是否点击列表项后立即关闭 | Boolean | true
+| is-click-close-mask | 是否点击mask蒙层关闭 | Boolean | true
+| cancel-txt | 取消文案 | String | '取消'
+| choose-tag-value | 已选值，如果填写，高亮显示 | String | -
+| menu-items | 列表项 | Array | [ ]
+| option-tag | 设置列表项展示使用参数 | String | 'name'
+
+## Slot
+
+| 名称 | 说明 
+|----- | ----- 
+| custom | 自定义内容
+| title | 自定义标题
+| subTitle | 自定义副标题  
 
 ## Event
 
@@ -170,3 +277,4 @@ export default {
 |----- | ----- | ----- 
 | choose | 选择之后触发 | 选中列表项 
 | close | 关闭时触发 | 无 
+| cancel | 点击取消文案时触发 | 无 

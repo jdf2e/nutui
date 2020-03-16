@@ -115,7 +115,6 @@ export default {
     data() {
         return {
             tabTitleList:[],
-            isShowTab: this.defIndex,
             activeIndex:this.defIndex,
             initIndex:0,
             showTabs:true,
@@ -124,14 +123,18 @@ export default {
         };
     },
     watch:{
-       initData:function(){
+       initData:{
+           handler(){
             setTimeout(()=>{
                 let slot = [...this.$slots.default];
                 this.tabTitleList = [];
                 this.activeIndex = this.defIndex;
                 this.initTab(slot);  
-            },100);    
-        }
+            },100);  
+           },
+           immediate:true,
+           deep:true
+       }
     },
     computed:{
         tabType:function(){
@@ -180,7 +183,7 @@ export default {
                        let slotElm = slot[i].elm;
                        if(slotElm){
                             this.addClass(slotElm,'hide');
-                            if(this.isShowTab == i) {
+                            if(this.activeIndex == i) {
                                 this.removeClass(slotElm,'hide')
                             }
                        }                

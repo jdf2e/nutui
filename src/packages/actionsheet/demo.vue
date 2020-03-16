@@ -7,19 +7,19 @@
                 <div slot="desc" class="selected-option">{{sex}}</div>
             </nut-cell>
             <nut-cell :showIcon="true" :isLink="true" @click.native="switchActionSheet('isVisible1')">
-                <span slot="title"><label>年龄</label></span>
+                <span slot="title"><label>性别</label></span>
                 <span slot="sub-title">带取消按钮~~~~</span>
-                <div slot="desc" class="selected-option">{{agespec}}</div>
+                <div slot="desc" class="selected-option">{{sex1}}</div>
             </nut-cell>
             <nut-cell :showIcon="true" :isLink="true" @click.native="switchActionSheet('isVisible2')">
-                <span slot="title"><label>年龄</label></span>
+                <span slot="title"><label>性别</label></span>
                 <span slot="sub-title">高亮选中项~~~~</span>
-                <div slot="desc" class="selected-option">{{age}}</div>
+                <div slot="desc" class="selected-option">{{sex2}}</div>
             </nut-cell>
             <nut-cell :showIcon="true" :isLink="true" @click.native="switchActionSheet('isVisible3')">
-                <span slot="title"><label>星座</label></span>
-                <span slot="sub-title">设置列表项展示使用参数~~~~</span>
-                <div slot="desc" class="selected-option">{{constellation}}</div>
+                <span slot="title"><label>性别</label></span>
+                <span slot="sub-title">设置禁用状态~~~~</span>
+                <div slot="desc" class="selected-option">{{sex3}}</div>
             </nut-cell>
         </div>
         <h4>提示类</h4>
@@ -53,14 +53,13 @@
         <!-- demo(高亮选中）-->
         <nut-actionsheet :is-visible="isVisible2" 
             :menu-items="menuItems2"
-            :chooseTagValue="age"
+            :chooseTagValue="sex2"
             @close="switchActionSheet('isVisible2')"
             @choose="chooseItemAge"
         ></nut-actionsheet>
-        <!-- demo(设置列表项展示使用参数）-->
+        <!-- demo(设置禁用状态)-->
         <nut-actionsheet :is-visible="isVisible3" 
             :menu-items="menuItems3"
-            :optionTag="`title`"
             @close="switchActionSheet('isVisible3')"
             @choose="chooseItemConstellation"
         ></nut-actionsheet>
@@ -80,6 +79,7 @@
         >
             <div slot="custom" class="custom-wrap"><span>自定义</span></div>
         </nut-actionsheet>
+        <div style="height: 400px"></div>
     </div>
 </template>
 
@@ -88,9 +88,7 @@ export default {
     data() {
         return {
             sex: '请选择',
-            agespec: '请选择',
             isVisible: false,
-            isVisible1: false,
             menuItems: [
                 {
                     'name': '男',
@@ -101,44 +99,32 @@ export default {
                     'value': 1
                 }
             ],
-            age: '请选择',
+            sex1: '请选择',
+            isVisible1: false,
+            sex2: '请选择',
             isVisible2: false,
             menuItems2: [
                 {
-                    'name': '20岁以下',
+                    'name': '男',
                     'value': 0
                 },
                 {
-                    'name': '20~40岁',
+                    'name': '女',
                     'value': 1
-                },
-                {
-                    'name': '40~60岁',
-                    'value': 2
-                },
-                {
-                    'name': '60以上',
-                    'value': 3
                 }
             ],
-            constellation: '请选择',
+            sex3: '请选择',
             isVisible3: false,
             menuItems3: [
                 {
-                    'title': '天蝎座',
-                    'value': 0
+                    'name': '男',
+                    'value': 0,
+                    'disable': false
                 },
                 {
-                    'title': '巨蟹座',
-                    'value': 1
-                },
-                {
-                    'title': '双鱼座',
-                    'value': 2
-                },
-                {
-                    'title': '水瓶座',
-                    'value': 3
+                    'name': '女',
+                    'value': 1,
+                    'disable': true
                 }
             ],
             isVisible4: false,
@@ -160,15 +146,15 @@ export default {
         },
 
         chooseItemAgeSpec(itemParams) {
-            this.agespec = itemParams.name;
+            this.sex1 = itemParams.name;
         },
 
         chooseItemAge(itemParams) {
-            this.age = itemParams.name;
+            this.sex2 = itemParams.name;
         },
 
         chooseItemConstellation(itemParams) {
-            this.constellation = itemParams.title;
+            this.sex3 = itemParams.title;
         }
     }
 };
