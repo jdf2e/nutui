@@ -8,12 +8,14 @@ describe("TabSelect.vue", () => {
   it("mainTitle标题", () => {
     wrapper.setProps({ mainTitle: "配送" });
     return Vue.nextTick().then(function() {
-      expect(
-        wrapper
-          .findAll(".nut-tabselect-main-title")
-          .at(0)
-          .text()
-      ).toBe("配送");
+      setTimeout(() => {
+        expect(
+          wrapper
+            .findAll(".nut-tabselect-main-title")
+            .at(0)
+            .text()
+        ).toBe("配送");
+      }, 200);
     });
   });
 

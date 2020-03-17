@@ -16,6 +16,7 @@
       @close="show = false"
       @choose="choose"
       :multiple="false"
+      :isDefaultSelected="true"
     ></nut-tabselect>
 
     <nut-cell
@@ -121,6 +122,11 @@ export default {
       showMore: false
     };
   },
+  //   mounted() {
+  //     setTimeout(() => {
+  //       this.tabList[0].tabTitle = "测试";
+  //     }, 10000);
+  //   },
   methods: {
     choose(title, item) {
       console.log(title, item);
