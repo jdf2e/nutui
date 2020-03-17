@@ -12,6 +12,7 @@
   @close="show = false"
   @choose="choose"
   :multiple="false"
+  :isDefaultSelected="true"
 ></nut-tabselect>
 ```
 
@@ -124,15 +125,16 @@ export default {
 
 ### Prop
 
-| 字段           | 说明                        | 类型    | 默认值   |
-| -------------- | --------------------------- | ------- | -------- |
-| mainTitle      | 一级 tab 标题               | String  | ''       |
-| subTitle       | 二级 tab 标题               | String  | ''       |
-| defaultContent | 二级 tab 下内容完全一致时传 | Array   | null     |
-| multiple       | 是否允许多选                | Boolean | false    |
-| tabList        | 整体数据                    | Array   | null     |
-| show           | 是否显示                    | Boolean | false    |
-| max            | 多选时最多可选个数          | Number  | Infinity |
+| 字段              | 说明                                       | 类型    | 默认值   |
+| ----------------- | ------------------------------------------ | ------- | -------- |
+| mainTitle         | 一级 tab 标题                              | String  | ''       |
+| subTitle          | 二级 tab 标题                              | String  | ''       |
+| defaultContent    | 二级 tab 下内容完全一致时传                | Array   | null     |
+| multiple          | 是否允许多选                               | Boolean | false    |
+| tabList           | 整体数据                                   | Array   | null     |
+| show              | 是否显示                                   | Boolean | false    |
+| max               | 多选时最多可选个数                         | Number  | Infinity |
+| isDefaultSelected | 单选时是否默认选中第一项（多选默认不选中） | Boolean | false    |
 
 ### Event
 
