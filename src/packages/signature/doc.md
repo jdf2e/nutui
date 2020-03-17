@@ -1,6 +1,6 @@
-# Scroller 滚动
+# Signature 签名
 
-局部滚动组件，支持惯性、吸边回弹。纵向可支持下拉刷新和上拉加载，横向可支持滚动末尾跳转。
+基于Canvas的签名组件。
 
 ## 基本用法
 
@@ -79,7 +79,7 @@ export default {
 | line-width | 线条的宽度 | Number | 3
 | stroke-style | 绘图笔触颜色 | String | '#000'
 | type | 图片格式 | String | 'png'
-| un-supportT-tpl | 不支持Canvas情况下的展示文案 | String | '对不起，当前浏览器不支持Canvas，无法使用本控件！'
+| un-support-tpl | 不支持Canvas情况下的展示文案 | String | '对不起，当前浏览器不支持Canvas，无法使用本控件！'
 
 ## Event
 
