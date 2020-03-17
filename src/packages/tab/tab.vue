@@ -123,16 +123,13 @@ export default {
         };
     },
     watch:{
+        defIndex(){
+            this.updeteTab();
+        },
        initData:{
            handler(){
-            setTimeout(()=>{
-                let slot = [...this.$slots.default];
-                this.tabTitleList = [];
-                this.activeIndex = this.defIndex;
-                this.initTab(slot);  
-            },100);  
+            this.updeteTab();
            },
-           immediate:true,
            deep:true
        }
     },
@@ -154,6 +151,14 @@ export default {
         })     
     },
     methods: {
+        updeteTab:function(){
+            setTimeout(()=>{
+                let slot = [...this.$slots.default];
+                this.tabTitleList = [];
+                this.activeIndex = this.defIndex;
+                this.initTab(slot);  
+            },100);  
+        },
         closeItem:function(value){
             this.$emit('tab-remove',value); 
             setTimeout(()=>{
