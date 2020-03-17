@@ -14,7 +14,7 @@
     ref="demo1"
 >
     <div  v-for="(item,index) in dataItem" :key="index"  class="nut-swiper-slide">
-        <span>page{{item.name}}</span>
+        <span>page{{item.name} }</span>
     </div>
 </nut-swiper>
 ```
@@ -30,7 +30,7 @@
     ref="demo2"
 >
     <div  v-for="(item,index) in dataItem" :key="index"  class="nut-swiper-slide">
-        <span>page{{item.name}}</span>
+        <span>page{{item.name} }</span>
     </div>
 
 </nut-swiper>
