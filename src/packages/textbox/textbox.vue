@@ -68,7 +68,6 @@ export default {
     methods: {
         txtIptLength(event){
             const data = event.target.value
-            console.log(data)
             const txtLength = data.length;
             this.txtNum = txtLength;
             if(txtLength > this.maxNum) {
