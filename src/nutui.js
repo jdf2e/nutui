@@ -104,6 +104,8 @@ import LuckDraw from "./packages/luckdraw/index.js";
 import "./packages/luckdraw/luckdraw.scss";
 import Video from "./packages/video/index.js";
 import "./packages/video/video.scss";
+import Signature from "./packages/signature/index.js";
+import "./packages/signature/signature.scss";
 
 const packages = {
   Cell,
@@ -156,7 +158,8 @@ const packages = {
   LeftSlip,
   TabSelect: TabSelect,
   LuckDraw: LuckDraw,
-  Video: Video
+  Video: Video,
+  Signature: Signature
 };
 
 const components = {};

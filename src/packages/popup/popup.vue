@@ -12,7 +12,7 @@
       @click="$emit('click', this)"
     >
       <slot></slot>
-      <nut-icon
+      <icon
         v-if="closeable"
         @click.native="$emit('input', false)"
         :type="closeIcon"
@@ -20,16 +20,20 @@
         class="nutui-popup__close-icon"
         :class="'nutui-popup__close-icon--' + closeIconPosition"
       >
-      </nut-icon>
+      </icon>
     </div>
   </transition>
 </template>
 <script>
 import Vue from "vue";
 import overlay from "./overlay.vue";
-
+import Icon from '../icon/icon.vue';
+import '../icon/icon.scss';
 export default {
   name: "nut-popup",
+  components:{
+      "icon":Icon
+  },
   props: {
     value: Boolean,
     position: {

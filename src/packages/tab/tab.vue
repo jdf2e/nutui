@@ -123,14 +123,12 @@ export default {
         };
     },
     watch:{
+        defIndex(){
+            this.updeteTab();
+        },
        initData:{
            handler(){
-            setTimeout(()=>{
-                let slot = [...this.$slots.default];
-                this.tabTitleList = [];
-                this.activeIndex = this.defIndex;
-                this.initTab(slot);  
-            },100);  
+            this.updeteTab();
            },
            immediate:true,
         //    deep:true 如果有该值存在，则TabSelect组件无法正常使用。
@@ -154,6 +152,14 @@ export default {
         })     
     },
     methods: {
+        updeteTab:function(){
+            setTimeout(()=>{
+                let slot = [...this.$slots.default];
+                this.tabTitleList = [];
+                this.activeIndex = this.defIndex;
+                this.initTab(slot);  
+            },100);  
+        },
         closeItem:function(value){
             this.$emit('tab-remove',value); 
             setTimeout(()=>{
@@ -196,10 +202,13 @@ export default {
             
         },
         getStyle:function(obj,styleName){
+            if(!obj){
+                return ''
+            }
             if(obj.currentStyle){
-            return obj.currentStyle[styleName];
+                return obj.currentStyle[styleName];
             }else{
-            return getComputedStyle(obj,null)[styleName];
+                return getComputedStyle(obj,null)[styleName];
             }
         },
         getTabWidth:function(){
