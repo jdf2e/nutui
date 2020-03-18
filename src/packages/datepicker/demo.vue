@@ -85,9 +85,9 @@
       :is-visible="isVisible2"
       title="请选择日期时间"
       type="datetime"
-      startDate="2000-11-10 12:08"
+      startDate="2020-11-10 19:08"
       endDate="2030-10-05 10:04"
-      defaultValue="2018-11-02 11:08"
+      defaultValue="2018-11-12 11:08"
       @close="switchPicker('isVisible2')"
       @choose="setChooseValue2"
     ></nut-datepicker>
