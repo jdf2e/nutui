@@ -86,7 +86,13 @@ export default {
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | value | 当前input值，可使用 v-model 双向绑定数据 | String | ''
+| type | input输入框的类型 | String | 'text'
+| placeholder | 占位文本 | String | ''
 | label | 文本框前面的标签 | String | ''
 | disabled | 是否禁用 | Boolean | false
-| clearBtn | 是否需要清空按钮 | Boolean | true
-| hasBorder | 是否需要边框 | Boolean | true
+| clear-btn | 是否需要清空按钮 | Boolean | true
+| has-border | 是否需要边框 | Boolean | true
+
+## 特殊说明 
+
+设置input框自动聚焦时，由于ios和安卓设备的不同，在ios中，引入的父组件第一次加载，键盘不会弹起，退出再次进入会自动弹起。
