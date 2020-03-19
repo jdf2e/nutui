@@ -15,6 +15,7 @@
       :show="show"
       @close="show = false"
       @choose="choose"
+      @onOkBtn="onOkBtn"
       :multiple="false"
       :isDefaultSelected="true"
     ></nut-tabselect>
@@ -34,6 +35,7 @@
       :show="showMore"
       @close="showMore = false"
       @choose="choose"
+      @onOkBtn="onOkBtn"
       :multiple="true"
       :max="3"
     ></nut-tabselect>
@@ -130,6 +132,9 @@ export default {
   methods: {
     choose(title, item) {
       console.log(title, item);
+    },
+    onOkBtn(event) {
+      console.log(event)
     }
   }
 };
