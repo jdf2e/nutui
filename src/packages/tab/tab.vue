@@ -201,10 +201,13 @@ export default {
             
         },
         getStyle:function(obj,styleName){
+            if(!obj){
+                return ''
+            }
             if(obj.currentStyle){
-            return obj.currentStyle[styleName];
+                return obj.currentStyle[styleName];
             }else{
-            return getComputedStyle(obj,null)[styleName];
+                return getComputedStyle(obj,null)[styleName];
             }
         },
         getTabWidth:function(){
