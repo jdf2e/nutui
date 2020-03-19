@@ -1,7 +1,7 @@
 <template>
     <div class="nut-textbox">
         <div class="txt-area" :class="{'error':errorState,'num-none':limitShow == false}" :style="{background:textBgColor}">
-            <textarea :placeholder="placeText" :style="{height:txtAreaHeight+'px'}" v-model="textInfo" @input="txtIptLength" :switchMax="switchMax" :maxlength="iptMaxlength"></textarea>
+            <textarea :placeholder="placeText" :style="{height:txtAreaHeight+'px'}" v-model="text" @input="txtIptLength" :switchMax="switchMax" :maxlength="iptMaxlength"></textarea>
             <span v-show="limitShow">{{txtNum}}/{{maxNum}}</span>
         </div>
     </div>
@@ -10,6 +10,10 @@
 export default {
     name:'nut-textbox',
     props: {
+        value: {
+            type: String,
+            default: ""
+        },
     	maxNum:{
     		type:[String,Number],
     		default:50,
@@ -38,7 +42,7 @@ export default {
     },
     data() {
         return {
-        	textInfo:'',
+            text: '',
             errorState:false,
             txtNum:0,
         };
@@ -58,17 +62,23 @@ export default {
         	return maxlength
         },
     },
+    mounted() {
+        this.text = this.value
+    },
     methods: {
-        txtIptLength(){
-            let txtVal = this.textInfo.length;
-            this.txtNum = txtVal;  
-            if(txtVal > this.maxNum) {
+        txtIptLength(event){
+            const data = event.target.value
+            console.log(data)
+            const txtLength = data.length;
+            this.txtNum = txtLength;
+            if(txtLength > this.maxNum) {
                 this.errorState = true;
                 this.$emit('errorFunc'); 
            	}else{
                 this.errorState = false;
            	}
-            this.$emit('inputFunc',this.textInfo);
+            this.$emit('inputFunc',data);
+            this.$emit('input',data);
         }
     }
 }

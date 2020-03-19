@@ -2,7 +2,7 @@
     <div>
         <h5>示例</h5>
         <h6>默认用法</h6>
-        <nut-textbox > </nut-textbox>
+        <nut-textbox v-model="val"></nut-textbox>
         <h6>自定义高度:100px</h6>
         <nut-textbox :txtAreaH="100" :maxNum="300"></nut-textbox>
 
@@ -37,7 +37,7 @@
 export default {
     data(){
         return{
-           
+           val: ''
         }
     },
     methods:{
