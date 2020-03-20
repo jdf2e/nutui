@@ -30,7 +30,11 @@
 		    margin-left: 10px;
 		    background-color: $light-color;
 		    border-color: transparent;
-		    outline: none;
+			outline: none;
+			
+			&::-webkit-search-cancel-button{
+				display: none;
+			}
 	    }
 	    &.focus {
 	    	box-shadow: 0px 0px 5px 0px $light-color;

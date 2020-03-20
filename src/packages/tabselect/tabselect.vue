@@ -20,6 +20,7 @@
             positionNav="left"
             class="nut-tab-inner"
             :init-data="value.children"
+            :defIndex="defIndex"
           >
             <nut-tab-panel
               v-for="(item, index) in value.children"
@@ -59,7 +60,7 @@
         </nut-tab-panel>
       </nut-tab>
       <div class="nut-tabselect-btn">
-        <a href="javascript:;" @click="isShow = false">确定</a>
+        <a href="javascript:;" @click="clickHandler">确定</a>
       </div>
     </nut-popup>
   </div>
@@ -99,6 +100,10 @@ export default {
     max: {
       type: Number,
       default: Infinity
+    },
+    isDefaultSelected: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -106,9 +111,10 @@ export default {
       isShow: false,
       level0: 0,
       level1: new Set([0]),
-      level2: new Set(["0-0"]),
-      allChoose: new Set([this.getText(0, 0, 0)]),
-      list: []
+      level2: this.isDefaultSelected ? new Set(["0-0"]) : new Set(),
+      allChoose: this.getText(0, 0, this.isDefaultSelected ? 0 : null),
+      list: [],
+      defIndex: 0
     };
   },
   components: {
@@ -124,18 +130,21 @@ export default {
         this.$emit("close");
       }
     },
-    tabList(val) {
-      this.list = val;
-      this.level0 = 0;
-      this.level1 = new Set([0]);
-      this.level2 = new Set(["0-0"]);
-      this.allChoose = new Set([this.getText(0, 0, 0)]);
-      this.emit();
+    tabList: {
+      handler(val) {
+        this.list = val;
+        this.level0 = 0;
+        this.level1 = new Set([0]);
+        this.level2 = this.isDefaultSelected ? new Set(["0-0"]) : new Set();
+        this.allChoose = this.getText(0, 0, this.isDefaultSelected ? 0 : null);
+        this.emit();
+      },
+      deep: true
     }
   },
   mounted() {
     this.list = this.tabList;
-    this.allChoose = new Set([this.getText(0, 0, 0)]);
+    this.allChoose = this.getText(0, 0, this.isDefaultSelected ? 0 : null);
     this.emit();
   },
   methods: {
@@ -146,28 +155,34 @@ export default {
           this.list[this.level0] &&
           this.list[this.level0].tabTitle) ||
           "",
-        [...this.allChoose]
+        (this.allChoose && [...this.allChoose]) || []
       );
     },
     getText(idx, index, sIndex) {
+      if (sIndex === null) {
+        return null;
+      }
       const tab =
         (this.list && this.list[idx] && this.list[idx].children[index]) || {};
       const subTit = tab.tabTitle;
       const content =
         (tab.content && tab.content[sIndex]) || this.defaultContent[sIndex];
-      return subTit + " " + content;
+      return new Set([{ subTit, content }]);
     },
     tabSwitchOuter: function(index, event) {
-      this.list.map(item => {
-        item.children = item.children.concat();
-      });
+      this.defIndex = 0;
       this.level0 = index;
       this.level1 = new Set([0]);
-      this.level2 = new Set(["0-0"]);
-      this.allChoose = new Set([this.getText(index, 0, 0)]);
+      this.level2 = this.isDefaultSelected ? new Set(["0-0"]) : new Set();
+      this.allChoose = this.getText(
+        index,
+        0,
+        this.isDefaultSelected ? 0 : null
+      );
       this.emit();
     },
     tabSwitchInner: function(index, event) {
+      this.defIndex = index;
       if (!this.multiple) {
         this.level1 = new Set([index]);
       } else {
@@ -187,15 +202,26 @@ export default {
       }
       if (!this.multiple) {
         this.level2 = new Set([index + "-" + sIndex]);
-        this.allChoose = new Set([this.getText(idx, index, sIndex)]);
+        this.allChoose = this.getText(idx, index, sIndex);
       } else {
         if (this.max !== Infinity && this.max === this.level2.size) {
           return;
         }
         this.level2 = new Set([...this.level2.add(index + "-" + sIndex)]);
-        this.allChoose.add(this.getText(idx, index, sIndex));
+        if (this.allChoose) {
+          this.allChoose.add(...this.getText(idx, index, sIndex));
+        } else {
+          this.allChoose = this.getText(idx, index, sIndex);
+        }
       }
       this.emit();
+    },
+    clickHandler (event) {
+      this.$emit(
+        "onOkBtn",
+        event
+      )
+      this.isShow = false
     },
     isActive(idx, index, sIndex) {
       if (
