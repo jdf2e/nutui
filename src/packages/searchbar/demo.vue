@@ -30,10 +30,30 @@
 		        @submit="submitFun"
 	        ></nut-searchbar>
         </div>
+
+		<h4>获取焦点与失去焦点</h4>
+        <div class="demo1">
+            <nut-searchbar
+		        placeText="请输入自定义文案"
+		        @submit="search"
+				ref="myInput"
+	        ></nut-searchbar>
+        </div>
     </div>
 </template>
 <script>
 	export default {
+		mounted(){
+
+			const th = this
+			this.$nextTick(function() {
+				setTimeout(function() {
+					th.$refs.myInput.focus()
+				}, 2000)
+				
+			})
+			
+		},
 	    methods:{
 	    	focusFun() {
 	    		console.log('获取焦点操作！');
@@ -49,7 +69,12 @@
             submitFun(value) {
             	console.log(value);
                 console.log('默认提交操作！');
-            }
+			},
+			
+			search(value) {
+				this.$refs.myInput.blur()
+				console.log('搜索')
+			}
 	    }
 	}
 </script>

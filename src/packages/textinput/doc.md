@@ -62,6 +62,19 @@
     v-model="val"
 />
 ```
+
+自动聚焦
+
+注：由于移动设备的不同，第一次自动获取焦点并不一定能吊起键盘，需要手动吊起来一次，当再次进入时则正常吊起键盘
+
+```html
+<div class="autoFucus">
+  <nut-textinput  class="my-input" type="search" v-model="val8"  placeholder="请输入搜索内容" ref="myInput" @keyup.enter="submit" />
+
+  <div class="searchBtn" @click="submit">搜索</div>
+</div>
+```
+
 ```javascript
 export default {
   data() {
@@ -69,12 +82,22 @@ export default {
       val: ""
     };
   },
+  mounted() {
+    //设置获取焦点
+    this.$nextTick(function() {
+				this.$refs.myInput.focus()
+		})
+  },
   methods: {
     onFocus() {
       console.log("focus事件触发！");
     },
     onBlur() {
       console.log("blur事件触发！");
+    },
+    submit() {
+      //失去焦点
+        this.$refs.myInput.blur()
     }
   }
 };

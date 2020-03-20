@@ -86,8 +86,7 @@
     <div class="autoFucus">
       <nut-textinput  class="my-input" type="search" v-model="val8"  placeholder="请输入搜索内容" ref="myInput" @keyup.enter="submit" />
 
-      <div class="searchBtn" @click="autoFocusFun">搜索</div>
-      <!-- <nut-button class="searchBtn" shape="circle" type="gray" small @click="autoFocusFun"></nut-button> -->
+      <div class="searchBtn" @click="submit">搜索</div>
     </div>
   </div>
 </template>
@@ -107,6 +106,16 @@ export default {
       result: "尚未触发"
     };
   },
+
+  mounted() {
+    const th = this
+			this.$nextTick(function() {
+				setTimeout(function() {
+					th.$refs.myInput.focus()
+				}, 2000)
+				
+			})
+  },
   methods: {
     onFocus() {
       this.result = "focus事件触发！";
@@ -115,9 +124,6 @@ export default {
       this.result = "blur事件触发！";
     },
 
-    autoFocusFun() {
-       this.$refs.myInput.autoFocus()
-    },
     submit() {
         this.$refs.myInput.blur()
     }

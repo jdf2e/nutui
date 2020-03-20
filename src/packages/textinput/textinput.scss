@@ -18,6 +18,10 @@
             color: #C1C4CB;
             font-style: normal;
         }
+
+        &::-webkit-search-cancel-button{
+            display: none;
+        }
     }
 
     .nut-textinput-clear {
@@ -43,6 +47,10 @@
 
         &::-webkit-input-placeholder {
             color: #D1D3D9;
+        }
+
+        &::-webkit-search-cancel-button{
+            display: none;
         }
     }
 }
