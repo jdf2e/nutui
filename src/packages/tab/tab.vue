@@ -115,7 +115,6 @@ export default {
     data() {
         return {
             tabTitleList:[],
-            isShowTab: this.defIndex,
             activeIndex:this.defIndex,
             initIndex:0,
             showTabs:true,
@@ -124,14 +123,15 @@ export default {
         };
     },
     watch:{
-       initData:function(){
-            setTimeout(()=>{
-                let slot = [...this.$slots.default];
-                this.tabTitleList = [];
-                this.activeIndex = this.defIndex;
-                this.initTab(slot);  
-            },100);    
-        }
+        defIndex(){
+            this.updeteTab();
+        },
+       initData:{
+           handler(){
+            this.updeteTab();
+           },
+           deep:true
+       }
     },
     computed:{
         tabType:function(){
@@ -151,6 +151,14 @@ export default {
         })     
     },
     methods: {
+        updeteTab:function(){
+            setTimeout(()=>{
+                let slot = [...this.$slots.default];
+                this.tabTitleList = [];
+                this.activeIndex = this.defIndex;
+                this.initTab(slot);  
+            },100);  
+        },
         closeItem:function(value){
             this.$emit('tab-remove',value); 
             setTimeout(()=>{
@@ -180,7 +188,7 @@ export default {
                        let slotElm = slot[i].elm;
                        if(slotElm){
                             this.addClass(slotElm,'hide');
-                            if(this.isShowTab == i) {
+                            if(this.activeIndex == i) {
                                 this.removeClass(slotElm,'hide')
                             }
                        }                
@@ -193,10 +201,13 @@ export default {
             
         },
         getStyle:function(obj,styleName){
+            if(!obj){
+                return ''
+            }
             if(obj.currentStyle){
-            return obj.currentStyle[styleName];
+                return obj.currentStyle[styleName];
             }else{
-            return getComputedStyle(obj,null)[styleName];
+                return getComputedStyle(obj,null)[styleName];
             }
         },
         getTabWidth:function(){

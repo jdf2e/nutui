@@ -533,6 +533,26 @@
       "sort": "6",
       "showDemo": true,
       "author": "ymm"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Video",
+      "chnName": "视频",
+      "desc": "视频播放器",
+      "type": "component",
+      "sort": "0",
+      "showDemo": true,
+      "author": "VickyYe"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Signature",
+      "chnName": "签名",
+      "desc": "签名",
+      "type": "component",
+      "sort": "6",
+      "showDemo": true,
+      "author": "irisSong"
     }
   ]
 }

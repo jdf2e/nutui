@@ -48,7 +48,7 @@
     <h4>禁止选中，默认选中某个标签</h4>
     <h4>如需要更新页面，请将监听变化的数据传入init-data</h4>
 
-    <nut-tab :defIndex="1" class="customer-css" @tab-switch="tabSwitch" :contentShow="true" :init-data="disableTabs">
+    <nut-tab :defIndex="defIndex" class="customer-css" @tab-switch="tabSwitch" :contentShow="true" :init-data="disableTabs">
       <nut-tab-panel
         v-for="value in disableTabs"
         v-bind:key="value.tabTitle"
@@ -72,6 +72,7 @@ export default {
   },
   data() {
     return {
+      defIndex:1,
       positionNavCurr: "top",
       editableTabs: [
         {
@@ -131,6 +132,7 @@ export default {
   methods: {
     tabSwitch: function(index, event) {
       console.log(index + "--" + event.target);
+      //this.defIndex = index;
     },
     clickHandler:function(){
       let newEditableTabs = [

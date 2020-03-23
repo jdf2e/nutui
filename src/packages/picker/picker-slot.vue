@@ -14,6 +14,7 @@
             <div class="nut-picker-item" v-for="(item,index) in listData"
                 :key="item.label ? item.label : index">{{item.value ? item.value : item}}
             </div>
+            <div class="nut-picker-placeholder" v-if="listData && listData.length === 1"></div>
         </div>
     </div>
     <div class="nut-picker-mask"></div>

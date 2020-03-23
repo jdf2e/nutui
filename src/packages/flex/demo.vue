@@ -306,7 +306,7 @@
 export default {
   data() {
       return {
-          myValue:4
+          myValue:6
       };
   },
   methods:{

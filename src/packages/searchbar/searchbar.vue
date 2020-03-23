@@ -1,14 +1,16 @@
 <template>
     <div :class="['nut-searchbar',customClass ? customClass : '']">
     	<div class="search-input" :class="[animation ? 'nut-search-ani':'',inputFocusAnimation?'focus':'']">
-	    	<form action="" id="input-form" @submit="submitFun">
+	    	<form action="javascript:return true" id="input-form">
 	    		<nut-icon type="search" v-if="hasIcon" :size="searchIconSize" :color="searchIconColor"></nut-icon>
-	    		<input type="text"
-	    		v-model="value"
-	    		:placeholder="placeText || nutTranslate('lang.searchbar.placeText')"
-	    		@focus="focusFun"
-	    		@input="inputFun"
-	    		@blur="blurFun"
+	    		<input type="search"
+					v-model="value"
+					:placeholder="placeText || nutTranslate('lang.searchbar.placeText')"
+				
+					@keyup.enter="submitFun"
+					@input="inputFun"
+					@blur="blurFun"
+					ref="searchInput"
 	    		>
 	    		<span class="close-icon" :class="hasCloseIcon ? 'show':''"
 	    		@click="clearInput">
@@ -108,12 +110,22 @@ export default {
     		this.$emit('input', this.value);
     	},
     	blurFun() {
-    		this.inputFocusAnimation = false;
+			this.inputFocusAnimation = false;
     		this.$emit('blur', this.value);
     	},
         submitFun() {
             this.$emit('submit', this.value);
-        }
+		},
+		// 失去焦点
+		blur() {
+			this.$refs.searchInput.blur()
+		},
+		//js控制获取焦点
+		focus() {
+			this.$nextTick(function() {
+				this.$refs.searchInput.focus()
+			})
+		}
     }
 }
 </script>

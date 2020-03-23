@@ -6,39 +6,73 @@
     >此 Demo 在 PC 端浏览器与移动端浏览器体验差异较大，建议在 Android 或 iOS 设备上体验。</nut-noticebar>
     <h4>基本用法</h4>
     <div>
-      <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible0')">
+      <nut-cell
+        :showIcon="true"
+        :isLink="true"
+        @click.native="switchPicker('isVisible0')"
+      >
         <span slot="title">
           <label>年月选择</label>
         </span>
         <span slot="sub-title">不联动多列~~~</span>
-        <div slot="desc" class="selected-option">{{date ? date : '请选择'}}</div>
+        <div
+          slot="desc"
+          class="selected-option"
+        >{{date ? date : '请选择'}}</div>
       </nut-cell>
-      <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible')">
+      <nut-cell
+        :showIcon="true"
+        :isLink="true"
+        @click.native="switchPicker('isVisible')"
+      >
         <span slot="title">
           <label>城市选择</label>
         </span>
         <span slot="sub-title">联动~~~</span>
-        <div slot="desc" class="selected-option">
-          <span class="btn" @click.stop.prevent="modifyCity">修改为指定的城市</span>
+        <div
+          slot="desc"
+          class="selected-option"
+        >
+          <span
+            class="btn"
+            @click.stop.prevent="modifyCity"
+          >修改为指定的城市</span>
           <span class="show-value">{{city ? city : '请选择'}}</span>
         </div>
       </nut-cell>
-      <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible1')">
+      <nut-cell
+        :showIcon="true"
+        :isLink="true"
+        @click.native="switchPicker('isVisible1')"
+      >
         <span slot="title">
           <label>年选择</label>
         </span>
         <span slot="sub-title">单列~~~</span>
-        <div slot="desc" class="selected-option">
-          <span class="btn" @click.stop.prevent="modifyYear">修改为指定的年份</span>
+        <div
+          slot="desc"
+          class="selected-option"
+        >
+          <span
+            class="btn"
+            @click.stop.prevent="modifyYear"
+          >修改为指定的年份</span>
           <span class="show-value">{{year ? year : '请选择'}}</span>
         </div>
       </nut-cell>
-      <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible2')">
+      <nut-cell
+        :showIcon="true"
+        :isLink="true"
+        @click.native="switchPicker('isVisible2')"
+      >
         <span slot="title">
           <label>城市选择自定义数据</label>
         </span>
         <span slot="sub-title">联动~~~</span>
-        <div slot="desc" class="selected-option">
+        <div
+          slot="desc"
+          class="selected-option"
+        >
           <span class="show-value">{{cityCustmer ? cityCustmer : '请选择'}}</span>
         </div>
       </nut-cell>
@@ -195,9 +229,7 @@ export default {
       defaultValueData: null,
       year: null,
       isVisible1: false,
-      listData1: [
-        ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018"]
-      ],
+      listData1: [["2018", "2019","2010"]],
       custmerCityData: [
         [
           {
@@ -231,14 +263,24 @@ export default {
       this.date = `${chooseData[0]}年${chooseData[1]}月`;
     },
 
+    setYearValue(chooseData) {
+      this.year = `${chooseData[0]}年`;
+    },
+
+    modifyCity() {
+      this.updateLinkage("", "重庆", 1, "重庆");
+      this.defaultValueData = ["重庆", "重庆"];
+    },
+
+    modifyYear() {
+      this.defaultValueData1 = ["2018"];
+    },
+
+    // demo 城市选择(联动) start
     setChooseValue(chooseData) {
       this.city = `${chooseData[0]}-${chooseData[1]}${
         chooseData[2] ? "-" + chooseData[2] : ""
       }`;
-    },
-
-    setYearValue(chooseData) {
-      this.year = `${chooseData[0]}年`;
     },
 
     updateLinkage(self, value, index, chooseValue, cacheValueData) {
@@ -274,31 +316,41 @@ export default {
     closeUpdateChooseValue(self, chooseData) {
       this.updateLinkage(self, chooseData[0], 1, chooseData[1], chooseData);
     },
-
+    // demo 城市选择(联动) end
     setChooseValueCustmer(chooseData) {
       var str = chooseData.map(item => item.value).join("-");
       this.cityCustmer = str;
     },
+
     closeUpdateChooseValueCustmer(self, chooseData) {
-      this.setChooseValueCustmer(chooseData);
-    },
-    updateChooseValueCustmer(self, index, resValue, cacheValueData) {
-      let { label, value } = resValue;
-      //此处模拟查询API
-      setTimeout(() => {
-        var resItems = APIData.find(item => item.label == label);
-        if (resItems && resItems.array.length) {
-          this.$set(this.custmerCityData, index + 1, resItems.array);
-        }
-      }, 100);
-    },
-    modifyCity() {
-      this.updateLinkage("", "重庆", 1, "重庆");
-      this.defaultValueData = ["重庆", "重庆"];
+        //此处模拟查询API，如果数据缓存了不需要再重新请求
+        setTimeout(() => {
+          let { label, value } = chooseData[0];
+          var resItems = APIData.find(item => item.label == label);
+          if (resItems && resItems.array.length) {
+            this.$set(this.custmerCityData, 1, resItems.array);
+            // 复原位置
+            self.updateChooseValue(self, 0, chooseData[0]);
+            self.updateChooseValue(self, 1, chooseData[1]);
+          }
+        }, 100);
     },
 
-    modifyYear() {
-      this.defaultValueData1 = ["2018"];
+    updateChooseValueCustmer(self, index, resValue, cacheValueData) {
+      // 本demo为二级联动，所以限制只有首列变动的时候触发事件
+      if (index === 0) {
+        //此处模拟查询API，如果数据缓存了不需要再重新请求
+        let { label, value } = resValue;
+        setTimeout(() => {
+          var resItems = APIData.find(item => item.label == label);
+          if (resItems && resItems.array.length) {
+            this.$set(this.custmerCityData, 1, resItems.array);
+            // 更新第二列位置
+            let idx = this.custmerCityData[0].indexOf(resValue);
+            self.updateChooseValue(self, index + 1, this.custmerCityData[idx][0]);
+          }
+        }, 100);
+      }
     }
   }
 };
