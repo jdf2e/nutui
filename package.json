@@ -65,7 +65,7 @@
   },
   "nyc": {
     "include": [
-      "../../../src/packages/**/*.vue"
+      "src/packages/**/*.vue"
     ],
     "reporter": [
       "lcov",
