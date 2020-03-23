@@ -52,7 +52,7 @@
   "dependencies": {
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
-    "@nutui/cli": "0.0.7",
+    "@nutui/cli": "^0.0.8",
     "husky": "^3.0.0",
     "vue-lazyload": "^1.3.3"
   },
