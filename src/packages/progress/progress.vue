@@ -1,14 +1,14 @@
 <template>
     <div class="nut-progress">
-        <div class="nut-progress-outer" :class="[showText && !textInside ? 'nut-progress-outer-part' :'','nut-progress-'+size]" :style="{height: strokeWidth + 'px'}">
+        <div class="nut-progress-outer" :class="[showText && !textInside ? 'nut-progress-outer-part' :'','nut-progress-'+size]" :style="{height: height}">
             <div :class="['nut-progress-inner',status=='active' ? 'nut-active' : '']" :style="bgStyle">
-                <div class="nut-progress-text" :style="{lineHeight:strokeWidth + 'px'}" v-if="showText && textInside"> {{percentage}}%</div>
+                <div class="nut-progress-text" :style="{lineHeight:height}" v-if="showText && textInside">  <span :style="textStyle">{{percentage}}%</span></div>
             </div>
         </div>
-        <div class="nut-progress-text" :style="{lineHeight:strokeWidth + 'px'}" v-if="showText && !textInside">
+        <div class="nut-progress-text" :style="{lineHeight:height}" v-if="showText && !textInside">
             <slot>
                 <template v-if="status=='text' || status=='active'" >
-                     {{percentage}}%
+                     <span :style="textStyle">{{percentage}}%</span>
                 </template>
                 <template v-else-if="status=='success' || 'wrong'">
                     <i :class="statusIcon"></i>
@@ -35,7 +35,7 @@ export default {
             type: String,
             default: 'text'
         },
-        strokeWidth: {
+        strokeHeight: {
             type:[Number,String],
             default: ''
         },
@@ -50,25 +50,32 @@ export default {
         strokeColor: {
             type: String,
             default: ''
+        },
+        textColor: {
+            tyep: String,
+            default:''
         }
     },
     data() {
         return {
-            currentStatus: this.status,
-        };
+            height:strokeHeight+'px'
+        }
     },
     computed:{
         bgStyle () {
-            const style = {};
-            style.width = this.percentage + '%';
-            style.backgroundColor = this.strokeColor || '';
-            return style;
+            return {
+                width:this.percentage + '%',
+                backgroundColor:this.strokeColor || ''
+            }
+        },
+        textStyle() {
+            return {
+                color:this.textColor || ''
+            }
         },
         statusIcon () {
             return  this.status==='success' ? 'nut-icon-success' :  this.status==='wrong' ? 'nut-icon-fail' : '';
         }
     },
-    methods: {
-    }
 }
 </script>
