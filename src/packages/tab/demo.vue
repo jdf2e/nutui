@@ -3,16 +3,16 @@
     <!-- DEMO区域 -->
     <h4>默认用法</h4>
     <nut-tab @tab-switch="tabSwitch">
-        <nut-tab-panel tabTitle="页签1">页签1</nut-tab-panel>
-        <nut-tab-panel tabTitle="页签2">页签2</nut-tab-panel>
-        <nut-tab-panel tabTitle="页签3">页签3</nut-tab-panel>
+        <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
+        <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
+        <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
     </nut-tab>
     <h4>支持导航条在上下左右位置</h4>
     <nut-tab @tab-switch="tabSwitch">
       <nut-tab-panel
         v-for="value in editableTabs"
         v-bind:key="value.tabTitle"
-        :tabTitle="value.tabTitle"
+        :tab-title="value.tabTitle"
         :iconUrl="value.iconUrl"
         v-html="value.content"
       ></nut-tab-panel>
@@ -21,7 +21,7 @@
       <nut-tab-panel
         v-for="value in editableTabs"
         v-bind:key="value.tabTitle"
-        :tabTitle="value.tabTitle"
+        :tab-title="value.tabTitle"
         :iconUrl="value.iconUrl"
         v-html="value.content"
       ></nut-tab-panel>
@@ -30,7 +30,7 @@
       <nut-tab-panel
         v-for="value in editableTabs"
         v-bind:key="value.tabTitle"
-        :tabTitle="value.tabTitle"
+        :tab-title="value.tabTitle"
         :iconUrl="value.iconUrl"
         v-html="value.content"
       ></nut-tab-panel>
@@ -39,7 +39,7 @@
       <nut-tab-panel
         v-for="value in editableTabs"
         v-bind:key="value.tabTitle"
-        :tabTitle="value.tabTitle"
+        :tab-title="value.tabTitle"
         :iconUrl="value.iconUrl"
         v-html="value.content"
       ></nut-tab-panel>
@@ -52,7 +52,7 @@
       <nut-tab-panel
         v-for="value in disableTabs"
         v-bind:key="value.tabTitle"
-        :tabTitle="value.tabTitle"
+        :tab-title="value.tabTitle"
         :disable="value.disable"
         v-html="value.content"
       ></nut-tab-panel>

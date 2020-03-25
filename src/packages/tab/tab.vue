@@ -9,7 +9,6 @@
                     v-on:click="switchTab(index,$event,value.disable)" class="nut-title-nav-list" 
                     :class="['nut-title-nav',{'nut-tab-disable':value.disable},{'nut-tab-active' : activeIndex == index}]"
                     >
-                    <b v-if='closable' class="close-btn" v-on:click="closeItem(value)">x</b>
                     <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event,value.disable)">
                     <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
                     {{value.tabTitle}}
@@ -28,7 +27,6 @@
                         v-on:click="switchTab(index,$event,value.disable)" class="nut-title-nav-leftnav" 
                         :class="['nut-title-nav',{'nut-tab-disable':value.disable},{'nut-tab-active' : activeIndex == index}]"
                         >
-                        <b v-if='closable' class="close-btn" v-on:click="closeItem(value)">x</b>
                         <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event,value.disable)">
                         <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
                         {{value.tabTitle}}
@@ -50,9 +48,7 @@
                         v-on:click="switchTab(index,$event,value.disable)" class="nut-title-nav-rightnav" 
                         :class="['nut-title-nav',{'nut-tab-disable':value.disable},{'nut-tab-active' : activeIndex == index}]"
                         >
-                        <b v-if='closable' class="close-btn" v-on:click="closeItem(value)">x</b>
                         <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event,value.disable)">
-                        
                         {{value.tabTitle}}
                         <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
                         </a>
@@ -70,7 +66,6 @@
                     v-on:click="switchTab(index,$event,value.disable)" class="nut-title-nav-list" 
                     :class="['nut-title-nav',{'nut-tab-disable':value.disable},{'nut-tab-active' : activeIndex == index}]"
                     >
-                    <b v-if='closable' class="close-btn" v-on:click="closeItem(value)">x</b>
                     <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event,value.disable)">
                     <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
                     {{value.tabTitle}}
@@ -159,18 +154,6 @@ export default {
                 this.initTab(slot);  
             },100);  
         },
-        closeItem:function(value){
-            this.$emit('tab-remove',value); 
-            setTimeout(()=>{
-                this.tabTitleList=[];
-                if(this.$slots.default){
-                    let slot = [...this.$slots.default];
-                    this.initTab(slot);
-                }else{
-                    this.showTabs = false;
-                }
-            },10);
-        },
         initTab:function(params){
             let slot = params;
             for(let i = 0; i < slot.length; i++) {
@@ -178,7 +161,7 @@ export default {
                 if(typeof(aa)=='string'){
                     if(slot[i].tag.indexOf('nut-tab-panel') != -1) {
                         let item ={
-                        'tabTitle':slot[i].data.attrs.tabTitle,
+                        'tabTitle':slot[i].data.attrs['tab-title'] || slot[i].data.attrs['tabTitle'],
                         'disable':slot[i].data.attrs.disable==''?true:false,
                         'iconUrl':slot[i].data.attrs.iconUrl,
                         'clstag': slot[i].data.attrs.clstag,

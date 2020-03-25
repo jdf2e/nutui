@@ -43,6 +43,14 @@ export default {
           tabList:this.tabbarList
         };
     },
+    watch:{
+       tabbarList:{
+           handler(value){
+            this.tabList = value;
+           },
+           deep:true
+       }
+    },
     computed:{
         
     },
