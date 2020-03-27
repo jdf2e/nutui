@@ -61,13 +61,6 @@ describe('Tab.vue', () => {
               expect(wrapper.findAll('.nut-title-nav-leftnav').at(0).is('.nut-tab-disable')).toBe(true)
           }) 
     });
-    it('是否显示关闭按钮', () => {
-        wrapper.setProps({ closable: true });
-        return Vue.nextTick().then(function () {
-            expect(wrapper.contains('.close-btn')).toBe(true);
-            
-        })
-    });
     it('当前默认选中的tab', () => {
         wrapper.setProps({ positionNav: 'top' });
         return Vue.nextTick().then(function () {
@@ -84,7 +77,6 @@ describe('Tab.vue', () => {
             wrapper.findAll('.nut-title-nav-list').at(1).trigger('click');
             expect(wrapper.findAll('.nut-title-nav-list').at(1).is('.nut-tab-active')).toBe(true)
       })
-        
     });
 });
 
