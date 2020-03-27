@@ -164,7 +164,7 @@ describe("TabSelect.vue", () => {
     return Vue.nextTick().then(function() {
       expect(
         wrapper
-          .findAll(".nut-tab-link")
+          .findAll(".nut-title-nav")
           .at(0)
           .text()
       ).toBe("京东快递测试");
