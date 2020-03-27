@@ -9,8 +9,10 @@
                     @click="switchTab(index,$event,value.disable)" class="nut-title-nav-list" 
                     :class="['nut-title-nav',{'nut-tab-disable':value.disable},{'nut-tab-active' : activeIndex == index}]"
                     >
+                    <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event,value.disable)">
                     <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
                     {{value.tabTitle}}
+                    </a>
                     </span>
                 </div>
                 <div class="nut-tab-item">
@@ -25,8 +27,10 @@
                     @click="switchTab(index,$event,value.disable)" class="nut-title-nav-leftnav" 
                     :class="['nut-title-nav',{'nut-tab-disable':value.disable},{'nut-tab-active' : activeIndex == index}]"
                     >
+                    <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event,value.disable)">
                     <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
                     {{value.tabTitle}}
+                    </a>
                     </span>
                 </div>
                 <div class="nut-tab-item">
@@ -44,8 +48,10 @@
                     @click="switchTab(index,$event,value.disable)" class="nut-title-nav-rightnav" 
                     :class="['nut-title-nav',{'nut-tab-disable':value.disable},{'nut-tab-active' : activeIndex == index}]"
                     >
+                    <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event,value.disable)">
                     {{value.tabTitle}}
                     <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
+                    </a>
                     </span>
                 </div>
             </template>
@@ -60,8 +66,10 @@
                     @click="switchTab(index,$event,value.disable)" class="nut-title-nav-list" 
                     :class="['nut-title-nav',{'nut-tab-disable':value.disable},{'nut-tab-active' : activeIndex == index}]"
                     >
+                    <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event,value.disable)">
                     <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
                     {{value.tabTitle}}
+                    </a>
                     </span>
                 </div>
             </template>
@@ -189,10 +197,12 @@ export default {
                 elements.className = elements.className.replace( new RegExp( "(\\s|^)" + cName + "(\\s|$)" )," " ); // replace方法是替换 
             }; 
         }, 
-        switchTab:function(index,event,disable){
-            if(!disable && event.target.className.indexOf('nut-tab-icon')!==-1){
+        switchTabLink:function(index,event,disable){
+            if(!disable){
                 event.target.parentNode.click();
-            }
+            } 
+        },
+        switchTab:function(index,event,disable){
             if(!disable && event.target.className.indexOf('nut-title-nav')!==-1){
                 this.activeIndex=index;
                 this.initX= parseInt(this.navWidth * index);
