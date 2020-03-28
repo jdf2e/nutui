@@ -29,6 +29,16 @@
 >
 </nut-progress>
 ```
+设置百分比外显
+
+```html
+<nut-progress 
+    percentage="60" 
+    :text-inside="false" 
+    stroke-height="24"
+></nut-progress>
+```
+
 设置百分比内显
 
 ```html
@@ -37,6 +47,24 @@
     :text-inside="true" 
     stroke-height="24"
 ></nut-progress>
+```
+
+## 自定义尺寸
+
+内置 **small**，**base**，**large** 三种规格供使用。
+```html
+<nut-progress 
+    size="small"
+>
+</nut-progress>
+<nut-progress
+    size="base"
+>
+</nut-progress>
+<nut-progress 
+    size="large"
+>
+</nut-progress>
 ```
 设置状态显示
 
@@ -61,23 +89,7 @@
 >
 </nut-progress>
 ```
-## 自定义尺寸
 
-内置 **small**，**base**，**large** 三种规格供使用。
-```html
-<nut-progress 
-    size="small"
->
-</nut-progress>
-<nut-progress
-    size="base"
->
-</nut-progress>
-<nut-progress 
-    size="large"
->
-</nut-progress>
-```
 
 
 ## Prop
@@ -90,4 +102,5 @@
 | size | 进度条及文字尺寸，可选值small/base/large | String | -
 | show-text | 是否显示进度条文字内容 | Boolean | true
 | text-inside | 进度条文字显示位置(false:外显，true:内显) | Boolean | false
+| text-color | 进度条文字颜色设置 | String | #333
 | status | 进度条当前状态,可选值text/active/wrong/success | String | text
