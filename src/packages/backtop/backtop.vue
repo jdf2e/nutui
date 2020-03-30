@@ -140,7 +140,6 @@ export default {
       });
     },
     scroll(y = 0) {
-      console.log(y);
       if (this.scrollEl === window) {
         window.scrollTo(0, y);
       } else {
