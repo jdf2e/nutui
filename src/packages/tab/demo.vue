@@ -13,11 +13,20 @@
         v-for="value in editableTabs"
         v-bind:key="value.tabTitle"
         :tab-title="value.tabTitle"
-        :iconUrl="value.iconUrl"
+        :icon-url="value.iconUrl"
         v-html="value.content"
       ></nut-tab-panel>
     </nut-tab>
-    <nut-tab @tab-switch="tabSwitch" positionNav="left">
+    <nut-tab @tab-switch="tabSwitch" position-nav="left">
+      <nut-tab-panel
+        v-for="value in editableTabs"
+        v-bind:key="value.tabTitle"
+        :tab-title="value.tabTitle"
+        :icon-url="value.iconUrl"
+        v-html="value.content"
+      ></nut-tab-panel>
+    </nut-tab>
+    <nut-tab @tab-switch="tabSwitch" position-nav="right">
       <nut-tab-panel
         v-for="value in editableTabs"
         v-bind:key="value.tabTitle"
@@ -26,21 +35,12 @@
         v-html="value.content"
       ></nut-tab-panel>
     </nut-tab>
-    <nut-tab @tab-switch="tabSwitch" positionNav="right">
+    <nut-tab @tab-switch="tabSwitch" position-nav="bottom">
       <nut-tab-panel
         v-for="value in editableTabs"
         v-bind:key="value.tabTitle"
         :tab-title="value.tabTitle"
-        :iconUrl="value.iconUrl"
-        v-html="value.content"
-      ></nut-tab-panel>
-    </nut-tab>
-    <nut-tab @tab-switch="tabSwitch" positionNav="bottom">
-      <nut-tab-panel
-        v-for="value in editableTabs"
-        v-bind:key="value.tabTitle"
-        :tab-title="value.tabTitle"
-        :iconUrl="value.iconUrl"
+        :icon-url="value.iconUrl"
         v-html="value.content"
       ></nut-tab-panel>
     </nut-tab>
@@ -48,7 +48,7 @@
     <h4>禁止选中，默认选中某个标签</h4>
     <h4>如需要更新页面，请将监听变化的数据传入init-data</h4>
 
-    <nut-tab :defIndex="defIndex" class="customer-css" @tab-switch="tabSwitch" :contentShow="true" :init-data="disableTabs">
+    <nut-tab :def-index="defIndex" class="customer-css" @tab-switch="tabSwitch" :contentShow="true" :init-data="disableTabs">
       <nut-tab-panel
         v-for="value in disableTabs"
         v-bind:key="value.tabTitle"
@@ -206,9 +206,9 @@ export default {
   .nut-title-nav-list {
     background: #fff;
     border-left: 1px solid #e4e7ed;
-  }
-  .nut-title-nav-list:first-child {
-    border-left: 0;
+    &:first-child{
+      border-left: 0;
+    }
   }
   .nut-tab-active {
     background: $primary-color;

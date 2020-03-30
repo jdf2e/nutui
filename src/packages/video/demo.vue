@@ -19,10 +19,15 @@
         <div class="video-con">
             <nut-video :sources="sources" :options="options4"></nut-video>
         </div>
+        <h4>行内播放</h4>
+        <p>playsinline属性设置移动端视频行内播放，阻止新打开页面播放（兼容ios，兼容部分安卓机）</p>
+        <div class="video-con">
+            <nut-video :sources="sources" :options="options5"></nut-video>
+        </div>
         <h4>设置视频为背景图</h4>
         <p>当设置视频为背景图时需要将 muted 静音、 disabled 禁止操作、loop 循环播放、autoplay 自动播放设置为 true，移动端需要设置 playsinline 行内展示（兼容安卓用）</p>
         <div class="video-con">
-            <nut-video :sources="sources" :options="options5"></nut-video>
+            <nut-video :sources="sources" :options="options6"></nut-video>
         </div>
     </div>
 </template>
@@ -46,7 +51,7 @@ export default {
             options2: {
                 autoplay: true,
                 volume: 0.6,
-                poster: ''
+                poster: '',
             },
             options3: {
                 controls: true,
@@ -57,6 +62,10 @@ export default {
                 poster: 'https://img10.360buyimg.com/ling/s640x356_jfs/t1/96045/31/13848/43886/5e5e35ffE68170c74/861a6394e38810f0.png',
             },
             options5: {
+                playsinline: true,
+                controls: true,
+            },
+            options6: {
                 autoplay: true,
                 volume: 0.6,
                 poster: '',
@@ -65,21 +74,25 @@ export default {
                 playsinline: true,
                 loop: true
             },
+           
         };
     },
     methods: {
-        play(){
-            console.log('play')
+        play(elm){
+            console.log('play',elm)
         },
-        pause(){
+        pause(e){
             console.log('pause')
-
         },
-        playend(){
-            console.log('playend')
+        playend(e){
+            alert('播放结束')
         }
     }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.nut-video{
+    height:200px;
+}
+</style>

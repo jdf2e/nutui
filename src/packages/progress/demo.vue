@@ -1,11 +1,19 @@
 <template>
   <div class="demo-list">
     <h4>基本用法</h4>
+    <div>
+      <nut-cell>
+        <span slot="title">
+          <nut-progress percentage="30" />
+        </span>
+      </nut-cell>
+    </div>
+
     <p>线形进度条-设置颜色高度</p>
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="30" stroke-color="pink" text-color="red"/>
+          <nut-progress percentage="30" stroke-color="pink"  stroke-width="20" text-color="red"/>
         </span>
       </nut-cell>
     </div>
@@ -72,12 +80,12 @@
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="50" :stroke-height="strokeHeight" status="wrong"/>
+          <nut-progress percentage="50" :stroke-width="strokeWidth" status="wrong"/>
         </span>
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="100" stroke-color="#1890ff" stroke-height="15" status="success"/>
+          <nut-progress percentage="100" stroke-color="#1890ff" stroke-width="15" status="success"/>
         </span>
       </nut-cell>
     </div>
@@ -103,14 +111,9 @@ export default {
   data() {
     return {
       val: 0,
-      strokeHeight:15,
+      strokeWidth:15,
       size:'small'
     };
-  },
-  mounted(){
-    setTimeout(() => {
-      this.size='large';
-    }, 3000);
   },
   methods: {
     setAddVal() {
