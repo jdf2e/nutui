@@ -16,7 +16,7 @@
 <nut-progress
     percentage="30"
     stroke-color="#8e71c7" 
-    stroke-height="12"
+    stroke-width="12"
 >
 </nut-progress>
 ```
@@ -35,7 +35,7 @@
 <nut-progress 
     percentage="60" 
     :text-inside="true" 
-    stroke-height="24"
+    stroke-width="24"
 ></nut-progress>
 ```
 设置状态显示
@@ -50,13 +50,13 @@
 <nut-progress 
     percentage="50"
     stroke-color="#f30"
-    stroke-height="15"
+    stroke-width="15"
     status="wrong"
 >
 </nut-progress>
 <nut-progress 
     percentage="100" 
-    :stroke-height="15" 
+    :stroke-width="15" 
     status="success"
 >
 </nut-progress>
@@ -86,7 +86,7 @@
 |----- | ----- | ----- | -----
 | percentage | 百分比 | Number | 0
 | stroke-color | 进度条背景色 | String | #f30
-| stroke-height | 进度条宽度 | String | ''
+| stroke-width | 进度条宽度 | String | ''
 | size | 进度条及文字尺寸，可选值small/base/large | String | -
 | show-text | 是否显示进度条文字内容 | Boolean | true
 | text-inside | 进度条文字显示位置(false:外显，true:内显) | Boolean | false

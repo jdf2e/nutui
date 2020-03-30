@@ -72,7 +72,7 @@
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="50" :stroke-height="strokeHeight" status="wrong"/>
+          <nut-progress percentage="50" :stroke-height="strokeWidth" status="wrong"/>
         </span>
       </nut-cell>
       <nut-cell>
@@ -103,7 +103,7 @@ export default {
   data() {
     return {
       val: 0,
-      strokeHeight:15,
+      strokeWidth:15,
       size:'small'
     };
   },

@@ -35,7 +35,7 @@ export default {
             type: String,
             default: 'text'
         },
-        strokeHeight: {
+        strokeWidth: {
             type:[Number,String],
             default: ''
         },
@@ -58,7 +58,7 @@ export default {
     },
     data() {
         return {
-            height:strokeHeight+'px'
+            height:strokeWidth+'px'
         }
     },
     computed:{
