@@ -68,18 +68,21 @@ export default {
         };
     },
     methods: {
-        play(){
-            console.log('play')
+        play(elm){
+            console.log('play',elm)
         },
-        pause(){
+        pause(e){
             console.log('pause')
-
         },
-        playend(){
-            console.log('playend')
+        playend(e){
+            alert('播放结束')
         }
     }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.nut-video{
+    height:200px;
+}
+</style>

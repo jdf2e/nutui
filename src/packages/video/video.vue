@@ -10,14 +10,12 @@
             :poster="options.poster"
             :controls="options.controls"
             @error="handleError"
-            @canplaythrough="state.isLoading = false"
         >
             <source v-for="source in sources" :src="source.src" :type="source.type" :key="source.src" />
         </video>
         <div class="playing-mask" @click="play"></div>
-        <div class="nut-video-play-btn" v-show="!state.playing" @click="play"></div>
-        <div class="nut-video-controller" v-show="showToolbox">
-            <!-- <div class="control-button" :class="{pause:isPlay,play:!isPlay}" @click="playOrPause"></div> -->
+        <div class="nut-video-play-btn" ref="palyBtn" v-show="!state.playing" @click="play"></div>
+        <!-- <div class="nut-video-controller" v-show="showToolbox">
             <div class="current-time">{{ videoSet.displayTime }}</div>
             <div class="progress-container">
                 <div class="progress" ref="progressBar">
@@ -31,7 +29,7 @@
             <div class="duration-time">{{ videoSet.totalTime }}</div>
             <div class="volume"></div>
             <div class="fullscreen-icon" @click="fullScreen"></div>
-        </div>
+        </div> -->
         <!-- 错误弹窗 -->
         <div class="nut-video-error" v-show="state.isError">
             <p class="lose">视频加载失败</p>
@@ -49,7 +47,6 @@ export default {
             type: Boolean,
             default: false
         },
-
         sources: Array,
         options: {
             type: Object,
@@ -94,7 +91,7 @@ export default {
                 }
             },
             state: {
-                contrlShow: true,
+                contrlShow: false,
                 vol: 0.5, //音量
                 currentTime: 0, //当前时间
                 fullScreen: false,
@@ -107,28 +104,6 @@ export default {
     },
     mounted() {
         this.init();
-
-        // this.videoDome.addEventListener('progress', () => {
-        //     setTimeout(() => {
-        //         let v = this.videoDome;
-        //         let r = v.buffered;
-        //         let total = v.duration;
-        //         try {
-        //             let end = r.end(0);
-        //             this.videoTime = total;
-        //             this.videoMetadata = (end / total) * 100;
-        //         } catch (e) {
-        //         }
-        //     }, 100)
-        // }, false);
-        // this.videoDome.addEventListener('seeked', () => {
-        //     if (this.videoDome.readyState >= 2) {
-        //         this.isLoading = false;
-        //     }
-        // });
-        // this.videoDome.addEventListener('waiting', _ => {
-        //     this.isLoading = true;
-        // })
     },
     methods: {
         init() {
@@ -191,16 +166,17 @@ export default {
                         // this.videoElm.addEventListener('timeupdate', throttle(this.getPlayTime, 100, 1));
                         // 监听结束
                         this.videoElm.addEventListener('ended', this.playEnded);
-                        this.$emit('play', this.video);
+                        this.$emit('play', this.videoElm);
                     } catch (e) {
                         // 捕获url异常出现的错误
+                        this.handleError()
                     }
                 }
                 // 停止状态
                 else {
                     this.isPauseTouch = true;
                     this.videoElm.pause();
-                    this.$emit('pause', this.video);
+                    this.$emit('pause', this.videoElm);
                 }
             }
         },
@@ -224,24 +200,14 @@ export default {
         },
 
         fullScreen() {
-            const isFullscreen = document.webkitIsFullScreen || document.fullscreen;
-            if (isFullscreen) {
-                const exitFunc = document.exitFullscreen || document.webkitExitFullscreen;
-                exitFunc.call(document);
+            if (!this.state.fullScreen) {
+                this.state.fullScreen = true;
+                this.video.webkitRequestFullScreen();
             } else {
-                const element = this.videoElm;
-                const fullscreenFunc = element.requestFullscreen || element.webkitRequestFullScreen;
-                fullscreenFunc.call(element);
+                this.state.fullScreen = false;
+                document.webkitCancelFullScreen();
             }
-
-            // if (!this.state.fullScreen) {
-            //     this.state.fullScreen = true;
-            //     this.video.webkitRequestFullScreen();
-            // } else {
-            //     this.state.fullScreen = false;
-            //     document.webkitCancelFullScreen();
-            // }
-            // setTimeout(this.initVideo, 200);
+            setTimeout(this.initVideo, 200);
         },
         // 获取播放时间
         getPlayTime() {
@@ -271,6 +237,7 @@ export default {
         touchend() {},
         // 点击重新加载
         retry() {
+            console.log('error')
             this.state.isError = false;
             this.init();
         }
