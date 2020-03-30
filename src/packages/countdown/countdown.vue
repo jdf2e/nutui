@@ -119,6 +119,9 @@ const countdownTimer = {
         this.p += (this.getTimeStamp() - this._curr);
         this.$emit('on-restart', this.restTime);
       }
+    },
+    endTime() {
+      this.initTimer();
     }
   },
   methods: {
@@ -127,29 +130,32 @@ const countdownTimer = {
       let t = timeStr;
       t = t > 0? +t: t.toString().replace(/\-/g, '/');
       return new Date(t).getTime();
+    },
+    initTimer() {
+      const delay = 1000;
+      const curr = Date.now();
+      const start = this.getTimeStamp(this.startTime || curr);
+      const end = this.getTimeStamp(this.endTime || curr);
+      const diffTime = curr - start;
+
+      this.restTime = end - (start + diffTime);
+      this.timer = setInterval(() => {
+        if(!this.paused) {
+          let restTime = end - (Date.now() - this.p + diffTime);
+          this.restTime = restTime;
+          if(restTime < delay) {
+            this.restTime = 0;
+            this.$emit('on-end');
+            clearInterval(this.timer);
+          }
+        }else{
+          // 暂停
+        }
+      }, delay);
     }
   },
   created() {
-    const delay = 1000;
-    const curr = Date.now();
-    const start = this.getTimeStamp(this.startTime || curr);
-    const end = this.getTimeStamp(this.endTime || curr);
-    const diffTime = curr - start;
-
-    this.restTime = end - (start + diffTime);
-    this.timer = setInterval(() => {
-      if(!this.paused) {
-        let restTime = end - (Date.now() - this.p + diffTime);
-        this.restTime = restTime;
-        if(restTime < delay) {
-          this.restTime = 0;
-          this.$emit('on-end');
-          clearInterval(this.timer);
-        }
-      }else{
-        // 暂停
-      }
-    }, delay);
+    this.initTimer();
   }
 }
 countdownTimer.restTime = restTime;

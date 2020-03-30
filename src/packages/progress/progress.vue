@@ -53,12 +53,12 @@ export default {
         },
         textColor: {
             tyep: String,
-            default:''
+            default: ''
         }
     },
     data() {
         return {
-            height:strokeWidth+'px'
+            height:this.strokeWidth+'px'
         }
     },
     computed:{
