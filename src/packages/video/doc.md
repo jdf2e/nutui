@@ -11,6 +11,15 @@
 	@playend="playend">
 </nut-video>
 ```
+> source属性：设置视频地址和格式类型，可设置多种视频文件格式以便支持不同浏览器的解析支持，一般采用：MP4、webm、ogv等格式
+
+> options属性：设置视频的播放参数，如：autoplay、controls、poster、loop、volume等
+
+> play事件：监听视频播放
+
+> pause事件：监听视频暂停播放
+
+> playend事件：监听视频播放完成
 
 ```javascript
 export default {
@@ -36,6 +45,7 @@ export default {
 ## 自动播放
 
 autoplay属性设置视频自动播放
+
 
 ```html
 <nut-video :sources="sources" :options="options2"></nut-video>
@@ -144,7 +154,7 @@ export default {
 | options.controls    | 是否展示操作栏                             | Boolean | true     |
 | options.muted       | 是否静音                                   | Boolean | false    |
 | options.volume      | 音量控制                                   | Number | 0.5    |
-| options.disabled    | 是否自动播放                               | Boolean | false    |
+| options.disabled    | 禁用操作（如循环播放的背景图，禁止操作）                               | Boolean | false    |
 | options.playsinline | 是否设置为行内播放元素（解决安卓兼容问题） | Boolean | false    |
 
 
