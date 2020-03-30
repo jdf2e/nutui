@@ -50,7 +50,7 @@ export default {
         },
         pointStyle() {
             
-            return {'borderColor':this.pointColor,'background':this.pointType=='circle'?this.pointColor:'#fff'}
+            return {'borderColor':this.pointColor,'background':this.pointType=='circle'?this.pointColor:'transparent'}
         },
         isShowTitle(){
             return this.$slots.title?true:false

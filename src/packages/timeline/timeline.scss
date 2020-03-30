@@ -1,7 +1,4 @@
-.demo-wrapper{
-    padding-top: 60px;
-    background: #fff;
-}
+
 .nut-timeline{
     
     .nut-timelineitem{
@@ -19,9 +16,8 @@
                 .timelineitem-point{
                     position: absolute;
                     left: 0px;
-                    top: 0px;
+                    top: 2px;
                     .point-icon{
-                        margin-top: 2px;
                         width: 7px;
                         height: 7px;
                         border: 1px solid #f00;
@@ -31,15 +27,15 @@
                         }
 
                         &.hollow-icon{
-                            background: #fff;
+                            background: transparent;
                         }
                     }
 
                     .custom-icon{
-                        width: 9px;
-                        height: 9px;
+                        // width: 9px;
+                        // height: 9px;
                         overflow: hidden;
-                        background: #fff;
+                        background: transparent;
                     }
                 }
                 
@@ -64,11 +60,11 @@
         &.left-border{
             &:before{
                 position: absolute;
-                top: 4px;
+                top: 10px;
                 left: 4px;
                 content: '';
                 width: 1px;
-                height: 100%;
+                height: calc(100% - 8px);
                 background: #C2C2C2;
             };
         }
