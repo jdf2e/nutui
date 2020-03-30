@@ -55,14 +55,20 @@
 ```html
 <nut-progress 
     size="small"
+    percentage="30" 
+    text-inside="true" 
 >
 </nut-progress>
 <nut-progress
     size="base"
+    percentage="50" 
+    text-inside="true" 
 >
 </nut-progress>
 <nut-progress 
     size="large"
+    percentage="70" 
+    text-inside="true" 
 >
 </nut-progress>
 ```
@@ -71,7 +77,7 @@
 ```html
 <nut-progress 
     percentage="30" 
-    stroke-color="#f30" 
+    stroke-color="#1890ff" 
     status="active"
 >
 </nut-progress>
@@ -84,6 +90,7 @@
 </nut-progress>
 <nut-progress 
     percentage="100" 
+    stroke-color="#1890ff" 
     :stroke-width="15" 
     status="success"
 >

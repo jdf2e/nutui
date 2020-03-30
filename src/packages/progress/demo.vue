@@ -80,12 +80,12 @@
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="50" :stroke-height="strokeWidth" status="wrong"/>
+          <nut-progress percentage="50" :stroke-width="strokeWidth" status="wrong"/>
         </span>
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="100" stroke-color="#1890ff" stroke-height="15" status="success"/>
+          <nut-progress percentage="100" stroke-color="#1890ff" stroke-width="15" status="success"/>
         </span>
       </nut-cell>
     </div>
