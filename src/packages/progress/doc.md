@@ -15,8 +15,8 @@
 ```html
 <nut-progress
     percentage="30"
-    stroke-color="#8e71c7" 
-    stroke-width="12"
+    stroke-color="pink" 
+    stroke-width="20"
 >
 </nut-progress>
 ```
