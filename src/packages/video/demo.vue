@@ -93,6 +93,6 @@ export default {
 
 <style lang="scss" scoped>
 .nut-video{
-    height:240px;
+    height:200px;
 }
 </style>
