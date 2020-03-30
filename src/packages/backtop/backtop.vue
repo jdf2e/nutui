@@ -123,6 +123,7 @@ export default {
       this.isAnimation && this.duration > 0
         ? this.scrollAnimation()
         : this.scroll();
+      this.$emit("click");
     },
     scrollAnimation() {
       const self = this;
@@ -133,7 +134,7 @@ export default {
         var y = (t * -self.scrollTop) / self.duration + self.scrollTop;
         self.scroll(y);
         cid = self.requestAniFrame()(fn);
-        if (t == self.duration) {
+        if (t == self.duration || y == 0) {
           window.cancelAnimationFrame(cid);
         }
       });
