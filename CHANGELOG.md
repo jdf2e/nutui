@@ -1,3 +1,43 @@
+## 2.2.2
+
+`2020-03-31`
+
+* :sparkles: feat(Video)：新增数据展示-视频组件 @vickyYE
+* :sparkles: feat(Signature)：新增业务类型-签名组件 @irisSong
+* :sparkles: upd(TabSelect)：新增确认按钮回调事件 @yi-ge
+* :sparkles: upd(TextBox)：新增v-model属性 @yi-ge
+* :sparkles: upd(Stepper)：新增超出最小、最大回调事件 @richard1015
+* :sparkles: upd(ActionSheet)：优化内部代码，文档优化 @irisSong
+* :sparkles: upd(Flex)：优化内部代码，文档优化 @szg2008
+* :sparkles: upd(Toast)：优化内部代码，文档优化 @zy19940510
+* :sparkles: upd(Progress)：优化内部代码，文档优化 @layman666
+* :sparkles: upd(SearchBar、TextInput)：组件优化 @yangxiaolu1993
+* :bug: upd(Range)：绑定的值无法更新到组件 #227 @undo03
+* :bug: upd(Countdown)：修复异步计算属性无法更新组件 #228 @undo03
+* :bug: upd(LuckDraw)：抽奖组件图片链接修复 @Ymm0008
+* :bug: upd(Picker)优化自定义数据联动demo @irisSong
+* :bug: upd(Popup)：按需加载icon修复 @yangkaixuan
+* :bug: upd(TabSelect)：组件tabList数据改变内容不刷新问题修复 @dushoujun
+* :bug: upd(TabBar)：更新数据 重新渲染的功能 @zhenyulei
+
+## 2.2.1
+
+`2020-03-09`
+
+* :sparkles: upd(BackTop)：支持指定容器Id监听滚动事件，重构优化，文档优化 @richard1015
+* :sparkles: upd(Cell)：重构优化内部代码，文档优化 @zhenyulei
+* :sparkles: upd(Dialog)：重构优化内部代码，文档优化 @guoxiao158
+* :sparkles: doc：文档新增业务组件 @richard1015
+* :sparkles: feat(Types)：新增TextBox types类型 @richard1015
+* :sparkles: feat(Scroller)：vertical-scroll组件新增滚动监听事件 @richard1015
+* :sparkles: feat(LuckDraw)：新增业务抽奖组件 @Ymm0008
+* :bug: fix(Stepper) 修复步进器组件触发多次change事件 #207 @richard1015
+* :bug: fix(Popup) 修复样式加载问题 @yangkaixuan
+* :bug: fix(Tab) 修复标签中数据更新不渲染页面的问题 #215 @zhenyulei
+* :bug: fix(LeftSlip) 左滑删除优化,单元测试问题修复 @vickyYE
+* :bug: fix(MoToVue) md 转换 vue 插件性能优化 @linrufeng
+* :bug: fix(checkboxgroup) 修复代码冲突 @richard1015
+
 ## 2.2.0
 
 `2020-02-12`
