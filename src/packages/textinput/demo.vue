@@ -1,5 +1,6 @@
 <template>
   <div class="textinput-demo">
+
     <h4>基本用法</h4>
     <div>
       <nut-cell>
@@ -53,6 +54,7 @@
         </span>
       </nut-cell>
     </div>
+    
     <h4>使用input原生事件</h4>
     <div>
       <nut-cell>
@@ -79,6 +81,13 @@
         </span>
       </nut-cell>
     </div>
+    
+    <h4>自动聚焦</h4>
+    <div class="autoFucus">
+      <nut-textinput  class="my-input" type="search" v-model="val8"  placeholder="请输入搜索内容" ref="myInput" @keyup.enter="submit" />
+
+      <div class="searchBtn" @click="submit">搜索</div>
+    </div>
   </div>
 </template>
 
@@ -93,8 +102,19 @@ export default {
       val5: "我使用了readonly原生属性",
       val6: "",
       val7: "",
+      val8: "",
       result: "尚未触发"
     };
+  },
+
+  mounted() {
+    const th = this
+			this.$nextTick(function() {
+				setTimeout(function() {
+					th.$refs.myInput.focus()
+				}, 2000)
+				
+			})
   },
   methods: {
     onFocus() {
@@ -102,6 +122,10 @@ export default {
     },
     onBlur() {
       this.result = "blur事件触发！";
+    },
+
+    submit() {
+        this.$refs.myInput.blur()
     }
   }
 };
@@ -116,6 +140,21 @@ export default {
   padding: 0 10px;
 }
 
+.autoFucus{
+  background: #fff;
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .my-input{
+    flex: 1;
+  }
+  .searchBtn{
+    margin-left: 10px;
+  }
+}
 .nut-textinput {
   &.my-input {
     input {
