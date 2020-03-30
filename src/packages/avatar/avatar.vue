@@ -32,13 +32,13 @@ export default {
     computed:{
         styles(){
             return {
-                'background':this.bgColor + ' url('+this.bgImage+')'+'no-repeat',
+                'background':`${this.bgColor} url(${this.bgImage}) no-repeat`,
                 'backgroundSize':'100%'
             }
         },
         iconStyles(){
             return {
-                'backgroundImage': 'url('+this.bgIcon+')'
+                'backgroundImage': `url(${this.bgIcon})`
             }
         }
     },
@@ -47,7 +47,7 @@ export default {
     },
     methods: {
         activeAvatar(){
-            this.$emit('activeAvatar');
+            this.$emit('active-avatar');
         }
     }
 }

@@ -193,6 +193,8 @@ export default {
                 };
                 this.$emit('update:value', this.num);
                 this.$emit('add', this.num); 
+            }else{
+                this.$emit('add-no-allow'); 
             }
             
         },
@@ -220,6 +222,8 @@ export default {
                 }    
                 this.$emit('update:value', this.num);
                 this.$emit('reduce', this.num);
+            }else{
+                this.$emit('reduce-no-allow'); 
             }
             
         },

@@ -1,3 +1,21 @@
+## 2.2.1
+
+`2020-03-09`
+
+* :sparkles: upd(BackTop)：支持指定容器Id监听滚动事件，重构优化，文档优化 @richard1015
+* :sparkles: upd(Cell)：重构优化内部代码，文档优化 @zhenyulei
+* :sparkles: upd(Dialog)：重构优化内部代码，文档优化 @guoxiao158
+* :sparkles: doc：文档新增业务组件 @richard1015
+* :sparkles: feat(Types)：新增TextBox types类型 @richard1015
+* :sparkles: feat(Scroller)：vertical-scroll组件新增滚动监听事件 @richard1015
+* :sparkles: feat(LuckDraw)：新增业务抽奖组件 @Ymm0008
+* :bug: fix(Stepper) 修复步进器组件触发多次change事件 #207 @richard1015
+* :bug: fix(Popup) 修复样式加载问题 @yangkaixuan
+* :bug: fix(Tab) 修复标签中数据更新不渲染页面的问题 #215 @zhenyulei
+* :bug: fix(LeftSlip) 左滑删除优化,单元测试问题修复 @vickyYE
+* :bug: fix(MoToVue) md 转换 vue 插件性能优化 @linrufeng
+* :bug: fix(checkboxgroup) 修复代码冲突 @richard1015
+
 ## 2.2.0
 
 `2020-02-12`

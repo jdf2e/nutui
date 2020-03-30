@@ -17,7 +17,21 @@
     :value.sync="val2" 
     :min="5" 
     :max="100"
+    @add-no-allow="addNoAllow" 
+    @reduce-no-allow="reduceNoAllow"
 ></nut-stepper>
+```
+``` javascript
+export default {
+  methods: {
+    addNoAllow(){
+      alert('超出最大限制')
+    },
+    reduceNoAllow(){
+      alert('超出最小限制')
+    }
+  }
+}
 ```
 
 设置加减的步长
@@ -76,3 +90,5 @@
 | change | 值改变时触发事件 ｜ value
 | blur | 输入框失去焦点时触发事件 | value
 | focus | 输入框获取焦点时触发事件 | value
+| add-no-allow | 超出最大回调事件 | -
+| reduce-no-allow | 超出最小回调事件 | -

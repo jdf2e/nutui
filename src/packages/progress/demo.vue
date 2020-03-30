@@ -5,7 +5,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="30" stroke-color="#8e71c7"/>
+          <nut-progress percentage="30" stroke-color="pink" text-color="red"/>
         </span>
       </nut-cell>
     </div>
@@ -13,7 +13,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="50" :show-text="false" stroke-width="24"/>
+          <nut-progress percentage="50" :show-text="false" stroke-height="24"/>
         </span>
       </nut-cell>
     </div>
@@ -72,12 +72,12 @@
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="50" :stroke-width="strokeWidth" status="wrong"/>
+          <nut-progress percentage="50" :stroke-height="strokeHeight" status="wrong"/>
         </span>
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-progress percentage="100" stroke-color="#1890ff" stroke-width="15" status="success"/>
+          <nut-progress percentage="100" stroke-color="#1890ff" stroke-height="15" status="success"/>
         </span>
       </nut-cell>
     </div>
@@ -103,7 +103,7 @@ export default {
   data() {
     return {
       val: 0,
-      strokeWidth:15,
+      strokeHeight:15,
       size:'small'
     };
   },
