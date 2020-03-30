@@ -211,7 +211,6 @@ export default {
         },
         // 获取播放时间
         getPlayTime() {
-            console.log(222);
             const percent = this.videoElm.currentTime / this.videoElm.duration;
             this.videoSet.progress.current = Math.round(this.videoSet.progress.width * percent);
             // 赋值时长

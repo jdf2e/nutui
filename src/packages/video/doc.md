@@ -113,10 +113,9 @@ export default {
 };
 ```
 
+## 行内播放
 
-## 视频背景图
-
-当设置视频为背景图时需要将 muted 静音、 disabled 禁止操作、loop 循环播放、autoplay 自动播放设置为 true，移动端需要设置 playsinline 行内展示（兼容安卓用）
+playsinline属性设置移动端视频行内播放，阻止新打开页面播放（兼容ios，兼容部分安卓机）
 
 ```html
 <nut-video :sources="sources" :options="options5"></nut-video>
@@ -128,6 +127,29 @@ export default {
     data() {
         return {
             options5: {
+                playsinline: true,
+                controls: true,
+            },
+
+    },
+  }
+};
+```
+
+## 视频背景图
+
+当设置视频为背景图时需要将 muted 静音、 disabled 禁止操作、loop 循环播放、autoplay 自动播放设置为 true，移动端需要设置 playsinline 行内展示
+
+```html
+<nut-video :sources="sources" :options="options5"></nut-video>
+```
+
+```javascript
+export default {
+  methods: {
+    data() {
+        return {
+            options6: {
                 autoplay: true,
                 volume: 0.6,
                 poster: '',
@@ -141,6 +163,8 @@ export default {
   }
 };
 ```
+
+
 
 ## Prop
 
