@@ -107,11 +107,6 @@ export default {
       size:'small'
     };
   },
-  mounted(){
-    setTimeout(() => {
-      this.size='large';
-    }, 3000);
-  },
   methods: {
     setAddVal() {
       if (this.val >= 100) {
