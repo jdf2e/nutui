@@ -74,7 +74,7 @@ export default {
         updateChooseValue(self, index, value) {
             self.cacheValueData.splice(index, 1, value);
             let ref = `picer-slot-${index}`;
-            self.$refs[ref][0].updateTransform(value);
+            self.$refs[ref] && self.$refs[ref][0].updateTransform(value);
         },
 
         closeActionSheet() {

@@ -62,6 +62,19 @@
     v-model="val"
 />
 ```
+
+自动聚焦
+
+注：由于移动设备的不同，第一次自动获取焦点并不一定能吊起键盘，需要手动吊起来一次，当再次进入时则正常吊起键盘
+
+```html
+<div class="autoFucus">
+  <nut-textinput  class="my-input" type="search" v-model="val8"  placeholder="请输入搜索内容" ref="myInput" @keyup.enter="submit" />
+
+  <div class="searchBtn" @click="submit">搜索</div>
+</div>
+```
+
 ```javascript
 export default {
   data() {
@@ -69,12 +82,22 @@ export default {
       val: ""
     };
   },
+  mounted() {
+    //设置获取焦点
+    this.$nextTick(function() {
+				this.$refs.myInput.focus()
+		})
+  },
   methods: {
     onFocus() {
       console.log("focus事件触发！");
     },
     onBlur() {
       console.log("blur事件触发！");
+    },
+    submit() {
+      //失去焦点
+        this.$refs.myInput.blur()
     }
   }
 };
@@ -86,7 +109,13 @@ export default {
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | value | 当前input值，可使用 v-model 双向绑定数据 | String | ''
+| type | input输入框的类型 | String | 'text'
+| placeholder | 占位文本 | String | ''
 | label | 文本框前面的标签 | String | ''
 | disabled | 是否禁用 | Boolean | false
-| clearBtn | 是否需要清空按钮 | Boolean | true
-| hasBorder | 是否需要边框 | Boolean | true
+| clear-btn | 是否需要清空按钮 | Boolean | true
+| has-border | 是否需要边框 | Boolean | true
+
+## 特殊说明 
+
+设置input框自动聚焦时，由于ios和安卓设备的不同，在ios中，引入的父组件第一次加载，键盘不会弹起，退出再次进入会自动弹起。

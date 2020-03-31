@@ -10,8 +10,8 @@ English | [简体中文](./README-zh_CN.md)
 ## Features
 
 * New structure
-* 40+ Reusable components
-* Used by 30+ JD mobile projects
+* 50+ Reusable components
+* Used by 40+ JD mobile projects
 * Refer to JD APP 7.0 visual specification
 * On-demand loading Support
 * Detailed documents and examples

@@ -78,17 +78,16 @@
         font-size: 12px;
         line-height: 1;
     }
-    .nut-icon-success {
+    .nut-icon-success,.nut-icon-fail {
         width: 10px;
         height: 10px;
         display: inline-block;
+    }
+    .nut-icon-success {
         background: url('#{$assetsPath}/img/success.png') no-repeat;
         background-size: cover;
     }
     .nut-icon-fail {
-        width: 10px;
-        height: 10px;
-        display: inline-block;
         background: url('#{$assetsPath}/img/wrong.png') no-repeat;
         background-size: cover;
     }

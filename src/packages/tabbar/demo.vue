@@ -94,38 +94,13 @@ export default {
   },
   methods: {
       tabSwitch1:function(value,index){
-        /*let arr = [...this.tabList1];
-        arr.map((item,idx)=>{
-          if(idx==index){
-              item.curr = true;
-          }else{
-              item.curr = false;
-          }
-        })
-        this.tabList1 = [...arr];*/
-        console.log(index);
+        console.log(value,index);
       },
       tabSwitch2:function(value,index){
-        /*let arr = [...this.tabList2];
-        arr.map((item,idx)=>{
-          if(idx==index){
-              item.curr = true;
-          }else{
-              item.curr = false;
-          }
-        })
-        this.tabList2 = [...arr];*/
+        console.log(value,index);
       },
       tabSwitch3:function(value,index){
-        /*let arr = [...this.tabList3];
-        arr.map((item,idx)=>{
-          if(idx==index){
-              item.curr = true;
-          }else{
-              item.curr = false;
-          }
-        })
-        this.tabList3 = [...arr];*/
+        console.log(value,index);
       }
   }
 };

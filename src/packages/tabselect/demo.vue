@@ -15,7 +15,9 @@
       :show="show"
       @close="show = false"
       @choose="choose"
+      @onOkBtn="onOkBtn"
       :multiple="false"
+      :isDefaultSelected="true"
     ></nut-tabselect>
 
     <nut-cell
@@ -33,6 +35,7 @@
       :show="showMore"
       @close="showMore = false"
       @choose="choose"
+      @onOkBtn="onOkBtn"
       :multiple="true"
       :max="3"
     ></nut-tabselect>
@@ -121,9 +124,17 @@ export default {
       showMore: false
     };
   },
+  //   mounted() {
+  //     setTimeout(() => {
+  //       this.tabList[0].tabTitle = "测试";
+  //     }, 10000);
+  //   },
   methods: {
     choose(title, item) {
       console.log(title, item);
+    },
+    onOkBtn(event) {
+      console.log(event)
     }
   }
 };

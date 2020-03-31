@@ -1,0 +1,84 @@
+
+.nut-timeline{
+    
+    .nut-timelineitem{
+
+        position: relative;
+        font-size: 12px;
+
+        .timelineitem-list-box{
+            padding: 0 18px 0 0px;
+            color:#333;
+            .timelineitem-list{
+                position: relative;
+                padding-bottom: 10px;
+
+                .timelineitem-point{
+                    position: absolute;
+                    left: 0px;
+                    top: 2px;
+                    .point-icon{
+                        width: 7px;
+                        height: 7px;
+                        border: 1px solid #f00;
+                        border-radius: 50%;
+                        &.circle-icon{
+                            background: #f00;
+                        }
+
+                        &.hollow-icon{
+                            background: transparent;
+                        }
+                    }
+
+                    .custom-icon{
+                        // width: 9px;
+                        // height: 9px;
+                        overflow: hidden;
+                        background: transparent;
+                    }
+                }
+                
+                .timelineitem-title{
+                    margin-bottom: 8px;
+                    padding-left: 13px;
+                    line-height: 13px;
+                    position: relative;
+                    .time{
+                        font-size: 12px;
+                        color: #666;
+                    }
+                }
+                .timelineitem-content{
+                    padding-left: 13px;
+                }
+        
+                
+            }
+        }
+
+        &.left-border{
+            &:before{
+                position: absolute;
+                top: 10px;
+                left: 4px;
+                content: '';
+                width: 1px;
+                height: calc(100% - 8px);
+                background: #C2C2C2;
+            };
+        }
+
+        &:last-child{
+            &.left-border{
+                &:before{
+                    width: 0px;
+                };
+            }
+        }
+    }
+    
+    
+
+
+}

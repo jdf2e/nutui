@@ -9,6 +9,8 @@
     right: 0;
     bottom: 0;
     width: 100%;
+    max-height: 80%;
+    overflow: auto;
     z-index: $zindex-actionsheet;
     background-color: $body-background;
 }
@@ -50,6 +52,9 @@
 }
 .nut-actionsheet-item-active{
     color: $primary-color;
+}
+.nut-actionsheet-item-disabled{
+    color: #e1e1e1;
 }
 .nut-actionsheet-cancel{
     margin-top: 5px;

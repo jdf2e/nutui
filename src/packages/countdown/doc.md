@@ -41,6 +41,17 @@
 </nut-countdown>
 ```
 
+异步更新结束时间
+
+```html
+<nut-countdown 
+    showDays 
+    showPlainText 
+    :endTime="asyncEnd" 
+>
+</nut-countdown>
+```
+
 控制开始和暂停的倒计时
 
 ```html
@@ -65,7 +76,7 @@
 ## Event
 
 | 字段 | 说明 | 回调参数
-| ----- | ----- | ----- | -----
+| ----- | ----- | ----- 
 | on-end | 倒计时结束时 | 剩余时间戳
 | on-paused | 暂停时 | 剩余时间戳
 | on-restart | 暂停时 | 剩余时间戳

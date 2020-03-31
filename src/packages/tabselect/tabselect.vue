@@ -1,16 +1,16 @@
 <template>
-  <div class="nut-tabselect">
+  <div class="nut-tabselect" v-if="list.length">
     <nut-popup
       round
-      closeable  
+      closeable
       v-model="isShow"
       position="bottom"
       :style="{ height: '457px' }"
     >
       <div class="nut-tabselect-main-title" v-html="mainTitle"></div>
-      <nut-tab @tab-switch="tabSwitchOuter">
+      <nut-tab @tab-switch="tabSwitchOuter" :init-data="list">
         <nut-tab-panel
-          v-for="(value, idx) in tabList"
+          v-for="(value, idx) in list"
           v-bind:key="value.tabTitle"
           :tabTitle="value.tabTitle"
         >
@@ -19,6 +19,8 @@
             @tab-switch="tabSwitchInner"
             positionNav="left"
             class="nut-tab-inner"
+            :init-data="value.children"
+            :defIndex="defIndex"
           >
             <nut-tab-panel
               v-for="(item, index) in value.children"
@@ -58,7 +60,7 @@
         </nut-tab-panel>
       </nut-tab>
       <div class="nut-tabselect-btn">
-        <a href="javascript:;" @click="isShow = false">确定</a>
+        <a href="javascript:;" @click="clickHandler">确定</a>
       </div>
     </nut-popup>
   </div>
@@ -98,6 +100,10 @@ export default {
     max: {
       type: Number,
       default: Infinity
+    },
+    isDefaultSelected: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -105,8 +111,10 @@ export default {
       isShow: false,
       level0: 0,
       level1: new Set([0]),
-      level2: new Set(["0-0"]),
-      allChoose: new Set([this.getText(0, 0, 0)])
+      level2: this.isDefaultSelected ? new Set(["0-0"]) : new Set(),
+      allChoose: this.getText(0, 0, this.isDefaultSelected ? 0 : null),
+      list: [],
+      defIndex: 0
     };
   },
   components: {
@@ -121,35 +129,60 @@ export default {
       if (!val) {
         this.$emit("close");
       }
+    },
+    tabList: {
+      handler(val) {
+        this.list = val;
+        this.level0 = 0;
+        this.level1 = new Set([0]);
+        this.level2 = this.isDefaultSelected ? new Set(["0-0"]) : new Set();
+        this.allChoose = this.getText(0, 0, this.isDefaultSelected ? 0 : null);
+        this.emit();
+      },
+      deep: true
     }
   },
   mounted() {
+    this.list = this.tabList;
+    this.allChoose = this.getText(0, 0, this.isDefaultSelected ? 0 : null);
     this.emit();
   },
   methods: {
     emit() {
       this.$emit(
         "choose",
-        (this.tabList[this.level0] && this.tabList[this.level0].tabTitle) || "",
-        [...this.allChoose]
+        (this.list &&
+          this.list[this.level0] &&
+          this.list[this.level0].tabTitle) ||
+          "",
+        (this.allChoose && [...this.allChoose]) || []
       );
     },
     getText(idx, index, sIndex) {
+      if (sIndex === null) {
+        return null;
+      }
       const tab =
-        (this.tabList[idx] && this.tabList[idx].children[index]) || {};
+        (this.list && this.list[idx] && this.list[idx].children[index]) || {};
       const subTit = tab.tabTitle;
       const content =
         (tab.content && tab.content[sIndex]) || this.defaultContent[sIndex];
-      return subTit + " " + content;
+      return new Set([{ subTit, content }]);
     },
     tabSwitchOuter: function(index, event) {
+      this.defIndex = 0;
       this.level0 = index;
       this.level1 = new Set([0]);
-      this.level2 = new Set(["0-0"]);
-      this.allChoose = new Set([this.getText(index, 0, 0)]);
+      this.level2 = this.isDefaultSelected ? new Set(["0-0"]) : new Set();
+      this.allChoose = this.getText(
+        index,
+        0,
+        this.isDefaultSelected ? 0 : null
+      );
       this.emit();
     },
     tabSwitchInner: function(index, event) {
+      this.defIndex = index;
       if (!this.multiple) {
         this.level1 = new Set([index]);
       } else {
@@ -169,15 +202,26 @@ export default {
       }
       if (!this.multiple) {
         this.level2 = new Set([index + "-" + sIndex]);
-        this.allChoose = new Set([this.getText(index, 0, 0)]);
+        this.allChoose = this.getText(idx, index, sIndex);
       } else {
         if (this.max !== Infinity && this.max === this.level2.size) {
           return;
         }
         this.level2 = new Set([...this.level2.add(index + "-" + sIndex)]);
-        this.allChoose.add(this.getText(idx, index, sIndex));
+        if (this.allChoose) {
+          this.allChoose.add(...this.getText(idx, index, sIndex));
+        } else {
+          this.allChoose = this.getText(idx, index, sIndex);
+        }
       }
       this.emit();
+    },
+    clickHandler (event) {
+      this.$emit(
+        "onOkBtn",
+        event
+      )
+      this.isShow = false
     },
     isActive(idx, index, sIndex) {
       if (
