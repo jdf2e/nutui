@@ -47,7 +47,7 @@ export default {
     },
     methods: {
         activeAvatar(){
-            this.$emit('activeAvatar');
+            this.$emit('active-avatar');
         }
     }
 }

@@ -5,7 +5,7 @@
     font-size: 12px;
     background:#eee;
 }
-.nut-tab-leftnav{
+.nut-tab-horizontal{
     display: flex;
     flex-direction: row;
     position: relative;
@@ -25,7 +25,7 @@
     top: 0px;
     border-radius: 50%;
 }
-.nut-tab-leftnav .close-btn{
+.nut-tab-horizontal .close-btn{
     position: absolute;
     width: 17px;
     height: 17px;
@@ -97,6 +97,15 @@
         transition: all 0.4s ease-in-out;
     }
 }
+.nut-tab-link{
+    color: #333;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    text-decoration:none;
+    line-height: 1;
+}
 .nut-tab-title-bottomnav{
     border:1px solid #fff;
     border-top:1px solid #EDEDED;
@@ -118,13 +127,13 @@
 
 .nut-title-nav-list{
     flex: 1;
-    cursor: pointer;
     position: relative;
     flex-direction: row;
     align-items:center;
     justify-content:center;
     display: flex;
     background: #fff;
+    box-sizing: border-box;
 }
 .nut-title-nav-leftnav{
     flex:1;
@@ -142,15 +151,6 @@
     align-items: center;
     position: relative;
 }
-.nut-tab-link{
-    color: #333;
-    display: flex;
-    align-items:center;
-    justify-content:center;
-    font-size:12px;
-    text-decoration:none;
-    line-height: 1;
-}
 .nut-tab-icon{
     display: inline-block;
     margin-right: 5px;
@@ -162,12 +162,6 @@
 .nut-tab-active{
     background: #fff;
     border: 0;
-    .nut-tab-link{
-        font-size: 14px;
-        font-weight: bold;
-        border: 0;
-        color: #333;
-    }
 }
 .nut-tab-item {  
     height: 200px;

@@ -15,11 +15,11 @@
     </div>
     <h4>修改背景色</h4>
     <div class="white-bg">
-      <nut-avatar bgcolor="#f0250f"></nut-avatar>
+      <nut-avatar bg-color="#f0250f"></nut-avatar>
     </div>
     <h4>可以修改头像的内容</h4>
     <div class="white-bg">
-      <nut-avatar size="large" bgIcon>U</nut-avatar>
+      <nut-avatar size="large" bg-icon>U</nut-avatar>
     </div>
     <h4>修改背景图片</h4>
     <div class="white-bg">
@@ -36,7 +36,7 @@
     </div>
     <h4>点击头像有触发事件</h4>
     <div class="white-bg">
-      <nut-avatar @activeAvatar="activeAvatar"></nut-avatar>
+      <nut-avatar @active-avatar="activeAvatar"></nut-avatar>
     </div>
   </div>
 </template>

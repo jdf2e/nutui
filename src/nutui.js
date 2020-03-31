@@ -106,6 +106,10 @@ import Video from "./packages/video/index.js";
 import "./packages/video/video.scss";
 import Signature from "./packages/signature/index.js";
 import "./packages/signature/signature.scss";
+import TimeLine from "./packages/timeline/index.js";
+import "./packages/timeline/timeline.scss";
+import TimeLineItem from "./packages/timelineitem/index.js";
+import "./packages/timelineitem/timelineitem.scss";
 
 const packages = {
   Cell,
@@ -159,7 +163,9 @@ const packages = {
   TabSelect: TabSelect,
   LuckDraw: LuckDraw,
   Video: Video,
-  Signature: Signature
+  Signature: Signature,
+  TimeLine: TimeLine,
+  TimeLineItem: TimeLineItem
 };
 
 const components = {};

@@ -6,9 +6,9 @@
 
 ```html
 <nut-tab @tab-switch="tabSwitch">
-    <nut-tab-panel tabTitle="页签1">页签1</nut-tab-panel>
-    <nut-tab-panel tabTitle="页签2">页签2</nut-tab-panel>
-    <nut-tab-panel tabTitle="页签3">页签3</nut-tab-panel>
+    <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
+    <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
+    <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
 </nut-tab>
 ```
 ```javascript
@@ -21,15 +21,15 @@ export default {
 };
 ```
 
-使用数据渲染，支持上/下/左/右四个样式；
+## 使用数据渲染，支持上/下/左/右四个样式；
 
 ```html
-<nut-tab @tab-switch="tabSwitch"  positionNav="bottom">
+<nut-tab @tab-switch="tabSwitch"  position-nav="bottom">
     <nut-tab-panel 
       v-for="value in editableTabs" 
       v-bind:key="value.tabTitle" 
-      :tabTitle="value.tabTitle" 
-      :iconUrl="value.tabUrl" 
+      :tab-title="value.tabTitle" 
+      :icon-url="value.tabUrl" 
       v-html="value.content"
     >
     </nut-tab-panel>
@@ -72,14 +72,14 @@ export default {
 };
 ```
 
-禁止选中，默认选中某个标签,如需更新数组后，重新渲染Tab页面，请将更新数组传入init-data
+## 禁止选中，默认选中某个标签,如需更新数组后，重新渲染Tab页面，请将更新数组传入init-data
 
 ```html
-<nut-tab :defIndex="1" class="customer-css" @tab-switch="tabSwitch" :contentShow="true" :init-data="disableTabs">
+<nut-tab :def-index="1" class="customer-css" @tab-switch="tabSwitch" :contentShow="true" :init-data="disableTabs">
     <nut-tab-panel
     v-for="value in disableTabs"
     v-bind:key="value.tabTitle"
-    :tabTitle="value.tabTitle"
+    :tab-title="value.tabTitle"
     :disable="value.disable"
     v-html="value.content"
   ></nut-tab-panel>
@@ -195,9 +195,8 @@ export default {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| positionNav | 页签栏的分布，可选值 top/bottom/left/right | String | top
-| defIndex | 默认选中的页签栏 | String | 1
-| contentShow | 是否显示tab内容 | Boolean | true
+| position-nav | 页签栏的分布，可选值 top/bottom/left/right | String | top
+| def-index | 默认选中的页签栏 | String | 1
 | init-data | 监听数据变化，渲染更新页面 | Array | []
 
 
@@ -206,13 +205,14 @@ export default {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| tabTitle | 页签的标题 | String | ''
-| iconUrl | 页签的图标地址 | String | ''
+| tab-title | 页签的标题 | String | ''
+| icon-url | 页签的图标地址 | String | ''
 | content | 页签的自定义内容 | String | ''
+| disable | 是否禁用页签 |Boolean|false|
 
 ### Event
 
 | 事件名称 | 说明 | 回调参数 
 |----- | ----- | ----- 
-| tabSwitch | 切换页签时触发事件 | 点击的索引值和触发元素
+| tab-switch | 切换页签时触发事件 | 点击的索引值和触发元素
 
