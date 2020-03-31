@@ -24,6 +24,12 @@
           <nut-countdown slot="title" showDays showPlainText :endTime="end" />
         </nut-cell>
       </div>
+      <h4>异步更新结束时间</h4>
+      <div>
+        <nut-cell>
+          <nut-countdown slot="title" showPlainText :endTime="asyncEnd" />
+        </nut-cell>
+      </div>
       <h4>控制开始和暂停的倒计时</h4>
       <div>
         <nut-cell>
@@ -50,6 +56,7 @@ export default {
     return {
       serverTime: Date.now() - 30 * 1000,
       end: Date.now() + 50 * 1000,
+      asyncEnd: 0,
       paused: false
     };
   },
@@ -66,6 +73,11 @@ export default {
     onrestart(v) {
       console.log('restart: ', v);
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.asyncEnd = Date.now() + 30 * 1000
+    }, 3000)
   }
 };
 </script>

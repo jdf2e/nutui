@@ -42,6 +42,19 @@
     @submit="submitFun"
 ></nut-searchbar>
 ```
+
+## 获取焦点与失去焦点
+
+#### 注：由于移动设备的不同，第一次自动获取焦点并不一定能吊起键盘，需要手动吊起来一次，当再次进入时则正常吊起键盘
+
+```html
+<nut-searchbar
+    placeText="请输入自定义文案"
+    @submit="search"
+    ref="myInput"
+></nut-searchbar>
+```
+
 > 输入、失去焦点、提交事件都会返回当前输入值
 
 ```javascript
@@ -49,6 +62,12 @@ export default {
     data() {
         return {
         }
+    },
+    mounted(){
+        //设置获取焦点
+        this.$nextTick(function() {
+            this.$refs.myInput.focus()
+        })
     },
     methods:{
         focusFun() {
@@ -65,6 +84,11 @@ export default {
         submitFun(value) {
             console.log(value);
             console.log('默认提交操作！');
+        },
+        search(value) {
+            //点击键盘中的’搜索‘时，失去焦点
+            this.$refs.myInput.blur()
+            console.log('搜索')
         }
     }
 }

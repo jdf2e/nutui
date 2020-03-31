@@ -104,6 +104,11 @@ export default {
 			ani: false
     };
   },
+  watch: {
+    range() {
+      this.init();
+    }
+  },
   computed: {
     total() {
       return this.range[1] - this.range[0];
@@ -122,6 +127,10 @@ export default {
 		}
   },
   methods: {
+    init() {
+      this.box = this.$el.querySelector(".nut-range-box");
+      this.propInit();
+    },
 		updateRangeValues() {
 			let rangeValues = this.currentLeft > this.currentRight? [this.currentRight, this.currentLeft]: [this.currentLeft, this.currentRight];
 			this.$emit("update:rangeValues", rangeValues);
@@ -180,8 +189,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.box = this.$el.querySelector(".nut-range-box");
-      this.propInit();
+      this.init();
     });
   }
 };

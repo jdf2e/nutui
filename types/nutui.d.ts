@@ -72,3 +72,5 @@ export declare class Popup extends UIComponent {}
 export declare class LuckDraw extends UIComponent {}
 export declare class Video extends UIComponent {}
 export declare class Signature extends UIComponent {}
+export declare class TimeLine extends UIComponent {}
+export declare class TimeLineItem extends UIComponent {}

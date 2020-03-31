@@ -15,7 +15,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper :value.sync="val2" :min="5" :max="100"></nut-stepper>
+          <nut-stepper :value.sync="val2" @add-no-allow="addNoAllow" @reduce-no-allow="reduceNoAllow" :min="5" :max="100"></nut-stepper>
         </span>
       </nut-cell>
     </div>
@@ -68,6 +68,12 @@ export default {
     }
   },
   methods: {
+    addNoAllow(){
+      alert('超出最大限制')
+    },
+    reduceNoAllow(){
+      alert('超出最小限制')
+    },
     focus(e, v) {
       console.log('focus,', e, v)
     },

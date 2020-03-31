@@ -84,7 +84,7 @@ export default {
       this.clearBtnShow = false;
     },
 
-    autoFocus() {
+    focus() {
       this.$nextTick(function() {
         this.$refs.nutUiInput.focus()
       })

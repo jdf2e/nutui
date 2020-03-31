@@ -60,7 +60,7 @@
         </nut-tab-panel>
       </nut-tab>
       <div class="nut-tabselect-btn">
-        <a href="javascript:;" @click="isShow = false">确定</a>
+        <a href="javascript:;" @click="clickHandler">确定</a>
       </div>
     </nut-popup>
   </div>
@@ -215,6 +215,13 @@ export default {
         }
       }
       this.emit();
+    },
+    clickHandler (event) {
+      this.$emit(
+        "onOkBtn",
+        event
+      )
+      this.isShow = false
     },
     isActive(idx, index, sIndex) {
       if (
