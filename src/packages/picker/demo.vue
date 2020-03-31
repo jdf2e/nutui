@@ -66,7 +66,7 @@
         @click.native="switchPicker('isVisible2')"
       >
         <span slot="title">
-          <label>城市选择自定义数据</label>
+          <label>城市选择自定义数据1</label>
         </span>
         <span slot="sub-title">联动~~~</span>
         <div
@@ -318,6 +318,7 @@ export default {
     },
     // demo 城市选择(联动) end
     setChooseValueCustmer(chooseData) {
+      //alert(JSON.stringify(chooseData));
       var str = chooseData.map(item => item.value).join("-");
       this.cityCustmer = str;
     },
@@ -329,6 +330,7 @@ export default {
           var resItems = APIData.find(item => item.label == label);
           if (resItems && resItems.array.length) {
             this.$set(this.custmerCityData, 1, resItems.array);
+            
             // 复原位置
             self.updateChooseValue(self, 0, chooseData[0]);
             self.updateChooseValue(self, 1, chooseData[1]);
@@ -346,8 +348,7 @@ export default {
           if (resItems && resItems.array.length) {
             this.$set(this.custmerCityData, 1, resItems.array);
             // 更新第二列位置
-            let idx = this.custmerCityData[0].indexOf(resValue);
-            self.updateChooseValue(self, index + 1, this.custmerCityData[idx][0]);
+            self.updateChooseValue(self, index + 1, this.custmerCityData[1][0]);
           }
         }, 100);
       }
