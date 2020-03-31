@@ -1,6 +1,6 @@
 <template>
     <div class="nut-timeline">
-        <slot :isLast="false"></slot>
+        <slot></slot>
     </div>
 </template>
 <script>
@@ -14,7 +14,6 @@ export default {
         return {};
     },
     mounted(){
-        console.log(this.$slots)
     },
     methods: {
     }
