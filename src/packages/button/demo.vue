@@ -72,8 +72,9 @@
 <script>
 export default {
     methods: {
-        clickHandler() {
+        clickHandler(e) {
             alert("我点击了按钮");
+            console.log(e, "我点击了按钮");
         }
     }
 };
