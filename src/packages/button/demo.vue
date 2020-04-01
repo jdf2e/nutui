@@ -2,7 +2,7 @@
     <div>
         <h4>常规按钮</h4>
         <div class="bg">
-            <nut-button @click="clickHandler">去结算</nut-button>
+            <nut-button @click="clickHandler" :disabled="disabled">去结算</nut-button>
             <nut-button disabled>去结算（disabled）</nut-button>
         </div>
         <h4>常规按钮-小</h4>
@@ -71,10 +71,19 @@
 
 <script>
 export default {
+    data() {
+        return {
+            disabled: false
+        };
+    },
     methods: {
         clickHandler(e) {
-            alert("我点击了按钮");
+            // alert("我点击了按钮");
             console.log(e, "我点击了按钮");
+            this.disabled = true;
+            setTimeout(() => {
+                this.disabled = false;
+            }, 2000);
         }
     }
 };

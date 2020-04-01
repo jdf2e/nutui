@@ -7,6 +7,7 @@
 ```html
 <nut-button 
   @click="clickHandler"
+  :disabled='disabled'
 >
   去结算
 </nut-button>
@@ -20,11 +21,21 @@
 
 ```javascript
 export default {
-  methods: {
-      clickHandler() {
-        alert('我点击了按钮');
-      }
-  }
+    data() {
+        return {
+            disabled: false
+        };
+    },
+    methods: {
+        clickHandler(e) {
+            // alert("我点击了按钮");
+            console.log(e, "我点击了按钮");
+            this.disabled = true;
+            setTimeout(() => {
+                this.disabled = false;
+            }, 2000);
+        }
+    }
 };
 ```
 
