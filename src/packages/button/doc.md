@@ -18,6 +18,16 @@
 </nut-button>
 ```
 
+```javascript
+export default {
+  methods: {
+      clickHandler() {
+        alert('我点击了按钮');
+      }
+  }
+};
+```
+
 常规按钮-小
 
 ```html
@@ -229,23 +239,14 @@
       
 ```
 
-```javascript
-export default {
-  methods: {
-      clickHandler() {
-        alert('我点击了按钮');
-      }
-  }
-};
-```
 
 ## Prop
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| type | 按钮类型，可选类型包含：空、red、gray、light、lightred、primary、default、actived、dashed | String | -
-| block | 是否为通栏 | Boolean | false
-| small | 是否为小号组件 | Boolean | false
-| shape | 形状配置，可选类型：空、circle | String | -
-| icon  | 按钮前的图标，参考Icon组件 | String | -
-| color | 自定义颜色，包含文字与图片颜色 | String | -
+| 字段  | 说明                                                                                      | 类型    | 默认值 |
+| ----- | ----------------------------------------------------------------------------------------- | ------- | ------ |
+| type  | 按钮类型，可选类型包含：空、red、gray、light、lightred、primary、default、actived、dashed | String  | -      |
+| block | 是否为通栏                                                                                | Boolean | false  |
+| small | 是否为小号组件                                                                            | Boolean | false  |
+| shape | 形状配置，可选类型：空、circle                                                            | String  | -      |
+| icon  | 按钮前的图标，参考Icon组件                                                                | String  | -      |
+| color | 自定义颜色，包含文字与图片颜色                                                            | String  | -      |
