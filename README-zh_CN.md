@@ -1,7 +1,7 @@
 # NutUI 2
 ![npm version](https://img.shields.io/npm/v/@nutui/nutui.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=master)](https://github.com/jdf2e/nutui/) [![Coverage Status](https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master)](https://coveralls.io/github/jdf2e/nutui?branch=master) ![license](https://img.shields.io/npm/l/@nutui/nutui.svg)
  
-一套移动端轻量级Vue组件库
+一套移动端轻量级组件库
     
 ![NutUI](https://img11.360buyimg.com/uba/jfs/t1/11117/21/3608/18942/5c20ab52E35e5a500/02e3c1f89cd3dad1.png)
 
@@ -10,8 +10,8 @@
 ## 特性
 
 * 全新的架构
-* 40+ 高质量组件
-* 30+ 京东移动端项目正在使用
+* 50+ 高质量组件
+* 40+ 京东移动端项目正在使用
 * 参照京东APP 7.0 视觉规范
 * 支持按需加载
 * 详尽的文档和示例

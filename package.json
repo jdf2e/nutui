@@ -12,7 +12,7 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "dev": " nutui-cli dev",
+    "dev": "nutui-cli dev",
     "build": "nutui-cli build",
     "build:site": "nutui-cli build-site",
     "clean": "nutui-cli clean",
@@ -20,7 +20,9 @@
     "lint": "nutui-cli lint",
     "test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config node_modules/@nutui/cli/dist_cli/webpack/test.config.js  --require node_modules/@nutui/cli/dist_cli/test/setup.js src/packages/*/__test__/**.spec.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "test:watch": "npm run test --watch"
+    "test:watch": "npm run test --watch",
+    "prettier:check": "prettier -l {lib,src}/**/**/*.{ts,js,vue,scss}",
+    "prettier:fix": "prettier --write {lib,src}/**/**/*.{ts,js,vue,scss}"
   },
   "repository": {
     "type": "git",
@@ -40,7 +42,6 @@
   "keywords": [
     "nutui",
     "nutui2",
-    "nutui3",
     "vue",
     "webpack",
     "vue component",
@@ -52,14 +53,19 @@
   "dependencies": {
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
-    "@nutui/cli": "^0.0.8",
+    "@nutui/cli": "^0.0.9",
+    "@vue/composition-api": "^0.5.0",
     "husky": "^3.0.0",
+    "ts-loader": "^6.2.2",
     "vue-lazyload": "^1.3.3"
   },
   "peerDependencies": {
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
+    "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-vue": "^6.1.2",
     "stylelint-config-standard": "^19.0.0"
   },
@@ -73,10 +79,5 @@
     ],
     "instrument": false,
     "sourceMap": false
-  },
-  "browserslist": [
-    "> 3%",
-    "Android >= 4",
-    "iOS >= 8"
-  ]
+  }
 }

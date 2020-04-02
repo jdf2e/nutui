@@ -1,7 +1,7 @@
 # NutUI 2
 ![npm version](https://img.shields.io/npm/v/@nutui/nutui.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=master)](https://github.com/jdf2e/nutui/) [![Coverage Status](https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master)](https://coveralls.io/github/jdf2e/nutui?branch=master) ![license](https://img.shields.io/npm/l/@nutui/nutui.svg)
  
-A light mobile Toolkit based on Vue
+A light mobile Toolkit
     
 ![NutUI](https://img11.360buyimg.com/uba/jfs/t1/11117/21/3608/18942/5c20ab52E35e5a500/02e3c1f89cd3dad1.png)
 
@@ -10,8 +10,8 @@ English | [简体中文](./README-zh_CN.md)
 ## Features
 
 * New structure
-* 40+ Reusable components
-* Used by 30+ JD mobile projects
+* 50+ Reusable components
+* Used by 40+ JD mobile projects
 * Refer to JD APP 7.0 visual specification
 * On-demand loading Support
 * Detailed documents and examples

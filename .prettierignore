@@ -1,0 +1,10 @@
+**/*.html
+**/*.txt
+**/*.md
+**/*.svg
+**/*.ttf
+**/*.woff
+**/*.eot
+package.json
+lib/plugin/cli/site/doc/page
+lib/plugin/cli/site/doc/view

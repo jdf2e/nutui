@@ -3,6 +3,7 @@
 `2020-03-31`
 
 * :sparkles: feat(Video)：新增数据展示-视频组件 @vickyYE
+* :sparkles: feat(TimeLine)：新增时间轴组件 @yangxiaolu1993
 * :sparkles: feat(Signature)：新增业务类型-签名组件 @irisSong
 * :sparkles: upd(TabSelect)：新增确认按钮回调事件 @yi-ge
 * :sparkles: upd(TextBox)：新增v-model属性 @yi-ge

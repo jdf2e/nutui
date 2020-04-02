@@ -15,6 +15,7 @@
                 <span @click.prevent="onlyDelClick($event)">删除</span></div
             > -->
             <div class="nut-leftslip-item-btn">
+                <!-- <a @click.prevent="onlyDelClick($event)">删除</a> -->
                 <slot name="slipbtns">
                     <a class="nut-delet-btn" @click.prevent="onlyDelClick($event)" v-if="onlyDelBtn">删除</a>
                 </slot>
@@ -33,10 +34,6 @@ export default {
         btnSlipDel: {
             type: Boolean,
             default: false
-        },
-        customBtnWidth: {
-            type: Number,
-            default: 40
         }
     },
     data() {
@@ -47,10 +44,9 @@ export default {
             moveY: 0,
             left: 0,
             buttonWidth: 0,
-            offset: 0, //移动距离
-            deleteSlider: '', //滑动时的效果
-            delBtnStyle: '', //单个删除键拖拽删除效果
-            openState: false
+            disX: 0, //移动距离
+            deleteSlider: '', //滑动时的效果,使用v-bind:style="deleteSlider"
+            delBtnStyle: '' //单个删除键拖拽删除效果
         };
     },
     mounted() {
@@ -63,15 +59,15 @@ export default {
             }
         });
 
-        // window.addEventListener('scroll', this.handleScroll, true);
+        window.addEventListener('scroll', this.handleScroll, true);
     },
     beforeDestroy() {
         // 移除监听
-        // window.removeEventListener('scroll', this.handleScroll, true);
+        window.removeEventListener('scroll', this.handleScroll, true);
     },
     methods: {
         handleScroll() {
-            if (this.offset) {
+            if (this.disX) {
                 this.restSlide();
             }
         },
@@ -84,12 +80,8 @@ export default {
             this.restSlide();
         },
         touchStart(e) {
-            // if(this.openState){
-            //     return
-            // }
             this.restSlide();
             e = e || event;
-            // e.preventDefault();
             //等于1时表示此时有只有一只手指在触摸屏幕
             if (e.touches.length == 1) {
                 this.startX = e.touches[0].clientX;
@@ -98,47 +90,45 @@ export default {
         },
         touchMove(e) {
             e = e || event;
-            // e.preventDefault();
             //获取当前滑动对象
             let parentElement = e.currentTarget.parentElement;
-
+            //获取删除按钮的宽度，此宽度为滑块左滑的最大距离
             let itemWd = this.$refs.slipItem.offsetWidth;
-            let wd = this.onlyDelBtn ? this.customBtnWidth : this.buttonWidth;
+            let wd = this.onlyDelBtn ? 40 : this.buttonWidth;
 
             if (e.touches.length == 1) {
+                // 滑动时距离浏览器左侧实时距离
                 this.moveY = e.touches[0].clientY;
                 this.moveX = e.touches[0].clientX;
-
                 if (Math.abs(this.moveY - this.startY) < 40) {
-                    this.offset = this.startX - this.moveX;
-
+                    //起始位置减去 实时的滑动的距离，得到手指实时偏移距离
+                    this.disX = this.startX - this.moveX;
+                    // console.log(this.disX);
                     if (this.onlyDelBtn) {
                         //单一删除，左滑一键删除
-                        if (this.offset < 0 || this.offset == 0) {
+                        if (this.disX < 0 || this.disX == 0) {
                             this.deleteSlider = 'transform:translateX(0px)';
-                            this.openState = false;
                         }
-                        this.deleteSlider = 'transform:translateX(-' + this.offset + 'px)';
-                        this.delBtnStyle = 'width:' + this.offset + 'px';
+                        this.deleteSlider = 'transform:translateX(-' + this.disX + 'px)';
+                        this.delBtnStyle = 'width:' + this.disX + 'px';
                         parentElement.dataset.type = 1; //设置滑动展开隐藏标志位，左滑展开为1，右滑或复位为0
-                        this.openState = true;
                     } else {
-                        if (this.offset < wd / 4 || this.offset == 0) {
+                        // 如果是向右滑动或者不滑动，不改变滑块的位置
+                        if (this.disX < wd / 4 || this.disX == 0) {
                             this.deleteSlider = 'transform:translateX(0px)';
                             parentElement.dataset.type = 0;
-                            this.openState = false;
-                        } else if (this.offset > wd / 4) {
+                        } else if (this.disX > wd / 4) {
                             parentElement.dataset.type = 1;
-                            this.deleteSlider = 'transform:translateX(-' + this.offset + 'px)';
+                            this.deleteSlider = 'transform:translateX(-' + this.disX + 'px)';
                             // 最大也只能等于删除按钮宽度
-                            if (this.offset >= wd) {
+                            if (this.disX * 1.5 >= wd) {
+                                // parentElement.dataset.type = 1;
                                 if (wd >= itemWd) {
-                                    this.deleteSlider = 'transform:translateX(-' + (itemWd - this.customBtnWidth) + 'px)';
+                                    this.deleteSlider = 'transform:translateX(-' + (itemWd - 40) + 'px)';
                                 } else {
                                     this.deleteSlider = 'transform:translateX(-' + wd + 'px)';
                                 }
                             }
-                            this.openState = true;
                         }
                     }
                 }
@@ -148,49 +138,47 @@ export default {
             e = e || event;
             let parentElement = e.currentTarget.parentElement;
             let itemWd = this.$refs.slipItem.offsetWidth;
-            let wd = this.onlyDelBtn ? this.customBtnWidth : this.buttonWidth;
-
+            let wd = this.onlyDelBtn ? 40 : this.buttonWidth;
             if (e.changedTouches.length == 1) {
                 let endY = e.changedTouches[0].clientY;
                 if (Math.abs(this.startY - endY) < 40) {
                     let endX = e.changedTouches[0].clientX;
-                    this.offset = this.startX - endX;
-
+                    this.disX = this.startX - endX;
+                    // console.log('touchEndthis.disX:', this.disX);
                     if (this.onlyDelBtn) {
                         //单一按钮，左滑一键删除
-                        if (this.offset < 0 || this.offset == 0) {
+                        if (this.disX < 0 || this.disX == 0) {
                             this.deleteSlider = 'transform:translateX(0px)';
                             parentElement.dataset.type = 0;
-                            this.openState = false;
-                        } else if (this.offset < itemWd - 20) {
+                        } else if (this.disX < itemWd - 20) {
                             parentElement.dataset.type = 1;
                             this.deleteSlider = 'transform:translateX(-50px);';
                             this.delBtnStyle = ' width:0px;';
-                            this.openState = true;
                         } else {
                             this.deleteSlider = 'transform:translateX(-' + itemWd + 'px);';
                             this.delBtnStyle = ' width:' + itemWd + 'px;';
                             parentElement.dataset.type = 1;
-                            this.openState = true;
                             this.onlyDelClick();
                         }
                     } else {
-                        if (this.offset < wd / 4) {
+                        //如果距离小于删除按钮的四分之一,强行回到起点
+
+                        if (this.disX < wd / 4) {
                             parentElement.dataset.type = 0;
                             this.deleteSlider = 'transform:translateX(0px)';
-                            this.openState = false;
                         } else {
                             //大于一半 滑动到最大值
                             parentElement.dataset.type = 1;
                             if (wd >= itemWd) {
                                 //按钮数不可超出整行宽度
-                                this.deleteSlider = 'transform:translateX(-' + (itemWd - this.customBtnWidth) + 'px)';
+                                this.deleteSlider = 'transform:translateX(-' + (itemWd - 40) + 'px)';
                             } else {
                                 this.deleteSlider = 'transform:translateX(-' + wd + 'px)';
                             }
-                            this.openState = true;
                         }
                     }
+
+                    // console.log('touchEnd:dataset', parentElement.dataset.type);
                 }
             }
         },
