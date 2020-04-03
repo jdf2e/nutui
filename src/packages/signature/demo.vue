@@ -53,8 +53,7 @@ export default {
 
 <style lang="scss">
 .demo-tips{
-    padding: 0.22rem 0;
-    font-size: 0.24rem;
+    font-size: 12px;
 }
 .margin-top{
   margin-top: 30px;

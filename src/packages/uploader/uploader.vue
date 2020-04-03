@@ -37,6 +37,12 @@ export default {
         return ["image/jpeg", "image/png", "image/gif", "image/bmp"];
       }
     },
+    selfData:{
+      type:Object,
+      default(){
+        return {}
+      }
+    },
     attach: {
       type: Object,
       default() {
@@ -51,7 +57,10 @@ export default {
     },
     changeEvtCallback: {
       type: Function
-    },
+	},
+	beforeUpload:{
+		type: Function
+	},
     xhrState: {
       type: Number,
       default: 200
@@ -115,9 +124,8 @@ export default {
         }
       };
     },
-    upload($event) {
+    uploadData($event,selfData={}){
       const tar = $event.target;
-
       if (!this.url) {
         this.$emit("showMsg", "请先配置上传url");
         this.$emit("afterChange", tar, $event);
@@ -150,14 +158,35 @@ export default {
       for (let key of Object.keys(this.attach)) {
         formData.append(key, this.attach[key]);
       }
+      let finialyOutData = Object.assign(this.selfData,selfData);
+      if(finialyOutData){
+        for(let key in finialyOutData){
+          formData.append(key, finialyOutData[key]);
+        }
+      }
       opt.formData = formData;
       opt.headers = this.headers || {};
       opt.showMsgFn = msg => {
         this.$emit("showMsg", msg);
       };
       new Uploader(opt);
-
       this.$emit("afterChange", tar, $event);
+    },
+    async upload($event) {	
+      if(typeof this.beforeUpload === 'function'){	  		
+        let promise =new Promise((reslove,reject)=>{
+          reslove(this.beforeUpload($event))
+        })
+        let resData = await promise;        
+        if(typeof resData === 'object' && typeof  resData.event === 'object'){
+          this.uploadData(resData.event,resData.data)			
+        }else{
+          console.warn('resData： 必须包含 event字段且为input $event 的事件对象')
+        }
+        
+      }else{
+		    this.uploadData($event)
+      }      
     }
   }
 };

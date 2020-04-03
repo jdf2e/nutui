@@ -3,22 +3,29 @@
         <div class="timelineitem-list-box">
             <div :class="['timelineitem-list']">
 
-                <div class="timelineitem-point">
-                    <div v-if="!isCustomPoint" :class="[pointClass,'point-icon']" :style="pointStyle"></div>
+                <div class="timelineitem-left">
+                    <div class="timelineitem-point">
+                        <div v-if="!isCustomPoint" :class="[pointClass,'point-icon']" :style="pointStyle"></div>
 
-                    <div v-else class="custom-icon">
-                        <slot name="dot"></slot>
+                        <div v-else class="custom-icon">
+                            <slot name="dot"></slot>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timelineitem-title" v-if="isShowTitle">
-                    <div class="time">
-                        <slot name="title"></slot>
+                    <div class="timelineitem-line"></div>
+                </div>
+                
+
+                <div class="timelineitem-right">
+                    <div class="timelineitem-title" v-if="isShowTitle">
+                        <div class="time">
+                            <slot name="title"></slot>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timelineitem-content">
-                    <slot></slot>
+                    <div class="timelineitem-content">
+                        <slot></slot>
+                    </div>
                 </div>
             </div>
         </div>
@@ -59,8 +66,6 @@ export default {
     mounted(){
         
         this.isCustomPoint = this.$slots.dot?true:false
-
-        console.log(this.$parent.$el)
     },
     methods: {
     }
