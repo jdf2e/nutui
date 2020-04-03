@@ -153,7 +153,10 @@ export default {
   },
   methods: {
     test(event){     
-      return event
+      return {
+        event:'',
+        data:''
+      }
     },
     demo1UploadStart() {
       this.demo1Name = "上传中...";

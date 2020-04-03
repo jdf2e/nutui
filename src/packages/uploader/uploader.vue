@@ -37,6 +37,12 @@ export default {
         return ["image/jpeg", "image/png", "image/gif", "image/bmp"];
       }
     },
+    selfData:{
+      type:Object,
+      default(){
+        return {}
+      }
+    },
     attach: {
       type: Object,
       default() {
@@ -118,7 +124,7 @@ export default {
         }
       };
     },
-    uploadData($event){
+    uploadData($event,selfData={}){
       const tar = $event.target;
       if (!this.url) {
         this.$emit("showMsg", "请先配置上传url");
@@ -152,6 +158,12 @@ export default {
       for (let key of Object.keys(this.attach)) {
         formData.append(key, this.attach[key]);
       }
+      let finialyOutData = Object.assign(this.selfData,selfData);
+      if(finialyOutData){
+        for(let key in finialyOutData){
+          formData.append(key, finialyOutData[key]);
+        }
+      }
       opt.formData = formData;
       opt.headers = this.headers || {};
       opt.showMsgFn = msg => {
@@ -161,19 +173,15 @@ export default {
       this.$emit("afterChange", tar, $event);
     },
     async upload($event) {	
-      if(typeof this.beforeUpload === 'function'){	  
-		
-		let promise =new Promise((reslove,reject)=>{
-			reslove(this.beforeUpload($event))
-		})
-
-		let resData = await promise;
-
-		this.uploadData(resData)			
+      if(typeof this.beforeUpload === 'function'){	  		
+        let promise =new Promise((reslove,reject)=>{
+          reslove(this.beforeUpload($event))
+        })
+        let resData = await promise;
+        this.uploadData(resData.event,resData.data)			
       }else{
-		  this.uploadData($event)
-      }
-      
+		    this.uploadData($event)
+      }      
     }
   }
 };
