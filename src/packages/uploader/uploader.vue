@@ -177,8 +177,13 @@ export default {
         let promise =new Promise((reslove,reject)=>{
           reslove(this.beforeUpload($event))
         })
-        let resData = await promise;
-        this.uploadData(resData.event,resData.data)			
+        let resData = await promise;        
+        if(typeof resData === 'object' && typeof  resData.event === 'object'){
+          this.uploadData(resData.event,resData.data)			
+        }else{
+          console.warn('resData： 必须包含 event字段且为input $event 的事件对象')
+        }
+        
       }else{
 		    this.uploadData($event)
       }      
