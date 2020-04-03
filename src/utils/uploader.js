@@ -41,7 +41,6 @@ class IdaUploader {
        }
    }
    check (file) {
-       debugger
        if(Array.isArray(file)){           
            for(let key in file){
                 if (this.options.maxSize && (file[key].size > this.options.maxSize)) {

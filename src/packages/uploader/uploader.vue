@@ -51,7 +51,10 @@ export default {
     },
     changeEvtCallback: {
       type: Function
-    },
+	},
+	beforeUpload:{
+		type: Function
+	},
     xhrState: {
       type: Number,
       default: 200
@@ -115,9 +118,8 @@ export default {
         }
       };
     },
-    upload($event) {
+    uploadData($event){
       const tar = $event.target;
-
       if (!this.url) {
         this.$emit("showMsg", "请先配置上传url");
         this.$emit("afterChange", tar, $event);
@@ -156,8 +158,23 @@ export default {
         this.$emit("showMsg", msg);
       };
       new Uploader(opt);
-
       this.$emit("afterChange", tar, $event);
+    },
+    async upload($event) {
+		debugger
+      if(typeof this.beforeUpload === 'function'){	  
+		
+		let promise =new Promise((reslove,reject)=>{
+			reslove(this.beforeUpload($event))
+		})
+
+		let resData = await promise;
+
+		this.uploadData(resData)			
+      }else{
+		  this.uploadData($event)
+      }
+      
     }
   }
 };

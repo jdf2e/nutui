@@ -5,6 +5,7 @@
       <nut-cell>
         <span slot="title">
           <nut-uploader
+            :beforeUpload="test"
             :name="name"
             :url="url"
             :xhrState="stateNum"
@@ -151,6 +152,9 @@ export default {
     };
   },
   methods: {
+    test(event){     
+      return event
+    },
     demo1UploadStart() {
       this.demo1Name = "上传中...";
       this.progressNum1 = 0;
