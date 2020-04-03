@@ -160,8 +160,7 @@ export default {
       new Uploader(opt);
       this.$emit("afterChange", tar, $event);
     },
-    async upload($event) {
-		debugger
+    async upload($event) {	
       if(typeof this.beforeUpload === 'function'){	  
 		
 		let promise =new Promise((reslove,reject)=>{
