@@ -83,10 +83,31 @@
   </nut-button>
 </nut-buttongroup>
 ```
+``` style
+/deep/.menu {
+    .nut-button {
+        position: relative;
+        height: $btn-menu-height;
+        width: 100%;
+        padding: 0;
+        font-size: $btn-icon-height-small;
+    }
+    .txt-icon {
+        display: block;
+        margin: 0 auto;
+        width: $btn-menu-icon-height;
+        height: $btn-menu-icon-height;
+    }
+    .nut-badge {
+        flex: 1;
+        -webkit-flex: 1;
+    }
+}
 
+```
 ## Prop
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| shape | 设置按钮组形状，可选值：circle、无 | String | 无
-| type | 设置按钮样式，可选值为：menu、无 | String | 无
+| 字段  | 说明                           | 类型   | 默认值 |
+| ----- | ------------------------------ | ------ | ------ |
+| shape | 设置按钮组形状，可选值：circle | String | 无     |
+| type  | 设置按钮样式，可选值为：menu   | String | 无     |
