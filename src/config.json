@@ -553,6 +553,16 @@
       "sort": "6",
       "showDemo": true,
       "author": "irisSong"
+    },
+    {
+      "version": "1.0.0",
+      "name": "CircleProgress",
+      "chnName": "圆形进度条",
+      "desc": "显示当前任务的操作进度",
+      "type": "component",
+      "sort": "2",
+      "showDemo": true,
+      "author": "zyf"
     }
   ]
 }

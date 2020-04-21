@@ -106,6 +106,8 @@ import Video from "./packages/video/index.js";
 import "./packages/video/video.scss";
 import Signature from "./packages/signature/index.js";
 import "./packages/signature/signature.scss";
+import CircleProgress from "./packages/circleprogress/index.js";
+import "./packages/circleprogress/circleprogress.scss";
 
 const packages = {
   Cell,
@@ -159,7 +161,8 @@ const packages = {
   TabSelect: TabSelect,
   LuckDraw: LuckDraw,
   Video: Video,
-  Signature: Signature
+  Signature: Signature,
+  CircleProgress: CircleProgress
 };
 
 const components = {};

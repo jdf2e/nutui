@@ -1,0 +1,84 @@
+<template>
+<div class="nut-circleprogress" :style="{height:option.size + 'px' , width:option.size + 'px'}">
+  <svg
+    :height="option.size"
+    :width="option.size"
+    x-mlns="http://www.w3.org/200/svg"
+  >
+    <circle
+      :r="option.radius"
+      :cx="option.cx"
+      :cy="option.cy"
+      :stroke="option.backColor"
+      :stroke-width="option.strokeOutWidth"
+      fill="none"
+    />
+    <circle
+      :r="option.radius"
+      :cx="option.cx"
+      :cy="option.cy"
+      :stroke="option.progressColor"
+      :stroke-dasharray="arcLength"
+      :stroke-width="strokeInnerWidth"
+      fill="none"
+      transform="rotate(-90)"
+      transform-origin="center"
+      stroke-linecap="round"
+    />
+  </svg>
+  <div class="nut-circleprogress-content">
+    <template v-if="!isAuto"><slot>{{progress}}%</slot></template>
+    <template v-else><slot></slot></template>
+  </div>
+  </div>
+</template>
+<script>
+export default {
+  name: 'nut-circleprogress',
+  props: {
+    progress: {
+      type: [Number , String ] ,
+      required: true,
+    },
+    strokeInnerWidth: {
+      type: [Number , String ] ,
+      default:10
+    },
+    isAuto: {
+      tyep: Boolean,
+      default:false
+    },
+    progressOption: {
+      type: Object,
+      default: () => { },
+    },
+  },
+  data () {
+    return {
+    }
+  },
+  computed: {
+    
+    arcLength () {
+      let circleLength = Math.floor(2 * Math.PI * this.option.radius)
+      let progressLength = (this.progress) / 100 * circleLength
+      // console.log(this.progress,progressLength)
+      return `${progressLength},${circleLength}`
+    },
+    option () {
+      // 所有进度条的可配置项
+      let baseOption = {
+        radius: 50,
+        strokeOutWidth: 10,
+        backColor: '#d9d9d9',
+        progressColor: 'red'
+      }
+      Object.assign(baseOption, this.progressOption)
+      // 圆心位置自动生成
+      baseOption.cy = baseOption.cx = baseOption.radius + baseOption.strokeOutWidth
+      baseOption.size = (baseOption.radius + baseOption.strokeOutWidth) * 2
+      return baseOption
+    },
+  },
+}
+</script>
