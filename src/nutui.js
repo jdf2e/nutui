@@ -108,6 +108,10 @@ import Signature from "./packages/signature/index.js";
 import "./packages/signature/signature.scss";
 import CircleProgress from "./packages/circleprogress/index.js";
 import "./packages/circleprogress/circleprogress.scss";
+import TimeLine from "./packages/timeline/index.js";
+import "./packages/timeline/timeline.scss";
+import TimeLineItem from "./packages/timelineitem/index.js";
+import "./packages/timelineitem/timelineitem.scss";
 
 const packages = {
   Cell,
@@ -162,7 +166,12 @@ const packages = {
   LuckDraw: LuckDraw,
   Video: Video,
   Signature: Signature,
+<<<<<<< HEAD
   CircleProgress: CircleProgress
+=======
+  TimeLine: TimeLine,
+  TimeLineItem: TimeLineItem
+>>>>>>> 04b82dc86b1ab6c40d104ba5c23a3788ce1149f1
 };
 
 const components = {};

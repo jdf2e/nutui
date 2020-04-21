@@ -33,7 +33,7 @@ export declare class GridRow extends UIComponent {}
 export declare class Icon extends UIComponent {}
 export declare class ImagePicker extends UIComponent {}
 export declare class Menu extends UIComponent {}
-export declare class Navbar extends UIComponent {}
+export declare class NavBar extends UIComponent {}
 export declare class NoticeBar extends UIComponent {}
 export declare class Picker extends UIComponent {}
 export declare class Price extends UIComponent {}
@@ -73,3 +73,5 @@ export declare class LuckDraw extends UIComponent {}
 export declare class Video extends UIComponent {}
 export declare class Signature extends UIComponent {}
 export declare class CircleProgress extends UIComponent {}
+export declare class TimeLine extends UIComponent {}
+export declare class TimeLineItem extends UIComponent {}

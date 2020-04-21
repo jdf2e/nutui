@@ -1,7 +1,7 @@
 # NutUI 2
 ![npm version](https://img.shields.io/npm/v/@nutui/nutui.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=master)](https://github.com/jdf2e/nutui/) [![Coverage Status](https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master)](https://coveralls.io/github/jdf2e/nutui?branch=master) ![license](https://img.shields.io/npm/l/@nutui/nutui.svg)
  
-A light mobile Toolkit based on Vue
+A light mobile Toolkit
     
 ![NutUI](https://img11.360buyimg.com/uba/jfs/t1/11117/21/3608/18942/5c20ab52E35e5a500/02e3c1f89cd3dad1.png)
 
@@ -11,7 +11,7 @@ English | [简体中文](./README-zh_CN.md)
 
 * New structure
 * 50+ Reusable components
-* Used by 30+ JD mobile projects
+* Used by 40+ JD mobile projects
 * Refer to JD APP 7.0 visual specification
 * On-demand loading Support
 * Detailed documents and examples
@@ -56,6 +56,14 @@ Documents：[2.X](https://nutui.jd.com/default.html#/start) | [1.X](https://nutu
 * [Template project command line tool(Gaea-cli)](https://github.com/jdf2e/Gaea4)
 * Contact us：nutui@jd.com
 
+
+## User Cases
+
+NutUI has been put into use in our production environment and is widely used in developing countries at the same time.
+
+<img src="https://img12.360buyimg.com/imagetools/jfs/t1/103711/28/17214/247343/5e854d2aE0d93051b/f475b25de9b63972.png" />
+
+[Call for more excellent cases](https://github.com/richard1015/nutui-user-cases)
 
 ## Open Source LICENSE
 

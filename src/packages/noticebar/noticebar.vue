@@ -11,7 +11,7 @@
             <div
                 ref="content"
                 class="content"
-                :class="[ animationClass, { 'van-ellipsis': !scrollable }]"
+                :class="[ animationClass, { 'nut-ellipsis': !scrollable }]"
                 :style="contentStyle"
                 @animationend="onAnimationEnd"
                 @webkitAnimationEnd="onAnimationEnd"
@@ -24,7 +24,7 @@
                 <g fill-rule="evenodd">
                     <path
                         d="M.44 2.56A1.5 1.5 0 1 1 2.56.44l27 27a1.5 1.5 0 1 1-2.12 2.12L15 17.123 2.56 29.56A1.5 1.5 0 1 1 .44 27.44L12.878 15 .44 2.56zM27.44.44a1.5 1.5 0 1 1 2.12 2.12l-9 9a1.5 1.5 0 1 1-2.12-2.12l9-9z"
-                    ></path>
+                    />
                 </g>
             </svg>
         </div>
@@ -144,11 +144,9 @@ export default {
 
             this.firstRound = false;
             this.$nextTick(() => {
-                // this.timer = setTimeout(() => {
                 this.duration =
                     ((this.offsetWidth + this.wrapWidth) / 375) * this.speed;
                 this.animationClass = "play-infinite";
-                // }, 10);
             });
         }
     }

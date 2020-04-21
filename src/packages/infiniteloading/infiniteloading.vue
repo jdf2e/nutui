@@ -10,7 +10,7 @@
                 <template v-if="isLoading" >
                    <i class="loading-hint"></i><span class="loading-txt">加载中...</span>
                 </template>
-                <span v-else-if="!hasMore" class="tips-txt">哎呀，这里是底部了啦</span>
+                <span v-else-if="!hasMore" class="tips-txt">{{unloadMoreTxt}}</span>
             </div>
         </div>
     </div>
@@ -35,9 +35,20 @@ export default {
             type: Boolean,
             default: true
         },
+        useCapture: {
+            type: Boolean,
+            default: false
+        },
         isShowMod: {
             type: Boolean,
             default: false
+        },
+        unloadMoreTxt: {
+            type: String,
+            default: "哎呀，这里是底部了啦"
+        },
+        scrollChange:{
+            type:Function
         }
     },
     data() {
@@ -51,6 +62,12 @@ export default {
     },
 
     mounted: function () {
+        const parentElement = this.getParentElement(this.$el);
+        let scrollEl = window;
+        if (this.useWindow === false) {
+            scrollEl = parentElement;
+        }
+        this.scrollEl = scrollEl;
         this.scrollListener();
     },
 
@@ -69,10 +86,12 @@ export default {
             this.diffX = endX - this.startX;
             this.diffY = endY - this.startY;
         },
-
+         getParentElement(el) {
+            return el && el.parentNode;
+        },
         scrollListener() {
-            window.addEventListener('scroll', this.handleScroll, false);
-            window.addEventListener('resize', this.handleScroll, false);
+            this.scrollEl.addEventListener('scroll', this.handleScroll, this.useCapture);
+            window.addEventListener('resize', this.handleScroll, this.useCapture);
         },
 
         requestAniFrame() {
@@ -113,7 +132,10 @@ export default {
         isScrollAtBottom() {
             let offsetDistance;
             
+            let resScrollTop = 0;
+
             const windowScrollTop = this.getWindowScrollTop();
+
             if (this.useWindow) {
                 offsetDistance =
                     this.calculateTopPosition(this.$refs.scroller) +
@@ -124,10 +146,12 @@ export default {
                     scrollHeight,
                     clientHeight,
                     scrollTop
-                } = this.$refs.scroller;
+                } = this.scrollEl;
+
                 offsetDistance = scrollHeight - clientHeight - scrollTop;
+                resScrollTop = scrollTop;
             }
-            
+            this.$emit('scrollChange',windowScrollTop || resScrollTop);
             // 保证是往下滑动的
             let beforeScrollTop = this.beforeScrollTop;
             this.beforeScrollTop = windowScrollTop;
@@ -145,13 +169,13 @@ export default {
 
     deactivated() {
         this.keepAlive = true;
-        window.removeEventListener('scroll', this.handleScroll, false);
-        window.removeEventListener('resize', this.handleScroll, false);
+        this.scrollEl.removeEventListener('scroll', this.handleScroll, this.useCapture);
+        window.removeEventListener('resize', this.handleScroll, this.useCapture);
     },
 
     destroyed() {
-        window.removeEventListener('scroll', this.handleScroll, false);
-        window.removeEventListener('resize', this.handleScroll, false);
+        this.scrollEl.removeEventListener('scroll', this.handleScroll, this.useCapture);
+        window.removeEventListener('resize', this.handleScroll, this.useCapture);
     }
 }
 </script>

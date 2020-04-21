@@ -2,16 +2,14 @@
     position: relative;
     overflow: hidden;
     &:first-child .nut-slip-main {
-        border-top: 1px solid #efefef;
+        border-top: 1px solid #d8d8d8;
     }
     .slip-main {
         padding: 10px;
-        min-height: 40px;
-        line-height: 40px;
         position: relative;
         overflow: hidden;
         display: flex;
-        border-bottom: 1px solid #efefef;
+        border-bottom: 1px solid #d8d8d8;
         background: #fff;
     }
     .nut-leftslip-item {
@@ -42,7 +40,7 @@
             height: 100%;
         }
     }
-    .nut-delet-btn {
+    .nut-delet-btn{
         position: absolute;
         right: -50px;
         top: 0;

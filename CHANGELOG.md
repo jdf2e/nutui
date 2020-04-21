@@ -1,3 +1,33 @@
+## 2.2.3
+
+`2020-04-03`
+
+- :sparkles: upd(Uploader)： 新增 beforeUpload 回调钩子函数、新增selfData自定义增加上传的数据 @linrufeng
+- :bug: fix(Stepper)：关于Tabbar的问题重复点击一个TAB的时候会报错 #231 @zhenyulei
+
+## 2.2.2
+
+`2020-03-31`
+
+* :sparkles: feat(Video)：新增数据展示-视频组件 @vickyYE
+* :sparkles: feat(TimeLine)：新增时间轴组件 @yangxiaolu1993
+* :sparkles: feat(Signature)：新增业务类型-签名组件 @irisSong
+* :sparkles: upd(TabSelect)：新增确认按钮回调事件 @yi-ge
+* :sparkles: upd(TextBox)：新增v-model属性 @yi-ge
+* :sparkles: upd(Stepper)：新增超出最小、最大回调事件 @richard1015
+* :sparkles: upd(ActionSheet)：优化内部代码，文档优化 @irisSong
+* :sparkles: upd(Flex)：优化内部代码，文档优化 @szg2008
+* :sparkles: upd(Toast)：优化内部代码，文档优化 @zy19940510
+* :sparkles: upd(Progress)：优化内部代码，文档优化 @layman666
+* :sparkles: upd(SearchBar、TextInput)：组件优化 @yangxiaolu1993
+* :bug: fix(Range)：绑定的值无法更新到组件 #227 @undo03
+* :bug: fix(Countdown)：修复异步计算属性无法更新组件 #228 @undo03
+* :bug: fix(LuckDraw)：抽奖组件图片链接修复 @Ymm0008
+* :bug: fix(Picker)优化自定义数据联动demo @irisSong
+* :bug: fix(Popup)：按需加载icon修复 @yangkaixuan
+* :bug: fix(TabSelect)：组件tabList数据改变内容不刷新问题修复 @dushoujun
+* :bug: fix(TabBar)：更新数据 重新渲染的功能 @zhenyulei
+
 ## 2.2.1
 
 `2020-03-09`

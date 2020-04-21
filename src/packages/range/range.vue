@@ -107,6 +107,9 @@ export default {
   watch: {
     range() {
       this.init();
+    },
+    rangeValues() {
+      this.init();
     }
   },
   computed: {

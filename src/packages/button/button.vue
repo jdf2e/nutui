@@ -1,67 +1,76 @@
 <template>
     <button :class="clsStyle" :disabled="disabled" @click="clickHandler">
         <nut-icon class="txt-icon" v-if="icon != ''" :type="icon" :color="this.color"></nut-icon>
-        <span :style="{color:this.color}"><slot></slot></span>
+        <span :style="{color:this.color}">
+            <slot></slot>
+        </span>
     </button>
 </template>
 <script>
-import Icon from './../icon/icon.vue';
+import Icon from "./../icon/icon.vue";
 export default {
-    name:'nut-button',
+    name: "nut-button",
     props: {
         type: {
             type: String,
-            default: ''
+            default: ""
         },
         shape: {
             type: String,
-            default: ''
+            default: ""
         },
         icon: {
             type: String,
-            default: ''
+            default: ""
         },
         disabled: {
-            type: Boolean
+            type: Boolean,
+            default: false
         },
         block: {
-            type: Boolean
+            type: Boolean,
+            default: false
         },
         small: {
-            type: Boolean
+            type: Boolean,
+            default: false
         },
         label: {
-            type: Boolean
+            type: Boolean,
+            default: false
         },
         color: {
             type: String,
-            default: ''
+            default: ""
         }
     },
     components: {
-        'nut-icon': Icon
+        "nut-icon": Icon
     },
     computed: {
         clsStyle() {
-            let cls = 'nut-button ';
-            cls += `${this.type} ${this.shape}`;
-            cls += this.small ? ' small': '';
-            cls += this.block ? ' block': '';
-            cls += this.label ? ' label': '';
-            if(!this.$slots.default) {
-                if(this.small) {
-                    cls += ' no-txt-small';
-                }else {
-                    cls += ' no-txt';
-                }
-            }
+            let cls = `nut-button ${this.type} ${this.shape} 
+            ${this.small ? " small" : ""} 
+            ${this.block ? " block" : ""} 
+            ${this.label ? " label" : ""}
+            ${
+                !this.$slots.default
+                    ? this.small
+                        ? "no-txt-small"
+                        : "no-txt"
+                    : ""
+            }`;
             return cls;
         }
     },
     methods: {
-        clickHandler() {
-            this.$emit('click');
+        clickHandler(event) {
+            // 如果是loading就阻止点击
+            if (this.disabled) {
+                return;
+            }
+            this.$emit("click", event);
         }
     }
-}
+};
 </script>

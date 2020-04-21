@@ -1,11 +1,11 @@
 <template>
     <div>
       <h4>图标文本标签栏</h4>
-      <nut-tabbar @tab-switch="tabSwitch1" type="card"  :tabbarList="tabList1"></nut-tabbar>
+      <nut-tabbar @tab-switch="tabSwitch1" type="card"  :tabbar-list="tabList1"></nut-tabbar>
       <h4>带有tips的文本标签栏</h4>
-      <nut-tabbar @tab-switch="tabSwitch2" type="card" :tabbarList="tabList2"></nut-tabbar>
+      <nut-tabbar @tab-switch="tabSwitch2" type="card" :tabbar-list="tabList2"></nut-tabbar>
       <h4>固定底部，可跳转页面</h4>
-  		<nut-tabbar @tab-switch="tabSwitch3" :tabbarList="tabList3" :bottom="true" class="my-tabbar">  
+  		<nut-tabbar @tab-switch="tabSwitch3" :tabbar-list="tabList3" :bottom="true" class="my-tabbar">  
       </nut-tabbar>
     </div>
 </template>
