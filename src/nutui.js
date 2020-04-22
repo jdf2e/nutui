@@ -166,12 +166,9 @@ const packages = {
   LuckDraw: LuckDraw,
   Video: Video,
   Signature: Signature,
-<<<<<<< HEAD
-  CircleProgress: CircleProgress
-=======
+  CircleProgress: CircleProgress,
   TimeLine: TimeLine,
   TimeLineItem: TimeLineItem
->>>>>>> 04b82dc86b1ab6c40d104ba5c23a3788ce1149f1
 };
 
 const components = {};
