@@ -107,7 +107,7 @@ export default {
 
         handleScroll() {
             this.requestAniFrame()(() => {
-                if (!this.hasMore || !this.isScrollAtBottom() || this.isLoading || !this.isShowMod) {
+                if (!this.isScrollAtBottom() || !this.hasMore || this.isLoading || !this.isShowMod) {
                     return false;
                 } else {
                     this.$emit('loadmore');
