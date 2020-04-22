@@ -107,7 +107,7 @@ export default {
 
         handleScroll() {
             this.requestAniFrame()(() => {
-                if (!this.hasMore || !this.isScrollAtBottom() || this.isLoading || !this.isShowMod) {
+                if (!this.isScrollAtBottom() || !this.hasMore || this.isLoading || !this.isShowMod) {
                     return false;
                 } else {
                     this.$emit('loadmore');
@@ -151,7 +151,7 @@ export default {
                 offsetDistance = scrollHeight - clientHeight - scrollTop;
                 resScrollTop = scrollTop;
             }
-            this.$emit('scrollChange',windowScrollTop || resScrollTop);
+            this.$emit('scrollChange',this.useWindow?windowScrollTop :resScrollTop);
             // 保证是往下滑动的
             let beforeScrollTop = this.beforeScrollTop;
             this.beforeScrollTop = windowScrollTop;
