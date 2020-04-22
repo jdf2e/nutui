@@ -24,6 +24,7 @@
       transform="rotate(-90)"
       transform-origin="center"
       stroke-linecap="round"
+      style="transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;"
     />
   </svg>
   <div class="nut-circleprogress-content">

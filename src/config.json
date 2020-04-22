@@ -562,14 +562,7 @@
       "type": "component",
       "sort": "2",
       "showDemo": true,
-      "author": "zyf",
-      "name": "TimeLine",
-      "chnName": "时间轴",
-      "desc": "对一系列数据进行展示，垂直展示",
-      "type": "component",
-      "sort": "0",
-      "showDemo": true,
-      "author": "yangxiaolu"
+      "author": "zyf"
     },
     {
       "version": "1.0.0",
