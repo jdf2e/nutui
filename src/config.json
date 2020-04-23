@@ -556,13 +556,13 @@
     },
     {
       "version": "1.0.0",
-      "name": "TimeLine",
-      "chnName": "时间轴",
-      "desc": "对一系列数据进行展示，垂直展示",
+      "name": "CircleProgress",
+      "chnName": "圆形进度条",
+      "desc": "显示当前任务的操作进度",
       "type": "component",
-      "sort": "0",
+      "sort": "2",
       "showDemo": true,
-      "author": "yangxiaolu"
+      "author": "zyf"
     },
     {
       "version": "1.0.0",

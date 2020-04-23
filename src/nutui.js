@@ -106,6 +106,8 @@ import Video from "./packages/video/index.js";
 import "./packages/video/video.scss";
 import Signature from "./packages/signature/index.js";
 import "./packages/signature/signature.scss";
+import CircleProgress from "./packages/circleprogress/index.js";
+import "./packages/circleprogress/circleprogress.scss";
 import TimeLine from "./packages/timeline/index.js";
 import "./packages/timeline/timeline.scss";
 import TimeLineItem from "./packages/timelineitem/index.js";
@@ -164,6 +166,7 @@ const packages = {
   LuckDraw: LuckDraw,
   Video: Video,
   Signature: Signature,
+  CircleProgress: CircleProgress,
   TimeLine: TimeLine,
   TimeLineItem: TimeLineItem
 };
