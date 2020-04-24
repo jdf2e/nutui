@@ -57,6 +57,10 @@ export default {
             type:[String],
             default:'tap'
         },
+        longTapTime:{
+            type:[Number],
+            default:500
+        },
         autoUpload:{//选择完图片之后是否自动完成上传
             type:[Boolean,String],
             default:false
@@ -130,9 +134,10 @@ export default {
             });
         },
         touchStart(id) {
+            console.log(this.longTapTime)
             this.timeOutEvent = setTimeout(() => {
                 this.deleteImg(id);
-            },500);
+            },this.longTapTime);
             return false;
         },
         touchMove(id) {
