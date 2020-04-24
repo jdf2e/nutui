@@ -196,7 +196,13 @@ export default {
     choose(idx, index, sIndex) {
       if (this.multiple && this.isActive(idx, index, sIndex)) {
         this.unChoose(index, sIndex);
-        this.allChoose.delete(this.getText(idx, index, sIndex));
+        this.getText(idx, index, sIndex).forEach(o=>{
+         for(let indexdel of this.allChoose.values()){
+              if(JSON.stringify(o) === JSON.stringify(indexdel)){
+                  this.allChoose.delete(indexdel);
+              }
+            }
+        });
         this.emit();
         return;
       }
