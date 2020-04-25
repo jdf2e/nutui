@@ -77,6 +77,10 @@ export default {
       type: String,
       default: ""
     },
+    isLockBgScroll: {
+        type: Boolean,
+        default: false
+    },
     subTitle: {
       type: String,
       default: ""
@@ -123,7 +127,15 @@ export default {
   },
   watch: {
     show(val) {
+    if (this.isLockBgScroll) {
+        if (value) {
+            document.body.classList.add('nut-overflow-hidden');
+        } else {
+            document.body.classList.remove('nut-overflow-hidden');
+        }
+    }
       this.isShow = val;
+
     },
     isShow(val) {
       if (!val) {
