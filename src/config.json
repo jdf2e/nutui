@@ -603,6 +603,16 @@
       "sort": "3",
       "showDemo": false,
       "author": "szg2008"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Drag",
+      "chnName": "拖拽",
+      "desc": "实现可拖拽的任意元素",
+      "type": "component",
+      "sort": "5",
+      "showDemo": true,
+      "author": "张宇"
     }
   ]
 }
