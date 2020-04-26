@@ -2,7 +2,6 @@ const presets = [
 	[
 		'@babel/preset-env',
 		{
-			loose: true,
 			modules: 'commonjs',
 			targets: {
 				browsers: ['Android >= 4', 'iOS >= 8']
@@ -11,6 +10,6 @@ const presets = [
 	]
 ];
 
-const plugins = ['@babel/plugin-transform-runtime', '@babel/plugin-transform-object-assign'];
+const plugins = ['@babel/plugin-transform-runtime', '@babel/plugin-transform-object-assign', 'transform-object-rest-spread'];
 
 module.exports = { presets, plugins };
