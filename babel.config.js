@@ -10,6 +10,6 @@ const presets = [
 	]
 ];
 
-const plugins = ['@babel/plugin-transform-runtime', '@babel/plugin-transform-object-assign', 'transform-object-rest-spread'];
+const plugins = ['@babel/plugin-transform-runtime', '@babel/plugin-transform-object-assign', '@babel/plugin-proposal-object-rest-spread'];
 
 module.exports = { presets, plugins };

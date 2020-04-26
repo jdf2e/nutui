@@ -51,6 +51,7 @@
   "author": "jdcfe",
   "license": "MIT",
   "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
     "@nutui/cli": "^0.1.1",
