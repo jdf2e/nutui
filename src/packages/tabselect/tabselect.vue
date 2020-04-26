@@ -129,8 +129,6 @@ export default {
 	},
 	methods: {
 		emit() {
-			var ss = [...this.allChoose];
-			debugger;
 			this.$emit(
 				'choose',
 				(this.list && this.list[this.level0] && this.list[this.level0].tabTitle) || '',

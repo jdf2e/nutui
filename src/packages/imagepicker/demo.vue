@@ -9,7 +9,7 @@
         <h4>支持多图选择</h4>
         <nut-imagepicker @imgMsg="imgMsg" :ismultiple=true></nut-imagepicker>
         <h4>支持长按删除图片</h4>
-        <nut-imagepicker @imgMsg="imgMsg" :imgList.sync="imgList2" delMode="longtap"></nut-imagepicker>
+        <nut-imagepicker @imgMsg="imgMsg" :imgList.sync="imgList2" :longTapTime="longTapTime" delMode="longtap"></nut-imagepicker>
         <h4>选择完成图片之后自动上传</h4>
         <nut-imagepicker @imgMsg="imgMsg" autoUpload="true"></nut-imagepicker>
     </div>
@@ -19,6 +19,7 @@
 export default {
   data() {
     return {
+      longTapTime: 1000,
       imgList1:[
         {
           id:1,

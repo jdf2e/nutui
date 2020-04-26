@@ -17,3 +17,6 @@ localdocs.cache
 cache/src.cache
 cache/mdToVue.cache
 cache/docs.cache
+lib/plugin/cli/dist_cli/
+lib/plugin/cli/site/doc/view/
+lib/plugin/cli/site/doc/page/

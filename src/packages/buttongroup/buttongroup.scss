@@ -16,24 +16,7 @@
     }
     &.menu {
         height: $btn-menu-height;
-        font-size: $font-size-small;        
-        .nut-button {
-            position: relative;
-            height: $btn-menu-height;
-            width: 100%;
-            padding: 0;
-            font-size: $btn-icon-height-small;
-        }
-        .txt-icon {
-            display: block;
-            margin: 0 auto;
-            width: $btn-menu-icon-height;
-            height: $btn-menu-icon-height;
-        }
-        .nut-badge {
-            flex: 1;
-            -webkit-flex: 1;
-        }
+        font-size: $font-size-small;
     }
     .nut-button {
         flex: 1;

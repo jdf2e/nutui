@@ -1,4 +1,4 @@
-# Tabbar 标签栏
+# TabBar 标签栏
 
 ## 基本用法
 
@@ -6,7 +6,7 @@
 <nut-tabbar 
   @tab-switch="tabSwitch1" 
   type="card"  
-  :tabbarList="tabList1"
+  :tabbar-list="tabList1"
 ></nut-tabbar>
 ```
 ```javascript
@@ -48,7 +48,7 @@ export default {
 <nut-tabbar 
   @tab-switch="tabSwitch2" 
   type="card" 
-  :tabbarList="tabList2"
+  :tabbar-list="tabList2"
 >
 </nut-tabbar>
 ```
@@ -89,7 +89,7 @@ export default {
 ```html
 <nut-tabbar 
   @tab-switch="tabSwitch3" 
-  :tabbarList="tabList3" 
+  :tabbar-list="tabList3" 
   :bottom="true"
 >
 </nut-tabbar>
@@ -158,7 +158,7 @@ export default {
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | type | 页签栏的样式 based/card | String | based
-| tabbarList | 渲染数据 | Array | --
+| tabbar-list | 渲染数据 ，兼容 tabbar-list 和 tabbarList| Array | []
 | tabTitle | 标签页的标题 | String | --
 | curr | 是否为选中的标签页 | Booble | false
 | icon | 标签页显示的图片 | String | --

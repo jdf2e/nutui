@@ -1,0 +1,5 @@
+// Color
+$primary-color: #4169e1;
+$gradient-start-color: mix($primary-color, #fff, 60%);
+$gradient-end-color: mix($primary-color, #fff, 80%);
+$btn-gradient-bg: linear-gradient(315deg, $gradient-start-color 0%, $gradient-end-color 100%);

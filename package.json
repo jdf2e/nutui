@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "2.2.2",
+  "version": "2.2.4",
   "description": "一套轻量级移动端Vue组件库",
   "typings": "dist/types/index.d.ts",
   "main": "dist/nutui.js",
@@ -51,9 +51,10 @@
   "author": "jdcfe",
   "license": "MIT",
   "dependencies": {
+    "@babel/plugin-transform-object-assign": "^7.8.3",
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
-    "@nutui/cli": "^0.0.9",
+    "@nutui/cli": "^0.1.1",
     "@vue/composition-api": "^0.5.0",
     "husky": "^3.0.0",
     "ts-loader": "^6.2.2",
