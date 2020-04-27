@@ -93,6 +93,18 @@
                 }
             };
         },
+        watch: {
+            sources: {
+                handler(newValue, oldValue) {
+                    if (newValue && oldValue && newValue != oldValue) {
+                        this.$nextTick(() => {
+                            this.videoElm.load()
+                        })
+                    }
+                },
+                immediate: true
+            }
+        },
         mounted() {
             this.init();
         },
