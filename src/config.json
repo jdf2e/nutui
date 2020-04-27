@@ -606,6 +606,15 @@
     },
     {
       "version": "1.0.0",
+      "name": "Qart",
+      "chnName": "二维码",
+      "desc": "在指定位置快速生成二维码，方便推广和手机扫码使用",
+      "type": "component",
+      "sort": "0",
+      "showDemo": true,
+      "author": "wangyue"
+    },
+    {
       "name": "Drag",
       "chnName": "拖拽",
       "desc": "实现可拖拽的任意元素",
