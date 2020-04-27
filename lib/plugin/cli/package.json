@@ -1,6 +1,6 @@
 {
   "name": "@nutui/cli",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "nutui cli",
   "main": "./dist_cli/bin/index.js",
   "files": [
@@ -82,7 +82,6 @@
     "vue-router": "^3.1.3",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.11",
-    "vueg": "^1.4.5",
     "webpack": "^4.41.5",
     "webpack-dev-server": "^3.10.1",
     "webpack-merge": "^4.2.2",

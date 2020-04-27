@@ -52,7 +52,7 @@ export const baseConfig: Webpack.Configuration = {
 			},
 			{
 				test: /\.js$/,
-				include: [ROOT_PACKAGE_PATH('src')],
+				include: [ROOT_PACKAGE_PATH('src'), ROOT_CLI_PATH('site')],
 				use: ['cache-loader', 'babel-loader']
 			},
 			{
