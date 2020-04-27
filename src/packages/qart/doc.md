@@ -142,5 +142,5 @@ export default {
 | binarize              | 图像将被二值化处理, 未指定阈值则使用默认值                                                                                                       | Boolean  | true    |
 | binarize-threshold    | 二值化处理的阈值(0 < threshold < 255)                                                                                                            | Number   | 128     |
 | callback              | 生成的二维码 Data URI 可以在回调中取得,第一个参数为二维码 data URL, 第二个参数为 props 传过来的 qid(因为二维码生成是异步的,所以加个 id 用于排序) | Function | —       |
-| bindElement           | 指定是否需要自动将生成的二维码绑定到HTML上                                                                                                       | Boolean  | true    |
+| bind-element          | 指定是否需要自动将生成的二维码绑定到HTML上                                                                                                       | Boolean  | true    |
 > 更多内容请参照：[vue-qr 官方文档](https://github.com/Binaryify/vue-qr)
