@@ -6,6 +6,7 @@
       v-model="isShow"
       position="bottom"
       :style="{ height: '457px' }"
+      :lock-scroll="isLockBgScroll"
     >
       <div class="nut-tabselect-main-title" v-html="mainTitle"></div>
       <nut-tab @tab-switch="tabSwitchOuter" :init-data="list">
@@ -35,7 +36,7 @@
                     @click="choose(idx, index, sIndex, item, sitem)"
                     class="nut-tab-panel-list"
                     :class="{
-                      'nut-tab-panel-list-active': isActive(idx, index, sIndex)
+                      'nut-tab-panel-list-active': isActive(idx, index, sIndex),
                     }"
                   >
                     {{ sitem }}
@@ -48,7 +49,7 @@
                     @click="choose(idx, index, sIndex, item, sitem)"
                     class="nut-tab-panel-list"
                     :class="{
-                      'nut-tab-panel-list-active': isActive(idx, index, sIndex)
+                      'nut-tab-panel-list-active': isActive(idx, index, sIndex),
                     }"
                   >
                     {{ sitem }}
@@ -75,36 +76,40 @@ export default {
   props: {
     mainTitle: {
       type: String,
-      default: ""
+      default: "",
     },
     subTitle: {
       type: String,
-      default: ""
+      default: "",
+    },
+    isLockBgScroll: {
+      type: Boolean,
+      default: true,
     },
     defaultContent: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     tabList: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     show: {
       type: Boolean,
-      default: false
+      default: false,
     },
     multiple: {
       type: Boolean,
-      default: false
+      default: false,
     },
     max: {
       type: Number,
-      default: Infinity
+      default: Infinity,
     },
     isDefaultSelected: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
@@ -114,12 +119,12 @@ export default {
       level2: this.isDefaultSelected ? new Set(["0-0"]) : new Set(),
       allChoose: this.getText(0, 0, this.isDefaultSelected ? 0 : null),
       list: [],
-      defIndex: 0
+      defIndex: 0,
     };
   },
   components: {
     [nuttab.name]: nuttab,
-    [nutpop.name]: nutpop
+    [nutpop.name]: nutpop,
   },
   watch: {
     show(val) {
@@ -139,8 +144,8 @@ export default {
         this.allChoose = this.getText(0, 0, this.isDefaultSelected ? 0 : null);
         this.emit();
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   mounted() {
     this.list = this.tabList;
@@ -196,7 +201,13 @@ export default {
     choose(idx, index, sIndex) {
       if (this.multiple && this.isActive(idx, index, sIndex)) {
         this.unChoose(index, sIndex);
-        this.allChoose.delete(this.getText(idx, index, sIndex));
+        this.getText(idx, index, sIndex).forEach((o) => {
+          for (let indexdel of this.allChoose.values()) {
+            if (JSON.stringify(o) === JSON.stringify(indexdel)) {
+              this.allChoose.delete(indexdel);
+            }
+          }
+        });
         this.emit();
         return;
       }
@@ -216,12 +227,9 @@ export default {
       }
       this.emit();
     },
-    clickHandler (event) {
-      this.$emit(
-        "onOkBtn",
-        event
-      )
-      this.isShow = false
+    clickHandler(event) {
+      this.$emit("onOkBtn", event);
+      this.isShow = false;
     },
     isActive(idx, index, sIndex) {
       if (
@@ -232,7 +240,7 @@ export default {
         return true;
       }
       return false;
-    }
-  }
+    },
+  },
 };
 </script>

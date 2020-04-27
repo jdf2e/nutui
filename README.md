@@ -57,6 +57,14 @@ Documents：[2.X](https://nutui.jd.com/default.html#/start) | [1.X](https://nutu
 * Contact us：nutui@jd.com
 
 
+## User Cases
+
+NutUI has been put into use in our production environment and is widely used in developing countries at the same time.
+
+<img src="https://raw.githubusercontent.com/richard1015/nutui-user-cases/master/user-cases.jpg" />
+
+[Call for more excellent cases](https://github.com/richard1015/nutui-user-cases)
+
 ## Open Source LICENSE
 
 Based on **MIT** LICENSE

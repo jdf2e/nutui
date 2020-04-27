@@ -1,7 +1,6 @@
 <template>
   <transition name="popup-fade">
-    <div  
-     v-show="show" class="popup-bg nut-mask" :class="className"></div>
+    <div @touchmove.prevent.stop v-show="show" class="popup-bg nut-mask" :class="className"></div>
   </transition>
 </template>
 <script>

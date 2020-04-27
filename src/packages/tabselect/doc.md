@@ -39,93 +39,93 @@ export default {
   components: {},
   data() {
     return {
-      mainTitle: '配送',
-      subTitle: '送达时间',
+      mainTitle: "配送",
+      subTitle: "送达时间",
       defaultContent: [
-        '9:00——10:00',
-        '10:00——11:00',
-        '11:00——12:00',
-        '12:00——13:00',
-        '13:00——15:00',
-        '15:00——17:00',
-        '17:00——19:00'
+        "9:00——10:00",
+        "10:00——11:00",
+        "11:00——12:00",
+        "12:00——13:00",
+        "13:00——15:00",
+        "15:00——17:00",
+        "17:00——19:00",
       ],
       tabList: [
         {
-          tabTitle: '京东快递', // 一级tab标题
+          tabTitle: "京东快递", // 一级tab标题
           children: [
             // 一级tab内容
             {
-              tabTitle: '1月13日 (星期一)', // 二级tab标题
+              tabTitle: "1月13日 (星期一)", // 二级tab标题
               content: [
                 // 二级tab内容，不传默认使用defaultContent字段
-                '11:00——12:00',
-                '12:00——13:00',
-                '13:00——15:00',
-                '15:00——17:00',
-                '17:00——19:00'
-              ]
+                "11:00——12:00",
+                "12:00——13:00",
+                "13:00——15:00",
+                "15:00——17:00",
+                "17:00——19:00",
+              ],
             },
             {
-              tabTitle: '1月14日 (星期二)'
+              tabTitle: "1月14日 (星期二)",
             },
             {
-              tabTitle: '1月15日 (星期三)'
+              tabTitle: "1月15日 (星期三)",
             },
             {
-              tabTitle: '1月16日 (星期四)'
+              tabTitle: "1月16日 (星期四)",
             },
             {
-              tabTitle: '1月17日 (星期五)'
+              tabTitle: "1月17日 (星期五)",
             },
             {
-              tabTitle: '1月18日 (星期六)'
+              tabTitle: "1月18日 (星期六)",
             },
             {
-              tabTitle: '1月19日 (星期天)'
-            }
-          ]
+              tabTitle: "1月19日 (星期天)",
+            },
+          ],
         },
         {
-          tabTitle: '上门自提',
+          tabTitle: "上门自提",
           children: [
             {
-              tabTitle: '2月13日 (星期一)',
-              content: ['13:00——15:00', '15:00——17:00', '17:00——19:00']
+              tabTitle: "2月13日 (星期一)",
+              content: ["13:00——15:00", "15:00——17:00", "17:00——19:00"],
             },
             {
-              tabTitle: '2月14日 (星期二)'
+              tabTitle: "2月14日 (星期二)",
             },
             {
-              tabTitle: '2月15日 (星期三)'
+              tabTitle: "2月15日 (星期三)",
             },
             {
-              tabTitle: '2月16日 (星期四)'
+              tabTitle: "2月16日 (星期四)",
             },
             {
-              tabTitle: '2月17日 (星期五)'
+              tabTitle: "2月17日 (星期五)",
             },
             {
-              tabTitle: '2月18日 (星期六)'
+              tabTitle: "2月18日 (星期六)",
             },
             {
-              tabTitle: '2月19日 (星期天)'
-            }
-          ]
-        }
+              tabTitle: "2月19日 (星期天)",
+            },
+          ],
+        },
       ],
-      show: false
-    }
+      show: false,
+    };
   },
   methods: {
     choose(title, item) {
-      console.log(title, item)
+      console.log(title, item);
     },
     onOkBtn(event) {
-      console.log(event)
-    }
-  }
-}
+      console.log(event);
+    },
+  },
+};
 ```
 
 ### Prop
@@ -140,6 +140,7 @@ export default {
 | show              | 是否显示                                   | Boolean | false    |
 | max               | 多选时最多可选个数                         | Number  | Infinity |
 | isDefaultSelected | 单选时是否默认选中第一项（多选默认不选中） | Boolean | false    |
+| isLockBgScroll    | 是否锁定背景滚动                           | Boolean | true     |
 
 ### Event
 

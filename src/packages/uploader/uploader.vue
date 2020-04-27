@@ -132,6 +132,15 @@ export default {
         return;
       }
       const formData = new FormData();
+      for (let key of Object.keys(this.attach)) {
+        formData.append(key, this.attach[key]);
+      }
+      let finialyOutData = Object.assign(this.selfData,selfData);
+      if(finialyOutData){
+        for(let key in finialyOutData){
+          formData.append(key, finialyOutData[key]);
+        }
+      }
       const opt = this.createUploaderOpts();
       opt.$el = tar;
       if (this.isPreview) {
@@ -155,15 +164,6 @@ export default {
         }
       }
       formData.append(tar.name, tar.files[0]);
-      for (let key of Object.keys(this.attach)) {
-        formData.append(key, this.attach[key]);
-      }
-      let finialyOutData = Object.assign(this.selfData,selfData);
-      if(finialyOutData){
-        for(let key in finialyOutData){
-          formData.append(key, finialyOutData[key]);
-        }
-      }
       opt.formData = formData;
       opt.headers = this.headers || {};
       opt.showMsgFn = msg => {

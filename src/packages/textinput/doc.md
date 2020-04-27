@@ -63,6 +63,19 @@
 />
 ```
 
+自定义关闭按钮样式
+```html
+<nut-textinput
+    class="my-input"
+    v-model="val7"
+    placeholder="请输入搜索内容"
+    :clearBtnPersonnal="true"
+>
+    <template v-slot:clearBtn>
+        <nut-icon type="cross"></nut-icon>
+    </template>
+</nut-textinput>
+```
 自动聚焦
 
 注：由于移动设备的不同，第一次自动获取焦点并不一定能吊起键盘，需要手动吊起来一次，当再次进入时则正常吊起键盘
@@ -106,15 +119,17 @@ export default {
 
 ## Prop
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| value | 当前input值，可使用 v-model 双向绑定数据 | String | ''
-| type | input输入框的类型 | String | 'text'
-| placeholder | 占位文本 | String | ''
-| label | 文本框前面的标签 | String | ''
-| disabled | 是否禁用 | Boolean | false
-| clear-btn | 是否需要清空按钮 | Boolean | true
-| has-border | 是否需要边框 | Boolean | true
+| 字段              | 说明                                                                                     | 类型    | 默认值 |
+| ----------------- | ---------------------------------------------------------------------------------------- | ------- | ------ |
+| value             | 当前input值，可使用 v-model 双向绑定数据                                                 | String  | ''     |
+| type              | input输入框的类型                                                                        | String  | 'text' |
+| placeholder       | 占位文本                                                                                 | String  | ''     |
+| label             | 文本框前面的标签                                                                         | String  | ''     |
+| disabled          | 是否禁用                                                                                 | Boolean | false  |
+| clear-btn         | 是否需要清空按钮                                                                         | Boolean | true   |
+| has-border        | 是否需要边框                                                                             | Boolean | true   |
+| clearBtnPersonnal | 是否需要定制化清除按钮，如果是true,需要配合slot:  clearBtn使用，如案例自定义关闭按钮样式 | Boolean | false  |
+
 
 ## 特殊说明 
 

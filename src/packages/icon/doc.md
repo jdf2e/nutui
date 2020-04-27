@@ -31,8 +31,17 @@
 >
 </nut-icon>
 ```
+## 自定义svg图标
 
+支持通过**url**可以自定义添加额外的图片。
+
+```html
+<nut-icon type="self" :url="require('../../assets/svg/trolley.svg')"></nut-icon>
+```
 ## type可选值
+
+nutui 自带图标库提供了下面的这些可选值。
+
 * top
 * down
 * right
@@ -54,3 +63,4 @@
 | type | 图标，可选值top/action/cross/down/right/more/plus/search/trolley/tick/minus/circle-cross | String | -
 | size | 尺寸，需要带单位 | String | -
 | color | 颜色 | String | -
+| url | 自定义图标路径，必须是svg格式,请用 require 方式引入 | String | - 

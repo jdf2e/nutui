@@ -57,6 +57,14 @@ https://nutui.jd.com
 * 联系我们：nutui@jd.com
 
 
+## 使用案例
+
+NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使用。
+
+<img src="https://raw.githubusercontent.com/richard1015/nutui-user-cases/master/user-cases.jpg" />
+
+[征集更多优秀案例](https://github.com/richard1015/nutui-user-cases)
+
 ## 开源协议
 
 本项目基于 **MIT** 协议
