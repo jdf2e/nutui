@@ -11,6 +11,12 @@ const presets = [
 	]
 ];
 
-const plugins = ['@babel/plugin-transform-runtime', '@babel/plugin-transform-object-assign', '@babel/plugin-proposal-object-rest-spread'];
+const plugins = [
+	'@babel/plugin-transform-runtime',
+	'@babel/plugin-transform-object-assign',
+	'@babel/plugin-proposal-object-rest-spread',
+	'@babel/plugin-syntax-dynamic-import',
+	'istanbul'
+];
 
 module.exports = { presets, plugins };
