@@ -118,6 +118,8 @@ import SubSideNavBar from "./packages/subsidenavbar/index.js";
 import "./packages/subsidenavbar/subsidenavbar.scss";
 import SideNavBarItem from "./packages/sidenavbaritem/index.js";
 import "./packages/sidenavbaritem/sidenavbaritem.scss";
+import Qart from "./packages/qart/index.js";
+import "./packages/qart/qart.scss";
 
 const packages = {
   Cell,
@@ -177,7 +179,8 @@ const packages = {
   TimeLineItem: TimeLineItem,
   SideNavBar: SideNavBar,
   SubSideNavBar: SubSideNavBar,
-  SideNavBarItem: SideNavBarItem
+  SideNavBarItem: SideNavBarItem,
+  Qart: Qart
 };
 
 const components = {};

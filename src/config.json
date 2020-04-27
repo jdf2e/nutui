@@ -603,6 +603,16 @@
       "sort": "3",
       "showDemo": false,
       "author": "szg2008"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Qart",
+      "chnName": "二维码",
+      "desc": "在指定位置快速生成二维码，方便推广和手机扫码使用",
+      "type": "component",
+      "sort": "0",
+      "showDemo": true,
+      "author": "wangyue"
     }
   ]
 }

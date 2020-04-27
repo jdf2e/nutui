@@ -78,3 +78,4 @@ export declare class TimeLineItem extends UIComponent {}
 export declare class SideNavBar extends UIComponent {}
 export declare class SubSideNavBar extends UIComponent {}
 export declare class SideNavBarItem extends UIComponent {}
+export declare class Qart extends UIComponent {}
