@@ -159,10 +159,10 @@ export default {
 
 ## 视频切换
 
-播放上一个、下一个视频
+当视频地址发生变化时，重置视频
 
 ```html
-  	<div class="video-con" ref="changeVideo">
+  	<div class="video-con" >
 		<nut-video :sources="sources1" :options="options"></nut-video>
 	</div>
 ```
@@ -184,36 +184,14 @@ export default {
     	},
   	}
 	methods: {
-        prevVideo() {
-			let videoCon = this.$refs.changeVideo
-			let player = videoCon.getElementsByTagName('video')[0];
-			//改变视频源
-			this.sources1 = [
-				{
-					src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-					type: 'video/mp4'
-				}
-			]
-			this.$nextTick(() => {
-				player.load()
-			})
-
-		},
-		nextVideo() {
-			let videoCon = this.$refs.changeVideo
-			let player = videoCon.getElementsByTagName('video')[0];
-			//改变视频源
+        changeVideo() {
 			this.sources1 = [
 				{
 					src: 'http://vjs.zencdn.net/v/oceans.mp4',
 					type: 'video/mp4'
 				}
 			]
-			this.$nextTick(() => {
-				player.load()
-			})
-
-		}
+		},
     }
 };
 ```

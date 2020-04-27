@@ -2,7 +2,8 @@
     <div>
         <h4>基本用法</h4>
         <div class="video-con">
-            <nut-video :sources="sources" :options="options" @play="play" @pause="pause" @playend="playend"></nut-video>
+            <nut-video :sources="sources" :options="options" @play="play" @pause="pause" @playend="playend">
+            </nut-video>
         </div>
         <h4>自动播放</h4>
         <p>autoplay属性设置视频自动播放</p>
@@ -31,12 +32,13 @@
             <nut-video :sources="sources" :options="options6"></nut-video>
         </div>
         <h4>视频切换</h4>
-        <p>播放上一个、下一个视频</p>
-        <div class="video-con" ref="changeVideo">
+        <p>当视频地址发生变化时，重置视频</p>
+        <button @click="changeVideo">切换视频</button>
+        <div class="video-con">
             <nut-video :sources="sources1" :options="options"></nut-video>
         </div>
 
-        <button @click="prevVideo">播放上一个</button> <button @click="nextVideo">播放下一个</button>
+
     </div>
 </template>
 
@@ -92,7 +94,18 @@
 
             };
         },
+        mounted() {
+
+        },
         methods: {
+            changeVideo() {
+                this.sources1 = [
+                    {
+                        src: 'http://vjs.zencdn.net/v/oceans.mp4',
+                        type: 'video/mp4'
+                    }
+                ]
+            },
             play(elm) {
                 console.log('play', elm);
             },
@@ -102,53 +115,7 @@
             playend(e) {
                 alert('播放结束');
             },
-            testPlay(e) {
-                console.log('play', elm);
-            },
-            changeVideo() {
-                this.sources1 = [
-                    {
-                        src: 'http://vjs.zencdn.net/v/oceans.mp4',
-                        type: 'video/mp4'
-                    }
-                ]
 
-                let videoElement = document.getElementById("testvideo").getElementsByTagName('video')[0];
-                videoElement.pause();
-                videoElement.removeAttribute('src');
-                videoElement.src = this.sources1.src;
-                videoElement.load();
-            },
-            prevVideo() {
-                let videoCon = this.$refs.changeVideo
-                let player = videoCon.getElementsByTagName('video')[0];
-
-                this.sources1 = [
-                    {
-                        src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-                        type: 'video/mp4'
-                    }
-                ]
-                this.$nextTick(() => {
-                    player.load()
-                })
-
-            },
-            nextVideo() {
-                let videoCon = this.$refs.changeVideo
-                let player = videoCon.getElementsByTagName('video')[0];
-
-                this.sources1 = [
-                    {
-                        src: 'http://vjs.zencdn.net/v/oceans.mp4',
-                        type: 'video/mp4'
-                    }
-                ]
-                this.$nextTick(() => {
-                    player.load()
-                })
-
-            }
         }
     };
 </script>
