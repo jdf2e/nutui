@@ -1,7 +1,7 @@
 <template>
     <div class="nut-textbox">
         <div class="txt-area" :class="{'error':errorState,'num-none':limitShow == false}" :style="{background:textBgColor}">
-            <textarea :placeholder="placeText" :style="{height:txtAreaHeight+'px'}" v-model="text" @input="txtIptLength" :switchMax="switchMax" :maxlength="iptMaxlength"></textarea>
+            <textarea :placeholder="placeText" :style="{height:txtAreaHeight+'px'}" v-model="value" @input="txtIptLength" :switchMax="switchMax" :maxlength="iptMaxlength"></textarea>
             <span v-show="limitShow">{{txtNum}}/{{maxNum}}</span>
         </div>
     </div>
@@ -38,7 +38,6 @@ export default {
             type:Boolean,
             default:true,
         }
-       
     },
     data() {
         return {
