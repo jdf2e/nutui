@@ -41,7 +41,6 @@ export default {
     },
     data() {
         return {
-            text: '',
             errorState:false,
             txtNum:0,
         };
@@ -60,9 +59,6 @@ export default {
         	}
         	return maxlength
         },
-    },
-    mounted() {
-        this.text = this.value
     },
     methods: {
         txtIptLength(event){
