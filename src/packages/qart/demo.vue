@@ -1,19 +1,13 @@
 <template>
     <div class="qartDemo">
         <h4>基础使用</h4>
-        <vue-qr :text="codeValue" :size="300"></vue-qr>
+        <vue-qr :text="codeValue"></vue-qr>
         <h4>背景图</h4>
-        <vue-qr :bgSrc="imageUrl" :text="codeValue" :size="300"></vue-qr>
+        <vue-qr :bg-src="imageUrl" :text="codeValue"></vue-qr>
         <h4>logo图</h4>
-        <vue-qr :logoSrc="imageUrl" :text="codeValue" :logoScale="0.5" :size="300"></vue-qr>
+        <vue-qr :logo-src="imageUrl" :text="codeValue" :logo-scale="0.5"></vue-qr>
         <h4>logo图+背景颜色</h4>
-        <vue-qr
-            :logoSrc="imageUrl"
-            :text="codeValue"
-            :logoScale="0.5"
-            :size="300"
-            backgroundColor="#F2140C"
-        ></vue-qr>
+        <vue-qr :logo-src="imageUrl" :text="codeValue" :logo-scale="0.5" background-color="#F2140C"></vue-qr>
         <h4>callback函数</h4>
         <vue-qr text="Hello world!" :callback="test" qid="testid"></vue-qr>
     </div>
@@ -22,8 +16,9 @@
 export default {
     data() {
         return {
-            imageUrl: require("./../../assets/img/logo.png"), //默认二维码中间图片
-            codeValue: "nutui.jd.com/"
+            imageUrl:
+                "https://img11.360buyimg.com/imagetools/jfs/t1/108423/20/14341/6907/5ea6b783E61a6cef3/55d0728276b2248d.png",
+            codeValue: "http://nutui.jd.com"
         };
     },
     methods: {
