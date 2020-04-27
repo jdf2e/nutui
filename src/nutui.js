@@ -119,7 +119,8 @@ import "./packages/subsidenavbar/subsidenavbar.scss";
 import SideNavBarItem from "./packages/sidenavbaritem/index.js";
 import "./packages/sidenavbaritem/sidenavbaritem.scss";
 import Qart from "./packages/qart/index.js";
-import "./packages/qart/qart.scss";
+import Drag from "./packages/drag/index.js";
+import "./packages/drag/drag.scss";
 
 const packages = {
   Cell,
@@ -180,7 +181,8 @@ const packages = {
   SideNavBar: SideNavBar,
   SubSideNavBar: SubSideNavBar,
   SideNavBarItem: SideNavBarItem,
-  Qart: Qart
+  Qart: Qart,
+  Drag: Drag
 };
 
 const components = {};

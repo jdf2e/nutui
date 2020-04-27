@@ -25,74 +25,146 @@
             <nut-video :sources="sources" :options="options5"></nut-video>
         </div>
         <h4>设置视频为背景图</h4>
-        <p>当设置视频为背景图时需要将 muted 静音、 disabled 禁止操作、loop 循环播放、autoplay 自动播放设置为 true，移动端需要设置 playsinline 行内展示（兼容安卓用）</p>
+        <p>当设置视频为背景图时需要将 muted 静音、 disabled 禁止操作、loop 循环播放、autoplay 自动播放设置为 true，移动端需要设置
+            playsinline 行内展示（兼容安卓用）</p>
         <div class="video-con">
             <nut-video :sources="sources" :options="options6"></nut-video>
         </div>
+        <h4>视频切换</h4>
+        <p>播放上一个、下一个视频</p>
+        <div class="video-con" ref="changeVideo">
+            <nut-video :sources="sources1" :options="options"></nut-video>
+        </div>
+
+        <button @click="prevVideo">播放上一个</button> <button @click="nextVideo">播放下一个</button>
     </div>
 </template>
 
 <script>
-export default {
-    components: {},
-    data() {
-        return {
-            sources: [
-                {
-                    src:
-                        'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-                    type: 'video/mp4'
-                }
-            ],
+    export default {
+        components: {},
+        data() {
+            return {
+                sources: [
+                    {
+                        src:
+                            'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+                        type: 'video/mp4'
+                    }
+                ],
+                sources1: [
+                    {
+                        src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+                        type: 'video/mp4'
+                    }
+                ],
+                videoId: 'videoid',
+                options: {
+                    controls: true
+                },
+                options2: {
+                    autoplay: true,
+                    muted: true,
+                    volume: 0.6,
+                    poster: ''
+                },
+                options3: {
+                    controls: true,
+                    muted: true
+                },
+                options4: {
+                    controls: true,
+                    poster: 'https://img10.360buyimg.com/ling/s640x356_jfs/t1/96045/31/13848/43886/5e5e35ffE68170c74/861a6394e38810f0.png'
+                },
+                options5: {
+                    playsinline: true,
+                    controls: true
+                },
+                options6: {
+                    autoplay: true,
+                    volume: 0.6,
+                    poster: '',
+                    muted: true,
+                    disabled: true,
+                    playsinline: true,
+                    loop: true
+                },
 
-            options: {
-                controls: true,
-            },
-            options2: {
-                autoplay: true,
-                volume: 0.6,
-                poster: '',
-            },
-            options3: {
-                controls: true,
-                muted: true
-            },
-            options4: {
-                controls: true,
-                poster: 'https://img10.360buyimg.com/ling/s640x356_jfs/t1/96045/31/13848/43886/5e5e35ffE68170c74/861a6394e38810f0.png',
-            },
-            options5: {
-                playsinline: true,
-                controls: true,
-            },
-            options6: {
-                autoplay: true,
-                volume: 0.6,
-                poster: '',
-                muted: true,
-                disabled: true,
-                playsinline: true,
-                loop: true
-            },
-           
-        };
-    },
-    methods: {
-        play(elm){
-            console.log('play',elm)
+            };
         },
-        pause(e){
-            console.log('pause')
-        },
-        playend(e){
-            alert('播放结束')
+        methods: {
+            play(elm) {
+                console.log('play', elm);
+            },
+            pause(e) {
+                console.log('pause');
+            },
+            playend(e) {
+                alert('播放结束');
+            },
+            testPlay(e) {
+                console.log('play', elm);
+            },
+            changeVideo() {
+                this.sources1 = [
+                    {
+                        src: 'http://vjs.zencdn.net/v/oceans.mp4',
+                        type: 'video/mp4'
+                    }
+                ]
+
+                let videoElement = document.getElementById("testvideo").getElementsByTagName('video')[0];
+                videoElement.pause();
+                videoElement.removeAttribute('src');
+                videoElement.src = this.sources1.src;
+                videoElement.load();
+            },
+            prevVideo() {
+                let videoCon = this.$refs.changeVideo
+                let player = videoCon.getElementsByTagName('video')[0];
+
+                this.sources1 = [
+                    {
+                        src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+                        type: 'video/mp4'
+                    }
+                ]
+                this.$nextTick(() => {
+                    player.load()
+                })
+
+            },
+            nextVideo() {
+                let videoCon = this.$refs.changeVideo
+                let player = videoCon.getElementsByTagName('video')[0];
+
+                this.sources1 = [
+                    {
+                        src: 'http://vjs.zencdn.net/v/oceans.mp4',
+                        type: 'video/mp4'
+                    }
+                ]
+                this.$nextTick(() => {
+                    player.load()
+                })
+
+            }
         }
-    }
-};
+    };
 </script>
 
 <style lang="scss" scoped>
-.nut-video{
-    height:200px;
-}
+    .nut-video {
+        height: 200px;
+    }
+
+    button {
+        margin: 5px 10px 5px 0;
+        background: #f0250f;
+        border: 1px solid #f0250f;
+        height: 32px;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 14px;
+    }
 </style>

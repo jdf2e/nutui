@@ -1,46 +1,47 @@
 <template>
     <div class="nut-sidenavbar">
-        <nut-popup
-            :position="position"
-            v-model="show"
-            :style="{ width, height }"
-        >
-            <div class="sidenavbar-content">
-                <div class="sidenavbar-list">
-                    <slot></slot>
-                </div>
+        <div class="sidenavbar-content">
+            <div class="sidenavbar-list">
+                <slot></slot>
             </div>
-        </nut-popup>
+        </div>
     </div>
 </template>
 <script>
 export default {
     name:'nut-sidenavbar',
     props: {
-        show:{
-            type: Boolean,
-            default: true
-        },
-        position:{
-            type: String,
-            default: 'right'
-        },
-        width:{
+        offset:{
             type:[String,Number],
-            default: '80%'
-        },
-        height:{
-            type:[String,Number],
-            default: '100%'
+            default:15
+        }
+    },
+    mounted() {
+        let slots = this.$slots.default;
+        if(slots) {
+            slots = slots.filter(item => item.elm.nodeType !== 3).map(item => {
+                return item.elm
+            })
+            
+            this.setPaddingLeft(slots)
         }
     },
     data() {
         return {
-            
+            count: 1
         };
     },
     methods: {
-
+        setPaddingLeft(nodeList, level = 1) {
+            for(let i = 0; i < nodeList.length; i++) {
+                let item = nodeList[i];
+                item.children[0].style.paddingLeft = this.offset * level + 'px'
+                if(item.className !== 'nut-sidenavbaritem') {
+                    this.setPaddingLeft(Array.from(item.children[1].children), ++this.count)
+                }
+            }
+            this.count = 1;
+        }
     }
 }
 </script>
