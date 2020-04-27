@@ -1,4 +1,8 @@
 .nut-subsidenavbar{
+    display: grid;
+    float: left;
+    width: 100%;
+    position: relative;
     .item-title{
         display: block;
         width: 100%;
@@ -8,44 +12,28 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         box-sizing: border-box;
-        border-bottom: 1px solid #f8f8f8;
+        border-bottom: 1px solid $light-color;
+        color: $title-color;
+        font-size: $font-size-large;
+        background-color: $light-color;
+        .sidenavbar-title{
+            line-height: 40px;
+            color: $title-color;
+        }
     }
     .sidenavbar-icon{
         position: absolute;
         top: 50%;
         right: 20px;
         transform: translateY(-50%);
+        i{
+            transition: transform $animation-duration $ease-in-out;
+            &.up{
+                transform: rotate(-180deg);
+            }
+        }
     }
-    .sidenavbar-title{
-        font-size: 16px;
-        line-height: 40px;
-        height: 40px;
-    }
-    .sidenavbar-item{
-        float: left;
+    .sub-sidenavbar-list{
         width: 100%;
-        position: relative;
-        border-bottom: 1px solid #f8f8f8;
-        background-color: #f8f8f8;
-        .sidenavbar-item-title{
-            padding: 0 18px;
-            .sidenavbar-title{
-                color: #333;
-            }
-        }
-        .sub-sidenavbar-box{
-            background-color: #fefefe;
-            .sub-sidenavbar-list{
-                .sub-sidenavbar-item{
-                    width: 100%;
-                    .sub-sidenavbar-item-title{
-                        padding: 0 34px;
-                        .sub-sidenavbar-title{
-                            color: #333;
-                        }
-                    }
-                }
-            }
-        }
     }
 }

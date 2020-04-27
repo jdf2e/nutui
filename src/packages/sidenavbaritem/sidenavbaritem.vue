@@ -1,32 +1,27 @@
 <template>
-    <div class="nut-sidenavbaritem">     
-        <li>
-            <a href="javascript:;" class="item-title sub-sidenavbar-item-item">
-                {{ title }}
-            </a>
-        </li>
+    <div class="nut-sidenavbaritem" @click.stop="handleClick" :ikey="ikey"> 
+        <a href="javascript:;" class="item-title">
+            {{ title }}
+        </a>
     </div>
 </template>
 <script>
 export default {
     name:'nut-sidenavbaritem',
     props: {
-        disabled: {
-            type: Boolean,
-            default: true
-        },
         title: {
+            type: String,
+            default: ''
+        },
+        ikey: {
             type: String,
             default: ''
         }
     },
-    data() {
-        return {
-            
-        };
-    },
     methods: {
-
+        handleClick() {
+            this.$emit('click');
+        }
     }
 }
 </script>
