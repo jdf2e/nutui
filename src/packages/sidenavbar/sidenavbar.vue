@@ -1,7 +1,7 @@
 <template>
     <div class="nut-sidenavbar">
         <div class="sidenavbar-content">
-            <div class="sidenavbar-list">
+            <div class="sidenavbar-list" ref="list">
                 <slot></slot>
             </div>
         </div>
@@ -17,21 +17,31 @@ export default {
         }
     },
     mounted() {
-        let slots = this.$slots.default;
-        if(slots) {
-            slots = slots.filter(item => item.elm.nodeType !== 3).map(item => {
-                return item.elm
-            })
-            
-            this.setPaddingLeft(slots)
-        }
+        this.observer = new MutationObserver(function(mutations) {
+            this.handleSlots()
+        }.bind(this));
+
+        this.observer.observe(
+            this.$refs.list,
+            { attributes: true, childList: true, characterData: true, subtree: true }
+        );
     },
     data() {
         return {
-            count: 1
+            count: 1,
+            observer: null
         };
     },
     methods: {
+        handleSlots() {
+            let slots = this.$slots.default;
+            if(slots) {
+                slots = slots.filter(item => item.elm.nodeType !== 3).map(item => {
+                    return item.elm
+                })
+                this.setPaddingLeft(slots)
+            }
+        },
         setPaddingLeft(nodeList, level = 1) {
             for(let i = 0; i < nodeList.length; i++) {
                 let item = nodeList[i];
