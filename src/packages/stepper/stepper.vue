@@ -117,6 +117,14 @@ export default {
                 this.$emit('change', this.num);
             },
             immediate: true
+        },
+        min:{
+            handler(v, ov) {
+                if(v < this.max){
+                    this.minNum = v
+                }
+            },
+            immediate: true
         }
     },
     computed: {
