@@ -14,7 +14,6 @@
 
 ```javascript
 export default {
-  methods: {
     data() {
         return {
             sources: [
@@ -27,6 +26,7 @@ export default {
             options: {
                 controls: true
             },
+		}
     },
     methods: {
         play(elm){
@@ -39,7 +39,7 @@ export default {
             alert('播放结束')
         }
     }
-  }
+  
 };
 ```
 
@@ -53,7 +53,7 @@ autoplay 属性设置视频自动播放
 
 ```javascript
 export default {
-  methods: {
+  
     data() {
         return {
             options2: {
@@ -61,9 +61,9 @@ export default {
                 volume: 0.6,
                 poster: ''
             },
-
+		}
     },
-  }
+  
 };
 ```
 
@@ -77,16 +77,15 @@ muted 属性设置视频初始化静音
 
 ```javascript
 export default {
-  methods: {
     data() {
         return {
             options3: {
                 controls: true,
                 muted: true
             },
-
+		}
     },
-  }
+  
 };
 ```
 
@@ -100,16 +99,14 @@ poster 属性设置视频海报
 
 ```javascript
 export default {
-  methods: {
     data() {
         return {
             options4: {
                 controls: true,
                 poster: 'https://img10.360buyimg.com/ling/s640x356_jfs/t1/96045/31/13848/43886/5e5e35ffE68170c74/861a6394e38810f0.png',
             },
-
+		}
     },
-  }
 };
 ```
 
@@ -123,16 +120,14 @@ playsinline 属性设置移动端视频行内播放，阻止新打开页面播�
 
 ```javascript
 export default {
-  methods: {
     data() {
         return {
             options5: {
                 playsinline: true,
                 controls: true,
             },
-
+		}
     },
-  }
 };
 ```
 
@@ -146,7 +141,6 @@ export default {
 
 ```javascript
 export default {
-  methods: {
     data() {
         return {
             options6: {
@@ -158,11 +152,51 @@ export default {
                 playsinline: true,
                 loop: true
             },
-
-    },
-  }
+		}
+    }
 };
 ```
+
+## 视频切换
+
+当视频地址发生变化时，重置视频
+
+```html
+  	<div class="video-con" >
+		<nut-video :sources="sources1" :options="options"></nut-video>
+	</div>
+```
+
+```javascript
+export default {
+    data() {
+        return {
+            sources1: [
+                {
+                    src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+                    type: 'video/mp4'
+                }
+            ],
+            options: {
+                controls: true
+            },
+
+    	},
+  	}
+	methods: {
+        changeVideo() {
+			this.sources1 = [
+				{
+					src: 'http://vjs.zencdn.net/v/oceans.mp4',
+					type: 'video/mp4'
+				}
+			]
+		},
+    }
+};
+```
+
+
 
 ## Prop
 

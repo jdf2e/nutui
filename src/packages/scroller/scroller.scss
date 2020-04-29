@@ -2,20 +2,23 @@
 .nut-scroller{
     display: flex;
     height: 100%;
+    width: 100%;
     overflow: hidden;
 }
 // 横向滚动 
 .nut-hor-scroll{
     height: 100%;
     width: 100%;
-    // overflow: hidden;
+    overflow: hidden;
+    touch-action: none; 
     .nut-hor-list{
         height: 100%;
-        touch-action: none;
+        width: auto;
         display: inline-flex;
-        flex-direction: row;
-        box-orient: horizontal;
-        box-direction: normal;
+        // display: flex;
+        // flex-direction: row;
+        // box-orient: horizontal;
+        // box-direction: normal;
     }
     .nut-hor-control{
         height: 100%;
