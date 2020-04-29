@@ -12,6 +12,8 @@
 * :sparkles: upd(Imgpicker)：增加长按时间可配置 @szg2008
 * :sparkles: upd(Stepper)：优化min参数监听问题 @yangxiaolu1993
 * :sparkles: upd(DatePicker)：组件增加秒功能 @irisSong
+* :bug: fix(TabBar)：重复点击一个TAB的时候会报错 #231 @zhenyulei
+* :bug: fix(TextBox)：v-model问题修复 @guoxiao158
 * :bug: fix(Countdown)：修复切换页面闪烁问题 #237 @undo03
 * :bug: fix(SearchBar)：修复input获取焦点问题 @yangxiaolu1993
 * :bug: fix(Video)：修复视频组件source 数据更新无法切换问题 #234 @vickyYE
