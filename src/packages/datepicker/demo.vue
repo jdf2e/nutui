@@ -109,9 +109,10 @@
       title="请选择时间"
       startHour="8"
       endHour="18"
-      defaultValue="09:06"
+      :default-value="time1"
       @close="switchPicker('isVisible4')"
       @choose="setChooseValue4"
+      :is-set-second = "true"
     ></nut-datepicker>
     <!-- demo4-->
     <nut-datepicker
@@ -119,7 +120,7 @@
       type="time"
       title="请选择时间"
       :minute-step="5"
-      defaultValue="10:30"
+      :default-value="time2"
       @close="switchPicker('isVisible5')"
       @choose="setChooseValue5"
     ></nut-datepicker>
@@ -140,7 +141,7 @@ export default {
       date1: null,
       datetime: "2018-11-02 11:08",
       time: "01:07",
-      time1: "09:06",
+      time1: "09:06:02",
       time2: "10:30",
       amOrPm: "PM"
     };
@@ -163,7 +164,7 @@ export default {
       this.time = param[3];
     },
     setChooseValue4(param) {
-      this.time1 = param[2];
+      this.time1 = param[3];
     },
     setChooseValue5(param) {
       this.time2 = param[2];
