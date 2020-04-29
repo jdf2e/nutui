@@ -23,6 +23,10 @@ export default {
             type: String,
             default: 'date'
         },
+        isSetSecond: {
+            type: Boolean,
+            default: false
+        },
         isVisible: {
             type: Boolean,
             default: true
@@ -36,6 +40,10 @@ export default {
             default: true
         },
         minuteStep: {
+            type: Number,
+            default: 1
+        },
+        secondStep: {
             type: Number,
             default: 1
         },
@@ -83,7 +91,7 @@ export default {
             updateDay: null,
             updateHour: null,
             use12Hours: ['上午', '下午'], 
-            chinese: !this.isShowChinese ? new Array(5).fill('') : this.type == 'time' ? ['时', '分', ''] : ['年', '月', '日', '时', '分']
+            chinese: !this.isShowChinese ? new Array(6).fill('') : this.type == 'time' ? (this.isUse12Hours ? ['时', '分', ''] : ['时', '分', '秒']) : ['年', '月', '日', '时', '分']
         };
     },
     components: {
@@ -151,6 +159,8 @@ export default {
                     this.cacheListData = [...[this.getHours(), this.getMinutes()]];
                     if (this.isUse12Hours) {
                         this.cacheListData = [...this.cacheListData, this.use12Hours];
+                    } else {
+                        this.cacheListData = this.isSetSecond ? [...this.cacheListData, this.getSeconds()] : [...this.cacheListData];
                     }
                     break;
             }            
@@ -162,7 +172,7 @@ export default {
             if (!this.defaultValue || !Utils.isDateString(this.defaultValue)) { 
                 switch (this.type) {
                     case 'time': 
-                        cacheDefaultValue = `00:00`;
+                        cacheDefaultValue = this.isSetSecond ? `00:00:00` :`00:00`;
                         break;
                     case 'date': 
                     case 'datetime': 
@@ -190,6 +200,7 @@ export default {
                 this.updateHour =  this.cacheDefaultData[3];  
             }
             this.defaultValueData = [...this.cacheDefaultData];
+           
         },
 
         getCacheData(data) {
@@ -327,6 +338,15 @@ export default {
             return minutes.filter(item => item);
         },
 
+        getSeconds() {
+            let seconds = Array.from(Array(60), (v,k) => {
+                if (k == 0 || k % this.secondStep == 0) {
+                    return `${k}${this.type=='time' ? this.chinese[2] : this.chinese[5]}`;
+                }
+            });
+            return seconds.filter(item => item);
+        },
+
         setChooseValue(chooseData) {
             let cacheChooseData = [];
             chooseData.map((item , index) => {
@@ -348,7 +368,7 @@ export default {
                 let week = Utils.getWhatDay(cacheChooseData[0], cacheChooseData[1], cacheChooseData[2]);
                 cacheChooseData.push(week);
             } else {
-                cacheChooseData.push(`${cacheChooseData[0]}:${cacheChooseData[1]}`);
+                cacheChooseData.push(`${cacheChooseData[0]}:${cacheChooseData[1]}${this.isSetSecond ? ':' + cacheChooseData[2] : ''}`);
             }
             this.$emit('choose', cacheChooseData)
         },

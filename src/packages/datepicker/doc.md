@@ -156,6 +156,7 @@ export default {
 | endDate | 结束日期 | String | 今天
 | startHour | 开始小时 | Number | 1
 | endHour | 结束小时 | Number | 23
+|isSetSecond| 是否支持秒，仅限type类型为'time'时支持 | Boolean | false
 
 ## Event
 
