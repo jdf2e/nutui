@@ -118,7 +118,6 @@ import SubSideNavBar from "./packages/subsidenavbar/index.js";
 import "./packages/subsidenavbar/subsidenavbar.scss";
 import SideNavBarItem from "./packages/sidenavbaritem/index.js";
 import "./packages/sidenavbaritem/sidenavbaritem.scss";
-import Qart from "./packages/qart/index.js";
 import Drag from "./packages/drag/index.js";
 import "./packages/drag/drag.scss";
 
@@ -181,7 +180,6 @@ const packages = {
   SideNavBar: SideNavBar,
   SubSideNavBar: SubSideNavBar,
   SideNavBarItem: SideNavBarItem,
-  Qart: Qart,
   Drag: Drag
 };
 
