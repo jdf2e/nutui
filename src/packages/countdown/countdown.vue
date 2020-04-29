@@ -156,6 +156,10 @@ const countdownTimer = {
   },
   created() {
     this.initTimer();
+  },
+  destroyed() {
+    this.timer && clearInterval(this.timer);
+    
   }
 }
 countdownTimer.restTime = restTime;

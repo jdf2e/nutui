@@ -4,7 +4,7 @@
 
 ```html
 <nut-countdown 
-    :endTime="end"  
+    :end-time="end"  
 >
 </nut-countdown>
 ```
@@ -13,8 +13,8 @@
 
 ```html
 <nut-countdown 
-    :endTime="end" 
-    showDays 
+    :end-time="end" 
+    show-days 
 >
 </nut-countdown>
 ```
@@ -23,9 +23,9 @@
 
 ```html
 <nut-countdown 
-    :startTime="serverTime"
-    :endTime="end" 
-    showDays 
+    :start-time="serverTime"
+    :end-time="end" 
+    show-days 
 >
 </nut-countdown>
 ```
@@ -34,9 +34,9 @@
 
 ```html
 <nut-countdown 
-    showDays 
-    showPlainText 
-    :endTime="end" 
+    show-days 
+    show-plain-text 
+    :end-time="end" 
 >
 </nut-countdown>
 ```
@@ -45,9 +45,9 @@
 
 ```html
 <nut-countdown 
-    showDays 
-    showPlainText 
-    :endTime="asyncEnd" 
+    show-days 
+    show-plain-text 
+    :end-time="asyncEnd" 
 >
 </nut-countdown>
 ```
@@ -56,7 +56,7 @@
 
 ```html
 <nut-countdown 
-    :endTime="end" 
+    :end-time="end" 
     :paused="paused" 
 >
 </nut-countdown>
@@ -66,10 +66,10 @@
 
 | 字段 | 说明 | 类型 | 默认值
 | ----- | ----- | ----- | -----
-| startTime | 开始时间 | String, Number | Date.now()
-| endTime | 结束时间 | String, Number | Date.now()
-| showDays | 是否显示天 | Boolean | false
-| showPlainText | 显示为纯文本 | Boolean | false
+| start-time | 开始时间 | String, Number | Date.now()
+| end-time | 结束时间 | String, Number | Date.now()
+| show-days | 是否显示天 | Boolean | false
+| show-plain-text | 显示为纯文本 | Boolean | false
 | paused | 是否暂停 | Boolean | false
 
 
