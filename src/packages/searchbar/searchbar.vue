@@ -10,6 +10,7 @@
 					@keyup.enter="submitFun"
 					@input="inputFun"
 					@blur="blurFun"
+					@focus="focusFun"
 					ref="searchInput"
 	    		>
 	    		<span class="close-icon" :class="hasCloseIcon ? 'show':''"
@@ -102,6 +103,7 @@ export default {
     		this.hasCloseIcon = false;
     	},
     	focusFun() {
+			
     		this.inputFocusAnimation = true;
     		this.$emit('focus');
     	},
@@ -122,6 +124,7 @@ export default {
 		},
 		//js控制获取焦点
 		focus() {
+		
 			this.$nextTick(function() {
 				this.$refs.searchInput.focus()
 			})
