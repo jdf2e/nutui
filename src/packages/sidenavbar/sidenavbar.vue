@@ -8,6 +8,12 @@
     </div>
 </template>
 <script>
+import Icon from '../icon/icon.vue';
+import '../icon/icon.scss';
+import Subsidenavbar from '../subsidenavbar/subsidenavbar.vue';
+import '../subsidenavbar/subsidenavbar.scss';
+import Sidenavbaritem from '../sidenavbaritem/sidenavbaritem.vue';
+import '../sidenavbaritem/sidenavbaritem.scss';
 export default {
     name:'nut-sidenavbar',
     props: {
@@ -15,6 +21,11 @@ export default {
             type:[String,Number],
             default:15
         }
+    },
+    components: {
+        'nut-icon': Icon,
+        'nut-subsidenavbar': Subsidenavbar,
+        'nut-sidenavbaritem': Sidenavbaritem,
     },
     mounted() {
         this.observer = new MutationObserver(function(mutations) {
