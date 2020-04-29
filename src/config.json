@@ -576,6 +576,16 @@
     },
     {
       "version": "1.0.0",
+      "name": "TimeLine",
+      "chnName": "时间轴节点",
+      "desc": "定义时间轴节点",
+      "type": "component",
+      "sort": "0",
+      "showDemo": false,
+      "author": "yangxiaolu"
+    },
+    {
+      "version": "1.0.0",
       "name": "SideNavBar",
       "chnName": "侧边栏导航",
       "desc": "侧边栏导航",
