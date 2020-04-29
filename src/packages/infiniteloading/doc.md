@@ -1,4 +1,4 @@
-# InfiniteLoading 无限加载
+# Infiniteloading 无限加载
 列表滚动到底部自动加载更多数据。
 
 ## 基本用法

@@ -61,7 +61,7 @@ https://nutui.jd.com
 
 NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使用。
 
-<img src="https://img12.360buyimg.com/imagetools/jfs/t1/103711/28/17214/247343/5e854d2aE0d93051b/f475b25de9b63972.png" />
+<img src="https://raw.githubusercontent.com/richard1015/nutui-user-cases/master/user-cases.jpg" />
 
 [征集更多优秀案例](https://github.com/richard1015/nutui-user-cases)
 

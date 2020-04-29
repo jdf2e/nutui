@@ -49,6 +49,7 @@
 <nut-imagepicker 
   @imgMsg="imgMsg" 
   delMode="longtap"
+  :longTapTime="longTapTime"
 >
 </nut-imagepicker>
 ```
@@ -67,6 +68,7 @@
 export default {
   data() {
     return {
+      longTapTime: 1000,
       imgList1:[
         {
           id:1,
@@ -105,6 +107,7 @@ export default {
 | accept | 允许上传的图片类型 | String | image/*
 | ismultiple | 是否开启多张图片上传 | Boolean | false
 | delMode | 删除图片的方式（tap、longtap） | String | tap
+| longTapTime | 长按的时间 | Number | 500
 | autoUpload | 选择完成之后是否直接上传 | Boolean | false
 | imgList | 图片列表 （注意：绑定时必须`:imgList.sync`,加sync修饰符） | Array | []
 

@@ -1,0 +1,11 @@
+.nut-sidenavbar{
+    height: 100%;
+    overflow: auto;
+    .sidenavbar-content{
+        position: relative;
+        background-color: #fff;
+        .sidenavbar-list{
+            width: 100%;
+        }
+    }
+}
