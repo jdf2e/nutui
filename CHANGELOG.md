@@ -2,9 +2,9 @@
 
 `2020-04-29`
 
-- :sparkles: upd(CircleProgress)：新增环形进度条 @layman666
-- :sparkles: upd(Drag)：新增拖拽组件 @zy19940510
-- :sparkles: upd(SideNavBar)：新增侧边栏导航组件 @szg2008
+* :sparkles: upd(CircleProgress)：新增环形进度条 @layman666
+* :sparkles: upd(Drag)：新增拖拽组件 @zy19940510
+* :sparkles: upd(SideNavBar)：新增侧边栏导航组件 @szg2008
 * :sparkles: upd(ButtonGroup)：优化内部代码，文档优化 @shenqistart
 * :sparkles: upd(Icon)：优化内部代码，文档优化 @linrufeng
 * :sparkles: upd(Uploader)：调整 uploader 上传 form-data 键值顺序 @richard1015
@@ -12,7 +12,8 @@
 * :sparkles: upd(Imgpicker)：增加长按时间可配置 @szg2008
 * :sparkles: upd(Stepper)：优化min参数监听问题 @yangxiaolu1993
 * :sparkles: upd(DatePicker)：组件增加秒功能 @irisSong
-* :bug: fix(SearchBar)：修复获取焦点问题 #237 @yangxiaolu1993
+* :bug: fix(Countdown)：修复切换页面闪烁问题 #237 @undo03
+* :bug: fix(SearchBar)：修复input获取焦点问题 @yangxiaolu1993
 * :bug: fix(Video)：修复视频组件source 数据更新无法切换问题 #234 @vickyYE
 * :bug: fix(Popup)：修复滑动锁定背景部分机型不生效问题 @yangkaixuan
 * :bug: fix(Scroller)：修复组件横向滑动区域,不能上下滑动页面问题 #103 #62 @irisSong
