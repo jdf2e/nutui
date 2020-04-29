@@ -20,6 +20,7 @@
       :stroke="option.progressColor"
       :stroke-dasharray="arcLength"
       :stroke-width="strokeInnerWidth"
+      
       fill="none"
       transform="rotate(-90)"
       transform-origin="center"
@@ -66,6 +67,11 @@ export default {
       // console.log(this.progress,progressLength)
       return `${progressLength},${circleLength}`
     },
+    // :stroke-dashoffset="dashOffset"
+    // dashOffset() {
+    //   // 偏移初始值为dashArray长度，随着percent增大逐渐减小
+    //   return (1 - this.progress) *Math.floor(2 * Math.PI * this.option.radius);
+    // },
     option () {
       // 所有进度条的可配置项
       let baseOption = {

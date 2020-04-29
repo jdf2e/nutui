@@ -59,7 +59,7 @@ export default {
 }
 .touch-dom {
   height: 30px;
-  padding: 10px;
+  padding: 0 10px;
   line-height: 30px;
   text-align: center;
   color: #fff;

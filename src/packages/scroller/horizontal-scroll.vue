@@ -157,7 +157,7 @@ export default {
 
         touchEnd(event) {
             event.stopPropagation();
-            let changedTouches = event.changedTouches[0];
+            let changedTouches = event.changedTouches[0];       
             this.touchParams.lastTime = event.timestamp || Date.now();
             let moveTime = this.touchParams.lastTime - this.touchParams.startTime;
             this.touchEvent(changedTouches, (move, maxMove) => {

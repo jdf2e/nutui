@@ -18,7 +18,7 @@ describe('Stepper.vue', () => {
         });
         const input = wraper.find('input');
         expect(wraper.contains('.nut-stepper-grey')).toBe(true);
-        expect(input.attributes('min')).toBe('0');
+        expect(input.attributes('min')).toBe('10');
         expect(input.attributes('max')).toBe(maxVal);
     });
 
