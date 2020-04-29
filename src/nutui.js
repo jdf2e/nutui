@@ -106,10 +106,21 @@ import Video from "./packages/video/index.js";
 import "./packages/video/video.scss";
 import Signature from "./packages/signature/index.js";
 import "./packages/signature/signature.scss";
+import CircleProgress from "./packages/circleprogress/index.js";
+import "./packages/circleprogress/circleprogress.scss";
 import TimeLine from "./packages/timeline/index.js";
 import "./packages/timeline/timeline.scss";
 import TimeLineItem from "./packages/timelineitem/index.js";
 import "./packages/timelineitem/timelineitem.scss";
+import SideNavBar from "./packages/sidenavbar/index.js";
+import "./packages/sidenavbar/sidenavbar.scss";
+import SubSideNavBar from "./packages/subsidenavbar/index.js";
+import "./packages/subsidenavbar/subsidenavbar.scss";
+import SideNavBarItem from "./packages/sidenavbaritem/index.js";
+import "./packages/sidenavbaritem/sidenavbaritem.scss";
+import Qart from "./packages/qart/index.js";
+import Drag from "./packages/drag/index.js";
+import "./packages/drag/drag.scss";
 
 const packages = {
   Cell,
@@ -164,8 +175,14 @@ const packages = {
   LuckDraw: LuckDraw,
   Video: Video,
   Signature: Signature,
+  CircleProgress: CircleProgress,
   TimeLine: TimeLine,
-  TimeLineItem: TimeLineItem
+  TimeLineItem: TimeLineItem,
+  SideNavBar: SideNavBar,
+  SubSideNavBar: SubSideNavBar,
+  SideNavBarItem: SideNavBarItem,
+  Qart: Qart,
+  Drag: Drag
 };
 
 const components = {};
