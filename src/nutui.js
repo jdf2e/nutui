@@ -120,6 +120,8 @@ import SideNavBarItem from "./packages/sidenavbaritem/index.js";
 import "./packages/sidenavbaritem/sidenavbaritem.scss";
 import Drag from "./packages/drag/index.js";
 import "./packages/drag/drag.scss";
+import Address from "./packages/address/index.js";
+import "./packages/address/address.scss";
 
 const packages = {
   Cell,
@@ -180,7 +182,8 @@ const packages = {
   SideNavBar: SideNavBar,
   SubSideNavBar: SubSideNavBar,
   SideNavBarItem: SideNavBarItem,
-  Drag: Drag
+  Drag: Drag,
+  Address: Address
 };
 
 const components = {};
