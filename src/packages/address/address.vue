@@ -1,6 +1,6 @@
 <template>
     <div class="nut-address">
-        <nut-popup v-model="showPopup" round position="bottom" class="choose-address" @close="close">
+        <nut-popup v-model="showPopup" round position="bottom" class="choose-address" @close="close" @click-overlay="clickOverlay">
             <div class="title">
                 <span class="arrow" @click="switchModule">
                     <nut-icon v-if="showModule == 'custom' && type == 'exist'" type="self" :url="require('../../assets/svg/arrows-back.svg')"></nut-icon>
@@ -10,7 +10,7 @@
                 <span v-if="type == 'custom'">请选择所在地区</span>
                 <span v-if="type == 'exist'">配送至</span>
 
-                <span @click="close('close')"><nut-icon type="circle-cross" size="18px"></nut-icon></span>
+                <span @click="handClose('hand')"><nut-icon type="circle-cross" size="18px"></nut-icon></span>
             </div>
 
             <!-- 请选择 -->
@@ -137,11 +137,6 @@ export default {
         showPopup(newVal,oldVal){
             if (newVal == false) this.$emit('input', false)
             if (newVal == true) {
-                if (this.type == 'custom') {
-                    // this.getProvinceId('province')
-                } else {
-                    console.log(this.existAddress)
-                }
 
                 this.showModule = this.type
             }
@@ -161,8 +156,7 @@ export default {
                 this.regionList.town = newVal
             }else{
                 
-                // this.close()
-                this.showPopup = false
+                this.handClose()
             }
             
         }
@@ -207,8 +201,7 @@ export default {
                 this.$emit('onChange', calBack)
 
             } else {
-                // this.close()
-                this.showPopup = false
+                this.handClose()
             }
         },
         //切换地区Tab
@@ -233,13 +226,12 @@ export default {
             this.selectedExistAddress = item
 
             this.$emit('selected',item)
-            // this.close()
-            this.showPopup = false
+
+            this.handClose()
         },
 
         // 关闭
-        close(type){
-            this.showPopup = false
+        close(){
             const that = this
 
             const resCopy = Object.assign({}, this.selectedRegion) 
@@ -261,16 +253,30 @@ export default {
             
             this.initAddress()
 
-            if(type == 'close'){
-                // this.$emit('close',res)
-            }else{
+            if(this.closeWay == 'self'){
                 this.$emit('close',res)
+            }else{
+                // this.$emit('close',{type:'hand'})
             }
-            // console.log('关闭')
+            
             setTimeout(()=>{
                 that.showModule = 'type'
             },500)
             
+        },
+        // 手动关闭 点击叉号，或者蒙层
+        handClose(type = 'self'){
+            if(type == 'hand'){
+                this.closeWay = 'hand'
+            }else{
+                this.closeWay = 'self'
+            }
+
+            this.showPopup = false
+        },
+        // 点击遮罩层关闭
+        clickOverlay(){
+            this.closeWay = 'hand'
         },
         // 初始化
         initAddress(){
