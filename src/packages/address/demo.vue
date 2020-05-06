@@ -58,11 +58,20 @@ export default {
 
       onChange1(cal){
         console.log('change1',cal)
-        this[cal.next] = [].concat(Address[cal.next])
+        if(Address[cal.next].length > 0){
+          this[cal.next] = [].concat(Address[cal.next])
+        }else{
+          this.showPopup = false
+        }
       },
       onChange2(cal){
         console.log('change2',cal)
-        this[cal.next] = [].concat(Address[cal.next])
+        if(Address[cal.next].length > 0){
+          this[cal.next] = [].concat(Address[cal.next])
+        }else{
+          this.showPopupOther = false
+        }
+        
       },
       close1(val){
         console.log(val)
@@ -71,17 +80,18 @@ export default {
       close2(val){
         console.log(val)
         if(val.type == 'exist'){
-          this.text2 = val.data.fullAddress
+          this.text2 = val.data.provinceName+val.data.cityName+val.data.countyName+val.data.townName+val.data.addressDetail
         }else{
           this.text2 = val.data.addressStr
         }
         
       },
       selected(val){
-        console.log(val)
+       
         this.existAddress.forEach((item)=>{
          
           this.$set(item,'selectedAddress',false)
+
           if(item.id == val.id){
             this.$set(item,'selectedAddress',true)
           }

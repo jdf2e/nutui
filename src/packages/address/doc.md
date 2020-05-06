@@ -25,10 +25,10 @@ export default {
   data() {
     return {
         showPopup:false,
-        province:[], // 省
-        city:[],// 市
-        country:[],// 县
-        town:[], // 镇
+        province:[{'name':''}], // 省 必传值：name
+        city:[{'name':''}],// 市 必传值：name
+        country:[{'name':''}],// 县 必传值：name
+        town:[{'name':''}], // 镇 必传值：name
     }
   },
   methods: {
@@ -40,7 +40,12 @@ export default {
         },1000);
       },
       onChange1(cal){
-        this[cal.next] = [].concat(Address[cal.next]); // 赋值下一个列的内容
+        // 赋值下一个行政区列表的内容
+        if(Address[cal.next].length > 0){
+          this[cal.next] = [].concat(Address[cal.next])
+        }else{
+          this.showPopup = false
+        } 
       },
       close1(val){
         this.text1 = val.data.addressStr 
@@ -80,11 +85,17 @@ export default {
   data() {
     return {
       showPopupOther:false,
-      existAddress:[], // 已有地址列表
-      province:[], // 省
-      city:[],// 市
-      country:[],// 县
-      town:[], // 镇
+      existAddress:[{
+        'provinceName':'',
+        'cityName':'',
+        'countyName':'',
+        'townName':'',
+        'addressDetail':'',
+      }], // 已有地址列表 必传值：provinceName、cityName、countyName、townName、addressDetail 
+      province:[{'name':''}], // 省
+      city:[{'name':''}],// 市
+      country:[{'name':''}],// 县
+      town:[{'name':''}], // 镇
     };
   },
   methods: {
@@ -97,11 +108,15 @@ export default {
         },1000)
     },
     onChange2(cal){
-        this[cal.next] = [].concat(Address[cal.next])
+        if(Address[cal.next].length > 0){
+          this[cal.next] = [].concat(Address[cal.next])
+        }else{
+          this.showPopupOther = false
+        }
     },
     close2(val){
         if(val.type == 'exist'){
-          this.text2 = val.data.fullAddress
+          this.text2 = val.data.provinceName+val.data.cityName+val.data.countyName+val.data.townName+val.data.addressDetail
         }else{
           this.text2 = val.data.addressStr
         }
@@ -123,7 +138,7 @@ export default {
 ## API
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| v-model |  | String | ''
+| v-model | 是否打开地址选择 | String | ''
 | type | 地址选择类型 exist/custom | String | custom
 | province | 省 | Array | []
 | city | 市 | Array | []
@@ -131,7 +146,7 @@ export default {
 | town | 乡/镇 | Array | []
 | existAddress | 已存在地址列表 | Array | []
 
-注：existAddress 列表值中使用的 fullAddress 字段。province/city/country/town 数组中，使用的是每个地址的 name 字段。
+注：existAddress 列表值中使用的 provinceName、cityName、countyName、townName、addressDetail 字段进行拼接。province/city/country/town 数组中，使用的是每个地址的 name 字段显示名称。
 
 ## Event
 | 字段 | 说明 | 回调参数 
@@ -158,3 +173,5 @@ export default {
 |----- | ----- | ----- 
 | type | 地址选择类型 exist/custom  |  exist/custom
 | data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | {} 
+
+注：点击叉号或者点击遮罩层关闭地址选择，不会触发 close 事件。

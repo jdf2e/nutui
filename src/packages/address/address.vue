@@ -1,6 +1,6 @@
 <template>
     <div class="nut-address">
-        <nut-popup v-model="showPopup" round position="bottom" class="choose-address" @close="close" @click-overlay="clickOverlay">
+        <nut-popup v-model="showPopup" round position="bottom" class="choose-address" @close="close" @click-overlay="clickOverlay" @open="closeWay = 'self'">
             <div class="title">
                 <span class="arrow" @click="switchModule">
                     <nut-icon v-if="showModule == 'custom' && type == 'exist'" type="self" :url="require('../../assets/svg/arrows-back.svg')"></nut-icon>
@@ -53,7 +53,6 @@
                             @click="selectedExist(item)"
                         >
                             <nut-icon  type="self" :url="item.selectedAddress?require('../../assets/svg/tick-red.svg'):require('../../assets/svg/address-location.svg')"></nut-icon>
-                            <!-- <nut-icon v-if="item.selectedAddress == false" type="self" :url="require('../../assets/svg/address-location.svg')"></nut-icon> -->
                             
                             <span>{{item.provinceName + item.cityName + item.countyName + item.townName + item.addressDetail }}</span>
                         </li>
@@ -133,6 +132,7 @@ export default {
     watch:{
         value(newVal,oldVal){
             this.showPopup = newVal
+            
         },
         showPopup(newVal,oldVal){
             if (newVal == false) this.$emit('input', false)
@@ -151,13 +151,7 @@ export default {
             this.regionList.country = newVal
         },
         town(newVal,oldVal){
-
-            if(newVal.length > 0){
-                this.regionList.town = newVal
-            }else{
-                
-                this.handClose()
-            }
+            this.regionList.town = newVal
             
         }
     },
