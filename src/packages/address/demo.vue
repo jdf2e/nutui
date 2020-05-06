@@ -22,9 +22,6 @@
 <script>
 import Address from './data'
 export default {
-  components: {
-
-  },
   data() {
     return {
       showPopup:false,
@@ -37,7 +34,7 @@ export default {
       existAddress:[],
 
       text1:'省市区县、乡镇等',
-      text2:''
+      text2:'请选择地址'
     };
   },
   methods: {
@@ -53,6 +50,7 @@ export default {
         this.showPopupOther = true
         const that = this
         this.existAddress = [].concat(Address.addressList)
+
         setTimeout(()=>{
           that.province = Address.province
         },1000)
@@ -80,6 +78,7 @@ export default {
         
       },
       selected(val){
+        console.log(val)
         this.existAddress.forEach((item)=>{
          
           this.$set(item,'selectedAddress',false)
