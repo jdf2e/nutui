@@ -7,8 +7,8 @@
                    
                 </span>
 
-                <span v-if="type == 'custom'">请选择所在地区</span>
-                <span v-if="type == 'exist'">配送至</span>
+                <span v-if="type == 'custom'">{{customAddressTitle}}</span>
+                <span v-if="type == 'exist'">{{existAddressTitle}}</span>
 
                 <span @click="handClose('hand')"><nut-icon type="circle-cross" size="18px"></nut-icon></span>
             </div>
@@ -52,14 +52,14 @@
                             :key='index'
                             @click="selectedExist(item)"
                         >
-                            <nut-icon  type="self" :url="item.selectedAddress?require('../../assets/svg/tick-red.svg'):require('../../assets/svg/address-location.svg')"></nut-icon>
+                            <nut-icon  type="self" :url="item.selectedAddress?selectedIcon:defaultIcon"></nut-icon>
                             
                             <span>{{item.provinceName + item.cityName + item.countyName + item.townName + item.addressDetail }}</span>
                         </li>
                     </ul>
                 </div>
-
-                <div class="choose-other" @click="switchModule">
+            
+                <div class="choose-other" @click="switchModule" v-if="isShowCustomAddress && showModule=='exist'">
                     <div class="btn">选择其他地址</div>
                 </div>
             </div>
@@ -81,6 +81,10 @@ export default {
             type: String,
             default: 'custom'
         },
+        customAddressTitle:{
+            type: String,
+            default: '请选择所在地区'
+        },
         province:{
             type: Array,
             default: () => []
@@ -97,11 +101,26 @@ export default {
             type: Array,
             default: () => []
         }, // 镇
-
+        isShowCustomAddress:{
+            type: Boolean,
+            default: true
+        },// 是否显示‘选择其他地区’按钮 type=‘exist’ 生效
         existAddress:{
             type: Array,
             default: () => []
         }, // 现存地址列表
+        existAddressTitle:{
+            type: String,
+            default: '配送至'
+        },
+        defaultIcon:{  // 地址选择列表前 - 默认的图标
+            type: String,
+            default: require("../../assets/svg/address-location.svg")
+        },
+        selectedIcon:{ // 地址选择列表前 - 选中的图标
+            type: String,
+            default: require("../../assets/svg/tick-red.svg")
+        }
     },
     data() {
         return {
@@ -110,10 +129,10 @@ export default {
             tabIndex: 0 ,
             tabName:['province', 'city', 'country', 'town'],
             regionList:{
-                'province': [],
-                'city': [],
-                'country': [],
-                'town': []
+                'province': this.province,
+                'city': this.city,
+                'country': this.country,
+                'town': this.town
             }, //省、市、县、镇列表,地址id字符串,地址字符串
             selectedRegion:{
                 'province': {},
@@ -121,7 +140,7 @@ export default {
                 'country': {},
                 'town': {}
             }, //已选择的 省、市、县、镇
-
+            
             selectedExistAddress:{}, // 当前选择的地址
         }
     },
@@ -142,6 +161,7 @@ export default {
             }
         },
         province(newVal,oldVal){
+            console.log(newVal)
             this.regionList.province = newVal
         },
         city(newVal,oldVal){
@@ -153,7 +173,18 @@ export default {
         town(newVal,oldVal){
             this.regionList.town = newVal
             
-        }
+        },
+
+        existAddress(newVal,oldVal){
+            this.existAddress = newVal
+
+            newVal.forEach((item,index)=>{
+                if(item.selectedAddress){
+                    this.selectedExistAddress = item
+                }
+            })
+        },
+       
     },
     mounted(){
         
@@ -216,10 +247,21 @@ export default {
 
         // 选择现有地址
         selectedExist(item) {
+            let copyExistAdd = this.existAddress
+            let prevExistAdd = {}
+
+            copyExistAdd.forEach((list,index)=>{
+                if(list.selectedAddress){
+                    prevExistAdd = list
+                }
+                list.selectedAddress = false
+            })
+
+            item.selectedAddress = true
 
             this.selectedExistAddress = item
-
-            this.$emit('selected',item)
+    
+            this.$emit('selected',prevExistAdd,item,copyExistAdd)
 
             this.handClose()
         },
