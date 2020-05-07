@@ -200,6 +200,7 @@ export default {
     :city="city" 
     :country="country" 
     :town="town" 
+    customAndExistTitle="选择其他地址"
     @onChange="onChange4" 
     @close="close4" 
     @selected="selected4">
@@ -265,8 +266,10 @@ export default {
 | defaultIcon | 已有地址列表默认图标，type=‘exist’ 时生效 | string | ''
 | selectedIcon | 已有地址列表选中图标，type=‘exist’ 时生效 | string | ''
 | isShowCustomAddress | 是否可以切换自定义地址选择，type=‘exist’ 时生效 | Boolean | true
-| customAddressTitle  | 自定义地址选择标题，type='custom' 时生效 | string | '请选择所在地区'
-| existAddressTitle| 已有地址标题 ，type=‘exist’ 时生效| string | '配送至'
+| customAddressTitle  | 自定义地址选择文案，type='custom' 时生效 | string | '请选择所在地区'
+| existAddressTitle| 已有地址文案 ，type=‘exist’ 时生效| string | '配送至'
+| customAndExistTitle| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| string | '选择其他地址'
+
 
   * provinceName 省的名字
   * cityName 市的名字

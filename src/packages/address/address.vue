@@ -60,7 +60,7 @@
                 </div>
             
                 <div class="choose-other" @click="switchModule" v-if="isShowCustomAddress && showModule=='exist'">
-                    <div class="btn">选择其他地址</div>
+                    <div class="btn">{{customAndExistTitle}}</div>
                 </div>
             </div>
         </nut-popup>
@@ -112,6 +112,10 @@ export default {
         existAddressTitle:{
             type: String,
             default: '配送至'
+        },
+        customAndExistTitle:{
+            type: String,
+            default: '选择其他地址'
         },
         defaultIcon:{  // 地址选择列表前 - 默认的图标
             type: String,
