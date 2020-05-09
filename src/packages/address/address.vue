@@ -165,7 +165,6 @@ export default {
             }
         },
         province(newVal,oldVal){
-            console.log(newVal)
             this.regionList.province = newVal
         },
         city(newVal,oldVal){
