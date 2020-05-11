@@ -50,43 +50,36 @@
   .content {
     position: absolute;
     white-space: nowrap;
-    &.van-ellipsis {
+    &.nut-ellipsis {
       max-width: 100%;
     }
-    // &:hover {
-    //   animation: van-notice-bar-play linear infinite both paused;
-    // }
   }
   // 只跑一次
   .play {
-    animation: van-notice-bar-play linear both running;
+    animation: nut-notice-bar-play linear both running;
   }
   .play-infinite {
-    animation: van-notice-bar-play-infinite linear infinite both running;
+    animation: nut-notice-bar-play-infinite linear infinite both running;
   }
   .play-vertical {
-    animation: van-notice-bar-play-vertical linear infinite both running;
+    animation: nut-notice-bar-play-vertical linear infinite both running;
   }
-  //   .play-stop {
-  //     animation: van-notice-bar-play-infinite linear infinite both paused;
-  //   }
 }
 
-@keyframes van-notice-bar-play {
+@keyframes nut-notice-bar-play {
   to {
     transform: translate3d(-100%, 0, 0);
   }
 }
 
-@keyframes van-notice-bar-play-infinite {
+@keyframes nut-notice-bar-play-infinite {
   to {
     transform: translate3d(-100%, 0, 0);
   }
 }
 // 垂直方向的滚动
-@keyframes van-notice-bar-play-vertical {
+@keyframes nut-notice-bar-play-vertical {
   to {
-    // transform: translate3d(0, 40px, 0);
     transform: translateY(40px);
   }
 }

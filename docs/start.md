@@ -137,7 +137,7 @@ import '@nutui/nutui/dist/nutui.css';
 NutUI.install(Vue);
 ```
 
-> 注意：这种方式将会导入所有组件，我们比较建议您采用下面 按需加载方式
+> 注意：这种方式将会导入所有组件
 
 ## 按需加载
 

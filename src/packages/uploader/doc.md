@@ -140,6 +140,69 @@ export default {
 </nut-uploader>  
 <nut-progress :percentage="progressNum" :showText="false" strokeWidth="24"/>
 ```
+预览上传图片
+```html
+ <nut-uploader
+    :name="name"
+    :url="url"
+    :xhrState="stateNum"
+    :isPreview="true"
+    @success="demoSuccess"
+    @fail="demoFail"
+    @preview="preview"
+    @showMsg="showMsg1"
+  >
+    <nut-button small>上传</nut-button>
+  </nut-uploader>
+```
+```js
+preview(file) {
+  this.previewImg = file;
+},
+```
+
+上传图片前处理图片内容
+
+```html
+ <nut-uploader
+    :beforeUpload="test"
+    :name="name"
+    :url="url"
+    :xhrState="stateNum"
+    :acceptType = "['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
+    @success="demo1Success"
+    @failure="demo1Fail"
+    @start="demo1UploadStart"
+    @showMsg="showMsg"
+  ><nut-button small>上传图片前处理图片内容</nut-button></nut-uploader>
+```
+```js
+test($ev){   
+  console.log($ev,'可以处理input选择的内容')  
+  return {
+    event:$ev,
+    data:''
+  }
+},
+```
+
+自定义增加上传图片数据
+```html
+<nut-uploader
+    :selfData="selfData"          
+    :name="name"
+    :url="url"
+    :xhrState="stateNum"
+    :acceptType = "['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
+    @success="demo1Success"
+    @failure="demo1Fail"
+    @start="demo1UploadStart"
+    @showMsg="showMsg"
+  ><nut-button small>自定义增加上传图片数据</nut-button></nut-uploader>
+
+```
+
+
 
 ## Prop
 
@@ -158,6 +221,8 @@ export default {
 | limitError | 文件大小超过限制提示文案 | String | "文件大小超过限制"
 | xmlError | 浏览器不支持本组件时的提示文案 | String | "对不起，您的浏览器不支持本组件！"
 | withCredentials | 支持发送 cookie 凭证信息 | Boolean | fasle
+| beforeUpload | 上传前的函数需要返回一个对象  | Function | {event:$event} $event为点击事件必传
+| selfData | 自定义增加上传的数据 | Object | {}
 
 ## Event
 
@@ -169,3 +234,14 @@ export default {
 | success | 上传成功 | 文件、responseText
 | failure | 上传失败 | 文件、responseText
 | showMsg | 组件抛出信息的处理函数 | 组件抛出的提示信息
+
+## tips
+
+使用 beforeUpload 一定要返回一个JSON 对象且 event 为必传字段
+```js
+beforeUpload($e){
+  return {
+    event:$e
+  }
+}
+```

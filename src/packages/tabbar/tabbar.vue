@@ -58,6 +58,7 @@ export default {
                 }else{
                    item.curr = false;
                 }
+                return item;
             })
             this.tabList =newArr;
             this.$emit('tab-switch',value,index); 

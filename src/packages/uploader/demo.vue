@@ -4,7 +4,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-uploader
+          <nut-uploader            
             :name="name"
             :url="url"
             :xhrState="stateNum"
@@ -115,7 +115,40 @@
         <div slot="desc"></div>
       </nut-cell>
     </div>
-
+    <p>上传图片前处理图片内容</p>
+    <nut-cell>
+        <span slot="title">
+          <nut-uploader
+          :beforeUpload="test"
+          :name="name"
+          :url="url"
+          :xhrState="stateNum"
+          :acceptType = "['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
+          @success="demo1Success"
+          @failure="demo1Fail"
+          @start="demo1UploadStart"
+          @showMsg="showMsg"
+        ><nut-button small>上传图片前处理图片内容</nut-button></nut-uploader>
+        </span>
+        <div slot="desc"></div>
+      </nut-cell>
+    <p>自定义增加上传图片数据</p>
+    <nut-cell>
+        <span slot="title">
+          <nut-uploader
+          :selfData="selfData"          
+          :name="name"
+          :url="url"
+          :xhrState="stateNum"
+          :acceptType = "['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
+          @success="demo1Success"
+          @failure="demo1Fail"
+          @start="demo1UploadStart"
+          @showMsg="showMsg"
+        ><nut-button small>自定义增加上传图片数据</nut-button></nut-uploader>
+        </span>
+        <div slot="desc"></div>
+      </nut-cell>
     <transition name="fade">
       <div class="img-outbox">
         <img class="img-box" v-if="previewImg" :src="previewImg" alt>
@@ -129,6 +162,9 @@ export default {
   components: {},
   data() {
     return {
+      selfData:{
+        test1:'自定义数据'
+      },
       url: "https://my-json-server.typicode.com/linrufeng/demo/posts",
       demo1Name: "点击选择文件",
       demo2Name: "点击选择文件",
@@ -151,6 +187,13 @@ export default {
     };
   },
   methods: {
+    test(event){   
+      console.log(event,'可以处理input选择的内容')  
+      return {
+        event:event,
+        data:''
+      }
+    },
     demo1UploadStart() {
       this.demo1Name = "上传中...";
       this.progressNum1 = 0;
