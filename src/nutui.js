@@ -106,10 +106,26 @@ import Video from "./packages/video/index.js";
 import "./packages/video/video.scss";
 import Signature from "./packages/signature/index.js";
 import "./packages/signature/signature.scss";
+<<<<<<< HEAD
+=======
+import CircleProgress from "./packages/circleprogress/index.js";
+import "./packages/circleprogress/circleprogress.scss";
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
 import TimeLine from "./packages/timeline/index.js";
 import "./packages/timeline/timeline.scss";
 import TimeLineItem from "./packages/timelineitem/index.js";
 import "./packages/timelineitem/timelineitem.scss";
+<<<<<<< HEAD
+=======
+import SideNavBar from "./packages/sidenavbar/index.js";
+import "./packages/sidenavbar/sidenavbar.scss";
+import SubSideNavBar from "./packages/subsidenavbar/index.js";
+import "./packages/subsidenavbar/subsidenavbar.scss";
+import SideNavBarItem from "./packages/sidenavbaritem/index.js";
+import "./packages/sidenavbaritem/sidenavbaritem.scss";
+import Drag from "./packages/drag/index.js";
+import "./packages/drag/drag.scss";
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
 
 const packages = {
   Cell,
@@ -164,8 +180,18 @@ const packages = {
   LuckDraw: LuckDraw,
   Video: Video,
   Signature: Signature,
+<<<<<<< HEAD
   TimeLine: TimeLine,
   TimeLineItem: TimeLineItem
+=======
+  CircleProgress: CircleProgress,
+  TimeLine: TimeLine,
+  TimeLineItem: TimeLineItem,
+  SideNavBar: SideNavBar,
+  SubSideNavBar: SubSideNavBar,
+  SideNavBarItem: SideNavBarItem,
+  Drag: Drag
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
 };
 
 const components = {};

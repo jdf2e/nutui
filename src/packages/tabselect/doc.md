@@ -42,6 +42,7 @@ export default {
       mainTitle: '配送',
       subTitle: '送达时间',
       defaultContent: [
+<<<<<<< HEAD
         '9:00——10:00',
         '10:00——11:00',
         '11:00——12:00',
@@ -49,6 +50,15 @@ export default {
         '13:00——15:00',
         '15:00——17:00',
         '17:00——19:00'
+=======
+        "9:00——10:00",
+        "10:00——11:00",
+        "11:00——12:00",
+        "12:00——13:00",
+        "13:00——15:00",
+        "15:00——17:00",
+        "17:00——19:00",
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
       ],
       tabList: [
         {
@@ -59,6 +69,7 @@ export default {
               tabTitle: '1月13日 (星期一)', // 二级tab标题
               content: [
                 // 二级tab内容，不传默认使用defaultContent字段
+<<<<<<< HEAD
                 '11:00——12:00',
                 '12:00——13:00',
                 '13:00——15:00',
@@ -85,11 +96,40 @@ export default {
               tabTitle: '1月19日 (星期天)'
             }
           ]
+=======
+                "11:00——12:00",
+                "12:00——13:00",
+                "13:00——15:00",
+                "15:00——17:00",
+                "17:00——19:00",
+              ],
+            },
+            {
+              tabTitle: "1月14日 (星期二)",
+            },
+            {
+              tabTitle: "1月15日 (星期三)",
+            },
+            {
+              tabTitle: "1月16日 (星期四)",
+            },
+            {
+              tabTitle: "1月17日 (星期五)",
+            },
+            {
+              tabTitle: "1月18日 (星期六)",
+            },
+            {
+              tabTitle: "1月19日 (星期天)",
+            },
+          ],
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
         },
         {
           tabTitle: '上门自提',
           children: [
             {
+<<<<<<< HEAD
               tabTitle: '2月13日 (星期一)',
               content: ['13:00——15:00', '15:00——17:00', '17:00——19:00']
             },
@@ -126,6 +166,44 @@ export default {
     }
   }
 }
+=======
+              tabTitle: "2月13日 (星期一)",
+              content: ["13:00——15:00", "15:00——17:00", "17:00——19:00"],
+            },
+            {
+              tabTitle: "2月14日 (星期二)",
+            },
+            {
+              tabTitle: "2月15日 (星期三)",
+            },
+            {
+              tabTitle: "2月16日 (星期四)",
+            },
+            {
+              tabTitle: "2月17日 (星期五)",
+            },
+            {
+              tabTitle: "2月18日 (星期六)",
+            },
+            {
+              tabTitle: "2月19日 (星期天)",
+            },
+          ],
+        },
+      ],
+      show: false,
+    };
+  },
+  methods: {
+    choose(title, item) {
+      console.log(title, item);
+    },
+    onOkBtn(event) {
+      console.log(event);
+    },
+  },
+};
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
 ```
 
 ### Prop
@@ -140,6 +218,10 @@ export default {
 | show              | 是否显示                                   | Boolean | false    |
 | max               | 多选时最多可选个数                         | Number  | Infinity |
 | isDefaultSelected | 单选时是否默认选中第一项（多选默认不选中） | Boolean | false    |
+<<<<<<< HEAD
+=======
+| isLockBgScroll    | 是否锁定背景滚动                           | Boolean | true     |
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
 
 ### Event
 

@@ -1,0 +1,17 @@
+{
+  "name": "@nutui/markdown-to-vue",
+  "version": "0.0.1",
+  "description": "markdown-to-vue",
+  "main": "mdToVue.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chokidar": "^3.3.1",
+    "folder-hash": "^3.3.0",
+    "marked": "^0.8.0",
+    "node-filelist": "^1.0.0"
+  }
+}

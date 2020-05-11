@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## 2.2.3
 
 `2020-04-03`
@@ -5,6 +6,8 @@
 - :sparkles: upd(Uploader)： 新增 beforeUpload 回调钩子函数、新增selfData自定义增加上传的数据 @linrufeng
 - :bug: fix(Stepper)：关于Tabbar的问题重复点击一个TAB的时候会报错 #231 @zhenyulei
 
+=======
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
 ## 2.2.2
 
 `2020-03-31`
@@ -20,6 +23,7 @@
 * :sparkles: upd(Toast)：优化内部代码，文档优化 @zy19940510
 * :sparkles: upd(Progress)：优化内部代码，文档优化 @layman666
 * :sparkles: upd(SearchBar、TextInput)：组件优化 @yangxiaolu1993
+<<<<<<< HEAD
 * :bug: fix(Range)：绑定的值无法更新到组件 #227 @undo03
 * :bug: fix(Countdown)：修复异步计算属性无法更新组件 #228 @undo03
 * :bug: fix(LuckDraw)：抽奖组件图片链接修复 @Ymm0008
@@ -27,6 +31,15 @@
 * :bug: fix(Popup)：按需加载icon修复 @yangkaixuan
 * :bug: fix(TabSelect)：组件tabList数据改变内容不刷新问题修复 @dushoujun
 * :bug: fix(TabBar)：更新数据 重新渲染的功能 @zhenyulei
+=======
+* :bug: upd(Range)：绑定的值无法更新到组件 #227 @undo03
+* :bug: upd(Countdown)：修复异步计算属性无法更新组件 #228 @undo03
+* :bug: upd(LuckDraw)：抽奖组件图片链接修复 @Ymm0008
+* :bug: upd(Picker)优化自定义数据联动demo @irisSong
+* :bug: upd(Popup)：按需加载icon修复 @yangkaixuan
+* :bug: upd(TabSelect)：组件tabList数据改变内容不刷新问题修复 @dushoujun
+* :bug: upd(TabBar)：更新数据 重新渲染的功能 @zhenyulei
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
 
 ## 2.2.1
 

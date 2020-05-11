@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "name": "@nutui/nutui",
     "version": "2.2.3",
     "description": "一套轻量级移动端Vue组件库",
@@ -10,40 +11,91 @@
         "package.json",
         "LICENSE",
         "CHANGELOG.md"
+=======
+  "name": "@nutui/nutui",
+  "version": "2.2.4",
+  "description": "一套轻量级移动端Vue组件库",
+  "typings": "dist/types/index.d.ts",
+  "main": "dist/nutui.js",
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "dev": "nutui-cli dev",
+    "build": "nutui-cli build",
+    "build:site": "nutui-cli build-site",
+    "clean": "nutui-cli clean",
+    "add": "nutui-cli add",
+    "lint": "nutui-cli lint",
+    "test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config node_modules/@nutui/cli/dist_cli/webpack/test.config.js  --require node_modules/@nutui/cli/dist_cli/test/setup.js src/packages/*/__test__/**.spec.js",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "test:watch": "npm run test --watch",
+    "prettier:check": "prettier -l {lib,src}/**/**/*.{ts,js,vue,scss}",
+    "prettier:fix": "prettier --write {lib,src}/**/**/*.{ts,js,vue,scss}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdf2e/nutui.git"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "./eslint-config.js"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "./stylelint-config.js"
+    ]
+  },
+  "keywords": [
+    "nutui",
+    "nutui2",
+    "vue",
+    "webpack",
+    "vue component",
+    "jdc",
+    "jdcfe"
+  ],
+  "author": "jdcfe",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "@nutui/cli": "^0.1.2",
+    "@vue/composition-api": "^0.5.0",
+    "babel-plugin-istanbul": "^6.0.0",
+    "husky": "^3.0.0",
+    "vue-lazyload": "^1.3.3"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-object-assign": "^7.8.3",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-vue": "^6.1.2",
+    "stylelint-config-standard": "^19.0.0"
+  },
+  "nyc": {
+    "include": [
+      "src/packages/**/*.vue"
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
     ],
-    "scripts": {
-        "dev": "npm run dev:new",
-        "dev:new": "cross-env NODE_ENV=development DOC_TYPE=true webpack-dev-server -d --open  --config build/webpack.dev.conf.js",
-        "dev:carefree": "cross-env NODE_ENV=carefree carefree_env=dev webpack -w --colors --progress --config build/webpack.demo.dev.conf.js",
-        "dev:demo": "cross-env NODE_ENV=development webpack-dev-server -d --open  --config build/webpack.demo.dev.conf.js",
-        "dev:doc": "cross-env NODE_ENV=development DOC_TYPE=true webpack-dev-server -d --open -w --progress --config build/webpack.doc.dev.conf.js",
-        "build:demo": "cross-env NODE_ENV=production webpack --hide-modules --progress --config build/webpack.demo.build.conf.js",
-        "build:doc": "cross-env NODE_ENV=production DOC_TYPE=true webpack --hide-modules --progress --config build/webpack.doc.build.conf.js",
-        "build:site": "npm run build:demo && npm run build:doc",
-        "build:prod": "cross-env NODE_ENV=production webpack --hide-modules --progress --config build/webpack.prod.conf.js && node scripts/createIndexScss.js",
-        "build:prodmin": "cross-env NODE_ENV=production webpack --hide-modules --progress --config build/webpack.prod.mini.conf.js",
-        "build:disp": "cross-env NODE_ENV=production PROD_TYPE=disp webpack --hide-modules --progress --config build/webpack.prod.disperse.conf.js",
-        "build": "npm run build:prod && npm run build:prodmin && npm run build:disp",
-        "clear": "node scripts/clearCache.js",
-        "eslint": "eslint src/packages/**/*.{js,vue}",
-        "add": "node scripts/createCptTpl.js",
-        "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text  mocha-webpack --webpack-config build/webpack.test.conf.js --require test/setup.js src/packages/*/__test__/**.spec.js",
-        "coveralls": "cat ./coverage/lcov.info | coveralls",
-        "test:watch": "npm run test --watch"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/jdf2e/nutui.git"
-    },
-    "keywords": [
-        "nutui",
-        "nutui2",
-        "vue",
-        "webpack",
-        "vue component",
-        "jdc",
-        "jdcfe"
+    "reporter": [
+      "lcov",
+      "text"
     ],
+<<<<<<< HEAD
     "author": "jdcfe",
     "license": "MIT",
     "dependencies": {
@@ -162,4 +214,9 @@
         "instrument": false,
         "sourceMap": false
     }
+=======
+    "instrument": false,
+    "sourceMap": false
+  }
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
 }

@@ -556,6 +556,7 @@
     },
     {
       "version": "1.0.0",
+<<<<<<< HEAD
       "name": "TimeLine",
       "chnName": "时间轴",
       "desc": "对一系列数据进行展示，垂直展示",
@@ -563,6 +564,15 @@
       "sort": "0",
       "showDemo": true,
       "author": "yangxiaolu"
+=======
+      "name": "CircleProgress",
+      "chnName": "圆形进度条",
+      "desc": "显示当前任务的操作进度",
+      "type": "component",
+      "sort": "2",
+      "showDemo": true,
+      "author": "zyf"
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
     },
     {
       "version": "1.0.0",
@@ -573,6 +583,49 @@
       "sort": "0",
       "showDemo": false,
       "author": "yangxiaolu"
+<<<<<<< HEAD
+=======
+    },
+    {
+      "version": "1.0.0",
+      "name": "SideNavBar",
+      "chnName": "侧边栏导航",
+      "desc": "侧边栏导航",
+      "type": "component",
+      "sort": "3",
+      "showDemo": true,
+      "author": "szg2008"
+    },
+    {
+      "version": "1.0.0",
+      "name": "SubSideNavBar",
+      "chnName": "侧边栏导航",
+      "desc": "侧边栏导航",
+      "type": "component",
+      "sort": "3",
+      "showDemo": false,
+      "author": "szg2008"
+    },
+    {
+      "version": "1.0.0",
+      "name": "SideNavBarItem",
+      "chnName": "侧边栏导航",
+      "desc": "侧边栏导航",
+      "type": "component",
+      "sort": "3",
+      "showDemo": false,
+      "author": "szg2008"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Drag",
+      "chnName": "拖拽",
+      "desc": "实现可拖拽的任意元素",
+      "type": "component",
+      "sort": "5",
+      "showDemo": true,
+      "author": "张宇"
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
     }
   ]
 }

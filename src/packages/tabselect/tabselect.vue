@@ -6,6 +6,7 @@
       v-model="isShow"
       position="bottom"
       :style="{ height: '457px' }"
+      :lock-scroll="isLockBgScroll"
     >
       <div class="nut-tabselect-main-title" v-html="mainTitle"></div>
       <nut-tab @tab-switch="tabSwitchOuter" :init-data="list">
@@ -35,7 +36,7 @@
                     @click="choose(idx, index, sIndex, item, sitem)"
                     class="nut-tab-panel-list"
                     :class="{
-                      'nut-tab-panel-list-active': isActive(idx, index, sIndex)
+                      'nut-tab-panel-list-active': isActive(idx, index, sIndex),
                     }"
                   >
                     {{ sitem }}
@@ -48,7 +49,7 @@
                     @click="choose(idx, index, sIndex, item, sitem)"
                     class="nut-tab-panel-list"
                     :class="{
-                      'nut-tab-panel-list-active': isActive(idx, index, sIndex)
+                      'nut-tab-panel-list-active': isActive(idx, index, sIndex),
                     }"
                   >
                     {{ sitem }}
@@ -75,7 +76,7 @@ export default {
   props: {
     mainTitle: {
       type: String,
-      default: ""
+      default: "",
     },
     isLockBgScroll: {
         type: Boolean,
@@ -83,32 +84,45 @@ export default {
     },
     subTitle: {
       type: String,
-      default: ""
+      default: "",
+    },
+    isLockBgScroll: {
+      type: Boolean,
+      default: true,
     },
     defaultContent: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     tabList: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     show: {
       type: Boolean,
-      default: false
+      default: false,
     },
     multiple: {
       type: Boolean,
-      default: false
+      default: false,
     },
     max: {
       type: Number,
+<<<<<<< HEAD
       default: Infinity
     },
     isDefaultSelected: {
       type: Boolean,
       default: false
     }
+=======
+      default: Infinity,
+    },
+    isDefaultSelected: {
+      type: Boolean,
+      default: false,
+    },
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
   },
   data() {
     return {
@@ -118,12 +132,16 @@ export default {
       level2: this.isDefaultSelected ? new Set(["0-0"]) : new Set(),
       allChoose: this.getText(0, 0, this.isDefaultSelected ? 0 : null),
       list: [],
+<<<<<<< HEAD
       defIndex: 0
+=======
+      defIndex: 0,
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
     };
   },
   components: {
     [nuttab.name]: nuttab,
-    [nutpop.name]: nutpop
+    [nutpop.name]: nutpop,
   },
   watch: {
     show(val) {
@@ -151,8 +169,13 @@ export default {
         this.allChoose = this.getText(0, 0, this.isDefaultSelected ? 0 : null);
         this.emit();
       },
+<<<<<<< HEAD
       deep: true
     }
+=======
+      deep: true,
+    },
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
   },
   mounted() {
     this.list = this.tabList;
@@ -208,12 +231,21 @@ export default {
     choose(idx, index, sIndex) {
       if (this.multiple && this.isActive(idx, index, sIndex)) {
         this.unChoose(index, sIndex);
+<<<<<<< HEAD
         this.getText(idx, index, sIndex).forEach(o=>{
          for(let indexdel of this.allChoose.values()){
               if(JSON.stringify(o) === JSON.stringify(indexdel)){
                   this.allChoose.delete(indexdel);
               }
             }
+=======
+        this.getText(idx, index, sIndex).forEach((o) => {
+          for (let indexdel of this.allChoose.values()) {
+            if (JSON.stringify(o) === JSON.stringify(indexdel)) {
+              this.allChoose.delete(indexdel);
+            }
+          }
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
         });
         this.emit();
         return;
@@ -234,12 +266,18 @@ export default {
       }
       this.emit();
     },
+<<<<<<< HEAD
     clickHandler (event) {
       this.$emit(
         "onOkBtn",
         event
       )
       this.isShow = false
+=======
+    clickHandler(event) {
+      this.$emit("onOkBtn", event);
+      this.isShow = false;
+>>>>>>> eb029bbf225923b0e31bb3c26102bdaa5ca4e55d
     },
     isActive(idx, index, sIndex) {
       if (
@@ -250,7 +288,7 @@ export default {
         return true;
       }
       return false;
-    }
-  }
+    },
+  },
 };
 </script>
