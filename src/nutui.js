@@ -122,6 +122,9 @@ import Drag from "./packages/drag/index.js";
 import "./packages/drag/drag.scss";
 import VueQr from "./packages/qart/index.js";
 import "./packages/qart/qart.scss";
+import Address from "./packages/address/index.js";
+import "./packages/address/address.scss";
+
 const packages = {
   Cell,
   Dialog,
@@ -181,7 +184,8 @@ const packages = {
   SideNavBar: SideNavBar,
   SubSideNavBar: SubSideNavBar,
   SideNavBarItem: SideNavBarItem,
-  Drag: Drag
+  Drag: Drag,
+  Address: Address
 };
 
 const components = {};

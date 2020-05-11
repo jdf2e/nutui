@@ -622,6 +622,16 @@
       "sort": "5",
       "showDemo": true,
       "author": "张宇"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Address",
+      "chnName": "地址选择",
+      "desc": "业务功能-地址选择",
+      "type": "component",
+      "sort": "6",
+      "showDemo": true,
+      "author": "yangxiaolu"
     }
   ]
 }

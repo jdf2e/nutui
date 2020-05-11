@@ -80,3 +80,4 @@ export declare class SubSideNavBar extends UIComponent { }
 export declare class SideNavBarItem extends UIComponent { }
 export declare class Qart extends UIComponent { }
 export declare class Drag extends UIComponent { }
+export declare class Address extends UIComponent {}

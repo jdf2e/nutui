@@ -155,6 +155,7 @@ export default {
             }else{
                 this.num = this.tempNum;
             }
+            this.$emit('update:value', this.num);
             this.$emit('blur', e, this.num);
         },
         checknum(e) {

@@ -31,6 +31,11 @@ export default {
       icon:null
     };
   },
+  watch:{
+    url(val){
+      this.icon=val
+    }
+  },
   created() {
     if(this.url){         
       this.icon =this.url;
