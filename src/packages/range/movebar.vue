@@ -47,7 +47,7 @@ export default {
     };
   },
   watch: {
-    initLeft() {
+    initLeft(val) {
       this.posi = this.initLeft;
     }
   },
@@ -71,17 +71,26 @@ export default {
             document.documentElement.scrollLeft || document.body.scrollLeft;
           this.boxLeft = this.box.getBoundingClientRect().left;
           const posi = evt.pageX - this.boxLeft - pageScrollLeft;
-          this.setPosi(posi);
+          this.setPosi(posi, false);
       });
     },
-    setPosi(posi) {
+    setPosi(posi, isEnd) {
       if (posi < 0 || posi > this.box.clientWidth) return;
       this.posi = posi;
-      this.$emit('getPos', posi);
+      this.$emit('getPos', posi, isEnd);
     },
     onTouchEnd(event) {
       event.preventDefault();
-      this.$emit('update:ani', false);
+      const evt = event.changedTouches[0];
+      const pageScrollLeft =
+        document.documentElement.scrollLeft || document.body.scrollLeft;
+      this.boxLeft = this.box.getBoundingClientRect().left;
+      const posi = evt.pageX - this.boxLeft - pageScrollLeft;
+      setTimeout(() => {
+        this.setPosi(posi, true);
+        this.$emit('update:ani', false);
+      }, 50);
+      
     },
     onClick(event) {
       event.preventDefault();

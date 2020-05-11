@@ -101,7 +101,8 @@ export default {
 			barleft1: 0,
 			barleft2: 0,
       level: null,
-			ani: false
+      ani: false,
+      prevValues: []
     };
   },
   watch: {
@@ -110,6 +111,11 @@ export default {
     },
     rangeValues() {
       this.init();
+    },
+    ani(flag) {
+      if (flag) {
+        this.prevValues = this.rangeValues;
+      }
     }
   },
   computed: {
@@ -135,22 +141,47 @@ export default {
       this.propInit();
     },
 		updateRangeValues() {
-			let rangeValues = this.currentLeft > this.currentRight? [this.currentRight, this.currentLeft]: [this.currentLeft, this.currentRight];
-			this.$emit("update:rangeValues", rangeValues);
+      let rangeValues = this.currentLeft > this.currentRight? [this.currentRight, this.currentLeft]: [this.currentLeft, this.currentRight];
+      this.$emit("update:rangeValues", rangeValues);
 		},
-    getPosLeft(pos) {
-			this.currentLeft = this.setCurrent(pos);
-			this.barleft1 = pos;
-			this.updateRangeValues();
+    getPosLeft(pos, isEnd) {
+      let currentLeft = this.setCurrent(pos);
+      if (isEnd && this.stage) {
+        let prevLeft = this.prevValues[0];
+        if (currentLeft >= (prevLeft + (this.stage / 2))) {
+          this.currentLeft = prevLeft + this.stage;
+        } else if (currentLeft < (prevLeft - (this.stage / 2))) {
+          this.currentLeft = prevLeft - this.stage;
+        } else {
+          this.currentLeft = prevLeft;
+        }
+      } else {
+        this.currentLeft = currentLeft;
+      }
+      this.barleft1 = pos;
+      this.updateRangeValues();
+    
     },
-    getPosRight(pos) {
-			this.currentRight = this.setCurrent(pos);
+    getPosRight(pos, isEnd) {
+      let currentRight = this.setCurrent(pos);
+      if (isEnd && this.stage) {
+        let prevRight = this.prevValues[1];
+        if (currentRight >= (prevRight + (this.stage / 2))) {
+          this.currentRight = prevRight + this.stage;
+        } else if (currentRight < (prevRight - (this.stage / 2))) {
+          this.currentRight = prevRight - this.stage;
+        } else {
+          this.currentRight = prevRight;
+        }
+      } else {
+        this.currentRight = currentRight;
+      }
 			this.barleft2 = pos;
 			this.updateRangeValues();
     },
     setCurrent(posi) {
 			const trans = posi / this.box.clientWidth * this.total;
-			let current = (trans / this.cell) * this.cell + this.range[0];
+      let current = (trans / this.cell) * this.cell + this.range[0];
 			return current > this.range[1] - 1? this.range[1]: current < this.range[0] + 1? this.range[0]: Math.round(current);
     },
     setVal(posi) {
@@ -187,7 +218,7 @@ export default {
 			this.initLeft1 = this.valToPosi(this.currentLeft);
 			this.initLeft2 = this.valToPosi(this.currentRight);
 			this.barleft1 = this.initLeft1;
-			this.barleft2 = this.initLeft2;
+      this.barleft2 = this.initLeft2;
     }
   },
   mounted() {
