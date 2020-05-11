@@ -41,20 +41,14 @@
         },
         data() {
             return {
-                startX: 0,
-                startY: 0,
-                moveX: 0,
-                moveY: 0,
-                left: 0,
                 buttonWidth: 0,
-                disX: 0, //移动距离
                 deleteSlider: '', //滑动时的效果,使用v-bind:style="deleteSlider"
                 delBtnStyle: '', //单个删除键拖拽删除效果
 
                 pageWidth: null,
-                originalPos: 0,
-                originalLeft: 0,
-                oriRigWidth: 0,
+                startPos: 0,
+                startLeft: 0,
+                startRightW: 0,
                 isOpen: false,
             };
         },
@@ -91,36 +85,36 @@
             },
             touchStart(e) {
 
-                this.originalPos = e.touches[0].pageX
+                this.startPos = e.touches[0].pageX
                 const transform = this.sliderEle.style.transform
-                this.originalLeft = Number(transform ? transform.split('(')[1].split('px')[0] : 0)
-                this.oriRigWidth = this.originalLeft < 0 ? Number(this.$refs.right.style.width.split('px')[0]) : 0;
-                // console.log('startoleft2', this.sliderEle.style.transform, this.originalLeft, this.oriRigWidth)
+                this.startLeft = Number(transform ? transform.split('(')[1].split('px')[0] : 0)
+                this.startRightW = this.startLeft < 0 ? Number(this.$refs.right.style.width.split('px')[0]) : 0;
+                // console.log('startoleft2', this.sliderEle.style.transform, this.startLeft, this.startRightW)
             },
 
             touchMove(e) {
-                let moveDistance = e.touches[0].pageX - this.originalPos // >0 右滑，<0 左滑
-                if (moveDistance > 0 && this.originalLeft >= 0) { // 未向左边滑动时，不能右滑
+                let disX = e.touches[0].pageX - this.startPos // >0 右滑，<0 左滑
+                if (disX > 0 && this.startLeft >= 0) { // 未向左边滑动时，不能右滑
                     return false
                 }
-                this.doSlide(moveDistance / 2 + this.originalLeft) // 除以2来控制滑动速度
+                this.doSlide(disX / 2 + this.startLeft) // 除以2来控制滑动速度
 
             },
             touchEnd(e) {
                 // console.log('end')
-                const moveDistance = e.changedTouches[0].pageX - this.originalPos // >0 右滑，<0 左滑
+                const disX = e.changedTouches[0].pageX - this.startPos // >0 右滑，<0 左滑
                 let distance
-                if (!this.isClickBack && moveDistance === 0) { // 点击时不收起右侧
+                if (!this.isClickBack && disX === 0) { // 点击时不收起右侧
                     return false
                 }
-                if ((-moveDistance) > 50) { // 向左滑动超过阙值时,右侧滑出固定距离
+                if ((-disX) > 50) { // 向左滑动超过阙值时,右侧滑出固定距离
                     distance = this.buttonWidth > this.pageWidth ? this.pageWidth * 0.8 : this.buttonWidth;
                 } else { // 向左滑动未超过阙值，或向右滑动时，回原位
                     distance = 0
                 }
                 this.doSlide(-distance, true)
                 this.isOpen = true;
-                if ((-moveDistance) > 0) {
+                if ((-disX) > 0) {
 
                 }
                 // console.log('touchEnd', distance);
