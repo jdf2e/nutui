@@ -39,8 +39,11 @@ describe('Menu.vue',() => {
         }); 
         let i = wrapper.find('.nutui-popup__close-icon');
         i.trigger('click')
+        console.log()
         return Vue.nextTick().then(function() {
-            expect(wrapper.contains(popup)).toBe(false)
+            setTimeout(()=>{
+                expect(wrapper.contains(popup)).toBe(false)
+            },wrapper.duration*1000)           
         }) 
     });
 
