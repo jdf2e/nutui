@@ -61,6 +61,7 @@
         "vue": "^2.6.10"
     },
     "devDependencies": {
+        "vue-qr": "^2.2.1",
         "@babel/cli": "7.1.2",
         "@babel/core": "7.1.2",
         "@babel/plugin-syntax-dynamic-import": "7.0.0",
