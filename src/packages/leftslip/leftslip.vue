@@ -1,6 +1,6 @@
 <template>
     <div class="nut-leftslip">
-        <div class="nut-leftslip-item" ref="slipItem" :style="deleteSlider" :class="{'leftslip-open':isOpen}">
+        <div class="nut-leftslip-item" ref="slipItem" :class="{'leftslip-open':isOpen}">
             <div class="nut-leftslip-item-main" @touchstart="touchStart($event)" @touchmove="touchMove($event)"
                 @touchend="touchEnd($event)">
                 <slot name="slip-main"></slot>
@@ -18,14 +18,7 @@
     export default {
         name: 'nut-leftslip',
         props: {
-            onlyDelBtn: {
-                type: Boolean,
-                default: false
-            },
-            btnSlipDel: {
-                type: Boolean,
-                default: false
-            },
+
             isMainSlide: {
                 type: Boolean,
                 default: true
@@ -41,9 +34,11 @@
         },
         data() {
             return {
+                startX: 0,
+                startY: 0,
+                moveX: 0,
+                moveY: 0,
                 buttonWidth: 0,
-                deleteSlider: '', //滑动时的效果,使用v-bind:style="deleteSlider"
-                delBtnStyle: '', //单个删除键拖拽删除效果
 
                 pageWidth: null,
                 startPos: 0,
@@ -84,8 +79,11 @@
                 this.restSlide();
             },
             touchStart(e) {
-
-                this.startPos = e.touches[0].pageX
+                let parentElement = e.currentTarget.parentElement;
+                if (e.touches.length == 1) {
+                    this.startX = e.touches[0].pageX;
+                    this.startY = e.touches[0].pageY;
+                }
                 const transform = this.sliderEle.style.transform
                 this.startLeft = Number(transform ? transform.split('(')[1].split('px')[0] : 0)
                 this.startRightW = this.startLeft < 0 ? Number(this.$refs.right.style.width.split('px')[0]) : 0;
@@ -93,30 +91,37 @@
             },
 
             touchMove(e) {
-                let disX = e.touches[0].pageX - this.startPos // >0 右滑，<0 左滑
-                if (disX > 0 && this.startLeft >= 0) { // 未向左边滑动时，不能右滑
-                    return false
-                }
-                this.doSlide(disX / 2 + this.startLeft) // 除以2来控制滑动速度
 
+                let parentElement = e.currentTarget.parentElement;
+
+                let disX = e.touches[0].pageX - this.startX // >0 右滑，<0 左滑
+                if (e.touches.length == 1) {
+                    if (disX > 0 || (disX > 0 && this.startLeft >= 0) || (disX < 0 && disX > this.buttonWidth / 2)) {  //禁止右滑
+                        return false
+                    } else {
+                        this.doSlide((-this.buttonWidth), true) // 最大滑动距离为右侧宽度
+                    }
+                }
             },
             touchEnd(e) {
                 // console.log('end')
-                const disX = e.changedTouches[0].pageX - this.startPos // >0 右滑，<0 左滑
+                let parentElement = e.currentTarget.parentElement;
+                const disX = e.changedTouches[0].pageX - this.startX // >0 右滑，<0 左滑
                 let distance
                 if (!this.isClickBack && disX === 0) { // 点击时不收起右侧
                     return false
                 }
                 if ((-disX) > 50) { // 向左滑动超过阙值时,右侧滑出固定距离
                     distance = this.buttonWidth > this.pageWidth ? this.pageWidth * 0.8 : this.buttonWidth;
+                    parentElement.className = 'nut-leftslip-item leftslip-open'
+                    parentElement.dataset.type = 1;
                 } else { // 向左滑动未超过阙值，或向右滑动时，回原位
                     distance = 0
+                    parentElement.className = 'nut-leftslip-item'
+                    parentElement.dataset.type = 0;
                 }
                 this.doSlide(-distance, true)
-                this.isOpen = true;
-                if ((-disX) > 0) {
 
-                }
                 // console.log('touchEnd', distance);
             },
 
