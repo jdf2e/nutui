@@ -59,12 +59,13 @@
             this.pageWidth = document.documentElement.clientWidth
             this.sliderEle = this.isMainSlide ? this.$refs.slipItem : this.$refs.right
 
-            document.addEventListener('touchstart', this.handleRestet, false);
+            document.addEventListener('touchstart', this.touchStart, false);
             // window.addEventListener('scroll', this.handleRestet, true);
+
         },
         beforeDestroy() {
             // 移除监听
-            window.removeEventListener('touchstart', this.handleRestet, true);
+            window.removeEventListener('touchstart', this.touchStart, true);
         },
         methods: {
             handleRestet() {
@@ -80,6 +81,11 @@
             },
             touchStart(e) {
                 let parentElement = e.currentTarget.parentElement;
+                var slip = document.getElementsByClassName('leftslip-open');
+                if (slip) {
+                    // if (parentElement.dataset.type == 1) return
+                    this.restSlide();
+                }
                 if (e.touches.length == 1) {
                     this.startX = e.touches[0].pageX;
                     this.startY = e.touches[0].pageY;
