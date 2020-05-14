@@ -61,7 +61,12 @@
 | size | 设置头像的大小，提供三种：large /normal/small | String | normal
 | shape | 设置头像的形状，默认是圆形，可以设置为square方形 | String | round
 | bg-image | 设置头像的背景图片 | String | --
-| bg-icon | 设置头像的icon图标 | String | --
+| bg-icon | 设置头像的icon图标 | String | 默认based64格式的头像图片
+
+## slot
+| 字段 | 说明 |
+|--|--|
+|--|用户自定义icon或者文字|
 
 
 ## Event

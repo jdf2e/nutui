@@ -2,6 +2,10 @@
 
 常用于平级区域大块内容的的收纳和展现。
 
+> 注意，使用该组件需要在引入 nut-tab-panel 组件
+
+`import { TabPanel } from "@nutui/nutui";`
+
 ## 基本用法
 
 ```html
@@ -198,7 +202,7 @@ export default {
 | position-nav | 页签栏的分布，可选值 top/bottom/left/right | String | top
 | def-index | 默认选中的页签栏 | String | 1
 | init-data | 监听数据变化，渲染更新页面 | Array | []
-
+| is-show-line|是否显示tab切换时的红条|true|
 
 
 ### nut-tab-panel

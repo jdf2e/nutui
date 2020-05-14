@@ -39,7 +39,7 @@
     top: 0px;
     border-radius: 50%;
 }
-.nut-tab-title{
+.nut-tab-title-top{
     //border:1px solid #fff;
     border-bottom:1px solid #EDEDED;
     width: 100%;
@@ -49,7 +49,7 @@
     box-sizing: border-box;
     position: relative;   
 }
-.nav-bar{
+.nav-bar-top{
     position: absolute;
     height: 2px;
     bottom: -2px;
@@ -57,7 +57,7 @@
     background:$primary-color;
     transition: all 0.4s ease-in-out;
 }
-.nut-tab-title-leftnav{
+.nut-tab-title-left{
     border-right:1px solid #EDEDED;
     width: 100px;
     display: flex;
@@ -80,7 +80,7 @@
         background: #fff;
     }
 }
-.nut-tab-title-rightnav{
+.nut-tab-title-right{
     background: #fff;
     border:1px solid #fff;
     border-left:1px solid #EDEDED;
@@ -105,8 +105,10 @@
     font-size:12px;
     text-decoration:none;
     line-height: 1;
+    flex:1;
+    height: 100%;
 }
-.nut-tab-title-bottomnav{
+.nut-tab-title-bottom{
     border:1px solid #fff;
     border-top:1px solid #EDEDED;
     width: 100%;
@@ -125,7 +127,7 @@
     }
 }
 
-.nut-title-nav-list{
+.nut-title-nav-list-top,.nut-title-nav-list-bottom{
     flex: 1;
     position: relative;
     flex-direction: row;
@@ -135,7 +137,7 @@
     background: #fff;
     box-sizing: border-box;
 }
-.nut-title-nav-leftnav{
+.nut-title-nav-list-left{
     flex:1;
     display: flex;
     padding-left: 5px;
@@ -143,7 +145,7 @@
     align-items: center;
     position: relative;
 }
-.nut-title-nav-rightnav{
+.nut-title-nav-list-right{
     flex:1;
     display: flex;
     padding-right: 5px;

@@ -1,78 +1,24 @@
 <template>
-    <div v-if='showTabs'>
-        <div class="nut-tab" :class="{'nut-tab-horizontal' : positionNavCss}">
-            <template v-if="positionNav=='top'">
-                <div class="nut-tab-title">
-                    <b class="nav-bar" :style="[{transform:'translateX('+initX+'px)'},{width:navWidth+'px'}]"></b>
-                    <span v-for="(value,index) in tabTitleList"  
+    <div class="nut-tab">
+        <div  :class="{'nut-tab-horizontal' : positionNavCss}">
+            <div v-if="positionNav=='right' || positionNav=='bottom'" class="nut-tab-item" ref="items">
+                <slot></slot>
+            </div>
+            <div :class="titleCLass">
+                <b v-if="isShowLine" :class="navBarClass" :style="navBarStyle"></b>
+                <span v-for="(value,index) in tabTitleList"  
                     :key="index"
-                    @click="switchTab(index,$event,value.disable)" class="nut-title-nav-list" 
-                    :class="['nut-title-nav',{'nut-tab-disable':value.disable},{'nut-tab-active' : activeIndex == index}]"
-                    >
-                    <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event,value.disable)">
-                    <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
+                    :class="[titleNavList,'nut-title-nav',{'nut-tab-disable':value.disable},{'nut-tab-active' : activeIndex == index}]"
+                >
+                <span class="nut-tab-link" v-on:click="switchTab(index,$event,value.disable)">
+                <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
                     {{value.tabTitle}}
-                    </a>
-                    </span>
-                </div>
-                <div class="nut-tab-item">
-                    <slot></slot>
-                </div>  
-            </template>
-            <template v-else-if="positionNav=='left'">
-                <div class="nut-tab-title-leftnav">
-                    <b class="nav-bar-left" :style="[{transform:'translateY('+initX+'px)'},{height:navWidth+'px'}]"></b>
-                    <span v-for="(value,index) in tabTitleList" 
-                    :key="index"
-                    @click="switchTab(index,$event,value.disable)" class="nut-title-nav-leftnav" 
-                    :class="['nut-title-nav',{'nut-tab-disable':value.disable},{'nut-tab-active' : activeIndex == index}]"
-                    >
-                    <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event,value.disable)">
-                    <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
-                    {{value.tabTitle}}
-                    </a>
-                    </span>
-                </div>
-                <div class="nut-tab-item">
-                    <slot></slot>
-                </div>  
-            </template>
-            <template v-else-if="positionNav=='right'">
-                <div class="nut-tab-item">
-                    <slot></slot>
-                </div>
-                <div class="nut-tab-title-rightnav">
-                    <b class="nav-bar-right" :style="[{transform:'translateY('+initX+'px)'},{height:navWidth+'px'}]"></b>
-                    <span v-for="(value,index) in tabTitleList" 
-                    :key="index"
-                    @click="switchTab(index,$event,value.disable)" class="nut-title-nav-rightnav" 
-                    :class="['nut-title-nav',{'nut-tab-disable':value.disable},{'nut-tab-active' : activeIndex == index}]"
-                    >
-                    <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event,value.disable)">
-                    {{value.tabTitle}}
-                    <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
-                    </a>
-                    </span>
-                </div>
-            </template>
-            <template v-else-if="positionNav=='bottom'">
-                <div class="nut-tab-item">
-                    <slot></slot>
-                </div> 
-                    <div class="nut-tab-title-bottomnav">
-                    <b class="nav-bar-bottom" :style="[{transform:'translateX('+initX+'px)'},{width:navWidth+'px'}]"></b>
-                    <span v-for="(value,index) in tabTitleList" 
-                    :key="index"
-                    @click="switchTab(index,$event,value.disable)" class="nut-title-nav-list" 
-                    :class="['nut-title-nav',{'nut-tab-disable':value.disable},{'nut-tab-active' : activeIndex == index}]"
-                    >
-                    <a :href="value.href" :clstag="value.clstag" class="nut-tab-link" v-on:click="switchTabLink(index,$event,value.disable)">
-                    <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
-                    {{value.tabTitle}}
-                    </a>
-                    </span>
-                </div>
-            </template>
+                </span>
+                </span>
+            </div>
+            <div v-if="positionNav=='top' || positionNav=='left'" class="nut-tab-item" ref="items">
+                <slot></slot>
+            </div>  
         </div>
     </div>
 </template>
@@ -80,13 +26,17 @@
 export default {
     name:'nut-tab',
     props: {
+        'isShowLine':{
+            type:Boolean,
+            default:true
+        },
         'defIndex':{
             type:Number,
-            default:0,
+            default:0
         },
         'positionNav':{
             type:String,
-            default:'top',
+            default:'top'
         },
         'initData':{
             type:Array,
@@ -99,8 +49,7 @@ export default {
         return {
             tabTitleList:[],
             activeIndex:this.defIndex,
-            showTabs:true,
-            initX:'0px',
+            initX:'0',
             navWidth:0,
         };
     },
@@ -119,6 +68,28 @@ export default {
         positionNavCss:function(){
             if(this.positionNav==='left' || this.positionNav==='right') return true;
         },
+        titleCLass:function() {
+            return "nut-tab-title-" + this.positionNav;
+        },
+        navBarClass:function() {
+            return "nav-bar-"+ this.positionNav;
+        },
+        titleNavList:function(){
+            return "nut-title-nav-list-"+ this.positionNav;
+        },
+        navBarStyle:function(){
+            if(this.positionNav==="top"||this.positionNav==="bottom"){
+                return  {
+                    "transform": `translateX(${this.initX}px)`,
+                    "width": this.navWidth+'px'
+                }
+            }else{
+                return  {
+                    "transform": `translateY(${this.initX}px)`,
+                    "height": this.navWidth+'px'
+                }
+            }
+        }
     },
     mounted() {
         this.$nextTick(()=>{
@@ -126,12 +97,12 @@ export default {
         })     
     },
     methods: {
-        updeteTab:function(){
-            setTimeout(()=>{;
+        updeteTab:function(){  
+            this.$nextTick(()=>{;
                 this.tabTitleList = [];
                 this.activeIndex = this.defIndex;
                 this.initTab([...this.$slots.default]);  
-            },100);  
+            });
         },
         initTab:function(slot){
             for(let i = 0; i < slot.length; i++) {
@@ -146,16 +117,16 @@ export default {
                     this.tabTitleList.push(item);
                     let slotElm = slot[i].elm;
                     if(slotElm){
-                        this.addClass(slotElm,'hide');
+                        slotElm.classList.add('hide');
                         if(this.activeIndex == i) {
-                            this.removeClass(slotElm,'hide');
+                            slotElm.classList.remove('hide');
                         }
                     }                
                 }
             }
-            setTimeout(()=>{
+            this.$nextTick(()=>{
                 this.getTabWidth();
-            },0);
+            })
         },
         getStyle:function(obj,styleName){
             if(!obj){
@@ -164,16 +135,17 @@ export default {
             if(obj.currentStyle){
                 return obj.currentStyle[styleName];
             }else{
+                console.log(getComputedStyle(obj,null)[styleName]);
                 return getComputedStyle(obj,null)[styleName];
             }
         },
         getTabWidth:function(){
             if(this.positionNav=='top' || this.positionNav=='bottom'){
-                let tabTitle = document.querySelector('.nut-tab-title');
+                let tabTitle = document.querySelector('.nut-tab-title-top');
                 let tabWidth = this.getStyle(tabTitle,'width');
                 this.setInitX(tabWidth);
             }else{
-                let tabTitle = document.querySelector('.nut-tab-title-leftnav')|| document.querySelector('.nut-tab-title-rightnav');
+                let tabTitle = document.querySelector('.nut-tab-title-left')|| document.querySelector('.nut-tab-title-right');
                 let tabWidth = this.getStyle(tabTitle,'height');
                 this.setInitX(tabWidth);
             }
@@ -184,41 +156,35 @@ export default {
             this.navWidth = navBarWidth;
             this.initX= parseInt(this.navWidth * this.defIndex);
         },
-        hasClass:function( elements,cName ){ 
-            return !!elements.className.match( new RegExp( "(\\s|^)" + cName + "(\\s|$)") ); // ( \\s|^ ) 判断前面是否有空格 （\\s | $ ）判断后面是否有空格 两个感叹号为转换为布尔值 以方便做判断 
-        },
-        addClass:function( elements,cName ){ 
-            if(!this.hasClass( elements,cName ) ){ 
-                elements.className += " " + cName; 
-            }; 
-        },
-        removeClass:function ( elements,cName ){ 
-            if( this.hasClass( elements,cName ) ){ 
-                elements.className = elements.className.replace( new RegExp( "(\\s|^)" + cName + "(\\s|$)" )," " ); // replace方法是替换 
-            }; 
-        }, 
-        switchTabLink:function(index,event,disable){
-            if(!disable){
-                event.target.parentNode.click();
-            } 
+        findParent(event,myclass){
+            let parentCpt = event.target;
+            let flag = 0;//避免死循环
+            while (parentCpt && flag<10) {
+                flag++;
+                if (parentCpt.className && parentCpt.className === myclass) {
+                   break;
+                }
+                parentCpt = parentCpt.parentNode;
+            }
+            return parentCpt;
         },
         switchTab:function(index,event,disable){
-            if(!disable && event.target.className.indexOf('nut-title-nav')!==-1){
+            if(!disable){
                 this.activeIndex=index;
                 this.initX= parseInt(this.navWidth * index);
-                let nutTab = event.target.parentNode.parentNode;
-                let items =  this.positionNav=='bottom' || this.positionNav=='right' ? nutTab.children[0].children : nutTab.children[1].children;
+                let nutTab = this.findParent(event,'nut-tab');
+                let items = this.$refs.items.children;
                 for(let i=0;i<items.length;i++){
                     if(i==index){
-                        this.removeClass(items[i],'hide');
+                        items[i].classList.remove('hide');
                     }else{
-                        this.addClass(items[i],'hide');
+                        items[i].classList.add('hide');
                     }
                 }
                 this.$emit('tab-switch',index,event); 
                 this.$emit('tabSwitch',index,event); //兼容以前驼峰法命名
             }
         }
-    },
+    }
 }
 </script>

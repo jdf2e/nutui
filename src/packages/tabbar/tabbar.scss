@@ -40,21 +40,21 @@
 	position: relative;
 	.tips{
 		position: absolute;
-		min-width: 14px;
-		min-height: 14px;
-		display: flex;
-		justify-content:center;
-		align-items: center;
-		padding:0;
+		width: 20px;
+		height: 20px;
+		text-align: center;
 		border:1px solid $border-color-active;
 		border-radius: 50%;
 		top: -10px;
-		right: 0;
-		background:#fff;
+		right: -5px;
+		background:red;
 		box-shadow: 0 0 0 1px #fff;
 		transform: translateX(60%);
 		font-size: $font-size-small;
-		color: $primary-color;
+		color: #fff;
+	}
+	.num{
+		line-height: 20px;
 	}
 }
 .icon-box .icon{

@@ -58,17 +58,15 @@
       ></nut-tab-panel>
     </nut-tab>
     <div style="width:100%;height=50px;text-align:center">
-      <Button @click="resetHandler" type="light">重置Tab页面</Button>
-      <Button @click="clickHandler">更新Tab页面</Button>
+      <nut-button @click="resetHandler" type="light">重置Tab页面</nut-button>
+      <nut-button @click="clickHandler">更新Tab页面</nut-button>
     </div>
   </div>
 </template>
 
 <script>
-import Button from '../button/button.vue';
 export default {
   components:{
-    Button
   },
   data() {
     return {
@@ -201,7 +199,6 @@ export default {
 .customer-css {
   .nut-tab-active .nut-tab-link {
     color: #fff;
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
   .nut-title-nav-list {
     background: #fff;
