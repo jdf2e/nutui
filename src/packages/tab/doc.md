@@ -19,7 +19,7 @@
 export default {
   methods: {
       tabSwitch:function(index,event){
-        console.log(index+'--'+event.target);
+        console.log(index+'--'+event);
       }
   }
 };
@@ -70,7 +70,7 @@ export default {
   },
   methods: {
       tabSwitch:function(index,event){
-        console.log(index+'--'+event.target);
+        console.log(index+'--'+event);
       }
   }
 };

@@ -1,19 +1,20 @@
 <template>
-    <div class="nut-tab">
-        <div  :class="{'nut-tab-horizontal' : positionNavCss}">
+    <div class="nut-tab-part" >
+        <div class="nut-tab" :class="{'nut-tab-horizontal' : positionNavCss}">
             <div v-if="positionNav=='right' || positionNav=='bottom'" class="nut-tab-item" ref="items">
                 <slot></slot>
             </div>
             <div :class="titleCLass">
                 <b v-if="isShowLine" :class="navBarClass" :style="navBarStyle"></b>
-                <span v-for="(value,index) in tabTitleList"  
+                <span 
+                    v-for="(value,index) in tabTitleList"  
                     :key="index"
                     :class="[titleNavList,'nut-title-nav',{'nut-tab-disable':value.disable},{'nut-tab-active' : activeIndex == index}]"
                 >
-                <span class="nut-tab-link" v-on:click="switchTab(index,$event,value.disable)">
-                <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
-                    {{value.tabTitle}}
-                </span>
+                    <a class="nut-tab-link" v-on:click="switchTab(index,$event,value.disable)">
+                        <i class="nut-tab-icon" :style="{backgroundImage: 'url('+value.iconUrl+')'}" v-if="value.iconUrl"></i>
+                        {{value.tabTitle}}
+                    </a>
                 </span>
             </div>
             <div v-if="positionNav=='top' || positionNav=='left'" class="nut-tab-item" ref="items">
@@ -65,17 +66,27 @@ export default {
        }
     },
     computed:{
+        //下面有些样式名称是为了兼容之前的版本
         positionNavCss:function(){
             if(this.positionNav==='left' || this.positionNav==='right') return true;
         },
         titleCLass:function() {
-            return "nut-tab-title-" + this.positionNav;
+            if(this.positionNav == 'top'){
+                return "nut-tab-title"
+            }
+            return "nut-tab-title-" + this.positionNav +"nav";
         },
         navBarClass:function() {
+            if(this.positionNav == 'top'){
+                return "nav-bar"
+            }
             return "nav-bar-"+ this.positionNav;
         },
         titleNavList:function(){
-            return "nut-title-nav-list-"+ this.positionNav;
+            if(this.positionNav == 'top' || this.positionNav == 'bottom'){
+                return "nut-title-nav-list"
+            }
+            return "nut-title-nav-"+ this.positionNav + 'nav';
         },
         navBarStyle:function(){
             if(this.positionNav==="top"||this.positionNav==="bottom"){
@@ -135,17 +146,16 @@ export default {
             if(obj.currentStyle){
                 return obj.currentStyle[styleName];
             }else{
-                console.log(getComputedStyle(obj,null)[styleName]);
                 return getComputedStyle(obj,null)[styleName];
             }
         },
         getTabWidth:function(){
             if(this.positionNav=='top' || this.positionNav=='bottom'){
-                let tabTitle = document.querySelector('.nut-tab-title-top');
+                let tabTitle = document.querySelector('.nut-tab-title');
                 let tabWidth = this.getStyle(tabTitle,'width');
                 this.setInitX(tabWidth);
             }else{
-                let tabTitle = document.querySelector('.nut-tab-title-left')|| document.querySelector('.nut-tab-title-right');
+                let tabTitle = document.querySelector('.nut-tab-title-leftnav')|| document.querySelector('.nut-tab-title-rightnav');
                 let tabWidth = this.getStyle(tabTitle,'height');
                 this.setInitX(tabWidth);
             }
@@ -172,7 +182,7 @@ export default {
             if(!disable){
                 this.activeIndex=index;
                 this.initX= parseInt(this.navWidth * index);
-                let nutTab = this.findParent(event,'nut-tab');
+                let nutTab = this.findParent(event,'nut-tab-part');
                 let items = this.$refs.items.children;
                 for(let i=0;i<items.length;i++){
                     if(i==index){

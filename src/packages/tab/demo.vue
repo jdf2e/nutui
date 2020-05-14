@@ -129,7 +129,7 @@ export default {
   },
   methods: {
     tabSwitch: function(index, event) {
-      console.log(index + "--" + event.target);
+      console.log(index + "--" + event);
       //this.defIndex = index;
     },
     clickHandler:function(){
