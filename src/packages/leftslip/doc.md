@@ -24,7 +24,7 @@
 </div>
 ```
 
-### 单个按钮一键删除
+<!-- ### 单个按钮一键删除
 
 ```html
 <nut-leftslip onlyDelBtn @oneDelete="oneDel">
@@ -38,7 +38,7 @@ export default {
         par.remove();
     }
 };
-```
+``` -->
 
 ### 多个按钮
 
@@ -110,5 +110,11 @@ export default {
 | -------------- | -------------------- | ------- | ------ |
 | slip-main | 列表主内容自定义区域 | html    | -      |
 | slipbtns  | 左滑按钮自定义区域   | html    | -      |
+
+<!-- ## Prop
+
+| 字段 | 说明 | 类型 | 默认值
+|----- | ----- | ----- | ----- 
+| isClickClose | 点击不关闭 | Boolean | false -->
 
 
