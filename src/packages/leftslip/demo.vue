@@ -2,7 +2,7 @@
     <div>
         <h4>基本用法</h4>
         <div>
-            <nut-leftslip>
+            <nut-leftslip ref='demo1'>
                 <div slot="slip-main" class="slip-main">向左滑动我</div>
                 <div slot="slipbtns" class="slipbtns"><a href="javascript:;" @click="delSlipItem">删除</a><a
                         href="javascript:;" class="favorite">收藏</a></div>
@@ -22,8 +22,9 @@
             </nut-leftslip> -->
         </div>
         <p>多个按钮</p>
+        <p>如果超出一行宽度，默认右侧按钮区域占一行的80%，此处设置60%</p>
         <div>
-            <nut-leftslip>
+            <nut-leftslip :rightWidth="0.6">
                 <div slot="slip-main" class="slip-main">向左滑动，多个按钮有超出限制哦~</div>
                 <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a>
                     <a href="javascript:;" class="favorite">收藏</a>
@@ -78,7 +79,8 @@
         },
         methods: {
             delSlipItem(e) {
-                console.log(e.target);
+                alert('确定删除吗？')
+                this.$refs.demo1.sliderEle.remove()
             },
             delItem(index) {
                 this.list.splice(index, 1);

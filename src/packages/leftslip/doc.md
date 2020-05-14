@@ -6,11 +6,21 @@
 
 ```html
 <div>
-    <nut-leftslip>
+    <nut-leftslip ref='demo1'>
         <div slot="slip-main" class="slip-main">向左滑动我</div>
-        <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a><a href="javascript:;" class="favorite">收藏</a></div>
+        <div slot="slipbtns" class="slipbtns"><a href="javascript:;" @click="delSlipItem">删除</a><a href="javascript:;" class="favorite">收藏</a></div>
     </nut-leftslip>
 </div>
+```
+```javascript
+export default {
+    methods: {
+        delSlipItem(e) {
+            alert('确定删除吗？')
+            this.$refs.demo1.sliderEle.remove()
+        }
+    }
+};
 ```
 
 ### 单个按钮
@@ -42,9 +52,11 @@ export default {
 
 ### 多个按钮
 
+>如果超出一行宽度，默认右侧按钮区域占一行的80%，此处设置了60%
+
 ```html
 <div>
-    <nut-leftslip>
+    <nut-leftslip :rightWidth="0.6">
         <div slot="slip-main" class="slip-main">向左滑动，多个按钮有超出限制哦~</div>
         <div slot="slipbtns" class="slipbtns"
             ><a href="javascript:;">删除</a>
@@ -111,10 +123,10 @@ export default {
 | slip-main | 列表主内容自定义区域 | html    | -      |
 | slipbtns  | 左滑按钮自定义区域   | html    | -      |
 
-<!-- ## Prop
+## Prop
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| isClickClose | 点击不关闭 | Boolean | false -->
+| rightWidth | 右侧按钮区域超出一行时的默认宽度，默认占整个宽度的80% | Number | 0.8
 
 

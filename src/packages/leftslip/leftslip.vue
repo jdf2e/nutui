@@ -22,6 +22,10 @@
                 type: Boolean,
                 default: true
             },
+            rightWidth: {
+                type: [Number, String],
+                default: '0.8'
+            }
         },
         data() {
             return {
@@ -132,7 +136,7 @@
                     return false
                 } else {
                     if ((-disX) > 50) { // 向左滑动超过阙值时,右侧滑出固定距离
-                        distance = this.buttonWidth > this.pageWidth ? this.pageWidth * 0.8 : this.buttonWidth;
+                        distance = this.buttonWidth > this.pageWidth ? this.pageWidth * (Number(this.rightWidth)) : this.buttonWidth;
                         parentElement.className = 'nut-leftslip-item leftslip-open'
                         parentElement.dataset.type = 1;
                     } else { // 向左滑动未超过阙值，或向右滑动时，回原位
