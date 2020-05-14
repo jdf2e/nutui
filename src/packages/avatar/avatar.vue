@@ -1,7 +1,7 @@
 <template>
     <div :style="styles" :class="['nut-avatar', 'avatar-'+size,'avatar-'+shape]" @click="activeAvatar">
-        <i class="icon" :style="iconStyles"></i>
-        <span class="text"><slot></slot></span>
+        <i class="icon" :style="iconStyles"></i><!--不使用icon组件，1:icon组件没有扩展维护；2:修改该图片不方便-->
+        <span class="text" v-if="isShowText"><slot></slot></span>
     </div>
 </template>
 <script>
@@ -32,14 +32,15 @@ export default {
     computed:{
         styles(){
             return {
-                'background':`${this.bgColor} url(${this.bgImage}) no-repeat`,
-                'backgroundSize':'100%'
+                'backgroundImage':this.bgImage?`url(${this.bgImage})`:null,
+                'backgroundColor':`${this.bgColor}`
             }
         },
         iconStyles(){
-            return {
-                'backgroundImage': `url(${this.bgIcon})`
-            }
+            return this.bgIcon?{'backgroundImage': `url(${this.bgIcon})`}:null;
+        },
+        isShowText(){
+            return this.$slots.default;
         }
     },
     data() {
@@ -47,7 +48,7 @@ export default {
     },
     methods: {
         activeAvatar(){
-            this.$emit('active-avatar');
+            this.$emit('active-avatar',event);
         }
     }
 }
