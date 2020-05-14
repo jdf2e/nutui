@@ -7,11 +7,12 @@
     <div
       ref="popupBox"
       v-show="value"
+      :style="{animationDuration:transitionDuration}"
       class="popup-box"
       :class="[`popup-${position}`, { round }]"
       @click="$emit('click', this)"
     >
-      <slot></slot>
+      <slot v-if="showSlot"></slot>
       <icon
         v-if="closeable"
         @click.native="$emit('input', false)"
@@ -35,12 +36,18 @@ export default {
       "icon":Icon
   },
   props: {
-    value: Boolean,
+    value: {
+      type: Boolean,
+      default: false
+    },
     position: {
       type: String,
       default: "center"
     },
-    duration: Number,
+    duration: {
+      type: Number,
+      default:0.3
+    },
     transition: String,
     overlay: {
       type: Boolean,
@@ -74,23 +81,21 @@ export default {
         type:String,
         default:""
     },
+    destroyOnClose:{
+      type: Boolean,
+      default: false
+    },
     getContainer:String,
-    round: Boolean
-  },
-  beforeCreate() {},
-  created() {
-    if (this.transition) {
-      this.transitionName = this.transition;
-    } else if (this.position === "center") {
-      this.transitionName = "popup-fade";
-    } else {
-      this.transitionName = `popup-slide-${this.position}`;
+    round: {
+      type: Boolean,
+      default: false
     }
+  }, 
+  created() { 
+    this.transition ? this.transitionName = this.transition :this.transitionName = `popup-slide-${this.position}`;
   },
   mounted() {
-    if (this.duration) {
-      this.$refs.popupBox.style.transitionDuration = this.duration + "s";
-    }    
+    this.mountOverlay();
     if (this.getContainer) {
         this.portal();
     }
@@ -101,25 +106,44 @@ export default {
   watch: {
     value(val) {
       const type = val ? "open" : "close";
-      if (this.overlay) this[type]();
+      if (this.overlay) {
+        this[type]();
+      }
     },
     position(val) {
-      if (val === "center") {
-        this.transitionName = "popup-fade";
-      } else {
-        this.transitionName = `popup-slide-${this.position}`;
-      }
+      val === "center" ? this.transitionName = "popup-fade" :this.transitionName = `popup-slide-${this.position}`;
     },
     getContainer: 'portal'
   },
   data() {
     return {
-      transitionName: "popup-fade",
+      showSlot:true,
+      transitionName: "popup-fade-center",
       overlayInstant: null
     };
   },
+  computed:{
+    transitionDuration(){ 
+      return this.duration ? this.duration + 's' : 'initial';
+    }
+  },
   methods: {    
-    mount(Component, data) {
+    mountOverlay(){
+      if (!this.overlayInstant) {
+        this.overlayInstant = this.mount(overlay, { 
+          duration: this.duration,
+          nativeOn: {
+            click: () => { 
+              this.$emit("click-overlay", this);
+              if(this.closeOnClickOverlay){
+                  this.$emit("input", false);
+              }              
+            }
+          }
+        });
+      } 
+    },
+    mount(Component, data) {   
       const instance = new Vue({
         el: document.createElement("div"),
         props: Component.props,
@@ -130,31 +154,25 @@ export default {
           });
         }
       });
+      instance.duration = this.duration;
+      instance.lockScroll = this.lockScroll;
+      instance.className = this.overlayClass;
+      instance.customStyle = this.overlayStyle;
       const el = this.$refs.popupBox;
       if (el && el.parentNode) {
         el.parentNode.insertBefore(instance.$el, el);
       } else {
         document.body.appendChild(instance.$el);
-      }
+      } 
       return instance;
     },
 
     open() {
       if (!this.overlayInstant) {
-        this.overlayInstant = this.mount(overlay, {
-          className: this.overlayClass,
-          customStyle: this.overlayStyle,
-          nativeOn: {
-            click: () => {
-              this.$emit("click-overlay", this);
-              if(this.closeOnClickOverlay){
-                  this.$emit("input", false);
-              }              
-            }
-          }
-        });
+        this.mountOverlay();
       } else {
         this.overlayInstant.show = true;
+        this.showSlot = true;
       }
    
      if (this.lockScroll && !this.locked) {
@@ -167,17 +185,20 @@ export default {
     },
     close() {
       this.overlayInstant.show = false;
+      if(this.destroyOnClose){
+        setTimeout(()=>{ 
+        this.showSlot = false;
+      }, this.duration * 1000)
+      }
+      
       if (this.lockScroll && this.locked) {                
         document.body.classList.remove('nut-overflow-hidden');  
         this.locked = false;      
       }
       this.$emit("close", this);
     },
-    getElement(selector){   
-      if (typeof selector === "string") {
-        return document.querySelector(selector);
-      }
-      return selector();
+    getElement(selector){    
+      return document.querySelector(selector);
     },
     portal() {
         const { getContainer } = this;

@@ -61,7 +61,7 @@ export default {
           'tabTitle':'百度',
           'curr':false,
           'icon':'',
-          'num':5,
+          'num':13,
         },
         {
           'tabTitle':'京东',
@@ -157,13 +157,20 @@ export default {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| type | 页签栏的样式 based/card | String | based
+| type | 页签栏的样式 based/card：based是默认样式如吸底样式，card类型每个卡片间有边界线 | String | based
 | tabbar-list | 渲染数据 ，兼容 tabbar-list 和 tabbarList| Array | []
+| bottom | 是否固定在页面底部 |Booble|false|
+
+### tabbar-list
+
+| 字段 | 说明 | 类型 | 默认值
+|----- | ----- | ----- | ----- 
 | tabTitle | 标签页的标题 | String | --
 | curr | 是否为选中的标签页 | Booble | false
 | icon | 标签页显示的图片 | String | --
 | activeIcon | 标签页的活动状态显示的图片 | String | --
 | href | 标签页的跳转链接 | String | --
+| num |页签右上角的数字角标，超出99之后为省略号|Number|--
 
 
 ### Event

@@ -59,7 +59,7 @@ export default {
 常规按钮组
 
 ```html
-<nut-button-group>
+<nut-buttongroup>
   <nut-button 
     type="light"
   >
@@ -68,7 +68,7 @@ export default {
   <nut-button>
     确定
   </nut-button>
-</nut-button-group>
+</nut-buttongroup>
 ```
 
 通栏按钮

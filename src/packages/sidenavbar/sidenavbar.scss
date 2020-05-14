@@ -1,8 +1,11 @@
+@import  "../subsidenavbar/subsidenavbar.scss";
+@import  "../icon/icon.scss";
+@import  "../sidenavbaritem/sidenavbaritem.scss";
 .nut-sidenavbar{
+    height: 100%;
+    overflow: auto;
     .sidenavbar-content{
         position: relative;
-        height: 100%;
-        overflow: auto;
         background-color: #fff;
         .sidenavbar-list{
             width: 100%;

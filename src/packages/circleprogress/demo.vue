@@ -13,7 +13,7 @@
     <div>
       <nut-cell>
       <span slot="title">
-          <nut-circleprogress :progress="50" :progressOption="progressOption" >
+          <nut-circleprogress :progress="50" :progress-option="progressOption" >
           </nut-circleprogress>
       </span>
       </nut-cell>
@@ -22,7 +22,7 @@
     <div>
       <nut-cell>
       <span slot="title">
-          <nut-circleprogress :progress="50" :isAuto="isAuto">
+          <nut-circleprogress :progress="50" :is-auto="isAuto">
             <slot>自定义</slot>
           </nut-circleprogress>
       </span>
@@ -32,7 +32,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-circleprogress :progress="percent"  :progressOption="progressOption" :strokeInnerWidth="strokeInnerWidth">
+          <nut-circleprogress :progress="percent"  :progress-option="progressOption" :stroke-inner-width="strokeInnerWidth">
             
           </nut-circleprogress>
         </span>

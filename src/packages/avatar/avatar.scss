@@ -21,24 +21,6 @@
         text-align: center;
         overflow: hidden;
     }
-    .dot{
-        position: absolute;
-        min-width: 18px;
-        min-height: 18px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 2px;
-        text-align: center;
-        border-radius: 50%;
-        background:red;
-        top:-4px;
-        right: -5px;
-        color: #fff;
-        font-size: 12px;
-        transform: scale(0.8);
-        line-height: 1;
-    }
 }
 .avatar-large{
     width: 40px;

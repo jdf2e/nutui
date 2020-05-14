@@ -576,6 +576,16 @@
     },
     {
       "version": "1.0.0",
+      "name": "TimeLine",
+      "chnName": "时间轴节点",
+      "desc": "定义时间轴节点",
+      "type": "component",
+      "sort": "0",
+      "showDemo": true,
+      "author": "yangxiaolu"
+    },
+    {
+      "version": "1.0.0",
       "name": "SideNavBar",
       "chnName": "侧边栏导航",
       "desc": "侧边栏导航",
@@ -605,7 +615,6 @@
       "author": "szg2008"
     },
     {
-      "version": "1.0.0",
       "name": "Drag",
       "chnName": "拖拽",
       "desc": "实现可拖拽的任意元素",
@@ -613,6 +622,16 @@
       "sort": "5",
       "showDemo": true,
       "author": "张宇"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Address",
+      "chnName": "地址选择",
+      "desc": "业务功能-地址选择",
+      "type": "component",
+      "sort": "6",
+      "showDemo": true,
+      "author": "yangxiaolu"
     }
   ]
 }

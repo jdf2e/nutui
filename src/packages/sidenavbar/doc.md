@@ -54,6 +54,7 @@
 ```
 
 ```javascript
+import { Popup } from '@nutui/nutui'
 export default {
   data() {
     return {
@@ -62,6 +63,9 @@ export default {
         width: '80%',
         height: '100%'
     };
+  },
+  components: {
+      'nut-popup': Popup
   },
   methods: {
     showNav() {
