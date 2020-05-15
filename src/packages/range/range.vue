@@ -10,7 +10,11 @@
 								background: mainColor
 							}">
 						</div>
-            <nut-range-bar 
+            <nut-range-bar
+                direction="left" 
+                :stage="stage"
+                :range="range"
+                :values="rangeValues"
                 :initLeft="initLeft1" 
                 @getPos="getPosLeft"
                 :showLabelAlways="showLabelAlways"
@@ -19,6 +23,10 @@
                 :ani.sync="ani"
 								:mainColor="mainColor"/>
             <nut-range-bar 
+                direction="right" 
+                :stage="stage"
+                :range="range"
+                :values="rangeValues"
                 :initLeft="initLeft2" 
                 @getPos="getPosRight"
                 :showLabelAlways="showLabelAlways"
@@ -87,7 +95,8 @@ export default {
       }
     },
     stage: {
-      type: [String, Number],
+      type: Number,
+      default: 0
     }
   },
   data() {
@@ -141,43 +150,54 @@ export default {
       this.propInit();
     },
 		updateRangeValues() {
-      let rangeValues = this.currentLeft > this.currentRight? [this.currentRight, this.currentLeft]: [this.currentLeft, this.currentRight];
+      let rangeValues = [this.currentLeft, this.currentRight];
       this.$emit("update:rangeValues", rangeValues);
 		},
     getPosLeft(pos, isEnd) {
+      this.barleft1 = pos;
       let currentLeft = this.setCurrent(pos);
-      if (isEnd && this.stage) {
-        let prevLeft = this.prevValues[0];
-        if (currentLeft >= (prevLeft + (this.stage / 2))) {
-          this.currentLeft = prevLeft + this.stage;
-        } else if (currentLeft < (prevLeft - (this.stage / 2))) {
-          this.currentLeft = prevLeft - this.stage;
+      let [prevLeft, prevRight] = this.prevValues;
+      if (isEnd) {
+        if (this.stage) {
+          let stageNum = 0;
+          if (currentLeft > prevLeft) {
+            stageNum = Math.ceil(currentLeft / this.stage); 
+          } else {
+            stageNum = Math.floor(currentLeft / this.stage); 
+          }
+          this.currentLeft = stageNum * this.stage;
         } else {
-          this.currentLeft = prevLeft;
+          this.currentLeft = currentLeft;
         }
       } else {
         this.currentLeft = currentLeft;
       }
-      this.barleft1 = pos;
-      this.updateRangeValues();
-    
+      if (isEnd) {
+        this.updateRangeValues();
+      }
     },
     getPosRight(pos, isEnd) {
+      this.barleft2 = pos;
       let currentRight = this.setCurrent(pos);
-      if (isEnd && this.stage) {
-        let prevRight = this.prevValues[1];
-        if (currentRight >= (prevRight + (this.stage / 2))) {
-          this.currentRight = prevRight + this.stage;
-        } else if (currentRight < (prevRight - (this.stage / 2))) {
-          this.currentRight = prevRight - this.stage;
+      let [prevLeft, prevRight] = this.prevValues;
+      if (isEnd) {
+        if (this.stage) {
+          let stageNum = 0;
+          if (currentRight > prevRight) {
+            stageNum = Math.ceil(currentRight / this.stage); 
+          } else {
+            stageNum = Math.floor(currentRight / this.stage); 
+          }
+          this.currentRight = stageNum * this.stage;
         } else {
-          this.currentRight = prevRight;
+          this.currentRight = currentRight;
         }
       } else {
         this.currentRight = currentRight;
       }
-			this.barleft2 = pos;
-			this.updateRangeValues();
+      if (isEnd) {
+        this.updateRangeValues();
+      }
     },
     setCurrent(posi) {
 			const trans = posi / this.box.clientWidth * this.total;
