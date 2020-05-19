@@ -204,7 +204,7 @@ module.exports = {
 }
 ```
 
-> VueCLI 3 相关Demo 请查看 [NutUI Demo](https://github.com/richard1015/nutui-demo)
+> VueCLI 3 相关Demo 请查看 [NutUI Demo](https://github.com/jdf2e/nutui-demo)
 
 ### 2. 手动引入
 
