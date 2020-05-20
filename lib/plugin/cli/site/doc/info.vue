@@ -35,7 +35,7 @@
 					<ul class="l-2" v-if="cur.indexOf(nameObj.name) > -1">
 						<template v-for="cpt in nameObj.ary">
 							<li v-on:click.stop="listCheck(cpt)" :class="curName == cpt.name ? 'curs' : ''" :key="cpt.name" v-if="cpt.showDemo">
-								<router-link :to="{ name: cpt.name }">
+								<router-link :to="{ name: cpt.name.toLowerCase() }">
 									{{ cpt.name }}
 									<span>{{ cpt.chnName }}</span>
 								</router-link>
@@ -59,7 +59,7 @@ export default {
 			sortedPackages: [],
 			cur: [],
 			curName: '',
-			version: version,
+			version: version
 		};
 	},
 
@@ -81,7 +81,7 @@ export default {
 			let temp = {};
 			let sorts = this.sorts;
 			let sortArys = [...this.packages];
-			sortArys.map((item) => {
+			sortArys.map(item => {
 				let name = sorts[item.sort];
 				if (!temp[name]) {
 					temp[name] = [];
@@ -91,14 +91,14 @@ export default {
 			for (let key in temp) {
 				tempAry.push({
 					name: key,
-					ary: temp[key],
+					ary: temp[key]
 				});
 			}
 			let routeName = this.$route.name;
 			this.sortedPackages = tempAry;
-			tempAry.map((list) => {
+			tempAry.map(list => {
 				let showParentNode = false;
-				list.ary.map((ary) => {
+				list.ary.map(ary => {
 					if (ary.name == routeName) {
 						showParentNode = true;
 					}
@@ -108,7 +108,7 @@ export default {
 				}
 			});
 		},
-		$route: 'fetchData',
+		$route: 'fetchData'
 	},
 	methods: {
 		fetchData(obj) {
@@ -130,7 +130,7 @@ export default {
 				nowCur.push(val);
 			}
 			this.cur = nowCur;
-		},
+		}
 	},
 	created() {
 		let nameRt = this.$route.name;
@@ -140,7 +140,7 @@ export default {
 		this.curName = nameRt;
 		this.packages = packgs;
 		this.sorts = sorts;
-	},
+	}
 };
 </script>
 <style lang="scss" scoped>

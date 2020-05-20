@@ -3,7 +3,7 @@ const presets = [
 		'@babel/preset-env',
 		{
 			loose: false,
-			modules: 'commonjs',
+			modules: false,
 			targets: {
 				browsers: ['Android >= 4', 'iOS >= 8']
 			}
