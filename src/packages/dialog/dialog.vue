@@ -202,7 +202,7 @@ export default {
       this.close('modal');
     },
     todestroy(){
-      this.canDestroy? this.destroy=false:"";
+      this.canDestroy? "":this.destroy=false;
     },
     close(target) {
       this.$emit('close', target);
@@ -222,11 +222,11 @@ export default {
         this.onOkBtn.call(this);
       }
     },
-    cancelBtnClick(autoClose) {      
+    cancelBtnClick(autoClose) {   
+       this.$emit('cancel-btn-click');   
       if(!autoClose){
         return
-      }
-      this.$emit('cancel-btn-click');
+      } 
       if (typeof this.onCancelBtn === 'function') {
         if (this.onCancelBtn.call(this) === false) {return};
       }
