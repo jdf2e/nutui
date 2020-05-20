@@ -203,7 +203,8 @@ export default {
     customAndExistTitle="选择其他地址"
     @onChange="onChange4" 
     @close="close4" 
-    @selected="selected4">
+    @selected="selected4"
+    @switchModule="switchModule">
 </nut-address>
 
 
@@ -246,6 +247,14 @@ export default {
     selected4(prevExistAdd,nowExistAdd,arr){
       console.log(prevExistAdd)
       console.log(nowExistAdd)
+    },
+    switchModule(cal){
+        
+        if(cal.type == 'custom'){
+          console.log('点击了“选择其他地址”按钮')
+        } else {
+          console.log('点击了自定义地址左上角的返回按钮')
+        }
     }
   }
 }
@@ -284,6 +293,8 @@ export default {
 | onChange | 自定义选择地址时，选择地区时触发 |  参考 onChange
 | selected | 选择已有地址列表时触发 | 参考 selected
 | close | 地址选择弹框关闭时触发 | 参考 close
+| switchModule | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'}
+
 
 ## onChange 回调参数
 | 参数 | 说明 | 可能值 
