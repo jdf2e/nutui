@@ -239,6 +239,7 @@ export default {
                 e.preventDefault();
                 this._setTranslate(this.startTranslate + this.delta);
                 this.$emit('slideMove',this._getTranslate(),this.$el);
+                this.$emit('slide-move',this._getTranslate(),this.$el);
             }
         },
         _onTouchEnd(e){
@@ -283,15 +284,19 @@ export default {
             this.lazyLoad && this._imgLazyLoad(1);
             if(this._isPageChanged()){
                 this.$emit('slideChangeStart',this.currentPage,this.$el,type);
+                this.$emit('slide-change-start',this.currentPage,this.$el,type);
             }else{
                 this.$emit('slideRevertStart',this.currentPage,this.$el,type);
+                this.$emit('slide-revert-start',this.currentPage,this.$el,type);
             }
         },
         _onTransitionEnd(){
             if(this._isPageChanged()){
                 this.$emit('slideChangeEnd',this.currentPage,this.$el);
+                this.$emit('slide-change-end',this.currentPage,this.$el);
             }else{
                 this.$emit('slideRevertEnd',this.currentPage,this.$el);
+                this.$emit('slide-revert-end',this.currentPage,this.$el);
             }
             this.transitionDuration = 0;
             this.delta = 0;

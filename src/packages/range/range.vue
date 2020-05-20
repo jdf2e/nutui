@@ -10,7 +10,11 @@
 								background: mainColor
 							}">
 						</div>
-            <nut-range-bar 
+            <nut-range-bar
+                direction="left" 
+                :stage="stage"
+                :range="range"
+                :values="rangeValues"
                 :initLeft="initLeft1" 
                 @getPos="getPosLeft"
                 :showLabelAlways="showLabelAlways"
@@ -19,6 +23,10 @@
                 :ani.sync="ani"
 								:mainColor="mainColor"/>
             <nut-range-bar 
+                direction="right" 
+                :stage="stage"
+                :range="range"
+                :values="rangeValues"
                 :initLeft="initLeft2" 
                 @getPos="getPosRight"
                 :showLabelAlways="showLabelAlways"
@@ -87,7 +95,8 @@ export default {
       }
     },
     stage: {
-      type: [String, Number],
+      type: Number,
+      default: 1
     }
   },
   data() {
@@ -101,7 +110,8 @@ export default {
 			barleft1: 0,
 			barleft2: 0,
       level: null,
-			ani: false
+      ani: false,
+      prevValues: []
     };
   },
   watch: {
@@ -110,6 +120,11 @@ export default {
     },
     rangeValues() {
       this.init();
+    },
+    ani(flag) {
+      if (flag) {
+        this.prevValues = this.rangeValues;
+      }
     }
   },
   computed: {
@@ -135,22 +150,58 @@ export default {
       this.propInit();
     },
 		updateRangeValues() {
-			let rangeValues = this.currentLeft > this.currentRight? [this.currentRight, this.currentLeft]: [this.currentLeft, this.currentRight];
-			this.$emit("update:rangeValues", rangeValues);
+      let rangeValues = [this.currentLeft, this.currentRight];
+      this.$emit("update:rangeValues", rangeValues);
 		},
-    getPosLeft(pos) {
-			this.currentLeft = this.setCurrent(pos);
-			this.barleft1 = pos;
-			this.updateRangeValues();
+    getPosLeft(pos, isEnd) {
+      this.barleft1 = pos;
+      let currentLeft = this.setCurrent(pos);
+      let [prevLeft, prevRight] = this.prevValues;
+      if (isEnd) {
+        if (this.stage) {
+          let stageNum = 0;
+          if (currentLeft > prevLeft) {
+            stageNum = Math.ceil(currentLeft / this.stage); 
+          } else {
+            stageNum = Math.floor(currentLeft / this.stage); 
+          }
+          this.currentLeft = stageNum * this.stage;
+        } else {
+          this.currentLeft = currentLeft;
+        }
+      } else {
+        this.currentLeft = currentLeft;
+      }
+      if (isEnd) {
+        this.updateRangeValues();
+      }
     },
-    getPosRight(pos) {
-			this.currentRight = this.setCurrent(pos);
-			this.barleft2 = pos;
-			this.updateRangeValues();
+    getPosRight(pos, isEnd) {
+      this.barleft2 = pos;
+      let currentRight = this.setCurrent(pos);
+      let [prevLeft, prevRight] = this.prevValues;
+      if (isEnd) {
+        if (this.stage) {
+          let stageNum = 0;
+          if (currentRight > prevRight) {
+            stageNum = Math.ceil(currentRight / this.stage); 
+          } else {
+            stageNum = Math.floor(currentRight / this.stage); 
+          }
+          this.currentRight = stageNum * this.stage;
+        } else {
+          this.currentRight = currentRight;
+        }
+      } else {
+        this.currentRight = currentRight;
+      }
+      if (isEnd) {
+        this.updateRangeValues();
+      }
     },
     setCurrent(posi) {
 			const trans = posi / this.box.clientWidth * this.total;
-			let current = (trans / this.cell) * this.cell + this.range[0];
+      let current = (trans / this.cell) * this.cell + this.range[0];
 			return current > this.range[1] - 1? this.range[1]: current < this.range[0] + 1? this.range[0]: Math.round(current);
     },
     setVal(posi) {
@@ -187,7 +238,7 @@ export default {
 			this.initLeft1 = this.valToPosi(this.currentLeft);
 			this.initLeft2 = this.valToPosi(this.currentRight);
 			this.barleft1 = this.initLeft1;
-			this.barleft2 = this.initLeft2;
+      this.barleft2 = this.initLeft2;
     }
   },
   mounted() {

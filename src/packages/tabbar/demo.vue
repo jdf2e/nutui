@@ -18,20 +18,20 @@ export default {
         {
           'tabTitle':'日用品',
           'curr':true,
-          'icon':'http://img13.360buyimg.com/uba/jfs/t30331/209/562746340/2190/6619973d/5bf763aaN6ff02099.jpg',
-          'activeIcon':'http://img20.360buyimg.com/uba/jfs/t28675/125/569589124/2710/fe1b0e7c/5bf79218Nbc49fc24.jpg'
+          'icon':'https://img14.360buyimg.com/imagetools/jfs/t1/127072/2/1076/4692/5eb93ab4Ec8c415b7/b8c5dda3f2d0f6a6.png',
+          'activeIcon':'https://img14.360buyimg.com/imagetools/jfs/t1/127314/1/1110/6272/5eb93ab9E9b708938/6ea8b9d6d13ca396.png'
         },
         {
           'tabTitle':'服饰',
           'curr':false,
-          'icon':'http://img13.360buyimg.com/uba/jfs/t27280/289/2061314663/2392/872e32ff/5bf76318Ndc80c1d8.jpg',
-          'activeIcon':'http://img14.360buyimg.com/uba/jfs/t28468/128/565494642/3313/ce508dd6/5bf79214Nab2a3076.jpg'
+          'icon':'https://img10.360buyimg.com/imagetools/jfs/t1/122494/19/1075/6299/5eb93b05E3674bd7e/7f10f0774b6ca63a.png',
+          'activeIcon':'https://img14.360buyimg.com/imagetools/jfs/t1/119999/25/1142/8218/5eb93b09E1a8c228f/907bcc2818e590c7.png'
         },
         {
           'tabTitle':'娱乐',
           'curr':false,
-          'icon':'http://img10.360buyimg.com/uba/jfs/t26779/215/2118525153/2413/470d1613/5bf767b2N075957b7.jpg',
-          'activeIcon':'http://img11.360buyimg.com/uba/jfs/t27370/260/2117900302/3274/bd097e85/5bf7921bNafc526e2.jpg'
+          'icon':'https://img12.360buyimg.com/imagetools/jfs/t1/113878/31/6319/6100/5eb93b6cEdb187192/68176aa418a2f511.png',
+          'activeIcon':'https://img11.360buyimg.com/imagetools/jfs/t1/127726/7/1065/8167/5eb93b70Eae11b392/cba15d13b435872b.png'
         }
       ],
       tabList2:[
@@ -39,7 +39,7 @@ export default {
           'tabTitle':'百度',
           'curr':false,
           'icon':'',
-          'num':5,
+          'num':13,
         },
         {
           'tabTitle':'京东',
@@ -56,30 +56,30 @@ export default {
         {
           'tabTitle':'主页',
           'curr':true,
-          'icon':'http://img13.360buyimg.com/uba/jfs/t1/29316/38/1115/3203/5c0f3d61E35d0c7da/9e557f2cb5c9dab6.jpg',
-          'activeIcon':'http://img20.360buyimg.com/uba/jfs/t1/9996/36/8646/4833/5c0f3d61E7c1b7e0f/c98ad61124172e93.jpg',
+          'icon':'https://img14.360buyimg.com/imagetools/jfs/t1/115926/10/6303/6603/5eb93bdeE8951c288/d277b2a668645e73.png',
+          'activeIcon':'https://img12.360buyimg.com/imagetools/jfs/t1/126024/30/1055/6952/5eb93be3E45d921c4/3060f25d49fc4ae7.png',
           'href':'###'
         },
         {
           'tabTitle':'分类',
           'curr':false,
-          'icon':'http://img12.360buyimg.com/uba/jfs/t1/25443/23/1062/4600/5c0f3d61E2e9f1360/c9b3421fe18614e2.jpg',
-          'activeIcon':'http://img20.360buyimg.com/uba/jfs/t1/19241/12/1048/8309/5c0f3d61E17ed5a56/c3af0964cade47f8.jpg',
+          'icon':'https://img12.360buyimg.com/imagetools/jfs/t1/113925/39/6348/5096/5eb94318E4037bdfc/1909ae8058e42cf5.png',
+          'activeIcon':'https://img10.360buyimg.com/imagetools/jfs/t1/118911/20/6244/5340/5eb9431cE8cd86a1d/1579cdf6ac2d1b8d.png',
           'href':'###'
         },
         {
           'tabTitle':'发现',
           'curr':false,
-          'icon':'http://img13.360buyimg.com/uba/jfs/t1/10361/35/4713/4643/5c0f3d62E437a3c94/273fd0fb90798f03.jpg',
-          'activeIcon':'http://img14.360buyimg.com/uba/jfs/t1/26604/35/1073/7896/5c0f3d61Eb9f5f184/5f01c938abe4216d.jpg',
+          'icon':'https://img14.360buyimg.com/imagetools/jfs/t1/127703/8/1017/7162/5eb93ea5Ed45cba37/fb52534fc21cc790.png',
+          'activeIcon':'https://img12.360buyimg.com/imagetools/jfs/t1/119259/20/6245/9589/5eb93ea9E1377964b/0c97f713361320b1.png',
           'href':'###'
         },
         {
           'tabTitle':'购物车',
           'curr':false,
           'num':2,
-          'icon':'http://img11.360buyimg.com/uba/jfs/t1/14848/18/1066/3723/5c0f41bdE9f2a38fe/e6ed6768717297fb.jpg',
-          'activeIcon':'http://img30.360buyimg.com/uba/jfs/t1/17538/16/1070/6214/5c0f41bdE4bc9a1db/74cf978e5015454b.jpg',
+          'icon':'https://img11.360buyimg.com/imagetools/jfs/t1/126465/3/1055/5848/5eb93f31E0ce4f65b/087c08eaeef97b64.png',
+          'activeIcon':'https://img10.360buyimg.com/imagetools/jfs/t1/111251/23/6376/6446/5eb93f2dE659da502/41fea546d36b8aaa.png',
           'href':'###'
         },
         {

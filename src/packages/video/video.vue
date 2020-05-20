@@ -4,8 +4,8 @@
             :loop="options.loop" :poster="options.poster" :controls="options.controls" @error="handleError">
             <source v-for="source in sources" :src="source.src" :type="source.type" :key="source.src" />
         </video>
-        <div class="playing-mask" @click="play"></div>
-        <div class="nut-video-play-btn" ref="palyBtn" v-show="!state.playing" @click="play"></div>
+        <div class="playing-mask" ref="touchMask" v-if="showTouchMask" @click="play"></div>
+        <!-- <div class="nut-video-play-btn" ref="palyBtn" v-show="!state.playing" @click="play"></div> -->
         <!-- <div class="nut-video-controller" v-show="showToolbox">
             <div class="current-time">{{ videoSet.displayTime }}</div>
             <div class="progress-container">
@@ -50,11 +50,12 @@
                         controls: true,
                         muted: false, //是否静音
                         disabled: false, //禁止操作
-                        playsinline: false //行内展示
+                        playsinline: false, //行内展示
+                        touchPlay: false
                     };
                 },
                 required: true
-            }
+            },
         },
         data() {
             return {
@@ -90,7 +91,8 @@
                     isLoading: false,
                     isEnd: false,
                     isError: false
-                }
+                },
+                showTouchMask: false
             };
         },
         watch: {
@@ -101,6 +103,12 @@
                             this.videoElm.load()
                         })
                     }
+                },
+                immediate: true
+            },
+            options: {
+                handler(val) {
+
                 },
                 immediate: true
             }
@@ -115,6 +123,9 @@
                     this.play();
                 }
 
+                if (this.options.touchPlay) {
+                    this.showTouchMask = true;
+                }
                 if (this.options.playsinline) {
                     this.videoElm.setAttribute('playsinline', this.options.playsinline);
                     this.videoElm.setAttribute('webkit-playsinline', this.options.playsinline);
