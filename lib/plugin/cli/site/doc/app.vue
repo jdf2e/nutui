@@ -108,7 +108,7 @@ export default {
 		let that = this;
 		let name = this.$route.name;
 		for (let i = 0, item; (item = packages[i]); i++) {
-			if (name == item.name) {
+			if (name == item.name.toLowerCase()) {
 				this.showPhone = true;
 			}
 		}
