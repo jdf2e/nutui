@@ -1,30 +1,26 @@
 <template>
     <div class="nut-video" ref="videocon">
-        <video ref="video" class="nut-videoplayer" :muted="options.muted" :autoplay="options.autoplay"
+        <video ref="video" class="nut-videoplayer" type="video/mp4" :muted="options.muted" :autoplay="options.autoplay"
             :loop="options.loop" :poster="options.poster" :controls="options.controls" @error="handleError">
             <source v-for="source in sources" :src="source.src" :type="source.type" :key="source.src" />
         </video>
-        <div class="playing-mask" ref="touchMask" v-if="showToolbox && !isDisabled" @click="play"></div>
-        <div class="nut-video-play-btn" v-if="showToolbox && !isDisabled" ref="palyBtn" v-show="!state.playing"
-            @click="play"></div>
-        <div class="nut-video-controller" v-show="showToolbox && !isDisabled">
-            <div class="control-play-btn" @click="play"></div>
+        <div class="playing-mask" ref="touchMask" v-if="showTouchMask" @click="play"></div>
+        <!-- <div class="nut-video-play-btn" ref="palyBtn" v-show="!state.playing" @click="play"></div> -->
+        <!-- <div class="nut-video-controller" v-show="showToolbox">
             <div class="current-time">{{ videoSet.displayTime }}</div>
             <div class="progress-container">
                 <div class="progress" ref="progressBar">
-                    <div class="buffered" :style="{width: `${videoSet.loaded}%`}"></div>
-                    <div class="video-ball" :style="{transform: `translate3d(${videoSet.progress.current}px, -50%, 0)`}"
-                        @touchmove.stop.prevent="touchSlidMove($event)" @touchstart.stop="touchSlidSrart($event)"
-                        @touchend.stop="touchSlidEnd($event)">
-                        <div class="move-handle"></div>
+                    <div class="buffered" style="width:50%"></div>
+                    <div class="video-ball">
+                        <div></div>
                     </div>
                     <div class="played" ref="playedBar"></div>
                 </div>
             </div>
             <div class="duration-time">{{ videoSet.totalTime }}</div>
-            <div class="volume" @click="handleMuted"></div>
+            <div class="volume"></div>
             <div class="fullscreen-icon" @click="fullScreen"></div>
-        </div>
+        </div> -->
         <!-- 错误弹窗 -->
         <div class="nut-video-error" v-show="state.isError">
             <p class="lose">视频加载失败</p>
@@ -99,12 +95,6 @@
                 showTouchMask: false
             };
         },
-        computed: {
-            isDisabled() {
-                return this.options.disabled
-            },
-
-        },
         watch: {
             sources: {
                 handler(newValue, oldValue) {
@@ -145,34 +135,21 @@
                 }
                 this.volumeHandle();
 
+                // const $player = this.$el;
+                // const $progress = this.$el.getElementsByClassName('progress')[0];
+                // // 播放器位置
+                // this.player.$player = $player;
+                // this.progressBar.$progress = $progress;
+                // this.player.pos = $player.getBoundingClientRect();
+                // this.progressBar.pos = $progress.getBoundingClientRect();
+                // this.videoSet.progress.width = Math.round($progress.getBoundingClientRect().width);
 
-                if (this.showToolbox) {
-                    this.customerInit()
-                } else {
-                    this.videoElm.addEventListener('play', () => {
-                        this.state.playing = true;
-                        this.$emit('play', this.videoElm);
-                    });
-                    this.videoElm.addEventListener('pause', () => {
-                        this.state.playing = false;
-                        this.$emit('pause', this.videoElm);
-                    });
-                    this.videoElm.addEventListener('ended', this.playEnded);
-
-                    this.videoElm.addEventListener('timeupdate', throttle(this.getPlayTime, 100, 1));
-                }
-
-            },
-            customerInit() {
-                const $player = this.$el;
-                const $progress = this.$el.getElementsByClassName('progress')[0];
-                // 播放器位置
-                this.player.$player = $player;
-                this.progressBar.progressElm = $progress;
-                this.player.pos = $player.getBoundingClientRect();
-                this.progressBar.pos = $progress.getBoundingClientRect();
-                this.videoSet.progress.width = Math.round($progress.getBoundingClientRect().width);
-                console.log(this.progressBar.pos)
+                this.videoElm.addEventListener('play', () => {
+                    this.state.playing = true;
+                });
+                this.videoElm.addEventListener('pause', () => {
+                    this.state.playing = false;
+                });
             },
             play() {
                 this.state.playing = !this.state.playing;
@@ -182,7 +159,6 @@
                     return false;
                 }
                 if (this.videoElm) {
-
                     // if (this.state.playing) {
                     //     this.videoElm.play();
                     //     this.videoElm.addEventListener('ended', this.playEnded);
@@ -194,15 +170,14 @@
                     // 播放状态
                     if (this.state.playing) {
                         try {
-                            // console.log(111)
                             this.videoElm.play();
                             // this.isPauseTouch = false;
                             // 监听缓存进度
-                            this.videoElm.addEventListener('progress', e => {
-                                this.getLoadTime();
-                            });
-                            // 监听播放进度
-                            this.videoElm.addEventListener('timeupdate', throttle(this.getPlayTime, 100, 1));
+                            // this.videoElm.addEventListener('progress', e => {
+                            //     this.getLoadTime();
+                            // });
+                            // // 监听播放进度
+                            // this.videoElm.addEventListener('timeupdate', throttle(this.getPlayTime, 100, 1));
                             // 监听结束
                             this.videoElm.addEventListener('ended', this.playEnded);
                             this.$emit('play', this.videoElm);
@@ -213,23 +188,17 @@
                     }
                     // 停止状态
                     else {
-                        // console.log('pu')
-                        this.isPauseTouch = true;
+                        // this.isPauseTouch = true;
                         this.videoElm.pause();
                         this.$emit('pause', this.videoElm);
                     }
                 }
             },
-            // 音量控制
             volumeHandle() {
                 this.state.vol = this.videoElm.volume;
             },
-            // 静音控制
-            handleMuted() {
-
-            },
             playEnded() {
-                // console.log('ended')
+                console.log('ended', this.videoSet.displayTime)
                 this.state.playing = false;
                 this.state.isEnd = true;
                 this.state.controlBtnShow = true;
@@ -252,38 +221,15 @@
                     this.state.fullScreen = false;
                     document.webkitCancelFullScreen();
                 }
-                // setTimeout(this.initVideo, 200);
+                setTimeout(this.initVideo, 200);
             },
             // 获取播放时间
             getPlayTime() {
                 const percent = this.videoElm.currentTime / this.videoElm.duration;
                 this.videoSet.progress.current = Math.round(this.videoSet.progress.width * percent);
-
                 // 赋值时长
-                this.videoSet.totalTime = this.timeFormat(this.videoElm.duration);
-                this.videoSet.displayTime = this.timeFormat(this.videoElm.currentTime);
-                // console.log(this.videoSet, this.timeFormat(this.videoElm.duration), this.timeFormat(this.videoElm.currentTime), this.videoSet.progress.current)
-            },
-            timeFormat(t) {
-                var h = Math.floor(t / 3600);
-                if (h < 10) {
-                    h = "0" + h;
-                }
-                var m = Math.floor(t % 3600 / 60);
-                if (m < 10) {
-                    m = "0" + m;
-                }
-                var s = Math.round(t % 3600 % 60);
-                if (s < 10) {
-                    s = "0" + s;
-                }
-                var str = '';
-                if (h != 0) {
-                    str = h + ':' + m + ':' + s;
-                } else {
-                    str = m + ':' + s;
-                }
-                return str;
+                this.videoSet.totalTime = timeParse(this.videoElm.duration);
+                this.videoSet.displayTime = timeParse(this.videoElm.currentTime);
             },
             // 获取缓存时间
             getLoadTime() {
@@ -299,39 +245,9 @@
                 });
                 this.videoSet.len = this.videoElm.duration;
             },
-            // 拖动播放进度
-            touchSlidSrart(e) { },
-            touchSlidMove(e) {
-                console.log("触摸中...");
-                let currentX = e.targetTouches[0].pageX;
-                let offsetX = currentX - this.progressBar.pos.left;
-                // 边界检测
-                if (offsetX <= 0) {
-                    offsetX = 0;
-                }
-
-                if (offsetX >= this.videoSet.progress.width) {
-                    offsetX = this.videoSet.progress.width;
-                }
-                this.videoSet.progress.current = offsetX;
-
-                let percent = this.videoSet.progress.current / this.videoSet.progress.width;
-                this.videoElm.duration && this.setPlayTime(percent, this.videoElm.duration);
-
-            },
-            touchSlidEnd(e) {
-                console.log("触摸结束...");
-                let currentX = e.changedTouches[0].pageX;
-                let offsetX = currentX - this.progressBar.pos.left;
-                this.videoSet.progress.current = offsetX;
-                // 这里的offsetX都是正数
-                let percent = offsetX / this.videoSet.progress.width;
-                this.videoElm.duration && this.setPlayTime(percent, this.videoElm.duration);
-            },
-            // 设置手动播放时间
-            setPlayTime(percent, totalTime) {
-                this.videoElm.currentTime = Math.floor(percent * totalTime);
-            },
+            sliderStart() { },
+            touchmove() { },
+            touchend() { },
             // 点击重新加载
             retry() {
                 console.log('error')
@@ -339,8 +255,6 @@
                 this.init();
             }
         },
-        beforeDestroy() {
-
-        }
+        beforeDestroy() { }
     };
 </script>
