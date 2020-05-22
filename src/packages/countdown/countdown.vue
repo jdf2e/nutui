@@ -122,6 +122,9 @@ const countdownTimer = {
     },
     endTime() {
       this.initTimer();
+    },
+    startTime() {
+      this.initTimer();
     }
   },
   methods: {
@@ -156,6 +159,10 @@ const countdownTimer = {
   },
   created() {
     this.initTimer();
+  },
+  destroyed() {
+    this.timer && clearInterval(this.timer);
+    
   }
 }
 countdownTimer.restTime = restTime;

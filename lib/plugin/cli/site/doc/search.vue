@@ -4,7 +4,7 @@
 		<!-- <transition name="fade"> -->
 		<ul class="search-list" v-if="searchList.length > 0">
 			<li :class="searchCurName == item.name ? 'cur' : ''" @click="checklist(item)" v-for="(item, index) in searchList" :key="index">
-				<router-link :to="{ name: item.name }">
+				<router-link :to="{ name: item.name.toLowerCase() }">
 					{{ item.name }}
 					<span>{{ item.chnName }}</span>
 				</router-link>
@@ -22,13 +22,13 @@ export default {
 			searchVal: '',
 			searchList: [],
 			searchCurName: '',
-			searchIndex: 0,
+			searchIndex: 0
 		};
 	},
 	watch: {
 		searchVal(sVal) {
 			if (sVal) {
-				this.searchList = this.packages.filter((item) => {
+				this.searchList = this.packages.filter(item => {
 					if (item.showDemo === false) return false;
 					const rx = new RegExp(sVal, 'gi');
 					return rx.test(item.name + ' ' + item.chnName + '' + item.desc);
@@ -38,7 +38,7 @@ export default {
 				this.searchIndex = 0;
 				this.searchList = [];
 			}
-		},
+		}
 	},
 	mounted() {
 		document.documentElement.addEventListener('click', this.closelist);
@@ -77,7 +77,7 @@ export default {
 					this.searchIndex = searchIndex;
 					if (e.keyCode == 13) {
 						this.$router.push({
-							path: '/' + searchList[searchIndex].name,
+							path: '/' + searchList[searchIndex].name
 						});
 						this.searchCurName = '';
 						this.searchIndex = 0;
@@ -85,8 +85,8 @@ export default {
 					}
 				}
 			}
-		},
-	},
+		}
+	}
 };
 </script>
 <style lang="scss" scoped>

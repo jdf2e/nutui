@@ -45,6 +45,18 @@
         <span slot="title">{{val2[0]}},{{val2[1]}}</span>
       </nut-cell>
     </div>
+
+    <h4>控制区间步长</h4>
+    <div>
+      <nut-cell>
+        <span slot="title">
+          <nut-range color="#31ccec" :rangeValues.sync="val4" :range="[0,200]" :stage="20" :showLabel="true"></nut-range>
+        </span>
+      </nut-cell>
+      <nut-cell>
+        <span slot="title">{{val4[0]}},{{val4[1]}}</span>
+      </nut-cell>
+    </div>
   </div>
 </template>
 
@@ -54,7 +66,8 @@ export default {
     return {
       val1: [-52, 120],
       val2: [0, 120],
-      val3: [0, 5]
+      val3: [0, 5],
+      val4: [20, 100]
     };
   },
   methods: {}

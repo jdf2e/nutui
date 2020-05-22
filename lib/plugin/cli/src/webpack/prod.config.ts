@@ -3,6 +3,7 @@ import merge from 'webpack-merge';
 import { devConfig } from './dev.config';
 import { ROOT_PACKAGE_PATH } from '../util/dic';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+const OfflinePlugin = require('offline-plugin');
 export const prodConfig: Webpack.Configuration = merge(devConfig, {
 	mode: 'production',
 	output: {
@@ -13,5 +14,12 @@ export const prodConfig: Webpack.Configuration = merge(devConfig, {
 	optimization: {
 		minimize: true
 	},
-	plugins: [new OptimizeCSSAssetsPlugin()]
+	plugins: [
+		new OptimizeCSSAssetsPlugin(),
+		new OfflinePlugin({
+			ServiceWorker: {
+				events: true
+			}
+		})
+	]
 });

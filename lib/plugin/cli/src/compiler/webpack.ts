@@ -23,7 +23,7 @@ function devServer(config: Webpack.Configuration) {
 	};
 	const server = new WebpackDevServer(compiler, devServerOptions);
 
-	server.listen(8080, '0.0.0.0', (err: Error) => {
+	server.listen(8000, '0.0.0.0', (err: Error) => {
 		if (err) logger.error(err);
 	});
 }

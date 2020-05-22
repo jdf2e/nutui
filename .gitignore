@@ -20,3 +20,4 @@ cache/docs.cache
 lib/plugin/cli/dist_cli/
 lib/plugin/cli/site/doc/view/
 lib/plugin/cli/site/doc/page/
+yarn.lock

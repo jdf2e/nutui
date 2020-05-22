@@ -83,7 +83,7 @@ Released under the MIT License.`
 		}),
 		new VueLoaderPlugin(),
 		new WebpackBar({
-			name: 'NutUI ClI',
+			name: 'NutUI CLI',
 			color: '#5396ff'
 		})
 	]

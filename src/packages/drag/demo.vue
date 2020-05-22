@@ -4,16 +4,15 @@
       >此 Demo 仅能在移动端浏览器体验，建议在 Android 或 iOS 设备上体验。
     </nut-noticebar>
     <h4>基本用法</h4>
-    <nut-drag name="demo1" :style="{ top: '100px', left: '8px' }">
-      <div class="touch-dom">基本用法</div>
+    <nut-drag @click.native="click" :style="{ top: '100px', left: '8px' }">
+      <div class="touch-dom">可点击，可拖拽</div>
     </nut-drag>
     <h4 :style="{ top: '150px' }">限制拖拽方向</h4>
-    <nut-drag name="demo2" direction="x" :style="{ top: '200px', left: '8px' }">
+    <nut-drag direction="x" :style="{ top: '200px', left: '8px' }">
       <div class="touch-dom">只能在X轴拖动</div>
     </nut-drag>
     <h4 :style="{ top: '250px' }">自动吸边</h4>
     <nut-drag
-      name="demo3"
       direction="x"
       :attract="true"
       :style="{ top: '300px', left: '8px' }"
@@ -24,7 +23,6 @@
     <div class="drag-boundary"></div>
     <nut-drag
       :boundary="{ top: 401, left: 9, bottom: bottom(), right: right() }"
-      name="demo4"
       :attract="true"
       :style="{ top: '400px', left: '8px' }"
     >
@@ -46,14 +44,22 @@ export default {
     bottom() {
       return document.documentElement.clientHeight - 601;
     },
+    click() {
+      this.$toast.text("点击了拖拽元素");
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.nut-drag {
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+}
 .touch-dom {
   height: 30px;
-  padding: 10px;
+  padding: 0 10px;
   line-height: 30px;
   text-align: center;
   color: #fff;

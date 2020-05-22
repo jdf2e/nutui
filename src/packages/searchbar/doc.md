@@ -51,6 +51,7 @@
 <nut-searchbar
     placeText="请输入自定义文案"
     @submit="search"
+    @focus="focusFun"
     ref="myInput"
 ></nut-searchbar>
 ```

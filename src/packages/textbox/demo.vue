@@ -1,10 +1,10 @@
 <template>
     <div class="textbox-demo">
         <!-- <h4>示例</h4> -->
-        <h4>默认用法</h4>
+        <h4>默认用法 支持异步回显数据</h4>
          <nut-textbox v-model="val"></nut-textbox>
         <h4>自定义高度:100px</h4>
-        <nut-textbox :txtAreaH="100" :maxNum="300"></nut-textbox>
+        <nut-textbox :txtAreaH="100" :maxNum="300" :value="val"></nut-textbox>
 
         <h4>自定义提示语</h4>
         <nut-textbox :placeText="'请填写详细情况请填写详细情况'"></nut-textbox>
@@ -47,6 +47,13 @@ export default {
         inputText(val){
            alert(val);
         }
-    }
+    },
+    mounted(){
+        var that=this;
+        this.val="初始测试数据"
+        setTimeout(function(){
+            that.val="异步测试数据123";
+        },1000)
+        }
 }
 </script>

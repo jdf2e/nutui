@@ -48,8 +48,8 @@ export default {
     return {};
   },
   methods: {
-    activeAvatar() {
-      alert("点击了头像");
+    activeAvatar(event) {
+      console.log("点击了头像",event);
     }
   }
 };

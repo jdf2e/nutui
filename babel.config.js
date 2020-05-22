@@ -3,7 +3,7 @@ const presets = [
 		'@babel/preset-env',
 		{
 			loose: false,
-			modules: 'commonjs',
+			modules: false,
 			targets: {
 				browsers: ['Android >= 4', 'iOS >= 8']
 			}
@@ -13,9 +13,9 @@ const presets = [
 
 const plugins = [
 	'@babel/plugin-transform-runtime',
-	'@babel/plugin-transform-object-assign',
-	'@babel/plugin-proposal-object-rest-spread',
 	'@babel/plugin-syntax-dynamic-import',
+	'@babel/plugin-proposal-object-rest-spread',
+	'@babel/plugin-transform-object-assign',
 	'istanbul'
 ];
 
