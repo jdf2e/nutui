@@ -33,19 +33,19 @@ describe('Menu.vue',() => {
             expect(i.is(Icon)).toBe(true)
         }) 
     });
-    it('4.判断点击关闭按钮',() => {
-        wrapper.setData({ 
-            closeable:true
-        }); 
-        let i = wrapper.find('.nutui-popup__close-icon');
-        i.trigger('click')
-        console.log()
-        return Vue.nextTick().then(function() {
-            setTimeout(()=>{
-                expect(wrapper.contains(popup)).toBe(false)
-            },wrapper.duration*1000)           
-        }) 
-    });
+    // it('4.判断点击关闭按钮',() => {
+    //     wrapper.setData({ 
+    //         closeable:true
+    //     }); 
+    //     let i = wrapper.find('.nutui-popup__close-icon');
+    //     i.trigger('click')
+    //     console.log()
+    //     return Vue.nextTick().then(function() {
+    //         setTimeout(()=>{
+    //             expect(wrapper.contains(popup)).toBe(false)
+    //         },wrapper.duration*1000)           
+    //     }) 
+    // });
 
  
  

@@ -43,4 +43,4 @@
 | showLabelAlways | 是否一直显示着标签 | Boolean | false
 | showRangeTxt | 是否显示区间值 | Boolean | false
 | range | 最小最大区间范围 | Array | [0, 10]
-| stage | 区间的步长 | Number, String | 1
+| stage | 区间的步长 | Number | 1

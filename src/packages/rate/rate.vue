@@ -2,7 +2,7 @@
     <div class="nut-rate">
         <span 
             class="nut-rate-item" 
-            :class="['nut-rate-item',{'nut-rate-active':n<=current}]" 
+            :class="[{'nut-rate-active':n<=current}]" 
             v-for="n in total" :key="n" @click="onClick($event,n)" 
             :style="{
                 'height':size+'px',

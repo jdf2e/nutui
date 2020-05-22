@@ -329,6 +329,8 @@ export default {
         switchModule() {
             this.showModule = this.showModule == 'exist' ? 'custom' : 'exist'
             this.initAddress()
+
+            this.$emit('switchModule',{type:this.showModule})
         }
     }
 }

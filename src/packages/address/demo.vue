@@ -30,7 +30,7 @@
 
       <nut-address v-model="showPopupCustomImg" type="exist" :existAddress="existAddress" @onChange="onChange3" @close="close3" :isShowCustomAddress="false" @selected="selected3" :defaultIcon="defaultIcon" :selectedIcon='selectedIcon'></nut-address>
 
-      <nut-address v-model="showPopupOther" type="exist" :existAddress="existAddress" :province="province" :city="city" :country="country" :town="town" @onChange="onChange4" @close="close4" @selected="selected4" customAndExistTitle="选择其他地址"></nut-address>
+      <nut-address v-model="showPopupOther" type="exist" :existAddress="existAddress" :province="province" :city="city" :country="country" :town="town" @onChange="onChange4" @close="close4" @selected="selected4" customAndExistTitle="选择其他地址" @switchModule="switchModule"></nut-address>
     </div>
 </template>
 
@@ -149,6 +149,15 @@ export default {
       selected4(prevExistAdd,nowExistAdd,arr){
         console.log(prevExistAdd)
         console.log(nowExistAdd)
+      },
+
+      switchModule(cal){
+        
+        if(cal.type == 'custom'){
+          console.log('点击了“选择其他地址”按钮')
+        } else {
+          console.log('点击了自定义地址左上角的返回按钮')
+        }
       }
   }
 };
