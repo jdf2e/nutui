@@ -12,7 +12,7 @@
           @touchmove="delMode == 'longtap' ? touchMove(item.id) : ''"
           @touchend="delMode == 'longtap' ? touchEnd(item.id) : ''"
         >
-          <a href="javascript:;"><img :src="item.src" alt="" /></a>
+          <a href="javascript:;"><img :src="item.src" alt=""/></a>
         </div>
       </transition-group>
       <div class="add-icon" :style="{ width: width + 'px', height: height + 'px' }" v-show="this.list.length < this.max">
@@ -34,59 +34,59 @@ export default {
   props: {
     animation: {
       type: [Boolean],
-      default: true,
+      default: true
     },
     width: {
       type: [String, Number],
-      default: 100,
+      default: 100
     },
     height: {
       type: [String, Number],
-      default: 100,
+      default: 100
     },
     margin: {
       type: [String, Number],
-      default: 5,
+      default: 5
     },
     max: {
       //允许上传的最大数量
       type: [Number, String],
-      default: 9,
+      default: 9
     },
     accept: {
       type: [String],
-      default: 'image/*',
+      default: 'image/*'
     },
     ismultiple: {
       //是否开启多图片上传
       type: [Boolean],
-      default: false,
+      default: false
     },
     delMode: {
       //删除图片的方式，支持tap、longtap
       type: [String],
-      default: 'tap',
+      default: 'tap'
     },
     longTapTime: {
       type: [Number],
-      default: 500,
+      default: 500
     },
     autoUpload: {
       //选择完图片之后是否自动完成上传
       type: [Boolean, String],
-      default: false,
+      default: false
     },
     imgList: {
       type: Array,
       default: () => {
         return [];
-      },
-    },
+      }
+    }
   },
   data() {
     return {
       timeOutEvent: 0,
-      list: [],
+      list: []
     };
   },
   mounted() {
@@ -108,20 +108,20 @@ export default {
         //自动上传
         self.$emit('imgMsg', {
           code: 1,
-          msg: fileArr,
+          msg: fileArr
         });
       } else {
         fileArr.forEach((item, index) => {
           let reader = new FileReader();
-          reader.onload = function (evt) {
+          reader.onload = function(evt) {
             self.list.push({
               id: Math.random(),
-              src: evt.target.result,
+              src: evt.target.result
             });
             event.target.value = '';
             self.$emit('imgMsg', {
               code: 2,
-              msg: fileArr,
+              msg: fileArr
             });
           };
           reader.readAsDataURL(item);
@@ -131,15 +131,15 @@ export default {
     preview(id) {
       this.$emit('imgMsg', {
         code: 4,
-        msg: id,
+        msg: id
       });
     },
     deleteImg(id) {
-      this.list = this.list.filter((item) => item.id != id);
+      this.list = this.list.filter(item => item.id != id);
       this.$emit('update:imgList', this.list);
       this.$emit('imgMsg', {
         code: 3,
-        msg: id,
+        msg: id
       });
     },
     touchStart(id) {
@@ -157,8 +157,8 @@ export default {
     touchEnd(id) {
       clearTimeout(this.timeOutEvent); //清除定时器
       this.timeOutEvent = 0;
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

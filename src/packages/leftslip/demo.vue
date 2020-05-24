@@ -74,10 +74,10 @@ export default {
         { id: 'add5', addr: '北京市大兴区亦庄经济开发中心京东大厦B座5', tel: '159****8888' },
         { id: 'add6', addr: '北京市大兴区亦庄经济开发中心京东大厦B座6', tel: '159****8888' },
         { id: 'add7', addr: '北京市大兴区亦庄经济开发中心京东大厦B座7', tel: '159****8888' },
-        { id: 'add8', addr: '北京市大兴区亦庄经济开发中心京东大厦B座8', tel: '159****8888' },
+        { id: 'add8', addr: '北京市大兴区亦庄经济开发中心京东大厦B座8', tel: '159****8888' }
       ],
       rightWidth: 80,
-      pageWidth: null,
+      pageWidth: null
     };
   },
   methods: {
@@ -90,11 +90,11 @@ export default {
     },
     oneDel(par) {
       par.remove();
-    },
+    }
   },
   mounted() {
     this.pageWidth = document.documentElement.clientWidth;
-  },
+  }
 };
 </script>
 

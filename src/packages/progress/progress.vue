@@ -30,57 +30,57 @@ export default {
     percentage: {
       type: [Number, String],
       default: 0,
-      required: true,
+      required: true
     },
     size: {
       type: String,
-      default: '',
+      default: ''
     },
     status: {
       type: String,
-      default: 'text',
+      default: 'text'
     },
     strokeWidth: {
       type: [Number, String],
-      default: '',
+      default: ''
     },
     textInside: {
       type: Boolean,
-      default: false,
+      default: false
     },
     showText: {
       type: Boolean,
-      default: true,
+      default: true
     },
     strokeColor: {
       type: String,
-      default: '',
+      default: ''
     },
     textColor: {
       tyep: String,
-      default: '',
-    },
+      default: ''
+    }
   },
   data() {
     return {
-      height: this.strokeWidth + 'px',
+      height: this.strokeWidth + 'px'
     };
   },
   computed: {
     bgStyle() {
       return {
         width: this.percentage + '%',
-        backgroundColor: this.strokeColor || '',
+        backgroundColor: this.strokeColor || ''
       };
     },
     textStyle() {
       return {
-        color: this.textColor || '',
+        color: this.textColor || ''
       };
     },
     statusIcon() {
       return this.status === 'success' ? 'nut-icon-success' : this.status === 'wrong' ? 'nut-icon-fail' : '';
-    },
-  },
+    }
+  }
 };
 </script>

@@ -1,7 +1,7 @@
 import Popup from './popup.vue';
 import './popup.scss';
 
-Popup.install = function (Vue) {
+Popup.install = function(Vue) {
   Vue.component(Popup.name, Popup);
 };
 

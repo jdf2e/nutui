@@ -33,7 +33,7 @@
 export default {
   data() {
     return {
-      val: '',
+      val: ''
     };
   },
   methods: {
@@ -42,14 +42,14 @@ export default {
     },
     inputText(val) {
       alert(val);
-    },
+    }
   },
   mounted() {
     var that = this;
     this.val = '初始测试数据';
-    setTimeout(function () {
+    setTimeout(function() {
       that.val = '异步测试数据123';
     }, 1000);
-  },
+  }
 };
 </script>

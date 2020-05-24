@@ -7,7 +7,7 @@
         'transition-duration': transitionDuration + 'ms',
         '-webkit-transform': 'translate3d(' + translateX + 'px,' + translateY + 'px,0)',
         '-webkit-transition-duration': transitionDuration + 'ms',
-        'transition-timing-function': 'ease',
+        'transition-timing-function': 'ease'
       }"
       @transitionend="_onTransitionEnd"
     >
@@ -34,55 +34,55 @@ export default {
     direction: {
       type: String,
       default: HORIZONTAL,
-      validator: (value) => [VERTICAL, HORIZONTAL].indexOf(value) > -1,
+      validator: value => [VERTICAL, HORIZONTAL].indexOf(value) > -1
     },
     paginationVisible: {
       type: Boolean,
-      default: false,
+      default: false
     },
     paginationClickable: {
       type: Boolean,
-      default: false,
+      default: false
     },
     loop: {
       type: Boolean,
-      default: false,
+      default: false
     },
     speed: {
       type: Number,
-      default: 500,
+      default: 500
     },
     canDragging: {
       type: Boolean,
-      default: true,
+      default: true
     },
     autoPlay: {
       type: Number,
-      default: 0,
+      default: 0
     },
     initPage: {
       type: Number,
-      default: 1,
+      default: 1
     },
     lazyLoad: {
       type: Boolean,
-      default: false,
+      default: false
     },
     lazyLoadUrl: {
       type: String,
-      default: '',
+      default: ''
     },
     swiperData: {
       type: [Array],
-      default: function () {
+      default: function() {
         return [];
-      },
-    },
+      }
+    }
   },
   watch: {
     swiperData(newValue, oldValue) {
       this.updateEvent();
-    },
+    }
   },
   data() {
     return {
@@ -103,7 +103,7 @@ export default {
       domTimer: null, //渲染延迟查找
       stopAutoPlay: false, //停止自动播放
       swiperWrap: null,
-      oneSlideTranslate: 0, //一个slide的大小
+      oneSlideTranslate: 0 //一个slide的大小
     };
   },
   methods: {
@@ -314,7 +314,7 @@ export default {
       return (
         -[].reduce.call(
           this.slideEls,
-          function (total, el, i) {
+          function(total, el, i) {
             return i > page - 2 ? total : total + _this.oneSlideTranslate;
           },
           0
@@ -342,7 +342,7 @@ export default {
       return (
         window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
-        function (callback) {
+        function(callback) {
           window.setTimeout(callback, 1000 / 60);
         }
       );
@@ -389,7 +389,7 @@ export default {
         isInView = false;
       }
       return isInView;
-    },
+    }
   },
   created() {},
   mounted() {
@@ -400,6 +400,6 @@ export default {
   destroyed() {
     this.timer = null;
     this.domTimer = null;
-  },
+  }
 };
 </script>

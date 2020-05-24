@@ -1,7 +1,7 @@
 import SideNavBarItem from './sidenavbaritem.vue';
 import './sidenavbaritem.scss';
 
-SideNavBarItem.install = function (Vue) {
+SideNavBarItem.install = function(Vue) {
   Vue.component(SideNavBarItem.name, SideNavBarItem);
 };
 

@@ -18,14 +18,14 @@ export default {
     show: { type: Boolean, default: false },
     duration: Number,
     className: { type: String, default: '' },
-    customStyle: { type: String, default: '' },
+    customStyle: { type: String, default: '' }
   },
   methods: {
     touchmove(e) {
       if (this.lockScroll) {
         e.preventDefault();
       }
-    },
-  },
+    }
+  }
 };
 </script>

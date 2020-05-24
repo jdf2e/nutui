@@ -20,16 +20,16 @@ export default {
   },
   props: {
     luckWidth: {
-      required: true,
+      required: true
     },
     luckHeight: {
-      required: true,
+      required: true
     },
     prizeList: {
-      required: true,
+      required: true
     },
     turnsNumber: {
-      default: 5,
+      default: 5
     },
     styleOpt: {
       default: () => {
@@ -41,17 +41,17 @@ export default {
             'rgb(255, 231, 149)',
             'rgb(255, 247, 223)',
             'rgb(255, 231, 149)',
-            'rgb(255, 247, 223)',
+            'rgb(255, 247, 223)'
           ],
           // 每一块扇形的外边框颜色,默认值,可通过父组件来改变
-          borderColor: '#ff9800',
+          borderColor: '#ff9800'
         };
-      },
+      }
     },
     turnsTime: {
       // 转动需要持续的时间(秒)
-      default: 5,
-    },
+      default: 5
+    }
   },
   data() {
     return {
@@ -60,7 +60,7 @@ export default {
       startRotateDegree: 0,
       // 设置指针默认指向的位置,现在是默认指向2个扇形之间的边线上
       rotateAngle: 0, //`rotate(30deg)`
-      rotateTransition: '',
+      rotateTransition: ''
     };
   },
   methods: {
@@ -68,7 +68,7 @@ export default {
     getRotateAngle(index) {
       const angle = (360 / this.prizeList.length) * index + 180 / this.prizeList.length;
       return {
-        transform: `rotate(${angle}deg)`,
+        transform: `rotate(${angle}deg)`
       };
     },
     // 初始化圆形转盘canvas
@@ -119,7 +119,7 @@ export default {
       setTimeout(() => {
         this.$emit('end-turns');
       }, turnsTime * 1000 + 500);
-    },
-  },
+    }
+  }
 };
 </script>

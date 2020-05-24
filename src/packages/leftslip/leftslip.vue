@@ -19,12 +19,12 @@ export default {
   props: {
     isClickBack: {
       type: Boolean,
-      default: true,
+      default: true
     },
     rightWidth: {
       type: [Number, String],
-      default: '0.8',
-    },
+      default: '0.8'
+    }
   },
   data() {
     return {
@@ -41,7 +41,7 @@ export default {
       isOpen: false,
       scrollTop: 0,
       oldScrollTop: 0,
-      lock: false,
+      lock: false
     };
   },
   watch: {
@@ -164,7 +164,7 @@ export default {
         listItems[i].className = 'nut-leftslip-item';
         this.isOpen = false;
       }
-    },
-  },
+    }
+  }
 };
 </script>

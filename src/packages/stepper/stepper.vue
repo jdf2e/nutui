@@ -21,7 +21,7 @@
         '-ms-transform': 'translate(0,' + animTranslate_add + '%)',
         '-moz-transform': 'translate(0,' + animTranslate_add + '%)',
         '-webkit-transform': 'translate(0,' + animTranslate_add + '%)',
-        '-o-transform': 'translate(0,' + animTranslate_add + '%)',
+        '-o-transform': 'translate(0,' + animTranslate_add + '%)'
       }"
     >
       <div>{{ animNum[0] }}</div>
@@ -35,7 +35,7 @@
         '-ms-transform': 'translate(0,' + animTranslate_ + '%)',
         '-moz-transform': 'translate(0,' + animTranslate_ + '%)',
         '-webkit-transform': 'translate(0,' + animTranslate_ + '%)',
-        '-o-transform': 'translate(0,' + animTranslate_ + '%)',
+        '-o-transform': 'translate(0,' + animTranslate_ + '%)'
       }"
     >
       <div>{{ animNum[0] }}</div>
@@ -50,36 +50,36 @@ export default {
   props: {
     simple: {
       type: Boolean,
-      default: true,
+      default: true
     },
     min: {
       type: [Number, String],
-      default: 0,
+      default: 0
     },
     max: {
       type: [Number, String],
-      default: Infinity,
+      default: Infinity
     },
     step: {
       type: [Number, String],
-      default: 1,
+      default: 1
     },
     readonly: {
       type: Boolean,
-      default: false,
+      default: false
     },
     transition: {
       type: Boolean,
-      default: true,
+      default: true
     },
     value: {
       type: [String, Number],
-      required: true,
+      required: true
     },
     decimalPlaces: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
   data() {
     return {
@@ -92,7 +92,7 @@ export default {
       showReduceAnim: false,
       animNum: [this.value, this.value],
       animTranslate_add: 0,
-      animTranslate_: -100,
+      animTranslate_: -100
     };
   },
   filters: {
@@ -101,7 +101,7 @@ export default {
       if (val > max) val = max;
       if (val < min) val = min;
       return val;
-    },
+    }
   },
   watch: {
     value: {
@@ -111,7 +111,7 @@ export default {
         this.num = v > 0 ? this.fixedDecimalPlaces(v) : v;
         this.$emit('change', this.num);
       },
-      immediate: true,
+      immediate: true
     },
     min: {
       handler(v, ov) {
@@ -119,13 +119,13 @@ export default {
           this.minNum = v;
         }
       },
-      immediate: true,
-    },
+      immediate: true
+    }
   },
   computed: {
     isGray() {
       return (this.focusing ? this.tempNum : this.num) - this.step < this.min;
-    },
+    }
   },
   methods: {
     focus(e) {
@@ -228,7 +228,7 @@ export default {
       } else {
         this.$emit('reduce-no-allow');
       }
-    },
-  },
+    }
+  }
 };
 </script>

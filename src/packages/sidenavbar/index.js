@@ -3,7 +3,7 @@ import './sidenavbar.scss';
 import Subsidenavbar from '../subsidenavbar/subsidenavbar.vue';
 import Sidenavbaritem from '../sidenavbaritem/sidenavbaritem.vue';
 import Icon from '../icon/icon.vue';
-SideNavBar.install = function (Vue) {
+SideNavBar.install = function(Vue) {
   Vue.component(SideNavBar.name, SideNavBar);
   Vue.component(Subsidenavbar.name, Subsidenavbar);
   Vue.component(Sidenavbaritem.name, Sidenavbaritem);

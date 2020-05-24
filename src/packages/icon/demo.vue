@@ -21,6 +21,7 @@
         <td class="copy-box"><nut-icon type="circle-cross"></nut-icon><span>circle-cross</span></td>
       </tr>
     </table>
+
     <h4>自定义尺寸</h4>
     <table>
       <tr>
@@ -30,6 +31,7 @@
         <td class="copy-box-size"><nut-icon type="tick" size="40px"></nut-icon><span>tick</span></td>
       </tr>
     </table>
+
     <h4>自定义颜色</h4>
     <table>
       <tr>
@@ -39,6 +41,7 @@
         <td class="copy-box-color"><nut-icon type="tick" color="#f0250f"></nut-icon><span>tick</span></td>
       </tr>
     </table>
+
     <h4>自定义图标</h4>
     <table>
       <tr>
@@ -56,45 +59,45 @@ import copy from 'clipboard';
 export default {
   mounted() {
     let copys = new copy('.copy-box', {
-      text: function (trigger) {
+      text: function(trigger) {
         return `<nut-icon type="${trigger.textContent}"></nut-icon>`;
-      },
+      }
     });
-    copys.on('success', (e) => {
+    copys.on('success', e => {
       this.tip();
     });
 
     let copySize = new copy('.copy-box-size', {
-      text: function (trigger) {
+      text: function(trigger) {
         return `<nut-icon type="${trigger.textContent}" size="40px"></nut-icon>`;
-      },
+      }
     });
-    copySize.on('success', (e) => {
+    copySize.on('success', e => {
       this.tip();
     });
 
     let copyColor = new copy('.copy-box-color', {
-      text: function (trigger) {
+      text: function(trigger) {
         return `<nut-icon type="${trigger.textContent}" color="#f0250f"></nut-icon>`;
-      },
+      }
     });
-    copyColor.on('success', (e) => {
+    copyColor.on('success', e => {
       this.tip();
     });
     let copySelf = new copy('.copy-box-self', {
-      text: function (trigger) {
+      text: function(trigger) {
         return `<nut-icon type="self" :url="require('../../assets/svg/${trigger.textContent}.svg')"></nut-icon>`;
-      },
+      }
     });
-    copySelf.on('success', (e) => {
+    copySelf.on('success', e => {
       this.tip();
     });
   },
   methods: {
     tip() {
       this.$toast.success('复制成功', { duration: 1000 });
-    },
-  },
+    }
+  }
 };
 </script>
 

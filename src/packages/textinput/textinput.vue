@@ -27,58 +27,58 @@ export default {
   props: {
     value: {
       type: String,
-      default: '',
+      default: ''
     },
     type: {
       type: String,
-      default: 'text',
+      default: 'text'
     },
     label: {
       type: String,
-      default: '',
+      default: ''
     },
     placeholder: {
       type: String,
-      default: '',
+      default: ''
     },
 
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     hasBorder: {
       type: Boolean,
-      default: true,
+      default: true
     },
     outline: {
       type: Boolean,
-      default: false,
+      default: false
     },
     clearBtn: {
       type: Boolean,
-      default: true,
+      default: true
     },
     clearBtnPersonnal: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   computed: {},
   data() {
     return {
-      clearBtnShow: false,
+      clearBtnShow: false
     };
   },
   computed: {
     inputListeners() {
       let vm = this;
       return Object.assign({}, this.$listeners, {
-        input: function (event) {
+        input: function(event) {
           vm.clearBtnShow = !!event.target.value;
           vm.$emit('input', event.target.value);
-        },
+        }
       });
-    },
+    }
   },
 
   methods: {
@@ -88,17 +88,17 @@ export default {
     },
 
     focus() {
-      this.$nextTick(function () {
+      this.$nextTick(function() {
         this.$refs.nutUiInput.focus();
       });
     },
 
     blur() {
       this.$refs.nutUiInput.blur();
-    },
+    }
   },
   mounted() {
     this.clearBtnShow = !!this.value;
-  },
+  }
 };
 </script>

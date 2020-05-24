@@ -29,29 +29,29 @@ export default {
   props: {
     isShowLine: {
       type: Boolean,
-      default: true,
+      default: true
     },
     defIndex: {
       type: Number,
-      default: 0,
+      default: 0
     },
     positionNav: {
       type: String,
-      default: 'top',
+      default: 'top'
     },
     initData: {
       type: Array,
-      default: function () {
+      default: function() {
         return [];
-      },
-    },
+      }
+    }
   },
   data() {
     return {
       tabTitleList: [],
       activeIndex: this.defIndex,
       initX: '0',
-      navWidth: 0,
+      navWidth: 0
     };
   },
   watch: {
@@ -62,45 +62,45 @@ export default {
       handler() {
         this.updeteTab();
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   computed: {
     //下面有些样式名称是为了兼容之前的版本
-    positionNavCss: function () {
+    positionNavCss: function() {
       if (this.positionNav === 'left' || this.positionNav === 'right') return true;
     },
-    titleCLass: function () {
+    titleCLass: function() {
       if (this.positionNav == 'top') {
         return 'nut-tab-title';
       }
       return 'nut-tab-title-' + this.positionNav + 'nav';
     },
-    navBarClass: function () {
+    navBarClass: function() {
       if (this.positionNav == 'top') {
         return 'nav-bar';
       }
       return 'nav-bar-' + this.positionNav;
     },
-    titleNavList: function () {
+    titleNavList: function() {
       if (this.positionNav == 'top' || this.positionNav == 'bottom') {
         return 'nut-title-nav-list';
       }
       return 'nut-title-nav-' + this.positionNav + 'nav';
     },
-    navBarStyle: function () {
+    navBarStyle: function() {
       if (this.positionNav === 'top' || this.positionNav === 'bottom') {
         return {
           transform: `translateX(${this.initX}px)`,
-          width: this.navWidth + 'px',
+          width: this.navWidth + 'px'
         };
       } else {
         return {
           transform: `translateY(${this.initX}px)`,
-          height: this.navWidth + 'px',
+          height: this.navWidth + 'px'
         };
       }
-    },
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -108,14 +108,14 @@ export default {
     });
   },
   methods: {
-    updeteTab: function () {
+    updeteTab: function() {
       this.$nextTick(() => {
         this.tabTitleList = [];
         this.activeIndex = this.defIndex;
         this.initTab([...this.$slots.default]);
       });
     },
-    initTab: function (slot) {
+    initTab: function(slot) {
       for (let i = 0; i < slot.length; i++) {
         let slotTag = slot[i].tag;
         if (typeof slotTag == 'string' && slotTag.indexOf('nut-tab-panel') != -1) {
@@ -123,7 +123,7 @@ export default {
           let item = {
             tabTitle: attrs['tab-title'] || attrs['tabTitle'],
             disable: attrs.disable === false,
-            iconUrl: attrs['iconUrl'] || attrs['icon-url'],
+            iconUrl: attrs['iconUrl'] || attrs['icon-url']
           };
           this.tabTitleList.push(item);
           let slotElm = slot[i].elm;
@@ -139,7 +139,7 @@ export default {
         this.getTabWidth();
       });
     },
-    getStyle: function (obj, styleName) {
+    getStyle: function(obj, styleName) {
       if (!obj) {
         return '';
       }
@@ -149,7 +149,7 @@ export default {
         return getComputedStyle(obj, null)[styleName];
       }
     },
-    getTabWidth: function () {
+    getTabWidth: function() {
       if (this.positionNav == 'top' || this.positionNav == 'bottom') {
         let tabTitle = document.querySelector('.nut-tab-title');
         let tabWidth = this.getStyle(tabTitle, 'width');
@@ -178,7 +178,7 @@ export default {
       }
       return parentCpt;
     },
-    switchTab: function (index, event, disable) {
+    switchTab: function(index, event, disable) {
       if (!disable) {
         this.activeIndex = index;
         this.initX = parseInt(this.navWidth * index);
@@ -194,7 +194,7 @@ export default {
         this.$emit('tab-switch', index, event);
         this.$emit('tabSwitch', index, event); //兼容以前驼峰法命名
       }
-    },
-  },
+    }
+  }
 };
 </script>

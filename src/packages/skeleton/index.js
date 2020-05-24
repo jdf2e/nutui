@@ -3,19 +3,19 @@ import './skeleton.scss';
 
 const { skeletonCircle, skeletonSquare, skeletonRow, skeletonColumn } = skeleton;
 
-skeleton.install = function (Vue) {
+skeleton.install = function(Vue) {
   Vue.component(skeleton.name, skeleton);
 };
-skeletonCircle.install = function (Vue) {
+skeletonCircle.install = function(Vue) {
   Vue.component(skeletonCircle.name, skeletonCircle);
 };
-skeletonSquare.install = function (Vue) {
+skeletonSquare.install = function(Vue) {
   Vue.component(skeletonSquare.name, skeletonSquare);
 };
-skeletonRow.install = function (Vue) {
+skeletonRow.install = function(Vue) {
   Vue.component(skeletonRow.name, skeletonRow);
 };
-skeletonColumn.install = function (Vue) {
+skeletonColumn.install = function(Vue) {
   Vue.component(skeletonColumn.name, skeletonColumn);
 };
 
@@ -24,5 +24,5 @@ export default {
   skeletonCircle,
   skeletonSquare,
   skeletonRow,
-  skeletonColumn,
+  skeletonColumn
 };

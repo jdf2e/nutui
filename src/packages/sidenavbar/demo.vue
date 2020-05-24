@@ -85,7 +85,7 @@ export default {
       show3: false,
       width: '80%',
       height: '100%',
-      navs: [],
+      navs: []
     };
   },
   mounted() {
@@ -94,13 +94,13 @@ export default {
         {
           id: 16,
           name: '异步abc16',
-          arr: [{ pid: 16, id: 17, name: 'abc16-id17' }],
+          arr: [{ pid: 16, id: 17, name: 'abc16-id17' }]
         },
         {
           id: 17,
           name: '异步abc17',
-          arr: [{ pid: 17, id: 18, name: 'abc17-id18' }],
-        },
+          arr: [{ pid: 17, id: 18, name: 'abc17-id18' }]
+        }
       ];
     }, 2000);
   },
@@ -122,8 +122,8 @@ export default {
     },
     handleClick(str) {
       alert(str);
-    },
-  },
+    }
+  }
 };
 </script>
 

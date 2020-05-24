@@ -24,10 +24,10 @@ const defaultOptions = {
   cover: false, //透明遮罩层
   coverColor: 'rgba(0, 0, 0, 0)',
   timeStamp: null,
-  closeOnClickOverlay: false,
+  closeOnClickOverlay: false
 };
 let currentOptions = {
-  ...defaultOptions,
+  ...defaultOptions
 };
 
 function _showToast() {
@@ -43,7 +43,7 @@ function _getInstance(obj) {
     id: new Date().getTime(),
     ...currentOptions,
     ...defaultOptionsMap[obj.type],
-    ...obj,
+    ...obj
   };
 
   //有相同id者共用一个实例，否则新增实例
@@ -53,7 +53,7 @@ function _getInstance(obj) {
     instance = Object.assign(instance, opt);
   } else {
     instance = new ToastConstructor({
-      data: Object.assign(opt, obj),
+      data: Object.assign(opt, obj)
     });
     opt['id'] && (instanceArr[opt['id']] = instance);
   }
@@ -106,7 +106,7 @@ let Toast = {
       currentOptions = { ...defaultOptions };
       defaultOptionsMap = {};
     }
-  },
+  }
 };
 
 export default Toast;

@@ -30,7 +30,7 @@ export default {
     return {
       current: 3,
       titles: [],
-      current2: 0,
+      current2: 0
     };
   },
   mounted() {
@@ -42,8 +42,8 @@ export default {
   methods: {
     next() {
       this.current = this.current + 1;
-    },
-  },
+    }
+  }
 };
 </script>
 

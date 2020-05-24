@@ -63,7 +63,7 @@ export default {
       val3: 5,
       val4: 0,
       val5: 0,
-      val6: 0,
+      val6: 0
     };
   },
   methods: {
@@ -85,8 +85,8 @@ export default {
     },
     reduce() {
       this.val1 = Math.max(Number(this.val1) - 1, 0);
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -36,17 +36,17 @@ export default {
     // 轴点的样式：circle 圆  hollow 空心
     pointType: {
       type: String,
-      default: 'circle',
+      default: 'circle'
     },
     // 轴点的颜色
     pointColor: {
       type: String,
-      default: '#fa2e05',
-    },
+      default: '#fa2e05'
+    }
   },
   data() {
     return {
-      isCustomPoint: false, //是否自定义轴点
+      isCustomPoint: false //是否自定义轴点
     };
   },
   computed: {
@@ -58,11 +58,11 @@ export default {
     },
     isShowTitle() {
       return this.$slots.title ? true : false;
-    },
+    }
   },
   mounted() {
     this.isCustomPoint = this.$slots.dot ? true : false;
   },
-  methods: {},
+  methods: {}
 };
 </script>

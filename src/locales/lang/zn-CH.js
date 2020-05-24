@@ -11,29 +11,29 @@ const lang = {
       end: '结束',
       title: '选择日期',
       week: '日,一,二,三,四,五,六',
-      monthTitle: '{year}年{month}月',
+      monthTitle: '{year}年{month}月'
     },
     menu: {
-      resetBtnTxt: '重置',
+      resetBtnTxt: '重置'
     },
     searchbar: {
       placeText: '请输入内容...',
-      textInfo: '搜索',
+      textInfo: '搜索'
     },
     shortpassword: {
       tip1: '输入数字密码',
-      tip2: '忘记密码',
+      tip2: '忘记密码'
     },
     steps: {
       step: '步骤',
-      stepDesc: '步骤描述',
+      stepDesc: '步骤描述'
     },
     uploader: {
       xmlError: '对不起，您的浏览器不支持本组件！',
       typeError: '不支持上传该类型文件',
-      limitError: '文件大小超过限制',
-    },
-  },
+      limitError: '文件大小超过限制'
+    }
+  }
 };
 
 Vue.config.lang = 'zn-CH';

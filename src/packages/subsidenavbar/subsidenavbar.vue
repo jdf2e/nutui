@@ -15,20 +15,20 @@ export default {
   props: {
     title: {
       type: String,
-      default: '',
+      default: ''
     },
     ikey: {
       type: [String, Number],
-      default: '',
+      default: ''
     },
     open: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   data() {
     return {
-      direction: '',
+      direction: ''
     };
   },
   mounted() {
@@ -38,7 +38,7 @@ export default {
     handleClick() {
       this.$emit('titleClick');
       this.direction = !this.direction ? 'up' : '';
-    },
-  },
+    }
+  }
 };
 </script>

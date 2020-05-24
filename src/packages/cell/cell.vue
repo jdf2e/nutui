@@ -31,43 +31,43 @@ export default {
   props: {
     title: {
       type: String,
-      default: '',
+      default: ''
     },
     subTitle: {
       type: String,
-      default: '',
+      default: ''
     },
     desc: {
       type: String,
-      default: '',
+      default: ''
     },
     isLink: {
       type: Boolean,
-      default: false,
+      default: false
     },
     linkUrl: {
       type: String,
-      default: 'javascript:void(0)',
+      default: 'javascript:void(0)'
     },
     showIcon: {
       type: Boolean,
-      default: false,
+      default: false
     },
     bgColor: {
       type: String,
-      default: '#fff',
+      default: '#fff'
     },
     to: {
       type: String,
-      default: '',
+      default: ''
     },
     target: {
       type: String,
-      default: '_self',
-    },
+      default: '_self'
+    }
   },
   components: {
-    'nut-icon': Icon,
+    'nut-icon': Icon
   },
   data() {
     return {};
@@ -79,7 +79,7 @@ export default {
     jumpPage() {
       if (!this.to) return false;
       this.$router.push(this.to);
-    },
-  },
+    }
+  }
 };
 </script>

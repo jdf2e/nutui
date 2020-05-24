@@ -13,78 +13,78 @@ export default {
   props: {
     name: {
       type: String,
-      default: '',
+      default: ''
     },
     url: {
       type: String,
-      default: '',
+      default: ''
     },
     multiple: {
       type: Boolean,
-      default: false,
+      default: false
     },
     isPreview: {
       type: Boolean,
-      default: false,
+      default: false
     },
     maxSize: {
       type: Number,
-      default: 5242880,
+      default: 5242880
     },
     acceptType: {
       type: Array,
       default() {
         return ['image/jpeg', 'image/png', 'image/gif', 'image/bmp'];
-      },
+      }
     },
     selfData: {
       type: Object,
       default() {
         return {};
-      },
+      }
     },
     attach: {
       type: Object,
       default() {
         return {};
-      },
+      }
     },
     headers: {
       type: Object,
       default() {
         return {};
-      },
+      }
     },
     changeEvtCallback: {
-      type: Function,
+      type: Function
     },
     beforeUpload: {
-      type: Function,
+      type: Function
     },
     xhrState: {
       type: Number,
-      default: 200,
+      default: 200
     },
     clearInput: {
       type: Boolean,
-      default: false,
+      default: false
     },
     xmlError: {
       type: String,
-      default: '',
+      default: ''
     },
     typeError: {
       type: String,
-      default: '',
+      default: ''
     },
     limitError: {
       type: String,
-      default: '',
+      default: ''
     },
     withCredentials: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {};
@@ -121,7 +121,7 @@ export default {
         },
         onFailure(file, responseTxt) {
           _this.$emit('failure', file, responseTxt);
-        },
+        }
       };
     },
     uploadData($event, selfData = {}) {
@@ -166,7 +166,7 @@ export default {
       formData.append(tar.name, tar.files[0]);
       opt.formData = formData;
       opt.headers = this.headers || {};
-      opt.showMsgFn = (msg) => {
+      opt.showMsgFn = msg => {
         this.$emit('showMsg', msg);
       };
       new Uploader(opt);
@@ -186,7 +186,7 @@ export default {
       } else {
         this.uploadData($event);
       }
-    },
-  },
+    }
+  }
 };
 </script>

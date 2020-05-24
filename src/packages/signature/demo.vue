@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       lineWidth: 4,
-      strokeStyle: 'green',
+      strokeStyle: 'green'
     };
   },
   computed: {},
@@ -44,8 +44,8 @@ export default {
       if (img) {
         img.remove();
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -1,7 +1,7 @@
 import CheckBoxGroup from './checkboxgroup.vue';
 import './checkboxgroup.scss';
 
-CheckBoxGroup.install = function (Vue) {
+CheckBoxGroup.install = function(Vue) {
   Vue.component(CheckBoxGroup.name, CheckBoxGroup);
 };
 

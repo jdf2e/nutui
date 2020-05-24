@@ -45,8 +45,8 @@ export default {
   methods: {
     activeAvatar(event) {
       console.log('点击了头像', event);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

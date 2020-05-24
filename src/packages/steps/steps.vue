@@ -8,25 +8,25 @@ export default {
   name: 'nut-steps',
   props: {
     current: {
-      type: Number,
+      type: Number
     },
     source: {
       type: Array,
       default() {
         return [];
-      },
+      }
     },
     status: {
       validator(value) {
         return ['wait', 'process', 'finish', 'error'].includes(value);
       },
-      default: 'process',
-    },
+      default: 'process'
+    }
   },
   data() {
     return {
       steps: [],
-      stepOffset: 0,
+      stepOffset: 0
     };
   },
   methods: {
@@ -59,10 +59,10 @@ export default {
     },
     init() {
       if (this.$slots.default) {
-        this.steps = this.$slots.default.filter((vnode) => !!vnode.componentInstance).map((node) => node.componentInstance);
+        this.steps = this.$slots.default.filter(vnode => !!vnode.componentInstance).map(node => node.componentInstance);
         this.updateChildProps(true);
       }
-    },
+    }
   },
   mounted() {
     this.init();
@@ -75,7 +75,7 @@ export default {
       this.$nextTick(() => {
         this.init();
       });
-    },
-  },
+    }
+  }
 };
 </script>

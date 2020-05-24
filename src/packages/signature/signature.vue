@@ -17,24 +17,24 @@ export default {
   props: {
     customClass: {
       type: String,
-      default: '',
+      default: ''
     },
     lineWidth: {
       type: Number,
-      default: 2,
+      default: 2
     },
     strokeStyle: {
       type: String,
-      default: '#000',
+      default: '#000'
     },
     type: {
       type: String,
-      default: 'png',
+      default: 'png'
     },
     unSupportTpl: {
       type: String,
-      default: '对不起，当前浏览器不支持Canvas，无法使用本控件！',
-    },
+      default: '对不起，当前浏览器不支持Canvas，无法使用本控件！'
+    }
   },
   data() {
     return {
@@ -42,17 +42,17 @@ export default {
       canvasWidth: 0,
       ctx: null,
       isSupportTouch: 'ontouchstart' in window,
-      events: 'ontouchstart' in window ? ['touchstart', 'touchmove', 'touchend'] : ['mousedown', 'mousemove', 'mouseup'],
+      events: 'ontouchstart' in window ? ['touchstart', 'touchmove', 'touchend'] : ['mousedown', 'mousemove', 'mouseup']
     };
   },
   components: {
-    'nut-button': NutButton,
+    'nut-button': NutButton
   },
   computed: {
     isCanvasSupported() {
       let elem = document.createElement('canvas');
       return !!(elem.getContext && elem.getContext('2d'));
-    },
+    }
   },
 
   methods: {
@@ -114,7 +114,7 @@ export default {
       }
       this.clear(true);
       this.$emit('confirm', canvas, dataurl);
-    },
+    }
   },
 
   mounted() {
@@ -123,6 +123,6 @@ export default {
       this.canvasWidth = this.$refs.wrap.offsetWidth;
       (this.canvasHeight = this.$refs.wrap.offsetHeight), this.addEvent();
     }
-  },
+  }
 };
 </script>

@@ -56,14 +56,14 @@
 export default {
   data() {
     return {
-      swActive: true,
+      swActive: true
     };
   },
   methods: {
     onChange(status) {
       alert(status);
-    },
-  },
+    }
+  }
 };
 </script>
 

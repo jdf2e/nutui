@@ -29,63 +29,63 @@ import '../icon/icon.scss';
 export default {
   name: 'nut-popup',
   components: {
-    icon: Icon,
+    icon: Icon
   },
   props: {
     value: {
       type: Boolean,
-      default: false,
+      default: false
     },
     position: {
       type: String,
-      default: 'center',
+      default: 'center'
     },
     duration: {
       type: Number,
-      default: 0.3,
+      default: 0.3
     },
     transition: String,
     overlay: {
       type: Boolean,
-      default: true,
+      default: true
     },
     closeable: {
       type: Boolean,
-      default: false,
+      default: false
     },
     closeIconPosition: {
       type: String,
-      default: 'top-right',
+      default: 'top-right'
     },
     closeIcon: {
       type: String,
-      default: 'cross',
+      default: 'cross'
     },
     lockScroll: {
       type: Boolean,
-      default: true,
+      default: true
     },
     closeOnClickOverlay: {
       type: Boolean,
-      default: true,
+      default: true
     },
     overlayClass: {
       type: String,
-      default: '',
+      default: ''
     },
     overlayStyle: {
       type: String,
-      default: '',
+      default: ''
     },
     destroyOnClose: {
       type: Boolean,
-      default: false,
+      default: false
     },
     getContainer: String,
     round: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   created() {
     this.transition ? (this.transitionName = this.transition) : (this.transitionName = `popup-slide-${this.position}`);
@@ -109,19 +109,19 @@ export default {
     position(val) {
       val === 'center' ? (this.transitionName = 'popup-fade') : (this.transitionName = `popup-slide-${this.position}`);
     },
-    getContainer: 'portal',
+    getContainer: 'portal'
   },
   data() {
     return {
       showSlot: true,
       transitionName: 'popup-fade-center',
-      overlayInstant: null,
+      overlayInstant: null
     };
   },
   computed: {
     transitionDuration() {
       return this.duration ? this.duration + 's' : 'initial';
-    },
+    }
   },
   methods: {
     mountOverlay() {
@@ -134,8 +134,8 @@ export default {
               if (this.closeOnClickOverlay) {
                 this.$emit('input', false);
               }
-            },
-          },
+            }
+          }
         });
       }
     },
@@ -146,9 +146,9 @@ export default {
         render(h) {
           return h(Component, {
             props: this.$props,
-            ...data,
+            ...data
           });
-        },
+        }
       });
       instance.duration = this.duration;
       instance.lockScroll = this.lockScroll;
@@ -209,7 +209,7 @@ export default {
       if (container && container !== el.parentNode) {
         container.appendChild(el);
       }
-    },
-  },
+    }
+  }
 };
 </script>

@@ -101,14 +101,14 @@ export default {
       val7: '',
       val8: '',
       val9: '',
-      result: '尚未触发',
+      result: '尚未触发'
     };
   },
 
   mounted() {
     const th = this;
-    this.$nextTick(function () {
-      setTimeout(function () {
+    this.$nextTick(function() {
+      setTimeout(function() {
         th.$refs.myInput.focus();
       }, 2000);
     });
@@ -123,8 +123,8 @@ export default {
 
     submit() {
       this.$refs.myInput.blur();
-    },
-  },
+    }
+  }
 };
 </script>
 

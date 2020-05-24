@@ -90,12 +90,12 @@ export default {
       menuItems: [
         {
           name: '男',
-          value: 0,
+          value: 0
         },
         {
           name: '女',
-          value: 1,
-        },
+          value: 1
+        }
       ],
       sex1: '请选择',
       isVisible1: false,
@@ -104,12 +104,12 @@ export default {
       menuItems2: [
         {
           name: '男',
-          value: 0,
+          value: 0
         },
         {
           name: '女',
-          value: 1,
-        },
+          value: 1
+        }
       ],
       sex3: '请选择',
       isVisible3: false,
@@ -117,21 +117,21 @@ export default {
         {
           name: '男',
           value: 0,
-          disable: false,
+          disable: false
         },
         {
           name: '女',
           value: 1,
-          disable: true,
-        },
+          disable: true
+        }
       ],
       isVisible4: false,
       menuItems4: [
         {
-          name: '确定',
-        },
+          name: '确定'
+        }
       ],
-      isVisible5: false,
+      isVisible5: false
     };
   },
   methods: {
@@ -153,8 +153,8 @@ export default {
 
     chooseItemConstellation(itemParams) {
       this.sex3 = itemParams.title;
-    },
-  },
+    }
+  }
 };
 </script>
 

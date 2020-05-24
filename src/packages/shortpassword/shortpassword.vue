@@ -45,16 +45,16 @@ export default {
   props: {
     visible: {
       type: Boolean,
-      default: false,
+      default: false
     },
     link: {
       type: String,
-      default: 'javascript:;',
+      default: 'javascript:;'
     },
     type: {
       type: String,
-      default: 'bottom',
-    },
+      default: 'bottom'
+    }
   },
   data() {
     return {
@@ -67,33 +67,33 @@ export default {
       fakeInputItems: [
         {
           id: 1,
-          val: '',
+          val: ''
         },
         {
           id: 2,
-          val: '',
+          val: ''
         },
         {
           id: 3,
-          val: '',
+          val: ''
         },
         {
           id: 4,
-          val: '',
+          val: ''
         },
         {
           id: 5,
-          val: '',
+          val: ''
         },
         {
           id: 6,
-          val: '',
-        },
+          val: ''
+        }
       ],
       timer: null,
       isCenter: this.type == 'bottom' ? false : true,
       layerTran: this.type == 'bottom' ? 'popup' : 'fade',
-      show: false,
+      show: false
     };
   },
   watch: {
@@ -106,7 +106,7 @@ export default {
       } else {
         this.show = val;
       }
-    },
+    }
   },
   methods: {
     closeLayer() {
@@ -139,28 +139,28 @@ export default {
             this.fakeInputItems = [
               {
                 id: 1,
-                val: '',
+                val: ''
               },
               {
                 id: 2,
-                val: '',
+                val: ''
               },
               {
                 id: 3,
-                val: '',
+                val: ''
               },
               {
                 id: 4,
-                val: '',
+                val: ''
               },
               {
                 id: 5,
-                val: '',
+                val: ''
               },
               {
                 id: 6,
-                val: '',
-              },
+                val: ''
+              }
             ];
           }, 300);
         }
@@ -178,12 +178,12 @@ export default {
           this.fakeInputItems[i].val = '';
         }
       }
-    },
+    }
   },
   computed: {},
   mounted() {},
   destroyed() {
     this.timer = null;
-  },
+  }
 };
 </script>

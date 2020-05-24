@@ -24,7 +24,7 @@
               <nut-checkbox
                 v-model="item.selected"
                 size="small"
-                :disabled="!item.selected && max <= list.filter((value) => value.selected == true).length ? true : false"
+                :disabled="!item.selected && max <= list.filter(value => value.selected == true).length ? true : false"
                 >{{ item.text }}</nut-checkbox
               >
             </li>
@@ -79,20 +79,20 @@ import Button from '../button/button.vue';
 import ButtonGroup from '../buttongroup/buttongroup.vue';
 import Icon from '../icon/icon.vue';
 import locale from '../../mixins/locale';
-const lockMaskScroll = ((bodyCls) => {
+const lockMaskScroll = (bodyCls => {
   let scrollTop;
   return {
-    afterOpen: function () {
+    afterOpen: function() {
       scrollTop = document.scrollingElement.scrollTop || document.body.scrollTop;
       document.body.classList.add(bodyCls);
       document.body.style.top = -scrollTop + 'px';
     },
-    beforeClose: function () {
+    beforeClose: function() {
       if (document.body.classList.contains(bodyCls)) {
         document.body.classList.remove(bodyCls);
         document.scrollingElement.scrollTop = scrollTop;
       }
-    },
+    }
   };
 })('dialog-open');
 export default {
@@ -102,57 +102,57 @@ export default {
     'nut-button': Button,
     'nut-button-group': ButtonGroup,
     'nut-checkbox': CheckBox,
-    'nut-icon': Icon,
+    'nut-icon': Icon
   },
   props: {
     isAnimation: {
       //是否有动画效果
       type: Boolean,
-      default: false,
+      default: false
     },
     isVisible: {
       //是否显示
       type: Boolean,
-      default: false,
+      default: false
     },
     type: {
       //单选 simple  多选  multiple
       type: String,
-      default: 'simple',
+      default: 'simple'
     },
     col: {
       //显示的列数
       type: [Number, String],
-      default: 1,
+      default: 1
     },
     mulstyle: {
       //多选样式,支持三种多选样式 style1 style2 style3
       type: [String],
-      default: 'style1',
+      default: 'style1'
     },
     max: {
       type: [String, Number],
-      default: 5,
+      default: 5
     },
     custom: {
       type: String,
-      default: '',
+      default: ''
     },
     list: {
       type: Array,
       default: () => {
         return [];
-      },
-    },
+      }
+    }
   },
   watch: {
     isVisible(val) {
       lockMaskScroll[val ? 'afterOpen' : 'beforeClose']();
-    },
+    }
   },
   data() {
     return {
-      datalist: [],
+      datalist: []
     };
   },
   mounted() {
@@ -164,7 +164,7 @@ export default {
     },
     resetBtnTxt() {
       return this.nutTranslate('lang.menu.resetBtnTxt');
-    },
+    }
   },
   methods: {
     clickMenuMask() {
@@ -177,7 +177,7 @@ export default {
       if (!this.datalist[index].selected) {
         //判断设置的最大可选项
         let count = 0;
-        this.datalist.forEach((item) => {
+        this.datalist.forEach(item => {
           if (item.selected) count++;
         });
         if (count >= this.max) {
@@ -194,7 +194,7 @@ export default {
     sureMenu() {
       this.$emit('close');
       this.$emit('ok', this.datalist);
-    },
-  },
+    }
+  }
 };
 </script>

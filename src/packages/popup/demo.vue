@@ -55,14 +55,14 @@ export default {
       showRound: false,
       showIconPosition: false,
       showCloseIcon: false,
-      getContainer: false,
+      getContainer: false
     };
   },
   methods: {
     show() {
       this.isShow = true;
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

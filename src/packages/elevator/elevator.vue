@@ -47,39 +47,39 @@ export default {
   props: {
     otherHeight: {
       type: Number,
-      default: '60',
+      default: '60'
     },
     dataArray: {
       type: Array,
-      required: true,
+      required: true
     },
     navHeight: {
       type: Number,
-      default: '40',
+      default: '40'
     },
     hiddenTime: {
       type: Number,
-      default: '10',
+      default: '10'
     },
     showIndicator: {
       type: Boolean,
-      default: true,
+      default: true
     },
     initIndex: {
       type: Number,
-      default: '0',
-    },
+      default: '0'
+    }
   },
   computed: {
-    navListHeight: function () {
+    navListHeight: function() {
       return this.navHeight;
-    },
+    }
   },
   data() {
     return {
       wrapHeight: '40',
       currTitle: '',
-      currBox: false,
+      currBox: false
     };
   },
   mounted() {
@@ -153,7 +153,7 @@ export default {
         this.currBox = true;
         this.currTitle = this.dataArray[navIndex].title;
       }
-    },
-  },
+    }
+  }
 };
 </script>

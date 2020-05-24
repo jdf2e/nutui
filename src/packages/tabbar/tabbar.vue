@@ -27,21 +27,21 @@ export default {
       type: Array,
       default: () => {
         return [];
-      },
+      }
     },
     bottom: {
       type: Boolean,
-      default: false,
+      default: false
     },
     type: {
       type: String,
-      default: 'based',
-    },
+      default: 'based'
+    }
   },
   data() {
     return {
       currIndex: null,
-      tabList: this.tabbarList,
+      tabList: this.tabbarList
     };
   },
   watch: {
@@ -49,15 +49,15 @@ export default {
       handler(value) {
         this.tabList = value;
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   methods: {
-    switchTabs: function (value, index) {
+    switchTabs: function(value, index) {
       this.currIndex = index;
       this.$emit('tab-switch', value, index);
       this.$emit('tabSwitch', value, index); //兼容以前驼峰法
-    },
-  },
+    }
+  }
 };
 </script>

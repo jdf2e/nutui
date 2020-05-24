@@ -52,11 +52,11 @@ export default {
         radius: 50,
         strokeOutWidth: 10,
         backColor: '#d9d9d9',
-        progressColor: 'red',
+        progressColor: 'red'
       },
       percent: 50,
       strokeInnerWidth: 10,
-      isAuto: true,
+      isAuto: true
     };
   },
   methods: {
@@ -74,8 +74,8 @@ export default {
         return;
       }
       this.percent -= 10;
-    },
-  },
+    }
+  }
 };
 </script>
 

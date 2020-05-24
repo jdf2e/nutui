@@ -88,7 +88,7 @@ export default {
       page2: 2,
       timers: null,
       scrollTo: 1,
-      scrollToHor: 1,
+      scrollToHor: 1
     };
   },
 
@@ -167,12 +167,12 @@ export default {
         this.listData2 = new Array(10);
         this.page2 = 2;
       }, 300);
-    },
+    }
   },
 
   destroyed() {
     clearTimeout(this.timer);
-  },
+  }
 };
 </script>
 

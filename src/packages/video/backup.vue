@@ -45,7 +45,7 @@ export default {
     src: '',
     playsinline: {
       type: Boolean,
-      default: false,
+      default: false
     },
     sources: Array,
     options: {
@@ -60,11 +60,11 @@ export default {
           muted: false, //是否静音
           disabled: false, //禁止操作
           playsinline: false, //行内展示
-          touchPlay: false,
+          touchPlay: false
         };
       },
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
@@ -74,12 +74,12 @@ export default {
       // 视频容器元素
       player: {
         $player: null,
-        pos: null,
+        pos: null
       },
       // progress进度条元素
       progressBar: {
         progressElm: null, // 进度条DOM对象
-        pos: null,
+        pos: null
       },
       // video控制显示设置
       videoSet: {
@@ -88,8 +88,8 @@ export default {
         totalTime: '00:00', // 总时间
         progress: {
           width: 0, // 进度条长度
-          current: 0, // 进度条当前位置
-        },
+          current: 0 // 进度条当前位置
+        }
       },
       state: {
         contrlShow: false,
@@ -99,9 +99,9 @@ export default {
         playing: false, //是否正在播放
         isLoading: false,
         isEnd: false,
-        isError: false,
+        isError: false
       },
-      showTouchMask: false,
+      showTouchMask: false
     };
   },
   watch: {
@@ -113,12 +113,12 @@ export default {
           });
         }
       },
-      immediate: true,
+      immediate: true
     },
     options: {
       handler(val) {},
-      immediate: true,
-    },
+      immediate: true
+    }
   },
   mounted() {
     this.init();
@@ -244,10 +244,10 @@ export default {
       this.videoSet.loaded = (this.videoElm.buffered.end(0) / this.videoElm.duration) * 100;
     },
     getTime() {
-      this.videoElm.addEventListener('durationchange', (e) => {
+      this.videoElm.addEventListener('durationchange', e => {
         console.log(e);
       });
-      this.videoElm.addEventListener('progress', (e) => {
+      this.videoElm.addEventListener('progress', e => {
         this.videoSet.loaded = (-1 + this.videoElm.buffered.end(0) / this.videoElm.duration) * 100;
       });
       this.videoSet.len = this.videoElm.duration;
@@ -260,8 +260,8 @@ export default {
       console.log('error');
       this.state.isError = false;
       this.init();
-    },
+    }
   },
-  beforeDestroy() {},
+  beforeDestroy() {}
 };
 </script>

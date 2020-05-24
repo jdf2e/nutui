@@ -30,20 +30,20 @@ export default {
   props: {
     progress: {
       type: [Number, String],
-      required: true,
+      required: true
     },
     strokeInnerWidth: {
       type: [Number, String],
-      default: 10,
+      default: 10
     },
     isAuto: {
       tyep: Boolean,
-      default: false,
+      default: false
     },
     progressOption: {
       type: Object,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
   data() {
     return {};
@@ -66,14 +66,14 @@ export default {
         radius: 50,
         strokeOutWidth: 10,
         backColor: '#d9d9d9',
-        progressColor: 'red',
+        progressColor: 'red'
       };
       Object.assign(baseOption, this.progressOption);
       // 圆心位置自动生成
       baseOption.cy = baseOption.cx = baseOption.radius + baseOption.strokeOutWidth;
       baseOption.size = (baseOption.radius + baseOption.strokeOutWidth) * 2;
       return baseOption;
-    },
-  },
+    }
+  }
 };
 </script>

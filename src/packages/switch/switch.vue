@@ -9,21 +9,21 @@ export default {
   props: {
     active: {
       type: Boolean,
-      default: false,
+      default: false
     },
     size: {
       type: String,
-      default: 'base',
+      default: 'base'
     },
     disabled: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
       isActive: false,
-      isAnimating: false,
+      isAnimating: false
     };
   },
   created() {
@@ -32,7 +32,7 @@ export default {
   watch: {
     active(newVal) {
       this.isActive = newVal;
-    },
+    }
   },
   methods: {
     toggle() {
@@ -47,7 +47,7 @@ export default {
         this.$emit('update:active', this.isActive);
         this.isAnimating = false;
       }, 300);
-    },
-  },
+    }
+  }
 };
 </script>

@@ -11,23 +11,23 @@ export default {
     type: {
       validator(value) {
         return this.oneOf(value, ['flex']);
-      },
+      }
     },
     align: {
       validator(value) {
         return this.oneOf(value, ['top', 'middle', 'bottom']);
-      },
+      }
     },
     justify: {
       validator(value) {
         return this.oneOf(value, ['start', 'end', 'center', 'space-around', 'space-between']);
-      },
+      }
     },
     gutter: {
       type: Number,
-      default: 0,
+      default: 0
     },
-    className: String,
+    className: String
   },
   computed: {
     classes() {
@@ -37,8 +37,8 @@ export default {
           [`${prefixCls}-${this.type}`]: !!this.type,
           [`${prefixCls}-${this.type}-${this.align}`]: !!this.align,
           [`${prefixCls}-${this.type}-${this.justify}`]: !!this.justify,
-          [`${this.className}`]: !!this.className,
-        },
+          [`${this.className}`]: !!this.className
+        }
       ];
     },
     styles() {
@@ -46,11 +46,11 @@ export default {
       if (this.gutter !== 0) {
         style = {
           marginLeft: this.gutter / -2 + 'px',
-          marginRight: this.gutter / -2 + 'px',
+          marginRight: this.gutter / -2 + 'px'
         };
       }
       return style;
-    },
+    }
   },
   methods: {
     oneOf(value, validList) {
@@ -80,10 +80,10 @@ export default {
       return children;
     },
     findBrothersComponents(context, componentName, exceptMe = true) {
-      let res = context.$parent.$children.filter((item) => {
+      let res = context.$parent.$children.filter(item => {
         return item.$options.name === componentName;
       });
-      let index = res.findIndex((item) => item._uid === context._uid);
+      let index = res.findIndex(item => item._uid === context._uid);
       if (exceptMe) res.splice(index, 1);
       return res;
     },
@@ -93,18 +93,18 @@ export default {
       const Col = this.findComponentDownward(this, 'iCol');
       const Cols = this.findBrothersComponents(Col, 'iCol', false);
       if (Cols.length) {
-        Cols.forEach((child) => {
+        Cols.forEach(child => {
           if (val !== 0) {
             child.gutter = val;
           }
         });
       }
-    },
+    }
   },
   watch: {
     gutter(val) {
       this.updateGutter(val);
-    },
-  },
+    }
+  }
 };
 </script>

@@ -93,8 +93,8 @@ export default {
   methods: {
     handleClick() {
       console.log('触发回到顶部');
-    },
-  },
+    }
+  }
 };
 </script>
 

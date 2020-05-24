@@ -142,7 +142,7 @@ export default {
       time: '01:07',
       time1: '09:06:02',
       time2: '10:30',
-      amOrPm: 'PM',
+      amOrPm: 'PM'
     };
   },
   methods: {
@@ -167,8 +167,8 @@ export default {
     },
     setChooseValue5(param) {
       this.time2 = param[2];
-    },
-  },
+    }
+  }
 };
 </script>
 

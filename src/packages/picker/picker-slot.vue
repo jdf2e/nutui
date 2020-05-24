@@ -29,19 +29,19 @@ export default {
   props: {
     listData: {
       type: Array,
-      required: true,
+      required: true
     },
     defaultValue: {
-      type: String | Number,
+      type: String | Number
     },
     keyIndex: {
       type: Number,
-      default: 0,
+      default: 0
     },
     isUpdate: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
@@ -49,25 +49,25 @@ export default {
         startY: 0,
         endY: 0,
         startTime: 0,
-        endTime: 0,
+        endTime: 0
       },
       currIndex: 1,
       transformY: 0,
       scrollDistance: 0,
       lineSpacing: 36,
       rotation: 20,
-      timer: null,
+      timer: null
     };
   },
   watch: {
-    isUpdate: function () {
+    isUpdate: function() {
       this.transformY = 0;
       this.modifyStatus();
     },
-    defaultValue: function () {
+    defaultValue: function() {
       this.transformY = 0;
       this.modifyStatus();
-    },
+    }
   },
   methods: {
     updateTransform(value) {
@@ -186,7 +186,7 @@ export default {
       let move = index === -1 ? 0 : index * this.lineSpacing;
       type && this.setChooseValue(-move);
       this.setMove(-move);
-    },
+    }
   },
 
   mounted() {
@@ -204,6 +204,6 @@ export default {
     this.$el.removeEventListener('touchmove', this.touchMove);
     this.$el.removeEventListener('touchend', this.touchEnd);
     clearTimeout(this.timer);
-  },
+  }
 };
 </script>

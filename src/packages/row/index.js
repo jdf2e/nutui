@@ -1,7 +1,7 @@
 import Row from './row.vue';
 import './row.scss';
 
-Row.install = function (Vue) {
+Row.install = function(Vue) {
   Vue.component(Row.name, Row);
 };
 

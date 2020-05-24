@@ -11,6 +11,6 @@ export default {
 
         parentCpt = parent.$parent;
       }
-    },
-  },
+    }
+  }
 };

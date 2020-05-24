@@ -4,7 +4,6 @@ dist/
 npm-debug.log
 yarn-error.log
 .nyc_output/
-.vscode/
 coverage/
 sites/doc/view
 sites/doc/page

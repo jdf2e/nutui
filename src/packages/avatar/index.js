@@ -1,7 +1,7 @@
 import Avatar from './avatar.vue';
 import './avatar.scss';
 
-Avatar.install = function (Vue) {
+Avatar.install = function(Vue) {
   Vue.component(Avatar.name, Avatar);
 };
 

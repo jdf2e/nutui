@@ -1,7 +1,7 @@
 import Switch from './switch.vue';
 import './switch.scss';
 
-Switch.install = function (Vue) {
+Switch.install = function(Vue) {
   Vue.component(Switch.name, Switch);
 };
 

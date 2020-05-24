@@ -1,6 +1,6 @@
 import TextBox from './textbox.vue';
 import './textbox.scss';
-TextBox.install = function (Vue) {
+TextBox.install = function(Vue) {
   Vue.component(TextBox.name, TextBox);
 };
 
