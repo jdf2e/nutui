@@ -8,3 +8,4 @@
 package.json
 lib/plugin/cli/site/doc/page
 lib/plugin/cli/site/doc/view
+node_modules
