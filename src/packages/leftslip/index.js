@@ -1,7 +1,7 @@
-import LeftSlip from "./leftslip.vue";
-import "./leftslip.scss";
+import LeftSlip from './leftslip.vue';
+import './leftslip.scss';
 
-LeftSlip.install = function(Vue) {
+LeftSlip.install = function (Vue) {
   Vue.component(LeftSlip.name, LeftSlip);
 };
 

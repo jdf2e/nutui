@@ -1,62 +1,63 @@
 <template>
-    <div class="nut-tabbar" :class="{'bottom':bottom}">
-        <a class="tabbar-nav" 
-        v-for="(value,index) in tabList" 
-        :class="[{'curr':index == currIndex},type]"
-        :key="value.tabTitle"
-        v-on:click="switchTabs(value,index)"
-        :href="value.href"
-        >   
-        <span class="icon-box">
-            <b class="tips num" v-if="value.num&&value.num<=99">{{value.num}}</b>
-            <b class="tips" v-else-if="value.num&&value.num>100">{{'...'}}</b>
-            <template v-if="value.icon">
-                <div class="icon" :style="{backgroundImage: `url(${index == currIndex ?value.activeIcon:value.icon})`}"></div>
-            </template>
-            <span :class="['tabbar-nav-word',{'big-word':!value.icon}]">{{value.tabTitle}}</span>
-        </span>
-        </a>
-    </div>
+  <div class="nut-tabbar" :class="{ bottom: bottom }">
+    <a
+      class="tabbar-nav"
+      v-for="(value, index) in tabList"
+      :class="[{ curr: index == currIndex }, type]"
+      :key="value.tabTitle"
+      v-on:click="switchTabs(value, index)"
+      :href="value.href"
+    >
+      <span class="icon-box">
+        <b class="tips num" v-if="value.num && value.num <= 99">{{ value.num }}</b>
+        <b class="tips" v-else-if="value.num && value.num > 100">{{ '...' }}</b>
+        <template v-if="value.icon">
+          <div class="icon" :style="{ backgroundImage: `url(${index == currIndex ? value.activeIcon : value.icon})` }"></div>
+        </template>
+        <span :class="['tabbar-nav-word', { 'big-word': !value.icon }]">{{ value.tabTitle }}</span>
+      </span>
+    </a>
+  </div>
 </template>
 <script>
 export default {
-    name:'nut-tabbar',
-    props: {
-        'tabbarList':{
-            type:Array,
-            default:()=>{
-                return [];
-            }
-        },
-        'bottom':{
-            type:Boolean,
-            default:false
-        },
-        'type':{
-            type:String,
-            default:'based'
-        }
+  name: 'nut-tabbar',
+  props: {
+    tabbarList: {
+      type: Array,
+      default: () => {
+        return [];
+      },
     },
-    data() {
-        return {
-          currIndex:null,
-          tabList:this.tabbarList
-        };
+    bottom: {
+      type: Boolean,
+      default: false,
     },
-    watch:{
-       tabbarList:{
-           handler(value){
-            this.tabList = value;
-           },
-           deep:true
-       }
+    type: {
+      type: String,
+      default: 'based',
     },
-    methods: {
-        switchTabs:function(value,index){
-            this.currIndex = index;
-            this.$emit('tab-switch',value,index); 
-            this.$emit('tabSwitch',value,index); //兼容以前驼峰法
-        }
+  },
+  data() {
+    return {
+      currIndex: null,
+      tabList: this.tabbarList,
+    };
+  },
+  watch: {
+    tabbarList: {
+      handler(value) {
+        this.tabList = value;
+      },
+      deep: true,
     },
-}
+  },
+  methods: {
+    switchTabs: function (value, index) {
+      this.currIndex = index;
+      this.$emit('tab-switch', value, index);
+      this.$emit('tabSwitch', value, index); //兼容以前驼峰法
+    },
+  },
+};
 </script>

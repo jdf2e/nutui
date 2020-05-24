@@ -1,6 +1,6 @@
 <template>
   <transition name="popup-fade">
-    <div 
+    <div
       @touchmove.stop="touchmove"
       :style="{ animationDuration: `${duration}s`, customStyle }"
       v-show="show"
@@ -11,21 +11,21 @@
 </template>
 <script>
 export default {
-  name: "nut-popup-mask",
+  name: 'nut-popup-mask',
 
   props: {
     lockScroll: { type: Boolean, default: true },
     show: { type: Boolean, default: false },
     duration: Number,
-    className: { type: String, default: "" },
-    customStyle: { type: String, default: "" },
+    className: { type: String, default: '' },
+    customStyle: { type: String, default: '' },
   },
-  methods:{
-    touchmove(e){
-      if(this.lockScroll){
+  methods: {
+    touchmove(e) {
+      if (this.lockScroll) {
         e.preventDefault();
       }
-    }
-  }
+    },
+  },
 };
 </script>

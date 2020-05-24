@@ -8,7 +8,7 @@
         </span>
       </nut-cell>
     </div>
-    
+
     <h4>组合使用Radio</h4>
     <div>
       <nut-cell>
@@ -16,7 +16,7 @@
           <nut-radio v-model="radioVal1" :label="1">备选项1</nut-radio>
           <nut-radio v-model="radioVal1" :label="2">备选项2</nut-radio>
         </span>
-        <div slot="desc">radioVal1: {{radioVal1}}</div>
+        <div slot="desc">radioVal1: {{ radioVal1 }}</div>
       </nut-cell>
     </div>
     <p>组合使用 Radio 时推荐使用 radiogroup 组件，见下方示例</p>
@@ -36,14 +36,10 @@
     <h4>Radio禁用</h4>
     <div>
       <nut-cell>
-        <span slot="title">
-          未选中时的禁用状态：<nut-radio :disabled="true" v-model="radioVal2" label="禁用">备选项1</nut-radio>
-        </span>
+        <span slot="title"> 未选中时的禁用状态：<nut-radio :disabled="true" v-model="radioVal2" label="禁用">备选项1</nut-radio> </span>
       </nut-cell>
       <nut-cell>
-        <span slot="title">
-          已选中时的禁用状态：<nut-radio :disabled="true" v-model="radioVal2" label="选中且禁用">备选项2</nut-radio>
-        </span>
+        <span slot="title"> 已选中时的禁用状态：<nut-radio :disabled="true" v-model="radioVal2" label="选中且禁用">备选项2</nut-radio> </span>
       </nut-cell>
     </div>
 
@@ -141,32 +137,26 @@
 export default {
   data() {
     return {
-      radioVal:1,
+      radioVal: 1,
       radioVal1: 2,
-      radioVal2: "选中且禁用",
-      radioVal3: "b",
-      radioVal4: "b",
-      radioVal5: "a",
-      radioGroupVal1:"b",
-      radioGroupVal2:"2",
-      radioGroupVal3:"2",
-      radioGroupVal4:"c",
+      radioVal2: '选中且禁用',
+      radioVal3: 'b',
+      radioVal4: 'b',
+      radioVal5: 'a',
+      radioGroupVal1: 'b',
+      radioGroupVal2: '2',
+      radioGroupVal3: '2',
+      radioGroupVal4: 'c',
     };
   },
-  methods: {
-  }
+  methods: {},
 };
 </script>
 
 <style lang="scss">
 .nut-radio.my-radio {
   input:checked {
-    background-image: radial-gradient(
-      circle,
-      #fff 0%,
-      #fff 50%,
-      $primary-color 60%
-    );
+    background-image: radial-gradient(circle, #fff 0%, #fff 50%, $primary-color 60%);
     background-size: 50% 50%;
     border: none;
   }

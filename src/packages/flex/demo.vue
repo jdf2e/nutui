@@ -36,7 +36,7 @@
           <div class="flex-content">span:6</div>
         </nut-col>
         <nut-col :span="myValue">
-          <div class="flex-content flex-content-light">span:{{myValue}}</div>
+          <div class="flex-content flex-content-light">span:{{ myValue }}</div>
         </nut-col>
       </nut-row>
     </div>
@@ -305,15 +305,15 @@
 <script>
 export default {
   data() {
-      return {
-          myValue:6
-      };
+    return {
+      myValue: 6,
+    };
   },
-  methods:{
-    text(){
+  methods: {
+    text() {
       this.myValue++;
-    }
-  }
+    },
+  },
 };
 </script>
 

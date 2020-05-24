@@ -1,13 +1,9 @@
 <template>
-  <transition
-    :name="transitionName"
-    @after-enter="$emit('opened')"
-    @after-leave="$emit('closed')"
-  >
+  <transition :name="transitionName" @after-enter="$emit('opened')" @after-leave="$emit('closed')">
     <div
       ref="popupBox"
       v-show="value"
-      :style="{animationDuration:transitionDuration}"
+      :style="{ animationDuration: transitionDuration }"
       class="popup-box"
       :class="[`popup-${position}`, { round }]"
       @click="$emit('click', this)"
@@ -26,78 +22,78 @@
   </transition>
 </template>
 <script>
-import Vue from "vue";
-import overlay from "./overlay.vue";
+import Vue from 'vue';
+import overlay from './overlay.vue';
 import Icon from '../icon/icon.vue';
 import '../icon/icon.scss';
 export default {
-  name: "nut-popup",
-  components:{
-      "icon":Icon
+  name: 'nut-popup',
+  components: {
+    icon: Icon,
   },
   props: {
     value: {
       type: Boolean,
-      default: false
+      default: false,
     },
     position: {
       type: String,
-      default: "center"
+      default: 'center',
     },
     duration: {
       type: Number,
-      default:0.3
+      default: 0.3,
     },
     transition: String,
     overlay: {
       type: Boolean,
-      default: true
+      default: true,
     },
     closeable: {
       type: Boolean,
-      default: false
+      default: false,
     },
     closeIconPosition: {
       type: String,
-      default: "top-right"
+      default: 'top-right',
     },
     closeIcon: {
       type: String,
-      default: "cross"
+      default: 'cross',
     },
-    lockScroll:{
-        type:Boolean,
-        default:true
+    lockScroll: {
+      type: Boolean,
+      default: true,
     },
-    closeOnClickOverlay:{
-        type:Boolean,
-        default:true
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: true,
     },
     overlayClass: {
-        type:String,
-        default:""
+      type: String,
+      default: '',
     },
     overlayStyle: {
-        type:String,
-        default:""
+      type: String,
+      default: '',
     },
-    destroyOnClose:{
+    destroyOnClose: {
       type: Boolean,
-      default: false
+      default: false,
     },
-    getContainer:String,
+    getContainer: String,
     round: {
       type: Boolean,
-      default: false
-    }
-  }, 
-  created() { 
-    this.transition ? this.transitionName = this.transition :this.transitionName = `popup-slide-${this.position}`;
+      default: false,
+    },
+  },
+  created() {
+    this.transition ? (this.transitionName = this.transition) : (this.transitionName = `popup-slide-${this.position}`);
   },
   mounted() {
     this.mountOverlay();
     if (this.getContainer) {
-        this.portal();
+      this.portal();
     }
     if (this.value) {
       this.open();
@@ -105,54 +101,54 @@ export default {
   },
   watch: {
     value(val) {
-      const type = val ? "open" : "close";
+      const type = val ? 'open' : 'close';
       if (this.overlay) {
         this[type]();
       }
     },
     position(val) {
-      val === "center" ? this.transitionName = "popup-fade" :this.transitionName = `popup-slide-${this.position}`;
+      val === 'center' ? (this.transitionName = 'popup-fade') : (this.transitionName = `popup-slide-${this.position}`);
     },
-    getContainer: 'portal'
+    getContainer: 'portal',
   },
   data() {
     return {
-      showSlot:true,
-      transitionName: "popup-fade-center",
-      overlayInstant: null
+      showSlot: true,
+      transitionName: 'popup-fade-center',
+      overlayInstant: null,
     };
   },
-  computed:{
-    transitionDuration(){ 
+  computed: {
+    transitionDuration() {
       return this.duration ? this.duration + 's' : 'initial';
-    }
-  },
-  methods: {    
-    mountOverlay(){
-      if (!this.overlayInstant) {
-        this.overlayInstant = this.mount(overlay, { 
-          duration: this.duration,
-          nativeOn: {
-            click: () => { 
-              this.$emit("click-overlay", this);
-              if(this.closeOnClickOverlay){
-                  this.$emit("input", false);
-              }              
-            }
-          }
-        });
-      } 
     },
-    mount(Component, data) {   
+  },
+  methods: {
+    mountOverlay() {
+      if (!this.overlayInstant) {
+        this.overlayInstant = this.mount(overlay, {
+          duration: this.duration,
+          nativeOn: {
+            click: () => {
+              this.$emit('click-overlay', this);
+              if (this.closeOnClickOverlay) {
+                this.$emit('input', false);
+              }
+            },
+          },
+        });
+      }
+    },
+    mount(Component, data) {
       const instance = new Vue({
-        el: document.createElement("div"),
+        el: document.createElement('div'),
         props: Component.props,
         render(h) {
           return h(Component, {
             props: this.$props,
-            ...data
+            ...data,
           });
-        }
+        },
       });
       instance.duration = this.duration;
       instance.lockScroll = this.lockScroll;
@@ -163,7 +159,7 @@ export default {
         el.parentNode.insertBefore(instance.$el, el);
       } else {
         document.body.appendChild(instance.$el);
-      } 
+      }
       return instance;
     },
 
@@ -174,47 +170,46 @@ export default {
         this.overlayInstant.show = true;
         this.showSlot = true;
       }
-   
-     if (this.lockScroll && !this.locked) {
-             
+
+      if (this.lockScroll && !this.locked) {
         document.body.classList.add('nut-overflow-hidden');
         this.locked = true;
-     }
-     
-      this.$emit("open", this);
+      }
+
+      this.$emit('open', this);
     },
     close() {
       this.overlayInstant.show = false;
-      if(this.destroyOnClose){
-        setTimeout(()=>{ 
-        this.showSlot = false;
-      }, this.duration * 1000)
+      if (this.destroyOnClose) {
+        setTimeout(() => {
+          this.showSlot = false;
+        }, this.duration * 1000);
       }
-      
-      if (this.lockScroll && this.locked) {                
-        document.body.classList.remove('nut-overflow-hidden');  
-        this.locked = false;      
+
+      if (this.lockScroll && this.locked) {
+        document.body.classList.remove('nut-overflow-hidden');
+        this.locked = false;
       }
-      this.$emit("close", this);
+      this.$emit('close', this);
     },
-    getElement(selector){    
+    getElement(selector) {
       return document.querySelector(selector);
     },
     portal() {
-        const { getContainer } = this;
-        const el = this.$el;
+      const { getContainer } = this;
+      const el = this.$el;
 
-        let container;
-        if (getContainer) {
-          container = this.getElement(getContainer);
-        } else if (this.$parent) {
-          container = this.$parent.$el;
-        }
-
-        if (container && container !== el.parentNode) {
-          container.appendChild(el);
-        }
+      let container;
+      if (getContainer) {
+        container = this.getElement(getContainer);
+      } else if (this.$parent) {
+        container = this.$parent.$el;
       }
-  }
+
+      if (container && container !== el.parentNode) {
+        container.appendChild(el);
+      }
+    },
+  },
 };
 </script>

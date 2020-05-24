@@ -1,23 +1,23 @@
 @keyframes nutDropIn {
-    0% {
-        opacity: 0;
-        transform: scaleY(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: scaleY(1);
-    }
+  0% {
+    opacity: 0;
+    transform: scaleY(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
 }
 
 @keyframes nutDropOut {
-    0% {
-        opacity: 1;
-        transform: scaleY(1);
-    }
-    100% {
-        opacity: 0;
-        transform: scaleY(0.8);
-    }
+  0% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0.8);
+  }
 }
 
 // select、dropdown

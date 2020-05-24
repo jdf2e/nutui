@@ -6,7 +6,7 @@
         <span slot="title">
           <nut-checkbox v-model="checkbox1" @change="changeBox1">选项</nut-checkbox>
         </span>
-        <span slot="desc">复选按钮checked：{{checkbox1}}</span>
+        <span slot="desc">复选按钮checked：{{ checkbox1 }}</span>
       </nut-cell>
     </div>
 
@@ -66,20 +66,20 @@
         <span slot="title">
           <nut-checkbox v-model="checkbox9" :label="'change事件'" @change="checkboxChange">备选项</nut-checkbox>
         </span>
-        <span slot="desc">{{result}}</span>
+        <span slot="desc">{{ result }}</span>
       </nut-cell>
       <p>值发生变化时，将触发change事件</p>
       <nut-cell>
         <span slot="title">
           <nut-checkbox v-model="checkbox10" :label="'选项值1'" @change="getChange">change事件</nut-checkbox>
         </span>
-        <span slot="desc">{{result2}}</span>
+        <span slot="desc">{{ result2 }}</span>
       </nut-cell>
       <nut-cell>
         <span slot="title">
           <nut-checkbox v-model="checkbox11" :label="'选项值2'" @change="getChange2">change事件</nut-checkbox>
         </span>
-        <span slot="desc">{{result3}}</span>
+        <span slot="desc">{{ result3 }}</span>
       </nut-cell>
       <p>设置label时，可获取选项label值</p>
     </div>
@@ -104,9 +104,9 @@
 export default {
   data() {
     return {
-      result: "",
-      result2: "",
-      result3: "",
+      result: '',
+      result2: '',
+      result3: '',
       checkbox1: false,
       checkbox2: false,
       checkbox3: true,
@@ -119,7 +119,7 @@ export default {
       checkbox10: true,
       checkbox11: false,
       checkbox12: true,
-      checkbox13: false
+      checkbox13: false,
     };
   },
   methods: {
@@ -131,24 +131,19 @@ export default {
       console.log(state, 333, val);
     },
     getChange(state, val) {
-      this.result2 = "选中状态：" + state + "，选项：" + val;
+      this.result2 = '选中状态：' + state + '，选项：' + val;
     },
     getChange2(state, val) {
-      this.result3 = "选中状态：" + state + "，选项：" + val;
-    }
-  }
+      this.result3 = '选中状态：' + state + '，选项：' + val;
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 .nut-checkbox.my-checkbox {
   input:checked {
-    background-image: radial-gradient(
-      circle,
-      #fff 0%,
-      #fff 100%,
-      $primary-color 60%
-    );
+    background-image: radial-gradient(circle, #fff 0%, #fff 100%, $primary-color 60%);
     background-size: 50% 50%;
     border: none;
   }

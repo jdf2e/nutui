@@ -1,12 +1,12 @@
 import Vue from 'vue';
 
 declare class UIComponent extends Vue {
-	static install(vue: typeof Vue): void;
+  static install(vue: typeof Vue): void;
 }
 
 export interface InstallationOptions {
-	locale?: any;
-	lang?: any;
+  locale?: any;
+  lang?: any;
 }
 
 export const version: string;

@@ -1,8 +1,8 @@
 import LuckDraw from './luckdraw.vue';
 import './luckdraw.scss';
 
-LuckDraw.install = function(Vue) {
+LuckDraw.install = function (Vue) {
   Vue.component(LuckDraw.name, LuckDraw);
 };
 
-export default LuckDraw
+export default LuckDraw;

@@ -9,4 +9,4 @@ SideNavBar.install = function (Vue) {
   Vue.component(Sidenavbaritem.name, Sidenavbaritem);
   Vue.component(Icon.name, Icon);
 };
-export default SideNavBar
+export default SideNavBar;

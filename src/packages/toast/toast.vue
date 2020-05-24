@@ -6,7 +6,7 @@
       v-if="visible"
       :style="{
         bottom: center ? 'auto' : bottom + 'px',
-        'background-color': coverColor
+        'background-color': coverColor,
       }"
       @click="clickCover"
     >
@@ -14,16 +14,12 @@
         class="nut-toast-inner"
         :style="{
           'text-align': textAlignCenter ? 'center' : 'left',
-          'background-color': bgColor
+          'background-color': bgColor,
         }"
       >
         <span v-if="hasIcon" class="nut-toast-icon-wrapper">
           <i
-            :class="[
-              'nut-toast-icon',
-              type,
-              { 'nut-toast-icon-rotate': type === 'loading' && loadingRotate }
-            ]"
+            :class="['nut-toast-icon', type, { 'nut-toast-icon-rotate': type === 'loading' && loadingRotate }]"
             :style="{ 'background-image': cusIcon }"
           ></i>
         </span>
@@ -34,30 +30,30 @@
 </template>
 <script>
 export default {
-  name: "nut-toast",
+  name: 'nut-toast',
   props: {},
   data() {
     return {
-      id: "",
-      msg: "",
+      id: '',
+      msg: '',
       visible: false,
       duration: 2000, //显示时间(毫秒)
       timer: null,
       center: true,
-      type: "",
-      customClass: "",
+      type: '',
+      customClass: '',
       bottom: 30,
-      size: "base",
+      size: 'base',
       icon: null,
       textAlignCenter: true,
       loadingRotate: true,
-      bgColor: "rgba(46, 46, 46, 0.7)",
+      bgColor: 'rgba(46, 46, 46, 0.7)',
       onClose: null,
       textTimer: null,
       cover: false,
-      coverColor: "rgba(0, 0, 0, 0)",
+      coverColor: 'rgba(0, 0, 0, 0)',
       timeStamp: null,
-      closeOnClickOverlay: false
+      closeOnClickOverlay: false,
     };
   },
   watch: {
@@ -65,30 +61,30 @@ export default {
       if (val) {
         this.show();
       }
-    }
+    },
   },
   computed: {
     cusIcon() {
-      return this.icon ? `url("${this.icon}")` : "";
+      return this.icon ? `url("${this.icon}")` : '';
     },
     toastClass() {
       return [
-        "nut-toast",
-        { "nut-toast-center": this.center },
-        { "nut-toast-has-icon": this.hasIcon },
-        { "nut-toast-cover": this.cover },
-        { "nut-loading": this.type == "loading" },
+        'nut-toast',
+        { 'nut-toast-center': this.center },
+        { 'nut-toast-has-icon': this.hasIcon },
+        { 'nut-toast-cover': this.cover },
+        { 'nut-loading': this.type == 'loading' },
         this.customClass,
-        "nut-toast-" + this.size
+        'nut-toast-' + this.size,
       ];
     },
     hasIcon() {
-      if (this.type !== "text") {
+      if (this.type !== 'text') {
         return true;
       } else {
         return this.cusIcon;
       }
-    }
+    },
   },
   methods: {
     show(force) {
@@ -108,10 +104,10 @@ export default {
       } else {
         this.textTimer = setTimeout(() => {
           clearTimeout(this.textTimer);
-          this.msg = "";
+          this.msg = '';
         }, 300);
       }
-      typeof this.onClose === "function" && this.onClose();
+      typeof this.onClose === 'function' && this.onClose();
     },
     clearTimer() {
       if (this.timer) {
@@ -121,13 +117,13 @@ export default {
     },
     clickCover() {
       if (this.closeOnClickOverlay) {
-          this.hide();
+        this.hide();
       }
-    }
+    },
   },
   destroyed() {
     this.textTimer = null;
     this.timer = null;
-  }
+  },
 };
 </script>
