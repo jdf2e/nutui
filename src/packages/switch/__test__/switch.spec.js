@@ -84,4 +84,11 @@ describe('Switch.vue', () => {
         });
     });
 
+    it("接受label标记", () => {
+        wrapper.setProps({ label: 'a' });
+        return Vue.nextTick().then(function() {
+          expect(wrapper.vm.label).toBe('a');
+        });
+      });
+
 });

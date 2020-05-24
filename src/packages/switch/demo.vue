@@ -43,6 +43,13 @@
         </div>
         <p>禁用状态下，change事件参数永远为初始值</p>
 
+        <h4>循环场景</h4>
+        <div v-for="(item, index) of list" :key="index">
+            <nut-cell>
+                <span slot="title"> {{ item.name }}</span>
+                <span slot="desc"><nut-switch :label="item.id" @change="onChangeLabel" :active="true"></nut-switch></span>
+            </nut-cell>
+        </div>
         <h4>自定义Class</h4>
         <div>
             <nut-cell>
@@ -56,12 +63,20 @@
 export default {
   data() {
     return {
-      swActive: true
+      swActive: true,
+      list:[
+        {id:'1',name:'a'},
+        {id:'2',name:'b'},
+        {id:'3',name:'c'}
+        ]
     };
   },
   methods: {
     onChange(status) {
       alert(status);
+    },
+    onChangeLabel(status,label){
+      alert('status:'+status+',selected:'+label);
     }
   }
 };

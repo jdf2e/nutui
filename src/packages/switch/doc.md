@@ -56,12 +56,14 @@ export default {
 ```javascript
 export default {
   methods: {
-    onChange(status) {
-      alert(status);
+    onChange(status,label) {
+      alert('status:'+status+',selected:'+label);
     }
   }
 };
 ```
+## label参数
+
 
 ## 禁用状态
 ```html
@@ -85,7 +87,8 @@ export default {
 ## Prop
 
 | 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
+|----- | ----- | ----- | -----
 | active | 开关状态 | Boolean | false
 | size | 尺寸，可选值small/base/large | String | base
 | disabled | 是否禁用 | Boolean | false
+| label | 标记值,用于onChange(status,label) | String | false
