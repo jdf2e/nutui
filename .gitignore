@@ -5,6 +5,7 @@ npm-debug.log
 yarn-error.log
 .nyc_output/
 coverage/
+.vscode/
 sites/doc/view
 sites/doc/page
 package-lock.json
