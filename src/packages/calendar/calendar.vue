@@ -83,6 +83,14 @@ export default {
   watch: {
     isVisible(newValue, oldValue) {
       this.childIsVisible = newValue;
+    },
+    defaultValue: {
+      handler(oldValue, val) {
+        if (val) {
+          this.resetRender();
+        }
+      },
+      immediate: true
     }
   },
   data() {
@@ -102,8 +110,6 @@ export default {
       transformY: 0,
       scrollDistance: 0,
       defaultData: null,
-      startData: this.startDate ? this.splitDate(this.startDate) : null,
-      endData: this.endDate ? this.splitDate(this.endDate) : null,
       chooseData: [],
       monthsData: [],
       dayPrefix: 'nut-calendar-month-day'
@@ -387,6 +393,8 @@ export default {
     },
 
     initData() {
+      this.startData = this.startDate ? this.splitDate(this.startDate) : null;
+      this.endData = this.endDate ? this.splitDate(this.endDate) : null;
       if (!this.defaultValue) {
         this.currDate = this.isRange ? [Utils.date2Str(new Date()), Utils.getDay(2)] : Utils.date2Str(new Date());
       } else {
