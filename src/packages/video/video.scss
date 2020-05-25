@@ -66,6 +66,14 @@
     width: 100%;
     z-index: 11111111;
     align-items: center;
+    opacity: 0;
+    transition: all 1s;
+    &.show-control {
+      opacity: 1;
+    }
+    &.hide-control {
+      opacity: 0;
+    }
     .control-play-btn {
       width: 18px;
       height: 18px;
@@ -76,7 +84,16 @@
       background-repeat: no-repeat;
       background-position: center;
       margin: 0 10px;
+      &.puase {
+        background-image: -webkit-image-set(
+          url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmZmZmIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik02IDE5aDRWNUg2djE0em04LTE0djE0aDRWNWgtNHoiLz4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KPC9zdmc+Cg==)
+            1x
+        );
+        background-repeat: no-repeat;
+        background-position: center;
+      }
     }
+
     .duration-time,
     .current-time {
       color: #fff;

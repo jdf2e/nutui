@@ -55,29 +55,25 @@
     <nut-backtop @click="handleClick"></nut-backtop>
     <nut-backtop :bottom="120" :is-animation="false" @click="handleClick">
       <div
-        style="
-          background-color: rgb(0, 0, 0);
-          color: rgb(255, 255, 255);
-          display: flex;
-          height: 44px;
-          width: 44px;
-          align-items: center;
-          justify-content: center;
-        "
+        style="background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    display: flex;
+    height: 44px;
+    width: 44px;
+    align-items: center;
+    justify-content: center;"
         >无</div
       >
     </nut-backtop>
     <nut-backtop :bottom="70" @click="handleClick">
       <div
-        style="
-          background-color: rgb(0, 0, 0);
-          color: rgb(255, 255, 255);
-          display: flex;
-          height: 44px;
-          width: 44px;
-          align-items: center;
-          justify-content: center;
-        "
+        style="background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    display: flex;
+    height: 44px;
+    width: 44px;
+    align-items: center;
+    justify-content: center;"
         >Top</div
       >
     </nut-backtop>

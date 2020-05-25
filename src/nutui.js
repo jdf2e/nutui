@@ -185,14 +185,14 @@ const packages = {
   SubSideNavBar: SubSideNavBar,
   SideNavBarItem: SideNavBarItem,
   Drag: Drag,
-  Address: Address,
+  Address: Address
 };
 
 const components = {};
 const methods = {};
 const filters = {};
 const directives = {};
-pkgList.map((item) => {
+pkgList.map(item => {
   const pkg = packages[item.name];
   if (!pkg) return;
 
@@ -213,7 +213,7 @@ pkgList.map((item) => {
   }
 });
 
-const install = function (Vue, opts = {}) {
+const install = function(Vue, opts = {}) {
   if (install.installed) return;
 
   if (opts.locale) {
@@ -251,7 +251,7 @@ const install = function (Vue, opts = {}) {
 
   Vue.use(Lazyload, {
     lazyComponent: true,
-    loading: '//img12.360buyimg.com/imagetools/jfs/t1/73967/28/14561/916/5dc142e4E0666555b/bf33454553c6035e.png',
+    loading: '//img12.360buyimg.com/imagetools/jfs/t1/73967/28/14561/916/5dc142e4E0666555b/bf33454553c6035e.png'
   });
 };
 
@@ -269,5 +269,5 @@ export default {
   ...components,
   ...filters,
   ...directives,
-  ...methods,
+  ...methods
 };

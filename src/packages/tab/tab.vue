@@ -4,7 +4,7 @@
       <div v-if="positionNav == 'right' || positionNav == 'bottom'" class="nut-tab-item" ref="items">
         <slot></slot>
       </div>
-      <div :class="titleCLass">
+      <div :class="titleClass" ref="navlist">
         <b v-if="isShowLine" :class="navBarClass" :style="navBarStyle"></b>
         <span
           v-for="(value, index) in tabTitleList"
@@ -27,6 +27,10 @@
 export default {
   name: 'nut-tab',
   props: {
+    isScroll: {
+      type: Boolean,
+      default: false
+    },
     isShowLine: {
       type: Boolean,
       default: true
@@ -70,7 +74,7 @@ export default {
     positionNavCss: function() {
       if (this.positionNav === 'left' || this.positionNav === 'right') return true;
     },
-    titleCLass: function() {
+    titleClass: function() {
       if (this.positionNav == 'top') {
         return 'nut-tab-title';
       }
@@ -84,9 +88,16 @@ export default {
     },
     titleNavList: function() {
       if (this.positionNav == 'top' || this.positionNav == 'bottom') {
+        if (this.isScroll) {
+          return 'nut-title-nav-scroll';
+        }
         return 'nut-title-nav-list';
+      } else {
+        if (this.isScroll) {
+          return 'nut-title-vertical-scroll';
+        }
+        return 'nut-title-nav-' + this.positionNav + 'nav';
       }
-      return 'nut-title-nav-' + this.positionNav + 'nav';
     },
     navBarStyle: function() {
       if (this.positionNav === 'top' || this.positionNav === 'bottom') {
@@ -94,12 +105,11 @@ export default {
           transform: `translateX(${this.initX}px)`,
           width: this.navWidth + 'px'
         };
-      } else {
-        return {
-          transform: `translateY(${this.initX}px)`,
-          height: this.navWidth + 'px'
-        };
       }
+      return {
+        transform: `translateY(${this.initX}px)`,
+        height: this.navWidth + 'px'
+      };
     }
   },
   mounted() {
@@ -136,7 +146,12 @@ export default {
         }
       }
       this.$nextTick(() => {
-        this.getTabWidth();
+        if (this.positionNav == 'top' || this.positionNav == 'bottom') {
+          this.navWidth = this.$refs.navlist.querySelector('.nut-title-nav').offsetWidth;
+        } else {
+          this.navWidth = this.$refs.navlist.querySelector('.nut-title-nav').offsetHeight;
+        }
+        this.initX = parseInt(this.navWidth * this.defIndex);
       });
     },
     getStyle: function(obj, styleName) {
@@ -148,23 +163,6 @@ export default {
       } else {
         return getComputedStyle(obj, null)[styleName];
       }
-    },
-    getTabWidth: function() {
-      if (this.positionNav == 'top' || this.positionNav == 'bottom') {
-        let tabTitle = document.querySelector('.nut-tab-title');
-        let tabWidth = this.getStyle(tabTitle, 'width');
-        this.setInitX(tabWidth);
-      } else {
-        let tabTitle = document.querySelector('.nut-tab-title-leftnav') || document.querySelector('.nut-tab-title-rightnav');
-        let tabWidth = this.getStyle(tabTitle, 'height');
-        this.setInitX(tabWidth);
-      }
-    },
-    setInitX(tabWidth) {
-      let tabWidthNum = tabWidth.substring(0, tabWidth.length - 2);
-      let navBarWidth = tabWidthNum / this.tabTitleList.length;
-      this.navWidth = navBarWidth;
-      this.initX = parseInt(this.navWidth * this.defIndex);
     },
     findParent(event, myclass) {
       let parentCpt = event.target;

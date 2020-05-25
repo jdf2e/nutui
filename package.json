@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "一套轻量级移动端Vue组件库",
   "typings": "dist/types/index.d.ts",
   "main": "dist/nutui.js",
@@ -21,8 +21,8 @@
     "test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config node_modules/@nutui/cli/dist_cli/webpack/test.config.js  --require node_modules/@nutui/cli/dist_cli/test/setup.js src/packages/*/__test__/**.spec.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "test:watch": "npm run test --watch",
-    "prettier:check": "prettier -l {lib,src}/**/**/*.{ts,js,vue,scss}",
-    "prettier:fix": "prettier --write {lib,src}/**/**/*.{ts,js,vue,scss}"
+    "prettier:check": "prettier -l src/**/*.{ts,js,vue,scss}",
+    "prettier:fix": "prettier --write src/**/*.{ts,js,vue,scss}"
   },
   "repository": {
     "type": "git",

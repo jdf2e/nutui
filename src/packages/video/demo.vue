@@ -89,7 +89,8 @@ export default {
         muted: true,
         disabled: true,
         playsinline: true,
-        loop: true
+        loop: true,
+        controls: false
       }
     };
   },

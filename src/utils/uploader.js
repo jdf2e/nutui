@@ -19,7 +19,7 @@ class IdaUploader {
       readyState: 4,
       xmlError: null,
       typeError: null,
-      limitError: null,
+      limitError: null
     };
     Object.assign(this.options, settings);
     this[this.options.isPreview ? 'preview' : 'uploader']();
@@ -29,7 +29,7 @@ class IdaUploader {
       return func.bind(this);
     } else {
       console.warn(func + 'is not a function!');
-      return function () {};
+      return function() {};
     }
   }
   showMsg(msg) {
@@ -67,7 +67,7 @@ class IdaUploader {
     const file = this.options.previewData;
     if (!this.check(file)) return;
     const reader = new FileReader();
-    reader.onload = (e) => {
+    reader.onload = e => {
       this.uploader();
       this.triggerFunc.call(this.options, this.options.onPreview)(e.target.result);
     };
@@ -81,12 +81,12 @@ class IdaUploader {
     if (xhr.upload) {
       xhr.upload.addEventListener(
         'progress',
-        (e) => {
+        e => {
           this.triggerFunc.call(options, options.onProgress)(formData, e.loaded, e.total);
         },
         false
       );
-      xhr.onreadystatechange = (e) => {
+      xhr.onreadystatechange = e => {
         if (xhr.readyState === 4) {
           if (xhr.status === options.xhrState) {
             this.triggerFunc.call(options, options.onSuccess)(formData, xhr.responseText);

@@ -48,14 +48,20 @@
   line-height: 48px;
   box-sizing: border-box;
   position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 .nav-bar {
   position: absolute;
   height: 2px;
-  bottom: -2px;
+  bottom: 0px;
   left: 0px;
+  z-index: 2;
   background: $primary-color;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .nut-tab-title-leftnav {
   border-right: 1px solid #ededed;
@@ -64,13 +70,20 @@
   background: #fff;
   flex-direction: column;
   position: relative;
+  height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   .nav-bar-left {
     position: absolute;
     width: 2px;
-    right: -2px;
+    right: 0px;
     top: 0px;
+    z-index: 2;
     background: $primary-color;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
   .nut-title-nav {
     border: 0;
@@ -78,23 +91,34 @@
   }
   .nut-tab-active {
     background: #fff;
+    //   a{
+    //     color: red;
+    //   }
   }
 }
 .nut-tab-title-rightnav {
   background: #fff;
-  border: 1px solid #fff;
+  // border: 1px solid #fff;
   border-left: 1px solid #ededed;
   width: 100px;
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 200px;
+  box-sizing: border-box;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   .nav-bar-right {
     position: absolute;
     width: 2px;
-    left: -2px;
+    left: 0px;
     top: 0px;
+    z-index: 2;
     background: $primary-color;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 }
 .nut-tab-link {
@@ -105,6 +129,8 @@
   font-size: 12px;
   text-decoration: none;
   line-height: 1;
+  width: 100%;
+  height: 100%;
 }
 .nut-tab-title-bottomnav {
   border: 1px solid #fff;
@@ -115,13 +141,19 @@
   line-height: 49px;
   box-sizing: border-box;
   position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   .nav-bar-bottom {
     position: absolute;
     height: 2px;
     left: 0px;
-    top: -2px;
+    top: 0px;
+    z-index: 2;
     background: $primary-color;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 }
 
@@ -151,6 +183,26 @@
   align-items: center;
   position: relative;
 }
+.nut-title-nav-scroll {
+  min-width: 100px;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background: #fff;
+  box-sizing: border-box;
+}
+.nut-title-vertical-scroll {
+  min-height: 55px;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background: #fff;
+  box-sizing: border-box;
+}
 .nut-tab-icon {
   display: inline-block;
   margin-right: 5px;
@@ -162,6 +214,9 @@
 .nut-tab-active {
   background: #fff;
   border: 0;
+  // a{
+  //     color: red;
+  // }
 }
 .nut-tab-item {
   height: 200px;
