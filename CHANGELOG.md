@@ -1,3 +1,21 @@
+## 2.2.5
+
+`2020-05-25`
+
+* :sparkles: feat(Address)：新增地址组件 @yangxiaolu1993
+* :sparkles: upd(Popup)：优化内部代码、单元测试 @yangkaixuan
+* :sparkles: upd(LeftSlip)：重构优化代码 #229 @vickyYE
+* :sparkles: upd(Video)：修复自定义蒙层 @vickyYE
+* :sparkles: upd(Tab)：优化内部代码，支持多页签滑动 @zhenyulei
+* :bug: fix(Range)：stage 失效、控制器重叠问题 #242 @undo03
+* :bug: fix(CountDown)：修复 startTime 异步更新问题@undo03
+* :bug: fix(Icon)：修复 url 异步更新问题 @richard1015
+* :bug: fix(Swiper)：修复 cdn 模式下 event 事件失效问题 @richard1015
+* :bug: fix(Dialog)：修复标签使用时，取消按钮无效 @guoxiao158
+* :zap: doc：nutui-demo、user-case jdf2e 地址库更换 @richard1015
+* :zap: doc：补充 rate js 文档 @richard1015
+* :zap: doc：补充 switch demo 文档 @zjyau
+
 ## 2.2.4
 
 `2020-04-29`
