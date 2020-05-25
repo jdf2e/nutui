@@ -27,18 +27,8 @@ import NoticeBar from './packages/noticebar/index.js';
 import './packages/noticebar/noticebar.scss';
 import Switch from './packages/switch/index.js';
 import './packages/switch/switch.scss';
-import Slider from './packages/slider/index.js';
-import './packages/slider/slider.scss';
-import Range from './packages/range/index.js';
-import './packages/range/range.scss';
 import Picker from './packages/picker/index.js';
 import './packages/picker/picker.scss';
-import Progress from './packages/progress/index.js';
-import './packages/progress/progress.scss';
-import Price from './packages/price/index.js';
-import './packages/price/price.scss';
-import Flex from './packages/flex/index.js';
-import './packages/flex/flex.scss';
 import Col from './packages/col/index.js';
 import './packages/col/col.scss';
 import Row from './packages/row/index.js';
@@ -51,14 +41,8 @@ import Badge from './packages/badge/index.js';
 import './packages/badge/badge.scss';
 import Rate from './packages/rate/index.js';
 import './packages/rate/rate.scss';
-import Swiper from './packages/swiper/index.js';
-import './packages/swiper/swiper.scss';
-import Menu from './packages/menu/index.js';
-import './packages/menu/menu.scss';
 import Stepper from './packages/stepper/index.js';
 import './packages/stepper/stepper.scss';
-import ButtonGroup from './packages/buttongroup/index.js';
-import './packages/buttongroup/buttongroup.scss';
 import SearchBar from './packages/searchbar/index.js';
 import './packages/searchbar/searchbar.scss';
 import ImagePicker from './packages/imagepicker/index.js';
@@ -69,18 +53,10 @@ import RadioGroup from './packages/radiogroup/index.js';
 import './packages/radiogroup/radiogroup.scss';
 import CheckBox from './packages/checkbox/index.js';
 import './packages/checkbox/checkbox.scss';
-import CheckBoxGroup from './packages/checkboxgroup/index.js';
-import './packages/checkboxgroup/checkboxgroup.scss';
-import ShortPassword from './packages/shortpassword/index.js';
-import './packages/shortpassword/shortpassword.scss';
 import Skeleton from './packages/skeleton/index.js';
 import './packages/skeleton/skeleton.scss';
 import Scroller from './packages/scroller/index.js';
 import './packages/scroller/scroller.scss';
-import BackTop from './packages/backtop/index.js';
-import './packages/backtop/backtop.scss';
-import CountDown from './packages/countdown/index.js';
-import './packages/countdown/countdown.scss';
 import InfiniteLoading from './packages/infiniteloading/index.js';
 import './packages/infiniteloading/infiniteloading.scss';
 import Uploader from './packages/uploader/index.js';
@@ -89,39 +65,19 @@ import TextInput from './packages/textinput/index.js';
 import './packages/textinput/textinput.scss';
 import Avatar from './packages/avatar/index.js';
 import './packages/avatar/avatar.scss';
-import Lazyload from './packages/lazyload/index.js';
-import './packages/textbox/textbox.scss';
 import TextBox from './packages/textbox/index.js';
-import Elevator from './packages/elevator/index.js';
-import './packages/elevator/elevator.scss';
 import Popup from './packages/popup/index.js';
 import LeftSlip from './packages/leftslip/index.js';
 import './packages/leftslip/leftslip.scss';
 import TabSelect from './packages/tabselect/index.js';
 import './packages/tabselect/tabselect.scss';
 import './packages/popup/popup.scss';
-import LuckDraw from './packages/luckdraw/index.js';
-import './packages/luckdraw/luckdraw.scss';
-import Video from './packages/video/index.js';
-import './packages/video/video.scss';
-import Signature from './packages/signature/index.js';
-import './packages/signature/signature.scss';
-import CircleProgress from './packages/circleprogress/index.js';
-import './packages/circleprogress/circleprogress.scss';
-import TimeLine from './packages/timeline/index.js';
-import './packages/timeline/timeline.scss';
-import TimeLineItem from './packages/timelineitem/index.js';
-import './packages/timelineitem/timelineitem.scss';
 import SideNavBar from './packages/sidenavbar/index.js';
 import './packages/sidenavbar/sidenavbar.scss';
 import SubSideNavBar from './packages/subsidenavbar/index.js';
 import './packages/subsidenavbar/subsidenavbar.scss';
 import SideNavBarItem from './packages/sidenavbaritem/index.js';
 import './packages/sidenavbaritem/sidenavbaritem.scss';
-import Drag from './packages/drag/index.js';
-import './packages/drag/drag.scss';
-// import VueQr from "./packages/qart/index.js";
-// import "./packages/qart/qart.scss";
 import Address from './packages/address/index.js';
 import './packages/address/address.scss';
 
@@ -139,52 +95,33 @@ const packages = {
   NavBar,
   NoticeBar,
   Switch,
-  Slider,
   Range,
   Picker,
-  Progress,
-  Price,
-  Flex,
   Col,
   Row,
   Steps,
   Button,
   Badge,
   Rate,
-  Swiper,
-  Menu,
   Stepper,
-  ButtonGroup,
   SearchBar,
   ImagePicker,
   Radio,
   RadioGroup,
   CheckBox,
-  CheckBoxGroup,
-  ShortPassword,
   Skeleton,
   Scroller,
-  BackTop,
-  CountDown,
   InfiniteLoading,
   Uploader,
   TextInput,
   TextBox,
   Avatar,
-  Elevator,
   Popup,
   LeftSlip,
   TabSelect: TabSelect,
-  LuckDraw: LuckDraw,
-  Video: Video,
-  Signature: Signature,
-  CircleProgress: CircleProgress,
-  TimeLine: TimeLine,
-  TimeLineItem: TimeLineItem,
   SideNavBar: SideNavBar,
   SubSideNavBar: SubSideNavBar,
   SideNavBarItem: SideNavBarItem,
-  Drag: Drag,
   Address: Address
 };
 
@@ -248,11 +185,6 @@ const install = function(Vue, opts = {}) {
       Vue.directive(directives[cptName].name, directives[cptName]);
     }
   }
-
-  Vue.use(Lazyload, {
-    lazyComponent: true,
-    loading: '//img12.360buyimg.com/imagetools/jfs/t1/73967/28/14561/916/5dc142e4E0666555b/bf33454553c6035e.png'
-  });
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
@@ -263,9 +195,6 @@ export default {
   version,
   locale,
   install,
-  Lazyload,
-  // VueQr,
-
   ...components,
   ...filters,
   ...directives,

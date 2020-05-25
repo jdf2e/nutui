@@ -11,12 +11,6 @@
       <nut-button small disabled>去结算（disabled）</nut-button>
     </div>
 
-    <h4>常规按钮组</h4>
-    <nut-buttongroup>
-      <nut-button type="light">重置</nut-button>
-      <nut-button>确定</nut-button>
-    </nut-buttongroup>
-
     <h4>通栏按钮</h4>
     <div>
       <nut-button block>登录</nut-button>

@@ -56,20 +56,6 @@ export default {
 </nut-button>
 ```
 
-常规按钮组
-
-```html
-<nut-buttongroup>
-  <nut-button 
-    type="light"
-  >
-    重置
-  </nut-button>
-  <nut-button>
-    确定
-  </nut-button>
-</nut-buttongroup>
-```
 
 通栏按钮
 
