@@ -1,17 +1,17 @@
-.nut-tab{
+.nut-tab {
     position: relative;
-    border:1px solid #eee;
+    border: 1px solid #eee;
     padding: 10px;
     font-size: 12px;
-    background:#eee;
-}
-.nut-tab-horizontal{
+    background: #eee;
+  }
+  .nut-tab-horizontal {
     display: flex;
     flex-direction: row;
     position: relative;
-}
-
-.close-btn{
+  }
+  
+  .close-btn {
     position: absolute;
     width: 17px;
     height: 17px;
@@ -24,8 +24,8 @@
     right: 0px;
     top: 0px;
     border-radius: 50%;
-}
-.nut-tab-horizontal .close-btn{
+  }
+  .nut-tab-horizontal .close-btn {
     position: absolute;
     width: 17px;
     height: 17px;
@@ -38,145 +38,201 @@
     right: 0px;
     top: 0px;
     border-radius: 50%;
-}
-.nut-tab-title{
+  }
+  .nut-tab-title {
     //border:1px solid #fff;
-    border-bottom:1px solid #EDEDED;
+    border-bottom: 1px solid #ededed;
     width: 100%;
     display: flex;
     height: 50px;
     line-height: 48px;
     box-sizing: border-box;
-    position: relative;   
-}
-.nav-bar{
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+  }
+  .nav-bar {
     position: absolute;
     height: 2px;
-    bottom: -2px;
+    bottom: 0px;
     left: 0px;
-    background:$primary-color;
-    transition: all 0.4s ease-in-out;
-}
-.nut-tab-title-leftnav{
-    border-right:1px solid #EDEDED;
+    z-index: 2;
+    background: $primary-color;
+    transition: all 0.3s ease-in-out;
+  }
+  .nut-tab-title-leftnav {
+    border-right: 1px solid #ededed;
     width: 100px;
     display: flex;
     background: #fff;
-    flex-direction: column; 
+    flex-direction: column;
     position: relative;
-    .nav-bar-left{
-        position: absolute;
-        width: 2px;
-        right: -2px;
-        top: 0px;
-        background:$primary-color;
-        transition: all 0.4s ease-in-out;
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+        display: none;
     }
-    .nut-title-nav{
-        border:0;
-        border-left:1px solid #F5F7FA;
+    .nav-bar-left {
+      position: absolute;
+      width: 2px;
+      right: 0px;
+      top: 0px;
+      z-index: 2;
+      background: $primary-color;
+      transition: all 0.3s ease-in-out;
     }
-    .nut-tab-active{
-        background: #fff;
+    .nut-title-nav {
+      border: 0;
+      border-left: 1px solid #f5f7fa;
     }
-}
-.nut-tab-title-rightnav{
+    .nut-tab-active {
+      background: #fff;
+    //   a{
+    //     color: red;
+    //   }
+    }
+  }
+  .nut-tab-title-rightnav {
     background: #fff;
-    border:1px solid #fff;
-    border-left:1px solid #EDEDED;
+    // border: 1px solid #fff;
+    border-left: 1px solid #ededed;
     width: 100px;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     position: relative;
-    .nav-bar-right{
-        position: absolute;
-        width: 2px;
-        left: -2px;
-        top: 0px;
-        background:$primary-color;
-        transition: all 0.4s ease-in-out;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 200px;
+    box-sizing: border-box;
+    &::-webkit-scrollbar {
+        display: none;
     }
-}
-.nut-tab-link{
+    .nav-bar-right {
+      position: absolute;
+      width: 2px;
+      left: 0px;
+      top: 0px;
+      z-index:2;
+      background: $primary-color;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+  .nut-tab-link {
     color: #333;
     display: flex;
-    align-items:center;
-    justify-content:center;
-    font-size:12px;
-    text-decoration:none;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    text-decoration: none;
     line-height: 1;
-}
-.nut-tab-title-bottomnav{
-    border:1px solid #fff;
-    border-top:1px solid #EDEDED;
+    width: 100%;
+    height:100%;
+  }
+  .nut-tab-title-bottomnav {
+    border: 1px solid #fff;
+    border-top: 1px solid #ededed;
     width: 100%;
     display: flex;
     height: 50px;
-    line-height: 49px; 
+    line-height: 49px;
     box-sizing: border-box;
     position: relative;
-    .nav-bar-bottom{
-        position: absolute;
-        height: 2px;
-        left: 0px;
-        top: -2px;
-        background:$primary-color;
-        transition: all 0.4s ease-in-out;
+    overflow-x: auto;
+    overflow-y: hidden;
+    &::-webkit-scrollbar {
+        display: none;
     }
-}
-
-.nut-title-nav-list{
+    .nav-bar-bottom {
+      position: absolute;
+      height: 2px;
+      left: 0px;
+      top: 0px;
+      z-index: 2;
+      background: $primary-color;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+  
+  .nut-title-nav-list {
     flex: 1;
     position: relative;
     flex-direction: row;
-    align-items:center;
-    justify-content:center;
+    align-items: center;
+    justify-content: center;
     display: flex;
     background: #fff;
     box-sizing: border-box;
-}
-.nut-title-nav-leftnav{
-    flex:1;
+  }
+  .nut-title-nav-leftnav {
+    flex: 1;
     display: flex;
     padding-left: 5px;
     //justify-content: center;
     align-items: center;
     position: relative;
-}
-.nut-title-nav-rightnav{
-    flex:1;
+  }
+  .nut-title-nav-rightnav {
+    flex: 1;
     display: flex;
     padding-right: 5px;
     justify-content: flex-end;
     align-items: center;
     position: relative;
-}
-.nut-tab-icon{
+  }
+  .nut-title-nav-scroll{
+    min-width: 100px;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background: #fff;
+    box-sizing: border-box;
+  }
+  .nut-title-vertical-scroll{
+    min-height: 55px;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background: #fff;
+    box-sizing: border-box;
+  }
+  .nut-tab-icon {
     display: inline-block;
     margin-right: 5px;
     width: 20px;
     height: 20px;
-    background-repeat: no-repeat; 
-    background-size:100% 100%;
-}
-.nut-tab-active{
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .nut-tab-active {
     background: #fff;
     border: 0;
-}
-.nut-tab-item {  
+    // a{
+    //     color: red;
+    // }
+  }
+  .nut-tab-item {
     height: 200px;
-    border:1px solid #fff;
-    background:#fff;
+    border: 1px solid #fff;
+    background: #fff;
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-    .hide{
-        display: none;
+    .hide {
+      display: none;
     }
-}
-.nut-tab-disable{
+  }
+  .nut-tab-disable {
     background: #e1e1e1 !important;
-}
-.tabbar-nav-word{
-    font-size:$font-size-small;
-}
+  }
+  .tabbar-nav-word {
+    font-size: $font-size-small;
+  }
+  
