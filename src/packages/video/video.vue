@@ -7,7 +7,8 @@
         <div class="playing-mask" ref="touchMask" v-if="showToolbox && !isDisabled" @click="play"></div>
         <div class="nut-video-play-btn" v-if="showToolbox && !isDisabled" ref="palyBtn" v-show="!state.playing"
             @click="play"></div>
-        <div class="nut-video-controller" v-show="showToolbox && !isDisabled">
+        <div class="nut-video-controller" v-show="showToolbox && !isDisabled"
+            :class="{'show-control': !state.playing,'hide-control':state.playing}">
             <div class="control-play-btn" @click="play"></div>
             <div class="current-time">{{ videoSet.displayTime }}</div>
             <div class="progress-container">
@@ -22,7 +23,7 @@
                 </div>
             </div>
             <div class="duration-time">{{ videoSet.totalTime }}</div>
-            <div class="volume" @click="handleMuted"></div>
+            <div class="volume" @click="handleMuted" :class="{'muted':state.isMuted}"></div>
             <div class="fullscreen-icon" @click="fullScreen"></div>
         </div>
         <!-- 错误弹窗 -->
@@ -37,12 +38,12 @@
     export default {
         name: 'nut-video',
         props: {
-            src: '',
-            playsinline: {
-                type: Boolean,
-                default: false
+            sources: {
+                type: Array,
+                default() {
+                    return []
+                }
             },
-            sources: Array,
             options: {
                 type: Object,
                 default() {
@@ -60,6 +61,10 @@
                 },
                 required: true
             },
+            model: {
+                type: String,
+                default: ''
+            }
         },
         data() {
             return {
@@ -87,22 +92,23 @@
                     }
                 },
                 state: {
-                    contrlShow: false,
+                    controlShow: true,
                     vol: 0.5, //音量
                     currentTime: 0, //当前时间
                     fullScreen: false,
                     playing: false, //是否正在播放
                     isLoading: false,
                     isEnd: false,
-                    isError: false
+                    isError: false,
+                    isMuted: false
                 },
-                showTouchMask: false
+                showTouchMask: false,
             };
         },
         computed: {
             isDisabled() {
                 return this.options.disabled
-            },
+            }
 
         },
         watch: {
@@ -118,10 +124,25 @@
             },
             options: {
                 handler(val) {
-
+                    this.state.isMuted = val.muted ? val.muted : false
                 },
                 immediate: true
-            }
+            },
+            // model: {
+            //     handler(val) {
+            //         if (val) {
+            //             if (val == 'custom') {
+            //                 this.state.controlShow = false;
+            //                 this.showToolbox = this.options.controls ? true : false
+            //             }
+            //         } else {
+            //             this.showToolbox = false;
+            //             this.state.controlShow = this.options.controls ? true : false
+            //         }
+            //     },
+            //     immediate: true
+
+            // }
         },
         mounted() {
             this.init();
@@ -172,31 +193,22 @@
                 this.player.pos = $player.getBoundingClientRect();
                 this.progressBar.pos = $progress.getBoundingClientRect();
                 this.videoSet.progress.width = Math.round($progress.getBoundingClientRect().width);
-                console.log(this.progressBar.pos)
             },
             play() {
-                this.state.playing = !this.state.playing;
+
 
                 if (this.options.autoplay && this.options.disabled) {
                     this.state.playing = true;
+                    // this.state.controlShow = false
                     return false;
                 }
+                this.state.playing = !this.state.playing;
                 if (this.videoElm) {
 
-                    // if (this.state.playing) {
-                    //     this.videoElm.play();
-                    //     this.videoElm.addEventListener('ended', this.playEnded);
-                    //     this.$emit('play', this.video);
-                    // } else {
-                    //     this.videoElm.pause();
-                    //     this.$emit('pause', this.video);
-                    // }
                     // 播放状态
                     if (this.state.playing) {
                         try {
-                            // console.log(111)
                             this.videoElm.play();
-                            // this.isPauseTouch = false;
                             // 监听缓存进度
                             this.videoElm.addEventListener('progress', e => {
                                 this.getLoadTime();
@@ -213,23 +225,22 @@
                     }
                     // 停止状态
                     else {
-                        // console.log('pu')
-                        this.isPauseTouch = true;
                         this.videoElm.pause();
                         this.$emit('pause', this.videoElm);
+
                     }
                 }
             },
             // 音量控制
             volumeHandle() {
-                this.state.vol = this.videoElm.volume;
+                this.state.vol = this.options.volume;
             },
             // 静音控制
             handleMuted() {
-
+                this.state.isMuted = !this.state.isMuted
+                this.videoElm.muted = this.state.isMuted
             },
             playEnded() {
-                // console.log('ended')
                 this.state.playing = false;
                 this.state.isEnd = true;
                 this.state.controlBtnShow = true;
@@ -247,7 +258,7 @@
             fullScreen() {
                 if (!this.state.fullScreen) {
                     this.state.fullScreen = true;
-                    this.video.webkitRequestFullScreen();
+                    this.videoElm.webkitRequestFullScreen();
                 } else {
                     this.state.fullScreen = false;
                     document.webkitCancelFullScreen();
@@ -262,7 +273,6 @@
                 // 赋值时长
                 this.videoSet.totalTime = this.timeFormat(this.videoElm.duration);
                 this.videoSet.displayTime = this.timeFormat(this.videoElm.currentTime);
-                // console.log(this.videoSet, this.timeFormat(this.videoElm.duration), this.timeFormat(this.videoElm.currentTime), this.videoSet.progress.current)
             },
             timeFormat(t) {
                 var h = Math.floor(t / 3600);
@@ -287,8 +297,8 @@
             },
             // 获取缓存时间
             getLoadTime() {
-                // console.log('缓存了...',this.videoElm.buffered.end(0));
-                this.videoSet.loaded = (this.videoElm.buffered.end(0) / this.videoElm.duration) * 100;
+                if (this.videoSet.loaded)
+                    this.videoSet.loaded = (this.videoElm.buffered.end(0) / this.videoElm.duration) * 100;
             },
             getTime() {
                 this.videoElm.addEventListener('durationchange', e => {
@@ -302,7 +312,6 @@
             // 拖动播放进度
             touchSlidSrart(e) { },
             touchSlidMove(e) {
-                console.log("触摸中...");
                 let currentX = e.targetTouches[0].pageX;
                 let offsetX = currentX - this.progressBar.pos.left;
                 // 边界检测
@@ -320,7 +329,6 @@
 
             },
             touchSlidEnd(e) {
-                console.log("触摸结束...");
                 let currentX = e.changedTouches[0].pageX;
                 let offsetX = currentX - this.progressBar.pos.left;
                 this.videoSet.progress.current = offsetX;
