@@ -73,7 +73,7 @@
     <h4>禁止选中，默认选中某个标签</h4>
     <h4>如需要更新页面，请将监听变化的数据传入init-data</h4>
 
-    <nut-tab :def-index="defIndex" class="customer-css" @tab-switch="tabSwitch" :contentShow="true" :init-data="disableTabs">
+    <nut-tab :def-index="defIndex" class="customer-css" @tab-switch="tabSwitch" :contentShow="true" :init-data="disableTabs" :is-show-line="false">
       <nut-tab-panel
         v-for="value in disableTabs"
         v-bind:key="value.tabTitle"

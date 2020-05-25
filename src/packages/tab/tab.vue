@@ -4,18 +4,18 @@
       <div v-if="positionNav == 'right' || positionNav == 'bottom'" class="nut-tab-item" ref="items">
         <slot></slot>
       </div>
-      <div :class="titleCLass" ref="navlist">
-        <b v-if="isShowLine" :class="navBarClass" :style="navBarStyle"></b>
-        <span
-          v-for="(value, index) in tabTitleList"
-          :key="index"
-          :class="[titleNavList, 'nut-title-nav', { 'nut-tab-disable': value.disable }, { 'nut-tab-active': activeIndex == index }]"
-        >
-          <a class="nut-tab-link" v-on:click="switchTab(index, $event, value.disable)">
-            <i class="nut-tab-icon" :style="{ backgroundImage: 'url(' + value.iconUrl + ')' }" v-if="value.iconUrl"></i>
-            {{ value.tabTitle }}
-          </a>
-        </span>
+      <div :class="titleClass" ref="navlist">
+          <b v-if="isShowLine" :class="navBarClass" :style="navBarStyle"></b>
+          <span
+            v-for="(value, index) in tabTitleList"
+            :key="index"
+            :class="[titleNavList, 'nut-title-nav', { 'nut-tab-disable': value.disable }, { 'nut-tab-active': activeIndex == index }]"
+          >
+            <a class="nut-tab-link" v-on:click="switchTab(index, $event, value.disable)">
+              <i class="nut-tab-icon" :style="{ backgroundImage: 'url(' + value.iconUrl + ')' }" v-if="value.iconUrl"></i>
+              {{ value.tabTitle }}
+            </a>
+          </span>
       </div>
       <div v-if="positionNav == 'top' || positionNav == 'left'" class="nut-tab-item" ref="items">
         <slot></slot>
@@ -74,7 +74,7 @@ export default {
     positionNavCss: function() {
       if (this.positionNav === 'left' || this.positionNav === 'right') return true;
     },
-    titleCLass: function() {
+    titleClass: function() {
       if (this.positionNav == 'top') {
         return 'nut-tab-title';
       }
