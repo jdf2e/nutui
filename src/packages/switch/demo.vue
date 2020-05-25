@@ -47,7 +47,7 @@
         <div v-for="(item, index) of list" :key="index">
             <nut-cell>
                 <span slot="title"> {{ item.name }}</span>
-                <span slot="desc"><nut-switch :label="item.id" @change="onChangeLabel" :active="true"></nut-switch></span>
+                <span slot="desc"><nut-switch @change="onChangeLabel($event,index)" :active="true"></nut-switch></span>
             </nut-cell>
         </div>
         <h4>自定义Class</h4>
@@ -75,8 +75,8 @@ export default {
     onChange(status) {
       alert(status);
     },
-    onChangeLabel(status,label){
-      alert('status:'+status+',selected:'+label);
+    onChangeLabel(status,index){
+      alert('status:'+status+',selected:'+index);
     }
   }
 };
