@@ -49,15 +49,15 @@ export default {
 ## change事件
 ```html
 <nut-switch 
-  @change="onChange"
+  @change="onChange($event,'1')"
 >
 </nut-switch>
 ```
 ```javascript
 export default {
   methods: {
-    onChange(status) {
-      alert(status);
+    onChange(status,index) {
+      alert('status:'+status+',selected:'+index);
     }
   }
 };
@@ -85,7 +85,7 @@ export default {
 ## Prop
 
 | 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
+|----- | ----- | ----- | -----
 | active | 开关状态 | Boolean | false
 | size | 尺寸，可选值small/base/large | String | base
 | disabled | 是否禁用 | Boolean | false

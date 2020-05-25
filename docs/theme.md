@@ -101,4 +101,4 @@ import '@nutui/nutui/dist/packages/button/button.scss';
 }
 ```
 
-> VueCLI 3 相关Demo 请查看 [NutUI Demo](https://github.com/richard1015/nutui-demo)
+> VueCLI 3 相关Demo 请查看 [NutUI Demo](https://github.com/jdf2e/nutui-demo)

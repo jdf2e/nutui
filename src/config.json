@@ -581,7 +581,7 @@
       "desc": "定义时间轴节点",
       "type": "component",
       "sort": "0",
-      "showDemo": false,
+      "showDemo": true,
       "author": "yangxiaolu"
     },
     {

@@ -120,8 +120,8 @@ import SideNavBarItem from "./packages/sidenavbaritem/index.js";
 import "./packages/sidenavbaritem/sidenavbaritem.scss";
 import Drag from "./packages/drag/index.js";
 import "./packages/drag/drag.scss";
-import VueQr from "./packages/qart/index.js";
-import "./packages/qart/qart.scss";
+// import VueQr from "./packages/qart/index.js";
+// import "./packages/qart/qart.scss";
 import Address from "./packages/address/index.js";
 import "./packages/address/address.scss";
 
@@ -264,7 +264,7 @@ export default {
   locale,
   install,
   Lazyload,
-  VueQr,
+  // VueQr,
 
   ...components,
   ...filters,
