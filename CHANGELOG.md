@@ -8,7 +8,7 @@
 * :sparkles: upd(Video)：修复自定义蒙层 @vickyYE
 * :sparkles: upd(Tab)：优化内部代码，支持多页签滑动 @zhenyulei
 * :bug: fix(Range)：stage 失效、控制器重叠问题 #242 @undo03
-* :bug: fix(CountDown)：修复 startTime 异步更新问题@undo03
+* :bug: fix(CountDown)：修复 startTime 异步更新问题 @undo03
 * :bug: fix(Icon)：修复 url 异步更新问题 @richard1015
 * :bug: fix(Swiper)：修复 cdn 模式下 event 事件失效问题 @richard1015
 * :bug: fix(Dialog)：修复标签使用时，取消按钮无效 @guoxiao158
