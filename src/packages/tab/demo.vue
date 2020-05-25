@@ -6,7 +6,9 @@
         <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
         <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
         <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
+        <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
     </nut-tab>
+
     <h4>支持导航条在上下左右位置</h4>
     <nut-tab @tab-switch="tabSwitch">
       <nut-tab-panel
@@ -35,6 +37,7 @@
         v-html="value.content"
       ></nut-tab-panel>
     </nut-tab>
+    
     <nut-tab @tab-switch="tabSwitch" position-nav="bottom">
       <nut-tab-panel
         v-for="value in editableTabs"
@@ -43,6 +46,28 @@
         :icon-url="value.iconUrl"
         v-html="value.content"
       ></nut-tab-panel>
+    </nut-tab>
+
+    <h4>支持滑动选择多个页签</h4>
+    <nut-tab @tab-switch="tabSwitch" :is-scroll="true">
+        <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
+        <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
+        <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
+        <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
+        <nut-tab-panel tab-title="页签5">页签5</nut-tab-panel>
+        <nut-tab-panel tab-title="页签6">页签6</nut-tab-panel>
+        <nut-tab-panel tab-title="页签7">页签7</nut-tab-panel>
+    </nut-tab>
+
+    <h4>支持滑动选择多个页签</h4>
+    <nut-tab @tab-switch="tabSwitch" :is-scroll="true" position-nav="left">
+        <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
+        <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
+        <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
+        <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
+        <nut-tab-panel tab-title="页签5">页签5</nut-tab-panel>
+        <nut-tab-panel tab-title="页签6">页签6</nut-tab-panel>
+        <nut-tab-panel tab-title="页签7">页签7</nut-tab-panel>
     </nut-tab>
 
     <h4>禁止选中，默认选中某个标签</h4>
@@ -210,6 +235,8 @@ export default {
   .nut-tab-active {
     background: $primary-color;
     border: 0;
+    transition: all 0.3s ease-in-out;
+
   }
   .nav-bar {
     background: $primary-color;
