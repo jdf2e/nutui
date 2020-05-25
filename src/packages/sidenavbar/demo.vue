@@ -83,8 +83,8 @@ export default {
       show1: false,
       show2: false,
       show3: false,
-      width: "80%",
-      height: "100%",
+      width: '80%',
+      height: '100%',
       navs: []
     };
   },
@@ -93,13 +93,13 @@ export default {
       this.navs = [
         {
           id: 16,
-          name: "异步abc16",
-          arr: [{ pid: 16, id: 17, name: "abc16-id17" }]
+          name: '异步abc16',
+          arr: [{ pid: 16, id: 17, name: 'abc16-id17' }]
         },
         {
           id: 17,
-          name: "异步abc17",
-          arr: [{ pid: 17, id: 18, name: "abc17-id18" }]
+          name: '异步abc17',
+          arr: [{ pid: 17, id: 18, name: 'abc17-id18' }]
         }
       ];
     }, 2000);

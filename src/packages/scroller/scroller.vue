@@ -1,112 +1,106 @@
 <template>
-    <div class="nut-scroller">
-        <template v-if="type === 'vertical'">
-            <nut-vert-scroll 
-                :stretch="stretch"
-                :is-un-more="isUnMore"
-                :is-loading="isLoading"
-                :threshold="threshold"
-                :pulldown-txt="pulldownTxt"
-                :load-more-txt="loadMoreTxt"
-                :unload-more-txt="unloadMoreTxt"
-                :props-time="propsTime"
-                :scroll-to="scrollTo"
-                @loadMore="loadMore"
-                @pulldown="pulldown"
-                @scrollToCbk="scrollToCbk"
-                @scrollChange="scrollChange"
-            >
-                <slot name="list"  slot="list"></slot>
-
-            </nut-vert-scroll>
-        </template>
-        <template v-else-if="type === 'horizontal'">
-            <nut-hor-scroll 
-            :stretch="stretch" 
-            :scroll-to="scrollTo"
-            @jump="jump" 
-            @scrollToCbk="scrollToCbk"
-        >
-                <slot name="list"  slot="list"></slot>
-                <slot name="more"  slot="more"></slot>
-                <slot name="arrow" slot="arrow"></slot>
-            </nut-hor-scroll>
-        </template>
-    </div>
+  <div class="nut-scroller">
+    <template v-if="type === 'vertical'">
+      <nut-vert-scroll
+        :stretch="stretch"
+        :is-un-more="isUnMore"
+        :is-loading="isLoading"
+        :threshold="threshold"
+        :pulldown-txt="pulldownTxt"
+        :load-more-txt="loadMoreTxt"
+        :unload-more-txt="unloadMoreTxt"
+        :props-time="propsTime"
+        :scroll-to="scrollTo"
+        @loadMore="loadMore"
+        @pulldown="pulldown"
+        @scrollToCbk="scrollToCbk"
+        @scrollChange="scrollChange"
+      >
+        <slot name="list" slot="list"></slot>
+      </nut-vert-scroll>
+    </template>
+    <template v-else-if="type === 'horizontal'">
+      <nut-hor-scroll :stretch="stretch" :scroll-to="scrollTo" @jump="jump" @scrollToCbk="scrollToCbk">
+        <slot name="list" slot="list"></slot>
+        <slot name="more" slot="more"></slot>
+        <slot name="arrow" slot="arrow"></slot>
+      </nut-hor-scroll>
+    </template>
+  </div>
 </template>
 <script>
-import nutVertScroll from "./vertical-scroll.vue";
-import nutHorScroll from "./horizontal-scroll.vue";
+import nutVertScroll from './vertical-scroll.vue';
+import nutHorScroll from './horizontal-scroll.vue';
 export default {
-    name:'nut-scroller',
-    props: {
-        type: {
-            type: String,
-            default: 'horizontal' 
-        },
-        stretch: {
-            type: Number,
-            default: 100
-        },
-        isUnMore: {
-            type: Boolean,
-            default: false
-        },
-        isLoading: {
-            type: Boolean,
-            default: false
-        },
-        threshold: {
-            type: Number,
-            default: 100
-        },
-        pulldownTxt: {
-            type: String,
-            default: '下拉刷新'
-        },
-        loadMoreTxt: {
-            type: String,
-            default: '上拉加载'
-        },
-        unloadMoreTxt: {
-            type: String,
-            default: '没有更多了'
-        },
-        propsTime: {
-            type:Number,
-            default: 0
-        },
-        scrollTo: {
-            type: Number,
-            default: 1
-        }
+  name: 'nut-scroller',
+  props: {
+    type: {
+      type: String,
+      default: 'horizontal'
     },
-    data() {
-        return {};
+    stretch: {
+      type: Number,
+      default: 100
     },
-    components: {
-        [nutVertScroll.name]: nutVertScroll,
-        [nutHorScroll.name]: nutHorScroll
+    isUnMore: {
+      type: Boolean,
+      default: false
     },
-    methods: {
-        loadMore() {
-            this.$emit('loadMore');
-        },
-
-        jump() {
-            this.$emit('jump');
-        },
-
-        pulldown() {
-            this.$emit('pulldown');
-        },
-
-        scrollToCbk() {
-            this.$emit('scrollToCbk');
-        },
-        scrollChange(event){
-            this.$emit('scrollChange',event);
-        }
+    isLoading: {
+      type: Boolean,
+      default: false
+    },
+    threshold: {
+      type: Number,
+      default: 100
+    },
+    pulldownTxt: {
+      type: String,
+      default: '下拉刷新'
+    },
+    loadMoreTxt: {
+      type: String,
+      default: '上拉加载'
+    },
+    unloadMoreTxt: {
+      type: String,
+      default: '没有更多了'
+    },
+    propsTime: {
+      type: Number,
+      default: 0
+    },
+    scrollTo: {
+      type: Number,
+      default: 1
     }
-}
+  },
+  data() {
+    return {};
+  },
+  components: {
+    [nutVertScroll.name]: nutVertScroll,
+    [nutHorScroll.name]: nutHorScroll
+  },
+  methods: {
+    loadMore() {
+      this.$emit('loadMore');
+    },
+
+    jump() {
+      this.$emit('jump');
+    },
+
+    pulldown() {
+      this.$emit('pulldown');
+    },
+
+    scrollToCbk() {
+      this.$emit('scrollToCbk');
+    },
+    scrollChange(event) {
+      this.$emit('scrollChange', event);
+    }
+  }
+};
 </script>

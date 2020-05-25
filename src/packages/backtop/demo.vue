@@ -62,7 +62,8 @@
     width: 44px;
     align-items: center;
     justify-content: center;"
-      >无</div>
+        >无</div
+      >
     </nut-backtop>
     <nut-backtop :bottom="70" @click="handleClick">
       <div
@@ -73,7 +74,8 @@
     width: 44px;
     align-items: center;
     justify-content: center;"
-      >Top</div>
+        >Top</div
+      >
     </nut-backtop>
   </div>
 </template>
@@ -86,7 +88,7 @@ export default {
   },
   methods: {
     handleClick() {
-      console.log("触发回到顶部");
+      console.log('触发回到顶部');
     }
   }
 };

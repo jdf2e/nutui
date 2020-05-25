@@ -5,4 +5,4 @@ BackTop.install = function(Vue) {
   Vue.component(BackTop.name, BackTop);
 };
 
-export default BackTop
+export default BackTop;

@@ -1,4 +1,4 @@
-import {Row, Col} from './_flex';
+import { Row, Col } from './_flex';
 import './flex.scss';
 
 Row.install = function(Vue) {
@@ -10,6 +10,6 @@ Col.install = function(Vue) {
 };
 
 export default {
-	Row,
-	Col
+  Row,
+  Col
 };

@@ -5,4 +5,4 @@ CircleProgress.install = function(Vue) {
   Vue.component(CircleProgress.name, CircleProgress);
 };
 
-export default CircleProgress
+export default CircleProgress;

@@ -1,51 +1,37 @@
 <template>
-  <div  v-if="destroy"
-    :class="['nut-dialog-wrapper',customClass,{'nut-dialog-image-wrapper':type==='image'}]"
-    :id="id"
-  >
-    <transition :name="animation?'nutFade':''">
-      <div
-        :class="'nut-dialog-mask'"
-        :style="{'background':maskBgStyle}"
-        @click="modalClick"
-        v-show="curVisible"
-      ></div>
+  <div v-if="destroy" :class="['nut-dialog-wrapper', customClass, { 'nut-dialog-image-wrapper': type === 'image' }]" :id="id">
+    <transition :name="animation ? 'nutFade' : ''">
+      <div :class="'nut-dialog-mask'" :style="{ background: maskBgStyle }" @click="modalClick" v-show="curVisible"></div>
     </transition>
-    <transition :name="animation?'nutEase':''">
+    <transition :name="animation ? 'nutEase' : ''">
       <div class="nut-dialog-box" v-show="curVisible" @click="modalClick">
         <div class="nut-dialog" @click.stop>
           <a href="javascript:;" v-if="closeBtn" @click="closeBtnClick" class="nut-dialog-close"></a>
-          <template v-if="type==='image'">
+          <template v-if="type === 'image'">
             <a href="javascript:;" @click="imageLinkClick" class="nut-dialog-link">
-              <img :src="imgSrc" class="nut-dialog-image" alt>
+              <img :src="imgSrc" class="nut-dialog-image" alt />
             </a>
           </template>
           <template v-else>
             <div class="nut-dialog-body">
               <span class="nut-dialog-title" v-html="title" v-if="title"></span>
-              <div class="nut-dialog-content" v-if="$slots.default" :style="{textAlign}">
+              <div class="nut-dialog-content" v-if="$slots.default" :style="{ textAlign }">
                 <slot></slot>
               </div>
-              <div
-                class="nut-dialog-content"
-                v-html="content"
-                v-else-if="content"
-                :style="{textAlign}"
-              ></div>
+              <div class="nut-dialog-content" v-html="content" v-else-if="content" :style="{ textAlign }"></div>
             </div>
             <div class="nut-dialog-footer" v-if="!noFooter">
-              <button
-                class="nut-dialog-btn nut-dialog-cancel"
-                v-if="!noCancelBtn"
-                @click="cancelBtnClick(cancelAutoClose)"
-              >{{cancelBtnTxt || nutTranslate('lang.cancelBtnTxt')}}</button>
+              <button class="nut-dialog-btn nut-dialog-cancel" v-if="!noCancelBtn" @click="cancelBtnClick(cancelAutoClose)">{{
+                cancelBtnTxt || nutTranslate('lang.cancelBtnTxt')
+              }}</button>
               <button
                 class="nut-dialog-btn nut-dialog-ok"
                 v-if="!noOkBtn"
-                :class="{'disabled':okBtnDisabled}"
+                :class="{ disabled: okBtnDisabled }"
                 :disabled="okBtnDisabled"
                 @click="okBtnClick"
-              >{{okBtnTxt || nutTranslate('lang.okBtnTxt')}}</button>
+                >{{ okBtnTxt || nutTranslate('lang.okBtnTxt') }}</button
+              >
             </div>
           </template>
         </div>
@@ -60,8 +46,7 @@ const lockMaskScroll = (bodyCls => {
   let scrollTop;
   return {
     afterOpen: function() {
-      scrollTop =
-        document.scrollingElement.scrollTop || document.body.scrollTop;
+      scrollTop = document.scrollingElement.scrollTop || document.body.scrollTop;
       document.body.classList.add(bodyCls);
       document.body.style.top = -scrollTop + 'px';
     },
@@ -83,23 +68,23 @@ export default {
       default: ''
     },
     title: {
-       type: String,
+      type: String,
       default: ''
     },
     content: {
-       type: String,
+      type: String,
       default: ''
     },
     type: {
-       type: String,
+      type: String,
       default: ''
     },
     link: {
-       type: String,
+      type: String,
       default: ''
     },
     imgSrc: {
-       type: String,
+      type: String,
       default: ''
     },
     animation: {
@@ -135,11 +120,11 @@ export default {
       default: false
     },
     cancelBtnTxt: {
-       type: String,
+      type: String,
       default: ''
     },
     okBtnTxt: {
-       type: String,
+      type: String,
       default: ''
     },
     okBtnDisabled: {
@@ -178,7 +163,7 @@ export default {
       type: String,
       default: ''
     },
-    canDestroy:{
+    canDestroy: {
       type: Boolean,
       default: true
     },
@@ -190,28 +175,27 @@ export default {
   data() {
     return {
       curVisible: false,
-      destroy:false
+      destroy: false
     };
   },
-  created(){
-    this.destroy=true
+  created() {
+    this.destroy = true;
   },
   methods: {
     modalClick() {
-      if (!this.closeOnClickModal) {return};
+      if (!this.closeOnClickModal) {
+        return;
+      }
       this.close('modal');
     },
-    todestroy(){
-      this.canDestroy? this.destroy=false:"";
+    todestroy() {
+      this.canDestroy ? '' : (this.destroy = false);
     },
     close(target) {
       this.$emit('close', target);
       this.$emit('close-callback', target);
       this.todestroy();
-      if (
-        typeof this.closeCallback === 'function' &&
-        this.closeCallback(target) === false
-      ) {
+      if (typeof this.closeCallback === 'function' && this.closeCallback(target) === false) {
         return;
       }
       this.curVisible = false;
@@ -222,28 +206,34 @@ export default {
         this.onOkBtn.call(this);
       }
     },
-    cancelBtnClick(autoClose) {      
-      if(!autoClose){
-        return
-      }
+    cancelBtnClick(autoClose) {
       this.$emit('cancel-btn-click');
+      if (!autoClose) {
+        return;
+      }
       if (typeof this.onCancelBtn === 'function') {
-        if (this.onCancelBtn.call(this) === false) {return};
+        if (this.onCancelBtn.call(this) === false) {
+          return;
+        }
       }
       this.close('cancelBtn');
-         
     },
     closeBtnClick() {
       if (typeof this.onCloseBtn === 'function') {
-        if (this.onCloseBtn.call(this) === false) {return};
+        if (this.onCloseBtn.call(this) === false) {
+          return;
+        }
       }
       this.close('closeBtn');
     },
     //图片类型弹窗中的链接点击事件，默认跳转
     imageLinkClick() {
-      if (this.onClickImageLink && this.onClickImageLink.call(this) === false)
-       { return};
-      if (this.link) {location.href = this.link};
+      if (this.onClickImageLink && this.onClickImageLink.call(this) === false) {
+        return;
+      }
+      if (this.link) {
+        location.href = this.link;
+      }
     }
   },
   watch: {

@@ -1,5 +1,5 @@
 <template>
-  <div :class="['nut-backtop', {'show': backTop}]" :style="styles" @click.stop="click">
+  <div :class="['nut-backtop', { show: backTop }]" :style="styles" @click.stop="click">
     <slot>
       <div class="nut-backtop-main"></div>
     </slot>
@@ -7,7 +7,7 @@
 </template>
 <script>
 export default {
-  name: "nut-backtop",
+  name: 'nut-backtop',
   props: {
     distance: {
       type: Number,
@@ -31,7 +31,7 @@ export default {
     },
     elId: {
       type: String,
-      default: ""
+      default: ''
     },
     zIndex: {
       type: Number,
@@ -69,18 +69,18 @@ export default {
       return {
         bottom: `${this.bottom}px`,
         right: `${this.right}px`,
-        "z-index": this.zIndex
+        'z-index': this.zIndex
       };
     }
   },
   methods: {
     addEventListener() {
-      this.scrollEl.addEventListener("scroll", this.scrollListener, false);
-      this.scrollEl.addEventListener("resize", this.scrollListener, false);
+      this.scrollEl.addEventListener('scroll', this.scrollListener, false);
+      this.scrollEl.addEventListener('resize', this.scrollListener, false);
     },
     removeEventListener() {
-      this.scrollEl.removeEventListener("scroll", this.scrollListener, false);
-      this.scrollEl.removeEventListener("resize", this.scrollListener, false);
+      this.scrollEl.removeEventListener('scroll', this.scrollListener, false);
+      this.scrollEl.removeEventListener('resize', this.scrollListener, false);
     },
     requestAniFrame() {
       return (
@@ -93,15 +93,9 @@ export default {
       );
     },
     initCancelAniFrame() {
-      let vendors = ["webkit", "moz"];
-      for (
-        let x = 0;
-        x < vendors.length && !window.requestAnimationFrame;
-        ++x
-      ) {
-        window.cancelAnimationFrame =
-          window[vendors[x] + "CancelAnimationFrame"] ||
-          window[vendors[x] + "CancelRequestAnimationFrame"];
+      let vendors = ['webkit', 'moz'];
+      for (let x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
       }
     },
     init() {
@@ -112,25 +106,18 @@ export default {
       this.initCancelAniFrame();
     },
     scrollListener() {
-      this.scrollTop =
-        this.scrollEl.pageYOffset !== undefined
-          ? this.scrollEl.pageYOffset
-          : this.scrollEl.scrollTop;
+      this.scrollTop = this.scrollEl.pageYOffset !== undefined ? this.scrollEl.pageYOffset : this.scrollEl.scrollTop;
       this.backTop = this.scrollTop >= this.distance;
     },
     click() {
       this.startTime = +new Date();
-      this.isAnimation && this.duration > 0
-        ? this.scrollAnimation()
-        : this.scroll();
-      this.$emit("click");
+      this.isAnimation && this.duration > 0 ? this.scrollAnimation() : this.scroll();
+      this.$emit('click');
     },
     scrollAnimation() {
       const self = this;
       var cid = self.requestAniFrame()(function fn() {
-        var t =
-          self.duration -
-          Math.max(0, self.startTime - +new Date() + self.duration);
+        var t = self.duration - Math.max(0, self.startTime - +new Date() + self.duration);
         var y = (t * -self.scrollTop) / self.duration + self.scrollTop;
         self.scroll(y);
         cid = self.requestAniFrame()(fn);

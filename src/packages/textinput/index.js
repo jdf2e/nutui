@@ -5,4 +5,4 @@ TextInput.install = function(Vue) {
   Vue.component(TextInput.name, TextInput);
 };
 
-export default TextInput
+export default TextInput;

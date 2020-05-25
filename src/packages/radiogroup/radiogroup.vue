@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: "nut-radiogroup",
+  name: 'nut-radiogroup',
   props: {
     value: {
       type: [String, Number, Boolean],
@@ -17,7 +17,7 @@ export default {
     },
     size: {
       type: String,
-      default: "base"
+      default: 'base'
     },
     animated: {
       type: Boolean,

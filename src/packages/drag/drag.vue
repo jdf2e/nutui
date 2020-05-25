@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import requestAniFrame from "../../utils/raf.js";
+import requestAniFrame from '../../utils/raf.js';
 /**
  * @module drag
  * @description 拖拽组件，用于页面中需要拖拽的元素
@@ -21,19 +21,19 @@ import requestAniFrame from "../../utils/raf.js";
  * @vue-data {Object} position 鼠标点击的位置，包含距离x轴和y轴的距离
  */
 export default {
-  name: "nut-drag",
+  name: 'nut-drag',
   props: {
     attract: {
       type: Boolean,
-      default: false,
+      default: false
     },
     direction: {
       type: String,
-      default: "all",
+      default: 'all'
     },
     zIndex: {
       type: [Number, String],
-      default: 11,
+      default: 11
     },
     boundary: {
       type: Object,
@@ -42,10 +42,10 @@ export default {
           top: 0,
           left: 0,
           right: 0,
-          bottom: 0,
+          bottom: 0
         };
-      },
-    },
+      }
+    }
   },
   data() {
     return {
@@ -55,7 +55,7 @@ export default {
       screenHeight: 0,
       startTop: 0,
       startLeft: 0,
-      position: { x: 0, y: 0 },
+      position: { x: 0, y: 0 }
     };
   },
   methods: {
@@ -71,14 +71,14 @@ export default {
       this.screenHeight = domElem.clientHeight;
       el.style.zIndex = this.zIndex;
       if (this.boundary.left) {
-        el.style.left = this.boundary.left + "px";
+        el.style.left = this.boundary.left + 'px';
       } else {
-        el.style.right = this.boundary.right + "px";
+        el.style.right = this.boundary.right + 'px';
       }
       if (this.boundary.top) {
-        el.style.top = this.boundary.top + "px";
+        el.style.top = this.boundary.top + 'px';
       } else {
-        el.style.bottom = this.boundary.bottom + "px";
+        el.style.bottom = this.boundary.bottom + 'px';
       }
     },
     touchStart(e) {
@@ -87,8 +87,8 @@ export default {
       this.startLeft = target.offsetLeft; // 元素距离左侧的距离
       this.position.x = e.touches[0].clientX; // 鼠标点击的x轴的距离
       this.position.y = e.touches[0].clientY; // 鼠标点击的y轴的距离
-      this.$el.addEventListener("touchmove", this.touchMove, false);
-      this.$el.addEventListener("touchend", this.touchEnd, false);
+      this.$el.addEventListener('touchmove', this.touchMove, false);
+      this.$el.addEventListener('touchend', this.touchEnd, false);
     },
     touchMove(e) {
       e.preventDefault();
@@ -99,8 +99,7 @@ export default {
         this.ny = touch.clientY - this.position.y;
         this.xPum = this.startLeft + this.nx;
         this.yPum = this.startTop + this.ny;
-        const rightLocation =
-          this.screenWidth - this.elWidth - this.boundary.right;
+        const rightLocation = this.screenWidth - this.elWidth - this.boundary.right;
         // 限制左右拖拽边界
         if (Math.abs(this.xPum) > rightLocation) {
           this.xPum = rightLocation;
@@ -110,17 +109,14 @@ export default {
         // 限制上下拖拽边界
         if (this.yPum < this.boundary.top) {
           this.yPum = this.boundary.top;
-        } else if (
-          this.yPum >
-          this.screenHeight - this.elHeight - this.boundary.bottom
-        ) {
+        } else if (this.yPum > this.screenHeight - this.elHeight - this.boundary.bottom) {
           this.yPum = this.screenHeight - this.elHeight - this.boundary.bottom;
         }
-        if (this.direction != "y") {
-          target.style.left = this.xPum + "px";
+        if (this.direction != 'y') {
+          target.style.left = this.xPum + 'px';
         }
-        if (this.direction != "x") {
-          target.style.top = this.yPum + "px";
+        if (this.direction != 'x') {
+          target.style.top = this.yPum + 'px';
         }
       }
     },
@@ -128,8 +124,7 @@ export default {
       const target = e.currentTarget;
       const touch = e.changedTouches[0];
       let currX = touch.clientX;
-      const rightLocation =
-        this.screenWidth - this.elWidth - this.boundary.right;
+      const rightLocation = this.screenWidth - this.elWidth - this.boundary.right;
       if (currX > rightLocation) {
         currX = rightLocation;
         // console.log('往右划出边界');
@@ -137,25 +132,24 @@ export default {
         currX = this.boundary.left;
         // console.log('往左划出边界');
       } else {
-        currX =
-          currX < this.screenWidth / 2 ? this.boundary.left : rightLocation;
+        currX = currX < this.screenWidth / 2 ? this.boundary.left : rightLocation;
         // console.log('在边界内滑动');
       }
-      if (this.direction != "y" && this.attract) {
+      if (this.direction != 'y' && this.attract) {
         if (currX < this.screenWidth / 2) {
           this.goLeft(target);
         } else {
           this.goRight(target, rightLocation);
         }
       }
-      if (this.direction != "x") {
-        target.style.top = this.yPum + "px";
+      if (this.direction != 'x') {
+        target.style.top = this.yPum + 'px';
       }
     },
     goLeft(target) {
       if (this.boundary.left) {
-        if (target.style.left.split("px")[0] > this.boundary.left) {
-          target.style.left = target.style.left.split("px")[0] - 10 + "px";
+        if (target.style.left.split('px')[0] > this.boundary.left) {
+          target.style.left = target.style.left.split('px')[0] - 10 + 'px';
           requestAniFrame(() => {
             this.goLeft(target);
           });
@@ -163,27 +157,26 @@ export default {
           target.style.left = `${this.boundary.left}px`;
         }
       } else {
-        if (target.style.left.split("px")[0] > 10) {
-          target.style.left = target.style.left.split("px")[0] - 10 + "px";
+        if (target.style.left.split('px')[0] > 10) {
+          target.style.left = target.style.left.split('px')[0] - 10 + 'px';
           requestAniFrame(() => {
             this.goLeft(target);
           });
         } else {
-          target.style.left = "0px";
+          target.style.left = '0px';
         }
       }
     },
     goRight(target, rightLocation) {
-      if (rightLocation - parseInt(target.style.left.split("px")[0]) > 10) {
-        target.style.left =
-          parseInt(target.style.left.split("px")[0]) + 10 + "px";
+      if (rightLocation - parseInt(target.style.left.split('px')[0]) > 10) {
+        target.style.left = parseInt(target.style.left.split('px')[0]) + 10 + 'px';
         requestAniFrame(() => {
           this.goRight(target, rightLocation);
         });
       } else {
-        target.style.left = rightLocation + "px";
+        target.style.left = rightLocation + 'px';
       }
-    },
+    }
   },
   mounted() {
     this.getElementInfo();
@@ -195,12 +188,12 @@ export default {
   },
   deactivated() {
     this.keepAlive = true;
-    this.$el.removeEventListener("touchmove", this.handleScroll, false);
-    this.$el.removeEventListener("touchend", this.handleScroll, false);
+    this.$el.removeEventListener('touchmove', this.handleScroll, false);
+    this.$el.removeEventListener('touchend', this.handleScroll, false);
   },
   destroyed() {
-    this.$el.removeEventListener("touchmove", this.handleScroll, false);
-    this.$el.removeEventListener("touchend", this.handleScroll, false);
-  },
+    this.$el.removeEventListener('touchmove', this.handleScroll, false);
+    this.$el.removeEventListener('touchend', this.handleScroll, false);
+  }
 };
 </script>

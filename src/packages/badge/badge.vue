@@ -1,21 +1,15 @@
 <template>
-    <div class="nut-badge">
-        <slot></slot>
-         <sup
-            v-show="!hidden && ( content || isDot )"
-            v-text="content"
-            class="nut-badge__content"
-            :class="{ 'is-dot': isDot }"
-            :style = "stl">
-        </sup>
-    </div>
+  <div class="nut-badge">
+    <slot></slot>
+    <sup v-show="!hidden && (content || isDot)" v-text="content" class="nut-badge__content" :class="{ 'is-dot': isDot }" :style="stl"> </sup>
+  </div>
 </template>
 <script>
 export default {
   name: 'nut-badge',
   props: {
     value: {
-      type: [String,Number]
+      type: [String, Number]
     },
     max: {
       type: Number,
@@ -49,7 +43,7 @@ export default {
         right: this.right,
         zIndex: this.zIndex
       }
-    }
+    };
   },
   computed: {
     content() {

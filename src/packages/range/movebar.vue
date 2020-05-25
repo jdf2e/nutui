@@ -1,24 +1,45 @@
 <template>
-    <div 
-        :class="['nut-range-Handle',{'nut-range-ani': ani}]" 
-        @touchstart="onTouchStart" 
-        @touchmove="onTouchMove"
-        @touchend="onTouchEnd" 
-        @click="onTouchEnd" 
-        :style="{left: posi + 'px', borderColor: mainColor, boxShadow: ani? '0 0 0 4px '+ subColor: ''}">
-        <span 
-            :class="['nut-range-label', {'nut-range-label-always': showLabelAlways}]" 
-            v-if="showLabel" :style="{background: mainColor}">
-            <span class="nut-range-after" :style="{color: mainColor}">▼</span>
-            {{current}}
-        </span>
-    </div>
+  <div
+    :class="['nut-range-Handle', { 'nut-range-ani': ani }]"
+    @touchstart="onTouchStart"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+    @click="onTouchEnd"
+    :style="{ left: posi + 'px', borderColor: mainColor, boxShadow: ani ? '0 0 0 4px ' + subColor : '' }"
+  >
+    <span :class="['nut-range-label', { 'nut-range-label-always': showLabelAlways }]" v-if="showLabel" :style="{ background: mainColor }">
+      <span class="nut-range-after" :style="{ color: mainColor }">▼</span>
+      {{ current }}
+    </span>
+  </div>
 </template>
 <script>
 import requestAniFrame from '../../utils/raf.js';
 export default {
-  name: "nut-range-bar",
+  name: 'nut-range-bar',
   props: {
+    direction: {
+      type: String,
+      default: 'left'
+    },
+    range: {
+      type: Array,
+      validator: function(value) {
+        return value.length === 2 && value[1] > value[0];
+      },
+      default() {
+        return [0, 10];
+      }
+    },
+    values: {
+      type: Array,
+      validator: function(value) {
+        return value.length === 2 && value[1] >= value[0];
+      },
+      default() {
+        return [0, 0];
+      }
+    },
     initLeft: {
       type: Number,
       default: 0
@@ -35,6 +56,10 @@ export default {
       type: Number,
       default: 0
     },
+    stage: {
+      type: Number,
+      default: 0
+    },
     ani: Boolean,
     mainColor: String,
     subColor: String
@@ -43,12 +68,17 @@ export default {
     return {
       box: null,
       posi: 0,
-      scheduledAnimationFrame:false
+      scheduledAnimationFrame: false
     };
   },
   watch: {
     initLeft(val) {
       this.posi = this.initLeft;
+    }
+  },
+  computed: {
+    total() {
+      return this.range[1] - this.range[0];
     }
   },
   methods: {
@@ -65,37 +95,71 @@ export default {
       if (this.scheduledAnimationFrame) return;
       this.scheduledAnimationFrame = true;
       requestAniFrame(() => {
-          this.scheduledAnimationFrame = false;
-          const evt = event.touches[0];
-          const pageScrollLeft =
-            document.documentElement.scrollLeft || document.body.scrollLeft;
-          this.boxLeft = this.box.getBoundingClientRect().left;
-          const posi = evt.pageX - this.boxLeft - pageScrollLeft;
-          this.setPosi(posi, false);
+        this.scheduledAnimationFrame = false;
+        const evt = event.touches[0];
+        const pageScrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+        this.boxLeft = this.box.getBoundingClientRect().left;
+        const posi = evt.pageX - this.boxLeft - pageScrollLeft;
+        this.setPosi(posi, false);
       });
     },
     setPosi(posi, isEnd) {
-      if (posi < 0 || posi > this.box.clientWidth) return;
-      this.posi = posi;
-      this.$emit('getPos', posi, isEnd);
+      if (posi < 0) {
+        posi = 0;
+      }
+      if (posi > this.box.clientWidth) {
+        posi = this.box.clientWidth;
+      }
+      const [prevLeft, prevRight] = this.values;
+      const [rangeLeft, rangeRight] = this.range;
+      if (this.direction === 'left') {
+        if (this.stage) {
+          let stageNum = Math.floor((prevRight - 1) / this.stage);
+          if (posi / this.box.clientWidth >= (stageNum * this.stage) / this.total) {
+            this.posi = (stageNum * this.stage + rangeLeft) * (this.box.clientWidth / this.total);
+          } else {
+            this.posi = posi;
+          }
+        } else {
+          if (posi / this.box.clientWidth >= (prevRight - 1 - rangeLeft) / this.total) {
+            this.posi = (prevRight - 1 - rangeLeft) * (this.box.clientWidth / this.total);
+          } else {
+            this.posi = posi;
+          }
+        }
+      }
+      if (this.direction === 'right') {
+        if (this.stage) {
+          let stageNum = Math.ceil((prevLeft + 1) / this.stage);
+          if (posi / this.box.clientWidth <= (stageNum * this.stage) / this.total) {
+            this.posi = (stageNum * this.stage + rangeLeft) * (this.box.clientWidth / this.total);
+          } else {
+            this.posi = posi;
+          }
+        } else {
+          if (posi / this.box.clientWidth <= (prevLeft + 1 - rangeLeft) / this.total) {
+            this.posi = (prevLeft + 1 - rangeLeft) * (this.box.clientWidth / this.total);
+          } else {
+            this.posi = posi;
+          }
+        }
+      }
+      this.$emit('getPos', this.posi, isEnd);
     },
     onTouchEnd(event) {
       event.preventDefault();
       const evt = event.changedTouches[0];
-      const pageScrollLeft =
-        document.documentElement.scrollLeft || document.body.scrollLeft;
+      const pageScrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
       this.boxLeft = this.box.getBoundingClientRect().left;
       const posi = evt.pageX - this.boxLeft - pageScrollLeft;
       setTimeout(() => {
         this.setPosi(posi, true);
         this.$emit('update:ani', false);
       }, 50);
-      
     },
     onClick(event) {
       event.preventDefault();
-      const pageScrollLeft =
-        document.documentElement.scrollLeft || document.body.scrollLeft;
+      const pageScrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
       this.boxLeft = this.box.getBoundingClientRect().left;
       const posi = event.pageX - this.boxLeft - pageScrollLeft;
       this.posi = posi;

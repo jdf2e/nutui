@@ -9,10 +9,9 @@
 
 <script>
 export default {
-  name: "nut-skeleton",
+  name: 'nut-skeleton',
   data() {
     return {};
   }
 };
 </script>
-

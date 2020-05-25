@@ -97,33 +97,33 @@ import './packages/elevator/elevator.scss';
 import Popup from './packages/popup/index.js';
 import LeftSlip from './packages/leftslip/index.js';
 import './packages/leftslip/leftslip.scss';
-import TabSelect from "./packages/tabselect/index.js";
-import "./packages/tabselect/tabselect.scss";
+import TabSelect from './packages/tabselect/index.js';
+import './packages/tabselect/tabselect.scss';
 import './packages/popup/popup.scss';
-import LuckDraw from "./packages/luckdraw/index.js";
-import "./packages/luckdraw/luckdraw.scss";
-import Video from "./packages/video/index.js";
-import "./packages/video/video.scss";
-import Signature from "./packages/signature/index.js";
-import "./packages/signature/signature.scss";
-import CircleProgress from "./packages/circleprogress/index.js";
-import "./packages/circleprogress/circleprogress.scss";
-import TimeLine from "./packages/timeline/index.js";
-import "./packages/timeline/timeline.scss";
-import TimeLineItem from "./packages/timelineitem/index.js";
-import "./packages/timelineitem/timelineitem.scss";
-import SideNavBar from "./packages/sidenavbar/index.js";
-import "./packages/sidenavbar/sidenavbar.scss";
-import SubSideNavBar from "./packages/subsidenavbar/index.js";
-import "./packages/subsidenavbar/subsidenavbar.scss";
-import SideNavBarItem from "./packages/sidenavbaritem/index.js";
-import "./packages/sidenavbaritem/sidenavbaritem.scss";
-import Drag from "./packages/drag/index.js";
-import "./packages/drag/drag.scss";
-import VueQr from "./packages/qart/index.js";
-import "./packages/qart/qart.scss";
-import Address from "./packages/address/index.js";
-import "./packages/address/address.scss";
+import LuckDraw from './packages/luckdraw/index.js';
+import './packages/luckdraw/luckdraw.scss';
+import Video from './packages/video/index.js';
+import './packages/video/video.scss';
+import Signature from './packages/signature/index.js';
+import './packages/signature/signature.scss';
+import CircleProgress from './packages/circleprogress/index.js';
+import './packages/circleprogress/circleprogress.scss';
+import TimeLine from './packages/timeline/index.js';
+import './packages/timeline/timeline.scss';
+import TimeLineItem from './packages/timelineitem/index.js';
+import './packages/timelineitem/timelineitem.scss';
+import SideNavBar from './packages/sidenavbar/index.js';
+import './packages/sidenavbar/sidenavbar.scss';
+import SubSideNavBar from './packages/subsidenavbar/index.js';
+import './packages/subsidenavbar/subsidenavbar.scss';
+import SideNavBarItem from './packages/sidenavbaritem/index.js';
+import './packages/sidenavbaritem/sidenavbaritem.scss';
+import Drag from './packages/drag/index.js';
+import './packages/drag/drag.scss';
+// import VueQr from "./packages/qart/index.js";
+// import "./packages/qart/qart.scss";
+import Address from './packages/address/index.js';
+import './packages/address/address.scss';
 
 const packages = {
   Cell,
@@ -213,7 +213,7 @@ pkgList.map(item => {
   }
 });
 
-const install = function (Vue, opts = {}) {
+const install = function(Vue, opts = {}) {
   if (install.installed) return;
 
   if (opts.locale) {
@@ -264,7 +264,7 @@ export default {
   locale,
   install,
   Lazyload,
-  VueQr,
+  // VueQr,
 
   ...components,
   ...filters,

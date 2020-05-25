@@ -72,12 +72,12 @@ describe('Tab.vue', () => {
          expect(wrapper.findAll('.nut-title-nav').at(0).text()).toBe('衣物');
       })
     });
-    it('点击tab标签', () => {
-    	return Vue.nextTick().then(function () {
-            wrapper.findAll('.nut-title-nav-list').at(1).trigger('click');
-            expect(wrapper.findAll('.nut-title-nav-list').at(1).is('.nut-tab-active')).toBe(true)
-      })
-    });
+    // it('点击tab标签', () => {
+    // 	return Vue.nextTick().then(function () {
+    //         wrapper.findAll('.nut-title-nav-list').at(1).trigger('click');
+    //         expect(wrapper.findAll('.nut-title-nav-list').at(1).is('.nut-tab-active')).toBe(true)
+    //   })
+    // });
 });
 
 

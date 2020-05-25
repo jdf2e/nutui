@@ -1,15 +1,11 @@
 <template>
-  <div
-    class="nut-switch"
-    :class="[{'nut-switch-active':isActive},'nut-switch-'+size,{'nut-switch-disabled':disabled}]"
-    @click="toggle"
-  >
+  <div class="nut-switch" :class="[{ 'nut-switch-active': isActive }, 'nut-switch-' + size, { 'nut-switch-disabled': disabled }]" @click="toggle">
     <div class="nut-switch-btn"></div>
   </div>
 </template>
 <script>
 export default {
-  name: "nut-switch",
+  name: 'nut-switch',
   props: {
     active: {
       type: Boolean,
@@ -17,7 +13,7 @@ export default {
     },
     size: {
       type: String,
-      default: "base"
+      default: 'base'
     },
     disabled: {
       type: Boolean,
@@ -26,8 +22,7 @@ export default {
   },
   data() {
     return {
-      isActive: false,
-      isAnimating:false
+      isActive: false
     };
   },
   created() {
@@ -40,16 +35,14 @@ export default {
   },
   methods: {
     toggle() {
-      if(this.isAnimating) return;
       const status = this.isActive;
       if (!this.disabled) {
         this.isActive = !status;
       }
-      this.isAnimating = true;
+
       setTimeout(() => {
-        this.$emit("change", this.isActive);
-        this.$emit("update:active", this.isActive);
-        this.isAnimating = false;
+        this.$emit('change', this.isActive);
+        this.$emit('update:active', this.isActive);
       }, 300);
     }
   }
