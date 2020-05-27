@@ -169,16 +169,6 @@
     },
     {
       "version": "1.0.0",
-      "name": "Badge",
-      "sort": "0",
-      "chnName": "徽标",
-      "desc": "出现在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息",
-      "type": "component",
-      "showDemo": true,
-      "author": "杨磊"
-    },
-    {
-      "version": "1.0.0",
       "name": "Rate",
       "sort": "1",
       "chnName": "评分",
@@ -258,28 +248,6 @@
       "sort": "0",
       "showDemo": true,
       "author": "wangnan31"
-    },
-    {
-      "version": "1.0.0",
-      "name": "Scroller",
-      "chnName": "滚动",
-      "desc": "滚动组件",
-      "type": "component",
-      "sort": "0",
-      "star": 5,
-      "showDemo": true,
-      "author": "iris"
-    },
-    {
-      "version": "1.0.0",
-      "name": "InfiniteLoading",
-      "chnName": "无限加载",
-      "desc": "无限加载",
-      "type": "component",
-      "sort": "0",
-      "star": 4,
-      "showDemo": true,
-      "author": "iris"
     },
     {
       "version": "1.0.0",
