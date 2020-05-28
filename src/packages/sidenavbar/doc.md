@@ -11,13 +11,15 @@
     :style="{ width, height }"
 >
     <nut-sidenavbar :show="show1">
-        <nut-subsidenavbar title="图像理解" ikey="3" :open="false">
-            <nut-sidenavbaritem ikey="4" title="菜品识别"></nut-sidenavbaritem>
-            <nut-sidenavbaritem ikey="5" title="拍照购"></nut-sidenavbaritem>
-        </nut-subsidenavbar>
-        <nut-subsidenavbar title="自然语言处理" ikey="12">
-            <nut-sidenavbaritem ikey="13" title="词法分析"></nut-sidenavbaritem>
-            <nut-sidenavbaritem ikey="14" title="句法分析"></nut-sidenavbaritem>
+        <nut-subsidenavbar title="智能城市AI" ikey="6">
+            <nut-subsidenavbar title="人体识别1" ikey="9">
+                <nut-sidenavbaritem ikey="10" title="人体检测1"></nut-sidenavbaritem>
+                <nut-sidenavbaritem ikey="11" title="细粒度人像分割1"></nut-sidenavbaritem>
+            </nut-subsidenavbar>
+            <nut-subsidenavbar title="人体识别2" ikey="12">
+                <nut-sidenavbaritem ikey="13" title="人体检测2"></nut-sidenavbaritem>
+                <nut-sidenavbaritem ikey="14" title="细粒度人像分割2"></nut-sidenavbaritem>
+            </nut-subsidenavbar>
         </nut-subsidenavbar>
     </nut-sidenavbar>
 </nut-popup>

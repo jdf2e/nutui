@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import popup from '../popup.vue'
 import Vue from 'vue';
-import overlay from "../overlay.vue";
+// import overlay from "../overlay.vue";
 import Icon from '../../icon/icon.vue';
 describe('Menu.vue',() => {
     const wrapper = mount(popup, {
