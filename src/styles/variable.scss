@@ -1,4 +1,4 @@
-// ---- color ----
+// ---- color ---- 这是之前在用的颜色，后续开发中使用新的色值
 $primary-color: #f0250f !default;
 $normal-color: #848484 !default;
 $link-color: $primary-color !default;
@@ -7,6 +7,40 @@ $title-color: #2d2d2d !default;
 $text-color: #848484 !default;
 $light-color: #f6f6f6 !default;
 $dark-color: #dadada !default;
+
+// v3.0 主要色值
+// ---- 主色调color ----
+$primary-color-jd-red: #E1251B !default; // 京东红，主要用于对外C端产品。
+$primary-color-jc-blue: #3C6EF0 !default; // 京牛蓝，主要用于对内B端产品。
+// ---- 辅助color ----
+$assist-color-green: #26A872 !default; // 常用于成功信息/成功icon，或者卡片标签
+$assist-color-orange: #FF6E4C !default; // 常用于警告信息/警告icon，或者卡片标签
+$assist-color-yellow: #FFBA12 !default; // 常用于提示信息/提示icon，或者卡片标签
+$assist-color-blue: #2CA6E1 !default; // 冷链蓝，主要用于京东冷链相关产品，也可以用于卡片标签或页面其他元素
+$assist-color-purple: #6236FF !default; 
+$assist-color-gray: #7C7A8A !default; // 常用于卡片标签或页面其他元素
+$assist-color-light-gray: #D9D9D9 !default; // 常用于弱标签背景色
+// ---- 文本color ----
+$text-black-1: #323232 !default; // 重要文字颜色，用于Narbar等大标题
+$text-black-2: #646464 !default; // 普通文字颜色，用于段落、表单标题、列表内容等
+$text-black-3: #969696 !default; // 辅助文字，用于次要信息
+$text-black-4: #C8C8C8 !default; // 一般文字，用于提示性文字
+$text-jd-red: #E1251B !default; // 用于报错文字颜色
+// ---- 背景/分割线color ----
+$body-background-color: #F7F7F7 !default; // 用于页面整体背景
+$split-line-color: #E6E6E6 !default; // 用于分割线，按钮描边,1px
+$disabled-bg-color: #DCDCDC !default; // 用于按钮置灰
+// ---- v3.0 常用字号 ----
+$font-size-title-large: 20px; // 用于标题类文字
+$font-size-title-normal: 18px; // 用于全局操作类文字
+$font-size-body-large: 17px; // 常用字号，用于需要强调的文字信息
+$font-size-body-normal: 16px; // 最常用的正文字号
+$font-size-body-small: 14px; // 常用字号，用于较弱的文字信息
+$font-size-display-large: 14px; // 常用于辅助说明文字
+$font-size-display-normal: 13px; // 常用字号，用于解释信息
+$font-size-display-small: 12px; // 常用于标签信息展示
+
+
 // ---- base ----
 $body-background: #f6f6f6 !default;
 $mask-bg: rgba(0, 0, 0, 0.5) !default;
