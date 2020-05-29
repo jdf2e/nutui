@@ -1,5 +1,9 @@
 <template>
-  <transition :name="transitionName" @after-enter="$emit('opened')" @after-leave="$emit('closed')">
+  <transition
+    :name="transitionName"
+    @after-enter="$emit('opened')"
+    @after-leave="$emit('closed')"
+  >
     <div
       ref="popupBox"
       v-show="value"
@@ -22,176 +26,202 @@
   </transition>
 </template>
 <script>
-import Vue from 'vue';
-import overlay from './overlay.vue';
-import Icon from '../icon/icon.vue';
-import '../icon/icon.scss';
+import Vue from "vue";
+import Icon from "../icon/icon.vue";
+import touchMixins from "../../mixins/touch.js";
+import {overlayManager ,overlayProps} from "./overlay/overlay-manager.js";
+import { on, off } from "../../utils/event"; 
+import "../icon/icon.scss";
+
+
+const overflowScrollReg = /scroll|auto/i;
 export default {
-  name: 'nut-popup',
+  name: "nut-popup",
+  mixins: [touchMixins],
   components: {
-    icon: Icon
+    icon: Icon,
   },
   props: {
-    value: {
-      type: Boolean,
-      default: false
-    },
+    ...overlayProps,
     position: {
       type: String,
-      default: 'center'
+      default: "center",
     },
-    duration: {
-      type: Number,
-      default: 0.3
-    },
+
     transition: String,
-    overlay: {
-      type: Boolean,
-      default: true
-    },
+
     closeable: {
       type: Boolean,
-      default: false
+      default: false,
     },
     closeIconPosition: {
       type: String,
-      default: 'top-right'
+      default: "top-right",
     },
     closeIcon: {
       type: String,
-      default: 'cross'
+      default: "cross",
     },
-    lockScroll: {
-      type: Boolean,
-      default: true
-    },
+
     closeOnClickOverlay: {
       type: Boolean,
-      default: true
+      default: true,
     },
-    overlayClass: {
-      type: String,
-      default: ''
-    },
-    overlayStyle: {
-      type: String,
-      default: ''
-    },
+
     destroyOnClose: {
       type: Boolean,
-      default: false
+      default: false,
     },
     getContainer: String,
     round: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   created() {
-    this.transition ? (this.transitionName = this.transition) : (this.transitionName = `popup-slide-${this.position}`);
+    this.transition
+      ? (this.transitionName = this.transition)
+      : (this.transitionName = `popup-slide-${this.position}`);
   },
   mounted() {
-    this.mountOverlay();
-    if (this.getContainer) {
-      this.portal();
-    }
     if (this.value) {
       this.open();
     }
   },
   watch: {
     value(val) {
-      const type = val ? 'open' : 'close';
-      if (this.overlay) {
-        this[type]();
-      }
+      const type = val ? "open" : "close";
+      this[type]();
     },
     position(val) {
-      val === 'center' ? (this.transitionName = 'popup-fade') : (this.transitionName = `popup-slide-${this.position}`);
+      val === "center"
+        ? (this.transitionName = "popup-fade")
+        : (this.transitionName = `popup-slide-${this.position}`);
     },
-    getContainer: 'portal'
+    getContainer: "portal",
+    overlay: "renderOverlay",
   },
   data() {
     return {
       showSlot: true,
-      transitionName: 'popup-fade-center',
-      overlayInstant: null
+      transitionName: "popup-fade-center",
+      overlayInstant: null,
     };
   },
   computed: {
     transitionDuration() {
-      return this.duration ? this.duration + 's' : 'initial';
-    }
+      return this.duration ? this.duration + "s" : "initial";
+    },
   },
   methods: {
-    mountOverlay() {
-      if (!this.overlayInstant) {
-        this.overlayInstant = this.mount(overlay, {
-          duration: this.duration,
-          nativeOn: {
-            click: () => {
-              this.$emit('click-overlay', this);
-              if (this.closeOnClickOverlay) {
-                this.$emit('input', false);
-              }
-            }
-          }
-        });
-      }
-    },
-    mount(Component, data) {
-      const instance = new Vue({
-        el: document.createElement('div'),
-        props: Component.props,
-        render(h) {
-          return h(Component, {
-            props: this.$props,
-            ...data
-          });
-        }
-      });
-      instance.duration = this.duration;
-      instance.lockScroll = this.lockScroll;
-      instance.className = this.overlayClass;
-      instance.customStyle = this.overlayStyle;
-      const el = this.$refs.popupBox;
-      if (el && el.parentNode) {
-        el.parentNode.insertBefore(instance.$el, el);
-      } else {
-        document.body.appendChild(instance.$el);
-      }
-      return instance;
-    },
-
     open() {
-      if (!this.overlayInstant) {
-        this.mountOverlay();
+      if (this.opened) {
+        return;
+      }
+
+      this.opened = true;
+      this.$emit("open");
+   
+      const {
+        duration,
+        overlayClass,
+        overlayStyle,
+        lockScroll,
+        closeOnClickOverlay,
+      } = this; 
+      const config = {
+        zIndex:this.zIndex ? this.zIndex : overlayManager.zIndex,
+        duration,
+        overlayClass,
+        overlayStyle,
+        lockScroll,
+        closeOnClickOverlay,
+      };
+
+      this.renderOverlay(config);
+
+      if (this.lockScroll) {
+        on(document, "touchstart", this.touchStart);
+        on(document, "touchmove", this.onTouchMove);
+
+        if (!overlayManager.lockCount) {
+          document.body.classList.add("nut-overflow-hidden");
+        }
+        overlayManager.lockCount++;
+      }
+      
+      this.$el.style.zIndex = this.zIndex ? this.zIndex + 1 : overlayManager.zIndex;
+    },
+    renderOverlay(config) {
+      if (!this.value) {
+        return;
+      }
+
+      if (this.overlay) {
+        overlayManager.openModal(this, config);
       } else {
-        this.overlayInstant.show = true;
-        this.showSlot = true;
+        overlayManager.closeOverlay(this);
+      }
+    },
+    onTouchMove(event) {
+      this.touchMove(event);
+      const el = this.getScroller(event.target, this.$el);
+      const { scrollHeight, offsetHeight, scrollTop } = el;
+
+      if (
+        (this.deltaY > 0 && scrollTop === 0) ||
+        (this.deltaY < 0 && scrollTop + offsetHeight >= scrollHeight)
+      ) {
+        event.preventDefault();
+      }
+    },
+    getScroller(el, root) {
+      let node = el;
+      while (
+        node &&
+        node.tagName !== "HTML" &&
+        node.nodeType === 1 &&
+        node !== root
+      ) {
+        const { overflowY } = window.getComputedStyle(node);
+
+        if (overflowScrollReg.test(overflowY)) {
+          if (node.tagName !== "BODY") {
+            return node;
+          }
+          const { overflowY: htmlOverflowY } = window.getComputedStyle(
+            node.parentNode
+          );
+
+          if (overflowScrollReg.test(htmlOverflowY)) {
+            return node;
+          }
+        }
+
+        node = node.parentNode;
       }
 
-      if (this.lockScroll && !this.locked) {
-        document.body.classList.add('nut-overflow-hidden');
-        this.locked = true;
-      }
-
-      this.$emit('open', this);
+      return root;
     },
     close() {
-      this.overlayInstant.show = false;
-      if (this.destroyOnClose) {
-        setTimeout(() => {
-          this.showSlot = false;
-        }, this.duration * 1000);
+      if (!this.opened) {
+        return;
+      }
+      this.$emit('close')
+      this.opened = false;
+      if (this.lockScroll) {
+        overlayManager.lockCount--;
+        off(document, "touchstart", this.touchStart);
+        off(document, "touchmove", this.onTouchMove);
+        if (!overlayManager.lockCount) {
+          document.body.classList.remove("nut-overflow-hidden");
+        }
       }
 
-      if (this.lockScroll && this.locked) {
-        document.body.classList.remove('nut-overflow-hidden');
-        this.locked = false;
-      }
-      this.$emit('close', this);
+      overlayManager.closeOverlay(this);
+      this.$emit("input", false);
     },
+
     getElement(selector) {
       return document.querySelector(selector);
     },
@@ -209,7 +239,7 @@ export default {
       if (container && container !== el.parentNode) {
         container.appendChild(el);
       }
-    }
-  }
+    },
+  },
 };
 </script>
