@@ -91,8 +91,10 @@ export default {
       let innerHeight = document.documentElement.clientHeight;
       //this.wrapHeight = (innerHeight/fontSize-1);
       this.wrapHeight = innerHeight - this.otherHeight;
-      let initIndex = this.dataArray[this.initIndex].title;
-      document.getElementById(initIndex).scrollIntoView();
+      if(this.dataArray.length>0){
+        let initIndex = this.dataArray[this.initIndex].title;
+        document.getElementById(initIndex).scrollIntoView();
+      }
     },
     getStyle(element, attr) {
       if (element.currentStyle) {
