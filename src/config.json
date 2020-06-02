@@ -358,6 +358,16 @@
       "sort": "6",
       "showDemo": true,
       "author": "yangxiaolu"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Tag",
+      "chnName": "标签",
+      "desc": "Tag 标签组件",
+      "type": "component",
+      "sort": "0",
+      "showDemo": true,
+      "author": "ivanwancy"
     }
   ]
 }
