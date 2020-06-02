@@ -269,7 +269,7 @@ export default {
 | scroll-line|是否显示tab切换时，滑动效果的红条|Boolean|false|
 | tab-line|是否显示tab切换时，无滑动效果的active红条|Boolean|true|
 | is-scroll|是否支持超出范围后，滑动选择多个页签|Boolean|false|
-| wrapper-height |设置tab区域的高度，只有在 is-scroll=true；positionNav=left或者right 的情况下有效|Number/String|200|
+| wrapper-height |设置tab区域的高度，只有在positionNav=left或者right 的情况下有效|Number/String|200|
 
 
 ### nut-tab-panel
