@@ -27,7 +27,7 @@
         </div>
         <h4>设置视频为背景图</h4>
         <p>当设置视频为背景图时需要将 muted 静音、 disabled 禁止操作、loop 循环播放、autoplay 自动播放设置为 true，移动端需要设置
-            playsinline 行内展示（兼容安卓用）</p>
+            playsinline 行内展示</p>
         <div class="video-con">
             <nut-video :sources="sources" :options="options6"></nut-video>
         </div>
@@ -89,7 +89,8 @@
                     muted: true,
                     disabled: true,
                     playsinline: true,
-                    loop: true
+                    loop: true,
+                    controls: false
                 },
 
             };

@@ -17,19 +17,19 @@
 ## 自定义提示语
 
 ```html
-<nut-textbox :placeText="'请填写详细情况请填写详细情况'"> </nut-textbox>
+<nut-textbox :placeText="'请填写详细情况请填写详细情况'" v-model="val1"> </nut-textbox>
 ```
 
 ## 自定义字数限制
 
 ```html
-<nut-textbox :maxNum="100"> </nut-textbox>
+<nut-textbox :maxNum="100" v-model="val2"> </nut-textbox>
 ```
 
 ## 限制字数不可超出
 
 ```html
-<nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="2" textBgColor="#efefef">
+<nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="2" textBgColor="#efefef" v-model="val2">
 </nut-textbox>
 ```
 
@@ -66,7 +66,9 @@
 export default {
   data() {
     return {
-      val: ''
+      val: '',
+      val1:'',
+      val2:'自定义数据'
     }
   },
   methods: {
