@@ -4,6 +4,7 @@
     border: $border-width-base solid $color;
     color: $color;
     background-color: transparent;
+    padding: 1px 8px;
   } @else {
     background-color: $color;
     color: #fff;
@@ -15,8 +16,8 @@ $colorlist: $assist-color-orange $assist-color-yellow $assist-color-green $assis
 
 .nut-tag {
   cursor: pointer;
-  height: $tag-height-small;
-  padding: 0 9px;
+  min-height: $tag-height-small;
+  padding: 2px 9px;
   font-size: $font-size-small;
   border: none;
   outline: none;
@@ -25,8 +26,8 @@ $colorlist: $assist-color-orange $assist-color-yellow $assist-color-green $assis
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  // min-width: 42px;
-  width: 42px;
+  min-width: 42px;
+  max-width: 100%;
 
   @include text-ellipsis();
 
