@@ -29,8 +29,6 @@ $colorlist: $assist-color-orange $assist-color-yellow $assist-color-green $assis
   min-width: 42px;
   max-width: 100%;
 
-  @include text-ellipsis();
-
   // 默认 京东红
   @include tagColor($primary-color-jd-red, false);
 
