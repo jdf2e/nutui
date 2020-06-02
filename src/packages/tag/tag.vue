@@ -1,7 +1,7 @@
 <template>
-  <div :class="clsStyle" @click="clickHandler">
+  <span :class="clsStyle" @click="clickHandler">
     <slot></slot>
-  </div>
+  </span>
 </template>
 <script>
 export default {
