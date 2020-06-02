@@ -1,21 +1,21 @@
-# Tag 按钮
+# Tag 标签
 
 ## 基本用法 
 
-常规按钮
+常规标签
 
 ```html
 <nut-tag 
   @click="clickHandler"
   :disabled='disabled'
 >
-  去结算
+  标签
 </nut-tag>
 
 <nut-tag 
   disabled
 >
-  去结算（disabled）
+  标签
 </nut-tag>
 ```
 
@@ -28,8 +28,7 @@ export default {
     },
     methods: {
         clickHandler(e) {
-            // alert("我点击了按钮");
-            console.log(e, "我点击了按钮");
+            console.log(e, "我点击了标签");
             this.disabled = true;
             setTimeout(() => {
                 this.disabled = false;
@@ -39,211 +38,61 @@ export default {
 };
 ```
 
-常规按钮-小
+常规标签
 
 ```html
-<nut-tag 
-  small
->
-  去结算
+<nut-tag>
+  标签
 </nut-tag>
 
 <nut-tag 
-  small 
   disabled
 >
-  去结算（disabled）
+  标签
 </nut-tag>
 ```
 
+标签-颜色(枚举)
 
-通栏按钮
+默认京东红，可选颜色：jc-blue，orange，yellow，green，blue，purple，禁用状态 disabled
 
 ```html
-<nut-tag 
-  block
->
-  登录
-</nut-tag>
+<nut-tag circle>标签</nut-tag>
+<nut-tag circle color="jc-blue">标签</nut-tag>
+<nut-tag circle color="orange">标签</nut-tag>
+<nut-tag circle color="yellow">标签</nut-tag>
+<nut-tag circle color="green">标签</nut-tag>
+<nut-tag circle color="blue">标签</nut-tag>
+<nut-tag circle color="purple">标签</nut-tag>
+<nut-tag circle disabled>标签</nut-tag>
 ```
 
-通栏按钮-圆角
+标签-圆角
 
 ```html
-<nut-tag 
-  block 
-  shape="circle"
->
-  登录
-</nut-tag>
+<nut-tag circle> 登录 </nut-tag>
 ```
 
-圆角按钮-常规Button
+标签-空心
 
 ```html
-<nut-tag 
-  type="red" 
-  shape="circle" 
-  small
->
-  确认收货
-</nut-tag>
-
-<nut-tag 
-  type="gray" 
-  shape="circle" 
-  small
->
-  查看物流
-</nut-tag>
-
-<nut-tag 
-  type="default" 
-  shape="circle" 
-  small
->
-  再次购买
-</nut-tag>
-
-<nut-tag 
-  type="light" 
-  shape="circle" 
-  small
->
-  降价通知
-</nut-tag>
+<nut-tag hollow> 登录 </nut-tag>
 ```
 
-圆角按钮-标签Button
+标签型号-大小
 
 ```html
-<nut-tag
-  type="primary" 
-  shape="circle" 
-  small
->
-  京东快递
-</nut-tag>
-
-<nut-tag 
-  type="lightred" 
-  shape="circle" 
-  small
->
-  好评 6.6万
-</nut-tag>
-
-<nut-tag 
-  type="actived" 
-  shape="circle" 
-  icon="tick" 
-  small
->
-  全部 100万
-</nut-tag>
+<nut-tag>标签</nut-tag>
+<nut-tag size="middle">标签</nut-tag>
+<nut-tag @click="clickHandler" size="big">标签</nut-tag>
 ```
-
-图标按钮-小
-
-```html 
-<nut-tag 
-  type="actived" 
-  shape="circle" 
-  icon="tick" 
-  small
->
-</nut-tag>
-```
-
-图标按钮-大
-
-```html 
-<nut-tag 
-  type="actived" 
-  shape="circle" 
-  icon="tick"
->
-</nut-tag>
-```
-
-圆角按钮-商品属性选择Button
-
-```html
-<nut-tag 
-  type="actived" 
-  shape="circle" 
-  small
->
-  象牙白
-</nut-tag>
-
-<nut-tag 
-  type="light" 
-  shape="circle" 
-  small
->
-  皓月灰
-</nut-tag>
-
-<nut-tag 
-  type="dashed" 
-  shape="circle" 
-  small
->
-  晶钻蓝
-</nut-tag>
-```
-
-自定义颜色
-
-```html
-<nut-tag 
-  type="actived" 
-  shape="circle" 
-  small 
-  color="#fff"
->
-  象牙白
-</nut-tag>
-
-<nut-tag 
-  type="primary" 
-  shape="circle" 
-  small 
-  color="rgb(0,0,0)"
->
-  象牙白
-</nut-tag>
-
-<nut-tag 
-  type="actived" 
-  shape="circle" 
-  icon="tick" 
-  color="rgb(0,0,0)" 
-  small
->
-</nut-tag>
-
-<nut-tag 
-  type="actived" 
-  shape="circle" 
-  icon="tick" 
-  color="rgb(0,0,0)" 
-  small
->
-  全部 100万
-</nut-tag>
-      
-```
-
 
 ## Prop
 
 | 字段  | 说明                                                                                      | 类型    | 默认值 |
 | ----- | ----------------------------------------------------------------------------------------- | ------- | ------ |
-| type  | 按钮类型，可选类型包含：空、red、gray、light、lightred、primary、default、actived、dashed | String  | -      |
-| block | 是否为通栏                                                                                | Boolean | false  |
-| small | 是否为小号组件                                                                            | Boolean | false  |
-| shape | 形状配置，可选类型：空、circle                                                            | String  | -      |
-| icon  | 按钮前的图标，参考Icon组件                                                                | String  | -      |
-| color | 自定义颜色，包含文字与图片颜色                                                            | String  | -      |
+| color  | 按钮类型，可选类型包含：[red(默认), jc-blue, green, orange, yellow, blue, purple] | String  | red     |
+| disabled | 是否禁用状态                                                                                | Boolean | false  |
+| circle | 是否为圆角标签                                                                            | Boolean | false  |
+| hollow | 是否为空心标签                                                          | Boolean  | false      |
+| size  | 按钮型号，可选型号 small 默认，middle， big                                                            | String  | small     |
