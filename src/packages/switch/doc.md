@@ -2,7 +2,7 @@
 
 用来打开或关闭选项。
 
-## 基本用法
+## 基础样式
 
 ```html
 <nut-switch 
@@ -30,7 +30,7 @@ export default {
 
 ## 自定义尺寸
 
-内置 **small**，**base**，**large** 三种规格供使用。
+内置 **small**，**base** 两种规格供使用。
 ```html
 <nut-switch 
   :active="true" 
@@ -39,10 +39,6 @@ export default {
 <nut-switch 
   :active="true" 
   size="base"
->
-<nut-switch 
-  :active="true" 
-  size="large"
 >
 ```
 
@@ -87,5 +83,5 @@ export default {
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
 | active | 开关状态 | Boolean | false
-| size | 尺寸，可选值small/base/large | String | base
+| size | 尺寸，可选值small/base | String | base
 | disabled | 是否禁用 | Boolean | false

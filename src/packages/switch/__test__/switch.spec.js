@@ -56,14 +56,6 @@ describe('Switch.vue', () => {
         })
     });
 
-    it('尺寸设置为large', () => {
-        wrapper.setProps({ size: 'large' });
-
-        return Vue.nextTick().then(function () {
-            expect(wrapper.contains('.nut-switch-large')).toBe(true);
-        })
-    });
-
     it('打开状态点击关闭', () => {
         wrapper.setProps({ active: true });
         wrapper.trigger('click');
