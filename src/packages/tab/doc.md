@@ -1,18 +1,19 @@
 # Tab 选项卡
 
-常用于平级区域大块内容的的收纳和展现。
+常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式。
 
 > 注意，使用该组件需要在引入 nut-tab-panel 组件
 
 `import { TabPanel } from "@nutui/nutui";`
 
-## 基本用法
+## 基础样式
 
 ```html
 <nut-tab @tab-switch="tabSwitch">
-    <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
-    <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
-    <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
+    <nut-tab-panel tab-title="页签一">这里是页签1内容</nut-tab-panel>
+    <nut-tab-panel tab-title="页签二">这里是页签2内容</nut-tab-panel>
+    <nut-tab-panel tab-title="页签三">这里是页签3内容</nut-tab-panel>
+    <nut-tab-panel tab-title="页签四">这里是页签4内容</nut-tab-panel>
 </nut-tab>
 ```
 ```javascript
@@ -25,97 +26,135 @@ export default {
 };
 ```
 
-## 使用数据渲染，支持上/下/左/右四个样式；
+## 禁用样式：
 
 ```html
-<nut-tab @tab-switch="tabSwitch"  position-nav="bottom">
-    <nut-tab-panel 
-      v-for="value in editableTabs" 
-      v-bind:key="value.tabTitle" 
-      :tab-title="value.tabTitle" 
-      :icon-url="value.tabUrl" 
-      v-html="value.content"
-    >
-    </nut-tab-panel>
+<nut-tab @tab-switch="tabSwitch">
+    <nut-tab-panel tab-title="页签一">这里是页签1内容</nut-tab-panel>
+    <nut-tab-panel tab-title="页签二">这里是页签2内容</nut-tab-panel>
+    <nut-tab-panel tab-title="页签三" :disable="true">这里是页签3内容</nut-tab-panel>
+    <nut-tab-panel tab-title="页签四">这里是页签4内容</nut-tab-panel>
+</nut-tab>
+```
+
+## 超出界面宽度
+```html
+<nut-tab @tab-switch="tabSwitch" :is-scroll="true">
+  <nut-tab-panel
+    v-for="value in editableTabs"
+    v-bind:key="value.tabTitle"
+    :tab-title="value.tabTitle"
+    :icon-url="value.iconUrl"
+    v-html="value.content"
+  ></nut-tab-panel>
 </nut-tab>
 ```
 ```javascript
 export default {
   data() {
-    return {
-      positionNavCurr:'top',
-      editableTabs:[
-        {
-          'tabTitle':'衣物',
-          'tabUrl':'http://img13.360buyimg.com/uba/jfs/t27280/289/2061314663/2392/872e32ff/5bf76318Ndc80c1d8.jpg',
-          'content':'<p>衣物内容</p>'
-        },
-        {
-          'tabTitle':'日用品',
-          'tabUrl':'http://img13.360buyimg.com/uba/jfs/t30331/209/562746340/2190/6619973d/5bf763aaN6ff02099.jpg',
-          'content':'<p>日用品内容</p>'
-        },
-        {
-          'tabTitle':'器材',
-          'tabUrl':'http://img20.360buyimg.com/uba/jfs/t30346/262/553689202/2257/5dfa3983/5bf76407N72deabf4.jpg',
-          'content':'<p>运动器材内容</p>'
-        },
-        {
-          'tabTitle':'电影票',
-          'tabUrl':'http://img10.360buyimg.com/uba/jfs/t26779/215/2118525153/2413/470d1613/5bf767b2N075957b7.jpg',
-          'content':'<p>电影票内容</p>'
-        }
-      ]
-    };
-  },
-  methods: {
-      tabSwitch:function(index,event){
-        console.log(index+'--'+event);
+      return {
+          editableTabs: [
+          {
+            tabTitle: "推荐分类",
+            iconUrl: "",
+            content: "<p>这里是推荐分类内容</p>"
+          },
+          {
+            tabTitle: "家电清洗",
+            iconUrl: "",
+            content: "<p>这里是家电清洗内容</p>"
+          },
+          {
+            tabTitle: "箱包养护",
+            iconUrl: "",
+            content: "<p>这里是箱包养护内容</p>"
+          },
+          {
+            tabTitle: "屏幕换新",
+            iconUrl: "",
+            content: "<p>这里是屏幕换新内容</p>"
+          },
+          {
+            tabTitle: "电池换新",
+            iconUrl: "",
+            content: "<p>这里是电池换新内容</p>"
+          },
+          {
+            tabTitle: "内存升级",
+            iconUrl: "",
+            content: "<p>这里是内存升级内容</p>"
+          },
+          {
+            tabTitle: "家电服务",
+            iconUrl: "",
+            content: "<p>这里是家电服务内容</p>"
+          }
+        ]
       }
   }
 };
 ```
-## 支持滑动选择多个页签
+
+## 纵向tab切换
 
 ```html
-  <nut-tab @tab-switch="tabSwitch" :is-scroll="true">
-      <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
-      <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
-      <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
-      <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
-      <nut-tab-panel tab-title="页签5">页签5</nut-tab-panel>
-      <nut-tab-panel tab-title="页签6">页签6</nut-tab-panel>
-      <nut-tab-panel tab-title="页签7">页签7</nut-tab-panel>
-  </nut-tab>
+<nut-tab @tab-switch="tabSwitch" position-nav="left" :wrapper-height="350">
+  <nut-tab-panel
+    v-for="value in editableTabs"
+    v-bind:key="value.tabTitle"
+    :tab-title="value.tabTitle"
+    :icon-url="value.iconUrl"
+    v-html="value.content"
+  ></nut-tab-panel>
+</nut-tab>
 ```
 
+## 纵向tab切换超出界面高度，设置tab区域高度
+
 ```html
-  <nut-tab @tab-switch="tabSwitch" :is-scroll="true" position-nav="left">
-      <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
-      <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
-      <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
-      <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
-      <nut-tab-panel tab-title="页签5">页签5</nut-tab-panel>
-      <nut-tab-panel tab-title="页签6">页签6</nut-tab-panel>
-      <nut-tab-panel tab-title="页签7">页签7</nut-tab-panel>
-  </nut-tab>
+<nut-tab @tab-switch="tabSwitch" position-nav="left" :is-scroll="true" :wrapper-height="200">
+  <nut-tab-panel
+    v-for="value in editableTabs"
+    v-bind:key="value.tabTitle"
+    :tab-title="value.tabTitle"
+    :icon-url="value.iconUrl"
+    v-html="value.content"
+  ></nut-tab-panel>
+</nut-tab>
 ```
 
-## 禁止选中，默认选中某个标签,如需更新数组后，重新渲染Tab页面，请将更新数组传入init-data
+## 设置可以滑动的线段
 
 ```html
-<nut-tab :def-index="1" class="customer-css" @tab-switch="tabSwitch" :contentShow="true" :init-data="disableTabs">
-    <nut-tab-panel
+<nut-tab @tab-switch="tabSwitch" :tab-line="false" :scroll-line="true">
+    <nut-tab-panel tab-title="页签一">这里是页签1内容</nut-tab-panel>
+    <nut-tab-panel tab-title="页签二">这里是页签2内容</nut-tab-panel>
+    <nut-tab-panel tab-title="页签三">这里是页签3内容</nut-tab-panel>
+    <nut-tab-panel tab-title="页签四">这里是页签4内容</nut-tab-panel>
+</nut-tab>
+```
+
+## 若更新页面，将监听变化的数据传入init-data，且可以自定义class类名，样式覆盖
+```html
+<nut-tab 
+  :def-index="defIndex" 
+  class="customer-css" 
+  :tab-line="false" 
+  @tab-switch="tabSwitch" 
+  :init-data="disableTabs"  
+  :scroll-line="true">
+  <nut-tab-panel
     v-for="value in disableTabs"
     v-bind:key="value.tabTitle"
     :tab-title="value.tabTitle"
+    :icon-url="value.iconUrl"
     :disable="value.disable"
     v-html="value.content"
   ></nut-tab-panel>
 </nut-tab>
 <div style="width:100%;height=50px;text-align:center">
-  <Button @click="resetHandler" type="light">重置Tab页面</Button>
-  <Button @click="clickHandler">更新Tab页面</Button>
+  <nut-button @click="resetHandler" type="light">重置Tab页面</nut-button>
+  <nut-button @click="clickHandler">更新Tab页面</nut-button>
 </div>
 ```
 
@@ -128,7 +167,7 @@ export default {
       disableTabs:[
         {
           'tabTitle':'衣物',
-          'disable':false,
+          'disable':true,
           'tabUrl':'http://img13.360buyimg.com/uba/jfs/t27280/289/2061314663/2392/872e32ff/5bf76318Ndc80c1d8.jpg',
           'content':'<p>衣物内容</p>'
         },
@@ -187,7 +226,7 @@ export default {
           let newEditableTabs = [
           {
             tabTitle: "衣物",
-            disable: false,
+            disable: true,
             iconUrl:
               "http://img13.360buyimg.com/uba/jfs/t27280/289/2061314663/2392/872e32ff/5bf76318Ndc80c1d8.jpg",
             content: "<p>衣物内容</p>"
@@ -227,8 +266,11 @@ export default {
 | position-nav | 页签栏的分布，可选值 top/bottom/left/right | String | top
 | def-index | 默认选中的页签栏 | String | 1
 | init-data | 监听数据变化，渲染更新页面 | Array | []
-| is-show-line|是否显示tab切换时的红条|Boolean|true|
-| is-scroll|是否支持滑动选择多个页签|Boolean|false|
+| scroll-line|是否显示tab切换时，滑动效果的红条|Boolean|false|
+| tab-line|是否显示tab切换时，无滑动效果的active红条|Boolean|true|
+| is-scroll|是否支持超出范围后，滑动选择多个页签|Boolean|false|
+| wrapper-height |设置tab区域的高度，只有在positionNav=left或者right 的情况下有效|Number/String|200|
+
 
 ### nut-tab-panel
 

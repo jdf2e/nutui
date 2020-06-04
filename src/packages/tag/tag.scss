@@ -1,0 +1,70 @@
+
+@mixin tagColor($color, $hollow) {
+  @if ($hollow == true) {
+    border: $border-width-base solid $color;
+    color: $color;
+    background-color: transparent;
+    padding: 1px 8px;
+  } @else {
+    background-color: $color;
+    color: #fff;
+  }
+}
+
+$colors: 'orange' 'yellow' 'green' 'blue' 'purple' 'jc-blue';
+$colorlist: $assist-color-orange $assist-color-yellow $assist-color-green $assist-color-blue $assist-color-purple $primary-color-jc-blue;
+
+.nut-tag {
+  cursor: pointer;
+  min-height: $tag-height-small;
+  padding: 2px 9px;
+  font-size: $font-size-small;
+  border: none;
+  outline: none;
+  border-radius: $tag-border-radius;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  max-width: 100%;
+
+  // 默认 京东红
+  @include tagColor($primary-color-jd-red, false);
+
+  &.hollow {
+    @include tagColor($primary-color-jd-red, true);
+  }
+  
+  // 京牛蓝 jc-blue 其它颜色枚举：orange yellow green blue purple
+  @for $i from 1 to length($colors) + 1 {
+    &.#{nth($colors, $i)} {
+      @include tagColor(nth($colorlist, $i), false);
+      &.hollow {
+        @include tagColor(nth($colorlist, $i), true);
+      }
+    }
+  }
+
+  // disabled 状态颜色
+  &.disabled {
+    @include tagColor($assist-color-light-gray, false);
+
+    &.hollow {
+      @include tagColor($assist-color-gray, true);
+    }
+  }
+
+  // size-中号
+  &.middle {
+    height: $tag-height-middle;
+  }
+  // size-大号
+  &.big {
+    height: $tag-height-big;
+  }
+  // circle-圆角
+  &.circle {
+    border-radius: $tag-border-radius-circle;
+  }
+}

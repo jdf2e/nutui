@@ -37,8 +37,6 @@ import Steps from './packages/steps/index.js';
 import './packages/steps/steps.scss';
 import Button from './packages/button/index.js';
 import './packages/button/button.scss';
-import Badge from './packages/badge/index.js';
-import './packages/badge/badge.scss';
 import Rate from './packages/rate/index.js';
 import './packages/rate/rate.scss';
 import Stepper from './packages/stepper/index.js';
@@ -55,10 +53,6 @@ import CheckBox from './packages/checkbox/index.js';
 import './packages/checkbox/checkbox.scss';
 import Skeleton from './packages/skeleton/index.js';
 import './packages/skeleton/skeleton.scss';
-import Scroller from './packages/scroller/index.js';
-import './packages/scroller/scroller.scss';
-import InfiniteLoading from './packages/infiniteloading/index.js';
-import './packages/infiniteloading/infiniteloading.scss';
 import Uploader from './packages/uploader/index.js';
 import './packages/uploader/uploader.scss';
 import TextInput from './packages/textinput/index.js';
@@ -80,6 +74,8 @@ import SideNavBarItem from './packages/sidenavbaritem/index.js';
 import './packages/sidenavbaritem/sidenavbaritem.scss';
 import Address from './packages/address/index.js';
 import './packages/address/address.scss';
+import Tag from './packages/tag/index.js';
+import './packages/tag/tag.scss';
 
 const packages = {
   Cell,
@@ -101,7 +97,6 @@ const packages = {
   Row,
   Steps,
   Button,
-  Badge,
   Rate,
   Stepper,
   SearchBar,
@@ -110,8 +105,6 @@ const packages = {
   RadioGroup,
   CheckBox,
   Skeleton,
-  Scroller,
-  InfiniteLoading,
   Uploader,
   TextInput,
   TextBox,
@@ -122,7 +115,8 @@ const packages = {
   SideNavBar: SideNavBar,
   SubSideNavBar: SubSideNavBar,
   SideNavBarItem: SideNavBarItem,
-  Address: Address
+  Address: Address,
+  Tag: Tag
 };
 
 const components = {};
