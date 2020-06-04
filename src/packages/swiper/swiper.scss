@@ -1,0 +1,98 @@
+.nut-swiper {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  .nut-swiper-wrap {
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    height: 100%;
+    transition: all 0ms ease;
+    -webkit-transition: all 0ms ease;
+  }
+  .nut-swiper-slide {
+    overflow: hidden;
+    flex-shrink: 0;
+    -webkit-flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    cursor: default;
+    position: relative;
+    @keyframes nut-preloader-spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .nut-lazy {
+      &.img {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+      &.preloader {
+        width: 42px;
+        height: 42px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -21px;
+        margin-top: -21px;
+        z-index: 10;
+        transform-origin: 50%;
+        animation: nut-preloader-spin 1s infinite linear;
+        box-sizing: border-box;
+        border: 4px solid #fff;
+        border-radius: 50%;
+        border-top-color: transparent;
+      }
+    }
+  }
+  &.horizontal .nut-swiper-wrap {
+    flex-direction: row;
+    -webkit-flex-direction: row;
+  }
+  &.vertical .nut-swiper-wrap {
+    flex-direction: column;
+    -webkit-flex-direction: column;
+  }
+  .nut-swiper-pagination {
+    position: absolute;
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #000;
+      opacity: 0.2;
+      transition: all 0.5s ease;
+      -webkit-transition: all 0.5s ease;
+    }
+    .swiper-pagination-bullet.active {
+      background-color: #007aff;
+      opacity: 1;
+    }
+  }
+
+  &.vertical .nut-swiper-pagination {
+    right: 10px;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    -webkit-transform: translate3d(0, -50%, 0);
+    .swiper-pagination-bullet {
+      display: block;
+      margin: 6px 0;
+    }
+  }
+  &.horizontal .nut-swiper-pagination {
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    .swiper-pagination-bullet {
+      display: inline-block;
+      margin: 0 3px;
+    }
+  }
+  img {
+    pointer-events: none;
+  }
+}

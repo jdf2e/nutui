@@ -368,6 +368,26 @@
       "sort": "0",
       "showDemo": true,
       "author": "ivanwancy"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Swiper",
+      "chnName": "滑动切换",
+      "desc": "Swiper 滑动切换",
+      "type": "component",
+      "sort": "0",
+      "showDemo": true,
+      "author": "ivanwancy"
+    },
+    {
+      "version": "1.0.0",
+      "name": "ImagePreview",
+      "chnName": "图片预览",
+      "desc": "ImagePreview 图片预览",
+      "type": "component",
+      "sort": "0",
+      "showDemo": true,
+      "author": "ivanwancy"
     }
   ]
 }
