@@ -26,5 +26,16 @@ describe('Rate.vue', () => {
         wrapper.findAll('.nut-rate-item').at(2).trigger('click');
         expect(wrapper.findAll('.nut-rate-item').at(2).is('.nut-rate-active')).toBe(true)
     });
-
+    
+    //只读状态点击
+    it('只读点击评分', () => {
+        wrapper.setProps({ readOnly: true });
+        wrapper.findAll('.nut-rate-item').at(2).trigger('click');
+        expect(wrapper.findAll('.nut-rate-item').at(2).is('.nut-rate-active')).toBe(true)
+    });
+    //点击半星
+    it('点击半星', () => {
+        wrapper.findAll('.halfstar_contain').at(2).trigger('click');
+        expect(wrapper.findAll('.halfstar_contain').at(2).is('.nut-rate-half-active')).toBe(true)
+    });
 });
