@@ -10,7 +10,7 @@
     position: relative;
     -webkit-appearance: none;
     border: 1px solid $border-color-base;
-    border-radius: 1%;
+    border-radius: 50%;
     background-size: cover;
     outline: 0;
     opacity: 1;
@@ -25,7 +25,7 @@
       height: 0;
       transform: translate(-50%, -50%);
       background: $primary-color;
-      border-radius: 1%;
+      border-radius: 50%;
       opacity: 0;
       pointer-events: none;
     }
@@ -36,18 +36,19 @@
       background-position: center;
       border-color: $primary-color;
       background-size: 60%;
+      // border-radius: 50%;
       box-shadow: 0 4px 6px 0 rgba($primary-color, 0.15);
       &:not(:disabled).nut-checkbox-ani::after {
         animation: nutPulse $animation-duration;
       }
     }
     &:disabled {
-      background-color: $disabled-bg;
-      border-color: $disabled-color;
+      background-color: $disabled-bg-1;
+      border-color: $disabled-border;
       box-shadow: none;
       &:checked {
         @include nut-checkbox-bg('999999');
-        background-color: $disabled-bg;
+        background-color: $disabled-bg-1;
       }
     }
   }
