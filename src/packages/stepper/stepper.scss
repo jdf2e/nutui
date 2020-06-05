@@ -1,5 +1,6 @@
 .nut-stepper {
   border: 1px solid #dedede;
+
   .nut-stepper-fake,
   .nut-stepper-fake- {
     background: #fff;
@@ -8,12 +9,12 @@
     }
   }
   span {
-    &:first-child {
-      border-right: 1px solid #dedede;
-    }
-    &:last-child {
-      border-left: 1px solid #dedede;
-    }
+    // &:first-child {
+    //   border-right: 1px solid #dedede;
+    // }
+    // &:last-child {
+    //   border-left: 1px solid #dedede;
+    // }
   }
 }
 .nut-stepper-simple {
@@ -21,13 +22,13 @@
     font-weight: bold;
   }
   input {
-    background: #f6f6f6;
+    background: #F7F7F7;
   }
   .nut-stepper-fake,
   .nut-stepper-fake- {
-    background: #f6f6f6;
+    background: #F7F7F7;
     div {
-      background: #f6f6f6;
+      background: #F7F7F7;
     }
   }
 }
@@ -56,9 +57,27 @@
     text-align: center;
     font-size: 13px;
   }
+  .oper-wrapper{
+    width: 32px;
+    height: 32px;
+    background: #F7F7F7;
+    position: relative;
+  }
+  .add-wrapper {
+    margin-left: 1px;
+  }
+  .reduce-wrapper {
+    margin-right: 1px;
+  }
   span {
+    height: 18px;
+    width: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -9px;
+    margin-left: -9px;
     color: #666;
-    width: 25%;
     text-align: center;
     cursor: pointer;
     padding: 0;
@@ -94,3 +113,4 @@
     }
   }
 }
+

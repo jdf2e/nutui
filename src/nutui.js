@@ -76,6 +76,10 @@ import Address from './packages/address/index.js';
 import './packages/address/address.scss';
 import Tag from './packages/tag/index.js';
 import './packages/tag/tag.scss';
+import Swiper from './packages/swiper/index.js';
+import './packages/swiper/swiper.scss';
+import ImagePreview from './packages/imagepreview/index.js';
+import './packages/imagepreview/imagepreview.scss';
 
 const packages = {
   Cell,
@@ -116,7 +120,9 @@ const packages = {
   SubSideNavBar: SubSideNavBar,
   SideNavBarItem: SideNavBarItem,
   Address: Address,
-  Tag: Tag
+  Tag,
+  Swiper,
+  ImagePreview
 };
 
 const components = {};

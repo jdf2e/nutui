@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>加</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Data-Entry-/stepper-展示" transform="translate(-330.000000, -156.000000)">
+            <g id="编组-2" transform="translate(226.000000, 146.000000)">
+                <g id="加" transform="translate(101.000000, 7.000000)">
+                    <rect id="矩形" stroke="#979797" fill="#D8D8D8" opacity="0" x="0.5" y="0.5" width="17" height="17"></rect>
+                    <g id="编组" transform="translate(2.000000, 3.000000)" fill="#989898" fill-rule="nonzero">
+                        <g id="编组-3" transform="translate(0.500000, 0.000000)">
+                            <path d="M11.4842495,5 C12.0365343,5 12.4842495,5.44771525 12.4842495,6 C12.4842495,6.51283584 12.0982094,6.93550716 11.6008707,6.99327227 L11.4842495,7 L1.52733975,7 C0.975055,7 0.52733975,6.55228475 0.52733975,6 C0.52733975,5.48716416 0.91337994,5.06449284 1.41071862,5.00672773 L1.52733975,5 L11.4842495,5 Z" id="路径-29备份"></path>
+                            <path d="M6.5,0 C7.01283584,0 7.43550716,0.38604019 7.49327227,0.883378875 L7.5,1 L7.5,11 C7.5,11.5522847 7.05228475,12 6.5,12 C5.98716416,12 5.56449284,11.6139598 5.50672773,11.1166211 L5.5,11 L5.5,1 C5.5,0.44771525 5.94771525,0 6.5,0 Z" id="路径-29备份"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

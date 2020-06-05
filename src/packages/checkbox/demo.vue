@@ -143,7 +143,7 @@ export default {
 <style lang="scss">
 .nut-checkbox.my-checkbox {
   input:checked {
-    background-image: radial-gradient(circle, #fff 0%, #fff 100%, $primary-color 60%);
+    background-image: radial-gradient(circle, #fff 0%, #fff 50%, $primary-color 60%);
     background-size: 50% 50%;
     border: none;
   }
