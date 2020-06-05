@@ -1,6 +1,6 @@
 <template>
   <div :class="{ 'nut-stepper': !simple, 'nut-stepper-simple': simple }">
-    <span @click="reduce()" :class="{ 'nut-stepper-grey': isGray }" v-html="require('../../assets/svg/minus.svg')"> </span>
+    <div class="oper-wrapper reduce-wrapper" @click="reduce()"><span  :class="{ 'nut-stepper-grey': isGray }" v-html="require('../../assets/svg/reduce.svg')"> </span></div>
     <input
       type="number"
       :min="minNum"
@@ -41,7 +41,7 @@
       <div>{{ animNum[0] }}</div>
       <div>{{ animNum[1] }}</div>
     </div>
-    <span @click="add()" :class="{ 'nut-stepper-grey': max && Number(num) > max - step }" v-html="require('../../assets/svg/plus.svg')"> </span>
+    <div class="oper-wrapper add-wrapper" @click="add()"><span  :class="{ 'nut-stepper-grey': max && Number(num) > max - step }" v-html="require('../../assets/svg/add.svg')"> </span></div>
   </div>
 </template>
 <script>
