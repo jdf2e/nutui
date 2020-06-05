@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="nut-imagepreview">
     <nut-popup v-model="value">
       <nut-swiper
         class="nut-imagepreview-swiper"
@@ -46,10 +46,4 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-.popup-box {
-  height: 100%;
-  overflow: visible;
-  background-color: transparent;
-}
-</style>
+<style lang="scss"> </style>

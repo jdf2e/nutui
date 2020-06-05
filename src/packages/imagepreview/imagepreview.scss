@@ -25,6 +25,14 @@
       transform: rotateZ(180deg);
     }
   }
+
+  .popup-bg {
+    background: rgba(0,0,0,0.9);;
+  }
+  
+  .popup-box {
+    height: 100%;
+    overflow: visible;
+    background-color: transparent;
+  }
 }
-
-
