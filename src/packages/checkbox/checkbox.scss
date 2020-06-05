@@ -47,7 +47,7 @@
       border-color: $disabled-border;
       box-shadow: none;
       &:checked {
-        @include nut-checkbox-bg('999999');
+        @include nut-checkbox-bg('dcdcdc');
         background-color: $disabled-bg-1;
       }
     }
