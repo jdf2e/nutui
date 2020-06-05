@@ -31,9 +31,9 @@ export default {
       type: Boolean,
       default: false
     },
-    small: {
-      type: Boolean,
-      default: false
+    size: {
+      type: String,
+      default: 'big'
     },
     label: {
       type: Boolean,
@@ -50,10 +50,10 @@ export default {
   computed: {
     clsStyle() {
       let cls = `nut-button ${this.type} ${this.shape} 
-            ${this.small ? ' small' : ''} 
+            ${this.size} 
             ${this.block ? ' block' : ''} 
             ${this.label ? ' label' : ''}
-            ${!this.$slots.default ? (this.small ? 'no-txt-small' : 'no-txt') : ''}`;
+            ${!this.$slots.default ? `no-txt-${this.size}` : ''}`;
       return cls;
     }
   },

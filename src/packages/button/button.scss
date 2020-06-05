@@ -5,6 +5,9 @@
 }
 
 .nut-button {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
   cursor: pointer;
   height: $btn-height-big;
   padding: 0 $btn-height-big;
@@ -13,23 +16,44 @@
   color: $btn-gradient-color;
   background: $btn-gradient-bg;
   border: none;
-  box-sizing: border-box;
+  border-radius: $btn-border-radius-base;
+  transition: opacity .2s;
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    border: inherit;
+    border-color: black;
+    border-radius: inherit; /* inherit parent's border radius */
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    content: ' ';
+  }
+
+  &:active::before {
+    opacity: .1;
+  }
 
   &[disabled] {
     cursor: not-allowed;
     background: $btn-disable-bg;
-    color: $btn-disable-color;
+    color: $btn-gradient-color;
   }
 
   // type-label
   .txt-icon {
     vertical-align: text-top;
-    width: $btn-icon-height-big;
-    height: $btn-icon-height-big;
     margin-right: $btn-icon-margin;
     color: $primary-color;
   }
-
+  &.bottom{
+    background: $btn-primary-color;
+    border: $border-width-base solid $split-line-color;
+    color: $text-black-3;    
+  }
   &.red {
     background: $btn-default-bg;
     border: $border-width-base solid $primary-color;
@@ -63,13 +87,11 @@
     color: $title-color;
     border: $border-width-base solid $btn-default-border;
   }
-
   &.actived {
     background: $btn-label-light-bg;
     color: $primary-color;
     border: $border-width-base solid $primary-color;
-  }
-
+  }  
   &.dashed {
     background: $btn-default-bg;
     color: $title-color;
@@ -81,7 +103,18 @@
     width: 100%;
     border-radius: 0;
   }
-
+  // size-大号
+  &.big {
+    height: $btn-height-big;
+    padding: 0 $btn-height-big/2;
+    font-size: $font-size-big;
+  }
+  // size-中号
+  &.middle {
+    height: $btn-height-middle;
+    padding: 0 $btn-height-middle/2;
+    font-size: $font-size-middle;
+  }
   // size-小号
   &.small {
     height: $btn-height-small;
@@ -89,17 +122,26 @@
     font-size: $font-size-small;
   }
 
-  &.no-txt-small {
-    width: $btn-height-small;
+
+
+  &.no-txt-big {
+    width: $btn-height-big;
     padding: 0;
 
     .txt-icon {
       margin: 0;
     }
   }
+  &.no-tx-middle {
+    width: $btn-height-middle;
+    padding: 0;
 
-  &.no-txt {
-    width: $btn-height-big;
+    .txt-icon {
+      margin: 0;
+    }
+  }
+  &.no-txt-small {
+    width: $btn-height-small;
     padding: 0;
 
     .txt-icon {
