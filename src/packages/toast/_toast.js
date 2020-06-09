@@ -40,7 +40,7 @@ function _showToast() {
 
 function _getInstance(obj) {
   let opt = {
-    id: new Date().getTime(),
+    id: 1,
     ...currentOptions,
     ...defaultOptionsMap[obj.type],
     ...obj

@@ -42,15 +42,15 @@ const overlayManager = {
 
   //打开遮罩层
   openModal(vm, config) {
-    let { zIndex, duration, className, customStyle } = config;
-
+    let { zIndex, duration, overlayClass, overlayStyle} = config;
+ 
     modalStack.push({
       vm,
       config: {
         zIndex,
         duration,
-        className,
-        customStyle,
+        overlayClass,
+        overlayStyle,
       },
     });
 
@@ -105,8 +105,8 @@ const overlayProps = {
     default: "",
   },
   overlayStyle: {
-    type: String,
-    default: "",
+    type: Object,
+    default: {},
   },
   zIndex: {
     type: Number

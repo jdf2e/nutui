@@ -2,7 +2,7 @@
   <transition name="popup-fade">
     <div
       @touchmove.stop="touchmove"
-      :style="{ animationDuration: `${duration}s`, overlayStyle, zIndex }"
+      :style="{ animationDuration: `${duration}s`, ...overlayStyle, zIndex }"
       v-show="value"
       class="popup-bg nut-mask"
       :class="overlayClass"
@@ -36,8 +36,8 @@ const overlayProps = {
     default: "",
   },
   overlayStyle: {
-    type: String,
-    default: "",
+    type: Object,
+    default: {},
   },
   zIndex: {
     type: Number
@@ -47,6 +47,7 @@ export { overlayProps };
 export default {
   name: "nut-popup-overlay",
   props: overlayProps,
+   
   methods: {
     touchmove(e) {
       if (this.lockScroll) {
