@@ -2,6 +2,16 @@
 .nut-toast{
   width: 100%;
   text-align: center;
+  &.popup-box{
+    background-color: transparent;
+  }
+  
+  &.nut-toast-buttom {
+    bottom: 150px;
+    top: auto;
+    left: 0;
+    transform: initial;
+  }
 }
   .nut-toast-small {
     .nut-toast-inner {
@@ -70,10 +80,7 @@
       }
     }
   }
-  .nut-toast-center {
-    top: 50%;
-    transform: translateY(-50%);
-  }
+  
   .nut-loading {
     .nut-toast-inner {
       padding: 25px;

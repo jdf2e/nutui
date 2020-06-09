@@ -26,8 +26,8 @@
     <h4>共享实例</h4>
 
     <div class="demo-content">
-      <nut-button size="middle" @click.native="idToast1('我设置了id为123')">我设置了id为123</nut-button>
-      <nut-button size="middle" @click.native="idToast2('我设置了id为321')">我设置了id为321</nut-button>
+      <nut-button size="middle" @click.native="idToast1('我设置了id为1')">我设置了id为1</nut-button>
+      <nut-button size="middle" @click.native="idToast2('我设置了id为2')">我设置了id为2</nut-button>
     </div>
 
     <h4>更改默认配置</h4>
@@ -101,10 +101,10 @@ export default {
       });
     },
     idToast1(msg) {
-      this.$toast.success(msg, { id: 123 });
+      this.$toast.success(msg, { id: 1 ,center:false,bottom:450});
     },
     idToast2(msg) {
-      this.$toast.text(msg, { id: 321, duration: 4000 });
+      this.$toast.fail(msg, { id: 2,center:false,bottom:300 });
     },
     setDefaultOptions() {
       this.$toast.setDefaultOptions({

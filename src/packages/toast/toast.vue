@@ -4,9 +4,11 @@
       :overlay='cover'
       :class="toastClass"
       v-model="visible"
+      :closeOnClickOverlay='closeOnClickOverlay'
       :overlayStyle='{backgroundColor:coverColor}'
       class="nut-toast"
-      :style="{backgroundColor:'transparent'}"
+      :style="{ bottom: center?'auto':bottom + 'px'}"
+      @click="clickCover"
     >
       <div
         class="nut-toast-inner"
@@ -40,7 +42,7 @@ export default {
       center: true,
       type: '',
       customClass: '',
-      bottom: 30,
+      bottom: '',
       size: 'base',
       icon: null,
       textAlignCenter: true,
@@ -54,6 +56,7 @@ export default {
       closeOnClickOverlay: false
     };
   },
+  
   watch: {
     visible(val) {
       if (val) {
@@ -68,7 +71,7 @@ export default {
     toastClass() {
       return [
         'nut-toast',
-        { 'nut-toast-center': this.center },
+        { 'nut-toast-buttom': !this.center },
         { 'nut-toast-has-icon': this.hasIcon }, 
         { 'nut-loading': this.type == 'loading' },
         this.customClass,
@@ -112,7 +115,11 @@ export default {
         this.timer = null;
       }
     },
-    
+    clickCover() {
+      if (this.closeOnClickOverlay) {
+        this.hide();
+      }
+    }
   },
   destroyed() {
     this.textTimer = null;
