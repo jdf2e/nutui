@@ -63,7 +63,7 @@ export default {
     },
     isSingleVal() {
       if (this.isDot) return false;
-      return this.value.toString().length === 1;
+      return this.value && this.value.toString().length === 1;
     },
     isMaxVal() {
       if (this.isDot) return false;

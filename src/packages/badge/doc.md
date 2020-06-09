@@ -5,114 +5,73 @@
 ## 基本用法
 
 ```html
-<nut-badge 
-    :value="9" 
+<nut-badge
+    :isDot="true"
+    class="item"
+>
+    拜访提醒
+</nut-badge>
+
+<nut-badge
+    :isDot="true"
     class="item"
 >
     <div class="demo-svg"></div>
 </nut-badge>
 
-<nut-badge 
-    :value="9" 
-    class="item"
->
-    购物车
-</nut-badge>
-
-<nut-badge 
-    :value="9" 
-    class="item"
->
-    <nut-button>
-        购物车
-    </nut-button>
-</nut-badge>
 ```
 
-## Max用法
+## 数字角标
 
 ```html
-<nut-badge 
-    :value="200" 
-    :max="99" 
+<nut-badge
+    :value="9"
+    :max="99"
+    class="item"
+>
+    拜访提醒
+</nut-badge>
+
+<nut-badge
+    :value="99"
+    :max="99"
+    class="item"
+>
+    拜访提醒
+</nut-badge>
+
+<nut-badge
+    :value="200"
+    :max="99"
+    class="item"
+>
+    拜访提醒
+</nut-badge>
+
+<nut-badge
+    :value="9"
+    :max="99"
     class="item"
 >
     <div class="demo-svg"></div>
 </nut-badge>
 
-<nut-badge 
-    :value="200" 
-    :max="99" 
-    class="item"
->
-    购物车
-</nut-badge>
-
-<nut-badge 
-    :value="200" 
-    :max="99" 
-    class="item"
->
-    <nut-button>
-        购物车
-    </nut-button>
-</nut-badge>
-```
-
-## 文字用法
-
-```html
-<nut-badge 
-    value="new" 
+<nut-badge
+    :value="99"
+    :max="99"
     class="item"
 >
     <div class="demo-svg"></div>
 </nut-badge>
 
-<nut-badge 
-    value="new" 
-    class="item"
->
-    购物车
-</nut-badge>
-
-<nut-badge 
-    value="new" 
-    :max="99" 
-    class="item"
->
-    <nut-button>
-        购物车
-    </nut-button>
-</nut-badge>
-```
-
-## 小圆点
-
-```html
-<nut-badge 
-    :isDot="true" 
+<nut-badge
+    :value="200"
+    :max="99"
     class="item"
 >
     <div class="demo-svg"></div>
 </nut-badge>
 
-<nut-badge 
-    :isDot="true" 
-    class="item"
->
-    文字内容
-</nut-badge>
-
-<nut-badge 
-    :isDot="true" 
-    :max="99" 
-    class="item"
->
-    <nut-button>
-        购物车
-    </nut-button>
-</nut-badge>
 ```
 
 ## 自定义位置
@@ -124,8 +83,7 @@
     right="10px" 
     class="item"
 >
-    <div class="demo-svg">
-    </div>
+    <div class="demo-svg"></div>
 </nut-badge>
 ```
 
@@ -140,4 +98,4 @@
 | isDot | 是否为小点 | Boolean | false
 | hidden | 是否隐藏 | Boolean | false
 | top   | 上下偏移量，支持单位设置，可设置为：5px、5rem等 | String | 0
-| left  | 左右偏移量，支持单位设置，可设置为：5px、5rem等 | String | 0
+| right  | 左右偏移量，支持单位设置，可设置为：5px、5rem等 | String | 0

@@ -20,6 +20,11 @@
       <nut-badge :value="200" :max="99" class="item"><div class="demo-svg"></div></nut-badge>
     </div>
 
+    <h4>自定义位置</h4>
+    <div class="demo-w">
+      <nut-badge :value="9" top="0" right="10px" class="item"><div class="demo-svg"></div></nut-badge>
+    </div>
+
   </div>
 </template>
 
