@@ -1,5 +1,8 @@
 @import '../../styles/animation/rotate';
- 
+.nut-toast{
+  width: 100%;
+  text-align: center;
+}
   .nut-toast-small {
     .nut-toast-inner {
       font-size: $font-size-small;

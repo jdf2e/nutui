@@ -106,7 +106,9 @@ const overlayProps = {
   },
   overlayStyle: {
     type: Object,
-    default: {},
+    default: function () {
+      return null
+    },
   },
   zIndex: {
     type: Number

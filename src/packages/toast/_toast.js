@@ -37,14 +37,11 @@ function _showToast() {
     instance.visible = true;
   });
 }
-
+ 
 function _getInstance(obj) {
-  let opt = {
-    id: 1,
-    ...currentOptions,
-    ...defaultOptionsMap[obj.type],
-    ...obj
-  };
+  let opt = {id: '0'};
+  Object.assign(opt,currentOptions,defaultOptionsMap[obj.type],obj)
+ 
 
   //有相同id者共用一个实例，否则新增实例
   if (opt['id'] && instanceArr[opt['id']]) {

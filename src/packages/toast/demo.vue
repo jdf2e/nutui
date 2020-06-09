@@ -6,7 +6,7 @@
       <nut-button size="middle" @click.native="textToast2('我传了文案和显示时长两个参数，多行文字默认居中展示', 5000)">长文字提示</nut-button>
       <nut-button size="middle" @click.native="sucToast('操作成功')">成功提示</nut-button>
       <nut-button size="middle" @click.native="failToast('操作失败')">失败提示</nut-button>
-      <nut-button size="middle" @click.native="failToast('操作失败')" color="#fff">警告提示</nut-button>
+      <nut-button size="middle" @click.native="warnToast('操作警告')" >警告提示</nut-button>
     </div>
     <h4>加载提示</h4>
     <div class="demo-content">

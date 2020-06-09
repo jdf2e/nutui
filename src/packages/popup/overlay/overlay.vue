@@ -37,7 +37,7 @@ const overlayProps = {
   },
   overlayStyle: {
     type: Object,
-    default: {},
+    default: ()=>{},
   },
   zIndex: {
     type: Number

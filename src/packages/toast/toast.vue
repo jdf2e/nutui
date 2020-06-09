@@ -5,6 +5,7 @@
       :class="toastClass"
       v-model="visible"
       :overlayStyle='{backgroundColor:coverColor}'
+      class="nut-toast"
       :style="{backgroundColor:'transparent'}"
     >
       <div
