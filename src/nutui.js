@@ -80,6 +80,8 @@ import Swiper from './packages/swiper/index.js';
 import './packages/swiper/swiper.scss';
 import ImagePreview from './packages/imagepreview/index.js';
 import './packages/imagepreview/imagepreview.scss';
+import Badge from './packages/badge/index.js';
+import './packages/badge/badge.scss';
 
 const packages = {
   Cell,
@@ -122,7 +124,8 @@ const packages = {
   Address: Address,
   Tag,
   Swiper,
-  ImagePreview
+  ImagePreview,
+  Badge,
 };
 
 const components = {};
