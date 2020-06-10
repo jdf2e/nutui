@@ -18,19 +18,19 @@ export default {
   },
   mounted() {
     this.handleSlots();
-    // this.observer = new MutationObserver(
-    //   function(mutations) {
-    //     this.count = 1
-    //     this.handleSlots();
-    //   }.bind(this)
-    // );
+    this.observer = new MutationObserver(
+      function(mutations) {
+        this.count = 1
+        this.handleSlots();
+      }.bind(this)
+    );
 
-    // this.observer.observe(this.$refs.list, {
-    //   attributes: true,
-    //   childList: true,
-    //   characterData: true,
-    //   subtree: true
-    // });
+    this.observer.observe(this.$refs.list, {
+      attributes: true,
+      childList: true,
+      characterData: true,
+      subtree: true
+    });
   },
   data() {
     return {
