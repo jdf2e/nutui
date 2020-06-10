@@ -13,12 +13,14 @@ export default {
   props: {
     offset: {
       type: [String, Number],
-      default: 15
+      default: 20
     }
   },
   mounted() {
+    this.handleSlots();
     this.observer = new MutationObserver(
       function(mutations) {
+        this.count = 1
         this.handleSlots();
       }.bind(this)
     );
@@ -51,12 +53,13 @@ export default {
     setPaddingLeft(nodeList, level = 1) {
       for (let i = 0; i < nodeList.length; i++) {
         let item = nodeList[i];
+        console.log(this.offset)
         item.children[0].style.paddingLeft = this.offset * level + 'px';
-        if (item.className !== 'nut-sidenavbaritem') {
+        if (!item.className.includes('nut-sidenavbaritem')) {
           this.setPaddingLeft(Array.from(item.children[1].children), ++this.count);
         }
       }
-      this.count = 1;
+      this.count--
     }
   }
 };
