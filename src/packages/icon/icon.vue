@@ -2,7 +2,7 @@
   <i :class="['nut-icon', 'nut-icon-' + type]" v-html="icon" :style="{ height: size, width: size, color: color }"> </i>
 </template>
 <script>
-const types = ['top', 'action', 'cross', 'down', 'right', 'more', 'plus', 'search', 'trolley', 'tick', 'minus', 'circle-cross'];
+const types = ['top', 'action', 'cross', 'down', 'right', 'more', 'plus', 'search', 'trolley', 'tick', 'minus', 'circle-cross', 'avatar', 'nav', 'star', 'set'];
 
 export default {
   name: 'nut-icon',

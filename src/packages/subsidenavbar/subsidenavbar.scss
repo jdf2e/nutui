@@ -4,21 +4,30 @@
   width: 100%;
   position: relative;
   .item-title {
-    display: block;
+    display: flex;
     width: 100%;
-    height: 40px;
+    height: 48px;
     position: relative;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     box-sizing: border-box;
-    border-bottom: 1px solid $light-color;
-    color: $title-color;
-    font-size: $font-size-large;
-    background-color: $light-color;
+    border: 0;
+    color: $text-black-2;
+    font-size: $font-size-body-normal;
+    background-color: #fff;
+    align-items: center;
+    .subsidenavbar-icon {
+        margin-right: 10px;
+    }
     .sidenavbar-title {
-      line-height: 40px;
-      color: $title-color;
+      display: flex;
+      width: 80%;
+      height: 100%;
+      flex-flow: column;
+      color: $text-black-2;
+      text-decoration: none;
+      justify-content: center;
     }
   }
   .sidenavbar-icon {
