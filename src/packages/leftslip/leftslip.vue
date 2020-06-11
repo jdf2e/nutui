@@ -96,7 +96,6 @@ export default {
 
       let disX = e.touches[0].pageX - this.startX; // >0 右滑，<0 左滑
       let disY = e.touches[0].pageY - this.startY;
-      console.log('btnH',this.buttonHeight,disY)
       if (e.touches.length == 1) {
         if (Math.abs(disY) < 5) {
           // console.log(disX, disY)

@@ -10,7 +10,7 @@
       </nut-leftslip>
     </div>
     
-    <h4>多个按钮样式</h4>
+    <h4>多个按钮</h4>
     <p>如果超出一行宽度，默认右侧按钮区域占一行的80%</p>
     <div>
       <nut-leftslip :rightWidth="0.8">
