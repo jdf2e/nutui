@@ -3,50 +3,36 @@
     <h4>基本用法</h4>
     <div>
       <nut-leftslip ref="demo1">
-        <div slot="slip-main" class="slip-main">向左滑动我</div>
+        <div slot="slip-main" class="slip-main base-style">左滑触发删除<span class="main-right">这里是内容</span></div>
         <div slot="slipbtns" class="slipbtns"
-          ><a href="javascript:;" @click="delSlipItem">删除</a><a href="javascript:;" class="favorite">收藏</a></div
+          ><a href="javascript:;" @click="delSlipItem">删除</a></div
         >
       </nut-leftslip>
     </div>
-    <p>单个按钮</p>
+    
+    <h4>多个按钮样式</h4>
+    <p>如果超出一行宽度，默认右侧按钮区域占一行的80%</p>
     <div>
-      <nut-leftslip>
-        <div slot="slip-main" class="slip-main">自定义单一按钮</div>
-        <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a></div>
-      </nut-leftslip>
-      <!-- <nut-leftslip onlyDelBtn @oneDelete="oneDel">
-                <div slot="slip-main" class="slip-main">单一按钮点击一键删除</div>
-            </nut-leftslip> -->
-      <!-- <nut-leftslip onlyDelBtn @oneDelete="oneDel" ref="leftslip1">
-                <div slot="slip-main" class="slip-main">向左滑滑滑~一键删除</div>
-            </nut-leftslip> -->
-    </div>
-    <p>多个按钮</p>
-    <p>如果超出一行宽度，默认右侧按钮区域占一行的80%，此处设置60%</p>
-    <div>
-      <nut-leftslip :rightWidth="0.6">
-        <div slot="slip-main" class="slip-main">向左滑动，多个按钮有超出限制哦~</div>
+      <nut-leftslip :rightWidth="0.8">
+        <div slot="slip-main" class="slip-main">左滑触发删除<span class="main-right">这里是内容</span></div>
         <div slot="slipbtns" class="slipbtns"
           ><a href="javascript:;">删除</a>
-          <a href="javascript:;" class="favorite">收藏</a>
-          <a href="javascript:;" class="favorite org1">
-            <nut-icon type="trolley" size="20px" color="#fff"></nut-icon>
-          </a>
-          <a href="javascript:;" class="favorite org2">
-            <nut-icon type="cross" size="15px" color="#fff"></nut-icon>
-          </a>
           <a href="javascript:;" class="favorite org3">确认</a>
-          <a href="javascript:;" class="favorite org1">加购物车</a>
-          <a href="javascript:;" class="favorite">收藏2</a>
-          <a href="javascript:;" class="favorite">收藏3</a>
+          <a href="javascript:;" class="favorite">收藏</a>
         </div>
       </nut-leftslip>
     </div>
-    <p>列表</p>
+    <h4>自定义ICON</h4>
     <div>
-      <nut-leftslip v-for="(item, index) in list" :key="item.id" ref="leftslip">
-        <div slot="slip-main" class="slip-main">
+      <nut-leftslip>
+        <div slot="slip-main" class="slip-main">左滑触发删除<span class="main-right">这里是内容</span></div>
+        <div slot="slipbtns" class="slipbtns"><a href="javascript:;"><nut-icon type="trolley" size="20px" color="#fff"></nut-icon></a></div>
+      </nut-leftslip>
+    </div>
+    <h4>列表</h4>
+    <div class="address-list">
+      <nut-leftslip v-for="(item, index) in list" :key="item.id" ref="leftslip" class="addr-item" >
+        <div slot="slip-main" class="slip-main addr-main">
           <div class="addr">
             <p class="name-mobile">{{ item.tel }}</p>
             <p class="full-addr">{{ item.addr }}</p>
@@ -54,7 +40,7 @@
           <a class="addr-edit" href="javascript:void(0)"></a>
         </div>
         <div slot="slipbtns" class="slipbtns"
-          ><a href="javascript:;" @click="delItem(index)">删除</a><a href="javascript:;" class="favorite">收藏</a></div
+          ><a href="javascript:;" @click="delItem(index)">删除</a></div
         >
       </nut-leftslip>
     </div>
@@ -99,56 +85,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.slip-main {
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 200%;
-    height: 0;
-    box-sizing: border-box;
-    transform: scale(0.5);
-    transform-origin: left bottom;
-    border-bottom: 1px solid #ececee;
-  }
-
-  .addr-wrap {
-    display: flex;
-    position: relative;
-    width: 100%;
-  }
-
-  .addr {
-    flex: 1;
-  }
-
-  .addr-edit {
-    display: flex;
-    width: 36px;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAAGXLeQ2AAAAAXNSR0IArs4c6QAAAdFJREFUSA2tVTFuAjEQtNF1KBIvoEEiD+CkVHRX0CaPgG9Aly9ADwVFaO8LkeABeUVOAWqys7k5+Xw+zkixdF7v7ux4vWuDMe5Yr9c3jOPxeOvRMZlMuDRGEEtDCKTFBP9ms9HpBwYOECmZGJ7IcjqdDEghe9baAx21nWhsyMvlQnqVSFpBrpUnqTloBBCOKndFlZMkZHt5nrs2c71eVbdyyrFEf9W8pTKfz3WFc+GTsULB3Lxqa1QGfkgMRCSY/EFGFIi7aL0FGAwAsK2aVWP9Xdr0ZLFYoCofkuJrG0j8Z/nSNn/QLodfoqTfwjwIIRqHBZDGUACrAszdg7pAELWCfWArOASErcFc3o2qk+45Gt38t0420nC39dcK5qX3ndTxSKTlh0Sm591uh0tcPXKCKAGUprxZGKQsYxHv8mX3goDlCHWd76LErHCX9JYOh0MznU5Nv99nfLT0SPUdpWlqE8lUr/9sNosmIzBE6j7QRt8ZeE92kTL2IfIYUl51bBBFXhSF2e/3TEhr6h6/cniLKHL5+VTC0WhkBoPg74hH+6dGkWdZFgzuMj703LrIfD/+Nc8wdj1RPzCkk4OcKEsqyud2u40vZoi5tAlXIcsXqL8z/jqozhCfMwAAAABJRU5ErkJggg==)
-      no-repeat center center;
-    background-size: 23px 23px;
-  }
-
-  .name-mobile {
-    font-size: 15px;
-    color: #333;
-  }
-
-  .full-addr {
-    font-size: 14px;
-    color: #666;
-    margin-top: 10px;
-    line-height: 22px;
-    // height: 40px;
-  }
-}
 
 .slipbtns {
   a {
     &.favorite {
-      background: #ccc;
+      background: #7C7A8A;
     }
 
     &.org1 {
@@ -160,8 +101,73 @@ export default {
     }
 
     &.org3 {
-      background: #ff5722;
+      background: #3A7BFF;
     }
   }
 }
+
+
+
+.nut-leftslip-item-main .slip-main{
+  justify-content: space-between;
+  .main-right{
+    color: #969696;
+    font-size: 16px;
+  }
+}
+
+.address-list{
+  .addr-item{
+    background: #fff;
+    
+  }
+  .addr-main {
+    margin: 0 15px;
+    padding: 15px 5px;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 200%;
+      height: 0;
+      box-sizing: border-box;
+      transform: scale(0.5);
+      transform-origin: left bottom;
+      border-bottom: 1px solid #ececee;
+    }
+
+    .addr-wrap {
+      display: flex;
+      position: relative;
+      width: 100%;
+    }
+
+    .addr {
+      flex: 1;
+    }
+
+    .addr-edit {
+      display: flex;
+      width: 36px;
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAAGXLeQ2AAAAAXNSR0IArs4c6QAAAdFJREFUSA2tVTFuAjEQtNF1KBIvoEEiD+CkVHRX0CaPgG9Aly9ADwVFaO8LkeABeUVOAWqys7k5+Xw+zkixdF7v7ux4vWuDMe5Yr9c3jOPxeOvRMZlMuDRGEEtDCKTFBP9ms9HpBwYOECmZGJ7IcjqdDEghe9baAx21nWhsyMvlQnqVSFpBrpUnqTloBBCOKndFlZMkZHt5nrs2c71eVbdyyrFEf9W8pTKfz3WFc+GTsULB3Lxqa1QGfkgMRCSY/EFGFIi7aL0FGAwAsK2aVWP9Xdr0ZLFYoCofkuJrG0j8Z/nSNn/QLodfoqTfwjwIIRqHBZDGUACrAszdg7pAELWCfWArOASErcFc3o2qk+45Gt38t0420nC39dcK5qX3ndTxSKTlh0Sm591uh0tcPXKCKAGUprxZGKQsYxHv8mX3goDlCHWd76LErHCX9JYOh0MznU5Nv99nfLT0SPUdpWlqE8lUr/9sNosmIzBE6j7QRt8ZeE92kTL2IfIYUl51bBBFXhSF2e/3TEhr6h6/cniLKHL5+VTC0WhkBoPg74hH+6dGkWdZFgzuMj703LrIfD/+Nc8wdj1RPzCkk4OcKEsqyud2u40vZoi5tAlXIcsXqL8z/jqozhCfMwAAAABJRU5ErkJggg==)
+        no-repeat center center;
+      background-size: 23px 23px;
+    }
+
+    .name-mobile {
+      font-size: 15px;
+      color: #333;
+    }
+
+    .full-addr {
+      font-size: 14px;
+      color: #666;
+      margin-top: 10px;
+      line-height: 22px;
+      // height: 40px;
+    }
+  }
+}
+
 </style>
