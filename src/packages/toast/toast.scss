@@ -1,28 +1,34 @@
 @import '../../styles/animation/rotate';
-.nut-toast {
-  position: fixed;
-  left: 0;
-  bottom: 150px;
+.nut-toast{
   width: 100%;
   text-align: center;
-  pointer-events: none;
-  z-index: 9999;
-  font-family: $font-family;
-  &.nut-toast-small {
+  &.popup-box{
+    background-color: transparent;
+  }
+  
+  &.nut-toast-buttom {
+    bottom: 150px;
+    top: auto;
+    left: 0;
+    transform: initial;
+  }
+}
+  .nut-toast-small {
     .nut-toast-inner {
       font-size: $font-size-small;
     }
   }
-  &.nut-toast-large {
+  .nut-toast-large {
     .nut-toast-inner {
       font-size: $font-size-large;
     }
   }
-  &.nut-toast-cover {
+  .nut-toast-cover {
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: auto;
+    background-color: transparent;
     height: 100%;
   }
   .nut-toast-inner {
@@ -38,7 +44,7 @@
     border-radius: 7px;
     color: #fff;
   }
-  &.nut-toast-has-icon {
+  .nut-toast-has-icon {
     .nut-toast-inner {
       padding: 70px 50px 30px;
     }
@@ -74,11 +80,8 @@
       }
     }
   }
-  &.nut-toast-center {
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  &.nut-loading {
+  
+  .nut-loading {
     .nut-toast-inner {
       padding: 25px;
       display: inline-flex;
@@ -102,7 +105,7 @@
       }
     }
   }
-}
+
 
 .toastfade-enter-active {
   transition: opacity 0.1s;

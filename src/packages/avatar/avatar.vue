@@ -29,13 +29,19 @@ export default {
     bgImage: {
       type: String,
       default: ''
+    },
+    sizeNum:{
+      type: [Number,String],
+      default: 20
     }
   },
   computed: {
     styles() {
       return {
         backgroundImage: this.bgImage ? `url(${this.bgImage})` : null,
-        backgroundColor: `${this.bgColor}`
+        backgroundColor: `${this.bgColor}`,
+        width: this.sizeNum+'px',
+        height: this.sizeNum+'px'
       };
     },
     iconStyles() {

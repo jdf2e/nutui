@@ -90,14 +90,11 @@ this.$toast.text('自定义Icon',{
 
 ```javascript
 //二者id不同，不会共享一个实例
-this.$toast.success(msg,{
-    id:123
-});
-
-this.$toast.text(msg,{
-    id:321,
-    duration:4000
-});
+ 
+this.$toast.success(msg, { id: 1 ,center:false,bottom:450});
+ 
+this.$toast.fail(msg, { id: 2,center:false,bottom:300 });
+ 
 ```
 
 ## 支持在JS模块中导入使用
