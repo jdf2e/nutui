@@ -19,13 +19,13 @@
     position: absolute;
     right: -52px;
     top: 0;
-    min-width: 40px;
+    min-width: 76px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     // transform: translateX(100%);
-    background: #ff4949;
+    background: $primary-color-jd-red;
     color: #fff;
     padding: 0 5px;
     font-size: 14px;
@@ -44,13 +44,13 @@
     position: absolute;
     right: -50px;
     top: 0;
-    min-width: 40px;
+    min-width: 76px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     // transform: translateX(100%);
-    background: #ff4949;
+    background: $primary-color-jd-red;
     color: #fff;
     padding: 0 5px;
     font-size: 14px;
@@ -67,15 +67,16 @@
     transform: translateX(100%);
     a {
       display: flex;
-      width: 40px;
-      background: #ff4949;
+      width: 76px;
+      background: $primary-color-jd-red;
       color: #fff;
       height: 100%;
       padding: 0 5px;
-      font-size: 14px;
+      font-size: 16px;
       align-items: center;
       justify-content: center;
       text-align: center;
+      text-decoration: none;
     }
   }
 }

@@ -3,25 +3,36 @@
     <a
       class="tabbar-nav"
       v-for="(value, index) in tabList"
-      :class="[{ 'curr': index == currIndex }, type]"
+      :class="[{ 'curr': index == currIndex }]"
       :key="value.tabTitle"
       v-on:click="switchTabs(value, index)"
       :href="value.href"
     >
+    <nut-badge 
+        :isDot="value.isDot"
+        :value="value.num" 
+        :max="99"
+        top="5px" 
+        right="0px" 
+        class="item"
+    >
       <span class="icon-box">
-        <b class="tips num" v-if="value.num && value.num <= 99">{{ value.num }}</b>
-        <b class="tips" v-else-if="value.num && value.num > 100">{{ '...' }}</b>
         <template v-if="value.icon">
           <div class="icon" :style="{ backgroundImage: `url(${index == currIndex ? value.activeIcon : value.icon})` }"></div>
         </template>
         <span :class="['tabbar-nav-word', { 'big-word': !value.icon }]">{{ value.tabTitle }}</span>
       </span>
+    </nut-badge>
     </a>
   </div>
 </template>
 <script>
+import Badge from '../badge/badge.vue'
 export default {
   name: 'nut-tabbar',
+  components:{
+    'nut-badge':Badge
+  },
   props: {
     tabbarList: {
       type: Array,
@@ -32,10 +43,6 @@ export default {
     bottom: {
       type: Boolean,
       default: false
-    },
-    type: {
-      type: String,
-      default: 'based'
     }
   },
   data() {
@@ -67,7 +74,6 @@ export default {
     switchTabs: function(value, index) {
       this.currIndex = index;
       this.$emit('tab-switch', value, index);
-      this.$emit('tabSwitch', value, index); //兼容以前驼峰法
     }
   }
 };

@@ -33,7 +33,7 @@ export default {
       moveX: 0,
       moveY: 0,
       buttonWidth: 0,
-
+      buttonHeight:0,
       pageWidth: null,
       startPos: 0,
       startLeft: 0,
@@ -45,34 +45,22 @@ export default {
     };
   },
   watch: {
-    // scrollTop(newValue, oldValue) {
-    //     setTimeout(() => {
-    //         if (newValue == window.scrollY) { //延时执行后当newValue等于window.scrollY，代表滚动结束
-    //             console.log('滚动结束');
-    //             this.oldScrollTop = newValue; //每次滚动结束后都要给oldScrollTop赋值
-    //             this.lock = false
-    //         };
-    //     }, 20); //必须使用延时器，否则每次newValue和window.scrollY都相等，无法判断，20ms刚好大于watch的侦听周期，故延时20ms
-    //     if (this.oldScrollTop == oldValue) { //每次滚动开始时oldScrollTop与oldValue相等
-    //         console.log('滚动开始');
-    //         this.lock = true;
-    //     }
-    // }
+   
   },
   mounted() {
     this.$nextTick(() => {
       for (var slot of this.$slots.slipbtns) {
         this.buttonWidth = this.buttonWidth + slot.elm.offsetWidth;
+        this.buttonHeight = this.buttonHeight + slot.elm.offsetHeight;
       }
     });
     this.pageWidth = document.documentElement.clientWidth;
     this.sliderEle = this.$refs.slipItem;
     // this.handleScroll();
-    // document.addEventListener('touchstart', this.touchStart, false);
   },
   beforeDestroy() {
     // 移除监听
-    window.removeEventListener('scroll', this.handleScroll());
+    // window.removeEventListener('scroll', this.handleScroll());
   },
   methods: {
     handleRestet() {
@@ -81,11 +69,11 @@ export default {
         this.restSlide();
       }
     },
-    handleScroll() {
-      window.addEventListener('scroll', () => {
-        this.scrollTop = window.scrollY;
-      });
-    },
+    // handleScroll() {
+    //   window.addEventListener('scroll', () => {
+    //     this.scrollTop = window.scrollY;
+    //   });
+    // },
     touchStart(e) {
       let parentElement = e.currentTarget.parentElement;
       let slip = [];
@@ -108,9 +96,8 @@ export default {
 
       let disX = e.touches[0].pageX - this.startX; // >0 右滑，<0 左滑
       let disY = e.touches[0].pageY - this.startY;
-
       if (e.touches.length == 1) {
-        if (Math.abs(disY) < 15) {
+        if (Math.abs(disY) < 5) {
           // console.log(disX, disY)
           if (disX > 0 || (disX > 0 && this.startLeft >= 0)) {
             //禁止右滑
@@ -133,7 +120,7 @@ export default {
       } else {
         if (-disX > 50) {
           // 向左滑动超过阙值时,右侧滑出固定距离
-          distance = this.buttonWidth > this.pageWidth ? this.pageWidth * Number(this.rightWidth) : this.buttonWidth;
+          distance = this.buttonWidth > this.pageWidth ? (this.pageWidth * Number(this.rightWidth)) : this.buttonWidth;
           parentElement.className = 'nut-leftslip-item leftslip-open';
           parentElement.dataset.type = 1;
         } else {

@@ -1,4 +1,5 @@
 <template>
+  <div class="wrapper-cell">
   <a :class="['nut-cell', { 'nut-cell-link': isLink }]" :href="linkUrl" :style="{ 'background-color': bgColor }" :target="target" @click="jumpPage">
     <div class="nut-cell-box" @click="clickCell">
       <slot name="avatar"></slot>
@@ -7,7 +8,11 @@
           ><slot name="title">{{ title }}</slot></span
         >
         <span class="nut-cell-sub-title"
-          ><slot name="sub-title">{{ subTitle }}</slot></span
+          >
+          <slot name="sub-title">
+            <template>{{ subTitle.substring(0,12) }}</template>
+            <template v-if="subTitle.length>12">...</template>
+          </slot></span
         >
       </div>
       <div class="nut-cell-right">
@@ -22,6 +27,7 @@
       </div>
     </div>
   </a>
+  </div>
 </template>
 <script>
 import Icon from '../icon/icon.vue';

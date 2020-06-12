@@ -6,9 +6,11 @@
 
 ```html
 <div>
-    <nut-leftslip ref='demo1'>
-        <div slot="slip-main" class="slip-main">向左滑动我</div>
-        <div slot="slipbtns" class="slipbtns"><a href="javascript:;" @click="delSlipItem">删除</a><a href="javascript:;" class="favorite">收藏</a></div>
+    <nut-leftslip ref="demo1">
+        <div slot="slip-main" class="slip-main base-style">左滑触发删除<span class="main-right">这里是内容</span></div>
+        <div slot="slipbtns" class="slipbtns"
+          ><a href="javascript:;" @click="delSlipItem">删除</a></div
+        >
     </nut-leftslip>
 </div>
 ```
@@ -23,69 +25,53 @@ export default {
 };
 ```
 
-### 单个按钮
+
+### 多个按钮
+
+>如果超出一行宽度，默认右侧按钮区域占一行的80%
+
+```html
+<div>
+    <nut-leftslip :rightWidth="0.8">
+        <div slot="slip-main" class="slip-main">左滑触发删除<span class="main-right">这里是内容</span></div>
+        <div slot="slipbtns" class="slipbtns"
+            ><a href="javascript:;">删除</a>
+            <a href="javascript:;" class="favorite org3">确认</a>
+            <a href="javascript:;" class="favorite">收藏</a>
+        </div>
+    </nut-leftslip>
+</div>
+```
+
+
+### 自定义ICON
 
 ```html
 <div>
     <nut-leftslip>
-        <div slot="slip-main" class="slip-main">自定义单一按钮</div>
-        <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a></div>
-    </nut-leftslip>
-</div>
-```
-
-<!-- ### 单个按钮一键删除
-
-```html
-<nut-leftslip onlyDelBtn @oneDelete="oneDel">
-    <div slot="slip-main" class="slip-main">单一按钮点击一键删除</div>
-</nut-leftslip>
-```
-
-```javascript
-export default {
-    oneDel(par) {
-        par.remove();
-    }
-};
-``` -->
-
-### 多个按钮
-
->如果超出一行宽度，默认右侧按钮区域占一行的80%，此处设置了60%
-
-```html
-<div>
-    <nut-leftslip :rightWidth="0.6">
-        <div slot="slip-main" class="slip-main">向左滑动，多个按钮有超出限制哦~</div>
-        <div slot="slipbtns" class="slipbtns"
-            ><a href="javascript:;">删除</a>
-            <a href="javascript:;" class="favorite">收藏</a>
-            <a href="javascript:;" class="favorite org1"><nut-icon type="trolley" size="20px" color="#fff"></nut-icon></a>
-            <a href="javascript:;" class="favorite org2"><nut-icon type="cross" size="15px" color="#fff"></nut-icon></a>
-            <a href="javascript:;" class="favorite org3">确认</a>
-            <a href="javascript:;" class="favorite org1">加购物车</a>
-            <a href="javascript:;" class="favorite">收藏2</a>
-            <a href="javascript:;" class="favorite">收藏3</a>
+        <div slot="slip-main" class="slip-main">左滑触发删除<span class="main-right">这里是内容</span></div>
+        <div slot="slipbtns" class="slipbtns">
+            <a href="javascript:;"><nut-icon type="trolley" size="20px" color="#fff"></nut-icon></a>
         </div>
     </nut-leftslip>
 </div>
 ```
+
 
 ### 列表
 
 ```html
-<div>
-    <nut-leftslip v-for="(item, index) in list" :key="item.id" ref="leftslip">
-        <div slot="slip-main" class="slip-main">
-            <div class="addr">
-                <p class="name-mobile">159****8888</p>
-                <p class="full-addr">北京市大兴区亦庄经济开发中心京东大厦B座1</p>
-            </div>
-            <a class="addr-edit" href="javascript:void(0)"></a>
+<div class="address-list">
+    <nut-leftslip v-for="(item, index) in list" :key="item.id" ref="leftslip" class="addr-item" >
+        <div slot="slip-main" class="slip-main addr-main">
+          <div class="addr">
+            <p class="name-mobile">{{ item.tel }}</p>
+            <p class="full-addr">{{ item.addr }}</p>
+          </div>
+          <a class="addr-edit" href="javascript:void(0)"></a>
         </div>
         <div slot="slipbtns" class="slipbtns"
-            ><a href="javascript:;" @click="delItem(index)">删除</a><a href="javascript:;" class="favorite">收藏</a></div
+          ><a href="javascript:;" @click="delItem(index)">删除</a></div
         >
     </nut-leftslip>
 </div>

@@ -134,7 +134,6 @@ export default {
         let slotTag = slot[i].tag;
         if (typeof slotTag == 'string' && slotTag.indexOf('nut-tab-panel') != -1) {
           let attrs = slot[i].data.attrs;
-          console.log(attrs.disable);
           let item = {
             tabTitle: attrs['tab-title'] || attrs['tabTitle'],
             disable: attrs.disable === true,
