@@ -56,6 +56,15 @@
         <span slot="title"><nut-switch :active="true" class="my-switch"></nut-switch></span>
       </nut-cell>
     </div>
+        <h4>内嵌文字标签</h4>
+    <div>
+      <nut-cell>
+        <span slot="title"><nut-switch :active="true" label="ON|OFF"></nut-switch></span>
+      </nut-cell>
+           <nut-cell>
+        <span slot="title"><nut-switch :active="false" label="通过|拒绝"></nut-switch></span>
+      </nut-cell>
+    </div>
   </div>
 </template>
 
