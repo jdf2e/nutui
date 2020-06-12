@@ -58,6 +58,14 @@
         >
       </nut-leftslip>
     </div>
+    <p>禁止滑动</p>
+    <div>
+      <button class="btn" @click="disabledHandle">{{isDisable ? '开启滑动' : '禁止滑动'}}</button>
+      <nut-leftslip :disabled="isDisable">
+        <div slot="slip-main" class="slip-main">左滑触发删除</div>
+        <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a></div>
+      </nut-leftslip>
+    </div>
   </div>
 </template>
 
@@ -77,7 +85,8 @@ export default {
         { id: 'add8', addr: '北京市大兴区亦庄经济开发中心京东大厦B座8', tel: '159****8888' }
       ],
       rightWidth: 80,
-      pageWidth: null
+      pageWidth: null,
+      isDisable: false
     };
   },
   methods: {
@@ -90,6 +99,9 @@ export default {
     },
     oneDel(par) {
       par.remove();
+    },
+    disabledHandle(){
+      this.isDisable = !this.isDisable 
     }
   },
   mounted() {
@@ -163,5 +175,14 @@ export default {
       background: #ff5722;
     }
   }
+}
+.btn{
+  margin: 10px 0;
+  background: #fff;
+  border: 1px solid #ff5722;
+  color: #ff5722;
+  outline: none;
+  border-radius: 4px;
+  padding: 5px;
 }
 </style>
