@@ -26,8 +26,7 @@ export default {
   },
   data() {
     return {
-      isActive: false,
-      isAnimating:false
+      isActive: false
     };
   },
   created() {
@@ -40,16 +39,14 @@ export default {
   },
   methods: {
     toggle() {
-      if(this.isAnimating) return;
       const status = this.isActive;
       if (!this.disabled) {
         this.isActive = !status;
       }
-      this.isAnimating = true;
+
       setTimeout(() => {
         this.$emit("change", this.isActive);
         this.$emit("update:active", this.isActive);
-        this.isAnimating = false;
       }, 300);
     }
   }

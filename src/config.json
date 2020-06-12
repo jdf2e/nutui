@@ -556,13 +556,13 @@
     },
     {
       "version": "1.0.0",
-      "name": "TimeLine",
-      "chnName": "时间轴",
-      "desc": "对一系列数据进行展示，垂直展示",
+      "name": "CircleProgress",
+      "chnName": "圆形进度条",
+      "desc": "显示当前任务的操作进度",
       "type": "component",
-      "sort": "0",
+      "sort": "2",
       "showDemo": true,
-      "author": "yangxiaolu"
+      "author": "zyf"
     },
     {
       "version": "1.0.0",
@@ -572,6 +572,65 @@
       "type": "component",
       "sort": "0",
       "showDemo": false,
+      "author": "yangxiaolu"
+    },
+    {
+      "version": "1.0.0",
+      "name": "TimeLine",
+      "chnName": "时间轴节点",
+      "desc": "定义时间轴节点",
+      "type": "component",
+      "sort": "0",
+      "showDemo": true,
+      "author": "yangxiaolu"
+    },
+    {
+      "version": "1.0.0",
+      "name": "SideNavBar",
+      "chnName": "侧边栏导航",
+      "desc": "侧边栏导航",
+      "type": "component",
+      "sort": "3",
+      "showDemo": true,
+      "author": "szg2008"
+    },
+    {
+      "version": "1.0.0",
+      "name": "SubSideNavBar",
+      "chnName": "侧边栏导航",
+      "desc": "侧边栏导航",
+      "type": "component",
+      "sort": "3",
+      "showDemo": false,
+      "author": "szg2008"
+    },
+    {
+      "version": "1.0.0",
+      "name": "SideNavBarItem",
+      "chnName": "侧边栏导航",
+      "desc": "侧边栏导航",
+      "type": "component",
+      "sort": "3",
+      "showDemo": false,
+      "author": "szg2008"
+    },
+    {
+      "name": "Drag",
+      "chnName": "拖拽",
+      "desc": "实现可拖拽的任意元素",
+      "type": "component",
+      "sort": "5",
+      "showDemo": true,
+      "author": "张宇"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Address",
+      "chnName": "地址选择",
+      "desc": "业务功能-地址选择",
+      "type": "component",
+      "sort": "6",
+      "showDemo": true,
       "author": "yangxiaolu"
     }
   ]

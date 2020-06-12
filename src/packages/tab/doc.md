@@ -2,6 +2,10 @@
 
 常用于平级区域大块内容的的收纳和展现。
 
+> 注意，使用该组件需要在引入 nut-tab-panel 组件
+
+`import { TabPanel } from "@nutui/nutui";`
+
 ## 基本用法
 
 ```html
@@ -15,7 +19,7 @@
 export default {
   methods: {
       tabSwitch:function(index,event){
-        console.log(index+'--'+event.target);
+        console.log(index+'--'+event);
       }
   }
 };
@@ -66,10 +70,35 @@ export default {
   },
   methods: {
       tabSwitch:function(index,event){
-        console.log(index+'--'+event.target);
+        console.log(index+'--'+event);
       }
   }
 };
+```
+## 支持滑动选择多个页签
+
+```html
+  <nut-tab @tab-switch="tabSwitch" :is-scroll="true">
+      <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
+      <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
+      <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
+      <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
+      <nut-tab-panel tab-title="页签5">页签5</nut-tab-panel>
+      <nut-tab-panel tab-title="页签6">页签6</nut-tab-panel>
+      <nut-tab-panel tab-title="页签7">页签7</nut-tab-panel>
+  </nut-tab>
+```
+
+```html
+  <nut-tab @tab-switch="tabSwitch" :is-scroll="true" position-nav="left">
+      <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
+      <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
+      <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
+      <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
+      <nut-tab-panel tab-title="页签5">页签5</nut-tab-panel>
+      <nut-tab-panel tab-title="页签6">页签6</nut-tab-panel>
+      <nut-tab-panel tab-title="页签7">页签7</nut-tab-panel>
+  </nut-tab>
 ```
 
 ## 禁止选中，默认选中某个标签,如需更新数组后，重新渲染Tab页面，请将更新数组传入init-data
@@ -198,8 +227,8 @@ export default {
 | position-nav | 页签栏的分布，可选值 top/bottom/left/right | String | top
 | def-index | 默认选中的页签栏 | String | 1
 | init-data | 监听数据变化，渲染更新页面 | Array | []
-
-
+| is-show-line|是否显示tab切换时的红条|Boolean|true|
+| is-scroll|是否支持滑动选择多个页签|Boolean|false|
 
 ### nut-tab-panel
 

@@ -2,16 +2,16 @@
     <div class="nut-tabbar" :class="{'bottom':bottom}">
         <a class="tabbar-nav" 
         v-for="(value,index) in tabList" 
-        :class="[{'curr':value.curr},type]"
+        :class="[{'curr':index == currIndex},type]"
         :key="value.tabTitle"
         v-on:click="switchTabs(value,index)"
         :href="value.href"
         >   
         <span class="icon-box">
-            <b class="tips" v-if="value.num">{{value.num}}</b>
+            <b class="tips num" v-if="value.num&&value.num<=99">{{value.num}}</b>
+            <b class="tips" v-else-if="value.num&&value.num>100">{{'...'}}</b>
             <template v-if="value.icon">
-                <div class="icon" v-if="value.curr" :style="{backgroundImage: 'url('+value.activeIcon+')'}"></div>
-                <div class="icon" v-else :style="{backgroundImage: 'url('+value.icon+')'}"></div>
+                <div class="icon" :style="{backgroundImage: `url(${index == currIndex ?value.activeIcon:value.icon})`}"></div>
             </template>
             <span :class="['tabbar-nav-word',{'big-word':!value.icon}]">{{value.tabTitle}}</span>
         </span>
@@ -26,19 +26,20 @@ export default {
             type:Array,
             default:()=>{
                 return [];
-            },
+            }
         },
         'bottom':{
             type:Boolean,
-            default:false,
+            default:false
         },
         'type':{
             type:String,
-            default:'based',
+            default:'based'
         }
     },
     data() {
         return {
+          currIndex:null,
           tabList:this.tabbarList
         };
     },
@@ -52,15 +53,7 @@ export default {
     },
     methods: {
         switchTabs:function(value,index){
-            let newArr = this.tabList.map((item,idx)=>{
-                if(index == idx){
-                   item.curr = true;
-                }else{
-                   item.curr = false;
-                }
-                return item;
-            })
-            this.tabList =newArr;
+            this.currIndex = index;
             this.$emit('tab-switch',value,index); 
             this.$emit('tabSwitch',value,index); //兼容以前驼峰法
         }

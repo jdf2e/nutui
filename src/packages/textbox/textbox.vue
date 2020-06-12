@@ -1,7 +1,7 @@
 <template>
     <div class="nut-textbox">
         <div class="txt-area" :class="{'error':errorState,'num-none':limitShow == false}" :style="{background:textBgColor}">
-            <textarea :placeholder="placeText" :style="{height:txtAreaHeight+'px'}" v-model="text" @input="txtIptLength" :switchMax="switchMax" :maxlength="iptMaxlength"></textarea>
+            <textarea :placeholder="placeText" :style="{height:txtAreaHeight+'px'}"  v-model="currentValue" @input="txtIptLength" :switchMax="switchMax" :maxlength="iptMaxlength"></textarea>
             <span v-show="limitShow">{{txtNum}}/{{maxNum}}</span>
         </div>
     </div>
@@ -38,16 +38,25 @@ export default {
             type:Boolean,
             default:true,
         }
-       
     },
     data() {
         return {
-            text: '',
+           
             errorState:false,
             txtNum:0,
         };
     },
+    mounted(){
+       
+    },
     computed:{
+        currentValue:{
+            get(){
+                return this.value;
+            },
+            set(val){
+            }
+        },
         txtAreaHeight:function(){
            let txtAreaH;
            txtAreaH = this.txtAreaH;
@@ -62,13 +71,9 @@ export default {
         	return maxlength
         },
     },
-    mounted() {
-        this.text = this.value
-    },
     methods: {
         txtIptLength(event){
             const data = event.target.value
-            console.log(data)
             const txtLength = data.length;
             this.txtNum = txtLength;
             if(txtLength > this.maxNum) {

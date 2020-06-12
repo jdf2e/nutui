@@ -61,9 +61,9 @@ Documents：[2.X](https://nutui.jd.com/default.html#/start) | [1.X](https://nutu
 
 NutUI has been put into use in our production environment and is widely used in developing countries at the same time.
 
-<img src="https://img12.360buyimg.com/imagetools/jfs/t1/103711/28/17214/247343/5e854d2aE0d93051b/f475b25de9b63972.png" />
+<img src="https://raw.githubusercontent.com/jdf2e/nutui-user-cases/master/user-cases.jpg" />
 
-[Call for more excellent cases](https://github.com/richard1015/nutui-user-cases)
+[Call for more excellent cases](https://github.com/jdf2e/nutui-user-cases)
 
 ## Open Source LICENSE
 

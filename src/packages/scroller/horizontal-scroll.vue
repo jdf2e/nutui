@@ -20,6 +20,10 @@ export default {
         scrollTo: {
             type: Number,
             default: 1
+        },
+	listWidth: {
+            type: Number,
+            default: 0
         }
     },
     watch: {
@@ -49,7 +53,10 @@ export default {
     },
     methods: {
         isShow() {
-            let wrapH = this.$refs.wrapper.clientWidth;
+            let wrapH = this.listWidth ? this.listWidth : 
+                (window.innerWidth ||
+                document.documentElement.clientWidth ||
+                document.body.clientWidth);
             let listH = this.$refs.list.offsetWidth;
             if (wrapH <= listH) {
                 this.isShowLoadMore =  true;
@@ -72,7 +79,10 @@ export default {
 
         setMove(move, type, time) {
             let updateMove = move + this.transformX;
-            let w = this.$refs.wrapper.clientWidth;
+            let w = this.listWidth ? this.listWidth :
+                (window.innerWidth ||
+                document.documentElement.clientWidth ||
+                document.body.clientWidth);
             let offsetWidth = this.$refs.list.offsetWidth;
             if (type === 'end') {
                 if (updateMove > 0) {
@@ -119,18 +129,25 @@ export default {
             if (!(Math.abs(move) > 20 && Math.abs(move) > Math.abs(moveY))) {
                 return false;
             } else {
-                let w = this.$refs.wrapper.clientWidth;
+                let w = this.listWidth ? this.listWidth :
+                    (window.innerWidth ||
+                    document.documentElement.clientWidth ||
+                    document.body.clientWidth);
                 let maxMove = -this.$refs.list.offsetWidth + w;
                 callback && callback(move, maxMove, moveY);
             }
         },
 
         touchMove(event) {
-            event.preventDefault();
+            //event.preventDefault();
             let changedTouches = event.changedTouches[0];
             this.touchParams.lastTime = event.timestamp || Date.now();
             let moveTime = this.touchParams.lastTime - this.touchParams.startTime;
             this.touchEvent(changedTouches, (move, maxMove, moveY) => {
+                event.preventDefault();
+                if (event.cancelable) {
+                    event.preventDefault();
+                }
                 if (move > 0 && this.isFirstShow) {
                     this.isFirstShow = false;
                 }
@@ -139,13 +156,14 @@ export default {
         },
 
         touchEnd(event) {
-            let changedTouches = event.changedTouches[0];
+            event.stopPropagation();
+            let changedTouches = event.changedTouches[0];       
             this.touchParams.lastTime = event.timestamp || Date.now();
             let moveTime = this.touchParams.lastTime - this.touchParams.startTime;
             this.touchEvent(changedTouches, (move, maxMove) => {
                 //if (moveTime <= 300) {
                 if (Math.abs(move) > 100) {
-                    move = move * 2;
+                   move = move * 1.5;
                 }
 
                 // 释放跳转之类
