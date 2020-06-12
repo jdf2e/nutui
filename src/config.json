@@ -407,6 +407,16 @@
             "sort": "1",
             "showDemo": true,
             "author": "guoxiaoxiao"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Steps",
+          "chnName": "步骤条",
+          "desc": "步骤条",
+          "type": "component",
+          "sort": "0",
+          "showDemo": true,
+          "author": "undo"
         }
     ]
 }

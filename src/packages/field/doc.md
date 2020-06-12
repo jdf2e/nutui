@@ -86,7 +86,15 @@
     <nut-field  label="自我介绍" placeholder="自我介绍" v-model="val3"  type="textarea" maxLength="20" rows="4"  />
 </div> 
 ```
+右侧自定义demo
 
+```html
+<div class="filed-wrap"> 
+          <nut-field label="验证码：" textAlign="left"  placeholder="请输入内容" v-model="val" @inputFunc="a" > 
+              <div class="get-code"> 获取验证码</div>
+          </nut-field>
+      </div>
+```
 
 
 
