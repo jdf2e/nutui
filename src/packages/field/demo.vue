@@ -124,15 +124,16 @@ export default {
 </script>
 
 <style lang="scss">
-.demo{
-  padding:0px;
+.demo {
+	padding: 0;
 }
-.textinput-demo>div{
-  width:100%;
-}
-.text-area{
-  width:100%;
-background: rgba(255,255,255,1);
 
+.textinput-demo > div {
+	width: 100%;
+}
+
+.text-area {
+	width: 100%;
+	background: rgba(255, 255, 255, 1);
 }
 </style>

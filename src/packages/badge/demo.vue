@@ -40,18 +40,20 @@ export default {
 
 <style lang="scss" scoped>
 .item {
-  margin: 16px 26px 10px 10px;
+	margin: 16px 26px 10px 10px;
 }
+
 .demo-w {
-  margin: 0;
-  background: white;
+	margin: 0;
+	background: white;
 }
+
 .demo-svg {
-  display: inline-block;
-  height: 17px;
-  width: 19px;
-  background-size: 100% 100%;
-  background-image: url('#{$assetsPath}/img/gift.png');
-  background-repeat: no-repeat;
+	display: inline-block;
+	height: 17px;
+	width: 19px;
+	background-size: 100% 100%;
+	background-image: url('#{$assetsPath}/img/gift.png');
+	background-repeat: no-repeat;
 }
 </style>

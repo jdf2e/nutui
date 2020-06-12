@@ -178,75 +178,84 @@ export default {
 
 <style lang="scss" scoped>
 .hor-panel {
-  height: 80px;
-  background-color: #e0e0e0;
-  display: flex;
+	height: 80px;
+	background-color: #e0e0e0;
+	display: flex;
 }
+
 .nut-hor-list {
-  .nut-hor-list-item {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 180px;
-    height: 60px;
-    padding: 10px;
-    margin-left: 10px;
-    background-color: #fff;
-    color: #000;
-    line-height: 100px;
-  }
+	.nut-hor-list-item {
+		display: flex;
+		align-content: center;
+		justify-content: center;
+		flex-shrink: 0;
+		width: 180px;
+		height: 60px;
+		padding: 10px;
+		margin-left: 10px;
+		background-color: #fff;
+		color: #000;
+		line-height: 100px;
+	}
 }
+
 .nut-hor-jump-more {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  width: 20px;
-  padding: 0 5px;
-  margin-left: 10px;
-  font-size: 12px;
-  text-align: center;
-  color: $primary-color;
-  background-color: #fff;
+	display: flex;
+	align-items: center;
+	height: 100%;
+	width: 20px;
+	padding: 0 5px;
+	margin-left: 10px;
+	font-size: 12px;
+	text-align: center;
+	color: $primary-color;
+	background-color: #fff;
 }
+
 .nut-scroller-item-img {
-  height: 58px;
-  width: 58px;
-  border-radius: 10px;
-  border: 1px solid #eee;
-  overflow: hidden;
+	height: 58px;
+	width: 58px;
+	border-radius: 10px;
+	border: 1px solid #eee;
+	overflow: hidden;
 }
+
 dl,
 dt,
 dd {
-  margin: 0;
+	margin: 0;
 }
+
 .nut-scroller-item-info {
-  flex: 1;
-  padding-left: 10px;
-  line-height: 20px;
-  dt {
-    font-size: 14px;
-  }
-  dd {
-    margin-left: 0;
-    font-size: 12px;
-  }
+	flex: 1;
+	padding-left: 10px;
+	line-height: 20px;
+
+	dt {
+		font-size: 14px;
+	}
+
+	dd {
+		margin-left: 0;
+		font-size: 12px;
+	}
 }
+
 .vert-panel {
-  height: 400px;
-  padding: 10px;
-  background-color: #e1e1e1;
+	height: 400px;
+	padding: 10px;
+	background-color: #e1e1e1;
 }
+
 .nut-vert-list-panel {
-  .nut-vert-list-item {
-    display: flex;
-    height: 60px;
-    padding: 10px;
-    margin-bottom: 10px;
-    //background-color: mix($primary-color, #FFF, 90%);
-    background-color: #fff;
-    color: #000;
-  }
+	.nut-vert-list-item {
+		display: flex;
+		height: 60px;
+		padding: 10px;
+		margin-bottom: 10px;
+		//background-color: mix($primary-color, #FFF, 90%);
+		background-color: #fff;
+		color: #000;
+	}
 }
 </style>

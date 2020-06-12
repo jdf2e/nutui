@@ -49,13 +49,14 @@ export default {
 
 <style lang="scss" scoped>
 .nut-steps {
-  margin-left: 10px;
+	margin-left: 10px;
 }
+
 .next-step {
-  text-align: center;
-  line-height: 30px;
-  color: #ffffff;
-  background: #2d8cf0;
-  border-radius: 3px;
+	text-align: center;
+	line-height: 30px;
+	color: #fff;
+	background: #2d8cf0;
+	border-radius: 3px;
 }
 </style>

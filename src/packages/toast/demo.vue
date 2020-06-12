@@ -139,9 +139,10 @@ export default {
 
 <style lang="scss" scoped>
 .demo-content {
-  margin: 12px;
+	margin: 12px;
 }
-/deep/.nut-button {
-  margin: 4px;
+
+/deep/ .nut-button {
+	margin: 4px;
 }
 </style>

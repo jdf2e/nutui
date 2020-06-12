@@ -89,19 +89,22 @@ export default {
 
 <style lang="scss" scoped>
 .demo {
-  padding-left: 0;
-  padding-right: 0;
+	padding-left: 0;
+	padding-right: 0;
 }
+
 h4 {
-  padding: 0 10px;
+	padding: 0 10px;
 }
-.timer{
-  color:#C8C8C8FF;
+
+.timer {
+	color: #c8c8c8ff;
 }
-.badge{
-  .nut-badge{
-    width: 100%;
-    height: 100%;
-  }
+
+.badge {
+	.nut-badge {
+		width: 100%;
+		height: 100%;
+	}
 }
 </style>

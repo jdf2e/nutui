@@ -1,104 +1,119 @@
 .nut-picker {
-  background-color: #fff;
-  width: 100%;
+	background-color: #fff;
+	width: 100%;
 }
-.nut-picker-control {
-  display: flex;
-  height: 40px;
-  border-bottom: 1px solid $light-color;
-  text-align: center;
-  line-height: 40px;
-  font-size: $font-size-base;
-  .nut-picker-cancel-btn,
-  .nut-picker-confirm-btn {
-    width: 60px;
-    color: $primary-color;
-  }
-  .nut-picker-title {
-    flex: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-}
-.nut-picker-panel {
-  height: 252px;
-  display: flex;
-}
-.nut-picker-list {
-  flex: 1;
-  position: relative;
-  height: 252px;
-  overflow: hidden;
-  text-align: center;
-  .nut-picker-list-panel {
-    transform-style: preserve-3d;
-  }
-  .nut-picker-mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    //background-image: linear-gradient(180deg,hsla(0,0%,100%,.9),hsla(0,0%,100%,.6)),linear-gradient(0deg,hsla(0,0%,100%,.9),hsla(0,0%,100%,.6));
-    background-position: top, bottom;
-    background-size: 100% 108px;
-    background-repeat: no-repeat;
-    z-index: 3;
-  }
-  .nut-picker-indicator {
-    position: absolute;
-    top: 108px;
-    width: 100%;
-    height: 34px;
-    border-top: 1px solid $dark-color;
-    border-bottom: 1px solid $dark-color;
-    z-index: 3;
-  }
 
-  .nut-picker-content,
-  .nut-picker-roller {
-    position: absolute;
-    top: 108px;
-    width: 100%;
-    height: 36px;
-  }
-  .nut-picker-content {
-    background: #fff;
-    z-index: 2;
-    overflow: hidden;
-  }
-  .nut-picker-item,
-  .nut-picker-roller-item {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: 36px;
-    line-height: 36px;
-    color: $title-color;
-    font-size: $font-size-base;
-    text-align: center;
-  }
-  .nut-picker-item {
-    font-size: 15px;
-    background: #fff;
-  }
-  .nut-picker-roller {
-    z-index: 1;
-    transform-style: preserve-3d;
-    .nut-picker-roller-item {
-      backface-visibility: hidden;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      color: $text-color;
-    }
-    .nut-picker-roller-item-hidden {
-      visibility: hidden;
-      opacity: 0;
-    }
-  }
+.nut-picker-control {
+	display: flex;
+	height: 40px;
+	border-bottom: 1px solid $light-color;
+	text-align: center;
+	line-height: 40px;
+	font-size: $font-size-base;
+
+	.nut-picker-cancel-btn,
+	.nut-picker-confirm-btn {
+		width: 60px;
+		color: $primary-color;
+	}
+
+	.nut-picker-title {
+		flex: 1;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 }
+
+.nut-picker-panel {
+	height: 252px;
+	display: flex;
+}
+
+.nut-picker-list {
+	flex: 1;
+	position: relative;
+	height: 252px;
+	overflow: hidden;
+	text-align: center;
+
+	.nut-picker-list-panel {
+		transform-style: preserve-3d;
+	}
+
+	.nut-picker-mask {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		//background-image: linear-gradient(180deg,hsla(0,0%,100%,.9),hsla(0,0%,100%,.6)),linear-gradient(0deg,hsla(0,0%,100%,.9),hsla(0,0%,100%,.6));
+		background-position: top, bottom;
+		background-size: 100% 108px;
+		background-repeat: no-repeat;
+		z-index: 3;
+	}
+
+	.nut-picker-indicator {
+		position: absolute;
+		top: 108px;
+		width: 100%;
+		height: 34px;
+		border-top: 1px solid $dark-color;
+		border-bottom: 1px solid $dark-color;
+		z-index: 3;
+	}
+
+	.nut-picker-content,
+	.nut-picker-roller {
+		position: absolute;
+		top: 108px;
+		width: 100%;
+		height: 36px;
+	}
+
+	.nut-picker-content {
+		background: #fff;
+		z-index: 2;
+		overflow: hidden;
+	}
+
+	.nut-picker-item,
+	.nut-picker-roller-item {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		height: 36px;
+		line-height: 36px;
+		color: $title-color;
+		font-size: $font-size-base;
+		text-align: center;
+	}
+
+	.nut-picker-item {
+		font-size: 15px;
+		background: #fff;
+	}
+
+	.nut-picker-roller {
+		z-index: 1;
+		transform-style: preserve-3d;
+
+		.nut-picker-roller-item {
+			backface-visibility: hidden;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			color: $text-color;
+		}
+
+		.nut-picker-roller-item-hidden {
+			visibility: hidden;
+			opacity: 0;
+		}
+	}
+}
+
 .nut-picker-placeholder {
-  height: 1px;
+	height: 1px;
 }

@@ -114,42 +114,50 @@ export default {
 
 <style lang="scss" scoped>
 .bg {
-  margin: 0 10px;
+	margin: 0 10px;
 }
+
 .gap {
-  height: 10px;
+	height: 10px;
 }
+
 .white-bg {
-  padding: 10px;
-  background: #fff;
+	padding: 10px;
+	background: #fff;
 }
+
 .btn-state {
-  button {
-    margin-bottom: 10px;
-  }
+	button {
+		margin-bottom: 10px;
+	}
 }
+
 .btn-size {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  margin-top: 24px;
-  &.two {
-    button {
-      width: 168px;
-    }
-  }
-  &.three {
-    button {
-      width: 109px;
-    }
-  }
-  &.four {
-    button {
-      width: 79px;
-    }
-    .middle {
-      padding: 0;
-    }
-  }
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-around;
+	margin-top: 24px;
+
+	&.two {
+		button {
+			width: 168px;
+		}
+	}
+
+	&.three {
+		button {
+			width: 109px;
+		}
+	}
+
+	&.four {
+		button {
+			width: 79px;
+		}
+
+		.middle {
+			padding: 0;
+		}
+	}
 }
 </style>

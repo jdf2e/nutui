@@ -129,7 +129,7 @@
           <nut-radio class="my-radio" v-model="radioVal5" label="b">备选项2</nut-radio>
         </span>
       </nut-cell>
-    </div>
+    </div>    
   </div>
 </template>
 
@@ -146,7 +146,7 @@ export default {
       radioGroupVal1: 'b',
       radioGroupVal2: '2',
       radioGroupVal3: '2',
-      radioGroupVal4: 'c'
+      radioGroupVal4: 'c'      
     };
   },
   methods: {}
@@ -155,10 +155,10 @@ export default {
 
 <style lang="scss">
 .nut-radio.my-radio {
-  input:checked {
-    background-image: radial-gradient(circle, #fff 0%, #fff 50%, $primary-color 60%);
-    background-size: 50% 50%;
-    border: none;
-  }
+	input:checked {
+		background-image: radial-gradient(circle, #fff 0%, #fff 50%, $primary-color 60%);
+		background-size: 50% 50%;
+		border: none;
+	}
 }
 </style>

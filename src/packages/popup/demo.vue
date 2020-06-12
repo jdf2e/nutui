@@ -161,17 +161,18 @@ export default {
 </script>
 <style lang="scss" scoped>
 .title {
-  text-align: left;
-  margin: 0;
-  padding: 32px 16px 16px;
-  color: rgba(69, 90, 100, 0.6);
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
+	text-align: left;
+	margin: 0;
+	padding: 32px 16px 16px;
+	color: rgba(69, 90, 100, 0.6);
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
 }
+
 .demo {
-  padding-left: 0;
-  padding-right: 0;
-  overflow: hidden;
+	padding-left: 0;
+	padding-right: 0;
+	overflow: hidden;
 }
 </style>
