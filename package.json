@@ -17,11 +17,9 @@
     "build:site": "nutui-cli build-site",
     "clean": "nutui-cli clean",
     "add": "nutui-cli add",
-    "lint": "nutui-cli lint",
     "test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config node_modules/@nutui/cli/dist_cli/webpack/test.config.js  --require node_modules/@nutui/cli/dist_cli/test/setup.js src/packages/**/__test__/**.spec.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "test:watch": "npm run test --watch",
-    "prettier:check": "prettier -l src/**/*.{js,vue,scss}",
     "prettier:fix": "prettier --write src/**/*.{js,vue,scss}",
     "upload:test": "node test_script/upload.js"
   },
