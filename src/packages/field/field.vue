@@ -110,6 +110,7 @@ export default {
       this.active = false;
     },
     focus(){
+      if (this.disabled || this.readonly) return;
       this.active=true;
     },
     handleInput(evt) {
