@@ -92,15 +92,16 @@ export default {
 
 <style lang="scss" scoped>
 .demo-btn {
-  border: 1px solid #ddd;
-  background: #eee;
-  border-radius: 4px;
-  outline: none;
-  padding: 3px 10px;
-  cursor: pointer;
-  transition: all 0.35s;
-  &:hover {
-    background: #ddd;
-  }
+	border: 1px solid #ddd;
+	background: #eee;
+	border-radius: 4px;
+	outline: none;
+	padding: 3px 10px;
+	cursor: pointer;
+	transition: all 0.35s;
+
+	&:hover {
+		background: #ddd;
+	}
 }
 </style>

@@ -96,7 +96,7 @@ export default {
   :name="name"
   :url="url"    
   >
-  <nut-button small>上传</nut-button>
+  <nut-button size="small">上传</nut-button>
 </nut-uploader>   
 ```
 
@@ -108,7 +108,7 @@ export default {
   :headers="headers"
   :attach="formData"
   >
-  <nut-button small>上传</nut-button>
+  <nut-button size="small">上传</nut-button>
 </nut-uploader>   
 ```
 ```javascript
@@ -152,7 +152,7 @@ export default {
     @preview="preview"
     @showMsg="showMsg1"
   >
-    <nut-button small>上传</nut-button>
+    <nut-button size="small">上传</nut-button>
   </nut-uploader>
 ```
 ```js
@@ -174,7 +174,7 @@ preview(file) {
     @failure="demo1Fail"
     @start="demo1UploadStart"
     @showMsg="showMsg"
-  ><nut-button small>上传图片前处理图片内容</nut-button></nut-uploader>
+  ><nut-button size="small">上传图片前处理图片内容</nut-button></nut-uploader>
 ```
 ```js
 test($ev){   
@@ -198,7 +198,7 @@ test($ev){
     @failure="demo1Fail"
     @start="demo1UploadStart"
     @showMsg="showMsg"
-  ><nut-button small>自定义增加上传图片数据</nut-button></nut-uploader>
+  ><nut-button size="small">自定义增加上传图片数据</nut-button></nut-uploader>
 
 ```
 
@@ -206,34 +206,34 @@ test($ev){
 
 ## Prop
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| name | input name的名称 | String | ""
-| url | 上传服务器的接口地址 | String | -
-| isPreview | 是否需要预览 | Boolean | false
-| clearInput | 是否需要清空input内容，设为true支持重复选择上传同一个文件 | Boolean | false
-| maxSize | 可以设定最大上传文件的大小（字节） | Number | 5242880
-| acceptType | 可以上传文件的类型 | Array | ['image/jpeg', 'image/png', 'image/gif', 'image/bmp']
-| attach | 附加上传的信息formData | Object | {}
-| headers | 自定义headers | Object | {}
-| xhrState | 接口响应的成功状态（status）值 | Number | 200
-| typeError | 文件类型错误提示文案 | String | "不支持上传该类型文件"
-| limitError | 文件大小超过限制提示文案 | String | "文件大小超过限制"
-| xmlError | 浏览器不支持本组件时的提示文案 | String | "对不起，您的浏览器不支持本组件！"
-| withCredentials | 支持发送 cookie 凭证信息 | Boolean | fasle
-| beforeUpload | 上传前的函数需要返回一个对象  | Function | {event:$event} $event为点击事件必传
-| selfData | 自定义增加上传的数据 | Object | {}
+| 字段             | 说明                                                        | 类型     | 默认值                                                |
+| ---------------- | ----------------------------------------------------------- | -------- | ----------------------------------------------------- |
+| name             | input name的名称                                            | String   | ""                                                    |
+| url              | 上传服务器的接口地址                                        | String   | -                                                     |
+| is-preview       | 是否需要预览                                                | Boolean  | false                                                 |
+| clear-input      | 是否需要清空input内容，设为 true 支持重复选择上传同一个文件 | Boolean  | false                                                 |
+| max-size         | 可以设定最大上传文件的大小（字节）                          | Number   | 5242880                                               |
+| accept-type      | 可以上传文件的类型                                          | Array    | ['image/jpeg', 'image/png', 'image/gif', 'image/bmp'] |
+| attach           | 附加上传的信息formData                                      | Object   | {}                                                    |
+| headers          | 自定义headers                                               | Object   | {}                                                    |
+| xhr-state        | 接口响应的成功状态（status）值                              | Number   | 200                                                   |
+| type-error       | 文件类型错误提示文案                                        | String   | "不支持上传该类型文件"                                |
+| limit-error      | 文件大小超过限制提示文案                                    | String   | "文件大小超过限制"                                    |
+| xml-error        | 浏览器不支持本组件时的提示文案                              | String   | "对不起，您的浏览器不支持本组件！"                    |
+| with-credentials | 支持发送 cookie 凭证信息                                    | Boolean  | fasle                                                 |
+| before-upload    | 上传前的函数需要返回一个对象                                | Function | {event:$event} $event为点击事件必传                   |
+| self-data        | 自定义增加上传的数据                                        | Object   | {}                                                    |
 
 ## Event
 
-| 名称 | 说明 | 回调参数 
-|----- | ----- | ----- 
-| start | 文件上传开始 | -
-| progress | 文件上传的进度 | 上传文件、已上传数据量、总数据量
-| preview | isPreview为true时可通过此方法获文件的Base64编码，一般用于预览 | 文件的Base64编码
-| success | 上传成功 | 文件、responseText
-| failure | 上传失败 | 文件、responseText
-| showMsg | 组件抛出信息的处理函数 | 组件抛出的提示信息
+| 名称     | 说明                                                          | 回调参数                         |
+| -------- | ------------------------------------------------------------- | -------------------------------- |
+| start    | 文件上传开始                                                  | -                                |
+| progress | 文件上传的进度                                                | 上传文件、已上传数据量、总数据量 |
+| preview  | isPreview为true时可通过此方法获文件的Base64编码，一般用于预览 | 文件的Base64编码                 |
+| success  | 上传成功                                                      | 文件、responseText               |
+| failure  | 上传失败                                                      | 文件、responseText               |
+| showMsg  | 组件抛出信息的处理函数                                        | 组件抛出的提示信息               |
 
 ## tips
 

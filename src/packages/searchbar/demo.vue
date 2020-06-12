@@ -59,7 +59,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .demo1 {
-  padding: 10px;
-  background: #fff;
+	padding: 10px;
+	background: #fff;
 }
 </style>

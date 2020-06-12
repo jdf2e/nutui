@@ -27,7 +27,7 @@
       @on-click-back="back"
       @on-click-title="title"
       @on-click-more="more"
-      style="background-color:#000; color: #fff; height:60px; line-height: 60px;"
+      style="background-color: #000; color: #fff; height: 60px; line-height: 60px;"
       >NavBar5</nut-navbar
     >
   </div>

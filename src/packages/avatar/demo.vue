@@ -51,9 +51,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .white-bg {
-  padding: 10px;
-  background: #fff;
-  display: flex;
-  align-items: center;
+	padding: 10px;
+	background: #fff;
+	display: flex;
+	align-items: center;
 }
 </style>

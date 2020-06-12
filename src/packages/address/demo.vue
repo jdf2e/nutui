@@ -233,33 +233,38 @@ export default {
 
 <style lang="scss" scoped>
 .address-box {
-  margin-top: 10px;
+	margin-top: 10px;
 
-  .address-list {
-    margin-bottom: 10px;
-    background: #fff;
-    border-radius: 4px;
-    font-size: 14px;
-    padding: 10px;
+	.address-list {
+		margin-bottom: 10px;
+		background: #fff;
+		border-radius: 4px;
+		font-size: 14px;
+		padding: 10px;
 
-    &.init {
-      display: flex;
-      .titile {
-        margin-right: 15px;
-      }
-      .choose {
-        color: #999;
-      }
-    }
-    &.other {
-      display: flex;
-      .titile {
-        margin-right: 15px;
-      }
-      .choose {
-        color: #999;
-      }
-    }
-  }
+		&.init {
+			display: flex;
+
+			.titile {
+				margin-right: 15px;
+			}
+
+			.choose {
+				color: #999;
+			}
+		}
+
+		&.other {
+			display: flex;
+
+			.titile {
+				margin-right: 15px;
+			}
+
+			.choose {
+				color: #999;
+			}
+		}
+	}
 }
 </style>

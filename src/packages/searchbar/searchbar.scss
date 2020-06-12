@@ -1,58 +1,70 @@
 @import '../../styles/animation/pulse';
-.nut-searchbar {
-  display: flex;
-  flex-flow: row;
-  .search-input {
-    flex: 1;
-    padding-left: 10px;
-    margin-right: 10px;
-    background-color: $light-color;
-    border-radius: 20px;
-    form {
-      display: flex;
-      align-items: center;
-      position: relative;
-      margin-right: 10px;
-      .close-icon {
-        display: none;
-        &.show {
-          display: inline-flex;
-        }
-      }
-    }
-    i {
-      display: inline-block;
-    }
-    input {
-      min-width: 80%;
-      flex: 1;
-      padding: 10px 0;
-      margin-left: 10px;
-      background-color: $light-color;
-      border-color: transparent;
-      outline: none;
 
-      &::-webkit-search-cancel-button {
-        display: none;
-      }
-    }
-    &.focus {
-      box-shadow: 0px 0px 5px 0px $light-color;
-    }
-    &.nut-search-ani {
-      animation: nutPulse $animation-duration;
-    }
-  }
-  .btn-search {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: $title-color;
-  }
-  a {
-    text-decoration: none;
-  }
-  .nut-icon {
-    vertical-align: middle;
-  }
+.nut-searchbar {
+	display: flex;
+	flex-flow: row;
+
+	.search-input {
+		flex: 1;
+		padding-left: 10px;
+		margin-right: 10px;
+		background-color: $light-color;
+		border-radius: 20px;
+
+		form {
+			display: flex;
+			align-items: center;
+			position: relative;
+			margin-right: 10px;
+
+			.close-icon {
+				display: none;
+
+				&.show {
+					display: inline-flex;
+				}
+			}
+		}
+
+		i {
+			display: inline-block;
+		}
+
+		input {
+			min-width: 80%;
+			flex: 1;
+			padding: 10px 0;
+			margin-left: 10px;
+			background-color: $light-color;
+			border-color: transparent;
+			outline: none;
+
+			&::-webkit-search-cancel-button {
+				display: none;
+			}
+		}
+
+		&.focus {
+			box-shadow: 0 0 5px 0 $light-color;
+		}
+
+		&.nut-search-ani {
+			animation: nutPulse $animation-duration;
+		}
+	}
+
+	.btn-search {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		color: $title-color;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	.nut-icon {
+		vertical-align: middle;
+	}
 }

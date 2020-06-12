@@ -172,25 +172,28 @@ export default {
 
 <style lang="scss">
 .popup-bg {
-  z-index: 9999;
+	z-index: 9999;
 }
+
 .popup-box {
-  z-index: 9999;
+	z-index: 9999;
 }
-.desc{
-    color: #c8c8c8;
-    font-size: 13px;
+
+.desc {
+	color: #c8c8c8;
+	font-size: 13px;
 }
-.oper{
-    display: inline-block;
-    text-decoration: none;
-    width: 50px;
-    height: 28px;
-    line-height: 28px;
-    color: #fff;
-    font-size: 13px;
-    border-radius: 4px;
-    background-color: #e1251b;
-    text-align: center;
+
+.oper {
+	display: inline-block;
+	text-decoration: none;
+	width: 50px;
+	height: 28px;
+	line-height: 28px;
+	color: #fff;
+	font-size: 13px;
+	border-radius: 4px;
+	background-color: #e1251b;
+	text-align: center;
 }
 </style>

@@ -65,21 +65,24 @@ export default {
 
 <style lang="scss">
 .my-switch.nut-switch {
-  border-radius: 3px;
-  border-color: #ccc;
-  background-color: #ccc;
-  .nut-switch-btn {
-    border: 2px solid #fff;
-    box-shadow: none;
-    background-color: #fff;
-    border-radius: 3px;
-  }
-  &.nut-switch-active {
-    border-color: #0092e6;
-    background-color: #0092e6;
-    .nut-switch-btn {
-      background-color: #fff;
-    }
-  }
+	border-radius: 3px;
+	border-color: #ccc;
+	background-color: #ccc;
+
+	.nut-switch-btn {
+		border: 2px solid #fff;
+		box-shadow: none;
+		background-color: #fff;
+		border-radius: 3px;
+	}
+
+	&.nut-switch-active {
+		border-color: #0092e6;
+		background-color: #0092e6;
+
+		.nut-switch-btn {
+			background-color: #fff;
+		}
+	}
 }
 </style>

@@ -1,166 +1,179 @@
 @import '../../styles/variable.scss';
 
 .clearfix {
-  zoom: 1;
+	zoom: 1;
 }
 
-.clearfix:after {
-  display: block;
-  height: 0;
-  clear: both;
-  content: '';
-  visibility: hidden;
+.clearfix::after {
+	display: block;
+	height: 0;
+	clear: both;
+	content: '';
+	visibility: hidden;
 }
 
 .nut-steps {
-  &.horizontal {
-    display: flex;
-    .nut-step {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      .nut-step-node {
-        display: flex;
-        width: 100%;
-        .nut-step-line {
-          height: 1px;
-          width: 100%;
-          top: 50%;
-          left: 50%;
-        }
-      }
-      .nut-step-main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        .nut-step-title {
-          margin-bottom: 0;
-        }
-      }
-    }
-  }
+	&.horizontal {
+		display: flex;
+
+		.nut-step {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			.nut-step-node {
+				display: flex;
+				width: 100%;
+
+				.nut-step-line {
+					height: 1px;
+					width: 100%;
+					top: 50%;
+					left: 50%;
+				}
+			}
+
+			.nut-step-main {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+
+				.nut-step-title {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
 }
 
 .nut-step {
-  position: relative;
-  font-size: $font-size-body-small;
-  display: flex;
+	position: relative;
+	font-size: $font-size-body-small;
+	display: flex;
 
-  .nut-step-time-forward {
-    font-size: $font-size-display-small;
-    width: 75px;
-    color: $text-black-2;
-  }
+	.nut-step-time-forward {
+		font-size: $font-size-display-small;
+		width: 75px;
+		color: $text-black-2;
+	}
 
-  .nut-step-node {
-    position: relative;
-    z-index: 99;
-    width: 30px;
-    display: flex;
-    justify-content: center;
-    .nut-step-icon {
-      width: 20px;
-      height: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 1;
-      .default-icon {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: $split-line-color;
-      }
-    }
-    .nut-step-line {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      width: 1px;
-      height: 100%;
-      background: $split-line-color;
-    }
-  }
+	.nut-step-node {
+		position: relative;
+		z-index: 99;
+		width: 30px;
+		display: flex;
+		justify-content: center;
 
-  .nut-step-main {
-    // padding-left: 40px;
-    flex: 1;
-    margin-bottom: 20px;
-    .nut-step-title {
-      color: $text-black-1;
-      line-height: 20px;
-      font-weight: 600;
-      margin-bottom: 5px;
-    }
+		.nut-step-icon {
+			width: 20px;
+			height: 20px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			z-index: 1;
 
-    .nut-step-content {
-      color: $text-black-2;
-      line-height: 20px;
-      font-size: $font-size-display-small;
-      margin-bottom: 8px;
-    }
-    .nut-step-time {
-      color: $text-black-3;
-      font-size: $font-size-display-small;
-    }
-  }
+			.default-icon {
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				background: $split-line-color;
+			}
+		}
 
-  &.nut-step-last {
-    .nut-step-line {
-      display: none;
-    }
-  }
+		.nut-step-line {
+			position: absolute;
+			top: 14px;
+			left: 14px;
+			width: 1px;
+			height: 100%;
+			background: $split-line-color;
+		}
+	}
 
-  &.nut-step-status- {
-    &wait {
-      .nut-step-node {
-        .nut-step-icon {
-          .default-icon {
-            width: 20px;
-            height: 20px;
-            line-height: 20px;
-            border-radius: 50%;
-            background: $split-line-color;
-            position: relative;
-            &::before {
-              content: '...';
-              position: absolute;
-              top: -4px;
-              width: 100%;
-              height: 100%;
-              color: $btn-default-bg;
-              text-align: center;
-            }
-          }
-        }
-      }
-    }
-    &process {
-      .nut-step-node {
-        .nut-step-icon {
-          .default-icon {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: $assist-color-orange;
-            position: relative;
-            z-index: 1;
-            &::before {
-              content: '';
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              width: 7px;
-              height: 7px;
-              border-radius: 50%;
-              background: $primary-color-jd-red;
-            }
-          }
-        }
-      }
-    }
-  }
+	.nut-step-main {
+		// padding-left: 40px;
+		flex: 1;
+		margin-bottom: 20px;
+
+		.nut-step-title {
+			color: $text-black-1;
+			line-height: 20px;
+			font-weight: 600;
+			margin-bottom: 5px;
+		}
+
+		.nut-step-content {
+			color: $text-black-2;
+			line-height: 20px;
+			font-size: $font-size-display-small;
+			margin-bottom: 8px;
+		}
+
+		.nut-step-time {
+			color: $text-black-3;
+			font-size: $font-size-display-small;
+		}
+	}
+
+	&.nut-step-last {
+		.nut-step-line {
+			display: none;
+		}
+	}
+
+	&.nut-step-status- {
+		&wait {
+			.nut-step-node {
+				.nut-step-icon {
+					.default-icon {
+						width: 20px;
+						height: 20px;
+						line-height: 20px;
+						border-radius: 50%;
+						background: $split-line-color;
+						position: relative;
+
+						&::before {
+							content: '...';
+							position: absolute;
+							top: -4px;
+							width: 100%;
+							height: 100%;
+							color: $btn-default-bg;
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+
+		&process {
+			.nut-step-node {
+				.nut-step-icon {
+					.default-icon {
+						width: 15px;
+						height: 15px;
+						border-radius: 50%;
+						background: $assist-color-orange;
+						position: relative;
+						z-index: 1;
+
+						&::before {
+							content: '';
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+							width: 7px;
+							height: 7px;
+							border-radius: 50%;
+							background: $primary-color-jd-red;
+						}
+					}
+				}
+			}
+		}
+	}
 }

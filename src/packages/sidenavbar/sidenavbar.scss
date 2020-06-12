@@ -1,14 +1,17 @@
 @import '../subsidenavbar/subsidenavbar.scss';
 @import '../icon/icon.scss';
 @import '../sidenavbaritem/sidenavbaritem.scss';
+
 .nut-sidenavbar {
-  height: 100%;
-  overflow: auto;
-  .sidenavbar-content {
-    position: relative;
-    background-color: #fff;
-    .sidenavbar-list {
-      width: 100%;
-    }
-  }
+	height: 100%;
+	overflow: auto;
+
+	.sidenavbar-content {
+		position: relative;
+		background-color: #fff;
+
+		.sidenavbar-list {
+			width: 100%;
+		}
+	}
 }

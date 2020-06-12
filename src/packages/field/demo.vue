@@ -130,29 +130,32 @@ export default {
 </script>
 
 <style lang="scss">
-.demo{
-  padding:0px;
+.demo {
+	padding: 0;
 }
-.textinput-demo>div{
-  width:100%;
-}
-.text-area{
-  width:100%;
-background: rgba(255,255,255,1);
 
+.textinput-demo > div {
+	width: 100%;
 }
-.wrapper-cell .nut-cell{
-  margin:0 0 0 20px;
-}
-.filed-wrap{
-  background: #ffffff;
 
-  .get-code{
-    min-width: 80px;
-    background-color: #07c160;
-    border: 1px solid #07c160;
-    color: #ffffff;
-    margin: 10px;
-  } 
+.text-area {
+	width: 100%;
+	background: rgba(255, 255, 255, 1);
+}
+
+.wrapper-cell .nut-cell {
+	margin: 0 0 0 20px;
+}
+
+.filed-wrap {
+	background: #fff;
+
+	.get-code {
+		min-width: 80px;
+		background-color: #07c160;
+		border: 1px solid #07c160;
+		color: #fff;
+		margin: 10px;
+	}
 }
 </style>

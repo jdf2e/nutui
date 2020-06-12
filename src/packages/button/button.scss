@@ -1,156 +1,161 @@
 @mixin small {
-  height: $btn-height-small;
-  padding: 0 $btn-height-small/2;
-  font-size: $font-size-small;
+	height: $btn-height-small;
+	padding: 0 $btn-height-small/2;
+	font-size: $font-size-small;
 }
 
 .nut-button {
-  display: inline-block;
-  position: relative;
-  box-sizing: border-box;
-  cursor: pointer;
-  height: $btn-height-big;
-  padding: 0 $btn-height-big;
-  outline: none;
-  font-size: $font-size-base;
-  color: $btn-gradient-color;
-  background: $btn-gradient-bg;
-  border: none;
-  border-radius: $btn-border-radius-base;
-  transition: opacity .2s;
-  &::before {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    border: inherit;
-    border-color: black;
-    border-radius: inherit; /* inherit parent's border radius */
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    content: ' ';
-  }
+	display: inline-block;
+	position: relative;
+	box-sizing: border-box;
+	cursor: pointer;
+	height: $btn-height-big;
+	padding: 0 $btn-height-big;
+	outline: none;
+	font-size: $font-size-base;
+	color: $btn-gradient-color;
+	background: $btn-gradient-bg;
+	border: none;
+	border-radius: $btn-border-radius-base;
+	transition: opacity .2s;
 
-  &:active::before {
-    opacity: .1;
-  }
+	&::before {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		border: inherit;
+		border-color: black;
+		border-radius: inherit; /* inherit parent's border radius */
+		transform: translate(-50%, -50%);
+		opacity: 0;
+		content: ' ';
+	}
 
-  &[disabled] {
-    cursor: not-allowed;
-    background: $btn-disable-bg;
-    color: $btn-gradient-color;
-  }
+	&:active::before {
+		opacity: .1;
+	}
 
-  // type-label
-  .txt-icon {
-    vertical-align: text-top;
-    margin-right: $btn-icon-margin;
-    color: $primary-color;
-  }
-  &.bottom{
-    background: $btn-primary-color;
-    border: $border-width-base solid $split-line-color;
-    color: $text-black-3;    
-  }
-  &.red {
-    background: $btn-default-bg;
-    border: $border-width-base solid $primary-color;
-    color: $primary-color;
-  }
+	&[disabled] {
+		cursor: not-allowed;
+		background: $btn-disable-bg;
+		color: $btn-gradient-color;
+	}
 
-  &.gray {
-    background: $light-color;
-    color: $title-color;
-  }
+	// type-label
+	.txt-icon {
+		vertical-align: text-top;
+		margin-right: $btn-icon-margin;
+		color: $primary-color;
+	}
 
-  &.light {
-    color: $title-color;
-    background: $btn-default-bg;
-    border: $border-width-base solid $dark-color;
-  }
+	&.bottom {
+		background: $btn-primary-color;
+		border: $border-width-base solid $split-line-color;
+		color: $text-black-3;
+	}
 
-  &.lightred {
-    background: $btn-label-light-bg;
-    color: $title-color;
-    border: none;
-  }
+	&.red {
+		background: $btn-default-bg;
+		border: $border-width-base solid $primary-color;
+		color: $primary-color;
+	}
 
-  &.primary {
-    background: $primary-color;
-    color: $btn-primary-color;
-  }
+	&.gray {
+		background: $light-color;
+		color: $title-color;
+	}
 
-  &.default {
-    background: $btn-default-bg;
-    color: $title-color;
-    border: $border-width-base solid $btn-default-border;
-  }
-  &.actived {
-    background: $btn-label-light-bg;
-    color: $primary-color;
-    border: $border-width-base solid $primary-color;
-  }  
-  &.dashed {
-    background: $btn-default-bg;
-    color: $title-color;
-    border: $border-width-base dashed $dark-color;
-  }
+	&.light {
+		color: $title-color;
+		background: $btn-default-bg;
+		border: $border-width-base solid $dark-color;
+	}
 
-  // 通栏样式
-  &.block {
-    width: 100%;
-    border-radius: 0;
-  }
-  // size-大号
-  &.big {
-    height: $btn-height-big;
-    padding: 0 $btn-height-big/2;
-    font-size: $font-size-big;
-  }
-  // size-中号
-  &.middle {
-    height: $btn-height-middle;
-    padding: 0 $btn-height-middle/2;
-    font-size: $font-size-middle;
-  }
-  // size-小号
-  &.small {
-    height: $btn-height-small;
-    padding: 0 $btn-height-small/2;
-    font-size: $font-size-small;
-  }
+	&.lightred {
+		background: $btn-label-light-bg;
+		color: $title-color;
+		border: none;
+	}
 
+	&.primary {
+		background: $primary-color;
+		color: $btn-primary-color;
+	}
 
+	&.default {
+		background: $btn-default-bg;
+		color: $title-color;
+		border: $border-width-base solid $btn-default-border;
+	}
 
-  &.no-txt-big {
-    width: $btn-height-big;
-    padding: 0;
+	&.actived {
+		background: $btn-label-light-bg;
+		color: $primary-color;
+		border: $border-width-base solid $primary-color;
+	}
 
-    .txt-icon {
-      margin: 0;
-    }
-  }
-  &.no-tx-middle {
-    width: $btn-height-middle;
-    padding: 0;
+	&.dashed {
+		background: $btn-default-bg;
+		color: $title-color;
+		border: $border-width-base dashed $dark-color;
+	}
 
-    .txt-icon {
-      margin: 0;
-    }
-  }
-  &.no-txt-small {
-    width: $btn-height-small;
-    padding: 0;
+	// 通栏样式
+	&.block {
+		width: 100%;
+		border-radius: 0;
+	}
+	// size-大号
+	&.big {
+		height: $btn-height-big;
+		padding: 0 $btn-height-big/2;
+		font-size: $font-size-big;
+	}
+	// size-中号
+	&.middle {
+		height: $btn-height-middle;
+		padding: 0 $btn-height-middle/2;
+		font-size: $font-size-middle;
+	}
+	// size-小号
+	&.small {
+		height: $btn-height-small;
+		padding: 0 $btn-height-small/2;
+		font-size: $font-size-small;
+	}
 
-    .txt-icon {
-      margin: 0;
-    }
-  }
+	&.no-txt-big {
+		width: $btn-height-big;
+		padding: 0;
 
-  // shape-圆角
-  &.circle {
-    border-radius: $btn-border-radius-large;
-  }
+		.txt-icon {
+			margin: 0;
+		}
+	}
+
+	&.no-tx-middle {
+		width: $btn-height-middle;
+		padding: 0;
+
+		.txt-icon {
+			margin: 0;
+		}
+	}
+
+	&.no-txt-small {
+		width: $btn-height-small;
+		padding: 0;
+
+		.txt-icon {
+			margin: 0;
+		}
+	}
+
+	// shape-圆角
+	&.circle {
+		border-radius: $btn-border-radius-large;
+	}
 }

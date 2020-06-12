@@ -1,5 +1,6 @@
 <template>
-  <label :class="['nut-radio', 'nut-radio-size-' + currentSize]" @click="clickEvt">
+<div class="warper">
+  <label v-if="type === 'radio'" :class="['nut-radio', 'nut-radio-size-' + currentSize]" @click="clickEvt">
     <input
       type="radio"
       :value="currentValue"
@@ -12,6 +13,11 @@
       <slot></slot>
     </span>
   </label>
+  <div v-if="type === 'list'" class="list-box">
+
+  </div>
+</div>
+  
 </template>
 <script>
 import findCptUpward from '../../mixins/findCptUpward/index.js';
@@ -36,6 +42,10 @@ export default {
     animated: {
       type: Boolean,
       default: true
+    },
+    type:{
+      type: String,
+      default:'radio'
     }
   },
   data() {

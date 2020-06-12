@@ -130,42 +130,46 @@ export default {
 
 <style lang="scss">
 .textinput-demo {
-  padding-left: 0;
-  padding-right: 0;
+	padding-left: 0;
+	padding-right: 0;
 }
+
 .textinput-demo h4 {
-  padding: 0 10px;
+	padding: 0 10px;
 }
 
 .autoFucus {
-  background: #fff;
-  padding: 10px;
+	background: #fff;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	.my-input {
+		flex: 1;
+	}
 
-  .my-input {
-    flex: 1;
-  }
-  .searchBtn {
-    margin-left: 10px;
-  }
+	.searchBtn {
+		margin-left: 10px;
+	}
 }
+
 .nut-textinput {
-  &.my-input {
-    input {
-      height: 36px;
-      border-radius: 20px;
-      padding-left: 40px;
-      padding-right: 40px;
-      background: url("data:image/svg+xml, %3Csvg version='1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M15.8 14.3l-3.3-3.1c1-1.1 1.6-2.6 1.6-4.1 0-3.6-3.1-6.6-7-6.6s-7 3-7 6.6c0 3.6 3.1 6.6 7 6.6 1.7 0 3.2-.6 4.4-1.5l3.3 3.1c.1.1.3.2.5.2s.4-.1.5-.2c.3-.3.3-.7 0-1zM1.5 7.1c0-2.9 2.5-5.2 5.6-5.2 3.1 0 5.6 2.3 5.6 5.2 0 2.9-2.5 5.2-5.6 5.2-3.2 0-5.6-2.3-5.6-5.2z' fill-rule='evenodd' clip-rule='evenodd' fill='%23999999'/%3E%3C/svg%3E")
-        no-repeat 10px center;
-      background-size: 18px;
-    }
-    .nut-textinput-clear {
-      right: 15px;
-    }
-  }
+	&.my-input {
+		input {
+			height: 36px;
+			border-radius: 20px;
+			padding-left: 40px;
+			padding-right: 40px;
+			background:
+				url("data:image/svg+xml, %3Csvg version='1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M15.8 14.3l-3.3-3.1c1-1.1 1.6-2.6 1.6-4.1 0-3.6-3.1-6.6-7-6.6s-7 3-7 6.6c0 3.6 3.1 6.6 7 6.6 1.7 0 3.2-.6 4.4-1.5l3.3 3.1c.1.1.3.2.5.2s.4-.1.5-.2c.3-.3.3-.7 0-1zM1.5 7.1c0-2.9 2.5-5.2 5.6-5.2 3.1 0 5.6 2.3 5.6 5.2 0 2.9-2.5 5.2-5.6 5.2-3.2 0-5.6-2.3-5.6-5.2z' fill-rule='evenodd' clip-rule='evenodd' fill='%23999999'/%3E%3C/svg%3E")
+				no-repeat 10px center;
+			background-size: 18px;
+		}
+
+		.nut-textinput-clear {
+			right: 15px;
+		}
+	}
 }
 </style>
