@@ -33,7 +33,7 @@
             @failure="demo2Fail"
             @showMsg="showMsg1"
           >
-            <nut-button small>{{demo2Name}}</nut-button>
+            <nut-button size="small">{{demo2Name}}</nut-button>
           </nut-uploader>
         </span>
         <div slot="desc"></div>
@@ -136,7 +136,7 @@
           @start="demo1UploadStart"
           @showMsg="showMsg"
         >
-          <nut-button small>上传图片前处理图片内容</nut-button>
+          <nut-button size="small">上传图片前处理图片内容</nut-button>
         </nut-uploader>
       </span>
       <div slot="desc"></div>
@@ -155,7 +155,7 @@
           @start="demo1UploadStart"
           @showMsg="showMsg"
         >
-          <nut-button small>自定义增加上传图片数据</nut-button>
+          <nut-button size="small">自定义增加上传图片数据</nut-button>
         </nut-uploader>
       </span>
       <div slot="desc"></div>
