@@ -20,6 +20,7 @@
         text-overflow: ellipsis;
     }
     input {
+        min-width: 100px;
         flex: 1;
         height: 40px;
         appearance: none;
@@ -69,9 +70,9 @@
     }
     .nut-textinput-clear {
         opacity: 0.5;
-        position: absolute;
-        right: 0px;
-        top: 50%;
+        position: relative;
+        right: 20px;
+        top: 10px;
         transform: translateY(-50%);
         height: 20px;
         width: 20px;

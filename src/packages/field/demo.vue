@@ -68,6 +68,12 @@
         </span>
       </nut-cell>
     </div>
+      <h4>右侧自定义DOM</h4>
+       <div class="filed-wrap"> 
+          <nut-field label="验证码：" textAlign="left"  placeholder="请输入内容" v-model="val" @inputFunc="a" > 
+              <div class="get-code"> 获取验证码</div>
+          </nut-field>
+      </div>
   </div>
 </template>
 
@@ -134,5 +140,19 @@ export default {
   width:100%;
 background: rgba(255,255,255,1);
 
+}
+.wrapper-cell .nut-cell{
+  margin:0 0 0 20px;
+}
+.filed-wrap{
+  background: #ffffff;
+
+  .get-code{
+    min-width: 80px;
+    background-color: #07c160;
+    border: 1px solid #07c160;
+    color: #ffffff;
+    margin: 10px;
+  } 
 }
 </style>

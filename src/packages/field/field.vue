@@ -97,8 +97,7 @@ export default {
        type: Boolean,
         default:false
     },
-    value: String,
-    attr: Object
+    value: String
   },
   mounted(){
     this.txtNum=this.value.length;
@@ -123,7 +122,7 @@ export default {
       this.currentValue = '';
     },
     txtIptLength(event) {
-      const data = event.target;
+      const data = event.target.value;
       const txtLength = data.length;
       this.txtNum = txtLength;
       if (txtLength > this.maxLength) {
