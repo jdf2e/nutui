@@ -1,11 +1,14 @@
 <template>
   <div class="demo-list">
-    <nut-noticebar :closeMode="true" v-if="!isMobile"
-      >此 Demo 在 PC 端浏览器与移动端浏览器体验差异较大，建议在 Android 或 iOS 设备上体验。</nut-noticebar
-    >
+    <nut-noticebar
+      :closeMode="true"
+      v-if="!isMobile"
+    >此 Demo 在 PC 端浏览器与移动端浏览器体验差异较大，建议在 Android 或 iOS 设备上体验。</nut-noticebar>
     <h4>横向滑动</h4>
     <p>支持惯性和吸边回弹，支持滑动到底跳转链接。</p>
-    <p><nut-button type="light" shape="circle" small @click="scrollToPosHor()">返回第一个</nut-button></p>
+    <p>
+      <nut-button type="light" shape="circle" size="small" @click="scrollToPosHor()">返回第一个</nut-button>
+    </p>
     <div class="hor-panel">
       <nut-scroller @jump="jump()" @scrollToCbk="scrollToCbkHor" :scrollTo="scrollToHor">
         <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData" :key="index">
@@ -14,7 +17,9 @@
             <dd>2018-02-25</dd>
           </dl>
         </div>
-        <slot slot="more"><div class="nut-hor-jump-more">查看更多</div></slot>
+        <slot slot="more">
+          <div class="nut-hor-jump-more">查看更多</div>
+        </slot>
       </nut-scroller>
     </div>
     <h4>横向小于一屏</h4>
@@ -30,7 +35,9 @@
     </div>
     <h4>纵向滑动</h4>
     <p>支持下拉刷新、上拉加载更多。</p>
-    <p><nut-button type="light" shape="circle" small @click="scrollToPos()">返回列表顶部</nut-button></p>
+    <p>
+      <nut-button type="light" shape="circle" size="small" @click="scrollToPos()">返回列表顶部</nut-button>
+    </p>
     <div class="vert-panel">
       <nut-scroller
         :is-un-more="isUnMore1"
@@ -56,7 +63,13 @@
     <h4>纵向不满一屏</h4>
     <p>支持下拉刷新、上拉加载更多。</p>
     <div class="vert-panel">
-      <nut-scroller :is-un-more="isUnMore2" :is-loading="isLoading2" :type="'vertical'" @loadMore="loadMoreVert2" @pulldown="pulldown2">
+      <nut-scroller
+        :is-un-more="isUnMore2"
+        :is-loading="isLoading2"
+        :type="'vertical'"
+        @loadMore="loadMoreVert2"
+        @pulldown="pulldown2"
+      >
         <div slot="list" class="nut-vert-list-panel">
           <div class="nut-vert-list-item" v-for="(item, index) of listData2" :key="index">
             <dl class="nut-scroller-item-info">
