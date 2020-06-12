@@ -13,8 +13,7 @@
             @failure="demo1Fail"
             @start="demo1UploadStart"
             @showMsg="showMsg"
-            >{{ demo1Name }}</nut-uploader
-          >
+          >{{ demo1Name }}</nut-uploader>
         </span>
         <div slot="desc"></div>
       </nut-cell>
@@ -34,7 +33,7 @@
             @failure="demo2Fail"
             @showMsg="showMsg1"
           >
-            <nut-button small>{{ demo2Name }}</nut-button>
+            <nut-button size="small">{{ demo2Name }}</nut-button>
           </nut-uploader>
         </span>
         <div slot="desc"></div>
@@ -56,14 +55,19 @@
             @showMsg="showMsg1"
             :clearInput="true"
           >
-            <nut-button small>上传</nut-button>
+            <nut-button size="small">上传</nut-button>
           </nut-uploader>
         </span>
         <div slot="desc"></div>
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-progress class="progress-style" :percentage="progressNum" :showText="true" strokeWidth="12" />
+          <nut-progress
+            class="progress-style"
+            :percentage="progressNum"
+            :showText="true"
+            strokeWidth="12"
+          />
         </span>
         <div slot="desc"></div>
       </nut-cell>
@@ -84,7 +88,7 @@
             @preview="preview"
             @showMsg="showMsg1"
           >
-            <nut-button small>上传</nut-button>
+            <nut-button size="small">上传</nut-button>
           </nut-uploader>
         </span>
         <div slot="desc"></div>
@@ -105,7 +109,7 @@
             @preview="preview"
             @showMsg="showMsg1"
           >
-            <nut-button small>上传</nut-button>
+            <nut-button size="small">上传</nut-button>
           </nut-uploader>
         </span>
         <div slot="desc"></div>
@@ -124,8 +128,9 @@
           @failure="demo1Fail"
           @start="demo1UploadStart"
           @showMsg="showMsg"
-          ><nut-button small>上传图片前处理图片内容</nut-button></nut-uploader
         >
+          <nut-button size="small">上传图片前处理图片内容</nut-button>
+        </nut-uploader>
       </span>
       <div slot="desc"></div>
     </nut-cell>
@@ -142,8 +147,9 @@
           @failure="demo1Fail"
           @start="demo1UploadStart"
           @showMsg="showMsg"
-          ><nut-button small>自定义增加上传图片数据</nut-button></nut-uploader
         >
+          <nut-button size="small">自定义增加上传图片数据</nut-button>
+        </nut-uploader>
       </span>
       <div slot="desc"></div>
     </nut-cell>
