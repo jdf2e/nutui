@@ -44,7 +44,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .my-skeleton {
-  padding-top: 60px;
-  z-index: 998;
+	padding-top: 60px;
+	z-index: 998;
 }
 </style>

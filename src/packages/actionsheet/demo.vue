@@ -77,7 +77,7 @@
     <nut-actionsheet :is-visible="isVisible5" @close="switchActionSheet('isVisible5')">
       <div slot="custom" class="custom-wrap"><span>自定义</span></div>
     </nut-actionsheet>
-    <div style="height: 400px"></div>
+    <div style="height: 400px;"></div>
   </div>
 </template>
 
@@ -160,7 +160,7 @@ export default {
 
 <style lang="scss" scoped>
 .custom-wrap {
-  padding: 110px 0;
-  text-align: center;
+	padding: 110px 0;
+	text-align: center;
 }
 </style>

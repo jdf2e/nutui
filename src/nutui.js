@@ -82,6 +82,8 @@ import ImagePreview from './packages/imagepreview/index.js';
 import './packages/imagepreview/imagepreview.scss';
 import Badge from './packages/badge/index.js';
 import './packages/badge/badge.scss';
+import Field from "./packages/field/index.js";
+import "./packages/field/field.scss";
 
 const packages = {
   Cell,
@@ -126,6 +128,7 @@ const packages = {
   Swiper,
   ImagePreview,
   Badge,
+  Field: Field
 };
 
 const components = {};
@@ -153,7 +156,7 @@ pkgList.map(item => {
   }
 });
 
-const install = function(Vue, opts = {}) {
+const install = function (Vue, opts = {}) {
   if (install.installed) return;
 
   if (opts.locale) {

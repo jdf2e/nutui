@@ -69,7 +69,7 @@
         v-html="value.content"
       ></nut-tab-panel>
     </nut-tab>
-    <div style="width:100%;height=50px;text-align:center">
+    <div style="width: 100%; text-align: center;">
       <nut-button @click="resetHandler" type="light">重置Tab页面</nut-button>
       <nut-button @click="clickHandler">更新Tab页面</nut-button>
     </div>
@@ -220,26 +220,31 @@ export default {
 
 <style lang="scss">
 .customer-css {
-  .nut-tab-active .nut-tab-link {
-    color: #E1251B;
-  }
-  .nut-title-nav-list {
-    background: #fff;
-    border-left: 1px solid #e4e7ed;
-    &:first-child{
-      border-left: 0;
-    }
-  }
-  .nut-tab-active {
-    border: 0;
-    transition: all 0.3s ease-in-out;
-  }
-  .nav-bar {
-    background: $primary-color;
-  }
-  .nut-tab-link {
-    width: 100%;
-  }
+	.nut-tab-active .nut-tab-link {
+		color: #e1251b;
+	}
+
+	.nut-title-nav-list {
+		background: #fff;
+		border-left: 1px solid #e4e7ed;
+
+		&:first-child {
+			border-left: 0;
+		}
+	}
+
+	.nut-tab-active {
+		border: 0;
+		transition: all 0.3s ease-in-out;
+	}
+
+	.nav-bar {
+		background: $primary-color;
+	}
+
+	.nut-tab-link {
+		width: 100%;
+	}
 }
 </style>
 

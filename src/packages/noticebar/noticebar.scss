@@ -76,19 +76,19 @@
 }
 
 @keyframes nut-notice-bar-play {
-  to {
-    transform: translate3d(-100%, 0, 0);
-  }
+	to {
+		transform: translate3d(-100%, 0, 0);
+	}
 }
 
 @keyframes nut-notice-bar-play-infinite {
-  to {
-    transform: translate3d(-100%, 0, 0);
-  }
+	to {
+		transform: translate3d(-100%, 0, 0);
+	}
 }
 // 垂直方向的滚动
 @keyframes nut-notice-bar-play-vertical {
-  to {
-    transform: translateY(40px);
-  }
+	to {
+		transform: translateY(40px);
+	}
 }

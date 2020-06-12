@@ -3,14 +3,14 @@
     <h4>横向无缝切换</h4>
     <nut-swiper :paginationVisibile="true" direction="horizontal" :swiperData="dataImgItem">
       <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide ">
-        <img :src="item.imgSrc" style="max-width:100%;" />
+        <img :src="item.imgSrc" style="max-width: 100%;" />
       </div>
     </nut-swiper>
 
     <h4>横向切换</h4>
     <nut-swiper :paginationVisibile="true" direction="horizontal" :swiperData="dataImgItem" :canDragging="false" :paginationVisible="true">
       <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide ">
-        <img :src="item.imgSrc" style="max-width:100%;" />
+        <img :src="item.imgSrc" style="max-width: 100%;" />
       </div>
     </nut-swiper>
 
@@ -24,14 +24,14 @@
       :paginationVisible="true"
     >
       <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide ">
-        <img :src="item.imgSrc" style="max-width:100%;" />
+        <img :src="item.imgSrc" style="max-width: 100%;" />
       </div>
     </nut-swiper>
 
     <h4>纵向自动播放</h4>
     <nut-swiper direction="vertical" :autoPlay="3000" :swiperData="dataImgItem">
       <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide ">
-        <img :src="item.imgSrc" style="max-width:100%;" />
+        <img :src="item.imgSrc" style="max-width: 100%;" />
       </div>
     </nut-swiper>
 
@@ -47,7 +47,7 @@
       @slideChangeStart="slideChangeStart"
     >
       <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide ">
-        <img :data-src="item.imgSrc" style="max-width:100%;" class="nut-img-lazyload" />
+        <img :data-src="item.imgSrc" style="max-width: 100%;" class="nut-img-lazyload" />
       </div>
     </nut-swiper>
   </div>
@@ -108,19 +108,19 @@ export default {
 </script>
 <style lang="scss">
 #vueSwiper {
-  .nut-swiper-slide {
-    font-size: 24px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  // .nut-swiper-slide:nth-child(1), .nut-swiper-slide:nth-child(3){
-  //     color:#fff;
-  //     background:#848689;
-  // }
-  // .nut-swiper-slide:nth-child(2), .nut-swiper-slide:nth-child(4){
-  //     color:#333;
-  //     background:#ccc;
-  // }
+	.nut-swiper-slide {
+		font-size: 24px;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+	}
+	// .nut-swiper-slide:nth-child(1), .nut-swiper-slide:nth-child(3){
+	//     color:#fff;
+	//     background:#848689;
+	// }
+	// .nut-swiper-slide:nth-child(2), .nut-swiper-slide:nth-child(4){
+	//     color:#333;
+	//     background:#ccc;
+	// }
 }
 </style>

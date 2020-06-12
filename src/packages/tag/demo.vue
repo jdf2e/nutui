@@ -76,8 +76,8 @@ export default {
 
 <style lang="scss" scoped>
 .white-bg {
-  padding: 10px;
-  background: #fff;
-  line-height: 1.6;
+	padding: 10px;
+	background: #fff;
+	line-height: 1.6;
 }
 </style>

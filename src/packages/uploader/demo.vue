@@ -13,7 +13,7 @@
             @failure="demo1Fail"
             @start="demo1UploadStart"
             @showMsg="showMsg"
-          >{{ demo1Name }}</nut-uploader>
+          >{{demo1Name}}</nut-uploader>
         </span>
         <div slot="desc"></div>
       </nut-cell>
@@ -33,7 +33,7 @@
             @failure="demo2Fail"
             @showMsg="showMsg1"
           >
-            <nut-button size="small">{{ demo2Name }}</nut-button>
+            <nut-button small>{{demo2Name}}</nut-button>
           </nut-uploader>
         </span>
         <div slot="desc"></div>
@@ -85,7 +85,6 @@
             :attach="formData"
             @success="demoSuccess"
             @fail="demoFail"
-            @preview="preview"
             @showMsg="showMsg1"
           >
             <nut-button size="small">上传</nut-button>
@@ -96,6 +95,13 @@
     </div>
 
     <p>预览上传图片</p>
+    <transition name="fade">
+      <div v-if="previewImg">
+        <div class="img-outbox" v-for="(item,index) in previewImg" :key="index">
+          <img class="img-box" v-if="item" :src="item" alt />
+        </div>
+      </div>
+    </transition>
     <div>
       <nut-cell>
         <span slot="title">
@@ -108,6 +114,7 @@
             @fail="demoFail"
             @preview="preview"
             @showMsg="showMsg1"
+            :multiple="true"
           >
             <nut-button size="small">上传</nut-button>
           </nut-uploader>
@@ -129,7 +136,7 @@
           @start="demo1UploadStart"
           @showMsg="showMsg"
         >
-          <nut-button size="small">上传图片前处理图片内容</nut-button>
+          <nut-button small>上传图片前处理图片内容</nut-button>
         </nut-uploader>
       </span>
       <div slot="desc"></div>
@@ -148,16 +155,11 @@
           @start="demo1UploadStart"
           @showMsg="showMsg"
         >
-          <nut-button size="small">自定义增加上传图片数据</nut-button>
+          <nut-button small>自定义增加上传图片数据</nut-button>
         </nut-uploader>
       </span>
       <div slot="desc"></div>
     </nut-cell>
-    <transition name="fade">
-      <div class="img-outbox">
-        <img class="img-box" v-if="previewImg" :src="previewImg" alt />
-      </div>
-    </transition>
   </div>
 </template>
 
@@ -183,11 +185,7 @@ export default {
         f2: 'test1'
       },
       progressNum: 0,
-      previewImg: null,
-      previewImg2: null,
-      progressNum2: null,
-      upOver: false,
-      demo3Type: ['application/zip']
+      previewImg: null
     };
   },
   methods: {
@@ -254,9 +252,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+
   .img-box {
     margin-top: 0;
   }
+
   .icon {
     width: 20px;
     height: 20px;
@@ -265,6 +265,7 @@ export default {
     top: 0;
     right: 0;
   }
+
   .pr {
     position: absolute;
     z-index: 2;
@@ -279,6 +280,7 @@ export default {
     background: rgba(0, 0, 0, 0.2);
   }
 }
+
 .img-box {
   margin-top: 20px;
   max-width: 100%;
