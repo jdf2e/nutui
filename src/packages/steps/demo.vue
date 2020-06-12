@@ -1,55 +1,48 @@
 <template>
   <div>
-    <h4>正常流程</h4>
-    <nut-steps :current="current">
-      <nut-step title="已完成" content></nut-step>
-      <nut-step title content="这里是该步骤的描述信息"></nut-step>
-      <nut-step title="进行中" content="这里是该步骤的描述信息"></nut-step>
-      <nut-step title="待进行" content="这里是该步骤的描述信息"></nut-step>
-      <nut-step title="待进行" content="这里是该步骤的描述信息"></nut-step>
+    <h4>基础样式</h4>
+    <nut-steps>
+      <nut-step title="已签收" content="您的订单已由本人签收。如有疑问您可以联系配送员，感谢您在京东购物。" time="2020-03-03 11：09：96">
+        <template v-slot:status-icon>
+          <nut-icon type="self" :url="require('../../assets/svg/finish.svg')"></nut-icon>
+        </template>
+      </nut-step>
+      <nut-step title="运输中" content="您的订单已达到京东【北京旧宫营业部】" time="2020-03-03 11：09：96"></nut-step>
+      <nut-step content="您的订单已达到京东【北京旧宫营业部】" time="2020-03-03 11：09：96"></nut-step>
+      <nut-step content="您的订单由京东【北京顺义分拣中心】送往【北京旧宫营业部】" time="2020-03-03 11：09：96"></nut-step>
+      <nut-step title="已下单" content="您提交了订单，请等待系统确认" time="2020-03-03 11：09：96"></nut-step>
     </nut-steps>
-    <h4>流程终止</h4>
-    <nut-steps :current="current" status="error">
-      <nut-step title="已完成" content="这里是该步骤的描述信息"></nut-step>
-      <nut-step title="已完成" content="这里是该步骤的描述信息"></nut-step>
-      <nut-step title="进行中" content="这里是该步骤的描述信息"></nut-step>
-      <nut-step title="待进行" content="这里是该步骤的描述信息"></nut-step>
-      <nut-step title="待进行" content="这里是该步骤的描述信息"></nut-step>
+    <h4>时间前置</h4>
+    <nut-steps :time-forward="true">
+      <nut-step title="已签收" content="您的订单已由本人签收。如有疑问您可以联系配送员，感谢您在京东购物。" time="2020-03-03 11：09：96"></nut-step>
+      <nut-step title="运输中" content="您的订单已达到京东【北京旧宫营业部】" time="2020-03-03 11：09：96"></nut-step>
+      <nut-step content="您的订单已达到京东【北京旧宫营业部】" time="2020-03-03 11：09：96"></nut-step>
+      <nut-step content="您的订单由京东【北京顺义分拣中心】送往【北京旧宫营业部】" time="2020-03-03 11：09：96"></nut-step>
+      <nut-step title="已下单" content="您提交了订单，请等待系统确认" time="2020-03-03 11：09：96"></nut-step>
     </nut-steps>
-    <h4>动态加载(2s后渲染)</h4>
-    <nut-steps :current="current2" :source="titles">
-      <nut-step :key="index" v-for="(item, index) in titles" :title="item" content="这里是该步骤的描述信息"></nut-step>
+    <h4>横向步骤条</h4>
+    <nut-steps :current="1" type="process" direction="horizontal">
+      <nut-step title="已完成" ></nut-step>
+      <nut-step title="进行中" ></nut-step>
+      <nut-step title="等待中" ></nut-step>
+    </nut-steps>
+    <nut-steps :current="1" type="process" direction="horizontal">
+      <nut-step title="已完成" content="这里是描述文字"></nut-step>
+      <nut-step title="进行中" content="这里是描述文字"></nut-step>
+      <nut-step title="等待中" content="这里是描述文字"></nut-step>
     </nut-steps>
   </div>
 </template>
 
 <script>
 export default {
-  components: {},
-  data() {
-    return {
-      current: 3,
-      titles: [],
-      current2: 0
-    };
-  },
-  mounted() {
-    setTimeout(() => {
-      this.titles = ['已完成', '已完成', '进行中'];
-      this.current2 = 3;
-    }, 2000);
-  },
-  methods: {
-    next() {
-      this.current = this.current + 1;
-    }
-  }
+
 };
 </script>
 
 <style lang="scss" scoped>
 .nut-steps {
-  margin-left: 10px;
+  margin-left: 0 10px;
 }
 .next-step {
   text-align: center;
