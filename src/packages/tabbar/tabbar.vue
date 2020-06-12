@@ -3,7 +3,7 @@
     <a
       class="tabbar-nav"
       v-for="(value, index) in tabList"
-      :class="[{ curr: index == currIndex }, type]"
+      :class="[{ 'curr': index == currIndex }, type]"
       :key="value.tabTitle"
       v-on:click="switchTabs(value, index)"
       :href="value.href"
@@ -44,15 +44,26 @@ export default {
       tabList: this.tabbarList
     };
   },
+  mounted(){
+    this.initBar();
+  },
   watch: {
     tabbarList: {
       handler(value) {
         this.tabList = value;
+        this.initBar();
       },
       deep: true
     }
   },
   methods: {
+    initBar(){
+      this.tabList.forEach((item,index)=>{
+        if(item.curr){
+            this.currIndex = index;
+        }
+      })
+    },
     switchTabs: function(value, index) {
       this.currIndex = index;
       this.$emit('tab-switch', value, index);

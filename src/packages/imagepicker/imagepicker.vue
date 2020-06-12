@@ -119,12 +119,12 @@ export default {
               src: evt.target.result
             });
             event.target.value = '';
-            self.$emit('imgMsg', {
-              code: 2,
-              msg: fileArr
-            });
           };
           reader.readAsDataURL(item);
+        });
+        self.$emit('imgMsg', {
+            code: 2,
+            msg: fileArr
         });
       }
     },

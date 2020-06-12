@@ -1,6 +1,9 @@
 <template>
   <div class="nut-switch" :class="[{ 'nut-switch-active': isActive }, 'nut-switch-' + size, { 'nut-switch-disabled': disabled }]" @click="toggle">
-    <div class="nut-switch-btn"></div>
+    <div class="nut-switch-btn">
+    </div>
+      <div class="nut-switch-label" v-if="isActive">{{arrLabel[0]}}</div>
+      <div class="nut-switch-label" v-else>{{arrLabel[1]}}</div>
   </div>
 </template>
 <script>
@@ -18,11 +21,16 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    label:{
+      type: String,
+      default: ""
     }
   },
   data() {
     return {
-      isActive: false
+      isActive: false,
+      arrLabel : ( this.label||'').split('|')
     };
   },
   created() {
