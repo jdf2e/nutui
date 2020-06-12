@@ -3,9 +3,8 @@ import overlayComponent from "./overlay.vue";
 
 let modalStack = [];
 let _zIndex = 2000;
-
-const overlayManager = {
-  overlay: null,
+let overlay;
+const overlayManager = { 
 
   lockCount: 0,
 
@@ -17,35 +16,33 @@ const overlayManager = {
   },
 
   updateOverlay() {
-    const { overlay, clickHandle, topStack } = overlayManager;
+    const {  clickHandle, topStack } = overlayManager;
     if (!overlay) {
-      overlayManager.overlay = mount(overlayComponent, {
+      overlay = mount(overlayComponent, {
         nativeOn: {
           click: clickHandle,
         },
       });
-    }
-
+    } 
+ 
     if (topStack) {
       const { vm, config } = topStack;
       const el = vm.$el;
       el && el.parentNode && el.parentNode.nodeType !== 11
         ? el.parentNode.appendChild(overlay.$el)
         : document.body.appendChild(overlay.$el);
-
-      Object.assign(overlayManager.overlay, config, {
+      
+      Object.assign(overlay, config, {
         value: true,
-      });
-    } else {
-      overlayManager.overlay.value = false;
+      }); 
+    } else { 
+      overlay.value = false;
     }
   },
 
   //打开遮罩层
   openModal(vm, config) {
     let { zIndex, duration, className, customStyle } = config;
-
-    overlayManager.updateOverlay();
 
     modalStack.push({
       vm,
@@ -67,7 +64,6 @@ const overlayManager = {
     if (modalStack.length && topStack.vm.closeOnClickOverlay) { 
       topStack.vm.$emit("click-overlay");
       topStack.vm.close();
-  
     }
   },
 
@@ -118,16 +114,16 @@ const overlayProps = {
 };
 
 function mount(Component, data) {
-  const instance = new Vue({
-    el: document.createElement("div"),
+
+  const instance = new Vue({ 
     props: Component.props,
-    render(h) {
+    render(h) {    
       return h(Component, {
-        props: this.$props,
+        props:this.$props,
         ...data,
       });
     },
-  });
+  }).$mount();
   return instance;
 }
 
