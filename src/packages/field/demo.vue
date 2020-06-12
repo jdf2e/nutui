@@ -36,7 +36,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-field  v-model="val5" :state="state"  :requireShow="true" label="手机号码"   />
+          <nut-field  v-model="val5" :state="state"  :requireShow="true" label="手机号码"  @inputFunc="checkVal5" />
         </span>
       </nut-cell>
     </div> 
@@ -64,7 +64,7 @@
        <div>
       <nut-cell>
         <span slot="title">
-          <nut-field label="标题内容：" placeholder="请输入内容" v-model="val" inputFunc="a" />
+          <nut-field label="标题内容：" placeholder="请输入内容" v-model="val" @inputFunc="a" />
         </span>
       </nut-cell>
     </div>
@@ -106,6 +106,15 @@ export default {
     },
     a(data){
       console.log(data)
+    },
+    checkVal5(data){
+      if(!(/^1[3456789]\d{9}$/.test(data))){ 
+       console.log(false)
+       this.state="error";
+      } else{
+         console.log(true)
+        this.state="";
+      }
     },
     submit() {
       this.$refs.myInput.blur();
