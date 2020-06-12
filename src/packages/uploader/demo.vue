@@ -84,8 +84,7 @@
             :headers="headers"
             :attach="formData"
             @success="demoSuccess"
-            @fail="demoFail"
-            @preview="preview"
+            @fail="demoFail"           
             @showMsg="showMsg1"
           >
             <nut-button small>上传</nut-button>
@@ -96,6 +95,14 @@
     </div>
 
     <p>预览上传图片</p>
+    <transition name="fade">
+      <div v-if="previewImg">
+        <div class="img-outbox" v-for="(item,index) in previewImg" :key="index">
+          <img class="img-box" v-if="item" :src="item" alt>
+        </div>
+      </div>
+      
+    </transition>
     <div>
       <nut-cell>
         <span slot="title">
@@ -108,6 +115,7 @@
             @fail="demoFail"
             @preview="preview"
             @showMsg="showMsg1"
+            :multiple="true"
           >
             <nut-button small>上传</nut-button>
           </nut-uploader>
@@ -149,11 +157,7 @@
         </span>
         <div slot="desc"></div>
       </nut-cell>
-    <transition name="fade">
-      <div class="img-outbox">
-        <img class="img-box" v-if="previewImg" :src="previewImg" alt>
-      </div>
-    </transition>
+    
   </div>
 </template>
 
@@ -179,11 +183,7 @@ export default {
         f2:'test1'
       },
       progressNum: 0,
-      previewImg: null,
-      previewImg2: null,
-      progressNum2: null,
-      upOver: false,
-      demo3Type: ["application/zip"]
+      previewImg: null     
     };
   },
   methods: {

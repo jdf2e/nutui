@@ -65,14 +65,30 @@ class IdaUploader {
        return true;
    }
    preview () {  
-       const file = this.options.previewData;    
-       if (!this.check(file)) return;
-       const reader = new FileReader();       
-       reader.onload = (e) => {
-        this.uploader();
-           this.triggerFunc.call(this.options, this.options.onPreview)(e.target.result);           
-       }
-       reader.readAsDataURL(file);       
+       const file = Array.from(this.options.previewData);   
+        if (!this.check(file)) return;
+        let promArray = []
+        file.map(item=>{             
+            let temp  = new Promise((resolve,reject)=>{
+                const reader = new FileReader(); 
+                reader.readAsDataURL(item);
+                reader.onload = (e) => {                
+                    this.uploader();
+                    resolve(e)
+                }  
+            })
+            promArray.push(temp)   
+        });
+        Promise.all(promArray).then(res=>{
+            console.log(res)
+            let out = [];
+            if(res){
+                res.map(item=>{
+                    out.push(item.target.result) 
+                })
+            }
+            this.triggerFunc.call(this.options, this.options.onPreview)(out); 
+        }) 
    }
    uploader () {
        const xhr = new XMLHttpRequest();
