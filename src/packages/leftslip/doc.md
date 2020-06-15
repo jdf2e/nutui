@@ -116,6 +116,25 @@ export default {
 };
 ```
 
+###  禁止滑动
+```html
+<div>
+    <button class="btn" @click="disabledHandle">{{isDisable ? '开启滑动' : '禁止滑动'}}</button>
+    <nut-leftslip :disabled="isDisable">
+        <div slot="slip-main" class="slip-main">左滑触发删除</div>
+        <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a></div>
+    </nut-leftslip>
+</div>
+```
+
+```javascript
+    disabledHandle(){
+        this.isDisable = !this.isDisable 
+    }
+
+```
+
+
 ## slot
 
 | 字段           | 说明                 | 类型    | 默认值 |
@@ -128,5 +147,6 @@ export default {
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | rightWidth | 右侧按钮区域超出一行时的默认宽度，默认占整个宽度的80% | Number | 0.8
+|  disabled  | 禁止滑动操作 | Boolean | false
 
 

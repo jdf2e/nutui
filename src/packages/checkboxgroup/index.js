@@ -5,4 +5,4 @@ CheckBoxGroup.install = function(Vue) {
   Vue.component(CheckBoxGroup.name, CheckBoxGroup);
 };
 
-export default CheckBoxGroup
+export default CheckBoxGroup;

@@ -5,7 +5,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-price :price="1010" :needSymbol="false" :thousands="true"/>
+          <nut-price :price="1010" :needSymbol="false" :thousands="true" />
         </span>
       </nut-cell>
     </div>
@@ -13,7 +13,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-price :price="10010.01" :needSymbol="true" :thousands="false"/>
+          <nut-price :price="10010.01" :needSymbol="true" :thousands="false" />
         </span>
       </nut-cell>
     </div>
@@ -21,7 +21,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-price :price="15213.1221" :decimalDigits="3" :needSymbol="true" :thousands="true"/>
+          <nut-price :price="15213.1221" :decimalDigits="3" :needSymbol="true" :thousands="true" />
         </span>
       </nut-cell>
     </div>
@@ -29,8 +29,7 @@
 </template>
 
 <script>
-export default {
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>

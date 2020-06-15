@@ -5,4 +5,4 @@ Gridcol.install = function(Vue) {
   Vue.component(Gridcol.name, Gridcol);
 };
 
-export default Gridcol
+export default Gridcol;

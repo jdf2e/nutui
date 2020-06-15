@@ -5,4 +5,4 @@ NoticeBar.install = function(Vue) {
   Vue.component(NoticeBar.name, NoticeBar);
 };
 
-export default NoticeBar
+export default NoticeBar;

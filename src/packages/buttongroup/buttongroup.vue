@@ -1,28 +1,28 @@
 <template>
-    <div :class="cls">
-        <slot></slot>
-    </div>
+  <div :class="cls">
+    <slot></slot>
+  </div>
 </template>
 <script>
 export default {
-    name: "nut-buttongroup",
-    props: {
-        shape: {
-            type: String,
-            default: ""
-        },
-        type: {
-            type: String,
-            default: ""
-        }
+  name: 'nut-buttongroup',
+  props: {
+    shape: {
+      type: String,
+      default: '',
     },
-    data() {
-        return {
-            cls: ""
-        };
+    type: {
+      type: String,
+      default: '',
     },
-    mounted() {
-        this.cls = `nut-buttongroup ${this.shape} ${this.type}`;
-    }
+  },
+  data() {
+    return {
+      cls: '',
+    };
+  },
+  mounted() {
+    this.cls = `nut-buttongroup ${this.shape} ${this.type}`;
+  },
 };
 </script>

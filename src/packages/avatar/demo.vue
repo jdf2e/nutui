@@ -23,16 +23,11 @@
     </div>
     <h4>修改背景图片</h4>
     <div class="white-bg">
-      <nut-avatar
-        bg-icon
-        bg-image="http://img30.360buyimg.com/uba/jfs/t1/84318/29/2102/10483/5d0704c1Eb767fa74/fc456b03fdd6cbab.png"
-      ></nut-avatar>
+      <nut-avatar bg-icon bg-image="http://img30.360buyimg.com/uba/jfs/t1/84318/29/2102/10483/5d0704c1Eb767fa74/fc456b03fdd6cbab.png"></nut-avatar>
     </div>
     <h4>修改头像ICON图标</h4>
     <div class="white-bg">
-      <nut-avatar
-        bg-icon="http://img10.360buyimg.com/uba/jfs/t1/69001/30/2126/550/5d06f947Effd02898/95f18e668670e598.png"
-      ></nut-avatar>
+      <nut-avatar bg-icon="http://img10.360buyimg.com/uba/jfs/t1/69001/30/2126/550/5d06f947Effd02898/95f18e668670e598.png"></nut-avatar>
     </div>
     <h4>点击头像有触发事件</h4>
     <div class="white-bg">
@@ -49,9 +44,9 @@ export default {
   },
   methods: {
     activeAvatar(event) {
-      console.log("点击了头像",event);
-    }
-  }
+      console.log('点击了头像', event);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

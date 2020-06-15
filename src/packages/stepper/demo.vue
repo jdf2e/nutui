@@ -7,7 +7,7 @@
           <nut-stepper @focus="focus" :blur="blur" :value.sync="val1" :max="12" :step="0.1" :decimalPlaces="1" @add="add"></nut-stepper>
         </span>
         <span slot="desc">
-          value: {{val1}} <button @click="reduce" class="demo-btn">-</button> <button @click="add" class="demo-btn">+</button> 
+          value: {{ val1 }} <button @click="reduce" class="demo-btn">-</button> <button @click="add" class="demo-btn">+</button>
         </span>
       </nut-cell>
     </div>
@@ -51,7 +51,6 @@
         </span>
       </nut-cell>
     </div>
-    
   </div>
 </template>
 
@@ -64,43 +63,43 @@ export default {
       val3: 5,
       val4: 0,
       val5: 0,
-      val6: 0
-    }
+      val6: 0,
+    };
   },
   methods: {
-    addNoAllow(){
-      alert('超出最大限制')
+    addNoAllow() {
+      alert('超出最大限制');
     },
-    reduceNoAllow(){
-      alert('超出最小限制')
+    reduceNoAllow() {
+      alert('超出最小限制');
     },
     focus(e, v) {
-      console.log('focus,', e, v)
+      console.log('focus,', e, v);
     },
     blur(e, v) {
-      console.log('blur,', e, v)
+      console.log('blur,', e, v);
     },
     add(v) {
-      console.log(v)
+      console.log(v);
       // this.val1 = Number(this.val1) + 1;
     },
     reduce() {
       this.val1 = Math.max(Number(this.val1) - 1, 0);
-    }
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.demo-btn{
+.demo-btn {
   border: 1px solid #ddd;
   background: #eee;
   border-radius: 4px;
   outline: none;
   padding: 3px 10px;
   cursor: pointer;
-  transition: all .35s;
-  &:hover{
+  transition: all 0.35s;
+  &:hover {
     background: #ddd;
   }
 }

@@ -3,18 +3,15 @@
     <div class="nut-slider-left-text" v-if="showRangeTxt">{{ range[0] }}</div>
     <div class="nut-slider-box" @click="onClick">
       <div
-        :class="['nut-slider-Handle',{'nut-slider-ani':ani}]"
+        :class="['nut-slider-Handle', { 'nut-slider-ani': ani }]"
         @touchstart="onTouchStart"
         @touchmove="onTouchMove"
         @touchend="onTouchEnd"
         @click="onTouchEnd"
         @touchcancel="onTouchEnd"
-        :style="{'left':posi+'px'}"
+        :style="{ left: posi + 'px' }"
       >
-        <span
-          :class="['nut-slider-label',{'nut-slider-label-always':showLabelAlways}]"
-          v-if="showLabel"
-        >{{current}}</span>
+        <span :class="['nut-slider-label', { 'nut-slider-label-always': showLabelAlways }]" v-if="showLabel">{{ current }}</span>
       </div>
     </div>
     <div class="nut-slider-right-text" v-if="showRangeTxt">{{ range[1] }}</div>
@@ -23,35 +20,35 @@
 <script>
 import requestAniFrame from '../../utils/raf.js';
 export default {
-  name: "nut-slider",
+  name: 'nut-slider',
   props: {
     value: {
-      type: [String, Number]
+      type: [String, Number],
     },
     showLabel: {
       type: Boolean,
-      default: false
+      default: false,
     },
     showLabelAlways: {
       type: Boolean,
-      default: false
+      default: false,
     },
     showRangeTxt: {
       type: Boolean,
-      default: false
+      default: false,
     },
     range: {
       type: Array,
-      validator: function(value) {
+      validator: function (value) {
         return value.length === 2 && value[1] > value[0];
       },
       default() {
         return [0, 10];
-      }
+      },
     },
     stage: {
-      type: [String, Number]
-    }
+      type: [String, Number],
+    },
   },
   data() {
     return {
@@ -62,7 +59,7 @@ export default {
       posi: null,
       level: null,
       ani: false,
-      scheduledAnimationFrame:false
+      scheduledAnimationFrame: false,
     };
   },
   computed: {
@@ -71,7 +68,7 @@ export default {
     },
     cell() {
       return this.total / this.level;
-    }
+    },
   },
   methods: {
     onTouchStart(event) {
@@ -89,23 +86,21 @@ export default {
 
       this.scheduledAnimationFrame = true;
       requestAniFrame(() => {
-          this.scheduledAnimationFrame = false;
-          const evt = event.touches[0];
-          const pageScrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
-          this.boxLeft = this.box.getBoundingClientRect().left;
-          const posi = evt.pageX - this.boxLeft - pageScrollLeft;
-          this.setPosi(posi);
+        this.scheduledAnimationFrame = false;
+        const evt = event.touches[0];
+        const pageScrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+        this.boxLeft = this.box.getBoundingClientRect().left;
+        const posi = evt.pageX - this.boxLeft - pageScrollLeft;
+        this.setPosi(posi);
       });
     },
     setVal(posi) {
       const trans = (posi / this.box.clientWidth) * this.total;
       this.current = Math.round(trans / this.cell) * this.cell + this.range[0];
-      this.$emit("input", this.current);
+      this.$emit('input', this.current);
     },
     valToPosi() {
-      return (
-        (this.current - this.range[0]) * (this.box.clientWidth / this.total)
-      );
+      return (this.current - this.range[0]) * (this.box.clientWidth / this.total);
     },
     setPosi(posi) {
       if (posi < 0 || posi > this.box.clientWidth) return;
@@ -123,19 +118,14 @@ export default {
       if (event.cancelable) {
         event.preventDefault();
       }
-      const pageScrollLeft =
-        document.documentElement.scrollLeft || document.body.scrollLeft;
+      const pageScrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
       this.boxLeft = this.box.getBoundingClientRect().left;
       const posi = event.pageX - this.boxLeft - pageScrollLeft;
       this.setVal(posi);
       this.posi = this.valToPosi();
     },
     propInit() {
-      if (
-        this.value !== "undefined" &&
-        this.value >= this.range[0] &&
-        this.value <= this.range[1]
-      ) {
+      if (this.value !== 'undefined' && this.value >= this.range[0] && this.value <= this.range[1]) {
         this.current = this.value;
       } else {
         this.current = this.range[0];
@@ -146,14 +136,14 @@ export default {
         this.level = this.stage;
       }
       this.posi = this.valToPosi();
-    }
+    },
   },
   mounted() {
     this.$nextTick(() => {
-      this.box = this.$el.querySelector(".nut-slider-box");
-      this.handle = this.box.querySelector(".nut-slider-Handle");
+      this.box = this.$el.querySelector('.nut-slider-box');
+      this.handle = this.box.querySelector('.nut-slider-Handle');
       this.propInit();
     });
-  }
+  },
 };
 </script>

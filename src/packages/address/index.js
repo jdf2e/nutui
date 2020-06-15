@@ -5,4 +5,4 @@ Address.install = function(Vue) {
   Vue.component(Address.name, Address);
 };
 
-export default Address
+export default Address;

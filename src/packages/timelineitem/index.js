@@ -5,4 +5,4 @@ TimeLineItem.install = function(Vue) {
   Vue.component(TimeLineItem.name, TimeLineItem);
 };
 
-export default TimeLineItem
+export default TimeLineItem;

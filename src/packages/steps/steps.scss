@@ -1,16 +1,17 @@
 .clearfix {
-  zoom: 1
+  zoom: 1;
 }
 
 .clearfix:after {
   display: block;
   height: 0;
   clear: both;
-  content: "";
+  content: '';
   visibility: hidden;
 }
 
-.nut-steps {}
+.nut-steps {
+}
 
 .nut-step {
   position: relative;
@@ -23,7 +24,6 @@
     left: 14px;
     height: 100%;
     width: 1px;
-
   }
 
   .nut-step-index {
@@ -74,13 +74,13 @@
 
     &finish {
       .nut-step-line {
-        background: mix($primary-color , #0f0, 50%);
+        background: mix($primary-color, #0f0, 50%);
       }
 
       .nut-step-index {
-        border: 1px solid mix($primary-color , #0f0, 50%);
+        border: 1px solid mix($primary-color, #0f0, 50%);
         background: #ffffff;
-        color: mix($primary-color , #0f0, 50%);
+        color: mix($primary-color, #0f0, 50%);
       }
     }
 
@@ -94,8 +94,8 @@
       }
 
       .nut-step-index {
-        border: 1px solid mix($primary-color , #0f0, 50%);
-        background: mix($primary-color , #0f0, 50%);
+        border: 1px solid mix($primary-color, #0f0, 50%);
+        background: mix($primary-color, #0f0, 50%);
         color: #ffffff;
       }
     }
@@ -112,7 +112,7 @@
       .nut-step-index {
         border: 1px solid $primary-color;
         background: #ffffff;
-        color: $primary-color; 
+        color: $primary-color;
       }
     }
   }

@@ -5,4 +5,4 @@ LuckDraw.install = function(Vue) {
   Vue.component(LuckDraw.name, LuckDraw);
 };
 
-export default LuckDraw
+export default LuckDraw;

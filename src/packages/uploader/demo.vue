@@ -4,16 +4,17 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-uploader            
+          <nut-uploader
             :name="name"
             :url="url"
             :xhrState="stateNum"
-            :acceptType = "['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
+            :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
             @success="demo1Success"
             @failure="demo1Fail"
             @start="demo1UploadStart"
             @showMsg="showMsg"
-          >{{demo1Name}}</nut-uploader>
+            >{{ demo1Name }}</nut-uploader
+          >
         </span>
         <div slot="desc"></div>
       </nut-cell>
@@ -33,7 +34,7 @@
             @failure="demo2Fail"
             @showMsg="showMsg1"
           >
-            <nut-button small>{{demo2Name}}</nut-button>
+            <nut-button small>{{ demo2Name }}</nut-button>
           </nut-uploader>
         </span>
         <div slot="desc"></div>
@@ -62,12 +63,7 @@
       </nut-cell>
       <nut-cell>
         <span slot="title">
-          <nut-progress
-            class="progress-style"
-            :percentage="progressNum"
-            :showText="true"
-            strokeWidth="12"
-          />
+          <nut-progress class="progress-style" :percentage="progressNum" :showText="true" strokeWidth="12" />
         </span>
         <div slot="desc"></div>
       </nut-cell>
@@ -84,7 +80,8 @@
             :headers="headers"
             :attach="formData"
             @success="demoSuccess"
-            @fail="demoFail"           
+            @fail="demoFail"
+            @preview="preview"
             @showMsg="showMsg1"
           >
             <nut-button small>上传</nut-button>
@@ -95,14 +92,6 @@
     </div>
 
     <p>预览上传图片</p>
-    <transition name="fade">
-      <div v-if="previewImg">
-        <div class="img-outbox" v-for="(item,index) in previewImg" :key="index">
-          <img class="img-box" v-if="item" :src="item" alt>
-        </div>
-      </div>
-      
-    </transition>
     <div>
       <nut-cell>
         <span slot="title">
@@ -115,7 +104,6 @@
             @fail="demoFail"
             @preview="preview"
             @showMsg="showMsg1"
-            :multiple="true"
           >
             <nut-button small>上传</nut-button>
           </nut-uploader>
@@ -125,39 +113,45 @@
     </div>
     <p>上传图片前处理图片内容</p>
     <nut-cell>
-        <span slot="title">
-          <nut-uploader
+      <span slot="title">
+        <nut-uploader
           :beforeUpload="test"
           :name="name"
           :url="url"
           :xhrState="stateNum"
-          :acceptType = "['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
+          :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
           @success="demo1Success"
           @failure="demo1Fail"
           @start="demo1UploadStart"
           @showMsg="showMsg"
-        ><nut-button small>上传图片前处理图片内容</nut-button></nut-uploader>
-        </span>
-        <div slot="desc"></div>
-      </nut-cell>
+          ><nut-button small>上传图片前处理图片内容</nut-button></nut-uploader
+        >
+      </span>
+      <div slot="desc"></div>
+    </nut-cell>
     <p>自定义增加上传图片数据</p>
     <nut-cell>
-        <span slot="title">
-          <nut-uploader
-          :selfData="selfData"          
+      <span slot="title">
+        <nut-uploader
+          :selfData="selfData"
           :name="name"
           :url="url"
           :xhrState="stateNum"
-          :acceptType = "['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
+          :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
           @success="demo1Success"
           @failure="demo1Fail"
           @start="demo1UploadStart"
           @showMsg="showMsg"
-        ><nut-button small>自定义增加上传图片数据</nut-button></nut-uploader>
-        </span>
-        <div slot="desc"></div>
-      </nut-cell>
-    
+          ><nut-button small>自定义增加上传图片数据</nut-button></nut-uploader
+        >
+      </span>
+      <div slot="desc"></div>
+    </nut-cell>
+    <transition name="fade">
+      <div class="img-outbox">
+        <img class="img-box" v-if="previewImg" :src="previewImg" alt />
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -166,60 +160,64 @@ export default {
   components: {},
   data() {
     return {
-      selfData:{
-        test1:'自定义数据'
+      selfData: {
+        test1: '自定义数据',
       },
-      url: "https://my-json-server.typicode.com/linrufeng/demo/posts",
-      demo1Name: "点击选择文件",
-      demo2Name: "点击选择文件",
-      name: "test1",
+      url: 'https://my-json-server.typicode.com/linrufeng/demo/posts',
+      demo1Name: '点击选择文件',
+      demo2Name: '点击选择文件',
+      name: 'test1',
       stateNum: 201,
-      block: "block",
-      headers:{
-        token:'test'
+      block: 'block',
+      headers: {
+        token: 'test',
       },
-      formData:{
-        f1:'test',
-        f2:'test1'
+      formData: {
+        f1: 'test',
+        f2: 'test1',
       },
       progressNum: 0,
-      previewImg: null     
+      previewImg: null,
+      previewImg2: null,
+      progressNum2: null,
+      upOver: false,
+      demo3Type: ['application/zip'],
     };
   },
   methods: {
-    test(event){   
-      console.log(event,'可以处理input选择的内容')  
+    test(event) {
+      console.log(event, '可以处理input选择的内容');
       return {
-        event:event,
-        data:''
-      }
+        event: event,
+        data: '',
+      };
     },
     demo1UploadStart() {
-      this.demo1Name = "上传中...";
+      this.demo1Name = '上传中...';
       this.progressNum1 = 0;
     },
     demo1Success() {
-      this.demo1Name = "上传成功";
+      this.demo1Name = '上传成功';
     },
     demo1Fail() {
-      this.demo1Name = "上传失败";
+      this.demo1Name = '上传失败';
     },
     demo2UploadStart() {
-      this.demo2Name = "上传中...";
+      this.demo2Name = '上传中...';
     },
     demo2Success() {
-      this.demo2Name = "选择文件";
-      this.$toast.success("上传成功");
+      this.demo2Name = '选择文件';
+      this.$toast.success('上传成功');
     },
     demo2Fail() {
-      this.demo2Name = "选择文件";
-      this.$toast.fail("上传失败");
+      this.demo2Name = '选择文件';
+      this.$toast.fail('上传失败');
     },
     demoSuccess(file, res) {
-      this.$toast.success("上传成功");
+      this.$toast.success('上传成功');
     },
     demoFail() {
-      this.$toast.fail("上传失败");
+      this.$toast.fail('上传失败');
     },
     progress(file, loaded, total) {
       this.progressNum = parseInt((100 * loaded) / total);
@@ -230,17 +228,17 @@ export default {
     showMsg1(msg) {
       this.$toast.text(msg);
     },
-    showMsg(msg){
+    showMsg(msg) {
       alert(msg);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .img-outbox {
   margin-top: 20px;
-  margin-left:20px;
+  margin-left: 20px;
   width: 100px;
   height: 100px;
   border-radius: 6px;

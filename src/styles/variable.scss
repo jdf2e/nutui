@@ -1,26 +1,16 @@
 // ---- color ----
-$primary-color: #F0250F !default;
+$primary-color: #f0250f !default;
 $normal-color: #848484 !default;
 $link-color: $primary-color !default;
 $link-hover-color: mix($link-color, #000, 80%) !default;
-$title-color: #2D2D2D !default;
+$title-color: #2d2d2d !default;
 $text-color: #848484 !default;
-$light-color: #F6F6F6 !default;
-$dark-color: #DADADA !default;
+$light-color: #f6f6f6 !default;
+$dark-color: #dadada !default;
 // ---- base ----
-$body-background: #F6F6F6 !default;
+$body-background: #f6f6f6 !default;
 $mask-bg: rgba(0, 0, 0, 0.5) !default;
-$font-family: PingHei,
-"Lucida Grande",
-"Lucida Sans Unicode",
-STHeiti,
-Helvetica,
-Arial,
-Verdana,
-"sans-serif",
-"PingHei-light",
-SimHei,
-"Droid Sans" !default;
+$font-family: PingHei, 'Lucida Grande', 'Lucida Sans Unicode', STHeiti, Helvetica, Arial, Verdana, 'sans-serif', 'PingHei-light', SimHei, 'Droid Sans' !default;
 $font-size-base: 14px !default;
 $font-size-small: 12px !default;
 $font-size-large: 16px !default;
@@ -29,25 +19,25 @@ $border-radius-base: 8px !default;
 $border-radius-small: 3px !default;
 $border-radius-large: 50px !default;
 // ---- Animation ----
-$animation-duration: .25s !default;
-$transition-duration: .2s !default;
-$transition-duration-fast: .2s !default;
-$transition-duration-slow: .4s !default;
+$animation-duration: 0.25s !default;
+$transition-duration: 0.2s !default;
+$transition-duration-fast: 0.2s !default;
+$transition-duration-slow: 0.4s !default;
 $animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
 $ease-in-out: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 $ease-out: cubic-bezier(0.895, 0.03, 0.685, 0.22);
 // ---- Border color ----
 $border-color-base: $dark-color !default;
-$border-color-dark: #ABABAB !default;
+$border-color-dark: #ababab !default;
 $border-width-base: 1px !default;
 $border-style-base: solid !default;
 $border-color-active: $primary-color !default;
 // ---- Disabled ----
-$disabled-color: #F6F6F6 !default;
-$disabled-bg: #DADADA !default;
+$disabled-color: #f6f6f6 !default;
+$disabled-bg: #dadada !default;
 $disabled-primary-bg: #eb8a7e !default;
 // ---- Shadow ----
-$shadow-color: rgba(0, 0, 0, .15) !default;
+$shadow-color: rgba(0, 0, 0, 0.15) !default;
 $shadow-up: 0 -2px 8px $shadow-color !default;
 $shadow-down: 0 2px 8px $shadow-color !default;
 $shadow-left: -2px 0 8px $shadow-color !default;
@@ -64,31 +54,31 @@ $btn-icon-height-small: 12px !default;
 $btn-icon-height-big: 16px !default;
 $btn-menu-icon-height: 20px !default;
 $btn-menu-height: 50px !default;
-$btn-primary-color: #FFF !default;
+$btn-primary-color: #fff !default;
 $btn-primary-bg: $primary-color !default;
-$btn-gradient-color: #FFF !default;
+$btn-gradient-color: #fff !default;
 $btn-gradient-start-color: #ff4f18;
 $btn-gradient-end-color: #f20000;
 $btn-gradient-bg: linear-gradient(315deg, $btn-gradient-start-color 0%, $btn-gradient-end-color 100%) !default;
 $btn-gradient-active-bg: linear-gradient(315deg, darken($btn-gradient-start-color, 10%) 0%, darken($btn-gradient-end-color, 10%) 100%) !default;
 $btn-default-color: $normal-color !default;
-$btn-default-bg: #FFF !default;
+$btn-default-bg: #fff !default;
 $btn-default-border: $border-color-dark !default;
-$btn-active-color: #FFF !default;
+$btn-active-color: #fff !default;
 $btn-active-bg: $primary-color !default;
 $btn-active-border: 􏰅􏴦􏵘􏵑􏱱􏵘􏴦$primary-color !default;
 $btn-disable-color: $disabled-color !default;
 $btn-disable-bg: $disabled-bg !default;
 $btn-disable-border: $disabled-color !default;
 $btn-icon-margin: 5px;
-$btn-label-light-bg: rgba(240, 37, 15, .05);
+$btn-label-light-bg: rgba(240, 37, 15, 0.05);
 // ---- z-index ----
 $zindex-mask: 9998 !default;
 $zindex-actionsheet: 10001 !default;
 $zindex-dialog: 10000 !default;
 $zindex-picker: 10050 !default;
 // ---- Assets path ----
-$assetsPath:'../../assets' !default;
+$assetsPath: '../../assets' !default;
 // ---- Stepper ----
 $stepper-color: #333 !default;
 $stepperbar-width: 11px !default;

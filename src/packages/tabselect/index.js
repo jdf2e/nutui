@@ -5,4 +5,4 @@ TabSelect.install = function(Vue) {
   Vue.component(TabSelect.name, TabSelect);
 };
 
-export default TabSelect
+export default TabSelect;

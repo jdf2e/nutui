@@ -9,4 +9,4 @@ Col.install = function(Vue) {
   Vue.component(Col.name, Col);
 };
 
-export {Row, Col};
+export { Row, Col };

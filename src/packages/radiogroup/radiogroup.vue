@@ -5,24 +5,24 @@
 </template>
 <script>
 export default {
-  name: "nut-radiogroup",
+  name: 'nut-radiogroup',
   props: {
     value: {
       type: [String, Number, Boolean],
-      default: false
+      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     size: {
       type: String,
-      default: "base"
+      default: 'base',
     },
     animated: {
       type: Boolean,
-      default: true
-    }
-  }
+      default: true,
+    },
+  },
 };
 </script>

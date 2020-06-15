@@ -1,81 +1,80 @@
 <template>
-    <div 
-        :class="['nut-range-Handle',{'nut-range-ani': ani}]" 
-        @touchstart="onTouchStart" 
-        @touchmove="onTouchMove"
-        @touchend="onTouchEnd" 
-        @click="onTouchEnd" 
-        :style="{left: posi + 'px', borderColor: mainColor, boxShadow: ani? '0 0 0 4px '+ subColor: ''}">
-        <span 
-            :class="['nut-range-label', {'nut-range-label-always': showLabelAlways}]" 
-            v-if="showLabel" :style="{background: mainColor}">
-            <span class="nut-range-after" :style="{color: mainColor}">▼</span>
-            {{current}}
-        </span>
-    </div>
+  <div
+    :class="['nut-range-Handle', { 'nut-range-ani': ani }]"
+    @touchstart="onTouchStart"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+    @click="onTouchEnd"
+    :style="{ left: posi + 'px', borderColor: mainColor, boxShadow: ani ? '0 0 0 4px ' + subColor : '' }"
+  >
+    <span :class="['nut-range-label', { 'nut-range-label-always': showLabelAlways }]" v-if="showLabel" :style="{ background: mainColor }">
+      <span class="nut-range-after" :style="{ color: mainColor }">▼</span>
+      {{ current }}
+    </span>
+  </div>
 </template>
 <script>
 import requestAniFrame from '../../utils/raf.js';
 export default {
-  name: "nut-range-bar",
+  name: 'nut-range-bar',
   props: {
     direction: {
       type: String,
-      default: 'left'
+      default: 'left',
     },
     range: {
       type: Array,
-      validator: function(value) {
+      validator: function (value) {
         return value.length === 2 && value[1] > value[0];
       },
       default() {
         return [0, 10];
-      }
+      },
     },
     values: {
       type: Array,
-      validator: function(value) {
+      validator: function (value) {
         return value.length === 2 && value[1] >= value[0];
       },
       default() {
         return [0, 0];
-      }
-		},
+      },
+    },
     initLeft: {
       type: Number,
-      default: 0
+      default: 0,
     },
     showLabelAlways: {
       type: Boolean,
-      default: false
+      default: false,
     },
     showLabel: {
       type: Boolean,
-      default: false
+      default: false,
     },
     current: {
       type: Number,
-      default: 0
+      default: 0,
     },
     stage: {
       type: Number,
-      default: 0
+      default: 0,
     },
     ani: Boolean,
     mainColor: String,
-    subColor: String
+    subColor: String,
   },
   data() {
     return {
       box: null,
       posi: 0,
-      scheduledAnimationFrame:false
+      scheduledAnimationFrame: false,
     };
   },
   watch: {
     initLeft(val) {
       this.posi = this.initLeft;
-    }
+    },
   },
   computed: {
     total() {
@@ -96,13 +95,12 @@ export default {
       if (this.scheduledAnimationFrame) return;
       this.scheduledAnimationFrame = true;
       requestAniFrame(() => {
-          this.scheduledAnimationFrame = false;
-          const evt = event.touches[0];
-          const pageScrollLeft =
-            document.documentElement.scrollLeft || document.body.scrollLeft;
-          this.boxLeft = this.box.getBoundingClientRect().left;
-          const posi = evt.pageX - this.boxLeft - pageScrollLeft;
-          this.setPosi(posi, false);
+        this.scheduledAnimationFrame = false;
+        const evt = event.touches[0];
+        const pageScrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+        this.boxLeft = this.box.getBoundingClientRect().left;
+        const posi = evt.pageX - this.boxLeft - pageScrollLeft;
+        this.setPosi(posi, false);
       });
     },
     setPosi(posi, isEnd) {
@@ -117,29 +115,29 @@ export default {
       if (this.direction === 'left') {
         if (this.stage) {
           let stageNum = Math.floor((prevRight - 1) / this.stage);
-          if ((posi / this.box.clientWidth) >= (stageNum * this.stage / this.total)){
+          if (posi / this.box.clientWidth >= (stageNum * this.stage) / this.total) {
             this.posi = (stageNum * this.stage + rangeLeft) * (this.box.clientWidth / this.total);
           } else {
             this.posi = posi;
           }
-        } else { 
-          if ((posi / this.box.clientWidth) >= ((prevRight - 1 - rangeLeft)/this.total)) {
+        } else {
+          if (posi / this.box.clientWidth >= (prevRight - 1 - rangeLeft) / this.total) {
             this.posi = (prevRight - 1 - rangeLeft) * (this.box.clientWidth / this.total);
           } else {
             this.posi = posi;
           }
         }
-      } 
+      }
       if (this.direction === 'right') {
         if (this.stage) {
           let stageNum = Math.ceil((prevLeft + 1) / this.stage);
-          if ((posi / this.box.clientWidth) <= (stageNum * this.stage / this.total)){
+          if (posi / this.box.clientWidth <= (stageNum * this.stage) / this.total) {
             this.posi = (stageNum * this.stage + rangeLeft) * (this.box.clientWidth / this.total);
           } else {
             this.posi = posi;
           }
-        } else { 
-          if ((posi / this.box.clientWidth) <= ((prevLeft + 1 - rangeLeft)/this.total)) {
+        } else {
+          if (posi / this.box.clientWidth <= (prevLeft + 1 - rangeLeft) / this.total) {
             this.posi = (prevLeft + 1 - rangeLeft) * (this.box.clientWidth / this.total);
           } else {
             this.posi = posi;
@@ -151,28 +149,25 @@ export default {
     onTouchEnd(event) {
       event.preventDefault();
       const evt = event.changedTouches[0];
-      const pageScrollLeft =
-        document.documentElement.scrollLeft || document.body.scrollLeft;
+      const pageScrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
       this.boxLeft = this.box.getBoundingClientRect().left;
       const posi = evt.pageX - this.boxLeft - pageScrollLeft;
       setTimeout(() => {
         this.setPosi(posi, true);
         this.$emit('update:ani', false);
       }, 50);
-      
     },
     onClick(event) {
       event.preventDefault();
-      const pageScrollLeft =
-        document.documentElement.scrollLeft || document.body.scrollLeft;
+      const pageScrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
       this.boxLeft = this.box.getBoundingClientRect().left;
       const posi = event.pageX - this.boxLeft - pageScrollLeft;
       this.posi = posi;
       this.$emit('getPos', posi);
-    }
+    },
   },
   mounted() {
     this.box = this.$el.parentNode;
-  }
+  },
 };
 </script>

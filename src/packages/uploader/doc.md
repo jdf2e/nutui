@@ -210,19 +210,19 @@ test($ev){
 |----- | ----- | ----- | ----- 
 | name | input name的名称 | String | ""
 | url | 上传服务器的接口地址 | String | -
-| is-preview | 是否需要预览 | Boolean | false
-| clear-input | 是否需要清空input内容，设为 true 支持重复选择上传同一个文件 | Boolean | false
-| max-size | 可以设定最大上传文件的大小（字节） | Number | 5242880
-| accept-type | 可以上传文件的类型 | Array | ['image/jpeg', 'image/png', 'image/gif', 'image/bmp']
+| isPreview | 是否需要预览 | Boolean | false
+| clearInput | 是否需要清空input内容，设为true支持重复选择上传同一个文件 | Boolean | false
+| maxSize | 可以设定最大上传文件的大小（字节） | Number | 5242880
+| acceptType | 可以上传文件的类型 | Array | ['image/jpeg', 'image/png', 'image/gif', 'image/bmp']
 | attach | 附加上传的信息formData | Object | {}
 | headers | 自定义headers | Object | {}
-| xhr-state | 接口响应的成功状态（status）值 | Number | 200
-| type-error | 文件类型错误提示文案 | String | "不支持上传该类型文件"
-| limit-error | 文件大小超过限制提示文案 | String | "文件大小超过限制"
-| xml-error | 浏览器不支持本组件时的提示文案 | String | "对不起，您的浏览器不支持本组件！"
-| with-credentials | 支持发送 cookie 凭证信息 | Boolean | fasle
-| before-upload | 上传前的函数需要返回一个对象  | Function | {event:$event} $event为点击事件必传
-| self-data | 自定义增加上传的数据 | Object | {}
+| xhrState | 接口响应的成功状态（status）值 | Number | 200
+| typeError | 文件类型错误提示文案 | String | "不支持上传该类型文件"
+| limitError | 文件大小超过限制提示文案 | String | "文件大小超过限制"
+| xmlError | 浏览器不支持本组件时的提示文案 | String | "对不起，您的浏览器不支持本组件！"
+| withCredentials | 支持发送 cookie 凭证信息 | Boolean | fasle
+| beforeUpload | 上传前的函数需要返回一个对象  | Function | {event:$event} $event为点击事件必传
+| selfData | 自定义增加上传的数据 | Object | {}
 
 ## Event
 

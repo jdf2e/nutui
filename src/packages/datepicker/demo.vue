@@ -1,9 +1,8 @@
 <template>
   <div class="demo-list">
-    <nut-noticebar
-      :closeMode="true"
-      v-if="!isMobile"
-    >此 Demo 在 PC 端浏览器与移动端浏览器体验差异较大，建议在 Android 或 iOS 设备上体验。</nut-noticebar>
+    <nut-noticebar :closeMode="true" v-if="!isMobile"
+      >此 Demo 在 PC 端浏览器与移动端浏览器体验差异较大，建议在 Android 或 iOS 设备上体验。</nut-noticebar
+    >
     <h4>基本用法</h4>
     <div>
       <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible')">
@@ -12,7 +11,7 @@
         </span>
         <span slot="sub-title">每列不显示中文~~~</span>
         <div slot="desc" class="selected-option">
-          <span class="show-value">{{date ? date : '请选择日期'}}</span>
+          <span class="show-value">{{ date ? date : '请选择日期' }}</span>
         </div>
       </nut-cell>
       <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible1')">
@@ -21,7 +20,7 @@
         </span>
         <span slot="sub-title">限制开始结束时间~~~</span>
         <div slot="desc" class="selected-option">
-          <span class="show-value">{{date1 ? date1 : '请选择日期'}}</span>
+          <span class="show-value">{{ date1 ? date1 : '请选择日期' }}</span>
         </div>
       </nut-cell>
       <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible2')">
@@ -30,7 +29,7 @@
         </span>
         <span slot="sub-title">有默认值，限制开始结束时间~~~</span>
         <div slot="desc" class="selected-option">
-          <span class="show-value">{{datetime ? datetime : '请选择'}}</span>
+          <span class="show-value">{{ datetime ? datetime : '请选择' }}</span>
         </div>
       </nut-cell>
       <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible3')">
@@ -39,7 +38,7 @@
         </span>
         <span slot="sub-title">12小时制~~~</span>
         <div slot="desc" class="selected-option">
-          <span class="show-value">{{time ? `${time} ${amOrPm}` : '请选择时间'}}</span>
+          <span class="show-value">{{ time ? `${time} ${amOrPm}` : '请选择时间' }}</span>
         </div>
       </nut-cell>
       <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible4')">
@@ -48,7 +47,7 @@
         </span>
         <span slot="sub-title">限制开始结束小时~~~</span>
         <div slot="desc" class="selected-option">
-          <span class="show-value">{{time1 ? time1 : '请选择时间'}}</span>
+          <span class="show-value">{{ time1 ? time1 : '请选择时间' }}</span>
         </div>
       </nut-cell>
       <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible5')">
@@ -57,7 +56,7 @@
         </span>
         <span slot="sub-title">分钟数递增步长设置~~~</span>
         <div slot="desc" class="selected-option">
-          <span class="show-value">{{time2 ? time2 : '请选择时间'}}</span>
+          <span class="show-value">{{ time2 ? time2 : '请选择时间' }}</span>
         </div>
       </nut-cell>
     </div>
@@ -112,7 +111,7 @@
       :default-value="time1"
       @close="switchPicker('isVisible4')"
       @choose="setChooseValue4"
-      :is-set-second = "true"
+      :is-set-second="true"
     ></nut-datepicker>
     <!-- demo4-->
     <nut-datepicker
@@ -139,11 +138,11 @@ export default {
       isVisible5: false,
       date: null,
       date1: null,
-      datetime: "2018-11-02 11:08",
-      time: "01:07",
-      time1: "09:06:02",
-      time2: "10:30",
-      amOrPm: "PM"
+      datetime: '2018-11-02 11:08',
+      time: '01:07',
+      time1: '09:06:02',
+      time2: '10:30',
+      amOrPm: 'PM',
     };
   },
   methods: {
@@ -160,7 +159,7 @@ export default {
       this.datetime = param[5];
     },
     setChooseValue3(param) {
-      this.amOrPm = param[2] == "上午" ? "AM" : "PM";
+      this.amOrPm = param[2] == '上午' ? 'AM' : 'PM';
       this.time = param[3];
     },
     setChooseValue4(param) {
@@ -168,8 +167,8 @@ export default {
     },
     setChooseValue5(param) {
       this.time2 = param[2];
-    }
-  }
+    },
+  },
 };
 </script>
 
