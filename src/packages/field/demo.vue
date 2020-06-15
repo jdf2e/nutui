@@ -57,20 +57,20 @@
     </div> 
     <h4>文本域</h4>
       <div class="text-area">
-          <nut-field  label="自我介绍" placeholder="自我介绍" v-model="val3"  type="textarea" maxLength="20" rows="4"  />
+          <nut-field  label="自我介绍" placeholder="自我介绍" v-model="val3"  type="textarea" @errorFunc="error" maxLength="20" rows="4"  />
     </div> 
 
       <h4>事件</h4>
        <div>
       <nut-cell>
         <span slot="title">
-          <nut-field label="标题内容：" placeholder="请输入内容" v-model="val" @inputFunc="a" />
+          <nut-field label="标题内容：" placeholder="请输入内容" v-model="val" @inputFunc="fn" />
         </span>
       </nut-cell>
     </div>
       <h4>右侧自定义DOM</h4>
        <div class="filed-wrap"> 
-          <nut-field label="验证码：" textAlign="left"  placeholder="请输入内容" v-model="val" @inputFunc="a" > 
+          <nut-field label="验证码：" textAlign="left"  placeholder="请输入内容" v-model="val" @inputFunc="fn" > 
               <div class="get-code"> 获取验证码</div>
           </nut-field>
       </div>
@@ -110,8 +110,11 @@ export default {
     onBlur() {
       this.result = 'blur事件触发！';
     },
-    a(data){
+    fn(data){
       console.log(data)
+    },
+    error(data){
+     // alert("文字超出限制了")
     },
     checkVal5(data){
       if(!(/^1[3456789]\d{9}$/.test(data))){ 

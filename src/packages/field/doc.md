@@ -102,9 +102,22 @@
 
 | 字段  | 说明                                                                                     | 类型    | 默认值 |
 | ----- | ---------------------------------------------------------------------------------------- | ------- | ------ |
-| type  | 按钮类型，可选类型包含：空/bottom/red/gray/light/lightred/primary/default/actived/dashed | String  | -      |
-| block | 是否为通栏                                                                               | Boolean | false  |
-| size  | big /middle/small                                                                      | String  | big |
-| shape | 形状配置，可选类型：空、circle                                                           | String  | -      |
-| icon  | 按钮前的图标，参考Icon组件                                                               | String  | -      |
-| color | 自定义颜色，包含文字与图片颜色                                                           | String  | -      |
+| type  | 输入类型，包括 text,textarea, number,password| String  | text     |
+| label | 文字对齐方向       right ,left ,center            | Boolean | right  |
+| v-model  | value值                                                                    | String  | - |
+| placeholder | 文案为空时提示内容  | String  | -      |
+| disableClear  | 禁用clear 按钮                                                            | String  | -      |
+| readonly | 设置输入为只读                                                         | String  | -      |
+| disabled | 禁用输入框                                                        | String  | -      |
+| requireShow | 是否展示必填 *号                                                       | Boolean  | false    |
+| state |  状态，目前支持error                                                       | string  | -    |
+| maxLength | textArea时允许最大输入字数                      | String  | 50    |
+| limitShow | textArea时字数是否展示                     | Boolean  | true    |
+| rows | textArea时行数(可设置高度)                  | string  |1   |
+
+## Event
+
+| 字段 | 说明 | 回调参数 
+|----- | ----- | ----- 
+| inputFunc | input事件 | data(输入的值)
+| change | change事件 | data(输入的值)
