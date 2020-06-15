@@ -22,13 +22,21 @@
     </nut-steps>
     <h4>横向步骤条</h4>
     <nut-steps :current="1" type="process" direction="horizontal">
-      <nut-step title="已完成" ></nut-step>
-      <nut-step title="进行中" ></nut-step>
-      <nut-step title="等待中" ></nut-step>
+      <nut-step title="已完成"></nut-step>
+      <nut-step title="进行中">
+        <template v-slot:status-icon>
+          <nut-icon type="self" :url="require('../../assets/svg/process.svg')"></nut-icon>
+        </template>
+      </nut-step>
+      <nut-step title="等待中"></nut-step>
     </nut-steps>
     <nut-steps :current="1" type="process" direction="horizontal">
       <nut-step title="已完成" content="这里是描述文字"></nut-step>
-      <nut-step title="进行中" content="这里是描述文字"></nut-step>
+      <nut-step title="进行中" content="这里是描述文字">
+        <template v-slot:status-icon>
+          <nut-icon type="self" :url="require('../../assets/svg/process.svg')"></nut-icon>
+        </template>
+      </nut-step>
       <nut-step title="等待中" content="这里是描述文字"></nut-step>
     </nut-steps>
   </div>
@@ -42,14 +50,14 @@ export default {
 
 <style lang="scss" scoped>
 .nut-steps {
-	margin-left: 0 10px;
+  margin-left: 0 10px;
 }
 
 .next-step {
-	text-align: center;
-	line-height: 30px;
-	color: #fff;
-	background: #2d8cf0;
-	border-radius: 3px;
+  text-align: center;
+  line-height: 30px;
+  color: #fff;
+  background: #2d8cf0;
+  border-radius: 3px;
 }
 </style>
