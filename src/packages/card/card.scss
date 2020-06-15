@@ -1,0 +1,45 @@
+.nut-card-container{
+  background: #fff;
+  border-radius: 4px;
+  margin: 15px;
+  .nut-card-header{
+    padding: 12px;
+    color: $text-black-1;
+    font-size: $font-size-body-small;
+    line-height: 24px;
+    .nut-card-title{
+      flex: 1;
+    }
+    .nut-card-icon{
+      flex-basis: 17px;
+      .nut-icon-self{
+        width: 100%
+      }
+    }
+  }
+  .switch-icon-class{
+    display: flex;
+    justify-content: space-between
+  }
+  .mut-card-content{
+    padding: 12px;
+    color: $text-black-2;
+    font-size: $font-size-body-small;
+    @include nut-cell-border;
+  }
+  .mut-card-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    min-height: 52px;
+    padding: 0 12px;
+    @include nut-cell-border;
+    button{
+      margin: 0 5px;
+    }
+  }
+}
+.full-content{
+  margin: 0px;
+}

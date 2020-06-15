@@ -84,6 +84,8 @@ import Badge from './packages/badge/index.js';
 import './packages/badge/badge.scss';
 import Field from "./packages/field/index.js";
 import "./packages/field/field.scss";
+import Card from "./packages/card/index.js";
+import "./packages/card/card.scss";
 
 const packages = {
   Cell,
@@ -128,7 +130,8 @@ const packages = {
   Swiper,
   ImagePreview,
   Badge,
-  Field: Field
+  Field: Field,
+  Card
 };
 
 const components = {};

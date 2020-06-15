@@ -417,6 +417,16 @@
           "sort": "0",
           "showDemo": true,
           "author": "undo"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Card",
+          "chnName": "卡片",
+          "desc": "卡片组件",
+          "type": "component",
+          "sort": "0",
+          "showDemo": true,
+          "author": "xuhui"
         }
     ]
 }
