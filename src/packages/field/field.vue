@@ -126,7 +126,7 @@ export default {
       const data = event.target.value;
       const txtLength = data.length;
       this.txtNum = txtLength;
-      if (txtLength > this.maxLength) {
+      if (txtLength > this.maxLength*1) {
         this.$emit('errorFunc');
       } else {
       }

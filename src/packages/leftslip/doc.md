@@ -65,8 +65,8 @@ export default {
     <nut-leftslip v-for="(item, index) in list" :key="item.id" ref="leftslip" class="addr-item" >
         <div slot="slip-main" class="slip-main addr-main">
           <div class="addr">
-            <p class="name-mobile">{{ item.tel }}</p>
-            <p class="full-addr">{{ item.addr }}</p>
+            <p class="name-mobile">{{ item.tel } }</p>
+            <p class="full-addr">{{ item.addr } }</p>
           </div>
           <a class="addr-edit" href="javascript:void(0)"></a>
         </div>
