@@ -42,14 +42,14 @@ export default {
         // todo 如果当前是error,在current改变时需要处理
         if (!(isInit && child.currentStatus)) {
           if (this.current === index) {
-            child.currentStatus = 'process';
+            child.currentStatus = 'nut-step-status-process';
           }
           if (this.type === 'process') {
             if (index < this.current) {
-              child.currentStatus = 'finish';
+              child.currentStatus = 'nut-step-status-finish';
             }
             if (index > this.current) {
-              child.currentStatus = 'wait';
+              child.currentStatus = 'nut-step-status-wait';
             }
           }
         }

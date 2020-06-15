@@ -1,10 +1,10 @@
 <template>
-  <div class="nut-step clearfix" :class="`${currentStatus ? 'nut-step-status-' + currentStatus : ''}`">
+  <div class="nut-step clearfix" :class="`${currentStatus ? currentStatus : ''}`">
     <div v-if="timeForward && time" class="nut-step-time-forward">{{ time }}</div>
     <div class="nut-step-node">
       <div class="nut-step-icon">
         <slot name="status-icon">
-          <nut-icon v-if="currentStatus === 'finish'" type="self" :url="require('../../assets/svg/finish.svg')"></nut-icon>
+          <nut-icon v-if="currentStatus === 'nut-step-status-finish'" type="self" :url="require('../../assets/svg/finish.svg')"></nut-icon>
           <span v-else class="default-icon"></span>
         </slot>
       </div>
