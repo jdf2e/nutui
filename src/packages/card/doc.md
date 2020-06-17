@@ -8,7 +8,7 @@
 ```html
 <nut-card
   title="这里是默认卡片内容"
-  :footerButtons="footerButtons"
+  :footer-buttons="footerButtons"
   @click1="clickHandler1"
   @click2="clickHandler2"
 ></nut-card>
@@ -26,7 +26,7 @@
 <nut-card
   title="卡片标题"
   content="这里是卡片内容区域"
-  :footerButtons="footerButtons"
+  :footer-buttons="footerButtons"
   @click1="clickHandler1"
   @click2="clickHandler2"
 ></nut-card>
@@ -36,19 +36,19 @@
 可展开/收起的卡片
 
 ```html
-<nut-card title="卡片标题" content="这里是卡片内容区域" openIcon :isOpen="isOpen"  @switchClick="switchClick"></nut-card>
+<nut-card title="卡片标题" content="这里是卡片内容区域" open-icon :is-open="isOpen"  @switchClick="switchClick"></nut-card>
 ```
 
 通栏卡片
 
 ```html
-<nut-card title="卡片标题" content="这里是卡片内容区域" isFull></nut-card>
+<nut-card title="卡片标题" content="这里是卡片内容区域" is-full></nut-card>
 ```
 ## 自定义内容
 Card组件提供了多个插槽，可以灵活地自定义内容
 
 ```html
-<nut-card hasContent hasFooter>
+<nut-card has-content has-footer>
   <div slot="title" class="card-title">
     <div class="right">我是标题</div>
     <div class="left">一小时</div>
