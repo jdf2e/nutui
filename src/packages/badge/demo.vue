@@ -40,7 +40,11 @@ export default {
 
 <style lang="scss" scoped>
 .item {
-	margin: 16px 26px 10px 10px;
+  margin: 16px 26px 10px 10px;
+  line-height: 15px;
+  font-family: PingFangSC-Regular;
+  font-size: 15px;
+  color: #646464;
 }
 
 .demo-w {
