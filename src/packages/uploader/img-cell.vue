@@ -25,7 +25,7 @@ export default {
         position: relative;
         display: inline-flex;
         align-items: center;
-        margin-right: 14px;
+        margin-right: 12px;        
         .close{
             position: absolute;
             display: block;
