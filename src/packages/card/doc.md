@@ -98,10 +98,10 @@ export default {
 | 字段    | 说明                                  | 类型   | 默认值                                                   |
 |---------|---------------------------------------|--------|----------------------------------------------------------|
 | title     | 标题 | String | '' |
-| openIcon  | 展开收起图标是否展示 | Boolean | false |
+| open-icon  | 展开收起图标是否展示 | Boolean | false |
 | content  | 内容 | String  | '' |
-| isOpen  | 是否展开卡片内容 | Boolean  | true |
-| footerButtons  | 底部按钮 | Array  | [] |
-| isFull  | 是否为通栏卡片 | Boolean  | false |
-| hasContent  | 使用slot自定义content内容 | Boolean  | false |
-| hasFooter  | 使用slot自定义底部按钮 | Boolean  | false |
+| is-open  | 是否展开卡片内容 | Boolean  | true |
+| footer-buttons  | 底部按钮 | Array  | [] |
+| is-full  | 是否为通栏卡片 | Boolean  | false |
+| has-content  | 使用slot自定义content内容 | Boolean  | false |
+| has-footer  | 使用slot自定义底部按钮 | Boolean  | false |
