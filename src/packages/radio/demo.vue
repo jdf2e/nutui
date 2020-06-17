@@ -130,6 +130,35 @@
         </span>
       </nut-cell>
     </div>    
+    <h4>标签样式</h4>
+    <nut-cell>
+        <span slot="title">
+          <nut-radio 
+          :type="'list'"           
+          :name="demo6name" 
+          :value="1"
+          :checked="false"
+          >
+          备选项1
+          </nut-radio>
+          <nut-radio 
+          :type="'list'"           
+          :name="demo6name" 
+          :value="2"
+          :checked="false"
+          >
+          备选项2
+          </nut-radio>
+          <nut-radio 
+          :type="'list'"           
+          :name="demo6name" 
+          :value="3"
+          :checked="false"
+          >
+          备选项3
+          </nut-radio>
+        </span>
+      </nut-cell>
   </div>
 </template>
 
@@ -143,6 +172,8 @@ export default {
       radioVal3: 'b',
       radioVal4: 'b',
       radioVal5: 'a',
+      demo6value:1,
+      demo6name:'test',
       radioGroupVal1: 'b',
       radioGroupVal2: '2',
       radioGroupVal3: '2',

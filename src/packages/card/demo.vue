@@ -1,9 +1,9 @@
 <template>
-  <div class="demo-list">
+  <div class="demo-list card-list">
     <h4>基础样式</h4>
     <nut-card
       title="这里是默认卡片内容"
-      :footerButtons="footerButtons"
+      :footer-buttons="footerButtons"
       @click1="clickHandler1"
       @click2="clickHandler2"
     ></nut-card>
@@ -15,19 +15,19 @@
     <nut-card
       title="卡片标题"
       content="这里是卡片内容区域"
-      :footerButtons="footerButtons"
+      :footer-buttons="footerButtons"
       @click1="clickHandler1"
       @click2="clickHandler2"
     ></nut-card>
 
     <h4>可展开/收起的卡片</h4>
-    <nut-card title="卡片标题" content="这里是卡片内容区域" openIcon :isOpen="isOpen"  @switchClick="switchClick"></nut-card>
+    <nut-card title="卡片标题" content="这里是卡片内容区域" open-icon :is-open="isOpen"  @switch-click="switchClick"></nut-card>
 
     <h4>通栏卡片</h4>
-    <nut-card title="卡片标题" content="这里是卡片内容区域" isFull></nut-card>
+    <nut-card title="卡片标题" content="这里是卡片内容区域" is-full></nut-card>
 
     <h4>通过Slot插槽分发内容</h4>
-    <nut-card hasContent hasFooter>
+    <nut-card has-content has-footer>
       <div slot="title" class="card-title">
         <div class="right">我是标题</div>
         <div class="left">一小时</div>
@@ -70,6 +70,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.card-list{
+  h4{
+    padding: 0 15px;
+  }
+}
 .card-title {
   display: flex;
   justify-content: space-between;

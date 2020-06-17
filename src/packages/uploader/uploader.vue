@@ -76,7 +76,7 @@ export default {
         },
         clearInput: {
             type: Boolean,
-            default: false
+            default: true
         },
         xmlError: {
             type: String,
@@ -128,8 +128,7 @@ export default {
                 onProgress(file, loaded, total) {
                     _this.$emit("progress", file, loaded, total);
                 },
-                onPreview(previewFile) {
-					debugger
+                onPreview(previewFile) {				
                     _this.$emit("preview", previewFile);
                 },
                 onSuccess(file, responseTxt) {
@@ -150,8 +149,7 @@ export default {
             const formData = new FormData();
             const opt = this.createUploaderOpts();
             opt.$el = tar;
-            if (this.isPreview) {
-				debugger
+            if (this.isPreview) {				
                 opt.previewData = tar.files;
 			}
 			let len = this.multiple ? tar.files.length : 1;     
