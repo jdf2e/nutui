@@ -2,26 +2,40 @@
 
 文件上传组件
 
-## 基本用法
+## 通用方法
+
+模版部分如下：要说的一点就是 `img-cell` 是为了 `demo` 展示而临时写的一个模块，所以不能直接使用，需要使用
+下面的模版。
 
 ```html
-<nut-uploader
-    name="uploader-demo"
-    :url="url"
-    :isPreview="true"
-    :acceptType = "['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
-    @start="onStart"
-    @success="onSuccess"
-    @fail="onFail"
-    @progress="onProgress"
-    @preview="onPreview"
-    @showMsg="showMsgFn"
-    typeError="对不起，不支持上传该类型文件！"
-    limitError="对不起，文件大小超过限制！"
->
-上传
-</nut-uploader>   
+<div class="preview-img-box">
+  <transition name="fade">
+      <div class="img-list" v-if="previewImg">
+        <img-cell v-for="(item,index) in previewImg" 
+                  :key="index"   
+                  :src="item"
+                  :clear="()=>{clearImg(index)}"
+                    /> 
+      </div>
+  </transition>
+  <nut-uploader
+        class="demo-1"
+        :name="name"
+        :url="url"
+        :xhrState="stateNum"
+        :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
+        :isPreview="true"
+        @preview="preview"
+        @success="onSuccess"
+        @failure="onFail"
+        @start="onStart"
+        @showMsg="showMsgFn"
+        :multiple="true"
+  >+</nut-uploader> 
+</div>
 ```
+
+主要使用了 `@preview` 、 `@success` 、`@failure`、 ` @start`、 `@showMsg` 5个 事件监听上传的整个过程，代码部分如下：
 
 ```javascript
 export default { 
@@ -39,11 +53,8 @@ export default {
       },
       onFail(file,res){
         alert('上传失败！');
-      },
-      onProgress(file, loaded, total) {
-        console.log('上传进度:'+parseInt((100 * loaded) / total)+'%');
-      },
-      onPreview(file) {
+      },     
+      preview(file) {
         this.previewImg = file;
       },
       showMsgFn(msg){
@@ -52,7 +63,57 @@ export default {
   }
 ```
 
-## 高级用法
+img-cell 模版代码如下：
+
+```html
+<template>
+    <div class="img-outbox">  
+        <i class="close" @click="close"></i>      
+        <img class="img-box" v-if="src" :src="src" alt />        
+    </div>
+</template>
+<script>
+export default {
+    name:"img-cell",
+    props:['src','clear'],
+    methods:{
+        close(){
+            if(Object.prototype.toString.apply(this.clear) === '[object Function]'){
+                this.clear()
+            }            
+        }
+    }
+}
+</script>
+<style lang="scss" scoped>
+    .img-outbox{
+        width: 76px;
+        height: 76px;
+        border-radius: 3px;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        margin-right: 14px;
+        .close{
+            position: absolute;
+            display: block;
+            background: url(./../../assets/img/img-clear.png) no-repeat;
+            background-size: cover;;
+            width: 18px;
+            height: 18px;       
+            top:-9px;
+            right:-9px;    
+            cursor: pointer;
+        }
+        .img-box{
+            width: 100%;
+        }
+    }
+</style>
+```
+
+
+## 其它用法
 
 与吐司 **Toast** 组件结合使用
 

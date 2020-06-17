@@ -232,6 +232,7 @@ export default {
 .img-list{
   display: flex;  
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .demo-1{
