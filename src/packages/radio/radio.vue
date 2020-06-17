@@ -5,7 +5,7 @@
       type="radio"
       :value="currentValue"
       :class="{ 'nut-radio-ani': isAnimated }"
-      :checked="currentValue === label"
+      :checked="checked"
       :disabled="isDisabled"
       :label="label"
     />
@@ -13,8 +13,21 @@
       <slot></slot>
     </span>
   </label>
-  <div v-if="type === 'list'" class="list-box">
-
+  <div v-if="type === 'list'" class="nut-radio-list">
+      <label for="">
+          
+          <input
+            type="radio"
+            :value="currentValue"
+            :class="{ 'nut-radio-ani': isAnimated }"
+            :checked="checked"
+            :disabled="isDisabled"
+            :label="label"
+            :name="name"
+          />
+          <div class="text-box"><slot></slot></div>
+          <div class="box-border"></div>
+      </label>
   </div>
 </div>
   
@@ -29,6 +42,10 @@ export default {
     value: {
       type: [String, Number, Boolean],
       default: false
+    },
+    checked:{
+      type:Boolean,
+      default:false
     },
     label: [String, Number, Boolean],
     size: {
@@ -46,6 +63,9 @@ export default {
     type:{
       type: String,
       default:'radio'
+    },
+    name:{
+      type:String
     }
   },
   data() {
