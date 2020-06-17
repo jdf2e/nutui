@@ -29,41 +29,60 @@
         <div slot="slipbtns" class="slipbtns"><a href="javascript:;"><nut-icon type="trolley" size="20px" color="#fff"></nut-icon></a></div>
       </nut-leftslip>
     </div>
-    <h4>列表</h4>
-    <div class="address-list">
-      <nut-leftslip v-for="(item, index) in list" :key="item.id" ref="leftslip" class="addr-item" >
-        <div slot="slip-main" class="slip-main addr-main">
-          <div class="addr">
-            <p class="name-mobile">{{ item.tel }}</p>
-            <p class="full-addr">{{ item.addr }}</p>
-          </div>
-          <a class="addr-edit" href="javascript:void(0)"></a>
+    <h4>消息列表</h4>
+    
+    <div class="cell-box">
+      <nut-leftslip v-for="(item, index) in list" :key="item.id" ref="leftslip">
+        <div slot="slip-main" class="slip-main">
+          <nut-cell class="cell-item" :title="item.title" :sub-title="item.subTitle">
+            <div slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></div>
+            <div slot="desc">
+              <p class="timer">{{item.time}}</p>
+              <p class="badge"><nut-badge :is-dot="item.isDot" :value="item.value" :max="99" top="0px" right="15px"></nut-badge></p>
+            </div>
+          </nut-cell>
         </div>
         <div slot="slipbtns" class="slipbtns"
-          ><a href="javascript:;" @click="delItem(index)">删除</a></div
-        >
+          ><a href="javascript:;" @click="delItem(index)">删除</a>
+        </div>
+      </nut-leftslip>
+    </div>
+    <h4>禁止滑动</h4>
+    <div>
+      <button class="btn" @click="disabledHandle">{{isDisable ? '开启滑动' : '禁止滑动'}}</button>
+      <nut-leftslip :disabled="isDisable">
+        <div slot="slip-main" class="slip-main">左滑触发删除</div>
+        <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a></div>
       </nut-leftslip>
     </div>
   </div>
 </template>
 
 <script>
+import locale from '../../mixins/locale';
+import { locale as i18n } from '../../locales';
+import Icon from '../icon/icon.vue';
+import Avatar from '../avatar/avatar.vue';
+import Badge from '../badge/badge.vue'
+
 export default {
-  components: {},
+  mixins: [locale],
+  components: {
+    'nut-icon': Icon,
+    'nut-avatar': Avatar,
+    'nut-badge':Badge
+  },
   data() {
     return {
       list: [
-        { id: 'add1', addr: '北京市大兴区亦庄经济开发中心京东大厦B座1', tel: '159****8888' },
-        { id: 'add2', addr: '北京市大兴区亦庄经济开发中心京东大厦B座2', tel: '159****8888' },
-        { id: 'add3', addr: '北京市大兴区亦庄经济开发中心京东大厦B座3', tel: '159****8888' },
-        { id: 'add4', addr: '北京市大兴区亦庄经济开发中心京东大厦B座4', tel: '159****8888' },
-        { id: 'add5', addr: '北京市大兴区亦庄经济开发中心京东大厦B座5', tel: '159****8888' },
-        { id: 'add6', addr: '北京市大兴区亦庄经济开发中心京东大厦B座6', tel: '159****8888' },
-        { id: 'add7', addr: '北京市大兴区亦庄经济开发中心京东大厦B座7', tel: '159****8888' },
-        { id: 'add8', addr: '北京市大兴区亦庄经济开发中心京东大厦B座8', tel: '159****8888' }
+        { id: 'add1', title: '噜啦噜1',subTitle:'我又来送福利啦！关注之后你就会',time:'10:13',isDot:false,value:9},
+        { id: 'add2', title: '噜啦噜2',subTitle:'我又来送福利啦！关注之后你就会',time:'10:12',isDot:true,value:1},
+        { id: 'add5', title: '噜啦噜5',subTitle:'我又来送福利啦！关注之后你就会',time:'1小时前',isDot:false,value:99},
+        { id: 'add8', title: '噜啦噜8',subTitle:'我又来送福利啦！关注之后你就会',time:'星期五' ,isDot:false,value:100}
       ],
       rightWidth: 80,
-      pageWidth: null
+      pageWidth: null,
+      isDisable:false
     };
   },
   methods: {
@@ -72,10 +91,11 @@ export default {
       this.$refs.demo1.sliderEle.remove();
     },
     delItem(index) {
+      alert('确定删除吗？');
       this.list.splice(index, 1);
     },
-    oneDel(par) {
-      par.remove();
+    disabledHandle(){
+      this.isDisable = !this.isDisable 
     }
   },
   mounted() {
@@ -85,7 +105,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.demo{
+  padding-bottom: 30px;
+}
 .slipbtns {
 	a {
 		&.favorite {
@@ -115,60 +137,48 @@ export default {
 	}
 }
 
-.address-list {
-	.addr-item {
-		background: #fff;
+
+
+.cell-box{
+  .slip-main {
+    padding: 0;
+  }
+  .wrapper-cell{
+    width: 100%;
+   
+  }
+  .cell-item{
+    position: relative;
+    &:after{
+      content: '';
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 0;
+      border-bottom: 1px solid #efefef;
+    }
+  }
+}
+.timer {
+	color: #c8c8c8ff;
+}
+
+
+.badge {
+	.nut-badge {
+		width: 100%;
+		height: 100%;
 	}
+}
 
-	.addr-main {
-		margin: 0 15px;
-		padding: 15px 5px;
-
-		&::after {
-			content: '';
-			position: absolute;
-			left: 0;
-			bottom: 0;
-			width: 200%;
-			height: 0;
-			box-sizing: border-box;
-			transform: scale(0.5);
-			transform-origin: left bottom;
-			border-bottom: 1px solid #ececee;
-		}
-
-		.addr-wrap {
-			display: flex;
-			position: relative;
-			width: 100%;
-		}
-
-		.addr {
-			flex: 1;
-		}
-
-		.addr-edit {
-			display: flex;
-			width: 36px;
-			background:
-				url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAAGXLeQ2AAAAAXNSR0IArs4c6QAAAdFJREFUSA2tVTFuAjEQtNF1KBIvoEEiD+CkVHRX0CaPgG9Aly9ADwVFaO8LkeABeUVOAWqys7k5+Xw+zkixdF7v7ux4vWuDMe5Yr9c3jOPxeOvRMZlMuDRGEEtDCKTFBP9ms9HpBwYOECmZGJ7IcjqdDEghe9baAx21nWhsyMvlQnqVSFpBrpUnqTloBBCOKndFlZMkZHt5nrs2c71eVbdyyrFEf9W8pTKfz3WFc+GTsULB3Lxqa1QGfkgMRCSY/EFGFIi7aL0FGAwAsK2aVWP9Xdr0ZLFYoCofkuJrG0j8Z/nSNn/QLodfoqTfwjwIIRqHBZDGUACrAszdg7pAELWCfWArOASErcFc3o2qk+45Gt38t0420nC39dcK5qX3ndTxSKTlh0Sm591uh0tcPXKCKAGUprxZGKQsYxHv8mX3goDlCHWd76LErHCX9JYOh0MznU5Nv99nfLT0SPUdpWlqE8lUr/9sNosmIzBE6j7QRt8ZeE92kTL2IfIYUl51bBBFXhSF2e/3TEhr6h6/cniLKHL5+VTC0WhkBoPg74hH+6dGkWdZFgzuMj703LrIfD/+Nc8wdj1RPzCkk4OcKEsqyud2u40vZoi5tAlXIcsXqL8z/jqozhCfMwAAAABJRU5ErkJggg==)
-				no-repeat center center;
-			background-size: 23px 23px;
-		}
-
-		.name-mobile {
-			font-size: 15px;
-			color: #333;
-		}
-
-		.full-addr {
-			font-size: 14px;
-			color: #666;
-			margin-top: 10px;
-			line-height: 22px;
-			// height: 40px;
-		}
-	}
+.btn{
+  margin: 10px 0;
+  background: #fff;
+  border: 1px solid #ff5722;
+  color: #ff5722;
+  outline: none;
+  border-radius: 4px;
+  padding: 5px;
 }
 
 </style>

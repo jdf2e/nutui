@@ -24,6 +24,10 @@ export default {
     rightWidth: {
       type: [Number, String],
       default: '0.8'
+    },
+    disabled:{
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -75,6 +79,7 @@ export default {
     //   });
     // },
     touchStart(e) {
+      if(this.disabled) return false
       let parentElement = e.currentTarget.parentElement;
       let slip = [];
       slip = document.getElementsByClassName('leftslip-open');
@@ -92,6 +97,7 @@ export default {
     },
 
     touchMove(e) {
+      if(this.disabled) return false
       let parentElement = e.currentTarget.parentElement;
 
       let disX = e.touches[0].pageX - this.startX; // >0 右滑，<0 左滑
@@ -109,6 +115,7 @@ export default {
       }
     },
     touchEnd(e) {
+      if(this.disabled) return false
       let parentElement = e.currentTarget.parentElement;
       const disX = e.changedTouches[0].pageX - this.startX; // >0 右滑，<0 左滑
       let distance;
