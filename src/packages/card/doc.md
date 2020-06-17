@@ -36,7 +36,7 @@
 可展开/收起的卡片
 
 ```html
-<nut-card title="卡片标题" content="这里是卡片内容区域" open-icon :is-open="isOpen"  @switchClick="switchClick"></nut-card>
+<nut-card title="卡片标题" content="这里是卡片内容区域" open-icon :is-open="isOpen"  @switch-click="switchClick"></nut-card>
 ```
 
 通栏卡片

@@ -85,7 +85,7 @@ export default {
       this.$emit(event);
     },
     headerClickHandler() {
-      this.$emit('switchClick');
+      this.$emit('switch-click');
     }
   }
 };
