@@ -72,7 +72,7 @@ export default {
 <style lang="scss" scoped>
 .card-list{
   h4{
-    margin-left: 15px;
+    padding: 0 15px;
   }
 }
 .card-title {
