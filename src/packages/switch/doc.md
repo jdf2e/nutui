@@ -80,7 +80,14 @@ export default {
 >
 </nut-switch>
 ```
-
+## 内嵌文字
+```html
+<nut-switch 
+  :active="true"  
+  :label="开|关"
+>
+</nut-switch>
+```
 
 ## Prop
 
@@ -89,3 +96,4 @@ export default {
 | active | 开关状态 | Boolean | false
 | size | 尺寸，可选值small/base/large | String | base
 | disabled | 是否禁用 | Boolean | false
+| label | 内嵌文字标签，竖线分开，如ON\|OFF 或 开\|关 | String  | 
