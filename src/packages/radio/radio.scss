@@ -100,7 +100,8 @@
 	line-height: 28px;
 	height: 28px;	
 	position: relative;
-	font-size: 14px;
+	font-size: 14px;	
+	cursor: pointer;
 	label{
 		display: inline-block;		
 		padding:0 15px;
@@ -123,6 +124,7 @@
 		color:#969696;
 	}
 	.box-border{
+		box-sizing: border-box;
 		top:0;
 		left: 0;
 		position: absolute;

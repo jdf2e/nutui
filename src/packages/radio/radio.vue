@@ -10,6 +10,7 @@
       :label="label"
     />
     <span class="nut-radio-label">
+      
       <slot></slot>
     </span>
   </label>
@@ -24,8 +25,9 @@
             :disabled="isDisabled"
             :label="label"
             :name="name"
+            @input="valChange"
           />
-          <div class="text-box"><slot></slot></div>
+          <div class="text-box">{{text}}<slot></slot></div>
           <div class="box-border"></div>
       </label>
   </div>
@@ -40,7 +42,7 @@ export default {
   mixins: [findCptUpward],
   props: {
     value: {
-      type: [String, Number, Boolean],
+      type: [String, Number, Boolean,Function],
       default: false
     },
     checked:{
@@ -66,7 +68,8 @@ export default {
     },
     name:{
       type:String
-    }
+    },
+    text:String
   },
   data() {
     return {
@@ -102,6 +105,14 @@ export default {
         return false;
       }
       this.currentValue = this.label;
+    },
+    valChange(e){  
+      // {
+      //   el:e.target,
+      //   value:e.target.value,
+      //   name:e.target.name,
+      // }   
+      this.$emit('input',e.target.value)
     }
   }
 };

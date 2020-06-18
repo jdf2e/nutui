@@ -1,6 +1,6 @@
 <template>
   <div class="demo-list">
-    <h4>Radio基本用法</h4>
+    <!-- <h4>Radio基本用法</h4>
     <div>
       <nut-cell>
         <span slot="title">
@@ -129,40 +129,27 @@
           <nut-radio class="my-radio" v-model="radioVal5" label="b">备选项2</nut-radio>
         </span>
       </nut-cell>
-    </div>    
-    <h4>标签样式</h4>
+    </div> -->
+    <h4>按钮样式</h4>
     <nut-cell>
-        <span slot="title">
-          <nut-radio 
-          :type="'list'"           
-          :name="demo6name" 
-          :value="1"
-          :checked="false"
-          >
-          备选项1
-          </nut-radio>
-          <nut-radio 
-          :type="'list'"           
-          :name="demo6name" 
-          :value="2"
-          :checked="false"
-          >
-          备选项2
-          </nut-radio>
-          <nut-radio 
-          :type="'list'"           
-          :name="demo6name" 
-          :value="3"
-          :checked="false"
-          >
-          备选项3
-          </nut-radio>
+        <span slot="title">        
+          <group 
+            :list="labelList"
+            :name="'test'"
+            :effect-key = "'value'"
+            :effect-text="'text'"
+            :checkedIndex="0"            
+          />
         </span>
+      </nut-cell>
+      <nut-cell>
+        <span slot="title"> 选择结果:{{labelReslut}}</span>
       </nut-cell>
   </div>
 </template>
 
 <script>
+import group from './index.vue';
 export default {
   data() {
     return {
@@ -172,15 +159,58 @@ export default {
       radioVal3: 'b',
       radioVal4: 'b',
       radioVal5: 'a',
-      demo6value:1,
       demo6name:'test',
+      demo6value:1,     
+      test:'',
       radioGroupVal1: 'b',
       radioGroupVal2: '2',
       radioGroupVal3: '2',
-      radioGroupVal4: 'c'      
+      radioGroupVal4: 'c',
+      labelList:[
+        {
+          name:'test',
+          value:1,
+          text:'女孩'
+        },
+        {
+          name:'test',
+          value:2,
+          text:'女生'
+        },
+        {
+          name:'test',
+          value:3,
+          text:'女神'
+        },
+        {
+          name:'test',
+          value:4,
+          text:'腐女'
+        },
+        {
+          name:'test',
+          value:5,
+          text:'神女'
+        },
+        {
+          name:'test',
+          value:6,
+          text:'小女'
+        }
+      ],
+      labelReslut:""   
     };
   },
-  methods: {}
+  components:{
+    group
+  },
+  watch:{
+    test(val){
+      console.log(val)
+    }
+  },
+  methods: {    
+  }
 };
 </script>
 
