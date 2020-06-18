@@ -7,7 +7,8 @@
       width: diameter,
       height: diameter,
       'border-radius': '50%',
-      margin: margin
+      margin: margin,
+      'flex-shrink':'0'
     }"
   >
   </div>
