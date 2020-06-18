@@ -112,7 +112,6 @@ export default {
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | id | 标识符，相同者共享一个实例 | String/Number | nut-dialog-default-id
-| canDestroy | 是否关闭弹窗时销毁实例 | Boolean | true
 | title | 标题 | String | -
 | content | 内容，支持HTML | String | -
 | type | 弹窗类型，值为**image**时为图片弹窗 | String | -

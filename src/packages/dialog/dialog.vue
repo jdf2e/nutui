@@ -1,9 +1,13 @@
 <template>
-  <div v-if="destroy" :class="['nut-dialog-wrapper', customClass, { 'nut-dialog-image-wrapper': type === 'image' }]" :id="id">
-    <transition :name="animation ? 'nutFade' : ''">
-      <div :class="'nut-dialog-mask'" :style="{ background: maskBgStyle }" @click="modalClick" v-show="curVisible"></div>
-    </transition>
-    <transition :name="animation ? 'nutEase' : ''">
+   <transition name="toastfade">
+    <nut-popup
+      :overlay='cover'
+      :class="customClass"
+      v-model="curVisible"
+      :overlayStyle='{backgroundColor:maskBgStyle}'
+      class="nut-dialog"
+      @click="clickCover"
+    >
       <div class="nut-dialog-box" v-show="curVisible" @click="modalClick">
         <div class="nut-dialog" @click.stop>
           <a href="javascript:;" v-if="closeBtn" @click="closeBtnClick" class="nut-dialog-close"></a>
@@ -36,33 +40,19 @@
           </template>
         </div>
       </div>
-    </transition>
-  </div>
+    </nut-popup>
+  </transition>
 </template>
 <script>
 import locale from '../../mixins/locale';
-
-const lockMaskScroll = (bodyCls => {
-  let scrollTop;
-  return {
-    afterOpen: function() {
-      scrollTop = document.scrollingElement.scrollTop || document.body.scrollTop;
-      document.body.classList.add(bodyCls);
-      document.body.style.top = -scrollTop + 'px';
-    },
-    beforeClose: function() {
-      if (document.body.classList.contains(bodyCls)) {
-        document.body.classList.remove(bodyCls);
-        document.scrollingElement.scrollTop = scrollTop;
-      }
-    }
-  };
-})('dialog-open');
-
 export default {
   name: 'nut-dialog',
   mixins: [locale],
   props: {
+    cover:{
+        type:Boolean,
+        default:true
+    },
     id: {
       type: String,
       default: ''
@@ -182,6 +172,11 @@ export default {
     this.destroy = true;
   },
   methods: {
+    clickCover() {
+      if (this.closeOnClickOverlay) {
+        this.hide();
+      }
+    },
     modalClick() {
       if (!this.closeOnClickModal) {
         return;
