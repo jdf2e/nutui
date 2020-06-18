@@ -2,10 +2,11 @@
   <div :class="['nut-searchbar', customClass ? customClass : '']">
     <div class="search-input" :class="[animation ? 'nut-search-ani' : '', inputFocusAnimation ? 'focus' : '']">
       <form action="javascript:return true" id="input-form">
-        <nut-icon type="search" v-if="hasIcon" :size="searchIconSize" :color="searchIconColor"></nut-icon>
+        <nut-icon class="search-icon" type="search3" v-if="hasIcon" :size="searchIconSize" :color="searchIconColor"></nut-icon>
         <input
           type="search"
           v-model="value"
+          :class="[inputAlign]"
           :placeholder="placeText || nutTranslate('lang.searchbar.placeText')"
           @keyup.enter="submitFun"
           @input="inputFun"
@@ -13,15 +14,21 @@
           @focus="focusFun"
           ref="searchInput"
         />
-        <span class="close-icon" :class="hasCloseIcon ? 'show' : ''" @click="clearInput">
-          <nut-icon type="circle-cross" :size="clearIconSize" :color="clearIconColor"></nut-icon>
+        <!-- 清空input中输入的内容 -->
+        <span class="input-right close-icon" v-if="clearable && hasCloseIcon" :class="[hasAction?'pos':'']" @click="clearInput">
+          <nut-icon type="clear" :size="clearIconSize"></nut-icon>
+        </span>
+        <!-- input右侧事件 -- 默认 二维码 -->
+        <span class="input-right custom-icon" v-if="hasAction" @click="handleAction">
+          <nut-icon v-if="hasAction && actionIcon == ''" type="qr" :size="actionIconSize"></nut-icon>
+          <nut-icon v-if="hasAction && actionIcon != ''" type="self" :url="actionIcon" :size="actionIconSize"></nut-icon>
         </span>
       </form>
     </div>
-    <a href="javascript:;" class="btn-search" v-if="hasSearchButton" @click="submitFun">
+    <div class="btn-right" v-if="hasSearchButton" @click="submitFun">
       <span v-if="hasTextButton">{{ textInfo || nutTranslate('lang.searchbar.textInfo') }}</span>
-      <nut-icon type="search" v-else :size="searchBtnIconSize" :color="searchBtnIconColor"></nut-icon>
-    </a>
+      <nut-icon type="search3" v-else :size="searchBtnIconSize" :color="searchBtnIconColor"></nut-icon>
+    </div>
   </div>
 </template>
 <script>
@@ -53,11 +60,7 @@ export default {
     },
     clearIconSize: {
       type: String,
-      default: '15px'
-    },
-    clearIconColor: {
-      type: String,
-      default: '#2e2d2d'
+      default: '14px'
     },
     placeText: {
       type: String
@@ -80,6 +83,29 @@ export default {
     customClass: {
       type: String,
       default: ''
+    },
+    // 新增 input 输入的位置  left center right
+    inputAlign:{ 
+      type:String,
+      default:'left'
+    },
+    // 新增 是否启用清除控件
+    clearable:{
+      type:Boolean,
+      default:true
+    },
+    // 新增 搜索框右侧按钮
+    hasAction:{
+      type:Boolean,
+      default:false
+    },
+    actionIcon:{
+      type:String,
+      default:''
+    },
+    actionIconSize:{
+      type:String,
+      default:'20px'
     }
   },
   components: {
@@ -123,6 +149,10 @@ export default {
       this.$nextTick(function() {
         this.$refs.searchInput.focus();
       });
+    },
+
+    handleAction(){
+      this.$emit('handleAction', this.value);
     }
   }
 };

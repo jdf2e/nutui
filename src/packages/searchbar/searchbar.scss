@@ -5,43 +5,84 @@
 	flex-flow: row;
 
 	.search-input {
+    	height: 36px;
 		flex: 1;
-		padding-left: 10px;
-		margin-right: 10px;
-		background-color: $light-color;
-		border-radius: 20px;
+		padding: 0 0 0 13px;
+    	background-color: rgba(247,247,247,1);;
+		border-radius: 18px;
 
 		form {
 			display: flex;
+			height: 100%;
+			width: 100%;
 			align-items: center;
 			position: relative;
-			margin-right: 10px;
+			  
+			.search-icon{
+				margin-right: 5px;
+			}
+      
+			input {
+				width: 100%;
+				flex: 1;
+				padding: 0;
+				margin: 0;
+				background-color: transparent;
+				border-color: transparent;
+				outline: none;
+				color: #323232;
+				font-size: 14px;
 
-			.close-icon {
-				display: none;
+				&.left{
+					text-align: left;
+				}
+				&.center{
+					text-align: center;
+				}
+				&.right{
+					text-align: right;
+				}
+		
+				&::-webkit-search-cancel-button {
+					display: none;
+				}
 
-				&.show {
-					display: inline-flex;
+				&::-webkit-input-placeholder { 
+					font-size: 14px;
+					color:#C8C8C8;
+					font-weight: normal;
+				}
+				&:-moz-placeholder { 
+					font-size: 14px;
+					color:#C8C8C8;
+					font-weight: normal;
+				}
+				&::-moz-placeholder { 
+					font-size: 14px;
+					color:#C8C8C8;
+					font-weight: normal;
+				}
+				&:-ms-input-placeholder { 
+					font-size: 14px;
+					color:#C8C8C8;
+					font-weight: normal;
 				}
 			}
-		}
+			
+			.input-right{
+				height: 100%;
+				display: flex;
+				align-items: center;
+				
+				&:last-child{
+					margin: 0 16px 0 4px;
+				}
 
-		i {
-			display: inline-block;
-		}
-
-		input {
-			min-width: 80%;
-			flex: 1;
-			padding: 10px 0;
-			margin-left: 10px;
-			background-color: $light-color;
-			border-color: transparent;
-			outline: none;
-
-			&::-webkit-search-cancel-button {
-				display: none;
+				&.pos{
+					margin: 0 8px 0 4px;
+				}
 			}
+			
 		}
 
 		&.focus {
@@ -53,11 +94,14 @@
 		}
 	}
 
-	.btn-search {
-		display: inline-flex;
+	.btn-right {
+		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: $title-color;
+		margin-left: 12px;
+		font-size: 14px;
+		color: #E1251B;
+
 	}
 
 	a {

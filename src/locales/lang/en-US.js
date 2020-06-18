@@ -15,7 +15,7 @@ const lang = {
       resetBtnTxt: 'Reset'
     },
     searchbar: {
-      placeText: 'Please enter the content...',
+      placeText: 'Please enter what you are searching for',
       textInfo: 'Search'
     },
     shortpassword: {

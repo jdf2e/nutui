@@ -5,8 +5,9 @@
 ## 基本用法
 
 ```html
-<nut-searchbar
-    placeText="请输入自定义文案"
+<nut-searchbar 
+    :hasIcon="true" 
+    :hasSearchButton="false"
 ></nut-searchbar>
 ```
 
