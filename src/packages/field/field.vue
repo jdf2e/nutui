@@ -97,10 +97,17 @@ export default {
        type: Boolean,
         default:false
     },
+    autosize:{
+       type: Boolean,
+        default:false
+    },
     value: String
   },
   mounted(){
     this.txtNum=this.value.length;
+    if(this.limitShow==false){
+      this.maxLength="";
+    }
   },
   methods: {
     initCssStyle(){
@@ -115,7 +122,7 @@ export default {
     },
     handleInput(evt) {
       this.currentValue = evt.target.value;
-       this.$emit('inputFunc', evt.target.value);
+       this.$emit('input-func', evt.target.value);
        this.$emit('input', evt.target.value);
     },
     handleClear() {
@@ -130,7 +137,14 @@ export default {
         this.$emit('errorFunc');
       } else {
       }
-      this.$emit('inputFunc', data);
+      if(this.autosize){
+        
+        let height = this.$refs.textarea.scrollHeight;
+         if (height) {
+       this.$refs.textarea.style.height = height + 'px';
+      }
+      }
+      this.$emit('input-func', data);
       this.$emit('input', data);
     }
   },
