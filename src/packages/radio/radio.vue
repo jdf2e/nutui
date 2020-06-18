@@ -1,6 +1,6 @@
 <template>
 <div class="warper">
-  <label v-if="type === 'radio'" :class="['nut-radio', 'nut-radio-size-' + currentSize]" @click="clickEvt">
+  <!-- <label v-if="type === 'radio'" :class="['nut-radio', 'nut-radio-size-' + currentSize]" @click="clickEvt">
     <input
       type="radio"
       :value="currentValue"
@@ -13,9 +13,9 @@
       
       <slot></slot>
     </span>
-  </label>
+  </label> -->
   <div v-if="type === 'list'" class="nut-radio-list">
-      <label for="">
+     
           
           <input
             type="radio"
@@ -29,7 +29,7 @@
           />
           <div class="text-box">{{text}}<slot></slot></div>
           <div class="box-border"></div>
-      </label>
+      
   </div>
 </div>
   
@@ -69,7 +69,13 @@ export default {
     name:{
       type:String
     },
-    text:String
+    text:String,
+    radioData:{
+      type:Object,
+      default(){
+
+      }
+    }
   },
   data() {
     return {
@@ -107,12 +113,14 @@ export default {
       this.currentValue = this.label;
     },
     valChange(e){  
+
       // {
       //   el:e.target,
       //   value:e.target.value,
       //   name:e.target.name,
       // }   
-      this.$emit('input',e.target.value)
+      let radioData = this.radioData;      
+      this.$emit('radioChange',radioData)
     }
   }
 };

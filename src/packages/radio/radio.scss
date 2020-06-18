@@ -101,6 +101,7 @@
 	height: 28px;	
 	position: relative;
 	font-size: 14px;	
+	padding:0 15px;
 	cursor: pointer;
 	label{
 		display: inline-block;		
@@ -143,6 +144,5 @@
 	input:checked +.text-box + .box-border{
 		background: rgba(255,239,235,1);
 		border: 1px solid rgba(225,37,27,1);
-	}
-	
+	}	
 }

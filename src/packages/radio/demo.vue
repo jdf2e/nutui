@@ -130,20 +130,59 @@
         </span>
       </nut-cell>
     </div> -->
-    <h4>按钮样式</h4>
+    <h4>按钮单选组输出属性为 value 的值</h4>
     <nut-cell>
         <span slot="title">        
           <group 
             :list="labelList"
             :name="'test'"
+            :styleType="'label'"
             :effect-key = "'value'"
             :effect-text="'text'"
-            :checkedIndex="0"            
+            :checkedIndex="1"    
+            :reslout-attr="'value'"   
+            v-model="labelReslut"                 
           />
         </span>
       </nut-cell>
       <nut-cell>
-        <span slot="title"> 选择结果:{{labelReslut}}</span>
+        <span slot="title"> 选择结果 value: {{labelReslut}}</span>
+      </nut-cell>
+      <h4>按钮单选组输出属性为 text 的值</h4>
+      <nut-cell>
+        <span slot="title">        
+          <group 
+            :list="labelList"
+            :styleType="'label'"
+            :name="'test2'"
+            :effect-key = "'value'"
+            :effect-text="'text'"
+            :checkedIndex="0"    
+            :reslout-attr="'text'"   
+            v-model="labelReslut2"                 
+          />
+        </span>
+      </nut-cell>
+      <nut-cell>
+        <span slot="title"> 选择结果 text: {{labelReslut2}}</span>
+      </nut-cell>
+      <h4>列表单选组输出属性为 value 的值</h4>
+      <nut-cell>
+        <span slot="title">        
+          <group 
+            :list="labelList"
+            :styletype="'list'"
+            :name="'test3'"
+            :effect-key = "'value'"
+            :effect-text="'text'"
+            :checkedIndex="0"    
+            :reslout-attr="'text'"   
+            v-model="labelReslut3"                 
+          />
+        </span>
+      </nut-cell>
+      <nut-cell>
+        <span slot="title"> 选择结果 text: {{labelReslut3}}</span>
       </nut-cell>
   </div>
 </template>
@@ -170,35 +209,37 @@ export default {
         {
           name:'test',
           value:1,
-          text:'女孩'
+          text:'亚瑟'
         },
         {
           name:'test',
           value:2,
-          text:'女生'
+          text:'廉颇'
         },
         {
           name:'test',
           value:3,
-          text:'女神'
+          text:'东皇太一'
         },
         {
           name:'test',
           value:4,
-          text:'腐女'
+          text:'吕布'
         },
         {
           name:'test',
           value:5,
-          text:'神女'
+          text:'黑切'
         },
         {
           name:'test',
           value:6,
-          text:'小女'
+          text:'冰心'
         }
       ],
-      labelReslut:""   
+      labelReslut:"",
+      labelReslut2:"",
+      labelReslut3:""   
     };
   },
   components:{
@@ -210,6 +251,9 @@ export default {
     }
   },
   methods: {    
+  },
+  mounted(){
+    
   }
 };
 </script>
