@@ -67,7 +67,7 @@ export default {
           <nut-cell class="cell-item" :title="item.title" :sub-title="item.subTitle">
             <div slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></div>
             <div slot="desc">
-              <p class="timer">{{item.time}}</p>
+              <p class="timer">{{item.time} }</p>
               <p class="badge"><nut-badge :is-dot="item.isDot" :value="item.value" :max="99" top="0px" right="15px"></nut-badge></p>
             </div>
           </nut-cell>
@@ -107,7 +107,7 @@ export default {
 ###  禁止滑动
 ```html
 <div>
-    <button class="btn" @click="disabledHandle">{{isDisable ? '开启滑动' : '禁止滑动'}}</button>
+    <button class="btn" @click="disabledHandle">{{isDisable ? '开启滑动' : '禁止滑动'} }</button>
     <nut-leftslip :disabled="isDisable">
         <div slot="slip-main" class="slip-main">左滑触发删除</div>
         <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a></div>

@@ -1,6 +1,6 @@
 <template>
 <div class="warper">
-  <label v-if="type === 'radio'" :class="['nut-radio', 'nut-radio-size-' + currentSize]" @click="clickEvt">
+  <!-- <label v-if="type === 'radio'" :class="['nut-radio', 'nut-radio-size-' + currentSize]" @click="clickEvt">
     <input
       type="radio"
       :value="currentValue"
@@ -10,11 +10,12 @@
       :label="label"
     />
     <span class="nut-radio-label">
+      
       <slot></slot>
     </span>
-  </label>
+  </label> -->
   <div v-if="type === 'list'" class="nut-radio-list">
-      <label for="">
+     
           
           <input
             type="radio"
@@ -24,10 +25,11 @@
             :disabled="isDisabled"
             :label="label"
             :name="name"
+            @input="valChange"
           />
-          <div class="text-box"><slot></slot></div>
+          <div class="text-box">{{text}}<slot></slot></div>
           <div class="box-border"></div>
-      </label>
+      
   </div>
 </div>
   
@@ -40,7 +42,7 @@ export default {
   mixins: [findCptUpward],
   props: {
     value: {
-      type: [String, Number, Boolean],
+      type: [String, Number, Boolean,Function],
       default: false
     },
     checked:{
@@ -66,6 +68,13 @@ export default {
     },
     name:{
       type:String
+    },
+    text:String,
+    radioData:{
+      type:Object,
+      default(){
+
+      }
     }
   },
   data() {
@@ -102,6 +111,16 @@ export default {
         return false;
       }
       this.currentValue = this.label;
+    },
+    valChange(e){  
+
+      // {
+      //   el:e.target,
+      //   value:e.target.value,
+      //   name:e.target.name,
+      // }   
+      let radioData = this.radioData;      
+      this.$emit('radioChange',radioData)
     }
   }
 };

@@ -280,16 +280,6 @@
         },
         {
             "version": "1.0.0",
-            "name": "TextBox",
-            "chnName": "文本域",
-            "desc": "文本域",
-            "type": "component",
-            "sort": "1",
-            "showDemo": true,
-            "author": "guoxiaoxiao"
-        },
-        {
-            "version": "1.0.0",
             "name": "Popup",
             "chnName": "弹出层",
             "desc": "弹出层",
@@ -409,24 +399,24 @@
             "author": "guoxiaoxiao"
         },
         {
-          "version": "1.0.0",
-          "name": "Steps",
-          "chnName": "步骤条",
-          "desc": "步骤条",
-          "type": "component",
-          "sort": "0",
-          "showDemo": true,
-          "author": "undo"
+            "version": "1.0.0",
+            "name": "Steps",
+            "chnName": "步骤条",
+            "desc": "步骤条",
+            "type": "component",
+            "sort": "0",
+            "showDemo": true,
+            "author": "undo"
         },
         {
-          "version": "1.0.0",
-          "name": "Card",
-          "chnName": "卡片",
-          "desc": "卡片组件",
-          "type": "component",
-          "sort": "0",
-          "showDemo": true,
-          "author": "xuhui"
+            "version": "1.0.0",
+            "name": "Card",
+            "chnName": "卡片",
+            "desc": "卡片组件",
+            "type": "component",
+            "sort": "0",
+            "showDemo": true,
+            "author": "xuhui"
         }
     ]
 }
