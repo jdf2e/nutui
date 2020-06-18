@@ -17,7 +17,7 @@ const lang = {
       resetBtnTxt: '重置'
     },
     searchbar: {
-      placeText: '请输入内容...',
+      placeText: '请输入您要搜索的内容',
       textInfo: '搜索'
     },
     shortpassword: {
