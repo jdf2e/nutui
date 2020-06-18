@@ -1,7 +1,7 @@
 @import '../../styles/animation/pulse';
-.warper{
-	display: inline-block;
-}
+// .warper{
+// 	display: inline-block;
+// }
 .nut-radio {
 	margin-right: 10px;
 
@@ -94,7 +94,7 @@
 		}
 	}
 }
-.nut-radio-list{
+.nut-radio-list-label{
 	display: inline-block;
 	text-align: center;
 	line-height: 28px;
@@ -145,4 +145,23 @@
 		background: rgba(255,239,235,1);
 		border: 1px solid rgba(225,37,27,1);
 	}	
+}
+.nut-radio-list-list{
+	height: 50px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #E6E6E6;
+	position: relative;
+	&:last-child{
+		border-bottom:	none;
+	}
+	input{
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 3;
+		opacity: 0;
+		position: absolute;
+	}
 }
