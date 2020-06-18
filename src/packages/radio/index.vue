@@ -1,10 +1,13 @@
 <template >
 <div class="nut-radio">
-    <div    class="nut-label" 
+    <div    :class="{
+                'nut-radio-labels':styleType ==='label',
+                'nut-radio-lists':styleType ==='list'
+            }"
             v-if="list&&list.length>0">
         <nut-radio   v-for="(item,index) in list" 
             :key="item[effectKey]"
-            :type="'list'"           
+            :type="styleType"           
             :name="name" 
             :text="item[effectText]"
             :value="item[effectKey]"  
@@ -19,7 +22,8 @@
 <script>
 export default {
     name:"radio-group",    
-    props:{     
+    props:{    
+        styleType:String,   // label
         type:String, // radio 展示    
         list:Array,  // radio 需要的数据信息 
         checkedIndex:Number, // 初始化选中数组第几个从 0 开始

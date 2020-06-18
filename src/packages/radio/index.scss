@@ -1,10 +1,13 @@
 .nut-radio{
-    .nut-label{
+    .nut-radio-labels{
         width: 100%;
         display: flex;
         flex-wrap: wrap;        
-        .warper{
+        .nut-radio-list-label{
             margin: 5px;
         }
+    }
+    .nut-radio-lists{
+        
     }
 }

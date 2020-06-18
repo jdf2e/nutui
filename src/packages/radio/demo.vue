@@ -130,10 +130,28 @@
         </span>
       </nut-cell>
     </div> -->
+    <h4>基本样式</h4>
+    <nut-cell>
+      <span slot="title">
+        <radio-group 
+            :list="labelList"
+            :name="'test0'"
+            :styleType="'label'"
+            :effect-key = "'value'"
+            :effect-text="'text'"
+            :checkedIndex="1"    
+            :reslout-attr="'value'"   
+            v-model="labelReslut0"                 
+          />
+      </span>
+    </nut-cell>
+    <nut-cell>
+        <span slot="title"> 选择结果 value: {{labelReslut0}}</span>
+      </nut-cell>
     <h4>按钮单选组输出属性为 value 的值</h4>
     <nut-cell>
         <span slot="title">        
-          <group 
+          <radio-group 
             :list="labelList"
             :name="'test'"
             :styleType="'label'"
@@ -151,7 +169,7 @@
       <h4>按钮单选组输出属性为 text 的值</h4>
       <nut-cell>
         <span slot="title">        
-          <group 
+          <radio-group 
             :list="labelList"
             :styleType="'label'"
             :name="'test2'"
@@ -169,9 +187,9 @@
       <h4>列表单选组输出属性为 value 的值</h4>
       <nut-cell>
         <span slot="title">        
-          <group 
+          <radio-group 
             :list="labelList"
-            :styletype="'list'"
+            :style-type="'list'"
             :name="'test3'"
             :effect-key = "'value'"
             :effect-text="'text'"
@@ -237,13 +255,14 @@ export default {
           text:'冰心'
         }
       ],
+      labelReslut0:"",
       labelReslut:"",
       labelReslut2:"",
       labelReslut3:""   
     };
   },
   components:{
-    group
+    'radio-group':group
   },
   watch:{
     test(val){

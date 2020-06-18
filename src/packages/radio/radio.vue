@@ -1,5 +1,5 @@
 <template>
-<div class="warper">
+<!-- <div class="warper"> -->
   <!-- <label v-if="type === 'radio'" :class="['nut-radio', 'nut-radio-size-' + currentSize]" @click="clickEvt">
     <input
       type="radio"
@@ -14,24 +14,24 @@
       <slot></slot>
     </span>
   </label> -->
-  <div v-if="type === 'list'" class="nut-radio-list">
-     
-          
-          <input
-            type="radio"
-            :value="currentValue"
-            :class="{ 'nut-radio-ani': isAnimated }"
-            :checked="checked"
-            :disabled="isDisabled"
-            :label="label"
-            :name="name"
-            @input="valChange"
-          />
-          <div class="text-box">{{text}}<slot></slot></div>
-          <div class="box-border"></div>
-      
+  <div  :class="{
+      'nut-radio-list-label' : type === 'label',
+      'nut-radio-list-list' : type === 'list'
+     }">
+    <input
+      type="radio"
+      :value="currentValue"
+      :class="{ 'nut-radio-ani': isAnimated }"
+      :checked="checked"
+      :disabled="isDisabled"
+      :label="label"
+      :name="name"
+      @input="valChange"
+    />
+    <div class="text-box">{{text}}<slot></slot></div>
+    <div class="box-border"></div>      
   </div>
-</div>
+<!-- </div> -->
   
 </template>
 <script>
