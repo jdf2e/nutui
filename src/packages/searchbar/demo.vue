@@ -2,25 +2,29 @@
   <div class="s-bar demo-list">
     <h4>基本用法</h4>
     <div class="demo1">
-      <nut-searchbar :hasIcon="true" :hasSearchButton="false"></nut-searchbar>
+      <nut-searchbar :hasIcon="true" :hasSearchButton="false" :clearable='true'></nut-searchbar>
     </div>
 
     <h4>搜索框对齐方式</h4>
     <div class="demo1">
-      <nut-searchbar :hasSearchButton="false" inputAlign="center"></nut-searchbar>
+      <nut-searchbar :hasIcon="true" :hasSearchButton="false" inputAlign="center"></nut-searchbar>
     </div>
 
     <h4>自定义右侧按钮</h4>
     <div class="demo1">
-      <nut-searchbar placeText="请输入关键词" :hasSearchButton="true" @submit="submitFun"></nut-searchbar>
+      <nut-searchbar placeText="右侧默认图标" @submit="submitFun"></nut-searchbar>
     </div>
 
     <div class="demo1">
-      <nut-searchbar placeText="请输入关键词" :hasTextButton="true" @submit="submitFun"></nut-searchbar>
+      <nut-searchbar placeText="右侧图标自定义" @submit="submitFun" :searchBtnIcon="require('../../assets/svg/qr.svg')"></nut-searchbar>
+    </div>
+
+    <div class="demo1">
+      <nut-searchbar placeText="右侧默认文字" :hasTextButton="true" @submit="submitFun"></nut-searchbar>
     </div>
     
     <div class="demo1">
-      <nut-searchbar placeText="请输入关键词" :hasIcon="true" :hasTextButton="true" textInfo="取消" customClass="search_demo" @submit="submitFun"></nut-searchbar>
+      <nut-searchbar placeText="右侧文字自定义" :hasIcon="true" :hasTextButton="true" textInfo="取消" @submit="submitFun"></nut-searchbar>
     </div>
 
     <h4>自定义搜索框右侧按钮</h4>

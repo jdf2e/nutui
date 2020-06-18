@@ -27,7 +27,8 @@
     </div>
     <div class="btn-right" v-if="hasSearchButton" @click="submitFun">
       <span v-if="hasTextButton">{{ textInfo || nutTranslate('lang.searchbar.textInfo') }}</span>
-      <nut-icon type="search3" v-else :size="searchBtnIconSize" :color="searchBtnIconColor"></nut-icon>
+      <nut-icon type="search3" v-if="!hasTextButton && searchBtnIcon == ''" :size="searchBtnIconSize" :color="searchBtnIconColor"></nut-icon>
+      <nut-icon type="self" v-if="!hasTextButton && searchBtnIcon != ''" :size="searchBtnIconSize" :color="searchBtnIconColor" :url='searchBtnIcon'></nut-icon>
     </div>
   </div>
 </template>
@@ -106,6 +107,11 @@ export default {
     actionIconSize:{
       type:String,
       default:'20px'
+    },
+    // 新增 右侧按钮图标
+    searchBtnIcon:{
+      type:String,
+      default:''
     }
   },
   components: {
