@@ -39,7 +39,6 @@
 
 ```
 
-
 错误提示
 
 ```html
@@ -114,10 +113,10 @@
 | maxLength | textArea时允许最大输入字数                      | String  | 50    |
 | limitShow | textArea时字数是否展示                     | Boolean  | true    |
 | rows | textArea时行数(可设置高度)                  | string  |1   |
-
+| autosize | textArea时高度可以自适应                  | Boolean  | false  |
 ## Event
 
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 
-| inputFunc | input事件 | data(输入的值)
+| input-func | input事件 | data(输入的值)
 | change | change事件 | data(输入的值)

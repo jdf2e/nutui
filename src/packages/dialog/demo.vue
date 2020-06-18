@@ -38,6 +38,15 @@
         </span>
       </nut-cell>
     </div>
+    <h4>多行按钮</h4>
+
+    <div>
+       <nut-cell :is-link="true" :show-icon="true" @click.native="showDialog10">
+        <span slot="title">
+          <label>多行按钮</label>
+        </span>
+      </nut-cell>
+    </div>
     <h4>图片弹窗</h4>
     <p
       >type值为“image”时为图片弹窗，需要配置一张图片，可带链接（非必须）。默认展示关闭按钮。点击图片触发onClickImageLink事件，返回false可阻止默认的跳转链接行为。</p
@@ -102,22 +111,32 @@ export default {
   methods: {
     showDialog1: function() {
       const options = {
-        title: '确定删除此订单？',
-        content: '删除后将从你的记录里消失，无法找回'
+        title: '标题',
+        content: '我想用艺术感动人们的内心。我希望他们这样说到：他的感受深刻而温柔。',
+        noCloseBtn: false,
+        noOkBtn: true,
+        cancelBtnTxt:"确认",
+        textAlign:"left",
+        onOkBtn(event) {
+          this.close(); //关闭对话框
+        }
       };
 
       this.$dialog(options);
     },
     showDialog2: function() {
       const options = {
-        title: '确定要加入购物车吗？'
+        title: '确定要加入购物车吗？',
+         onOkBtn(event) {
+          this.close(); //关闭对话框
+        },
       };
 
       this.$dialog(options);
     },
     showDialog3: function() {
       const options = {
-        content: '点击返回将中断注册，确定返回？<br>删除后您可以在回收站还原。',
+        content: '我想用艺术感动人们的内心。我希望他们这样说到：他的感受深刻而温柔。',
         noCloseBtn: false,
         noOkBtn: true,
         cancelBtnTxt: '我知道了'
@@ -166,14 +185,20 @@ export default {
         animation: false, //禁用弹出动效
         title: '注册说明',
         canDestroy: false,
-        content: '原账号为您本人所有，建议直接登录或找回密码。原账号内的订单资产可能丢失，可联系京东客服找回。'
+        content: '原账号为您本人所有，建议直接登录或找回密码。原账号内的订单资产可能丢失，可联系京东客服找回。',
+        onOkBtn(event) {
+          this.close(); //关闭对话框
+        },
       });
     },
     showDialog7: function() {
       this.$dialog({
         maskBgStyle: 'rgba(0,0,0,0)', //设置遮罩层背景透明
         title: '注册说明',
-        content: '原账号为您本人所有，建议直接登录或找回密码。原账号内的订单资产可能丢失，可联系京东客服找回。'
+        content: '原账号为您本人所有，建议直接登录或找回密码。原账号内的订单资产可能丢失，可联系京东客服找回。',
+        onOkBtn(event) {
+          this.close(); //关闭对话框
+        },
       });
     },
     showDialog8: function() {
@@ -193,6 +218,32 @@ export default {
           '桃花帘外东风软，<br>桃花帘内晨妆懒。<br>帘外桃花帘内人，<br>人与桃花隔不远。<br>东风有意揭帘栊，<br>花欲窥人帘不卷。<br>桃花帘外开仍旧，<br>帘中人比桃花瘦。<br>花解怜人花也愁，<br>隔帘消息风吹透。<br>风透帘栊花满庭，<br>庭前春色倍伤情。<br>闲苔院落帘空卷，<br>斜日栏干人自凭。<br>凭栏人向东风泣，<br>茜裙偷傍桃花立。<br>桃花桃叶乱纷纷，<br>花绽新红叶凝碧。<br>树树烟封一万株，<br>烘照楼台红模糊。<br>天机烧破鸳鸯锦，<br>春色欲酣珊瑚枕。<br>侍女金盆进水来，<br>香泉欲蘸胭脂冷。<br>胭脂鲜艳何相类，<br>花之颜色人之泪。<br>若将人泪比桃花，<br>泪自长流花自媚。<br>泪眼看花泪易乾，<br>泪乾春尽花憔悴。<br>憔悴花枝憔悴人，<br>花飞人倦易黄昏。<br>一声杜宇春归尽，<br>寂寞帘栊空月痕。',
         noOkBtn: true,
         cancelBtnTxt: '我知道了'
+      });
+    },
+    showDialog10: function() {
+      this.$dialog({
+        content: '我认为，大多数设计师只是试图从他们已经做过的事情中努力，在讲故事方面并没有什么特别之处，而我的回归，将伴随着一个伟大的演讲',
+        multiButton:true,
+        textAlign:"left",
+        multiButtonText:[{
+          name: '主要操作1(禁止)',
+          value: 0,
+          disabled:true
+        },
+        {
+          name: '主要操作2',
+          value: 1,
+          disabled:false,
+        },{
+          name: '主要操作3',
+          value:2,
+          disabled:false,
+        }],
+        chooseBtn(item,index){
+          console.log(index)
+          alert(`我点击了第${index + 1}个按钮`)
+          this.close()
+        },    
       });
     },
     showImageDialog: function() {

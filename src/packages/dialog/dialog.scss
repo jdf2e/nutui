@@ -107,20 +107,24 @@ body.dialog-open {
     display: flex;
     flex-direction: column;
     flex: 0 1 auto;
+    border-bottom: 1px solid rgba(230, 230, 230, 1);
 }
 
 .nut-dialog-content {
     flex: 1;
     justify-content: center;
     overflow: auto;
-    font-size: $font-size-base;
+    line-height: 21px;
+    font-family: PingFang-SC-Medium;
+    font-size: 14px;
+    color: rgba(100, 100, 100, 1);
     word-break: break-all;
     padding-bottom: 10px;
     -webkit-overflow-scrolling: touch;
 }
 
 .nut-dialog-footer {
-    height: 50px;
+    min-height: 50px;
     width: 100%;
     line-height: 50px;
     display: flex;
@@ -128,12 +132,41 @@ body.dialog-open {
     border-radius: 0 0 5px 5px;
     overflow: hidden;
     flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.nut-dialog-multi-button {
+    width: 100vw;
+    height: 50px;
+    box-sizing: border-box;
+    line-height: 50px;
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(245, 22, 22, 1);
+    text-align: center;
+    border-bottom: 1px solid rgba(230, 230, 230, 1);
+}
+
+.nut-dialog-multi-disabled {
+    color: rgba(150, 150, 150, 1);
+}
+
+.nut-dialog-multi-cancel {
+    width: 100vw;
+    height: 50px;
+    box-sizing: border-box;
+    line-height: 50px;
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(150, 150, 150, 1);
+    text-align: center;
 }
 
 .nut-dialog-btn {
     display: block;
     width: 100%;
-    height: 100%;
     position: relative;
     flex: 1;
     font-size: $font-size-base;
@@ -142,7 +175,9 @@ body.dialog-open {
     appearance: none;
     outline: none;
     user-select: none;
-    &.disabled {
+    font-size: 16px;
+    font-weight: 00;
+    5 &.disabled {
         background: $btn-disable-bg;
         background-origin: border-box;
         color: $btn-disable-color;
@@ -152,15 +187,20 @@ body.dialog-open {
         background: transparent;
         color: $primary-color;
         border-top: 1px solid $light-color;
+        line-height: 23px;
+        font-family: PingFangSC-Regular;
+        font-size: 16px;
     }
 }
 
 .nut-dialog-ok {
     border-radius: 0 0 5px 0;
-    background: $btn-gradient-bg;
+    background: #fff;
     background-origin: border-box;
     color: $btn-gradient-color;
-    margin-right: -1px;
+    font-family: PingFangSC-Regular;
+    border-left: 1px solid rgba(230, 230, 230, 1);
+    color: rgba(245, 22, 22, 1);
     &:active {
         background: $btn-gradient-active-bg;
     }
@@ -170,6 +210,7 @@ body.dialog-open {
     border-radius: 0 0 0 5px;
     border-top: 1px solid $light-color;
     background: #fff;
+    color: rgba(150, 150, 150, 1);
     background-origin: border-box;
     &:active {
         border-top: 1px solid #ccc;
