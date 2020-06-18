@@ -7,22 +7,12 @@
 ```javascript
 this.$dialog({
   title: "确定删除此订单？",
-  content: "删除后将从你的记录里消失，无法找回"
+  content: "删除后将从你的记录里消失，无法找回",
+  onOkBtn(event) {
+    this.close(); //关闭对话框
+  }
 });
 ```
-
-## ID
-
-同一个页面中，id相同的Dialog的DOM只会同时存在一个，不指定id时，id的默认值为**nut-dialog-default-id**。
-
-```javascript
-this.$dialog({
-  id:'my-dialog',
-  title: "确定删除此订单？",
-  content: "删除后将从你的记录里消失，无法找回"
-});
-```
-> 如果希望同时弹出多个Dialog，请给不同的Dialog设置不同的id。
 
 ## 事件
 ```javascript
@@ -46,6 +36,34 @@ this.$dialog({
           alert("will close");  //对话框关闭回调函数，无论通过何种方式关闭都会触发
         }
 });
+        
+```
+## 多行按钮
+```javascript
+this.$dialog({
+        content: '我认为，大多数设计师只是试图从他们已经做过的事情中努力，在讲故事方面并没有什么特别之处，而我的回归，将伴随着一个伟大的演讲',
+        multiButton:true,
+        textAlign:"left",
+        multiButtonText:[{
+          name: '主要操作1(禁止)',
+          value: 0,
+          disabled:true
+        },
+        {
+          name: '主要操作2',
+          value: 1,
+          disabled:false,
+        },{
+          name: '主要操作3',
+          value:2,
+          disabled:false,
+        }],
+        chooseBtn(item,index){
+          console.log(index)
+          alert(`我点击了第${index + 1}个按钮`)
+          this.close()
+        },    
+      });
         
 ```
 ## 关闭dialog不销毁实例
@@ -107,11 +125,10 @@ export default {
 }
 ```
 
-## API
+## prop
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| id | 标识符，相同者共享一个实例 | String/Number | nut-dialog-default-id
 | title | 标题 | String | -
 | content | 内容，支持HTML | String | -
 | type | 弹窗类型，值为**image**时为图片弹窗 | String | -
@@ -123,15 +140,22 @@ export default {
 | okBtnTxt | 确定按钮文案 | String | ”确 定“
 | okBtnDisabled | 禁用确定按钮 | Boolean | false
 | cancelAutoClose | 取消按钮是否默认关闭弹窗 | Boolean | true
-| textAlign | 文字对齐方向，可选值同css的text-align | String | "center"
-| onOkBtn | 确定按钮回调 | Function | -
-| onCancelBtn | 取消按钮回调 | Function | -
-| onCloseBtn | 关闭按钮回调 | Function | -
-| closeCallback | 关闭回调，任何情况关闭弹窗都会触发 | Function | -
-| onClickImageLink | 图片链接点击回调，仅对图片类型弹窗有效 | Function | -
+| textAlign | 文字对齐方向，可选值同css的text-align | String | "left"-
 | maskBgStyle | 遮罩层样式（颜色、透明度） | String | -
 | customClass | 增加一个自定义class | String | -
 | link | 点击图片跳转的Url，仅对图片类型弹窗有效 | String | -
 | imgSrc | 图片Url，仅对图片类型弹窗有效 | String | -
 | animation | 是否开启默认动效 | Boolean | true
+| multiButton | 是否开启多行按钮 | Boolean | false
+| multiButtonText | 多行按钮内容。内容必须包含name,按钮显示的内容 | Array | -
 | lockBgScroll | 锁定遮罩层滚动，不影响弹窗内部滚动（实验性质）会给body添加posotion:fix属性，注意 | Boolean | false
+
+## event
+
+| 字段 | 说明 | 类型 | 默认值
+|----- | ----- | ----- | ----- 
+| onOkBtn | 确定按钮回调 | Function | -
+| onCancelBtn | 取消按钮回调 | Function | -
+| onCloseBtn | 关闭按钮回调 | Function | -
+| closeCallback | 关闭回调，任何情况关闭弹窗都会触发 | Function | -
+| chooseBtn | 多行按钮内容。回调函数，返回参数为 点击的item和index | Function | -

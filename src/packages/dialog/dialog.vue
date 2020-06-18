@@ -4,6 +4,7 @@
       :overlay='cover'
       :class="customClass"
       v-model="curVisible"
+      :lock-scroll="lockBgScroll"
       :overlayStyle='{backgroundColor:maskBgStyle}'
       class="nut-dialog"
       @click="clickCover"
@@ -25,17 +26,31 @@
               <div class="nut-dialog-content" v-html="content" v-else-if="content" :style="{ textAlign }"></div>
             </div>
             <div class="nut-dialog-footer" v-if="!noFooter">
-              <button class="nut-dialog-btn nut-dialog-cancel" v-if="!noCancelBtn" @click="cancelBtnClick(cancelAutoClose)">{{
-                cancelBtnTxt || nutTranslate('lang.cancelBtnTxt')
-              }}</button>
-              <button
-                class="nut-dialog-btn nut-dialog-ok"
-                v-if="!noOkBtn"
-                :class="{ disabled: okBtnDisabled }"
-                :disabled="okBtnDisabled"
-                @click="okBtnClick"
-                >{{ okBtnTxt || nutTranslate('lang.okBtnTxt') }}</button
-              >
+              <template v-if="!multiButton">
+                <button class="nut-dialog-btn nut-dialog-cancel" v-if="!noCancelBtn" @click="cancelBtnClick(cancelAutoClose)">{{
+                  cancelBtnTxt || nutTranslate('lang.cancelBtnTxt')
+                }}</button>
+                <button
+                  class="nut-dialog-btn nut-dialog-ok"
+                  v-if="!noOkBtn"
+                  :class="{ disabled: okBtnDisabled }"
+                  :disabled="okBtnDisabled"
+                  @click="okBtnClick"
+                  >{{ okBtnTxt || nutTranslate('lang.okBtnTxt') }}</button
+                >
+              </template>
+              <template v-else>
+                  <div v-for="(item , index ) in multiButtonText" 
+                    class="nut-dialog-multi-button"
+                    :key="index"
+                     :class="{ 'nut-dialog-multi-disabled': item.disabled }"
+                    @click="chooseItem(item, index)">
+                    {{item.name}}
+                  </div>
+                  <div class="nut-dialog-multi-cancel"   @click="cancelBtnClick(cancelAutoClose)">
+                     {{cancelBtnTxt || nutTranslate('lang.cancelBtnTxt')}}
+                  </div>
+              </template>
             </div>
           </template>
         </div>
@@ -52,10 +67,6 @@ export default {
     cover:{
         type:Boolean,
         default:true
-    },
-    id: {
-      type: String,
-      default: ''
     },
     title: {
       type: String,
@@ -84,6 +95,14 @@ export default {
     lockBgScroll: {
       type: Boolean,
       default: false
+    },
+    multiButton:{
+      type:Boolean,
+      default:false
+    },
+    multiButtonText:{
+      type: Array,
+      default: () => []
     },
     visible: {
       type: Boolean,
@@ -133,6 +152,10 @@ export default {
       type: Function,
       default: null
     },
+    chooseBtn:{
+       type: Function,
+      default: null
+    },
     onCloseBtn: {
       type: Function,
       default: null
@@ -175,6 +198,13 @@ export default {
     clickCover() {
       if (this.closeOnClickOverlay) {
         this.hide();
+      }
+    },
+    chooseItem(item, index) {
+      if(item.disabled){return;}
+      this.$emit('choose-btn',item,index);
+      if (typeof this.chooseBtn === 'function') {
+        this.chooseBtn.call(this,item,index);
       }
     },
     modalClick() {
@@ -237,13 +267,8 @@ export default {
         this.curVisible = val;
       },
       immediate: true
-    },
-    curVisible(val) {
-      if (this.lockBgScroll) {
-        //锁定or解锁页面滚动
-        lockMaskScroll[val ? 'afterOpen' : 'beforeClose']();
-      }
     }
+  
   }
 };
 </script>
