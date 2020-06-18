@@ -53,6 +53,7 @@ export default {
         },
         {
           id: 'blue',
+          prizeColor: 'rgb(251, 219, 216)',
           prizeName: '蓝牙耳机',
           prizeImg: 'https://img13.360buyimg.com/imagetools/jfs/t1/91864/11/15108/139003/5e6f146dE1c7b511d/1ddc5aa6e502060a.jpg'
         },
@@ -63,6 +64,7 @@ export default {
         },
         {
           id: 'fruit',
+          prizeColor: 'rgba(246, 142, 46, 0.5)',
           prizeName: '迪士尼苹果',
           prizeImg: 'https://img11.360buyimg.com/imagetools/jfs/t1/108308/11/8890/237603/5e6f157eE489cccf1/26e0437cfd93b9c8.png'
         },
@@ -122,7 +124,6 @@ export default {
     },
     // 已经转动完转盘触发的函数
     endTurns() {
-      console.log(123);
       // 提示中奖
       this.$dialog({
         content: `恭喜中奖！！！${this.prizeList[this.prizeIndex].prizeName}`,
