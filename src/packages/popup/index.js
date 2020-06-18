@@ -1,7 +1,7 @@
 import Popup from "./popup.vue";
 import "./popup.scss";
-import { overlayProps ,getProps} from "./overlay/overlay-manager";
-
+import { getProps} from "./overlay/overlay-manager";
+import { overlayProps } from './overlay/overlay.vue';
 Popup.install = function(Vue) {
   Vue.component(Popup.name, Popup);
 };
