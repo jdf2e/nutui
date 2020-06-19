@@ -53,6 +53,11 @@ export default {
       default: 5,
     },
   },
+  watch: {
+    prizeList: function (newVal, oldVal) {
+      this.init();
+    },
+  },
   data() {
     return {
       winningPrize: 0,
@@ -94,7 +99,11 @@ export default {
       ctx.strokeStyle = borderColor; // 设置画图线的颜色
       for (let index = 0; index < prizeNum; index++) {
         const angle = index * baseAngle;
-        ctx.fillStyle = prizeBgColors[index]; //设置每个扇形区域的颜色
+        if (this.prizeList[index]['prizeColor']) {
+          ctx.fillStyle = this.prizeList[index]['prizeColor']; //设置每个扇形区域的颜色,根据每条数据中单独设置的优先
+        } else {
+          ctx.fillStyle = prizeBgColors[index]; //设置每个扇形区域的颜色
+        }
         ctx.beginPath(); //开始绘制
         // 标准圆弧：arc(x,y,radius,startAngle,endAngle,anticlockwise)
         ctx.arc(canvasW * 0.5, canvasH * 0.5, outRadius, angle, angle + baseAngle, false);

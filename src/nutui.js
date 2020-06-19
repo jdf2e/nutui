@@ -119,11 +119,13 @@ import './packages/subsidenavbar/subsidenavbar.scss';
 import SideNavBarItem from './packages/sidenavbaritem/index.js';
 import './packages/sidenavbaritem/sidenavbaritem.scss';
 import Drag from './packages/drag/index.js';
-import './packages/drag/drag.scss';
-// import VueQr from "./packages/qart/index.js";
+import './packages/drag/drag.scss'; // import VueQr from "./packages/qart/index.js";
 // import "./packages/qart/qart.scss";
+
 import Address from './packages/address/index.js';
 import './packages/address/address.scss';
+import CountUp from "./packages/countup/index.js";
+import "./packages/countup/countup.scss";
 
 const packages = {
   Cell,
@@ -185,7 +187,8 @@ const packages = {
   SubSideNavBar: SubSideNavBar,
   SideNavBarItem: SideNavBarItem,
   Drag: Drag,
-  Address: Address
+  Address: Address,
+  CountUp: CountUp
 };
 
 const components = {};
@@ -213,7 +216,7 @@ pkgList.map(item => {
   }
 });
 
-const install = function(Vue, opts = {}) {
+const install = function (Vue, opts = {}) {
   if (install.installed) return;
 
   if (opts.locale) {
@@ -265,7 +268,6 @@ export default {
   install,
   Lazyload,
   // VueQr,
-
   ...components,
   ...filters,
   ...directives,
