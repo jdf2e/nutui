@@ -14,7 +14,7 @@
             :radio-data="item"          
             :checked="checkedIndex===index"    
             @radioChange="radioChange"
-            :disabled="disabledValue | disabledFilter"          
+            :disabled="disabledValue | disabledFilter(index)"          
             />
     </div>
 </div>    
@@ -35,39 +35,39 @@ export default {
     },    
     mounted(){
         if(this.list&&this.list.length>0){
-            this.$emit('input',this.list[this.checkedIndex][this.resloutAttr])
+            this.$emit('input',this.list[this.checkedIndex][this.resloutAttr||this.effectKey])
         }
         
     },
     methods:{
         radioChange(obj){   
-            this.$emit('input',obj[this.resloutAttr])
+            this.$emit('input',obj[this.resloutAttr||this.effectKey])
         }
     },
     watch:{
         list(val){
             if(val&&val.length>0){
-            this.$emit('input',val[this.checkedIndex][this.resloutAttr])
-        }
+                this.$emit('input',val[this.checkedIndex][this.resloutAttr||this.effectKey])
+            }
+        },
+        resloutAttr(res){
+            if(this.list&&this.list.length>0){
+                this.$emit('input',this.list[this.checkedIndex][res])
+            }
         }
     },
     filters:{
-        disabledFilter(obj){
-            if( Object.prototype.toString.apply(obj) === '[object Number]' ) {
-
-            }else if( Object.prototype.toString.apply(obj) === '[object Array]' ) {
-                
-            }else if( Object.prototype.toString.apply(obj) === '[object String]' ) {
-                if(obj === 'all'){
-                    return true;
-                }else{
-
-                }
-                
-            }else if( Object.prototype.toString.apply(obj) === '[object Boolean]' ) {
-
+        disabledFilter(propObj,index){
+            if( Object.prototype.toString.apply(propObj) === '[object Number]' ) {
+                return propObj ===index;
+            }else if( Object.prototype.toString.apply(propObj) === '[object Array]' ) {
+                 return propObj.indexOf(index)>-1
+            }else if( Object.prototype.toString.apply(propObj) === '[object String]' ) {                
+                return propObj === 'all';                             
+            }else if( Object.prototype.toString.apply(propObj) === '[object Boolean]' ) {
+                return propObj;
             }else{
-
+                return false;
             }
         }
     }

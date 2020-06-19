@@ -35,9 +35,18 @@
 		background: url(./../../assets/img/check-radio-on.png) no-repeat center;
 		background-size: 24px;
 		border:1px solid #f52805;
+	}	
+	input[disabled="disabled"]:checked ~ .box-border{
+		background: url(./../../assets/img/check-radio-ds-on.png) no-repeat center;
+		background-size: 24px;
+		border:1px solid #f7f7f7;
 	}
-	// input disabled="disabled"
-	// dis #f7f7f7
+	input[disabled="disabled"]+.text-box{
+		color:#C8C8C8 ;
+	}
+	input[disabled="disabled"]~ .box-border{
+		background:#f7f7f7;
+	}
 }
 .nut-radio-list-label{
 	display: inline-block;

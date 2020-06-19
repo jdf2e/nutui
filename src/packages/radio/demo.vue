@@ -1,6 +1,43 @@
 <template>
-  <div class="demo-list">
-    <h4>1. 基本样式</h4>
+  <div class="demo-list">    
+     <nut-cell>
+      <span slot="title">
+         <h2>radio 全局设置</h2>
+          输出结果类型选择 :
+     </span>
+    </nut-cell>
+    <nut-cell>
+      <span slot="title">
+        <radio-group 
+            :list="resloutType"
+            :name="'resloutType'"
+            :styleType="'radio'"
+            :effect-key = "'value'"
+            :effect-text="'name'"
+            :checkedIndex="0"    
+            :reslout-attr="'value'"   
+            v-model="resloutdemo1"                 
+          />
+       </span>
+    </nut-cell>
+    <nut-cell>
+      <span slot="title">
+          禁用：可以传数字、数组、字符串all/no、布尔true/false， 
+          <br>
+          注意：匹配结果为 false 为不禁用
+          <br>
+          0,1,2 代表数组
+          <br>
+          <nut-textinput 
+              v-model="disableVal"
+              label="可以输入下上面的类型看下效果："
+              placeholder="请输入内容"
+              :clearBtn="true"
+              :disabled="false"
+          />
+     </span>
+    </nut-cell>
+    <h4>1. styleType= "radio" 基本样式输出属性为 {{resloutdemo1}} 的值</h4>
     <nut-cell>
       <span slot="title">
         <radio-group 
@@ -10,15 +47,16 @@
             :effect-key = "'value'"
             :effect-text="'text'"
             :checkedIndex="1"    
-            :reslout-attr="'value'"   
+            :reslout-attr="resloutdemo1"  
+            :disabled-value="radioDisable" 
             v-model="labelReslut0"                 
           />
       </span>
     </nut-cell>
     <nut-cell>
-        <span slot="title"> 选择结果 value: {{labelReslut0}}</span>
-    </nut-cell>
-    <h4>2. 按钮单选组输出属性为 value 的值</h4>
+        <span slot="title"> 选择结果 {{resloutdemo1}}: {{labelReslut0}}</span>
+    </nut-cell>   
+    <h4>2. styleType= "label" 按钮单选组输出属性为 {{resloutdemo1}} 的值</h4>
     <nut-cell>
         <span slot="title">        
           <radio-group 
@@ -28,33 +66,16 @@
             :effect-key = "'value'"
             :effect-text="'text'"
             :checkedIndex="1"    
-            :reslout-attr="'value'"   
+            :disabled-value="radioDisable" 
+            :reslout-attr="resloutdemo1"   
             v-model="labelReslut"                 
           />
         </span>
       </nut-cell>
       <nut-cell>
-        <span slot="title"> 选择结果 value: {{labelReslut}}</span>
+        <span slot="title"> 选择结果 {{resloutdemo1}}: {{labelReslut}}</span>
       </nut-cell>
-      <h4>3. 按钮单选组输出属性为 text 的值</h4>
-      <nut-cell>
-        <span slot="title">        
-          <radio-group 
-            :list="labelList"
-            :styleType="'label'"
-            :name="'test2'"
-            :effect-key = "'value'"
-            :effect-text="'text'"
-            :checkedIndex="0"    
-            :reslout-attr="'text'"   
-            v-model="labelReslut2"                 
-          />
-        </span>
-      </nut-cell>
-      <nut-cell>
-        <span slot="title"> 选择结果 text: {{labelReslut2}}</span>
-      </nut-cell>
-      <h4>4. 列表单选组输出属性为 text 的值</h4>
+      <h4>3. styleType= "list" 列表单选组输出属性为 {{resloutdemo1}} 的值</h4>      
       <nut-cell>
         <span slot="title">        
           <radio-group 
@@ -63,34 +84,16 @@
             :name="'test3'"
             :effect-key = "'value'"
             :effect-text="'text'"
-            :reslout-attr="'text'"  
-            :checkedIndex="0"   
-            v-model="labelReslut3"                 
+            :reslout-attr="resloutdemo1"  
+            :checkedIndex="0" 
+            :disabled-value="radioDisable"   
+            v-model="labelReslut2"                 
           />
         </span>
       </nut-cell>
       <nut-cell>
-        <span slot="title"> 选择结果 text: {{labelReslut3}}</span>
+        <span slot="title"> 选择结果 {{resloutdemo1}}: {{labelReslut2}}</span>
       </nut-cell>
-       <h4>5. 全部禁用</h4>
-       <nut-cell>
-      <span slot="title">
-        <radio-group 
-            :list="labelList"
-            :name="'test5'"
-            :styleType="'radio'"
-            :effect-key = "'value'"
-            :effect-text="'text'"
-            :checkedIndex="0"    
-            :reslout-attr="'value'"  
-            :disabled-value="'all'" 
-            v-model="labelReslut5"                 
-          />
-      </span>
-    </nut-cell>
-    <nut-cell>
-        <span slot="title"> 选择结果 value: {{labelReslut0}}</span>
-    </nut-cell>
   </div>
 </template>
 
@@ -134,13 +137,36 @@ export default {
       labelReslut0:"",
       labelReslut:"",
       labelReslut2:"",
-      labelReslut3:"",
-      labelReslut5:""  
+      resloutType:[
+        {
+          value:'value',
+          name:'value'
+        },
+        {
+          value:'text',
+          name:'text'
+        }
+      ],
+      resloutdemo1:"",
+      disableVal:"false",
+      radioDisable:false,
     };
-  },
-  
+  },  
   components:{
     'radio-group':group
+  },
+  watch:{
+    disableVal(val){
+      if(!isNaN(val)){
+        this.radioDisable = parseInt(val)
+      }else{
+        if(val.split(',').length>0){          
+          this.radioDisable = val.split(',').map(item=>{            
+            return !isNaN(item)?parseInt(item):''
+          })          
+        }
+      }
+    }
   }
 };
 </script>
