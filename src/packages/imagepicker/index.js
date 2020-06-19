@@ -5,4 +5,4 @@ ImagePicker.install = function(Vue) {
   Vue.component(ImagePicker.name, ImagePicker);
 };
 
-export default ImagePicker
+export default ImagePicker;

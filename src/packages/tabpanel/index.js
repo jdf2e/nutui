@@ -5,4 +5,4 @@ tabPanel.install = function(Vue) {
   Vue.component(tabPanel.name, tabPanel);
 };
 
-export default tabPanel
+export default tabPanel;

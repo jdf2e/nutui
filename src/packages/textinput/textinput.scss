@@ -1,56 +1,56 @@
 .nut-textinput {
-    display: flex;
-    align-items: center;
-    position: relative;
+  display: flex;
+  align-items: center;
+  position: relative;
 
-    input {
-        flex: 1;
-        height: 40px;
-        appearance: none;
-        font-size: 14px;
-        box-sizing: border-box;
-        border-radius: 4px;
-        border: 1px solid #DDDFE6;
-        background-color: '#FFFFFF';
-        padding: 0 30px 0 10px;
+  input {
+    flex: 1;
+    height: 40px;
+    appearance: none;
+    font-size: 14px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #dddfe6;
+    background-color: '#FFFFFF';
+    padding: 0 30px 0 10px;
 
-        &::-webkit-input-placeholder {
-            color: #C1C4CB;
-            font-style: normal;
-        }
-
-        &::-webkit-search-cancel-button{
-            display: none;
-        }
+    &::-webkit-input-placeholder {
+      color: #c1c4cb;
+      font-style: normal;
     }
 
-    .nut-textinput-clear {
-        position: absolute;
-        right: 5px;
-        top: 50%;
-        transform: translateY(-50%);
-        height: 20px;
-        width: 20px;
-
-        svg {
-            vertical-align: top;
-            fill: #999999;
-        }
+    &::-webkit-search-cancel-button {
+      display: none;
     }
+  }
+
+  .nut-textinput-clear {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+
+    svg {
+      vertical-align: top;
+      fill: #999999;
+    }
+  }
 }
 
 .nut-textinput-disabled {
-    input {
-        background-color: #F5F7FA;
-        border-color: #E5E7ED;
-        color: #999999;
+  input {
+    background-color: #f5f7fa;
+    border-color: #e5e7ed;
+    color: #999999;
 
-        &::-webkit-input-placeholder {
-            color: #D1D3D9;
-        }
-
-        &::-webkit-search-cancel-button{
-            display: none;
-        }
+    &::-webkit-input-placeholder {
+      color: #d1d3d9;
     }
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
 }

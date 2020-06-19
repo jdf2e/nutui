@@ -1,70 +1,99 @@
 .nut-switch {
-    position: relative;
-    display: inline-block;
-    background: #FFF;
-    border-radius: 1000px;
-    vertical-align: bottom;
-    box-sizing:content-box;
-    border: 2px $border-style-base $border-color-base;
+  position: relative;
+  width: auto;
+  display: inline-block !important;
+  background: #fff;
+  border-radius: 1000px;
+  vertical-align: bottom;
+  box-sizing: content-box;
+  border: 2px $border-style-base $border-color-base;
+  transition: all $transition-duration $animation-timing-fun;
+  .nut-switch-label {
+    position:relative;
+    width:auto;
+    left:0;
+    margin-left:22px;
+    display: inline-block !important;
+    padding:0 2px 0 2px  !important;
+    text-align:center !important;
+    color:#999 !important;
+    font-style:normal !important;
+    font-size:12px;
+  }
+  .nut-switch-btn {
+    position: absolute;
+    left: 0;
+    background: $border-color-base;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-sizing: border-box;
     transition: all $transition-duration $animation-timing-fun;
+
+  }
+  &.nut-switch-active {
+    border-color: $border-color-active;
+   .nut-switch-label {
+    left:0;
+    margin-left:0px;
+    color:red !important;
+    margin-right:22px;
+   }
     .nut-switch-btn {
-        position: absolute;
-        left: 0;
-        background: $border-color-base;
-        border: 2px solid #FFF;
-        border-radius: 50%;
-        box-sizing: border-box;
-        transition: all $transition-duration $animation-timing-fun;
+      background-color: $primary-color;
     }
-    &.nut-switch-active {
-        border-color: $border-color-active;
-        .nut-switch-btn {
-            background-color: $primary-color;
-        }
-    }
-    &.nut-switch-disabled {
-        opacity: .6;
-    }
+  }
+  &.nut-switch-disabled {
+    opacity: 0.6;
+  }
 }
 
 .nut-switch-small {
+  height: 14px;
+  min-width: 36px;
+  .nut-switch-label {
+    font-size: 10px;
+    top:-4px;
+    margin-left:-25px;
+  }
+  .nut-switch-btn {
     height: 14px;
-    width: 32px;
+    width: 14px;
+  }
+  &.nut-switch-active {
     .nut-switch-btn {
-        height: 14px;
-        width: 14px;
+      left: 100%;
+      margin-left:-15px;
     }
-    &.nut-switch-active {
-        .nut-switch-btn {
-            left: 18px;
-        }
-    }
+  }
 }
 
 .nut-switch-base {
+  height: 20px;
+  min-width: 46px;
+  .nut-switch-btn {
     height: 20px;
-    width: 46px;
+    width: 22px;
+  }
+  &.nut-switch-active {
     .nut-switch-btn {
-        height: 20px;
-        width: 20px;
+      left: 100%;
+      margin-left:-21px;
     }
-    &.nut-switch-active {
-        .nut-switch-btn {
-            left: 26px;
-        }
-    }
+  }
 }
 
 .nut-switch-large {
+  height: 28px;
+  min-width: 58px;
+  font-size: 14px;
+  .nut-switch-btn {
     height: 28px;
-    width: 58px;
+    min-width: 28px;
+  }
+  &.nut-switch-active {
     .nut-switch-btn {
-        height: 28px;
-        width: 28px;
+      left: 100%;
+      margin-left:-28px;
     }
-    &.nut-switch-active {
-        .nut-switch-btn {
-            left: 30px;
-        }
-    }
+  }
 }

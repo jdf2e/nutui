@@ -1,32 +1,35 @@
 <template>
-  <div
-    class="nut-switch"
-    :class="[{'nut-switch-active':isActive},'nut-switch-'+size,{'nut-switch-disabled':disabled}]"
-    @click="toggle"
-  >
-    <div class="nut-switch-btn"></div>
+  <div class="nut-switch" :class="[{ 'nut-switch-active': isActive }, 'nut-switch-' + size, { 'nut-switch-disabled': disabled }]" @click="toggle">
+    <div class="nut-switch-btn"> </div>
+    <div class="nut-switch-label" v-if="isActive">{{ arrLabel[0] }}</div>
+    <div class="nut-switch-label" v-else>{{ arrLabel[1] }}</div>
   </div>
 </template>
 <script>
 export default {
-  name: "nut-switch",
+  name: 'nut-switch',
   props: {
     active: {
       type: Boolean,
-      default: false
+      default: false,
     },
     size: {
       type: String,
-      default: "base"
+      default: 'base',
     },
     disabled: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
+    label: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
-      isActive: false
+      isActive: false,
+      arrLabel: (this.label || '').split('|'),
     };
   },
   created() {
@@ -35,7 +38,7 @@ export default {
   watch: {
     active(newVal) {
       this.isActive = newVal;
-    }
+    },
   },
   methods: {
     toggle() {
@@ -45,10 +48,10 @@ export default {
       }
 
       setTimeout(() => {
-        this.$emit("change", this.isActive);
-        this.$emit("update:active", this.isActive);
+        this.$emit('change', this.isActive);
+        this.$emit('update:active', this.isActive);
       }, 300);
-    }
-  }
+    },
+  },
 };
 </script>

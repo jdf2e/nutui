@@ -88,17 +88,19 @@ export default {
       <nut-tab-panel tab-title="页签7">页签7</nut-tab-panel>
   </nut-tab>
 ```
+## 支持滑动选择多个页签,设置tab高度为250,注意只有在 is-scroll = true的情况下，设置的 wrapper-height 才有效
 
 ```html
-  <nut-tab @tab-switch="tabSwitch" :is-scroll="true" position-nav="left">
-      <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
-      <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
-      <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
-      <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
-      <nut-tab-panel tab-title="页签5">页签5</nut-tab-panel>
-      <nut-tab-panel tab-title="页签6">页签6</nut-tab-panel>
-      <nut-tab-panel tab-title="页签7">页签7</nut-tab-panel>
-  </nut-tab>
+<nut-tab @tab-switch="tabSwitch" :is-scroll="true" position-nav="left" :wrapper-height="250">
+    <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
+    <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
+    <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
+    <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
+    <nut-tab-panel tab-title="页签5">页签5</nut-tab-panel>
+    <nut-tab-panel tab-title="页签6">页签6</nut-tab-panel>
+    <nut-tab-panel tab-title="页签7">页签7</nut-tab-panel>
+    <nut-tab-panel tab-title="页签8">页签8</nut-tab-panel>
+</nut-tab>
 ```
 
 ## 禁止选中，默认选中某个标签,如需更新数组后，重新渲染Tab页面，请将更新数组传入init-data
@@ -229,6 +231,7 @@ export default {
 | init-data | 监听数据变化，渲染更新页面 | Array | []
 | is-show-line|是否显示tab切换时的红条|Boolean|true|
 | is-scroll|是否支持滑动选择多个页签|Boolean|false|
+| wrapper-height |设置tab的高度，只有在 is-scroll=true；positionNav=left或者right 的情况下有效|Number/String|200|
 
 ### nut-tab-panel
 

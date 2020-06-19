@@ -5,4 +5,4 @@ InfiniteLoading.install = function(Vue) {
   Vue.component(InfiniteLoading.name, InfiniteLoading);
 };
 
-export default InfiniteLoading
+export default InfiniteLoading;

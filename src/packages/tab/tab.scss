@@ -42,6 +42,7 @@
   .nut-tab-title {
     //border:1px solid #fff;
     border-bottom: 1px solid #ededed;
+    scroll-behavior: smooth;
     width: 100%;
     display: flex;
     height: 50px;
@@ -65,12 +66,13 @@
   }
   .nut-tab-title-leftnav {
     border-right: 1px solid #ededed;
+    scroll-behavior: smooth;
     width: 100px;
     display: flex;
     background: #fff;
     flex-direction: column;
     position: relative;
-    height: 200px;
+    // height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
     &::-webkit-scrollbar {
@@ -91,14 +93,15 @@
     }
     .nut-tab-active {
       background: #fff;
-    //   a{
-    //     color: red;
-    //   }
+      a{
+        color: red;
+      }
     }
   }
   .nut-tab-title-rightnav {
     background: #fff;
     // border: 1px solid #fff;
+    scroll-behavior: smooth;
     border-left: 1px solid #ededed;
     width: 100px;
     display: flex;
@@ -106,7 +109,7 @@
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 200px;
+    // height: 200px;
     box-sizing: border-box;
     &::-webkit-scrollbar {
         display: none;
@@ -134,6 +137,7 @@
   }
   .nut-tab-title-bottomnav {
     border: 1px solid #fff;
+    scroll-behavior: smooth;
     border-top: 1px solid #ededed;
     width: 100%;
     display: flex;
@@ -214,9 +218,9 @@
   .nut-tab-active {
     background: #fff;
     border: 0;
-    // a{
-    //     color: red;
-    // }
+    a{
+        color: red;
+    }
   }
   .nut-tab-item {
     height: 200px;

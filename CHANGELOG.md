@@ -1,3 +1,23 @@
+## 2.2.6
+
+`2020-06-19`
+
+* :sparkles: feat(CountUp)：新增数字滚动组件 @Ymm0008
+* :sparkles: upd(LuckDraw)：优化抽奖组件，增加单独设置颜色区块、奖品列表 @Ymm0008
+* :sparkles: upd(Uploader)：优化内部代码 @linrufeng
+* :sparkles: upd(LeftSlip)：新增禁用属性 @vickyYE
+* :sparkles: upd(Popup)：z-index层级处理、禁止滑动逻辑优化、测试用例补充 @yangkaixuan
+* :sparkles: upd(TabBar)：优化默认选中页签激活状态 @zhenyulei
+* :sparkles: upd(Tabs)：新增滚动居中功能 @zhenyulei
+* :bug: fix(Uploader)：修复文件上传组件可以调用移动端摄像头 #212 @linrufeng
+* :bug: fix(SearchBar)：修复 input 边框样式 @yangxiaolu1993
+* :bug: fix(TextBox)： 修复 输入时 waring @guoxiao158
+* :bug: fix(SubSideNavBar)：修复 offset 计算错误问题 @szg2008
+* :bug: fix(ImagePicker)：修复 多张上传触发多次emit的问题 @szg2008
+* :bug: fix(Swiper)：销毁钩子内计时器清空无效 #262 @richard1015
+* :bug: fix(Calendar)：增加监听默认值修改功能 @irisSong
+* :bug: fix(Switch)：新增内嵌文字标签,如ON|OFF或开|关 @zjyau
+
 ## 2.2.5
 
 `2020-05-25`
