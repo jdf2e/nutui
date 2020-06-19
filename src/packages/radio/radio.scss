@@ -98,7 +98,14 @@
 	input:checked +.text-box + .box-border{
 		background: rgba(255,239,235,1);
 		border: 1px solid rgba(225,37,27,1);
-	}	
+	}
+	input[disabled="disabled"]+.text-box{
+		color:#C8C8C8 ;
+	}
+	input[disabled="disabled"] +.text-box + .box-border{
+		background: #f7f7f7;
+		border: 1px solid #dcdcdc;
+	}
 }
 .nut-radio-list-list{
 	height: 50px;

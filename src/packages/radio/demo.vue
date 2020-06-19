@@ -37,6 +37,11 @@
           />
      </span>
     </nut-cell>
+    <nut-cell>
+      <span slot="title">
+    输入结果 {{radioDisable}}
+     </span>
+    </nut-cell>
     <h4>1. styleType= "radio" 基本样式输出属性为 {{resloutdemo1}} 的值</h4>
     <nut-cell>
       <span slot="title">
@@ -164,6 +169,12 @@ export default {
           this.radioDisable = val.split(',').map(item=>{            
             return !isNaN(item)?parseInt(item):''
           })          
+        }
+        if(val === 'true'){
+          this.radioDisable = true;
+        }
+        if(val === 'false'){
+          this.radioDisable = false;
         }
       }
     }
