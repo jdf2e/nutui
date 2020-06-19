@@ -14,7 +14,8 @@
       <slot></slot>
     </span>
   </label> -->
-  <div  :class="{
+  <div class="nut-radio"  :class="{
+      'nut-radio-list-radio' : type === 'radio',
       'nut-radio-list-label' : type === 'label',
       'nut-radio-list-list' : type === 'list'
      }">
@@ -112,13 +113,7 @@ export default {
       }
       this.currentValue = this.label;
     },
-    valChange(e){  
-
-      // {
-      //   el:e.target,
-      //   value:e.target.value,
-      //   name:e.target.name,
-      // }   
+    valChange(e){        
       let radioData = this.radioData;      
       this.$emit('radioChange',radioData)
     }

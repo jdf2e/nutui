@@ -11,7 +11,7 @@
             :name="name" 
             :text="item[effectText]"
             :value="item[effectKey]"  
-            :radioData="item"          
+            :radio-data="item"          
             :checked="checkedIndex===index"    
             @radioChange="radioChange"
             :disabled="disabledValue | disabledFilter"          
@@ -40,7 +40,7 @@ export default {
         
     },
     methods:{
-        radioChange(obj){            
+        radioChange(obj){   
             this.$emit('input',obj[this.resloutAttr])
         }
     },
@@ -58,6 +58,11 @@ export default {
             }else if( Object.prototype.toString.apply(obj) === '[object Array]' ) {
                 
             }else if( Object.prototype.toString.apply(obj) === '[object String]' ) {
+                if(obj === 'all'){
+                    return true;
+                }else{
+
+                }
                 
             }else if( Object.prototype.toString.apply(obj) === '[object Boolean]' ) {
 
