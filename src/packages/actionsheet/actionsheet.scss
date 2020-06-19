@@ -2,18 +2,18 @@
 	padding: 13px 30px 13px;
 	margin: 0;
 	text-align: center;
-	background-color: #fff;
-	border-bottom: 1px solid rgba(230,230,230,1);
+	background-color: $as-base-bg-color;
+	border-bottom: 1px solid $as-border-color;
 	line-height: 22px;
 	.nut-actionsheet-title {
-		font-size: 15px;
+		font-size: $as-base-font-size;
 		font-weight: bold;
-		color: #323232;
+		color: $as-base-color;
 	}
 
 	.nut-actionsheet-sub-title {
-		font-size: 14px;
-		color: #969696;
+		font-size: $as-desc-font-size;
+		color: $as-desc-color;
 		margin-inline-start: 0;
 		div{
 			overflow: hidden;
@@ -34,14 +34,14 @@
 	height: 28px;
 	padding: 10px;
 	line-height: 28px;
-	font-size: 15px;
-	color: #323232;
+	font-size: $as-base-font-size;
+	color: $as-base-color;
 	text-align: center;
-	background-color: #fff;
+	background-color: $as-base-bg-color;
 }
 
 .nut-actionsheet-item {
-	border-top: 1px solid rgba(230,230,230,1);
+	border-top: 1px solid $as-border-color;
 	&:first-child{
 		border-top: 0;
 	}
@@ -52,24 +52,24 @@
 }
 
 .nut-actionsheet-item-disabled {
-	color: #C8C8C8;
+	color: $as-disable-color;
 }
 
 .nut-actionsheet-cancel {
-	border-top: 1px solid rgba(230,230,230,1);
-	color: #C8C8C8;
+	border-top: 1px solid $as-border-color;
+	color: $as-disable-color;
 }
 
 .nut-actionsheet-confirm {
 	padding: 12px 15px;
-	border-top: 1px solid rgba(230,230,230,1);
-	color: #FFF;
+	border-top: 1px solid $as-border-color;
+	color: $as-confirm-btn-color;
 	.confirm-btn{
 		width: 100%;
 		height: 40px;
-		background: rgba(225,37,27,1);
+		background: $as-confirm-btn-bg;
 		border-radius: 4px;
-		font-size: 15px;
+		font-size: $as-base-font-size;
 		line-height: 40px;
 		text-align: center;
 	}

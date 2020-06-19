@@ -134,3 +134,14 @@ $tag-border-radius-circle: 10px !default;
 // ---- Badge ----
 $badge-font-size: 11px !default;
 $badge-font-color: #fff !default;
+
+// ---- ActionSheet ----
+$as-border-color: rgba(230,230,230,1) !default;
+$as-disable-color: $text-black-4 !default;
+$as-base-color: $text-black-1 !default;
+$as-desc-color: $text-black-3 !default;
+$as-confirm-btn-bg: $primary-color-jd-red;
+$as-confirm-btn-color: #fff !default;
+$as-base-bg-color: #fff !default;
+$as-base-font-size: 15px !default;
+$as-desc-font-size: 14px !default;
