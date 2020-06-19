@@ -187,7 +187,7 @@ export default {
     				if(this.current <= endNum || this.current <= speed){//数字减小，有可能导致current小于speed
 	    				this.current = endNum.toFixed(toFixed);
                         clearInterval(countTimer);
-                        this.$emit('scrollEnd');
+                        this.$emit('scroll-end');
 					}else{
                         this.current = (parseFloat(this.current) - parseFloat(speed)).toFixed(toFixed);
 					}
@@ -195,7 +195,7 @@ export default {
     				if(this.current >= endNum){
     					this.current = endNum.toFixed(toFixed);
                         clearInterval(countTimer);
-                        this.$emit('scrollEnd');
+                        this.$emit('scroll-end');
     				}else{
     					this.current = (parseFloat(this.current) + parseFloat(speed)).toFixed(toFixed);
     				}
@@ -327,7 +327,7 @@ export default {
                 // that.totalCount--;
                 if(that.totalCount <= 0) {
                     that.clearInterval();
-                    this.$emit('scrollEnd');
+                    this.$emit('scroll-end');
                 }
             }, that.during);
         },
@@ -388,7 +388,7 @@ export default {
                     that.relNum = that.calculation(that.relNum, m * that.speed, '+');
                 }, that.during)
                 f.addEventListener('webkitTransitionEnd', () => {
-                    this.$emit('scrollEnd');
+                    this.$emit('scroll-end');
                     setTimeout(() => {
                         that.relNum = that.calculation(that.relNum, m * that.speed, '+');
                     }, that.during);

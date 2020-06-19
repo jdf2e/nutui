@@ -2,34 +2,34 @@
     <div class="demo-list">
       <h4>基本用法</h4>
       <div class="show-demo">
-        <nut-countup :initNum='0' :endNum='200'></nut-countup>
+        <nut-countup :init-num='0' :end-num='200'></nut-countup>
 
         <nut-countup
-        :initNum='150.00' 
-        :endNum='0.00' 
+        :init-num='150.00' 
+        :end-num='0.00' 
         :speed='6.18' 
-        :toFixed='2'>
+        :to-fixed='2'>
         </nut-countup>
 
-        <nut-countup :initNum='1000.00' 
-        :endNum='0.00'
+        <nut-countup :init-num='1000.00' 
+        :end-num='0.00'
         :speed='17'  
-        :toFixed='2'>
+        :to-fixed='2'>
         </nut-countup>
       </div>
       <h4>数字滚动</h4>
       <div class="show-demo">
-        <nut-countup :scrolling="true" :initNum='17.618' :during="600">
+        <nut-countup :scrolling="true" :init-num='17.618' :during="600">
         </nut-countup>
       </div>
       <h4>自定义滚动图片展示</h4>
       <div class="show-demo">
         <nut-countup
-          :customChangeNum="customNumber"
-          :customBgImg="bgImage"
-          :customSpacNum="11"
-          :numWidth="33"
-          :numHeight="47"
+          :custom-change-num="customNumber"
+          :custom-bg-img="bgImage"
+          :custom-spac-num="11"
+          :num-width="33"
+          :num-height="47"
           :during="5000"
         >
         </nut-countup>

@@ -3,28 +3,28 @@
 ## 基本用法
 
 ```html
-<nut-countup :initNum='0' :endNum='200'></nut-countup>
+<nut-countup :init-num='0' :end-num='200'></nut-countup>
 
-<nut-countup :initNum='150.00' :endNum='0.00' :speed='2.62' :toFixed='2'></nut-countup>
+<nut-countup :init-num='150.00' :end-num='0.00' :speed='2.62' :to-fixed='2'></nut-countup>
 
-<nut-countup :initNum='1000.00' :endNum='0.00' :speed='6.3' :startFlag='startNum' :toFixed='2'></nut-countup>
+<nut-countup :init-num='1000.00' :end-num='0.00' :speed='6.3' :start-flag='startNum' :to-fixed='2'></nut-countup>
 ```
 
 ## 数字滚动
 
 ```html
-<nut-countup :scrolling="true" :initNum='17.618' :during="600"></nut-countup>
+<nut-countup :scrolling="true" :init-num='17.618' :during="600"></nut-countup>
 ```
 
 ## 自定义数字图片展示
 
 ```html
 <nut-countup
-    :customChangeNum="customNumber"
-    :customBgImg="bgImage"
-    :customSpacNum="11"
-    :numWidth="33"
-    :numHeight="47"
+    :custom-change-num="customNumber"
+    :custom-bg-img="bgImage"
+    :custom-spac-num="11"
+    :num-width="33"
+    :num-height="47"
     :during="5000"
 >
 </nut-countup>
@@ -56,19 +56,19 @@ export default {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| initNum | 初始数字 | Number | 0
-| endNum | 结束数字 | Number | 0
+| init-num | 初始数字 | Number | 0
+| end-num | 结束数字 | Number | 0
 | speed | 间隔数字，目前仅支持基本用法 | Number | 1
-| toFixed | 保留小数点后几位 | Number | 以传入的数字为准
-| startFlag | 触发数字滚动的标识 | Boolean | true
+| to-fixed | 保留小数点后几位 | Number | 以传入的数字为准
+| start-flag | 触发数字滚动的标识 | Boolean | true
 | during | 滚动一次运行时间 | Number | 1000
-| numWidth | 数字宽度，常用于自定义无缝滚动 | Number | 20
-| numHeight | 数字高度，常用于自定义无缝滚动 | Number | 20
+| num-width | 数字宽度，常用于自定义无缝滚动 | Number | 20
+| num-height | 数字高度，常用于自定义无缝滚动 | Number | 20
 | scrolling | 用于数字滚动展示 | Boolean | false
 | custom | 用于自定义图片数字滚动 | Boolean | false
-| customChangeNum | 要变化的数字（用于自定义图片,initNum\endNum在此无效） | Number | 1
-| customBgImg | 自定义图片（建议使用雪碧图实现） | - | -
-| customSpacNum | 图片中数字之间可能会存在间距 | Number | 0
+| custom-change-num | 要变化的数字（用于自定义图片,initNum\endNum在此无效） | Number | 1
+| custom-bg-img | 自定义图片（建议使用雪碧图实现） | - | -
+| custom-spac-num | 图片中数字之间可能会存在间距 | Number | 0
 
 
 
