@@ -17,7 +17,7 @@
     </nut-cell>
     <nut-cell>
         <span slot="title"> 选择结果 value: {{labelReslut0}}</span>
-      </nut-cell>
+    </nut-cell>
     <h4>2. 按钮单选组输出属性为 value 的值</h4>
     <nut-cell>
         <span slot="title">        
@@ -72,6 +72,25 @@
       <nut-cell>
         <span slot="title"> 选择结果 text: {{labelReslut3}}</span>
       </nut-cell>
+       <h4>5. 全部禁用</h4>
+       <nut-cell>
+      <span slot="title">
+        <radio-group 
+            :list="labelList"
+            :name="'test5'"
+            :styleType="'radio'"
+            :effect-key = "'value'"
+            :effect-text="'text'"
+            :checkedIndex="0"    
+            :reslout-attr="'value'"  
+            :disabled-value="'all'" 
+            v-model="labelReslut5"                 
+          />
+      </span>
+    </nut-cell>
+    <nut-cell>
+        <span slot="title"> 选择结果 value: {{labelReslut0}}</span>
+    </nut-cell>
   </div>
 </template>
 
@@ -115,9 +134,11 @@ export default {
       labelReslut0:"",
       labelReslut:"",
       labelReslut2:"",
-      labelReslut3:""   
+      labelReslut3:"",
+      labelReslut5:""  
     };
   },
+  
   components:{
     'radio-group':group
   }
