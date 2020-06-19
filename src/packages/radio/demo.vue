@@ -165,16 +165,16 @@ export default {
       if(!isNaN(val)){
         this.radioDisable = parseInt(val)
       }else{
-        if(val.split(',').length>0){          
+        if(val.split(',').length>1){          
           this.radioDisable = val.split(',').map(item=>{            
             return !isNaN(item)?parseInt(item):''
           })          
-        }
-        if(val === 'true'){
+        }else if(val === 'true'){
           this.radioDisable = true;
-        }
-        if(val === 'false'){
+        }else if(val === 'false'){
           this.radioDisable = false;
+        }else{
+          this.radioDisable = val;
         }
       }
     }
