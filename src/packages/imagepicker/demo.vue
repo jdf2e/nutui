@@ -39,8 +39,8 @@ export default {
       if (data.code == 1) {
         alert('upload');
       }
-      console.log(this.imgList2);
-      console.log(data); //code 1 自动上传  2 不上传只展示图片  3 删除图片  4 预览图片
+      //console.log(this.imgList2);
+      //console.log(data); //code 1 自动上传  2 不上传只展示图片  3 删除图片  4 预览图片
     }
   }
 };

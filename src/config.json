@@ -632,6 +632,16 @@
       "sort": "6",
       "showDemo": true,
       "author": "yangxiaolu"
+    },
+    {
+      "version": "1.0.0",
+      "name": "CountUp",
+      "type": "component",
+      "chnName": "数字滚动",
+      "desc": "用于数据展示",
+      "sort": "0",
+      "showDemo": true,
+      "author": "yumingming"
     }
   ]
 }

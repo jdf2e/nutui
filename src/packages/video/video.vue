@@ -7,7 +7,8 @@
       :autoplay="options.autoplay"
       :loop="options.loop"
       :poster="options.poster"
-      :controls="options.controls"
+	    :controls="options.controls"
+	    :preload="options.preload"
       @error="handleError"
     >
       <source v-for="source in sources" :src="source.src" :type="source.type" :key="source.src" />
@@ -66,7 +67,8 @@ export default {
           muted: false, //是否静音
           disabled: false, //禁止操作
           playsinline: false, //行内展示
-          touchPlay: false
+          touchPlay: false,
+		      preload:''
         };
       },
       required: true
@@ -136,7 +138,7 @@ export default {
         this.state.isMuted = val.muted ? val.muted : false;
       },
       immediate: true
-    }
+    },
     // model: {
     //     handler(val) {
     //         if (val) {
@@ -160,7 +162,7 @@ export default {
     init() {
       this.videoElm = this.$el.getElementsByTagName('video')[0];
       if (this.options.autoplay) {
-        this.play();
+        this.videoElm.play();
       }
 
       if (this.options.touchPlay) {
@@ -197,7 +199,7 @@ export default {
       // 播放器位置
       this.player.$player = $player;
       this.progressBar.progressElm = $progress;
-      this.player.pos = $player.getBoundingClientRect();
+      // this.player.pos = $player.getBoundingClientRect();
       this.progressBar.pos = $progress.getBoundingClientRect();
       this.videoSet.progress.width = Math.round($progress.getBoundingClientRect().width);
     },

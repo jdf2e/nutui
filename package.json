@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "description": "一套轻量级移动端Vue组件库",
   "typings": "dist/types/index.d.ts",
   "main": "dist/nutui.js",
@@ -17,27 +17,19 @@
     "build:site": "nutui-cli build-site",
     "clean": "nutui-cli clean",
     "add": "nutui-cli add",
-    "lint": "nutui-cli lint",
     "test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config node_modules/@nutui/cli/dist_cli/webpack/test.config.js  --require node_modules/@nutui/cli/dist_cli/test/setup.js src/packages/*/__test__/**.spec.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "test:watch": "npm run test --watch",
-    "prettier:check": "prettier -l src/**/*.{ts,js,vue,scss}",
     "prettier:fix": "prettier --write src/**/*.{ts,js,vue,scss}"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/jdf2e/nutui.git"
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "./eslint-config.js"
-    ]
-  },
-  "stylelint": {
-    "extends": [
-      "./stylelint-config.js"
-    ]
   },
   "keywords": [
     "nutui",
@@ -56,8 +48,7 @@
     "@babel/plugin-transform-runtime": "^7.9.6",
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
-    "@nutui/cli": "^0.1.9",
-    "@vue/composition-api": "^0.5.0",
+    "@nutui/cli": "^0.2.2",
     "babel-plugin-istanbul": "^6.0.0",
     "gsap": "^3.2.6",
     "husky": "^3.0.0",

@@ -119,7 +119,7 @@ export default {
 
 <style lang="scss" scoped>
 .nut-video {
-  height: 200px;
+  /* height: 200px; */
 }
 
 button {

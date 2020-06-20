@@ -1,9 +1,5 @@
 <template>
-  <transition
-    :name="transitionName"
-    @after-enter="$emit('opened')"
-    @after-leave="$emit('closed')"
-  >
+  <transition :name="transitionName" @after-enter="$emit('opened')" @after-leave="$emit('closed')">
     <div
       ref="popupBox"
       v-show="value"
@@ -26,93 +22,96 @@
   </transition>
 </template>
 <script>
-import Vue from "vue";
-import Icon from "../icon/icon.vue";
-import touchMixins from "../../mixins/touch.js";
-import {overlayManager ,overlayProps} from "./overlay/overlay-manager.js";
-import { on, off } from "../../utils/event"; 
-import "../icon/icon.scss";
-
+import Vue from 'vue';
+import Icon from '../icon/icon.vue';
+import touchMixins from '../../mixins/touch.js';
+import { overlayManager } from './overlay/overlay-manager.js';
+import { overlayProps } from './overlay/overlay.vue';
+import { on, off } from '../../utils/event';
+import '../icon/icon.scss';
 
 const overflowScrollReg = /scroll|auto/i;
+const popupProps = {
+  position: {
+    type: String,
+    default: 'center'
+  },
+
+  transition: String,
+
+  closeable: {
+    type: Boolean,
+    default: false
+  },
+  closeIconPosition: {
+    type: String,
+    default: 'top-right'
+  },
+  closeIcon: {
+    type: String,
+    default: 'cross'
+  },
+
+  closeOnClickOverlay: {
+    type: Boolean,
+    default: true
+  },
+
+  destroyOnClose: {
+    type: Boolean,
+    default: false
+  },
+  getContainer: String,
+  round: {
+    type: Boolean,
+    default: false
+  }
+};
 export default {
-  name: "nut-popup",
+  name: 'nut-popup',
   mixins: [touchMixins],
   components: {
-    icon: Icon,
+    icon: Icon
   },
   props: {
     ...overlayProps,
-    position: {
-      type: String,
-      default: "center",
-    },
-
-    transition: String,
-
-    closeable: {
-      type: Boolean,
-      default: false,
-    },
-    closeIconPosition: {
-      type: String,
-      default: "top-right",
-    },
-    closeIcon: {
-      type: String,
-      default: "cross",
-    },
-
-    closeOnClickOverlay: {
-      type: Boolean,
-      default: true,
-    },
-
-    destroyOnClose: {
-      type: Boolean,
-      default: false,
-    },
-    getContainer: String,
-    round: {
-      type: Boolean,
-      default: false,
-    },
+    ...popupProps
   },
   created() {
-    this.transition
-      ? (this.transitionName = this.transition)
-      : (this.transitionName = `popup-slide-${this.position}`);
+    this.transition ? (this.transitionName = this.transition) : (this.transitionName = `popup-slide-${this.position}`);
   },
   mounted() {
     if (this.value) {
       this.open();
     }
   },
+  beforeDestroy() {
+    this.close();
+  },
   watch: {
     value(val) {
-      const type = val ? "open" : "close";
+      const type = val ? 'open' : 'close';
       this[type]();
     },
     position(val) {
-      val === "center"
-        ? (this.transitionName = "popup-fade")
-        : (this.transitionName = `popup-slide-${this.position}`);
+      val === 'center' ? (this.transitionName = 'popup-fade') : (this.transitionName = `popup-slide-${this.position}`);
     },
-    getContainer: "portal",
-    overlay: "renderOverlay",
+    getContainer: 'portal',
+    overlay: 'renderOverlay'
   },
   data() {
     return {
       showSlot: true,
-      transitionName: "popup-fade-center",
-      overlayInstant: null,
+      transitionName: 'popup-fade-center',
+      overlayInstant: null
     };
   },
   computed: {
     transitionDuration() {
-      return this.duration ? this.duration + "s" : "initial";
-    },
+      return this.duration ? this.duration + 's' : 'initial';
+    }
   },
+
   methods: {
     open() {
       if (this.opened) {
@@ -120,36 +119,30 @@ export default {
       }
 
       this.opened = true;
-      this.$emit("open");
-   
-      const {
-        duration,
-        overlayClass,
-        overlayStyle,
-        lockScroll,
-        closeOnClickOverlay,
-      } = this; 
+      this.$emit('open');
+
+      const { duration, overlayClass, overlayStyle, lockScroll, closeOnClickOverlay } = this;
       const config = {
-        zIndex:this.zIndex ? this.zIndex : overlayManager.zIndex,
+        zIndex: this.zIndex ? this.zIndex : overlayManager.zIndex,
         duration,
         overlayClass,
         overlayStyle,
         lockScroll,
-        closeOnClickOverlay,
+        closeOnClickOverlay
       };
 
       this.renderOverlay(config);
 
       if (this.lockScroll) {
-        on(document, "touchstart", this.touchStart);
-        on(document, "touchmove", this.onTouchMove);
+        on(document, 'touchstart', this.touchStart);
+        on(document, 'touchmove', this.onTouchMove);
 
         if (!overlayManager.lockCount) {
-          document.body.classList.add("nut-overflow-hidden");
+          document.body.classList.add('nut-overflow-hidden');
         }
         overlayManager.lockCount++;
       }
-      
+
       this.$el.style.zIndex = this.zIndex ? this.zIndex + 1 : overlayManager.zIndex;
     },
     renderOverlay(config) {
@@ -165,61 +158,42 @@ export default {
     },
     onTouchMove(event) {
       this.touchMove(event);
-      const el = this.getScroller(event.target, this.$el);
-      const { scrollHeight, offsetHeight, scrollTop } = el;
+      const el = this.getScroller(event.target);
+      const { scrollHeight, offsetHeight, scrollTop } = el ? el : this.$el;
 
-      if (
-        (this.deltaY > 0 && scrollTop === 0) ||
-        (this.deltaY < 0 && scrollTop + offsetHeight >= scrollHeight)
-      ) {
+      if ((this.deltaY > 0 && scrollTop === 0) || (this.deltaY < 0 && scrollTop + offsetHeight >= scrollHeight)) {
         event.preventDefault();
       }
     },
-    getScroller(el, root) {
+    getScroller(el) {
       let node = el;
-      while (
-        node &&
-        node.tagName !== "HTML" &&
-        node.nodeType === 1 &&
-        node !== root
-      ) {
+      while (node && node.tagName !== 'HTML' && node.nodeType === 1) {
         const { overflowY } = window.getComputedStyle(node);
 
         if (overflowScrollReg.test(overflowY)) {
-          if (node.tagName !== "BODY") {
-            return node;
-          }
-          const { overflowY: htmlOverflowY } = window.getComputedStyle(
-            node.parentNode
-          );
-
-          if (overflowScrollReg.test(htmlOverflowY)) {
-            return node;
-          }
+          return node;
         }
 
         node = node.parentNode;
       }
-
-      return root;
     },
     close() {
       if (!this.opened) {
         return;
       }
-      this.$emit('close')
+      this.$emit('close');
       this.opened = false;
       if (this.lockScroll) {
         overlayManager.lockCount--;
-        off(document, "touchstart", this.touchStart);
-        off(document, "touchmove", this.onTouchMove);
+        off(document, 'touchstart', this.touchStart);
+        off(document, 'touchmove', this.onTouchMove);
         if (!overlayManager.lockCount) {
-          document.body.classList.remove("nut-overflow-hidden");
+          document.body.classList.remove('nut-overflow-hidden');
         }
       }
 
       overlayManager.closeOverlay(this);
-      this.$emit("input", false);
+      this.$emit('input', false);
     },
 
     getElement(selector) {
@@ -239,7 +213,8 @@ export default {
       if (container && container !== el.parentNode) {
         container.appendChild(el);
       }
-    },
-  },
+    }
+  }
 };
+export  {popupProps}
 </script>
