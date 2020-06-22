@@ -1,6 +1,6 @@
 # Radio 单选按钮
 
-所有基本数据为
+所有 demo 展示的基本数据为
 
 ```javascript
 export default {
@@ -43,7 +43,7 @@ export default {
 };
 ```
 
-## 基本用法
+## 1. 基本用法
 
 默认的样式是 radio 
 
@@ -64,7 +64,7 @@ export default {
 </nut-cell>   
 ```
 
-## label 类型的单选
+## 2. label 类型的单选，默认选中第一个，输出结果为 text 值
 
 ```html
 <nut-cell>
@@ -76,7 +76,7 @@ export default {
             :effect-key = "'value'"
             :effect-text="'text'"
             :checkedIndex="1"   
-            :reslout-attr="'value'"   
+            :reslout-attr="'text'"   
             v-model="labelReslut"  
           />
         </span>
@@ -86,7 +86,7 @@ export default {
       </nut-cell>
 ```
 
-## list 类型的单选 输出结果为 text 默认选中第一个，数组的第三个不可选
+## 3. list 类型的单选 输出结果为 text 默认选中第一个，数组的第三个不可选
 
 ```html
 <nut-cell>
