@@ -1,0 +1,28 @@
+@import '../../styles/variable.scss';
+.nut-notify {
+    box-sizing: border-box;
+    padding: $notify-padding;
+    color: $notify-text-color;
+    font-size: $notify-font-size;
+    line-height: $notify-line-height;
+  
+    white-space: pre-wrap;
+    text-align: center;
+    word-wrap: break-word;
+  
+    &--primary {
+      background-color: $notify-primary-background-color;
+    }
+  
+    &--success {
+      background-color: $notify-success-background-color;
+    }
+  
+    &--danger {
+      background-color: $notify-danger-background-color;
+    }
+  
+    &--warning {
+      background-color: $notify-warning-background-color;
+    }
+  }

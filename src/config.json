@@ -632,6 +632,16 @@
       "sort": "6",
       "showDemo": true,
       "author": "yangxiaolu"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Notify",
+      "type": "method",
+      "chnName": "展示消息提示",
+      "desc": "在页面顶部展示消息提示，支持函数调用和组件调用两种方式",
+      "sort": "2",
+      "showDemo": true,
+      "author": "wangyue217"
     }
   ]
 }

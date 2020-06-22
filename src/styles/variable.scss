@@ -83,3 +83,13 @@ $assetsPath: '../../assets' !default;
 $stepper-color: #333 !default;
 $stepperbar-width: 11px !default;
 $stepperbar-color: #333 !default;
+
+// Notify
+$notify-text-color: #fff;
+$notify-padding: 8px 16px;
+$notify-font-size: $font-size-base;
+$notify-line-height: 20px;
+$notify-primary-background-color: #1989fa;
+$notify-success-background-color: #07c160;
+$notify-danger-background-color: #ee0a24;
+$notify-warning-background-color: #ff976a;
