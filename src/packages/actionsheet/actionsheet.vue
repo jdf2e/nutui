@@ -1,51 +1,53 @@
 <template>
   <div class="nut-actionsheet">
-    <transition :name="isAnimation ? 'nutFade' : ''" v-if="isShowMask">
-      <div class="nut-actionsheet-mask" @click="clickActionSheetMask" v-show="isVisible"></div>
-    </transition>
-    <transition :name="isAnimation ? 'nutSlideUp' : ''">
-      <div class="nut-actionsheet-panel" v-show="isVisible">
-        <div class="nut-actionsheet-custom" slot-scope>
-          <slot name="custom"></slot>
-        </div>
-        <dl class="nut-actionsheet-modal" v-if="$slots.title || $slots.subTitle">
-          <dt class="nut-actionsheet-title"><slot name="title" slot-scope></slot></dt>
-          <dd class="nut-actionsheet-sub-title"><slot name="sub-title" slot-scope></slot></dd>
-        </dl>
-        <ul class="nut-actionsheet-menu">
-          <li
-            class="nut-actionsheet-item"
-            :class="{ 'nut-actionsheet-item-active': isHighlight(item), 'nut-actionsheet-item-disabled': item.disable }"
-            v-for="(item, index) of menuItems"
-            :key="index"
-            @click="chooseItem(item, index)"
-            >{{ item[optionTag] }}</li
+    <nut-popup
+      v-model="isVisiblePopup"
+      position="bottom"
+      round
+      @close="closeActionSheet" 
+      :close-on-click-overlay="isClickCloseMask"
+    > 
+        <div class="nut-actionsheet-panel">
+          <dl class="nut-actionsheet-modal" v-if="$slots.title || $slots.desc">
+            <dt class="nut-actionsheet-title">
+              <slot name="title" slot-scope></slot>
+            </dt>
+            <dd class="nut-actionsheet-sub-title">
+              <slot name="desc" slot-scope></slot>
+            </dd>
+          </dl>
+          <ul class="nut-actionsheet-menu">
+            <li
+              class="nut-actionsheet-item"
+              :class="{ 'nut-actionsheet-item-active': isHighlight(item), 'nut-actionsheet-item-disabled': item.disable }"
+              v-for="(item, index) of optionList"
+              :key="index"
+              @click="chooseItem(item, index)"
+            >{{ item[optionTag] }}</li>
+          </ul>
+          <div
+            class="nut-actionsheet-cancel"
+            v-if="isCancleBtn"
+            @click="cancelActionSheet"
+          >取消</div>
+          <div
+            class="nut-actionsheet-confirm"
+            v-if="isConfirmBtn"
+            @click="cancelActionSheet"
           >
-        </ul>
-        <div class="nut-actionsheet-cancel" v-if="cancelTxt" @click="cancelActionSheet">{{ cancelTxt }}</div>
+            <div class="confirm-btn">确定</div>
+          </div>
       </div>
-    </transition>
+  </nut-popup>
   </div>
 </template>
 <script>
 export default {
   name: 'nut-actionsheet',
   props: {
-    isAnimation: {
-      type: Boolean,
-      default: true
-    },
-    isLockBgScroll: {
-      type: Boolean,
-      default: false
-    },
     isVisible: {
       type: Boolean,
       default: false
-    },
-    isShowMask: {
-      type: Boolean,
-      default: true
     },
     isClickChooseClose: {
       type: Boolean,
@@ -55,9 +57,13 @@ export default {
       type: Boolean,
       default: true
     },
-    cancelTxt: {
-      type: String,
-      default: ''
+    isCancleBtn: {
+      type: Boolean,
+      default: false
+    },
+    isConfirmBtn: {
+      type: Boolean,
+      default: false
     },
     optionTag: {
       type: String,
@@ -67,24 +73,19 @@ export default {
       type: String,
       default: ''
     },
-    menuItems: {
+    optionList: {
       type: Array,
       default: () => []
     }
   },
   data() {
-    return {};
+    return {
+      isVisiblePopup: false
+    };
   },
   watch: {
     isVisible(value) {
-      !!value && this.$emit('open');
-      if (this.isLockBgScroll) {
-        if (value) {
-          document.body.classList.add('nut-overflow-hidden');
-        } else {
-          document.body.classList.remove('nut-overflow-hidden');
-        }
-      }
+      this.isVisiblePopup = this.isVisible;
     }
   },
   methods: {

@@ -8,28 +8,64 @@
 <nut-searchbar 
     :hasIcon="true" 
     :hasSearchButton="false"
+    :clearable='true'
 ></nut-searchbar>
 ```
 
-## 右侧搜索按钮可根据需要进行配置
+## 搜索框对齐方式
 
 ```html
-<nut-searchbar
-    placeText="请输入自定义文案"
-    :hasSearchButton="false"
-></nut-searchbar>
-```
-
-## 可配置输入框前面是否显示搜索图标、右侧是否显示文字按钮、显示文字、自定义 class
-
-```html
-<nut-searchbar
-    placeText="ERP/姓名/邮箱"
+<nut-searchbar 
     :hasIcon="true"
-    :hasTextButton="true"
-    textInfo="取消"
-    customClass="search_demo"
+    :hasSearchButton="false" 
+    inputAlign="center"
 ></nut-searchbar>
+```
+
+## 自定义右侧按钮
+
+```html
+
+// 默认图标
+<nut-searchbar placeText="右侧默认图标" @submit="submitFun"></nut-searchbar>
+
+// 自定义图标
+<nut-searchbar placeText="右侧图标自定义" @submit="submitFun" :searchButtonIcon="require('../../assets/svg/qr.svg')"></nut-searchbar>
+
+// 默认文案
+<nut-searchbar placeText="右侧默认文字" :hasTextButton="true" @submit="submitFun"></nut-searchbar>
+
+// 自定义文案
+<nut-searchbar placeText="右侧文字自定义" :hasIcon="true" :hasTextButton="true" textInfo="取消" @submit="submitFun"></nut-searchbar>
+
+export default {
+    methods:{
+        submitFun(value) {
+            console.log('您输入的内容为：'+value);
+            console.log('您触发了右侧按钮的事件，默认提交操作！');
+        }
+    }
+}
+```
+
+## 自定义搜索框右侧按钮
+
+```html
+
+// 默认图标
+<nut-searchbar :hasIcon="true" :hasSearchButton="false" :hasAction="true" @handleAction="handleAction"></nut-searchbar>
+
+// 自定义图标
+<nut-searchbar :hasIcon="true" :hasSearchButton="false" :hasAction="true" :actionIcon="require('../../assets/svg/rate-default-img.svg')" @handleAction="handleAction"></nut-searchbar>
+
+export default {
+    methods:{
+        handleAction(value){
+            console.log('您输入的内容为：'+value);
+            console.log('您点击了input搜索框右侧的图标')
+        }
+    }
+}
 ```
 
 ## 事件
@@ -42,6 +78,7 @@
     @blur="blurFun"
     @submit="submitFun"
 ></nut-searchbar>
+
 ```
 
 ## 获取焦点与失去焦点
@@ -102,6 +139,7 @@ export default {
 |----- | ----- | ----- | -----
 | hasIcon | 是否显示输入框前面的 icon | Boolean | false
 | placeText | 输入框 placeholder 内容 | String | '请输入内容...'
+| inputAlign | 输入框内容的对齐方式，可选值：left/center/right| String | left
 | hasSearchButton | 是否显示右侧搜索按钮 | Boolean | true
 | hasTextButton | 右侧搜索按钮是否为文字按钮 | Boolean | false
 | textInfo | 右侧文字搜索按钮文案 | String | '搜索'
@@ -109,10 +147,15 @@ export default {
 | customClass | 自定义 class | String | ''
 | searchIconSize | Search 图标的尺寸 | String | '20px'
 | searchIconColor | Search 图标的颜色 | String | '#2e2d2d'
+| searchBtnIcon | 自定义 Search 图标 | String | 默认 搜索图标
 | searchBtnIconSize | 搜索按钮图标的尺寸 | String | '20px'
 | searchBtnIconColor | 搜索按钮图标的颜色 | String | '#2e2d2d'
+| clearable | 是否启用清除控件 | Boolean | true
 | clearIconSize | 清空按钮图标的尺寸 | String | '15px'
 | clearIconColor | 清空按钮图标的颜色 | String | '#2e2d2d'
+| hasAction | 输入框右侧是否展示图标 | Boolean | false
+| actionIcon | 自定义输入框右侧图标 | String | 二维码图标
+| actionIconSize | 设置自定义输入框右侧图标的大小 | String | '20px'
 
 ## Event
 
@@ -122,3 +165,5 @@ export default {
 | input | 输入框输入内容时触发事件 | 无
 | blur | 输入框失去焦点时触发事件 | 无
 | submit | 默认提交事件，点击右侧Icon或文字也会触发 | 无
+| handleAction | 点击输入框右侧图标触发 | 无
+
