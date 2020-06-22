@@ -26,7 +26,10 @@ export default {
         styleType:String,   // label
         type:String, // radio 展示    
         list:Array,  // radio 需要的数据信息 
-        checkedIndex:Number, // 初始化选中数组第几个从 0 开始
+        checkedIndex:{
+            type:Number,
+            default:-1
+        }, // 初始化选中数组第几个从 0 开始
         effectKey:String,    // 绑定有效值对应属性 key
         effectText:String,   // 有效显示文案对应属性 key
         resloutAttr:String,  // 选择结果展示属性值类型 key 
@@ -34,24 +37,24 @@ export default {
         disabledValue:[String, Number, Boolean,Array] // 禁用的 radio 需要传一个数组
     },    
     mounted(){
-        if(this.list&&this.list.length>0){
-            this.$emit('input',this.list[this.checkedIndex][this.resloutAttr||this.effectKey])
+        if(this.checkedIndex>-1&&this.list&&this.list.length>0){
+            this.$emit('input',this.list[this.checkedIndex][this.inputReslout])
         }
         
     },
     methods:{
         radioChange(obj){   
-            this.$emit('input',obj[this.resloutAttr||this.effectKey])
+            this.$emit('input',obj[this.inputReslout])
         }
     },
     watch:{
         list(val){
-            if(val&&val.length>0){
-                this.$emit('input',val[this.checkedIndex][this.resloutAttr||this.effectKey])
+            if(val&&val.length>0&&this.checkedIndex>-1){
+                this.$emit('input',val[this.checkedIndex][this.inputReslout])
             }
         },
         resloutAttr(res){
-            if(this.list&&this.list.length>0){
+            if(this.list&&this.list.length>0&&this.checkedIndex>-1){
                 this.$emit('input',this.list[this.checkedIndex][res])
             }
         }
@@ -69,6 +72,11 @@ export default {
             }else{
                 return false;
             }
+        }
+    },
+    computed:{
+        inputReslout(){
+            return this.resloutAttr || this.effectText
         }
     }
 }
