@@ -60,7 +60,24 @@
           <label>组件调用</label>
         </span>
       </nut-cell>
-      <nut-notify :showPopup="show" type="success" msg="通知内容"></nut-notify>
+      <nut-notify :showPopup="show" type="success" msg="组件调用">
+        <span>hello</span>
+      </nut-notify>
+    </div>
+    <h4>修改默认配置</h4>
+    <div>
+      <nut-cell :showIcon="true" :isLink="true" @click.native="defaultNotify">
+        <span slot="title">
+          <label>更改所有Notify展示时长设置为5000毫秒</label>
+        </span>
+      </nut-cell>
+      <nut-notify :showPopup="show" type="success"></nut-notify>
+      <nut-cell :showIcon="true" :isLink="true" @click.native="resetDefaultOptions">
+        <span slot="title">
+          <label>恢复所有Toast提示默认配置</label>
+        </span>
+      </nut-cell>
+      <nut-notify :showPopup="show" type="success"></nut-notify>
     </div>
   </div>
 </template>
@@ -109,11 +126,20 @@ export default {
       });
     },
     showNotify() {
-      // debugger;
       this.show = true;
       setTimeout(() => {
         this.show = false;
       }, 2000);
+    },
+    defaultNotify() {
+      this.$notify.setDefaultOptions({
+        duration: 5000
+      });
+      this.$notify.text('将所有Notify提示展示时长设置为5000毫秒');
+    },
+    resetDefaultOptions() {
+      this.$notify.resetDefaultOptions();
+      this.$notify.text('恢复所有Notify提示默认配置');
     }
   }
 };
