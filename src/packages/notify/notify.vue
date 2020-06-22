@@ -1,6 +1,6 @@
 <template>
   <nut-popup
-    v-model="showPopup"
+    v-model="curVisible"
     position="top"
     :style="{'color':color,
     'background': background}"
@@ -10,7 +10,12 @@
     @click="handleClick"
     @opened="handleOpened"
     @closed="handleClosed"
-  >{{msg}}</nut-popup>
+  >
+    <template v-if="$slots.default">
+      <slot></slot>
+    </template>
+    <template v-else>{{msg}}</template>
+  </nut-popup>
 </template>
 <script>
 import { overlayProps, getProps } from '../popup/index';
@@ -23,7 +28,7 @@ export default {
     ...overlayProps,
     color: { type: String, default: '' },
     msg: { type: [Number, String], default: '' },
-    // duration: { type: [Number, String], default: 3000 },
+    duration: { type: [Number, String], default: 3000 },
     className: {
       type: String,
       default: ''
@@ -39,14 +44,18 @@ export default {
     }
   },
   watch: {
-    showPopup(val) {
-      if (val) {
-        this.show();
+    showPopup: {
+      handler(val) {
+        if (val) {
+          this.curVisible = val;
+          this.show();
+        }
       }
+      // immediate: true
     }
   },
   data() {
-    return { timer: null };
+    return { timer: null, curVisible: false };
   },
   components: {
     'nut-popup': Popup
@@ -73,13 +82,13 @@ export default {
     },
     hide(force) {
       this.clearTimer();
-      this.showPopup = false;
+      this.curVisible = false;
       if (force) {
         clearTimeout(this.textTimer);
       } else {
         this.textTimer = setTimeout(() => {
           clearTimeout(this.textTimer);
-          this.msg = '';
+          // this.msg = '';
         }, 300);
       }
     },
@@ -89,9 +98,6 @@ export default {
         this.timer = null;
       }
     }
-  },
-  mounted() {
-    console.log(this, this.onClick, this.onOpened, this.onClosed, 'mounted');
   },
   destroyed() {
     this.textTimer = null;
