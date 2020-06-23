@@ -60,8 +60,8 @@
           <label>组件调用</label>
         </span>
       </nut-cell>
-      <nut-notify :showPopup="show" type="success" msg="组件调用">
-        <span>hello</span>
+      <nut-notify :showPopup="show" type="success" msg="hello" duration="10000">
+        <!-- <span>hello</span> -->
       </nut-notify>
     </div>
     <h4>修改默认配置</h4>
@@ -129,7 +129,7 @@ export default {
       this.show = true;
       setTimeout(() => {
         this.show = false;
-      }, 2000);
+      }, 200);
     },
     defaultNotify() {
       this.$notify.setDefaultOptions({

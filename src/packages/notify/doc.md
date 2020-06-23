@@ -2,21 +2,92 @@
 
 ## 基本用法
 
-```html
-    <nut-noticebar
-      text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
-    ></nut-noticebar>
+文字提示
+```javascript
+export default {
+  mounted() {
+      this.$notify.text('通知内容', {
+        onClosed() {
+          console.log('close');
+        },
+        onClick: () => {
+          console.log('click');
+        },
+        onOpened: () => {
+          console.log('opened');
+        }
+      });
+  }
+}
 ```
 ## 通知类型
-文字内容多于一行时，可通过scrollable参数控制是否开启滚动
-```html
-    <nut-noticebar
-      text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
-      :scrollable="false"
-    ></nut-noticebar>
+### 主要通知
+```javascript
+    mounted(){
+      this.$notify.primary('通知内容');
+    }
+```
+### 成功通知
+```javascript
+    mounted(){
+      this.$notify.success('通知内容');
+    }
+```
+### 危险通知
+```javascript
+    mounted(){
+      this.$notify.danger('通知内容');
+    }
+```
+### 警告通知
+```javascript
+    mounted(){
+      this.$notify.warn('通知内容');
+    }
 ```
 ## 自定义样式
+### 自定义样式
+```javascript
+    mounted(){
+      this.$notify.text(val, {
+        color: '#ad0000',
+        background: '#ffe1e1'
+      });
+    }
+```
+### 自定义时长
+```javascript
+    mounted(){
+      this.$notify.text(val, {
+        duration: 10000
+      });
+    }
+```
+## 组件调用
+```html
+    <nut-notify :showPopup="show" type="success" msg="组件调用">
+      <span>hello</span>
+    </nut-notify>
+```
 
+```javascript
+    mounted(){
+      this.show = true;
+      setTimeout(() => {
+        this.show = false;
+      }, 2000);
+    }
+```
+## 修改默认配置
+通过**Notify.setDefaultOptions**函数可以全局修改 Notify 的默认配置，**值得注意的是，标签形式的组件不支持默认样式**。
+```javascript
+// 更改所有Toast展示时长设置为5000毫秒
+      this.$notify.setDefaultOptions({
+        duration: 5000
+      });
+// 重置所有 Toast 的默认配置
+      this.$notify.resetDefaultOptions();
+```
 
 
 
@@ -45,6 +116,5 @@
 | 方法名                     | 说明                             | 参数    | 返回值  |
 | -------------------------- | -------------------------------- | ------- | ------- |
 | Notify                     | 提示的信息                       | options | message | notify 实例 |
-| Notify.clear               | 关闭提示                         | -       | void    |
 | Notify.setDefaultOptions   | 修改默认配置，对所有 Notify 生效 | options | void    |
 | Notify.resetDefaultOptions | 重置默认配置，对所有 Notify 生效 | String  | void    |
