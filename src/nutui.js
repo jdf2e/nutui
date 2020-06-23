@@ -126,6 +126,8 @@ import Address from './packages/address/index.js';
 import './packages/address/address.scss';
 import Notify from "./packages/notify/index.js";
 import "./packages/notify/notify.scss";
+import CountUp from "./packages/countup/index.js";
+import "./packages/countup/countup.scss";
 
 const packages = {
   Cell,
@@ -188,7 +190,8 @@ const packages = {
   SideNavBarItem: SideNavBarItem,
   Drag: Drag,
   Address: Address,
-  Notify: Notify
+  Notify: Notify,
+  CountUp: CountUp
 };
 
 const components = {};

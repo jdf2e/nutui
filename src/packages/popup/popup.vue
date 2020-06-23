@@ -25,7 +25,8 @@
 import Vue from 'vue';
 import Icon from '../icon/icon.vue';
 import touchMixins from '../../mixins/touch.js';
-import { overlayManager, overlayProps } from './overlay/overlay-manager.js';
+import { overlayManager } from './overlay/overlay-manager.js';
+import { overlayProps } from './overlay/overlay.vue';
 import { on, off } from '../../utils/event';
 import '../icon/icon.scss';
 
@@ -161,7 +162,7 @@ export default {
       const { scrollHeight, offsetHeight, scrollTop } = el ? el : this.$el;
 
       if ((this.deltaY > 0 && scrollTop === 0) || (this.deltaY < 0 && scrollTop + offsetHeight >= scrollHeight)) {
-        //event.preventDefault();
+        event.preventDefault();
       }
     },
     getScroller(el) {

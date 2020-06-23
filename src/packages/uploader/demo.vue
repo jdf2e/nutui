@@ -69,7 +69,7 @@
       </nut-cell>
     </div>
 
-    <p>自定义headers&formData</p>
+    <p>自定义 headers&formData </p>
     <div>
       <nut-cell>
         <span slot="title">
@@ -93,6 +93,13 @@
 
     <p>预览上传图片</p>
     <div>
+      <transition name="fade">
+        <div class="preview-box">
+          <div class="img-outbox" v-for="(item,index) in previewImg" :key="index">
+            <img class="img-box" v-if="item" :src="item" alt />
+          </div>
+        </div>
+    </transition>
       <nut-cell>
         <span slot="title">
           <nut-uploader
@@ -104,6 +111,7 @@
             @fail="demoFail"
             @preview="preview"
             @showMsg="showMsg1"
+            :multiple="true"
           >
             <nut-button small>上传</nut-button>
           </nut-uploader>
@@ -111,7 +119,7 @@
         <div slot="desc"></div>
       </nut-cell>
     </div>
-    <p>上传图片前处理图片内容</p>
+    <p>开始上传钩子 @start</p>
     <nut-cell>
       <span slot="title">
         <nut-uploader
@@ -129,11 +137,11 @@
       </span>
       <div slot="desc"></div>
     </nut-cell>
-    <p>自定义增加上传图片数据</p>
+    <p>自定义增加上传数据 self-data</p>
     <nut-cell>
       <span slot="title">
         <nut-uploader
-          :selfData="selfData"
+          :self-data="selfData"
           :name="name"
           :url="url"
           :xhrState="stateNum"
@@ -147,11 +155,7 @@
       </span>
       <div slot="desc"></div>
     </nut-cell>
-    <transition name="fade">
-      <div class="img-outbox">
-        <img class="img-box" v-if="previewImg" :src="previewImg" alt />
-      </div>
-    </transition>
+    
   </div>
 </template>
 
@@ -177,7 +181,7 @@ export default {
         f2: 'test1'
       },
       progressNum: 0,
-      previewImg: null,
+      previewImg: [],
       previewImg2: null,
       progressNum2: null,
       upOver: false,
@@ -222,8 +226,9 @@ export default {
     progress(file, loaded, total) {
       this.progressNum = parseInt((100 * loaded) / total);
     },
-    preview(file) {
-      this.previewImg = file;
+    preview(file) {      
+      let previewImg = this.previewImg;
+      this.previewImg = [...previewImg,...file];      
     },
     showMsg1(msg) {
       this.$toast.text(msg);
@@ -278,5 +283,9 @@ export default {
   max-width: 100%;
   max-height: 100%;
   border-radius: 6px;
+}
+.preview-box{
+  display: flex;
+  padding-bottom: 10px;
 }
 </style>
