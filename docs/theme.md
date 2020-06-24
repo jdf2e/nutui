@@ -87,7 +87,7 @@ import Button from '@nutui/nutui/dist/packages/button/button.js';
 import '@nutui/nutui/dist/packages/button/button.scss';
 ```
 
-3.使用了插件 **[@nutui/babel-plugin-seperate-import](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)** 进行按需引用时，需修改babel的配置文件（如.babelrc），将 **style** 的设置为 **scss**。该插件将会自动引入指定组件对应的 SCSS 文件。
+3.使用了插件 **[@nutui/babel-plugin-separate-import](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)** 进行按需引用时，需修改babel的配置文件（如.babelrc），将 **style** 的设置为 **scss**。该插件将会自动引入指定组件对应的 SCSS 文件。
 
 ```bash
 {

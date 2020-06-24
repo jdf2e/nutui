@@ -20,7 +20,7 @@ Vue.use(NutUI, {
 
 ### 按需引用组件
 
-通过 **[@nutui/babel-plugin-seperate-import](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)** 插件，我们可以根据项目需要引用 NutUI 的组件，最终只打包引用的组件，减少引入代码的体积。国际化功能同样支持按需引用的方式。
+通过 **[@nutui/babel-plugin-separate-import](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)** 插件，我们可以根据项目需要引用 NutUI 的组件，最终只打包引用的组件，减少引入代码的体积。国际化功能同样支持按需引用的方式。
 
 ```javascript
 import Vue from 'vue';
@@ -31,7 +31,7 @@ import enUS from '@nutui/nutui/dist/locales/lang/en-US';
 locale('en-US', enUS);
 ```
 
-> 请注意：通过该插件进行按需引用组件时默认引用的是构建后的文件，此时并不支持国际化的功能。如需使用组件库的国际化功能，需要在 babel 的配置文件（如.babelrc）中将 **@nutui/babel-plugin-seperate-import** 插件的 **sourceCode** 参数值设为 **true** 。这样插件将引用未经构建的源文件，同时引用的组件也不再具有 `install` 方法，请使用 `Vue.component` 对组件进行注册。
+> 请注意：通过该插件进行按需引用组件时默认引用的是构建后的文件，此时并不支持国际化的功能。如需使用组件库的国际化功能，需要在 babel 的配置文件（如.babelrc）中将 **@nutui/babel-plugin-separate-import** 插件的 **sourceCode** 参数值设为 **true** 。这样插件将引用未经构建的源文件，同时引用的组件也不再具有 `install` 方法，请使用 `Vue.component` 对组件进行注册。
 
 ```bash
 {
