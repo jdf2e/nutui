@@ -88,7 +88,6 @@ export default {
       } else {
         this.textTimer = setTimeout(() => {
           clearTimeout(this.textTimer);
-          // this.msg = '';
         }, 300);
       }
     },

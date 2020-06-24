@@ -61,7 +61,7 @@
         </span>
       </nut-cell>
       <nut-notify :showPopup="show" type="success" msg="hello" duration="10000">
-        <!-- <span>hello</span> -->
+        <span>hello</span>
       </nut-notify>
     </div>
     <h4>修改默认配置</h4>
@@ -71,13 +71,11 @@
           <label>更改所有Notify展示时长设置为5000毫秒</label>
         </span>
       </nut-cell>
-      <nut-notify :showPopup="show" type="success"></nut-notify>
       <nut-cell :showIcon="true" :isLink="true" @click.native="resetDefaultOptions">
         <span slot="title">
           <label>恢复所有Toast提示默认配置</label>
         </span>
       </nut-cell>
-      <nut-notify :showPopup="show" type="success"></nut-notify>
     </div>
   </div>
 </template>
@@ -127,9 +125,6 @@ export default {
     },
     showNotify() {
       this.show = true;
-      setTimeout(() => {
-        this.show = false;
-      }, 200);
     },
     defaultNotify() {
       this.$notify.setDefaultOptions({

@@ -21,14 +21,12 @@ describe('notify.vue', () => {
             expect(wrapper.find('.nut-notify').hasStyle('background', '#ffe1e1')).toBe(true);
         })
     });
-    // it('自定义时长', () => {
-    //     wrapper.setProps({
-    //         color: '#ad0000',
-    //         background: '#ffe1e1'
-    //     });
-    //     return Vue.nextTick().then(function () {
-    //         expect(wrapper.find('.nut-notify').hasStyle('color', '#ad0000')).toBe(true);
-    //         expect(wrapper.find('.nut-notify').hasStyle('background', '#ffe1e1')).toBe(true);
-    //     })
-    // });
+    it('主要通知', () => {
+        wrapper.setProps({
+            type: 'primary'
+        });
+        return Vue.nextTick().then(function () {
+            expect(wrapper.classes('nut-notify--primary')).toBe(true)
+        })
+    });
 });
