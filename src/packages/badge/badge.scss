@@ -1,0 +1,44 @@
+.nut-badge {
+	position: relative;
+	display: inline-block;
+
+	sup {
+		position: absolute;
+		height: 14px;
+		min-width: 8px;
+		line-height: 14px;
+		padding: 1px 7px;
+		background-color: $primary-color;
+		text-align: center;
+		color: $badge-font-color;
+		font-size: $badge-font-size;
+		border-radius: 9px 9px 9px 0;
+		z-index: $zindex-mask;
+		font-family: PingFangSC-Regular;
+	}
+
+	.nut-badge__content {
+		transform: translateY(-50%) translateX(100%);
+	}
+
+	.is-dot {
+		width: 6px;
+		height: 6px;
+		min-width: 0;
+		padding: 0;
+		border-radius: 50%;
+		background: $primary-color-jd-red;
+	}
+
+	.single-val {
+		width: 16px;
+		height: 16px;
+		line-height: 16px;
+		padding: 0;
+		border-radius: 50%;
+	}
+
+	.max-val {
+		padding: 1px 4px;
+	}
+}

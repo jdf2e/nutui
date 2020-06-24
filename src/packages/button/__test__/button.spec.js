@@ -39,9 +39,9 @@ describe('Button.vue', () => {
             expect(wrapper.attributes('class')).toContain('circle');
         })
     });
-    it('设置small', () => {
+    it('设置size', () => {
         wrapper.setProps({
-            small: true
+            size: 'small'
         })
         return Vue.nextTick().then(function () {
             expect(wrapper.text()).toBe('去结算');
@@ -56,7 +56,7 @@ describe('Button.vue', () => {
         return Vue.nextTick().then(function () {
             expect(wrapper.text()).toBe('去结算');
             expect(wrapper.contains('.txt-icon')).toBe(true);
-            expect(wrapper.find('.txt-icon').attributes('type')).toBe('tick');            
+            expect(wrapper.find('.txt-icon').attributes('type')).toBe('tick');
             expect(wrapper.find('span').text()).toBe('去结算');
         })
     });

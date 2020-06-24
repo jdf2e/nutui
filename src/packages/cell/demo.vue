@@ -1,23 +1,61 @@
 <template>
   <div>
-    <h4>基本用法</h4>
-    <div>
-      <nut-cell title="我是标题" desc="描述文字" @click-cell="clickEvnt" to="/index"> </nut-cell>
-      <nut-cell :is-link="true" link-url="//m.jd.com" :show-icon="true" title="带链接" target="_target"> </nut-cell>
+    <h4>基础样式</h4>
+    <div class="cell-box">
+      <nut-cell title="列表内容A" to="/index"></nut-cell>
+      <nut-cell title="列表内容B" @click-cell="clickEvnt"></nut-cell>
+      <nut-cell title="列表内容C" @click-cell="clickEvnt"></nut-cell>
     </div>
-    <h4>通过Slot插槽分发内容</h4>
-    <div>
-      <nut-cell :is-link="true" :show-icon="true">
-        <span slot="title">我是主标题</span>
-        <span slot="sub-title">我是副标，我们都是通过Slot分发的</span>
-        <span slot="desc">我是描述</span>
+    <h4>带箭头的样式</h4>
+    <div class="cell-box">
+      <nut-cell title="列表内容A" :is-link="true" link-url="//m.jd.com" :show-icon="true" target="_target"> </nut-cell>
+      <nut-cell title="列表内容B" :is-link="true" link-url="//m.jd.com" :show-icon="true" target="_target"></nut-cell>
+      <nut-cell title="列表内容C" :is-link="true" link-url="//m.jd.com" :show-icon="true" target="_target"></nut-cell>
+    </div>
+    <h4>带解释说明的样式</h4>
+    <div class="cell-box">
+      <nut-cell :is-link="true">
+          <span slot="title">列表标题</span>
+          <span slot="sub-title">这里是对标题的解释说明</span>
       </nut-cell>
-      <nut-cell :show-icon="true">
-        <span slot="title">通过Slot自定义右侧ICON</span>
-        <nut-icon type="tick" slot="icon" size="15px" color="#848484"></nut-icon>
+    </div>
+    <h4>菜单列表</h4>
+    <div class="cell-box">
+      <nut-cell :show-icon="true" title="我的主页" @click-cell="clickEvnt">
+        <div slot="avatar"><nut-icon type="self" color="#9D49F8FF" size="18px" :url="require('../../assets/svg/avatar.svg')">></nut-icon></div>
       </nut-cell>
-      <nut-cell :show-icon="true" title="我是标题" sub-title="我是副标题" desc="展示默认ICON">
-        <div slot="avatar"><nut-avatar></nut-avatar></div>
+      <nut-cell :show-icon="true" title="店铺定位" desc="查看店铺" @click-cell="clickEvnt">
+          <div slot="avatar"><nut-icon type="self" color="#FF6E4CFF" size="18px" :url="require('../../assets/svg/nav.svg')">></nut-icon></div>
+      </nut-cell>
+      <nut-cell :show-icon="true" title="我的收藏" @click-cell="clickEvnt">
+        <div slot="avatar"><nut-icon type="self" color="#FFBA12FF" size="18px" :url="require('../../assets/svg/star.svg')">></nut-icon></div>
+      </nut-cell>
+      <nut-cell :show-icon="true" title="设置" desc="版本升级" @click-cell="clickEvnt">
+          <div slot="avatar"><nut-icon type="self" color="#1EA3FFFF" size="18px" :url="require('../../assets/svg/set.svg')">></nut-icon></div>
+      </nut-cell>
+    </div>
+    <h4>消息列表</h4>
+    <div class="cell-box">
+      <nut-cell title="噜啦噜" sub-title="我又来送福利啦！关注之后你就会">
+        <div slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></div>
+        <div slot="desc">
+          <p class="timer">10:12</p>
+          <p class="badge"><nut-badge  :value="9" :max="99" top="0px" right="15px"></nut-badge></p>
+        </div>
+      </nut-cell>
+      <nut-cell title="噜啦噜" sub-title="我又来送福利啦！关注之后你就会">
+        <div slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></div>
+        <div slot="desc">
+          <p class="timer">1小时前</p>
+          <p class="badge"><nut-badge  :is-dot="true" :max="99" top="0px" right="5px"></nut-badge></p>
+        </div>
+      </nut-cell>
+      <nut-cell title="噜啦噜" sub-title="我又来送福利啦！关注之后你就会">
+        <div slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></div>
+        <div slot="desc">
+          <p class="timer">星期五</p>
+          <p class="badge"><nut-badge  :value="100" :max="99" top="0px" right="25px"></nut-badge></p>
+        </div>
       </nut-cell>
     </div>
   </div>
@@ -28,12 +66,14 @@ import locale from '../../mixins/locale';
 import { locale as i18n } from '../../locales';
 import Icon from '../icon/icon.vue';
 import Avatar from '../avatar/avatar.vue';
+import Badge from '../badge/badge.vue'
 
 export default {
   mixins: [locale],
   components: {
     'nut-icon': Icon,
-    'nut-avatar': Avatar
+    'nut-avatar': Avatar,
+    'nut-badge':Badge
   },
   data() {
     return {};
@@ -49,10 +89,22 @@ export default {
 
 <style lang="scss" scoped>
 .demo {
-  padding-left: 0;
-  padding-right: 0;
+	padding-left: 0;
+	padding-right: 0;
 }
+
 h4 {
-  padding: 0 10px;
+	padding: 0 10px;
+}
+
+.timer {
+	color: #c8c8c8ff;
+}
+
+.badge {
+	.nut-badge {
+		width: 100%;
+		height: 100%;
+	}
 }
 </style>

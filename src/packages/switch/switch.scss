@@ -1,56 +1,64 @@
 .nut-switch {
-  position: relative;
-  display: inline-block;
-  background: #eee;
-  border-radius: 20px;
-  vertical-align: bottom;
-  box-sizing: content-box;
-  border: 0;
-  transition: all $transition-duration $animation-timing-fun;
-  .nut-switch-btn {
-    position: absolute;
-    left: 0;
-    background: #fff;
-    border: 0;
-    border-radius: 50%;
-    box-sizing: border-box;
-    transition: all $transition-duration $animation-timing-fun;
-  }
-  &.nut-switch-active {
-    background-color: $primary-color-jd-red;
-  }
-  &.nut-switch-disabled {
-    opacity: 0.6;
-  }
+	position: relative;
+	display: inline-block;
+	background: #eee;
+	border-radius: 20px;
+	vertical-align: bottom;
+	box-sizing: content-box;
+	border: 0;
+	transition: all $transition-duration $animation-timing-fun;
+
+	.nut-switch-btn {
+		position: absolute;
+		left: 0;
+		background: #fff;
+		border: 0;
+		border-radius: 50%;
+		box-sizing: border-box;
+		transition: all $transition-duration $animation-timing-fun;
+	}
+
+	&.nut-switch-active {
+		background-color: $primary-color-jd-red;
+	}
+
+	&.nut-switch-disabled {
+		opacity: 0.6;
+	}
 }
 
 .nut-switch-base {
-  height: 28px;
-  width: 54px;
-  .nut-switch-btn {
-    height: 28px;
-    width: 28px;
-  }
-  &.nut-switch-active {
-    .nut-switch-btn {
-      left: 28px;
-    }
-  }
+	height: 28px;
+	width: 54px;
+
+	.nut-switch-btn {
+		height: 28px;
+		width: 28px;
+	}
+
+	&.nut-switch-active {
+		.nut-switch-btn {
+			left: 28px;
+		}
+	}
 }
 
 .nut-switch-small {
-  height: 20px;
-  width: 38px;
-  &.nut-switch{
-      border-radius: 11px;
-  }
-  .nut-switch-btn {
-    height: 20px;
-    width: 20px;
-  }
-  &.nut-switch-active {
-    .nut-switch-btn {
-      left: 19px;
-    }
-  }
+	height: 20px;
+	width: 38px;
+
+	&.nut-switch {
+		border-radius: 11px;
+	}
+
+	.nut-switch-btn {
+		height: 20px;
+		width: 20px;
+	}
+
+	&.nut-switch-active {
+		.nut-switch-btn {
+			left: 19px;
+		}
+	}
 }

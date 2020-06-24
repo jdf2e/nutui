@@ -103,22 +103,25 @@ export default {
 
 <style lang="scss">
 table {
-  width: 100%;
-  border-collapse: collapse;
-  td {
-    width: 25%;
-    text-align: center;
-    vertical-align: middle;
-    height: 100px;
-    border: 1px solid #ebebeb;
-    font-size: 12px;
-    &:hover {
-      background: #f2f2f2;
-      cursor: pointer;
-    }
-  }
-  span {
-    display: block;
-  }
+	width: 100%;
+	border-collapse: collapse;
+
+	td {
+		width: 25%;
+		text-align: center;
+		vertical-align: middle;
+		height: 100px;
+		border: 1px solid #ebebeb;
+		font-size: 12px;
+
+		&:hover {
+			background: #f2f2f2;
+			cursor: pointer;
+		}
+	}
+
+	span {
+		display: block;
+	}
 }
 </style>

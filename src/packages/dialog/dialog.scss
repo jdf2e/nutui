@@ -1,188 +1,219 @@
 @import '../../styles/animation/fade';
 @import '../../styles/animation/ease';
 body.dialog-open {
-  position: fixed;
+    position: fixed;
 }
 
 .nut-dialog-wrapper {
-  position: relative;
-  z-index: $zindex-mask;
+    position: relative;
+    z-index: $zindex-mask;
 }
 
 .nut-dialog-box {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $normal-color;
-}
-
-.nut-dialog-mask,
-.nut-dialog-box {
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
+    width: 85vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $normal-color;
 }
 
 .nut-dialog-mask {
-  position: fixed;
-  background: $mask-bg;
+    position: fixed;
+    background: $mask-bg;
 }
 
 .nut-dialog {
-  position: relative;
-  width: 86%;
-  max-height: 70vh;
-  background: #fff;
-  border-radius: $border-radius-base;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+    position: relative;
+    width: 85vw;
+    max-height: 70vh;
+    background: #fff;
+    border-radius: $border-radius-base;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .nut-dialog-title {
-  display: block;
-  line-height: 1.5;
-  color: $title-color;
-  font-size: $font-size-large;
-  text-align: center;
-  flex-shrink: 0;
-  @include text-ellipsis;
-  padding-bottom: 8px; // &:only-child {
-  //     padding-bottom: 0;
-  // }
+    display: block;
+    line-height: 1.5;
+    color: $title-color;
+    font-size: $font-size-large;
+    text-align: center;
+    flex-shrink: 0;
+    @include text-ellipsis;
+    padding-bottom: 8px; // &:only-child {
+    //     padding-bottom: 0;
+    // }
 }
 
 .nut-dialog-close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 30px;
-  height: 30px;
-  font-size: 20px;
-  text-align: center;
-  text-decoration: none;
-  background: url("data:image/svg+xml, %3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='rgb(132,132,132)' fill-rule='evenodd'%3E%3Cpath d='M.44 2.56A1.5 1.5 0 1 1 2.56.44l27 27a1.5 1.5 0 1 1-2.12 2.12L15 17.123 2.56 29.56A1.5 1.5 0 1 1 .44 27.44L12.878 15 .44 2.56zM27.44.44a1.5 1.5 0 1 1 2.12 2.12l-9 9a1.5 1.5 0 1 1-2.12-2.12l9-9z'/%3E%3C/g%3E%3C/svg%3E")
-    no-repeat center;
-  background-size: 13px 13px;
-  img {
-    height: 13px;
-  }
-}
-
-.nut-dialog-image-wrapper {
-  .nut-dialog {
-    width: auto;
-    max-width: 80%;
-    max-height: 75%;
-    background: transparent;
-    border-radius: none;
-    display: inline-block;
-    overflow: visible;
-  }
-  .nut-dialog-close {
     position: absolute;
     right: 0;
-    top: -40px;
-    width: 25px;
-    height: 25px;
+    top: 0;
+    width: 30px;
+    height: 30px;
     font-size: 20px;
     text-align: center;
     text-decoration: none;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    background: url("data:image/svg+xml, %3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='rgb(255,255,255)' fill-rule='evenodd'%3E%3Cpath d='M.44 2.56A1.5 1.5 0 1 1 2.56.44l27 27a1.5 1.5 0 1 1-2.12 2.12L15 17.123 2.56 29.56A1.5 1.5 0 1 1 .44 27.44L12.878 15 .44 2.56zM27.44.44a1.5 1.5 0 1 1 2.12 2.12l-9 9a1.5 1.5 0 1 1-2.12-2.12l9-9z'/%3E%3C/g%3E%3C/svg%3E")
-      no-repeat center;
+    background: url("data:image/svg+xml, %3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='rgb(132,132,132)' fill-rule='evenodd'%3E%3Cpath d='M.44 2.56A1.5 1.5 0 1 1 2.56.44l27 27a1.5 1.5 0 1 1-2.12 2.12L15 17.123 2.56 29.56A1.5 1.5 0 1 1 .44 27.44L12.878 15 .44 2.56zM27.44.44a1.5 1.5 0 1 1 2.12 2.12l-9 9a1.5 1.5 0 1 1-2.12-2.12l9-9z'/%3E%3C/g%3E%3C/svg%3E") no-repeat center;
     background-size: 13px 13px;
     img {
-      height: 13px;
+        height: 13px;
     }
-  }
+}
+
+.nut-dialog-image-wrapper {
+    .nut-dialog {
+        width: auto;
+        max-width: 80%;
+        max-height: 75%;
+        background: transparent;
+        border-radius: none;
+        display: inline-block;
+        overflow: visible;
+    }
+    .nut-dialog-close {
+        position: absolute;
+        right: 0;
+        top: -40px;
+        width: 25px;
+        height: 25px;
+        font-size: 20px;
+        text-align: center;
+        text-decoration: none;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        background: url("data:image/svg+xml, %3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='rgb(255,255,255)' fill-rule='evenodd'%3E%3Cpath d='M.44 2.56A1.5 1.5 0 1 1 2.56.44l27 27a1.5 1.5 0 1 1-2.12 2.12L15 17.123 2.56 29.56A1.5 1.5 0 1 1 .44 27.44L12.878 15 .44 2.56zM27.44.44a1.5 1.5 0 1 1 2.12 2.12l-9 9a1.5 1.5 0 1 1-2.12-2.12l9-9z'/%3E%3C/g%3E%3C/svg%3E") no-repeat center;
+        background-size: 13px 13px;
+        img {
+            height: 13px;
+        }
+    }
 }
 
 .nut-dialog-link {
-  display: inline-block;
+    display: inline-block;
 }
 
 .nut-dialog-image {
-  max-width: 100%;
-  max-height: 100%;
-  vertical-align: bottom;
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: bottom;
 }
 
 .nut-dialog-body {
-  box-sizing: border-box;
-  padding: 30px 20px 20px;
-  display: flex;
-  flex-direction: column;
-  flex: 0 1 auto;
+    box-sizing: border-box;
+    padding: 30px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 auto;
+    border-bottom: 1px solid rgba(230, 230, 230, 1);
 }
 
 .nut-dialog-content {
-  flex: 1;
-  justify-content: center;
-  overflow: auto;
-  font-size: $font-size-base;
-  word-break: break-all;
-  padding-bottom: 10px;
-  -webkit-overflow-scrolling: touch;
+    flex: 1;
+    justify-content: center;
+    overflow: auto;
+    line-height: 21px;
+    font-family: PingFang-SC-Medium;
+    font-size: 14px;
+    color: rgba(100, 100, 100, 1);
+    word-break: break-all;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
 }
 
 .nut-dialog-footer {
-  height: 50px;
-  width: 100%;
-  line-height: 50px;
-  display: flex;
-  flex-shrink: 0;
-  border-radius: 0 0 5px 5px;
-  overflow: hidden;
-  flex-direction: row;
+    min-height: 50px;
+    width: 100%;
+    line-height: 50px;
+    display: flex;
+    flex-shrink: 0;
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.nut-dialog-multi-button {
+    width: 100vw;
+    height: 50px;
+    box-sizing: border-box;
+    line-height: 50px;
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(245, 22, 22, 1);
+    text-align: center;
+    border-bottom: 1px solid rgba(230, 230, 230, 1);
+}
+
+.nut-dialog-multi-disabled {
+    color: rgba(150, 150, 150, 1);
+}
+
+.nut-dialog-multi-cancel {
+    width: 100vw;
+    height: 50px;
+    box-sizing: border-box;
+    line-height: 50px;
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(150, 150, 150, 1);
+    text-align: center;
 }
 
 .nut-dialog-btn {
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  flex: 1;
-  font-size: $font-size-base;
-  border: none;
-  background: transparent;
-  appearance: none;
-  outline: none;
-  user-select: none;
-  &.disabled {
-    background: $btn-disable-bg;
-    background-origin: border-box;
-    color: $btn-disable-color;
-  }
-  &:only-child {
-    border-radius: 0 0 5px 5px;
+    display: block;
+    width: 100%;
+    position: relative;
+    flex: 1;
+    font-size: $font-size-base;
+    border: none;
     background: transparent;
-    color: $primary-color;
-    border-top: 1px solid $light-color;
-  }
+    appearance: none;
+    outline: none;
+    user-select: none;
+    font-size: 16px;
+    font-weight: 00;
+    5 &.disabled {
+        background: $btn-disable-bg;
+        background-origin: border-box;
+        color: $btn-disable-color;
+    }
+    &:only-child {
+        border-radius: 0 0 5px 5px;
+        background: transparent;
+        color: $primary-color;
+        border-top: 1px solid $light-color;
+        line-height: 23px;
+        font-family: PingFangSC-Regular;
+        font-size: 16px;
+    }
 }
 
 .nut-dialog-ok {
-  border-radius: 0 0 5px 0;
-  background: $btn-gradient-bg;
-  background-origin: border-box;
-  color: $btn-gradient-color;
-  margin-right: -1px;
-  &:active {
-    background: $btn-gradient-active-bg;
-  }
+    border-radius: 0 0 5px 0;
+    background: #fff;
+    background-origin: border-box;
+    color: $btn-gradient-color;
+    font-family: PingFangSC-Regular;
+    border-left: 1px solid rgba(230, 230, 230, 1);
+    color: rgba(245, 22, 22, 1);
+    &:active {
+        background: $btn-gradient-active-bg;
+    }
 }
 
 .nut-dialog-cancel {
-  border-radius: 0 0 0 5px;
-  border-top: 1px solid $light-color;
-  background: #fff;
-  background-origin: border-box;
-  &:active {
-    border-top: 1px solid #ccc;
-    background: #ccc;
-  }
+    border-radius: 0 0 0 5px;
+    border-top: 1px solid $light-color;
+    background: #fff;
+    color: rgba(150, 150, 150, 1);
+    background-origin: border-box;
+    &:active {
+        border-top: 1px solid #ccc;
+        background: #ccc;
+    }
 }

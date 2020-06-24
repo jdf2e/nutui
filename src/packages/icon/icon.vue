@@ -1,8 +1,30 @@
 <template>
-  <i :class="['nut-icon', 'nut-icon-' + type]" v-html="icon" :style="{ height: size, width: size, color: color }"> </i>
+  <i
+    :class="['nut-icon', 'nut-icon-' + type]"
+    v-html="icon"
+    :style="{ height: size, width: size, color: color }"
+  ></i>
 </template>
 <script>
-const types = ['top', 'action', 'cross', 'down', 'right', 'more', 'plus', 'search', 'trolley', 'tick', 'minus', 'circle-cross'];
+const types = [
+  'top',
+  'action',
+  'cross',
+  'down',
+  'right',
+  'more',
+  'plus',
+  'search',
+  'trolley',
+  'tick',
+  'minus',
+  'circle-cross',
+  'avatar',
+  'nav',
+  'star',
+  'set',
+  'notice'
+];
 
 export default {
   name: 'nut-icon',
@@ -39,11 +61,20 @@ export default {
       this.icon = this.url;
       this.type = 'self';
     } else {
-      if (types.indexOf(this.type) === -1) {
-        console.error('nut-icon组件type值(' + this.type + ')有误，无此icon!');
-      } else {
-        this.icon = require('../../assets/svg/' + this.type + '.svg');
+
+      // if (types.indexOf(this.type) === -1) {
+      //   console.error('nut-icon组件type值(' + this.type + ')有误，无此icon!');
+      // } else {
+      //   this.icon = require('../../assets/svg/' + this.type + '.svg');
+      // }
+
+      try {
+          this.icon = require('../../assets/svg/' + this.type + '.svg')
       }
+      catch(err) {
+          console.error('nut-icon组件type值(' + this.type + ')有误，无此icon!');
+      }
+      
     }
   }
 };

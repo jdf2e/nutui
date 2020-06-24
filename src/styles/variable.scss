@@ -10,26 +10,26 @@ $dark-color: #dadada !default;
 
 // v3.0 主要色值
 // ---- 主色调color ----
-$primary-color-jd-red: #E1251B !default; // 京东红，主要用于对外C端产品。
-$primary-color-jc-blue: #3C6EF0 !default; // 京牛蓝，主要用于对内B端产品。
+$primary-color-jd-red: #e1251b !default; // 京东红，主要用于对外C端产品。
+$primary-color-jc-blue: #3c6ef0 !default; // 京牛蓝，主要用于对内B端产品。
 // ---- 辅助color ----
-$assist-color-green: #26A872 !default; // 常用于成功信息/成功icon，或者卡片标签
-$assist-color-orange: #FF6E4C !default; // 常用于警告信息/警告icon，或者卡片标签
-$assist-color-yellow: #FFBA12 !default; // 常用于提示信息/提示icon，或者卡片标签
-$assist-color-blue: #2CA6E1 !default; // 冷链蓝，主要用于京东冷链相关产品，也可以用于卡片标签或页面其他元素
-$assist-color-purple: #6236FF !default; 
-$assist-color-gray: #7C7A8A !default; // 常用于卡片标签或页面其他元素
-$assist-color-light-gray: #D9D9D9 !default; // 常用于弱标签背景色
+$assist-color-green: #26a872 !default; // 常用于成功信息/成功icon，或者卡片标签
+$assist-color-orange: #ff6e4c !default; // 常用于警告信息/警告icon，或者卡片标签
+$assist-color-yellow: #ffba12 !default; // 常用于提示信息/提示icon，或者卡片标签
+$assist-color-blue: #2ca6e1 !default; // 冷链蓝，主要用于京东冷链相关产品，也可以用于卡片标签或页面其他元素
+$assist-color-purple: #6236ff !default;
+$assist-color-gray: #7c7a8a !default; // 常用于卡片标签或页面其他元素
+$assist-color-light-gray: #d9d9d9 !default; // 常用于弱标签背景色
 // ---- 文本color ----
 $text-black-1: #323232 !default; // 重要文字颜色，用于Narbar等大标题
 $text-black-2: #646464 !default; // 普通文字颜色，用于段落、表单标题、列表内容等
 $text-black-3: #969696 !default; // 辅助文字，用于次要信息
-$text-black-4: #C8C8C8 !default; // 一般文字，用于提示性文字
-$text-jd-red: #E1251B !default; // 用于报错文字颜色
+$text-black-4: #c8c8c8 !default; // 一般文字，用于提示性文字
+$text-jd-red: #e1251b !default; // 用于报错文字颜色
 // ---- 背景/分割线color ----
-$body-background-color: #F7F7F7 !default; // 用于页面整体背景
-$split-line-color: #E6E6E6 !default; // 用于分割线，按钮描边,1px
-$disabled-bg-color: #DCDCDC !default; // 用于按钮置灰
+$body-background-color: #f7f7f7 !default; // 用于页面整体背景
+$split-line-color: #e6e6e6 !default; // 用于分割线，按钮描边,1px
+$disabled-bg-color: #dcdcdc !default; // 用于按钮置灰
 // ---- v3.0 常用字号 ----
 $font-size-title-large: 20px; // 用于标题类文字
 $font-size-title-normal: 18px; // 用于全局操作类文字
@@ -40,6 +40,8 @@ $font-size-display-large: 14px; // 常用于辅助说明文字
 $font-size-display-normal: 13px; // 常用字号，用于解释信息
 $font-size-display-small: 12px; // 常用于标签信息展示
 
+$disabled-bg-1: #f1f1f1;
+$disabled-border: #dedede;
 
 // ---- base ----
 $body-background: #f6f6f6 !default;
@@ -79,11 +81,12 @@ $shadow-right: 2px 0 8px $shadow-color !default;
 $shadow-base: $shadow-down !default;
 // ---- Buttons ----
 $btn-font-weight: normal !default;
-$btn-border-radius-base: 8px !default;
+$btn-border-radius-base: 4px !default;
 $btn-border-radius-small: 3px !default;
 $btn-border-radius-large: 50px !default;
-$btn-height-small: 30px !default;
-$btn-height-big: 40px !default;
+$btn-height-small: 28px !default;
+$btn-height-middle: 40px !default;
+$btn-height-big: 48px !default;
 $btn-icon-height-small: 12px !default;
 $btn-icon-height-big: 16px !default;
 $btn-menu-icon-height: 20px !default;
@@ -93,7 +96,7 @@ $btn-primary-bg: $primary-color !default;
 $btn-gradient-color: #fff !default;
 $btn-gradient-start-color: #ff4f18;
 $btn-gradient-end-color: #f20000;
-$btn-gradient-bg: linear-gradient(315deg, $btn-gradient-start-color 0%, $btn-gradient-end-color 100%) !default;
+$btn-gradient-bg: $primary-color-jd-red !default;
 $btn-gradient-active-bg: linear-gradient(315deg, darken($btn-gradient-start-color, 10%) 0%, darken($btn-gradient-end-color, 10%) 100%) !default;
 $btn-default-color: $normal-color !default;
 $btn-default-bg: #fff !default;
@@ -101,11 +104,14 @@ $btn-default-border: $border-color-dark !default;
 $btn-active-color: #fff !default;
 $btn-active-bg: $primary-color !default;
 $btn-active-border: 􏰅􏴦􏵘􏵑􏱱􏵘􏴦$primary-color !default;
-$btn-disable-color: $disabled-color !default;
-$btn-disable-bg: $disabled-bg !default;
+$btn-disable-color: $disabled-bg-color !default;
+$btn-disable-bg: $disabled-bg-color !default;
 $btn-disable-border: $disabled-color !default;
 $btn-icon-margin: 5px;
 $btn-label-light-bg: rgba(240, 37, 15, 0.05);
+$font-size-big:18px;
+$font-size-middle:15px;
+$font-size-small:13px;
 // ---- z-index ----
 $zindex-mask: 9998 !default;
 $zindex-actionsheet: 10001 !default;
@@ -125,3 +131,17 @@ $tag-height-big: 24px !default;
 $tag-border-radius: 2px !default;
 $tag-border-radius-circle: 10px !default;
 
+// ---- Badge ----
+$badge-font-size: 11px !default;
+$badge-font-color: #fff !default;
+
+// ---- ActionSheet ----
+$as-border-color: rgba(230,230,230,1) !default;
+$as-disable-color: $text-black-4 !default;
+$as-base-color: $text-black-1 !default;
+$as-desc-color: $text-black-3 !default;
+$as-confirm-btn-bg: $primary-color-jd-red;
+$as-confirm-btn-color: #fff !default;
+$as-base-bg-color: #fff !default;
+$as-base-font-size: 15px !default;
+$as-desc-font-size: 14px !default;

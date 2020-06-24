@@ -1,13 +1,13 @@
 <template>
   <transition name="toastfade">
-    <div
-      :id="id"
+    <nut-popup
+      :overlay='cover'
       :class="toastClass"
-      v-if="visible"
-      :style="{
-        bottom: center ? 'auto' : bottom + 'px',
-        'background-color': coverColor
-      }"
+      v-model="visible"
+      :closeOnClickOverlay='closeOnClickOverlay'
+      :overlayStyle='{backgroundColor:coverColor}'
+      class="nut-toast"
+      :style="{ bottom: center?'auto':bottom + 'px'}"
       @click="clickCover"
     >
       <div
@@ -25,7 +25,7 @@
         </span>
         <span class="nut-toast-text" v-html="msg"></span>
       </div>
-    </div>
+    </nut-popup>
   </transition>
 </template>
 <script>
@@ -42,7 +42,7 @@ export default {
       center: true,
       type: '',
       customClass: '',
-      bottom: 30,
+      bottom: '',
       size: 'base',
       icon: null,
       textAlignCenter: true,
@@ -56,6 +56,7 @@ export default {
       closeOnClickOverlay: false
     };
   },
+  
   watch: {
     visible(val) {
       if (val) {
@@ -70,9 +71,8 @@ export default {
     toastClass() {
       return [
         'nut-toast',
-        { 'nut-toast-center': this.center },
-        { 'nut-toast-has-icon': this.hasIcon },
-        { 'nut-toast-cover': this.cover },
+        { 'nut-toast-buttom': !this.center },
+        { 'nut-toast-has-icon': this.hasIcon }, 
         { 'nut-loading': this.type == 'loading' },
         this.customClass,
         'nut-toast-' + this.size

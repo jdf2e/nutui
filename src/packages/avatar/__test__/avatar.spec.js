@@ -6,39 +6,20 @@ import Vue from 'vue';
 describe('Avatar.vue', () => {
     const wrapper = shallowMount(avatar, {
     });
-    it('尺寸规格', () => {
-        wrapper.setProps({size: "small" });
-        return Vue.nextTick().then(function () {
-            expect(wrapper.find('.nut-avatar').contains('.avatar-small')).toBe(true);
-        })
-    });
 
-    it('形状类型是否为square', () => {
-        wrapper.setProps({shape: "square" });
-        return Vue.nextTick().then(function () {
-            expect(wrapper.find('.nut-avatar').contains('.avatar-square')).toBe(true);
-        })
-    });
-
-    it('背景颜色是否为red', () => {
-        wrapper.setProps({bgColor: "red" });
-        return Vue.nextTick().then(function () {
-            expect(wrapper.find('.nut-avatar').hasStyle('background-color','red')).toBe(true);
-        })
-    });
-
-    it('背景图片是否为设置的bgImage', () => {
+    it('设置头像图片的地址', () => {
         wrapper.setProps({bgImage: "http://image.png" });
         return Vue.nextTick().then(function () {
-            // console.log(wrapper.find('.nut-avatar').attributes('style'))
-            expect(wrapper.find('.nut-avatar').hasStyle('background-image','url(http://image.png)')).toBe(true);
+            expect(wrapper.find('.icon').attributes('src')).toBe('http://image.png');
         })
     });
 
-    it('头像图片是否为设置的bgIcon', () => {
-        wrapper.setProps({bgIcon: "http://image.png" });
+    it('设置头像图片的大小', () => {
+        wrapper.setProps({sizeNum: "50" });
         return Vue.nextTick().then(function () {
-            expect(wrapper.find('.icon').hasStyle('background-image','url(http://image.png)')).toBe(true);
+            expect(wrapper.find('.nut-avatar').hasStyle('width','50px')).toBe(true);
         })
     });
+
+
 });

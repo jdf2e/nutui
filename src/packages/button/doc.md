@@ -2,6 +2,78 @@
 
 ## 基本用法 
 
+按钮状态
+```html
+    <div class="btn-state">
+      <nut-button block>默认状态</nut-button>
+      <nut-button block>点击状态</nut-button>
+      <nut-button disabled block>不可点击状态</nut-button>
+    </div>
+```
+```scss
+.btn-state {
+  button {
+    margin-bottom: 10px;
+  }
+}
+```
+按钮尺寸
+```html
+    <div class="btn-size">
+      <nut-button size="big">大号按钮</nut-button>
+      <nut-button size="middle">中号按钮</nut-button>
+      <nut-button size="small">小号按钮</nut-button>
+    </div>
+```
+底部分栏按钮
+```html
+    <div class="btn-size two">
+      <nut-button size="middle" type="bottom">按钮A</nut-button>
+      <nut-button size="middle">按钮B</nut-button>
+    </div>
+    <div class="btn-size three">
+      <nut-button size="middle" type="bottom">按钮A</nut-button>
+      <nut-button size="middle" type="bottom">按钮B</nut-button>
+      <nut-button size="middle" type="bottom">按钮C</nut-button>
+    </div>
+    <div class="btn-size four">
+      <nut-button size="middle" type="bottom">按钮A</nut-button>
+      <nut-button size="middle" type="bottom">按钮B</nut-button>
+      <nut-button size="middle" type="bottom">按钮C</nut-button>
+      <nut-button size="middle" type="bottom">更多</nut-button>
+    </div>
+```
+```scss
+.btn-state {
+  button {
+    margin-bottom: 10px;
+  }
+}
+.btn-size {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  margin-top: 24px;
+  &.two {
+    button {
+      width: 168px;
+    }
+  }
+  &.three {
+    button {
+      width: 109px;
+    }
+  }
+  &.four {
+    button {
+      width: 79px;
+    }
+    .middle {
+      padding: 0;
+    }
+  }
+}
+```
 常规按钮
 
 ```html
@@ -43,13 +115,13 @@ export default {
 
 ```html
 <nut-button 
-  small
+  size="small"
 >
   去结算
 </nut-button>
 
 <nut-button 
-  small 
+  size="small" 
   disabled
 >
   去结算（disabled）
@@ -84,7 +156,7 @@ export default {
 <nut-button 
   type="red" 
   shape="circle" 
-  small
+  size="small"
 >
   确认收货
 </nut-button>
@@ -92,7 +164,7 @@ export default {
 <nut-button 
   type="gray" 
   shape="circle" 
-  small
+  size="small"
 >
   查看物流
 </nut-button>
@@ -100,7 +172,7 @@ export default {
 <nut-button 
   type="default" 
   shape="circle" 
-  small
+  size="small"
 >
   再次购买
 </nut-button>
@@ -108,7 +180,7 @@ export default {
 <nut-button 
   type="light" 
   shape="circle" 
-  small
+  size="small"
 >
   降价通知
 </nut-button>
@@ -120,7 +192,7 @@ export default {
 <nut-button
   type="primary" 
   shape="circle" 
-  small
+  size="small"
 >
   京东快递
 </nut-button>
@@ -128,7 +200,7 @@ export default {
 <nut-button 
   type="lightred" 
   shape="circle" 
-  small
+  size="small"
 >
   好评 6.6万
 </nut-button>
@@ -137,7 +209,7 @@ export default {
   type="actived" 
   shape="circle" 
   icon="tick" 
-  small
+  size="small"
 >
   全部 100万
 </nut-button>
@@ -150,7 +222,7 @@ export default {
   type="actived" 
   shape="circle" 
   icon="tick" 
-  small
+  size="small"
 >
 </nut-button>
 ```
@@ -172,7 +244,7 @@ export default {
 <nut-button 
   type="actived" 
   shape="circle" 
-  small
+  size="small"
 >
   象牙白
 </nut-button>
@@ -180,7 +252,7 @@ export default {
 <nut-button 
   type="light" 
   shape="circle" 
-  small
+  size="small"
 >
   皓月灰
 </nut-button>
@@ -188,7 +260,7 @@ export default {
 <nut-button 
   type="dashed" 
   shape="circle" 
-  small
+  size="small"
 >
   晶钻蓝
 </nut-button>
@@ -200,7 +272,7 @@ export default {
 <nut-button 
   type="actived" 
   shape="circle" 
-  small 
+  size="small" 
   color="#fff"
 >
   象牙白
@@ -209,7 +281,7 @@ export default {
 <nut-button 
   type="primary" 
   shape="circle" 
-  small 
+  size="small" 
   color="rgb(0,0,0)"
 >
   象牙白
@@ -220,7 +292,7 @@ export default {
   shape="circle" 
   icon="tick" 
   color="rgb(0,0,0)" 
-  small
+  size="small"
 >
 </nut-button>
 
@@ -229,7 +301,7 @@ export default {
   shape="circle" 
   icon="tick" 
   color="rgb(0,0,0)" 
-  small
+  size="small"
 >
   全部 100万
 </nut-button>
@@ -239,11 +311,11 @@ export default {
 
 ## Prop
 
-| 字段  | 说明                                                                                      | 类型    | 默认值 |
-| ----- | ----------------------------------------------------------------------------------------- | ------- | ------ |
-| type  | 按钮类型，可选类型包含：空、red、gray、light、lightred、primary、default、actived、dashed | String  | -      |
-| block | 是否为通栏                                                                                | Boolean | false  |
-| small | 是否为小号组件                                                                            | Boolean | false  |
-| shape | 形状配置，可选类型：空、circle                                                            | String  | -      |
-| icon  | 按钮前的图标，参考Icon组件                                                                | String  | -      |
-| color | 自定义颜色，包含文字与图片颜色                                                            | String  | -      |
+| 字段  | 说明                                                                                     | 类型    | 默认值 |
+| ----- | ---------------------------------------------------------------------------------------- | ------- | ------ |
+| type  | 按钮类型，可选类型包含：空/bottom/red/gray/light/lightred/primary/default/actived/dashed | String  | -      |
+| block | 是否为通栏                                                                               | Boolean | false  |
+| size  | big /middle/small                                                                      | String  | big |
+| shape | 形状配置，可选类型：空、circle                                                           | String  | -      |
+| icon  | 按钮前的图标，参考Icon组件                                                               | String  | -      |
+| color | 自定义颜色，包含文字与图片颜色                                                           | String  | -      |

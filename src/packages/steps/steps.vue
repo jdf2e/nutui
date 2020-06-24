@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-steps">
+  <div class="nut-steps" :class="{horizontal: direction === 'horizontal'}">
     <slot></slot>
   </div>
 </template>
@@ -8,7 +8,19 @@ export default {
   name: 'nut-steps',
   props: {
     current: {
-      type: Number
+      type: Number,
+      default: 0
+    },
+    timeForward: {
+      type: Boolean,
+      default: false
+    },
+    direction: {
+      type: String,
+      default: 'vertical'
+    },
+    type: {
+      type: String
     },
     source: {
       type: Array,
@@ -16,44 +28,37 @@ export default {
         return [];
       }
     },
-    status: {
-      validator(value) {
-        return ['wait', 'process', 'finish', 'error'].includes(value);
-      },
-      default: 'process'
-    }
   },
   data() {
     return {
-      steps: [],
-      stepOffset: 0
+      steps: []
     };
   },
   methods: {
     updateChildProps(isInit) {
       const total = this.steps.length;
       this.steps.forEach((child, index) => {
-        child.stepNumber = index + 1;
-        if (this.direction === 'horizontal') {
-          child.total = total;
-        }
         // 如果已存在status,且在初始化时,则略过
         // todo 如果当前是error,在current改变时需要处理
         if (!(isInit && child.currentStatus)) {
-          if (index == this.current - 1) {
-            if (this.status != 'error') {
-              child.currentStatus = 'process';
-            } else {
-              child.currentStatus = 'error';
+          if (this.current === index) {
+            child.currentStatus = 'nut-step-status-process';
+          }
+          if (this.type === 'process') {
+            if (index < this.current) {
+              child.currentStatus = 'nut-step-status-finish';
             }
-          } else if (index < this.current) {
-            child.currentStatus = 'finish';
-          } else {
-            child.currentStatus = 'wait';
+            if (index > this.current) {
+              child.currentStatus = 'nut-step-status-wait';
+            }
           }
         }
+        
         if (index + 1 === total) {
           child.currentStatus += ' nut-step-last';
+        }
+        if (this.timeForward) {
+          child.timeForward = true;
         }
       });
     },

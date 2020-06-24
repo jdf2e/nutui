@@ -1,27 +1,38 @@
 <template>
   <div class="demo-list">
-    <h4>基本用法</h4>
+    <h4>通用方法</h4>
+    <P>自定义样式，和图片预览</P>
     <div>
-      <nut-cell>
-        <span slot="title">
-          <nut-uploader
-            :name="name"
-            :url="url"
-            :xhrState="stateNum"
-            :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
-            @success="demo1Success"
-            @failure="demo1Fail"
-            @start="demo1UploadStart"
-            @showMsg="showMsg"
-            >{{ demo1Name }}</nut-uploader
-          >
-        </span>
-        <div slot="desc"></div>
-      </nut-cell>
+      <div class="preview-img-box">
+        <transition name="fade">
+            <div class="img-list" v-if="previewImg">
+              <img-cell v-for="(item,index) in previewImg" 
+                        :key="index"   
+                        :src="item"
+                        :clear="()=>{clearImg(index)}"
+                         /> 
+            </div>
+        </transition>
+        <nut-uploader
+              class="demo-1"
+              :name="name"
+              :url="url"
+              :xhrState="stateNum"
+              :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
+              :isPreview="true"
+              @preview="preview"
+              @success="demo1Success"
+              @failure="demo1Fail"
+              @start="demo1UploadStart"
+              @showMsg="showMsg"
+              :multiple="true"
+        >+</nut-uploader> 
+      </div>
+       
     </div>
 
-    <h4>高级用法</h4>
-    <p>结合Button组件和Toast组件使用</p>
+    <h4>其它用法</h4>
+    <p>1. 结合 Button 组件和 Toast 组件使用</p>
     <div>
       <nut-cell>
         <span slot="title">
@@ -34,41 +45,13 @@
             @failure="demo2Fail"
             @showMsg="showMsg1"
           >
-            <nut-button small>{{ demo2Name }}</nut-button>
+            <nut-button size="small">{{demo2Name}}</nut-button>
           </nut-uploader>
         </span>
         <div slot="desc"></div>
       </nut-cell>
     </div>
-
-    <p>结合进度条Progress组件使用，展示上传进度</p>
-    <div>
-      <nut-cell>
-        <span slot="title">
-          <nut-uploader
-            :name="name"
-            :url="url"
-            :xhrState="stateNum"
-            :headers="headers"
-            @success="demoSuccess"
-            @fail="demoFail"
-            @progress="progress"
-            @showMsg="showMsg1"
-            :clearInput="true"
-          >
-            <nut-button small>上传</nut-button>
-          </nut-uploader>
-        </span>
-        <div slot="desc"></div>
-      </nut-cell>
-      <nut-cell>
-        <span slot="title">
-          <nut-progress class="progress-style" :percentage="progressNum" :showText="true" strokeWidth="12" />
-        </span>
-        <div slot="desc"></div>
-      </nut-cell>
-    </div>
-
+    
     <p>自定义headers&formData</p>
     <div>
       <nut-cell>
@@ -81,17 +64,21 @@
             :attach="formData"
             @success="demoSuccess"
             @fail="demoFail"
-            @preview="preview"
             @showMsg="showMsg1"
           >
-            <nut-button small>上传</nut-button>
+            <nut-button size="small">上传</nut-button>
           </nut-uploader>
         </span>
         <div slot="desc"></div>
       </nut-cell>
     </div>
 
-    <p>预览上传图片</p>
+    <!-- <p>预览上传图片</p>
+    <transition name="fade">
+        <div class="img-list" v-if="previewImg">
+          <img-cell v-for="(item,index) in previewImg" :key="index"   :src="item" /> 
+        </div>
+    </transition>
     <div>
       <nut-cell>
         <span slot="title">
@@ -104,13 +91,14 @@
             @fail="demoFail"
             @preview="preview"
             @showMsg="showMsg1"
+            :multiple="true"
           >
-            <nut-button small>上传</nut-button>
+            <nut-button size="small">上传</nut-button>
           </nut-uploader>
         </span>
         <div slot="desc"></div>
       </nut-cell>
-    </div>
+    </div> -->
     <p>上传图片前处理图片内容</p>
     <nut-cell>
       <span slot="title">
@@ -124,8 +112,9 @@
           @failure="demo1Fail"
           @start="demo1UploadStart"
           @showMsg="showMsg"
-          ><nut-button small>上传图片前处理图片内容</nut-button></nut-uploader
         >
+          <nut-button size="small">上传图片前处理图片内容</nut-button>
+        </nut-uploader>
       </span>
       <div slot="desc"></div>
     </nut-cell>
@@ -142,22 +131,21 @@
           @failure="demo1Fail"
           @start="demo1UploadStart"
           @showMsg="showMsg"
-          ><nut-button small>自定义增加上传图片数据</nut-button></nut-uploader
         >
+          <nut-button size="small">自定义增加上传图片数据</nut-button>
+        </nut-uploader>
       </span>
       <div slot="desc"></div>
     </nut-cell>
-    <transition name="fade">
-      <div class="img-outbox">
-        <img class="img-box" v-if="previewImg" :src="previewImg" alt />
-      </div>
-    </transition>
   </div>
 </template>
 
 <script>
+import imgCell from "./img-cell";
 export default {
-  components: {},
+  components: {
+    imgCell
+  },
   data() {
     return {
       selfData: {
@@ -177,14 +165,16 @@ export default {
         f2: 'test1'
       },
       progressNum: 0,
-      previewImg: null,
-      previewImg2: null,
-      progressNum2: null,
-      upOver: false,
-      demo3Type: ['application/zip']
+      previewImg: []
     };
   },
   methods: {
+    clearImg(index){
+      // console.log(index)
+      // let ary =  JSON.parse(JSON.stringify(this.previewImg));
+      this.previewImg.splice(index,1)
+      // console.log(ary)
+    },
     test(event) {
       console.log(event, '可以处理input选择的内容');
       return {
@@ -222,8 +212,11 @@ export default {
     progress(file, loaded, total) {
       this.progressNum = parseInt((100 * loaded) / total);
     },
-    preview(file) {
-      this.previewImg = file;
+    preview(file) {      
+      
+      let previewImg = this.previewImg
+      this.previewImg = [...previewImg,...file]
+      
     },
     showMsg1(msg) {
       this.$toast.text(msg);
@@ -236,47 +229,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.img-outbox {
-  margin-top: 20px;
-  margin-left: 20px;
-  width: 100px;
-  height: 100px;
-  border-radius: 6px;
-  position: relative;
-  border: 1px solid #f2f2f2;
-  line-height: 100px;
-  display: flex;
-  justify-content: center;
+.img-list{
+  display: flex;  
   align-items: center;
-  .img-box {
-    margin-top: 0;
-  }
-  .icon {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    right: 0;
-  }
-  .pr {
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: #fff;
-    font-size: 16px;
-    text-align: center;
-    line-height: 100px;
-    background: rgba(0, 0, 0, 0.2);
-  }
+  flex-wrap: wrap;
 }
-.img-box {
-  margin-top: 20px;
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 6px;
+
+.demo-1{
+  width: 75px;
+  height: 75px;
+  line-height: 75px;
+  text-align: center;
+  border: 1px solid rgba(230,230,230,1);
+  border-radius: 3px;
+  background: #fff;
+}
+.preview-img-box{
+  display: flex;  
+  padding: 10px ;
+  flex-wrap: wrap;
 }
 </style>

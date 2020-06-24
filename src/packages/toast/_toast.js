@@ -5,6 +5,7 @@ let ToastConstructor = Vue.extend(settings);
 let instance;
 let instanceArr = [];
 let defaultOptionsMap = {};
+const id = '0';
 const defaultOptions = {
   msg: '',
   visible: false,
@@ -37,15 +38,10 @@ function _showToast() {
     instance.visible = true;
   });
 }
-
+ 
 function _getInstance(obj) {
-  let opt = {
-    id: new Date().getTime(),
-    ...currentOptions,
-    ...defaultOptionsMap[obj.type],
-    ...obj
-  };
-
+  let opt = {id};
+  Object.assign(opt,currentOptions,defaultOptionsMap[obj.type],obj)
   //有相同id者共用一个实例，否则新增实例
   if (opt['id'] && instanceArr[opt['id']]) {
     instance = instanceArr[opt['id']];
@@ -87,7 +83,7 @@ let Toast = {
     return _getInstance({ ...obj, msg, type: 'warn' });
   },
   loading(msg, obj = {}) {
-    obj = { ...obj, id: obj.id || 'loading', msg, type: 'loading' };
+    obj = { ...obj, id: obj.id|| id , msg, type: 'loading' };
     obj.cover = typeof obj.cover !== 'undefined' ? obj.cover : true; //loading类型默认打开遮罩层
     obj.duration = obj.duration || 0; //loading类型默认不自动关闭
     return _getInstance(obj);

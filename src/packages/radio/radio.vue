@@ -1,17 +1,22 @@
 <template>
-  <label :class="['nut-radio', 'nut-radio-size-' + currentSize]" @click="clickEvt">
-    <input
-      type="radio"
-      :value="currentValue"
-      :class="{ 'nut-radio-ani': isAnimated }"
-      :checked="currentValue === label"
-      :disabled="isDisabled"
-      :label="label"
-    />
-    <span class="nut-radio-label">
-      <slot></slot>
-    </span>
-  </label>
+  <div class="nut-radio"  :class="{
+      'nut-radio-list-radio' : type === 'radio',
+      'nut-radio-list-label' : type === 'label',
+      'nut-radio-list-list' : type === 'list'
+     }">
+      <input
+        type="radio"
+        :value="currentValue"
+        :class="{ 'nut-radio-ani': isAnimated }"
+        :checked="checked"
+        :disabled="isDisabled"
+        :label="label"
+        :name="name"
+        @input="valChange"
+      />
+      <div class="text-box">{{text}}<slot></slot></div>
+      <div class="box-border"></div>      
+  </div>
 </template>
 <script>
 import findCptUpward from '../../mixins/findCptUpward/index.js';
@@ -21,8 +26,12 @@ export default {
   mixins: [findCptUpward],
   props: {
     value: {
-      type: [String, Number, Boolean],
+      type: [String, Number, Boolean,Function],
       default: false
+    },
+    checked:{
+      type:Boolean,
+      default:false
     },
     label: [String, Number, Boolean],
     size: {
@@ -36,6 +45,20 @@ export default {
     animated: {
       type: Boolean,
       default: true
+    },
+    type:{
+      type: String,
+      default:'radio'
+    },
+    name:{
+      type:String
+    },
+    text:String,
+    radioData:{
+      type:Object,
+      default(){
+
+      }
     }
   },
   data() {
@@ -72,6 +95,10 @@ export default {
         return false;
       }
       this.currentValue = this.label;
+    },
+    valChange(e){        
+      let radioData = this.radioData;      
+      this.$emit('radioChange',radioData)
     }
   }
 };

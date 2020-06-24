@@ -175,13 +175,14 @@ export default {
 <style lang="scss" scoped>
 .btn,
 .show-value {
-  display: inline-block;
-  margin-left: 20px;
+	display: inline-block;
+	margin-left: 20px;
 }
+
 .btn {
-  padding: 5px;
-  border-radius: $btn-border-radius-small;
-  color: #fff;
-  background-color: $primary-color;
+	padding: 5px;
+	border-radius: $btn-border-radius-small;
+	color: #fff;
+	background-color: $primary-color;
 }
 </style>

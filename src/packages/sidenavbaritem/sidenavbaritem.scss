@@ -1,8 +1,10 @@
 .nut-sidenavbaritem {
-  height: 40px;
-  line-height: 40px;
-  .item-title {
-    color: $title-color;
-    background-color: #fff;
-  }
+	height: 48px;
+	line-height: 48px;
+
+	.item-title {
+		color: $text-black-2;
+		background-color: #fff;
+		text-decoration: none;
+	}
 }

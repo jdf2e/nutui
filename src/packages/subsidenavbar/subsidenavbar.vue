@@ -1,8 +1,15 @@
 <template>
   <div class="nut-subsidenavbar sidenavbar-item" :ikey="ikey">
     <div class="item-title" @click.stop="handleClick">
-      <a href="javascript:;" class="sidenavbar-title">{{ title }}</a>
-      <span class="sidenavbar-icon"><nut-icon type="down" :class="direction"></nut-icon></span>
+      <span v-if="$slots.icon" class="subsidenavbar-icon"><slot name="icon"></slot></span>
+      <a href="javascript:;" class="sidenavbar-title">
+        {{ title }}
+        <slot name="desc"></slot>
+      </a>
+      <span class="sidenavbar-icon">
+          <span v-if="$slots.oper"><slot name="oper"></slot></span>
+          <nut-icon v-if="!$slots.oper" type="self" :url="require('../../assets/svg/arrow-to-right.svg')"></nut-icon>
+      </span>
     </div>
     <div class="sub-sidenavbar-list" :class="!direction ? 'nutFadeIn' : 'nutFadeOut'" :style="{ height: !direction ? 'auto' : 0 }">
       <slot></slot>
@@ -36,7 +43,7 @@ export default {
   },
   methods: {
     handleClick() {
-      this.$emit('titleClick');
+      this.$emit('title-click');
       this.direction = !this.direction ? 'up' : '';
     }
   }
