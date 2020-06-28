@@ -9,6 +9,9 @@
     <nut-drag direction="x" :style="{ top: '200px', left: '8px' }">
       <div class="touch-dom">只能在X轴拖动</div>
     </nut-drag>
+    <nut-drag direction="y" :style="{ top: '200px', right: '8px' }">
+      <div class="touch-dom">只能在Y轴拖动</div>
+    </nut-drag>
     <h4 :style="{ top: '250px' }">自动吸边</h4>
     <nut-drag direction="x" :attract="true" :style="{ top: '300px', left: '8px' }">
       <div class="touch-dom">拖动我</div>
