@@ -20,8 +20,6 @@
 <script>
 import { overlayProps, getProps } from '../popup/index';
 import Popup from './../popup/popup.vue';
-console.log(overlayProps, 'overlayProps');
-
 export default {
   name: 'nut-notify',
   props: {

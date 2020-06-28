@@ -125,6 +125,9 @@ export default {
     },
     showNotify() {
       this.show = true;
+      setTimeout(() => {
+        this.show = false;
+      }, 200);
     },
     defaultNotify() {
       this.$notify.setDefaultOptions({

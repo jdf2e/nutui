@@ -73,6 +73,9 @@ export default {
 ```javascript
     mounted(){
       this.show = true;
+      setTimeout(() => {
+        this.show = false;
+      }, 200);
     }
 ```
 ## 修改默认配置
