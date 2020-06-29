@@ -1,48 +1,7 @@
 <template>
   <div class="demo-list">    
-     <nut-cell>
-      <span slot="title">
-         <h2>radio 全局设置</h2>
-          输出结果类型选择 :
-     </span>
     </nut-cell>
-    <nut-cell>
-      <span slot="title">
-        <radio-group 
-            :list="resloutType"
-            :name="'resloutType'"
-            :styleType="'radio'"
-            :effect-key = "'value'"
-            :effect-text="'name'"
-            :checkedIndex="0"    
-            :reslout-attr="'value'"   
-            v-model="resloutdemo1"                 
-          />
-       </span>
-    </nut-cell>
-    <nut-cell>
-      <span slot="title">
-          禁用：可以传数字、数组、字符串all/no、布尔true/false， 
-          <br>
-          注意：匹配结果为 false 为不禁用
-          <br>
-          0,1,2 代表数组
-          <br>
-          <nut-textinput 
-              v-model="disableVal"
-              label="可以输入下上面的类型看下效果："
-              placeholder="请输入内容"
-              :clearBtn="true"
-              :disabled="false"
-          />
-     </span>
-    </nut-cell>
-    <nut-cell>
-      <span slot="title">
-    输入结果 {{radioDisable}}
-     </span>
-    </nut-cell>
-    <h4>1. styleType= "radio" 基本样式输出属性为 {{resloutdemo1}} 的值</h4>
+    <h4>基础样式</h4>
     <nut-cell>
       <span slot="title">
         <radio-group 
@@ -59,27 +18,8 @@
     </nut-cell>
     <nut-cell>
         <span slot="title"> 选择结果 {{resloutdemo1}}: {{labelReslut0}}</span>
-    </nut-cell>   
-    <h4>2. styleType= "label" 按钮单选组输出属性为 {{resloutdemo1}} 的值</h4>
-    <nut-cell>
-        <span slot="title">        
-          <radio-group 
-            :list="labelList"
-            :name="'test'"
-            :styleType="'label'"
-            :effect-key = "'value'"
-            :effect-text="'text'"
-            :checkedIndex="1"    
-            :disabled-value="radioDisable" 
-            :reslout-attr="resloutdemo1"   
-            v-model="labelReslut"                 
-          />
-        </span>
-      </nut-cell>
-      <nut-cell>
-        <span slot="title"> 选择结果 {{resloutdemo1}}: {{labelReslut}}</span>
-      </nut-cell>
-      <h4>3. styleType= "list" 列表单选组输出属性为 {{resloutdemo1}} 的值</h4>      
+    </nut-cell>       
+      <h4>列表样式</h4>      
       <nut-cell>
         <span slot="title">        
           <radio-group 
@@ -98,6 +38,41 @@
       <nut-cell>
         <span slot="title"> 选择结果 {{resloutdemo1}}: {{labelReslut2}}</span>
       </nut-cell>
+      <h4>列表禁选样式</h4>      
+      <nut-cell>
+        <span slot="title">        
+          <radio-group 
+            :list="labelList"
+            :style-type="'list'"
+            :name="'test4'"
+            :effect-key = "'value'"
+            :effect-text="'text'"
+            :reslout-attr="resloutdemo1"  
+            :checkedIndex="0" 
+            :disabled-value="'all'"   
+            v-model="labelReslut2"                 
+          />
+        </span>
+      </nut-cell>
+      <h4>按钮样式</h4>
+    <nut-cell>
+        <span slot="title">        
+          <radio-group 
+            :list="labelList2"
+            :name="'test'"
+            :styleType="'label'"
+            :effect-key = "'value'"
+            :effect-text="'text'"
+            :checkedIndex="1"    
+            :disabled-value="radioDisable" 
+            :reslout-attr="resloutdemo1"   
+            v-model="labelReslut"                 
+          />
+        </span>
+      </nut-cell>
+      <nut-cell>
+        <span slot="title"> 选择结果 {{resloutdemo1}}: {{labelReslut}}</span>
+      </nut-cell>
   </div>
 </template>
 
@@ -110,33 +85,40 @@ export default {
         {
           name:'test',
           value:1,
-          text:'亚瑟'
+          text:'这里是选项A'
         },
         {
           name:'test',
           value:2,
-          text:'廉颇'
+          text:'这里是选项B'
         },
         {
           name:'test',
           value:3,
-          text:'东皇太一'
+          text:'这里是选项C'
+        },        
+      ],
+      labelList2:[
+        {
+          name:'test',
+          value:1,
+          text:'功能逻辑'
         },
+        {
+          name:'test',
+          value:2,
+          text:'系统文案'
+        },
+        {
+          name:'test',
+          value:3,
+          text:'员工福利'
+        },   
         {
           name:'test',
           value:4,
-          text:'吕布'
-        },
-        {
-          name:'test',
-          value:5,
-          text:'黑切'
-        },
-        {
-          name:'test',
-          value:6,
-          text:'冰心'
-        }
+          text:'薪酬提成'
+        },     
       ],
       labelReslut0:"",
       labelReslut:"",
