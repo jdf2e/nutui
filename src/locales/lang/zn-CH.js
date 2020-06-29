@@ -2,8 +2,8 @@ import Vue from 'vue';
 
 const lang = {
   lang: {
-    okBtnTxt: '确 定',
-    cancelBtnTxt: '取 消',
+    okBtnTxt: '确定',
+    cancelBtnTxt: '取消',
     calendar: {
       loadPrevMonth: '加载上一个月',
       noMoreMonth: '没有更早月份~',
