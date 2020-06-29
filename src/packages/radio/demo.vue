@@ -9,6 +9,7 @@
             :name="'test0'"
             :styleType="'radio'"
             :effect-key = "'value'"
+            :checkedIndex="0" 
             :effect-text="'text'"            
             :reslout-attr="resloutdemo1"  
             :disabled-value="radioDisable" 
