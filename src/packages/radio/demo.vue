@@ -2,8 +2,7 @@
   <div class="demo-list">    
     </nut-cell>
     <h4>基础样式</h4>
-    <nut-cell>
-      <span slot="title">
+    <div class="demo-cell">
         <radio-group 
             :list="labelList"
             :name="'test0'"
@@ -15,14 +14,10 @@
             :disabled-value="radioDisable" 
             v-model="labelReslut0"                 
           />
-      </span>
-    </nut-cell>
-    <nut-cell>
-        <span slot="title"> 选择结果 {{resloutdemo1}}: {{labelReslut0}}</span>
-    </nut-cell>       
+           <div class="cell-reslout"> 选择结果 {{resloutdemo1}}: {{labelReslut0}}</div> 
+    </div>   
       <h4>列表样式</h4>      
-      <nut-cell>
-        <span slot="title">        
+        <div class="demo-cell">
           <radio-group 
             :list="labelList"
             :style-type="'list'"
@@ -33,15 +28,11 @@
             :checkedIndex="0" 
             :disabled-value="radioDisable"   
             v-model="labelReslut2"                 
-          />
-        </span>
-      </nut-cell>
-      <nut-cell>
-        <span slot="title"> 选择结果 {{resloutdemo1}}: {{labelReslut2}}</span>
-      </nut-cell>
+          />   
+          <div class="cell-reslout"> 选择结果 {{resloutdemo1}}: {{labelReslut2}}</div> 
+        </div>
       <h4>列表禁选样式</h4>      
-      <nut-cell>
-        <span slot="title">        
+         <div class="demo-cell">
           <radio-group 
             :list="labelList"
             :style-type="'list'"
@@ -51,10 +42,10 @@
             :reslout-attr="resloutdemo1"  
             :checkedIndex="0" 
             :disabled-value="'all'"   
-            v-model="labelReslut2"                 
+            v-model="labelReslut3"                 
           />
-        </span>
-      </nut-cell>
+           <div class="cell-reslout"> 选择结果 {{resloutdemo1}}: {{labelReslut3}}</div> 
+        </div>
       <h4>按钮样式</h4>
     <nut-cell>
         <span slot="title">        
@@ -124,6 +115,7 @@ export default {
       labelReslut0:"",
       labelReslut:"",
       labelReslut2:"",
+      labelReslut3:"",
       resloutType:[
         {
           value:'value',
@@ -171,5 +163,13 @@ export default {
 		background-size: 50% 50%;
 		border: none;
 	}
+}
+.demo-cell{
+  background: #fff;
+  padding:0 20px;
+}
+.cell-reslout{
+  padding:20px 0;
+  font-size: 15px;
 }
 </style>
