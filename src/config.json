@@ -651,6 +651,15 @@
       "sort": "0",
       "showDemo": true,
       "author": "yumingming"
+    },
+    {
+      "name": "FixedNav",
+      "type": "component",
+      "chnName": "悬浮导航",
+      "desc": "拖拽导航",
+      "sort": "3",
+      "showDemo": true,
+      "author": "richard1015"
     }
   ]
 }

@@ -68,7 +68,6 @@ export declare class Elevator extends UIComponent { }
 export declare class LeftSlip extends UIComponent { }
 export declare class TabSelect extends UIComponent { }
 export declare class Popup extends UIComponent { }
-
 export declare class LuckDraw extends UIComponent { }
 export declare class Video extends UIComponent { }
 export declare class Signature extends UIComponent { }
@@ -83,3 +82,4 @@ export declare class Drag extends UIComponent { }
 export declare class Address extends UIComponent { }
 export declare class Notify extends UIComponent { }
 export declare class CountUp extends UIComponent { }
+export declare class FixedNav extends UIComponent { }
