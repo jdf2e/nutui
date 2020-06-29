@@ -47,9 +47,9 @@
            <div class="cell-reslout"> 选择结果 {{resloutdemo1}}: {{labelReslut3}}</div> 
         </div>
       <h4>按钮样式</h4>
-    <nut-cell>
-        <span slot="title">        
-          <radio-group 
+    <div class="demo-cell">     
+          <div class="test-button-box">
+            <radio-group 
             :list="labelList2"
             :name="'test'"
             :styleType="'label'"
@@ -60,11 +60,9 @@
             :reslout-attr="resloutdemo1"   
             v-model="labelReslut"                 
           />
-        </span>
-      </nut-cell>
-      <nut-cell>
-        <span slot="title"> 选择结果 {{resloutdemo1}}: {{labelReslut}}</span>
-      </nut-cell>
+          </div>
+          <div class="cell-reslout"> 选择结果 {{resloutdemo1}}: {{labelReslut}}</div> 
+      </div>     
   </div>
 </template>
 
@@ -165,11 +163,14 @@ export default {
 	}
 }
 .demo-cell{
-  background: #fff;
-  padding:0 20px;
+  background: #fff;  
 }
 .cell-reslout{
-  padding:20px 0;
+  border-top: 1px solid #E6E6E6;
+  padding:20px 20px;
   font-size: 15px;
+}
+.test-button-box{
+  padding:18px 20px;
 }
 </style>
