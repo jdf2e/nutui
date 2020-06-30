@@ -1,6 +1,10 @@
 <template>
-  <nut-actionsheet :is-visible="isVisible" @close="closeActionSheet">
-    <div class="nut-picker" slot="custom" :class="customClassName ? customClassName : null">
+  <nut-popup
+      v-model="isVisiblePopup"
+      position="bottom"
+      @click-overlay="closeActionSheet" 
+    > 
+    <div class="nut-picker" :class="customClassName ? customClassName : null">
       <div class="nut-picker-control">
         <span class="nut-picker-cancel-btn" @click="closeActionSheet">{{ nutTranslate('lang.cancelBtnTxt') }}</span>
         <div class="nut-picker-title">{{ title ? title : '' }}</div>
@@ -20,7 +24,7 @@
         </template>
       </div>
     </div>
-  </nut-actionsheet>
+  </nut-popup>
 </template>
 <script>
 import nutactionsheet from '../actionsheet/actionsheet.vue';
@@ -41,7 +45,7 @@ export default {
     },
     title: {
       type: String,
-      default: ' '
+      default: ''
     },
     listData: {
       type: Array,
@@ -58,12 +62,16 @@ export default {
   },
   data() {
     return {
+      isVisiblePopup: false,
       chooseValueData: [],
       cacheValueData: [],
       isUpdate: false
     };
   },
   watch: {
+    isVisible: function(value) {
+      this.isVisiblePopup = value;
+    },
     defaultValueData: function() {
       this.chooseValueData = [...this.defaultValueData];
       this.cacheValueData = [...this.defaultValueData];
@@ -97,7 +105,7 @@ export default {
       }
     }
   },
-  created() {
+  mounted() {
     if (this.defaultValueData && this.defaultValueData.length) {
       this.chooseValueData = [...this.defaultValueData];
     } else {

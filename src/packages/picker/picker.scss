@@ -5,16 +5,19 @@
 
 .nut-picker-control {
 	display: flex;
-	height: 40px;
-	border-bottom: 1px solid $light-color;
+	height: 48px;
+	border-bottom: 1px solid $split-line-color;
 	text-align: center;
-	line-height: 40px;
-	font-size: $font-size-base;
+	line-height: 48px;
+	font-size: $font-size-body-normal;
 
 	.nut-picker-cancel-btn,
 	.nut-picker-confirm-btn {
 		width: 60px;
-		color: $primary-color;
+		color: $text-black-2;
+	}
+	.nut-picker-confirm-btn {
+		color: $text-jd-red;
 	}
 
 	.nut-picker-title {
@@ -22,6 +25,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+		color: $text-black-1;
 	}
 }
 
@@ -47,70 +51,40 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		//background-image: linear-gradient(180deg,hsla(0,0%,100%,.9),hsla(0,0%,100%,.6)),linear-gradient(0deg,hsla(0,0%,100%,.9),hsla(0,0%,100%,.6));
+		background-image: linear-gradient(180deg,hsla(0,0%,100%,.85),hsla(0,0%,100%,.4)),linear-gradient(0deg,hsla(0,0%,100%,.85),hsla(0,0%,100%,.4));
 		background-position: top, bottom;
-		background-size: 100% 108px;
+		background-size: 100% 99px;
 		background-repeat: no-repeat;
 		z-index: 3;
 	}
 
 	.nut-picker-indicator {
 		position: absolute;
-		top: 108px;
+		top: 99px;
 		width: 100%;
-		height: 34px;
-		border-top: 1px solid $dark-color;
-		border-bottom: 1px solid $dark-color;
+		height: 50px;
+		border-top: 1px solid $split-line-color;
+		border-bottom: 1px solid $split-line-color;
 		z-index: 3;
 	}
 
-	.nut-picker-content,
-	.nut-picker-roller {
+	.nut-picker-content{
 		position: absolute;
-		top: 108px;
+		top: 100px;
 		width: 100%;
-		height: 36px;
-	}
-
-	.nut-picker-content {
 		background: #fff;
 		z-index: 2;
-		overflow: hidden;
 	}
 
-	.nut-picker-item,
-	.nut-picker-roller-item {
+	.nut-picker-item{
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		height: 36px;
-		line-height: 36px;
-		color: $title-color;
-		font-size: $font-size-base;
+		height: 50px;
+		line-height: 50px;
+		color: $text-black-1;
+		font-size: $font-size-body-large;
 		text-align: center;
-	}
-
-	.nut-picker-item {
-		font-size: 15px;
-		background: #fff;
-	}
-
-	.nut-picker-roller {
-		z-index: 1;
-		transform-style: preserve-3d;
-
-		.nut-picker-roller-item {
-			backface-visibility: hidden;
-			position: absolute;
-			top: 0;
-			width: 100%;
-			color: $text-color;
-		}
-
-		.nut-picker-roller-item-hidden {
-			visibility: hidden;
-			opacity: 0;
-		}
 	}
 }
 

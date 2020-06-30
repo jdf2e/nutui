@@ -1,107 +1,66 @@
 @import '../../styles/animation/pulse';
-.warper{
-	display: inline-block;
-}
-.nut-radio {
-	margin-right: 10px;
-
-	.nut-radio-label {
-		pointer-events: none;
-		vertical-align: middle;
-	}
-
-	input {
-		position: relative;
-		-webkit-appearance: none;
-		border: 1px solid $border-color-base;
-		border-radius: 50%;
-		background-size: cover;
-		outline: 0;
-		opacity: 1;
-		vertical-align: middle;
-		margin-top: 0;
-
-		&::after {
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			content: '';
-			width: 0;
-			height: 0;
-			transform: translate(-50%, -50%);
-			background: $primary-color;
-			border-radius: 50%;
-			opacity: 0;
-			pointer-events: none;
-		}
-
-		&:checked {
-			@include nut-radio-bg('FFFFFF');
-
-			background-color: $primary-color;
-			background-repeat: no-repeat;
-			background-position: center;
-			border-color: $primary-color;
-			background-size: 60%;
-			box-shadow: 0 4px 6px 0 rgba($primary-color, 0.15);
-
-			&:not(:disabled).nut-radio-ani::after {
-				animation: nutPulse $animation-duration;
-			}
-		}
-
-		&:disabled {
-			background-color: $disabled-bg;
-			border-color: $disabled-color;
-			box-shadow: none;
-
-			&:checked {
-				@include nut-radio-bg('999999');
-			}
-		}
-	}
-
-	&.nut-radio-size-base {
-		input {
-			width: 19px;
-			height: 19px;
-		}
-
-		.nut-radio-label {
-			font-size: $font-size-base;
-		}
-	}
-
-	&.nut-radio-size-small {
-		input {
-			width: 16px;
-			height: 16px;
-		}
-
-		.nut-radio-label {
-			font-size: $font-size-small;
-		}
-	}
-
-	&.nut-radio-size-large {
-		input {
-			width: 22px;
-			height: 22px;
-		}
-
-		.nut-radio-label {
-			font-size: $font-size-large;
-		}
+.nut-radio{
+	input{
+		position: absolute;
+		opacity: 0;
+		z-index: 3;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: block;
+		margin: 0;
+		padding:0;
 	}
 }
-.nut-radio-list{
+.nut-radio-list-radio{
+	height: 50px;
+	display: flex;
+	align-items: center;
+	flex-direction:row-reverse;
+	justify-content: flex-end;
+	position: relative;
+	padding:0 20px;
+	border-bottom: 1px solid #E6E6E6;
+	&:last-child{
+		border-bottom:	none;
+	}
+	.box-border{
+		box-sizing: border-box;
+		width: 24px;
+		height: 24px;
+		border-radius: 12px;
+		border:1px solid #dcdcdc;
+	}
+	.text-box{
+		margin-left: 8px;
+	}
+	
+	input:checked~.box-border{
+		background: url(./../../assets/img/check-radio-on.png) no-repeat center;
+		background-size: 24px;
+		border:1px solid #f52805;
+	}	
+	input[disabled="disabled"]:checked ~ .box-border{
+		background: url(./../../assets/img/check-radio-ds-on.png) no-repeat center;
+		background-size: 24px;
+		border:1px solid #f7f7f7;
+	}
+	input[disabled="disabled"]+.text-box{
+		color:#C8C8C8 ;
+	}
+	input[disabled="disabled"]~ .box-border{
+		background:#f7f7f7;
+	}
+}
+.nut-radio-list-label{
 	display: inline-block;
 	text-align: center;
 	line-height: 28px;
 	height: 28px;	
 	position: relative;
-	font-size: 14px;	
-	padding:0 15px;
+	font-size: 14px;
+	width: 82px;
 	cursor: pointer;
 	label{
 		display: inline-block;		
@@ -144,5 +103,48 @@
 	input:checked +.text-box + .box-border{
 		background: rgba(255,239,235,1);
 		border: 1px solid rgba(225,37,27,1);
-	}	
+	}
+	input[disabled="disabled"]+.text-box{
+		color:#C8C8C8 ;
+	}
+	input[disabled="disabled"] +.text-box + .box-border{
+		background: #f7f7f7;
+		border: 1px solid #dcdcdc;
+	}
+}
+.nut-radio-list-list{
+	height: 50px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #E6E6E6;
+	position: relative;
+	padding: 0 20px;
+	&:last-child{
+		border-bottom:	none;
+	}
+	input{
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 3;
+		opacity: 0;
+		position: absolute;
+	}
+	.box-border{
+		margin-left: auto;
+	}
+	input:checked~.box-border{
+		width: 20px;
+		height: 21px;
+		background: url(./../../assets/img/checked-list.png) no-repeat center;
+		background-size: 20px;
+	}
+	input[disabled="disabled"]+.text-box{
+		color:#C8C8C8 ;
+	}
+	input[disabled="disabled"]~.box-border{
+		background: url(./../../assets/img/checked-list-ds.png) no-repeat center;
+		background-size: 20px;
+	}
 }
