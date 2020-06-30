@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>基础样式</h4>
     <nut-steps>
       <nut-step title="已签收" content="您的订单已由本人签收。如有疑问您可以联系配送员，感谢您在京东购物。" time="2020-03-03 11:09:96">

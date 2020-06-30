@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>图标文本标签栏</h4>
     <nut-tabbar @tab-switch="tabSwitch1" :tabbar-list="tabList1"></nut-tabbar>
     <h4>不同数量的标签栏</h4>

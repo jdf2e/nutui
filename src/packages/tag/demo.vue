@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>基础样式</h4>
     <div class="white-bg">
       <!-- green, orange, yellow, blue, purple -->

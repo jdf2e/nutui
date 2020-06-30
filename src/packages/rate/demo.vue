@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>基本用法</h4>
     <div>
       <nut-cell>
@@ -84,15 +84,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.demo {
-	padding-left: 0;
-	padding-right: 0;
-}
-
-h4 {
-	padding: 0 10px;
-}
-
 .fontcolor {
 	color: #ffc200;
 }

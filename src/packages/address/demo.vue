@@ -1,5 +1,5 @@
 <template>
-  <div class="address-box">
+  <div class="demo-list">
     <h4>选择自定义地址</h4>
     <div class="address-list init" @click="showAddress">
       <div class="titile">选择地址</div>
@@ -232,7 +232,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.address-box {
+.demo-list {
 	margin-top: 10px;
 
 	.address-list {

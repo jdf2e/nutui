@@ -1,43 +1,33 @@
 <template>
-  <div class="demo-list">
+  <div class="demo-list-pd">
     <h4>基本用法</h4>
-    <div class="demo-content">
-      <nut-button size="middle" @click.native="textToast1('我只传了文案一个参数')">文字提示</nut-button>
-      <nut-button size="middle" @click.native="textToast2('我传了文案和显示时长两个参数，多行文字默认居中展示', 5000)">长文字提示</nut-button>
-      <nut-button size="middle" @click.native="sucToast('操作成功')">成功提示</nut-button>
-      <nut-button size="middle" @click.native="failToast('操作失败')">失败提示</nut-button>
-      <nut-button size="middle" @click.native="warnToast('操作警告')" >警告提示</nut-button>
-    </div>
+    <nut-button size="middle" @click.native="textToast1('我只传了文案一个参数')">文字提示</nut-button>
+    <nut-button size="middle" @click.native="textToast2('我传了文案和显示时长两个参数，多行文字默认居中展示', 5000)">长文字提示</nut-button>
+    <nut-button size="middle" @click.native="sucToast('操作成功')">成功提示</nut-button>
+    <nut-button size="middle" @click.native="failToast('操作失败')">失败提示</nut-button>
+    <nut-button size="middle" @click.native="warnToast('操作警告')">警告提示</nut-button>
     <h4>加载提示</h4>
-    <div class="demo-content">
-      <nut-button size="middle" @click.native="showLoading()">透明遮罩</nut-button>
-      <nut-button size="middle" @click.native="showLoading2()">半透明遮罩</nut-button>
-      <nut-button size="middle" @click.native="showLoading3()">不自动消失+不带遮罩</nut-button>
-      <nut-button size="middle" @click.native="hideLoading()">隐藏Loading</nut-button>
-    </div>
+    <nut-button size="middle" @click.native="showLoading()">透明遮罩</nut-button>
+    <nut-button size="middle" @click.native="showLoading2()">半透明遮罩</nut-button>
+    <nut-button size="middle" @click.native="showLoading3()">不自动消失+不带遮罩</nut-button>
+    <nut-button size="middle" @click.native="hideLoading()">隐藏Loading</nut-button>
 
     <h4>自定义样式</h4>
-    <div class="demo-content">
-      <nut-button size="middle" @click.native="cusBgToast('我修改了背景色和透明度')">自定义背景色和透明度</nut-button>
-      <nut-button size="middle" @click.native="cusClassToast('我有一个名为 my-class 自定义class')">自定义class</nut-button>
-      <nut-button size="middle" @click.native="cusIconToast('自定义Icon')">自定义Icon</nut-button>
-    </div>
+    <nut-button size="middle" @click.native="cusBgToast('我修改了背景色和透明度')">自定义背景色和透明度</nut-button>
+    <nut-button size="middle" @click.native="cusClassToast('我有一个名为 my-class 自定义class')">自定义class</nut-button>
+    <nut-button size="middle" @click.native="cusIconToast('自定义Icon')">自定义Icon</nut-button>
 
     <h4>共享实例</h4>
 
-    <div class="demo-content">
-      <nut-button size="middle" @click.native="idToast1('我设置了id为1')">我设置了id为1</nut-button>
-      <nut-button size="middle" @click.native="idToast2('我设置了id为2')">我设置了id为2</nut-button>
-    </div>
+    <nut-button size="middle" @click.native="idToast1('我设置了id为1')">我设置了id为1</nut-button>
+    <nut-button size="middle" @click.native="idToast2('我设置了id为2')">我设置了id为2</nut-button>
 
     <h4>更改默认配置</h4>
 
-    <div class="demo-content">
-      <nut-button size="middle" @click.native="setDefaultOptions()">将所有Toast提示展示时长设置为5000毫秒</nut-button>
-      <nut-button size="middle" @click.native="resetDefaultOptions()">恢复所有Toast提示默认配置</nut-button>
-      <nut-button size="middle" @click.native="setDefaultOptions2()">更改文字提示默认配置</nut-button>
-      <nut-button size="middle" @click.native="resetDefaultOptions2()">恢复文字提示默认配置</nut-button>
-    </div>
+    <nut-button size="middle" @click.native="setDefaultOptions()">将所有Toast提示展示时长设置为5000毫秒</nut-button>
+    <nut-button size="middle" @click.native="resetDefaultOptions()">恢复所有Toast提示默认配置</nut-button>
+    <nut-button size="middle" @click.native="setDefaultOptions2()">更改文字提示默认配置</nut-button>
+    <nut-button size="middle" @click.native="resetDefaultOptions2()">恢复文字提示默认配置</nut-button>
   </div>
 </template>
 
@@ -135,11 +125,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.demo-content {
-	margin: 12px;
-}
-
 /deep/ .nut-button {
-	margin: 4px;
+  margin:0 6px 6px 0;
 }
 </style>

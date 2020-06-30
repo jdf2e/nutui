@@ -1,5 +1,5 @@
 <template>
-  <div class="btn-demo">
+  <div class="demo-list-pd">
     <h4>按钮状态</h4>
     <div class="btn-state">
       <nut-button block>默认状态</nut-button>
@@ -113,9 +113,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.btn-demo {
-  padding: 0 15px;
-}
 .bg {
   margin: 0 10px;
 }

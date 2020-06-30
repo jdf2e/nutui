@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>基础样式</h4>
     <div class="cell-box">
       <nut-cell title="列表内容A" to="/index"></nut-cell>
@@ -88,14 +88,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.demo {
-	padding-left: 0;
-	padding-right: 0;
-}
-
-h4 {
-	padding: 0 10px;
-}
 
 .timer {
 	color: #c8c8c8ff;

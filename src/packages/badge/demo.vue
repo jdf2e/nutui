@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="demo-list">
     <h4>无内容样式</h4>
     <div class="demo-w">
       <nut-badge :isDot="true" class="item">拜访提醒</nut-badge>

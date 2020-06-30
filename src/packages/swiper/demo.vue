@@ -1,5 +1,5 @@
 <template>
-  <div id="vueSwiper">
+  <div class="demo-list">
     <h4>横向无缝切换</h4>
     <nut-swiper :paginationVisibile="true" direction="horizontal" :swiperData="dataImgItem">
       <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide ">
@@ -106,21 +106,3 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-#vueSwiper {
-	.nut-swiper-slide {
-		font-size: 24px;
-		justify-content: center;
-		align-items: center;
-		display: flex;
-	}
-	// .nut-swiper-slide:nth-child(1), .nut-swiper-slide:nth-child(3){
-	//     color:#fff;
-	//     background:#848689;
-	// }
-	// .nut-swiper-slide:nth-child(2), .nut-swiper-slide:nth-child(4){
-	//     color:#333;
-	//     background:#ccc;
-	// }
-}
-</style>
