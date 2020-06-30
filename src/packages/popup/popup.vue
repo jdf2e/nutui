@@ -86,7 +86,21 @@ export default {
     }
   },
   beforeDestroy() {
-    this.close();
+    if (this.value) {
+      this.close();
+    }
+  },
+  activated() {
+    if (this.keepAlive) {
+      this.$emit('input', true);
+      this.keepAlive = false;
+    }
+  }, 
+  deactivated() {
+    if (this.value) {
+      this.close();
+      this.keepAlive = true;
+    }
   },
   watch: {
     value(val) {
@@ -216,5 +230,5 @@ export default {
     }
   }
 };
-export  {popupProps}
+export { popupProps };
 </script>

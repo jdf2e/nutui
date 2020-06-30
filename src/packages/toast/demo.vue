@@ -108,10 +108,7 @@ export default {
     },
     setDefaultOptions() {
       this.$toast.setDefaultOptions({
-        duration: 5000,
-        coverColor: 'rgba(0, 0, 0, 0.2)',
-        closeOnClickOverlay: true,
-        cover: true
+        duration: 5000
       });
       this.$toast.text('将所有Toast提示展示时长设置为5000毫秒，并且点击遮罩层可关闭提示');
     },
