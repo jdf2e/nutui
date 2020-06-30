@@ -154,7 +154,7 @@
     user-select: none;
     font-size: 16px;
     font-weight: 00;
-    5 &.disabled {
+    &.disabled {
         background: $btn-disable-bg;
         background-origin: border-box;
         color: $btn-disable-color;
