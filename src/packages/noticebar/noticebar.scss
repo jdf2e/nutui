@@ -2,13 +2,12 @@
   display: flex;
   height: 40px;
   padding: 0 16px;
-  font-size: 14px;
+  font-size: $font-size-display-normal;
   line-height: 24px;
   position: relative;
   align-items: center;
-  color: $text-color;
-  background-color: rgba(251, 248, 220, 1);
-  color: rgba(211, 125, 066, 1);
+  color: #F9911B;
+  background-color: #FFF4DA;
   &.wrapable{
     height: auto;
     padding: 8px 16px;

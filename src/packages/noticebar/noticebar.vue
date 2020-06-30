@@ -50,7 +50,7 @@ export default {
     },
     background: {
       type: String,
-      default: 'rgba(254,250,216,1)'
+      default: '#FFF4DA'
     },
     delay: {
       type: [String, Number],
@@ -107,8 +107,6 @@ export default {
   watch: {
     text: {
       handler(val, newVal) {
-        console.log(val, newVal, this.showNoticeBar == false, 'text');
-
         if (this.showNoticeBar == false) {
           return;
         }
@@ -121,7 +119,6 @@ export default {
           const wrapWidth = wrap.getBoundingClientRect().width;
 
           const offsetWidth = content.getBoundingClientRect().width;
-          console.log(wrapWidth, offsetWidth, 'text222');
 
           if (this.scrollable && offsetWidth > wrapWidth) {
             this.wrapWidth = wrapWidth;
