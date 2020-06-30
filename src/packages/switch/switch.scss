@@ -7,7 +7,6 @@
 	box-sizing: content-box;
 	border: 0;
 	transition: all $transition-duration $animation-timing-fun;
-
 	.nut-switch-btn {
 		position: absolute;
 		left: 0;
@@ -15,7 +14,8 @@
 		border: 0;
 		border-radius: 50%;
 		box-sizing: border-box;
-		transition: all $transition-duration $animation-timing-fun;
+        transition: all $transition-duration $animation-timing-fun;
+        box-shadow: 0px 1px 6px 0px rgba(0,0,0,.1);
 	}
 
 	&.nut-switch-active {

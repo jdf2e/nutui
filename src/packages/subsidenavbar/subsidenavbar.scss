@@ -7,8 +7,8 @@
 	.item-title {
 		display: flex;
 		width: 100%;
-		height: 48px;
-		position: relative;
+        position: relative;
+        padding: 12px 0;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -26,20 +26,22 @@
 		.sidenavbar-title {
 			display: flex;
 			width: 80%;
-			height: 100%;
 			flex-flow: column;
 			color: $text-black-2;
 			text-decoration: none;
-			justify-content: center;
+            justify-content: center;
+            .sidenavbar-title-title{
+                height: 24px;
+                line-height: 24px;
+            }
 		}
 	}
 
 	.sidenavbar-icon {
-		position: absolute;
+        position: absolute;
 		top: 50%;
-		right: 20px;
+        right: 20px;
 		transform: translateY(-50%);
-
 		i {
 			transition: transform $animation-duration $ease-in-out;
 
