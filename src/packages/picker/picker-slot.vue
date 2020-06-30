@@ -1,16 +1,5 @@
 <template>
   <div class="nut-picker-list">
-    <div class="nut-picker-roller" ref="roller">
-      <div
-        class="nut-picker-roller-item"
-        :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
-        v-for="(item, index) in listData"
-        :style="setRollerStyle(index + 1)"
-        :key="item.label ? item.label : index"
-      >
-        {{ item.value ? item.value : item }}
-      </div>
-    </div>
     <div class="nut-picker-content">
       <div class="nut-picker-list-panel" ref="list">
         <div class="nut-picker-item" v-for="(item, index) in listData" :key="item.label ? item.label : index"
@@ -54,8 +43,8 @@ export default {
       currIndex: 1,
       transformY: 0,
       scrollDistance: 0,
-      lineSpacing: 36,
-      rotation: 20,
+      lineSpacing: 50,
+      rotation: 30,
       timer: null
     };
   },
@@ -79,28 +68,13 @@ export default {
       }
     },
 
-    setRollerStyle(index) {
-      return `transform: rotate3d(1, 0, 0, ${-this.rotation * index}deg) translate3d(0px, 0px, 104px)`;
-    },
-
-    isHidden(index) {
-      if (index >= this.currIndex + 8 || index <= this.currIndex - 8) {
-        return true;
-      } else {
-        return false;
-      }
-    },
-
     setTransform(translateY = 0, type, time = 1000, deg) {
       if (type === 'end') {
         this.$refs.list.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`;
-        this.$refs.roller.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`;
       } else {
         this.$refs.list.style.webkitTransition = '';
-        this.$refs.roller.style.webkitTransition = '';
       }
       this.$refs.list.style.webkitTransform = `translate3d(0, ${translateY}px, 0)`;
-      this.$refs.roller.style.webkitTransform = `rotate3d(1, 0, 0, ${deg})`;
       this.scrollDistance = translateY;
     },
 

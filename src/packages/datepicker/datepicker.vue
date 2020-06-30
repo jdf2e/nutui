@@ -239,8 +239,8 @@ export default {
       month = this.removeChinese(month);
       let days = Array.from(Array(Utils.getMonthDays(year, month)), (v, k) => {
         if (
-          !(year == this.startDateArr[0] && month == this.startDateArr[1] && k + 1 < this.startDateArr[2]) &&
-          !(year == this.endDateArr[0] && month == this.endDateArr[1] && k + 1 > this.endDateArr[2])
+          !(year == this.startDateArr[0] && month == parseInt(this.startDateArr[1]) && (k + 1) <  parseInt(this.startDateArr[2])) &&
+          !(year == this.endDateArr[0] && month == parseInt(this.endDateArr[1]) && (k + 1) > parseInt(this.endDateArr[2]))
         ) {
           return `${k + 1}${this.chinese[2]}`;
         }

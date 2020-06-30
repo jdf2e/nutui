@@ -1,170 +1,125 @@
 # Radio 单选按钮
 
-## 基本用法
+所有 demo 展示的基本数据为
 
-通过 **v-model** 绑定值当前选中项的 **label** ，二者一致时 **Radio** 选中。
-```html
-<nut-radio 
-  v-model="radioVal"
-  :label="b"
->备选项1
-</nut-radio>
-```
 ```javascript
 export default {
   data() {
     return {
-      radioVal:"a",
+      labelList:[
+        {
+          name:'test',
+          value:1,
+          text:'亚瑟'
+        },
+        {
+          name:'test',
+          value:2,
+          text:'廉颇'
+        },
+        {
+          name:'test',
+          value:3,
+          text:'东皇太一'
+        },
+        {
+          name:'test',
+          value:4,
+          text:'吕布'
+        },
+        {
+          name:'test',
+          value:5,
+          text:'黑切'
+        },
+        {
+          name:'test',
+          value:6,
+          text:'冰心'
+        }
+      ]
     }
   }
 };
 ```
 
-## 组合使用
+## 1. 基本用法
+
+默认的样式是 radio 
 
 ```html
-<nut-radio 
-  v-model="radioVal1"
-  :label="1"
->备选项1
-</nut-radio>
-
-<nut-radio 
-  v-model="radioVal1"
-  :label="2"
->备选项2
-</nut-radio>
+<nut-cell>
+  <span slot="title">
+    <radio-group 
+        :list="labelList"  
+        :name="'test0'" 
+        :effect-key = "'value'"
+        :effect-text="'text'"
+        v-model="labelReslut0"
+      />
+    </span>
+</nut-cell>
+<nut-cell>
+    <span slot="title"> 选择结果 {{labelReslut0}}</span>
+</nut-cell>   
 ```
 
-
-> 组合使用 **Radio** 组件时，推荐使用 **RadioGroup** 组件，按需加载时，别忘了引入哦
+## 2. label 类型的单选，默认选中第一个，输出结果为 text 值
 
 ```html
-<nut-radiogroup v-model="radioGroupVal1">
-  <nut-radio label="a">备选项1</nut-radio>
-  <nut-radio label="b">备选项2</nut-radio>
-</nut-radiogroup>
-```
-```javascript
-export default {
-  data() {
-    return {
-      radioGroupVal1:"b",
-    }
-  }
-};
+<nut-cell>
+        <span slot="title">        
+          <radio-group 
+            :list="labelList"
+            :name="'test'"
+            :styleType="'label'"
+            :effect-key = "'value'"
+            :effect-text="'text'"
+            :checkedIndex="1"   
+            :reslout-attr="'text'"   
+            v-model="labelReslut"  
+          />
+        </span>
+      </nut-cell>
+      <nut-cell>
+        <span slot="title"> 选择结果 {{labelReslut}}</span>
+      </nut-cell>
 ```
 
-## 禁用状态
-
-通过给 **disabled** 传布尔值 **false** ，可将组件禁用
+## 3. list 类型的单选 输出结果为 text 默认选中第一个，数组的第三个不可选
 
 ```html
-<nut-radio 
-  :disabled="true" 
-  v-model="radioVal2" 
-  label="禁用"
->备选项1
-</nut-radio>
+<nut-cell>
+  <span slot="title">        
+    <radio-group 
+      :list="labelList"
+      :style-type="'list'"
+      :name="'test3'"
+      :effect-key = "'value'"
+      :effect-text="'text'"
+      :reslout-attr="'text'"  
+      :checkedIndex="0" 
+      :disabled-value="2"   
+      v-model="labelReslut2"                 
+    />
+  </span>
+</nut-cell>
+<nut-cell>
+  <span slot="title"> 选择结果 {{resloutdemo1}}: {{labelReslut2}}</span>
+</nut-cell>
 ```
-
-
-RadioGroup整体禁用
-
-```html
-<nut-radiogroup v-model="radioGroupVal2" :disabled="true">
-  <nut-radio label="1">备选项1</nut-radio>
-  <nut-radio label="2">备选项2</nut-radio>
-  <nut-radio label="3">备选项3</nut-radio>
-</nut-radiogroup>
-```
-
-## 自定义尺寸
-
-内置 **small**，**base**，**large** 三种规格供使用。
-
-```html
-<nut-radio 
-  size="small"
->小号
-</nut-radio>
-
-<nut-radio 
-  size="base"
->默认
-</nut-radio>
-
-<nut-radio 
-  size="large"
->大号
-</nut-radio>
-```
-
-自定义RadioGroup整体尺寸
-
-```html
-<nut-radiogroup v-model="radioGroupVal3" size="large">
-  <nut-radio label="1">备选项1</nut-radio>
-  <nut-radio label="2">备选项2</nut-radio>
-  <nut-radio label="3">备选项3</nut-radio>
-</nut-radiogroup>
-```
-
-## 禁用动效
-
-通过给 **animated** 传布尔值 **false** ，禁用自带动效
-
-```html
-<nut-radio 
-   :animated="false" 
-   v-model="radioVal3" 
-   label="a"
->备选项1
-</nut-radio>
-
-<nut-radio 
-   :animated="false" 
-   v-model="radioVal3" 
-   label="b"
->备选项2</nut-radio>
-```
-
-禁用 **RadioGroup** 动效
-
-```html
-<nut-radiogroup v-model="radioGroupVal4" :animated="false">
-  <nut-radio label="a">备选项1</nut-radio>
-  <nut-radio label="b">备选项2</nut-radio>
-  <nut-radio label="c">备选项3</nut-radio>
-</nut-radiogroup>
-```
-
-
-## 新增自定义class
-```html
-<nut-radio 
-   class="my-radio"
->备选项</nut-radio>
-```
-**RadioGroup** 也支持新增自定义class
 
 ## Prop
 
-### Radio
+
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| v-model | 当前选中项的标识符，与label值一致时呈选中状态 | 任意类型 | -
-| label | 标识符，与v-model值一致时呈选中状态 | 任意类型 | -
-| size | 尺寸，可选值small/base/large | String | base
-| disabled | 是否禁用 | Boolean | false
-| animated | 是否需要动效 | Boolean | true
-
-### RadioGroup
-
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| v-model | 当前选中项的标识符，与label值一致时呈选中状态 | 任意类型 | -
-| size | 尺寸，可选值small/base/large | String | base
-| disabled | 是否禁用 | Boolean | false
-| animated | 是否需要动效 | Boolean | true
+| v-model | 选中结果动态输出 | 任意类型 | -
+| styleType | 单选按钮的样式 | String | 'radio'
+| list | 单选按钮依赖数据,最小长度为1，长度为0或其它类型不展示 | Array | []
+| checkedIndex | 默认选中 | Number | -1  没有默认选中
+| effectKey | radio 的 value 值获取数据字段 | String | - 必填
+| resloutAttr | radio 对用户展示值获取数据字段 | String | - 必填
+|name | radio 标签的名字，每一组都要不一样 | String| - 必填
+|disabledValue | 禁止选择的标签项 | String, Number, Boolean,Array | -

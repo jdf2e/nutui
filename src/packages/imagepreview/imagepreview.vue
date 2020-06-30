@@ -3,7 +3,6 @@
     <nut-popup v-model="value">
       <nut-swiper
         class="nut-imagepreview-swiper"
-        :paginationVisibile="true"
         loop
         direction="horizontal"
         :swiperData="images"

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="18px" viewBox="0 0 10 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>ic_arrow_right备份</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M6.42913691,2.99163691 C6.72984061,2.6909332 7.20492209,2.67088629 7.52887616,2.93149616 L7.59586309,2.99163691 L15.2958631,10.6916369 C15.5965668,10.9923406 15.6166137,11.4674221 15.3560038,11.7913762 L15.2958631,11.8583631 L7.59586309,19.5583631 C7.27368055,19.8805456 6.75131945,19.8805456 6.42913691,19.5583631 C6.1284332,19.2576594 6.10838629,18.7825779 6.36899616,18.4586238 L6.42913691,18.3916369 L13.5458125,11.275 L6.42913691,4.15836309 C6.1284332,3.85765939 6.10838629,3.38257791 6.36899616,3.05862384 L6.42913691,2.99163691 Z" id="path-1"></path>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Navigation-/Navbar" transform="translate(-22.000000, -150.000000)">
+            <g id="navbar备份" transform="translate(0.000000, 137.000000)">
+                <g id="编组-4">
+                    <g id="编组">
+                        <g id="ic_arrow_right" transform="translate(27.000000, 22.000000) scale(-1, 1) translate(-27.000000, -22.000000) translate(16.000000, 11.000000)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <use fill="#646464" fill-rule="nonzero" xlink:href="#path-1"></use>
+                            <g id="color_black2-100" mask="url(#mask-2)" fill="#646464" fill-rule="evenodd">
+                                <rect id="矩形备份" x="0" y="0" width="22" height="22"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

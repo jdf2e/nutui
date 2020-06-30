@@ -1,189 +1,68 @@
 <template>
-  <div class="demo-list">
-    <!-- <h4>Radio基本用法</h4>
-    <div>
-      <nut-cell>
-        <span slot="title">
-          <nut-radio v-model="radioVal" :label="2">备选项</nut-radio>
-        </span>
-      </nut-cell>
-    </div>
-
-    <h4>组合使用Radio</h4>
-    <div>
-      <nut-cell>
-        <span slot="title">
-          <nut-radio v-model="radioVal1" :label="1">备选项1</nut-radio>
-          <nut-radio v-model="radioVal1" :label="2">备选项2</nut-radio>
-        </span>
-        <div slot="desc">radioVal1: {{ radioVal1 }}</div>
-      </nut-cell>
-    </div>
-    <p>组合使用 Radio 时推荐使用 radiogroup 组件，见下方示例</p>
-
-    <h4>RadioGroup基本用法</h4>
-    <div>
-      <nut-cell>
-        <span slot="title">
-          <nut-radiogroup v-model="radioGroupVal1">
-            <nut-radio label="a">备选项1</nut-radio>
-            <nut-radio label="b">备选项2</nut-radio>
-          </nut-radiogroup>
-        </span>
-      </nut-cell>
-    </div>
-
-    <h4>Radio禁用</h4>
-    <div>
-      <nut-cell>
-        <span slot="title"> 未选中时的禁用状态：<nut-radio :disabled="true" v-model="radioVal2" label="禁用">备选项1</nut-radio> </span>
-      </nut-cell>
-      <nut-cell>
-        <span slot="title"> 已选中时的禁用状态：<nut-radio :disabled="true" v-model="radioVal2" label="选中且禁用">备选项2</nut-radio> </span>
-      </nut-cell>
-    </div>
-
-    <h4>RadioGroup整体禁用</h4>
-    <div>
-      <nut-cell>
-        <span slot="title">
-          <nut-radiogroup v-model="radioGroupVal2" :disabled="true">
-            <nut-radio label="1">备选项1</nut-radio>
-            <nut-radio label="2">备选项2</nut-radio>
-            <nut-radio label="3">备选项3</nut-radio>
-          </nut-radiogroup>
-        </span>
-      </nut-cell>
-    </div>
-
-    <h4>Radio自定义尺寸</h4>
-    <div>
-      <nut-cell>
-        <span slot="title">
-          <nut-radio size="small">小号</nut-radio>
-        </span>
-      </nut-cell>
-      <nut-cell>
-        <span slot="title">
-          <nut-radio size="base">默认</nut-radio>
-        </span>
-      </nut-cell>
-      <nut-cell>
-        <span slot="title">
-          <nut-radio size="large">大号</nut-radio>
-        </span>
-      </nut-cell>
-      <p>size可选值：'small', 'base', 'large'</p>
-    </div>
-
-    <h4>RadioGroup整体定义尺寸</h4>
-    <div>
-      <nut-cell>
-        <span slot="title">
-          <nut-radiogroup v-model="radioGroupVal3" size="large">
-            <nut-radio label="1">备选项1</nut-radio>
-            <nut-radio label="2">备选项2</nut-radio>
-            <nut-radio label="3">备选项3</nut-radio>
-          </nut-radiogroup>
-        </span>
-      </nut-cell>
-    </div>
-
-    <h4>Radio禁用动效</h4>
-    <div>
-      <nut-cell>
-        <span slot="title">
-          <nut-radio :animated="false" v-model="radioVal3" label="a">备选项1</nut-radio>
-        </span>
-      </nut-cell>
-      <nut-cell>
-        <span slot="title">
-          <nut-radio :animated="false" v-model="radioVal3" label="b">备选项2</nut-radio>
-        </span>
-      </nut-cell>
-      <p>animated 属性值为 false 时，禁用自带动效</p>
-    </div>
-
-    <h4>RadioGroup禁用动效</h4>
-    <div>
-      <nut-cell>
-        <span slot="title">
-          <nut-radiogroup v-model="radioGroupVal4" :animated="false">
-            <nut-radio label="a">备选项1</nut-radio>
-            <nut-radio label="b">备选项2</nut-radio>
-            <nut-radio label="c">备选项3</nut-radio>
-          </nut-radiogroup>
-        </span>
-      </nut-cell>
-    </div>
-
-    <h4>自定义Class</h4>
-    <div>
-      <nut-cell>
-        <span slot="title">
-          <nut-radio class="my-radio" v-model="radioVal5" label="a">备选项1</nut-radio>
-        </span>
-      </nut-cell>
-      <nut-cell>
-        <span slot="title">
-          <nut-radio class="my-radio" v-model="radioVal5" label="b">备选项2</nut-radio>
-        </span>
-      </nut-cell>
-    </div> -->
-    <h4>按钮单选组输出属性为 value 的值</h4>
-    <nut-cell>
-        <span slot="title">        
-          <group 
+  <div class="demo-list">    
+    </nut-cell>
+    <h4>基础样式</h4>
+    <div class="demo-cell">
+        <radio-group 
             :list="labelList"
+            :name="'test0'"
+            :styleType="'radio'"
+            :effect-key = "'value'"
+            :checkedIndex="0" 
+            :effect-text="'text'"            
+            :reslout-attr="resloutdemo1"  
+            :disabled-value="radioDisable" 
+            v-model="labelReslut0"                 
+          />
+           <div class="cell-reslout"> 选择结果 {{resloutdemo1}}: {{labelReslut0}}</div> 
+    </div>   
+      <h4>列表样式</h4>      
+        <div class="demo-cell">
+          <radio-group 
+            :list="labelList"
+            :style-type="'list'"
+            :name="'test3'"
+            :effect-key = "'value'"
+            :effect-text="'text'"
+            :reslout-attr="resloutdemo1"  
+            :checkedIndex="0" 
+            :disabled-value="radioDisable"   
+            v-model="labelReslut2"                 
+          />   
+          <div class="cell-reslout"> 选择结果 {{resloutdemo1}}: {{labelReslut2}}</div> 
+        </div>
+      <h4>列表禁选样式</h4>      
+         <div class="demo-cell">
+          <radio-group 
+            :list="labelList"
+            :style-type="'list'"
+            :name="'test4'"
+            :effect-key = "'value'"
+            :effect-text="'text'"
+            :reslout-attr="resloutdemo1"  
+            :checkedIndex="0" 
+            :disabled-value="'all'"   
+            v-model="labelReslut3"                 
+          />
+           <div class="cell-reslout"> 选择结果 {{resloutdemo1}}: {{labelReslut3}}</div> 
+        </div>
+      <h4>按钮样式</h4>
+    <div class="demo-cell">     
+          <div class="test-button-box">
+            <radio-group 
+            :list="labelList2"
             :name="'test'"
             :styleType="'label'"
             :effect-key = "'value'"
             :effect-text="'text'"
             :checkedIndex="1"    
-            :reslout-attr="'value'"   
+            :disabled-value="radioDisable" 
+            :reslout-attr="resloutdemo1"   
             v-model="labelReslut"                 
           />
-        </span>
-      </nut-cell>
-      <nut-cell>
-        <span slot="title"> 选择结果 value: {{labelReslut}}</span>
-      </nut-cell>
-      <h4>按钮单选组输出属性为 text 的值</h4>
-      <nut-cell>
-        <span slot="title">        
-          <group 
-            :list="labelList"
-            :styleType="'label'"
-            :name="'test2'"
-            :effect-key = "'value'"
-            :effect-text="'text'"
-            :checkedIndex="0"    
-            :reslout-attr="'text'"   
-            v-model="labelReslut2"                 
-          />
-        </span>
-      </nut-cell>
-      <nut-cell>
-        <span slot="title"> 选择结果 text: {{labelReslut2}}</span>
-      </nut-cell>
-      <h4>列表单选组输出属性为 value 的值</h4>
-      <nut-cell>
-        <span slot="title">        
-          <group 
-            :list="labelList"
-            :styletype="'list'"
-            :name="'test3'"
-            :effect-key = "'value'"
-            :effect-text="'text'"
-            :checkedIndex="0"    
-            :reslout-attr="'text'"   
-            v-model="labelReslut3"                 
-          />
-        </span>
-      </nut-cell>
-      <nut-cell>
-        <span slot="title"> 选择结果 text: {{labelReslut3}}</span>
-      </nut-cell>
+          </div>
+          <div class="cell-reslout"> 选择结果 {{resloutdemo1}}: {{labelReslut}}</div> 
+      </div>     
   </div>
 </template>
 
@@ -191,69 +70,86 @@
 import group from './index.vue';
 export default {
   data() {
-    return {
-      radioVal: 1,
-      radioVal1: 2,
-      radioVal2: '选中且禁用',
-      radioVal3: 'b',
-      radioVal4: 'b',
-      radioVal5: 'a',
-      demo6name:'test',
-      demo6value:1,     
-      test:'',
-      radioGroupVal1: 'b',
-      radioGroupVal2: '2',
-      radioGroupVal3: '2',
-      radioGroupVal4: 'c',
+    return {      
       labelList:[
         {
           name:'test',
           value:1,
-          text:'亚瑟'
+          text:'这里是选项A'
         },
         {
           name:'test',
           value:2,
-          text:'廉颇'
+          text:'这里是选项B'
         },
         {
           name:'test',
           value:3,
-          text:'东皇太一'
+          text:'这里是选项C'
+        },        
+      ],
+      labelList2:[
+        {
+          name:'test',
+          value:1,
+          text:'功能逻辑'
         },
+        {
+          name:'test',
+          value:2,
+          text:'系统文案'
+        },
+        {
+          name:'test',
+          value:3,
+          text:'员工福利'
+        },   
         {
           name:'test',
           value:4,
-          text:'吕布'
-        },
-        {
-          name:'test',
-          value:5,
-          text:'黑切'
-        },
-        {
-          name:'test',
-          value:6,
-          text:'冰心'
-        }
+          text:'薪酬提成'
+        },     
       ],
+      labelReslut0:"",
       labelReslut:"",
       labelReslut2:"",
-      labelReslut3:""   
+      labelReslut3:"",
+      resloutType:[
+        {
+          value:'value',
+          name:'value'
+        },
+        {
+          value:'text',
+          name:'text'
+        }
+      ],
+      resloutdemo1:"",
+      disableVal:"false",
+      radioDisable:false,
     };
-  },
+  },  
   components:{
-    group
+    'radio-group':group
   },
   watch:{
-    test(val){
-      console.log(val)
+    disableVal(val){
+      if(!isNaN(val)){
+        this.radioDisable = parseInt(val)
+      }else{
+        if(val.split(',').length>1){          
+          this.radioDisable = val.split(',').map(item=>{            
+            return !isNaN(item)?parseInt(item):''
+          })          
+        }else if(val === 'true'){
+          this.radioDisable = true;
+        }else if(val === 'false'){
+          this.radioDisable = false;
+        }else{
+          this.radioDisable = val;
+        }
+      }
     }
-  },
-  methods: {    
-  },
-  mounted(){
-    
   }
 };
 </script>
@@ -265,5 +161,16 @@ export default {
 		background-size: 50% 50%;
 		border: none;
 	}
+}
+.demo-cell{
+  background: #fff;  
+}
+.cell-reslout{
+  border-top: 1px solid #E6E6E6;
+  padding:20px 20px;
+  font-size: 15px;
+}
+.test-button-box{
+  padding:18px 20px;
 }
 </style>

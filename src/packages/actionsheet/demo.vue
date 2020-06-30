@@ -1,83 +1,113 @@
 <template>
   <div class="demo-list">
-    <h4>基本用法(选择类)</h4>
+    <h4>基础样式</h4>
     <div>
-      <nut-cell :showIcon="true" :isLink="true" @click.native="switchActionSheet('isVisible')">
-        <span slot="title"><label>性别</label></span>
-        <div slot="desc" class="selected-option">{{ sex }}</div>
+      <nut-cell 
+        :show-icon="true" 
+        title="基础样式" 
+        :desc="option" 
+        @click.native="openSwitch('isVisible')">
       </nut-cell>
-      <nut-cell :showIcon="true" :isLink="true" @click.native="switchActionSheet('isVisible1')">
-        <span slot="title"><label>性别</label></span>
-        <span slot="sub-title">带取消按钮~~~~</span>
-        <div slot="desc" class="selected-option">{{ sex1 }}</div>
+      <nut-actionsheet 
+        :is-visible="isVisible"
+        @close="closeSwitch('isVisible')" 
+        :option-list="optionList" 
+        @choose="choose"
+      ></nut-actionsheet>
+
+      <nut-cell 
+        :show-icon="true" 
+        title="带取消按钮" 
+        :desc="option1" 
+        @click.native="openSwitch('isVisible1')">
       </nut-cell>
-      <nut-cell :showIcon="true" :isLink="true" @click.native="switchActionSheet('isVisible2')">
-        <span slot="title"><label>性别</label></span>
-        <span slot="sub-title">高亮选中项~~~~</span>
-        <div slot="desc" class="selected-option">{{ sex2 }}</div>
+      <nut-actionsheet
+        :is-visible="isVisible1"
+        @close="closeSwitch('isVisible1')"
+        :is-cancle-btn="true"
+        :option-list="optionList" 
+        @choose="choose1"
+      ></nut-actionsheet>
+
+      <nut-cell 
+        :show-icon="true" 
+        title="展示标题" 
+        :desc="option2" 
+        @click.native="openSwitch('isVisible2')">
       </nut-cell>
-      <nut-cell :showIcon="true" :isLink="true" @click.native="switchActionSheet('isVisible3')">
-        <span slot="title"><label>性别</label></span>
-        <span slot="sub-title">设置禁用状态~~~~</span>
-        <div slot="desc" class="selected-option">{{ sex3 }}</div>
+      <nut-actionsheet
+        :is-visible="isVisible2"
+        @close="closeSwitch('isVisible2')"
+        :is-cancle-btn="true"
+        :option-list="optionList" 
+        @choose="choose2"
+      >
+        <div slot="title">面板标题</div>
+      </nut-actionsheet>
+
+      <nut-cell 
+        :show-icon="true" 
+        title="展示描述信息" 
+        :desc="option3" 
+        @click.native="openSwitch('isVisible3')">
       </nut-cell>
+      <nut-actionsheet
+        :is-visible="isVisible3"
+        @close="closeSwitch('isVisible3')"
+        :is-cancle-btn="true"
+        :option-list="optionList" 
+        @choose="choose3"
+      >
+        <div slot="desc">这里是一段描述，一段描述，一段描述，一段描述</div>
+      </nut-actionsheet>
+
     </div>
-    <h4>提示类</h4>
+    <h4>其他样式</h4>
     <div>
-      <nut-cell :isLink="true" @click.native="switchActionSheet('isVisible4')">
-        <span slot="title"><label>我就列表测试数据</label></span>
-        <span slot="sub-title">我是描述~~~~</span>
-        <div slot="desc" class="selected-option">删除本条</div>
+      <nut-cell 
+        :show-icon="true" 
+        title="带确认按钮" 
+        :desc="option4" 
+        @click.native="openSwitch('isVisible4')">
       </nut-cell>
-    </div>
-    <h4>自定义类</h4>
-    <div>
-      <nut-cell :isLink="true" @click.native="switchActionSheet('isVisible5')">
-        <span slot="title"><label>内容自定义</label></span>
-        <div slot="desc" class="selected-option">打开</div>
+      <nut-actionsheet
+        :is-visible="isVisible4"
+        @close="closeSwitch('isVisible4')"
+        :is-confirm-btn="true"
+        :option-list="optionList" 
+        @choose="choose4"
+      >
+        <div slot="title">面板标题</div>
+      </nut-actionsheet>
+
+      <nut-cell 
+        :show-icon="true" 
+        title="设置禁用状态" 
+        :desc="option5" 
+        @click.native="openSwitch('isVisible5')">
       </nut-cell>
+      <nut-actionsheet
+        :is-visible="isVisible5"
+        :option-list="optionListDis" 
+        @close="closeSwitch('isVisible5')"
+        @choose="choose5"
+      ></nut-actionsheet>
+
+      <nut-cell 
+        :show-icon="true" 
+        title="高亮选中项" 
+        :desc="option6" 
+        @click.native="openSwitch('isVisible6')">
+      </nut-cell>
+      <nut-actionsheet
+        :is-visible="isVisible6"
+        :option-list="optionList" 
+        :chooseTagValue="option6"
+        @close="closeSwitch('isVisible6')"
+        @choose="choose6"
+      ></nut-actionsheet>
+
     </div>
-    <!-- demo -->
-    <nut-actionsheet :is-visible="isVisible" @close="switchActionSheet('isVisible')" :menu-items="menuItems" @choose="chooseItem"></nut-actionsheet>
-    <!-- demo(带取消按钮） -->
-    <nut-actionsheet
-      :is-visible="isVisible1"
-      @close="switchActionSheet('isVisible1')"
-      cancelTxt="取消"
-      :menu-items="menuItems2"
-      @choose="chooseItemAgeSpec"
-    ></nut-actionsheet>
-    <!-- demo(高亮选中）-->
-    <nut-actionsheet
-      :is-visible="isVisible2"
-      :menu-items="menuItems2"
-      :chooseTagValue="sex2"
-      @close="switchActionSheet('isVisible2')"
-      @choose="chooseItemAge"
-    ></nut-actionsheet>
-    <!-- demo(设置禁用状态)-->
-    <nut-actionsheet
-      :is-visible="isVisible3"
-      :menu-items="menuItems3"
-      @close="switchActionSheet('isVisible3')"
-      @choose="chooseItemConstellation"
-    ></nut-actionsheet>
-    <!-- demo 提示类 -->
-    <nut-actionsheet
-      :is-visible="isVisible4"
-      :menu-items="menuItems4"
-      :chooseTagValue="`确定`"
-      cancelTxt="取消"
-      @close="switchActionSheet('isVisible4')"
-    >
-      <span slot="title"><label>确定删除吗？</label></span>
-      <span slot="sub-title">删除之后不能，描述信息，删除之后不能，描述信息</span>
-    </nut-actionsheet>
-    <!-- demo 自定义类 -->
-    <nut-actionsheet :is-visible="isVisible5" @close="switchActionSheet('isVisible5')">
-      <div slot="custom" class="custom-wrap"><span>自定义</span></div>
-    </nut-actionsheet>
-    <div style="height: 400px;"></div>
   </div>
 </template>
 
@@ -85,75 +115,89 @@
 export default {
   data() {
     return {
-      sex: '请选择',
+      option: '',
       isVisible: false,
-      menuItems: [
-        {
-          name: '男',
-          value: 0
-        },
-        {
-          name: '女',
-          value: 1
-        }
-      ],
-      sex1: '请选择',
+      option1: '',
       isVisible1: false,
-      sex2: '请选择',
+      option2: '',
       isVisible2: false,
-      menuItems2: [
+      option3: '',
+      isVisible3: false,
+      option4: '',
+      isVisible4: false,
+      option5: '',
+      isVisible5: false,
+      option6: '选项B',
+      isVisible6: false,
+      optionList: [
         {
-          name: '男',
+          name: '选项A',
           value: 0
         },
         {
-          name: '女',
+          name: '选项B',
+          value: 1
+        },
+        {
+          name: '选项C',
           value: 1
         }
       ],
-      sex3: '请选择',
-      isVisible3: false,
-      menuItems3: [
+      optionListDis: [
         {
-          name: '男',
-          value: 0,
-          disable: false
+          name: '选项A',
+          value: 0
         },
         {
-          name: '女',
+          name: '选项B',
           value: 1,
           disable: true
-        }
-      ],
-      isVisible4: false,
-      menuItems4: [
+        },
         {
-          name: '确定'
+          name: '选项C',
+          value: 1
         }
-      ],
-      isVisible5: false
+      ]
     };
   },
   methods: {
-    switchActionSheet(param) {
-      this[`${param}`] = !this[`${param}`];
+    openSwitch(param) {
+      this[`${param}`] = true;
     },
 
-    chooseItem(itemParams) {
-      this.sex = itemParams.name;
+    closeSwitch(param) {
+      console.log('关闭');
+      this[`${param}`] = false;
     },
 
-    chooseItemAgeSpec(itemParams) {
-      this.sex1 = itemParams.name;
+    // demo 1
+    choose(itemParams) {
+      this.option = itemParams.name;
     },
 
-    chooseItemAge(itemParams) {
-      this.sex2 = itemParams.name;
+    choose1(itemParams) {
+      this.option1 = itemParams.name;
     },
 
-    chooseItemConstellation(itemParams) {
-      this.sex3 = itemParams.title;
-    }
+    choose2(itemParams) {
+      this.option2 = itemParams.name;
+    },
+
+    choose3(itemParams) {
+      this.option3 = itemParams.name;
+    },
+
+    choose4(itemParams) {
+      this.option4 = itemParams.name;
+    },
+
+    choose5(itemParams) {
+      this.option5 = itemParams.name;
+    },
+
+    choose6(itemParams) {
+      this.option6 = itemParams.name;
+    },
   }
 };
 </script>
