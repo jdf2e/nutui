@@ -642,6 +642,16 @@
       "sort": "0",
       "showDemo": true,
       "author": "yumingming"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Gesture",
+      "type": "directive",
+      "chnName": "手势组件",
+      "desc": "基于hammer.js封装，支持移动端各种手势操作",
+      "sort": "2",
+      "showDemo": true,
+      "author": "dsj"
     }
   ]
 }

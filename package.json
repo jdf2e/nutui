@@ -51,6 +51,7 @@
     "@nutui/cli": "^0.2.2",
     "babel-plugin-istanbul": "^6.0.0",
     "gsap": "^3.2.6",
+    "hammerjs": "^2.0.8",
     "husky": "^3.0.0",
     "vue-lazyload": "^1.3.3",
     "vue-qr": "^2.2.1"

@@ -124,8 +124,10 @@ import './packages/drag/drag.scss'; // import VueQr from "./packages/qart/index.
 
 import Address from './packages/address/index.js';
 import './packages/address/address.scss';
-import CountUp from "./packages/countup/index.js";
-import "./packages/countup/countup.scss";
+import CountUp from './packages/countup/index.js';
+import './packages/countup/countup.scss';
+import Gesture from './packages/gesture/index.js';
+import './packages/gesture/gesture.scss';
 
 const packages = {
   Cell,
@@ -188,7 +190,8 @@ const packages = {
   SideNavBarItem: SideNavBarItem,
   Drag: Drag,
   Address: Address,
-  CountUp: CountUp
+  CountUp: CountUp,
+  Gesture: Gesture
 };
 
 const components = {};
@@ -216,7 +219,7 @@ pkgList.map(item => {
   }
 });
 
-const install = function (Vue, opts = {}) {
+const install = function(Vue, opts = {}) {
   if (install.installed) return;
 
   if (opts.locale) {
