@@ -48,7 +48,7 @@
     "@babel/plugin-transform-runtime": "^7.9.6",
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
-    "@nutui/cli": "^0.2.3",
+    "@nutui/cli": "^0.2.9",
     "autoprefixer": "^9.8.4",
     "babel-plugin-istanbul": "^6.0.0",
     "gsap": "^3.2.6",
