@@ -77,6 +77,8 @@ import Tag from './packages/tag/index.js';
 import './packages/tag/tag.scss';
 import Swiper from './packages/swiper/index.js';
 import './packages/swiper/swiper.scss';
+import Menu from './packages/menu/index.js';
+import './packages/menu/menu.scss';
 import ImagePreview from './packages/imagepreview/index.js';
 import './packages/imagepreview/imagepreview.scss';
 import Badge from './packages/badge/index.js';
@@ -126,6 +128,7 @@ const packages = {
     Address: Address,
     Tag,
     Swiper,
+    Menu,
     ImagePreview,
     Badge,
     Field: Field,

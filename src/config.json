@@ -417,6 +417,16 @@
             "sort": "0",
             "showDemo": true,
             "author": "xuhui"
+        },
+        {
+            "version": "1.0.0",
+            "name": "Menu",
+            "sort": "3",
+            "chnName": "菜单",
+            "desc": "菜单",
+            "type": "component",
+            "showDemo": true,
+            "author": "liuguanglun"
         }
     ]
 }
