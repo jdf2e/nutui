@@ -6,18 +6,21 @@
       v-model="curVisible"
       :lock-scroll="lockBgScroll"
       :overlayStyle='{backgroundColor:maskBgStyle}'
-      class="nut-dialog"
+      class="nut-dialog-wrapper"
       @click="clickCover"
     >
       <div class="nut-dialog-box" v-show="curVisible" @click="modalClick">
-        <div class="nut-dialog" @click.stop>
-          <a href="javascript:;" v-if="closeBtn" @click="closeBtnClick" class="nut-dialog-close"></a>
-          <template v-if="type === 'image'">
+        <template v-if="type === 'image'">
+          <div class="nut-dialog-image-wrapper" @click.stop>
             <a href="javascript:;" @click="imageLinkClick" class="nut-dialog-link">
               <img :src="imgSrc" class="nut-dialog-image" alt />
             </a>
-          </template>
-          <template v-else>
+              <a href="javascript:;" v-if="closeBtn" @click="closeBtnClick" class="nut-dialog-close"></a>
+          </div>
+        </template>
+         
+        <template v-else>
+             <div class="nut-dialog" @click.stop>
             <div class="nut-dialog-body">
               <span class="nut-dialog-title" v-html="title" v-if="title"></span>
               <div class="nut-dialog-content" v-if="$slots.default" :style="{ textAlign }">
@@ -52,8 +55,9 @@
                   </div>
               </template>
             </div>
-          </template>
-        </div>
+             </div>
+        </template>
+       
       </div>
     </nut-popup>
   </transition>

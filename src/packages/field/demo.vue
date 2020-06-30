@@ -2,15 +2,15 @@
   <div class="textinput-demo">
     <h4>标准样式</h4>
     <div class="filed-demo"> 
-      <nut-field label="标题内容：" placeholder="请输入内容" v-model="val" />
+      <nut-field label="标题内容" placeholder="请输入内容" v-model="val" />
     </div>
     <h4>文字左对齐，且不展示 清除 按钮</h4>
     <div class="filed-demo">
-      <nut-field :disableClear="true" v-model="val2"  label="文本左对齐：" textAlign="left" placeholder="请输入内容" />  
+      <nut-field :disableClear="true" v-model="val2"  label="文本左对齐" textAlign="left" placeholder="请输入内容" />  
     </div> 
      <h4>标题超出长度限制</h4>
     <div class="filed-demo">
-      <nut-field  v-model="val2"  label="标题长度超出超出超出范围：" textAlign="right" placeholder="请输入内容" /> 
+      <nut-field  v-model="val2"  label="标题长度超出超出超出范围" textAlign="right" placeholder="请输入内容" /> 
     </div> 
      <h4>数字</h4>
     <div class="filed-demo">
@@ -59,7 +59,7 @@ export default {
   data() {
     return {
       val: '',
-      val2: '这里文本内容',
+      val2: '',
       val3: '',
       val4: '',
       val5: '12345678985',
@@ -127,8 +127,7 @@ h4{
 }
 .filed-demo{
   width: 100vw;
-  box-sizing: border-box;
-  overflow: hidden;
+  box-sizing: border-box; 
   background-color: #fff;
   padding: 5px 20px 5px 20px ;
   	.get-code {

@@ -1,16 +1,14 @@
 @import '../../styles/animation/fade';
 @import '../../styles/animation/ease';
-body.dialog-open {
-    position: fixed;
-}
-
-.nut-dialog-wrapper {
-    position: relative;
-    z-index: $zindex-mask;
+.popup-box.nut-dialog-wrapper {
+    background-color: transparent;
+    font-family: PingFang-SC-Medium;
+    font-size: 14px;
+    color: rgba(100, 100, 100, 1);
+    line-height: 22px;
 }
 
 .nut-dialog-box {
-    width: 85vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,7 +25,7 @@ body.dialog-open {
     width: 85vw;
     max-height: 70vh;
     background: #fff;
-    border-radius: $border-radius-base;
+    border-radius: 4px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -46,48 +44,27 @@ body.dialog-open {
     // }
 }
 
-.nut-dialog-close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    text-align: center;
-    text-decoration: none;
-    background: url("data:image/svg+xml, %3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='rgb(132,132,132)' fill-rule='evenodd'%3E%3Cpath d='M.44 2.56A1.5 1.5 0 1 1 2.56.44l27 27a1.5 1.5 0 1 1-2.12 2.12L15 17.123 2.56 29.56A1.5 1.5 0 1 1 .44 27.44L12.878 15 .44 2.56zM27.44.44a1.5 1.5 0 1 1 2.12 2.12l-9 9a1.5 1.5 0 1 1-2.12-2.12l9-9z'/%3E%3C/g%3E%3C/svg%3E") no-repeat center;
-    background-size: 13px 13px;
-    img {
-        height: 13px;
-    }
-}
-
 .nut-dialog-image-wrapper {
-    .nut-dialog {
-        width: auto;
-        max-width: 80%;
-        max-height: 75%;
-        background: transparent;
-        border-radius: none;
-        display: inline-block;
-        overflow: visible;
-    }
+    width: auto;
+    width: 72vw;
+    max-height: 75%;
+    background: transparent;
+    border-radius: none;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     .nut-dialog-close {
-        position: absolute;
-        right: 0;
-        top: -40px;
-        width: 25px;
-        height: 25px;
+        margin-top: 20px;
+        width: 40px;
+        height: 40px;
         font-size: 20px;
         text-align: center;
         text-decoration: none;
-        border: 2px solid #fff;
         border-radius: 50%;
-        background: url("data:image/svg+xml, %3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='rgb(255,255,255)' fill-rule='evenodd'%3E%3Cpath d='M.44 2.56A1.5 1.5 0 1 1 2.56.44l27 27a1.5 1.5 0 1 1-2.12 2.12L15 17.123 2.56 29.56A1.5 1.5 0 1 1 .44 27.44L12.878 15 .44 2.56zM27.44.44a1.5 1.5 0 1 1 2.12 2.12l-9 9a1.5 1.5 0 1 1-2.12-2.12l9-9z'/%3E%3C/g%3E%3C/svg%3E") no-repeat center;
-        background-size: 13px 13px;
-        img {
-            height: 13px;
-        }
+        background: url('data:image/png;base64,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') no-repeat;
+        background-size: 40px 40px;
     }
 }
 
@@ -103,19 +80,20 @@ body.dialog-open {
 
 .nut-dialog-body {
     box-sizing: border-box;
-    padding: 30px 20px 20px;
+    padding: 20px 20px 24px;
     display: flex;
     flex-direction: column;
     flex: 0 1 auto;
     border-bottom: 1px solid rgba(230, 230, 230, 1);
+    overflow-y: scroll;
 }
 
 .nut-dialog-content {
     flex: 1;
     justify-content: center;
     overflow: auto;
-    line-height: 21px;
-    font-family: PingFang-SC-Medium;
+    line-height: 22px;
+    font-family: PingFangSC-Regular;
     font-size: 14px;
     color: rgba(100, 100, 100, 1);
     word-break: break-all;
@@ -124,12 +102,11 @@ body.dialog-open {
 }
 
 .nut-dialog-footer {
-    min-height: 50px;
+    min-height: 48px;
     width: 100%;
-    line-height: 50px;
+    line-height: 48px;
     display: flex;
     flex-shrink: 0;
-    border-radius: 0 0 5px 5px;
     overflow: hidden;
     flex-direction: row;
     flex-wrap: wrap;
@@ -186,7 +163,6 @@ body.dialog-open {
         border-radius: 0 0 5px 5px;
         background: transparent;
         color: $primary-color;
-        border-top: 1px solid $light-color;
         line-height: 23px;
         font-family: PingFangSC-Regular;
         font-size: 16px;
@@ -194,7 +170,6 @@ body.dialog-open {
 }
 
 .nut-dialog-ok {
-    border-radius: 0 0 5px 0;
     background: #fff;
     background-origin: border-box;
     color: $btn-gradient-color;
@@ -207,13 +182,10 @@ body.dialog-open {
 }
 
 .nut-dialog-cancel {
-    border-radius: 0 0 0 5px;
-    border-top: 1px solid $light-color;
     background: #fff;
     color: rgba(150, 150, 150, 1);
     background-origin: border-box;
     &:active {
-        border-top: 1px solid #ccc;
         background: #ccc;
     }
 }
