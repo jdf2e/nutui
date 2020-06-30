@@ -102,6 +102,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 h4{
+  
+  padding: 11px 20px;
+  margin: 0;
   font-size: 15px;
   color: #323232;
 }
