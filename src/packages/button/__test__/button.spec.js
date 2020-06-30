@@ -12,12 +12,12 @@ describe('Button.vue', () => {
         wrapper.setProps({
             type: 'light'
         })
-        return Vue.nextTick().then(function () {
+        return Vue.nextTick().then(function() {
             expect(wrapper.attributes('class')).toContain('light');
         })
     });
     it('设置slot', () => {
-        return Vue.nextTick().then(function () {
+        return Vue.nextTick().then(function() {
             expect(wrapper.text()).toBe('去结算');
         })
     });
@@ -25,7 +25,7 @@ describe('Button.vue', () => {
         wrapper.setProps({
             disabled: true
         })
-        return Vue.nextTick().then(function () {
+        return Vue.nextTick().then(function() {
             expect(wrapper.text()).toBe('去结算');
             expect(wrapper.attributes('disabled')).toContain('disabled');
         })
@@ -34,7 +34,7 @@ describe('Button.vue', () => {
         wrapper.setProps({
             shape: 'circle'
         })
-        return Vue.nextTick().then(function () {
+        return Vue.nextTick().then(function() {
             expect(wrapper.text()).toBe('去结算');
             expect(wrapper.attributes('class')).toContain('circle');
         })
@@ -43,7 +43,7 @@ describe('Button.vue', () => {
         wrapper.setProps({
             size: 'small'
         })
-        return Vue.nextTick().then(function () {
+        return Vue.nextTick().then(function() {
             expect(wrapper.text()).toBe('去结算');
             expect(wrapper.attributes('class')).toContain('small');
         })
@@ -53,7 +53,7 @@ describe('Button.vue', () => {
             type: 'actived',
             icon: 'tick'
         })
-        return Vue.nextTick().then(function () {
+        return Vue.nextTick().then(function() {
             expect(wrapper.text()).toBe('去结算');
             expect(wrapper.contains('.txt-icon')).toBe(true);
             expect(wrapper.find('.txt-icon').attributes('type')).toBe('tick');
@@ -65,7 +65,7 @@ describe('Button.vue', () => {
             icon: 'tick',
             color: '#fff'
         })
-        return Vue.nextTick().then(function () {
+        return Vue.nextTick().then(function() {
             expect(wrapper.text()).toBe('去结算');
             expect(wrapper.find('span').attributes('style')).toBe('color: rgb(255, 255, 255);');
             expect(wrapper.find('.txt-icon').attributes('color')).toBe('#fff');

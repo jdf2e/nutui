@@ -67,6 +67,7 @@
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
     "babel-plugin-istanbul": "^6.0.0",
+    "autoprefixer": "^9.8.4",
     "gsap": "^3.2.6",
     "lodash.clonedeep": "^4.5.0",
     "vue-lazyload": "^1.3.3",
@@ -78,7 +79,7 @@
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-object-assign": "^7.8.3",
-    "@nutui/cli": "^0.2.6",
+    "@nutui/cli": "^0.2.9",
     "@typescript-eslint/eslint-plugin": "^2.16.0",
     "@typescript-eslint/parser": "^2.16.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",

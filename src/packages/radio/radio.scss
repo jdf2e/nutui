@@ -1,5 +1,6 @@
 @import '../../styles/animation/pulse';
 .nut-radio{
+	background: #fff;	
 	input{
 		position: absolute;
 		opacity: 0;
@@ -20,6 +21,11 @@
 	flex-direction:row-reverse;
 	justify-content: flex-end;
 	position: relative;
+	padding:0 20px;
+	border-bottom: 1px solid #E6E6E6;
+	&:last-child{
+		border-bottom:	none;
+	}
 	.box-border{
 		box-sizing: border-box;
 		width: 24px;
@@ -54,8 +60,8 @@
 	line-height: 28px;
 	height: 28px;	
 	position: relative;
-	font-size: 14px;	
-	padding:0 15px;
+	font-size: 14px;
+	width: 82px;
 	cursor: pointer;
 	label{
 		display: inline-block;		
@@ -113,6 +119,7 @@
 	align-items: center;
 	border-bottom: 1px solid #E6E6E6;
 	position: relative;
+	padding: 0 20px;
 	&:last-child{
 		border-bottom:	none;
 	}

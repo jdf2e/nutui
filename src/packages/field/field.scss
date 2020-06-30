@@ -2,14 +2,14 @@
     display: flex;
     box-sizing: border-box;
     position: relative;
-    overflow: hidden;
     .nut-require {
         color: #ee0a24;
         margin-right: 5px;
+        margin-top: 10px;
     }
     .nut-field-label {
         display: inline-block;
-        margin-right: 20px;
+        margin-right: 24px;
         max-width: 120px;
         overflow: hidden;
         font-size: 16px;
@@ -39,7 +39,7 @@
     }
     .nut-text-core {
         flex: 1;
-        padding: 5px 15px 5px 0;
+        padding: 4px 15px 5px 0;
         appearance: none;
         font-size: 14px;
         box-sizing: border-box;
@@ -69,6 +69,7 @@
         span {
             float: right;
             margin-right: 15px;
+            color: #969696;
         }
     }
     .nut-textinput-clear {
@@ -90,7 +91,7 @@
         border-bottom: 1px solid red;
         box-sizing: border-box;
         position: absolute;
-        bottom: 0;
+        bottom: -3px;
     }
     .input-error {
         color: red;

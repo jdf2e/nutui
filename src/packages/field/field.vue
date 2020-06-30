@@ -134,6 +134,7 @@ export default {
       const txtLength = data.length;
       this.txtNum = txtLength;
       if (txtLength > this.maxLength*1) {
+        this.$toast.text(`最多可输入${this.maxLength}字`)
         this.$emit('errorFunc');
       } else {
       }

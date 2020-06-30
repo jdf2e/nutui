@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list-pd">
     <h4>按钮状态</h4>
     <div class="btn-state">
       <nut-button block>默认状态</nut-button>
@@ -114,50 +114,51 @@ export default {
 
 <style lang="scss" scoped>
 .bg {
-	margin: 0 10px;
+  margin: 0 10px;
 }
 
 .gap {
-	height: 10px;
+  height: 10px;
 }
 
 .white-bg {
-	padding: 10px;
-	background: #fff;
+  padding: 10px;
+  background: #fff;
 }
 
 .btn-state {
-	button {
-		margin-bottom: 10px;
-	}
+  button {
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
 }
 
 .btn-size {
-	display: flex;
-	align-items: flex-end;
-	justify-content: space-around;
-	margin-top: 24px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  margin-top: 24px;
 
-	&.two {
-		button {
-			width: 168px;
-		}
-	}
+  &.two {
+    button {
+      width: 168px;
+    }
+  }
 
-	&.three {
-		button {
-			width: 109px;
-		}
-	}
+  &.three {
+    button {
+      width: 108px;
+    }
+  }
 
-	&.four {
-		button {
-			width: 79px;
-		}
+  &.four {
+    button {
+      width: 79px;
+    }
 
-		.middle {
-			padding: 0;
-		}
-	}
+    .middle {
+      padding: 0;
+    }
+  }
 }
 </style>

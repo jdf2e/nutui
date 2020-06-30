@@ -24,12 +24,12 @@
       </nut-cell>
       <nut-cell :is-link="true" :show-icon="true" @click.native="showDialog5">
         <span slot="title">
-          <label>事件</label>
+          <label>决策弹窗(带标题)</label>
         </span>
       </nut-cell>
       <nut-cell :is-link="true" :show-icon="true" @click.native="showDialog6">
         <span slot="title">
-          <label>无弹出动效且关闭时不销毁dislog实例</label>
+           <label>决策弹窗(无标题)</label>
         </span>
       </nut-cell>
       <nut-cell :is-link="true" :show-icon="true" @click.native="showDialog7">
@@ -158,38 +158,51 @@ export default {
     showDialog5: function() {
       const options = {
         okBtnTxt: '好 的',
-        title: '事件',
+        title: '标题',
         content: '点击按钮触发事件',
         closeBtn: true,
         onOkBtn(event) {
-          alert('okBtn');
+          this.$toast.text('okBtn');
           this.close(); //关闭对话框
         },
         onCancelBtn(event) {
-          alert('cancelBtn');
+           this.$toast.text('cancelBtn');
           //return false;  //阻止默认“关闭对话框”的行为
         },
         onCloseBtn(event) {
-          alert('closeBtn');
+           this.$toast.text('closeBtn');
           //return false;  //阻止默认“关闭对话框”的行为
         },
         closeCallback(target) {
-          alert('will close');
+          //关闭回调
         }
       };
 
       this.$dialog(options);
     },
     showDialog6: function() {
-      this.$dialog({
-        animation: false, //禁用弹出动效
-        title: '注册说明',
-        canDestroy: false,
-        content: '原账号为您本人所有，建议直接登录或找回密码。原账号内的订单资产可能丢失，可联系京东客服找回。',
+      const options = {
+        okBtnTxt: '主要操作',
+        content: '我想用艺术感动人们的内心。我希望他们这样说到：他的感受深刻而温柔。',
+        closeBtn: true,
         onOkBtn(event) {
+           this.$toast.text('okBtn');
           this.close(); //关闭对话框
         },
-      });
+        onCancelBtn(event) {
+           this.$toast.text('cancelBtn');
+          //return false;  //阻止默认“关闭对话框”的行为
+        },
+        onCloseBtn(event) {
+           this.$toast.text('closeBtn');
+          //return false;  //阻止默认“关闭对话框”的行为
+        },
+        closeCallback(target) {
+          //关闭回调事件
+        }
+      };
+
+      this.$dialog(options);
     },
     showDialog7: function() {
       this.$dialog({
@@ -212,12 +225,11 @@ export default {
     },
     showDialog9: function() {
       this.$dialog({
-        title: '《桃花行》',
         lockBgScroll: true,
         content:
           '桃花帘外东风软，<br>桃花帘内晨妆懒。<br>帘外桃花帘内人，<br>人与桃花隔不远。<br>东风有意揭帘栊，<br>花欲窥人帘不卷。<br>桃花帘外开仍旧，<br>帘中人比桃花瘦。<br>花解怜人花也愁，<br>隔帘消息风吹透。<br>风透帘栊花满庭，<br>庭前春色倍伤情。<br>闲苔院落帘空卷，<br>斜日栏干人自凭。<br>凭栏人向东风泣，<br>茜裙偷傍桃花立。<br>桃花桃叶乱纷纷，<br>花绽新红叶凝碧。<br>树树烟封一万株，<br>烘照楼台红模糊。<br>天机烧破鸳鸯锦，<br>春色欲酣珊瑚枕。<br>侍女金盆进水来，<br>香泉欲蘸胭脂冷。<br>胭脂鲜艳何相类，<br>花之颜色人之泪。<br>若将人泪比桃花，<br>泪自长流花自媚。<br>泪眼看花泪易乾，<br>泪乾春尽花憔悴。<br>憔悴花枝憔悴人，<br>花飞人倦易黄昏。<br>一声杜宇春归尽，<br>寂寞帘栊空月痕。',
         noOkBtn: true,
-        cancelBtnTxt: '我知道了'
+        cancelBtnTxt: '确认'
       });
     },
     showDialog10: function() {
@@ -234,14 +246,10 @@ export default {
           name: '主要操作2',
           value: 1,
           disabled:false,
-        },{
-          name: '主要操作3',
-          value:2,
-          disabled:false,
         }],
         chooseBtn(item,index){
           console.log(index)
-          alert(`我点击了第${index + 1}个按钮`)
+           this.$toast.text(`我点击了第${index + 1}个按钮`)
           this.close()
         },    
       });

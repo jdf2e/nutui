@@ -43,8 +43,6 @@ import Stepper from './packages/stepper/index.js';
 import './packages/stepper/stepper.scss';
 import SearchBar from './packages/searchbar/index.js';
 import './packages/searchbar/searchbar.scss';
-import ImagePicker from './packages/imagepicker/index.js';
-import './packages/imagepicker/imagepicker.scss';
 import Radio from './packages/radio/index.js';
 import './packages/radio/radio.scss';
 import RadioGroup from './packages/radiogroup/index.js';
@@ -55,8 +53,6 @@ import Skeleton from './packages/skeleton/index.js';
 import './packages/skeleton/skeleton.scss';
 import Uploader from './packages/uploader/index.js';
 import './packages/uploader/uploader.scss';
-import TextInput from './packages/textinput/index.js';
-import './packages/textinput/textinput.scss';
 import Avatar from './packages/avatar/index.js';
 import './packages/avatar/avatar.scss';
 import Popup from './packages/popup/index.js';
@@ -111,13 +107,11 @@ const packages = {
     Rate,
     Stepper,
     SearchBar,
-    ImagePicker,
     Radio,
     RadioGroup,
     CheckBox,
     Skeleton,
     Uploader,
-    TextInput,
     Avatar,
     Popup,
     LeftSlip,

@@ -1,13 +1,14 @@
-.nut-radio{
-    .nut-radio-labels{
+.nut-radio {
+    .nut-radio-labels {
         width: 100%;
         display: flex;
-        flex-wrap: wrap;        
-        .nut-radio-list-label{
-            margin: 5px;
+        flex-wrap: wrap;
+        padding: 18px 16px;
+        box-sizing: border-box;
+        .nut-radio-list-label {
+            margin: 5px 2.3px;
         }
     }
-    .nut-radio-lists{
-        
+    .nut-radio-lists {
     }
 }

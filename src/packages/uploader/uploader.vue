@@ -88,7 +88,7 @@ export default {
         },
         limitError: {
             type: String,
-            default: "对不起，您的浏览器不支持本组件"
+            default: "对不起，文件大小超出了限制"
         },
         withCredentials: {
             type: Boolean,

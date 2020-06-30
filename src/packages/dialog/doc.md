@@ -21,19 +21,19 @@ this.$dialog({
         content: "小屏或移动端浏览效果最佳",
         closeBtn:true,  //显式右上角关闭按钮
         onOkBtn(event) {  //确定按钮点击事件
-          alert("okBtn");
+           this.$toast.text("okBtn");
           this.close(); //关闭对话框
         },
         onCancelBtn(event) {  //取消按钮点击事件，默认行为关闭对话框
-          alert("cancelBtn");
+           this.$toast.text("cancelBtn");
           //return false;  //阻止默认“关闭对话框”的行为
         },
         onCloseBtn(event) { //右上角关闭按钮点击事件
-          alert("closeBtn");
+           this.$toast.text("closeBtn");
           //return false;  //阻止默认“关闭对话框”的行为
         },
         closeCallback(target) {
-          alert("will close");  //对话框关闭回调函数，无论通过何种方式关闭都会触发
+           this.$toast.text("will close");  //对话框关闭回调函数，无论通过何种方式关闭都会触发
         }
 });
         
@@ -53,14 +53,10 @@ this.$dialog({
           name: '主要操作2',
           value: 1,
           disabled:false,
-        },{
-          name: '主要操作3',
-          value:2,
-          disabled:false,
         }],
         chooseBtn(item,index){
           console.log(index)
-          alert(`我点击了第${index + 1}个按钮`)
+           this.$toast.text(`我点击了第${index + 1}个按钮`)
           this.close()
         },    
       });
