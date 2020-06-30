@@ -27,23 +27,36 @@
 ```html
 
 // 默认图标
-<nut-searchbar placeText="右侧默认图标" @submit="submitFun"></nut-searchbar>
+<nut-searchbar placeText="右侧默认图标" @submit="searchIcon"></nut-searchbar>
 
 // 自定义图标
-<nut-searchbar placeText="右侧图标自定义" @submit="submitFun" :searchButtonIcon="require('../../assets/svg/qr.svg')"></nut-searchbar>
+<nut-searchbar placeText="右侧图标自定义" @submit="searchQR" :searchButtonIcon="require('../../assets/svg/qr.svg')"></nut-searchbar>
 
 // 默认文案
 <nut-searchbar placeText="右侧默认文字" :hasTextButton="true" @submit="submitFun"></nut-searchbar>
 
 // 自定义文案
-<nut-searchbar placeText="右侧文字自定义" :hasIcon="true" :hasTextButton="true" textInfo="取消" @submit="submitFun"></nut-searchbar>
+<nut-searchbar placeText="右侧文字自定义" :hasIcon="true" :hasTextButton="true" textInfo="取消" @submit="cancel"></nut-searchbar>
 
 export default {
     methods:{
         submitFun(value) {
+            this.$toast.text('您点击了搜索按钮');
             console.log('您输入的内容为：'+value);
             console.log('您触发了右侧按钮的事件，默认提交操作！');
-        }
+        },
+        searchIcon(value){
+            this.$toast.text('您点击了搜索按钮');
+            console.log('您输入的内容为：'+value);
+        },
+        searchQR(value){
+            this.$toast.text('您点击了二维码按钮');
+            console.log('您输入的内容为：'+value);
+        },
+        cancel(value){
+            this.$toast.text('您点击了取消按钮');
+            console.log('您输入的内容为：'+value);
+        },
     }
 }
 ```
@@ -61,6 +74,7 @@ export default {
 export default {
     methods:{
         handleAction(value){
+            this.$toast.text('您点击了input搜索框右侧的图标');
             console.log('您输入的内容为：'+value);
             console.log('您点击了input搜索框右侧的图标')
         }
