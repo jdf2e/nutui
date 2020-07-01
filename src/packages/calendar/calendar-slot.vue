@@ -81,6 +81,13 @@ export default {
         }
       },
       //immediate: true
+    },
+    monthsData : {
+      handler(val, oldValue) {
+        if (val) {
+            
+        }
+      }
     }
   },
   data() {

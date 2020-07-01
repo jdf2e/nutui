@@ -93,57 +93,6 @@ export default {
 };
 ```
 
-快捷选择区间
-
-```html
-<nut-cell 
-    :showIcon="true" 
-    title="快捷选择区间"
-    :desc="date3 ? `${date3[0]}至${date3[1]}` : '请选择'"
-    @click.native="openSwitch('isVisible3')">
-</nut-cell>
-<nut-calendar
-    :is-visible="isVisible3"
-    :default-value="date3"
-    type="range"
-    :start-date="null"
-    :end-date="null"
-    @close="closeSwitch('isVisible3')"
-    @choose="setChooseValue3"
-    >
-    <div slot="shortcut" @click="chooseShortcutMode">近一周</div>
-</nut-calendar>
-```
-```javascript
-import Utils from '../../utils/date.js';
-export default {
-  data() {
-    return {
-      isVisible3: false,
-      date3:null
-    };
-  },
-  methods: {
-    openSwitch(param) {
-      this[`${param}`] = true;
-    },
-
-    closeSwitch(param) {
-      this[`${param}`] = false;
-    },
-
-    setChooseValue3(param) {
-      this.date3 = [...[param[0][3], param[1][3]]];
-    },
-
-    chooseShortcutMode() {
-      this.date3 =[...[Utils.getDay(0), Utils.getDay(6)]];
-      this.closeSwitch('isVisible3');
-    }
-  }
-};
-```
-
 ## 平铺样式
 
 ```html
@@ -182,17 +131,11 @@ export default {
 | is-visible | 是否可见 | Boolean | false
 | poppable | 是否弹窗状态展示 | Boolean | true
 | is-auto-back-fill | 自动回填,仅在poppable为true可用 | Boolean | false
-| is-open-range-select | 是否开启区间选择 | Boolean | false
 | title | 显示标题 | String | ‘日期选择’
 | default-value | 默认值，日期选择String格式，区间选择Array格式 | String / Array | null
 | start-date | 开始日期， 如果不限制开始日期传null | String | 今天
-| end-date | 结束日期，如果不限制结束日期传null | String | 距离今天五个月
+| end-date | 结束日期，如果不限制结束日期传null | String | 距离今天365天
 
-## Slot
-
-| 名称 | 说明 
-|----- | ----- 
-| shortcut | 自定义快捷选择区间文案
 
 ## Event
 

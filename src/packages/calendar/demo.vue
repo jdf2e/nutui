@@ -38,7 +38,7 @@
       >
       </nut-calendar>
     </div>
-    <div>
+    <!-- <div>
       <nut-cell 
         :showIcon="true" 
         title="快捷选择区间"
@@ -58,10 +58,10 @@
       >
       <div slot="shortcut" @click="chooseShortcutMode">近一周</div>
       </nut-calendar>
-    </div>
+    </div> -->
 
     <h4>平铺样式</h4>
-    <div class="">
+    <div >
       <nut-calendar
         :poppable="false"
         :is-visible="isVisible2"
