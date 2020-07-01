@@ -1,7 +1,11 @@
 .nut-field {
     display: flex;
-    box-sizing: border-box;
     position: relative;
+    box-sizing: border-box;
+    width: 100vw;
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 5px 20px 5px 20px;
     .nut-require {
         color: #ee0a24;
         margin-right: 5px;
@@ -28,7 +32,7 @@
         border-radius: 4px;
         border: none;
         background-color: '#FFFFFF';
-        padding: 0 25px 0 10px;
+        padding: 0 8px 0 10px;
         &::-webkit-input-placeholder {
             color: #c1c4cb;
             font-style: normal;
@@ -39,13 +43,16 @@
     }
     .nut-text-core {
         flex: 1;
-        padding: 4px 15px 5px 0;
+        padding: 4px 0px 5px 0;
         appearance: none;
         font-size: 14px;
         box-sizing: border-box;
         border-radius: 4px;
         border: none;
         background-color: '#FFFFFF';
+        .nut-field-over {
+            color: rgba(225, 37, 27, 1);
+        }
         &::-webkit-input-placeholder {
             color: #c1c4cb;
             font-style: normal;
@@ -64,18 +71,25 @@
             font-size: 16px;
             font-family: PingFangSC-Regular;
             font-size: 16px;
+            resize: none;
             color: rgba(50, 50, 50, 1);
+            &::-webkit-input-placeholder {
+                color: #c1c4cb;
+                font-style: normal;
+            }
+            &::-webkit-search-cancel-button {
+                display: none;
+            }
         }
-        span {
+        .nut-text-limit {
             float: right;
-            margin-right: 15px;
+            margin-right: 0px;
             color: #969696;
         }
     }
     .nut-textinput-clear {
         opacity: 0.5;
         position: relative;
-        right: 20px;
         top: 20px;
         transform: translateY(-50%);
         height: 20px;
@@ -86,12 +100,12 @@
         }
     }
     .nut-field-error {
-        width: 100%;
+        width: 90%;
         height: 5px;
+        position: absolute;
+        bottom: 0px;
         border-bottom: 1px solid red;
         box-sizing: border-box;
-        position: absolute;
-        bottom: -3px;
     }
     .input-error {
         color: red;

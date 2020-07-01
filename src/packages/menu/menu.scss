@@ -1,0 +1,185 @@
+$titleHeight: 50px;
+
+.nut-menu {
+  position: relative;
+  height: $titleHeight;
+
+  &-mask {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: $mask-bg;
+  }
+
+  &-title {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    z-index: $zindex-dialog;
+    background-color: white;
+
+    &-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: auto;
+      min-width: 60px;
+      height: $titleHeight;
+      margin: 0 20px;
+      background: rgba(255, 255, 255, 1);
+      flex: 1;
+
+      span {
+        width: 100%;
+        max-width: 85px;
+        height: 24px;
+        line-height: 24px;
+        font-size: 15px;
+        font-family: PingFangSC-Regular;
+        color: rgba(100, 100, 100, 1);
+        padding-right: 3px;
+        @include text-ellipsis();
+      }
+
+      .nut-icon svg,
+      .nut-icon {
+        color: rgba(200, 200, 200, 1) !important;
+        width: 10px;
+        height: 16px;
+      }
+
+      .nut-icon-up {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &-panel {
+    top: $titleHeight;
+    display: block;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    color: $title-color;
+    overflow: hidden;
+    background-color: #fff;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    z-index: $zindex-dialog;
+    box-shadow: inset 0px 1px 3px -1px #c8c7cc;
+  }
+
+  &-simple {
+    padding-top: 5px;
+
+    ul {
+      position: relative;
+      padding: 0;
+      margin: 0;
+      min-height: 190px;
+      max-height: 300px;
+      list-style: none;
+      overflow-y: auto;
+
+      li {
+        position: relative;
+        width: 100%;
+        height: 48px;
+        line-height: 45px;
+        padding: 0 0 0 20px;
+        font-size: $font-size-base;
+        box-sizing: border-box;
+        @include text-ellipsis();
+
+        &.selected {
+          color: $primary-color;
+        }
+
+        &:before {
+          content: ' ';
+          height: 1px;
+          position: absolute;
+          left: 20px;
+          right: 20px;
+          bottom: 0;
+          z-index: 1;
+          pointer-events: none;
+          background-color: #e5e5e5;
+          transform: scaleY(0.5);
+          transform-origin: 50% 100%;
+        }
+      }
+    }
+
+    li.selected {
+      span {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+    }
+  }
+
+  &-multiple {
+    &-content {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      padding: 6px 16px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    li {
+      .nut-checkbox {
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+
+      label {
+        vertical-align: middle;
+      }
+    }
+
+    .nut-tag {
+      width: calc((100% - 20px) / 3);
+      background: #f7f7f7;
+      color: #646464;
+      margin: 3px;
+      padding: 10px;
+      display: unset;
+      text-align: center;
+      min-width: 25%;
+      font-size: 15px;
+      line-height: 15px;
+      @include text-ellipsis();
+    }
+
+    .nut-menu-selected {
+      background: #fce9e8;
+      color: #f62f2f;
+    }
+  }
+
+  &-item {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+  }
+
+  &-button-group {
+    display: flex;
+    flex-flow: row;
+    margin-top: 5px;
+
+    .nut-button:first-child {
+      border: none;
+      box-shadow: inset 0px 1px 1px -1px #c8c7cc;
+    }
+
+    .nut-button:last-child {
+      border-right: none;
+    }
+  }
+}

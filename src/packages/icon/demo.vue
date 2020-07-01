@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list-pd">
     <h4>所有ICON，单击可复制</h4>
     <table>
       <tr>

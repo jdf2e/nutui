@@ -39,6 +39,46 @@ export default {
 };
 ```
 
+
+## 选择时间
+
+```html
+<nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible3')">
+    <span slot="title">
+    <label>选择时间</label>
+    </span>
+    <div slot="desc" class="selected-option">
+    <span class="show-value">{{ time ? `${time}` : '请选择' }}</span>
+    </div>
+</nut-cell>
+<nut-datepicker
+    :is-visible="isVisible3"
+    type="time"
+    title="选择时间"
+    @close="switchPicker('isVisible3')"
+    @choose="setChooseValue3"
+    defaultValue="01:07"
+></nut-datepicker>
+```
+```javascript
+export default {
+  data() {
+    return {
+      isVisible3: false,
+      time: '01:07',
+    };
+  },
+  methods: {
+    switchPicker(param) {
+      this[`${param}`] = !this[`${param}`];
+    },
+    setChooseValue3(param) {
+      this.time = param[2];
+    }
+  }
+};
+```
+
 ## 限制开始结束时间
 
 ```html
@@ -80,48 +120,6 @@ export default {
 };
 ```
 
-## 选择时间
-
-```html
-<nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible3')">
-    <span slot="title">
-    <label>12时间制</label>
-    </span>
-    <div slot="desc" class="selected-option">
-    <span class="show-value">{{ time ? `${time} ${amOrPm}` : '请选择' }}</span>
-    </div>
-</nut-cell>
-<nut-datepicker
-    :is-visible="isVisible3"
-    type="time"
-    title="选择时间"
-    @close="switchPicker('isVisible3')"
-    @choose="setChooseValue3"
-    :is-use12-hours="true"
-    defaultValue="01:07"
-    :is-am="false"
-></nut-datepicker>
-```
-```javascript
-export default {
-  data() {
-    return {
-      isVisible3: false,
-      datetime: '2018-11-02 11:08',
-      amOrPm: 'PM'
-    };
-  },
-  methods: {
-    switchPicker(param) {
-      this[`${param}`] = !this[`${param}`];
-    },
-    setChooseValue3(param) {
-      this.amOrPm = param[2] == '上午' ? 'AM' : 'PM';
-      this.time = param[3];
-    }
-  }
-};
-```
 
 ## 限制开始结束小时
 

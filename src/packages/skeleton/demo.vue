@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <nut-skeleton class="my-skeleton">
       <row padding="15px 10px 0 ">
         <skeleton-square width="200px"></skeleton-square>
@@ -44,7 +44,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .my-skeleton {
-	padding-top: 60px;
+	padding-top: 30px;
 	z-index: 998;
 }
 </style>

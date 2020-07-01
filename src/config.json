@@ -199,16 +199,6 @@
             "author": "lemon"
         },
         {
-            "version": "1.0.0",
-            "name": "ImagePicker",
-            "sort": "1",
-            "chnName": "图片选择器",
-            "desc": "图片选择器",
-            "type": "component",
-            "showDemo": true,
-            "author": "苏子刚"
-        },
-        {
             "name": "Radio",
             "version": "1.0.0",
             "sort": "1",
@@ -257,16 +247,6 @@
             "sort": "5",
             "showDemo": true,
             "author": "林如风"
-        },
-        {
-            "version": "1.0.0",
-            "name": "TextInput",
-            "chnName": "文本框",
-            "desc": "单行文本框",
-            "type": "component",
-            "sort": "1",
-            "showDemo": true,
-            "author": "Frans"
         },
         {
             "version": "1.0.0",
@@ -417,6 +397,16 @@
             "sort": "0",
             "showDemo": true,
             "author": "xuhui"
+        },
+        {
+            "version": "1.0.0",
+            "name": "Menu",
+            "sort": "3",
+            "chnName": "菜单",
+            "desc": "菜单",
+            "type": "component",
+            "showDemo": true,
+            "author": "liuguanglun"
         }
     ]
 }

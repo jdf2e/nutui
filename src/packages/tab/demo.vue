@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <!-- DEMO区域 -->
     <h4>基础样式</h4>
     <nut-tab @tab-switch="tabSwitch">

@@ -1,5 +1,5 @@
 <template>
-  <div class="demo-list card-list">
+  <div class="demo-list">
     <h4>基础样式</h4>
     <nut-card
       content="这里是默认卡片内容"
@@ -89,11 +89,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-list {
-  h4 {
-    padding: 0 15px;
-  }
-}
 .card-title {
   display: flex;
   justify-content: space-between;
