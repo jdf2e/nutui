@@ -30,7 +30,7 @@
       <nut-button size="middle" type="bottom">更多</nut-button>
     </div>
     <h4>常规按钮</h4>
-    <div class="bg">
+    <div>
       <nut-button @click="clickHandler" :disabled="disabled">去结算</nut-button>
       <nut-button disabled>去结算（disabled）</nut-button>
     </div>
@@ -136,7 +136,7 @@ export default {
 .btn-size {
   display: flex;
   align-items: flex-end;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 24px;
 
   &.two {
