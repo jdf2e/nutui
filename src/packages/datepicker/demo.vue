@@ -6,7 +6,7 @@
     <h4>选择年月日</h4>
     <nut-cell 
       :showIcon="true"  
-      title="每列不显示年/月/日"
+      title="每列不显示中文（年/月/日）"
       :desc="date ? date : '请选择'"
       @click.native="switchPicker('isVisible')">
     </nut-cell>
@@ -17,6 +17,24 @@
       :is-show-chinese="false"
       @close="switchPicker('isVisible')"
       @choose="setChooseValue"
+    ></nut-datepicker>
+
+    <h4>选择时间</h4>
+    <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible3')">
+      <span slot="title">
+        <label>选择时间</label>
+      </span>
+      <div slot="desc" class="selected-option">
+        <span class="show-value">{{ time ? `${time}` : '请选择' }}</span>
+      </div>
+    </nut-cell>
+    <nut-datepicker
+      :is-visible="isVisible3"
+      type="time"
+      title="选择时间"
+      @close="switchPicker('isVisible3')"
+      @choose="setChooseValue3"
+      defaultValue="01:07"
     ></nut-datepicker>
 
     <h4>限制开始结束时间</h4>
@@ -37,26 +55,6 @@
       defaultValue="2018-11-02 11:08"
       @close="switchPicker('isVisible2')"
       @choose="setChooseValue2"
-    ></nut-datepicker>
-
-    <h4>选择时间</h4>
-    <nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible3')">
-      <span slot="title">
-        <label>12时间制</label>
-      </span>
-      <div slot="desc" class="selected-option">
-        <span class="show-value">{{ time ? `${time} ${amOrPm}` : '请选择' }}</span>
-      </div>
-    </nut-cell>
-    <nut-datepicker
-      :is-visible="isVisible3"
-      type="time"
-      title="选择时间"
-      @close="switchPicker('isVisible3')"
-      @choose="setChooseValue3"
-      :is-use12-hours="true"
-      defaultValue="01:07"
-      :is-am="false"
     ></nut-datepicker>
 
     <h4>限制开始结束小时</h4>
@@ -129,8 +127,7 @@ export default {
       this.datetime = param[5];
     },
     setChooseValue3(param) {
-      this.amOrPm = param[2] == '上午' ? 'AM' : 'PM';
-      this.time = param[3];
+      this.time = param[2];
     },
     setChooseValue4(param) {
       this.time1 = param[3];

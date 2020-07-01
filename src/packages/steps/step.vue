@@ -3,7 +3,8 @@
     <div v-if="timeForward && time" class="nut-step-time-forward">{{ time }}</div>
     <div class="nut-step-node">
       <div class="nut-step-icon">
-        <slot name="status-icon">
+        <span v-if="type === 'mini'" class="default-icon"></span>
+        <slot v-else name="status-icon">
           <nut-icon v-if="currentStatus === 'nut-step-status-finish'" type="self" :url="require('../../assets/svg/finish.svg')"></nut-icon>
           <span v-else class="default-icon"></span>
         </slot>
@@ -37,6 +38,7 @@ export default {
     return {
       currentStatus: '',
       timeForward: false,
+      type: ''
     };
   },
   methods: {},

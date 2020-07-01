@@ -57,7 +57,7 @@
 
 .nut-actionsheet-cancel {
 	border-top: 1px solid $as-border-color;
-	color: $as-disable-color;
+	color: $text-black-3;
 }
 
 .nut-actionsheet-confirm {
@@ -66,11 +66,11 @@
 	color: $as-confirm-btn-color;
 	.confirm-btn{
 		width: 100%;
-		height: 40px;
+		height: 50px;
 		background: $as-confirm-btn-bg;
 		border-radius: 4px;
 		font-size: $as-base-font-size;
-		line-height: 40px;
+		line-height: 50px;
 		text-align: center;
 	}
 }

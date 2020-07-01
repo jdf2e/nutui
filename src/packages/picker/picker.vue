@@ -27,8 +27,6 @@
   </nut-popup>
 </template>
 <script>
-import nutactionsheet from '../actionsheet/actionsheet.vue';
-import '../actionsheet/actionsheet.scss';
 import nutpickerslot from './picker-slot.vue';
 import locale from '../../mixins/locale';
 export default {
@@ -57,7 +55,6 @@ export default {
     }
   },
   components: {
-    [nutactionsheet.name]: nutactionsheet,
     [nutpickerslot.name]: nutpickerslot
   },
   data() {

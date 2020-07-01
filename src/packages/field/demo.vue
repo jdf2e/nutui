@@ -1,5 +1,5 @@
 <template>
-  <div class="textinput-demo">
+  <div class="demo-list">
     <h4>标准样式</h4>
    
       <nut-field label="标题内容" placeholder="请输入内容" v-model="val" />
@@ -98,13 +98,6 @@ export default {
 </script>
 
 <style lang="scss" scope>
-.demo {
-	padding: 0;
-}
-h4{
-  margin-left: 10px;
-}
-
 .text-area {
 	width: 100%;
 	background: rgba(255, 255, 255, 1);

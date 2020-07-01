@@ -14,7 +14,7 @@
 
 .nut-steps {
 	background: #fff;
-	padding: 15px;
+	padding: 16px;
 	&.horizontal {
 		display: flex;
 
@@ -29,7 +29,7 @@
 				width: 100%;
 
 				.nut-step-line {
-					height: 1px;
+					height: 0.5px;
 					width: 100%;
 					top: 50%;
 					left: 50%;
@@ -40,8 +40,14 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-
+				margin-top: 4px;
+				margin-bottom: 0;
 				.nut-step-title {
+					margin-bottom: 0;
+					font-size: 14px;
+				}
+				.nut-step-content {
+					color: $text-black-3;
 					margin-bottom: 0;
 				}
 			}
@@ -56,7 +62,7 @@
 
 	.nut-step-time-forward {
 		font-size: $font-size-display-small;
-		width: 75px;
+		width: 40px;
 		color: $text-black-2;
 	}
 
@@ -87,8 +93,8 @@
 		.nut-step-line {
 			position: absolute;
 			top: 14px;
-			left: 14px;
-			width: 1px;
+			left: 14.5px;
+			width: 0.5px;
 			height: 100%;
 			background: $split-line-color;
 		}
@@ -102,6 +108,7 @@
 		.nut-step-title {
 			color: $text-black-1;
 			line-height: 20px;
+			font-size: 15px;
 			font-weight: 600;
 			margin-bottom: 5px;
 		}
@@ -109,7 +116,7 @@
 		.nut-step-content {
 			color: $text-black-2;
 			line-height: 20px;
-			font-size: $font-size-display-small;
+			font-size: $font-size-display-large;
 			margin-bottom: 8px;
 		}
 
