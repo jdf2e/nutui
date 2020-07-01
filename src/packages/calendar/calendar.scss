@@ -2,86 +2,132 @@
 @import '../../styles/animation/slide-right';
 
 .nut-calendar {
-	position: fixed;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	// height: 80%;
+	// height: 333px;
+	// padding-top: 103px;
+	// padding-bottom: 78px;
+	height: 514px;
 	background-color: #fff;
-	font-size: $font-size-base;
+	font-size: $font-size-title-normal;
+	color: $text-black-1;
 	display: flex;
 	flex-direction: column;
-	padding-top: 72px;
 	overflow: hidden;
-	z-index: 1000001;
-}
-
-.nut-calendar-control {
-	position: absolute;
-	left: 0;
-	top: 0;
-	height: 70px;
-	width: 100%;
-	text-align: center;
-	background-color: #fff;
-	//border-bottom: 1px solid $light-color;
-	z-index: 1;
-
-	.nut-calendar-cancel-btn,
-	.nut-calendar-confirm-btn {
-		width: 60px;
-		color: $primary-color;
-		position: absolute;
-		top: 0;
-		line-height: 40px;
-	}
-
-	.nut-calendar-confirm-btn {
-		right: 0;
-	}
-
-	.nut-calendar-cancel-btn {
-		left: 0;
-	}
-
-	.nut-calendar-title {
-		margin: 0 60px;
-		line-height: 40px;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
-
-	.nut-calendar-week {
-		display: flex;
-		//border-top: 1px solid $light-color;
-		height: 30px;
-		text-align: center;
-		line-height: 30px;
-
-		span {
-			flex: 1;
-
-			&:first-child,
-			&:last-child {
-				color: $primary-color;
-			}
+	position: relative;
+	font-family: $font-family;
+	&.nut-calendar-unpoppable{
+		height: 396px;
+		.nut-calendar-control{
+			height: 50px;
+			margin-bottom: 9px;
+		}
+		.nut-calendar-week {
+			height: 49px;
+			border-bottom: 1px solid $split-line-color;
+			line-height: 49px;
+		}
+		.nut-calendar-month-title {
+			padding-top: 7px !important;
+		}
+		.nut-calendar-shortcut{
+			bottom: -42px;
 		}
 	}
 }
 
+.nut-calendar-control {
+	// position: absolute;
+	// left: 0;
+	// top: 0;
+	// right: 0;
+	height: 103px;
+	width: 100%;
+	text-align: center;
+	background-color: #fff;
+	z-index: 1;
+	position: relative;
+	.nut-calendar-cancel-btn {
+		padding: 0 20px;
+		color: $primary-color;
+		position: absolute;
+		top: 0;
+		right: 0;
+		line-height: 47px;
+		color: $text-black-4;
+	}
+	.nut-calendar-title {
+		margin: 0 60px;
+		line-height: 47px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.nut-calendar-week {
+		display: flex;
+		height: 55px;
+		justify-content: center;
+		text-align: center;
+		line-height: 55px;
+		color: $text-black-2;
+		font-size: 15px;
+		border-top: 1px solid $split-line-color;
+		span {
+			//width: 52px;
+			flex: 1;
+		}
+	}
+}
+
+.nut-calendar-btn{
+	height: 78px;
+	width: 100%;
+	background-color: #fff;
+	z-index: 1;
+	position: relative;
+	// position: absolute;
+	// left: 0;
+	// bottom: 0;
+	// right: 0;
+	.nut-calendar-confirm-btn{
+		height: 48px;
+		margin: 0 15px 30px 15px;
+		border-radius: 4px;
+		background-color: $primary-color-jd-red;
+		color: #fff;
+		text-align: center;
+		line-height: 48px;
+		font-size: $font-size-title-normal;
+	}
+}
+.nut-calendar-shortcut{
+	position: absolute;
+	right: 13px;
+	bottom: -27px;
+	div{
+		width: 68px;
+		height: 28px;
+		background: rgba(255,255,255,1);
+		border: 1px solid $split-line-color;
+		border-radius: 23px;
+		font-size: $font-size-display-normal;
+		color: $text-black-2;
+		line-height: 28px;
+	}
+}
 .nut-calendar-months {
 	width: 100%;
 	flex: 1;
-
+	height: 333px;
+	font-size: $font-size-body-normal;
+	
 	.nut-calendar-months-panel {
-		padding-bottom: 10px;
 		position: relative;
 		width: 100%;
 		height: auto;
+		div:nth-of-type(2){
+			.nut-calendar-month-title {
+				padding-top: 0;
+			}
+		}
 	}
 
 	.nut-calendar-loading-tip {
@@ -92,53 +138,86 @@
 		top: -50px;
 		left: 0;
 		right: 0;
-		color: $text-color;
-		font-size: $font-size-small;
+		color: $text-black-4;
+		font-size: $font-size-display-large;
 	}
 
 	.nut-calendar-month-title {
-		height: 30px;
-		line-height: 30px;
-		text-align: center;
-		background-color: $body-background;
+		height: 23px;
+		line-height: 23px;
+		text-align: left;
+		padding-top: 7px;
+		padding-bottom: 2px;
+		padding-left: 20px;
 	}
 
 	.nut-calendar-month-con {
 		overflow: hidden;
-		// .nut-calendar-month-item{
-		//     display: flex;
-		// }
+		.nut-calendar-month-item {
+			div:nth-child(7n+0),
+			div:nth-child(7n + 1) {
+				color: $text-black-4;
+			}
+		}
+		.month-item-range{
+			.nut-calendar-month-day{
+				height: 60px;
+				margin-bottom: 2px;
+			}
+			div[class*="nut-calendar-month-day-active"]{
+				&[title="true"]{
+					border-radius: 4px 0 0 4px;
+				}
+				border-radius: 0 4px 4px 0;
+			}
+		}
+
 		.nut-calendar-month-day {
 			//flex: 1;
 			float: left;
 			width: 14.28%;
-			height: 56px;
+			//width: 52px;
+			height: 52px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			flex-direction: column;
-			//font-size: $font-size-large;
-			&-active {
-				background-color: $primary-color;
-				color: #fff;
+			margin-bottom: 10px;
+			position: relative;
+			font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+			.curr-tips{
+				width: 4px;
+				height: 4px;
+				border-radius: 50%;
+				background-color: $primary-color-jd-red;
+				position: absolute;
+				top: 36px;
+				left: 50%;
+				margin-left: -2px;
 			}
-
+			&-active {
+				border-radius: 4px;
+				background-color: $primary-color-jd-red;
+				color: #fff !important;
+			}
 			&-disabled {
-				color: $disabled-bg;
+				color: $text-black-4 !important;
 			}
 
 			&-choose {
-				background-color: mix($primary-color, #fff, 20%);
-				color: #fff;
+				background-color: #FFEFEB;
+				color: $primary-color-jd-red !important;
 			}
 
-			span {
-				padding: 3px 0;
+			.nut-calendar-day {
+				padding: 4px 0;
 			}
 
 			.nut-calendar-day-tip {
-				font-size: $font-size-small;
+				font-size: $font-size-display-small;
+				line-height: 1;
 			}
 		}
 	}
 }
+
