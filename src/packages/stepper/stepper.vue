@@ -2,6 +2,7 @@
   <div :class="{ 'nut-stepper': !simple, 'nut-stepper-simple': simple }">
     <div class="oper-wrapper reduce-wrapper" @click="reduce()"><span  :class="{ 'nut-stepper-grey': isGray }" v-html="require('../../assets/svg/reduce.svg')"> </span></div>
     <input
+      id="number"
       type="number"
       :min="minNum"
       :max="max"
@@ -129,6 +130,12 @@ export default {
   },
   methods: {
     focus(e) {
+      // conole.log(e,'e')
+      //选中选择框值
+      // const input = document.querySelector('#number');
+      // input.select();
+      // alert(1)
+      // e.currentTarget.select();
       if (this.readonly) return;
       // clear val temporary when focus, e...s
       const v = this.num;
