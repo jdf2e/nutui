@@ -10,7 +10,7 @@
    
      <h4>标题超出长度限制</h4>
     
-      <nut-field  v-model="val2"  label="标题长度超出超出超出范围" textAlign="right" placeholder="请输入内容" /> 
+      <nut-field  v-model="val8"  label="标题长度超出超出超出范围" textAlign="right" placeholder="请输入内容" /> 
    
      <h4>数字</h4>
     
@@ -34,14 +34,14 @@
 
     <h4>文本域(显示字数统计)</h4>
       
-          <nut-field  label="意见反馈" placeholder="自我介绍" v-model="val4"  type="textarea" @errorFunc="error" maxLength="200" rows="4"  />
+          <nut-field  label="意见反馈" placeholder="自我介绍" v-model="val10"  type="textarea" @errorFunc="error" maxLength="200" rows="4"  />
      
       <h4>事件输入事件</h4>
 
           <nut-field label="标题内容：" placeholder="请输入内容" v-model="val" @input-func="fn" />
 
       <h4>右侧自定义DOM</h4>    
-          <nut-field label="验证码：" textAlign="left"  placeholder="请输入内容" v-model="val" @input-func="fn" > 
+          <nut-field label="验证码：" textAlign="left"  placeholder="请输入内容" v-model="val9" @input-func="fn" > 
               <div class="get-code"> 获取验证码</div>
           </nut-field>
       </div>
@@ -61,6 +61,7 @@ export default {
       val7: '输入框已禁用',
       val8: '',
       val9: '',
+      val10: '',
       result: '尚未触发',
       state:"error"
     };
