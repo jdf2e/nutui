@@ -20,14 +20,14 @@
 			justify-content: space-between;
 			// min-height: 48px;
 			// @include nut-cell-border;
-			.nut-icon {
-				margin-right: 13px;
-			}
+			// .nut-icon {
+			// 	margin-right: 13px;
+			// }
 		}
-
 		.nut-cell-left {
 			flex: 1;
 			flex-direction: column;
+			margin-left: 13px;
 		}
 
 		.nut-cell-title {
@@ -88,10 +88,6 @@
 	}
 
 	&:last-child .nut-cell {
-		border-bottom: none;
-	}
-
-	&:only-of-type {
 		border-bottom: none;
 	}
 }

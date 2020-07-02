@@ -1,7 +1,7 @@
 <template>
-  <div id="imagepreview">
-    <nut-cell isLink title="展示图片预览" :showIcon="true" @click.native="showPreview = true"></nut-cell>
+  <div class="demo-list">
     <nut-imagepreview v-model="showPreview" :images="dataImgItem" @close="showPreview = false"/>
+    <nut-cell isLink title="展示图片预览" :showIcon="true" @click.native="showPreview = true"></nut-cell>
   </div>
 </template>
 <script>

@@ -1,51 +1,34 @@
 <template>
-  <div class="s-bar demo-list">
+  <div class="demo-list">
     <h4>基本用法</h4>
-    <div class="demo1">
-      <nut-searchbar :hasIcon="true" :hasSearchButton="false" :clearable='true'></nut-searchbar>
-    </div>
+    <nut-searchbar :hasIcon="true" :hasSearchButton="false" :clearable='true'></nut-searchbar>
 
     <h4>搜索框对齐方式</h4>
-    <div class="demo1">
-      <nut-searchbar :hasIcon="true" :hasSearchButton="false" inputAlign="center"></nut-searchbar>
-    </div>
+    <nut-searchbar :hasIcon="true" :hasSearchButton="false" inputAlign="center"></nut-searchbar>
 
     <h4>自定义右侧按钮</h4>
-    <div class="demo1">
-      <nut-searchbar placeText="右侧默认图标" @submit="searchIcon"></nut-searchbar>
-    </div>
+    <nut-searchbar placeText="右侧默认图标" @submit="searchIcon"></nut-searchbar>
 
-    <div class="demo1">
-      <nut-searchbar placeText="右侧图标自定义" @submit="searchQR" :searchBtnIcon="require('../../assets/svg/qr.svg')"></nut-searchbar>
-    </div>
+    <nut-searchbar placeText="右侧图标自定义" @submit="searchQR" :searchBtnIcon="require('../../assets/svg/qr.svg')">
+    </nut-searchbar>
 
-    <div class="demo1">
-      <nut-searchbar placeText="右侧默认文字" :hasTextButton="true" @submit="submitFun"></nut-searchbar>
-    </div>
-    
-    <div class="demo1">
-      <nut-searchbar placeText="右侧文字自定义" :hasIcon="true" :hasTextButton="true" textInfo="取消" @submit="cancel"></nut-searchbar>
-    </div>
+    <nut-searchbar placeText="右侧默认文字" :hasTextButton="true" @submit="submitFun"></nut-searchbar>
+
+    <nut-searchbar placeText="右侧文字自定义" :hasIcon="true" :hasTextButton="true" textInfo="取消" @submit="cancel">
+    </nut-searchbar>
 
     <h4>自定义搜索框右侧按钮</h4>
-    <div class="demo1">
-      <nut-searchbar :hasIcon="true" :hasSearchButton="false" :hasAction="true" @handleAction="handleAction"></nut-searchbar>
-    </div>
+    <nut-searchbar :hasIcon="true" :hasSearchButton="false" :hasAction="true" @handleAction="handleAction">
+    </nut-searchbar>
 
-    <div class="demo1">
-      <nut-searchbar :hasIcon="true" :hasSearchButton="false" :hasAction="true" :actionIcon="require('../../assets/svg/rate-default-img.svg')" @handleAction="handleAction"></nut-searchbar>
-    </div>
-
+    <nut-searchbar :hasIcon="true" :hasSearchButton="false" :hasAction="true"
+      :actionIcon="require('../../assets/svg/rate-default-img.svg')" @handleAction="handleAction"></nut-searchbar>
 
     <h4>事件</h4>
-    <div class="demo1">
-      <nut-searchbar  @focus="focusFun" @input="inputFun" @blur="blurFun" @submit="submitFun"></nut-searchbar>
-    </div>
+    <nut-searchbar @focus="focusFun" @input="inputFun" @blur="blurFun" @submit="submitFun"></nut-searchbar>
 
     <h4>获取焦点与失去焦点</h4>
-    <div class="demo1">
-      <nut-searchbar @submit="search" @focus="focusFun" ref="myInput"></nut-searchbar>
-    </div>
+    <nut-searchbar @submit="search" @focus="focusFun" ref="myInput"></nut-searchbar>
   </div>
 </template>
 <script>
@@ -100,16 +83,4 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-h4{
-  
-  padding: 11px 20px;
-  margin: 0;
-  font-size: 15px;
-  color: #323232;
-}
-.demo1 {
-	padding: 10px 15px;
-	background: #fff;
-}
-</style>
+<style lang="scss" scoped></style>

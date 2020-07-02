@@ -6,7 +6,10 @@
       @click="headerClickHandler"
     >
       <slot name="title">
-        <div class="nut-card-title">{{title}}</div>
+        <div class="nut-card-title" v-if="title">{{title}}</div>
+        <div class="nut-card-title-content" v-if="!title">{{content}}</div>
+        <!-- 添加补充说明文案 -->
+        <div class="nut-card-supply-title" v-if="supplyTitle">{{supplyTitle}}</div>
         <div class="nut-card-icon" v-if="openIcon">
           <nut-icon
             type="self"
@@ -16,7 +19,7 @@
       </slot>
     </div>
     <template v-if="isOpen">
-      <div class="mut-card-content" v-if="content || hasContent">
+      <div class="mut-card-content" v-if="showContent">
         <slot name="content">{{content}}</slot>
       </div>
       <div class="mut-card-bottom" v-if="(footerButtons && footerButtons.length>0)||hasFooter">
@@ -24,6 +27,7 @@
           <template v-for="(item,index) in footerButtons">
             <nut-button
               :key="index"
+              color="#646464"
               size="small"
               type="bottom"
               @click="clickHandler(item.event)"
@@ -41,6 +45,11 @@ export default {
   props: {
     title: {
       // 卡片标题
+      type: String,
+      default: ''
+    },
+    supplyTitle: {
+      // 卡片标题补充文案
       type: String,
       default: ''
     },
@@ -79,7 +88,12 @@ export default {
       default: false
     }
   },
-  computed: {},
+  computed: {
+    showContent() {
+      const { title, content, hasContent } = this;
+      return (title && content) || hasContent;
+    }
+  },
   methods: {
     clickHandler(event) {
       this.$emit(event);

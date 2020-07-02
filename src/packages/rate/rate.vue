@@ -11,10 +11,10 @@
         width: size + 'px',
         color:`${n <= current ? checkedColor : ''}`,
         marginRight: spacing + 'px',
-        backgroundImage: n <= current ? `url(${checkedIcon})` : `url(${uncheckedIcon})`,
+        backgroundImage: n <= current ? checkedIcon : uncheckedIcon
       }"
     >
-      <i v-if="!checkedIcon">
+      <i v-if="!checkedIcon || !uncheckedIcon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M18,27.4l-7.9,4.1c-0.7,0.4-1.6,0.1-2-0.6c-0.2-0.3-0.2-0.6-0.2-1l1.5-8.8l0,0
 	      L3.1,15c-0.6-0.6-0.6-1.5,0-2.1c0.2-0.2,0.5-0.4,0.9-0.4l8.8-1.3l0,0l3.9-8c0.4-0.7,1.3-1,2-0.7c0.3,0.1,0.5,0.4,0.7,0.7l3.9,8l0,0
 	      l8.8,1.3c0.8,0.1,1.4,0.9,1.3,1.7c0,0.3-0.2,0.6-0.4,0.9l-6.4,6.2l0,0l1.5,8.8c0.1,0.8-0.4,1.6-1.2,1.7c-0.3,0.1-0.7,0-1-0.2
@@ -75,7 +75,6 @@ export default {
   data() {
     return {
       current: 3,
-      defaultImage:require('./../../assets/svg/rate-default-img.svg'),
       halfStarClick:false
     };
   },
@@ -113,6 +112,17 @@ export default {
         this.$emit('input', idx-0.5);
         this.$emit('click', idx-0.5);
       }
+    }
+  },
+  watch: {
+    value(newVal, oldVal) {
+        if(parseInt(newVal) === parseFloat(newVal)){
+           this.current = newVal;
+        }else{
+           this.current = newVal;
+           this.showHalf = true;
+           this.halfStarClick = true;
+        }
     }
   }
 };

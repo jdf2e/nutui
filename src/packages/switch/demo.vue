@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     onChange(status) {
-      alert(status);
+      this.$toast.text(status)
     }
   }
 };

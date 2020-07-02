@@ -52,6 +52,9 @@ export default {
               child.currentStatus = 'nut-step-status-wait';
             }
           }
+          if (this.type === 'mini') {
+            child.type = 'mini'
+          }
         }
         
         if (index + 1 === total) {

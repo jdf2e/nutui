@@ -3,7 +3,8 @@
 .nut-searchbar {
 	display: flex;
 	flex-flow: row;
-
+	padding: 10px 15px;
+	background: #fff;
 	.search-input {
     	height: 36px;
 		flex: 1;
