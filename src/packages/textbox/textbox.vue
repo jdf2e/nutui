@@ -41,7 +41,6 @@ export default {
     },
     data() {
         return {
-           
             errorState:false,
             txtNum:0,
         };
@@ -52,6 +51,7 @@ export default {
     computed:{
         currentValue:{
             get(){
+                this.txtNum=this.value.length;
                 return this.value;
             },
             set(val){
