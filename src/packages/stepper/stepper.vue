@@ -130,7 +130,6 @@ export default {
   },
   methods: {
     focus(e) {
-      console.log(1)
       if (this.readonly) return;
       // clear val temporary when focus, e...s
       //选中选择框值
