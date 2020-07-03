@@ -2,6 +2,7 @@
   <div :class="{ 'nut-stepper': !simple, 'nut-stepper-simple': simple }">
     <div class="oper-wrapper reduce-wrapper" @click="reduce()"><span  :class="{ 'nut-stepper-grey': isGray }" v-html="require('../../assets/svg/reduce.svg')"> </span></div>
     <input
+      ref="number"
       type="number"
       :min="minNum"
       :max="max"
@@ -129,8 +130,11 @@ export default {
   },
   methods: {
     focus(e) {
+      console.log(1)
       if (this.readonly) return;
       // clear val temporary when focus, e...s
+      //选中选择框值
+      this.$refs.number.select();
       const v = this.num;
       this.tempNum = v;
       this.minNum = '';

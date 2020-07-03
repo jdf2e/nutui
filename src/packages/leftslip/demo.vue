@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>基本用法</h4>
     <div>
       <nut-leftslip ref="demo1">

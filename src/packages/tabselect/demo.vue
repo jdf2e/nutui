@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <nut-cell isLink title="展示单选弹出层" :showIcon="true" @click.native="show = true"> </nut-cell>
     <nut-tabselect
       :mainTitle="mainTitle"
@@ -14,7 +14,6 @@
       :isDefaultSelected="true"
     ></nut-tabselect>
 
-    <nut-cell isLink title="展示多选弹出层" :showIcon="true" @click.native="showMore = true"> </nut-cell>
     <nut-tabselect
       :mainTitle="mainTitle"
       :subTitle="subTitle"
@@ -27,6 +26,8 @@
       :multiple="true"
       :max="3"
     ></nut-tabselect>
+    <nut-cell isLink title="展示多选弹出层" :showIcon="true" @click.native="showMore = true"> </nut-cell>
+
   </div>
 </template>
 

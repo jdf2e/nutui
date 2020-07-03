@@ -228,7 +228,7 @@ export default {
       let cacheMonths = [];
       for (var i = 1; i <= 12; i++) {
         if (!(year == this.startDateArr[0] && i < this.startDateArr[1]) && !(year == this.endDateArr[0] && i > this.endDateArr[1])) {
-          cacheMonths.push(`${i}${this.chinese[1]}`);
+          cacheMonths.push(`${this.isShowChinese ? i : Utils.getNumTwoBit(i)}${this.chinese[1]}`);
         }
       }
       return cacheMonths;
@@ -242,7 +242,7 @@ export default {
           !(year == this.startDateArr[0] && month == parseInt(this.startDateArr[1]) && (k + 1) <  parseInt(this.startDateArr[2])) &&
           !(year == this.endDateArr[0] && month == parseInt(this.endDateArr[1]) && (k + 1) > parseInt(this.endDateArr[2]))
         ) {
-          return `${k + 1}${this.chinese[2]}`;
+          return `${this.isShowChinese ? k + 1 : Utils.getNumTwoBit(k + 1)}${this.chinese[2]}`;
         }
       });
       return days.filter(item => item);

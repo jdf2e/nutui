@@ -1,7 +1,7 @@
 <template>
   <div class="demo-list">
     <h4>通用方法</h4>
-    <P>自定义样式，和图片预览</P>
+    <p>自定义样式，和图片预览</p>
     <div>
       <div class="preview-img-box">
         
@@ -30,44 +30,29 @@
        
          
       </div>
-       
+
     </div>
 
     <h4>其它用法</h4>
-    <p>1. 结合 Button 组件和 Toast 组件使用</p>
+    <p>结合 Button 组件和 Toast 组件使用</p>
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-uploader
-            :name="name"
-            :url="url"
-            :xhrState="stateNum"
-            @start="demo2UploadStart"
-            @success="demo2Success"
-            @failure="demo2Fail"
-            @showMsg="showMsg1"
-          >
+          <nut-uploader :name="name" :url="url" :xhrState="stateNum" @start="demo2UploadStart" @success="demo2Success"
+            @failure="demo2Fail" @showMsg="showMsg1">
             <nut-button size="small">{{demo2Name}}</nut-button>
           </nut-uploader>
         </span>
         <div slot="desc"></div>
       </nut-cell>
     </div>
-    
-    <p>自定义headers&formData</p>
+
+    <p>自定义 headers & formData </p>
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-uploader
-            :name="name"
-            :url="url"
-            :xhrState="stateNum"
-            :headers="headers"
-            :attach="formData"
-            @success="demoSuccess"
-            @fail="demoFail"
-            @showMsg="showMsg1"
-          >
+          <nut-uploader :name="name" :url="url" :xhrState="stateNum" :headers="headers" :attach="formData"
+            @success="demoSuccess" @fail="demoFail" @showMsg="showMsg1">
             <nut-button size="small">上传</nut-button>
           </nut-uploader>
         </span>
@@ -102,38 +87,24 @@
       </nut-cell>
     </div> -->
     <p>上传图片前处理图片内容</p>
-    <nut-cell>
-      <span slot="title">
-        <nut-uploader
-          :beforeUpload="test"
-          :name="name"
-          :url="url"
-          :xhrState="stateNum"
-          :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
-          @success="demo1Success"
-          @failure="demo1Fail"
-          @start="demo1UploadStart"
-          @showMsg="showMsg"
-        >
-          <nut-button size="small">上传图片前处理图片内容</nut-button>
-        </nut-uploader>
-      </span>
-      <div slot="desc"></div>
-    </nut-cell>
+    <div>
+      <nut-cell>
+        <span slot="title">
+          <nut-uploader :beforeUpload="test" :name="name" :url="url" :xhrState="stateNum"
+            :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']" @success="demo1Success"
+            @failure="demo1Fail" @start="demo1UploadStart" @showMsg="showMsg">
+            <nut-button size="small">上传图片前处理图片内容</nut-button>
+          </nut-uploader>
+        </span>
+        <div slot="desc"></div>
+      </nut-cell>
+    </div>
     <p>自定义增加上传图片数据</p>
     <nut-cell>
       <span slot="title">
-        <nut-uploader
-          :selfData="selfData"
-          :name="name"
-          :url="url"
-          :xhrState="stateNum"
-          :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
-          @success="demo1Success"
-          @failure="demo1Fail"
-          @start="demo1UploadStart"
-          @showMsg="showMsg"
-        >
+        <nut-uploader :selfData="selfData" :name="name" :url="url" :xhrState="stateNum"
+          :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']" @success="demo1Success"
+          @failure="demo1Fail" @start="demo1UploadStart" @showMsg="showMsg">
           <nut-button size="small">自定义增加上传图片数据</nut-button>
         </nut-uploader>
       </span>
@@ -231,24 +202,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.img-list{
-  display: flex;  
+.img-list {
+  display: flex;
   align-items: center;
   flex-wrap: wrap;
 }
 
-.demo-1{
+.demo-1 {
   width: 75px;
   height: 75px;
   line-height: 75px;
   text-align: center;
-  border: 1px solid rgba(230,230,230,1);
+  border: 1px solid rgba(230, 230, 230, 1);
   border-radius: 3px;
   background: #fff;
 }
-.preview-img-box{
-  display: flex;  
-  padding: 10px ;
+.preview-img-box {
+  display: flex;
+  padding: 10px;
   flex-wrap: wrap;
   
 }

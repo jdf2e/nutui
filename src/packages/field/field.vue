@@ -3,7 +3,7 @@
     <span class="nut-require" v-if="requireShow">*</span>
     <span class="nut-field-label" v-if="label">{{ label }}</span>
 
-         <div  v-if="type === 'textarea'"  class="nut-text-core">
+    <div  v-if="type === 'textarea'"  class="nut-text-core">
           <textarea
             @change="$emit('change', currentValue)"
             ref="textarea"
@@ -15,7 +15,7 @@
             @input="txtIptLength"
             v-model="currentValue">
           </textarea>
-          <span  v-if="limitShow">{{ txtNum }}/{{ maxLength }}</span>
+          <span class="nut-text-limit"  v-if="limitShow"><span :class="[ { 'nut-field-over': overLmitNumber }]">{{txtNum}}</span>/{{ maxLength }}</span>
     </div>
      <input
      :class="['input-'+state]"
@@ -60,6 +60,7 @@ export default {
     return {
       active: false,
       txtNum:0,
+      overLmitNumber:false,
       currentValue: this.value
     };
   },
@@ -78,7 +79,7 @@ export default {
     },
     maxLength:{
       type:String,
-      default:"50"
+      default:""
     },
     state: {
         type:String,
@@ -133,9 +134,13 @@ export default {
       const data = event.target.value;
       const txtLength = data.length;
       this.txtNum = txtLength;
-      if (txtLength > this.maxLength*1) {
-        this.$emit('errorFunc');
+      console.log(txtLength,this.maxLength)
+      if (txtLength >= this.maxLength*1) {
+        this.overLmitNumber=true;
+        this.$toast.text(`已经输入${this.maxLength}字`)
+        this.$emit('error-func');
       } else {
+        this.overLmitNumber=false;
       }
       if(this.autosize){
         

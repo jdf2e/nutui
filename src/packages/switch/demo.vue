@@ -8,11 +8,11 @@
         </nut-cell>
         <nut-cell>
             <div slot="title">开启禁用</div>
-            <span slot="desc"><nut-switch :disabled="true"></nut-switch></span>
+            <span slot="desc"><nut-switch :active="true" :disabled="true"></nut-switch></span>
         </nut-cell>
         <nut-cell>
             <div slot="title">关闭禁用</div>
-            <span slot="desc"><nut-switch @change="onChange" :active="true" :disabled="true"></nut-switch></span>
+            <span slot="desc"><nut-switch :disabled="true"></nut-switch></span>
         </nut-cell>
     </div>
 
@@ -24,11 +24,11 @@
         </nut-cell>
         <nut-cell>
             <div slot="title">开启禁用</div>
-            <span slot="desc"><nut-switch :disabled="true" size="small"></nut-switch></span>
+            <span slot="desc"><nut-switch :active="true" :disabled="true" size="small"></nut-switch></span>
         </nut-cell>
         <nut-cell>
             <div slot="title">关闭禁用</div>
-            <span slot="desc"><nut-switch @change="onChange" :active="true" :disabled="true" size="small"></nut-switch></span>
+            <span slot="desc"><nut-switch :disabled="true" size="small"></nut-switch></span>
         </nut-cell>
     </div>
 
@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     onChange(status) {
-      alert(status);
+      this.$toast.text(status)
     }
   }
 };

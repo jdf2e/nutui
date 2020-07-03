@@ -1,32 +1,32 @@
 <template>
   <div class="wrapper-cell">
-  <a :class="['nut-cell', { 'nut-cell-link': isLink }]" :href="linkUrl" :style="{ 'background-color': bgColor }" :target="target" @click="jumpPage">
-    <div class="nut-cell-box" @click="clickCell">
-      <slot name="avatar"></slot>
-      <div class="nut-cell-left">
-        <span class="nut-cell-title"
-          ><slot name="title">{{ title }}</slot></span
-        >
-        <span class="nut-cell-sub-title"
+    <a :class="['nut-cell', { 'nut-cell-link': isLink }]" :href="linkUrl" :style="{ 'background-color': bgColor }" :target="target" @click="jumpPage">
+      <div class="nut-cell-box" @click="clickCell">
+        <slot name="avatar"></slot>
+        <div class="nut-cell-left">
+          <span class="nut-cell-title"
+            ><slot name="title">{{ title }}</slot></span
           >
-          <slot name="sub-title">
-            <template>{{ subTitle.substring(0,12) }}</template>
-            <template v-if="subTitle.length>12">...</template>
-          </slot></span
-        >
+          <span class="nut-cell-sub-title"
+            >
+            <slot name="sub-title">
+              <template>{{ subTitle.substring(0,12) }}</template>
+              <template v-if="subTitle.length>12">...</template>
+            </slot></span
+          >
+        </div>
+        <div class="nut-cell-right">
+          <span class="nut-cell-desc"
+            ><slot name="desc">{{ desc }}</slot></span
+          >
+          <span class="nut-cell-icon">
+            <slot name="icon" v-if="showIcon">
+              <img width="17" height="17" src="../../assets/img/ic-arrow.png"/>
+            </slot>
+          </span>
+        </div>
       </div>
-      <div class="nut-cell-right">
-        <span class="nut-cell-desc"
-          ><slot name="desc">{{ desc }}</slot></span
-        >
-        <span class="nut-cell-icon">
-          <slot name="icon" v-if="showIcon">
-            <nut-icon type="right" size="15px" color="#848484"></nut-icon>
-          </slot>
-        </span>
-      </div>
-    </div>
-  </a>
+    </a>
   </div>
 </template>
 <script>
@@ -76,7 +76,12 @@ export default {
     'nut-icon': Icon
   },
   data() {
-    return {};
+    return {
+
+    };
+  },
+  computed:{
+   
   },
   methods: {
     clickCell() {

@@ -6,7 +6,6 @@
       :class="[{ 'curr': index == currIndex }]"
       :key="value.tabTitle"
       v-on:click="switchTabs(value, index)"
-      :href="value.href"
     >
     <nut-badge 
         :isDot="value.isDot"
@@ -43,6 +42,10 @@ export default {
     bottom: {
       type: Boolean,
       default: false
+    },
+    replace:{
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -73,6 +76,13 @@ export default {
     },
     switchTabs: function(value, index) {
       this.currIndex = index;
+      if(this.replace){ //替换url
+        window.location.replace(value.href);
+      }else{
+        if(value.href){
+          window.location.href = value.href;
+        }
+      }
       this.$emit('tab-switch', value, index);
     }
   }

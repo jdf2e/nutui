@@ -1,5 +1,5 @@
 <template>
-  <div class="btn-demo">
+  <div class="demo-list-pd">
     <h4>按钮状态</h4>
     <div class="btn-state">
       <nut-button block>默认状态</nut-button>
@@ -30,7 +30,7 @@
       <nut-button size="middle" type="bottom">更多</nut-button>
     </div>
     <h4>常规按钮</h4>
-    <div class="bg">
+    <div>
       <nut-button @click="clickHandler" :disabled="disabled">去结算</nut-button>
       <nut-button disabled>去结算（disabled）</nut-button>
     </div>
@@ -113,9 +113,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.btn-demo {
-  padding: 0 15px;
-}
 .bg {
   margin: 0 10px;
 }
@@ -139,7 +136,7 @@ export default {
 .btn-size {
   display: flex;
   align-items: flex-end;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 24px;
 
   &.two {
