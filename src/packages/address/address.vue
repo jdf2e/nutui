@@ -11,13 +11,13 @@
     >
       <div class="title">
         <span class="arrow" @click="switchModule">
-          <nut-icon v-if="showModule == 'custom' && type == 'exist'" type="self" :url="require('../../assets/svg/arrows-back.svg')"></nut-icon>
+          <nut-icon v-if="showModule == 'custom' && type == 'exist' && backBtnIcon" type="self" :url="backBtnIcon"></nut-icon>
         </span>
 
         <span v-if="type == 'custom'">{{ customAddressTitle }}</span>
         <span v-if="type == 'exist'">{{ existAddressTitle }}</span>
 
-        <span @click="handClose('hand')"><nut-icon type="circle-cross" size="18px"></nut-icon></span>
+        <span @click="handClose('hand')"><nut-icon v-if="closeBtnIcon" size="18px" type="self" :url="closeBtnIcon"></nut-icon></span>
       </div>
 
       <!-- 请选择 -->
@@ -136,6 +136,16 @@ export default {
       // 地址选择列表前 - 选中的图标
       type: String,
       default: require('../../assets/svg/tick-red.svg')
+    },
+    closeBtnIcon:{
+      // 关闭弹框按钮 icon
+      type: String,
+      default: require('../../assets/svg/circle-cross.svg')
+    },
+    backBtnIcon:{
+      // 选择其他地址左上角返回 icon
+      type: String,
+      default: require('../../assets/svg/arrows-back.svg')
     }
   },
   data() {
@@ -305,6 +315,8 @@ export default {
     },
     // 手动关闭 点击叉号，或者蒙层
     handClose(type = 'self') {
+      if(!this.closeBtnIcon) return
+
       if (type == 'hand') {
         this.closeWay = 'hand';
       } else {
@@ -327,7 +339,14 @@ export default {
     },
     // 选择其他地址
     switchModule() {
-      this.showModule = this.showModule == 'exist' ? 'custom' : 'exist';
+
+      if(this.showModule == 'exist'){
+        this.showModule = 'custom'
+      }else{
+        if(!this.backBtnIcon) return
+        this.showModule = 'exist'
+      }
+      
       this.initAddress();
 
       this.$emit('switchModule', { type: this.showModule });
