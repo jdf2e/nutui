@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="22px" viewBox="0 0 23 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>ic_collectic_fill</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M16.9372669,22.2885529 C17.6716363,22.6719496 18.5777648,22.38743 18.9611615,21.6530606 C19.1134276,21.3614055 19.1655794,21.0277779 19.1095838,20.7035679 L18.122269,14.9871021 L22.3019027,10.9412909 C22.8971408,10.3651111 22.9125905,9.41548932 22.3364107,8.82025129 C22.1053735,8.58157218 21.8016437,8.42633606 21.4728654,8.37889393 L15.6876292,7.54409434 L13.0976723,2.33275319 C12.728979,1.59089283 11.8286975,1.28838113 11.0868371,1.65707438 C10.7939761,1.8026218 10.5567057,2.03989223 10.4111583,2.33275319 L7.82120141,7.54409434 L2.03596513,8.37889393 C1.21603037,8.4972091 0.647255303,9.25781096 0.765570472,10.0777457 C0.813012602,10.406524 0.968248716,10.7102538 1.20692783,10.9412909 L5.38656158,14.9871021 L4.39924681,20.7035679 C4.25825317,21.5199086 4.80573021,22.2959815 5.622071,22.4369752 C5.94628101,22.4929709 6.27990864,22.440819 6.5715637,22.2885529 L11.7544153,19.5827102 L16.9372669,22.2885529 Z" id="path-1"></path>
+    </defs>
+    <g id="UI-KIT" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Data-Display-/-List" transform="translate(-20.000000, -759.000000)">
+            <g id="Data-Display/List/Menu" transform="translate(0.000000, 645.000000)">
+                <g id="编组-6" transform="translate(0.000000, 100.000000)">
+                    <g id="ic_collectic_fill" transform="translate(20.000000, 13.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use fill="#DFDFDF" fill-rule="nonzero" xlink:href="#path-1"></use>
+                        <g id="color_yellow" mask="url(#mask-2)" fill="#FFBA12" fill-rule="evenodd">
+                            <rect id="矩形备份-2" x="0" y="0" width="24" height="24"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
