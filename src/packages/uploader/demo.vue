@@ -4,15 +4,31 @@
     <p>自定义样式，和图片预览</p>
     <div>
       <div class="preview-img-box">
-        <transition name="fade">
-          <div class="img-list" v-if="previewImg">
-            <img-cell v-for="(item,index) in previewImg" :key="index" :src="item" :clear="()=>{clearImg(index)}" />
-          </div>
-        </transition>
-        <nut-uploader class="demo-1" :name="name" :url="url" :xhrState="stateNum"
-          :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']" :isPreview="true" @preview="preview"
-          @success="demo1Success" @failure="demo1Fail" @start="demo1UploadStart" @showMsg="showMsg" :multiple="true">+
-        </nut-uploader>
+        
+        <div class="img-list">
+          <img-cell v-for="(item,index) in previewImg" 
+                    :key="index"   
+                    :src="item"
+                    :clear="()=>{clearImg(index)}"
+                      /> 
+
+           <nut-uploader
+              class="demo-1"
+              :name="name"
+              :url="url"
+              :xhrState="stateNum"
+              :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
+              :isPreview="true"
+              @preview="preview"
+              @success="demo1Success"
+              @failure="demo1Fail"
+              @start="demo1UploadStart"
+              @showMsg="showMsg"
+              :multiple="true"
+        >+</nut-uploader>           
+        </div>
+       
+         
       </div>
 
     </div>
@@ -205,5 +221,6 @@ export default {
   display: flex;
   padding: 10px;
   flex-wrap: wrap;
+  
 }
 </style>

@@ -22,16 +22,24 @@
     <h4>菜单列表</h4>
     <div class="cell-box">
       <nut-cell :show-icon="true" title="我的主页" @click-cell="clickEvnt">
-        <div slot="avatar"><nut-icon type="self" color="#9D49F8FF" size="18px" :url="require('../../assets/svg/avatar.svg')">></nut-icon></div>
+        <div slot="avatar">
+         <img width="24" height="24" class="avatar-img" src="../../assets/img/ic_me.png"/>
+        </div>
       </nut-cell>
       <nut-cell :show-icon="true" title="店铺定位" desc="查看店铺" @click-cell="clickEvnt">
-          <div slot="avatar"><nut-icon type="self" color="#FF6E4CFF" size="18px" :url="require('../../assets/svg/nav.svg')">></nut-icon></div>
+          <div slot="avatar">
+            <img width="24" height="24" class="avatar-img" src="../../assets/img/ic_location.png"/>
+          </div>
       </nut-cell>
       <nut-cell :show-icon="true" title="我的收藏" @click-cell="clickEvnt">
-        <div slot="avatar"><nut-icon type="self" color="#FFBA12FF" size="18px" :url="require('../../assets/svg/star.svg')">></nut-icon></div>
+        <div slot="avatar">
+          <img width="24" height="24" class="avatar-img" src="../../assets/img/ic_collect.png"/>
+        </div>
       </nut-cell>
       <nut-cell :show-icon="true" title="设置" desc="版本升级" @click-cell="clickEvnt">
-          <div slot="avatar"><nut-icon type="self" color="#1EA3FFFF" size="18px" :url="require('../../assets/svg/set.svg')">></nut-icon></div>
+          <div slot="avatar">
+            <img width="24" height="24" class="avatar-img" src="../../assets/img/ic_set.png"/>
+          </div>
       </nut-cell>
     </div>
     <h4>消息列表</h4>
@@ -47,14 +55,14 @@
         <div slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></div>
         <div slot="desc">
           <p class="timer">1小时前</p>
-          <p class="badge"><nut-badge  :is-dot="true" :max="99" top="0px" right="5px"></nut-badge></p>
+          <p class="badge"><nut-badge  :is-dot="true" :max="99" top="0px" right="10px"></nut-badge></p>
         </div>
       </nut-cell>
       <nut-cell title="噜啦噜" sub-title="我又来送福利啦！关注之后你就会">
         <div slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></div>
         <div slot="desc">
           <p class="timer">星期五</p>
-          <p class="badge"><nut-badge  :value="100" :max="99" top="0px" right="25px"></nut-badge></p>
+          <p class="badge"><nut-badge  :value="100" :max="99" top="0px" right="30px"></nut-badge></p>
         </div>
       </nut-cell>
     </div>
@@ -98,5 +106,8 @@ export default {
 		width: 100%;
 		height: 100%;
 	}
+}
+.avatar-img{
+  margin-right: 8px;
 }
 </style>

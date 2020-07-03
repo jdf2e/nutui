@@ -55,6 +55,7 @@
       @selected="selected3"
       :defaultIcon="defaultIcon"
       :selectedIcon="selectedIcon"
+      :closeBtnIcon="closeBtnIcon"
     ></nut-address>
 
     <nut-address
@@ -65,6 +66,7 @@
       :city="city"
       :country="country"
       :town="town"
+      :backBtnIcon="backBtnIcon"
       @onChange="onChange4"
       @close="close4"
       @selected="selected4"
@@ -103,6 +105,9 @@ export default {
       showPopupCustomImg: false,
       selectedIcon: require('../../assets/svg/checked.svg'),
       defaultIcon: require('../../assets/svg/unchecked.svg'),
+
+      closeBtnIcon: require('../../assets/svg/close.svg'),
+      backBtnIcon: require('../../assets/svg/back.svg'),
 
       showPopupOther: false,
       existAddress: [

@@ -21,7 +21,7 @@
           >
           <span class="nut-cell-icon">
             <slot name="icon" v-if="showIcon">
-              <nut-icon type="right" size="11px" color="#848484"></nut-icon>
+              <img width="17" height="17" src="../../assets/img/ic-arrow.png"/>
             </slot>
           </span>
         </div>
@@ -76,7 +76,12 @@ export default {
     'nut-icon': Icon
   },
   data() {
-    return {};
+    return {
+
+    };
+  },
+  computed:{
+   
   },
   methods: {
     clickCell() {
