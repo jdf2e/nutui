@@ -69,6 +69,11 @@ export default {
         this.$emit('click', idx);
       }
     }
+  },
+  watch: {
+    value(newVal, oldVal) {
+       this.current = newVal;
+    }
   }
 };
 </script>

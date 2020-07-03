@@ -10,7 +10,8 @@ $dark-color: #dadada !default;
 // ---- base ----
 $body-background: #f6f6f6 !default;
 $mask-bg: rgba(0, 0, 0, 0.5) !default;
-$font-family: PingHei, 'Lucida Grande', 'Lucida Sans Unicode', STHeiti, Helvetica, Arial, Verdana, 'sans-serif', 'PingHei-light', SimHei, 'Droid Sans' !default;
+$font-family: PingHei, "Lucida Grande", "Lucida Sans Unicode", STHeiti, Helvetica, Arial, Verdana, "sans-serif",
+    "PingHei-light", SimHei, "Droid Sans" !default;
 $font-size-base: 14px !default;
 $font-size-small: 12px !default;
 $font-size-large: 16px !default;
@@ -60,7 +61,11 @@ $btn-gradient-color: #fff !default;
 $btn-gradient-start-color: #ff4f18;
 $btn-gradient-end-color: #f20000;
 $btn-gradient-bg: linear-gradient(315deg, $btn-gradient-start-color 0%, $btn-gradient-end-color 100%) !default;
-$btn-gradient-active-bg: linear-gradient(315deg, darken($btn-gradient-start-color, 10%) 0%, darken($btn-gradient-end-color, 10%) 100%) !default;
+$btn-gradient-active-bg: linear-gradient(
+    315deg,
+    darken($btn-gradient-start-color, 10%) 0%,
+    darken($btn-gradient-end-color, 10%) 100%
+) !default;
 $btn-default-color: $normal-color !default;
 $btn-default-bg: #fff !default;
 $btn-default-border: $border-color-dark !default;
@@ -78,7 +83,7 @@ $zindex-actionsheet: 10001 !default;
 $zindex-dialog: 10000 !default;
 $zindex-picker: 10050 !default;
 // ---- Assets path ----
-$assetsPath: '../../assets' !default;
+$assetsPath: "../../assets" !default;
 // ---- Stepper ----
 $stepper-color: #333 !default;
 $stepperbar-width: 11px !default;
@@ -93,3 +98,8 @@ $notify-primary-background-color: #1989fa;
 $notify-success-background-color: #07c160;
 $notify-danger-background-color: #ee0a24;
 $notify-warning-background-color: #ff976a;
+
+// Fixed
+
+$fixed-bg-color: #fff;
+$fixed-font-color: #333;

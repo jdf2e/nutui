@@ -72,12 +72,12 @@ export default {
       el.style.zIndex = this.zIndex;
       if (this.boundary.left) {
         el.style.left = this.boundary.left + 'px';
-      } else {
+      } else if (this.boundary.right) {
         el.style.right = this.boundary.right + 'px';
       }
       if (this.boundary.top) {
         el.style.top = this.boundary.top + 'px';
-      } else {
+      } else if (this.boundary.bottom) {
         el.style.bottom = this.boundary.bottom + 'px';
       }
     },

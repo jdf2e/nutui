@@ -143,7 +143,7 @@ NutUI.install(Vue);
 
 以下两种方式都可以实现只加载用到的组件，从而减少加载的文件体积。
 
-### 1. 使用 webpack 插件 **[@nutui/babel-plugin-seperate-import](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)** (推荐)
+### 1. 使用 webpack 插件 **[@nutui/babel-plugin-separate-import](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)** (推荐)
 
 首先安装 **@nutui/babel-plugin-separate-import** 插件
 

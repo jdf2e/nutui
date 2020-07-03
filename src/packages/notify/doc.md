@@ -75,7 +75,7 @@ export default {
       this.show = true;
       setTimeout(() => {
         this.show = false;
-      }, 2000);
+      }, 200);
     }
 ```
 ## 修改默认配置

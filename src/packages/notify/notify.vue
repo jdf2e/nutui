@@ -20,8 +20,6 @@
 <script>
 import { overlayProps, getProps } from '../popup/index';
 import Popup from './../popup/popup.vue';
-console.log(overlayProps, 'overlayProps');
-
 export default {
   name: 'nut-notify',
   props: {
@@ -88,7 +86,6 @@ export default {
       } else {
         this.textTimer = setTimeout(() => {
           clearTimeout(this.textTimer);
-          // this.msg = '';
         }, 300);
       }
     },
