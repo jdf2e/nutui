@@ -20,13 +20,6 @@
     </div>
 
     <div>
-      <nut-cell 
-        :showIcon="true"  
-        title="选择时间段"
-        :desc="date1 ? `${date1[0]}至${date1[1]}` : '请选择'"
-        @click.native="openSwitch('isVisible1')">
-      </nut-cell>
-
       <nut-calendar
         :is-visible="isVisible1"
         :default-value="date1"
@@ -37,6 +30,13 @@
         @choose="setChooseValue1"
       >
       </nut-calendar>
+
+       <nut-cell 
+        :showIcon="true"  
+        title="选择时间段"
+        :desc="date1 ? `${date1[0]}至${date1[1]}` : '请选择'"
+        @click.native="openSwitch('isVisible1')">
+      </nut-cell>
     </div>
     <!-- <div>
       <nut-cell 
