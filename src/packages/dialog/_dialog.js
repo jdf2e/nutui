@@ -43,7 +43,7 @@ let Dialog = function(options) {
 };
 Dialog.closed = function() {
     if (inst) {
-        console.log(inst.close())
+        inst.close()
     }
 }
 export default Dialog;

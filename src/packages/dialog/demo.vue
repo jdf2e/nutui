@@ -1,5 +1,7 @@
 <template>
   <div class="demo-list">
+
+    <button @click="fnTest()">按钮测试</button>
     <h4>基本用法</h4>
     <div>
       <nut-cell :is-link="true" :show-icon="true" @click.native="showDialog1" >
@@ -174,7 +176,7 @@ export default {
       this.$dialog({
         maskBgStyle: 'rgba(0,0,0,0)', //设置遮罩层背景透明
         title: '注册说明',
-        content: '原账号为您本人所有，建议直接登录或找回密码。原账号内的订单资产可能丢失，可联系京东客服找回。'
+        content: '原账号为您本人所有，建议直接登录或找回密码。原账号内的订单资产可能丢失，可联系京东客服找回。',
       });
     },
     showDialog8: function() {
