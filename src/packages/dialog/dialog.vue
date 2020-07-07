@@ -170,6 +170,10 @@ export default {
     customClass: {
       type: String,
       default: ''
+    },
+    closeOnPopstate:{
+      type:Boolean,
+      default:false
     }
   },
   data() {
@@ -180,6 +184,15 @@ export default {
   },
   created() {
     this.destroy = true;
+  },
+  mounted(){
+    var that=this;
+    if(that.closeOnPopstate){
+        window.addEventListener("popstate",function(){
+          that.close();
+        })
+    }
+  
   },
   methods: {
     modalClick() {

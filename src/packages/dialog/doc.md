@@ -10,6 +10,10 @@ this.$dialog({
   content: "删除后将从你的记录里消失，无法找回"
 });
 ```
+## 直接关闭当前dialog
+```javascript
+this.$dialog.closed()  //可以直接关闭当前dialog
+```
 
 ## ID
 
@@ -107,7 +111,7 @@ export default {
 }
 ```
 
-## API
+## prop
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
@@ -125,14 +129,23 @@ export default {
 | okBtnDisabled | 禁用确定按钮 | Boolean | false
 | cancelAutoClose | 取消按钮是否默认关闭弹窗 | Boolean | true
 | textAlign | 文字对齐方向，可选值同css的text-align | String | "center"
-| onOkBtn | 确定按钮回调 | Function | -
-| onCancelBtn | 取消按钮回调 | Function | -
-| onCloseBtn | 关闭按钮回调 | Function | -
-| closeCallback | 关闭回调，任何情况关闭弹窗都会触发 | Function | -
-| onClickImageLink | 图片链接点击回调，仅对图片类型弹窗有效 | Function | -
 | maskBgStyle | 遮罩层样式（颜色、透明度） | String | -
 | customClass | 增加一个自定义class | String | -
 | link | 点击图片跳转的Url，仅对图片类型弹窗有效 | String | -
 | imgSrc | 图片Url，仅对图片类型弹窗有效 | String | -
 | animation | 是否开启默认动效 | Boolean | true
+| closeOnPopstate | 是否在页面回退时自动关闭 | Boolean | false
 | lockBgScroll | 锁定遮罩层滚动，不影响弹窗内部滚动（实验性质）会给body添加posotion:fix属性，注意 | Boolean | false
+
+
+## 事件
+
+| 字段 | 说明 | 类型 | 默认值
+|----- | ----- | ----- | ----- 
+
+| onOkBtn | 确定按钮回调 | Function | -
+| onCancelBtn | 取消按钮回调 | Function | -
+| onCloseBtn | 关闭按钮回调 | Function | -
+| closeCallback | 关闭回调，任何情况关闭弹窗都会触发 | Function | -
+| onClickImageLink | 图片链接点击回调，仅对图片类型弹窗有效 | Function | -
+| closed | 关闭dialog | Function | -

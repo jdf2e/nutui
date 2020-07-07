@@ -2,7 +2,7 @@
   <div class="demo-list">
     <h4>基本用法</h4>
     <div>
-      <nut-cell :is-link="true" :show-icon="true" @click.native="showDialog1">
+      <nut-cell :is-link="true" :show-icon="true" @click.native="showDialog1" >
         <span slot="title">
           <label>自定义标题和内容</label>
         </span>
@@ -103,7 +103,8 @@ export default {
     showDialog1: function() {
       const options = {
         title: '确定删除此订单？',
-        content: '删除后将从你的记录里消失，无法找回'
+        content: '删除后将从你的记录里消失，无法找回',
+        closeOnPopstate:true
       };
 
       this.$dialog(options);
