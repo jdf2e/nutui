@@ -10,9 +10,11 @@
       @open="closeWay = 'self'"
     >
       <div class="title">
-        <span class="arrow" @click="switchModule">
-          <nut-icon v-if="showModule == 'custom' && type == 'exist' && backBtnIcon" type="self" :url="backBtnIcon"></nut-icon>
+
+        <span class="arrow" @click="switchModule" v-if="showModule == 'custom' && type == 'exist' && backBtnIcon">
+          <nut-icon  type="self" :url="backBtnIcon"></nut-icon>
         </span>
+        <span class="arrow" v-else></span>
 
         <span v-if="type == 'custom'">{{ customAddressTitle }}</span>
         <span v-if="type == 'exist'">{{ existAddressTitle }}</span>
@@ -344,7 +346,6 @@ export default {
       if(this.showModule == 'exist'){
         this.showModule = 'custom'
       }else{
-        if(!this.backBtnIcon) return
         this.showModule = 'exist'
       }
 
