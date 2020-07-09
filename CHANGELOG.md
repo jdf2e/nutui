@@ -1,3 +1,21 @@
+## 2.2.7
+
+`2020-07-09`
+
+* :sparkles: feat(FixedNav)：新增悬浮导航组件 @richard1015
+* :sparkles: feat(Notify)：新增通知组件 @shenqistart
+* :sparkles: feat(CountUp)：新增数字滚动组件 @Ymm0008
+* :sparkles: upd(Elevator)：优化电梯组件 @zhenyulei
+* :sparkles: upd(NoticeBar)：重构优化内部代码 @shenqistart
+* :bug: fix(Rate)：修复props 数据监听问题 @yushuang
+* :bug: fix(TextBox)： 修复文本域初始化字数展示问题 @guoxiao158
+* :bug: fix(Dialog)：滚动模式bug修复、新增close关闭事件 @guoxiao158
+* :bug: fix(Stepper)：判断max小于min的情况 @yangxiaolu1993
+* :bug: fix(Address): 地址组件点击左上角返回问题,支持自定义图标 @yangxiaolu1993
+* :bug: fix(Drag)：优化拖拽组件demo显示问题 @zy19940510 @richard1015
+* :bug: fix(Switch)：修复内嵌文字居中 @zjyau
+* :bug: fix(Datepicker)修复设置起止范围，如月份是个位数(1-9月)，天数的开始条件无效问题 @zjyau
+
 ## 2.2.6
 
 `2020-06-19`

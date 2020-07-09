@@ -119,7 +119,8 @@ import './packages/subsidenavbar/subsidenavbar.scss';
 import SideNavBarItem from './packages/sidenavbaritem/index.js';
 import './packages/sidenavbaritem/sidenavbaritem.scss';
 import Drag from './packages/drag/index.js';
-import './packages/drag/drag.scss'; // import VueQr from "./packages/qart/index.js";
+import './packages/drag/drag.scss'; 
+// import VueQr from "./packages/qart/index.js";
 // import "./packages/qart/qart.scss";
 
 import Address from './packages/address/index.js';
@@ -130,8 +131,8 @@ import CountUp from './packages/countup/index.js';
 import './packages/countup/countup.scss';
 import FixedNav from './packages/fixednav/index.js';
 import './packages/fixednav/fixednav.scss';
-import Gesture from './packages/gesture/index.js';
-import './packages/gesture/gesture.scss';
+// import Gesture from './packages/gesture/index.js';
+// import './packages/gesture/gesture.scss';
 
 const packages = {
   Cell,
@@ -197,7 +198,7 @@ const packages = {
   Notify,
   CountUp,
   FixedNav,
-  Gesture: Gesture
+  // Gesture: Gesture
 };
 
 const components = {};
