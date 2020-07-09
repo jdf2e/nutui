@@ -11,18 +11,18 @@
     word-wrap: break-word;
   
     &--primary {
-      background-color: $notify-primary-background-color;
+      background-color: $notify-primary-background-color !important;
     }
   
     &--success {
-      background-color: $notify-success-background-color;
+      background-color: $notify-success-background-color !important;
     }
   
     &--danger {
-      background-color: $notify-danger-background-color;
+      background-color: $notify-danger-background-color !important;
     }
   
     &--warning {
-      background-color: $notify-warning-background-color;
+      background-color: $notify-warning-background-color !important;
     }
   }
