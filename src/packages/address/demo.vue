@@ -1,5 +1,5 @@
 <template>
-  <div class="demo-list">
+  <div class="address-box">
     <h4>选择自定义地址</h4>
     <div class="address-list init" @click="showAddress">
       <div class="titile">选择地址</div>
@@ -72,6 +72,7 @@
       @selected="selected4"
       customAndExistTitle="选择其他地址"
       @switchModule="switchModule"
+      @closeMask="closeMask"
     ></nut-address>
   </div>
 </template>
@@ -231,45 +232,44 @@ export default {
       } else {
         console.log('点击了自定义地址左上角的返回按钮');
       }
+    },
+
+    closeMask(val){
+      console.log('关闭弹层',val)
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.demo-list {
-	margin-top: 10px;
+.address-box {
+  margin-top: 10px;
 
-	.address-list {
-		margin-bottom: 10px;
-		background: #fff;
-		border-radius: 4px;
-		font-size: 14px;
-		padding: 10px;
+  .address-list {
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 10px;
 
-		&.init {
-			display: flex;
-
-			.titile {
-				margin-right: 15px;
-			}
-
-			.choose {
-				color: #999;
-			}
-		}
-
-		&.other {
-			display: flex;
-
-			.titile {
-				margin-right: 15px;
-			}
-
-			.choose {
-				color: #999;
-			}
-		}
-	}
+    &.init {
+      display: flex;
+      .titile {
+        margin-right: 15px;
+      }
+      .choose {
+        color: #999;
+      }
+    }
+    &.other {
+      display: flex;
+      .titile {
+        margin-right: 15px;
+      }
+      .choose {
+        color: #999;
+      }
+    }
+  }
 }
 </style>
