@@ -19,16 +19,16 @@ export default {
   props: {
     isClickBack: {
       type: Boolean,
-      default: true
+      default: true,
     },
     rightWidth: {
       type: [Number, String],
-      default: '0.8'
+      default: '0.8',
     },
-    disabled:{
+    disabled: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
@@ -37,7 +37,7 @@ export default {
       moveX: 0,
       moveY: 0,
       buttonWidth: 0,
-      buttonHeight:0,
+      buttonHeight: 0,
       pageWidth: null,
       startPos: 0,
       startLeft: 0,
@@ -45,12 +45,10 @@ export default {
       isOpen: false,
       scrollTop: 0,
       oldScrollTop: 0,
-      lock: false
+      lock: false,
     };
   },
-  watch: {
-   
-  },
+  watch: {},
   mounted() {
     this.$nextTick(() => {
       for (var slot of this.$slots.slipbtns) {
@@ -79,7 +77,7 @@ export default {
     //   });
     // },
     touchStart(e) {
-      if(this.disabled) return false
+      if (this.disabled) return false;
       let parentElement = e.currentTarget.parentElement;
       let slip = [];
       slip = document.getElementsByClassName('leftslip-open');
@@ -97,7 +95,7 @@ export default {
     },
 
     touchMove(e) {
-      if(this.disabled) return false
+      if (this.disabled) return false;
       let parentElement = e.currentTarget.parentElement;
 
       let disX = e.touches[0].pageX - this.startX; // >0 右滑，<0 左滑
@@ -115,7 +113,7 @@ export default {
       }
     },
     touchEnd(e) {
-      if(this.disabled) return false
+      if (this.disabled) return false;
       let parentElement = e.currentTarget.parentElement;
       const disX = e.changedTouches[0].pageX - this.startX; // >0 右滑，<0 左滑
       let distance;
@@ -127,7 +125,7 @@ export default {
       } else {
         if (-disX > 50) {
           // 向左滑动超过阙值时,右侧滑出固定距离
-          distance = this.buttonWidth > this.pageWidth ? (this.pageWidth * Number(this.rightWidth)) : this.buttonWidth;
+          distance = this.buttonWidth > this.pageWidth ? this.pageWidth * Number(this.rightWidth) : this.buttonWidth;
           parentElement.className = 'nut-leftslip-item leftslip-open';
           parentElement.dataset.type = 1;
         } else {
@@ -158,7 +156,7 @@ export default {
         listItems[i].className = 'nut-leftslip-item';
         this.isOpen = false;
       }
-    }
-  }
+    },
+  },
 };
 </script>

@@ -1,41 +1,47 @@
 <template>
-    <div class="nut-calendar" :class="!poppable ? 'nut-calendar-unpoppable' : ''">
-      <div class="nut-calendar-control">
-        <template v-if="poppable">
-          <span class="nut-calendar-cancel-btn" @click="closeActionSheet">×</span>
-          <div class="nut-calendar-title">{{ title || nutTranslate('lang.calendar.title') }}</div>
-        </template>
-        <div class="nut-calendar-week">
-          <span v-for="(item, index) of week" :key="index">{{ item }}</span>
-        </div>
-        <slot name="shortcut" slot-scope></slot>
+  <div class="nut-calendar" :class="!poppable ? 'nut-calendar-unpoppable' : ''">
+    <div class="nut-calendar-control">
+      <template v-if="poppable">
+        <span class="nut-calendar-cancel-btn" @click="closeActionSheet">×</span>
+        <div class="nut-calendar-title">{{ title || nutTranslate('lang.calendar.title') }}</div>
+      </template>
+      <div class="nut-calendar-week">
+        <span v-for="(item, index) of week" :key="index">{{ item }}</span>
       </div>
-      <div class="nut-calendar-months" ref="months" @touchstart.stop="touchStart" @touchmove.stop.prevent="touchMove" @touchend.stop="touchEnd">
-        <div class="nut-calendar-months-panel" ref="monthsPanel">
-          <div class="nut-calendar-loading-tip">{{
-            !unLoadPrev ? nutTranslate('lang.calendar.loadPrevMonth') : nutTranslate('lang.calendar.noMoreMonth')
-          }}</div>
-          <div class="nut-calendar-month" v-for="(month, index) of monthsData" :key="index">
-            <div class="nut-calendar-month-title">{{ month.title }}</div>
-            <div class="nut-calendar-month-con">
-              <div class="nut-calendar-month-item" :class="type === 'range' ? 'month-item-range' : ''">
-                <template v-for="(day, i) of month.monthData">
-                  <div class="nut-calendar-month-day" :class="getClass(day, month)" :title="isStartTip(day, month)" :key="i" @click="chooseDay(day, month)">
-                    <span class="nut-calendar-day">{{ day.type == 'curr' ? day.day : '' }}</span>
-                    <em class="curr-tips" v-if="isCurrDay(month, day.day)"></em>
-                    <span class="nut-calendar-day-tip" v-if="isStartTip(day, month)">{{ nutTranslate('lang.calendar.start') }}</span>
-                    <span class="nut-calendar-day-tip" v-else-if="isEndTip(day, month)">{{ nutTranslate('lang.calendar.end') }}</span>
-                  </div>
-                </template>
-              </div>
+      <slot name="shortcut" slot-scope></slot>
+    </div>
+    <div class="nut-calendar-months" ref="months" @touchstart.stop="touchStart" @touchmove.stop.prevent="touchMove" @touchend.stop="touchEnd">
+      <div class="nut-calendar-months-panel" ref="monthsPanel">
+        <div class="nut-calendar-loading-tip">{{
+          !unLoadPrev ? nutTranslate('lang.calendar.loadPrevMonth') : nutTranslate('lang.calendar.noMoreMonth')
+        }}</div>
+        <div class="nut-calendar-month" v-for="(month, index) of monthsData" :key="index">
+          <div class="nut-calendar-month-title">{{ month.title }}</div>
+          <div class="nut-calendar-month-con">
+            <div class="nut-calendar-month-item" :class="type === 'range' ? 'month-item-range' : ''">
+              <template v-for="(day, i) of month.monthData">
+                <div
+                  class="nut-calendar-month-day"
+                  :class="getClass(day, month)"
+                  :title="isStartTip(day, month)"
+                  :key="i"
+                  @click="chooseDay(day, month)"
+                >
+                  <span class="nut-calendar-day">{{ day.type == 'curr' ? day.day : '' }}</span>
+                  <em class="curr-tips" v-if="isCurrDay(month, day.day)"></em>
+                  <span class="nut-calendar-day-tip" v-if="isStartTip(day, month)">{{ nutTranslate('lang.calendar.start') }}</span>
+                  <span class="nut-calendar-day-tip" v-else-if="isEndTip(day, month)">{{ nutTranslate('lang.calendar.end') }}</span>
+                </div>
+              </template>
             </div>
           </div>
         </div>
       </div>
-      <div class="nut-calendar-btn"  v-if="poppable">
-        <div  class="nut-calendar-confirm-btn" @click="confirm">确定</div>
-      </div>
     </div>
+    <div class="nut-calendar-btn" v-if="poppable">
+      <div class="nut-calendar-confirm-btn" @click="confirm">确定</div>
+    </div>
+  </div>
 </template>
 <script>
 import Utils from '../../utils/date.js';
@@ -46,32 +52,32 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'one'
+      default: 'one',
     },
     isAutoBackFill: {
       type: Boolean,
-      default: false
+      default: false,
     },
     poppable: {
       type: Boolean,
-      default: true
+      default: true,
     },
     title: {
       type: String,
-      default: '日期选择'
+      default: '日期选择',
     },
     defaultValue: {
       type: String | Array,
-      default: null
+      default: null,
     },
     startDate: {
       type: String,
-      default: Utils.getDay(0)
+      default: Utils.getDay(0),
     },
     endDate: {
       type: String,
-      default: Utils.getDay(365)
-    }
+      default: Utils.getDay(365),
+    },
   },
   watch: {
     defaultValue: {
@@ -82,13 +88,12 @@ export default {
       },
       //immediate: true
     },
-    monthsData : {
+    monthsData: {
       handler(val, oldValue) {
         if (val) {
-            
         }
-      }
-    }
+      },
+    },
   },
   data() {
     const week = this.nutTranslate('lang.calendar.week');
@@ -101,20 +106,20 @@ export default {
         startY: 0,
         endY: 0,
         startTime: 0,
-        endTime: 0
+        endTime: 0,
       },
       transformY: 0,
       scrollDistance: 0,
       defaultData: null,
       chooseData: [],
       monthsData: [],
-      dayPrefix: 'nut-calendar-month-day'
+      dayPrefix: 'nut-calendar-month-day',
     };
   },
   computed: {
-    isRange: function() {
+    isRange: function () {
       return this.type === 'range';
-    }
+    },
   },
   methods: {
     isCurrDay(month, day) {
@@ -162,7 +167,7 @@ export default {
       return Array.from(Array(days), (v, k) => {
         return {
           day: k + 1,
-          type: type
+          type: type,
         };
       });
     },
@@ -175,7 +180,7 @@ export default {
       let monthInfo = {
         curData: curData,
         title: title,
-        monthData: [...this.getDaysStatus(preMonthDays, 'prev'), ...this.getDaysStatus(currMonthDays, 'curr')]
+        monthData: [...this.getDaysStatus(preMonthDays, 'prev'), ...this.getDaysStatus(currMonthDays, 'curr')],
       };
       if (type == 'next') {
         if (
@@ -186,7 +191,7 @@ export default {
           )
         ) {
           this.monthsData.push(monthInfo);
-        } 
+        }
       } else {
         if (!this.startData || !Utils.compareDate(`${curData[0]}-${curData[1]}-${curData[2]}`, `${this.startData[0]}-${this.startData[1]}-01`)) {
           this.monthsData.unshift(monthInfo);
@@ -291,7 +296,6 @@ export default {
     },
 
     closeActionSheet() {
-      
       if (this.poppable) {
         this.childIsVisible = false;
         this.$emit('update');
@@ -330,7 +334,7 @@ export default {
       let updateMove = move + this.transformY;
       let h = this.$refs.months.offsetHeight;
       let offsetHeight = this.$refs.monthsPanel.offsetHeight;
-       
+
       if (updateMove > 0) {
         this.getMonth(this.getCurrData('prev'), 'prev');
       } else if (updateMove < -offsetHeight + h * 2) {
@@ -432,11 +436,11 @@ export default {
       } else {
         this.chooseDay({ day: this.defaultData[2], type: 'curr' }, this.monthsData[0], true);
       }
-    }
+    },
   },
 
   mounted() {
     this.initData();
-  }
+  },
 };
 </script>

@@ -9,33 +9,33 @@ export default {
   props: {
     type: {
       type: String,
-      default: ''
+      default: '',
     },
     gutter: {
       type: [String, Number],
-      default: ''
+      default: '',
     },
     tag: {
       type: String,
-      default: 'div'
+      default: 'div',
     },
     justify: {
       type: String,
-      default: 'start'
+      default: 'start',
     },
     align: {
       type: String,
-      default: 'flex-start'
+      default: 'flex-start',
     },
     flexWrap: {
       type: String,
-      default: 'nowrap'
-    }
+      default: 'nowrap',
+    },
   },
   computed: {
     getGutter() {
       return `${this.gutter}px`;
-    }
+    },
   },
   methods: {
     initCol(slot) {
@@ -60,11 +60,11 @@ export default {
                 ${this.getClass('align', this.align)} 
                 ${this.getClass('flex', this.flexWrap)}
                 `;
-    }
+    },
   },
   mounted() {
     let slot = [...this.$slots.default];
     this.initCol(slot);
-  }
+  },
 };
 </script>

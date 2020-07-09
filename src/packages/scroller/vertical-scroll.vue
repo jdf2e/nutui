@@ -30,43 +30,43 @@ export default {
   props: {
     stretch: {
       type: Number,
-      default: 100
+      default: 100,
     },
     isUnMore: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isLoading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     pulldownTxt: {
       type: String,
-      default: '下拉刷新'
+      default: '下拉刷新',
     },
     loadMoreTxt: {
       type: String,
-      default: '上拉加载'
+      default: '上拉加载',
     },
     unloadMoreTxt: {
       type: String,
-      default: '没有更多了'
+      default: '没有更多了',
     },
     threshold: {
       type: Number,
-      default: 100
+      default: 100,
     },
     propsTime: {
       type: Number,
-      default: 0
+      default: 0,
     },
     scrollTo: {
       type: Number,
-      default: 1
-    }
+      default: 1,
+    },
   },
   watch: {
-    isLoading: function(status) {
+    isLoading: function (status) {
       if (!status && this.realMove === 0) {
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
@@ -74,15 +74,15 @@ export default {
         }, this.propsTime);
       }
     },
-    isUnMore: function() {
+    isUnMore: function () {
       this.isShow();
     },
-    scrollTo: function(val) {
+    scrollTo: function (val) {
       if (typeof val === 'number' && !isNaN(val) && val <= 0) {
         this.setTransform(val, null, 500);
         this.$emit('scrollToCbk');
       }
-    }
+    },
   },
   data() {
     return {
@@ -90,7 +90,7 @@ export default {
         startY: 0,
         endY: 0,
         startTime: 0,
-        endTime: 0
+        endTime: 0,
       },
       translateY: 0,
       scrollDistance: 0,
@@ -99,7 +99,7 @@ export default {
       realMove: 0,
       isShowLoadMore: false,
       listMinHeightStyle: 'auto',
-      isFirstPull: true
+      isFirstPull: true,
     };
   },
 
@@ -218,7 +218,7 @@ export default {
       } else {
         this.setMove(move, 'end');
       }
-    }
+    },
   },
 
   mounted() {
@@ -237,6 +237,6 @@ export default {
     this.$el.removeEventListener('touchend', this.touchEnd);
     clearTimeout(this.timer);
     clearTimeout(this.timerEmit);
-  }
+  },
 };
 </script>

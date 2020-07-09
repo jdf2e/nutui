@@ -1,11 +1,11 @@
 <template>
-   <transition name="toastfade">
+  <transition name="toastfade">
     <nut-popup
-      :overlay='cover'
+      :overlay="cover"
       :class="customClass"
       v-model="curVisible"
       :lock-scroll="lockBgScroll"
-      :overlayStyle='{backgroundColor:maskBgStyle}'
+      :overlayStyle="{ backgroundColor: maskBgStyle }"
       class="nut-dialog-wrapper"
       @click="clickCover"
     >
@@ -15,12 +15,12 @@
             <a href="javascript:;" @click="imageLinkClick" class="nut-dialog-link">
               <img :src="imgSrc" class="nut-dialog-image" alt />
             </a>
-              <a href="javascript:;" v-if="closeBtn" @click="closeBtnClick" class="nut-dialog-close"></a>
+            <a href="javascript:;" v-if="closeBtn" @click="closeBtnClick" class="nut-dialog-close"></a>
           </div>
         </template>
-         
+
         <template v-else>
-             <div class="nut-dialog" @click.stop>
+          <div class="nut-dialog" @click.stop>
             <div class="nut-dialog-body">
               <span class="nut-dialog-title" v-html="title" v-if="title"></span>
               <div class="nut-dialog-content" v-if="$slots.default" :style="{ textAlign }">
@@ -43,21 +43,22 @@
                 >
               </template>
               <template v-else>
-                  <div v-for="(item , index ) in multiButtonText" 
-                    class="nut-dialog-multi-button"
-                    :key="index"
-                     :class="{ 'nut-dialog-multi-disabled': item.disabled }"
-                    @click="chooseItem(item, index)">
-                    {{item.name}}
-                  </div>
-                  <div class="nut-dialog-multi-cancel"   @click="cancelBtnClick(cancelAutoClose)">
-                     {{cancelBtnTxt || nutTranslate('lang.cancelBtnTxt')}}
-                  </div>
+                <div
+                  v-for="(item, index) in multiButtonText"
+                  class="nut-dialog-multi-button"
+                  :key="index"
+                  :class="{ 'nut-dialog-multi-disabled': item.disabled }"
+                  @click="chooseItem(item, index)"
+                >
+                  {{ item.name }}
+                </div>
+                <div class="nut-dialog-multi-cancel" @click="cancelBtnClick(cancelAutoClose)">
+                  {{ cancelBtnTxt || nutTranslate('lang.cancelBtnTxt') }}
+                </div>
               </template>
             </div>
-             </div>
+          </div>
         </template>
-       
       </div>
     </nut-popup>
   </transition>
@@ -68,131 +69,131 @@ export default {
   name: 'nut-dialog',
   mixins: [locale],
   props: {
-    cover:{
-        type:Boolean,
-        default:true
+    cover: {
+      type: Boolean,
+      default: true,
     },
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     content: {
       type: String,
-      default: ''
+      default: '',
     },
     type: {
       type: String,
-      default: ''
+      default: '',
     },
     link: {
       type: String,
-      default: ''
+      default: '',
     },
     imgSrc: {
       type: String,
-      default: ''
+      default: '',
     },
     animation: {
       type: Boolean,
-      default: true
+      default: true,
     },
     lockBgScroll: {
       type: Boolean,
-      default: false
+      default: false,
     },
-    multiButton:{
-      type:Boolean,
-      default:false
+    multiButton: {
+      type: Boolean,
+      default: false,
     },
-    multiButtonText:{
+    multiButtonText: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     visible: {
       type: Boolean,
-      default: false
+      default: false,
     },
     closeBtn: {
       type: Boolean,
-      default: false
+      default: false,
     },
     closeOnClickModal: {
       type: Boolean,
-      default: true
+      default: true,
     },
     noFooter: {
       type: Boolean,
-      default: false
+      default: false,
     },
     noOkBtn: {
       type: Boolean,
-      default: false
+      default: false,
     },
     noCancelBtn: {
       type: Boolean,
-      default: false
+      default: false,
     },
     cancelBtnTxt: {
       type: String,
-      default: ''
+      default: '',
     },
     okBtnTxt: {
       type: String,
-      default: ''
+      default: '',
     },
     okBtnDisabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     cancelAutoClose: {
       type: Boolean,
-      default: true
+      default: true,
     },
     textAlign: {
       type: String,
-      default: 'center'
+      default: 'center',
     },
     onOkBtn: {
       type: Function,
-      default: null
+      default: null,
     },
-    chooseBtn:{
-       type: Function,
-      default: null
+    chooseBtn: {
+      type: Function,
+      default: null,
     },
     onCloseBtn: {
       type: Function,
-      default: null
+      default: null,
     },
     onCancelBtn: {
       type: Function,
-      default: null
+      default: null,
     },
     closeCallback: {
       type: Function,
-      default: null
+      default: null,
     },
     onClickImageLink: {
       type: Function,
-      default: null
+      default: null,
     },
     maskBgStyle: {
       type: String,
-      default: ''
+      default: '',
     },
     canDestroy: {
       type: Boolean,
-      default: true
+      default: true,
     },
     customClass: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     return {
       curVisible: false,
-      destroy: false
+      destroy: false,
     };
   },
   created() {
@@ -205,10 +206,12 @@ export default {
       }
     },
     chooseItem(item, index) {
-      if(item.disabled){return;}
-      this.$emit('choose-btn',item,index);
+      if (item.disabled) {
+        return;
+      }
+      this.$emit('choose-btn', item, index);
       if (typeof this.chooseBtn === 'function') {
-        this.chooseBtn.call(this,item,index);
+        this.chooseBtn.call(this, item, index);
       }
     },
     modalClick() {
@@ -263,16 +266,15 @@ export default {
       if (this.link) {
         location.href = this.link;
       }
-    }
+    },
   },
   watch: {
     visible: {
       handler(val) {
         this.curVisible = val;
       },
-      immediate: true
-    }
-  
-  }
+      immediate: true,
+    },
+  },
 };
 </script>

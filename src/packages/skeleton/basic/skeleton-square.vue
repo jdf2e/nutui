@@ -8,7 +8,7 @@
         backgroundColor: backColor,
         width: width,
         height: height,
-        margin: margin
+        margin: margin,
       }"
     >
     </div>
@@ -24,24 +24,24 @@ export default {
   props: {
     backColor: {
       type: String,
-      default: '#efefef'
+      default: '#efefef',
     },
     width: {
       type: String,
-      default: '100%'
+      default: '100%',
     },
     height: {
       type: String,
-      default: '12px'
+      default: '12px',
     },
     margin: {
       type: String,
-      default: '0 0 0 0'
+      default: '0 0 0 0',
     },
     count: {
       type: Number,
-      default: 1
-    }
-  }
+      default: 1,
+    },
+  },
 };
 </script>

@@ -5,12 +5,7 @@
     >
     <h4>基础样式</h4>
     <div>
-      <nut-cell 
-        :show-icon="true" 
-        title="请选择城市" 
-        :desc="option" 
-        @click.native="openSwitch('isVisible')">
-      </nut-cell>
+      <nut-cell :show-icon="true" title="请选择城市" :desc="option" @click.native="openSwitch('isVisible')"> </nut-cell>
     </div>
     <div>
       <nut-picker
@@ -24,14 +19,9 @@
 
     <h4>多列样式</h4>
     <div>
-      <nut-cell 
-        :show-icon="true" 
-        title="请选择时间" 
-        :desc="option1" 
-        @click.native="openSwitch('isVisible1')">
-      </nut-cell>
+      <nut-cell :show-icon="true" title="请选择时间" :desc="option1" @click.native="openSwitch('isVisible1')"> </nut-cell>
     </div>
-    <div>  
+    <div>
       <nut-picker
         :is-visible="isVisible1"
         :list-data="listData1"
@@ -43,14 +33,9 @@
 
     <h4>多级联动</h4>
     <div>
-      <nut-cell 
-        :show-icon="true" 
-        title="请选择城市" 
-        :desc="cityCustmer" 
-        @click.native="openSwitch('isVisible2')">
-      </nut-cell>
+      <nut-cell :show-icon="true" title="请选择城市" :desc="cityCustmer" @click.native="openSwitch('isVisible2')"> </nut-cell>
     </div>
-    <div> 
+    <div>
       <nut-picker
         :is-visible="isVisible2"
         :default-value-data="defaultValueData"
@@ -59,20 +44,14 @@
         @confirm="setChooseValueCustmer"
         @choose="updateChooseValueCustmer"
         @close-update="closeUpdateChooseValueCustmer"
-    ></nut-picker>
+      ></nut-picker>
     </div>
-
 
     <h4>带标题样式</h4>
     <div>
-      <nut-cell 
-        :show-icon="true" 
-        title="请选择城市" 
-        :desc="option3" 
-        @click.native="openSwitch('isVisible3')">
-      </nut-cell>
+      <nut-cell :show-icon="true" title="请选择城市" :desc="option3" @click.native="openSwitch('isVisible3')"> </nut-cell>
     </div>
-    <div> 
+    <div>
       <nut-picker
         :is-visible="isVisible3"
         :list-data="listData"
@@ -91,55 +70,55 @@ const APIData = [
     array: [
       {
         label: 1,
-        value: '朝阳区'
+        value: '朝阳区',
       },
       {
         label: 2,
-        value: '海淀区'
+        value: '海淀区',
       },
       {
         label: 3,
-        value: '大兴区'
+        value: '大兴区',
       },
       {
         label: 4,
-        value: '东城区'
+        value: '东城区',
       },
       {
         label: 5,
-        value: '西城区'
+        value: '西城区',
       },
       {
         label: 6,
-        value: '丰台区'
-      }
-    ]
+        value: '丰台区',
+      },
+    ],
   },
   {
     label: 2,
     array: [
       {
         label: 1,
-        value: '黄浦区'
+        value: '黄浦区',
       },
       {
         label: 2,
-        value: '长宁区'
+        value: '长宁区',
       },
       {
         label: 3,
-        value: '普陀区'
+        value: '普陀区',
       },
       {
         label: 4,
-        value: '杨浦区'
+        value: '杨浦区',
       },
       {
         label: 5,
-        value: '浦东新区'
-      }
-    ]
-  }
+        value: '浦东新区',
+      },
+    ],
+  },
 ];
 export default {
   data() {
@@ -150,36 +129,36 @@ export default {
         [
           {
             label: 1,
-            value: '南京市'
+            value: '南京市',
           },
           {
             label: 2,
-            value: '无锡市'
+            value: '无锡市',
           },
           {
             label: 3,
-            value: '海北藏族自治区'
+            value: '海北藏族自治区',
           },
           {
             label: 4,
-            value: '北京市'
+            value: '北京市',
           },
           {
             label: 5,
-            value: '连云港市'
+            value: '连云港市',
           },
           {
             label: 6,
-            value: '浙江市'
-          }
-        ]
+            value: '浙江市',
+          },
+        ],
       ],
       defaultValueData: null,
       option1: '请选择',
       isVisible1: false,
       listData1: [
         ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-        ['上午', '下午', '晚上']
+        ['上午', '下午', '晚上'],
       ],
       defaultValueData1: null,
       option3: '请选择',
@@ -190,14 +169,14 @@ export default {
         [
           {
             label: 1,
-            value: '北京'
+            value: '北京',
           },
           {
             label: 2,
-            value: '上海'
-          }
-        ]
-      ]
+            value: '上海',
+          },
+        ],
+      ],
     };
   },
   mounted() {
@@ -224,9 +203,9 @@ export default {
     confirm3(chooseData) {
       this.option3 = `${chooseData[0].value}`;
     },
-    
+
     setChooseValueCustmer(chooseData) {
-      var str = chooseData.map(item => item.value).join('-');
+      var str = chooseData.map((item) => item.value).join('-');
       this.cityCustmer = str;
     },
 
@@ -234,7 +213,7 @@ export default {
       //此处模拟查询API，如果数据缓存了不需要再重新请求
       setTimeout(() => {
         let { label, value } = chooseData[0];
-        var resItems = APIData.find(item => item.label == label);
+        var resItems = APIData.find((item) => item.label == label);
         if (resItems && resItems.array.length) {
           this.$set(this.custmerCityData, 1, resItems.array);
 
@@ -251,7 +230,7 @@ export default {
         //此处模拟查询API，如果数据缓存了不需要再重新请求
         let { label, value } = resValue;
         setTimeout(() => {
-          var resItems = APIData.find(item => item.label == label);
+          var resItems = APIData.find((item) => item.label == label);
           if (resItems && resItems.array.length) {
             this.$set(this.custmerCityData, 1, resItems.array);
             // 更新第二列位置
@@ -259,8 +238,7 @@ export default {
           }
         }, 100);
       }
-    }
-  }
+    },
+  },
 };
 </script>
-

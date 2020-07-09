@@ -11,17 +11,17 @@ export default {
   props: {
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     ikey: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   methods: {
     handleClick() {
       this.$emit('click');
-    }
-  }
+    },
+  },
 };
 </script>

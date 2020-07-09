@@ -10,9 +10,8 @@
       @open="closeWay = 'self'"
     >
       <div class="title">
-
         <span class="arrow" @click="switchModule" v-if="showModule == 'custom' && type == 'exist' && backBtnIcon">
-          <nut-icon  type="self" :url="backBtnIcon"></nut-icon>
+          <nut-icon type="self" :url="backBtnIcon"></nut-icon>
         </span>
         <span class="arrow" v-else></span>
 
@@ -87,68 +86,68 @@ export default {
   props: {
     value: {
       type: Boolean,
-      default: false
+      default: false,
     },
     type: {
       type: String,
-      default: 'custom'
+      default: 'custom',
     },
     customAddressTitle: {
       type: String,
-      default: '请选择所在地区'
+      default: '请选择所在地区',
     },
     province: {
       type: Array,
-      default: () => []
+      default: () => [],
     }, // 省
     city: {
       type: Array,
-      default: () => []
+      default: () => [],
     }, // 市
     country: {
       type: Array,
-      default: () => []
+      default: () => [],
     }, // 县
     town: {
       type: Array,
-      default: () => []
+      default: () => [],
     }, // 镇
     isShowCustomAddress: {
       type: Boolean,
-      default: true
+      default: true,
     }, // 是否显示‘选择其他地区’按钮 type=‘exist’ 生效
     existAddress: {
       type: Array,
-      default: () => []
+      default: () => [],
     }, // 现存地址列表
     existAddressTitle: {
       type: String,
-      default: '配送至'
+      default: '配送至',
     },
     customAndExistTitle: {
       type: String,
-      default: '选择其他地址'
+      default: '选择其他地址',
     },
     defaultIcon: {
       // 地址选择列表前 - 默认的图标
       type: String,
-      default: require('../../assets/svg/address-location.svg')
+      default: require('../../assets/svg/address-location.svg'),
     },
     selectedIcon: {
       // 地址选择列表前 - 选中的图标
       type: String,
-      default: require('../../assets/svg/tick-red.svg')
+      default: require('../../assets/svg/tick-red.svg'),
     },
-    closeBtnIcon:{
+    closeBtnIcon: {
       // 关闭弹框按钮 icon
       type: String,
-      default: require('../../assets/svg/circle-cross.svg')
+      default: require('../../assets/svg/circle-cross.svg'),
     },
-    backBtnIcon:{
+    backBtnIcon: {
       // 选择其他地址左上角返回 icon
       type: String,
-      default: require('../../assets/svg/arrows-back.svg')
-    }
+      default: require('../../assets/svg/arrows-back.svg'),
+    },
   },
   data() {
     return {
@@ -160,21 +159,21 @@ export default {
         province: this.province,
         city: this.city,
         country: this.country,
-        town: this.town
+        town: this.town,
       }, //省、市、县、镇列表,地址id字符串,地址字符串
       selectedRegion: {
         province: {},
         city: {},
         country: {},
-        town: {}
+        town: {},
       }, //已选择的 省、市、县、镇
 
-      selectedExistAddress: {} // 当前选择的地址
+      selectedExistAddress: {}, // 当前选择的地址
     };
   },
   components: {
     'nut-popup': Popup,
-    'nut-icon': Icon
+    'nut-icon': Icon,
   },
   watch: {
     value(newVal, oldVal) {
@@ -207,7 +206,7 @@ export default {
           this.selectedExistAddress = item;
         }
       });
-    }
+    },
   },
   mounted() {},
   methods: {
@@ -225,7 +224,7 @@ export default {
     nextAreaList(item) {
       // onchange 接收的参数
       const calBack = {
-        custom: this.tabName[this.tabIndex]
+        custom: this.tabName[this.tabIndex],
       };
 
       this.selectedRegion[this.tabName[this.tabIndex]] = item;
@@ -282,7 +281,7 @@ export default {
 
       this.handClose();
     },
-  
+
     // 关闭
     close() {
       const that = this;
@@ -291,7 +290,7 @@ export default {
 
       const res = {
         type: this.showModule,
-        data: {}
+        data: {},
       };
 
       if (this.showModule == 'custom') {
@@ -308,8 +307,7 @@ export default {
       if (this.closeWay == 'self') {
         this.$emit('close', res);
       } else {
-        
-        this.$emit('closeMask',{'closeWay':this.closeWay});
+        this.$emit('closeMask', { closeWay: this.closeWay });
       }
 
       setTimeout(() => {
@@ -318,11 +316,10 @@ export default {
     },
     // 手动关闭 点击叉号(cross)，或者蒙层(mask)
     handClose(type = 'self') {
+      if (!this.closeBtnIcon) return;
 
-      if(!this.closeBtnIcon) return
+      this.closeWay = type == 'cross' ? 'cross' : 'self';
 
-      this.closeWay = type == 'cross'?'cross':'self'
-     
       this.showPopup = false;
     },
     // 点击遮罩层关闭
@@ -339,17 +336,16 @@ export default {
     },
     // 选择其他地址
     switchModule() {
-      
-      if(this.showModule == 'exist'){
-        this.showModule = 'custom'
-      }else{
-        this.showModule = 'exist'
+      if (this.showModule == 'exist') {
+        this.showModule = 'custom';
+      } else {
+        this.showModule = 'exist';
       }
 
       this.initAddress();
 
       this.$emit('switchModule', { type: this.showModule });
-    }
-  }
+    },
+  },
 };
 </script>

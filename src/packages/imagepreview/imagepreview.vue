@@ -1,13 +1,7 @@
 <template>
   <div class="nut-imagepreview">
     <nut-popup v-model="value">
-      <nut-swiper
-        class="nut-imagepreview-swiper"
-        loop
-        direction="horizontal"
-        :swiperData="images"
-        @slideChangeEnd="slideChangeEnd"
-      >
+      <nut-swiper class="nut-imagepreview-swiper" loop direction="horizontal" :swiperData="images" @slideChangeEnd="slideChangeEnd">
         <div v-for="(item, index) in images" :key="index" class="nut-swiper-slide">
           <img :src="item.imgSrc" class="nut-imagepreview-img" />
         </div>
@@ -15,7 +9,7 @@
 
       <div class="nut-imagepreview-index">
         <nut-icon type="right" color="#fff" class="arrow" @click.native="$emit('close')" />
-        {{this.active}} / {{this.images.length}}
+        {{ this.active }} / {{ this.images.length }}
       </div>
     </nut-popup>
   </div>
@@ -26,12 +20,12 @@ export default {
   props: {
     value: {
       type: Boolean,
-      default: true
+      default: true,
     },
     images: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   data() {
     return {
@@ -41,8 +35,8 @@ export default {
   methods: {
     slideChangeEnd(page) {
       this.active = page;
-    }
-  }
+    },
+  },
 };
 </script>
-<style lang="scss"> </style>
+<style lang="scss"></style>

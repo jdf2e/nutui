@@ -5,11 +5,7 @@
     >
     <h4>选择年月日</h4>
     <div>
-      <nut-cell 
-        :showIcon="true"  
-        title="每列不显示中文（年/月/日）"
-        :desc="date ? date : '请选择'"
-        @click.native="switchPicker('isVisible')">
+      <nut-cell :showIcon="true" title="每列不显示中文（年/月/日）" :desc="date ? date : '请选择'" @click.native="switchPicker('isVisible')">
       </nut-cell>
     </div>
     <nut-datepicker
@@ -123,7 +119,7 @@ export default {
       isVisible4: false,
       time1: '09:06:02',
       isVisible5: false,
-      time2: '10:30'
+      time2: '10:30',
     };
   },
   methods: {
@@ -144,7 +140,7 @@ export default {
     },
     setChooseValue5(param) {
       this.time2 = param[2];
-    }
-  }
+    },
+  },
 };
 </script>

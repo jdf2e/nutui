@@ -14,35 +14,35 @@
       </nut-cell>
     </div>
     <div>
-        <nut-popup position="right" v-model="show3" :style="{ width, height }">
+      <nut-popup position="right" v-model="show3" :style="{ width, height }">
         <nut-sidenavbar>
           <nut-subsidenavbar title="菜单内容一" ikey="1" :open="false"></nut-subsidenavbar>
           <nut-subsidenavbar title="菜单内容二" ikey="2"></nut-subsidenavbar>
           <nut-subsidenavbar title="菜单内容三" ikey="3">
-              <div slot="desc" class="desc">这里是对菜单的解释说明</div>
+            <div slot="desc" class="desc">这里是对菜单的解释说明</div>
           </nut-subsidenavbar>
           <nut-subsidenavbar title="菜单内容四" ikey="4">
-              <div slot="desc" class="desc">这里是对菜单的解释说明</div>
-              <a href="javascript:;" slot="oper" class="oper">操作</a>
+            <div slot="desc" class="desc">这里是对菜单的解释说明</div>
+            <a href="javascript:;" slot="oper" class="oper">操作</a>
           </nut-subsidenavbar>
         </nut-sidenavbar>
       </nut-popup>
       <nut-popup position="right" v-model="show4" :style="{ width, height }">
         <nut-sidenavbar>
           <nut-subsidenavbar title="菜单内容一" ikey="1" :open="false">
-              <nut-icon slot="icon" color="#6933ff" type="avatar"></nut-icon>
+            <nut-icon slot="icon" color="#6933ff" type="avatar"></nut-icon>
           </nut-subsidenavbar>
           <nut-subsidenavbar title="菜单内容二" ikey="2">
-              <nut-icon slot="icon" type="nav" color="#ff613e"></nut-icon>
+            <nut-icon slot="icon" type="nav" color="#ff613e"></nut-icon>
           </nut-subsidenavbar>
           <nut-subsidenavbar title="菜单内容三" ikey="3">
-              <nut-icon slot="icon" type="star" color="#ffb600"></nut-icon>
-              <div slot="desc" class="desc">这里是对菜单的解释说明</div>
+            <nut-icon slot="icon" type="star" color="#ffb600"></nut-icon>
+            <div slot="desc" class="desc">这里是对菜单的解释说明</div>
           </nut-subsidenavbar>
           <nut-subsidenavbar title="菜单内容四" ikey="4">
-              <nut-icon slot="icon" type="set" color="#2770f9"></nut-icon>
-              <div slot="desc" class="desc">这里是对菜单的解释说明</div>
-              <a href="javascript:;" slot="oper" class="oper">操作</a>
+            <nut-icon slot="icon" type="set" color="#2770f9"></nut-icon>
+            <div slot="desc" class="desc">这里是对菜单的解释说明</div>
+            <a href="javascript:;" slot="oper" class="oper">操作</a>
           </nut-subsidenavbar>
         </nut-sidenavbar>
       </nut-popup>
@@ -113,7 +113,7 @@ export default {
       show5: false,
       width: '80%',
       height: '100%',
-      navs: []
+      navs: [],
     };
   },
   mounted() {
@@ -122,13 +122,13 @@ export default {
         {
           id: 16,
           name: '异步abc16',
-          arr: [{ pid: 16, id: 17, name: 'abc16-id17' }]
+          arr: [{ pid: 16, id: 17, name: 'abc16-id17' }],
         },
         {
           id: 17,
           name: '异步abc17',
-          arr: [{ pid: 17, id: 18, name: 'abc17-id18' }]
-        }
+          arr: [{ pid: 17, id: 18, name: 'abc17-id18' }],
+        },
       ];
     }, 2000);
   },
@@ -165,35 +165,35 @@ export default {
     },
     handleClick(str) {
       alert(str);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 .popup-bg {
-	z-index: 9999;
+  z-index: 9999;
 }
 
 .popup-box {
-	z-index: 9999;
+  z-index: 9999;
 }
 
 .desc {
-	color: #c8c8c8;
-	font-size: 13px;
+  color: #c8c8c8;
+  font-size: 13px;
 }
 
 .oper {
-	display: inline-block;
-	text-decoration: none;
-	width: 50px;
-	height: 28px;
-	line-height: 28px;
-	color: #fff;
-	font-size: 13px;
-	border-radius: 4px;
-	background-color: #e1251b;
-	text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  width: 50px;
+  height: 28px;
+  line-height: 28px;
+  color: #fff;
+  font-size: 13px;
+  border-radius: 4px;
+  background-color: #e1251b;
+  text-align: center;
 }
 </style>

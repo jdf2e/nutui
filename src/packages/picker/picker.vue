@@ -1,9 +1,5 @@
 <template>
-  <nut-popup
-      v-model="isVisiblePopup"
-      position="bottom"
-      @click-overlay="closeActionSheet" 
-    > 
+  <nut-popup v-model="isVisiblePopup" position="bottom" @click-overlay="closeActionSheet">
     <div class="nut-picker" :class="customClassName ? customClassName : null">
       <div class="nut-picker-control">
         <span class="nut-picker-cancel-btn" @click="closeActionSheet">{{ nutTranslate('lang.cancelBtnTxt') }}</span>
@@ -35,45 +31,45 @@ export default {
   props: {
     isVisible: {
       type: Boolean,
-      default: false
+      default: false,
     },
     customClassName: {
       type: String,
-      default: null
+      default: null,
     },
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     listData: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     defaultValueData: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   components: {
-    [nutpickerslot.name]: nutpickerslot
+    [nutpickerslot.name]: nutpickerslot,
   },
   data() {
     return {
       isVisiblePopup: false,
       chooseValueData: [],
       cacheValueData: [],
-      isUpdate: false
+      isUpdate: false,
     };
   },
   watch: {
-    isVisible: function(value) {
+    isVisible: function (value) {
       this.isVisiblePopup = value;
     },
-    defaultValueData: function() {
+    defaultValueData: function () {
       this.chooseValueData = [...this.defaultValueData];
       this.cacheValueData = [...this.defaultValueData];
       this.$emit('confirm', this.cacheValueData);
-    }
+    },
   },
   methods: {
     updateChooseValue(self, index, value) {
@@ -100,7 +96,7 @@ export default {
         this.cacheValueData[index] = value;
         this.$emit('choose', this, index, value, this.cacheValueData);
       }
-    }
+    },
   },
   mounted() {
     if (this.defaultValueData && this.defaultValueData.length) {
@@ -112,6 +108,6 @@ export default {
       });
       this.chooseValueData = [...defaultValueData];
     }
-  }
+  },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="nut-menu">
-    <transition :name="!isAnimation ? 'nutFade': ''">
+    <transition :name="!isAnimation ? 'nutFade' : ''">
       <div class="nut-menu-mask" @click="onMaskClick" v-show="isVisible && mask" />
     </transition>
     <div class="nut-menu-title">
@@ -9,7 +9,7 @@
         <nut-icon type="self" :url="require('../../assets/svg/down.svg')" :class="isVisible && index === menuIndex ? 'nut-icon-up' : ''"></nut-icon>
       </div>
     </div>
-    <transition :name="!isAnimation ? 'nutSlideDown': ''">
+    <transition :name="!isAnimation ? 'nutSlideDown' : ''">
       <div class="nut-menu-panel" v-show="isVisible">
         <div class="nut-menu-simple" v-if="type === 'simple' && !$slots.custom">
           <ul>
@@ -51,7 +51,7 @@ import Button from '../button/button.vue';
 import Tag from '../tag/tag.vue';
 import Icon from '../icon/icon.vue';
 import locale from '../../mixins/locale';
-import cloneDeep from 'lodash.clonedeep'
+import cloneDeep from 'lodash.clonedeep';
 
 const lockMaskScroll = ((bodyCls) => {
   let scrollTop;
@@ -201,7 +201,7 @@ export default {
       this.isVisible = this.menuIndex !== index || !this.isVisible;
       this.menuIndex = index;
       if (this.isVisible) {
-        this.menuData = cloneDeep(this.datalist[index].children)
+        this.menuData = cloneDeep(this.datalist[index].children);
         this.$emit('open');
       } else {
         this.$emit('close');
@@ -213,7 +213,7 @@ export default {
     },
     onOk() {
       this.datalist[this.menuIndex].children = this.menuData;
-      this.close()
+      this.close();
       this.$emit('ok', this.datalist);
     },
     close() {
@@ -221,7 +221,7 @@ export default {
       this.$emit('close');
     },
     onMaskClick() {
-      this.close()
+      this.close();
     },
   },
 };

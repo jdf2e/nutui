@@ -1,12 +1,7 @@
 <template>
   <div class="demo-list">
     <h4>基础样式</h4>
-    <nut-card
-      content="这里是默认卡片内容"
-      :footer-buttons="footerButtons"
-      @click1="clickHandler1"
-      @click2="clickHandler2"
-    ></nut-card>
+    <nut-card content="这里是默认卡片内容" :footer-buttons="footerButtons" @click1="clickHandler1" @click2="clickHandler2"></nut-card>
 
     <h4>可添加标题的卡片</h4>
     <nut-card title="卡片标题" supply-title="一小时" content="这里是卡片内容区域"></nut-card>
@@ -22,23 +17,10 @@
     ></nut-card>
 
     <h4>可展开/收起的卡片</h4>
-    <nut-card
-      title="卡片标题"
-      content="这里是卡片内容区域"
-      open-icon
-      :is-open="isOpen"
-      @switch-click="switchClick"
-    ></nut-card>
+    <nut-card title="卡片标题" content="这里是卡片内容区域" open-icon :is-open="isOpen" @switch-click="switchClick"></nut-card>
 
     <h4>通栏卡片</h4>
-    <nut-card
-      title="卡片标题"
-      content="这里是卡片内容区域"
-      is-full
-      open-icon
-      :is-open="isFullOpen"
-      @switch-click="switchFullClick"
-    ></nut-card>
+    <nut-card title="卡片标题" content="这里是卡片内容区域" is-full open-icon :is-open="isFullOpen" @switch-click="switchFullClick"></nut-card>
 
     <h4>通过Slot插槽分发内容</h4>
     <nut-card has-content has-footer>
@@ -63,8 +45,8 @@ export default {
       isFullOpen: false,
       footerButtons: [
         { event: 'click1', clickName: '操作一' }, // event的值 对应组件的点击事件 clickName为按钮显示的文案
-        { event: 'click2', clickName: '操作二' }
-      ]
+        { event: 'click2', clickName: '操作二' },
+      ],
     };
   },
   methods: {
@@ -83,8 +65,8 @@ export default {
     switchFullClick() {
       // 展开收起卡片
       this.isFullOpen = !this.isFullOpen;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -15,24 +15,24 @@ export default {
   props: {
     stretch: {
       type: Number,
-      default: 40
+      default: 40,
     },
     scrollTo: {
       type: Number,
-      default: 1
+      default: 1,
     },
     listWidth: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   watch: {
-    scrollTo: function(val) {
+    scrollTo: function (val) {
       if (typeof val === 'number' && !isNaN(val) && val <= 0) {
         this.setTransform(val, null, 500);
         this.$emit('scrollToCbk');
       }
-    }
+    },
   },
   data() {
     return {
@@ -42,13 +42,13 @@ export default {
         startY: 0,
         endY: 0,
         startTime: 0,
-        endTime: 0
+        endTime: 0,
       },
       transformX: 0,
       scrollDistance: 0,
       timer: null,
       isShowLoadMore: false,
-      isFirstShow: false
+      isFirstShow: false,
     };
   },
   methods: {
@@ -173,7 +173,7 @@ export default {
           this.setMove(move, 'end');
         }
       });
-    }
+    },
   },
 
   mounted() {
@@ -191,6 +191,6 @@ export default {
     this.$el.removeEventListener('touchmove', this.touchMove);
     this.$el.removeEventListener('touchend', this.touchEnd);
     clearTimeout(this.timer);
-  }
+  },
 };
 </script>

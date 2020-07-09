@@ -36,51 +36,51 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'horizontal'
+      default: 'horizontal',
     },
     stretch: {
       type: Number,
-      default: 100
+      default: 100,
     },
     isUnMore: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isLoading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     threshold: {
       type: Number,
-      default: 100
+      default: 100,
     },
     pulldownTxt: {
       type: String,
-      default: '下拉刷新'
+      default: '下拉刷新',
     },
     loadMoreTxt: {
       type: String,
-      default: '上拉加载'
+      default: '上拉加载',
     },
     unloadMoreTxt: {
       type: String,
-      default: '没有更多了'
+      default: '没有更多了',
     },
     propsTime: {
       type: Number,
-      default: 0
+      default: 0,
     },
     scrollTo: {
       type: Number,
-      default: 1
-    }
+      default: 1,
+    },
   },
   data() {
     return {};
   },
   components: {
     [nutVertScroll.name]: nutVertScroll,
-    [nutHorScroll.name]: nutHorScroll
+    [nutHorScroll.name]: nutHorScroll,
   },
   methods: {
     loadMore() {
@@ -100,7 +100,7 @@ export default {
     },
     scrollChange(event) {
       this.$emit('scrollChange', event);
-    }
-  }
+    },
+  },
 };
 </script>

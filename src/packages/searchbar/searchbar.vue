@@ -15,7 +15,7 @@
           ref="searchInput"
         />
         <!-- 清空input中输入的内容 -->
-        <span class="input-right close-icon" v-if="clearable && hasCloseIcon" :class="[hasAction?'pos':'']" @click="clearInput">
+        <span class="input-right close-icon" v-if="clearable && hasCloseIcon" :class="[hasAction ? 'pos' : '']" @click="clearInput">
           <nut-icon type="clear" :size="clearIconSize"></nut-icon>
         </span>
         <!-- input右侧事件 -- 默认 二维码 -->
@@ -28,7 +28,13 @@
     <div class="btn-right" v-if="hasSearchButton" @click="submitFun">
       <span v-if="hasTextButton">{{ textInfo || nutTranslate('lang.searchbar.textInfo') }}</span>
       <nut-icon type="search3" v-if="!hasTextButton && searchBtnIcon == ''" :size="searchBtnIconSize" :color="searchBtnIconColor"></nut-icon>
-      <nut-icon type="self" v-if="!hasTextButton && searchBtnIcon != ''" :size="searchBtnIconSize" :color="searchBtnIconColor" :url='searchBtnIcon'></nut-icon>
+      <nut-icon
+        type="self"
+        v-if="!hasTextButton && searchBtnIcon != ''"
+        :size="searchBtnIconSize"
+        :color="searchBtnIconColor"
+        :url="searchBtnIcon"
+      ></nut-icon>
     </div>
   </div>
 </template>
@@ -41,87 +47,87 @@ export default {
   props: {
     hasIcon: {
       type: Boolean,
-      default: false
+      default: false,
     },
     searchIconSize: {
       type: String,
-      default: '20px'
+      default: '20px',
     },
     searchIconColor: {
       type: String,
-      default: '#2e2d2d'
+      default: '#2e2d2d',
     },
     searchBtnIconSize: {
       type: String,
-      default: '20px'
+      default: '20px',
     },
     searchBtnIconColor: {
       type: String,
-      default: '#2e2d2d'
+      default: '#2e2d2d',
     },
     clearIconSize: {
       type: String,
-      default: '14px'
+      default: '14px',
     },
     placeText: {
-      type: String
+      type: String,
     },
     hasSearchButton: {
       type: Boolean,
-      default: true
+      default: true,
     },
     hasTextButton: {
       type: Boolean,
-      default: false
+      default: false,
     },
     textInfo: {
-      type: String
+      type: String,
     },
     animation: {
       type: Boolean,
-      default: true
+      default: true,
     },
     customClass: {
       type: String,
-      default: ''
+      default: '',
     },
     // 新增 input 输入的位置  left center right
-    inputAlign:{ 
-      type:String,
-      default:'left'
+    inputAlign: {
+      type: String,
+      default: 'left',
     },
     // 新增 是否启用清除控件
-    clearable:{
-      type:Boolean,
-      default:true
+    clearable: {
+      type: Boolean,
+      default: true,
     },
     // 新增 搜索框右侧按钮
-    hasAction:{
-      type:Boolean,
-      default:false
+    hasAction: {
+      type: Boolean,
+      default: false,
     },
-    actionIcon:{
-      type:String,
-      default:''
+    actionIcon: {
+      type: String,
+      default: '',
     },
-    actionIconSize:{
-      type:String,
-      default:'20px'
+    actionIconSize: {
+      type: String,
+      default: '20px',
     },
     // 新增 右侧按钮图标
-    searchBtnIcon:{
-      type:String,
-      default:''
-    }
+    searchBtnIcon: {
+      type: String,
+      default: '',
+    },
   },
   components: {
-    [nuticon.name]: nuticon
+    [nuticon.name]: nuticon,
   },
   data() {
     return {
       value: '', //输入值
       hasCloseIcon: false,
-      inputFocusAnimation: false
+      inputFocusAnimation: false,
     };
   },
   computed: {},
@@ -152,14 +158,14 @@ export default {
     },
     //js控制获取焦点
     focus() {
-      this.$nextTick(function() {
+      this.$nextTick(function () {
         this.$refs.searchInput.focus();
       });
     },
 
-    handleAction(){
+    handleAction() {
       this.$emit('handleAction', this.value);
-    }
-  }
+    },
+  },
 };
 </script>

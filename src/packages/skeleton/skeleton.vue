@@ -12,6 +12,6 @@ export default {
   name: 'nut-skeleton',
   data() {
     return {};
-  }
+  },
 };
 </script>

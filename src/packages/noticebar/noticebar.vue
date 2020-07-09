@@ -2,7 +2,7 @@
   <div
     v-show="showNoticeBar"
     class="nut-noticebar"
-    :class="{ withicon: closeMode, close: closeMode,wrapable:wrapable}"
+    :class="{ withicon: closeMode, close: closeMode, wrapable: wrapable }"
     :style="barStyle"
     @click="handleClick"
   >
@@ -13,7 +13,7 @@
       <div
         ref="content"
         class="content"
-        :class="[animationClass, { 'nut-ellipsis': !scrollable&&!wrapable }]"
+        :class="[animationClass, { 'nut-ellipsis': !scrollable && !wrapable }]"
         :style="contentStyle"
         @animationend="onAnimationEnd"
         @webkitAnimationEnd="onAnimationEnd"
@@ -33,37 +33,37 @@ export default {
   props: {
     text: {
       type: String,
-      default: ''
+      default: '',
     },
     closeMode: {
       type: Boolean,
-      default: false
+      default: false,
     },
     wrapable: {
       type: Boolean,
-      default: false
+      default: false,
     },
     leftIcon: { type: String, default: '' },
     color: {
       type: String,
-      default: '#F9911B'
+      default: '#F9911B',
     },
     background: {
       type: String,
-      default: '#FFF4DA'
+      default: '#FFF4DA',
     },
     delay: {
       type: [String, Number],
-      default: 1
+      default: 1,
     },
     scrollable: {
       type: Boolean,
-      default: true
+      default: true,
     },
     speed: {
       type: Number,
-      default: 50
-    }
+      default: 50,
+    },
   },
   data() {
     return {
@@ -72,7 +72,7 @@ export default {
       duration: 0,
       offsetWidth: 0,
       showNoticeBar: true,
-      animationClass: ''
+      animationClass: '',
     };
   },
   computed: {
@@ -86,14 +86,14 @@ export default {
     barStyle() {
       return {
         color: this.color,
-        background: this.background
+        background: this.background,
       };
     },
     contentStyle() {
       return {
         paddingLeft: this.firstRound ? 0 : this.wrapWidth + 'px',
         animationDelay: (this.firstRound ? this.delay : 0) + 's',
-        animationDuration: this.duration + 's'
+        animationDuration: this.duration + 's',
       };
     },
     iconBg() {
@@ -102,7 +102,7 @@ export default {
         iconBg = this.leftIcon;
       }
       return iconBg;
-    }
+    },
   },
   watch: {
     text: {
@@ -131,8 +131,8 @@ export default {
           }
         });
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
     handleClick(event) {
@@ -148,7 +148,7 @@ export default {
         this.duration = (this.offsetWidth + this.wrapWidth) / this.speed;
         this.animationClass = 'play-infinite';
       });
-    }
-  }
+    },
+  },
 };
 </script>

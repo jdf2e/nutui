@@ -24,7 +24,6 @@
     <div class="demo-w">
       <nut-badge :value="9" top="0" right="10px" class="item"><div class="demo-svg"></div></nut-badge>
     </div>
-
   </div>
 </template>
 
@@ -34,7 +33,7 @@ export default {
     return {};
   },
   created() {},
-  methods: {}
+  methods: {},
 };
 </script>
 
@@ -48,16 +47,16 @@ export default {
 }
 
 .demo-w {
-	margin: 0;
-	background: white;
+  margin: 0;
+  background: white;
 }
 
 .demo-svg {
-	display: inline-block;
-	height: 17px;
-	width: 19px;
-	background-size: 100% 100%;
-	background-image: url('#{$assetsPath}/img/gift.png');
-	background-repeat: no-repeat;
+  display: inline-block;
+  height: 17px;
+  width: 19px;
+  background-size: 100% 100%;
+  background-image: url('#{$assetsPath}/img/gift.png');
+  background-repeat: no-repeat;
 }
 </style>

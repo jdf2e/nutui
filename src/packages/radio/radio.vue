@@ -1,21 +1,24 @@
 <template>
-  <div class="nut-radio"  :class="{
-      'nut-radio-list-radio' : type === 'radio',
-      'nut-radio-list-label' : type === 'label',
-      'nut-radio-list-list' : type === 'list'
-     }">
-      <input
-        type="radio"
-        :value="currentValue"
-        :class="{ 'nut-radio-ani': isAnimated }"
-        :checked="checked"
-        :disabled="isDisabled"
-        :label="label"
-        :name="name"
-        @input="valChange"
-      />
-      <div class="text-box">{{text}}<slot></slot></div>
-      <div class="box-border"></div>      
+  <div
+    class="nut-radio"
+    :class="{
+      'nut-radio-list-radio': type === 'radio',
+      'nut-radio-list-label': type === 'label',
+      'nut-radio-list-list': type === 'list',
+    }"
+  >
+    <input
+      type="radio"
+      :value="currentValue"
+      :class="{ 'nut-radio-ani': isAnimated }"
+      :checked="checked"
+      :disabled="isDisabled"
+      :label="label"
+      :name="name"
+      @input="valChange"
+    />
+    <div class="text-box">{{ text }}<slot></slot></div>
+    <div class="box-border"></div>
   </div>
 </template>
 <script>
@@ -26,44 +29,42 @@ export default {
   mixins: [findCptUpward],
   props: {
     value: {
-      type: [String, Number, Boolean,Function],
-      default: false
+      type: [String, Number, Boolean, Function],
+      default: false,
     },
-    checked:{
-      type:Boolean,
-      default:false
+    checked: {
+      type: Boolean,
+      default: false,
     },
     label: [String, Number, Boolean],
     size: {
       type: String,
-      default: 'base'
+      default: 'base',
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     animated: {
       type: Boolean,
-      default: true
+      default: true,
     },
-    type:{
+    type: {
       type: String,
-      default:'radio'
+      default: 'radio',
     },
-    name:{
-      type:String
+    name: {
+      type: String,
     },
-    text:String,
-    radioData:{
-      type:Object,
-      default(){
-
-      }
-    }
+    text: String,
+    radioData: {
+      type: Object,
+      default() {},
+    },
   },
   data() {
     return {
-      parent: null
+      parent: null,
     };
   },
   computed: {
@@ -74,7 +75,7 @@ export default {
 
       set(val) {
         (this.parent || this).$emit('input', val);
-      }
+      },
     },
     currentSize() {
       return this.parent ? this.parent.size || this.size : this.size;
@@ -84,7 +85,7 @@ export default {
     },
     isAnimated() {
       return this.parent ? this.parent.animated && this.animated : this.animated;
-    }
+    },
   },
   created() {
     this.findCptUpward('nut-radiogroup');
@@ -96,10 +97,10 @@ export default {
       }
       this.currentValue = this.label;
     },
-    valChange(e){        
-      let radioData = this.radioData;      
-      this.$emit('radioChange',radioData)
-    }
-  }
+    valChange(e) {
+      let radioData = this.radioData;
+      this.$emit('radioChange', radioData);
+    },
+  },
 };
 </script>

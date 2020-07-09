@@ -1,12 +1,8 @@
 <template>
-  <nut-popup
-      v-model="childIsVisible"
-      position="bottom"
-      round
-      @click-overlay="closeActionSheet" 
-      v-if="poppable"
-    > 
-    <nut-calendar-slot props ref="mychild" 
+  <nut-popup v-model="childIsVisible" position="bottom" round @click-overlay="closeActionSheet" v-if="poppable">
+    <nut-calendar-slot
+      props
+      ref="mychild"
       :type="type"
       :is-auto-back-fill="isAutoBackFill"
       :poppable="poppable"
@@ -14,16 +10,17 @@
       :default-value="defaultValue"
       :start-date="startDate"
       :end-date="endDate"
-      @update="update" 
-      @close="close" 
+      @update="update"
+      @close="close"
       @choose="choose"
     >
       <div slot="shortcut" class="nut-calendar-shortcut">
-	      <slot name="shortcut"></slot>
-	    </div>
+        <slot name="shortcut"></slot>
+      </div>
     </nut-calendar-slot>
   </nut-popup>
-  <nut-calendar-slot v-else  
+  <nut-calendar-slot
+    v-else
     :type="type"
     :is-auto-back-fill="isAutoBackFill"
     :poppable="poppable"
@@ -31,12 +28,12 @@
     :default-value="defaultValue"
     :start-date="startDate"
     :end-date="endDate"
-    @close="close" 
+    @close="close"
     @choose="choose"
   >
     <div slot="shortcut" class="nut-calendar-shortcut">
-	      <slot name="shortcut"></slot>
-	    </div>
+      <slot name="shortcut"></slot>
+    </div>
   </nut-calendar-slot>
 </template>
 <script>
@@ -44,44 +41,44 @@ import nutcalendarslot from './calendar-slot.vue';
 export default {
   name: 'nut-calendar',
   components: {
-    [nutcalendarslot.name]: nutcalendarslot
+    [nutcalendarslot.name]: nutcalendarslot,
   },
   props: {
     type: {
-      type: String
+      type: String,
     },
     isAutoBackFill: {
-      type: Boolean
+      type: Boolean,
     },
     poppable: {
       type: Boolean,
-      default: true
+      default: true,
     },
     isVisible: {
-      type: Boolean
+      type: Boolean,
     },
     title: {
-      type: String
+      type: String,
     },
     defaultValue: {
-      type: String | Array
+      type: String | Array,
     },
     startDate: {
-      type: String
+      type: String,
     },
     endDate: {
-      type: String
-    }
+      type: String,
+    },
   },
   data() {
     return {
-      childIsVisible: false
-    }
+      childIsVisible: false,
+    };
   },
   watch: {
     isVisible(newValue, oldValue) {
-        this.childIsVisible = newValue;
-    }
+      this.childIsVisible = newValue;
+    },
   },
   methods: {
     closeActionSheet() {
@@ -96,7 +93,7 @@ export default {
     choose(param) {
       this.close();
       this.$emit('choose', param);
-    }
-  }
+    },
+  },
 };
 </script>

@@ -1,6 +1,8 @@
 <template>
   <div :class="{ 'nut-stepper': !simple, 'nut-stepper-simple': simple }">
-    <div class="oper-wrapper reduce-wrapper" @click="reduce()"><span  :class="{ 'nut-stepper-grey': isGray }" v-html="require('../../assets/svg/reduce.svg')"> </span></div>
+    <div class="oper-wrapper reduce-wrapper" @click="reduce()"
+      ><span :class="{ 'nut-stepper-grey': isGray }" v-html="require('../../assets/svg/reduce.svg')"> </span
+    ></div>
     <input
       ref="number"
       type="number"
@@ -22,7 +24,7 @@
         '-ms-transform': 'translate(0,' + animTranslate_add + '%)',
         '-moz-transform': 'translate(0,' + animTranslate_add + '%)',
         '-webkit-transform': 'translate(0,' + animTranslate_add + '%)',
-        '-o-transform': 'translate(0,' + animTranslate_add + '%)'
+        '-o-transform': 'translate(0,' + animTranslate_add + '%)',
       }"
     >
       <div>{{ animNum[0] }}</div>
@@ -36,13 +38,15 @@
         '-ms-transform': 'translate(0,' + animTranslate_ + '%)',
         '-moz-transform': 'translate(0,' + animTranslate_ + '%)',
         '-webkit-transform': 'translate(0,' + animTranslate_ + '%)',
-        '-o-transform': 'translate(0,' + animTranslate_ + '%)'
+        '-o-transform': 'translate(0,' + animTranslate_ + '%)',
       }"
     >
       <div>{{ animNum[0] }}</div>
       <div>{{ animNum[1] }}</div>
     </div>
-    <div class="oper-wrapper add-wrapper" @click="add()"><span  :class="{ 'nut-stepper-grey': max && Number(num) > (max - step) || !this.isLegal}" v-html="require('../../assets/svg/add.svg')"> </span></div>
+    <div class="oper-wrapper add-wrapper" @click="add()"
+      ><span :class="{ 'nut-stepper-grey': (max && Number(num) > max - step) || !this.isLegal }" v-html="require('../../assets/svg/add.svg')"> </span
+    ></div>
   </div>
 </template>
 <script>
@@ -51,36 +55,36 @@ export default {
   props: {
     simple: {
       type: Boolean,
-      default: true
+      default: true,
     },
     min: {
       type: [Number, String],
-      default: 0
+      default: 0,
     },
     max: {
       type: [Number, String],
-      default: Infinity
+      default: Infinity,
     },
     step: {
       type: [Number, String],
-      default: 1
+      default: 1,
     },
     readonly: {
       type: Boolean,
-      default: false
+      default: false,
     },
     transition: {
       type: Boolean,
-      default: true
+      default: true,
     },
     value: {
       type: [String, Number],
-      required: true
+      required: true,
     },
     decimalPlaces: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   data() {
     return {
@@ -94,7 +98,7 @@ export default {
       animNum: [this.value, this.value],
       animTranslate_add: 0,
       animTranslate_: -100,
-      isLegal:true //是否合法 isLegal
+      isLegal: true, //是否合法 isLegal
     };
   },
   filters: {
@@ -103,7 +107,7 @@ export default {
       if (val > max) val = max;
       if (val < min) val = min;
       return val;
-    }
+    },
   },
   watch: {
     value: {
@@ -113,33 +117,33 @@ export default {
         this.num = v > 0 ? this.fixedDecimalPlaces(v) : v;
         this.$emit('change', this.num);
       },
-      immediate: true
+      immediate: true,
     },
     min: {
       handler(v, ov) {
-        this.isLegal = true
+        this.isLegal = true;
         if (v < this.max) {
           this.minNum = v;
-        }else{
-          this.isLegal = false
+        } else {
+          this.isLegal = false;
         }
       },
-      immediate: true
+      immediate: true,
     },
     max: {
       handler(v, ov) {
-        this.isLegal = true
+        this.isLegal = true;
         if (v <= this.min) {
-          this.isLegal = false
+          this.isLegal = false;
         }
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   computed: {
     isGray() {
       return (this.focusing ? this.tempNum : this.num) - this.step < this.min;
-    }
+    },
   },
   methods: {
     focus(e) {
@@ -244,7 +248,7 @@ export default {
       } else {
         this.$emit('reduce-no-allow');
       }
-    }
-  }
+    },
+  },
 };
 </script>

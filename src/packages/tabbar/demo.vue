@@ -21,160 +21,159 @@ export default {
           tabTitle: '定位',
           curr: false,
           icon: require('../../assets/img/address.png'),
-          activeIcon: require('../../assets/img/address-red.png')
+          activeIcon: require('../../assets/img/address-red.png'),
         },
         {
           tabTitle: '收藏',
           curr: false,
           icon: require('../../assets/img/collection.png'),
-          activeIcon: require('../../assets/img/collection-red.png')
+          activeIcon: require('../../assets/img/collection-red.png'),
         },
         {
           tabTitle: '任务',
           curr: true,
           icon: require('../../assets/img/task.png'),
-          activeIcon: require('../../assets/img/task-red.png')
+          activeIcon: require('../../assets/img/task-red.png'),
         },
         {
           tabTitle: '我的',
           curr: false,
           icon: require('../../assets/img/myicon.png'),
-          activeIcon: require('../../assets/img/myicon-red.png')
-        }
+          activeIcon: require('../../assets/img/myicon-red.png'),
+        },
       ],
       tabList2: [
         {
           tabTitle: '定位',
           curr: true,
           icon: require('../../assets/img/address.png'),
-          activeIcon: require('../../assets/img/address-red.png')
+          activeIcon: require('../../assets/img/address-red.png'),
         },
         {
           tabTitle: '我的',
           curr: false,
           icon: require('../../assets/img/myicon.png'),
-          activeIcon: require('../../assets/img/myicon-red.png')
-        }
+          activeIcon: require('../../assets/img/myicon-red.png'),
+        },
       ],
       tabList3: [
         {
           tabTitle: '定位',
           curr: true,
           icon: require('../../assets/img/address.png'),
-          activeIcon: require('../../assets/img/address-red.png')
+          activeIcon: require('../../assets/img/address-red.png'),
         },
         {
           tabTitle: '任务',
           curr: false,
           icon: require('../../assets/img/task.png'),
-          activeIcon: require('../../assets/img/task-red.png')
+          activeIcon: require('../../assets/img/task-red.png'),
         },
         {
           tabTitle: '我的',
           curr: false,
           icon: require('../../assets/img/myicon.png'),
-          activeIcon: require('../../assets/img/myicon-red.png')
-        }
+          activeIcon: require('../../assets/img/myicon-red.png'),
+        },
       ],
       tabList4: [
         {
           tabTitle: '定位',
           curr: true,
           icon: require('../../assets/img/address.png'),
-          activeIcon: require('../../assets/img/address-red.png')
+          activeIcon: require('../../assets/img/address-red.png'),
         },
         {
           tabTitle: '收藏',
           curr: false,
           icon: require('../../assets/img/collection.png'),
-          activeIcon: require('../../assets/img/collection-red.png')
+          activeIcon: require('../../assets/img/collection-red.png'),
         },
         {
           tabTitle: '任务',
           curr: false,
           icon: require('../../assets/img/task.png'),
-          activeIcon: require('../../assets/img/task-red.png')
+          activeIcon: require('../../assets/img/task-red.png'),
         },
         {
           tabTitle: '我的',
           curr: false,
           icon: require('../../assets/img/myicon.png'),
-          activeIcon: require('../../assets/img/myicon-red.png')
-        }
+          activeIcon: require('../../assets/img/myicon-red.png'),
+        },
       ],
       tabList5: [
         {
           tabTitle: '定位',
           curr: true,
           icon: require('../../assets/img/address.png'),
-          activeIcon: require('../../assets/img/address-red.png')
+          activeIcon: require('../../assets/img/address-red.png'),
         },
         {
           tabTitle: '收藏',
           curr: false,
           icon: require('../../assets/img/collection.png'),
-          activeIcon: require('../../assets/img/collection-red.png')
+          activeIcon: require('../../assets/img/collection-red.png'),
         },
         {
           tabTitle: '设置',
           curr: false,
           icon: require('../../assets/img/install.png'),
-          activeIcon: require('../../assets/img/install-red.png')
+          activeIcon: require('../../assets/img/install-red.png'),
         },
         {
           tabTitle: '任务',
           curr: false,
           icon: require('../../assets/img/task.png'),
-          activeIcon: require('../../assets/img/task-red.png')
+          activeIcon: require('../../assets/img/task-red.png'),
         },
         {
           tabTitle: '我的',
           curr: false,
           icon: require('../../assets/img/myicon.png'),
-          activeIcon: require('../../assets/img/myicon-red.png')
-        }
+          activeIcon: require('../../assets/img/myicon-red.png'),
+        },
       ],
       tabList6: [
         {
           tabTitle: '定位',
           curr: true,
-          href:"http://nutui.jd.com/demo.html#/index",
+          href: 'http://nutui.jd.com/demo.html#/index',
           icon: require('../../assets/img/address.png'),
-          activeIcon: require('../../assets/img/address-red.png')
+          activeIcon: require('../../assets/img/address-red.png'),
         },
         {
           tabTitle: '收藏',
           curr: false,
-          isDot:true,
-          href:"http://nutui.jd.com/demo.html#/index",
+          isDot: true,
+          href: 'http://nutui.jd.com/demo.html#/index',
           icon: require('../../assets/img/collection.png'),
-          activeIcon: require('../../assets/img/collection-red.png')
+          activeIcon: require('../../assets/img/collection-red.png'),
         },
         {
           tabTitle: '任务',
           curr: false,
-          num:9,
-          href:"http://nutui.jd.com/demo.html#/index",
+          num: 9,
+          href: 'http://nutui.jd.com/demo.html#/index',
           icon: require('../../assets/img/task.png'),
-          activeIcon: require('../../assets/img/task-red.png')
+          activeIcon: require('../../assets/img/task-red.png'),
         },
         {
           tabTitle: '我的',
           curr: false,
-          num:100,
-          href:"http://nutui.jd.com/demo.html#/index",
+          num: 100,
+          href: 'http://nutui.jd.com/demo.html#/index',
           icon: require('../../assets/img/myicon.png'),
-          activeIcon: require('../../assets/img/myicon-red.png')
-        }
-      ]
+          activeIcon: require('../../assets/img/myicon-red.png'),
+        },
+      ],
     };
   },
   methods: {
-    tabSwitch1: function(value, index) {
+    tabSwitch1: function (value, index) {
       console.log(value, index);
-    }
-  }
+    },
+  },
 };
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>
