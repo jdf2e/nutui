@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2 class="title">基本用法</h2>
+  <div class="demo-list">
+    <h4>基本用法</h4>
     <div>
         <nut-cell
         isLink
@@ -12,7 +12,7 @@
     </div>
     <nut-popup :style="{ padding: '30px 50px' }"   v-model="showBasic" >正文</nut-popup>
 
-    <h2 class="title">弹出位置</h2>
+    <h4>弹出位置</h4>
     <div>
         <nut-cell
         isLink
@@ -61,7 +61,7 @@
         :style="{ width: '20%', height: '100%' }"
         ></nut-popup>
     </div>
-    <h2 class="title">关闭图标</h2>
+    <h4>关闭图标</h4>
     <div>
         <nut-cell
         isLink
@@ -106,7 +106,7 @@
         ></nut-popup>
     </div>
 
-    <h2 class="title">圆角弹框</h2>
+    <h4>圆角弹框</h4>
     <div>
         <nut-cell
         isLink
@@ -122,7 +122,7 @@
         :style="{ height: '20%' }"
         ></nut-popup>
     </div>
-    <h2 class="title">指定挂载节点</h2>
+    <h4>指定挂载节点</h4>
     <div>
         <nut-cell
         isLink
@@ -160,18 +160,4 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.title {
-  text-align: left;
-  margin: 0;
-  padding: 32px 16px 16px;
-  color: rgba(69, 90, 100, 0.6);
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
-}
-.demo {
-  padding-left: 0;
-  padding-right: 0;
-  overflow: hidden;
-}
 </style>

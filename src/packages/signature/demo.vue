@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>基本用法</h4>
     <p>默认</p>
     <p><nut-signature @confirm="confirm" @clear="clear"></nut-signature></p>

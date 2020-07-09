@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>基本用法</h4>
     <div class="video-con">
       <nut-video :sources="sources" :options="options" @play="play" @pause="pause" @playend="playend"> </nut-video>

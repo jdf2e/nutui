@@ -19,7 +19,6 @@
       <h4>绑定多个事件</h4>
       <p>press、tap、pan</p>
     </div>
-
     <div class="show">{{ text }}</div>
   </div>
 </template>
