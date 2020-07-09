@@ -1,7 +1,5 @@
 <template>
   <div class="demo-list">
-
-    <button @click="fnTest()">按钮测试</button>
     <h4>基本用法</h4>
     <div>
       <nut-cell :is-link="true" :show-icon="true" @click.native="showDialog1" >
