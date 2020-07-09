@@ -18,7 +18,7 @@ export default {
       isHasMore: true,
       isLoading: false,
       isErr: false,
-      timer: null,
+      timer: null
     };
   },
   methods: {
@@ -33,11 +33,11 @@ export default {
         }
         this.isLoading = false;
       }, 100);
-    },
+    }
   },
   destroyed() {
     clearTimeout(this.timer);
-  },
+  }
 };
 </script>
 

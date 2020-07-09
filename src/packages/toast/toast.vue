@@ -6,7 +6,7 @@
       v-if="visible"
       :style="{
         bottom: center ? 'auto' : bottom + 'px',
-        'background-color': coverColor,
+        'background-color': coverColor
       }"
       @click="clickCover"
     >
@@ -14,7 +14,7 @@
         class="nut-toast-inner"
         :style="{
           'text-align': textAlignCenter ? 'center' : 'left',
-          'background-color': bgColor,
+          'background-color': bgColor
         }"
       >
         <span v-if="hasIcon" class="nut-toast-icon-wrapper">
@@ -53,7 +53,7 @@ export default {
       cover: false,
       coverColor: 'rgba(0, 0, 0, 0)',
       timeStamp: null,
-      closeOnClickOverlay: false,
+      closeOnClickOverlay: false
     };
   },
   watch: {
@@ -61,7 +61,7 @@ export default {
       if (val) {
         this.show();
       }
-    },
+    }
   },
   computed: {
     cusIcon() {
@@ -75,7 +75,7 @@ export default {
         { 'nut-toast-cover': this.cover },
         { 'nut-loading': this.type == 'loading' },
         this.customClass,
-        'nut-toast-' + this.size,
+        'nut-toast-' + this.size
       ];
     },
     hasIcon() {
@@ -84,7 +84,7 @@ export default {
       } else {
         return this.cusIcon;
       }
-    },
+    }
   },
   methods: {
     show(force) {
@@ -119,11 +119,11 @@ export default {
       if (this.closeOnClickOverlay) {
         this.hide();
       }
-    },
+    }
   },
   destroyed() {
     this.textTimer = null;
     this.timer = null;
-  },
+  }
 };
 </script>

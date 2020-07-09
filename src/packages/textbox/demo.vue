@@ -1,5 +1,5 @@
 <template>
-  <div class="textbox-demo">
+  <div class="demo-list">
     <!-- <h4>示例</h4> -->
     <h4>默认用法 支持异步回显数据</h4>
     <nut-textbox v-model="val"></nut-textbox>
@@ -35,7 +35,7 @@ export default {
     return {
       val: '',
       val1: '',
-      val2: '自定义数据',
+      val2: '自定义数据'
     };
   },
   methods: {
@@ -44,14 +44,14 @@ export default {
     },
     inputText(val) {
       alert(val);
-    },
+    }
   },
   mounted() {
     var that = this;
     this.val = '初始测试数据';
-    setTimeout(function () {
+    setTimeout(function() {
       that.val = '异步测试数据123';
     }, 1000);
-  },
+  }
 };
 </script>

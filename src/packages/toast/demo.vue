@@ -136,7 +136,7 @@ export default {
     showLoading() {
       this.hideLoading();
       this.$toast.loading('加载中...', {
-        duration: 3000,
+        duration: 3000
       });
     },
     showLoading2() {
@@ -144,13 +144,13 @@ export default {
       this.$toast.loading('加载中...', {
         duration: 3000,
         coverColor: 'rgba(0,0,0,0.5)',
-        closeOnClickOverlay: true,
+        closeOnClickOverlay: true
       });
     },
     showLoading3() {
       if (this.loading) return;
       this.loading = this.$toast.loading('', {
-        cover: false,
+        cover: false
       });
     },
     hideLoading() {
@@ -159,7 +159,7 @@ export default {
     },
     cusBgToast(msg) {
       this.$toast.text(msg, {
-        bgColor: 'rgba(50, 50, 50, 0.6)',
+        bgColor: 'rgba(50, 50, 50, 0.6)'
       });
     },
     cusClassToast(msg) {
@@ -168,7 +168,7 @@ export default {
     cusIconToast(msg) {
       this.$toast.text(msg, {
         icon: 'https://img13.360buyimg.com/imagetools/jfs/t1/98294/28/14470/22072/5e65ba08E865683aa/ded7441bdd098511.png',
-        duration: 3000,
+        duration: 3000
       });
     },
     idToast1(msg) {
@@ -182,7 +182,7 @@ export default {
         duration: 5000,
         coverColor: 'rgba(0, 0, 0, 0.2)',
         closeOnClickOverlay: true,
-        cover: true,
+        cover: true
       });
       this.$toast.text('将所有Toast提示展示时长设置为5000毫秒，并且点击遮罩层可关闭提示');
     },
@@ -196,15 +196,15 @@ export default {
         cover: true,
         coverColor: 'rgba(0, 0, 0, 0.2)',
         duration: 4000,
-        closeOnClickOverlay: true,
+        closeOnClickOverlay: true
       });
       this.$toast.text('设置文字提示默认配置为：大小设置为large，遮罩层透明度0.2，展示4秒');
     },
     resetDefaultOptions2() {
       this.$toast.resetDefaultOptions('text');
       this.$toast.text('文字提示默认配置已恢复');
-    },
-  },
+    }
+  }
 };
 </script>
 

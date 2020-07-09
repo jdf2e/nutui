@@ -1,6 +1,6 @@
 <template>
   <div class="demo-list">
-    <p>基本用法</p>
+    <h4>基本用法</h4>
     <div>
       <nut-cell>
         <span slot="title">
@@ -8,7 +8,7 @@
         </span>
       </nut-cell>
     </div>
-    <p>环形进度条自定义样式</p>
+    <h4>环形进度条自定义样式</h4>
     <div>
       <nut-cell>
         <span slot="title">
@@ -16,7 +16,7 @@
         </span>
       </nut-cell>
     </div>
-    <p>环形进度条自定义内容</p>
+    <h4>环形进度条自定义内容</h4>
     <div>
       <nut-cell>
         <span slot="title">
@@ -26,7 +26,7 @@
         </span>
       </nut-cell>
     </div>
-    <p>动态改变环形进度条的进度</p>
+    <h4>动态改变环形进度条的进度</h4>
     <div>
       <nut-cell>
         <span slot="title">
@@ -52,11 +52,11 @@ export default {
         radius: 50,
         strokeOutWidth: 10,
         backColor: '#d9d9d9',
-        progressColor: 'red',
+        progressColor: 'red'
       },
       percent: 50,
       strokeInnerWidth: 10,
-      isAuto: true,
+      isAuto: true
     };
   },
   methods: {
@@ -74,8 +74,8 @@ export default {
         return;
       }
       this.percent -= 10;
-    },
-  },
+    }
+  }
 };
 </script>
 

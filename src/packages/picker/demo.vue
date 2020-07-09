@@ -91,27 +91,27 @@ const APIData = [
     array: [
       {
         label: 3,
-        value: '朝阳区',
+        value: '朝阳区'
       },
       {
         label: 4,
-        value: '海淀区',
-      },
-    ],
+        value: '海淀区'
+      }
+    ]
   },
   {
     label: 2,
     array: [
       {
         label: 5,
-        value: '测试1',
+        value: '测试1'
       },
       {
         label: 6,
-        value: '测试2',
-      },
-    ],
-  },
+        value: '测试2'
+      }
+    ]
+  }
 ];
 export default {
   data() {
@@ -149,9 +149,9 @@ export default {
           '2036',
           '2037',
           '2038',
-          '2039',
+          '2039'
         ],
-        ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+        ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
       ],
       defaultValueData0: ['2012', '2'],
       city: null,
@@ -162,14 +162,14 @@ export default {
         江西: ['九江', '南昌', '赣州'],
         上海: ['上海'],
         重庆: ['重庆'],
-        内蒙古: ['呼和浩特', '呼和浩特1', '呼和浩特2', '呼和浩特3', '呼和浩特4', '呼和浩特5', '呼和浩特6', '呼和浩特7'],
+        内蒙古: ['呼和浩特', '呼和浩特1', '呼和浩特2', '呼和浩特3', '呼和浩特4', '呼和浩特5', '呼和浩特6', '呼和浩特7']
       },
       dataSub: {
         上海: ['测试1', '测试2'],
         北京: ['西城区', '东城区', '大兴区', '朝阳区', '海淀区'],
         南昌: ['青山湖区', '西湖区', '宏都中路', '梦时代', '八一广场'],
         绥化: ['明水', '拜泉'],
-        哈尔滨: ['道里区', '道外区'],
+        哈尔滨: ['道里区', '道外区']
       },
       listData: [['上海', '黑龙江', '北京', '重庆', '江西', '内蒙古']],
       defaultValueData: null,
@@ -180,17 +180,17 @@ export default {
         [
           {
             label: 1,
-            value: '北京',
+            value: '北京'
           },
           {
             label: 2,
-            value: '上海',
-          },
-        ],
+            value: '上海'
+          }
+        ]
       ],
       cityCustmer: null,
       isVisible2: false,
-      defaultValueData1: null,
+      defaultValueData1: null
     };
   },
   created() {
@@ -254,7 +254,7 @@ export default {
     // demo 城市选择(联动) end
     setChooseValueCustmer(chooseData) {
       //alert(JSON.stringify(chooseData));
-      var str = chooseData.map((item) => item.value).join('-');
+      var str = chooseData.map(item => item.value).join('-');
       this.cityCustmer = str;
     },
 
@@ -262,7 +262,7 @@ export default {
       //此处模拟查询API，如果数据缓存了不需要再重新请求
       setTimeout(() => {
         let { label, value } = chooseData[0];
-        var resItems = APIData.find((item) => item.label == label);
+        var resItems = APIData.find(item => item.label == label);
         if (resItems && resItems.array.length) {
           this.$set(this.custmerCityData, 1, resItems.array);
 
@@ -279,7 +279,7 @@ export default {
         //此处模拟查询API，如果数据缓存了不需要再重新请求
         let { label, value } = resValue;
         setTimeout(() => {
-          var resItems = APIData.find((item) => item.label == label);
+          var resItems = APIData.find(item => item.label == label);
           if (resItems && resItems.array.length) {
             this.$set(this.custmerCityData, 1, resItems.array);
             // 更新第二列位置
@@ -287,8 +287,8 @@ export default {
           }
         }, 100);
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -119,7 +119,7 @@ export default {
       checkbox10: true,
       checkbox11: false,
       checkbox12: true,
-      checkbox13: false,
+      checkbox13: false
     };
   },
   methods: {
@@ -135,8 +135,8 @@ export default {
     },
     getChange2(state, val) {
       this.result3 = '选中状态：' + state + '，选项：' + val;
-    },
-  },
+    }
+  }
 };
 </script>
 

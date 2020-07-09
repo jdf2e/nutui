@@ -7,7 +7,7 @@
         :style="{
           width: Math.abs(barleft2 - barleft1) + 'px',
           left: Math.min(barleft2, barleft1) + 'px',
-          background: mainColor,
+          background: mainColor
         }"
       >
       </div>
@@ -63,44 +63,44 @@ export { toRGBA };
 export default {
   name: 'nut-range',
   components: {
-    [Movebar.name]: Movebar,
+    [Movebar.name]: Movebar
   },
   props: {
     rangeValues: {
       type: Array,
-      validator: function (value) {
+      validator: function(value) {
         return value.length === 2 && value[1] >= value[0];
       },
       default() {
         return [0, 0];
-      },
+      }
     },
     color: String,
     showLabel: {
       type: Boolean,
-      default: false,
+      default: false
     },
     showLabelAlways: {
       type: Boolean,
-      default: false,
+      default: false
     },
     showRangeTxt: {
       type: Boolean,
-      default: false,
+      default: false
     },
     range: {
       type: Array,
-      validator: function (value) {
+      validator: function(value) {
         return value.length === 2 && value[1] > value[0];
       },
       default() {
         return [0, 10];
-      },
+      }
     },
     stage: {
       type: Number,
-      default: 1,
-    },
+      default: 1
+    }
   },
   data() {
     return {
@@ -114,7 +114,7 @@ export default {
       barleft2: 0,
       level: null,
       ani: false,
-      prevValues: [],
+      prevValues: []
     };
   },
   watch: {
@@ -128,7 +128,7 @@ export default {
       if (flag) {
         this.prevValues = this.rangeValues;
       }
-    },
+    }
   },
   computed: {
     total() {
@@ -145,7 +145,7 @@ export default {
     },
     subColor() {
       return this.color ? toRGBA(this.color, 0.5) : '';
-    },
+    }
   },
   methods: {
     init() {
@@ -241,12 +241,12 @@ export default {
       this.initLeft2 = this.valToPosi(this.currentRight);
       this.barleft1 = this.initLeft1;
       this.barleft2 = this.initLeft2;
-    },
+    }
   },
   mounted() {
     this.$nextTick(() => {
       this.init();
     });
-  },
+  }
 };
 </script>

@@ -1,10 +1,8 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>基本用法</h4>
-    <div>
-      <nut-cell title="我是标题" desc="描述文字" @click-cell="clickEvnt" to="/index"> </nut-cell>
-      <nut-cell :is-link="true" link-url="//m.jd.com" :show-icon="true" title="带链接" target="_target"> </nut-cell>
-    </div>
+    <nut-cell title="我是标题" desc="描述文字" @click-cell="clickEvnt" to="/index"> </nut-cell>
+    <nut-cell :is-link="true" link-url="//m.jd.com" :show-icon="true" title="带链接" target="_target"> </nut-cell>
     <h4>通过Slot插槽分发内容</h4>
     <div>
       <nut-cell :is-link="true" :show-icon="true">
@@ -33,7 +31,7 @@ export default {
   mixins: [locale],
   components: {
     'nut-icon': Icon,
-    'nut-avatar': Avatar,
+    'nut-avatar': Avatar
   },
   data() {
     return {};
@@ -41,9 +39,9 @@ export default {
   methods: {
     clickEvnt() {
       console.log('click cell');
-    },
+    }
   },
-  mounted() {},
+  mounted() {}
 };
 </script>
 

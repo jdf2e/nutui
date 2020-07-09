@@ -13,13 +13,13 @@ export default {
   props: {
     offset: {
       type: [String, Number],
-      default: 15,
-    },
+      default: 15
+    }
   },
   mounted() {
     this.handleSlots();
     this.observer = new MutationObserver(
-      function (mutations) {
+      function(mutations) {
         this.count = 1;
         this.handleSlots();
       }.bind(this)
@@ -29,13 +29,13 @@ export default {
       attributes: false,
       childList: true,
       characterData: false,
-      subtree: false,
+      subtree: false
     });
   },
   data() {
     return {
       count: 1,
-      observer: null,
+      observer: null
     };
   },
   methods: {
@@ -43,8 +43,8 @@ export default {
       let slots = this.$slots.default;
       if (slots) {
         slots = slots
-          .filter((item) => item.elm.nodeType !== 3)
-          .map((item) => {
+          .filter(item => item.elm.nodeType !== 3)
+          .map(item => {
             return item.elm;
           });
         this.setPaddingLeft(slots);
@@ -59,7 +59,7 @@ export default {
         }
       }
       this.count--;
-    },
-  },
+    }
+  }
 };
 </script>

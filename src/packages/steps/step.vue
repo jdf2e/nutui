@@ -15,20 +15,20 @@ export default {
   mixins: [locale],
   props: {
     title: {
-      type: String,
+      type: String
     },
     content: {
-      type: String,
-    },
+      type: String
+    }
   },
   data() {
     return {
       currentStatus: '',
       stepNumber: 0,
-      stepStatus: 'nut-step-status',
+      stepStatus: 'nut-step-status'
     };
   },
   methods: {},
-  mounted() {},
+  mounted() {}
 };
 </script>

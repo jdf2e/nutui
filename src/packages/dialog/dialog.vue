@@ -42,20 +42,20 @@
 <script>
 import locale from '../../mixins/locale';
 
-const lockMaskScroll = ((bodyCls) => {
+const lockMaskScroll = (bodyCls => {
   let scrollTop;
   return {
-    afterOpen: function () {
+    afterOpen: function() {
       scrollTop = document.scrollingElement.scrollTop || document.body.scrollTop;
       document.body.classList.add(bodyCls);
       document.body.style.top = -scrollTop + 'px';
     },
-    beforeClose: function () {
+    beforeClose: function() {
       if (document.body.classList.contains(bodyCls)) {
         document.body.classList.remove(bodyCls);
         document.scrollingElement.scrollTop = scrollTop;
       }
-    },
+    }
   };
 })('dialog-open');
 
@@ -65,121 +65,133 @@ export default {
   props: {
     id: {
       type: String,
-      default: '',
+      default: ''
     },
     title: {
       type: String,
-      default: '',
+      default: ''
     },
     content: {
       type: String,
-      default: '',
+      default: ''
     },
     type: {
       type: String,
-      default: '',
+      default: ''
     },
     link: {
       type: String,
-      default: '',
+      default: ''
     },
     imgSrc: {
       type: String,
-      default: '',
+      default: ''
     },
     animation: {
       type: Boolean,
-      default: true,
+      default: true
     },
     lockBgScroll: {
       type: Boolean,
-      default: false,
+      default: false
     },
     visible: {
       type: Boolean,
-      default: false,
+      default: false
     },
     closeBtn: {
       type: Boolean,
-      default: false,
+      default: false
     },
     closeOnClickModal: {
       type: Boolean,
-      default: true,
+      default: true
     },
     noFooter: {
       type: Boolean,
-      default: false,
+      default: false
     },
     noOkBtn: {
       type: Boolean,
-      default: false,
+      default: false
     },
     noCancelBtn: {
       type: Boolean,
-      default: false,
+      default: false
     },
     cancelBtnTxt: {
       type: String,
-      default: '',
+      default: ''
     },
     okBtnTxt: {
       type: String,
-      default: '',
+      default: ''
     },
     okBtnDisabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     cancelAutoClose: {
       type: Boolean,
-      default: true,
+      default: true
     },
     textAlign: {
       type: String,
-      default: 'center',
+      default: 'center'
     },
     onOkBtn: {
       type: Function,
-      default: null,
+      default: null
     },
     onCloseBtn: {
       type: Function,
-      default: null,
+      default: null
     },
     onCancelBtn: {
       type: Function,
-      default: null,
+      default: null
     },
     closeCallback: {
       type: Function,
-      default: null,
+      default: null
     },
     onClickImageLink: {
       type: Function,
-      default: null,
+      default: null
     },
     maskBgStyle: {
       type: String,
-      default: '',
+      default: ''
     },
     canDestroy: {
       type: Boolean,
-      default: true,
+      default: true
     },
     customClass: {
       type: String,
-      default: '',
+      default: ''
     },
+    closeOnPopstate: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
       curVisible: false,
-      destroy: false,
+      destroy: false
     };
   },
   created() {
     this.destroy = true;
+  },
+  mounted() {
+    var that = this;
+    if (that.closeOnPopstate) {
+      window.addEventListener('popstate', function() {
+        that.close();
+      });
+    }
   },
   methods: {
     modalClick() {
@@ -234,21 +246,21 @@ export default {
       if (this.link) {
         location.href = this.link;
       }
-    },
+    }
   },
   watch: {
     visible: {
       handler(val) {
         this.curVisible = val;
       },
-      immediate: true,
+      immediate: true
     },
     curVisible(val) {
       if (this.lockBgScroll) {
         //锁定or解锁页面滚动
         lockMaskScroll[val ? 'afterOpen' : 'beforeClose']();
       }
-    },
-  },
+    }
+  }
 };
 </script>

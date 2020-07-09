@@ -5,7 +5,7 @@
       type="number"
       :min="minNum"
       :max="max"
-      :readonly="readonly"
+      :readonly="readonly || !isLegal"
       :value="num | maxv(minNum, max)"
       :style="{ visibility: showNum ? 'visible' : 'hidden' }"
       @input="numchange"
@@ -21,7 +21,7 @@
         '-ms-transform': 'translate(0,' + animTranslate_add + '%)',
         '-moz-transform': 'translate(0,' + animTranslate_add + '%)',
         '-webkit-transform': 'translate(0,' + animTranslate_add + '%)',
-        '-o-transform': 'translate(0,' + animTranslate_add + '%)',
+        '-o-transform': 'translate(0,' + animTranslate_add + '%)'
       }"
     >
       <div>{{ animNum[0] }}</div>
@@ -35,13 +35,14 @@
         '-ms-transform': 'translate(0,' + animTranslate_ + '%)',
         '-moz-transform': 'translate(0,' + animTranslate_ + '%)',
         '-webkit-transform': 'translate(0,' + animTranslate_ + '%)',
-        '-o-transform': 'translate(0,' + animTranslate_ + '%)',
+        '-o-transform': 'translate(0,' + animTranslate_ + '%)'
       }"
     >
       <div>{{ animNum[0] }}</div>
       <div>{{ animNum[1] }}</div>
     </div>
-    <span @click="add()" :class="{ 'nut-stepper-grey': max && Number(num) > max - step }" v-html="require('../../assets/svg/plus.svg')"> </span>
+    <span @click="add()" :class="{ 'nut-stepper-grey': (max && Number(num) > max - step) || !isLegal }" v-html="require('../../assets/svg/plus.svg')">
+    </span>
   </div>
 </template>
 <script>
@@ -50,36 +51,36 @@ export default {
   props: {
     simple: {
       type: Boolean,
-      default: true,
+      default: true
     },
     min: {
       type: [Number, String],
-      default: 0,
+      default: 0
     },
     max: {
       type: [Number, String],
-      default: Infinity,
+      default: Infinity
     },
     step: {
       type: [Number, String],
-      default: 1,
+      default: 1
     },
     readonly: {
       type: Boolean,
-      default: false,
+      default: false
     },
     transition: {
       type: Boolean,
-      default: true,
+      default: true
     },
     value: {
       type: [String, Number],
-      required: true,
+      required: true
     },
     decimalPlaces: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
   data() {
     return {
@@ -93,6 +94,7 @@ export default {
       animNum: [this.value, this.value],
       animTranslate_add: 0,
       animTranslate_: -100,
+      isLegal: true //是否合法 isLegal
     };
   },
   filters: {
@@ -101,7 +103,7 @@ export default {
       if (val > max) val = max;
       if (val < min) val = min;
       return val;
-    },
+    }
   },
   watch: {
     value: {
@@ -111,25 +113,37 @@ export default {
         this.num = v > 0 ? this.fixedDecimalPlaces(v) : v;
         this.$emit('change', this.num);
       },
-      immediate: true,
+      immediate: true
     },
     min: {
       handler(v, ov) {
+        this.isLegal = true;
         if (v < this.max) {
           this.minNum = v;
+        } else {
+          this.isLegal = false;
         }
       },
-      immediate: true,
+      immediate: true
     },
+    max: {
+      handler(v, ov) {
+        this.isLegal = true;
+        if (v <= this.min) {
+          this.isLegal = false;
+        }
+      },
+      immediate: true
+    }
   },
   computed: {
     isGray() {
       return (this.focusing ? this.tempNum : this.num) - this.step < this.min;
-    },
+    }
   },
   methods: {
     focus(e) {
-      if (this.readonly) return;
+      if (this.readonly || !this.isLegal) return;
       // clear val temporary when focus, e...s
       const v = this.num;
       this.tempNum = v;
@@ -139,7 +153,7 @@ export default {
       this.$emit('focus', e, this.num);
     },
     blur(e) {
-      if (this.readonly) return this.$emit('blur', e, this.num);
+      if (this.readonly || !this.isLegal) return this.$emit('blur', e, this.num);
       let v = e.target.value;
       this.minNum = this.min;
       this.focusing = false;
@@ -228,7 +242,7 @@ export default {
       } else {
         this.$emit('reduce-no-allow');
       }
-    },
-  },
+    }
+  }
 };
 </script>

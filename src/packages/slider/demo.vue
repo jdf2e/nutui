@@ -81,10 +81,10 @@ export default {
       val3: 50,
       val4: 0,
       val5: 0,
-      val6: 0,
+      val6: 0
     };
   },
-  methods: {},
+  methods: {}
 };
 </script>
 

@@ -13,39 +13,39 @@ export default {
   props: {
     type: {
       type: String,
-      default: '',
+      default: ''
     },
     shape: {
       type: String,
-      default: '',
+      default: ''
     },
     icon: {
       type: String,
-      default: '',
+      default: ''
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     block: {
       type: Boolean,
-      default: false,
+      default: false
     },
     small: {
       type: Boolean,
-      default: false,
+      default: false
     },
     label: {
       type: Boolean,
-      default: false,
+      default: false
     },
     color: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
   components: {
-    'nut-icon': Icon,
+    'nut-icon': Icon
   },
   computed: {
     clsStyle() {
@@ -55,7 +55,7 @@ export default {
             ${this.label ? ' label' : ''}
             ${!this.$slots.default ? (this.small ? 'no-txt-small' : 'no-txt') : ''}`;
       return cls;
-    },
+    }
   },
   methods: {
     clickHandler(event) {
@@ -64,7 +64,7 @@ export default {
         return;
       }
       this.$emit('click', event);
-    },
-  },
+    }
+  }
 };
 </script>

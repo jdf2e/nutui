@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>所有ICON，单击可复制</h4>
     <table>
       <tr>
@@ -59,45 +59,45 @@ import copy from 'clipboard';
 export default {
   mounted() {
     let copys = new copy('.copy-box', {
-      text: function (trigger) {
+      text: function(trigger) {
         return `<nut-icon type="${trigger.textContent}"></nut-icon>`;
-      },
+      }
     });
-    copys.on('success', (e) => {
+    copys.on('success', e => {
       this.tip();
     });
 
     let copySize = new copy('.copy-box-size', {
-      text: function (trigger) {
+      text: function(trigger) {
         return `<nut-icon type="${trigger.textContent}" size="40px"></nut-icon>`;
-      },
+      }
     });
-    copySize.on('success', (e) => {
+    copySize.on('success', e => {
       this.tip();
     });
 
     let copyColor = new copy('.copy-box-color', {
-      text: function (trigger) {
+      text: function(trigger) {
         return `<nut-icon type="${trigger.textContent}" color="#f0250f"></nut-icon>`;
-      },
+      }
     });
-    copyColor.on('success', (e) => {
+    copyColor.on('success', e => {
       this.tip();
     });
     let copySelf = new copy('.copy-box-self', {
-      text: function (trigger) {
+      text: function(trigger) {
         return `<nut-icon type="self" :url="require('../../assets/svg/${trigger.textContent}.svg')"></nut-icon>`;
-      },
+      }
     });
-    copySelf.on('success', (e) => {
+    copySelf.on('success', e => {
       this.tip();
     });
   },
   methods: {
     tip() {
       this.$toast.success('复制成功', { duration: 1000 });
-    },
-  },
+    }
+  }
 };
 </script>
 

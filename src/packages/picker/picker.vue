@@ -33,42 +33,42 @@ export default {
   props: {
     isVisible: {
       type: Boolean,
-      default: false,
+      default: false
     },
     customClassName: {
       type: String,
-      default: null,
+      default: null
     },
     title: {
       type: String,
-      default: ' ',
+      default: ' '
     },
     listData: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     defaultValueData: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
   components: {
     [nutactionsheet.name]: nutactionsheet,
-    [nutpickerslot.name]: nutpickerslot,
+    [nutpickerslot.name]: nutpickerslot
   },
   data() {
     return {
       chooseValueData: [],
       cacheValueData: [],
-      isUpdate: false,
+      isUpdate: false
     };
   },
   watch: {
-    defaultValueData: function () {
+    defaultValueData: function() {
       this.chooseValueData = [...this.defaultValueData];
       this.cacheValueData = [...this.defaultValueData];
       this.$emit('confirm', this.cacheValueData);
-    },
+    }
   },
   methods: {
     updateChooseValue(self, index, value) {
@@ -95,7 +95,7 @@ export default {
         this.cacheValueData[index] = value;
         this.$emit('choose', this, index, value, this.cacheValueData);
       }
-    },
+    }
   },
   created() {
     if (this.defaultValueData && this.defaultValueData.length) {
@@ -107,6 +107,6 @@ export default {
       });
       this.chooseValueData = [...defaultValueData];
     }
-  },
+  }
 };
 </script>

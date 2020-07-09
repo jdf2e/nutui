@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list-pd">
     <h4>基本用法</h4>
     <nut-timeline>
       <nut-timelineitem>
@@ -92,7 +92,7 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {}
 };
 </script>
 

@@ -20,66 +20,66 @@ export default {
   props: {
     direction: {
       type: String,
-      default: 'left',
+      default: 'left'
     },
     range: {
       type: Array,
-      validator: function (value) {
+      validator: function(value) {
         return value.length === 2 && value[1] > value[0];
       },
       default() {
         return [0, 10];
-      },
+      }
     },
     values: {
       type: Array,
-      validator: function (value) {
+      validator: function(value) {
         return value.length === 2 && value[1] >= value[0];
       },
       default() {
         return [0, 0];
-      },
+      }
     },
     initLeft: {
       type: Number,
-      default: 0,
+      default: 0
     },
     showLabelAlways: {
       type: Boolean,
-      default: false,
+      default: false
     },
     showLabel: {
       type: Boolean,
-      default: false,
+      default: false
     },
     current: {
       type: Number,
-      default: 0,
+      default: 0
     },
     stage: {
       type: Number,
-      default: 0,
+      default: 0
     },
     ani: Boolean,
     mainColor: String,
-    subColor: String,
+    subColor: String
   },
   data() {
     return {
       box: null,
       posi: 0,
-      scheduledAnimationFrame: false,
+      scheduledAnimationFrame: false
     };
   },
   watch: {
     initLeft(val) {
       this.posi = this.initLeft;
-    },
+    }
   },
   computed: {
     total() {
       return this.range[1] - this.range[0];
-    },
+    }
   },
   methods: {
     onTouchStart(event) {
@@ -164,10 +164,10 @@ export default {
       const posi = event.pageX - this.boxLeft - pageScrollLeft;
       this.posi = posi;
       this.$emit('getPos', posi);
-    },
+    }
   },
   mounted() {
     this.box = this.$el.parentNode;
-  },
+  }
 };
 </script>

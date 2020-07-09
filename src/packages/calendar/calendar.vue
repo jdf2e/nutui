@@ -44,41 +44,41 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'one',
+      default: 'one'
     },
     animation: {
       type: String,
-      default: 'nutSlideUp',
+      default: 'nutSlideUp'
     },
     isAutoBackFill: {
       type: Boolean,
-      default: false,
+      default: false
     },
     isOpenRangeSelect: {
       type: Boolean,
-      default: false,
+      default: false
     },
     isVisible: {
       type: Boolean,
-      default: false,
+      default: false
     },
     title: {
-      type: String,
+      type: String
     },
     defaultValue: {
       type: String | Array,
-      default: null,
+      default: null
     },
     startDate: {
       type: String,
       //default: null
-      default: Utils.getDay(0),
+      default: Utils.getDay(0)
     },
     endDate: {
       type: String,
       //default: null
-      default: Utils.getDay(365),
-    },
+      default: Utils.getDay(365)
+    }
   },
   watch: {
     isVisible(newValue, oldValue) {
@@ -90,8 +90,8 @@ export default {
           this.resetRender();
         }
       },
-      immediate: true,
-    },
+      immediate: true
+    }
   },
   data() {
     const week = this.nutTranslate('lang.calendar.week');
@@ -105,20 +105,20 @@ export default {
         startY: 0,
         endY: 0,
         startTime: 0,
-        endTime: 0,
+        endTime: 0
       },
       transformY: 0,
       scrollDistance: 0,
       defaultData: null,
       chooseData: [],
       monthsData: [],
-      dayPrefix: 'nut-calendar-month-day',
+      dayPrefix: 'nut-calendar-month-day'
     };
   },
   computed: {
-    isRange: function () {
+    isRange: function() {
       return this.type === 'range';
-    },
+    }
   },
   methods: {
     isActive(day, month) {
@@ -162,7 +162,7 @@ export default {
       return Array.from(Array(days), (v, k) => {
         return {
           day: k + 1,
-          type: type,
+          type: type
         };
       });
     },
@@ -175,7 +175,7 @@ export default {
       let monthInfo = {
         curData: curData,
         title: title,
-        monthData: [...this.getDaysStatus(preMonthDays, 'prev'), ...this.getDaysStatus(currMonthDays, 'curr')],
+        monthData: [...this.getDaysStatus(preMonthDays, 'prev'), ...this.getDaysStatus(currMonthDays, 'curr')]
       };
       if (type == 'next') {
         if (
@@ -431,11 +431,11 @@ export default {
       } else {
         this.chooseDay({ day: this.defaultData[2], type: 'curr' }, this.monthsData[0], true);
       }
-    },
+    }
   },
 
   mounted() {
     this.initData();
-  },
+  }
 };
 </script>

@@ -10,7 +10,7 @@
         height: size + 'px',
         width: size + 'px',
         marginRight: spacing + 'px',
-        backgroundImage: n <= current ? checkedIcon : uncheckedIcon,
+        backgroundImage: n <= current ? checkedIcon : uncheckedIcon
       }"
     >
     </span>
@@ -23,36 +23,36 @@ export default {
   props: {
     total: {
       type: [String, Number],
-      default: 5,
+      default: 5
     },
     value: {
       type: [String, Number],
-      default: 3,
+      default: 3
     },
     size: {
       type: [String, Number],
-      default: 25,
+      default: 25
     },
     uncheckedIcon: {
       type: String,
-      default: null,
+      default: null
     },
     checkedIcon: {
       type: String,
-      default: null,
+      default: null
     },
     readOnly: {
       type: Boolean,
-      default: false,
+      default: false
     },
     spacing: {
       type: [String, Number],
-      default: 20,
-    },
+      default: 20
+    }
   },
   data() {
     return {
-      current: 3,
+      current: 3
     };
   },
   created() {
@@ -68,7 +68,12 @@ export default {
         this.$emit('input', idx);
         this.$emit('click', idx);
       }
-    },
+    }
   },
+  watch: {
+    value(newVal, oldVal) {
+      this.current = newVal;
+    }
+  }
 };
 </script>

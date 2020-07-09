@@ -45,10 +45,11 @@
 | background | 导航栏的背景颜色                                           | String        | 空     |
 | delay      | 延时多少秒                                                 | String/Number | 1      |
 | scrollable | 是否可以滚动                                               | Boolean       | true   |
-| speed      | 移动375px需要用的时间                                      | Number        | 6      |
+| speed      | 滚动速率 (px/s)                                            | Number        | 50     |
 
 ## Event
 
-| 字段  | 说明             | 回调参数 |
-| ----- | ---------------- | -------- |
-| click | 外层点击事件回调 | 无       |
+| 字段  | 说明             | 回调参数     |
+| ----- | ---------------- | ------------ |
+| click | 外层点击事件回调 | event: Event |
+| close | 关闭通知栏时触发 | event: Event |

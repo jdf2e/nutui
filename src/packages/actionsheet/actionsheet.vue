@@ -33,44 +33,44 @@ export default {
   props: {
     isAnimation: {
       type: Boolean,
-      default: true,
+      default: true
     },
     isLockBgScroll: {
       type: Boolean,
-      default: false,
+      default: false
     },
     isVisible: {
       type: Boolean,
-      default: false,
+      default: false
     },
     isShowMask: {
       type: Boolean,
-      default: true,
+      default: true
     },
     isClickChooseClose: {
       type: Boolean,
-      default: true,
+      default: true
     },
     isClickCloseMask: {
       type: Boolean,
-      default: true,
+      default: true
     },
     cancelTxt: {
       type: String,
-      default: '',
+      default: ''
     },
     optionTag: {
       type: String,
-      default: 'name',
+      default: 'name'
     },
     chooseTagValue: {
       type: String,
-      default: '',
+      default: ''
     },
     menuItems: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
   data() {
     return {};
@@ -82,12 +82,21 @@ export default {
         if (value) {
           document.body.classList.add('nut-overflow-hidden');
         } else {
-          document.body.classList.remove('nut-overflow-hidden');
+          this.remolveLockScrool();
         }
       }
-    },
+    }
+  },
+  deactivated() {
+    this.remolveLockScroll();
+  },
+  destroyed() {
+    this.remolveLockScroll();
   },
   methods: {
+    remolveLockScroll() {
+      document.body.classList.remove('nut-overflow-hidden');
+    },
     isHighlight(item) {
       return (this.chooseTagValue && this.chooseTagValue == item[this.optionTag]) || this.chooseTagValue === 0;
     },
@@ -112,7 +121,7 @@ export default {
         }
         this.$emit('choose', item, index);
       }
-    },
-  },
+    }
+  }
 };
 </script>

@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       customNumber: 618,
-      bgImage: 'https://img10.360buyimg.com/imagetools/jfs/t1/133024/3/2251/2646/5ee7549aE8dc02d7e/de6901b6c72db396.png',
+      bgImage: 'https://img10.360buyimg.com/imagetools/jfs/t1/133024/3/2251/2646/5ee7549aE8dc02d7e/de6901b6c72db396.png'
     };
   },
   methods: {
@@ -35,11 +35,11 @@ export default {
       timer = setInterval(() => {
         this.customNumber = Math.floor(Math.random() * (700 - 100 + 1) + 100);
       }, 5000);
-    },
+    }
   },
   mounted() {
     this.run();
-  },
+  }
 };
 </script>
 

@@ -33,63 +33,63 @@ export default {
   props: {
     hasIcon: {
       type: Boolean,
-      default: false,
+      default: false
     },
     searchIconSize: {
       type: String,
-      default: '20px',
+      default: '20px'
     },
     searchIconColor: {
       type: String,
-      default: '#2e2d2d',
+      default: '#2e2d2d'
     },
     searchBtnIconSize: {
       type: String,
-      default: '20px',
+      default: '20px'
     },
     searchBtnIconColor: {
       type: String,
-      default: '#2e2d2d',
+      default: '#2e2d2d'
     },
     clearIconSize: {
       type: String,
-      default: '15px',
+      default: '15px'
     },
     clearIconColor: {
       type: String,
-      default: '#2e2d2d',
+      default: '#2e2d2d'
     },
     placeText: {
-      type: String,
+      type: String
     },
     hasSearchButton: {
       type: Boolean,
-      default: true,
+      default: true
     },
     hasTextButton: {
       type: Boolean,
-      default: false,
+      default: false
     },
     textInfo: {
-      type: String,
+      type: String
     },
     animation: {
       type: Boolean,
-      default: true,
+      default: true
     },
     customClass: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
   components: {
-    [nuticon.name]: nuticon,
+    [nuticon.name]: nuticon
   },
   data() {
     return {
       value: '', //输入值
       hasCloseIcon: false,
-      inputFocusAnimation: false,
+      inputFocusAnimation: false
     };
   },
   computed: {},
@@ -120,10 +120,10 @@ export default {
     },
     //js控制获取焦点
     focus() {
-      this.$nextTick(function () {
+      this.$nextTick(function() {
         this.$refs.searchInput.focus();
       });
-    },
-  },
+    }
+  }
 };
 </script>

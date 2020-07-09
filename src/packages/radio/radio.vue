@@ -22,25 +22,25 @@ export default {
   props: {
     value: {
       type: [String, Number, Boolean],
-      default: false,
+      default: false
     },
     label: [String, Number, Boolean],
     size: {
       type: String,
-      default: 'base',
+      default: 'base'
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     animated: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   data() {
     return {
-      parent: null,
+      parent: null
     };
   },
   computed: {
@@ -51,7 +51,7 @@ export default {
 
       set(val) {
         (this.parent || this).$emit('input', val);
-      },
+      }
     },
     currentSize() {
       return this.parent ? this.parent.size || this.size : this.size;
@@ -61,7 +61,7 @@ export default {
     },
     isAnimated() {
       return this.parent ? this.parent.animated && this.animated : this.animated;
-    },
+    }
   },
   created() {
     this.findCptUpward('nut-radiogroup');
@@ -72,7 +72,7 @@ export default {
         return false;
       }
       this.currentValue = this.label;
-    },
-  },
+    }
+  }
 };
 </script>
