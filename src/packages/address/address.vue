@@ -19,7 +19,7 @@
         <span v-if="type == 'custom'">{{ customAddressTitle }}</span>
         <span v-if="type == 'exist'">{{ existAddressTitle }}</span>
 
-        <span @click="handClose('hand')"><nut-icon v-if="closeBtnIcon" size="18px" type="self" :url="closeBtnIcon"></nut-icon></span>
+        <span @click="handClose('cross')"><nut-icon v-if="closeBtnIcon" size="18px" type="self" :url="closeBtnIcon"></nut-icon></span>
       </div>
 
       <!-- 请选择 -->
@@ -282,7 +282,7 @@ export default {
 
       this.handClose();
     },
-
+  
     // 关闭
     close() {
       const that = this;
@@ -308,29 +308,26 @@ export default {
       if (this.closeWay == 'self') {
         this.$emit('close', res);
       } else {
-        // this.$emit('close',{type:'hand'})
+        
+        this.$emit('closeMask',{'closeWay':this.closeWay});
       }
 
       setTimeout(() => {
         that.showModule = 'type';
       }, 500);
     },
-    // 手动关闭 点击叉号，或者蒙层
+    // 手动关闭 点击叉号(cross)，或者蒙层(mask)
     handClose(type = 'self') {
 
       if(!this.closeBtnIcon) return
 
-      if (type == 'hand') {
-        this.closeWay = 'hand';
-      } else {
-        this.closeWay = 'self';
-      }
-
+      this.closeWay = type == 'cross'?'cross':'self'
+     
       this.showPopup = false;
     },
     // 点击遮罩层关闭
     clickOverlay() {
-      this.closeWay = 'hand';
+      this.closeWay = 'mask';
     },
     // 初始化
     initAddress() {

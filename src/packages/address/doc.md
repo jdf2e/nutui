@@ -207,7 +207,8 @@ export default {
     @onChange="onChange4" 
     @close="close4" 
     @selected="selected4"
-    @switchModule="switchModule">
+    @switchModule="switchModule"
+    @closeMask="closeMask">
 </nut-address>
 
 
@@ -253,12 +254,14 @@ export default {
       console.log(nowExistAdd)
     },
     switchModule(cal){
-        
         if(cal.type == 'custom'){
           console.log('点击了“选择其他地址”按钮')
         } else {
           console.log('点击了自定义地址左上角的返回按钮')
         }
+    },
+    closeMask(val){
+      console.log('关闭弹层',val)
     }
   }
 }
@@ -299,6 +302,7 @@ export default {
 | onChange | 自定义选择地址时，选择地区时触发 |  参考 onChange
 | selected | 选择已有地址列表时触发 | 参考 selected
 | close | 地址选择弹框关闭时触发 | 参考 close
+| closeMask | 点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'}
 | switchModule | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'}
 
 
@@ -322,4 +326,3 @@ export default {
 | type | 地址选择类型 exist/custom  |  exist/custom
 | data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | {} 
 
-注：点击叉号或者点击遮罩层关闭地址选择，不会触发 close 事件。

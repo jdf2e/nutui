@@ -72,6 +72,7 @@
       @selected="selected4"
       customAndExistTitle="选择其他地址"
       @switchModule="switchModule"
+      @closeMask="closeMask"
     ></nut-address>
   </div>
 </template>
@@ -231,6 +232,10 @@ export default {
       } else {
         console.log('点击了自定义地址左上角的返回按钮');
       }
+    },
+
+    closeMask(val){
+      console.log('关闭弹层',val)
     }
   }
 };
