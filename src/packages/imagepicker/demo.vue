@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list-pd">
     <h4>基本用法</h4>
     <nut-imagepicker @imgMsg="imgMsg" :imgList.sync="imgList1"></nut-imagepicker>
     <h4>指定宽度和高度都是120px,图片间距是10px</h4>

@@ -56,6 +56,7 @@ export default {
   computed: {
     currentValue: {
       get() {
+        this.txtNum = this.value.length;
         return this.value;
       },
       set(val) {}

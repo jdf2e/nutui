@@ -1,5 +1,5 @@
 <template>
-  <div class="lazyloadDemo">
+  <div class="lazyloadDemo demo-list">
     <h4>基础使用</h4>
     <img v-lazy="imageArray[0]" />
     <h4>背景图懒加载</h4>

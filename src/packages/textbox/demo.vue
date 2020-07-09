@@ -1,5 +1,5 @@
 <template>
-  <div class="textbox-demo">
+  <div class="demo-list">
     <!-- <h4>示例</h4> -->
     <h4>默认用法 支持异步回显数据</h4>
     <nut-textbox v-model="val"></nut-textbox>

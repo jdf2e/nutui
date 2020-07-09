@@ -1,16 +1,16 @@
 <template>
-  <div id="vueSwiper">
+  <div id="vueSwiper" class="demo-list">
     <h4>横向无缝切换</h4>
     <nut-swiper :paginationVisibile="true" direction="horizontal" :swiperData="dataImgItem">
-      <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide">
-        <img :src="item.imgSrc" style="max-width: 100%;" />
+      <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide ">
+        <img :src="item.imgSrc" style="max-width:100%;" />
       </div>
     </nut-swiper>
 
     <h4>横向切换</h4>
     <nut-swiper :paginationVisibile="true" direction="horizontal" :swiperData="dataImgItem" :canDragging="false" :paginationVisible="true">
-      <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide">
-        <img :src="item.imgSrc" style="max-width: 100%;" />
+      <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide ">
+        <img :src="item.imgSrc" style="max-width:100%;" />
       </div>
     </nut-swiper>
 
@@ -23,15 +23,15 @@
       :canDragging="false"
       :paginationVisible="true"
     >
-      <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide">
-        <img :src="item.imgSrc" style="max-width: 100%;" />
+      <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide ">
+        <img :src="item.imgSrc" style="max-width:100%;" />
       </div>
     </nut-swiper>
 
     <h4>纵向自动播放</h4>
     <nut-swiper direction="vertical" :autoPlay="3000" :swiperData="dataImgItem">
-      <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide">
-        <img :src="item.imgSrc" style="max-width: 100%;" />
+      <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide ">
+        <img :src="item.imgSrc" style="max-width:100%;" />
       </div>
     </nut-swiper>
 
@@ -46,8 +46,8 @@
       @slideMove="slideMove"
       @slideChangeStart="slideChangeStart"
     >
-      <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide">
-        <img :data-src="item.imgSrc" style="max-width: 100%;" class="nut-img-lazyload" />
+      <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide ">
+        <img :data-src="item.imgSrc" style="max-width:100%;" class="nut-img-lazyload" />
       </div>
     </nut-swiper>
   </div>

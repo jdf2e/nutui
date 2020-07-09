@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list-pd">
     <!-- DEMO区域 -->
     <h4>默认用法</h4>
     <nut-tab @tab-switch="tabSwitch">

@@ -1,5 +1,5 @@
 <template>
-  <div class="address-box">
+  <div class="address-box demo-list">
     <h4>选择自定义地址</h4>
     <div class="address-list init" @click="showAddress">
       <div class="titile">选择地址</div>
@@ -55,6 +55,7 @@
       @selected="selected3"
       :defaultIcon="defaultIcon"
       :selectedIcon="selectedIcon"
+      :closeBtnIcon="closeBtnIcon"
     ></nut-address>
 
     <nut-address
@@ -65,11 +66,13 @@
       :city="city"
       :country="country"
       :town="town"
+      :backBtnIcon="backBtnIcon"
       @onChange="onChange4"
       @close="close4"
       @selected="selected4"
       customAndExistTitle="选择其他地址"
       @switchModule="switchModule"
+      @closeMask="closeMask"
     ></nut-address>
   </div>
 </template>
@@ -103,6 +106,9 @@ export default {
       showPopupCustomImg: false,
       selectedIcon: require('../../assets/svg/checked.svg'),
       defaultIcon: require('../../assets/svg/unchecked.svg'),
+
+      closeBtnIcon: require('../../assets/svg/close.svg'),
+      backBtnIcon: require('../../assets/svg/back.svg'),
 
       showPopupOther: false,
       existAddress: [
@@ -226,6 +232,10 @@ export default {
       } else {
         console.log('点击了自定义地址左上角的返回按钮');
       }
+    },
+
+    closeMask(val) {
+      console.log('关闭弹层', val);
     }
   }
 };

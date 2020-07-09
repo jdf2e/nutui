@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>常规按钮组</h4>
     <nut-buttongroup>
       <nut-button type="light">重置</nut-button>

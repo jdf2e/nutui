@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list-pd">
     <h4>常规按钮</h4>
     <div class="bg">
       <nut-button @click="clickHandler" :disabled="disabled">去结算</nut-button>
@@ -90,12 +90,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bg {
-  margin: 0 10px;
-}
-.gap {
-  height: 10px;
-}
 .white-bg {
   padding: 10px;
   background: #fff;

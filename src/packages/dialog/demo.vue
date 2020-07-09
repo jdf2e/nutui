@@ -103,7 +103,8 @@ export default {
     showDialog1: function() {
       const options = {
         title: '确定删除此订单？',
-        content: '删除后将从你的记录里消失，无法找回'
+        content: '删除后将从你的记录里消失，无法找回',
+        closeOnPopstate: true
       };
 
       this.$dialog(options);

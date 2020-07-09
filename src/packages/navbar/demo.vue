@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>默认用法</h4>
     <nut-navbar @on-click-back="back" @on-click-title="title" :leftShow="false" :rightShow="false" @on-click-more="more"></nut-navbar>
     <h4>增加左侧按钮</h4>
@@ -27,7 +27,7 @@
       @on-click-back="back"
       @on-click-title="title"
       @on-click-more="more"
-      style="background-color: #000; color: #fff; height: 60px; line-height: 60px;"
+      style="background-color:#000; color: #fff; height:60px; line-height: 60px;"
       >NavBar5</nut-navbar
     >
   </div>
