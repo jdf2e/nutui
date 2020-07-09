@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-elevator" :style="{ height: wrapHeight + 'px' }" v-if="dataArray.length>0">
+  <div class="nut-elevator" :style="{ height: wrapHeight + 'px' }" v-if="dataArray.length > 0">
     <div class="nut-main" :style="{ height: wrapHeight + 'px' }">
       <ul class="nut-elevator-ul" id="nut-elevator-ul">
         <li v-for="item in dataArray" v-bind:key="item.title" class="nut-list-title">
@@ -82,19 +82,19 @@ export default {
       currBox: false
     };
   },
-  watch:{
-    dataArray(val){
-      if(val.length>0){
-        this.$nextTick(()=>{
-            this.initPage();
-        })
+  watch: {
+    dataArray(val) {
+      if (val.length > 0) {
+        this.$nextTick(() => {
+          this.initPage();
+        });
       }
     }
   },
   mounted() {
-    if(this.dataArray.length>0 ){
+    if (this.dataArray.length > 0) {
       this.initPage();
-    }   
+    }
   },
   methods: {
     initPage() {

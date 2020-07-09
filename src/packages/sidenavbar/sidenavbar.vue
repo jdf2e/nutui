@@ -17,10 +17,10 @@ export default {
     }
   },
   mounted() {
-    this.handleSlots()
+    this.handleSlots();
     this.observer = new MutationObserver(
       function(mutations) {
-        this.count = 1
+        this.count = 1;
         this.handleSlots();
       }.bind(this)
     );
@@ -58,7 +58,7 @@ export default {
           this.setPaddingLeft(Array.from(item.children[1].children), ++this.count);
         }
       }
-      this.count--
+      this.count--;
     }
   }
 };

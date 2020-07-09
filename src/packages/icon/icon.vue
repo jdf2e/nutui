@@ -1,9 +1,5 @@
 <template>
-  <i
-    :class="['nut-icon', 'nut-icon-' + type]"
-    v-html="icon"
-    :style="{ height: size, width: size, color: color }"
-  ></i>
+  <i :class="['nut-icon', 'nut-icon-' + type]" v-html="icon" :style="{ height: size, width: size, color: color }"></i>
 </template>
 <script>
 const types = ['top', 'action', 'cross', 'down', 'right', 'more', 'notice', 'plus', 'search', 'trolley', 'tick', 'minus', 'circle-cross'];

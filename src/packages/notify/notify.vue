@@ -2,11 +2,10 @@
   <nut-popup
     v-model="curVisible"
     position="top"
-    :style="{'color':color,
-    'background': background}"
+    :style="{ color: color, background: background }"
     :overlay="false"
     :lockScroll="false"
-    :class="['nut-notify',`nut-notify--${type}`,{className}]"
+    :class="['nut-notify', `nut-notify--${type}`, { className }]"
     @click="handleClick"
     @opened="handleOpened"
     @closed="handleClosed"
@@ -14,7 +13,7 @@
     <template v-if="$slots.default">
       <slot></slot>
     </template>
-    <template v-else>{{msg}}</template>
+    <template v-else>{{ msg }}</template>
   </nut-popup>
 </template>
 <script>

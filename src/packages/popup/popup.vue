@@ -216,5 +216,5 @@ export default {
     }
   }
 };
-export  {popupProps}
+export { popupProps };
 </script>

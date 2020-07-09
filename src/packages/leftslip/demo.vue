@@ -59,9 +59,9 @@
       </nut-leftslip>
     </div>
     <div class="demo-list-pd">
-      <button class="btn" @click="disabledHandle">{{isDisable ? '开启滑动' : '禁止滑动'}}</button>
-      </div>
-      <div>
+      <button class="btn" @click="disabledHandle">{{ isDisable ? '开启滑动' : '禁止滑动' }}</button>
+    </div>
+    <div>
       <nut-leftslip :disabled="isDisable">
         <div slot="slip-main" class="slip-main">左滑触发删除</div>
         <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a></div>
@@ -101,8 +101,8 @@ export default {
     oneDel(par) {
       par.remove();
     },
-    disabledHandle(){
-      this.isDisable = !this.isDisable 
+    disabledHandle() {
+      this.isDisable = !this.isDisable;
     }
   },
   mounted() {
@@ -177,7 +177,7 @@ export default {
     }
   }
 }
-.btn{
+.btn {
   margin: 10px 0;
   background: #fff;
   border: 1px solid #ff5722;

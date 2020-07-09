@@ -2,7 +2,7 @@
   <div
     v-show="showNoticeBar"
     class="nut-noticebar"
-    :class="{ withicon: closeMode, close: closeMode,wrapable:wrapable}"
+    :class="{ withicon: closeMode, close: closeMode, wrapable: wrapable }"
     :style="barStyle"
     @click="handleClick"
   >
@@ -13,7 +13,7 @@
       <div
         ref="content"
         class="content"
-        :class="[animationClass, { 'nut-ellipsis': !scrollable&&!wrapable }]"
+        :class="[animationClass, { 'nut-ellipsis': !scrollable && !wrapable }]"
         :style="contentStyle"
         @animationend="onAnimationEnd"
         @webkitAnimationEnd="onAnimationEnd"

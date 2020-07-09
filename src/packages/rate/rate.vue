@@ -72,7 +72,7 @@ export default {
   },
   watch: {
     value(newVal, oldVal) {
-       this.current = newVal;
+      this.current = newVal;
     }
   }
 };

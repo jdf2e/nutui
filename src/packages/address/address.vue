@@ -10,9 +10,8 @@
       @open="closeWay = 'self'"
     >
       <div class="title">
-
         <span class="arrow" @click="switchModule" v-if="showModule == 'custom' && type == 'exist' && backBtnIcon">
-          <nut-icon  type="self" :url="backBtnIcon"></nut-icon>
+          <nut-icon type="self" :url="backBtnIcon"></nut-icon>
         </span>
         <span class="arrow" v-else></span>
 
@@ -139,12 +138,12 @@ export default {
       type: String,
       default: require('../../assets/svg/tick-red.svg')
     },
-    closeBtnIcon:{
+    closeBtnIcon: {
       // 关闭弹框按钮 icon
       type: String,
       default: require('../../assets/svg/circle-cross.svg')
     },
-    backBtnIcon:{
+    backBtnIcon: {
       // 选择其他地址左上角返回 icon
       type: String,
       default: require('../../assets/svg/arrows-back.svg')
@@ -282,7 +281,7 @@ export default {
 
       this.handClose();
     },
-  
+
     // 关闭
     close() {
       const that = this;
@@ -308,8 +307,7 @@ export default {
       if (this.closeWay == 'self') {
         this.$emit('close', res);
       } else {
-        
-        this.$emit('closeMask',{'closeWay':this.closeWay});
+        this.$emit('closeMask', { closeWay: this.closeWay });
       }
 
       setTimeout(() => {
@@ -318,11 +316,10 @@ export default {
     },
     // 手动关闭 点击叉号(cross)，或者蒙层(mask)
     handClose(type = 'self') {
+      if (!this.closeBtnIcon) return;
 
-      if(!this.closeBtnIcon) return
+      this.closeWay = type == 'cross' ? 'cross' : 'self';
 
-      this.closeWay = type == 'cross'?'cross':'self'
-     
       this.showPopup = false;
     },
     // 点击遮罩层关闭
@@ -339,11 +336,10 @@ export default {
     },
     // 选择其他地址
     switchModule() {
-      
-      if(this.showModule == 'exist'){
-        this.showModule = 'custom'
-      }else{
-        this.showModule = 'exist'
+      if (this.showModule == 'exist') {
+        this.showModule = 'custom';
+      } else {
+        this.showModule = 'exist';
       }
 
       this.initAddress();

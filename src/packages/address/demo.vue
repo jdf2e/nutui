@@ -234,8 +234,8 @@ export default {
       }
     },
 
-    closeMask(val){
-      console.log('关闭弹层',val)
+    closeMask(val) {
+      console.log('关闭弹层', val);
     }
   }
 };

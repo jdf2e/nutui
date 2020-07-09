@@ -3,7 +3,7 @@
     <a
       class="tabbar-nav"
       v-for="(value, index) in tabList"
-      :class="[{ 'curr': index == currIndex }, type]"
+      :class="[{ curr: index == currIndex }, type]"
       :key="value.tabTitle"
       v-on:click="switchTabs(value, index)"
     >
@@ -36,7 +36,7 @@ export default {
       type: String,
       default: 'based'
     },
-    replace:{
+    replace: {
       type: Boolean,
       default: false
     }
@@ -47,7 +47,7 @@ export default {
       tabList: this.tabbarList
     };
   },
-  mounted(){
+  mounted() {
     this.initBar();
   },
   watch: {
@@ -60,19 +60,20 @@ export default {
     }
   },
   methods: {
-    initBar(){
-      this.tabList.forEach((item,index)=>{
-        if(item.curr){
-            this.currIndex = index;
+    initBar() {
+      this.tabList.forEach((item, index) => {
+        if (item.curr) {
+          this.currIndex = index;
         }
-      })
+      });
     },
     switchTabs: function(value, index) {
       this.currIndex = index;
-      if(this.replace){ //替换url
+      if (this.replace) {
+        //替换url
         window.location.replace(value.href);
-      }else{
-        if(value.href){
+      } else {
+        if (value.href) {
           window.location.href = value.href;
         }
       }

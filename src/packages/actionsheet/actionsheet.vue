@@ -90,11 +90,11 @@ export default {
   deactivated() {
     this.remolveLockScroll();
   },
-  destroyed(){
+  destroyed() {
     this.remolveLockScroll();
   },
   methods: {
-    remolveLockScroll(){
+    remolveLockScroll() {
       document.body.classList.remove('nut-overflow-hidden');
     },
     isHighlight(item) {

@@ -41,8 +41,8 @@
       <div>{{ animNum[0] }}</div>
       <div>{{ animNum[1] }}</div>
     </div>
-    <span @click="add()" :class="{ 'nut-stepper-grey': (max && Number(num) > (max - step)) || !isLegal }" v-html="require('../../assets/svg/plus.svg')"> </span>
-    
+    <span @click="add()" :class="{ 'nut-stepper-grey': (max && Number(num) > max - step) || !isLegal }" v-html="require('../../assets/svg/plus.svg')">
+    </span>
   </div>
 </template>
 <script>
@@ -94,7 +94,7 @@ export default {
       animNum: [this.value, this.value],
       animTranslate_add: 0,
       animTranslate_: -100,
-      isLegal:true //是否合法 isLegal 
+      isLegal: true //是否合法 isLegal
     };
   },
   filters: {
@@ -117,20 +117,20 @@ export default {
     },
     min: {
       handler(v, ov) {
-        this.isLegal = true
+        this.isLegal = true;
         if (v < this.max) {
           this.minNum = v;
-        }else{
-          this.isLegal = false
+        } else {
+          this.isLegal = false;
         }
       },
       immediate: true
     },
     max: {
       handler(v, ov) {
-        this.isLegal = true
+        this.isLegal = true;
         if (v <= this.min) {
-          this.isLegal = false
+          this.isLegal = false;
         }
       },
       immediate: true

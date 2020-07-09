@@ -56,18 +56,18 @@
         <span slot="title"><nut-switch :active="true" class="my-switch"></nut-switch></span>
       </nut-cell>
     </div>
-        <h4>内嵌文字标签</h4>
+    <h4>内嵌文字标签</h4>
     <div>
-            <nut-cell desc="开|关">
+      <nut-cell desc="开|关">
         <span slot="title"><nut-switch :active="true" label="开|关"></nut-switch></span>
       </nut-cell>
       <nut-cell desc="ON|OFF">
         <span slot="title"><nut-switch :active="true" label="ON|OFF"></nut-switch></span>
       </nut-cell>
-           <nut-cell desc="通 过 | 拒 绝">
+      <nut-cell desc="通 过 | 拒 绝">
         <span slot="title"><nut-switch :active="false" label="通 过|拒 绝"></nut-switch></span>
       </nut-cell>
-       <nut-cell desc="large尺寸, 打开的状态|禁用的状态">
+      <nut-cell desc="large尺寸, 打开的状态|禁用的状态">
         <span slot="title"><nut-switch size="large" :active="false" label="打开的状态|禁用的状态"></nut-switch></span>
       </nut-cell>
     </div>
