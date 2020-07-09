@@ -4,6 +4,14 @@
 
 ## 基本用法
 
+> 按需引用组件
+``` javascript
+import {FixedNav, Drag, Popup } from '@nutui/nutui';
+FixedNav.install(Vue);
+Drag.install(Vue);
+Popup.install(Vue);
+```
+
 ```html
 <!-- 基本用法 -->
 <nut-drag direction="y" :style="{right:'0px',top:'50px'}">
