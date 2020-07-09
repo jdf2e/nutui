@@ -9,27 +9,27 @@ export default {
   props: {
     price: {
       type: [Number, String],
-      default: 0,
+      default: 0
     },
     needSymbol: {
       type: Boolean,
-      default: true,
+      default: true
     },
     decimalDigits: {
       type: [Number, String],
-      default: 2,
+      default: 2
     },
     thousands: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   computed: {
     priceShow() {
       let self = this;
       let symbol = self.needSymbol ? '<span class="price-symbol">￥</span>' : '';
       return symbol + self.formatToHump(self.price);
-    },
+    }
   },
   data() {
     return {};
@@ -83,7 +83,7 @@ export default {
       } else {
         return num;
       }
-    },
-  },
+    }
+  }
 };
 </script>

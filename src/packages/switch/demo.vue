@@ -76,8 +76,8 @@ export default {
       list: [
         { id: '1', name: 'a' },
         { id: '2', name: 'b' },
-        { id: '3', name: 'c' },
-      ],
+        { id: '3', name: 'c' }
+      ]
     };
   },
   methods: {
@@ -86,8 +86,8 @@ export default {
     },
     onChangeLabel(status, index) {
       alert('status:' + status + ',selected:' + index);
-    },
-  },
+    }
+  }
 };
 </script>
 

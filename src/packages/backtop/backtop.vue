@@ -11,37 +11,37 @@ export default {
   props: {
     distance: {
       type: Number,
-      default: 200,
+      default: 200
     },
     bottom: {
       type: Number,
-      default: 20,
+      default: 20
     },
     right: {
       type: Number,
-      default: 10,
+      default: 10
     },
     duration: {
       type: Number,
-      default: 1000,
+      default: 1000
     },
     isAnimation: {
       type: Boolean,
-      default: true,
+      default: true
     },
     elId: {
       type: String,
-      default: '',
+      default: ''
     },
     zIndex: {
       type: Number,
-      default: 1111,
-    },
+      default: 1111
+    }
   },
   data() {
     return {
       backTop: false,
-      scrollEl: window,
+      scrollEl: window
     };
   },
   mounted() {
@@ -69,9 +69,9 @@ export default {
       return {
         bottom: `${this.bottom}px`,
         right: `${this.right}px`,
-        'z-index': this.zIndex,
+        'z-index': this.zIndex
       };
-    },
+    }
   },
   methods: {
     addEventListener() {
@@ -87,7 +87,7 @@ export default {
         window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
         window.mozRequestAnimationFrame ||
-        function (callback) {
+        function(callback) {
           window.setTimeout(callback, 1000 / 60);
         }
       );
@@ -132,7 +132,7 @@ export default {
       } else {
         this.scrollEl.scrollTop = y;
       }
-    },
-  },
+    }
+  }
 };
 </script>

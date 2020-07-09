@@ -11,25 +11,25 @@ export default {
   props: {
     active: {
       type: Boolean,
-      default: false,
+      default: false
     },
     size: {
       type: String,
-      default: 'base',
+      default: 'base'
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     label: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
   data() {
     return {
       isActive: false,
-      arrLabel: (this.label || '').split('|'),
+      arrLabel: (this.label || '').split('|')
     };
   },
   created() {
@@ -38,7 +38,7 @@ export default {
   watch: {
     active(newVal) {
       this.isActive = newVal;
-    },
+    }
   },
   methods: {
     toggle() {
@@ -51,7 +51,7 @@ export default {
         this.$emit('change', this.isActive);
         this.$emit('update:active', this.isActive);
       }, 300);
-    },
-  },
+    }
+  }
 };
 </script>

@@ -60,10 +60,10 @@ export default {
       val1: [-52, 120],
       val2: [0, 120],
       val3: [0, 5],
-      val4: [20, 100],
+      val4: [20, 100]
     };
   },
-  methods: {},
+  methods: {}
 };
 </script>
 

@@ -146,10 +146,10 @@ export default {
       radioGroupVal1: 'b',
       radioGroupVal2: '2',
       radioGroupVal3: '2',
-      radioGroupVal4: 'c',
+      radioGroupVal4: 'c'
     };
   },
-  methods: {},
+  methods: {}
 };
 </script>
 

@@ -33,7 +33,7 @@ export default {
   mixins: [locale],
   components: {
     'nut-icon': Icon,
-    'nut-avatar': Avatar,
+    'nut-avatar': Avatar
   },
   data() {
     return {};
@@ -41,9 +41,9 @@ export default {
   methods: {
     clickEvnt() {
       console.log('click cell');
-    },
+    }
   },
-  mounted() {},
+  mounted() {}
 };
 </script>
 

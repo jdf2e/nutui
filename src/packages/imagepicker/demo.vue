@@ -23,15 +23,15 @@ export default {
       imgList1: [
         {
           id: 1,
-          src: '//img1.360buyimg.com/da/jfs/t1/4436/26/9691/78074/5bad0668E7ce89ec6/c234b749ae9e7332.jpg',
-        },
+          src: '//img1.360buyimg.com/da/jfs/t1/4436/26/9691/78074/5bad0668E7ce89ec6/c234b749ae9e7332.jpg'
+        }
       ],
       imgList2: [
         {
           id: 1,
-          src: '//img1.360buyimg.com/da/jfs/t1/4436/26/9691/78074/5bad0668E7ce89ec6/c234b749ae9e7332.jpg',
-        },
-      ],
+          src: '//img1.360buyimg.com/da/jfs/t1/4436/26/9691/78074/5bad0668E7ce89ec6/c234b749ae9e7332.jpg'
+        }
+      ]
     };
   },
   methods: {
@@ -41,8 +41,8 @@ export default {
       }
       //console.log(this.imgList2);
       //console.log(data); //code 1 自动上传  2 不上传只展示图片  3 删除图片  4 预览图片
-    },
-  },
+    }
+  }
 };
 </script>
 

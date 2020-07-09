@@ -9,20 +9,20 @@ export default {
   props: {
     shape: {
       type: String,
-      default: '',
+      default: ''
     },
     type: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
   data() {
     return {
-      cls: '',
+      cls: ''
     };
   },
   mounted() {
     this.cls = `nut-buttongroup ${this.shape} ${this.type}`;
-  },
+  }
 };
 </script>

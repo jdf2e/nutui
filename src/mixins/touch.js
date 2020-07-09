@@ -41,7 +41,7 @@ const TouchMixin = Vue.extend({
       this.deltaY = 0;
       this.offsetX = 0;
       this.offsetY = 0;
-    },
-  },
+    }
+  }
 });
 export default TouchMixin;

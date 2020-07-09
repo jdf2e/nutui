@@ -35,7 +35,7 @@ export default {
     return {
       val: '',
       val1: '',
-      val2: '自定义数据',
+      val2: '自定义数据'
     };
   },
   methods: {
@@ -44,14 +44,14 @@ export default {
     },
     inputText(val) {
       alert(val);
-    },
+    }
   },
   mounted() {
     var that = this;
     this.val = '初始测试数据';
-    setTimeout(function () {
+    setTimeout(function() {
       that.val = '异步测试数据123';
     }, 1000);
-  },
+  }
 };
 </script>

@@ -306,14 +306,14 @@
 export default {
   data() {
     return {
-      myValue: 6,
+      myValue: 6
     };
   },
   methods: {
     text() {
       this.myValue++;
-    },
-  },
+    }
+  }
 };
 </script>
 

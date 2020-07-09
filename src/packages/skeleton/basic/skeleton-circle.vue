@@ -7,7 +7,7 @@
       width: diameter,
       height: diameter,
       'border-radius': '50%',
-      margin: margin,
+      margin: margin
     }"
   >
   </div>
@@ -22,16 +22,16 @@ export default {
   props: {
     backColor: {
       type: String,
-      default: '#efefef',
+      default: '#efefef'
     },
     diameter: {
       type: String,
-      default: '50px',
+      default: '50px'
     },
     margin: {
       type: String,
-      default: '0 0 0 0',
-    },
-  },
+      default: '0 0 0 0'
+    }
+  }
 };
 </script>

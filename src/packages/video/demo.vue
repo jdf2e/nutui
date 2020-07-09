@@ -50,37 +50,37 @@ export default {
         {
           src:
             'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-          type: 'video/mp4',
-        },
+          type: 'video/mp4'
+        }
       ],
       sources1: [
         {
           src:
             'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-          type: 'video/mp4',
-        },
+          type: 'video/mp4'
+        }
       ],
       videoId: 'videoid',
       options: {
-        controls: true,
+        controls: true
       },
       options2: {
         autoplay: true,
         muted: true,
         volume: 0.6,
-        poster: '',
+        poster: ''
       },
       options3: {
         controls: true,
-        muted: true,
+        muted: true
       },
       options4: {
         controls: true,
-        poster: 'https://img10.360buyimg.com/ling/s640x356_jfs/t1/96045/31/13848/43886/5e5e35ffE68170c74/861a6394e38810f0.png',
+        poster: 'https://img10.360buyimg.com/ling/s640x356_jfs/t1/96045/31/13848/43886/5e5e35ffE68170c74/861a6394e38810f0.png'
       },
       options5: {
         playsinline: true,
-        controls: true,
+        controls: true
       },
       options6: {
         autoplay: true,
@@ -90,8 +90,8 @@ export default {
         disabled: true,
         playsinline: true,
         loop: true,
-        controls: false,
-      },
+        controls: false
+      }
     };
   },
   mounted() {},
@@ -100,8 +100,8 @@ export default {
       this.sources1 = [
         {
           src: 'http://vjs.zencdn.net/v/oceans.mp4',
-          type: 'video/mp4',
-        },
+          type: 'video/mp4'
+        }
       ];
     },
     play(elm) {
@@ -112,8 +112,8 @@ export default {
     },
     playend(e) {
       alert('播放结束');
-    },
-  },
+    }
+  }
 };
 </script>
 

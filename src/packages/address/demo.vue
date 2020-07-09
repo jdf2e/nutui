@@ -83,18 +83,18 @@ export default {
         { id: 1, name: '北京' },
         { id: 2, name: '广西' },
         { id: 3, name: '江西' },
-        { id: 4, name: '四川' },
+        { id: 4, name: '四川' }
       ], // 省
       city: [
         { id: 7, name: '朝阳区' },
         { id: 8, name: '崇文区' },
         { id: 9, name: '昌平区' },
-        { id: 6, name: '石景山区' },
+        { id: 6, name: '石景山区' }
       ], // 市
       country: [
         { id: 3, name: '八里庄街道' },
         { id: 9, name: '北苑' },
-        { id: 4, name: '常营乡' },
+        { id: 4, name: '常营乡' }
       ], // 县
       town: [], // 镇
 
@@ -115,7 +115,7 @@ export default {
           countyName: '广宁街道',
           provinceName: '钓鱼岛全区',
           selectedAddress: false,
-          townName: '',
+          townName: ''
         },
         {
           id: 4,
@@ -124,14 +124,14 @@ export default {
           countyName: '八里庄街道',
           provinceName: '北京',
           selectedAddress: false,
-          townName: '',
-        },
+          townName: ''
+        }
       ],
 
       text1: '请选择地址',
       text2: '请选择地址',
       text3: '请选择地址',
-      text4: '请选择地址',
+      text4: '请选择地址'
     };
   },
   methods: {
@@ -226,8 +226,8 @@ export default {
       } else {
         console.log('点击了自定义地址左上角的返回按钮');
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

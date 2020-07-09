@@ -23,8 +23,8 @@ export default {
   methods: {
     hello() {
       console.log('hello world');
-    },
-  },
+    }
+  }
 };
 </script>
 

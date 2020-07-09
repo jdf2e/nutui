@@ -17,13 +17,13 @@ export default {
   data() {
     return {
       imageUrl: 'https://img11.360buyimg.com/imagetools/jfs/t1/108423/20/14341/6907/5ea6b783E61a6cef3/55d0728276b2248d.png',
-      codeValue: 'http://nutui.jd.com',
+      codeValue: 'http://nutui.jd.com'
     };
   },
   methods: {
     test(dataUrl, id) {
       console.log(dataUrl, id, 'hello');
-    },
-  },
+    }
+  }
 };
 </script>

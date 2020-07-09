@@ -31,16 +31,16 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'NavBar',
+      default: 'NavBar'
     },
     leftShow: {
       type: Boolean,
-      default: true,
+      default: true
     },
     rightShow: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   data() {
     return {};
@@ -49,7 +49,7 @@ export default {
     onClickBack() {
       // this.$emit('on-click-back');
       this.$router ? this.$router.back() : window.history.back();
-    },
-  },
+    }
+  }
 };
 </script>

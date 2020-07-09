@@ -53,8 +53,8 @@ export default {
     },
     edit() {
       alert('header头部， 点击编辑');
-    },
-  },
+    }
+  }
 };
 </script>
 

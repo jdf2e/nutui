@@ -23,32 +23,32 @@ export default {
   name: 'nut-slider',
   props: {
     value: {
-      type: [String, Number],
+      type: [String, Number]
     },
     showLabel: {
       type: Boolean,
-      default: false,
+      default: false
     },
     showLabelAlways: {
       type: Boolean,
-      default: false,
+      default: false
     },
     showRangeTxt: {
       type: Boolean,
-      default: false,
+      default: false
     },
     range: {
       type: Array,
-      validator: function (value) {
+      validator: function(value) {
         return value.length === 2 && value[1] > value[0];
       },
       default() {
         return [0, 10];
-      },
+      }
     },
     stage: {
-      type: [String, Number],
-    },
+      type: [String, Number]
+    }
   },
   data() {
     return {
@@ -59,7 +59,7 @@ export default {
       posi: null,
       level: null,
       ani: false,
-      scheduledAnimationFrame: false,
+      scheduledAnimationFrame: false
     };
   },
   computed: {
@@ -68,7 +68,7 @@ export default {
     },
     cell() {
       return this.total / this.level;
-    },
+    }
   },
   methods: {
     onTouchStart(event) {
@@ -136,7 +136,7 @@ export default {
         this.level = this.stage;
       }
       this.posi = this.valToPosi();
-    },
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -144,6 +144,6 @@ export default {
       this.handle = this.box.querySelector('.nut-slider-Handle');
       this.propInit();
     });
-  },
+  }
 };
 </script>

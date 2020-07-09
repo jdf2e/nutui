@@ -25,27 +25,27 @@ export default {
   props: {
     attract: {
       type: Boolean,
-      default: false,
+      default: false
     },
     direction: {
       type: String,
-      default: 'all',
+      default: 'all'
     },
     zIndex: {
       type: [Number, String],
-      default: 11,
+      default: 11
     },
     boundary: {
       type: Object,
-      default: function () {
+      default: function() {
         return {
           top: 0,
           left: 0,
           right: 0,
-          bottom: 0,
+          bottom: 0
         };
-      },
-    },
+      }
+    }
   },
   data() {
     return {
@@ -55,7 +55,7 @@ export default {
       screenHeight: 0,
       startTop: 0,
       startLeft: 0,
-      position: { x: 0, y: 0 },
+      position: { x: 0, y: 0 }
     };
   },
   methods: {
@@ -176,7 +176,7 @@ export default {
       } else {
         target.style.left = rightLocation + 'px';
       }
-    },
+    }
   },
   mounted() {
     this.getElementInfo();
@@ -194,6 +194,6 @@ export default {
   destroyed() {
     this.$el.removeEventListener('touchmove', this.handleScroll, false);
     this.$el.removeEventListener('touchend', this.handleScroll, false);
-  },
+  }
 };
 </script>

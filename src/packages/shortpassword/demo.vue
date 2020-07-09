@@ -24,7 +24,7 @@ export default {
       isShow: false,
       isShow2: false,
       val1: '',
-      val2: '',
+      val2: ''
     };
   },
   methods: {
@@ -41,7 +41,7 @@ export default {
     },
     showShortpwd2() {
       this.isShow2 = true;
-    },
-  },
+    }
+  }
 };
 </script>

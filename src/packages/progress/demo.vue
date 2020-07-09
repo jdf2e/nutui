@@ -112,7 +112,7 @@ export default {
     return {
       val: 0,
       strokeWidth: 15,
-      size: 'small',
+      size: 'small'
     };
   },
   methods: {
@@ -127,8 +127,8 @@ export default {
         return false;
       }
       this.val -= 10;
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -86,7 +86,7 @@ export default {
       dateWeek: null,
       date1: ['2018-12-22', '2019-01-08'],
       date2: Utils.getDay(30),
-      date3: null,
+      date3: null
     };
   },
   methods: {
@@ -110,8 +110,8 @@ export default {
       this.date3 = [...[param[0][3], param[1][3]]];
     },
     setChooseValue4(param) {},
-    setChooseValue5(param) {},
-  },
+    setChooseValue5(param) {}
+  }
 };
 </script>
 

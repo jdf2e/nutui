@@ -57,7 +57,7 @@ export default {
       serverTime: Date.now() - 30 * 1000,
       end: Date.now() + 50 * 1000,
       asyncEnd: 0,
-      paused: false,
+      paused: false
     };
   },
   methods: {
@@ -72,13 +72,13 @@ export default {
     },
     onrestart(v) {
       console.log('restart: ', v);
-    },
+    }
   },
   mounted() {
     setTimeout(() => {
       this.asyncEnd = Date.now() + 30 * 1000;
     }, 3000);
-  },
+  }
 };
 </script>
 

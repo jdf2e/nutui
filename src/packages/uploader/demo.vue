@@ -164,7 +164,7 @@ export default {
   data() {
     return {
       selfData: {
-        test1: '自定义数据',
+        test1: '自定义数据'
       },
       url: 'https://my-json-server.typicode.com/linrufeng/demo/posts',
       demo1Name: '点击选择文件',
@@ -173,18 +173,18 @@ export default {
       stateNum: 201,
       block: 'block',
       headers: {
-        token: 'test',
+        token: 'test'
       },
       formData: {
         f1: 'test',
-        f2: 'test1',
+        f2: 'test1'
       },
       progressNum: 0,
       previewImg: [],
       previewImg2: null,
       progressNum2: null,
       upOver: false,
-      demo3Type: ['application/zip'],
+      demo3Type: ['application/zip']
     };
   },
   methods: {
@@ -192,7 +192,7 @@ export default {
       console.log(event, '可以处理input选择的内容');
       return {
         event: event,
-        data: '',
+        data: ''
       };
     },
     demo1UploadStart() {
@@ -234,8 +234,8 @@ export default {
     },
     showMsg(msg) {
       alert(msg);
-    },
-  },
+    }
+  }
 };
 </script>
 

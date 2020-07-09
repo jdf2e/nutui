@@ -155,186 +155,186 @@ export default {
         isVisible8: false,
         isVisible9: false,
         isVisible10: false,
-        isVisible11: false,
+        isVisible11: false
       },
       list1: [
         {
           id: 1,
           text: '综合',
-          selected: true,
+          selected: true
         },
         {
           id: 1,
           text: '最新上架',
-          selected: false,
+          selected: false
         },
         {
           id: 2,
           text: '价格最低',
-          selected: false,
+          selected: false
         },
         {
           id: 3,
           text: '价格最高',
-          selected: false,
+          selected: false
         },
         {
           id: 4,
           text: '评价最多',
-          selected: false,
-        },
+          selected: false
+        }
       ],
       list2: [
         {
           id: 1,
           text: '京东物流',
-          selected: true,
+          selected: true
         },
         {
           id: 2,
           text: '有货优先',
-          selected: false,
+          selected: false
         },
         {
           id: 3,
           text: '海囤全球',
-          selected: false,
+          selected: false
         },
         {
           id: 4,
           text: '货到付款',
-          selected: false,
+          selected: false
         },
         {
           id: 5,
           text: '促销商品',
-          selected: false,
+          selected: false
         },
         {
           id: 6,
           text: '配送全球',
-          selected: false,
-        },
+          selected: false
+        }
       ],
       list4: [
         {
           id: 1,
           text: '海尔（Haier）',
-          selected: true,
+          selected: true
         },
         {
           id: 2,
           text: '小天鹅（LittleSwan）',
-          selected: false,
+          selected: false
         },
         {
           id: 3,
           text: '美的（Midea）',
-          selected: false,
+          selected: false
         },
         {
           id: 4,
           text: '西门子（SIEMENS）',
-          selected: false,
+          selected: false
         },
         {
           id: 5,
           text: 'TCL',
-          selected: false,
+          selected: false
         },
         {
           id: 6,
           text: '松下（Panasonic）',
-          selected: false,
+          selected: false
         },
         {
           id: 7,
           text: '海信（Hisense）',
-          selected: false,
+          selected: false
         },
         {
           id: 8,
           text: '惠而浦（whirlpool）',
-          selected: false,
+          selected: false
         },
         {
           id: 9,
           text: '三洋（SANYO）',
-          selected: false,
+          selected: false
         },
         {
           id: 10,
           text: '博世（BOSCH）',
-          selected: false,
+          selected: false
         },
         {
           id: 11,
           text: '威力（WEILI）',
-          selected: false,
+          selected: false
         },
         {
           id: 12,
           text: 'LG',
-          selected: false,
+          selected: false
         },
         {
           id: 13,
           text: '小鸭（LittleDuck）',
-          selected: false,
+          selected: false
         },
         {
           id: 14,
           text: '统帅（Leader）',
-          selected: false,
+          selected: false
         },
         {
           id: 15,
           text: '三星（SAMSUNG）',
-          selected: false,
+          selected: false
         },
         {
           id: 16,
           text: '奥克斯（AUX）',
-          selected: false,
+          selected: false
         },
         {
           id: 17,
           text: '志高（CHIGO）',
-          selected: false,
+          selected: false
         },
         {
           id: 18,
           text: '创维（Skyworth）',
-          selected: false,
-        },
+          selected: false
+        }
       ],
       list3: [
         {
           id: 1,
           text: '1级',
-          selected: true,
+          selected: true
         },
         {
           id: 2,
           text: '2级',
-          selected: false,
+          selected: false
         },
         {
           id: 3,
           text: '3级',
-          selected: false,
+          selected: false
         },
         {
           id: 4,
           text: '4级',
-          selected: false,
+          selected: false
         },
         {
           id: 5,
           text: '5级',
-          selected: false,
-        },
-      ],
+          selected: false
+        }
+      ]
     };
   },
 
@@ -347,7 +347,7 @@ export default {
           this.visible[key] = false;
         }
       }
-      Array.from(document.querySelectorAll('.list')).forEach((item) => {
+      Array.from(document.querySelectorAll('.list')).forEach(item => {
         item.style.zIndex = 0;
       });
       if (!this.visible[`${param}`]) {
@@ -379,8 +379,8 @@ export default {
     },
     maxTip() {
       alert('超过了最大选择数');
-    },
-  },
+    }
+  }
 };
 </script>
 

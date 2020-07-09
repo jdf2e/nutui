@@ -28,14 +28,14 @@ function restTime(t) {
     d: '-',
     h: '--',
     m: '--',
-    s: '--',
+    s: '--'
   };
   if (ts === 0) {
     rest = {
       d: '0',
       h: '00',
       m: '00',
-      s: '00',
+      s: '00'
     };
   }
   if (ts) {
@@ -62,21 +62,21 @@ const countdownTimer = {
     return {
       restTime: 0,
       p: 0,
-      _curr: 0,
+      _curr: 0
     };
   },
   props: {
     paused: {
       default: false,
-      type: Boolean,
+      type: Boolean
     },
     showDays: {
       default: false,
-      type: Boolean,
+      type: Boolean
     },
     showPlainText: {
       default: false,
-      type: Boolean,
+      type: Boolean
     },
     startTime: {
       // 可以是服务器当前时间
@@ -84,15 +84,15 @@ const countdownTimer = {
       validator(v) {
         const dateStr = new Date(v).toString().toLowerCase();
         return dateStr !== 'invalid date';
-      },
+      }
     },
     endTime: {
       type: [Number, String],
       validator(v) {
         const dateStr = new Date(v).toString().toLowerCase();
         return dateStr !== 'invalid date';
-      },
-    },
+      }
+    }
   },
   computed: {
     resttime() {
@@ -108,7 +108,7 @@ const countdownTimer = {
       const { d, h, m, s } = this.resttime;
 
       return `${d > 0 && this.showDays ? d + '天' + h : h}小时${m}分${s}秒`;
-    },
+    }
   },
   watch: {
     paused(v, ov) {
@@ -125,7 +125,7 @@ const countdownTimer = {
     },
     startTime() {
       this.initTimer();
-    },
+    }
   },
   methods: {
     getTimeStamp(timeStr) {
@@ -155,14 +155,14 @@ const countdownTimer = {
           // 暂停
         }
       }, delay);
-    },
+    }
   },
   created() {
     this.initTimer();
   },
   destroyed() {
     this.timer && clearInterval(this.timer);
-  },
+  }
 };
 countdownTimer.restTime = restTime;
 

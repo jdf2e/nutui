@@ -12,7 +12,7 @@
             left: numWidth * (index > num_total_len - pointNum - 1 ? (index == num_total_len - pointNum ? index * 1.5 : index * 1.3) : index) + 'px',
             backgroundImage: 'url(' + customBgImg + ')',
             backgroundPosition: '0 ' + -(String(relNum)[index] * numHeight + customSpacNum * String(relNum)[index]) + 'px',
-            transition: 'all linear ' + during / 10 + 'ms',
+            transition: 'all linear ' + during / 10 + 'ms'
           }"
         ></li>
         <div
@@ -22,7 +22,7 @@
             width: numWidth / 2 + 'px',
             bottom: 0,
             left: numWidth * (num_total_len - pointNum) * 1.1 + 'px',
-            fontSize: '30px',
+            fontSize: '30px'
           }"
           >.</div
         >
@@ -36,7 +36,7 @@
           :key="val"
           :style="{
             top: topNumber(index),
-            left: numWidth * (index > num_total_len - pointNum - 1 ? index * 1.1 : index) + 'px',
+            left: numWidth * (index > num_total_len - pointNum - 1 ? index * 1.1 : index) + 'px'
           }"
           :turn-number="turnNumber(index)"
         >
@@ -56,7 +56,7 @@
             height: numHeight + 'px',
             lineHeight: numHeight + 'px',
             top: 0,
-            left: numWidth * (num_total_len - pointNum) + 'px',
+            left: numWidth * (num_total_len - pointNum) + 'px'
           }"
           >.</div
         >
@@ -73,54 +73,54 @@ export default {
   props: {
     initNum: {
       type: Number,
-      default: 0,
+      default: 0
     },
     endNum: {
       type: Number,
-      default: 0,
+      default: 0
     },
     speed: {
       type: Number,
-      default: 1,
+      default: 1
     },
     toFixed: {
       type: Number,
-      default: 0,
+      default: 0
     },
     during: {
       type: Number,
-      default: 1000,
+      default: 1000
     },
     startFlag: {
       type: Boolean,
-      default: true,
+      default: true
     },
     // 数字滚动
     numWidth: {
       type: Number,
-      default: 20,
+      default: 20
     },
     numHeight: {
       type: Number,
-      default: 20,
+      default: 20
     },
     scrolling: {
       type: Boolean,
-      default: false,
+      default: false
     },
     // 自定义图片
     customBgImg: {
       type: String,
-      default: '',
+      default: ''
     },
     customSpacNum: {
       type: Number,
-      default: 0,
+      default: 0
     },
     customChangeNum: {
       type: Number,
-      default: 1,
-    },
+      default: 1
+    }
   },
   data() {
     return {
@@ -136,15 +136,15 @@ export default {
       numberVal: 0, //数字
       num_total_len: 0, //数字长度
       relNum: 0, //去除小数点
-      customNumber: 1,
+      customNumber: 1
     };
   },
   computed: {},
   watch: {
-    customChangeNum: function (n, o) {
+    customChangeNum: function(n, o) {
       this.customNumber = n;
       this.countGo();
-    },
+    }
   },
   mounted() {
     if (this.startFlag) {
@@ -431,7 +431,7 @@ export default {
       //     that.clearInterval();
       // }
       // }, that.during);
-    },
-  },
+    }
+  }
 };
 </script>

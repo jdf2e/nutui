@@ -36,8 +36,8 @@ export default {
     },
     click() {
       this.$toast.text('点击了拖拽元素');
-    },
-  },
+    }
+  }
 };
 </script>
 
