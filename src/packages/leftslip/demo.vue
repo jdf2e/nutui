@@ -10,7 +10,7 @@
       </nut-leftslip>
     </div>
     <h4>多个按钮</h4>
-    <p class="tips-p">如果超出一行宽度，默认右侧按钮区域占一行的80%</p>
+    <p>如果超出一行宽度，默认右侧按钮区域占一行的80%</p>
     <div>
       <nut-leftslip :rightWidth="0.8">
         <div slot="slip-main" class="slip-main">左滑触发删除<span class="main-right">这里是内容</span></div>
@@ -105,9 +105,6 @@ export default {
 <style lang="scss" scoped>
 .demo{
   padding-bottom: 30px;
-}
-.tips-p{
-  margin: 5px 20px;
 }
 .slipbtns {
 	a {
