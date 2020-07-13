@@ -33,21 +33,21 @@ const overlayProps = {
   },
   overlayClass: {
     type: String,
-    default: "",
+    default: '',
   },
   overlayStyle: {
     type: Object,
-    default: ()=>{},
+    default: () => {},
   },
   zIndex: {
-    type: Number
+    type: Number,
   },
 };
 export { overlayProps };
 export default {
-  name: "nut-popup-overlay",
+  name: 'nut-popup-overlay',
   props: overlayProps,
-   
+
   methods: {
     touchmove(e) {
       if (this.lockScroll) {
