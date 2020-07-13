@@ -96,7 +96,7 @@
 export default {
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   methods: {
@@ -107,8 +107,8 @@ export default {
       setTimeout(() => {
         this.disabled = false;
       }, 2000);
-    }
-  }
+    },
+  },
 };
 </script>
 

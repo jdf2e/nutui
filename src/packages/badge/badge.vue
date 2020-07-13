@@ -15,40 +15,40 @@ export default {
   name: 'nut-badge',
   props: {
     value: {
-      type: [String, Number]
+      type: [String, Number],
     },
     max: {
       type: Number,
-      default: 10000
+      default: 10000,
     },
     isDot: {
       type: Boolean,
-      default: false
+      default: false,
     },
     hidden: {
       type: Boolean,
-      default: false
+      default: false,
     },
     top: {
       type: String,
-      default: '2px'
+      default: '2px',
     },
     right: {
       type: String,
-      default: '-5px'
+      default: '-5px',
     },
     zIndex: {
       type: Number,
-      default: 10
-    }
+      default: 10,
+    },
   },
   data() {
     return {
       stl: {
         top: this.top,
         right: this.right,
-        zIndex: this.zIndex
-      }
+        zIndex: this.zIndex,
+      },
     };
   },
   computed: {
@@ -73,7 +73,7 @@ export default {
         return max < value;
       }
       return false;
-    }
-  }
+    },
+  },
 };
 </script>

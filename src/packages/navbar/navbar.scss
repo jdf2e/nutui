@@ -14,16 +14,23 @@
 		.back {
 			float: left;
 			margin-right: 8px;
+			height: 100%;
+			display: flex;
+			align-items: center;
 		}
-		.back-icon,.close-icon {
-			display: inline-block;
-			width: 22px;
-			height: 22px;
-			background-size: contain;
-			vertical-align: middle;
-		}
+		// .back-icon,.close-icon {
+		// 	display: flex;
+		// 	width: 22px;
+		// 	height: 100%;
+		// 	background-size: contain;
+		// 	align-items: center;
+		// }
 		.close{
-			display: inline-block;
+			display: flex;
+			width: 22px;
+			height: 100%;
+			background-size: contain;
+			align-items: center;
 		}
 	}
 
@@ -48,9 +55,13 @@
 		height: 40px;
 		line-height: 40px;
 		margin-top: -20px;
-		font-size: 14px;
+		font-size: 16px;
 		display: flex;
 		align-items: center;
+		.search{
+			display: flex;
+			align-items: center;
+		}
 		.search-icon{
 			display: flex;
 			align-items: center;

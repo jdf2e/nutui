@@ -2,12 +2,7 @@
   <div class="demo-list">
     <h4>基础样式</h4>
     <div>
-      <nut-cell 
-        :showIcon="true" 
-        title="选择日期"
-        :desc="date ? `${date} ${dateWeek}` : '请选择'"
-        @click.native="openSwitch('isVisible')">
-      </nut-cell>
+      <nut-cell :showIcon="true" title="选择日期" :desc="date ? `${date} ${dateWeek}` : '请选择'" @click.native="openSwitch('isVisible')"> </nut-cell>
       <nut-calendar
         :is-visible="isVisible"
         :default-value="date"
@@ -20,13 +15,6 @@
     </div>
 
     <div>
-      <nut-cell 
-        :showIcon="true"  
-        title="选择时间段"
-        :desc="date1 ? `${date1[0]}至${date1[1]}` : '请选择'"
-        @click.native="openSwitch('isVisible1')">
-      </nut-cell>
-
       <nut-calendar
         :is-visible="isVisible1"
         :default-value="date1"
@@ -37,6 +25,9 @@
         @choose="setChooseValue1"
       >
       </nut-calendar>
+
+      <nut-cell :showIcon="true" title="选择时间段" :desc="date1 ? `${date1[0]}至${date1[1]}` : '请选择'" @click.native="openSwitch('isVisible1')">
+      </nut-cell>
     </div>
     <!-- <div>
       <nut-cell 
@@ -61,14 +52,8 @@
     </div> -->
 
     <h4>平铺样式</h4>
-    <div >
-      <nut-calendar
-        :poppable="false"
-        :is-visible="isVisible2"
-        :default-value="date2"
-        :is-auto-back-fill="true"
-        @choose="setChooseValue2"
-      >
+    <div>
+      <nut-calendar :poppable="false" :is-visible="isVisible2" :default-value="date2" :is-auto-back-fill="true" @choose="setChooseValue2">
       </nut-calendar>
     </div>
   </div>
@@ -90,7 +75,7 @@ export default {
       date1: ['2019-12-23', '2019-12-26'],
 
       isVisible3: false,
-      date3:null
+      date3: null,
     };
   },
   methods: {
@@ -121,9 +106,9 @@ export default {
     },
 
     chooseShortcutMode() {
-      this.date3 =[...[Utils.getDay(0), Utils.getDay(6)]];
+      this.date3 = [...[Utils.getDay(0), Utils.getDay(6)]];
       this.closeSwitch('isVisible3');
-    }
-  }
+    },
+  },
 };
 </script>

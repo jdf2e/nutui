@@ -4,17 +4,35 @@
     <p>自定义样式，和图片预览</p>
     <div>
       <div class="preview-img-box">
-        <transition name="fade">
-          <div class="img-list" v-if="previewImg">
-            <img-cell v-for="(item,index) in previewImg" :key="index" :src="item" :clear="()=>{clearImg(index)}" />
-          </div>
-        </transition>
-        <nut-uploader class="demo-1" :name="name" :url="url" :xhrState="stateNum"
-          :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']" :isPreview="true" @preview="preview"
-          @success="demo1Success" @failure="demo1Fail" @start="demo1UploadStart" @showMsg="showMsg" :multiple="true">+
-        </nut-uploader>
-      </div>
+        <div class="img-list">
+          <img-cell
+            v-for="(item, index) in previewImg"
+            :key="index"
+            :src="item"
+            :clear="
+              () => {
+                clearImg(index);
+              }
+            "
+          />
 
+          <nut-uploader
+            class="demo-1"
+            :name="name"
+            :url="url"
+            :xhrState="stateNum"
+            :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
+            :isPreview="true"
+            @preview="preview"
+            @success="demo1Success"
+            @failure="demo1Fail"
+            @start="demo1UploadStart"
+            @showMsg="showMsg"
+            :multiple="true"
+            >+</nut-uploader
+          >
+        </div>
+      </div>
     </div>
 
     <h4>其它用法</h4>
@@ -22,9 +40,16 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-uploader :name="name" :url="url" :xhrState="stateNum" @start="demo2UploadStart" @success="demo2Success"
-            @failure="demo2Fail" @showMsg="showMsg1">
-            <nut-button size="small">{{demo2Name}}</nut-button>
+          <nut-uploader
+            :name="name"
+            :url="url"
+            :xhrState="stateNum"
+            @start="demo2UploadStart"
+            @success="demo2Success"
+            @failure="demo2Fail"
+            @showMsg="showMsg1"
+          >
+            <nut-button size="small">{{ demo2Name }}</nut-button>
           </nut-uploader>
         </span>
         <div slot="desc"></div>
@@ -35,8 +60,16 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-uploader :name="name" :url="url" :xhrState="stateNum" :headers="headers" :attach="formData"
-            @success="demoSuccess" @fail="demoFail" @showMsg="showMsg1">
+          <nut-uploader
+            :name="name"
+            :url="url"
+            :xhrState="stateNum"
+            :headers="headers"
+            :attach="formData"
+            @success="demoSuccess"
+            @fail="demoFail"
+            @showMsg="showMsg1"
+          >
             <nut-button size="small">上传</nut-button>
           </nut-uploader>
         </span>
@@ -74,9 +107,17 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-uploader :beforeUpload="test" :name="name" :url="url" :xhrState="stateNum"
-            :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']" @success="demo1Success"
-            @failure="demo1Fail" @start="demo1UploadStart" @showMsg="showMsg">
+          <nut-uploader
+            :beforeUpload="test"
+            :name="name"
+            :url="url"
+            :xhrState="stateNum"
+            :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
+            @success="demo1Success"
+            @failure="demo1Fail"
+            @start="demo1UploadStart"
+            @showMsg="showMsg"
+          >
             <nut-button size="small">上传图片前处理图片内容</nut-button>
           </nut-uploader>
         </span>
@@ -86,9 +127,17 @@
     <p>自定义增加上传图片数据</p>
     <nut-cell>
       <span slot="title">
-        <nut-uploader :selfData="selfData" :name="name" :url="url" :xhrState="stateNum"
-          :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']" @success="demo1Success"
-          @failure="demo1Fail" @start="demo1UploadStart" @showMsg="showMsg">
+        <nut-uploader
+          :selfData="selfData"
+          :name="name"
+          :url="url"
+          :xhrState="stateNum"
+          :acceptType="['image/jpeg', 'image/png', 'image/gif', 'image/bmp']"
+          @success="demo1Success"
+          @failure="demo1Fail"
+          @start="demo1UploadStart"
+          @showMsg="showMsg"
+        >
           <nut-button size="small">自定义增加上传图片数据</nut-button>
         </nut-uploader>
       </span>
@@ -98,15 +147,15 @@
 </template>
 
 <script>
-import imgCell from "./img-cell";
+import imgCell from './img-cell';
 export default {
   components: {
-    imgCell
+    imgCell,
   },
   data() {
     return {
       selfData: {
-        test1: '自定义数据'
+        test1: '自定义数据',
       },
       url: 'https://my-json-server.typicode.com/linrufeng/demo/posts',
       demo1Name: '点击选择文件',
@@ -115,28 +164,28 @@ export default {
       stateNum: 201,
       block: 'block',
       headers: {
-        token: 'test'
+        token: 'test',
       },
       formData: {
         f1: 'test',
-        f2: 'test1'
+        f2: 'test1',
       },
       progressNum: 0,
-      previewImg: []
+      previewImg: [],
     };
   },
   methods: {
-    clearImg(index){
+    clearImg(index) {
       // console.log(index)
       // let ary =  JSON.parse(JSON.stringify(this.previewImg));
-      this.previewImg.splice(index,1)
+      this.previewImg.splice(index, 1);
       // console.log(ary)
     },
     test(event) {
       console.log(event, '可以处理input选择的内容');
       return {
         event: event,
-        data: ''
+        data: '',
       };
     },
     demo1UploadStart() {
@@ -169,19 +218,17 @@ export default {
     progress(file, loaded, total) {
       this.progressNum = parseInt((100 * loaded) / total);
     },
-    preview(file) {      
-      
-      let previewImg = this.previewImg
-      this.previewImg = [...previewImg,...file]
-      
+    preview(file) {
+      let previewImg = this.previewImg;
+      this.previewImg = [...previewImg, ...file];
     },
     showMsg1(msg) {
       this.$toast.text(msg);
     },
     showMsg(msg) {
       alert(msg);
-    }
-  }
+    },
+  },
 };
 </script>
 

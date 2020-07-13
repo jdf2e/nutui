@@ -41,9 +41,8 @@
           <nut-checkbox v-model="checkbox6" size="large">大号</nut-checkbox>
         </span>
       </nut-cell>
-
-      <p>size可选值：'small', 'base', 'large'</p>
     </div>
+    <p>size可选值：'small', 'base', 'large'</p>
 
     <h4>禁用动效</h4>
     <div>
@@ -57,8 +56,8 @@
           <nut-checkbox v-model="checkbox8" :animation="false">没有动效</nut-checkbox>
         </span>
       </nut-cell>
-      <p>animation属性值为false时，禁用自带动效</p>
     </div>
+    <p>animation属性值为false时，禁用自带动效</p>
 
     <h4>事件</h4>
     <div>
@@ -68,7 +67,9 @@
         </span>
         <span slot="desc">{{ result }}</span>
       </nut-cell>
-      <p>值发生变化时，将触发change事件</p>
+    </div>
+    <p>值发生变化时，将触发change事件</p>
+    <div>
       <nut-cell>
         <span slot="title">
           <nut-checkbox v-model="checkbox10" :label="'选项值1'" @change="getChange">change事件</nut-checkbox>
@@ -81,8 +82,8 @@
         </span>
         <span slot="desc">{{ result3 }}</span>
       </nut-cell>
-      <p>设置label时，可获取选项label值</p>
     </div>
+    <p>设置label时，可获取选项label值</p>
 
     <h4>自定义Class</h4>
     <div>
@@ -119,7 +120,7 @@ export default {
       checkbox10: true,
       checkbox11: false,
       checkbox12: true,
-      checkbox13: false
+      checkbox13: false,
     };
   },
   methods: {
@@ -135,17 +136,17 @@ export default {
     },
     getChange2(state, val) {
       this.result3 = '选中状态：' + state + '，选项：' + val;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 .nut-checkbox.my-checkbox {
-	input:checked {
-		background-image: radial-gradient(circle, #fff 0%, #fff 50%, $primary-color 60%);
-		background-size: 50% 50%;
-		border: none;
-	}
+  input:checked {
+    background-image: radial-gradient(circle, #fff 0%, #fff 50%, $primary-color 60%);
+    background-size: 50% 50%;
+    border: none;
+  }
 }
 </style>

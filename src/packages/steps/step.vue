@@ -25,23 +25,23 @@ export default {
   mixins: [locale],
   props: {
     title: {
-      type: String
+      type: String,
     },
     content: {
-      type: String
+      type: String,
     },
     time: {
-      type: String
-    }
+      type: String,
+    },
   },
   data() {
     return {
       currentStatus: '',
       timeForward: false,
-      type: ''
+      type: '',
     };
   },
   methods: {},
-  mounted() {}
+  mounted() {},
 };
 </script>

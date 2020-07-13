@@ -9,16 +9,16 @@ export default {
   props: {
     span: {
       type: [String, Number],
-      default: '24'
+      default: '24',
     },
     offset: {
       type: [String, Number],
-      default: '0'
-    }
+      default: '0',
+    },
   },
   data() {
     return {
-      classObject: {}
+      classObject: {},
     };
   },
   watch: {
@@ -26,22 +26,22 @@ export default {
       handler(val) {
         if (val) {
           this.classObject = Object.assign(this.classObject, {
-            ['nut-col-' + val]: this.span == val
+            ['nut-col-' + val]: this.span == val,
           });
         }
       },
-      immediate: true
+      immediate: true,
     },
     offset: {
       handler(val) {
         if (val) {
           this.classObject = Object.assign(this.classObject, {
-            ['nut-col-offset-' + val]: this.offset == val
+            ['nut-col-offset-' + val]: this.offset == val,
           });
         }
       },
-      immediate: true
-    }
-  }
+      immediate: true,
+    },
+  },
 };
 </script>

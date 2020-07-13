@@ -20,12 +20,12 @@ export default {
   props: {
     onlyDelBtn: {
       type: Boolean,
-      default: false
+      default: false,
     },
     btnSlipDel: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
@@ -37,7 +37,7 @@ export default {
       buttonWidth: 0,
       disX: 0, //移动距离
       deleteSlider: '', //滑动时的效果,使用v-bind:style="deleteSlider"
-      delBtnStyle: '' //单个删除键拖拽删除效果
+      delBtnStyle: '', //单个删除键拖拽删除效果
     };
   },
   mounted() {
@@ -187,7 +187,7 @@ export default {
           delBtns[j].style = '';
         }
       }
-    }
-  }
+    },
+  },
 };
 </script>

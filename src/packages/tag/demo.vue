@@ -26,14 +26,14 @@
     </div>
     <h4>自定义颜色</h4>
     <div class="white-bg">
-      <nut-tag :style="{background: '#FCE9E8', color: '#E1251B'}">标签</nut-tag>
-      <nut-tag :style="{background: '#EBF0FD', color: '#3C6EF0'}">标签</nut-tag>
-      <nut-tag :style="{background: '#FFF0ED', color: '#FF8B70'}">标签</nut-tag>
-      <nut-tag :style="{background: '#FFF8E7', color: '#FFBA12'}">标签</nut-tag>
-      <nut-tag :style="{background: '#E9F6F0', color: '#26A872'}">标签</nut-tag>
-      <nut-tag :style="{background: '#E9F6FC', color: '#2CA6E1'}">标签</nut-tag>
-      <nut-tag :style="{background: '#EFEAFF', color: '#6236FF'}">标签</nut-tag>
-      <nut-tag :style="{background: '#F7F7F7', color: '#7C7A8A'}">标签</nut-tag>
+      <nut-tag :style="{ background: '#FCE9E8', color: '#E1251B' }">标签</nut-tag>
+      <nut-tag :style="{ background: '#EBF0FD', color: '#3C6EF0' }">标签</nut-tag>
+      <nut-tag :style="{ background: '#FFF0ED', color: '#FF8B70' }">标签</nut-tag>
+      <nut-tag :style="{ background: '#FFF8E7', color: '#FFBA12' }">标签</nut-tag>
+      <nut-tag :style="{ background: '#E9F6F0', color: '#26A872' }">标签</nut-tag>
+      <nut-tag :style="{ background: '#E9F6FC', color: '#2CA6E1' }">标签</nut-tag>
+      <nut-tag :style="{ background: '#EFEAFF', color: '#6236FF' }">标签</nut-tag>
+      <nut-tag :style="{ background: '#F7F7F7', color: '#7C7A8A' }">标签</nut-tag>
     </div>
     <h4>空心样式</h4>
     <div class="white-bg">
@@ -59,7 +59,7 @@
 export default {
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   methods: {
@@ -69,15 +69,15 @@ export default {
       setTimeout(() => {
         this.disabled = false;
       }, 2000);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .white-bg {
-	padding: 10px;
-	background: #fff;
-	line-height: 1.6;
+  padding: 10px;
+  background: #fff;
+  line-height: 1.6;
 }
 </style>

@@ -22,60 +22,60 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'date'
+      default: 'date',
     },
     isSetSecond: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isVisible: {
       type: Boolean,
-      default: true
+      default: true,
     },
     isUse12Hours: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isAm: {
       type: Boolean,
-      default: true
+      default: true,
     },
     minuteStep: {
       type: Number,
-      default: 1
+      default: 1,
     },
     secondStep: {
       type: Number,
-      default: 1
+      default: 1,
     },
     isShowChinese: {
       type: Boolean,
-      default: true
+      default: true,
     },
     title: {
       type: String,
-      default: null
+      default: null,
     },
     defaultValue: {
       type: String,
-      default: null
+      default: null,
     },
     startDate: {
       type: String,
-      default: '2000-01-01'
+      default: '2000-01-01',
     },
     endDate: {
       type: String,
-      default: Utils.date2Str(new Date())
+      default: Utils.date2Str(new Date()),
     },
     startHour: {
       type: Number | String,
-      default: 0
+      default: 0,
     },
     endHour: {
       type: Number | String,
-      default: 23
-    }
+      default: 23,
+    },
   },
   data() {
     return {
@@ -98,11 +98,11 @@ export default {
         ? this.isUse12Hours
           ? ['时', '分', '']
           : ['时', '分', '秒']
-        : ['年', '月', '日', '时', '分']
+        : ['年', '月', '日', '时', '分'],
     };
   },
   components: {
-    [nutpicker.name]: nutpicker
+    [nutpicker.name]: nutpicker,
   },
   created() {
     this.init();
@@ -111,12 +111,12 @@ export default {
     dateRange() {
       const { startDate, endDate, defaultValue } = this;
       return { startDate, endDate, defaultValue };
-    }
+    },
   },
   watch: {
     dateRange(newValue, oldValue) {
       this.init();
-    }
+    },
   },
   methods: {
     init() {
@@ -145,7 +145,7 @@ export default {
       switch (this.type) {
         case 'date':
           this.cacheListData = [
-            ...[this.getYears(), this.getMonths(this.defaultValueData[0]), this.getDays(this.defaultValueData[0], this.defaultValueData[1])]
+            ...[this.getYears(), this.getMonths(this.defaultValueData[0]), this.getDays(this.defaultValueData[0], this.defaultValueData[1])],
           ];
           break;
         case 'datetime':
@@ -155,8 +155,8 @@ export default {
               this.getMonths(this.defaultValueData[0]),
               this.getDays(this.defaultValueData[0], this.defaultValueData[1]),
               this.getChangeHours(this.defaultValueData[0], this.defaultValueData[1], this.defaultValueData[2]),
-              this.getChangeMinutes(this.defaultValueData[0], this.defaultValueData[1], this.defaultValueData[2], this.defaultValueData[3])
-            ]
+              this.getChangeMinutes(this.defaultValueData[0], this.defaultValueData[1], this.defaultValueData[2], this.defaultValueData[3]),
+            ],
           ];
           break;
         case 'time':
@@ -239,20 +239,20 @@ export default {
       month = this.removeChinese(month);
       let days = Array.from(Array(Utils.getMonthDays(year, month)), (v, k) => {
         if (
-          !(year == this.startDateArr[0] && month == parseInt(this.startDateArr[1]) && (k + 1) <  parseInt(this.startDateArr[2])) &&
-          !(year == this.endDateArr[0] && month == parseInt(this.endDateArr[1]) && (k + 1) > parseInt(this.endDateArr[2]))
+          !(year == this.startDateArr[0] && month == parseInt(this.startDateArr[1]) && k + 1 < parseInt(this.startDateArr[2])) &&
+          !(year == this.endDateArr[0] && month == parseInt(this.endDateArr[1]) && k + 1 > parseInt(this.endDateArr[2]))
         ) {
           return `${this.isShowChinese ? k + 1 : Utils.getNumTwoBit(k + 1)}${this.chinese[2]}`;
         }
       });
-      return days.filter(item => item);
+      return days.filter((item) => item);
     },
 
     getChangeHours(year, month, day) {
       year = this.removeChinese(year);
       month = this.removeChinese(month).padStart(2, '0');
       day = this.removeChinese(day).padStart(2, '0');
-      let hours = Array.from(Array(24).keys()).map(hour => {
+      let hours = Array.from(Array(24).keys()).map((hour) => {
         let startEqualState = year == this.startDateArr[0] && month == this.startDateArr[1] && day == this.startDateArr[2];
         let endEqualState = year == this.endDateArr[0] && month == this.endDateArr[1] && day == this.endDateArr[2];
         let startHour = this.startDateArr[3],
@@ -279,7 +279,7 @@ export default {
         }
         return resHour ? `${resHour}${this.chinese[3]}` : undefined;
       });
-      return hours.filter(item => item);
+      return hours.filter((item) => item);
     },
 
     getChangeMinutes(year, month, day, hour) {
@@ -287,7 +287,7 @@ export default {
       month = this.removeChinese(month).padStart(2, '0');
       day = this.removeChinese(day).padStart(2, '0');
       hour = this.removeChinese(hour).padStart(2, '0');
-      let minutes = Array.from(Array(60).keys()).map(minute => {
+      let minutes = Array.from(Array(60).keys()).map((minute) => {
         let startEqualState =
           year == this.startDateArr[0] && month == this.startDateArr[1] && day == this.startDateArr[2] && hour == this.startDateArr[3];
         let endEqualState = year == this.endDateArr[0] && month == this.endDateArr[1] && day == this.endDateArr[2] && hour == this.endDateArr[3];
@@ -315,7 +315,7 @@ export default {
         }
         return resMinute % this.minuteStep == 0 ? `${resMinute}${this.chinese[4]}` : undefined;
       });
-      return minutes.filter(item => item);
+      return minutes.filter((item) => item);
     },
 
     getHours() {
@@ -331,7 +331,7 @@ export default {
           return `${k}${this.type == 'time' ? this.chinese[0] : this.chinese[3]}`;
         }
       });
-      return hours.filter(item => item);
+      return hours.filter((item) => item);
     },
     getMinutes() {
       let minutes = Array.from(Array(60), (v, k) => {
@@ -339,7 +339,7 @@ export default {
           return `${k}${this.type == 'time' ? this.chinese[1] : this.chinese[4]}`;
         }
       });
-      return minutes.filter(item => item);
+      return minutes.filter((item) => item);
     },
 
     getSeconds() {
@@ -348,7 +348,7 @@ export default {
           return `${k}${this.type == 'time' ? this.chinese[2] : this.chinese[5]}`;
         }
       });
-      return seconds.filter(item => item);
+      return seconds.filter((item) => item);
     },
 
     setChooseValue(chooseData) {
@@ -462,7 +462,7 @@ export default {
 
     switchPicker(param) {
       this.$emit('close');
-    }
-  }
+    },
+  },
 };
 </script>

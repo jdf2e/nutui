@@ -18,7 +18,7 @@ export default {
       isHasMore: true,
       isLoading: false,
       isErr: false,
-      timer: null
+      timer: null,
     };
   },
   methods: {
@@ -33,27 +33,27 @@ export default {
         }
         this.isLoading = false;
       }, 100);
-    }
+    },
   },
   destroyed() {
     clearTimeout(this.timer);
-  }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .list {
-	padding-top: 10px;
+  padding-top: 10px;
 
-	.list-item {
-		height: 50px;
-		border: 1px solid mix($primary-color, #fff, 40%);
-		margin-bottom: 10px;
-		font-size: 12px;
-		color: mix($primary-color, #fff, 80%);
-		line-height: 50px;
-		text-align: center;
-		background-color: #fff;
-	}
+  .list-item {
+    height: 50px;
+    border: 1px solid mix($primary-color, #fff, 40%);
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: mix($primary-color, #fff, 80%);
+    line-height: 50px;
+    text-align: center;
+    background-color: #fff;
+  }
 }
 </style>

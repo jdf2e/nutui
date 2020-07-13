@@ -29,7 +29,7 @@
       </nut-cell>
       <nut-cell :is-link="true" :show-icon="true" @click.native="showDialog6">
         <span slot="title">
-           <label>决策弹窗(无标题)</label>
+          <label>决策弹窗(无标题)</label>
         </span>
       </nut-cell>
       <nut-cell :is-link="true" :show-icon="true" @click.native="showDialog7">
@@ -41,7 +41,7 @@
     <h4>多行按钮</h4>
 
     <div>
-       <nut-cell :is-link="true" :show-icon="true" @click.native="showDialog10">
+      <nut-cell :is-link="true" :show-icon="true" @click.native="showDialog10">
         <span slot="title">
           <label>多行按钮</label>
         </span>
@@ -105,57 +105,57 @@ export default {
     return {
       dialogShow: false,
       isEditor: false,
-      item: {}
+      item: {},
     };
   },
   methods: {
-    showDialog1: function() {
+    showDialog1: function () {
       const options = {
         title: '标题',
         content: '我想用艺术感动人们的内心。我希望他们这样说到：他的感受深刻而温柔。',
         noCloseBtn: false,
         noOkBtn: true,
-        cancelBtnTxt:"确认",
-        textAlign:"left",
+        cancelBtnTxt: '确认',
+        textAlign: 'left',
         onOkBtn(event) {
-          this.close(); //关闭对话框
-        }
-      };
-
-      this.$dialog(options);
-    },
-    showDialog2: function() {
-      const options = {
-        title: '确定要加入购物车吗？',
-         onOkBtn(event) {
           this.close(); //关闭对话框
         },
       };
 
       this.$dialog(options);
     },
-    showDialog3: function() {
+    showDialog2: function () {
       const options = {
-        content: '我想用艺术感动人们的内心。我希望他们这样说到：他的感受深刻而温柔。',
-        noCloseBtn: false,
-        noOkBtn: true,
-        cancelBtnTxt: '我知道了'
+        title: '确定要加入购物车吗？',
+        onOkBtn(event) {
+          this.close(); //关闭对话框
+        },
       };
 
       this.$dialog(options);
     },
-    showDialog4: function() {
+    showDialog3: function () {
+      const options = {
+        content: '我想用艺术感动人们的内心。我希望他们这样说到：他的感受深刻而温柔。',
+        noCloseBtn: false,
+        noOkBtn: true,
+        cancelBtnTxt: '我知道了',
+      };
+
+      this.$dialog(options);
+    },
+    showDialog4: function () {
       const options = {
         customClass: 'my-dialog',
         title: '注册说明',
         content: '原账号为您本人所有，建议直接登录或找回密码。原账号内的订单资产可能丢失，可联系京东客服找回。',
         closeBtn: true,
-        noFooter: true
+        noFooter: true,
       };
 
       this.$dialog(options);
     },
-    showDialog5: function() {
+    showDialog5: function () {
       const options = {
         okBtnTxt: '好 的',
         title: '标题',
@@ -166,45 +166,45 @@ export default {
           this.close(); //关闭对话框
         },
         onCancelBtn(event) {
-           this.$toast.text('cancelBtn');
+          this.$toast.text('cancelBtn');
           //return false;  //阻止默认“关闭对话框”的行为
         },
         onCloseBtn(event) {
-           this.$toast.text('closeBtn');
+          this.$toast.text('closeBtn');
           //return false;  //阻止默认“关闭对话框”的行为
         },
         closeCallback(target) {
           //关闭回调
-        }
+        },
       };
 
       this.$dialog(options);
     },
-    showDialog6: function() {
+    showDialog6: function () {
       const options = {
         okBtnTxt: '主要操作',
         content: '我想用艺术感动人们的内心。我希望他们这样说到：他的感受深刻而温柔。',
         closeBtn: true,
         onOkBtn(event) {
-           this.$toast.text('okBtn');
+          this.$toast.text('okBtn');
           this.close(); //关闭对话框
         },
         onCancelBtn(event) {
-           this.$toast.text('cancelBtn');
+          this.$toast.text('cancelBtn');
           //return false;  //阻止默认“关闭对话框”的行为
         },
         onCloseBtn(event) {
-           this.$toast.text('closeBtn');
+          this.$toast.text('closeBtn');
           //return false;  //阻止默认“关闭对话框”的行为
         },
         closeCallback(target) {
           //关闭回调事件
-        }
+        },
       };
 
       this.$dialog(options);
     },
-    showDialog7: function() {
+    showDialog7: function () {
       this.$dialog({
         maskBgStyle: 'rgba(0,0,0,0)', //设置遮罩层背景透明
         title: '注册说明',
@@ -214,57 +214,59 @@ export default {
         },
       });
     },
-    showDialog8: function() {
+    showDialog8: function () {
       this.$dialog({
         title: '背景滚动锁定',
         lockBgScroll: true,
         content: '弹窗弹出后，页面滚动锁止。在窗体和遮罩层上滑动时，页面不再跟随滚动。',
         noOkBtn: true,
-        cancelBtnTxt: '我知道了'
+        cancelBtnTxt: '我知道了',
       });
     },
-    showDialog9: function() {
+    showDialog9: function () {
       this.$dialog({
         lockBgScroll: true,
         content:
           '桃花帘外东风软，<br>桃花帘内晨妆懒。<br>帘外桃花帘内人，<br>人与桃花隔不远。<br>东风有意揭帘栊，<br>花欲窥人帘不卷。<br>桃花帘外开仍旧，<br>帘中人比桃花瘦。<br>花解怜人花也愁，<br>隔帘消息风吹透。<br>风透帘栊花满庭，<br>庭前春色倍伤情。<br>闲苔院落帘空卷，<br>斜日栏干人自凭。<br>凭栏人向东风泣，<br>茜裙偷傍桃花立。<br>桃花桃叶乱纷纷，<br>花绽新红叶凝碧。<br>树树烟封一万株，<br>烘照楼台红模糊。<br>天机烧破鸳鸯锦，<br>春色欲酣珊瑚枕。<br>侍女金盆进水来，<br>香泉欲蘸胭脂冷。<br>胭脂鲜艳何相类，<br>花之颜色人之泪。<br>若将人泪比桃花，<br>泪自长流花自媚。<br>泪眼看花泪易乾，<br>泪乾春尽花憔悴。<br>憔悴花枝憔悴人，<br>花飞人倦易黄昏。<br>一声杜宇春归尽，<br>寂寞帘栊空月痕。',
         noOkBtn: true,
-        cancelBtnTxt: '确认'
+        cancelBtnTxt: '确认',
       });
     },
-    showDialog10: function() {
+    showDialog10: function () {
       this.$dialog({
         content: '我认为，大多数设计师只是试图从他们已经做过的事情中努力，在讲故事方面并没有什么特别之处，而我的回归，将伴随着一个伟大的演讲',
-        multiButton:true,
-        textAlign:"left",
-        multiButtonText:[{
-          name: '主要操作1(禁止)',
-          value: 0,
-          disabled:true
+        multiButton: true,
+        textAlign: 'left',
+        multiButtonText: [
+          {
+            name: '主要操作1(禁止)',
+            value: 0,
+            disabled: true,
+          },
+          {
+            name: '主要操作2',
+            value: 1,
+            disabled: false,
+          },
+        ],
+        chooseBtn(item, index) {
+          console.log(index);
+          this.$toast.text(`我点击了第${index + 1}个按钮`);
+          this.close();
         },
-        {
-          name: '主要操作2',
-          value: 1,
-          disabled:false,
-        }],
-        chooseBtn(item,index){
-          console.log(index)
-           this.$toast.text(`我点击了第${index + 1}个按钮`)
-          this.close()
-        },    
       });
     },
-    showImageDialog: function() {
+    showImageDialog: function () {
       this.$dialog({
         type: 'image',
         link: 'http://m.jd.com',
         imgSrc: 'https://m.360buyimg.com/mobilecms/s750x750_jfs/t1/4875/23/1968/285655/5b9549eeE4997a18c/070eaf5bddf26be8.jpg!q80.dpg',
-        onClickImageLink: function() {
+        onClickImageLink: function () {
           console.log(this); //this指向该Dialog实例
           return false; //返回false可阻止默认的链接跳转行为
-        }
+        },
       });
-    }
-  }
+    },
+  },
 };
 </script>

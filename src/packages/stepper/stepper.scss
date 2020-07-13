@@ -69,7 +69,7 @@
 	}
 
 	.oper-wrapper {
-		width: 32px;
+		width: 29px;
 		height: 32px;
 		background: $body-background-color;
 		position: relative;
@@ -121,6 +121,7 @@
 		box-sizing: border-box;
 		outline: none;
 		font-family: initial;
+		font-size: $font-size-large;
 		color: $stepper-color;
 	}
 

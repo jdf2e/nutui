@@ -15,7 +15,7 @@
                     @click="choose(idx, index, sIndex, item, sitem)"
                     class="nut-tab-panel-list"
                     :class="{
-                      'nut-tab-panel-list-active': isActive(idx, index, sIndex)
+                      'nut-tab-panel-list-active': isActive(idx, index, sIndex),
                     }"
                   >
                     {{ sitem }}
@@ -28,7 +28,7 @@
                     @click="choose(idx, index, sIndex, item, sitem)"
                     class="nut-tab-panel-list"
                     :class="{
-                      'nut-tab-panel-list-active': isActive(idx, index, sIndex)
+                      'nut-tab-panel-list-active': isActive(idx, index, sIndex),
                     }"
                   >
                     {{ sitem }}
@@ -55,40 +55,40 @@ export default {
   props: {
     mainTitle: {
       type: String,
-      default: ''
+      default: '',
     },
     subTitle: {
       type: String,
-      default: ''
+      default: '',
     },
     isLockBgScroll: {
       type: Boolean,
-      default: true
+      default: true,
     },
     defaultContent: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     tabList: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     show: {
       type: Boolean,
-      default: false
+      default: false,
     },
     multiple: {
       type: Boolean,
-      default: false
+      default: false,
     },
     max: {
       type: Number,
-      default: Infinity
+      default: Infinity,
     },
     isDefaultSelected: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
@@ -98,12 +98,12 @@ export default {
       level2: this.isDefaultSelected ? new Set(['0-0']) : new Set(),
       allChoose: this.getText(0, 0, this.isDefaultSelected ? 0 : null),
       list: [],
-      defIndex: 0
+      defIndex: 0,
     };
   },
   components: {
     [nuttab.name]: nuttab,
-    [nutpop.name]: nutpop
+    [nutpop.name]: nutpop,
   },
   watch: {
     show(val) {
@@ -123,8 +123,8 @@ export default {
         this.allChoose = this.getText(0, 0, this.isDefaultSelected ? 0 : null);
         this.emit();
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   mounted() {
     this.list = this.tabList;
@@ -148,7 +148,7 @@ export default {
       const content = (tab.content && tab.content[sIndex]) || this.defaultContent[sIndex];
       return new Set([{ subTit, content }]);
     },
-    tabSwitchOuter: function(index, event) {
+    tabSwitchOuter: function (index, event) {
       this.defIndex = 0;
       this.level0 = index;
       this.level1 = new Set([0]);
@@ -156,7 +156,7 @@ export default {
       this.allChoose = this.getText(index, 0, this.isDefaultSelected ? 0 : null);
       this.emit();
     },
-    tabSwitchInner: function(index, event) {
+    tabSwitchInner: function (index, event) {
       this.defIndex = index;
       if (!this.multiple) {
         this.level1 = new Set([index]);
@@ -171,7 +171,7 @@ export default {
     choose(idx, index, sIndex) {
       if (this.multiple && this.isActive(idx, index, sIndex)) {
         this.unChoose(index, sIndex);
-        this.getText(idx, index, sIndex).forEach(o => {
+        this.getText(idx, index, sIndex).forEach((o) => {
           for (let indexdel of this.allChoose.values()) {
             if (JSON.stringify(o) === JSON.stringify(indexdel)) {
               this.allChoose.delete(indexdel);
@@ -206,7 +206,7 @@ export default {
         return true;
       }
       return false;
-    }
-  }
+    },
+  },
 };
 </script>

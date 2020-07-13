@@ -22,41 +22,41 @@ export default {
   name: 'nut-checkbox',
   props: {
     name: {
-      type: String
+      type: String,
     },
     size: {
       type: [String, Number, Boolean],
-      default: 'base'
+      default: 'base',
     },
     label: {
       type: String,
-      default: ''
+      default: '',
     },
     value: {
-      required: true
+      required: true,
     },
     trueValue: {
-      default: true
+      default: true,
     },
     falseValue: {
-      default: false
+      default: false,
     },
     submittedValue: {
       type: String,
-      default: 'on' // HTML default
+      default: 'on', // HTML default
     },
     checked: {
       type: Boolean,
-      default: false
+      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     animation: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   watch: {
     value() {
@@ -64,11 +64,11 @@ export default {
     },
     checked(newValue, oldValue) {
       this.isChecked = newValue;
-    }
+    },
   },
   data() {
     return {
-      isChecked: this.value == this.trueValue || this.checked
+      isChecked: this.value == this.trueValue || this.checked,
     };
   },
 
@@ -91,7 +91,7 @@ export default {
       if (isCheckedPrevious !== isChecked) {
         this.$emit('change', isChecked ? this.trueValue : this.falseValue, this.label, event);
       }
-    }
-  }
+    },
+  },
 };
 </script>

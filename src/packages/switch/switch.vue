@@ -9,20 +9,20 @@ export default {
   props: {
     active: {
       type: Boolean,
-      default: false
+      default: false,
     },
     size: {
       type: String,
-      default: 'base'
+      default: 'base',
     },
     disabled: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
-      isActive: false
+      isActive: false,
     };
   },
   created() {
@@ -31,7 +31,7 @@ export default {
   watch: {
     active(newVal) {
       this.isActive = newVal;
-    }
+    },
   },
   methods: {
     toggle() {
@@ -44,7 +44,7 @@ export default {
         this.$emit('change', this.isActive);
         this.$emit('update:active', this.isActive);
       }, 300);
-    }
-  }
+    },
+  },
 };
 </script>

@@ -27,7 +27,6 @@
       :max="3"
     ></nut-tabselect>
     <nut-cell isLink title="展示多选弹出层" :showIcon="true" @click.native="showMore = true"> </nut-cell>
-
   </div>
 </template>
 
@@ -45,58 +44,58 @@ export default {
           children: [
             {
               tabTitle: '1月13日 (星期一)',
-              content: ['11:00——12:00', '12:00——13:00', '13:00——15:00', '15:00——17:00', '17:00——19:00']
+              content: ['11:00——12:00', '12:00——13:00', '13:00——15:00', '15:00——17:00', '17:00——19:00'],
             },
             {
-              tabTitle: '1月14日 (星期二)'
+              tabTitle: '1月14日 (星期二)',
             },
             {
-              tabTitle: '1月15日 (星期三)'
+              tabTitle: '1月15日 (星期三)',
             },
             {
-              tabTitle: '1月16日 (星期四)'
+              tabTitle: '1月16日 (星期四)',
             },
             {
-              tabTitle: '1月17日 (星期五)'
+              tabTitle: '1月17日 (星期五)',
             },
             {
-              tabTitle: '1月18日 (星期六)'
+              tabTitle: '1月18日 (星期六)',
             },
             {
-              tabTitle: '1月19日 (星期天)'
-            }
-          ]
+              tabTitle: '1月19日 (星期天)',
+            },
+          ],
         },
         {
           tabTitle: '上门自提',
           children: [
             {
               tabTitle: '2月13日 (星期一)',
-              content: ['13:00——15:00', '15:00——17:00', '17:00——19:00']
+              content: ['13:00——15:00', '15:00——17:00', '17:00——19:00'],
             },
             {
-              tabTitle: '2月14日 (星期二)'
+              tabTitle: '2月14日 (星期二)',
             },
             {
-              tabTitle: '2月15日 (星期三)'
+              tabTitle: '2月15日 (星期三)',
             },
             {
-              tabTitle: '2月16日 (星期四)'
+              tabTitle: '2月16日 (星期四)',
             },
             {
-              tabTitle: '2月17日 (星期五)'
+              tabTitle: '2月17日 (星期五)',
             },
             {
-              tabTitle: '2月18日 (星期六)'
+              tabTitle: '2月18日 (星期六)',
             },
             {
-              tabTitle: '2月19日 (星期天)'
-            }
-          ]
-        }
+              tabTitle: '2月19日 (星期天)',
+            },
+          ],
+        },
       ],
       show: false,
-      showMore: false
+      showMore: false,
     };
   },
   //   mounted() {
@@ -110,8 +109,8 @@ export default {
     },
     onOkBtn(event) {
       console.log(event);
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -63,7 +63,7 @@ export default {
       val3: 5,
       val4: 0,
       val5: 0,
-      val6: 0
+      val6: 0,
     };
   },
   methods: {
@@ -85,23 +85,23 @@ export default {
     },
     reduce() {
       this.val1 = Math.max(Number(this.val1) - 1, 0);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .demo-btn {
-	border: 1px solid #ddd;
-	background: #eee;
-	border-radius: 4px;
-	outline: none;
-	padding: 3px 10px;
-	cursor: pointer;
-	transition: all 0.35s;
+  border: 1px solid #ddd;
+  background: #eee;
+  border-radius: 4px;
+  outline: none;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: all 0.35s;
 
-	&:hover {
-		background: #ddd;
-	}
+  &:hover {
+    background: #ddd;
+  }
 }
 </style>

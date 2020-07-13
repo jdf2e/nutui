@@ -7,8 +7,8 @@
         <slot name="desc"></slot>
       </a>
       <span class="sidenavbar-icon">
-          <span v-if="$slots.oper"><slot name="oper"></slot></span>
-          <nut-icon v-if="!$slots.oper" type="self" :url="require('../../assets/svg/arrow-to-right.svg')" size="16px"></nut-icon>
+        <span v-if="$slots.oper"><slot name="oper"></slot></span>
+        <nut-icon v-if="!$slots.oper" type="self" :url="require('../../assets/svg/arrow-to-right.svg')" size="16px"></nut-icon>
       </span>
     </div>
     <div class="sub-sidenavbar-list" :class="!direction ? 'nutFadeIn' : 'nutFadeOut'" :style="{ height: !direction ? 'auto' : 0 }">
@@ -22,20 +22,20 @@ export default {
   props: {
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     ikey: {
       type: [String, Number],
-      default: ''
+      default: '',
     },
     open: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   data() {
     return {
-      direction: ''
+      direction: '',
     };
   },
   mounted() {
@@ -45,7 +45,7 @@ export default {
     handleClick() {
       this.$emit('title-click');
       this.direction = !this.direction ? 'up' : '';
-    }
-  }
+    },
+  },
 };
 </script>

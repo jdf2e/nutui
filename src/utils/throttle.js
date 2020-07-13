@@ -10,7 +10,7 @@ export const throttle = (func, wait, type) => {
   } else if (type === 2) {
     var timeout;
   }
-  return function() {
+  return function () {
     let context = this;
     let args = arguments;
     if (type === 1) {

@@ -7,11 +7,10 @@
           <span class="nut-cell-title"
             ><slot name="title">{{ title }}</slot></span
           >
-          <span class="nut-cell-sub-title"
-            >
+          <span class="nut-cell-sub-title">
             <slot name="sub-title">
-              <template>{{ subTitle.substring(0,12) }}</template>
-              <template v-if="subTitle.length>12">...</template>
+              <template>{{ subTitle.substring(0, 12) }}</template>
+              <template v-if="subTitle.length > 12">...</template>
             </slot></span
           >
         </div>
@@ -21,7 +20,7 @@
           >
           <span class="nut-cell-icon">
             <slot name="icon" v-if="showIcon">
-              <nut-icon type="right" size="11px" color="#848484"></nut-icon>
+              <img width="17" height="17" src="../../assets/img/ic-arrow.png" />
             </slot>
           </span>
         </div>
@@ -37,47 +36,48 @@ export default {
   props: {
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     subTitle: {
       type: String,
-      default: ''
+      default: '',
     },
     desc: {
       type: String,
-      default: ''
+      default: '',
     },
     isLink: {
       type: Boolean,
-      default: false
+      default: false,
     },
     linkUrl: {
       type: String,
-      default: 'javascript:void(0)'
+      default: 'javascript:void(0)',
     },
     showIcon: {
       type: Boolean,
-      default: false
+      default: false,
     },
     bgColor: {
       type: String,
-      default: '#fff'
+      default: '#fff',
     },
     to: {
       type: String,
-      default: ''
+      default: '',
     },
     target: {
       type: String,
-      default: '_self'
-    }
+      default: '_self',
+    },
   },
   components: {
-    'nut-icon': Icon
+    'nut-icon': Icon,
   },
   data() {
     return {};
   },
+  computed: {},
   methods: {
     clickCell() {
       this.$emit('click-cell');
@@ -85,7 +85,7 @@ export default {
     jumpPage() {
       if (!this.to) return false;
       this.$router.push(this.to);
-    }
-  }
+    },
+  },
 };
 </script>

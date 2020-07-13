@@ -15,35 +15,35 @@ export default {
   props: {
     hasMore: {
       type: Boolean,
-      default: true
+      default: true,
     },
     isLoading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     threshold: {
       type: Number,
-      default: 200
+      default: 200,
     },
     useWindow: {
       type: Boolean,
-      default: true
+      default: true,
     },
     useCapture: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isShowMod: {
       type: Boolean,
-      default: false
+      default: false,
     },
     unloadMoreTxt: {
       type: String,
-      default: '哎呀，这里是底部了啦'
+      default: '哎呀，这里是底部了啦',
     },
     scrollChange: {
-      type: Function
-    }
+      type: Function,
+    },
   },
   data() {
     return {
@@ -51,11 +51,11 @@ export default {
       startY: 0,
       diffX: 0,
       diffY: 0,
-      beforeScrollTop: 0
+      beforeScrollTop: 0,
     };
   },
 
-  mounted: function() {
+  mounted: function () {
     const parentElement = this.getParentElement(this.$el);
     let scrollEl = window;
     if (this.useWindow === false) {
@@ -93,7 +93,7 @@ export default {
         window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
         window.mozRequestAnimationFrame ||
-        function(callback) {
+        function (callback) {
           window.setTimeout(callback, 1000 / 60);
         }
       );
@@ -143,7 +143,7 @@ export default {
       this.beforeScrollTop = windowScrollTop;
 
       return offsetDistance <= this.threshold && windowScrollTop >= this.beforeScrollTop;
-    }
+    },
   },
 
   activated() {
@@ -162,6 +162,6 @@ export default {
   destroyed() {
     this.scrollEl.removeEventListener('scroll', this.handleScroll, this.useCapture);
     window.removeEventListener('resize', this.handleScroll, this.useCapture);
-  }
+  },
 };
 </script>

@@ -59,69 +59,69 @@ import copy from 'clipboard';
 export default {
   mounted() {
     let copys = new copy('.copy-box', {
-      text: function(trigger) {
+      text: function (trigger) {
         return `<nut-icon type="${trigger.textContent}"></nut-icon>`;
-      }
+      },
     });
-    copys.on('success', e => {
+    copys.on('success', (e) => {
       this.tip();
     });
 
     let copySize = new copy('.copy-box-size', {
-      text: function(trigger) {
+      text: function (trigger) {
         return `<nut-icon type="${trigger.textContent}" size="40px"></nut-icon>`;
-      }
+      },
     });
-    copySize.on('success', e => {
+    copySize.on('success', (e) => {
       this.tip();
     });
 
     let copyColor = new copy('.copy-box-color', {
-      text: function(trigger) {
+      text: function (trigger) {
         return `<nut-icon type="${trigger.textContent}" color="#f0250f"></nut-icon>`;
-      }
+      },
     });
-    copyColor.on('success', e => {
+    copyColor.on('success', (e) => {
       this.tip();
     });
     let copySelf = new copy('.copy-box-self', {
-      text: function(trigger) {
+      text: function (trigger) {
         return `<nut-icon type="self" :url="require('../../assets/svg/${trigger.textContent}.svg')"></nut-icon>`;
-      }
+      },
     });
-    copySelf.on('success', e => {
+    copySelf.on('success', (e) => {
       this.tip();
     });
   },
   methods: {
     tip() {
       this.$toast.success('复制成功', { duration: 1000 });
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 table {
-	width: 100%;
-	border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 
-	td {
-		width: 25%;
-		text-align: center;
-		vertical-align: middle;
-		height: 100px;
-		border: 1px solid #ebebeb;
-		font-size: 12px;
+  td {
+    width: 25%;
+    text-align: center;
+    vertical-align: middle;
+    height: 100px;
+    border: 1px solid #ebebeb;
+    font-size: 12px;
 
-		&:hover {
-			background: #f2f2f2;
-			cursor: pointer;
-		}
-	}
+    &:hover {
+      background: #f2f2f2;
+      cursor: pointer;
+    }
+  }
 
-	span {
-		display: block;
-	}
+  span {
+    display: block;
+  }
 }
 </style>

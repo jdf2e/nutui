@@ -1,6 +1,6 @@
 <template>
-  <div :style="styles" class='nut-avatar' @click="activeAvatar">
-    <img class="icon" :src="bgImage">
+  <div :style="styles" class="nut-avatar" @click="activeAvatar">
+    <img class="icon" :src="bgImage" />
     <slot></slot>
   </div>
 </template>
@@ -10,20 +10,20 @@ export default {
   props: {
     bgImage: {
       type: String,
-      default: ''
+      default: '',
     },
-    sizeNum:{
-      type: [Number,String],
-      default: 20
-    }
+    sizeNum: {
+      type: [Number, String],
+      default: 20,
+    },
   },
   computed: {
     styles() {
       return {
-        width: this.sizeNum+'px',
-        height: this.sizeNum+'px'
+        width: this.sizeNum + 'px',
+        height: this.sizeNum + 'px',
       };
-    }
+    },
   },
   data() {
     return {};
@@ -31,7 +31,7 @@ export default {
   methods: {
     activeAvatar() {
       this.$emit('active-avatar', event);
-    }
-  }
+    },
+  },
 };
 </script>

@@ -8,7 +8,7 @@
       height: diameter,
       'border-radius': '50%',
       margin: margin,
-      'flex-shrink':'0'
+      'flex-shrink': '0',
     }"
   >
   </div>
@@ -23,16 +23,16 @@ export default {
   props: {
     backColor: {
       type: String,
-      default: '#efefef'
+      default: '#efefef',
     },
     diameter: {
       type: String,
-      default: '50px'
+      default: '50px',
     },
     margin: {
       type: String,
-      default: '0 0 0 0'
-    }
-  }
+      default: '0 0 0 0',
+    },
+  },
 };
 </script>

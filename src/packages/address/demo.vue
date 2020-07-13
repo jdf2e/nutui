@@ -1,5 +1,5 @@
 <template>
-  <div class="demo-list">
+  <div class="address-box">
     <h4>选择自定义地址</h4>
     <div class="address-list init" @click="showAddress">
       <div class="titile">选择地址</div>
@@ -55,6 +55,7 @@
       @selected="selected3"
       :defaultIcon="defaultIcon"
       :selectedIcon="selectedIcon"
+      :closeBtnIcon="closeBtnIcon"
     ></nut-address>
 
     <nut-address
@@ -65,11 +66,13 @@
       :city="city"
       :country="country"
       :town="town"
+      :backBtnIcon="backBtnIcon"
       @onChange="onChange4"
       @close="close4"
       @selected="selected4"
       customAndExistTitle="选择其他地址"
       @switchModule="switchModule"
+      @closeMask="closeMask"
     ></nut-address>
   </div>
 </template>
@@ -83,18 +86,18 @@ export default {
         { id: 1, name: '北京' },
         { id: 2, name: '广西' },
         { id: 3, name: '江西' },
-        { id: 4, name: '四川' }
+        { id: 4, name: '四川' },
       ], // 省
       city: [
         { id: 7, name: '朝阳区' },
         { id: 8, name: '崇文区' },
         { id: 9, name: '昌平区' },
-        { id: 6, name: '石景山区' }
+        { id: 6, name: '石景山区' },
       ], // 市
       country: [
         { id: 3, name: '八里庄街道' },
         { id: 9, name: '北苑' },
-        { id: 4, name: '常营乡' }
+        { id: 4, name: '常营乡' },
       ], // 县
       town: [], // 镇
 
@@ -103,6 +106,9 @@ export default {
       showPopupCustomImg: false,
       selectedIcon: require('../../assets/svg/checked.svg'),
       defaultIcon: require('../../assets/svg/unchecked.svg'),
+
+      closeBtnIcon: require('../../assets/svg/close.svg'),
+      backBtnIcon: require('../../assets/svg/back.svg'),
 
       showPopupOther: false,
       existAddress: [
@@ -115,7 +121,7 @@ export default {
           countyName: '广宁街道',
           provinceName: '钓鱼岛全区',
           selectedAddress: false,
-          townName: ''
+          townName: '',
         },
         {
           id: 4,
@@ -124,14 +130,14 @@ export default {
           countyName: '八里庄街道',
           provinceName: '北京',
           selectedAddress: false,
-          townName: ''
-        }
+          townName: '',
+        },
       ],
 
       text1: '请选择地址',
       text2: '请选择地址',
       text3: '请选择地址',
-      text4: '请选择地址'
+      text4: '请选择地址',
     };
   },
   methods: {
@@ -226,45 +232,44 @@ export default {
       } else {
         console.log('点击了自定义地址左上角的返回按钮');
       }
-    }
-  }
+    },
+
+    closeMask(val) {
+      console.log('关闭弹层', val);
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-.demo-list {
-	margin-top: 10px;
+.address-box {
+  margin-top: 10px;
 
-	.address-list {
-		margin-bottom: 10px;
-		background: #fff;
-		border-radius: 4px;
-		font-size: 14px;
-		padding: 10px;
+  .address-list {
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 10px;
 
-		&.init {
-			display: flex;
-
-			.titile {
-				margin-right: 15px;
-			}
-
-			.choose {
-				color: #999;
-			}
-		}
-
-		&.other {
-			display: flex;
-
-			.titile {
-				margin-right: 15px;
-			}
-
-			.choose {
-				color: #999;
-			}
-		}
-	}
+    &.init {
+      display: flex;
+      .titile {
+        margin-right: 15px;
+      }
+      .choose {
+        color: #999;
+      }
+    }
+    &.other {
+      display: flex;
+      .titile {
+        margin-right: 15px;
+      }
+      .choose {
+        color: #999;
+      }
+    }
+  }
 }
 </style>

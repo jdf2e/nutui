@@ -9,24 +9,24 @@ export default {
   props: {
     size: {
       type: String,
-      default: 'small' // [small, middle, big]
+      default: 'small', // [small, middle, big]
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     circle: {
       type: Boolean,
-      default: false
+      default: false,
     },
     hollow: {
       type: Boolean,
-      default: false
+      default: false,
     },
     color: {
       type: String,
-      default: 'red' // [red, jc-blue, green, orange, yellow, blue, purple]
-    }
+      default: 'red', // [red, jc-blue, green, orange, yellow, blue, purple]
+    },
   },
   computed: {
     clsStyle() {
@@ -35,7 +35,7 @@ export default {
             ${this.disabled ? ' disabled' : ''}
             ${this.hollow ? ' hollow' : ''}`;
       return cls;
-    }
+    },
   },
   methods: {
     clickHandler(event) {
@@ -44,7 +44,7 @@ export default {
         return;
       }
       this.$emit('click', event);
-    }
-  }
+    },
+  },
 };
 </script>

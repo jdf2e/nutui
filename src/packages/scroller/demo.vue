@@ -1,9 +1,8 @@
 <template>
   <div class="demo-list">
-    <nut-noticebar
-      :closeMode="true"
-      v-if="!isMobile"
-    >此 Demo 在 PC 端浏览器与移动端浏览器体验差异较大，建议在 Android 或 iOS 设备上体验。</nut-noticebar>
+    <nut-noticebar :closeMode="true" v-if="!isMobile"
+      >此 Demo 在 PC 端浏览器与移动端浏览器体验差异较大，建议在 Android 或 iOS 设备上体验。</nut-noticebar
+    >
     <h4>横向滑动</h4>
     <p>支持惯性和吸边回弹，支持滑动到底跳转链接。</p>
     <p>
@@ -63,13 +62,7 @@
     <h4>纵向不满一屏</h4>
     <p>支持下拉刷新、上拉加载更多。</p>
     <div class="vert-panel">
-      <nut-scroller
-        :is-un-more="isUnMore2"
-        :is-loading="isLoading2"
-        :type="'vertical'"
-        @loadMore="loadMoreVert2"
-        @pulldown="pulldown2"
-      >
+      <nut-scroller :is-un-more="isUnMore2" :is-loading="isLoading2" :type="'vertical'" @loadMore="loadMoreVert2" @pulldown="pulldown2">
         <div slot="list" class="nut-vert-list-panel">
           <div class="nut-vert-list-item" v-for="(item, index) of listData2" :key="index">
             <dl class="nut-scroller-item-info">
@@ -101,7 +94,7 @@ export default {
       page2: 2,
       timers: null,
       scrollTo: 1,
-      scrollToHor: 1
+      scrollToHor: 1,
     };
   },
 
@@ -180,95 +173,95 @@ export default {
         this.listData2 = new Array(10);
         this.page2 = 2;
       }, 300);
-    }
+    },
   },
 
   destroyed() {
     clearTimeout(this.timer);
-  }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .hor-panel {
-	height: 80px;
-	background-color: #e0e0e0;
-	display: flex;
+  height: 80px;
+  background-color: #e0e0e0;
+  display: flex;
 }
 
 .nut-hor-list {
-	.nut-hor-list-item {
-		display: flex;
-		align-content: center;
-		justify-content: center;
-		flex-shrink: 0;
-		width: 180px;
-		height: 60px;
-		padding: 10px;
-		margin-left: 10px;
-		background-color: #fff;
-		color: #000;
-		line-height: 100px;
-	}
+  .nut-hor-list-item {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 180px;
+    height: 60px;
+    padding: 10px;
+    margin-left: 10px;
+    background-color: #fff;
+    color: #000;
+    line-height: 100px;
+  }
 }
 
 .nut-hor-jump-more {
-	display: flex;
-	align-items: center;
-	height: 100%;
-	width: 20px;
-	padding: 0 5px;
-	margin-left: 10px;
-	font-size: 12px;
-	text-align: center;
-	color: $primary-color;
-	background-color: #fff;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 20px;
+  padding: 0 5px;
+  margin-left: 10px;
+  font-size: 12px;
+  text-align: center;
+  color: $primary-color;
+  background-color: #fff;
 }
 
 .nut-scroller-item-img {
-	height: 58px;
-	width: 58px;
-	border-radius: 10px;
-	border: 1px solid #eee;
-	overflow: hidden;
+  height: 58px;
+  width: 58px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  overflow: hidden;
 }
 
 dl,
 dt,
 dd {
-	margin: 0;
+  margin: 0;
 }
 
 .nut-scroller-item-info {
-	flex: 1;
-	padding-left: 10px;
-	line-height: 20px;
+  flex: 1;
+  padding-left: 10px;
+  line-height: 20px;
 
-	dt {
-		font-size: 14px;
-	}
+  dt {
+    font-size: 14px;
+  }
 
-	dd {
-		margin-left: 0;
-		font-size: 12px;
-	}
+  dd {
+    margin-left: 0;
+    font-size: 12px;
+  }
 }
 
 .vert-panel {
-	height: 400px;
-	padding: 10px;
-	background-color: #e1e1e1;
+  height: 400px;
+  padding: 10px;
+  background-color: #e1e1e1;
 }
 
 .nut-vert-list-panel {
-	.nut-vert-list-item {
-		display: flex;
-		height: 60px;
-		padding: 10px;
-		margin-bottom: 10px;
-		//background-color: mix($primary-color, #FFF, 90%);
-		background-color: #fff;
-		color: #000;
-	}
+  .nut-vert-list-item {
+    display: flex;
+    height: 60px;
+    padding: 10px;
+    margin-bottom: 10px;
+    //background-color: mix($primary-color, #FFF, 90%);
+    background-color: #fff;
+    color: #000;
+  }
 }
 </style>

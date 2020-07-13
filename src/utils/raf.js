@@ -4,12 +4,12 @@ function requestAniFrame() {
       window.requestAnimationFrame ||
       window.webkitRequestAnimationFrame ||
       window.mozRequestAnimationFrame ||
-      function(callback) {
+      function (callback) {
         window.setTimeout(callback, 1000 / 60);
       }
     );
   } else {
-    return function(callback) {
+    return function (callback) {
       setTimeout(callback, 1000 / 60);
     };
   }

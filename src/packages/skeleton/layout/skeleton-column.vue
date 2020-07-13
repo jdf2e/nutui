@@ -4,7 +4,7 @@
     :style="{
       width: width,
       padding: padding,
-      'align-items': center
+      'align-items': center,
     }"
   >
     <slot></slot>
@@ -19,16 +19,16 @@ export default {
   props: {
     width: {
       type: String,
-      width: 'auto'
+      width: 'auto',
     },
     padding: {
       type: String,
-      default: '0 0 0 0'
+      default: '0 0 0 0',
     },
     center: {
       type: String,
-      default: 'flex-start'
-    }
-  }
+      default: 'flex-start',
+    },
+  },
 };
 </script>

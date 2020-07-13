@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-steps" :class="{horizontal: direction === 'horizontal'}">
+  <div class="nut-steps" :class="{ horizontal: direction === 'horizontal' }">
     <slot></slot>
   </div>
 </template>
@@ -9,29 +9,29 @@ export default {
   props: {
     current: {
       type: Number,
-      default: 0
+      default: 0,
     },
     timeForward: {
       type: Boolean,
-      default: false
+      default: false,
     },
     direction: {
       type: String,
-      default: 'vertical'
+      default: 'vertical',
     },
     type: {
-      type: String
+      type: String,
     },
     source: {
       type: Array,
       default() {
         return [];
-      }
+      },
     },
   },
   data() {
     return {
-      steps: []
+      steps: [],
     };
   },
   methods: {
@@ -53,10 +53,10 @@ export default {
             }
           }
           if (this.type === 'mini') {
-            child.type = 'mini'
+            child.type = 'mini';
           }
         }
-        
+
         if (index + 1 === total) {
           child.currentStatus += ' nut-step-last';
         }
@@ -67,10 +67,10 @@ export default {
     },
     init() {
       if (this.$slots.default) {
-        this.steps = this.$slots.default.filter(vnode => !!vnode.componentInstance).map(node => node.componentInstance);
+        this.steps = this.$slots.default.filter((vnode) => !!vnode.componentInstance).map((node) => node.componentInstance);
         this.updateChildProps(true);
       }
-    }
+    },
   },
   mounted() {
     this.init();
@@ -83,7 +83,7 @@ export default {
       this.$nextTick(() => {
         this.init();
       });
-    }
-  }
+    },
+  },
 };
 </script>

@@ -109,9 +109,9 @@ $btn-disable-bg: $disabled-bg-color !default;
 $btn-disable-border: $disabled-color !default;
 $btn-icon-margin: 5px;
 $btn-label-light-bg: rgba(240, 37, 15, 0.05);
-$font-size-big:18px;
-$font-size-middle:15px;
-$font-size-small:13px;
+$font-size-big: 18px;
+$font-size-middle: 15px;
+$font-size-small: 13px;
 // ---- z-index ----
 $zindex-mask: 9998 !default;
 $zindex-actionsheet: 10001 !default;
@@ -136,7 +136,7 @@ $badge-font-size: 11px !default;
 $badge-font-color: #fff !default;
 
 // ---- ActionSheet ----
-$as-border-color: rgba(230,230,230,1) !default;
+$as-border-color: rgba(230, 230, 230, 1) !default;
 $as-disable-color: $text-black-4 !default;
 $as-base-color: $text-black-1 !default;
 $as-desc-color: $text-black-3 !default;

@@ -4,7 +4,7 @@ import znCH from './lang/zn-CH';
 let defaultMessages = {};
 
 let merged = false;
-const vueI18nHandler = function() {
+const vueI18nHandler = function () {
   const vuei18n = Object.getPrototypeOf(this || Vue).$t;
   if (typeof vuei18n === 'function' && !!Vue.locale) {
     if (!merged) {
@@ -57,7 +57,7 @@ function getArgType(arg) {
 function simpleTemplate(templ, conf) {
   let pars = templ && templ.match(/{.+?}/g);
   if (pars && conf) {
-    pars = pars.map(p => p.replace(/\{\s*(\w+|\d+).*?\}/, '$1'));
+    pars = pars.map((p) => p.replace(/\{\s*(\w+|\d+).*?\}/, '$1'));
     pars.forEach((c, i) => {
       let reg = new RegExp('{\\s*' + c + '\\s*(?:=\\s*(\\S*?))?\\s*?}', 'g');
       templ = templ.replace(reg, (a, b) => {
