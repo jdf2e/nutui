@@ -5,7 +5,7 @@
       type="number"
       :min="minNum"
       :max="max"
-      :readonly="readonly"
+      :readonly="readonly || !isLegal"
       :value="num | maxv(minNum, max)"
       :style="{ visibility: showNum ? 'visible' : 'hidden' }"
       @input="numchange"
@@ -41,7 +41,8 @@
       <div>{{ animNum[0] }}</div>
       <div>{{ animNum[1] }}</div>
     </div>
-    <span @click="add()" :class="{ 'nut-stepper-grey': max && Number(num) > max - step }" v-html="require('../../assets/svg/plus.svg')"> </span>
+    <span @click="add()" :class="{ 'nut-stepper-grey': (max && Number(num) > max - step) || !isLegal }" v-html="require('../../assets/svg/plus.svg')">
+    </span>
   </div>
 </template>
 <script>
@@ -92,7 +93,8 @@ export default {
       showReduceAnim: false,
       animNum: [this.value, this.value],
       animTranslate_add: 0,
-      animTranslate_: -100
+      animTranslate_: -100,
+      isLegal: true //是否合法 isLegal
     };
   },
   filters: {
@@ -115,8 +117,20 @@ export default {
     },
     min: {
       handler(v, ov) {
+        this.isLegal = true;
         if (v < this.max) {
           this.minNum = v;
+        } else {
+          this.isLegal = false;
+        }
+      },
+      immediate: true
+    },
+    max: {
+      handler(v, ov) {
+        this.isLegal = true;
+        if (v <= this.min) {
+          this.isLegal = false;
         }
       },
       immediate: true
@@ -129,7 +143,7 @@ export default {
   },
   methods: {
     focus(e) {
-      if (this.readonly) return;
+      if (this.readonly || !this.isLegal) return;
       // clear val temporary when focus, e...s
       const v = this.num;
       this.tempNum = v;
@@ -139,7 +153,7 @@ export default {
       this.$emit('focus', e, this.num);
     },
     blur(e) {
-      if (this.readonly) return this.$emit('blur', e, this.num);
+      if (this.readonly || !this.isLegal) return this.$emit('blur', e, this.num);
       let v = e.target.value;
       this.minNum = this.min;
       this.focusing = false;

@@ -7,8 +7,8 @@
       :autoplay="options.autoplay"
       :loop="options.loop"
       :poster="options.poster"
-	    :controls="options.controls"
-	    :preload="options.preload"
+      :controls="options.controls"
+      :preload="options.preload"
       @error="handleError"
     >
       <source v-for="source in sources" :src="source.src" :type="source.type" :key="source.src" />
@@ -68,7 +68,7 @@ export default {
           disabled: false, //禁止操作
           playsinline: false, //行内展示
           touchPlay: false,
-		      preload:''
+          preload: ''
         };
       },
       required: true
@@ -138,7 +138,7 @@ export default {
         this.state.isMuted = val.muted ? val.muted : false;
       },
       immediate: true
-    },
+    }
     // model: {
     //     handler(val) {
     //         if (val) {

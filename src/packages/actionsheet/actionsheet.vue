@@ -82,12 +82,21 @@ export default {
         if (value) {
           document.body.classList.add('nut-overflow-hidden');
         } else {
-          document.body.classList.remove('nut-overflow-hidden');
+          this.remolveLockScrool();
         }
       }
     }
   },
+  deactivated() {
+    this.remolveLockScroll();
+  },
+  destroyed() {
+    this.remolveLockScroll();
+  },
   methods: {
+    remolveLockScroll() {
+      document.body.classList.remove('nut-overflow-hidden');
+    },
     isHighlight(item) {
       return (this.chooseTagValue && this.chooseTagValue == item[this.optionTag]) || this.chooseTagValue === 0;
     },

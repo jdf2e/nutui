@@ -160,6 +160,7 @@ export default {
 | type | 页签栏的样式 based/card：based是默认样式如吸底样式，card类型每个卡片间有边界线 | String | based
 | tabbar-list | 渲染数据 ，兼容 tabbar-list 和 tabbarList| Array | []
 | bottom | 是否固定在页面底部 |Booble|false|
+| replace | replace为true的时候，跳转url以替换的形式进行 |Boolean|false|
 
 ### tabbar-list
 

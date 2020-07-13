@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>图标文本标签栏</h4>
     <nut-tabbar @tab-switch="tabSwitch1" type="card" :tabbar-list="tabList1"></nut-tabbar>
     <h4>带有tips的文本标签栏</h4>
@@ -57,7 +57,7 @@ export default {
           curr: true,
           icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/115926/10/6303/6603/5eb93bdeE8951c288/d277b2a668645e73.png',
           activeIcon: 'https://img12.360buyimg.com/imagetools/jfs/t1/126024/30/1055/6952/5eb93be3E45d921c4/3060f25d49fc4ae7.png',
-          href: '###'
+          href: 'https://m.jd.com'
         },
         {
           tabTitle: '分类',
@@ -79,14 +79,14 @@ export default {
           num: 2,
           icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/126465/3/1055/5848/5eb93f31E0ce4f65b/087c08eaeef97b64.png',
           activeIcon: 'https://img10.360buyimg.com/imagetools/jfs/t1/111251/23/6376/6446/5eb93f2dE659da502/41fea546d36b8aaa.png',
-          href: '###'
+          href: 'https://m.jd.com'
         },
         {
           tabTitle: '我的',
           curr: false,
           icon: 'http://img20.360buyimg.com/uba/jfs/t1/20004/20/1045/3620/5c0f3d61Eaaec1670/9e59db63983b7b9f.jpg',
           activeIcon: 'http://img14.360buyimg.com/uba/jfs/t1/23967/14/1072/6714/5c0f3d61E0ad8991e/8f741953f6e38f15.jpg',
-          href: '###'
+          href: 'https://m.jd.com'
         }
       ]
     };

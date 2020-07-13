@@ -3,10 +3,9 @@
     <a
       class="tabbar-nav"
       v-for="(value, index) in tabList"
-      :class="[{ 'curr': index == currIndex }, type]"
+      :class="[{ curr: index == currIndex }, type]"
       :key="value.tabTitle"
       v-on:click="switchTabs(value, index)"
-      :href="value.href"
     >
       <span class="icon-box">
         <b class="tips num" v-if="value.num && value.num <= 99">{{ value.num }}</b>
@@ -36,6 +35,10 @@ export default {
     type: {
       type: String,
       default: 'based'
+    },
+    replace: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -44,7 +47,7 @@ export default {
       tabList: this.tabbarList
     };
   },
-  mounted(){
+  mounted() {
     this.initBar();
   },
   watch: {
@@ -57,17 +60,24 @@ export default {
     }
   },
   methods: {
-    initBar(){
-      this.tabList.forEach((item,index)=>{
-        if(item.curr){
-            this.currIndex = index;
+    initBar() {
+      this.tabList.forEach((item, index) => {
+        if (item.curr) {
+          this.currIndex = index;
         }
-      })
+      });
     },
     switchTabs: function(value, index) {
       this.currIndex = index;
+      if (this.replace) {
+        //替换url
+        window.location.replace(value.href);
+      } else {
+        if (value.href) {
+          window.location.href = value.href;
+        }
+      }
       this.$emit('tab-switch', value, index);
-      this.$emit('tabSwitch', value, index); //兼容以前驼峰法
     }
   }
 };

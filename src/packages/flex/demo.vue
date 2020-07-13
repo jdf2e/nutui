@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>基础布局</h4>
     <div class="box-item">
       <nut-row>

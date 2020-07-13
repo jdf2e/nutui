@@ -133,7 +133,8 @@ export default {
   :isShowCustomAddress="false" 
   @selected="selected3" 
   :defaultIcon="defaultIcon" 
-  :selectedIcon='selectedIcon'>
+  :selectedIcon='selectedIcon'
+  :closeBtnIcon="closeBtnIcon">
 </nut-address>
 
 ```
@@ -146,6 +147,7 @@ export default {
         showPopupCustomImg:false,
         selectedIcon:require('../../assets/svg/checked.svg'),
         defaultIcon:require('../../assets/svg/unchecked.svg'),
+        closeBtnIcon: require('../../assets/svg/close.svg'),
         existAddress:[
           {"id":1,"addressDetail":"th ","cityName":"石景山区","countyName":"城区","provinceName":"北京","selectedAddress":true,"townName":""},
           {"id":2,"addressDetail":"12_ ","cityName":"电饭锅","countyName":"扶绥县","provinceName":"北京","selectedAddress":false,"townName":""},
@@ -200,11 +202,13 @@ export default {
     :city="city" 
     :country="country" 
     :town="town" 
+    :backBtnIcon="backBtnIcon"
     customAndExistTitle="选择其他地址"
     @onChange="onChange4" 
     @close="close4" 
     @selected="selected4"
-    @switchModule="switchModule">
+    @switchModule="switchModule"
+    @closeMask="closeMask">
 </nut-address>
 
 
@@ -225,6 +229,7 @@ export default {
       city:[{"id":7,"name":"朝阳区"},{"id":8,"name":"崇文区"},{"id":9,"name":"昌平区"},{"id":6,"name":"石景山区"}],// 市
       country:[{"id":3,"name":"八里庄街道"},{"id":9,"name":"北苑"},{"id":4,"name":"常营乡"}],// 县
       town:[], // 镇 必传值：name
+      backBtnIcon: require('../../assets/svg/back.svg'),
     };
   },
   methods: {
@@ -249,12 +254,14 @@ export default {
       console.log(nowExistAdd)
     },
     switchModule(cal){
-        
         if(cal.type == 'custom'){
           console.log('点击了“选择其他地址”按钮')
         } else {
           console.log('点击了自定义地址左上角的返回按钮')
         }
+    },
+    closeMask(val){
+      console.log('关闭弹层',val)
     }
   }
 }
@@ -274,6 +281,8 @@ export default {
 | existAddress | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | []
 | defaultIcon | 已有地址列表默认图标，type=‘exist’ 时生效 | string | ''
 | selectedIcon | 已有地址列表选中图标，type=‘exist’ 时生效 | string | ''
+| closeBtnIcon | 自定义关闭弹框按钮图标 | string | -
+| backBtnIcon | 自定义地址与已有地址切换时，自定义返回的按钮图标 | string | -
 | isShowCustomAddress | 是否可以切换自定义地址选择，type=‘exist’ 时生效 | Boolean | true
 | customAddressTitle  | 自定义地址选择文案，type='custom' 时生效 | string | '请选择所在地区'
 | existAddressTitle| 已有地址文案 ，type=‘exist’ 时生效| string | '配送至'
@@ -293,6 +302,7 @@ export default {
 | onChange | 自定义选择地址时，选择地区时触发 |  参考 onChange
 | selected | 选择已有地址列表时触发 | 参考 selected
 | close | 地址选择弹框关闭时触发 | 参考 close
+| closeMask | 点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'}
 | switchModule | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'}
 
 
@@ -316,4 +326,3 @@ export default {
 | type | 地址选择类型 exist/custom  |  exist/custom
 | data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | {} 
 
-注：点击叉号或者点击遮罩层关闭地址选择，不会触发 close 事件。

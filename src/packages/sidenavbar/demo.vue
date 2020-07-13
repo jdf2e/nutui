@@ -9,16 +9,16 @@
       </nut-cell>
       <nut-popup position="right" v-model="show1" :style="{ width, height }">
         <nut-sidenavbar :show="show1">
-            <nut-subsidenavbar title="智能城市AI" ikey="6">
-                <nut-subsidenavbar title="人体识别1" ikey="9">
-                    <nut-sidenavbaritem ikey="10" title="人体检测1"></nut-sidenavbaritem>
-                    <nut-sidenavbaritem ikey="11" title="细粒度人像分割1"></nut-sidenavbaritem>
-                </nut-subsidenavbar>
-                <nut-subsidenavbar title="人体识别2" ikey="12">
-                    <nut-sidenavbaritem ikey="13" title="人体检测2"></nut-sidenavbaritem>
-                    <nut-sidenavbaritem ikey="14" title="细粒度人像分割2"></nut-sidenavbaritem>
-                </nut-subsidenavbar>
+          <nut-subsidenavbar title="智能城市AI" ikey="6">
+            <nut-subsidenavbar title="人体识别1" ikey="9">
+              <nut-sidenavbaritem ikey="10" title="人体检测1"></nut-sidenavbaritem>
+              <nut-sidenavbaritem ikey="11" title="细粒度人像分割1"></nut-sidenavbaritem>
             </nut-subsidenavbar>
+            <nut-subsidenavbar title="人体识别2" ikey="12">
+              <nut-sidenavbaritem ikey="13" title="人体检测2"></nut-sidenavbaritem>
+              <nut-sidenavbaritem ikey="14" title="细粒度人像分割2"></nut-sidenavbaritem>
+            </nut-subsidenavbar>
+          </nut-subsidenavbar>
         </nut-sidenavbar>
       </nut-popup>
     </div>

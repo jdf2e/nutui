@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="demo-list-pd">
     <!-- DEMO区域 -->
     <h4>默认用法</h4>
     <nut-tab @tab-switch="tabSwitch">
-        <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
-        <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
-        <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
-        <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
+      <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
+      <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
+      <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
+      <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
     </nut-tab>
 
     <h4>支持导航条在上下左右位置</h4>
@@ -37,7 +37,7 @@
         v-html="value.content"
       ></nut-tab-panel>
     </nut-tab>
-    
+
     <nut-tab @tab-switch="tabSwitch" position-nav="bottom">
       <nut-tab-panel
         v-for="value in editableTabs"
@@ -50,25 +50,25 @@
 
     <h4>支持滑动选择多个页签</h4>
     <nut-tab @tab-switch="tabSwitch" :is-scroll="true">
-        <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
-        <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
-        <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
-        <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
-        <nut-tab-panel tab-title="页签5">页签5</nut-tab-panel>
-        <nut-tab-panel tab-title="页签6">页签6</nut-tab-panel>
-        <nut-tab-panel tab-title="页签7">页签7</nut-tab-panel>
+      <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
+      <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
+      <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
+      <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
+      <nut-tab-panel tab-title="页签5">页签5</nut-tab-panel>
+      <nut-tab-panel tab-title="页签6">页签6</nut-tab-panel>
+      <nut-tab-panel tab-title="页签7">页签7</nut-tab-panel>
     </nut-tab>
 
     <h4>支持滑动选择多个页签,设置tab高度为250</h4>
     <nut-tab @tab-switch="tabSwitch" :is-scroll="true" position-nav="left" :wrapper-height="250">
-        <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
-        <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
-        <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
-        <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
-        <nut-tab-panel tab-title="页签5">页签5</nut-tab-panel>
-        <nut-tab-panel tab-title="页签6">页签6</nut-tab-panel>
-        <nut-tab-panel tab-title="页签7">页签7</nut-tab-panel>
-        <nut-tab-panel tab-title="页签8">页签8</nut-tab-panel>
+      <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
+      <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
+      <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
+      <nut-tab-panel tab-title="页签4">页签4</nut-tab-panel>
+      <nut-tab-panel tab-title="页签5">页签5</nut-tab-panel>
+      <nut-tab-panel tab-title="页签6">页签6</nut-tab-panel>
+      <nut-tab-panel tab-title="页签7">页签7</nut-tab-panel>
+      <nut-tab-panel tab-title="页签8">页签8</nut-tab-panel>
     </nut-tab>
 
     <h4>禁止选中，默认选中某个标签</h4>
@@ -92,129 +92,112 @@
 
 <script>
 export default {
-  components:{
-  },
+  components: {},
   data() {
     return {
-      defIndex:1,
-      positionNavCurr: "top",
+      defIndex: 1,
+      positionNavCurr: 'top',
       editableTabs: [
         {
-          tabTitle: "衣物",
-          iconUrl:
-            "http://img13.360buyimg.com/uba/jfs/t27280/289/2061314663/2392/872e32ff/5bf76318Ndc80c1d8.jpg",
-          content: "<p>衣物内容</p>"
+          tabTitle: '衣物',
+          iconUrl: 'http://img13.360buyimg.com/uba/jfs/t27280/289/2061314663/2392/872e32ff/5bf76318Ndc80c1d8.jpg',
+          content: '<p>衣物内容</p>'
         },
         {
-          tabTitle: "日用品",
-          iconUrl:
-            "http://img13.360buyimg.com/uba/jfs/t30331/209/562746340/2190/6619973d/5bf763aaN6ff02099.jpg",
-          content: "<p>日用品内容</p>"
+          tabTitle: '日用品',
+          iconUrl: 'http://img13.360buyimg.com/uba/jfs/t30331/209/562746340/2190/6619973d/5bf763aaN6ff02099.jpg',
+          content: '<p>日用品内容</p>'
         },
         {
-          tabTitle: "器材",
-          iconUrl:
-            "http://img20.360buyimg.com/uba/jfs/t30346/262/553689202/2257/5dfa3983/5bf76407N72deabf4.jpg",
-          content: "<p>运动器材内容</p>"
+          tabTitle: '器材',
+          iconUrl: 'http://img20.360buyimg.com/uba/jfs/t30346/262/553689202/2257/5dfa3983/5bf76407N72deabf4.jpg',
+          content: '<p>运动器材内容</p>'
         },
         {
-          tabTitle: "电影票",
-          iconUrl:
-            "http://img10.360buyimg.com/uba/jfs/t26779/215/2118525153/2413/470d1613/5bf767b2N075957b7.jpg",
-          content: "<p>电影票内容</p>"
+          tabTitle: '电影票',
+          iconUrl: 'http://img10.360buyimg.com/uba/jfs/t26779/215/2118525153/2413/470d1613/5bf767b2N075957b7.jpg',
+          content: '<p>电影票内容</p>'
         }
       ],
       disableTabs: [
         {
-          tabTitle: "衣物",
+          tabTitle: '衣物',
           disable: false,
-          iconUrl:
-            "http://img13.360buyimg.com/uba/jfs/t27280/289/2061314663/2392/872e32ff/5bf76318Ndc80c1d8.jpg",
-          content: "<p>衣物内容</p>"
+          iconUrl: 'http://img13.360buyimg.com/uba/jfs/t27280/289/2061314663/2392/872e32ff/5bf76318Ndc80c1d8.jpg',
+          content: '<p>衣物内容</p>'
         },
         {
-          tabTitle: "日用品",
-          iconUrl:
-            "http://img13.360buyimg.com/uba/jfs/t30331/209/562746340/2190/6619973d/5bf763aaN6ff02099.jpg",
-          content: "<p>日用品内容</p>"
+          tabTitle: '日用品',
+          iconUrl: 'http://img13.360buyimg.com/uba/jfs/t30331/209/562746340/2190/6619973d/5bf763aaN6ff02099.jpg',
+          content: '<p>日用品内容</p>'
         },
         {
-          tabTitle: "运动器材",
-          iconUrl:
-            "http://img20.360buyimg.com/uba/jfs/t30346/262/553689202/2257/5dfa3983/5bf76407N72deabf4.jpg",
-          content: "<p>运动器材内容</p>"
+          tabTitle: '运动器材',
+          iconUrl: 'http://img20.360buyimg.com/uba/jfs/t30346/262/553689202/2257/5dfa3983/5bf76407N72deabf4.jpg',
+          content: '<p>运动器材内容</p>'
         },
         {
-          tabTitle: "电影票",
-          iconUrl:
-            "http://img10.360buyimg.com/uba/jfs/t26779/215/2118525153/2413/470d1613/5bf767b2N075957b7.jpg",
-          content: "<p>电影票内容</p>"
+          tabTitle: '电影票',
+          iconUrl: 'http://img10.360buyimg.com/uba/jfs/t26779/215/2118525153/2413/470d1613/5bf767b2N075957b7.jpg',
+          content: '<p>电影票内容</p>'
         }
       ]
     };
   },
   methods: {
     tabSwitch: function(index, event) {
-      console.log(index + "--" + event);
+      console.log(index + '--' + event);
       //this.defIndex = index;
     },
-    clickHandler:function(){
+    clickHandler: function() {
       let newEditableTabs = [
         {
-          tabTitle: "衣物2",
-          iconUrl:
-            "http://img13.360buyimg.com/uba/jfs/t27280/289/2061314663/2392/872e32ff/5bf76318Ndc80c1d8.jpg",
-          content: "<p>改变衣物内容</p>"
+          tabTitle: '衣物2',
+          iconUrl: 'http://img13.360buyimg.com/uba/jfs/t27280/289/2061314663/2392/872e32ff/5bf76318Ndc80c1d8.jpg',
+          content: '<p>改变衣物内容</p>'
         },
         {
-          tabTitle: "日用品2",
-          iconUrl:
-            "http://img13.360buyimg.com/uba/jfs/t30331/209/562746340/2190/6619973d/5bf763aaN6ff02099.jpg",
-          content: "<p>改变日用品内容</p>"
+          tabTitle: '日用品2',
+          iconUrl: 'http://img13.360buyimg.com/uba/jfs/t30331/209/562746340/2190/6619973d/5bf763aaN6ff02099.jpg',
+          content: '<p>改变日用品内容</p>'
         },
         {
-          tabTitle: "器材2",
-          iconUrl:
-            "http://img20.360buyimg.com/uba/jfs/t30346/262/553689202/2257/5dfa3983/5bf76407N72deabf4.jpg",
-          content: "<p>改变运动器材内容</p>"
+          tabTitle: '器材2',
+          iconUrl: 'http://img20.360buyimg.com/uba/jfs/t30346/262/553689202/2257/5dfa3983/5bf76407N72deabf4.jpg',
+          content: '<p>改变运动器材内容</p>'
         },
         {
-          tabTitle: "电影票2",
-          iconUrl:
-            "http://img10.360buyimg.com/uba/jfs/t26779/215/2118525153/2413/470d1613/5bf767b2N075957b7.jpg",
-          content: "<p>改变电影票内容</p>"
+          tabTitle: '电影票2',
+          iconUrl: 'http://img10.360buyimg.com/uba/jfs/t26779/215/2118525153/2413/470d1613/5bf767b2N075957b7.jpg',
+          content: '<p>改变电影票内容</p>'
         }
-      ]
+      ];
       this.disableTabs = newEditableTabs;
     },
-    resetHandler:function(){
-        let newEditableTabs = [
+    resetHandler: function() {
+      let newEditableTabs = [
         {
-          tabTitle: "衣物",
+          tabTitle: '衣物',
           disable: false,
-          iconUrl:
-            "http://img13.360buyimg.com/uba/jfs/t27280/289/2061314663/2392/872e32ff/5bf76318Ndc80c1d8.jpg",
-          content: "<p>衣物内容</p>"
+          iconUrl: 'http://img13.360buyimg.com/uba/jfs/t27280/289/2061314663/2392/872e32ff/5bf76318Ndc80c1d8.jpg',
+          content: '<p>衣物内容</p>'
         },
         {
-          tabTitle: "日用品",
-          iconUrl:
-            "http://img13.360buyimg.com/uba/jfs/t30331/209/562746340/2190/6619973d/5bf763aaN6ff02099.jpg",
-          content: "<p>日用品内容</p>"
+          tabTitle: '日用品',
+          iconUrl: 'http://img13.360buyimg.com/uba/jfs/t30331/209/562746340/2190/6619973d/5bf763aaN6ff02099.jpg',
+          content: '<p>日用品内容</p>'
         },
         {
-          tabTitle: "运动器材",
-          iconUrl:
-            "http://img20.360buyimg.com/uba/jfs/t30346/262/553689202/2257/5dfa3983/5bf76407N72deabf4.jpg",
-          content: "<p>运动器材内容</p>"
+          tabTitle: '运动器材',
+          iconUrl: 'http://img20.360buyimg.com/uba/jfs/t30346/262/553689202/2257/5dfa3983/5bf76407N72deabf4.jpg',
+          content: '<p>运动器材内容</p>'
         },
         {
-          tabTitle: "电影票",
-          iconUrl:
-            "http://img10.360buyimg.com/uba/jfs/t26779/215/2118525153/2413/470d1613/5bf767b2N075957b7.jpg",
-          content: "<p>电影票内容</p>"
+          tabTitle: '电影票',
+          iconUrl: 'http://img10.360buyimg.com/uba/jfs/t26779/215/2118525153/2413/470d1613/5bf767b2N075957b7.jpg',
+          content: '<p>电影票内容</p>'
         }
-      ]
+      ];
       this.disableTabs = newEditableTabs;
     }
   }
@@ -229,7 +212,7 @@ export default {
   .nut-title-nav-list {
     background: #fff;
     border-left: 1px solid #e4e7ed;
-    &:first-child{
+    &:first-child {
       border-left: 0;
     }
   }
@@ -237,7 +220,6 @@ export default {
     background: $primary-color;
     border: 0;
     transition: all 0.3s ease-in-out;
-
   }
   .nav-bar {
     background: $primary-color;
@@ -247,4 +229,3 @@ export default {
   }
 }
 </style>
-

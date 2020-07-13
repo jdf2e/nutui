@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <nut-cell isLink title="展示单选弹出层" :showIcon="true" @click.native="show = true"> </nut-cell>
     <nut-tabselect
       :mainTitle="mainTitle"

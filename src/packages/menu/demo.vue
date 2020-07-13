@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <h4>单选</h4>
     <div class="list list1">
       <span slot="title" @click="switchMenu('isVisible1', 1)" ref="title1">综合</span>

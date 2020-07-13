@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-list">
     <nut-elevator
       :dataArray="dataList"
       :showIndicator="true"

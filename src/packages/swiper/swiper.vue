@@ -1,18 +1,26 @@
 <template>
-  <div class="nut-swiper" :class="[direction, { dragging: dragging }]" @touchstart="_onTouchStart($event)"
-    @mousedown="_onTouchStart($event)">
-    <div class="nut-swiper-wrap" :style="{
+  <div class="nut-swiper" :class="[direction, { dragging: dragging }]" @touchstart="_onTouchStart($event)" @mousedown="_onTouchStart($event)">
+    <div
+      class="nut-swiper-wrap"
+      :style="{
         transform: 'translate3d(' + translateX + 'px,' + translateY + 'px,0)',
         'transition-duration': transitionDuration + 'ms',
         '-webkit-transform': 'translate3d(' + translateX + 'px,' + translateY + 'px,0)',
         '-webkit-transition-duration': transitionDuration + 'ms',
         'transition-timing-function': 'ease'
-      }" @transitionend="_onTransitionEnd">
+      }"
+      @transitionend="_onTransitionEnd"
+    >
       <slot></slot>
     </div>
     <div class="nut-swiper-pagination" v-show="paginationVisible">
-      <span class="swiper-pagination-bullet" :class="{ active: index + 1 === currentPage }"
-        v-for="(slide, index) in slideEls" :key="index" @click="paginationClickable && setPage(index + 1, true)">
+      <span
+        class="swiper-pagination-bullet"
+        :class="{ active: index + 1 === currentPage }"
+        v-for="(slide, index) in slideEls"
+        :key="index"
+        @click="paginationClickable && setPage(index + 1, true)"
+      >
       </span>
     </div>
   </div>

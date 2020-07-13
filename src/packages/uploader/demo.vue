@@ -95,11 +95,11 @@
     <div>
       <transition name="fade">
         <div class="preview-box">
-          <div class="img-outbox" v-for="(item,index) in previewImg" :key="index">
+          <div class="img-outbox" v-for="(item, index) in previewImg" :key="index">
             <img class="img-box" v-if="item" :src="item" alt />
           </div>
         </div>
-    </transition>
+      </transition>
       <nut-cell>
         <span slot="title">
           <nut-uploader
@@ -155,7 +155,6 @@
       </span>
       <div slot="desc"></div>
     </nut-cell>
-    
   </div>
 </template>
 
@@ -226,9 +225,9 @@ export default {
     progress(file, loaded, total) {
       this.progressNum = parseInt((100 * loaded) / total);
     },
-    preview(file) {      
+    preview(file) {
       let previewImg = this.previewImg;
-      this.previewImg = [...previewImg,...file];      
+      this.previewImg = [...previewImg, ...file];
     },
     showMsg1(msg) {
       this.$toast.text(msg);
@@ -284,7 +283,7 @@ export default {
   max-height: 100%;
   border-radius: 6px;
 }
-.preview-box{
+.preview-box {
   display: flex;
   padding-bottom: 10px;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="luckDrawBox">
+  <div class="luckDrawBox demo-list">
     <h4>基本用法</h4>
     <div>
       <nut-cell>

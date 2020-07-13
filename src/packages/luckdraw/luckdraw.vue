@@ -99,9 +99,9 @@ export default {
       ctx.strokeStyle = borderColor; // 设置画图线的颜色
       for (let index = 0; index < prizeNum; index++) {
         const angle = index * baseAngle;
-        if(this.prizeList[index]['prizeColor']) {
+        if (this.prizeList[index]['prizeColor']) {
           ctx.fillStyle = this.prizeList[index]['prizeColor']; //设置每个扇形区域的颜色,根据每条数据中单独设置的优先
-        }else {
+        } else {
           ctx.fillStyle = prizeBgColors[index]; //设置每个扇形区域的颜色
         }
         ctx.beginPath(); //开始绘制

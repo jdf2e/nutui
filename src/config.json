@@ -1,13 +1,5 @@
 {
-  "sorts": [
-    "数据展示",
-    "数据录入",
-    "操作反馈",
-    "导航组件",
-    "布局组件",
-    "基础组件",
-    "业务组件"
-  ],
+  "sorts": ["数据展示", "数据录入", "操作反馈", "导航组件", "布局组件", "基础组件", "业务组件"],
   "packages": [
     {
       "name": "Cell",
@@ -651,6 +643,15 @@
       "sort": "0",
       "showDemo": true,
       "author": "yumingming"
+    },
+    {
+      "name": "FixedNav",
+      "type": "component",
+      "chnName": "悬浮导航",
+      "desc": "拖拽导航",
+      "sort": "3",
+      "showDemo": true,
+      "author": "richard1015"
     }
   ]
 }

@@ -119,15 +119,20 @@ import './packages/subsidenavbar/subsidenavbar.scss';
 import SideNavBarItem from './packages/sidenavbaritem/index.js';
 import './packages/sidenavbaritem/sidenavbaritem.scss';
 import Drag from './packages/drag/index.js';
-import './packages/drag/drag.scss'; // import VueQr from "./packages/qart/index.js";
+import './packages/drag/drag.scss'; 
+// import VueQr from "./packages/qart/index.js";
 // import "./packages/qart/qart.scss";
 
 import Address from './packages/address/index.js';
 import './packages/address/address.scss';
-import Notify from "./packages/notify/index.js";
-import "./packages/notify/notify.scss";
-import CountUp from "./packages/countup/index.js";
-import "./packages/countup/countup.scss";
+import Notify from './packages/notify/index.js';
+import './packages/notify/notify.scss';
+import CountUp from './packages/countup/index.js';
+import './packages/countup/countup.scss';
+import FixedNav from './packages/fixednav/index.js';
+import './packages/fixednav/fixednav.scss';
+// import Gesture from './packages/gesture/index.js';
+// import './packages/gesture/gesture.scss';
 
 const packages = {
   Cell,
@@ -178,20 +183,22 @@ const packages = {
   Elevator,
   Popup,
   LeftSlip,
-  TabSelect: TabSelect,
-  LuckDraw: LuckDraw,
-  Video: Video,
-  Signature: Signature,
-  CircleProgress: CircleProgress,
-  TimeLine: TimeLine,
-  TimeLineItem: TimeLineItem,
-  SideNavBar: SideNavBar,
-  SubSideNavBar: SubSideNavBar,
-  SideNavBarItem: SideNavBarItem,
-  Drag: Drag,
-  Address: Address,
-  Notify: Notify,
-  CountUp: CountUp
+  TabSelect,
+  LuckDraw,
+  Video,
+  Signature,
+  CircleProgress,
+  TimeLine,
+  TimeLineItem,
+  SideNavBar,
+  SubSideNavBar,
+  SideNavBarItem,
+  Drag,
+  Address,
+  Notify,
+  CountUp,
+  FixedNav,
+  // Gesture: Gesture
 };
 
 const components = {};
@@ -219,7 +226,7 @@ pkgList.map(item => {
   }
 });
 
-const install = function (Vue, opts = {}) {
+const install = function(Vue, opts = {}) {
   if (install.installed) return;
 
   if (opts.locale) {

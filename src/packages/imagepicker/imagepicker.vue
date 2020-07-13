@@ -123,8 +123,8 @@ export default {
           reader.readAsDataURL(item);
         });
         self.$emit('imgMsg', {
-            code: 2,
-            msg: fileArr
+          code: 2,
+          msg: fileArr
         });
       }
     },
