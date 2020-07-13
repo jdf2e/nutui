@@ -131,7 +131,7 @@ export default {
       if (this.opened) {
         return;
       }
-      if(this.closeOnClickOverlay){
+      if(this.destroyOnClose){
         this.showSlot = true;
       }
       this.opened = true;
@@ -207,7 +207,7 @@ export default {
           document.body.classList.remove('nut-overflow-hidden');
         }
       } 
-      if(this.closeOnClickOverlay){
+      if(this.destroyOnClose){
         setTimeout(()=>{
           this.showSlot = false;
         },this.duration*1000)        
