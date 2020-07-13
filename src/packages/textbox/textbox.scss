@@ -29,6 +29,11 @@
         	span{
         		color:#e2231a;
         	}
-        }
+		}
+		&.disabled  {
+			background-color: #f5f7fa !important;
+			border-color: #e5e7ed;
+			color: #999;
+		}
     }
 }
