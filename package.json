@@ -21,7 +21,6 @@
     "test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config node_modules/@nutui/cli/dist_cli/webpack/test.config.js  --require node_modules/@nutui/cli/dist_cli/test/setup.js src/packages/navbar/__test__/**.spec.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "test:watch": "npm run test --watch",
-    "prettier:fix": "prettier --write src/**/*.{js,vue,scss}",
     "upload:test": "node test_script/upload.js"
   },
   "repository": {
@@ -36,14 +35,12 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
-    "src/**/*.{js,vue,scss}": [
-      "prettier --write src/**/*.{js,vue,scss}",
-      "git add"
-    ]
+    "*.{ts,js,vue,scss}": "prettier --write"
   },
   "stylelint": {
     "extends": [
@@ -89,6 +86,7 @@
     "husky": "^3.0.0",
     "mutation-observer": "^1.0.3",
     "prettier": "^2.0.5",
+    "lint-staged": "^10.2.11",
     "stylelint-config-standard": "^19.0.0"
   },
   "nyc": {
