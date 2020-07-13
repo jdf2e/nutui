@@ -131,7 +131,9 @@ export default {
       if (this.opened) {
         return;
       }
-
+      if(this.closeOnClickOverlay){
+        this.showSlot = true;
+      }
       this.opened = true;
       this.$emit('open');
 
@@ -204,7 +206,13 @@ export default {
         if (!overlayManager.lockCount) {
           document.body.classList.remove('nut-overflow-hidden');
         }
+      } 
+      if(this.closeOnClickOverlay){
+        setTimeout(()=>{
+          this.showSlot = false;
+        },this.duration*1000)        
       }
+      
 
       overlayManager.closeOverlay(this);
       this.$emit('input', false);
