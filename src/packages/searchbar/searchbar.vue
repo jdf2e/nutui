@@ -108,7 +108,6 @@ export default {
   methods: {
     updateValue(trigger = 'input') {
       let searchInputValue = trigger == 'change' ? this.value : this.$refs.searchInput.value;
-      console.log(searchInputValue);
       this.$emit(trigger, searchInputValue);
     },
     //清空 input 输入
