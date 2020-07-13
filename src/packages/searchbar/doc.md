@@ -151,6 +151,7 @@ export default {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
+| vaule | 当前input值，可使用 v-model 双向绑定数据 | String | ''
 | hasIcon | 是否显示输入框前面的 icon | Boolean | false
 | placeText | 输入框 placeholder 内容 | String | '请输入内容...'
 | inputAlign | 输入框内容的对齐方式，可选值：left/center/right| String | left
@@ -180,4 +181,5 @@ export default {
 | blur | 输入框失去焦点时触发事件 | 无
 | submit | 默认提交事件，点击右侧Icon或文字也会触发 | 无
 | handleAction | 点击输入框右侧图标触发 | 无
+| clear | 清空事件 | 无
 

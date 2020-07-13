@@ -2,10 +2,10 @@
   <div :class="['nut-searchbar', customClass ? customClass : '']">
     <div class="search-input" :class="[animation ? 'nut-search-ani' : '', inputFocusAnimation ? 'focus' : '']">
       <form action="javascript:return true" id="input-form">
-        <nut-icon class="search-icon" type="search3" v-if="hasIcon" :size="searchIconSize" :color="searchIconColor"></nut-icon>
+        <nut-icon class="search-icon" type="search3" v-if="hasIcon" :size="searchIconSize" :color="searchIconColor"> </nut-icon>
         <input
           type="search"
-          v-model="value"
+          :value="value"
           :class="[inputAlign]"
           :placeholder="placeText || nutTranslate('lang.searchbar.placeText')"
           @keyup.enter="submitFun"
@@ -21,7 +21,7 @@
         <!-- input右侧事件 -- 默认 二维码 -->
         <span class="input-right custom-icon" v-if="hasAction" @click="handleAction">
           <nut-icon v-if="hasAction && actionIcon == ''" type="qr" :size="actionIconSize"></nut-icon>
-          <nut-icon v-if="hasAction && actionIcon != ''" type="self" :url="actionIcon" :size="actionIconSize"></nut-icon>
+          <nut-icon v-if="hasAction && actionIcon != ''" type="self" :url="actionIcon" :size="actionIconSize"> </nut-icon>
         </span>
       </form>
     </div>
@@ -119,38 +119,52 @@ export default {
       type: String,
       default: '',
     },
+    value: {
+      type: String,
+      default: '',
+    },
   },
   components: {
     [nuticon.name]: nuticon,
   },
   data() {
     return {
-      value: '', //输入值
-      hasCloseIcon: false,
       inputFocusAnimation: false,
     };
   },
-  computed: {},
+  watch: {
+    value(newValue, oldValue) {
+      this.updateValue('change');
+    },
+  },
+  computed: {
+    hasCloseIcon() {
+      return this.value ? true : false;
+    },
+  },
   methods: {
+    updateValue(trigger = 'input') {
+      let searchInputValue = trigger == 'change' ? this.value : this.$refs.searchInput.value;
+      this.$emit(trigger, searchInputValue);
+    },
     //清空 input 输入
     clearInput() {
-      this.value = '';
-      this.hasCloseIcon = false;
+      this.$emit('clear', '');
+      this.$emit('input', '');
     },
     focusFun() {
       this.inputFocusAnimation = true;
       this.$emit('focus');
     },
     inputFun() {
-      this.hasCloseIcon = this.value ? true : false;
-      this.$emit('input', this.value);
+      this.updateValue();
     },
     blurFun() {
       this.inputFocusAnimation = false;
-      this.$emit('blur', this.value);
+      this.updateValue('blur');
     },
     submitFun() {
-      this.$emit('submit', this.value);
+      this.updateValue('submit');
     },
     // 失去焦点
     blur() {
@@ -164,7 +178,7 @@ export default {
     },
 
     handleAction() {
-      this.$emit('handleAction', this.value);
+      this.$emit('handle-action', this.value);
     },
   },
 };
