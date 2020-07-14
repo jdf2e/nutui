@@ -34,8 +34,8 @@
 ## 限制字数不可超出
 
 ```html
-<nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="2" textBgColor="#efefef" v-model="val2">
-</nut-textbox>
+<nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="100" textBgColor="#efefef" v-model="val3"></nut-textbox>
+
 ```
 
 ## 字数超出报错

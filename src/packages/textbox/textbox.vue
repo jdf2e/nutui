@@ -7,7 +7,6 @@
         v-model="currentValue"
         :disabled="disabled"
         @input="txtIptLength"
-        :switchMax="switchMax"
         :maxlength="iptMaxlength"
       ></textarea>
       <span v-show="limitShow">{{ txtNum }}/{{ maxNum }}</span>
