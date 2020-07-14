@@ -42,7 +42,7 @@ $dark-color: #DADADA;
         {
             loader: 'sass-loader',
             options: {
-                data: `@import "./asset/css/custom.scss"; @import "@nutui/nutui/dist/styles/index.scss"; `,
+                data: `@import "./asset/css/custom.scss"; @import "@nutui/nutui-jdl/dist/styles/index.scss"; `,
             }
         }
     ]
@@ -61,7 +61,7 @@ module.exports = {
                 // 注意：在 sass-loader v7 中，这个选项名是 "data"
                 prependData: ` 
                 @import "@/assets/custom_theme.scss";
-                @import "@nutui/nutui/dist/styles/index.scss";
+                @import "@nutui/nutui-jdl/dist/styles/index.scss";
                 `,
             }
         },
@@ -76,15 +76,15 @@ module.exports = {
 1.引用完整组件库时，需要引入 **nutui.scss** 文件
 
 ```javascript
-import NutUI from '@nutui/nutui';
-import '@nutui/nutui/dist/nutui.scss';
+import NutUI from '@nutui/nutui-jdl';
+import '@nutui/nutui-jdl/dist/nutui.scss';
 ```
 
 2.未使用插件，手动按需引用组件时，需手动引入组件对应的 SCSS 文件。
 
 ```javascript
-import Button from '@nutui/nutui/dist/packages/button/button.js';
-import '@nutui/nutui/dist/packages/button/button.scss';
+import Button from '@nutui/nutui-jdl/dist/packages/button/button.js';
+import '@nutui/nutui-jdl/dist/packages/button/button.scss';
 ```
 
 3.使用了插件 **[@nutui/babel-plugin-seperate-import](https://www.npmjs.com/package/@nutui/babel-plugin-separate-import)** 进行按需引用时，需修改babel的配置文件（如.babelrc），将 **style** 的设置为 **scss**。该插件将会自动引入指定组件对应的 SCSS 文件。
@@ -93,7 +93,7 @@ import '@nutui/nutui/dist/packages/button/button.scss';
 {
   "plugins": [
     ["@nutui/babel-plugin-separate-import", {
-        "libraryName": "@nutui/nutui",
+        "libraryName": "@nutui/nutui-jdl",
         "libraryDirectory": "dist/packages",
         "style": "scss"
     }]

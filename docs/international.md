@@ -8,9 +8,9 @@ NutUI 2.0 以上版本支持多语言。组件默认使用中文，支持加载�
 
 ```javascript
 import Vue from 'vue';
-import NutUI from '@nutui/nutui';
+import NutUI from '@nutui/nutui-jdl';
 
-import enUS from '@nutui/nutui/dist/locales/lang/en-US';
+import enUS from '@nutui/nutui-jdl/dist/locales/lang/en-US';
 
 Vue.use(NutUI, {
   locale: 'en-US',
@@ -24,9 +24,9 @@ Vue.use(NutUI, {
 
 ```javascript
 import Vue from 'vue';
-import {locale} from '@nutui/nutui';
+import {locale} from '@nutui/nutui-jdl';
 
-import enUS from '@nutui/nutui/dist/locales/lang/en-US';
+import enUS from '@nutui/nutui-jdl/dist/locales/lang/en-US';
 
 locale('en-US', enUS);
 ```
@@ -48,7 +48,7 @@ locale('en-US', enUS);
 
 ```javascript
 import VueI18n from 'vue-i18n';
-import enUS from '@nutui/nutui/dist/locales/lang/en-US';
+import enUS from '@nutui/nutui-jdl/dist/locales/lang/en-US';
 
 Vue.use(VueI18n);
 
@@ -74,7 +74,7 @@ const app = new Vue({
 
 ```javascript
 import Vue from 'vue';
-import {i18n} from '@nutui/nutui';
+import {i18n} from '@nutui/nutui-jdl';
 
 Vue.mixin({
     methods: {
@@ -94,8 +94,8 @@ Vue.mixin({
 
 ```javascript
 import Vue from 'vue';
-import {locale} from '@nutui/nutui';
-import enUS from '@nutui/nutui/dist/locales/lang/en-US';
+import {locale} from '@nutui/nutui-jdl';
+import enUS from '@nutui/nutui-jdl/dist/locales/lang/en-US';
 import myEnUS from './path/to/lang/en-US';
 
 Object.assign(enUS, myEnUS);

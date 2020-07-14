@@ -10,16 +10,14 @@
 
 #### NPM
 ```bash
-npm i @nutui/nutui -S
+npm i @nutui/nutui-jdl -S
 ```
 
 #### YARN
 ```bash
-yarn add @nutui/nutui
+yarn add @nutui/nutui-jdl
 ```
 > 如果你的网络环境不佳，不妨试试国内的npm镜像
-
-> 默认安装最新版，如需使用 1.x 版本，请指定版本号，如：  `npm i @nutui/nutui@1.3.2 -S`
 
 * 页面直接引用
 
@@ -30,21 +28,21 @@ yarn add @nutui/nutui
 ```html 开发环境版本，包含了有帮助的命令行警告
 <!-- 开发环境版本，包含了有帮助的命令行警告 -->
 <!-- 引入样式 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui-jdl@latest/dist/nutui.css">
 <!-- 引入Vue -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <!-- 引入组件库 -->
-<script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@nutui/nutui-jdl@latest/dist/nutui.js"></script>
 ```
 或者
 ```html
 <!-- 生产环境版本，优化了尺寸和速度 -->
 <!-- 引入样式 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui-jdl@latest/dist/nutui.min.css">
 <!-- 引入Vue -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <!-- 引入组件库 -->
-<script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@nutui/nutui-jdl@latest/dist/nutui.min.js"></script>
 ```
 
 CDN 引入示例
@@ -56,7 +54,7 @@ CDN 引入示例
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 引入样式 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui-jdl@latest/dist/nutui.min.css">
 </head>
 <body>
     <div id="app">
@@ -68,7 +66,7 @@ CDN 引入示例
     <!-- 引入Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
     <!-- 引入NutUI组件库 -->
-    <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui-jdl@latest/dist/nutui.min.js"></script>
     <script>
         new Vue({
             el: '#app',
@@ -105,12 +103,12 @@ CDN 按需加载引入示例
     <!-- 引入样式 -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/packages/button/button.css"
+      href="https://cdn.jsdelivr.net/npm/@nutui/nutui-jdl@latest/dist/packages/button/button.css"
     />
     <!-- 引入Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- 引入组件库 -->
-    <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/packages/button/button.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui-jdl@latest/dist/packages/button/button.js"></script>
     <script>
       Vue.component(button.default.name, button.default);
       new Vue({
@@ -125,14 +123,14 @@ CDN 按需加载引入示例
 
 * 通过 **Vue CLI** 图形化界面安装
 
-如果你的项目是使用 [Vue CLI](https://cli.vuejs.org/zh/) 脚手架搭建，那么你还可以通过 **Vue CLI** 提供的图形化界面安装 **NutUI** ：在图形化界面的 **依赖** 界面，点击右上角 **安装依赖** 按钮，搜索 **@nutui/nutui** 安装即可。
+如果你的项目是使用 [Vue CLI](https://cli.vuejs.org/zh/) 脚手架搭建，那么你还可以通过 **Vue CLI** 提供的图形化界面安装 **NutUI** ：在图形化界面的 **依赖** 界面，点击右上角 **安装依赖** 按钮，搜索 **@nutui/nutui-jdl** 安装即可。
 
 ## 加载示例
 
 ```javascript
 import Vue from 'vue';
-import NutUI from '@nutui/nutui';
-import '@nutui/nutui/dist/nutui.css';
+import NutUI from '@nutui/nutui-jdl';
+import '@nutui/nutui-jdl/dist/nutui.css';
 
 NutUI.install(Vue);
 ```
@@ -168,7 +166,7 @@ npm i @nutui/babel-plugin-separate-import -D
 
 ```javascript
 import Vue from 'vue';
-import { Dialog,Picker } from '@nutui/nutui';
+import { Dialog,Picker } from '@nutui/nutui-jdl';
 
 Dialog.install(Vue);
 Picker.install(Vue);
@@ -179,7 +177,7 @@ Picker.install(Vue);
 {
     loader: 'sass-loader',
     options: {
-        data: `@import "@nutui/nutui/dist/styles/index.scss"; `
+        data: `@import "@nutui/nutui-jdl/dist/styles/index.scss"; `
     }
 }
 ```
@@ -196,7 +194,7 @@ module.exports = {
                 // 注意：在 sass-loader v7 中，这个选项名是 "data"
                 prependData: ` 
                 @import "@/assets/custom_theme.scss";
-                @import "@nutui/nutui/dist/styles/index.scss";
+                @import "@nutui/nutui-jdl/dist/styles/index.scss";
                 `,
             }
         },
@@ -210,10 +208,10 @@ module.exports = {
 
 ```javascript
 import Vue from 'vue';
-import Button from '@nutui/nutui/dist/packages/button/button.js';  // 加载构建后的JS
-import '@nutui/nutui/dist/packages/button/button.css';  //加载构建后的CSS
+import Button from '@nutui/nutui-jdl/dist/packages/button/button.js';  // 加载构建后的JS
+import '@nutui/nutui-jdl/dist/packages/button/button.css';  //加载构建后的CSS
 //主题定制等场景需要加载SCSS,而不是构建后的CSS
-//import '@nutui/nutui/dist/packages/button/button.scss'; 
+//import '@nutui/nutui-jdl/dist/packages/button/button.scss'; 
 
 Button.install(Vue);
 ```

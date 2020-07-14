@@ -1,6 +1,6 @@
-# NutUI
+# NutUI-JDL
 
-NutUI是一套京东风格的移动端组件库，开发和服务于移动Web界面的企业级前中后台产品。
+NutUI-JDL是一套京东物流风格的移动端组件库，开发和服务于移动Web界面的企业级前中后台产品。
 
 <div style="margin:30px 0;">
     <img src="http://img14.360buyimg.com/uba/jfs/t1/8543/6/11560/22014/5c2c6136E8023ac0a/6abbd9de10999c48.png" width="150" alt="NutUI">
@@ -16,7 +16,7 @@ NutUI是一套京东风格的移动端组件库，开发和服务于移动Web界
 
 * 50+ 高质量组件
 * 40+ 京东移动端项目正在使用
-* 基于京东APP 7.0 视觉规范
+* 基于京东物流视觉规范
 * 支持按需加载
 * 详尽的文档和示例
 * 支持定制主题
@@ -28,7 +28,7 @@ NutUI是一套京东风格的移动端组件库，开发和服务于移动Web界
 
 ## 示例
 
-![NutUI Demo](https://img14.360buyimg.com/uba/s260x260_jfs/t1/32118/11/559/2782/5c3d81ecEbda0c0f1/5f2b637d11817204.png)
+![NutUI Demo](https://img12.360buyimg.com/imagetools/jfs/t1/124892/31/7144/6065/5f0d9fe4Ef020d678/cae78d015aa5897c.png)
 
 ## 支持环境
 
@@ -43,7 +43,7 @@ NutUI是一套京东风格的移动端组件库，开发和服务于移动Web界
 
 > AMD 环境、Webpack 等构建工具环境、服务端建议使用 UMD 版，非模块化环境（如通过 `<script>` 标签直接引用）建议使用 UMD 压缩版。
 
-最新稳定版：![npm](https://img.shields.io/npm/v/@nutui/nutui.svg)
+最新稳定版：![npm](https://img.shields.io/npm/v/@nutui/nutui-jdl.svg)
 
 > 你还可以订阅： https://github.com/jdf2e/nutui/releases.atom 来获得稳定版发布的通知。
 
