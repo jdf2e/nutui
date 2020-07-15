@@ -281,8 +281,8 @@
         {
             "version": "1.0.0",
             "name": "TabSelect",
-            "chnName": "分类选择",
-            "desc": "两级分类选择",
+            "chnName": "配送时间",
+            "desc": "两级配送时间",
             "type": "component",
             "sort": "6",
             "showDemo": true,
