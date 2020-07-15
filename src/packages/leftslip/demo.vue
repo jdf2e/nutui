@@ -10,7 +10,7 @@
     <h4>多个按钮</h4>
     <p>如果超出一行宽度，默认右侧按钮区域占一行的80%</p>
     <div>
-      <nut-leftslip :rightWidth="0.8">
+      <nut-leftslip :right-width="0.8">
         <div slot="slip-main" class="slip-main">左滑触发删除<span class="main-right">这里是内容</span></div>
         <div slot="slipbtns" class="slipbtns"
           ><a href="javascript:;">删除</a>

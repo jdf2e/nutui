@@ -32,7 +32,7 @@ export default {
 
 ```html
 <div>
-    <nut-leftslip :rightWidth="0.8">
+    <nut-leftslip :right-width="0.8">
         <div slot="slip-main" class="slip-main">左滑触发删除<span class="main-right">这里是内容</span></div>
         <div slot="slipbtns" class="slipbtns"
             ><a href="javascript:;">删除</a>
@@ -134,7 +134,7 @@ export default {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| rightWidth | 右侧按钮区域超出一行时的默认宽度，默认占整个宽度的80% | Number | 0.8
+| right-width | 右侧按钮区域超出一行时的默认宽度，默认占整个宽度的80% | Number | 0.8
 |  disabled  | 禁止滑动操作 | Boolean | false
 
 
