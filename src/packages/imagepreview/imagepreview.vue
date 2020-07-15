@@ -1,7 +1,7 @@
 <template>
   <div class="nut-imagepreview">
     <nut-popup v-model="value">
-      <nut-swiper class="nut-imagepreview-swiper" loop direction="horizontal" :swiperData="images" @slideChangeEnd="slideChangeEnd">
+      <nut-swiper class="nut-imagepreview-swiper" loop direction="horizontal" :swiperData="swiperData" @slideChangeEnd="slideChangeEnd">
         <div v-for="(item, index) in images" :key="index" class="nut-swiper-slide">
           <img :src="item.imgSrc" class="nut-imagepreview-img" />
         </div>
@@ -27,9 +27,15 @@ export default {
       default: () => [],
     },
   },
+  watch: {
+    value() {
+      this.swiperData = [...this.images];
+    },
+  },
   data() {
     return {
       active: 1,
+      swiperData: [],
     };
   },
   methods: {
