@@ -1,7 +1,7 @@
-# NutUI JDL
-![npm version](https://img.shields.io/npm/v/@nutui/nutui.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=master)](https://github.com/jdf2e/nutui/) [![Coverage Status](https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master)](https://coveralls.io/github/jdf2e/nutui?branch=master) ![license](https://img.shields.io/npm/l/@nutui/nutui.svg)
+# NutUI-JDL
+![npm version](https://img.shields.io/npm/v/@nutui/nutui-jdl.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=nutui-jdl)](https://github.com/jdf2e/nutui/) [![Coverage Status](https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=nutui-jdl)](https://coveralls.io/github/jdf2e/nutui?branch=nutui-jdl) ![license](https://img.shields.io/npm/l/@nutui/nutui-jdl.svg)
  
-一套移动端轻量级组件库
+京东物流风格移动端轻量级组件库
     
 ![NutUI](https://img11.360buyimg.com/uba/jfs/t1/11117/21/3608/18942/5c20ab52E35e5a500/02e3c1f89cd3dad1.png)
 
@@ -12,7 +12,7 @@
 * 全新的架构
 * 50+ 高质量组件
 * 40+ 京东移动端项目正在使用
-* 参照京东APP 7.0 视觉规范
+* 参照京东物流视觉规范
 * 支持按需加载
 * 详尽的文档和示例
 * 支持定制主题
@@ -22,7 +22,6 @@
 * 单元测试加持
 * 配套有基于Webpack的构建工具，可快速创建已内置本组件库的Vue工程 
 
-> 如需使用 1.x 版本，安装时请指定版本号，如： `npm i @nutui/nutui@1.3.2 -S`
 
 ## 支持环境
 
@@ -32,13 +31,13 @@
 
 ## 版本
 
-* 稳定版：[![npm](https://img.shields.io/npm/v/@nutui/nutui.svg)](https://www.npmjs.com/package/@nutui/nutui)
+* 稳定版：[![npm](https://img.shields.io/npm/v/@nutui/nutui-jdl.svg)](https://www.npmjs.com/package/@nutui/nutui-jdl)
 
 > 你还可以订阅： https://github.com/jdf2e/nutui/releases.atom 来获得稳定版发布的通知。
 
 ## 示例
 
-![NutUI Demo](https://img14.360buyimg.com/uba/s260x260_jfs/t1/32118/11/559/2782/5c3d81ecEbda0c0f1/5f2b637d11817204.png)
+![NutUI Demo](https://img12.360buyimg.com/imagetools/jfs/t1/124892/31/7144/6065/5f0d9fe4Ef020d678/cae78d015aa5897c.png)
 
 ## 安装使用
 
@@ -46,7 +45,7 @@
 
 https://nutui.jd.com
 
-文档：[2.x](https://nutui.jd.com/default.html#/start) | [1.x](https://nutui.jd.com/1x/index.html#/intro)
+文档：[nutui](https://nutui.jd.com/) | [nutui-jdl](https://nutui.jd.com/jdl/)
 
 ## 链接
 * [意见反馈](https://github.com/jdf2e/nutui/issues)

@@ -1,5 +1,5 @@
-# NutUI 3
-![npm version](https://img.shields.io/npm/v/@nutui/nutui.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=master)](https://github.com/jdf2e/nutui/) [![Coverage Status](https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master)](https://coveralls.io/github/jdf2e/nutui?branch=master) ![license](https://img.shields.io/npm/l/@nutui/nutui.svg)
+# NutUI-JDL
+![npm version](https://img.shields.io/npm/v/@nutui/nutui-jdl.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=nutui-jdl)](https://github.com/jdf2e/nutui/) [![Coverage Status](https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=nutui-jdl)](https://coveralls.io/github/jdf2e/nutui?branch=nutui-jdl) ![license](https://img.shields.io/npm/l/@nutui/nutui-jdl.svg)
  
 A light mobile Toolkit
     
@@ -12,7 +12,7 @@ English | [简体中文](./README-zh_CN.md)
 * New structure
 * 50+ Reusable components
 * Used by 40+ JD mobile projects
-* Refer to JD APP 7.0 visual specification
+* Refer to JDL visual specification
 * On-demand loading Support
 * Detailed documents and examples
 * Customize themes Support
@@ -22,8 +22,6 @@ English | [简体中文](./README-zh_CN.md)
 * Unit test blessing
 * A Webpack-based build tool is available to quickly create a Vue project with this component library built in 
 
-> If you want to use the 1.x version, please specify the version number when installing，such as： `npm i @nutui/nutui@1.3.2 -S`
-
 ## Environment Support
 
 * Android 4.0+
@@ -32,21 +30,21 @@ English | [简体中文](./README-zh_CN.md)
 
 ## Version
 
-* Stable:[![npm](https://img.shields.io/npm/v/@nutui/nutui.svg)](https://www.npmjs.com/package/@nutui/nutui)
+* Stable:[![npm](https://img.shields.io/npm/v/@nutui/nutui-jdl.svg)](https://www.npmjs.com/package/@nutui/nutui-jdl)
 
 > You can also subscribe to： https://github.com/jdf2e/nutui/releases.atom for the notifications of stable releases。
 
 ## Examples
 
-![NutUI Demo](https://img14.360buyimg.com/uba/s260x260_jfs/t1/32118/11/559/2782/5c3d81ecEbda0c0f1/5f2b637d11817204.png)
+![NutUI Demo](https://img12.360buyimg.com/imagetools/jfs/t1/124892/31/7144/6065/5f0d9fe4Ef020d678/cae78d015aa5897c.png)
 
 ## Installation
 
 Please refer to the NutUI offcial website for the details on how to use it 
 
-https://nutui.jd.com
+https://nutui.jd.com/jdl
 
-Documents：[2.X](https://nutui.jd.com/default.html#/start) | [1.X](https://nutui.jd.com/1x/index.html#/intro)
+Documents：[nutui](https://nutui.jd.com/) | [nutui-jdl](https://nutui.jd.com/jdl/)
 
 ## Links
 * [Feedback](https://github.com/jdf2e/nutui/issues)
