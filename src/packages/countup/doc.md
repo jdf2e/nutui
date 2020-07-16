@@ -55,34 +55,42 @@ export default {
 
 ```html
 <nut-countup
+    ref="countup-machine"
     type="machine"
-    :custom-change-num="customNumber"
+    :machine-num="machineNum"
+    :machine-prize-num="5"
+    :machine-prize-level="prizeLevel"
     :custom-bg-img="bgImage"
-    :custom-spac-num="11"
-    :num-width="33"
-    :num-height="47"
-    :during="5000"
+    :num-width="100"
+    :num-height="100"
+    :during="3000"
+    @scroll-end="scrollAniEnd"
 >
 </nut-countup>
+<nut-button @click="startRole" :disabled="startFlag">抽奖</nut-button>
 ```
 ```javascript
 export default {
     data() {
         return {
-            customNumber: 618, 
-            bgImage: 'https://img10.360buyimg.com/imagetools/jfs/t1/133024/3/2251/2646/5ee7549aE8dc02d7e/de6901b6c72db396.png'
+            startFlag: false,
+            machineNum: 3,
+            bgImage: 'https://img10.360buyimg.com/imagetools/jfs/t1/121466/20/6784/28830/5f06e7f2Edbb8998c/9bdd9e7b24dff9fe.png',
+            prizeLevel: 0
         };
     },
     methods: {
-        run() {
-            let timer = null;
-            timer = setInterval(() => {
-                this.customNumber = Math.floor(Math.random() * (700 - 100 + 1) + 100);
-            }, 5000);
+        startRole() {
+            this.prizeLevel = Math.floor(Math.random() * 5 + 1);
+            this.startFlag = true;
+            this.$refs['countup-machine'].machineLuck();
+        },
+        scrollAniEnd() {
+            this.$toast.text('恭喜中奖！！！');
+            setTimeout(() => {
+                this.startFlag = false;
+            }, 300);
         }
-    },
-    mounted() {
-        this.run();
     }
 };
 ```
@@ -105,13 +113,14 @@ export default {
 | custom-change-num | 要变化的数字（用于自定义图片,initNum\endNum在此无效） | Number | 1
 | custom-bg-img | 自定义图片（建议使用雪碧图实现，使用抽奖功能必须使用雪碧图） | - | -
 | custom-spac-num | 图片中数字之间可能会存在间距 | Number | 0
-| type | 使用抽奖功能必穿，“machine” | string | ''
-| machine-prize-num | 奖项数，一共多少个奖品，必传 | number | 4
-| machine-num | 抽奖位数，即几个图标，必传 | number | 3
-| machine-prize-level | 中奖图标,图标在雪碧图中的位置 | number | 0
-| machine-trun-more | 后面图标的滚动比前面多滚动次数 | number | 0
+| type | 使用抽奖功能必穿“machine” | string | ''
+| machine-prize-num | 奖品个数，一共多少个奖品，必传 | number | 4
+| machine-num | 抽奖位，即滚动几个，必传 | number | 3
+| machine-prize-level | 中奖图标，图标在雪碧图中的位置 | number | 0
+| machine-trun-more | 滚动圈数 | number | 0
 
-###### 说明：抽奖功能是根据图标的定位实现，需要传入雪碧图中单个图标的高度 num-height，
+> 说明：抽奖功能需要结合图标位置计算，故需传入雪碧图中单个图标的高度 num-height；中奖奖品根据雪碧图中的奖品位数来定位，从 1 到 N；
+
 
 
 

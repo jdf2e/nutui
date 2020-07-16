@@ -10,20 +10,12 @@
     </div>
     <h4>数字滚动</h4>
     <div class="show-demo">
-      <!-- <nut-countup :scrolling="true" :init-num='17.618' :during="600">
-        </nut-countup> -->
+      <nut-countup :scrolling="true" :init-num="17.618" :during="600"> </nut-countup>
     </div>
     <h4>自定义滚动图片展示</h4>
     <div class="show-demo">
-      <!-- <nut-countup
-          :custom-change-num="customNumber"
-          :custom-bg-img="bgImage"
-          :custom-spac-num="11"
-          :num-width="33"
-          :num-height="47"
-          :during="5000"
-        >
-        </nut-countup> -->
+      <nut-countup :custom-change-num="customNumber" :custom-bg-img="bgImage" :custom-spac-num="11" :num-width="33" :num-height="47" :during="5000">
+      </nut-countup>
     </div>
     <h4>抽奖（模拟滚动抽奖）</h4>
     <div class="show-demo">
@@ -84,7 +76,7 @@ export default {
     }
   },
   mounted() {
-    // this.run();
+    this.run();
   }
 };
 </script>
