@@ -1,32 +1,52 @@
 <template>
   <div class="nut-countup">
     <template v-if="customBgImg != ''">
-      <ul class="run-number-img" :style="{ height: numHeight + 'px' }">
-        <li
-          class="run-number-img-li"
-          v-for="(val, index) of num_total_len"
-          :key="'cImg' + index"
-          :style="{
-            width: numWidth + 'px',
-            height: numHeight + 'px',
-            left: numWidth * (index > num_total_len - pointNum - 1 ? (index == num_total_len - pointNum ? index * 1.5 : index * 1.3) : index) + 'px',
-            backgroundImage: 'url(' + customBgImg + ')',
-            backgroundPosition: '0 ' + -(String(relNum)[index] * numHeight + customSpacNum * String(relNum)[index]) + 'px',
-            transition: 'all linear ' + during / 10 + 'ms'
-          }"
-        ></li>
-        <div
-          v-if="pointNum > 0"
-          class="pointstyl"
-          :style="{
-            width: numWidth / 2 + 'px',
-            bottom: 0,
-            left: numWidth * (num_total_len - pointNum) * 1.1 + 'px',
-            fontSize: '30px'
-          }"
-          >.</div
-        >
-      </ul>
+      <template v-if="type == 'machine'">
+        <ul class="run-number-machine-img" :style="{ height: numHeight + 'px' }">
+          <li
+            class="run-number-machine-img-li"
+            ref="run-number-machine-img-li"
+            v-for="(val, index) of machineNum"
+            :key="'mImg' + index"
+            :style="{
+              width: numWidth + 'px',
+              height: numHeight + 'px',
+              backgroundImage: 'url(' + customBgImg + ')',
+              backgroundPositionY: prizeY[index] + 'px'
+            }"
+          ></li>
+          <!-- backgroundPositionY: prizeLevelTrun + 'px', -->
+        </ul>
+      </template>
+      <template v-else>
+        <ul class="run-number-img" :style="{ height: numHeight + 'px' }">
+          <li
+            class="run-number-img-li"
+            v-for="(val, index) of num_total_len"
+            :key="'cImg' + index"
+            :style="{
+              width: numWidth + 'px',
+              height: numHeight + 'px',
+              left:
+                numWidth * (index > num_total_len - pointNum - 1 ? (index == num_total_len - pointNum ? index * 1.5 : index * 1.3) : index) + 'px',
+              backgroundImage: 'url(' + customBgImg + ')',
+              backgroundPosition: '0 ' + -(String(relNum)[index] * numHeight + customSpacNum * String(relNum)[index]) + 'px',
+              transition: 'all linear ' + during / 10 + 'ms'
+            }"
+          ></li>
+          <div
+            v-if="pointNum > 0"
+            class="pointstyl"
+            :style="{
+              width: numWidth / 2 + 'px',
+              bottom: 0,
+              left: numWidth * (num_total_len - pointNum) * 1.1 + 'px',
+              fontSize: '30px'
+            }"
+            >.</div
+          >
+        </ul>
+      </template>
     </template>
     <template v-else>
       <ul v-if="scrolling" class="run-number" :style="{ height: numHeight + 'px' }">
@@ -120,6 +140,27 @@ export default {
     customChangeNum: {
       type: Number,
       default: 1
+    },
+    // 抽奖
+    type: {
+      type: String,
+      default: ''
+    },
+    machineNum: {
+      type: Number,
+      default: 3
+    },
+    machinePrizeNum: {
+      type: Number,
+      default: 0
+    },
+    machinePrizeLevel: {
+      type: Number,
+      default: 0
+    },
+    machineTrunMore: {
+      type: Number,
+      default: 0
     }
   },
   data() {
@@ -136,7 +177,12 @@ export default {
       numberVal: 0, //数字
       num_total_len: 0, //数字长度
       relNum: 0, //去除小数点
-      customNumber: 1
+      customNumber: 1,
+      prizeLevelTrun: this.numHeight,
+      prizeY: [],
+      prizeYPrev: [],
+      // machineTransition: 'none',
+      finshMachine: 0
     };
   },
   computed: {},
@@ -144,12 +190,17 @@ export default {
     customChangeNum: function(n, o) {
       this.customNumber = n;
       this.countGo();
+    },
+    machinePrizeLevel: function(n, o) {
+      this.prizeLevelTrun = n;
     }
   },
   mounted() {
     if (this.startFlag) {
       if (this.scrolling || this.customBgImg) {
-        this.countGo();
+        if (this.type != 'machine') {
+          this.countGo();
+        }
       } else {
         this.countChange();
       }
@@ -228,6 +279,7 @@ export default {
         // this.endNum = this.endNum.toFixed(this.toFixed);
       }
       let { initNum, endNum, toFixed, customBgImg } = this;
+
       if (customBgImg) {
         initNum = this.customNumber;
       }
@@ -394,43 +446,74 @@ export default {
           }, that.during);
         });
       });
-
-      // that.timer = setInterval(() => {
-      //     that.relNum = that.calculation(that.relNum, Math.floor(Math.random() * (20 - 4 + 1) + 4), '+');;
-      // }, that.during)
-      // let that = this;
-      // that.clearInterval();
-      // var m = 1;
-      // if(that.pointNum!=0){
-      //     m = (Math.pow(10,that.pointNum));
-      // }
-      // that.timer = setInterval(() => {
-      // if(that.sortFlag == 'add') {
-      //     that.relNum = that.calculation(that.relNum, m * that.speed, '+');
-      //     if(that.relNum >= that.endNum*m) {
-      //         that.relNum = that.endNum*m;
-      //         that.clearInterval();
-      //         this.$emit('scroll-end');
-      //     }
-      // }else {
-      //     that.relNum = that.calculation(that.relNum, m * that.speed, '-');
-      //     if(that.relNum <= 0) {
-      //         that.relNum = String(0).repeat(that.num_total_len);
-      //         that.clearInterval();
-      //         this.$emit('scroll-end');
-      //     }
-      // }
-      // that.relNum = that.calculation(that.relNum, m * that.speed, that.sortFlag == 'add'?'+':'-');
-      // if(that.relNum <= 0) {
-      //     that.relNum = String(0).repeat(that.num_total_len);
-      //     that.clearInterval();
-      //     this.$emit('scroll-end');
-      // }
-      // if(that.relNum >= that.endNum*m) {
-      //     that.relNum = that.endNum*m;
-      //     that.clearInterval();
-      // }
-      // }, that.during);
+    },
+    // 抽奖
+    machineLuck() {
+      this.machineTrunMore = this.machineTrunMore < 0 ? 0 : this.machineTrunMore;
+      let distance = this.numHeight * this.machinePrizeNum; // 所有奖品的高度，雪碧图的高度
+      for (let i = 0; i < this.machineNum; i++) {
+        setTimeout(() => {
+          let turn = distance * (i + 1 + parseFloat(this.machineTrunMore));
+          if (this.prizeLevelTrun >= 999) {
+            this.$set(this.prizeY, i, 100 * i);
+          } else {
+            if (this.prizeYPrev.length != 0) {
+              // this.machineTransition = 'none';
+              // console.log(this.prizeYPrev[i]-(this.numHeight * this.machinePrizeNum));
+              this.$set(this.prizeY, i, this.prizeYPrev[i]);
+            }
+          }
+          let local = this.prizeYPrev[i] ? this.prizeYPrev[i] : 0;
+          let newLocation = turn + local + (this.machinePrizeNum - this.prizeLevelTrun + 1) * this.numHeight + (distance - local);
+          this.scrollTime(
+            i,
+            // parseFloat((this.machinePrizeNum-(this.prizeLevelTrun-1))*this.numHeight + turn + local),
+            newLocation,
+            local
+          );
+        }, 500 * i);
+      }
+    },
+    scrollTime(index, total, num) {
+      // this.machineTransition = `all linear ${this.during/this.machinePrizeNum}ms`;
+      let t = setInterval(() => {
+        if (num <= total) {
+          num += 10;
+          this.$set(this.prizeY, index, parseFloat(num));
+        } else {
+          clearInterval(t);
+          t = null;
+          this.finshMachine += 1;
+          this.$set(this.prizeY, index, total);
+          // 动画未完成的时候触发了判断，需要加个延时或者监听最后一个动画执行结束，保证在动画执行结束
+          // this.$nextTick(() => {
+          //     var f = document.getElementsByClassName('run-number-machine-img-li');
+          //     f[f.length-1].addEventListener('webkitTransitionEnd', () => {
+          //         setTimeout(() => {
+          //             if(this.finshMachine == this.machineNum) {
+          //                 this.finshMachine = 0;
+          //             }
+          //         },200)
+          //     });
+          // })
+          if (this.finshMachine == this.machineNum) {
+            let distance = this.numHeight * this.machinePrizeNum;
+            this.prizeYPrev = [];
+            let prevAry = JSON.parse(JSON.stringify(this.prizeY));
+            prevAry.forEach(item => {
+              let n = item;
+              while (n > distance) {
+                n -= distance;
+              }
+              this.prizeYPrev.push(n);
+            });
+            setTimeout(() => {
+              this.finshMachine = 0;
+              this.$emit('scroll-end');
+            }, 130);
+          }
+        }
+      }, 30);
     }
   }
 };

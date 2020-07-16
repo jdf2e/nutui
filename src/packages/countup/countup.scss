@@ -1,50 +1,59 @@
-.nut-countup{
-    display:inline-block;
-    width: 100%;
-    padding:5px;
-    color: #000;
-	font-weight:bold;
-	// text-align:center;
-    .run-number{
-        margin: 0 auto;
-        padding: 0;
-        overflow: hidden;
-        height: 50px;
-        line-height: 50px;
-        text-align: center;
-        font-weight: bold;
-        position: relative;
-        li {
-            position: absolute;
-            transition: none;
-            // transition: all linear .1s;
-            // animation: myMove 1s linear infinite;
-            // animation-fill-mode: forwards;
-            // @keyframes myMove {
-            //     0% {
-            //       transform: translateY(0);
-            //     }
-            //     100% {
-            //       transform: translateY(-50px);
-            //     }
-            // }
-            span {
-                display: block;
-            }
-        }
-    }
-    .pointstyl {
-        position: absolute;
+.nut-countup {
+  display: inline-block;
+  width: 100%;
+  padding: 5px;
+  color: #000;
+  font-weight: bold;
+  // text-align:center;
+  .run-number {
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    li {
+      position: absolute;
+      transition: none;
+      // transition: all linear .1s;
+      // animation: myMove 1s linear infinite;
+      // animation-fill-mode: forwards;
+      // @keyframes myMove {
+      //     0% {
+      //       transform: translateY(0);
+      //     }
+      //     100% {
+      //       transform: translateY(-50px);
+      //     }
+      // }
+      span {
         display: block;
+      }
     }
-    .run-number-img {
-        position: relative;
-        li {
-            position: absolute;
-            transition: none;
-            display: inline-block;
-            background-position: 0 0;
-            background-repeat: no-repeat;
-        }
+  }
+  .pointstyl {
+    position: absolute;
+    display: block;
+  }
+  .run-number-machine-img {
+    overflow: hidden;
+    li {
+      float: left;
+      background-position: center 0;
+      background-repeat: repeat-y;
+      background-attachment: scroll;
     }
+  }
+  .run-number-img {
+    position: relative;
+    li {
+      position: absolute;
+      transition: none;
+      display: inline-block;
+      background-position: 0 0;
+      background-repeat: no-repeat;
+    }
+  }
 }
