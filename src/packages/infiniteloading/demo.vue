@@ -1,9 +1,19 @@
 <template>
-  <div>
+  <div class="demo-list">
     <nut-infiniteloading @loadmore="onInfinite" :is-show-mod="true" :has-more="isHasMore" :is-loading="isLoading" :threshold="200">
-      <ul class="list">
-        <li class="list-item" v-for="(item, index) of data" :key="item">我是测试数据{{ index + 1 }}</li>
-      </ul>
+      <div class="list">
+        <nut-cell v-for="(item, index) of data" :key="item" :title="'噜啦噜' + index" sub-title="我又来送福利啦！关注之后你就会">
+          <div slot="avatar">
+            <nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar>
+          </div>
+          <div slot="desc">
+            <p class="timer">10:12</p>
+            <p class="badge">
+              <nut-badge :value="9" :max="99" top="0px" right="15px"></nut-badge>
+            </p>
+          </div>
+        </nut-cell>
+      </div>
     </nut-infiniteloading>
   </div>
 </template>
@@ -43,17 +53,15 @@ export default {
 
 <style lang="scss" scoped>
 .list {
-  padding-top: 10px;
+  .timer {
+    color: #c8c8c8ff;
+  }
 
-  .list-item {
-    height: 50px;
-    border: 1px solid mix($primary-color, #fff, 40%);
-    margin-bottom: 10px;
-    font-size: 12px;
-    color: mix($primary-color, #fff, 80%);
-    line-height: 50px;
-    text-align: center;
-    background-color: #fff;
+  .badge {
+    .nut-badge {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 </style>
