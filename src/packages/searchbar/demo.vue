@@ -34,7 +34,7 @@
 export default {
   data() {
     return {
-      value: '11'
+      value: ''
     };
   },
   mounted() {
