@@ -178,11 +178,13 @@ export default {
       num_total_len: 0, //数字长度
       relNum: 0, //去除小数点
       customNumber: 1,
-      prizeLevelTrun: this.numHeight,
+      prizeLevelTrun: 0,
       prizeY: [],
       prizeYPrev: [],
       // machineTransition: 'none',
-      finshMachine: 0
+      finshMachine: 0,
+      notPrize: [],
+      typeMachine: ''
     };
   },
   computed: {},
@@ -447,24 +449,36 @@ export default {
         });
       });
     },
+    // 不中奖设置随机数
+    generateRandom() {
+      this.notPrize = [];
+      while (this.notPrize.length < 3) {
+        var rand = Math.floor(Math.random() * this.machinePrizeNum + 1);
+        if (this.notPrize.indexOf(rand) == -1) {
+          this.notPrize.push(rand);
+        }
+      }
+    },
     // 抽奖
     machineLuck() {
       this.machineTrunMore = this.machineTrunMore < 0 ? 0 : this.machineTrunMore;
       let distance = this.numHeight * this.machinePrizeNum; // 所有奖品的高度，雪碧图的高度
+      if (this.prizeLevelTrun < 0) {
+        this.generateRandom();
+      }
       for (let i = 0; i < this.machineNum; i++) {
         setTimeout(() => {
           let turn = distance * (i + 1 + parseFloat(this.machineTrunMore));
-          if (this.prizeLevelTrun >= 999) {
-            this.$set(this.prizeY, i, 100 * i);
-          } else {
-            if (this.prizeYPrev.length != 0) {
-              // this.machineTransition = 'none';
-              // console.log(this.prizeYPrev[i]-(this.numHeight * this.machinePrizeNum));
-              this.$set(this.prizeY, i, this.prizeYPrev[i]);
-            }
+          if (this.prizeYPrev.length != 0) {
+            // this.machineTransition = 'none';
+            // console.log(this.prizeYPrev[i]-(this.numHeight * this.machinePrizeNum));
+            this.$set(this.prizeY, i, this.prizeYPrev[i]);
           }
           let local = this.prizeYPrev[i] ? this.prizeYPrev[i] : 0;
           let newLocation = turn + local + (this.machinePrizeNum - this.prizeLevelTrun + 1) * this.numHeight + (distance - local);
+          if (this.prizeLevelTrun < 0) {
+            newLocation += this.numHeight * this.notPrize[i];
+          }
           this.scrollTime(
             i,
             // parseFloat((this.machinePrizeNum-(this.prizeLevelTrun-1))*this.numHeight + turn + local),
@@ -509,7 +523,11 @@ export default {
             });
             setTimeout(() => {
               this.finshMachine = 0;
-              this.$emit('scroll-end');
+              if (this.prizeLevelTrun < 0) {
+                this.$emit('scroll-end', false);
+              } else {
+                this.$emit('scroll-end', true);
+              }
             }, 130);
           }
         }

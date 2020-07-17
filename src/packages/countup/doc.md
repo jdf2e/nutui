@@ -113,7 +113,7 @@ export default {
 | custom-change-num | 要变化的数字（用于自定义图片,initNum\endNum在此无效） | Number | 1
 | custom-bg-img | 自定义图片（建议使用雪碧图实现，使用抽奖功能必须使用雪碧图） | - | -
 | custom-spac-num | 图片中数字之间可能会存在间距 | Number | 0
-| type | 使用抽奖功能必穿“machine” | string | ''
+| type | 使用抽奖功能必传“machine” | string | ''
 | machine-prize-num | 奖品个数，一共多少个奖品，必传 | number | 4
 | machine-num | 抽奖位，即滚动几个，必传 | number | 3
 | machine-prize-level | 中奖图标，图标在雪碧图中的位置 | number | 0

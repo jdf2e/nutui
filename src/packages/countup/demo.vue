@@ -33,7 +33,7 @@
       >
       </nut-countup>
       <nut-button @click="startRole" :disabled="startFlag">抽奖</nut-button>
-      <!-- <nut-button @click="startRole2" :disabled="startFlag2">抽奖(不中奖)</nut-button> -->
+      <nut-button @click="startRole2" :disabled="startFlag2">不中奖</nut-button>
     </div>
   </div>
 </template>
@@ -60,18 +60,25 @@ export default {
     },
     startRole() {
       this.prizeLevel = Math.floor(Math.random() * 5 + 1);
+      console.log(this.prizeLevel, '中奖');
       this.startFlag = true;
-      this.$refs['countup-machine'].machineLuck();
+      // 实际运行情况下，开始滚动函数，需要放在奖品回调函数之后，如果异步操作会影响转动结果
+      setTimeout(() => {
+        this.$refs['countup-machine'].machineLuck();
+      }, 500);
     },
     startRole2() {
-      this.prizeLevel = 9999;
+      this.prizeLevel = -1;
+      console.log(this.prizeLevel, '不中奖');
       this.startFlag2 = true;
-      this.$refs['countup-machine'].machineLuck();
-    },
-    scrollAniEnd() {
-      this.$toast.text('恭喜中奖！！！');
       setTimeout(() => {
-        this.startFlag = false;
+        this.$refs['countup-machine'].machineLuck();
+      }, 500);
+    },
+    scrollAniEnd(val) {
+      this.$toast.text(val ? '恭喜中奖！！！' : '很遗憾！没有中奖');
+      setTimeout(() => {
+        val ? (this.startFlag = false) : (this.startFlag2 = false);
       }, 300);
     }
   },
