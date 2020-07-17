@@ -1,5 +1,5 @@
 <template>
-  <div class="demo-list">
+  <div :style="{ padding: 0 }">
     <h4>基础样式</h4>
     <nut-menu mask :list="list" type="simple" @open="onOpen" @close="onClose" />
     <h4>多选样式</h4>

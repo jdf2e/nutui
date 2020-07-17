@@ -1,7 +1,7 @@
 <template>
-  <div class="nut-menu">
+  <div class="nut-menu" ref="menu">
     <transition :name="!isAnimation ? 'nutFade' : ''">
-      <div class="nut-menu-mask" @click="onMaskClick" v-show="isVisible && mask" />
+      <div class="nut-menu-mask" @click="onMaskClick" v-show="isVisible && mask" :style="maskStyle" />
     </transition>
     <div class="nut-menu-title">
       <div v-for="(title, index) in getMenuTitles" class="nut-menu-title-wrapper" :key="index" @click="onMenu(index)">
@@ -125,11 +125,13 @@ export default {
       datalist: [], // menu组件数据源
       menuIndex: 0, // 当前列索引
       isVisible: false, // 当前面板是否打开
+      maskStyle: {},
     };
   },
   mounted() {
     this.datalist = this.list;
     this.isVisible = this.visible;
+    this.maskStyle = { height: 'calc(100vh - ' + this.$refs.menu.offsetTop + 'px)' };
   },
   computed: {
     okBtnTxt() {
