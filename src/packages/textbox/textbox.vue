@@ -18,7 +18,7 @@ export default {
   name: 'nut-textbox',
   props: {
     value: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
     disabled: {
