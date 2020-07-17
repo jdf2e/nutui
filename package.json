@@ -18,7 +18,7 @@
     "build:site": "nutui-cli build-site",
     "clean": "nutui-cli clean",
     "add": "nutui-cli add",
-    "test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config node_modules/@nutui/cli/dist_cli/webpack/test.config.js  --require node_modules/@nutui/cli/dist_cli/test/setup.js src/packages/navbar/__test__/**.spec.js",
+    "test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config node_modules/@nutui/cli/dist_cli/webpack/test.config.js  --require node_modules/@nutui/cli/dist_cli/test/setup.js src/packages/**/__test__/**.spec.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "test:watch": "npm run test --watch",
     "upload:test": "node test_script/upload.js"
@@ -77,7 +77,7 @@
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-object-assign": "^7.8.3",
-    "@nutui/cli": "^0.3.4",
+    "@nutui/cli": "^0.3.5",
     "@typescript-eslint/eslint-plugin": "^2.16.0",
     "@typescript-eslint/parser": "^2.16.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
