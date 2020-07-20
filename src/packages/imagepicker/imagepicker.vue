@@ -110,6 +110,10 @@ export default {
           code: 1,
           msg: fileArr
         });
+        self.$emit('img-msg', {
+          code: 1,
+          msg: fileArr
+        });
       } else {
         fileArr.forEach((item, index) => {
           let reader = new FileReader();
@@ -126,10 +130,18 @@ export default {
           code: 2,
           msg: fileArr
         });
+        self.$emit('img-msg', {
+          code: 2,
+          msg: fileArr
+        });
       }
     },
     preview(id) {
       this.$emit('imgMsg', {
+        code: 4,
+        msg: id
+      });
+      this.$emit('img-msg', {
         code: 4,
         msg: id
       });
@@ -138,6 +150,10 @@ export default {
       this.list = this.list.filter(item => item.id != id);
       this.$emit('update:imgList', this.list);
       this.$emit('imgMsg', {
+        code: 3,
+        msg: id
+      });
+      this.$emit('img-msg', {
         code: 3,
         msg: id
       });

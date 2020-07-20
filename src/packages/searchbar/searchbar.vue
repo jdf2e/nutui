@@ -5,7 +5,7 @@
         <nut-icon type="search" v-if="hasIcon" :size="searchIconSize" :color="searchIconColor"></nut-icon>
         <input
           type="search"
-          v-model="value"
+          :value="value"
           :placeholder="placeText || nutTranslate('lang.searchbar.placeText')"
           @keyup.enter="submitFun"
           @input="inputFun"
@@ -80,6 +80,10 @@ export default {
     customClass: {
       type: String,
       default: ''
+    },
+    value: {
+      type: [String, Number],
+      default: ''
     }
   },
   components: {
@@ -87,32 +91,43 @@ export default {
   },
   data() {
     return {
-      value: '', //输入值
-      hasCloseIcon: false,
       inputFocusAnimation: false
     };
   },
-  computed: {},
+  watch: {
+    value(newValue, oldValue) {
+      this.updateValue('change');
+    }
+  },
+  computed: {
+    hasCloseIcon() {
+      return this.value ? true : false;
+    }
+  },
+  mounted() {},
   methods: {
+    updateValue(trigger = 'input') {
+      let searchInputValue = trigger == 'change' ? this.value : this.$refs.searchInput.value;
+      this.$emit(trigger, searchInputValue);
+    },
     //清空 input 输入
     clearInput() {
-      this.value = '';
-      this.hasCloseIcon = false;
+      this.$emit('clear', '');
+      this.$emit('input', '');
     },
     focusFun() {
       this.inputFocusAnimation = true;
       this.$emit('focus');
     },
     inputFun() {
-      this.hasCloseIcon = this.value ? true : false;
-      this.$emit('input', this.value);
+      this.updateValue();
     },
     blurFun() {
       this.inputFocusAnimation = false;
-      this.$emit('blur', this.value);
+      this.updateValue('blur');
     },
     submitFun() {
-      this.$emit('submit', this.value);
+      this.updateValue('submit');
     },
     // 失去焦点
     blur() {

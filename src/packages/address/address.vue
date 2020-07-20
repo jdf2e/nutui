@@ -241,6 +241,7 @@ export default {
         calBack.next = this.tabName[this.tabIndex];
         calBack.value = item;
         this.$emit('onChange', calBack);
+        this.$emit('on-change', calBack);
       } else {
         this.handClose();
       }
@@ -308,6 +309,7 @@ export default {
         this.$emit('close', res);
       } else {
         this.$emit('closeMask', { closeWay: this.closeWay });
+        this.$emit('close-mask', { closeWay: this.closeWay });
       }
 
       setTimeout(() => {
@@ -345,6 +347,7 @@ export default {
       this.initAddress();
 
       this.$emit('switchModule', { type: this.showModule });
+      this.$emit('switch-module', { type: this.showModule });
     }
   }
 };

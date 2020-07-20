@@ -33,15 +33,15 @@ const overlayProps = {
   },
   overlayClass: {
     type: String,
-    default: '',
+    default: ''
   },
   overlayStyle: {
     type: Object,
-    default: () => {},
+    default: () => {}
   },
   zIndex: {
-    type: Number,
-  },
+    type: Number
+  }
 };
 export { overlayProps };
 export default {

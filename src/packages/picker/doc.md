@@ -17,6 +17,13 @@
 ## 多列用法
 
 ```html
+<nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible0')">
+  <span slot="title">
+    <label>年月选择</label>
+  </span>
+  <span slot="sub-title">不联动多列~~~</span>
+  <div slot="desc" class="selected-option">{{ date ? date : '请选择' }}</div>
+</nut-cell>
 <nut-picker 
     :is-visible="isVisible0" 
     :list-data="listData0"

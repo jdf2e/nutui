@@ -26,7 +26,7 @@ export default {
   name: 'nut-textinput',
   props: {
     value: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
     type: {

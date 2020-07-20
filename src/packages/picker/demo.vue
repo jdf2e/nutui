@@ -74,7 +74,7 @@
     <nut-picker
       :is-visible="isVisible2"
       title="请选择城市"
-      :default-value-data="defaultValueData"
+      :default-value-data="defaultValueData3"
       :list-data="custmerCityData"
       @close="switchPicker('isVisible2')"
       @confirm="setChooseValueCustmer"
@@ -188,9 +188,19 @@ export default {
           }
         ]
       ],
-      cityCustmer: null,
+      cityCustmer: '北京-海淀区',
       isVisible2: false,
-      defaultValueData1: null
+      defaultValueData1: null,
+      defaultValueData3: [
+        {
+          label: 1,
+          value: '北京'
+        },
+        {
+          label: 4,
+          value: '海淀区'
+        }
+      ]
     };
   },
   created() {
