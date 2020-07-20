@@ -178,7 +178,9 @@ export default {
       const { scrollHeight, offsetHeight, scrollTop } = el ? el : this.$el;
 
       if ((this.deltaY > 0 && scrollTop === 0) || (this.deltaY < 0 && scrollTop + offsetHeight >= scrollHeight)) {
-        event.preventDefault();
+        if (event.cancelable) {
+          event.preventDefault();
+        }
       }
     },
     getScroller(el) {
