@@ -24,6 +24,7 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "node ./scripts/verifymail.js",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
