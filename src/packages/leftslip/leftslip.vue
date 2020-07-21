@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-leftslip">
+  <div class="nut-leftslip" :class="{ 'nut-leftslip-disabled': disabled }">
     <div class="nut-leftslip-item" ref="slipItem" :class="{ 'leftslip-open': isOpen }">
       <div class="nut-leftslip-item-main" @touchstart="touchStart($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)">
         <slot name="slip-main"></slot>
