@@ -37,11 +37,14 @@
   </nut-calendar-slot>
 </template>
 <script>
+import nutpop from '../popup/popup.vue';
+import '../popup/popup.scss';
 import nutcalendarslot from './calendar-slot.vue';
 export default {
   name: 'nut-calendar',
   components: {
     [nutcalendarslot.name]: nutcalendarslot,
+    [nutpop.name]: nutpop,
   },
   props: {
     type: {

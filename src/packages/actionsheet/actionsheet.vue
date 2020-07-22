@@ -29,6 +29,8 @@
   </div>
 </template>
 <script>
+import nutpop from '../popup/popup.vue';
+import '../popup/popup.scss';
 export default {
   name: 'nut-actionsheet',
   props: {
@@ -64,6 +66,9 @@ export default {
       type: Array,
       default: () => [],
     },
+  },
+  components: {
+    [nutpop.name]: nutpop,
   },
   data() {
     return {

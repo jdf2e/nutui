@@ -23,6 +23,8 @@
   </nut-popup>
 </template>
 <script>
+import nutpop from '../popup/popup.vue';
+import '../popup/popup.scss';
 import nutpickerslot from './picker-slot.vue';
 import locale from '../../mixins/locale';
 export default {
@@ -52,6 +54,7 @@ export default {
   },
   components: {
     [nutpickerslot.name]: nutpickerslot,
+    [nutpop.name]: nutpop,
   },
   data() {
     return {
