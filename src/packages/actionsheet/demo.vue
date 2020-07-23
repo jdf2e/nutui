@@ -9,17 +9,17 @@
       <nut-actionsheet
         :is-visible="isVisible1"
         @close="closeSwitch('isVisible1')"
-        :is-cancle-btn="true"
+        :is-cancel-btn="true"
         :option-list="optionList"
         @choose="choose1"
       ></nut-actionsheet>
 
       <nut-cell :show-icon="true" title="展示标题" :desc="option2" @click.native="openSwitch('isVisible2')"> </nut-cell>
-      <nut-actionsheet :is-visible="isVisible2" @close="closeSwitch('isVisible2')" :is-cancle-btn="true" :option-list="optionList" @choose="choose2">
+      <nut-actionsheet :is-visible="isVisible2" @close="closeSwitch('isVisible2')" :is-cancel-btn="true" :option-list="optionList" @choose="choose2">
         <div slot="title">面板标题</div>
       </nut-actionsheet>
 
-      <nut-actionsheet :is-visible="isVisible3" @close="closeSwitch('isVisible3')" :is-cancle-btn="true" :option-list="optionList" @choose="choose3">
+      <nut-actionsheet :is-visible="isVisible3" @close="closeSwitch('isVisible3')" :is-cancel-btn="true" :option-list="optionList" @choose="choose3">
         <div slot="desc">这里是一段描述，一段描述，一段描述，一段描述</div>
       </nut-actionsheet>
       <nut-cell :show-icon="true" title="展示描述信息" :desc="option3" @click.native="openSwitch('isVisible3')"> </nut-cell>

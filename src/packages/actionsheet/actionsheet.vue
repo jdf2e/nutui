@@ -20,7 +20,7 @@
             >{{ item[optionTag] }}</li
           >
         </ul>
-        <div class="nut-actionsheet-cancel" v-if="isCancleBtn" @click="cancelActionSheet">取消</div>
+        <div class="nut-actionsheet-cancel" v-if="isCancelBtn" @click="cancelActionSheet">取消</div>
         <div class="nut-actionsheet-confirm" v-if="isConfirmBtn" @click="cancelActionSheet">
           <div class="confirm-btn">确定</div>
         </div>
@@ -46,7 +46,7 @@ export default {
       type: Boolean,
       default: true,
     },
-    isCancleBtn: {
+    isCancelBtn: {
       type: Boolean,
       default: false,
     },

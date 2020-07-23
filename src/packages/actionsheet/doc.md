@@ -402,8 +402,8 @@ export default {
 | is-visible | 是否可见 | Boolean | false
 | is-click-choose-close | 是否点击列表项后立即关闭 | Boolean | true
 | is-click-close-mask | 是否点击mask蒙层关闭 | Boolean | true
-| isCancelBtn | 是否有确认按钮 | Boolean | false
-| isConfirmBtn | 是否有确认按钮 | Boolean | false
+| is-cancel-btn | 是否有取消按钮 | Boolean | false
+| is-confirm-btn | 是否有确认按钮 | Boolean | false
 | choose-tag-value | 已选值，如果填写，高亮显示 | String | -
 | option-list | 列表项 | Array | [ ]
 | option-tag | 设置列表项展示使用参数 | String | 'name'
