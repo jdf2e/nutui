@@ -86,7 +86,7 @@ export default {
       isUnMore2: false,
       isLoading2: false,
       page2: 2,
-      timers: null,
+      timer: null,
       scrollTo: 1,
       scrollToHor: 1
     };
@@ -121,7 +121,7 @@ export default {
         this.isUnMore1 = true;
         this.isLoading1 = false;
       } else {
-        clearTimeout(this.timers);
+        clearTimeout(this.timer);
         this.timer = setTimeout(() => {
           this.isLoading1 = false;
           this.isUnMore1 = false;
@@ -133,7 +133,7 @@ export default {
 
     pulldown() {
       this.isLoading1 = true;
-      clearTimeout(this.timers);
+      clearTimeout(this.timer);
       this.timer = setTimeout(() => {
         this.isLoading1 = false;
         this.isUnMore1 = false;
@@ -148,7 +148,7 @@ export default {
         this.isUnMore2 = true;
         this.isLoading2 = false;
       } else {
-        clearTimeout(this.timers);
+        clearTimeout(this.timer);
         this.timer = setTimeout(() => {
           this.isLoading2 = false;
           this.isUnMore2 = false;
@@ -160,7 +160,7 @@ export default {
 
     pulldown2() {
       this.isLoading2 = true;
-      clearTimeout(this.timers);
+      clearTimeout(this.timer);
       this.timer = setTimeout(() => {
         this.isLoading2 = false;
         this.isUnMore2 = false;
