@@ -17,6 +17,7 @@
 export default {
   data() {
     return {
+      navHei: '30',
       dataList: [
         {
           title: 'A',
