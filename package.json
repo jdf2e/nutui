@@ -58,6 +58,7 @@
     "jdcfe"
   ],
   "author": "jdcfe",
+  "homepage": "http://nutui.jd.com/jdl",
   "license": "MIT",
   "dependencies": {
     "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
