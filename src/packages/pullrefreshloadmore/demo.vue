@@ -1,14 +1,5 @@
 <template>
-  <div
-    class="page has-navbar"
-    v-nav="{
-      title: 'nut-pullrefresh-loadmore',
-      showBackButton: true,
-      showMenuButton: true,
-      menuButtonText: menuButtonText,
-      onMenuButtonClick: clickFn,
-    }"
-  >
+  <div class="page has-navbar">
     <nut-pullrefresh-loadmore class="page-content" :on-refresh="onRefresh" :on-infinite="onInfinite" ref="scroller">
       <div
         v-for="(item, index) in items"
