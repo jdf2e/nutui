@@ -15,55 +15,55 @@
     <h4>带解释说明的样式</h4>
     <div class="cell-box">
       <nut-cell :is-link="true">
-        <span slot="title">列表标题</span>
-        <span slot="sub-title">这里是对标题的解释说明</span>
+        <template slot="title">列表标题</template>
+        <template slot="sub-title">这里是对标题的解释说明1</template>
       </nut-cell>
     </div>
     <h4>菜单列表</h4>
     <div class="cell-box">
       <nut-cell :show-icon="true" title="我的主页" @click-cell="clickEvnt">
-        <div slot="avatar">
+        <template slot="avatar">
           <img width="24" height="24" class="avatar-img" src="../../assets/img/ic_me.png" />
-        </div>
+        </template>
       </nut-cell>
       <nut-cell :show-icon="true" title="店铺定位" desc="查看店铺" @click-cell="clickEvnt">
-        <div slot="avatar">
+        <template slot="avatar">
           <img width="24" height="24" class="avatar-img" src="../../assets/img/ic_location.png" />
-        </div>
+        </template>
       </nut-cell>
       <nut-cell :show-icon="true" title="我的收藏" @click-cell="clickEvnt">
-        <div slot="avatar">
+        <template slot="avatar">
           <img width="24" height="24" class="avatar-img" src="../../assets/img/ic_collect.png" />
-        </div>
+        </template>
       </nut-cell>
       <nut-cell :show-icon="true" title="设置" desc="版本升级" @click-cell="clickEvnt">
-        <div slot="avatar">
+        <template slot="avatar">
           <img width="24" height="24" class="avatar-img" src="../../assets/img/ic_set.png" />
-        </div>
+        </template>
       </nut-cell>
     </div>
     <h4>消息列表</h4>
     <div class="cell-box">
       <nut-cell title="噜啦噜" sub-title="我又来送福利啦！关注之后你就会">
-        <div slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></div>
-        <div slot="desc">
+        <template slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></template>
+        <template slot="desc">
           <p class="timer">10:12</p>
           <p class="badge"><nut-badge :value="9" :max="99" top="0px" right="15px"></nut-badge></p>
-        </div>
+        </template>
       </nut-cell>
       <nut-cell title="噜啦噜" sub-title="我又来送福利啦！关注之后你就会">
-        <div slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></div>
-        <div slot="desc">
+        <template slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></template>
+        <template slot="desc">
           <p class="timer">1小时前</p>
           <p class="badge"><nut-badge :is-dot="true" :max="99" top="0px" right="10px"></nut-badge></p>
-        </div>
+        </template>
       </nut-cell>
       <nut-cell title="噜啦噜" sub-title="我又来送福利啦！关注之后你就会">
-        <div slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></div>
-        <div slot="desc">
+        <template slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></template>
+        <template slot="desc">
           <p class="timer">星期五</p>
           <p class="badge"><nut-badge :value="100" :max="99" top="0px" right="30px"></nut-badge></p>
-        </div>
+        </template>
       </nut-cell>
     </div>
   </div>
@@ -94,19 +94,3 @@ export default {
   mounted() {},
 };
 </script>
-
-<style lang="scss" scoped>
-.timer {
-  color: #c8c8c8ff;
-}
-
-.badge {
-  .nut-badge {
-    width: 100%;
-    height: 100%;
-  }
-}
-.avatar-img {
-  margin-right: 8px;
-}
-</style>
