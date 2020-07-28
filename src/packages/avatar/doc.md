@@ -7,10 +7,10 @@
 size-num 为头像的大小，表示宽高；bg-image表示引入头像图片的路径
 
 ```html
-<nut-avatar size-num="80" :bg-image="require('../../assets/img/cell-avatar.jpeg')"></nut-avatar>
-<nut-avatar size-num="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')"></nut-avatar>
-<nut-avatar size-num="40" :bg-image="require('../../assets/img/cell-avatar.jpeg')"></nut-avatar>
-<nut-avatar size-num="32" :bg-image="require('../../assets/img/cell-avatar.jpeg')"></nut-avatar>
+<nut-avatar size-num="80" bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg"></nut-avatar>
+<nut-avatar size-num="60" bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg"></nut-avatar>
+<nut-avatar size-num="40" bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg"></nut-avatar>
+<nut-avatar size-num="32" bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg"></nut-avatar>
 ```
 
 ## 带徽标的头像
@@ -18,10 +18,10 @@ size-num 为头像的大小，表示宽高；bg-image表示引入头像图片的
 支持slot，需引入badge组件，点击头像有触发事件
 
 ```html
-<nut-avatar size-num="40" :bg-image="require('../../assets/img/cell-avatar.jpeg')" @active-avatar="activeAvatar">
+<nut-avatar size-num="40" bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg" @active-avatar="activeAvatar">
   <nut-badge :value="9"  :max="99" class="item" top="5px" right="10px" ></nut-badge>
 </nut-avatar>
-<nut-avatar size-num="32" :bg-image="require('../../assets/img/cell-avatar.jpeg')" @active-avatar="activeAvatar">
+<nut-avatar size-num="32" bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg" @active-avatar="activeAvatar">
     <nut-badge :isDot="true" top="5px" right="6px" ></nut-badge>
 </nut-avatar>
 ```

@@ -2,18 +2,42 @@
   <div class="demo-list">
     <h4>默认用法</h4>
     <div class="white-bg">
-      <nut-avatar size-num="80" :bg-image="require('../../assets/img/cell-avatar.jpeg')" @active-avatar="activeAvatar"></nut-avatar>
-      <nut-avatar size-num="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" @active-avatar="activeAvatar"></nut-avatar>
-      <nut-avatar size-num="40" :bg-image="require('../../assets/img/cell-avatar.jpeg')" @active-avatar="activeAvatar"></nut-avatar>
-      <nut-avatar size-num="32" :bg-image="require('../../assets/img/cell-avatar.jpeg')" @active-avatar="activeAvatar"></nut-avatar>
+      <nut-avatar
+        size-num="80"
+        bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg"
+        @active-avatar="activeAvatar"
+      ></nut-avatar>
+      <nut-avatar
+        size-num="60"
+        bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg"
+        @active-avatar="activeAvatar"
+      ></nut-avatar>
+      <nut-avatar
+        size-num="40"
+        bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg"
+        @active-avatar="activeAvatar"
+      ></nut-avatar>
+      <nut-avatar
+        size-num="32"
+        bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg"
+        @active-avatar="activeAvatar"
+      ></nut-avatar>
     </div>
 
     <h4>带徽标的头像</h4>
     <div class="white-bg">
-      <nut-avatar size-num="40" :bg-image="require('../../assets/img/cell-avatar.jpeg')" @active-avatar="activeAvatar">
+      <nut-avatar
+        size-num="40"
+        bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg"
+        @active-avatar="activeAvatar"
+      >
         <nut-badge :value="9" :max="99" class="item" top="5px" right="10px"></nut-badge>
       </nut-avatar>
-      <nut-avatar size-num="32" :bg-image="require('../../assets/img/cell-avatar.jpeg')" @active-avatar="activeAvatar">
+      <nut-avatar
+        size-num="32"
+        bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg"
+        @active-avatar="activeAvatar"
+      >
         <nut-badge :isDot="true" top="5px" right="6px"></nut-badge>
       </nut-avatar>
     </div>
