@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-jdl",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "一套轻量级移动端Vue组件库",
   "typings": "dist/types/index.d.ts",
   "main": "dist/nutui.js",
@@ -79,7 +79,7 @@
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-object-assign": "^7.8.3",
-    "@nutui/cli": "^0.3.5",
+    "@nutui/cli": "^0.3.6",
     "@typescript-eslint/eslint-plugin": "^2.16.0",
     "@typescript-eslint/parser": "^2.16.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
