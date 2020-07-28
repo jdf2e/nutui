@@ -1,3 +1,20 @@
+## 2.2.8
+
+`2020-07-28`
+
+* :sparkles: upd(TextBox)：新增 disable 属性 @richard1015
+* :sparkles: upd(Countup)：新增摸拟滚动抽奖 @Ymm0008
+* :bug: fix(Popup)：修复destroyOnClose失效问题 @yangkaixuan
+* :bug: fix(Popup)：修复浏览器滚动报错、单元测试 @yangkaixuan
+* :bug: fix(SearchBar)：修复v-model、新增clear事件 @richard1015
+* :bug: fix(ActionSheet)：修改removeLockScroll函数命名 @richard1015
+* :bug: fix(TextBox)： 修复文本域初始化字数展示问题 @guoxiao158
+* :bug: fix(Address、Imagepicker)：cdn 部分事件无法使用问题 @richard1015
+* :bug: fix(Tab)：修复增加下划线宽度设定 #297 @zhenyulei
+* :bug: fix(Elevator)：修复电梯楼层组件的问题 #295 @zhenyulei
+* :bug: fix(Scroller)：修复demo清除定时器参数异常问题 @irisSong
+* :bug: fix(Picker)：修复自定义数据默认值问题 @irisSong
+
 ## 2.2.7
 
 `2020-07-09`

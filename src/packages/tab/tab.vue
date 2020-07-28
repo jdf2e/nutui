@@ -52,6 +52,10 @@ export default {
     wrapperHeight: {
       type: [String, Number],
       default: '200'
+    },
+    lineWidth: {
+      type: Number,
+      default: 0
     }
   },
   data() {
@@ -64,6 +68,12 @@ export default {
     };
   },
   watch: {
+    isScroll() {
+      this.updeteTab();
+    },
+    lineWidth() {
+      this.updeteTab();
+    },
     defIndex() {
       this.updeteTab();
     },
@@ -108,12 +118,14 @@ export default {
       if (this.positionNav === 'top' || this.positionNav === 'bottom') {
         return {
           transform: `translateX(${this.initX}px)`,
-          width: this.navWidth + 'px'
+          //width: this.navWidth + 'px'
+          width: (this.lineWidth ? this.lineWidth : this.navWidth) + 'px'
         };
       }
       return {
         transform: `translateY(${this.initX}px)`,
-        height: this.navWidth + 'px'
+        //height: this.navWidth + 'px'
+        height: (this.lineWidth ? this.lineWidth : this.navWidth) + 'px'
       };
     },
     customHeight: function() {
@@ -168,8 +180,14 @@ export default {
           this.navWidth = this.$refs.navlist.querySelector('.nut-title-nav').offsetHeight;
           tapWidth = this.$refs.navlist.offsetHeight;
         }
-        this.initX = parseInt(this.navWidth * this.defIndex);
-        this.tapWidth = tapWidth / 2 - this.navWidth / 2;
+        // this.initX = parseInt(this.navWidth * this.defIndex);
+        // this.tapWidth = tapWidth / 2 - this.navWidth / 2;
+        if (this.lineWidth > 0 && this.lineWidth < this.navWidth) {
+          this.initX = parseInt((this.navWidth - this.lineWidth) / 2 + this.navWidth * this.defIndex);
+        } else {
+          this.initX = parseInt(this.navWidth * this.defIndex);
+          this.tapWidth = tapWidth / 2 - this.navWidth / 2;
+        }
       });
     },
     findParent(event, myclass) {
@@ -187,7 +205,12 @@ export default {
     switchTab: function(index, event, disable) {
       if (!disable) {
         this.activeIndex = index;
-        this.initX = parseInt(this.navWidth * index);
+        // this.initX = parseInt(this.navWidth * index);
+        if (this.lineWidth > 0 && this.lineWidth < this.navWidth) {
+          this.initX = parseInt((this.navWidth - this.lineWidth) / 2 + this.navWidth * index);
+        } else {
+          this.initX = parseInt(this.navWidth * index);
+        }
         if (this.positionNav == 'top' || this.positionNav == 'bottom') {
           this.$refs.navlist.scroll(this.initX - this.tapWidth, 0);
         } else {

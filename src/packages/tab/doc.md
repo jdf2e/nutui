@@ -9,7 +9,7 @@
 ## 基本用法
 
 ```html
-<nut-tab @tab-switch="tabSwitch">
+<nut-tab @tab-switch="tabSwitch" line-width="20">
     <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
     <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
     <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
@@ -232,6 +232,7 @@ export default {
 | is-show-line|是否显示tab切换时的红条|Boolean|true|
 | is-scroll|是否支持滑动选择多个页签|Boolean|false|
 | wrapper-height |设置tab的高度，只有在 is-scroll=true；positionNav=left或者right 的情况下有效|Number/String|200|
+| line-width | 页签底部红条自定义宽度|默认为0，则等于页签的宽度|
 
 ### nut-tab-panel
 

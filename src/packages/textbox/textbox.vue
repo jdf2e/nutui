@@ -1,12 +1,12 @@
 <template>
   <div class="nut-textbox">
-    <div class="txt-area" :class="{ error: errorState, 'num-none': limitShow == false }" :style="{ background: textBgColor }">
+    <div class="txt-area" :class="{ error: errorState, 'num-none': limitShow == false, disabled: disabled }" :style="{ background: textBgColor }">
       <textarea
         :placeholder="placeText"
         :style="{ height: txtAreaHeight + 'px' }"
         v-model="currentValue"
+        :disabled="disabled"
         @input="txtIptLength"
-        :switchMax="switchMax"
         :maxlength="iptMaxlength"
       ></textarea>
       <span v-show="limitShow">{{ txtNum }}/{{ maxNum }}</span>
@@ -18,8 +18,12 @@ export default {
   name: 'nut-textbox',
   props: {
     value: {
-      type: String,
+      type: [String, Number],
       default: ''
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     },
     maxNum: {
       type: [String, Number],

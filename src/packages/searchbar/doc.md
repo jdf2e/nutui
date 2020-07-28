@@ -6,6 +6,7 @@
 
 ```html
 <nut-searchbar
+    v-model="val"
     placeText="请输入自定义文案"
 ></nut-searchbar>
 ```
@@ -14,6 +15,7 @@
 
 ```html
 <nut-searchbar
+    v-model="val"
     placeText="请输入自定义文案"
     :hasSearchButton="false"
 ></nut-searchbar>
@@ -23,6 +25,7 @@
 
 ```html
 <nut-searchbar
+    v-model="val"
     placeText="ERP/姓名/邮箱"
     :hasIcon="true"
     :hasTextButton="true"
@@ -35,6 +38,7 @@
 
 ```html
 <nut-searchbar
+    v-model="val"
     placeText="请输入自定义文案"
     @focus="focusFun"
     @input="inputFun"
@@ -49,6 +53,7 @@
 
 ```html
 <nut-searchbar
+    v-model="val"
     placeText="请输入自定义文案"
     @submit="search"
     @focus="focusFun"
@@ -62,6 +67,7 @@
 export default {
     data() {
         return {
+            val:''
         }
     },
     mounted(){
@@ -99,6 +105,7 @@ export default {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
+| vaule | 当前input值，可使用 v-model 双向绑定数据 | String | ''
 | hasIcon | 是否显示输入框前面的 icon | Boolean | false
 | placeText | 输入框 placeholder 内容 | String | '请输入内容...'
 | hasSearchButton | 是否显示右侧搜索按钮 | Boolean | true
@@ -118,6 +125,7 @@ export default {
 | 字段 | 说明 | 回调参数
 |----- | ----- | -----
 | focus | 输入框获取焦点时触发事件 | 无
-| input | 输入框输入内容时触发事件 | 无
-| blur | 输入框失去焦点时触发事件 | 无
-| submit | 默认提交事件，点击右侧Icon或文字也会触发 | 无
+| input | 输入框输入内容时触发事件 | value
+| blur | 输入框失去焦点时触发事件 | value
+| submit | 默认提交事件，点击右侧Icon或文字也会触发 | value
+| clear | 清空事件 | 无

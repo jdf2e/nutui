@@ -1,5 +1,5 @@
 <template>
-  <form action="javascript:return true" :class="['nut-textinput', { 'nut-textinput-disabled': disabled }]">
+  <form @submit.prevent :class="['nut-textinput', { 'nut-textinput-disabled': disabled }]">
     <span class="nut-textinput-label" v-if="label">{{ label }}</span>
     <input
       :type="type"
@@ -26,7 +26,7 @@ export default {
   name: 'nut-textinput',
   props: {
     value: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
     type: {

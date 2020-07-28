@@ -1,6 +1,6 @@
 # NutUI
 
-NutUI是一套京东风格的移动端组件库，开发和服务于移动Web界面的企业级前中后台产品。
+NutUI是一套京东风格的移动端组件库，开发和服务于移动Web界面的企业级产品。
 
 <div style="margin:30px 0;">
     <img src="http://img14.360buyimg.com/uba/jfs/t1/8543/6/11560/22014/5c2c6136E8023ac0a/6abbd9de10999c48.png" width="150" alt="NutUI">

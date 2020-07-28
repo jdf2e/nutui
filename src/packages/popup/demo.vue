@@ -14,8 +14,9 @@
       <nut-popup v-model="showBottom" position="bottom" :style="{ height: '20%' }"> </nut-popup>
       <nut-cell isLink title="左侧弹出" :showIcon="true" @click.native="showLeft = true"> </nut-cell>
       <nut-popup :style="{ width: '20%', height: '100%' }" v-model="showLeft" position="left"></nut-popup>
-      <nut-cell isLink title="右侧弹出" :showIcon="true" @click.native="showRight = true"> </nut-cell>
+
       <nut-popup position="right" v-model="showRight" :style="{ width: '20%', height: '100%' }"></nut-popup>
+      <nut-cell isLink title="右侧弹出" :showIcon="true" @click.native="showRight = true"> </nut-cell>
     </div>
     <h4>关闭图标</h4>
     <div>
@@ -25,14 +26,15 @@
       <nut-cell isLink title="图标位置" :showIcon="true" @click.native="showIconPosition = true"> </nut-cell>
       <nut-popup position="bottom" closeable close-icon-position="top-left" v-model="showIconPosition" :style="{ height: '20%' }"></nut-popup>
 
-      <nut-cell isLink title="自定义图标" :showIcon="true" @click.native="showCloseIcon = true"> </nut-cell>
       <nut-popup position="bottom" closeable close-icon="tick" v-model="showCloseIcon" :style="{ height: '20%' }"></nut-popup>
+
+      <nut-cell isLink title="自定义图标" :showIcon="true" @click.native="showCloseIcon = true"> </nut-cell>
     </div>
 
     <h4>圆角弹框</h4>
     <div>
-      <nut-cell isLink title="圆角弹框" :showIcon="true" @click.native="showRound = true"> </nut-cell>
       <nut-popup round v-model="showRound" position="bottom" :style="{ height: '20%' }"></nut-popup>
+      <nut-cell isLink title="圆角弹框" :showIcon="true" @click.native="showRound = true"> </nut-cell>
     </div>
     <h4>指定挂载节点</h4>
     <div>
