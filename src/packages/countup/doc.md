@@ -51,6 +51,50 @@ export default {
 };
 ```
 
+## 抽奖
+
+```html
+<nut-countup
+    ref="countup-machine"
+    type="machine"
+    :machine-num="machineNum"
+    :machine-prize-num="5"
+    :machine-prize-level="prizeLevel"
+    :custom-bg-img="bgImage"
+    :num-width="100"
+    :num-height="100"
+    :during="3000"
+    @scroll-end="scrollAniEnd"
+>
+</nut-countup>
+<nut-button @click="startRole" :disabled="startFlag">抽奖</nut-button>
+```
+```javascript
+export default {
+    data() {
+        return {
+            startFlag: false,
+            machineNum: 3,
+            bgImage: 'https://img10.360buyimg.com/imagetools/jfs/t1/121466/20/6784/28830/5f06e7f2Edbb8998c/9bdd9e7b24dff9fe.png',
+            prizeLevel: 0
+        };
+    },
+    methods: {
+        startRole() {
+            this.prizeLevel = Math.floor(Math.random() * 5 + 1);
+            this.startFlag = true;
+            this.$refs['countup-machine'].machineLuck();
+        },
+        scrollAniEnd() {
+            this.$toast.text('恭喜中奖！！！');
+            setTimeout(() => {
+                this.startFlag = false;
+            }, 300);
+        }
+    }
+};
+```
+
 
 ## Prop
 
@@ -63,13 +107,19 @@ export default {
 | start-flag | 触发数字滚动的标识 | Boolean | true
 | during | 滚动一次运行时间 | Number | 1000
 | num-width | 数字宽度，常用于自定义无缝滚动 | Number | 20
-| num-height | 数字高度，常用于自定义无缝滚动 | Number | 20
+| num-height | 数字高度，常用于自定义无缝滚动（抽奖功能必传） | Number | 20
 | scrolling | 用于数字滚动展示 | Boolean | false
 | custom | 用于自定义图片数字滚动 | Boolean | false
 | custom-change-num | 要变化的数字（用于自定义图片,initNum\endNum在此无效） | Number | 1
-| custom-bg-img | 自定义图片（建议使用雪碧图实现） | - | -
+| custom-bg-img | 自定义图片（建议使用雪碧图实现，使用抽奖功能必须使用雪碧图） | - | -
 | custom-spac-num | 图片中数字之间可能会存在间距 | Number | 0
+| type | 使用抽奖功能必传“machine” | string | ''
+| machine-prize-num | 奖品个数，一共多少个奖品，必传 | number | 4
+| machine-num | 抽奖位，即滚动几个，必传 | number | 3
+| machine-prize-level | 中奖图标，图标在雪碧图中的位置 | number | 0
+| machine-trun-more | 滚动圈数 | number | 0
 
+> 说明：抽奖功能需要结合图标位置计算，故需传入雪碧图中单个图标的高度 num-height；中奖奖品根据雪碧图中的奖品位数来定位，从 1 到 N；
 
 
 

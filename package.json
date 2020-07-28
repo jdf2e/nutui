@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "2.2.7",
+  "version": "2.2.8",
   "description": "一套轻量级移动端Vue组件库",
   "typings": "dist/types/index.d.ts",
   "main": "dist/nutui.js",
@@ -17,15 +17,18 @@
     "build:site": "nutui-cli build-site",
     "clean": "nutui-cli clean",
     "add": "nutui-cli add",
-    "test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config node_modules/@nutui/cli/dist_cli/webpack/test.config.js  --require node_modules/@nutui/cli/dist_cli/test/setup.js src/packages/*/__test__/**.spec.js",
+    "test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config node_modules/@nutui/cli/dist_cli/webpack/test.config.js  --require node_modules/@nutui/cli/dist_cli/test/setup.js src/packages/**/__test__/**.spec.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "test:watch": "npm run test --watch",
-    "prettier:fix": "prettier --write src/**/*.{ts,js,vue,scss}"
+    "test:watch": "npm run test --watch"
   },
   "husky": {
     "hooks": {
+      "pre-commit": "node ./scripts/verifymail.js && lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "lint-staged": {
+    "*.{ts,js,vue,scss}": "prettier --write"
   },
   "repository": {
     "type": "git",
@@ -61,14 +64,15 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@nutui/cli": "^0.3.3",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-object-assign": "^7.8.3",
+    "@nutui/cli": "^0.3.6",
     "@typescript-eslint/eslint-plugin": "^2.16.0",
     "@typescript-eslint/parser": "^2.16.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-vue": "^6.1.2",
+    "lint-staged": "^10.2.11",
     "stylelint-config-standard": "^19.0.0"
   },
   "nyc": {

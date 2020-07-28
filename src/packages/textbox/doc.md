@@ -7,6 +7,11 @@
 ```html
 <nut-textbox v-model="val"></nut-textbox>
 ```
+## 禁用
+
+```html
+<nut-textbox disabled v-model="val"></nut-textbox>
+```
 
 ## 自定义高度
 
@@ -29,8 +34,8 @@
 ## 限制字数不可超出
 
 ```html
-<nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="2" textBgColor="#efefef" v-model="val2">
-</nut-textbox>
+<nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="100" textBgColor="#efefef" v-model="val3"></nut-textbox>
+
 ```
 
 ## 字数超出报错
@@ -82,7 +87,7 @@ export default {
 ## Prop
 
 | 字段        | 说明                                                        | 类型    | 默认值     |
-| ----------- | ----------------------------------------------------------- | ------- | ---------- |
+|-------------|-------------------------------------------------------------|---------|------------|
 | value       | 当前 input 值，可使用 v-model 双向绑定数据                  | String  | ''         |
 | txtAreaH    | 文本框高度                                                  | Number  | 1rem       |
 | placeText   | 自定义 placeholder 文案提示                                 | String  | 请您在此输 |
@@ -90,10 +95,11 @@ export default {
 | switchMax   | 控制字数超出是否不可输入，注意：最大字数限制，请设置 maxNum | Boolean | false      |
 | textBgColor | 设置输入框背景色                                            | String  | #fff       |
 | limitShow   | 不显示字数限制                                              | Boolean | true       |
+| disabled    | 是否禁用                                                    | Boolean | false      |
 
 ## Event
 
 | 字段      | 说明                               | 回调参数 |
-| --------- | ---------------------------------- | -------- |
+|-----------|------------------------------------|----------|
 | errorFunc | 输入字数超过限定字数时触发事件     | --       |
 | inputFunc | 文字输入事件回调，默认传回输入文本 | --       |

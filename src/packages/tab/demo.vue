@@ -2,7 +2,7 @@
   <div class="demo-list-pd">
     <!-- DEMO区域 -->
     <h4>默认用法</h4>
-    <nut-tab @tab-switch="tabSwitch">
+    <nut-tab @tab-switch="tabSwitch" :lineWidth="20">
       <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
       <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
       <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>

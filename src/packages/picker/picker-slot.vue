@@ -181,7 +181,17 @@ export default {
 
     modifyStatus(type, defaultValue) {
       defaultValue = defaultValue ? defaultValue : this.defaultValue;
-      let index = this.listData.indexOf(defaultValue);
+      let index = -1;
+      if (defaultValue && defaultValue.value) {
+        this.listData.some((item, idx) => {
+          if (item.value == defaultValue.value) {
+            index = idx;
+            return true;
+          }
+        });
+      } else {
+        index = this.listData.indexOf(defaultValue);
+      }
       this.currIndex = index === -1 ? 1 : index + 1;
       let move = index === -1 ? 0 : index * this.lineSpacing;
       type && this.setChooseValue(-move);

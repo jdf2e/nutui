@@ -3,6 +3,8 @@
     <!-- <h4>示例</h4> -->
     <h4>默认用法 支持异步回显数据</h4>
     <nut-textbox v-model="val"></nut-textbox>
+    <h4>禁用</h4>
+    <nut-textbox disabled v-model="val"></nut-textbox>
     <h4>自定义高度:100px</h4>
     <nut-textbox :txtAreaH="100" :maxNum="300" v-model="val"></nut-textbox>
 
@@ -13,7 +15,7 @@
     <nut-textbox :maxNum="100" v-model="val2"></nut-textbox>
 
     <h4>限制字数不可超出</h4>
-    <nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="100" textBgColor="#efefef"></nut-textbox>
+    <nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="100" textBgColor="#efefef" v-model="val3"></nut-textbox>
 
     <h4>字数超出报错</h4>
     <nut-textbox :maxNum="10" :txtAreaH="100" @errorFunc="overLength" v-model="val1"></nut-textbox>
@@ -35,7 +37,8 @@ export default {
     return {
       val: '',
       val1: '',
-      val2: '自定义数据'
+      val2: '自定义数据',
+      val3: 'ceshi'
     };
   },
   methods: {

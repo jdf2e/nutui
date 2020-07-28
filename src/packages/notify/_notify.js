@@ -2,7 +2,9 @@ import Vue from 'vue';
 import settings from './notify.vue';
 // 扩展为类
 let NotifyConstructor = Vue.extend(settings);
-let timer, instance, instanceArr = [];
+let timer,
+  instance,
+  instanceArr = [];
 let defaultOptionsMap = {};
 const id = '0';
 // 默认传入值
@@ -17,7 +19,7 @@ const defaultOptions = {
   onClosed: null,
   onClick: null,
   onOpened: null,
-  textTimer: null,
+  textTimer: null
 };
 // 当前传入值
 let currentOptions = {
@@ -37,7 +39,7 @@ function _getInstance(obj) {
     id
   };
   Object.assign(opt, currentOptions, defaultOptionsMap[obj.type], obj);
-  console.log(opt, obj, 'obj');
+  // console.log(opt, obj, 'obj');
   //有相同id者共用一个实例，否则新增实例
   if (opt['id'] && instanceArr[opt['id']]) {
     instance = instanceArr[opt['id']];
@@ -103,8 +105,5 @@ let Notify = {
     }
   }
 };
-
-
-
 
 export default Notify;
