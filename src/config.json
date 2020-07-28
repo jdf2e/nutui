@@ -418,6 +418,16 @@
             "type": "component",
             "showDemo": true,
             "author": "liuguanglun"
+        },
+        {
+            "version": "1.0.0",
+            "name": "Pullrefreshloadmore",
+            "sort": "3",
+            "chnName": "下拉刷新&&无限加载",
+            "desc": "下拉刷新&&无限加载",
+            "type": "component",
+            "showDemo": true,
+            "author": "luobinbin"
         }
     ]
 }

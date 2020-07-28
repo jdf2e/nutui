@@ -85,6 +85,9 @@ import Card from './packages/card/index.js';
 import './packages/card/card.scss';
 import Infiniteloading from './packages/infiniteloading/index.js';
 import './packages/infiniteloading/infiniteloading.scss';
+import Pullrefreshloadmore from './packages/pullrefreshloadmore/index.js';
+import './packages/pullrefreshloadmore/pullrefreshloadmore.scss';
+
 const packages = {
   Cell,
   Dialog,
@@ -129,6 +132,7 @@ const packages = {
   Field: Field,
   Card,
   Infiniteloading,
+  Pullrefreshloadmore,
 };
 
 const components = {};
