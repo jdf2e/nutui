@@ -1,6 +1,5 @@
-
 @mixin nut-card-border {
-	position: absolute;
+  position: absolute;
   top: 0;
   right: 0;
   left: 0;
@@ -12,45 +11,58 @@
   content: ' ';
   display: block;
 }
-.nut-card-container{
+.nut-card-container {
+  .card-title {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .right {
+      flex: 1;
+      font-size: $font-size-body-normal;
+      font-weight: 600;
+    }
+    .left {
+      color: $text-black-4;
+    }
+  }
   background: #fff;
   border-radius: 4px;
   margin: 15px;
-  .nut-card-header{
+  .nut-card-header {
     padding: 12px;
     color: $text-black-1;
     font-size: $font-size-body-small;
     line-height: 24px;
     display: flex;
     justify-content: space-between;
-    .nut-card-title{
+    .nut-card-title {
       flex: 1;
       font-size: $font-size-body-normal;
       font-weight: 600;
       text-align: justify;
     }
-    .nut-card-supply-title{ 
+    .nut-card-supply-title {
       color: $text-black-4;
       margin-left: 12px;
     }
-    .nut-card-icon{
+    .nut-card-icon {
       margin-left: 12px;
     }
   }
-  .switch-icon-class{
+  .switch-icon-class {
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
   }
-  .mut-card-content{
+  .mut-card-content {
     padding: 12px;
     color: $text-black-2;
     font-size: $font-size-body-small;
     position: relative;
-    &:before{
+    &:before {
       @include nut-card-border;
     }
   }
-  .mut-card-bottom{
+  .mut-card-bottom {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -59,15 +71,14 @@
     padding: 0 12px;
     position: relative;
 
-    &::before{
+    &::before {
       @include nut-card-border;
-    }    button{
+    }
+    button {
       margin: 0 5px;
     }
   }
 }
-.full-content{
+.full-content {
   margin: 0px;
 }
-
-

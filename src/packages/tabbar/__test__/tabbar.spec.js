@@ -37,7 +37,7 @@ describe('Tabbar.vue', () => {
   it('页签位于页面底部', () => {
     wrapper.setProps({ bottom: true });
     return Vue.nextTick().then(function () {
-      expect(wrapper.contains('.bottom')).toBe(true);
+      expect(wrapper.contains('.tabbar-bottom')).toBe(true);
     });
   });
 
