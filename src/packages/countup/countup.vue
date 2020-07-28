@@ -49,7 +49,7 @@
       </template>
     </template>
     <template v-else>
-      <ul v-if="scrolling" class="run-number" :style="{ height: numHeight + 'px' }">
+      <ul v-if="scrolling" class="run-number" :style="{ height: numHeight + 'px', lineHeight: numHeight + 'px' }">
         <li
           ref="numberItem"
           v-for="(val, index) of num_total_len"
