@@ -1,5 +1,5 @@
 <template>
-  <form action="javascript:return true" :class="['nut-field', { 'nut-filed-disabled': disabled }]">
+  <form @submit.prevent :class="['nut-field', { 'nut-filed-disabled': disabled }]">
     <span class="nut-require" v-if="requireShow">*</span>
     <span class="nut-field-label" v-if="label">{{ label }}</span>
 
