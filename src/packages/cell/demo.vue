@@ -45,21 +45,39 @@
     <h4>消息列表</h4>
     <div class="cell-box">
       <nut-cell title="噜啦噜" sub-title="我又来送福利啦！关注之后你就会">
-        <div slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></div>
+        <div slot="avatar"
+          ><nut-avatar
+            sizeNum="60"
+            bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg"
+            bg-icon
+          ></nut-avatar
+        ></div>
         <div slot="desc">
           <p class="timer">10:12</p>
           <p class="badge"><nut-badge :value="9" :max="99" top="0px" right="15px"></nut-badge></p>
         </div>
       </nut-cell>
       <nut-cell title="噜啦噜" sub-title="我又来送福利啦！关注之后你就会">
-        <div slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></div>
+        <div slot="avatar"
+          ><nut-avatar
+            sizeNum="60"
+            bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg"
+            bg-icon
+          ></nut-avatar
+        ></div>
         <div slot="desc">
           <p class="timer">1小时前</p>
           <p class="badge"><nut-badge :is-dot="true" :max="99" top="0px" right="10px"></nut-badge></p>
         </div>
       </nut-cell>
       <nut-cell title="噜啦噜" sub-title="我又来送福利啦！关注之后你就会">
-        <div slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></div>
+        <div slot="avatar"
+          ><nut-avatar
+            sizeNum="60"
+            bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg"
+            bg-icon
+          ></nut-avatar
+        ></div>
         <div slot="desc">
           <p class="timer">星期五</p>
           <p class="badge"><nut-badge :value="100" :max="99" top="0px" right="30px"></nut-badge></p>
