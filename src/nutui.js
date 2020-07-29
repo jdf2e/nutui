@@ -119,11 +119,11 @@ const packages = {
   Avatar,
   Popup,
   LeftSlip,
-  TabSelect: TabSelect,
-  SideNavBar: SideNavBar,
-  SubSideNavBar: SubSideNavBar,
-  SideNavBarItem: SideNavBarItem,
-  Address: Address,
+  TabSelect,
+  SideNavBar,
+  SubSideNavBar,
+  SideNavBarItem,
+  Address,
   Tag,
   Swiper,
   Menu,
@@ -146,10 +146,6 @@ pkgList.map((item) => {
   if (item.type == 'component') {
     if (pkg.name) {
       components[pkg.name] = pkg;
-    } else {
-      for (let n in pkg) {
-        components[n] = pkg[n];
-      }
     }
   } else if (item.type == 'method') {
     methods[item.name] = pkg;
@@ -180,7 +176,8 @@ const install = function (Vue, opts = {}) {
 
   for (let cptName in components) {
     if (components[cptName] && components[cptName].name) {
-      Vue.component(components[cptName].name, components[cptName]);
+      components[cptName].install(Vue);
+      // Vue.component(components[cptName].name, components[cptName]);
     }
   }
 
