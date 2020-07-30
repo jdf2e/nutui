@@ -85,8 +85,8 @@ import Card from './packages/card/index.js';
 import './packages/card/card.scss';
 import Infiniteloading from './packages/infiniteloading/index.js';
 import './packages/infiniteloading/infiniteloading.scss';
-import Pullrefreshloadmore from './packages/pullrefreshloadmore/index.js';
-import './packages/pullrefreshloadmore/pullrefreshloadmore.scss';
+import Scroll from './packages/scroll/index.js';
+import './packages/scroll/scroll.scss';
 
 const packages = {
   Cell,
@@ -132,7 +132,7 @@ const packages = {
   Field: Field,
   Card,
   Infiniteloading,
-  Pullrefreshloadmore,
+  Scroll,
 };
 
 const components = {};
