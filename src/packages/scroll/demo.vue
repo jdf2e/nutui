@@ -108,6 +108,7 @@ body {
       .item {
         height: 30px;
         line-height: 30px;
+        font-size: 13px;
       }
     }
   }
