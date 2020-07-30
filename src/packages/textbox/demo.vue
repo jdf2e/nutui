@@ -38,7 +38,7 @@ export default {
       val: '',
       val1: '',
       val2: '自定义数据',
-      val3: 'ceshi'
+      val3: 'ceshi',
     };
   },
   methods: {
@@ -47,14 +47,15 @@ export default {
     },
     inputText(val) {
       alert(val);
-    }
+    },
   },
   mounted() {
     var that = this;
     this.val = '初始测试数据';
-    setTimeout(function() {
+    setTimeout(function () {
       that.val = '异步测试数据123';
-    }, 1000);
-  }
+      that.val3 = '这是一段文字，非常长，非常长，非常长长长';
+    }, 2000);
+  },
 };
 </script>

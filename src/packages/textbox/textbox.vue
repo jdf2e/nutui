@@ -19,41 +19,41 @@ export default {
   props: {
     value: {
       type: [String, Number],
-      default: ''
+      default: '',
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     maxNum: {
       type: [String, Number],
-      default: 50
+      default: 50,
     },
     placeText: {
       type: String,
-      default: '请您在此输入'
+      default: '请您在此输入',
     },
     txtAreaH: {
       type: [String, Number],
-      default: '50'
+      default: '50',
     },
     switchMax: {
       type: Boolean,
-      default: false
+      default: false,
     },
     textBgColor: {
       type: String,
-      default: '#fff'
+      default: '#fff',
     },
     limitShow: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   data() {
     return {
       errorState: false,
-      txtNum: 0
+      txtNum: 0,
     };
   },
   mounted() {},
@@ -61,11 +61,16 @@ export default {
     currentValue: {
       get() {
         this.txtNum = this.value.length;
-        return this.value;
+        if (this.txtNum > this.maxNum) {
+          this.txtNum = this.maxNum;
+          return this.value.substr(0, this.maxNum);
+        } else {
+          return this.value;
+        }
       },
-      set(val) {}
+      set(val) {},
     },
-    txtAreaHeight: function() {
+    txtAreaHeight: function () {
       let txtAreaH;
       txtAreaH = this.txtAreaH;
 
@@ -77,7 +82,7 @@ export default {
         maxlength = this.maxNum;
       }
       return maxlength;
-    }
+    },
   },
   methods: {
     txtIptLength(event) {
@@ -92,7 +97,7 @@ export default {
       }
       this.$emit('inputFunc', data);
       this.$emit('input', data);
-    }
-  }
+    },
+  },
 };
 </script>
