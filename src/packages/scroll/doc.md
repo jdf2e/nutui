@@ -3,12 +3,12 @@
 ## 基本用法
 
 ```html
-<nut-pullrefresh-loadmore 
+<nut-scroll 
   :on-refresh="onRefresh"
   :on-infinite="onInfinite"
   <!-- 这里添加你需要的内容 -->
 >
-</nut-pullrefresh-loadmore>
+</nut-scroll>
 ```
 ## 下拉刷新&&无限加载方法使用
 

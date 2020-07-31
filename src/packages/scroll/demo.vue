@@ -3,7 +3,7 @@
     <div class="demo-item">
       <h4>上拉刷新&&无限加载</h4>
       <div class="scroll-box">
-        <nut-pullrefresh-loadmore
+        <nut-scroll
           class="page-content"
           :on-refresh="onRefresh"
           :on-infinite="onInfinite"
@@ -14,7 +14,7 @@
           <div v-for="(item, index) in items" :key="index" @click="onItemClick(index)" class="item">
             {{ item }}
           </div>
-        </nut-pullrefresh-loadmore>
+        </nut-scroll>
       </div>
     </div>
   </div>

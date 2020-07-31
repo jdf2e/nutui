@@ -129,7 +129,7 @@ const packages = {
   Menu,
   ImagePreview,
   Badge,
-  Field: Field,
+  Field,
   Card,
   Infiniteloading,
   Scroll,

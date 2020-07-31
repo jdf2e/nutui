@@ -57,7 +57,7 @@ const widthAndHeightValidator = (v) => {
 };
 
 export default {
-  name: 'nut-pullrefresh-loadmore',
+  name: 'nut-scroll',
   components: {
     Spinner,
     Arrow,

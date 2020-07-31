@@ -56,7 +56,7 @@ export declare class Tabbar extends UIComponent {}
 export declare class TabPanel extends UIComponent {}
 export declare class Toast extends UIComponent {}
 export declare class BackTop extends UIComponent {}
-export declare class Scroller extends UIComponent {}
+export declare class Scroll extends UIComponent {}
 export declare class CountDown extends UIComponent {}
 export declare class Uploader extends UIComponent {}
 export declare class TextInput extends UIComponent {}
@@ -67,7 +67,6 @@ export declare class Elevator extends UIComponent {}
 export declare class LeftSlip extends UIComponent {}
 export declare class TabSelect extends UIComponent {}
 export declare class Popup extends UIComponent {}
-
 export declare class LuckDraw extends UIComponent {}
 export declare class Video extends UIComponent {}
 export declare class Signature extends UIComponent {}
@@ -77,7 +76,6 @@ export declare class TimeLineItem extends UIComponent {}
 export declare class SideNavBar extends UIComponent {}
 export declare class SubSideNavBar extends UIComponent {}
 export declare class SideNavBarItem extends UIComponent {}
-export declare class Qart extends UIComponent {}
 export declare class Drag extends UIComponent {}
 export declare class Address extends UIComponent {}
 export declare class Field extends UIComponent {}

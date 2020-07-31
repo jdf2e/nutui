@@ -406,7 +406,7 @@
             "type": "component",
             "sort": "0",
             "star": 4,
-            "showDemo": true,
+            "showDemo": false,
             "author": "iris、richard1015"
         },
         {
