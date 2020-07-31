@@ -56,7 +56,7 @@ export default {
   height: 17px;
   width: 19px;
   background-size: 100% 100%;
-  background-image: 'https://img13.360buyimg.com/imagetools/jfs/t1/132834/39/5437/4822/5f1f964eEdf57fa88/efcf23bee2eec3f0.png';
+  background-image: url('https://img13.360buyimg.com/imagetools/jfs/t1/132834/39/5437/4822/5f1f964eEdf57fa88/efcf23bee2eec3f0.png');
   background-repeat: no-repeat;
 }
 </style>
