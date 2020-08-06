@@ -157,7 +157,7 @@ npm i @nutui/babel-plugin-separate-import -D
 {
   "plugins": [
     ["@nutui/babel-plugin-separate-import", {
-        "style": "css"
+        "style": "scss"
     }]
   ]
 }

@@ -69,3 +69,17 @@
 <img width="300" src="https://img20.360buyimg.com/ling/jfs/t1/19888/36/7120/143703/5c662dcaE11bb07d2/d0f2315dd7228b08.jpg" />
 </li>
 </ul>
+
+# 社区文章
+
+#### [NutUI - 由京东出品，适合快速开发商城类h5、小程序的移动端 UI 组件库](https://zhuanlan.zhihu.com/p/161724686)  
+
+#### [Vue组件库工程探索与实践——按需加载篇](https://www.jianshu.com/p/a07b1f699c0e)  
+
+#### [vue使用vant实现tab切换，使用nutui实现上拉加载下拉刷新](https://baijiahao.baidu.com/s?id=1666288392408654024&wfr=spider&for=pc)  
+
+#### [读京东 nutui 框架总结（1）](https://www.jianshu.com/p/a07b1f699c0e)  
+
+#### [vue引入NutUI](https://www.cnblogs.com/fqh123/p/12066828.html)
+
+#### [NutUI上拉刷新下拉加载的使用](https://www.cnblogs.com/fqh123/p/12152981.html)
