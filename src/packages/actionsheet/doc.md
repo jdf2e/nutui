@@ -68,7 +68,7 @@ export default {
 <nut-actionsheet 
     :is-visible="isVisible"
     @close="closeSwitch('isVisible')" 
-    :is-cancle-btn="true"
+    :is-cancel-btn="true"
     :option-list="optionList" 
     @choose="choose"
 ></nut-actionsheet>
@@ -122,7 +122,7 @@ export default {
 <nut-actionsheet 
     :is-visible="isVisible"
     @close="closeSwitch('isVisible')" 
-    :is-cancle-btn="true"
+    :is-cancel-btn="true"
     :option-list="optionList" 
     @choose="choose"
 >
@@ -179,7 +179,7 @@ export default {
 <nut-actionsheet 
     :is-visible="isVisible"
     @close="closeSwitch('isVisible')" 
-    :is-cancle-btn="true"
+    :is-cancel-btn="true"
     :option-list="optionList" 
     @choose="choose"
 >
