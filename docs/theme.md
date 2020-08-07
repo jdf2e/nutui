@@ -1,27 +1,38 @@
 # 主题定制
 
-> 定制主题须使用 NutUI 2.0 以上版本
+NutUI-JDL 默认提供一套 UI 主题，同时允许在一定程度上定制新的主题，以满足业务的多样化视觉需求。
 
-NutUI 默认提供一套 UI 主题，同时允许在一定程度上定制新的主题，以满足业务的多样化视觉需求。
-
-![主题定制](http://img14.360buyimg.com/uba/jfs/t1/14893/39/4803/92712/5c3478afEc0458edb/54e06165a4445661.png)
+![主题定制](https://storage.360buyimg.com/imgtools/b0684a2fb8-d67c45e0-d885-11ea-812a-91f093c67161.jpeg)
 
 
 ## 样式变量
 
-NutUI 的样式是基于 **[SCSS](https://sass-lang.com/)** 开发的，定义了一套默认样式变量，定制主题就是编辑这个变量列表。
+NutUI-JDL 的样式是基于 **[SCSS](https://sass-lang.com/)** 开发的，定义了一套默认样式变量，定制主题就是编辑这个变量列表。
 
 以下是一些与颜色相关基本样式变量，所有可用的变量请参考配置文件。
 
 ```scss
-$primary-color: #F0250F;
-$normal-color: #848484;
-$link-color: $primary-color;
-$link-hover-color: mix($link-color , #000, 80%);
-$title-color: #2D2D2D;
-$text-color: #848484;
-$light-color: #F6F6F6;
-$dark-color: #DADADA;
+$primary-color: #e1251b !default;
+$normal-color: #848484 !default;
+$link-color: $primary-color !default;
+$link-hover-color: mix($link-color, #000, 80%) !default;
+$title-color: #323232 !default;
+$text-color: #646464 !default;
+$light-color: #f6f6f6 !default;
+$dark-color: #dadada !default;
+$primary-color-jc-blue: #3c6ef0 !default;
+$assist-color-green: #26a872 !default;
+$assist-color-orange: #ff6e4c !default;
+$assist-color-yellow: #ffba12 !default;
+$assist-color-blue: #2ca6e1 !default;
+$assist-color-purple: #6236ff !default;
+$assist-color-gray: #7c7a8a !default;
+$assist-color-light-gray: #d9d9d9 !default;
+$text-black-1: #323232 !default;
+$text-black-2: #646464 !default;
+$text-black-3: #969696 !default;
+$text-black-4: #c8c8c8 !default;
+$text-jd-red: $primary-color !default;
 ```
 
 
