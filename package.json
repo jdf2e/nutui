@@ -56,7 +56,6 @@
     "babel-plugin-istanbul": "^6.0.0",
     "gsap": "^3.2.6",
     "hammerjs": "^2.0.8",
-    "husky": "^3.0.0",
     "vue-lazyload": "^1.3.3",
     "vue-qr": "^2.2.1"
   },
@@ -73,6 +72,7 @@
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-vue": "^6.1.2",
     "lint-staged": "^10.2.11",
+    "husky": "^3.0.0",
     "stylelint-config-standard": "^19.0.0"
   },
   "nyc": {
