@@ -83,7 +83,7 @@ export default {
       this.val1 = (Number(this.val1) + Number(0.1)).toFixed(1);
     },
     reduce() {
-      this.val1 = Math.max(Number(this.val1) - 1, 0).toFixed(1);
+      this.val1 = Math.max(Number(this.val1) - Number(0.1), 0).toFixed(1);
     },
   },
 };
