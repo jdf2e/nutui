@@ -33,7 +33,13 @@
 
     <h4>圆角弹框</h4>
     <div>
-      <nut-popup round v-model="showRound" position="bottom" :style="{ height: '20%' }"></nut-popup>
+      <nut-popup round v-model="showRound" closeable close-icon-position="top-right" position="bottom" :style="{ height: '185px' }">
+        <div class="box">
+          <div class="icon"> <img src="@/assets/img/wechat-icon.png" /> <span>微信好友</span></div>
+          <div class="icon"> <img src="@/assets/img/QQ-friends-icon.png" /><span>QQ好友</span></div>
+          <div class="icon"> <img src="@/assets/img/circle-friends-icon.png" /><span>微信朋友圈</span></div>
+        </div>
+      </nut-popup>
       <nut-cell isLink title="圆角弹框" :showIcon="true" @click.native="showRound = true"> </nut-cell>
     </div>
     <h4>指定挂载节点</h4>
@@ -67,4 +73,27 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.box {
+  display: flex;
+  height: 136px;
+  margin-top: 48px;
+  border-top: 1px solid #e6e6e6;
+  justify-content: space-around;
+  align-items: center;
+  .icon {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    span {
+      color: #646464;
+      font-size: 13px;
+    }
+    img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 5px;
+    }
+  }
+}
+</style>

@@ -29,7 +29,8 @@ export default {
 
 ## 弹出位置
 
-通过 position 属性设置弹出位置，默认居中弹出，可以设置为 top、bottom、left、right
+通过 position 属性设置弹出位置，默认居中弹出(center)，可以设置为 top、bottom、left、right、center、none   
+__注意__：在某些情况下使用center可能会出现定位偏移问题，例如在组件样式中设置top、left等定位等，这时可以可以设置为none。由组件调用者设置样式;
 
 ```html
 <nut-popup v-model="show" position="top" :style="{ height: '20%' }" />
@@ -70,14 +71,14 @@ export default {
 | ---------- | ---------------------------------------- | ------- | ------ |
 | v-model    | 当前组件是否显示                         | boolean | -      |
 | overlay    | 是否显示遮罩层                           | boolean | true   |
-| position   | 弹出位置，可选值为 top bottom right left center| string  | center |
+| position   | 弹出位置，可选值为 top bottom right left center none| string  | center |
 | duration   | 动画时长，单位秒                         | Number  | -      |
 | round      | 是否显示圆角                             | boolean | -      |
 | transition | 动画类名，等价于 transtion 的 name 属性  | string  | -      |
 | closeable  | 是否显示关闭图标                        | Boolean  | false     |
 | close-icon | 关闭图标名称                  | string  | cross     |
 | close-icon-position | 关闭图标位置，可选值为top-left top-right bottom-left bottom-right | string  | top-right  |
-| destroy-on-close| 控制是否在关闭 popop 之后将子元素全部销毁 | boolean | false |
+| destroy-on-close| 控制是否在关闭 popup 之后将子元素全部销毁 | boolean | false |
 | overlay-class | 自定义遮罩层类名 | string  |   |
 | overlay-style | 自定义遮罩层样式 | object  |   |
 | lock-scroll | 是否锁定背景滚动 | boolean  |  true |
