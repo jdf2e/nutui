@@ -1,16 +1,15 @@
-// ---- color ---- 这是之前在用的颜色，后续开发中使用新的色值
-$primary-color: #f0250f !default;
+$primary-color: #e1251b !default;
 $normal-color: #848484 !default;
 $link-color: $primary-color !default;
 $link-hover-color: mix($link-color, #000, 80%) !default;
-$title-color: #2d2d2d !default;
-$text-color: #848484 !default;
+$title-color: #323232 !default;
+$text-color: #646464 !default;
 $light-color: #f6f6f6 !default;
 $dark-color: #dadada !default;
 
-// v3.0 主要色值
+// jdl 主要色值
 // ---- 主色调color ----
-$primary-color-jd-red: #e1251b !default; // 京东红，主要用于对外C端产品。
+$primary-color-jd-red: $primary-color !default; // 京东红，主要用于对外C端产品。
 $primary-color-jc-blue: #3c6ef0 !default; // 京牛蓝，主要用于对内B端产品。
 // ---- 辅助color ----
 $assist-color-green: #26a872 !default; // 常用于成功信息/成功icon，或者卡片标签
@@ -25,12 +24,12 @@ $text-black-1: #323232 !default; // 重要文字颜色，用于Narbar等大标�
 $text-black-2: #646464 !default; // 普通文字颜色，用于段落、表单标题、列表内容等
 $text-black-3: #969696 !default; // 辅助文字，用于次要信息
 $text-black-4: #c8c8c8 !default; // 一般文字，用于提示性文字
-$text-jd-red: #e1251b !default; // 用于报错文字颜色
+$text-jd-red: $primary-color !default; // 用于报错文字颜色
 // ---- 背景/分割线color ----
 $body-background-color: #f7f7f7 !default; // 用于页面整体背景
 $split-line-color: #e6e6e6 !default; // 用于分割线，按钮描边,1px
 $disabled-bg-color: #dcdcdc !default; // 用于按钮置灰
-// ---- v3.0 常用字号 ----
+// ----  常用字号 ----
 $font-size-title-large: 20px; // 用于标题类文字
 $font-size-title-normal: 18px; // 用于全局操作类文字
 $font-size-body-large: 17px; // 常用字号，用于需要强调的文字信息

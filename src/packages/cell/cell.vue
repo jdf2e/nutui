@@ -2,7 +2,7 @@
   <div class="wrapper-cell">
     <a :class="['nut-cell', { 'nut-cell-link': isLink }]" :href="linkUrl" :style="{ 'background-color': bgColor }" :target="target" @click="jumpPage">
       <div class="nut-cell-box" @click="clickCell">
-        <slot name="avatar"></slot>
+        <div class="avatar-img-box"><slot name="avatar"></slot></div>
         <div class="nut-cell-left">
           <span class="nut-cell-title"
             ><slot name="title">{{ title }}</slot></span
@@ -11,8 +11,8 @@
             <slot name="sub-title">
               <template>{{ subTitle.substring(0, 12) }}</template>
               <template v-if="subTitle.length > 12">...</template>
-            </slot></span
-          >
+            </slot>
+          </span>
         </div>
         <div class="nut-cell-right">
           <span class="nut-cell-desc"

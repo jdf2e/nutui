@@ -3,9 +3,13 @@
     <nut-infiniteloading @loadmore="onInfinite" :is-show-mod="true" :has-more="isHasMore" :is-loading="isLoading" :threshold="200">
       <div class="list">
         <nut-cell v-for="(item, index) of data" :key="item" :title="'噜啦噜' + index" sub-title="我又来送福利啦！关注之后你就会">
-          <div slot="avatar">
-            <nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar>
-          </div>
+          <template slot="avatar">
+            <nut-avatar
+              sizeNum="60"
+              bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg"
+              bg-icon
+            ></nut-avatar>
+          </template>
           <div slot="desc">
             <p class="timer">10:12</p>
             <p class="badge">

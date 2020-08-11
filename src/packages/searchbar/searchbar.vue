@@ -1,7 +1,7 @@
 <template>
   <div :class="['nut-searchbar', customClass ? customClass : '']">
     <div class="search-input" :class="[animation ? 'nut-search-ani' : '', inputFocusAnimation ? 'focus' : '']">
-      <form action="javascript:return true" id="input-form">
+      <form @submit.prevent id="input-form">
         <nut-icon class="search-icon" type="search3" v-if="hasIcon" :size="searchIconSize" :color="searchIconColor"> </nut-icon>
         <input
           type="search"

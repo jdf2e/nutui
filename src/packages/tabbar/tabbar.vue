@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-tabbar" :class="{ bottom: bottom }">
+  <div class="nut-tabbar" :class="{ 'tabbar-bottom': bottom }">
     <a
       class="tabbar-nav"
       v-for="(value, index) in tabList"

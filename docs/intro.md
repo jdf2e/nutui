@@ -1,6 +1,6 @@
 # NutUI-JDL
 
-NutUI-JDL是京东物流风格的移动端组件库，开发和服务于移动Web界面的企业级前中后台产品。
+NutUI-JDL 是一套基于京东物流视觉规范的移动端组件库。
 
 <div style="margin:30px 0;">
     <img src="http://img14.360buyimg.com/uba/jfs/t1/8543/6/11560/22014/5c2c6136E8023ac0a/6abbd9de10999c48.png" width="150" alt="NutUI">

@@ -70,18 +70,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.card-title {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  .right {
-    flex: 1;
-    font-size: $font-size-body-normal;
-    font-weight: 600;
-  }
-  .left {
-    color: $text-black-4;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

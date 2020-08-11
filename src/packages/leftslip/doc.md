@@ -65,7 +65,7 @@ export default {
     <nut-leftslip v-for="(item, index) in list" :key="item.id" ref="leftslip">
         <div slot="slip-main" class="slip-main">
           <nut-cell class="cell-item" :title="item.title" :sub-title="item.subTitle">
-            <div slot="avatar"><nut-avatar sizeNum="60" :bg-image="require('../../assets/img/cell-avatar.jpeg')" bg-icon></nut-avatar></div>
+            <template slot="avatar"><nut-avatar sizeNum="60" bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/130112/36/5492/38449/5f1f964cEfd6f41bf/bec836b48b55bb00.jpg" bg-icon></nut-avatar></template>
             <div slot="desc">
               <p class="timer">{{item.time} }</p>
               <p class="badge"><nut-badge :is-dot="item.isDot" :value="item.value" :max="99" top="0px" right="15px"></nut-badge></p>

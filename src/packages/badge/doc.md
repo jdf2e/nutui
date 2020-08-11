@@ -19,6 +19,32 @@
     <div class="demo-svg"></div>
 </nut-badge>
 
+
+
+<style lang="scss" scoped>
+.item {
+  margin: 16px 26px 10px 10px;
+  line-height: 15px;
+  font-family: PingFangSC-Regular;
+  font-size: 15px;
+  color: #646464;
+}
+
+.demo-w {
+  margin: 0;
+  background: white;
+}
+
+.demo-svg {
+  display: inline-block;
+  height: 17px;
+  width: 19px;
+  background-size: 100% 100%;
+  background-image: url("https://img13.360buyimg.com/imagetools/jfs/t1/132834/39/5437/4822/5f1f964eEdf57fa88/efcf23bee2eec3f0.png");
+  background-repeat: no-repeat;
+}
+</style>
+
 ```
 
 ## 数字角标

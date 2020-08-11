@@ -4,15 +4,21 @@
     <div>
       <nut-cell>
         <div slot="title">{{ swActive ? '开' : '关' }}</div>
-        <span slot="desc"><nut-switch :active.sync="swActive"></nut-switch></span>
+        <span slot="desc">
+          <nut-switch :active.sync="swActive"></nut-switch>
+        </span>
       </nut-cell>
       <nut-cell>
         <div slot="title">开启禁用</div>
-        <span slot="desc"><nut-switch :active="true" :disabled="true"></nut-switch></span>
+        <span slot="desc">
+          <nut-switch :active="true" :disabled="true"></nut-switch>
+        </span>
       </nut-cell>
       <nut-cell>
         <div slot="title">关闭禁用</div>
-        <span slot="desc"><nut-switch :disabled="true"></nut-switch></span>
+        <span slot="desc">
+          <nut-switch :disabled="true"></nut-switch>
+        </span>
       </nut-cell>
     </div>
 
@@ -20,28 +26,38 @@
     <div>
       <nut-cell>
         <div slot="title">{{ swActive2 ? '开' : '关' }}</div>
-        <span slot="desc"><nut-switch :active.sync="swActive2" size="small"></nut-switch></span>
+        <span slot="desc">
+          <nut-switch :active.sync="swActive2" size="small"></nut-switch>
+        </span>
       </nut-cell>
       <nut-cell>
         <div slot="title">开启禁用</div>
-        <span slot="desc"><nut-switch :active="true" :disabled="true" size="small"></nut-switch></span>
+        <span slot="desc">
+          <nut-switch :active="true" :disabled="true" size="small"></nut-switch>
+        </span>
       </nut-cell>
       <nut-cell>
         <div slot="title">关闭禁用</div>
-        <span slot="desc"><nut-switch :disabled="true" size="small"></nut-switch></span>
+        <span slot="desc">
+          <nut-switch :disabled="true" size="small"></nut-switch>
+        </span>
       </nut-cell>
     </div>
 
     <h4>change事件</h4>
     <div>
       <nut-cell>
-        <span slot="title"><nut-switch @change="onChange"></nut-switch></span>
+        <span slot="title">
+          <nut-switch @change="onChange"></nut-switch>
+        </span>
       </nut-cell>
     </div>
     <h4>自定义Class</h4>
     <div>
       <nut-cell>
-        <span slot="title"><nut-switch :active="true" class="my-switch"></nut-switch></span>
+        <span slot="title">
+          <nut-switch :active="true" class="my-switch"></nut-switch>
+        </span>
       </nut-cell>
     </div>
   </div>
@@ -74,6 +90,7 @@ export default {
     box-shadow: none;
     background-color: #fff;
     border-radius: 3px;
+    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.1);
   }
 
   &.nut-switch-active {

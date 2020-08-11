@@ -85,6 +85,9 @@ import Card from './packages/card/index.js';
 import './packages/card/card.scss';
 import Infiniteloading from './packages/infiniteloading/index.js';
 import './packages/infiniteloading/infiniteloading.scss';
+import Scroll from './packages/scroll/index.js';
+import './packages/scroll/scroll.scss';
+
 const packages = {
   Cell,
   Dialog,
@@ -116,19 +119,20 @@ const packages = {
   Avatar,
   Popup,
   LeftSlip,
-  TabSelect: TabSelect,
-  SideNavBar: SideNavBar,
-  SubSideNavBar: SubSideNavBar,
-  SideNavBarItem: SideNavBarItem,
-  Address: Address,
+  TabSelect,
+  SideNavBar,
+  SubSideNavBar,
+  SideNavBarItem,
+  Address,
   Tag,
   Swiper,
   Menu,
   ImagePreview,
   Badge,
-  Field: Field,
+  Field,
   Card,
   Infiniteloading,
+  Scroll,
 };
 
 const components = {};
@@ -142,10 +146,6 @@ pkgList.map((item) => {
   if (item.type == 'component') {
     if (pkg.name) {
       components[pkg.name] = pkg;
-    } else {
-      for (let n in pkg) {
-        components[n] = pkg[n];
-      }
     }
   } else if (item.type == 'method') {
     methods[item.name] = pkg;
@@ -176,7 +176,8 @@ const install = function (Vue, opts = {}) {
 
   for (let cptName in components) {
     if (components[cptName] && components[cptName].name) {
-      Vue.component(components[cptName].name, components[cptName]);
+      components[cptName].install(Vue);
+      // Vue.component(components[cptName].name, components[cptName]);
     }
   }
 

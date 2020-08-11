@@ -4,7 +4,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-stepper @focus="focus" :blur="blur" :value.sync="val1" :max="12" :step="0.1" :decimalPlaces="1" @add="add"></nut-stepper>
+          <nut-stepper @focus="focus" :blur="blur" :value.sync="val1" :max="12" :step="0.1" :decimalPlaces="1"></nut-stepper>
         </span>
         <span slot="desc">
           value: {{ val1 }} <button @click="reduce" class="demo-btn">-</button> <button @click="add" class="demo-btn">+</button>
@@ -79,12 +79,11 @@ export default {
     blur(e, v) {
       console.log('blur,', e, v);
     },
-    add(v) {
-      console.log(v);
-      // this.val1 = Number(this.val1) + 1;
+    add() {
+      this.val1 = (Number(this.val1) + Number(0.1)).toFixed(1);
     },
     reduce() {
-      this.val1 = Math.max(Number(this.val1) - 1, 0);
+      this.val1 = Math.max(Number(this.val1) - Number(0.1), 0).toFixed(1);
     },
   },
 };

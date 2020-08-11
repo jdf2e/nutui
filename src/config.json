@@ -406,7 +406,7 @@
             "type": "component",
             "sort": "0",
             "star": 4,
-            "showDemo": true,
+            "showDemo": false,
             "author": "iris、richard1015"
         },
         {
@@ -418,6 +418,16 @@
             "type": "component",
             "showDemo": true,
             "author": "liuguanglun"
+        },
+        {
+            "version": "1.0.0",
+            "name": "Scroll",
+            "sort": "0",
+            "chnName": "下拉刷新&&无限加载",
+            "desc": "下拉刷新&&无限加载",
+            "type": "component",
+            "showDemo": true,
+            "author": "luobinbin"
         }
     ]
 }

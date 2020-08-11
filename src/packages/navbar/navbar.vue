@@ -8,7 +8,7 @@
       </div>
       <div class="close" @click="$emit('on-click-close')">
         <slot name="close-icon" v-if="closeShow">
-          <img width="22" height="22" src="../../assets/img/nav_close.png" />
+          <img width="22" height="22" src="../../assets/img/nav_close.png" class="close-img" />
         </slot>
       </div>
     </div>
@@ -22,12 +22,12 @@
     <div class="nav-right">
       <div class="search" @click="$emit('on-click-search')">
         <slot name="search-icon" v-show="rightShow">
-          <img width="22" height="22" src="../../assets/img/nav_search.png" />
+          <img width="22" height="22" src="../../assets/img/nav_search.png" class="search-img" />
         </slot>
       </div>
       <div class="more" @click="$emit('on-click-more')" v-if="moreShow">
         <slot name="more-icon">
-          <img width="22" height="22" src="../../assets/img/nav_more.png" />
+          <img width="22" height="22" src="../../assets/img/nav_more.png" class="more-img" />
         </slot>
       </div>
     </div>
