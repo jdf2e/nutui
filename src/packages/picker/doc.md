@@ -2,82 +2,196 @@
 
 提供多个选项集合供用户选择其中一项。
 
-## 基本用法
-
+## 基本样式
 ```html
-<nut-picker 
-    :is-visible="isVisible1" 
-    :default-value-data="defaultValueData1"
-    :list-data="listData1"
-    @close="switchPicker('isVisible1')"
-    @confirm="setYearValue"
->
-</nut-picker>
-```
-## 多列用法
-
-```html
-<nut-cell :showIcon="true" :isLink="true" @click.native="switchPicker('isVisible0')">
-  <span slot="title">
-    <label>年月选择</label>
-  </span>
-  <span slot="sub-title">不联动多列~~~</span>
-  <div slot="desc" class="selected-option">{{ date ? date : '请选择' }}</div>
+<nut-cell 
+  :show-icon="true" 
+  title="请选择城市" 
+  :desc="option" 
+  @click.native="openSwitch('isVisible')">
 </nut-cell>
-<nut-picker 
-    :is-visible="isVisible0" 
-    :list-data="listData0"
-    title="请选择年月"
-    :default-value-data="defaultValueData0"
-    @close="switchPicker('isVisible0')"
-    @confirm="setChooseValue0"
->
-</nut-picker>
-```
-
-## 联动（省市区）
-
-```html
-<nut-picker 
-    :is-visible="isVisible" 
-    title="请选择城市"
-    :list-data="listData"
-    :default-value-data="defaultValueData"
-    @close="switchPicker('isVisible')"
-    @confirm="setChooseValue"
-    @choose="updateChooseValue"
-    @close-update="closeUpdateChooseValue"
->
-</nut-picker>
-```
-
-## 联动（省市区）自定义数据
-
-```html
 <nut-picker
-    :is-visible="isVisible2"
-    title="请选择城市"
-    :default-value-data="defaultValueData"
-    :list-data="custmerCityData"
-    @close="switchPicker('isVisible2')"
-    @confirm="setChooseValueCustmer"
-    @choose="updateChooseValueCustmer"
-    @close-update="closeUpdateChooseValueCustmer"
+  :is-visible="isVisible"
+  :list-data="listData"
+  :default-value-data="defaultValueData"
+  @close="closeSwitch('isVisible')"
+  @confirm="confirm"
 ></nut-picker>
 ```
+```javascript
+export default {
+  data() {
+    return {
+      option: '请选择',
+      isVisible: false,
+      listData: [
+        [
+          {
+            label: 1,
+            value: '南京市',
+          },
+          {
+            label: 2,
+            value: '无锡市',
+          },
+          {
+            label: 3,
+            value: '海北藏族自治区',
+          },
+          {
+            label: 4,
+            value: '北京市',
+          },
+          {
+            label: 5,
+            value: '连云港市',
+          },
+          {
+            label: 6,
+            value: '浙江市',
+          },
+          {
+            label: 7,
+            value: '江苏市',
+          },
+          {
+            label: 8,
+            value: '大庆市',
+          },
+          {
+            label: 9,
+            value: '绥化市',
+          },
+          {
+            label: 10,
+            value: '潍坊市',
+          },
+          {
+            label: 11,
+            value: '请按市',
+          },
+          {
+            label: 12,
+            value: '乌鲁木齐市',
+          },
+        ],
+      ]
+      defaultValueData: null
+    }
+  },
+  mounted() {
+    this.defaultValueData = [this.listData[0][3]];
+  },
+  methods: {
+    openSwitch(param) {
+      this[`${param}`] = true;
+    },
 
+    closeSwitch(param) {
+      this[`${param}`] = false;
+    },
+
+    confirm(chooseData) {
+      this.option = `${chooseData[0].value}`;
+    }
+  }
+};
+```
+
+## 多列样式
+```html
+<nut-cell 
+  :show-icon="true" 
+  title="请选择时间" 
+  :desc="option1" 
+  @click.native="openSwitch('isVisible1')">
+</nut-cell>
+<nut-picker
+  :is-visible="isVisible1"
+  :list-data="listData1"
+  :default-value-data="defaultValueData1"
+  @close="closeSwitch('isVisible1')"
+  @confirm="confirm1"
+></nut-picker>
+```
+```javascript
+export default {
+  data() {
+    return {
+      option1: '请选择',
+      isVisible1: false,
+      listData1: [
+        ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+        ['上午', '下午', '晚上']
+      ],
+      defaultValueData1: null
+    }
+  },
+  mounted() {
+    this.defaultValueData1 = ['周四', '下午'];
+  },
+  methods: {
+    openSwitch(param) {
+      this[`${param}`] = true;
+    },
+
+    closeSwitch(param) {
+      this[`${param}`] = false;
+    },
+
+    confirm1(chooseData) {
+      this.option1 = `${chooseData[0]} ${chooseData[1]}`;
+    }
+  }
+};
+```
+
+## 多级联动
+```html
+<nut-cell 
+  :show-icon="true" 
+  title="请选择城市" 
+  :desc="cityCustmer" 
+  @click.native="openSwitch('isVisible2')">
+</nut-cell>
+<nut-picker
+  :is-visible="isVisible2"
+  :default-value-data="defaultValueData"
+  :list-data="custmerCityData"
+  @close="closeSwitch('isVisible2')"
+  @confirm="setChooseValueCustmer"
+  @choose="updateChooseValueCustmer"
+  @close-update="closeUpdateChooseValueCustmer"
+></nut-picker>
+```
 ```javascript
 const APIData = [
   {
     label: 1,
     array: [
       {
+        label: 1,
+        value: '朝阳区'
+      },
+      {
+        label: 2,
+        value: '海淀区'
+      },
+      {
         label: 3,
-        value: "朝阳区"
+        value: '大兴区'
       },
       {
         label: 4,
-        value: "海淀区"
+        value: '东城区'
+      },
+      {
+        label: 5,
+        value: '西城区'
+      },
+      {
+        label: 6,
+        value: '丰台区'
       }
     ]
   },
@@ -85,12 +199,24 @@ const APIData = [
     label: 2,
     array: [
       {
-        label: 5,
-        value: "测试1"
+        label: 1,
+        value: '黄浦区'
       },
       {
-        label: 6,
-        value: "测试2"
+        label: 2,
+        value: '长宁区'
+      },
+      {
+        label: 3,
+        value: '普陀区'
+      },
+      {
+        label: 4,
+        value: '杨浦区'
+      },
+      {
+        label: 5,
+        value: '浦东新区'
       }
     ]
   }
@@ -98,191 +224,117 @@ const APIData = [
 export default {
   data() {
     return {
-      date: null,
-      isVisible0: false,
-      listData0: [
-        [
-          "2010",
-          "2011",
-          "2012",
-          "2013",
-          "2014",
-          "2015",
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022",
-          "2023",
-          "2024",
-          "2025",
-          "2026",
-          "2027",
-          "2028",
-          "2029",
-          "2030",
-          "2031",
-          "2032",
-          "2033",
-          "2034",
-          "2035",
-          "2036",
-          "2037",
-          "2038",
-          "2039"
-        ],
-        ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-      ],
-      defaultValueData0: ["2012", "2"],
-      city: null,
+      option: '请选择',
       isVisible: false,
-      data: {
-        北京: ["北京"],
-        黑龙江: [
-          "哈尔滨",
-          "绥化",
-          "漠河",
-          "大兴安岭",
-          "牡丹江",
-          "佳木斯",
-          "齐齐哈尔",
-          "大庆",
-          "五大连池"
+      listData: [
+        [
+          {
+            label: 1,
+            value: '南京市',
+          },
+          {
+            label: 2,
+            value: '无锡市',
+          },
+          {
+            label: 3,
+            value: '海北藏族自治区',
+          },
+          {
+            label: 4,
+            value: '北京市',
+          },
+          {
+            label: 5,
+            value: '连云港市',
+          },
+          {
+            label: 6,
+            value: '浙江市',
+          },
+          {
+            label: 7,
+            value: '江苏市',
+          },
+          {
+            label: 8,
+            value: '大庆市',
+          },
+          {
+            label: 9,
+            value: '绥化市',
+          },
+          {
+            label: 10,
+            value: '潍坊市',
+          },
+          {
+            label: 11,
+            value: '请按市',
+          },
+          {
+            label: 12,
+            value: '乌鲁木齐市',
+          },
         ],
-        江西: ["九江", "南昌", "赣州"],
-        上海: ["上海"],
-        重庆: ["重庆"],
-        内蒙古: [
-          "呼和浩特",
-          "呼和浩特1",
-          "呼和浩特2",
-          "呼和浩特3",
-          "呼和浩特4",
-          "呼和浩特5",
-          "呼和浩特6",
-          "呼和浩特7"
-        ]
-      },
-      dataSub: {
-        上海: ["测试1", "测试2"],
-        北京: ["西城区", "东城区", "大兴区", "朝阳区", "海淀区"],
-        南昌: ["青山湖区", "西湖区", "宏都中路", "梦时代", "八一广场"],
-        绥化: ["明水", "拜泉"],
-        哈尔滨: ["道里区", "道外区"]
-      },
-      listData: [["上海", "黑龙江", "北京", "重庆", "江西", "内蒙古"]],
+      ]
       defaultValueData: null,
-      year: null,
+      option1: '请选择',
       isVisible1: false,
-      listData1: [["2018", "2019","2010"]],
+      listData1: [
+        ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+        ['上午', '下午', '晚上']
+      ],
+      defaultValueData1: null,
+      option3: '请选择',
+      isVisible3: false,
+      cityCustmer: '请选择',
+      isVisible2: false,
       custmerCityData: [
         [
           {
             label: 1,
-            value: "北京"
+            value: '北京'
           },
           {
             label: 2,
-            value: "上海"
+            value: '上海'
           }
         ]
-      ],
-      cityCustmer: null,
-      isVisible2: false,
-      defaultValueData1: null
+      ]
     };
   },
-  created() {
-    this.listData = [
-      ...[this.listData[0]],
-      this.data[this.listData[0][0]],
-      this.dataSub[this.data[this.listData[0][0]]]
-    ];
+  mounted() {
+    this.defaultValueData = [this.listData[0][3]];
+    this.defaultValueData1 = ['周四', '下午'];
   },
   methods: {
-    switchPicker(param) {
-      this[`${param}`] = !this[`${param}`];
+    openSwitch(param) {
+      this[`${param}`] = true;
     },
 
-    setChooseValue0(chooseData) {
-      this.date = `${chooseData[0]}年${chooseData[1]}月`;
+    closeSwitch(param) {
+      this[`${param}`] = false;
     },
-
-    setYearValue(chooseData) {
-      this.year = `${chooseData[0]}年`;
-    },
-
-    modifyCity() {
-      this.updateLinkage("", "重庆", 1, "重庆");
-      this.defaultValueData = ["重庆", "重庆"];
-    },
-
-    modifyYear() {
-      this.defaultValueData1 = ["2018"];
-    },
-
-    // demo 城市选择(联动) start
-    setChooseValue(chooseData) {
-      this.city = `${chooseData[0]}-${chooseData[1]}${
-        chooseData[2] ? "-" + chooseData[2] : ""
-      }`;
-    },
-
-    updateLinkage(self, value, index, chooseValue, cacheValueData) {
-      if (!value) {
-        return false;
-      }
-      switch (index) {
-        case 1:
-          let i = this.listData[0].indexOf(value);
-          this.listData.splice(index, 1, [...this.data[this.listData[0][i]]]);
-          chooseValue = chooseValue ? chooseValue : this.listData[index][0];
-          self && self.updateChooseValue(self, index, chooseValue);
-          this.updateLinkage(
-            self,
-            chooseValue,
-            2,
-            cacheValueData && cacheValueData[2] ? cacheValueData[2] : null
-          );
-          break;
-        case 2:
-          let areaData = this.dataSub[value] ? this.dataSub[value] : [];
-          this.listData.splice(index, 1, [...areaData]);
-          chooseValue = chooseValue ? chooseValue : this.listData[index][0];
-          self && self.updateChooseValue(self, index, chooseValue);
-          break;
-      }
-    },
-
-    updateChooseValue(self, index, value, cacheValueData) {
-      index < 2 && this.updateLinkage(self, value, index + 1, null);
-    },
-
-    closeUpdateChooseValue(self, chooseData) {
-      this.updateLinkage(self, chooseData[0], 1, chooseData[1], chooseData);
-    },
-    // demo 城市选择(联动) end
+    
     setChooseValueCustmer(chooseData) {
-      //alert(JSON.stringify(chooseData));
-      var str = chooseData.map(item => item.value).join("-");
+      var str = chooseData.map(item => item.value).join('-');
       this.cityCustmer = str;
     },
 
     closeUpdateChooseValueCustmer(self, chooseData) {
-        //此处模拟查询API，如果数据缓存了不需要再重新请求
-        setTimeout(() => {
-          let { label, value } = chooseData[0];
-          var resItems = APIData.find(item => item.label == label);
-          if (resItems && resItems.array.length) {
-            this.$set(this.custmerCityData, 1, resItems.array);
-            
-            // 复原位置
-            self.updateChooseValue(self, 0, chooseData[0]);
-            self.updateChooseValue(self, 1, chooseData[1]);
-          }
-        }, 100);
+      //此处模拟查询API，如果数据缓存了不需要再重新请求
+      setTimeout(() => {
+        let { label, value } = chooseData[0];
+        var resItems = APIData.find(item => item.label == label);
+        if (resItems && resItems.array.length) {
+          this.$set(this.custmerCityData, 1, resItems.array);
+
+          // 复原位置
+          self.updateChooseValue(self, 0, chooseData[0]);
+          self.updateChooseValue(self, 1, chooseData[1]);
+        }
+      }, 100);
     },
 
     updateChooseValueCustmer(self, index, resValue, cacheValueData) {
@@ -304,15 +356,86 @@ export default {
 };
 ```
 
+## 带标题样式
+```html
+<nut-cell 
+  :show-icon="true" 
+  title="请选择城市" 
+  :desc="option3" 
+  @click.native="openSwitch('isVisible3')">
+</nut-cell>
+<nut-picker
+  :is-visible="isVisible3"
+  :list-data="listData"
+  title="请选择城市"
+  @close="closeSwitch('isVisible3')"
+  @confirm="confirm3"
+></nut-picker>
+```
+```javascript
+export default {
+  data() {
+    return {
+      option3: '请选择',
+      isVisible3: false,
+      listData: [
+        [
+          {
+            label: 1,
+            value: '南京市'
+          },
+          {
+            label: 2,
+            value: '无锡市'
+          },
+          {
+            label: 3,
+            value: '海北藏族自治区'
+          },
+          {
+            label: 4,
+            value: '北京市'
+          },
+          {
+            label: 5,
+            value: '连云港市'
+          },
+          {
+            label: 6,
+            value: '浙江市'
+          }
+        ]
+      ]
+    }
+  },
+  mounted() {
+    this.defaultValueData = [this.listData[0][3]];
+  },
+  methods: {
+    openSwitch(param) {
+      this[`${param}`] = true;
+    },
+
+    closeSwitch(param) {
+      this[`${param}`] = false;
+    },
+
+    confirm3(chooseData) {
+      this.option3 = `${chooseData[0].value}`;
+    }
+  }
+};
+```
+
 ## Prop
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| isVisible | 是否可见 | Boolean | false
-| customClassName | 自定义class | String | null
+| is-visible | 是否可见 | Boolean | false
+| custom-class-name | 自定义class | String | null
 | title | 设置标题 | String | null
-| listData | 列表数据 | Array | []
-| defaultValueData | 默认选中 | Array | []
+| list-data | 列表数据 | Array | []
+| default-value-data | 默认选中 | Array | []
 
 ## Event
 
