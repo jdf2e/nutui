@@ -239,6 +239,8 @@ export default {
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | tab-title | 页签的标题 | String | ''
+| tab-slot | 页签的插槽名 | String | ''
+| badge | [徽标组件](/#/badge)属性 | Object | false
 | icon-url | 页签的图标地址 | String | ''
 | content | 页签的自定义内容 | String | ''
 | disable | 是否禁用页签 |Boolean|false|
