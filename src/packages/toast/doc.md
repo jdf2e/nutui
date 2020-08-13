@@ -170,6 +170,6 @@ Toast.resetDefaultOptions("text");
 | loadingRotate       | loading图标是否旋转，仅对loading类型生效                                      | Boolean       | true                          |
 | onClose             | 关闭时触发的事件                                                              | function      | null                          |
 | closeOnClickOverlay | 是否在点击遮罩层后关闭提示                                                    | Boolean       | false                         |
-| coverStyle          | 遮罩层style                                                        | object       | {}                         |
-| coverClass          | 遮罩层class                                                        | String       | ""                         |
+| toastStyle          | 提示框style                                                        | object       | {}                         |
+| toastClass          | 提示框class                                                        | String       | ""                         |
 
