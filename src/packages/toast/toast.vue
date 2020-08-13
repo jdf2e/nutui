@@ -12,9 +12,11 @@
     >
       <div
         class="nut-toast-inner"
+        :class="toastClass"
         :style="{
           'text-align': textAlignCenter ? 'center' : 'left',
           'background-color': bgColor,
+          ...toastStyle,
         }"
       >
         <span v-if="hasIcon" class="nut-toast-icon-wrapper">
@@ -51,6 +53,8 @@ export default {
       onClose: null,
       textTimer: null,
       cover: false,
+      toastStyle: {},
+      toastClass: '',
       coverColor: 'rgba(0, 0, 0, 0)',
       timeStamp: null,
       closeOnClickOverlay: false,
