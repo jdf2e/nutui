@@ -5,7 +5,6 @@
       <nut-cell isLink title="展示弹出层" :showIcon="true" @click.native="showBasic = true"> </nut-cell>
     </div>
     <nut-popup :style="{ padding: '30px 50px' }" v-model="showBasic">正文</nut-popup>
-
     <h4>弹出位置</h4>
     <div>
       <nut-cell isLink title="顶部弹出" :showIcon="true" @click.native="showTop = true"> </nut-cell>
@@ -42,6 +41,26 @@
       </nut-popup>
       <nut-cell isLink title="圆角弹框" :showIcon="true" @click.native="showRound = true"> </nut-cell>
     </div>
+    <h4>组合弹框</h4>
+    <div>
+      <nut-cell isLink title="组合弹窗" :showIcon="true" @click.native="showCombination = true"> </nut-cell>
+    </div>
+    <nut-popup id="combination" :style="{ padding: '30px 50px' }" v-model="showCombination">正文</nut-popup>
+    <nut-popup
+      id="combination"
+      round
+      v-model="showCombination"
+      closeable
+      close-icon-position="top-right"
+      position="bottom"
+      :style="{ height: '185px' }"
+    >
+      <div class="box">
+        <div class="icon"> <img src="@/assets/img/wechat-icon.png" /> <span>微信好友</span></div>
+        <div class="icon"> <img src="@/assets/img/QQ-friends-icon.png" /><span>QQ好友</span></div>
+        <div class="icon"> <img src="@/assets/img/circle-friends-icon.png" /><span>微信朋友圈</span></div>
+      </div>
+    </nut-popup>
     <h4>指定挂载节点</h4>
     <div>
       <nut-cell isLink title="指定挂载节点" :showIcon="true" @click.native="getContainer = true"> </nut-cell>
@@ -64,6 +83,7 @@ export default {
       showIconPosition: false,
       showCloseIcon: false,
       getContainer: false,
+      showCombination: false,
     };
   },
   methods: {
