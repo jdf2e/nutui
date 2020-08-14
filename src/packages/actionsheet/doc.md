@@ -393,6 +393,64 @@ export default {
 };
 ```
 
+和popup组合使用
+```html
+<nut-cell 
+    :show-icon="true" 
+    title="和popup组合使用" 
+    :desc="option" 
+    @click.native="openSwitch('isVisible')">
+</nut-cell>
+<nut-popup id="combinationActionsheet" v-model="isVisible">
+    <img src="https://m.360buyimg.com/babel/s202x202_jfs/t1/125451/13/9108/20190/5f2fbe70E8d551f81/8a5d3b1215ae05bc.png">
+</nut-popup>
+<nut-actionsheet 
+    :is-visible="isVisible"
+    @close="closeSwitch('isVisible')" 
+    :option-list="optionList" 
+    @choose="choose"
+>
+</nut-actionsheet>
+```
+```javascript
+export default {
+  data() {
+    return {
+      option: '',
+      isVisible: false,
+      optionList: [
+        {
+          name: '选项A',
+          value: 0
+        },
+        {
+          name: '选项B',
+          value: 1,
+          disable: true
+        },
+        {
+          name: '选项C',
+          value: 1
+        }
+      ]
+    };
+  },
+  methods: {
+    openSwitch(param) {
+      this[`${param}`] = true;
+    },
+
+    closeSwitch(param) {
+      this[`${param}`] = false;
+    },
+
+    choose(itemParams) {
+      this.option = itemParams.name;
+    }
+  }
+};
+```
+
 
 
 ## Prop
