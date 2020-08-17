@@ -1,6 +1,13 @@
 <template>
   <div class="nut-actionsheet">
-    <nut-popup v-model="isVisiblePopup" position="bottom" round @close="closeActionSheet" :close-on-click-overlay="isClickCloseMask">
+    <nut-popup
+      id="combinationActionsheet"
+      v-model="isVisiblePopup"
+      position="bottom"
+      round
+      @close="closeActionSheet"
+      :close-on-click-overlay="isClickCloseMask"
+    >
       <div class="nut-actionsheet-panel">
         <dl class="nut-actionsheet-modal" v-if="$slots.title || $slots.desc">
           <dt class="nut-actionsheet-title">
