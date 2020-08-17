@@ -50,7 +50,7 @@ export default {
 ```html
 <nut-cell>
   <span slot="title">
-    <radio-group 
+    <nut-radiogroup
         :list="labelList"  
         :name="'test0'" 
         :effect-key = "'value'"
@@ -60,7 +60,7 @@ export default {
     </span>
 </nut-cell>
 <nut-cell>
-    <span slot="title"> 选择结果 {{labelReslut0}}</span>
+    <span slot="title"> 选择结果 {{labelReslut0} }</span>
 </nut-cell>   
 ```
 
@@ -69,7 +69,7 @@ export default {
 ```html
 <nut-cell>
         <span slot="title">        
-          <radio-group 
+          <nut-radiogroup
             :list="labelList"
             :name="'test'"
             :styleType="'label'"
@@ -82,7 +82,7 @@ export default {
         </span>
       </nut-cell>
       <nut-cell>
-        <span slot="title"> 选择结果 {{labelReslut}}</span>
+        <span slot="title"> 选择结果 {{labelReslut} }</span>
       </nut-cell>
 ```
 
@@ -91,7 +91,7 @@ export default {
 ```html
 <nut-cell>
   <span slot="title">        
-    <radio-group 
+    <nut-radiogroup
       :list="labelList"
       :style-type="'list'"
       :name="'test3'"
@@ -105,7 +105,7 @@ export default {
   </span>
 </nut-cell>
 <nut-cell>
-  <span slot="title"> 选择结果 {{resloutdemo1}}: {{labelReslut2}}</span>
+  <span slot="title"> 选择结果 {{resloutdemo1} }: {{labelReslut2} }</span>
 </nut-cell>
 ```
 

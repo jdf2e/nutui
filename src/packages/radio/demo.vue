@@ -1,7 +1,7 @@
 <template>
   <div class="demo-list">
     <h4>基础样式</h4>
-    <radio-group
+    <nut-radiogroup
       :list="labelList"
       :name="'test0'"
       :styleType="'radio'"
@@ -14,7 +14,7 @@
     />
     <div class="cell-reslout"> 选择结果 {{ resloutdemo1 }}: {{ labelReslut0 }}</div>
     <h4>列表样式</h4>
-    <radio-group
+    <nut-radiogroup
       :list="labelList"
       :style-type="'list'"
       :name="'test3'"
@@ -27,7 +27,7 @@
     />
     <div class="cell-reslout"> 选择结果 {{ resloutdemo1 }}: {{ labelReslut2 }}</div>
     <h4>列表禁选样式</h4>
-    <radio-group
+    <nut-radiogroup
       :list="labelList"
       :style-type="'list'"
       :name="'test4'"
@@ -40,7 +40,7 @@
     />
     <div class="cell-reslout"> 选择结果 {{ resloutdemo1 }}: {{ labelReslut3 }}</div>
     <h4>按钮样式</h4>
-    <radio-group
+    <nut-radiogroup
       :list="labelList2"
       :name="'test'"
       :styleType="'label'"
@@ -56,7 +56,6 @@
 </template>
 
 <script>
-import group from './index.vue';
 export default {
   data() {
     return {
@@ -137,9 +136,6 @@ export default {
       disableVal: 'false',
       radioDisable: false,
     };
-  },
-  components: {
-    'radio-group': group,
   },
   watch: {
     disableVal(val) {

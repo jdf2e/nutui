@@ -154,7 +154,9 @@ npm i @nutui/babel-plugin-separate-import -D
 ``` bash
 {
   "plugins": [
-    ["@nutui/babel-plugin-separate-import", {
+    ["@nutui/babel-plugin-separate-import", {  
+        "libraryName": "@nutui/nutui-jdl",
+        "libraryDirectory": "dist/packages",
         "style": "scss"
     }]
   ]
