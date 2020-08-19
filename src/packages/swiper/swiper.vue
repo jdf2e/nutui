@@ -398,8 +398,8 @@ export default {
     this.updateEvent();
   },
   destroyed() {
-    this.timer = null;
-    this.domTimer = null;
+    this.timer && clearInterval(this.timer);
+    this.domTimer && clearTimeout(this.domTimer);
   },
   activated() {
     if (this.keepAlive) {
@@ -409,8 +409,8 @@ export default {
   },
   deactivated() {
     this.keepAlive = true;
-    this.timer = null;
-    this.domTimer = null;
+    this.timer && clearInterval(this.timer);
+    this.domTimer && clearTimeout(this.domTimer);
   },
 };
 </script>
