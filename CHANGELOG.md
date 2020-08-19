@@ -4,9 +4,8 @@
 
 * :sparkles: upd(Popup)：demo 增加分享按钮(微信、朋友圈、QQ) @yangkaixuan
 * :sparkles: upd(ActionSheet)：增加 popup 组合功能 @irisSong
-
 * :bug: fix(TabSelect)：修复 demo 显示问题 @dushoujun
 * :bug: fix(Stepper)：修复 demo 加减精度问题 @layman666
-
+* :bug: fix(Swiper)：销毁钩子内计时器清空无效 #262 @richard1015
 * :zap: doc：sketch 更换 @lizhiyao4
 * :zap: doc：ActionSheet、Radio、主题定制化 文档更改 @richard1015 @yangkaixuan
