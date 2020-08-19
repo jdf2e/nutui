@@ -33,7 +33,7 @@
       >
       </nut-countup>
       <nut-button @click="startRole" :disabled="startFlag">抽奖</nut-button>
-      <nut-button @click="startRole2" :disabled="startFlag2">不中奖</nut-button>
+      <nut-button @click="startRole2" :disabled="startFlag">不中奖</nut-button>
     </div>
   </div>
 </template>
@@ -70,7 +70,7 @@ export default {
     startRole2() {
       this.prizeLevel = -1;
       console.log(this.prizeLevel, '不中奖');
-      this.startFlag2 = true;
+      this.startFlag = true;
       setTimeout(() => {
         this.$refs['countup-machine'].machineLuck();
       }, 500);
@@ -78,7 +78,7 @@ export default {
     scrollAniEnd(val) {
       this.$toast.text(val ? '恭喜中奖！！！' : '很遗憾！没有中奖');
       setTimeout(() => {
-        val ? (this.startFlag = false) : (this.startFlag2 = false);
+        this.startFlag = false;
       }, 300);
     }
   },

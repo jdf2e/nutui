@@ -9,6 +9,11 @@
 <ul class="article">
 <li>
 
+#### [NutUI 落地实践-让组件库服务慧采协同采购业务](https://jelly.jd.com/article/5f30a8ca645f82014b842b81)  
+<img width="300" src="https://img13.360buyimg.com/ling/jfs/t1/119128/31/14648/534724/5f30b5c3E97731164/b21b7e1e705dd451.png" />
+</li>
+<li>
+
 #### [NutUI 实战--持续升级企业业务之福礼](https://jelly.jd.com/article/5f10308affb8ec014f4f326a)  
 <img width="300" src="https://img30.360buyimg.com/ling/jfs/t1/112680/27/12443/129918/5f10250aEe0c7f88c/8a1c85b3868cf4be.jpg" />
 </li>
@@ -69,3 +74,17 @@
 <img width="300" src="https://img20.360buyimg.com/ling/jfs/t1/19888/36/7120/143703/5c662dcaE11bb07d2/d0f2315dd7228b08.jpg" />
 </li>
 </ul>
+
+# 社区文章
+
+#### [NutUI - 由京东出品，适合快速开发商城类h5、小程序的移动端 UI 组件库](https://zhuanlan.zhihu.com/p/161724686)  
+
+#### [Vue 组件库工程探索与实践——按需加载篇](https://www.jianshu.com/p/a07b1f699c0e)  
+
+#### [读京东 NutUI 框架总结（1）](https://www.jianshu.com/p/a07b1f699c0e)  
+
+#### [Vue 使用 Vant 实现 Tab 切换，使用 NutUI 实现上拉加载下拉刷新](https://baijiahao.baidu.com/s?id=1666288392408654024&wfr=spider&for=pc)  
+
+#### [Vue 引入 NutUI](https://www.cnblogs.com/fqh123/p/12066828.html)
+
+#### [NutUI 上拉刷新下拉加载的使用](https://www.cnblogs.com/fqh123/p/12152981.html)

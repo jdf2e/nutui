@@ -1,5 +1,7 @@
 # Address 地址选择
 
+> 按需加载请加载对应依赖组件 Icon Popup
+
 ## 选择自定义地址
 
 ```html

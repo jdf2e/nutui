@@ -9,18 +9,17 @@
   border: 2px $border-style-base $border-color-base;
   transition: all $transition-duration $animation-timing-fun;
   .nut-switch-label {
-    position:relative;
-    width:auto;
-    left:0;
-    margin-left:20px;
-    margin-right:3px;
-    display: inline-block !important;
-    padding:0 2px 0 2px  !important;
-    text-align:center !important;
-    color:#999 !important;
-    font-style:normal !important;
-    font-size:12px;
-    bottom: 2px;
+    position: relative;
+    width: auto;
+    left: 0;
+    margin-left: 20px;
+    margin-right: 3px;
+    padding: 0 2px 0 2px !important;
+    text-align: center !important;
+    color: #999 !important;
+    font-style: normal !important;
+    font-size: 12px;
+    // bottom: 2px;
   }
   .nut-switch-btn {
     position: absolute;
@@ -30,16 +29,15 @@
     border-radius: 50%;
     box-sizing: border-box;
     transition: all $transition-duration $animation-timing-fun;
-
   }
   &.nut-switch-active {
     border-color: $border-color-active;
-   .nut-switch-label {
-    left:4px;
-    margin-left:0px;
-    color:red !important;
-    margin-right:22px;
-   }
+    .nut-switch-label {
+      left: 4px;
+      margin-left: 0px;
+      color: red !important;
+      margin-right: 22px;
+    }
     .nut-switch-btn {
       background-color: $primary-color;
     }
@@ -54,8 +52,8 @@
   min-width: 30px;
   .nut-switch-label {
     font-size: 10px;
-    top:-4px;
-    margin-left:-25px;
+    top: -2px;
+    margin-left: -25px;
   }
   .nut-switch-btn {
     height: 14px;
@@ -64,14 +62,15 @@
   &.nut-switch-active {
     .nut-switch-btn {
       left: 100%;
-      margin-left:-15px;
+      margin-left: -15px;
     }
   }
 }
 
 .nut-switch-base {
   height: 20px;
-  min-width:38px;
+  line-height: 20px;
+  min-width: 38px;
   .nut-switch-btn {
     height: 20px;
     width: 22px;
@@ -79,33 +78,33 @@
   &.nut-switch-active {
     .nut-switch-btn {
       left: 100%;
-      margin-left:-21px;
+      margin-left: -21px;
     }
   }
 }
 
 .nut-switch-large {
-  
   height: 28px;
+  line-height: 28px;
   min-width: 58px;
   font-size: 14px;
   .nut-switch-label {
     margin-right: 8px;
     left: 6px;
-    top: 2px;
-   }
+    // top: 2px;
+  }
   .nut-switch-btn {
     height: 28px;
     min-width: 28px;
   }
   &.nut-switch-active {
     .nut-switch-label {
-      top:2px;
-      margin-right:30px;
-     }
+      //   top:2px;
+      margin-right: 30px;
+    }
     .nut-switch-btn {
       left: 100%;
-      margin-left:-28px;
+      margin-left: -28px;
     }
   }
 }

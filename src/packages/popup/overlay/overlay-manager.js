@@ -1,52 +1,58 @@
-import Vue from "vue";
-import overlayComponent from "./overlay.vue";
+import Vue from 'vue';
+import overlayComponent from './overlay.vue';
 
 let modalStack = [];
 let _zIndex = 2000;
 let overlay;
-const overlayManager = { 
-
+const overlayManager = {
   lockCount: 0,
 
-  get zIndex() {
-    return ++_zIndex;
-  },
   get topStack() {
     return modalStack[modalStack.length - 1];
   },
+  getZIndex(id) {
+    if (!id) return ++_zIndex;
+    const overlay = modalStack.find((res) => {
+      return res.config.id === id;
+    });
+    if (overlay) {
+      return overlay.config.zIndex;
+    } else {
+      return ++_zIndex;
+    }
+  },
 
   updateOverlay() {
-    const {  clickHandle, topStack } = overlayManager;
+    const { clickHandle, topStack } = overlayManager;
     if (!overlay) {
       overlay = mount(overlayComponent, {
         nativeOn: {
           click: clickHandle,
         },
       });
-    } 
- 
+    }
+
     if (topStack) {
       const { vm, config } = topStack;
       const el = vm.$el;
-      el && el.parentNode && el.parentNode.nodeType !== 11
-        ? el.parentNode.appendChild(overlay.$el)
-        : document.body.appendChild(overlay.$el);
-      
+      el && el.parentNode && el.parentNode.nodeType !== 11 ? el.parentNode.appendChild(overlay.$el) : document.body.appendChild(overlay.$el);
+
       Object.assign(overlay, config, {
         value: true,
-      }); 
-    } else { 
+      });
+    } else {
       overlay.value = false;
     }
   },
 
   //打开遮罩层
   openModal(vm, config) {
-    let { zIndex, duration, overlayClass, overlayStyle} = config;
- 
+    let { zIndex, duration, overlayClass, overlayStyle, id } = config;
+
     modalStack.push({
       vm,
       config: {
+        id,
         zIndex,
         duration,
         overlayClass,
@@ -59,10 +65,10 @@ const overlayManager = {
 
   clickHandle() {
     const { topStack } = overlayManager;
-    
+
     //防止多次点击
-    if (modalStack.length && topStack.vm.closeOnClickOverlay) { 
-      topStack.vm.$emit("click-overlay");
+    if (modalStack.length && topStack.vm.closeOnClickOverlay) {
+      topStack.vm.$emit('click-overlay');
       topStack.vm.close();
     }
   },
@@ -102,26 +108,25 @@ const overlayProps = {
   },
   overlayClass: {
     type: String,
-    default: "",
+    default: '',
   },
   overlayStyle: {
     type: Object,
     default: function () {
-      return null
+      return null;
     },
   },
   zIndex: {
-    type: Number
+    type: Number,
   },
 };
 
 function mount(Component, data) {
-
-  const instance = new Vue({ 
+  const instance = new Vue({
     props: Component.props,
-    render(h) {    
+    render(h) {
       return h(Component, {
-        props:this.$props,
+        props: this.$props,
         ...data,
       });
     },
@@ -129,14 +134,13 @@ function mount(Component, data) {
   return instance;
 }
 
-function getProps(){
-  
-  if(!this)return {}
+function getProps() {
+  if (!this) return {};
   let obj = {};
-    Object.keys(overlayProps).forEach(res=>{
-        obj[res] = this[res]
-  }) 
-  return obj
+  Object.keys(overlayProps).forEach((res) => {
+    obj[res] = this[res];
+  });
+  return obj;
 }
 
-export  {overlayManager ,overlayProps, getProps};
+export { overlayManager, overlayProps, getProps };

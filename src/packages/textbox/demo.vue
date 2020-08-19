@@ -6,28 +6,28 @@
     <h4>禁用</h4>
     <nut-textbox disabled v-model="val"></nut-textbox>
     <h4>自定义高度:100px</h4>
-    <nut-textbox :txtAreaH="100" :maxNum="300" v-model="val"></nut-textbox>
+    <nut-textbox :txtAreaH="100" :max-num="300" v-model="val"></nut-textbox>
 
     <h4>自定义提示语</h4>
-    <nut-textbox :placeText="'请填写详细情况请填写详细情况'" v-model="val1"></nut-textbox>
+    <nut-textbox :place-text="'请填写详细情况请填写详细情况'" v-model="val1"></nut-textbox>
 
     <h4>自定义字数限制</h4>
-    <nut-textbox :maxNum="100" v-model="val2"></nut-textbox>
+    <nut-textbox :max-num="100" v-model="val2"></nut-textbox>
 
     <h4>限制字数不可超出</h4>
-    <nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="100" textBgColor="#efefef" v-model="val3"></nut-textbox>
+    <nut-textbox :switch-max="true" :max-num="10" :txt-areaH="100" text-bgColor="#efefef" v-model="val3"></nut-textbox>
 
     <h4>字数超出报错</h4>
-    <nut-textbox :maxNum="10" :txtAreaH="100" @errorFunc="overLength" v-model="val1"></nut-textbox>
+    <nut-textbox :max-num="10" :txt-areaH="100" @errorFunc="overLength" v-model="val1"></nut-textbox>
 
     <h4>自定义文本框背景色</h4>
-    <nut-textbox :switchMax="true" :maxNum="10" :txtAreaH="100" textBgColor="#feefef" v-model="val1"></nut-textbox>
+    <nut-textbox :switch-max="true" :max-num="10" :txt-areaH="100" text-bgColor="#feefef" v-model="val1"></nut-textbox>
 
     <h4>不显示字数限制</h4>
-    <nut-textbox :limitShow="false" :maxNum="10" v-model="val1"></nut-textbox>
+    <nut-textbox :limit-show="false" :max-num="10" v-model="val1"></nut-textbox>
 
     <h4>输入回调返回文字</h4>
-    <nut-textbox :maxNum="10" txtAreaH="100" @inputFunc="inputText"></nut-textbox>
+    <nut-textbox :max-num="10" txt-areaH="100" @inputFunc="inputText"></nut-textbox>
   </div>
 </template>
 
@@ -54,7 +54,8 @@ export default {
     this.val = '初始测试数据';
     setTimeout(function() {
       that.val = '异步测试数据123';
-    }, 1000);
+      that.val3 = '这是一段文字，非常长，非常长，非常长长长';
+    }, 2000);
   }
 };
 </script>

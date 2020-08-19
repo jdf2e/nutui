@@ -15,7 +15,7 @@
         <nut-icon type="tick" slot="icon" size="15px" color="#848484"></nut-icon>
       </nut-cell>
       <nut-cell :show-icon="true" title="我是标题" sub-title="我是副标题" desc="展示默认ICON">
-        <div slot="avatar"><nut-avatar></nut-avatar></div>
+        <nut-avatar slot="avatar"></nut-avatar>
       </nut-cell>
     </div>
   </div>
