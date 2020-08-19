@@ -164,9 +164,12 @@ Toast.resetDefaultOptions("text");
 | bgColor             | 背景颜色（透明度）                                                            | String        | "rgba(46, 46, 46, 0.7)"       |
 | customClass         | 自定义类名                                                                    | String        | ""                            |
 | icon                | 自定义图标，**支持图片链接或base64格式**                                        | String        | ""                            |
-| size                | 尺寸，**small**/**base**/**large**三选一                                                  | String        | "base"                        |
+| size                | 文案尺寸，**small**/**base**/**large**三选一                                                  | String        | "base"                        |
 | cover               | 是否显示遮罩层，loading类型默认显示                                           | Boolean       | loading类型true/其他类型false |
 | coverColor          | 遮罩层颜色，默认透明                                                          | String        | "rgba(0,0,0,0)"               |
 | loadingRotate       | loading图标是否旋转，仅对loading类型生效                                      | Boolean       | true                          |
 | onClose             | 关闭时触发的事件                                                              | function      | null                          |
 | closeOnClickOverlay | 是否在点击遮罩层后关闭提示                                                    | Boolean       | false                         |
+| toastStyle          | 提示框style                                                        | object       | {}                         |
+| toastClass          | 提示框class                                                        | String       | ""                         |
+

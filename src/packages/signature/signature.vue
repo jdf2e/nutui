@@ -42,7 +42,7 @@ export default {
       canvasWidth: 0,
       ctx: null,
       isSupportTouch: 'ontouchstart' in window,
-      events: 'ontouchstart' in window ? ['touchstart', 'touchmove', 'touchend'] : ['mousedown', 'mousemove', 'mouseup']
+      events: 'ontouchstart' in window ? ['touchstart', 'touchmove', 'touchend', 'touchleave'] : ['mousedown', 'mousemove', 'mouseup', 'mouseleave']
     };
   },
   components: {
@@ -66,9 +66,13 @@ export default {
       this.ctx.beginPath();
       this.ctx.lineWidth = this.lineWidth;
       this.ctx.strokeStyle = this.strokeStyle;
-      (this.moveEventHandler = this.moveEventHandler.bind(this)), (this.endEventHandler = this.endEventHandler.bind(this));
+      (this.moveEventHandler = this.moveEventHandler.bind(this)),
+        (this.leaveEventHandler = this.leaveEventHandler.bind(this)),
+        (this.endEventHandler = this.endEventHandler.bind(this));
+
       this.$refs.canvas.addEventListener(this.events[1], this.moveEventHandler, false);
       this.$refs.canvas.addEventListener(this.events[2], this.endEventHandler, false);
+      this.$refs.canvas.addEventListener(this.events[3], this.leaveEventHandler, false);
     },
 
     moveEventHandler(event) {
@@ -89,8 +93,13 @@ export default {
       this.$refs.canvas.removeEventListener(this.events[1], this.moveEventHandler, false);
       this.$refs.canvas.removeEventListener(this.events[2], this.endEventHandler, false);
     },
-
+    leaveEventHandler(event) {
+      event.preventDefault();
+      this.$refs.canvas.removeEventListener(this.events[1], this.moveEventHandler, false);
+      this.$refs.canvas.removeEventListener(this.events[2], this.endEventHandler, false);
+    },
     clear(isUnEmit) {
+      this.$refs.canvas.addEventListener(this.events[2], this.endEventHandler, false);
       this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
       this.ctx.closePath();
       if (!isUnEmit) {

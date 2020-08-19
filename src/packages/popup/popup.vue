@@ -32,6 +32,10 @@ import '../icon/icon.scss';
 
 const overflowScrollReg = /scroll|auto/i;
 const popupProps = {
+  id: {
+    type: String | Number,
+    default: '',
+  },
   position: {
     type: String,
     default: 'center',
@@ -139,7 +143,8 @@ export default {
 
       const { duration, overlayClass, overlayStyle, lockScroll, closeOnClickOverlay } = this;
       const config = {
-        zIndex: this.zIndex ? this.zIndex : overlayManager.zIndex,
+        id: this.id,
+        zIndex: this.zIndex ? this.zIndex : overlayManager.getZIndex(this.id),
         duration,
         overlayClass,
         overlayStyle,
@@ -159,7 +164,7 @@ export default {
         overlayManager.lockCount++;
       }
 
-      this.$el.style.zIndex = this.zIndex ? this.zIndex + 1 : overlayManager.zIndex;
+      this.$el.style.zIndex = this.zIndex ? this.zIndex + 1 : overlayManager.getZIndex();
     },
     renderOverlay(config) {
       if (!this.value) {
