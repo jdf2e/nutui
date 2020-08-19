@@ -13,9 +13,7 @@
         >
           <a class="nut-tab-link" v-on:click="switchTab(index, $event, value.disable)">
             <!-- 启用slot -->
-            <template v-if="!!value.tabSlot">
-              <slot :name="value.tabSlot" v-bind:item="value"></slot>
-            </template>
+            <slot v-if="!!value.tabSlot" :name="value.tabSlot" v-bind:item="value"></slot>
             <!-- 启用徽标 -->
             <nut-badge
               v-else-if="!!value.badge"

@@ -98,9 +98,7 @@
         :tab-slot="value.slot"
         v-html="value.content"
       ></nut-tab-panel>
-      <template v-slot:customSlot="item">
-        <span>{{ item.item.tabSlot }} {{ item.item.tabTitle }}</span>
-      </template>
+      <template v-slot:customSlot="{ item }">{{ item.tabSlot }} {{ item.tabTitle }}</template>
     </nut-tab>
 
     <h4>支持徽标badge</h4>
@@ -113,9 +111,6 @@
         :badge="value.badge"
         v-html="value.content"
       ></nut-tab-panel>
-      <template v-slot:customSlot="item">
-        <span>{{ item.item.slot }} {{ item.item.tabTitle }}</span>
-      </template>
     </nut-tab>
   </div>
 </template>
