@@ -9,6 +9,11 @@
 <ul class="article">
 <li>
 
+#### [NutUI 落地实践-让组件库服务慧采协同采购业务](https://jelly.jd.com/article/5f30a8ca645f82014b842b81)  
+<img width="300" src="https://img13.360buyimg.com/ling/jfs/t1/119128/31/14648/534724/5f30b5c3E97731164/b21b7e1e705dd451.png" />
+</li>
+<li>
+
 #### [NutUI 实战--持续升级企业业务之福礼](https://jelly.jd.com/article/5f10308affb8ec014f4f326a)  
 <img width="300" src="https://img30.360buyimg.com/ling/jfs/t1/112680/27/12443/129918/5f10250aEe0c7f88c/8a1c85b3868cf4be.jpg" />
 </li>
