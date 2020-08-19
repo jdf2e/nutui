@@ -113,35 +113,19 @@ export default {
       const [prevLeft, prevRight] = this.values;
       const [rangeLeft, rangeRight] = this.range;
       if (this.direction === 'left') {
-        if (this.stage) {
-          let stageNum = Math.floor((prevRight - 1) / this.stage);
-          if (posi / this.box.clientWidth >= (stageNum * this.stage) / this.total) {
-            this.posi = (stageNum * this.stage + rangeLeft) * (this.box.clientWidth / this.total);
-          } else {
-            this.posi = posi;
-          }
+        let maxRight = prevRight - rangeLeft - 1;
+        if (posi / this.box.clientWidth >= maxRight / this.total) {
+          this.posi = maxRight * (this.box.clientWidth / this.total);
         } else {
-          if (posi / this.box.clientWidth >= (prevRight - 1 - rangeLeft) / this.total) {
-            this.posi = (prevRight - 1 - rangeLeft) * (this.box.clientWidth / this.total);
-          } else {
-            this.posi = posi;
-          }
+          this.posi = posi;
         }
       }
       if (this.direction === 'right') {
-        if (this.stage) {
-          let stageNum = Math.ceil((prevLeft + 1) / this.stage);
-          if (posi / this.box.clientWidth <= (stageNum * this.stage) / this.total) {
-            this.posi = (stageNum * this.stage + rangeLeft) * (this.box.clientWidth / this.total);
-          } else {
-            this.posi = posi;
-          }
+        let minLeft = prevLeft - rangeLeft + 1;
+        if (posi / this.box.clientWidth <= minLeft / this.total) {
+          this.posi = minLeft * (this.box.clientWidth / this.total);
         } else {
-          if (posi / this.box.clientWidth <= (prevLeft + 1 - rangeLeft) / this.total) {
-            this.posi = (prevLeft + 1 - rangeLeft) * (this.box.clientWidth / this.total);
-          } else {
-            this.posi = posi;
-          }
+          this.posi = posi;
         }
       }
       this.$emit('getPos', this.posi, isEnd);

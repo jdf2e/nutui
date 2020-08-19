@@ -157,7 +157,7 @@ npm i @nutui/babel-plugin-separate-import -D
 {
   "plugins": [
     ["@nutui/babel-plugin-separate-import", {
-        "style": "css"
+        "style": "scss"
     }]
   ]
 }
@@ -173,7 +173,7 @@ import { Dialog,Picker } from '@nutui/nutui';
 Dialog.install(Vue);
 Picker.install(Vue);
 ```
-如果需要按需加载 scss 文件（如需要自定义主题）时，除了需要把 style 选项值设为为 **scss** 外，还需要修改 webpack 配置文件的 sass-loader 配置，如下所示：
+如果需要按需加载 scss 文件（如需要自定义主题）时，除了需要把 style 选项值设为 **scss** 外，还需要修改 webpack 配置文件的 sass-loader 配置，如下所示：
 
 ``` bash
 {
