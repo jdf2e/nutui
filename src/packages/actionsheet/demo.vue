@@ -43,11 +43,11 @@
       ></nut-actionsheet>
       <nut-cell :show-icon="true" title="高亮选中项" :desc="option6" @click.native="openSwitch('isVisible6')"> </nut-cell>
 
-      <nut-cell :show-icon="true" title="和popup组合使用" :desc="option7" @click.native="openSwitch('isVisible7')"> </nut-cell>
       <nut-actionsheet :is-visible="isVisible7" @close="closeSwitch('isVisible7')" :option-list="optionList" @choose="choose7"></nut-actionsheet>
       <nut-popup id="combinationActionsheet" v-model="isVisible7">
         <img src="https://m.360buyimg.com/babel/s202x202_jfs/t1/125451/13/9108/20190/5f2fbe70E8d551f81/8a5d3b1215ae05bc.png" />
       </nut-popup>
+      <nut-cell :show-icon="true" title="和popup组合使用" :desc="option7" @click.native="openSwitch('isVisible7')"> </nut-cell>
     </div>
   </div>
 </template>
