@@ -219,6 +219,106 @@ export default {
 };
 ```
 
+## 支持slot
+
+```html
+<nut-tab :def-index="defIndex" :initData="slotTabs" class="customer-css" @tab-switch="tabSwitch" :contentShow="true" :is-show-line="false">
+  <nut-tab-panel
+    v-for="value in slotTabs"
+    v-bind:key="value.tabTitle"
+    :tab-title="value.tabTitle"
+    :tab-slot="value.slot"
+    v-html="value.content"
+  ></nut-tab-panel>
+  <template v-slot:customSlot="{item}">{{ item.tabSlot }} {{ item.tabTitle }}</template>
+</nut-tab>
+```
+
+```javascript
+export default {
+  data() {
+    return {
+      defIndex: 1,
+      positionNavCurr:'top',
+      slotTabs: [
+        {
+          tabTitle: '衣物',
+          slot: 'customSlot',
+          content: '<p>衣物内容</p>'
+        },
+        {
+          tabTitle: '日用品',
+          slot: '',
+          content: '<p>日用品内容</p>'
+        }
+      ],
+    };
+  },
+  methods: {
+      tabSwitch:function(index,event){
+        console.log(index+'--'+event.target);
+      },
+};
+```
+
+## 支持徽标badge
+
+
+```html
+<nut-tab :def-index="defIndex" :initData="badgeTabs" @tab-switch="tabSwitch" :contentShow="true">
+  <nut-tab-panel
+    v-for="value in badgeTabs"
+    v-bind:key="value.tabTitle"
+    :tab-title="value.tabTitle"
+    :badge="value.badge"
+    v-html="value.content"
+  ></nut-tab-panel>
+</nut-tab>
+```
+
+```javascript
+export default {
+  data() {
+    return {
+      defIndex: 1,
+      positionNavCurr:'top',
+      badgeTabs: [
+        {
+          tabTitle: '衣物',
+          badge: {
+            value: 10
+          },
+          content: '<p>衣物内容</p>'
+        },
+        {
+          tabTitle: '日用品',
+          badge: {
+            value: 100,
+            max: 99
+          },
+          content: '<p>日用品内容</p>'
+        },
+        {
+          tabTitle: '运动器材',
+          badge: {
+            value: 100,
+            isDot: true
+          },
+          content: '<p>运动器材内容</p>'
+        },
+        {
+          tabTitle: '电影票',
+          content: '<p>电影票内容</p>'
+        }
+      ]
+    };
+  },
+  methods: {
+      tabSwitch:function(index,event){
+        console.log(index+'--'+event.target);
+      },
+};
+```
 
 ### Prop
 
