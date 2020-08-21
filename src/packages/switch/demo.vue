@@ -38,7 +38,7 @@
         <span slot="title"><nut-switch :disabled="true"></nut-switch></span>
       </nut-cell>
       <nut-cell>
-        <span slot="title"><nut-switch @change="onChange" :active="true" :disabled="true"></nut-switch></span>
+        <span slot="title"><nut-switch :active="true" :disabled="true"></nut-switch></span>
       </nut-cell>
     </div>
     <p>禁用状态下，change事件参数永远为初始值</p>

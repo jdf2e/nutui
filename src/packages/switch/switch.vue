@@ -45,12 +45,11 @@ export default {
       const status = this.isActive;
       if (!this.disabled) {
         this.isActive = !status;
+        setTimeout(() => {
+          this.$emit('change', this.isActive);
+          this.$emit('update:active', this.isActive);
+        }, 300);
       }
-
-      setTimeout(() => {
-        this.$emit('change', this.isActive);
-        this.$emit('update:active', this.isActive);
-      }, 300);
     }
   }
 };
