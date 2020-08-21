@@ -12,8 +12,27 @@
           :class="[titleNavList, 'nut-title-nav', { 'nut-tab-disable': value.disable }, { 'nut-tab-active': activeIndex == index }]"
         >
           <a class="nut-tab-link" v-on:click="switchTab(index, $event, value.disable)">
-            <i class="nut-tab-icon" :style="{ backgroundImage: 'url(' + value.iconUrl + ')' }" v-if="value.iconUrl"></i>
-            {{ value.tabTitle }}
+            <!-- 启用slot -->
+            <slot v-if="!!value.tabSlot" :name="value.tabSlot" v-bind:item="value"></slot>
+            <!-- 启用徽标 -->
+            <nut-badge
+              v-else-if="!!value.badge"
+              :value="value.badge.value"
+              :max="value.badge.max"
+              :zIndex="value.badge.zIndex"
+              :isDot="value.badge.isDot"
+              :hidden="value.badge.hidden"
+              :top="value.badge.top"
+              :left="value.badge.left"
+            >
+              <i class="nut-tab-icon" :style="{ backgroundImage: 'url(' + value.iconUrl + ')' }" v-if="value.iconUrl"></i>
+              {{ value.tabTitle }}
+            </nut-badge>
+            <!-- 原来的逻辑 -->
+            <template v-else>
+              <i class="nut-tab-icon" :style="{ backgroundImage: 'url(' + value.iconUrl + ')' }" v-if="value.iconUrl"></i>
+              {{ value.tabTitle }}
+            </template>
           </a>
         </span>
       </div>
@@ -159,7 +178,9 @@ export default {
           let item = {
             tabTitle: attrs['tab-title'] || attrs['tabTitle'],
             disable: attrs.disable === false,
-            iconUrl: attrs['iconUrl'] || attrs['icon-url']
+            iconUrl: attrs['iconUrl'] || attrs['icon-url'],
+            tabSlot: attrs['tab-slot'] || attrs['tabSlot'] || '',
+            badge: attrs['badge'] || false
           };
           this.tabTitleList.push(item);
           let slotElm = slot[i].elm;

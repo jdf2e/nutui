@@ -1,3 +1,21 @@
+## 2.2.9
+
+`2020-08-19`
+
+* :sparkles: upd(Tab)：title支持slot和badge #307 @weiquanju
+* :sparkles: upd(Popup)：新增组合弹框 @yangkaixuan
+* :bug: fix(Countup)：样式修复 @Ymm0008
+* :bug: fix(Switch)：修复 demo 文字不居中问题 @szg2008
+* :bug: fix(Range)：区间选择器滑动异常 @undo03
+* :bug: fix(Picker)：更新 demo 和 doc 文档 @irisSong
+* :bug: fix(Toast)：props 新增 coverClass、coverStyle @yangkaixuan
+* :bug: fix(Swiper)：销毁钩子内计时器清空无效 #262 @richard1015
+* :bug: fix(TextBox)： 修复 demo 示例问题 @guoxiao158
+* :bug: fix(Signature)： 修复的leave事件 @guoxiao158
+* :bug: fix(Stepper)：修复 demo 加减精度问题 @layman666
+* :bug: fix(Cell)：修复 demo 示例头像不居中问题 #295 @zhenyulei
+* :zap: doc：ActionSheet、start article 文档修改 @richard1015 @weiquanju
+
 ## 2.2.8
 
 `2020-07-28`
