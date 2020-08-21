@@ -113,13 +113,13 @@ export default {
 
 
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| v-model | 选中结果动态输出 | 任意类型 | -
-| styleType | 单选按钮的样式 | String | 'radio'
-| list | 单选按钮依赖数据,最小长度为1，长度为0或其它类型不展示 | Array | []
-| checkedIndex | 默认选中 | Number | -1  没有默认选中
-| effectKey | radio 的 value 值获取数据字段 | String | - 必填
-| resloutAttr | radio 对用户展示值获取数据字段 | String | - 必填
-|name | radio 标签的名字，每一组都要不一样 | String| - 必填
-|disabledValue | 禁止选择的标签项 | String, Number, Boolean,Array | -
+| 字段          | 说明                                                  | 类型                          | 默认值           |
+|---------------|-------------------------------------------------------|-------------------------------|------------------|
+| v-model       | 选中结果动态输出                                      | 任意类型                      | -                |
+| style-type    | 单选按钮的样式                                        | String                        | 'radio'          |
+| list          | 单选按钮依赖数据,最小长度为1，长度为0或其它类型不展示 | Array                         | []               |
+| checked-index | 默认选中                                              | Number                        | -1  没有默认选中 |
+| effect-key    | radio 的 value 值获取数据字段                         | String                        | - 必填           |
+| reslout-attr  | radio 对用户展示值获取数据字段                        | String                        | - 必填           |
+| name          | radio 标签的名字，每一组都要不一样                    | String                        | - 必填           |
+| disabled-value | 禁止选择的标签项                                      | String, Number, Boolean,Array | -                |
