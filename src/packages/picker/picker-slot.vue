@@ -3,9 +3,9 @@
     <div class="nut-picker-roller" ref="roller">
       <div
         class="nut-picker-roller-item"
-        :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
+        :class="{ 'nut-picker-roller-item-hidden': isHidden(index) }"
         v-for="(item, index) in listData"
-        :style="setRollerStyle(index + 1)"
+        :style="setRollerStyle(index)"
         :key="item.label ? item.label : index"
       >
         {{ item.value ? item.value : item }}
@@ -51,7 +51,7 @@ export default {
         startTime: 0,
         endTime: 0
       },
-      currIndex: 1,
+      currIndex: 0,
       transformY: 0,
       scrollDistance: 0,
       lineSpacing: 36,
@@ -80,7 +80,7 @@ export default {
     },
 
     setRollerStyle(index) {
-      return `transform: rotate3d(1, 0, 0, ${-this.rotation * index}deg) translate3d(0px, 0px, 104px)`;
+      return `transform: rotate3d(1, 0, 0, ${-this.rotation * (index + 1)}deg) translate3d(0px, 0px, 104px)`;
     },
 
     isHidden(index) {
@@ -123,7 +123,7 @@ export default {
           this.setChooseValue(endMove);
         }, time / 2);
 
-        this.currIndex = Math.abs(Math.round(endMove / this.lineSpacing)) + 1;
+        this.currIndex = Math.abs(Math.round(endMove / this.lineSpacing));
       } else {
         let deg = '0deg';
         if (updateMove < 0) {
@@ -133,7 +133,7 @@ export default {
         }
 
         this.setTransform(updateMove, null, null, deg);
-        this.currIndex = Math.abs(Math.round(updateMove / this.lineSpacing)) + 1;
+        this.currIndex = Math.abs(Math.round(updateMove / this.lineSpacing));
       }
     },
 
@@ -192,7 +192,7 @@ export default {
       } else {
         index = this.listData.indexOf(defaultValue);
       }
-      this.currIndex = index === -1 ? 1 : index + 1;
+      this.currIndex = index === -1 ? 0 : index;
       let move = index === -1 ? 0 : index * this.lineSpacing;
       type && this.setChooseValue(-move);
       this.setMove(-move);
