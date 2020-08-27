@@ -12,7 +12,7 @@ jobs:
           surge_token: ${{ secrets.SURGE_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           build: |
-            npm install
+            cnpm install
             npm run build:site
             mv dist/default.html dist/index.html
           dist: site/public
