@@ -70,14 +70,14 @@ export default {
       this.screenWidth = domElem.clientWidth;
       this.screenHeight = domElem.clientHeight;
       el.style.zIndex = this.zIndex;
-      if (this.boundary.left && el.style.left === 0) {
+      if (this.boundary.left && !el.style.left) {
         el.style.left = this.boundary.left + 'px';
-      } else if (this.boundary.right && el.style.right === 0) {
+      } else if (this.boundary.right && !el.style.right) {
         el.style.right = this.boundary.right + 'px';
       }
-      if (this.boundary.top && el.style.top === 0) {
+      if (this.boundary.top && !el.style.top) {
         el.style.top = this.boundary.top + 'px';
-      } else if (this.boundary.bottom && el.style.bottom === 0) {
+      } else if (this.boundary.bottom && !el.style.bottom) {
         el.style.bottom = this.boundary.bottom + 'px';
       }
     },
