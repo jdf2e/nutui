@@ -2,7 +2,7 @@
   <transition name="toastfade">
     <nut-popup
       :overlay="cover"
-      :class="toastClass"
+      :class="toastBodyClass"
       v-model="visible"
       :closeOnClickOverlay="closeOnClickOverlay"
       :overlayStyle="{ backgroundColor: coverColor }"
@@ -72,7 +72,7 @@ export default {
     cusIcon() {
       return this.icon ? `url("${this.icon}")` : '';
     },
-    toastClass() {
+    toastBodyClass() {
       return [
         'nut-toast',
         { 'nut-toast-buttom': !this.center },

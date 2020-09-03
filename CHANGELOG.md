@@ -1,3 +1,11 @@
+## @nutui/nutui-jdl v1.0.2
+
+`2020-08-21`
+ 
+* :bug: fix(Switch)：修复 disable 状态禁用所有事件 @szg2008 
+* :bug: fix(Toast)： 修复 2.2.9 demo错误 @yangkaixuan
+
+
 ## @nutui/nutui-jdl v1.0.1
 
 `2020-08-19`
