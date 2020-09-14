@@ -1,5 +1,13 @@
 {
-  "sorts": ["数据展示", "数据录入", "操作反馈", "导航组件", "布局组件", "基础组件", "业务组件"],
+  "sorts": [
+    "数据展示",
+    "数据录入",
+    "操作反馈",
+    "导航组件",
+    "布局组件",
+    "基础组件",
+    "业务组件"
+  ],
   "packages": [
     {
       "name": "Cell",
@@ -524,7 +532,7 @@
       "type": "component",
       "sort": "6",
       "showDemo": true,
-      "author": "ymm"
+      "author": "Ymm0008"
     },
     {
       "version": "1.0.0",
@@ -642,7 +650,7 @@
       "desc": "用于数据展示",
       "sort": "0",
       "showDemo": true,
-      "author": "yumingming"
+      "author": "Ymm0008"
     },
     {
       "name": "FixedNav",
@@ -652,6 +660,17 @@
       "sort": "3",
       "showDemo": true,
       "author": "richard1015"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Collapse",
+      "type": "component",
+      "chnName": "折叠面板",
+      "desc": "可以折叠/展开的内容区域",
+      "sort": "0",
+      "showDemo": true,
+      "author": "Ymm0008",
+      "showTest": true
     }
   ]
 }
