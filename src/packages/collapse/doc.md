@@ -37,7 +37,7 @@ export default {
     <nut-collapse-item :title="title1" :name="1">
         华为终端操作系统EMUI 11发布，9月11日正式开启 
     </nut-collapse-item>
-    <nut-collapse-item :title="title2" :name="2" :subTitle="subTitle">
+    <nut-collapse-item :title="title2" :name="2" :sub-title="subTitle">
         中国服务机器人市场已占全球市场超1/4 
     </nut-collapse-item>
     <nut-collapse-item :title="title3" :name="3">
@@ -60,10 +60,10 @@ export default {
 
 ### 图标展示
 
-通过`expandIconPosition`可以设置图标的位置，
+通过`expandIconPosition`可以设置图标的位置，icon设置自定义图标，rotate设置图标旋转的角度
 
 ```html
-<nut-collapse v-model="activeName" :accordion="true" :expandIconPosition="expandIconPosition" :icon="icon" :rotate="rotate">
+<nut-collapse v-model="activeName" :accordion="true" :expand-icon-position="expandIconPosition" :icon="icon" :rotate="rotate">
     <nut-collapse-item :title="title1" :name="1">
         京东数科IPO将引入“绿鞋机制” 
     </nut-collapse-item>
@@ -105,7 +105,7 @@ export default {
 |------|------|------|------|
 | title | 标题栏左侧内容 | string | - |
 | name | 唯一标识符，必填 | string \ number | -1 |
-| expandIconPosition | 标题图标的位置 | string | right |
-| subTitle | 标题栏副标题 | string | - |
+| expand-icon-position | 标题图标的位置 | string | right |
+| sub-title | 标题栏副标题 | string | - |
 | icon | 标题栏自定义图标链接 | string | - |
 | rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | string \ number | 180 |

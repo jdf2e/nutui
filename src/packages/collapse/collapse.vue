@@ -12,7 +12,7 @@ export default {
   },
   model: {
     prop: 'value',
-    event: 'changeActive'
+    event: 'change-active'
   },
   props: {
     value: {
@@ -47,13 +47,18 @@ export default {
       this.$parent.change(name);
     },
     changeValAry(name) {
-      let index = this.value.indexOf(name);
+      let index = -1;
+      this.value.forEach((item, idx) => {
+        if (String(item) == String(name)) {
+          index = idx;
+        }
+      });
       let v = JSON.parse(JSON.stringify(this.value));
       index > -1 ? v.splice(index, 1) : v.push(name);
-      this.$emit('changeActive', v);
+      this.$emit('change-active', v);
     },
     changeVal(val) {
-      this.$emit('changeActive', val);
+      this.$emit('change-active', val);
     },
     // 手风琴模式将所有的item收起，然后对应的展开（默认）
     // 对于展开的再次点击的将其设置成收起，动画效果在item组件中执行
