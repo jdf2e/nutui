@@ -2,6 +2,15 @@
 
 拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。
 
+
+> 按需加载方法
+
+``` javascript
+import { Steps } from '@nutui/nutui';
+Steps.Steps.install(Vue);
+Steps.Step.install(Vue);
+```
+
 ## 基本用法
 
 正常流程
