@@ -85,3 +85,4 @@ export declare class CountUp extends UIComponent {}
 export declare class FixedNav extends UIComponent {}
 export declare class Gesture extends UIComponent {}
 export declare class Collapse extends UIComponent {}
+export declare class NumberKeyboard extends UIComponent {}

@@ -671,6 +671,17 @@
       "showDemo": true,
       "author": "Ymm0008",
       "showTest": true
+    },
+    {
+      "version": "1.0.0",
+      "name": "NumberKeyboard",
+      "type": "component",
+      "chnName": "数字键盘",
+      "desc": "数字虚拟键盘，自定义键盘",
+      "sort": "1",
+      "showDemo": true,
+      "author": "Ymm0008",
+      "showTest": true
     }
   ]
 }

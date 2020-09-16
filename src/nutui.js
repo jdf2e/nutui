@@ -134,6 +134,8 @@ import './packages/fixednav/fixednav.scss'; // import Gesture from './packages/g
 
 import Collapse from './packages/collapse/index.js';
 import './packages/collapse/collapse.scss';
+import NumberKeyboard from './packages/numberkeyboard/index.js';
+import './packages/numberkeyboard/numberkeyboard.scss';
 
 const packages = {
   Cell,
@@ -198,8 +200,10 @@ const packages = {
   Address,
   Notify,
   CountUp,
-  FixedNav, // Gesture: Gesture
-  Collapse: Collapse
+  FixedNav,
+  // Gesture: Gesture
+  Collapse: Collapse,
+  NumberKeyboard: NumberKeyboard
 };
 
 const components = {};
