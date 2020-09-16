@@ -104,11 +104,11 @@ let Utils = {
    */
   compareDateArr: function(date1, date2) {
     let startTime = new Date();
-    startTime.setFullYear(date1[0], date1[1], date1[2]);
-    startTime.setHours(date1[3], date1[4]);
+    startTime.setFullYear(parseInt(date1[0]), parseInt(date1[1]) - 1, parseInt(date1[2]));
+    startTime.setHours(parseInt(date1[3]), parseInt(date1[4]));
     let endTime = new Date();
-    endTime.setFullYear(date2[0], date2[1], date2[2]);
-    endTime.setHours(date2[3], date2[4]);
+    endTime.setFullYear(parseInt(date2[0]), parseInt(date2[1]) - 1, parseInt(date2[2]));
+    endTime.setHours(parseInt(date2[3]), parseInt(date2[4]));
     if (startTime >= endTime) {
       return false;
     }
