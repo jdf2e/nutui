@@ -39,29 +39,52 @@
       display: flex;
       flex: 3;
       flex-wrap: wrap;
+    }
+    .key-board-wrapper {
+      position: relative;
+      flex: 1;
+      flex-basis: 33%;
+      box-sizing: border-box;
+      padding: 0 6px 6px 0;
+      .key {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        font-size: 28px;
+        line-height: 1.5;
+        background-color: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .active {
+        background-color: #ebedf0;
+      }
+      img {
+        width: 30px;
+        height: 24px;
+      }
+    }
+    .number-board-sidebar {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
       .key-board-wrapper {
-        position: relative;
-        flex: 1;
-        flex-basis: 33%;
-        box-sizing: border-box;
-        padding: 0 6px 6px 0;
         .key {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 48px;
-          font-size: 28px;
-          line-height: 1.5;
-          background-color: #fff;
-          border-radius: 8px;
-          cursor: pointer;
+          position: absolute;
+          top: 0;
+          right: 6px;
+          bottom: 6px;
+          left: 0;
+          height: auto;
         }
-        .active {
-          background-color: #ebedf0;
+        .finish {
+          font-size: 16px;
+          color: #fff;
+          background-color: #1989fa;
         }
-        img {
-          width: 30px;
-          height: 24px;
+        .activeFinsh {
+          background-color: #0570db;
         }
       }
     }
