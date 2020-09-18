@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 100;
+  z-index: 10000;
   width: 100%;
   padding-bottom: 22px;
   background-color: #f2f3f5;
@@ -64,6 +64,9 @@
         width: 30px;
         height: 24px;
       }
+    }
+    .key-board-wrapper-large {
+      flex-basis: 66%;
     }
     .number-board-sidebar {
       display: flex;

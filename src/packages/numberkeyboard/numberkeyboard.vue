@@ -1,13 +1,20 @@
 <template>
   <transition name="nut-board-slide-up" @after-enter="afterEnter" @after-leave="afterLeave">
     <div class="nut-numberkeyboard" v-show="visible">
-      <div class="number-board-header">
+      <div class="number-board-header" v-if="title">
         <h3 class="tit">{{ title }}</h3>
-        <span class="keyboard-close" @click="() => closeBoard()" v-if="type == 'default'">完成</span>
+        <span class="keyboard-close" @click="() => closeBoard()">完成</span>
       </div>
       <div class="number-board-body">
         <div class="number-board">
-          <div class="key-board-wrapper" v-for="item of keysList" :key="'key' + item.id">
+          <div
+            :class="[
+              'key-board-wrapper',
+              { 'key-board-wrapper-large': item.id == 0 && type == 'rightColumn' && Array.isArray(customKey) && customKey.length == 1 }
+            ]"
+            v-for="item of keysList"
+            :key="'key' + item.id"
+          >
             <div
               :class="['key', { active: item.id == clickKeyIndex }, { lock: item.type == 'lock' }, { delete: item.type == 'delete' }]"
               @touchstart="event => onTouchstart(item, event)"
@@ -66,11 +73,23 @@ export default {
     customKey: {
       type: Array,
       default: () => []
+    },
+    value: {
+      type: String,
+      default: ''
+    },
+    maxlength: {
+      type: [Number, String],
+      default: 6
     }
+  },
+  model: {
+    prop: 'value',
+    event: 'update:value'
   },
   computed: {
     keysList() {
-      if (this.type == 'rightColumn') {
+      if (this.type == 'rightColumn' || this.title != '') {
         return this.genCustomKeys();
       }
       return this.defaultKey();
@@ -120,11 +139,21 @@ export default {
     genCustomKeys() {
       const keys = this.getBasicKeys();
       const { customKey } = this;
-      const customKeys = Array.isArray(customKey) ? customKey : [customKey];
+      let customKeys = Array.isArray(customKey) ? customKey : [customKey];
+      if (customKeys.length > 2) {
+        customKeys = [customKeys[0], customKeys[1]];
+      }
       if (customKeys.length === 1) {
-        keys.push({ id: 0, type: 'number' }, { id: customKeys[0], type: 'custom' });
+        if (this.title) {
+          keys.push({ id: customKeys[0], type: 'custom' }, { id: 0, type: 'number' }, { id: 'delete', type: 'delete' });
+        } else {
+          keys.push({ id: 0, type: 'number' }, { id: customKeys[0], type: 'custom' });
+        }
       } else if (customKeys.length === 2) {
         keys.push({ id: customKeys[0], type: 'custom' }, { id: 0, type: 'number' }, { id: customKeys[1], type: 'custom' });
+        if (this.title) {
+          keys.push({ id: 'delete', type: 'delete' });
+        }
       }
       return keys;
     },
@@ -139,12 +168,16 @@ export default {
       this.clickKeyIndex = item.id;
       if (item.type == 'number' || item.type == 'custom') {
         this.$emit('input', item.id);
+        if (this.value.length < this.maxlength) {
+          this.$emit('update:value', this.value + item.id);
+        }
       }
       if (item.type == 'lock') {
         this.closeBoard();
       }
       if (item.type == 'delete') {
         this.$emit('delete');
+        this.$emit('update:value', this.value.slice(0, this.value.length - 1));
       }
     },
     onTouchMove(id, event) {
