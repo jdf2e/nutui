@@ -134,6 +134,8 @@ import './packages/fixednav/fixednav.scss'; // import Gesture from './packages/g
 
 import Collapse from './packages/collapse/index.js';
 import './packages/collapse/collapse.scss';
+import Luckycard from "./packages/luckycard/index.js";
+import "./packages/luckycard/luckycard.scss";
 
 const packages = {
   Cell,
@@ -198,8 +200,10 @@ const packages = {
   Address,
   Notify,
   CountUp,
-  FixedNav, // Gesture: Gesture
-  Collapse: Collapse
+  FixedNav,
+  // Gesture: Gesture
+  Collapse: Collapse,
+  Luckycard: Luckycard
 };
 
 const components = {};
@@ -227,7 +231,7 @@ pkgList.map(item => {
   }
 });
 
-const install = function(Vue, opts = {}) {
+const install = function (Vue, opts = {}) {
   if (install.installed) return;
 
   if (opts.locale) {

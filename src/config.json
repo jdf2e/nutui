@@ -671,6 +671,16 @@
       "showDemo": true,
       "author": "Ymm0008",
       "showTest": true
+    },
+    {
+      "version": "1.0.0",
+      "name": "Luckycard",
+      "type": "component",
+      "chnName": "刮刮卡",
+      "desc": "挂挂卡抽奖",
+      "sort": "6",
+      "showDemo": true,
+      "author": "guoxiao"
     }
   ]
 }
