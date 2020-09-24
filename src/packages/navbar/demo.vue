@@ -1,7 +1,7 @@
 <template>
   <div class="demo-list">
     <h4>基础样式</h4>
-    <nut-navbar :close-show="false" :more-show="false"></nut-navbar>
+    <nut-navbar :close-show="false" :more-show="false" :search-show="false"></nut-navbar>
     <h4>右侧增加折叠菜单</h4>
     <nut-navbar :close-show="false"></nut-navbar>
     <h4>右侧文案样式</h4>

@@ -5,7 +5,7 @@
 ## 基础样式
 
 ```html
-<nut-navbar :close-show="false" :more-show="false"></nut-navbar>
+<nut-navbar :close-show="false" :search-show="false"></nut-navbar>
 ```
 
 ## 右侧增加折叠菜单

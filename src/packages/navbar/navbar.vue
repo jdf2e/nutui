@@ -6,8 +6,8 @@
           <img width="22" height="22" src="../../assets/img/nav_arrow.png" />
         </slot>
       </div>
-      <div class="close" @click="$emit('on-click-close')">
-        <slot name="close-icon" v-if="closeShow">
+      <div class="close" @click="$emit('on-click-close')" v-if="closeShow">
+        <slot name="close-icon">
           <img width="22" height="22" src="../../assets/img/nav_close.png" class="close-img" />
         </slot>
       </div>
@@ -20,8 +20,8 @@
       </h3>
     </div>
     <div class="nav-right">
-      <div class="search" @click="$emit('on-click-search')">
-        <slot name="search-icon" v-show="rightShow">
+      <div class="search" @click="$emit('on-click-search')" v-show="searchShow">
+        <slot name="search-icon">
           <img width="22" height="22" src="../../assets/img/nav_search.png" class="search-img" />
         </slot>
       </div>
@@ -50,7 +50,7 @@ export default {
       type: Boolean,
       default: true,
     },
-    rightShow: {
+    searchShow: {
       type: Boolean,
       default: true,
     },
