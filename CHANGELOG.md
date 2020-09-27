@@ -1,3 +1,12 @@
+## 2.2.11
+
+`2020-09-27`
+ 
+* :sparkles: feat(collapse)：新增折叠面板组件 @Ymm0008
+* :sparkles: feat(numberkeyboard)：新增数字键盘组件 @Ymm0008
+* :sparkles: feat(luckycard)：新增刮奖组件 @guoxiao158
+* :bug: fix(drag)：修复 drag 拖动边界和自定义位置冲突的问题 @zy19940510 
+
 ## 2.2.10
 
 `2020-08-21`
