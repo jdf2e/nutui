@@ -27,7 +27,7 @@ describe('Navbar.vue', () => {
   });
 
   it('右侧搜索按钮是否展示', () => {
-    wrapper.setProps({ rightShow: true });
+    wrapper.setProps({ searchShow: true });
     return Vue.nextTick().then(function () {
       expect(wrapper.find('.search').contains('.search-img')).toBe(true);
     });
