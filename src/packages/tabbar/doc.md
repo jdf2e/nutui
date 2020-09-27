@@ -68,7 +68,7 @@ export default {
 
 **重要提示**
 
-组件中的 curr 属性相当于默认的选中tab，如果tabbar组件被应用于跳转路由，若tabbar没有按照预想的选中高亮的话，请注意，一般是因为重新渲染了tabbar组件导致的，解决方法如下：
+组件中的 curr 属性相当于默认的选中tab，如果tabbar组件被应用于跳转路由，设置 isRouter = true ，若tabbar没有按照预想的选中高亮的话，请注意，一般是因为重新渲染了tabbar组件导致的，解决方法如下：
 - 方法1、通过监听切换事件 @tab-switch 改变传入数据 tabList 中想要高亮对象的 curr 值为 true；
 - 方法2、把 tabbar 组件放在路由层级之外，令其独立出来，避免点击 tabbar 会重新渲染该组件；
 
@@ -83,6 +83,7 @@ export default {
 | tabbar-list | 渲染数据 | Array | []
 | bottom | 是否固定在页面底部 |Boolean|false|
 | replace | replace为true的时候，跳转url以替换的形式进行 |Boolean|false|
+| isRouter | 是否为vue路由跳转形式，区别于H5的web跳转|Boolean|false|
 
 ### tabbar-list
 

@@ -40,6 +40,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isRouter: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -71,10 +75,10 @@ export default {
       this.currIndex = index;
       if (this.replace) {
         //替换url
-        window.location.replace(value.href);
+        this.isRouter ? this.$router.replace(value.href) : window.location.replace(value.href);
       } else {
         if (value.href) {
-          window.location.href = value.href;
+          this.isRouter ? this.$router.push(value.href) : (window.location.href = value.href);
         }
       }
       this.$emit('tab-switch', value, index);
