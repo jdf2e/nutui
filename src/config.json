@@ -16,7 +16,7 @@
             "type": "component",
             "showDemo": true,
             "desc": "列表项，可组合成列表,滚动加载",
-            "author": "Frans、玉磊"
+            "author": "甄玉磊"
         },
         {
             "name": "Dialog",
@@ -123,7 +123,7 @@
             "desc": "移动端头部导航栏",
             "type": "component",
             "showDemo": true,
-            "author": "lishaoqi"
+            "author": "甄玉磊"
         },
         {
             "version": "1.0.0",
@@ -256,7 +256,7 @@
             "type": "component",
             "sort": "5",
             "showDemo": true,
-            "author": "zhenyulei"
+            "author": "甄玉磊"
         },
         {
             "version": "1.0.0",
