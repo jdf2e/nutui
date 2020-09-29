@@ -1,3 +1,9 @@
+## @nutui/nutui-jdl v1.0.3
+
+`2020-09-27`
+ 
+* :sparkles: upd(TabBar)：优化了在路由跳转模式下的选中状态更新逻辑 @zhenyulei 
+
 ## @nutui/nutui-jdl v1.0.2
 
 `2020-08-21`
