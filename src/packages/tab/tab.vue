@@ -150,27 +150,31 @@ export default {
         }
       }
       this.$nextTick(() => {
-        let tapWidth;
-        if (this.positionNav == 'top' || this.positionNav == 'bottom') {
-          this.navWidth = this.$refs.navlist.querySelector('.nut-title-nav').offsetWidth;
-          tapWidth = this.$refs.navlist.offsetWidth;
-        } else {
-          this.navWidth = this.$refs.navlist.querySelector('.nut-title-nav').offsetHeight;
-          tapWidth = this.$refs.navlist.offsetHeight;
-        }
-        this.initX = parseInt(this.navWidth * this.defIndex);
-        this.tapWidth = tapWidth / 2 - this.navWidth / 2;
+        this.handleTab(this.defIndex);
       });
+    },
+    handleTab(index) {
+      const currEle = this.$refs.navlist.querySelectorAll('.nut-title-nav')[index];
+      if (this.positionNav == 'top' || this.positionNav == 'bottom') {
+        const currLeft = currEle.offsetLeft;
+        const currWidth = currEle.offsetWidth;
+        const tapWidth = this.$refs.navlist.offsetWidth;
+        this.navWidth = currWidth;
+        this.initX = currLeft;
+        this.$refs.navlist.scroll(currLeft - tapWidth / 2 + currWidth / 2, 0);
+      } else {
+        const currTop = currEle.offsetTop;
+        const currHeight = currEle.offsetHeight;
+        const tapHeight = this.$refs.navlist.offsetHeight;
+        this.navWidth = currHeight;
+        this.initX = currTop;
+        this.$refs.navlist.scroll(0, currTop - tapHeight / 2 + currHeight / 2);
+      }
     },
     switchTab: function (index, event, disable) {
       if (!disable) {
         this.activeIndex = index;
-        this.initX = parseInt(this.navWidth * index);
-        if (this.positionNav == 'top' || this.positionNav == 'bottom') {
-          this.$refs.navlist.scroll(this.initX - this.tapWidth, 0);
-        } else {
-          this.$refs.navlist.scroll(0, this.initX - this.tapWidth);
-        }
+        this.handleTab(index);
         let items = this.$refs.items.children;
         for (let i = 0; i < items.length; i++) {
           if (i == index) {

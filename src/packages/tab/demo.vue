@@ -40,7 +40,7 @@
     </nut-tab>
 
     <h4>纵向tab切换超出界面高度，设置tab区域高度</h4>
-    <nut-tab @tab-switch="tabSwitch" position-nav="left" :is-scroll="true" :wrapper-height="200">
+    <nut-tab @tab-switch="tabSwitch" position-nav="left" :is-scroll="true" :wrapper-height="200" :def-index="3">
       <nut-tab-panel
         v-for="value in editableTabs"
         v-bind:key="value.tabTitle"
@@ -69,7 +69,7 @@
         v-html="value.content"
       ></nut-tab-panel>
     </nut-tab>
-    <div style="width: 100%; text-align: center;">
+    <div style="width: 100%; text-align: center">
       <nut-button @click="resetHandler" type="light">重置Tab页面</nut-button>
       <nut-button @click="clickHandler">更新Tab页面</nut-button>
     </div>
@@ -147,7 +147,7 @@ export default {
   },
   methods: {
     tabSwitch: function (index, event) {
-      console.log(index + '--' + event);
+      //console.log(index + '--' + event);
       //this.defIndex = index;
     },
     clickHandler: function () {
