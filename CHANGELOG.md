@@ -1,3 +1,9 @@
+## @nutui/nutui-jdl v1.0.4
+
+`2020-10-16`
+ 
+* :sparkles: upd(Tab)：修改tab组件宽度不一致的问题 @zhenyulei 
+
 ## @nutui/nutui-jdl v1.0.3
 
 `2020-09-27`
