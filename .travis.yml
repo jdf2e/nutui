@@ -5,3 +5,5 @@ node_js:
 script:
   - npm test
   - npm run coveralls
+notifications:
+  webhooks: https://coveralls.io/webhook?repo_token=bOzghLfr6hi9xqh8LDKUPB07Q56vdl1YG

@@ -6,6 +6,7 @@
 
 ```html
 <nut-searchbar
+    v-model="val"
     placeText="请输入自定义文案"
 ></nut-searchbar>
 ```
@@ -14,6 +15,7 @@
 
 ```html
 <nut-searchbar
+    v-model="val"
     placeText="请输入自定义文案"
     :hasSearchButton="false"
 ></nut-searchbar>
@@ -23,6 +25,7 @@
 
 ```html
 <nut-searchbar
+    v-model="val"
     placeText="ERP/姓名/邮箱"
     :hasIcon="true"
     :hasTextButton="true"
@@ -35,6 +38,7 @@
 
 ```html
 <nut-searchbar
+    v-model="val"
     placeText="请输入自定义文案"
     @focus="focusFun"
     @input="inputFun"
@@ -49,6 +53,7 @@
 
 ```html
 <nut-searchbar
+    v-model="val"
     placeText="请输入自定义文案"
     @submit="search"
     @focus="focusFun"
@@ -62,6 +67,7 @@
 export default {
     data() {
         return {
+            val:''
         }
     },
     mounted(){

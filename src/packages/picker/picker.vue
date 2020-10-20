@@ -9,7 +9,7 @@
       <div class="nut-picker-panel">
         <template v-for="(item, index) of listData">
           <nut-picker-slot
-            :ref="`picer-slot-${index}`"
+            :ref="`picker-slot-${index}`"
             :default-value="chooseValueData[index]"
             :is-update="isUpdate"
             :list-data="item"
@@ -73,7 +73,7 @@ export default {
   methods: {
     updateChooseValue(self, index, value) {
       self.cacheValueData.splice(index, 1, value);
-      let ref = `picer-slot-${index}`;
+      let ref = `picker-slot-${index}`;
       self.$refs[ref] && self.$refs[ref][0].updateTransform(value);
     },
 

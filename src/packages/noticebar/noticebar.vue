@@ -107,7 +107,7 @@ export default {
   watch: {
     text: {
       handler(val, newVal) {
-        console.log(val, newVal, this.showNoticeBar == false, 'text');
+        // console.log(val, newVal, this.showNoticeBar == false, 'text');
 
         if (this.showNoticeBar == false) {
           return;
@@ -121,7 +121,7 @@ export default {
           const wrapWidth = wrap.getBoundingClientRect().width;
 
           const offsetWidth = content.getBoundingClientRect().width;
-          console.log(wrapWidth, offsetWidth, 'text222');
+          // console.log(wrapWidth, offsetWidth, 'text222');
 
           if (this.scrollable && offsetWidth > wrapWidth) {
             this.wrapWidth = wrapWidth;

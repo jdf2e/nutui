@@ -18,7 +18,7 @@
     </nut-drag>
     <h4 :style="{ top: '350px' }">限制拖动边界</h4>
     <div class="drag-boundary"></div>
-    <nut-drag :boundary="{ top: 401, left: 9, bottom: bottom(), right: right() }" :attract="true" :style="{ top: '400px', left: '8px' }">
+    <nut-drag :boundary="{ top: 401, left: 9, bottom: bottom(), right: right() }" :attract="true" :style="{ top: '450px', left: '50px' }">
       <div class="touch-dom">拖动我</div>
     </nut-drag>
   </div>

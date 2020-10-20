@@ -49,7 +49,7 @@
       </template>
     </template>
     <template v-else>
-      <ul v-if="scrolling" class="run-number" :style="{ height: numHeight + 'px' }">
+      <ul v-if="scrolling" class="run-number" :style="{ height: numHeight + 'px', lineHeight: numHeight + 'px' }">
         <li
           ref="numberItem"
           v-for="(val, index) of num_total_len"
@@ -165,7 +165,8 @@ export default {
   },
   data() {
     return {
-      current: this.initNum,
+      valFlag: false,
+      current: 0,
       sortFlag: 'add',
       initDigit1: 0,
       initDigit2: 0,
@@ -195,24 +196,45 @@ export default {
     },
     machinePrizeLevel: function(n, o) {
       this.prizeLevelTrun = n;
+    },
+    initNum: function(val, oldVal) {
+      this.current = val;
+      this.valFlag = false;
+      this.valChange();
+    },
+    endNum: function(val, oldVal) {
+      this.current = this.initNum;
+      this.valFlag = false;
+      this.valChange();
     }
   },
   mounted() {
-    if (this.startFlag) {
-      if (this.scrolling || this.customBgImg) {
-        if (this.type != 'machine') {
-          this.countGo();
-        }
-      } else {
-        this.countChange();
-      }
-    }
+    this.current = this.initNum;
+    this.valChange();
   },
   beforeDestroy() {
     clearInterval(this.timer);
     this.timer = null;
   },
   methods: {
+    // 值变化
+    valChange() {
+      if (this.valFlag) {
+        return false;
+      }
+      if (this.startFlag) {
+        if (this.scrolling || this.customBgImg) {
+          if (this.type != 'machine') {
+            this.countGo();
+          }
+        } else {
+          this.countChange();
+          setTimeout(() => {
+            this.valFlag = true;
+          }, 300);
+        }
+      }
+    },
     // 清空定时器
     clearInterval() {
       clearInterval(this.timer);
@@ -240,6 +262,7 @@ export default {
             this.current = endNum.toFixed(toFixed);
             clearInterval(countTimer);
             this.$emit('scroll-end');
+            this.valFlag = false;
           } else {
             this.current = (parseFloat(this.current) - parseFloat(speed)).toFixed(toFixed);
           }
@@ -249,6 +272,7 @@ export default {
             this.current = endNum.toFixed(toFixed);
             clearInterval(countTimer);
             this.$emit('scroll-end');
+            this.valFlag = false;
           } else {
             this.current = (parseFloat(this.current) + parseFloat(speed)).toFixed(toFixed);
           }
@@ -382,6 +406,7 @@ export default {
         if (that.totalCount <= 0) {
           that.clearInterval();
           this.$emit('scroll-end');
+          this.valFlag = false;
         }
       }, that.during);
     },
@@ -443,6 +468,7 @@ export default {
         }, that.during);
         f.addEventListener('webkitTransitionEnd', () => {
           this.$emit('scroll-end');
+          this.valFlag = false;
           setTimeout(() => {
             that.relNum = that.calculation(that.relNum, m * that.speed, '+');
           }, that.during);
@@ -525,8 +551,10 @@ export default {
               this.finshMachine = 0;
               if (this.prizeLevelTrun < 0) {
                 this.$emit('scroll-end', false);
+                this.valFlag = false;
               } else {
                 this.$emit('scroll-end', true);
+                this.valFlag = false;
               }
             }, 130);
           }

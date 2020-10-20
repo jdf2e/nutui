@@ -2,7 +2,7 @@
   <div class="demo-list-pd">
     <!-- DEMO区域 -->
     <h4>默认用法</h4>
-    <nut-tab @tab-switch="tabSwitch">
+    <nut-tab @tab-switch="tabSwitch" :lineWidth="20">
       <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
       <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
       <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
@@ -87,6 +87,31 @@
       <nut-button @click="resetHandler" type="light">重置Tab页面</nut-button>
       <nut-button @click="clickHandler">更新Tab页面</nut-button>
     </div>
+
+    <h4>支持slot</h4>
+
+    <nut-tab :def-index="defIndex" :initData="slotTabs" class="customer-css" @tab-switch="tabSwitch" :contentShow="true" :is-show-line="false">
+      <nut-tab-panel
+        v-for="value in slotTabs"
+        v-bind:key="value.tabTitle"
+        :tab-title="value.tabTitle"
+        :tab-slot="value.slot"
+        v-html="value.content"
+      ></nut-tab-panel>
+      <template v-slot:customSlot="{ item }">{{ item.tabSlot }} {{ item.tabTitle }}</template>
+    </nut-tab>
+
+    <h4>支持徽标badge</h4>
+
+    <nut-tab :def-index="defIndex" :initData="badgeTabs" @tab-switch="tabSwitch" :contentShow="true">
+      <nut-tab-panel
+        v-for="value in badgeTabs"
+        v-bind:key="value.tabTitle"
+        :tab-title="value.tabTitle"
+        :badge="value.badge"
+        v-html="value.content"
+      ></nut-tab-panel>
+    </nut-tab>
   </div>
 </template>
 
@@ -139,6 +164,47 @@ export default {
         {
           tabTitle: '电影票',
           iconUrl: 'http://img10.360buyimg.com/uba/jfs/t26779/215/2118525153/2413/470d1613/5bf767b2N075957b7.jpg',
+          content: '<p>电影票内容</p>'
+        }
+      ],
+      slotTabs: [
+        {
+          tabTitle: '衣物',
+          slot: 'customSlot',
+          content: '<p>衣物内容</p>'
+        },
+        {
+          tabTitle: '日用品',
+          slot: '',
+          content: '<p>日用品内容</p>'
+        }
+      ],
+      badgeTabs: [
+        {
+          tabTitle: '衣物',
+          badge: {
+            value: 10
+          },
+          content: '<p>衣物内容</p>'
+        },
+        {
+          tabTitle: '日用品',
+          badge: {
+            value: 100,
+            max: 99
+          },
+          content: '<p>日用品内容</p>'
+        },
+        {
+          tabTitle: '运动器材',
+          badge: {
+            value: 100,
+            isDot: true
+          },
+          content: '<p>运动器材内容</p>'
+        },
+        {
+          tabTitle: '电影票',
           content: '<p>电影票内容</p>'
         }
       ]

@@ -43,7 +43,7 @@ export default {
         let tag = slot[i].tag;
         if (typeof tag == 'string') {
           if (tag.indexOf('nut-col') != -1) {
-            var slotElm = slot[i].elm;
+            const slotElm = slot[i].elm;
             slotElm.style.paddingLeft = this.getGutter;
             slotElm.style.paddingRight = this.getGutter;
           }

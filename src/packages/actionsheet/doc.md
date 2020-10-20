@@ -189,7 +189,7 @@ export default {
     chooseTagValue="确定"
     cancelTxt="取消"
     @close="switchActionSheet"
-    @choos="choose"
+    @choose="choose"
 >
     <span slot="title"><label>确定删除吗？</label></span>
     <span slot="sub-title">删除之后不能，描述信息，删除之后不能，描述信息</span>

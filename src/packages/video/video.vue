@@ -306,7 +306,7 @@ export default {
     },
     getTime() {
       this.videoElm.addEventListener('durationchange', e => {
-        console.log(e);
+        // console.log(e);
       });
       this.videoElm.addEventListener('progress', e => {
         this.videoSet.loaded = (-1 + this.videoElm.buffered.end(0) / this.videoElm.duration) * 100;
@@ -345,7 +345,7 @@ export default {
     },
     // 点击重新加载
     retry() {
-      console.log('error');
+      // console.log('error');
       this.state.isError = false;
       this.init();
     }

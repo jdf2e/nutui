@@ -159,7 +159,7 @@ export default {
       });
     },
     touchStart(id) {
-      console.log(this.longTapTime);
+      // console.log(this.longTapTime);
       this.timeOutEvent = setTimeout(() => {
         this.deleteImg(id);
       }, this.longTapTime);

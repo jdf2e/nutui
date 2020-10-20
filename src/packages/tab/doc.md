@@ -9,7 +9,7 @@
 ## 基本用法
 
 ```html
-<nut-tab @tab-switch="tabSwitch">
+<nut-tab @tab-switch="tabSwitch" line-width="20">
     <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
     <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
     <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
@@ -219,6 +219,106 @@ export default {
 };
 ```
 
+## 支持slot
+
+```html
+<nut-tab :def-index="defIndex" :initData="slotTabs" class="customer-css" @tab-switch="tabSwitch" :contentShow="true" :is-show-line="false">
+  <nut-tab-panel
+    v-for="value in slotTabs"
+    v-bind:key="value.tabTitle"
+    :tab-title="value.tabTitle"
+    :tab-slot="value.slot"
+    v-html="value.content"
+  ></nut-tab-panel>
+  <template v-slot:customSlot="{item}">{{ item.tabSlot }} {{ item.tabTitle }}</template>
+</nut-tab>
+```
+
+```javascript
+export default {
+  data() {
+    return {
+      defIndex: 1,
+      positionNavCurr:'top',
+      slotTabs: [
+        {
+          tabTitle: '衣物',
+          slot: 'customSlot',
+          content: '<p>衣物内容</p>'
+        },
+        {
+          tabTitle: '日用品',
+          slot: '',
+          content: '<p>日用品内容</p>'
+        }
+      ],
+    };
+  },
+  methods: {
+      tabSwitch:function(index,event){
+        console.log(index+'--'+event.target);
+      },
+};
+```
+
+## 支持徽标badge
+
+
+```html
+<nut-tab :def-index="defIndex" :initData="badgeTabs" @tab-switch="tabSwitch" :contentShow="true">
+  <nut-tab-panel
+    v-for="value in badgeTabs"
+    v-bind:key="value.tabTitle"
+    :tab-title="value.tabTitle"
+    :badge="value.badge"
+    v-html="value.content"
+  ></nut-tab-panel>
+</nut-tab>
+```
+
+```javascript
+export default {
+  data() {
+    return {
+      defIndex: 1,
+      positionNavCurr:'top',
+      badgeTabs: [
+        {
+          tabTitle: '衣物',
+          badge: {
+            value: 10
+          },
+          content: '<p>衣物内容</p>'
+        },
+        {
+          tabTitle: '日用品',
+          badge: {
+            value: 100,
+            max: 99
+          },
+          content: '<p>日用品内容</p>'
+        },
+        {
+          tabTitle: '运动器材',
+          badge: {
+            value: 100,
+            isDot: true
+          },
+          content: '<p>运动器材内容</p>'
+        },
+        {
+          tabTitle: '电影票',
+          content: '<p>电影票内容</p>'
+        }
+      ]
+    };
+  },
+  methods: {
+      tabSwitch:function(index,event){
+        console.log(index+'--'+event.target);
+      },
+};
+```
 
 ### Prop
 
@@ -232,12 +332,15 @@ export default {
 | is-show-line|是否显示tab切换时的红条|Boolean|true|
 | is-scroll|是否支持滑动选择多个页签|Boolean|false|
 | wrapper-height |设置tab的高度，只有在 is-scroll=true；positionNav=left或者right 的情况下有效|Number/String|200|
+| line-width | 页签底部红条自定义宽度|默认为0，则等于页签的宽度|
 
 ### nut-tab-panel
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | tab-title | 页签的标题 | String | ''
+| tab-slot | 页签的插槽名 | String | ''
+| badge | [徽标组件](/#/badge)属性 | Object | false
 | icon-url | 页签的图标地址 | String | ''
 | content | 页签的自定义内容 | String | ''
 | disable | 是否禁用页签 |Boolean|false|

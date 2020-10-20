@@ -1,3 +1,54 @@
+## 2.2.11
+
+`2020-09-27`
+ 
+* :sparkles: feat(collapse)：新增折叠面板组件 @Ymm0008
+* :sparkles: feat(numberkeyboard)：新增数字键盘组件 @Ymm0008
+* :sparkles: feat(luckycard)：新增刮奖组件 @guoxiao158
+* :bug: fix(drag)：修复 drag 拖动边界和自定义位置冲突的问题 @zy19940510 
+
+## 2.2.10
+
+`2020-08-21`
+ 
+* :bug: fix(Switch)：修复 disable 状态禁用所有事件 @szg2008 
+* :bug: fix(Toast)： 修复 2.2.9 demo错误 @yangkaixuan
+
+## 2.2.9
+
+`2020-08-19`
+
+* :sparkles: upd(Tab)：title支持slot和badge #307 @weiquanju
+* :sparkles: upd(Popup)：新增组合弹框 @yangkaixuan
+* :bug: fix(Countup)：样式修复 @Ymm0008
+* :bug: fix(Switch)：修复 demo 文字不居中问题 @szg2008
+* :bug: fix(Range)：区间选择器滑动异常 @undo03
+* :bug: fix(Picker)：更新 demo 和 doc 文档 @irisSong
+* :bug: fix(Toast)：props 新增 coverClass、coverStyle @yangkaixuan
+* :bug: fix(Swiper)：销毁钩子内计时器清空无效 #262 @richard1015
+* :bug: fix(TextBox)： 修复 demo 示例问题 @guoxiao158
+* :bug: fix(Signature)： 修复的leave事件 @guoxiao158
+* :bug: fix(Stepper)：修复 demo 加减精度问题 @layman666
+* :bug: fix(Cell)：修复 demo 示例头像不居中问题 #295 @zhenyulei
+* :zap: doc：ActionSheet、start article 文档修改 @richard1015 @weiquanju
+
+## 2.2.8
+
+`2020-07-28`
+
+* :sparkles: upd(TextBox)：新增 disable 属性 @richard1015
+* :sparkles: upd(Countup)：新增摸拟滚动抽奖 @Ymm0008
+* :bug: fix(Popup)：修复destroyOnClose失效问题 @yangkaixuan
+* :bug: fix(Popup)：修复浏览器滚动报错、单元测试 @yangkaixuan
+* :bug: fix(SearchBar)：修复v-model、新增clear事件 @richard1015
+* :bug: fix(ActionSheet)：修改removeLockScroll函数命名 @richard1015
+* :bug: fix(TextBox)： 修复文本域初始化字数展示问题 @guoxiao158
+* :bug: fix(Address、Imagepicker)：cdn 部分事件无法使用问题 @richard1015
+* :bug: fix(Tab)：修复增加下划线宽度设定 #297 @zhenyulei
+* :bug: fix(Elevator)：修复电梯楼层组件的问题 #295 @zhenyulei
+* :bug: fix(Scroller)：修复demo清除定时器参数异常问题 @irisSong
+* :bug: fix(Picker)：修复自定义数据默认值问题 @irisSong
+
 ## 2.2.7
 
 `2020-07-09`

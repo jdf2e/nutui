@@ -13,35 +13,35 @@
 const overlayProps = {
   value: {
     type: Boolean,
-    default: false
+    default: false,
   },
   overlay: {
     type: Boolean,
-    default: true
+    default: true,
   },
   lockScroll: {
     type: Boolean,
-    default: true
+    default: true,
   },
   duration: {
     type: Number,
-    default: 0.3
+    default: 0.3,
   },
   closeOnClickOverlay: {
     type: Boolean,
-    default: true
+    default: true,
   },
   overlayClass: {
     type: String,
-    default: ''
+    default: '',
   },
   overlayStyle: {
     type: Object,
-    default: () => {}
+    default: () => {},
   },
   zIndex: {
-    type: Number
-  }
+    type: Number,
+  },
 };
 export { overlayProps };
 export default {
@@ -53,7 +53,7 @@ export default {
       if (this.lockScroll) {
         e.preventDefault();
       }
-    }
-  }
+    },
+  },
 };
 </script>
