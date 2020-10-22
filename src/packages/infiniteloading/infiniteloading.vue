@@ -44,7 +44,7 @@ export default {
     scrollChange: {
       type: Function,
     },
-    domId: {
+    containerId: {
       type: String,
       default: '',
     },
@@ -85,8 +85,8 @@ export default {
       this.diffY = endY - this.startY;
     },
     getParentElement(el) {
-      if (this.domId) {
-        return document.querySelector(`#${this.domId}`);
+      if (this.containerId) {
+        return document.querySelector(`#${this.containerId}`);
       }
       return el && el.parentNode;
     },

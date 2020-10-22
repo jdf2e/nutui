@@ -64,7 +64,7 @@ export default {
 | use-window | 将滚动侦听器添加到 window 否则侦听组件的父节点 | Boolean | true
 | use-capture | 是否使用捕获模式 true捕获 false冒泡 | Boolean | false
 | unload-more-txt | 没有更多数据展示文案 | String | 哎呀，这里是底部了啦' 
-| dom-id | 父级节点ID | String | ''
+| container-id | 在use-window属性为false的时候，自定义设置节点ID | String | ''
 
 ## Event
 
