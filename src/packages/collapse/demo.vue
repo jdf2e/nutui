@@ -40,11 +40,7 @@
   </div>
 </template>
 <script>
-import nutCollapseItem from './collapse-item';
 export default {
-  components: {
-    nutCollapseItem
-  },
   data() {
     return {
       active1: [1, '2'],

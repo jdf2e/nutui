@@ -1,0 +1,91 @@
+.nut-collapse-item {
+  position: relative;
+  .collapse-item {
+    &::after {
+      position: absolute;
+      box-sizing: border-box;
+      content: ' ';
+      pointer-events: none;
+      right: 16px;
+      bottom: 0;
+      left: 16px;
+      border-bottom: 1px solid #ebedf0;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+  .collapse-item {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 16px;
+    color: #323233;
+    font-size: 14px;
+    line-height: 24px;
+    background-color: #fff;
+    box-sizing: border-box;
+    .collapse-icon {
+      display: block;
+      position: absolute;
+      top: 50%;
+      margin-top: -10px;
+      right: 16px;
+      width: 20px;
+      height: 20px;
+      line-height: 24px;
+      background-image: url(https://img10.360buyimg.com/imagetools/jfs/t1/111306/10/17422/341/5f58aa0eEe9218dd6/28d76a42db334e31.png);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      transition: transform 0.3s;
+    }
+    .col-expanded {
+      transform: rotate(-180deg);
+    }
+    .subTitle {
+      position: absolute;
+      top: 50%;
+      right: 40px;
+      margin-top: -12px;
+      color: #969799;
+    }
+  }
+  .collapse-wrapper {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+    .collapse-content {
+      padding: 12px 16px;
+      color: #969799;
+      font-size: 14px;
+      line-height: 1.5;
+      background-color: #fff;
+    }
+  }
+  .nut-collapse-item-disabled {
+    color: #c8c9cc;
+    cursor: not-allowed;
+    pointer-events: none;
+    .collapse-icon-disabled {
+      background-image: url(https://img12.360buyimg.com/imagetools/jfs/t1/150037/5/8088/344/5f5b0bf2E214aac54/ec3e64ce3fc46200.png);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  .nut-collapse-item-left {
+    .collapse-item {
+      padding: 10px 16px 10px 50px;
+      .collapse-icon {
+        left: 20px;
+      }
+      .subTitle {
+        right: 16px;
+      }
+    }
+  }
+  // .nut-collapse-item.nut-collapse-item-icon {
+  //     .collapse-icon {
+  //         transform: rotate(0deg);
+  //     }
+  // }
+}

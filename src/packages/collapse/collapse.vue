@@ -4,12 +4,8 @@
   </div>
 </template>
 <script>
-import nutCollapseItem from './collapse-item';
 export default {
   name: 'nut-collapse',
-  components: {
-    nutCollapseItem
-  },
   model: {
     prop: 'value',
     event: 'change-active'
