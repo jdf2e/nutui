@@ -677,7 +677,7 @@
       "name": "Luckycard",
       "type": "component",
       "chnName": "刮刮卡",
-      "desc": "挂挂卡抽奖",
+      "desc": "刮刮卡抽奖",
       "sort": "6",
       "showDemo": true,
       "author": "guoxiao"

@@ -1,4 +1,4 @@
-# Luckycard 挂挂卡抽奖
+# Luckycard 刮刮卡抽奖
 
 ## 基本用法
 
