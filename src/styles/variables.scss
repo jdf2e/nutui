@@ -1,0 +1,29 @@
+// color
+
+// 主色调
+$primary-color: #fa2c19 !default;
+$primary-color-end: #fa6419 !default;
+// 辅助色
+$help-color: #f5f5f5 !default;
+// 标题常规文字
+$title-color: #1a1a1a !default;
+// 次内容
+$text-color: #808080 !default;
+// 特殊禁用色
+$disable-color: #cccccc !default;
+$white: #fff;
+
+// Font
+$font-size-1: 12px;
+$font-size-2: 14px;
+$font-size-3: 16px;
+$font-size-4: 18px;
+$font-weight-bold: 400;
+
+// button
+$button-border-radius: 25px;
+$button-default-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%);
+$button-default-height: 48px;
+$button-default-line-height: 1.2;
+$button-default-font-size: $font-size-3;
+$button-default-color: $white;
