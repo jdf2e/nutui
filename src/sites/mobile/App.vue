@@ -1,16 +1,16 @@
 <template>
-  <div id="nav">{{title}}</div>
+  <div id="nav">{{ title }}</div>
   <router-view />
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
-import { isMobile } from "@/sites/assets/util";
+import { defineComponent } from 'vue';
+import { isMobile } from '@/sites/assets/util';
 export default defineComponent({
-  name: "app",
+  name: 'app',
   components: {},
   data() {
     return {
-      title: "NutUI"
+      title: 'NutUI'
     };
   },
   watch: {
@@ -20,7 +20,7 @@ export default defineComponent({
         window.top.location.replace(`${origin}${pathname}#/${to.name}`);
         this.title = to.name;
       } else {
-        this.title = "";
+        this.title = '';
       }
     }
   }
@@ -54,13 +54,16 @@ export default defineComponent({
   }
 
   .demo {
-    padding-top: 57px;
     height: 100%;
     background: #f7f8fa;
     overflow-y: auto;
-
+    padding: 0 25px;
+    padding-top: 57px;
+    &::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
+    }
     .title {
-      padding-left: 25px;
       height: 56px;
       line-height: 56px;
       font-size: 14px;

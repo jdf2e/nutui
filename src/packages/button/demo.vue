@@ -1,42 +1,57 @@
 <template>
   <div class="demo">
-    <div class="title">类型</div>
-    <div class="card">
+    <div class="title">按钮类型</div>
+    <div class="demo-button-row">
       <nut-button type="primary">主要按钮</nut-button>
-      <nut-button type="success">成功按钮</nut-button>
+      <nut-button type="info">信息按钮</nut-button>
       <nut-button type="default">默认按钮</nut-button>
-      <nut-button type="warning">警告按钮</nut-button>
+    </div>
+    <div class="demo-button-row2">
       <nut-button type="danger">危险按钮</nut-button>
+      <nut-button type="warning">警告按钮</nut-button>
+      <nut-button type="success">成功按钮</nut-button>
     </div>
-    <div class="title">通栏</div>
-    <div class="card">
-      <nut-button block>通栏按钮 Normer</nut-button>
-      <nut-button block>通栏按钮 Pressed</nut-button>
-      <nut-button block disabled>通栏按钮 Disabled</nut-button>
-    </div>
+    <div class="title">边框按钮</div>
+
+    <div class="title">禁用状态</div>
+
+    <div class="title">按钮形状</div>
+
+    <div class="title">加载状态</div>
+
+    <div class="title">图标按钮</div>
+
+    <div class="title">按钮尺寸</div>
+    <nut-button block type="primary">通栏按钮</nut-button>
+    <nut-button>普通按钮</nut-button>
+    <nut-button>小型按钮</nut-button>
   </div>
 </template>
 
 <script lang="ts">
-import Button from "@/packages/button/index.vue";
-import { createDemoComponent } from "@/utils/create";
-export default createDemoComponent("button")({
+import Button from '@/packages/button/index.vue';
+import { createDemoComponent } from '@/utils/create';
+export default createDemoComponent('button')({
   props: {
     text: String
   },
-  components: { "nut-button": Button },
-  emits: ["click"],
-  setup(props, { emit, slots }) {
-    console.log(props);
-  }
+  components: { 'nut-button': Button },
+  emits: ['click']
 });
 </script>
 
 <style lang="scss" scoped>
+.demo-button-row {
+  margin-bottom: 20px;
+}
+.demo-button-row2 {
+  margin-bottom: 10px;
+}
 .nut-button {
-  margin-bottom: 21px;
+  margin-right: 15px;
   &:last-child {
     margin-bottom: 0;
+    margin-right: 0;
   }
 }
 </style>
