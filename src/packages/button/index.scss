@@ -76,19 +76,19 @@
   &--plain {
     background-color: $button-plain-background-color;
 
-    &.van-button--primary {
+    &.nut-button--primary {
       color: $button-primary-background-color;
     }
 
-    &.van-button--success {
+    &.nut-button--success {
       color: $button-success-background-color;
     }
 
-    &.van-button--danger {
+    &.nut-button--danger {
       color: $button-danger-background-color;
     }
 
-    &.van-button--warning {
+    &.nut-button--warning {
       color: $button-warning-background-color;
     }
   }
@@ -107,11 +107,6 @@
     height: $button-small-height;
     padding: 0 $padding-xs;
     font-size: $font-size-1;
-  }
-
-  &__loading {
-    color: inherit;
-    font-size: inherit;
   }
 
   &--block {
