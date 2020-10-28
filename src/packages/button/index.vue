@@ -1,41 +1,103 @@
 <template>
-  <view class="nut-button" :disabled="disabled" @click="clickHandler">
+  <view :class="classes" @click="handleClick">
+    <!-- <i class="nut-icon-loading" v-if="loading"></i> -->
+    <!-- <i :class="icon" v-if="icon && !loading"></i> -->
     <slot></slot>
   </view>
 </template>
 
 <script lang="ts">
-import { PropType } from "vue";
-import { createComponent } from "@/utils/create";
-export type ButtonType =
-  | "default"
-  | "primary"
-  | "success"
-  | "warning"
-  | "danger";
-export type ButtonSize = "large" | "normal" | "small" | "mini";
-export default createComponent("button")({
+import { PropType, CSSProperties, toRefs, computed } from 'vue';
+import { createComponent } from '@/utils/create';
+export type ButtonType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger';
+export type ButtonSize = 'large' | 'normal' | 'small';
+export type ButtonShape = 'square' | 'round';
+export default createComponent('button')({
   props: {
-    text: String,
     color: String,
-    disabled: Boolean,
+    shape: {
+      type: String as PropType<ButtonShape>,
+      default: 'round'
+    },
+    plain: {
+      type: Boolean,
+      default: false
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     type: {
       type: String as PropType<ButtonType>,
-      default: "default"
+      default: 'default'
     },
     size: {
       type: String as PropType<ButtonSize>,
-      default: "normal"
+      default: 'normal'
+    },
+    block: {
+      type: Boolean,
+      default: false
     }
   },
   components: {},
-  emits: ["click"],
+  emits: ['click'],
   setup(props, { emit, slots }) {
-    console.log(props);
+    // setup内部只能访问这4个属性，值得注意的是props必须在上面声明才能在这里取到
+    console.log('props', props, 'emit', emit, 'slots', slots);
+    const { type, size, shape, disabled, loading, color, plain, block } = toRefs(props);
+    // console.log("type", type, "size", size);
+
+    const handleClick = (event: MouseEvent) => {
+      if (!loading.value && !disabled.value) {
+        emit('click', event);
+      }
+    };
+
+    const classes = computed(() => {
+      const prefixCls = 'nut-button';
+      return {
+        'nut-button': true,
+        [`${prefixCls}--${type.value}`]: type.value,
+        [`${prefixCls}--${size.value}`]: size.value,
+        [`${prefixCls}--${shape.value}`]: shape.value,
+        [`${prefixCls}--block`]: block.value
+      };
+    });
+
+    const getStyle = computed(() => {
+      if (color?.value) {
+        const style: CSSProperties = {};
+
+        if (plain.value) {
+          style.color = color.value;
+          style.background = '#fff';
+          if (!color.value?.includes('gradient')) {
+            style.borderColor = color.value;
+          }
+        } else {
+          style.color = '#fff';
+          style.background = color.value;
+        }
+
+        return style;
+      }
+    });
+
+    return {
+      handleClick,
+      disabled,
+      classes,
+      getStyle
+    };
   }
 });
 </script>
 
 <style lang="scss">
-@import "index.scss";
+@import 'index.scss';
 </style>
