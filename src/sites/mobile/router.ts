@@ -1,15 +1,14 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Index from "./components/Index1.vue";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import Index from './components/Index1.vue';
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    name: "index",
+    path: '/',
+    name: 'index',
     component: Index
-  },
-
+  }
 ];
 
-const files = require.context("@/packages", true, /demo\.vue$/);
+const files = require.context('@/packages', true, /demo\.vue$/);
 files.keys().forEach(component => {
   const componentEntity = files(component).default;
   routes.push({
@@ -19,11 +18,11 @@ files.keys().forEach(component => {
   });
 });
 
-routes.push({
-  name: 'NotFound',
-  path: '/:path(.*)+',
-  redirect: () => '/',
-});
+// routes.push({
+//   name: 'NotFound',
+//   path: '/:path(.*)+',
+//   redirect: () => '/',
+// });
 
 const router = createRouter({
   history: createWebHashHistory(),
