@@ -74,28 +74,38 @@
   }
 
   &--plain {
-    background-color: $button-plain-background-color;
+    background: $button-plain-background-color;
 
     &.nut-button--primary {
-      color: $button-primary-background-color;
+      color: $button-primary-border-color;
+      border-color: $button-primary-border-color;
+    }
+
+    &.nut-button--info {
+      color: $button-info-border-color;
+      border-color: $button-info-border-color;
     }
 
     &.nut-button--success {
-      color: $button-success-background-color;
+      color: $button-success-border-color;
+      border-color: $button-success-border-color;
     }
 
     &.nut-button--danger {
-      color: $button-danger-background-color;
+      color: $button-danger-border-color;
+      border-color: $button-danger-border-color;
     }
 
     &.nut-button--warning {
-      color: $button-warning-background-color;
+      color: $button-warning-border-color;
+      border-color: $button-warning-border-color;
     }
   }
 
   &--large {
     width: 100%;
     height: $button-large-height;
+    line-height: $button-large-line-height;
   }
 
   &--normal {
@@ -105,6 +115,7 @@
 
   &--small {
     height: $button-small-height;
+    line-height: $button-small-line-height;
     padding: 0 $padding-xs;
     font-size: $font-size-1;
   }
