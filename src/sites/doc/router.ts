@@ -33,6 +33,12 @@ routes.push({
   redirect: () => '/'
 });
 
+routes.push({
+  name: 'NotFound',
+  path: '/:path(.*)+',
+  redirect: () => '/',
+});
+
 const router = createRouter({
   history: createWebHashHistory(),
   routes
