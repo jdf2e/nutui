@@ -2,7 +2,7 @@
 node_modules
 /dist
 /libs
-/jd
+/jd/upload.js
 yarn.lock
 package.lock
 

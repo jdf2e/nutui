@@ -1,10 +1,12 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Index from "./views/Index.vue";
-const routes: Array<RouteRecordRaw> = [{
-  path: '/',
-  name: 'index',
-  component: Index
-}];
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import Index from './views/Index.vue';
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: '/',
+    name: 'index',
+    component: Index
+  }
+];
 // import { nav } from '@/config';
 // nav.forEach(item => {
 //   item.packages.forEach(_item => {
@@ -20,9 +22,15 @@ const routes: Array<RouteRecordRaw> = [{
 //   })
 // })
 
-const files = require.context("@/packages", true, /doc\.md$/);
-files.keys().forEach(component => {
-  // console.log(component)
+// const files = require.context('@/packages', true, /doc\.md$/);
+// files.keys().forEach(component => {
+//   // console.log(component)
+// });
+
+routes.push({
+  name: 'NotFound',
+  path: '/:path(.*)+',
+  redirect: () => '/'
 });
 
 routes.push({
