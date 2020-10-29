@@ -11,20 +11,36 @@
       <nut-button type="warning">警告按钮</nut-button>
       <nut-button type="success">成功按钮</nut-button>
     </div>
-    <div class="title">边框按钮</div>
-
+    <div class="title">朴素按钮</div>
+    <div class="demo-button-row2">
+      <nut-button plain type="primary">朴素按钮</nut-button>
+      <nut-button plain type="info">朴素按钮</nut-button>
+    </div>
     <div class="title">禁用状态</div>
-
+    <div class="demo-button-row2">
+      <nut-button disabled type="primary">禁用状态</nut-button>
+      <nut-button plain disabled type="info">禁用状态</nut-button>
+      <nut-button plain disabled type="primary">禁用状态</nut-button>
+    </div>
     <div class="title">按钮形状</div>
-
+    <div class="demo-button-row2">
+      <nut-button shape="square" type="primary">方形按钮</nut-button>
+      <nut-button type="info">圆形按钮</nut-button>
+    </div>
     <div class="title">加载状态</div>
 
     <div class="title">图标按钮</div>
 
     <div class="title">按钮尺寸</div>
-    <nut-button block type="primary">通栏按钮</nut-button>
-    <nut-button>普通按钮</nut-button>
-    <nut-button>小型按钮</nut-button>
+    <div class="demo-button-row2">
+      <div class="demo-button-row2">
+        <nut-button block type="primary">通栏按钮</nut-button>
+      </div>
+      <div class="demo-button-row2">
+        <nut-button type="primary">普通按钮</nut-button>
+        <nut-button size="small" type="primary">小型按钮</nut-button>
+      </div>
+    </div>
   </div>
 </template>
 

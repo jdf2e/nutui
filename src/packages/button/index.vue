@@ -65,7 +65,9 @@ export default createComponent('button')({
         [`${prefixCls}--${type.value}`]: type.value,
         [`${prefixCls}--${size.value}`]: size.value,
         [`${prefixCls}--${shape.value}`]: shape.value,
-        [`${prefixCls}--block`]: block.value
+        [`${prefixCls}--plain`]: plain.value,
+        [`${prefixCls}--block`]: block.value,
+        [`${prefixCls}--disabled`]: disabled.value
       };
     });
 
