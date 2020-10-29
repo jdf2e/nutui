@@ -3,26 +3,33 @@
   <router-view />
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
+import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router';
+
 import { isMobile } from '@/sites/assets/util';
 export default defineComponent({
   name: 'app',
   components: {},
-  data() {
-    return {
-      title: 'NutUI'
-    };
-  },
-  watch: {
-    $route(to) {
-      const { origin, hash, pathname } = window.top.location;
-      if (!isMobile && to.href != hash) {
-        window.top.location.replace(`${origin}${pathname}#/${to.name}`);
-        this.title = to.name;
-      } else {
-        this.title = '';
-      }
-    }
+  setup() {
+    const title = ref('NutUI');
+
+    // 获取当前路由
+    const route = useRoute();
+    // 获取路由实例
+    const router = useRouter();
+
+    onBeforeRouteUpdate(() => {
+      // 当当前路由发生变化时，调用回调函数
+      // const { origin, hash, pathname } = window.top.location;
+      // if (!isMobile && to.href != hash) {
+      //   window.top.location.replace(`${origin}${pathname}#/${to.name}`);
+      //   title.value = to.name;
+      // } else {
+      //   title.value = '';
+      // }
+    });
+
+    return title;
   }
 });
 </script>
