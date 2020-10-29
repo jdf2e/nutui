@@ -1,7 +1,9 @@
 // vue.config.js
+const path = require('path');
+
 module.exports = {
-  productionSourceMap: process.env.NODE_ENV != "production",
-  publicPath: "./",
+  productionSourceMap: process.env.NODE_ENV != 'production',
+  publicPath: './',
   css: {
     loaderOptions: {
       // 给 sass-loader 传递选项
@@ -17,42 +19,46 @@ module.exports = {
       // `scss` 语法会要求语句结尾必须有分号，`sass` 则要求必须没有分号
       // 在这种情况下，我们可以使用 `scss` 选项，对 `scss` 语法进行单独配置
       scss: {
-        additionalData: `@import "~@/styles/variables.scss";@import "~@/sites/assets/styles/variables.scss";`,
-      },
-    },
+        additionalData: `@import "~@/styles/variables.scss";@import "~@/sites/assets/styles/variables.scss";`
+      }
+    }
   },
   pages: {
     doc: {
-      entry: "src/sites/doc/main.ts",
-      template: "src/sites/doc/index.html",
-      filename: "index.html",
+      entry: 'src/sites/doc/main.ts',
+      template: 'src/sites/doc/index.html',
+      filename: 'index.html',
       // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
-      title: "NutUI",
+      title: 'NutUI',
       // 在这个页面中包含的块，默认情况下会包含
       // 提取出来的通用 chunk 和 vendor chunk。
-      chunks: ["chunk-vendors", "chunk-common", "doc"],
+      chunks: ['chunk-vendors', 'chunk-common', 'doc']
     },
     mobile: {
-      entry: "src/sites/mobile/main.ts",
-      template: "src/sites/mobile/index.html",
-      filename: "demo.html",
+      entry: 'src/sites/mobile/main.ts',
+      template: 'src/sites/mobile/index.html',
+      filename: 'demo.html',
       // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
-      title: "NutUI",
+      title: 'NutUI',
       // 在这个页面中包含的块，默认情况下会包含
       // 提取出来的通用 chunk 和 vendor chunk。
-      chunks: ["chunk-vendors", "chunk-common", "mobile"],
-    },
+      chunks: ['chunk-vendors', 'chunk-common', 'mobile']
+    }
   },
   configureWebpack: {
     optimization: {
-      minimize: process.env.NODE_ENV === "production",
+      minimize: process.env.NODE_ENV === 'production',
       splitChunks: {
-        automaticNameDelimiter: "_",
-      },
-    },
-  },
-  chainWebpack: (config) => {
-    if (process.env.NODE_ENV === "production") {
+        automaticNameDelimiter: '_'
+      }
     }
   },
+  chainWebpack: config => {
+    config.module
+      .rule('md-vue')
+      .test(/\.md$/)
+      .use(path.resolve(__dirname, './loader/md-vue/index.js'))
+      .loader(path.resolve(__dirname, './loader/md-vue/index.js'))
+      .end();
+  }
 };

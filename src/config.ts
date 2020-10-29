@@ -8,7 +8,7 @@ export const nav = [
     name: '布局组件',
     packages: [
       {
-        name: 'Button',
+        name: 'button',
         sort: 1,
         cName: '按钮组件',
         type: 'component',
@@ -26,7 +26,7 @@ export const nav = [
     name: '基础组件',
     packages: [
       {
-        name: 'Uploader',
+        name: 'uploader',
         sort: 1,
         cName: '上传组件',
         type: 'component',

@@ -17,6 +17,7 @@ import Header from '@/sites/doc/components/Header.vue';
 import Nav from '@/sites/doc/components/Nav.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
 import DemoPreview from '@/sites/doc/components/DemoPreview.vue';
+import '../../../styles/md-style.scss';
 export default defineComponent({
   name: 'doc',
   components: {
@@ -35,10 +36,10 @@ export default defineComponent({
     // 获取路由实例
     const router = useRouter();
 
-    onBeforeRouteUpdate(() => {
+    onBeforeRouteUpdate(to => {
       // 当当前路由发生变化时，调用回调函数
-      // const { origin, pathname } = window.location;
-      // data.demoUrl = `${origin}${pathname.replace('index.html', '')}demo.html#${route.path}`;
+      const { origin, pathname } = window.location;
+      data.demoUrl = `${origin}${pathname.replace('index.html', '')}demo.html#${to.path}`;
     });
 
     return data;
@@ -49,14 +50,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .doc {
   &-content {
-    height: 100%;
     display: flex;
-
-    &-document {
-      margin: 10px;
-      border: 1px solid red;
-      width: 800px;
-    }
   }
 }
 </style>
