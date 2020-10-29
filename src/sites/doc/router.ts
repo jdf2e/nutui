@@ -36,7 +36,7 @@ routes.push({
 routes.push({
   name: 'NotFound',
   path: '/:path(.*)+',
-  redirect: () => '/',
+  redirect: () => '/'
 });
 
 const router = createRouter({
