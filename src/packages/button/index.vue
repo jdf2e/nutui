@@ -9,10 +9,13 @@
 <script lang="ts">
 import { PropType, CSSProperties, toRefs, computed } from 'vue';
 import { createComponent } from '@/utils/create';
+const { componentName, create } = createComponent('button');
+
 export type ButtonType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger';
 export type ButtonSize = 'large' | 'normal' | 'small';
 export type ButtonShape = 'square' | 'round';
-export default createComponent('button')({
+
+export default create({
   props: {
     color: String,
     shape: {
@@ -59,9 +62,9 @@ export default createComponent('button')({
     };
 
     const classes = computed(() => {
-      const prefixCls = 'nut-button';
+      const prefixCls = componentName;
       return {
-        'nut-button': true,
+        [componentName]: true,
         [`${prefixCls}--${type.value}`]: type.value,
         [`${prefixCls}--${size.value}`]: size.value,
         [`${prefixCls}--${shape.value}`]: shape.value,

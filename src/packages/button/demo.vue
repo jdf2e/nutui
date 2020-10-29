@@ -46,12 +46,13 @@
 
 <script lang="ts">
 import Button from '@/packages/button/index.vue';
-import { createDemoComponent } from '@/utils/create';
-export default createDemoComponent('button')({
+import { createComponent } from '@/utils/create';
+const { createDemo } = createComponent('button');
+export default createDemo({
   props: {
     text: String
   },
-  components: { 'nut-button': Button },
+  components: { [Button.name]: Button },
   emits: ['click']
 });
 </script>
