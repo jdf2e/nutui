@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <div class="index-header">
-      <img src="@/sites/assets/images/logo.png" alt="" srcset="" />
+      <img src="@/sites/assets/images/logo-red.png" alt="" srcset="" />
       <div class="info">
         <h1>Nut UI</h1>
         <p>一套京东风格的轻量级移动端 Vue 组件库</p>
@@ -12,8 +12,7 @@
         <li>{{ _nav.name }}</li>
         <ul>
           <li v-for="_package in _nav.packages" :key="_package">
-            <router-link :to="_package.name.toLocaleLowerCase()"
-              >{{ _package.name }}&nbsp;&nbsp;{{ _package.cName }}
+            <router-link :to="_package.name.toLocaleLowerCase()">{{ _package.name }}&nbsp;&nbsp;{{ _package.cName }}
             </router-link>
           </li>
         </ul>
@@ -23,16 +22,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { nav, versions } from "@/config";
+import { defineComponent, reactive } from 'vue';
+import { nav, versions } from '@/config';
 export default defineComponent({
-  name: "doc",
+  name: 'doc',
   components: {},
-  data() {
-    return {
+  setup() {
+    return reactive({
       nav,
       versions
-    };
+    });
   }
 });
 </script>
