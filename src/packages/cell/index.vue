@@ -9,14 +9,13 @@
         {{ title }}
       </template>
     </view>
-    <view class="nut-cell__value">{{ desc }}</view>
+    <view v-if="desc" class="nut-cell__value">{{ desc }}</view>
     <nut-icon v-if="isLink || to" name="right"></nut-icon>
-    <slot></slot>
   </view>
 </template>
 
 <script lang="ts">
-import { toRefs, computed, PropType } from 'vue';
+import { toRefs, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 import { useRouter } from 'vue-router';
 import Icon from '@/packages/icon/index.vue';
@@ -36,7 +35,7 @@ export default create({
     [Icon.name]: Icon
   },
   emits: ['click'],
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const { title, to, desc, subTitle, isLink, url, replace } = toRefs(props);
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -50,11 +49,10 @@ export default create({
 
     const handleClick = (event: Event) => {
       emit('click', event);
-      debugger;
       if (to.value && router) {
-        router[replace ? 'replace' : 'push'](to.value);
+        router[replace.value ? 'replace' : 'push'](to.value);
       } else if (url.value) {
-        replace ? location.replace(url.value) : (location.href = url.value);
+        replace.value ? location.replace(url.value) : (location.href = url.value);
       }
     };
 

@@ -15,7 +15,7 @@ export default create({
   },
   components: {},
   emits: ['click'],
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const { name } = toRefs(props);
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -31,7 +31,6 @@ export default create({
     return {
       handleClick,
       name,
-
       classes
     };
   }
