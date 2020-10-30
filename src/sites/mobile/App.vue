@@ -1,10 +1,10 @@
 <template>
-  <div id="nav">{{ title }}</div>
+  <div v-if="title != '/'" id="nav">{{ title }}</div>
   <router-view />
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router';
+import { defineComponent, ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 
 import { isMobile } from '@/sites/assets/util';
 export default defineComponent({
@@ -12,24 +12,27 @@ export default defineComponent({
   components: {},
   setup() {
     const title = ref('NutUI');
-
     // 获取当前路由
     const route = useRoute();
-    // 获取路由实例
-    const router = useRouter();
+    // 当当前路由发生变化时，调用回调函数
+    watch(
+      () => route,
+      () => {
+        const { origin, hash, pathname } = window.top.location;
+        if (!isMobile && route.hash != hash) {
+          window.top.location.replace(`${origin}${pathname}#/${route.hash}`);
+          title.value = route.name as string;
+        } else {
+          title.value = route.name as string;
+        }
+      },
+      {
+        immediate: true,
+        deep: true
+      }
+    );
 
-    onBeforeRouteUpdate(() => {
-      // 当当前路由发生变化时，调用回调函数
-      // const { origin, hash, pathname } = window.top.location;
-      // if (!isMobile && to.href != hash) {
-      //   window.top.location.replace(`${origin}${pathname}#/${to.name}`);
-      //   title.value = to.name;
-      // } else {
-      //   title.value = '';
-      // }
-    });
-
-    return title;
+    return { title };
   }
 });
 </script>
@@ -54,10 +57,11 @@ export default defineComponent({
     height: 57px;
     line-height: 57px;
     text-align: center;
-    background: #fff;
-    font-family: PingFangSC-Medium;
+    background: $white;
+    font-weight: bold;
     font-size: 20px;
     color: rgba(51, 51, 51, 1);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.07);
   }
 
   .demo {
@@ -70,7 +74,7 @@ export default defineComponent({
       width: 0;
       background: transparent;
     }
-    .title {
+    > h2 {
       height: 56px;
       line-height: 56px;
       font-size: 14px;

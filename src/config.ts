@@ -26,12 +26,21 @@ export const nav = [
     name: '基础组件',
     packages: [
       {
-        name: 'uploader',
+        name: 'cell',
         sort: 1,
+        cName: '单元格组件',
+        type: 'component',
+        show: true,
+        desc: '展示列表',
+        author: 'richard1015'
+      },
+      {
+        name: 'uploader',
+        sort: 2,
         cName: '上传组件',
         type: 'component',
         show: true,
-        desc: '',
+        desc: '上传文件、图片',
         author: 'richard1015'
       }
     ]

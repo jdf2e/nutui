@@ -64,7 +64,7 @@ export default create({
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
-        [componentName]: true,
+        [prefixCls]: true,
         [`${prefixCls}--${type.value}`]: type.value,
         [`${prefixCls}--${size.value}`]: size.value,
         [`${prefixCls}--${shape.value}`]: shape.value,
