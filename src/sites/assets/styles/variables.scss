@@ -1,15 +1,16 @@
 // doc
 $doc-default-color: #fa2c19;
 $doc-default-primary-bg: linear-gradient(
-    135deg,
-    rgba(250, 25, 44, 1) 0%,
-    rgba(250, 39, 40, 1) 45%,
-    rgba(250, 56, 31, 1) 83%,
-    rgba(250, 63, 25, 1) 100%
+  135deg,
+  rgba(250, 25, 44, 1) 0%,
+  rgba(250, 39, 40, 1) 45%,
+  rgba(250, 56, 31, 1) 83%,
+  rgba(250, 63, 25, 1) 100%
 );
 // header
 $doc-default-header-color: $white;
 $doc-header-height: 64px;
+$doc-header-bg: url('../../assets/images/header-bg.png') no-repeat;
 // nav
 $doc-default-nav-bg: $white;
 $doc-default-nav-color: $title-color;

@@ -34,26 +34,27 @@
     "dev": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "upload": "vue-cli-service build && node ./jd/upload.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
     "sass": "^1.27.0",
     "sass-loader": "^10.0.4",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0"
+    "vue-router": "^4.0.0-rc.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/cli-plugin-babel": "~4.5.8",
+    "@vue/cli-plugin-eslint": "~4.5.8",
+    "@vue/cli-plugin-router": "~4.5.8",
+    "@vue/cli-plugin-typescript": "~4.5.8",
+    "@vue/cli-service": "~4.5.8",
+    "@vue/compiler-sfc": "^3.0.2",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^5.0.2",
     "eslint": "^6.7.2",
@@ -86,9 +87,7 @@
       "ecmaVersion": 2020
     },
     "rules": {
-      "vue/no-unused-components": "off",
-      "no-debugger": "off",
-      "no-console": "off"
+      "vue/no-unused-components": "off"
     }
   },
   "husky": {
