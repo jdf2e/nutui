@@ -7,7 +7,6 @@
 <script lang="ts">
 import Icon from '@/packages/icon/index.vue';
 import { createComponent } from '@/utils/create';
-import { ref } from 'vue';
 const { createDemo } = createComponent('icon');
 export default createDemo({
   props: {},
