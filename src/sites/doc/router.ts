@@ -14,12 +14,11 @@ files.keys().forEach(component => {
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'index',
+    name: '/',
     component: Index,
     children: pagesRouter
   }
 ];
-
 const router = createRouter({
   history: createWebHashHistory(),
   routes,

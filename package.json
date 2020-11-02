@@ -87,7 +87,8 @@
       "ecmaVersion": 2020
     },
     "rules": {
-      "vue/no-unused-components": "off"
+      "vue/no-unused-components": "off",
+      "no-debugger": "off"
     }
   },
   "husky": {
