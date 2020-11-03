@@ -4,6 +4,9 @@ const path = require('path');
 module.exports = {
   productionSourceMap: process.env.NODE_ENV != 'production',
   publicPath: './',
+  devServer: {
+    host: '0.0.0.0'
+  },
   css: {
     loaderOptions: {
       // 给 sass-loader 传递选项
