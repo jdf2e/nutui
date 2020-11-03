@@ -5,7 +5,9 @@ module.exports = {
   productionSourceMap: process.env.NODE_ENV != 'production',
   publicPath: './',
   devServer: {
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    disableHostCheck: true,
+    open: true
   },
   css: {
     loaderOptions: {
