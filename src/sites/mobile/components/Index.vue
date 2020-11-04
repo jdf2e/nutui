@@ -12,7 +12,7 @@
         <li>{{ _nav.name }}</li>
         <ul>
           <li v-for="_package in _nav.packages" :key="_package">
-            <router-link :to="_package.name.toLocaleLowerCase()">{{ _package.name }}&nbsp;&nbsp;{{ _package.cName }} </router-link>
+            <router-link :to="_package.name.toLowerCase()">{{ _package.name }}&nbsp;&nbsp;{{ _package.cName }} </router-link>
           </li>
         </ul>
       </ol>

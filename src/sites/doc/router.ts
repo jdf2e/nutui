@@ -6,9 +6,11 @@ const pagesRouter: Array<RouteRecordRaw> = [];
 const files = require.context('@/packages', true, /doc\.md$/);
 files.keys().forEach(component => {
   const componentEntity = files(component).default;
+  const name = `${component.split('/')[1]}`;
   pagesRouter.push({
-    path: `/${component.split('/')[1]}`,
-    component: componentEntity
+    path: name,
+    component: componentEntity,
+    name
   });
 });
 const routes: Array<RouteRecordRaw> = [

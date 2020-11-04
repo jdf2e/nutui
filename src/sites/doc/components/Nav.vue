@@ -12,8 +12,8 @@
     <ol v-for="_nav in nav" :key="_nav">
       <li>{{ _nav.name }}</li>
       <ul>
-        <li class="active" v-for="_package in _nav.packages" :key="_package">
-          <router-link :to="_package.name.toLocaleLowerCase()">
+        <li :class="{ active: isActive(_package.name) }" v-for="_package in _nav.packages" :key="_package">
+          <router-link :to="_package.name.toLowerCase()">
             {{ _package.name }}&nbsp;&nbsp;<b>{{ _package.cName }}</b>
           </router-link>
         </li>
@@ -22,14 +22,22 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, reactive, computed } from 'vue';
+import { currentRoute } from '@/sites/assets/util/ref';
 import { nav } from '@/config';
 export default defineComponent({
   name: 'doc-nav',
   setup() {
-    return reactive({
-      nav
+    const isActive = computed(() => {
+      return function(name: string) {
+        return currentRoute.value == name.toLowerCase();
+      };
     });
+    return {
+      isActive,
+      nav: reactive(nav),
+      currentRoute
+    };
   }
 });
 </script>
@@ -37,11 +45,16 @@ export default defineComponent({
 <style lang="scss">
 .doc {
   &-nav {
+    position: fixed;
+    top: $doc-header-height + 50;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
     background: $white;
-    width: 291px;
-    flex-shrink: 0;
-    height: 100%;
-    padding: 50px 0 50px 35px;
+    width: 290px;
+    border-right: 1px solid #eee;
+    overflow: auto;
+    padding-left: 35px;
     ol {
       &.introduce {
         padding-left: 5px;
@@ -66,12 +79,12 @@ export default defineComponent({
             content: '';
             left: 0;
             top: 50%;
-            margin-top: -14px;
-            bottom: 0;
-            width: 6px;
-            height: 28px;
-            background: $doc-default-primary-bg;
-            border-radius: 3px;
+            width: 22px;
+            margin-top: -5px;
+            height: 10px;
+            transform: rotate(90deg);
+            background: url(https://img10.360buyimg.com/imagetools/jfs/t1/136135/19/14659/946/5fa20aa8E33a9aa26/d329fbe669171208.png) no-repeat;
+            background-size: 100% 100%;
           }
         }
       }
