@@ -7,6 +7,8 @@ $primary-color-end: #fa6419 !default;
 $help-color: #f5f5f5 !default;
 // 标题常规文字
 $title-color: #1a1a1a !default;
+// 副标题
+$title-color2: #666666 !default;
 // 次内容
 $text-color: #808080 !default;
 // 特殊禁用色
@@ -77,23 +79,10 @@ $button-warning-background-color: linear-gradient(
 $button-plain-background-color: #fff;
 $button-plain-background-color: $white;
 
-//markdown-add-style
-$nutui-doc-black: #323233;
-$nutui-doc-blue: #1989fa;
-$nutui-doc-purple: #8080ff;
-$nutui-doc-fuchsia: #a7419e;
-$nutui-doc-green: #4fc08d;
-$nutui-doc-text-color: #34495e;
-$nutui-doc-text-light-blue: rgba(69, 90, 100, 0.6);
-$nutui-doc-background-color: #f7f8fa;
-$nutui-doc-grey: #999;
-$nutui-doc-dark-grey: #666;
-$nutui-doc-light-grey: #ccc;
-$nutui-doc-border-color: #f1f4f8;
-$nutui-doc-code-color: #58727e;
-$nutui-doc-code-background-color: #f1f4f8;
-$nutui-doc-code-font-family: 'Source Code Pro', 'Monaco', 'Inconsolata', monospace;
-$nutui-doc-padding: 24px;
-$nutui-doc-row-max-width: 1680px;
-$nutui-doc-nav-width: 220px;
-$nutui-doc-border-radius: 20px;
+// cell
+
+$cell-color: $title-color2;
+$cell-title-font: $font-size-2;
+$cell-title-desc-font: $font-size-1;
+$cell-desc-font: $font-size-2;
+$cell-desc-color: $disable-color;

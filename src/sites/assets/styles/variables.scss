@@ -1,18 +1,40 @@
 // doc
 $doc-default-color: #fa2c19;
 $doc-default-primary-bg: linear-gradient(
-    135deg,
-    rgba(250, 25, 44, 1) 0%,
-    rgba(250, 39, 40, 1) 45%,
-    rgba(250, 56, 31, 1) 83%,
-    rgba(250, 63, 25, 1) 100%
+  135deg,
+  rgba(250, 25, 44, 1) 0%,
+  rgba(250, 39, 40, 1) 45%,
+  rgba(250, 56, 31, 1) 83%,
+  rgba(250, 63, 25, 1) 100%
 );
 // header
 $doc-default-header-color: $white;
 $doc-header-height: 64px;
+$doc-header-bg: url('../../assets/images/header-bg.png') no-repeat;
 // nav
 $doc-default-nav-bg: $white;
 $doc-default-nav-color: $title-color;
 // footer
 $doc-default-header-color: $white;
 $doc-footer-height: 73px;
+
+//markdown-add-style
+$nutui-doc-black: #323233;
+$nutui-doc-blue: #1989fa;
+$nutui-doc-purple: #8080ff;
+$nutui-doc-fuchsia: #a7419e;
+$nutui-doc-green: #4fc08d;
+$nutui-doc-text-color: #666666;
+$nutui-doc-text-light-blue: rgba(69, 90, 100, 0.6);
+$nutui-doc-background-color: #f7f8fa;
+$nutui-doc-grey: #999;
+$nutui-doc-dark-grey: #666;
+$nutui-doc-light-grey: #ccc;
+$nutui-doc-border-color: #f1f4f8;
+$nutui-doc-code-color: #58727e;
+$nutui-doc-code-background-color: #f1f4f8;
+$nutui-doc-code-font-family: 'Source Code Pro', 'Monaco', 'Inconsolata', monospace;
+$nutui-doc-padding: 24px;
+$nutui-doc-row-max-width: 1680px;
+$nutui-doc-nav-width: 220px;
+$nutui-doc-border-radius: 20px;

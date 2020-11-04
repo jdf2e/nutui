@@ -13,7 +13,9 @@ export default defineComponent({
 <style lang="scss">
 .doc {
   &-header {
-    background: $doc-default-primary-bg;
+    background: $doc-header-bg;
+    background-size: cover;
+    background-position: center;
     height: $doc-header-height;
     line-height: $doc-header-height;
     text-align: left;

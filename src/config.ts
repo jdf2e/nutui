@@ -8,7 +8,7 @@ export const nav = [
     name: '布局组件',
     packages: [
       {
-        name: 'button',
+        name: 'Button',
         sort: 1,
         cName: '按钮组件',
         type: 'component',
@@ -26,12 +26,30 @@ export const nav = [
     name: '基础组件',
     packages: [
       {
-        name: 'uploader',
+        name: 'Cell',
         sort: 1,
+        cName: '单元格组件',
+        type: 'component',
+        show: true,
+        desc: '展示列表',
+        author: 'richard1015'
+      },
+      {
+        name: 'Uploader',
+        sort: 2,
         cName: '上传组件',
         type: 'component',
         show: true,
-        desc: '',
+        desc: '上传文件、图片',
+        author: 'richard1015'
+      },
+      {
+        name: 'Icon',
+        sort: 3,
+        cName: '图标组件',
+        type: 'component',
+        show: true,
+        desc: '图标',
         author: 'richard1015'
       },
       {

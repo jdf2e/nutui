@@ -10,14 +10,12 @@
   <doc-footer></doc-footer>
 </template>
 <script lang="ts">
-import { defineComponent, ref, reactive, watch } from 'vue';
-import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router';
-import { nav, versions } from '@/config';
+import { defineComponent, reactive } from 'vue';
+import { onBeforeRouteUpdate } from 'vue-router';
 import Header from '@/sites/doc/components/Header.vue';
 import Nav from '@/sites/doc/components/Nav.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
 import DemoPreview from '@/sites/doc/components/DemoPreview.vue';
-import '../../../styles/md-style.scss';
 export default defineComponent({
   name: 'doc',
   components: {
@@ -26,18 +24,12 @@ export default defineComponent({
     [Footer.name]: Footer,
     [DemoPreview.name]: DemoPreview
   },
-  setup(prop, { emit, slots }) {
+  setup() {
     const data = reactive({
       demoUrl: 'demo.html'
     });
 
-    // 获取当前路由
-    const route = useRoute();
-    // 获取路由实例
-    const router = useRouter();
-
     onBeforeRouteUpdate(to => {
-      // 当当前路由发生变化时，调用回调函数
       const { origin, pathname } = window.location;
       data.demoUrl = `${origin}${pathname.replace('index.html', '')}demo.html#${to.path}`;
     });

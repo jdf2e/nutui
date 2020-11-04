@@ -5,10 +5,13 @@ const frontMatter = require('front-matter'); //就是md文档最上面的内容 
 const highlight = require('./highlight');
 const linkOpen = require('./link-open');
 const cardWrapper = require('./card-wrapper');
+const codeWrapper = require('./code-wrapper');
+
 const { slugify } = require('transliteration');
 
 function wrapper(content) {
   content = cardWrapper(content);
+  content = codeWrapper(content);
   content = escape(content);
 
   return `

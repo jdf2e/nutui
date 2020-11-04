@@ -10,7 +10,7 @@ module.exports = function cardWrapper(html) {
   return group
     .map(fragment => {
       if (fragment.indexOf('<h3') !== -1) {
-        return `<div class="card my-card">${fragment}</div>`;
+        return `<div>${fragment}</div>`;
       }
 
       return fragment;
