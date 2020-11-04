@@ -16,7 +16,6 @@ import Header from '@/sites/doc/components/Header.vue';
 import Nav from '@/sites/doc/components/Nav.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
 import DemoPreview from '@/sites/doc/components/DemoPreview.vue';
-import '../../../styles/md-style.scss';
 export default defineComponent({
   name: 'doc',
   components: {
