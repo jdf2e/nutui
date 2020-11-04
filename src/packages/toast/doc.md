@@ -159,7 +159,7 @@ Toast.resetDefaultOptions("text");
 | id                  | 标识符，相同者共用一个实例<br>loading类型默认使用一个实例，其他类型默认不共用 | String/Number | -                             |
 | duration            | 展示时长（毫秒）<br>值为 0 时，toast 不会自动消失（loading类型默认为0）       | Number        | 2000                          |
 | center              | 是否展示在页面中部（为false时展示在底部）                                     | Boolean       | true                          |
-| bottom              | 距页面底部的距离（像素），option.center为false时生效                          | Boolean       | true                          |
+| bottom              | 距页面底部的距离（像素），option.center为false时生效                          | Number       | 30                          |
 | textAlignCenter     | 多行文案是否居中                                                              | Boolean       | true                          |
 | bgColor             | 背景颜色（透明度）                                                            | String        | "rgba(46, 46, 46, 0.7)"       |
 | customClass         | 自定义类名                                                                    | String        | ""                            |
