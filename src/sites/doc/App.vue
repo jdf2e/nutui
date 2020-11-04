@@ -15,7 +15,7 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: none;
   -ms-text-size-adjust: 100%;
-  background: #f7f8fa;
+  background: #fff;
   height: 100%;
   width: 100%;
   display: flex;

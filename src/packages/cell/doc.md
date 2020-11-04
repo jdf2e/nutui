@@ -22,7 +22,7 @@ app.use(Cell);
 Cell `to` 有值的时候，跳转路由，`click-cell` 点击 `cell`触发事件
 
 ``` javascript
-111
+console.log('');
 ```
 
 ### 单元格大小

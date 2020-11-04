@@ -1,8 +1,12 @@
 @import 'highlight.scss';
+
 .doc-content-document {
   position: relative;
   margin: 10px;
   width: 800px;
+  background: #fff;
+  border-left: 1px solid #eee;
+  padding-left: 58px;
   .card {
     margin-bottom: 24px;
     padding: 24px;
@@ -32,7 +36,7 @@
   h5,
   h6 {
     color: $nutui-doc-black;
-    font-weight: normal;
+    font-weight: bold;
     line-height: 1.5;
 
     &[id] {
@@ -43,18 +47,31 @@
   h1 {
     margin: 0 0 30px;
     font-size: 30px;
-    cursor: default;
+    cursor: #1a1a1a;
+    font-weight: bold;
+    position: relative;
+    margin-bottom: 56px;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -26px;
+      left: 43px;
+      width: 44px;
+      height: 17px;
+      background: url('https://img10.360buyimg.com/imagetools/jfs/t1/136135/19/14659/946/5fa20aa8E33a9aa26/d329fbe669171208.png');
+      background-size: 100% 100%;
+    }
   }
 
   h2 {
     margin: 45px 0 20px;
-    font-size: 25px;
+    font-size: 24px;
   }
 
   h3 {
     margin-bottom: 16px;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 20px;
   }
 
   h4 {
@@ -71,10 +88,15 @@
 
   p {
     color: $nutui-doc-text-color;
-    font-size: 15px;
-    line-height: 26px;
+    font-size: 14px;
+    line-height: 22px;
   }
-
+  strong {
+    margin: 24px 0 12px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+  }
   table {
     width: 100%;
     margin-top: 12px;
@@ -82,15 +104,16 @@
     font-size: 14px;
     line-height: 1.5;
     border-collapse: collapse;
-
+    border: 1px solid #eee;
     th {
-      padding: 8px 10px;
+      padding: 8px 20px;
       font-weight: 600;
       text-align: left;
-
-      &:first-child {
-        padding-left: 0;
-      }
+      border-left: 1px solid #e9e9e9;
+      background-color: #f7f8fa;
+      // &:first-child {
+      //   padding-left: 0;
+      // }
 
       &:last-child {
         padding-right: 0;
@@ -98,12 +121,12 @@
     }
 
     td {
-      padding: 8px;
+      padding: 8px 20px;
       border-top: 1px solid $nutui-doc-code-background-color;
-
+      border-left: 1px solid #e9e9e9;
       &:first-child {
-        padding-left: 0;
-
+        // padding-left: 0;
+        border-left: 0px;
         // version tag
         code {
           margin: 0;
@@ -183,10 +206,13 @@
   }
 
   blockquote {
-    margin: 16px 0 0;
+    margin: 16px 0px;
     padding: 16px;
-    background-color: #ecf9ff;
-    border-radius: $nutui-doc-border-radius;
+    background-color: #fff4f0;
+    border-left: 6px solid #fa192c;
+    p {
+      color: #1a1a1a;
+    }
   }
 
   img {
@@ -212,6 +238,23 @@
       a {
         color: inherit;
         font-size: 20px;
+      }
+    }
+  }
+  .handle-part {
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .online-btn {
+      display: block;
+      color: #5555e2;
+      background-color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      &:hover {
+        color: blue;
+        text-decoration: underline;
       }
     }
   }

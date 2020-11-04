@@ -51,48 +51,48 @@ section,
 time,
 audio,
 video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font: inherit;
-    -webkit-overflow-scrolling: touch;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ios默认文本框阴影 */
 
-input[type="text"],
+input[type='text'],
 textarea {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 /* 低版本安卓文本框层级问题 */
 
 input:focus {
-    -webkit-user-modify: read-write-plaintext-only;
+  -webkit-user-modify: read-write-plaintext-only;
 }
 
 // 清除谷歌浏览器下的 search 叉号
 input::-webkit-search-cancel-button {
-    display: none;
+  display: none;
 }
 
 ol,
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 * {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
@@ -100,21 +100,22 @@ body,
 a,
 button,
 input {
-    outline: 0 none;
-    border: 0;
-    text-decoration: none;
+  outline: 0 none;
+  border: 0;
+  text-decoration: none;
 }
 
 img {
-    border: 0 none;
-    vertical-align: bottom;
-    -ms-interpolation-mode: bicubic;
+  border: 0 none;
+  vertical-align: bottom;
+  -ms-interpolation-mode: bicubic;
 }
 [v-cloak] {
-    display: none;
+  display: none;
 }
 html,
 body {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
+  background: #fff;
 }
