@@ -1,7 +1,8 @@
 <template>
   <div class="nut-uploader">
     <slot></slot>
-    <input type="file" :name="name" @change="upload($event)" class="uploader" :multiple="multiple" :disabled="disabled" :accept="acceptType" />
+    <input v-if="multiple" type="file" :name="name" @change="upload($event)" class="uploader" multiple :disabled="disabled" :accept="acceptType" />
+    <input v-else type="file" :name="name" @change="upload($event)" class="uploader" :disabled="disabled" :accept="acceptType" />
   </div>
 </template>
 <script>
