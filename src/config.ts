@@ -33,6 +33,15 @@ export const nav = [
         show: true,
         desc: '',
         author: 'richard1015'
+      },
+      {
+        name: 'price',
+        sort: 1,
+        cName: '价格组件',
+        type: 'component',
+        show: true,
+        desc: ''
+        // author: 'hahaha'
       }
     ]
   },
