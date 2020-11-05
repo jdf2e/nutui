@@ -13,6 +13,11 @@ export default defineComponent({
 <style lang="scss">
 .doc {
   &-header {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
     background: $doc-header-bg;
     background-size: cover;
     background-position: center;

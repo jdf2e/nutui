@@ -53,13 +53,13 @@ export const nav = [
         author: 'richard1015'
       },
       {
-        name: 'price',
-        sort: 1,
+        name: 'Price',
+        sort: 4,
         cName: '价格组件',
         type: 'component',
         show: true,
-        desc: ''
-        // author: 'hahaha'
+        desc: '价格组件',
+        author: 'ailululu'
       }
     ]
   },
