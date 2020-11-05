@@ -1,16 +1,18 @@
 <template>
   <view :class="classes" @click="handleClick">
-    <view class="nut-cell__title">
-      <template v-if="subTitle">
-        <view class="title">{{ title }}</view>
-        <view class="nut-cell__title-desc">{{ subTitle }}</view>
-      </template>
-      <template v-else>
-        {{ title }}
-      </template>
-    </view>
-    <view v-if="desc" class="nut-cell__value">{{ desc }}</view>
-    <nut-icon v-if="isLink || to" name="right"></nut-icon>
+    <slot>
+      <view class="nut-cell__title">
+        <template v-if="subTitle">
+          <view class="title">{{ title }}</view>
+          <view class="nut-cell__title-desc">{{ subTitle }}</view>
+        </template>
+        <template v-else>
+          {{ title }}
+        </template>
+      </view>
+      <view v-if="desc" class="nut-cell__value">{{ desc }}</view>
+      <nut-icon v-if="isLink || to" name="right"></nut-icon>
+    </slot>
   </view>
 </template>
 
