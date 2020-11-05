@@ -1,8 +1,8 @@
-# Price
+# Price 商品价格
 
 ### 介绍
 
-我是商品价格按钮组件
+用来对商品价格数值的小数点前后部分应用不同样式，还支持人民币符号、千位分隔符、设置小数点位数等功能。
 
 ### 安装
 
@@ -14,19 +14,47 @@ const app = createApp();
 app.use(Price);
 
 ```
-https://www.baidu.com
-
-
 
 ### 基本用法
 
+:::demo
+``` javascript
+<nut-price 
+    :price="1010" 
+    :needSymbol="false" 
+    :thousands="true"
+/>
+```
+:::
+
 ### 无人民币符号，有千位分隔
+
+:::demo
+``` javascript
+<nut-price  
+    :price="10010.01" 
+    :needSymbol="true" 
+    :thousands="false"
+/>
+```
+:::
 
 ### 带人民币符号，有千位分隔，保留小数点后三位
 
-按钮支持 `default`、`primary`、`success`、`warning`、`danger` 五种类型，默认为 default。
+:::demo
+``` javascript
+<nut-price  
+    :price="15213.122" 
+    :decimalDigits="3" 
+    :needSymbol="true" 
+    :thousands="true"
+/>
+```
+:::
 
-|序号|名称|备注|
-|--|--|--|
-|1|小花|等哈阿贾克斯|
-|2|小浪|阿师大丹江口市|
+|字段|说明|类型|默认值|
+|--|--|--|--|
+|price|价格数量|Number|0|
+|needSymbol|是否需要加上人民币符号|Boolean|true|
+|decimalDigits|小数位位数|Number|2|
+|thousands|是否按照千分号形式显示|Boolean|false|
