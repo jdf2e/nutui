@@ -26,6 +26,15 @@ export const nav = [
     name: '基础组件',
     packages: [
       {
+        name: 'Temp',
+        sort: 1,
+        cName: '模板组件',
+        type: 'component',
+        show: true,
+        desc: '组件模板示例',
+        author: 'richard1015'
+      },
+      {
         name: 'Cell',
         sort: 1,
         cName: '单元格组件',
