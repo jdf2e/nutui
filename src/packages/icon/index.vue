@@ -1,38 +1,41 @@
-<template>
-  <view :class="classes" @click="handleClick">
-    >
-  </view>
-</template>
-
 <script lang="ts">
-import { toRefs, computed } from 'vue';
+import { toRefs, h, PropType } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('icon');
 
 export default create({
   props: {
-    name: { type: String, default: '' }
+    name: {
+      type: String,
+      default: 'right'
+    },
+    size: [Number, String],
+    color: String,
+    tag: {
+      type: String as PropType<keyof HTMLElementTagNameMap>,
+      default: 'i'
+    }
   },
   components: {},
   emits: ['click'],
-  setup(props, { emit }) {
-    const { name } = toRefs(props);
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
+
+  setup(props, { emit, slots }) {
+    const { name, tag, color, size } = toRefs(props);
 
     const handleClick = (event: Event) => {
       emit('click', event);
     };
 
-    return {
-      handleClick,
-      name,
-      classes
-    };
+    return () =>
+      h(
+        tag.value,
+        {
+          class: `nutui-iconfont ${componentName}-${name.value}`,
+          style: { color: color?.value, fontSize: size?.value },
+          onClick: handleClick
+        },
+        slots.default?.()
+      );
   }
 });
 </script>

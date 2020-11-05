@@ -16,17 +16,11 @@
 </template>
 
 <script lang="ts">
-import Price from '@/packages/price/index.vue';
-import Cell from '@/packages/cell/index.vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('price');
 export default createDemo({
   props: {
     text: String
-  },
-  components: {
-    [Price.name]: Price,
-    [Cell.name]: Cell
   }
 });
 </script>

@@ -1,9 +1,9 @@
 {
   "id": "2166874",
   "name": "nutui",
-  "font_family": "iconfont",
-  "css_prefix_text": "icon-",
-  "description": "",
+  "font_family": "nutui-iconfont",
+  "css_prefix_text": "nut-icon-",
+  "description": "nutui 3.0字体管理",
   "glyphs": [
     {
       "icon_id": "4766918",

@@ -5,7 +5,6 @@
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-
 import { isMobile } from '@/sites/assets/util';
 export default defineComponent({
   name: 'app',
@@ -18,7 +17,8 @@ export default defineComponent({
     watch(
       () => route,
       () => {
-        const { origin, hash, pathname } = window.top.location;
+        // const { origin, hash, pathname } = window.top.location;
+        const { hash } = window.top.location;
         if (!isMobile && route.hash != hash) {
           // window.top.location.replace(`${origin}${pathname}#/${route.hash}`);
           title.value = route.name as string;
@@ -52,6 +52,7 @@ export default defineComponent({
 
   #nav {
     position: fixed;
+    z-index: 10;
     left: 0;
     right: 0;
     height: 57px;
