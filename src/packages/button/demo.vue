@@ -45,14 +45,12 @@
 </template>
 
 <script lang="ts">
-import Button from '@/packages/button/index.vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('button');
 export default createDemo({
   props: {
     text: String
   },
-  components: { [Button.name]: Button },
   emits: ['click']
 });
 </script>

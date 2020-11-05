@@ -11,12 +11,10 @@
 </template>
 
 <script lang="ts">
-import Cell from '@/packages/cell/index.vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('cell');
 export default createDemo({
   props: {},
-  components: { [Cell.name]: Cell },
   emits: ['click']
 });
 </script>
