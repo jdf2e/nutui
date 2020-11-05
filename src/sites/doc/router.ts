@@ -1,4 +1,4 @@
-// @ts-nocheck
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Index from './views/Index.vue';
 

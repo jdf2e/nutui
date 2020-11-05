@@ -62,6 +62,9 @@ module.exports = {
     config.module
       .rule('md-vue')
       .test(/\.md$/)
+      .use('vue-loader')
+      .loader('vue-loader')
+      .end()
       .use(path.resolve(__dirname, './loader/md-vue/index.js'))
       .loader(path.resolve(__dirname, './loader/md-vue/index.js'))
       .end();

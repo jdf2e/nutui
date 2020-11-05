@@ -1,80 +1,68 @@
-const loaderUtils = require('loader-utils'); //:loader-utils 是一个npm i loader-utils -D 安装的插件，便于获取webpack.config.js 中配置loader的options；
-const MarkdownIt = require('markdown-it'); //渲染 markdown 基本语法
-const markdownItAnchor = require('markdown-it-anchor'); //为各级标题添加锚点
-const frontMatter = require('front-matter'); //就是md文档最上面的内容 类似于docz中的路由/标题的设置部分
-const highlight = require('./highlight');
-const linkOpen = require('./link-open');
-const cardWrapper = require('./card-wrapper');
-const codeWrapper = require('./code-wrapper');
-
-const { slugify } = require('transliteration');
-
-function wrapper(content) {
-  content = cardWrapper(content);
-  content = codeWrapper(content);
-  content = escape(content);
-
-  return `
-import { h } from 'vue';
-
-const content = unescape(\`${content}\`);
-
-export default {
-  mounted() {
-    const anchors = [].slice.call(this.$el.querySelectorAll('h2, h3, h4, h5'));
-
-    anchors.forEach(anchor => {
-      anchor.addEventListener('click', this.scrollToAnchor);
-    });
-  },
-
-  methods: {
-    scrollToAnchor(event) {
-      if (event.target.id) {
-        this.$router.push({
-          path: this.$route.path,
-          hash: '#'+event.target.id
-        })
-      }
-    }
-  },
-
-  render() {
-    return h('section', { innerHTML: content });
-  }
-};
-`;
-}
-
-const parser = new MarkdownIt({
-  html: true,
-  linkify: true,
-  highlight
-}).use(markdownItAnchor, {
-  level: 2, // 添加超链接锚点的最小标题级别, 如: #标题 不会添加锚点
-  slugify // 自定义slugify, 我们使用的是将中文转为汉语拼音,最终生成为标题id属性
-});
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { stripScript, stripTemplate, genInlineComponentText } = require('./util');
+const md = require('./config');
 
 module.exports = function(source) {
-  let options = loaderUtils.getOptions(this) || {}; // 获取loader的参数
-  this.cacheable && this.cacheable();
+  const content = md.render(source);
 
-  options = {
-    wrapper,
-    linkOpen: true,
-    ...options
-  };
+  const startTag = '<!--nutui-demo:';
+  const startTagLen = startTag.length;
+  const endTag = ':nutui-demo-->';
+  const endTagLen = endTag.length;
 
-  let fm;
+  let componenetsString = '';
+  let id = 0; // demo 的 id
+  let output = []; // 输出的内容
+  let start = 0; // 字符串开始位置
 
-  if (options.enableMetaData) {
-    fm = frontMatter(source);
-    source = fm.body;
+  let commentStart = content.indexOf(startTag);
+  let commentEnd = content.indexOf(endTag, commentStart + startTagLen);
+  while (commentStart !== -1 && commentEnd !== -1) {
+    output.push(content.slice(start, commentStart));
+
+    const commentContent = content.slice(commentStart + startTagLen, commentEnd);
+    const html = stripTemplate(commentContent);
+    const script = stripScript(commentContent);
+    let demoComponentContent = genInlineComponentText(html, script);
+    const demoComponentName = `nutui-demo${id}`;
+    output.push(`<template #source><${demoComponentName} /></template>`);
+    componenetsString += `${JSON.stringify(demoComponentName)}: ${demoComponentContent},`;
+
+    // 重新计算下一次的位置
+    id++;
+    start = commentEnd + endTagLen;
+    commentStart = content.indexOf(startTag, start);
+    commentEnd = content.indexOf(endTag, commentStart + startTagLen);
   }
 
-  if (options.linkOpen) {
-    linkOpen(parser);
+  // 仅允许在 demo 不存在时，才可以在 Markdown 中写 script 标签
+  // todo: 优化这段逻辑
+
+  let pageScript = '';
+  if (componenetsString) {
+    pageScript = `<script lang="ts">
+      import * as Vue from 'vue';
+      export default {
+        name: 'component-doc',
+        components: {
+          ${componenetsString}
+        }
+      }
+    </script>`;
+  } else if (content.indexOf('<script>') === 0) {
+    // 硬编码，有待改善
+    start = content.indexOf('</script>') + '</script>'.length;
+    pageScript = content.slice(0, start);
   }
 
-  return options.wrapper(parser.render(source), fm);
+  output.push(content.slice(start));
+  const result = `
+  <template>
+    <section class="content nutui-doc">
+      ${output.join('')}
+    </section>
+  </template>
+  ${pageScript}
+  `;
+  return result;
 };
