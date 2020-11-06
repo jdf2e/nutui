@@ -31,10 +31,10 @@ module.exports = function(source) {
 
     // 重新计算下一次的位置
     // demoComponentName 与id,命名每个demo组件名字用的，id会在while每一次循环+1，这样子组件从第一个到最后一个都不会重名。
-    // id++;
-    // start = commentEnd + endTagLen;
-    // commentStart = content.indexOf(startTag, start);
-    // commentEnd = content.indexOf(endTag, commentStart + startTagLen);
+    id++;
+    start = commentEnd + endTagLen;
+    commentStart = content.indexOf(startTag, start);
+    commentEnd = content.indexOf(endTag, commentStart + startTagLen);
   }
 
   // 仅允许在 demo 不存在时，才可以在 Markdown 中写 script 标签

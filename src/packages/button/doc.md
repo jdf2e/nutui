@@ -14,7 +14,7 @@
 ### 基础用法
 
 :::demo
-```html
+``` html
 <template>
   <div @click="clickMe">点击我</div>
 </template>
