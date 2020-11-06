@@ -58,7 +58,6 @@ module.exports = function(source) {
   }
 
   output.push(content.slice(start));
-  console.log(output.length);
   const result = `
   <template>
     <section class="content nutui-doc">
