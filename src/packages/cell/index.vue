@@ -11,7 +11,7 @@
         </template>
       </view>
       <view v-if="desc" class="nut-cell__value">{{ desc }}</view>
-      <nut-icon v-if="isLink || to" name="right"></nut-icon>
+      <nut-icon v-if="isLink || to" size="14px" color="#979797" name="right"></nut-icon>
     </slot>
   </view>
 </template>

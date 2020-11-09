@@ -13,6 +13,16 @@ files.keys().forEach(component => {
     name
   });
 });
+const docs = require.context('@/docs', true, /\.md$/);
+docs.keys().forEach(component => {
+  const componentEntity = docs(component).default;
+  const name = `${component.split('/')[1].replace('.md', '')}`;
+  pagesRouter.push({
+    path: name,
+    component: componentEntity,
+    name
+  });
+});
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',

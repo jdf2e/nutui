@@ -3,6 +3,39 @@ export const versions = [
   { name: '2.x', link: '/' },
   { name: '3.x', link: '/3x/' }
 ];
+
+export const docs = {
+  name: '指南',
+  packages: [
+    {
+      name: 'intro',
+      cName: '介绍',
+      show: true
+    },
+    {
+      name: 'start',
+      cName: '快速上手',
+      show: true
+    },
+    {
+      name: 'theme',
+      cName: '主题定制',
+      show: true
+    },
+    {
+      name: 'international',
+      cName: '国际化',
+      show: true
+    },
+    {
+      name: 'https://github.com/jdf2e/nutui/releases',
+      cName: '更新日志',
+      show: true,
+      isLink: true
+    }
+  ]
+};
+
 export const nav = [
   {
     name: '布局组件',

@@ -1,13 +1,15 @@
 <template>
   <div class="doc-nav">
-    <ol class="introduce">
-      <li>指南</li>
-      <li>介绍</li>
-      <li>快速上手</li>
-      <li>主题定制</li>
-      <li>国际化</li>
-      <li>更新日志</li>
-      <li>资源</li>
+    <ol>
+      <li>
+        {{ docs.name }}
+      </li>
+      <ul>
+        <li :class="{ active: isActive(_package.name) }" v-for="_package in docs.packages" :key="_package">
+          <router-link v-if="!_package.isLink" :to="_package.name.toLowerCase()">{{ _package.cName }}</router-link>
+          <a v-else :href="_package.name" target="_blank">{{ _package.cName }}</a>
+        </li>
+      </ul>
     </ol>
     <ol v-for="_nav in nav" :key="_nav">
       <li>{{ _nav.name }}</li>
@@ -24,7 +26,7 @@
 <script lang="ts">
 import { defineComponent, reactive, computed } from 'vue';
 import { currentRoute } from '@/sites/assets/util/ref';
-import { nav } from '@/config';
+import { nav, docs } from '@/config';
 export default defineComponent({
   name: 'doc-nav',
   setup() {
@@ -36,6 +38,7 @@ export default defineComponent({
     return {
       isActive,
       nav: reactive(nav),
+      docs: reactive(docs),
       currentRoute
     };
   }
