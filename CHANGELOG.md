@@ -2,6 +2,7 @@
 
 `2020-11-10`
 
+* :sparkles: feat(leftSlip)：支持用户通过 api 侧滑关闭单元格 @richard1015
 * :sparkles: feat(slider)：新增 change 事件，支持用户自定义监听 @richard1015
 * :sparkles: feat(infiniteloading)：新增 container-id 字段，支持自定义滚动容器  @shenqistart
 * :sparkles: feat(uploader)：新增 multiple 字段，支持单选多选功能 @richard1015
@@ -10,6 +11,7 @@
 * :bug: fix(countup)：修复组件异步更新问题 @Ymm0008
 * :bug: fix(address)：修复组件快速点击，popup 层无法展开问题 @yangxiaolu1993
 * :bug: fix(toast)：修复文档 bottom 类型和默认值 @zy19940510
+* :bug: fix(toast)：修复loading方法无法同步关闭问题 @richard1015
 
 ## 2.2.11
 
