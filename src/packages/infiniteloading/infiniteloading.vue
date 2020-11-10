@@ -2,7 +2,7 @@
   <div class="nut-infiniteloading" ref="scroller" @touchstart="touchStartHandle($event)" @touchmove="touchMoveHandle($event)">
     <slot></slot>
     <div class="load-more">
-      <div class="bottom-tips">
+      <div class="bottom-tips" v-if="isShowBottomTips">
         <template v-if="isLoading"> <i class="loading-hint"></i><span class="loading-txt">加载中...</span> </template>
         <span v-else-if="!hasMore" class="tips-txt">{{ unloadMoreTxt }}</span>
       </div>
@@ -36,6 +36,10 @@ export default {
     isShowMod: {
       type: Boolean,
       default: false,
+    },
+    isShowBottomTips: {
+      type: Boolean,
+      default: true,
     },
     unloadMoreTxt: {
       type: String,
