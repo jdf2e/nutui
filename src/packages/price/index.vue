@@ -31,7 +31,7 @@ export default create({
     }
   },
   components: {},
-  setup(props, { slots }) {
+  setup(props) {
     // setup内部只能访问这4个属性，值得注意的是props必须在上面声明才能在这里取到
     // console.log('props', props, 'slots', slots);
     const { price, needSymbol, decimalDigits, thousands } = toRefs(props);

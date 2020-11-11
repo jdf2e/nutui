@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { toRefs, computed } from 'vue';
+import { computed } from 'vue';
 import { createComponent } from '@/utils/create';
 import { useRouter } from 'vue-router';
 import Icon from '@/packages/icon/index.vue';

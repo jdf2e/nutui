@@ -5,7 +5,7 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, PropType } from 'vue';
+import { toRefs } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('temp');
 
@@ -23,7 +23,9 @@ export default create({
   components: {},
   emits: ['click'],
 
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
+    console.log('componentName', componentName);
+
     const { name, txt } = toRefs(props);
 
     const handleClick = (event: Event) => {

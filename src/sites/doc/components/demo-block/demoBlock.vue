@@ -9,7 +9,7 @@
 </template>
 <script>
 export default {
-  setup(props, ctx) {
+  setup() {
     function onlineFun() {
       alert('hello');
     }
