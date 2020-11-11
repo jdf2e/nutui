@@ -152,7 +152,11 @@ export default {
         this.doSlide(-distance, true);
       }
     },
-
+    openSlide() {
+      this.isOpen = true;
+      const distance = this.buttonWidth > this.pageWidth ? this.pageWidth * Number(this.rightWidth) : this.buttonWidth;
+      this.doSlide(-distance, true);
+    },
     doSlide(distance, animate = false) {
       this.sliderEle.style.transform = `translateX(${distance}px)`;
       this.$refs.right.style.width = -distance + 'px';

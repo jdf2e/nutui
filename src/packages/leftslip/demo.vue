@@ -8,8 +8,9 @@
           ><a href="javascript:;" @click="delSlipItem">删除</a><a href="javascript:;" class="favorite">收藏</a></div
         >
       </nut-leftslip>
+      <nut-button @click="changeState">{{ state ? '异步关闭' : '异步打开' }}</nut-button>
     </div>
-    <p>单个按钮</p>
+    <h4>单个按钮</h4>
     <div>
       <nut-leftslip>
         <div slot="slip-main" class="slip-main">自定义单一按钮</div>
@@ -22,7 +23,7 @@
                 <div slot="slip-main" class="slip-main">向左滑滑滑~一键删除</div>
             </nut-leftslip> -->
     </div>
-    <p>多个按钮</p>
+    <h4>多个按钮</h4>
     <p>如果超出一行宽度，默认右侧按钮区域占一行的80%，此处设置60%</p>
     <div>
       <nut-leftslip :rightWidth="0.6">
@@ -43,7 +44,7 @@
         </div>
       </nut-leftslip>
     </div>
-    <p>列表</p>
+    <h4>列表</h4>
     <div>
       <nut-leftslip v-for="(item, index) in list" :key="item.id" ref="leftslip">
         <div slot="slip-main" class="slip-main">
@@ -58,14 +59,13 @@
         >
       </nut-leftslip>
     </div>
-    <div class="demo-list-pd">
-      <button class="btn" @click="disabledHandle">{{ isDisable ? '开启滑动' : '禁止滑动' }}</button>
-    </div>
+    <h4>控制滑动</h4>
     <div>
       <nut-leftslip :disabled="isDisable">
         <div slot="slip-main" class="slip-main">左滑触发删除</div>
         <div slot="slipbtns" class="slipbtns"><a href="javascript:;">删除</a></div>
       </nut-leftslip>
+      <nut-button @click="disabledHandle">{{ isDisable ? '开启滑动' : '禁止滑动' }}</nut-button>
     </div>
   </div>
 </template>
@@ -87,13 +87,21 @@ export default {
       ],
       rightWidth: 80,
       pageWidth: null,
-      isDisable: false
+      isDisable: false,
+      state: false
     };
   },
   methods: {
     delSlipItem(e) {
-      alert('确定删除吗？');
       this.$refs.demo1.sliderEle.remove();
+    },
+    changeState() {
+      if (this.state) {
+        this.$refs.demo1.restSlide();
+      } else {
+        this.$refs.demo1.openSlide();
+      }
+      this.state = !this.state;
     },
     delItem(index) {
       this.list.splice(index, 1);
@@ -176,14 +184,5 @@ export default {
       background: #ff5722;
     }
   }
-}
-.btn {
-  margin: 10px 0;
-  background: #fff;
-  border: 1px solid #ff5722;
-  color: #ff5722;
-  outline: none;
-  border-radius: 4px;
-  padding: 5px;
 }
 </style>

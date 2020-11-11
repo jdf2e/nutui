@@ -10,14 +10,27 @@
         <div slot="slip-main" class="slip-main">向左滑动我</div>
         <div slot="slipbtns" class="slipbtns"><a href="javascript:;" @click="delSlipItem">删除</a><a href="javascript:;" class="favorite">收藏</a></div>
     </nut-leftslip>
+    <nut-button @click="changeState">{ { state ? '异步关闭' : '异步打开' }}</nut-button>
 </div>
 ```
 ```javascript
 export default {
+    data(){
+        return {
+            state:false
+        };
+    },
     methods: {
         delSlipItem(e) {
-            alert('确定删除吗？')
-            this.$refs.demo1.sliderEle.remove()
+            this.$refs.demo1.sliderEle.remove();
+        },
+        changeState() {
+            if (this.state) {
+                this.$refs.demo1.restSlide();
+            } else {
+                this.$refs.demo1.openSlide();
+            }
+            this.state = !this.state;
         }
     }
 };
@@ -137,16 +150,26 @@ export default {
 
 ## slot
 
-| 字段           | 说明                 | 类型    | 默认值 |
-| -------------- | -------------------- | ------- | ------ |
-| slip-main | 列表主内容自定义区域 | html    | -      |
-| slipbtns  | 左滑按钮自定义区域   | html    | -      |
+| 字段      | 说明                 | 类型 | 默认值 |
+|-----------|----------------------|------|--------|
+| slip-main | 列表主内容自定义区域 | html | -      |
+| slipbtns  | 左滑按钮自定义区域   | html | -      |
 
 ## Prop
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| rightWidth | 右侧按钮区域超出一行时的默认宽度，默认占整个宽度的80% | Number | 0.8
-|  disabled  | 禁止滑动操作 | Boolean | false
+| 字段       | 说明                                                  | 类型    | 默认值 |
+|------------|-------------------------------------------------------|---------|--------|
+| right-width | 右侧按钮区域超出一行时的默认宽度，默认占整个宽度的80% | Number  | 0.8    |
+| disabled   | 禁止滑动操作                                          | Boolean | false  |
+
+## Methods
+
+#### 通过 ref 可以获取到 LeftSlip 组件实例并调用实例方法
+
+
+| 方法名    | 说明             | 参数 | 返回值 |
+|-----------|------------------|------|--------|
+| restSlide | 关闭单元格侧边栏 | -    | -      |
+| openSlide | 打开单元格侧边栏 | -    | -      |
 
 
