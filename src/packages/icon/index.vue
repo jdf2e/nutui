@@ -7,10 +7,20 @@ export default create({
   props: {
     name: {
       type: String,
-      default: 'right'
+      default: ''
     },
-    size: [Number, String],
-    color: String,
+    size: {
+      type: String,
+      default: ''
+    },
+    classPrefix: {
+      type: String,
+      default: 'nutui-iconfont'
+    },
+    color: {
+      type: String,
+      default: ''
+    },
     tag: {
       type: String as PropType<keyof HTMLElementTagNameMap>,
       default: 'i'
@@ -20,18 +30,16 @@ export default create({
   emits: ['click'],
 
   setup(props, { emit, slots }) {
-    const { name, tag, color, size } = toRefs(props);
-
     const handleClick = (event: Event) => {
       emit('click', event);
     };
 
     return () =>
       h(
-        tag.value,
+        props.tag,
         {
-          class: `nutui-iconfont ${componentName}-${name.value}`,
-          style: { color: color?.value, fontSize: size?.value },
+          class: `${props.classPrefix} ${componentName}-${props.name}`,
+          style: { color: props.color, fontSize: props.size },
           onClick: handleClick
         },
         slots.default?.()

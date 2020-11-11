@@ -3,12 +3,13 @@
     <h2>基础用法</h2>
     <nut-cell>
       <nut-icon name="dongdong"></nut-icon>
-      <nut-icon name="dongdong"></nut-icon>
+      <nut-icon name="JD"></nut-icon>
     </nut-cell>
     <h2>图标颜色</h2>
     <nut-cell>
       <nut-icon name="dongdong" color="#fa2c19"></nut-icon>
       <nut-icon name="dongdong" color="#64b578"></nut-icon>
+      <nut-icon name="JD" color="#fa2c19"></nut-icon>
     </nut-cell>
 
     <h2>图标大小</h2>
