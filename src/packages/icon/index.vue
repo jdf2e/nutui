@@ -1,5 +1,5 @@
 <script lang="ts">
-import { toRefs, h, PropType } from 'vue';
+import { h, PropType } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('icon');
 
