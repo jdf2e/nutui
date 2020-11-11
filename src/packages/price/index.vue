@@ -69,24 +69,24 @@ export default create({
         const priceArray = price.split('.');
         console.log('num1', priceArray);
         return (
-          '<span class="price-big">' +
+          '<view class="price-big">' +
           formatThousands(priceArray[0]) +
-          '</span><span class="price-point">.</span><span class="price-small">' +
+          '</view><view class="price-point">.</view><view class="price-small">' +
           formatDecimal(priceArray[1]) +
-          '</span>'
+          '</view>'
         );
       } else {
         return (
-          '<span class="price-big">' +
+          '<view class="price-big">' +
           formatThousands(price) +
-          '</span><span class="price-point">.</span><span class="price-small">' +
+          '</view><view class="price-point">.</view><view class="price-small">' +
           formatDecimal(0) +
-          '</span>'
+          '</view>'
         );
       }
     };
     const priceShow = computed(() => {
-      const symbol = needSymbol ? '<span class="price-symbol">￥</span>' : '';
+      const symbol = needSymbol ? '<view class="price-symbol">￥</view>' : '';
       return symbol + formatToHump(price.value);
     });
     const classes = computed(() => {
