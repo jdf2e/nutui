@@ -142,7 +142,6 @@ export default {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-
 | onOkBtn | 确定按钮回调 | Function | -
 | onCancelBtn | 取消按钮回调 | Function | -
 | onCloseBtn | 关闭按钮回调 | Function | -
