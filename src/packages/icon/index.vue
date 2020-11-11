@@ -26,24 +26,27 @@ export default create({
       default: 'i'
     }
   },
-  components: {},
   emits: ['click'],
 
   setup(props, { emit, slots }) {
     const handleClick = (event: Event) => {
       emit('click', event);
     };
-
-    return () =>
-      h(
-        props.tag,
-        {
-          class: `${props.classPrefix} ${componentName}-${props.name}`,
-          style: { color: props.color, fontSize: props.size },
-          onClick: handleClick
-        },
-        slots.default?.()
-      );
+    const isImage = () => {
+      return props.name ? props.name.indexOf('/') !== -1 : false;
+    };
+    const styleOptions = {
+      class: `${props.classPrefix} ${componentName}-${props.name}`,
+      style: { color: props.color, fontSize: props.size },
+      onClick: handleClick
+    } as any;
+    if (isImage()) {
+      styleOptions.class = `${componentName}__img`;
+      styleOptions.src = props.name;
+      styleOptions.style['width'] = props.size;
+      styleOptions.style['height'] = props.size;
+    }
+    return () => h(isImage() ? 'img' : props.tag, styleOptions, slots.default?.());
   }
 });
 </script>

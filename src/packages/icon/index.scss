@@ -4,4 +4,10 @@
   height: 20px;
   line-height: 20px;
   text-align: right;
+
+  &__img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
 }
