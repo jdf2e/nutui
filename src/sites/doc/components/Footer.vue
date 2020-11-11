@@ -1,5 +1,5 @@
 <template>
-  <div class="doc-footer" :class="`doc-footer-${theme}`">
+  <div class="doc-footer" :class="`doc-footer-${data.theme}`">
     <div class="doc-footer-content">
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">相关资源</h4>
@@ -21,14 +21,17 @@
         <div class="doc-footer-item">JDW智能构建平台</div>
         <div class="doc-footer-item">JDW智能构建平台</div>
       </div>
-      <div class="doc-footer-list">
+      <div class="doc-footer-list" @click.stop="data.isShowSelect = !data.isShowSelect">
         <div class="doc-footer-select-hd"><i class=""></i>主题换肤</div>
-        <div class="doc-footer-select-bd">
-          <div class="doc-footer-select-item">
-            热情红
-          </div>
-          <div class="doc-footer-select-item">
-            暗黑风
+        <div class="doc-footer-select-bd" v-show="data.isShowSelect">
+          <div
+            class="doc-footer-select-item"
+            v-for="(item, index) in data.themeList"
+            :key="index"
+            @click.stop="checkTheme(index)"
+            :class="{ active: data.activeIndex === index }"
+          >
+            {{ item.name }}
           </div>
         </div>
       </div>
@@ -43,9 +46,43 @@ export default defineComponent({
   setup() {
     const data = reactive({
       theme: 'black',
-      activeIndex: 0
+      themeList: [
+        {
+          name: '热情红'
+        },
+        {
+          name: '暗黑风'
+        },
+        {
+          name: '纯净白'
+        }
+      ],
+      activeIndex: 0,
+      isShowSelect: false
     });
-    return data;
+    const clickOut = () => {
+      //点击组件以外的地方，收起
+      document.addEventListener(
+        'click',
+        e => {
+          console.log('e.target', e.target);
+          // if (!this.$el.contains(e.target)){
+          //   data.isShowSelect = false;
+          // }
+        },
+        false
+      );
+    };
+    const checkTheme = (index: number) => {
+      data.isShowSelect = false;
+      data.activeIndex = index;
+      console.log('data.isShowSelect', data.isShowSelect);
+    };
+    return {
+      data,
+      clickOut,
+      checkTheme
+    };
   }
 });
 </script>
@@ -139,10 +176,12 @@ export default defineComponent({
         //   border-top: none;
         // }
         &:hover {
-          color: $theme-black-footer-hover;
+          // color: $theme-black-footer-hover;
           // border-color: $theme-black-footer-hover;
         }
         &.active {
+          border-color: $theme-black-footer-hover;
+          background-color: $theme-black-footer-hover;
         }
       }
     }

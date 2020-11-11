@@ -10,11 +10,14 @@ $doc-default-primary-bg: linear-gradient(
 
 // clolr
 // 红色
-
+$theme-red: #fa2c19;
 $theme-red-word: #fff;
 $theme-red-border: #fff;
 $theme-red-input: #fff;
 $theme-red-actice: #fff;
+$theme-red-select-border: #f0f2f5;
+$theme-red-select-word: #666;
+$theme-red-select-bg: #fff;
 $theme-red-header-bg: url('../../assets/images/header-bg.png') no-repeat;
 $theme-red-footer-word1: #1a1a1a;
 $theme-red-footer-word2: #666;
@@ -29,6 +32,7 @@ $theme-white-border: #d8d8d8;
 $theme-white-actice: #fa2c19;
 $theme-white-select-border: #f0f2f5;
 $theme-white-select-word: #666;
+$theme-white-select-bg: #fff;
 $theme-white-box-border: #f5f5f5;
 $theme-white-footer-word1: #1a1a1a;
 $theme-white-footer-word2: #666;
@@ -42,7 +46,7 @@ $theme-black-input: #ccc;
 $theme-black-border: #d8d8d8;
 $theme-black-actice: #fff;
 $theme-black-select-bg: #797a7b;
-$theme-black-select-border: #797a7b;
+$theme-black-select-border: #636366;
 $theme-black-select-word: #fff;
 $theme-black-box-border: #6b5554;
 $theme-black-footer-word1: #fff;

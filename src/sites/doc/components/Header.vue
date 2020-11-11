@@ -1,8 +1,8 @@
 <template>
-  <div class="doc-header" :style="{ background: themeColor === 'red' ? headerBg : themeColor }" :class="`doc-header-${theme}`">
+  <div class="doc-header" :style="{ background: themeColor === 'red' ? headerBg : themeColor }" :class="`doc-header-${data.theme}`">
     <div class="header-logo">
       <a class="logo-link" href="#">
-        <template v-if="theme === 'red'">
+        <template v-if="data.theme === 'red'">
           <img src="../../assets/images/logo-header-white.png" />
         </template>
         <template v-else>
@@ -22,10 +22,24 @@
           <li class="nav-item">示例</li>
           <li class="nav-item">资源</li>
           <li class="nav-item">
-            <select class="nutui-select">
-              <option value="1.x">1.x</option>
-              <option value="2.x">2.x</option>
-            </select>
+            <div
+              class="header-select-box"
+              @click.stop="data.isShowSelect = !data.isShowSelect"
+              :class="[data.isShowSelect == true ? 'select-up' : 'select-down']"
+            >
+              <div class="header-select-hd">{{ data.verson }}<i class=""></i></div>
+              <div class="header-select-bd" v-show="data.isShowSelect">
+                <div
+                  class="header-select-item"
+                  v-for="(item, index) in data.versonList"
+                  :key="index"
+                  @click.stop="checkTheme(item, index)"
+                  :class="{ active: data.activeIndex === index }"
+                >
+                  {{ item.name }}
+                </div>
+              </div>
+            </div>
           </li>
           <li class="nav-item">
             <a class="user-link" href="#"> </a>
@@ -41,11 +55,33 @@ export default defineComponent({
   name: 'doc-header',
   setup() {
     const data = reactive({
-      theme: 'red',
-      themeColor: 'red',
-      headerBg: 'url(' + require('../../assets/images/header-bg.png') + ')'
+      theme: 'black',
+      themeColor: 'black',
+      headerBg: 'url(' + require('../../assets/images/header-bg.png') + ')',
+      versonList: [
+        {
+          name: '1.x'
+        },
+        {
+          name: '2.x'
+        },
+        {
+          name: '3.x'
+        }
+      ],
+      verson: '3.x',
+      activeIndex: 0,
+      isShowSelect: false
     });
-    return data;
+    const checkTheme = (item: any, index: number) => {
+      data.isShowSelect = false;
+      data.activeIndex = index;
+      data.verson = item.name;
+    };
+    return {
+      data,
+      checkTheme
+    };
   }
 });
 </script>
@@ -126,7 +162,7 @@ export default defineComponent({
         line-height: 63px;
         text-align: center;
         cursor: pointer;
-        overflow: hidden;
+        // overflow: hidden;
         &.nav-item-actie {
           font-weight: bold;
           &:after {
@@ -144,19 +180,6 @@ export default defineComponent({
         &:last-of-type {
           margin-right: 0;
         }
-        .nutui-select {
-          min-width: 77px;
-          height: 28px;
-          padding: 0 15px;
-          font-size: 14px;
-          color: $theme-red-word;
-          background: url('../../assets/images/icon-select-white-down.png') no-repeat;
-          background-position: right 15px top 12px;
-          background-size: 8px 5px;
-          border-radius: 14px;
-          outline: none;
-          appearance: none;
-        }
       }
       .user-link {
         display: inline-block;
@@ -166,6 +189,44 @@ export default defineComponent({
         background: url('../../assets/images/icon-user.png') no-repeat;
         background-size: 100%;
       }
+    }
+  }
+}
+.header-select {
+  &-box {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  &-hd {
+    min-width: 77px;
+    height: 28px;
+    padding: 0 30px 0 15px;
+    line-height: 26px;
+    font-size: 14px;
+    color: $theme-red-word;
+    background-position: right 15px top 12px;
+    background-size: 8px 5px;
+    background-repeat: no-repeat;
+    border-radius: 14px;
+  }
+  &-bd {
+    position: absolute;
+    top: 30px;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  &-item {
+    width: 77px;
+    height: 28px;
+    padding: 0 12px;
+    line-height: 26px;
+    font-size: 14px;
+    border-width: 0px 1px 1px;
+    border-style: solid;
+    cursor: pointer;
+    &:first-of-type {
+      border-top-width: 1px;
     }
   }
 }
@@ -208,6 +269,34 @@ export default defineComponent({
           .user-link {
             background-position: 0 0;
           }
+        }
+      }
+    }
+    .header-select {
+      &-box {
+        &.select-down {
+          .header-select-hd {
+            background-image: url('../../assets/images/icon-select-white-down.png');
+          }
+        }
+        &.select-up {
+          .header-select-hd {
+            background-image: url('../../assets/images/icon-select-white-up.png');
+          }
+        }
+      }
+      &-hd {
+        color: $theme-red-word;
+        border: 1px solid $theme-white-select-border;
+      }
+      &-bd {
+        color: $theme-white-select-word;
+      }
+      &-item {
+        border-color: $theme-red-select-border;
+        background-color: $theme-red-select-bg;
+        &:hover {
+          color: $theme-red;
         }
       }
     }
@@ -255,6 +344,34 @@ export default defineComponent({
         }
       }
     }
+    .header-select {
+      &-box {
+        &.select-down {
+          .header-select-hd {
+            background-image: url('../../assets/images/icon-select-gray-down.png');
+          }
+        }
+        &.select-up {
+          .header-select-hd {
+            background-image: url('../../assets/images/icon-select-gray-up.png');
+          }
+        }
+      }
+      &-hd {
+        color: $theme-white-select-word;
+        border: 1px solid $theme-white-select-border;
+      }
+      &-bd {
+        color: $theme-white-select-word;
+      }
+      &-item {
+        border-color: $theme-white-select-border;
+        background-color: $theme-white-select-bg;
+        &:hover {
+          color: $theme-white-actice;
+        }
+      }
+    }
   }
   // 黑色
   &-black {
@@ -295,6 +412,35 @@ export default defineComponent({
           .user-link {
             background-position: 0 -52px;
           }
+        }
+      }
+    }
+    .header-select {
+      &-box {
+        &.select-down {
+          .header-select-hd {
+            background-image: url('../../assets/images/icon-select-white-down.png');
+          }
+        }
+        &.select-up {
+          .header-select-hd {
+            background-image: url('../../assets/images/icon-select-white-up.png');
+          }
+        }
+      }
+      &-hd {
+        color: $theme-black-select-word;
+        background-color: $theme-black-select-bg;
+        border: 1px solid $theme-black-select-bg;
+      }
+      &-bd {
+        color: $theme-black-select-word;
+      }
+      &-item {
+        border-color: $theme-black-select-border;
+        background-color: $theme-black-select-bg;
+        &:hover {
+          color: $theme-black-actice;
         }
       }
     }
