@@ -4,7 +4,7 @@ node_modules
 /libs
 /jd/upload.js
 yarn.lock
-package.lock
+package-lock.json
 
 
 # local env files
