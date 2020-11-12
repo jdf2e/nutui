@@ -1,0 +1,20 @@
+.nut-uploader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: $uploader-babackground;
+  width: $uploader-width;
+  height: $uploader-height;
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+  }
+}
