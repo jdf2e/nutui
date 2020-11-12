@@ -6,6 +6,34 @@
   "description": "nutui 3.0字体管理",
   "glyphs": [
     {
+      "icon_id": "18193891",
+      "name": "github",
+      "font_class": "github",
+      "unicode": "e69c",
+      "unicode_decimal": 59036
+    },
+    {
+      "icon_id": "18193367",
+      "name": "uplode",
+      "font_class": "uplode",
+      "unicode": "e69b",
+      "unicode_decimal": 59035
+    },
+    {
+      "icon_id": "18193248",
+      "name": "mask-close",
+      "font_class": "mask-close",
+      "unicode": "e69a",
+      "unicode_decimal": 59034
+    },
+    {
+      "icon_id": "18193089",
+      "name": "circle-close",
+      "font_class": "circle-close",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
       "icon_id": "18117145",
       "name": "right",
       "font_class": "right",
