@@ -14,12 +14,25 @@
 ### 基础用法
 
 :::demo
-``` javascript
-import { createApp } from 'vue';
-import { Button } from '@nutui/nutui';
-
-const app = createApp();
-app.use(Button);
+``` html
+<template>
+  <div @click="clickMe">点击我</div>
+</template>
+<script>
+  export default{
+    setup(){
+      onMounted(){
+        console.log(aa);
+      }
+      function clickMe(){
+        console.log('nihao');
+      }
+      return {
+        clickMe
+      }
+    }
+  }
+</script>
 ```
 :::
 
@@ -52,3 +65,24 @@ app.use(Button);
 |--|--|--|
 |1|小花|等哈阿贾克斯|
 |2|小浪|阿师大丹江口市|
+
+```html
+<template>
+  <div @click="clickMe">点击我</div>
+</template>
+<script>
+  export default{
+    setup(){
+      onMounted(){
+        console.log(aa);
+      }
+      function clickMe(){
+        console.log('nihao');
+      }
+      return {
+        clickMe
+      }
+    }
+  }
+</script>
+```

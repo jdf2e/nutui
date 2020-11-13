@@ -2,9 +2,10 @@
 
 .doc-content-document {
   position: relative;
-  width: 800px;
   background: #fff;
   padding-left: 58px;
+  padding-left: 58px;
+  padding-right: 400px;
   .card {
     margin-bottom: 24px;
     padding: 24px;
@@ -214,9 +215,9 @@
   }
 
   img {
-    width: 100%;
-    margin: 16px 0;
-    border-radius: $nutui-doc-border-radius;
+    // width: 100%;
+    // margin: 16px 0;
+    // border-radius: $nutui-doc-border-radius;
   }
 
   &--changelog,

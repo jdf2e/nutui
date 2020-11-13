@@ -18,11 +18,11 @@ files.keys().forEach(component => {
   });
 });
 
-// routes.push({
-//   name: 'NotFound',
-//   path: '/:path(.*)+',
-//   redirect: () => '/',
-// });
+routes.push({
+  name: 'NotFound',
+  path: '/:path(.*)+',
+  redirect: () => '/'
+});
 
 const router = createRouter({
   history: createWebHashHistory(),

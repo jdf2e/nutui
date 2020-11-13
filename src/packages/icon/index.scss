@@ -1,7 +1,13 @@
 @import '../../styles/font/iconfont.css';
 .nut-icon {
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
+  width: $icon-width;
+  height: $icon-height;
+  line-height: $icon-line-height;
   text-align: right;
+
+  &__img {
+    width: $icon-width;
+    height: $icon-height;
+    object-fit: contain;
+  }
 }

@@ -1,7 +1,8 @@
 <template>
   <view :class="classes" @click="handleClick">
     <slot>
-      <view class="nut-cell__title">
+      <view class="nut-cell__title" :class="{ icon: icon }" v-if="title || subTitle || icon">
+        <nut-icon v-if="icon" class="icon" :name="icon"></nut-icon>
         <template v-if="subTitle">
           <view class="title">{{ title }}</view>
           <view class="nut-cell__title-desc">{{ subTitle }}</view>
@@ -10,14 +11,14 @@
           {{ title }}
         </template>
       </view>
-      <view v-if="desc" class="nut-cell__value">{{ desc }}</view>
-      <nut-icon v-if="isLink || to" name="right"></nut-icon>
+      <view v-if="desc" class="nut-cell__value" :style="{ 'text-align': descTextAlign }">{{ desc }}</view>
+      <nut-icon v-if="isLink || to" size="14px" color="#979797" name="right"></nut-icon>
     </slot>
   </view>
 </template>
 
 <script lang="ts">
-import { toRefs, computed } from 'vue';
+import { computed } from 'vue';
 import { createComponent } from '@/utils/create';
 import { useRouter } from 'vue-router';
 import Icon from '@/packages/icon/index.vue';
@@ -28,44 +29,38 @@ export default create({
     title: { type: String, default: '' },
     subTitle: { type: String, default: '' },
     desc: { type: String, default: '' },
+    descTextAlign: { type: String, default: 'right' },
     isLink: { type: Boolean, default: false },
     to: { type: String, default: '' },
     replace: { type: Boolean, default: false },
-    url: { type: String, default: '' }
+    url: { type: String, default: '' },
+    icon: { type: String, default: '' }
   },
   components: {
     [Icon.name]: Icon
   },
   emits: ['click'],
   setup(props, { emit }) {
-    const { title, to, desc, subTitle, isLink, url, replace } = toRefs(props);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [`${prefixCls}--clickable`]: isLink.value || to
+        [`${prefixCls}--clickable`]: props.isLink || props.to
       };
     });
-
     const router = useRouter();
-
     const handleClick = (event: Event) => {
       emit('click', event);
-      if (to.value && router) {
-        router[replace.value ? 'replace' : 'push'](to.value);
-      } else if (url.value) {
-        replace.value ? location.replace(url.value) : (location.href = url.value);
+      if (props.to && router) {
+        router[props.replace ? 'replace' : 'push'](props.to);
+      } else if (props.url) {
+        props.replace ? location.replace(props.url) : (location.href = props.url);
       }
     };
 
     return {
       handleClick,
-      title,
-      to,
-      subTitle,
-      desc,
-      classes,
-      isLink
+      classes
     };
   }
 });

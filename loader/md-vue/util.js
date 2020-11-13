@@ -1,17 +1,20 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { compileTemplate, TemplateCompiler } = require('@vue/compiler-sfc');
 
+//获取script标签中的内容
 function stripScript(content) {
   const result = content.match(/<(script)>([\s\S]+)<\/\1>/);
   return result && result[2] ? result[2].trim() : '';
 }
 
+//获取style标签中的代码
 function stripStyle(content) {
   const result = content.match(/<(style)\s*>([\s\S]+)<\/\1>/);
   return result && result[2] ? result[2].trim() : '';
 }
 
 // 编写例子时不一定有 template。所以采取的方案是剔除其他的内容
+//获取template标签中的内容
 function stripTemplate(content) {
   content = content.trim();
   if (!content) {
@@ -57,6 +60,7 @@ function genInlineComponentText(template, script) {
     ${compiled.code.replace('return function render', 'function render')}
   `;
   // todo: 这里采用了硬编码有待改进
+  // 这部分是把字符串里面的export default 替换为const democomponentExport =便于后面的解构赋值
   script = script.trim();
   if (script) {
     script = script.replace(/export\s+default/, 'const democomponentExport =').replace(/import ({.*}) from 'vue'/g, (s, s1) => `const ${s1} = Vue`);

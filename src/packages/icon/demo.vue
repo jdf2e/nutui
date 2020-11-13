@@ -2,20 +2,28 @@
   <div class="demo">
     <h2>基础用法</h2>
     <nut-cell>
-      <nut-icon name="wifi"></nut-icon>
-      <nut-icon name="mail"></nut-icon>
+      <nut-icon name="dongdong"></nut-icon>
+      <nut-icon name="JD"></nut-icon>
+    </nut-cell>
+    <h2>图片链接</h2>
+    <nut-cell>
+      <nut-icon
+        size="40px"
+        name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+      ></nut-icon>
     </nut-cell>
     <h2>图标颜色</h2>
     <nut-cell>
-      <nut-icon name="mail" color="#fa2c19"></nut-icon>
-      <nut-icon name="mail" color="#64b578"></nut-icon>
+      <nut-icon name="dongdong" color="#fa2c19"></nut-icon>
+      <nut-icon name="dongdong" color="#64b578"></nut-icon>
+      <nut-icon name="JD" color="#fa2c19"></nut-icon>
     </nut-cell>
 
     <h2>图标大小</h2>
     <nut-cell>
-      <nut-icon name="mail"></nut-icon>
-      <nut-icon name="mail" size="24px"></nut-icon>
-      <nut-icon name="mail" size="16px"></nut-icon>
+      <nut-icon name="dongdong"></nut-icon>
+      <nut-icon name="dongdong" size="24px"></nut-icon>
+      <nut-icon name="dongdong" size="16px"></nut-icon>
     </nut-cell>
 
     <h2>基础图标</h2>

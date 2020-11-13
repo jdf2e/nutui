@@ -12,7 +12,8 @@
         <li>{{ _nav.name }}</li>
         <ul>
           <li v-for="_package in _nav.packages" :key="_package">
-            <router-link :to="_package.name.toLowerCase()">{{ _package.name }}&nbsp;&nbsp;{{ _package.cName }} </router-link>
+            <router-link :to="_package.name.toLowerCase()">{{ _package.name }}&nbsp;&nbsp;{{ _package.cName }}</router-link>
+            <nut-icon size="14px" color="#979797" name="right"></nut-icon>
           </li>
         </ul>
       </ol>
@@ -83,6 +84,7 @@ export default defineComponent({
       }
       > ul {
         li {
+          display: flex;
           padding: 0 24px;
           width: 100%;
           height: 45px;

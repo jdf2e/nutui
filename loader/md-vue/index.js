@@ -3,8 +3,7 @@ const { stripScript, stripTemplate, genInlineComponentText } = require('./util')
 const md = require('./config');
 
 module.exports = function(source) {
-  const content = md.render(source);
-
+  const content = md.render(source); //得到来自.md的解析出来的数据
   const startTag = '<!--nutui-demo:';
   const startTagLen = startTag.length;
   const endTag = ':nutui-demo-->';
@@ -21,14 +20,17 @@ module.exports = function(source) {
     output.push(content.slice(start, commentStart));
 
     const commentContent = content.slice(commentStart + startTagLen, commentEnd);
-    const html = stripTemplate(commentContent);
-    const script = stripScript(commentContent);
+
+    const html = stripTemplate(commentContent); //传入的是demo的代码部分，获取demo中的的html
+    const script = stripScript(commentContent); //传入的是demo的代码部分，获取demo中的的script
     let demoComponentContent = genInlineComponentText(html, script);
     const demoComponentName = `nutui-demo${id}`;
+    //output是一个数组，最终会拼接放入输出vue文件的template里面，也就是这一页的HTML
     output.push(`<template #source><${demoComponentName} /></template>`);
     componenetsString += `${JSON.stringify(demoComponentName)}: ${demoComponentContent},`;
 
     // 重新计算下一次的位置
+    // demoComponentName 与id,命名每个demo组件名字用的，id会在while每一次循环+1，这样子组件从第一个到最后一个都不会重名。
     id++;
     start = commentEnd + endTagLen;
     commentStart = content.indexOf(startTag, start);

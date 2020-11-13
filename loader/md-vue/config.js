@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const Config = require('markdown-it-chain');
-const anchorPlugin = require('markdown-it-anchor');
+/*markdown-it的配置文件*/
+const Config = require('markdown-it-chain'); //链式配置
+const anchorPlugin = require('markdown-it-anchor'); //给页眉添加锚点
 const slugify = require('transliteration').slugify;
 const hljs = require('highlight.js');
 const containers = require('./containers');

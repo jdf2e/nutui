@@ -1,5 +1,6 @@
 <template>
   <div>
+    <slot name="highlight"></slot>
     <slot></slot>
     <p class="online-part">
       <a href="//gitpod.io/#https://github.com/jdf2e/nutui.git" target="_blank" class="online-btn">在线运行</a>
@@ -8,7 +9,7 @@
 </template>
 <script>
 export default {
-  setup(props, ctx) {
+  setup() {
     function onlineFun() {
       alert('hello');
     }
