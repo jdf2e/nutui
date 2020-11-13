@@ -35,7 +35,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "upload": "vue-cli-service build && node ./jd/upload.js"
+    "upload": "vue-cli-service build && node ./jd/upload.js",
+    "add":"node jd/createComponentMode.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
