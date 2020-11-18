@@ -107,7 +107,17 @@ export const nav = [
   },
   {
     name: '导航组件',
-    packages: []
+    packages: [
+      {
+        name: 'tab',
+        sort: 1,
+        cName: '标签组件',
+        type: 'component',
+        show: true,
+        desc: '标签组件',
+        author: 'zhenyulei'
+      }
+    ]
   },
   {
     name: '业务组件',

@@ -36,12 +36,14 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "upload": "vue-cli-service build && node ./jd/upload.js",
-    "add":"node jd/createComponentMode.js"
+    "add": "node jd/createComponentMode.js"
   },
   "dependencies": {
+    "@types/swiper": "^5.4.1",
     "core-js": "^3.6.5",
     "sass": "^1.27.0",
     "sass-loader": "^10.0.4",
+    "swiper": "^6.3.5",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-rc.1"
   },
