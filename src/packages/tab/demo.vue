@@ -10,7 +10,7 @@
 
     <h2>defaultIndex设置默认显示tab</h2>
     <h2>switchTab监听切换tab返回事件</h2>
-    <nut-tab :default-index="1" @switchTab="switchTab">
+    <nut-tab :default-index="1" @switch-tab="switchTab">
       <nut-tab-panel tab-title="全部"><p class="content">这里是页签全部内容</p></nut-tab-panel>
       <nut-tab-panel tab-title="待付款"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
       <nut-tab-panel tab-title="待收获"><p class="content">这里是页签待收获内容</p></nut-tab-panel>
@@ -18,7 +18,15 @@
     </nut-tab>
 
     <h2> animatedTime 开启切换标签内容时的转场动画时间</h2>
-    <nut-tab :animatedTime="500">
+    <nut-tab :animated-time="500">
+      <nut-tab-panel tab-title="全部"><p class="content">这里是页签全部内容</p></nut-tab-panel>
+      <nut-tab-panel tab-title="待付款"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
+      <nut-tab-panel tab-title="待收获"><p class="content">这里是页签待收获内容</p></nut-tab-panel>
+      <nut-tab-panel tab-title="已完成"><p class="content">这里是页签已完成内容</p></nut-tab-panel>
+    </nut-tab>
+
+    <h2> 禁止tab内容滑动</h2>
+    <nut-tab :no-swiping="true">
       <nut-tab-panel tab-title="全部"><p class="content">这里是页签全部内容</p></nut-tab-panel>
       <nut-tab-panel tab-title="待付款"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
       <nut-tab-panel tab-title="待收获"><p class="content">这里是页签待收获内容</p></nut-tab-panel>
@@ -26,7 +34,7 @@
     </nut-tab>
 
     <h2>标签数量超过 5 个时，标签栏可以在水平方向上滚动，切换时会自动将当前标签居中。</h2>
-    <nut-tab :animatedTime="500">
+    <nut-tab :animated-time="500">
       <nut-tab-panel tab-title="全部"><p class="content">这里是页签全部内容</p></nut-tab-panel>
       <nut-tab-panel tab-title="待付款"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
       <nut-tab-panel tab-title="待收获"><p class="content">这里是页签待收获内容</p></nut-tab-panel>
@@ -49,7 +57,7 @@
     </nut-tab>
 
     <h2>左右tab布局</h2>
-    <nut-tab direction="vertical" :animatedTime="500" :defaultIndex="2">
+    <nut-tab direction="vertical" :animated-time="500" :default-index="2">
       <nut-tab-panel tab-title="页签一"><p class="content">这里是页签一内容</p></nut-tab-panel>
       <nut-tab-panel tab-title="页签二"><p class="content">这里是页签二内容</p></nut-tab-panel>
       <nut-tab-panel tab-title="页签三"><p class="content">这里是页签三内容</p></nut-tab-panel>
@@ -60,7 +68,7 @@
     </nut-tab>
 
     <h2>异步操作</h2>
-    <nut-tab :animatedTime="500" v-if="editList.length > 0">
+    <nut-tab :animated-time="500" v-if="editList.length > 0">
       <nut-tab-panel :tab-title="item.title" v-for="(item, index) in editList" :key="index">
         <p class="content">这里是页签{{ index }}内容</p>
       </nut-tab-panel>

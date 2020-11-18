@@ -13,14 +13,14 @@
       <div class="underline"></div>
     </div>
     <div :class="['nutui-tab-swiper', swiperClassName]">
-      <div class="swiper-wrapper">
+      <div :class="['swiper-wrapper', { 'swiper-no-swiping': noSwiping }]">
         <slot></slot>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
-//ts-nochecked
+// @ts-nocheck
 import { PropType, h, toRefs, reactive, computed, ref, onMounted, nextTick, watch, watchEffect } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('tab');
@@ -42,6 +42,10 @@ export default create({
     direction: {
       type: String as PropType<TabDirection>,
       default: 'horizontal'
+    },
+    noSwiping: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
@@ -82,9 +86,10 @@ export default create({
       centerTitle(index);
       mySwiper.slideToLoop(index, props.animatedTime, false);
     }
-    function initSwiper(currIndex) {
+    function initSwiper(currIndex: number) {
       mySwiper = new Swiper('.' + swiperClassName.value, {
         loop: true /** 循环模式选项 */,
+        noSwiping: true,
         observer: true, //修改swiper自己或子元素时，自动初始化swiper
         observeParents: true, //修改swiper的父元素时，自动初始化swiper
         setWrapperSize: true,

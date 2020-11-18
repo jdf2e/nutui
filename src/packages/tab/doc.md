@@ -51,6 +51,18 @@ export default createDemo({
 </nut-tab>
 ```
 
+
+## 禁止tab内容滑动
+
+```html
+<nut-tab :no-swiping="true">
+  <nut-tab-panel tab-title="全部"><p class="content">这里是页签全部内容</p></nut-tab-panel>
+  <nut-tab-panel tab-title="待付款"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
+  <nut-tab-panel tab-title="待收获"><p class="content">这里是页签待收获内容</p></nut-tab-panel>
+  <nut-tab-panel tab-title="已完成"><p class="content">这里是页签已完成内容</p></nut-tab-panel>
+</nut-tab>
+```
+
 ## 标签数量超过 5 个时，标签栏可以在水平方向上滚动
 切换时会自动将当前标签居中。
 
@@ -141,7 +153,7 @@ export default createDemo({
 | direction | 页签栏的分布，可选值 horizontal/vertical | String | horizontal
 | default-index | 默认选中的页签栏 | Number | 0
 | animated-time | 开启切换标签内容时的转场动画时间 | Number | 0
-
+| no-swiping |禁止tab内容滑动|Boolean|false
 
 
 ### nut-tab-panel
