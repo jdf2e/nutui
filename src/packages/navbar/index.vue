@@ -6,7 +6,6 @@
         <nut-icon v-if="leftShow" color="#979797" name="left"></nut-icon>
       </view>
 
-      <!-- 中间  title/icon/多个title-->
       <view class="nut-navbar__title" :class="{ icon: icon }" v-if="title || titIcon">
         <view v-if="title">{{ title }}</view>
         <nut-icon v-if="titIcon" class="icon" :name="titIcon"></nut-icon>
