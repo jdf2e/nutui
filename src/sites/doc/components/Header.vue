@@ -261,10 +261,6 @@ export default defineComponent({
                 background-position: 0 0;
               }
             }
-            .nutui-select {
-              color: $theme-red-word;
-              border: 1px solid $theme-red-border;
-            }
           }
           .user-link {
             background-position: 0 0;
@@ -330,12 +326,6 @@ export default defineComponent({
               &:after {
                 background-position: 0 -13px;
               }
-            }
-            .nutui-select {
-              background-image: url('../../assets/images/icon-select-gray-down.png');
-              background-position: right 15px top 12px;
-              color: $theme-white-select-word;
-              border: 1px solid $theme-white-select-border;
             }
           }
           .user-link {
@@ -403,11 +393,6 @@ export default defineComponent({
                 background-position: 0 -13px;
               }
             }
-            .nutui-select {
-              color: $theme-black-select-word;
-              background-color: $theme-black-select-bg;
-              border: 1px solid $theme-black-select-border;
-            }
           }
           .user-link {
             background-position: 0 -52px;
@@ -431,16 +416,17 @@ export default defineComponent({
       &-hd {
         color: $theme-black-select-word;
         background-color: $theme-black-select-bg;
-        border: 1px solid $theme-black-select-bg;
+        border: 1px solid $theme-black-select-border;
       }
       &-bd {
         color: $theme-black-select-word;
       }
       &-item {
-        border-color: $theme-black-select-border;
         background-color: $theme-black-select-bg;
+        border-color: $theme-black-select-bg;
         &:hover {
-          color: $theme-black-actice;
+          background-color: $theme-black-select-hover;
+          border-color: $theme-black-select-hover;
         }
       }
     }
