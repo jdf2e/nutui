@@ -19,9 +19,7 @@
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('price');
 export default createDemo({
-  props: {
-    text: String
-  }
+  props: {}
 });
 </script>
 
