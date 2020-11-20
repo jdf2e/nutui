@@ -53,7 +53,17 @@ export const nav = [
   },
   {
     name: '操作反馈',
-    packages: []
+    packages: [
+      {
+        name: 'BackTop',
+        sort: '1',
+        cName: '回到顶部',
+        type: 'component',
+        show: true,
+        desc: '较长页面快捷回到顶部',
+        author: 'liqiong43'
+      }
+    ]
   },
   {
     name: '基础组件',
