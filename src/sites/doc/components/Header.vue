@@ -19,7 +19,7 @@
         <ul class="nav-list">
           <li class="nav-item nav-item-actie">指南</li>
           <li class="nav-item">组件</li>
-          <li class="nav-item">示例</li>
+          <li class="nav-item"><a href="http://localhost:8080/demo.html#/" style="color:#fff">示例</a></li>
           <li class="nav-item">资源</li>
           <li class="nav-item">
             <div
