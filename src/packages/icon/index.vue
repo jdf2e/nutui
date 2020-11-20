@@ -5,26 +5,11 @@ const { componentName, create } = createComponent('icon');
 
 export default create({
   props: {
-    name: {
-      type: String,
-      default: ''
-    },
-    size: {
-      type: String,
-      default: ''
-    },
-    classPrefix: {
-      type: String,
-      default: 'nutui-iconfont'
-    },
-    color: {
-      type: String,
-      default: ''
-    },
-    tag: {
-      type: String as PropType<keyof HTMLElementTagNameMap>,
-      default: 'i'
-    }
+    name: { type: String, default: '' },
+    size: { type: String, default: '' },
+    classPrefix: { type: String, default: 'nutui-iconfont' },
+    color: { type: String, default: '' },
+    tag: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'i' }
   },
   emits: ['click'],
 
@@ -37,9 +22,10 @@ export default create({
     };
     const styleOptions = {
       class: `${props.classPrefix} ${componentName}-${props.name}`,
-      style: { color: props.color, fontSize: props.size },
-      onClick: handleClick
-    } as any;
+      style: { color: props.color, fontSize: props.size, width: '', height: '' },
+      onClick: handleClick,
+      src: ''
+    };
     if (isImage()) {
       styleOptions.class = `${componentName}__img`;
       styleOptions.src = props.name;
