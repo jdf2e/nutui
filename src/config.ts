@@ -102,6 +102,24 @@ export const nav = [
         show: true,
         desc: '价格组件',
         author: 'ailululu'
+      },
+      {
+        name: 'collapse',
+        sort: 5,
+        cName: '折叠面板',
+        type: 'component',
+        show: true,
+        desc: '折叠面板',
+        author: 'Ymm0008'
+      },
+      {
+        name: 'collapse',
+        sort: 6,
+        cName: '折叠面板-item',
+        type: 'component',
+        show: false,
+        desc: '折叠面板-item',
+        author: 'Ymm0008'
       }
     ]
   },
