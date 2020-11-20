@@ -25,7 +25,9 @@ $theme-red-footer-word3: #1d1d21;
 $theme-red-footer-word4: #808080;
 $theme-red-footer-bg: #fff;
 $theme-red-footer-border: #eaf0fb;
+$theme-red-gradient: linear-gradient(135deg, rgba(250, 44, 25, 1) 0%, rgba(250, 63, 25, 1) 45%, rgba(250, 89, 25, 1) 83%, rgba(250, 100, 25, 1) 100%);
 // 白色
+$theme-white: #fff;
 $theme-white-word: #1a1a1a;
 $theme-white-input: #ccc;
 $theme-white-border: #d8d8d8;
@@ -38,15 +40,21 @@ $theme-white-footer-word1: #1a1a1a;
 $theme-white-footer-word2: #666;
 $theme-white-footer-word3: #1d1d21;
 $theme-white-footer-word4: #808080;
+$theme-white-footer-hover: #fa2c19;
 $theme-white-footer-bg: #fff;
 $theme-white-footer-border: #eaf0fb;
+$theme-white-theme-border: #f5f6f7;
+$theme-white-circle: #fff;
+$theme-white-circle-border: #e5e5e5;
+
 // 黑色
 $theme-black-word: #ccc;
 $theme-black-input: #ccc;
 $theme-black-border: #d8d8d8;
 $theme-black-actice: #fff;
-$theme-black-select-bg: #797a7b;
-$theme-black-select-border: #636366;
+$theme-black-select-bg: #1d1d1d;
+$theme-black-select-border: #c1c1c3;
+$theme-black-select-hover: #797a7b;
 $theme-black-select-word: #fff;
 $theme-black-box-border: #6b5554;
 $theme-black-footer-word1: #fff;
@@ -56,6 +64,8 @@ $theme-black-footer-word4: #808080;
 $theme-black-footer-hover: #fa2c19;
 $theme-black-footer-bg: #1d1d21;
 $theme-black-footer-border: transparent;
+$theme-black-theme-border: #666;
+$theme-black-circle: #1a1a1a;
 // header
 $doc-default-header-color: $white;
 $doc-header-height: 64px;
