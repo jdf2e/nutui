@@ -48,6 +48,24 @@ export const nav = [
         show: true,
         desc: '按钮用于触发一个操作，如提交表单。',
         author: 'richard1015'
+      },
+      {
+        name: 'collapse',
+        sort: 2,
+        cName: '折叠面板',
+        type: 'component',
+        show: true,
+        desc: '折叠面板',
+        author: 'Ymm0008'
+      },
+      {
+        name: 'collapse',
+        sort: 3,
+        cName: '折叠面板-item',
+        type: 'component',
+        show: false,
+        desc: '折叠面板-item',
+        author: 'Ymm0008'
       }
     ]
   },
@@ -114,21 +132,12 @@ export const nav = [
         author: 'ailululu'
       },
       {
-        name: 'collapse',
+        name: 'Checkbox',
         sort: 5,
-        cName: '折叠面板',
+        cName: '复选按钮',
         type: 'component',
         show: true,
-        desc: '折叠面板',
-        author: 'Ymm0008'
-      },
-      {
-        name: 'collapse',
-        sort: 6,
-        cName: '折叠面板-item',
-        type: 'component',
-        show: false,
-        desc: '折叠面板-item',
+        desc: '复选按钮',
         author: 'Ymm0008'
       }
     ]
