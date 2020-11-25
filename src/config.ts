@@ -4,6 +4,29 @@ export const versions = [
   { name: '3.x', link: '/3x/' }
 ];
 
+export const header = [
+  {
+    name: 'guide',
+    cName: '指南',
+    path: '/'
+  },
+  {
+    name: '/',
+    cName: '组件',
+    path: '/'
+  },
+  {
+    name: 'example',
+    cName: '示例',
+    path: '/'
+  },
+  {
+    name: 'resource',
+    cName: '资源',
+    path: '/resource'
+  }
+];
+
 export const docs = {
   name: '指南',
   packages: [
