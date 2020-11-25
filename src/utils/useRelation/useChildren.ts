@@ -35,7 +35,6 @@ export function flattenVNodes(children: VNodeNormalizedChildren) {
   return result;
 }
 
-// sort children instances by vnodes order
 export function sortChildren(
   parent: ComponentInternalInstance,
   publicChildren: ComponentPublicInstance[],
