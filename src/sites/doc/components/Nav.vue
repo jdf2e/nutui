@@ -14,11 +14,13 @@
     <ol v-for="_nav in nav" :key="_nav">
       <li>{{ _nav.name }}</li>
       <ul>
-        <li :class="{ active: isActive(_package.name) }" v-for="_package in _nav.packages" :key="_package">
-          <router-link :to="_package.name.toLowerCase()">
-            {{ _package.name }}&nbsp;&nbsp;<b>{{ _package.cName }}</b>
-          </router-link>
-        </li>
+        <template :class="{ active: isActive(_package.name) }" v-for="_package in _nav.packages" :key="_package">
+          <li v-if="_package.show">
+            <router-link :to="_package.name.toLowerCase()">
+              {{ _package.name }}&nbsp;&nbsp;<b>{{ _package.cName }}</b>
+            </router-link>
+          </li>
+        </template>
       </ul>
     </ol>
   </div>
