@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Index from './views/Index.vue';
+import Resource from './views/Resource.vue';
 
 const pagesRouter: Array<RouteRecordRaw> = [];
 const files = require.context('@/packages', true, /doc\.md$/);
@@ -29,6 +30,11 @@ const routes: Array<RouteRecordRaw> = [
     name: '/',
     component: Index,
     children: pagesRouter
+  },
+  {
+    path: '/resource',
+    name: '/resource',
+    component: Resource
   }
 ];
 const router = createRouter({

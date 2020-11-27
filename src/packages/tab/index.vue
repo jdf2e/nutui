@@ -26,7 +26,8 @@ import { createComponent } from '@/utils/create';
 const { create } = createComponent('tab');
 import TabTitle from './tabTitle';
 import Swiper from 'swiper';
-import 'swiper/swiper-bundle.css';
+// import 'swiper/swiper-bundle.css';
+import 'swiper/dist/css/swiper.min.css';
 type TabDirection = 'horizontal' | 'vertical';
 
 export default create({
