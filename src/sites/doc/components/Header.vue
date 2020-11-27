@@ -17,10 +17,16 @@
       </div>
       <div class="nav-box">
         <ul class="nav-list">
-          <li class="nav-item nav-item-actie">指南</li>
-          <li class="nav-item">组件</li>
-          <li class="nav-item"><a href="http://localhost:8080/demo.html#/" style="color:#fff">示例</a></li>
-          <li class="nav-item">资源</li>
+          <li class="nav-item nav-item-actie">{{ header[0].cName }}</li>
+          <li class="nav-item">
+            <router-link :to="header[1].name">{{ header[1].cName }}</router-link>
+          </li>
+          <li class="nav-item"
+            ><a href="http://localhost:8080/demo.html#/" style="color:#fff">{{ header[2].cName }}</a></li
+          >
+          <li class="nav-item">
+            <router-link :to="header[3].name">{{ header[3].cName }}</router-link>
+          </li>
           <li class="nav-item">
             <div
               class="header-select-box"
@@ -42,7 +48,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="user-link" href="#"> </a>
+            <a class="user-link" href="#"></a>
           </li>
         </ul>
       </div>
@@ -51,6 +57,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
+import { header } from '@/config';
 export default defineComponent({
   name: 'doc-header',
   setup() {
@@ -79,6 +86,7 @@ export default defineComponent({
       data.verson = item.name;
     };
     return {
+      header,
       data,
       checkTheme
     };
@@ -255,10 +263,16 @@ export default defineComponent({
         .nav-box {
           .nav-item {
             color: $theme-red-word;
+            a {
+              color: $theme-red-word;
+            }
             &.nav-item-actie {
               color: $theme-red-actice;
               &:after {
                 background-position: 0 0;
+              }
+              a {
+                color: $theme-red-actice;
               }
             }
           }
@@ -321,10 +335,16 @@ export default defineComponent({
         .nav-box {
           .nav-item {
             color: $theme-white-word;
+            a {
+              color: $theme-white-word;
+            }
             &.nav-item-actie {
               color: $theme-white-actice;
               &:after {
                 background-position: 0 -13px;
+              }
+              a {
+                color: $theme-white-actice;
               }
             }
           }
@@ -387,10 +407,16 @@ export default defineComponent({
         .nav-box {
           .nav-item {
             color: $theme-black-word;
+            a {
+              color: $theme-black-word;
+            }
             &.nav-item-actie {
               color: $theme-black-actice;
               &:after {
                 background-position: 0 -13px;
+              }
+              a {
+                color: $theme-black-actice;
               }
             }
           }

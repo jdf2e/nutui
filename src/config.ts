@@ -162,6 +162,24 @@ export const nav = [
         show: true,
         desc: '复选按钮',
         author: 'Ymm0008'
+      },
+      {
+        name: 'Swiper',
+        sort: 6,
+        cName: '轮播',
+        type: 'component',
+        show: true,
+        desc: '轮播',
+        author: 'ailululu'
+      },
+      {
+        name: 'Avatar',
+        sort: 7,
+        cName: '头像',
+        type: 'component',
+        show: true,
+        desc: '头像',
+        author: 'ailululu'
       }
     ]
   },
