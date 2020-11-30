@@ -6,11 +6,11 @@
   "description": "nutui 3.0字体管理",
   "glyphs": [
     {
-      "icon_id": "18535616",
-      "name": "stepper_2_02",
+      "icon_id": "18536362",
+      "name": "plus",
       "font_class": "plus",
-      "unicode": "e6ac",
-      "unicode_decimal": 59052
+      "unicode": "e600",
+      "unicode_decimal": 58880
     },
     {
       "icon_id": "18535598",
