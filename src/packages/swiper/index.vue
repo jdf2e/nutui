@@ -16,7 +16,8 @@ import { createComponent } from '@/utils/create';
 const { create } = createComponent('swiper');
 // import 'swiper/dist/css/swiper.min.css';
 // import { reactive, onMounted } from 'vue';
-import { onMounted } from 'vue';
+import { onMounted, PropType } from 'vue';
+type PaginationType = 'bullets' | 'fraction' | 'progressbar' | 'custom';
 export default create({
   props: {
     variableClass: {
@@ -52,7 +53,7 @@ export default create({
       default: ''
     },
     paginationType: {
-      type: String,
+      type: String as PropType<PaginationType>,
       default: 'bullets'
     }
   },
@@ -77,8 +78,8 @@ export default create({
       // );
       new Swiper('.' + props.swipeid, {
         loop: props.loop,
-        slidesPerView: props.slidesPerView,
-        spaceBetween: props.spaceBetween,
+        slidesPerView: props.slidesPerView as number | 'auto',
+        spaceBetween: props.spaceBetween as number,
         //分页器
         pagination: {
           el: '.' + props.paginationClass,
