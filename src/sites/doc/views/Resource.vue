@@ -9,10 +9,7 @@
   <div class="resource-content">
     <div class="resource-block">
       <h4 class="sub-title">设计资源</h4>
-      <p class="sub-desc"
-        >这里提供 NUT UI 相关设计资源和设计工具的下载，更多设计资源正在整理和完善中。你可以在这个<span class="sub-red">地址</span>中反馈对新版本
-        Sketch Symbols 组件的意见。</p
-      >
+      <p class="sub-desc">这里提供 NUT UI 相关设计资源和设计工具的下载，更多设计资源正在整理和完善中。你可以在这个<span class="sub-red">地址</span>中反馈对新版本 Sketch Symbols 组件的意见。</p>
       <div class="no-data">
         <img class="nodata-img-joy" src="../../assets/images/img-joy.png" />
         <p class="nodata-desc">敬请期待</p>
@@ -20,58 +17,17 @@
     </div>
     <div class="resource-block">
       <h4 class="sub-title">设计资源</h4>
-      <p class="sub-desc"
-        >想要了解 Nut Ui 设计体系背后的故事？如何才能更好的应用 Ant Design？你可以查阅下述我们为你精挑细选的文章。也欢迎关注Nut Ui
-        官方专栏，这里常有关于Nut Ui 设计体系下相关话题内容的最新分享和讨论.</p
-      >
+      <p class="sub-desc">想要了解 Nut Ui 设计体系背后的故事？如何才能更好的应用 Ant Design？你可以查阅下述我们为你精挑细选的文章。也欢迎关注Nut Ui 官方专栏，这里常有关于Nut Ui 设计体系下相关话题内容的最新分享和讨论.</p>
       <div class="tab-box">
         <div class="tab-hd">
-          <div
-            class="tab-hd-item"
-            :class="{ active: data.activeIndex === index }"
-            v-for="(item, index) in data.tabData"
-            :key="index"
-            @click="clickTab(index)"
-          >
+          <div class="tab-hd-item" :class="{ active: data.activeIndex === index }" v-for="(item, index) in data.tabData" :key="index" @click="clickTab(index)">
             {{ item.title }}
           </div>
         </div>
         <div class="tab-bd" v-show="data.activeIndex === 0">
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title">NutUI 落地实践-让组件库服务慧采协同采购业务</p>
-          </div>
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title">Webpack那些你不知道的事</p>
-          </div>
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title">NutUI 落地实践-让组件库服务慧采协同采购业务Webpack那些你不知道那些你不知道那些你不知道</p>
-          </div>
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title">NutUI 落地实践-让组件库服务慧采协同采购业务</p>
-          </div>
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title">NutUI 落地实践-让组件库服务慧采协同采购业务</p>
-          </div>
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title">NutUI 落地实践-让组件库服务慧采协同采购业务</p>
-          </div>
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title">NutUI 落地实践-让组件库服务慧采协同采购业务</p>
-          </div>
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title">NutUI 落地实践-让组件库服务慧采协同采购业务</p>
-          </div>
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title">NutUI 落地实践-让组件库服务慧采协同采购业务</p>
+          <div class="design-item" v-for="item in data.articleList" :key="item.id">
+            <img class="img-design" :src="item.cover_image" />
+            <p class="design-title">{{ item.title }}</p>
           </div>
         </div>
         <div class="tab-bd" v-show="data.activeIndex === 1">
@@ -88,10 +44,7 @@
     </div>
     <div class="resource-block">
       <h4 class="sub-title">社区文章</h4>
-      <p class="sub-desc"
-        >想要了解 Nut Ui 设计体系背后的故事？如何才能更好的应用 Nut Ui？你可以查阅下述我们为你精挑细选的文章。也欢迎关注Nut Ui
-        官方专栏，这里常有关于Nut Ui 设计体系下相关话题内容的最新分享和讨论.</p
-      >
+      <p class="sub-desc">想要了解 Nut Ui 设计体系背后的故事？如何才能更好的应用 Nut Ui？你可以查阅下述我们为你精挑细选的文章。也欢迎关注Nut Ui 官方专栏，这里常有关于Nut Ui 设计体系下相关话题内容的最新分享和讨论.</p>
       <ul class="article-box">
         <li class="article-item">
           <a class="article-link">
@@ -109,9 +62,10 @@
   <doc-footer></doc-footer>
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, onMounted, reactive } from 'vue';
 import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
+import { ArticleApiService } from '@/sites/service/ArticleApiService';
 export default defineComponent({
   name: 'doc',
   components: {
@@ -119,26 +73,39 @@ export default defineComponent({
     [Footer.name]: Footer
   },
   setup() {
+    const articleList: any[] = [];
     const data = reactive({
+      articleList,
       tabData: [
         {
           title: '全部文章'
-        },
-        {
-          title: '性能体验'
-        },
-        {
-          title: '性能体验'
-        },
-        {
-          title: '性能体验'
-        },
-        {
-          title: '性能体验'
         }
+        // {
+        //   title: '性能体验'
+        // },
+        // {
+        //   title: '性能体验'
+        // },
+        // {
+        //   title: '性能体验'
+        // },
+        // {
+        //   title: '性能体验'
+        // }
       ],
       activeIndex: 0
     });
+    onMounted(() => {
+      console.log('mounted');
+      const articleApiService = new ArticleApiService();
+      articleApiService.getArticle().then(res => {
+        if (res?.state == 0) {
+          console.log(res.value);
+          data.articleList = res.value.list as any[];
+        }
+      });
+    });
+
     const clickTab = (index: number) => {
       console.log('22', index);
       data.activeIndex = index;
