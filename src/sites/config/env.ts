@@ -8,6 +8,7 @@ type EnvConfig = {
  * 配置编译环境和线上环境之间的切换
  *
  * baseUrl: 域名地址
+ * articleUrl: 文章地址
  */
 
 const config: EnvConfig = {
@@ -25,7 +26,6 @@ switch (process.env.NODE_ENV) {
      */
     config.isPrd = false;
     config.baseUrl = '/devServer';
-    // config.baseUrl = '/api' //需要代理时使用，并且放开webpack.dev中的proxy
     break;
   case 'production':
     /*

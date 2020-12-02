@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import config from '../config/env';
 
 export class HttpClient {
   private checkStatus(response: AxiosResponse<any>): ResponseData {
@@ -28,7 +29,7 @@ export class HttpClient {
     try {
       const options = {
         method,
-        url,
+        url: config.baseUrl + url,
         data: params,
         params: params,
         timeout: 1000 * 30,

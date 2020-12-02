@@ -1,5 +1,4 @@
 import { HttpClient } from './HttpClient';
-
 export class ArticleApiService {
   private httpClient: HttpClient;
 
@@ -12,6 +11,6 @@ export class ArticleApiService {
    * @memberof ArticleApiService
    */
   getArticle() {
-    return this.httpClient.request('/devServer/server/api/document/search?keyword=nutui&page=1&per_page=100&order=time&field=%22%22', 'get', {});
+    return this.httpClient.request('/article/list', 'get', {});
   }
 }
