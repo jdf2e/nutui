@@ -31,7 +31,7 @@
             <div class="header-select-box" @click.stop="data.isShowSelect = !data.isShowSelect" :class="[data.isShowSelect == true ? 'select-up' : 'select-down']">
               <div class="header-select-hd">{{ data.verson }}<i class=""></i></div>
               <div class="header-select-bd" v-show="data.isShowSelect">
-                <div class="header-select-item" v-for="(item, index) in data.versonList" :key="index" @click.stop="checkTheme(item, index)" :class="{ active: data.activeIndex === index }">
+                <div class="header-select-item" v-for="(item, index) in data.versonList" :key="index" @click.stop="checkTheme(item.name, index)" :class="{ active: data.activeIndex === index }">
                   {{ item.name }}
                 </div>
               </div>
@@ -70,10 +70,10 @@ export default defineComponent({
       activeIndex: 0,
       isShowSelect: false
     });
-    const checkTheme = (item: any, index: number) => {
+    const checkTheme = (verson: string, index: number) => {
       data.isShowSelect = false;
       data.activeIndex = index;
-      data.verson = item.name;
+      data.verson = verson;
     };
     return {
       header,
