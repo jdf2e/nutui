@@ -100,8 +100,7 @@ export default defineComponent({
       const articleApiService = new ArticleApiService();
       articleApiService.getArticle().then(res => {
         if (res?.state == 0) {
-          console.log(res.value);
-          data.articleList = res.value.list as any[];
+          data.articleList = res.value.data.arrays as any[];
         }
       });
     });
