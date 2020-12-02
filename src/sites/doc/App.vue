@@ -9,6 +9,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+::selection {
+  background: $doc-default-color;
+  color: #fff;
+}
 #doc {
   font-family: PingFangSC-Regular;
   -webkit-font-smoothing: antialiased;
