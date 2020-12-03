@@ -6,6 +6,118 @@
   "description": "nutui 3.0字体管理",
   "glyphs": [
     {
+      "icon_id": "18536362",
+      "name": "plus",
+      "font_class": "plus",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "18535598",
+      "name": "minus",
+      "font_class": "minus",
+      "unicode": "e6ab",
+      "unicode_decimal": 59051
+    },
+    {
+      "icon_id": "18254512",
+      "name": "arrow-up2",
+      "font_class": "arrow-up2",
+      "unicode": "e6a6",
+      "unicode_decimal": 59046
+    },
+    {
+      "icon_id": "18254513",
+      "name": "arrow-down2",
+      "font_class": "arrow-down2",
+      "unicode": "e6a7",
+      "unicode_decimal": 59047
+    },
+    {
+      "icon_id": "18254514",
+      "name": "screen-little",
+      "font_class": "screen-little",
+      "unicode": "e6a8",
+      "unicode_decimal": 59048
+    },
+    {
+      "icon_id": "18254515",
+      "name": "arrow-right2",
+      "font_class": "arrow-right2",
+      "unicode": "e6a9",
+      "unicode_decimal": 59049
+    },
+    {
+      "icon_id": "18254516",
+      "name": "close-little",
+      "font_class": "close-little",
+      "unicode": "e6aa",
+      "unicode_decimal": 59050
+    },
+    {
+      "icon_id": "18246005",
+      "name": "joy-smile",
+      "font_class": "joy-smile",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    },
+    {
+      "icon_id": "18245929",
+      "name": "arrow-down",
+      "font_class": "arrow-down",
+      "unicode": "e6a2",
+      "unicode_decimal": 59042
+    },
+    {
+      "icon_id": "18245930",
+      "name": "arrow-right",
+      "font_class": "arrow-right",
+      "unicode": "e6a3",
+      "unicode_decimal": 59043
+    },
+    {
+      "icon_id": "18245931",
+      "name": "arrow-up",
+      "font_class": "arrow-up",
+      "unicode": "e6a4",
+      "unicode_decimal": 59044
+    },
+    {
+      "icon_id": "18194679",
+      "name": "heart",
+      "font_class": "heart1",
+      "unicode": "e69e",
+      "unicode_decimal": 59038
+    },
+    {
+      "icon_id": "18194680",
+      "name": "heart-fill",
+      "font_class": "heart-fill",
+      "unicode": "e69f",
+      "unicode_decimal": 59039
+    },
+    {
+      "icon_id": "18194681",
+      "name": "star",
+      "font_class": "star1",
+      "unicode": "e6a0",
+      "unicode_decimal": 59040
+    },
+    {
+      "icon_id": "18194682",
+      "name": "star-fill",
+      "font_class": "star-fill",
+      "unicode": "e6a1",
+      "unicode_decimal": 59041
+    },
+    {
+      "icon_id": "18194643",
+      "name": "heart",
+      "font_class": "heart",
+      "unicode": "e69d",
+      "unicode_decimal": 59037
+    },
+    {
       "icon_id": "18193891",
       "name": "github",
       "font_class": "github",

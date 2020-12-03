@@ -20,7 +20,7 @@
     </nut-cell>
     <h2>修改背景图片</h2>
     <nut-cell>
-      <nut-avatar bg-icon bg-image="https://img14.360buyimg.com/imagetools/jfs/t1/139441/32/16630/31987/5fc6f541E66763039/5f17cb6954f419b2.png"></nut-avatar>
+      <nut-avatar bg-icon bg-image="https://img30.360buyimg.com/uba/jfs/t1/84318/29/2102/10483/5d0704c1Eb767fa74/fc456b03fdd6cbab.png"></nut-avatar>
     </nut-cell>
     <h2>可以修改头像的内容</h2>
     <nut-cell>
@@ -37,10 +37,15 @@ import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('avatar');
 export default createDemo({
   props: {},
-  methods: {
-    activeAvatar(event) {
+
+  setup() {
+    const activeAvatar = (event: Event) => {
       console.log('点击了头像', event);
-    }
+    };
+
+    return {
+      activeAvatar
+    };
   }
 });
 </script>
@@ -52,7 +57,6 @@ export default createDemo({
     & > h2 {
       padding: 0 25px;
     }
-
   }
 }
 
