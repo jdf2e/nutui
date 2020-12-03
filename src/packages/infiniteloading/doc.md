@@ -67,6 +67,13 @@ export default {
 | unload-more-txt | 没有更多数据展示文案 | String | 哎呀，这里是底部了啦' 
 | container-id | 在use-window属性为false的时候，自定义设置节点ID | String | ''
 
+## Slot
+
+| name | 说明 
+|----- | ----- 
+| loading | 自定义“加载中”形式
+| unloadMore | 自定义没有更多数据的展示形式
+
 ## Event
 
 | 字段 | 说明 | 回调参数
