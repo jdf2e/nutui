@@ -17,16 +17,21 @@
       </div>
       <div class="nav-box">
         <ul class="nav-list">
-          <li class="nav-item nav-item-actie">{{ header[0].cName }}</li>
-          <li class="nav-item">
+          <li class="nav-item" :class="{ active: isActive(header[0].name) }">{{ header[0].cName }}</li>
+          <li class="nav-item" :class="{ active: isActive(header[1].name) }">
             <router-link :to="header[1].name">{{ header[1].cName }}</router-link>
           </li>
-          <li class="nav-item"
+          <li class="nav-item" :class="{ active: isActive(header[2].name) }"
             ><a href="http://localhost:8080/demo.html#/" style="color:#fff">{{ header[2].cName }}</a></li
           >
-          <li class="nav-item">
+          <li class="nav-item" :class="{ active: isActive(header[3].name) }">
             <router-link :to="header[3].name">{{ header[3].cName }}</router-link>
           </li>
+          <!-- <li :class="{ active: isActive(_package.name) }" v-for="_package in docs.packages" :key="_package">
+            <router-link v-if="!_package.isLink" :to="_package.name.toLowerCase()">{{ _package.cName }}</router-link>
+            <a v-else :href="_package.name" target="_blank">{{ _package.cName }}</a>
+          </li> -->
+
           <li class="nav-item">
             <div
               class="header-select-box"
@@ -56,8 +61,9 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, reactive, computed } from 'vue';
 import { header } from '@/config';
+import { currentRoute } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-header',
   setup() {
@@ -77,8 +83,16 @@ export default defineComponent({
         }
       ],
       verson: '3.x',
+      navIndex: 0,
       activeIndex: 0,
       isShowSelect: false
+    });
+    const isActive = computed(() => {
+      return function(name: string) {
+        // console.log('currentRoute', this.$router.currentRoute.name)
+        console.log('name', name)
+        return currentRoute.value == name.toLowerCase();
+      };
     });
     const checkTheme = (item: any, index: number) => {
       data.isShowSelect = false;
@@ -88,6 +102,8 @@ export default defineComponent({
     return {
       header,
       data,
+      isActive,
+      currentRoute,
       checkTheme
     };
   }
@@ -102,6 +118,7 @@ export default defineComponent({
     top: 0;
     left: 0;
     right: 0;
+    min-width: 1300px;
     background-size: cover;
     background-position: center;
     height: $doc-header-height;
@@ -142,6 +159,7 @@ export default defineComponent({
     align-items: center;
     float: right;
     width: calc(100% - 240px);
+    min-width: 900px;
     padding: 0 40px;
     .search-box {
       font-size: 0;
@@ -171,7 +189,7 @@ export default defineComponent({
         text-align: center;
         cursor: pointer;
         // overflow: hidden;
-        &.nav-item-actie {
+        &.active {
           font-weight: bold;
           &:after {
             content: '';
@@ -266,7 +284,7 @@ export default defineComponent({
             a {
               color: $theme-red-word;
             }
-            &.nav-item-actie {
+            &.active {
               color: $theme-red-actice;
               &:after {
                 background-position: 0 0;
@@ -338,7 +356,7 @@ export default defineComponent({
             a {
               color: $theme-white-word;
             }
-            &.nav-item-actie {
+            &.active {
               color: $theme-white-actice;
               &:after {
                 background-position: 0 -13px;
@@ -410,7 +428,7 @@ export default defineComponent({
             a {
               color: $theme-black-word;
             }
-            &.nav-item-actie {
+            &.active {
               color: $theme-black-actice;
               &:after {
                 background-position: 0 -13px;
