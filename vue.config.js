@@ -7,7 +7,16 @@ module.exports = {
   devServer: {
     host: '0.0.0.0',
     disableHostCheck: true,
-    open: true
+    open: true,
+    proxy: {
+      '/devServer': {
+        target: 'https://nutui-server.jd.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/devServer': ''
+        }
+      }
+    }
   },
   css: {
     loaderOptions: {

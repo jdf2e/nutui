@@ -13,7 +13,7 @@
     </div>
     <div class="header-nav">
       <div class="search-box">
-        <input type="text" class="search-input" placeholder="在nut.ui 中搜索" />
+        <input type="text" class="search-input" placeholder="在 NutUI 中搜索" />
       </div>
       <div class="nav-box">
         <ul class="nav-list">
@@ -33,20 +33,10 @@
           </li> -->
 
           <li class="nav-item">
-            <div
-              class="header-select-box"
-              @click.stop="data.isShowSelect = !data.isShowSelect"
-              :class="[data.isShowSelect == true ? 'select-up' : 'select-down']"
-            >
+            <div class="header-select-box" @click.stop="data.isShowSelect = !data.isShowSelect" :class="[data.isShowSelect == true ? 'select-up' : 'select-down']">
               <div class="header-select-hd">{{ data.verson }}<i class=""></i></div>
               <div class="header-select-bd" v-show="data.isShowSelect">
-                <div
-                  class="header-select-item"
-                  v-for="(item, index) in data.versonList"
-                  :key="index"
-                  @click.stop="checkTheme(item, index)"
-                  :class="{ active: data.activeIndex === index }"
-                >
+                <div class="header-select-item" v-for="(item, index) in data.versonList" :key="index" @click.stop="checkTheme(item.name, index)" :class="{ active: data.activeIndex === index }">
                   {{ item.name }}
                 </div>
               </div>
@@ -90,14 +80,14 @@ export default defineComponent({
     const isActive = computed(() => {
       return function(name: string) {
         // console.log('currentRoute', this.$router.currentRoute.name)
-        console.log('name', name)
+        console.log('name', name);
         return currentRoute.value == name.toLowerCase();
       };
     });
     const checkTheme = (item: any, index: number) => {
       data.isShowSelect = false;
       data.activeIndex = index;
-      data.verson = item.name;
+      data.verson = verson;
     };
     return {
       header,

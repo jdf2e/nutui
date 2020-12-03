@@ -103,12 +103,17 @@ export default defineComponent({
             }
           }
           a {
+            &.router-link-active {
+              color: $doc-default-color !important;
+            }
+
             &:hover {
               color: $doc-default-color;
               &:visited {
                 color: $doc-default-color;
               }
             }
+            &:link,
             &:visited {
               color: $title-color;
             }
