@@ -1,14 +1,8 @@
 <template>
-  <div class="doc-header" :style="{ background: themeColor === 'red' ? headerBg : themeColor }" :class="`doc-header-${data.theme}`">
+  <!-- <div class="doc-header" :style="{ background: themeColor === 'red' ? headerBg : themeColor }" :class="`doc-header-${data.theme}`"> -->
+  <div class="doc-header" :class="themeName()">
     <div class="header-logo">
-      <a class="logo-link" href="#">
-        <template v-if="data.theme === 'red'">
-          <img src="../../assets/images/logo-header-white.png" />
-        </template>
-        <template v-else>
-          <img src="../../assets/images/logo-header-red.png" />
-        </template>
-      </a>
+      <a class="logo-link" href="#"></a>
       <span class="logo-border"></span>
     </div>
     <div class="header-nav">
@@ -17,7 +11,9 @@
       </div>
       <div class="nav-box">
         <ul class="nav-list">
-          <li class="nav-item" :class="{ active: isActive(header[0].name) }">{{ header[0].cName }}</li>
+          <li class="nav-item" :class="{ active: isActive(header[0].name) }">
+            <router-link :to="header[0].name">{{ header[0].cName }}</router-link>
+          </li>
           <li class="nav-item" :class="{ active: isActive(header[1].name) }">
             <router-link :to="header[1].name">{{ header[1].cName }}</router-link>
           </li>
@@ -53,14 +49,13 @@
 <script lang="ts">
 import { defineComponent, reactive, computed } from 'vue';
 import { header } from '@/config';
-import { currentRoute } from '@/sites/assets/util/ref';
+import { currentRoute, themeColor } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-header',
   setup() {
     const data = reactive({
       theme: 'black',
-      themeColor: 'black',
-      headerBg: 'url(' + require('../../assets/images/header-bg.png') + ')',
+      // headerBg: 'url(' + require('../../assets/images/header-bg.png') + ')',
       versonList: [
         {
           name: '1.x'
@@ -79,22 +74,26 @@ export default defineComponent({
     });
     const isActive = computed(() => {
       return function(name: string) {
-        // console.log('currentRoute', this.$router.currentRoute.name)
-        console.log('name', name);
+        // console.log('name1', currentRoute.value == name.toLowerCase());
         return currentRoute.value == name.toLowerCase();
       };
     });
-    const checkTheme = (item: any, index: number) => {
+    const themeName = computed(() => {
+      return function() {
+        return `doc-header-${themeColor.value}`;
+      };
+    });
+    const checkTheme = (item: string, index: number) => {
       data.isShowSelect = false;
       data.activeIndex = index;
-      data.verson = verson;
+      data.verson = item;
     };
     return {
       header,
       data,
       isActive,
-      currentRoute,
-      checkTheme
+      checkTheme,
+      themeName
     };
   }
 });
@@ -125,13 +124,13 @@ export default defineComponent({
     width: 240px;
     height: 64px;
     .logo-link {
-      display: flex;
-      align-items: center;
-      height: 64px;
+      display: inline-block;
+      width: 120px;
+      height: 46px;
       vertical-align: middle;
-      img {
-        height: 46px;
-      }
+      position: absolute;
+      top: 50%;
+      margin-top: -23px;
     }
     .logo-border {
       display: inline-block;
@@ -173,11 +172,15 @@ export default defineComponent({
         position: relative;
         margin-right: 30px;
         font-size: 14px;
-        padding: 0 10px;
         height: 63px;
         line-height: 63px;
         text-align: center;
         cursor: pointer;
+        a {
+          display: inline-block;
+          padding: 0 10px;
+          line-height: 64px;
+        }
         // overflow: hidden;
         &.active {
           font-weight: bold;
@@ -254,6 +257,9 @@ export default defineComponent({
     color: $theme-red-word;
     .header {
       &-logo {
+        .logo-link {
+          background: url('../../assets/images/logo-header-white.png') no-repeat center/100%;
+        }
         .logo-border {
           background: $theme-red-border;
         }
@@ -326,6 +332,9 @@ export default defineComponent({
     border-bottom: 1px solid $theme-white-box-border;
     .header {
       &-logo {
+        .logo-link {
+          background: url('../../assets/images/logo-header-red.png') no-repeat center/100%;
+        }
         .logo-border {
           background: $theme-white-border;
         }
@@ -398,6 +407,9 @@ export default defineComponent({
     border-bottom: 1px solid $theme-black-box-border;
     .header {
       &-logo {
+        .logo-link {
+          background: url('../../assets/images/logo-header-red.png') no-repeat center/100%;
+        }
         .logo-border {
           background: $theme-black-border;
         }

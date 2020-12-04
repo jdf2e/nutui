@@ -5,6 +5,8 @@
         <h4 class="doc-footer-title">相关资源</h4>
         <div class="doc-footer-item">JDW智能构建平台</div>
         <div class="doc-footer-item">JDW智能构建平台</div>
+        <div class="doc-footer-item">JDW智能构建平台</div>
+        <div class="doc-footer-item">JDW智能构建平台</div>
       </div>
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">相关资源</h4>
@@ -28,7 +30,7 @@
             class="doc-footer-select-item"
             v-for="(item, index) in data.themeList"
             :key="index"
-            @click.stop="checkTheme(index)"
+            @click.stop="checkTheme(item.color, index)"
             :class="{ active: data.activeIndex === index }"
           >
             <i :class="`circle-${item.color}`"></i>{{ item.name }}
@@ -41,6 +43,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
+import { themeColor } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-footer',
   setup() {
@@ -69,17 +72,17 @@ export default defineComponent({
         'click',
         e => {
           console.log('e.target', e.target);
-          // if (!this.$el.contains(e.target)){
-          //   data.isShowSelect = false;
-          // }
         },
         false
       );
     };
-    const checkTheme = (index: number) => {
+    const checkTheme = (color: string, index: number) => {
       data.isShowSelect = false;
       data.activeIndex = index;
-      console.log('data.isShowSelect', data.isShowSelect);
+      data.theme = color;
+      themeColor.value = color;
+      console.log('themeColor1', themeColor);
+      // bus.emit('select-theme', color)
     };
     return {
       data,
@@ -98,6 +101,7 @@ export default defineComponent({
     &-content {
       display: flex;
       justify-content: space-around;
+      align-items: flex-start;
       margin-right: 50px;
     }
     &-list {
