@@ -37,12 +37,10 @@ import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('avatar');
 export default createDemo({
   props: {},
-
   setup() {
     const activeAvatar = (event: Event) => {
       console.log('点击了头像', event);
     };
-
     return {
       activeAvatar
     };

@@ -30,10 +30,9 @@ const routes: Array<RouteRecordRaw> = [
     name: '/',
     component: Index,
     children: pagesRouter
-  },
-  {
+  }, {
     path: '/resource',
-    name: '/resource',
+    name: 'resource',
     component: Resource
   }
 ];

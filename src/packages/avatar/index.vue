@@ -34,11 +34,7 @@ export default create({
     }
   },
   setup(props, { emit, slots }) {
-    // setup内部只能访问这4个属性，值得注意的是props必须在上面声明才能在这里取到
-    // console.log('props', props, 'slots', slots);
     const { size, shape, bgColor, bgIcon, bgImage } = toRefs(props);
-    console.log('bgIcon', bgIcon);
-    //判断是否为小数点
     const activeAvatar = () => {
       emit('active-avatar', event);
     };
