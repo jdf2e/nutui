@@ -41,8 +41,8 @@ app.use(Uploader);
 | headers | 设置上传的请求头部 | Object | {}
 | form-data | 附加上传的信息 formData | Object | {}
 | upload-icon | 上传区域[图标名称](#/zh-CN/icon)或图片链接 | String | photograph
-| xhrState | 接口响应的成功状态（status）值 | Number | 200
-| withCredentials | 支持发送 cookie 凭证信息 | Boolean | fasle
+| xhr-state | 接口响应的成功状态（status）值 | Number | 200
+| with-credentials | 支持发送 cookie 凭证信息 | Boolean | fasle
 | multiple | 是否支持文件多选 | Boolean | fasle
 | disabled | 是否禁用文件上传 | Boolean | fasle
 | before-upload | 上传前的函数需要返回一个对象  | Function | {event:$event} $event为点击事件必传
