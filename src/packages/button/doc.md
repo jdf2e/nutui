@@ -1,88 +1,106 @@
-# Flex 一级标题
+# Button 按钮组件
 
-页面整体布局是一个产品最外层的框架结构，往往会包含导航、页脚、侧边栏、通知栏以及内容等。在页面之中，也有很多区块的布局结构。在真实项目中，页面布局通常统领整个应用的界面，有非常重要的作用。页面整体布局是一个产统领整个应用的界面，有非常重要的作用。页面整体布局是一个产品最外层的框架结构。统领整个应用的界面，有非常重要的作用。页面整体布局是一个产品最外层的框架结构。品最外层的框架结构。
+### 介绍
 
-## 二级标题
+按钮用于触发一个操作，如提交表单。
 
-页面整体布局是一个产品最外层的框架结构，往往会包含导航、页脚、侧边栏、通知栏以及内容等。在页面之中，也有很多区块的布局结构。在真实项目中，页面布局通常统领整个应用的界面，有非常重要的作用。页面整体布局是一个产统领整个应用的界面，有非常重要的作用。页面整体布局是一个产品最外层的框架结构。统领整个应用的界面，有非常重要的作用。页面整体布局是一个产品最外层的框架结构。品最外层的框架结构。
+### 安装
 
-## 注释
+``` javascript
+import { createApp } from 'vue';
+import { Button } from '@nutui/nutui';
 
->注意：配置 babel-plugin-import 插件后将不允许导入所有组件
+const app = createApp();
+app.use(Button);
+```
 
 ## 代码演示
-### 基础用法
 
-:::demo
-``` html
-<template>
-  <div @click="clickMe">点击我</div>
-</template>
-<script>
-  export default{
-    setup(){
-      onMounted(){
-        console.log(aa);
-      }
-      function clickMe(){
-        console.log('nihao');
-      }
-      return {
-        clickMe
-      }
-    }
-  }
-</script>
-```
-:::
+### 按钮类型
 
-### 强调标记
-
-**SwiperAction**  交互优化等等
-
-## 测试标题
-
-### 代码示例
-
-#### 按钮类型
-
-按钮支持 `default`、`primary`、`success`、`warning`、`danger` 五种类型，默认为 default。
-
-|序号|名称|备注|
-|--|--|--|
-|1|小花|等哈阿贾克斯|
-|2|小浪|阿师大丹江口市|
-
-## das标题
-
-### 3123示例
-
-#### 按ewqe型
-
-按钮支持 `default`、`primary`、`success`、`warning`、`danger` 五种类型，默认为 default。
-
-|序号|名称|备注|
-|--|--|--|
-|1|小花|等哈阿贾克斯|
-|2|小浪|阿师大丹江口市|
+按钮支持 `default`、`primary`、`info`、`warning`、`danger`、`success` 六种类型，默认为 `default`。
 
 ```html
-<template>
-  <div @click="clickMe">点击我</div>
-</template>
-<script>
-  export default{
-    setup(){
-      onMounted(){
-        console.log(aa);
-      }
-      function clickMe(){
-        console.log('nihao');
-      }
-      return {
-        clickMe
-      }
-    }
-  }
-</script>
+<nut-button type="primary">主要按钮</nut-button>
+<nut-button type="info">信息按钮</nut-button>
+<nut-button type="default">默认按钮</nut-button>
+<nut-button type="danger">危险按钮</nut-button>
+<nut-button type="warning">警告按钮</nut-button>
+<nut-button type="success">成功按钮</nut-button>
 ```
+
+### 朴素按钮
+
+通过 `plain` 属性将按钮设置为朴素按钮，朴素按钮的文字为按钮颜色，背景为白色。
+
+```html
+<nut-button plain type="primary">朴素按钮</nut-button>
+<nut-button plain type="info">朴素按钮</nut-button>
+```
+
+### 禁用状态
+
+通过 `disabled` 属性来禁用按钮，禁用状态下按钮不可点击。
+
+```html
+<nut-button disabled type="primary">禁用状态</nut-button>
+<nut-button plain disabled type="info">禁用状态</nut-button>
+<nut-button plain disabled type="primary">禁用状态</nut-button>
+```
+
+### 按钮形状
+
+通过 `shape` 属性设置按钮形状，支持圆形、方形按钮，默认为圆形。
+
+```html
+<nut-button shape="square" type="primary">方形按钮</nut-button>
+<nut-button type="info">圆形按钮</nut-button>
+```
+
+### 按钮尺寸
+
+支持 `large`、`normal`、`small` 三种尺寸，默认为 `normal`。
+
+```html
+<nut-button size="large" type="primary">大号按钮</nut-button>
+<nut-button type="primary">普通按钮</nut-button>
+<nut-button size="small" type="primary">小型按钮</nut-button>
+```
+
+### 块级元素
+
+按钮在默认情况下为行内块级元素，通过 `block` 属性可以将按钮的元素类型设置为块级元素，常用来实现通栏按钮。
+
+```html
+<nut-button block type="primary">块级元素</nut-button>
+```
+
+### 自定义颜色
+通过 color 属性可以自定义按钮的颜色。
+```html
+<nut-button color="#7232dd">单色按钮</nut-button>
+<nut-button color="#7232dd" plain>单色按钮</nut-button>
+<nut-button color="linear-gradient(to right, #ff6034, #ee0a24)">
+  渐变色按钮
+</nut-button>
+```
+## API
+
+### Props
+
+| 参数         | 说明                             | 类型   | 默认值           |
+|--------------|----------------------------------|--------|------------------|
+| type         | 类型，可选值为 `primary` `info` `warning` `danger` `success` | String |`default`         |
+| size        | 尺寸，可选值为 `large` `small`  | String | `normal`      |
+| shape         | 形状，可选值为 `square` | String | `round`             |
+| color | 按钮颜色，支持传入 linear-gradient 渐变色     | String | - |
+| plain          | 	是否为朴素按钮                       | boolean | `false`             |
+| disabled          | 	是否禁用按钮                       | boolean | `false`              |
+| block          | 是否为块级元素                        | boolean | `false`               |
+
+### Events
+
+| 事件名 | 说明           | 回调参数     |
+|--------|----------------|--------------|
+| click  | 点击按钮时触发 | event: Event |
+

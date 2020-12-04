@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" @click="handleClick">
+  <view :class="classes" :style="getStyle" @click="handleClick">
     <!-- <i class="nut-icon-loading" v-if="loading"></i> -->
     <!-- <i :class="icon" v-if="icon && !loading"></i> -->
     <slot></slot>
