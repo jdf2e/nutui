@@ -1,20 +1,64 @@
 .nut-uploader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
-  overflow: hidden;
-  background: $uploader-babackground;
-  width: $uploader-width;
-  height: $uploader-height;
-  input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    cursor: pointer;
-    opacity: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  .upload {
+    position: relative;
+    background: $uploader-babackground;
+    width: $uploader-width;
+    height: $uploader-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      cursor: pointer;
+      opacity: 0;
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+  .preview {
+    width: $uploader-width;
+    height: $uploader-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    &-img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translate(50%, -50%);
+      }
+      .tips {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        font-size: 12px;
+        color: $white;
+        height: 30px;
+        line-height: 30px;
+        text-align: c;
+        background: rgba(0, 0, 0, 0.54);
+      }
+    }
+    img {
+      height: 100%;
+      width: 100%;
+    }
   }
 }
