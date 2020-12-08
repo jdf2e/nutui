@@ -14,7 +14,7 @@
       <nut-inputnumber
         v-model:modelValue="state.val2"
         :step="state.step"
-        :decimalPlaces="1"
+        :decimal-places="1"
       />
     </nut-cell>
     <h2>限制输入范围</h2>

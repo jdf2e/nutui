@@ -74,13 +74,13 @@ app.use(inputnumber);
 |--------------|----------------------------------|--------|------------------|
 | size         | 操作符+、-尺寸               | String          | 20px                |
 | color        | 操作符+、-颜色               | String          | #1a1a1a             |
-| disColor     | 操作符+、-禁用时颜色          | String          | #ccc                |
+| dis-color     | 操作符+、-禁用时颜色          | String          | #ccc                |
 | min          | 最小值                      | String、Number | 1                   |
 | max          | 最大值                      | String、Number | Infinity             |
 | step         | 步长                        | String、Number |     1                |
 | readonly     | 只读                   | Boolean | false              |
 | modelValue   | 初始值                   | String、Number | ''              |
-| decimalPlaces| 设置保留的小数位                   | String、Number | 1              |
+| decimal-places| 设置保留的小数位                   | String、Number | 1              |
 | async        | 支持异步                   | Boolean | false              |
 
 ### Events
