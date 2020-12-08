@@ -207,6 +207,20 @@ export const nav = [
     ]
   },
   {
+    name: '数据录入',
+    packages: [
+      {
+        name: 'InputNumber',
+        sort: 1,
+        cName: '数字输入框',
+        type: 'component',
+        show: true,
+        desc: '数字输入框组件',
+        author: 'szg2008'
+      }
+    ]
+  },
+  {
     name: '业务组件',
     packages: []
   }
