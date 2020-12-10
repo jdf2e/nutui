@@ -131,16 +131,18 @@ export default create({
             ? (ctx.slots.default()[0].children as VNode[])
             : ctx.slots.default();
         slots &&
-          slots.forEach((item, index) => {
+          slots.map((item, index) => {
+            if (typeof item.children == 'string') return;
             titles.push({
               title:
                 item.props && item.props['tab-title']
                   ? item.props['tab-title']
                   : '',
-              // @ts-ignore：已经做了header是否存在的判断
               content:
+                //@ts-ignore：已经做了header是否存在的判断
                 item && item?.children?.header
-                  ? (item.children as VNode[]).header()
+                  ? //@ts-ignore：已经做了header是否存在的判断
+                    (item.children as VNode[]).header()
                   : null
             });
           });
