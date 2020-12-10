@@ -8,10 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Price } from '@nutui/nutui';
+import { Avatar } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Price);
+app.use(Avatar);
 
 ```
 
