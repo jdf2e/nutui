@@ -64,7 +64,11 @@ export default {
         this.$emit('input', this.current);
         this.$emit('click', this.current);
       } else {
-        this.current = idx;
+        if (this.current == idx) {
+          this.current = 0;
+        } else {
+          this.current = idx;
+        }
         this.$emit('input', idx);
         this.$emit('click', idx);
       }
