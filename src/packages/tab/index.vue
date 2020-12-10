@@ -20,15 +20,19 @@
   </div>
 </template>
 <script lang="ts">
-// @ts-nocheck
-import { PropType, h, toRefs, reactive, computed, ref, onMounted, nextTick, watch, watchEffect } from 'vue';
+import { PropType, reactive, ref, onMounted, watch, VNode } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('tab');
 import TabTitle from './tabTitle';
 import Swiper from 'swiper';
-// import 'swiper/swiper-bundle.css';
 import 'swiper/dist/css/swiper.min.css';
+import { extend } from '@vue/shared';
 type TabDirection = 'horizontal' | 'vertical';
+
+interface DataTitle {
+  title?: string;
+  content?: VNode[];
+}
 
 export default create({
   props: {
@@ -53,31 +57,40 @@ export default create({
     TabTitle
   },
   setup(props, ctx) {
-    const titles: any = reactive([]);
-    let mySwiper: any = reactive({});
+    const titles: Array<DataTitle> = reactive([]);
+    let mySwiper = reactive({});
     const isLock = ref(false);
     const activeIndex = ref(props.defaultIndex);
-    const navlist: any = ref(null);
+    const navlist = ref<null | HTMLElement>(null);
     // 生成随机的id
     function createHash() {
-      return Array.from(Array(10), () => Math.floor(Math.random() * 36).toString(36)).join('');
+      return Array.from(Array(10), () =>
+        Math.floor(Math.random() * 36).toString(36)
+      ).join('');
     }
 
     const swiperClassName = ref('swiper-' + createHash());
     //title点击后居中显示
     function centerTitle(index: number) {
-      const currEle = navlist.value.querySelectorAll('.tab-title-box')[index];
-      if (props.direction === 'vertical') {
-        const currTitleTop = navlist.value.offsetTop;
-        const currTop = currEle.offsetTop;
-        const currHeight = currEle.offsetHeight;
-        const tapHeight = navlist.value.offsetHeight;
-        navlist.value.scroll(0, currTop - currTitleTop - tapHeight / 2 + currHeight / 2);
-      } else {
-        const currLeft = currEle.offsetLeft;
-        const currWidth = currEle.offsetWidth;
-        const tapWidth = navlist.value.offsetWidth;
-        navlist.value.scroll(currLeft - tapWidth / 2 + currWidth / 2, 0);
+      if (navlist.value) {
+        const currEle = navlist.value.querySelectorAll('.tab-title-box')[
+          index
+        ] as HTMLElement;
+        if (props.direction === 'vertical') {
+          const currTitleTop = navlist.value.offsetTop;
+          const currTop = currEle.offsetTop;
+          const currHeight = currEle.offsetHeight;
+          const tapHeight = navlist.value.offsetHeight;
+          navlist.value.scroll(
+            0,
+            currTop - currTitleTop - tapHeight / 2 + currHeight / 2
+          );
+        } else {
+          const currLeft = currEle.offsetLeft;
+          const currWidth = currEle.offsetWidth;
+          const tapWidth = navlist.value.offsetWidth;
+          navlist.value.scroll(currLeft - tapWidth / 2 + currWidth / 2, 0);
+        }
       }
     }
 
@@ -85,7 +98,7 @@ export default create({
     function switchTitle(index: number) {
       activeIndex.value = index;
       centerTitle(index);
-      mySwiper.slideToLoop(index, props.animatedTime, false);
+      (mySwiper as Swiper).slideToLoop(index, props.animatedTime, false);
     }
     function initSwiper(currIndex: number) {
       mySwiper = new Swiper('.' + swiperClassName.value, {
@@ -100,11 +113,11 @@ export default create({
           touchStart: function() {
             isLock.value = true;
           },
-          transitionEnd: function(swiper: Swiper): void {
-            ctx.emit('switchTab', swiper.realIndex, swiper);
+          transitionEnd: function(): void {
+            ctx.emit('switchTab', (mySwiper as Swiper).realIndex, mySwiper);
             if (isLock.value) {
-              activeIndex.value = swiper.realIndex;
-              centerTitle(swiper.realIndex);
+              activeIndex.value = (mySwiper as Swiper).realIndex;
+              centerTitle((mySwiper as Swiper).realIndex);
             }
           }
         }
@@ -113,12 +126,22 @@ export default create({
     function initTitle() {
       titles.length = 0;
       if (ctx.slots.default) {
-        const slots: any[] = ctx.slots.default().length === 1 ? ctx.slots.default()[0].children : ctx.slots.default();
+        const slots: VNode[] =
+          ctx.slots.default().length === 1
+            ? (ctx.slots.default()[0].children as VNode[])
+            : ctx.slots.default();
         slots &&
           slots.forEach((item, index) => {
             titles.push({
-              title: item.props['tab-title'],
-              content: item.children && item.children.header ? item.children.header() : null
+              title:
+                item.props && item.props['tab-title']
+                  ? item.props['tab-title']
+                  : '',
+              // @ts-ignore：已经做了header是否存在的判断
+              content:
+                item && item?.children?.header
+                  ? (item.children as VNode[]).header()
+                  : null
             });
           });
       }
@@ -130,7 +153,7 @@ export default create({
       initTitle();
     });
     watch(
-      () => ctx.slots.default(),
+      () => (ctx.slots.default ? ctx.slots.default() : ''),
       () => {
         initTitle();
       }
