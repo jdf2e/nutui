@@ -6,15 +6,27 @@
         <nut-icon v-if="leftShow" color="#979797" name="left"></nut-icon>
       </view>
 
-      <view class="nut-navbar__title" :class="{ icon: icon }" v-if="title || titIcon">
+      <view
+        class="nut-navbar__title"
+        :class="{ icon: icon }"
+        v-if="title || titIcon"
+      >
         <view v-if="title">{{ title }}</view>
         <nut-icon v-if="titIcon" class="icon" :name="titIcon"></nut-icon>
       </view>
 
       <!-- 右侧  title/icon/多个tit/多个icon-->
-      <view class="nut-navbar__right" :class="{ icon: icon }" v-if="desc || icon">
-        <view v-if="desc" :style="{ 'text-align': descTextAlign }">{{ desc }}</view>
-        <view> <nut-icon v-if="icon" class="icon" :name="icon"></nut-icon></view>
+      <view
+        class="nut-navbar__right"
+        :class="{ icon: icon }"
+        v-if="desc || icon"
+      >
+        <view v-if="desc" :style="{ 'text-align': descTextAlign }">{{
+          desc
+        }}</view>
+        <view>
+          <nut-icon v-if="icon" class="icon" :name="icon"></nut-icon
+        ></view>
       </view>
     </slot>
   </view>

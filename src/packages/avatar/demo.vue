@@ -1,19 +1,19 @@
 <template>
-  <div class="demo">
+  <div class="demo avatar-demo">
     <h2>默认用法</h2>
     <!-- <p>内置"small","normal","large"三种尺寸规格</p> -->
     <nut-cell>
-      <nut-avatar size="80"></nut-avatar>
-      <nut-avatar size="large"></nut-avatar>
-      <nut-avatar size="normal"></nut-avatar>
-      <nut-avatar size="small"></nut-avatar>
+      <nut-avatar size="80" bg-icon bg-image="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"></nut-avatar>
+      <nut-avatar size="large" bg-icon bg-image="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"></nut-avatar>
+      <nut-avatar size="normal" bg-icon bg-image="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"></nut-avatar>
+      <nut-avatar size="small" bg-icon bg-image="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"></nut-avatar>
     </nut-cell>
-    <h2>修改形状类型</h2>
+    <!-- <h2>修改形状类型</h2>
     <nut-cell>
       <nut-avatar size="large" shape="square"></nut-avatar>
       <nut-avatar size="normal" shape="square"></nut-avatar>
       <nut-avatar size="small" shape="square"></nut-avatar>
-    </nut-cell>
+    </nut-cell> -->
     <h2>修改背景色</h2>
     <nut-cell>
       <nut-avatar bg-color="#FA2C19"></nut-avatar>
@@ -37,12 +37,10 @@ import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('avatar');
 export default createDemo({
   props: {},
-
   setup() {
     const activeAvatar = (event: Event) => {
       console.log('点击了头像', event);
     };
-
     return {
       activeAvatar
     };
@@ -50,7 +48,18 @@ export default createDemo({
 });
 </script>
 <style lang="scss" scoped>
+#app {
+  .avatar-demo {
+    padding-left: 0;
+    padding-right: 0;
+    & > h2 {
+      padding: 0 25px;
+    }
+  }
+}
+
 .nut-cell {
   align-items: flex-end;
+  border-radius: 0;
 }
 </style>

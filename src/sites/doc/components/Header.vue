@@ -1,14 +1,8 @@
 <template>
-  <div class="doc-header" :style="{ background: themeColor === 'red' ? headerBg : themeColor }" :class="`doc-header-${data.theme}`">
+  <!-- <div class="doc-header" :style="{ background: themeColor === 'red' ? headerBg : themeColor }" :class="`doc-header-${data.theme}`"> -->
+  <div class="doc-header" :class="themeName()">
     <div class="header-logo">
-      <a class="logo-link" href="#">
-        <template v-if="data.theme === 'red'">
-          <img src="../../assets/images/logo-header-white.png" />
-        </template>
-        <template v-else>
-          <img src="../../assets/images/logo-header-red.png" />
-        </template>
-      </a>
+      <a class="logo-link" href="#"></a>
       <span class="logo-border"></span>
     </div>
     <div class="header-nav">
@@ -17,16 +11,23 @@
       </div>
       <div class="nav-box">
         <ul class="nav-list">
-          <li class="nav-item nav-item-actie">{{ header[0].cName }}</li>
-          <li class="nav-item">
+          <li class="nav-item" :class="{ active: isActive(header[0].name) }">
+            <router-link :to="header[0].name">{{ header[0].cName }}</router-link>
+          </li>
+          <li class="nav-item" :class="{ active: isActive(header[1].name) }">
             <router-link :to="header[1].name">{{ header[1].cName }}</router-link>
           </li>
-          <li class="nav-item"
+          <li class="nav-item" :class="{ active: isActive(header[2].name) }"
             ><a href="http://localhost:8080/demo.html#/" style="color:#fff">{{ header[2].cName }}</a></li
           >
-          <li class="nav-item">
+          <li class="nav-item" :class="{ active: isActive(header[3].name) }">
             <router-link :to="header[3].name">{{ header[3].cName }}</router-link>
           </li>
+          <!-- <li :class="{ active: isActive(_package.name) }" v-for="_package in docs.packages" :key="_package">
+            <router-link v-if="!_package.isLink" :to="_package.name.toLowerCase()">{{ _package.cName }}</router-link>
+            <a v-else :href="_package.name" target="_blank">{{ _package.cName }}</a>
+          </li> -->
+
           <li class="nav-item">
             <div class="header-select-box" @click.stop="data.isShowSelect = !data.isShowSelect" :class="[data.isShowSelect == true ? 'select-up' : 'select-down']">
               <div class="header-select-hd">{{ data.verson }}<i class=""></i></div>
@@ -46,15 +47,15 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, reactive, computed } from 'vue';
 import { header } from '@/config';
+import { currentRoute, themeColor } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-header',
   setup() {
     const data = reactive({
       theme: 'black',
-      themeColor: 'black',
-      headerBg: 'url(' + require('../../assets/images/header-bg.png') + ')',
+      // headerBg: 'url(' + require('../../assets/images/header-bg.png') + ')',
       versonList: [
         {
           name: '1.x'
@@ -67,18 +68,32 @@ export default defineComponent({
         }
       ],
       verson: '3.x',
+      navIndex: 0,
       activeIndex: 0,
       isShowSelect: false
     });
-    const checkTheme = (verson: string, index: number) => {
+    const isActive = computed(() => {
+      return function(name: string) {
+        // console.log('name1', currentRoute.value == name.toLowerCase());
+        return currentRoute.value == name.toLowerCase();
+      };
+    });
+    const themeName = computed(() => {
+      return function() {
+        return `doc-header-${themeColor.value}`;
+      };
+    });
+    const checkTheme = (item: string, index: number) => {
       data.isShowSelect = false;
       data.activeIndex = index;
-      data.verson = verson;
+      data.verson = item;
     };
     return {
       header,
       data,
-      checkTheme
+      isActive,
+      checkTheme,
+      themeName
     };
   }
 });
@@ -92,6 +107,7 @@ export default defineComponent({
     top: 0;
     left: 0;
     right: 0;
+    min-width: 1300px;
     background-size: cover;
     background-position: center;
     height: $doc-header-height;
@@ -108,13 +124,13 @@ export default defineComponent({
     width: 240px;
     height: 64px;
     .logo-link {
-      display: flex;
-      align-items: center;
-      height: 64px;
+      display: inline-block;
+      width: 120px;
+      height: 46px;
       vertical-align: middle;
-      img {
-        height: 46px;
-      }
+      position: absolute;
+      top: 50%;
+      margin-top: -23px;
     }
     .logo-border {
       display: inline-block;
@@ -132,6 +148,7 @@ export default defineComponent({
     align-items: center;
     float: right;
     width: calc(100% - 240px);
+    min-width: 900px;
     padding: 0 40px;
     .search-box {
       font-size: 0;
@@ -155,13 +172,17 @@ export default defineComponent({
         position: relative;
         margin-right: 30px;
         font-size: 14px;
-        padding: 0 10px;
         height: 63px;
         line-height: 63px;
         text-align: center;
         cursor: pointer;
+        a {
+          display: inline-block;
+          padding: 0 10px;
+          line-height: 64px;
+        }
         // overflow: hidden;
-        &.nav-item-actie {
+        &.active {
           font-weight: bold;
           &:after {
             content: '';
@@ -236,6 +257,9 @@ export default defineComponent({
     color: $theme-red-word;
     .header {
       &-logo {
+        .logo-link {
+          background: url('../../assets/images/logo-header-white.png') no-repeat center/100%;
+        }
         .logo-border {
           background: $theme-red-border;
         }
@@ -256,7 +280,7 @@ export default defineComponent({
             a {
               color: $theme-red-word;
             }
-            &.nav-item-actie {
+            &.active {
               color: $theme-red-actice;
               &:after {
                 background-position: 0 0;
@@ -308,6 +332,9 @@ export default defineComponent({
     border-bottom: 1px solid $theme-white-box-border;
     .header {
       &-logo {
+        .logo-link {
+          background: url('../../assets/images/logo-header-red.png') no-repeat center/100%;
+        }
         .logo-border {
           background: $theme-white-border;
         }
@@ -328,7 +355,7 @@ export default defineComponent({
             a {
               color: $theme-white-word;
             }
-            &.nav-item-actie {
+            &.active {
               color: $theme-white-actice;
               &:after {
                 background-position: 0 -13px;
@@ -380,6 +407,9 @@ export default defineComponent({
     border-bottom: 1px solid $theme-black-box-border;
     .header {
       &-logo {
+        .logo-link {
+          background: url('../../assets/images/logo-header-red.png') no-repeat center/100%;
+        }
         .logo-border {
           background: $theme-black-border;
         }
@@ -400,7 +430,7 @@ export default defineComponent({
             a {
               color: $theme-black-word;
             }
-            &.nav-item-actie {
+            &.active {
               color: $theme-black-actice;
               &:after {
                 background-position: 0 -13px;

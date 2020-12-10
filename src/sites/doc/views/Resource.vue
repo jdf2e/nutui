@@ -63,8 +63,10 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from 'vue';
+import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute } from 'vue-router';
 import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
+import { currentRoute } from '@/sites/assets/util/ref';
 import { ArticleApiService } from '@/sites/service/ArticleApiService';
 export default defineComponent({
   name: 'doc',
@@ -95,8 +97,15 @@ export default defineComponent({
       ],
       activeIndex: 0
     });
+    const watchDemoUrl = (router: RouteLocationNormalized) => {
+      currentRoute.value = router.name as string;
+    };
     onMounted(() => {
-      console.log('mounted');
+      // 路由
+      const route = useRoute();
+      watchDemoUrl(route);
+
+      // 文章列表接口
       const articleApiService = new ArticleApiService();
       articleApiService.getArticle().then(res => {
         if (res?.state == 0) {
@@ -104,11 +113,11 @@ export default defineComponent({
         }
       });
     });
-
+    onBeforeRouteUpdate(to => {
+      watchDemoUrl(to);
+    });
     const clickTab = (index: number) => {
-      console.log('22', index);
       data.activeIndex = index;
-      console.log('33', data.activeIndex);
     };
     return {
       data,

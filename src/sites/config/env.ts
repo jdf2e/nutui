@@ -32,7 +32,7 @@ switch (process.env.NODE_ENV) {
      * 线上环境 => npm run build
      */
     config.isPrd = true;
-    config.baseUrl = 'https://nutui-server.jd.com';
+    config.baseUrl = 'http://nutui-server.jd.com';
     break;
 }
 export default config;
