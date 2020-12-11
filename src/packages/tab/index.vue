@@ -34,6 +34,10 @@ interface DataTitle {
   content?: VNode[];
 }
 
+type currChild = {
+  header: Function;
+} & VNode[];
+
 export default create({
   props: {
     defaultIndex: {
@@ -139,10 +143,8 @@ export default create({
                   ? item.props['tab-title']
                   : '',
               content:
-                //@ts-ignore：已经做了header是否存在的判断
-                item && item?.children?.header
-                  ? //@ts-ignore：已经做了header是否存在的判断
-                    (item.children as VNode[]).header()
+                item.children && (item.children as currChild).header
+                  ? (item.children as currChild).header()
                   : null
             });
           });
