@@ -3,8 +3,15 @@
     <slot></slot>
     <div class="load-more">
       <div class="bottom-tips" v-if="isShowBottomTips">
-        <template v-if="isLoading"> <i class="loading-hint"></i><span class="loading-txt">加载中...</span> </template>
-        <span v-else-if="!hasMore" class="tips-txt">{{ unloadMoreTxt }}</span>
+        <template v-if="isLoading">
+          <template v-if="!slotLoading"> <i class="loading-hint"></i><span class="loading-txt">加载中...</span> </template>
+          <slot name="loading" v-else></slot>
+        </template>
+
+        <template v-else-if="!hasMore">
+          <span class="tips-txt" v-if="!slotUnloadMore">{{ unloadMoreTxt }}</span>
+          <slot name="unloadMore" v-else></slot>
+        </template>
       </div>
     </div>
   </div>
@@ -15,43 +22,43 @@ export default {
   props: {
     hasMore: {
       type: Boolean,
-      default: true,
+      default: true
     },
     isLoading: {
       type: Boolean,
-      default: false,
+      default: false
     },
     threshold: {
       type: Number,
-      default: 200,
+      default: 200
     },
     useWindow: {
       type: Boolean,
-      default: true,
+      default: true
     },
     useCapture: {
       type: Boolean,
-      default: false,
+      default: false
     },
     isShowMod: {
       type: Boolean,
-      default: false,
+      default: false
     },
     isShowBottomTips: {
       type: Boolean,
-      default: true,
+      default: true
     },
     unloadMoreTxt: {
       type: String,
-      default: '哎呀，这里是底部了啦',
+      default: '哎呀，这里是底部了啦'
     },
     scrollChange: {
-      type: Function,
+      type: Function
     },
     containerId: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
   data() {
     return {
@@ -60,10 +67,12 @@ export default {
       diffX: 0,
       diffY: 0,
       beforeScrollTop: 0,
+      slotUnloadMore: false,
+      slotLoading: false
     };
   },
 
-  mounted: function () {
+  mounted: function() {
     const parentElement = this.getParentElement(this.$el);
     let scrollEl = window;
     if (this.useWindow === false) {
@@ -71,6 +80,9 @@ export default {
     }
     this.scrollEl = scrollEl;
     this.scrollListener();
+
+    this.slotUnloadMore = this.$slots.unloadMore ? true : false;
+    this.slotLoading = this.$slots.loading ? true : false;
   },
 
   methods: {
@@ -104,7 +116,7 @@ export default {
         window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
         window.mozRequestAnimationFrame ||
-        function (callback) {
+        function(callback) {
           window.setTimeout(callback, 1000 / 60);
         }
       );
@@ -154,7 +166,7 @@ export default {
       this.beforeScrollTop = windowScrollTop;
 
       return offsetDistance <= this.threshold && windowScrollTop >= this.beforeScrollTop;
-    },
+    }
   },
 
   activated() {
@@ -173,6 +185,6 @@ export default {
   destroyed() {
     this.scrollEl.removeEventListener('scroll', this.handleScroll, this.useCapture);
     window.removeEventListener('resize', this.handleScroll, this.useCapture);
-  },
+  }
 };
 </script>
