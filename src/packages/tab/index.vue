@@ -1,7 +1,7 @@
 <template>
-  <div :class="[direction === 'vertical' ? 'vertical-tab' : 'nutui-tab']">
-    <div class="tab-title" ref="navlist">
-      <div
+  <view :class="[direction === 'vertical' ? 'vertical-tab' : 'nutui-tab']">
+    <view class="tab-title" ref="navlist">
+      <view
         :class="['tab-title-box', { 'nut-tab-active': activeIndex == index }]"
         v-for="(item, index) in titles"
         :key="index"
@@ -9,15 +9,15 @@
       >
         {{ item.title }}
         <TabTitle v-bind:slots="item.content" v-if="item.content"></TabTitle>
-      </div>
-      <div class="underline"></div>
-    </div>
-    <div :class="['nutui-tab-swiper', swiperClassName]">
-      <div :class="['swiper-wrapper', { 'swiper-no-swiping': noSwiping }]">
+      </view>
+      <view class="underline"></view>
+    </view>
+    <view :class="['nutui-tab-swiper', swiperClassName]">
+      <view :class="['swiper-wrapper', { 'swiper-no-swiping': noSwiping }]">
         <slot></slot>
-      </div>
-    </div>
-  </div>
+      </view>
+    </view>
+  </view>
 </template>
 <script lang="ts">
 import { PropType, reactive, ref, onMounted, watch, VNode } from 'vue';
@@ -26,7 +26,7 @@ const { create } = createComponent('tab');
 import TabTitle from './tabTitle';
 import Swiper from 'swiper';
 import 'swiper/dist/css/swiper.min.css';
-import { extend } from '@vue/shared';
+// import { extend } from '@vue/shared';
 type TabDirection = 'horizontal' | 'vertical';
 
 interface DataTitle {
