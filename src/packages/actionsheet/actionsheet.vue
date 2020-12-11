@@ -82,7 +82,7 @@ export default {
         if (value) {
           document.body.classList.add('nut-overflow-hidden');
         } else {
-          this.removeLockScrool();
+          this.removeLockScroll();
         }
       }
     }
