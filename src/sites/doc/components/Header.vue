@@ -12,27 +12,42 @@
       <div class="nav-box">
         <ul class="nav-list">
           <li class="nav-item" :class="{ active: isActive(header[0].name) }">
-            <router-link :to="header[0].name">{{ header[0].cName }}</router-link>
+            <router-link :to="header[0].name">{{
+              header[0].cName
+            }}</router-link>
           </li>
           <li class="nav-item" :class="{ active: isActive(header[1].name) }">
-            <router-link :to="header[1].name">{{ header[1].cName }}</router-link>
+            <router-link :to="header[1].name">{{
+              header[1].cName
+            }}</router-link>
           </li>
           <li class="nav-item" :class="{ active: isActive(header[2].name) }"
-            ><a href="http://localhost:8080/demo.html#/" style="color:#fff">{{ header[2].cName }}</a></li
+            ><a href="http://localhost:8080/demo.html#/">{{
+              header[2].cName
+            }}</a></li
           >
           <li class="nav-item" :class="{ active: isActive(header[3].name) }">
-            <router-link :to="header[3].name">{{ header[3].cName }}</router-link>
+            <router-link :to="header[3].name">{{
+              header[3].cName
+            }}</router-link>
           </li>
-          <!-- <li :class="{ active: isActive(_package.name) }" v-for="_package in docs.packages" :key="_package">
-            <router-link v-if="!_package.isLink" :to="_package.name.toLowerCase()">{{ _package.cName }}</router-link>
-            <a v-else :href="_package.name" target="_blank">{{ _package.cName }}</a>
-          </li> -->
-
           <li class="nav-item">
-            <div class="header-select-box" @click.stop="data.isShowSelect = !data.isShowSelect" :class="[data.isShowSelect == true ? 'select-up' : 'select-down']">
-              <div class="header-select-hd">{{ data.verson }}<i class=""></i></div>
+            <div
+              class="header-select-box"
+              @click.stop="data.isShowSelect = !data.isShowSelect"
+              :class="[data.isShowSelect == true ? 'select-up' : 'select-down']"
+            >
+              <div class="header-select-hd"
+                >{{ data.verson }}<i class=""></i
+              ></div>
               <div class="header-select-bd" v-show="data.isShowSelect">
-                <div class="header-select-item" v-for="(item, index) in data.versonList" :key="index" @click.stop="checkTheme(item.name, index)" :class="{ active: data.activeIndex === index }">
+                <div
+                  class="header-select-item"
+                  v-for="(item, index) in data.versonList"
+                  :key="index"
+                  @click.stop="checkTheme(item.name, index)"
+                  :class="{ active: data.activeIndex === index }"
+                >
                   {{ item.name }}
                 </div>
               </div>
@@ -87,6 +102,13 @@ export default defineComponent({
       data.isShowSelect = false;
       data.activeIndex = index;
       data.verson = item;
+      if (index === 0) {
+        window.location.href = '//nutui.jd.com/1x/';
+      } else if (index === 1) {
+        window.location.href = 'https://nutui.jd.com/#/index';
+      } else {
+        // window.location.href = ""
+      }
     };
     return {
       header,
@@ -157,7 +179,8 @@ export default defineComponent({
         padding-left: 42px;
         font-size: 14px;
         vertical-align: middle;
-        background: transparent url('../../assets/images/input-search.png') no-repeat;
+        background: transparent url('../../assets/images/input-search.png')
+          no-repeat;
       }
     }
     .nav-box {
@@ -258,7 +281,8 @@ export default defineComponent({
     .header {
       &-logo {
         .logo-link {
-          background: url('../../assets/images/logo-header-white.png') no-repeat center/100%;
+          background: url('../../assets/images/logo-header-white.png') no-repeat
+            center/100%;
         }
         .logo-border {
           background: $theme-red-border;
@@ -333,7 +357,8 @@ export default defineComponent({
     .header {
       &-logo {
         .logo-link {
-          background: url('../../assets/images/logo-header-red.png') no-repeat center/100%;
+          background: url('../../assets/images/logo-header-red.png') no-repeat
+            center/100%;
         }
         .logo-border {
           background: $theme-white-border;
@@ -408,7 +433,8 @@ export default defineComponent({
     .header {
       &-logo {
         .logo-link {
-          background: url('../../assets/images/logo-header-red.png') no-repeat center/100%;
+          background: url('../../assets/images/logo-header-red.png') no-repeat
+            center/100%;
         }
         .logo-border {
           background: $theme-black-border;
