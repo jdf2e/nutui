@@ -251,6 +251,8 @@ export default {
 function addToPackageJson() {
   return new Promise((resolve, reject) => {
       let sort=newCpt.sort;
+      newCpt.sort=nav[sort-1].packages.length+1;
+      console.log(newCpt)
       nav[sort-1].packages.push(newCpt);
       config.nav=nav;
       // conf.packages.push(newCpt);
