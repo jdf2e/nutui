@@ -6,9 +6,7 @@
       <span class="logo-border"></span>
     </div>
     <div class="header-nav">
-      <div class="search-box">
-        <input type="text" class="search-input" placeholder="在 NutUI 中搜索" />
-      </div>
+      <Search />
       <div class="nav-box">
         <ul class="nav-list">
           <li class="nav-item" :class="{ active: isActive(header[0].name) }">
@@ -63,10 +61,14 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive, computed } from 'vue';
+import Search from './Search.vue';
 import { header } from '@/config';
 import { currentRoute, themeColor } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-header',
+  components: {
+    Search
+  },
   setup() {
     const data = reactive({
       theme: 'black',
@@ -172,17 +174,6 @@ export default defineComponent({
     width: calc(100% - 240px);
     min-width: 900px;
     padding: 0 40px;
-    .search-box {
-      font-size: 0;
-      .search-input {
-        height: 22px;
-        padding-left: 42px;
-        font-size: 14px;
-        vertical-align: middle;
-        background: transparent url('../../assets/images/input-search.png')
-          no-repeat;
-      }
-    }
     .nav-box {
       margin-right: 140px;
       .nav-list {
