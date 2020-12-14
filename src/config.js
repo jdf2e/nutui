@@ -1,8 +1,17 @@
 module.exports = {
   versions: [
-    { name: '1.x', link: '/1x/' },
-    { name: '2.x', link: '/' },
-    { name: '3.x', link: '/3x/' }
+    {
+      name: '1.x',
+      link: '/1x/'
+    },
+    {
+      name: '2.x',
+      link: '/'
+    },
+    {
+      name: '3.x',
+      link: '/3x/'
+    }
   ],
   header: [
     {
@@ -26,7 +35,6 @@ module.exports = {
       path: '/resource'
     }
   ],
-
   docs: {
     name: '指南',
     packages: [
@@ -58,7 +66,6 @@ module.exports = {
       }
     ]
   },
-
   nav: [
     {
       name: '布局组件',
@@ -217,6 +224,15 @@ module.exports = {
           show: true,
           desc: '数字输入框组件',
           author: 'szg2008'
+        },
+        {
+          name: 'Input',
+          sort: 2,
+          cName: '输入框',
+          type: 'component',
+          show: true,
+          desc: '输入框组件',
+          author: 'gxx158'
         }
       ]
     },
