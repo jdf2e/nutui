@@ -2,32 +2,22 @@
 
 const inquirer = require('inquirer');
 // import {  ROOT_PACKAGE_PATH } from '../util/dic';
-//const conf = require(ROOT_PACKAGE_PATH('src/config.json'));
-//import {a} from "./a.js"
-// import  {nav}  from '../src/config.js';
-// import { from } from 'core-js/fn/array';
+
 const path = require('path');
 const fs = require('fs');
 const config =require("../src/config");
+const demoModel=require("./demo")
 const nav=config.nav;
-// const copy = require('copy');
-//const createPkgDeclare = require('./createPkgDeclare');
-// const t = require('@babel/types');
-// const { parse } = require('@babel/parser');
-// const { default: traverse } = require('@babel/traverse');
-// const { default: generate } = require('@babel/generator');
-console.log("module.exports = "+JSON.stringify(config, null, 2)+";")
 
 var newCpt = {
-  version: '1.0.0',
+  version: '3.0.0',
   name: '',
   type: '',
   cName: '',
   desc: '',
   sort: '',
-  show: false,
-  author: '',
-  star: undefined
+  show: true,
+  author: ''
 };
 function init() {
   inquirer
@@ -158,7 +148,7 @@ function createIndexJs() {
     // }
     // fs.writeFile(filePath,  content, (err) => {
     //     if (err) throw err;
-    resolve(`生成index.js文件成功`);
+   resolve(`生成index.js文件成功`);
     // });
   });
 }
@@ -166,49 +156,7 @@ function createIndexJs() {
 function createVue() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
-    let content = `<template>
-		<view :class="classes" @click="handleClick">
-		  <view>{{ name }}</view>
-		  <view>{{ txt }}</view>
-		</view>
-	  </template>
-	  <script lang="ts">
-	  import { toRefs } from 'vue';
-	  import { createComponent } from '@/utils/create';
-	  const { componentName, create } = createComponent('temp');
-	  
-	  export default create({
-		props: {
-		  name: {
-			type: String,
-			default: ''
-		  },
-		  txt: {
-			type: String,
-			default: ''
-		  }
-		},
-		components: {},
-		emits: ['click'],
-	  
-		setup(props, { emit }) {
-		  console.log('componentName', componentName);
-	  
-		  const { name, txt } = toRefs(props);
-	  
-		  const handleClick = (event: Event) => {
-			emit('click', event);
-		  };
-	  
-		  return { name, txt, handleClick };
-		}
-	  });
-	  </script>
-	  
-	  <style lang="scss">
-	  @import 'index.scss';
-	  </style>
-	  `;
+    let content = demoModel(nameLc).vue;
     const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`);
     const filePath = path.join(dirPath, `index.vue`);
     if (!fs.existsSync(dirPath)) {
@@ -224,18 +172,7 @@ function createVue() {
 function createDemo() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
-    let content = `<template>
-    <div class="demo-list"></div>
-</template>
-<script>
-export default {
-    data() {
-        return {};
-    },
-    methods: {
-    }
-}
-</script>`;
+    let content = demoModel(nameLc).demo;
     const dirPath = path.join(__dirname, '../src/packages/' + nameLc);
     const filePath = path.join(dirPath, `demo.vue`);
     if (!fs.existsSync(dirPath)) {
@@ -252,7 +189,6 @@ function addToPackageJson() {
   return new Promise((resolve, reject) => {
       let sort=newCpt.sort;
       newCpt.sort=nav[sort-1].packages.length+1;
-      console.log(newCpt)
       nav[sort-1].packages.push(newCpt);
       config.nav=nav;
       // conf.packages.push(newCpt);
@@ -269,7 +205,7 @@ function addToPackageJson() {
 function createScss() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
-    let content = `.nut-temp {}`;
+    let content = `.nut-${nameLc} {}`;
     const dirPath = path.join(__dirname, '../src/packages/' + nameLc);
     const filePath = path.join(dirPath, `index.scss`);
     if (!fs.existsSync(dirPath)) {
@@ -284,7 +220,7 @@ function createScss() {
 function createDoc() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
-    let content = `组建使用说明文件`;
+    let content = demoModel(nameLc).doc;
     const dirPath = path.join(__dirname, '../src/packages/' + nameLc);
     const filePath = path.join(dirPath, `doc.md`);
     if (!fs.existsSync(dirPath)) {
