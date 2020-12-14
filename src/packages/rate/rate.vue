@@ -12,8 +12,7 @@
         marginRight: spacing + 'px',
         backgroundImage: n <= current ? checkedIcon : uncheckedIcon
       }"
-    >
-    </span>
+    ></span>
   </div>
 </template>
 <script>
@@ -69,8 +68,8 @@ export default {
         } else {
           this.current = idx;
         }
-        this.$emit('input', idx);
-        this.$emit('click', idx);
+        this.$emit('input', this.current);
+        this.$emit('click', this.current);
       }
     }
   },
