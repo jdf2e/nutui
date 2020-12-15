@@ -40,7 +40,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/resource',
-    name: '/resource',
+    name: 'resource',
     component: Resource
   }
 ];

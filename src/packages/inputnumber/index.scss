@@ -1,0 +1,21 @@
+.nut-inputnumber {
+  display: flex;
+  align-items: center;
+  input {
+    width: $inputnumber-input-width;
+    height: $inputnumber-input-height;
+    text-align: center;
+    outline: none;
+    border: 0;
+    font-family: initial;
+    background-color: $inputnumber-input-background-color;
+    border-radius: $inputnumber-input-border-radius;
+    &:read-only {
+      color: $disable-color;
+    }
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    appearance: none;
+  }
+}
