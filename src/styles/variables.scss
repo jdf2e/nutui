@@ -53,7 +53,11 @@ $button-primary-background-color: linear-gradient(
 );
 $button-info-color: $white;
 $button-info-border-color: rgba(73, 106, 242, 1);
-$button-info-background-color: linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%);
+$button-info-background-color: linear-gradient(
+  315deg,
+  rgba(73, 143, 242, 1) 0%,
+  rgba(73, 101, 242, 1) 100%
+);
 $button-success-color: $white;
 $button-success-border-color: rgba(38, 191, 38, 1);
 $button-success-background-color: linear-gradient(
@@ -97,4 +101,11 @@ $icon-line-height: 20px;
 
 $uploader-width: 100px;
 $uploader-height: 100px;
-$uploader-babackground: #f7f8fa;
+$uploader-background: #f7f8fa;
+
+// inputnumber
+
+$inputnumber-input-background-color: $help-color;
+$inputnumber-input-border-radius: 8px;
+$inputnumber-input-width: 40px;
+$inputnumber-input-height: 20px;

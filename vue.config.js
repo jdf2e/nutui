@@ -10,7 +10,7 @@ module.exports = {
     open: true,
     proxy: {
       '/devServer': {
-        target: 'https://nutui-server.jd.com',
+        target: 'http://nutui-server.jd.com',
         changeOrigin: true,
         pathRewrite: {
           '^/devServer': ''

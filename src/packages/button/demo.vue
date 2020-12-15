@@ -34,12 +34,22 @@
     <h2>按钮尺寸</h2>
     <div class="demo-button-row2">
       <div class="demo-button-row2">
-        <nut-button block type="primary">通栏按钮</nut-button>
+        <nut-button size="large" type="primary">大号按钮</nut-button>
       </div>
-      <div class="demo-button-row2">
-        <nut-button type="primary">普通按钮</nut-button>
-        <nut-button size="small" type="primary">小型按钮</nut-button>
-      </div>
+      <nut-button type="primary">普通按钮</nut-button>
+      <nut-button size="small" type="primary">小型按钮</nut-button>
+    </div>
+    <h2>块级元素</h2>
+    <div class="demo-button-row2">
+      <nut-button block type="primary">块级元素</nut-button>
+    </div>
+    <h2>自定义颜色</h2>
+    <div class="demo-button-row2">
+      <nut-button color="#7232dd">单色按钮</nut-button>
+      <nut-button color="#7232dd" plain>单色按钮</nut-button>
+      <nut-button color="linear-gradient(to right, #ff6034, #ee0a24)">
+        渐变按钮
+      </nut-button>
     </div>
   </div>
 </template>
