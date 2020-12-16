@@ -180,6 +180,15 @@ export const nav = [
         show: true,
         desc: '头像',
         author: 'ailululu'
+      },
+      {
+        name: 'Menu',
+        sort: 8,
+        cName: '菜单',
+        type: 'component',
+        show: true,
+        desc: '菜单',
+        author: 'vickyYE'
       }
     ]
   },
