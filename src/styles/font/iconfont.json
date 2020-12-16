@@ -6,6 +6,13 @@
   "description": "nutui 3.0字体管理",
   "glyphs": [
     {
+      "icon_id": "18845108",
+      "name": "Check",
+      "font_class": "Check",
+      "unicode": "e6ac",
+      "unicode_decimal": 59052
+    },
+    {
       "icon_id": "18536362",
       "name": "plus",
       "font_class": "plus",
