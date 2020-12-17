@@ -233,6 +233,16 @@ module.exports = {
           show: true,
           desc: '输入框组件',
           author: 'gxx158'
+        },
+        {
+          version: '3.0.0',
+          name: 'Switch',
+          type: 'component',
+          cName: '开关组件',
+          desc: '用来打开或关闭选项',
+          sort: 3,
+          show: true,
+          author: 'zongyue3'
         }
       ]
     },
