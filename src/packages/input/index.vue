@@ -1,43 +1,230 @@
 <template>
-		<view :class="classes" @click="handleClick">
-		  <view>{{ name }}</view>
-		  <view>{{ txt }}</view>
-		</view>
-	  </template>
-	  <script lang="ts">
-	  import { toRefs } from 'vue';
-	  import { createComponent } from '@/utils/create';
-	  const { componentName, create } = createComponent('temp');
-	  
-	  export default create({
-		props: {
-		  name: {
-			type: String,
-			default: ''
-		  },
-		  txt: {
-			type: String,
-			default: ''
-		  }
-		},
-		components: {},
-		emits: ['click'],
-	  
-		setup(props, { emit }) {
-		  console.log('componentName', componentName);
-	  
-		  const { name, txt } = toRefs(props);
-	  
-		  const handleClick = (event: Event) => {
-			emit('click', event);
-		  };
-	  
-		  return { name, txt, handleClick };
-		}
-	  });
-	  </script>
-	  
-	  <style lang="scss">
-	  @import 'index.scss';
-	  </style>
-	  
+  <view :class="['nut-input', { 'nut-input-disabled': disabled }]">
+    <view class="nut-input-label">
+      <view class="nut-input-require" v-if="requireShow">*</view>
+      <view v-if="label">{{ label }}</view>
+    </view>
+
+    <view v-if="type === 'textarea'" class="nut-text">
+      <textarea
+        :style="styles"
+        :rows="rows"
+        @input="valueChange"
+        v-model="state.curretvalue"
+        class="nut-text-core"
+        :maxlength="maxLength"
+        :placeholder="placeholder"
+        :disabled="disabled"
+        :readonly="readonly"
+      >
+      </textarea>
+      <span class="nut-text-limit" v-if="limitShow">
+        <span :class="[{ 'nut-field-over': state.textNum > maxLength }]">{{
+          state.textNum
+        }}</span>
+        <span>/{{ maxLength }}</span>
+      </span>
+    </view>
+    <input
+      v-else
+      class="input-text"
+      :style="styles"
+      :type="type"
+      :maxlength="maxLength"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :readonly="readonly"
+      v-model="state.curretvalue"
+      @input="valueChange"
+      @focus="focus"
+      @blur="blur"
+    />
+    <!-- <view
+      @click="handleClear"
+      class="nut-textinput-clear"
+      v-if="!disableClear && !readonly"
+      v-show="type !== 'textarea' && active"
+    >
+      <svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+        <path
+          d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm2.8 9.7c.3.3.3.8 0 1.1s-.8.3-1.1 0L8 9.1l-1.7 1.7c-.3.3-.8.3-1.1 0-.3-.3-.3-.8 0-1.1L6.9 8 5.2 6.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0L8 6.9l1.7-1.7c.3-.3.8-.3 1.1 0 .3.3.3.8 0 1.1L9.1 8l1.7 1.7z"
+        />
+      </svg>
+    </view> -->
+  </view>
+</template>
+<script lang="ts">
+import { ref, toRefs, reactive, computed } from 'vue';
+import { createComponent } from '@/utils/create';
+const { create } = createComponent('input');
+import { formatNumber } from './util';
+export default create({
+  props: {
+    type: {
+      type: String,
+      default: 'text'
+    },
+    textAlign: {
+      type: String,
+      default: 'left'
+    },
+    limitShow: {
+      type: Boolean,
+      default: false
+    },
+    maxLength: {
+      type: String,
+      default: ''
+    },
+    requireShow: {
+      type: Boolean,
+      default: false
+    },
+    rows: String,
+    label: String,
+    placeholder: {
+      type: String,
+      default: '请输入信息'
+    },
+    readonly: Boolean,
+    disabled: Boolean,
+    autosize: {
+      type: Boolean,
+      default: false
+    },
+    value: {
+      type: [String, Number],
+      default: ''
+    },
+    disableClear: {
+      type: Boolean,
+      default: false
+    }
+  },
+  components: {},
+  emits: ['change', 'update:value', 'blur', 'focus'],
+
+  setup(props, { emit }) {
+    interface Events {
+      eventName: 'change';
+      params: (string | number | Event)[];
+    }
+
+    const {
+      label,
+      placeholder,
+      disabled,
+      readonly,
+      requireShow,
+      maxLength,
+      rows
+    } = props;
+    const { value } = toRefs(props);
+    const active = ref(false);
+    const state = reactive({
+      curretvalue: value,
+      textNum: String(value.value).length
+    });
+    const styles = computed(() => {
+      const rize =
+        props.type == 'textarea'
+          ? `'resize':${props.autosize ? 'none' : 'horizontal'}`
+          : '';
+      return {
+        'text-align': props.textAlign,
+        rize
+      };
+    });
+    const emitChange = envs => {
+      envs.forEach(item => {
+        emit(item.eventName, ...item.params);
+      });
+    };
+    const valueChange = (e: Event) => {
+      const input = e.target as HTMLInputElement;
+      let val = input.value;
+
+      if (maxLength && val.length > Number(maxLength)) {
+        val = val.slice(0, Number(maxLength));
+        emitChange([
+          {
+            eventName: 'error',
+            params: [val]
+          }
+        ]);
+      }
+      if (props.type == 'digit') {
+        val = formatNumber(val, true);
+      }
+      if (props.type == 'number') {
+        val = formatNumber(val, false);
+      }
+      state.textNum = val.length;
+      input.value = val;
+      state.curretvalue = val;
+      emitChange([
+        {
+          eventName: 'update:value',
+          params: [val]
+        },
+        {
+          eventName: 'change',
+          params: [val]
+        }
+      ]);
+    };
+    const focus = (e: Event) => {
+      active.value = true;
+      const input = e.target as HTMLInputElement;
+      let val = input.value;
+      val = String(val);
+      emitChange([
+        {
+          eventName: 'update:value',
+          params: [state.curretvalue]
+        },
+        {
+          eventName: 'focus',
+          params: [val]
+        }
+      ]);
+    };
+    const blur = () => {
+      //active.value = false;
+      // const input = e.target as HTMLInputElement;
+      // let val = input.value;
+      // emitChange([
+      //   {
+      //     eventName: 'update:modelValue',
+      //     params: [val]
+      //   },
+      //   {
+      //     eventName: 'focus',
+      //     params: [val]
+      //   }
+      // ]);
+    };
+    return {
+      value,
+      requireShow,
+      readonly,
+      placeholder,
+      label,
+      disabled,
+      rows,
+      state,
+      styles,
+      active,
+      maxLength,
+      valueChange,
+      focus,
+      blur,
+      emitChange
+    };
+  }
+});
+</script>
+
+<style lang="scss">
+@import 'index.scss';
+</style>

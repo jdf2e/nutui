@@ -1,8 +1,17 @@
 module.exports = {
   versions: [
-    { name: '1.x', link: '/1x/' },
-    { name: '2.x', link: '/' },
-    { name: '3.x', link: '/3x/' }
+    {
+      name: '1.x',
+      link: '/1x/'
+    },
+    {
+      name: '2.x',
+      link: '/'
+    },
+    {
+      name: '3.x',
+      link: '/3x/'
+    }
   ],
   header: [
     {
@@ -26,7 +35,6 @@ module.exports = {
       path: '/resource'
     }
   ],
-
   docs: {
     name: '指南',
     packages: [
@@ -58,7 +66,6 @@ module.exports = {
       }
     ]
   },
-
   nav: [
     {
       name: '布局组件',
@@ -89,6 +96,33 @@ module.exports = {
           show: false,
           desc: '折叠面板-item',
           author: 'Ymm0008'
+        },
+        {
+          name: 'Layout',
+          sort: 4,
+          cName: '布局',
+          type: 'component',
+          show: true,
+          desc: '简便地创建布局',
+          author: 'undo'
+        },
+        {
+          name: 'col',
+          sort: 5,
+          cName: '布局-Col',
+          type: 'component',
+          show: false,
+          desc: '布局组件Col',
+          author: 'undo'
+        },
+        {
+          name: 'row',
+          sort: 6,
+          cName: '布局-Row',
+          type: 'component',
+          show: false,
+          desc: '布局组件Row',
+          author: 'undo'
         }
       ]
     },
@@ -217,6 +251,34 @@ module.exports = {
           show: true,
           desc: '数字输入框组件',
           author: 'szg2008'
+        },
+        {
+          name: 'Input',
+          sort: 2,
+          cName: '输入框',
+          type: 'component',
+          show: true,
+          desc: '输入框组件',
+          author: 'gxx158'
+        },
+        {
+          version: '3.0.0',
+          name: 'Switch',
+          type: 'component',
+          cName: '开关组件',
+          desc: '用来打开或关闭选项',
+          sort: 3,
+          show: true,
+          author: 'zongyue3'
+        },
+        {
+          name: 'Rate',
+          sort: 2,
+          cName: '评分',
+          type: 'component',
+          show: true,
+          desc: '评分组件',
+          author: 'undo'
         }
       ]
     },
