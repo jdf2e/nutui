@@ -2,6 +2,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Index from './views/Index.vue';
 import Resource from './views/Resource.vue';
+import Main from './views/Main.vue';
 
 const pagesRouter: Array<RouteRecordRaw> = [];
 const files = require.context('@/packages', true, /doc\.md$/);
@@ -30,7 +31,14 @@ const routes: Array<RouteRecordRaw> = [
     name: '/',
     component: Index,
     children: pagesRouter
-  }, {
+  },
+  {
+    path: '/main',
+    name: '/main',
+    component: Main
+    // children: pagesRouter
+  },
+  {
     path: '/resource',
     name: 'resource',
     component: Resource
