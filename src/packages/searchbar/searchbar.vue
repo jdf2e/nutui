@@ -6,7 +6,7 @@
         <input
           type="search"
           :value="value"
-          :placeholder="placeText || nutTranslate('lang.searchbar.placeText')"
+          :placeholder="placeText == undefined ? nutTranslate('lang.searchbar.placeText') : placeText"
           @keyup.enter="submitFun"
           @input="inputFun"
           @blur="blurFun"
