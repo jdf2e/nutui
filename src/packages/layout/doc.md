@@ -1,6 +1,23 @@
-# Flex 布局
+# Layout 布局
 
-## 基本用法
+### 介绍
+
+用于快速进行布局
+
+### 安装
+
+``` javascript
+import { createApp } from 'vue';
+import { Row, Col } from '@nutui/nutui';
+
+const app = createApp();
+app.use(Row);
+app.use(Col);
+```
+
+## 代码演示
+
+### 基本用法
 
 ```html
 <nut-row>
@@ -59,7 +76,7 @@
 
 ```
 
-## 设置元素间距
+### 设置元素间距
 
 ```html
 <nut-row :gutter="10">
@@ -79,9 +96,9 @@
             
 ```
 
-## Flex布局
+### Flex布局
 
-### wrap（是否换行）
+#### wrap（是否换行）
 
 ```html
 <nut-row type="flex" flexWrap="nowrap" :gutter="10">
@@ -156,7 +173,7 @@
 
 ```
 
-### justify（主轴方向）
+#### justify（主轴方向）
 
 ```html
 <nut-row type="flex">
@@ -217,7 +234,7 @@
 
 ```
 
-### align（侧轴方向）
+#### align（侧轴方向）
 
 ```html
 <nut-row type="flex" gutter="10" align="flex-start">
@@ -256,7 +273,7 @@
 
 ```
 
-## 分栏偏移
+### 分栏偏移
 
 ```html
 <nut-row type="flex">
