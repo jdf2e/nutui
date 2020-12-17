@@ -1,0 +1,26 @@
+.nut-switch {
+  display: flex;
+  align-items: center;
+  width: 72px;
+  height: 42px;
+  background-image: linear-gradient(
+    135deg,
+    rgba(250, 44, 25, 1) 0%,
+    rgba(250, 63, 25, 1) 45%,
+    rgba(250, 89, 25, 1) 83%,
+    rgba(250, 100, 25, 1) 100%
+  );
+  border-radius: 25px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  flex: 0 0 auto; // 防止被压缩
+  .switch-button {
+    display: flex;
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 1);
+    transform: translateX(146%);
+  }
+}
