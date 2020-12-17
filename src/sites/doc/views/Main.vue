@@ -17,7 +17,11 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from 'vue';
-import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute } from 'vue-router';
+import {
+  onBeforeRouteUpdate,
+  RouteLocationNormalized,
+  useRoute
+} from 'vue-router';
 import { currentRoute } from '@/sites/assets/util/ref';
 import Header from '@/sites/doc/components/Header.vue';
 export default defineComponent({
@@ -56,7 +60,8 @@ export default defineComponent({
       margin-top: 10px;
       width: 69px;
       height: 27px;
-      background: url(https://storage.360buyimg.com/imgtools/09516173b9-9b32b9d0-3864-11eb-9a56-0104487ad2b0.png) no-repeat;
+      background: url(https://storage.360buyimg.com/imgtools/09516173b9-9b32b9d0-3864-11eb-9a56-0104487ad2b0.png)
+        no-repeat;
       background-size: cover;
     }
     .content-subTitle {
@@ -73,7 +78,13 @@ export default defineComponent({
         color: rgba(255, 255, 255, 1);
         width: 170px;
         height: 50px;
-        background: linear-gradient(135deg, rgba(250, 25, 44, 1) 0%, rgba(250, 39, 40, 1) 45%, rgba(250, 56, 31, 1) 83%, rgba(250, 63, 25, 1) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(250, 25, 44, 1) 0%,
+          rgba(250, 39, 40, 1) 45%,
+          rgba(250, 56, 31, 1) 83%,
+          rgba(250, 63, 25, 1) 100%
+        );
         border-radius: 29px;
       }
       .rightButton {
@@ -94,7 +105,8 @@ export default defineComponent({
     .content-img {
       width: 900px;
       height: 514px;
-      background: url(https://storage.360buyimg.com/imgtools/732c3242e9-9b1946b0-391a-11eb-8a8d-55c57d054ae1.png) no-repeat;
+      background: url(https://storage.360buyimg.com/imgtools/732c3242e9-9b1946b0-391a-11eb-8a8d-55c57d054ae1.png)
+        no-repeat;
       background-size: cover;
     }
   }

@@ -96,6 +96,33 @@ module.exports = {
           show: false,
           desc: '折叠面板-item',
           author: 'Ymm0008'
+        },
+        {
+          name: 'Layout',
+          sort: 4,
+          cName: '布局',
+          type: 'component',
+          show: true,
+          desc: '简便地创建布局',
+          author: 'undo'
+        },
+        {
+          name: 'col',
+          sort: 5,
+          cName: '布局-Col',
+          type: 'component',
+          show: false,
+          desc: '布局组件Col',
+          author: 'undo'
+        },
+        {
+          name: 'row',
+          sort: 6,
+          cName: '布局-Row',
+          type: 'component',
+          show: false,
+          desc: '布局组件Row',
+          author: 'undo'
         }
       ]
     },
@@ -243,6 +270,15 @@ module.exports = {
           sort: 3,
           show: true,
           author: 'zongyue3'
+        },
+        {
+          name: 'Rate',
+          sort: 2,
+          cName: '评分',
+          type: 'component',
+          show: true,
+          desc: '评分组件',
+          author: 'undo'
         }
       ]
     },
