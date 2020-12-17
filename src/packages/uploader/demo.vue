@@ -192,7 +192,8 @@ export default {
       console.log(event, '可以处理input选择的内容');
       return {
         event: event,
-        data: ''
+        data: '',
+        fileBlob: undefined // 强制修改file文件，此参数最终会作为formData中的文件流进行上传，替换event中的file
       };
     },
     demo1UploadStart() {

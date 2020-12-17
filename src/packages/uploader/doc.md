@@ -177,12 +177,15 @@ preview(file) {
   ><nut-button small>上传图片前处理图片内容</nut-button></nut-uploader>
 ```
 ```js
-test($ev){   
-  console.log($ev,'可以处理input选择的内容')  
-  return {
-    event:$ev,
-    data:''
-  }
+test(event) {
+    console.log(event, '可以处理input选择的内容');
+    // ... 自定义逻辑
+    return {
+      event: event,
+      data: '',
+      fileBlob: undefined // 强制修改file文件，此参数最终会作为formData中的文件流进行上传，替换event中的file
+    };
+}
 },
 ```
 
