@@ -3,13 +3,7 @@
   align-items: center;
   width: 72px;
   height: 42px;
-  background-image: linear-gradient(
-    135deg,
-    rgba(250, 44, 25, 1) 0%,
-    rgba(250, 63, 25, 1) 45%,
-    rgba(250, 89, 25, 1) 83%,
-    rgba(250, 100, 25, 1) 100%
-  );
+  background-color: rgb(250, 63, 25, 1);
   border-radius: 25px;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -17,10 +11,27 @@
   flex: 0 0 auto; // 防止被压缩
   .switch-button {
     display: flex;
+    align-items: center;
+    justify-content: center;
     width: 26px;
     height: 26px;
     border-radius: 13px;
     background: rgba(255, 255, 255, 1);
+    transition: transform 0.3s;
+    transform: translateX(30%);
+  }
+}
+.switch-open {
+  .switch-button {
     transform: translateX(146%);
+  }
+}
+.switch-close {
+  background-color: rgba(235, 235, 235, 1);
+  .close-line {
+    width: 16px;
+    height: 4px;
+    background: rgba(240, 240, 240, 1);
+    border-radius: 4px;
   }
 }
