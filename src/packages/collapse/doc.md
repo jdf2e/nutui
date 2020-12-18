@@ -1,5 +1,12 @@
 # Collapse 折叠面板
 
+> 按需加载方法
+
+``` javascript
+import { Collapse, CollapseItem } from '@nutui/nutui';
+Collapse.install(Vue);
+CollapseItem.install(Vue);
+```
 ## 基本用法
 
 通过`v-model`控制展开的面板列表，`activeNames`为数组格式
@@ -109,3 +116,5 @@ export default {
 | sub-title | 标题栏副标题 | string | - |
 | icon | 标题栏自定义图标链接 | string | - |
 | rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | string \ number | 180 |
+
+> 说明：使用折叠面板组件，请保证 NutUI 的版本在 V2.2.11 及以上

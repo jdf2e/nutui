@@ -44,7 +44,7 @@
               <img src="https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png" />
             </div>
           </div>
-          <div class="key-board-wrapper" @click="() => closeBoard()">
+          <div class="key-board-wrapper" @click="() => closeBoard()" v-if="title == ''">
             <div :class="['key', 'finish', { activeFinsh: clickKeyIndex == 'finish' }]">
               完成
             </div>
@@ -113,7 +113,11 @@ export default {
         let e = event || window.event;
         let elem = e.target;
         if (targetArea.contains(elem)) {
+          let text = elem.innerText;
           // console.log("在区域内");
+          if (text == '完成') {
+            that.$emit('close');
+          }
         } else {
           // console.log("在区域外");
           if (that.once == 0 && that.visible) {
@@ -124,6 +128,11 @@ export default {
         }
       });
     });
+  },
+  created() {
+    if (this.visible) {
+      this.once += 1;
+    }
   },
   methods: {
     getBasicKeys() {
@@ -154,6 +163,8 @@ export default {
         if (this.title) {
           keys.push({ id: 'delete', type: 'delete' });
         }
+      } else {
+        keys.push({ id: 0, type: 'number' });
       }
       return keys;
     },
