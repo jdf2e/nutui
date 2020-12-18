@@ -80,7 +80,7 @@
       </nut-row>
     </div>
     <h4>Flex布局</h4>
-    <h6>wrap（是否换行）</h6>
+    <h4>wrap（是否换行）</h4>
     <div class="box-item">
       <nut-row type="flex" flexWrap="nowrap" :gutter="10">
         <nut-col :span="6">
@@ -156,7 +156,7 @@
         </nut-col>
       </nut-row>
     </div>
-    <h6>justify（主轴方向）</h6>
+    <h4>justify（主轴方向）</h4>
     <div class="box-item">
       <nut-row type="flex">
         <nut-col :span="6">
@@ -222,7 +222,7 @@
         </nut-col>
       </nut-row>
     </div>
-    <h6>align（侧轴方向）</h6>
+    <h4>align（侧轴方向）</h4>
     <div class="box-item">
       <nut-row type="flex" gutter="10" align="flex-start">
         <nut-col :span="6">
