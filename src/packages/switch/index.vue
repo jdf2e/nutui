@@ -1,49 +1,83 @@
 <template>
-  <view :style="styles" class="nut-switch">
-    <view class="switch-button" @click="onClick"></view>
+  <view
+    @click="onClick"
+    :style="style"
+    class="nut-switch"
+    :class="[isOpen ? 'switch-open' : 'switch-close']"
+  >
+    <view class="switch-button">
+      <view v-show="!isOpen" class="close-line"></view>
+    </view>
   </view>
 </template>
 
 <script lang="ts">
-import { toRefs, computed } from 'vue';
+import { toRefs, computed, reactive, onMounted } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('switch');
 
 export default create({
   props: {
-    checked: {
+    status: {
       type: Boolean,
       default: true
     },
     activeColor: {
       type: String,
-      default:
-        'linear-gradient(135deg, rgba(250,44,25,1) 0%,rgba(250,63,25,1) 45%,rgba(250,89,25,1) 83%,rgba(250,100,25,1) 100%);'
+      default: ''
     },
     inactiveColor: {
       type: String,
-      default: '#fff'
+      default: ''
     }
   },
 
   setup(props, { emit }) {
-    const { checked, activeColor, inactiveColor } = toRefs(props);
+    const { status, activeColor, inactiveColor } = toRefs(props);
+    const actColor = activeColor.value;
+    const inaColor = inactiveColor.value;
 
-    const styles = computed(() => {
-      return {
-        backgroundColor: `${activeColor.value}`
-      };
+    const response = reactive({
+      isOpen: status.value ? status.value : true,
+      style: {}
     });
 
+    const styleCheck = status => {
+      if (status) {
+        if (actColor) {
+          response.style = {
+            backgroundColor: `${actColor}`
+          };
+        } else {
+          response.style = {
+            backgroundColor: 'rgb(250,63,25,1)'
+          };
+        }
+      }
+      if (!status) {
+        if (inaColor) {
+          response.style = {
+            backgroundColor: `${inaColor}`
+          };
+        } else {
+          response.style = {
+            backgroundColor: 'rgba(235,235,235,1)'
+          };
+        }
+      }
+    };
+
+    styleCheck(status.value);
+
     const onClick = () => {
-      checked.value = !checked.value;
-      emit('switch-change', event);
+      response.isOpen = !response.isOpen;
+      styleCheck(response.isOpen);
+      emit('switch-change', event, response.isOpen);
     };
 
     return {
-      styles,
-      onClick,
-      checked
+      ...toRefs(response),
+      onClick
     };
   }
 });
