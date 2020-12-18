@@ -68,6 +68,9 @@ export default {
       this.chooseValueData = [...this.defaultValueData];
       this.cacheValueData = [...this.defaultValueData];
       this.$emit('confirm', this.cacheValueData);
+    },
+    listData: function() {
+      this.init();
     }
   },
   methods: {
@@ -97,7 +100,7 @@ export default {
       }
     }
   },
-  created() {
+  init() {
     if (this.defaultValueData && this.defaultValueData.length) {
       this.chooseValueData = [...this.defaultValueData];
     } else {
@@ -107,6 +110,9 @@ export default {
       });
       this.chooseValueData = [...defaultValueData];
     }
+  },
+  created() {
+    this.init();
   }
 };
 </script>
