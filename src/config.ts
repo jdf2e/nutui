@@ -262,6 +262,15 @@ export const nav = [
         show: true,
         desc: '评分组件',
         author: 'undo'
+      },
+      {
+        name: 'Switch',
+        type: 'component',
+        cName: '开关组件',
+        desc: '用来打开或关闭选项',
+        sort: 3,
+        show: true,
+        author: 'zongyue3'
       }
     ]
   },
