@@ -1,3 +1,46 @@
+## 2.2.13
+
+`2020-12-18`
+
+* :sparkles: feat(infiniteloading)：增加 loading 与 unloadMore 插槽 @yangxiaolu1993
+* :sparkles: feat(rate)：评分增加取消功能 @zy19940510、@undo03
+* :sparkles: feat(imagepicker)：支持清空预览列表 #346 @szg2008
+* :sparkles: feat(uploader)：支持file文件流修改逻辑（压缩图片、加水印等功能） @richard1015
+* :sparkles: upd(collapse)：优化依赖组件引用方式 @Ymm0008
+* :bug: fix(scroll)：修复vertical-scroll.vue组件下拉刷新距离设置无效的bug  #358 @langyuxiansheng
+* :bug: fix(searchBar)：修复ios下键盘没有搜索按钮 @yangxiaolu1993
+* :bug: fix(notify)：修复背景颜色无法设置问题 @shenqistart
+* :bug: fix(searchBar)：优化 placeholder 不可设置为空问题 @yangxiaolu1993
+* :bug: fix(textinput)：修复label提示样式问题 @Drjingfubo
+* :bug: fix(actionsheet)：methods rename @guoxiao158
+* :bug: fix(picker)：listData异步更新问题 #355 @richard1015
+* :bug: fix(numberkeyboard)：解决数字键盘“完成”不隐藏问题，优化文档 @Ymm0008
+* :zap: doc：dialog 文档bug修改，新增资源相关文章 @richard1015 
+
+## 2.2.12
+
+`2020-11-10`
+
+* :sparkles: feat(leftSlip)：支持用户通过 api 侧滑关闭单元格 @richard1015
+* :sparkles: feat(slider)：新增 change 事件，支持用户自定义监听 @richard1015
+* :sparkles: feat(infiniteloading)：新增 container-id 字段，支持自定义滚动容器  @shenqistart
+* :sparkles: feat(uploader)：新增 multiple 字段，支持单选多选功能 @richard1015
+* :sparkles: feat(infiniteloading)：新增 isShowBottomTips 字段，支持用户自定义控制底部加载提示 @richard1015
+* :sparkles: upd(collapse)：优化依赖组件引用方式 @Ymm0008
+* :bug: fix(countup)：修复组件异步更新问题 @Ymm0008
+* :bug: fix(address)：修复组件快速点击，popup 层无法展开问题 @yangxiaolu1993
+* :bug: fix(toast)：修复文档 bottom 类型和默认值 @zy19940510
+* :bug: fix(toast)：修复loading方法无法同步关闭问题 @richard1015
+
+## 2.2.11
+
+`2020-09-27`
+ 
+* :sparkles: feat(collapse)：新增折叠面板组件 @Ymm0008
+* :sparkles: feat(numberkeyboard)：新增数字键盘组件 @Ymm0008
+* :sparkles: feat(luckycard)：新增刮奖组件 @guoxiao158
+* :bug: fix(drag)：修复 drag 拖动边界和自定义位置冲突的问题 @zy19940510 
+
 ## 2.2.10
 
 `2020-08-21`

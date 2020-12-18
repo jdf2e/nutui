@@ -80,3 +80,10 @@
 | showLabelAlways | 是否一直展示标签 | Boolean | false
 | showRangeTxt | 两端是否展示可选取范围 | Boolean | false
 | stage | 分段数 | Number/String | -
+
+## Event
+
+| 名称 | 说明 | 回调参数 
+|----- | ----- | ----- 
+| change | 滑动时触发函数 | value
+

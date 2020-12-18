@@ -1,0 +1,113 @@
+.nut-numberkeyboard {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+  width: 100%;
+  padding-bottom: 22px;
+  background-color: #f2f3f5;
+  user-select: none;
+  .number-board-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: content-box;
+    height: 34px;
+    padding-top: 6px;
+    color: #646566;
+    font-size: 16px;
+    .tit {
+      display: inline-block;
+    }
+    .keyboard-close {
+      position: absolute;
+      display: block;
+      right: 0;
+      padding: 0 16px;
+      color: #576b95;
+      font-size: 14px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  }
+  .number-board-body {
+    display: flex;
+    padding: 6px 0 0 6px;
+    .number-board {
+      display: flex;
+      flex: 3;
+      flex-wrap: wrap;
+    }
+    .key-board-wrapper {
+      position: relative;
+      flex: 1;
+      flex-basis: 33%;
+      box-sizing: border-box;
+      padding: 0 6px 6px 0;
+      .key {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        font-size: 28px;
+        line-height: 1.5;
+        background-color: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .active {
+        background-color: #ebedf0;
+      }
+      img {
+        width: 30px;
+        height: 24px;
+      }
+    }
+    .key-board-wrapper-large {
+      flex-basis: 66%;
+    }
+    .number-board-sidebar {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      .key-board-wrapper {
+        .key {
+          position: absolute;
+          top: 0;
+          right: 6px;
+          bottom: 6px;
+          left: 0;
+          height: auto;
+        }
+        .finish {
+          font-size: 16px;
+          color: #fff;
+          background-color: #1989fa;
+        }
+        .activeFinsh {
+          background-color: #0570db;
+        }
+      }
+    }
+  }
+}
+.nut-board-slide-up {
+  &-enter-active {
+    animation: nut-board-slide-up-enter 0.3s both ease-out;
+  }
+  &-leave-active {
+    animation: nut-board-slide-up-leave 0.3s both ease-in;
+  }
+}
+@keyframes nut-board-slide-up-enter {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+@keyframes nut-board-slide-up-leave {
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}

@@ -3,6 +3,11 @@
   align-items: center;
   position: relative;
 
+  &-label {
+    line-height: 1.5;
+    font-size: 14px;
+    color: #2d2d2d;
+  }
   input {
     flex: 1;
     height: 40px;

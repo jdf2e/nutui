@@ -6,7 +6,7 @@
     </div>
     <p>右侧搜索按钮可根据需要进行配置</p>
     <div class="demo1">
-      <nut-searchbar v-model="value" placeText="请输入自定义文案" :hasSearchButton="false"></nut-searchbar>
+      <nut-searchbar v-model="value" placeText="" :hasSearchButton="false"></nut-searchbar>
     </div>
     <p>可配置输入框前面是否显示搜索图标、右侧是否显示文字按钮、显示文字、自定义 class</p>
     <div class="demo1">

@@ -135,7 +135,7 @@ export default {
       if (type === 'end') {
         if (updateMove > 0) {
           this.realMove = 0;
-          if ((!this.isShowLoadMore || this.isFirstPull) && !this.isLoading && updateMove > 20) {
+          if ((!this.isShowLoadMore || this.isFirstPull) && !this.isLoading && updateMove > this.stretch) {
             updateMove = 50;
             clearTimeout(this.timerEmit);
             this.timerEmit = setTimeout(() => {

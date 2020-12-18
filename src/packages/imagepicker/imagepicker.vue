@@ -89,6 +89,11 @@ export default {
       list: []
     };
   },
+  watch: {
+    imgList: function(val) {
+      this.list = val;
+    }
+  },
   mounted() {
     this.list = this.imgList;
   },

@@ -1,12 +1,12 @@
 <template>
   <div :class="['nut-searchbar', customClass ? customClass : '']">
     <div class="search-input" :class="[animation ? 'nut-search-ani' : '', inputFocusAnimation ? 'focus' : '']">
-      <form id="input-form" @submit.prevent>
+      <form id="input-form" action="javascript:return true">
         <nut-icon type="search" v-if="hasIcon" :size="searchIconSize" :color="searchIconColor"></nut-icon>
         <input
           type="search"
           :value="value"
-          :placeholder="placeText || nutTranslate('lang.searchbar.placeText')"
+          :placeholder="placeText == undefined ? nutTranslate('lang.searchbar.placeText') : placeText"
           @keyup.enter="submitFun"
           @input="inputFun"
           @blur="blurFun"

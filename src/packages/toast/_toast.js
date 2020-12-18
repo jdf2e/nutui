@@ -33,9 +33,9 @@ let currentOptions = {
 function _showToast() {
   instance.vm = instance.$mount();
   document.body.appendChild(instance.$el);
-  Vue.nextTick(() => {
-    instance.visible = true;
-  });
+  // Vue.nextTick(() => {
+  instance.visible = true;
+  // });
 }
 
 function _getInstance(obj) {
