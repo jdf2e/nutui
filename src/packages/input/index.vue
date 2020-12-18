@@ -34,23 +34,23 @@
       :placeholder="placeholder"
       :disabled="disabled"
       :readonly="readonly"
-      v-model="state.curretvalue"
+      :value="state.curretvalue"
       @input="valueChange"
-      @focus="focus"
-      @blur="blur"
+      @focus="valueFocus"
+      @blur="valueBlur"
     />
-    <!-- <view
+    <view
       @click="handleClear"
       class="nut-textinput-clear"
       v-if="!disableClear && !readonly"
-      v-show="type !== 'textarea' && active"
+      v-show="type !== 'textarea'  && active"
     >
       <svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
         <path
           d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm2.8 9.7c.3.3.3.8 0 1.1s-.8.3-1.1 0L8 9.1l-1.7 1.7c-.3.3-.8.3-1.1 0-.3-.3-.3-.8 0-1.1L6.9 8 5.2 6.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0L8 6.9l1.7-1.7c.3-.3.8-.3 1.1 0 .3.3.3.8 0 1.1L9.1 8l1.7 1.7z"
         />
       </svg>
-    </view> -->
+    </view>
   </view>
 </template>
 <script lang="ts">
@@ -102,11 +102,11 @@ export default create({
     }
   },
   components: {},
-  emits: ['change', 'update:value', 'blur', 'focus'],
+  emits: ['change', 'update:value', 'blur', 'focus','clear'],
 
   setup(props, { emit }) {
     interface Events {
-      eventName: 'change';
+      eventName: 'change' | 'focus'|'blur';
       params: (string | number | Event)[];
     }
 
@@ -159,9 +159,9 @@ export default create({
       if (props.type == 'number') {
         val = formatNumber(val, false);
       }
-      state.textNum = val.length;
-      input.value = val;
-      state.curretvalue = val;
+       state.textNum = val.length;
+      // input.value = val;
+       //state.curretvalue = val;
       emitChange([
         {
           eventName: 'update:value',
@@ -173,7 +173,7 @@ export default create({
         }
       ]);
     };
-    const focus = (e: Event) => {
+    const valueFocus = (e: Event) => {
       active.value = true;
       const input = e.target as HTMLInputElement;
       let val = input.value;
@@ -189,21 +189,38 @@ export default create({
         }
       ]);
     };
-    const blur = () => {
-      //active.value = false;
-      // const input = e.target as HTMLInputElement;
-      // let val = input.value;
-      // emitChange([
-      //   {
-      //     eventName: 'update:modelValue',
-      //     params: [val]
-      //   },
-      //   {
-      //     eventName: 'focus',
-      //     params: [val]
-      //   }
-      // ]);
+    const valueBlur = (e: Event) => {
+      
+      setTimeout(()=>{
+active.value = false;
+      },400)
+      const input = e.target as HTMLInputElement;
+       let val = input.value;
+      val = String(val);
+      emitChange([
+        {
+          eventName: 'update:value',
+          params: [val]
+        },
+        {
+          eventName: 'blur',
+          params: [val]
+        }
+      ]);
     };
+    const handleClear=()=>{
+      const val="";
+      emitChange([
+        {
+          eventName: 'update:value',
+          params: [val]
+        },
+        {
+          eventName: 'clear',
+          params: [val]
+        }
+      ]);
+    }
     return {
       value,
       requireShow,
@@ -217,8 +234,9 @@ export default create({
       active,
       maxLength,
       valueChange,
-      focus,
-      blur,
+      valueFocus,
+      valueBlur,
+      handleClear,
       emitChange
     };
   }
