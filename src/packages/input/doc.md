@@ -5,7 +5,7 @@
 | placeholder         | 为空时占位符 | String |       -       |
 | placeholder-style | placeholder 样式     | String | - |
 | label          | 	左侧文案                       | string | -             |
-| has-border          | 	是否有边框                       | booleab | true            |
+| has-border          | 	是否有边框                       | boolean | true            |
 | disabled          | 	是否禁用                       | boolean | `false`              |
 | readonly          | 是否只读                        | boolean | `false`               |
 | clear-btn       | 是否带清除按钮（icon）                        | boolean | `true`               |
