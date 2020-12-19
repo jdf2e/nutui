@@ -273,7 +273,7 @@ module.exports = {
         },
         {
           name: 'Rate',
-          sort: 2,
+          sort: 4,
           cName: '评分',
           type: 'component',
           show: true,
