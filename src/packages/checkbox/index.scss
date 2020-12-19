@@ -32,14 +32,15 @@
       background-repeat: no-repeat;
       background-position: center;
       border-color: $primary-color;
-      box-shadow: 0 4px 6px 0 rgba($primary-color, 0.15);
+      &:not(:disabled).nut-checkbox-ani::after {
+        animation: nutPulse 0.25s;
+      }
     }
     &:disabled {
       background-image: url('https://img14.360buyimg.com/imagetools/jfs/t1/155506/4/9365/704/5fd3103cE779ad491/1939699720df7770.png');
-      border-color: $disable-color;
-      box-shadow: none;
+      // border-color: $disable-color;
       &:checked {
-        background-color: $disable-color;
+        // background-color: $disable-color;
       }
     }
   }
@@ -53,7 +54,7 @@
     }
     .nut-checkbox-label {
       font-size: $font-size-2;
-      margin-left: 15px;
+      margin-left: 10px;
     }
   }
   &.nut-checkbox-size-small {
@@ -63,6 +64,7 @@
     }
     .nut-checkbox-label {
       font-size: $font-size-1;
+      margin-left: 6px;
     }
   }
   &.nut-checkbox-size-large {
@@ -72,6 +74,19 @@
     }
     .nut-checkbox-label {
       font-size: $font-size-3;
+      margin-left: 10px;
     }
+  }
+}
+@keyframes nutPulse {
+  0% {
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
   }
 }
