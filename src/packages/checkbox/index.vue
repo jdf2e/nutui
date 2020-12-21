@@ -84,13 +84,6 @@ export default create({
       isChecked.value = looseEqual(props.modelValue, props.trueValue);
     });
 
-    watch(
-      () => props.modelValue,
-      (val, oldVal) => {
-        // console.log(`watch：具有响应性，oldVal= ${oldVal} ，val= ${val}`);
-      }
-    );
-
     const { size, label, name, disabled, submittedValue, animation } = reactive(
       props
     );
