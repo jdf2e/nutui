@@ -76,7 +76,7 @@ export default createDemo({
   setup(props, context) {
     const data = reactive({
       checkbox1: false,
-      checkbox2: true,
+      checkbox2: false,
       checkbox3: true,
       checkbox4: true,
       checkbox5: true,
@@ -155,19 +155,10 @@ export default createDemo({
       margin-bottom: 10px;
     }
   }
-  .my-checkbox .nut-checkbox {
+  .my-checkbox::v-deep .nut-checkbox {
     input:checked {
-      width: 14px;
-      height: 10px;
-      background: rgba(255, 255, 255, 1)
-        linear-gradient(
-          90deg,
-          rgba(250, 32, 12, 1) 0%,
-          rgba(250, 32, 12, 0.65) 100%
-        )
-        rgba(250, 32, 12, 1);
-      background-image: none;
-      background-size: 50% 50%;
+      background-image: url('https://img13.360buyimg.com/imagetools/jfs/t1/154120/1/10623/372/5fe013e6E4694fbf9/fd38d389b3a3b9c6.png');
+      background-size: 100%;
       border: none;
     }
   }
