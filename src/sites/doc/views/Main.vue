@@ -210,7 +210,7 @@ export default defineComponent({
     .content-img {
       width: 900px;
       height: 514px;
-      background: url(https://storage.360buyimg.com/imgtools/732c3242e9-9b1946b0-391a-11eb-8a8d-55c57d054ae1.png)
+      background: url(https://storage.360buyimg.com/imgtools/2386827bf5-0c3c6fb0-444d-11eb-a71e-e96ecf999ecc.png)
         no-repeat;
       background-size: cover;
     }
