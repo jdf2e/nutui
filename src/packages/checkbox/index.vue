@@ -20,7 +20,7 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watchEffect } from 'vue';
+import { reactive, ref, toRefs, watch, watchEffect } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('checkbox');
 
@@ -65,9 +65,8 @@ export default create({
   },
   components: {},
   setup(props, { emit }) {
-    let isChecked: boolean =
-      props.modelValue == props.trueValue || props.checked;
-
+    const isCheckedVal = props.modelValue == props.trueValue || props.checked;
+    const isChecked = ref(isCheckedVal);
     const isObject = obj => {
       return obj !== null && typeof obj === 'object';
     };
@@ -82,23 +81,24 @@ export default create({
     };
 
     watchEffect(() => {
-      isChecked = looseEqual(props.modelValue, props.trueValue);
+      isChecked.value = looseEqual(props.modelValue, props.trueValue);
     });
 
     const { size, label, name, disabled, submittedValue, animation } = reactive(
       props
     );
 
-    const changeEvt = (event: { target: HTMLInputElement }) => {
-      const isCheckedPrevious: boolean = isChecked;
+    const changeEvt = (event: any) => {
+      event?.stopPropagation();
       const isCheck: boolean = event.target.checked;
+      emit('update:modelValue', isCheck);
       emit(
         'input',
         isCheck ? props.trueValue : props.falseValue,
         props.label,
         event
       );
-      if (isCheckedPrevious !== isCheck) {
+      if (isChecked.value !== isCheck) {
         emit(
           'change',
           isCheck ? props.trueValue : props.falseValue,
@@ -107,7 +107,6 @@ export default create({
         );
       }
     };
-    console.log(isChecked);
 
     return {
       size,
