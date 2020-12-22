@@ -237,6 +237,15 @@ module.exports = {
           show: true,
           desc: '标签组件',
           author: 'zhenyulei'
+        },
+        {
+          name: 'tabbar',
+          sort: 2,
+          cName: '标签栏组件',
+          type: 'component',
+          show: true,
+          desc: '标签栏组件',
+          author: 'Drjingfubo'
         }
       ]
     },
