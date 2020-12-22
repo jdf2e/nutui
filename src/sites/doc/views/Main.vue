@@ -101,7 +101,7 @@ export default defineComponent({
     padding: 15% 0 0 8.8%;
     // margin: auto 0;
     width: 1300px;
-    min-width: 1000px;
+    min-width: 550px;
     .content-title {
       // line-height: 36px;
       font-family: PingFangSC-Medium;
