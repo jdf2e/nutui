@@ -83,10 +83,19 @@ export default {
       activeIndex: this.defIndex,
       initX: '0',
       navWidth: 0,
-      tapWidth: 0
+      tapWidth: 0,
+      smoothFlag: true
     };
   },
   watch: {
+    $route: {
+      handler(val, oldval) {
+        this.smoothFlag = false;
+        this.scrollTab(this.activeIndex);
+      },
+      // 深度观察监听
+      deep: true
+    },
     isScroll() {
       this.updeteTab();
     },
@@ -109,10 +118,11 @@ export default {
       if (this.positionNav === 'left' || this.positionNav === 'right') return true;
     },
     titleClass: function() {
+      const smooth = this.smoothFlag ? 'nut-tab-title-smooth' : '';
       if (this.positionNav == 'top') {
-        return 'nut-tab-title';
+        return 'nut-tab-title' + ' ' + smooth;
       }
-      return 'nut-tab-title-' + this.positionNav + 'nav';
+      return 'nut-tab-title-' + this.positionNav + 'nav' + ' ' + smooth;
     },
     navBarClass: function() {
       if (this.positionNav == 'top') {
@@ -183,7 +193,6 @@ export default {
             badge: attrs['badge'] || false
           };
           this.tabTitleList.push(item);
-
           //   let slotElm = slot[i].elm;
           //   if (slotElm) {
           //     slotElm.classList.add('hide');
@@ -227,6 +236,7 @@ export default {
     },
     switchTab: function(index, event, disable) {
       if (!disable) {
+        this.smoothFlag = true;
         this.activeIndex = index;
         // this.initX = parseInt(this.navWidth * index);
         this.scrollTab(index);
@@ -241,12 +251,10 @@ export default {
         this.initX = parseInt(this.navWidth * index);
       }
       if (this.positionNav == 'top' || this.positionNav == 'bottom') {
-        console.log('滑动距离', this.initX, this.tapWidth);
-        this.$refs.navlist.scroll(this.initX - this.tapWidth, 0);
+        this.$refs.navlist.scroll(this.initX - this.tapWidth, 0, 0);
       } else {
         this.$refs.navlist.scroll(0, this.initX - this.tapWidth);
       }
-      // let nutTab = this.findParent(event, 'nut-tab-part');
       let items = this.$refs.items.children;
       for (let i = 0; i < items.length; i++) {
         if (i == index) {
