@@ -183,13 +183,14 @@ export default {
             badge: attrs['badge'] || false
           };
           this.tabTitleList.push(item);
-          let slotElm = slot[i].elm;
-          if (slotElm) {
-            slotElm.classList.add('hide');
-            if (this.activeIndex == i) {
-              slotElm.classList.remove('hide');
-            }
-          }
+
+          //   let slotElm = slot[i].elm;
+          //   if (slotElm) {
+          //     slotElm.classList.add('hide');
+          //     if (this.activeIndex == i) {
+          //       slotElm.classList.remove('hide');
+          //     }
+          //   }
         }
       }
       this.$nextTick(() => {
@@ -209,6 +210,7 @@ export default {
           this.initX = parseInt(this.navWidth * this.defIndex);
           this.tapWidth = tapWidth / 2 - this.navWidth / 2;
         }
+        this.scrollTab(this.activeIndex);
       });
     },
     findParent(event, myclass) {
@@ -227,27 +229,31 @@ export default {
       if (!disable) {
         this.activeIndex = index;
         // this.initX = parseInt(this.navWidth * index);
-        if (this.lineWidth > 0 && this.lineWidth < this.navWidth) {
-          this.initX = parseInt((this.navWidth - this.lineWidth) / 2 + this.navWidth * index);
-        } else {
-          this.initX = parseInt(this.navWidth * index);
-        }
-        if (this.positionNav == 'top' || this.positionNav == 'bottom') {
-          this.$refs.navlist.scroll(this.initX - this.tapWidth, 0);
-        } else {
-          this.$refs.navlist.scroll(0, this.initX - this.tapWidth);
-        }
-        let nutTab = this.findParent(event, 'nut-tab-part');
-        let items = this.$refs.items.children;
-        for (let i = 0; i < items.length; i++) {
-          if (i == index) {
-            items[i].classList.remove('hide');
-          } else {
-            items[i].classList.add('hide');
-          }
-        }
+        this.scrollTab(index);
         this.$emit('tab-switch', index, event);
         this.$emit('tabSwitch', index, event); //兼容以前驼峰法命名
+      }
+    },
+    scrollTab(index) {
+      if (this.lineWidth > 0 && this.lineWidth < this.navWidth) {
+        this.initX = parseInt((this.navWidth - this.lineWidth) / 2 + this.navWidth * index);
+      } else {
+        this.initX = parseInt(this.navWidth * index);
+      }
+      if (this.positionNav == 'top' || this.positionNav == 'bottom') {
+        console.log('滑动距离', this.initX, this.tapWidth);
+        this.$refs.navlist.scroll(this.initX - this.tapWidth, 0);
+      } else {
+        this.$refs.navlist.scroll(0, this.initX - this.tapWidth);
+      }
+      // let nutTab = this.findParent(event, 'nut-tab-part');
+      let items = this.$refs.items.children;
+      for (let i = 0; i < items.length; i++) {
+        if (i == index) {
+          items[i].classList.remove('hide');
+        } else {
+          items[i].classList.add('hide');
+        }
       }
     }
   }
