@@ -2,7 +2,7 @@
   <view :class="['nut-input', { 'nut-input-disabled': disabled }]">
     <view class="nut-input-label">
       <view class="nut-input-require" v-if="requireShow">*</view>
-      <view v-if="label">{{ label }}</view>
+      <view v-if="label" class="label-string">{{ label }}</view>
     </view>
 
     <view v-if="type === 'textarea'" class="nut-text">

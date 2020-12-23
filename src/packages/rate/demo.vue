@@ -5,7 +5,7 @@
       <nut-cell>
         <nut-rate v-model:value="state.val"></nut-rate>
       </nut-cell>
-      <nut-cell> 当前分数：{{ state.val }}分 </nut-cell>
+      <nut-cell>当前分数：{{ state.val }}分</nut-cell>
     </div>
 
     <h2>只读</h2>
@@ -13,7 +13,7 @@
       <nut-cell>
         <nut-rate v-model:value="state.val2" :readOnly="true"></nut-rate>
       </nut-cell>
-      <nut-cell> 结果：{{ state.val2 }} </nut-cell>
+      <nut-cell>结果：{{ state.val2 }}</nut-cell>
     </div>
 
     <h2>自定义尺寸</h2>
@@ -28,7 +28,7 @@
       <nut-cell>
         <nut-rate @click="onClick"></nut-rate>
       </nut-cell>
-      <nut-cell> 结果：{{ state.result }} </nut-cell>
+      <nut-cell>结果：{{ state.result }}</nut-cell>
     </div>
 
     <h2>自定义ICON</h2>

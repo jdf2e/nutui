@@ -239,6 +239,15 @@ module.exports = {
           author: 'zhenyulei'
         },
         {
+          name: 'menu',
+          sort: 2,
+          cName: '菜单组件',
+          type: 'component',
+          show: true,
+          desc: '下拉菜单组件',
+          author: 'vickyYE'
+        },
+        {
           name: 'tabbar',
           sort: 2,
           cName: '标签栏组件',
@@ -281,6 +290,7 @@ module.exports = {
           author: 'zongyue3'
         },
         {
+          version: '3.0.0',
           name: 'Rate',
           sort: 4,
           cName: '评分',
