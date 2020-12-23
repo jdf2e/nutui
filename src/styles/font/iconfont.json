@@ -6,6 +6,41 @@
   "description": "nutui 3.0字体管理",
   "glyphs": [
     {
+      "icon_id": "18988195",
+      "name": "success",
+      "font_class": "success",
+      "unicode": "e6af",
+      "unicode_decimal": 59055
+    },
+    {
+      "icon_id": "18988196",
+      "name": "failure",
+      "font_class": "failure",
+      "unicode": "e6b0",
+      "unicode_decimal": 59056
+    },
+    {
+      "icon_id": "18988197",
+      "name": "issue",
+      "font_class": "issue",
+      "unicode": "e6b1",
+      "unicode_decimal": 59057
+    },
+    {
+      "icon_id": "18987598",
+      "name": "heart-fill",
+      "font_class": "heart-fill2",
+      "unicode": "e6ae",
+      "unicode_decimal": 59054
+    },
+    {
+      "icon_id": "18987423",
+      "name": "heart-fill1",
+      "font_class": "heart-fill1",
+      "unicode": "e6ad",
+      "unicode_decimal": 59053
+    },
+    {
       "icon_id": "18985386",
       "name": "star-fill",
       "font_class": "star-fill",
