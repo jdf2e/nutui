@@ -6,7 +6,7 @@
       @change="change"
       @focus="focus"
       @blur="blur"
-      label="标题："
+      label="文本"
     />
 
     <nut-input
@@ -14,7 +14,7 @@
       @change="change"
       v-model:value="state.val0"
       :requireShow="true"
-      label="标题："
+      label="文本"
       @clear="clear"
     />
     <h2>禁用输入框</h2>
@@ -22,13 +22,13 @@
       v-model:value="state.val2"
       @change="change"
       :disabled="true"
-      label="标题："
+      label="文本"
     />
     <nut-input
       v-model:value="state.val3"
       @change="change"
       :readonly="true"
-      label="标题："
+      label="文本"
     />
     <h2>限制输入长度</h2>
     <nut-input
@@ -37,7 +37,7 @@
       maxLength="7"
       label="限制7："
     />
-    <h2>其他类型</h2>
+    <h2>自定义类型</h2>
     <nut-input
       v-model:value="state.val0"
       @change="change"
@@ -74,7 +74,7 @@
       placeholder="设置输入五行"
       label="留言："
     />
-    <h2>限制输入</h2>
+    <h2>显示字数统计</h2>
     <nut-input
       v-model:value="state.val8"
       @change="change"
@@ -142,6 +142,8 @@ export default createDemo({
   h2 {
     padding-left: 25px;
     margin-top: 25px;
+    margin-bottom: 10px;
+    color: #909CA4;
   }
 }
 </style>
