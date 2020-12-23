@@ -29,7 +29,6 @@ const { componentName, create } = createComponent('radio');
 
 type Iparent = {
   parentNode: boolean;
-  changeVal: Function;
 };
 export default create({
   props: {
@@ -54,12 +53,14 @@ export default create({
   components: {},
   emits: ['input', 'update:modelValue'],
   setup(props, { emit }) {
-    const parentGroup = <Iparent>inject('radiogroup', {
-      parentNode: false
+    const parentGroup = inject('radiogroup', {
+      parentNode: false,
+      changeVal: val => {
+        console.log();
+      }
     });
     const internalInstance = getCurrentInstance()?.parent;
     const parentProps = internalInstance?.props;
-    // const parentEl = internalInstance?.type;
 
     const currentValue = computed({
       get: () => {
@@ -71,7 +72,7 @@ export default create({
       },
       set: val => {
         if (parentGroup && parentGroup.parentNode) {
-          parentGroup?.changeVal(<string | number | boolean>val);
+          parentGroup?.changeVal(val);
         } else {
           emit('input', val);
         }
