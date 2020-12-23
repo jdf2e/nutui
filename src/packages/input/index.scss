@@ -1,10 +1,11 @@
 .nut-input {
-    position: relative;
+  position: relative;
   width: 100%;
   padding: 10px 0px 10px 25px;
   display: flex;
   background: rgba(255, 255, 255, 1);
-  border: 1px solid rgba(234, 240, 251, 1);
+  border-bottom: 1px solid rgba(234, 240, 251, 1);
+  font-size: 14px;
   input {
     width: 230px;
     flex: 1;
@@ -15,6 +16,11 @@
     overflow: hidden;
     display: inline-block;
     text-align: left;
+    .label-string {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
   .nut-textinput-clear {
     width: 16px;
@@ -27,6 +33,7 @@
     padding: 0 10px;
     .nut-text-limit {
       float: right;
+      color: rgba(153, 153, 153, 1);
     }
     .nut-text-core {
       outline: none;
