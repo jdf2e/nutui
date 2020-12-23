@@ -290,6 +290,7 @@ module.exports = {
           author: 'zongyue3'
         },
         {
+          version: '3.0.0',
           name: 'Rate',
           sort: 4,
           cName: '评分',
