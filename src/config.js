@@ -237,6 +237,15 @@ module.exports = {
           show: true,
           desc: '标签组件',
           author: 'zhenyulei'
+        },
+        {
+          name: 'menu',
+          sort: 2,
+          cName: '菜单组件',
+          type: 'component',
+          show: true,
+          desc: '下拉菜单组件',
+          author: 'vickyYE'
         }
       ]
     },
