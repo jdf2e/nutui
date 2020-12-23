@@ -52,7 +52,6 @@ export default create({
     }
   },
   setup(props, { emit, slots }) {
-    const { value } = toRefs(props);
     const state = reactive({
       current: props.value
     });
@@ -73,7 +72,7 @@ export default create({
       }
     };
     watch(
-      () => value.value,
+      () => props.value,
       newVal => {
         state.current = newVal;
       }
