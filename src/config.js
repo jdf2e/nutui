@@ -237,6 +237,24 @@ module.exports = {
           show: true,
           desc: '标签组件',
           author: 'zhenyulei'
+        },
+        {
+          name: 'menu',
+          sort: 2,
+          cName: '菜单组件',
+          type: 'component',
+          show: true,
+          desc: '下拉菜单组件',
+          author: 'vickyYE'
+        },
+        {
+          name: 'tabbar',
+          sort: 2,
+          cName: '标签栏组件',
+          type: 'component',
+          show: true,
+          desc: '标签栏组件',
+          author: 'Drjingfubo'
         }
       ]
     },
@@ -262,8 +280,19 @@ module.exports = {
           author: 'gxx158'
         },
         {
+          version: '3.0.0',
+          name: 'Switch',
+          type: 'component',
+          cName: '开关组件',
+          desc: '用来打开或关闭选项',
+          sort: 3,
+          show: true,
+          author: 'zongyue3'
+        },
+        {
+          version: '3.0.0',
           name: 'Rate',
-          sort: 2,
+          sort: 4,
           cName: '评分',
           type: 'component',
           show: true,

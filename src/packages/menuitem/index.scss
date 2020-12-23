@@ -12,11 +12,9 @@
     .nut-menu-title {
       font-weight: bold;
       .icon {
-        background: url('https://img10.360buyimg.com/imagetools/jfs/t1/156044/7/582/372/5fd990b5Ea62c2694/551e7f58d421a9ae.png')
-          no-repeat;
+        color: #1a1a1a;
         transition: all ease 0.3s;
-        transform: rotate(-360deg);
-        background-size: contain;
+        transform: rotate(-180deg);
       }
     }
     .nut-menu-panel {
@@ -38,12 +36,11 @@
     display: inline-block;
     width: 6px;
     height: 6px;
-    background: url('https://img13.360buyimg.com/imagetools/jfs/t1/152898/12/10149/452/5fd990b5Ec7c12d70/3bf06076b758bed1.png')
-      no-repeat;
-    background-size: contain;
+    color: #909ca4;
     transform: rotate(0deg);
     transition: all ease 0.3s;
     margin: 0 2px;
+    transform-origin: right;
   }
 }
 .nut-menu-panel {
@@ -62,6 +59,7 @@
   border-top: 1px solid #f7f8fa;
   border-radius: 0 0 15px 15px;
   box-shadow: 0 4px 5px 0px rgba(236, 236, 236, 0.25);
+  overflow: auto;
   // &.active{
   //   display: block;
   // }
@@ -69,7 +67,7 @@
 
 .menu-list {
   display: flex;
-  padding: 10px 24px;
+  padding: 10px 15px;
   flex-direction: column;
   &.bubble-line {
     flex-flow: wrap;
@@ -80,18 +78,22 @@
   &.three-line {
     flex-flow: wrap;
     .menu-option {
-      width: 32%;
+      width: 33%;
     }
   }
   .menu-option {
     min-height: 24px;
-    line-height: 48px;
+    line-height: 42px;
     font-size: 14px;
     color: #1a1a1a;
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 0 5px;
+    &.checked {
+      font-weight: bold;
+    }
   }
   .check-icon {
     width: 14px;

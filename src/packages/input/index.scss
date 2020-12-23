@@ -1,4 +1,5 @@
 .nut-input {
+  position: relative;
   width: 100%;
   padding: 10px 0px 10px 25px;
   display: flex;
@@ -18,7 +19,8 @@
   .nut-textinput-clear {
     width: 16px;
     height: 16px;
-    margin-right: 15px;
+    position: absolute;
+    right: 15px;
   }
   .nut-text {
     flex: 1;
