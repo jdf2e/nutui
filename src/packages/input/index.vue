@@ -43,7 +43,7 @@
       @click="handleClear"
       class="nut-textinput-clear"
       v-if="!disableClear && !readonly"
-      v-show="type !== 'textarea'  && active"
+      v-show="type !== 'textarea' && active"
     >
       <svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
         <path
@@ -102,11 +102,11 @@ export default create({
     }
   },
   components: {},
-  emits: ['change', 'update:value', 'blur', 'focus','clear'],
+  emits: ['change', 'update:value', 'blur', 'focus', 'clear'],
 
   setup(props, { emit }) {
     interface Events {
-      eventName: 'change' | 'focus'|'blur';
+      eventName: 'change' | 'focus' | 'blur';
       params: (string | number | Event)[];
     }
 
@@ -159,9 +159,9 @@ export default create({
       if (props.type == 'number') {
         val = formatNumber(val, false);
       }
-       state.textNum = val.length;
+      state.textNum = val.length;
       // input.value = val;
-       //state.curretvalue = val;
+      //state.curretvalue = val;
       emitChange([
         {
           eventName: 'update:value',
@@ -190,12 +190,11 @@ export default create({
       ]);
     };
     const valueBlur = (e: Event) => {
-      
-      setTimeout(()=>{
-active.value = false;
-      },400)
+      setTimeout(() => {
+        active.value = false;
+      }, 400);
       const input = e.target as HTMLInputElement;
-       let val = input.value;
+      let val = input.value;
       val = String(val);
       emitChange([
         {
@@ -208,8 +207,8 @@ active.value = false;
         }
       ]);
     };
-    const handleClear=()=>{
-      const val="";
+    const handleClear = () => {
+      const val = '';
       emitChange([
         {
           eventName: 'update:value',
@@ -220,7 +219,7 @@ active.value = false;
           params: [val]
         }
       ]);
-    }
+    };
     return {
       value,
       requireShow,

@@ -1,7 +1,13 @@
 <template>
   <div class="demo-nopading">
     <h2>基础用法</h2>
-    <nut-input v-model:value="state.val1" @change="change" @focus="focus"  @blur="blur" label="标题：" />
+    <nut-input
+      v-model:value="state.val1"
+      @change="change"
+      @focus="focus"
+      @blur="blur"
+      label="标题："
+    />
 
     <nut-input
       placeholder="请输入文本"
@@ -9,7 +15,7 @@
       v-model:value="state.val0"
       :requireShow="true"
       label="标题："
-     @clear="clear"
+      @clear="clear"
     />
     <h2>禁用输入框</h2>
     <nut-input
@@ -105,15 +111,15 @@ export default createDemo({
     const change = (num: string | number) => {
       console.log('change: ', num);
     };
-    const focus=(num:string|number)=>{
-      console.log("focus:",num)
-    }
-    const blur=(num:string|number)=>{
-      console.log("blur:",num)
-    }
-    const clear=(num:string|number)=>{
-      console.log("clear:",num)
-    }
+    const focus = (num: string | number) => {
+      console.log('focus:', num);
+    };
+    const blur = (num: string | number) => {
+      console.log('blur:', num);
+    };
+    const clear = (num: string | number) => {
+      console.log('clear:', num);
+    };
     return {
       state,
       change,
