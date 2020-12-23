@@ -5,30 +5,37 @@
   >
     <view class="nut-menu-title" @click="handleMenuPanel">
       <view class="title-name" v-html="menuTitle"></view>
-      <i class="icon" name="arrow-down"></i>
+      <nut-icon class="icon" name="arrow-down" size="6px"></nut-icon>
     </view>
-    <view class="nut-menu-panel" ref="menuPanel">
+    <view
+      class="nut-menu-panel"
+      ref="menuPanel"
+      :style="`max-height:${maxHeight}px`"
+    >
       <view
+        v-if="menuList && menuList.length"
         class="menu-list"
         :class="[
-          { 'bubble-line': multiLine == 2 },
-          { 'three-line': multiLine == 3 }
+          { 'bubble-line': multiStyle == 2 },
+          { 'three-line': multiStyle == 3 }
         ]"
       >
         <view
           class="menu-option"
+          :class="{ checked: currMenu == index }"
           v-for="(item, index) in menuList"
           :key="index"
           @click="checkMenus(item, index)"
           ><nut-icon
             class="check-icon"
             v-if="currMenu == index"
-            name="dongdong"
+            name="Check"
             size="14px"
           ></nut-icon
           >{{ item.value }}</view
         >
       </view>
+      <slot></slot>
     </view>
   </view>
 </template>
@@ -55,10 +62,6 @@ export default create({
       type: String,
       default: ''
     },
-    value: {
-      type: [String, Number],
-      default: ''
-    },
     disabled: {
       type: Boolean,
       default: false
@@ -69,32 +72,35 @@ export default create({
         return [];
       }
     },
-    isVisible: {
-      //是否显示
+    autoClose: {
       type: Boolean,
-      default: false
+      default: true
     },
-    multiLine: {
+    multiStyle: {
       type: [String, Number],
       default: 1 //可选值1、2、3
+    },
+    maxHeight: {
+      type: [String, Number],
+      default: ''
     }
   },
-  emits: ['on-checked'],
+  emits: ['on-change', 'menu-click'],
   setup(props, { emit }) {
-    const { menuList, multiLine } = toRefs(props);
+    const { menuList, multiStyle } = toRefs(props);
     const menuTitle = ref(props.title);
     const menu = useParent(MENU_KEY);
-    const parent: any = reactive(menu.parent as any);
-    const index: any = reactive(menu.index as any);
     const state = reactive({
       showPanel: false,
       currMenu: 0
-      // menuTitle:''
     });
 
     const handleMenuPanel = () => {
+      emit('menu-click', menuTitle.value);
       //禁用
-      if (props.disabled) return;
+      if (props.disabled) {
+        return;
+      }
       state.showPanel = !state.showPanel;
     };
     //menu列表浮层展示和隐藏
@@ -107,10 +113,12 @@ export default create({
       }
     };
     const checkMenus = (item: any, index: number) => {
-      console.log(item);
       menuTitle.value = item.value;
       state.currMenu = index;
-      emit('on-checked', menuTitle.value);
+      if (props.autoClose) {
+        state.showPanel = false;
+      }
+      emit('on-change', item, menuTitle.value);
     };
     onMounted(() => {
       document.addEventListener(
@@ -130,11 +138,10 @@ export default create({
     });
     return {
       ...toRefs(state),
-      ...toRefs(parent),
       handleMenuPanel,
       checkMenus,
       menuTitle,
-      multiLine
+      multiStyle
     };
   }
 });
