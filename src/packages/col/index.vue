@@ -21,7 +21,6 @@ export default create({
   },
   setup(props, { emit, slots }) {
     const gutter = inject('gutter');
-    const { offset, span } = toRefs(props);
     const classObject = reactive({
       ['nut-col-' + props.span]: true,
       ['nut-col-offset-' + props.offset]: true
