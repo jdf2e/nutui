@@ -1,6 +1,6 @@
 <template>
-  <div class="nut-rate">
-    <span
+  <view class="nut-rate">
+    <view
       class="nut-rate-item"
       :class="[{ 'nut-rate-active': n <= state.current }]"
       v-for="n in total"
@@ -12,8 +12,8 @@
         marginRight: spacing + 'px',
         backgroundImage: n <= state.current ? checkedIcon : uncheckedIcon
       }"
-    ></span>
-  </div>
+    ></view>
+  </view>
 </template>
 <script lang="ts">
 import { toRefs, watch, reactive, inject } from 'vue';
