@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo full">
     <h2>基础用法</h2>
     <nut-menu>
       <nut-menu-item :menuList="menuList" title="最新商品"></nut-menu-item>
