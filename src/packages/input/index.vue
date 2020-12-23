@@ -45,11 +45,8 @@
       v-if="!disableClear && !readonly"
       v-show="type !== 'textarea' && active"
     >
-      <svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-        <path
-          d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm2.8 9.7c.3.3.3.8 0 1.1s-.8.3-1.1 0L8 9.1l-1.7 1.7c-.3.3-.8.3-1.1 0-.3-.3-.3-.8 0-1.1L6.9 8 5.2 6.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0L8 6.9l1.7-1.7c.3-.3.8-.3 1.1 0 .3.3.3.8 0 1.1L9.1 8l1.7 1.7z"
-        />
-      </svg>
+     <nut-icon name="close-little" size="12px"></nut-icon>
+     
     </view>
   </view>
 </template>
@@ -58,6 +55,7 @@ import { ref, toRefs, reactive, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('input');
 import { formatNumber } from './util';
+import Icon from '@/packages/icon/index.vue';
 export default create({
   props: {
     type: {
@@ -101,7 +99,9 @@ export default create({
       default: false
     }
   },
-  components: {},
+   components: {
+    [Icon.name]: Icon
+  },
   emits: ['change', 'update:value', 'blur', 'focus', 'clear'],
 
   setup(props, { emit }) {
