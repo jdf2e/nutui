@@ -246,6 +246,15 @@ module.exports = {
           show: true,
           desc: '下拉菜单组件',
           author: 'vickyYE'
+        },
+        {
+          name: 'tabbar',
+          sort: 2,
+          cName: '标签栏组件',
+          type: 'component',
+          show: true,
+          desc: '标签栏组件',
+          author: 'Drjingfubo'
         }
       ]
     },
