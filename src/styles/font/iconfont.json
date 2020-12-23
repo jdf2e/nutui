@@ -6,6 +6,20 @@
   "description": "nutui 3.0字体管理",
   "glyphs": [
     {
+      "icon_id": "18985386",
+      "name": "star-fill",
+      "font_class": "star-fill",
+      "unicode": "e6a1",
+      "unicode_decimal": 59041
+    },
+    {
+      "icon_id": "18984925",
+      "name": "star",
+      "font_class": "star1",
+      "unicode": "e6a0",
+      "unicode_decimal": 59040
+    },
+    {
       "icon_id": "18845108",
       "name": "Check",
       "font_class": "Check",
@@ -102,20 +116,6 @@
       "font_class": "heart-fill",
       "unicode": "e69f",
       "unicode_decimal": 59039
-    },
-    {
-      "icon_id": "18194681",
-      "name": "star",
-      "font_class": "star1",
-      "unicode": "e6a0",
-      "unicode_decimal": 59040
-    },
-    {
-      "icon_id": "18194682",
-      "name": "star-fill",
-      "font_class": "star-fill",
-      "unicode": "e6a1",
-      "unicode_decimal": 59041
     },
     {
       "icon_id": "18194643",
