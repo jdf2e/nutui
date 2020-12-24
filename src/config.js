@@ -279,6 +279,16 @@ module.exports = {
           show: true,
           desc: '评分组件',
           author: 'undo'
+        },
+        {
+          version: '3.0.0',
+          name: 'Calendar',
+          type: 'component',
+          cName: '日历',
+          desc: '日历组件',
+          sort: 5,
+          show: true,
+          author: ''
         }
       ]
     },
