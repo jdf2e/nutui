@@ -1,8 +1,17 @@
 module.exports = {
   versions: [
-    { name: '1.x', link: '/1x/' },
-    { name: '2.x', link: '/' },
-    { name: '3.x', link: '/3x/' }
+    {
+      name: '1.x',
+      link: '/1x/'
+    },
+    {
+      name: '2.x',
+      link: '/'
+    },
+    {
+      name: '3.x',
+      link: '/3x/'
+    }
   ],
   header: [
     {
@@ -26,7 +35,6 @@ module.exports = {
       path: '/resource'
     }
   ],
-
   docs: {
     name: '指南',
     packages: [
@@ -58,7 +66,6 @@ module.exports = {
       }
     ]
   },
-
   nav: [
     {
       name: '布局组件',
@@ -180,6 +187,16 @@ module.exports = {
           show: true,
           desc: '头像',
           author: 'ailululu'
+        },
+        {
+          name: 'Popup',
+          sort: 8,
+          cName: '弹出层',
+          type: 'component',
+          show: true,
+          desc:
+            '弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示',
+          author: 'szg2008'
         }
       ]
     },
