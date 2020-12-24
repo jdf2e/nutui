@@ -1,10 +1,10 @@
-import { createVNode, render, App } from 'vue';
+import { createVNode, defineComponent, render, App } from 'vue';
 import VueToast from './index.vue';
-
+const ToastConstructor = defineComponent(VueToast);
 const defaultOptions = {
   msg: '',
   id: '',
-  visible: false,
+  visible: true,
   duration: 2000, //显示时间(毫秒)
   center: true,
   type: 'text',
@@ -22,33 +22,66 @@ const defaultOptions = {
   closeOnClickOverlay: false
 };
 
-let currentOptions = {
-  ...defaultOptions
+let idsMap: string[] = [];
+let optsMap: any[] = [];
+const clearToast = (id?: string) => {
+  if (id) {
+    const container = document.getElementById(id);
+    optsMap = optsMap.filter(item => item.id !== id);
+    idsMap = idsMap.filter(item => item !== id);
+    if (container) {
+      document.body.removeChild(container);
+    }
+  } else {
+    idsMap.forEach(item => {
+      const container = document.getElementById(item);
+      if (container) {
+        document.body.removeChild(container);
+      }
+    });
+    optsMap = [];
+    idsMap = [];
+  }
 };
 
-const clearToast = (id = currentOptions.id) => {
-  const container = document.getElementById(id);
+const updateToast = opts => {
+  const container = document.getElementById(opts.id);
   if (container) {
-    document.body.removeChild(container);
+    const currentOpt = optsMap.find(item => item.id === opts.id);
+    if (currentOpt) {
+      opts = { ...defaultOptions, ...currentOpt, ...opts };
+    } else {
+      opts = { ...defaultOptions, ...opts };
+    }
+    const instance: any = createVNode(ToastConstructor, opts);
+    render(instance, container);
+    return instance.component.ctx;
   }
 };
 
 const mountToast = opts => {
-  // checkExitToast();
-  opts = { ...defaultOptions, ...opts };
-  opts.visible = true;
   opts.unmount = clearToast;
-  opts.id = new Date().getTime() + '';
-  console.log(opts);
-  currentOptions = { ...opts };
-
+  let _id;
+  // 如果是更新已有的toast
+  if (opts.id) {
+    _id = opts.id;
+    if (idsMap.find(item => item === opts.id)) {
+      return updateToast(opts);
+    }
+  } else {
+    _id = new Date().getTime() + '';
+  }
+  opts = { ...defaultOptions, ...opts };
+  opts.id = _id;
+  idsMap.push(opts.id);
+  optsMap.push(opts);
   const container = document.createElement('div');
   container.id = opts.id;
-  const vm = createVNode(VueToast, opts);
-  render(vm, container);
+  const instance: any = createVNode(ToastConstructor, opts);
+  render(instance, container);
   document.body.appendChild(container);
-  console.log(vm);
-  return vm;
+  console.log(instance.component);
+  return instance.component.ctx;
 };
 
 const errorMsg = msg => {

@@ -137,6 +137,15 @@ module.exports = {
           show: true,
           desc: '较长页面快捷回到顶部',
           author: 'liqiong43'
+        },
+        {
+          name: 'Toast',
+          sort: '1',
+          cName: '吐司',
+          type: 'component',
+          show: true,
+          desc: '轻提示',
+          author: 'undo'
         }
       ]
     },
