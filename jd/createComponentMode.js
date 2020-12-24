@@ -2,29 +2,22 @@
 
 const inquirer = require('inquirer');
 // import {  ROOT_PACKAGE_PATH } from '../util/dic';
-//const conf = require(ROOT_PACKAGE_PATH('src/config.json'));
-//import {a} from "./a.js"
-// import  {nav}  from '../src/config.js';
-// import { from } from 'core-js/fn/array';
+
 const path = require('path');
 const fs = require('fs');
-// const copy = require('copy');
-//const createPkgDeclare = require('./createPkgDeclare');
-// const t = require('@babel/types');
-// const { parse } = require('@babel/parser');
-// const { default: traverse } = require('@babel/traverse');
-// const { default: generate } = require('@babel/generator');
+const config = require('../src/config');
+const demoModel = require('./demo');
+const nav = config.nav;
 
 var newCpt = {
-  version: '1.0.0',
+  version: '3.0.0',
   name: '',
   type: '',
-  chnName: '',
+  cName: '',
   desc: '',
   sort: '',
-  showDemo: true,
-  author: '',
-  star: undefined
+  show: true,
+  author: ''
 };
 function init() {
   inquirer
@@ -34,18 +27,18 @@ function init() {
         name: 'name',
         message: '组件英文名(每个单词的首字母都大写，如TextBox)：',
         validate(value) {
-          //   let repeat = false;
-          //   for (var i = 0; i < nav.length; i++) {
-          //     for (var j = 0; j < nav[i].packages.length; j++) {
-          //       if (nav[i].packages[j].name === value) {
-          //         repeat = true;
-          //       }
-          //     }
-          //   }
+          let repeat = false;
+          for (var i = 0; i < nav.length; i++) {
+            for (var j = 0; j < nav[i].packages.length; j++) {
+              if (nav[i].packages[j].name === value) {
+                repeat = true;
+              }
+            }
+          }
 
-          //   if (repeat) {
-          //     return '该组件名已存在！';
-          //   }
+          if (repeat) {
+            return '该组件名已存在！';
+          }
           const pass = value && value.match(/^[A-Z]/);
           if (pass) {
             return true;
@@ -55,7 +48,7 @@ function init() {
       },
       {
         type: 'input',
-        name: 'chnName',
+        name: 'cName',
         message: '组件中文名(十个字以内)：',
         validate(value) {
           const pass = value && value.length <= 10;
@@ -83,19 +76,19 @@ function init() {
           return '输入有误！请输入选项前编号';
         }
       },
-      //   {
-      //     type: 'rawlist',
-      //     name: 'sort',
-      //     message: '请选择组件分类(输入编号)：',
-      //     // choices: sorts,
-      //     validate(value) {
-      //       const pass = /^[1-7]$/.test(value);
-      //       if (pass) {
-      //         return true;
-      //       }
-      //       return '输入有误！请输入选项前编号';
-      //     }
-      //   },
+      {
+        type: 'input',
+        name: 'sort',
+        message:
+          '请选择组件分类(输入编号)：1布局组件，2操作反馈，3基础组件，4导航组件，5数据录入，6业务组件',
+        validate(value) {
+          const pass = /^[1-6]$/.test(value);
+          if (pass) {
+            return true;
+          }
+          return '输入有误！请输入选项前编号';
+        }
+      },
       //   {
       //     type: 'confirm',
       //     name: 'showDemo',
@@ -164,49 +157,7 @@ function createIndexJs() {
 function createVue() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
-    let content = `<template>
-		<view :class="classes" @click="handleClick">
-		  <view>{{ name }}</view>
-		  <view>{{ txt }}</view>
-		</view>
-	  </template>
-	  <script lang="ts">
-	  import { toRefs } from 'vue';
-	  import { createComponent } from '@/utils/create';
-	  const { componentName, create } = createComponent('temp');
-	  
-	  export default create({
-		props: {
-		  name: {
-			type: String,
-			default: ''
-		  },
-		  txt: {
-			type: String,
-			default: ''
-		  }
-		},
-		components: {},
-		emits: ['click'],
-	  
-		setup(props, { emit }) {
-		  console.log('componentName', componentName);
-	  
-		  const { name, txt } = toRefs(props);
-	  
-		  const handleClick = (event: Event) => {
-			emit('click', event);
-		  };
-	  
-		  return { name, txt, handleClick };
-		}
-	  });
-	  </script>
-	  
-	  <style lang="scss">
-	  @import 'index.scss';
-	  </style>
-	  `;
+    let content = demoModel(nameLc).vue;
     const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`);
     const filePath = path.join(dirPath, `index.vue`);
     if (!fs.existsSync(dirPath)) {
@@ -222,18 +173,7 @@ function createVue() {
 function createDemo() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
-    let content = `<template>
-    <div class="demo-list"></div>
-</template>
-<script>
-export default {
-    data() {
-        return {};
-    },
-    methods: {
-    }
-}
-</script>`;
+    let content = demoModel(nameLc).demo;
     const dirPath = path.join(__dirname, '../src/packages/' + nameLc);
     const filePath = path.join(dirPath, `demo.vue`);
     if (!fs.existsSync(dirPath)) {
@@ -247,20 +187,26 @@ export default {
 }
 
 function addToPackageJson() {
-  // return new Promise((resolve, reject) => {
-  //     conf.packages.push(newCpt);
-  //     const dirPath = path.join(__dirname, `../`);
-  //     const filePath = path.join(dirPath, `config.json`);
-  //     fs.writeFile(filePath, JSON.stringify(conf, null, 2), (err) => {
-  //         if (err) throw err;
-  //         resolve(`修改config.json文件成功`);
-  //     });
-  // });
+  return new Promise((resolve, reject) => {
+    let sort = newCpt.sort;
+    newCpt.sort = nav[sort - 1].packages.length + 1;
+    nav[sort - 1].packages.push(newCpt);
+    config.nav = nav;
+    // conf.packages.push(newCpt);
+    const dirPath = path.join(__dirname, `../`);
+    const filePath = path.join(dirPath, `src/config.js`);
+
+    var tempfile = 'module.exports = ' + JSON.stringify(config, null, 2) + ';';
+    fs.writeFile(filePath, tempfile, err => {
+      if (err) throw err;
+      resolve(`修改config.json文件成功`);
+    });
+  });
 }
 function createScss() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
-    let content = `.nut-temp {}`;
+    let content = `.nut-${nameLc} {}`;
     const dirPath = path.join(__dirname, '../src/packages/' + nameLc);
     const filePath = path.join(dirPath, `index.scss`);
     if (!fs.existsSync(dirPath)) {
@@ -275,7 +221,7 @@ function createScss() {
 function createDoc() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
-    let content = `组建使用说明文件`;
+    let content = demoModel(nameLc).doc;
     const dirPath = path.join(__dirname, '../src/packages/' + nameLc);
     const filePath = path.join(dirPath, `doc.md`);
     if (!fs.existsSync(dirPath)) {
@@ -306,7 +252,7 @@ function createNew() {
       return createDoc();
     })
     .then(() => {
-      // return addToPackageJson();
+      return addToPackageJson();
     })
     .then(() => {
       console.log('组件模板生成完毕，请开始你的表演~');

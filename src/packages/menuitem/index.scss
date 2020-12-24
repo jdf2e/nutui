@@ -1,0 +1,104 @@
+.nut-menu-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0 5px;
+  &.disabled {
+    color: #999;
+  }
+  &.nut-menu-active {
+    .nut-menu-title {
+      font-weight: bold;
+      .icon {
+        color: #1a1a1a;
+        transition: all ease 0.3s;
+        transform: rotate(-180deg);
+      }
+    }
+    .nut-menu-panel {
+      display: block;
+    }
+  }
+}
+.nut-menu-title {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  .title-name {
+    white-space: nowrap;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .icon {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    color: #909ca4;
+    transform: rotate(0deg);
+    transition: all ease 0.3s;
+    margin: 0 2px;
+    transform-origin: right;
+  }
+}
+.nut-menu-panel {
+  display: none;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 46px;
+  color: #2d2d2d;
+  overflow: hidden;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  z-index: 9998;
+  border-top: 1px solid #f7f8fa;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 4px 5px 0px rgba(236, 236, 236, 0.25);
+  overflow: auto;
+  // &.active{
+  //   display: block;
+  // }
+}
+
+.menu-list {
+  display: flex;
+  padding: 10px 15px;
+  flex-direction: column;
+  &.bubble-line {
+    flex-flow: wrap;
+    .menu-option {
+      width: 50%;
+    }
+  }
+  &.three-line {
+    flex-flow: wrap;
+    .menu-option {
+      width: 33%;
+    }
+  }
+  .menu-option {
+    min-height: 24px;
+    line-height: 42px;
+    font-size: 14px;
+    color: #1a1a1a;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 5px;
+    &.checked {
+      font-weight: bold;
+    }
+  }
+  .check-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+    color: #fa2c19;
+  }
+}
