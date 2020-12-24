@@ -1,8 +1,7 @@
 <template>
   <Teleport :to="teleport">
-    <nut-popup-overlay
+    <nut-overlay
       :show="show && overlay"
-      v-if="state.overLayCount === 1"
       :class="overlayClass"
       :style="overlayStyle"
       :zIndex="state.zIndex"
@@ -43,7 +42,7 @@ import {
   CSSProperties
 } from 'vue';
 import { useLockScroll } from './use-lock-scroll';
-import Overlay, { overlayProps } from './overlay/index.vue';
+import { overlayProps } from './../overlay/index.vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('popup');
 
@@ -101,9 +100,6 @@ const popupProps = {
 };
 
 export default create({
-  Component: {
-    'nut-popup-overlay': Overlay
-  },
   props: {
     ...overlayProps,
     ...popupProps
