@@ -18,5 +18,4 @@ export const useLockScroll = (isLock: () => boolean) => {
   };
 
   return [lock, unlock];
-
-}
+};
