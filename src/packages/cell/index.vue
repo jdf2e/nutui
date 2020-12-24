@@ -1,7 +1,11 @@
 <template>
   <view :class="classes" @click="handleClick">
     <slot>
-      <view class="nut-cell__title" :class="{ icon: icon }" v-if="title || subTitle || icon">
+      <view
+        class="nut-cell__title"
+        :class="{ icon: icon }"
+        v-if="title || subTitle || icon"
+      >
         <nut-icon v-if="icon" class="icon" :name="icon"></nut-icon>
         <template v-if="subTitle">
           <view class="title">{{ title }}</view>
@@ -11,8 +15,18 @@
           {{ title }}
         </template>
       </view>
-      <view v-if="desc" class="nut-cell__value" :style="{ 'text-align': descTextAlign }">{{ desc }}</view>
-      <nut-icon v-if="isLink || to" size="14px" color="#979797" name="right"></nut-icon>
+      <view
+        v-if="desc"
+        class="nut-cell__value"
+        :style="{ 'text-align': descTextAlign }"
+        >{{ desc }}</view
+      >
+      <nut-icon
+        v-if="isLink || to"
+        size="14px"
+        color="#979797"
+        name="right"
+      ></nut-icon>
     </slot>
   </view>
 </template>
@@ -54,7 +68,9 @@ export default create({
       if (props.to && router) {
         router[props.replace ? 'replace' : 'push'](props.to);
       } else if (props.url) {
-        props.replace ? location.replace(props.url) : (location.href = props.url);
+        props.replace
+          ? location.replace(props.url)
+          : (location.href = props.url);
       }
     };
 
