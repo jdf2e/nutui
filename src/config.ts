@@ -180,6 +180,16 @@ export const nav = [
         show: true,
         desc: '头像',
         author: 'ailululu'
+      },
+      {
+        name: 'Dialog',
+        sort: 8,
+        cName: '对话框',
+        type: 'component',
+        show: true,
+        desc:
+          '模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。',
+        author: 'dsj'
       }
     ]
   },
