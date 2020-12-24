@@ -109,8 +109,12 @@ export default {
 | title | 标题栏左侧内容 | string | - |
 | name | 唯一标识符，必填 | string \ number | -1 |
 | expand-icon-position | 标题图标的位置 | string | right |
+| title-icon | 标题图标链接 | string | ‘none’ 为不展示图标，默认 ‘’ |
+| title-icon-width | 标题图标宽度 | string | 13px |
+| title-icon-height | 标题图标高度 | string | 13px |
+| title-icon-position | 标题图标位置 | string | ‘left' 'right' |
 | sub-title | 标题栏副标题 | string | - |
-| icon | 标题栏自定义图标链接 | string | - |
+| icon | 标题栏自定义图标链接 | string | ‘none’ 为不展示图标，默认 ‘’ |
 | icon-width | 标题栏自定义图标宽度 | string | 24px |
 | icon-height | 标题栏自定义图标高度 | string | 12px |
 | rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | string \ number | 180 |

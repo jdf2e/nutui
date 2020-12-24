@@ -214,6 +214,26 @@ module.exports = {
           show: true,
           desc: '头像',
           author: 'ailululu'
+        },
+        {
+          version: '3.0.0',
+          name: 'Radio',
+          type: 'component',
+          cName: '单选按钮',
+          desc: '单选按钮',
+          sort: 9,
+          show: true,
+          author: 'Ymm0008'
+        },
+        {
+          version: '3.0.0',
+          name: 'RadioGroup',
+          type: 'component',
+          cName: '单选按钮组',
+          desc: '单选按钮组',
+          sort: 10,
+          show: false,
+          author: 'Ymm0008'
         }
       ]
     },
