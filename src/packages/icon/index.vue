@@ -1,5 +1,5 @@
 <script lang="ts">
-import { h, PropType, computed, toRefs } from 'vue';
+import { h, PropType, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('icon');
 
