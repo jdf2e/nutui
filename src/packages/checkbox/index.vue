@@ -1,11 +1,11 @@
 <template>
   <view>
-    <label :class="['nut-checkbox', 'nut-checkbox-size-' + size]">
+    <label :class="['nut-checkbox', 'nut-checkbox-size-' + currentSize]">
       <input
         type="checkbox"
         :name="name"
-        :class="{ 'nut-checkbox-ani': animation }"
-        :disabled="disabled"
+        :class="{ 'nut-checkbox-ani': isAnimated }"
+        :disabled="isDisabled"
         :checked.prop="isChecked"
         :value="submittedValue"
         @change="changeEvt"
@@ -20,7 +20,16 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, watchEffect } from 'vue';
+import {
+  reactive,
+  ref,
+  toRefs,
+  watch,
+  watchEffect,
+  computed,
+  getCurrentInstance,
+  inject
+} from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('checkbox');
 
@@ -65,32 +74,96 @@ export default create({
   },
   components: {},
   setup(props, { emit }) {
-    const isCheckedVal = props.modelValue == props.trueValue || props.checked;
-    const isChecked = ref(isCheckedVal);
+    const parentGroup = inject('checkboxgroup', {
+      parentNode: false,
+      changeVal: val => {
+        console.log();
+      }
+    });
+    const parentProps = getCurrentInstance()?.parent?.props;
+
+    const isChecked = computed(() => {
+      if (parentGroup && parentGroup.parentNode) {
+        const choosedVal = parentProps?.modelValue;
+        const chooseFlag =
+          (choosedVal as any).indexOf(props.label) == -1 ? false : true;
+        return chooseFlag;
+      } else {
+        const isCheckedVal =
+          props.modelValue == props.trueValue || props.checked;
+        return isCheckedVal;
+      }
+    });
+    // const isCheckedVal = props.modelValue == props.trueValue || props.checked;
+    // const isChecked = ref(isCheckedVal);
     const isObject = obj => {
       return obj !== null && typeof obj === 'object';
     };
 
-    const looseEqual = (a, b) => {
-      return (
-        a == b ||
-        (isObject(a) && isObject(b)
-          ? JSON.stringify(a) === JSON.stringify(b)
-          : false)
-      );
-    };
+    // const looseEqual = (a, b) => {
+    //   return (
+    //     a == b ||
+    //     (isObject(a) && isObject(b)
+    //       ? JSON.stringify(a) === JSON.stringify(b)
+    //       : false)
+    //   );
+    // };
 
-    watchEffect(() => {
-      isChecked.value = looseEqual(props.modelValue, props.trueValue);
+    const isDisabled = computed(() => {
+      if (parentGroup && parentGroup.parentNode) {
+        return parentProps?.disabled;
+      } else {
+        return props.disabled;
+      }
     });
 
-    const { size, label, name, disabled, submittedValue, animation } = reactive(
-      props
-    );
+    const currentSize = computed(() => {
+      if (parentGroup && parentGroup.parentNode) {
+        return parentProps?.size;
+      } else {
+        return props.size;
+      }
+    });
+
+    const isAnimated = computed(() => {
+      if (parentGroup && parentGroup.parentNode) {
+        return parentProps?.animated;
+      } else {
+        return props.animation;
+      }
+    });
+
+    const { label, name, submittedValue } = reactive(props);
+
+    const setParentValue = checked => {
+      // const { label } = props;
+      // const { max, modelValue } = parentProps?.modelValue;
+      const modelValue = parentProps?.modelValue;
+      const value = (modelValue as any).slice();
+      if (checked) {
+        if (value.indexOf(label) === -1) {
+          value.push(label);
+          parentGroup?.changeVal(value);
+        }
+      } else {
+        const index = value.indexOf(label);
+        if (index !== -1) {
+          value.splice(index, 1);
+          parentGroup?.changeVal(value);
+        }
+      }
+    };
 
     const changeEvt = (event: any) => {
       event?.stopPropagation();
       const isCheck: boolean = event.target.checked;
+      if (isDisabled.value) {
+        return false;
+      }
+      if (parentGroup.parentNode) {
+        setParentValue(isCheck);
+        return false;
+      }
       emit('update:modelValue', isCheck);
       emit(
         'input',
@@ -109,12 +182,12 @@ export default create({
     };
 
     return {
-      size,
+      currentSize,
       label,
       name,
-      disabled,
+      isDisabled,
       submittedValue,
-      animation,
+      isAnimated,
       isChecked,
       changeEvt
     };

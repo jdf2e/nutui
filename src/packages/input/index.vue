@@ -45,8 +45,7 @@
       v-if="!disableClear && !readonly"
       v-show="type !== 'textarea' && active"
     >
-     <nut-icon name="close-little" size="12px"></nut-icon>
-     
+      <nut-icon name="close-little" size="12px"></nut-icon>
     </view>
   </view>
 </template>
@@ -99,7 +98,7 @@ export default create({
       default: false
     }
   },
-   components: {
+  components: {
     [Icon.name]: Icon
   },
   emits: ['change', 'update:value', 'blur', 'focus', 'clear'],
