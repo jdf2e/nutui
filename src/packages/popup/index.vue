@@ -45,99 +45,96 @@ import {
   watch,
   computed,
   reactive,
-  Component,
   PropType,
-  CSSProperties,
-  Teleport,
-  h,
-} from "vue";
-import { useLockScroll } from "./use-lock-scroll";
-import Overlay, { overlayProps } from "./overlay/index.vue";
-import { createComponent } from "@/utils/create";
-const { componentName, create } = createComponent("popup");
+  CSSProperties
+} from 'vue';
+import { useLockScroll } from './use-lock-scroll';
+import Overlay, { overlayProps } from './overlay/index.vue';
+import { createComponent } from '@/utils/create';
+const { componentName, create } = createComponent('popup');
 
-let _global = {
-  zIndex: 2000,
-  overLayCount: 0,
-};
+// let _global = {
+//   zIndex: 2000,
+//   overLayCount: 0
+// };
 
 let _zIndex = 2000;
 
 const popupProps = {
   id: {
-    type: [String, Number],
+    type: [String, Number]
   },
   position: {
     type: String,
-    default: "center",
+    default: 'center'
   },
 
   transition: String,
 
   style: {
-    type: Object as PropType<CSSProperties>,
+    type: Object as PropType<CSSProperties>
   },
 
   closeable: {
     type: Boolean,
-    default: false,
+    default: false
   },
 
   closeIconPosition: {
     type: String,
-    default: "top-right",
+    default: 'top-right'
   },
 
   closeIcon: {
     type: String,
-    default: "close",
+    default: 'close'
   },
 
   destroyOnClose: {
     type: Boolean,
-    default: false,
+    default: false
   },
 
   teleport: {
     type: [String, Element],
-    default: "body",
+    default: 'body'
   },
 
   round: {
     type: Boolean,
-    default: false,
-  },
+    default: false
+  }
 };
 
 export default create({
   Component: {
-    "nut-popup-overlay": Overlay,
+    'nut-popup-overlay': Overlay
   },
   props: {
     ...overlayProps,
-    ...popupProps,
+    ...popupProps
   },
   emits: [
-    "click",
-    "click-close-icon",
-    "open",
-    "close",
-    "opend",
-    "closed",
-    "update:show",
-    "click-overlay",
+    'click',
+    'click-close-icon',
+    'open',
+    'close',
+    'opend',
+    'closed',
+    'update:show',
+    'click-overlay'
   ],
 
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     // if (props.id) console.log(props.id);
     let opened;
     let keepAlive;
-    let ocount = 1;
+    // let ocount = 1;
     const state = reactive({
       zIndex: 0,
       showSlot: true,
       transitionName: `popup-fade-${props.position}`,
-      overLayCount: 1,
+      overLayCount: 1
     });
 
     const [lockScroll, unlockScroll] = useLockScroll(() => props.lockScroll);
@@ -145,8 +142,8 @@ export default create({
     const popStyle = computed(() => {
       return {
         zIndex: state.zIndex,
-        animationDuration: props.duration ? `${props.duration}s` : "initial",
-        ...props.style,
+        animationDuration: props.duration ? `${props.duration}s` : 'initial',
+        ...props.style
       };
     });
 
@@ -169,7 +166,7 @@ export default create({
       if (opened) {
         opened = false;
         unlockScroll();
-        emit("update:show", false);
+        emit('update:show', false);
         if (props.destroyOnClose) {
           setTimeout(() => {
             state.showSlot = false;
@@ -178,28 +175,28 @@ export default create({
       }
     };
 
-    const onClick = (e) => {
-      emit("click", e);
+    const onClick = e => {
+      emit('click', e);
     };
 
-    const onClickCloseIcon = (e) => {
-      emit("click-close-icon", e);
+    const onClickCloseIcon = e => {
+      emit('click-close-icon', e);
       close();
     };
 
-    const onClickOverlay = (e) => {
+    const onClickOverlay = e => {
       if (props.closeOnClickOverlay) {
-        emit("click-overlay");
+        emit('click-overlay', e);
         close();
       }
     };
 
-    const onOpened = (e) => {
-      emit("opend");
+    const onOpened = e => {
+      emit('opend', e);
     };
 
-    const onClosed = (e) => {
-      emit("closed");
+    const onClosed = e => {
+      emit('closed', e);
     };
 
     onMounted(() => {
@@ -223,7 +220,7 @@ export default create({
 
     onActivated(() => {
       if (keepAlive) {
-        emit("update:show", true);
+        emit('update:show', true);
         keepAlive = false;
       }
     });
@@ -237,22 +234,22 @@ export default create({
 
     watch(
       () => props.show,
-      (value) => {
+      value => {
         if (value) {
           open();
-          emit("open");
+          emit('open');
         } else {
           close();
-          emit("close");
+          emit('close');
         }
       }
     );
 
     watch(
       () => props.position,
-      (value) => {
-        value === "center"
-          ? (state.transitionName = "popup-fade")
+      value => {
+        value === 'center'
+          ? (state.transitionName = 'popup-fade')
           : (state.transitionName = `popup-slide-${value}`);
       }
     );
@@ -265,13 +262,14 @@ export default create({
       onClosed,
       state,
       popStyle,
+      componentName
     };
 
     // return renderOverlay();
-  },
+  }
 });
 </script>
 
 <style lang="scss">
-@import "index.scss";
+@import 'index.scss';
 </style>
