@@ -22,7 +22,7 @@ app.use(OverLay);
 <nut-overlay v-model:show="state.show" :z-index="2000"></nut-overlay>
 ```
 
-### 弹出位置
+### 嵌套内容
 
 ```html
 <nut-overlay v-model:show="state.show2" :z-index="2000">
