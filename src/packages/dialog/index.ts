@@ -20,7 +20,7 @@ const Dialog = options => {
   const container = document.createElement('div');
   render(instance, container);
   const dialogDom = document.querySelector('#' + options.id);
-  if (options.id && dialogDom) {
+  if (options.id && dialogDom && dialogDom.parentNode) {
     dialogDom.parentNode.replaceChild(instance.el, dialogDom);
   } else {
     document.body.appendChild(instance.el);
