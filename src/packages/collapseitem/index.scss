@@ -47,7 +47,15 @@
       top: 50%;
       right: 60px;
       margin-top: -12px;
-      color: #969799;
+      color: #999999;
+    }
+    .titleIconRight {
+      vertical-align: middle;
+      margin: -1px 0 0 10px;
+    }
+    .titleIconLeft {
+      vertical-align: middle;
+      margin: -1px 10px 0 0;
     }
   }
   .collapse-wrapper {
@@ -58,8 +66,8 @@
     transition: height 0.3s ease-in-out;
     .collapse-content {
       display: block;
-      padding: 12px 16px;
-      color: #969799;
+      padding: 12px 26px;
+      color: #666666;
       font-size: 14px;
       line-height: 1.5;
       background-color: #fff;

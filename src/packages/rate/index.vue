@@ -1,19 +1,24 @@
 <template>
-  <div class="nut-rate">
-    <span
+  <view class="nut-rate">
+    <view
       class="nut-rate-item"
       :class="[{ 'nut-rate-active': n <= state.current }]"
       v-for="n in total"
       :key="n"
       @click="onClick($event, n)"
       :style="{
-        height: size + 'px',
-        width: size + 'px',
-        marginRight: spacing + 'px',
-        backgroundImage: n <= state.current ? checkedIcon : uncheckedIcon
+        marginRight: spacing + 'px'
       }"
-    ></span>
-  </div>
+    >
+      <nut-icon
+        :size="size + 'px'"
+        :color="
+          n <= state.current ? (disabled ? '#CCCCCC' : activeColor) : '#CCCCCC'
+        "
+        :name="n <= state.current ? checkedIcon : uncheckedIcon"
+      ></nut-icon>
+    </view>
+  </view>
 </template>
 <script lang="ts">
 import { toRefs, watch, reactive, inject } from 'vue';
@@ -34,15 +39,23 @@ export default create({
       type: [String, Number],
       default: 25
     },
+    activeColor: {
+      type: String,
+      default: '#FA200C'
+    },
     uncheckedIcon: {
       type: String,
-      default: null
+      default: 'star'
     },
     checkedIcon: {
       type: String,
-      default: null
+      default: 'star-fill'
     },
     readOnly: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
       type: Boolean,
       default: false
     },
@@ -52,13 +65,13 @@ export default create({
     }
   },
   setup(props, { emit, slots }) {
-    const { value } = toRefs(props);
     const state = reactive({
       current: props.value
     });
 
     const onClick = (e: Event, idx) => {
       e.stopPropagation();
+      if (props.disabled) return;
       if (props.readOnly) {
         emit('update:value', state.current);
         emit('click', state.current);
@@ -73,7 +86,7 @@ export default create({
       }
     };
     watch(
-      () => value.value,
+      () => props.value,
       newVal => {
         state.current = newVal;
       }
