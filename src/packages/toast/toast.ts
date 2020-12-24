@@ -4,7 +4,6 @@ const ToastConstructor = defineComponent(VueToast);
 const defaultOptions = {
   msg: '',
   id: '',
-  visible: true,
   duration: 2000, //显示时间(毫秒)
   center: true,
   type: 'text',
