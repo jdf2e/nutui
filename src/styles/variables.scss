@@ -115,3 +115,18 @@ $inputnumber-input-background-color: $help-color;
 $inputnumber-input-border-radius: 8px;
 $inputnumber-input-width: 40px;
 $inputnumber-input-height: 20px;
+
+// ---- Animation ----
+$animation-duration: 0.25s !default;
+$transition-duration: 0.2s !default;
+$transition-duration-fast: 0.2s !default;
+$transition-duration-slow: 0.4s !default;
+$animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
+$ease-in-out: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+$ease-out: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+
+// ---- z-index ----
+$zindex-mask: 9998 !default;
+$zindex-actionsheet: 10001 !default;
+$zindex-dialog: 10000 !default;
+$zindex-picker: 10050 !default;
