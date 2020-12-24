@@ -1,17 +1,20 @@
 <template>
-  <Transition name="popup-fade">
+  <Transition name="overlay-fade">
     <view
       @touchmove.stop="touchmove"
+      @click="onClick"
       :style="{ animationDuration: `${duration}s`, ...overlayStyle, zIndex }"
       v-show="show"
       :class="classes"
-    ></view>
+    >
+      <slot></slot>
+    </view>
   </Transition>
 </template>
 <script lang="ts">
 import { CSSProperties, PropType, computed } from 'vue';
 import { createComponent } from '@/utils/create';
-const { componentName, create } = createComponent('popup-overlay');
+const { componentName, create } = createComponent('overlay');
 const overlayProps = {
   show: {
     type: Boolean,
@@ -49,13 +52,12 @@ export { overlayProps };
 
 export default create({
   props: overlayProps,
-  emits: [],
-  setup(props) {
+  emits: ['click', 'update:show'],
+  setup(props, { emit }) {
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        ['nut-mask']: true,
         [props.overlayClass]: true
       };
     });
@@ -64,7 +66,18 @@ export default create({
         e.preventDefault();
       }
     };
-    return { classes, touchmove };
+
+    const onClick = e => {
+      emit('click', e);
+      if (props.closeOnClickOverlay) {
+        emit('update:show', false);
+      }
+    };
+
+    return { classes, touchmove, onClick };
   }
 });
 </script>
+<style lang="scss">
+@import 'index.scss';
+</style>
