@@ -13,4 +13,11 @@ export class ArticleApiService {
   getArticle() {
     return this.httpClient.request('/article/list', 'get', {});
   }
+  /**
+   * 保存用户访问数据
+   * @returns
+   */
+  saveUserInfo(parmas) {
+    return this.httpClient.request('/user/saveVisitInfo', 'post', parmas);
+  }
 }
