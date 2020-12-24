@@ -70,8 +70,14 @@ export default defineComponent({
     background: #f7f8fa;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 0 25px;
-    padding-top: 57px;
+    padding: 57px 25px 0 25px;
+
+    &.full {
+      padding: 57px 0 0 0;
+      h2 {
+        padding-left: 25px;
+      }
+    }
 
     &.bg-w {
       background: #fff;
