@@ -96,7 +96,7 @@
       :style="{ height: '30%' }"
       v-model:show="state.showRound"
     ></nut-popup>
-    <h2>组合弹框</h2>
+    <!-- <h2>组合弹框</h2> -->
     <!-- <nut-cell title="组合弹框" is-link @click="state.showCombination = true"></nut-cell>
     <nut-popup
       id="combination"

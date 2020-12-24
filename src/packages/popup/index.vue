@@ -14,13 +14,7 @@
       @after-enter="onOpened"
       @after-leave="onClosed"
     >
-      <view
-        v-show="show"
-        class="popup-box"
-        :class="[`popup-${position}`, { round }]"
-        :style="popStyle"
-        @click="onClick"
-      >
+      <view v-show="show" :class="classes" :style="popStyle" @click="onClick">
         <slot v-if="state.showSlot"></slot>
         <nut-icon
           v-if="closeable"
@@ -92,7 +86,7 @@ const popupProps = {
 
   destroyOnClose: {
     type: Boolean,
-    default: false
+    default: true
   },
 
   teleport: {
@@ -138,6 +132,15 @@ export default create({
     });
 
     const [lockScroll, unlockScroll] = useLockScroll(() => props.lockScroll);
+
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true,
+        ['round']: props.round,
+        [`popup-${props.position}`]: true
+      };
+    });
 
     const popStyle = computed(() => {
       return {
@@ -262,10 +265,8 @@ export default create({
       onClosed,
       state,
       popStyle,
-      componentName
+      classes
     };
-
-    // return renderOverlay();
   }
 });
 </script>

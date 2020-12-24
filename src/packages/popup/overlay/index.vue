@@ -4,13 +4,12 @@
       @touchmove.stop="touchmove"
       :style="{ animationDuration: `${duration}s`, ...overlayStyle, zIndex }"
       v-show="show"
-      class="popup-bg nut-mask"
-      :class="overlayClass"
+      :class="classes"
     ></view>
   </Transition>
 </template>
 <script lang="ts">
-import { toRefs, CSSProperties, PropType, Transition } from 'vue';
+import { CSSProperties, PropType, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('popup-overlay');
 const overlayProps = {
@@ -52,12 +51,20 @@ export default create({
   props: overlayProps,
   emits: [],
   setup(props) {
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true,
+        ['nut-mask']: true,
+        [props.overlayClass]: true
+      };
+    });
     const touchmove = e => {
       if (props.lockScroll) {
         e.preventDefault();
       }
     };
-    return { touchmove };
+    return { classes, touchmove };
   }
 });
 </script>
