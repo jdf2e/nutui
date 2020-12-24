@@ -217,6 +217,17 @@ module.exports = {
         },
         {
           version: '3.0.0',
+          name: 'Dialog',
+          type: 'component',
+          cName: '对话框',
+          desc:
+            '模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。',
+          sort: 8,
+          show: true,
+          author: 'dsj'
+        },
+        {
+          version: '3.0.0',
           name: 'Radio',
           type: 'component',
           cName: '单选按钮',
