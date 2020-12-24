@@ -23,8 +23,13 @@
         <div class="doc-footer-item">JDW智能构建平台</div>
         <div class="doc-footer-item">JDW智能构建平台</div>
       </div>
-      <div class="doc-footer-list" @click.stop="data.isShowSelect = !data.isShowSelect">
-        <div class="doc-footer-select-hd"><i class="icon-color"></i>主题换肤</div>
+      <div
+        class="doc-footer-list"
+        @click.stop="data.isShowSelect = !data.isShowSelect"
+      >
+        <div class="doc-footer-select-hd"
+          ><i class="icon-color"></i>主题换肤</div
+        >
         <div class="doc-footer-select-bd" v-show="data.isShowSelect">
           <div
             class="doc-footer-select-item"
@@ -154,7 +159,8 @@ export default defineComponent({
       width: 12px;
       height: 10px;
       margin-right: 10px;
-      background: url('../../assets/images/icon-color.png') no-repeat center/100%;
+      background: url('../../assets/images/icon-color.png') no-repeat
+        center/100%;
     }
     .circle-red,
     .circle-black,

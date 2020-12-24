@@ -96,6 +96,33 @@ module.exports = {
           show: false,
           desc: '折叠面板-item',
           author: 'Ymm0008'
+        },
+        {
+          name: 'Layout',
+          sort: 4,
+          cName: '布局',
+          type: 'component',
+          show: true,
+          desc: '简便地创建布局',
+          author: 'undo'
+        },
+        {
+          name: 'col',
+          sort: 5,
+          cName: '布局-Col',
+          type: 'component',
+          show: false,
+          desc: '布局组件Col',
+          author: 'undo'
+        },
+        {
+          name: 'row',
+          sort: 6,
+          cName: '布局-Row',
+          type: 'component',
+          show: false,
+          desc: '布局组件Row',
+          author: 'undo'
         }
       ]
     },
@@ -196,7 +223,48 @@ module.exports = {
           show: true,
           desc:
             '弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示',
-          author: 'szg2008'
+          author: 'szg2008',
+          version: '3.0.0'
+        },
+        {
+          name: 'Dialog',
+          type: 'component',
+          cName: '对话框',
+          desc:
+            '模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。',
+          sort: 8,
+          show: true,
+          author: 'dsj'
+        },
+        {
+          version: '3.0.0',
+          name: 'Radio',
+          type: 'component',
+          cName: '单选按钮',
+          desc: '单选按钮',
+          sort: 9,
+          show: true,
+          author: 'Ymm0008'
+        },
+        {
+          version: '3.0.0',
+          name: 'RadioGroup',
+          type: 'component',
+          cName: '单选按钮组',
+          desc: '单选按钮组',
+          sort: 10,
+          show: false,
+          author: 'Ymm0008'
+        },
+        {
+          version: '3.0.0',
+          name: 'CheckboxGroup',
+          type: 'component',
+          cName: '多选按钮组',
+          desc: '多选按钮组',
+          sort: 11,
+          show: false,
+          author: 'Ymm0008'
         }
       ]
     },
@@ -220,6 +288,24 @@ module.exports = {
           show: true,
           desc: '标签组件',
           author: 'zhenyulei'
+        },
+        {
+          name: 'menu',
+          sort: 2,
+          cName: '菜单组件',
+          type: 'component',
+          show: true,
+          desc: '下拉菜单组件',
+          author: 'vickyYE'
+        },
+        {
+          name: 'tabbar',
+          sort: 2,
+          cName: '标签栏组件',
+          type: 'component',
+          show: true,
+          desc: '标签栏组件',
+          author: 'Drjingfubo'
         }
       ]
     },
@@ -234,6 +320,35 @@ module.exports = {
           show: true,
           desc: '数字输入框组件',
           author: 'szg2008'
+        },
+        {
+          name: 'Input',
+          sort: 2,
+          cName: '输入框',
+          type: 'component',
+          show: true,
+          desc: '输入框组件',
+          author: 'gxx158'
+        },
+        {
+          version: '3.0.0',
+          name: 'Switch',
+          type: 'component',
+          cName: '开关组件',
+          desc: '用来打开或关闭选项',
+          sort: 3,
+          show: true,
+          author: 'zongyue3'
+        },
+        {
+          version: '3.0.0',
+          name: 'Rate',
+          sort: 4,
+          cName: '评分',
+          type: 'component',
+          show: true,
+          desc: '评分组件',
+          author: 'undo'
         }
       ]
     },
