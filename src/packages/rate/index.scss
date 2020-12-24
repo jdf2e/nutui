@@ -18,16 +18,14 @@
   .nut-rate-item {
     display: inline-block;
     vertical-align: bottom;
-    width: 30px;
-    height: 30px;
     margin-right: 15px;
-    @include nut-rate-bg($primary-color);
+    // @include nut-rate-bg($primary-color);
     background-size: cover;
     &:last-child {
       margin-right: 0;
     }
-    &.nut-rate-active {
-      @include nut-rate-active-bg($primary-color);
-    }
+    // &.nut-rate-active {
+    //   @include nut-rate-active-bg($primary-color);
+    // }
   }
 }
