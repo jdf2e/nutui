@@ -234,6 +234,16 @@ module.exports = {
           sort: 10,
           show: false,
           author: 'Ymm0008'
+        },
+        {
+          version: '3.0.0',
+          name: 'CheckboxGroup',
+          type: 'component',
+          cName: '多选按钮组',
+          desc: '多选按钮组',
+          sort: 11,
+          show: false,
+          author: 'Ymm0008'
         }
       ]
     },
