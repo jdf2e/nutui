@@ -216,6 +216,27 @@ module.exports = {
           author: 'ailululu'
         },
         {
+          name: 'Popup',
+          sort: 8,
+          cName: '弹出层',
+          type: 'component',
+          show: true,
+          desc:
+            '弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示',
+          author: 'szg2008',
+          version: '3.0.0'
+        },
+        {
+          name: 'Dialog',
+          type: 'component',
+          cName: '对话框',
+          desc:
+            '模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。',
+          sort: 8,
+          show: true,
+          author: 'dsj'
+        },
+        {
           version: '3.0.0',
           name: 'Radio',
           type: 'component',
@@ -232,6 +253,16 @@ module.exports = {
           cName: '单选按钮组',
           desc: '单选按钮组',
           sort: 10,
+          show: false,
+          author: 'Ymm0008'
+        },
+        {
+          version: '3.0.0',
+          name: 'CheckboxGroup',
+          type: 'component',
+          cName: '多选按钮组',
+          desc: '多选按钮组',
+          sort: 11,
           show: false,
           author: 'Ymm0008'
         }
@@ -318,6 +349,16 @@ module.exports = {
           show: true,
           desc: '评分组件',
           author: 'undo'
+        },
+        {
+          version: '3.0.0',
+          name: 'Calendar',
+          type: 'component',
+          cName: '日历',
+          desc: '日历组件',
+          sort: 5,
+          show: true,
+          author: ''
         }
       ]
     },

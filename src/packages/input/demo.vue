@@ -143,7 +143,7 @@ export default createDemo({
     padding-left: 25px;
     margin-top: 25px;
     margin-bottom: 10px;
-    color: #909CA4;
+    color: #909ca4;
   }
 }
 </style>
