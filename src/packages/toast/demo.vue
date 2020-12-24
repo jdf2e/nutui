@@ -52,8 +52,10 @@ export default createDemo({
       Toast.warn(msg);
     };
     const loadingToast = msg => {
-      Toast.loading(msg, { duration: 0 });
-      setTimeout(Toast.hide, 3000);
+      Toast.loading(msg, { duration: 0, id: 'test' });
+      setTimeout(() => {
+        Toast.success('加载完成', { id: 'test', duration: 2000 });
+      }, 2000);
     };
     return {
       textToast,
