@@ -19,6 +19,12 @@ $black: #000;
 // padding
 $padding-xs: 8px 12px;
 
+$font-family: PingHei, 'Lucida Grande', 'Lucida Sans Unicode', STHeiti,
+  Helvetica, Arial, Verdana, 'sans-serif', 'PingHei-light', SimHei, 'Droid Sans' !default;
+$font-size-base: 14px !default;
+$font-size-small: 12px !default;
+$font-size-large: 16px !default;
+$line-height-base: 1.5 !default;
 // Font
 $font-size-1: 12px;
 $font-size-2: 14px;
@@ -119,3 +125,21 @@ $calendar-title-font: $font-size-4;
 $calendar-base-font: $font-size-3;
 $calendar-text-font: $font-size-1;
 $calendar-day-font: 18px;
+//popup
+
+$popup-close-icon-margin: 16px;
+$popup-border-radius: 20px;
+// ---- Animation ----
+$animation-duration: 0.25s !default;
+$transition-duration: 0.2s !default;
+$transition-duration-fast: 0.2s !default;
+$transition-duration-slow: 0.4s !default;
+$animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
+$ease-in-out: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+$ease-out: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+
+// ---- z-index ----
+$zindex-mask: 9998 !default;
+$zindex-actionsheet: 10001 !default;
+$zindex-dialog: 10000 !default;
+$zindex-picker: 10050 !default;

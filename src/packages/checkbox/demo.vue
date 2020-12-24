@@ -7,10 +7,29 @@
       >
       <span>{{ checkbox1 }}</span>
     </div>
+    <p class="p-word"
+      >组合使用 checkbox 时推荐使用 checkboxgroup 组件，见下方示例</p
+    >
+    <h4>CheckboxGroup基本用法</h4>
+    <div class="show-demo">
+      <nut-checkboxgroup v-model="checkboxGroup1">
+        <nut-checkbox label="选项一"></nut-checkbox>
+        <nut-checkbox label="选项二"></nut-checkbox>
+      </nut-checkboxgroup>
+      <p>选择状态：{{ checkboxGroup1 }}</p>
+    </div>
     <h4>禁用状态</h4>
     <div class="show-demo show-demo-block">
       <nut-checkbox v-model="checkbox2" disabled>未选时禁用状态</nut-checkbox>
       <nut-checkbox v-model="checkbox3" disabled>已选时禁用状态</nut-checkbox>
+    </div>
+    <h4>CheckboxGroup整体禁用</h4>
+    <div class="show-demo">
+      <nut-checkboxgroup v-model="checkboxGroup2" disabled>
+        <nut-checkbox label="选项一"></nut-checkbox>
+        <nut-checkbox label="选项二"></nut-checkbox>
+      </nut-checkboxgroup>
+      <p>选择状态：{{ checkboxGroup2 }}</p>
     </div>
     <h4>自定义尺寸</h4>
     <div class="show-demo show-demo-block">
@@ -19,12 +38,26 @@
       <nut-checkbox v-model="checkbox6" size="large">大号</nut-checkbox>
       <p>size可选值：'small', 'base', 'large'</p>
     </div>
+    <h4>CheckboxGroup整体尺寸</h4>
+    <div class="show-demo">
+      <nut-checkboxgroup v-model="checkboxGroup3" size="small">
+        <nut-checkbox label="选项一"></nut-checkbox>
+        <nut-checkbox label="选项二"></nut-checkbox>
+      </nut-checkboxgroup>
+    </div>
     <h4>禁用动效</h4>
     <div class="show-demo">
       <nut-checkbox v-model="checkbox7" :animation="false"
         >没有动效</nut-checkbox
       >
       <p>animation属性值为false时，禁用自带动效</p>
+    </div>
+    <h4>CheckboxGroup整体禁用动效</h4>
+    <div class="show-demo">
+      <nut-checkboxgroup v-model="checkboxGroup4" :animation="false">
+        <nut-checkbox label="没有动效1"></nut-checkbox>
+        <nut-checkbox label="没有动效2"></nut-checkbox>
+      </nut-checkboxgroup>
     </div>
     <h4>事件</h4>
     <div class="show-demo">
@@ -36,35 +69,64 @@
           >备选项</nut-checkbox
         >
         <span>{{ result1 }}</span>
-        <p>值发生变化时，将触发change事件</p>
       </div>
     </div>
+    <h4>CheckboxGroup整体事件</h4>
     <div class="show-demo">
-      <div class="demo-box">
-        <nut-checkbox
-          v-model="checkbox10"
-          :label="'选项值1'"
-          @change="getChange"
-          >change事件</nut-checkbox
-        >
-        <span>{{ result2 }}</span>
+      <div>
+        <nut-checkboxgroup v-model="checkboxGroup4" @change="getChange">
+          <nut-checkbox label="选项一"></nut-checkbox>
+          <nut-checkbox label="选项二"></nut-checkbox>
+        </nut-checkboxgroup>
       </div>
-      <div class="demo-box">
-        <nut-checkbox
-          v-model="checkbox11"
-          :label="'选项值2'"
-          @change="getChange2"
-          >change事件</nut-checkbox
-        >
-        <span>{{ result3 }}</span>
-      </div>
-      <p>设置label时，可获取选项label值</p>
+      <span>{{ result2 }}</span>
     </div>
     <h4>自定义Class</h4>
     <div class="show-demo">
       <nut-checkbox class="my-checkbox" v-model="checkbox12"
         >自定义Class:"my-checkbox"</nut-checkbox
       >
+    </div>
+    <h4>全选与反选</h4>
+    <div class="show-demo">
+      <div>
+        <nut-checkboxgroup
+          ref="checkboxGroupDemo"
+          v-model="checkboxGroup5"
+          @change="getChange2"
+        >
+          <nut-checkbox label="选项一"></nut-checkbox>
+          <nut-checkbox label="选项二"></nut-checkbox>
+          <nut-checkbox label="选项三"></nut-checkbox>
+        </nut-checkboxgroup>
+      </div>
+      <div>
+        <span>{{ result3 }}</span>
+      </div>
+      <nut-button size="small" type="primary" @click="chooseAll(true)"
+        >全选</nut-button
+      >
+      <nut-button size="small" type="primary" @click="chooseAll()"
+        >反选</nut-button
+      >
+      <nut-button size="small" type="primary" @click="chooseAll(false)"
+        >取消</nut-button
+      >
+    </div>
+    <h4>CheckboxGroup排列方向</h4>
+    <div class="show-demo">
+      <div>
+        <nut-checkboxgroup
+          v-model="checkboxGroup6"
+          direction="vertical"
+          @change="getChange3"
+        >
+          <nut-checkbox label="选项一"></nut-checkbox>
+          <nut-checkbox label="选项二"></nut-checkbox>
+          <nut-checkbox label="选项三"></nut-checkbox>
+        </nut-checkboxgroup>
+      </div>
+      <span>{{ result2 }}</span>
     </div>
   </div>
 </template>
@@ -87,12 +149,19 @@ export default createDemo({
       checkbox10: true,
       checkbox11: false,
       checkbox12: true,
-      checkbox13: false
+      checkbox13: false,
+      checkboxGroup1: ['选项一'],
+      checkboxGroup2: ['选项一'],
+      checkboxGroup3: [],
+      checkboxGroup4: ['选项一'],
+      checkboxGroup5: [],
+      checkboxGroup6: []
     });
     const result = reactive({
       result1: '',
       result2: '',
-      result3: ''
+      result3: '',
+      result4: ''
     });
     const changeBox1 = (state: boolean) => {
       data.checkbox1 = state;
@@ -100,17 +169,27 @@ export default createDemo({
     const checkboxChange = (state: string, val: string) => {
       result.result1 = state;
     };
-    const getChange = (state: boolean, val: string) => {
-      result.result2 = '选中状态：' + state + '，选项：' + val;
+    const getChange = (val: string) => {
+      result.result2 = '选中状态选项：' + val;
     };
-    const getChange2 = (state: boolean, val: string) => {
-      result.result3 = '选中状态：' + state + '，选项：' + val;
+    const getChange2 = (val: string) => {
+      result.result3 = '选中状态选项：' + val;
+    };
+    const getChange3 = (val: string) => {
+      result.result4 = '选中状态选项：' + val;
+    };
+    const checkboxGroupDemo = ref(null);
+    const chooseAll = (val: boolean | string) => {
+      (checkboxGroupDemo.value as any).toggleAll(val);
     };
     return {
       changeBox1,
       checkboxChange,
+      checkboxGroupDemo,
       getChange,
       getChange2,
+      getChange3,
+      chooseAll,
       ...toRefs(data),
       ...toRefs(result)
     };
@@ -148,6 +227,16 @@ export default createDemo({
     span {
       font-size: 12px;
     }
+    .nut-button {
+      margin: 10px 10px 0 0;
+    }
+  }
+  .p-word {
+    margin: 15px 0;
+    font-size: 14px;
+    color: #636363;
+    padding-left: 5px;
+    border-left: 8px solid #03a9f4;
   }
   .show-demo-block {
     view {
