@@ -90,13 +90,11 @@ export default create({
   },
   setup(props) {
     console.log('props', props);
-    const state = reactive({
-      timer: null
-    });
+    let timer;
     const clearTimer = () => {
-      if (state.timer) {
-        clearTimeout(state.timer);
-        state.timer = null;
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
       }
     };
     const hide = () => {
@@ -107,7 +105,7 @@ export default create({
     const show = () => {
       clearTimer();
       if (props.duration) {
-        state.timer = setTimeout(() => {
+        timer = setTimeout(() => {
           hide();
         }, props.duration);
       }
@@ -122,6 +120,15 @@ export default create({
     if (props.duration) {
       show();
     }
+
+    watch(
+      () => props.duration,
+      val => {
+        if (val) {
+          show();
+        }
+      }
+    );
 
     const hasIcon = computed(() => {
       console.log(props.type);
@@ -143,7 +150,7 @@ export default create({
       ];
     });
     return {
-      state,
+      hide,
       clickCover,
       hasIcon,
       toastBodyClass
