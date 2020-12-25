@@ -1,8 +1,7 @@
 <template>
   <Teleport :to="teleport">
-    <nut-popup-overlay
+    <nut-overlay
       :show="show && overlay"
-      v-if="state.overLayCount === 1"
       :class="overlayClass"
       :style="overlayStyle"
       :zIndex="state.zIndex"
@@ -14,13 +13,7 @@
       @after-enter="onOpened"
       @after-leave="onClosed"
     >
-      <view
-        v-show="show"
-        class="popup-box"
-        :class="[`popup-${position}`, { round }]"
-        :style="popStyle"
-        @click="onClick"
-      >
+      <view v-show="show" :class="classes" :style="popStyle" @click="onClick">
         <slot v-if="state.showSlot"></slot>
         <nut-icon
           v-if="closeable"
@@ -49,7 +42,7 @@ import {
   CSSProperties
 } from 'vue';
 import { useLockScroll } from './use-lock-scroll';
-import Overlay, { overlayProps } from './overlay/index.vue';
+import { overlayProps } from './../overlay/index.vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('popup');
 
@@ -92,7 +85,7 @@ const popupProps = {
 
   destroyOnClose: {
     type: Boolean,
-    default: false
+    default: true
   },
 
   teleport: {
@@ -107,9 +100,6 @@ const popupProps = {
 };
 
 export default create({
-  Component: {
-    'nut-popup-overlay': Overlay
-  },
   props: {
     ...overlayProps,
     ...popupProps
@@ -138,6 +128,15 @@ export default create({
     });
 
     const [lockScroll, unlockScroll] = useLockScroll(() => props.lockScroll);
+
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true,
+        ['round']: props.round,
+        [`popup-${props.position}`]: true
+      };
+    });
 
     const popStyle = computed(() => {
       return {
@@ -262,10 +261,8 @@ export default create({
       onClosed,
       state,
       popStyle,
-      componentName
+      classes
     };
-
-    // return renderOverlay();
   }
 });
 </script>

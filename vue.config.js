@@ -1,6 +1,6 @@
 // vue.config.js
 const path = require('path');
-
+//target: 'http://localhost:7004',
 module.exports = {
   productionSourceMap: process.env.NODE_ENV != 'production',
   publicPath: './',

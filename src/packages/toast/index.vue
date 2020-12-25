@@ -1,9 +1,8 @@
 <template>
-  <transition name="toastfade">
+  <Transition name="toast-fade" @after-leave="onAfterLeave">
     <view
-      :id="id"
       :class="toastBodyClass"
-      v-if="visible"
+      v-show="state.mounted"
       :style="{
         bottom: center ? 'auto' : bottom + 'px',
         'background-color': coverColor
@@ -23,21 +22,17 @@
         <view class="nut-toast-text" v-html="msg"></view>
       </view>
     </view>
-  </transition>
+  </Transition>
 </template>
 <script>
 import Icon from '../icon';
-import { toRefs, reactive, computed, watch } from 'vue';
+import { toRefs, toRef, reactive, computed, watch, onMounted } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('toast');
 export default create({
   props: {
     id: String,
     msg: String,
-    visible: {
-      type: Boolean,
-      default: false
-    },
     duration: {
       type: Number,
       default: 2000
@@ -89,31 +84,31 @@ export default create({
     'nut-icon': Icon
   },
   setup(props) {
-    console.log('props', props);
+    let timer;
     const state = reactive({
-      timer: null
+      mounted: false
+    });
+    onMounted(() => {
+      state.mounted = true;
     });
     const clearTimer = () => {
-      if (state.timer) {
-        clearTimeout(state.timer);
-        state.timer = null;
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
       }
     };
     const hide = () => {
-      clearTimer();
-      props.unmount(props.id);
-      props.onClose && props.onClose();
+      state.mounted = false;
     };
     const show = () => {
       clearTimer();
       if (props.duration) {
-        state.timer = setTimeout(() => {
+        timer = setTimeout(() => {
           hide();
         }, props.duration);
       }
     };
     const clickCover = () => {
-      console.log('click');
       if (props.closeOnClickOverlay) {
         hide();
       }
@@ -123,8 +118,16 @@ export default create({
       show();
     }
 
+    watch(
+      () => props.duration,
+      val => {
+        if (val) {
+          show();
+        }
+      }
+    );
+
     const hasIcon = computed(() => {
-      console.log(props.type);
       if (props.type !== 'text') {
         return true;
       } else {
@@ -142,11 +145,20 @@ export default create({
         'nut-toast-' + props.size
       ];
     });
+
+    const onAfterLeave = () => {
+      clearTimer();
+      props.unmount(props.id);
+      props.onClose && props.onClose();
+    };
+
     return {
       state,
+      hide,
       clickCover,
       hasIcon,
-      toastBodyClass
+      toastBodyClass,
+      onAfterLeave
     };
   }
 });

@@ -137,6 +137,15 @@ module.exports = {
           show: true,
           desc: '较长页面快捷回到顶部',
           author: 'liqiong43'
+        },
+        {
+          name: 'Toast',
+          sort: '1',
+          cName: '吐司',
+          type: 'component',
+          show: true,
+          desc: '轻提示',
+          author: 'undo'
         }
       ]
     },
@@ -265,6 +274,16 @@ module.exports = {
           sort: 11,
           show: false,
           author: 'Ymm0008'
+        },
+        {
+          version: '3.0.0',
+          name: 'OverLay',
+          type: 'component',
+          cName: '遮罩层',
+          desc: '创建一个遮罩层，通常用于阻止用户进行其他操作',
+          sort: 14,
+          show: true,
+          author: 'szg2008'
         }
       ]
     },

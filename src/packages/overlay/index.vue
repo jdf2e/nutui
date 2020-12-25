@@ -1,18 +1,20 @@
 <template>
-  <Transition name="popup-fade">
+  <Transition name="overlay-fade">
     <view
       @touchmove.stop="touchmove"
+      @click="onClick"
       :style="{ animationDuration: `${duration}s`, ...overlayStyle, zIndex }"
       v-show="show"
-      class="popup-bg nut-mask"
-      :class="overlayClass"
-    ></view>
+      :class="classes"
+    >
+      <slot></slot>
+    </view>
   </Transition>
 </template>
 <script lang="ts">
-import { toRefs, CSSProperties, PropType, Transition } from 'vue';
+import { CSSProperties, PropType, computed } from 'vue';
 import { createComponent } from '@/utils/create';
-const { componentName, create } = createComponent('popup-overlay');
+const { componentName, create } = createComponent('overlay');
 const overlayProps = {
   show: {
     type: Boolean,
@@ -50,14 +52,32 @@ export { overlayProps };
 
 export default create({
   props: overlayProps,
-  emits: [],
-  setup(props) {
+  emits: ['click', 'update:show'],
+  setup(props, { emit }) {
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true,
+        [props.overlayClass]: true
+      };
+    });
     const touchmove = e => {
       if (props.lockScroll) {
         e.preventDefault();
       }
     };
-    return { touchmove };
+
+    const onClick = e => {
+      emit('click', e);
+      if (props.closeOnClickOverlay) {
+        emit('update:show', false);
+      }
+    };
+
+    return { classes, touchmove, onClick };
   }
 });
 </script>
+<style lang="scss">
+@import 'index.scss';
+</style>

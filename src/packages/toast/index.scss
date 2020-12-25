@@ -85,15 +85,15 @@
   }
 }
 
-.toastfade-enter-active {
-  transition: opacity 0.1s;
-}
-
-.toastfade-leave-active {
+.toast-fade-enter-active {
   transition: opacity 0.3s;
 }
 
-.toastfade-enter,
-.toastfade-leave-active {
+.toast-fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.toast-fade-enter-from,
+.toast-fade-leave-to {
   opacity: 0;
 }
