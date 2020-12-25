@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Index from './views/Index.vue';
 import Resource from './views/Resource.vue';
 import Main from './views/Main.vue';
-
+import { HttpClient } from '../service/HttpClient';
 const pagesRouter: Array<RouteRecordRaw> = [];
 const files = require.context('@/packages', true, /doc\.md$/);
 files.keys().forEach(component => {
@@ -57,5 +57,10 @@ const router = createRouter({
     }
   }
 });
-
+router.afterEach((to, from) => {
+  new HttpClient().request('/user/saveVisitInfo', 'post', {
+    headers: '',
+    componentName: to.path.split('/')[1]
+  });
+});
 export default router;

@@ -1,6 +1,6 @@
 // vue.config.js
 const path = require('path');
-
+//target: 'http://localhost:7004',
 module.exports = {
   productionSourceMap: process.env.NODE_ENV != 'production',
   publicPath: './',
@@ -18,6 +18,7 @@ module.exports = {
       }
     }
   },
+
   css: {
     loaderOptions: {
       // 给 sass-loader 传递选项
@@ -34,6 +35,15 @@ module.exports = {
       // 在这种情况下，我们可以使用 `scss` 选项，对 `scss` 语法进行单独配置
       scss: {
         additionalData: `@import "~@/styles/variables.scss";@import "~@/sites/assets/styles/variables.scss";`
+      },
+      postcss: {
+        plugins: [
+          require('autoprefixer')({
+            // 配置使用 autoprefixer
+            // browsers: ['last 20 versions'],
+            overrideBrowserslist: ['last 20 versions'] // 记得这里要把 browsers 改为 overrideBrowserslist，autoprefixer 新版本的写法有变
+          })
+        ]
       }
     }
   },

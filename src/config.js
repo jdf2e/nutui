@@ -137,6 +137,15 @@ module.exports = {
           show: true,
           desc: '较长页面快捷回到顶部',
           author: 'liqiong43'
+        },
+        {
+          name: 'Toast',
+          sort: '1',
+          cName: '吐司',
+          type: 'component',
+          show: true,
+          desc: '轻提示',
+          author: 'undo'
         }
       ]
     },
@@ -214,6 +223,67 @@ module.exports = {
           show: true,
           desc: '头像',
           author: 'ailululu'
+        },
+        {
+          name: 'Popup',
+          sort: 8,
+          cName: '弹出层',
+          type: 'component',
+          show: true,
+          desc:
+            '弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示',
+          author: 'szg2008',
+          version: '3.0.0'
+        },
+        {
+          name: 'Dialog',
+          type: 'component',
+          cName: '对话框',
+          desc:
+            '模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。',
+          sort: 8,
+          show: true,
+          author: 'dsj'
+        },
+        {
+          version: '3.0.0',
+          name: 'Radio',
+          type: 'component',
+          cName: '单选按钮',
+          desc: '单选按钮',
+          sort: 9,
+          show: true,
+          author: 'Ymm0008'
+        },
+        {
+          version: '3.0.0',
+          name: 'RadioGroup',
+          type: 'component',
+          cName: '单选按钮组',
+          desc: '单选按钮组',
+          sort: 10,
+          show: false,
+          author: 'Ymm0008'
+        },
+        {
+          version: '3.0.0',
+          name: 'CheckboxGroup',
+          type: 'component',
+          cName: '多选按钮组',
+          desc: '多选按钮组',
+          sort: 11,
+          show: false,
+          author: 'Ymm0008'
+        },
+        {
+          version: '3.0.0',
+          name: 'OverLay',
+          type: 'component',
+          cName: '遮罩层',
+          desc: '创建一个遮罩层，通常用于阻止用户进行其他操作',
+          sort: 14,
+          show: true,
+          author: 'szg2008'
         }
       ]
     },
@@ -237,6 +307,15 @@ module.exports = {
           show: true,
           desc: '标签组件',
           author: 'zhenyulei'
+        },
+        {
+          name: 'menu',
+          sort: 2,
+          cName: '菜单组件',
+          type: 'component',
+          show: true,
+          desc: '下拉菜单组件',
+          author: 'vickyYE'
         },
         {
           name: 'tabbar',
@@ -281,6 +360,7 @@ module.exports = {
           author: 'zongyue3'
         },
         {
+          version: '3.0.0',
           name: 'Rate',
           sort: 4,
           cName: '评分',
@@ -288,6 +368,16 @@ module.exports = {
           show: true,
           desc: '评分组件',
           author: 'undo'
+        },
+        {
+          version: '3.0.0',
+          name: 'Calendar',
+          type: 'component',
+          cName: '日历',
+          desc: '日历组件',
+          sort: 5,
+          show: true,
+          author: ''
         }
       ]
     },

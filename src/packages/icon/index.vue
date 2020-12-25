@@ -1,5 +1,5 @@
 <script lang="ts">
-import { h, PropType, computed, toRefs } from 'vue';
+import { h, PropType, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('icon');
 
@@ -14,34 +14,34 @@ export default create({
   emits: ['click'],
 
   setup(props, { emit, slots }) {
-    const { name, size, classPrefix, color, tag } = toRefs(props);
-
     const handleClick = (event: Event) => {
       emit('click', event);
     };
 
-    const isImage = computed(() => {
-      return name.value ? name.value.indexOf('/') !== -1 : false;
-    }).value;
+    const isImage = () => {
+      return props.name ? props.name.indexOf('/') !== -1 : false;
+    };
 
-    return () =>
-      h(
-        isImage ? 'img' : tag.value,
+    return () => {
+      const _isImage = isImage();
+      return h(
+        _isImage ? 'img' : props.tag,
         {
-          class: isImage
+          class: _isImage
             ? `${componentName}__img`
-            : `${classPrefix.value} ${componentName}-${name.value}`,
+            : `${props.classPrefix} ${componentName}-${props.name}`,
           style: {
-            color: color.value,
-            fontSize: size.value,
-            width: isImage ? size.value : '',
-            height: isImage ? size.value : ''
+            color: props.color,
+            fontSize: props.size,
+            width: _isImage ? props.size : '',
+            height: _isImage ? props.size : ''
           },
           onClick: handleClick,
-          src: isImage ? name.value : ''
+          src: _isImage ? props.name : ''
         },
         slots.default?.()
       );
+    };
   }
 });
 </script>
