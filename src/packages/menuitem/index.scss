@@ -15,6 +15,9 @@
         color: #1a1a1a;
         transition: all ease 0.3s;
         transform: rotate(-180deg);
+        background: url('https://img14.360buyimg.com/imagetools/jfs/t1/144044/16/20214/521/5fe5bb14Ebf213fe3/40f271b982f31898.png')
+          no-repeat;
+        background-size: contain;
       }
     }
     .nut-menu-panel {
@@ -36,11 +39,13 @@
     display: inline-block;
     width: 6px;
     height: 6px;
+    background: url('https://img13.360buyimg.com/imagetools/jfs/t1/152898/12/10149/452/5fd990b5Ec7c12d70/3bf06076b758bed1.png')
+      no-repeat;
+    background-size: contain;
     color: #909ca4;
     transform: rotate(0deg);
     transition: all ease 0.3s;
     margin: 0 2px;
-    transform-origin: right;
   }
 }
 .nut-menu-panel {

@@ -5,7 +5,7 @@
   >
     <view class="nut-menu-title" @click="handleMenuPanel">
       <view class="title-name" v-html="menuTitle"></view>
-      <nut-icon class="icon" name="arrow-down" size="6px"></nut-icon>
+      <i class="icon"></i>
     </view>
     <view
       class="nut-menu-panel"
