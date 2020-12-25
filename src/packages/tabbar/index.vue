@@ -2,7 +2,7 @@
   <view class="nut-tabbar" :class="{ bottom: bottom }">
     <view
       class="tabbar-nav"
-      v-for="(item, index) in tabList"
+      v-for="(item, index) in tabbarList"
       :key="index"
       :style="{ color: index == currIndex ? activeColor : unactiveColor }"
       :class="type"
@@ -39,7 +39,7 @@ type obj = {
 };
 export default create({
   props: {
-    tabList: {
+    tabbarList: {
       type: Array,
       default: () => {
         return [];
@@ -70,9 +70,9 @@ export default create({
   setup(props, { emit }) {
     console.log(props);
     const currIndex: any = ref(0);
-    const { tabList } = props;
+    const { tabbarList } = props;
     function initbar() {
-      tabList.forEach((item: any, index) => {
+      tabbarList.forEach((item: any, index) => {
         if (item.curr) {
           currIndex.value = index;
         }
@@ -91,7 +91,7 @@ export default create({
     });
     return {
       currIndex,
-      tabList,
+      tabbarList,
       switchTabs
     };
   }

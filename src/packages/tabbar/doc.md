@@ -19,7 +19,7 @@ app.use(Tabbar);
 ### 基础用法
 
 ``` html
-<nut-tabbar :tab-List="tabList" @tab-switch="tabSwitch"></nut-tabbar>
+<nut-tabbar :tabbar-List="tabList" @tab-switch="tabSwitch"></nut-tabbar>
 ```
 
 ``` javascript
@@ -68,7 +68,7 @@ app.use(Tabbar);
 ### 徽标提示
 
 ``` html
-<nut-tabbar :tab-List="tabList" @tab-switch="tabSwitch"></nut-tabbar>
+<nut-tabbar :tabbar-List="tabList" @tab-switch="tabSwitch"></nut-tabbar>
 ```
 
 ``` javascript
@@ -118,7 +118,7 @@ app.use(Tabbar);
 ### 自定义颜色
 
 ``` html
-<nut-tabbar :tab-List="tabList" @tab-switch="tabSwitch"></nut-tabbar>
+<nut-tabbar :tabbar-List="tabList" @tab-switch="tabSwitch" unactiveColor="#7d7e80" activeColor="#1989fa" ></nut-tabbar>
 ```
 
 ``` javascript
@@ -168,7 +168,7 @@ app.use(Tabbar);
 ### 三个图标的标签栏
 
 ``` html
-<nut-tabbar :tab-List="tabList" @tab-switch="tabSwitch"></nut-tabbar>
+<nut-tabbar :tabbar-List="tabList" @tab-switch="tabSwitch"></nut-tabbar>
 ```
 
 ``` javascript
@@ -207,7 +207,7 @@ app.use(Tabbar);
 ### 固定底部，可自由跳转
 
 ``` html
-<nut-tabbar :tab-List="tabList" @tab-switch="tabSwitch" :bottom="true" ></nut-tabbar>
+<nut-tabbar :tabbar-List="tabList" @tab-switch="tabSwitch" :bottom="true" ></nut-tabbar>
 ```
 
 ``` javascript
@@ -253,6 +253,34 @@ app.use(Tabbar);
   },
 // ...
 ```
+### Prop
+
+### nut-tabbar
+
+| 字段 | 说明 | 类型 | 默认值
+|----- | ----- | ----- | ----- 
+| type | 页签栏的样式 based/card：based是默认样式如吸底样式，card类型每个卡片间有边界线 | String | based
+| tabbar-list | 渲染数据 ，兼容 tabbar-list 和 tabbarList| Array | []
+| bottom | 是否固定在页面底部 |Booble|false|
+| unactiveColor | icon未激活的颜色 |string|#7d7e80|
+| activeColor | icon激活的颜色 |string|#1989fa|
+
+### tabbar-list
+
+| 字段 | 说明 | 类型 | 默认值
+|----- | ----- | ----- | ----- 
+| tabTitle | 标签页的标题 | String | --
+| curr | 是否为选中的标签页 | Booble | false
+| icon | 标签页显示的icon | String | --
+| href | 标签页的跳转链接 | String | --
+| num |页签右上角的数字角标，超出99之后为99+|Number|--
+
+
+### Event
+
+| 事件名称 | 说明 | 回调参数 
+|----- | ----- | ----- 
+| tabSwitch | 切换页签时触发事件 | 点击的索引值和对应的数据
 
 
 
