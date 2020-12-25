@@ -1,0 +1,36 @@
+.overlay-fade-enter-active {
+  animation: nut-fade-in;
+}
+
+.overlay-fade-leave-active {
+  animation: nut-fade-out;
+}
+
+.nut-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+@keyframes nut-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nut-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

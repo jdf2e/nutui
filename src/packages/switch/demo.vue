@@ -55,7 +55,6 @@ export default createDemo({
 
 <style lang="scss" scoped>
 .switch-adjust {
-  font-size: 18px;
   color: rgba(102, 102, 102, 1);
   justify-content: space-between;
   align-items: center;

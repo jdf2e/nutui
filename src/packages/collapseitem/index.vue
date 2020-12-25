@@ -1,12 +1,54 @@
 <template>
-  <view :class="['nut-collapse-item', { 'nut-collapse-item-left': classDirection == 'left' }, { 'nut-collapse-item-icon': icon }]">
-    <view :class="['collapse-item', { 'item-expanded': openExpanded }, { 'nut-collapse-item-disabled': disabled }]" @click="toggleOpen">
+  <view
+    :class="[
+      'nut-collapse-item',
+      { 'nut-collapse-item-left': classDirection == 'left' },
+      { 'nut-collapse-item-icon': icon && icon != 'none' }
+    ]"
+  >
+    <view
+      :class="[
+        'collapse-item',
+        { 'item-expanded': openExpanded },
+        { 'nut-collapse-item-disabled': disabled }
+      ]"
+      @click="toggleOpen"
+    >
       <view class="collapse-title">
-        <view v-html="title"></view>
+        <view>
+          <img
+            v-if="titleIcon != 'none' && titleIconPosition == 'left'"
+            :src="titleIcon"
+            :style="titleIconWH"
+            class="titleIconLeft"
+          />
+          <view v-html="title"></view>
+          <img
+            v-if="titleIcon != 'none' && titleIconPosition == 'right'"
+            :src="titleIcon"
+            :style="titleIconWH"
+            class="titleIconRight"
+          />
+        </view>
       </view>
       <view v-if="subTitle" v-html="subTitle" class="subTitle"></view>
-      <i v-if="icon" :class="['collapse-icon', { 'col-expanded': openExpanded }, { 'collapse-icon-disabled': disabled }]" :style="iconStyle"></i>
-      <i v-else :class="['collapse-icon', { 'col-expanded': openExpanded }, { 'collapse-icon-disabled': disabled }]"></i>
+      <i
+        v-if="icon && icon != 'none'"
+        :class="[
+          'collapse-icon',
+          { 'col-expanded': openExpanded },
+          { 'collapse-icon-disabled': disabled }
+        ]"
+        :style="iconStyle"
+      ></i>
+      <i
+        v-else-if="icon != 'none'"
+        :class="[
+          'collapse-icon',
+          { 'col-expanded': openExpanded },
+          { 'collapse-icon-disabled': disabled }
+        ]"
+      ></i>
     </view>
     <view class="collapse-wrapper" ref="wrapperRef">
       <view class="collapse-content" ref="contentRef">
@@ -16,7 +58,15 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, toRefs, onMounted, ref, nextTick, computed, watch } from 'vue';
+import {
+  reactive,
+  toRefs,
+  onMounted,
+  ref,
+  nextTick,
+  computed,
+  watch
+} from 'vue';
 import { createComponent } from '@/utils/create';
 import { useParent } from '@/utils/useRelation/useParent';
 import { COLLAPSE_KEY } from './../collapse/index.vue';
@@ -55,10 +105,20 @@ export default create({
       iconStyle: {
         width: '20px',
         height: '20px',
-        'background-image': 'url(https://img10.360buyimg.com/imagetools/jfs/t1/111306/10/17422/341/5f58aa0eEe9218dd6/28d76a42db334e31.png)',
+        'background-image':
+          'url(https://img10.360buyimg.com/imagetools/jfs/t1/111306/10/17422/341/5f58aa0eEe9218dd6/28d76a42db334e31.png)',
         'background-repeat': 'no-repeat',
         'background-size': '100% 100%',
         transform: 'rotate(0deg)'
+      }
+    });
+
+    const titleIconStyle = reactive({
+      titleIcon: parent.titleIcon,
+      titleIconPosition: parent.titleIconPosition,
+      titleIconWH: {
+        width: '13px',
+        height: '13px'
       }
     });
 
@@ -68,7 +128,9 @@ export default create({
 
     // 清除 willChange 减少性能浪费
     const onTransitionEnd = () => {
-      const wrapperRefEle: any = document.getElementsByClassName('collapse-wrapper')[0];
+      const wrapperRefEle: any = document.getElementsByClassName(
+        'collapse-wrapper'
+      )[0];
       wrapperRefEle.style.willChange = 'auto';
     };
 
@@ -83,8 +145,10 @@ export default create({
       if (offsetHeight) {
         const contentHeight = `${offsetHeight}px`;
         wrapperRefEle.style.willChange = 'height';
-        wrapperRefEle.style.height = !proxyData.openExpanded ? 0 : contentHeight;
-        if (parent.icon && !proxyData.openExpanded) {
+        wrapperRefEle.style.height = !proxyData.openExpanded
+          ? 0
+          : contentHeight;
+        if (parent.icon && parent.icon != 'none' && !proxyData.openExpanded) {
           proxyData.iconStyle['transform'] = 'rotate(0deg)';
         } else {
           proxyData.iconStyle['transform'] = 'rotate(' + parent.rotate + 'deg)';
@@ -102,8 +166,9 @@ export default create({
 
     const defaultOpen = () => {
       open();
-      if (parent.icon) {
-        proxyData['iconStyle']['transform'] = 'rotate(' + parent.rotate + 'deg)';
+      if (parent.icon && parent.icon != 'none') {
+        proxyData['iconStyle']['transform'] =
+          'rotate(' + parent.rotate + 'deg)';
       }
     };
 
@@ -159,14 +224,15 @@ export default create({
           defaultOpen();
         }
       }
+
       proxyData.classDirection = parent.expandIconPosition;
-      if (parent.icon) {
+      if (parent.icon && parent.icon != 'none') {
         proxyData.iconStyle['background-image'] = 'url(' + parent.icon + ')';
       }
-      if (parent.iconWidth) {
+      if (parent.iconWidth && parent.icon != 'none') {
         proxyData.iconStyle['width'] = parent.conWidth;
       }
-      if (parent.iconHeght) {
+      if (parent.iconHeght && parent.icon != 'none') {
         proxyData.iconStyle['height'] = parent.iconHeight;
       }
     });
@@ -174,6 +240,7 @@ export default create({
     return {
       ...toRefs(proxyData),
       ...toRefs(parent),
+      ...toRefs(titleIconStyle),
       wrapperRef,
       contentRef,
       open,
