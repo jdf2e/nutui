@@ -6,20 +6,18 @@
         :showIcon="true"
         title="选择单个日期"
         :desc="date ? `${date} ${dateWeek}` : '请选择'"
-        @click.native="openSwitch('isVisible')"
+        @click="openSwitch('isVisible')"
       >
-      </nut-cell
-      ><div class="test-calendar-wrapper">
-        <nut-calendar
-          :is-visible="isVisible"
-          :default-value="date"
-          @close="closeSwitch('isVisible')"
-          @choose="setChooseValue"
-          :start-date="`2019-10-11`"
-          :end-date="`2022-11-11`"
-        >
-        </nut-calendar
-      ></div>
+      </nut-cell>
+      <nut-calendar
+        :is-visible="isVisible"
+        :default-value="date"
+        @close="closeSwitch('isVisible')"
+        @choose="setChooseValue"
+        :start-date="`2019-10-11`"
+        :end-date="`2022-11-11`"
+      >
+      </nut-calendar>
     </div>
 
     <div>
@@ -27,21 +25,19 @@
         :showIcon="true"
         title="选择日期区间"
         :desc="date1 ? `${date1[0]}至${date1[1]}` : '请选择'"
-        @click.native="openSwitch('isVisible1')"
+        @click="openSwitch('isVisible1')"
       >
-      </nut-cell
-      ><div class="test-calendar-wrapper">
-        <nut-calendar
-          :is-visible="isVisible1"
-          :default-value="date1"
-          type="range"
-          :start-date="`2019-12-22`"
-          :end-date="`2021-01-08`"
-          @close="closeSwitch('isVisible1')"
-          @choose="setChooseValue1"
-        >
-        </nut-calendar
-      ></div>
+      </nut-cell>
+      <nut-calendar
+        :is-visible="isVisible1"
+        :default-value="date1"
+        type="range"
+        :start-date="`2019-12-22`"
+        :end-date="`2021-01-08`"
+        @close="closeSwitch('isVisible1')"
+        @choose="setChooseValue1"
+      >
+      </nut-calendar>
     </div>
     <h2>自定义日历</h2>
     <h2>平铺展示</h2>
@@ -110,10 +106,6 @@ export default createDemo({
     const setChooseValue1 = param => {
       state.date1 = [...[param[0][3], param[1][3]]];
     };
-
-    setTimeout(() => {
-      state.date = '2021-01-03';
-    }, 3000);
 
     return {
       ...toRefs(state),
