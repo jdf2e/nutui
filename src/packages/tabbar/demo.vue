@@ -1,28 +1,28 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-tabbar :tab-List="tabList" @tab-switch="tabSwitch"></nut-tabbar>
+    <nut-tabbar :tabbar-List="tabList" @tab-switch="tabSwitch"></nut-tabbar>
 
     <h2>徽标提示</h2>
-    <nut-tabbar :tab-List="tabList1" @tab-switch="tabSwitch"></nut-tabbar>
+    <nut-tabbar :tabbar-List="tabList1" @tab-switch="tabSwitch"></nut-tabbar>
 
     <h2>自定义颜色</h2>
     <nut-tabbar
       unactiveColor="#7d7e80"
       activeColor="#1989fa"
-      :tab-List="tabList"
+      :tabbar-List="tabList"
       @tab-switch="tabSwitch"
     ></nut-tabbar>
     <h2>三个icon的tabbar</h2>
     <nut-tabbar
       unactiveColor="#7d7e80"
       activeColor="#1989fa"
-      :tab-List="tabList2"
+      :tabbar-List="tabList2"
       @tab-switch="tabSwitch"
     ></nut-tabbar>
     <h2>固定底部，可自由跳转</h2>
     <nut-tabbar
-      :tab-List="tabList3"
+      :tabbar-List="tabList3"
       @tab-switch="tabSwitch"
       :bottom="true"
     ></nut-tabbar>
