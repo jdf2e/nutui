@@ -103,6 +103,15 @@ module.exports = {
           show: true,
           desc: '较长页面快捷回到顶部',
           author: 'liqiong43'
+        },
+        {
+          name: 'ActionSheet',
+          sort: '1',
+          cName: '动作面板',
+          type: 'component',
+          show: true,
+          desc: '底部弹出动作菜单面板',
+          author: 'zhangyufei'
         }
       ]
     },
