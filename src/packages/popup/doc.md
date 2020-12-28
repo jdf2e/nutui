@@ -103,6 +103,7 @@ app.use(Popup);
 | position               | 弹出位置（top,bottom,left,right,center）                    | String         | "center"    |
 | transition             | 动画名                                                      | String         | -           |
 | style                  | 自定义弹框样式                                              | CSSProperties  | -           |
+| pop-class               | 自定义弹框类名                    | String         | -    |
 | closeable              | 是否显示关闭按钮                                            | Boolean        | true        |
 | close-icon-position    | 关闭按钮位置（top-left,top-right,bottom-left,bottom-right） | String         | "top-right" |
 | close-icon             | 自定义 Icon                                                 | String         | "close"     |
