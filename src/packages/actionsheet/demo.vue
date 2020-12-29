@@ -19,59 +19,28 @@
         <div class="selected-option">{{ state.val2 }}</div>
       </nut-cell>
       <div>
-        <nut-cell :isLink="true" @click="switchActionSheet('isVisible4')">
+        <nut-cell :isLink="true" @click="switchActionSheet('isVisible3')">
           <span><label>展示描述信息</label></span>
         </nut-cell>
       </div>
+      <h4>选项状态</h4>
+
+      <nut-cell :isLink="true" @click="switchActionSheet('isVisible4')">
+        <span><label>选项状态</label></span>
+        <!-- <div class="selected-option">打开</div> -->
+      </nut-cell>
       <h4>自定义面板</h4>
 
       <nut-cell :isLink="true" @click="switchActionSheet('isVisible5')">
         <span><label>自定义内容</label></span>
         <!-- <div class="selected-option">打开</div> -->
       </nut-cell>
-      <!-- <nut-cell
-        :showIcon="true"
-        :isLink="true"
-        @click="switchActionSheet('isVisible1')"
-      >
-        <span><label>展示取消按钮</label></span>
-      </nut-cell>
-      <nut-cell
-        :showIcon="true"
-        :isLink="true"
-        @click="switchActionSheet('isVisible2')"
-      >
-        <span><label>性别</label></span>
-        <span>高亮选中项~~~~</span>
-      </nut-cell>
-      <nut-cell
-        :showIcon="true"
-        :isLink="true"
-        @click="switchActionSheet('isVisible3')"
-      >
-        <span><label>性别</label></span>
-        <span>设置禁用状态~~~~</span>
-      </nut-cell>
     </div>
-    <div>
-      <nut-cell :isLink="true" @click="switchActionSheet('isVisible4')">
-        <span><label>展示描述信息</label></span>
-        <span>我是描述~~~~</span>
-        <div class="selected-option">删除本条</div>
-      </nut-cell>
-    </div>
-    <h4>自定义面板</h4>
-    <div>
-      <nut-cell :isLink="true" @click="switchActionSheet('isVisible5')">
-        <span><label>自定义内容</label></span>
-        <div class="selected-option">打开</div>
-      </nut-cell> -->
-    </div>
-    <!-- demo -->
+    <!-- demo 基础用法 -->
     <nut-actionsheet
       :is-visible="state.isVisible1"
       @close="switchActionSheet('isVisible1')"
-      :menu-items="menuItems"
+      :menu-items="menuItemsOne"
       @choose="chooseItem"
     ></nut-actionsheet>
     <!-- demo(带取消按钮） -->
@@ -79,38 +48,29 @@
       :is-visible="state.isVisible2"
       @close="switchActionSheet('isVisible2')"
       cancelTxt="取消"
-      :menu-items="menuItems"
+      :menu-items="menuItemsOne"
       @choose="chooseItemTwo"
     ></nut-actionsheet>
-    <!-- demo(高亮选中）-->
-    <!-- <nut-actionsheet
-      :is-visible="isVisible2"
-      :menu-items="menuItems2"
-      :chooseTagValue="sex2"
-      @close="switchActionSheet('isVisible2')"
-      @choose="chooseItemAge"
-    ></nut-actionsheet> -->
-    <!-- demo(设置禁用状态)-->
-    <!-- <nut-actionsheet
-      :is-visible="isVisible3"
-      :menu-items="menuItems3"
+
+    <nut-actionsheet
+      :is-visible="state.isVisible3"
+      :description="state.desc"
+      :menu-items="menuItemsTwo"
+      cancelTxt="取消"
       @close="switchActionSheet('isVisible3')"
-      @choose="chooseItemConstellation"
-    ></nut-actionsheet> -->
-    <!-- demo 展示描述信息 -->
+    >
+    </nut-actionsheet>
+    <!-- demo 选项状态-->
     <nut-actionsheet
       :is-visible="state.isVisible4"
-      :menu-items="menuItems"
-      :chooseTagValue="`确定`"
-      cancelTxt="取消"
       @close="switchActionSheet('isVisible4')"
-    >
-      <span><label>确定删除吗？</label></span>
-      <span>删除之后不能，描述信息，删除之后不能，描述信息</span>
-    </nut-actionsheet>
-    <!-- demo 自定义类 -->
+      cancelTxt="取消"
+      :menu-items="menuItemsThree"
+    ></nut-actionsheet>
+    <!-- demo 自定义 -->
     <nut-actionsheet
       :is-visible="state.isVisible5"
+      cancelTxt="取消"
       @close="switchActionSheet('isVisible5')"
     >
       <div class="custom-wrap"><span>自定义</span></div>
@@ -133,9 +93,10 @@ export default createDemo({
       isVisible5: false,
       val1: '',
       val2: '',
-      val3: ''
+      val3: '',
+      desc: '这是一段描述信息'
     });
-    const menuItems = [
+    const menuItemsOne = [
       {
         name: '选项一',
         value: 0
@@ -149,10 +110,37 @@ export default createDemo({
         value: 2
       }
     ];
-
+    const menuItemsTwo = [
+      {
+        name: '选项一',
+        value: 0
+      },
+      {
+        name: '选项二',
+        value: 1
+      },
+      {
+        name: '选项三',
+        subname: '描述信息',
+        value: 2
+      }
+    ];
+    const menuItemsThree = [
+      {
+        name: '着色选项',
+        color: '#ee0a24',
+        value: 0
+      },
+      {
+        name: '禁用选项',
+        disable: true,
+        value: 1
+      }
+    ];
     const switchActionSheet = param => {
       console.log(param);
       state[`${param}`] = !state[`${param}`];
+      console.log(state[`${param}`], '2');
     };
 
     const chooseItem = itemParams => {
@@ -164,16 +152,11 @@ export default createDemo({
       state.val2 = itemParams.name;
     }
 
-    // function chooseItemAge(itemParams) {
-    //   sex2 = itemParams.name;
-    // }
-
-    // function chooseItemConstellation(itemParams) {
-    //   sex3 = itemParams.title;
-    // }
     return {
       state,
-      menuItems,
+      menuItemsOne,
+      menuItemsTwo,
+      menuItemsThree,
       chooseItem,
       chooseItemTwo,
       switchActionSheet
@@ -200,5 +183,8 @@ export default createDemo({
 .custom-wrap {
   padding: 110px 0;
   text-align: center;
+}
+.nut-cell {
+  justify-content: space-between;
 }
 </style>

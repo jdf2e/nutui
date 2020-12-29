@@ -22,17 +22,33 @@ export default create({
       type: String,
       default: 'right'
     },
+    titleIcon: {
+      type: String,
+      default: ''
+    },
+    titleIconWidth: {
+      type: String,
+      default: '13px'
+    },
+    titleIconHeight: {
+      type: String,
+      default: '13px'
+    },
+    titleIconPosition: {
+      type: String,
+      default: 'left'
+    },
     icon: {
       type: String,
       default: ''
     },
     iconWidth: {
       type: String,
-      default: ''
+      default: '24px'
     },
     iconHeight: {
       type: String,
-      default: ''
+      default: '12px'
     },
     rotate: {
       type: [String, Number],
@@ -43,7 +59,10 @@ export default create({
     const { active } = toRefs(props);
     // 多个 item 展开
     const changeValAry = (name: any) => {
-      const activeItem: any = active?.value instanceof Object ? Object.values(active.value) : active?.value;
+      const activeItem: any =
+        active?.value instanceof Object
+          ? Object.values(active.value)
+          : active?.value;
       let index = -1;
       activeItem.forEach((item: string | number, idx: number) => {
         if (String(item) == String(name)) {
@@ -56,7 +75,10 @@ export default create({
     };
 
     // 更新v-modal的值
-    const changeVal = (val: string | number | Array<string | number>, expanded: boolean) => {
+    const changeVal = (
+      val: string | number | Array<string | number>,
+      expanded: boolean
+    ) => {
       emit('update:active', val);
     };
 
@@ -76,6 +98,8 @@ export default create({
       value: props.active,
       accordion: props.accordion,
       expandIconPosition: props.expandIconPosition,
+      titleIcon: props.titleIcon,
+      titleIconPosition: props.titleIconPosition,
       icon: props.icon,
       rotate: props.rotate,
       changeValAry,
