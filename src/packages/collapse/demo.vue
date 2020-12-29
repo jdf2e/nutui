@@ -9,7 +9,19 @@
         <nut-collapse-item :title="title2" :name="2">
           京东到家：教师节期间 创意花束销量增长53倍
         </nut-collapse-item>
-        <nut-collapse-item :title="title3" :name="3" disabled> </nut-collapse-item>
+        <nut-collapse-item :title="title3" :name="3" disabled>
+        </nut-collapse-item>
+      </nut-collapse>
+    </div>
+    <h4>无icon样式</h4>
+    <div class="show-demo">
+      <nut-collapse v-model:active="active4" :accordion="true" :icon="icon2">
+        <nut-collapse-item :title="title1" :name="1">
+          2020年中国数字游戏市场规模超2786亿元
+        </nut-collapse-item>
+        <nut-collapse-item :title="title2" :name="2">
+          基于区块链技术的取证APP在浙江省杭州市发布
+        </nut-collapse-item>
       </nut-collapse>
     </div>
     <div class="show-demo">
@@ -27,7 +39,7 @@
       </nut-collapse>
     </div>
     <div class="show-demo">
-      <h4>图标展示</h4>
+      <h4>自定义折叠图标</h4>
       <nut-collapse
         v-model:active="active3"
         :accordion="true"
@@ -45,6 +57,22 @@
         </nut-collapse-item>
       </nut-collapse>
     </div>
+    <div class="show-demo">
+      <h4>自定义标题图标</h4>
+      <nut-collapse
+        v-model:active="active5"
+        :titleIcon="titleIcon"
+        :accordion="true"
+        :rotate="rotate"
+      >
+        <nut-collapse-item :title="title1" :name="1">
+          “森亿智能”获4亿元D轮融资
+        </nut-collapse-item>
+        <nut-collapse-item :title="title2" :name="2">
+          快看漫画与全球潮玩集合店X11达成战略合作
+        </nut-collapse-item>
+      </nut-collapse>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -57,12 +85,18 @@ export default createDemo({
       active1: [1, '2'],
       active2: 1,
       active3: 1,
+      active4: 1,
+      active5: 1,
       expandIconPosition: 'left',
       title1: '标题1',
       title2: '标题2',
       title3: '标题3',
       subTitle: '副标题',
-      icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/132849/8/9709/550/5f5f0d8aE802abee7/68bd02b3a52c3988.png',
+      icon:
+        'https://img11.360buyimg.com/imagetools/jfs/t1/132849/8/9709/550/5f5f0d8aE802abee7/68bd02b3a52c3988.png',
+      icon2: 'none',
+      titleIcon:
+        'https://img13.360buyimg.com/imagetools/jfs/t1/144156/13/19748/1977/5fe2f5f8E21020483/a15144ab447bfbf2.png',
       iconWidth: '20px',
       iconHeight: '20px',
       rotate: 90

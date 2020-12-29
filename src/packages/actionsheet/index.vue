@@ -1,14 +1,7 @@
 <template>
   <view class="nut-actionsheet">
-    <transition :name="isAnimation ? 'nutFade' : ''" v-if="isShowMask">
-      <view
-        class="nut-actionsheet-mask"
-        @click="clickActionSheetMask"
-        v-show="isVisible"
-      ></view>
-    </transition>
-    <transition :name="isAnimation ? 'nutSlideUp' : ''">
-      <view class="nut-actionsheet-panel" v-show="isVisible">
+    <nut-popup v-model:show="state.maskIsVisible" position="bottom" round>
+      <view class="nut-actionsheet-panel">
         <view class="nut-actionsheet-custom">
           <slot name="custom"></slot>
         </view>
@@ -22,55 +15,44 @@
           ></dd>
         </dl>
         <ul class="nut-actionsheet-menu">
+          <li class="nut-actionsheet-item desc" v-if="description">{{
+            description
+          }}</li>
           <li
             class="nut-actionsheet-item"
             :class="{
-              'nut-actionsheet-item-active': isHighlight(item),
               'nut-actionsheet-item-disabled': item.disable
             }"
+            :style="{ color: isHighlight(item) }"
             v-for="(item, index) of menuItems"
             :key="index"
             @click="chooseItem(item, index)"
-            >{{ item[optionTag] }}</li
+            >{{ item[optionTag]
+            }}<view class="subdesc">{{ item.subname }}</view></li
           >
         </ul>
-        <view
+        <div
           class="nut-actionsheet-cancel"
           v-if="cancelTxt"
           @click="cancelActionSheet"
-          >{{ cancelTxt }}</view
+          >{{ cancelTxt }}</div
         >
       </view>
-    </transition>
+    </nut-popup>
   </view>
 </template>
 <script>
+import Popup from '@/packages/popup/index.vue';
 import { createComponent } from '@/utils/create';
-import { watch, onDeactivated, onUnmounted } from 'vue';
+import { watch, reactive } from 'vue';
 const { create } = createComponent('actionsheet');
 export default create({
   props: {
-    isAnimation: {
-      type: Boolean,
-      default: true
-    },
-    isLockBgScroll: {
-      type: Boolean,
-      default: false
-    },
     isVisible: {
       type: Boolean,
       default: false
     },
-    isShowMask: {
-      type: Boolean,
-      default: true
-    },
     isClickChooseClose: {
-      type: Boolean,
-      default: true
-    },
-    isClickCloseMask: {
       type: Boolean,
       default: true
     },
@@ -86,36 +68,42 @@ export default create({
       type: String,
       default: ''
     },
+    description: {
+      type: String,
+      default: ''
+    },
+    subname: {
+      type: String,
+      default: ''
+    },
     menuItems: {
       type: Array,
       default: () => []
     }
   },
-  emits: ['click', 'close', 'cancel', 'choose', 'open'],
+  emits: ['click', 'close', 'cancel', 'choose'],
+
   setup(props, { emit }) {
-    console.log(props.isVisible, 'isVisible');
-    const removeLockScroll = () => {
-      document.body.classList.remove('nut-overflow-hidden');
-    };
+    // state
+    const state = reactive({
+      maskIsVisible: false
+    });
+
+    // methods
     const isHighlight = item => {
-      return (
-        (props.chooseTagValue &&
-          props.chooseTagValue == item[props.optionTag]) ||
-        props.chooseTagValue === 0
-      );
+      console.log(item.color, 'color');
+      return item.color;
     };
 
     const closeActionSheet = () => {
+      state.maskIsVisible = false;
+      console.log(state.maskIsVisible, 'mask');
       emit('close');
     };
 
     const cancelActionSheet = () => {
       closeActionSheet();
       emit('cancel');
-    };
-
-    const clickActionSheetMask = () => {
-      props.isClickCloseMask && closeActionSheet();
     };
 
     const chooseItem = (item, index) => {
@@ -126,30 +114,22 @@ export default create({
         emit('choose', item, index);
       }
     };
-    watch(function isVisible(value) {
-      console.log(value, 'val');
-      !!value && emit('open');
-      if (props.isLockBgScroll) {
-        if (value) {
-          document.body.classList.add('nut-overflow-hidden');
-        } else {
-          removeLockScroll();
+
+    watch(
+      () => props.isVisible,
+      val => {
+        if (val) {
+          state.maskIsVisible = true;
         }
       }
-    }),
-      onDeactivated(() => {
-        removeLockScroll();
-      });
-    onUnmounted(() => {
-      removeLockScroll();
-    });
+    );
+
     return {
-      removeLockScroll,
       isHighlight,
       closeActionSheet,
-      clickActionSheetMask,
       cancelActionSheet,
-      chooseItem
+      chooseItem,
+      state
     };
   }
 });
