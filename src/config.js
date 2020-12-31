@@ -155,6 +155,16 @@ module.exports = {
           show: true,
           desc: '轻提示',
           author: 'undo'
+        },
+        {
+          version: '3.0.0',
+          name: 'Notify',
+          type: 'component',
+          cName: '消息提示',
+          desc: '在页面顶部展示消息提示，支持函数调用和组件调用两种方式',
+          sort: 4,
+          show: true,
+          author: 'wangyue217'
         }
       ]
     },
