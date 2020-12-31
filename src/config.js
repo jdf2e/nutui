@@ -334,6 +334,16 @@ module.exports = {
           show: true,
           desc: '标签栏组件',
           author: 'Drjingfubo'
+        },
+        {
+          version: '3.0.0',
+          name: 'NoticeBar',
+          type: 'component',
+          cName: '公告栏',
+          desc: '用于循环播放展示一组消息通知',
+          sort: 5,
+          show: true,
+          author: 'wangyue92'
         }
       ]
     },
