@@ -1,6 +1,10 @@
 <template>
   <view class="nut-actionsheet">
-    <nut-popup v-model:show="state.maskIsVisible" position="bottom" round>
+    <nut-popup
+      v-model:show="state.maskIsVisible"
+      position="bottom"
+      @close="closeActionSheet"
+    >
       <view class="nut-actionsheet-panel">
         <view class="nut-actionsheet-custom">
           <slot name="custom"></slot>
@@ -81,7 +85,7 @@ export default create({
       default: () => []
     }
   },
-  emits: ['click', 'close', 'cancel', 'choose'],
+  emits: ['close', 'cancel', 'choose'],
 
   setup(props, { emit }) {
     // state
@@ -96,20 +100,19 @@ export default create({
     };
 
     const closeActionSheet = () => {
-      state.maskIsVisible = false;
       console.log(state.maskIsVisible, 'mask');
       emit('close');
     };
 
     const cancelActionSheet = () => {
-      closeActionSheet();
+      state.maskIsVisible = false;
       emit('cancel');
     };
 
     const chooseItem = (item, index) => {
       if (!item.disable) {
         if (props.isClickChooseClose) {
-          closeActionSheet();
+          state.maskIsVisible = false;
         }
         emit('choose', item, index);
       }
