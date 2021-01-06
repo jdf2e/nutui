@@ -139,6 +139,15 @@ module.exports = {
           author: 'liqiong43'
         },
         {
+          name: 'ActionSheet',
+          sort: '1',
+          cName: '动作面板',
+          type: 'component',
+          show: true,
+          desc: '底部弹出动作菜单面板',
+          author: 'zhangyufei'
+        },
+        {
           name: 'Toast',
           sort: '1',
           cName: '吐司',
@@ -146,6 +155,16 @@ module.exports = {
           show: true,
           desc: '轻提示',
           author: 'undo'
+        },
+        {
+          version: '3.0.0',
+          name: 'Notify',
+          type: 'component',
+          cName: '消息提示',
+          desc: '在页面顶部展示消息提示，支持函数调用和组件调用两种方式',
+          sort: 4,
+          show: true,
+          author: 'wangyue217'
         }
       ]
     },
@@ -325,6 +344,16 @@ module.exports = {
           show: true,
           desc: '标签栏组件',
           author: 'Drjingfubo'
+        },
+        {
+          version: '3.0.0',
+          name: 'NoticeBar',
+          type: 'component',
+          cName: '公告栏',
+          desc: '用于循环播放展示一组消息通知',
+          sort: 5,
+          show: false,
+          author: 'wangyue92'
         }
       ]
     },
