@@ -68,6 +68,11 @@ const popupProps = {
     type: Object as PropType<CSSProperties>
   },
 
+  popClass: {
+    type: String,
+    default: ''
+  },
+
   closeable: {
     type: Boolean,
     default: false
@@ -134,7 +139,8 @@ export default create({
       return {
         [prefixCls]: true,
         ['round']: props.round,
-        [`popup-${props.position}`]: true
+        [`popup-${props.position}`]: true,
+        [props.popClass]: true
       };
     });
 

@@ -6,7 +6,10 @@
       is-link
       @click="state.showBasic = true"
     ></nut-cell>
-    <nut-popup :style="{ padding: '30px 50px' }" v-model:show="state.showBasic"
+    <nut-popup
+      popClass="popclass"
+      :style="{ padding: '30px 50px' }"
+      v-model:show="state.showBasic"
       >正文</nut-popup
     >
     <h2>弹出位置</h2>

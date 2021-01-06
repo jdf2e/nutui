@@ -1,14 +1,16 @@
 <template>
   <nut-popup
+    v-if="poppable"
     v-model:show="state.childIsVisible"
     position="bottom"
     round
-    @click="closeActionSheet"
-    v-if="poppable"
+    :closeable="true"
+    @click-overlay="closePopup"
+    @click-close-icon="closePopup"
   >
     <nut-calendar-item
       props
-      ref="mychild"
+      ref="calendarRef"
       :type="type"
       :is-auto-back-fill="isAutoBackFill"
       :poppable="poppable"
@@ -83,7 +85,7 @@ export default create({
 
   setup(props, { emit }) {
     // element refs
-    const mychild = ref<null | HTMLElement>(null);
+    const calendarRef = ref<null | HTMLElement>(null);
 
     // state
     const state = reactive({
@@ -91,10 +93,6 @@ export default create({
     });
 
     // methods
-    const closeActionSheet = () => {
-      //mychild.value && mychild.value.closeActionSheet();
-    };
-
     const update = () => {
       state.childIsVisible = false;
     };
@@ -108,6 +106,10 @@ export default create({
       emit('choose', param);
     };
 
+    const closePopup = () => {
+      close();
+    };
+
     watch(
       () => props.isVisible,
       val => {
@@ -118,11 +120,11 @@ export default create({
     );
 
     return {
-      closeActionSheet,
+      closePopup,
       update,
       close,
       choose,
-      mychild,
+      calendarRef,
       state,
       ...toRefs(props)
     };
