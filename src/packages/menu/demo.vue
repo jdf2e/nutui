@@ -1,5 +1,5 @@
 <template>
-  <div class="demo full">
+  <div class="demo full menu-demo">
     <h2>基础用法</h2>
     <nut-menu>
       <nut-menu-item :menuList="menuList" title="最新商品"></nut-menu-item>
@@ -44,6 +44,13 @@
         title="筛选"
         disabled
       ></nut-menu-item>
+    </nut-menu>
+
+    <h2>禁止蒙层展示</h2>
+    <p class="tips">属性`hasMask`控制是否有蒙层，默认为 `true`展示蒙层 </p>
+    <nut-menu :hasMask="false">
+      <nut-menu-item :menuList="menuList" title="最新商品"></nut-menu-item>
+      <nut-menu-item :menuList="menuList" :title="title"></nut-menu-item>
     </nut-menu>
 
     <h2>点击事件</h2>
@@ -136,8 +143,7 @@ export default createDemo({
   color: #909ca4;
   margin-top: -10px;
   margin-bottom: 10px;
-}
-.nut-menu {
+  padding: 0 22px;
 }
 .base-style.nut-menu-item {
   .nut-menu-panel {
@@ -147,5 +153,8 @@ export default createDemo({
 }
 .user-style {
   padding: 20px;
+}
+#app .demo.menu-demo {
+  padding-bottom: 200px;
 }
 </style>
