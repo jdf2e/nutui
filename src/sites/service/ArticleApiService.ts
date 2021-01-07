@@ -18,6 +18,6 @@ export class ArticleApiService {
    * @returns
    */
   saveUserInfo(parmas) {
-    return this.httpClient.request('/user/saveVisitInfo', 'post', parmas);
+    return this.httpClient.request('/visit/saveVisitInfo', 'post', parmas);
   }
 }
