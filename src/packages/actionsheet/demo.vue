@@ -39,14 +39,12 @@
     <!-- demo 基础用法 -->
     <nut-actionsheet
       :is-visible="state.isVisible1"
-      @close="switchActionSheet('isVisible1')"
       :menu-items="menuItemsOne"
       @choose="chooseItem"
     ></nut-actionsheet>
     <!-- demo(带取消按钮） -->
     <nut-actionsheet
       :is-visible="state.isVisible2"
-      @close="switchActionSheet('isVisible2')"
       cancelTxt="取消"
       :menu-items="menuItemsOne"
       @choose="chooseItemTwo"
@@ -57,28 +55,22 @@
       :description="state.desc"
       :menu-items="menuItemsTwo"
       cancelTxt="取消"
-      @close="switchActionSheet('isVisible3')"
     >
     </nut-actionsheet>
     <!-- demo 选项状态-->
     <nut-actionsheet
       :is-visible="state.isVisible4"
-      @close="switchActionSheet('isVisible4')"
       cancelTxt="取消"
       :menu-items="menuItemsThree"
     ></nut-actionsheet>
     <!-- demo 自定义 -->
-    <nut-actionsheet
-      :is-visible="state.isVisible5"
-      cancelTxt="取消"
-      @close="switchActionSheet('isVisible5')"
-    >
+    <nut-actionsheet :is-visible="state.isVisible5" cancelTxt="取消">
       <div class="custom-wrap"><span>自定义</span></div>
     </nut-actionsheet>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { reactive } from 'vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('actionsheet');
@@ -138,9 +130,8 @@ export default createDemo({
       }
     ];
     const switchActionSheet = param => {
-      console.log(param);
       state[`${param}`] = !state[`${param}`];
-      console.log(state[`${param}`], '2');
+      //   console.log(state[`${param}`], '2');
     };
 
     const chooseItem = itemParams => {
