@@ -39,13 +39,34 @@
       >
       </nut-calendar>
     </div>
-    <h2>自定义日历</h2>
+
+    <h2>自定义日历-自动回填</h2>
+    <div>
+      <nut-cell
+        :showIcon="true"
+        title="选择日期"
+        :desc="date3 ? date3 : '请选择'"
+        @click="openSwitch('isVisible3')"
+      >
+      </nut-cell>
+      <nut-calendar
+        :is-visible="isVisible3"
+        @close="closeSwitch('isVisible3')"
+        @choose="setChooseValue3"
+        :default-value="date3"
+        :start-date="null"
+        :end-date="null"
+        :is-auto-back-fill="true"
+      >
+      </nut-calendar>
+    </div>
+
     <h2>平铺展示</h2>
     <div class="test-calendar-wrapper">
       <nut-calendar
         :poppable="false"
-        :is-visible="isVisible2"
         :default-value="date2"
+        :is-auto-back-fill="true"
         @choose="setChooseValue2"
       >
       </nut-calendar>
@@ -64,12 +85,11 @@ interface TestCalendarState {
   isVisible: boolean;
   date: string;
   dateWeek: string;
-
-  date2: string;
-  isVisible2: boolean;
-
   isVisible1: boolean;
   date1: string[];
+  date2: string;
+  isVisible3: boolean;
+  date3: string;
 }
 export default createDemo({
   props: {},
@@ -79,11 +99,13 @@ export default createDemo({
       date: '',
       dateWeek: '',
 
-      date2: '2020-07-08',
-      isVisible2: true,
-
       isVisible1: false,
-      date1: ['2019-12-23', '2019-12-26']
+      date1: ['2019-12-23', '2019-12-26'],
+
+      date2: '2020-07-08',
+
+      isVisible3: false,
+      date3: ''
     });
     const openSwitch = param => {
       state[`${param}`] = true;
@@ -98,13 +120,17 @@ export default createDemo({
       state.dateWeek = param[4];
     };
 
+    const setChooseValue1 = param => {
+      state.date1 = [...[param[0][3], param[1][3]]];
+    };
+
     const setChooseValue2 = param => {
       state.date2 = param[3];
       console.log(state.date2);
     };
 
-    const setChooseValue1 = param => {
-      state.date1 = [...[param[0][3], param[1][3]]];
+    const setChooseValue3 = param => {
+      state.date3 = param[3];
     };
 
     return {
@@ -112,8 +138,9 @@ export default createDemo({
       openSwitch,
       closeSwitch,
       setChooseValue,
+      setChooseValue1,
       setChooseValue2,
-      setChooseValue1
+      setChooseValue3
     };
   }
 });

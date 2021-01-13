@@ -1,5 +1,11 @@
 <template>
-  <view class="nut-calendar" :class="{ 'nut-calendar-tile': !poppable }">
+  <view
+    class="nut-calendar"
+    :class="{
+      'nut-calendar-tile': !poppable,
+      'nut-calendar-nofooter': isAutoBackFill
+    }"
+  >
     <!-- header -->
     <view
       class="nut-calendar-header"
@@ -7,9 +13,9 @@
     >
       <template v-if="poppable">
         <view class="calendar-title">{{ title }}</view>
-        <view class="calendar-curr-month">2020年11月</view>
+        <view class="calendar-curr-month">{{ yearMonthTitle }}</view>
       </template>
-      <view class="calendar-weeks">
+      <view class="calendar-weeks" ref="weeksPanel">
         <view
           class="calendar-week-item"
           v-for="(item, index) of weeks"
@@ -50,7 +56,9 @@
                   <view class="calendar-day">{{
                     day.type == 'curr' ? day.day : ''
                   }}</view>
-                  <view class="curr-tips" v-if="isCurrDay(month, day.day)"
+                  <view
+                    class="calendar-curr-tips"
+                    v-if="isCurrDay(month, day.day)"
                     >今天</view
                   >
                   <view
@@ -71,28 +79,20 @@
       </view>
     </view>
     <!-- footer-->
-    <view class="nut-calendar-footer" v-if="poppable">
+    <view class="nut-calendar-footer" v-if="poppable && !isAutoBackFill">
       <view class="calendar-confirm-btn" @click="confirm">确定</view>
     </view>
   </view>
 </template>
 <script lang="ts">
-// import {
-//   PropType,
-//   computed,
-//   watch,
-//   reactive,
-//   ref,
-//   toRefs,
-//   readonly
-// } from 'vue';
 import { PropType, reactive, ref, watch, toRefs } from 'vue';
-import { createComponent } from '@/utils/create';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('calendar-item');
-import Utils from '@/utils/date';
+import Utils from '../../utils/date';
+import requestAniFrame from '../../utils/raf';
 type InputDate = string | string[];
 interface CalendarState {
-  childIsVisible: boolean;
+  yearMonthTitle: string;
   currDate: InputDate;
   unLoadPrev: boolean;
   touchParams: any;
@@ -106,6 +106,7 @@ interface CalendarState {
   startData: InputDate;
   endData: InputDate;
   isRange: boolean;
+  timer: number;
 }
 
 export default create({
@@ -147,10 +148,11 @@ export default create({
     // element refs
     const months = ref<null | HTMLElement>(null);
     const monthsPanel = ref<null | HTMLElement>(null);
+    const weeksPanel = ref<null | HTMLElement>(null);
 
     // state
     const state: CalendarState = reactive({
-      childIsVisible: false,
+      yearMonthTitle: '',
       currDate: '',
       unLoadPrev: false,
       touchParams: {
@@ -170,7 +172,8 @@ export default create({
       dayPrefix: 'calendar-month-day',
       startData: '',
       endData: '',
-      isRange: props.type === 'range'
+      isRange: props.type === 'range',
+      timer: 0
     });
 
     // 日期转化成数组
@@ -206,7 +209,8 @@ export default create({
       const currDate = getCurrDate(day, month, isRange);
       if (day.type == 'curr') {
         if (
-          (!state.isRange && Utils.isEqual(state.currDate, currDate)) ||
+          (!state.isRange &&
+            Utils.isEqual(state.currDate as string, currDate)) ||
           (state.isRange && (isStart(currDate) || isEnd(currDate)))
         ) {
           return `${state.dayPrefix}-active`;
@@ -235,7 +239,6 @@ export default create({
       if ((state.isRange && state.chooseData.length == 2) || !state.isRange) {
         emit('choose', state.chooseData);
         if (props.poppable) {
-          state.childIsVisible = false;
           emit('update');
         }
       }
@@ -397,12 +400,12 @@ export default create({
       } else {
         if (
           props.startDate &&
-          Utils.compareDate(state.currDate, props.startDate)
+          Utils.compareDate(state.currDate as string, props.startDate)
         ) {
           state.currDate = props.startDate;
         } else if (
           props.endDate &&
-          !Utils.compareDate(state.currDate, props.endDate)
+          !Utils.compareDate(state.currDate as string, props.endDate)
         ) {
           state.currDate = props.endDate;
         }
@@ -411,6 +414,7 @@ export default create({
       }
 
       getMonth(state.defaultData, 'next');
+      state.yearMonthTitle = state.monthsData[0].title;
 
       let i = 1;
       do {
@@ -436,7 +440,6 @@ export default create({
           true
         );
       }
-      console.log(state.currDate, 'state.currDate');
     };
 
     // 区间选择&&当前月&&选中态
@@ -448,6 +451,7 @@ export default create({
       );
     };
 
+    // 是否有开始提示
     const isStartTip = (day, month) => {
       if (isActive(day, month)) {
         return isStart(getCurrDate(day, month));
@@ -456,34 +460,65 @@ export default create({
       }
     };
 
+    // 是否有结束提示
     const isEndTip = (day, month) => {
       return isActive(day, month);
     };
 
+    // 是否有是当前日期
     const isCurrDay = (month, day) => {
       const date = `${month.curData[0]}-${month.curData[1]}-${day}`;
       return Utils.isEqual(date, Utils.date2Str(new Date()));
     };
 
-    const setTransform = (translateY = 0, type?, time = 1000) => {
-      if (type === 'end') {
-        monthsPanel?.value &&
-          (monthsPanel.value.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`);
-      } else {
-        monthsPanel?.value && (monthsPanel.value.style.webkitTransition = '');
+    // 监听月份滚动，改变月份标题
+    const loadScroll = () => {
+      if (!props.poppable) {
+        return false;
       }
-
-      monthsPanel?.value &&
-        (monthsPanel.value.style.webkitTransform = `translateY(${translateY}px)`);
-      state.scrollDistance = translateY;
+      requestAniFrame(() => {
+        if (weeksPanel?.value && monthsPanel?.value) {
+          const top = weeksPanel?.value.getBoundingClientRect().bottom;
+          const monthsDoms = monthsPanel.value.querySelectorAll(
+            '.calendar-month'
+          );
+          for (let i = 0; i < monthsDoms.length; i++) {
+            if (
+              monthsDoms[i].getBoundingClientRect().top <= top &&
+              monthsDoms[i].getBoundingClientRect().bottom >= top
+            ) {
+              state.yearMonthTitle = state.monthsData[i].title;
+            } else if (state.scrollDistance === 0) {
+              state.yearMonthTitle = state.monthsData[0].title;
+            }
+          }
+        }
+      });
     };
 
+    // 设置月份滚动距离和速度
+    const setTransform = (translateY = 0, type?, time = 1000) => {
+      if (monthsPanel?.value) {
+        if (type === 'end') {
+          monthsPanel.value.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`;
+          clearTimeout(state.timer);
+          state.timer = setTimeout(() => {
+            loadScroll();
+          }, time);
+        } else {
+          monthsPanel.value.style.webkitTransition = '';
+          loadScroll();
+        }
+        monthsPanel.value.style.webkitTransform = `translateY(${translateY}px)`;
+        state.scrollDistance = translateY;
+      }
+    };
+
+    // 计算滚动方向和距离
     const setMove = (move, type?, time?) => {
       let updateMove = move + state.transformY;
       const h = months.value?.offsetHeight || 0;
-
       const offsetHeight = monthsPanel.value?.offsetHeight || 0;
-
       if (type === 'end') {
         // 限定滚动距离
         if (updateMove > 0) {
@@ -495,8 +530,7 @@ export default create({
         if (offsetHeight <= h && state.monthsData.length == 1) {
           updateMove = 0;
         }
-        const endMove = updateMove;
-        setTransform(endMove, type, time);
+        setTransform(updateMove, type, time);
       } else {
         if (updateMove > 0 && updateMove > 100) {
           updateMove = 100;
@@ -518,6 +552,7 @@ export default create({
       }
     };
 
+    // 监听touch开始
     const touchStart = event => {
       const changedTouches = event.changedTouches[0];
       state.touchParams.startY = changedTouches.pageY;
@@ -525,6 +560,7 @@ export default create({
       state.transformY = state.scrollDistance;
     };
 
+    // 监听touchmove
     const touchMove = event => {
       //event.preventDefault();
       const changedTouches = event.changedTouches[0];
@@ -537,6 +573,7 @@ export default create({
       setMove(move);
     };
 
+    // 监听touchend
     const touchEnd = event => {
       const changedTouches = event.changedTouches[0];
       state.touchParams.lastY = changedTouches.pageY;
@@ -568,6 +605,7 @@ export default create({
       }
     };
 
+    // 重新渲染
     const resetRender = () => {
       state.chooseData.splice(0);
       state.monthsData.splice(0);
@@ -577,16 +615,7 @@ export default create({
       initData();
     };
 
-    const closeActionSheet = () => {
-      if (props.poppable) {
-        state.childIsVisible = false;
-        emit('update');
-        emit('close');
-      }
-      resetRender();
-    };
-
-    // 初始化
+    // 初始化数据
     initData();
 
     //监听 默认值更改
@@ -594,7 +623,6 @@ export default create({
       () => props.defaultValue,
       val => {
         if (val) {
-          console.log(val, 'init');
           resetRender();
         }
       }
@@ -613,7 +641,7 @@ export default create({
       confirm,
       monthsPanel,
       months,
-      closeActionSheet,
+      weeksPanel,
       ...toRefs(state),
       ...toRefs(props)
     };

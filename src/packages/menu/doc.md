@@ -67,6 +67,19 @@ app.use(Menu);
     <nut-menu-item :menuList="menuList2" title="筛选" disabled ></nut-menu-item>
 </nut-menu>
 ```
+
+### 禁止蒙层展示
+属性`hasMask`控制是否有蒙层，默认为 `true`展示蒙层 
+
+```html
+<nut-menu :hasMask="false">
+    <nut-menu-item :menuList="menuList" title="最新商品">
+    </nut-menu-item>
+    <nut-menu-item :menuList="menuList" :title="title">
+    </nut-menu-item>
+</nut-menu>
+```
+
 ### 点击事件
 
 `Menu` 的 `@menu-click` 事件返回点击的菜单标题，`@on-change`事件返回菜单列表选中的数据。
@@ -133,6 +146,7 @@ const alertText = (info, type) => {
 | disabled | 是否开启禁用设置，默认不开启    | Boolean | false |
 | maxHeight | 菜单列表最大高度，单位px    | String, Number | - |
 | autoClose | 选择后下拉菜单列表是否自动收起，默认自动收起   | Boolean | true |
+|hasMask| 是否有蒙层 | Boolean | true|
 
 ### Events
 
