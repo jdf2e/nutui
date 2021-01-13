@@ -1,12 +1,15 @@
 <template>
   <view
+    id="menuId"
     class="nut-menu-item"
     :class="[{ disabled: disabled }, { 'nut-menu-active': showPanel }]"
   >
+    <nut-popup v-model:show="showMask"></nut-popup>
     <view class="nut-menu-title" @click="handleMenuPanel">
       <view class="title-name" v-html="menuTitle"></view>
       <i class="icon"></i>
     </view>
+
     <view
       class="nut-menu-panel"
       ref="menuPanel"
@@ -90,9 +93,11 @@ export default create({
     const { menuList, multiStyle } = toRefs(props);
     const menuTitle = ref(props.title);
     const menu = useParent(MENU_KEY);
+    const parent: any = reactive(menu.parent as any);
     const state = reactive({
       showPanel: false,
-      currMenu: 0
+      currMenu: 0,
+      showMask: false
     });
 
     const handleMenuPanel = () => {
@@ -101,7 +106,12 @@ export default create({
       if (props.disabled) {
         return;
       }
+
       state.showPanel = !state.showPanel;
+      if (parent.hasMask) {
+        state.showMask = !state.showMask;
+        parent.handleMaskShow(state.showPanel);
+      }
     };
     //menu列表浮层展示和隐藏
     const handleShowAndHide = (event: any) => {
@@ -109,6 +119,8 @@ export default create({
       if (menuBox && state.showPanel) {
         if (!menuBox.contains(event.target)) {
           state.showPanel = false;
+          state.showMask = false;
+          parent.handleMaskShow(false);
         }
       }
     };
@@ -117,6 +129,8 @@ export default create({
       state.currMenu = index;
       if (props.autoClose) {
         state.showPanel = false;
+        state.showMask = false;
+        parent.handleMaskShow(false);
       }
       emit('on-change', item, menuTitle.value);
     };
@@ -138,6 +152,7 @@ export default create({
     });
     return {
       ...toRefs(state),
+      ...toRefs(parent),
       handleMenuPanel,
       checkMenus,
       menuTitle,
