@@ -1,6 +1,11 @@
 <template>
   <view class="nut-actionsheet">
-    <nut-popup v-model:show="state.maskIsVisible" position="bottom" round>
+    <nut-popup
+      v-model:show="state.maskIsVisible"
+      position="bottom"
+      round
+      @click-overlay="closeMask"
+    >
       <view class="nut-actionsheet-panel">
         <view class="nut-actionsheet-custom">
           <slot name="custom"></slot>
@@ -84,6 +89,7 @@ export default create({
   emits: ['click', 'close', 'cancel', 'choose'],
 
   setup(props, { emit }) {
+    console.log(props.isVisible, 'props.isVisible');
     // state
     const state = reactive({
       maskIsVisible: false
@@ -91,13 +97,12 @@ export default create({
 
     // methods
     const isHighlight = item => {
-      console.log(item.color, 'color');
       return item.color;
     };
 
     const closeActionSheet = () => {
       state.maskIsVisible = false;
-      console.log(state.maskIsVisible, 'mask');
+      //   console.log(state.maskIsVisible, 'mask');
       emit('close');
     };
 
@@ -108,20 +113,25 @@ export default create({
 
     const chooseItem = (item, index) => {
       if (!item.disable) {
-        if (props.isClickChooseClose) {
-          closeActionSheet();
-        }
+        closeActionSheet();
         emit('choose', item, index);
       }
     };
-
+    const closeMask = () => {
+      state.maskIsVisible = false;
+    };
     watch(
       () => props.isVisible,
-      val => {
-        if (val) {
-          state.maskIsVisible = true;
-        }
+      () => {
+        console.log(props.isVisible, 'val');
+        state.maskIsVisible = true;
       }
+      // val => {
+      //   console.log(val, 'val');
+      //   if (val) {
+      //     state.maskIsVisible = true;
+      //   }
+      // }
     );
 
     return {
@@ -129,6 +139,7 @@ export default create({
       closeActionSheet,
       cancelActionSheet,
       chooseItem,
+      closeMask,
       state
     };
   }
