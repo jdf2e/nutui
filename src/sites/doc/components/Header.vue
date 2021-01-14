@@ -31,6 +31,9 @@
           </li>
           <li class="nav-item">
             <div
+              @focus="handleFocus"
+              @focusout="handleFocusOut"
+              tabindex="0"
               class="header-select-box"
               @click.stop="data.isShowSelect = !data.isShowSelect"
               :class="[data.isShowSelect == true ? 'select-up' : 'select-down']"
@@ -38,17 +41,19 @@
               <div class="header-select-hd"
                 >{{ data.verson }}<i class=""></i
               ></div>
-              <div class="header-select-bd" v-show="data.isShowSelect">
-                <div
-                  class="header-select-item"
-                  v-for="(item, index) in data.versonList"
-                  :key="index"
-                  @click.stop="checkTheme(item.name, index)"
-                  :class="{ active: data.activeIndex === index }"
-                >
-                  {{ item.name }}
+              <transition name="fade">
+                <div class="header-select-bd" v-show="data.isShowSelect">
+                  <div
+                    class="header-select-item"
+                    v-for="(item, index) in data.versonList"
+                    :key="index"
+                    @click.stop="checkTheme(item.name, index)"
+                    :class="{ active: data.activeIndex === index }"
+                  >
+                    {{ item.name }}
+                  </div>
                 </div>
-              </div>
+              </transition>
             </div>
           </li>
           <li class="nav-item">
@@ -60,7 +65,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, computed } from 'vue';
+import { defineComponent, reactive, computed, onMounted } from 'vue';
 import Search from './Search.vue';
 import { header } from '@/config';
 import { currentRoute, themeColor } from '@/sites/assets/util/ref';
@@ -89,8 +94,15 @@ export default defineComponent({
       activeIndex: 0,
       isShowSelect: false
     });
+    const handleFocus = () => {
+      console.log(1);
+    };
+    const handleFocusOut = () => {
+      data.isShowSelect = false;
+    };
     const isActive = computed(() => {
       return function(name: string) {
+        console.log(name, currentRoute.value);
         // console.log('name1', currentRoute.value == name.toLowerCase());
         return currentRoute.value == name.toLowerCase();
       };
@@ -117,7 +129,9 @@ export default defineComponent({
       data,
       isActive,
       checkTheme,
-      themeName
+      themeName,
+      handleFocus,
+      handleFocusOut
     };
   }
 });
@@ -177,10 +191,11 @@ export default defineComponent({
     .nav-box {
       margin-right: 140px;
       .nav-list {
-        min-width: 400px;
+        min-width: 445px;
         display: flex;
         list-style: none;
         align-items: center;
+        justify-content: space-around;
       }
       .nav-item {
         position: relative;
@@ -192,7 +207,6 @@ export default defineComponent({
         cursor: pointer;
         a {
           display: inline-block;
-          padding: 0 10px;
           line-height: 64px;
         }
         // overflow: hidden;
@@ -230,6 +244,7 @@ export default defineComponent({
     position: relative;
     display: inline-block;
     vertical-align: middle;
+    outline: 0;
   }
   &-hd {
     min-width: 77px;
@@ -494,5 +509,13 @@ export default defineComponent({
       }
     }
   }
+}
+// 下拉列表选择动画效果
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
