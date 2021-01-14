@@ -56,8 +56,8 @@ export default {
     };
   },
   methods: {
-    change(name) {
-      console.log(`点击了name是${name}的面板`);
+    callback(name) {
+      console.log(`点击了name是${name}的面板,callback`);
     }
   }
 };

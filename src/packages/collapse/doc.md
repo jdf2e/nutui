@@ -12,7 +12,7 @@ CollapseItem.install(Vue);
 通过`v-model`控制展开的面板列表，`activeNames`为数组格式
 
 ```html
-<nut-collapse v-model="activeNames">
+<nut-collapse v-model="activeNames" @change="callback">
     <nut-collapse-item title="标题1" :name="1">
         京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府 
     </nut-collapse-item>
@@ -30,6 +30,11 @@ export default {
     return {
         activeNames: [1, 2]
     };
+  },
+  methods: {
+    callback(name) {
+      console.log(`点击了name是${name}的面板,callback`);
+    }
   }
 };
 ```
@@ -105,7 +110,9 @@ export default {
 
 | 事件名 | 说明 | 回调参数 |
 |------|------|------|
-| change | 切换面板时触发 | 类型与 v-model 绑定的值一致 |
+| change | 切换面板时触发 | 类型与 v-model 绑定的值一致。 |
+
+> 使用 @change = "function" 回调。如果未使用，会直接触发 methods 中定义的 change 方法，如不需要回调，尽量不要在 methods 中定义 change 方法
 
 ### CollapseItem Props
 | 参数 | 说明 | 类型 | 默认值 | 

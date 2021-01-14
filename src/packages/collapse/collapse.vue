@@ -40,7 +40,11 @@ export default {
   },
   methods: {
     changeEvt(name) {
-      this.$parent.change(name);
+      if (this.$parent.change && typeof this.$parent.change == 'function') {
+        this.$parent.change(name);
+      } else {
+        this.$emit('change', name);
+      }
     },
     changeValAry(name) {
       let index = -1;
