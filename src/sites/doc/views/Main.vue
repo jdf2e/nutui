@@ -7,7 +7,7 @@
       <div class="content-subTitle">一款具有京东风格的VUE组件</div>
       <div class="content-button">
         <div class="leftButton">
-          <div class="leftButtonText">开始使用</div>
+          <div class="leftButtonText" @click="toIntro">开始使用</div>
         </div>
         <div class="rightButton">
           <div class="rightButtonText">扫码体验</div>
@@ -65,6 +65,7 @@ import {
 } from 'vue-router';
 import { currentRoute } from '@/sites/assets/util/ref';
 import Header from '@/sites/doc/components/Header.vue';
+import router from '../router';
 export default defineComponent({
   name: 'main',
   components: { [Header.name]: Header },
@@ -74,8 +75,14 @@ export default defineComponent({
     onMounted(() => {
       const route = useRoute();
     });
+    function toIntro() {
+      router.push({ path: '/index' });
+    }
 
-    return data;
+    return {
+      toIntro,
+      data
+    };
   }
 });
 </script>

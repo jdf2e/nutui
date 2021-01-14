@@ -6,6 +6,7 @@
       placeholder="在 NutUI 中搜索"
       v-model="data.searchVal"
       @focus="onfocus"
+      @blur="onblur"
       @keyup="choseList"
     />
     <ul class="search-list" v-if="data.searchList.length > 0">
@@ -40,6 +41,7 @@ export default defineComponent({
     });
     onMounted(() => {
       const files = require.context('@/packages', true, /doc\.md$/);
+      // console.log(files)
       files.keys().forEach(component => {
         const componentEntity = files(component).default;
       });
@@ -49,7 +51,7 @@ export default defineComponent({
           // console.log('value', value)
           data.navList.push(value);
         });
-        console.log('search', data.navList);
+        // console.log('search', data.navList);
       });
     });
     watch(
@@ -59,21 +61,30 @@ export default defineComponent({
         if (sVal) {
           data.searchList = data.navList.filter(item => {
             if (item.show === false) return false;
-            console.log('item', item);
+            // console.log('item', item);
             const rx = new RegExp(sVal, 'gi');
             return rx.test(item.name + ' ' + item.cName + '' + item.desc);
           });
-          console.log('rx2', data.searchList.length, data.searchList);
+          // console.log('rx2', data.searchList.length, data.searchList);
         } else {
           data.searchCName = '';
           data.searchIndex = 0;
           data.searchList = [];
         }
+        // console.log(data.searchList)
       }
     );
     const onfocus = e => {
-      e.target.select();
-      // console.log('e', e.target.select())
+      // e.target.select();
+    };
+    const onblur = e => {
+      setTimeout(() => {
+        data.searchList = [];
+        data.searchVal = '';
+      }, 200);
+    };
+    const checklist = item => {
+      console.log(1);
     };
     const choseList = e => {
       data.searchIndex = 0;
@@ -81,7 +92,9 @@ export default defineComponent({
     return {
       data,
       onfocus,
-      choseList
+      choseList,
+      onblur,
+      checklist
     };
   }
 });

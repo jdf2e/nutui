@@ -5,16 +5,30 @@
         {{ docs.name }}
       </li>
       <ul>
-        <li :class="{ active: isActive(_package.name) }" v-for="_package in docs.packages" :key="_package">
-          <router-link v-if="!_package.isLink" :to="_package.name.toLowerCase()">{{ _package.cName }}</router-link>
-          <a v-else :href="_package.name" target="_blank">{{ _package.cName }}</a>
+        <li
+          :class="{ active: isActive(_package.name) }"
+          v-for="_package in docs.packages"
+          :key="_package"
+        >
+          <router-link
+            v-if="!_package.isLink"
+            :to="_package.name.toLowerCase()"
+            >{{ _package.cName }}</router-link
+          >
+          <a v-else :href="_package.name" target="_blank">{{
+            _package.cName
+          }}</a>
         </li>
       </ul>
     </ol>
     <ol v-for="_nav in nav" :key="_nav">
       <li>{{ _nav.name }}</li>
       <ul>
-        <template :class="{ active: isActive(_package.name) }" v-for="_package in _nav.packages" :key="_package">
+        <template
+          :class="{ active: isActive(_package.name) }"
+          v-for="_package in _nav.packages"
+          :key="_package"
+        >
           <li v-if="_package.show">
             <router-link :to="_package.name.toLowerCase()">
               {{ _package.name }}&nbsp;&nbsp;<b>{{ _package.cName }}</b>
@@ -26,7 +40,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, computed } from 'vue';
+import { defineComponent, reactive, computed, onMounted } from 'vue';
 import { currentRoute } from '@/sites/assets/util/ref';
 import { nav, docs } from '@/config';
 export default defineComponent({
@@ -36,6 +50,9 @@ export default defineComponent({
       return function(name: string) {
         return currentRoute.value == name.toLowerCase();
       };
+    });
+    onMounted(() => {
+      console.log('123' + nav);
     });
     return {
       isActive,
@@ -88,7 +105,8 @@ export default defineComponent({
             margin-top: -5px;
             height: 10px;
             transform: rotate(90deg);
-            background: url(https://img10.360buyimg.com/imagetools/jfs/t1/136135/19/14659/946/5fa20aa8E33a9aa26/d329fbe669171208.png) no-repeat;
+            background: url(https://img10.360buyimg.com/imagetools/jfs/t1/136135/19/14659/946/5fa20aa8E33a9aa26/d329fbe669171208.png)
+              no-repeat;
             background-size: 100% 100%;
           }
         }
