@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     slideChangeEnd(page) {
-      this.active = page;
+      this.active = page > this.images.length ? this.images.length : page;
     },
   },
 };
