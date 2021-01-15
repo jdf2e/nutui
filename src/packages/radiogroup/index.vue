@@ -4,7 +4,7 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, provide } from 'vue';
+import { toRefs, provide, watch } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('radiogroup');
 
@@ -27,7 +27,14 @@ export default create({
       default: true
     }
   },
+  emits: ['change', 'update:modelValue'],
   setup(props, { emit }) {
+    watch(
+      () => props.modelValue,
+      value => {
+        emit('change', value, event);
+      }
+    );
     provide('radiogroup', {
       parentNode: true,
       changeVal: (val: string | number) => {

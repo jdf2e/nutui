@@ -55,6 +55,7 @@ export default create({
       default: 180
     }
   },
+  emits: ['update:active', 'change'],
   setup(props, { emit }) {
     const { active } = toRefs(props);
     // 多个 item 展开
@@ -72,6 +73,7 @@ export default create({
       const v = JSON.parse(JSON.stringify(activeItem));
       index > -1 ? v.splice(index, 1) : v.push(name);
       emit('update:active', v);
+      emit('change', v);
     };
 
     // 更新v-modal的值
@@ -80,6 +82,7 @@ export default create({
       expanded: boolean
     ) => {
       emit('update:active', val);
+      emit('change', val);
     };
 
     const isExpanded = (name: string | number | Array<string | number>) => {

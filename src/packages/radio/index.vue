@@ -51,7 +51,7 @@ export default create({
     }
   },
   components: {},
-  emits: ['input', 'update:modelValue'],
+  emits: ['input', 'update:modelValue', 'change'],
   setup(props, { emit }) {
     const parentGroup = inject('radiogroup', {
       parentNode: false,
@@ -110,6 +110,7 @@ export default create({
       }
       currentValue.value = props.label ?? '';
       emit('update:modelValue', props.label);
+      emit('change', props.label, event);
     };
 
     return {

@@ -17,14 +17,22 @@
       <view class="collapse-title">
         <view>
           <img
-            v-if="titleIcon != 'none' && titleIconPosition == 'left'"
+            v-if="
+              titleIcon != '' &&
+                titleIcon != 'none' &&
+                titleIconPosition == 'left'
+            "
             :src="titleIcon"
             :style="titleIconWH"
             class="titleIconLeft"
           />
           <view v-html="title"></view>
           <img
-            v-if="titleIcon != 'none' && titleIconPosition == 'right'"
+            v-if="
+              titleIcon != '' &&
+                titleIcon != 'none' &&
+                titleIconPosition == 'right'
+            "
             :src="titleIcon"
             :style="titleIconWH"
             class="titleIconRight"
@@ -112,6 +120,7 @@ export default create({
         transform: 'rotate(0deg)'
       }
     });
+    console.log(parent.titleIcon);
 
     const titleIconStyle = reactive({
       titleIcon: parent.titleIcon,
@@ -184,6 +193,8 @@ export default create({
           }
         });
         nextTick(() => {
+          console.log(currentName.value);
+
           parent.changeVal(currentName.value, !proxyData.openExpanded);
           animation();
         });
