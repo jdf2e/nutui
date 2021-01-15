@@ -18,13 +18,12 @@
 ```
 
 ``` javascript
-export default {
-  data() {
-    return {
-        activeNames: [1, 2]
-    };
-  }
-};
+setup() {
+  const activeNames = reactive([1, 2]);
+  return {
+    activeNames
+  };
+}
 ```
 
 
@@ -47,14 +46,13 @@ export default {
 ```
 
 ``` javascript
-export default {
-  data() {
-    return {
-      activeName: 1,
-      subTitle: '副标题'
-    };
-  }
-};
+setup() {
+  const activeName = ref(1);
+  return {
+    activeName,
+    subTitle: '副标题'
+  };
+}
 ```
 
 
@@ -75,18 +73,16 @@ export default {
 ```
 
 ``` javascript
-export default {
-  data() {
-    return {
-      activeName: 1,
-      expandIconPosition: 'left',
-      icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/132849/8/9709/550/5f5f0d8aE802abee7/68bd02b3a52c3988.png'
-      rotate: 180,
-      iconWidth: '20px',
-      iconHeight: '20px',
-    };
-  }
-};
+setup() {
+  return {
+    activeName: 1,
+    expandIconPosition: 'left',
+    icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/132849/8/9709/550/5f5f0d8aE802abee7/68bd02b3a52c3988.png'
+    rotate: 180,
+    iconWidth: '20px',
+    iconHeight: '20px',
+  };
+}
 ```
 
 ## Collapse Prop
@@ -109,7 +105,7 @@ export default {
 | title | 标题栏左侧内容 | string | - |
 | name | 唯一标识符，必填 | string \ number | -1 |
 | expand-icon-position | 标题图标的位置 | string | right |
-| title-icon | 标题图标链接 | string | ‘none’ 为不展示图标，默认 ‘’ |
+| title-icon | 标题图标链接 | string | ‘’ 为不展示图标，默认 ‘’ |
 | title-icon-width | 标题图标宽度 | string | 13px |
 | title-icon-height | 标题图标高度 | string | 13px |
 | title-icon-position | 标题图标位置 | string | ‘left' 'right' |

@@ -119,9 +119,10 @@ export default createDemo({
 </style>
 <style lang="scss" scoped>
 .demo-list {
+  padding-top: 0;
   margin: 60px 0;
   h4 {
-    margin: 20px 0 10px 25px;
+    margin: 20px 0 10px 10px;
     font-size: 14px;
     color: #909ca4;
   }

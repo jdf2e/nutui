@@ -74,7 +74,7 @@
     <h4>CheckboxGroup整体事件</h4>
     <div class="show-demo">
       <div>
-        <nut-checkboxgroup v-model="checkboxGroup4" @change="getChange">
+        <nut-checkboxgroup v-model="checkboxGroup5" @change="getChange">
           <nut-checkbox label="选项一"></nut-checkbox>
           <nut-checkbox label="选项二"></nut-checkbox>
         </nut-checkboxgroup>
@@ -92,7 +92,7 @@
       <div>
         <nut-checkboxgroup
           ref="checkboxGroupDemo"
-          v-model="checkboxGroup5"
+          v-model="checkboxGroup6"
           @change="getChange2"
         >
           <nut-checkbox label="选项一"></nut-checkbox>
@@ -117,7 +117,7 @@
     <div class="show-demo">
       <div>
         <nut-checkboxgroup
-          v-model="checkboxGroup6"
+          v-model="checkboxGroup7"
           direction="vertical"
           @change="getChange3"
         >
@@ -153,9 +153,10 @@ export default createDemo({
       checkboxGroup1: ['选项一'],
       checkboxGroup2: ['选项一'],
       checkboxGroup3: [],
-      checkboxGroup4: ['选项一'],
-      checkboxGroup5: [],
-      checkboxGroup6: []
+      checkboxGroup4: ['没有动效1'],
+      checkboxGroup5: ['选项一'],
+      checkboxGroup6: [],
+      checkboxGroup7: []
     });
     const result = reactive({
       result1: '',
