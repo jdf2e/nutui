@@ -12,7 +12,7 @@
 <script lang="ts">
 import { reactive, createApp } from 'vue';
 import { createComponent } from '@/utils/create';
-// import notify from './index';
+import { Notify } from './notify';
 const { createDemo } = createComponent('notify');
 // const app = createApp({});
 // app.use(notify);
@@ -22,11 +22,10 @@ export default createDemo({
       isVisible1: false,
       isVisible2: false,
       isVisible3: false,
-      isVisible4: false,
-      isVisible5: false
+      isVisible4: false
     });
-    const notify1 = param => {
-      state[`${param}`] = !state[`${param}`];
+    const notify1 = msg => {
+      Notify.text('hello');
     };
     return {
       notify1

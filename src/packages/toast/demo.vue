@@ -40,7 +40,7 @@ const { createDemo } = createComponent('toast');
 export default createDemo({
   setup() {
     const textToast = msg => {
-      Toast.text(msg);
+      Toast.text(msg, { duration: 100000 });
     };
     const successToast = msg => {
       Toast.success(msg);
