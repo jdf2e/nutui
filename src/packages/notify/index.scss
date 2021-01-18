@@ -1,2 +1,41 @@
+@import '../../styles/variables.scss';
+.popup-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow-y: auto;
+  transition: transform 0.3s;
+  z-index: 9999;
+  // &.round {
+  //   border-radius: 0 0 $popup-border-radius $popup-border-radius;
+  // }
+}
+
 .nut-notify {
+  box-sizing: border-box;
+  padding: $notify-padding;
+  color: $notify-text-color;
+  font-size: $notify-font-size;
+  line-height: $notify-line-height;
+
+  white-space: pre-wrap;
+  text-align: center;
+  word-wrap: break-word;
+
+  &--primary {
+    background-color: $notify-primary-background-color;
+  }
+
+  &--success {
+    background-color: $notify-success-background-color;
+  }
+
+  &--danger {
+    background-color: $notify-danger-background-color;
+  }
+
+  &--warning {
+    background-color: $notify-warning-background-color;
+  }
 }
