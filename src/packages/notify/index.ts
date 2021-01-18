@@ -1,4 +1,4 @@
-import VanNotify from './index.vue';
+import NutNotify from './index.vue';
 import {
   createApp,
   reactive,
@@ -74,12 +74,13 @@ function initInstance() {
   ({ instance } = mountComponent({
     setup() {
       const { state, toggle } = usePopupState();
-      return h('img', {});
+      return h(NutNotify, { ...state, 'onUpdate:show': toggle });
     }
   }));
 }
-
+// 入口
 function Notify(options) {
+  debugger;
   if (!inBrowser) {
     return;
   }
@@ -134,10 +135,10 @@ Notify.resetDefaultOptions = () => {
 };
 
 Notify.install = app => {
-  app.use(VanNotify);
+  app.use(NutNotify);
   app.config.globalProperties.$notify = Notify;
 };
 
-Notify.Component = VanNotify;
+Notify.Component = NutNotify;
 
 export default Notify;
