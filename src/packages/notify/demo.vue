@@ -25,7 +25,9 @@ export default createDemo({
       isVisible4: false
     });
     const notify1 = msg => {
-      Notify.text('hello');
+      Notify.text('hello', {
+        duration: 1000
+      });
     };
     return {
       notify1

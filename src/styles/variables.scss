@@ -149,3 +149,13 @@ $zindex-mask: 9998 !default;
 $zindex-actionsheet: 10001 !default;
 $zindex-dialog: 10000 !default;
 $zindex-picker: 10050 !default;
+
+// Notify
+$notify-text-color: #fff;
+$notify-padding: 8px 16px;
+$notify-font-size: $font-size-base;
+$notify-line-height: 20px;
+$notify-primary-background-color: #1989fa;
+$notify-success-background-color: #07c160;
+$notify-danger-background-color: #ee0a24;
+$notify-warning-background-color: #ff976a;
