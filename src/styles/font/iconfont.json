@@ -6,6 +6,55 @@
   "description": "nutui 3.0字体管理",
   "glyphs": [
     {
+      "icon_id": "19483835",
+      "name": "star-fill",
+      "font_class": "star-fill1",
+      "unicode": "e6b8",
+      "unicode_decimal": 59064
+    },
+    {
+      "icon_id": "19483836",
+      "name": "star",
+      "font_class": "star2",
+      "unicode": "e6b9",
+      "unicode_decimal": 59065
+    },
+    {
+      "icon_id": "19483643",
+      "name": "heart",
+      "font_class": "heart2",
+      "unicode": "e6b6",
+      "unicode_decimal": 59062
+    },
+    {
+      "icon_id": "19483644",
+      "name": "heart-fill",
+      "font_class": "heart-fill3",
+      "unicode": "e6b7",
+      "unicode_decimal": 59063
+    },
+    {
+      "icon_id": "19483565",
+      "name": "retweet",
+      "font_class": "retweet",
+      "unicode": "e6b5",
+      "unicode_decimal": 59061
+    },
+    {
+      "icon_id": "19483536",
+      "name": "poweroff-circle-fill",
+      "font_class": "poweroff-circle-fill",
+      "unicode": "e6b3",
+      "unicode_decimal": 59059
+    },
+    {
+      "icon_id": "19483537",
+      "name": "play-circle-fill",
+      "font_class": "play-circle-fill",
+      "unicode": "e6b4",
+      "unicode_decimal": 59060
+    },
+    {
       "icon_id": "19007017",
       "name": "down-arrow",
       "font_class": "down-arrow",
