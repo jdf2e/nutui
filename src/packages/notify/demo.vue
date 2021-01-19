@@ -1,36 +1,106 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-cell :showIcon="true" :isLink="true" @click="notify1('isVisible1')">
+    <nut-cell :showIcon="true" :isLink="true" @click="baseNotify('基础用法')">
       <span>
         <label>基础用法</label>
+      </span>
+    </nut-cell>
+    <h2>通知类型</h2>
+    <nut-cell
+      :showIcon="true"
+      :isLink="true"
+      @click="primaryNotify('主要通知')"
+    >
+      <span>
+        <label>主要通知</label>
+      </span>
+    </nut-cell>
+    <nut-cell
+      :showIcon="true"
+      :isLink="true"
+      @click="successNotify('成功通知')"
+    >
+      <span>
+        <label>成功通知</label>
+      </span>
+    </nut-cell>
+    <nut-cell :showIcon="true" :isLink="true" @click="errorNotify('危险通知')">
+      <span>
+        <label>危险通知</label>
+      </span>
+    </nut-cell>
+    <nut-cell
+      :showIcon="true"
+      :isLink="true"
+      @click="warningNotify('警告通知')"
+    >
+      <span>
+        <label>警告通知</label>
+      </span>
+    </nut-cell>
+    <h2>自定义样式</h2>
+    <nut-cell
+      :showIcon="true"
+      :isLink="true"
+      @click="cusBgNotify('自定义背景色和字体颜色')"
+    >
+      <span>
+        <label>自定义背景色和字体颜色</label>
+      </span>
+    </nut-cell>
+    <h2>自定义时长</h2>
+    <nut-cell :showIcon="true" :isLink="true" @click="timeNotify('自定义时长')">
+      <span>
+        <label>自定义时长</label>
       </span>
     </nut-cell>
   </div>
 </template>
 
 <script lang="ts">
-import { reactive, createApp } from 'vue';
+import { createApp } from 'vue';
 import { createComponent } from '@/utils/create';
 import { Notify } from './notify';
 const { createDemo } = createComponent('notify');
-// const app = createApp({});
-// app.use(notify);
 export default createDemo({
   setup() {
-    const state = reactive({
-      isVisible1: false,
-      isVisible2: false,
-      isVisible3: false,
-      isVisible4: false
-    });
-    const notify1 = msg => {
-      Notify.text('hello', {
-        duration: 1000
+    const baseNotify = msg => {
+      Notify.text(msg, {
+        onClose: () => {
+          console.log('close');
+        },
+        onClick: () => {
+          console.log('click');
+        }
       });
     };
+    const primaryNotify = msg => {
+      Notify.primary(msg);
+    };
+    const successNotify = msg => {
+      Notify.success(msg);
+    };
+    const errorNotify = msg => {
+      Notify.danger(msg);
+    };
+    const warningNotify = msg => {
+      Notify.warn(msg);
+    };
+    const cusBgNotify = msg => {
+      Notify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
+    };
+    const timeNotify = msg => {
+      Notify.text(msg, { duration: 10000 });
+    };
     return {
-      notify1
+      baseNotify,
+      primaryNotify,
+      successNotify,
+      errorNotify,
+      warningNotify,
+      cusBgNotify,
+      timeNotify
     };
   }
 });

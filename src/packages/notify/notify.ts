@@ -2,7 +2,7 @@ import { createVNode, defineComponent, render, App } from 'vue';
 import VueNotify from './index.vue';
 const NotifyConstructor = defineComponent(VueNotify);
 const defaultOptions = {
-  type: 'danger',
+  type: 'base',
   showPopup: false,
   msg: '',
   color: undefined,
@@ -12,12 +12,13 @@ const defaultOptions = {
   onClosed: null,
   onClick: null,
   onOpened: null,
-  textTimer: null
+  textTimer: null,
+  unmount: null
 };
 
 let idsMap: string[] = [];
 let optsMap: any[] = [];
-const clearToast = (id?: string) => {
+const clearNotify = (id?: string) => {
   if (id) {
     const container = document.getElementById(id);
     optsMap = optsMap.filter(item => item.id !== id);
@@ -37,7 +38,7 @@ const clearToast = (id?: string) => {
   }
 };
 
-const updateToast = opts => {
+const updateNotify = opts => {
   const container = document.getElementById(opts.id);
   if (container) {
     const currentOpt = optsMap.find(item => item.id === opts.id);
@@ -52,14 +53,13 @@ const updateToast = opts => {
   }
 };
 
-const mountToast = opts => {
-  opts.unmount = clearToast;
+const mountNotify = opts => {
+  opts.unmount = clearNotify;
   let _id;
-  // 如果是更新已有的toast
   if (opts.id) {
     _id = opts.id;
     if (idsMap.find(item => item === opts.id)) {
-      return updateToast(opts);
+      return updateNotify(opts);
     }
   } else {
     _id = new Date().getTime() + '';
@@ -91,30 +91,28 @@ const errorMsg = msg => {
 export const Notify = {
   text(msg, obj = {}) {
     errorMsg(msg);
-    return mountToast({ ...obj, msg });
+    return mountNotify({ ...obj, msg });
   },
   primary(msg, obj = {}) {
     errorMsg(msg);
-    return mountToast({ ...obj, msg, type: 'primary' });
+    return mountNotify({ ...obj, msg, type: 'primary' });
   },
   success(msg, obj = {}) {
     errorMsg(msg);
-    return mountToast({ ...obj, msg, type: 'success' });
+    return mountNotify({ ...obj, msg, type: 'success' });
   },
   danger(msg, obj = {}) {
     errorMsg(msg);
-    return mountToast({ ...obj, msg, type: 'danger' });
+    return mountNotify({ ...obj, msg, type: 'danger' });
   },
   warn(msg, obj = {}) {
     errorMsg(msg);
-    return mountToast({ ...obj, msg, type: 'warning' });
+    return mountNotify({ ...obj, msg, type: 'warning' });
   },
   hide() {
-    clearToast();
+    clearNotify();
   }
 };
-
-// export default Toast;
 
 export default {
   install(app: App): void {
