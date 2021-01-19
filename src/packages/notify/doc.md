@@ -1,34 +1,94 @@
 #  notify组件
 
-    ### 介绍
+### 介绍
     
-    基于 xxxxxxx
+在页面顶部展示消息提示
     
-    ### 安装
-    
-    
-    
-    ## 代码演示
-    
-    ### 基础用法1
-    
+### 安装
+``` javascript
+import { createApp } from 'vue';
+import { Notify } from '@nutui/nutui';
 
+const app = createApp();
+app.use(Notify);
+```    
+## 基本用法
+
+```javascript
+export default {
+  mounted() {
+      Notify.text('通知内容', {
+        onClosed() {
+          console.log('close');
+        },
+        onClick: () => {
+          console.log('click');
+        }
+      });
+  }
+}
+```
+## 通知类型
+### 主要通知
+```javascript
+    mounted(){
+      Notify.primary('通知内容');
+    }
+```
+### 成功通知
+```javascript
+    mounted(){
+      Notify.success('通知内容');
+    }
+```
+### 危险通知
+```javascript
+    mounted(){
+      Notify.danger('通知内容');
+    }
+```
+### 警告通知
+```javascript
+    mounted(){
+      Notify.warn('通知内容');
+    }
+```
+## 自定义
+### 自定义样式
+```javascript
+    mounted(){
+      Notify.text(val, {
+        color: '#ad0000',
+        background: '#ffe1e1'
+      });
+    }
+```
+### 自定义时长
+```javascript
+    mounted(){
+      Notify.text(val, {
+        duration: 10000
+      });
+    }
+```
     
-    ## API
+## API
     
-    ### Props
+### Props
     
-    | 参数         | 说明                             | 类型   | 默认值           |
-    |--------------|----------------------------------|--------|------------------|
-    | name         | 图标名称或图片链接               | String | -                |
-    | color        | 图标颜色                         | String | -                |
-    | size         | 图标大小，如 '20px' '2em' '2rem' | String | -                |
-    | class-prefix | 类名前缀，用于使用自定义图标     | String | 'nutui-iconfont' |
-    | tag          | HTML 标签                        | String | 'i'              |
-    
-    ### Events
-    
-    | 事件名 | 说明           | 回调参数     |
-    |--------|----------------|--------------|
-    | click  | 点击图标时触发 | event: Event |
+| 字段       | 说明                                     | 类型          | 默认值 |
+| ---------- | ---------------------------------------- | ------------- | ------ |
+| type       | 提示的信息                               | String        | 空     |
+| message    | 展示文案，支持通过\n换行                 | Boolean       | false  |
+| duration   | 展示时长(ms)，值为 0 时，notify 不会消失 | String        | 空     |
+| color      | 字体颜色                                 | String        | 空     |
+| background | 背景颜色                                 | String        | 空     |
+| className  | 自定义类名                               | String/Number | 1      |
+
+### Events
+
+| 事件名 | 说明           | 回调参数     |
+|--------|----------------|--------------|
+| onClick  | 点击事件回调       | 无       |
+| onClose  | 关闭事件回调       | 无       |
     
