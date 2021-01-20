@@ -56,7 +56,7 @@ export const nav = [
     packages: [
       {
         name: 'BackTop',
-        sort: '1',
+        sort: 1,
         cName: '回到顶部',
         type: 'component',
         show: true,
