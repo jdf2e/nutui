@@ -1,0 +1,64 @@
+.nut-input {
+  position: relative;
+  width: 100%;
+  padding: 10px 0px 10px 25px;
+  display: flex;
+  background: rgba(255, 255, 255, 1);
+  border-bottom: 1px solid rgba(234, 240, 251, 1);
+  font-size: 14px;
+  input {
+    width: 230px;
+    flex: 1;
+    padding: 0 10px;
+  }
+  .nut-input-label {
+    width: 80px;
+    overflow: hidden;
+    display: inline-block;
+    text-align: left;
+    .label-string {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  .nut-textinput-clear {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 15px;
+  }
+  .nut-text {
+    flex: 1;
+    padding: 0 10px;
+    .nut-text-limit {
+      float: right;
+      color: rgba(153, 153, 153, 1);
+    }
+    .nut-text-core {
+      outline: none;
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      color: #323233;
+      line-height: inherit;
+      text-align: left;
+      background-color: transparent;
+      border: 0;
+      resize: none;
+    }
+  }
+}
+.nut-input-disabled {
+  color: #c8c9cc !important;
+  input:disabled {
+    background: none;
+    color: #c8c9cc;
+    cursor: not-allowed;
+    opacity: 1;
+    -webkit-text-fill-color: #c8c9cc;
+  }
+}

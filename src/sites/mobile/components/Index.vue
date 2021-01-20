@@ -11,10 +11,16 @@
       <ol v-for="_nav in nav" :key="_nav">
         <li>{{ _nav.name }}</li>
         <ul>
-          <li v-for="_package in _nav.packages" :key="_package">
-            <router-link :to="_package.name.toLowerCase()">{{ _package.name }}&nbsp;&nbsp;{{ _package.cName }}</router-link>
-            <nut-icon size="14px" color="#979797" name="right"></nut-icon>
-          </li>
+          <template v-for="_package in _nav.packages" :key="_package">
+            <li v-if="_package.show">
+              <router-link :to="_package.name.toLowerCase()"
+                >{{ _package.name }}&nbsp;&nbsp;{{
+                  _package.cName
+                }}</router-link
+              >
+              <nut-icon size="14px" color="#979797" name="right"></nut-icon>
+            </li>
+          </template>
         </ul>
       </ol>
     </div>
