@@ -1,48 +1,63 @@
 <template>
-  <div class="doc-header" :style="{ background: themeColor === 'red' ? headerBg : themeColor }" :class="`doc-header-${data.theme}`">
+  <!-- <div class="doc-header" :style="{ background: themeColor === 'red' ? headerBg : themeColor }" :class="`doc-header-${data.theme}`"> -->
+  <div class="doc-header" :class="themeName()">
     <div class="header-logo">
-      <a class="logo-link" href="#">
-        <template v-if="data.theme === 'red'">
-          <img src="../../assets/images/logo-header-white.png" />
-        </template>
-        <template v-else>
-          <img src="../../assets/images/logo-header-red.png" />
-        </template>
-      </a>
+      <a class="logo-link" href="#"></a>
       <span class="logo-border"></span>
     </div>
     <div class="header-nav">
-      <div class="search-box">
-        <input type="text" class="search-input" placeholder="在nut.ui 中搜索" />
-      </div>
+      <Search />
       <div class="nav-box">
         <ul class="nav-list">
-          <li class="nav-item nav-item-actie">指南</li>
-          <li class="nav-item">组件</li>
-          <li class="nav-item"><a href="http://localhost:8080/demo.html#/" style="color:#fff">示例</a></li>
-          <li class="nav-item">资源</li>
+          <li class="nav-item" :class="{ active: isActive(header[0].name) }">
+            <router-link :to="header[0].name">{{
+              header[0].cName
+            }}</router-link>
+          </li>
+          <li class="nav-item" :class="{ active: isActive(header[1].name) }">
+            <router-link :to="header[1].name">{{
+              header[1].cName
+            }}</router-link>
+          </li>
+          <li class="nav-item" :class="{ active: isActive(header[2].name) }"
+            ><a href="http://localhost:8080/demo.html#/">{{
+              header[2].cName
+            }}</a></li
+          >
+          <li class="nav-item" :class="{ active: isActive(header[3].name) }">
+            <router-link :to="header[3].name">{{
+              header[3].cName
+            }}</router-link>
+          </li>
           <li class="nav-item">
             <div
+              @focus="handleFocus"
+              @focusout="handleFocusOut"
+              tabindex="0"
               class="header-select-box"
               @click.stop="data.isShowSelect = !data.isShowSelect"
               :class="[data.isShowSelect == true ? 'select-up' : 'select-down']"
             >
-              <div class="header-select-hd">{{ data.verson }}<i class=""></i></div>
-              <div class="header-select-bd" v-show="data.isShowSelect">
-                <div
-                  class="header-select-item"
-                  v-for="(item, index) in data.versonList"
-                  :key="index"
-                  @click.stop="checkTheme(item, index)"
-                  :class="{ active: data.activeIndex === index }"
-                >
-                  {{ item.name }}
+              <div class="header-select-hd"
+                >{{ data.verson }}<i class=""></i
+              ></div>
+              <transition name="fade">
+                <div class="header-select-bd" v-show="data.isShowSelect">
+                  <div
+                    class="header-select-item"
+                    v-for="(item, index) in data.versonList"
+                    :key="index"
+                    @click.stop="checkTheme(item.name, index)"
+                    :class="{ active: data.activeIndex === index }"
+                  >
+                    {{ item.name }}
+                  </div>
                 </div>
-              </div>
+              </transition>
             </div>
           </li>
           <li class="nav-item">
-            <a class="user-link" href="#"> </a>
+            <a class="user-link" href="#"></a>
           </li>
         </ul>
       </div>
@@ -50,14 +65,19 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, reactive, computed, onMounted } from 'vue';
+import Search from './Search.vue';
+import { header } from '@/config';
+import { currentRoute, themeColor } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-header',
+  components: {
+    Search
+  },
   setup() {
     const data = reactive({
       theme: 'black',
-      themeColor: 'black',
-      headerBg: 'url(' + require('../../assets/images/header-bg.png') + ')',
+      // headerBg: 'url(' + require('../../assets/images/header-bg.png') + ')',
       versonList: [
         {
           name: '1.x'
@@ -70,17 +90,48 @@ export default defineComponent({
         }
       ],
       verson: '3.x',
+      navIndex: 0,
       activeIndex: 0,
       isShowSelect: false
     });
-    const checkTheme = (item: any, index: number) => {
+    const handleFocus = () => {
+      console.log(1);
+    };
+    const handleFocusOut = () => {
+      data.isShowSelect = false;
+    };
+    const isActive = computed(() => {
+      return function(name: string) {
+        console.log(name, currentRoute.value);
+        // console.log('name1', currentRoute.value == name.toLowerCase());
+        return currentRoute.value == name.toLowerCase();
+      };
+    });
+    const themeName = computed(() => {
+      return function() {
+        return `doc-header-${themeColor.value}`;
+      };
+    });
+    const checkTheme = (item: string, index: number) => {
       data.isShowSelect = false;
       data.activeIndex = index;
-      data.verson = item.name;
+      data.verson = item;
+      if (index === 0) {
+        window.location.href = '//nutui.jd.com/1x/';
+      } else if (index === 1) {
+        window.location.href = 'https://nutui.jd.com/#/index';
+      } else {
+        // window.location.href = ""
+      }
     };
     return {
+      header,
       data,
-      checkTheme
+      isActive,
+      checkTheme,
+      themeName,
+      handleFocus,
+      handleFocusOut
     };
   }
 });
@@ -94,6 +145,7 @@ export default defineComponent({
     top: 0;
     left: 0;
     right: 0;
+    min-width: 1300px;
     background-size: cover;
     background-position: center;
     height: $doc-header-height;
@@ -110,13 +162,13 @@ export default defineComponent({
     width: 240px;
     height: 64px;
     .logo-link {
-      display: flex;
-      align-items: center;
-      height: 64px;
+      display: inline-block;
+      width: 120px;
+      height: 46px;
       vertical-align: middle;
-      img {
-        height: 46px;
-      }
+      position: absolute;
+      top: 50%;
+      margin-top: -23px;
     }
     .logo-border {
       display: inline-block;
@@ -134,36 +186,31 @@ export default defineComponent({
     align-items: center;
     float: right;
     width: calc(100% - 240px);
+    min-width: 900px;
     padding: 0 40px;
-    .search-box {
-      font-size: 0;
-      .search-input {
-        height: 22px;
-        padding-left: 42px;
-        font-size: 14px;
-        vertical-align: middle;
-        background: transparent url('../../assets/images/input-search.png') no-repeat;
-      }
-    }
     .nav-box {
       margin-right: 140px;
       .nav-list {
-        min-width: 400px;
+        min-width: 445px;
         display: flex;
         list-style: none;
         align-items: center;
+        justify-content: space-around;
       }
       .nav-item {
         position: relative;
         margin-right: 30px;
         font-size: 14px;
-        padding: 0 10px;
         height: 63px;
         line-height: 63px;
         text-align: center;
         cursor: pointer;
+        a {
+          display: inline-block;
+          line-height: 64px;
+        }
         // overflow: hidden;
-        &.nav-item-actie {
+        &.active {
           font-weight: bold;
           &:after {
             content: '';
@@ -197,6 +244,7 @@ export default defineComponent({
     position: relative;
     display: inline-block;
     vertical-align: middle;
+    outline: 0;
   }
   &-hd {
     min-width: 77px;
@@ -238,6 +286,10 @@ export default defineComponent({
     color: $theme-red-word;
     .header {
       &-logo {
+        .logo-link {
+          background: url('../../assets/images/logo-header-white.png') no-repeat
+            center/100%;
+        }
         .logo-border {
           background: $theme-red-border;
         }
@@ -255,10 +307,16 @@ export default defineComponent({
         .nav-box {
           .nav-item {
             color: $theme-red-word;
-            &.nav-item-actie {
+            a {
+              color: $theme-red-word;
+            }
+            &.active {
               color: $theme-red-actice;
               &:after {
                 background-position: 0 0;
+              }
+              a {
+                color: $theme-red-actice;
               }
             }
           }
@@ -304,6 +362,10 @@ export default defineComponent({
     border-bottom: 1px solid $theme-white-box-border;
     .header {
       &-logo {
+        .logo-link {
+          background: url('../../assets/images/logo-header-red.png') no-repeat
+            center/100%;
+        }
         .logo-border {
           background: $theme-white-border;
         }
@@ -321,10 +383,16 @@ export default defineComponent({
         .nav-box {
           .nav-item {
             color: $theme-white-word;
-            &.nav-item-actie {
+            a {
+              color: $theme-white-word;
+            }
+            &.active {
               color: $theme-white-actice;
               &:after {
                 background-position: 0 -13px;
+              }
+              a {
+                color: $theme-white-actice;
               }
             }
           }
@@ -370,6 +438,10 @@ export default defineComponent({
     border-bottom: 1px solid $theme-black-box-border;
     .header {
       &-logo {
+        .logo-link {
+          background: url('../../assets/images/logo-header-red.png') no-repeat
+            center/100%;
+        }
         .logo-border {
           background: $theme-black-border;
         }
@@ -387,10 +459,16 @@ export default defineComponent({
         .nav-box {
           .nav-item {
             color: $theme-black-word;
-            &.nav-item-actie {
+            a {
+              color: $theme-black-word;
+            }
+            &.active {
               color: $theme-black-actice;
               &:after {
                 background-position: 0 -13px;
+              }
+              a {
+                color: $theme-black-actice;
               }
             }
           }
@@ -431,5 +509,13 @@ export default defineComponent({
       }
     }
   }
+}
+// 下拉列表选择动画效果
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

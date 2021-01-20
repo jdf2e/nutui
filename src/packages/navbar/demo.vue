@@ -1,8 +1,20 @@
 <template>
-  <div class="demo">
+  <div class="demo full">
     <h2>基础用法</h2>
-    <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-send="send" title="订单详情" icon="share"></nut-navbar>
-    <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-clear="clear" title="浏览记录" desc="清空"></nut-navbar>
+    <nut-navbar
+      @on-click-back="back"
+      @on-click-title="title"
+      @on-click-send="send"
+      title="订单详情"
+      icon="share"
+    ></nut-navbar>
+    <nut-navbar
+      @on-click-back="back"
+      @on-click-title="title"
+      @on-click-clear="clear"
+      title="浏览记录"
+      desc="清空"
+    ></nut-navbar>
     <nut-navbar
       :leftShow="false"
       @on-click-title="title"
@@ -39,9 +51,19 @@
     </nut-navbar>
 
     <h2>多tab切换导航</h2>
-    <nut-navbar :tabs="tabList" @switch-tab="switchTab" @on-click-back="back" icon="share" @on-click-send="send">
+    <nut-navbar
+      :tabs="tabList"
+      @switch-tab="switchTab"
+      @on-click-back="back"
+      icon="share"
+      @on-click-send="send"
+    >
       <template #icons>
-        <nut-icon class="icon" name="nut-icon-more1" @on-click-slot-send="morelist"></nut-icon>
+        <nut-icon
+          class="icon"
+          name="nut-icon-more1"
+          @on-click-slot-send="morelist"
+        ></nut-icon>
       </template>
     </nut-navbar>
   </div>
