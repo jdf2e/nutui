@@ -6,9 +6,9 @@
   "description": "nutui 3.0字体管理",
   "glyphs": [
     {
-      "icon_id": "19531928",
-      "name": "more",
-      "font_class": "more1",
+      "icon_id": "19576313",
+      "name": "more-s",
+      "font_class": "more-s",
       "unicode": "e6ba",
       "unicode_decimal": 59066
     },
