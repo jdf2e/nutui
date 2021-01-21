@@ -24,7 +24,7 @@
       title="购物车"
       titIcon="locationg3"
       desc="编辑"
-      icon="nut-icon-more1"
+      icon="more-s"
     ></nut-navbar>
 
     <h2>增加tab及右侧按钮</h2>
@@ -61,7 +61,7 @@
       <template #icons>
         <nut-icon
           class="icon"
-          name="nut-icon-more1"
+          name="more-s"
           @on-click-slot-send="morelist"
         ></nut-icon>
       </template>
