@@ -61,7 +61,7 @@
       <template #icons>
         <nut-icon
           class="icon"
-          name="more-s"
+          name="more-x"
           @on-click-slot-send="morelist"
         ></nut-icon>
       </template>
