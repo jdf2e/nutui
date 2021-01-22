@@ -6,7 +6,7 @@
       @on-click-title="title"
       @on-click-send="send"
       title="订单详情"
-      icon="share"
+      icon="share-n"
     ></nut-navbar>
     <nut-navbar
       @on-click-back="back"
@@ -24,7 +24,7 @@
       title="购物车"
       titIcon="locationg3"
       desc="编辑"
-      icon="more-s"
+      icon="more-x"
     ></nut-navbar>
 
     <h2>增加tab及右侧按钮</h2>
@@ -46,7 +46,7 @@
       @on-click-clear="edit"
       @on-click-send="list"
       desc="编辑"
-      icon="horizontal"
+      icon="horizontal-n"
     >
     </nut-navbar>
 
