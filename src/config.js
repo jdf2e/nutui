@@ -303,6 +303,16 @@ module.exports = {
           sort: 14,
           show: true,
           author: 'szg2008'
+        },
+        {
+          version: '3.0.0',
+          name: 'InfiniteLoading',
+          type: 'component',
+          cName: '滚动加载',
+          desc: '列表滚动到底部自动加载更多数据',
+          sort: 15,
+          show: true,
+          author: 'yangxiaolu'
         }
       ]
     },
