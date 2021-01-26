@@ -263,7 +263,6 @@ export default createDemo({
 </script>
 <style lang="scss">
 .demo-list {
-  padding-top: 100px;
   h4 {
     font-size: 15px;
     padding: 0 16px;
