@@ -110,7 +110,7 @@ export default {
 | title | 显示标题 | String | ‘选择日期’
 | defaultValue | 默认值，日期选择String格式，区间选择Array格式 | String || Array | null
 | startDate | 开始日期， 如果不限制开始日期传null | String | 今天
-| default | 结束日期，如果不限制结束日期传null | String | 距离今天五个月
+| endDate | 结束日期，如果不限制结束日期传null | String | 距离今天五个月
 
 ## Event
 
