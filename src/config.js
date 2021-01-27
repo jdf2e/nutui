@@ -20,7 +20,7 @@ module.exports = {
       path: '/'
     },
     {
-      name: '/',
+      name: 'intro',
       cName: '组件',
       path: '/'
     },
@@ -407,6 +407,16 @@ module.exports = {
           sort: 5,
           show: true,
           author: ''
+        },
+        {
+          version: '3.0.0',
+          name: 'ShortPassword',
+          type: 'component',
+          cName: '短密码',
+          desc: '短密码组件',
+          sort: 6,
+          show: true,
+          author: 'Drjingfubo'
         }
       ]
     },

@@ -67,8 +67,8 @@ export default create({
     }
   },
   components: {},
+  emits: ['tab-switch'],
   setup(props, { emit }) {
-    console.log(props);
     const currIndex: any = ref(0);
     const { tabbarList } = props;
     function initbar() {

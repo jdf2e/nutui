@@ -76,7 +76,7 @@ export default defineComponent({
       const route = useRoute();
     });
     function toIntro() {
-      router.push({ path: '/index' });
+      router.push({ path: '/intro' });
     }
 
     return {

@@ -1,0 +1,81 @@
+.nut-shortpsd-subtitle {
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.nut-input-w {
+  padding: 24px 0 10px 0;
+  text-align: center;
+  position: relative;
+
+  input {
+    width: 247px;
+    height: 41px;
+    background: rgba(245, 245, 245, 1);
+    border-radius: 4px;
+  }
+
+  .nut-input-real {
+    padding: 0 12px;
+  }
+}
+
+.psd-blink {
+  display: inline-block;
+}
+
+.nut-shortpsd-fake {
+  width: 100%;
+  height: 41px;
+  margin: 0 auto;
+  background: rgba(245, 245, 245, 1);
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 29%;
+  z-index: 0;
+}
+
+.nut-shortpsd-li {
+  width: 41px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nut-shortpsd-icon {
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background: #000;
+  display: inline-block;
+}
+
+.nut-shortpsd-message {
+  margin-top: 9px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 247px;
+
+  .nut-shortpsd-error {
+    line-height: 10px;
+    font-family: PingFangSC-Regular;
+    font-size: 10px;
+    color: rgba(242, 39, 12, 1);
+  }
+
+  .nut-shortpsd-forget {
+    line-height: 12px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: rgba(128, 128, 128, 1);
+  }
+}
+.nut-dialog-content {
+  padding-bottom: 0;
+}
