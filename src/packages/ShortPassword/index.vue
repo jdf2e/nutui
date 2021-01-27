@@ -6,7 +6,7 @@
       @ok-btn-click="sureClick"
       @cancel-btn-click="dialogShow = false"
       @close="close"
-      :noFooter="showButton"
+      :noFooter="noButton"
     >
       <view class="nut-shortpsd-subtitle">您使用了虚拟资产，请进行验证</view>
       <view class="nut-input-w">
@@ -20,30 +20,30 @@
         />
         <view class="nut-shortpsd-fake" @click="focus">
           <view class="nut-shortpsd-li"
-            ><view class="nut-shortpsd-icon" v-if="realInput.length > 0"></view>
-          </view>
+            ><view class="nut-shortpsd-icon" v-if="realInput.length > 0"></view
+          ></view>
           <view class="nut-shortpsd-li"
-            ><view class="nut-shortpsd-icon" v-if="realInput.length > 1"></view>
-          </view>
+            ><view class="nut-shortpsd-icon" v-if="realInput.length > 1"></view
+          ></view>
           <view class="nut-shortpsd-li"
-            ><view class="nut-shortpsd-icon" v-if="realInput.length > 2"></view>
-          </view>
+            ><view class="nut-shortpsd-icon" v-if="realInput.length > 2"></view
+          ></view>
           <view class="nut-shortpsd-li"
-            ><view class="nut-shortpsd-icon" v-if="realInput.length > 3"></view>
-          </view>
-          <view class="nut-shortpsd-li"
-            ><view class="nut-shortpsd-icon" v-if="realInput.length > 4"></view>
-          </view>
-          <view class="nut-shortpsd-li"
-            ><view class="nut-shortpsd-icon" v-if="realInput.length > 5"></view>
-          </view>
+            ><view class="nut-shortpsd-icon" v-if="realInput.length > 3"></view
+          ></view>
+          <view v-if="length >= 5" class="nut-shortpsd-li"
+            ><view class="nut-shortpsd-icon" v-if="realInput.length > 4"></view
+          ></view>
+          <view v-if="length == 6" class="nut-shortpsd-li"
+            ><view class="nut-shortpsd-icon" v-if="realInput.length > 5"></view
+          ></view>
         </view>
       </view>
       <view class="nut-shortpsd-message">
         <view class="nut-shortpsd-error">{{ errorMsg }}</view>
         <view class="nut-shortpsd-forget">
-          <nut-icon class="icon" size="11px" name="tips"></nut-icon>
-          忘记密码</view
+          <nut-icon class="icon" size="11px" name="tips"></nut-icon
+          >忘记密码</view
         >
       </view>
     </nut-dialog>
@@ -68,9 +68,13 @@ export default create({
       type: String,
       default: ''
     },
-    showButton: {
+    noButton: {
       type: Boolean,
-      default: false
+      default: true
+    },
+    length: {
+      type: String || Number,
+      default: 6
     }
   },
   setup(props, { emit }) {
@@ -79,7 +83,6 @@ export default create({
     const realpwd = ref();
     // 方法
     function sureClick() {
-      dialogShow.value = false;
       emit('sureClick');
     }
     function focus() {
@@ -88,11 +91,11 @@ export default create({
     function changeValue(e: Event) {
       const input = e.target as HTMLInputElement;
       let val = input.value;
-      if (val.length > 6) {
-        val = val.slice(0, Number(6));
+      if (val.length > Number(props.length)) {
+        val = val.slice(0, Number(props.length));
       }
-      if (realInput.value.length > 6) {
-        realInput.value = realInput.value.slice(0, Number(6));
+      if (realInput.value.length > Number(props.length)) {
+        realInput.value = realInput.value.slice(0, Number(props.length));
       }
       emit('input', val);
       emit('update:value', val);
@@ -103,7 +106,6 @@ export default create({
     watch(
       () => props.isVisible,
       val => {
-        console.log(val);
         if (val) {
           dialogShow.value = true;
         } else {
