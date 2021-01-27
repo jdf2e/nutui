@@ -1,2 +1,12 @@
 .nut-infiniteloading {
+  display: block;
+  width: 100%;
+  .nut-infinite-bottom {
+    display: block;
+    width: 100%;
+    padding-top: 16px;
+    font-size: 12px;
+    color: rgba(200, 200, 200, 1);
+    text-align: center;
+  }
 }
