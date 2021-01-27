@@ -10,7 +10,7 @@ files.keys().forEach(component => {
   const componentEntity = files(component).default;
   const name = `${component.split('/')[1]}`;
   pagesRouter.push({
-    path: name,
+    path: '/' + name,
     component: componentEntity,
     name
   });
@@ -20,23 +20,25 @@ docs.keys().forEach(component => {
   const componentEntity = docs(component).default;
   const name = `${component.split('/')[1].replace('.md', '')}`;
   pagesRouter.push({
-    path: name,
+    path: '/' + name,
     component: componentEntity,
     name
   });
 });
+
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: '/',
-    component: Index,
-    children: pagesRouter
-  },
+  { path: '/', redirect: '/main' },
   {
     path: '/main',
-    name: '/main',
+    name: 'main',
     component: Main
     // children: pagesRouter
+  },
+  {
+    path: '/index',
+    name: 'index',
+    component: Index,
+    children: pagesRouter
   },
   {
     path: '/resource',
