@@ -64,6 +64,10 @@ export default {
       type: Number,
       default: 1
     },
+    newCurrentPage: {
+      type: Number,
+      default: 1
+    },
     lazyLoad: {
       type: Boolean,
       default: false
@@ -82,12 +86,20 @@ export default {
   watch: {
     swiperData(newValue, oldValue) {
       this.updateEvent();
+    },
+    newCurrentPage(newPage) {
+      // console.warn(newPage);
+      if (newPage > this.currentPage) {
+        this.next();
+      } else {
+        this.prev();
+      }
     }
   },
   data() {
     return {
       dragging: false,
-      currentPage: this.initPage,
+      currentPage: this.initPage || this.newCurrentPage,
       lastPage: 1,
       translateX: 0,
       translateY: 0,

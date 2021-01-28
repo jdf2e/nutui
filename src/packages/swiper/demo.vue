@@ -22,6 +22,7 @@
       :loop="true"
       :canDragging="false"
       :paginationVisible="true"
+      :newCurrentPage="newCurrentPage"
     >
       <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide ">
         <img :src="item.imgSrc" style="max-width:100%;" />
@@ -50,6 +51,8 @@
         <img :data-src="item.imgSrc" style="max-width:100%;" class="nut-img-lazyload" />
       </div>
     </nut-swiper>
+
+    <!-- <div @click="add">++++1</div> -->
   </div>
 </template>
 <script>
@@ -57,7 +60,8 @@ export default {
   data() {
     return {
       dataItem: [],
-      dataImgItem: []
+      dataImgItem: [],
+      newCurrentPage: 1
     };
   },
   mounted() {
@@ -102,6 +106,10 @@ export default {
     },
     slideChangeStart(page) {
       console.log(page);
+    },
+    add() {
+      this.newCurrentPage = this.newCurrentPage + 1;
+      console.warn(this.newCurrentPage);
     }
   }
 };
