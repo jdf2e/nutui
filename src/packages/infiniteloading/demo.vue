@@ -6,14 +6,33 @@
         <nut-infiniteloading
           containerId="scroll"
           :useWindow="false"
-          :isLoading="isLoading"
           :hasMore="hasMore"
-          @scrollChange="scrollChange"
           @loadMore="loadMore"
         >
           <li
             class="infiniteLi"
             v-for="(item, index) in defultList"
+            :key="index"
+            >{{ item }}</li
+          >
+        </nut-infiniteloading>
+      </ul>
+    </nut-cell>
+
+    <h2>下拉刷新</h2>
+    <nut-cell>
+      <ul class="infiniteUl" id="refreshScroll">
+        <nut-infiniteloading
+          containerId="refreshScroll"
+          :useWindow="false"
+          :isOpenRefresh="true"
+          :hasMore="refreshHasMore"
+          @loadMore="refreshLoadMore"
+          @refresh="refresh"
+        >
+          <li
+            class="infiniteLi"
+            v-for="(item, index) in refreshList"
             :key="index"
             >{{ item }}</li
           >
@@ -27,7 +46,6 @@
         <nut-infiniteloading
           containerId="customScroll"
           :useWindow="false"
-          :isLoading="customIsLoading"
           :hasMore="customHasMore"
           @loadMore="customLoadMore"
         >
@@ -56,26 +74,21 @@
 import { onMounted, ref, reactive, toRefs } from 'vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('infiniteloading');
+import { Toast } from '../toast/toast';
 export default createDemo({
   props: {},
   setup() {
-    const isLoading = ref(false);
     const hasMore = ref(true);
-
-    const customIsLoading = ref(false);
     const customHasMore = ref(true);
+    const refreshHasMore = ref(true);
 
     const data = reactive({
       defultList: [''],
-      customList: ['']
+      customList: [''],
+      refreshList: ['']
     });
-    const scrollChange = dis => {
-      console.log('滚动的距离', dis);
-    };
 
-    const loadMore = () => {
-      isLoading.value = true;
-
+    const loadMore = done => {
       setTimeout(() => {
         const curLen = data.defultList.length;
 
@@ -85,14 +98,13 @@ export default createDemo({
           );
         }
 
-        isLoading.value = false;
         if (data.defultList.length > 30) hasMore.value = false;
+
+        done();
       }, 500);
     };
 
-    const customLoadMore = () => {
-      customIsLoading.value = true;
-
+    const customLoadMore = done => {
       setTimeout(() => {
         const curLen = data.customList.length;
         for (let i = curLen; i < curLen + 10; i++) {
@@ -100,9 +112,29 @@ export default createDemo({
             `${i} -- 塑像本来就在石头里，我只是把不要的部分去掉`
           );
         }
-        customIsLoading.value = false;
         if (data.customList.length > 30) customHasMore.value = false;
+        done();
       }, 500);
+    };
+
+    const refreshLoadMore = done => {
+      setTimeout(() => {
+        const curLen = data.refreshList.length;
+        for (let i = curLen; i < curLen + 10; i++) {
+          data.refreshList.push(
+            `${i} -- 塑像本来就在石头里，我只是把不要的部分去掉`
+          );
+        }
+        if (data.refreshList.length > 30) refreshHasMore.value = false;
+        done();
+      }, 500);
+    };
+
+    const refresh = done => {
+      setTimeout(() => {
+        Toast.success('刷新成功');
+        done();
+      }, 1000);
     };
 
     const init = () => {
@@ -113,6 +145,9 @@ export default createDemo({
         data.customList.push(
           `${i} -- 塑像本来就在石头里，我只是把不要的部分去掉`
         );
+        data.refreshList.push(
+          `${i} -- 塑像本来就在石头里，我只是把不要的部分去掉`
+        );
       }
     };
     onMounted(() => {
@@ -120,13 +155,13 @@ export default createDemo({
     });
 
     return {
-      scrollChange,
       loadMore,
-      isLoading,
       hasMore,
-      customIsLoading,
       customHasMore,
       customLoadMore,
+      refreshHasMore,
+      refreshLoadMore,
+      refresh,
       ...toRefs(data)
     };
   }
@@ -144,5 +179,11 @@ export default createDemo({
   margin-top: 10px;
   font-size: 14px;
   color: rgba(100, 100, 100, 1);
+}
+
+.loading {
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 </style>
