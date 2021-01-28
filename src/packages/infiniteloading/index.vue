@@ -1,12 +1,35 @@
 <template>
-  <view class="nut-infiniteloading" ref="scroller">
-    <view class="nut-infinite-top"></view>
+  <view
+    class="nut-infiniteloading"
+    ref="scroller"
+    @touchstart="touchStart"
+    @touchmove="touchMove"
+    @touchend="touchEnd"
+  >
+    <view class="nut-infinite-top" ref="refreshTop" :style="getStyle">
+      <view class="top-box" v-if="!slotRefreshLoading">
+        <nut-icon
+          class="top-img"
+          name="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png"
+        ></nut-icon>
+        <view class="top-text">松开刷新</view>
+      </view>
+
+      <slot name="refreshLoading" v-else></slot>
+    </view>
 
     <view class="nut-infinite-container"><slot></slot></view>
 
     <view class="nut-infinite-bottom">
-      <template v-if="isLoading">
-        <nut-icon name="refresh" v-if="!slotLoading"></nut-icon>
+      <template v-if="isInfiniting">
+        <view v-if="!slotLoading" class="bottom-box">
+          <nut-icon
+            class="bottom-img"
+            name="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png"
+          ></nut-icon>
+          <view class="bottom-text">加载中···</view>
+        </view>
+
         <slot name="loading" v-else></slot>
       </template>
       <template v-else-if="!hasMore">
@@ -17,7 +40,15 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, toRefs, onMounted, onUnmounted } from 'vue';
+import {
+  ref,
+  toRefs,
+  onMounted,
+  onUnmounted,
+  reactive,
+  computed,
+  CSSProperties
+} from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('infiniteloading');
 
@@ -26,10 +57,6 @@ export default create({
     hasMore: {
       type: Boolean,
       default: true
-    },
-    isLoading: {
-      type: Boolean,
-      default: false
     },
     threshold: {
       type: Number,
@@ -50,28 +77,63 @@ export default create({
     useCapture: {
       type: Boolean,
       default: false
+    },
+    isOpenRefresh: {
+      type: Boolean,
+      default: false
     }
   },
   components: {},
-  emits: ['scrollChange', 'loadMore'],
+  emits: ['scrollChange', 'loadMore', 'refresh'],
 
   setup(props, { emit, slots }) {
     console.log('componentName', componentName);
 
     const {
       hasMore,
-      isLoading,
       threshold,
       containerId,
       useWindow,
-      useCapture
+      useCapture,
+      isOpenRefresh
     } = toRefs(props);
 
     let scrollEl: Window | HTMLElement = window;
     const scroller = ref<null | HTMLElement>(null);
+    const refreshTop = ref<null | HTMLElement>(null);
     const beforeScrollTop = ref(0);
-    const slotLoading = ref(false);
-    const slotUnloadMore = ref(false);
+    const isTouching = ref(false);
+    const isInfiniting = ref(false);
+    const refreshMaxH = ref(0);
+
+    const slot = reactive({
+      slotLoading: false,
+      slotUnloadMore: false,
+      slotRefreshLoading: false
+    });
+
+    const pageStart = reactive({
+      y: 0,
+      x: 0,
+      distance: 0
+    });
+
+    const getStyle = computed(() => {
+      const style: CSSProperties = {};
+
+      if (pageStart.distance < 0) {
+        style.height = 0 + 'px';
+      } else {
+        style.height = pageStart.distance + 'px';
+      }
+
+      if (isTouching.value) {
+        style.transition = `height 0s cubic-bezier(0.25,0.1,0.25,1)`;
+      } else {
+        style.transition = `height 0.2s cubic-bezier(0.25,0.1,0.25,1)`;
+      }
+      return style;
+    });
 
     /** 获取监听自定义滚动节点 */
     const getParentElement = el => {
@@ -147,13 +209,18 @@ export default create({
       return offsetDistance <= threshold.value && direction == 'down';
     };
 
+    const infiniteDone = () => {
+      isInfiniting.value = false;
+    };
     /** 滚动函数 */
     const handleScroll = () => {
       requestAniFrame()(() => {
-        if (!isScrollAtBottom() || !hasMore.value || isLoading.value) {
+        if (!isScrollAtBottom() || !hasMore.value || isInfiniting.value) {
           return false;
         } else {
-          emit('loadMore');
+          console.log('无限加载更多');
+          isInfiniting.value = true;
+          emit('loadMore', infiniteDone);
         }
       });
     };
@@ -161,6 +228,47 @@ export default create({
     /** 滚动监听 */
     const scrollListener = () => {
       scrollEl.addEventListener('scroll', handleScroll, useCapture.value);
+    };
+
+    /** 下拉加载完成回到初始状态 */
+    const refreshDone = () => {
+      pageStart.distance = 0;
+      isTouching.value = false;
+    };
+
+    const touchStart = event => {
+      if (
+        beforeScrollTop.value == 0 &&
+        !isTouching.value &&
+        isOpenRefresh.value
+      ) {
+        pageStart.y = event.touches[0].pageY;
+        isTouching.value = true;
+
+        const childHeight = ((refreshTop.value as HTMLElement)
+          .firstElementChild as HTMLElement).offsetHeight;
+        refreshMaxH.value = Math.floor(childHeight * 1 + 10);
+      }
+    };
+
+    const touchMove = event => {
+      pageStart.distance = event.touches[0].pageY - pageStart.y;
+
+      if (pageStart.distance > 0 && isTouching.value) {
+        event.preventDefault();
+        if (pageStart.distance >= refreshMaxH.value)
+          pageStart.distance = refreshMaxH.value;
+      } else {
+        pageStart.distance = 0;
+        isTouching.value = false;
+      }
+    };
+    const touchEnd = () => {
+      if (pageStart.distance < refreshMaxH.value) {
+        pageStart.distance = 0;
+      } else {
+        emit('refresh', refreshDone);
+      }
     };
 
     /** 生命周期 首次加载 */
@@ -176,8 +284,9 @@ export default create({
 
       scrollListener();
 
-      slotUnloadMore.value = slots.unloadMore ? true : false;
-      slotLoading.value = slots.loading ? true : false;
+      slot.slotUnloadMore = slots.unloadMore ? true : false;
+      slot.slotLoading = slots.loading ? true : false;
+      slot.slotRefreshLoading = slots.refreshLoading ? true : false;
     });
 
     /** 移除监听 */
@@ -185,7 +294,16 @@ export default create({
       scrollEl.removeEventListener('scroll', handleScroll, useCapture.value);
     });
 
-    return { scroller, slotLoading, slotUnloadMore };
+    return {
+      scroller,
+      refreshTop,
+      touchStart,
+      touchMove,
+      touchEnd,
+      getStyle,
+      isInfiniting,
+      ...toRefs(slot)
+    };
   }
 });
 </script>
