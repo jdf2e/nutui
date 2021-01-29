@@ -73,7 +73,6 @@ app.use(input);
 | maxlength          | 限制最长输入字符                   | string/number | -               |
 | rows          | textarea时高度                   | string/number | 2             |
 | limit-show          | textarea时是否展示输入字符。须设置maxlength                        | boolean | `false`               |
-
 | change          | 输入内容时触发                        | function | -               |
 | focus          | 聚焦时触发                        | function | -               |
 | blur          | 失焦时触发                        | function | -               |
