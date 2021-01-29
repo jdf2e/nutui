@@ -58,7 +58,7 @@
     }
 
     .tab-title {
-      width: 170px;
+      width: 164px;
       white-space: nowrap;
       overflow-x: auto;
       display: flex;
@@ -122,5 +122,11 @@
     align-items: center;
     padding: 0 16px;
     cursor: pointer;
+    .rightIcon {
+      margin-left: 16px;
+    }
+    .leftIcon {
+      margin-left: 16px;
+    }
   }
 }

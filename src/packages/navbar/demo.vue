@@ -55,13 +55,13 @@
       :tabs="tabList"
       @switch-tab="switchTab"
       @on-click-back="back"
-      icon="share"
+      icon="more-x"
       @on-click-send="send"
     >
       <template #icons>
         <nut-icon
           class="icon"
-          name="more-x"
+          name="share"
           @on-click-slot-send="morelist"
         ></nut-icon>
       </template>

@@ -1,14 +1,32 @@
 <template>
   <view :class="classes">
     <view class="nut-navbar__left">
-      <nut-icon v-if="leftShow" color="#979797" name="left" @click="handleLeft"></nut-icon>
+      <nut-icon
+        v-if="leftShow"
+        color="#979797"
+        name="left"
+        @click="handleLeft"
+      ></nut-icon>
     </view>
-    <view class="nut-navbar__title" :class="{ icon: icon }" v-if="title || titIcon || tabs" ref="navlist">
+    <view
+      class="nut-navbar__title"
+      :class="{ icon: icon }"
+      v-if="title || titIcon || tabs"
+      ref="navlist"
+    >
       <view v-if="title" @click="handleCenter">{{ title }}</view>
-      <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
+      <nut-icon
+        v-if="titIcon"
+        class="icon"
+        :name="titIcon"
+        @click="handleCenterIcon"
+      ></nut-icon>
       <view class="tab-title">
         <view
-          :class="['tab-title-box', { 'nut-tab-active': activeIndex == item.id || activeIndex == index }]"
+          :class="[
+            'tab-title-box',
+            { 'nut-tab-active': activeIndex == item.id || activeIndex == index }
+          ]"
           @click="switchTitle(item.id, item.name)"
           v-for="(item, index) in tabs"
           :key="index"
@@ -18,11 +36,23 @@
       </view>
     </view>
     <view class="nut-navbar__right" :class="{ icon: icon }" v-if="desc || icon">
-      <view v-if="desc" :style="{ 'text-align': descTextAlign }" @click="handleClear">{{ desc }}</view>
-      <view> <nut-icon v-if="icon" class="icon" :name="icon" @click="handleSend"></nut-icon></view>
+      <view
+        v-if="desc"
+        :style="{ 'text-align': descTextAlign }"
+        @click="handleClear"
+        >{{ desc }}</view
+      >
       <template v-if="icon">
         <view @click="handleSends"><slot name="icons"></slot></view>
       </template>
+      <view>
+        <nut-icon
+          v-if="icon"
+          class="rightIcon"
+          :name="icon"
+          @click="handleSend"
+        ></nut-icon
+      ></view>
     </view>
   </view>
 </template>
