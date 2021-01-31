@@ -88,11 +88,13 @@ export default {
       this.updateEvent();
     },
     newCurrentPage(newPage) {
-      // console.warn(newPage);
-      if (newPage > this.currentPage) {
-        this.next();
+      let modTempNum = newPage % this.slideEls.length;
+      newPage = modTempNum == 0 ? this.slideEls.length : modTempNum < 0 ? this.slideEls.length + modTempNum : modTempNum;
+
+      if (newPage >= this.currentPage || newPage == 0) {
+        this.next(newPage - this.currentPage);
       } else {
-        this.prev();
+        this.prev(this.currentPage - newPage);
       }
     }
   },
@@ -120,19 +122,19 @@ export default {
   },
   methods: {
     //下一张
-    next() {
+    next(turnPageCount = 1) {
       let page = this.currentPage;
-      if (page < this.slideEls.length || this.isLoop) {
-        this.setPage(page + 1, true, 'NEXT');
+      if (page + turnPageCount < this.slideEls.length || this.isLoop) {
+        this.setPage(page + turnPageCount, true, 'NEXT');
       } else {
         this._revert();
       }
     },
     //上一张
-    prev() {
+    prev(turnPageCount = 1) {
       let page = this.currentPage;
-      if (page > 1 || this.isLoop) {
-        this.setPage(page - 1, true, 'PREV');
+      if (page - turnPageCount > 1 || this.isLoop) {
+        this.setPage(page - turnPageCount, true, 'PREV');
       } else {
         this._revert();
       }
@@ -140,8 +142,8 @@ export default {
     setPage(page, isHasAnimation, type) {
       if (page === 0) {
         this.currentPage = this.slideEls.length;
-      } else if (page === this.slideEls.length + 1) {
-        this.currentPage = 1;
+      } else if (page > this.slideEls.length) {
+        this.currentPage = page - this.slideEls.length;
       } else {
         this.currentPage = page;
       }

@@ -29,6 +29,9 @@
       </div>
     </nut-swiper>
 
+    <div @click="add">下翻页</div>
+    <div @click="sub">上翻页</div>
+
     <h4>纵向自动播放</h4>
     <nut-swiper direction="vertical" :autoPlay="3000" :swiperData="dataImgItem">
       <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide ">
@@ -51,8 +54,6 @@
         <img :data-src="item.imgSrc" style="max-width:100%;" class="nut-img-lazyload" />
       </div>
     </nut-swiper>
-
-    <!-- <div @click="add">++++1</div> -->
   </div>
 </template>
 <script>
@@ -108,8 +109,10 @@ export default {
       console.log(page);
     },
     add() {
-      this.newCurrentPage = this.newCurrentPage + 1;
-      console.warn(this.newCurrentPage);
+      this.newCurrentPage = this.newCurrentPage + 2;
+    },
+    sub() {
+      this.newCurrentPage = this.newCurrentPage - 1;
     }
   }
 };
