@@ -1,8 +1,10 @@
 <template>
   <view :class="classes" :style="getStyle" @click="handleClick">
-    <!-- <i class="nut-icon-loading" v-if="loading"></i> -->
-    <!-- <i :class="icon" v-if="icon && !loading"></i> -->
-    <slot></slot>
+    <nut-icon class="nut-icon-loading" v-if="loading"></nut-icon>
+    <nut-icon :class="icon" v-if="icon && !loading" :name="icon"></nut-icon>
+    <view :class="{ text: icon || loading }" v-if="$slots.default"
+      ><slot></slot
+    ></view>
   </view>
 </template>
 
@@ -51,6 +53,10 @@ export default create({
     block: {
       type: Boolean,
       default: false
+    },
+    icon: {
+      type: String,
+      default: ''
     }
   },
   components: {},

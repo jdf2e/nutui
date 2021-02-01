@@ -30,12 +30,21 @@
     <h2>加载状态</h2>
 
     <h2>图标按钮</h2>
+    <div class="demo-button-row2">
+      <nut-button
+        shape="square"
+        plain
+        type="primary"
+        icon="star-fill"
+      ></nut-button>
+      <nut-button shape="square" type="primary" icon="star">收藏</nut-button>
+    </div>
 
     <h2>按钮尺寸</h2>
     <div class="demo-button-row2">
-      <div class="demo-button-row2">
-        <nut-button size="large" type="primary">大号按钮</nut-button>
-      </div>
+      <nut-button size="large" type="primary" style="margin-bottom: 10px"
+        >大号按钮</nut-button
+      >
       <nut-button type="primary">普通按钮</nut-button>
       <nut-button size="small" type="primary">小型按钮</nut-button>
     </div>
@@ -68,9 +77,11 @@ export default createDemo({
 <style lang="scss" scoped>
 .demo-button-row {
   margin-bottom: 20px;
+  margin-left: 15px;
 }
 .demo-button-row2 {
   margin-bottom: 10px;
+  margin-left: 15px;
 }
 .nut-button {
   margin-right: 15px;
