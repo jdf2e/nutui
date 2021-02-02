@@ -45,11 +45,11 @@ export default create({
     },
     uncheckedIcon: {
       type: String,
-      default: 'star'
+      default: 'star-n'
     },
     checkedIcon: {
       type: String,
-      default: 'star-fill'
+      default: 'star-fill-n'
     },
     readOnly: {
       type: Boolean,
