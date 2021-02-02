@@ -111,6 +111,8 @@ export default create({
         }
 
         return style;
+      } else {
+        return {};
       }
     });
 
