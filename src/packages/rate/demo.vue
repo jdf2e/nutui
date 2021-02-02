@@ -7,7 +7,7 @@
 
     <h2>自定义图标</h2>
     <div>
-      <nut-rate checkedIcon="heart-fill" uncheckedIcon="heart"></nut-rate>
+      <nut-rate checkedIcon="heart-fill1" uncheckedIcon="heart"></nut-rate>
     </div>
 
     <h2>自定义数量</h2>
