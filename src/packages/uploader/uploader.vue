@@ -1,8 +1,27 @@
 <template>
   <div class="nut-uploader">
     <slot></slot>
-    <input v-if="multiple" type="file" :name="name" @change="upload($event)" class="uploader" multiple :disabled="disabled" :accept="acceptType" />
-    <input v-else type="file" :name="name" @change="upload($event)" class="uploader" :disabled="disabled" :accept="acceptType" />
+    <input
+      v-if="multiple"
+      type="file"
+      :name="name"
+      @click="preventMoreClick"
+      @change="upload($event)"
+      class="uploader"
+      multiple
+      :disabled="newdisabled"
+      :accept="acceptType"
+    />
+    <input
+      v-else
+      type="file"
+      :name="name"
+      @click="preventMoreClick"
+      @change="upload($event)"
+      class="uploader"
+      :disabled="newdisabled"
+      :accept="acceptType"
+    />
   </div>
 </template>
 <script>
@@ -89,7 +108,9 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      newdisabled: this.disabled
+    };
   },
   methods: {
     createUploaderOpts() {
@@ -125,6 +146,15 @@ export default {
           _this.$emit('failure', file, responseTxt);
         }
       };
+    },
+    // 测试
+    preventMoreClick() {
+      setTimeout(() => {
+        this.newdisabled = true;
+      }, 0);
+      setTimeout(() => {
+        this.newdisabled = false; //点击一次时隔50豪秒后才能再次点击
+      }, 500);
     },
     uploadData($event, selfData = {}, fileBlob = undefined) {
       const tar = $event.target;
@@ -163,6 +193,7 @@ export default {
       this.$emit('afterChange', tar, $event);
     },
     async upload($event) {
+      console.log(2222);
       if (typeof this.beforeUpload === 'function') {
         const promise = new Promise((reslove, reject) => {
           reslove(this.beforeUpload($event));
