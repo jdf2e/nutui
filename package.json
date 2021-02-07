@@ -1,0 +1,89 @@
+{
+  "name": "@nutui/nutui",
+  "version": "2.2.13",
+  "description": "一套轻量级移动端Vue组件库",
+  "typings": "dist/types/index.d.ts",
+  "main": "dist/nutui.js",
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "dev": "nutui-cli dev",
+    "build": "nutui-cli build",
+    "build:site": "nutui-cli build-site",
+    "clean": "nutui-cli clean",
+    "add": "nutui-cli add",
+    "test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config node_modules/@nutui/cli/dist_cli/webpack/test.config.js  --require node_modules/@nutui/cli/dist_cli/test/setup.js src/packages/**/__test__/**.spec.js",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "test:watch": "npm run test --watch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "node ./scripts/verifymail.js && lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js,vue,scss}": "prettier --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdf2e/nutui.git"
+  },
+  "keywords": [
+    "nutui",
+    "nutui2",
+    "vue",
+    "webpack",
+    "vue component",
+    "jdc",
+    "jdcfe",
+    "jdl"
+  ],
+  "author": "jdcfe",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
+    "@babel/plugin-syntax-jsx": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "autoprefixer": "^9.8.4",
+    "babel-plugin-istanbul": "^6.0.0",
+    "gsap": "^3.2.6",
+    "hammerjs": "^2.0.8",
+    "vue-lazyload": "^1.3.3",
+    "vue-qr": "^2.2.1"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-object-assign": "^7.8.3",
+    "@nutui/cli": "^0.3.9",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-vue": "^6.1.2",
+    "lint-staged": "^10.2.11",
+    "husky": "^3.0.0",
+    "stylelint-config-standard": "^19.0.0"
+  },
+  "nyc": {
+    "include": [
+      "src/packages/**/*.vue"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "instrument": false,
+    "sourceMap": false
+  }
+}

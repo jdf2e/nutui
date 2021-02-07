@@ -91,7 +91,7 @@ export default {
       let modTempNum = newPage % this.slideEls.length;
       newPage = modTempNum == 0 ? this.slideEls.length : modTempNum < 0 ? this.slideEls.length + modTempNum : modTempNum;
 
-      if (newPage >= this.currentPage || newPage == 0) {
+      if (newPage >= this.currentPage) {
         this.next(newPage - this.currentPage);
       } else {
         this.prev(this.currentPage - newPage);
