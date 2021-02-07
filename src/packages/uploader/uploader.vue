@@ -147,13 +147,12 @@ export default {
         }
       };
     },
-    // 测试
     preventMoreClick() {
       setTimeout(() => {
         this.newdisabled = true;
       }, 0);
       setTimeout(() => {
-        this.newdisabled = false; //点击一次时隔50豪秒后才能再次点击
+        this.newdisabled = false;
       }, 500);
     },
     uploadData($event, selfData = {}, fileBlob = undefined) {
