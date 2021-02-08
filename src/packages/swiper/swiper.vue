@@ -64,6 +64,10 @@ export default {
       type: Number,
       default: 1
     },
+    newCurrentPage: {
+      type: Number,
+      default: 1
+    },
     lazyLoad: {
       type: Boolean,
       default: false
@@ -82,12 +86,22 @@ export default {
   watch: {
     swiperData(newValue, oldValue) {
       this.updateEvent();
+    },
+    newCurrentPage(newPage) {
+      let modTempNum = newPage % this.slideEls.length;
+      newPage = modTempNum == 0 ? this.slideEls.length : modTempNum < 0 ? this.slideEls.length + modTempNum : modTempNum;
+
+      if (newPage >= this.currentPage) {
+        this.next(newPage - this.currentPage);
+      } else {
+        this.prev(this.currentPage - newPage);
+      }
     }
   },
   data() {
     return {
       dragging: false,
-      currentPage: this.initPage,
+      currentPage: this.initPage || this.newCurrentPage,
       lastPage: 1,
       translateX: 0,
       translateY: 0,
@@ -108,19 +122,19 @@ export default {
   },
   methods: {
     //下一张
-    next() {
+    next(turnPageCount = 1) {
       let page = this.currentPage;
-      if (page < this.slideEls.length || this.isLoop) {
-        this.setPage(page + 1, true, 'NEXT');
+      if (page + turnPageCount < this.slideEls.length || this.isLoop) {
+        this.setPage(page + turnPageCount, true, 'NEXT');
       } else {
         this._revert();
       }
     },
     //上一张
-    prev() {
+    prev(turnPageCount = 1) {
       let page = this.currentPage;
-      if (page > 1 || this.isLoop) {
-        this.setPage(page - 1, true, 'PREV');
+      if (page - turnPageCount > 1 || this.isLoop) {
+        this.setPage(page - turnPageCount, true, 'PREV');
       } else {
         this._revert();
       }
@@ -128,8 +142,8 @@ export default {
     setPage(page, isHasAnimation, type) {
       if (page === 0) {
         this.currentPage = this.slideEls.length;
-      } else if (page === this.slideEls.length + 1) {
-        this.currentPage = 1;
+      } else if (page > this.slideEls.length) {
+        this.currentPage = page - this.slideEls.length;
       } else {
         this.currentPage = page;
       }
