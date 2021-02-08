@@ -313,6 +313,16 @@ module.exports = {
           sort: 15,
           show: true,
           author: 'yangxiaolu'
+        },
+        {
+          version: '3.0.0',
+          name: 'Range',
+          type: 'component',
+          cName: '区间选择器',
+          desc: '滑动输入条，用于在给定的范围内选择一个值。',
+          sort: 16,
+          show: true,
+          author: 'Jerry'
         }
       ]
     },
