@@ -28,9 +28,9 @@
         <img :src="item.imgSrc" style="max-width:100%;" />
       </div>
     </nut-swiper>
-
-    <div @click="add">下翻页</div>
-    <div @click="sub">上翻页</div>
+    <br />
+    <nut-button @click="add">控制下翻页</nut-button>
+    <nut-button @click="sub">控制上翻页</nut-button>
 
     <h4>纵向自动播放</h4>
     <nut-swiper direction="vertical" :autoPlay="3000" :swiperData="dataImgItem">
@@ -109,7 +109,7 @@ export default {
       console.log(page);
     },
     add() {
-      this.newCurrentPage = this.newCurrentPage + 2;
+      this.newCurrentPage = this.newCurrentPage + 1;
     },
     sub() {
       this.newCurrentPage = this.newCurrentPage - 1;
