@@ -313,6 +313,16 @@ module.exports = {
           sort: 15,
           show: true,
           author: 'yangxiaolu'
+        },
+        {
+          version: '3.0.0',
+          name: 'PullRefresh',
+          type: 'component',
+          cName: '下拉刷新',
+          desc: '下拉刷新',
+          sort: 16,
+          show: true,
+          author: 'yangxiaolu3'
         }
       ]
     },
