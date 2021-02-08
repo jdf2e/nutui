@@ -270,6 +270,7 @@ export default {
         if (this.isAutoBackFill && !isFirst) {
           this.confirm();
         }
+        this.$emit('choose-click', this.chooseData);
       }
     },
 
