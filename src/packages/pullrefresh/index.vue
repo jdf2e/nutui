@@ -7,7 +7,12 @@
     @touchmove="touchMove"
     @touchend="touchEnd"
   >
-    <view class="pullrefresh-top">
+    <view
+      class="pullrefresh-top"
+      :class="
+        direction == 'horizontal' ? 'pullrefresh-top-h' : 'pullrefresh-top-v'
+      "
+    >
       <template v-if="status == 'loading' && reachTop && distance > 0">
         加载中...
       </template>
@@ -22,7 +27,15 @@
       <slot></slot>
     </view>
 
-    <view class="pullrefresh-bottom" :style="getBottomStyle">
+    <view
+      class="pullrefresh-bottom"
+      :class="
+        direction == 'horizontal'
+          ? 'pullrefresh-bottom-h'
+          : 'pullrefresh-bottom-v'
+      "
+      :style="getBottomStyle"
+    >
       <template v-if="status == 'loading' && reachBottom && distance < 0">
         加载中...
       </template>
@@ -52,6 +65,15 @@ export default create({
     containerId: {
       type: String,
       default: ''
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    /** 方向 Horizontal */
+    direction: {
+      type: String,
+      default: 'vertical'
     }
   },
   components: {},
@@ -60,7 +82,7 @@ export default create({
   setup(props, { emit }) {
     console.log('componentName', componentName);
 
-    const { containerId, useWindow } = toRefs(props);
+    const { containerId, useWindow, direction, disabled } = toRefs(props);
 
     const reachTop = ref(false);
     const reachBottom = ref(false);
@@ -103,6 +125,8 @@ export default create({
       }
       return style;
     });
+
+    const isTouchable = () => state.status !== 'loading' && !disabled.value;
 
     const setStatus = (distance: number, isLoading?: boolean) => {
       state.distance = distance;
@@ -157,57 +181,68 @@ export default create({
     };
 
     const touchStart = event => {
-      /** 判断滚动条是否在顶部 */
-      const top = 'scrollTop' in scrollEl ? scrollEl.scrollTop : 0;
-      reachTop.value = Math.max(top, 0) == 0 ? true : false;
+      if (isTouchable()) {
+        if (direction.value == 'vertical') {
+          /** 判断滚动条是否在顶部 */
+          const top = 'scrollTop' in scrollEl ? scrollEl.scrollTop : 0;
+          reachTop.value = Math.max(top, 0) == 0 ? true : false;
 
-      if (reachTop.value) {
-        state.duration = 0;
-        touch.start(event);
-      }
+          if (reachTop.value) {
+            state.duration = 0;
+            touch.start(event);
+          }
 
-      const { scrollHeight, clientHeight, scrollTop } = scrollEl;
+          const { scrollHeight, clientHeight, scrollTop } = scrollEl;
 
-      /** 判断滚动条是否在底部*/
-      reachBottom.value =
-        clientHeight + scrollTop == scrollHeight ? true : false;
+          /** 判断滚动条是否在底部*/
+          reachBottom.value =
+            clientHeight + scrollTop == scrollHeight ? true : false;
 
-      if (reachBottom.value) {
-        state.duration = 0;
-        touch.start(event);
+          if (reachBottom.value) {
+            state.duration = 0;
+            touch.start(event);
+          }
+        } else {
+          const { scrollWidth, clientWidth, scrollLeft } = scrollEl;
+          /** 判断滚动条是否在左边 */
+          console.log(scrollWidth, clientWidth, scrollLeft);
+        }
       }
     };
 
     const touchMove = event => {
-      const { deltaY } = touch;
+      if (isTouchable()) {
+        const { deltaY } = touch;
+        touch.move(event);
+        if (reachTop.value && deltaY.value >= 0 && touch.isVertical()) {
+          preventDefault(event);
+          setStatus(ease(deltaY.value));
+        }
 
-      touch.move(event);
-      if (reachTop.value && deltaY.value >= 0 && touch.isVertical()) {
-        preventDefault(event);
-        setStatus(ease(deltaY.value));
-      }
-
-      if (reachBottom.value && deltaY.value < 0 && touch.isVertical()) {
-        preventDefault(event);
-        setStatus(ease(deltaY.value));
+        if (reachBottom.value && deltaY.value < 0 && touch.isVertical()) {
+          preventDefault(event);
+          setStatus(ease(deltaY.value));
+        }
       }
     };
     const touchEnd = () => {
-      if (reachTop.value && touch.deltaY.value > 0) {
-        if (state.status === 'loosing') {
-          setStatus(50, true);
-          emit('refresh', refreshDone);
-        } else {
-          setStatus(0);
+      if (isTouchable()) {
+        if (reachTop.value && touch.deltaY.value > 0) {
+          if (state.status === 'loosing') {
+            setStatus(50, true);
+            emit('refresh', refreshDone);
+          } else {
+            setStatus(0);
+          }
         }
-      }
 
-      if (reachBottom.value && touch.deltaY.value < 0) {
-        if (state.status === 'loosing') {
-          setStatus(-50, true);
-          emit('refresh', refreshDone);
-        } else {
-          setStatus(0);
+        if (reachBottom.value && touch.deltaY.value < 0) {
+          if (state.status === 'loosing') {
+            setStatus(-50, true);
+            emit('refresh', refreshDone);
+          } else {
+            setStatus(0);
+          }
         }
       }
     };
