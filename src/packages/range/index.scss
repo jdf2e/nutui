@@ -60,4 +60,14 @@
       outline: none;
     }
   }
+  &-disabled {
+    cursor: not-allowed;
+    opacity: 0.54;
+
+    .nut-range-button-wrapper,
+    .nut-range-button-wrapper-left,
+    .nut-range-button-wrapper-right {
+      cursor: not-allowed;
+    }
+  }
 }
