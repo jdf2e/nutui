@@ -34,7 +34,7 @@
 
 <script>
 import { createComponent } from '@/utils/create';
-import { Toast } from './toast';
+import { Toast } from './index.ts';
 const { createDemo } = createComponent('toast');
 
 export default createDemo({

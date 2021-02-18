@@ -126,5 +126,6 @@ export const Toast = {
 export default {
   install(app: App): void {
     app.config.globalProperties.$toast = Toast;
-  }
+  },
+  Toast
 };
