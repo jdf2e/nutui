@@ -13,6 +13,14 @@
         @change="onChange2"
       ></nut-range>
     </nut-cell>
+    <h2>设置步长</h2>
+    <nut-cell class="cell">
+      <nut-range v-model="value3" step="5" @change="onChange3"></nut-range>
+    </nut-cell>
+    <h2>禁用</h2>
+    <nut-cell class="cell">
+      <nut-range disabled v-model="value4"></nut-range>
+    </nut-cell>
   </div>
 </template>
 
@@ -27,13 +35,19 @@ export default createDemo({
   setup() {
     const value = ref(50);
     const value2 = ref(5);
+    const value3 = ref(50);
+    const value4 = ref(50);
     const onChange = value => Toast.text('当前值：' + value);
     const onChange2 = value2 => Toast.text('当前值：' + value2);
+    const onChange3 = value3 => Toast.text('当前值：' + value3);
     return {
       value,
       value2,
+      value3,
+      value4,
       onChange,
-      onChange2
+      onChange2,
+      onChange3
     };
   }
 });
