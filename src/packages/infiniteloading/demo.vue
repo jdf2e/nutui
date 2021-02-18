@@ -74,7 +74,7 @@
 import { onMounted, ref, reactive, toRefs } from 'vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('infiniteloading');
-import { Toast } from '../toast/toast';
+import { Toast } from '../toast';
 export default createDemo({
   props: {},
   setup() {
