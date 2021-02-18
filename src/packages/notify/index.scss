@@ -7,9 +7,6 @@
   overflow-y: auto;
   transition: transform 0.3s;
   z-index: 9999;
-  // &.round {
-  //   border-radius: 0 0 $popup-border-radius $popup-border-radius;
-  // }
 }
 
 .nut-notify {
@@ -20,6 +17,7 @@
   white-space: pre-wrap;
   text-align: center;
   word-wrap: break-word;
+  height: $notify-height;
   &--base {
     background: $notify-base-background-color;
   }
