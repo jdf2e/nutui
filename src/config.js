@@ -165,6 +165,17 @@ module.exports = {
           sort: 4,
           show: true,
           author: 'wangyue217'
+        },
+        {
+          version: '3.0.0',
+          name: 'Picker',
+          type: 'component',
+          cName: '选择器',
+          desc:
+            '提供多个选型集合供用户选择,支持单列选择和多列级联,通常与弹出层配合使用',
+          sort: 5,
+          show: true,
+          author: 'yangkaixuan'
         }
       ]
     },
