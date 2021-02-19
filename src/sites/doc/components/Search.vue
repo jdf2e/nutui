@@ -81,9 +81,6 @@ export default defineComponent({
         data.searchVal = '';
       }, 200);
     };
-    const checklist = item => {
-      console.log(1);
-    };
     const checklist = () => {
       data.searchVal = '';
       data.searchCurName = '';
