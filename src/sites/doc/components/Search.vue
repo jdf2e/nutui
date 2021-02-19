@@ -20,7 +20,6 @@
           {{ item.name }}
           <span>{{ item.cName }}</span>
         </router-link>
-        <!-- <router-link v-if="!_package.isLink" :to="_package.name.toLowerCase()">{{ _package.cName }}</router-link> -->
       </li>
     </ul>
   </div>
@@ -57,7 +56,6 @@ export default defineComponent({
     watch(
       () => data.searchVal,
       sVal => {
-        console.log(sVal, '改变');
         if (sVal) {
           data.searchList = data.navList.filter(item => {
             if (item.show === false) return false;
@@ -83,11 +81,38 @@ export default defineComponent({
         data.searchVal = '';
       }, 200);
     };
-    const checklist = item => {
-      console.log(1);
+    const checklist = () => {
+      data.searchVal = '';
+      data.searchCurName = '';
+      data.searchIndex = 0;
     };
     const choseList = e => {
-      data.searchIndex = 0;
+      let searchIndex = data.searchIndex;
+      if (e.keyCode == 40) {
+        searchIndex++;
+      }
+      if (e.keyCode == 38) {
+        searchIndex--;
+      }
+      if (searchIndex < 0) {
+        searchIndex = 0;
+      }
+      const searchList = data.searchList;
+      if (searchList.length > 0) {
+        const cName = searchList[searchIndex] && searchList[searchIndex].name;
+        if (cName) {
+          data.searchCurName = cName;
+          data.searchIndex = searchIndex;
+          if (e.keyCode == 13) {
+            data.$router.push({
+              path: '/' + searchList[searchIndex].name
+            });
+            data.searchCurName = '';
+            data.searchIndex = 0;
+            data.searchVal = '';
+          }
+        }
+      }
     };
     return {
       data,
