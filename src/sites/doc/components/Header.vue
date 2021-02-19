@@ -10,24 +10,24 @@
       <div class="nav-box">
         <ul class="nav-list">
           <li class="nav-item" :class="{ active: isActive(header[0].name) }">
-            <router-link :to="header[0].name">{{
-              header[0].cName
-            }}</router-link>
+            <router-link :to="header[0].name">
+              {{ header[0].cName }}
+            </router-link>
           </li>
           <li class="nav-item" :class="{ active: isActive(header[1].name) }">
-            <router-link :to="header[1].name">{{
-              header[1].cName
-            }}</router-link>
+            <router-link :to="header[1].name">
+              {{ header[1].cName }}
+            </router-link>
           </li>
-          <li class="nav-item" :class="{ active: isActive(header[2].name) }"
-            ><a href="http://localhost:8080/demo.html#/">{{
-              header[2].cName
-            }}</a></li
-          >
+          <li class="nav-item" :class="{ active: isActive(header[2].name) }">
+            <a href="http://localhost:8080/demo.html#/">
+              {{ header[2].cName }}
+            </a>
+          </li>
           <li class="nav-item" :class="{ active: isActive(header[3].name) }">
-            <router-link :to="header[3].name">{{
-              header[3].cName
-            }}</router-link>
+            <router-link :to="header[3].name">
+              {{ header[3].cName }}
+            </router-link>
           </li>
           <li class="nav-item">
             <div
@@ -35,9 +35,9 @@
               @click.stop="data.isShowSelect = !data.isShowSelect"
               :class="[data.isShowSelect == true ? 'select-up' : 'select-down']"
             >
-              <div class="header-select-hd"
-                >{{ data.verson }}<i class=""></i
-              ></div>
+              <div class="header-select-hd">
+                {{ data.verson }}<i class=""></i>
+              </div>
               <div class="header-select-bd" v-show="data.isShowSelect">
                 <div
                   class="header-select-item"
@@ -177,7 +177,7 @@ export default defineComponent({
     .nav-box {
       margin-right: 140px;
       .nav-list {
-        min-width: 400px;
+        min-width: 445px;
         display: flex;
         list-style: none;
         align-items: center;
@@ -219,8 +219,8 @@ export default defineComponent({
         width: 26px;
         height: 26px;
         vertical-align: middle;
-        background: url('../../assets/images/icon-user.png') no-repeat;
-        background-size: 100%;
+        background: url('../../assets/images/icon-user2.png') no-repeat;
+        background-size: 52px;
       }
     }
   }
@@ -307,6 +307,9 @@ export default defineComponent({
           }
           .user-link {
             background-position: 0 0;
+            &:hover {
+              background-position: -26px 0;
+            }
           }
         }
       }
@@ -382,7 +385,10 @@ export default defineComponent({
             }
           }
           .user-link {
-            background-position: 0 -26px;
+            background-position: 0 -25px;
+            &:hover {
+              background-position: -26px -25px;
+            }
           }
         }
       }
@@ -458,7 +464,10 @@ export default defineComponent({
             }
           }
           .user-link {
-            background-position: 0 -52px;
+            background-position: 0 -51px;
+            &:hover {
+              background-position: -26px -51px;
+            }
           }
         }
       }

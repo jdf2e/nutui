@@ -19,7 +19,6 @@
           {{ item.name }}
           <span>{{ item.cName }}</span>
         </router-link>
-        <!-- <router-link v-if="!_package.isLink" :to="_package.name.toLowerCase()">{{ _package.cName }}</router-link> -->
       </li>
     </ul>
   </div>
@@ -39,31 +38,25 @@ export default defineComponent({
       searchCName: ''
     });
     onMounted(() => {
-      const files = require.context('@/packages', true, /doc\.md$/);
-      files.keys().forEach(component => {
-        const componentEntity = files(component).default;
-      });
       // console.log('nav', nav);
       nav.forEach(item => {
         item.packages.forEach(value => {
           // console.log('value', value)
           data.navList.push(value);
         });
-        console.log('search', data.navList);
+        // console.log('search', data.navList);
       });
     });
     watch(
       () => data.searchVal,
       sVal => {
-        console.log(sVal, '改变');
         if (sVal) {
           data.searchList = data.navList.filter(item => {
             if (item.show === false) return false;
-            console.log('item', item);
+            // console.log('item', item);
             const rx = new RegExp(sVal, 'gi');
             return rx.test(item.name + ' ' + item.cName + '' + item.desc);
           });
-          console.log('rx2', data.searchList.length, data.searchList);
         } else {
           data.searchCName = '';
           data.searchIndex = 0;
@@ -75,12 +68,43 @@ export default defineComponent({
       e.target.select();
       // console.log('e', e.target.select())
     };
-    const choseList = e => {
+    const checklist = () => {
+      data.searchVal = '';
+      data.searchCurName = '';
       data.searchIndex = 0;
+    };
+    const choseList = e => {
+      let searchIndex = data.searchIndex;
+      if (e.keyCode == 40) {
+        searchIndex++;
+      }
+      if (e.keyCode == 38) {
+        searchIndex--;
+      }
+      if (searchIndex < 0) {
+        searchIndex = 0;
+      }
+      const searchList = data.searchList;
+      if (searchList.length > 0) {
+        const cName = searchList[searchIndex] && searchList[searchIndex].name;
+        if (cName) {
+          data.searchCurName = cName;
+          data.searchIndex = searchIndex;
+          if (e.keyCode == 13) {
+            data.$router.push({
+              path: '/' + searchList[searchIndex].name
+            });
+            data.searchCurName = '';
+            data.searchIndex = 0;
+            data.searchVal = '';
+          }
+        }
+      }
     };
     return {
       data,
       onfocus,
+      checklist,
       choseList
     };
   }
