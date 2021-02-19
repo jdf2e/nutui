@@ -11,7 +11,15 @@ const lang = {
       end: '结束',
       title: '选择日期',
       week: '日,一,二,三,四,五,六',
-      monthTitle: '{year}年{month}月'
+      monthTitle: '{year}年{month}月',
+      year: '年',
+      month: '月',
+      day: '日',
+      hour: '时',
+      minute: '分',
+      second: '秒',
+      morning: '上午',
+      afternoon: '下午'
     },
     menu: {
       resetBtnTxt: '重置'
