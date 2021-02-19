@@ -5,9 +5,9 @@ const inquirer = require('inquirer');
 
 const path = require('path');
 const fs = require('fs');
-const config =require("../src/config");
-const demoModel=require("./demo")
-const nav=config.nav;
+const config = require('../src/config');
+const demoModel = require('./demo');
+const nav = config.nav;
 
 var newCpt = {
   version: '3.0.0',
@@ -27,18 +27,18 @@ function init() {
         name: 'name',
         message: '组件英文名(每个单词的首字母都大写，如TextBox)：',
         validate(value) {
-            let repeat = false;
-            for (var i = 0; i < nav.length; i++) {
-              for (var j = 0; j < nav[i].packages.length; j++) {
-                if (nav[i].packages[j].name === value) {
-                  repeat = true;
-                }
+          let repeat = false;
+          for (var i = 0; i < nav.length; i++) {
+            for (var j = 0; j < nav[i].packages.length; j++) {
+              if (nav[i].packages[j].name === value) {
+                repeat = true;
               }
             }
+          }
 
-            if (repeat) {
-              return '该组件名已存在！';
-            }
+          if (repeat) {
+            return '该组件名已存在！';
+          }
           const pass = value && value.match(/^[A-Z]/);
           if (pass) {
             return true;
@@ -76,18 +76,19 @@ function init() {
           return '输入有误！请输入选项前编号';
         }
       },
-        {
-          type: 'input',
-          name: 'sort',
-          message: '请选择组件分类(输入编号)：1布局组件，2操作反馈，3基础组件，4导航组件，5数据录入，6业务组件',
-          validate(value) {
-            const pass = /^[1-6]$/.test(value);
-            if (pass) {
-              return true;
-            }
-            return '输入有误！请输入选项前编号';
+      {
+        type: 'input',
+        name: 'sort',
+        message:
+          '请选择组件分类(输入编号)：1布局组件，2操作反馈，3基础组件，4导航组件，5数据录入，6业务组件',
+        validate(value) {
+          const pass = /^[1-6]$/.test(value);
+          if (pass) {
+            return true;
           }
-        },
+          return '输入有误！请输入选项前编号';
+        }
+      },
       //   {
       //     type: 'confirm',
       //     name: 'showDemo',
@@ -148,7 +149,7 @@ function createIndexJs() {
     // }
     // fs.writeFile(filePath,  content, (err) => {
     //     if (err) throw err;
-   resolve(`生成index.js文件成功`);
+    resolve(`生成index.js文件成功`);
     // });
   });
 }
@@ -187,19 +188,19 @@ function createDemo() {
 
 function addToPackageJson() {
   return new Promise((resolve, reject) => {
-      let sort=newCpt.sort;
-      newCpt.sort=nav[sort-1].packages.length+1;
-      nav[sort-1].packages.push(newCpt);
-      config.nav=nav;
-      // conf.packages.push(newCpt);
-       const dirPath = path.join(__dirname, `../`);
-       const filePath = path.join(dirPath, `src/config.js`);
-       
-       var tempfile="module.exports = "+JSON.stringify(config, null, 2)+";"
-      fs.writeFile(filePath, tempfile, (err) => {
-          if (err) throw err;
-          resolve(`修改config.json文件成功`);
-      });
+    let sort = newCpt.sort;
+    newCpt.sort = nav[sort - 1].packages.length + 1;
+    nav[sort - 1].packages.push(newCpt);
+    config.nav = nav;
+    // conf.packages.push(newCpt);
+    const dirPath = path.join(__dirname, `../`);
+    const filePath = path.join(dirPath, `src/config.js`);
+
+    var tempfile = 'module.exports = ' + JSON.stringify(config, null, 2) + ';';
+    fs.writeFile(filePath, tempfile, err => {
+      if (err) throw err;
+      resolve(`修改config.json文件成功`);
+    });
   });
 }
 function createScss() {
@@ -251,7 +252,7 @@ function createNew() {
       return createDoc();
     })
     .then(() => {
-       return addToPackageJson();
+      return addToPackageJson();
     })
     .then(() => {
       console.log('组件模板生成完毕，请开始你的表演~');

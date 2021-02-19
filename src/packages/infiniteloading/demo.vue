@@ -1,0 +1,189 @@
+<template>
+  <div class="demo">
+    <h2>基础用法</h2>
+    <nut-cell>
+      <ul class="infiniteUl" id="scroll">
+        <nut-infiniteloading
+          containerId="scroll"
+          :useWindow="false"
+          :hasMore="hasMore"
+          @loadMore="loadMore"
+        >
+          <li
+            class="infiniteLi"
+            v-for="(item, index) in defultList"
+            :key="index"
+            >{{ item }}</li
+          >
+        </nut-infiniteloading>
+      </ul>
+    </nut-cell>
+
+    <h2>下拉刷新</h2>
+    <nut-cell>
+      <ul class="infiniteUl" id="refreshScroll">
+        <nut-infiniteloading
+          containerId="refreshScroll"
+          :useWindow="false"
+          :isOpenRefresh="true"
+          :hasMore="refreshHasMore"
+          @loadMore="refreshLoadMore"
+          @refresh="refresh"
+        >
+          <li
+            class="infiniteLi"
+            v-for="(item, index) in refreshList"
+            :key="index"
+            >{{ item }}</li
+          >
+        </nut-infiniteloading>
+      </ul>
+    </nut-cell>
+
+    <h2>自定义加载文案</h2>
+    <nut-cell>
+      <ul class="infiniteUl" id="customScroll">
+        <nut-infiniteloading
+          containerId="customScroll"
+          :useWindow="false"
+          :hasMore="customHasMore"
+          @loadMore="customLoadMore"
+        >
+          <li
+            class="infiniteLi"
+            v-for="(item, index) in customList"
+            :key="index"
+            >{{ item }}</li
+          >
+
+          <template v-slot:loading>
+            <div class="loading">
+              <span>加载中...</span>
+            </div>
+          </template>
+          <template v-slot:unloadMore>
+            <div class="unload-more">没有数据啦 ~~</div>
+          </template>
+        </nut-infiniteloading>
+      </ul>
+    </nut-cell>
+  </div>
+</template>
+
+<script lang="ts">
+import { onMounted, ref, reactive, toRefs } from 'vue';
+import { createComponent } from '@/utils/create';
+const { createDemo } = createComponent('infiniteloading');
+import { Toast } from '../toast';
+export default createDemo({
+  props: {},
+  setup() {
+    const hasMore = ref(true);
+    const customHasMore = ref(true);
+    const refreshHasMore = ref(true);
+
+    const data = reactive({
+      defultList: [''],
+      customList: [''],
+      refreshList: ['']
+    });
+
+    const loadMore = done => {
+      setTimeout(() => {
+        const curLen = data.defultList.length;
+
+        for (let i = curLen; i < curLen + 10; i++) {
+          data.defultList.push(
+            `${i} -- 塑像本来就在石头里，我只是把不要的部分去掉`
+          );
+        }
+
+        if (data.defultList.length > 30) hasMore.value = false;
+
+        done();
+      }, 500);
+    };
+
+    const customLoadMore = done => {
+      setTimeout(() => {
+        const curLen = data.customList.length;
+        for (let i = curLen; i < curLen + 10; i++) {
+          data.customList.push(
+            `${i} -- 塑像本来就在石头里，我只是把不要的部分去掉`
+          );
+        }
+        if (data.customList.length > 30) customHasMore.value = false;
+        done();
+      }, 500);
+    };
+
+    const refreshLoadMore = done => {
+      setTimeout(() => {
+        const curLen = data.refreshList.length;
+        for (let i = curLen; i < curLen + 10; i++) {
+          data.refreshList.push(
+            `${i} -- 塑像本来就在石头里，我只是把不要的部分去掉`
+          );
+        }
+        if (data.refreshList.length > 30) refreshHasMore.value = false;
+        done();
+      }, 500);
+    };
+
+    const refresh = done => {
+      setTimeout(() => {
+        Toast.success('刷新成功');
+        done();
+      }, 1000);
+    };
+
+    const init = () => {
+      for (let i = 0; i < 10; i++) {
+        data.defultList.push(
+          `${i} -- 塑像本来就在石头里，我只是把不要的部分去掉`
+        );
+        data.customList.push(
+          `${i} -- 塑像本来就在石头里，我只是把不要的部分去掉`
+        );
+        data.refreshList.push(
+          `${i} -- 塑像本来就在石头里，我只是把不要的部分去掉`
+        );
+      }
+    };
+    onMounted(() => {
+      init();
+    });
+
+    return {
+      loadMore,
+      hasMore,
+      customHasMore,
+      customLoadMore,
+      refreshHasMore,
+      refreshLoadMore,
+      refresh,
+      ...toRefs(data)
+    };
+  }
+});
+</script>
+
+<style lang="scss" scoped>
+.infiniteUl {
+  height: 300px;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.infiniteLi {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgba(100, 100, 100, 1);
+}
+
+.loading {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+</style>

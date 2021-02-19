@@ -11,7 +11,11 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from 'vue';
-import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute } from 'vue-router';
+import {
+  onBeforeRouteUpdate,
+  RouteLocationNormalized,
+  useRoute
+} from 'vue-router';
 import Header from '@/sites/doc/components/Header.vue';
 import Nav from '@/sites/doc/components/Nav.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
@@ -33,7 +37,9 @@ export default defineComponent({
     const watchDemoUrl = (router: RouteLocationNormalized) => {
       const { origin, pathname } = window.location;
       currentRoute.value = router.name as string;
-      data.demoUrl = `${origin}${pathname.replace('index.html', '')}demo.html#${router.path}`;
+      data.demoUrl = `${origin}${pathname.replace('index.html', '')}demo.html#${
+        router.path
+      }`;
     };
 
     onMounted(() => {

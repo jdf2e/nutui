@@ -1,64 +1,289 @@
-# Checkbox 组件
+# Checkbox 复选按钮
 
 ### 介绍
 
-基于 xxxxxxx
+多选按钮用于选择。
 
 ### 安装
 
 ``` javascript
 import { createApp } from 'vue';
-import { Temp } from '@nutui/nutui';
+import { Checkbox } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Temp);
-
+app.use(Checkbox);
 ```
 
-## 代码演示
-
-### 基础用法1
-
-`Icon` 的 `name` 属性支持传入图标名称或图片链接。
+## 基本用法
 
 ```html
-<nut-temp name="wifi"></nut-temp>
-<nut-temp name="mail"></nut-temp>
+<nut-checkbox v-model="checkbox">选项</nut-checkbox>
+```
+```javascript
+setup() {
+  return {
+    checkbox: false,
+  };
+}
 ```
 
-### 基础用法2
-
-`Icon` 的 `name` 属性支持传入图标名称或图片链接。
+## CheckboxGroup基本用法
+```html
+<nut-checkboxgroup v-model="checkboxGroup">
+  <nut-checkbox label="选项一"></nut-checkbox>
+  <nut-checkbox label="选项二"></nut-checkbox>
+</nut-checkboxgroup>
+```
+```javascript
+setup() {
+  return {
+    checkboxGroup: ['选项一'],
+  };
+}
+```
+## 禁用状态
 
 ```html
-<nut-temp name="wifi"></nut-temp>
-<nut-temp name="mail"></nut-temp>
+<nut-checkbox v-model="checkbox1" disabled>未选时禁用状态</nut-checkbox>
+<nut-checkbox v-model="checkbox2" disabled>已选时禁用状态</nut-checkbox>
 ```
 
-### 基础用法3
+```javascript
+setup() {
+  return {
+    checkbox1: false,
+    checkbox2: true,
+  };
+}
+```
 
-`Icon` 的 `name` 属性支持传入图标名称或图片链接。
+## CheckboxGroup整体禁用
 
 ```html
-<nut-temp name="wifi"></nut-temp>
-<nut-temp name="mail"></nut-temp>
+<nut-checkboxgroup v-model="checkboxGroup" disabled>
+  <nut-checkbox label="选项一"></nut-checkbox>
+  <nut-checkbox label="选项二"></nut-checkbox>
+</nut-checkboxgroup>
 ```
 
+```javascript
+setup() {
+  return {
+    checkboxGroup: ['选项一'],
+  };
+}
+```
 
-## API
+## 自定义尺寸
 
-### Props
+内置 **small**，**base**，**large** 三种规格供使用。
+```html
+<nut-checkbox v-model="checkbox1" size="small">小号1</nut-checkbox>
+<nut-checkbox v-model="checkbox2" size="base">默认</nut-checkbox>
+<nut-checkbox v-model="checkbox3" size="large">大号</nut-checkbox>
+```
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| name         | 图标名称或图片链接               | String | -                |
-| color        | 图标颜色                         | String | -                |
-| size         | 图标大小，如 `20px` `2em` `2rem` | String | -                |
-| class-prefix | 类名前缀，用于使用自定义图标     | String | `nutui-iconfont` |
-| tag          | HTML 标签                        | String | `i`              |
+```javascript
+setup() {
+  return {
+    checkbox1: true,
+    checkbox2: true,
+    checkbox3: true,
+  };
+}
 
-### Events
+```
 
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| click  | 点击图标时触发 | event: Event |
+## CheckboxGroup整体尺寸
+
+```html
+<nut-checkboxgroup v-model="checkboxGroup" size="small">
+  <nut-checkbox label="选项一"></nut-checkbox>
+  <nut-checkbox label="选项二"></nut-checkbox>
+</nut-checkboxgroup>
+```
+
+```javascript
+setup() {
+  return {
+    checkboxGroup: [],
+  };
+}
+```
+
+## 禁用动效
+
+animation属性值为false时，禁用自带动效
+
+```html
+<nut-checkbox v-model="checkbox" :animation="false">没有动效</nut-checkbox>
+```
+
+```javascript
+setup() {
+  return {
+    checkbox: false,
+  };
+}
+```
+
+## CheckboxGroup整体禁用动效
+
+```html
+<nut-checkboxgroup v-model="checkboxGroup" :animation="false">
+  <nut-checkbox label="没有动效1"></nut-checkbox>
+  <nut-checkbox label="没有动效2"></nut-checkbox>
+</nut-checkboxgroup>
+```
+
+```javascript
+setup() {
+  return {
+    checkboxGroup: ['没有动效1'],
+  };
+}
+```
+
+## 事件
+
+值发生变化时，将触发change事件
+
+```html
+<nut-checkbox v-model="checkbox" @change="checkboxChange">
+  change事件
+</nut-checkbox>
+```
+
+```javascript
+setup() {
+  const checkbox = ref(false);
+  const checkboxChange= (checked) => {
+    console.log('change事件触发' + checked);
+	}  
+  return {
+    checkbox,
+    checkboxChange
+  };
+}
+```
+
+## CheckboxGroup整体事件
+
+```html
+<nut-checkboxgroup v-model="checkboxGroup" @change="getChange">
+  <nut-checkbox label="选项一"></nut-checkbox>
+  <nut-checkbox label="选项二"></nut-checkbox>
+</nut-checkboxgroup>
+```
+
+```javascript
+setup() {
+  const checkboxGroup = reactive(['选项一']);
+  const getChange= (val) => {
+    console.log('选中状态选项：' + val);
+	}  
+  return {
+    checkboxGroup,
+    getChange
+  };
+}
+```
+## 自定义class
+```html
+<nut-checkbox class="my-checkbox" v-model="checkbox">自定义Class:"my-checkbox"</nut-checkbox>
+```
+```javascript
+setup() {
+  const checkbox = ref(false);
+  return {
+    checkbox,
+  };
+}
+```
+
+## 全选与反选
+```html
+<nut-checkboxgroup
+  ref="checkboxGroupDemo"
+  v-model="checkboxGroup"
+  @change="getChange"
+>
+  <nut-checkbox label="选项一"></nut-checkbox>
+  <nut-checkbox label="选项二"></nut-checkbox>
+  <nut-checkbox label="选项三"></nut-checkbox>
+</nut-checkboxgroup>
+<nut-button size="small" type="primary" @click="chooseAll(true)">全选</nut-button>
+<nut-button size="small" type="primary" @click="chooseAll()">反选</nut-button>
+<nut-button size="small" type="primary" @click="chooseAll(false)">取消</nut-button>
+```
+```javascript
+setup() {
+  const checkboxGroup = ref([]);
+  const getChange = (val: string) => {
+    console.log('选中状态选项：' + val);
+  };
+  const checkboxGroupDemo = ref(null);
+  const chooseAll = (val: boolean | string) => {
+    (checkboxGroupDemo.value as any).toggleAll(val);
+  };
+  return {
+    checkboxGroup,
+    getChange,
+    chooseAll
+  };
+}
+```
+
+## CheckboxGroup排列方向
+
+```html
+<nut-checkboxgroup
+  v-model="checkboxGroup"
+  direction="vertical"
+  @change="getChange"
+>
+  <nut-checkbox label="选项一"></nut-checkbox>
+  <nut-checkbox label="选项二"></nut-checkbox>
+  <nut-checkbox label="选项三"></nut-checkbox>
+</nut-checkboxgroup>
+```
+```javascript
+setup() {
+  const checkboxGroup = ref([]);
+  const getChange = (val: string) => {
+    console.log('选中状态选项：' + val);
+  };
+  return {
+    checkboxGroup,
+    getChange,
+  };
+}
+```
+
+## Prop
+
+| 字段 | 说明 | 类型 | 默认值
+|----- | ----- | ----- | ----- 
+| name | checkbox的name属性 | String | -
+| v-model | 必填项，当前选中项的选中状态,同步value | Boolean | false
+| label | 当前选中项的label值，（可不设，设置后label有值，替换插值内容） | String | -
+| checked | checkbox的checked属性 | Boolean | false
+| size | 尺寸，可选值small/base/large | String | base
+| disabled | 是否禁用 | Boolean | false
+| animation | 是否需要动效 | Boolean | true
+
+### CheckGroup
+
+| 字段 | 说明 | 类型 | 默认值
+|----- | ----- | ----- | ----- 
+| v-model | 必填项，当前选中项的选中状态,同步value | Boolean | false
+| size | 尺寸，可选值small/base/large | String | base
+| disabled | 是否禁用 | Boolean | false
+| animation | 是否需要动效 | Boolean | true
+
+
+## Event
+
+| 字段 | 说明 | 回调参数 
+|----- | ----- | ----- 
+| change | 值变化时触发 | 当前选中项状态（checked），当前选中项值（label）【设置label后有值、默认为空】,event

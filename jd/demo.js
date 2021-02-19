@@ -5,8 +5,8 @@ var demoModel = function(nameLc) {
     <div class="demo">
       <h2>基础用法</h2>
       <nut-cell>
-        <nut-temp name="wifi"></nut-temp>
-        <nut-temp name="mail" txt="test txt"></nut-temp>
+        <${nameLc} ></${nameLc}>
+        <${nameLc} ></${nameLc}>
       </nut-cell>
     </div>
   </template>
@@ -23,7 +23,7 @@ var demoModel = function(nameLc) {
   </script>
   
   <style lang="scss" scoped>
-  .nut-temp {
+  .demo{
   }
   </style>
   `,

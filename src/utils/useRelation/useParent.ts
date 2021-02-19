@@ -1,4 +1,11 @@
-import { inject, computed, onUnmounted, getCurrentInstance, ComponentPublicInstance, ComponentInternalInstance } from 'vue';
+import {
+  inject,
+  computed,
+  onUnmounted,
+  getCurrentInstance,
+  ComponentPublicInstance,
+  ComponentInternalInstance
+} from 'vue';
 
 type ParentProvide<T> = T & {
   link(child: ComponentInternalInstance): void;

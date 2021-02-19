@@ -13,6 +13,9 @@
   -webkit-appearance: none;
   user-select: none;
   touch-action: manipulation;
+  .text {
+    margin-left: 5px;
+  }
   &::before {
     position: absolute;
     top: 50%;
