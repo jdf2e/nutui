@@ -233,8 +233,8 @@ export default defineComponent({
         width: 26px;
         height: 26px;
         vertical-align: middle;
-        background: url('../../assets/images/icon-user2.png') no-repeat;
-        background-size: 52px;
+        background: url('../../assets/images/icon-user.png') no-repeat;
+        background-size: 26px;
       }
     }
   }
@@ -322,9 +322,9 @@ export default defineComponent({
           }
           .user-link {
             background-position: 0 0;
-            &:hover {
-              background-position: -26px 0;
-            }
+            // &:hover {
+            //   background-position: -26px 0;
+            // }
           }
         }
       }
@@ -401,9 +401,9 @@ export default defineComponent({
           }
           .user-link {
             background-position: 0 -25px;
-            &:hover {
-              background-position: -26px -25px;
-            }
+            // &:hover {
+            //   background-position: -26px -25px;
+            // }
           }
         }
       }
@@ -480,9 +480,9 @@ export default defineComponent({
           }
           .user-link {
             background-position: 0 -51px;
-            &:hover {
-              background-position: -26px -51px;
-            }
+            // &:hover {
+            //   background-position: -26px -51px;
+            // }
           }
         }
       }
