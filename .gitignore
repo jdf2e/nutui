@@ -5,6 +5,7 @@ node_modules
 /jd/upload.js
 yarn.lock
 package-lock.json
+/cache
 
 
 # local env files
