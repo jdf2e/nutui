@@ -135,20 +135,22 @@ export default {
       // this.startDateArr = this.startDate.replace(/-/g, '/').split('/');
       // this.endDateArr = this.endDate.replace(/-/g, '/').split('/');
       // 国际化
-      (this.use12Hours = [this.nutTranslate('lang.calendar.morning'), this.nutTranslate('lang.calendar.afternoon')]),
+      let year = this.nutTranslate('lang.calendar.year');
+      let month = this.nutTranslate('lang.calendar.month');
+      let day = this.nutTranslate('lang.calendar.day');
+      let hour = this.nutTranslate('lang.calendar.hour');
+      let minute = this.nutTranslate('lang.calendar.minute');
+      let second = this.nutTranslate('lang.calendar.second');
+      let morning = this.nutTranslate('lang.calendar.morning');
+      let afternoon = this.nutTranslate('lang.calendar.afternoon');
+      (this.use12Hours = [morning, afternoon]),
         (this.chinese = !this.isShowChinese
           ? new Array(6).fill('')
           : this.type == 'time'
           ? this.isUse12Hours
-            ? [this.nutTranslate('lang.calendar.hour'), this.nutTranslate('lang.calendar.minute'), '']
-            : [this.nutTranslate('lang.calendar.hour'), this.nutTranslate('lang.calendar.minute'), this.nutTranslate('lang.calendar.second')]
-          : [
-              this.nutTranslate('lang.calendar.year'),
-              this.nutTranslate('lang.calendar.month'),
-              this.nutTranslate('lang.calendar.day'),
-              this.nutTranslate('lang.calendar.hour'),
-              this.nutTranslate('lang.calendar.minute')
-            ]),
+            ? [hour, minute, '']
+            : [hour, minute, second]
+          : [year, month, day, hour, minute]),
         this.initListData();
     },
 
