@@ -1,3 +1,18 @@
+## 2.2.14
+
+`2020-02-08`
+
+* :sparkles: feat(luckcard)：增加支持刮开系数，支持清空蒙层 #365 @guoxiao158
+* :sparkles: feat(swiper)：支持异步切换指定页数 #380 @ZXHHHH123、@jacob-zch、@richard1015
+* :sparkles: feat(calendar)：添加 choose-click事件 #363 @richard1015
+* :bug: fix(tab)：修复默认值def-index设置后不能自动将对应标题居中 #362 @zhenyulei
+* :bug: fix(collapse)：优化折叠面板change回调方法 @Ymm0008
+* :bug: fix(upload)：修复Android手机多次点击重复调用相机、相册兼容问题 #379 @Drjingfubo
+* :bug: fix(circleprogress)：修复环形进度条渲染高亮问题 #373 @Drjingfubo、@layman666
+* :bug: fix(popup)：修复挂载节点api无效的问题 #382 @yangkaixuan
+* :zap: calendar 文档修改 isOpenRangeSelect、endDate参数修改 @Drjingfubo 
+* :zap: actionsheet 文档修改 @click.native demo使用方法 @Drjingfubo 
+
 ## 2.2.13
 
 `2020-12-18`
