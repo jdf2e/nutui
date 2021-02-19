@@ -68,7 +68,8 @@ export default create({
       //滚动条偏移量
       //Window
       if (scrollEl instanceof Window) {
-        const scrollTop = scrollEl.pageYOffset !== undefined ? scrollEl.pageYOffset : '';
+        const scrollTop =
+          scrollEl.pageYOffset !== undefined ? scrollEl.pageYOffset : '';
         backTop.value = scrollTop >= props.distance;
         //DOM
       } else if (scrollEl instanceof HTMLElement) {

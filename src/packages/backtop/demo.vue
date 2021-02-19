@@ -24,7 +24,9 @@
     <div class="text-data">我是测试数据22</div>
     <div class="text-data">我是测试数据23</div>
     <div class="text-data">我是测试数据24</div>
-    <nut-backtop @click="handleClick" elId="elId" :distance="100" :bottom="90"><view>无</view></nut-backtop>
+    <nut-backtop @click="handleClick" elId="elId" :distance="100" :bottom="90"
+      ><view>无</view></nut-backtop
+    >
     <nut-backtop @click="handleClick" elId="elId" :distance="200"></nut-backtop>
   </div>
 </template>
