@@ -13,7 +13,11 @@
         <ul>
           <template v-for="_package in _nav.packages" :key="_package">
             <li v-if="_package.show">
-              <router-link :to="_package.name.toLowerCase()">{{ _package.name }}&nbsp;&nbsp;{{ _package.cName }}</router-link>
+              <router-link :to="_package.name.toLowerCase()"
+                >{{ _package.name }}&nbsp;&nbsp;{{
+                  _package.cName
+                }}</router-link
+              >
               <nut-icon size="14px" color="#979797" name="right"></nut-icon>
             </li>
           </template>

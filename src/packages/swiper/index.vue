@@ -5,9 +5,17 @@
       <slot name="swiper-con"></slot>
     </view>
     <!-- 分页器 -->
-    <div v-if="pagination && paginationPosiiton === 'inside'" :class="paginationClass" class="swiper-pagination"></div>
+    <div
+      v-if="pagination && paginationPosiiton === 'inside'"
+      :class="paginationClass"
+      class="swiper-pagination"
+    ></div>
   </view>
-  <div v-if="pagination && paginationPosiiton === 'outside'" :class="paginationClass" class="swiper-pagination"></div>
+  <div
+    v-if="pagination && paginationPosiiton === 'outside'"
+    :class="paginationClass"
+    class="swiper-pagination"
+  ></div>
 </template>
 
 <script lang="ts">
@@ -124,7 +132,11 @@ export default create({
   width: 4px;
   height: 4px;
   opacity: 1;
-  background: linear-gradient(90deg, rgba(250, 32, 12, 1) 0%, rgba(250, 32, 12, 0.65) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(250, 32, 12, 1) 0%,
+    rgba(250, 32, 12, 0.65) 100%
+  );
 }
 .swiper-pagination /deep/ .swiper-pagination-bullet-active {
   width: 10px;

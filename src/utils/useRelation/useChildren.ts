@@ -42,7 +42,9 @@ export function sortChildren(
 ) {
   const vnodes = flattenVNodes(parent.subTree.children);
 
-  internalChildren.sort((a, b) => vnodes.indexOf(a.vnode) - vnodes.indexOf(b.vnode));
+  internalChildren.sort(
+    (a, b) => vnodes.indexOf(a.vnode) - vnodes.indexOf(b.vnode)
+  );
 
   const orderedPublicChildren = internalChildren.map(item => item.proxy!);
 

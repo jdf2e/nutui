@@ -1,8 +1,10 @@
 <template>
   <view :class="classes" :style="getStyle" @click="handleClick">
-    <!-- <i class="nut-icon-loading" v-if="loading"></i> -->
-    <!-- <i :class="icon" v-if="icon && !loading"></i> -->
-    <slot></slot>
+    <nut-icon class="nut-icon-loading" v-if="loading"></nut-icon>
+    <nut-icon :class="icon" v-if="icon && !loading" :name="icon"></nut-icon>
+    <view :class="{ text: icon || loading }" v-if="$slots.default"
+      ><slot></slot
+    ></view>
   </view>
 </template>
 
@@ -11,7 +13,13 @@ import { PropType, CSSProperties, toRefs, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('button');
 
-export type ButtonType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger';
+export type ButtonType =
+  | 'default'
+  | 'primary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger';
 export type ButtonSize = 'large' | 'normal' | 'small';
 export type ButtonShape = 'square' | 'round';
 
@@ -45,6 +53,10 @@ export default create({
     block: {
       type: Boolean,
       default: false
+    },
+    icon: {
+      type: String,
+      default: ''
     }
   },
   components: {},
@@ -52,7 +64,16 @@ export default create({
   setup(props, { emit, slots }) {
     // setup内部只能访问这4个属性，值得注意的是props必须在上面声明才能在这里取到
     console.log('props', props, 'emit', emit, 'slots', slots);
-    const { type, size, shape, disabled, loading, color, plain, block } = toRefs(props);
+    const {
+      type,
+      size,
+      shape,
+      disabled,
+      loading,
+      color,
+      plain,
+      block
+    } = toRefs(props);
     // console.log("type", type, "size", size);
 
     const handleClick = (event: MouseEvent) => {
@@ -90,6 +111,8 @@ export default create({
         }
 
         return style;
+      } else {
+        return {};
       }
     });
 

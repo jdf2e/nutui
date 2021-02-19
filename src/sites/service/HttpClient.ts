@@ -9,7 +9,12 @@ export class HttpClient {
       message: ''
     };
     // 如果http状态码正常，则直接返回数据
-    if (response && (response.status === 200 || response.status === 304 || response.status === 400)) {
+    if (
+      response &&
+      (response.status === 200 ||
+        response.status === 304 ||
+        response.status === 400)
+    ) {
       // 如果不需要除了data之外的数据，可以直接 return response.data
       resData.value = response.data;
     }
@@ -21,7 +26,11 @@ export class HttpClient {
    * @param {string} method get|post
    * @param {*} [params] 请求参数
    */
-  public async request(url: string, method: string, params: any): Promise<ResponseData | null> {
+  public async request(
+    url: string,
+    method: string,
+    params: any
+  ): Promise<ResponseData | null> {
     const defaultHeaders = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
     };
