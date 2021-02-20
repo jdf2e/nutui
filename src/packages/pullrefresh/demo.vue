@@ -112,7 +112,19 @@ export default createDemo({
       flex-shrink: 0;
       padding: 0 !important;
       margin: 2px 10px 0 0 !important;
-      text-align: center;
+      justify-content: center;
+    }
+  }
+}
+.content {
+  .main {
+    .text-data {
+      &:first-child {
+        margin-top: 0 !important;
+      }
+      &:last-child {
+        margin-bottom: 0 !important;
+      }
     }
   }
 }

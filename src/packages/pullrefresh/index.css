@@ -29,6 +29,7 @@ view {
   height: 100%;
   -webkit-transform: translateX(-100%);
   transform: translateX(-100%);
+  writing-mode: tb-rl;
 }
 
 .nut-pullrefresh .pullrefresh-content {
@@ -62,4 +63,5 @@ view {
   height: 100%;
   -webkit-transform: translateX(100%);
   transform: translateX(100%);
+  writing-mode: tb-rl;
 }

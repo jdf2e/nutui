@@ -26,6 +26,7 @@ view {
       height: 100%;
       -webkit-transform: translateX(-100%);
       transform: translateX(-100%);
+      writing-mode: tb-rl;
     }
   }
 
@@ -59,6 +60,7 @@ view {
       height: 100%;
       -webkit-transform: translateX(100%);
       transform: translateX(100%);
+      writing-mode: tb-rl;
     }
   }
 }
