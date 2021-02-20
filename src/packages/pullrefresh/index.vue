@@ -13,18 +13,19 @@
         direction == 'horizontal' ? 'pullrefresh-top-h' : 'pullrefresh-top-v'
       "
     >
-      <template
+      {{ refreshTem }}
+      <!-- <template
         v-if="status == 'loading' && (reachTop || reachLeft) && distance > 0"
-        >{{ loadingText }}</template
+        >{{ loadingText.top }}</template
       >
       <template
         v-if="status == 'pulling' && (reachTop || reachLeft) && distance > 0"
-        >{{ pullingText }}</template
+        >{{ pullingText.top }}</template
       >
       <template
         v-if="status == 'loosing' && (reachTop || reachLeft) && distance > 0"
-        >{{ loosingText }}</template
-      >
+        >{{ loosingText.top }}</template
+      > -->
     </view>
     <view class="pullrefresh-content" ref="pull">
       <slot></slot>
@@ -43,19 +44,19 @@
         v-if="
           status == 'loading' && (reachBottom || reachRight) && distance < 0
         "
-        >{{ loadingText }}</template
+        >{{ loadingText.bottom }}</template
       >
       <template
         v-if="
           status == 'pulling' && (reachBottom || reachRight) && distance < 0
         "
-        >{{ pullingText }}</template
+        >{{ pullingText.bottom }}</template
       >
       <template
         v-if="
           status == 'loosing' && (reachBottom || reachRight) && distance < 0
         "
-        >{{ loosingText }}</template
+        >{{ loosingText.bottom }}</template
       >
     </view>
   </view>
@@ -89,16 +90,31 @@ export default create({
     },
 
     pullingText: {
-      type: String,
-      default: '下拉刷新'
+      type: Object,
+      default: {
+        top: '下拉刷新',
+        bottom: '上拉加载',
+        left: '左滑刷新',
+        right: '右滑加载'
+      }
     },
     loosingText: {
-      type: String,
-      default: '松手释放刷新'
+      type: Object,
+      default: {
+        top: '松手释放刷新',
+        bottom: '松手释放刷新',
+        left: '松手释放刷新',
+        right: '松手释放刷新'
+      }
     },
     loadingText: {
-      type: String,
-      default: '加载中...'
+      type: Object,
+      default: {
+        top: '加载中...',
+        bottom: '加载中...',
+        left: '加载中...',
+        right: '加载中...'
+      }
     }
   },
   components: {},
@@ -185,6 +201,39 @@ export default create({
         };
       }
       return style;
+    });
+
+    const refreshTem = computed(() => {
+      const { status, distance } = state;
+
+      /** 刷新 顶部或左侧 */
+      if (
+        status == 'loading' &&
+        (reachTop.value || reachLeft.value) &&
+        distance > 0
+      ) {
+        return props.loadingText.top;
+      }
+
+      if (
+        status == 'pulling' &&
+        (reachTop.value || reachLeft.value) &&
+        distance > 0
+      ) {
+        return props.pullingText.top;
+      }
+
+      if (
+        status == 'loosing' &&
+        (reachTop.value || reachLeft.value) &&
+        distance > 0
+      ) {
+        return props.loosingText.top;
+      }
+
+      /** 刷新 底部或右侧 */
+
+      return '';
     });
 
     const isTouchable = () => state.status !== 'loading' && !disabled.value;
@@ -353,6 +402,7 @@ export default create({
       reachRight,
       reachLeft,
       getBottomStyle,
+      refreshTem,
       ...toRefs(state)
     };
   }
