@@ -8,7 +8,7 @@
   </div>
   <!-- 设计资源 -->
   <div class="resource-content">
-    <div class="resource-block" v-if="data.articleList.length === 0">
+    <div class="resource-block" v-if="articleList.length === 0">
       <h4 class="sub-title">设计资源</h4>
       <p class="sub-desc"
         >这里提供 NUT UI
@@ -33,18 +33,18 @@
         <div class="tab-hd">
           <div
             class="tab-hd-item"
-            :class="{ active: data.activeIndex === index }"
-            v-for="(item, index) in data.tabData"
+            :class="{ active: activeIndex === index }"
+            v-for="(item, index) in tabData"
             :key="index"
             @click="clickTab(index)"
           >
             {{ item.title }}
           </div>
         </div>
-        <div class="tab-bd" v-show="data.activeIndex === 0">
+        <div class="tab-bd" v-show="activeIndex === 0">
           <div
             class="design-item"
-            v-for="item in data.articleList"
+            v-for="item in articleList"
             :key="item.id"
             @click="toLink(item.id)"
           >
@@ -52,7 +52,7 @@
             <p class="design-title">{{ item.title }}</p>
           </div>
         </div>
-        <div class="tab-bd" v-show="data.activeIndex === 1">
+        <div class="tab-bd" v-show="activeIndex === 1">
           <div class="design-item">
             <img class="img-design" src="../../assets/images/img-article.jpg" />
             <p class="design-title"
@@ -93,7 +93,7 @@
   <doc-footer></doc-footer>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted, reactive } from 'vue';
+import { defineComponent, onMounted, reactive, toRefs } from 'vue';
 import {
   onBeforeRouteUpdate,
   RouteLocationNormalized,
@@ -116,12 +116,6 @@ export default defineComponent({
       tabData: [
         {
           title: '全部文章'
-        },
-        {
-          title: '性能体验'
-        },
-        {
-          title: '性能体验1'
         }
         // {
         //   title: '性能体验'
@@ -158,7 +152,7 @@ export default defineComponent({
       window.open('//jelly.jd.com/article/' + id);
     };
     return {
-      data,
+      ...toRefs(data),
       clickTab,
       toLink
     };

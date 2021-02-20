@@ -10,24 +10,24 @@
       <div class="nav-box">
         <ul class="nav-list">
           <li class="nav-item" :class="{ active: isActive(header[0].name) }">
-            <router-link :to="header[0].name">{{
-              header[0].cName
-            }}</router-link>
+            <router-link :to="header[0].name">
+              {{ header[0].cName }}
+            </router-link>
           </li>
           <li class="nav-item" :class="{ active: isActive(header[1].name) }">
-            <router-link :to="header[1].name">{{
-              header[1].cName
-            }}</router-link>
+            <router-link :to="header[1].name">
+              {{ header[1].cName }}
+            </router-link>
           </li>
-          <li class="nav-item" :class="{ active: isActive(header[2].name) }"
-            ><a href="http://localhost:8080/demo.html#/">{{
-              header[2].cName
-            }}</a></li
-          >
+          <li class="nav-item" :class="{ active: isActive(header[2].name) }">
+            <a href="http://localhost:8080/demo.html#/">
+              {{ header[2].cName }}
+            </a>
+          </li>
           <li class="nav-item" :class="{ active: isActive(header[3].name) }">
-            <router-link :to="header[3].name">{{
-              header[3].cName
-            }}</router-link>
+            <router-link :to="header[3].name">
+              {{ header[3].cName }}
+            </router-link>
           </li>
           <li class="nav-item">
             <div
@@ -234,7 +234,7 @@ export default defineComponent({
         height: 26px;
         vertical-align: middle;
         background: url('../../assets/images/icon-user.png') no-repeat;
-        background-size: 100%;
+        background-size: 26px;
       }
     }
   }
@@ -322,6 +322,9 @@ export default defineComponent({
           }
           .user-link {
             background-position: 0 0;
+            // &:hover {
+            //   background-position: -26px 0;
+            // }
           }
         }
       }
@@ -397,7 +400,10 @@ export default defineComponent({
             }
           }
           .user-link {
-            background-position: 0 -26px;
+            background-position: 0 -25px;
+            // &:hover {
+            //   background-position: -26px -25px;
+            // }
           }
         }
       }
@@ -473,7 +479,10 @@ export default defineComponent({
             }
           }
           .user-link {
-            background-position: 0 -52px;
+            background-position: 0 -51px;
+            // &:hover {
+            //   background-position: -26px -51px;
+            // }
           }
         }
       }
