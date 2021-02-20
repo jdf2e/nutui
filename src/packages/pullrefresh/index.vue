@@ -12,21 +12,8 @@
       :class="
         direction == 'horizontal' ? 'pullrefresh-top-h' : 'pullrefresh-top-v'
       "
+      >{{ refreshTopTem }}</view
     >
-      {{ refreshTem }}
-      <!-- <template
-        v-if="status == 'loading' && (reachTop || reachLeft) && distance > 0"
-        >{{ loadingText.top }}</template
-      >
-      <template
-        v-if="status == 'pulling' && (reachTop || reachLeft) && distance > 0"
-        >{{ pullingText.top }}</template
-      >
-      <template
-        v-if="status == 'loosing' && (reachTop || reachLeft) && distance > 0"
-        >{{ loosingText.top }}</template
-      > -->
-    </view>
     <view class="pullrefresh-content" ref="pull">
       <slot></slot>
     </view>
@@ -39,26 +26,8 @@
           : 'pullrefresh-bottom-v'
       "
       :style="getBottomStyle"
+      >{{ refreshBottomTem }}</view
     >
-      <template
-        v-if="
-          status == 'loading' && (reachBottom || reachRight) && distance < 0
-        "
-        >{{ loadingText.bottom }}</template
-      >
-      <template
-        v-if="
-          status == 'pulling' && (reachBottom || reachRight) && distance < 0
-        "
-        >{{ pullingText.bottom }}</template
-      >
-      <template
-        v-if="
-          status == 'loosing' && (reachBottom || reachRight) && distance < 0
-        "
-        >{{ loosingText.bottom }}</template
-      >
-    </view>
   </view>
 </template>
 
@@ -103,8 +72,8 @@ export default create({
       default: {
         top: '松手释放刷新',
         bottom: '松手释放刷新',
-        left: '松手释放刷新',
-        right: '松手释放刷新'
+        left: '释放刷新',
+        right: '加载更多'
       }
     },
     loadingText: {
@@ -118,7 +87,7 @@ export default create({
     }
   },
   components: {},
-  emits: ['refresh'],
+  emits: ['refresh', 'downRefresh'], // refresh 上拉加载、右滑加载更多  downRefresh 下拉刷新、左滑刷新
 
   setup(props, { emit }) {
     console.log('componentName', componentName);
@@ -203,16 +172,17 @@ export default create({
       return style;
     });
 
-    const refreshTem = computed(() => {
+    /** 刷新 顶部或左侧 */
+    const refreshTopTem = computed(() => {
       const { status, distance } = state;
 
-      /** 刷新 顶部或左侧 */
+      const tag = direction.value == 'vertical' ? 'top' : 'left';
       if (
         status == 'loading' &&
         (reachTop.value || reachLeft.value) &&
         distance > 0
       ) {
-        return props.loadingText.top;
+        return props.loadingText[tag];
       }
 
       if (
@@ -220,7 +190,7 @@ export default create({
         (reachTop.value || reachLeft.value) &&
         distance > 0
       ) {
-        return props.pullingText.top;
+        return props.pullingText[tag];
       }
 
       if (
@@ -228,10 +198,39 @@ export default create({
         (reachTop.value || reachLeft.value) &&
         distance > 0
       ) {
-        return props.loosingText.top;
+        return props.loosingText[tag];
       }
 
-      /** 刷新 底部或右侧 */
+      return '';
+    });
+    /** 刷新 底部或右侧 */
+    const refreshBottomTem = computed(() => {
+      const { status, distance } = state;
+
+      const tag = direction.value == 'vertical' ? 'bottom' : 'right';
+      if (
+        status == 'loading' &&
+        (reachBottom.value || reachRight.value) &&
+        distance < 0
+      ) {
+        return props.loadingText[tag];
+      }
+
+      if (
+        status == 'pulling' &&
+        (reachBottom.value || reachRight.value) &&
+        distance < 0
+      ) {
+        return props.pullingText[tag];
+      }
+
+      if (
+        status == 'loosing' &&
+        (reachBottom.value || reachRight.value) &&
+        distance < 0
+      ) {
+        return props.loosingText[tag];
+      }
 
       return '';
     });
@@ -321,6 +320,8 @@ export default create({
             touch.start(event);
           }
         }
+      } else {
+        preventDefault(event);
       }
     };
 
@@ -348,6 +349,8 @@ export default create({
           preventDefault(event);
           setStatus(ease(deltaX.value));
         }
+      } else {
+        preventDefault(event);
       }
     };
     const touchEnd = () => {
@@ -362,6 +365,7 @@ export default create({
             deltaY.value > 0
           ) {
             dis = 50;
+            emit('downRefresh', refreshDone);
           }
           if (
             direction.value == 'vertical' &&
@@ -369,6 +373,7 @@ export default create({
             deltaY.value < 0
           ) {
             dis = -50;
+            emit('refresh', refreshDone);
           }
           if (
             direction.value == 'horizontal' &&
@@ -376,6 +381,7 @@ export default create({
             deltaX.value > 0
           ) {
             dis = 50;
+            emit('downRefresh', refreshDone);
           }
           if (
             direction.value == 'horizontal' &&
@@ -383,9 +389,9 @@ export default create({
             deltaX.value < 0
           ) {
             dis = -50;
+            emit('refresh', refreshDone);
           }
           setStatus(dis, true);
-          emit('refresh', refreshDone);
         } else {
           setStatus(0);
         }
@@ -402,7 +408,8 @@ export default create({
       reachRight,
       reachLeft,
       getBottomStyle,
-      refreshTem,
+      refreshTopTem,
+      refreshBottomTem,
       ...toRefs(state)
     };
   }
