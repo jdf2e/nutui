@@ -152,8 +152,9 @@ $zindex-picker: 10050 !default;
 
 // Notify
 $notify-text-color: #fff;
-$notify-padding: 8px 16px;
-$notify-font-size: 28px;
+$notify-padding: 12px 0;
+$notify-font-size: 14px;
+$notify-height: 44px;
 
 $notify-base-background-color: linear-gradient(
   135deg,
