@@ -2,30 +2,60 @@
   <div class="demo">
     <h2>基础用法</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value" @change="onChange"></nut-range>
+      <nut-range v-model="value1" @change="onChange"></nut-range>
     </nut-cell>
-    <h2>指定选择范围</h2>
+    <h2>双滑块</h2>
+    <nut-cell class="cell">
+      <nut-range range v-model="value2" @change="onChange"></nut-range>
+    </nut-cell>
+    <h2>指定范围</h2>
     <nut-cell class="cell">
       <nut-range
-        v-model="value2"
+        v-model="value3"
         max="10"
         min="-10"
-        @change="onChange2"
+        @change="onChange"
       ></nut-range>
     </nut-cell>
     <h2>设置步长</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value3" step="5" @change="onChange3"></nut-range>
+      <nut-range v-model="value4" step="5" @change="onChange"></nut-range>
+    </nut-cell>
+    <h2>隐藏范围</h2>
+    <nut-cell class="cell">
+      <nut-range hidden-range v-model="value5" @change="onChange"></nut-range>
+    </nut-cell>
+    <h2>隐藏标签</h2>
+    <nut-cell class="cell">
+      <nut-range hidden-tag v-model="value6" @change="onChange"></nut-range>
+    </nut-cell>
+    <h2>自定义样式</h2>
+    <nut-cell class="cell">
+      <nut-range
+        v-model="value7"
+        @change="onChange"
+        inactive-color="rgba(163,184,255,1)"
+        button-color="rgba(52,96,250,1)"
+        active-color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
+      ></nut-range>
+    </nut-cell>
+    <h2>自定义按钮</h2>
+    <nut-cell class="cell">
+      <nut-range v-model="value8" @change="onChange">
+        <template #button>
+          <div class="custom-button">{{ value10 }}</div>
+        </template>
+      </nut-range>
     </nut-cell>
     <h2>禁用</h2>
     <nut-cell class="cell">
-      <nut-range disabled v-model="value4"></nut-range>
+      <nut-range disabled v-model="value9"></nut-range>
     </nut-cell>
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { toRefs, reactive } from 'vue';
 import { createComponent } from '@/utils/create';
 import { Toast } from '../toast';
 
@@ -33,21 +63,22 @@ const { createDemo } = createComponent('range');
 export default createDemo({
   props: {},
   setup() {
-    const value = ref(50);
-    const value2 = ref(5);
-    const value3 = ref(50);
-    const value4 = ref(50);
+    const state = reactive({
+      value1: 40,
+      value2: [20, 80],
+      value3: 0,
+      value4: 20,
+      value5: 30,
+      value6: 40,
+      value7: 50,
+      value8: [20, 80],
+      value9: 60,
+      value10: 50
+    });
     const onChange = value => Toast.text('当前值：' + value);
-    const onChange2 = value2 => Toast.text('当前值：' + value2);
-    const onChange3 = value3 => Toast.text('当前值：' + value3);
     return {
-      value,
-      value2,
-      value3,
-      value4,
-      onChange,
-      onChange2,
-      onChange3
+      ...toRefs(state),
+      onChange
     };
   }
 });
@@ -55,8 +86,15 @@ export default createDemo({
 
 <style lang="scss" scoped>
 .cell {
-  padding: 30px 18px;
+  padding: 40px 18px;
 }
-.nut-range {
+.custom-button {
+  width: 26px;
+  color: #fff;
+  font-size: 10px;
+  line-height: 18px;
+  text-align: center;
+  background-color: #ee0a24;
+  border-radius: 100px;
 }
 </style>
