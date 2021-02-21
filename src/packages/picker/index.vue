@@ -66,12 +66,12 @@ export default create({
   setup(props, { emit }) {
     const show = ref(false);
     const defaultIndex = ref(props.defaultIndex);
-    const listData = reactive(props.listData);
+    const listData: any = reactive(props.listData);
     //临时变量，当点击确定时候赋值
     let _defaultIndex = props.defaultIndex;
     const childrenKey = 'children';
     const valuesKey = 'values';
-    let defaultIndexList = [];
+    let defaultIndexList = new Array();
 
     watch(
       () => props.isVisible,
@@ -81,9 +81,9 @@ export default create({
     );
 
     const addDefaultIndexList = listData => {
-      defaultIndexList = [];
+      defaultIndexList = new Array();
       listData.forEach(res => {
-        defaultIndexList.push(res.defaultIndex || 0);
+        defaultIndexList.push(res.defaultIndex);
       });
     };
     const dataType = computed(() => {
@@ -101,7 +101,7 @@ export default create({
       return 'text';
     });
     const formatCascade = (listData, defaultIndex) => {
-      const formatted = [];
+      const formatted = new Array();
       let children = listData;
       children.defaultIndex = defaultIndex;
       while (children) {
@@ -128,7 +128,7 @@ export default create({
     const getCascadeData = (listData, defaultIndex) => {
       let arr = listData;
       arr.defaultIndex = defaultIndex;
-      const dataList = [];
+      const dataList = new Array();
 
       while (arr) {
         const item = arr[arr.defaultIndex ?? 0];
@@ -151,7 +151,7 @@ export default create({
       },
       changeHandler: (columnIndex, dataIndex) => {
         if (dataType.value === 'cascade') {
-          let cursor = listData;
+          let cursor: any = listData;
           //最外层使用props.defaultIndex作为初始index
           if (columnIndex === 0) {
             defaultIndex.value = dataIndex;
@@ -182,7 +182,7 @@ export default create({
             listData[i].defaultIndex = defaultIndexList[i];
           }
           const checkedArr = toRaw(listData).map(
-            res => res.values[res.defaultIndex]
+            (res: any) => res.values[res.defaultIndex]
           );
           emit('confirm', checkedArr);
         } else if (dataType.value === 'cascade') {
