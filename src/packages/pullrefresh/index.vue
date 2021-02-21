@@ -12,20 +12,8 @@
       :class="
         direction == 'horizontal' ? 'pullrefresh-top-h' : 'pullrefresh-top-v'
       "
+      >{{ refreshTopTem }}</view
     >
-      <template
-        v-if="status == 'loading' && (reachTop || reachLeft) && distance > 0"
-        >{{ loadingText }}</template
-      >
-      <template
-        v-if="status == 'pulling' && (reachTop || reachLeft) && distance > 0"
-        >{{ pullingText }}</template
-      >
-      <template
-        v-if="status == 'loosing' && (reachTop || reachLeft) && distance > 0"
-        >{{ loosingText }}</template
-      >
-    </view>
     <view class="pullrefresh-content" ref="pull">
       <slot></slot>
     </view>
@@ -38,26 +26,8 @@
           : 'pullrefresh-bottom-v'
       "
       :style="getBottomStyle"
+      >{{ refreshBottomTem }}</view
     >
-      <template
-        v-if="
-          status == 'loading' && (reachBottom || reachRight) && distance < 0
-        "
-        >{{ loadingText }}</template
-      >
-      <template
-        v-if="
-          status == 'pulling' && (reachBottom || reachRight) && distance < 0
-        "
-        >{{ pullingText }}</template
-      >
-      <template
-        v-if="
-          status == 'loosing' && (reachBottom || reachRight) && distance < 0
-        "
-        >{{ loosingText }}</template
-      >
-    </view>
   </view>
 </template>
 
@@ -89,20 +59,35 @@ export default create({
     },
 
     pullingText: {
-      type: String,
-      default: '下拉刷新'
+      type: Object,
+      default: {
+        top: '下拉刷新',
+        bottom: '上拉加载',
+        left: '左滑刷新',
+        right: '右滑加载'
+      }
     },
     loosingText: {
-      type: String,
-      default: '松手释放刷新'
+      type: Object,
+      default: {
+        top: '松手释放刷新',
+        bottom: '松手释放刷新',
+        left: '释放刷新',
+        right: '加载更多'
+      }
     },
     loadingText: {
-      type: String,
-      default: '加载中...'
+      type: Object,
+      default: {
+        top: '加载中...',
+        bottom: '加载中...',
+        left: '加载中...',
+        right: '加载中...'
+      }
     }
   },
   components: {},
-  emits: ['refresh'],
+  emits: ['refresh', 'downRefresh'], // refresh 上拉加载、右滑加载更多  downRefresh 下拉刷新、左滑刷新
 
   setup(props, { emit }) {
     console.log('componentName', componentName);
@@ -185,6 +170,69 @@ export default create({
         };
       }
       return style;
+    });
+
+    /** 刷新 顶部或左侧 */
+    const refreshTopTem = computed(() => {
+      const { status, distance } = state;
+
+      const tag = direction.value == 'vertical' ? 'top' : 'left';
+      if (
+        status == 'loading' &&
+        (reachTop.value || reachLeft.value) &&
+        distance > 0
+      ) {
+        return props.loadingText[tag];
+      }
+
+      if (
+        status == 'pulling' &&
+        (reachTop.value || reachLeft.value) &&
+        distance > 0
+      ) {
+        return props.pullingText[tag];
+      }
+
+      if (
+        status == 'loosing' &&
+        (reachTop.value || reachLeft.value) &&
+        distance > 0
+      ) {
+        return props.loosingText[tag];
+      }
+
+      return '';
+    });
+    /** 刷新 底部或右侧 */
+    const refreshBottomTem = computed(() => {
+      const { status, distance } = state;
+
+      const tag = direction.value == 'vertical' ? 'bottom' : 'right';
+      if (
+        status == 'loading' &&
+        (reachBottom.value || reachRight.value) &&
+        distance < 0
+      ) {
+        return props.loadingText[tag];
+      }
+
+      if (
+        status == 'pulling' &&
+        (reachBottom.value || reachRight.value) &&
+        distance < 0
+      ) {
+        return props.pullingText[tag];
+      }
+
+      if (
+        status == 'loosing' &&
+        (reachBottom.value || reachRight.value) &&
+        distance < 0
+      ) {
+        return props.loosingText[tag];
+      }
+
+      return '';
     });
 
     const isTouchable = () => state.status !== 'loading' && !disabled.value;
@@ -272,6 +320,8 @@ export default create({
             touch.start(event);
           }
         }
+      } else {
+        preventDefault(event);
       }
     };
 
@@ -299,6 +349,8 @@ export default create({
           preventDefault(event);
           setStatus(ease(deltaX.value));
         }
+      } else {
+        preventDefault(event);
       }
     };
     const touchEnd = () => {
@@ -313,6 +365,7 @@ export default create({
             deltaY.value > 0
           ) {
             dis = 50;
+            emit('downRefresh', refreshDone);
           }
           if (
             direction.value == 'vertical' &&
@@ -320,6 +373,7 @@ export default create({
             deltaY.value < 0
           ) {
             dis = -50;
+            emit('refresh', refreshDone);
           }
           if (
             direction.value == 'horizontal' &&
@@ -327,6 +381,7 @@ export default create({
             deltaX.value > 0
           ) {
             dis = 50;
+            emit('downRefresh', refreshDone);
           }
           if (
             direction.value == 'horizontal' &&
@@ -334,9 +389,9 @@ export default create({
             deltaX.value < 0
           ) {
             dis = -50;
+            emit('refresh', refreshDone);
           }
           setStatus(dis, true);
-          emit('refresh', refreshDone);
         } else {
           setStatus(0);
         }
@@ -353,6 +408,8 @@ export default create({
       reachRight,
       reachLeft,
       getBottomStyle,
+      refreshTopTem,
+      refreshBottomTem,
       ...toRefs(state)
     };
   }
