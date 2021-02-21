@@ -3,7 +3,6 @@
     position: relative;
     text-align: center;
     overflow-y: hidden;
-    flex-grow: 1;
     &:hover {
       cursor: grab;
     }
@@ -36,6 +35,11 @@
   }
   &__column {
     display: flex;
+    position: relative;
+  }
+  &__columnitem {
+    flex-grow: 1;
+    height: 100%;
   }
   &__left {
     color: #fa2c19;

@@ -8,31 +8,30 @@
     @touchcancel="onTouchEnd"
     @transitionend="stopMomentum"
   >
-    <view class="nut-picker__hairline" :style="{ top: ` ${top}px` }"></view>
-    <view
-      class="nut-picker__mask"
-      :style="{ backgroundSize: `100% ${top}px` }"
-    ></view>
     <view class="nut-picker__wrapper" ref="wrapper" :style="wrapperStyle">
       <view
         class="nut-picker__item"
         :key="index"
-        v-for="(item, index) in columns"
-        >{{ item }}</view
+        v-for="(item, index) in state.options"
+        >{{ dataType === 'cascade' ? item.text : item }}</view
       >
     </view>
   </view>
 </template>
 <script lang="ts">
-import { toRefs, reactive, ref, watch, computed } from 'vue';
+import { reactive, ref, watch, computed } from 'vue';
 import { createComponent } from '@/utils/create';
-import { useTouch } from './use-touch';
+import { useTouch } from '@/utils/useTouch';
+import { commonProps } from './commonProps';
 const MOMENTUM_LIMIT_DISTANCE = 15;
 const MOMENTUM_LIMIT_TIME = 300;
 const DEFAULT_DURATION = 200;
-const { componentName, create } = createComponent('picker');
+const { create } = createComponent('picker');
 function range(num: number, min: number, max: number): number {
   return Math.min(Math.max(num, min), max);
+}
+function stopPropagation(event: Event) {
+  event.stopPropagation();
 }
 function preventDefault(event: Event, isStopPropagation?: boolean) {
   /* istanbul ignore else */
@@ -45,9 +44,6 @@ function preventDefault(event: Event, isStopPropagation?: boolean) {
   }
 }
 
-function stopPropagation(event: Event) {
-  event.stopPropagation();
-}
 function getElementTranslateY(element) {
   const style = window.getComputedStyle(element);
   const transform = style.transform || style.webkitTransform;
@@ -61,95 +57,51 @@ export function isObject(val: unknown): val is Record<any, any> {
 function isOptionDisabled(option) {
   return isObject(option) && option.disabled;
 }
+
 export default create({
   props: {
-    show: {
-      type: Boolean,
-      default: false
-    },
-    readonly: {
-      type: Boolean,
-      default: false
-    },
-    txt: {
-      type: String,
-      default: ''
-    },
-    visibleItemCount: {
-      type: [Number],
-      default: 7
-    },
-    defaultIndex: {
-      type: [Number, String],
-      default: 0
-    },
-    itemHeight: {
-      type: [Number],
-      default: 35
-    },
-    initialOptions: {
-      type: Array,
-      default: () => [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        11,
-        22,
-        33,
-        44,
-        55,
-        66,
-        77,
-        8,
-        9
-      ]
-    }
+    dataType: String,
+    ...commonProps
   },
   components: {},
-  emits: ['click', 'close'],
-
+  emits: ['click', 'change'],
   setup(props, { emit }) {
     let moving;
     let startOffset, touchStartTime, momentumOffset, transitionEndTrigger;
-
-    const _show = ref(false);
-
     const state = reactive({
       index: props.defaultIndex,
       offset: 0,
       duration: 0,
-      options: props.initialOptions
+      options: props.listData
     });
-    const baseOffset = () =>
-      (props.itemHeight * (props.visibleItemCount - 1)) / 2;
-    const count = () => state.options.length;
-    const momentum = (distance, duration) => {
-      const speed = Math.abs(distance / duration);
-
-      distance = state.offset + (speed / 0.003) * (distance < 0 ? -1 : 1);
-
-      const index = getIndexByOffset(distance);
-
-      setIndex(index, true);
-    };
     watch(
-      () => props.show,
+      () => props.listData,
       val => {
-        _show.value = val;
+        if (val) {
+          state.options = val;
+        }
       }
     );
+
+    const wrapper = ref();
+    const touch = useTouch();
+    const count = () => state.options.length;
+    const _show = ref(false);
+    const getIndexByOffset = offset =>
+      range(Math.round(-offset / props.itemHeight), 0, count() - 1);
+
+    const baseOffset = () =>
+      (props.itemHeight * (props.visibleItemCount - 1)) / 2;
+
     const stopMomentum = () => {
       moving = false;
       state.duration = 0;
+      if (transitionEndTrigger) {
+        transitionEndTrigger();
+        transitionEndTrigger = null;
+      }
     };
-    const wrapper = ref();
-    const touch = useTouch();
+
     const adjustIndex = index => {
       index = range(index, 0, count());
 
@@ -160,7 +112,8 @@ export default create({
         if (!isOptionDisabled(state.options[i])) return i;
       }
     };
-    const setIndex = (index, emitChange) => {
+
+    const setIndex = (index, emitChange = false) => {
       index = adjustIndex(index) || 0;
 
       const offset = -index * props.itemHeight;
@@ -169,12 +122,11 @@ export default create({
           state.index = index;
 
           if (emitChange) {
-            // emit('change', index);
+            emit('change', index);
           }
         }
       };
 
-      // trigger the change event after transitionend when moving
       if (moving && offset !== state.offset) {
         transitionEndTrigger = trigger;
       } else {
@@ -183,8 +135,22 @@ export default create({
 
       state.offset = offset;
     };
-    const getIndexByOffset = offset =>
-      range(Math.round(-offset / props.itemHeight), 0, count() - 1);
+    watch(
+      () => props.defaultIndex,
+      val => {
+        setIndex(val);
+      }
+    );
+    setIndex(props.defaultIndex);
+    const momentum = (distance, duration) => {
+      const speed = Math.abs(distance / duration);
+
+      distance = state.offset + (speed / 0.003) * (distance < 0 ? -1 : 1);
+
+      const index = getIndexByOffset(distance);
+
+      setIndex(index, true);
+    };
     const onTouchStart = event => {
       if (props.readonly) {
         return;
@@ -213,7 +179,7 @@ export default create({
 
       if (touch.isVertical()) {
         moving = true;
-        // preventDefault(event, true);
+        preventDefault(event, true);
       }
 
       const moveOffset = startOffset + touch.deltaY.value;
@@ -254,8 +220,8 @@ export default create({
       transitionDuration: `${state.duration}ms`,
       transitionProperty: state.duration ? 'all' : 'none'
     }));
+
     return {
-      show: _show,
       wrapper,
       onTouchStart,
       onTouchMove,
@@ -263,12 +229,8 @@ export default create({
       wrapperStyle,
       state,
       stopMomentum,
-      columns: props.initialOptions,
-      top: (Number(props.visibleItemCount - 1) / 2) * props.itemHeight,
-      height: Number(props.visibleItemCount) * props.itemHeight,
-      close: () => {
-        emit('close');
-      }
+      columns: state.options,
+      height: Number(props.visibleItemCount) * props.itemHeight
     };
   }
 });
