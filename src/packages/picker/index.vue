@@ -7,270 +7,194 @@
       @close="close"
     >
       <view class="nut-picker__bar">
-        <view class="nut-picker__left"> 取消</view>
-        <view> 城市选择</view>
-        <view> 确定</view>
+        <view class="nut-picker__left" @click="close()"> 取消</view>
+        <view> {{ title }}</view>
+        <view @click="confirm()"> 确定</view>
       </view>
+
       <view class="nut-picker__column">
-        <column></column>
-        <column></column>
+        <view
+          class="nut-picker__mask"
+          :style="{ backgroundSize: `100% ${top}px` }"
+        ></view>
+        <view class="nut-picker__hairline" :style="{ top: ` ${top}px` }"></view>
+        <view
+          class="nut-picker__columnitem"
+          v-for="(item, columnIndex) in columnList"
+          :key="columnIndex"
+        >
+          <column
+            :listData="item.values"
+            :readonly="readonly"
+            :defaultIndex="item.defaultIndex"
+            :visibleItemCount="visibleItemCount"
+            :itemHeight="itemHeight"
+            :dataType="dataType"
+            @change="
+              dataIndex => {
+                changeHandler(columnIndex, dataIndex);
+              }
+            "
+          ></column>
+        </view>
       </view>
     </nut-popup>
   </view>
 </template>
 <script lang="ts">
-import { toRefs, reactive, ref, watch, computed } from 'vue';
+import { reactive, ref, watch, computed, toRaw } from 'vue';
 import { createComponent } from '@/utils/create';
-import { useTouch } from './use-touch';
 import column from './Column.vue';
-const MOMENTUM_LIMIT_DISTANCE = 15;
-const MOMENTUM_LIMIT_TIME = 300;
-const DEFAULT_DURATION = 200;
-const { componentName, create } = createComponent('picker');
-function range(num: number, min: number, max: number): number {
-  return Math.min(Math.max(num, min), max);
-}
-function preventDefault(event: Event, isStopPropagation?: boolean) {
-  /* istanbul ignore else */
-  if (typeof event.cancelable !== 'boolean' || event.cancelable) {
-    event.preventDefault();
-  }
+import { commonProps } from './commonProps';
+const { create } = createComponent('picker');
 
-  if (isStopPropagation) {
-    stopPropagation(event);
-  }
-}
-
-function stopPropagation(event: Event) {
-  event.stopPropagation();
-}
-function getElementTranslateY(element) {
-  const style = window.getComputedStyle(element);
-  const transform = style.transform || style.webkitTransform;
-  const translateY = transform.slice(7, transform.length - 1).split(', ')[5];
-  return Number(translateY);
-}
-export function isObject(val: unknown): val is Record<any, any> {
-  return val !== null && typeof val === 'object';
-}
-
-function isOptionDisabled(option) {
-  return isObject(option) && option.disabled;
-}
 export default create({
   props: {
-    show: {
+    isVisible: {
       type: Boolean,
       default: false
     },
-    readonly: {
-      type: Boolean,
-      default: false
-    },
-    txt: {
+    title: {
       type: String,
       default: ''
     },
-    visibleItemCount: {
-      type: [Number],
-      default: 7
-    },
-    defaultIndex: {
-      type: [Number, String],
-      default: 0
-    },
-    itemHeight: {
-      type: [Number],
-      default: 35
-    },
-    initialOptions: {
-      type: Array,
-      default: () => [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        11,
-        22,
-        33,
-        44,
-        55,
-        66,
-        77,
-        8,
-        9
-      ]
-    }
+    ...commonProps
   },
   components: { column },
-  emits: ['click', 'close'],
+  emits: ['close', 'confirm', 'update:isVisible'],
 
   setup(props, { emit }) {
-    let moving;
-    let startOffset, touchStartTime, momentumOffset, transitionEndTrigger;
+    const show = ref(false);
+    const defaultIndex = ref(props.defaultIndex);
+    const listData = reactive(props.listData);
+    //临时变量，当点击确定时候赋值
+    let _defaultIndex = props.defaultIndex;
+    const childrenKey = 'children';
+    const valuesKey = 'values';
+    let defaultIndexList = [];
 
-    const _show = ref(false);
-
-    const state = reactive({
-      index: props.defaultIndex,
-      offset: 0,
-      duration: 0,
-      options: props.initialOptions
-    });
-    const baseOffset = () =>
-      (props.itemHeight * (props.visibleItemCount - 1)) / 2;
-    const count = () => state.options.length;
-    const momentum = (distance, duration) => {
-      const speed = Math.abs(distance / duration);
-
-      distance = state.offset + (speed / 0.003) * (distance < 0 ? -1 : 1);
-
-      const index = getIndexByOffset(distance);
-
-      setIndex(index, true);
-    };
     watch(
-      () => props.show,
+      () => props.isVisible,
       val => {
-        _show.value = val;
+        show.value = val;
       }
     );
-    const stopMomentum = () => {
-      moving = false;
-      state.duration = 0;
+
+    const addDefaultIndexList = listData => {
+      defaultIndexList = [];
+      listData.forEach(res => {
+        defaultIndexList.push(res.defaultIndex || 0);
+      });
     };
-    const wrapper = ref();
-    const touch = useTouch();
-    const adjustIndex = index => {
-      index = range(index, 0, count());
+    const dataType = computed(() => {
+      const firstColumn = listData[0] || {};
 
-      for (let i = index; i < count(); i++) {
-        if (!isOptionDisabled(state.options[i])) return i;
-      }
-      for (let i = index - 1; i >= 0; i--) {
-        if (!isOptionDisabled(state.options[i])) return i;
-      }
-    };
-    const setIndex = (index, emitChange) => {
-      index = adjustIndex(index) || 0;
-
-      const offset = -index * props.itemHeight;
-      const trigger = () => {
-        if (index !== state.index) {
-          state.index = index;
-
-          if (emitChange) {
-            // emit('change', index);
-          }
+      if (typeof firstColumn === 'object') {
+        if (firstColumn?.[childrenKey]) {
+          return 'cascade';
+        } else if (firstColumn?.[valuesKey]) {
+          addDefaultIndexList(props.listData);
+          //多列
+          return 'multipleColumns';
         }
-      };
-
-      // trigger the change event after transitionend when moving
-      if (moving && offset !== state.offset) {
-        transitionEndTrigger = trigger;
-      } else {
-        trigger();
       }
-
-      state.offset = offset;
+      return 'text';
+    });
+    const formatCascade = (listData, defaultIndex) => {
+      const formatted = [];
+      let children = listData;
+      children.defaultIndex = defaultIndex;
+      while (children) {
+        formatted.push({
+          values: children,
+          defaultIndex: children.defaultIndex
+        });
+        children = children?.[children.defaultIndex || 0].children;
+      }
+      addDefaultIndexList(formatted);
+      return formatted;
     };
-    const getIndexByOffset = offset =>
-      range(Math.round(-offset / props.itemHeight), 0, count() - 1);
-    const onTouchStart = event => {
-      if (props.readonly) {
-        return;
-      }
-      touch.start(event);
 
-      if (moving) {
-        const translateY = getElementTranslateY(wrapper.value);
-        state.offset = Math.min(0, translateY - baseOffset());
-        startOffset = state.offset;
-      } else {
-        startOffset = state.offset;
+    const columnList = computed(() => {
+      if (dataType.value === 'text') {
+        return [{ values: listData, defaultIndex: defaultIndex.value }];
+      } else if (dataType.value === 'multipleColumns') {
+        return listData;
+      } else if (dataType.value === 'cascade') {
+        return formatCascade(listData, defaultIndex.value);
       }
+      return listData;
+    });
+    const getCascadeData = (listData, defaultIndex) => {
+      let arr = listData;
+      arr.defaultIndex = defaultIndex;
+      const dataList = [];
 
-      state.duration = 0;
-      touchStartTime = Date.now();
-      momentumOffset = startOffset;
-      transitionEndTrigger = null;
+      while (arr) {
+        const item = arr[arr.defaultIndex ?? 0];
+        dataList.push(item.text);
+        arr = item.children;
+      }
+      return dataList;
     };
-    const onTouchMove = event => {
-      if (props.readonly) {
-        return;
-      }
-      moving = true;
-      touch.move(event);
-
-      if (touch.isVertical()) {
-        moving = true;
-        // preventDefault(event, true);
-      }
-
-      const moveOffset = startOffset + touch.deltaY.value;
-      if (moveOffset > props.itemHeight) {
-        state.offset = props.itemHeight;
-      } else {
-        state.offset = startOffset + touch.deltaY.value;
-      }
-
-      const now = Date.now();
-
-      if (now - touchStartTime > MOMENTUM_LIMIT_TIME) {
-        touchStartTime = now;
-        momentumOffset = state.offset;
-      }
-    };
-    const onTouchEnd = () => {
-      const index = getIndexByOffset(state.offset);
-      state.duration = DEFAULT_DURATION;
-      setIndex(index, true);
-      const distance = state.offset - momentumOffset;
-      const duration = Date.now() - touchStartTime;
-
-      const allowMomentum =
-        duration < MOMENTUM_LIMIT_TIME &&
-        Math.abs(distance) > MOMENTUM_LIMIT_DISTANCE;
-
-      if (allowMomentum) {
-        momentum(distance, duration);
-        return;
-      }
-    };
-    const handleClick = (event: Event) => {
-      emit('click', event);
-    };
-    const wrapperStyle = computed(() => ({
-      transform: `translate3d(0, ${state.offset + baseOffset()}px, 0)`,
-      transitionDuration: `${state.duration}ms`,
-      transitionProperty: state.duration ? 'all' : 'none'
-    }));
     return {
-      show: _show,
-      wrapper,
-      onTouchStart,
-      onTouchMove,
-      onTouchEnd,
-      wrapperStyle,
-      state,
+      show,
       column,
-      stopMomentum,
-      columns: props.initialOptions,
+      title: props.title,
+      dataType,
+      columnList,
       top: (Number(props.visibleItemCount - 1) / 2) * props.itemHeight,
       height: Number(props.visibleItemCount) * props.itemHeight,
       close: () => {
         emit('close');
+        emit('update:isVisible', false);
+      },
+      changeHandler: (columnIndex, dataIndex) => {
+        if (dataType.value === 'cascade') {
+          let cursor = listData;
+          //最外层使用props.defaultIndex作为初始index
+          if (columnIndex === 0) {
+            defaultIndex.value = dataIndex;
+          } else {
+            let i = 0;
+            while (cursor) {
+              if (i === columnIndex) {
+                cursor.defaultIndex = dataIndex;
+              } else if (i > columnIndex) {
+                cursor.defaultIndex = 0;
+              }
+              cursor = cursor[cursor.defaultIndex || 0].children;
+              i++;
+            }
+          }
+        } else if (dataType.value === 'text') {
+          _defaultIndex = dataIndex;
+        } else if (dataType.value === 'multipleColumns') {
+          defaultIndexList[columnIndex] = dataIndex;
+        }
+      },
+      confirm: () => {
+        if (dataType.value === 'text') {
+          defaultIndex.value = _defaultIndex;
+          emit('confirm', listData[_defaultIndex]);
+        } else if (dataType.value === 'multipleColumns') {
+          for (let i = 0; i < defaultIndexList.length; i++) {
+            listData[i].defaultIndex = defaultIndexList[i];
+          }
+          const checkedArr = toRaw(listData).map(
+            res => res.values[res.defaultIndex]
+          );
+          emit('confirm', checkedArr);
+        } else if (dataType.value === 'cascade') {
+          emit('confirm', getCascadeData(toRaw(listData), defaultIndex.value));
+        }
+
+        emit('update:isVisible', false);
       }
     };
   }
 });
 </script>
-
 <style lang="scss">
 @import 'index.scss';
 </style>
