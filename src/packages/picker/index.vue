@@ -71,7 +71,7 @@ export default create({
     let _defaultIndex = props.defaultIndex;
     const childrenKey = 'children';
     const valuesKey = 'values';
-    let defaultIndexList = new Array();
+    let defaultIndexList: number[] = [];
 
     watch(
       () => props.isVisible,
@@ -81,7 +81,7 @@ export default create({
     );
 
     const addDefaultIndexList = listData => {
-      defaultIndexList = new Array();
+      defaultIndexList = [];
       listData.forEach(res => {
         defaultIndexList.push(res.defaultIndex);
       });
@@ -101,7 +101,7 @@ export default create({
       return 'text';
     });
     const formatCascade = (listData, defaultIndex) => {
-      const formatted = new Array();
+      const formatted: any[] = [];
       let children = listData;
       children.defaultIndex = defaultIndex;
       while (children) {
@@ -128,7 +128,7 @@ export default create({
     const getCascadeData = (listData, defaultIndex) => {
       let arr = listData;
       arr.defaultIndex = defaultIndex;
-      const dataList = new Array();
+      const dataList: string[] = [];
 
       while (arr) {
         const item = arr[arr.defaultIndex ?? 0];
