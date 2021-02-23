@@ -9,12 +9,12 @@
     ></nut-cell>
 
     <nut-address
-      v-model:show="showPopup"
+      v-model:show="normal"
       :province="province"
       :city="city"
       :country="country"
       :town="town"
-      @on-change="cal => onChange(cal, 'showPopup')"
+      @on-change="cal => onChange(cal, 'normal')"
       @close="close1"
       customAddressTitle="请选择所在地区"
     ></nut-address>
@@ -28,10 +28,10 @@
     ></nut-cell>
 
     <nut-address
-      v-model:show="showPopupExist"
+      v-model:show="exist"
       type="exist"
       :existAddress="existAddress"
-      @on-change="cal => onChange(cal, 'showPopupExist')"
+      @on-change="cal => onChange(cal, 'exist')"
       @close="close2"
       :isShowCustomAddress="false"
       @selected="selected"
@@ -47,10 +47,10 @@
     ></nut-cell>
 
     <nut-address
-      v-model:show="showPopupCustomImg"
+      v-model:show="customImg"
       type="exist"
       :existAddress="existAddress"
-      @on-change="cal => onChange(cal, 'showPopupCustomImg')"
+      @on-change="cal => onChange(cal, 'customImg')"
       @close="close3"
       :isShowCustomAddress="false"
       @selected="selected"
@@ -68,7 +68,7 @@
     ></nut-cell>
 
     <nut-address
-      v-model:show="showPopupOther"
+      v-model:show="other"
       type="exist"
       :existAddress="existAddress"
       :province="province"
@@ -76,7 +76,7 @@
       :country="country"
       :town="town"
       :backBtnIcon="backBtnIcon"
-      @on-change="cal => onChange(cal, 'showPopupOther')"
+      @on-change="cal => onChange(cal, 'other')"
       @close="close4"
       @selected="selected"
       customAndExistTitle="选择其他地址"
@@ -93,33 +93,33 @@ const { createDemo } = createComponent('address');
 export default createDemo({
   props: {},
   setup() {
-    const showPopup = ref(false);
-    const province = ref([
-      { id: 1, name: '北京' },
-      { id: 2, name: '广西' },
-      { id: 3, name: '江西' },
-      { id: 4, name: '四川' }
-    ]); // 省
+    const address = reactive({
+      province: [
+        { id: 1, name: '北京' },
+        { id: 2, name: '广西' },
+        { id: 3, name: '江西' },
+        { id: 4, name: '四川' }
+      ],
+      city: [
+        { id: 7, name: '朝阳区' },
+        { id: 8, name: '崇文区' },
+        { id: 9, name: '昌平区' },
+        { id: 6, name: '石景山区' }
+      ],
+      country: [
+        { id: 3, name: '八里庄街道' },
+        { id: 9, name: '北苑' },
+        { id: 4, name: '常营乡' }
+      ],
+      town: []
+    });
 
-    const city = ref([
-      { id: 7, name: '朝阳区' },
-      { id: 8, name: '崇文区' },
-      { id: 9, name: '昌平区' },
-      { id: 6, name: '石景山区' }
-    ]); // 市
-
-    const country = ref([
-      { id: 3, name: '八里庄街道' },
-      { id: 9, name: '北苑' },
-      { id: 4, name: '常营乡' }
-    ]); // 县
-
-    const town = ref([]); // 镇
-
-    const showPopupExist = ref(false);
-    const showPopupCustomImg = ref(false);
-
-    const showPopupOther = ref(false);
+    const showPopup = reactive({
+      normal: false,
+      exist: false,
+      customImg: false,
+      other: false
+    });
 
     const icon = reactive({
       selectedIcon: 'heart-fill',
@@ -175,40 +175,13 @@ export default createDemo({
     });
 
     const showAddress = () => {
-      showPopup.value = !showPopup.value;
+      showPopup.normal = !showPopup.normal;
     };
 
     const onChange = (cal, tag) => {
-      let name = province;
-      switch (cal.next) {
-        case 'province':
-          name = province;
-          break;
-        case 'city':
-          name = city;
-          break;
-        case 'country':
-          name = city;
-          break;
-        default:
-          name = town;
-          break;
-      }
-      if (name.value.length < 1) {
-        switch (tag) {
-          case 'showPopup':
-            showPopup.value = false;
-            break;
-          case 'showPopupExist':
-            showPopupExist.value = false;
-            break;
-          case 'showPopupCustomImg':
-            showPopupCustomImg.value = false;
-            break;
-          default:
-            showPopupOther.value = false;
-            break;
-        }
+      const name = address[cal.next];
+      if (name.length < 1) {
+        showPopup[tag] = false;
       }
     };
     const close1 = val => {
@@ -217,7 +190,7 @@ export default createDemo({
     };
 
     const showAddressExist = () => {
-      showPopupExist.value = true;
+      showPopup.exist = true;
     };
 
     const close2 = val => {
@@ -242,10 +215,10 @@ export default createDemo({
     };
 
     const showAddressOther = () => {
-      showPopupOther.value = true;
+      showPopup.other = true;
     };
     const showCustomImg = () => {
-      showPopupCustomImg.value = true;
+      showPopup.customImg = true;
     };
 
     const close3 = val => {
@@ -296,19 +269,12 @@ export default createDemo({
 
     return {
       showAddress,
-      province,
-      city,
-      country,
-      town,
       showPopup,
       onChange,
       close1,
       showAddressExist,
       close2,
       selected,
-      showPopupExist,
-      showPopupCustomImg,
-      showPopupOther,
       existAddress,
       showAddressOther,
       showCustomImg,
@@ -317,7 +283,9 @@ export default createDemo({
       switchModule,
       closeMask,
       ...toRefs(icon),
-      ...toRefs(text)
+      ...toRefs(text),
+      ...toRefs(showPopup),
+      ...toRefs(address)
     };
   }
 });
