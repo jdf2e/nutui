@@ -34,7 +34,7 @@
       @on-change="cal => onChange(cal, 'showPopupExist')"
       @close="close2"
       :isShowCustomAddress="false"
-      @selected="selected2"
+      @selected="selected"
       existAddressTitle="配送至"
     ></nut-address>
 
@@ -53,7 +53,7 @@
       @on-change="cal => onChange(cal, 'showPopupCustomImg')"
       @close="close3"
       :isShowCustomAddress="false"
-      @selected="selected3"
+      @selected="selected"
       :defaultIcon="defaultIcon"
       :selectedIcon="selectedIcon"
       :closeBtnIcon="closeBtnIcon"
@@ -78,7 +78,7 @@
       :backBtnIcon="backBtnIcon"
       @on-change="cal => onChange(cal, 'showPopupOther')"
       @close="close4"
-      @selected="selected4"
+      @selected="selected"
       customAndExistTitle="选择其他地址"
       @switchModule="switchModule"
       @closeMask="closeMask"
@@ -223,17 +223,20 @@ export default createDemo({
     const close2 = val => {
       console.log(val);
       if (val.type == 'exist') {
+        const {
+          provinceName,
+          cityName,
+          countyName,
+          townName,
+          addressDetail
+        } = val.data;
         text.two =
-          val.data.provinceName +
-          val.data.cityName +
-          val.data.countyName +
-          val.data.townName +
-          val.data.addressDetail;
+          provinceName + cityName + countyName + townName + addressDetail;
       } else {
         text.two = val.data.addressStr;
       }
     };
-    const selected2 = (prevExistAdd, nowExistAdd, arr) => {
+    const selected = (prevExistAdd, nowExistAdd, arr) => {
       console.log(prevExistAdd);
       console.log(nowExistAdd);
     };
@@ -248,37 +251,35 @@ export default createDemo({
     const close3 = val => {
       console.log(val);
       if (val.type == 'exist') {
+        const {
+          provinceName,
+          cityName,
+          countyName,
+          townName,
+          addressDetail
+        } = val.data;
         text.three =
-          val.data.provinceName +
-          val.data.cityName +
-          val.data.countyName +
-          val.data.townName +
-          val.data.addressDetail;
+          provinceName + cityName + countyName + townName + addressDetail;
       } else {
         text.three = val.data.addressStr;
       }
-    };
-    const selected3 = (prevExistAdd, nowExistAdd, arr) => {
-      console.log(prevExistAdd);
-      console.log(nowExistAdd);
     };
 
     const close4 = val => {
       console.log(val);
       if (val.type == 'exist') {
+        const {
+          provinceName,
+          cityName,
+          countyName,
+          townName,
+          addressDetail
+        } = val.data;
         text.four =
-          val.data.provinceName +
-          val.data.cityName +
-          val.data.countyName +
-          val.data.townName +
-          val.data.addressDetail;
+          provinceName + cityName + countyName + townName + addressDetail;
       } else {
         text.four = val.data.addressStr;
       }
-    };
-    const selected4 = (prevExistAdd, nowExistAdd, arr) => {
-      console.log(prevExistAdd);
-      console.log(nowExistAdd);
     };
 
     const switchModule = cal => {
@@ -304,7 +305,7 @@ export default createDemo({
       close1,
       showAddressExist,
       close2,
-      selected2,
+      selected,
       showPopupExist,
       showPopupCustomImg,
       showPopupOther,
@@ -312,9 +313,7 @@ export default createDemo({
       showAddressOther,
       showCustomImg,
       close3,
-      selected3,
       close4,
-      selected4,
       switchModule,
       closeMask,
       ...toRefs(icon),
@@ -330,7 +329,7 @@ export default createDemo({
     align-items: center;
 
     .nut-cell__value {
-      margin-right: 5px;
+      margin-right: 8px;
     }
   }
 }
