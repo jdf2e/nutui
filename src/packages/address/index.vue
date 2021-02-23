@@ -37,7 +37,7 @@
             :class="[index == tabIndex ? 'active' : '']"
             v-for="(item, key, index) in selectedRegion"
             :key="index"
-            :ref="'tabItem' + key"
+            :ref="key"
             @click="changeRegionTab(item, key, index)"
             ><span>{{ getTabName(item, index) }}</span></view
           >
@@ -198,10 +198,17 @@ export default create({
     console.log('componentName', componentName);
 
     const regionLine = ref<null | HTMLElement>(null);
-    const tabItemprovince = ref<null | HTMLElement>(null);
-    const tabItemcity = ref<null | HTMLElement>(null);
-    const tabItemcountry = ref<null | HTMLElement>(null);
-    const tabItemtown = ref<null | HTMLElement>(null);
+    // const tabItemprovince = ref<null | HTMLElement>(null);
+    // const tabItemcity = ref<null | HTMLElement>(null);
+    // const tabItemcountry = ref<null | HTMLElement>(null);
+    // const tabItemtown = ref<null | HTMLElement>(null);
+
+    const tabItemRef = reactive({
+      province: ref<null | HTMLElement>(null),
+      city: ref<null | HTMLElement>(null),
+      country: ref<null | HTMLElement>(null),
+      town: ref<null | HTMLElement>(null)
+    });
 
     const showPopup = ref(false);
     const showModule = ref('exist'); //展示 exist 还是 custom 主要用于’选择其他地址‘
@@ -250,21 +257,7 @@ export default create({
     };
     // 移动下面的红线
     const lineAnimation = () => {
-      let name;
-      switch (tabName.value[tabIndex.value]) {
-        case 'province':
-          name = tabItemprovince.value;
-          break;
-        case 'city':
-          name = tabItemcity.value;
-          break;
-        case 'country':
-          name = tabItemcountry.value;
-          break;
-        default:
-          name = tabItemtown.value;
-      }
-
+      const name = tabItemRef[tabName.value[tabIndex.value]];
       nextTick(() => {
         if (name) {
           const distance = name.offsetLeft;
@@ -463,15 +456,12 @@ export default create({
       getTabName,
       nextAreaList,
       regionLine,
-      tabItemprovince,
-      tabItemcity,
-      tabItemcountry,
-      tabItemtown,
       changeRegionTab,
       selectedExist,
       clickOverlay,
       handClose,
-      ...toRefs(props)
+      ...toRefs(props),
+      ...toRefs(tabItemRef)
     };
   }
 });

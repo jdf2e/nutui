@@ -37,50 +37,35 @@ app.use(Popup);
 ```javascript
 setup() {
     const showPopup = ref(false);
-    const province = ref([
-      { id: 1, name: '北京' },
-      { id: 2, name: '广西' },
-      { id: 3, name: '江西' },
-      { id: 4, name: '四川' }
-    ]); // 省
-
-    const city = ref([
-      { id: 7, name: '朝阳区' },
-      { id: 8, name: '崇文区' },
-      { id: 9, name: '昌平区' },
-      { id: 6, name: '石景山区' }
-    ]); // 市
-
-    const country = ref([
-      { id: 3, name: '八里庄街道' },
-      { id: 9, name: '北苑' },
-      { id: 4, name: '常营乡' }
-    ]); // 县
+    const address = reactive({
+      province:[
+        { id: 1, name: '北京' },
+        { id: 2, name: '广西' },
+        { id: 3, name: '江西' },
+        { id: 4, name: '四川' }
+      ],
+      city:[
+        { id: 7, name: '朝阳区' },
+        { id: 8, name: '崇文区' },
+        { id: 9, name: '昌平区' },
+        { id: 6, name: '石景山区' }
+      ],
+      country:[
+        { id: 3, name: '八里庄街道' },
+        { id: 9, name: '北苑' },
+        { id: 4, name: '常营乡' }
+      ],
+      town:[]
+    })
 
     const text = ref('请选择地址')
-
-    const town = ref([]); // 镇
 
     const showAddress = () => {
       showPopup.value = !showPopup.value;
     };
 
     const onChange = (cal) => {
-      let name = province;
-      switch (cal.next) {
-        case 'province':
-          name = province;
-          break;
-        case 'city':
-          name = city;
-          break;
-        case 'country':
-          name = city;
-          break;
-        default:
-          name = town;
-          break;
-      }
+      const name = address[cal.next]
       if (name.value.length < 1) {
         showPopup.value = false;
       }
@@ -90,7 +75,7 @@ setup() {
       text.value = val.data.addressStr;
     };
 
-    return { showPopup, province, city, country, town, text, showAddress, onChange, close };
+    return { showPopup, text, showAddress, onChange, close, ...toRefs(address) };
 }
 ```
 
@@ -277,27 +262,26 @@ setup() {
 ```javascript
 setup() {
     const showPopupOther = ref(false);
-    const province = ref([
-      { id: 1, name: '北京' },
-      { id: 2, name: '广西' },
-      { id: 3, name: '江西' },
-      { id: 4, name: '四川' }
-    ]); // 省
-
-    const city = ref([
-      { id: 7, name: '朝阳区' },
-      { id: 8, name: '崇文区' },
-      { id: 9, name: '昌平区' },
-      { id: 6, name: '石景山区' }
-    ]); // 市
-
-    const country = ref([
-      { id: 3, name: '八里庄街道' },
-      { id: 9, name: '北苑' },
-      { id: 4, name: '常营乡' }
-    ]); // 县
-
-    const town = ref([]); // 镇
+    const address = reactive({
+      province:[
+        { id: 1, name: '北京' },
+        { id: 2, name: '广西' },
+        { id: 3, name: '江西' },
+        { id: 4, name: '四川' }
+      ],
+      city:[
+        { id: 7, name: '朝阳区' },
+        { id: 8, name: '崇文区' },
+        { id: 9, name: '昌平区' },
+        { id: 6, name: '石景山区' }
+      ],
+      country:[
+        { id: 3, name: '八里庄街道' },
+        { id: 9, name: '北苑' },
+        { id: 4, name: '常营乡' }
+      ],
+      town:[]
+    })
     const existAddress = ref([
       {
         id: 1,
@@ -369,7 +353,7 @@ setup() {
       console.log('关闭弹层', val);
     };
 
-    return { showPopupOther, province, city, country, town, text, showAddressOther, switchModule, closeMask, close, selected, backBtnIcon };
+    return { showPopupOther, text, showAddressOther, switchModule, closeMask, close, selected, backBtnIcon, ...toRefs(address) };
 }
 ```
 # API
