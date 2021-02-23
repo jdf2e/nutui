@@ -46,6 +46,7 @@
     "@types/swiper": "^5.4.1",
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
+    "gsap": "^3.6.0",
     "sass": "^1.27.0",
     "sass-loader": "^10.0.4",
     "swiper": "^4.0.2",
