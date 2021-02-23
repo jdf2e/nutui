@@ -12,15 +12,20 @@
           class="arrow-back"
           @click="switchModule"
           v-if="showModule == 'custom' && type == 'exist' && backBtnIcon"
-          ><nut-icon name="left" color="#CCCCCC"></nut-icon
+          ><nut-icon :name="backBtnIcon" color="#CCCCCC"></nut-icon
         ></view>
         <view class="arrow-back" v-else></view>
 
-        <view v-if="type == 'custom'">{{ customAddressTitle }}</view>
-        <view v-if="type == 'exist'">{{ existAddressTitle }}</view>
+        <view v-if="showModule == 'custom'">{{ customAddressTitle }}</view>
+        <view v-if="showModule == 'exist'">{{ existAddressTitle }}</view>
 
         <view class="arrow-close" @click="handClose('cross')"
-          ><nut-icon name="circle-close" color="#CCCCCC" size="18px"></nut-icon
+          ><nut-icon
+            v-if="closeBtnIcon"
+            :name="closeBtnIcon"
+            color="#CCCCCC"
+            size="18px"
+          ></nut-icon
         ></view>
       </view>
 
@@ -32,7 +37,7 @@
             :class="[index == tabIndex ? 'active' : '']"
             v-for="(item, key, index) in selectedRegion"
             :key="index"
-            :ref="'tab-item-' + key"
+            :ref="'tabItem' + key"
             @click="changeRegionTab(item, key, index)"
             ><span>{{ getTabName(item, index) }}</span></view
           >
@@ -52,8 +57,11 @@
               @click="nextAreaList(item)"
             >
               <nut-icon
+                class="region-item-icon"
                 type="self"
-                name="circle-close"
+                :name="selectedIcon"
+                color="#FA2C19"
+                size="13px"
                 v-if="selectedRegion[tabName[tabIndex]].id == item.id"
               ></nut-icon
               >{{ item.name }}
@@ -61,6 +69,45 @@
           </ul>
         </view>
       </view>
+
+      <!-- 配送至 -->
+      <div class="exist-address" v-if="showModule == 'exist'">
+        <div class="exist-address-group">
+          <ul class="exist-ul">
+            <li
+              class="exist-item"
+              :class="[item.selectedAddress ? 'active' : '']"
+              v-for="(item, index) in existAddress"
+              :key="index"
+              @click="selectedExist(item)"
+            >
+              <nut-icon
+                class="exist-item-icon"
+                type="self"
+                :name="item.selectedAddress ? selectedIcon : defaultIcon"
+                :color="item.selectedAddress ? '#FA2C19' : ''"
+                size="13px"
+              ></nut-icon>
+
+              <span>{{
+                item.provinceName +
+                  item.cityName +
+                  item.countyName +
+                  item.townName +
+                  item.addressDetail
+              }}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="choose-other"
+          @click="switchModule"
+          v-if="isShowCustomAddress && showModule == 'exist'"
+        >
+          <div class="btn">{{ customAndExistTitle }}</div>
+        </div>
+      </div>
     </view>
   </nut-popup>
 </template>
@@ -68,6 +115,7 @@
 import { reactive, ref, toRefs, watch, nextTick } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('address');
+import { TweenMax } from 'gsap';
 
 export default create({
   props: {
@@ -118,147 +166,186 @@ export default create({
     defaultIcon: {
       // 地址选择列表前 - 默认的图标
       type: String,
-      default: ''
+      default: 'location2'
     },
     selectedIcon: {
       // 地址选择列表前 - 选中的图标
       type: String,
-      default: ''
+      default: 'Check'
     },
     closeBtnIcon: {
       // 关闭弹框按钮 icon
       type: String,
-      default: ''
+      default: 'circle-close'
     },
     backBtnIcon: {
       // 选择其他地址左上角返回 icon
       type: String,
-      default: ''
+      default: 'left'
     }
   },
   components: {},
   emits: [
     'update:show',
-    'onChange',
     'on-change',
     'selected',
     'close',
-    'closeMask',
     'close-mask',
-    'switchModule',
     'switch-module'
   ],
 
   setup(props, { emit }) {
     console.log('componentName', componentName);
 
-    const { existAddress, isShowCustomAddress, type, closeBtnIcon } = toRefs(
-      props
-    );
+    const regionLine = ref<null | HTMLElement>(null);
+    const tabItemprovince = ref<null | HTMLElement>(null);
+    const tabItemcity = ref<null | HTMLElement>(null);
+    const tabItemcountry = ref<null | HTMLElement>(null);
+    const tabItemtown = ref<null | HTMLElement>(null);
 
-    let showPopup = ref(false);
-    let showModule = ref('exist'); //展示 exist 还是 custom 主要用于’选择其他地址‘
-    let tabIndex = ref(0);
+    const showPopup = ref(false);
+    const showModule = ref('exist'); //展示 exist 还是 custom 主要用于’选择其他地址‘
+    const tabIndex = ref(0);
     const tabName = ref(['province', 'city', 'country', 'town']);
 
-    let regionList = reactive({
+    const regionList = reactive({
       province: props.province,
       city: props.city,
       country: props.country,
       town: props.town
     });
 
-    let selectedRegion = reactive({
+    const selectedRegion = reactive({
       province: {},
       city: {},
       country: {},
-      town: {},
-      addressIdStr: '',
-      addressStr: ''
+      town: {}
     }); //已选择的 省、市、县、镇
 
     let selectedExistAddress = reactive({}); // 当前选择的地址
 
-    let closeWay = ref('self');
+    const closeWay = ref('self');
 
     //获取已选地区列表名称
-    // const getTabName = (item, index)=>{
-    //   if (item.name) return item.name;
+    const getTabName = (item, index) => {
+      if (item.name) return item.name;
 
-    //   if (tabIndex.value < index) {
-    //     return item.name;
-    //   } else {
-    //     return '请选择';
-    //   }
-    // }
-    // 切换下一级列表
-    // const nextAreaList = (item) => {
-    //   // onchange 接收的参数
-    //   const calBack = {
-    //     custom: tabName.value[tabIndex.value]
-    //   };
+      if (tabIndex.value < index) {
+        return item.name;
+      } else {
+        return '请选择';
+      }
+    };
+    // 手动关闭 点击叉号(cross)，或者蒙层(mask)
+    const handClose = (type = 'self') => {
+      if (!props.closeBtnIcon) return;
 
-    //   selectedRegion[tabName[tabIndex.value]] = item;
+      closeWay.value = type == 'cross' ? 'cross' : 'self';
 
-    //   for (let i = tabIndex.value; i < tabIndex.value - 1; i++) {
-    //     selectedRegion[tabName[i + 1]] = {};
-    //   }
-
-    //   if (tabIndex.value < 3) {
-    //     tabIndex.value = tabIndex.value + 1;
-    //     lineAnimation();
-
-    //     // 切换下一个
-    //     calBack.next = tabName[tabIndex.value];
-    //     calBack.value = item;
-    //     emit('onChange', calBack);
-    //     emit('on-change', calBack);
-    //   } else {
-    //     handClose();
-    //   }
-    // }
-    //切换地区Tab
-    // const changeRegionTab = (item, key, index) => {
-    //   tabIndex.value = index;
-    //   lineAnimation();
-    // }
+      showPopup.value = false;
+    };
+    // 点击遮罩层关闭
+    const clickOverlay = () => {
+      closeWay.value = 'mask';
+    };
     // 移动下面的红线
-    // const lineAnimation = () => {
-    //   const name = 'tab-item-' + tabName[tabIndex.value];
-    //   nextTick(() => {
-    //     // if (this.$refs[name] && this.$refs[name][0]) {
-    //     //   const distance = this.$refs[name][0].offsetLeft;
-    //     //   TweenMax.to(this.$refs.regionLine, 0.5, { left: distance });
-    //     // }
-    //   });
-    // }
+    const lineAnimation = () => {
+      let name;
+      switch (tabName.value[tabIndex.value]) {
+        case 'province':
+          name = tabItemprovince.value;
+          break;
+        case 'city':
+          name = tabItemcity.value;
+          break;
+        case 'country':
+          name = tabItemcountry.value;
+          break;
+        default:
+          name = tabItemtown.value;
+      }
+
+      nextTick(() => {
+        if (name) {
+          const distance = name.offsetLeft;
+          TweenMax.to(regionLine.value, 0.5, { left: distance });
+        }
+      });
+    };
+    // 切换下一级列表
+    const nextAreaList = item => {
+      // onchange 接收的参数
+      const calBack = {
+        next: '',
+        value: '',
+        custom: tabName.value[tabIndex.value]
+      };
+
+      selectedRegion[tabName.value[tabIndex.value]] = item;
+
+      for (let i = tabIndex.value; i < tabIndex.value - 1; i++) {
+        selectedRegion[tabName.value[i + 1]] = {};
+      }
+
+      if (tabIndex.value < 3) {
+        tabIndex.value = tabIndex.value + 1;
+
+        lineAnimation();
+
+        // 切换下一个
+        calBack.next = tabName.value[tabIndex.value];
+        calBack.value = item;
+        emit('on-change', calBack);
+      } else {
+        handClose();
+      }
+    };
+    //切换地区Tab
+    const changeRegionTab = (item, key, index) => {
+      tabIndex.value = index;
+      lineAnimation();
+    };
 
     // 选择现有地址
-    // const selectedExist = (item) => {
-    //   let copyExistAdd = existAddress;
-    //   let prevExistAdd = {};
+    const selectedExist = item => {
+      const copyExistAdd = props.existAddress as [];
+      let prevExistAdd = {};
 
-    //   copyExistAdd.forEach((list, index) => {
-    //     if (list.selectedAddress) {
-    //       prevExistAdd = list;
-    //     }
-    //     list.selectedAddress = false;
-    //   });
+      copyExistAdd.forEach((list, index) => {
+        if (list && (list as any).selectedAddress) {
+          prevExistAdd = list;
+        }
+        (list as any).selectedAddress = false;
+      });
 
-    //   item.selectedAddress = true;
+      item.selectedAddress = true;
 
-    //   selectedExistAddress = item;
+      selectedExistAddress = item;
 
-    //   emit('selected', prevExistAdd, item, copyExistAdd);
+      emit('selected', prevExistAdd, item, copyExistAdd);
 
-    //   handClose();
-    // }
+      handClose();
+    };
+    // 初始化
+    const initAddress = () => {
+      for (let i = 0; i < tabName.value.length; i++) {
+        selectedRegion[tabName.value[i]] = {};
+      }
+      tabIndex.value = 0;
+      lineAnimation();
+    };
 
     // 关闭
     const close = () => {
-      const that = this;
+      console.log('关闭');
 
-      const resCopy = Object.assign({}, selectedRegion);
+      const resCopy = Object.assign(
+        {
+          addressIdStr: '',
+          addressStr: ''
+        },
+        selectedRegion
+      );
 
       const res = {
         type: showModule.value,
@@ -285,35 +372,15 @@ export default create({
         res.data = selectedExistAddress;
       }
 
-      // initAddress();
+      initAddress();
 
       if (closeWay.value == 'self') {
         emit('close', res);
       } else {
-        emit('closeMask', { closeWay: closeWay });
         emit('close-mask', { closeWay: closeWay });
       }
     };
-    // 手动关闭 点击叉号(cross)，或者蒙层(mask)
-    // const handClose = (type = 'self') => {
-    //   if (!closeBtnIcon) return;
 
-    //   closeWay.value = type == 'cross' ? 'cross' : 'self';
-
-    //   showPopup.value = false;
-    // }
-    // 点击遮罩层关闭
-    const clickOverlay = () => {
-      closeWay.value = 'mask';
-    };
-    // 初始化
-    // const initAddress = () => {
-    //   for (let i = 0; i < tabName.value.length; i++) {
-    //     selectedRegion[tabName[i]] = {};
-    //   }
-    //   tabIndex.value = 0;
-    //   lineAnimation();
-    // }
     // 选择其他地址
     const switchModule = () => {
       if (showModule.value == 'exist') {
@@ -322,9 +389,8 @@ export default create({
         showModule.value = 'exist';
       }
 
-      // initAddress();
+      initAddress();
 
-      emit('switchModule', { type: showModule.value });
       emit('switch-module', { type: showModule.value });
     };
 
@@ -341,7 +407,7 @@ export default create({
         if (!value) {
           emit('update:show', false);
         } else {
-          console.log('打开地址弹框');
+          showModule.value = props.type;
         }
       }
     );
@@ -374,12 +440,12 @@ export default create({
     watch(
       () => props.existAddress,
       value => {
-        //  existAddress.value = newVal;
-        // value.forEach((item, index) => {
-        //   if (item.selectedAddress) {
-        //     this.selectedExistAddress = item;
-        //   }
-        // });
+        //  existAddress.value = value;
+        value.forEach((item, index) => {
+          if ((item as any).selectedAddress) {
+            selectedExistAddress = item as {};
+          }
+        });
       }
     );
 
@@ -394,6 +460,17 @@ export default create({
       switchModule,
       closeWay,
       close,
+      getTabName,
+      nextAreaList,
+      regionLine,
+      tabItemprovince,
+      tabItemcity,
+      tabItemcountry,
+      tabItemtown,
+      changeRegionTab,
+      selectedExist,
+      clickOverlay,
+      handClose,
       ...toRefs(props)
     };
   }

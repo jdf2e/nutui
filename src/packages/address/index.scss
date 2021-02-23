@@ -75,10 +75,8 @@
             font-weight: bold;
           }
 
-          .nut-icon {
+          .region-item-icon {
             margin-right: 6px;
-            width: 13px;
-            height: 13px;
           }
         }
       }
@@ -105,10 +103,8 @@
           &.active {
             font-weight: bold;
           }
-          svg {
+          .exist-item-icon {
             margin-right: 9px;
-            width: 13px;
-            height: 13px;
           }
           span {
             display: inline-block;
