@@ -462,7 +462,18 @@ module.exports = {
     },
     {
       name: '业务组件',
-      packages: []
+      packages: [
+        {
+          version: '3.0.0',
+          name: 'Address',
+          type: 'component',
+          cName: '地址组件',
+          desc: '地址组件',
+          sort: 1,
+          show: true,
+          author: 'yangxiaolu3'
+        }
+      ]
     }
   ]
 };
