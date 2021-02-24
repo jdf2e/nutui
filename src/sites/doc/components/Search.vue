@@ -26,7 +26,7 @@
 </template>
 <script>
 import { defineComponent, reactive, onMounted, watch } from 'vue';
-import { nav } from '@/config.js';
+import { nav } from '@/config.json';
 export default defineComponent({
   name: 'search',
   setup() {
@@ -39,11 +39,6 @@ export default defineComponent({
       searchCName: ''
     });
     onMounted(() => {
-      const files = require.context('@/packages', true, /doc\.md$/);
-      // console.log(files)
-      files.keys().forEach(component => {
-        const componentEntity = files(component).default;
-      });
       // console.log('nav', nav);
       nav.forEach(item => {
         item.packages.forEach(value => {

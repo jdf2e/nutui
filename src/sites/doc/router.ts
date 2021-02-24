@@ -5,32 +5,57 @@ import Resource from './views/Resource.vue';
 import Main from './views/Main.vue';
 import { HttpClient } from '../service/HttpClient';
 const pagesRouter: Array<RouteRecordRaw> = [];
-const files = require.context('@/packages', true, /doc\.md$/);
-files.keys().forEach(component => {
-  const componentEntity = files(component).default;
-  const name = `${component.split('/')[1]}`;
+
+/** webpack */
+// const files = require.context('@/packages', true, /doc\.md$/);
+// files.keys().forEach(component => {
+//   const componentEntity = files(component).default;
+//   const name = `${component.split('/')[1]}`;
+//   pagesRouter.push({
+//     path: '/' + name,
+//     component: componentEntity,
+//     name
+//   });
+// });
+
+/** vite */
+const modulesPage = import.meta.glob('/src/packages/**/doc.md');
+for (const path in modulesPage) {
+  let name = (/packages\/(.*)\/doc.md/.exec(path) as any[])[1];
   pagesRouter.push({
     path: '/' + name,
-    component: componentEntity,
+    component: modulesPage[path],
     name
   });
-});
-const docs = require.context('@/docs', true, /\.md$/);
-docs.keys().forEach(component => {
-  const componentEntity = docs(component).default;
-  const name = `${component.split('/')[1].replace('.md', '')}`;
+}
+
+/** webpack */
+// const docs = require.context('@/docs', true, /\.md$/);
+// docs.keys().forEach(component => {
+//   const componentEntity = docs(component).default;
+//   const name = `${component.split('/')[1].replace('.md', '')}`;
+//   pagesRouter.push({
+//     path: '/' + name,
+//     component: componentEntity,
+//     name
+//   });
+// });
+
+/** vite */
+const modulesDocs = import.meta.glob('/src/docs/*.md');
+for (const path in modulesDocs) {
+  let name = (/docs\/(.*).md/.exec(path) as any[])[1];
   pagesRouter.push({
     path: '/' + name,
-    component: componentEntity,
+    component: modulesDocs[path],
     name
   });
-});
+}
 
 const routes: Array<RouteRecordRaw> = [
-  { path: '/', redirect: '/main' },
   {
-    path: '/main',
-    name: 'main',
+    path: '/',
+    name: '/',
     component: Main
     // children: pagesRouter
   },
@@ -46,6 +71,13 @@ const routes: Array<RouteRecordRaw> = [
     component: Resource
   }
 ];
+routes.push({
+  name: 'notFound',
+  path: '/:path(.*)+',
+  redirect: {
+    name: '/'
+  }
+});
 const router = createRouter({
   history: createWebHashHistory(),
   routes,

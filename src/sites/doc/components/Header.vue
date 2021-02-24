@@ -20,7 +20,7 @@
             </router-link>
           </li>
           <li class="nav-item" :class="{ active: isActive(header[2].name) }">
-            <a href="http://localhost:8080/demo.html#/">
+            <a href="demo.html#/">
               {{ header[2].cName }}
             </a>
           </li>
@@ -67,7 +67,7 @@
 <script lang="ts">
 import { defineComponent, reactive, computed, onMounted } from 'vue';
 import Search from './Search.vue';
-import { header } from '@/config';
+import { header } from '@/config.json';
 import { currentRoute, themeColor } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-header',
@@ -102,7 +102,7 @@ export default defineComponent({
     };
     const isActive = computed(() => {
       return function(name: string) {
-        console.log(name, currentRoute.value);
+        // console.log(name, currentRoute.value);
         // console.log('name1', currentRoute.value == name.toLowerCase());
         return currentRoute.value == name.toLowerCase();
       };
