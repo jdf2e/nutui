@@ -58,12 +58,6 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from 'vue';
-import {
-  onBeforeRouteUpdate,
-  RouteLocationNormalized,
-  useRoute
-} from 'vue-router';
-import { currentRoute } from '@/sites/assets/util/ref';
 import Header from '@/sites/doc/components/Header.vue';
 import router from '../router';
 export default defineComponent({
@@ -72,9 +66,6 @@ export default defineComponent({
   setup() {
     const data = reactive({});
 
-    onMounted(() => {
-      const route = useRoute();
-    });
     function toIntro() {
       router.push({ path: '/intro' });
     }

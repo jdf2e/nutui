@@ -42,7 +42,7 @@
 <script lang="ts">
 import { defineComponent, reactive, computed, onMounted } from 'vue';
 import { currentRoute } from '@/sites/assets/util/ref';
-import { nav, docs } from '@/config';
+import { nav, docs } from '@/config.json';
 export default defineComponent({
   name: 'doc-nav',
   setup() {
