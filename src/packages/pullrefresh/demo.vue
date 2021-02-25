@@ -12,7 +12,7 @@
           <div class="content" id="pull">
             <div class="main">
               <div
-                class="text-data"
+                class="pull-data"
                 v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9]"
                 :key="item"
                 >我是测试数据 {{ item }}</div
@@ -36,7 +36,7 @@
           <div class="contentH" id="pullH">
             <div class="mainH">
               <div
-                class="text-data"
+                class="pull-data"
                 v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9]"
                 :key="item"
                 >我是测试数据 {{ item }}</div
@@ -92,19 +92,39 @@ export default createDemo({
   .mainH {
     display: flex;
     height: 100%;
-    .text-data {
-      height: 90% !important;
-      width: 120px !important;
+    .pull-data {
       flex-shrink: 0;
-      padding: 0 !important;
-      margin: 2px 10px 0 0 !important;
+      display: flex;
+      align-items: center;
+      height: 90%;
+      width: 120px;
       justify-content: center;
+      padding: 0;
+      margin: 2px 10px 0 0;
+      background: white;
+      border-radius: 7px;
+      box-shadow: 0px 1px 7px 0px #edeef1;
+      line-height: 19px;
+      font-size: 13px;
+      color: #666666;
     }
   }
 }
 .content {
   .main {
-    .text-data {
+    .pull-data {
+      margin: 15px auto 20px;
+      padding-left: 16px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 46px;
+      background: rgba(255, 255, 255, 1);
+      border-radius: 7px;
+      box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
+      line-height: 19px;
+      font-size: 13px;
+      color: rgba(102, 102, 102, 1);
       &:first-child {
         margin-top: 0 !important;
       }
