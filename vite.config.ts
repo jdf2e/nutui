@@ -37,7 +37,7 @@ export default defineConfig({
     },
     lib: {
       entry: 'src/nutui.ts',
-      name: 'MyLib'
+      name: 'nutui'
     }
   }
 });
