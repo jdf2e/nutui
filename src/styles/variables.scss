@@ -181,3 +181,10 @@ $notify-warning-background-color: linear-gradient(
   rgba(255, 93, 13, 1) 0%,
   rgba(255, 154, 13, 1) 100%
 );
+
+view {
+  display: inline-block;
+}
+view-block {
+  display: block;
+}
