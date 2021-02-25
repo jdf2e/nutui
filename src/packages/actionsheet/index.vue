@@ -4,50 +4,39 @@
       v-model:show="state.maskIsVisible"
       position="bottom"
       round
+      :closeable="closeAbled"
       @click-overlay="closeMask"
     >
       <view class="nut-actionsheet-panel">
-        <view class="nut-actionsheet-custom">
-          <slot name="custom"></slot>
-        </view>
-        <dl
-          class="nut-actionsheet-modal"
-          v-if="$slots.title || $slots.subTitle"
-        >
-          <dt class="nut-actionsheet-title"><slot name="title"></slot></dt>
-          <dd class="nut-actionsheet-sub-title"
-            ><slot name="sub-title"></slot
-          ></dd>
-        </dl>
-        <ul class="nut-actionsheet-menu">
-          <li class="nut-actionsheet-item desc" v-if="description">{{
+        <view v-if="title" class="nut-actionsheet-title">{{ title }}</view>
+        <slot></slot>
+        <view class="nut-actionsheet-menu">
+          <view class="nut-actionsheet-item desc" v-if="description">{{
             description
-          }}</li>
-          <li
-            class="nut-actionsheet-item"
-            :class="{
-              'nut-actionsheet-item-disabled': item.disable
-            }"
-            :style="{ color: isHighlight(item) }"
+          }}</view>
+          <view
             v-for="(item, index) of menuItems"
+            class="nut-actionsheet-item"
+            :class="{ 'nut-actionsheet-item-disabled': item.disable }"
+            :style="{ color: isHighlight(item) }"
             :key="index"
             @click="chooseItem(item, index)"
             >{{ item[optionTag]
-            }}<view class="subdesc">{{ item.subname }}</view></li
+            }}<view class="subdesc">{{ item[subname] }}</view></view
           >
-        </ul>
-        <div
+        </view>
+        <view
           class="nut-actionsheet-cancel"
           v-if="cancelTxt"
           @click="cancelActionSheet"
-          >{{ cancelTxt }}</div
         >
+          {{ cancelTxt }}
+        </view>
       </view>
     </nut-popup>
   </view>
 </template>
 <script>
-import Popup from '@/packages/popup/index.vue';
 import { createComponent } from '@/utils/create';
 import { watch, reactive } from 'vue';
 const { create } = createComponent('actionsheet');
@@ -73,6 +62,14 @@ export default create({
       type: String,
       default: ''
     },
+    title: {
+      type: String,
+      default: ''
+    },
+    closeAbled: {
+      type: Boolean,
+      default: false
+    },
     description: {
       type: String,
       default: ''
@@ -88,27 +85,27 @@ export default create({
   },
   emits: ['click', 'close', 'cancel', 'choose'],
 
-  setup(props, { emit }) {
-    console.log(props.isVisible, 'props.isVisible');
+  setup(props, { slots, emit }) {
+    console.log(slots.default?.());
+
     // state
     const state = reactive({
-      maskIsVisible: false
+      maskIsVisible: false,
+      descf: slots.default
     });
 
     // methods
     const isHighlight = item => {
       return item.color;
     };
-
     const closeActionSheet = () => {
       state.maskIsVisible = false;
-      //   console.log(state.maskIsVisible, 'mask');
-      emit('close');
+      // emit('close');
     };
 
     const cancelActionSheet = () => {
       closeActionSheet();
-      emit('cancel');
+      // emit('cancel');
     };
 
     const chooseItem = (item, index) => {
@@ -123,17 +120,9 @@ export default create({
     watch(
       () => props.isVisible,
       () => {
-        console.log(props.isVisible, 'val');
         state.maskIsVisible = true;
       }
-      // val => {
-      //   console.log(val, 'val');
-      //   if (val) {
-      //     state.maskIsVisible = true;
-      //   }
-      // }
     );
-
     return {
       isHighlight,
       closeActionSheet,

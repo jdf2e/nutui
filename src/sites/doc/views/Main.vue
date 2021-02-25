@@ -6,8 +6,8 @@
       <div class="content-smile"> </div>
       <div class="content-subTitle">一款具有京东风格的VUE组件</div>
       <div class="content-button">
-        <div class="leftButton">
-          <div class="leftButtonText" @click="toIntro">开始使用</div>
+        <div class="leftButton" @click="toIntro">
+          <div class="leftButtonText">开始使用</div>
         </div>
         <div class="rightButton">
           <div class="rightButtonText">扫码体验</div>
