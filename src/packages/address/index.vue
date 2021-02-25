@@ -6,46 +6,50 @@
     @open="closeWay = 'self'"
     v-model:show="showPopup"
   >
-    <view class="nut-address">
-      <view class="title">
-        <view
+    <view-block class="nut-address">
+      <view-block class="title">
+        <view-block
           class="arrow-back"
           @click="switchModule"
           v-if="showModule == 'custom' && type == 'exist' && backBtnIcon"
           ><nut-icon :name="backBtnIcon" color="#CCCCCC"></nut-icon
-        ></view>
-        <view class="arrow-back" v-else></view>
+        ></view-block>
+        <view-block class="arrow-back" v-else></view-block>
 
-        <view v-if="showModule == 'custom'">{{ customAddressTitle }}</view>
-        <view v-if="showModule == 'exist'">{{ existAddressTitle }}</view>
+        <view-block v-if="showModule == 'custom'">{{
+          customAddressTitle
+        }}</view-block>
+        <view-block v-if="showModule == 'exist'">{{
+          existAddressTitle
+        }}</view-block>
 
-        <view class="arrow-close" @click="handClose('cross')"
+        <view-block class="arrow-close" @click="handClose('cross')"
           ><nut-icon
             v-if="closeBtnIcon"
             :name="closeBtnIcon"
             color="#CCCCCC"
             size="18px"
           ></nut-icon
-        ></view>
-      </view>
+        ></view-block>
+      </view-block>
 
       <!-- 请选择 -->
-      <view class="custom-address" v-if="showModule == 'custom'">
-        <view class="region-tab">
-          <view
+      <view-block class="custom-address" v-if="showModule == 'custom'">
+        <view-block class="region-tab">
+          <view-block
             class="tab-item"
             :class="[index == tabIndex ? 'active' : '']"
             v-for="(item, key, index) in selectedRegion"
             :key="index"
             :ref="key"
             @click="changeRegionTab(item, key, index)"
-            ><span>{{ getTabName(item, index) }}</span></view
+            ><view>{{ getTabName(item, index) }}</view></view-block
           >
 
-          <view class="region-tab-line" ref="regionLine"></view>
-        </view>
+          <view-block class="region-tab-line" ref="regionLine"></view-block>
+        </view-block>
 
-        <view class="region-con">
+        <view-block class="region-con">
           <ul class="region-group">
             <li
               v-for="(item, index) in regionList[tabName[tabIndex]]"
@@ -67,8 +71,8 @@
               >{{ item.name }}
             </li>
           </ul>
-        </view>
-      </view>
+        </view-block>
+      </view-block>
 
       <!-- 配送至 -->
       <div class="exist-address" v-if="showModule == 'exist'">
@@ -89,13 +93,13 @@
                 size="13px"
               ></nut-icon>
 
-              <span>{{
+              <view>{{
                 item.provinceName +
                   item.cityName +
                   item.countyName +
                   item.townName +
                   item.addressDetail
-              }}</span>
+              }}</view>
             </li>
           </ul>
         </div>
@@ -108,7 +112,7 @@
           <div class="btn">{{ customAndExistTitle }}</div>
         </div>
       </div>
-    </view>
+    </view-block>
   </nut-popup>
 </template>
 <script lang="ts">

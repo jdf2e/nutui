@@ -1,43 +1,45 @@
 <template>
-  <view
+  <view-block
     class="nut-infiniteloading"
     ref="scroller"
     @touchstart="touchStart"
     @touchmove="touchMove"
     @touchend="touchEnd"
   >
-    <view class="nut-infinite-top" ref="refreshTop" :style="getStyle">
-      <view class="top-box" v-if="!slotRefreshLoading">
+    <view-block class="nut-infinite-top" ref="refreshTop" :style="getStyle">
+      <view-block class="top-box" v-if="!slotRefreshLoading">
         <nut-icon
           class="top-img"
           name="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png"
         ></nut-icon>
-        <view class="top-text">松开刷新</view>
-      </view>
+        <view-block class="top-text">松开刷新</view-block>
+      </view-block>
 
       <slot name="refreshLoading" v-else></slot>
-    </view>
+    </view-block>
 
-    <view class="nut-infinite-container"><slot></slot></view>
+    <view-block class="nut-infinite-container"><slot></slot></view-block>
 
-    <view class="nut-infinite-bottom">
+    <view-block class="nut-infinite-bottom">
       <template v-if="isInfiniting">
-        <view v-if="!slotLoading" class="bottom-box">
+        <view-block v-if="!slotLoading" class="bottom-box">
           <nut-icon
             class="bottom-img"
             name="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png"
           ></nut-icon>
-          <view class="bottom-text">加载中···</view>
-        </view>
+          <view-block class="bottom-text">加载中···</view-block>
+        </view-block>
 
         <slot name="loading" v-else></slot>
       </template>
       <template v-else-if="!hasMore">
-        <view class="tips" v-if="!slotUnloadMore">{{ unloadMoreTxt }}</view>
+        <view-block class="tips" v-if="!slotUnloadMore">{{
+          unloadMoreTxt
+        }}</view-block>
         <slot name="unloadMore" v-else></slot>
       </template>
-    </view>
-  </view>
+    </view-block>
+  </view-block>
 </template>
 <script lang="ts">
 import {
