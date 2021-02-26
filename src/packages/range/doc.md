@@ -1,33 +1,147 @@
-#  range组件
+# range组件
 
-  ### 介绍
+### 介绍
   
-  基于 xxxxxxx
-  
-  ### 安装
-  
-  
-  
-  ## 代码演示
-  
-  ### 基础用法1
-  
-  
+滑动输入条，用于在给定的范围内选择一个值。
+
+### 安装
+
+```javascript
+import { createApp } from 'vue';
+import { Range } from '@nutui/nutui';
+const app = createApp();
+app.use(Range);
+```
+
+## 代码演示
+
+### 基础用法
+```html
+<nut-range v-model="value" @change="onChange"></nut-range>
+```
+```javascript
+import { ref } from 'vue';
+import { Toast } from '@nutui/nutui';
+
+export default {
+  setup() {
+    const value = ref(40);
+    const onChange = (value) => Toast.text('当前值：' + value);
+    return {
+      value,
+      onChange,
+    };
+  },
+};
+```
+
+### 双滑块
+```html
+<nut-range range v-model="value" @change="onChange"></nut-range>
+```
+```javascript
+import { ref } from 'vue';
+import { Toast } from '@nutui/nutui';
+
+export default {
+  setup() {
+    const value = ref([20, 80]);
+    const onChange = (value) => Toast.text('当前值：' + value);
+    return {
+      value,
+      onChange,
+    };
+  },
+};
+```
+
+### 指定范围
+```html
+<nut-range v-model="value" :max="10" :min="-10" @change="onChange"></nut-range>
+```
+
+### 设置步长
+```html
+<nut-range v-model="value" :step="5" @change="onChange"></nut-range>
+```
+### 隐藏范围
+```html
+<nut-range v-model="value" hidden-range @change="onChange"></nut-range>
+```
+
+### 隐藏标签
+```html
+<nut-range v-model="value" hidden-tag @change="onChange"></nut-range>
+```
+
+### 禁用
+```html
+<nut-range v-model="value" disabled @change="onChange"></nut-range>
+```
+
+### 自定义样式
+```html
+<nut-range
+  v-model="value"
+  inactive-color="rgba(163,184,255,1)"
+  button-color="rgba(52,96,250,1)"
+  active-color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%"
+  @change="onChange">
+</nut-range>
+```
+
+### 自定义按钮
+```html
+<nut-range v-model="value" @change="onChange">
+  <template #button>
+    <div class="custom-button">{{ value }}</div>
+  </template>
+</nut-range>
+
+<style>
+  .custom-button {
+    width: 26px;
+    color: #fff;
+    font-size: 10px;
+    line-height: 18px;
+    text-align: center;
+    background-color: #ee0a24;
+    border-radius: 100px;
+  }
+</style>
+```
+
   ## API
   
   ### Props
   
-  | 参数         | 说明                             | 类型   | 默认值           |
-  |--------------|----------------------------------|--------|------------------|
-  | name         | 图标名称或图片链接               | String | -                |
-  | color        | 图标颜色                         | String | -                |
-  | size         | 图标大小，如 '20px' '2em' '2rem' | String | -                |
-  | class-prefix | 类名前缀，用于使用自定义图标     | String | 'nutui-iconfont' |
-  | tag          | HTML 标签                        | String | 'i'              |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| v-model | 当前进度百分比 | _number \| number[]_ | `0` |
+| range | 是否开启双滑块模式 | _boolean_ | `false` |
+| max | 最大值 | _number \| string_ | `100` |
+| min | 最小值 | _number \| string_ | `0` |
+| step | 步长 | _number \| string_ | `1` |
+| disabled | 是否禁用滑块 | _boolean_ | `false` |
+| hidden-range | 是否隐藏范围值 | _boolean_ | `false` |
+| hidden-tag | 是否隐藏标签 | _boolean_ | `false` |
+| active-color | 进度条激活态颜色 | _string_ | `rgba(250, 44, 25, 1)` |
+| inactive-color | 进度条非激活态颜色 | _string_ | `rgba(255, 163, 154, 1)` |
+| button-color | 按钮颜色 | _string_ | `rgba(250, 44, 25, 1)` |
+
   
-  ### Events
-  
-  | 事件名 | 说明           | 回调参数     |
-  |--------|----------------|--------------|
-  | click  | 点击图标时触发 | event: Event |
-  
+### Events
+
+| 事件名             | 说明                     | 回调参数        |
+| ------------------ | ------------------------ | --------------- |
+| update:model-value | 进度变化时实时触发       | value: 当前进度 |
+| change             | 进度变化且结束拖动后触发 | value: 当前进度 |
+| drag-start         | 开始拖动时触发           | -               |
+| drag-end           | 结束拖动时触发           | -               |
+
+### Slots
+
+| 名称   | 说明           |
+| ------ | -------------- |
+| button | 自定义滑动按钮 |
+

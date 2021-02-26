@@ -12,14 +12,14 @@
     <nut-cell class="cell">
       <nut-range
         v-model="value3"
-        max="10"
-        min="-10"
+        :max="10"
+        :min="-10"
         @change="onChange"
       ></nut-range>
     </nut-cell>
     <h2>设置步长</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value4" step="5" @change="onChange"></nut-range>
+      <nut-range v-model="value4" :step="5" @change="onChange"></nut-range>
     </nut-cell>
     <h2>隐藏范围</h2>
     <nut-cell class="cell">
@@ -29,10 +29,14 @@
     <nut-cell class="cell">
       <nut-range hidden-tag v-model="value6" @change="onChange"></nut-range>
     </nut-cell>
+    <h2>禁用</h2>
+    <nut-cell class="cell">
+      <nut-range disabled v-model="value7"></nut-range>
+    </nut-cell>
     <h2>自定义样式</h2>
     <nut-cell class="cell">
       <nut-range
-        v-model="value7"
+        v-model="value8"
         @change="onChange"
         inactive-color="rgba(163,184,255,1)"
         button-color="rgba(52,96,250,1)"
@@ -41,15 +45,11 @@
     </nut-cell>
     <h2>自定义按钮</h2>
     <nut-cell class="cell">
-      <nut-range v-model="value8" @change="onChange">
+      <nut-range v-model="value9" @change="onChange">
         <template #button>
           <div class="custom-button">{{ value10 }}</div>
         </template>
       </nut-range>
-    </nut-cell>
-    <h2>禁用</h2>
-    <nut-cell class="cell">
-      <nut-range disabled v-model="value9"></nut-range>
     </nut-cell>
   </div>
 </template>
@@ -71,7 +71,7 @@ export default createDemo({
       value5: 30,
       value6: 40,
       value7: 50,
-      value8: [20, 80],
+      value8: 40,
       value9: 60,
       value10: 50
     });

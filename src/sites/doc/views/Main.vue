@@ -6,8 +6,8 @@
       <div class="content-smile"> </div>
       <div class="content-subTitle">一款具有京东风格的VUE组件</div>
       <div class="content-button">
-        <div class="leftButton">
-          <div class="leftButtonText" @click="toIntro">开始使用</div>
+        <div class="leftButton" @click="toIntro">
+          <div class="leftButtonText">开始使用</div>
         </div>
         <div class="rightButton">
           <div class="rightButtonText">扫码体验</div>
@@ -58,12 +58,6 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from 'vue';
-import {
-  onBeforeRouteUpdate,
-  RouteLocationNormalized,
-  useRoute
-} from 'vue-router';
-import { currentRoute } from '@/sites/assets/util/ref';
 import Header from '@/sites/doc/components/Header.vue';
 import router from '../router';
 export default defineComponent({
@@ -72,9 +66,6 @@ export default defineComponent({
   setup() {
     const data = reactive({});
 
-    onMounted(() => {
-      const route = useRoute();
-    });
     function toIntro() {
       router.push({ path: '/intro' });
     }

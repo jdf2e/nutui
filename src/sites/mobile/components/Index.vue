@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <div class="index-header">
-      <img src="@/sites/assets/images/logo-red.png" alt="" srcset="" />
+      <img src="../../assets/images/logo-red.png" alt="" srcset="" />
       <div class="info">
         <h1>Nut UI</h1>
         <p>一套京东风格的轻量级移动端 Vue 组件库</p>
@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
-import { nav, versions } from '@/config';
+import { nav, versions } from '@/config.json';
 export default defineComponent({
   name: 'doc',
   components: {},

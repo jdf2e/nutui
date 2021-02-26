@@ -1,6 +1,5 @@
 type EnvConfig = {
   baseUrl: string;
-  buildTime: number | string | undefined;
   isPrd: boolean;
 };
 
@@ -13,13 +12,10 @@ type EnvConfig = {
 
 const config: EnvConfig = {
   baseUrl: '',
-  buildTime: process.env.buildTime,
   isPrd: true // 是否为线上
 };
-
-console.log('NODE_ENV', process.env.NODE_ENV);
-
-switch (process.env.NODE_ENV) {
+let p = 'development';
+switch (p) {
   case 'development':
     /*
      * 开发环境    => npm run dev

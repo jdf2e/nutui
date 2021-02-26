@@ -2,71 +2,75 @@
   <div class="demo-list demo">
     <h4>基本用法(选择类)</h4>
     <div>
-      <nut-cell
-        :showIcon="true"
-        :isLink="true"
-        @click="switchActionSheet('isVisible1')"
-      >
-        <span><label>基础用法</label></span>
-        <div class="selected-option">{{ state.val1 }}</div>
-      </nut-cell>
-      <nut-cell
-        :showIcon="true"
-        :isLink="true"
-        @click="switchActionSheet('isVisible2')"
-      >
-        <span><label>展示取消按钮</label></span>
-        <div class="selected-option">{{ state.val2 }}</div>
-      </nut-cell>
       <div>
-        <nut-cell :isLink="true" @click="switchActionSheet('isVisible3')">
-          <span><label>展示描述信息</label></span>
+        <nut-cell
+          :showIcon="true"
+          :isLink="true"
+          @click="switchActionSheet('isVisible1')"
+        >
+          <span><label>基础用法</label></span>
+          <div class="selected-option">{{ state.val1 }}</div>
+        </nut-cell>
+        <nut-cell
+          :showIcon="true"
+          :isLink="true"
+          @click="switchActionSheet('isVisible2')"
+        >
+          <span><label>展示取消按钮</label></span>
+          <div class="selected-option">{{ state.val2 }}</div>
+        </nut-cell>
+        <div>
+          <nut-cell :isLink="true" @click="switchActionSheet('isVisible3')">
+            <span><label>展示描述信息</label></span>
+            <div class="selected-option">{{ state.val3 }}</div>
+          </nut-cell>
+        </div>
+        <h4>选项状态</h4>
+
+        <nut-cell :isLink="true" @click="switchActionSheet('isVisible4')">
+          <span><label>选项状态</label></span>
+          <!-- <div class="selected-option">打开</div> -->
+        </nut-cell>
+        <h4>自定义面板</h4>
+
+        <nut-cell :isLink="true" @click="switchActionSheet('isVisible5')">
+          <span><label>自定义内容</label></span>
+          <!-- <div class="selected-option">打开</div> -->
         </nut-cell>
       </div>
-      <h4>选项状态</h4>
-
-      <nut-cell :isLink="true" @click="switchActionSheet('isVisible4')">
-        <span><label>选项状态</label></span>
-        <!-- <div class="selected-option">打开</div> -->
-      </nut-cell>
-      <h4>自定义面板</h4>
-
-      <nut-cell :isLink="true" @click="switchActionSheet('isVisible5')">
-        <span><label>自定义内容</label></span>
-        <!-- <div class="selected-option">打开</div> -->
-      </nut-cell>
+      <!-- demo 基础用法 -->
+      <nut-actionsheet
+        :is-visible="state.isVisible1"
+        :menu-items="menuItemsOne"
+        @choose="chooseItem"
+      ></nut-actionsheet>
+      <!-- demo(带取消按钮） -->
+      <nut-actionsheet
+        :is-visible="state.isVisible2"
+        cancelTxt="取消"
+        :menu-items="menuItemsOne"
+        @choose="chooseItemTwo"
+      ></nut-actionsheet>
+      <!-- 展示描述信息 -->
+      <nut-actionsheet
+        :is-visible="state.isVisible3"
+        :description="state.desc"
+        :menu-items="menuItemsTwo"
+        @choose="chooseItemThree"
+        cancelTxt="取消"
+      >
+      </nut-actionsheet>
+      <!-- demo 选项状态-->
+      <nut-actionsheet
+        :is-visible="state.isVisible4"
+        cancelTxt="取消"
+        :menu-items="menuItemsThree"
+      ></nut-actionsheet>
+      <!-- demo 自定义 -->
+      <nut-actionsheet :is-visible="state.isVisible5" title="标题">
+        <div class="myContent">内容</div>
+      </nut-actionsheet>
     </div>
-    <!-- demo 基础用法 -->
-    <nut-actionsheet
-      :is-visible="state.isVisible1"
-      :menu-items="menuItemsOne"
-      @choose="chooseItem"
-    ></nut-actionsheet>
-    <!-- demo(带取消按钮） -->
-    <nut-actionsheet
-      :is-visible="state.isVisible2"
-      cancelTxt="取消"
-      :menu-items="menuItemsOne"
-      @choose="chooseItemTwo"
-    ></nut-actionsheet>
-
-    <nut-actionsheet
-      :is-visible="state.isVisible3"
-      :description="state.desc"
-      :menu-items="menuItemsTwo"
-      cancelTxt="取消"
-    >
-    </nut-actionsheet>
-    <!-- demo 选项状态-->
-    <nut-actionsheet
-      :is-visible="state.isVisible4"
-      cancelTxt="取消"
-      :menu-items="menuItemsThree"
-    ></nut-actionsheet>
-    <!-- demo 自定义 -->
-    <nut-actionsheet :is-visible="state.isVisible5" cancelTxt="取消">
-      <div class="custom-wrap"><span>自定义</span></div>
-    </nut-actionsheet>
   </div>
 </template>
 
@@ -130,7 +134,7 @@ export default createDemo({
       }
     ];
     const switchActionSheet = param => {
-      state[`${param}`] = !state[`${param}`];
+      state[param] = !state[param];
       //   console.log(state[`${param}`], '2');
     };
 
@@ -142,6 +146,9 @@ export default createDemo({
     function chooseItemTwo(itemParams) {
       state.val2 = itemParams.name;
     }
+    function chooseItemThree(itemParams) {
+      state.val3 = itemParams.name;
+    }
 
     return {
       state,
@@ -150,6 +157,7 @@ export default createDemo({
       menuItemsThree,
       chooseItem,
       chooseItemTwo,
+      chooseItemThree,
       switchActionSheet
     };
   }
@@ -177,5 +185,8 @@ export default createDemo({
 }
 .nut-cell {
   justify-content: space-between;
+}
+.myContent {
+  padding: 10px 10px 160px;
 }
 </style>

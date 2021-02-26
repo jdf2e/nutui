@@ -8,15 +8,27 @@ const routes: Array<RouteRecordRaw> = [
   }
 ];
 
-const files = require.context('@/packages', true, /demo\.vue$/);
-files.keys().forEach(component => {
-  const componentEntity = files(component).default;
+/** webpack */
+// const files = require.context('@/packages', true, /demo\.vue$/);
+// files.keys().forEach(component => {
+//   const componentEntity = files(component).default;
+//   routes.push({
+//     path: `/${componentEntity.baseName}`,
+//     name: componentEntity.baseName,
+//     component: componentEntity
+//   });
+// });
+
+/** vite */
+const modulesPage = import.meta.glob('/src/packages/**/demo.vue');
+for (const path in modulesPage) {
+  let name = (/packages\/(.*)\/demo.vue/.exec(path) as any[])[1];
   routes.push({
-    path: `/${componentEntity.baseName}`,
-    name: componentEntity.baseName,
-    component: componentEntity
+    path: '/' + name,
+    component: modulesPage[path],
+    name
   });
-});
+}
 
 routes.push({
   name: 'NotFound',
