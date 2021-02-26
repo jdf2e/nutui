@@ -61,12 +61,12 @@ export default create({
     ...commonProps
   },
   components: { column },
-  emits: ['close', 'confirm', 'update:isVisible'],
+  emits: ['close', 'change', 'confirm', 'update:isVisible'],
 
   setup(props, { emit }) {
     const show = ref(false);
     const defaultIndex = ref(props.defaultIndex);
-    const listData: any = reactive(props.listData);
+    const formattedColumns: any = ref(props.listData);
     //临时变量，当点击确定时候赋值
     let _defaultIndex = props.defaultIndex;
     const childrenKey = 'children';
@@ -80,6 +80,13 @@ export default create({
       }
     );
 
+    watch(
+      () => props.listData,
+      val => {
+        formattedColumns.value = val;
+      }
+    );
+
     const addDefaultIndexList = listData => {
       defaultIndexList = [];
       listData.forEach(res => {
@@ -87,7 +94,7 @@ export default create({
       });
     };
     const dataType = computed(() => {
-      const firstColumn = listData[0] || {};
+      const firstColumn = formattedColumns.value[0] || {};
 
       if (typeof firstColumn === 'object') {
         if (firstColumn?.[childrenKey]) {
@@ -117,13 +124,15 @@ export default create({
 
     const columnList = computed(() => {
       if (dataType.value === 'text') {
-        return [{ values: listData, defaultIndex: defaultIndex.value }];
+        return [
+          { values: formattedColumns.value, defaultIndex: defaultIndex.value }
+        ];
       } else if (dataType.value === 'multipleColumns') {
-        return listData;
+        return formattedColumns.value;
       } else if (dataType.value === 'cascade') {
-        return formatCascade(listData, defaultIndex.value);
+        return formatCascade(formattedColumns.value, defaultIndex.value);
       }
-      return listData;
+      return formattedColumns.value;
     });
     const getCascadeData = (listData, defaultIndex) => {
       let arr = listData;
@@ -151,7 +160,7 @@ export default create({
       },
       changeHandler: (columnIndex, dataIndex) => {
         if (dataType.value === 'cascade') {
-          let cursor: any = listData;
+          let cursor: any = toRaw(formattedColumns.value);
           //最外层使用props.defaultIndex作为初始index
           if (columnIndex === 0) {
             defaultIndex.value = dataIndex;
@@ -171,22 +180,32 @@ export default create({
           _defaultIndex = dataIndex;
         } else if (dataType.value === 'multipleColumns') {
           defaultIndexList[columnIndex] = dataIndex;
+          const val = defaultIndexList.map(
+            (res, i) => toRaw(formattedColumns.value)[i].values[res]
+          );
+          console.log('val', defaultIndexList);
+          emit('change', val);
         }
       },
+
       confirm: () => {
         if (dataType.value === 'text') {
           defaultIndex.value = _defaultIndex;
-          emit('confirm', listData[_defaultIndex]);
+          emit('confirm', formattedColumns.value[_defaultIndex]);
         } else if (dataType.value === 'multipleColumns') {
           for (let i = 0; i < defaultIndexList.length; i++) {
-            listData[i].defaultIndex = defaultIndexList[i];
+            formattedColumns.value[i].defaultIndex = defaultIndexList[i];
           }
-          const checkedArr = toRaw(listData).map(
+          const checkedArr = toRaw(formattedColumns.value).map(
             (res: any) => res.values[res.defaultIndex]
           );
+          console.log(formattedColumns.value);
           emit('confirm', checkedArr);
         } else if (dataType.value === 'cascade') {
-          emit('confirm', getCascadeData(toRaw(listData), defaultIndex.value));
+          emit(
+            'confirm',
+            getCascadeData(toRaw(formattedColumns.value), defaultIndex.value)
+          );
         }
 
         emit('update:isVisible', false);

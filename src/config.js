@@ -457,6 +457,17 @@ module.exports = {
           sort: 6,
           show: true,
           author: 'Drjingfubo'
+        },
+        {
+          version: '3.0.0',
+          name: 'DatePicker',
+          type: 'component',
+          cName: '时间选择',
+          desc:
+            '时间选择器，支持日期、年月、时分等维度，通常与弹出层组件配合使用。',
+          sort: 7,
+          show: true,
+          author: '杨凯旋'
         }
       ]
     },
