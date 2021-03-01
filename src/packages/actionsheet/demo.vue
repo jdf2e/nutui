@@ -165,20 +165,6 @@ export default createDemo({
 </script>
 
 <style lang="scss" scoped>
-.demo {
-  height: 100%;
-  background: #f7f8fa;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: 0 25px;
-  padding-top: 57px;
-  h4 {
-    height: 56px;
-    line-height: 56px;
-    font-size: 14px;
-    color: #909ca4;
-  }
-}
 .custom-wrap {
   padding: 110px 0;
   text-align: center;

@@ -77,11 +77,9 @@ export default createDemo({
 <style lang="scss" scoped>
 .demo-button-row {
   margin-bottom: 20px;
-  margin-left: 15px;
 }
 .demo-button-row2 {
   margin-bottom: 10px;
-  margin-left: 15px;
 }
 .nut-button {
   margin-right: 15px;

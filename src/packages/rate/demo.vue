@@ -62,8 +62,6 @@ export default createDemo({
 
 <style lang="scss" scoped>
 .demo {
-  padding-left: 0;
-  padding-right: 0;
 }
 h4 {
   padding: 0 10px;
