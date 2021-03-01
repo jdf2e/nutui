@@ -1,145 +1,451 @@
 <template>
-  <view :class="swipeid" class="nut-swiper-container swiper-container">
-    <view class="swiper-wrapper">
-      <!-- 存放具体的轮播内容 -->
-      <slot name="swiper-con"></slot>
+  <view
+    ref="container"
+    class="swiper-cont"
+    @touchstart="onTouchStart"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+    @touchcancel="onTouchEnd"
+  >
+    <view
+      :class="{ 'swiper-inner': true, 'swiper-vertical': isVertical }"
+      :style="state.style"
+    >
+      <slot></slot>
     </view>
-    <!-- 分页器 -->
-    <div
-      v-if="pagination && paginationPosiiton === 'inside'"
-      :class="paginationClass"
-      class="swiper-pagination"
-    ></div>
+    <slot name="page"></slot>
+    <view class="swiper-pagination" v-if="paginationVisible && !slots.page">
+      <i
+        :style="{
+          backgroundColor: activePagination === index ? paginationColor : '#ddd'
+        }"
+        v-for="(item, index) in state.children.length"
+        v-bind:key="index"
+      />
+    </view>
   </view>
-  <div
-    v-if="pagination && paginationPosiiton === 'outside'"
-    :class="paginationClass"
-    class="swiper-pagination"
-  ></div>
 </template>
 
 <script lang="ts">
-import Swiper from 'swiper';
+import {
+  onMounted,
+  onActivated,
+  onDeactivated,
+  onBeforeUnmount,
+  provide,
+  ComponentInternalInstance,
+  ComponentPublicInstance,
+  reactive,
+  computed,
+  nextTick,
+  ref,
+  watch
+} from 'vue';
 import { createComponent } from '@/utils/create';
+import { useTouch } from './use-touch';
+import { useExpose } from './use-expose';
 const { create } = createComponent('swiper');
-// import 'swiper/dist/css/swiper.min.css';
-// import { reactive, onMounted } from 'vue';
-import { onMounted, PropType } from 'vue';
-type PaginationType = 'bullets' | 'fraction' | 'progressbar' | 'custom';
 export default create({
   props: {
-    variableClass: {
-      type: String,
-      default: ''
-    },
-    swipeid: {
-      type: String,
-      default: ''
-    },
-    loop: {
-      type: Boolean,
-      default: false
-    },
-    slidesPerView: {
-      type: [Number, String],
-      default: 1
-    },
-    spaceBetween: {
+    width: {
       type: [Number, String],
       default: 0
     },
-    pagination: {
+    height: {
+      type: [Number, String],
+      default: 0
+    },
+    direction: {
+      type: [String],
+      default: 'horizontal' //horizontal and vertical
+    },
+    paginationVisible: {
+      type: Boolean,
+      default: false
+    },
+    paginationColor: {
+      type: String,
+      default: '#fff'
+    },
+    loop: {
       type: Boolean,
       default: true
     },
-    paginationPosiiton: {
-      type: String,
-      default: 'inside'
+    duration: {
+      type: [Number, String],
+      default: 500
     },
-    paginationClass: {
-      type: String,
-      default: ''
+    autoPlay: {
+      type: [Number, String],
+      default: 0
     },
-    paginationType: {
-      type: String as PropType<PaginationType>,
-      default: 'bullets'
+    initPage: {
+      type: [Number, String],
+      default: 0
+    },
+    touchable: {
+      type: Boolean,
+      default: true
+    },
+    isPreventDefault: {
+      type: Boolean,
+      default: true
+    },
+    isStopPropagation: {
+      type: Boolean,
+      default: true
     }
   },
-  data() {
-    return {};
-  },
-  setup(props) {
-    // console.log('props', props);
-    // let mySwiper: any = reactive({});
-    // const { swipeid, loop: boolean, direction } = toRefs(props);
-    // mounted
-    function initSwiper() {
-      console.log('swipeid', props.swipeid);
-      // new Swiper(
-      // "." + (props.variableClass ? props.variableClass : "swiper-container"),
-      //   {
-      //     pagination: {
-      //     el: '.swiper-pagination'
-      //   },
-      //     observer: true   //当修改swiper的样式或者子元素时,swiper自动刷新
-      //   }
-      // );
-      new Swiper('.' + props.swipeid, {
-        loop: props.loop,
-        slidesPerView: props.slidesPerView as number | 'auto',
-        spaceBetween: props.spaceBetween as number,
-        //分页器
-        pagination: {
-          el: '.' + props.paginationClass,
-          type: props.paginationType
-        },
-        // 分页类型
-        // paginationType: paginationType,
-        // //自动播放
-        // autoPlay: prop.autoPlay,
-        // 用户操作swiper之后，不禁止autoplay
-        observer: true,
-        observeParents: true
-      });
-    }
-    onMounted(() => {
-      initSwiper();
-      // new Swiper("."+ props.swipeid ,this.variableData);
-      // new Swiper(
-      // "." + (props.variableClass ? props.variableClass : "swiper-container"),
-      //   {
-      //     pagination: {
-      //       el: '.swiper-pagination'
-      //     },
-      //     observer: true   //当修改swiper的样式或者子元素时,swiper自动刷新
-      //   }
-      // );
+  emits: ['change'],
+
+  setup(props, { emit, slots }) {
+    const container = ref();
+    const state = reactive({
+      active: 0,
+      num: 0,
+      rect: null as DOMRect | null,
+      width: 0,
+      height: 0,
+      moving: false,
+      offset: 0,
+      touchTime: 0,
+      autoplayTimer: 0 as number | undefined,
+      children: [] as ComponentPublicInstance[],
+      style: {}
     });
+
+    const touch = useTouch();
+
+    const isVertical = computed(() => props.direction === 'vertical');
+
+    const delTa = computed(() => {
+      return isVertical.value ? touch.state.deltaY : touch.state.deltaX;
+    });
+
+    const isCorrectDirection = computed(() => {
+      return touch.state.direction === props.direction;
+    });
+
+    const childCount = computed(() => state.children.length);
+
+    const size = computed(() => state[isVertical.value ? 'height' : 'width']);
+
+    const trackSize = computed(() => childCount.value * size.value);
+
+    const minOffset = computed(() => {
+      if (state.rect) {
+        const base = isVertical.value ? state.rect.height : state.rect.width;
+        return base - size.value * childCount.value;
+      }
+      return 0;
+    });
+
+    const activePagination = computed(
+      () => (state.active + childCount.value) % childCount.value
+    );
+
+    const getStyle = () => {
+      state.style = {
+        transitionDuration: `${state.moving ? 0 : props.duration}ms`,
+        transform: `translate${isVertical.value ? 'Y' : 'X'}(${
+          state.offset
+        }px)`,
+        [isVertical.value ? 'height' : 'width']: `${size.value *
+          childCount.value}px`,
+        [isVertical.value ? 'width' : 'height']: `${
+          isVertical.value ? state.width : state.height
+        }px`
+      };
+    };
+
+    const relation = (child: ComponentInternalInstance) => {
+      if (child.proxy) {
+        state.children.push(child.proxy);
+      }
+    };
+
+    const range = (num: number, min: number, max: number) => {
+      return Math.min(Math.max(num, min), max);
+    };
+
+    const requestFrame = fn => {
+      window.requestAnimationFrame.call(window, fn);
+    };
+
+    const getOffset = (active, offset = 0) => {
+      let currentPosition = active * size.value;
+      if (!props.loop) {
+        currentPosition = Math.min(currentPosition, -minOffset.value);
+      }
+
+      let targetOffset = offset - currentPosition;
+      if (!props.loop) {
+        targetOffset = range(targetOffset, minOffset.value, 0);
+      }
+
+      return targetOffset;
+    };
+
+    const getActive = pace => {
+      const { active } = state;
+      if (pace) {
+        if (props.loop) {
+          return range(active + pace, -1, childCount.value);
+        }
+        return range(active + pace, 0, childCount.value - 1);
+      }
+      return active;
+    };
+
+    const move = ({ pace = 0, offset = 0, isEmit = false }) => {
+      if (childCount.value <= 1) return;
+
+      const { active } = state;
+
+      const targetActive = getActive(pace);
+      const targetOffset = getOffset(targetActive, offset);
+
+      if (props.loop) {
+        if (state.children[0] && targetOffset !== minOffset.value) {
+          const rightBound = targetOffset < minOffset.value;
+          (state.children[0] as any).setOffset(
+            rightBound ? trackSize.value : 0
+          );
+        }
+        if (state.children[childCount.value - 1] && targetOffset !== 0) {
+          const leftBound = targetOffset > 0;
+          (state.children[childCount.value - 1] as any).setOffset(
+            leftBound ? -trackSize.value : 0
+          );
+        }
+      }
+
+      state.active = targetActive;
+      state.offset = targetOffset;
+
+      if (isEmit && active !== state.active) {
+        emit('change', activePagination.value);
+      }
+
+      getStyle();
+    };
+
+    const resettPosition = () => {
+      state.moving = true;
+
+      if (state.active <= -1) {
+        move({ pace: childCount.value });
+      }
+      if (state.active >= childCount.value) {
+        move({ pace: -childCount.value });
+      }
+    };
+
+    const stopAutoPlay = () => {
+      clearTimeout(state.autoplayTimer);
+    };
+
+    const prev = () => {
+      resettPosition();
+      touch.reset();
+
+      requestFrame(() => {
+        requestFrame(() => {
+          state.moving = false;
+          move({
+            pace: -1,
+            isEmit: true
+          });
+        });
+      });
+    };
+
+    const next = () => {
+      resettPosition();
+      touch.reset();
+
+      requestFrame(() => {
+        requestFrame(() => {
+          state.moving = false;
+          move({
+            pace: 1,
+            isEmit: true
+          });
+        });
+      });
+    };
+
+    const to = (index: number) => {
+      resettPosition();
+
+      touch.reset();
+
+      requestFrame(() => {
+        requestFrame(() => {
+          state.moving = false;
+          let targetIndex;
+          if (props.loop && childCount.value === index) {
+            targetIndex = state.active === 0 ? 0 : index;
+          } else {
+            targetIndex = index % childCount.value;
+          }
+          move({
+            pace: targetIndex - state.active,
+            isEmit: true
+          });
+        });
+      });
+    };
+
+    const autoplay = () => {
+      if (props.autoPlay <= 0 || childCount.value <= 1) return;
+      stopAutoPlay();
+
+      state.autoplayTimer = setTimeout(() => {
+        next();
+        autoplay();
+      }, Number(props.autoPlay));
+    };
+
+    const init = (active: number = +props.initPage) => {
+      stopAutoPlay();
+      state.rect = container.value.getBoundingClientRect();
+      active = Math.min(childCount.value - 1, active);
+      state.width = props.width ? +props.width : (state.rect as DOMRect).width;
+      state.height = props.height
+        ? +props.height
+        : (state.rect as DOMRect).height;
+      state.active = active;
+      state.offset = getOffset(state.active);
+      state.moving = true;
+      getStyle();
+
+      autoplay();
+    };
+
+    const onTouchStart = (e: TouchEvent) => {
+      if (props.isPreventDefault) e.preventDefault();
+      if (props.isStopPropagation) e.stopPropagation();
+      if (!props.touchable) return;
+      touch.start(e);
+      state.touchTime = Date.now();
+      stopAutoPlay();
+      resettPosition();
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (props.touchable && state.moving) {
+        touch.move(e);
+        if (isCorrectDirection.value) {
+          move({
+            offset: delTa.value
+          });
+        }
+      }
+    };
+
+    const onTouchEnd = (e: TouchEvent) => {
+      if (!props.touchable || !state.moving) return;
+      const speed = delTa.value / (Date.now() - state.touchTime);
+      const isShouldMove =
+        Math.abs(speed) > 0.3 ||
+        Math.abs(delTa.value) > +(size.value / 2).toFixed(2);
+
+      if (isShouldMove && isCorrectDirection.value) {
+        let pace = 0;
+        const offset = isVertical.value
+          ? touch.state.offsetY
+          : touch.state.offsetX;
+        if (props.loop) {
+          pace = offset > 0 ? (delTa.value > 0 ? -1 : 1) : 0;
+        } else {
+          pace = -Math[delTa.value > 0 ? 'ceil' : 'floor'](
+            delTa.value / size.value
+          );
+        }
+        move({
+          pace,
+          isEmit: true
+        });
+      } else if (delTa.value) {
+        move({ pace: 0 });
+      }
+      state.moving = false;
+      getStyle();
+      autoplay();
+    };
+
+    provide('parent', {
+      props,
+      size,
+      relation
+    });
+
+    useExpose({
+      prev,
+      next,
+      to
+    });
+
+    onMounted(() => {
+      nextTick(() => {
+        init();
+      });
+    });
+
+    onActivated(() => {
+      nextTick(() => {
+        init();
+      });
+    });
+
+    onDeactivated(() => {
+      stopAutoPlay();
+    });
+
+    onBeforeUnmount(() => {
+      stopAutoPlay();
+    });
+
+    watch(
+      () => props.initPage,
+      val => {
+        nextTick(() => {
+          init(Number(val));
+        });
+      }
+    );
+
+    watch(
+      () => state.children.length,
+      () => {
+        nextTick(() => {
+          init(state.active);
+        });
+      }
+    );
+
+    watch(
+      () => props.autoPlay,
+      val => {
+        val > 0 ? autoplay() : stopAutoPlay();
+      }
+    );
+
     return {
-      // mySwiper
-      // swiper
+      state,
+      container,
+      isVertical,
+      slots,
+      activePagination,
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd
     };
   }
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import 'index.scss';
-</style>
-<style>
-.swiper-pagination .swiper-pagination-bullet {
-  width: 4px;
-  height: 4px;
-  opacity: 1;
-  background: linear-gradient(
-    90deg,
-    rgba(250, 32, 12, 1) 0%,
-    rgba(250, 32, 12, 0.65) 100%
-  );
-}
-.swiper-pagination /deep/ .swiper-pagination-bullet-active {
-  width: 10px;
-  border-radius: 3px;
-}
 </style>
