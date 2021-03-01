@@ -123,12 +123,6 @@ export default createDemo({});
 </script>
 
 <style lang="scss" scoped>
-#app .demo.demo {
-  padding: 57px 0 0;
-  h2 {
-    padding: 0 25px;
-  }
-}
 .box-item {
   background: #fff;
   margin-bottom: 20px;

@@ -198,11 +198,6 @@ export default createDemo({
 });
 </script>
 
-<style>
-#app {
-  background: #f7f8fa;
-}
-</style>
 <style lang="scss" scoped>
 .demo-list {
   margin: 60px 0;
