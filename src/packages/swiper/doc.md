@@ -114,7 +114,7 @@ app.use(Swiper);
 
 | 参数                   | 说明                                                        | 类型           | 默认值      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| width                   | 轮播卡片的宽度                                            | Number、String        | 0       |
+| width                   | 轮播卡片的宽度                                            | Number、String        | window.innerWidth       |
 | height                | 轮播卡片的高度                                                    | String、Number | 0        |
 | direction               | 轮播方向                                            | String | 'horizontal'         |
 | pagination-visible          | 分页指示器是否展示                                              | Boolean         | false           |

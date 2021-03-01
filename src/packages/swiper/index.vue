@@ -49,7 +49,7 @@ export default create({
   props: {
     width: {
       type: [Number, String],
-      default: 0
+      default: window.innerWidth
     },
     height: {
       type: [Number, String],
