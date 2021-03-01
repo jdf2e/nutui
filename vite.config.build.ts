@@ -2,20 +2,10 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Markdown from 'vite-plugin-md';
 import path from 'path';
-const resolve = path.resolve;
 // https://vitejs.dev/config/
 export default defineConfig({
-  server: {
-    proxy: {
-      '/devServer': {
-        target: 'http://nutui-server.jd.com',
-        changeOrigin: true,
-        rewrite: path => path.replace(/^\/devServer/, '')
-      }
-    }
-  },
   resolve: {
-    alias: [{ find: '@', replacement: resolve(__dirname, './src') }]
+    alias: [{ find: '@', replacement: path.resolve(__dirname, './src') }]
   },
   css: {
     preprocessorOptions: {
@@ -33,12 +23,21 @@ export default defineConfig({
     Markdown()
   ],
   build: {
-    cssCodeSplit: false,
     rollupOptions: {
-      input: {
-        doc: resolve(__dirname, 'index.html'),
-        mobile: resolve(__dirname, 'demo.html')
-      }
+      // make sure to externalize deps that shouldn't be bundled
+      // into your library
+      // external: ['vue'],
+      // output: {
+      //   // Provide global variables to use in the UMD build
+      //   // for externalized deps
+      //   globals: {
+      //     vue: 'Vue'
+      //   }
+      // }
+    },
+    lib: {
+      entry: 'src/nutui.ts',
+      name: 'nutui'
     }
   }
 });

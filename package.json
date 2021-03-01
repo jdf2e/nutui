@@ -36,8 +36,9 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite --open",
+    "build:site": "vite build",
+    "build": "vite build -c vite.config.build.ts",
     "serve": "vite preview",
     "upload": "vite build && node ./jd/upload.js",
     "add": "node jd/createComponentMode.js"
