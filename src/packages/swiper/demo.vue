@@ -3,148 +3,158 @@
     <h2>基本用法</h2>
     <view class="demo-box">
       <nut-swiper
-        class="swiper1"
-        swipeid="swiper1"
-        ref="swiper1"
-        pagination="true"
-        paginationClass="swiper1-pagination"
+        :init-page="state.page"
+        :pagination-visible="true"
+        pagination-color="#426543"
+        auto-play="3000"
       >
-        <template v-slot:swiper-con>
-          <view
-            v-for="(item, index) in swiperData1"
-            :key="index"
-            class="swiper-slide"
-          >
-            <img :src="item.image" />
-          </view>
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/152158/32/19170/280589/6035429fE08208901/024578cf04ce3b47.jpg!cr_1125x445_0_171"
+            alt=""
+          />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/159602/22/7999/126515/6035f371E6f95bfee/559cb1ee48c962c9.jpg"
+            alt=""
+          />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/166846/13/7534/136440/60338b5cEd491d8b3/9e5527429136ab86.jpg"
+            alt=""
+          />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/145433/27/14059/141680/5facf066Ec402354c/530d5a316aed55fc.jpg!cr_1125x445_0_171"
+            alt=""
+          />
+        </nut-swiper-item>
+      </nut-swiper>
+    </view>
+    <h2>自定义大小</h2>
+    <view class="demo-box">
+      <nut-swiper :init-page="state.page2" :loop="false" width="300">
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/152158/32/19170/280589/6035429fE08208901/024578cf04ce3b47.jpg!cr_1125x445_0_171"
+            alt=""
+          />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/159602/22/7999/126515/6035f371E6f95bfee/559cb1ee48c962c9.jpg"
+            alt=""
+          />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/166846/13/7534/136440/60338b5cEd491d8b3/9e5527429136ab86.jpg"
+            alt=""
+          />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/145433/27/14059/141680/5facf066Ec402354c/530d5a316aed55fc.jpg!cr_1125x445_0_171"
+            alt=""
+          />
+        </nut-swiper-item>
+      </nut-swiper>
+    </view>
+    <h2>自定义指示器</h2>
+    <view class="demo-box">
+      <nut-swiper :init-page="state.page3" :loop="true" @change="change">
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/152158/32/19170/280589/6035429fE08208901/024578cf04ce3b47.jpg!cr_1125x445_0_171"
+            alt=""
+          />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/159602/22/7999/126515/6035f371E6f95bfee/559cb1ee48c962c9.jpg"
+            alt=""
+          />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/166846/13/7534/136440/60338b5cEd491d8b3/9e5527429136ab86.jpg"
+            alt=""
+          />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/145433/27/14059/141680/5facf066Ec402354c/530d5a316aed55fc.jpg!cr_1125x445_0_171"
+            alt=""
+          />
+        </nut-swiper-item>
+        <template v-slot:page>
+          <div class="page"> {{ state.current }}/4 </div>
         </template>
       </nut-swiper>
     </view>
-    <h2>直播轮播样式</h2>
+    <h2>垂直方向</h2>
     <view class="demo-box">
       <nut-swiper
-        class="swiper2"
-        swipeid="swiper2"
-        ref="swiper2"
-        loop="true"
-        pagination="true"
-        paginationClass="swiper2-pagination"
-        slidesPerView="auto"
-        paginationPosiiton="outside"
+        :init-page="state.page4"
+        :loop="true"
+        auto-play="3000"
+        direction="vertical"
+        height="150"
+        :pagination-visible="true"
+        style="height: 150px"
       >
-        <template v-slot:swiper-con>
-          <view
-            v-for="(item, index) in swiperData2"
-            :key="index"
-            class="swiper-slide"
-          >
-            <img :src="item.image" />
-          </view>
-        </template>
-      </nut-swiper>
-    </view>
-    <h2>商品轮播样式</h2>
-    <view class="demo-box">
-      <nut-swiper
-        class="swiper3"
-        swipeid="swiper3"
-        ref="swiper3"
-        pagination="true"
-        paginationClass="swiper3-pagination"
-        paginationType="fraction"
-      >
-        <template v-slot:swiper-con>
-          <view
-            v-for="(item, index) in swiperData3"
-            :key="index"
-            class="swiper-slide"
-          >
-            <img :src="item.image" />
-          </view>
-        </template>
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/152158/32/19170/280589/6035429fE08208901/024578cf04ce3b47.jpg!cr_1125x445_0_171"
+            alt=""
+          />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/159602/22/7999/126515/6035f371E6f95bfee/559cb1ee48c962c9.jpg"
+            alt=""
+          />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/166846/13/7534/136440/60338b5cEd491d8b3/9e5527429136ab86.jpg"
+            alt=""
+          />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img
+            src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/145433/27/14059/141680/5facf066Ec402354c/530d5a316aed55fc.jpg!cr_1125x445_0_171"
+            alt=""
+          />
+        </nut-swiper-item>
       </nut-swiper>
     </view>
   </div>
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive } from 'vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('swiper');
-// import mSwipe from "./components/HelloWorld";
 export default createDemo({
   props: {},
   setup() {
-    const data = reactive({
-      swiperData1: [
-        {
-          title: '第1个',
-          image:
-            'https://img10.360buyimg.com/imagetools/jfs/t1/152371/17/7059/268929/5fbcb34cE2276dc0d/bb22de1b6f838ae4.png'
-        },
-        {
-          title: '第2个',
-          image:
-            'https://img11.360buyimg.com/imagetools/jfs/t1/152491/29/7102/178474/5fbcb34cE0713a25c/4cb9bbf205a4fca0.png'
-        },
-        {
-          title: '第3个',
-          image:
-            'https://img10.360buyimg.com/imagetools/jfs/t1/152371/17/7059/268929/5fbcb34cE2276dc0d/bb22de1b6f838ae4.png'
-        },
-        {
-          title: '第4个',
-          image:
-            'https://img11.360buyimg.com/imagetools/jfs/t1/152491/29/7102/178474/5fbcb34cE0713a25c/4cb9bbf205a4fca0.png'
-        }
-      ],
-      swiperData2: [
-        {
-          image:
-            'https://img14.360buyimg.com/imagetools/jfs/t1/136318/2/17914/253972/5fbcb355E73dd171e/7afebc86dec494e4.png'
-        },
-        {
-          image:
-            'https://img14.360buyimg.com/imagetools/jfs/t1/136318/2/17914/253972/5fbcb355E73dd171e/7afebc86dec494e4.png'
-        },
-        {
-          image:
-            'https://img14.360buyimg.com/imagetools/jfs/t1/136318/2/17914/253972/5fbcb355E73dd171e/7afebc86dec494e4.png'
-        }
-      ],
-      swiperData3: [
-        {
-          image:
-            'https://img10.360buyimg.com/imagetools/jfs/t1/145583/3/15916/517992/5fbf4eebEc3f84d1d/060f933b48cec59f.png'
-        },
-        {
-          image:
-            'https://img10.360buyimg.com/imagetools/jfs/t1/145583/3/15916/517992/5fbf4eebEc3f84d1d/060f933b48cec59f.png'
-        },
-        {
-          image:
-            'https://img10.360buyimg.com/imagetools/jfs/t1/145583/3/15916/517992/5fbf4eebEc3f84d1d/060f933b48cec59f.png'
-        },
-        {
-          image:
-            'https://img10.360buyimg.com/imagetools/jfs/t1/145583/3/15916/517992/5fbf4eebEc3f84d1d/060f933b48cec59f.png'
-        },
-        {
-          image:
-            'https://img10.360buyimg.com/imagetools/jfs/t1/145583/3/15916/517992/5fbf4eebEc3f84d1d/060f933b48cec59f.png'
-        },
-        {
-          image:
-            'https://img10.360buyimg.com/imagetools/jfs/t1/145583/3/15916/517992/5fbf4eebEc3f84d1d/060f933b48cec59f.png'
-        },
-        {
-          image:
-            'https://img10.360buyimg.com/imagetools/jfs/t1/145583/3/15916/517992/5fbf4eebEc3f84d1d/060f933b48cec59f.png'
-        }
-      ]
+    const state = reactive({
+      page: 2,
+      page2: 0,
+      page3: 0,
+      page4: 0,
+      current: 1
     });
+    const change = index => {
+      state.current = index + 1;
+    };
     return {
-      ...toRefs(data)
+      state,
+      change
     };
   }
 });
@@ -152,74 +162,24 @@ export default createDemo({
 
 <style lang="scss" scoped>
 .demo-box {
-  position: relative;
-  border-radius: 7px;
-  img {
-    width: 100%;
+  .swiper-item {
+    line-height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
-}
-/* demo2 */
-.swiper2 {
-  .swiper-slide {
-    width: 210px !important;
-    transform: scale(0.8);
+  .page {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 46px;
+    height: 22px;
+    background: rgba(0, 0, 0, 0.33);
+    border-radius: 22px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
   }
-  .swiper-slide-active,
-  .swiper-slide-duplicate-active {
-    transform: scale(1);
-  }
-}
-/* demo3 */
-.swiper3 {
-}
-</style>
-<style>
-.swiper-container /deep/ .swiper-pagination-bullet-active {
-  background: linear-gradient(
-    90deg,
-    rgba(250, 32, 12, 1) 0%,
-    rgba(250, 32, 12, 0.65) 100%
-  );
-}
-/* demo1 */
-.swiper1 .swiper-pagination-bullet {
-  width: 8px !important;
-  height: 3px !important;
-  background: rgba(255, 255, 255, 0.51) !important;
-  border-radius: 2px !important;
-}
-.swiper1 /deep/ .swiper-pagination-bullet-active {
-  background: rgba(255, 255, 255, 1) !important;
-}
-/* demo2 */
-.swiper-pagination {
-  width: 100%;
-  left: 0;
-  position: relative;
-}
-.swiper-pagination-bullet {
-  margin: 0 4px;
-}
-.swiper2-pagination {
-  position: relative !important;
-}
-/* demo3 */
-.swiper3 .swiper-pagination {
-  display: inline-block;
-  width: auto !important;
-  left: auto !important;
-  right: 0;
-  height: 22px;
-  line-height: 22px;
-  padding: 0 15px;
-  color: #fff;
-  font-size: 12px;
-  letter-spacing: -2px;
-  background: rgba(0, 0, 0, 0.33);
-  border-radius: 11px;
-}
-.swiper-pagination-current {
-  font-size: 16px;
-  font-weight: bold;
 }
 </style>
