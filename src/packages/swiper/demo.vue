@@ -149,7 +149,7 @@ export default createDemo({
       page4: 0,
       current: 1
     });
-    const change = index => {
+    const change = (index: number) => {
       state.current = index + 1;
     };
     return {
