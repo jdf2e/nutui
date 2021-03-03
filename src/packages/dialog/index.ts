@@ -3,8 +3,8 @@ import { defineComponent, createVNode, render, toRef, watch } from 'vue';
 
 const confirmConstructor = defineComponent(dialog);
 
-let instance;
-const Dialog = options => {
+let instance: any;
+const Dialog = (options: any) => {
   options = options ? options : {};
 
   options.id = options.id || 'nut-dialog-default-id';
@@ -38,7 +38,7 @@ Dialog.close = function() {
   }
 };
 
-Dialog.install = function(app) {
+Dialog.install = function(app: any) {
   app.use(dialog);
   app.config.globalProperties.$dialog = Dialog;
 };

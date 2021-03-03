@@ -5,10 +5,16 @@
     "tag": "next"
   },
   "description": "一套京东风格的轻量级移动端 Vue 组件库",
-  "main": "dist/lib/nutui.js",
-  "module": "dist/es/nutui.js",
-  "style": "dist/lib/index.css",
-  "typings": "dist/types/index.d.ts",
+  "main": "dist/nutui.umd.js",
+  "module": "dist/nutui.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/nutui.es.js",
+      "require": "./dist/nutui.umd.js"
+    }
+  },
+  "style": "dist/style.css",
+  "typings": "dist/types/nutui.d.ts",
   "keywords": [
     "nutui",
     "nutui2",
@@ -36,11 +42,12 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "dev": "vite --open",
+    "dev": "tsc && vite --open",
     "build:site": "vite build",
     "build": "vite build -c vite.config.build.ts",
+    "build:ts": "rm -rf dist/es && tsc",
     "serve": "vite preview",
-    "upload": "vite build && node ./jd/upload.js",
+    "upload": "yarn build:site && node ./jd/upload.js",
     "add": "node jd/createComponentMode.js"
   },
   "dependencies": {
