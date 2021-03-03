@@ -1,0 +1,106 @@
+.nut-coupon {
+  position: relative;
+  width: 133px;
+  min-height: 76px;
+  padding: 7px 12px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+  &-info {
+    position: relative;
+    display: flex;
+    width: 100%;
+  }
+  &-imgbox {
+    margin-right: 5px;
+  }
+  &-img {
+    display: block;
+    width: 44px;
+    height: 44px;
+  }
+  &-desc {
+    width: 100%;
+    text-align: left;
+  }
+  &-discount {
+    font-weight: bold;
+    font-size: 24px;
+    color: #e8220e;
+    white-space: nowrap;
+    .rmb {
+      font-size: 14px;
+    }
+  }
+  &-quota {
+    margin-bottom: 4px;
+    font-weight: bold;
+    font-size: 12px;
+    color: #e8220e;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &-limitStr {
+    margin-bottom: 7px;
+    font-size: 12px;
+    color: #8c8c8c;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &-btn {
+    width: 100%;
+    height: 22px;
+    line-height: 24px;
+    font-size: 14px;
+    text-align: center;
+    color: rgba(232, 34, 14, 1);
+    background: rgba(253, 237, 236, 1);
+    border: 1px solid rgba(232, 34, 14, 1);
+    border-radius: 10px;
+  }
+  &-image {
+    .nut-coupon-info {
+    }
+    .nut-coupon-quota {
+    }
+  }
+  &-1 {
+    .nut-coupon-info {
+      justify-content: center;
+    }
+    .nut-coupon-quota {
+      text-align: center;
+      font-size: 17px;
+    }
+  }
+  &-use {
+    .nut-coupon-btn {
+      color: #fff;
+      background: #f2140c;
+      border-color: #f2140c;
+    }
+  }
+  &-ban {
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 2;
+    }
+    .nut-coupon-btn {
+      color: #fff;
+      background: #999;
+      border-color: #999;
+    }
+  }
+}

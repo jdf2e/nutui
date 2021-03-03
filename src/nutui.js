@@ -141,6 +141,9 @@ import './packages/numberkeyboard/numberkeyboard.scss';
 import CollapseItem from './packages/collapseitem/index.js';
 import './packages/collapseitem/collapseitem.scss';
 
+import Coupon from './packages/coupon/index.js';
+import './packages/coupon/coupon.scss';
+
 const packages = {
   Cell,
   Dialog,
@@ -209,7 +212,8 @@ const packages = {
   Collapse: Collapse,
   Luckycard: Luckycard,
   NumberKeyboard: NumberKeyboard,
-  CollapseItem: CollapseItem
+  CollapseItem: CollapseItem,
+  Coupon: Coupon
 };
 
 const components = {};

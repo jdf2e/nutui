@@ -516,6 +516,16 @@
     },
     {
       "version": "1.0.0",
+      "name": "Coupon",
+      "chnName": "优惠券",
+      "desc": "优惠券",
+      "type": "component",
+      "sort": "6",
+      "showDemo": true,
+      "author": ""
+    },
+    {
+      "version": "1.0.0",
       "name": "TabSelect",
       "chnName": "配送时间",
       "desc": "两级配送时间",
