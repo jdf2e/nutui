@@ -24,16 +24,14 @@ export default defineConfig({
   ],
   build: {
     rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
-      // external: ['vue'],
-      // output: {
-      //   // Provide global variables to use in the UMD build
-      //   // for externalized deps
-      //   globals: {
-      //     vue: 'Vue'
-      //   }
-      // }
+      // 请确保外部化那些你的库中不需要的依赖
+      external: ['vue'],
+      output: {
+        // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
+        globals: {
+          vue: 'Vue'
+        }
+      }
     },
     lib: {
       entry: 'src/nutui.ts',
