@@ -148,6 +148,7 @@ export default defineComponent({
     min-width: 1300px;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     height: $doc-header-height;
     line-height: $doc-header-height;
     text-align: left;
@@ -282,7 +283,7 @@ export default defineComponent({
 .doc-header {
   // 红色
   &-red {
-    background: $theme-red-header-bg;
+    background-image: $theme-red-header-bg;
     color: $theme-red-word;
     .header {
       &-logo {
