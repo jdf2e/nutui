@@ -1,6 +1,6 @@
-# NutUI
+# NutUI 3.0
 
-NutUI是一套京东风格的移动端组件库，开发和服务于移动Web界面的企业级产品。
+NutUI 是一套京东风格的移动端组件库，开发和服务于移动Web界面的企业级产品。
 
 <div style="margin:30px 0;">
     <img src="http://img14.360buyimg.com/uba/jfs/t1/8543/6/11560/22014/5c2c6136E8023ac0a/6abbd9de10999c48.png" width="150" alt="NutUI">
@@ -14,16 +14,13 @@ NutUI是一套京东风格的移动端组件库，开发和服务于移动Web界
 
 ## 特性
 
-* 50+ 高质量组件
-* 40+ 京东移动端项目正在使用
+* 30+ 高质量组件
 * 基于京东APP 9.0 视觉规范
 * 支持按需加载
 * 详尽的文档和示例
 * 支持定制主题
-* 支持多语言（国际化）
 * 支持 TypeScript
 * 支持服务端渲染（Vue SSR）
-* 单元测试加持
 * 配套有基于Webpack的构建工具，可快速创建已内置本组件库的Vue工程
 
 ## 示例
@@ -34,14 +31,14 @@ NutUI是一套京东风格的移动端组件库，开发和服务于移动Web界
 
 * Android 4.0+
 * iOS 8.0+
-* 支持服务端渲染
+* 服务端渲染
 
 ## 构建版本
 
-* UMD版 **nutui.js**
-* UMD压缩版 **nutui.min.js**
+* es **nutui.es.js**
+* umd **nutui.umd.js**
 
-> AMD 环境、Webpack 等构建工具环境、服务端建议使用 UMD 版，非模块化环境（如通过 `<script>` 标签直接引用）建议使用 UMD 压缩版。
+> AMD 环境、Webpack、Vite 等构建工具环境、服务端建议使用 es 版，非模块化环境（如通过 `<script>` 标签直接引用）建议使用 umd 压缩版。
 
 最新稳定版：![npm](https://img.shields.io/npm/v/@nutui/nutui.svg)
 
@@ -50,10 +47,10 @@ NutUI是一套京东风格的移动端组件库，开发和服务于移动Web界
 ## 链接
 * [Vue官方文档](http://cn.vuejs.org/)
 * [Webpack](http://webpack.github.io/)
+* [Vite](https://vitejs.dev/)
 * [意见反馈](https://github.com/jdf2e/nutui/issues)
 * [更新日志](https://github.com/jdf2e/nutui/releases)
 * [案例征集](https://github.com/jdf2e/nutui/issues/16)
-* [模板工程命令行工具(Gaea CLI)](https://www.npmjs.com/package/gaea-cli)
 * 联系我们：nutui@jd.com
 * [加入我们](#/joinus)
 
