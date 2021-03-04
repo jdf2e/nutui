@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Markdown from 'vite-plugin-md';
 import path from 'path';
+import config from './package.json';
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
@@ -27,6 +28,11 @@ export default defineConfig({
       // 请确保外部化那些你的库中不需要的依赖
       external: ['vue'],
       output: {
+        banner: `/*!
+* ${config.name} v${config.version} ${new Date()}
+* (c) 2021 @jdf2e.
+* Released under the MIT License.
+*/`,
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {
           vue: 'Vue'
