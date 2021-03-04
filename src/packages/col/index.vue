@@ -4,9 +4,9 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, watch, reactive, inject } from 'vue';
+import { reactive, inject } from 'vue';
 import { createComponent } from '@/utils/create';
-const { componentName, create } = createComponent('col');
+const { create } = createComponent('col');
 
 export default create({
   props: {

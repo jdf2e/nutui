@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "3.0.0-beta.2",
+  "version": "3.0.0-beta.3",
   "npm": {
     "tag": "beta"
   },
@@ -36,14 +36,14 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "dev": "tsc && vite --open",
+    "dev": "rm -rf dist && tsc && npm run generate:file && vite --open",
     "build:site": "vite build",
-    "build": "vite build -c vite.config.build.ts",
-    "build:ts": "rm -rf dist/es && tsc",
+    "build": "npm run generate:file && vite build -c vite.config.build.ts",
     "serve": "vite preview",
     "upload": "yarn build:site && node ./jd/upload.js",
     "add": "node jd/createComponentMode.js",
-    "publish:beta": "npm publish --tag=beta"
+    "publish:beta": "npm publish --tag=beta",
+    "generate:file": "node jd/generate-nutui.js"
   },
   "dependencies": {
     "axios": "^0.21.0",
