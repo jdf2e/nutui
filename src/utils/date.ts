@@ -47,7 +47,7 @@ const Utils = {
     if (/^0/.test(month)) {
       month = month.split('')[1];
     }
-    return [
+    return ([
       0,
       31,
       this.isLeapYear(Number(year)) ? 29 : 28,
@@ -61,7 +61,7 @@ const Utils = {
       31,
       30,
       31
-    ][month];
+    ] as number[])[month as any];
   },
 
   /**
