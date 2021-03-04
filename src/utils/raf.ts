@@ -8,7 +8,7 @@ function requestAniFrame() {
       }
     );
   } else {
-    return function(callback) {
+    return function(callback: Function) {
       setTimeout(callback, 1000 / 60);
     };
   }

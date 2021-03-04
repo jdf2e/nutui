@@ -38,7 +38,7 @@ const clearNotify = (id?: string) => {
   }
 };
 
-const updateNotify = opts => {
+const updateNotify = (opts: any) => {
   const container = document.getElementById(opts.id);
   if (container) {
     const currentOpt = optsMap.find(item => item.id === opts.id);
@@ -53,7 +53,7 @@ const updateNotify = opts => {
   }
 };
 
-const mountNotify = opts => {
+const mountNotify = (opts: any) => {
   opts.unmount = clearNotify;
   let _id;
   if (opts.id) {
@@ -81,7 +81,7 @@ const mountNotify = opts => {
   return instance.component.ctx;
 };
 
-const errorMsg = msg => {
+const errorMsg = (msg: string) => {
   if (!msg) {
     console.warn('[NutUI Notify]: msg不能为空');
     return;
@@ -89,23 +89,23 @@ const errorMsg = msg => {
 };
 
 export const Notify = {
-  text(msg, obj = {}) {
+  text(msg: string, obj = {}) {
     errorMsg(msg);
     return mountNotify({ ...obj, msg });
   },
-  primary(msg, obj = {}) {
+  primary(msg: string, obj = {}) {
     errorMsg(msg);
     return mountNotify({ ...obj, msg, type: 'primary' });
   },
-  success(msg, obj = {}) {
+  success(msg: string, obj = {}) {
     errorMsg(msg);
     return mountNotify({ ...obj, msg, type: 'success' });
   },
-  danger(msg, obj = {}) {
+  danger(msg: string, obj = {}) {
     errorMsg(msg);
     return mountNotify({ ...obj, msg, type: 'danger' });
   },
-  warn(msg, obj = {}) {
+  warn(msg: string, obj = {}) {
     errorMsg(msg);
     return mountNotify({ ...obj, msg, type: 'warning' });
   },

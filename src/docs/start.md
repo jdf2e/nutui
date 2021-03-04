@@ -1,25 +1,21 @@
 # 快速上手
 
-## 推荐工程
-
-我们提供一个命令行工具 [Gaea CLI](https://www.npmjs.com/package/gaea-cli) ，可用来快速生成一个已经内置了本组件库的基于 Webpack 的 Vue 项目工程。基于这个工程开发项目，可省去大量配置和调试环境的时间，也可略过下面组件库安装使用部分内容直接进入开发阶段。
-
 ## 安装
 
 * 通过 NPM 或 YARN 安装（推荐）
 
 #### NPM
 ```bash
-npm i @nutui/nutui -S
+npm i @nutui/nutui@next -S
 ```
 
 #### YARN
 ```bash
-yarn add @nutui/nutui
+yarn add @nutui/nutui@next
 ```
 > 如果你的网络环境不佳，不妨试试国内的npm镜像
 
-> 默认安装最新版，如需使用 1.x 版本，请指定版本号，如：  `npm i @nutui/nutui@1.3.2 -S`
+> 默认安装最新版 2.x，如需使用 1.x 版本，请指定版本号，如：  `npm i @nutui/nutui@1.3.2 -S`
 
 * 页面直接引用
 
@@ -30,24 +26,24 @@ yarn add @nutui/nutui
 ```html 开发环境版本，包含了有帮助的命令行警告
 <!-- 开发环境版本，包含了有帮助的命令行警告 -->
 <!-- 引入样式 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@beta/dist/nutui.css">
 <!-- 引入Vue -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
 <!-- 引入组件库 -->
-<script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@beta/dist/nutui.js"></script>
 ```
 或者
 ```html
 <!-- 生产环境版本，优化了尺寸和速度 -->
 <!-- 引入样式 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@beta/dist/nutui.min.css">
 <!-- 引入Vue -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
 <!-- 引入组件库 -->
-<script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@beta/dist/nutui.min.js"></script>
 ```
 
-CDN 引入示例
+CDN 使用示例
 
 ```html
 <!DOCTYPE html>
@@ -56,31 +52,18 @@ CDN 引入示例
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 引入样式 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@beta/dist/nutui.min.css">
+    <!-- 引入Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
+    <!-- 引入NutUI组件库 -->
+    <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@beta/dist/nutui.min.js"></script>
 </head>
 <body>
     <div id="app">
-        <nut-button @click="showDialog">
-            Button
-        </nut-button>
+        <nut-button>Button</nut-button>
     </div>
-
-    <!-- 引入Vue -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
-    <!-- 引入NutUI组件库 -->
-    <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.js"></script>
     <script>
-        new Vue({
-            el: '#app',
-            methods: {
-                showDialog() {
-                    this.$dialog({
-                        title: "确定删除此订单？",
-                        content: "删除后将从你的记录里消失，无法找回"
-                    });
-                }
-            }
-        });
+        new Vue({el: '#app'});
     </script>
 </body>
 </html>

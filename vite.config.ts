@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Markdown from 'vite-plugin-md';
 import path from 'path';
+import legacy from '@vitejs/plugin-legacy';
 const resolve = path.resolve;
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -30,7 +31,10 @@ export default defineConfig({
     vue({
       include: [/\.vue$/, /\.md$/]
     }),
-    Markdown()
+    Markdown(),
+    legacy({
+      targets: ['defaults', 'not IE 11']
+    })
   ],
   build: {
     cssCodeSplit: false,

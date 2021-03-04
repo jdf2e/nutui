@@ -2,26 +2,88 @@
   <div class="doc-footer" :class="`doc-footer-${data.theme}`">
     <div class="doc-footer-content">
       <div class="doc-footer-list">
-        <h4 class="doc-footer-title">相关资源</h4>
-        <div class="doc-footer-item">JDW智能构建平台</div>
-        <div class="doc-footer-item">JDW智能构建平台</div>
-        <div class="doc-footer-item">JDW智能构建平台</div>
-        <div class="doc-footer-item">JDW智能构建平台</div>
+        <img
+          class="doc-footer-logo"
+          src="../../assets/images/logo-header-red.png"
+        />
       </div>
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">相关资源</h4>
-        <div class="doc-footer-item">JDW智能构建平台</div>
-        <div class="doc-footer-item">JDW智能构建平台</div>
+        <div class="doc-footer-item"
+          ><a class="sub-link" target="_blank" href="https://ling.jd.com/jdw"
+            >羚珑-中后台智能构建平台</a
+          ></div
+        >
+        <div class="doc-footer-item"
+          ><a class="sub-link" target="_blank" href="https://taro-ui.jd.com"
+            >Taro UI</a
+          ></div
+        >
+        <div class="doc-footer-item"
+          ><a class="sub-link" target="_blank" href="https://vitejs.dev"
+            >Vite</a
+          ></div
+        >
+        <div class="doc-footer-item"
+          ><a
+            class="sub-link"
+            target="_blank"
+            href="hhttps://cn.vuejs.org/index.html"
+            >Vue</a
+          ></div
+        >
       </div>
       <div class="doc-footer-list">
-        <h4 class="doc-footer-title">相关资源</h4>
-        <div class="doc-footer-item">JDW智能构建平台</div>
-        <div class="doc-footer-item">JDW智能构建平台</div>
+        <h4 class="doc-footer-title">社区</h4>
+        <div class="doc-footer-item"
+          ><a
+            class="sub-link"
+            target="_blank"
+            href="https://github.com/jdf2e/nutui"
+            >Github</a
+          ></div
+        >
+        <div class="doc-footer-item"
+          ><a
+            class="sub-link"
+            target="_blank"
+            href="https://www.zhihu.com/column/c_1263837684834889728"
+            >NUT UI 知乎专栏</a
+          ></div
+        >
+        <div class="doc-footer-item vx-item">
+          微信
+          <i class="icon-vx"></i>
+          <div class="vx-box">
+            <p class="vx-desc">微信交流群</p>
+            <p class="vx-desc">扫码添加好友</p>
+            <img class="img-code" src="../../assets/images/vx-code.png" />
+            <p class="vx-desc"
+              >回复<span class="vx-red">NUT UI</span>即刻进群</p
+            >
+          </div>
+        </div>
       </div>
       <div class="doc-footer-list">
-        <h4 class="doc-footer-title">相关资源</h4>
-        <div class="doc-footer-item">JDW智能构建平台</div>
-        <div class="doc-footer-item">JDW智能构建平台</div>
+        <h4 class="doc-footer-title">关于我们</h4>
+        <div class="doc-footer-item"
+          ><a
+            class="sub-link"
+            target="_blank"
+            href="https://nutui.jd.com/#/joinus"
+            >加入我们</a
+          ></div
+        >
+        <div class="doc-footer-item"
+          ><a class="sub-link" target="_blank" href="http://fe.jd.com"
+            >京东零售前端</a
+          ></div
+        >
+        <div class="doc-footer-item"
+          ><a class="sub-link" target="_blank" href="nutui@jd.com"
+            >联系我们</a
+          ></div
+        >
       </div>
       <div
         class="doc-footer-list"
@@ -111,16 +173,28 @@ export default defineComponent({
     }
     &-list {
       position: relative;
+      &:first-child {
+        margin-right: 65px;
+      }
+    }
+    &-logo {
+      margin-top: 8px;
     }
     &-title {
       margin-bottom: 24px;
       font-size: 16px;
       font-weight: bold;
+      text-align: left;
     }
     &-item {
       margin-bottom: 14px;
       line-height: 17px;
       font-size: 12px;
+      text-align: left;
+      cursor: pointer;
+      .sub-link {
+        // cursor: pointer;
+      }
     }
     &-desc {
       margin-top: 30px;
@@ -188,6 +262,9 @@ export default defineComponent({
       }
       &-item {
         color: $theme-black-footer-word2;
+        .sub-link {
+          color: $theme-black-footer-word2;
+        }
       }
       &-desc {
         color: $theme-black-footer-word4;
@@ -244,6 +321,9 @@ export default defineComponent({
       }
       &-item {
         color: $theme-white-footer-word2;
+        .sub-link {
+          color: $theme-white-footer-word2;
+        }
       }
       &-desc {
         color: $theme-white-footer-word4;
@@ -294,6 +374,53 @@ export default defineComponent({
         }
       }
     }
+  }
+}
+.vx-item {
+  position: relative;
+  &:hover {
+    .vx-box {
+      display: block;
+    }
+  }
+}
+.icon-vx {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin-left: 5px;
+  vertical-align: -2px;
+  background: url('../../assets/images/icon-footer-vx.png') no-repeat
+    center/100%;
+}
+.vx-box {
+  display: none;
+  position: absolute;
+  right: -144px;
+  top: -120px;
+  padding: 20px 30px;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(238, 238, 238, 1);
+  box-shadow: 0px 2px 4px 0px rgba(143, 143, 143, 0.5);
+  .vx-desc {
+    margin-bottom: 10px;
+    line-height: 17px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #1a1a1a;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .img-code {
+    width: 121px;
+    height: 121px;
+    margin-bottom: 10px;
+  }
+  .vx-red {
+    margin: 0 4px;
+    font-weight: bold;
+    color: #fa2c19;
   }
 }
 </style>
