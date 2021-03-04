@@ -37,7 +37,7 @@
   ],
   "scripts": {
     "dev": "rm -rf dist && tsc && npm run generate:file && vite --open",
-    "build:site": "vite build",
+    "build:site": "npm run generate:file && vite build",
     "build": "npm run generate:file && vite build -c vite.config.build.ts",
     "serve": "vite preview",
     "upload": "yarn build:site && node ./jd/upload.js",
