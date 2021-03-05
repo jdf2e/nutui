@@ -464,6 +464,16 @@
           "sort": 6,
           "show": true,
           "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CountUp",
+          "type": "component",
+          "cName": "数字滚动",
+          "desc": "数字滚动，模拟抽奖",
+          "sort": 7,
+          "show": true,
+          "author": "Ymm0008"
         }
       ]
     },
