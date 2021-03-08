@@ -6,9 +6,9 @@
   },
   "description": "一套京东风格的轻量级移动端 Vue 组件库",
   "main": "dist/nutui.umd.js",
-  "module": "dist/nutui.es.js",
+  "module": "dist/src/nutui.js",
   "style": "dist/style.css",
-  "typings": "dist/types/nutui.d.ts",
+  "typings": "dist/src/nutui.d.ts",
   "keywords": [
     "nutui",
     "nutui2",

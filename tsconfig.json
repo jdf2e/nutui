@@ -13,7 +13,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "outDir": "./dist/es",
+    "outDir": "dist",
     "types": ["vite/client"],
     "paths": {
       "@/*": ["src/*"]
