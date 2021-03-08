@@ -27,26 +27,28 @@
       v-model:value="state.value1"
       v-model:is-visible="state.dialogShow1"
       :no-button="false"
-      @sureClick="sureClick"
+      @sure-click="sureClick"
     >
     </nut-shortpassword>
     <nut-shortpassword
       v-model:value="state.value2"
       v-model:is-visible="state.dialogShow2"
-      :length="5"
+      :length="4"
     >
     </nut-shortpassword>
     <nut-shortpassword
       v-model:value="state.value3"
       v-model:is-visible="state.dialogShow3"
-      :errorMsg="state.errorMsg"
+      :error-msg="state.errorMsg"
+      @complete="complete"
+      link="http://m.jd.com"
     >
     </nut-shortpassword>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, reactive, toRefs, watch } from 'vue';
+import { ref, reactive, watch } from 'vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('shortpassword');
 export default createDemo({
@@ -63,24 +65,23 @@ export default createDemo({
       errorMsg: ''
     });
     // 方法
-    function switchActionSheet(param) {
-      state[`${param}`] = !state[`${param}`];
+    function switchActionSheet(
+      param: 'dialogShow' | 'dialogShow1' | 'dialogShow2' | 'dialogShow3'
+    ) {
+      state[param] = !state[param];
     }
-    function sureClick() {
+    function sureClick(val: string) {
+      console.log(val);
       state.dialogShow1 = false;
     }
-    watch(
-      () => state.value3,
-      val => {
-        if (val.length == 6) {
-          state.errorMsg = '请输入正确密码';
-        }
-      }
-    );
+    function complete() {
+      state.errorMsg = '请输入正确密码';
+    }
     return {
       state,
       switchActionSheet,
-      sureClick
+      sureClick,
+      complete
     };
   }
 });

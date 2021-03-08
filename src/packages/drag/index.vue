@@ -72,7 +72,7 @@ export default create({
       );
     }
 
-    function goLeft(target) {
+    function goLeft(target: any) {
       if (state.boundary.left) {
         if (target.style.left.split('px')[0] > state.boundary.left) {
           target.style.left = target.style.left.split('px')[0] - 10 + 'px';
@@ -89,7 +89,7 @@ export default create({
         }
       }
     }
-    function goRight(target, rightLocation) {
+    function goRight(target: any, rightLocation: any) {
       if (rightLocation - parseInt(target.style.left.split('px')[0]) > 10) {
         target.style.left =
           parseInt(target.style.left.split('px')[0]) + 10 + 'px';
@@ -98,7 +98,7 @@ export default create({
         target.style.left = rightLocation + 'px';
       }
     }
-    function touchMove(e) {
+    function touchMove(e: any) {
       e.preventDefault();
       const target = e.currentTarget;
       if (e.targetTouches.length == 1) {
@@ -137,7 +137,7 @@ export default create({
         }
       }
     }
-    function touchEnd(e) {
+    function touchEnd(e: any) {
       const target = e.currentTarget;
       const touch = e.changedTouches[0];
       let currX = touch.clientX;
@@ -165,7 +165,7 @@ export default create({
         target.style.top = state.yPum + 'px';
       }
     }
-    function touchstart(e) {
+    function touchstart(e: any) {
       const target = e.currentTarget;
       state.startTop = target.offsetTop; // 元素距离顶部的距离
       state.startLeft = target.offsetLeft; // 元素距离左侧的距离

@@ -36,9 +36,10 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "dev": "rm -rf dist && tsc && npm run generate:file && vite --open",
-    "build:site": "npm run generate:file && vite build",
-    "build": "npm run generate:file && vite build -c vite.config.build.ts",
+    "checked":"npm run generate:file && rm -rf dist/ && tsc",
+    "dev": "npm run checked && vite --open",
+    "build:site": "npm run checked && vite build",
+    "build": "npm run checked && vite build -c vite.config.build.ts",
     "serve": "vite preview",
     "upload": "yarn build:site && node ./jd/upload.js",
     "add": "node jd/createComponentMode.js",
