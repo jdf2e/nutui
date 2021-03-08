@@ -342,13 +342,12 @@
           "author": "yangxiaolu3"
         },
         {
-          "version": "3.0.0",
           "name": "Drag",
           "type": "component",
           "cName": "拖拽",
           "desc": "拖拽组件",
           "sort": 16,
-          "show": false,
+          "show": true,
           "author": "Drjingfubo"
         }
       ]
