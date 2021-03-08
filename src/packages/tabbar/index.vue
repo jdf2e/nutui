@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-tabbar" :class="{ bottom: bottom }">
+  <view class="nut-tabbar" :class="{ bottom }">
     <view
       class="tabbar-nav"
       v-for="(item, index) in tabbarList"
@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, Ref } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('tabbar');
 type obj = {
@@ -69,7 +69,7 @@ export default create({
   components: {},
   emits: ['tab-switch'],
   setup(props, { emit }) {
-    const currIndex: any = ref(0);
+    const currIndex: Ref<number> = ref(0);
     const { tabbarList } = props;
     function initbar() {
       tabbarList.forEach((item: any, index) => {

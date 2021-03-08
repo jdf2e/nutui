@@ -122,6 +122,13 @@ $body-background: #f6f6f6 !default;
 $light-color: #f6f6f6 !default;
 $font-size-base: 14px !default;
 $font-size-small: 12px !default;
+
+//shortpassword
+$shortpsd-background-color: rgba(245, 245, 245, 1);
+$shortpsd-border-color: #ddd;
+$shortpsd-error: rgba(242, 39, 12, 1);
+$shortpsd-forget: rgba(128, 128, 128, 1);
+
 // calendar
 $calendar-primary-color: $primary-color;
 $calendar-choose-color: #fef6f6;
@@ -182,8 +189,6 @@ $notify-warning-background-color: linear-gradient(
   rgba(255, 154, 13, 1) 100%
 );
 
-view {
-}
 view-block {
   display: block;
 }
