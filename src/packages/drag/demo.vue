@@ -46,6 +46,7 @@ export default createDemo({
     rgba(250, 100, 25, 1) 100%
   );
   border-radius: 24px;
+  color: #fff;
 }
 .drag {
   width: 100px;
