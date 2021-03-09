@@ -7,30 +7,34 @@
 
     <h2>自定义图标</h2>
     <div>
-      <nut-rate checkedIcon="heart-fill1" uncheckedIcon="heart"></nut-rate>
+      <nut-rate
+        checked-icon="heart-fill1"
+        unchecked-icon="heart"
+        v-model:value="state.val3"
+      ></nut-rate>
     </div>
 
     <h2>自定义数量</h2>
     <div>
-      <nut-rate :total="6"></nut-rate>
+      <nut-rate :total="6" v-model:value="state.val4"></nut-rate>
     </div>
 
     <h2>自定义颜色</h2>
     <div>
-      <nut-rate activeColor="#FFC800"></nut-rate>
+      <nut-rate active-color="#FFC800" v-model:value="state.val5"></nut-rate>
     </div>
 
     <h2>禁用状态</h2>
     <div>
-      <nut-rate :disabled="true"></nut-rate>
+      <nut-rate :disabled="true" v-model:value="state.val6"></nut-rate>
     </div>
 
     <h2>只读状态</h2>
     <div>
-      <nut-rate :value="2" :readOnly="true"></nut-rate>
+      <nut-rate :value="2" :read-only="true"></nut-rate>
     </div>
 
-    <h2>监听 change 事件</h2>
+    <h2>监听 change 事件,{{ state.result }}</h2>
     <div>
       <nut-rate @click="onClick"></nut-rate>
     </div>
@@ -45,9 +49,12 @@ export default createDemo({
   setup() {
     const state = reactive({
       val: 4,
-      val2: 2,
-      result: '',
-      result2: ''
+      val3: 3,
+      val4: 3,
+      val5: 3,
+      val6: 3,
+      val7: 3,
+      result: ''
     });
     const onClick = idx => {
       state.result = '您点击了第' + idx + '个!';
