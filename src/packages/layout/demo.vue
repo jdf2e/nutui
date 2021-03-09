@@ -119,7 +119,10 @@
 <script lang="ts">
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('layout');
-export default createDemo({});
+
+export default createDemo({
+  props: {}
+});
 </script>
 
 <style lang="scss" scoped>
