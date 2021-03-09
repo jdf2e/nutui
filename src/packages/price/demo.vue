@@ -4,7 +4,7 @@
     <nut-cell>
       <nut-price :price="1010" :need-symbol="false" :thousands="true" />
     </nut-cell>
-    <h2>无人民币符号，有千位分隔</h2>
+    <h2>有人民币符号，无千位分隔</h2>
     <nut-cell>
       <nut-price :price="10010.01" :need-symbol="true" :thousands="false" />
     </nut-cell>
