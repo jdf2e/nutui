@@ -87,7 +87,7 @@ export default createDemo({
     });
     const menuItemsOne: Item[] = [
       {
-        name: '选项一222'
+        name: '选项一'
       },
       {
         name: '选项二'
