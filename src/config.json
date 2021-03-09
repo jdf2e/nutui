@@ -383,6 +383,15 @@
           "author": "vickyYE"
         },
         {
+          "name": "MenuItem",
+          "sort": 2,
+          "cName": "菜单组件",
+          "type": "component",
+          "show": false,
+          "desc": "下拉菜单组件",
+          "author": "vickyYE"
+        },
+        {
           "name": "Tabbar",
           "sort": 2,
           "cName": "标签栏组件",
