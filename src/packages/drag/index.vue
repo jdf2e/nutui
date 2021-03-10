@@ -11,7 +11,14 @@
 </template>
 
 <script lang="ts">
-import { onMounted, reactive, ref, computed } from 'vue';
+import {
+  onMounted,
+  onDeactivated,
+  onActivated,
+  reactive,
+  ref,
+  computed
+} from 'vue';
 import { createComponent } from '@/utils/create';
 import requestAniFrame from '@/utils/raf';
 const { componentName, create } = createComponent('drag');
@@ -40,6 +47,7 @@ export default create({
   setup(props, { emit }) {
     const myDrag = ref();
     const state = reactive({
+      keepAlive: false,
       elWidth: 0,
       elHeight: 0,
       screenWidth: 0,
@@ -180,6 +188,17 @@ export default create({
     onMounted(() => {
       getInfo();
       state.boundary = props.boundary;
+    });
+    onActivated(() => {
+      if (state.keepAlive) {
+        state.keepAlive = false;
+      }
+    });
+    onDeactivated(() => {
+      state.keepAlive = true;
+      (myDrag as any).removeEventListener('touchstart', touchStart);
+      (myDrag as any).removeEventListener('touchmove', touchMove);
+      (myDrag as any).removeEventListener('touchend', touchEnd);
     });
     return {
       classes,

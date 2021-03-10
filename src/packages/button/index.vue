@@ -2,9 +2,9 @@
   <view :class="classes" :style="getStyle" @click="handleClick">
     <nut-icon class="nut-icon-loading" v-if="loading"></nut-icon>
     <nut-icon :class="icon" v-if="icon && !loading" :name="icon"></nut-icon>
-    <view :class="{ text: icon || loading }" v-if="$slots.default"
-      ><slot></slot
-    ></view>
+    <view :class="{ text: icon || loading }" v-if="$slots.default">
+      <slot></slot>
+    </view>
   </view>
 </template>
 
@@ -59,11 +59,8 @@ export default create({
       default: ''
     }
   },
-  components: {},
   emits: ['click'],
   setup(props, { emit, slots }) {
-    // setup内部只能访问这4个属性，值得注意的是props必须在上面声明才能在这里取到
-    console.log('props', props, 'emit', emit, 'slots', slots);
     const {
       type,
       size,
@@ -74,7 +71,6 @@ export default create({
       plain,
       block
     } = toRefs(props);
-    // console.log("type", type, "size", size);
 
     const handleClick = (event: MouseEvent) => {
       if (!loading.value && !disabled.value) {
@@ -96,9 +92,8 @@ export default create({
     });
 
     const getStyle = computed(() => {
+      const style: CSSProperties = {};
       if (color?.value) {
-        const style: CSSProperties = {};
-
         if (plain.value) {
           style.color = color.value;
           style.background = '#fff';
@@ -109,16 +104,13 @@ export default create({
           style.color = '#fff';
           style.background = color.value;
         }
-
-        return style;
-      } else {
-        return {};
       }
+
+      return style;
     });
 
     return {
       handleClick,
-      disabled,
       classes,
       getStyle
     };

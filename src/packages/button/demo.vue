@@ -67,10 +67,7 @@
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('button');
 export default createDemo({
-  props: {
-    text: String
-  },
-  emits: ['click']
+  props: {}
 });
 </script>
 

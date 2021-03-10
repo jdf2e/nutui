@@ -68,16 +68,17 @@
 <script lang="ts">
 import {
   reactive,
+  inject,
   toRefs,
   onMounted,
   ref,
   nextTick,
   computed,
-  watch
+  watch,
+  getCurrentInstance,
+  ComponentInternalInstance
 } from 'vue';
 import { createComponent } from '@/utils/create';
-import { useParent } from '@/utils/useRelation/useParent';
-import { COLLAPSE_KEY } from './../collapse/index.vue';
 const { create } = createComponent('collapse-item');
 
 export default create({
@@ -104,9 +105,14 @@ export default create({
     }
   },
   setup(props) {
-    const collapse = useParent(COLLAPSE_KEY);
-    const parent: any = reactive(collapse.parent as any);
-    const index: any = reactive(collapse.index as any);
+    const collapse: any = inject('collapseParent');
+    const parent: any = reactive(collapse);
+    const relation = (child: ComponentInternalInstance): void => {
+      if (child.proxy) {
+        parent.children.push(child.proxy);
+      }
+    };
+    relation(getCurrentInstance() as ComponentInternalInstance);
     const proxyData = reactive({
       openExpanded: false,
       classDirection: 'right',
@@ -120,8 +126,6 @@ export default create({
         transform: 'rotate(0deg)'
       }
     });
-    console.log(parent.titleIcon);
-
     const titleIconStyle = reactive({
       titleIcon: parent.titleIcon,
       titleIconPosition: parent.titleIconPosition,
@@ -193,8 +197,6 @@ export default create({
           }
         });
         nextTick(() => {
-          console.log(currentName.value);
-
           parent.changeVal(currentName.value, !proxyData.openExpanded);
           animation();
         });

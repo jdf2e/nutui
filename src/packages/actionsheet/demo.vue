@@ -27,12 +27,7 @@
       <span><label>选项状态</label></span>
       <!-- <div class="selected-option">打开</div> -->
     </nut-cell>
-    <h2>自定义面板</h2>
 
-    <nut-cell :isLink="true" @click="switchActionSheet('isVisible5')">
-      <span><label>自定义内容</label></span>
-      <!-- <div class="selected-option">打开</div> -->
-    </nut-cell>
     <!-- demo 基础用法 -->
     <nut-actionsheet
       :is-visible="state.isVisible1"
@@ -42,7 +37,7 @@
     <!-- demo(带取消按钮） -->
     <nut-actionsheet
       :is-visible="state.isVisible2"
-      cancelTxt="取消"
+      cancel-txt="取消"
       :menu-items="menuItemsOne"
       @choose="chooseItemTwo"
     ></nut-actionsheet>
@@ -52,19 +47,16 @@
       :description="state.desc"
       :menu-items="menuItemsTwo"
       @choose="chooseItemThree"
-      cancelTxt="取消"
+      cancel-txt="取消"
     >
     </nut-actionsheet>
     <!-- demo 选项状态-->
     <nut-actionsheet
       :is-visible="state.isVisible4"
-      cancelTxt="取消"
+      cancel-txt="取消"
       :menu-items="menuItemsThree"
+      :choose-tag-value="state.chooseTagValue"
     ></nut-actionsheet>
-    <!-- demo 自定义 -->
-    <nut-actionsheet :is-visible="state.isVisible5" title="标题">
-      <div class="myContent">内容</div>
-    </nut-actionsheet>
   </div>
 </template>
 
@@ -72,6 +64,11 @@
 import { reactive } from 'vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('actionsheet');
+interface Item {
+  name: string;
+  subname?: string;
+  disable?: boolean;
+}
 export default createDemo({
   props: {},
   setup() {
@@ -84,63 +81,57 @@ export default createDemo({
       val1: '',
       val2: '',
       val3: '',
-      desc: '这是一段描述信息'
+      val4: '',
+      desc: '这是一段描述信息',
+      chooseTagValue: '着色选项'
     });
-    const menuItemsOne = [
+    const menuItemsOne: Item[] = [
       {
-        name: '选项一',
-        value: 0
+        name: '选项一'
       },
       {
-        name: '选项二',
-        value: 1
+        name: '选项二'
+      },
+      {
+        name: '选项三'
+      }
+    ];
+    const menuItemsTwo: Item[] = [
+      {
+        name: '选项一'
+      },
+      {
+        name: '选项二'
       },
       {
         name: '选项三',
-        value: 2
+        subname: '描述信息'
       }
     ];
-    const menuItemsTwo = [
+    const menuItemsThree: Item[] = [
       {
-        name: '选项一',
-        value: 0
-      },
-      {
-        name: '选项二',
-        value: 1
-      },
-      {
-        name: '选项三',
-        subname: '描述信息',
-        value: 2
-      }
-    ];
-    const menuItemsThree = [
-      {
-        name: '着色选项',
-        color: '#ee0a24',
-        value: 0
+        name: '着色选项'
       },
       {
         name: '禁用选项',
-        disable: true,
-        value: 1
+        disable: true
       }
     ];
-    const switchActionSheet = param => {
+    const switchActionSheet = (
+      param: 'isVisible1' | 'isVisible2' | 'isVisible3' | 'isVisible4'
+    ) => {
       state[param] = !state[param];
-      //   console.log(state[`${param}`], '2');
     };
 
-    const chooseItem = itemParams => {
+    const chooseItem = (itemParams: any) => {
       console.log(itemParams, 'itemParams');
       state.val1 = itemParams.name;
     };
 
-    function chooseItemTwo(itemParams) {
+    function chooseItemTwo(itemParams: Item) {
       state.val2 = itemParams.name;
     }
-    function chooseItemThree(itemParams) {
+    function chooseItemThree(itemParams: Item) {
       state.val3 = itemParams.name;
     }
 

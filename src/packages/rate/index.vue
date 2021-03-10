@@ -1,8 +1,8 @@
 <template>
-  <view class="nut-rate">
+  <view :class="classes">
     <view
       class="nut-rate-item"
-      :class="[{ 'nut-rate-active': n <= state.current }]"
+      :class="{ 'nut-rate-active': n <= state.current }"
       v-for="n in total"
       :key="n"
       @click="onClick($event, n)"
@@ -12,16 +12,15 @@
     >
       <nut-icon
         :size="size + 'px'"
-        :color="
-          n <= state.current ? (disabled ? '#CCCCCC' : activeColor) : '#CCCCCC'
-        "
+        :color="n <= state.current ? (disabled ? '#ccc' : activeColor) : '#ccc'"
         :name="n <= state.current ? checkedIcon : uncheckedIcon"
-      ></nut-icon>
+      >
+      </nut-icon>
     </view>
   </view>
 </template>
 <script lang="ts">
-import { toRefs, watch, reactive, inject } from 'vue';
+import { watch, reactive, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('rate');
 
@@ -33,7 +32,7 @@ export default create({
     },
     value: {
       type: [String, Number],
-      default: 3
+      default: 0
     },
     size: {
       type: [String, Number],
@@ -64,27 +63,33 @@ export default create({
       default: 20
     }
   },
-  setup(props, { emit, slots }) {
+  emits: ['update:value', 'click'],
+  setup(props, { emit }) {
     const state = reactive({
       current: props.value
     });
 
-    const onClick = (e: Event, idx) => {
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true
+      };
+    });
+
+    const onClick = (e: Event, idx: number) => {
+      e.preventDefault();
       e.stopPropagation();
-      if (props.disabled) return;
-      if (props.readOnly) {
-        emit('update:value', state.current);
-        emit('click', state.current);
+      if (props.disabled || props.readOnly) return;
+
+      if (idx === 1 && state.current === idx) {
+        state.current = 0;
       } else {
-        if (state.current == idx) {
-          state.current = 0;
-        } else {
-          state.current = idx;
-        }
-        emit('update:value', state.current);
-        emit('click', state.current);
+        state.current = idx;
       }
+      emit('update:value', state.current);
+      emit('click', state.current);
     };
+
     watch(
       () => props.value,
       newVal => {
@@ -94,6 +99,7 @@ export default create({
 
     return {
       state,
+      classes,
       onClick
     };
   }
