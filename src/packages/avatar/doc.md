@@ -64,7 +64,7 @@ app.use(Avatar);
 ></nut-avatar>
 ```
 
-### 点击头像有触发事件
+### 点击头像，触发事件
 
 ``` html
 <nut-avatar @active-avatar="activeAvatar"></nut-avatar>
@@ -75,13 +75,13 @@ app.use(Avatar);
 | 字段 |说明|类型|默认值|
 |--|--|--|--|
 |bg-color|设置头像背景色|String|#eee
-size|设置头像的大小，提供三种：large/normal/small|String|normal
-shape|设置头像的形状，默认是圆形，可以设置为square方形|String|round
-bg-image|设置头像的背景图片|String|--
-bg-icon|设置头像的icon图标|String|默认based64格式的头像图片
+|size|设置头像的大小，提供三种：large/normal/small|String|normal
+|shape|设置头像的形状，默认是圆形，可以设置为square方形|String|round
+|bg-image|设置头像的背景图片|String|''
+|bg-icon|设置头像的icon图标, 优先级低于bg-image,类似Icon组件的name属性，支持名称和链接|String|''
 
 ### Events
 
-|字段|说明|类型|默认值|
+|字段|说明|类型|回调参数|
 |--|--|--|--|
-|active-avatar|点击头像触发事件|Function|--|
+|active-avatar|点击头像触发事件|Function|event|

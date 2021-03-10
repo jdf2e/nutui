@@ -19,13 +19,9 @@
     display: inline-block;
     vertical-align: bottom;
     margin-right: 15px;
-    // @include nut-rate-bg($primary-color);
     background-size: cover;
     &:last-child {
       margin-right: 0;
     }
-    // &.nut-rate-active {
-    //   @include nut-rate-active-bg($primary-color);
-    // }
   }
 }

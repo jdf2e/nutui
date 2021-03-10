@@ -9,7 +9,7 @@
       @blur="onblur"
       @keyup="choseList"
     />
-    <ul class="search-list" v-if="data.searchList.length > 0">
+    <ul class="search-list" v-show="data.searchList.length > 0">
       <li
         :class="data.searchCurName == item.name ? 'cur' : ''"
         @click="checklist(item)"
@@ -169,8 +169,15 @@ export default defineComponent({
     }
   }
   .cur {
-    background: #6096ff;
+    background: #fa2c19;
     color: #fff;
+    &:hover {
+      color: #fff;
+      font-weight: bold;
+      a {
+        color: #fff;
+      }
+    }
     a {
       color: #fff;
     }

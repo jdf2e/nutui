@@ -4,10 +4,8 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs } from 'vue';
+import { toRefs, provide } from 'vue';
 import { createComponent } from '@/utils/create';
-import { useChildren } from '@/utils/useRelation/useChildren';
-export const COLLAPSE_KEY = 'nutCollapse';
 const { create } = createComponent('collapse');
 
 export default create({
@@ -96,8 +94,8 @@ export default create({
       }
     };
 
-    const { linkChildren } = useChildren(COLLAPSE_KEY);
-    linkChildren({
+    provide('collapseParent', {
+      children: [],
       value: props.active,
       accordion: props.accordion,
       expandIconPosition: props.expandIconPosition,

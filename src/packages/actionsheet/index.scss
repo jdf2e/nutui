@@ -55,12 +55,8 @@
     cursor: pointer;
   }
 
-  .nut-actionsheet-item-active {
-    color: $primary-color;
-  }
-
   .nut-actionsheet-item-disabled {
-    color: #e1e1e1;
+    color: #e1e1e1 !important;
     cursor: not-allowed;
   }
 

@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-tabbar" :class="{ bottom: bottom }">
+  <view class="nut-tabbar" :class="{ bottom }">
     <slot></slot>
   </view>
 </template>
@@ -27,17 +27,14 @@ export default create({
       default: '20px'
     },
     unactiveColor: {
-      // 未选中的颜色
       type: String,
       default: '#000000'
     },
     activeColor: {
-      // 选中的颜色
       type: String,
       default: '#fa2c19'
     }
   },
-  components: {},
   emits: ['tab-switch', 'update:show'],
   setup(props, { emit, slots }) {
     const mdValue = reactive({

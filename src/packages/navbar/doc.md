@@ -24,7 +24,7 @@ app.use(Navbar);
 ```html
   <nut-navbar  @on-click-back="back" @on-click-title="title" @on-click-send="send" title="订单详情" icon="share"></nut-navbar>
   <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-clear="clear"  title="浏览记录" desc="清空"></nut-navbar>
-  <nut-navbar :leftShow="false" @on-click-title="title" @on-click-icon="icon" @on-click-clear="edit"  @on-click-send="more" title="购物车" titIcon="locationg3" desc="编辑" icon="more"></nut-navbar>
+  <nut-navbar :left-show="false" @on-click-title="title" @on-click-icon="icon" @on-click-clear="edit"  @on-click-send="more" title="购物车" titIcon="locationg3" desc="编辑" icon="more"></nut-navbar>
 
 ```
 
@@ -66,15 +66,13 @@ app.use(Navbar);
 |-----------------|------------------------------------------------------------------------------------------------|---------|---------|
 | title           | 标题名称                                                                                       | String  | -       |
 | desc            | 右侧描述                                                                                       | String  | -       |
-| leftShow        | 是否展示左侧箭头                                                                              | Boolean | false   |
+| left-show        | 是否展示左侧箭头                                                                              | Boolean | false   |
 | icon            | 左侧 [图标名称](#/icon) 或图片链接                                                             | String  | -       |
-| titIcon         | 标题带icon                                                         | String  | -       |                                          
+| tit-icon         | 标题带icon                                                         | String  | -       |                                          
 
 ### Event
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
-| back | 点击返回上一页事件 | event:Event |
 | title | 点击页面标题事件 | event:Event |
 | right | 点击右侧按钮事件 | event:Event |
-| back | 点击返回上一页事件 | event:Event |
 | back | 点击返回上一页事件 | event:Event |

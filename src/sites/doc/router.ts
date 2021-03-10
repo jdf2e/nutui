@@ -92,6 +92,7 @@ const router = createRouter({
   }
 });
 router.afterEach((to, from) => {
+  window.scrollTo(0, 0);
   new HttpClient().request('/user/saveVisitInfo', 'post', {
     headers: '',
     componentName: to.path.split('/')[1]

@@ -68,12 +68,12 @@ app.use(Rate);
 | 字段 | 说明 | 类型 | 默认值
 | ----- | ----- | ----- | -----
 | total | star 总数 | Number | 5
-| value | 当前 star 数，可使用 v-model 双向绑定数据 | Number | 3
+| value | 当前 star 数，可使用 v-model 双向绑定数据 | Number | 0
 | size | star 大小 | Number | 25
 | spacing | 两个star的间距 | Number | 20
-| readOnly | 是否只读 | Boolean | false
-| uncheckedIcon | 使用图标(未选中) | String | -
-| checkedIcon | 使用图标(选中) | String | -
+| read-only | 是否只读 | Boolean | false
+| unchecked-icon | 使用图标(未选中) | String | -
+| checked-icon | 使用图标(选中) | String | -
 
 ## Event
 | 字段 | 说明 | 回调参数 

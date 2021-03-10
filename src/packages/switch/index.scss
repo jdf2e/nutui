@@ -1,37 +1,59 @@
 .nut-switch {
   display: flex;
   align-items: center;
-  width: 36px;
-  height: 21px;
-  background-color: rgb(250, 63, 25, 1);
+  background-color: $primary-color;
   border-radius: 21px;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center center;
   flex: 0 0 auto; // 防止被压缩
+  &.switch-close {
+    background-color: $switch-close-bg-color;
+    .close-line {
+      background: $switch-close--cline-bg-color;
+      border-radius: 2px;
+    }
+  }
   .switch-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 13px;
-    height: 13px;
-    border-radius: 7px;
-    background: rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    background: $white;
     transition: transform 0.3s;
-    transform: translateX(30%);
+    .nut-switch-label {
+      color: $white;
+      font-size: $font-size-1;
+      &.open {
+        transform: translateX(-14px);
+      }
+      &.close {
+        transform: translateX(14px);
+      }
+    }
   }
-}
-.switch-open {
-  .switch-button {
-    transform: translateX(146%);
+  &.nut-switch-disable {
+    opacity: 0.6;
   }
-}
-.switch-close {
-  background-color: rgba(235, 235, 235, 1);
-  .close-line {
-    width: 8px;
-    height: 2px;
-    background: rgba(240, 240, 240, 1);
-    border-radius: 2px;
+  &.nut-switch-base {
+    width: 36px;
+    height: 21px;
+    line-height: 21px;
+    .switch-button {
+      height: 13px;
+      width: 13px;
+      transform: translateX(30%);
+    }
+    &.switch-open {
+      .switch-button {
+        transform: translateX(146%);
+      }
+    }
+    &.switch-close {
+      .close-line {
+        width: 8px;
+        height: 2px;
+      }
+    }
   }
 }

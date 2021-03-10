@@ -2,7 +2,7 @@
 
 ### 介绍
 
-XXXXXX
+短密码输入框，可用于输入密码、短信验证码等
 ### 安装
 
 ``` javascript
@@ -48,7 +48,7 @@ app.use(ShortPassword);
     v-model:value="state.value" 
     v-model:is-visible="state.dialogShow"
     :no-button="false"
-    @sureClick='sureClick'
+    @sure-click='sureClick'
     >
 </nut-shortpassword>
 ```
@@ -109,7 +109,7 @@ setup() {
 <nut-shortpassword 
     v-model:value="state.value" 
     v-model:is-visible="state.dialogShow"
-    :errorMsg = state.errorMsg
+    :error-msg = state.errorMsg
     >
 </nut-shortpassword>
 ```
@@ -144,19 +144,23 @@ setup() {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| isVisible | 是否展示短密码框| Booble | false
+| title | 标题| Boolean | '请输入密码'
+| is-visible | 是否展示短密码框| Boolean | false
 | value | 密码值 | string | ''
-| noButton | 是否隐藏底部按钮 |Booble|true|
-| length | 密码长度 |string||Number|6|
-| errorMsg | 错误信息提示 |string|''|
+| no-button | 是否隐藏底部按钮 |Boolean|true|
+| length | 密码长度，取值为4，5，6 |string||Number|6|
+| error-msg | 错误信息提示 |string|''|
+| show-password-tips | 忘记密码提示信息 |string|'忘记密码'|
+| link | 忘记密码跳转链接 |string|''|
 
 
 ### Event
 
-| 事件名称 | 说明 | 回调参数 
+| 事件名称 | 说明 | 回调参数
 |----- | ----- | ----- 
 | input | 输入密码时触发事件 | --
-| sureClick | 点击确实时触发事件 | --
+| sure-click | 点击确实时触发事件 | value
+| complete | 输入完成的回调 | value
 
 
 
