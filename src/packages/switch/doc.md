@@ -23,6 +23,12 @@ app.use(Switch);
 <nut-switch></nut-switch>
 ```
 
+### 禁用状态
+
+``` html
+<nut-switch disable></nut-switch>
+```
+
 ### change事件
 
 ``` html
@@ -46,7 +52,7 @@ export default {
 ### 自定义颜色
 
 ``` html
-<nut-switch activeColor="blue"></nut-switch>
+<nut-switch active-color="blue"></nut-switch>
 ```
 
 ## API
@@ -55,14 +61,16 @@ export default {
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| status         | 开关状态               | Boolean | true |
-| activeColor        | 开关打开时的背景颜色  | String | rgb(250,63,25,1)                |
-| inactiveColor         | 开关关闭时的背景颜色 | String | rgba(235,235,235,1)         |
+| status         | 开关状态               | Boolean | `true` |
+| disable         | 禁用状态               | Boolean | `false` |
+| active-color        | 开关打开时的背景颜色  | String | `rgb(250,63,25,1)`                |
+| inactive-color         | 开关关闭时的背景颜色 | String | `rgba(235,235,235,1)`         |
+| label         | 支持内嵌文字 | String | -         |
 
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| switch-change  | 切换开关时触发 | event: Event |
+| switch-change  | 切换开关时触发 | (event: Event, isOpen: boolean) |
     

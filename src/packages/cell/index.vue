@@ -35,7 +35,6 @@
 import { computed } from 'vue';
 import { createComponent } from '@/utils/create';
 import { useRouter } from 'vue-router';
-import Icon from '@/packages/icon/index.vue';
 const { componentName, create } = createComponent('cell');
 
 export default create({
@@ -49,9 +48,6 @@ export default create({
     replace: { type: Boolean, default: false },
     url: { type: String, default: '' },
     icon: { type: String, default: '' }
-  },
-  components: {
-    [Icon.name]: Icon
   },
   emits: ['click'],
   setup(props, { emit }) {
