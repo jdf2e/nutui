@@ -1,7 +1,7 @@
 <template>
   <Teleport :to="teleport">
     <nut-overlay
-      :show="show && overlay"
+      :show="show"
       :class="overlayClass"
       :style="overlayStyle"
       :zIndex="state.zIndex"
