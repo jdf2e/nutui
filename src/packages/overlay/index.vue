@@ -1,11 +1,11 @@
 <template>
   <Transition name="overlay-fade">
     <view
+      :class="classes"
       @touchmove.stop="touchmove"
       @click="onClick"
-      :style="{ animationDuration: `${duration}s`, ...overlayStyle, zIndex }"
+      :style="style"
       v-show="show"
-      :class="classes"
     >
       <slot></slot>
     </view>
@@ -21,7 +21,8 @@ const overlayProps = {
     default: false
   },
   zIndex: {
-    type: [Number, String]
+    type: [Number, String],
+    default: 2000
   },
   duration: {
     type: [Number, String],
@@ -37,10 +38,6 @@ const overlayProps = {
   },
   overlayStyle: {
     type: Object as PropType<CSSProperties>
-  },
-  overlay: {
-    type: Boolean,
-    default: true
   },
   closeOnClickOverlay: {
     type: Boolean,
@@ -61,20 +58,27 @@ export default create({
         [props.overlayClass]: true
       };
     });
-    const touchmove = e => {
-      if (props.lockScroll) {
-        e.preventDefault();
-      }
+
+    const style = computed(() => {
+      return {
+        animationDuration: `${props.duration}s`,
+        zIndex: props.zIndex,
+        ...props.overlayStyle
+      };
+    });
+
+    const touchmove = (e: TouchEvent) => {
+      if (props.lockScroll) e.preventDefault();
     };
 
-    const onClick = e => {
+    const onClick = (e: MouseEvent) => {
       emit('click', e);
       if (props.closeOnClickOverlay) {
         emit('update:show', false);
       }
     };
 
-    return { classes, touchmove, onClick };
+    return { classes, style, touchmove, onClick };
   }
 });
 </script>

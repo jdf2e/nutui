@@ -65,7 +65,7 @@ export default {
 | disable         | 禁用状态               | Boolean | `false` |
 | active-color        | 开关打开时的背景颜色  | String | `rgb(250,63,25,1)`                |
 | inactive-color         | 开关关闭时的背景颜色 | String | `rgba(235,235,235,1)`         |
-| label         | 支持内嵌文字 | String | -         |
+| label         | 支持内嵌文字,两种状态使用空格隔开 | String | -         |
 
 
 ### Events
