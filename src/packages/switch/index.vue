@@ -1,18 +1,21 @@
 <template>
-  <view
-    @click="onClick"
-    :style="style"
-    class="nut-switch"
-    :class="[isOpen ? 'switch-open' : 'switch-close']"
-  >
+  <view :class="classes" @click="onClick" :style="style">
     <view class="switch-button">
       <view v-show="!isOpen" class="close-line"></view>
+      <template v-if="label">
+        <view class="nut-switch-label open" v-show="isOpen">{{
+          label.split(/\s+/)[0]
+        }}</view>
+        <div class="nut-switch-label close" v-show="!isOpen">{{
+          label.split(/\s+/)[1]
+        }}</div>
+      </template>
     </view>
   </view>
 </template>
 
 <script lang="ts">
-import { toRefs, computed, reactive, onMounted } from 'vue';
+import { computed, ref } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('switch');
 
@@ -22,61 +25,53 @@ export default create({
       type: Boolean,
       default: true
     },
+    disable: {
+      type: Boolean,
+      default: false
+    },
     activeColor: {
       type: String,
-      default: ''
+      default: 'rgba(250,63,25,1)'
     },
     inactiveColor: {
+      type: String,
+      default: 'rgba(235,235,235,1)'
+    },
+    label: {
       type: String,
       default: ''
     }
   },
 
   setup(props, { emit }) {
-    const { status, activeColor, inactiveColor } = toRefs(props);
-    const actColor = activeColor.value;
-    const inaColor = inactiveColor.value;
+    let isOpen = ref(props.status ? props.status : true);
 
-    const response = reactive({
-      isOpen: status.value ? status.value : true,
-      style: {}
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true,
+        [isOpen.value ? 'switch-open' : 'switch-close']: true,
+        [`${prefixCls}-disable`]: props.disable,
+        [`${prefixCls}-base`]: true
+      };
     });
 
-    const styleCheck = status => {
-      if (status) {
-        if (actColor) {
-          response.style = {
-            backgroundColor: `${actColor}`
-          };
-        } else {
-          response.style = {
-            backgroundColor: 'rgb(250,63,25,1)'
-          };
-        }
-      }
-      if (!status) {
-        if (inaColor) {
-          response.style = {
-            backgroundColor: `${inaColor}`
-          };
-        } else {
-          response.style = {
-            backgroundColor: 'rgba(235,235,235,1)'
-          };
-        }
-      }
-    };
-
-    styleCheck(status.value);
+    const style = computed(() => {
+      return {
+        backgroundColor: isOpen.value ? props.activeColor : props.inactiveColor
+      };
+    });
 
     const onClick = () => {
-      response.isOpen = !response.isOpen;
-      styleCheck(response.isOpen);
-      emit('switch-change', event, response.isOpen);
+      if (props.disable) return;
+      isOpen.value = !isOpen.value;
+      emit('switch-change', event, isOpen.value);
     };
 
     return {
-      ...toRefs(response),
+      isOpen,
+      classes,
+      style,
       onClick
     };
   }
