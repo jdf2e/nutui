@@ -154,8 +154,11 @@ $calendar-title-font: $font-size-4;
 $calendar-base-font: $font-size-3;
 $calendar-text-font: $font-size-1;
 $calendar-day-font: 18px;
-//popup
 
+//overlay
+$overlay-bg-color: rgba(0, 0, 0, 0.7);
+
+//popup
 $popup-close-icon-margin: 16px;
 $popup-border-radius: 20px;
 // ---- Animation ----
