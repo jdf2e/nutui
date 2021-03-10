@@ -6,6 +6,7 @@ node_modules
 yarn.lock
 package-lock.json
 /cache
+/src/nutui.ts
 
 
 # local env files

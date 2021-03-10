@@ -4,10 +4,8 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, reactive } from 'vue';
+import { toRefs, reactive, provide } from 'vue';
 import { createComponent } from '@/utils/create';
-import { useChildren } from '@/utils/useRelation/useChildren';
-export const MENU_KEY = 'nutMenu';
 const { componentName, create } = createComponent('menu');
 
 export default create({
@@ -31,8 +29,7 @@ export default create({
     const handleMaskShow = status => {
       state.showMask = status;
     };
-    const { linkChildren } = useChildren(MENU_KEY);
-    linkChildren({
+    provide('menuRelation', {
       handleMaskShow,
       hasMask: props.hasMask
     });

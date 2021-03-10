@@ -13,7 +13,6 @@
     opacity: 0.1;
   }
   &--clickable {
-    cursor: pointer;
     &::before {
       position: absolute;
       content: ' ';
@@ -63,7 +62,6 @@
         box-sizing: border-box;
         text-align: center;
         font-size: 14px;
-        font-family: PingFangSC-Regular;
         color: rgba(26, 26, 26, 1);
         margin-left: 10px;
       }

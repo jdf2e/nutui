@@ -9,6 +9,12 @@
       ></nut-switch>
     </nut-cell>
 
+    <h2>禁用状态</h2>
+    <nut-cell class="switch-adjust">
+      {{ text }}
+      <nut-switch class="switch-decoration" disable></nut-switch>
+    </nut-cell>
+
     <h2>change事件</h2>
     <nut-cell class="switch-adjust">
       chane
@@ -21,7 +27,13 @@
     <h2>自定义颜色</h2>
     <nut-cell class="switch-adjust">
       color
-      <nut-switch activeColor="blue" class="switch-decoration"></nut-switch>
+      <nut-switch active-color="blue" class="switch-decoration"></nut-switch>
+    </nut-cell>
+
+    <h2>支持文字</h2>
+    <nut-cell class="switch-adjust">
+      text
+      <nut-switch class="switch-decoration" label="开    关"></nut-switch>
     </nut-cell>
   </div>
 </template>
@@ -29,7 +41,6 @@
 <script lang="ts">
 import { toRefs, reactive } from 'vue';
 import { createComponent } from '@/utils/create';
-import { isObject } from '@vue/shared';
 const { createDemo } = createComponent('switch');
 export default createDemo({
   props: {},
@@ -41,7 +52,7 @@ export default createDemo({
       response.text = isOpen ? '开' : '关';
     };
     const change = (event: Event, isOpen: boolean) => {
-      console.log('触发了change事件,开关状态：', isOpen);
+      alert(`触发了change事件,开关状态：${isOpen}`);
     };
 
     return {

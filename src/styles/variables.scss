@@ -122,6 +122,29 @@ $body-background: #f6f6f6 !default;
 $light-color: #f6f6f6 !default;
 $font-size-base: 14px !default;
 $font-size-small: 12px !default;
+
+//shortpassword
+$shortpsd-background-color: rgba(245, 245, 245, 1);
+$shortpsd-border-color: #ddd;
+$shortpsd-error: rgba(242, 39, 12, 1);
+$shortpsd-forget: rgba(128, 128, 128, 1);
+
+//price
+$price-big-size: 24px;
+
+//avatar
+$avatar-square: 5px;
+$avatar-large-width: 60px;
+$avatar-large-height: 60px;
+$avatar-small-width: 32px;
+$avatar-small-height: 32px;
+$avatar-normal-width: 40px;
+$avatar-normal-height: 40px;
+
+//switch
+$switch-close-bg-color: #ebebeb;
+$switch-close--cline-bg-color: #f0f0f0;
+
 // calendar
 $calendar-primary-color: $primary-color;
 $calendar-choose-color: #fef6f6;
@@ -131,8 +154,11 @@ $calendar-title-font: $font-size-4;
 $calendar-base-font: $font-size-3;
 $calendar-text-font: $font-size-1;
 $calendar-day-font: 18px;
-//popup
 
+//overlay
+$overlay-bg-color: rgba(0, 0, 0, 0.7);
+
+//popup
 $popup-close-icon-margin: 16px;
 $popup-border-radius: 20px;
 // ---- Animation ----
@@ -182,8 +208,6 @@ $notify-warning-background-color: linear-gradient(
   rgba(255, 154, 13, 1) 100%
 );
 
-view {
-}
 view-block {
   display: block;
 }

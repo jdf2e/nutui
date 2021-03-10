@@ -16,7 +16,7 @@
       desc="清空"
     ></nut-navbar>
     <nut-navbar
-      :leftShow="false"
+      :left-show="false"
       @on-click-title="title"
       @on-click-icon="icon"
       @on-click-clear="edit"

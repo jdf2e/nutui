@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-actionsheet">
+  <view :class="classes">
     <nut-popup
       v-model:show="state.maskIsVisible"
       position="bottom"
@@ -8,13 +8,14 @@
       @click-overlay="closeMask"
     >
       <view class="nut-actionsheet-panel">
-        <view v-if="title" class="nut-actionsheet-title">{{ title }}</view>
-        <slot></slot>
-        <view class="nut-actionsheet-menu">
-          <view class="nut-actionsheet-item desc" v-if="description">{{
-            description
-          }}</view>
-          <view
+        <view-block v-if="title" class="nut-actionsheet-title">{{
+          title
+        }}</view-block>
+        <view-block class="nut-actionsheet-item desc" v-if="description">{{
+          description
+        }}</view-block>
+        <view class="nut-actionsheet-menu" v-if="menuItems.length">
+          <view-block
             v-for="(item, index) of menuItems"
             class="nut-actionsheet-item"
             :class="{ 'nut-actionsheet-item-disabled': item.disable }"
@@ -22,33 +23,30 @@
             :key="index"
             @click="chooseItem(item, index)"
             >{{ item[optionTag]
-            }}<view class="subdesc">{{ item[subname] }}</view></view
-          >
+            }}<view class="subdesc">{{ item[optionSubTag] }}</view>
+          </view-block>
         </view>
-        <view
+        <view-block
           class="nut-actionsheet-cancel"
           v-if="cancelTxt"
           @click="cancelActionSheet"
         >
           {{ cancelTxt }}
-        </view>
+        </view-block>
       </view>
     </nut-popup>
   </view>
 </template>
 <script>
 import { createComponent } from '@/utils/create';
-import { watch, reactive } from 'vue';
-const { create } = createComponent('actionsheet');
+import { watch, reactive, computed } from 'vue';
+const { componentName, create } = createComponent('actionsheet');
+
 export default create({
   props: {
     isVisible: {
       type: Boolean,
       default: false
-    },
-    isClickChooseClose: {
-      type: Boolean,
-      default: true
     },
     cancelTxt: {
       type: String,
@@ -58,6 +56,10 @@ export default create({
       type: String,
       default: 'name'
     },
+    optionSubTag: {
+      type: String,
+      default: 'subname'
+    },
     chooseTagValue: {
       type: String,
       default: ''
@@ -65,6 +67,10 @@ export default create({
     title: {
       type: String,
       default: ''
+    },
+    color: {
+      type: String,
+      default: '#ee0a24'
     },
     closeAbled: {
       type: Boolean,
@@ -74,38 +80,39 @@ export default create({
       type: String,
       default: ''
     },
-    subname: {
-      type: String,
-      default: ''
-    },
     menuItems: {
       type: Array,
       default: () => []
     }
   },
-  emits: ['click', 'close', 'cancel', 'choose'],
+  emits: ['cancel', 'choose'],
 
-  setup(props, { slots, emit }) {
-    console.log(slots.default?.());
-
-    // state
+  setup(props, { emit }) {
+    console.log(props);
     const state = reactive({
-      maskIsVisible: false,
-      descf: slots.default
+      maskIsVisible: false
     });
 
-    // methods
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true
+      };
+    });
+
     const isHighlight = item => {
-      return item.color;
+      return props.chooseTagValue &&
+        props.chooseTagValue === item[props.optionTag]
+        ? props.color
+        : '#1a1a1a';
     };
     const closeActionSheet = () => {
       state.maskIsVisible = false;
-      // emit('close');
     };
 
     const cancelActionSheet = () => {
       closeActionSheet();
-      // emit('cancel');
+      emit('cancel');
     };
 
     const chooseItem = (item, index) => {
@@ -114,9 +121,11 @@ export default create({
         emit('choose', item, index);
       }
     };
+
     const closeMask = () => {
       state.maskIsVisible = false;
     };
+
     watch(
       () => props.isVisible,
       () => {
@@ -129,7 +138,8 @@ export default create({
       cancelActionSheet,
       chooseItem,
       closeMask,
-      state
+      state,
+      classes
     };
   }
 });

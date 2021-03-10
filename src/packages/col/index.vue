@@ -1,10 +1,10 @@
 <template>
-  <view class="nut-col" :class="classObject" :style="styleObj">
+  <view :class="classes" :style="style">
     <slot></slot>
   </view>
 </template>
 <script lang="ts">
-import { toRefs, watch, reactive, inject } from 'vue';
+import { reactive, computed, inject } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('col');
 
@@ -20,18 +20,24 @@ export default create({
     }
   },
   setup(props, { emit, slots }) {
+    const prefixCls = componentName;
     const gutter = inject('gutter');
-    const classObject = reactive({
-      ['nut-col-' + props.span]: true,
-      ['nut-col-offset-' + props.offset]: true
+    const classes = computed(() => {
+      return {
+        [prefixCls]: true,
+        ['nut-col-' + props.span]: true,
+        ['nut-col-offset-' + props.offset]: true
+      };
     });
-    const styleObj = reactive({
-      'padding-left': gutter + 'px',
-      'padding-right': gutter + 'px'
+    const style = computed(() => {
+      return {
+        paddingLeft: gutter + 'px',
+        paddingRight: gutter + 'px'
+      };
     });
     return {
-      classObject,
-      styleObj
+      classes,
+      style
     };
   }
 });
