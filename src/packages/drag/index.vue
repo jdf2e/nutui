@@ -176,7 +176,6 @@ export default create({
         target.style.top = state.yPum + 'px';
       }
     }
-
     function touchStart(e: TouchEvent) {
       const target = e.currentTarget as HTMLElement;
       const touches = e.touches[0];
