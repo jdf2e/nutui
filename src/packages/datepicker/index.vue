@@ -12,6 +12,7 @@
 </template>
 <script lang="ts">
 import { toRefs, watch, ref, computed } from 'vue';
+import picker from '@/packages/picker/index.vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('datepicker');
 const currentYear = new Date().getFullYear();
@@ -31,6 +32,7 @@ const zhCNType = {
   seconds: '秒'
 };
 export default create({
+  children: [picker],
   props: {
     modelValue: null,
     isVisible: {
