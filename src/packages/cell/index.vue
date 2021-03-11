@@ -36,9 +36,7 @@ import { computed } from 'vue';
 import { createComponent } from '@/utils/create';
 import { useRouter } from 'vue-router';
 const { componentName, create } = createComponent('cell');
-import Icon from '@/packages/icon/index.vue';
 export default create({
-  children: [Icon],
   props: {
     title: { type: String, default: '' },
     subTitle: { type: String, default: '' },

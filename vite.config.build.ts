@@ -1,9 +1,7 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import Markdown from 'vite-plugin-md';
 import path from 'path';
 import config from './package.json';
-// https://vitejs.dev/config/
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
@@ -24,12 +22,7 @@ export default defineConfig({
       }
     }
   },
-  plugins: [
-    vue({
-      include: [/\.vue$/, /\.md$/]
-    }),
-    Markdown()
-  ],
+  plugins: [vue()],
   build: {
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖

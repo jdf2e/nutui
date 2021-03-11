@@ -120,9 +120,7 @@ import { reactive, ref, toRefs, watch, nextTick } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('address');
 import { TweenMax } from 'gsap';
-import Icon from '@/packages/icon/index.vue';
 export default create({
-  children: [Icon],
   props: {
     show: {
       type: Boolean,

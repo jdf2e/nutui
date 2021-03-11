@@ -21,19 +21,19 @@ app.use(BackTop);
 ### 基本用法
 
 ```html
-    <nut-backtop  elId="elId" ></nut-backtop>
+<nut-backtop  elId="elId" ></nut-backtop>
 ```
 
 ### 设置出现位置
 
 ```html
-    <nut-backtop :distance="200" ></nut-backtop>
+<nut-backtop :distance="200" ></nut-backtop>
 ```
 
 ### 自定义样式
 
 ```html
-    <nut-backtop @click="handleClick" elId="elId" :distance="100" :bottom="90" ><div>无</div></nut-backtop>
+<nut-backtop @click="handleClick" elId="elId" :distance="100" :bottom="90" ><div>无</div></nut-backtop>
 ```
 
 ### 设置样式
@@ -44,7 +44,7 @@ app.use(BackTop);
 ### click事件
 
 ```html
-    <nut-backtop @click="handleClick" ></nut-backtop>
+<nut-backtop @click="handleClick" ></nut-backtop>
 ```
 
 ```html

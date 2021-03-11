@@ -32,9 +32,7 @@ import {
   watch
 } from 'vue';
 const { create } = createComponent('tabbar-item');
-import Icon from '@/packages/icon/index.vue';
 export default create({
-  children: [Icon],
   props: {
     tabTitle: {
       // 标签页的标题
