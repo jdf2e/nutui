@@ -38,9 +38,7 @@ import { useRouter } from 'vue-router';
 const { componentName, create } = createComponent('cell');
 import Icon from '@/packages/icon/index.vue';
 export default create({
-  components: {
-    [Icon.name]: Icon
-  },
+  children: [Icon],
   props: {
     title: { type: String, default: '' },
     subTitle: { type: String, default: '' },

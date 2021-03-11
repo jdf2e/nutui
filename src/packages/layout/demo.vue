@@ -119,8 +119,13 @@
 <script lang="ts">
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('layout');
+import Row from '@/packages/row/index.vue';
+import Col from '@/packages/col/index.vue';
 export default createDemo({
-  props: {}
+  components: {
+    [Row.name]: Row,
+    [Col.name]: Col
+  }
 });
 </script>
 

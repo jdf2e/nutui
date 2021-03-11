@@ -8,6 +8,10 @@ export function createComponent(name: string) {
       _component.name = componentName;
       _component.install = (vue: App) => {
         vue.component(_component.name as string, _component);
+        _component?.children?.length &&
+          _component.children.forEach((item: any) => {
+            vue.component(item.name as string, item);
+          });
       };
       return defineComponent(_component);
     } as typeof defineComponent,

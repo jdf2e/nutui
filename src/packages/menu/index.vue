@@ -9,6 +9,7 @@ import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('menu');
 import menuitem from '@/packages/menuitem/index.vue';
 export default create({
+  children: [menuitem],
   props: {
     type: {
       //单选 simple  多选  multiple，暂留
@@ -20,10 +21,6 @@ export default create({
       default: true
     }
   },
-  components: {
-    [menuitem.name]: menuitem
-  },
-
   setup(props, { emit }) {
     const state = reactive({
       showMask: false

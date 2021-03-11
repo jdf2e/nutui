@@ -122,9 +122,7 @@ const { componentName, create } = createComponent('address');
 import { TweenMax } from 'gsap';
 import Icon from '@/packages/icon/index.vue';
 export default create({
-  components: {
-    [Icon.name]: Icon
-  },
+  children: [Icon],
   props: {
     show: {
       type: Boolean,

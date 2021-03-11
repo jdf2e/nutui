@@ -8,7 +8,6 @@ import { useRoute } from 'vue-router';
 import { isMobile } from '@/sites/assets/util';
 export default defineComponent({
   name: 'app',
-  components: {},
   setup() {
     const title = ref('NutUI');
     // 获取当前路由

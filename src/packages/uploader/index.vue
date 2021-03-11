@@ -51,6 +51,7 @@ export class FileItem {
   formData: FormData = new FormData();
 }
 export default create({
+  children: [Icon],
   props: {
     name: { type: String, default: 'file' },
     url: { type: String, default: '' },
@@ -85,9 +86,6 @@ export default create({
     },
     onChange: { type: Function },
     customRequest: { type: Function }
-  },
-  components: {
-    [Icon.name]: Icon
   },
   emits: [
     'start',
