@@ -30,9 +30,7 @@ import { toRefs, toRef, reactive, computed, watch, onMounted } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('toast');
 export default create({
-  components: {
-    [Icon.name]: Icon
-  },
+  children: [Icon],
   props: {
     id: String,
     msg: String,

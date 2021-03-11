@@ -63,7 +63,7 @@ export default create({
     dataType: String,
     ...commonProps
   },
-  components: {},
+
   emits: ['click', 'change'],
   setup(props, { emit }) {
     let moving;

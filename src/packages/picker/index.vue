@@ -45,10 +45,12 @@
 import { reactive, ref, watch, computed, toRaw } from 'vue';
 import { createComponent } from '@/utils/create';
 import column from './Column.vue';
+import popup from '@/packages/popup/index.vue';
 import { commonProps } from './commonProps';
 const { create } = createComponent('picker');
 
 export default create({
+  children: [column, popup],
   props: {
     isVisible: {
       type: Boolean,
@@ -60,7 +62,6 @@ export default create({
     },
     ...commonProps
   },
-  components: { column },
   emits: ['close', 'confirm', 'update:isVisible'],
 
   setup(props, { emit }) {

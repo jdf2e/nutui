@@ -25,9 +25,7 @@ import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('rate');
 import Icon from '@/packages/icon/index.vue';
 export default create({
-  components: {
-    [Icon.name]: Icon
-  },
+  children: [Icon],
   props: {
     total: {
       type: [String, Number],

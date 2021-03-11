@@ -40,9 +40,7 @@ interface Events {
   params: (string | number | Event)[];
 }
 export default create({
-  components: {
-    [Icon.name]: Icon
-  },
+  children: [Icon],
   props: {
     size: {
       type: [String],

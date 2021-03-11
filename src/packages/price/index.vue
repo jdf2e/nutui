@@ -26,7 +26,7 @@ export default create({
       default: false
     }
   },
-  components: {},
+
   setup(props) {
     const priceShow = computed(() => {
       const symbol = props.needSymbol

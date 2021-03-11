@@ -59,9 +59,7 @@ import { createComponent } from '@/utils/create';
 const { create } = createComponent('menu-item');
 import Icon from '@/packages/icon/index.vue';
 export default create({
-  components: {
-    [Icon.name]: Icon
-  },
+  children: [Icon],
   props: {
     title: {
       type: String,

@@ -56,6 +56,7 @@ const { create } = createComponent('input');
 import { formatNumber } from './util';
 import Icon from '@/packages/icon/index.vue';
 export default create({
+  children: [Icon],
   props: {
     type: {
       type: String,
@@ -97,9 +98,6 @@ export default create({
       type: Boolean,
       default: false
     }
-  },
-  components: {
-    [Icon.name]: Icon
   },
   emits: ['change', 'update:value', 'blur', 'focus', 'clear'],
 

@@ -47,10 +47,7 @@ import CalendarItem from '@/packages/calendaritem/index.vue';
 import Utils from '@/utils/date';
 type InputDate = string | string[];
 export default create({
-  components: {
-    [CalendarItem.name]: CalendarItem,
-    [Popup.name]: Popup
-  },
+  children: [CalendarItem, Popup],
   props: {
     type: {
       type: String,
@@ -83,9 +80,7 @@ export default create({
       default: Utils.getDay(365)
     }
   },
-  components: {},
   emits: ['choose', 'close'],
-
   setup(props, { emit }) {
     // element refs
     const calendarRef = ref<null | HTMLElement>(null);
