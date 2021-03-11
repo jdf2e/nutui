@@ -10,9 +10,8 @@
     </view>
     <view
       class="nut-navbar__title"
-      :class="{ icon: icon }"
+      :class="{ icon }"
       v-if="title || titIcon || tabs"
-      ref="navlist"
     >
       <view v-if="title" @click="handleCenter">{{ title }}</view>
       <nut-icon
@@ -29,13 +28,13 @@
           ]"
           @click="switchTitle(item.id, item.name)"
           v-for="(item, index) in tabs"
-          :key="index"
+          :key="item.id"
         >
           {{ item.name }}
         </view>
       </view>
     </view>
-    <view class="nut-navbar__right" :class="{ icon: icon }" v-if="desc || icon">
+    <view class="nut-navbar__right" :class="{ icon }" v-if="desc || icon">
       <view
         v-if="desc"
         :style="{ 'text-align': descTextAlign }"
@@ -43,7 +42,9 @@
         >{{ desc }}</view
       >
       <template v-if="icon">
-        <view @click="handleSends"><slot name="icons"></slot></view>
+        <view @click="handleSends">
+          <slot name="icons"></slot>
+        </view>
       </template>
       <view>
         <nut-icon
@@ -51,8 +52,8 @@
           class="rightIcon"
           :name="icon"
           @click="handleSend"
-        ></nut-icon
-      ></view>
+        ></nut-icon>
+      </view>
     </view>
   </view>
 </template>
@@ -62,8 +63,9 @@ import { computed, ref } from 'vue';
 import { createComponent } from '@/utils/create';
 import { useRouter } from 'vue-router';
 const { componentName, create } = createComponent('navbar');
-
+import Icon from '@/packages/icon/index.vue';
 export default create({
+  children: [Icon],
   props: {
     leftShow: { type: Boolean, default: true }, //左侧  是否显示返回
     title: { type: String, default: '' }, //中间  文字标题
@@ -97,7 +99,6 @@ export default create({
     'switch-tab'
   ],
   setup(props, { emit }) {
-    const { tabs } = props;
     const activeIndex = ref(props.defaultIndex);
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -128,9 +129,6 @@ export default create({
       emit('on-click-clear');
     }
 
-    function handleRight() {
-      emit('on-click-right');
-    }
     function handleMore() {
       emit('on-click-more');
     }
@@ -152,12 +150,10 @@ export default create({
       handleLeft,
       handleCenter,
       handleCenterIcon,
-      handleRight,
       handleClear,
       handleSend,
       handleSlot,
       handleSends,
-      tabs,
       switchTitle,
       activeIndex
     };

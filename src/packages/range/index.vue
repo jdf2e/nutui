@@ -120,7 +120,7 @@ export default create({
       default: 0
     }
   },
-  components: {},
+
   emits: ['change', 'drag-end', 'drag-start', 'update:modelValue'],
 
   setup(props, { emit, slots }) {

@@ -51,15 +51,15 @@ import {
   nextTick,
   computed,
   watch,
-  onUnmounted
+  onUnmounted,
+  provide,
+  inject
 } from 'vue';
 import { createComponent } from '@/utils/create';
-import { useParent } from '@/utils/useRelation/useParent';
-import { MENU_KEY } from './../menu/index.vue';
-import Icon from '@/packages/icon/index.vue';
 const { create } = createComponent('menu-item');
-
+import Icon from '@/packages/icon/index.vue';
 export default create({
+  children: [Icon],
   props: {
     title: {
       type: String,
@@ -92,8 +92,8 @@ export default create({
   setup(props, { emit }) {
     const { menuList, multiStyle } = toRefs(props);
     const menuTitle = ref(props.title);
-    const menu = useParent(MENU_KEY);
-    const parent: any = reactive(menu.parent as any);
+    const menu = inject('menuRelation');
+    const parent: any = reactive(menu as any);
     const state = reactive({
       showPanel: false,
       currMenu: 0,

@@ -20,7 +20,6 @@ export default create({
       default: ''
     }
   },
-  components: {},
   emits: ['click'],
 
   setup(props, { emit }) {

@@ -8,7 +8,6 @@ import { useRoute } from 'vue-router';
 import { isMobile } from '@/sites/assets/util';
 export default defineComponent({
   name: 'app',
-  components: {},
   setup() {
     const title = ref('NutUI');
     // 获取当前路由
@@ -92,6 +91,9 @@ export default defineComponent({
       line-height: 56px;
       font-size: 14px;
       color: rgba(144, 156, 164, 1);
+    }
+    > p {
+      font-size: 12px;
     }
 
     .card {

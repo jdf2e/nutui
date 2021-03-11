@@ -4,13 +4,12 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, reactive } from 'vue';
+import { toRefs, reactive, provide } from 'vue';
 import { createComponent } from '@/utils/create';
-import { useChildren } from '@/utils/useRelation/useChildren';
-export const MENU_KEY = 'nutMenu';
 const { componentName, create } = createComponent('menu');
-
+import menuitem from '@/packages/menuitem/index.vue';
 export default create({
+  children: [menuitem],
   props: {
     type: {
       //单选 simple  多选  multiple，暂留
@@ -22,8 +21,6 @@ export default create({
       default: true
     }
   },
-  components: {},
-
   setup(props, { emit }) {
     const state = reactive({
       showMask: false
@@ -31,8 +28,7 @@ export default create({
     const handleMaskShow = status => {
       state.showMask = status;
     };
-    const { linkChildren } = useChildren(MENU_KEY);
-    linkChildren({
+    provide('menuRelation', {
       handleMaskShow,
       hasMask: props.hasMask
     });

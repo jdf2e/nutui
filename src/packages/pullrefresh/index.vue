@@ -86,7 +86,7 @@ export default create({
       }
     }
   },
-  components: {},
+
   emits: ['refresh', 'downRefresh'], // refresh 上拉加载、右滑加载更多  downRefresh 下拉刷新、左滑刷新
 
   setup(props, { emit }) {

@@ -50,7 +50,7 @@ export default create({
       default: true
     }
   },
-  components: {},
+
   emits: ['input', 'update:modelValue', 'change'],
   setup(props, { emit }) {
     const parentGroup = inject('radiogroup', {

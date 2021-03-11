@@ -80,7 +80,7 @@
           "author": "richard1015"
         },
         {
-          "name": "collapse",
+          "name": "Collapse",
           "sort": 2,
           "cName": "折叠面板",
           "type": "component",
@@ -89,7 +89,7 @@
           "author": "Ymm0008"
         },
         {
-          "name": "collapse",
+          "name": "CollapseItem",
           "sort": 3,
           "cName": "折叠面板-item",
           "type": "component",
@@ -107,7 +107,7 @@
           "author": "undo"
         },
         {
-          "name": "col",
+          "name": "Col",
           "sort": 5,
           "cName": "布局-Col",
           "type": "component",
@@ -116,7 +116,7 @@
           "author": "undo"
         },
         {
-          "name": "row",
+          "name": "Row",
           "sort": 6,
           "cName": "布局-Row",
           "type": "component",
@@ -196,7 +196,7 @@
           "sort": 1,
           "cName": "模板组件",
           "type": "component",
-          "show": true,
+          "show": false,
           "desc": "组件模板示例",
           "author": "richard1015"
         },
@@ -352,13 +352,12 @@
           "author": "yangxiaolu3"
         },
         {
-          "version": "3.0.0",
           "name": "Drag",
           "type": "component",
           "cName": "拖拽",
           "desc": "拖拽组件",
           "sort": 16,
-          "show": false,
+          "show": true,
           "author": "Drjingfubo"
         }
       ]
@@ -376,7 +375,7 @@
           "author": "liqiong43"
         },
         {
-          "name": "tab",
+          "name": "Tab",
           "sort": 1,
           "cName": "标签组件",
           "type": "component",
@@ -385,7 +384,7 @@
           "author": "zhenyulei"
         },
         {
-          "name": "menu",
+          "name": "Menu",
           "sort": 2,
           "cName": "菜单组件",
           "type": "component",
@@ -394,7 +393,16 @@
           "author": "vickyYE"
         },
         {
-          "name": "tabbar",
+          "name": "MenuItem",
+          "sort": 2,
+          "cName": "菜单组件",
+          "type": "component",
+          "show": false,
+          "desc": "下拉菜单组件",
+          "author": "vickyYE"
+        },
+        {
+          "name": "Tabbar",
           "sort": 2,
           "cName": "标签栏组件",
           "type": "component",

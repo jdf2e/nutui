@@ -1,13 +1,27 @@
 <template>
-  <view class="nut-drag" ref="myDrag" @touchstart="touchstart($event)">
+  <view
+    :class="classes"
+    ref="myDrag"
+    @touchstart="touchStart($event)"
+    @touchmove="touchMove($event)"
+    @touchend="touchEnd($event)"
+  >
     <slot></slot>
   </view>
 </template>
 
 <script lang="ts">
-import { onMounted, reactive, ref, watch } from 'vue';
+import {
+  onMounted,
+  onDeactivated,
+  onActivated,
+  reactive,
+  ref,
+  computed
+} from 'vue';
 import { createComponent } from '@/utils/create';
-const { create } = createComponent('drag');
+import requestAniFrame from '@/utils/raf';
+const { componentName, create } = createComponent('drag');
 export default create({
   props: {
     attract: {
@@ -18,13 +32,9 @@ export default create({
       type: String,
       default: 'all'
     },
-    zIndex: {
-      type: [Number, String],
-      default: 11
-    },
     boundary: {
       type: Object,
-      default: function() {
+      default: () => {
         return {
           top: 0,
           left: 0,
@@ -34,28 +44,34 @@ export default create({
       }
     }
   },
-  setup(props: any, { emit }) {
+  setup(props, { emit }) {
     const myDrag = ref();
-    console.log(props.direction);
     const state = reactive({
-      elWidth: 0, // 元素的宽度
-      elHeight: 0, // 元素的高度
-      screenWidth: 0, // 屏幕的宽度
-      screenHeight: 0, // 屏幕的高度
-      startTop: 0, // 拖拽元素距离顶部的距离
-      startLeft: 0, // 拖拽元素距离
+      keepAlive: false,
+      elWidth: 0,
+      elHeight: 0,
+      screenWidth: 0,
+      screenHeight: 0,
+      startTop: 0,
+      startLeft: 0,
       nx: 0,
       ny: 0,
       xPum: 0,
       yPum: 0,
-      direction: props.direction,
       position: { x: 0, y: 0 },
       boundary: {
         top: 0,
         left: 0,
         right: 0,
         bottom: 0
-      }
+      } as Record<string, any>
+    });
+
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true
+      };
     });
 
     function getInfo() {
@@ -64,60 +80,56 @@ export default create({
       state.elHeight = myDrag.value.offsetHeight;
       state.screenWidth = domElem.clientWidth;
       state.screenHeight = domElem.clientHeight;
-      console.log(
-        domElem.clientWidth,
-        domElem.clientHeight,
-        myDrag.value.offsetWidth,
-        domElem.offsetHeight
-      );
     }
 
-    function goLeft(target) {
+    function goLeft(target: HTMLElement) {
       if (state.boundary.left) {
-        if (target.style.left.split('px')[0] > state.boundary.left) {
-          target.style.left = target.style.left.split('px')[0] - 10 + 'px';
-          goLeft(target);
+        if (+target.style.left.split('px')[0] > state.boundary.left) {
+          target.style.left = +target.style.left.split('px')[0] - 10 + 'px';
+          requestAniFrame(() => {
+            goLeft(target);
+          });
         } else {
           target.style.left = `${state.boundary.left}px`;
         }
       } else {
-        if (target.style.left.split('px')[0] > 10) {
-          target.style.left = target.style.left.split('px')[0] - 10 + 'px';
-          goLeft(target);
+        if (+target.style.left.split('px')[0] > 10) {
+          target.style.left = +target.style.left.split('px')[0] - 10 + 'px';
+          requestAniFrame(() => {
+            goLeft(target);
+          });
         } else {
           target.style.left = '0px';
         }
       }
     }
-    function goRight(target, rightLocation) {
+    function goRight(target: HTMLElement, rightLocation: number) {
       if (rightLocation - parseInt(target.style.left.split('px')[0]) > 10) {
         target.style.left =
           parseInt(target.style.left.split('px')[0]) + 10 + 'px';
-        goRight(target, rightLocation);
+        requestAniFrame(() => {
+          goRight(target, rightLocation);
+        });
       } else {
         target.style.left = rightLocation + 'px';
       }
     }
-    function touchMove(e) {
+    function touchMove(e: TouchEvent) {
       e.preventDefault();
-      const target = e.currentTarget;
-      if (e.targetTouches.length == 1) {
+      const target = e.currentTarget as HTMLElement;
+      if (e.targetTouches.length === 1) {
         const touch = e.targetTouches[0];
         state.nx = touch.clientX - state.position.x;
         state.ny = touch.clientY - state.position.y;
         state.xPum = state.startLeft + state.nx;
         state.yPum = state.startTop + state.ny;
-        // console.log(state.xPum,state.yPum)
         const rightLocation =
           state.screenWidth - state.elWidth - state.boundary.right;
-        // console.log(rightLocation)
-        // 限制左右拖拽边界
         if (Math.abs(state.xPum) > rightLocation) {
           state.xPum = rightLocation;
         } else if (state.xPum <= state.boundary.left) {
           state.xPum = state.boundary.left;
         }
-        // 限制上下拖拽边界
         if (state.yPum < state.boundary.top) {
           state.yPum = state.boundary.top;
         } else if (
@@ -128,65 +140,71 @@ export default create({
             state.screenHeight - state.elHeight - state.boundary.bottom;
         }
         if (props.direction != 'y') {
-          console.log('121');
           target.style.left = state.xPum + 'px';
         }
         if (props.direction != 'x') {
-          console.log('121121');
           target.style.top = state.yPum + 'px';
         }
       }
     }
-    function touchEnd(e) {
-      const target = e.currentTarget;
+    function touchEnd(e: TouchEvent) {
+      const target = e.currentTarget as HTMLElement;
       const touch = e.changedTouches[0];
       let currX = touch.clientX;
       const rightLocation =
         state.screenWidth - state.elWidth - state.boundary.right;
       if (currX > rightLocation) {
         currX = rightLocation;
-        // console.log('往右划出边界');
       } else if (currX < state.boundary.left) {
         currX = state.boundary.left;
-        // console.log('往左划出边界');
       } else {
         currX =
           currX < state.screenWidth / 2 ? state.boundary.left : rightLocation;
-        // console.log('在边界内滑动');
       }
-      if (state.direction != 'y' && props.attract) {
+      if (props.direction !== 'y' && props.attract) {
         if (currX < state.screenWidth / 2) {
-          goLeft(target);
+          requestAniFrame(() => {
+            goLeft(target);
+          });
         } else {
-          goRight(target, rightLocation);
+          requestAniFrame(() => {
+            goRight(target, rightLocation);
+          });
         }
       }
-      if (state.direction != 'x') {
+      if (props.direction !== 'x') {
         target.style.top = state.yPum + 'px';
       }
     }
-    function touchstart(e) {
-      const target = e.currentTarget;
-      state.startTop = target.offsetTop; // 元素距离顶部的距离
-      state.startLeft = target.offsetLeft; // 元素距离左侧的距离
-      state.position.x = e.touches[0].clientX; // 鼠标点击的x轴的距离
-      state.position.y = e.touches[0].clientY; // 鼠标点击的y轴的距离
-      myDrag.value.addEventListener('touchmove', touchMove, false);
-      myDrag.value.addEventListener('touchend', touchEnd, false);
+    function touchStart(e: TouchEvent) {
+      const target = e.currentTarget as HTMLElement;
+      const touches = e.touches[0];
+      state.startTop = target.offsetTop;
+      state.startLeft = target.offsetLeft;
+      state.position.x = touches.clientX;
+      state.position.y = touches.clientY;
     }
     onMounted(() => {
       getInfo();
       state.boundary = props.boundary;
     });
+    onActivated(() => {
+      if (state.keepAlive) {
+        state.keepAlive = false;
+      }
+    });
+    onDeactivated(() => {
+      state.keepAlive = true;
+      (myDrag as any).removeEventListener('touchstart', touchStart);
+      (myDrag as any).removeEventListener('touchmove', touchMove);
+      (myDrag as any).removeEventListener('touchend', touchEnd);
+    });
     return {
-      state,
-      touchstart,
+      classes,
       myDrag,
+      touchStart,
       touchMove,
-      touchEnd,
-      getInfo,
-      goLeft,
-      goRight
+      touchEnd
     };
   }
 });

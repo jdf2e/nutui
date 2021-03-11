@@ -7,10 +7,13 @@
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
-    "sourceMap": true,
+    "sourceMap": false,
+    "declaration": true,
+    "removeComments":true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
+    "outDir": "./dist/es",
     "types": ["vite/client"],
     "paths": {
       "@/*": ["src/*"]

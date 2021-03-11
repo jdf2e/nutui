@@ -1,7 +1,7 @@
 <template>
   <Teleport :to="teleport">
     <nut-overlay
-      :show="show && overlay"
+      :show="show"
       :class="overlayClass"
       :style="overlayStyle"
       :zIndex="state.zIndex"
@@ -103,8 +103,9 @@ const popupProps = {
     default: false
   }
 };
-
+import Icon from '@/packages/icon/index.vue';
 export default create({
+  children: [Icon],
   props: {
     ...overlayProps,
     ...popupProps

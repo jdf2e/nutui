@@ -1,14 +1,14 @@
 .nut-price {
-  font-size: 16px;
+  font-size: $font-size-3;
   display: inline;
-  color: #fa2c19;
+  color: $primary-color;
   .price-symbol {
-    font-size: 18px;
+    font-size: $font-size-4;
   }
   .price-big {
-    font-size: 24px;
+    font-size: $price-big-size;
   }
   .price-small {
-    font-size: 18px;
+    font-size: $font-size-4;
   }
 }

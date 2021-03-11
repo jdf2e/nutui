@@ -17,7 +17,7 @@ export class ArticleApiService {
    * 保存用户访问数据
    * @returns
    */
-  saveUserInfo(parmas) {
+  saveUserInfo(parmas: any) {
     return this.httpClient.request('/visit/saveVisitInfo', 'post', parmas);
   }
 }

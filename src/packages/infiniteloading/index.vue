@@ -53,8 +53,9 @@ import {
 } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('infiniteloading');
-
+import Icon from '@/packages/icon/index.vue';
 export default create({
+  children: [Icon],
   props: {
     hasMore: {
       type: Boolean,
@@ -85,7 +86,6 @@ export default create({
       default: false
     }
   },
-  components: {},
   emits: ['scrollChange', 'loadMore', 'refresh'],
 
   setup(props, { emit, slots }) {

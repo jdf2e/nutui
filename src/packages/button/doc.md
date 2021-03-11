@@ -94,13 +94,15 @@ app.use(Button);
 | size        | 尺寸，可选值为 `large` `small`  | String | `normal`      |
 | shape         | 形状，可选值为 `square` | String | `round`             |
 | color | 按钮颜色，支持传入 linear-gradient 渐变色     | String | - |
-| plain          | 	是否为朴素按钮                       | boolean | `false`             |
-| disabled          | 	是否禁用按钮                       | boolean | `false`              |
-| block          | 是否为块级元素                        | boolean | `false`               |
+| plain          | 	是否为朴素按钮                       | Boolean | `false`             |
+| disabled          | 	是否禁用按钮                       | Boolean | `false`              |
+| block          | 是否为块级元素                        | Boolean | `false`               |
+| icon          | 按钮图标，同Icon组件name属性                        | String | -     |
+| loading          | 按钮loading状态                        | Boolean | `false`               |
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| click  | 点击按钮时触发 | event: Event |
+| click  | 点击按钮时触发 | event: MouseEvent |
 

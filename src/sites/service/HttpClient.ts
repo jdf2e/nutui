@@ -62,7 +62,7 @@ export class HttpClient {
  * @param {any} value 接口响应数据
  * @param {string} message 服务器响应信息msg
  */
-interface ResponseData {
+export interface ResponseData {
   state: number;
   value?: any;
   message: string;

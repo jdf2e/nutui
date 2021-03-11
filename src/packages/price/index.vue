@@ -3,103 +3,82 @@
 </template>
 
 <script lang="ts">
-import { toRefs, computed } from 'vue';
+import { computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('price');
 
 export default create({
   props: {
-    // 价格
     price: {
       type: [Number, String],
       default: 0
     },
-    // 符号
     needSymbol: {
       type: Boolean,
       default: true
     },
-    // 小数点位数
     decimalDigits: {
       type: Number,
       default: 2
     },
-    // 是否按照千分号形式显示
     thousands: {
       type: Boolean,
       default: false
     }
   },
-  components: {},
+
   setup(props) {
-    // setup内部只能访问这4个属性，值得注意的是props必须在上面声明才能在这里取到
-    // console.log('props', props, 'slots', slots);
-    const { price, needSymbol, decimalDigits, thousands } = toRefs(props);
-    console.log('decimalDigits', decimalDigits.value);
-    //判断是否为小数点
-    const checkPoint = (price: string | number) => {
-      return String(price).indexOf('.') > 0;
-    };
-    //千分位显示
-    const formatThousands = (num: string | number) => {
-      if (thousands.value) {
-        return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
-      } else {
-        return num;
-      }
-    };
-    //根据小数位数格式化小数部分
-    const formatDecimal = (decimalNum: string | number) => {
-      // const decimalDigitsNum = decimalDigits.value;
-      const result = '0.' + String(decimalNum);
-      const resultFixed = Number(result).toFixed(decimalDigits.value);
-      console.log('44', String(resultFixed));
-      return String(resultFixed).substring(2, resultFixed.length);
-    };
-    //将数字转换成驼峰形式
-    const formatToHump = (price: string | number) => {
-      // price = String(price).replace('￥', '');
-      if (checkPoint(price)) {
-        // console.log('price', price)
-        price = Number(price).toFixed(decimalDigits.value);
-        if (Number(price) == 0) {
-          price = 0;
-          return [0];
-        }
-        const priceArray = price.split('.');
-        console.log('num1', priceArray);
-        return (
-          '<view class="price-big">' +
-          formatThousands(priceArray[0]) +
-          '</view><view class="price-point">.</view><view class="price-small">' +
-          formatDecimal(priceArray[1]) +
-          '</view>'
-        );
-      } else {
-        return (
-          '<view class="price-big">' +
-          formatThousands(price) +
-          '</view><view class="price-point">.</view><view class="price-small">' +
-          formatDecimal(0) +
-          '</view>'
-        );
-      }
-    };
     const priceShow = computed(() => {
-      const symbol = needSymbol ? '<view class="price-symbol">￥</view>' : '';
-      return symbol + formatToHump(price.value);
+      const symbol = props.needSymbol
+        ? '<view class="price-symbol">￥</view>'
+        : '';
+      return symbol + formatToHump(props.price);
     });
     const classes = computed(() => {
       return {
         [componentName]: true
       };
     });
+
+    const checkPoint = (price: string | number) => {
+      return String(price).indexOf('.') > 0;
+    };
+    const formatThousands = (num: string | number) => {
+      if (props.thousands) {
+        return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+      } else {
+        return num;
+      }
+    };
+    const formatDecimal = (decimalNum: string | number) => {
+      const result = '0.' + decimalNum;
+      const resultFixed = Number(result).toFixed(props.decimalDigits);
+      return String(resultFixed).substring(2, resultFixed.length);
+    };
+
+    const renderPrice = (price: string[] | string) => {
+      return `<view class="price-big">
+              ${formatThousands(typeof price === 'string' ? price : price[0])}
+            </view>
+            <view class="price-point">.</view>
+            <view class="price-small">
+              ${formatDecimal(typeof price === 'string' ? 0 : price[1])}
+            </view>`;
+    };
+
+    const formatToHump = (price: string | number) => {
+      if (Number(price) == 0) {
+        return [0];
+      }
+      if (checkPoint(price)) {
+        price = Number(price).toFixed(props.decimalDigits);
+        return renderPrice(price.split('.'));
+      } else {
+        return renderPrice(price.toString());
+      }
+    };
     return {
       priceShow,
-      checkPoint,
-      formatThousands,
-      formatDecimal,
-      formatToHump,
       classes
     };
   }

@@ -22,17 +22,17 @@ app.use(Price);
 ``` html
 <nut-price 
     :price="1010" 
-    :needSymbol="false" 
+    :need-symbol="false" 
     :thousands="true"
 />
 ```
 
-### 无人民币符号，有千位分隔
+### 有人民币符号，无千位分隔
 
 ``` html
 <nut-price  
     :price="10010.01" 
-    :needSymbol="true" 
+    :need-symbol="true" 
     :thousands="false"
 />
 ```
@@ -42,8 +42,8 @@ app.use(Price);
 ``` html
 <nut-price  
     :price="15213.122" 
-    :decimalDigits="3" 
-    :needSymbol="true" 
+    :decimal-digits="3" 
+    :need-symbol="true" 
     :thousands="true"
 />
 ```

@@ -219,7 +219,6 @@ export default create({
       default: false
     }
   },
-  components: {},
   // emits: ['click'],
 
   setup(props, { emit, slots }) {

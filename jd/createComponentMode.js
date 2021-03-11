@@ -5,7 +5,7 @@ const inquirer = require('inquirer');
 
 const path = require('path');
 const fs = require('fs');
-const config = require('../src/config');
+const config = require('../src/config.json');
 const demoModel = require('./demo');
 const nav = config.nav;
 
@@ -194,9 +194,9 @@ function addToPackageJson() {
     config.nav = nav;
     // conf.packages.push(newCpt);
     const dirPath = path.join(__dirname, `../`);
-    const filePath = path.join(dirPath, `src/config.js`);
+    const filePath = path.join(dirPath, `src/config.json`);
 
-    var tempfile = 'module.exports = ' + JSON.stringify(config, null, 2) + ';';
+    var tempfile = JSON.stringify(config, null, 2);
     fs.writeFile(filePath, tempfile, err => {
       if (err) throw err;
       resolve(`修改config.json文件成功`);

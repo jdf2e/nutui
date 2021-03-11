@@ -18,14 +18,20 @@ $theme-red-actice: #fff;
 $theme-red-select-border: #f0f2f5;
 $theme-red-select-word: #666;
 $theme-red-select-bg: #fff;
-$theme-red-header-bg: url('../../assets/images/header-bg.png') no-repeat;
+$theme-red-header-bg: url('../../assets/images/header-bg.png');
 $theme-red-footer-word1: #1a1a1a;
 $theme-red-footer-word2: #666;
 $theme-red-footer-word3: #1d1d21;
 $theme-red-footer-word4: #808080;
 $theme-red-footer-bg: #fff;
 $theme-red-footer-border: #eaf0fb;
-$theme-red-gradient: linear-gradient(135deg, rgba(250, 44, 25, 1) 0%, rgba(250, 63, 25, 1) 45%, rgba(250, 89, 25, 1) 83%, rgba(250, 100, 25, 1) 100%);
+$theme-red-gradient: linear-gradient(
+  135deg,
+  rgba(250, 44, 25, 1) 0%,
+  rgba(250, 63, 25, 1) 45%,
+  rgba(250, 89, 25, 1) 83%,
+  rgba(250, 100, 25, 1) 100%
+);
 // 白色
 $theme-white: #fff;
 $theme-white-word: #1a1a1a;
@@ -92,7 +98,8 @@ $nutui-doc-light-grey: #ccc;
 $nutui-doc-border-color: #f1f4f8;
 $nutui-doc-code-color: #58727e;
 $nutui-doc-code-background-color: #f1f4f8;
-$nutui-doc-code-font-family: 'Source Code Pro', 'Monaco', 'Inconsolata', monospace;
+$nutui-doc-code-font-family: 'Source Code Pro', 'Monaco', 'Inconsolata',
+  monospace;
 $nutui-doc-padding: 24px;
 $nutui-doc-row-max-width: 1680px;
 $nutui-doc-nav-width: 220px;

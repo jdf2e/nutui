@@ -1,14 +1,14 @@
 {
   "name": "@nutui/nutui",
-  "version": "3.0.0-beta.0",
+  "version": "3.0.0-beta.3",
   "npm": {
-    "tag": "next"
+    "tag": "beta"
   },
   "description": "一套京东风格的轻量级移动端 Vue 组件库",
-  "main": "dist/lib/nutui.js",
-  "module": "dist/es/nutui.js",
-  "style": "dist/lib/index.css",
-  "typings": "dist/types/index.d.ts",
+  "main": "dist/nutui.umd.js",
+  "module": "dist/nutui.es.js",
+  "style": "dist/style.css",
+  "typings": "dist/types/nutui.d.ts",
   "keywords": [
     "nutui",
     "nutui2",
@@ -36,11 +36,15 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "checked":"npm run generate:file && rm -rf dist/ && tsc",
+    "dev": "npm run checked && vite --open",
+    "build:site": "npm run checked && vite build",
+    "build": "npm run checked && vite build -c vite.config.build.ts",
     "serve": "vite preview",
-    "upload": "vite build && node ./jd/upload.js",
-    "add": "node jd/createComponentMode.js"
+    "upload": "yarn build:site && node ./jd/upload.js",
+    "add": "node jd/createComponentMode.js",
+    "publish:beta": "npm publish --tag=beta",
+    "generate:file": "node jd/generate-nutui.js"
   },
   "dependencies": {
     "axios": "^0.21.0",

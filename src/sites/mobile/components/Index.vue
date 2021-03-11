@@ -32,7 +32,6 @@ import { defineComponent, reactive } from 'vue';
 import { nav, versions } from '@/config.json';
 export default defineComponent({
   name: 'doc',
-  components: {},
   setup() {
     return reactive({
       nav,
