@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view-block>
     <nut-picker
       :is-visible="show"
       @close="closeHandler"
@@ -8,7 +8,7 @@
       :title="title"
       @confirm="confirm"
     ></nut-picker>
-  </view>
+  </view-block>
 </template>
 <script lang="ts">
 import { toRefs, watch, ref, computed } from 'vue';

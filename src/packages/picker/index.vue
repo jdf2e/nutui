@@ -1,24 +1,27 @@
 <template>
-  <view>
+  <view-block class="nut-picker">
     <nut-popup
       position="bottom"
       :style="{ height: height + 56 + 'px' }"
       v-model:show="show"
       @close="close"
     >
-      <view class="nut-picker__bar">
-        <view class="nut-picker__left" @click="close()"> 取消</view>
-        <view> {{ title }}</view>
-        <view @click="confirm()"> 确定</view>
-      </view>
+      <view-block class="nut-picker__bar">
+        <view-block class="nut-picker__left" @click="close()"> 取消</view-block>
+        <view-block> {{ title }}</view-block>
+        <view-block @click="confirm()"> 确定</view-block>
+      </view-block>
 
-      <view class="nut-picker__column">
-        <view
+      <view-block class="nut-picker__column">
+        <view-block
           class="nut-picker__mask"
           :style="{ backgroundSize: `100% ${top}px` }"
-        ></view>
-        <view class="nut-picker__hairline" :style="{ top: ` ${top}px` }"></view>
-        <view
+        ></view-block>
+        <view-block
+          class="nut-picker__hairline"
+          :style="{ top: ` ${top}px` }"
+        ></view-block>
+        <view-block
           class="nut-picker__columnitem"
           v-for="(item, columnIndex) in columnList"
           :key="columnIndex"
@@ -36,10 +39,10 @@
               }
             "
           ></column>
-        </view>
-      </view>
+        </view-block>
+      </view-block>
     </nut-popup>
-  </view>
+  </view-block>
 </template>
 <script lang="ts">
 import { reactive, ref, watch, computed, toRaw } from 'vue';
