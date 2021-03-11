@@ -53,9 +53,7 @@ import {
 } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('infiniteloading');
-import Icon from '@/packages/icon/index.vue';
 export default create({
-  children: [Icon],
   props: {
     hasMore: {
       type: Boolean,

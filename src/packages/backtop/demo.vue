@@ -48,4 +48,24 @@ export default createDemo({
 });
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.demo {
+  .text-data {
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 46px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 7px;
+    box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
+    line-height: 19px;
+    font-family: PingFangSC-Medium;
+    font-size: 13px;
+    color: rgba(102, 102, 102, 1);
+  }
+}
+</style>

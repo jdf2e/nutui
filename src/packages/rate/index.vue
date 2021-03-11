@@ -23,9 +23,7 @@
 import { watch, reactive, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('rate');
-import Icon from '@/packages/icon/index.vue';
 export default create({
-  children: [Icon],
   props: {
     total: {
       type: [String, Number],

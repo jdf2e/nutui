@@ -54,9 +54,7 @@ import { ref, toRefs, reactive, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('input');
 import { formatNumber } from './util';
-import Icon from '@/packages/icon/index.vue';
 export default create({
-  children: [Icon],
   props: {
     type: {
       type: String,
