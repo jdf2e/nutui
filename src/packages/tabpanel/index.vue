@@ -14,7 +14,7 @@ export default create({
       default: ''
     }
   },
-  components: {},
+
   setup(props, ctx) {
     //
   }

@@ -140,7 +140,6 @@ export default create({
       default: Utils.getDay(365)
     }
   },
-  components: {},
   emits: ['choose', 'update', 'close'],
 
   setup(props, { emit }) {

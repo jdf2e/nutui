@@ -30,6 +30,7 @@ import { toRefs, toRef, reactive, computed, watch, onMounted } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('toast');
 export default create({
+  children: [Icon],
   props: {
     id: String,
     msg: String,
@@ -79,9 +80,6 @@ export default create({
       type: Boolean,
       default: false
     }
-  },
-  components: {
-    'nut-icon': Icon
   },
   setup(props) {
     let timer;

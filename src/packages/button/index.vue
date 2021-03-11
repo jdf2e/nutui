@@ -22,8 +22,9 @@ export type ButtonType =
   | 'danger';
 export type ButtonSize = 'large' | 'normal' | 'small';
 export type ButtonShape = 'square' | 'round';
-
+import Icon from '@/packages/icon/index.vue';
 export default create({
+  children: [Icon],
   props: {
     color: String,
     shape: {

@@ -1,0 +1,148 @@
+<template>
+  <div class="demo">
+    <h2>每列不显示中文</h2>
+    <nut-cell title="日期选择" :desc="desc1" @click="open(0)"></nut-cell>
+    <h2>限制开始结束时间</h2>
+    <nut-cell title="日期选择" :desc="desc2" @click="open(1)"></nut-cell>
+    <h2>限制开始结束时间（有默认值）</h2>
+    <nut-cell title="日期时间选择" :desc="desc3" @click="open(2)"></nut-cell>
+    <h2>12小时制</h2>
+    <nut-cell title="日期选择" :desc="desc4" @click="open(3)"></nut-cell>
+    <h2>限制开始结束小时</h2>
+    <nut-cell title="时间选择" :desc="desc5" @click="open(4)"></nut-cell>
+    <h2>分钟数递增步长设置</h2>
+    <nut-cell title="时间选择" :desc="desc6" @click="open(5)"></nut-cell>
+
+    <nut-datepicker
+      v-model="currentDate"
+      title="日期选择"
+      @confirm="
+        val => {
+          confirm(0, val);
+        }
+      "
+      v-model:is-visible="show"
+      :is-show-chinese="false"
+    ></nut-datepicker>
+    <nut-datepicker
+      v-model="currentDate"
+      title="日期选择"
+      :minDate="minDate"
+      :maxDate="maxDate"
+      @confirm="
+        val => {
+          confirm(1, val);
+        }
+      "
+      v-model:is-visible="show2"
+      :is-show-chinese="false"
+    ></nut-datepicker>
+    <nut-datepicker
+      v-model="currentDate"
+      title="日期时间选择"
+      type="datetime"
+      :minDate="minDate"
+      :maxDate="maxDate"
+      @confirm="
+        val => {
+          confirm(2, val);
+        }
+      "
+      v-model:is-visible="show3"
+    ></nut-datepicker>
+    <nut-datepicker
+      v-model="currentDate"
+      title="时间选择"
+      type="time"
+      :minDate="minDate"
+      :maxDate="maxDate"
+      :is-use12-hours="true"
+      @confirm="
+        val => {
+          confirm(3, val);
+        }
+      "
+      v-model:is-visible="show4"
+    ></nut-datepicker>
+    <nut-datepicker
+      v-model="currentDate"
+      title="时间选择"
+      type="time"
+      :minDate="minDate"
+      :maxDate="maxDate"
+      @confirm="
+        val => {
+          confirm(4, val);
+        }
+      "
+      v-model:is-visible="show5"
+    ></nut-datepicker>
+    <nut-datepicker
+      v-model="currentDate"
+      title="时间选择"
+      type="time"
+      :minDate="minDate"
+      :minute-step="5"
+      :maxDate="maxDate"
+      @confirm="
+        val => {
+          confirm(5, val);
+        }
+      "
+      v-model:is-visible="show6"
+    ></nut-datepicker>
+  </div>
+</template>
+
+<script lang="ts">
+import { toRefs, watch, ref } from 'vue';
+import { createComponent } from '@/utils/create';
+const { createDemo } = createComponent('datepicker');
+export default createDemo({
+  props: {},
+  setup() {
+    const show = ref(false);
+    const show2 = ref(false);
+    const show3 = ref(false);
+    const show4 = ref(false);
+    const show5 = ref(false);
+    const show6 = ref(false);
+    const showList = [show, show2, show3, show4, show5, show6];
+    const currentDate = ref(new Date(2020, 0, 1));
+
+    const today = currentDate.value;
+    const desc1 = ref('2020-1-1');
+    const desc2 = ref('2020-1-1');
+    const desc3 = ref('2020年-1月-1日-0时-0分');
+    const desc4 = ref('0时-0分-上午');
+    const desc5 = ref('0时-0分-0秒');
+    const desc6 = ref('0时-0分-0秒');
+    const descList = [desc1, desc2, desc3, desc4, desc5, desc6];
+    return {
+      show,
+      show2,
+      show3,
+      show4,
+      show5,
+      show6,
+      desc1,
+      desc2,
+      desc3,
+      desc4,
+      desc5,
+      desc6,
+      currentDate,
+      minDate: new Date(2020, 0, 1),
+      maxDate: new Date(2025, 10, 1),
+      open: index => {
+        showList[index].value = true;
+      },
+      confirm: (index, val) => {
+        console.log(val);
+        descList[index].value = val.join('-');
+      }
+    };
+  }
+});
+</script>
+<style lang="scss" scoped></style>

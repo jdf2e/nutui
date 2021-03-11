@@ -10,7 +10,9 @@
 import { toRefs, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('avatar');
+import Icon from '@/packages/icon/index.vue';
 export default create({
+  children: [Icon],
   props: {
     size: {
       type: String,

@@ -63,8 +63,9 @@ import { computed, ref } from 'vue';
 import { createComponent } from '@/utils/create';
 import { useRouter } from 'vue-router';
 const { componentName, create } = createComponent('navbar');
-
+import Icon from '@/packages/icon/index.vue';
 export default create({
+  children: [Icon],
   props: {
     leftShow: { type: Boolean, default: true }, //左侧  是否显示返回
     title: { type: String, default: '' }, //中间  文字标题

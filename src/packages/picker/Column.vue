@@ -1,5 +1,5 @@
 <template>
-  <view
+  <view-block
     class="nut-picker__content"
     :style="{ height: height + 'px' }"
     @touchstart="onTouchStart"
@@ -8,15 +8,15 @@
     @touchcancel="onTouchEnd"
     @transitionend="stopMomentum"
   >
-    <view class="nut-picker__wrapper" ref="wrapper" :style="wrapperStyle">
-      <view
+    <view-block class="nut-picker__wrapper" ref="wrapper" :style="wrapperStyle">
+      <view-block
         class="nut-picker__item"
         :key="index"
         v-for="(item, index) in state.options"
-        >{{ dataType === 'cascade' ? item.text : item }}</view
+        >{{ dataType === 'cascade' ? item.text : item }}</view-block
       >
-    </view>
-  </view>
+    </view-block>
+  </view-block>
 </template>
 <script lang="ts">
 import { reactive, ref, watch, computed } from 'vue';
@@ -26,7 +26,7 @@ import { commonProps } from './commonProps';
 const MOMENTUM_LIMIT_DISTANCE = 15;
 const MOMENTUM_LIMIT_TIME = 300;
 const DEFAULT_DURATION = 200;
-const { create } = createComponent('picker');
+const { create } = createComponent('picker-column');
 function range(num: number, min: number, max: number): number {
   return Math.min(Math.max(num, min), max);
 }
@@ -63,7 +63,7 @@ export default create({
     dataType: String,
     ...commonProps
   },
-  components: {},
+
   emits: ['click', 'change'],
   setup(props, { emit }) {
     let moving;

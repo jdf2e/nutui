@@ -32,7 +32,9 @@ import {
   watch
 } from 'vue';
 const { create } = createComponent('tabbar-item');
+import Icon from '@/packages/icon/index.vue';
 export default create({
+  children: [Icon],
   props: {
     tabTitle: {
       // 标签页的标题
@@ -55,8 +57,6 @@ export default create({
       default: ''
     }
   },
-
-  components: {},
   setup(props, ctx) {
     const parent: any = inject('parent');
     const state = reactive({

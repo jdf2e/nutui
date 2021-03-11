@@ -1,6 +1,6 @@
 <template>
-  <div class="demo-list">
-    <h4>基本用法</h4>
+  <div class="demo">
+    <h2>基本用法</h2>
     <div>
       <nut-cell
         :is-link="true"
@@ -53,7 +53,7 @@
       >
       </nut-cell>
     </div>
-    <h4>图片弹窗</h4>
+    <h2>图片弹窗</h2>
     <p>
       type值为“image”时为图片弹窗，需要配置一张图片，可带链接（非必须）。默认展示关闭按钮。点击图片触发onClickImageLink事件，返回false可阻止默认的跳转链接行为。
     </p>
@@ -66,7 +66,7 @@
       >
       </nut-cell>
     </div>
-    <h4>背景滚动锁定</h4>
+    <h2>背景滚动锁定</h2>
     <p
       >lockBgScroll值设为true时，可在弹窗出现时锁定页面滚动，且不影响窗体内部滚动。</p
     >
@@ -86,7 +86,7 @@
       >
       </nut-cell>
     </div>
-    <h4>高级用法</h4>
+    <h2>高级用法</h2>
     <p>如果Dialog内容有复杂交互，可使用Dialog的标签式用法。</p>
     <div>
       <nut-cell
@@ -261,18 +261,4 @@ export default createDemo({
   }
 });
 </script>
-<style lang="scss">
-.demo-list {
-  h4 {
-    font-size: 15px;
-    padding: 0 16px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  p {
-    font-size: 12px;
-    padding: 0 16px;
-    margin: 5px 0;
-  }
-}
-</style>
+<style lang="scss"></style>
