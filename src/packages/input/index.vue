@@ -52,9 +52,9 @@
 <script lang="ts">
 import { ref, toRefs, reactive, computed } from 'vue';
 import { createComponent } from '@/utils/create';
-const { create } = createComponent('input');
 import { formatNumber } from './util';
 import Icon from '@/packages/icon/index.vue';
+const { create } = createComponent('input');
 export default create({
   props: {
     type: {
