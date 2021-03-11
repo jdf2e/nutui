@@ -26,7 +26,7 @@ import { commonProps } from './commonProps';
 const MOMENTUM_LIMIT_DISTANCE = 15;
 const MOMENTUM_LIMIT_TIME = 300;
 const DEFAULT_DURATION = 200;
-const { create } = createComponent('picker');
+const { create } = createComponent('picker-column');
 function range(num: number, min: number, max: number): number {
   return Math.min(Math.max(num, min), max);
 }
