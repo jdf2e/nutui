@@ -56,10 +56,12 @@ import {
   inject
 } from 'vue';
 import { createComponent } from '@/utils/create';
-import Icon from '@/packages/icon/index.vue';
 const { create } = createComponent('menu-item');
-
+import Icon from '@/packages/icon/index.vue';
 export default create({
+  components: {
+    [Icon.name]: Icon
+  },
   props: {
     title: {
       type: String,

@@ -120,8 +120,11 @@ import { reactive, ref, toRefs, watch, nextTick } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('address');
 import { TweenMax } from 'gsap';
-
+import Icon from '@/packages/icon/index.vue';
 export default create({
+  components: {
+    [Icon.name]: Icon
+  },
   props: {
     show: {
       type: Boolean,
@@ -188,7 +191,6 @@ export default create({
       default: 'left'
     }
   },
-  components: {},
   emits: [
     'update:show',
     'on-change',

@@ -93,6 +93,9 @@ export default defineComponent({
       font-size: 14px;
       color: rgba(144, 156, 164, 1);
     }
+    > p {
+      font-size: 12px;
+    }
 
     .card {
       padding: 25px 18px;

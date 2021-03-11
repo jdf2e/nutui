@@ -7,8 +7,11 @@
 import { toRefs, provide } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('collapse');
-
+import collapseitem from '@/packages/collapseitem/index.vue';
 export default create({
+  components: {
+    [collapseitem.name]: collapseitem
+  },
   props: {
     active: {
       type: [String, Number, Array]
