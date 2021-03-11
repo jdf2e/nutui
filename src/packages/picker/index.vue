@@ -26,7 +26,7 @@
           v-for="(item, columnIndex) in columnList"
           :key="columnIndex"
         >
-          <column
+          <nut-picker-column
             :listData="item.values"
             :readonly="readonly"
             :defaultIndex="item.defaultIndex"
@@ -38,7 +38,7 @@
                 changeHandler(columnIndex, dataIndex);
               }
             "
-          ></column>
+          ></nut-picker-column>
         </view-block>
       </view-block>
     </nut-popup>
