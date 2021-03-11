@@ -7,7 +7,7 @@ const packages = [];
 config.nav.map(item => {
   item.packages.forEach(element => {
     let { name, show } = element;
-    if (true) {
+    if (show) {
       importStr += `import ${name} from '/src/packages/${name.toLowerCase()}/index.vue';\n`;
       packages.push(name);
     }
