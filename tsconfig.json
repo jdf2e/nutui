@@ -8,7 +8,7 @@
     "strict": true,
     "jsx": "preserve",
     "sourceMap": false,
-    "declaration": true,
+    "declaration": false,
     "removeComments":true,
     "resolveJsonModule": true,
     "esModuleInterop": true,

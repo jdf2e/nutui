@@ -77,14 +77,26 @@ export default create({
       type: Boolean,
       default: false
     },
-    rows: String,
-    label: String,
+    rows: {
+      type: String,
+      default: ''
+    },
+    label: {
+      type: String,
+      default: ''
+    },
     placeholder: {
       type: String,
       default: '请输入信息'
     },
-    readonly: Boolean,
-    disabled: Boolean,
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     autosize: {
       type: Boolean,
       default: false
@@ -101,11 +113,17 @@ export default create({
   components: {
     [Icon.name]: Icon
   },
-  emits: ['change', 'update:value', 'blur', 'focus', 'clear'],
+  emits: ['change', 'update:value', 'blur', 'focus', 'clear', 'error'],
 
   setup(props, { emit }) {
     interface Events {
-      eventName: 'change' | 'focus' | 'blur';
+      eventName:
+        | 'change'
+        | 'focus'
+        | 'blur'
+        | 'clear'
+        | 'update:value'
+        | 'error';
       params: (string | number | Event)[];
     }
 
@@ -134,9 +152,9 @@ export default create({
         rize
       };
     });
-    const emitChange = envs => {
-      envs.forEach(item => {
-        emit(item.eventName, ...item.params);
+    const emitChange = (envs: Array<Events>) => {
+      envs.forEach((item: Events) => {
+        return emit(item.eventName, ...item.params);
       });
     };
     const valueChange = (e: Event) => {

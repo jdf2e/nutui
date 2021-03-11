@@ -17,6 +17,10 @@ export default create({
       type: Boolean,
       default: true
     },
+    symbol: {
+      type: String,
+      default: '$'
+    },
     decimalDigits: {
       type: Number,
       default: 2
@@ -30,7 +34,7 @@ export default create({
   setup(props) {
     const priceShow = computed(() => {
       const symbol = props.needSymbol
-        ? '<view class="price-symbol">￥</view>'
+        ? `<view class="price-symbol">${props.symbol}</view>`
         : '';
       return symbol + formatToHump(props.price);
     });
@@ -68,7 +72,7 @@ export default create({
 
     const formatToHump = (price: string | number) => {
       if (Number(price) == 0) {
-        return [0];
+        return 0;
       }
       if (checkPoint(price)) {
         price = Number(price).toFixed(props.decimalDigits);
