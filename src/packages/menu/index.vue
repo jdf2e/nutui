@@ -7,7 +7,7 @@
 import { toRefs, reactive, provide } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('menu');
-
+import menuitem from '@/packages/menuitem/index.vue';
 export default create({
   props: {
     type: {
@@ -20,7 +20,9 @@ export default create({
       default: true
     }
   },
-  components: {},
+  components: {
+    [menuitem.name]: menuitem
+  },
 
   setup(props, { emit }) {
     const state = reactive({

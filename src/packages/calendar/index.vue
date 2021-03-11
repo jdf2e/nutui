@@ -41,13 +41,16 @@
 <script lang="ts">
 import { PropType, reactive, ref, watch, toRefs } from 'vue';
 import { createComponent } from '@/utils/create';
-const { componentName, create } = createComponent('calendar');
+const { create } = createComponent('calendar');
 import Popup from '@/packages/popup/index.vue';
-import CalendarItem from '@/packages/calendar-item/index.vue';
+import CalendarItem from '@/packages/calendaritem/index.vue';
 import Utils from '@/utils/date';
 type InputDate = string | string[];
-
 export default create({
+  components: {
+    [CalendarItem.name]: CalendarItem,
+    [Popup.name]: Popup
+  },
   props: {
     type: {
       type: String,

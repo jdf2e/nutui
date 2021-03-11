@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo full">
     <h2>基础布局</h2>
     <div class="box-item">
       <nut-row>
@@ -119,7 +119,6 @@
 <script lang="ts">
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('layout');
-
 export default createDemo({
   props: {}
 });
@@ -130,7 +129,6 @@ export default createDemo({
   background: #fff;
   margin-bottom: 20px;
   padding: 20px 0;
-  border: 1px solid #ddd;
 }
 .demo .nut-row {
   overflow: hidden;

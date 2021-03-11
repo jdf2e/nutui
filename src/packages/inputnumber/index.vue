@@ -28,8 +28,21 @@
 import { computed, reactive, watch, toRefs } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('inputnumber');
-
+import Icon from '@/packages/icon/index.vue';
+interface Events {
+  eventName:
+    | 'update:modelValue'
+    | 'change'
+    | 'focus'
+    | 'blur'
+    | 'add-no-allow'
+    | 'reduce-no-allow';
+  params: (string | number | Event)[];
+}
 export default create({
+  components: {
+    [Icon.name]: Icon
+  },
   props: {
     size: {
       type: [String],
@@ -84,16 +97,6 @@ export default create({
   ],
 
   setup(props, { emit }) {
-    interface Events {
-      eventName:
-        | 'update:modelValue'
-        | 'change'
-        | 'focus'
-        | 'blur'
-        | 'add-no-allow'
-        | 'reduce-no-allow';
-      params: (string | number | Event)[];
-    }
     const { modelValue, min, max, step } = toRefs(props);
     const state = reactive({
       num: !modelValue.value ? min.value : modelValue.value,
