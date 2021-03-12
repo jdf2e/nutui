@@ -10,6 +10,7 @@
   font-size: $cell-title-font;
   color: $cell-color;
   margin: 10px 0;
+  box-sizing: border-box;
   &:active::before {
     opacity: 0.1;
   }
