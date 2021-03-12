@@ -36,7 +36,6 @@ import { computed } from 'vue';
 import { createComponent } from '@/utils/create';
 import { useRouter } from 'vue-router';
 const { componentName, create } = createComponent('cell');
-
 export default create({
   props: {
     title: { type: String, default: '' },

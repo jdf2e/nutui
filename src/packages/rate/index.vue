@@ -23,7 +23,6 @@
 import { watch, reactive, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('rate');
-
 export default create({
   props: {
     total: {

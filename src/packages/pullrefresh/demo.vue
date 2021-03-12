@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo full">
     <h2>纵向</h2>
     <nut-cell>
       <div class="vertical">
@@ -77,6 +77,7 @@ export default createDemo({
 .vertical {
   height: 300px;
   overflow: hidden;
+  width: 100%;
 }
 .content {
   height: 100%;

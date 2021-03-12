@@ -56,9 +56,7 @@ import {
   inject
 } from 'vue';
 import { createComponent } from '@/utils/create';
-import Icon from '@/packages/icon/index.vue';
 const { create } = createComponent('menu-item');
-
 export default create({
   props: {
     title: {

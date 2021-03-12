@@ -120,7 +120,6 @@ import { reactive, ref, toRefs, watch, nextTick } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('address');
 import { TweenMax } from 'gsap';
-
 export default create({
   props: {
     show: {
@@ -188,7 +187,6 @@ export default create({
       default: 'left'
     }
   },
-  components: {},
   emits: [
     'update:show',
     'on-change',

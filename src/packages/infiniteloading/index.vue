@@ -53,7 +53,6 @@ import {
 } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('infiniteloading');
-
 export default create({
   props: {
     hasMore: {
@@ -85,7 +84,6 @@ export default create({
       default: false
     }
   },
-  components: {},
   emits: ['scrollChange', 'loadMore', 'refresh'],
 
   setup(props, { emit, slots }) {

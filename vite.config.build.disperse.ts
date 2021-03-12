@@ -24,22 +24,35 @@ export default defineConfig({
   },
   plugins: [vue()],
   build: {
+    minify: false,
+    lib: {
+      entry: './src/packages/button/index.vue',
+      name: 'index'
+      // formats: ['umd']
+    },
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
       external: ['vue'],
-      output: {
-        banner,
-        // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
-        globals: {
-          vue: 'Vue'
+      input: ['./src/packages/button/index.vue'],
+      output: [
+        {
+          dir: null,
+          file: './dist/lib/button/index.js',
+          banner,
+          format: 'umd',
+          // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
+          globals: {
+            vue: 'Vue'
+          }
+        },
+        {
+          dir: null,
+          file: path.resolve(__dirname, './dist/es/button/index.js'),
+          banner,
+          format: 'es'
         }
-      }
+      ]
     },
-    lib: {
-      entry: 'src/nutui.ts',
-      name: 'nutui',
-      formats: ['es', 'umd']
-    },
-    emptyOutDir: false
+    emptyOutDir: true
   }
 });

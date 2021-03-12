@@ -53,8 +53,9 @@
 import { ref, toRefs, reactive, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 import { formatNumber } from './util';
-import Icon from '@/packages/icon/index.vue';
+
 const { create } = createComponent('input');
+
 export default create({
   props: {
     type: {
@@ -110,9 +111,7 @@ export default create({
       default: false
     }
   },
-  components: {
-    [Icon.name]: Icon
-  },
+
   emits: ['change', 'update:value', 'blur', 'focus', 'clear', 'error'],
 
   setup(props, { emit }) {

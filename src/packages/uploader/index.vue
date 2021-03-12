@@ -33,7 +33,6 @@
 <script lang="ts">
 import { computed, reactive } from 'vue';
 import { createComponent } from '@/utils/create';
-import Icon from '@/packages/icon/index.vue';
 import { Uploader, UploadOptions } from './uploader';
 const { componentName, create } = createComponent('uploader');
 export type FileItemStatus =
@@ -85,9 +84,6 @@ export default create({
     },
     onChange: { type: Function },
     customRequest: { type: Function }
-  },
-  components: {
-    [Icon.name]: Icon
   },
   emits: [
     'start',

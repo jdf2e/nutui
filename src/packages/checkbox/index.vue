@@ -72,7 +72,6 @@ export default create({
       default: true
     }
   },
-  components: {},
   setup(props, { emit }) {
     const parentGroup = inject('checkboxgroup', {
       parentNode: false,

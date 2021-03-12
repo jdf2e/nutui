@@ -18,7 +18,6 @@
 import { computed, ref, onMounted, onUnmounted } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('backtop');
-
 export default create({
   props: {
     //距离页面底部
@@ -47,11 +46,7 @@ export default create({
       default: 1111
     }
   },
-
   emits: ['click'],
-
-  components: {},
-
   setup(props, { emit }) {
     const styleBottom = computed(() => `${props.bottom}px`);
     const styleRight = computed(() => `${props.right}px`);

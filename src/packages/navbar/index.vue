@@ -63,7 +63,6 @@ import { computed, ref } from 'vue';
 import { createComponent } from '@/utils/create';
 import { useRouter } from 'vue-router';
 const { componentName, create } = createComponent('navbar');
-
 export default create({
   props: {
     leftShow: { type: Boolean, default: true }, //左侧  是否显示返回

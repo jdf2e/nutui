@@ -22,7 +22,6 @@ export type ButtonType =
   | 'danger';
 export type ButtonSize = 'large' | 'normal' | 'small';
 export type ButtonShape = 'square' | 'round';
-
 export default create({
   props: {
     color: String,

@@ -55,8 +55,6 @@ export default create({
       default: ''
     }
   },
-
-  components: {},
   setup(props, ctx) {
     const parent: any = inject('parent');
     const state = reactive({
