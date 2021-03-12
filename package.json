@@ -36,7 +36,7 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "checked":"npm run generate:file && rm -rf dist/ && tsc",
+    "checked": "npm run generate:file && rm -rf dist/ && tsc",
     "dev": "npm run checked && vite --open",
     "build:site": "npm run checked && vite build",
     "build": "npm run checked && vite build --config vite.config.build.ts && npm run generate:types",
