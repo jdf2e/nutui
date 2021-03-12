@@ -19,10 +19,51 @@ app.use(Rate);
 ### 基础用法
 
 ```html
-<nut-rate 
-    v-model:value="state.val"
->
-</nut-rate>
+    <nut-rate 
+        v-model:value="state.val"
+    >
+    </nut-rate>
+```
+
+### 自定义icon
+
+```html
+    <nut-rate
+        checked-icon="heart-fill1"
+        unchecked-icon="heart"
+        v-model:value="state.val3"
+    >
+    </nut-rate>
+```
+
+### 自定义数量
+
+```html
+    <nut-rate 
+        :total="6" 
+        v-model:value="state.val4"
+    >
+    </nut-rate>
+```
+
+### 自定义颜色
+
+```html
+    <nut-rate 
+        active-color="#FFC800" 
+        v-model:value="state.val5"
+    >
+    </nut-rate>
+```
+
+### 禁用状态
+
+```html
+    <nut-rate 
+        :disabled="true" 
+        v-model:value="state.val6"
+    >
+    </nut-rate>
 ```
 
 ### 只读
@@ -54,14 +95,7 @@ app.use(Rate);
 </nut-rate>
 ```
 
-### 自定义ICON
 
-```html
-<nut-rate
-    :checkedIcon="`url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='rgb(255,0,0)' d='M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zM6.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm7 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm2.16 3H4.34a6 6 0 0 0 11.32 0z'/%3E%3C/svg%3E")`"
-    :uncheckedIcon="`url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='rgb(255,0,0)' d='M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM6.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm7 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM7 13h6a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z'/%3E%3C/svg%3E")`"
-></nut-rate>
-```
 
 ## Prop
 

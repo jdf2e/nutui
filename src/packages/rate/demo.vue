@@ -5,7 +5,7 @@
       <nut-rate v-model:value="state.val"></nut-rate>
     </div>
 
-    <h2>自定义图标</h2>
+    <h2>自定义 icon </h2>
     <div>
       <nut-rate
         checked-icon="heart-fill1"
@@ -34,9 +34,13 @@
       <nut-rate :value="2" :read-only="true"></nut-rate>
     </div>
 
-    <h2>监听 change 事件,{{ state.result }}</h2>
+    <h2>绑定事件,{{ state.result }}</h2>
     <div>
       <nut-rate @click="onClick"></nut-rate>
+    </div>
+    <h2>自定义尺寸</h2>
+    <div>
+      <nut-rate :size="35"></nut-rate>
     </div>
   </div>
 </template>
