@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "3.0.0-beta.3",
+  "version": "3.0.0-beta.5",
   "npm": {
     "tag": "beta"
   },
@@ -8,7 +8,7 @@
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
   "style": "dist/style.css",
-  "typings": "dist/types/nutui.d.ts",
+  "typings": "dist/index.d.ts",
   "keywords": [
     "nutui",
     "nutui2",
@@ -39,13 +39,14 @@
     "checked":"npm run generate:file && rm -rf dist/ && tsc",
     "dev": "npm run checked && vite --open",
     "build:site": "npm run checked && vite build",
-    "build": "npm run checked && vite build --config vite.config.build.ts",
+    "build": "npm run checked && vite build --config vite.config.build.ts && npm run generate:types",
     "build:disperse": "vite build --config vite.config.build.disperse.ts",
     "serve": "vite preview",
     "upload": "yarn build:site && node ./jd/upload.js",
     "add": "node jd/createComponentMode.js",
     "publish:beta": "npm publish --tag=beta",
-    "generate:file": "node jd/generate-nutui.js"
+    "generate:file": "node jd/generate-nutui.js",
+    "generate:types": "node jd/generate-types.js"
   },
   "dependencies": {
     "axios": "^0.21.0",
