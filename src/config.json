@@ -379,7 +379,7 @@
           "sort": 1,
           "cName": "标签组件",
           "type": "component",
-          "show": true,
+          "show": false,
           "desc": "标签组件",
           "author": "zhenyulei"
         },

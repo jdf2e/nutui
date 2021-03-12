@@ -33,7 +33,6 @@
 <script lang="ts">
 import { computed, reactive } from 'vue';
 import { createComponent } from '@/utils/create';
-import Icon from '@/packages/icon/index.vue';
 import { Uploader, UploadOptions } from './uploader';
 const { componentName, create } = createComponent('uploader');
 export type FileItemStatus =
@@ -51,7 +50,6 @@ export class FileItem {
   formData: FormData = new FormData();
 }
 export default create({
-  children: [Icon],
   props: {
     name: { type: String, default: 'file' },
     url: { type: String, default: '' },

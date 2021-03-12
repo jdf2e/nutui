@@ -28,7 +28,6 @@
 import { computed, reactive, watch, toRefs } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('inputnumber');
-import Icon from '@/packages/icon/index.vue';
 interface Events {
   eventName:
     | 'update:modelValue'
@@ -40,7 +39,6 @@ interface Events {
   params: (string | number | Event)[];
 }
 export default create({
-  children: [Icon],
   props: {
     size: {
       type: [String],
