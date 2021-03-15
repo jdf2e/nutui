@@ -16,151 +16,102 @@ app.use(ShortPassword);
 
 ## 代码示例
 
+### 公用片段
+
+``` html
+<nut-shortpassword
+  v-model:value="state.value"
+  v-model:visible="state.visible"
+  :no-button="state.noButton"
+  :length="state.length"
+  :error-msg="state.errorMsg"
+  @on-change="methods.onChange"
+  @on-complete="methods.onComplete"
+  @on-ok="methods.onOk"
+  @on-tips="methods.onTips">
+</nut-shortpassword>
+```
+
+``` javascript
+import { reactive, getCurrentInstance } from 'vue';
+setup() {
+  let { ctx } = getCurrentInstance();
+  const state = reactive({
+    visible: false,
+    noButton: true,
+    value: '',
+    errorMsg: '',
+    length: 6
+  });
+  const methods = {
+    onChange(val: string) {
+      val && ctx.$toast.text(val);
+    },
+    onOk(val: string) {
+      val && ctx.$toast.text(val);
+      state.visible = false;
+    },
+    onComplete() {
+      
+    },
+    onTips() {
+      ctx.$toast.text('执行忘记密码逻辑');
+    }
+  };
+  return {
+    state,
+    methods
+  };
+}
+
+```
 ### 基础用法
 
 ``` html
-<div @click="switchActionSheet('dialogShow')" >点击出现输出框</div>
-<nut-shortpassword 
-    v-model:value="state.value" 
-    v-model:is-visible="state.dialogShow"
-    >
-</nut-shortpassword>
+<nut-cell title="基础用法" is-link @click="state.visible = true;"></nut-cell>
 ```
 
-``` javascript
-  setup() {
-    const state = reactive({
-      dialogShow: false,
-      value: '',
-    });
-    return {
-      state,
-    };
-  },
-// ...
-```
-
-### 展示按钮
+### 显示按钮组
 
 ``` html
-<div @click="switchActionSheet('dialogShow')" >点击出现输出框</div>
-<nut-shortpassword 
-    v-model:value="state.value" 
-    v-model:is-visible="state.dialogShow"
-    :no-button="false"
-    @sure-click='sureClick'
-    >
-</nut-shortpassword>
+<nut-cell title="显示按钮组" is-link @click="state.visible = true;state.noButton = false;"></nut-cell>
 ```
 
-``` javascript
-setup() {
-    const state = reactive({
-      dialogShow: false,
-      value: '',
-    });
-    function switchActionSheet() {
-        state.dialogShow = !state.dialogShow
-    }
-    function sureClick() {
-      state.dialogShow = false
-    }
-    return {
-      state,
-      switchActionSheet,
-      sureClick
-    };
-  },
-  
-```
-
-### 自定义长度
+### 自定义密码长度4
 
 ``` html
-<div @click="switchActionSheet('dialogShow')" >点击出现输出框</div>
-<nut-shortpassword 
-    v-model:value="state.value" 
-    v-model:is-visible="state.dialogShow"
-    :length=5
-    >
-</nut-shortpassword>
+<nut-cell title="自定义密码长度4" is-link @click="state.visible = true;state.length = 4;"></nut-cell>
 ```
-
-``` javascript
-setup() {
-    const state = reactive({
-      dialogShow: false,
-      value: '',
-    });
-    function switchActionSheet() {
-        state.dialogShow = !state.dialogShow
-    }
-    return {
-      state,
-      switchActionSheet
-    };
-  },
-```
-
-### 出现提示信息
+### 忘记密码提示语事件回调
 
 ``` html
-<div @click="switchActionSheet('dialogShow')" >点击出现输出框</div>
-<nut-shortpassword 
-    v-model:value="state.value" 
-    v-model:is-visible="state.dialogShow"
-    :error-msg = state.errorMsg
-    >
-</nut-shortpassword>
+<nut-cell title="忘记密码提示语事件回调" is-link @click="state.visible = true;"></nut-cell>
 ```
 
-``` javascript
-setup() {
-    const state = reactive({
-      dialogShow: false,
-      value: '',
-      errorMsg:''
-    });
-    function switchActionSheet() {
-        state.dialogShow = !state.dialogShow
-    }
-    watch(
-      () => state.value3,
-      val => {
-        if (val.length == 6) {
-          state.errorMsg = '请输入正确密码'
-        }
-      }
-    );
-    return {
-      state,
-      switchActionSheet
-    };
-  },
+### 错误提示语
+``` html
+<nut-cell title="错误提示语" is-link @click="state.visible = true;state.errorMsg = '请输入正确密码';"></nut-cell>
 ```
 
 ### Prop
 
 
 | 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| title | 标题| Boolean | '请输入密码'
-| is-visible | 是否展示短密码框| Boolean | false
-| value | 密码值 | string | ''
+|----- | ----- | ----- | ----- |
+| title | 标题| String | 请输入密码|
+| desc | 密码框描述| String | 您使用了虚拟资产，请进行验证|
+| tips | 提示语| String | 忘记密码|
+| visible | 是否展示短密码框| Boolean | false|
+| value | 密码初始值 | String | ''|
 | no-button | 是否隐藏底部按钮 |Boolean|true|
-| length | 密码长度，取值为4，5，6 |string||Number|6|
-| error-msg | 错误信息提示 |string|''|
-| show-password-tips | 忘记密码提示信息 |string|'忘记密码'|
-| link | 忘记密码跳转链接 |string|''|
+| length | 密码长度，取值为4~6 |String||Number|6|
+| error-msg | 错误信息提示 |String|''|
 
 
 ### Event
 
 | 事件名称 | 说明 | 回调参数
 |----- | ----- | ----- 
-| input | 输入密码时触发事件 | --
-| sure-click | 点击确实时触发事件 | value
+| change | 输入密码时触发事件 | --
+| on-ok | 点击确实时触发事件 | value
 | complete | 输入完成的回调 | value
-
-
-
