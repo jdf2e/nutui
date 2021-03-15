@@ -1,5 +1,5 @@
 <template>
-  <label :class="['nut-radio', 'nut-radio-size-' + currentSize]">
+  <view :class="classes">
     <input
       type="radio"
       :value="currentValue"
@@ -9,21 +9,13 @@
       :label="label"
       @click="clickEvt"
     />
-    <span class="nut-radio-label">
+    <view class="nut-radio-label">
       <slot></slot>
-    </span>
-  </label>
+    </view>
+  </view>
 </template>
 <script lang="ts">
-import {
-  compile,
-  computed,
-  reactive,
-  ref,
-  toRefs,
-  getCurrentInstance,
-  inject
-} from 'vue';
+import { computed, getCurrentInstance, inject } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('radio');
 
@@ -32,7 +24,7 @@ type Iparent = {
 };
 export default create({
   props: {
-    modelValue: {
+    value: {
       type: [String, Number, Boolean],
       default: false
     },
@@ -51,71 +43,59 @@ export default create({
     }
   },
 
-  emits: ['input', 'update:modelValue', 'change'],
+  emits: ['update:value', 'change'],
   setup(props, { emit }) {
     const parentGroup = inject('radiogroup', {
       parentNode: false,
-      changeVal: val => {
-        console.log();
-      }
+      changeVal: (val: string) => {}
     });
     const internalInstance = getCurrentInstance()?.parent;
     const parentProps = internalInstance?.props;
 
-    const currentValue = computed({
-      get: () => {
-        if (parentGroup && parentGroup.parentNode) {
-          return parentProps?.modelValue;
-        } else {
-          return props.modelValue;
-        }
-      },
-      set: val => {
-        if (parentGroup && parentGroup.parentNode) {
-          parentGroup?.changeVal(val);
-        } else {
-          emit('input', val);
-        }
-      }
-    });
+    const isParentGroup = computed(() => parentGroup && parentGroup.parentNode);
 
     const currentSize = computed(() => {
-      if (parentGroup && parentGroup.parentNode) {
-        return parentProps?.size;
-      } else {
-        return props.size;
+      return isParentGroup.value ? parentProps?.size : props.size;
+    });
+
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true,
+        [`${prefixCls}-size-${currentSize.value}`]: true
+      };
+    });
+
+    const currentValue = computed({
+      get: () => {
+        return isParentGroup.value ? parentProps?.value : props.value;
+      },
+      set: (val: any) => {
+        isParentGroup.value ? parentGroup.changeVal(val) : emit('change', val);
       }
     });
 
     const isDisabled = computed(() => {
-      if (parentGroup && parentGroup.parentNode) {
-        return parentProps?.disabled;
-      } else {
-        return props.disabled;
-      }
+      return isParentGroup.value ? parentProps?.disabled : props.disabled;
     });
 
     const isAnimated = computed(() => {
-      if (parentGroup && parentGroup.parentNode) {
-        return parentProps?.animated;
-      } else {
-        return props.animated;
-      }
+      return isParentGroup ? parentProps?.animated : props.animated;
     });
 
-    const clickEvt = (event: any) => {
-      event?.stopPropagation();
+    const clickEvt = (event: Event) => {
+      event.stopPropagation();
       if (isDisabled.value) {
         return false;
       }
       currentValue.value = props.label ?? '';
-      emit('update:modelValue', props.label);
-      emit('change', props.label, event);
+      emit('update:value', currentValue.value);
+      emit('change', currentValue.value);
     };
 
     return {
+      classes,
       currentValue,
-      currentSize,
       isDisabled,
       isAnimated,
       clickEvt
