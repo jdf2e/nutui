@@ -6,9 +6,11 @@ let importStr = `import { App } from 'vue';\n`;
 const packages = [];
 config.nav.map(item => {
   item.packages.forEach(element => {
-    let { name, show } = element;
+    let { name, show, type } = element;
     if (show) {
-      importStr += `import ${name} from './packages/${name.toLowerCase()}/index.vue';\n`;
+      importStr += `import ${name} from './packages/${name.toLowerCase()}/index${
+        type === 'methods' ? '' : '.vue'
+      }';\n`;
       packages.push(name);
     }
   });

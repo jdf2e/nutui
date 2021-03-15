@@ -33,7 +33,6 @@ fs.writeFile(
   fileStr,
   'utf8',
   error => {
-    console.log(error);
     // logger.success(`${package_config_path} 文件写入成功`);
   }
 );
