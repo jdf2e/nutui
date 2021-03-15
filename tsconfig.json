@@ -9,7 +9,7 @@
     "jsx": "preserve",
     "sourceMap": false,
     "declaration": false,
-    "removeComments":true,
+    "removeComments": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
