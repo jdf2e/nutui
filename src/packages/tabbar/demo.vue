@@ -32,7 +32,7 @@
     </nut-tabbar>
 
     <h2>自定义颜色</h2>
-    <nut-tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
+    <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
       <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
       <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
       <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
@@ -40,7 +40,7 @@
       <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
     </nut-tabbar>
     <h2>三个icon的tabbar</h2>
-    <nut-tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
+    <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
       <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
       <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
       <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
