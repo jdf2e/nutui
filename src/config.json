@@ -151,7 +151,7 @@
           "name": "Toast",
           "sort": "1",
           "cName": "吐司",
-          "type": "component",
+          "type": "methods",
           "show": true,
           "desc": "轻提示",
           "author": "undo"
@@ -160,7 +160,7 @@
           "version": "3.0.0",
           "name": "Notify",
           "type": "component",
-          "cName": "消息提示",
+          "cName": "methods",
           "desc": "在页面顶部展示消息提示，支持函数调用和组件调用两种方式",
           "sort": 4,
           "show": true,
@@ -275,7 +275,7 @@
         },
         {
           "name": "Dialog",
-          "type": "component",
+          "type": "methods",
           "cName": "对话框",
           "desc": "模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。",
           "sort": 8,
