@@ -1,15 +1,11 @@
 .nut-backtop {
   display: none;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 111;
   &.show {
-    display: block;
     width: 40px;
     height: 40px;
-    background: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(224, 224, 224, 1);
+    background: $white;
+    border: 1px solid $backtop-border-color;
     border-radius: 50%;
     display: flex;
     align-items: center;
