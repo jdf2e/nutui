@@ -15,10 +15,10 @@
     vertical-align: middle;
     margin-top: 0px;
     &::after {
+      content: '';
       position: absolute;
       left: 50%;
       top: 50%;
-      content: '';
       width: 0;
       height: 0;
       transform: translate(-50%, -50%);
@@ -33,7 +33,6 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: 100%;
-      // box-shadow: 0 4px 6px 0 rgba($primary-color, 0.15);
       &:not(:disabled).nut-radio-ani::after {
         animation: nutPulse 0.25s;
       }

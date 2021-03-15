@@ -1,16 +1,16 @@
 <template>
-  <view class="nut-radiogroup">
+  <view :class="classes">
     <slot></slot>
   </view>
 </template>
 <script lang="ts">
-import { toRefs, provide, watch } from 'vue';
+import { provide, watch, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('radiogroup');
 
 export default create({
   props: {
-    modelValue: {
+    value: {
       type: [String, Number, Boolean],
       default: false
     },
@@ -27,20 +27,29 @@ export default create({
       default: true
     }
   },
-  emits: ['change', 'update:modelValue'],
+  emits: ['change', 'update:value'],
   setup(props, { emit }) {
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true
+      };
+    });
     watch(
-      () => props.modelValue,
+      () => props.value,
       value => {
-        emit('change', value, event);
+        emit('change', value);
       }
     );
     provide('radiogroup', {
       parentNode: true,
       changeVal: (val: string | number) => {
-        emit('update:modelValue', val);
+        emit('change', val);
+        emit('update:value', val);
       }
     });
+
+    return {};
   }
 });
 </script>
