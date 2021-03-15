@@ -1,13 +1,5 @@
 <template>
-  <div
-    :class="['nut-backtop', { show: backTop }]"
-    :style="{
-      right: styleRight,
-      bottom: styleBottom,
-      'z-index': zIndex
-    }"
-    @click="click"
-  >
+  <div :class="classes" :style="style" @click.stop="click">
     <slot>
       <nut-icon size="19px" class="nut-backtop-main" name="top"></nut-icon>
     </slot>
@@ -15,121 +7,168 @@
 </template>
 
 <script lang="ts">
-import { computed, ref, onMounted, onUnmounted } from 'vue';
+import {
+  computed,
+  onMounted,
+  onUnmounted,
+  onActivated,
+  onDeactivated,
+  reactive
+} from 'vue';
 import { createComponent } from '@/utils/create';
-const { create } = createComponent('backtop');
+const { componentName, create } = createComponent('backtop');
 export default create({
   props: {
-    //距离页面底部
     bottom: {
       type: Number,
       default: 20
     },
-    //距离页面右侧
     right: {
       type: Number,
       default: 10
     },
-    ///获取容器ID
     elId: {
       type: String,
       default: ''
     },
-    //页面垂直滚动多高后出现
     distance: {
       type: Number,
       default: 200
     },
-    //设置层级
     zIndex: {
       type: Number,
-      default: 1111
+      default: 10
+    },
+    isAnimation: {
+      type: Boolean,
+      default: true
+    },
+    duration: {
+      type: Number,
+      default: 1000
     }
   },
   emits: ['click'],
   setup(props, { emit }) {
-    const styleBottom = computed(() => `${props.bottom}px`);
-    const styleRight = computed(() => `${props.right}px`);
-    // const styleDistance = computed(() => `${props.distance}px`);
-    const zIndex = computed(() => `${props.zIndex}px`);
-
-    //默认图标不出现
-    const backTop = ref(false);
-
+    const state = reactive({
+      backTop: false,
+      scrollTop: 0,
+      scrollEl: window as HTMLElement | Window,
+      startTime: 0,
+      keepAlive: false
+    });
     let scrollEl: Window | HTMLElement = window;
-    const elId = ref(props.elId);
-
-    function scrollListener() {
-      //滚动条偏移量
-      //Window
-      if (scrollEl instanceof Window) {
-        const scrollTop =
-          scrollEl.pageYOffset !== undefined ? scrollEl.pageYOffset : '';
-        backTop.value = scrollTop >= props.distance;
-        //DOM
-      } else if (scrollEl instanceof HTMLElement) {
-        const scrollTop = scrollEl.scrollTop;
-        backTop.value = scrollTop >= props.distance;
-      }
-    }
-
-    //点击按钮返回顶部
-    function scroll(y = 0) {
-      if (scrollEl instanceof Window) {
-        window.scrollTo(0, y);
-      } else if (scrollEl instanceof HTMLElement) {
-        scrollEl.scrollTop = y;
-      }
-    }
-
-    //监听页面滚动事件
-    function addEventListener() {
-      scrollEl.addEventListener('scroll', scrollListener, true);
-    }
-
-    //解绑监听页面滚动事件
-    function removeEventListener() {
-      scrollEl.removeEventListener('scroll', scrollListener, true);
-    }
-    // function deactivated() {
-    //   keepAlive.value = true;
-    //   removeEventListener();
-    // }
-
-    onUnmounted(() => {
-      removeEventListener();
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true,
+        show: state.backTop
+      };
+    });
+    const style = computed(() => {
+      return {
+        right: `${props.bottom}px`,
+        bottom: `${props.right}px`,
+        zIndex: props.zIndex
+      };
     });
 
-    //点击回到顶部
-    function click() {
-      scroll();
-      emit('click');
+    function scrollListener() {
+      if (state.scrollEl instanceof Window) {
+        state.scrollTop = state.scrollEl.pageYOffset;
+      } else {
+        state.scrollTop = state.scrollEl.scrollTop;
+      }
+      state.backTop = state.scrollTop >= props.distance;
+    }
+
+    function scroll(y = 0) {
+      if (state.scrollEl instanceof Window) {
+        window.scrollTo(0, y);
+      } else {
+        state.scrollEl.scrollTop = y;
+      }
+    }
+
+    function scrollAnimation() {
+      let cid = requestAniFrame()(function fn() {
+        var t =
+          props.duration -
+          Math.max(0, state.startTime - +new Date() + props.duration);
+        var y = (t * -state.scrollTop) / props.duration + state.scrollTop;
+        scroll(y);
+        cid = requestAniFrame()(fn);
+        if (t == props.duration || y == 0) {
+          window.cancelAnimationFrame(cid);
+        }
+      });
+    }
+
+    function addEventListener() {
+      state.scrollEl.addEventListener('scroll', scrollListener, false);
+      state.scrollEl.addEventListener('resize', scrollListener, false);
+    }
+
+    function removeEventListener() {
+      state.scrollEl.removeEventListener('scroll', scrollListener, false);
+      state.scrollEl.removeEventListener('resize', scrollListener, false);
+    }
+
+    function initCancelAniFrame() {
+      window.cancelAnimationFrame = window.webkitCancelAnimationFrame;
+    }
+
+    function requestAniFrame() {
+      return (
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        }
+      );
+    }
+
+    function click(e: MouseEvent) {
+      state.startTime = +new Date();
+      props.isAnimation && props.duration > 0 ? scrollAnimation() : scroll();
+      emit('click', e);
     }
 
     function init() {
-      //重新获取容器id
-      const _scrollEl = document.getElementById(elId.value);
-
-      if (elId.value && _scrollEl) {
-        scrollEl = _scrollEl;
-        _scrollEl.style.scrollBehavior = 'smooth';
+      if (props.elId && document.getElementById(props.elId)) {
+        state.scrollEl = document.getElementById(props.elId) as
+          | HTMLElement
+          | Window;
       }
-
       addEventListener();
-      scrollListener();
+      initCancelAniFrame();
     }
 
     onMounted(() => {
       init();
     });
 
+    onUnmounted(() => {
+      removeEventListener();
+    });
+
+    onActivated(() => {
+      if (state.keepAlive) {
+        state.keepAlive = false;
+        init();
+      }
+    });
+
+    onDeactivated(() => {
+      state.keepAlive = true;
+      removeEventListener();
+    });
+
     return {
-      backTop,
-      scrollEl,
-      click,
-      styleBottom,
-      styleRight,
-      zIndex
+      state,
+      classes,
+      style,
+      click
     };
   }
 });

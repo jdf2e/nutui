@@ -1,5 +1,5 @@
 <template>
-  <div class="demo" id="elId" ref="scroll">
+  <div class="demo" id="elId">
     <div class="text-data">我是测试数据1</div>
     <div class="text-data">我是测试数据2</div>
     <div class="text-data">我是测试数据3</div>
@@ -24,10 +24,19 @@
     <div class="text-data">我是测试数据22</div>
     <div class="text-data">我是测试数据23</div>
     <div class="text-data">我是测试数据24</div>
-    <nut-backtop @click="handleClick" elId="elId" :distance="100" :bottom="90"
-      ><view>无</view></nut-backtop
+    <nut-backtop
+      @click="handleClick"
+      :el-id="elId"
+      :distance="100"
+      :bottom="90"
     >
-    <nut-backtop @click="handleClick" elId="elId" :distance="200"></nut-backtop>
+      <view>无</view>
+    </nut-backtop>
+    <nut-backtop
+      @click="handleClick"
+      :el-id="elId"
+      :distance="200"
+    ></nut-backtop>
   </div>
 </template>
 
