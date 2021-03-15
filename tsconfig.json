@@ -9,7 +9,11 @@
     "jsx": "preserve",
     "sourceMap": false,
     "declaration": false,
+<<<<<<< HEAD
     "removeComments": true,
+=======
+    "removeComments":true,
+>>>>>>> 0ab0dc197bf6bbb42cda4083a837c80c3972785d
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
