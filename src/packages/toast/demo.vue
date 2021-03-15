@@ -33,28 +33,30 @@
 </template>
 
 <script>
+import { getCurrentInstance } from 'vue';
 import { createComponent } from '@/utils/create';
-import { Toast } from './index.ts';
 const { createDemo } = createComponent('toast');
 
 export default createDemo({
   setup() {
+    const { ctx } = getCurrentInstance();
+
     const textToast = msg => {
-      Toast.text(msg, { duration: 100000 });
+      ctx.$toast.text(msg, { duration: 100000 });
     };
     const successToast = msg => {
-      Toast.success(msg);
+      ctx.$toast.success(msg, { duration: 100000 });
     };
     const errorToast = msg => {
-      Toast.fail(msg);
+      ctx.$toast.fail(msg);
     };
     const warningToast = msg => {
-      Toast.warn(msg);
+      ctx.$toast.warn(msg);
     };
     const loadingToast = msg => {
-      Toast.loading(msg, { duration: 0, id: 'test' });
+      ctx.$toast.loading(msg, { duration: 0, id: 'test' });
       setTimeout(() => {
-        Toast.success('加载完成', { id: 'test', duration: 2000 });
+        ctx.$toast.success('加载完成', { id: 'test', duration: 2000 });
       }, 2000);
     };
     return {

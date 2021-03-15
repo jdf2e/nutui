@@ -2,13 +2,13 @@
   <view>
     <nut-dialog
       :title="title"
-      :visible="isVisible"
+      :visible="visible"
       @ok-btn-click="sureClick"
       @cancel-btn-click="close"
       @close="close"
       :no-footer="noButton"
     >
-      <view class="nut-shortpsd-subtitle">您使用了虚拟资产，请进行验证</view>
+      <view class="nut-shortpsd-subtitle">{{ desc }}</view>
       <view class="nut-input-w">
         <input
           ref="realpwd"
@@ -33,9 +33,9 @@
       </view>
       <view class="nut-shortpsd-message">
         <view class="nut-shortpsd-error">{{ errorMsg }}</view>
-        <view class="nut-shortpsd-forget" v-if="showPasswordTips">
+        <view class="nut-shortpsd-forget" v-if="tips">
           <nut-icon class="icon" size="11px" name="tips"></nut-icon>
-          <view @click="link">忘记密码</view>
+          <view @click="onTips">{{ tips }}</view>
         </view>
       </view>
     </nut-dialog>
@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts">
-import { ref, watch, computed } from 'vue';
+import { ref, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('shortpassword');
 export default create({
@@ -52,7 +52,15 @@ export default create({
       type: String,
       default: '请输入密码'
     },
-    isVisible: {
+    desc: {
+      type: String,
+      default: '您使用了虚拟资产，请进行验证'
+    },
+    tips: {
+      type: String,
+      default: '忘记密码'
+    },
+    visible: {
       type: Boolean,
       default: false
     },
@@ -71,22 +79,15 @@ export default create({
     length: {
       type: [String, Number], //4～6
       default: 6
-    },
-    showPasswordTips: {
-      type: Boolean,
-      default: true
-    },
-    link: {
-      type: String,
-      default: ''
     }
   },
   emits: [
-    'sure-click',
     'update:value',
-    'update:is-visible',
-    'complete',
-    'input'
+    'update:visible',
+    'on-complete',
+    'on-change',
+    'on-ok',
+    'on-tips'
   ],
   setup(props, { emit }) {
     const realInput = ref(props.value);
@@ -95,7 +96,7 @@ export default create({
 
     // 方法
     function sureClick() {
-      emit('sure-click', realInput.value);
+      emit('on-ok', realInput.value);
     }
     function focus() {
       realpwd.value.focus();
@@ -108,19 +109,19 @@ export default create({
         realInput.value = val;
       }
       if (realInput.value.length === comLen.value) {
-        emit('complete', val);
+        emit('on-complete', val);
       }
-      emit('input', val);
+      emit('on-change', val);
       emit('update:value', val);
     }
     function close() {
-      emit('update:is-visible', false);
+      emit('update:visible', false);
     }
     function range(val: number) {
       return Math.min(Math.max(4, val), 6);
     }
-    function link() {
-      if (props.link) window.location.href = props.link;
+    function onTips() {
+      emit('on-tips');
     }
     return {
       comLen,
@@ -131,7 +132,7 @@ export default create({
       range,
       changeValue,
       close,
-      link
+      onTips
     };
   }
 });

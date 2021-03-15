@@ -49,10 +49,10 @@ $button-block-line-height: 46px;
 $button-default-font-size: $font-size-2;
 $button-disabled-opacity: 0.68;
 $button-primary-color: $white;
-$button-primary-border-color: rgba(250, 44, 25, 1);
+$button-primary-border-color: $primary-color;
 $button-primary-background-color: linear-gradient(
   135deg,
-  rgba(250, 44, 25, 1) 0%,
+  $primary-color 0%,
   rgba(250, 63, 25, 1) 45%,
   rgba(250, 89, 25, 1) 83%,
   rgba(250, 100, 25, 1) 100%
@@ -75,8 +75,8 @@ $button-success-background-color: linear-gradient(
 );
 
 $button-danger-color: $white;
-$button-danger-border-color: rgba(250, 44, 25, 1);
-$button-danger-background-color: rgba(250, 44, 25, 1);
+$button-danger-border-color: $primary-color;
+$button-danger-background-color: $primary-color;
 $button-warning-color: $white;
 $button-warning-border-color: rgba(255, 158, 13, 1);
 $button-warning-background-color: linear-gradient(
@@ -145,6 +145,9 @@ $avatar-normal-height: 40px;
 $switch-close-bg-color: #ebebeb;
 $switch-close--cline-bg-color: #f0f0f0;
 
+//backtop
+$backtop-border-color: #e0e0e0;
+
 // calendar
 $calendar-primary-color: $primary-color;
 $calendar-choose-color: #fef6f6;
@@ -184,7 +187,7 @@ $notify-height: 44px;
 
 $notify-base-background-color: linear-gradient(
   135deg,
-  rgba(250, 44, 25, 1) 0%,
+  $primary-color 0%,
   rgba(250, 63, 25, 1) 45%,
   rgba(250, 89, 25, 1) 83%,
   rgba(250, 100, 25, 1) 100%
@@ -207,6 +210,10 @@ $notify-warning-background-color: linear-gradient(
   rgba(255, 93, 13, 1) 0%,
   rgba(255, 154, 13, 1) 100%
 );
+
+// tabbar
+
+$tabbar-active-color: $primary-color;
 
 view-block {
   display: block;
