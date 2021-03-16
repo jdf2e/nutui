@@ -23,8 +23,8 @@ app.use(Menu);
 
 ```html
 <nut-menu>
-  <nut-menu-item :menuList="menuList" title="最新商品" ></nut-menu-item>
-  <nut-menu-item :menuList="menuList" :title="title" ></nut-menu-item>
+  <nut-menu-item :menu-list="menuList" title="最新商品" ></nut-menu-item>
+  <nut-menu-item :menu-list="menuList" :title="title" ></nut-menu-item>
 </nut-menu>
 ```
 ```js
@@ -49,9 +49,9 @@ app.use(Menu);
 
 ```html
 <nut-menu>
-    <nut-menu-item :menuList="menuList2" title="单列展示" multiStyle="1" maxHeight="200"></nut-menu-item>
-    <nut-menu-item :menuList="menuList2" title="双列展示"  multiStyle="2"></nut-menu-item>
-    <nut-menu-item :menuList="menuList2" title="三列展示"  multiStyle="3"></nut-menu-item>
+    <nut-menu-item :menu-list="menuList2" title="单列展示" multi-style="1" maxHeight="200"></nut-menu-item>
+    <nut-menu-item :menu-list="menuList2" title="双列展示"  multi-style="2"></nut-menu-item>
+    <nut-menu-item :menu-list="menuList2" title="三列展示"  multi-style="3"></nut-menu-item>
 </nut-menu>
 ```
 
@@ -62,9 +62,9 @@ app.use(Menu);
 
 ```html
 <nut-menu>
-    <nut-menu-item :menuList="menuList" title="最新商品"></nut-menu-item>
-    <nut-menu-item :menuList="menuList" :title="title" :autoClose="false"></nut-menu-item>
-    <nut-menu-item :menuList="menuList2" title="筛选" disabled ></nut-menu-item>
+    <nut-menu-item :menu-list="menuList" title="最新商品"></nut-menu-item>
+    <nut-menu-item :menu-list="menuList" title="title" :auto-close="false"></nut-menu-item>
+    <nut-menu-item :menu-list="menuList2" title="筛选" disabled ></nut-menu-item>
 </nut-menu>
 ```
 
@@ -73,9 +73,9 @@ app.use(Menu);
 
 ```html
 <nut-menu :hasMask="false">
-    <nut-menu-item :menuList="menuList" title="最新商品">
+    <nut-menu-item :menu-list="menuList" title="最新商品">
     </nut-menu-item>
-    <nut-menu-item :menuList="menuList" :title="title">
+    <nut-menu-item :menu-list="menuList" :title="title">
     </nut-menu-item>
 </nut-menu>
 ```
@@ -87,14 +87,14 @@ app.use(Menu);
 ```html
 <nut-menu>
     <nut-menu-item
-        :menuList="menuList2"
+        :menu-list="menuList2"
         title="选择菜单列表项"
-        multiStyle="2"
+        multi-style="2"
         @menu-click="alertText($event, 'title')"
         @on-change="getChecked"
     ></nut-menu-item>
     <nut-menu-item
-        :menuList="menuList2"
+        :menu-list="menuList2"
         title="选中标题触发"
         disabled
         @menu-click="alertText"
@@ -141,12 +141,12 @@ const alertText = (info, type) => {
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | title         | 菜单标题名称或可为菜单列表第一项，必填     | String | -                |
-| menuList        | 菜单列表数据，必填                     | Array | -                |
-| multiStyle        | 列表列数设置，默认1列，可选值 `1` `2` `3` | String, Number | 1                |
+| menu-list        | 菜单列表数据，必填                     | Array | -                |
+| multi-style        | 列表列数设置，默认1列，可选值 `1` `2` `3` | String, Number | 1                |
 | disabled | 是否开启禁用设置，默认不开启    | Boolean | false |
-| maxHeight | 菜单列表最大高度，单位px    | String, Number | - |
-| autoClose | 选择后下拉菜单列表是否自动收起，默认自动收起   | Boolean | true |
-|hasMask| 是否有蒙层 | Boolean | true|
+| max-height | 菜单列表最大高度，单位px    | String, Number | - |
+| auto-close | 选择后下拉菜单列表是否自动收起，默认自动收起   | Boolean | true |
+|has-mask| 是否有蒙层 | Boolean | true|
 
 ### Events
 
