@@ -36,6 +36,14 @@ setup() {
 // ...
 ```
 
+### 直接使用插槽
+
+``` html
+ <nut-cell title="我是标题" desc="描述文字">
+  <div>自定义内容</div>
+ </nut-cell>  
+```
+
 ### 链接
 
 ``` html

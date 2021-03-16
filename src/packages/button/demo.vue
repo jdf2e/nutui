@@ -28,7 +28,9 @@
       <nut-button type="info">圆形按钮</nut-button>
     </div>
     <h2>加载状态</h2>
-
+    <div class="demo-button-row2">
+      <nut-button loading></nut-button>
+    </div>
     <h2>图标按钮</h2>
     <div class="demo-button-row2">
       <nut-button

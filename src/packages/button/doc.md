@@ -57,6 +57,20 @@ app.use(Button);
 <nut-button type="info">圆形按钮</nut-button>
 ```
 
+### 加载状态
+
+```html
+<nut-button loading></nut-button>
+<nut-button loading>加载中</nut-button>
+```
+
+### 图标按钮
+
+```html
+  <nut-button shape="square" plain type="primary" icon="star-fill"></nut-button>
+  <nut-button shape="square" type="primary" icon="star">收藏</nut-button>
+```
+
 ### 按钮尺寸
 
 支持 `large`、`normal`、`small` 三种尺寸，默认为 `normal`。
