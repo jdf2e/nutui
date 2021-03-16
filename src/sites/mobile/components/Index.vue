@@ -3,7 +3,7 @@
     <div class="index-header">
       <img src="../../assets/images/logo-red.png" alt="" srcset="" />
       <div class="info">
-        <h1>Nut UI</h1>
+        <h1>NutUI</h1>
         <p>一套京东风格的轻量级移动端 Vue 组件库</p>
       </div>
     </div>

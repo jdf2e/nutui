@@ -40,7 +40,7 @@
             class="sub-link"
             target="_blank"
             href="https://github.com/jdf2e/nutui"
-            >Github</a
+            >GitHub</a
           ></div
         >
         <div class="doc-footer-item"
@@ -397,7 +397,7 @@ export default defineComponent({
   display: none;
   position: absolute;
   right: -144px;
-  top: -120px;
+  top: -160px;
   padding: 20px 30px;
   background: rgba(255, 255, 255, 1);
   border: 1px solid rgba(238, 238, 238, 1);
