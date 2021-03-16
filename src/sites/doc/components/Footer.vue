@@ -197,7 +197,6 @@ export default defineComponent({
       }
     }
     &-desc {
-      margin-top: 30px;
       font-size: 12px;
     }
     &-select-hd {
@@ -252,6 +251,7 @@ export default defineComponent({
 }
 // 颜色
 .doc-footer {
+  height: 240px;
   // 黑色
   &-black {
     background: $theme-black-footer-bg;
