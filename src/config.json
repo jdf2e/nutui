@@ -17,12 +17,12 @@
     {
       "name": "guide",
       "cName": "指南",
-      "path": "/"
+      "path": "/intro"
     },
     {
       "name": "intro",
       "cName": "组件",
-      "path": "/"
+      "path": "/intro"
     },
     {
       "name": "example",
