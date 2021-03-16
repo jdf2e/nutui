@@ -1,20 +1,12 @@
 <template>
-  <view
-    id="menuId"
-    class="nut-menu-item"
-    :class="[{ disabled: disabled }, { 'nut-menu-active': showPanel }]"
-  >
+  <view :class="classes">
     <nut-popup v-model:show="showMask"></nut-popup>
     <view class="nut-menu-title" @click="handleMenuPanel">
       <view class="title-name" v-html="menuTitle"></view>
-      <i class="icon"></i>
+      <nut-icon class-prefix="icon"></nut-icon>
     </view>
 
-    <view
-      class="nut-menu-panel"
-      ref="menuPanel"
-      :style="`max-height:${maxHeight}px`"
-    >
+    <view class="nut-menu-panel" :style="`max-height:${maxHeight}px`">
       <view
         v-if="menuList && menuList.length"
         class="menu-list"
@@ -25,18 +17,19 @@
       >
         <view
           class="menu-option"
-          :class="{ checked: currMenu == index }"
+          :class="{ checked: currMenu === index }"
           v-for="(item, index) in menuList"
           :key="index"
           @click="checkMenus(item, index)"
-          ><nut-icon
+        >
+          <nut-icon
             class="check-icon"
-            v-if="currMenu == index"
+            v-if="currMenu === index"
             name="Check"
             size="14px"
           ></nut-icon
-          >{{ item.value }}</view
-        >
+          >{{ item.value }}
+        </view>
       </view>
       <slot></slot>
     </view>
@@ -48,15 +41,13 @@ import {
   toRefs,
   onMounted,
   ref,
-  nextTick,
   computed,
   watch,
   onUnmounted,
-  provide,
   inject
 } from 'vue';
 import { createComponent } from '@/utils/create';
-const { create } = createComponent('menu-item');
+const { create, componentName } = createComponent('menu-item');
 export default create({
   props: {
     title: {
@@ -79,7 +70,7 @@ export default create({
     },
     multiStyle: {
       type: [String, Number],
-      default: 1 //可选值1、2、3
+      default: 1
     },
     maxHeight: {
       type: [String, Number],
@@ -88,7 +79,6 @@ export default create({
   },
   emits: ['on-change', 'menu-click'],
   setup(props, { emit }) {
-    const { menuList, multiStyle } = toRefs(props);
     const menuTitle = ref(props.title);
     const menu = inject('menuRelation');
     const parent: any = reactive(menu as any);
@@ -96,6 +86,15 @@ export default create({
       showPanel: false,
       currMenu: 0,
       showMask: false
+    });
+
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true,
+        disabled: props.disabled,
+        [`${prefixCls}-active`]: state.showPanel
+      };
     });
 
     const handleMenuPanel = () => {
@@ -111,7 +110,7 @@ export default create({
         parent.handleMaskShow(state.showPanel);
       }
     };
-    //menu列表浮层展示和隐藏
+
     const handleShowAndHide = (event: any) => {
       const menuBox = document.querySelectorAll('.nut-menu-active')[0];
       if (menuBox && state.showPanel) {
@@ -149,12 +148,11 @@ export default create({
         false;
     });
     return {
+      classes,
       ...toRefs(state),
-      ...toRefs(parent),
       handleMenuPanel,
       checkMenus,
-      menuTitle,
-      multiStyle
+      menuTitle
     };
   }
 });

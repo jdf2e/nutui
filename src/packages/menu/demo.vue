@@ -2,28 +2,28 @@
   <div class="demo full menu-demo">
     <h2>基础用法</h2>
     <nut-menu>
-      <nut-menu-item :menuList="menuList" title="最新商品"></nut-menu-item>
-      <nut-menu-item :menuList="menuList" :title="title"></nut-menu-item>
+      <nut-menu-item :menu-list="menuList" title="最新商品"></nut-menu-item>
+      <nut-menu-item :menu-list="menuList" :title="title"></nut-menu-item>
     </nut-menu>
 
     <h2>多列展示</h2>
     <nut-menu>
       <nut-menu-item
         class="base-style"
-        :menuList="menuList2"
+        :menu-list="menuList2"
         title="单列展示"
-        multiStyle="1"
-        maxHeight="200"
+        multi-style="1"
+        max-height="200"
       ></nut-menu-item>
       <nut-menu-item
-        :menuList="menuList2"
+        :menu-list="menuList2"
         title="双列展示"
-        multiStyle="2"
+        multi-style="2"
       ></nut-menu-item>
       <nut-menu-item
-        :menuList="menuList2"
+        :menu-list="menuList2"
         title="三列展示"
-        multiStyle="3"
+        multi-style="3"
       ></nut-menu-item>
     </nut-menu>
 
@@ -33,14 +33,14 @@
       属性控制下拉菜单列表是否选择后自动收起，默认自动收起。</p
     >
     <nut-menu>
-      <nut-menu-item :menuList="menuList" title="最新商品"></nut-menu-item>
+      <nut-menu-item :menu-list="menuList" title="最新商品"></nut-menu-item>
       <nut-menu-item
-        :menuList="menuList"
+        :menu-list="menuList"
         title="禁止自动收起"
-        :autoClose="false"
+        :auto-close="false"
       ></nut-menu-item>
       <nut-menu-item
-        :menuList="menuList2"
+        :menu-list="menuList2"
         title="筛选"
         disabled
       ></nut-menu-item>
@@ -48,9 +48,9 @@
 
     <h2>禁止蒙层展示</h2>
     <p class="tips">属性`hasMask`控制是否有蒙层，默认为 `true`展示蒙层 </p>
-    <nut-menu :hasMask="false">
-      <nut-menu-item :menuList="menuList" title="最新商品"></nut-menu-item>
-      <nut-menu-item :menuList="menuList" :title="title"></nut-menu-item>
+    <nut-menu :has-mask="false">
+      <nut-menu-item :menu-list="menuList" title="最新商品"></nut-menu-item>
+      <nut-menu-item :menu-list="menuList" :title="title"></nut-menu-item>
     </nut-menu>
 
     <h2>点击事件</h2>
@@ -59,14 +59,14 @@
     >
     <nut-menu>
       <nut-menu-item
-        :menuList="menuList"
+        :menu-list="menuList"
         title="选择菜单列表项"
-        multiStyle="2"
+        multi-style="2"
         @menu-click="alertText($event, 'title')"
         @on-change="getChecked"
       ></nut-menu-item>
       <nut-menu-item
-        :menuList="menuList2"
+        :menu-list="menuList2"
         title="选中标题触发"
         disabled
         @menu-click="alertText"
