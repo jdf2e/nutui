@@ -5,6 +5,7 @@ import path from 'path';
 const resolve = path.resolve;
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/nutui/3x/',
   server: {
     proxy: {
       '/devServer': {
