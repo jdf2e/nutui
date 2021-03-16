@@ -87,8 +87,8 @@ export default defineComponent({
       background: transparent;
     }
     > h2 {
-      height: 56px;
-      line-height: 56px;
+      margin-top: 30px;
+      margin-bottom: 10px;
       font-size: 14px;
       color: rgba(144, 156, 164, 1);
     }

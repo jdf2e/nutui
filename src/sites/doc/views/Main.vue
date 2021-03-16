@@ -91,7 +91,7 @@
           class="sub-more"
           href="https://jelly.jd.com/search/all?keyword=nutui"
           target="_blank"
-          >更多内容</a
+          >More</a
         >
       </div>
       <ul class="more-list">
@@ -181,18 +181,21 @@ export default defineComponent({
     line-height: 52px;
     margin-bottom: 50px;
     text-align: center;
+    position: relative;
     .sub-more {
-      float: right;
+      position: absolute;
+      right: 0;
+      font-size: 14px;
       color: $theme-red;
     }
   }
   &-title {
     display: inline-block;
-    font-size: 36px;
+    font-size: 26px;
     font-family: PingFangSC-Medium;
   }
   &-features {
-    width: 1230px;
+    width: 1200px;
     margin: 0 auto 90px;
     .features-list {
       display: flex;
@@ -203,20 +206,19 @@ export default defineComponent({
       width: 296px;
       text-align: center;
       img {
-        width: 160px;
-        height: 160px;
+        width: 100px;
+        height: 100px;
         margin-bottom: 20px;
       }
     }
     .features-title {
-      margin-bottom: 18px;
-      line-height: 50px;
+      margin-bottom: 20px;
       font-family: PingFangSC-Medium;
-      font-size: 36px;
+      font-size: 24px;
     }
     .features-desc {
-      font-size: 18px;
-      line-height: 24px;
+      font-size: 14px;
+      line-height: 18px;
     }
   }
   &-more {
@@ -238,13 +240,14 @@ export default defineComponent({
         height: 170px;
         margin-bottom: 20px;
         border-radius: 6px;
+        box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
       }
     }
     .more-title {
       width: 280px;
       height: 44px;
       line-height: 22px;
-      font-size: 16px;
+      font-size: 14px;
       text-overflow: -o-ellipsis-lastline;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -257,7 +260,7 @@ export default defineComponent({
 }
 .doc-content-index {
   display: flex;
-  flex: 1;
+  height: 926px;
   margin-bottom: 70px;
   background-color: #070505;
   .content-left {
