@@ -87,7 +87,10 @@
     <div class="doc-content-more" v-if="articleList.length > 0">
       <div class="doc-content-hd">
         <h4 class="doc-content-title">更多内容</h4>
-        <a class="sub-more" href="https://jelly.jd.com" target="_blank"
+        <a
+          class="sub-more"
+          href="https://jelly.jd.com/search/all?keyword=nutui"
+          target="_blank"
           >更多内容</a
         >
       </div>
@@ -129,10 +132,14 @@ export default defineComponent({
       // 文章列表接口
       const articleApiService = new ArticleApiService();
       articleApiService.getArticle().then(res => {
-        console.log('res', res);
         if (res?.state == 0) {
-          data.articleList = res.value.data.arrays as any[];
-          console.log('data.articleList', data.articleList);
+          data.articleList = (res.value.data.arrays as any[])
+            .map(item => {
+              if (item.type == 1) {
+                return item;
+              }
+            })
+            .filter(i => i);
         }
       });
     });
