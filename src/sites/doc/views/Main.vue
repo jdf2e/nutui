@@ -3,7 +3,7 @@
   <div class="doc-content" :class="themeName()">
     <div class="doc-content-index">
       <div class="content-left">
-        <div class="content-title"> Nut UI 3.0 </div>
+        <div class="content-title"> NutUI 3.0 </div>
         <div class="content-smile"> </div>
         <div class="content-subTitle">一款具有京东风格的VUE组件</div>
         <div class="content-button">
@@ -323,6 +323,7 @@ export default defineComponent({
       }
       .rightButton {
         display: flex;
+        position: relative;
         .rightButtonText {
           align-self: center;
           margin: auto;
@@ -346,7 +347,7 @@ export default defineComponent({
       .qrcodepart {
         display: none;
         position: absolute;
-        left: 0;
+        right: -10px;
         top: 50px;
         padding: 4px;
         width: 166px;
@@ -356,8 +357,7 @@ export default defineComponent({
         .qrcode-text {
           font-size: 14px;
           color: rgba(51, 51, 51, 1);
-          margin-top: 10px;
-          margin-left: 6px;
+          text-align: center;
         }
         .qrcode {
           width: 160px;

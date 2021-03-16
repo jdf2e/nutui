@@ -3,7 +3,7 @@
   <div class="resource-main">
     <div class="resource-main-content">
       <h3 class="sub-title">资源</h3>
-      <p class="sub-desc">这里汇总了Nut UI 相关的所有的资源</p>
+      <p class="sub-desc">这里汇总了NutUI 相关的所有的资源</p>
     </div>
   </div>
   <!-- 设计资源 -->
