@@ -2,11 +2,24 @@
   <div class="demo">
     <h2>基本用法</h2>
     <nut-cell title="我是标题" desc="描述文字"></nut-cell>
-    <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
+    <nut-cell
+      title="我是标题"
+      sub-title="副标题描述"
+      desc="描述文字"
+    ></nut-cell>
     <nut-cell title="点击测试" @click="testClick"></nut-cell>
+    <h2>直接使用插槽(slot)</h2>
+    <nut-cell title="我是标题" desc="描述文字">
+      <div>自定义内容</div>
+    </nut-cell>
     <h2>链接</h2>
     <nut-cell title="链接" is-link></nut-cell>
-    <nut-cell title="URL 跳转" desc="https://jd.com" is-link url="https://jd.com"></nut-cell>
+    <nut-cell
+      title="URL 跳转"
+      desc="https://jd.com"
+      is-link
+      url="https://jd.com"
+    ></nut-cell>
     <nut-cell title="路由跳转 ’/‘ " to="/"></nut-cell>
     <h2>展示图标</h2>
     <nut-cell title="姓名" icon="my" desc="张三"></nut-cell>
