@@ -58,9 +58,7 @@
             <p class="vx-desc">微信交流群</p>
             <p class="vx-desc">扫码添加好友</p>
             <img class="img-code" src="../../assets/images/vx-code.png" />
-            <p class="vx-desc"
-              >回复<span class="vx-red">NUT UI</span>即刻进群</p
-            >
+            <p class="vx-desc">回复<span class="vx-red">NutUI</span>即刻进群</p>
           </div>
         </div>
       </div>
@@ -105,7 +103,9 @@
         </div>
       </div>
     </div>
-    <p class="doc-footer-desc">2020 JDRD-FEB 前端开发部.All Rights Reserved.</p>
+    <p class="doc-footer-desc"
+      >2021 京东零售 - 基础业务体验部.All Rights Reserved.</p
+    >
   </div>
 </template>
 <script lang="ts">
