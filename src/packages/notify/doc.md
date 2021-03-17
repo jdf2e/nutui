@@ -83,12 +83,12 @@ export default {
 | duration   | 展示时长(ms)，值为 0 时，notify 不会消失 | String        | 空     |
 | color      | 字体颜色                                 | String        | 空     |
 | background | 背景颜色                                 | String        | 空     |
-| className  | 自定义类名                               | String/Number | 1      |
+| class-name  | 自定义类名                               | String/Number | 1      |
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| onClick  | 点击事件回调       | 无       |
-| onClose  | 关闭事件回调       | 无       |
+| on-click  | 点击事件回调       | 无       |
+| on-close  | 关闭事件回调       | 无       |
     
