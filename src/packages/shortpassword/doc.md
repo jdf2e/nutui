@@ -25,10 +25,10 @@ app.use(ShortPassword);
   :no-button="state.noButton"
   :length="state.length"
   :error-msg="state.errorMsg"
-  @on-change="methods.onChange"
-  @on-complete="methods.onComplete"
-  @on-ok="methods.onOk"
-  @on-tips="methods.onTips">
+  @change="methods.onChange"
+  @complete="methods.onComplete"
+  @ok="methods.onOk"
+  @tips="methods.onTips">
 </nut-shortpassword>
 ```
 
@@ -113,5 +113,5 @@ setup() {
 | 事件名称 | 说明 | 回调参数
 |----- | ----- | ----- 
 | change | 输入密码时触发事件 | --
-| on-ok | 点击确实时触发事件 | value
+| ok | 点击确实时触发事件 | value
 | complete | 输入完成的回调 | value

@@ -77,7 +77,7 @@ export default create({
       default: ''
     }
   },
-  emits: ['on-change', 'menu-click'],
+  emits: ['change', 'menu-click'],
   setup(props, { emit }) {
     const menuTitle = ref(props.title);
     const menu = inject('menuRelation');
@@ -129,7 +129,7 @@ export default create({
         state.showMask = false;
         parent.handleMaskShow(false);
       }
-      emit('on-change', item, menuTitle.value);
+      emit('change', item, menuTitle.value);
     };
     onMounted(() => {
       document.addEventListener(

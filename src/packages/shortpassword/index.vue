@@ -81,14 +81,7 @@ export default create({
       default: 6
     }
   },
-  emits: [
-    'update:value',
-    'update:visible',
-    'on-complete',
-    'on-change',
-    'on-ok',
-    'on-tips'
-  ],
+  emits: ['update:value', 'update:visible', 'complete', 'change', 'ok', 'tips'],
   setup(props, { emit }) {
     const realInput = ref(props.value);
     const realpwd = ref();
@@ -96,7 +89,7 @@ export default create({
 
     // 方法
     function sureClick() {
-      emit('on-ok', realInput.value);
+      emit('ok', realInput.value);
     }
     function focus() {
       realpwd.value.focus();
@@ -109,9 +102,9 @@ export default create({
         realInput.value = val;
       }
       if (realInput.value.length === comLen.value) {
-        emit('on-complete', val);
+        emit('complete', val);
       }
-      emit('on-change', val);
+      emit('change', val);
       emit('update:value', val);
     }
     function close() {
@@ -121,7 +114,7 @@ export default create({
       return Math.min(Math.max(4, val), 6);
     }
     function onTips() {
-      emit('on-tips');
+      emit('tips');
     }
     return {
       comLen,
