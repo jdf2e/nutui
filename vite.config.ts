@@ -34,6 +34,7 @@ export default defineConfig({
     Markdown()
   ],
   build: {
+    target: 'es2015',
     outDir: './dist/3x/',
     cssCodeSplit: false,
     rollupOptions: {
