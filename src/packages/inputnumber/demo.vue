@@ -38,12 +38,12 @@
         @blur="blur"
       />
     </nut-cell>
-    <h2>支持异步修改(点击+/-，手动改成了3)</h2>
+    <h2>支持异步修改</h2>
     <nut-cell>
       <nut-inputnumber
         :async="state.async"
-        @change="handleChangeAsync"
-        v-model:modelValue="state.val5"
+        v-model="state.val5"
+        :before-change="beforeChange"
       />
     </nut-cell>
   </div>
@@ -65,7 +65,8 @@ export default createDemo({
       step: 1.1,
       min: 3,
       max: 100,
-      async: true
+      async: true,
+      timer: undefined as undefined | number
     });
     onMounted(() => {
       state.max = 5;
@@ -85,9 +86,18 @@ export default createDemo({
     const reduceNoAllow = () => {
       alert('超出最小限制数');
     };
+    const beforeChange = () => {
+      // return true;
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(true);
+        }, 500);
+      });
+    };
     const handleChangeAsync = (num: number) => {
-      setTimeout(() => {
-        state.val5 = 3;
+      clearTimeout(state.timer);
+      state.timer = setTimeout(() => {
+        state.val5 = state.val5 + 1;
       }, 1000);
     };
     return {
@@ -97,7 +107,8 @@ export default createDemo({
       focus,
       reduceNoAllow,
       addNoAllow,
-      handleChangeAsync
+      handleChangeAsync,
+      beforeChange
     };
   }
 });

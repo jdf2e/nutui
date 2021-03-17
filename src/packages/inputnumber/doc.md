@@ -2,7 +2,7 @@
 
 ### 介绍
 
-基于
+由加、减按钮以及输入框组成，用于输入一定范围的数字。
 
 ### 安装
 
@@ -59,10 +59,21 @@ app.use(inputnumber);
 
 ### 高级用法
 
-`async`支持异步修改数量，设置了此属性为true，必须同时在`change`事件中手动设置input值才能生效
+`before-change`支持异步修改数量
 
 ```html
-<nut-inputnumber v-model:modelValue="1" :async="true" @change="change"/>
+<nut-inputnumber v-model:modelValue="1" :before-change="true"/>
+```
+
+```js
+  const beforeChange = () => {
+    // return true;
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(true);
+      }, 500);
+    });
+  };
 ```
 
 
@@ -72,16 +83,16 @@ app.use(inputnumber);
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| size         | 操作符+、-尺寸               | String          | 20px                |
-| color        | 操作符+、-颜色               | String          | #1a1a1a             |
-| dis-color     | 操作符+、-禁用时颜色          | String          | #ccc                |
-| min          | 最小值                      | String、Number | 1                   |
-| max          | 最大值                      | String、Number | Infinity             |
-| step         | 步长                        | String、Number |     1                |
+| size         | 操作符+、-尺寸               | String          | `20px`                |
+| color        | 操作符+、-颜色               | String          | `#1a1a1a `            |
+| dis-color     | 操作符+、-禁用时颜色          | String          | `#ccc`                |
+| min          | 最小值                      | String、Number | `1`                   |
+| max          | 最大值                      | String、Number | `Infinity`             |
+| step         | 步长                        | String、Number |     `1`                |
 | readonly     | 只读                   | Boolean | false              |
-| modelValue   | 初始值                   | String、Number | ''              |
-| decimal-places| 设置保留的小数位                   | String、Number | 1              |
-| async        | 支持异步                   | Boolean | false              |
+| modelValue   | 初始值                   | String、Number | `''`              |
+| decimal-places| 设置保留的小数位                   | String、Number | `1`              |
+| before-change        | 支持异步                   | Function | -              |
 
 ### Events
 
