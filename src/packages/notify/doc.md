@@ -1,4 +1,4 @@
-#  notify组件
+#  Notify组件
 
 ### 介绍
     

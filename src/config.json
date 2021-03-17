@@ -132,10 +132,10 @@
         {
           "name": "BackTop",
           "sort": "1",
-          "cName": "回到顶部",
+          "cName": "返回顶部",
           "type": "component",
           "show": true,
-          "desc": "较长页面快捷回到顶部",
+          "desc": "较长页面快捷返回顶部",
           "author": "liqiong43"
         },
         {
