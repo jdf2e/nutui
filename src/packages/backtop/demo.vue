@@ -42,7 +42,7 @@ const { createDemo } = createComponent('backtop');
 export default createDemo({
   setup(props, { emit }) {
     const handleClick = () => {
-      console.log('触发回到顶部');
+      console.log('触发返回顶部');
     };
 
     return {

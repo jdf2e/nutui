@@ -1,8 +1,8 @@
-# BackTop 回到顶部
+# BackTop 返回顶部
 
 ### 介绍
 
-提供较长的页面快捷回到顶部功能。
+提供较长的页面快捷返回顶部功能。
 
 ### 安装
 
@@ -47,7 +47,7 @@ app.use(BackTop);
 export default createDemo({
   setup(props, { emit }) {
     const handleClick = () => {
-      console.log('触发回到顶部');
+      console.log('触发返回顶部');
     };
 
     return {
