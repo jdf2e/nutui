@@ -2,13 +2,17 @@
   font-size: $font-size-3;
   display: inline;
   color: $primary-color;
-  .price-symbol {
-    font-size: $font-size-4;
+  &--symbol {
+    font-size: $font-size-3;
+    margin-right: 4px;
   }
-  .price-big {
+  &--big {
     font-size: $price-big-size;
   }
-  .price-small {
+  &--point {
+    font-size: $price-big-size;
+  }
+  &--small {
     font-size: $font-size-4;
   }
 }

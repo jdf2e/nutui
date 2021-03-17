@@ -17,14 +17,32 @@
         :thousands="true"
       />
     </nut-cell>
+    <h2>异步随机变更</h2>
+    <nut-cell>
+      <nut-price
+        :price="price"
+        :decimal-digits="3"
+        :need-symbol="true"
+        :thousands="true"
+      />
+    </nut-cell>
   </div>
 </template>
 
 <script lang="ts">
 import { createComponent } from '@/utils/create';
+import { ref } from 'vue';
 const { createDemo } = createComponent('price');
 export default createDemo({
-  props: {}
+  setup() {
+    const price = ref(0);
+    setInterval(() => {
+      price.value = Math.random() * 10000000;
+    }, 1000);
+    return {
+      price
+    };
+  }
 });
 </script>
 
