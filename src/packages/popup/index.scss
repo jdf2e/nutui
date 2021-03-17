@@ -75,7 +75,7 @@
   position: fixed;
   max-height: 100%;
   overflow-y: auto;
-  background-color: #fff;
+  background-color: $white;
   transition: transform 0.3s;
   -webkit-overflow-scrolling: touch;
 }

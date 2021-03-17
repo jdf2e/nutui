@@ -1,6 +1,6 @@
 <template>
   <view>
-    <label :class="['nut-checkbox', 'nut-checkbox-size-' + currentSize]">
+    <view :class="['nut-checkbox', 'nut-checkbox-size-' + currentSize]">
       <input
         type="checkbox"
         :name="name"
@@ -10,13 +10,13 @@
         :value="submittedValue"
         @change="changeEvt"
       />
-      <span class="nut-checkbox-label" v-if="label">
+      <view class="nut-checkbox-label" v-if="label">
         {{ label }}
-      </span>
-      <span class="nut-checkbox-label" v-else>
+      </view>
+      <view class="nut-checkbox-label" v-else>
         <slot></slot>
-      </span>
-    </label>
+      </view>
+    </view>
   </view>
 </template>
 <script lang="ts">
@@ -57,7 +57,7 @@ export default create({
     },
     submittedValue: {
       type: String,
-      default: 'on' // HTML default
+      default: 'on'
     },
     checked: {
       type: Boolean,
@@ -75,8 +75,8 @@ export default create({
   setup(props, { emit }) {
     const parentGroup = inject('checkboxgroup', {
       parentNode: false,
-      changeVal: val => {
-        console.log();
+      changeVal: (val: number) => {
+        console.log(1);
       }
     });
     const parentProps = getCurrentInstance()?.parent?.props;
@@ -93,20 +93,9 @@ export default create({
         return isCheckedVal;
       }
     });
-    // const isCheckedVal = props.modelValue == props.trueValue || props.checked;
-    // const isChecked = ref(isCheckedVal);
     const isObject = obj => {
       return obj !== null && typeof obj === 'object';
     };
-
-    // const looseEqual = (a, b) => {
-    //   return (
-    //     a == b ||
-    //     (isObject(a) && isObject(b)
-    //       ? JSON.stringify(a) === JSON.stringify(b)
-    //       : false)
-    //   );
-    // };
 
     const isDisabled = computed(() => {
       if (parentGroup && parentGroup.parentNode) {
