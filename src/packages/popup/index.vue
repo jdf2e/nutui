@@ -43,6 +43,7 @@ import {
 } from 'vue';
 import { useLockScroll } from './use-lock-scroll';
 import { overlayProps } from './../overlay/index.vue';
+import overlay from '@/packages/overlay/index.vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('popup');
 
@@ -104,6 +105,7 @@ const popupProps = {
   }
 };
 export default create({
+  children: [overlay],
   props: {
     ...overlayProps,
     ...popupProps

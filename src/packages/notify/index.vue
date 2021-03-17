@@ -12,7 +12,12 @@
       <template v-else>{{ msg }}</template>
     </view>
   </Transition>
-  <!-- </view> -->
+  <!-- <nut-popup v-model:show="state.mounted" position="top" :style="{ color: color, background: background }" :class="['popup-top', 'nut-notify', `nut-notify--${type}`, { className }]" overlay="false">
+    <template v-if="$slots.default">
+      <slot></slot>
+    </template>
+    <template v-else>{{ msg }}</template>
+  </nut-popup> -->
 </template>
 <script lang="ts">
 import { toRefs, reactive, onMounted, watch } from 'vue';
@@ -21,6 +26,9 @@ import Popup from '@/packages/popup/index.vue';
 const { componentName, create } = createComponent('notify');
 
 export default create({
+  components: {
+    [Popup.name]: Popup
+  },
   props: {
     id: String,
     color: { type: String, default: '' },
@@ -45,7 +53,7 @@ export default create({
   },
 
   setup(props, { slots }) {
-    let timer;
+    let timer: null | number = null;
     const state = reactive({
       mounted: false
     });
