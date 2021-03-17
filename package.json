@@ -39,6 +39,7 @@
     "checked": "npm run generate:file && rm -rf dist/ && tsc",
     "dev": "npm run checked && vite --open",
     "build:site": "npm run checked && vite build",
+    "build:gh-pages": "npm run checked && vite build --base=/nutui/",
     "build:site:oss": "npm run checked && vite build --base=/nutui/3x/",
     "build": "npm run checked && vite build --config vite.config.build.ts && npm run generate:types",
     "build:disperse": "vite build --config vite.config.build.disperse.ts",
