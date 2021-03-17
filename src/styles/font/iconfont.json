@@ -6,6 +6,48 @@
   "description": "nutui 3.0字体管理",
   "glyphs": [
     {
+      "icon_id": "20414471",
+      "name": "check-disabled",
+      "font_class": "wanshangshide1",
+      "unicode": "e6c9",
+      "unicode_decimal": 59081
+    },
+    {
+      "icon_id": "20414429",
+      "name": "checklist",
+      "font_class": "wanshangshide",
+      "unicode": "e6c8",
+      "unicode_decimal": 59080
+    },
+    {
+      "icon_id": "20408820",
+      "name": "check-disabled",
+      "font_class": "check-disabled",
+      "unicode": "e6c7",
+      "unicode_decimal": 59079
+    },
+    {
+      "icon_id": "20407929",
+      "name": "check-normal",
+      "font_class": "check-normal",
+      "unicode": "e6c5",
+      "unicode_decimal": 59077
+    },
+    {
+      "icon_id": "20407571",
+      "name": "check-checked",
+      "font_class": "xuanzhong-1",
+      "unicode": "e6c6",
+      "unicode_decimal": 59078
+    },
+    {
+      "icon_id": "20406299",
+      "name": "loading",
+      "font_class": "loading",
+      "unicode": "e6c4",
+      "unicode_decimal": 59076
+    },
+    {
       "icon_id": "19795783",
       "name": "heart-n",
       "font_class": "heart-n",
