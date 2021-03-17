@@ -4,10 +4,10 @@
     <nut-cell>
       <ul class="infiniteUl" id="scroll">
         <nut-infiniteloading
-          containerId="scroll"
-          :useWindow="false"
-          :hasMore="hasMore"
-          @loadMore="loadMore"
+          container-id="scroll"
+          :use-window="false"
+          :has-more="hasMore"
+          @load-more="loadMore"
         >
           <li
             class="infiniteLi"
@@ -23,11 +23,12 @@
     <nut-cell>
       <ul class="infiniteUl" id="refreshScroll">
         <nut-infiniteloading
-          containerId="refreshScroll"
-          :useWindow="false"
-          :isOpenRefresh="true"
-          :hasMore="refreshHasMore"
-          @loadMore="refreshLoadMore"
+          pull-icon="JD"
+          container-id="refreshScroll"
+          :use-window="false"
+          :is-open-refresh="true"
+          :has-more="refreshHasMore"
+          @load-more="refreshLoadMore"
           @refresh="refresh"
         >
           <li
@@ -44,10 +45,12 @@
     <nut-cell>
       <ul class="infiniteUl" id="customScroll">
         <nut-infiniteloading
-          containerId="customScroll"
-          :useWindow="false"
-          :hasMore="customHasMore"
-          @loadMore="customLoadMore"
+          load-txt="loading"
+          load-more-txt="没有啦～"
+          container-id="customScroll"
+          :use-window="false"
+          :has-more="customHasMore"
+          @load-more="customLoadMore"
         >
           <li
             class="infiniteLi"
@@ -55,15 +58,6 @@
             :key="index"
             >{{ item }}</li
           >
-
-          <template v-slot:loading>
-            <div class="loading">
-              <span>加载中...</span>
-            </div>
-          </template>
-          <template v-slot:unloadMore>
-            <div class="unload-more">没有数据啦 ~~</div>
-          </template>
         </nut-infiniteloading>
       </ul>
     </nut-cell>

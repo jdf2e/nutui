@@ -20,7 +20,7 @@
       }
       .top-text {
         font-size: 10px;
-        color: rgba(128, 128, 128, 1);
+        color: $text-color;
       }
     }
   }
@@ -28,8 +28,8 @@
     display: block;
     width: 100%;
     padding-top: 16px;
-    font-size: 12px;
-    color: rgba(200, 200, 200, 1);
+    font-size: $font-size-small;
+    color: $infinite-bottom-color;
     text-align: center;
 
     .bottom-box {
@@ -40,7 +40,7 @@
       }
       .bottom-text {
         font-size: 10px;
-        color: rgba(128, 128, 128, 1);
+        color: $text-color;
       }
     }
   }
