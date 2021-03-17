@@ -57,7 +57,7 @@
     </div>
     <h2>Flex布局</h2>
     <div class="box-item">
-      <nut-row type="flex" flexWrap="nowrap">
+      <nut-row type="flex" wrap="nowrap">
         <nut-col :span="6">
           <div class="flex-content">span:6</div>
         </nut-col>
