@@ -82,7 +82,7 @@ app.use(Menu);
 
 ### 点击事件
 
-`Menu` 的 `@menu-click` 事件返回点击的菜单标题，`@on-change`事件返回菜单列表选中的数据。
+`Menu` 的 `@menu-click` 事件返回点击的菜单标题，`@change`事件返回菜单列表选中的数据。
 
 ```html
 <nut-menu>
@@ -91,7 +91,7 @@ app.use(Menu);
         title="选择菜单列表项"
         multi-style="2"
         @menu-click="alertText($event, 'title')"
-        @on-change="getChecked"
+        @change="getChecked"
     ></nut-menu-item>
     <nut-menu-item
         :menu-list="menuList2"
@@ -153,4 +153,4 @@ const alertText = (info, type) => {
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
 | menu-click  | 点击菜单标题触发，返回菜单标题名称 | event: Event |
-| on-change  | 点击菜单列表选项触发，返回选中菜单项数据、名称 | event: Event |
+| change  | 点击菜单列表选项触发，返回选中菜单项数据、名称 | event: Event |

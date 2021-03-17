@@ -6,10 +6,10 @@
       :no-button="state.noButton"
       :length="state.length"
       :error-msg="state.errorMsg"
-      @on-change="methods.onChange"
-      @on-complete="methods.onComplete"
-      @on-ok="methods.onOk"
-      @on-tips="methods.onTips"
+      @change="methods.onChange"
+      @complete="methods.onComplete"
+      @ok="methods.onOk"
+      @tips="methods.onTips"
     >
     </nut-shortpassword>
     <nut-cell title="基础用法" is-link @click="state.visible = true"></nut-cell>

@@ -105,7 +105,7 @@ setup() {
 | disabled          | 是否禁用文件上传                                                                                                                                                                       | Boolean                           | fasle       |
 | before-upload     | 上传前的函数需要返回一个对象                                                                                                                                                           | Function                          | input files |
 | before-delete     | 除文件时的回调，返回值为 false 时不移除。支持返回一个 Promise 对象，Promise 对象 resolve(false) 或 reject 时不移除                                                                     | Function(file): boolean 丨Promise | -           |
-| on-change         | 上传文件改变时的状态，详见                                                                                                                                                             | Function(fileList) 丨 Promise     | -           |
+| change         | 上传文件改变时的状态，详见                                                                                                                                                             | Function(fileList) 丨 Promise     | -           |
 | custom-request    | 通过覆盖默认的上传行为，可以自定义自己的上传实现                                                                                                                                       | Function                          | -           |
 
 ### Event

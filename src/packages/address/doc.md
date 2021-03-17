@@ -29,7 +29,7 @@ app.use(Popup);
     :city="city"
     :country="country"
     :town="town"
-    @on-change="onChange"
+    @change="onChange"
     @close="close"
     customAddressTitle="请选择所在地区"
 ></nut-address>
