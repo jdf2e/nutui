@@ -76,9 +76,8 @@ export default create({
       type: [String, Number],
       default: 0
     },
-    async: {
-      type: Boolean,
-      default: false
+    beforeChange: {
+      type: Function
     }
   },
   emits: [
@@ -100,6 +99,47 @@ export default create({
       tempVal: '',
       focusing: false
     });
+
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true
+      };
+    });
+
+    const isPromise = (obj: any) => {
+      return (
+        !!obj &&
+        (typeof obj === 'object' || typeof obj === 'function') &&
+        typeof obj.then === 'function'
+      );
+    };
+
+    const callInterceptor = (
+      interceptor: Function,
+      done: Function,
+      fail?: Function
+    ) => {
+      const res = interceptor.apply(null, arguments || []);
+      if (interceptor) {
+        if (isPromise(res)) {
+          res.then((value: boolean) => {
+            if (value) {
+              done();
+            } else {
+              fail && fail();
+            }
+          });
+        } else if (res) {
+          done();
+        } else if (fail) {
+          fail();
+        }
+      } else {
+        done();
+      }
+    };
+
     const format = (v: string | number): string | number => {
       if (v > max.value) {
         v = max.value;
@@ -137,19 +177,19 @@ export default create({
       });
     };
 
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
     const numChange = (e: Event) => {
       const input = e.target as HTMLInputElement;
       let val = input.value;
       val = String(format(val));
       input.value = val;
-      state.num = val;
+      if (props.beforeChange) {
+        callInterceptor(props.beforeChange, () => {
+          state.num = val;
+        });
+      } else {
+        state.num = val;
+      }
+
       emitChange([
         {
           eventName: 'update:modelValue',
@@ -177,18 +217,15 @@ export default create({
     };
 
     const blur = (e: Event) => {
-      if (props.async) {
-        emitChange([
-          {
-            eventName: 'change',
-            params: ['']
-          }
-        ]);
-        return;
-      }
       const val = (e.target as HTMLInputElement).value;
       state.minVal = String(min.value);
-      state.num = val ? format(val) : state.tempVal;
+      if (props.beforeChange) {
+        callInterceptor(props.beforeChange, () => {
+          state.num = val ? format(val) : state.tempVal;
+        });
+      } else {
+        state.num = val ? format(val) : state.tempVal;
+      }
       state.focusing = false;
       emitChange([
         {
@@ -203,21 +240,19 @@ export default create({
     };
 
     const reduce = () => {
-      if (props.async) {
-        emitChange([
-          {
-            eventName: 'change',
-            params: [state.num]
-          }
-        ]);
-        return;
-      }
       if (getIconColor('minus') === props.color) {
         const [n1, n2] = fixedDecimalPlaces(
           Number(state.num) - Number(props.step)
         ).split('.');
         const fixedLen = n2 ? n2.length : 0;
-        state.num = parseFloat(n1 + (n2 ? `.${n2}` : '')).toFixed(fixedLen);
+        if (props.beforeChange) {
+          callInterceptor(props.beforeChange, () => {
+            state.num = parseFloat(n1 + (n2 ? `.${n2}` : '')).toFixed(fixedLen);
+          });
+        } else {
+          state.num = parseFloat(n1 + (n2 ? `.${n2}` : '')).toFixed(fixedLen);
+        }
+
         emitChange([
           {
             eventName: 'update:modelValue',
@@ -239,21 +274,18 @@ export default create({
     };
 
     const add = () => {
-      if (props.async) {
-        emitChange([
-          {
-            eventName: 'change',
-            params: [state.num]
-          }
-        ]);
-        return;
-      }
       if (getIconColor('plus') === props.color) {
         const [n1, n2] = fixedDecimalPlaces(
           Number(state.num) + Number(props.step)
         ).split('.');
         const fixedLen = n2 ? n2.length : 0;
-        state.num = parseFloat(n1 + (n2 ? '.' + n2 : '')).toFixed(fixedLen);
+        if (props.beforeChange) {
+          callInterceptor(props.beforeChange, () => {
+            state.num = parseFloat(n1 + (n2 ? '.' + n2 : '')).toFixed(fixedLen);
+          });
+        } else {
+          state.num = parseFloat(n1 + (n2 ? '.' + n2 : '')).toFixed(fixedLen);
+        }
         emitChange([
           {
             eventName: 'update:modelValue',
@@ -302,10 +334,7 @@ export default create({
     return {
       state,
       classes,
-      format,
       getIconColor,
-      fixedDecimalPlaces,
-      emitChange,
       numChange,
       blur,
       focus,
