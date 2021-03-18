@@ -173,4 +173,5 @@ export default createDemo({
 |--------|----------------|--------------|
 | close  | 关闭弹窗时触发  | event: Event |
 | confirm  | 点击确认时候触发  | event: Event |
+| change  | 改变时触发  | val |
     
