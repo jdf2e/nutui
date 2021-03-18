@@ -15,8 +15,8 @@
           ></div
         >
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://taro-ui.jd.com"
-            >Taro UI</a
+          ><a class="sub-link" target="_blank" href="https://taro.jd.com"
+            >Taro</a
           ></div
         >
         <div class="doc-footer-item"
@@ -48,7 +48,7 @@
             class="sub-link"
             target="_blank"
             href="https://www.zhihu.com/column/c_1263837684834889728"
-            >NUT UI 知乎专栏</a
+            >NutUI 知乎专栏</a
           ></div
         >
         <div class="doc-footer-item vx-item">
@@ -65,12 +65,7 @@
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">关于我们</h4>
         <div class="doc-footer-item"
-          ><a
-            class="sub-link"
-            target="_blank"
-            href="https://nutui.jd.com/#/joinus"
-            >加入我们</a
-          ></div
+          ><a class="sub-link" target="_blank" href="#/joinus">加入我们</a></div
         >
         <div class="doc-footer-item"
           ><a class="sub-link" target="_blank" href="http://fe.jd.com"

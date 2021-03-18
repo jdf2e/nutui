@@ -5,7 +5,9 @@
       <div class="content-left">
         <div class="content-title"> NutUI 3.0 </div>
         <div class="content-smile"> </div>
-        <div class="content-subTitle">一款具有京东风格的VUE组件</div>
+        <div class="content-subTitle"
+          >一套京东风格的轻量级移动端 Vue 组件库</div
+        >
         <div class="content-button">
           <div class="leftButton" @click="toIntro">
             <div class="leftButtonText">开始使用</div>
@@ -28,28 +30,6 @@
             title="GitHub"
           ></iframe>
         </div>
-        <!-- <div style="display: flex; align-items: center">
-          <a href="#" class="leftButton">开始使用</a>
-          <a href="javascript:;" class="rightButton ">
-            扫码体验
-            <a>
-              <span>请使用手机扫码体验</span>
-              <img
-                src="https://img12.360buyimg.com/imagetools/jfs/t1/124892/31/7144/6065/5f0d9fe4Ef020d678/cae78d015aa5897c.png"
-                alt
-              />
-            </a>
-          </a>
-          <iframe
-            style="margin-left: 20px"
-            src="https://ghbtns.com/github-btn.html?user=jdf2e&repo=nutui&type=star&count=true&size=large"
-            frameborder="0"
-            scrolling="0"
-            width="170"
-            height="30"
-            title="GitHub"
-          ></iframe>
-        </div> -->
       </div>
       <div class="content-right">
         <div class="content-img"> </div>
@@ -63,19 +43,20 @@
         <li class="features-item">
           <img src="../../assets/images/img-home-features1.png" />
           <p class="features-title">京东风格</p>
-          <p class="features-desc">遵循京东App9.0设计规范</p>
+          <p class="features-desc">遵循京东 App 9.0 设计规范</p>
         </li>
         <li class="features-item">
           <img src="../../assets/images/img-home-features2.png" />
           <p class="features-title">组件丰富</p>
           <p class="features-desc a-l"
-            >提供70+组件，丰富的demo快速体验交互细节，覆盖各类场景满足各种功能的需求</p
+            >提供 70+ 组件，丰富的 demo
+            快速体验交互细节，覆盖各类场景满足各种功能的需求</p
           >
         </li>
         <li class="features-item">
           <img src="../../assets/images/img-home-features3.png" />
           <p class="features-title">前沿技术</p>
-          <p class="features-desc">Vue3.X vite2.X typescript</p>
+          <p class="features-desc">vue3 vite2.x typescript</p>
         </li>
         <li class="features-item">
           <img src="../../assets/images/img-home-features4.png" />
@@ -164,7 +145,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @keyframes fadeInLeft {
   from {
     opacity: 0;
