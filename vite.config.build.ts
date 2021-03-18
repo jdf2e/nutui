@@ -24,7 +24,6 @@ export default defineConfig({
   },
   plugins: [vue()],
   build: {
-    target: 'esnext',
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
       external: ['vue'],
