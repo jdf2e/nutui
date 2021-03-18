@@ -10,13 +10,11 @@
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">相关资源</h4>
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://ling.jd.com/jdw"
-            >羚珑-中后台智能构建平台</a
-          ></div
-        >
-        <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://taro.jd.com"
-            >Taro</a
+          ><a
+            class="sub-link"
+            target="_blank"
+            href="hhttps://cn.vuejs.org/index.html"
+            >Vue</a
           ></div
         >
         <div class="doc-footer-item"
@@ -25,11 +23,13 @@
           ></div
         >
         <div class="doc-footer-item"
-          ><a
-            class="sub-link"
-            target="_blank"
-            href="hhttps://cn.vuejs.org/index.html"
-            >Vue</a
+          ><a class="sub-link" target="_blank" href="https://taro.jd.com"
+            >Taro</a
+          ></div
+        >
+        <div class="doc-footer-item"
+          ><a class="sub-link" target="_blank" href="https://ling.jd.com/jdw"
+            >羚珑</a
           ></div
         >
       </div>
@@ -51,6 +51,7 @@
             >NutUI 知乎专栏</a
           ></div
         >
+
         <div class="doc-footer-item vx-item">
           微信
           <i class="icon-vx"></i>
@@ -65,16 +66,22 @@
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">关于我们</h4>
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="#/joinus">加入我们</a></div
+          ><a class="sub-link" href="#/joinus">加入我们</a></div
         >
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="http://fe.jd.com"
-            >京东零售前端</a
+          ><a class="sub-link" href="mailto:nutui@jd.com">联系我们</a></div
+        >
+        <div class="doc-footer-item"
+          ><a
+            class="sub-link"
+            target="_blank"
+            href="https://github.com/jdf2e/nutui/issues"
+            >意见反馈</a
           ></div
         >
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="nutui@jd.com"
-            >联系我们</a
+          ><a class="sub-link" target="_blank" href="http://fe.jd.com"
+            >京东前端</a
           ></div
         >
       </div>

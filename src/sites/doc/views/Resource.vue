@@ -3,7 +3,7 @@
   <div class="resource-main">
     <div class="resource-main-content">
       <h3 class="sub-title">资源</h3>
-      <p class="sub-desc">这里汇总了NutUI 相关的所有的资源</p>
+      <p class="sub-desc">这里汇总了 NutUI 相关的所有的资源</p>
     </div>
   </div>
   <!-- 设计资源 -->
@@ -11,7 +11,7 @@
     <div class="resource-block" v-if="articleList.length === 0">
       <h4 class="sub-title">设计资源</h4>
       <p class="sub-desc"
-        >这里提供 NUT UI
+        >这里提供 NUTUI
         相关设计资源和设计工具的下载，更多设计资源正在整理和完善中。你可以在这个<span
           class="sub-red"
           >地址</span
@@ -25,9 +25,10 @@
     <div class="resource-block" v-else>
       <h4 class="sub-title">设计资源</h4>
       <p class="sub-desc"
-        >想要了解 Nut Ui 设计体系背后的故事？如何才能更好的应用 Ant
-        Design？你可以查阅下述我们为你精挑细选的文章。也欢迎关注Nut Ui
-        官方专栏，这里常有关于Nut Ui 设计体系下相关话题内容的最新分享和讨论.</p
+        >想要了解 NutUI
+        设计体系背后的故事？如何才能更好的应用？你可以查阅下述我们为你精挑细选的文章。也欢迎关注
+        NutUI 官方专栏，这里常有关于 NutUI
+        设计体系下相关话题内容的最新分享和讨论。</p
       >
       <div class="tab-box">
         <div class="tab-hd">
@@ -71,20 +72,16 @@
     <!-- 社区文章 -->
     <div class="resource-block">
       <h4 class="sub-title">社区文章</h4>
-      <p class="sub-desc"
-        >想要了解 Nut Ui 设计体系背后的故事？如何才能更好的应用 Nut
-        Ui？你可以查阅下述我们为你精挑细选的文章。也欢迎关注Nut Ui
-        官方专栏，这里常有关于Nut Ui 设计体系下相关话题内容的最新分享和讨论.</p
-      >
+      <p class="sub-desc"></p>
       <ul class="article-box">
-        <li class="article-item">
-          <a class="article-link">
-            NutUI - 由京东出品，适合快速开发商城类h5、小程序的移动端 UI 组件库
-          </a>
-        </li>
-        <li class="article-item">
-          <a class="article-link">
-            NutUI - 由京东出品，适合快速开发商城类h5、小程序的移动端 UI 组件库
+        <li
+          class="article-item"
+          v-for="item in communityArticleList"
+          :key="item.id"
+          @click="toLink(item.id)"
+        >
+          <a class="article-link" :href="item.link">
+            {{ item.title }} - {{ item.user_name }}
           </a>
         </li>
       </ul>
@@ -111,8 +108,10 @@ export default defineComponent({
   },
   setup() {
     const articleList: any[] = [];
+    const communityArticleList: any[] = [];
     const data = reactive({
       articleList,
+      communityArticleList,
       tabData: [
         {
           title: '全部文章'
@@ -138,7 +137,13 @@ export default defineComponent({
       const articleApiService = new ArticleApiService();
       articleApiService.getArticle().then(res => {
         if (res?.state == 0) {
-          data.articleList = res.value.data.arrays as any[];
+          (res.value.data.arrays as any[]).forEach(element => {
+            if (element.type == 1) {
+              data.articleList.push(element);
+            } else {
+              data.communityArticleList.push(element);
+            }
+          });
         }
       });
     });

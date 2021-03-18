@@ -144,7 +144,6 @@ export default defineComponent({
   }
 });
 </script>
-
 <style lang="scss">
 @keyframes fadeInLeft {
   from {
@@ -156,6 +155,32 @@ export default defineComponent({
     transform: translate3d(0, 0, 0);
   }
 }
+.doc-content-index {
+  .content-left {
+    .content-title {
+      animation: fadeInLeft 1s both;
+    }
+    .content-smile {
+      animation: fadeInLeft 1s both 0.5s;
+    }
+    .content-subTitle {
+      animation: fadeInLeft 1s both 0.5s;
+    }
+    .content-button {
+      iframe {
+        animation: fadeInLeft 1s both 1.2s;
+      }
+      .leftButton {
+        animation: fadeInLeft 1s both 1.2s;
+      }
+      .rightButton {
+        animation: fadeInLeft 1s both 1.2s;
+      }
+    }
+  }
+}
+</style>
+<style lang="scss" scoped>
 .doc-content {
   &-hd {
     height: 52px;
@@ -229,10 +254,8 @@ export default defineComponent({
       height: 44px;
       line-height: 22px;
       font-size: 14px;
-      text-overflow: -o-ellipsis-lastline;
       overflow: hidden;
       text-overflow: ellipsis;
-      display: -webkit-box;
       -webkit-line-clamp: 2;
       line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -254,7 +277,6 @@ export default defineComponent({
       font-family: PingFangSC-Medium;
       font-size: 42px;
       color: rgba(255, 255, 255, 1);
-      animation: fadeInLeft 1s both;
     }
     .content-smile {
       margin-top: 10px;
@@ -263,14 +285,12 @@ export default defineComponent({
       background: url(https://storage.360buyimg.com/imgtools/09516173b9-9b32b9d0-3864-11eb-9a56-0104487ad2b0.png)
         no-repeat;
       background-size: cover;
-      animation: fadeInLeft 1s both 0.5s;
     }
     .content-subTitle {
       margin-top: 12px;
       font-family: PingFangSC-Regular;
       font-size: 20px;
       color: rgba(255, 255, 255, 1);
-      animation: fadeInLeft 1s both 0.5s;
     }
     .content-button {
       position: relative;
@@ -278,7 +298,6 @@ export default defineComponent({
       margin-top: 40px;
       iframe {
         align-self: center;
-        animation: fadeInLeft 1s both 1.2s;
       }
       .leftButton {
         display: flex;
@@ -291,7 +310,6 @@ export default defineComponent({
         font-family: PingFangSC-Regular;
         width: 150px;
         height: 40px;
-        animation: fadeInLeft 1s both 1.2s;
         background: linear-gradient(
           135deg,
           rgba(250, 25, 44, 1) 0%,
@@ -318,7 +336,6 @@ export default defineComponent({
         border-radius: 29px;
         background-color: #000000;
         cursor: pointer;
-        animation: fadeInLeft 1s both 1.2s;
         &:hover {
           .qrcodepart {
             display: block;
@@ -344,7 +361,7 @@ export default defineComponent({
           width: 160px;
           height: 160px;
           margin: 0 auto;
-          background: url(https://img12.360buyimg.com/imagetools/jfs/t1/124892/31/7144/6065/5f0d9fe4Ef020d678/cae78d015aa5897c.png)
+          background: url(https://img12.360buyimg.com/imagetools/jfs/t1/162421/39/13392/9425/6052ea60E592310a9/264bdff23ef5fe95.png)
             no-repeat;
           background-size: cover;
         }
