@@ -57,34 +57,6 @@
       placeholder="支持小数点的输入"
       label="数字："
     />
-    <h2>文本域</h2>
-    <nut-input
-      v-model:value="state.val7"
-      @change="change"
-      :autosize="true"
-      type="textarea"
-      placeholder="文本域"
-      label="留言："
-    />
-    <nut-input
-      v-model:value="state.val7"
-      @change="change"
-      rows="5"
-      type="textarea"
-      placeholder="设置输入五行"
-      label="留言："
-    />
-    <h2>显示字数统计</h2>
-    <nut-input
-      v-model:value="state.val8"
-      @change="change"
-      rows="5"
-      :limitShow="true"
-      maxLength="20"
-      type="textarea"
-      placeholder="设置输入五行"
-      label="留言："
-    />
   </div>
 </template>
 
@@ -120,6 +92,7 @@ export default createDemo({
     const clear = (num: string | number) => {
       console.log('clear:', num);
     };
+
     return {
       state,
       change,
