@@ -222,3 +222,6 @@ $infinite-bottom-color: #c8c8c8;
 view-block {
   display: block;
 }
+
+@import './mixins/index';
+@import './animation/index';
