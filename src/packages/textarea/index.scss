@@ -3,14 +3,9 @@
   width: 100%;
   padding: 10px 0px 10px 25px;
   display: flex;
-  background: rgba(255, 255, 255, 1);
-  border-bottom: 1px solid rgba(234, 240, 251, 1);
+  background: $white;
+  border-bottom: 1px solid $input-border-bottom;
   font-size: 14px;
-  input {
-    width: 230px;
-    flex: 1;
-    padding: 0 10px;
-  }
   .nut-input-label {
     width: 80px;
     overflow: hidden;

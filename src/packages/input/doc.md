@@ -72,7 +72,7 @@ app.use(Input);
 | readonly          | 是否只读                        | Boolean | `false`               |
 | max-length          | 限制最长输入字符                   | String、Number | -               |
 | disable-clear          | 禁止展示清除icon                   | Boolean | `false`             |
-| text-align          | 文本位置                   | String | `left`             |
+| text-align          | 文本位置,可选值`left`,`center`,`right`     | String | `left`             |
 
 ### Event
 
