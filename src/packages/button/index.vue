@@ -86,7 +86,8 @@ export default create({
         [`${prefixCls}--${shape.value}`]: shape.value,
         [`${prefixCls}--plain`]: plain.value,
         [`${prefixCls}--block`]: block.value,
-        [`${prefixCls}--disabled`]: disabled.value
+        [`${prefixCls}--disabled`]: disabled.value,
+        [`${prefixCls}--loading`]: loading.value
       };
     });
 
