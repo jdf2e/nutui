@@ -4,7 +4,7 @@
     <nut-textarea
       v-model:value="state.val0"
       @change="change"
-      rows="5"
+      rows="10"
       placeholder="高度可拉伸"
       :autosize="true"
       label="留言："
@@ -14,12 +14,13 @@
       v-model:value="state.val1"
       @change="change"
       rows="5"
-      :limitShow="true"
-      maxLength="20"
-      type="textarea"
+      :limit-show="true"
+      max-length="20"
       placeholder="设置输入五行"
       label="留言："
     />
+    <h2>只读</h2>
+    <nut-textarea readonly="true" rows="5" placeholder="只读" label="留言：" />
   </div>
 </template>
 
@@ -39,22 +40,10 @@ export default createDemo({
     const change = (num: string | number) => {
       console.log('change: ', num);
     };
-    const focus = (num: string | number) => {
-      console.log('focus:', num);
-    };
-    const blur = (num: string | number) => {
-      console.log('blur:', num);
-    };
-    const clear = (num: string | number) => {
-      console.log('clear:', num);
-    };
 
     return {
       state,
-      change,
-      blur,
-      clear,
-      focus
+      change
     };
   }
 });
