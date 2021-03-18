@@ -1,61 +1,66 @@
 <template>
-  <view :class="classes">
+  <view class="nut-textarea">
     <view class="nut-input-label">
-      <view class="nut-input-require" v-if="requireShow">*</view>
-      <view v-if="label" class="label-string">{{ label }}</view>
+      <view v-if="props.label" class="label-string">{{ props.label }}</view>
     </view>
-    <input
-      class="input-text"
-      :style="styles"
-      :type="type"
-      :maxlength="maxLength"
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :readonly="readonly"
-      :value="state.curretvalue"
-      @input="valueChange"
-      @focus="valueFocus"
-      @blur="valueBlur"
-    />
-    <view
-      @click="handleClear"
-      class="nut-textinput-clear"
-      v-if="!disableClear && !readonly"
-      v-show="active && state.curretvalue.length > 0"
-    >
-      <nut-icon name="close-little" size="12px"></nut-icon>
+    <view class="nut-text">
+      <textarea
+        :style="styles"
+        :rows="props.rows"
+        @input="valueChange"
+        v-model="state.curretvalue"
+        class="nut-text-core"
+        :maxlength="maxLength"
+        :placeholder="props.placeholder"
+        :disabled="props.disabled"
+        :readonly="props.readonly"
+      >
+      </textarea>
+      <view class="nut-text-limit" v-if="limitShow">
+        <view :class="[{ 'nut-field-over': state.textNum > maxLength }]">{{
+          state.textNum
+        }}</view>
+        <view>/{{ maxLength }}</view>
+      </view>
     </view>
   </view>
 </template>
 <script lang="ts">
 import { ref, toRefs, reactive, computed } from 'vue';
 import { createComponent } from '@/utils/create';
-import { formatNumber } from './util';
 
-const { componentName, create } = createComponent('input');
+const { componentName, create } = createComponent('textarea');
 interface Events {
   eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:value';
   params: (string | number | Event)[];
 }
 export default create({
   props: {
-    type: {
+    textAlign: {
       type: String,
-      default: 'text'
+      default: 'left'
     },
-    value: {
-      type: [String, Number],
+    limitShow: {
+      type: Boolean,
+      default: false
+    },
+    maxLength: {
+      type: String,
+      default: ''
+    },
+    rows: {
+      type: String,
+      default: ''
+    },
+    label: {
+      type: String,
       default: ''
     },
     placeholder: {
       type: String,
       default: '请输入信息'
     },
-    label: {
-      type: String,
-      default: ''
-    },
-    requireShow: {
+    readonly: {
       type: Boolean,
       default: false
     },
@@ -63,35 +68,20 @@ export default create({
       type: Boolean,
       default: false
     },
-    readonly: {
+    autosize: {
       type: Boolean,
       default: false
     },
-    textAlign: {
-      type: String,
-      default: 'left'
-    },
-    maxLength: {
-      type: String,
+    value: {
+      type: [String, Number],
       default: ''
-    },
-    disableClear: {
-      type: Boolean,
-      default: false
     }
   },
 
   emits: ['change', 'update:value', 'blur', 'focus', 'clear', 'error'],
 
   setup(props, { emit }) {
-    const {
-      label,
-      placeholder,
-      disabled,
-      readonly,
-      requireShow,
-      maxLength
-    } = props;
+    const { maxLength } = props;
     const { value } = toRefs(props);
     const active = ref(false);
     const state = reactive({
@@ -100,13 +90,13 @@ export default create({
     });
     const classes = computed(() => {
       return {
-        [componentName]: true,
-        'nut-input-disabled': disabled
+        [componentName]: true
       };
     });
     const styles = computed(() => {
       return {
-        'text-align': props.textAlign
+        'text-align': props.textAlign,
+        resize: props.autosize ? 'vertical' : 'none'
       };
     });
     const emitChange = (envs: Array<Events>) => {
@@ -120,12 +110,6 @@ export default create({
 
       if (maxLength && val.length > Number(maxLength)) {
         val = val.slice(0, Number(maxLength));
-      }
-      if (props.type == 'digit') {
-        val = formatNumber(val, true);
-      }
-      if (props.type == 'number') {
-        val = formatNumber(val, false);
       }
       state.textNum = val.length;
       emitChange([
@@ -187,12 +171,8 @@ export default create({
       ]);
     };
     return {
+      props,
       value,
-      requireShow,
-      readonly,
-      placeholder,
-      label,
-      disabled,
       state,
       styles,
       active,
@@ -201,7 +181,6 @@ export default create({
       valueFocus,
       valueBlur,
       handleClear,
-      classes,
       emitChange
     };
   }
