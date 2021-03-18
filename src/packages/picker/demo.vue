@@ -95,8 +95,8 @@ export default createDemo({
       }`
     );
     const desc3 = ref(
-      `${listData3[0].text} 
-      ${listData3[0].children[0].text} 
+      `${listData3[0].text}
+      ${listData3[0].children[0].text}
       ${listData3[0].children[0].children[0].text}`
     );
     const descList = [desc, desc2, desc3];
@@ -110,16 +110,16 @@ export default createDemo({
       desc,
       desc2,
       desc3,
-      open: index => {
+      open: (index: number) => {
         showList[index - 1].value = true;
       },
-      confirm: res => {
+      confirm: (res: any) => {
         desc.value = res;
       },
-      confirm2: res => {
+      confirm2: (res: any) => {
         desc2.value = res.join(' ');
       },
-      confirm3: res => {
+      confirm3: (res: any) => {
         desc3.value = res.join(' ');
       }
     };
