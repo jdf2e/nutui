@@ -11,7 +11,11 @@ export class ArticleApiService {
    * @memberof ArticleApiService
    */
   getArticle() {
-    return this.httpClient.request('/article/list', 'get', {});
+    return this.httpClient.request(
+      '/article/list?pageIndex=1&pageSize=100',
+      'get',
+      {}
+    );
   }
   /**
    * 保存用户访问数据
