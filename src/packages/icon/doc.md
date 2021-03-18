@@ -43,7 +43,7 @@ app.use(Icon);
 
 ```html
 <nut-icon name="dongdong"></nut-icon>
-<nut-icon name="dongdong" size="24px"></nut-icon>
+<nut-icon name="dongdong" size="24"></nut-icon>
 <nut-icon name="dongdong" size="16px"></nut-icon>
 ```
 
@@ -80,7 +80,7 @@ app.use(Icon);
 |--------------|----------------------------------|--------|------------------|
 | name         | 图标名称或图片链接               | String | -                |
 | color        | 图标颜色                         | String | -                |
-| size         | 图标大小，如 `20px` `2em` `2rem` | String | -                |
+| size         | 图标大小，如 `20px` `2em` `2rem` | String|Number | -                |
 | class-prefix | 类名前缀，用于使用自定义图标     | String | `nutui-iconfont` |
 | tag          | HTML 标签                        | String | `i`              |
 

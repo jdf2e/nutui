@@ -6,7 +6,7 @@ const { componentName, create } = createComponent('icon');
 export default create({
   props: {
     name: { type: String, default: '' },
-    size: { type: String, default: '' },
+    size: { type: [String, Number], default: '' },
     classPrefix: { type: String, default: 'nutui-iconfont' },
     color: { type: String, default: '' },
     tag: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'i' }
@@ -22,6 +22,10 @@ export default create({
       return props.name ? props.name.indexOf('/') !== -1 : false;
     };
 
+    const pxCheck = (value: string | number) => {
+      return typeof value === 'number' ? `${value}px` : String(value);
+    };
+
     return () => {
       const _isImage = isImage();
       return h(
@@ -32,9 +36,9 @@ export default create({
             : `${props.classPrefix} ${componentName}-${props.name}`,
           style: {
             color: props.color,
-            fontSize: props.size,
-            width: _isImage ? props.size : '',
-            height: _isImage ? props.size : ''
+            fontSize: pxCheck(props.size),
+            width: _isImage ? pxCheck(props.size) : '',
+            height: _isImage ? pxCheck(props.size) : ''
           },
           onClick: handleClick,
           src: _isImage ? props.name : ''

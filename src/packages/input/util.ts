@@ -20,7 +20,7 @@ export function formatNumber(
   if (allowDot) {
     value = trimExtraChar(value, '.', /\./g);
   } else {
-    value = value.split('.')[0];
+    value = value.replace(/\./g, '');
   }
 
   if (allowMinus) {
