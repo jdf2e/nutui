@@ -11,7 +11,7 @@
   </view-block>
 </template>
 <script lang="ts">
-import { toRefs, watch, ref, computed } from 'vue';
+import { toRefs, watch, computed, reactive, onMounted } from 'vue';
 import picker from '@/packages/picker/index.vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('datepicker');
@@ -70,39 +70,28 @@ export default create({
       validator: isDate
     }
   },
-  components: {},
-  emits: ['click', 'close', 'update:isVisible', 'confirm'],
+  emits: ['click', 'update:isVisible', 'confirm'],
 
   setup(props, { emit }) {
-    const show = ref(false);
-    const title = ref(props.title);
-    const formatValue = value => {
+    const state = reactive({
+      show: false,
+      currentDate: new Date(),
+      title: props.title
+    });
+    const formatValue = (value: Date) => {
       if (!isDate(value)) {
         value = props.minDate;
       }
+      let timestmp = Math.max(value.getTime(), props.minDate.getTime());
+      timestmp = Math.min(timestmp, props.maxDate.getTime());
 
-      value = Math.max(value, (props.minDate as any).getTime());
-      value = Math.min(value, (props.maxDate as any).getTime());
-
-      return new Date(value);
+      return new Date(timestmp);
     };
-    const currentDate = ref(formatValue(props.modelValue));
-    watch(
-      () => props.title,
-      val => {
-        title.value = val;
-      }
-    );
-    watch(
-      () => props.isVisible,
-      val => {
-        show.value = val;
-      }
-    );
+
     function getMonthEndDay(year: number, month: number): number {
       return 32 - new Date(year, month - 1, 32).getDate();
     }
-    const getBoundary = (type, value) => {
+    const getBoundary = (type: string, value: Date) => {
       const boundary = props[`${type}Date`];
       const year = boundary.getFullYear();
       let month = 1;
@@ -148,7 +137,7 @@ export default create({
         maxHour,
         maxMinute,
         maxSeconds
-      } = getBoundary('max', currentDate.value);
+      } = getBoundary('max', state.currentDate);
 
       const {
         minYear,
@@ -157,7 +146,7 @@ export default create({
         minHour,
         minMinute,
         minSeconds
-      } = getBoundary('min', currentDate.value);
+      } = getBoundary('min', state.currentDate);
 
       let result = [
         {
@@ -210,19 +199,22 @@ export default create({
       return result;
     });
 
-    const changeHandler = val => {
+    const changeHandler = (val: string[]) => {
+      console.log(val);
       let formatDate = [];
       if (props.isShowChinese) {
-        formatDate = val.forEach((res: string) => {
-          Number(res.slice(0, res.length - 2));
-        });
+        formatDate = val.map((res: string) => {
+          return Number(res.slice(0, res.length - 1));
+        }) as any;
+        console.log(formatDate);
       } else {
         formatDate = val;
       }
-      currentDate.value = formatValue(
+      state.currentDate = formatValue(
         new Date(formatDate[0], formatDate[1] - 1, formatDate[2])
       );
     };
+
     const generateValue = (
       min: number,
       max: number,
@@ -232,7 +224,6 @@ export default create({
       if (!(max > min)) return;
       const arr: Array<number | string> = [];
       let index = 0;
-      // let stopAdd = false;
       while (min <= max) {
         if (props.isShowChinese) {
           arr.push(min + zhCNType[type]);
@@ -253,22 +244,24 @@ export default create({
 
       return { values: arr, defaultIndex: index };
     };
-    const getDateIndex = type => {
+
+    const getDateIndex = (type: string) => {
       if (type === 'year') {
-        return currentDate.value.getFullYear();
+        return state.currentDate.getFullYear();
       } else if (type === 'month') {
-        return currentDate.value.getMonth() + 1;
+        return state.currentDate.getMonth() + 1;
       } else if (type === 'day') {
-        return currentDate.value.getDate();
+        return state.currentDate.getDate();
       } else if (type === 'hour') {
-        return currentDate.value.getHours();
+        return state.currentDate.getHours();
       } else if (type === 'minute') {
-        return currentDate.value.getMinutes();
+        return state.currentDate.getMinutes();
       } else if (type === 'seconds') {
-        return currentDate.value.getSeconds();
+        return state.currentDate.getSeconds();
       }
       return 0;
     };
+
     const columns = computed(() => {
       const val = ranges.value.map(res => {
         return generateValue(
@@ -283,21 +276,43 @@ export default create({
       }
       return val;
     });
+
     const handleClick = (event: Event) => {
       emit('click', event);
     };
 
+    const closeHandler = () => {
+      emit('update:isVisible', false);
+    };
+
+    const confirm = (val: Event) => {
+      emit('update:isVisible', false);
+      emit('confirm', val);
+    };
+
+    onMounted(() => {
+      state.currentDate = formatValue(props.modelValue);
+    });
+
+    watch(
+      () => props.title,
+      val => {
+        state.title = val;
+      }
+    );
+
+    watch(
+      () => props.isVisible,
+      val => {
+        state.show = val;
+      }
+    );
+
     return {
-      show,
-      title,
+      ...toRefs(state),
       changeHandler,
-      closeHandler: () => {
-        emit('update:isVisible', false);
-      },
-      confirm: val => {
-        emit('update:isVisible', false);
-        emit('confirm', val);
-      },
+      closeHandler,
+      confirm,
       columns
     };
   }

@@ -27,8 +27,8 @@
     <nut-datepicker
       v-model="currentDate"
       title="日期选择"
-      :minDate="minDate"
-      :maxDate="maxDate"
+      :min-date="minDate"
+      :max-date="maxDate"
       @confirm="
         val => {
           confirm(1, val);
@@ -41,8 +41,8 @@
       v-model="currentDate"
       title="日期时间选择"
       type="datetime"
-      :minDate="minDate"
-      :maxDate="maxDate"
+      :min-date="minDate"
+      :max-date="maxDate"
       @confirm="
         val => {
           confirm(2, val);
@@ -54,8 +54,8 @@
       v-model="currentDate"
       title="时间选择"
       type="time"
-      :minDate="minDate"
-      :maxDate="maxDate"
+      :min-date="minDate"
+      :max-date="maxDate"
       :is-use12-hours="true"
       @confirm="
         val => {
@@ -68,8 +68,8 @@
       v-model="currentDate"
       title="时间选择"
       type="time"
-      :minDate="minDate"
-      :maxDate="maxDate"
+      :min-date="minDate"
+      :max-date="maxDate"
       @confirm="
         val => {
           confirm(4, val);
@@ -81,9 +81,9 @@
       v-model="currentDate"
       title="时间选择"
       type="time"
-      :minDate="minDate"
+      :min-date="minDate"
       :minute-step="5"
-      :maxDate="maxDate"
+      :max-date="maxDate"
       @confirm="
         val => {
           confirm(5, val);
@@ -108,9 +108,9 @@ export default createDemo({
     const show5 = ref(false);
     const show6 = ref(false);
     const showList = [show, show2, show3, show4, show5, show6];
-    const currentDate = ref(new Date(2020, 0, 1));
+    const currentDate = new Date(2020, 0, 1);
 
-    const today = currentDate.value;
+    const today = currentDate;
     const desc1 = ref('2020-1-1');
     const desc2 = ref('2020-1-1');
     const desc3 = ref('2020年-1月-1日-0时-0分');
@@ -134,10 +134,10 @@ export default createDemo({
       currentDate,
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 10, 1),
-      open: index => {
+      open: (index: number) => {
         showList[index].value = true;
       },
-      confirm: (index, val) => {
+      confirm: (index: number, val: string[]) => {
         console.log(val);
         descList[index].value = val.join('-');
       }
