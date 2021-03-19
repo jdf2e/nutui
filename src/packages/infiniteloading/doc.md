@@ -1,4 +1,4 @@
-#  infiniteloading组件
+#  Infiniteloading组件
 
 ### 介绍
 
