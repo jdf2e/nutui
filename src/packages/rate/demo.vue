@@ -1,58 +1,49 @@
 <template>
   <div class="demo">
     <h2>基本用法</h2>
-    <div>
-      <nut-rate v-model:value="state.val"></nut-rate>
-    </div>
+    <nut-rate v-model="state.val" />
+
+    <h2>半星</h2>
+    <nut-rate allow-half v-model="state.val1"></nut-rate>
 
     <h2>自定义 icon </h2>
-    <div>
-      <nut-rate
-        checked-icon="heart-fill1"
-        unchecked-icon="heart"
-        v-model:value="state.val3"
-      ></nut-rate>
-    </div>
+    <nut-rate
+      checked-icon="heart-fill1"
+      unchecked-icon="heart"
+      v-model="state.val2"
+    ></nut-rate>
 
     <h2>自定义数量</h2>
-    <div>
-      <nut-rate :total="6" v-model:value="state.val4"></nut-rate>
-    </div>
+    <nut-rate :count="6" v-model="state.val3"></nut-rate>
 
     <h2>自定义颜色</h2>
-    <div>
-      <nut-rate active-color="#FFC800" v-model:value="state.val5"></nut-rate>
-    </div>
+    <nut-rate active-color="#FFC800" v-model="state.val4"></nut-rate>
 
     <h2>禁用状态</h2>
-    <div>
-      <nut-rate :disabled="true" v-model:value="state.val6"></nut-rate>
-    </div>
+    <nut-rate disabled v-model="state.val5"></nut-rate>
 
     <h2>只读状态</h2>
-    <div>
-      <nut-rate :value="2" :read-only="true"></nut-rate>
-    </div>
+    <nut-rate v-model="state.val6" readonly></nut-rate>
 
     <h2>绑定事件,{{ state.result }}</h2>
-    <div>
-      <nut-rate @click="onClick"></nut-rate>
-    </div>
-    <h2>自定义尺寸</h2>
-    <div>
-      <nut-rate :size="35"></nut-rate>
-    </div>
+    <nut-rate @change="onChange"></nut-rate>
+    <h2>自定义尺寸 35px</h2>
+    <nut-rate v-model="state.val7" icon-size="35"></nut-rate>
   </div>
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { reactive, getCurrentInstance } from 'vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('rate');
 export default createDemo({
   setup() {
+    let { ctx } = getCurrentInstance();
+
     const state = reactive({
-      val: 4,
+      val: 3,
+      val1: 3.5,
+      val2: 3,
       val3: 3,
       val4: 3,
       val5: 3,
@@ -60,21 +51,16 @@ export default createDemo({
       val7: 3,
       result: ''
     });
-    const onClick = idx => {
-      state.result = '您点击了第' + idx + '个!';
+    const onChange = val => {
+      state.result = '您点击了第' + val + '个!';
+      ctx.$toast.text(state.result);
     };
     return {
       state,
-      onClick
+      onChange
     };
   }
 });
 </script>
 
-<style lang="scss" scoped>
-.demo {
-}
-h4 {
-  padding: 0 10px;
-}
-</style>
+<style lang="scss" scoped></style>
