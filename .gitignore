@@ -22,3 +22,4 @@ lib/plugin/cli/site/doc/view/
 lib/plugin/cli/site/doc/page/
 yarn.lock
 /test_script
+.idea/
