@@ -68,12 +68,7 @@
     <div class="doc-content-more" v-if="articleList.length > 0">
       <div class="doc-content-hd">
         <h4 class="doc-content-title">更多内容</h4>
-        <a
-          class="sub-more"
-          href="https://jelly.jd.com/search/all?keyword=nutui"
-          target="_blank"
-          >More</a
-        >
+        <a class="sub-more" href="#/resource">More</a>
       </div>
       <ul class="more-list">
         <li
