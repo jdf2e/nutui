@@ -2,40 +2,43 @@
   <view :class="classes">
     <view
       class="nut-rate-item"
-      :class="{ 'nut-rate-active': n <= state.current }"
-      v-for="n in total"
+      v-for="n in count"
       :key="n"
       @click="onClick($event, n)"
-      :style="{
-        marginRight: spacing + 'px'
-      }"
+      :style="{ marginRight: spacing + 'px' }"
     >
       <nut-icon
-        :size="size + 'px'"
-        :color="n <= state.current ? (disabled ? '#ccc' : activeColor) : '#ccc'"
-        :name="n <= state.current ? checkedIcon : uncheckedIcon"
-      >
-      </nut-icon>
+        :size="iconSize"
+        :color="n <= modelValue ? (disabled ? '#ccc' : activeColor) : '#ccc'"
+        :name="n <= modelValue ? checkedIcon : uncheckedIcon"
+      />
+      <nut-icon
+        v-if="allowHalf && modelValue + 1 > n"
+        :class="{ 'nut-rate-item__icon-half': allowHalf }"
+        :size="iconSize"
+        :color="activeColor"
+        :name="checkedIcon"
+      />
     </view>
   </view>
 </template>
 <script lang="ts">
-import { watch, reactive, computed } from 'vue';
+import { computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('rate');
 export default create({
   props: {
-    total: {
+    count: {
       type: [String, Number],
       default: 5
     },
-    value: {
+    modelValue: {
       type: [String, Number],
       default: 0
     },
-    size: {
+    iconSize: {
       type: [String, Number],
-      default: 25
+      default: 18
     },
     activeColor: {
       type: String,
@@ -49,7 +52,7 @@ export default create({
       type: String,
       default: 'star-fill-n'
     },
-    readOnly: {
+    readonly: {
       type: Boolean,
       default: false
     },
@@ -57,17 +60,17 @@ export default create({
       type: Boolean,
       default: false
     },
+    allowHalf: {
+      type: Boolean,
+      default: false
+    },
     spacing: {
       type: [String, Number],
-      default: 20
+      default: 14
     }
   },
-  emits: ['update:value', 'click'],
+  emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {
-    const state = reactive({
-      current: props.value
-    });
-
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -75,29 +78,25 @@ export default create({
       };
     });
 
-    const onClick = (e: Event, idx: number) => {
+    const onClick = (e: Event, index: number) => {
       e.preventDefault();
       e.stopPropagation();
-      if (props.disabled || props.readOnly) return;
-
-      if (idx === 1 && state.current === idx) {
-        state.current = 0;
+      if (props.disabled || props.readonly) return;
+      let value = 0;
+      if (index === 1 && props.modelValue === index) {
       } else {
-        state.current = idx;
+        value = index;
+        if (props.allowHalf) {
+          if ((e?.target as Element).className.includes('__icon-half')) {
+            value -= 0.5;
+          }
+        }
       }
-      emit('update:value', state.current);
-      emit('click', state.current);
+      emit('update:modelValue', value);
+      emit('change', value);
     };
 
-    watch(
-      () => props.value,
-      newVal => {
-        state.current = newVal;
-      }
-    );
-
     return {
-      state,
       classes,
       onClick
     };
