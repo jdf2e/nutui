@@ -25,7 +25,6 @@
 
     <nut-cell :isLink="true" @click="switchActionSheet('isVisible4')">
       <span><label>选项状态</label></span>
-      <!-- <div class="selected-option">打开</div> -->
     </nut-cell>
 
     <!-- demo 基础用法 -->

@@ -1,13 +1,17 @@
 <template>
   <view>
-    <nut-dialog
-      :title="title"
-      :visible="visible"
-      @ok-btn-click="sureClick"
-      @cancel-btn-click="close"
-      @close="close"
-      :no-footer="noButton"
+    <nut-popup
+      :style="{
+        padding: '32px 24px 28px 24px',
+        borderRadius: '12px',
+        textAlign: 'center'
+      }"
+      v-model:show="show"
+      :closeable="true"
+      @click-close-icon="close"
+      @click-overlay="close"
     >
+      <view class="nut-shortpsd-title">{{ title }}</view>
       <view class="nut-shortpsd-subtitle">{{ desc }}</view>
       <view class="nut-input-w">
         <input
@@ -38,12 +42,15 @@
           <view @click="onTips">{{ tips }}</view>
         </view>
       </view>
-    </nut-dialog>
+      <view v-if="!noButton" class="nut-shortpsd-footer">
+        <view class="nut-shortpsd-cancle" @click="close">取消</view>
+        <view class="nut-shortpsd-sure" @click="sureClick">确认</view>
+      </view>
+    </nut-popup>
   </view>
 </template>
-
 <script lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('shortpassword');
 export default create({
@@ -86,7 +93,7 @@ export default create({
     const realInput = ref(props.value);
     const realpwd = ref();
     const comLen = computed(() => range(Number(props.length)));
-
+    const show = ref(props.visible);
     // 方法
     function sureClick() {
       emit('ok', realInput.value);
@@ -94,6 +101,12 @@ export default create({
     function focus() {
       realpwd.value.focus();
     }
+    watch(
+      () => props.visible,
+      value => {
+        show.value = value;
+      }
+    );
     function changeValue(e: Event) {
       const input = e.target as HTMLInputElement;
       let val = input.value;
@@ -125,7 +138,8 @@ export default create({
       range,
       changeValue,
       close,
-      onTips
+      onTips,
+      show
     };
   }
 });
