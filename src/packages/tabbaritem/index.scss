@@ -16,29 +16,27 @@
   .tips {
     position: absolute;
     background: $tabbar-active-color;
-    border: 1px solid rgba(255, 255, 255, 1);
+    border: 1px solid $white;
     border-radius: 7px;
     text-align: center;
 
     top: -2px;
     right: -7px;
-    box-shadow: 0 0 0 1px #fff;
+    box-shadow: 0 0 0 1px $white;
     font-size: $font-size-1;
-    color: #fff;
+    color: $white;
   }
 
   .num {
-    line-height: 11px;
-    font-family: PingFangSC-Regular;
-    font-size: 11px;
-    color: rgba(255, 255, 255, 1);
+    line-height: 1;
+    font-size: $font-size-0;
+    color: $white;
     padding: 1px 2px 2px 3px;
   }
   .nums {
-    line-height: 10px;
-    font-family: PingFangSC-Regular;
-    font-size: 10px;
-    color: rgba(255, 255, 255, 1);
+    line-height: 1;
+    font-size: $font-size-0;
+    color: $white;
     padding: 2px 1px 2px 2px;
   }
 }
@@ -50,11 +48,11 @@
 }
 
 .icon-box .tabbar-nav-word {
-  font-size: 10px;
+  font-size: $font-size-0;
   display: block;
 }
 
 .icon-box .big-word {
-  font-size: 16px;
+  font-size: $font-size-large;
   line-height: 1;
 }
