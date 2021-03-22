@@ -161,7 +161,7 @@ export default create({
         currX =
           currX < state.screenWidth / 2 ? state.boundary.left : rightLocation;
       }
-      if (props.direction !== 'y' && props.attract) {
+      if (props.direction != 'y' && props.attract) {
         if (currX < state.screenWidth / 2) {
           requestAniFrame(() => {
             goLeft(target);

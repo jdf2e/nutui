@@ -4,7 +4,6 @@
       v-model:show="state.maskIsVisible"
       position="bottom"
       round
-      :closeable="closeAbled"
       @click-overlay="closeMask"
     >
       <view class="nut-actionsheet-panel">
@@ -72,10 +71,6 @@ export default create({
       type: String,
       default: '#ee0a24'
     },
-    closeAbled: {
-      type: Boolean,
-      default: false
-    },
     description: {
       type: String,
       default: ''
@@ -88,7 +83,6 @@ export default create({
   emits: ['cancel', 'choose'],
 
   setup(props, { emit }) {
-    console.log(props);
     const state = reactive({
       maskIsVisible: false
     });
