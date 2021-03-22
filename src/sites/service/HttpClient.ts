@@ -42,7 +42,6 @@ export class HttpClient {
         data: params,
         params: params,
         timeout: 1000 * 30,
-        withCredentials: true,
         crossDomain: true,
         headers
       };

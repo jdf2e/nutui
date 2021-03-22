@@ -162,6 +162,7 @@ export default create({
           state.showSlot = true;
         }
       }
+      emit('open');
     };
 
     const close = () => {
@@ -172,6 +173,7 @@ export default create({
         if (props.destroyOnClose) {
           setTimeout(() => {
             state.showSlot = false;
+            emit('close');
           }, +props.duration * 1000);
         }
       }
@@ -238,10 +240,8 @@ export default create({
       value => {
         if (value) {
           open();
-          emit('open');
         } else {
           close();
-          emit('close');
         }
       }
     );
