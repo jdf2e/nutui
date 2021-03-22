@@ -10,6 +10,8 @@
       @complete="methods.onComplete"
       @ok="methods.onOk"
       @tips="methods.onTips"
+      @close="methods.close"
+      @cancel="methods.cancel"
     >
     </nut-shortpassword>
     <nut-cell
@@ -92,6 +94,12 @@ export default createDemo({
       onComplete() {},
       onTips() {
         ctx.$toast.text('执行忘记密码逻辑');
+      },
+      close() {
+        ctx.$toast.text('点击icon关闭弹窗');
+      },
+      cancel() {
+        ctx.$toast.text('点击取消按钮关闭弹窗');
       }
     };
 

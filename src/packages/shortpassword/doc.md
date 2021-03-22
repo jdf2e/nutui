@@ -103,6 +103,7 @@ setup() {
 | tips | 提示语| String | 忘记密码|
 | visible | 是否展示短密码框| Boolean | false|
 | value | 密码初始值 | String | ''|
+| close-on-click-overlay | 是否点击遮罩关闭  | Boolean | true|
 | no-button | 是否隐藏底部按钮 |Boolean|true|
 | length | 密码长度，取值为4~6 |String||Number|6|
 | error-msg | 错误信息提示 |String|''|
@@ -114,4 +115,7 @@ setup() {
 |----- | ----- | ----- 
 | change | 输入密码时触发事件 | --
 | ok | 点击确实时触发事件 | value
+| cancel | 点击取消时触发事件| value
+| close | 点击关闭图标时触发事件| value
 | complete | 输入完成的回调 | value
+
