@@ -21,17 +21,19 @@ $padding-xs: 8px 12px;
 
 $font-family: PingHei, 'Lucida Grande', 'Lucida Sans Unicode', STHeiti,
   Helvetica, Arial, Verdana, 'sans-serif', 'PingHei-light', SimHei, 'Droid Sans' !default;
-$font-size-base: 14px !default;
-$font-size-small: 12px !default;
-$font-size-large: 16px !default;
-$line-height-base: 1.5 !default;
+
 // Font
+$font-size-0: 10px;
 $font-size-1: 12px;
 $font-size-2: 14px;
 $font-size-3: 16px;
 $font-size-4: 18px;
 $font-weight-bold: 400;
 
+$font-size-small: $font-size-1;
+$font-size-base: $font-size-2;
+$font-size-large: $font-size-3;
+$line-height-base: 1.5 !default;
 // button
 $button-border-radius: 25px;
 $button-border-width: 1px;
@@ -120,8 +122,8 @@ $inputnumber-input-height: 20px;
 $zindex-actionsheet: 10001 !default;
 $body-background: #f6f6f6 !default;
 $light-color: #f6f6f6 !default;
-$font-size-base: 14px !default;
-$font-size-small: 12px !default;
+$font-size-base: $font-size-2;
+$font-size-small: $font-size-1;
 
 //shortpassword
 $shortpsd-background-color: rgba(245, 245, 245, 1);
@@ -180,7 +182,7 @@ $zindex-dialog: 10000 !default;
 $zindex-picker: 10050 !default;
 
 // Notify
-$notify-text-color: #fff;
+$notify-text-color: $white;
 $notify-padding: 12px 0;
 $notify-font-size: 14px;
 $notify-height: 44px;
@@ -214,6 +216,7 @@ $notify-warning-background-color: linear-gradient(
 // tabbar
 
 $tabbar-active-color: $primary-color;
+$tabbar-border-color: #eee;
 
 //infiniteloading
 
