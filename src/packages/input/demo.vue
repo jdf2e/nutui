@@ -6,14 +6,13 @@
       @change="change"
       @focus="focus"
       @blur="blur"
-      label="文本"
+      label="文本(异步)"
     />
-
     <nut-input
       placeholder="请输入文本"
       @change="change"
       v-model:value="state.val0"
-      :requireShow="true"
+      :require-show="true"
       label="文本"
       @clear="clear"
     />
@@ -34,28 +33,28 @@
     <nut-input
       v-model:value="state.val4"
       @change="change"
-      maxLength="7"
-      label="限制7："
+      max-length="7"
+      label="限制7"
     />
     <h2>自定义类型</h2>
     <nut-input
       v-model:value="state.val0"
       @change="change"
       type="password"
-      label="密码："
+      label="密码"
     />
     <nut-input
       v-model:value="state.val5"
       @change="change"
-      type="digit"
-      label="整数："
+      type="number"
+      label="整数"
     />
     <nut-input
       v-model:value="state.val6"
       @change="change"
       type="digit"
       placeholder="支持小数点的输入"
-      label="数字："
+      label="数字"
     />
   </div>
 </template>

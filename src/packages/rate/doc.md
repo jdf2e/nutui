@@ -18,98 +18,86 @@ app.use(Rate);
 
 ### 基础用法
 
-```html
-    <nut-rate 
-        v-model:value="state.val"
-    >
-    </nut-rate>
+``` html
+<nut-rate v-model="value" />
+```
+
+``` javascript
+import { ref } from 'vue';
+setup() {
+    const value = ref(3);
+    return { value }
+}
 ```
 
 ### 自定义icon
 
-```html
-    <nut-rate
-        checked-icon="heart-fill1"
-        unchecked-icon="heart"
-        v-model:value="state.val3"
-    >
-    </nut-rate>
+``` html
+<nut-rate checked-icon="heart-fill1" unchecked-icon="heart" v-model="value" />
 ```
 
 ### 自定义数量
 
-```html
-    <nut-rate 
-        :total="6" 
-        v-model:value="state.val4"
-    >
-    </nut-rate>
+``` html
+<nut-rate :total="6" v-model="value" />
 ```
 
 ### 自定义颜色
 
-```html
-    <nut-rate 
-        active-color="#FFC800" 
-        v-model:value="state.val5"
-    >
-    </nut-rate>
+``` html
+<nut-rate active-color="#FFC800" v-model="value" />
 ```
 
 ### 禁用状态
 
-```html
-    <nut-rate 
-        :disabled="true" 
-        v-model:value="state.val6"
-    >
-    </nut-rate>
+``` html
+<nut-rate disabled v-model="value" />
 ```
 
 ### 只读
 
-```html
-<nut-rate 
-    v-model:value="val"
-    :readOnly="true"
->
-</nut-rate>
+``` html
+<nut-rate v-model="value" readOnly />
 ```
-
-
 ### 绑定事件
 
-```html
-<nut-rate 
-    @click="onClick"
->
-</nut-rate>
+``` html
+<nut-rate v-model="value" @change="onChange" />
 ```
-
+``` javascript
+import { ref } from 'vue';
+setup() {
+    const value = ref(3);
+    const onChange = (val)=>{
+        Toast.text(val);
+    }
+    return { value }
+}
+```
 ### 自定义尺寸
 
-```html
-<nut-rate 
-    :size="35"
->
-</nut-rate>
+``` html
+<nut-rate v-model="value" icon-size="35" />
 ```
 
 
 
 ## Prop
 
-| 字段 | 说明 | 类型 | 默认值
-| ----- | ----- | ----- | -----
-| total | star 总数 | Number | 5
-| value | 当前 star 数，可使用 v-model 双向绑定数据 | Number | 0
-| size | star 大小 | Number | 25
-| spacing | 两个star的间距 | Number | 20
-| read-only | 是否只读 | Boolean | false
-| unchecked-icon | 使用图标(未选中) | String | -
-| checked-icon | 使用图标(选中) | String | -
+| 字段           | 说明                                      | 类型    | 默认值      |
+|----------------|-------------------------------------------|---------|-------------|
+| count          | star 总数                                 | Number  | 5           |
+| v-model        | 当前 star 数，可使用 v-model 双向绑定数据 | Number  | -           |
+| icon-size      | star 大小                                 | Number  | 18          |
+| active-color   | 自定义图标颜色                            | String  | #FA200C     |
+| unchecked-icon | 使用图标(未选中)                          | String  | star-n      |
+| checked-icon   | 使用图标(选中)                            | String  | star-fill-n |
+| allow-half     | 是否半星                                  | Boolean | false       |
+| readonly       | 是否只读                                  | Boolean | false       |
+| disabled       | 是否禁用                                  | Boolean | false       |
+| spacing        | 间距                                      | Number  | 20          |
 
 ## Event
-| 字段 | 说明 | 回调参数 
-|----- | ----- | ----- 
-| click | 点击star时触发 | star的index
+| 字段   | 说明                       | 回调参数 |
+|--------|----------------------------|----------|
+| change | 当前分值修改时时触发的事件 | 当前值   |
