@@ -30,7 +30,7 @@
         <nut-collapse-item :title="title1" :name="1">
           华为终端操作系统EMUI 11发布，9月11日正式开启
         </nut-collapse-item>
-        <nut-collapse-item :title="title2" :name="2" :subTitle="subTitle">
+        <nut-collapse-item :title="title2" :name="2" :sub-title="subTitle">
           中国服务机器人市场已占全球市场超1/4
         </nut-collapse-item>
         <nut-collapse-item :title="title3" :name="3">
@@ -52,7 +52,7 @@
         <nut-collapse-item :title="title1" :name="1">
           京东数科IPO将引入“绿鞋机制”
         </nut-collapse-item>
-        <nut-collapse-item :title="title2" :name="2" subTitle="文本内容">
+        <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">
           世界制造业大会开幕，阿里巴巴与安徽合作再升级
         </nut-collapse-item>
       </nut-collapse>
@@ -68,7 +68,7 @@
         <nut-collapse-item :title="title1" :name="1">
           “森亿智能”获4亿元D轮融资
         </nut-collapse-item>
-        <nut-collapse-item :title="title2" :name="2" subTitle="文本内容">
+        <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">
           快看漫画与全球潮玩集合店X11达成战略合作
         </nut-collapse-item>
       </nut-collapse>
