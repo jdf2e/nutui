@@ -123,7 +123,10 @@ export default create({
           'url(https://img10.360buyimg.com/imagetools/jfs/t1/111306/10/17422/341/5f58aa0eEe9218dd6/28d76a42db334e31.png)',
         'background-repeat': 'no-repeat',
         'background-size': '100% 100%',
-        transform: 'rotate(0deg)'
+        transform: 'rotate(0deg)',
+        marginTop: parent.iconHeght
+          ? '-' + parent.iconHeght / 2 + 'px'
+          : '-10px'
       }
     });
     const titleIconStyle = reactive({
@@ -185,7 +188,7 @@ export default create({
       }
     };
 
-    const currentName = computed(() => props.name ?? index.value);
+    const currentName = computed(() => props.name);
     const toggleOpen = () => {
       if (parent.accordion) {
         parent.children.forEach((item: any, index: number) => {
