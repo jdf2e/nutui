@@ -189,7 +189,7 @@ export default create({
   },
   emits: [
     'update:show',
-    'on-change',
+    'change',
     'selected',
     'close',
     'close-mask',
@@ -290,7 +290,7 @@ export default create({
         // 切换下一个
         calBack.next = tabName.value[tabIndex.value];
         calBack.value = item;
-        emit('on-change', calBack);
+        emit('change', calBack);
       } else {
         handClose();
       }

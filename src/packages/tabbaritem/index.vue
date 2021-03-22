@@ -85,9 +85,11 @@ export default create({
 
     watch(choosed, (value, oldValue) => {
       state.active = value;
-      if (parent.children[value].href) {
-        window.location.href = parent.children[value].href;
-      }
+      setTimeout(() => {
+        if (parent.children[value].href) {
+          window.location.href = parent.children[value].href;
+        }
+      });
     });
     return {
       state,

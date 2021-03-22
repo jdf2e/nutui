@@ -1,61 +1,68 @@
 <template>
   <view :class="classes">
     <view class="nut-input-label">
-      <view class="nut-input-require" v-if="requireShow">*</view>
       <view v-if="label" class="label-string">{{ label }}</view>
     </view>
-    <input
-      class="input-text"
-      :style="styles"
-      :type="type"
-      :maxlength="maxLength"
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :readonly="readonly"
-      :value="curretvalue"
-      @input="valueChange"
-      @focus="valueFocus"
-      @blur="valueBlur"
-    />
-    <view
-      @click="handleClear"
-      class="nut-textinput-clear"
-      v-if="!disableClear && !readonly"
-      v-show="active && curretvalue.length > 0"
-    >
-      <nut-icon name="close-little" size="12px"></nut-icon>
+    <view class="nut-text">
+      <textarea
+        :style="styles"
+        :rows="rows"
+        @input="valueChange"
+        @focus="valueFocus"
+        @blur="valueBlur"
+        v-model="curretvalue"
+        class="nut-text-core"
+        :maxlength="maxLength"
+        :placeholder="placeholder"
+        :disabled="disabled"
+        :readonly="readonly"
+      >
+      </textarea>
+      <view class="nut-text-limit" v-if="limitShow">
+        <view :class="[{ 'nut-field-over': textNum > maxLength }]">{{
+          textNum
+        }}</view>
+        <view>/{{ maxLength }}</view>
+      </view>
     </view>
   </view>
 </template>
 <script lang="ts">
 import { toRefs, reactive, computed, watch } from 'vue';
 import { createComponent } from '@/utils/create';
-import { formatNumber } from './util';
 
-const { componentName, create } = createComponent('input');
+const { componentName, create } = createComponent('textarea');
 interface Events {
-  eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:value';
+  eventName: 'change' | 'focus' | 'blur' | 'update:value';
   params: (string | number | Event)[];
 }
 export default create({
   props: {
-    type: {
+    textAlign: {
       type: String,
-      default: 'text'
+      default: 'left'
     },
-    value: {
+    limitShow: {
+      type: Boolean,
+      default: false
+    },
+    maxLength: {
+      type: String,
+      default: ''
+    },
+    rows: {
       type: [String, Number],
+      default: '2'
+    },
+    label: {
+      type: String,
       default: ''
     },
     placeholder: {
       type: String,
       default: '请输入信息'
     },
-    label: {
-      type: String,
-      default: ''
-    },
-    requireShow: {
+    readonly: {
       type: Boolean,
       default: false
     },
@@ -63,44 +70,35 @@ export default create({
       type: Boolean,
       default: false
     },
-    readonly: {
+    autosize: {
       type: Boolean,
       default: false
     },
-    textAlign: {
-      type: String,
-      default: 'left'
-    },
-    maxLength: {
+    value: {
       type: [String, Number],
       default: ''
-    },
-    disableClear: {
-      type: Boolean,
-      default: false
     }
   },
 
-  emits: ['change', 'update:value', 'blur', 'focus', 'clear'],
+  emits: ['change', 'update:value', 'blur', 'focus'],
 
   setup(props, { emit }) {
     const state = reactive({
       curretvalue: props.value,
-      textNum: String(props.value).length,
-      active: false
+      textNum: String(props.value).length
     });
 
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
-        [prefixCls]: true,
-        [`${prefixCls}-disabled`]: props.disabled
+        [prefixCls]: true
       };
     });
 
     const styles = computed(() => {
       return {
-        textAlign: props.textAlign
+        textAlign: props.textAlign,
+        resize: props.autosize ? 'vertical' : 'none'
       };
     });
 
@@ -117,12 +115,6 @@ export default create({
       if (props.maxLength && val.length > Number(props.maxLength)) {
         val = val.slice(0, Number(props.maxLength));
       }
-      if (props.type === 'digit') {
-        val = formatNumber(val, true);
-      }
-      if (props.type === 'number') {
-        val = formatNumber(val, false);
-      }
       state.textNum = val.length;
       emitChange([
         {
@@ -137,8 +129,9 @@ export default create({
     };
 
     const valueFocus = (e: Event) => {
-      state.active = true;
       const input = e.target as HTMLInputElement;
+      let val = input.value;
+      val = String(val);
       emitChange([
         {
           eventName: 'update:value',
@@ -146,15 +139,12 @@ export default create({
         },
         {
           eventName: 'focus',
-          params: [String(input.value)]
+          params: [val]
         }
       ]);
     };
 
     const valueBlur = (e: Event) => {
-      setTimeout(() => {
-        state.active = false;
-      }, 400);
       const input = e.target as HTMLInputElement;
       emitChange([
         {
@@ -168,23 +158,11 @@ export default create({
       ]);
     };
 
-    const handleClear = () => {
-      emitChange([
-        {
-          eventName: 'update:value',
-          params: ['']
-        },
-        {
-          eventName: 'clear',
-          params: ['']
-        }
-      ]);
-    };
-
     watch(
       () => props.value,
       val => {
         state.curretvalue = val;
+        state.textNum = String(val).length;
         emitChange([
           {
             eventName: 'update:value',
@@ -200,8 +178,7 @@ export default create({
       styles,
       valueChange,
       valueFocus,
-      valueBlur,
-      handleClear
+      valueBlur
     };
   }
 });

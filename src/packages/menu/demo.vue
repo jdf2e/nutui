@@ -54,16 +54,14 @@
     </nut-menu>
 
     <h2>点击事件</h2>
-    <p class="tips"
-      >标题点击事件`menu-click`，菜单列表选择点击事件`on-change`</p
-    >
+    <p class="tips">标题点击事件`menu-click`，菜单列表选择点击事件`change`</p>
     <nut-menu>
       <nut-menu-item
         :menu-list="menuList"
         title="选择菜单列表项"
         multi-style="2"
         @menu-click="alertText($event, 'title')"
-        @on-change="getChecked"
+        @change="getChecked"
       ></nut-menu-item>
       <nut-menu-item
         :menu-list="menuList2"

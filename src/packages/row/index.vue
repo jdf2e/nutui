@@ -4,7 +4,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, provide } from 'vue';
+import { provide } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('row');
 
@@ -26,7 +26,7 @@ export default create({
       type: String,
       default: 'flex-start'
     },
-    flexWrap: {
+    wrap: {
       type: String,
       default: 'nowrap'
     }
@@ -46,7 +46,7 @@ export default create({
               ${getClass('', props.type)}
               ${getClass('justify', props.justify)}
               ${getClass('align', props.align)}
-              ${getClass('flex', props.flexWrap)}
+              ${getClass('flex', props.wrap)}
               ${prefixCls}
               `;
     };

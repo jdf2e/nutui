@@ -39,7 +39,6 @@ export default defineConfig({
       entry: 'src/nutui.ts',
       name: 'nutui',
       formats: ['es', 'umd']
-    },
-    emptyOutDir: false
+    }
   }
 });

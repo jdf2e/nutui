@@ -5,7 +5,9 @@
       <div class="content-left">
         <div class="content-title"> NutUI 3.0 </div>
         <div class="content-smile"> </div>
-        <div class="content-subTitle">一款具有京东风格的VUE组件</div>
+        <div class="content-subTitle"
+          >一套京东风格的轻量级移动端 Vue 组件库</div
+        >
         <div class="content-button">
           <div class="leftButton" @click="toIntro">
             <div class="leftButtonText">开始使用</div>
@@ -28,28 +30,6 @@
             title="GitHub"
           ></iframe>
         </div>
-        <!-- <div style="display: flex; align-items: center">
-          <a href="#" class="leftButton">开始使用</a>
-          <a href="javascript:;" class="rightButton ">
-            扫码体验
-            <a>
-              <span>请使用手机扫码体验</span>
-              <img
-                src="https://img12.360buyimg.com/imagetools/jfs/t1/124892/31/7144/6065/5f0d9fe4Ef020d678/cae78d015aa5897c.png"
-                alt
-              />
-            </a>
-          </a>
-          <iframe
-            style="margin-left: 20px"
-            src="https://ghbtns.com/github-btn.html?user=jdf2e&repo=nutui&type=star&count=true&size=large"
-            frameborder="0"
-            scrolling="0"
-            width="170"
-            height="30"
-            title="GitHub"
-          ></iframe>
-        </div> -->
       </div>
       <div class="content-right">
         <div class="content-img"> </div>
@@ -63,19 +43,20 @@
         <li class="features-item">
           <img src="../../assets/images/img-home-features1.png" />
           <p class="features-title">京东风格</p>
-          <p class="features-desc">遵循京东App9.0设计规范</p>
+          <p class="features-desc">遵循京东 App 9.0 设计规范</p>
         </li>
         <li class="features-item">
           <img src="../../assets/images/img-home-features2.png" />
           <p class="features-title">组件丰富</p>
           <p class="features-desc a-l"
-            >提供70+组件，丰富的demo快速体验交互细节，覆盖各类场景满足各种功能的需求</p
+            >提供 70+ 组件，丰富的 demo
+            快速体验交互细节，覆盖各类场景满足各种功能的需求</p
           >
         </li>
         <li class="features-item">
           <img src="../../assets/images/img-home-features3.png" />
           <p class="features-title">前沿技术</p>
-          <p class="features-desc">Vue3.X vite2.X typescript</p>
+          <p class="features-desc">vue3 vite2.x typescript</p>
         </li>
         <li class="features-item">
           <img src="../../assets/images/img-home-features4.png" />
@@ -87,12 +68,7 @@
     <div class="doc-content-more" v-if="articleList.length > 0">
       <div class="doc-content-hd">
         <h4 class="doc-content-title">更多内容</h4>
-        <a
-          class="sub-more"
-          href="https://jelly.jd.com/search/all?keyword=nutui"
-          target="_blank"
-          >More</a
-        >
+        <a class="sub-more" href="#/resource">More</a>
       </div>
       <ul class="more-list">
         <li
@@ -163,8 +139,7 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
+<style lang="scss">
 @keyframes fadeInLeft {
   from {
     opacity: 0;
@@ -175,6 +150,32 @@ export default defineComponent({
     transform: translate3d(0, 0, 0);
   }
 }
+.doc-content-index {
+  .content-left {
+    .content-title {
+      animation: fadeInLeft 1s both;
+    }
+    .content-smile {
+      animation: fadeInLeft 1s both 0.5s;
+    }
+    .content-subTitle {
+      animation: fadeInLeft 1s both 0.5s;
+    }
+    .content-button {
+      iframe {
+        animation: fadeInLeft 1s both 1.2s;
+      }
+      .leftButton {
+        animation: fadeInLeft 1s both 1.2s;
+      }
+      .rightButton {
+        animation: fadeInLeft 1s both 1.2s;
+      }
+    }
+  }
+}
+</style>
+<style lang="scss" scoped>
 .doc-content {
   &-hd {
     height: 52px;
@@ -248,10 +249,8 @@ export default defineComponent({
       height: 44px;
       line-height: 22px;
       font-size: 14px;
-      text-overflow: -o-ellipsis-lastline;
       overflow: hidden;
       text-overflow: ellipsis;
-      display: -webkit-box;
       -webkit-line-clamp: 2;
       line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -273,7 +272,6 @@ export default defineComponent({
       font-family: PingFangSC-Medium;
       font-size: 42px;
       color: rgba(255, 255, 255, 1);
-      animation: fadeInLeft 1s both;
     }
     .content-smile {
       margin-top: 10px;
@@ -282,14 +280,12 @@ export default defineComponent({
       background: url(https://storage.360buyimg.com/imgtools/09516173b9-9b32b9d0-3864-11eb-9a56-0104487ad2b0.png)
         no-repeat;
       background-size: cover;
-      animation: fadeInLeft 1s both 0.5s;
     }
     .content-subTitle {
       margin-top: 12px;
       font-family: PingFangSC-Regular;
       font-size: 20px;
       color: rgba(255, 255, 255, 1);
-      animation: fadeInLeft 1s both 0.5s;
     }
     .content-button {
       position: relative;
@@ -297,7 +293,6 @@ export default defineComponent({
       margin-top: 40px;
       iframe {
         align-self: center;
-        animation: fadeInLeft 1s both 1.2s;
       }
       .leftButton {
         display: flex;
@@ -310,7 +305,6 @@ export default defineComponent({
         font-family: PingFangSC-Regular;
         width: 150px;
         height: 40px;
-        animation: fadeInLeft 1s both 1.2s;
         background: linear-gradient(
           135deg,
           rgba(250, 25, 44, 1) 0%,
@@ -337,7 +331,6 @@ export default defineComponent({
         border-radius: 29px;
         background-color: #000000;
         cursor: pointer;
-        animation: fadeInLeft 1s both 1.2s;
         &:hover {
           .qrcodepart {
             display: block;
@@ -363,7 +356,7 @@ export default defineComponent({
           width: 160px;
           height: 160px;
           margin: 0 auto;
-          background: url(https://img12.360buyimg.com/imagetools/jfs/t1/124892/31/7144/6065/5f0d9fe4Ef020d678/cae78d015aa5897c.png)
+          background: url(https://img12.360buyimg.com/imagetools/jfs/t1/162421/39/13392/9425/6052ea60E592310a9/264bdff23ef5fe95.png)
             no-repeat;
           background-size: cover;
         }

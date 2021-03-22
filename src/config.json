@@ -56,6 +56,11 @@
       {
         "name": "international",
         "cName": "国际化",
+        "show": false
+      },
+      {
+        "name": "resource",
+        "cName": "资源",
         "show": true
       },
       {
@@ -482,6 +487,16 @@
           "sort": 6,
           "show": true,
           "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "TextArea",
+          "type": "component",
+          "cName": "文本域",
+          "desc": "文本输入",
+          "sort": 7,
+          "show": true,
+          "author": "gx"
         }
       ]
     },

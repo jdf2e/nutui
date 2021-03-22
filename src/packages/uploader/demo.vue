@@ -3,11 +3,7 @@
     <h2>基础用法</h2>
     <nut-uploader :url="uploadUrl"></nut-uploader>
     <h2>上传状态</h2>
-    <nut-uploader
-      :url="uploadUrl"
-      multiple
-      @on-delete="onDelete"
-    ></nut-uploader>
+    <nut-uploader :url="uploadUrl" multiple @delete="onDelete"></nut-uploader>
     <h2>限制上传数量5个</h2>
     <nut-uploader :url="uploadUrl" multiple max-count="5"></nut-uploader>
     <h2>限制上传大小（每个文件最大不超过 50kb）</h2>
@@ -45,7 +41,7 @@ export default createDemo({
       console.log('oversize 触发 文件大小不能超过 50kb', files);
     };
     const onDelete = (file: FileItem, fileList: FileItem[]) => {
-      console.log('on-delete 事件触发', file, fileList);
+      console.log('delete 事件触发', file, fileList);
     };
     return {
       onOversize,

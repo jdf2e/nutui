@@ -7,7 +7,7 @@
       @click="state.showBasic = true"
     ></nut-cell>
     <nut-popup
-      popClass="popclass"
+      pop-class="popclass"
       :style="{ padding: '30px 50px' }"
       v-model:show="state.showBasic"
       >正文</nut-popup
@@ -99,22 +99,6 @@
       :style="{ height: '30%' }"
       v-model:show="state.showRound"
     ></nut-popup>
-    <!-- <h2>组合弹框</h2> -->
-    <!-- <nut-cell title="组合弹框" is-link @click="state.showCombination = true"></nut-cell>
-    <nut-popup
-      id="combination"
-      :style="{ padding: '30px 50px' }"
-      v-model:show="state.showCombination"
-      >正文</nut-popup
-    >
-    <nut-popup
-      id="combination"
-      position="bottom"
-      closeable
-      round
-      :style="{ height: '30%' }"
-      v-model:show="state.showCombination"
-    ></nut-popup> -->
     <h2>指定挂载节点</h2>
     <nut-cell
       title="指定挂载节点"
@@ -154,7 +138,4 @@ export default createDemo({
 });
 </script>
 
-<style lang="scss" scoped>
-.nut-temp {
-}
-</style>
+<style lang="scss" scoped></style>

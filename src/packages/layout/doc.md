@@ -8,27 +8,61 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Row, Col } from '@nutui/nutui';
+import { Layout } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Row);
-app.use(Col);
+app.use(Layout);
 ```
 
 ## 代码演示
 
-### 基本用法
+### 基础用法
 
 ```html
 <nut-row>
-    <nut-col :span="12">
-        <div class="flex-content">span:12</div>
-    </nut-col>
-    <nut-col :span="12">
-        <div class="flex-content flex-content-light">span:12</div>
-    </nut-col>
+  <nut-col :span="24">
+    <div class="flex-content">span:24</div>
+  </nut-col>
 </nut-row>
 <nut-row>
+  <nut-col :span="12">
+    <div class="flex-content">span:12</div>
+  </nut-col>
+  <nut-col :span="12">
+    <div class="flex-content flex-content-light">span:12</div>
+  </nut-col>
+</nut-row>
+<nut-row>
+  <nut-col :span="8">
+    <div class="flex-content">span:8</div>
+  </nut-col>
+  <nut-col :span="8">
+    <div class="flex-content flex-content-light">span:8</div>
+  </nut-col>
+  <nut-col :span="8">
+    <div class="flex-content">span:8</div>
+  </nut-col>
+</nut-row>
+<nut-row>
+  <nut-col :span="6">
+    <div class="flex-content">span:6</div>
+  </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content flex-content-light">span:6</div>
+  </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content">span:6</div>
+  </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content">span:6</div>
+  </nut-col>
+</nut-row>
+```
+
+### 设置元素间距
+
+```html
+<nut-row :gutter="10">
     <nut-col :span="8">
         <div class="flex-content">span:8</div>
     </nut-col>
@@ -38,275 +72,66 @@ app.use(Col);
     <nut-col :span="8">
         <div class="flex-content">span:8</div>
     </nut-col>
-</nut-row>
-<nut-row>
-    <nut-col :span="6">
-        <div class="flex-content">span:6</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">span:6</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">span:6</div>
-        </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">span:6</div>
-    </nut-col>
-</nut-row>
-<nut-row>
-    <nut-col :span="4">
-        <div class="flex-content">span:4</div>
-    </nut-col>
-    <nut-col :span="4">
-        <div class="flex-content flex-content-light">span:4</div>
-    </nut-col>
-    <nut-col :span="4">
-        <div class="flex-content">span:4</div>
-    </nut-col>
-    <nut-col :span="4">
-        <div class="flex-content flex-content-light">span:4</div>
-    </nut-col>
-    <nut-col :span="4">
-        <div class="flex-content">span:4</div>
-    </nut-col>
-    <nut-col :span="4">
-        <div class="flex-content flex-content-light">span:4</div>
-    </nut-col>
-</nut-row>
-
+</nut-row>   
 ```
-
-### 设置元素间距
-
-```html
-<nut-row :gutter="10">
-    <nut-col :span="6">
-        <div class="flex-content">span:6</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">span:6</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">span:6</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">span:6</div>
-    </nut-col>
-</nut-row>
-            
-```
-
 ### Flex布局
 
-#### wrap（是否换行）
-
 ```html
-<nut-row type="flex" flexWrap="nowrap" :gutter="10">
-    <nut-col :span="6">
-        <div class="flex-content">1</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">2</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">3</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">4</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">5</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">6</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">7</div>
-    </nut-col>
-</nut-row>
-<nut-row type="flex" flexWrap="wrap" :gutter="10">
-    <nut-col :span="6">
-        <div class="flex-content">1</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">2</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">3</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">4</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">5</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">6</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">7</div>
-    </nut-col>
-</nut-row>
-<nut-row type="flex" flexWrap="reverse" :gutter="10">
-    <nut-col :span="6">
-        <div class="flex-content">1</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">2</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">3</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">4</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">5</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">6</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">7</div>
-    </nut-col>
-</nut-row>
-
-```
-
-#### justify（主轴方向）
-
-```html
-<nut-row type="flex">
-    <nut-col :span="6">
-        <div class="flex-content">start</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">start</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">start</div>
-    </nut-col>
+<nut-row type="flex" wrap="nowrap">
+  <nut-col :span="6">
+    <div class="flex-content">span:6</div>
+  </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content flex-content-light">span:6</div>
+  </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content">span:6</div>
+  </nut-col>
 </nut-row>
 <nut-row type="flex" justify="center">
-    <nut-col :span="6">
-        <div class="flex-content">center</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">center</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">center</div>
-    </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content">span:6</div>
+  </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content flex-content-light">span:6</div>
+  </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content">span:6</div>
+  </nut-col>
 </nut-row>
 <nut-row type="flex" justify="end">
-    <nut-col :span="6">
-        <div class="flex-content">end</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">end</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">end</div>
-    </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content">span:6</div>
+  </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content flex-content-light">span:6</div>
+  </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content">span:6</div>
+  </nut-col>
 </nut-row>
 <nut-row type="flex" justify="space-between">
-    <nut-col :span="6">
-        <div class="flex-content">between</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">between</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">between</div>
-    </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content">span:6</div>
+  </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content flex-content-light">span:6</div>
+  </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content">span:6</div>
+  </nut-col>
 </nut-row>
 <nut-row type="flex" justify="space-around">
-    <nut-col :span="6">
-        <div class="flex-content">around</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">around</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">around</div>
-    </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content">span:6</div>
+  </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content flex-content-light">span:6</div>
+  </nut-col>
+  <nut-col :span="6">
+    <div class="flex-content">span:6</div>
+  </nut-col>
 </nut-row>
-
-```
-
-#### align（侧轴方向）
-
-```html
-<nut-row type="flex" gutter="10" align="flex-start">
-    <nut-col :span="6">
-        <div class="flex-content flex-content-height">1</div>
-    </nut-col>
-    <nut-col :span="12">
-        <div class="flex-content flex-content-light">顶部对齐 - flex-start</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-height">3</div>
-    </nut-col>
-</nut-row>
-<nut-row type="flex" gutter="10" align="center">
-    <nut-col :span="6">
-        <div class="flex-content flex-content-height">1</div>
-    </nut-col>
-    <nut-col :span="12">
-        <div class="flex-content flex-content-light">居中对齐 - center</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-height">3</div>
-    </nut-col>
-</nut-row>
-<nut-row type="flex" gutter="10" align="flex-end">
-    <nut-col :span="6">
-        <div class="flex-content flex-content-height">1</div>
-    </nut-col>
-    <nut-col :span="12">
-        <div class="flex-content flex-content-light">底部对齐 - flex-end</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-height">3</div>
-    </nut-col>
-</nut-row>
-
-```
-
-### 分栏偏移
-
-```html
-<nut-row type="flex">
-    <nut-col :offset="6" span="6">
-        <div class="flex-content">offset:6</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content flex-content-light">span:6</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">span:6</div>
-    </nut-col>
-</nut-row>
-<nut-row type="flex">
-    <nut-col span="6">
-        <div class="flex-content">span:6</div>
-    </nut-col>
-    <nut-col :offset="8" :span="6">
-        <div class="flex-content flex-content-light">offset:8</div>
-    </nut-col>
-    <nut-col :span="6">
-        <div class="flex-content">span:6</div>
-    </nut-col>
-</nut-row>
-<nut-row type="flex">
-    <nut-col span="6" :offset="6">
-        <div class="flex-content">offset:6</div>
-    </nut-col>
-    <nut-col :span="6" :offset="6">
-        <div class="flex-content">offset:6</div>
-    </nut-col>
-</nut-row>
-
 ```
 
 ## Prop

@@ -1,20 +1,20 @@
 <template>
   <Teleport :to="teleport">
     <nut-overlay
-      :show="show"
+      :show="show && overlay"
       :class="overlayClass"
       :style="overlayStyle"
-      :zIndex="state.zIndex"
+      :z-index="zIndex"
       :duration="duration"
       @click="onClickOverlay"
     />
     <Transition
-      :name="state.transitionName"
+      :name="transitionName"
       @after-enter="onOpened"
       @after-leave="onClosed"
     >
       <view v-show="show" :class="classes" :style="popStyle" @click="onClick">
-        <slot v-if="state.showSlot"></slot>
+        <slot v-if="showSlot"></slot>
         <nut-icon
           v-if="closeable"
           @click="onClickCloseIcon"
@@ -39,7 +39,8 @@ import {
   computed,
   reactive,
   PropType,
-  CSSProperties
+  CSSProperties,
+  toRefs
 } from 'vue';
 import { useLockScroll } from './use-lock-scroll';
 import { overlayProps } from './../overlay/index.vue';
@@ -47,17 +48,9 @@ import overlay from '@/packages/overlay/index.vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('popup');
 
-// let _global = {
-//   zIndex: 2000,
-//   overLayCount: 0
-// };
-
 let _zIndex = 2000;
 
 const popupProps = {
-  id: {
-    type: [String, Number]
-  },
   position: {
     type: String,
     default: 'center'
@@ -99,6 +92,11 @@ const popupProps = {
     default: 'body'
   },
 
+  overlay: {
+    type: Boolean,
+    default: true
+  },
+
   round: {
     type: Boolean,
     default: false
@@ -122,15 +120,13 @@ export default create({
   ],
 
   setup(props, { emit }) {
-    // if (props.id) console.log(props.id);
-    let opened;
-    let keepAlive;
-    // let ocount = 1;
     const state = reactive({
       zIndex: 0,
       showSlot: true,
       transitionName: `popup-fade-${props.position}`,
-      overLayCount: 1
+      overLayCount: 1,
+      keepAlive: false,
+      opened: false
     });
 
     const [lockScroll, unlockScroll] = useLockScroll(() => props.lockScroll);
@@ -154,11 +150,11 @@ export default create({
     });
 
     const open = () => {
-      if (!opened) {
+      if (!state.opened) {
         if (props.zIndex !== undefined) {
           _zIndex = Number(props.zIndex);
         }
-        opened = true;
+        state.opened = true;
         lockScroll();
         state.zIndex = ++_zIndex;
 
@@ -166,47 +162,48 @@ export default create({
           state.showSlot = true;
         }
       }
+      emit('open');
     };
 
     const close = () => {
-      if (opened) {
-        opened = false;
+      if (state.opened) {
+        state.opened = false;
         unlockScroll();
         emit('update:show', false);
         if (props.destroyOnClose) {
           setTimeout(() => {
             state.showSlot = false;
+            emit('close');
           }, +props.duration * 1000);
         }
       }
     };
 
-    const onClick = e => {
+    const onClick = (e: Event) => {
       emit('click', e);
     };
 
-    const onClickCloseIcon = e => {
+    const onClickCloseIcon = (e: Event) => {
       emit('click-close-icon', e);
       close();
     };
 
-    const onClickOverlay = e => {
+    const onClickOverlay = (e: Event) => {
       if (props.closeOnClickOverlay) {
         emit('click-overlay', e);
         close();
       }
     };
 
-    const onOpened = e => {
+    const onOpened = (e: Event) => {
       emit('opend', e);
     };
 
-    const onClosed = e => {
+    const onClosed = (e: Event) => {
       emit('closed', e);
     };
 
     onMounted(() => {
-      // console.log(props.id);
       props.transition
         ? (state.transitionName = props.transition)
         : (state.transitionName = `popup-slide-${props.position}`);
@@ -219,22 +216,22 @@ export default create({
     });
 
     onBeforeMount(() => {
-      if (opened) {
+      if (state.opened) {
         unlockScroll();
       }
     });
 
     onActivated(() => {
-      if (keepAlive) {
+      if (state.keepAlive) {
         emit('update:show', true);
-        keepAlive = false;
+        state.keepAlive = false;
       }
     });
 
     onDeactivated(() => {
       if (props.show) {
         close();
-        keepAlive = true;
+        state.keepAlive = true;
       }
     });
 
@@ -243,10 +240,8 @@ export default create({
       value => {
         if (value) {
           open();
-          emit('open');
         } else {
           close();
-          emit('close');
         }
       }
     );
@@ -261,14 +256,14 @@ export default create({
     );
 
     return {
+      ...toRefs(state),
+      popStyle,
+      classes,
       onClick,
       onClickCloseIcon,
       onClickOverlay,
       onOpened,
-      onClosed,
-      state,
-      popStyle,
-      classes
+      onClosed
     };
   }
 });

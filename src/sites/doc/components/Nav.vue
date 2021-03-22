@@ -9,6 +9,7 @@
           :class="{ active: isActive(_package.name) }"
           v-for="_package in docs.packages"
           :key="_package"
+          v-show="_package.show"
         >
           <router-link
             v-if="!_package.isLink"

@@ -91,8 +91,8 @@ export default create({
     'oversize',
     'success',
     'failure',
-    'on-change',
-    'on-delete'
+    'change',
+    'delete'
   ],
   setup(props, { emit }) {
     const fileList = reactive(props.fileList) as Array<FileItem>;
@@ -201,7 +201,7 @@ export default create({
     const onDelete = (file: FileItem, index: number) => {
       if (props.beforeDelete(file, fileList)) {
         fileList.splice(index, 1);
-        emit('on-delete', {
+        emit('delete', {
           file,
           fileList
         });
@@ -229,7 +229,7 @@ export default create({
         clearInput($el);
       }
 
-      emit('on-change', {
+      emit('change', {
         fileList,
         event
       });
