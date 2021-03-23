@@ -7,9 +7,6 @@
       >
       <span>{{ checkbox1 }}</span>
     </div>
-    <p class="p-word"
-      >组合使用 checkbox 时推荐使用 checkboxgroup 组件，见下方示例</p
-    >
     <h4>CheckboxGroup基本用法</h4>
     <div class="show-demo">
       <nut-checkboxgroup v-model="checkboxGroup1">
@@ -179,7 +176,7 @@ export default createDemo({
     const getChange3 = (val: string) => {
       result.result4 = '选中状态选项：' + val;
     };
-    const checkboxGroupDemo = ref(null);
+    const checkboxGroupDemo = ref();
     const chooseAll = (val: boolean | string) => {
       (checkboxGroupDemo.value as any).toggleAll(val);
     };
@@ -203,7 +200,7 @@ export default createDemo({
   margin: 60px 0;
   padding: 17px;
   h4 {
-    margin-top: 10px;
+    margin: 20px 0 10px;
     line-height: 20px;
     color: #909ca4;
     font-size: 14px;
@@ -226,13 +223,6 @@ export default createDemo({
     .nut-button {
       margin: 10px 10px 0 0;
     }
-  }
-  .p-word {
-    margin: 15px 0;
-    font-size: 14px;
-    color: #636363;
-    padding-left: 5px;
-    border-left: 8px solid #03a9f4;
   }
   .show-demo-block {
     view {

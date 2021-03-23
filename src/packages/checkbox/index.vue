@@ -20,20 +20,13 @@
   </view>
 </template>
 <script lang="ts">
-import {
-  reactive,
-  ref,
-  toRefs,
-  watch,
-  watchEffect,
-  computed,
-  getCurrentInstance,
-  inject
-} from 'vue';
+import { reactive, computed, getCurrentInstance, inject } from 'vue';
 import { createComponent } from '@/utils/create';
-const { componentName, create } = createComponent('checkbox');
+import checkboxgroup from '@/packages/checkboxgroup/index.vue';
+const { create } = createComponent('checkbox');
 
 export default create({
+  children: [checkboxgroup],
   props: {
     name: {
       type: String
@@ -47,7 +40,7 @@ export default create({
       default: ''
     },
     modelValue: {
-      required: true
+      required: false
     },
     trueValue: {
       default: true
@@ -93,9 +86,6 @@ export default create({
         return isCheckedVal;
       }
     });
-    const isObject = obj => {
-      return obj !== null && typeof obj === 'object';
-    };
 
     const isDisabled = computed(() => {
       if (parentGroup && parentGroup.parentNode) {
@@ -115,7 +105,7 @@ export default create({
 
     const isAnimated = computed(() => {
       if (parentGroup && parentGroup.parentNode) {
-        return parentProps?.animated;
+        return parentProps?.animation;
       } else {
         return props.animation;
       }
@@ -123,7 +113,7 @@ export default create({
 
     const { label, name, submittedValue } = reactive(props);
 
-    const setParentValue = checked => {
+    const setParentValue = (checked: boolean) => {
       // const { label } = props;
       // const { max, modelValue } = parentProps?.modelValue;
       const modelValue = parentProps?.modelValue;
