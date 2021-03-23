@@ -31,9 +31,7 @@
           ></iframe>
         </div>
       </div>
-      <div class="content-right">
-        <div class="content-img"> </div>
-      </div>
+      <div class="content-right"></div>
     </div>
     <div class="doc-content-features">
       <div class="doc-content-hd">
@@ -262,10 +260,11 @@ export default defineComponent({
   height: 926px;
   margin-bottom: 70px;
   background-color: #070505;
+  min-width: 1200px;
   .content-left {
     padding: 15% 0 0 8.8%;
     // margin: auto 0;
-    width: 1300px;
+    flex: 1;
     min-width: 550px;
     .content-title {
       // line-height: 36px;
@@ -364,15 +363,11 @@ export default defineComponent({
     }
   }
   .content-right {
-    flex: 1;
-    margin: auto 0;
-    .content-img {
-      width: 900px;
-      height: 514px;
-      background: url(https://storage.360buyimg.com/imgtools/2386827bf5-0c3c6fb0-444d-11eb-a71e-e96ecf999ecc.png)
-        no-repeat;
-      background-size: cover;
-    }
+    flex: 2;
+    background: url(https://storage.360buyimg.com/imgtools/a423faab46-8b142e80-8bb1-11eb-853a-6fded8704e77.png)
+      no-repeat;
+    background-size: contain;
+    background-position: center;
   }
 }
 .doc-content-black {
