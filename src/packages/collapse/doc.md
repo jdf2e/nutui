@@ -99,7 +99,7 @@ setup() {
 |------|------|------|
 | change | 切换面板时触发 | 类型与 v-model 绑定的值一致 |
 
-### CollapseItem Props
+### CollapseItem Prop
 | 参数 | 说明 | 类型 | 默认值 | 
 |------|------|------|------|
 | title | 标题栏左侧内容 | string | - |
