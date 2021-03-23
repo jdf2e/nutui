@@ -1,37 +1,39 @@
 const config = require('../src/config.json');
 const path = require('path');
 const fs = require('fs-extra');
-let fileStr = `@import './styles/variables.scss';\n`;
-
+let fileStr = `@import '../variables.scss';\n`;
+let tasks = [];
 config.nav.map(item => {
   item.packages.forEach(element => {
     let folderName = element.name.toLowerCase();
-    fileStr += `@import './packages/${folderName}/index.scss';\n`;
-    fs.copy(
-      path.resolve(__dirname, `../src/packages/${folderName}/index.scss`),
-      path.resolve(__dirname, `../dist/packages/${folderName}/index.scss`)
+    tasks.push(
+      fs
+        .copy(
+          path.resolve(__dirname, `../src/packages/${folderName}/index.scss`),
+          path.resolve(__dirname, `../dist/packages/${folderName}/index.scss`)
+        )
+        .then(success => {
+          fileStr += `@import '../../packages/${folderName}/index.scss';\n`;
+        })
+        .catch(error => {})
     );
   });
 });
-const filterFunc = (src, dest) => {
-  // your logic here
-  // it will be copied if return true
-  return !src.includes('font');
-};
-fs.copy(
-  path.resolve(__dirname, '../src/styles'),
-  path.resolve(__dirname, '../dist/styles'),
-  { filter: filterFunc },
-  err => {
-    if (err) return console.error(err);
-    // console.log('success!')
-  }
+
+tasks.push(
+  fs.copy(
+    path.resolve(__dirname, '../src/styles'),
+    path.resolve(__dirname, '../dist/styles')
+  )
 );
-fs.outputFile(
-  path.resolve(__dirname, '../dist/themes.scss'),
-  fileStr,
-  'utf8',
-  error => {
-    // logger.success(`文件写入成功`);
-  }
-);
+
+Promise.all(tasks).then(res => {
+  fs.outputFile(
+    path.resolve(__dirname, '../dist/styles/themes/default.scss'),
+    fileStr,
+    'utf8',
+    error => {
+      // logger.success(`文件写入成功`);
+    }
+  );
+});

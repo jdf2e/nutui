@@ -124,8 +124,6 @@ export default create({
   emits: ['change', 'drag-end', 'drag-start', 'update:modelValue'],
 
   setup(props, { emit, slots }) {
-    console.log(slots.button && slots.button());
-
     const buttonIndex = ref(0);
     let startValue: SliderValue;
     let currentValue: SliderValue;
@@ -134,7 +132,6 @@ export default create({
     const dragStatus = ref<'start' | 'draging' | ''>();
     const touch = useTouch();
 
-    // 滑动范围计算
     const scope = computed(() => Number(props.max) - Number(props.min));
 
     const classes = computed(() => {
@@ -146,49 +143,37 @@ export default create({
       };
     });
 
-    // 滑轨样式
     const wrapperStyle = computed(() => {
       return {
         background: props.inactiveColor
       };
     });
 
-    // 按钮样式
     const buttonStyle = computed(() => {
       return {
         borderColor: props.buttonColor
       };
     });
 
-    // 判断是否是双滑块
     const isRange = (val: unknown): val is number[] =>
       !!props.range && Array.isArray(val);
 
-    // 组件核心：拖动效果主要是通过计算选中条长度百分比、开始位置偏移量来实现
-    // 计算选中条的长度百分比
     const calcMainAxis = () => {
       const { modelValue, min } = props;
-      // 双滑块时，拖动滑块，通过实时变化滑动条的宽度，间接让滑块移动
-      // 如果拖动右滑块，则只会改变滑动条的宽度，开始位置偏移量不会变化
       if (isRange(modelValue)) {
         return `${((modelValue[1] - modelValue[0]) * 100) / scope.value}%`;
       }
-      // 单滑块时，通过实时变化滑动条宽度，来让滑块移动
       return `${((modelValue - Number(min)) * 100) / scope.value}%`;
     };
 
-    // 计算选中条的开始位置的偏移量
     const calcOffset = () => {
       const { modelValue, min } = props;
-      // 双滑块时，如果拖动左滑块，则不仅会改变滑动条宽度，还要改变滑动条的开始位置
       if (isRange(modelValue)) {
         return `${((modelValue[0] - Number(min)) * 100) / scope.value}%`;
       }
-      // 单滑块时，开始位置永远是最左侧
       return `0%`;
     };
 
-    // 选中条样式
     const barStyle = computed<CSSProperties>(() => {
       return {
         width: calcMainAxis(),
@@ -200,15 +185,13 @@ export default create({
 
     const format = (value: number) => {
       const { min, max, step } = props;
-      value = Math.max(+min, Math.min(value, +max)); // 拖动范围限制
-      return Math.round(value / +step) * +step; // 每一步四舍五入
+      value = Math.max(+min, Math.min(value, +max));
+      return Math.round(value / +step) * +step;
     };
 
     const isSameValue = (newValue: SliderValue, oldValue: SliderValue) =>
       JSON.stringify(newValue) === JSON.stringify(oldValue);
 
-    // 处理两个滑块交错之后的情况
-    // 例如左滑块移动到右滑块右边，这个时候需要将两个滑块值进行交换
     const handleOverlap = (value: number[]) => {
       if (value[0] > value[1]) {
         return value.slice(0).reverse();
@@ -245,8 +228,6 @@ export default create({
       if (isRange(modelValue)) {
         const [left, right] = modelValue;
         const middle = (left + right) / 2;
-
-        // 靠左边点击移动左按钮，靠右边点击移动右按钮
         if (value <= middle) {
           updateValue([value, right], true);
         } else {
@@ -311,11 +292,11 @@ export default create({
       dragStatus.value = '';
     };
 
-    const curValue = (idx?) => {
+    const curValue = (idx?: number) => {
       const value =
         typeof idx === 'number'
           ? (props.modelValue as number[])[idx]
-          : (props.modelValue as number);
+          : props.modelValue;
       return value;
     };
 
