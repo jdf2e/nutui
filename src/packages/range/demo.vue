@@ -75,7 +75,7 @@ export default createDemo({
       value9: 60,
       value10: 50
     });
-    const onChange = value => Toast.text('当前值：' + value);
+    const onChange = (value: number) => Toast.text('当前值：' + value);
     return {
       ...toRefs(state),
       onChange

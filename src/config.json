@@ -353,7 +353,7 @@
           "cName": "下拉刷新",
           "desc": "下拉刷新",
           "sort": 16,
-          "show": true,
+          "show": false,
           "author": "yangxiaolu3"
         },
         {

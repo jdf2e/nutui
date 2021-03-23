@@ -226,6 +226,17 @@ $tabbar-border-color: #eee;
 
 $infinite-bottom-color: #c8c8c8;
 
+//range
+$range-max: #333333;
+$rang-bg-color: #ffa39a;
+$rang-bar-bg-color: linear-gradient(
+  135deg,
+  rgba(250, 44, 25, 1) 0%,
+  rgba(250, 63, 25, 1) 45%,
+  rgba(250, 89, 25, 1) 83%,
+  rgba(250, 100, 25, 1) 100%
+);
+
 view-block {
   display: block;
 }
