@@ -1,7 +1,7 @@
 const package = require('../package.json');
 const config = require('../src/config.json');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs-extra');
 let importStr = `import { App } from 'vue';\n`;
 const packages = [];
 config.nav.map(item => {
@@ -29,7 +29,7 @@ let fileStr = `${importStr}
 ${installFunction}
 export { ${packages.join(',')}  };
 export default { install, version:'${package.version}'};`;
-fs.writeFile(
+fs.outputFile(
   path.resolve(__dirname, '../src/nutui.ts'),
   fileStr,
   'utf8',

@@ -10,15 +10,28 @@
       @complete="methods.onComplete"
       @ok="methods.onOk"
       @tips="methods.onTips"
+      @close="methods.close"
+      @cancel="methods.cancel"
     >
     </nut-shortpassword>
-    <nut-cell title="基础用法" is-link @click="state.visible = true"></nut-cell>
+    <nut-cell
+      title="基础用法"
+      is-link
+      @click="
+        state.visible = true;
+        state.noButton = true;
+        state.length = 6;
+        state.errorMsg = '';
+      "
+    ></nut-cell>
     <nut-cell
       title="显示按钮组"
       is-link
       @click="
         state.visible = true;
         state.noButton = false;
+        state.length = 6;
+        state.errorMsg = '';
       "
     ></nut-cell>
     <nut-cell
@@ -26,20 +39,28 @@
       is-link
       @click="
         state.visible = true;
-        state.noButton = false;
+        state.noButton = true;
         state.length = 4;
+        state.errorMsg = '';
       "
     ></nut-cell>
     <nut-cell
       title="忘记密码提示语事件回调"
       is-link
-      @click="state.visible = true"
+      @click="
+        state.visible = true;
+        state.length = 6;
+        state.errorMsg = '';
+        state.noButton = true;
+      "
     ></nut-cell>
     <nut-cell
       title="错误提示语"
       is-link
       @click="
         state.visible = true;
+        state.length = 6;
+        state.noButton = true;
         state.errorMsg = '请输入正确密码';
       "
     ></nut-cell>
@@ -52,7 +73,8 @@ import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('shortpassword');
 export default createDemo({
   setup() {
-    let { ctx } = getCurrentInstance();
+    let { ctx } = getCurrentInstance() as any;
+    console.log(ctx);
 
     const state = reactive({
       visible: false,
@@ -72,6 +94,12 @@ export default createDemo({
       onComplete() {},
       onTips() {
         ctx.$toast.text('执行忘记密码逻辑');
+      },
+      close() {
+        ctx.$toast.text('点击icon关闭弹窗');
+      },
+      cancel() {
+        ctx.$toast.text('点击取消按钮关闭弹窗');
       }
     };
 

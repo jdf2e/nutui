@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { provide, reactive } from 'vue';
+import { provide, reactive, watch } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('tabbar');
 import tabbaritem from '@/packages/tabbaritem/index.vue';
@@ -40,7 +40,8 @@ export default create({
   emits: ['tab-switch', 'update:show'],
   setup(props, { emit, slots }) {
     const mdValue = reactive({
-      val: props.show
+      val: props.show,
+      children: []
     });
     function changeIndex(active: number) {
       emit('update:show', active);
@@ -48,7 +49,7 @@ export default create({
       emit('tab-switch', parentData.children[active], active);
     }
     let parentData = reactive({
-      children: [],
+      children: mdValue.children,
       size: props.size,
       modelValue: mdValue.val,
       unactiveColor: props.unactiveColor,
@@ -56,6 +57,12 @@ export default create({
       changeIndex
     });
     provide('parent', parentData);
+    watch(
+      () => props.show,
+      value => {
+        parentData.modelValue = value;
+      }
+    );
     return {
       changeIndex
     };

@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Index from './views/Index.vue';
 import Resource from './views/Resource.vue';
 import Main from './views/Main.vue';
-import { HttpClient } from '../service/HttpClient';
+import config from '../config/env';
 const pagesRouter: Array<RouteRecordRaw> = [];
 
 /** webpack */
@@ -93,9 +93,12 @@ const router = createRouter({
 });
 router.afterEach((to, from) => {
   window.scrollTo(0, 0);
-  new HttpClient().request('/user/saveVisitInfo', 'post', {
-    headers: '',
-    componentName: to.path.split('/')[1]
-  });
+  try {
+    setTimeout(() => {
+      new Image().src = `${config.baseUrl}/openapi/point?p=${encodeURIComponent(
+        JSON.stringify(location)
+      )}`;
+    }, 500);
+  } catch (error) {}
 });
 export default router;
