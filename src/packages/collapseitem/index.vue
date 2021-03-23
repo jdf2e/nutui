@@ -10,47 +10,33 @@
     >
       <view class="collapse-title">
         <view>
-          <img
-            v-if="
-              titleIcon != '' &&
-                titleIcon != 'none' &&
-                titleIconPosition == 'left'
-            "
-            :src="titleIcon"
-            :style="titleIconWH"
-            class="titleIconLeft"
-          />
-          <view v-html="title"></view>
-          <img
-            v-if="
-              titleIcon != '' &&
-                titleIcon != 'none' &&
-                titleIconPosition == 'right'
-            "
-            :src="titleIcon"
-            :style="titleIconWH"
-            class="titleIconRight"
-          />
+          <view class="collapse-title-value">
+            <nut-icon
+              v-if="titleIcon"
+              :name="titleIcon"
+              :size="titleIconSize"
+              :color="titleIconColor"
+              :class="[
+                titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight'
+              ]"
+            ></nut-icon>
+            <view v-html="title"></view>
+          </view>
         </view>
       </view>
       <view v-if="subTitle" v-html="subTitle" class="subTitle"></view>
-      <i
-        v-if="icon && icon != 'none'"
+      <nut-icon
+        v-if="icon"
+        :name="icon"
+        :size="iconSize"
+        :color="iconColor"
         :class="[
           'collapse-icon',
           { 'col-expanded': openExpanded },
           { 'collapse-icon-disabled': disabled }
         ]"
         :style="iconStyle"
-      ></i>
-      <i
-        v-else-if="icon != 'none'"
-        :class="[
-          'collapse-icon',
-          { 'col-expanded': openExpanded },
-          { 'collapse-icon-disabled': disabled }
-        ]"
-      ></i>
+      ></nut-icon>
     </view>
     <view class="collapse-wrapper" ref="wrapperRef">
       <view class="collapse-content" ref="contentRef">
@@ -106,7 +92,7 @@ export default create({
       return {
         [prefixCls]: true,
         [`${prefixCls}-left`]: parent.props.classDirection === 'left',
-        [`${prefixCls}-icon`]: parent.props.icon && parent.props.icon !== 'none'
+        [`${prefixCls}-icon`]: parent.props.icon
       };
     });
     const relation = (child: ComponentInternalInstance): void => {
@@ -116,28 +102,28 @@ export default create({
     };
     relation(getCurrentInstance() as ComponentInternalInstance);
     const proxyData = reactive({
+      icon: parent.props.icon,
+      iconSize: parent.props.iconSize,
+      iconColor: parent.props.iconColor,
       openExpanded: false,
       classDirection: 'right',
       iconStyle: {
-        width: '20px',
-        height: '20px',
-        'background-image':
-          'url(https://img10.360buyimg.com/imagetools/jfs/t1/111306/10/17422/341/5f58aa0eEe9218dd6/28d76a42db334e31.png)',
-        'background-repeat': 'no-repeat',
-        'background-size': '100% 100%',
         transform: 'rotate(0deg)',
         marginTop: parent.props.iconHeght
           ? '-' + parent.props.iconHeght / 2 + 'px'
           : '-10px'
       }
     });
+
     const titleIconStyle = reactive({
       titleIcon: parent.props.titleIcon,
-      titleIconPosition: parent.props.titleIconPosition,
-      titleIconWH: {
-        width: '13px',
-        height: '13px'
-      }
+      titleIconSize: parent.props.titleIconSize,
+      titleIconColor: parent.props.titleIconColor,
+      titleIconPosition: parent.props.titleIconPosition
+      // titleIconWH: {
+      //   width: '13px',
+      //   height: '13px'
+      // }
     });
 
     // 获取 Dom 元素
@@ -166,11 +152,7 @@ export default create({
         wrapperRefEle.style.height = !proxyData.openExpanded
           ? 0
           : contentHeight;
-        if (
-          parent.props.icon &&
-          parent.props.icon != 'none' &&
-          !proxyData.openExpanded
-        ) {
+        if (parent.props.icon && !proxyData.openExpanded) {
           proxyData.iconStyle['transform'] = 'rotate(0deg)';
         } else {
           proxyData.iconStyle['transform'] =
@@ -189,7 +171,7 @@ export default create({
 
     const defaultOpen = () => {
       open();
-      if (parent.props.icon && parent.props.icon != 'none') {
+      if (parent.props.icon) {
         proxyData['iconStyle']['transform'] =
           'rotate(' + parent.props.rotate + 'deg)';
       }
@@ -249,16 +231,16 @@ export default create({
       }
 
       proxyData.classDirection = parent.props.expandIconPosition;
-      if (parent.props.icon && parent.props.icon != 'none') {
-        proxyData.iconStyle['background-image'] =
-          'url(' + parent.props.icon + ')';
-      }
-      if (parent.props.iconWidth && parent.props.icon != 'none') {
-        proxyData.iconStyle['width'] = parent.props.conWidth;
-      }
-      if (parent.props.iconHeght && parent.props.icon != 'none') {
-        proxyData.iconStyle['height'] = parent.props.iconHeight;
-      }
+      // if (parent.props.icon && parent.props.icon != 'none') {
+      //   proxyData.iconStyle['background-image'] =
+      //     'url(' + parent.props.icon + ')';
+      // }
+      // if (parent.props.iconWidth && parent.props.icon != 'none') {
+      //   proxyData.iconStyle['width'] = parent.props.conWidth;
+      // }
+      // if (parent.props.iconHeght && parent.props.icon != 'none') {
+      //   proxyData.iconStyle['height'] = parent.props.iconHeight;
+      // }
     });
 
     return {
