@@ -8,7 +8,8 @@
       }"
       v-model:show="show"
       :closeable="true"
-      @click-close-icon="close"
+      @click-close-icon="closeIcon"
+      :close-on-click-overlay="closeOnClickOverlay"
       @click-overlay="close"
     >
       <view class="nut-shortpsd-title">{{ title }}</view>
@@ -83,12 +84,25 @@ export default create({
       type: Boolean,
       default: true
     },
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: true
+    },
     length: {
       type: [String, Number], //4～6
       default: 6
     }
   },
-  emits: ['update:value', 'update:visible', 'complete', 'change', 'ok', 'tips'],
+  emits: [
+    'update:value',
+    'update:visible',
+    'complete',
+    'change',
+    'ok',
+    'tips',
+    'close',
+    'cancel'
+  ],
   setup(props, { emit }) {
     const realInput = ref(props.value);
     const realpwd = ref();
@@ -122,6 +136,11 @@ export default create({
     }
     function close() {
       emit('update:visible', false);
+      emit('cancel');
+    }
+    function closeIcon() {
+      emit('update:visible', false);
+      emit('close');
     }
     function range(val: number) {
       return Math.min(Math.max(4, val), 6);
@@ -139,7 +158,8 @@ export default create({
       changeValue,
       close,
       onTips,
-      show
+      show,
+      closeIcon
     };
   }
 });
