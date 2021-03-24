@@ -1,7 +1,7 @@
 <template>
   <div class="demo bg-w">
     <h2>基础用法</h2>
-    <nut-uploader :url="uploadUrl"></nut-uploader>
+    <nut-uploader :url="uploadUrl" @start="start"></nut-uploader>
     <h2>上传状态</h2>
     <nut-uploader :url="uploadUrl" multiple @delete="onDelete"></nut-uploader>
     <h2>限制上传数量5个</h2>
@@ -10,6 +10,14 @@
     <nut-uploader
       :url="uploadUrl"
       multiple
+      :max-size="1024 * 50"
+      @oversize="onOversize"
+    ></nut-uploader>
+    <h2>限制上传大小（在beforeupload钩子中处理）</h2>
+    <nut-uploader
+      :url="uploadUrl"
+      multiple
+      :before-upload="beforeUpload"
       :max-size="1024 * 50"
       @oversize="onOversize"
     ></nut-uploader>
@@ -33,9 +41,31 @@ export default createDemo({
   setup() {
     const uploadUrl =
       'https://my-json-server.typicode.com/linrufeng/demo/posts';
-
     const formData = {
       custom: 'test'
+    };
+    const fileToDataURL = (file: Blob): Promise<any> => {
+      return new Promise(resolve => {
+        const reader = new FileReader();
+        reader.onloadend = e => resolve((e.target as FileReader).result);
+        reader.readAsDataURL(file);
+      });
+    };
+    const dataURLToImage = (dataURL: string): Promise<HTMLImageElement> => {
+      return new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.src = dataURL;
+      });
+    };
+    const canvastoFile = (
+      canvas: HTMLCanvasElement,
+      type: string,
+      quality: number
+    ): Promise<Blob | null> => {
+      return new Promise(resolve =>
+        canvas.toBlob(blob => resolve(blob), type, quality)
+      );
     };
     const onOversize = (files: File[]) => {
       console.log('oversize 触发 文件大小不能超过 50kb', files);
@@ -43,8 +73,24 @@ export default createDemo({
     const onDelete = (file: FileItem, fileList: FileItem[]) => {
       console.log('delete 事件触发', file, fileList);
     };
+    const beforeUpload = async (file: File[]) => {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d') as CanvasRenderingContext2D;
+      const base64 = await fileToDataURL(file[0]);
+      const img = await dataURLToImage(base64);
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      context.clearRect(0, 0, img.width, img.height);
+      context.drawImage(img, 0, 0, img.width, img.height);
+
+      let blob = (await canvastoFile(canvas, 'image/jpeg', 0.5)) as Blob; //quality:0.5可根据实际情况计算
+      const f = await new File([blob], file[0].name);
+      return [f];
+    };
     return {
       onOversize,
+      beforeUpload,
       onDelete,
       uploadUrl,
       formData
