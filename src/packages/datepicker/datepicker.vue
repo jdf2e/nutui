@@ -16,9 +16,11 @@
 import nutpicker from '../picker/picker.vue';
 import '../picker/picker.scss';
 import Utils from '../../utils/date.js';
+import locale from '../../mixins/locale';
 
 export default {
   name: 'nut-datepicker',
+  mixins: [locale],
   props: {
     type: {
       type: String,
@@ -91,14 +93,8 @@ export default {
       updateMonth: null,
       updateDay: null,
       updateHour: null,
-      use12Hours: ['上午', '下午'],
-      chinese: !this.isShowChinese
-        ? new Array(6).fill('')
-        : this.type == 'time'
-        ? this.isUse12Hours
-          ? ['时', '分', '']
-          : ['时', '分', '秒']
-        : ['年', '月', '日', '时', '分']
+      use12Hours: [],
+      chinese: []
     };
   },
   components: {
@@ -106,6 +102,7 @@ export default {
   },
   created() {
     this.init();
+    console.log(this.nutTranslate('lang.calendar.year'));
   },
   computed: {
     dateRange() {
@@ -137,7 +134,24 @@ export default {
       }
       // this.startDateArr = this.startDate.replace(/-/g, '/').split('/');
       // this.endDateArr = this.endDate.replace(/-/g, '/').split('/');
-      this.initListData();
+      // 国际化
+      let year = this.nutTranslate('lang.calendar.year');
+      let month = this.nutTranslate('lang.calendar.month');
+      let day = this.nutTranslate('lang.calendar.day');
+      let hour = this.nutTranslate('lang.calendar.hour');
+      let minute = this.nutTranslate('lang.calendar.minute');
+      let second = this.nutTranslate('lang.calendar.second');
+      let morning = this.nutTranslate('lang.calendar.morning');
+      let afternoon = this.nutTranslate('lang.calendar.afternoon');
+      (this.use12Hours = [morning, afternoon]),
+        (this.chinese = !this.isShowChinese
+          ? new Array(6).fill('')
+          : this.type == 'time'
+          ? this.isUse12Hours
+            ? [hour, minute, '']
+            : [hour, minute, second]
+          : [year, month, day, hour, minute]),
+        this.initListData();
     },
 
     initListData() {

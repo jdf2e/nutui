@@ -61,9 +61,18 @@ export default {
 | is-loading | 是否加载中 | Boolean | false
 | threshold | 距离底部多远加载 | Number | 200
 | is-showMod | 是否展示懒加载模块内容，一般适用于选项卡切换 | Boolean | false
+| is-show-bottom-tips | 是否展示底部加载提示 | Boolean | true
 | use-window | 将滚动侦听器添加到 window 否则侦听组件的父节点 | Boolean | true
 | use-capture | 是否使用捕获模式 true捕获 false冒泡 | Boolean | false
-| unload-more-txt | 没有更多数据展示文案 | String | 哎呀，这里是底部了啦
+| unload-more-txt | 没有更多数据展示文案 | String | 哎呀，这里是底部了啦' 
+| container-id | 在use-window属性为false的时候，自定义设置节点ID | String | ''
+
+## Slot
+
+| name | 说明 
+|----- | ----- 
+| loading | 自定义“加载中”形式
+| unloadMore | 自定义没有更多数据的展示形式
 
 ## Event
 

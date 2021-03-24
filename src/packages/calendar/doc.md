@@ -106,15 +106,15 @@ export default {
 | isVisible | 是否可见（注意：绑定时必须`:is-visible.sync`,加sync修饰符） | Boolean | false
 | animation | 日历进入方向，右滑'nutSlideRight'， 上拉'nutSlideUp' | String | 'nutSlideRight' 
 | isAutoBackFill | 是否自动回填 | Boolean | false
-| isOpenRangeSelect | 是否开启区间选择 | Boolean | false
 | title | 显示标题 | String | ‘选择日期’
 | defaultValue | 默认值，日期选择String格式，区间选择Array格式 | String || Array | null
 | startDate | 开始日期， 如果不限制开始日期传null | String | 今天
-| default | 结束日期，如果不限制结束日期传null | String | 距离今天五个月
+| endDate | 结束日期，如果不限制结束日期传null | String | 距离今天五个月
 
 ## Event
 
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 
 | choose | 选择之后或是点击确认按钮触发 | 日期数组（包含年月日和星期） 
+| choose-click | 点击日期事件触发 | 日期数组（包含年月日和星期） 
 | close | 关闭时触发 | -

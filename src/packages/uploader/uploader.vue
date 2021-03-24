@@ -1,7 +1,27 @@
 <template>
   <div class="nut-uploader">
     <slot></slot>
-    <input type="file" :name="name" @change="upload($event)" class="uploader" :multiple="multiple" :disabled="disabled" :accept="acceptType" />
+    <input
+      v-if="multiple"
+      type="file"
+      :name="name"
+      @click="preventMoreClick"
+      @change="upload($event)"
+      class="uploader"
+      multiple
+      :disabled="newdisabled"
+      :accept="acceptType"
+    />
+    <input
+      v-else
+      type="file"
+      :name="name"
+      @click="preventMoreClick"
+      @change="upload($event)"
+      class="uploader"
+      :disabled="newdisabled"
+      :accept="acceptType"
+    />
   </div>
 </template>
 <script>
@@ -88,7 +108,9 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      newdisabled: this.disabled
+    };
   },
   methods: {
     createUploaderOpts() {
@@ -125,7 +147,15 @@ export default {
         }
       };
     },
-    uploadData($event, selfData = {}) {
+    preventMoreClick() {
+      setTimeout(() => {
+        this.newdisabled = true;
+      }, 0);
+      setTimeout(() => {
+        this.newdisabled = false;
+      }, 500);
+    },
+    uploadData($event, selfData = {}, fileBlob = undefined) {
       const tar = $event.target;
       if (!this.url) {
         this.$emit('showMsg', '请先配置上传url');
@@ -139,7 +169,11 @@ export default {
         opt.previewData = tar.files;
       }
       let len = this.multiple ? tar.files.length : 1;
-      formData.append(tar.name, tar.files[0]);
+      if (fileBlob) {
+        formData.append(tar.name, fileBlob);
+      } else {
+        formData.append(tar.name, tar.files[0]);
+      }
       for (const key of Object.keys(this.attach)) {
         formData.append(key, this.attach[key]);
       }
@@ -158,13 +192,14 @@ export default {
       this.$emit('afterChange', tar, $event);
     },
     async upload($event) {
+      console.log(2222);
       if (typeof this.beforeUpload === 'function') {
         const promise = new Promise((reslove, reject) => {
           reslove(this.beforeUpload($event));
         });
         const resData = await promise;
         if (typeof resData === 'object' && typeof resData.event === 'object') {
-          this.uploadData(resData.event, resData.data);
+          this.uploadData(resData.event, resData.data, resData.fileBlob);
         } else {
           console.warn('resData： 必须包含 event字段且为input $event 的事件对象');
         }

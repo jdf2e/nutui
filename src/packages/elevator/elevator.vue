@@ -47,7 +47,7 @@ export default {
   props: {
     otherHeight: {
       type: Number,
-      default: '60'
+      default: 60
     },
     dataArray: {
       type: Array,
@@ -55,11 +55,11 @@ export default {
     },
     navHeight: {
       type: Number,
-      default: '40'
+      default: 40
     },
     hiddenTime: {
       type: Number,
-      default: '10'
+      default: 10
     },
     showIndicator: {
       type: Boolean,
@@ -67,7 +67,7 @@ export default {
     },
     initIndex: {
       type: Number,
-      default: '0'
+      default: 0
     }
   },
   computed: {

@@ -311,10 +311,6 @@ export default {
         this.$emit('closeMask', { closeWay: this.closeWay });
         this.$emit('close-mask', { closeWay: this.closeWay });
       }
-
-      setTimeout(() => {
-        that.showModule = 'type';
-      }, 500);
     },
     // 手动关闭 点击叉号(cross)，或者蒙层(mask)
     handClose(type = 'self') {

@@ -1,242 +1,243 @@
 .nut-tab {
-    position: relative;
-    border: 1px solid #eee;
-    padding: 10px;
-    font-size: 12px;
-    background: #eee;
+  position: relative;
+  border: 1px solid #eee;
+  padding: 10px;
+  font-size: 12px;
+  background: #eee;
+}
+.nut-tab-horizontal {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  text-align: center;
+  line-height: 14px;
+  font-size: 16px;
+  background: #999;
+  font-weight: normal;
+  color: #fff;
+  right: 0px;
+  top: 0px;
+  border-radius: 50%;
+}
+.nut-tab-horizontal .close-btn {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  text-align: center;
+  line-height: 14px;
+  font-size: 16px;
+  background: #999;
+  font-weight: normal;
+  color: #fff;
+  right: 0px;
+  top: 0px;
+  border-radius: 50%;
+}
+.nut-tab-title {
+  //border:1px solid #fff;
+  border-bottom: 1px solid #ededed;
+  width: 100%;
+  display: flex;
+  height: 50px;
+  line-height: 48px;
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  &::-webkit-scrollbar {
+    display: none;
   }
-  .nut-tab-horizontal {
-    display: flex;
-    flex-direction: row;
-    position: relative;
+}
+.nut-tab-title-smooth {
+  scroll-behavior: smooth;
+}
+.nav-bar {
+  position: absolute;
+  height: 2px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 2;
+  background: red;
+  transition: all 0.3s ease-in-out;
+}
+.nut-tab-title-leftnav {
+  border-right: 1px solid #ededed;
+  scroll-behavior: smooth;
+  width: 100px;
+  display: flex;
+  background: #fff;
+  flex-direction: column;
+  position: relative;
+  // height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
   }
-  
-  .close-btn {
+  .nav-bar-left {
     position: absolute;
-    width: 17px;
-    height: 17px;
-    text-align: center;
-    line-height: 14px;
-    font-size: 16px;
-    background: #999;
-    font-weight: normal;
-    color: #fff;
+    width: 2px;
     right: 0px;
     top: 0px;
-    border-radius: 50%;
-  }
-  .nut-tab-horizontal .close-btn {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    text-align: center;
-    line-height: 14px;
-    font-size: 16px;
-    background: #999;
-    font-weight: normal;
-    color: #fff;
-    right: 0px;
-    top: 0px;
-    border-radius: 50%;
-  }
-  .nut-tab-title {
-    //border:1px solid #fff;
-    border-bottom: 1px solid #ededed;
-    scroll-behavior: smooth;
-    width: 100%;
-    display: flex;
-    height: 50px;
-    line-height: 48px;
-    box-sizing: border-box;
-    position: relative;
-    overflow-x: auto;
-    overflow-y: hidden;
-    &::-webkit-scrollbar {
-        display: none;
-    }
-  }
-  .nav-bar {
-    position: absolute;
-    height: 2px;
-    bottom: 0px;
-    left: 0px;
     z-index: 2;
-    background: $primary-color;
+    background: #eee;
     transition: all 0.3s ease-in-out;
   }
-  .nut-tab-title-leftnav {
-    border-right: 1px solid #ededed;
-    scroll-behavior: smooth;
-    width: 100px;
-    display: flex;
-    background: #fff;
-    flex-direction: column;
-    position: relative;
-    // height: 200px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    &::-webkit-scrollbar {
-        display: none;
-    }
-    .nav-bar-left {
-      position: absolute;
-      width: 2px;
-      right: 0px;
-      top: 0px;
-      z-index: 2;
-      background: $primary-color;
-      transition: all 0.3s ease-in-out;
-    }
-    .nut-title-nav {
-      border: 0;
-      border-left: 1px solid #f5f7fa;
-    }
-    .nut-tab-active {
-      background: #fff;
-      a{
-        color: red;
-      }
-    }
-  }
-  .nut-tab-title-rightnav {
-    background: #fff;
-    // border: 1px solid #fff;
-    scroll-behavior: smooth;
-    border-left: 1px solid #ededed;
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow-y: auto;
-    overflow-x: hidden;
-    // height: 200px;
-    box-sizing: border-box;
-    &::-webkit-scrollbar {
-        display: none;
-    }
-    .nav-bar-right {
-      position: absolute;
-      width: 2px;
-      left: 0px;
-      top: 0px;
-      z-index:2;
-      background: $primary-color;
-      transition: all 0.3s ease-in-out;
-    }
-  }
-  .nut-tab-link {
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    text-decoration: none;
-    line-height: 1;
-    width: 100%;
-    height:100%;
-  }
-  .nut-tab-title-bottomnav {
-    border: 1px solid #fff;
-    scroll-behavior: smooth;
-    border-top: 1px solid #ededed;
-    width: 100%;
-    display: flex;
-    height: 50px;
-    line-height: 49px;
-    box-sizing: border-box;
-    position: relative;
-    overflow-x: auto;
-    overflow-y: hidden;
-    &::-webkit-scrollbar {
-        display: none;
-    }
-    .nav-bar-bottom {
-      position: absolute;
-      height: 2px;
-      left: 0px;
-      top: 0px;
-      z-index: 2;
-      background: $primary-color;
-      transition: all 0.3s ease-in-out;
-    }
-  }
-  
-  .nut-title-nav-list {
-    flex: 1;
-    position: relative;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    background: #fff;
-    box-sizing: border-box;
-  }
-  .nut-title-nav-leftnav {
-    flex: 1;
-    display: flex;
-    padding-left: 5px;
-    //justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-  .nut-title-nav-rightnav {
-    flex: 1;
-    display: flex;
-    padding-right: 5px;
-    justify-content: flex-end;
-    align-items: center;
-    position: relative;
-  }
-  .nut-title-nav-scroll{
-    min-width: 100px;
-    position: relative;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    background: #fff;
-    box-sizing: border-box;
-  }
-  .nut-title-vertical-scroll{
-    min-height: 55px;
-    position: relative;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    background: #fff;
-    box-sizing: border-box;
-  }
-  .nut-tab-icon {
-    display: inline-block;
-    margin-right: 5px;
-    width: 20px;
-    height: 20px;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+  .nut-title-nav {
+    border: 0;
+    border-left: 1px solid #f5f7fa;
   }
   .nut-tab-active {
     background: #fff;
-    border: 0;
-    a{
-        color: red;
+    a {
+      color: red;
     }
   }
-  .nut-tab-item {
-    height: 200px;
-    border: 1px solid #fff;
-    background: #fff;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    .hide {
-      display: none;
-    }
+}
+.nut-tab-title-rightnav {
+  background: #fff;
+  // border: 1px solid #fff;
+  scroll-behavior: smooth;
+  border-left: 1px solid #ededed;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  // height: 200px;
+  box-sizing: border-box;
+  &::-webkit-scrollbar {
+    display: none;
   }
-  .nut-tab-disable {
-    background: #e1e1e1 !important;
+  .nav-bar-right {
+    position: absolute;
+    width: 2px;
+    left: 0px;
+    top: 0px;
+    z-index: 2;
+    background: #eee;
+    transition: all 0.3s ease-in-out;
   }
-  .tabbar-nav-word {
-    font-size: $font-size-small;
+}
+.nut-tab-link {
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  text-decoration: none;
+  line-height: 1;
+  width: 100%;
+  height: 100%;
+}
+.nut-tab-title-bottomnav {
+  border: 1px solid #fff;
+  scroll-behavior: smooth;
+  border-top: 1px solid #ededed;
+  width: 100%;
+  display: flex;
+  height: 50px;
+  line-height: 49px;
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  &::-webkit-scrollbar {
+    display: none;
   }
-  
+  .nav-bar-bottom {
+    position: absolute;
+    height: 2px;
+    left: 0px;
+    top: 0px;
+    z-index: 2;
+    background: #eee;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.nut-title-nav-list {
+  flex: 1;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background: #fff;
+  box-sizing: border-box;
+}
+.nut-title-nav-leftnav {
+  flex: 1;
+  display: flex;
+  padding-left: 5px;
+  //justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.nut-title-nav-rightnav {
+  flex: 1;
+  display: flex;
+  padding-right: 5px;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+.nut-title-nav-scroll {
+  min-width: 100px;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background: #fff;
+  box-sizing: border-box;
+}
+.nut-title-vertical-scroll {
+  min-height: 55px;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background: #fff;
+  box-sizing: border-box;
+}
+.nut-tab-icon {
+  display: inline-block;
+  margin-right: 5px;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.nut-tab-active {
+  background: #fff;
+  border: 0;
+  a {
+    color: red;
+  }
+}
+.nut-tab-item {
+  height: 200px;
+  border: 1px solid #fff;
+  background: #fff;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  .hide {
+    display: none;
+  }
+}
+.nut-tab-disable {
+  background: #e1e1e1 !important;
+}
+.tabbar-nav-word {
+  font-size: 12px;
+}

@@ -10,8 +10,7 @@
         :stroke-dasharray="arcLength"
         :stroke-width="strokeInnerWidth"
         fill="none"
-        transform="rotate(-90)"
-        transform-origin="center"
+        :transform="option.startPosition"
         stroke-linecap="round"
         style="transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;"
       />
@@ -72,6 +71,7 @@ export default {
       // 圆心位置自动生成
       baseOption.cy = baseOption.cx = baseOption.radius + baseOption.strokeOutWidth;
       baseOption.size = (baseOption.radius + baseOption.strokeOutWidth) * 2;
+      baseOption.startPosition = 'rotate(-90,' + baseOption.cx + ',' + baseOption.cy + ')';
       return baseOption;
     }
   }

@@ -9,7 +9,15 @@ const lang = {
       end: 'End',
       title: 'Select date',
       week: 'Sun,Mon,Tue,Wed,Thu,Fri,Sat',
-      monthTitle: '{year}/{month}'
+      monthTitle: '{year}/{month}',
+      year: 'year',
+      month: 'month',
+      day: 'day',
+      hour: 'hour',
+      minute: 'minute',
+      second: 'second',
+      morning: 'morning',
+      afternoon: 'afternoon'
     },
     menu: {
       resetBtnTxt: 'Reset'

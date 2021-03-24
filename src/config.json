@@ -1,5 +1,13 @@
 {
-  "sorts": ["数据展示", "数据录入", "操作反馈", "导航组件", "布局组件", "基础组件", "业务组件"],
+  "sorts": [
+    "数据展示",
+    "数据录入",
+    "操作反馈",
+    "导航组件",
+    "布局组件",
+    "基础组件",
+    "业务组件"
+  ],
   "packages": [
     {
       "name": "Cell",
@@ -508,6 +516,16 @@
     },
     {
       "version": "1.0.0",
+      "name": "Coupon",
+      "chnName": "优惠券",
+      "desc": "优惠券",
+      "type": "component",
+      "sort": "6",
+      "showDemo": true,
+      "author": ""
+    },
+    {
+      "version": "1.0.0",
       "name": "TabSelect",
       "chnName": "配送时间",
       "desc": "两级配送时间",
@@ -524,7 +542,7 @@
       "type": "component",
       "sort": "6",
       "showDemo": true,
-      "author": "ymm"
+      "author": "Ymm0008"
     },
     {
       "version": "1.0.0",
@@ -642,7 +660,7 @@
       "desc": "用于数据展示",
       "sort": "0",
       "showDemo": true,
-      "author": "yumingming"
+      "author": "Ymm0008"
     },
     {
       "name": "FixedNav",
@@ -652,6 +670,49 @@
       "sort": "3",
       "showDemo": true,
       "author": "richard1015"
+    },
+    {
+      "version": "1.0.0",
+      "name": "Collapse",
+      "type": "component",
+      "chnName": "折叠面板",
+      "desc": "可以折叠/展开的内容区域",
+      "sort": "0",
+      "showDemo": true,
+      "author": "Ymm0008",
+      "showTest": true
+    },
+    {
+      "version": "1.0.0",
+      "name": "Luckycard",
+      "type": "component",
+      "chnName": "刮刮卡",
+      "desc": "刮刮卡抽奖",
+      "sort": "6",
+      "showDemo": true,
+      "author": "guoxiao"
+    },
+    {
+      "version": "1.0.0",
+      "name": "NumberKeyboard",
+      "type": "component",
+      "chnName": "数字键盘",
+      "desc": "数字虚拟键盘，自定义键盘",
+      "sort": "1",
+      "showDemo": true,
+      "author": "Ymm0008",
+      "showTest": true
+    },
+    {
+      "version": "1.0.0",
+      "name": "CollapseItem",
+      "type": "component",
+      "chnName": "折叠面板单个组件",
+      "desc": "用于折叠面板组合使用",
+      "sort": "0",
+      "showDemo": false,
+      "author": "Ymm0008",
+      "showTest": true
     }
   ]
 }

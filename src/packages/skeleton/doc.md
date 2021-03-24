@@ -2,6 +2,19 @@
 
 在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。
 
+
+> 按需加载方法
+
+``` javascript
+import { skeleton } from '@nutui/nutui';
+skeleton.skeleton.install(Vue);
+skeleton.skeletonCircle.install(Vue);
+skeleton.skeletonColumn.install(Vue);
+skeleton.skeletonRow.install(Vue);
+skeleton.skeletonSquare.install(Vue);
+```
+
+
 ## 长方形
 
 ```html

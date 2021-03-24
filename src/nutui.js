@@ -119,8 +119,7 @@ import './packages/subsidenavbar/subsidenavbar.scss';
 import SideNavBarItem from './packages/sidenavbaritem/index.js';
 import './packages/sidenavbaritem/sidenavbaritem.scss';
 import Drag from './packages/drag/index.js';
-import './packages/drag/drag.scss'; 
-// import VueQr from "./packages/qart/index.js";
+import './packages/drag/drag.scss'; // import VueQr from "./packages/qart/index.js";
 // import "./packages/qart/qart.scss";
 
 import Address from './packages/address/index.js';
@@ -130,9 +129,20 @@ import './packages/notify/notify.scss';
 import CountUp from './packages/countup/index.js';
 import './packages/countup/countup.scss';
 import FixedNav from './packages/fixednav/index.js';
-import './packages/fixednav/fixednav.scss';
-// import Gesture from './packages/gesture/index.js';
+import './packages/fixednav/fixednav.scss'; // import Gesture from './packages/gesture/index.js';
 // import './packages/gesture/gesture.scss';
+
+import Collapse from './packages/collapse/index.js';
+import './packages/collapse/collapse.scss';
+import Luckycard from './packages/luckycard/index.js';
+import './packages/luckycard/luckycard.scss';
+import NumberKeyboard from './packages/numberkeyboard/index.js';
+import './packages/numberkeyboard/numberkeyboard.scss';
+import CollapseItem from './packages/collapseitem/index.js';
+import './packages/collapseitem/collapseitem.scss';
+
+import Coupon from './packages/coupon/index.js';
+import './packages/coupon/coupon.scss';
 
 const packages = {
   Cell,
@@ -199,6 +209,11 @@ const packages = {
   CountUp,
   FixedNav,
   // Gesture: Gesture
+  Collapse: Collapse,
+  Luckycard: Luckycard,
+  NumberKeyboard: NumberKeyboard,
+  CollapseItem: CollapseItem,
+  Coupon: Coupon
 };
 
 const components = {};

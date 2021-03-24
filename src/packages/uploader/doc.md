@@ -177,12 +177,15 @@ preview(file) {
   ><nut-button small>上传图片前处理图片内容</nut-button></nut-uploader>
 ```
 ```js
-test($ev){   
-  console.log($ev,'可以处理input选择的内容')  
-  return {
-    event:$ev,
-    data:''
-  }
+test(event) {
+    console.log(event, '可以处理input选择的内容');
+    // ... 自定义逻辑
+    return {
+      event: event,
+      data: '',
+      fileBlob: undefined // 强制修改file文件，此参数最终会作为formData中的文件流进行上传，替换event中的file
+    };
+}
 },
 ```
 
@@ -210,6 +213,7 @@ test($ev){
 |----- | ----- | ----- | ----- 
 | name | input name的名称 | String | ""
 | url | 上传服务器的接口地址 | String | -
+| multiple | 是否支持多选 | Boolean | false
 | isPreview | 是否需要预览 | Boolean | false
 | clearInput | 是否需要清空input内容，设为true支持重复选择上传同一个文件 | Boolean | false
 | maxSize | 可以设定最大上传文件的大小（字节） | Number | 5242880

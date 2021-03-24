@@ -84,3 +84,8 @@ export declare class Notify extends UIComponent {}
 export declare class CountUp extends UIComponent {}
 export declare class FixedNav extends UIComponent {}
 export declare class Gesture extends UIComponent {}
+export declare class Collapse extends UIComponent {}
+export declare class Luckycard extends UIComponent {}
+export declare class NumberKeyboard extends UIComponent {}
+export declare class CollapseItem extends UIComponent {}
+export declare class Coupon extends UIComponent {}

@@ -7,7 +7,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-slider v-model="val1" :range="[0, 10]"></nut-slider>
+          <nut-slider v-model="val1" @change="changeFn($event)" :range="[0, 10]"></nut-slider>
         </span>
       </nut-cell>
       <nut-cell>
@@ -84,7 +84,11 @@ export default {
       val6: 0
     };
   },
-  methods: {}
+  methods: {
+    changeFn(event) {
+      console.log(event);
+    }
+  }
 };
 </script>
 

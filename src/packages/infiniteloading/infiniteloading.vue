@@ -2,9 +2,16 @@
   <div class="nut-infiniteloading" ref="scroller" @touchstart="touchStartHandle($event)" @touchmove="touchMoveHandle($event)">
     <slot></slot>
     <div class="load-more">
-      <div class="bottom-tips">
-        <template v-if="isLoading"> <i class="loading-hint"></i><span class="loading-txt">加载中...</span> </template>
-        <span v-else-if="!hasMore" class="tips-txt">{{ unloadMoreTxt }}</span>
+      <div class="bottom-tips" v-if="isShowBottomTips">
+        <template v-if="isLoading">
+          <template v-if="!slotLoading"> <i class="loading-hint"></i><span class="loading-txt">加载中...</span> </template>
+          <slot name="loading" v-else></slot>
+        </template>
+
+        <template v-else-if="!hasMore">
+          <span class="tips-txt" v-if="!slotUnloadMore">{{ unloadMoreTxt }}</span>
+          <slot name="unloadMore" v-else></slot>
+        </template>
       </div>
     </div>
   </div>
@@ -37,12 +44,20 @@ export default {
       type: Boolean,
       default: false
     },
+    isShowBottomTips: {
+      type: Boolean,
+      default: true
+    },
     unloadMoreTxt: {
       type: String,
       default: '哎呀，这里是底部了啦'
     },
     scrollChange: {
       type: Function
+    },
+    containerId: {
+      type: String,
+      default: ''
     }
   },
   data() {
@@ -51,7 +66,9 @@ export default {
       startY: 0,
       diffX: 0,
       diffY: 0,
-      beforeScrollTop: 0
+      beforeScrollTop: 0,
+      slotUnloadMore: false,
+      slotLoading: false
     };
   },
 
@@ -63,6 +80,9 @@ export default {
     }
     this.scrollEl = scrollEl;
     this.scrollListener();
+
+    this.slotUnloadMore = this.$slots.unloadMore ? true : false;
+    this.slotLoading = this.$slots.loading ? true : false;
   },
 
   methods: {
@@ -81,6 +101,9 @@ export default {
       this.diffY = endY - this.startY;
     },
     getParentElement(el) {
+      if (this.containerId) {
+        return document.querySelector(`#${this.containerId}`);
+      }
       return el && el.parentNode;
     },
     scrollListener() {

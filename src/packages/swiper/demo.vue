@@ -22,11 +22,15 @@
       :loop="true"
       :canDragging="false"
       :paginationVisible="true"
+      :newCurrentPage="newCurrentPage"
     >
       <div v-for="(item, index) in dataImgItem" :key="index" class="nut-swiper-slide ">
         <img :src="item.imgSrc" style="max-width:100%;" />
       </div>
     </nut-swiper>
+    <br />
+    <nut-button @click="add">控制下翻页</nut-button>
+    <nut-button @click="sub">控制上翻页</nut-button>
 
     <h4>纵向自动播放</h4>
     <nut-swiper direction="vertical" :autoPlay="3000" :swiperData="dataImgItem">
@@ -57,7 +61,8 @@ export default {
   data() {
     return {
       dataItem: [],
-      dataImgItem: []
+      dataImgItem: [],
+      newCurrentPage: 1
     };
   },
   mounted() {
@@ -102,6 +107,12 @@ export default {
     },
     slideChangeStart(page) {
       console.log(page);
+    },
+    add() {
+      this.newCurrentPage = this.newCurrentPage + 1;
+    },
+    sub() {
+      this.newCurrentPage = this.newCurrentPage - 1;
     }
   }
 };

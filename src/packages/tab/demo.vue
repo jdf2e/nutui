@@ -49,7 +49,7 @@
     </nut-tab>
 
     <h4>支持滑动选择多个页签</h4>
-    <nut-tab @tab-switch="tabSwitch" :is-scroll="true">
+    <nut-tab @tab-switch="tabSwitch" :is-scroll="true" :def-index="5">
       <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
       <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
       <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>
@@ -60,7 +60,7 @@
     </nut-tab>
 
     <h4>支持滑动选择多个页签,设置tab高度为250</h4>
-    <nut-tab @tab-switch="tabSwitch" :is-scroll="true" position-nav="left" :wrapper-height="250">
+    <nut-tab @tab-switch="tabSwitch" :is-scroll="true" position-nav="left" :def-index="5" :wrapper-height="250">
       <nut-tab-panel tab-title="页签1">页签1</nut-tab-panel>
       <nut-tab-panel tab-title="页签2">页签2</nut-tab-panel>
       <nut-tab-panel tab-title="页签3">页签3</nut-tab-panel>

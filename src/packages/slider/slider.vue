@@ -97,6 +97,7 @@ export default {
     setVal(posi) {
       const trans = (posi / this.box.clientWidth) * this.total;
       this.current = Math.round(trans / this.cell) * this.cell + this.range[0];
+      this.$emit('change', this.current);
       this.$emit('input', this.current);
     },
     valToPosi() {

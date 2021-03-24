@@ -6,7 +6,7 @@
 
 默认
 ```html
-<div @click.native="switchActionSheet">
+<div @click="switchActionSheet">
     <span class="title"><label>性别</label></span>
     <span class="selected-option">{{sex}}</span>
 </div>
@@ -48,7 +48,7 @@ export default {
 
 带取消按钮
 ```html
-<div @click.native="switchActionSheet">
+<div @click="switchActionSheet">
     <span class="title"><label>性别</label></span>
     <span class="selected-option">{{sex}}</span>
 </div>
@@ -91,7 +91,7 @@ export default {
 
 高亮已选项
 ```html
-<div @click.native="switchActionSheet">
+<div @click="switchActionSheet">
     <span class="title"><label>性别</label></span>
     <span class="selected-option">{{sex}}</span>
 </div>
@@ -134,7 +134,7 @@ export default {
 
 设置禁用状态
 ```html
-<div @click.native="switchActionSheet">
+<div @click="switchActionSheet">
     <span class="title"><label>性别</label></span>
     <span class="selected-option">{{sex}}</span>
 </div>
@@ -179,7 +179,7 @@ export default {
 
 ## 提示
 ```html
-<div @click.native="switchActionSheet">
+<div @click="switchActionSheet">
     <span class="title"><label>我就列表测试数据</label></span>
     <span class="sub-title">我是描述~~~~</span>
     <div class="selected-option">删除本条</div>
@@ -222,7 +222,7 @@ export default {
 
 ## 自定义内容
 ```html
-<div @click.native="switchActionSheet">
+<div @click="switchActionSheet">
     <span class="title"><label>内容自定义</label></span>
     <div class="selected-option">打开</div>
 </div>

@@ -111,6 +111,9 @@
       }
       &-disabled {
         color: $disabled-bg;
+        span {
+          color: $disabled-bg;
+        }
       }
       &-choose {
         background-color: mix($primary-color, #fff, 20%);
