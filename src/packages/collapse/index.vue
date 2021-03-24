@@ -4,7 +4,7 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, provide } from 'vue';
+import { provide } from 'vue';
 import { createComponent } from '@/utils/create';
 import collapseitem from '@/packages/collapseitem/index.vue';
 const { create } = createComponent('collapse');
@@ -25,13 +25,13 @@ export default create({
       type: String,
       default: ''
     },
-    titleIconWidth: {
+    titleIconSize: {
       type: String,
-      default: '13px'
+      default: '16px'
     },
-    titleIconHeight: {
+    titleIconColor: {
       type: String,
-      default: '13px'
+      default: ''
     },
     titleIconPosition: {
       type: String,
@@ -41,13 +41,13 @@ export default create({
       type: String,
       default: ''
     },
-    iconWidth: {
+    iconSize: {
       type: String,
-      default: '24px'
+      default: '16px'
     },
-    iconHeight: {
+    iconColor: {
       type: String,
-      default: '12px'
+      default: ''
     },
     rotate: {
       type: [String, Number],
