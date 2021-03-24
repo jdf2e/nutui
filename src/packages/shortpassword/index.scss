@@ -92,28 +92,26 @@
   margin-top: 20px;
 
   .nut-shortpsd-cancle {
-    background: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(250, 44, 25, 1);
+    background: $white;
+    border: 1px solid $primary-color;
     border-radius: 15px;
     padding: 8px 38px;
     line-height: 1;
     font-size: $font-size-2;
-    color: rgba(250, 44, 25, 1);
+    color: $primary-color;
   }
 
   .nut-shortpsd-sure {
     background: linear-gradient(
       135deg,
-      rgba(250, 44, 25, 1) 0%,
-      rgba(250, 63, 25, 1) 45%,
-      rgba(250, 89, 25, 1) 83%,
-      rgba(250, 100, 25, 1) 100%
+      $primary-color 0%,
+      $primary-color-end 100%
     );
     border-radius: 15px;
     padding: 8px 38px;
     line-height: 1;
     font-size: $font-size-2;
-    color: rgba(255, 255, 255, 1);
+    color: $white;
   }
 }
 
