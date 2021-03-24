@@ -1,7 +1,7 @@
 <template>
   <nut-popup
     v-if="poppable"
-    v-model:show="state.childIsVisible"
+    v-model:show="childIsVisible"
     position="bottom"
     round
     :closeable="true"
@@ -99,7 +99,7 @@ export default create({
       emit('close');
     };
 
-    const choose = param => {
+    const choose = (param: string) => {
       close();
       emit('choose', param);
     };
@@ -123,7 +123,7 @@ export default create({
       close,
       choose,
       calendarRef,
-      state,
+      ...toRefs(state),
       ...toRefs(props)
     };
   }
