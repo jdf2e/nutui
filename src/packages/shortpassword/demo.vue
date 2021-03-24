@@ -74,7 +74,6 @@ const { createDemo } = createComponent('shortpassword');
 export default createDemo({
   setup() {
     let { ctx } = getCurrentInstance() as any;
-    console.log(ctx);
 
     const state = reactive({
       visible: false,
