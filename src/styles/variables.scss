@@ -215,6 +215,11 @@ $notify-warning-background-color: linear-gradient(
   rgba(255, 154, 13, 1) 100%
 );
 
+// rate
+
+$rate-icon-color: $primary-color;
+$rate-icon-void-color: $disable-color;
+
 // tabbar
 
 $tabbar-active-color: $primary-color;

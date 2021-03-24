@@ -8,12 +8,18 @@
       margin-right: 0;
     }
 
-    &__icon-half {
-      position: absolute;
-      width: 50%;
-      left: 0;
-      top: 0;
-      overflow: hidden;
+    &__icon {
+      color: $rate-icon-color;
+      &.disabled {
+        color: $rate-icon-void-color;
+      }
+      &.half {
+        position: absolute;
+        width: 50%;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+      }
     }
   }
 }
