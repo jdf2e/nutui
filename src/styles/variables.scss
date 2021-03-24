@@ -226,7 +226,6 @@ $tabbar-active-color: $primary-color;
 $tabbar-border-color: #eee;
 
 //infiniteloading
-
 $infinite-bottom-color: #c8c8c8;
 
 //range
@@ -234,6 +233,13 @@ $range-max: #333333;
 $rang-bg-color: rgba($primary-color, 0.5);
 $rang-bar-bg-color: linear-gradient(
   135deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+);
+
+//address
+$address-region-tab-line: linear-gradient(
+  90deg,
   $primary-color 0%,
   $primary-color-end 100%
 );
