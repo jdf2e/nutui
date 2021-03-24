@@ -168,10 +168,11 @@ export default defineComponent({
     padding: 30px 80px 20px;
     text-align: center;
     &-content {
+      width: 1200px;
+      margin: 0 auto;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: flex-start;
-      margin-right: 50px;
     }
     &-list {
       position: relative;
