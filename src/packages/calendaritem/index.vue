@@ -108,6 +108,16 @@ interface CalendarState {
   isRange: boolean;
   timer: number;
 }
+interface Day {
+  day: string | number;
+  type: string;
+}
+
+interface MonthInfo {
+  curData: string[] | string;
+  title: string;
+  monthData: Day[];
+}
 
 export default create({
   props: {
@@ -176,35 +186,35 @@ export default create({
     });
 
     // 日期转化成数组
-    const splitDate = date => {
+    const splitDate = (date: string) => {
       return date.split('-');
     };
 
-    const isStart = currDate => {
+    const isStart = (currDate: string) => {
       return Utils.isEqual(state.currDate[0], currDate);
     };
 
-    const isEnd = currDate => {
+    const isEnd = (currDate: string) => {
       return Utils.isEqual(state.currDate[1], currDate);
     };
 
     // 获取当前数据
-    const getCurrDate = (day, month, isRange?) => {
+    const getCurrDate = (day: Day, month: MonthInfo, isRange?: boolean) => {
       return isRange
         ? month.curData[3] +
             '-' +
             month.curData[4] +
             '-' +
-            Utils.getNumTwoBit(day.day)
+            Utils.getNumTwoBit(+day.day)
         : month.curData[0] +
             '-' +
             month.curData[1] +
             '-' +
-            Utils.getNumTwoBit(day.day);
+            Utils.getNumTwoBit(+day.day);
     };
 
     // 获取样式
-    const getClass = (day, month, isRange?) => {
+    const getClass = (day: Day, month: MonthInfo, isRange?: boolean) => {
       const currDate = getCurrDate(day, month, isRange);
       if (day.type == 'curr') {
         if (
@@ -244,14 +254,19 @@ export default create({
     };
 
     // 选中数据
-    const chooseDay = (day, month, isFirst, isRange?) => {
+    const chooseDay = (
+      day: Day,
+      month: MonthInfo,
+      isFirst: boolean,
+      isRange?: boolean
+    ) => {
       if (getClass(day, month, isRange) != `${state.dayPrefix}-disabled`) {
         let days = [...month.curData];
         days = isRange ? days.splice(3) : days.splice(0, 3);
         days[2] =
           typeof day.day == 'number' ? Utils.getNumTwoBit(day.day) : day.day;
         days[3] = `${days[0]}-${days[1]}-${days[2]}`;
-        days[4] = Utils.getWhatDay(days[0], days[1], days[2]);
+        days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
         if (!state.isRange) {
           state.currDate = days[3];
           state.chooseData = [...days];
@@ -283,7 +298,7 @@ export default create({
     };
 
     // 获取当前月数据
-    const getCurrData = type => {
+    const getCurrData = (type: string) => {
       const monthData =
         type == 'prev'
           ? state.monthsData[0]
@@ -304,7 +319,7 @@ export default create({
     };
 
     // 获取日期状态
-    const getDaysStatus = (days, type) => {
+    const getDaysStatus = (days: number, type: string) => {
       // 修复：当某个月的1号是周日时，月份下方会空出来一行
       if (type == 'prev' && days >= 7) {
         days -= 7;
@@ -318,19 +333,19 @@ export default create({
     };
 
     // 获取月数据
-    const getMonth = (curData, type) => {
-      const preMonthDays = Utils.getMonthPreDay(curData[0], curData[1]);
+    const getMonth = (curData: string[], type: string) => {
+      const preMonthDays = Utils.getMonthPreDay(+curData[0], +curData[1]);
       const currMonthDays = Utils.getMonthDays(curData[0], curData[1]);
       const title = {
         year: curData[0],
         month: curData[1]
       };
-      const monthInfo = {
+      const monthInfo: MonthInfo = {
         curData: curData,
         title: `${title.year}年${title.month}月`,
         monthData: [
-          ...getDaysStatus(preMonthDays, 'prev'),
-          ...getDaysStatus(currMonthDays, 'curr')
+          ...(getDaysStatus(preMonthDays, 'prev') as Day[]),
+          ...(getDaysStatus(currMonthDays, 'curr') as Day[])
         ]
       };
       if (type == 'next') {
@@ -364,8 +379,8 @@ export default create({
     // 初始化数据
     const initData = () => {
       // 初始化开始结束数据
-      state.startData = props.startDate ? splitDate(props.startDate) : null;
-      state.endData = props.endDate ? splitDate(props.endDate) : null;
+      state.startData = props.startDate ? splitDate(props.startDate) : '';
+      state.endData = props.endDate ? splitDate(props.endDate) : '';
 
       // 初始化当前日期
       if (!props.defaultValue) {
@@ -409,7 +424,7 @@ export default create({
           state.currDate = props.endDate;
         }
 
-        state.defaultData = [...splitDate(state.currDate)];
+        state.defaultData = [...splitDate(state.currDate as string)];
       }
 
       getMonth(state.defaultData, 'next');
@@ -442,7 +457,7 @@ export default create({
     };
 
     // 区间选择&&当前月&&选中态
-    const isActive = (day, month) => {
+    const isActive = (day: Day, month: MonthInfo) => {
       return (
         state.isRange &&
         day.type == 'curr' &&
@@ -451,7 +466,7 @@ export default create({
     };
 
     // 是否有开始提示
-    const isStartTip = (day, month) => {
+    const isStartTip = (day: Day, month: MonthInfo) => {
       if (isActive(day, month)) {
         return isStart(getCurrDate(day, month));
       } else {
@@ -460,12 +475,12 @@ export default create({
     };
 
     // 是否有结束提示
-    const isEndTip = (day, month) => {
+    const isEndTip = (day: Day, month: MonthInfo) => {
       return isActive(day, month);
     };
 
     // 是否有是当前日期
-    const isCurrDay = (month, day) => {
+    const isCurrDay = (month: any, day: string) => {
       const date = `${month.curData[0]}-${month.curData[1]}-${day}`;
       return Utils.isEqual(date, Utils.date2Str(new Date()));
     };
@@ -496,7 +511,7 @@ export default create({
     };
 
     // 设置月份滚动距离和速度
-    const setTransform = (translateY = 0, type?, time = 1000) => {
+    const setTransform = (translateY = 0, type?: string, time = 1000) => {
       if (monthsPanel?.value) {
         if (type === 'end') {
           monthsPanel.value.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`;
@@ -514,7 +529,7 @@ export default create({
     };
 
     // 计算滚动方向和距离
-    const setMove = (move, type?, time?) => {
+    const setMove = (move: number, type?: string, time?: number) => {
       let updateMove = move + state.transformY;
       const h = months.value?.offsetHeight || 0;
       const offsetHeight = monthsPanel.value?.offsetHeight || 0;
@@ -552,19 +567,19 @@ export default create({
     };
 
     // 监听touch开始
-    const touchStart = event => {
+    const touchStart = (event: TouchEvent) => {
       const changedTouches = event.changedTouches[0];
       state.touchParams.startY = changedTouches.pageY;
-      state.touchParams.startTime = event.timestamp || Date.now();
+      state.touchParams.startTime = event.timeStamp || Date.now();
       state.transformY = state.scrollDistance;
     };
 
     // 监听touchmove
-    const touchMove = event => {
+    const touchMove = (event: TouchEvent) => {
       //event.preventDefault();
       const changedTouches = event.changedTouches[0];
       state.touchParams.lastY = changedTouches.pageY;
-      state.touchParams.lastTime = event.timestamp || Date.now();
+      state.touchParams.lastTime = event.timeStamp || Date.now();
       const move = state.touchParams.lastY - state.touchParams.startY;
       if (Math.abs(move) < 5) {
         return false;
@@ -573,10 +588,10 @@ export default create({
     };
 
     // 监听touchend
-    const touchEnd = event => {
+    const touchEnd = (event: TouchEvent) => {
       const changedTouches = event.changedTouches[0];
       state.touchParams.lastY = changedTouches.pageY;
-      state.touchParams.lastTime = event.timestamp || Date.now();
+      state.touchParams.lastTime = event.timeStamp || Date.now();
       let move = state.touchParams.lastY - state.touchParams.startY;
       if (Math.abs(move) < 5) {
         return false;
