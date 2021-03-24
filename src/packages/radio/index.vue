@@ -17,12 +17,14 @@
 <script lang="ts">
 import { computed, getCurrentInstance, inject } from 'vue';
 import { createComponent } from '@/utils/create';
+import radiogroup from '@/packages/radiogroup/index.vue';
 const { componentName, create } = createComponent('radio');
 
 type Iparent = {
   parentNode: boolean;
 };
 export default create({
+  children: [radiogroup],
   props: {
     value: {
       type: [String, Number, Boolean],

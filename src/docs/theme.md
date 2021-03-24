@@ -29,20 +29,24 @@ $primary-color-end: #fa6419;
 
 ```javascript
 import NutUI from '@nutui/nutui';
-import '@nutui/nutui/dist/nutui.scss';
+import "@nutui/nutui/dist/styles/themes/default.scss";
 ```
 
 ## 定制主题
 
 ### 第一步：新建自定义变量 SCSS 文件
 
-在本地项目中新建一个 **SCSS** 文件，包含上述变量，自定义变量值。
+在本地项目中新建一个 **SCSS** 文件 `custom_theme.scss`，自定义变量值。
+
+``` scss
+$primary-color: #478EF2;
+$primary-color-end: #496AF2;
+```
 
 ### 第二步：修改本地项目 webpack 或者 vite 的配置文件
 
-修改 webpack 配置文件中 **sass-loader** 的配置。在 **options** 的 **data** 属性值中，先后 import 你自定义的 SCSS 文件（如 `custom.scss`）和 NutUI 的样式变量配置文件（路径为 **dist/styles/variable.scss**）。
-
-#### vite 版本
+修改 vite 或者 webpack 配置文件中 **sass-loader** 的配置。如下示例
+#### vite 演示
 
 ``` javascript
 // https://vitejs.dev/config/
@@ -51,7 +55,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "./asset/css/custom.scss";@import "@nutui/nutui/dist/styles/variables.scss";`
+        additionalData: `@import "./assets/custom_theme.scss";`
       }
     }
   }
@@ -67,7 +71,7 @@ export default defineConfig({
         {
             loader: 'sass-loader',
             options: {
-                data: `@import "./asset/css/custom.scss";@import "@nutui/nutui/dist/styles/variables.scss";`,
+                data: `@import "./assets/custom_theme.scss";`,
             }
         }
     ]
@@ -84,9 +88,11 @@ module.exports = {
             scss: {
                 // @/ 是 src/ 的别名
                 // 注意：在 sass-loader v7 中，这个选项名是 "data"
-                prependData: `@import "@/assets/custom_theme.scss";@import "@nutui/nutui/dist/styles/variables.scss";`,
+                prependData: `@import "@/assets/custom_theme.scss";`,
             }
         },
     }
 }
 ```
+
+> @nutui/nutui 多种模式（vite 、vue/cli、cdn、ts）使用示例 [Demo](https://github.com/jdf2e/nutui-demo)

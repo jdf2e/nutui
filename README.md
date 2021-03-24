@@ -3,7 +3,7 @@
  
 一套京东风格的轻量级移动端 Vue3组件库
     
-![NutUI](https://img11.360buyimg.com/uba/jfs/t1/11117/21/3608/18942/5c20ab52E35e5a500/02e3c1f89cd3dad1.png)
+![NutUI](https://img14.360buyimg.com/imagetools/s200x200_jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png)
 
 ## ⌨️ 本地开发
 

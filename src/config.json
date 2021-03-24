@@ -257,7 +257,16 @@
           "type": "component",
           "show": true,
           "desc": "轮播",
-          "author": "ailululu"
+          "author": "suzigang"
+        },
+        {
+          "name": "SwiperItem",
+          "sort": 6,
+          "cName": "轮播图子组件",
+          "type": "component",
+          "show": false,
+          "desc": "轮播图子组件",
+          "author": "suzigang"
         },
         {
           "name": "Avatar",
@@ -353,7 +362,7 @@
           "cName": "下拉刷新",
           "desc": "下拉刷新",
           "sort": 16,
-          "show": true,
+          "show": false,
           "author": "yangxiaolu3"
         },
         {
@@ -413,6 +422,15 @@
           "type": "component",
           "show": true,
           "desc": "标签栏组件",
+          "author": "Drjingfubo"
+        },
+        {
+          "name": "Tabbaritem",
+          "sort": 2,
+          "cName": "标签栏子组件",
+          "type": "component",
+          "show": false,
+          "desc": "标签栏子组件",
           "author": "Drjingfubo"
         },
         {
@@ -476,7 +494,17 @@
           "desc": "日历组件",
           "sort": 5,
           "show": true,
-          "author": ""
+          "author": "songchenglin1"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CalendarItem",
+          "type": "component",
+          "cName": "日历子组件",
+          "desc": "日历子组件",
+          "sort": 5,
+          "show": false,
+          "author": "songchenglin1"
         },
         {
           "version": "3.0.0",

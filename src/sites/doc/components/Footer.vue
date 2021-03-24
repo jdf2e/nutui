@@ -407,7 +407,6 @@ export default defineComponent({
   .vx-desc {
     margin-bottom: 10px;
     line-height: 17px;
-    font-family: PingFangSC-Regular;
     font-size: 12px;
     color: #1a1a1a;
     &:last-child {

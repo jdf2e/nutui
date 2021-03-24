@@ -13,6 +13,9 @@
       -webkit-transform: scaleY(0.5);
       transform: scaleY(0.5);
     }
+    .collapse-title-value {
+      display: inline-block;
+    }
   }
   .collapse-item {
     position: relative;
@@ -29,14 +32,14 @@
       display: block;
       position: absolute;
       top: 50%;
-      margin-top: -6px;
+      // margin-top: -6px;
       right: 16px;
-      width: 24px;
-      height: 12px;
-      line-height: 24px;
-      background-image: url(https://img13.360buyimg.com/imagetools/jfs/t1/153504/23/6125/464/5fb240abE562ed1c5/382909c698fa3c1f.png);
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
+      // width: 24px;
+      // height: 12px;
+      // line-height: 24px;
+      // background-image: url(https://img13.360buyimg.com/imagetools/jfs/t1/153504/23/6125/464/5fb240abE562ed1c5/382909c698fa3c1f.png);
+      // background-repeat: no-repeat;
+      // background-size: 100% 100%;
       transition: transform 0.3s;
     }
     .col-expanded {
@@ -51,11 +54,11 @@
     }
     .titleIconRight {
       vertical-align: middle;
-      margin: -1px 0 0 10px;
+      margin: 0px 0 0 10px;
     }
     .titleIconLeft {
       vertical-align: middle;
-      margin: -1px 10px 0 0;
+      margin: 0px 10px 0 0;
     }
   }
   .collapse-wrapper {
@@ -77,13 +80,14 @@
     color: #c8c9cc;
     cursor: not-allowed;
     pointer-events: none;
-    .collapse-icon-disabled {
-      background-image: url(https://img12.360buyimg.com/imagetools/jfs/t1/150103/9/14710/474/5fb2419aE63e79ef3/8db2699c11139027.png);
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-    }
+    // .collapse-icon-disabled {
+    //   background-image: url(https://img12.360buyimg.com/imagetools/jfs/t1/150103/9/14710/474/5fb2419aE63e79ef3/8db2699c11139027.png);
+    //   background-repeat: no-repeat;
+    //   background-size: 100% 100%;
+    // }
   }
-  .nut-collapse-item-left {
+  .titleIconLeft {
+    float: left;
     .collapse-item {
       padding: 10px 16px 10px 50px;
       .collapse-icon {
@@ -93,6 +97,9 @@
         right: 16px;
       }
     }
+  }
+  .titleIconRight {
+    float: right;
   }
   // .nut-collapse-item.nut-collapse-item-icon {
   //     .collapse-icon {

@@ -1,14 +1,19 @@
 <template>
-  <view class="swiper-item" :style="style">
+  <view :class="classes" :style="style">
     <slot></slot>
   </view>
 </template>
 
 <script lang="ts">
-import { computed, reactive, inject, getCurrentInstance } from 'vue';
+import { computed, reactive, inject, getCurrentInstance, watch } from 'vue';
 import { createComponent } from '@/utils/create';
 import { useExpose } from '@/packages/swiper/use-expose';
-const { create } = createComponent('swiper-item');
+const { create, componentName } = createComponent('swiper-item');
+interface IStyle {
+  width?: string;
+  height?: string;
+  transform?: string;
+}
 export default create({
   props: {},
   setup(props, { slots }) {
@@ -17,8 +22,16 @@ export default create({
     const state = reactive({
       offset: 0
     });
+
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true
+      };
+    });
+
     const style = computed(() => {
-      const style = {};
+      const style: IStyle = {};
       const direction = parent?.props.direction;
       if (parent?.size.value) {
         style[
@@ -42,7 +55,8 @@ export default create({
     useExpose({ setOffset });
 
     return {
-      style
+      style,
+      classes
     };
   }
 });

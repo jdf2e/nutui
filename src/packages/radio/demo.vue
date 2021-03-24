@@ -11,8 +11,6 @@
       <span>radioVal1: {{ radioVal1 }} </span>
     </div>
 
-    <p class="p-word">组合使用 Radio 时推荐使用 radiogroup 组件，见下方示例</p>
-
     <h4>RadioGroup基本用法</h4>
     <div class="show-demo">
       <nut-radiogroup v-model:value="radioGroupVal1">
@@ -128,10 +126,10 @@ export default createDemo({
 
 <style lang="scss" scoped>
 .demo-list {
+  padding-top: 0;
   margin: 60px 0;
-  padding: 17px;
   h4 {
-    margin-top: 10px;
+    margin: 20px 0 10px 25px;
     line-height: 20px;
     color: #909ca4;
     font-size: 14px;
