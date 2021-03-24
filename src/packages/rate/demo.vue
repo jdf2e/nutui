@@ -26,9 +26,9 @@
     <nut-rate v-model="state.val6" readonly></nut-rate>
 
     <h2>绑定事件,{{ state.result }}</h2>
-    <nut-rate @change="onChange"></nut-rate>
+    <nut-rate v-model="state.val7" @change="onChange"></nut-rate>
     <h2>自定义尺寸 35px</h2>
-    <nut-rate v-model="state.val7" icon-size="35"></nut-rate>
+    <nut-rate v-model="state.val8" icon-size="35"></nut-rate>
   </div>
 </template>
 
@@ -49,6 +49,7 @@ export default createDemo({
       val5: 3,
       val6: 3,
       val7: 3,
+      val8: 3,
       result: ''
     });
     const onChange = val => {
