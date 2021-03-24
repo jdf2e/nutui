@@ -78,9 +78,8 @@
           class="article-item"
           v-for="item in communityArticleList"
           :key="item.id"
-          @click="toLink(item.id)"
         >
-          <a class="article-link" :href="item.link">
+          <a class="article-link" target="_blank" :href="item.link">
             {{ item.title }} - {{ item.user_name }}
           </a>
         </li>
@@ -99,7 +98,7 @@ import {
 import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
 import { currentRoute } from '@/sites/assets/util/ref';
-import { ArticleApiService } from '@/sites/service/ArticleApiService';
+import { ApiService } from '@/sites/service/ApiService';
 export default defineComponent({
   name: 'doc',
   components: {
@@ -134,8 +133,8 @@ export default defineComponent({
       watchDemoUrl(route);
 
       // 文章列表接口
-      const articleApiService = new ArticleApiService();
-      articleApiService.getArticle().then(res => {
+      const apiService = new ApiService();
+      apiService.getArticle().then(res => {
         if (res?.state == 0) {
           (res.value.data.arrays as any[]).forEach(element => {
             if (element.type == 1) {
