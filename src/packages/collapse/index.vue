@@ -17,10 +17,10 @@ export default create({
     accordion: {
       type: Boolean
     },
-    expandIconPosition: {
-      type: String,
-      default: 'right'
-    },
+    // expandIconPosition: {
+    //   type: String,
+    //   default: 'right'
+    // },
     titleIcon: {
       type: String,
       default: ''
