@@ -47,7 +47,6 @@
       <nut-collapse
         v-model:active="active3"
         :accordion="true"
-        :expandIconPosition="expandIconPosition"
         icon="arrow-right2"
         rotate="90"
       >
@@ -92,7 +91,6 @@ export default createDemo({
       active3: 1,
       active4: 1,
       active5: 1,
-      expandIconPosition: 'left',
       title1: '标题1',
       title2: '标题2',
       title3: '标题3',
