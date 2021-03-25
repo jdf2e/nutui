@@ -215,24 +215,33 @@ $notify-warning-background-color: linear-gradient(
   rgba(255, 154, 13, 1) 100%
 );
 
+// rate
+
+$rate-icon-color: $primary-color;
+$rate-icon-void-color: $disable-color;
+
 // tabbar
 
 $tabbar-active-color: $primary-color;
 $tabbar-border-color: #eee;
 
 //infiniteloading
-
 $infinite-bottom-color: #c8c8c8;
 
 //range
 $range-max: #333333;
-$rang-bg-color: #ffa39a;
+$rang-bg-color: rgba($primary-color, 0.5);
 $rang-bar-bg-color: linear-gradient(
   135deg,
-  rgba(250, 44, 25, 1) 0%,
-  rgba(250, 63, 25, 1) 45%,
-  rgba(250, 89, 25, 1) 83%,
-  rgba(250, 100, 25, 1) 100%
+  $primary-color 0%,
+  $primary-color-end 100%
+);
+
+//address
+$address-region-tab-line: linear-gradient(
+  90deg,
+  $primary-color 0%,
+  $primary-color-end 100%
 );
 
 view-block {

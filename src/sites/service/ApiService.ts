@@ -1,5 +1,5 @@
 import { HttpClient } from './HttpClient';
-export class ArticleApiService {
+export class ApiService {
   private httpClient: HttpClient;
 
   constructor() {
@@ -12,16 +12,21 @@ export class ArticleApiService {
    */
   getArticle() {
     return this.httpClient.request(
-      '/article/list?pageIndex=1&pageSize=100',
+      '/openapi/article?pageIndex=1&pageSize=100',
       'get',
       {}
     );
   }
   /**
-   * 保存用户访问数据
+   * 获取nutui使用案例
    * @returns
+   * @memberof ArticleApiService
    */
-  saveUserInfo(parmas: any) {
-    return this.httpClient.request('/visit/saveVisitInfo', 'post', parmas);
+  getCases() {
+    return this.httpClient.request(
+      '/openapi/cases?pageIndex=1&pageSize=100',
+      'get',
+      {}
+    );
   }
 }

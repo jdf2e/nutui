@@ -1,26 +1,32 @@
 <template>
   <view
     ref="container"
-    class="swiper-cont"
+    :class="classes"
     @touchstart="onTouchStart"
     @touchmove="onTouchMove"
     @touchend="onTouchEnd"
     @touchcancel="onTouchEnd"
   >
     <view
-      :class="{ 'swiper-inner': true, 'swiper-vertical': isVertical }"
+      :class="{
+        [`${componentName}-inner`]: true,
+        [`${componentName}-vertical`]: isVertical
+      }"
       :style="state.style"
     >
       <slot></slot>
     </view>
     <slot name="page"></slot>
-    <view class="swiper-pagination" v-if="paginationVisible && !slots.page">
+    <view
+      :class="{ [`${componentName}-pagination`]: true }"
+      v-if="paginationVisible && !slots.page"
+    >
       <i
         :style="{
           backgroundColor: activePagination === index ? paginationColor : '#ddd'
         }"
         v-for="(item, index) in state.children.length"
-        v-bind:key="index"
+        :key="index"
       />
     </view>
   </view>
@@ -44,7 +50,7 @@ import {
 import { createComponent } from '@/utils/create';
 import { useTouch } from './use-touch';
 import { useExpose } from './use-expose';
-const { create } = createComponent('swiper');
+const { create, componentName } = createComponent('swiper');
 import swiperItem from '@/packages/swiperitem/index.vue';
 export default create({
   children: [swiperItem],
@@ -118,6 +124,13 @@ export default create({
 
     const touch = useTouch();
 
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true
+      };
+    });
+
     const isVertical = computed(() => props.direction === 'vertical');
 
     const delTa = computed(() => {
@@ -170,11 +183,11 @@ export default create({
       return Math.min(Math.max(num, min), max);
     };
 
-    const requestFrame = fn => {
+    const requestFrame = (fn: FrameRequestCallback) => {
       window.requestAnimationFrame.call(window, fn);
     };
 
-    const getOffset = (active, offset = 0) => {
+    const getOffset = (active: number, offset = 0) => {
       let currentPosition = active * size.value;
       if (!props.loop) {
         currentPosition = Math.min(currentPosition, -minOffset.value);
@@ -188,7 +201,7 @@ export default create({
       return targetOffset;
     };
 
-    const getActive = pace => {
+    const getActive = (pace: number) => {
       const { active } = state;
       if (pace) {
         if (props.loop) {
@@ -436,7 +449,9 @@ export default create({
 
     return {
       state,
+      classes,
       container,
+      componentName,
       isVertical,
       slots,
       activePagination,

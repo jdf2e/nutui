@@ -53,12 +53,12 @@ export default create({
   props: {
     name: { type: String, default: 'file' },
     url: { type: String, default: '' },
-    defaultFileList: { type: Array, default: () => new Array<FileItem>() },
+    // defaultFileList: { type: Array, default: () => new Array<FileItem>() },
     fileList: { type: Array, default: () => [] },
     isPreview: { type: Boolean, default: true },
     isDeletable: { type: Boolean, default: true },
     method: { type: String, default: 'post' },
-    capture: { type: String, default: '' },
+    capture: { type: String, default: 'camera' },
     maxSize: { type: [Number, String], default: Number.MAX_VALUE },
     maxCount: { type: [Number, String], default: 1 },
     clearInput: { type: Boolean, default: false },
@@ -72,9 +72,7 @@ export default create({
     disabled: { type: Boolean, default: false },
     beforeUpload: {
       type: Function,
-      default: (files: FileList) => {
-        return files;
-      }
+      default: null
     },
     beforeDelete: {
       type: Function,
@@ -82,8 +80,8 @@ export default create({
         return true;
       }
     },
-    onChange: { type: Function },
-    customRequest: { type: Function }
+    onChange: { type: Function }
+    // customRequest: { type: Function }
   },
   emits: [
     'start',
@@ -217,16 +215,18 @@ export default create({
       const $el = event.target as HTMLInputElement;
       let { files } = $el;
 
-      if (props.beforeUpload) {
-        files = props.beforeUpload(files);
-      }
-
-      const _files: File[] = filterFiles(new Array<File>().slice.call(files));
-
-      readFile(_files);
-
       if (props.clearInput) {
         clearInput($el);
+      }
+
+      if (props.beforeUpload) {
+        props.beforeUpload(files).then((f: Array<File>) => {
+          const _files: File[] = filterFiles(new Array<File>().slice.call(f));
+          readFile(_files);
+        });
+      } else {
+        const _files: File[] = filterFiles(new Array<File>().slice.call(files));
+        readFile(_files);
       }
 
       emit('change', {

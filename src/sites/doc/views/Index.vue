@@ -5,7 +5,6 @@
     <div class="doc-content-document">
       <router-view />
     </div>
-    <doc-footer></doc-footer>
     <doc-demo-preview :url="demoUrl"></doc-demo-preview>
   </div>
 </template>

@@ -3,7 +3,7 @@
     <h2>基础用法</h2>
     <div>
       <nut-cell
-        :showIcon="true"
+        :show-icon="true"
         title="选择单个日期"
         :desc="date ? `${date} ${dateWeek}` : '请选择'"
         @click="openSwitch('isVisible')"
@@ -22,7 +22,7 @@
 
     <div>
       <nut-cell
-        :showIcon="true"
+        :show-icon="true"
         title="选择日期区间"
         :desc="date1 ? `${date1[0]}至${date1[1]}` : '请选择'"
         @click="openSwitch('isVisible1')"
@@ -43,7 +43,7 @@
     <h2>自定义日历-自动回填</h2>
     <div>
       <nut-cell
-        :showIcon="true"
+        :show-icon="true"
         title="选择日期"
         :desc="date3 ? date3 : '请选择'"
         @click="openSwitch('isVisible3')"
@@ -107,29 +107,29 @@ export default createDemo({
       isVisible3: false,
       date3: ''
     });
-    const openSwitch = param => {
+    const openSwitch = (param: string) => {
       state[`${param}`] = true;
     };
 
-    const closeSwitch = param => {
+    const closeSwitch = (param: string) => {
       state[`${param}`] = false;
     };
 
-    const setChooseValue = param => {
+    const setChooseValue = (param: string) => {
       state.date = param[3];
       state.dateWeek = param[4];
     };
 
-    const setChooseValue1 = param => {
+    const setChooseValue1 = (param: string) => {
       state.date1 = [...[param[0][3], param[1][3]]];
     };
 
-    const setChooseValue2 = param => {
+    const setChooseValue2 = (param: string) => {
       state.date2 = param[3];
       console.log(state.date2);
     };
 
-    const setChooseValue3 = param => {
+    const setChooseValue3 = (param: string) => {
       state.date3 = param[3];
     };
 
