@@ -91,7 +91,7 @@ export default create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [`${prefixCls}-left`]: parent.props.classDirection === 'left',
+        // [`${prefixCls}-left`]: parent.props.classDirection === 'left',
         [`${prefixCls}-icon`]: parent.props.icon
       };
     });
@@ -106,7 +106,7 @@ export default create({
       iconSize: parent.props.iconSize,
       iconColor: parent.props.iconColor,
       openExpanded: false,
-      classDirection: 'right',
+      // classDirection: 'right',
       iconStyle: {
         transform: 'rotate(0deg)',
         marginTop: parent.props.iconHeght
@@ -230,7 +230,7 @@ export default create({
         }
       }
 
-      proxyData.classDirection = parent.props.expandIconPosition;
+      // proxyData.classDirection = parent.props.expandIconPosition;
       // if (parent.props.icon && parent.props.icon != 'none') {
       //   proxyData.iconStyle['background-image'] =
       //     'url(' + parent.props.icon + ')';
