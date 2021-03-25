@@ -9,7 +9,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/devServer': {
-        target: 'http://nutui-server.jd.com',
+        target: 'https://nutui.jd.com',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/devServer/, '')
       }
