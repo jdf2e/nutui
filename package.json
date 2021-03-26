@@ -37,7 +37,7 @@
   ],
   "scripts": {
     "checked": "npm run generate:file && tsc",
-    "dev": "npm run checked && vite --open",
+    "dev": "npm run checked && vite --open --force",
     "build:site": "npm run checked && vite build",
     "build:gh-pages": "npm run checked && vite build --base=/nutui/",
     "build:site:oss": "npm run checked && vite build --base=/nutui/3x/",
