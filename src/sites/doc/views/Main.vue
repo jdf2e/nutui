@@ -5,9 +5,7 @@
       <div class="content-left">
         <div class="content-title"> NutUI 3.0 </div>
         <div class="content-smile"> </div>
-        <div class="content-subTitle"
-          >一套京东风格的轻量级移动端 Vue 组件库</div
-        >
+        <div class="content-subTitle">京东风格的轻量级移动端 Vue 组件库</div>
         <div class="content-button">
           <div class="leftButton" @click="toIntro">
             <div class="leftButtonText">开始使用</div>
