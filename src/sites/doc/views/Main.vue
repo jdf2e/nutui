@@ -31,7 +31,6 @@
           ></iframe>
         </div>
       </div>
-      <div class="content-right"></div>
     </div>
     <div class="doc-content-features">
       <div class="doc-content-hd">
@@ -211,6 +210,11 @@ export default defineComponent({
 }
 .doc-content-index {
   .content-left {
+    background: url(https://storage.360buyimg.com/imgtools/a423faab46-8b142e80-8bb1-11eb-853a-6fded8704e77.png)
+      no-repeat;
+    background-size: 1126px 568px;
+    background-position-x: right;
+    background-position-y: 150px;
     .content-title {
       animation: fadeInLeft 1s both;
     }
@@ -507,13 +511,6 @@ export default defineComponent({
         }
       }
     }
-  }
-  .content-right {
-    flex: 2;
-    background: url(https://storage.360buyimg.com/imgtools/a423faab46-8b142e80-8bb1-11eb-853a-6fded8704e77.png)
-      no-repeat;
-    background-size: contain;
-    background-position: center;
   }
 }
 .doc-content-black {
