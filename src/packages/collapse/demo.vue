@@ -107,12 +107,6 @@ export default createDemo({
 });
 </script>
 
-<style>
-#app {
-  height: auto;
-  background: #f7f8fa;
-}
-</style>
 <style lang="scss" scoped>
 .demo-list {
   padding-top: 0;
