@@ -1,18 +1,32 @@
 .nut-inputnumber {
   display: flex;
   align-items: center;
+
+  &--disabled {
+    input {
+      color: $inputnumber-icon-void-color;
+    }
+  }
+
+  &__icon {
+    color: $inputnumber-icon-color;
+    font-size: $inputnumber-icon-size;
+    cursor: pointer;
+    &--disabled {
+      color: $inputnumber-icon-void-color;
+      cursor: not-allowed;
+    }
+  }
+
   input {
     width: $inputnumber-input-width;
-    height: $inputnumber-input-height;
+    height: 100%;
     text-align: center;
     outline: none;
     border: 0;
-    font-family: initial;
+    margin: 0 6px;
     background-color: $inputnumber-input-background-color;
     border-radius: $inputnumber-input-border-radius;
-    &:read-only {
-      color: $disable-color;
-    }
   }
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
