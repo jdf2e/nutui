@@ -9,7 +9,7 @@
       <view-block class="nut-picker__bar">
         <view-block class="nut-picker__left" @click="close()"> 取消</view-block>
         <view-block> {{ title }}</view-block>
-        <view-block @click="confirm()"> 确定</view-block>
+        <view-block @click="confirm()">确定</view-block>
       </view-block>
 
       <view-block class="nut-picker__column">
@@ -165,7 +165,7 @@ export default create({
       },
       changeHandler: (columnIndex, dataIndex) => {
         if (dataType.value === 'cascade') {
-          let cursor: any = toRaw(formattedColumns.value);
+          let cursor: any = formattedColumns.value;
           //最外层使用props.defaultIndex作为初始index
           if (columnIndex === 0) {
             defaultIndex.value = dataIndex;
@@ -173,6 +173,7 @@ export default create({
             let i = 0;
             while (cursor) {
               if (i === columnIndex) {
+                formattedColumns.value;
                 cursor.defaultIndex = dataIndex;
               } else if (i > columnIndex) {
                 cursor.defaultIndex = 0;
@@ -204,7 +205,6 @@ export default create({
           const checkedArr = toRaw(formattedColumns.value).map(
             (res: any) => res.values[res.defaultIndex]
           );
-          console.log(formattedColumns.value);
           emit('confirm', checkedArr);
         } else if (dataType.value === 'cascade') {
           emit(
