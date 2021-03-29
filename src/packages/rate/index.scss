@@ -10,10 +10,11 @@
 
     &__icon {
       color: $rate-icon-color;
-      &.disabled {
+      cursor: pointer;
+      &--disabled {
         color: $rate-icon-void-color;
       }
-      &.half {
+      &--half {
         position: absolute;
         width: 50%;
         left: 0;

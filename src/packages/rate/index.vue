@@ -10,13 +10,13 @@
       <nut-icon
         :size="iconSize"
         class="nut-rate-item__icon"
-        :class="{ disabled: disabled || n > modelValue }"
+        :class="{ 'nut-rate-item__icon--disabled': disabled || n > modelValue }"
         :color="n <= modelValue ? activeColor : voidColor"
         :name="n <= modelValue ? checkedIcon : uncheckedIcon"
       />
       <nut-icon
         v-if="allowHalf && modelValue + 1 > n"
-        class="nut-rate-item__icon half"
+        class="nut-rate-item__icon nut-rate-item__icon--half"
         :color="n <= modelValue ? activeColor : voidColor"
         :size="iconSize"
         :name="checkedIcon"
@@ -95,7 +95,7 @@ export default create({
       } else {
         value = index;
         if (props.allowHalf) {
-          if ((e?.target as Element).className.includes('__icon half')) {
+          if ((e?.target as Element).className.includes('__icon--half')) {
             value -= 0.5;
           }
         }
