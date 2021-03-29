@@ -27,6 +27,7 @@
 <script lang="ts">
 import { computed } from 'vue';
 import { createComponent } from '@/utils/create';
+import { pxCheck } from '@/utils/pxCheck';
 const { componentName, create } = createComponent('rate');
 export default create({
   props: {
@@ -83,9 +84,6 @@ export default create({
         [prefixCls]: true
       };
     });
-    const pxCheck = (value: string | number) => {
-      return typeof value === 'number' ? `${value}px` : String(value);
-    };
     const onClick = (e: Event, index: number) => {
       e.preventDefault();
       e.stopPropagation();

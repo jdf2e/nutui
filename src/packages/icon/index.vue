@@ -1,7 +1,8 @@
 <script lang="ts">
-import { h, PropType, computed } from 'vue';
+import { h, PropType } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('icon');
+import { pxCheck } from '@/utils/pxCheck';
 
 export default create({
   props: {
@@ -20,10 +21,6 @@ export default create({
 
     const isImage = () => {
       return props.name ? props.name.indexOf('/') !== -1 : false;
-    };
-
-    const pxCheck = (value: string | number) => {
-      return typeof Number(value) === 'number' ? `${value}px` : String(value);
     };
 
     return () => {
