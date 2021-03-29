@@ -1,36 +1,11 @@
-.demo {
-  // scroll-behavior: smooth;
-  .text-data {
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    padding-left: 16px;
-    display: flex;
-    align-items: center;
-    width: 342px;
-    height: 46px;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 7px;
-    box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
-    line-height: 19px;
-    font-family: PingFangSC-Medium;
-    font-size: 13px;
-    color: rgba(102, 102, 102, 1);
-  }
-}
-
 .nut-backtop {
   display: none;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 111;
   &.show {
-    display: block;
     width: 40px;
     height: 40px;
-    background: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(224, 224, 224, 1);
+    background: $white;
+    border: 1px solid $backtop-border-color;
     border-radius: 50%;
     display: flex;
     align-items: center;

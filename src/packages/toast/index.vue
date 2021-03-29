@@ -25,12 +25,14 @@
   </Transition>
 </template>
 <script>
-import Icon from '@/packages/icon/index.vue';
 import { toRefs, toRef, reactive, computed, watch, onMounted } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('toast');
+import Icon from '@/packages/icon/index.vue';
 export default create({
-  children: [Icon],
+  components: {
+    [Icon.name]: Icon
+  },
   props: {
     id: String,
     msg: String,

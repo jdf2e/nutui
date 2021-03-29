@@ -1,4 +1,4 @@
-# calendar 组件
+# Calendar 组件
 
 ### 介绍
 
@@ -201,12 +201,13 @@ setup() {
 | poppable          | 是否弹窗状态展示                                  | Boolean        | true            |
 | is-auto-back-fill | 自动回填                                          | Boolean        | false           |
 | title             | 显示标题                                          | String         | ‘日期选择’      |
-| default-value     | 默认值，日期选择 String 格式，区间选择 Array 格式 | String / Array | null            |
+| default-value     | 默认值，日期选择 String 格式，区间选择 Array 格式 | String 、 Array | null            |
 | start-date        | 开始日期， 如果不限制开始日期传 null              | String         | 今天            |
 | end-date          | 结束日期，如果不限制结束日期传 null               | String         | 距离今天 365 天 |
 
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
+| ----------------- | --------------------- | -------------- |
 | choose | 选择之后或是点击确认按钮触发 | 日期数组（包含年月日和星期）
 | close | 关闭时触发 | -

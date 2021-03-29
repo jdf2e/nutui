@@ -12,8 +12,9 @@
           class="arrow-back"
           @click="switchModule"
           v-if="showModule == 'custom' && type == 'exist' && backBtnIcon"
-          ><nut-icon :name="backBtnIcon" color="#CCCCCC"></nut-icon
-        ></view-block>
+        >
+          <nut-icon :name="backBtnIcon" color="#CCCCCC"></nut-icon>
+        </view-block>
         <view-block class="arrow-back" v-else></view-block>
 
         <view-block v-if="showModule == 'custom'">{{
@@ -23,14 +24,14 @@
           existAddressTitle
         }}</view-block>
 
-        <view-block class="arrow-close" @click="handClose('cross')"
-          ><nut-icon
+        <view-block class="arrow-close" @click="handClose('cross')">
+          <nut-icon
             v-if="closeBtnIcon"
             :name="closeBtnIcon"
             color="#CCCCCC"
             size="18px"
-          ></nut-icon
-        ></view-block>
+          ></nut-icon>
+        </view-block>
       </view-block>
 
       <!-- 请选择 -->
@@ -43,8 +44,9 @@
             :key="index"
             :ref="key"
             @click="changeRegionTab(item, key, index)"
-            ><view>{{ getTabName(item, index) }}</view></view-block
           >
+            <view>{{ getTabName(item, index) }}</view>
+          </view-block>
 
           <view-block class="region-tab-line" ref="regionLine"></view-block>
         </view-block>
@@ -120,9 +122,28 @@ import { reactive, ref, toRefs, watch, nextTick } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('address');
 import { TweenMax } from 'gsap';
-import Icon from '@/packages/icon/index.vue';
+interface RegionData {
+  name: string;
+  [key: string]: any;
+}
+interface Region {
+  province: RegionData[];
+  city: RegionData[];
+  country: RegionData[];
+  town: RegionData[];
+  [key: string]: any;
+}
+
+interface AddressList {
+  id?: string | number;
+  provinceName: string;
+  cityName: string;
+  countyName: string;
+  townName: string;
+  addressDetail: string;
+  selectedAddress: boolean;
+}
 export default create({
-  children: [Icon],
   props: {
     show: {
       type: Boolean,
@@ -191,7 +212,7 @@ export default create({
   },
   emits: [
     'update:show',
-    'on-change',
+    'change',
     'selected',
     'close',
     'close-mask',
@@ -199,13 +220,7 @@ export default create({
   ],
 
   setup(props, { emit }) {
-    console.log('componentName', componentName);
-
     const regionLine = ref<null | HTMLElement>(null);
-    // const tabItemprovince = ref<null | HTMLElement>(null);
-    // const tabItemcity = ref<null | HTMLElement>(null);
-    // const tabItemcountry = ref<null | HTMLElement>(null);
-    // const tabItemtown = ref<null | HTMLElement>(null);
 
     const tabItemRef = reactive({
       province: ref<null | HTMLElement>(null),
@@ -227,10 +242,10 @@ export default create({
     });
 
     const selectedRegion = reactive({
-      province: {},
-      city: {},
-      country: {},
-      town: {}
+      province: {} as RegionData,
+      city: {} as RegionData,
+      country: {} as RegionData,
+      town: {} as RegionData
     }); //已选择的 省、市、县、镇
 
     let selectedExistAddress = reactive({}); // 当前选择的地址
@@ -238,7 +253,7 @@ export default create({
     const closeWay = ref('self');
 
     //获取已选地区列表名称
-    const getTabName = (item, index) => {
+    const getTabName = (item: RegionData, index: number) => {
       if (item.name) return item.name;
 
       if (tabIndex.value < index) {
@@ -261,7 +276,7 @@ export default create({
     };
     // 移动下面的红线
     const lineAnimation = () => {
-      const name = tabItemRef[tabName.value[tabIndex.value]];
+      const name = (tabItemRef as any)[tabName.value[tabIndex.value]];
       nextTick(() => {
         if (name) {
           const distance = name.offsetLeft;
@@ -270,7 +285,7 @@ export default create({
       });
     };
     // 切换下一级列表
-    const nextAreaList = item => {
+    const nextAreaList = (item: RegionData | string) => {
       // onchange 接收的参数
       const calBack = {
         next: '',
@@ -278,10 +293,10 @@ export default create({
         custom: tabName.value[tabIndex.value]
       };
 
-      selectedRegion[tabName.value[tabIndex.value]] = item;
+      (selectedRegion as any)[tabName.value[tabIndex.value]] = item;
 
       for (let i = tabIndex.value; i < tabIndex.value - 1; i++) {
-        selectedRegion[tabName.value[i + 1]] = {};
+        (selectedRegion as any)[tabName.value[i + 1]] = {};
       }
 
       if (tabIndex.value < 3) {
@@ -291,28 +306,28 @@ export default create({
 
         // 切换下一个
         calBack.next = tabName.value[tabIndex.value];
-        calBack.value = item;
-        emit('on-change', calBack);
+        calBack.value = item as string;
+        emit('change', calBack);
       } else {
         handClose();
       }
     };
     //切换地区Tab
-    const changeRegionTab = (item, key, index) => {
+    const changeRegionTab = (item: RegionData, key: number, index: number) => {
       tabIndex.value = index;
       lineAnimation();
     };
 
     // 选择现有地址
-    const selectedExist = item => {
-      const copyExistAdd = props.existAddress as [];
+    const selectedExist = (item: RegionData) => {
+      const copyExistAdd = props.existAddress as AddressList[];
       let prevExistAdd = {};
 
       copyExistAdd.forEach((list, index) => {
-        if (list && (list as any).selectedAddress) {
+        if (list && (list as AddressList).selectedAddress) {
           prevExistAdd = list;
         }
-        (list as any).selectedAddress = false;
+        (list as AddressList).selectedAddress = false;
       });
 
       item.selectedAddress = true;
@@ -326,7 +341,7 @@ export default create({
     // 初始化
     const initAddress = () => {
       for (let i = 0; i < tabName.value.length; i++) {
-        selectedRegion[tabName.value[i]] = {};
+        (selectedRegion as any)[tabName.value[i]] = {};
       }
       tabIndex.value = 0;
       lineAnimation();
@@ -334,8 +349,6 @@ export default create({
 
     // 关闭
     const close = () => {
-      console.log('关闭');
-
       const resCopy = Object.assign(
         {
           addressIdStr: '',
@@ -353,16 +366,16 @@ export default create({
         const { province, city, country, town } = resCopy;
 
         resCopy.addressIdStr = [
-          (province as any).id || 0,
-          (city as any).id || 0,
-          (country as any).id || 0,
-          (town as any).id || 0
+          (province as RegionData).id || 0,
+          (city as RegionData).id || 0,
+          (country as RegionData).id || 0,
+          (town as RegionData).id || 0
         ].join('_');
         resCopy.addressStr = [
-          (province as any).name,
-          (city as any).name,
-          (country as any).name,
-          (town as any).name
+          (province as RegionData).name,
+          (city as RegionData).name,
+          (country as RegionData).name,
+          (town as RegionData).name
         ].join('');
         res.data = resCopy;
       } else {
@@ -439,7 +452,7 @@ export default create({
       value => {
         //  existAddress.value = value;
         value.forEach((item, index) => {
-          if ((item as any).selectedAddress) {
+          if ((item as AddressList).selectedAddress) {
             selectedExistAddress = item as {};
           }
         });

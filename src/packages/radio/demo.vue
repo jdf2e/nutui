@@ -2,36 +2,35 @@
   <div class="demo-list">
     <h4>Radio基本用法</h4>
     <div class="show-demo">
-      <nut-radio v-model="radioVal" :label="2">备选项</nut-radio>
+      <nut-radio v-model:value="radioVal" :label="2">备选项</nut-radio>
     </div>
     <h4>组合使用Radio</h4>
     <div class="show-demo">
-      <nut-radio v-model="radioVal1" :label="1">备选项1</nut-radio>
-      <nut-radio v-model="radioVal1" :label="2">备选项2</nut-radio>
+      <nut-radio v-model:value="radioVal1" :label="1">备选项1</nut-radio>
+      <nut-radio v-model:value="radioVal1" :label="2">备选项2</nut-radio>
       <span>radioVal1: {{ radioVal1 }} </span>
     </div>
 
-    <p class="p-word">组合使用 Radio 时推荐使用 radiogroup 组件，见下方示例</p>
-
     <h4>RadioGroup基本用法</h4>
     <div class="show-demo">
-      <nut-radiogroup v-model="radioGroupVal1">
+      <nut-radiogroup v-model:value="radioGroupVal1">
         <nut-radio label="a">备选项1</nut-radio>
         <nut-radio label="b">备选项2</nut-radio>
       </nut-radiogroup>
+      <span>radioGroupVal1: {{ radioGroupVal1 }} </span>
     </div>
 
     <h4>Radio禁用</h4>
     <div class="show-demo">
       <div>
-        <span>未选中时的禁用状态：</span
-        ><nut-radio :disabled="true" v-model="radioVal2" label="禁用"
+        <span>未选中时的禁用状态：</span>
+        <nut-radio :disabled="true" v-model:value="radioVal2" label="禁用"
           >备选项1</nut-radio
         >
       </div>
       <div>
-        <span>已选中时的禁用状态：</span
-        ><nut-radio :disabled="true" v-model="radioVal2" label="选中且禁用"
+        <span>已选中时的禁用状态：</span>
+        <nut-radio :disabled="true" v-model:value="radioVal2" label="选中且禁用"
           >备选项2</nut-radio
         >
       </div>
@@ -39,7 +38,7 @@
 
     <h4>RadioGroup整体禁用</h4>
     <div class="show-demo">
-      <nut-radiogroup v-model="radioGroupVal2" :disabled="true">
+      <nut-radiogroup v-model:value="radioGroupVal2" :disabled="true">
         <nut-radio label="1">备选项1</nut-radio>
         <nut-radio label="2">备选项2</nut-radio>
         <nut-radio label="3">备选项3</nut-radio>
@@ -56,7 +55,7 @@
 
     <h4>RadioGroup整体定义尺寸</h4>
     <div class="show-demo">
-      <nut-radiogroup v-model="radioGroupVal3" size="large">
+      <nut-radiogroup v-model:value="radioGroupVal3" size="large">
         <nut-radio label="1">备选项1</nut-radio>
         <nut-radio label="2">备选项2</nut-radio>
         <nut-radio label="3">备选项3</nut-radio>
@@ -65,10 +64,10 @@
 
     <h4>Radio禁用动效</h4>
     <div class="show-demo">
-      <nut-radio :animated="false" v-model="radioVal3" label="a"
+      <nut-radio :animated="false" v-model:value="radioVal3" label="a"
         >备选项1</nut-radio
       >
-      <nut-radio :animated="false" v-model="radioVal3" label="b"
+      <nut-radio :animated="false" v-model:value="radioVal3" label="b"
         >备选项2</nut-radio
       >
       <p>animated 属性值为 false 时，禁用自带动效</p>
@@ -76,7 +75,7 @@
 
     <h4>RadioGroup禁用动效</h4>
     <div class="show-demo">
-      <nut-radiogroup v-model="radioGroupVal4" :animated="false">
+      <nut-radiogroup v-model:value="radioGroupVal4" :animated="false">
         <nut-radio label="a">备选项1</nut-radio>
         <nut-radio label="b">备选项2</nut-radio>
         <nut-radio label="c">备选项3</nut-radio>
@@ -86,12 +85,12 @@
     <h4>自定义Class</h4>
     <div class="show-demo">
       <div>
-        <nut-radio class="my-radio" v-model="radioVal5" label="a"
+        <nut-radio class="my-radio" v-model:value="radioVal5" label="a"
           >备选项1</nut-radio
         >
       </div>
       <div>
-        <nut-radio class="my-radio" v-model="radioVal5" label="b"
+        <nut-radio class="my-radio" v-model:value="radioVal5" label="b"
           >备选项2</nut-radio
         >
       </div>
@@ -127,10 +126,10 @@ export default createDemo({
 
 <style lang="scss" scoped>
 .demo-list {
-  margin: 60px 0;
-  padding: 17px;
+  margin: 57px 0 60px 0;
+  padding: 0 17px 17px;
   h4 {
-    margin-top: 10px;
+    margin: 25px 0 10px;
     line-height: 20px;
     color: #909ca4;
     font-size: 14px;

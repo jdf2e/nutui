@@ -21,17 +21,19 @@ $padding-xs: 8px 12px;
 
 $font-family: PingHei, 'Lucida Grande', 'Lucida Sans Unicode', STHeiti,
   Helvetica, Arial, Verdana, 'sans-serif', 'PingHei-light', SimHei, 'Droid Sans' !default;
-$font-size-base: 14px !default;
-$font-size-small: 12px !default;
-$font-size-large: 16px !default;
-$line-height-base: 1.5 !default;
+
 // Font
+$font-size-0: 10px;
 $font-size-1: 12px;
 $font-size-2: 14px;
 $font-size-3: 16px;
 $font-size-4: 18px;
 $font-weight-bold: 400;
 
+$font-size-small: $font-size-1;
+$font-size-base: $font-size-2;
+$font-size-large: $font-size-3;
+$line-height-base: 1.5 !default;
 // button
 $button-border-radius: 25px;
 $button-border-width: 1px;
@@ -49,13 +51,11 @@ $button-block-line-height: 46px;
 $button-default-font-size: $font-size-2;
 $button-disabled-opacity: 0.68;
 $button-primary-color: $white;
-$button-primary-border-color: rgba(250, 44, 25, 1);
+$button-primary-border-color: $primary-color;
 $button-primary-background-color: linear-gradient(
   135deg,
-  rgba(250, 44, 25, 1) 0%,
-  rgba(250, 63, 25, 1) 45%,
-  rgba(250, 89, 25, 1) 83%,
-  rgba(250, 100, 25, 1) 100%
+  $primary-color 0%,
+  $primary-color-end 100%
 );
 $button-info-color: $white;
 $button-info-border-color: rgba(73, 106, 242, 1);
@@ -109,6 +109,10 @@ $uploader-width: 100px;
 $uploader-height: 100px;
 $uploader-background: #f7f8fa;
 
+//input
+$input-border-bottom: #eaf0fb;
+$input-disabled-color: #c8c9cc;
+
 // inputnumber
 
 $inputnumber-input-background-color: $help-color;
@@ -120,8 +124,8 @@ $inputnumber-input-height: 20px;
 $zindex-actionsheet: 10001 !default;
 $body-background: #f6f6f6 !default;
 $light-color: #f6f6f6 !default;
-$font-size-base: 14px !default;
-$font-size-small: 12px !default;
+$font-size-base: $font-size-2;
+$font-size-small: $font-size-1;
 
 //shortpassword
 $shortpsd-background-color: rgba(245, 245, 245, 1);
@@ -144,6 +148,9 @@ $avatar-normal-height: 40px;
 //switch
 $switch-close-bg-color: #ebebeb;
 $switch-close--cline-bg-color: #f0f0f0;
+
+//backtop
+$backtop-border-color: #e0e0e0;
 
 // calendar
 $calendar-primary-color: $primary-color;
@@ -177,7 +184,7 @@ $zindex-dialog: 10000 !default;
 $zindex-picker: 10050 !default;
 
 // Notify
-$notify-text-color: #fff;
+$notify-text-color: $white;
 $notify-padding: 12px 0;
 $notify-font-size: 14px;
 $notify-height: 44px;
@@ -208,6 +215,38 @@ $notify-warning-background-color: linear-gradient(
   rgba(255, 154, 13, 1) 100%
 );
 
+// rate
+
+$rate-icon-color: $primary-color;
+$rate-icon-void-color: $disable-color;
+
+// tabbar
+
+$tabbar-active-color: $primary-color;
+$tabbar-border-color: #eee;
+
+//infiniteloading
+$infinite-bottom-color: #c8c8c8;
+
+//range
+$range-max: #333333;
+$rang-bg-color: rgba($primary-color, 0.5);
+$rang-bar-bg-color: linear-gradient(
+  135deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+);
+
+//address
+$address-region-tab-line: linear-gradient(
+  90deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+);
+
 view-block {
   display: block;
 }
+
+@import './mixins/index';
+@import './animation/index';

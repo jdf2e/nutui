@@ -38,11 +38,6 @@ export default defineComponent({
 
 <style lang="scss">
 #app {
-  font-family: PingFangSC-Regular;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: none;
-  -ms-text-size-adjust: 100%;
   background: #fff;
   height: 100%;
   width: 100%;
@@ -87,8 +82,8 @@ export default defineComponent({
       background: transparent;
     }
     > h2 {
-      height: 56px;
-      line-height: 56px;
+      margin-top: 30px;
+      margin-bottom: 10px;
       font-size: 14px;
       color: rgba(144, 156, 164, 1);
     }

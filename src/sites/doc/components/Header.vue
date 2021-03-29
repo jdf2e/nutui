@@ -9,13 +9,13 @@
       <Search />
       <div class="nav-box">
         <ul class="nav-list">
-          <li class="nav-item" :class="{ active: isActive(header[0].name) }">
-            <router-link :to="header[0].name">
+          <li class="nav-item">
+            <router-link :to="header[0].path">
               {{ header[0].cName }}
             </router-link>
           </li>
-          <li class="nav-item" :class="{ active: isActive(header[1].name) }">
-            <router-link :to="header[1].name">
+          <li class="nav-item" :class="{ active: isActive(header[1].path) }">
+            <router-link :to="header[1].path">
               {{ header[1].cName }}
             </router-link>
           </li>
@@ -57,7 +57,11 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="user-link" href="#"></a>
+            <a
+              class="user-link"
+              target="_blank"
+              href="https://github.com/jdf2e/nutui"
+            ></a>
           </li>
         </ul>
       </div>

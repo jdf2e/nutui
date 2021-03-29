@@ -3,15 +3,16 @@
   width: 100%;
   padding: 10px 0px 10px 25px;
   display: flex;
-  background: rgba(255, 255, 255, 1);
-  border-bottom: 1px solid rgba(234, 240, 251, 1);
+  background: $white;
+  border-bottom: 1px solid $input-border-bottom;
   font-size: 14px;
   input {
     width: 230px;
     flex: 1;
     padding: 0 10px;
+    padding-right: 35px;
   }
-  .nut-input-label {
+  &-label {
     width: 80px;
     overflow: hidden;
     display: inline-block;
@@ -28,37 +29,17 @@
     position: absolute;
     right: 15px;
   }
-  .nut-text {
-    flex: 1;
-    padding: 0 10px;
-    .nut-text-limit {
-      float: right;
-      color: rgba(153, 153, 153, 1);
-    }
-    .nut-text-core {
-      outline: none;
-      display: block;
-      box-sizing: border-box;
-      width: 100%;
-      min-width: 0;
-      margin: 0;
-      padding: 0;
-      color: #323233;
-      line-height: inherit;
-      text-align: left;
-      background-color: transparent;
-      border: 0;
-      resize: none;
+  &-disabled {
+    color: $input-disabled-color !important;
+    input:disabled {
+      background: none;
+      color: $input-disabled-color;
+      cursor: not-allowed;
+      opacity: 1;
+      -webkit-text-fill-color: $input-disabled-color;
     }
   }
-}
-.nut-input-disabled {
-  color: #c8c9cc !important;
-  input:disabled {
-    background: none;
-    color: #c8c9cc;
-    cursor: not-allowed;
-    opacity: 1;
-    -webkit-text-fill-color: #c8c9cc;
+  &-require {
+    color: $primary-color;
   }
 }

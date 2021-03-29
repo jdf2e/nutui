@@ -32,9 +32,7 @@ import {
   watch
 } from 'vue';
 const { create } = createComponent('tabbar-item');
-import Icon from '@/packages/icon/index.vue';
 export default create({
-  children: [Icon],
   props: {
     tabTitle: {
       // 标签页的标题
@@ -87,9 +85,11 @@ export default create({
 
     watch(choosed, (value, oldValue) => {
       state.active = value;
-      if (parent.children[value].href) {
-        window.location.href = parent.children[value].href;
-      }
+      setTimeout(() => {
+        if (parent.children[value].href) {
+          window.location.href = parent.children[value].href;
+        }
+      });
     });
     return {
       state,

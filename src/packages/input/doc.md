@@ -2,15 +2,16 @@
 
 ### 介绍
 
+单行输入框
 
 ### 安装
 
 ``` javascript
 import { createApp } from 'vue';
-import { input } from '@nutui/nutui';
+import { Input } from '@nutui/nutui';
 
 const app = createApp();
-app.use(input);
+app.use(Input);
 
 ```
 ## 代码演示
@@ -20,8 +21,20 @@ app.use(input);
 双向绑定
 
 ```html
-<nut-input v-model:value="state.val1" @change="change" label="标题：" />
-
+<nut-input
+      v-model:value="state.val1"
+      @change="change"
+      @focus="focus"
+      @blur="blur"
+      label="文本"
+    />
+<nut-input placeholder="请输入文本"
+      @change="change"
+      v-model:value="state.val0"
+      :require-show="true"
+      label="文本"
+      @clear="clear"
+    />
 ```
 
 ### 禁用和只读
@@ -35,48 +48,40 @@ app.use(input);
 ### 限制输入长度
 
 ```html
- <nut-input v-model:value="state.val4" @change="change" maxLength="7" label="限制7：" />
+ <nut-input v-model:value="state.val4" @change="change" max-length="7" label="限制7" />
 ```
 ### 其他类型
 
 ```html
-<nut-input v-model:value="state.val0" @change="change" type="password" label="密码："/>
-<nut-input v-model:value="state.val5" @change="change" type="digit" label="整数：" />
-<nut-input v-model:value="state.val6" @change="change" type="digit" placeholder="支持小数点的输入" label="数字："/>
-```
-### 文本域
-
-```html
- <nut-input v-model:value="state.val7" @change="change" autosize="true" type="textarea" placeholder="文本域" label="留言："/>
-<nut-input v-model:value="state.val7" @change="change" rows="5" type="textarea" placeholder="设置输入五行"  label="留言："/>
-
-```
-### 文本域字数统计
-
-```html
- <nut-input v-model:value="state.val8" @change="change" rows="5" limitShow="true" maxLength="20" type="textarea" placeholder="设置输入五行" label="留言："/>
-
+<nut-input v-model:value="state.val0" @change="change" type="password" label="密码"/>
+<nut-input v-model:value="state.val5" @change="change" type="number" label="整数" />
+<nut-input v-model:value="state.val6" @change="change" type="digit" placeholder="支持小数点的输入" label="数字"/>
 ```
 
+
+### Prop
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| type         | 类型，可选值为 `text` `textarea` `number`  等 | String |`text`         |
+| type         | 类型，可选值为 `text` `number`  等 | String |`text`         |
 | value      | 输入值，双向绑定 | String |  -     |
 | placeholder         | 为空时占位符 | String |       -       |
-| placeholder-style | placeholder 样式     | String | - |
-| label          | 	左侧文案                       | string | -             |
-| disabled          | 	是否禁用                       | boolean | `false`              |
-| readonly          | 是否只读                        | boolean | `false`               |
-| clear-btn       | 是否带清除按钮（icon）                        | boolean | `true`               |
-| required          | 是否带必填的*号，且blur事件做非空校验                       | boolean | `false`               |
-| maxlength          | 限制最长输入字符                   | string/number | -               |
-| rows          | textarea时高度                   | string/number | 2             |
-| limit-show          | textarea时是否展示输入字符。须设置maxlength                        | boolean | `false`               |
-| change          | 输入内容时触发                        | function | -               |
-| focus          | 聚焦时触发                        | function | -               |
-| blur          | 失焦时触发                        | function | -               |
-| clear          | 点击清空时触发                        | function | -               |
+| label          | 	左侧文案                       | String | -             |
+| require-show          |左侧*号是否展示                       | Boolean | `false`           |
+| disabled          | 	是否禁用                       | Boolean | `false`              |
+| readonly          | 是否只读                        | Boolean | `false`               |
+| max-length          | 限制最长输入字符                   | String、Number | -               |
+| disable-clear          | 禁止展示清除icon                   | Boolean | `false`             |
+| text-align          | 文本位置,可选值`left`,`center`,`right`     | String | `left`             |
+
+### Event
+
+| 名称  | 说明     | 回调参数    |
+|-------|----------|-------------|
+| change | 输入内容时触发 | val |
+| focus | 聚焦时触发 | val |
+| blur | 失焦时触发 | val |
+| clear | 点击清空时触发 | val |
 
 
 

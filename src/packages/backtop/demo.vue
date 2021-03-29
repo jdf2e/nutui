@@ -1,5 +1,5 @@
 <template>
-  <div class="demo" id="elId" ref="scroll">
+  <div class="demo" id="elId">
     <div class="text-data">我是测试数据1</div>
     <div class="text-data">我是测试数据2</div>
     <div class="text-data">我是测试数据3</div>
@@ -24,10 +24,14 @@
     <div class="text-data">我是测试数据22</div>
     <div class="text-data">我是测试数据23</div>
     <div class="text-data">我是测试数据24</div>
-    <nut-backtop @click="handleClick" elId="elId" :distance="100" :bottom="90"
-      ><view>无</view></nut-backtop
-    >
-    <nut-backtop @click="handleClick" elId="elId" :distance="200"></nut-backtop>
+    <nut-backtop @click="handleClick" el-id="elId" :distance="100" :bottom="90">
+      <view>无</view>
+    </nut-backtop>
+    <nut-backtop
+      @click="handleClick"
+      el-id="elId"
+      :distance="200"
+    ></nut-backtop>
   </div>
 </template>
 
@@ -38,7 +42,7 @@ const { createDemo } = createComponent('backtop');
 export default createDemo({
   setup(props, { emit }) {
     const handleClick = () => {
-      console.log('触发回到顶部');
+      console.log('触发返回顶部');
     };
 
     return {
@@ -48,4 +52,23 @@ export default createDemo({
 });
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.demo {
+  .text-data {
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 46px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 7px;
+    box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
+    line-height: 19px;
+    font-size: 13px;
+    color: rgba(102, 102, 102, 1);
+  }
+}
+</style>

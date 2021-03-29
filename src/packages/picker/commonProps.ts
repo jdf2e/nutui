@@ -1,14 +1,16 @@
 export const commonProps = {
   listData: {
     type: Array,
-    default: []
+    default: () => {
+      return [];
+    }
   },
   readonly: {
     type: Boolean,
     default: false
   },
   visibleItemCount: {
-    type: [Number],
+    type: [Number, String],
     default: 7
   },
   defaultIndex: {
@@ -16,7 +18,7 @@ export const commonProps = {
     default: 0
   },
   itemHeight: {
-    type: [Number],
+    type: [Number, String],
     default: 35
   }
 };

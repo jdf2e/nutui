@@ -4,7 +4,7 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, computed, inject } from 'vue';
+import { computed, inject } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('col');
 
@@ -19,20 +19,21 @@ export default create({
       default: '0'
     }
   },
-  setup(props, { emit, slots }) {
+  setup(props) {
     const prefixCls = componentName;
-    const gutter = inject('gutter');
+    const gutter = inject('gutter') as number;
     const classes = computed(() => {
       return {
         [prefixCls]: true,
+        [prefixCls + '-gutter']: gutter,
         ['nut-col-' + props.span]: true,
         ['nut-col-offset-' + props.offset]: true
       };
     });
     const style = computed(() => {
       return {
-        paddingLeft: gutter + 'px',
-        paddingRight: gutter + 'px'
+        paddingLeft: gutter / 2 + 'px',
+        paddingRight: gutter / 2 + 'px'
       };
     });
     return {

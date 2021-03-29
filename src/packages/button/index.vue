@@ -22,9 +22,7 @@ export type ButtonType =
   | 'danger';
 export type ButtonSize = 'large' | 'normal' | 'small';
 export type ButtonShape = 'square' | 'round';
-import Icon from '@/packages/icon/index.vue';
 export default create({
-  children: [Icon],
   props: {
     color: String,
     shape: {
@@ -88,7 +86,8 @@ export default create({
         [`${prefixCls}--${shape.value}`]: shape.value,
         [`${prefixCls}--plain`]: plain.value,
         [`${prefixCls}--block`]: block.value,
-        [`${prefixCls}--disabled`]: disabled.value
+        [`${prefixCls}--disabled`]: disabled.value,
+        [`${prefixCls}--loading`]: loading.value
       };
     });
 

@@ -14,9 +14,9 @@
       :city="city"
       :country="country"
       :town="town"
-      @on-change="cal => onChange(cal, 'normal')"
+      @change="cal => onChange(cal, 'normal')"
       @close="close1"
-      customAddressTitle="请选择所在地区"
+      custom-address-title="请选择所在地区"
     ></nut-address>
 
     <h2>选择已有地址</h2>
@@ -30,12 +30,12 @@
     <nut-address
       v-model:show="exist"
       type="exist"
-      :existAddress="existAddress"
-      @on-change="cal => onChange(cal, 'exist')"
+      :exist-address="existAddress"
+      @change="cal => onChange(cal, 'exist')"
       @close="close2"
-      :isShowCustomAddress="false"
+      :is-show-custom-address="false"
       @selected="selected"
-      existAddressTitle="配送至"
+      exist-address-title="配送至"
     ></nut-address>
 
     <h2>自定义图标</h2>
@@ -49,14 +49,14 @@
     <nut-address
       v-model:show="customImg"
       type="exist"
-      :existAddress="existAddress"
-      @on-change="cal => onChange(cal, 'customImg')"
+      :exist-address="existAddress"
+      @change="cal => onChange(cal, 'customImg')"
       @close="close3"
-      :isShowCustomAddress="false"
+      :is-show-custom-address="false"
       @selected="selected"
-      :defaultIcon="defaultIcon"
-      :selectedIcon="selectedIcon"
-      :closeBtnIcon="closeBtnIcon"
+      :default-icon="defaultIcon"
+      :selected-icon="selectedIcon"
+      :close-btn-icon="closeBtnIcon"
     ></nut-address>
 
     <h2>自定义地址与已有地址切换</h2>
@@ -70,18 +70,18 @@
     <nut-address
       v-model:show="other"
       type="exist"
-      :existAddress="existAddress"
+      :exist-address="existAddress"
       :province="province"
       :city="city"
       :country="country"
       :town="town"
-      :backBtnIcon="backBtnIcon"
-      @on-change="cal => onChange(cal, 'other')"
+      :back-btn-icon="backBtnIcon"
+      @change="cal => onChange(cal, 'other')"
       @close="close4"
       @selected="selected"
-      customAndExistTitle="选择其他地址"
-      @switchModule="switchModule"
-      @closeMask="closeMask"
+      custom-and-exist-title="选择其他地址"
+      @switch-module="switchModule"
+      @close-mask="closeMask"
     ></nut-address>
   </div>
 </template>
@@ -90,6 +90,36 @@
 import { createComponent } from '@/utils/create';
 import { reactive, ref, toRefs } from 'vue';
 const { createDemo } = createComponent('address');
+interface CalBack {
+  next: string;
+  value: string;
+  custom: string;
+}
+interface RegionData {
+  name: string;
+  [key: string]: any;
+}
+interface CalResult {
+  type: string;
+  data: AddressResult;
+}
+interface AddressList {
+  id?: string | number;
+  provinceName: string;
+  cityName: string;
+  countyName: string;
+  townName: string;
+  addressDetail: string;
+  selectedAddress: boolean;
+}
+interface AddressResult extends AddressList {
+  addressIdStr: string;
+  addressStr: string;
+  province: RegionData[];
+  city: RegionData[];
+  country: RegionData[];
+  town: RegionData[];
+}
 export default createDemo({
   props: {},
   setup() {
@@ -178,13 +208,13 @@ export default createDemo({
       showPopup.normal = !showPopup.normal;
     };
 
-    const onChange = (cal, tag) => {
-      const name = address[cal.next];
+    const onChange = (cal: CalBack, tag: string) => {
+      const name = (address as any)[cal.next];
       if (name.length < 1) {
-        showPopup[tag] = false;
+        (showPopup as any)[tag] = false;
       }
     };
-    const close1 = val => {
+    const close1 = (val: CalResult) => {
       console.log(val);
       text.one = val.data.addressStr;
     };
@@ -193,7 +223,7 @@ export default createDemo({
       showPopup.exist = true;
     };
 
-    const close2 = val => {
+    const close2 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
         const {
@@ -209,7 +239,11 @@ export default createDemo({
         text.two = val.data.addressStr;
       }
     };
-    const selected = (prevExistAdd, nowExistAdd, arr) => {
+    const selected = (
+      prevExistAdd: AddressList,
+      nowExistAdd: RegionData,
+      arr: AddressList[]
+    ) => {
       console.log(prevExistAdd);
       console.log(nowExistAdd);
     };
@@ -221,7 +255,7 @@ export default createDemo({
       showPopup.customImg = true;
     };
 
-    const close3 = val => {
+    const close3 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
         const {
@@ -238,7 +272,7 @@ export default createDemo({
       }
     };
 
-    const close4 = val => {
+    const close4 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
         const {
@@ -255,15 +289,15 @@ export default createDemo({
       }
     };
 
-    const switchModule = cal => {
-      if (cal.type == 'custom') {
+    const switchModule = (val: CalResult) => {
+      if (val.type == 'custom') {
         console.log('点击了“选择其他地址”按钮');
       } else {
         console.log('点击了自定义地址左上角的返回按钮');
       }
     };
 
-    const closeMask = val => {
+    const closeMask = (val: CalResult) => {
       console.log('关闭弹层', val);
     };
 

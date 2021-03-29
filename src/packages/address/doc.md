@@ -1,4 +1,4 @@
-#  address组件
+#  Address组件
 
 ### 介绍
 
@@ -29,7 +29,7 @@ app.use(Popup);
     :city="city"
     :country="country"
     :town="town"
-    @on-change="onChange"
+    @change="onChange"
     @close="close"
     customAddressTitle="请选择所在地区"
 ></nut-address>
@@ -361,20 +361,20 @@ setup() {
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | v-model:show | 是否打开地址选择 | String | ''
-| type | 地址选择类型 exist/custom | String | custom
+| type | 地址选择类型 exist/custom | String | 'custom'
 | province | 省，每个省的对象中，必须有 name 字段 | Array | []
 | city | 市，每个市的对象中，必须有 name 字段 | Array | []
 | country | 县，每个县的对象中，必须有 name 字段 | Array | []
 | town | 乡/镇，每个乡/镇的对象中，必须有 name 字段 | Array | []
-| existAddress | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | []
-| defaultIcon | 已有地址列表默认图标，type=‘exist’ 时生效 | string | ''
-| selectedIcon | 已有地址列表选中图标，type=‘exist’ 时生效 | string | ''
-| closeBtnIcon | 自定义关闭弹框按钮图标 | string | -
-| backBtnIcon | 自定义地址与已有地址切换时，自定义返回的按钮图标 | string | -
-| isShowCustomAddress | 是否可以切换自定义地址选择，type=‘exist’ 时生效 | Boolean | true
-| customAddressTitle  | 自定义地址选择文案，type='custom' 时生效 | string | '请选择所在地区'
-| existAddressTitle| 已有地址文案 ，type=‘exist’ 时生效| string | '配送至'
-| customAndExistTitle| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| string | '选择其他地址'
+| exist-address | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | []
+| default-icon | 已有地址列表默认图标，type=‘exist’ 时生效 | string | ''
+| selected-icon | 已有地址列表选中图标，type=‘exist’ 时生效 | string | ''
+| close-btn-icon | 自定义关闭弹框按钮图标 | string | -
+| back-btn-icon | 自定义地址与已有地址切换时，自定义返回的按钮图标 | string | -
+| is-show-custom-address | 是否可以切换自定义地址选择，type=‘exist’ 时生效 | Boolean | true
+| custom-address-title  | 自定义地址选择文案，type='custom' 时生效 | string | '请选择所在地区'
+| exist-address-title| 已有地址文案 ，type=‘exist’ 时生效| string | '配送至'
+| custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| string | '选择其他地址'
 
 
   * provinceName 省的名字
@@ -387,11 +387,11 @@ setup() {
 ## Event
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 
-| onChange | 自定义选择地址时，选择地区时触发 |  参考 onChange
+| on-change | 自定义选择地址时，选择地区时触发 |  参考 onChange
 | selected | 选择已有地址列表时触发 | 参考 selected
 | close | 地址选择弹框关闭时触发 | 参考 close
-| closeMask | 点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'}
-| switchModule | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'}
+| close-mask |点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'}
+| switch-module | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'}
 
 
 ## onChange 回调参数

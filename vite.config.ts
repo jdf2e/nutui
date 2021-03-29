@@ -5,10 +5,11 @@ import path from 'path';
 const resolve = path.resolve;
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/3x/',
   server: {
     proxy: {
       '/devServer': {
-        target: 'http://nutui-server.jd.com',
+        target: 'https://nutui.jd.com',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/devServer/, '')
       }
@@ -33,6 +34,8 @@ export default defineConfig({
     Markdown()
   ],
   build: {
+    target: 'es2015',
+    outDir: './dist/3x/',
     cssCodeSplit: false,
     rollupOptions: {
       input: {

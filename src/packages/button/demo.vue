@@ -28,7 +28,13 @@
       <nut-button type="info">圆形按钮</nut-button>
     </div>
     <h2>加载状态</h2>
-
+    <div class="demo-button-row2">
+      <nut-button loading type="info"></nut-button>
+      <nut-button loading type="warning">加载中...</nut-button>
+      <nut-button :loading="isLoading" type="success" @click="changeLoading"
+        >Click me!</nut-button
+      >
+    </div>
     <h2>图标按钮</h2>
     <div class="demo-button-row2">
       <nut-button
@@ -64,10 +70,25 @@
 </template>
 
 <script lang="ts">
+import { ref } from 'vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('button');
 export default createDemo({
-  props: {}
+  props: {},
+  setup(props) {
+    let isLoading = ref(false);
+    const changeLoading = () => {
+      isLoading.value = true;
+      setTimeout(() => {
+        isLoading.value = false;
+      }, 3000);
+    };
+
+    return {
+      isLoading,
+      changeLoading
+    };
+  }
 });
 </script>
 

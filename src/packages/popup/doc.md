@@ -92,33 +92,33 @@ app.use(Popup);
 
 | 参数                   | 说明                                                        | 类型           | 默认值      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| show                   | 当前组件是否显示                                            | Boolean        | false       |
-| z-index                | 遮罩层级                                                    | String、Number | 2000        |
-| duration               | 动画时长，单位秒                                            | String、Number | 0.3         |
+| show                   | 当前组件是否显示                                            | Boolean        | `false`       |
+| z-index                | 遮罩层级                                                    | String、Number | `2000`        |
+| duration               | 动画时长，单位秒                                            | String、Number | `0.3`         |
 | overlay-class          | 自定义遮罩类名                                              | String         | -           |
 | overlay-style          | 自定义遮罩样式                                              | CSSProperties  | -           |
-| lock-scroll            | 背景是否锁定                                                | Boolean        | false       |
-| overlay                | 是否显示遮罩                                                | Boolean        | true        |
-| close-on-click-overlay | 是否点击遮罩关闭                                            | Boolean        | true        |
-| position               | 弹出位置（top,bottom,left,right,center）                    | String         | "center"    |
+| lock-scroll            | 背景是否锁定                                                | Boolean        | `false`       |
+| overlay                | 是否显示遮罩                                                | Boolean        | `true`        |
+| close-on-click-overlay | 是否点击遮罩关闭                                            | Boolean        | `true`        |
+| position               | 弹出位置（top,bottom,left,right,center）                    | String         | `"center"`    |
 | transition             | 动画名                                                      | String         | -           |
 | style                  | 自定义弹框样式                                              | CSSProperties  | -           |
 | pop-class               | 自定义弹框类名                    | String         | -    |
-| closeable              | 是否显示关闭按钮                                            | Boolean        | true        |
-| close-icon-position    | 关闭按钮位置（top-left,top-right,bottom-left,bottom-right） | String         | "top-right" |
-| close-icon             | 自定义 Icon                                                 | String         | "close"     |
-| destroy-on-close       | 组件销毁后是否关闭                                          | Boolean        | true        |
-| round                  | 是否显示圆角                                                | Boolean        | false       |
-| teleport               | 指定挂载节点                                                | String         | "body"      |
+| closeable              | 是否显示关闭按钮                                            | Boolean        | `true`        |
+| close-icon-position    | 关闭按钮位置（top-left,top-right,bottom-left,bottom-right） | String         | `"top-right"` |
+| close-icon             | 自定义 Icon                                                 | String         | `"close"`     |
+| destroy-on-close       | 组件销毁后是否关闭                                          | Boolean        | `true`        |
+| round                  | 是否显示圆角                                                | Boolean        | `false`       |
+| teleport               | 指定挂载节点                                                | String         | `"body"`      |
 
 ### Events
 
 | 事件名           | 说明                   | 回调参数     |
 | ---------------- | ---------------------- | ------------ |
-| click            | 点击弹框时触发         | event: Event |
-| click-close-icon | 点击关闭图标时触发     | event: Event |
+| click            | 点击弹框时触发         | `event: Event` |
+| click-close-icon | 点击关闭图标时触发     | `event: Event` |
 | open             | 打开弹框时触发         | -            |
 | close            | 关闭弹框时触发         | -            |
-| opend            | 遮罩打开动画结束时触发 | event: Event |
-| closed           | 遮罩关闭动画结束时触发 | event: Event |
-| click-overlay    | 点击遮罩触发           | event: Event |
+| opend            | 遮罩打开动画结束时触发 | `event: Event` |
+| closed           | 遮罩关闭动画结束时触发 | `event: Event` |
+| click-overlay    | 点击遮罩触发           | `event: Event` |

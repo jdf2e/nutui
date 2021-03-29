@@ -114,9 +114,9 @@ app.use(Swiper);
 
 | 参数                   | 说明                                                        | 类型           | 默认值      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| width                   | 轮播卡片的宽度                                            | Number、String        | window.innerWidth       |
+| width                   | 轮播卡片的宽度           | Number、String        | window.innerWidth       |
 | height                | 轮播卡片的高度                                                    | String、Number | 0        |
-| direction               | 轮播方向                                            | String | 'horizontal'         |
+| direction               | 轮播方向,可选值`horizontal`,`vertical`     | String | 'horizontal'         |
 | pagination-visible          | 分页指示器是否展示                                              | Boolean         | false           |
 | pagination-color         | 分页指示器选中的颜色                                              | String  | '#fff'           |
 | loop           | 是否循环轮播                                                | Boolean        | true       |
@@ -137,7 +137,7 @@ app.use(Swiper);
 
 
 
-### 向外暴露的方法
+### API
 
 | 事件名           | 说明                   | 参数     |
 | ---------------- | ---------------------- | ------------ |
