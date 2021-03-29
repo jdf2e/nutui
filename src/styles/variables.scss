@@ -115,10 +115,12 @@ $input-disabled-color: #c8c9cc;
 
 // inputnumber
 
+$inputnumber-icon-color: $title-color;
+$inputnumber-icon-void-color: $disable-color;
 $inputnumber-input-background-color: $help-color;
-$inputnumber-input-border-radius: 8px;
+$inputnumber-input-border-radius: 4px;
 $inputnumber-input-width: 40px;
-$inputnumber-input-height: 20px;
+$inputnumber-icon-size: 20px;
 
 // actionsheet
 $zindex-actionsheet: 10001 !default;

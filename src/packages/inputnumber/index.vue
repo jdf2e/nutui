@@ -2,59 +2,56 @@
   <view :class="classes">
     <nut-icon
       name="minus"
-      :size="size"
-      :color="getIconColor('minus')"
+      class="nut-inputnumber__icon"
+      :class="{ 'nut-inputnumber__icon--disabled': !reduceAllow() }"
+      :size="buttonSize"
       @click="reduce"
-    ></nut-icon>
+    >
+    </nut-icon>
     <input
       type="number"
-      :min="state.minVal"
+      :min="min"
       :max="max"
+      :style="{ width: pxCheck(inputWidth) }"
+      :disabled="disabled"
       :readonly="readonly"
-      :value="state.num"
-      @input="numChange"
+      :value="modelValue"
+      @input="change"
       @blur="blur"
       @focus="focus"
     />
     <nut-icon
       name="plus"
-      :size="size"
-      :color="getIconColor('plus')"
+      class="nut-inputnumber__icon"
+      :class="{ 'nut-inputnumber__icon--disabled': !addAllow() }"
+      :size="buttonSize"
       @click="add"
-    ></nut-icon>
+    >
+    </nut-icon>
   </view>
 </template>
 <script lang="ts">
-import { computed, reactive, watch, toRefs } from 'vue';
+import { computed } from 'vue';
 import { createComponent } from '@/utils/create';
+import { pxCheck } from '@/utils/pxCheck';
 const { componentName, create } = createComponent('inputnumber');
-interface Events {
-  eventName:
-    | 'update:modelValue'
-    | 'change'
-    | 'focus'
-    | 'blur'
-    | 'add-no-allow'
-    | 'reduce-no-allow';
-  params: (string | number | Event)[];
-}
 export default create({
   props: {
-    size: {
-      type: [String],
-      default: '20px'
+    modelValue: {
+      type: [Number, String],
+      default: 0
     },
-    color: {
-      type: String,
-      default: '#1a1a1a'
+    inputWidth: {
+      type: [Number, String],
+      default: ''
     },
-    disColor: {
-      type: String,
-      default: '#ccc'
+    buttonSize: {
+      type: [Number, String],
+      default: ''
     },
     min: {
       type: [Number, String],
-      default: 0
+      default: 1
     },
     max: {
       type: [Number, String],
@@ -64,20 +61,17 @@ export default create({
       type: [Number, String],
       default: 1
     },
-    readonly: {
+    decimalPlaces: {
+      type: [Number, String],
+      default: 0
+    },
+    disabled: {
       type: Boolean,
       default: false
     },
-    modelValue: {
-      type: [String, Number],
-      default: ''
-    },
-    decimalPlaces: {
-      type: [String, Number],
-      default: 0
-    },
-    beforeChange: {
-      type: Function
+    readonly: {
+      type: Boolean,
+      default: false
     }
   },
   emits: [
@@ -86,260 +80,93 @@ export default create({
     'blur',
     'focus',
     'reduce',
-    'reduce-no-allow',
     'add',
-    'add-no-allow'
+    'overlimit'
   ],
 
   setup(props, { emit }) {
-    const { modelValue, min, max, step } = toRefs(props);
-    const state = reactive({
-      num: !modelValue.value ? min.value : modelValue.value,
-      minVal: min.value,
-      tempVal: '',
-      focusing: false
-    });
-
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
-        [prefixCls]: true
+        [prefixCls]: true,
+        [`${prefixCls}--disabled`]: props.disabled
       };
     });
-
-    const isPromise = (obj: any) => {
-      return (
-        !!obj &&
-        (typeof obj === 'object' || typeof obj === 'function') &&
-        typeof obj.then === 'function'
-      );
-    };
-
-    const callInterceptor = (
-      interceptor: Function,
-      done: Function,
-      fail?: Function
-    ) => {
-      const res = interceptor.apply(null, arguments || []);
-      if (interceptor) {
-        if (isPromise(res)) {
-          res.then((value: boolean) => {
-            if (value) {
-              done();
-            } else {
-              fail && fail();
-            }
-          });
-        } else if (res) {
-          done();
-        } else if (fail) {
-          fail();
-        }
-      } else {
-        done();
-      }
-    };
-
-    const format = (v: string | number): string | number => {
-      if (v > max.value) {
-        v = max.value;
-      }
-      if (v < state.minVal) {
-        v = state.minVal;
-      }
-
-      return v;
-    };
 
     const fixedDecimalPlaces = (v: string | number): string => {
       return Number(v).toFixed(Number(props.decimalPlaces));
     };
 
-    const getIconColor = (type: 'minus' | 'plus') => {
-      if (type === 'minus') {
-        return (state.focusing ? Number(state.tempVal) : Number(state.num)) -
-          Number(step.value) <
-          min.value
-          ? props.disColor
-          : props.color;
-      } else if (type === 'plus') {
-        return Number(state.num) > Number(max.value) - Number(step.value)
-          ? props.disColor
-          : props.color;
+    const change = (event: Event) => {
+      const input = event.target as HTMLInputElement;
+      emit('update:modelValue', input.valueAsNumber, event);
+    };
+
+    const emitChange = (value: string | number, event: Event) => {
+      let outup_value: number = Number(fixedDecimalPlaces(value));
+      emit('change', outup_value, event);
+      emit('update:modelValue', outup_value, event);
+    };
+
+    const addAllow = (value = Number(props.modelValue)): boolean => {
+      return value < Number(props.max) && !props.disabled;
+    };
+
+    const reduceAllow = (value = Number(props.modelValue)): boolean => {
+      return value > Number(props.min) && !props.disabled;
+    };
+
+    const reduce = (event: Event) => {
+      emit('reduce', event);
+      if (reduceAllow()) {
+        let outup_value = Number(props.modelValue) - Number(props.step);
+        emitChange(outup_value, event);
       } else {
-        throw new Error('type is not be supported~');
+        emit('overlimit', event);
       }
     };
 
-    const emitChange = (envs: Events[]) => {
-      envs.forEach(item => {
-        emit(item.eventName, ...item.params);
-      });
-    };
-
-    const numChange = (e: Event) => {
-      const input = e.target as HTMLInputElement;
-      let val = input.value;
-      val = String(format(val));
-      input.value = val;
-      if (props.beforeChange) {
-        callInterceptor(props.beforeChange, () => {
-          state.num = val;
-        });
+    const add = (event: Event) => {
+      emit('add', event);
+      if (addAllow()) {
+        let outup_value = Number(props.modelValue) + Number(props.step);
+        emitChange(outup_value, event);
       } else {
-        state.num = val;
+        emit('overlimit', event);
       }
-
-      emitChange([
-        {
-          eventName: 'update:modelValue',
-          params: [state.num]
-        },
-        {
-          eventName: 'change',
-          params: [state.num]
-        }
-      ]);
     };
 
-    const focus = (e: Event) => {
+    const focus = (event: Event) => {
+      if (props.disabled) return;
       if (props.readonly) return;
-      const val = String(state.num);
-      state.tempVal = val;
-      state.minVal = '';
-      state.focusing = true;
-      emitChange([
-        {
-          eventName: 'focus',
-          params: [e, state.num]
-        }
-      ]);
+      emit('focus', event);
     };
 
-    const blur = (e: Event) => {
-      const val = (e.target as HTMLInputElement).value;
-      state.minVal = String(min.value);
-      if (props.beforeChange) {
-        callInterceptor(props.beforeChange, () => {
-          state.num = val ? format(val) : state.tempVal;
-        });
-      } else {
-        state.num = val ? format(val) : state.tempVal;
+    const blur = (event: Event) => {
+      if (props.disabled) return;
+      if (props.readonly) return;
+      const input = event.target as HTMLInputElement;
+      let value = input.valueAsNumber;
+      if (!addAllow(value)) {
+        value = Number(props.max);
       }
-      state.focusing = false;
-      emitChange([
-        {
-          eventName: 'update:modelValue',
-          params: [state.num]
-        },
-        {
-          eventName: 'blur',
-          params: [e, state.num]
-        }
-      ]);
+      if (!reduceAllow(value)) {
+        value = Number(props.max);
+      }
+      emitChange(value, event);
+      emit('blur', event);
     };
-
-    const reduce = () => {
-      if (getIconColor('minus') === props.color) {
-        const [n1, n2] = fixedDecimalPlaces(
-          Number(state.num) - Number(props.step)
-        ).split('.');
-        const fixedLen = n2 ? n2.length : 0;
-        if (props.beforeChange) {
-          callInterceptor(props.beforeChange, () => {
-            state.num = parseFloat(n1 + (n2 ? `.${n2}` : '')).toFixed(fixedLen);
-          });
-        } else {
-          state.num = parseFloat(n1 + (n2 ? `.${n2}` : '')).toFixed(fixedLen);
-        }
-
-        emitChange([
-          {
-            eventName: 'update:modelValue',
-            params: [state.num]
-          },
-          {
-            eventName: 'change',
-            params: [state.num]
-          }
-        ]);
-      } else {
-        emitChange([
-          {
-            eventName: 'reduce-no-allow',
-            params: []
-          }
-        ]);
-      }
-    };
-
-    const add = () => {
-      if (getIconColor('plus') === props.color) {
-        const [n1, n2] = fixedDecimalPlaces(
-          Number(state.num) + Number(props.step)
-        ).split('.');
-        const fixedLen = n2 ? n2.length : 0;
-        if (props.beforeChange) {
-          callInterceptor(props.beforeChange, () => {
-            state.num = parseFloat(n1 + (n2 ? '.' + n2 : '')).toFixed(fixedLen);
-          });
-        } else {
-          state.num = parseFloat(n1 + (n2 ? '.' + n2 : '')).toFixed(fixedLen);
-        }
-        emitChange([
-          {
-            eventName: 'update:modelValue',
-            params: [state.num]
-          },
-          {
-            eventName: 'change',
-            params: [state.num]
-          }
-        ]);
-      } else {
-        emitChange([
-          {
-            eventName: 'add-no-allow',
-            params: []
-          }
-        ]);
-      }
-    };
-
-    watch(
-      () => min.value,
-      newValues => {
-        if (newValues < Number(max.value)) {
-          state.minVal = newValues;
-          const val = format(state.num);
-          state.num = val > 0 ? fixedDecimalPlaces(val) : val;
-        }
-      }
-    );
-
-    watch(
-      () => modelValue.value,
-      newValues => {
-        const val = format(newValues);
-        state.num = val > 0 ? fixedDecimalPlaces(val) : val;
-        emitChange([
-          {
-            eventName: 'change',
-            params: [state.num]
-          }
-        ]);
-      }
-    );
 
     return {
-      state,
       classes,
-      getIconColor,
-      numChange,
+      change,
       blur,
       focus,
+      add,
+      addAllow,
       reduce,
-      add
+      reduceAllow,
+      pxCheck
     };
   }
 });
