@@ -23,7 +23,7 @@ export default create({
     };
 
     const pxCheck = (value: string | number) => {
-      return typeof value === 'number' ? `${value}px` : String(value);
+      return typeof Number(value) === 'number' ? `${value}px` : String(value);
     };
 
     return () => {
