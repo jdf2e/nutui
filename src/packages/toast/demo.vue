@@ -42,10 +42,10 @@ export default createDemo({
     const { ctx } = getCurrentInstance();
 
     const textToast = msg => {
-      ctx.$toast.text(msg, { duration: 100000 });
+      ctx.$toast.text(msg, { duration: 1000 });
     };
     const successToast = msg => {
-      ctx.$toast.success(msg, { duration: 100000 });
+      ctx.$toast.success(msg, { duration: 2000 });
     };
     const errorToast = msg => {
       ctx.$toast.fail(msg);

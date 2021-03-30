@@ -16,60 +16,56 @@
   pointer-events: none;
   z-index: 9999;
   font-family: $font-family;
-  &.nut-toast-small {
+  &-small {
     .nut-toast-inner {
       font-size: $font-size-small;
     }
   }
-  &.nut-toast-large {
+  &-large {
     .nut-toast-inner {
       font-size: $font-size-large;
     }
   }
-  &.nut-toast-cover {
+  &-cover {
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: auto;
     height: 100%;
   }
-  .nut-toast-inner {
-    // position: relative;
+  &-inner {
     display: inline-block;
     font-size: $font-size-base;
     min-width: 40%;
     max-width: 65%;
     text-align: center;
-    line-height: 1.5;
-    padding: 10px 30px;
+    padding: 24px 30px;
     word-break: break-all;
     background: rgba(0, 0, 0, 0);
-    border-radius: 7px;
-    color: #fff;
+    border-radius: 12px;
+    color: $white;
   }
-  .nut-toast-text {
+  &-text {
     font-size: 14px;
-  }
-  &.nut-toast-has-icon {
-    .nut-toast-inner {
-      padding: 22px 15px 15px;
+    &:empty {
+      margin-bottom: -8px;
     }
+  }
+  &-has-icon {
     .nut-toast-icon-wrapper {
       width: 100%;
-      height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 18px;
+      margin-bottom: 8px;
     }
   }
-  &.nut-toast-center {
+  &-center {
     top: 50%;
     transform: translateY(-50%);
   }
-  &.nut-loading {
+  &-loading {
     .nut-toast-inner {
-      padding: 25px;
       display: inline-flex;
       flex-direction: column;
       justify-content: center;
@@ -77,10 +73,6 @@
     }
     .nut-toast-icon-wrapper {
       animation: rotation 2s linear infinite;
-    }
-    .nut-toast-text:not(:empty) {
-      margin-top: 10px;
-      margin-bottom: -10px;
     }
   }
 }

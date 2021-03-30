@@ -17,7 +17,7 @@
         }"
       >
         <view v-if="hasIcon" class="nut-toast-icon-wrapper">
-          <nut-icon size="44px" color="#ffffff" :name="icon"></nut-icon>
+          <nut-icon size="20" color="#ffffff" :name="icon"></nut-icon>
         </view>
         <view class="nut-toast-text" v-html="msg"></view>
       </view>
@@ -65,7 +65,7 @@ export default create({
     },
     bgColor: {
       type: String,
-      default: 'rgba(0, 0, 0, 1)'
+      default: 'rgba(0, 0, 0, .8)'
     },
 
     onClose: Function,
@@ -140,7 +140,7 @@ export default create({
         { 'nut-toast-center': props.center },
         { 'nut-toast-has-icon': hasIcon.value },
         { 'nut-toast-cover': props.cover },
-        { 'nut-loading': props.type == 'loading' },
+        { 'nut-toast-loading': props.type === 'loading' },
         props.customClass,
         'nut-toast-' + props.size
       ];

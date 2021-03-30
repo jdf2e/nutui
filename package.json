@@ -61,6 +61,7 @@
   "devDependencies": {
     "@commitlint/cli": "^10.0.0",
     "@commitlint/config-conventional": "^10.0.0",
+    "@jd/upload-oss-tools": "^1.1.10",
     "@types/node": "^14.14.31",
     "@vitejs/plugin-vue": "^1.2.0",
     "@vue/compiler-sfc": "^3.0.5",
