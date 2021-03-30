@@ -46,6 +46,9 @@
     color: #fa2c19;
     font-size: 16px;
   }
+  &__button {
+    cursor: pointer;
+  }
   &__item {
     display: flex;
     justify-content: center;
