@@ -8,21 +8,21 @@
     <nut-cell title="请选择地址" :desc="desc3" @click="open(3)"></nut-cell>
 
     <nut-picker
-      v-model:is-visible="show"
+      v-model:visible="show"
       :list-data="listData1"
       title="城市选择"
       @confirm="confirm"
       @close="close"
     ></nut-picker>
     <nut-picker
-      v-model:is-visible="show2"
+      v-model:visible="show2"
       :list-data="listData2"
       title="多列选择"
       @confirm="confirm2"
       @close="close"
     ></nut-picker>
     <nut-picker
-      v-model:is-visible="show3"
+      v-model:visible="show3"
       :list-data="listData3"
       title="地址选择"
       @confirm="confirm3"
