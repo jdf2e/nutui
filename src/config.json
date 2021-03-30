@@ -373,6 +373,16 @@
           "sort": 16,
           "show": true,
           "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Video",
+          "type": "component",
+          "cName": "视频播放器",
+          "desc": "视频播放组件",
+          "sort": 20,
+          "show": true,
+          "author": "Jerry"
         }
       ]
     },

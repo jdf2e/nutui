@@ -13,6 +13,8 @@
   -webkit-appearance: none;
   user-select: none;
   touch-action: manipulation;
+  border-width: $button-border-width;
+  border-style: solid;
   .text {
     margin-left: 5px;
   }

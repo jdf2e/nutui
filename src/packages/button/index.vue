@@ -43,7 +43,7 @@ export default create({
     },
     type: {
       type: String as PropType<ButtonType>,
-      default: 'default'
+      default: ''
     },
     size: {
       type: String as PropType<ButtonSize>,
