@@ -52,7 +52,7 @@ const { createDemo } = createComponent('inputnumber');
 export default createDemo({
   props: {},
   setup() {
-    let { ctx } = getCurrentInstance();
+    let { proxy } = getCurrentInstance();
 
     const state = reactive({
       val1: 1,
@@ -67,15 +67,15 @@ export default createDemo({
     });
 
     const onChange = (value: number) => {
-      ctx.$toast.loading('异步演示 2 秒后更改');
+      proxy.$toast.loading('异步演示 2 秒后更改');
       setTimeout(() => {
         state.val8 = value;
-        ctx.$toast.hide();
+        proxy.$toast.hide();
       }, 2000);
     };
 
     const overlimit = () => {
-      ctx.$toast.warn('超出限制事件触发');
+      proxy.$toast.warn('超出限制事件触发');
     };
 
     return {
