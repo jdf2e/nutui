@@ -155,7 +155,7 @@ export default create({
     const momentum = (distance: number, duration: number) => {
       const speed = Math.abs(distance / duration);
 
-      distance = state.offset + (speed / 0.003) * (distance < 0 ? -1 : 1);
+      distance = state.offset + (speed / 0.03) * (distance < 0 ? -1 : 1);
 
       const index = getIndexByOffset(distance);
 
