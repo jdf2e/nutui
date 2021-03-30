@@ -46,10 +46,10 @@ export default {
 import { ref, getCurrentInstance } from 'vue';
 export default {
   setup() {
-    let { ctx } = getCurrentInstance() as any;
+    let { proxy } = getCurrentInstance() as any;
     const checked = ref(true);
     const change = (value: boolean, event: Event) => {
-      ctx.$toast.text(`触发了change事件，开关状态：${value}`);
+      proxy.$toast.text(`触发了change事件，开关状态：${value}`);
     };
     return {
       checked,
@@ -68,10 +68,10 @@ export default {
 import { ref, getCurrentInstance } from 'vue';
 export default {
   setup() {
-    let { ctx } = getCurrentInstance() as any;
+    let { proxy } = getCurrentInstance() as any;
     const checkedAsync = ref(true);
     const changeAsync = (value: boolean, event: Event) => {
-      ctx.$toast.text(`2秒后异步触发 ${value}`);
+      proxy.$toast.text(`2秒后异步触发 ${value}`);
       setTimeout(() => {
         checkedAsync.value = value;
       }, 2000);
