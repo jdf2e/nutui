@@ -200,19 +200,17 @@ export default create({
     });
 
     const changeHandler = (val: string[]) => {
-      console.log(val);
-      let formatDate = [];
-      if (props.isShowChinese) {
-        formatDate = val.map((res: string) => {
-          return Number(res.slice(0, res.length - 1));
-        }) as any;
-        console.log(formatDate);
-      } else {
-        formatDate = val;
-      }
-      state.currentDate = formatValue(
-        new Date(formatDate[0], formatDate[1] - 1, formatDate[2])
-      );
+      // let formatDate = [];
+      // if (props.isShowChinese) {
+      //   formatDate = val.map((res: string) => {
+      //     return Number(res.slice(0, res.length - 1));
+      //   }) as any;
+      // } else {
+      //   formatDate = val;
+      // }
+      // state.currentDate = formatValue(
+      //   new Date(formatDate[0], formatDate[1] - 1, formatDate[2])
+      // );
     };
 
     const generateValue = (
@@ -276,7 +274,6 @@ export default create({
       }
       return val;
     });
-
     const handleClick = (event: Event) => {
       emit('click', event);
     };

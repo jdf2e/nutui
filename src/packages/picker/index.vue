@@ -132,7 +132,7 @@ export default create({
     const addDefaultIndexList = (listData: PickerObjectColumn[]) => {
       defaultIndexList = [];
       listData.forEach(res => {
-        defaultIndexList.push(res.defaultIndex as number);
+        defaultIndexList.push((res.defaultIndex as number) || 0);
       });
     };
 
@@ -146,7 +146,7 @@ export default create({
       while (children) {
         formatted.push({
           values: children,
-          defaultIndex: defaultIndex
+          defaultIndex: children.defaultIndex || 0
         });
         children = children?.[children.defaultIndex || 0].children;
       }
@@ -177,20 +177,19 @@ export default create({
 
     const changeHandler = (columnIndex: number, dataIndex: number) => {
       if (dataType.value === 'cascade') {
-        let cursor = toRaw(state.formattedColumns) as PickerObjectColumns;
+        let cursor = state.formattedColumns as PickerObjectColumns;
         if (columnIndex === 0) {
           state.defaultIndex = dataIndex;
-        } else {
-          let i = 0;
-          while (cursor) {
-            if (i === columnIndex) {
-              cursor.defaultIndex = dataIndex;
-            } else if (i > columnIndex) {
-              cursor.defaultIndex = 0;
-            }
-            cursor = cursor[cursor.defaultIndex || 0].children;
-            i++;
+        }
+        let i = 0;
+        while (cursor) {
+          if (i === columnIndex) {
+            cursor.defaultIndex = dataIndex;
+          } else if (i > columnIndex) {
+            cursor.defaultIndex = 0;
           }
+          cursor = cursor[cursor.defaultIndex || 0].children;
+          i++;
         }
       } else if (dataType.value === 'text') {
         _defaultIndex = dataIndex;
