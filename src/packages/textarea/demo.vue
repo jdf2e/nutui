@@ -2,7 +2,7 @@
   <div class="demo-nopading">
     <h2>基础用法</h2>
     <nut-textarea
-      v-model:value="state.val0"
+      v-model="state.val0"
       @change="change"
       rows="10"
       placeholder="高度可拉伸"
@@ -11,7 +11,7 @@
     />
     <h2>显示字数统计</h2>
     <nut-textarea
-      v-model:value="state.val1"
+      v-model="state.val1"
       @change="change"
       rows="5"
       :limit-show="true"

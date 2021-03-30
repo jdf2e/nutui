@@ -39,7 +39,7 @@ export default create({
       type: Boolean,
       default: false
     },
-    animated: {
+    isAnimated: {
       type: Boolean,
       default: true
     }
@@ -82,7 +82,7 @@ export default create({
     });
 
     const isAnimated = computed(() => {
-      return isParentGroup ? parentProps?.animated : props.animated;
+      return isParentGroup ? parentProps?.isAnimated : props.isAnimated;
     });
 
     const clickEvt = (event: Event) => {
