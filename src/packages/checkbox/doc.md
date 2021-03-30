@@ -76,10 +76,10 @@ setup() {
 
 ## 自定义尺寸
 
-内置 **small**，**base**，**large** 三种规格供使用。
+内置 **small**，**normal**，**large** 三种规格供使用。
 ```html
 <nut-checkbox v-model="checkbox1" size="small">小号1</nut-checkbox>
-<nut-checkbox v-model="checkbox2" size="base">默认</nut-checkbox>
+<nut-checkbox v-model="checkbox2" size="normal">默认</nut-checkbox>
 <nut-checkbox v-model="checkbox3" size="large">大号</nut-checkbox>
 ```
 
@@ -113,10 +113,10 @@ setup() {
 
 ## 禁用动效
 
-animation属性值为false时，禁用自带动效
+is-animation属性值为false时，禁用自带动效
 
 ```html
-<nut-checkbox v-model="checkbox" :animation="false">没有动效</nut-checkbox>
+<nut-checkbox v-model="checkbox" :is-animation="false">没有动效</nut-checkbox>
 ```
 
 ```javascript
@@ -130,7 +130,7 @@ setup() {
 ## CheckboxGroup整体禁用动效
 
 ```html
-<nut-checkboxgroup v-model="checkboxGroup" :animation="false">
+<nut-checkboxgroup v-model="checkboxGroup" :is-animation="false">
   <nut-checkbox label="没有动效1"></nut-checkbox>
   <nut-checkbox label="没有动效2"></nut-checkbox>
 </nut-checkboxgroup>
@@ -268,18 +268,18 @@ setup() {
 | v-model | 必填项，当前选中项的选中状态,同步value | Boolean | false
 | label | 当前选中项的label值，（可不设，设置后label有值，替换插值内容） | String | -
 | checked | checkbox的checked属性 | Boolean | false
-| size | 尺寸，可选值small/base/large | String | base
+| size | 尺寸，可选值small/normal/large | String | normal
 | disabled | 是否禁用 | Boolean | false
-| animation | 是否需要动效 | Boolean | true
+| is-animation | 是否需要动效 | Boolean | true
 
 ### CheckGroup
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | v-model | 必填项，当前选中项的选中状态,同步value | Boolean | false
-| size | 尺寸，可选值small/base/large | String | base
+| size | 尺寸，可选值small/normal/large | String | normal
 | disabled | 是否禁用 | Boolean | false
-| animation | 是否需要动效 | Boolean | true
+| is-animation | 是否需要动效 | Boolean | true
 
 
 ## Event

@@ -4,7 +4,7 @@
 
 通过 **v-model** 绑定值当前选中项的 **label** ，二者一致时 **Radio** 选中。
 ```html
-<nut-radio v-model:value="radioVal" :label="b">备选项1</nut-radio>
+<nut-radio v-model="radioVal" :label="b">备选项1</nut-radio>
 ```
 ```javascript
 setup() {
@@ -17,8 +17,8 @@ setup() {
 ## 组合使用 Radio
 
 ```html
-<nut-radio v-model:value="radioVal" :label="1">备选项1</nut-radio>
-<nut-radio v-model:value="radioVal" :label="2">备选项2</nut-radio>
+<nut-radio v-model="radioVal" :label="1">备选项1</nut-radio>
+<nut-radio v-model="radioVal" :label="2">备选项2</nut-radio>
 ```
 ```javascript
 setup() {
@@ -31,7 +31,7 @@ setup() {
 ## RadioGroup基本用法
 
 ```html
-<nut-radiogroup v-model:value="radioGroupVal">
+<nut-radiogroup v-model="radioGroupVal">
   <nut-radio label="a">备选项1</nut-radio>
   <nut-radio label="b">备选项2</nut-radio>
 </nut-radiogroup>
@@ -56,7 +56,7 @@ setup() {
 ## RadioGroup 整体禁用
 
 ```html
-<nut-radiogroup v-model:value="radioGroupVal" :animated="false">
+<nut-radiogroup v-model="radioGroupVal" :is-animated="false">
   <nut-radio label="a">备选项1</nut-radio>
   <nut-radio label="b">备选项2</nut-radio>
   <nut-radio label="c">备选项3</nut-radio>
@@ -85,7 +85,7 @@ setup() {
 内置 **small**，**base**，**large** 三种规格供使用。
 
 ```html
-<nut-radiogroup v-model:value="radioGroupVal" size="large">
+<nut-radiogroup v-model="radioGroupVal" size="large">
   <nut-radio label="1">备选项1</nut-radio>
   <nut-radio label="2">备选项2</nut-radio>
   <nut-radio label="3">备选项3</nut-radio>
@@ -101,11 +101,11 @@ setup() {
 
 ## 禁用动效
 
-通过给 **animated** 传布尔值 **false** ，禁用自带动效
+通过给 **is-animated** 传布尔值 **false** ，禁用自带动效
 
 ```html
-<nut-radio :animated="false" v-model:value="radioVal" label="a">备选项1</nut-radio>
-<nut-radio :animated="false" v-model:value="radioVal" label="b">备选项2</nut-radio>
+<nut-radio :is-animated="false" v-model="radioVal" label="a">备选项1</nut-radio>
+<nut-radio :is-animated="false" v-model="radioVal" label="b">备选项2</nut-radio>
 ```
 ```javascript
 setup() {
@@ -118,7 +118,7 @@ setup() {
 ## RadioGroup 禁用动效
 
 ```html
-<nut-radiogroup v-model:value="radioGroupVal" :animated="false">
+<nut-radiogroup v-model="radioGroupVal" :is-animated="false">
   <nut-radio label="a">备选项1</nut-radio>
   <nut-radio label="b">备选项2</nut-radio>
   <nut-radio label="c">备选项3</nut-radio>
@@ -145,20 +145,20 @@ setup() {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| v-model:value | 当前选中项的标识符，与label值一致时呈选中状态 | 任意类型 | -
+| v-model | 当前选中项的标识符，与label值一致时呈选中状态 | 任意类型 | -
 | label | 标识符，与v-model值一致时呈选中状态 | 任意类型 | -
 | size | 尺寸，可选值small/base/large | String | base
 | disabled | 是否禁用 | Boolean | false
-| animated | 是否需要动效 | Boolean | true
+| is-animated | 是否需要动效 | Boolean | true
 
 ### RadioGroup
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| v-model:value | 当前选中项的标识符，与label值一致时呈选中状态 | String、Number、Boolean | -
+| v-model | 当前选中项的标识符，与label值一致时呈选中状态 | String、Number、Boolean | -
 | size | 尺寸，可选值small/base/large | String | `base`
 | disabled | 是否禁用 | Boolean | `false`
-| animated | 是否需要动效 | Boolean | `true`
+| is-animated | 是否需要动效 | Boolean | `true`
 
 ## Event
 

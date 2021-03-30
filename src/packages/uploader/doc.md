@@ -25,12 +25,12 @@ app.use(Uploader);
 ### 限制上传数量5个
 
 ``` html
-<nut-uploader url="http://服务器地址" multiple max-count="5"></nut-uploader>
+<nut-uploader url="http://服务器地址" multiple maximum="5"></nut-uploader>
 ```
 ### 限制上传大小（每个文件最大不超过 50kb，也可以在beforeupload中自行处理）
 
 ``` html
-<nut-uploader url="http://服务器地址" multiple :max-size="1024 * 50" :before-upload="beforeUpload" @oversize="onOversize"></nut-uploader>
+<nut-uploader url="http://服务器地址" multiple :maximize="1024 * 50" :before-upload="beforeUpload" @oversize="onOversize"></nut-uploader>
 ```
 
 ``` javascript
@@ -57,7 +57,7 @@ setup() {
 ### 自定义 FormData headers
 
 ``` html
-<nut-uploader url="http://服务器地址" :form-data="formData" :headers="formData" :with-Credentials="true"></nut-uploader>
+<nut-uploader url="http://服务器地址" :data="formData" :headers="formData" :with-Credentials="true"></nut-uploader>
 ```
 
 ``` javascript
@@ -95,12 +95,12 @@ setup() {
 | is-deletable      | 是否展示删除按钮                                                                                                                                                                       | Boolean                           | true        |
 | method            | 上传请求的 http method                                                                                                                                                                 | String                            | "post"      |
 | capture           | 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，可选值为 camera (直接调起摄像头)                                                   | String                            | "camera"    |
-| max-size          | 可以设定最大上传文件的大小（字节）                                                                                                                                                     | Number丨String                    | Number.MAX_VALUE           |
-| max-count         | 文件上传数量限制                                                                                                                                                                       | Number丨String                    | 1           |
+| maximize          | 可以设定最大上传文件的大小（字节）                                                                                                                                                     | Number丨String                    | Number.MAX_VALUE           |
+| maximum         | 文件上传数量限制                                                                                                                                                                       | Number丨String                    | 1           |
 | clear-input       | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件                                                                                                                          | Boolean                           | false       |
-| accept-type       | 允许上传的文件类型，[详细说明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | String                            | *           |
+| accept       | 允许上传的文件类型，[详细说明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | String                            | image/*           |
 | headers           | 设置上传的请求头部                                                                                                                                                                     | Object                            | {}          |
-| form-data         | 附加上传的信息 formData                                                                                                                                                                | Object                            | {}          |
+| data         | 附加上传的信息 formData                                                                                                                                                                | Object                            | {}          |
 | upload-icon       | 上传区域[图标名称](#/zh-CN/icon)或图片链接                                                                                                                                             | String                            | "photograph"  |
 | xhr-state         | 接口响应的成功状态（status）值                                                                                                                                                         | Number                            | 200         |
 | with-credentials  | 支持发送 cookie 凭证信息                                                                                                                                                               | Boolean                           | fasle       |

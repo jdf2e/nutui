@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
     <nut-shortpassword
-      v-model:value="state.value"
+      v-model="state.value"
       v-model:visible="state.visible"
       :no-button="state.noButton"
       :length="state.length"
@@ -73,7 +73,7 @@ import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('shortpassword');
 export default createDemo({
   setup() {
-    let { ctx } = getCurrentInstance() as any;
+    let { proxy } = getCurrentInstance() as any;
 
     const state = reactive({
       visible: false,
@@ -84,21 +84,21 @@ export default createDemo({
     });
     const methods = {
       onChange(val: string) {
-        val && ctx.$toast.text(val);
+        val && proxy.$toast.text(val);
       },
       onOk(val: string) {
-        val && ctx.$toast.text(val);
+        val && proxy.$toast.text(val);
         state.visible = false;
       },
       onComplete() {},
       onTips() {
-        ctx.$toast.text('执行忘记密码逻辑');
+        proxy.$toast.text('执行忘记密码逻辑');
       },
       close() {
-        ctx.$toast.text('点击icon关闭弹窗');
+        proxy.$toast.text('点击icon关闭弹窗');
       },
       cancel() {
-        ctx.$toast.text('点击取消按钮关闭弹窗');
+        proxy.$toast.text('点击取消按钮关闭弹窗');
       }
     };
 

@@ -10,13 +10,13 @@
       <nut-icon
         :size="iconSize"
         class="nut-rate-item__icon"
-        :class="{ disabled: disabled || n > modelValue }"
+        :class="{ 'nut-rate-item__icon--disabled': disabled || n > modelValue }"
         :color="n <= modelValue ? activeColor : voidColor"
         :name="n <= modelValue ? checkedIcon : uncheckedIcon"
       />
       <nut-icon
         v-if="allowHalf && modelValue + 1 > n"
-        class="nut-rate-item__icon half"
+        class="nut-rate-item__icon nut-rate-item__icon--half"
         :color="n <= modelValue ? activeColor : voidColor"
         :size="iconSize"
         :name="checkedIcon"
@@ -27,6 +27,7 @@
 <script lang="ts">
 import { computed } from 'vue';
 import { createComponent } from '@/utils/create';
+import { pxCheck } from '@/utils/pxCheck';
 const { componentName, create } = createComponent('rate');
 export default create({
   props: {
@@ -83,9 +84,6 @@ export default create({
         [prefixCls]: true
       };
     });
-    const pxCheck = (value: string | number) => {
-      return typeof value === 'number' ? `${value}px` : String(value);
-    };
     const onClick = (e: Event, index: number) => {
       e.preventDefault();
       e.stopPropagation();
@@ -95,7 +93,7 @@ export default create({
       } else {
         value = index;
         if (props.allowHalf) {
-          if ((e?.target as Element).className.includes('__icon half')) {
+          if ((e?.target as Element).className.includes('__icon--half')) {
             value -= 0.5;
           }
         }

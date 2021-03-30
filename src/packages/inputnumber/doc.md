@@ -1,105 +1,133 @@
-# InputNumber 数字输入框组件
+# InputNumber 数字输入框
 
 ### 介绍
 
-由加、减按钮以及输入框组成，用于输入一定范围的数字。
+通过点击按钮控制数字增减。
 
 ### 安装
 
 ``` javascript
 import { createApp } from 'vue';
-import { inputnumber } from '@nutui/nutui';
+import { InputNumber,Icon } from '@nutui/nutui';
 
 const app = createApp();
-app.use(inputnumber);
+app.use(InputNumber).use(Icon);
 
 ```
 
 ## 代码演示
 
-### 基础用法1
+### 基础用法
 
 初始化一个默认值
 
-```html
-<nut-inputnumber v-model:modelValue="1" />
+``` html
+<nut-inputnumber v-model="value" />
+```
+``` javascript
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const value = ref(1);
+    return { value };
+  },
+};
 ```
 
-### 基础用法2
+### 步长设置
 
-设置步长`step` 和 保留的小数位`decimalPlaces`
+设置步长 `step` 5 
 
 ```html
-<nut-inputnumber v-model:modelValue="1" :step="1.1" :decimalPlaces="1" />
+<nut-inputnumber v-model="value" step="5" />
 ```
 
-### 基础用法3
+### 限制输入范围
 
 `min` 和 `max` 属性分别表示最小值和最大值
 
 ```html
-<nut-inputnumber v-model:modelValue="1" :min="3" :max="5" />
+<nut-inputnumber v-model="value" min="10" max="20" />
 ```
 
-### 基础用法4
+### 禁用状态
 
-`readonly`设置只读
+`disabled` 禁用状态下无法点击按钮或修改输入框。
 
 ```html
-<nut-inputnumber v-model:modelValue="1" :readonly="true" />
+<nut-inputnumber v-model="value" disabled />
 ```
 
-### 基础用法5
+### 只读禁用输入框
 
-`size`设置操作符的大小
+`readonly` 设置只读禁用输入框输入行为
 
 ```html
-<nut-inputnumber v-model:modelValue="1" :size="20px" />
+<nut-inputnumber v-model="value" readonly />
 ```
 
-### 高级用法
+### 支持小数点
 
-`before-change`支持异步修改数量
+设置步长 `step` 0.1  `decimal-places` 小数保留1位
 
 ```html
-<nut-inputnumber v-model:modelValue="1" :before-change="true"/>
+<nut-inputnumber v-model="value" step="0.1" decimal-places="1" />
+```
+### 支持异步修改
+
+通过 `change` 事件和 `model-value` 进行异步修改
+
+```html
+<nut-inputnumber :model-value="value" @change="onChange" />
 ```
 
-```js
-  const beforeChange = () => {
-    // return true;
-    return new Promise(resolve => {
+``` javascript
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const value = ref(1);
+    const onChange = (value: number) => {
       setTimeout(() => {
-        resolve(true);
-      }, 500);
-    });
-  };
+        value.value = value;
+      }, 2000);
+    };
+    return { value,onChange };
+  },
+};
 ```
+### 自定义按钮大小
 
+设置步长 `step` 0.1  `decimal-places` 小数保留1位
+
+```html
+<nut-inputnumber v-model="value"  button-size="30" input-width="50" />
+```
 
 ## API
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| size         | 操作符+、-尺寸               | String          | `20px`                |
-| color        | 操作符+、-颜色               | String          | `#1a1a1a `            |
-| dis-color     | 操作符+、-禁用时颜色          | String          | `#ccc`                |
-| min          | 最小值                      | String、Number | `1`                   |
-| max          | 最大值                      | String、Number | `Infinity`             |
-| step         | 步长                        | String、Number |     `1`                |
-| readonly     | 只读                   | Boolean | false              |
-| modelValue   | 初始值                   | String、Number | `''`              |
-| decimal-places| 设置保留的小数位                   | String、Number | `1`              |
-| before-change        | 支持异步                   | Function | -              |
+| 参数           | 说明                       | 类型           | 默认值     |
+|----------------|----------------------------|----------------|------------|
+| v-model        | 初始值                     | String、Number | -          |
+| input-width    | 输入框宽度                 | String         | `40px`     |
+| button-size    | 操作符+、-尺寸             | String         | `20px`     |
+| min            | 最小值限制                 | String、Number | `1`        |
+| max            | 最大值限制                 | String、Number | `Infinity` |
+| step           | 步长                       | String、Number | `1`        |
+| decimal-places | 设置保留的小数位           | String、Number | `0`        |
+| disabled       | 禁用所有功能               | Boolean        | false      |
+| readonly       | 只读状态禁用输入框操作行为 | Boolean        | false      |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| change  | 值改变时触发 | num: string | number |
-| focus  | 输入框获取焦点时触发 | event: Event, num: string | number |
-| blur  | 输入框失去焦点时触发 | event: Event, num: string | number |
-| add-no-allow  | 超出最大事件回调 | - |
-| reduce-no-allow  | 超出最小事件回调 | - |
+| 事件名    | 说明                   | 回调参数                       |
+|-----------|------------------------|--------------------------------|
+| add       | 点击增加按钮时触发     | event: Event                   |
+| reduce    | 点击减少按钮时触发     | event: Event                   |
+| overlimit | 点击不可用的按钮时触发 | event: Event                   |
+| change    | 值改变时触发           | value:  number , event : Event |
+| blur      | 输入框失去焦点时触发   | event: Event                   |
+| focus     | 输入框获得焦点时触发   | event: Event                   |

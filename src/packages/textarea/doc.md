@@ -21,7 +21,7 @@ app.use(Textarea);
 
 ```html
 <nut-textarea
-  v-model:value="state.val0"
+  v-model="state.val0"
   @change="change"
   rows="5"
   placeholder="高度可拉伸"
@@ -35,7 +35,7 @@ app.use(Textarea);
 
 ```html
  <nut-textarea
-  v-model:value="state.val1"
+  v-model="state.val1"
   @change="change"
   rows="5"
   :limit-show="true"

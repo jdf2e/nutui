@@ -25,7 +25,7 @@
     <h2>只读状态</h2>
     <nut-rate v-model="state.val6" readonly></nut-rate>
 
-    <h2>绑定事件,{{ state.result }}</h2>
+    <h2>绑定事件</h2>
     <nut-rate v-model="state.val7" @change="onChange"></nut-rate>
     <h2>自定义尺寸 35px</h2>
     <nut-rate v-model="state.val8" icon-size="35"></nut-rate>
@@ -38,7 +38,7 @@ import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('rate');
 export default createDemo({
   setup() {
-    let { ctx } = getCurrentInstance();
+    let { proxy } = getCurrentInstance();
 
     const state = reactive({
       val: 3,
@@ -49,12 +49,10 @@ export default createDemo({
       val5: 3,
       val6: 3,
       val7: 3,
-      val8: 3,
-      result: ''
+      val8: 3
     });
     const onChange = val => {
-      state.result = '您点击了第' + val + '个!';
-      ctx.$toast.text(state.result);
+      proxy.$toast.text(val);
     };
     return {
       state,

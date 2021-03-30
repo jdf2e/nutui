@@ -24,7 +24,7 @@ app.use(Icon);
 ```html
 <nut-icon name="dongdong"></nut-icon>
 <nut-icon name="JD"></nut-icon>
-<nut-icon size="40px"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"></nut-icon>
+<nut-icon size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"></nut-icon>
 ```
 
 ### 图标颜色
@@ -44,7 +44,7 @@ app.use(Icon);
 ```html
 <nut-icon name="dongdong"></nut-icon>
 <nut-icon name="dongdong" size="24"></nut-icon>
-<nut-icon name="dongdong" size="16px"></nut-icon>
+<nut-icon name="dongdong" size="16"></nut-icon>
 ```
 
 ### 自定义图标

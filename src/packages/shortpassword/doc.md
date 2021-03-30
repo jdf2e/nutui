@@ -20,7 +20,7 @@ app.use(ShortPassword);
 
 ``` html
 <nut-shortpassword
-  v-model:value="state.value"
+  v-model="state.value"
   v-model:visible="state.visible"
   :no-button="state.noButton"
   :length="state.length"
@@ -35,7 +35,7 @@ app.use(ShortPassword);
 ``` javascript
 import { reactive, getCurrentInstance } from 'vue';
 setup() {
-  let { ctx } = getCurrentInstance();
+  let { proxy } = getCurrentInstance();
   const state = reactive({
     visible: false,
     noButton: true,
@@ -45,17 +45,17 @@ setup() {
   });
   const methods = {
     onChange(val: string) {
-      val && ctx.$toast.text(val);
+      val && proxy.$toast.text(val);
     },
     onOk(val: string) {
-      val && ctx.$toast.text(val);
+      val && proxy.$toast.text(val);
       state.visible = false;
     },
     onComplete() {
       
     },
     onTips() {
-      ctx.$toast.text('执行忘记密码逻辑');
+      proxy.$toast.text('执行忘记密码逻辑');
     }
   };
   return {
