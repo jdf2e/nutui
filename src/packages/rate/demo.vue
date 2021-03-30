@@ -38,7 +38,7 @@ import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('rate');
 export default createDemo({
   setup() {
-    let { ctx } = getCurrentInstance();
+    let { proxy } = getCurrentInstance();
 
     const state = reactive({
       val: 3,
@@ -52,7 +52,7 @@ export default createDemo({
       val8: 3
     });
     const onChange = val => {
-      ctx.$toast.text(state.result);
+      proxy.$toast.text(state.result);
     };
     return {
       state,
