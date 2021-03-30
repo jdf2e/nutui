@@ -2,113 +2,88 @@
   <div class="demo">
     <h2>基本用法</h2>
     <nut-cell>
-      <nut-inputnumber
-        v-model:modelValue="state.val1"
-        @change="change"
-        @blur="blur"
-        @focus="focus"
-      />
+      <nut-inputnumber v-model="state.val1" />
     </nut-cell>
     <h2>步长设置</h2>
     <nut-cell>
-      <nut-inputnumber
-        v-model:modelValue="state.val2"
-        :step="state.step"
-        :decimal-places="1"
-      />
+      <nut-inputnumber v-model="state.val2" step="5" />
     </nut-cell>
     <h2>限制输入范围</h2>
     <nut-cell>
       <nut-inputnumber
-        v-model:modelValue="state.val3"
-        :min="state.min"
-        :max="state.max"
-        @reduce-no-allow="reduceNoAllow"
-        @add-no-allow="addNoAllow"
+        v-model="state.val3"
+        @overlimit="overlimit"
+        min="10"
+        max="20"
       />
     </nut-cell>
-    <h2>禁用操作&输入框</h2>
+    <h2>禁用操作</h2>
+    <nut-cell>
+      <nut-inputnumber v-model="state.val4" disabled />
+    </nut-cell>
+    <h2>只读禁用输入框</h2>
+    <nut-cell>
+      <nut-inputnumber v-model="state.val5" readonly />
+    </nut-cell>
+    <h2>支持小数</h2>
     <nut-cell>
       <nut-inputnumber
-        :readonly="true"
-        v-model:modelValue="state.val4"
-        min="0"
-        max="0"
-        @focus="focus"
-        @blur="blur"
+        v-model="state.val6"
+        step="0.1"
+        decimal-places="1"
+        readonly
       />
     </nut-cell>
     <h2>支持异步修改</h2>
     <nut-cell>
-      <nut-inputnumber
-        :async="state.async"
-        v-model="state.val5"
-        :before-change="beforeChange"
-      />
+      <nut-inputnumber :model-value="state.val8" @change="onChange" />
+    </nut-cell>
+    <h2>自定义按钮大小</h2>
+    <nut-cell>
+      <nut-inputnumber v-model="state.val7" button-size="30" input-width="50" />
     </nut-cell>
   </div>
 </template>
 
 <script lang="ts">
-import { reactive, onMounted } from 'vue';
+import { reactive, getCurrentInstance } from 'vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('inputnumber');
 export default createDemo({
   props: {},
   setup() {
+    let { proxy } = getCurrentInstance();
+
     const state = reactive({
-      val1: 2,
-      val2: 1.1,
-      val3: 3,
+      val1: 1,
+      val2: 0,
+      val3: 10,
       val4: 0,
       val5: 1,
-      step: 1.1,
-      min: 3,
-      max: 100,
-      async: true,
-      timer: undefined as undefined | number
+      val6: 5.5,
+      val7: 1,
+      val8: 1,
+      step: 1.1
     });
-    onMounted(() => {
-      state.max = 5;
-    });
-    const change = (num: string | number) => {
-      console.log('change: ', num);
+
+    const onChange = (value: number) => {
+      proxy.$toast.loading('异步演示 2 秒后更改');
+      setTimeout(() => {
+        state.val8 = value;
+        proxy.$toast.hide();
+      }, 2000);
     };
-    const blur = (e: Event, num: string | number) => {
-      console.log('blur: ', num);
+
+    const overlimit = () => {
+      proxy.$toast.warn('超出限制事件触发');
     };
-    const focus = (e: Event, num: string | number) => {
-      console.log('focus: ', e, num);
-    };
-    const addNoAllow = () => {
-      alert('超出最大限制数');
-    };
-    const reduceNoAllow = () => {
-      alert('超出最小限制数');
-    };
-    const beforeChange = () => {
-      // return true;
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve(true);
-        }, 500);
-      });
-    };
-    const handleChangeAsync = (num: number) => {
-      clearTimeout(state.timer);
-      state.timer = setTimeout(() => {
-        state.val5 = state.val5 + 1;
-      }, 1000);
-    };
+
     return {
       state,
-      change,
+      onChange,
       blur,
       focus,
-      reduceNoAllow,
-      addNoAllow,
-      handleChangeAsync,
-      beforeChange
+      overlimit
     };
   }
 });

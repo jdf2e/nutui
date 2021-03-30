@@ -50,11 +50,7 @@
         margin-top: 5px;
         width: 26px;
         height: 3px;
-        background: linear-gradient(
-          90deg,
-          rgba(245, 80, 58, 1) 0%,
-          rgba(250, 209, 203, 1) 100%
-        );
+        background: $address-region-tab-line;
       }
     }
 
@@ -69,7 +65,7 @@
           display: flex;
           align-items: center;
           margin-bottom: 20px;
-          font-size: 12px;
+          font-size: $font-size-1;
           color: #333;
           &.active {
             font-weight: bold;
@@ -97,9 +93,9 @@
           display: flex;
           align-items: center;
           margin-bottom: 20px;
-          font-size: 12px;
+          font-size: $font-size-1;
           line-height: 14px;
-          color: rgba(51, 51, 51, 1);
+          color: #333;
           &.active {
             font-weight: bold;
           }
@@ -125,15 +121,10 @@
         line-height: 42px;
         margin: auto;
         text-align: center;
-        background: linear-gradient(
-          135deg,
-          rgba(242, 20, 12, 1) 0%,
-          rgba(242, 39, 12, 1) 70%,
-          rgba(242, 77, 12, 1) 100%
-        );
+        background: $button-primary-background-color;
         border-radius: 21px;
         font-size: 15px;
-        color: rgba(255, 255, 255, 1);
+        color: $white;
       }
     }
   }

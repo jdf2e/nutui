@@ -1,4 +1,4 @@
-# Textarea 文本域组件
+# TextArea 文本域组件
 
 ### 介绍
 

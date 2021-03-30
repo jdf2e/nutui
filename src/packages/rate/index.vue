@@ -5,18 +5,20 @@
       v-for="n in count"
       :key="n"
       @click="onClick($event, n)"
-      :style="{ marginRight: spacing + 'px' }"
+      :style="{ marginRight: pxCheck(spacing) }"
     >
       <nut-icon
         :size="iconSize"
-        :color="n <= modelValue ? (disabled ? '#ccc' : activeColor) : '#ccc'"
+        class="nut-rate-item__icon"
+        :class="{ 'nut-rate-item__icon--disabled': disabled || n > modelValue }"
+        :color="n <= modelValue ? activeColor : voidColor"
         :name="n <= modelValue ? checkedIcon : uncheckedIcon"
       />
       <nut-icon
         v-if="allowHalf && modelValue + 1 > n"
-        :class="{ 'nut-rate-item__icon-half': allowHalf }"
+        class="nut-rate-item__icon nut-rate-item__icon--half"
+        :color="n <= modelValue ? activeColor : voidColor"
         :size="iconSize"
-        :color="activeColor"
         :name="checkedIcon"
       />
     </view>
@@ -25,6 +27,7 @@
 <script lang="ts">
 import { computed } from 'vue';
 import { createComponent } from '@/utils/create';
+import { pxCheck } from '@/utils/pxCheck';
 const { componentName, create } = createComponent('rate');
 export default create({
   props: {
@@ -42,7 +45,11 @@ export default create({
     },
     activeColor: {
       type: String,
-      default: '#FA200C'
+      default: ''
+    },
+    voidColor: {
+      type: String,
+      default: ''
     },
     uncheckedIcon: {
       type: String,
@@ -77,7 +84,6 @@ export default create({
         [prefixCls]: true
       };
     });
-
     const onClick = (e: Event, index: number) => {
       e.preventDefault();
       e.stopPropagation();
@@ -87,7 +93,7 @@ export default create({
       } else {
         value = index;
         if (props.allowHalf) {
-          if ((e?.target as Element).className.includes('__icon-half')) {
+          if ((e?.target as Element).className.includes('__icon--half')) {
             value -= 0.5;
           }
         }
@@ -98,7 +104,8 @@ export default create({
 
     return {
       classes,
-      onClick
+      onClick,
+      pxCheck
     };
   }
 });

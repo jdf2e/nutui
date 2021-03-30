@@ -126,10 +126,10 @@ export default createDemo({
 
 <style lang="scss" scoped>
 .demo-list {
-  padding-top: 0;
-  margin: 60px 0;
+  margin: 57px 0 60px 0;
+  padding: 0 17px 17px;
   h4 {
-    margin: 20px 0 10px 25px;
+    margin: 25px 0 10px;
     line-height: 20px;
     color: #909ca4;
     font-size: 14px;

@@ -123,7 +123,7 @@
           <nut-checkbox label="选项三"></nut-checkbox>
         </nut-checkboxgroup>
       </div>
-      <span>{{ result2 }}</span>
+      <span>{{ result4 }}</span>
     </div>
   </div>
 </template>
@@ -156,10 +156,10 @@ export default createDemo({
       checkboxGroup7: []
     });
     const result = reactive({
-      result1: '',
-      result2: '',
-      result3: '',
-      result4: ''
+      result1: 'false',
+      result2: '选中状态选项：',
+      result3: '选中状态选项：',
+      result4: '选中状态选项：'
     });
     const changeBox1 = (state: boolean) => {
       data.checkbox1 = state;
@@ -194,13 +194,12 @@ export default createDemo({
   }
 });
 </script>
-
 <style lang="scss" scoped>
 .demo-list {
-  margin: 60px 0;
-  padding: 17px;
+  margin: 57px 0 60px 0;
+  padding: 0 17px 17px;
   h4 {
-    margin: 20px 0 10px;
+    margin: 25px 0 10px;
     line-height: 20px;
     color: #909ca4;
     font-size: 14px;
@@ -213,7 +212,8 @@ export default createDemo({
     box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
     p,
     span {
-      margin-top: 10px;
+      display: block;
+      margin-top: 15px;
       font-size: 14px;
       color: #636363;
     }

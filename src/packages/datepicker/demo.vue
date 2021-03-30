@@ -138,7 +138,6 @@ export default createDemo({
         showList[index].value = true;
       },
       confirm: (index: number, val: string[]) => {
-        console.log(val);
         descList[index].value = val.join('-');
       }
     };

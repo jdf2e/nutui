@@ -1,4 +1,5 @@
 .nut-switch {
+  cursor: pointer;
   display: flex;
   align-items: center;
   background-color: $primary-color;
@@ -25,10 +26,10 @@
       color: $white;
       font-size: $font-size-1;
       &.open {
-        transform: translateX(-14px);
+        transform: translateX(-16px);
       }
       &.close {
-        transform: translateX(14px);
+        transform: translateX(16px);
       }
     }
   }

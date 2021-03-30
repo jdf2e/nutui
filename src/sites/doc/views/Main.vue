@@ -5,9 +5,7 @@
       <div class="content-left">
         <div class="content-title"> NutUI 3.0 </div>
         <div class="content-smile"> </div>
-        <div class="content-subTitle"
-          >一套京东风格的轻量级移动端 Vue 组件库</div
-        >
+        <div class="content-subTitle">京东风格的轻量级移动端 Vue 组件库</div>
         <div class="content-button">
           <div class="leftButton" @click="toIntro">
             <div class="leftButtonText">开始使用</div>
@@ -31,7 +29,6 @@
           ></iframe>
         </div>
       </div>
-      <div class="content-right"></div>
     </div>
     <div class="doc-content-features">
       <div class="doc-content-hd">
@@ -211,6 +208,11 @@ export default defineComponent({
 }
 .doc-content-index {
   .content-left {
+    background: url(https://storage.360buyimg.com/imgtools/a423faab46-8b142e80-8bb1-11eb-853a-6fded8704e77.png)
+      no-repeat;
+    background-size: 1126px 568px;
+    background-position-x: right;
+    background-position-y: 150px;
     .content-title {
       animation: fadeInLeft 1s both;
     }
@@ -507,13 +509,6 @@ export default defineComponent({
         }
       }
     }
-  }
-  .content-right {
-    flex: 2;
-    background: url(https://storage.360buyimg.com/imgtools/a423faab46-8b142e80-8bb1-11eb-853a-6fded8704e77.png)
-      no-repeat;
-    background-size: contain;
-    background-position: center;
   }
 }
 .doc-content-black {

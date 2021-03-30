@@ -89,7 +89,8 @@ setup() {
 | count          | star 总数                                 | Number  | 5           |
 | v-model        | 当前 star 数，可使用 v-model 双向绑定数据 | Number  | -           |
 | icon-size      | star 大小                                 | Number  | 18          |
-| active-color   | 自定义图标颜色                            | String  | #FA200C     |
+| active-color   | 图标选中颜色                              | String  | #fa200c     |
+| void-color     | 图标未选中颜色                            | String  | #ccc        |
 | unchecked-icon | 使用图标(未选中)                          | String  | star-n      |
 | checked-icon   | 使用图标(选中)                            | String  | star-fill-n |
 | allow-half     | 是否半星                                  | Boolean | false       |

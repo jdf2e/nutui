@@ -39,24 +39,24 @@ const { createDemo } = createComponent('toast');
 
 export default createDemo({
   setup() {
-    const { ctx } = getCurrentInstance();
+    const { proxy } = getCurrentInstance();
 
     const textToast = msg => {
-      ctx.$toast.text(msg, { duration: 100000 });
+      proxy.$toast.text(msg, { duration: 100000 });
     };
     const successToast = msg => {
-      ctx.$toast.success(msg, { duration: 100000 });
+      proxy.$toast.success(msg, { duration: 100000 });
     };
     const errorToast = msg => {
-      ctx.$toast.fail(msg);
+      proxy.$toast.fail(msg);
     };
     const warningToast = msg => {
-      ctx.$toast.warn(msg);
+      proxy.$toast.warn(msg);
     };
     const loadingToast = msg => {
-      ctx.$toast.loading(msg, { duration: 0, id: 'test' });
+      proxy.$toast.loading(msg, { duration: 0, id: 'test' });
       setTimeout(() => {
-        ctx.$toast.success('加载完成', { id: 'test', duration: 2000 });
+        proxy.$toast.success('加载完成', { id: 'test', duration: 2000 });
       }, 2000);
     };
     return {

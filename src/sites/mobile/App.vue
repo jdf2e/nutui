@@ -1,10 +1,13 @@
 <template>
-  <div v-if="title != '/'" id="nav">{{ title }}</div>
+  <div v-if="title != '/'" id="nav">
+    <span class="back" @click="goBack"><nut-icon name="left"></nut-icon></span>
+    {{ title }}
+  </div>
   <router-view />
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { isMobile } from '@/sites/assets/util';
 export default defineComponent({
   name: 'app',
@@ -12,6 +15,12 @@ export default defineComponent({
     const title = ref('NutUI');
     // 获取当前路由
     const route = useRoute();
+    const router = useRouter();
+
+    //返回demo页
+    const goBack = () => {
+      router.push('/');
+    };
     // 当当前路由发生变化时，调用回调函数
     watch(
       () => route,
@@ -31,7 +40,7 @@ export default defineComponent({
       }
     );
 
-    return { title };
+    return { title, goBack };
   }
 });
 </script>
@@ -57,6 +66,10 @@ export default defineComponent({
     font-size: 20px;
     color: rgba(51, 51, 51, 1);
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.07);
+    .back {
+      position: absolute;
+      left: 25px;
+    }
   }
 
   .demo {

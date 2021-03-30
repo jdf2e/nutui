@@ -106,7 +106,7 @@
       </div>
     </div>
     <p class="doc-footer-desc"
-      >2021 京东零售 - 基础业务体验部.All Rights Reserved.</p
+      >2021 京东零售 - 基础业务体验部.&nbsp;All Rights Reserved.</p
     >
   </div>
 </template>
@@ -168,10 +168,11 @@ export default defineComponent({
     padding: 30px 80px 20px;
     text-align: center;
     &-content {
+      width: 1200px;
+      margin: 0 auto;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: flex-start;
-      margin-right: 50px;
     }
     &-list {
       position: relative;
