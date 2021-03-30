@@ -21,6 +21,10 @@ app.use(Uploader);
 
 ``` html
 <nut-uploader url="http://服务器地址"></nut-uploader>
+### 直接调起摄像头
+    
+``` html
+<nut-uploader url="http://服务器地址" capture></nut-uploader>
 ```
 ### 限制上传数量5个
 
@@ -94,11 +98,11 @@ setup() {
 | is-preview        | 是否上传成功后展示预览图                                                                                                                                                               | Boolean                           | true        |
 | is-deletable      | 是否展示删除按钮                                                                                                                                                                       | Boolean                           | true        |
 | method            | 上传请求的 http method                                                                                                                                                                 | String                            | "post"      |
-| capture           | 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，可选值为 camera (直接调起摄像头)                                                   | String                            | "camera"    |
+| capture           | 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接调起摄像头                                                   | String                            | false    |
 | maximize          | 可以设定最大上传文件的大小（字节）                                                                                                                                                     | Number丨String                    | Number.MAX_VALUE           |
 | maximum         | 文件上传数量限制                                                                                                                                                                       | Number丨String                    | 1           |
 | clear-input       | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件                                                                                                                          | Boolean                           | false       |
-| accept       | 允许上传的文件类型，[详细说明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | String                            | image/*           |
+| accept       | 允许上传的文件类型，[详细说明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | String                            | *           |
 | headers           | 设置上传的请求头部                                                                                                                                                                     | Object                            | {}          |
 | data         | 附加上传的信息 formData                                                                                                                                                                | Object                            | {}          |
 | upload-icon       | 上传区域[图标名称](#/zh-CN/icon)或图片链接                                                                                                                                             | String                            | "photograph"  |
