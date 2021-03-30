@@ -34,7 +34,7 @@ export default create({
     },
     activeColor: {
       type: String,
-      default: '#fa2c19'
+      default: ''
     }
   },
   emits: ['tab-switch', 'update:show'],

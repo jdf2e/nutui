@@ -1,23 +1,39 @@
 <template>
   <div
-    class="tabbar-item"
+    class="nut-tabbar-item"
+    :class="{ 'nut-tabbar-item__icon--unactive': state.active != state.index }"
     :style="{
       color:
         state.active == state.index ? state.activeColor : state.unactiveColor
     }"
     @click="change(state.index)"
   >
-    <view class="icon-box">
-      <view class="tips num" v-if="num && num <= 99">
+    <view class="nut-tabbar-item_icon-box">
+      <view
+        class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_num"
+        v-if="num && num <= 99"
+      >
         {{ num }}
       </view>
-      <view class="tips nums" v-else-if="num && num > 100">{{ '99+' }}</view>
+      <view
+        class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_nums"
+        v-else-if="num && num > 100"
+        >{{ '99+' }}</view
+      >
       <view v-if="icon">
-        <nut-icon class="icon" :size="state.size" :name="icon"></nut-icon>
+        <nut-icon
+          class="nut-tabbar-item_icon-box_icon"
+          :size="state.size"
+          :name="icon"
+        ></nut-icon>
       </view>
-      <view :class="['tabbar-nav-word', { 'big-word': !icon }]">{{
-        tabTitle
-      }}</view>
+      <view
+        :class="[
+          'nut-tabbar-item_icon-box_nav-word',
+          { 'nut-tabbar-item_icon-box_big-word': !icon }
+        ]"
+        >{{ tabTitle }}</view
+      >
     </view>
   </div>
 </template>
