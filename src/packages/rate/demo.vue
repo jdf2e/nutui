@@ -52,7 +52,7 @@ export default createDemo({
       val8: 3
     });
     const onChange = val => {
-      proxy.$toast.text(state.result);
+      proxy.$toast.text(val);
     };
     return {
       state,
