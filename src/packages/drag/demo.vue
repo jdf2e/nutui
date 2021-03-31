@@ -1,17 +1,17 @@
 <template>
   <div class="demo full">
-    <h2>基础用法</h2>
+    <h2 style="top: 60px;">基础用法</h2>
     <nut-drag :style="{ top: '120px', left: '8px' }">
       <nut-button type="primary">触摸移动</nut-button>
     </nut-drag>
-    <h2 style="top: 30px; position: relative">限制拖拽方向</h2>
+    <h2 style="top: 140px;">限制拖拽方向</h2>
     <nut-drag direction="x" :style="{ top: '200px', left: '8px' }">
       <nut-button type="primary">只能X轴拖拽</nut-button>
     </nut-drag>
     <nut-drag direction="y" :style="{ top: '200px', right: '50px' }">
       <nut-button type="primary">只能Y轴拖拽</nut-button>
     </nut-drag>
-    <h2 style="top: 60px; position: relative">自动吸边</h2>
+    <h2 style="top: 220px">自动吸边</h2>
     <nut-drag
       direction="x"
       :attract="true"
@@ -19,7 +19,7 @@
     >
       <nut-button type="primary">拖动我</nut-button>
     </nut-drag>
-    <h2 style=" top: 90px ;position: relative">限制拖动边界</h2>
+    <h2 style=" top: 290px">限制拖动边界</h2>
     <div class="drag-boundary"></div>
     <nut-drag
       :boundary="{ top: 361, left: 9, bottom: bottom(), right: right() }"
@@ -58,5 +58,8 @@ export default createDemo({
   width: 300px;
   height: 200px;
   border: 1px solid red;
+}
+h2 {
+  position: absolute;
 }
 </style>
