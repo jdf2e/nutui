@@ -33,7 +33,7 @@ export default create({
     },
     size: {
       type: [String, Number, Boolean],
-      default: 'base'
+      default: 'normal'
     },
     label: {
       type: String,
@@ -60,7 +60,7 @@ export default create({
       type: Boolean,
       default: false
     },
-    animation: {
+    isAnimation: {
       type: Boolean,
       default: true
     }
@@ -105,9 +105,9 @@ export default create({
 
     const isAnimated = computed(() => {
       if (parentGroup && parentGroup.parentNode) {
-        return parentProps?.animation;
+        return parentProps?.isAnimation;
       } else {
-        return props.animation;
+        return props.isAnimation;
       }
     });
 

@@ -20,7 +20,7 @@ app.use(ShortPassword);
 
 ``` html
 <nut-shortpassword
-  v-model:value="state.value"
+  v-model="state.value"
   v-model:visible="state.visible"
   :no-button="state.noButton"
   :length="state.length"

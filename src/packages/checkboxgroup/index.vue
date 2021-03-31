@@ -20,7 +20,7 @@ export default create({
     },
     size: {
       type: String,
-      default: 'base'
+      default: 'normal'
     },
     animation: {
       type: Boolean,

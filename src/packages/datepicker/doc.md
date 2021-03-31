@@ -21,7 +21,7 @@ app.use(DatePicker);
 <nut-datepicker
     v-model="currentDate"
     @confirm="confirm"
-    v-model:is-visible="show"
+    v-model:visible="show"
     :is-show-chinese="false"
 ></nut-datepicker> 
 ```
@@ -53,7 +53,7 @@ export default createDemo({
     :min-date="minDate"
     :max-date="maxDate"
     @confirm="confirm"
-    v-model:is-visible="show"
+    v-model:visible="show"
     :is-show-chinese="false"
 ></nut-datepicker> 
 ```
@@ -88,7 +88,7 @@ export default createDemo({
     :max-date="maxDate"
     type="datetime"
     @confirm="confirm"
-    v-model:is-visible="show" 
+    v-model:visible="show" 
 ></nut-datepicker> 
 ```
 ```javascript
@@ -123,7 +123,7 @@ export default createDemo({
     :max-date="maxDate"
     :is-use12-hours="true"
     @confirm="confirm"
-    v-model:is-visible="show"
+    v-model:visible="show"
 ></nut-datepicker>
 ``` 
 ### 时间选择-分钟数递增步长设置
@@ -136,7 +136,7 @@ export default createDemo({
     :max-date="maxDate"
     :is-use12-hours="true"
     @confirm="confirm"
-    v-model:is-visible="show"
+    v-model:visible="show"
 ></nut-datepicker>
 ```  
 
@@ -148,7 +148,7 @@ export default createDemo({
 |--------------|----------------------------------|--------|------------------|
 |  v-model        |    初始值 | Date |`null`  |
 |  type        |    类型，日期'date'， 日期时间'datetime'，时间'time' | String |`'date'`  |
-|  is-visible     |     是否可见    |  Boolean | `false`  |
+|  visible     |     是否可见    |  Boolean | `false`  |
 |  is-use12-hours     | 是否十二小时制度，只限类型为'time'时使用 | Boolean | `false` |
 |  minute-step | 分钟步进值  | Number | `1` |
 |  is-show-chinese  | 每列是否展示中文 | Boolean | `false`           |

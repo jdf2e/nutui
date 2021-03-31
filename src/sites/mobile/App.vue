@@ -77,12 +77,12 @@ export default defineComponent({
     background: #f7f8fa;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 57px 25px 0 25px;
+    padding: 57px 17px 0 17px;
 
     &.full {
       padding: 57px 0 0 0;
       h2 {
-        padding-left: 25px;
+        padding-left: 17px;
       }
     }
 

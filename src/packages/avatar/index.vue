@@ -24,19 +24,19 @@ export default create({
       type: String,
       default: '#eee'
     },
-    bgIcon: {
+    icon: {
       type: String,
       default: ''
     },
-    bgImage: {
+    src: {
       type: String,
       default: ''
     }
   },
-  emits: ['active-avatar'],
+  emits: ['on-error'],
   setup(props, { emit, slots }) {
-    const { size, shape, bgColor, bgIcon, bgImage } = toRefs(props);
-    const sizeValue = ['large', 'middle', 'small'];
+    const { size, shape, bgColor, icon, src } = toRefs(props);
+    const sizeValue = ['large', 'normal', 'small'];
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -50,29 +50,30 @@ export default create({
       return {
         width: sizeValue.indexOf(size.value) > -1 ? '' : `${size.value}px`,
         height: sizeValue.indexOf(size.value) > -1 ? '' : `${size.value}px`,
-        backgroundImage: bgImage.value ? `url(${bgImage.value})` : null,
+        backgroundImage: src.value ? `url(${src.value})` : null,
         backgroundColor: `${bgColor.value}`
       };
     });
 
     const iconStyles = computed(() => {
-      return !!bgIcon.value && !bgImage.value ? bgIcon.value : '';
+      return !!icon.value && !src.value ? icon.value : '';
     });
 
     const isShowText = computed(() => {
       return slots.default;
     });
 
-    const activeAvatar = (e: Event) => {
-      emit('active-avatar', e);
+    let image = new Image();
+    image.src = props.src;
+    image.onerror = event => {
+      emit('on-error', event);
     };
 
     return {
       classes,
       styles,
       iconStyles,
-      isShowText,
-      activeAvatar
+      isShowText
     };
   }
 });

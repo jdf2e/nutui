@@ -22,7 +22,7 @@ app.use(Input);
 
 ```html
 <nut-input
-      v-model:value="state.val1"
+      v-model="state.val1"
       @change="change"
       @focus="focus"
       @blur="blur"
@@ -30,7 +30,7 @@ app.use(Input);
     />
 <nut-input placeholder="请输入文本"
       @change="change"
-      v-model:value="state.val0"
+      v-model="state.val0"
       :require-show="true"
       label="文本"
       @clear="clear"
@@ -41,21 +41,21 @@ app.use(Input);
 
 
 ```html
-<nut-input v-model:value="state.val2" @change="change"  disabled="true" label="标题："/>
-<nut-input v-model:value="state.val3" @change="change" readonly="true"  label="标题："/>
+<nut-input v-model="state.val2" @change="change"  disabled="true" label="标题："/>
+<nut-input v-model="state.val3" @change="change" readonly="true"  label="标题："/>
 ```
 
 ### 限制输入长度
 
 ```html
- <nut-input v-model:value="state.val4" @change="change" max-length="7" label="限制7" />
+ <nut-input v-model="state.val4" @change="change" max-length="7" label="限制7" />
 ```
 ### 其他类型
 
 ```html
-<nut-input v-model:value="state.val0" @change="change" type="password" label="密码"/>
-<nut-input v-model:value="state.val5" @change="change" type="number" label="整数" />
-<nut-input v-model:value="state.val6" @change="change" type="digit" placeholder="支持小数点的输入" label="数字"/>
+<nut-input v-model="state.val0" @change="change" type="password" label="密码"/>
+<nut-input v-model="state.val5" @change="change" type="number" label="整数" />
+<nut-input v-model="state.val6" @change="change" type="digit" placeholder="支持小数点的输入" label="数字"/>
 ```
 
 

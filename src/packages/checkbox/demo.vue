@@ -44,14 +44,14 @@
     </div>
     <h4>禁用动效</h4>
     <div class="show-demo">
-      <nut-checkbox v-model="checkbox7" :animation="false"
+      <nut-checkbox v-model="checkbox7" :is-animation="false"
         >没有动效</nut-checkbox
       >
-      <p>animation属性值为false时，禁用自带动效</p>
+      <p>is-animation属性值为false时，禁用自带动效</p>
     </div>
     <h4>CheckboxGroup整体禁用动效</h4>
     <div class="show-demo">
-      <nut-checkboxgroup v-model="checkboxGroup4" :animation="false">
+      <nut-checkboxgroup v-model="checkboxGroup4" :is-animation="false">
         <nut-checkbox label="没有动效1"></nut-checkbox>
         <nut-checkbox label="没有动效2"></nut-checkbox>
       </nut-checkboxgroup>
