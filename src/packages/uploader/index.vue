@@ -18,8 +18,18 @@
     <view class="upload" v-if="maximum - fileList.length">
       <nut-icon color="#808080" :name="uploadIcon"></nut-icon>
       <input
+        v-if="capture"
         type="file"
-        :capture="capture"
+        capture="camera"
+        :accept="accept"
+        :multiple="multiple"
+        :name="name"
+        :disabled="disabled"
+        @change="onChange"
+      />
+      <input
+        v-else
+        type="file"
         :accept="accept"
         :multiple="multiple"
         :name="name"
@@ -58,11 +68,11 @@ export default create({
     isPreview: { type: Boolean, default: true },
     isDeletable: { type: Boolean, default: true },
     method: { type: String, default: 'post' },
-    capture: { type: String, default: 'camera' },
+    capture: { type: Boolean, default: false },
     maximize: { type: [Number, String], default: Number.MAX_VALUE },
     maximum: { type: [Number, String], default: 1 },
     clearInput: { type: Boolean, default: false },
-    accept: { type: String, default: 'image/*' },
+    accept: { type: String, default: '*' },
     headers: { type: Object, default: {} },
     data: { type: Object, default: {} },
     uploadIcon: { type: String, default: 'photograph' },

@@ -22,34 +22,31 @@ app.use(Toast);
 
 文字提示
 ```javascript
-Toast.text(msg);
+Toast.text('网络失败，请稍后再试~');
 ```
 
 成功提示
 
 ```javascript
-Toast.success(msg);
+Toast.success('成功提示');
 ```
 
 失败提示
 
 ```javascript
-Toast.fail(msg);
+Toast.fail('失败提示');
 ```
 
 警告提示
 
 ```javascript
-Toast.warn(msg);
+Toast.warn('警告提示');
 ```
 
-### 动态更新
+加载提示
 
 ```javascript
-Toast.loading(msg, { duration: 0, id: 'test' });
-setTimeout(() => {
-  Toast.success('加载完成', { id: 'test', duration: 2000 });
-}, 2000);
+Toast.loading('加载中');
 ```
 
 ##¥ 支持在JS模块中导入使用

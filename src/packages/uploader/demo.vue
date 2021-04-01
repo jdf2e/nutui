@@ -2,6 +2,8 @@
   <div class="demo bg-w">
     <h2>基础用法</h2>
     <nut-uploader :url="uploadUrl" @start="start"></nut-uploader>
+    <h2>直接调起摄像头</h2>
+    <nut-uploader capture></nut-uploader>
     <h2>上传状态</h2>
     <nut-uploader :url="uploadUrl" multiple @delete="onDelete"></nut-uploader>
     <h2>限制上传数量5个</h2>
@@ -20,7 +22,8 @@
       :before-upload="beforeUpload"
       :maximize="1024 * 50"
       @oversize="onOversize"
-    ></nut-uploader>
+    >
+    </nut-uploader>
     <h2>自定义数据 FormData 、 headers </h2>
     <nut-uploader
       :url="uploadUrl"

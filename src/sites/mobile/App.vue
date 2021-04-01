@@ -19,7 +19,7 @@ export default defineComponent({
 
     //返回demo页
     const goBack = () => {
-      router.push('/');
+      router.back();
     };
     // 当当前路由发生变化时，调用回调函数
     watch(
@@ -77,12 +77,12 @@ export default defineComponent({
     background: #f7f8fa;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 57px 25px 0 25px;
+    padding: 57px 17px 0 17px;
 
     &.full {
       padding: 57px 0 0 0;
       h2 {
-        padding-left: 25px;
+        padding-left: 17px;
       }
     }
 
