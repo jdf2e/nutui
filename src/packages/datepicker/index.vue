@@ -201,12 +201,23 @@ export default create({
         } else {
           formatDate = val;
         }
-        console.log(formatDate);
-        state.currentDate = formatValue(
+        console.log(
           new Date(
             formatDate[0],
             formatDate[1] - 1,
             formatDate[2],
+            formatDate[3],
+            formatDate[4]
+          )
+        );
+        state.currentDate = formatValue(
+          new Date(
+            formatDate[0],
+            formatDate[1] - 1,
+            Math.min(
+              formatDate[2],
+              getMonthEndDay(formatDate[0], formatDate[1])
+            ),
             formatDate[3],
             formatDate[4]
           )
