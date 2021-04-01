@@ -192,17 +192,26 @@ export default create({
     });
 
     const changeHandler = (val: string[]) => {
-      // let formatDate = [];
-      // if (props.isShowChinese) {
-      //   formatDate = val.map((res: string) => {
-      //     return Number(res.slice(0, res.length - 1));
-      //   }) as any;
-      // } else {
-      //   formatDate = val;
-      // }
-      // state.currentDate = formatValue(
-      //   new Date(formatDate[0], formatDate[1] - 1, formatDate[2])
-      // );
+      if (props.type == 'datetime') {
+        let formatDate = [];
+        if (props.isShowChinese) {
+          formatDate = val.map((res: string) => {
+            return Number(res.slice(0, res.length - 1));
+          }) as any;
+        } else {
+          formatDate = val;
+        }
+        console.log(formatDate);
+        state.currentDate = formatValue(
+          new Date(
+            formatDate[0],
+            formatDate[1] - 1,
+            formatDate[2],
+            formatDate[3],
+            formatDate[4]
+          )
+        );
+      }
     };
 
     const generateValue = (
