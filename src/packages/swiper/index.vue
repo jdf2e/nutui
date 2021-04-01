@@ -18,7 +18,10 @@
     </view>
     <slot name="page"></slot>
     <view
-      :class="{ [`${componentName}-pagination`]: true }"
+      :class="{
+        [`${componentName}-pagination`]: true,
+        [`${componentName}-pagination-vertical`]: isVertical
+      }"
       v-if="paginationVisible && !slots.page"
     >
       <i
