@@ -192,7 +192,7 @@ export default create({
     });
 
     const changeHandler = (val: string[]) => {
-      if (props.type == 'datetime') {
+      if (['date', 'datetime'].includes(props.type)) {
         let formatDate = [];
         if (props.isShowChinese) {
           formatDate = val.map((res: string) => {
@@ -201,16 +201,32 @@ export default create({
         } else {
           formatDate = val;
         }
-        console.log(formatDate);
-        state.currentDate = formatValue(
-          new Date(
-            formatDate[0],
-            formatDate[1] - 1,
-            formatDate[2],
-            formatDate[3],
-            formatDate[4]
-          )
-        );
+        let date: Date;
+        if (props.type === 'date') {
+          state.currentDate = formatValue(
+            new Date(
+              formatDate[0],
+              formatDate[1] - 1,
+              Math.min(
+                formatDate[2],
+                getMonthEndDay(formatDate[0], formatDate[1])
+              )
+            )
+          );
+        } else if (props.type === 'datetime') {
+          state.currentDate = formatValue(
+            new Date(
+              formatDate[0],
+              formatDate[1] - 1,
+              Math.min(
+                formatDate[2],
+                getMonthEndDay(formatDate[0], formatDate[1])
+              ),
+              formatDate[3],
+              formatDate[4]
+            )
+          );
+        }
       }
     };
 
