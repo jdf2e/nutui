@@ -73,8 +73,8 @@ export default create({
         return 0;
       }
       if (checkPoint(price)) {
-        price = Number(price).toFixed(props.decimalDigits);
-        return renderPrice(price.split('.'));
+        price = Number(price);
+        return renderPrice((price + '').split('.'));
       } else {
         return renderPrice(price.toString());
       }
