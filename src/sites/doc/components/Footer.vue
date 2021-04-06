@@ -1,5 +1,5 @@
 <template>
-  <div class="doc-footer" :class="`doc-footer-${data.theme}`">
+  <div class="doc-footer" :class="`doc-footer-${themeColor}`">
     <div class="doc-footer-content">
       <div class="doc-footer-list">
         <img
@@ -15,8 +15,8 @@
             target="_blank"
             href="hhttps://cn.vuejs.org/index.html"
             >Vue</a
-          ></div
-        >
+          >
+        </div>
         <div class="doc-footer-item"
           ><a class="sub-link" target="_blank" href="https://vitejs.dev"
             >Vite</a
@@ -117,7 +117,6 @@ export default defineComponent({
   name: 'doc-footer',
   setup() {
     const data = reactive({
-      theme: 'red',
       themeList: [
         {
           name: '热情红',
@@ -148,12 +147,11 @@ export default defineComponent({
     const checkTheme = (color: string, index: number) => {
       data.isShowSelect = false;
       data.activeIndex = index;
-      data.theme = color;
       themeColor.value = color;
       console.log('themeColor1', themeColor);
-      // bus.emit('select-theme', color)
     };
     return {
+      themeColor,
       data,
       clickOut,
       checkTheme
