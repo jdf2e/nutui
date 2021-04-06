@@ -1,5 +1,5 @@
 <template>
-  <div class="doc-footer" :class="`doc-footer-${data.theme}`">
+  <div class="doc-footer" :class="`doc-footer-${themeColor}`">
     <div class="doc-footer-content">
       <div class="doc-footer-list">
         <img
@@ -16,8 +16,8 @@
             href="hhttps://cn.vuejs.org/index.html"
             v-hover
             >Vue</a
-          ></div
-        >
+          >
+        </div>
         <div class="doc-footer-item"
           ><a class="sub-link" target="_blank" href="https://vitejs.dev" v-hover
             >Vite</a
@@ -126,12 +126,11 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
-import { themeColor } from '@/sites/assets/util/ref';
+import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-footer',
   setup() {
     const data = reactive({
-      theme: 'red',
       themeList: [
         {
           name: '热情红',
@@ -159,15 +158,18 @@ export default defineComponent({
         false
       );
     };
+    // checked active index
+    data.activeIndex = data.themeList.findIndex(
+      i => i.color == RefData.getInstance().themeColor.value
+    );
     const checkTheme = (color: string, index: number) => {
       data.isShowSelect = false;
       data.activeIndex = index;
-      data.theme = color;
-      themeColor.value = color;
-      console.log('themeColor1', themeColor);
-      // bus.emit('select-theme', color)
+      RefData.getInstance().themeColor.value = color;
+      localStorage.setItem('nutui-theme-color', color);
     };
     return {
+      themeColor: RefData.getInstance().themeColor,
       data,
       clickOut,
       checkTheme
