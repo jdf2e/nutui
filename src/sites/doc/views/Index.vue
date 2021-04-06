@@ -19,7 +19,7 @@ import Header from '@/sites/doc/components/Header.vue';
 import Nav from '@/sites/doc/components/Nav.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
 import DemoPreview from '@/sites/doc/components/DemoPreview.vue';
-import { currentRoute } from '@/sites/assets/util/ref';
+import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc',
   components: {
@@ -35,7 +35,7 @@ export default defineComponent({
 
     const watchDemoUrl = (router: RouteLocationNormalized) => {
       const { origin, pathname } = window.location;
-      currentRoute.value = router.name as string;
+      RefData.getInstance().currentRoute.value = router.name as string;
       data.demoUrl = `${origin}${pathname.replace('index.html', '')}demo.html#${
         router.path
       }`;

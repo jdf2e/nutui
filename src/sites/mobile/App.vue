@@ -19,7 +19,7 @@ export default defineComponent({
 
     //返回demo页
     const goBack = () => {
-      router.push('/');
+      router.back();
     };
     // 当当前路由发生变化时，调用回调函数
     watch(

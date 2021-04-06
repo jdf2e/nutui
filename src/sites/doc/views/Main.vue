@@ -113,7 +113,7 @@ import { defineComponent, onMounted, reactive, toRefs, computed } from 'vue';
 import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
 import router from '../router';
-import { themeColor } from '@/sites/assets/util/ref';
+import { RefData } from '@/sites/assets/util/ref';
 import { ApiService } from '@/sites/service/ApiService';
 export default defineComponent({
   name: 'main',
@@ -175,7 +175,7 @@ export default defineComponent({
 
     const themeName = computed(() => {
       return function() {
-        return `doc-content-${themeColor.value}`;
+        return `doc-content-${RefData.getInstance().themeColor.value}`;
       };
     });
     const toLink = (id: number) => {

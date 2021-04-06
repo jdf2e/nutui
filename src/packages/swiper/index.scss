@@ -30,4 +30,16 @@
       }
     }
   }
+  &-pagination-vertical {
+    top: 50%;
+    left: 12px;
+    bottom: auto;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    transform: translateY(-50%);
+    i {
+      margin-bottom: 5px;
+    }
+  }
 }
