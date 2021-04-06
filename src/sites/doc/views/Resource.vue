@@ -97,7 +97,7 @@ import {
 } from 'vue-router';
 import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
-import { currentRoute } from '@/sites/assets/util/ref';
+import { RefData } from '@/sites/assets/util/ref';
 import { ApiService } from '@/sites/service/ApiService';
 export default defineComponent({
   name: 'doc',
@@ -125,7 +125,7 @@ export default defineComponent({
       activeIndex: 0
     });
     const watchDemoUrl = (router: RouteLocationNormalized) => {
-      currentRoute.value = router.name as string;
+      RefData.getInstance().currentRoute.value = router.name as string;
     };
     onMounted(() => {
       // 路由

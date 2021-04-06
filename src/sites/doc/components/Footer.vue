@@ -112,7 +112,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
-import { themeColor } from '@/sites/assets/util/ref';
+import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-footer',
   setup() {
@@ -144,14 +144,18 @@ export default defineComponent({
         false
       );
     };
+    // checked active index
+    data.activeIndex = data.themeList.findIndex(
+      i => i.color == RefData.getInstance().themeColor.value
+    );
     const checkTheme = (color: string, index: number) => {
       data.isShowSelect = false;
       data.activeIndex = index;
-      themeColor.value = color;
-      console.log('themeColor1', themeColor);
+      RefData.getInstance().themeColor.value = color;
+      localStorage.setItem('nutui-theme-color', color);
     };
     return {
-      themeColor,
+      themeColor: RefData.getInstance().themeColor,
       data,
       clickOut,
       checkTheme
