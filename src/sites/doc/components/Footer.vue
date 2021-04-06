@@ -14,21 +14,30 @@
             class="sub-link"
             target="_blank"
             href="hhttps://cn.vuejs.org/index.html"
+            v-hover
             >Vue</a
           ></div
         >
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://vitejs.dev"
+          ><a class="sub-link" target="_blank" href="https://vitejs.dev" v-hover
             >Vite</a
           ></div
         >
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://taro.jd.com"
+          ><a
+            class="sub-link"
+            target="_blank"
+            href="https://taro.jd.com"
+            v-hover
             >Taro</a
           ></div
         >
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://ling.jd.com/jdw"
+          ><a
+            class="sub-link"
+            target="_blank"
+            href="https://ling.jd.com/jdw"
+            v-hover
             >羚珑</a
           ></div
         >
@@ -40,6 +49,7 @@
             class="sub-link"
             target="_blank"
             href="https://github.com/jdf2e/nutui"
+            v-hover
             >GitHub</a
           ></div
         >
@@ -48,12 +58,13 @@
             class="sub-link"
             target="_blank"
             href="https://www.zhihu.com/column/c_1263837684834889728"
+            v-hover
             >NutUI 知乎专栏</a
           ></div
         >
 
         <div class="doc-footer-item vx-item">
-          微信
+          <span v-hover>微信</span>
           <i class="icon-vx"></i>
           <div class="vx-box">
             <p class="vx-desc">微信交流群</p>
@@ -66,21 +77,24 @@
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">关于我们</h4>
         <div class="doc-footer-item"
-          ><a class="sub-link" href="#/joinus">加入我们</a></div
+          ><a class="sub-link" href="#/joinus" v-hover>加入我们</a></div
         >
         <div class="doc-footer-item"
-          ><a class="sub-link" href="mailto:nutui@jd.com">联系我们</a></div
+          ><a class="sub-link" href="mailto:nutui@jd.com" v-hover
+            >联系我们</a
+          ></div
         >
         <div class="doc-footer-item"
           ><a
             class="sub-link"
             target="_blank"
             href="https://github.com/jdf2e/nutui/issues"
+            v-hover
             >意见反馈</a
           ></div
         >
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="http://fe.jd.com"
+          ><a class="sub-link" target="_blank" href="http://fe.jd.com" v-hover
             >京东前端</a
           ></div
         >
