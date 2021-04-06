@@ -42,14 +42,14 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive, computed, onMounted } from 'vue';
-import { currentRoute } from '@/sites/assets/util/ref';
+import { RefData } from '@/sites/assets/util/ref';
 import { nav, docs } from '@/config.json';
 export default defineComponent({
   name: 'doc-nav',
   setup() {
     const isActive = computed(() => {
       return function(name: string) {
-        return currentRoute.value == name.toLowerCase();
+        return RefData.getInstance().currentRoute.value == name.toLowerCase();
       };
     });
     onMounted(() => {
@@ -59,7 +59,7 @@ export default defineComponent({
       isActive,
       nav: reactive(nav),
       docs: reactive(docs),
-      currentRoute
+      currentRoute: RefData.getInstance().currentRoute
     };
   }
 });

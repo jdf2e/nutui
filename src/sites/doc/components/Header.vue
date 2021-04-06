@@ -72,7 +72,7 @@
 import { defineComponent, reactive, computed, onMounted } from 'vue';
 import Search from './Search.vue';
 import { header } from '@/config.json';
-import { currentRoute, themeColor } from '@/sites/assets/util/ref';
+import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-header',
   components: {
@@ -106,14 +106,12 @@ export default defineComponent({
     };
     const isActive = computed(() => {
       return function(name: string) {
-        // console.log(name, currentRoute.value);
-        // console.log('name1', currentRoute.value == name.toLowerCase());
-        return currentRoute.value == name.toLowerCase();
+        return RefData.getInstance().currentRoute.value == name.toLowerCase();
       };
     });
     const themeName = computed(() => {
       return function() {
-        return `doc-header-${themeColor.value}`;
+        return `doc-header-${RefData.getInstance().themeColor.value}`;
       };
     });
     const checkTheme = (item: string, index: number) => {
