@@ -2,4 +2,4 @@ import { ref } from 'vue';
 
 export const currentRoute = ref('/');
 
-export const themeColor = ref('red');
+export const themeColor = ref('black');
