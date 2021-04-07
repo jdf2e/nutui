@@ -5,7 +5,7 @@
       @touchmove.stop="touchmove"
       @click="onClick"
       :style="style"
-      v-show="show"
+      v-show="visible"
     >
       <slot></slot>
     </view>
@@ -16,7 +16,7 @@ import { CSSProperties, PropType, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('overlay');
 const overlayProps = {
-  show: {
+  visible: {
     type: Boolean,
     default: false
   },
@@ -49,7 +49,7 @@ export { overlayProps };
 
 export default create({
   props: overlayProps,
-  emits: ['click', 'update:show'],
+  emits: ['click', 'update:visible'],
   setup(props, { emit }) {
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -74,7 +74,7 @@ export default create({
     const onClick = (e: MouseEvent) => {
       emit('click', e);
       if (props.closeOnClickOverlay) {
-        emit('update:show', false);
+        emit('update:visible', false);
       }
     };
 

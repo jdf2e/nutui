@@ -10,7 +10,7 @@
     </nut-tabbar>
 
     <h2>自定义选中</h2>
-    <nut-tabbar v-model:show="active">
+    <nut-tabbar v-model:visible="active">
       <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
       <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
       <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>

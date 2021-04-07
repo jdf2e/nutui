@@ -162,7 +162,7 @@ export default createDemo({
     
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| visible   | 是否可见               | Boolean | false             |
+| v-model:visible   | 是否可见               | Boolean | false             |
 | title        | 设置标题                         | String | -                |
 | list-data         | 列表数据 | Array | -                |
 | default-value-index         | 初始选中项的索引，默认为 0 | number | 0                |
