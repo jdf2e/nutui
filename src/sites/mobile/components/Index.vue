@@ -90,6 +90,7 @@ export default defineComponent({
       > ul {
         li {
           display: flex;
+          align-items: center;
           padding: 0 24px;
           width: 100%;
           height: 45px;

@@ -1,6 +1,8 @@
 <template>
   <div v-if="title != '/'" id="nav">
-    <span class="back" @click="goBack"><nut-icon name="left"></nut-icon></span>
+    <div class="back" @click="goBack">
+      <nut-icon name="left"></nut-icon>
+    </div>
     {{ title }}
   </div>
   <router-view />
@@ -68,7 +70,13 @@ export default defineComponent({
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.07);
     .back {
       position: absolute;
-      left: 25px;
+      left: 0;
+      height: 100%;
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
     }
   }
 

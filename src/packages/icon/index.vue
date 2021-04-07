@@ -30,12 +30,12 @@ export default create({
         {
           class: _isImage
             ? `${componentName}__img`
-            : `${props.classPrefix} ${componentName}-${props.name}`,
+            : `${props.classPrefix} ${componentName} ${componentName}-${props.name}`,
           style: {
             color: props.color,
             fontSize: pxCheck(props.size),
-            width: _isImage ? pxCheck(props.size) : '',
-            height: _isImage ? pxCheck(props.size) : ''
+            width: pxCheck(props.size),
+            height: pxCheck(props.size)
           },
           onClick: handleClick,
           src: _isImage ? props.name : ''
