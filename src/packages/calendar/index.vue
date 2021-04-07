@@ -1,7 +1,7 @@
 <template>
   <nut-popup
     v-if="poppable"
-    v-model:visible="childIsVisible"
+    :visible="visible"
     position="bottom"
     round
     :closeable="true"
@@ -39,7 +39,7 @@
   </nut-calendar-item>
 </template>
 <script lang="ts">
-import { PropType, reactive, ref, watch, toRefs } from 'vue';
+import { PropType, ref } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('calendar');
 import Popup from '@/packages/popup/index.vue';
@@ -62,7 +62,8 @@ export default create({
       default: true
     },
     visible: {
-      type: Boolean
+      type: Boolean,
+      default: false
     },
     title: {
       type: String,
@@ -85,19 +86,14 @@ export default create({
     // element refs
     const calendarRef = ref<null | HTMLElement>(null);
 
-    // state
-    const state = reactive({
-      childIsVisible: false
-    });
-
     // methods
     const update = () => {
-      state.childIsVisible = false;
+      emit('update:visible', false);
     };
 
     const close = () => {
-      emit('update:visible', false);
       emit('close');
+      emit('update:visible', false);
     };
 
     const choose = (param: string) => {
@@ -109,23 +105,12 @@ export default create({
       close();
     };
 
-    watch(
-      () => props.visible,
-      val => {
-        if (val) {
-          state.childIsVisible = true;
-        }
-      }
-    );
-
     return {
       closePopup,
       update,
       close,
       choose,
-      calendarRef,
-      ...toRefs(state),
-      ...toRefs(props)
+      calendarRef
     };
   }
 });
