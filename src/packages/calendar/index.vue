@@ -1,7 +1,7 @@
 <template>
   <nut-popup
     v-if="poppable"
-    v-model:show="childIsVisible"
+    v-model:visible="childIsVisible"
     position="bottom"
     round
     :closeable="true"
@@ -61,7 +61,7 @@ export default create({
       type: Boolean,
       default: true
     },
-    isVisible: {
+    visible: {
       type: Boolean
     },
     title: {
@@ -80,7 +80,7 @@ export default create({
       default: Utils.getDay(365)
     }
   },
-  emits: ['choose', 'close'],
+  emits: ['choose', 'close', 'update:visible'],
   setup(props, { emit }) {
     // element refs
     const calendarRef = ref<null | HTMLElement>(null);
@@ -96,6 +96,7 @@ export default create({
     };
 
     const close = () => {
+      emit('update:visible', false);
       emit('close');
     };
 
@@ -109,7 +110,7 @@ export default create({
     };
 
     watch(
-      () => props.isVisible,
+      () => props.visible,
       val => {
         if (val) {
           state.childIsVisible = true;

@@ -61,27 +61,27 @@ app.use(Input);
 
 ### Prop
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| type         | 类型，可选值为 `text` `number`  等 | String |`text`         |
-| value      | 输入值，双向绑定 | String |  -     |
-| placeholder         | 为空时占位符 | String |       -       |
-| label          | 	左侧文案                       | String | -             |
-| require-show          |左侧*号是否展示                       | Boolean | `false`           |
-| disabled          | 	是否禁用                       | Boolean | `false`              |
-| readonly          | 是否只读                        | Boolean | `false`               |
-| max-length          | 限制最长输入字符                   | String、Number | -               |
-| disable-clear          | 禁止展示清除icon                   | Boolean | `false`             |
-| text-align          | 文本位置,可选值`left`,`center`,`right`     | String | `left`             |
+| 参数          | 说明                                   | 类型           | 默认值  |
+|---------------|----------------------------------------|----------------|---------|
+| v-model         | 输入值，双向绑定                       | String         | -       |
+| type          | 类型，可选值为 `text` `number`  等     | String         | `text`  |
+| placeholder   | 为空时占位符                           | String         | -       |
+| label         | 左侧文案                               | String         | -       |
+| require-show  | 左侧*号是否展示                        | Boolean        | `false` |
+| disabled      | 是否禁用                               | Boolean        | `false` |
+| readonly      | 是否只读                               | Boolean        | `false` |
+| max-length    | 限制最长输入字符                       | String、Number | -       |
+| disable-clear | 禁止展示清除icon                       | Boolean        | `false` |
+| text-align    | 文本位置,可选值`left`,`center`,`right` | String         | `left`  |
 
 ### Event
 
-| 名称  | 说明     | 回调参数    |
-|-------|----------|-------------|
-| change | 输入内容时触发 | val |
-| focus | 聚焦时触发 | val |
-| blur | 失焦时触发 | val |
-| clear | 点击清空时触发 | val |
+| 名称   | 说明           | 回调参数 |
+|--------|----------------|----------|
+| change | 输入内容时触发 | val      |
+| focus  | 聚焦时触发     | val      |
+| blur   | 失焦时触发     | val      |
+| clear  | 点击清空时触发 | val      |
 
 
 

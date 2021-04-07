@@ -12,7 +12,7 @@ import tabbaritem from '@/packages/tabbaritem/index.vue';
 export default create({
   children: [tabbaritem],
   props: {
-    show: {
+    visible: {
       type: [Number, String],
       default: 0
     },
@@ -37,14 +37,14 @@ export default create({
       default: ''
     }
   },
-  emits: ['tab-switch', 'update:show'],
+  emits: ['tab-switch', 'update:visible'],
   setup(props, { emit, slots }) {
     const mdValue = reactive({
-      val: props.show,
+      val: props.visible,
       children: []
     });
     function changeIndex(active: number) {
-      emit('update:show', active);
+      emit('update:visible', active);
       parentData.modelValue = active;
       emit('tab-switch', parentData.children[active], active);
     }
@@ -58,7 +58,7 @@ export default create({
     });
     provide('parent', parentData);
     watch(
-      () => props.show,
+      () => props.visible,
       value => {
         parentData.modelValue = value;
       }

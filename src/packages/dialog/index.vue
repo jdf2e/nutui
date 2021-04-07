@@ -15,7 +15,8 @@
           :style="{ background: maskBgStyle }"
           @click="modalClick"
           v-show="curVisible"
-        ></div>
+        >
+        </div>
       </transition>
       <transition :name="animation ? 'nutEase' : ''">
         <div class="nut-dialog-box" v-show="curVisible" @click="modalClick">
@@ -106,6 +107,10 @@ const lockMaskScroll = (bodyCls => {
 })('dialog-open');
 export default create({
   props: {
+    visible: {
+      type: Boolean,
+      default: false
+    },
     id: {
       type: String,
       default: ''
@@ -138,10 +143,7 @@ export default create({
       type: Boolean,
       default: false
     },
-    visible: {
-      type: Boolean,
-      default: false
-    },
+
     closeBtn: {
       type: Boolean,
       default: false
