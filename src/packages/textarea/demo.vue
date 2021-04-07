@@ -1,5 +1,5 @@
 <template>
-  <div class="demo-nopading">
+  <div class="demo full">
     <h2>基础用法</h2>
     <nut-textarea
       v-model="state.val0"
@@ -49,19 +49,4 @@ export default createDemo({
 });
 </script>
 
-<style lang="scss" scoped>
-.demo-nopading {
-  height: 100%;
-  background: #f7f8fa;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: 0;
-  padding-top: 57px;
-  h2 {
-    padding-left: 25px;
-    margin-top: 25px;
-    margin-bottom: 10px;
-    color: #909ca4;
-  }
-}
-</style>
+<style lang="scss" scoped></style>
