@@ -55,7 +55,7 @@ export default create({
     },
     max: {
       type: [Number, String],
-      default: Infinity
+      default: 9999
     },
     step: {
       type: [Number, String],
@@ -103,9 +103,9 @@ export default create({
     };
 
     const emitChange = (value: string | number, event: Event) => {
-      let outup_value: number = Number(fixedDecimalPlaces(value));
-      emit('change', outup_value, event);
-      emit('update:modelValue', outup_value, event);
+      let output_value: number | string = fixedDecimalPlaces(value);
+      emit('change', output_value, event);
+      emit('update:modelValue', output_value, event);
     };
 
     const addAllow = (value = Number(props.modelValue)): boolean => {
@@ -119,8 +119,8 @@ export default create({
     const reduce = (event: Event) => {
       emit('reduce', event);
       if (reduceAllow()) {
-        let outup_value = Number(props.modelValue) - Number(props.step);
-        emitChange(outup_value, event);
+        let output_value = Number(props.modelValue) - Number(props.step);
+        emitChange(output_value, event);
       } else {
         emit('overlimit', event);
       }
@@ -129,8 +129,8 @@ export default create({
     const add = (event: Event) => {
       emit('add', event);
       if (addAllow()) {
-        let outup_value = Number(props.modelValue) + Number(props.step);
-        emitChange(outup_value, event);
+        let output_value = Number(props.modelValue) + Number(props.step);
+        emitChange(output_value, event);
       } else {
         emit('overlimit', event);
       }
@@ -146,11 +146,12 @@ export default create({
       if (props.disabled) return;
       if (props.readonly) return;
       const input = event.target as HTMLInputElement;
+
       let value = input.valueAsNumber;
-      if (!addAllow(value)) {
-        value = Number(props.max);
-      }
-      if (!reduceAllow(value)) {
+
+      if (value < Number(props.min)) {
+        value = Number(props.min);
+      } else if (value > Number(props.max)) {
         value = Number(props.max);
       }
       emitChange(value, event);
