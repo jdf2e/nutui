@@ -27,7 +27,7 @@ app.use(Calendar);
 >
 </nut-cell>
 <nut-calendar
-  :visible="isVisible"
+  v-model:visible="isVisible"
   :default-value="date"
   @close="closeSwitch('isVisible')"
   @choose="setChooseValue"
@@ -74,7 +74,7 @@ setup() {
 >
 </nut-cell>
 <nut-calendar
-  :visible="isVisible"
+  v-model:visible="isVisible"
   :default-value="date"
   type="range"
   :start-date="`2019-12-22`"
@@ -120,7 +120,7 @@ setup() {
 >
 </nut-cell>
 <nut-calendar
-  :visible="isVisible"
+  v-model:visible="isVisible"
   @close="closeSwitch('isVisible')"
   @choose="setChooseValue"
   :start-date="null"
