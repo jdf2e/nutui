@@ -106,7 +106,7 @@
 
 .nutui-popup {
   &__close-icon {
-    position: absolute;
+    position: absolute !important;
     z-index: 1;
     color: #969799;
     font-size: 18px;
