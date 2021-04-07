@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view :class="classes" :style="{ height: pxCheck(buttonSize) }">
     <nut-icon
       name="minus"
       class="nut-inputnumber__icon"
