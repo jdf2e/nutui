@@ -50,21 +50,7 @@
             @click="toLink(item.id)"
           >
             <img class="img-design" :src="item.cover_image" />
-            <p class="design-title">{{ item.title }}</p>
-          </div>
-        </div>
-        <div class="tab-bd" v-show="activeIndex === 1">
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title"
-              >NutUI 落地实践-让组件库服务慧采协同采购业务</p
-            >
-          </div>
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title"
-              >NutUI 落地实践-让组件库服务慧采协同采购业务</p
-            >
+            <p class="design-title" v-hover>{{ item.title }}</p>
           </div>
         </div>
       </div>
