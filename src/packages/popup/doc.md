@@ -83,7 +83,7 @@ app.use(Popup);
 ### 指定挂载节点
 
 ```html
-<nut-popup :style="{ padding: '30px' }" teleport="#app" v-model:visible="show">app</nut-popup
+<nut-popup :style="{ padding: '30px' }" teleport="#app" v-model:visible="show">app</nut-popup>
 ```
 
 ## API
