@@ -3,6 +3,7 @@
     <nut-overlay
       v-if="overlay"
       :visible="visible"
+      :close-on-click-overlay="closeOnClickOverlay"
       :class="overlayClass"
       :style="overlayStyle"
       :z-index="zIndex"
