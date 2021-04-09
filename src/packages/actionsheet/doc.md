@@ -11,7 +11,7 @@
    <div class="selected-option" v-html="state.val"></div>
 </div>
 <nut-actionsheet
-  :is-visible="state.isVisible"
+  v-model:visible="state.isVisible"
   :menu-items="menuItems"
   @choose="chooseItem"
 ></nut-actionsheet>
@@ -23,7 +23,7 @@
   <span><label>展示取消按钮</label></span>
   <div class="selected-option" v-html="state.val"></div>
 </div>
-<nut-actionsheet :is-visible="isVisible" 
+<nut-actionsheet v-model:visible="isVisible" 
   @close="switchActionSheet"
   :menu-items="menuItems"
   @choose="chooseItem"
@@ -36,7 +36,7 @@
    <span><label>展示取消按钮</label></span>
     <div class="selected-option" v-html="state.val"></div>
 </div>
- <nut-actionsheet :is-visible="isVisible" 
+ <nut-actionsheet v-model:visible="isVisible" 
     @close="switchActionSheet"
     description="state.desc"
     :menu-items="menuItems"
@@ -53,7 +53,7 @@
 </div>
 <nut-actionsheet
 @close="switchActionSheet"
-  :is-visible="state.isVisible4"
+  v-model:visible="state.isVisible4"
   cancel-txt="取消"
   :menu-items="menuItemsThree"
 ></nut-actionsheet>
@@ -96,7 +96,7 @@ setup() {
 | cancel-txt       | 取消文案                               | String  | '取消'    |
 | menu-items       | 列表项                                 | Array   | [ ]       |
 | option-tag       | 设置列表项展示使用参数                 | String  | 'name'    |
-| is-visible       | 遮罩层可见                             | Boolean | false     |
+| v-model:visible       | 遮罩层可见                             | Boolean | false     |
 | option-sub-tag   | 设置列表项描述展示使用参数             | String  | 'subname' |
 | choose-tag-value | 设置选中项的值，和'option-tag'的值对应 | String  | ''        |
 | title            | 设置列表项标题                         | String  | ''        |

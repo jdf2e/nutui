@@ -76,13 +76,13 @@ app.use(Icon);
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| name         | 图标名称或图片链接               | String | -                |
-| color        | 图标颜色                         | String | -                |
-| size         | 图标大小，如 `20px` `2em` `2rem` | String|Number | -                |
-| class-prefix | 类名前缀，用于使用自定义图标     | String | `nutui-iconfont` |
-| tag          | HTML 标签                        | String | `i`              |
+| 参数         | 说明                             | 类型             | 默认值           |
+|--------------|----------------------------------|------------------|------------------|
+| name         | 图标名称或图片链接               | String           | -                |
+| color        | 图标颜色                         | String           | -                |
+| size         | 图标大小，如 `20px` `2em` `2rem` | String or Number | -                |
+| class-prefix | 类名前缀，用于使用自定义图标     | String           | `nutui-iconfont` |
+| tag          | HTML 标签                        | String           | `i`              |
 
 ### Events
 

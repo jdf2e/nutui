@@ -144,23 +144,23 @@ export default createDemo({
     
 ### Props
     
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-|  v-model        |    初始值 | Date |`null`  |
-|  type        |    类型，日期'date'， 日期时间'datetime'，时间'time' | String |`'date'`  |
-|  visible     |     是否可见    |  Boolean | `false`  |
-|  is-use12-hours     | 是否十二小时制度，只限类型为'time'时使用 | Boolean | `false` |
-|  minute-step | 分钟步进值  | Number | `1` |
-|  is-show-chinese  | 每列是否展示中文 | Boolean | `false`           |
-|  title | 设置标题 | String | `null` |
-|  min-date | 开始日期 | Date | `十年前` |
-|  max-date | 结束日期 | Date | `十年后` |
+| 参数            | 说明                                              | 类型    | 默认值   |
+|-----------------|---------------------------------------------------|---------|----------|
+| v-model         | 初始值                                            | Date    | `null`   |
+| v-model:visible | 是否可见                                          | Boolean | `false`  |
+| type            | 类型，日期'date'， 日期时间'datetime'，时间'time' | String  | `'date'` |
+| is-use12-hours  | 是否十二小时制度，只限类型为'time'时使用          | Boolean | `false`  |
+| minute-step     | 分钟步进值                                        | Number  | `1`      |
+| is-show-chinese | 每列是否展示中文                                  | Boolean | `false`  |
+| title           | 设置标题                                          | String  | `null`   |
+| min-date        | 开始日期                                          | Date    | `十年前` |
+| max-date        | 结束日期                                          | Date    | `十年后` |
 
 
 
 ### Events
     
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| confirm  | 点击确定按钮时触发 | event: Event |
-| close  | 关闭时触发 | event: Event |
+| 事件名  | 说明               | 回调参数     |
+|---------|--------------------|--------------|
+| confirm | 点击确定按钮时触发 | event: Event |
+| close   | 关闭时触发         | event: Event |

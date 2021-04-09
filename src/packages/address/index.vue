@@ -4,7 +4,7 @@
     @close="close"
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"
-    v-model:show="showPopup"
+    v-model:visible="showPopup"
   >
     <view-block class="nut-address">
       <view-block class="title">
@@ -145,7 +145,7 @@ interface AddressList {
 }
 export default create({
   props: {
-    show: {
+    visible: {
       type: Boolean,
       default: false
     },
@@ -211,7 +211,7 @@ export default create({
     }
   },
   emits: [
-    'update:show',
+    'update:visible',
     'change',
     'selected',
     'close',
@@ -405,7 +405,7 @@ export default create({
     };
 
     watch(
-      () => props.show,
+      () => props.visible,
       value => {
         showPopup.value = value;
       }
@@ -415,7 +415,8 @@ export default create({
       () => showPopup.value,
       value => {
         if (!value) {
-          emit('update:show', false);
+          close();
+          emit('update:visible', false);
         } else {
           showModule.value = props.type;
         }

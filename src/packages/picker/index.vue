@@ -3,7 +3,7 @@
     <nut-popup
       position="bottom"
       :style="{ height: height + 56 + 'px' }"
-      v-model:show="show"
+      v-model:visible="show"
       @close="close"
     >
       <view-block class="nut-picker__bar">

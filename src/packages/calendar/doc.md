@@ -27,7 +27,7 @@ app.use(Calendar);
 >
 </nut-cell>
 <nut-calendar
-  :is-visible="isVisible"
+  v-model:visible="isVisible"
   :default-value="date"
   @close="closeSwitch('isVisible')"
   @choose="setChooseValue"
@@ -74,7 +74,7 @@ setup() {
 >
 </nut-cell>
 <nut-calendar
-  :is-visible="isVisible"
+  v-model:visible="isVisible"
   :default-value="date"
   type="range"
   :start-date="`2019-12-22`"
@@ -120,7 +120,7 @@ setup() {
 >
 </nut-cell>
 <nut-calendar
-  :is-visible="isVisible"
+  v-model:visible="isVisible"
   @close="closeSwitch('isVisible')"
   @choose="setChooseValue"
   :start-date="null"
@@ -194,20 +194,20 @@ setup() {
 
 ### Props
 
-| 字段              | 说明                                              | 类型           | 默认值          |
-| ----------------- | ------------------------------------------------- | -------------- | --------------- |
-| type              | 类型，日期选择'one'，区间选择'range'              | String         | 'one'           |
-| is-visible        | 是否可见                                          | Boolean        | false           |
-| poppable          | 是否弹窗状态展示                                  | Boolean        | true            |
-| is-auto-back-fill | 自动回填                                          | Boolean        | false           |
-| title             | 显示标题                                          | String         | ‘日期选择’      |
+| 字段              | 说明                                              | 类型            | 默认值          |
+|-------------------|---------------------------------------------------|-----------------|-----------------|
+| v-model:visible   | 是否可见                                          | Boolean         | false           |
+| type              | 类型，日期选择'one'，区间选择'range'              | String          | 'one'           |
+| poppable          | 是否弹窗状态展示                                  | Boolean         | true            |
+| is-auto-back-fill | 自动回填                                          | Boolean         | false           |
+| title             | 显示标题                                          | String          | ‘日期选择’      |
 | default-value     | 默认值，日期选择 String 格式，区间选择 Array 格式 | String 、 Array | null            |
-| start-date        | 开始日期， 如果不限制开始日期传 null              | String         | 今天            |
-| end-date          | 结束日期，如果不限制结束日期传 null               | String         | 距离今天 365 天 |
+| start-date        | 开始日期， 如果不限制开始日期传 null              | String          | 今天            |
+| end-date          | 结束日期，如果不限制结束日期传 null               | String          | 距离今天 365 天 |
 
 ### Events
 
-| 事件名 | 说明 | 回调参数 |
-| ----------------- | --------------------- | -------------- |
-| choose | 选择之后或是点击确认按钮触发 | 日期数组（包含年月日和星期）
-| close | 关闭时触发 | -
+| 事件名 | 说明                         | 回调参数                     |
+|--------|------------------------------|------------------------------|
+| choose | 选择之后或是点击确认按钮触发 | 日期数组（包含年月日和星期） |
+| close  | 关闭时触发                   | -                            |

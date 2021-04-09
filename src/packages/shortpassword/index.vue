@@ -6,7 +6,7 @@
         borderRadius: '12px',
         textAlign: 'center'
       }"
-      v-model:show="show"
+      v-model:visible="show"
       :closeable="true"
       @click-close-icon="closeIcon"
       :close-on-click-overlay="closeOnClickOverlay"

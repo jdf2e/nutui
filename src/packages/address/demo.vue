@@ -9,7 +9,7 @@
     ></nut-cell>
 
     <nut-address
-      v-model:show="normal"
+      v-model:visible="normal"
       :province="province"
       :city="city"
       :country="country"
@@ -28,7 +28,7 @@
     ></nut-cell>
 
     <nut-address
-      v-model:show="exist"
+      v-model:visible="exist"
       type="exist"
       :exist-address="existAddress"
       @change="cal => onChange(cal, 'exist')"
@@ -47,7 +47,7 @@
     ></nut-cell>
 
     <nut-address
-      v-model:show="customImg"
+      v-model:visible="customImg"
       type="exist"
       :exist-address="existAddress"
       @change="cal => onChange(cal, 'customImg')"
@@ -68,7 +68,7 @@
     ></nut-cell>
 
     <nut-address
-      v-model:show="other"
+      v-model:visible="other"
       type="exist"
       :exist-address="existAddress"
       :province="province"

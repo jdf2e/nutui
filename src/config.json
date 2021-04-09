@@ -293,7 +293,7 @@
           "cName": "对话框",
           "desc": "模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。",
           "sort": 8,
-          "show": true,
+          "show": false,
           "author": "dsj"
         },
         {

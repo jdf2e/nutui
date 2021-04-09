@@ -12,7 +12,7 @@
       <template v-else>{{ msg }}</template>
     </view>
   </Transition>
-  <!-- <nut-popup v-model:show="state.mounted" position="top" :style="{ color: color, background: background }" :class="['popup-top', 'nut-notify', `nut-notify--${type}`, { className }]" overlay="false">
+  <!-- <nut-popup v-model:visible="state.mounted" position="top" :style="{ color: color, background: background }" :class="['popup-top', 'nut-notify', `nut-notify--${type}`, { className }]" overlay="false">
     <template v-if="$slots.default">
       <slot></slot>
     </template>

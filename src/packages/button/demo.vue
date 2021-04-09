@@ -98,6 +98,9 @@ export default createDemo({
 }
 .demo-button-row2 {
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .nut-button {
   margin-right: 15px;
