@@ -1,0 +1,124 @@
+.nut-step {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 33.34%;
+  text-align: center;
+  font-size: 0;
+  &-head {
+    position: relative;
+    display: block;
+    margin-bottom: 10px;
+  }
+  &-line {
+    position: absolute;
+    top: 11px;
+    left: 50%;
+    right: -50%;
+    display: inline-block;
+    height: 1px;
+    background: #909ca4;
+  }
+  &-icon {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-family: PingFangSC-Medium;
+    font-size: 13px;
+    // border-color: #909CA4;
+    z-index: 1;
+    &.is-text {
+      border-radius: 50%;
+      border-width: 1px;
+      border-style: solid;
+    }
+  }
+  &-inner {
+  }
+  &-main {
+    display: inline-block;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+  }
+  &-title {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #909ca4;
+  }
+  &-content {
+    display: block;
+    font-size: 14px;
+    color: #666;
+  }
+  &:last-child {
+    .nut-step-line {
+      display: none;
+    }
+  }
+  &.nut-step-finish {
+    .nut-step-head {
+      color: #3790ff;
+      border-color: #3790ff;
+    }
+    .nut-step-icon.is-text {
+      background-color: #fff;
+    }
+    .nut-step-line {
+      background: #3790ff;
+    }
+  }
+  &.nut-step-process {
+    .nut-step-head {
+      color: #fff;
+      border-color: #3790ff;
+    }
+    .nut-step-icon.is-text {
+      background-color: #3790ff;
+    }
+    .nut-step-line {
+      background: #3790ff;
+    }
+  }
+  &.nut-step-wait {
+    .nut-step-head {
+      color: #909ca4;
+      border-color: #909ca4;
+    }
+    .nut-step-icon.is-text {
+      background-color: #fff;
+    }
+  }
+  &.nut-step-error {
+    .nut-step-head {
+      color: #fff;
+      border-color: #fa2c19;
+    }
+    .nut-step-icon.is-text {
+      background-color: #fa2c19;
+    }
+    .nut-step-line {
+      background: #3790ff;
+    }
+  }
+}
+.nut-steps-vertical {
+  .nut-step {
+    display: flex;
+    height: 33.34%;
+  }
+  .nut-step-line {
+    position: absolute;
+    display: inline-block;
+    width: 1px;
+    height: 100%;
+    background: #909ca4;
+  }
+  .nut-step-main {
+    display: inline-block;
+    padding-left: 10%;
+    text-align: left;
+  }
+}
