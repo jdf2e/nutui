@@ -29,13 +29,14 @@
 
     <!-- demo 基础用法 -->
     <nut-actionsheet
-      :is-visible="state.isVisible1"
+      v-model:visible="state.isVisible1"
       :menu-items="menuItemsOne"
       @choose="chooseItem"
-    ></nut-actionsheet>
+    >
+    </nut-actionsheet>
     <!-- demo(带取消按钮） -->
     <nut-actionsheet
-      :is-visible="state.isVisible2"
+      v-model:visible="state.isVisible2"
       cancel-txt="取消"
       :menu-items="menuItemsOne"
       @choose="chooseItemTwo"
@@ -43,7 +44,7 @@
     </nut-actionsheet>
     <!-- 展示描述信息 -->
     <nut-actionsheet
-      :is-visible="state.isVisible3"
+      v-model:visible="state.isVisible3"
       :description="state.desc"
       :menu-items="menuItemsTwo"
       @choose="chooseItemThree"
@@ -52,7 +53,7 @@
     </nut-actionsheet>
     <!-- demo 选项状态-->
     <nut-actionsheet
-      :is-visible="state.isVisible4"
+      v-model:visible="state.isVisible4"
       cancel-txt="取消"
       :menu-items="menuItemsThree"
       :choose-tag-value="state.chooseTagValue"

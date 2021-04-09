@@ -96,26 +96,26 @@ setup() {
 ### Prop
 
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- |
-| title | 标题| String | 请输入密码|
-| desc | 密码框描述| String | 您使用了虚拟资产，请进行验证|
-| tips | 提示语| String | 忘记密码|
-| visible | 是否展示短密码框| Boolean | false|
-| value | 密码初始值 | String | ''|
-| close-on-click-overlay | 是否点击遮罩关闭  | Boolean | true|
-| no-button | 是否隐藏底部按钮 |Boolean|true|
-| length | 密码长度，取值为4~6 |String||Number|6|
-| error-msg | 错误信息提示 |String|''|
+| 字段                   | 说明                | 类型           | 默认值                       |
+|------------------------|---------------------|----------------|------------------------------|
+| v-model                | 密码初始值          | String         |                              |
+| v-model:visible        | 是否展示短密码框    | Boolean        | false                        |
+| title                  | 标题                | String         | 请输入密码                   |
+| desc                   | 密码框描述          | String         | 您使用了虚拟资产，请进行验证 |
+| tips                   | 提示语              | String         | 忘记密码                     |
+| close-on-click-overlay | 是否点击遮罩关闭    | Boolean        | true                         |
+| no-button              | 是否隐藏底部按钮    | Boolean        | true                         |
+| length                 | 密码长度，取值为4~6 | String、Number | 6                            |
+| error-msg              | 错误信息提示        | String         | ''                           |
 
 
 ### Event
 
-| 事件名称 | 说明 | 回调参数
-|----- | ----- | ----- 
-| change | 输入密码时触发事件 | --
-| ok | 点击确实时触发事件 | value
-| cancel | 点击取消时触发事件| value
-| close | 点击关闭图标时触发事件| value
-| complete | 输入完成的回调 | value
+| 事件名称 | 说明                   | 回调参数 |
+|----------|------------------------|----------|
+| change   | 输入密码时触发事件     | value    |
+| ok       | 点击确实时触发事件     | value    |
+| cancel   | 点击取消时触发事件     | value    |
+| close    | 点击关闭图标时触发事件 | value    |
+| complete | 输入完成的回调         | value    |
 

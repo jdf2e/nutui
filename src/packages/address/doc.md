@@ -24,7 +24,7 @@ app.use(Popup);
 ```html
 <nut-cell title="选择地址" :desc="text" is-link @click="showAddress"></nut-cell>
 <nut-address
-    v-model:show="showPopup"
+    v-model:visible="showPopup"
     :province="province"
     :city="city"
     :country="country"
@@ -84,7 +84,7 @@ setup() {
 ```html
 <nut-cell title="选择地址" :desc="text" is-link @click="showAddressExist"></nut-cell>
 <nut-address
-    v-model:show="showPopupExist"
+    v-model:visible="showPopupExist"
     type="exist"
     :existAddress="existAddress"
     @close="close"
@@ -160,7 +160,7 @@ setup() {
 ```html
 <nut-cell title="选择地址" :desc="text" is-link @click="showCustomImg"></nut-cell>
 <nut-address
-    v-model:show="showPopupCustomImg"
+    v-model:visible="showPopupCustomImg"
     type="exist"
     :existAddress="existAddress"
     @close="close"
@@ -244,7 +244,7 @@ setup() {
 ```html
 <nut-cell title="选择地址" :desc="text" is-link @click="showAddressOther"></nut-cell>
 <nut-address
-    v-model:show="showPopupOther"
+    v-model:visible="showPopupOther"
     type="exist"
     :existAddress="existAddress"
     :province="province"
@@ -360,7 +360,7 @@ setup() {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| v-model:show | 是否打开地址选择 | String | ''
+| v-model:visible | 是否打开地址选择 | String | ''
 | type | 地址选择类型 exist/custom | String | 'custom'
 | province | 省，每个省的对象中，必须有 name 字段 | Array | []
 | city | 市，每个市的对象中，必须有 name 字段 | Array | []

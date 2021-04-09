@@ -101,7 +101,7 @@
           @click="toLink(item.id)"
         >
           <img :src="item.cover_image" />
-          <p class="more-title">{{ item.title }}</p>
+          <p class="more-title" v-hover>{{ item.title }}</p>
         </li>
       </ul>
     </div>

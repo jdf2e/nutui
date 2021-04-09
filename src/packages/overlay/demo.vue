@@ -5,14 +5,14 @@
       <nut-button type="primary" @click="state.show = true"
         >显示遮罩层</nut-button
       >
-      <nut-overlay v-model:show="state.show" :z-index="2000"></nut-overlay>
+      <nut-overlay v-model:visible="state.show" :z-index="2000"></nut-overlay>
     </nut-cell>
     <h2>嵌套内容</h2>
     <nut-cell>
       <nut-button type="success" @click="state.show2 = true"
         >嵌套内容</nut-button
       >
-      <nut-overlay v-model:show="state.show2" :z-index="2000">
+      <nut-overlay v-model:visible="state.show2" :z-index="2000">
         <div class="wrapper">
           <div class="content">这里是正文</div>
         </div>

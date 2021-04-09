@@ -1,6 +1,6 @@
 <template>
   <view :class="classes">
-    <nut-popup v-model:show="showMask"></nut-popup>
+    <nut-popup v-model:visible="showMask"></nut-popup>
     <view class="nut-menu-title" @click="handleMenuPanel">
       <view class="title-name" v-html="menuTitle"></view>
       <nut-icon class-prefix="icon"></nut-icon>
