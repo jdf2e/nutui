@@ -713,6 +713,17 @@
       "showDemo": false,
       "author": "Ymm0008",
       "showTest": true
+    },
+    {
+      "version": "1.0.0",
+      "name": "Magic",
+      "type": "component",
+      "chnName": "魔方",
+      "desc": "魔方",
+      "sort": "6",
+      "showDemo": true,
+      "author": "zongyue3",
+      "showTest": false
     }
   ]
 }
