@@ -2,12 +2,13 @@
   <div class="demo">
     <h2>基本用法</h2>
     <nut-steps current="1">
-      <nut-step
-        class="nut-step-finish"
-        title="已完成"
-        content="这是一段很长很长很长的描述性文字"
-        >1</nut-step
-      >
+      <nut-step class="" title="进行中">1</nut-step>
+      <nut-step class="nut-step-process" title="未开始">2</nut-step>
+      <nut-step class="" title="未开始">3</nut-step>
+    </nut-steps>
+    <h2>基本用法</h2>
+    <nut-steps current="1">
+      <nut-step class="nut-step-finish" title="未开始">1</nut-step>
       <nut-step
         class="nut-step-process"
         title="进行中"

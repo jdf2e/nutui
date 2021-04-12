@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { toRefs, computed, onMounted } from 'vue';
+import { toRefs, computed, onMounted, reactive } from 'vue';
 import step from '@/packages/step/index.vue';
 import { createComponent } from '@/utils/create';
 const { create, componentName } = createComponent('steps');
@@ -20,9 +20,18 @@ export default create({
     current: {
       type: String,
       default: ''
+    },
+    status: {
+      validator(value) {
+        return ['wait', 'process', 'finish', 'error'].includes(value);
+      },
+      default: 'process'
     }
   },
   setup(props, { emit, slots }) {
+    const state = reactive({
+      steps: {}
+    });
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -31,40 +40,39 @@ export default create({
       };
     });
     onMounted(() => {
-      console.log('slots', slots);
-      console.log('slots', slots.children);
+      if (slots.default) {
+        state.steps = slots.default();
+        console.log('slots1', state.steps.length);
+        console.log('slots2', state.steps[0].children);
+        states();
+      }
     });
-    const states = computed(() => {
-      console.log('slots', slots);
-      this.steps = this.$slots.default
-        .filter(vnode => !!vnode.componentInstance)
-        .map(node => node.componentInstance);
-      const total = this.steps.length;
-      this.steps.forEach((child, index) => {
+    function states() {
+      const total = state.steps.length;
+      state.steps.forEach((child, index) => {
         child.stepNumber = index + 1;
-        if (this.direction === 'horizontal') {
+        if (props.direction === 'horizontal') {
           child.total = total;
         }
-        // 如果已存在status,且在初始化时,则略过
-        // todo 如果当前是error,在current改变时需要处理
-        if (!(isInit && child.currentStatus)) {
-          if (index == this.current - 1) {
-            if (this.status != 'error') {
-              child.currentStatus = 'process';
+        console.log('11', child);
+        if (!child.currentStatus) {
+          if (index == props.current - 1) {
+            if (props.status != 'error') {
+              child.currentStatus = 'nut-step-process';
             } else {
               child.currentStatus = 'error';
             }
-          } else if (index < this.current) {
-            child.currentStatus = 'finish';
+          } else if (index < props.current) {
+            child.currentStatus = 'nut-step-finish';
           } else {
-            child.currentStatus = 'wait';
+            child.currentStatus = 'nut-step-wait';
           }
         }
         if (index + 1 === total) {
-          child.currentStatus += ' nut-step-last';
+          child.currentStatus += 'nut-step-last';
         }
       });
-    });
+    }
     return {
       classes,
       states
