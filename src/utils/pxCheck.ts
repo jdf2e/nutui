@@ -1,3 +1,3 @@
-export const pxCheck = (value: string | number) => {
-  return typeof Number(value) === 'number' ? `${value}px` : String(value);
+export const pxCheck = (value: string | number): string => {
+  return isNaN(Number(value)) ? String(value) : `${value}px`;
 };
