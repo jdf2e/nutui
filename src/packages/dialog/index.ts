@@ -1,47 +1,61 @@
-import dialog from './index.vue';
-import { defineComponent, createVNode, render, toRef, watch } from 'vue';
+import dialogInstance from './index.vue';
+import { render, createVNode, ref } from 'vue';
+export const show = ref(false);
+export class DialogOptions {
+  title: string = '';
+  content: string = '';
+  cancelText: string = '取消';
+  okText: string = '确定';
+  textAlign: string = 'center';
+  teleport: String | Element = 'body';
 
-const confirmConstructor = defineComponent(dialog);
+  // function
+  private onUpdate: Function = (value: boolean) => {
+    show.value = value;
+  };
+  onOk: Function = () => {};
+  onCancel: Function = () => {};
+  onClose: Function = () => {};
+  onClosed: Function = () => {};
 
-let instance: any;
-const Dialog = (options: any) => {
-  options = options ? options : {};
+  noFooter: boolean = false;
+  noOkBtn: boolean = false;
+  noCancelBtn: boolean = false;
+  okBtnDisabled: boolean = false;
+  closeOnPopstate: boolean = false;
+  lockScroll: boolean = false;
+}
 
-  options.id = options.id || 'nut-dialog-default-id';
-  options.visible = true;
-  if (options.type === 'image' && typeof options.closeBtn === 'undefined') {
-    options.closeBtn = true;
+class Dialog {
+  options: DialogOptions = new DialogOptions();
+
+  constructor(_options: DialogOptions) {
+    Object.assign(this.options, _options);
+    show.value = true;
+    const instance: any = createVNode(dialogInstance, this.options as any);
+    render(instance, document.body);
   }
 
-  // 生成组件实例
-  instance = createVNode(confirmConstructor, options);
+  close = () => {
+    // if (instance) {
+    //   instance.component.ctx.close();
+    // }
+  };
 
-  // 渲染挂载组件
-  const container = document.createElement('div');
-  render(instance, container);
-  const dialogDom = document.querySelector('#' + options.id);
-  if (options.id && dialogDom && dialogDom.parentNode) {
-    dialogDom.parentNode.replaceChild(instance.el, dialogDom);
-  } else {
-    document.body.appendChild(instance.el);
-  }
+  setDefaultOptions = (options: DialogOptions) => {
+    // Object.assign(this.currentOptions, options);
+  };
 
-  // 初始化组件参数
-  const props = instance.component.props;
-  Object.keys(options).forEach(key => {
-    props[key] = options[key];
-  });
+  resetDefaultOptions = () => {
+    // Dialog.currentOptions = { ...Dialog.defaultOptions };
+  };
+}
+
+const _Dialog = function(options: DialogOptions) {
+  return new Dialog(options);
 };
-Dialog.close = function() {
-  if (instance) {
-    instance.component.ctx.close();
-  }
+_Dialog.install = (app: any) => {
+  app.use(dialogInstance);
+  app.config.globalProperties.$dialog = _Dialog;
 };
-
-Dialog.install = function(app: any) {
-  app.use(dialog);
-  app.config.globalProperties.$dialog = Dialog;
-};
-
-Dialog.Component = dialog;
-export default Dialog;
+export default _Dialog;

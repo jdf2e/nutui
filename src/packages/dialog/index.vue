@@ -1,119 +1,72 @@
 <template>
-  <view :class="classes" @click="handleClick">
-    <div
-      v-if="destroy"
-      :class="[
-        'nut-dialog-wrapper',
-        customClass,
-        { 'nut-dialog-image-wrapper': type === 'image' }
-      ]"
-      :id="id"
-    >
-      <transition :name="animation ? 'nutFade' : ''">
-        <div
-          :class="'nut-dialog-mask'"
-          :style="{ background: maskBgStyle }"
-          @click="modalClick"
-          v-show="curVisible"
-        >
-        </div>
-      </transition>
-      <transition :name="animation ? 'nutEase' : ''">
-        <div class="nut-dialog-box" v-show="curVisible" @click="modalClick">
-          <div class="nut-dialog" @click.stop>
-            <a
-              href="javascript:;"
-              v-if="closeBtn"
-              @click="closeBtnClick"
-              class="nut-dialog-close"
-            ></a>
-            <template v-if="type === 'image'">
-              <a
-                href="javascript:;"
-                @click="imageLinkClick"
-                class="nut-dialog-link"
-              >
-                <img :src="imgSrc" class="nut-dialog-image" alt />
-              </a>
-            </template>
-            <template v-else>
-              <div class="nut-dialog-body">
-                <span
-                  class="nut-dialog-title"
-                  v-html="title"
-                  v-if="title"
-                ></span>
-                <div
-                  class="nut-dialog-content"
-                  v-if="isShowContent"
-                  :style="{ textAlign }"
-                >
-                  <slot></slot>
-                </div>
-                <div
-                  class="nut-dialog-content"
-                  v-html="content"
-                  v-else-if="content"
-                  :style="{ textAlign }"
-                ></div>
-              </div>
-              <div class="nut-dialog-footer" v-if="!noFooter">
-                <button
-                  class="nut-dialog-btn nut-dialog-cancel"
-                  v-if="!noCancelBtn"
-                  @click="cancelBtnClick(cancelAutoClose)"
-                  >{{ cancelBtnTxt }}</button
-                >
-                <button
-                  class="nut-dialog-btn nut-dialog-ok"
-                  v-if="!noOkBtn"
-                  :class="{ disabled: okBtnDisabled }"
-                  :disabled="okBtnDisabled"
-                  @click="okBtnClick"
-                  >{{ okBtnTxt }}</button
-                >
-              </div>
-            </template>
-          </div>
-        </div>
-      </transition>
-    </div>
-  </view>
+  <nut-popup
+    name="pop"
+    :teleport="teleport"
+    v-model:visible="showPopup"
+    :close-on-click-overlay="closeOnClickOverlay"
+    :lock-scroll="lockScroll"
+    round
+    @click-overlay="closed"
+    @click-close-icon="closed"
+  >
+    <view :class="classes">
+      <view v-if="title" class="nut-dialog__header">
+        <slot v-if="$slots.header" name="header"></slot>
+        <template v-else>{{ title }}</template>
+      </view>
+
+      <view class="nut-dialog__content" :style="{ textAlign }">
+        <slot v-if="$slots.default" name="default"></slot>
+        <template v-else>{{ content }}</template>
+      </view>
+
+      <view class="nut-dialog__footer" v-if="!noFooter">
+        <slot v-if="$slots.footer" name="footer"></slot>
+        <template v-else>
+          <nut-button
+            size="small"
+            plain
+            type="primary"
+            class="nut-dialog__footer-cancel"
+            v-if="!noCancelBtn"
+            @click="onCancel"
+          >
+            {{ cancelText }}
+          </nut-button>
+          <nut-button
+            v-if="!noOkBtn"
+            size="small"
+            type="primary"
+            class="nut-dialog__footer-ok"
+            :class="{ disabled: okBtnDisabled }"
+            :disabled="okBtnDisabled"
+            @click="onOk"
+          >
+            {{ okText }}
+          </nut-button>
+        </template>
+      </view>
+    </view>
+  </nut-popup>
 </template>
 <script lang="ts">
-import { ref, onMounted, watch, watchEffect, computed } from 'vue';
+import { onMounted, computed, watch, onUnmounted, ref, toRefs } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('dialog');
-
-const lockMaskScroll = (bodyCls => {
-  let scrollTop = 0;
-  return {
-    afterOpen: function() {
-      scrollTop =
-        (document.scrollingElement && document.scrollingElement.scrollTop) ||
-        document.body.scrollTop;
-      document.body.classList.add(bodyCls);
-      document.body.style.top = -scrollTop + 'px';
-    },
-    beforeClose: function() {
-      if (document.body.classList.contains(bodyCls)) {
-        document.body.classList.remove(bodyCls);
-        if (document.scrollingElement) {
-          document.scrollingElement.scrollTop = scrollTop;
-        }
-      }
-    }
-  };
-})('dialog-open');
+import { Button, Popup } from '@/nutui';
+import { show } from './index';
 export default create({
+  inheritAttrs: false,
+  children: [Popup, Button],
+  components: {
+    'nut-popup': Popup,
+    'nut-button': Button
+  },
   props: {
+    ...Popup.popupProps,
     visible: {
       type: Boolean,
       default: false
-    },
-    id: {
-      type: String,
-      default: ''
     },
     title: {
       type: String,
@@ -122,35 +75,6 @@ export default create({
     content: {
       type: String,
       default: ''
-    },
-    type: {
-      type: String,
-      default: ''
-    },
-    link: {
-      type: String,
-      default: ''
-    },
-    imgSrc: {
-      type: String,
-      default: ''
-    },
-    animation: {
-      type: Boolean,
-      default: true
-    },
-    lockBgScroll: {
-      type: Boolean,
-      default: false
-    },
-
-    closeBtn: {
-      type: Boolean,
-      default: false
-    },
-    closeOnClickModal: {
-      type: Boolean,
-      default: true
     },
     noFooter: {
       type: Boolean,
@@ -164,11 +88,11 @@ export default create({
       type: Boolean,
       default: false
     },
-    cancelBtnTxt: {
+    cancelText: {
       type: String,
       default: '取消'
     },
-    okBtnTxt: {
+    okText: {
       type: String,
       default: '确定'
     },
@@ -184,136 +108,57 @@ export default create({
       type: String,
       default: 'center'
     },
-    onOkBtn: {
+    onOk: {
       type: Function,
       default: null
     },
-    onCloseBtn: {
+    onCancel: {
       type: Function,
       default: null
     },
-    onCancelBtn: {
+    onClose: {
       type: Function,
       default: null
     },
-    closeCallback: {
+    onClosed: {
       type: Function,
       default: null
-    },
-    onClickImageLink: {
-      type: Function,
-      default: null
-    },
-    maskBgStyle: {
-      type: String,
-      default: ''
-    },
-    canDestroy: {
-      type: Boolean,
-      default: true
-    },
-    customClass: {
-      type: String,
-      default: ''
     },
     closeOnPopstate: {
       type: Boolean,
       default: false
     }
   },
-  // emits: ['click'],
+  emits: [
+    'update',
+    'update:visible',
+    'ok',
+    'cancel',
+    'open',
+    'opened',
+    'close',
+    'closed'
+  ],
+  setup(props, { emit }) {
+    const showPopup = ref(false);
+    showPopup.value = show.value;
 
-  setup(props, { emit, slots }) {
-    const curVisible = ref(false);
-    let destroy = ref(true);
-    onMounted(() => {
-      curVisible.value = props.visible;
-    });
-    const isShowContent = computed(() => {
-      return slots.default;
-    });
-
-    const todestroy = () => {
-      if (!props.canDestroy) {
-        destroy = ref(false);
-      }
-    };
-    const close = (target?: string) => {
-      emit('close', target);
-      emit('close-callback', target);
-      todestroy();
-      if (
-        typeof props.closeCallback === 'function' &&
-        props.closeCallback(target) === false
-      ) {
-        return;
-      }
-      curVisible.value = false;
-    };
-    const modalClick = () => {
-      if (!props.closeOnClickModal) {
-        return;
-      }
-      close('modal');
-    };
-    const okBtnClick = () => {
-      emit('ok-btn-click');
-      if (typeof props.onOkBtn === 'function') {
-        props.onOkBtn.call(props);
-      }
-    };
-    const cancelBtnClick = (autoClose: boolean) => {
-      emit('cancel-btn-click');
-      if (!autoClose) {
-        return;
-      }
-      if (typeof props.onCancelBtn === 'function') {
-        if (props.onCancelBtn.call(props) === false) {
-          return;
-        }
-      }
-      close('cancelBtn');
-    };
-    const closeBtnClick = () => {
-      if (typeof props.onCloseBtn === 'function') {
-        if (props.onCloseBtn.call(props) === false) {
-          return;
-        }
-      }
-      close('closeBtn');
-    };
-    //图片类型弹窗中的链接点击事件，默认跳转
-    const imageLinkClick = () => {
-      if (
-        props.onClickImageLink &&
-        props.onClickImageLink.call(props) === false
-      ) {
-        return;
-      }
-      if (props.link) {
-        location.href = props.link;
-      }
-    };
-    const handleClick = (event: Event) => {
-      emit('click', event);
-    };
     onMounted(() => {
       if (props.closeOnPopstate) {
         window.addEventListener('popstate', function() {
-          close();
+          closed();
         });
       }
     });
-    watchEffect(() => {
-      if (props.lockBgScroll) {
-        //锁定or解锁页面滚动
-        lockMaskScroll[curVisible.value ? 'afterOpen' : 'beforeClose']();
-      }
+
+    watch(show, value => {
+      showPopup.value = value;
     });
+
     watch(
       () => props.visible,
-      val => {
-        curVisible.value = val;
+      value => {
+        showPopup.value = value;
       }
     );
 
@@ -322,19 +167,36 @@ export default create({
         [componentName]: true
       };
     });
+
+    const update = (val: boolean) => {
+      emit('update', val);
+      emit('update:visible', val);
+    };
+
+    const closed = () => {
+      update(false);
+      emit('closed');
+    };
+
+    const onCancel = () => {
+      emit('cancel');
+      if (props.cancelAutoClose) {
+        closed();
+      }
+    };
+
+    const onOk = () => {
+      closed();
+      emit('ok');
+    };
+
     return {
-      handleClick,
-      curVisible,
-      destroy,
-      modalClick,
-      close,
-      todestroy,
-      okBtnClick,
-      cancelBtnClick,
-      closeBtnClick,
-      imageLinkClick,
-      isShowContent,
-      classes
+      closed,
+      classes,
+      onCancel,
+      onOk,
+      show,
+      showPopup
     };
   }
 });

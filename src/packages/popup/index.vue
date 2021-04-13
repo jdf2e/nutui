@@ -7,6 +7,7 @@
       :class="overlayClass"
       :style="overlayStyle"
       :z-index="zIndex"
+      :lock-scroll="lockScroll"
       :duration="duration"
       @click="onClickOverlay"
     />
@@ -53,6 +54,7 @@ import { useLockScroll } from './use-lock-scroll';
 import { overlayProps } from './../overlay/index.vue';
 import overlay from '@/packages/overlay/index.vue';
 import { createComponent } from '@/utils/create';
+import { OverLay } from '@/nutui';
 const { componentName, create } = createComponent('popup');
 
 let _zIndex = 2000;
@@ -112,6 +114,9 @@ export const popupProps = {
 };
 export default create({
   children: [overlay],
+  components: {
+    'nut-overlay': OverLay
+  },
   props: {
     ...popupProps
   },
