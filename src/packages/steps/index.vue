@@ -5,7 +5,14 @@
 </template>
 
 <script lang="ts">
-import { toRefs, computed, onMounted, reactive } from 'vue';
+import {
+  provide,
+  computed,
+  onMounted,
+  reactive,
+  watch,
+  onBeforeMount
+} from 'vue';
 import step from '@/packages/step/index.vue';
 import { createComponent } from '@/utils/create';
 const { create, componentName } = createComponent('steps');
@@ -19,42 +26,73 @@ export default create({
     },
     current: {
       type: String,
-      default: ''
+      default: 'false'
     },
     status: {
       validator(value) {
         return ['wait', 'process', 'finish', 'error'].includes(value);
       },
       default: 'process'
+    },
+    progressDot: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props, { emit, slots }) {
     const state = reactive({
-      steps: {}
+      steps: {},
+      children: []
     });
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        ['nut-steps-' + props.direction]: true
+        ['nut-steps-' + props.direction]: true,
+        [props.progressDot ? 'nut-steps-dot' : '']: true
       };
     });
-    onMounted(() => {
-      if (slots.default) {
-        state.steps = slots.default();
-        console.log('slots1', state.steps.length);
-        console.log('slots2', state.steps[0].children);
-        states();
-      }
+    onBeforeMount(() => {
+      console.log('onBeforeMount');
+      init();
     });
-    function states() {
+    onMounted(() => {
+      console.log('onMounted');
+      // init();
+    });
+    // watch(
+    //   () => props.current,
+    //   val => {
+    //     console.log()
+    //     states();
+    //   }
+    // );
+    // watch(
+    //   () =>  props.source,
+    //   val => {
+    //     init();
+    //   }
+    // )
+    const init = () => {
+      state.steps = (slots as any)?.default();
+      stepStates();
+    };
+    const stepStates = () => {
+      if (props.progressDot) {
+        console.log('state.steps', state.steps);
+        state.steps.dot = true;
+      }
       const total = state.steps.length;
       state.steps.forEach((child, index) => {
         child.stepNumber = index + 1;
+
+        state.children = index;
+        // console.log('data', state.children)
+
         if (props.direction === 'horizontal') {
           child.total = total;
         }
-        console.log('11', child);
+        // console.log('父', child);
         if (!child.currentStatus) {
           if (index == props.current - 1) {
             if (props.status != 'error') {
@@ -69,13 +107,20 @@ export default create({
           }
         }
         if (index + 1 === total) {
-          child.currentStatus += 'nut-step-last';
+          child.currentStatus += ' nut-step-last';
         }
       });
-    }
+    };
+    // provide('parent', {
+    //   slots
+    // });
+    provide('stepsParent', {
+      props,
+      state
+    });
     return {
       classes,
-      states
+      stepStates
     };
   }
 });

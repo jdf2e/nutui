@@ -2,55 +2,63 @@
   <div class="demo">
     <h2>基本用法</h2>
     <nut-steps current="1">
-      <nut-step class="" title="进行中">1</nut-step>
-      <nut-step class="nut-step-process" title="未开始">2</nut-step>
-      <nut-step class="" title="未开始">3</nut-step>
+      <nut-step title="进行中">1</nut-step>
+      <nut-step title="未开始">2</nut-step>
+      <nut-step title="未开始">3</nut-step>
     </nut-steps>
-    <h2>基本用法</h2>
-    <nut-steps current="1">
-      <nut-step class="nut-step-finish" title="未开始">1</nut-step>
+    <h2>标题和描述信息</h2>
+    <nut-steps current="2">
       <nut-step
-        class="nut-step-process"
-        title="进行中"
-        content="这是一段很长很长很长的描述性文字"
+        title="已完成"
+        content="步骤描述"
+        icon="nutui-iconfont nut-icon-wanshangshide"
+        >1</nut-step
+      >
+      <nut-step title="进行中" content="步骤描述">2</nut-step>
+      <nut-step title="未开始" content="步骤描述">3</nut-step>
+    </nut-steps>
+    <h2>自定义图标</h2>
+    <nut-steps current="1">
+      <nut-step
+        title="已完成"
+        icon="nutui-iconfont nut-icon-wanshangshide"
+        status="error"
+        >1</nut-step
+      >
+      <nut-step title="进行中" icon="nutui-iconfont nut-icon-notice"
         >2</nut-step
       >
-      <nut-step class="nut-step-wait" title="未开始">3</nut-step>
+      <nut-step
+        class="nut-step-wait"
+        title="未开始"
+        icon="nutui-iconfont nut-icon-notice"
+        >3</nut-step
+      >
     </nut-steps>
-    <h2>自定义图标和颜色</h2>
-    <div class="" style="height: 300px">
-      <nut-steps>
+    <h2>竖向步骤条</h2>
+    <div style="height: 300px">
+      <nut-steps direction="vertical" current="2">
         <nut-step
-          class="nut-step-finish"
           title="已完成"
           icon="nutui-iconfont nut-icon-wanshangshide"
-        ></nut-step>
-        <nut-step
-          class="nut-step-process"
-          title="进行中"
-          icon="nutui-iconfont nut-icon-notice"
-          >2</nut-step
-        >
-        <nut-step class="nut-step-wait" title="未开始" content="">3</nut-step>
-      </nut-steps>
-    </div>
-    <h2>竖向步骤条</h2>
-    <div class="" style="height: 300px">
-      <nut-steps direction="vertical">
-        <nut-step
-          class="nut-step-error"
-          title="已完成"
           content="您的订单已经打包完成，商品已发出"
           >1</nut-step
         >
+        <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
         <nut-step
-          class="nut-step-process"
-          title="进行中"
-          content="您的订单正在配送途中"
-          >2</nut-step
+          title="未开始"
+          content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
+          >3</nut-step
         >
+      </nut-steps>
+    </div>
+    <div style="height: 300px">
+      <nut-steps direction="vertical" progressDot current="2">
+        <nut-step title="已完成" content="您的订单已经打包完成，商品已发出"
+          >1</nut-step
+        >
+        <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
         <nut-step
-          class="nut-step-wait"
           title="未开始"
           content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
           >3</nut-step
