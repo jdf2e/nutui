@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-tabbar" :class="{ bottom }">
+  <view class="nut-tabbar" :class="{ 'nut-tabbar-bottom': bottom }">
     <slot></slot>
   </view>
 </template>
