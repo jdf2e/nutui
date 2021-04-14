@@ -23,70 +23,77 @@ export default {
 ## 通知类型
 ### 主要通知
 ```javascript
-    mounted(){
-      this.$notify.primary('通知内容');
-    }
+mounted(){
+  this.$notify.primary('通知内容');
+}
 ```
 ### 成功通知
 ```javascript
-    mounted(){
-      this.$notify.success('通知内容');
-    }
+mounted(){
+  this.$notify.success('通知内容');
+}
 ```
 ### 危险通知
 ```javascript
-    mounted(){
-      this.$notify.danger('通知内容');
-    }
+mounted(){
+  this.$notify.danger('通知内容');
+}
 ```
 ### 警告通知
 ```javascript
-    mounted(){
-      this.$notify.warn('通知内容');
-    }
+mounted(){
+  this.$notify.warn('通知内容');
+}
 ```
 ## 自定义样式
 ### 自定义样式
 ```javascript
-    mounted(){
-      this.$notify.text(val, {
-        color: '#ad0000',
-        background: '#ffe1e1'
-      });
-    }
+mounted(){
+  this.$notify.text(val, {
+    color: '#ad0000',
+    background: '#ffe1e1'
+  });
+}
 ```
 ### 自定义时长
 ```javascript
-    mounted(){
-      this.$notify.text(val, {
-        duration: 10000
-      });
-    }
+mounted(){
+  this.$notify.text(val, {
+    duration: 10000
+  });
+}
 ```
 ## 组件调用
 ```html
-    <nut-notify :showPopup="show" type="success" msg="组件调用">
-      <span>hello</span>
-    </nut-notify>
+<nut-notify :showPopup="show" type="success" msg="组件调用">
+  <span>hello</span>
+</nut-notify>
 ```
 
 ```javascript
-    mounted(){
-      this.show = true;
-      setTimeout(() => {
-        this.show = false;
-      }, 200);
-    }
+mounted(){
+  this.show = true;
+  setTimeout(() => {
+    this.show = false;
+  }, 200);
+}
 ```
 ## 修改默认配置
 通过**Notify.setDefaultOptions**函数可以全局修改 Notify 的默认配置，**值得注意的是，标签形式的组件不支持默认样式**。
 ```javascript
-// 更改所有Toast展示时长设置为5000毫秒
-      this.$notify.setDefaultOptions({
-        duration: 5000
-      });
-// 重置所有 Toast 的默认配置
-      this.$notify.resetDefaultOptions();
+// 更改所有 Notify 展示时长设置为5000毫秒
+this.$notify.setDefaultOptions({
+  duration: 5000
+});
+// 重置所有 Notify 的默认配置
+this.$notify.resetDefaultOptions();
+```
+
+## 支持在JS模块中导入使用
+```javascript
+import { Notify } from "@nutui/nutui";
+
+Notify.success('在js模块中使用');
 ```
 
 
