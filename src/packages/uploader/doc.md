@@ -21,6 +21,8 @@ app.use(Uploader);
 
 ``` html
 <nut-uploader url="http://服务器地址"></nut-uploader>
+```
+
 ### 直接调起摄像头
     
 ``` html
