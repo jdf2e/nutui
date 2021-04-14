@@ -10,6 +10,7 @@
       pop-class="popclass"
       :style="{ padding: '30px 50px' }"
       v-model:visible="state.showBasic"
+      :z-index="100"
       >正文</nut-popup
     >
     <h2>弹出位置</h2>

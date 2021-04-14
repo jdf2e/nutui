@@ -57,7 +57,7 @@ import { createComponent } from '@/utils/create';
 import { OverLay } from '@/nutui';
 const { componentName, create } = createComponent('popup');
 
-let _zIndex = 2000;
+let _zIndex = 1;
 
 export const popupProps = {
   ...overlayProps,
@@ -133,7 +133,7 @@ export default create({
 
   setup(props, { emit }) {
     const state = reactive({
-      zIndex: 1,
+      zIndex: props.zIndex ? (props.zIndex as number) : _zIndex,
       showSlot: true,
       transitionName: `popup-fade-${props.position}`,
       overLayCount: 1,
