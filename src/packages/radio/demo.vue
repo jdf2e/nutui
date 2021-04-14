@@ -6,14 +6,18 @@
     </div>
     <h4>组合使用Radio</h4>
     <div class="show-demo">
-      <nut-radio v-model="radioVal1" :label="1">备选项1</nut-radio>
-      <nut-radio v-model="radioVal1" :label="2">备选项2</nut-radio>
+      <nut-radio v-model="radioVal1" :label="1" @change="change"
+        >备选项1</nut-radio
+      >
+      <nut-radio v-model="radioVal1" :label="2" @change="change"
+        >备选项2</nut-radio
+      >
       <span>radioVal1: {{ radioVal1 }} </span>
     </div>
 
     <h4>RadioGroup基本用法</h4>
     <div class="show-demo">
-      <nut-radiogroup v-model="radioGroupVal1">
+      <nut-radiogroup v-model="radioGroupVal1" @change="change">
         <nut-radio label="a">备选项1</nut-radio>
         <nut-radio label="b">备选项2</nut-radio>
       </nut-radiogroup>
@@ -117,8 +121,13 @@ export default createDemo({
       radioGroupVal3: '2',
       radioGroupVal4: 'c'
     });
+
+    const change = (val: string) => {
+      console.log(val);
+    };
     return {
-      ...toRefs(data)
+      ...toRefs(data),
+      change
     };
   }
 });

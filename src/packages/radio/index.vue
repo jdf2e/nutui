@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view :class="classes" @click="clickEvt">
     <input
       type="radio"
       :value="currentValue"
@@ -7,7 +7,6 @@
       :checked="currentValue === label"
       :disabled="isDisabled"
       :label="label"
-      @click="clickEvt"
     />
     <view class="nut-radio-label">
       <slot></slot>
@@ -26,7 +25,7 @@ type Iparent = {
 export default create({
   children: [radiogroup],
   props: {
-    value: {
+    modelValue: {
       type: [String, Number, Boolean],
       default: false
     },
@@ -45,7 +44,7 @@ export default create({
     }
   },
 
-  emits: ['update:value', 'change'],
+  emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {
     const parentGroup = inject('radiogroup', {
       parentNode: false,
@@ -68,13 +67,8 @@ export default create({
       };
     });
 
-    const currentValue = computed({
-      get: () => {
-        return isParentGroup.value ? parentProps?.value : props.value;
-      },
-      set: (val: any) => {
-        isParentGroup.value ? parentGroup.changeVal(val) : emit('change', val);
-      }
+    const currentValue = computed(() => {
+      return isParentGroup.value ? parentProps?.modelValue : props.modelValue;
     });
 
     const isDisabled = computed(() => {
@@ -82,17 +76,21 @@ export default create({
     });
 
     const isAnimated = computed(() => {
-      return isParentGroup ? parentProps?.isAnimated : props.isAnimated;
+      return isParentGroup.value ? parentProps?.isAnimated : props.isAnimated;
     });
 
+    const getValue = () => {
+      return isParentGroup.value
+        ? parentGroup.changeVal(props.label as string)
+        : props.label;
+    };
+
     const clickEvt = (event: Event) => {
-      event.stopPropagation();
       if (isDisabled.value) {
         return false;
       }
-      currentValue.value = props.label ?? '';
-      emit('update:value', currentValue.value);
-      emit('change', currentValue.value);
+      emit('update:modelValue', getValue());
+      !isParentGroup.value && emit('change', getValue());
     };
 
     return {
