@@ -1,43 +1,35 @@
 <template>
   <view :class="classes">
-    <view class="nut-input-label">
-      <view v-if="label" class="label-string">{{ label }}</view>
-    </view>
-    <view class="nut-text">
-      <textarea
-        :style="styles"
-        :rows="rows"
-        @input="valueChange"
-        @focus="valueFocus"
-        @blur="valueBlur"
-        v-model="curretvalue"
-        class="nut-text-core"
-        :maxlength="maxLength"
-        :placeholder="placeholder"
-        :disabled="disabled"
-        :readonly="readonly"
-      >
-      </textarea>
-      <view class="nut-text-limit" v-if="limitShow">
-        <view :class="[{ 'nut-field-over': textNum > maxLength }]">{{
-          textNum
-        }}</view>
-        <view>/{{ maxLength }}</view>
-      </view>
-    </view>
+    <textarea
+      class="nut-textarea__textarea"
+      :style="styles"
+      :rows="rows"
+      :disabled="disabled"
+      :readonly="readonly"
+      :value="modelValue"
+      @input="change"
+      @blur="blur"
+      @focus="focus"
+      :maxlength="maxLength"
+      :placeholder="placeholder"
+    />
+    <view class="nut-textarea__limit" v-if="limitShow">
+      {{ modelValue.length }}/{{ maxLength }}</view
+    >
   </view>
 </template>
 <script lang="ts">
-import { toRefs, reactive, computed, watch } from 'vue';
+import { computed, watch } from 'vue';
 import { createComponent } from '@/utils/create';
 
 const { componentName, create } = createComponent('textarea');
-interface Events {
-  eventName: 'change' | 'focus' | 'blur' | 'update:value';
-  params: (string | number | Event)[];
-}
+
 export default create({
   props: {
+    modelValue: {
+      type: [String, Number],
+      default: ''
+    },
     textAlign: {
       type: String,
       default: 'left'
@@ -47,20 +39,16 @@ export default create({
       default: false
     },
     maxLength: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
     rows: {
       type: [String, Number],
-      default: '2'
-    },
-    label: {
-      type: String,
       default: ''
     },
     placeholder: {
       type: String,
-      default: '请输入信息'
+      default: '请输入内容'
     },
     readonly: {
       type: Boolean,
@@ -73,25 +61,17 @@ export default create({
     autosize: {
       type: Boolean,
       default: false
-    },
-    value: {
-      type: [String, Number],
-      default: ''
     }
   },
 
-  emits: ['change', 'update:value', 'blur', 'focus'],
+  emits: ['update:modelValue', 'change', 'blur', 'focus'],
 
   setup(props, { emit }) {
-    const state = reactive({
-      curretvalue: props.value,
-      textNum: String(props.value).length
-    });
-
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
-        [prefixCls]: true
+        [prefixCls]: true,
+        [`${prefixCls}--disabled`]: props.disabled
       };
     });
 
@@ -102,83 +82,42 @@ export default create({
       };
     });
 
-    const emitChange = (envs: Array<Events>) => {
-      envs.forEach((item: Events) => {
-        return emit(item.eventName, ...item.params);
-      });
-    };
-
-    const valueChange = (e: Event) => {
-      const input = e.target as HTMLInputElement;
-      let val = input.value;
-
-      if (props.maxLength && val.length > Number(props.maxLength)) {
-        val = val.slice(0, Number(props.maxLength));
+    const emitChange = (value: string, event: Event) => {
+      if (props.maxLength && value.length > Number(props.maxLength)) {
+        value = value.substring(0, Number(props.maxLength));
       }
-      state.textNum = val.length;
-      emitChange([
-        {
-          eventName: 'update:value',
-          params: [val]
-        },
-        {
-          eventName: 'change',
-          params: [val]
-        }
-      ]);
+      emit('change', value, event);
+      emit('update:modelValue', value, event);
     };
 
-    const valueFocus = (e: Event) => {
-      const input = e.target as HTMLInputElement;
-      let val = input.value;
-      val = String(val);
-      emitChange([
-        {
-          eventName: 'update:value',
-          params: [state.curretvalue]
-        },
-        {
-          eventName: 'focus',
-          params: [val]
-        }
-      ]);
+    const change = (event: Event) => {
+      const input = event.target as HTMLInputElement;
+      emitChange(input.value, event);
     };
 
-    const valueBlur = (e: Event) => {
-      const input = e.target as HTMLInputElement;
-      emitChange([
-        {
-          eventName: 'update:value',
-          params: [String(input.value)]
-        },
-        {
-          eventName: 'blur',
-          params: [String(input.value)]
-        }
-      ]);
+    const focus = (event: Event) => {
+      if (props.disabled) return;
+      if (props.readonly) return;
+      emit('focus', event);
     };
 
-    watch(
-      () => props.value,
-      val => {
-        state.curretvalue = val;
-        state.textNum = String(val).length;
-        emitChange([
-          {
-            eventName: 'update:value',
-            params: [String(val)]
-          }
-        ]);
-      }
-    );
+    const blur = (event: Event) => {
+      if (props.disabled) return;
+      if (props.readonly) return;
+      const input = event.target as HTMLInputElement;
+
+      let value = input.value;
+
+      emitChange(value, event);
+      emit('blur', event);
+    };
 
     return {
-      ...toRefs(state),
       classes,
       styles,
-      valueChange,
-      valueFocus,
-      valueBlur
+      change,
+      focus,
+      blur
     };
   }
 });
