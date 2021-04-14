@@ -4,13 +4,13 @@
   </view>
 </template>
 <script lang="ts">
-import { provide, watch, computed } from 'vue';
+import { provide, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('radiogroup');
 
 export default create({
   props: {
-    value: {
+    modelValue: {
       type: [String, Number, Boolean],
       default: false
     },
@@ -27,7 +27,7 @@ export default create({
       default: true
     }
   },
-  emits: ['change', 'update:value'],
+  emits: ['change', 'update:modelValue'],
   setup(props, { emit }) {
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -35,17 +35,11 @@ export default create({
         [prefixCls]: true
       };
     });
-    watch(
-      () => props.value,
-      value => {
-        emit('change', value);
-      }
-    );
     provide('radiogroup', {
       parentNode: true,
       changeVal: (val: string | number) => {
         emit('change', val);
-        emit('update:value', val);
+        emit('update:modelValue', val);
       }
     });
 
