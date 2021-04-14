@@ -1,6 +1,5 @@
 <template>
   <nut-popup
-    name="pop"
     :teleport="teleport"
     v-model:visible="showPopup"
     :close-on-click-overlay="closeOnClickOverlay"
@@ -50,11 +49,11 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, onUnmounted, ref, toRefs } from 'vue';
+import { onMounted, computed, watch, ref } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('dialog');
-import { Button, Popup } from '@/nutui';
-import { show } from './index';
+import Popup, { popupProps } from '@/packages/popup/index.vue';
+import { Button } from '@/nutui';
 export default create({
   inheritAttrs: false,
   children: [Popup, Button],
@@ -63,8 +62,8 @@ export default create({
     'nut-button': Button
   },
   props: {
-    ...Popup.popupProps,
-    visible: {
+    ...popupProps,
+    closeOnClickOverlay: {
       type: Boolean,
       default: false
     },
@@ -140,19 +139,13 @@ export default create({
     'closed'
   ],
   setup(props, { emit }) {
-    const showPopup = ref(false);
-    showPopup.value = show.value;
-
+    const showPopup = ref(props.visible);
     onMounted(() => {
       if (props.closeOnPopstate) {
         window.addEventListener('popstate', function() {
           closed();
         });
       }
-    });
-
-    watch(show, value => {
-      showPopup.value = value;
     });
 
     watch(
@@ -195,7 +188,6 @@ export default create({
       classes,
       onCancel,
       onOk,
-      show,
       showPopup
     };
   }

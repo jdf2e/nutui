@@ -1,49 +1,67 @@
 <template>
   <div class="demo">
-    <!-- <nut-cell title="基础弹框" @click="baseClick"></nut-cell> -->
-    <nut-cell title="标签弹框" @click="noTitleClick"></nut-cell>
+    <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
+    <nut-cell title="无标题弹框" @click="noTitleClick"></nut-cell>
+    <nut-cell title="提示弹框" @click="tipsClick"></nut-cell>
+    <nut-cell title="组件调用" @click="componentClick"></nut-cell>
     <nut-dialog
-      title="标签式使用"
-      :close-on-click-overlay="false"
-      :content="content"
+      title="组件调用"
+      content="如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。"
       v-model:visible="visible"
     >
     </nut-dialog>
-
-    <!-- <template v-slot:header>
-        
-      </template> -->
   </div>
 </template>
 <script lang="ts">
-import { ref, getCurrentInstance } from 'vue';
+import { ref } from 'vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('dialog');
+import { Dialog } from '@/nutui';
 export default createDemo({
-  props: {},
-
   setup() {
-    const { proxy } = getCurrentInstance();
-    const content = ref(
-      '模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。'
-    );
     const visible = ref(false);
 
-    const baseClick = () => {
-      proxy.$dialog({
+    const onCancel = () => {
+      console.log('event cancel');
+    };
+    const onOk = () => {
+      console.log('event ok');
+    };
+
+    const baseClick = (): void => {
+      Dialog({
         title: '基础弹框',
-        content: '基础弹框内容'
+        content: '支持函数调用和组件调用两种方式。',
+        onCancel,
+        onOk
       });
     };
     const noTitleClick = () => {
+      Dialog({
+        content: '无标题弹框',
+        onCancel,
+        onOk
+      });
+    };
+    const tipsClick = () => {
+      Dialog({
+        title: '温馨提示',
+        content: '支持函数调用和组件调用两种方式。',
+        onCancel,
+        onOk
+      });
+    };
+
+    const componentClick = () => {
       visible.value = true;
     };
 
     return {
-      content,
       visible,
       baseClick,
-      noTitleClick
+      noTitleClick,
+      componentClick,
+      tipsClick
     };
   }
 });

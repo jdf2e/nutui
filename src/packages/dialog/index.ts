@@ -1,39 +1,52 @@
-import dialogInstance from './index.vue';
-import { render, createVNode, ref } from 'vue';
-export const show = ref(false);
+import Dialog from './index.vue';
+import { render, createVNode, h } from 'vue';
 export class DialogOptions {
-  title: string = '';
-  content: string = '';
-  cancelText: string = '取消';
-  okText: string = '确定';
-  textAlign: string = 'center';
-  teleport: String | Element = 'body';
+  title?: string = '';
+  content?: string = '';
+  cancelText?: string = '取消';
+  okText?: string = '确定';
+  textAlign?: string = 'center';
+  teleport?: String = 'body';
 
   // function
-  private onUpdate: Function = (value: boolean) => {
-    show.value = value;
-  };
-  onOk: Function = () => {};
-  onCancel: Function = () => {};
-  onClose: Function = () => {};
-  onClosed: Function = () => {};
+  onUpdate?: Function = (value: boolean) => {};
+  onOk?: Function = () => {};
+  onCancel?: Function = () => {};
+  onClose?: Function = () => {};
+  onClosed?: Function = () => {};
 
-  noFooter: boolean = false;
-  noOkBtn: boolean = false;
-  noCancelBtn: boolean = false;
-  okBtnDisabled: boolean = false;
-  closeOnPopstate: boolean = false;
-  lockScroll: boolean = false;
+  visible?: boolean = true;
+  noFooter?: boolean = false;
+  noOkBtn?: boolean = false;
+  noCancelBtn?: boolean = false;
+  okBtnDisabled?: boolean = false;
+  closeOnPopstate?: boolean = false;
+  lockScroll?: boolean = false;
 }
 
-class Dialog {
+class DialogFunction {
   options: DialogOptions = new DialogOptions();
 
   constructor(_options: DialogOptions) {
-    Object.assign(this.options, _options);
-    show.value = true;
-    const instance: any = createVNode(dialogInstance, this.options as any);
-    render(instance, document.body);
+    let options = Object.assign(this.options, _options);
+    const root = document.createElement('view');
+    root.id = 'dialog-' + new Date().getTime();
+    const Wrapper = {
+      setup() {
+        options.onUpdate = (val: boolean) => {
+          if (val == false) {
+            document.body.removeChild(root);
+          }
+        };
+        options.teleport = `#${root.id}`;
+        return () => {
+          return h(Dialog, options);
+        };
+      }
+    };
+    const instance: any = createVNode(Wrapper);
+    document.body.appendChild(root);
+    render(instance, root);
   }
 
   close = () => {
@@ -52,10 +65,11 @@ class Dialog {
 }
 
 const _Dialog = function(options: DialogOptions) {
-  return new Dialog(options);
+  return new DialogFunction(options);
 };
 _Dialog.install = (app: any) => {
-  app.use(dialogInstance);
+  app.use(Dialog);
   app.config.globalProperties.$dialog = _Dialog;
 };
+export { Dialog };
 export default _Dialog;
