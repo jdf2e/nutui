@@ -11,76 +11,10 @@
   &:last-child {
     border-right: 0;
   }
-}
-
-.bottom {
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  z-index: 888;
-}
-
-.tabbar-nav {
-  flex: 1;
-  text-align: center;
-  text-decoration: none;
-  color: $text-color;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.card {
-  border-right: 1px solid $tabbar-border-color;
-}
-
-.icon-box {
-  padding: 0px;
-  display: inline-block;
-  position: relative;
-
-  .tips {
-    position: absolute;
-    background: $tabbar-active-color;
-    border: 1px solid $white;
-    border-radius: 7px;
-    text-align: center;
-
-    top: -2px;
-    right: -7px;
-    box-shadow: 0 0 0 1px $white;
-    font-size: $font-size-1;
-    color: $white;
+  &-bottom {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 888;
   }
-
-  .num {
-    line-height: 1;
-    font-size: $font-size-0;
-    color: $white;
-    padding: 1px 2px 2px 3px;
-  }
-
-  .nums {
-    line-height: 1;
-    font-size: $font-size-0;
-    color: $white;
-    padding: 2px 1px 2px 2px;
-  }
-}
-
-.icon-box .icon {
-  display: block;
-  background-size: 100% 100%;
-  background-position: center center;
-}
-
-.icon-box .tabbar-nav-word {
-  font-size: $font-size-0;
-  display: block;
-}
-
-.icon-box .big-word {
-  font-size: $font-size-3;
-  line-height: 1;
 }
