@@ -53,7 +53,7 @@ import { onMounted, computed, watch, ref } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('dialog');
 import Popup, { popupProps } from '@/packages/popup/index.vue';
-import { Button } from '@/nutui';
+import { Button, Icon } from '@/nutui';
 export default create({
   inheritAttrs: false,
   children: [Popup, Button],

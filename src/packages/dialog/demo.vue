@@ -47,6 +47,7 @@ export default createDemo({
       Dialog({
         title: '温馨提示',
         content: '支持函数调用和组件调用两种方式。',
+        noCancelBtn: true,
         onCancel,
         onOk
       });
