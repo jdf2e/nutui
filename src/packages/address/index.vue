@@ -17,10 +17,10 @@
         </view-block>
         <view-block class="arrow-back" v-else></view-block>
 
-        <view-block v-if="showModule == 'custom'">{{
+        <view-block v-show="showModule == 'custom'">{{
           customAddressTitle
         }}</view-block>
-        <view-block v-if="showModule == 'exist'">{{
+        <view-block v-show="showModule == 'exist'">{{
           existAddressTitle
         }}</view-block>
 
@@ -77,7 +77,7 @@
       </view-block>
 
       <!-- 配送至 -->
-      <div class="exist-address" v-if="showModule == 'exist'">
+      <view-block class="exist-address" v-if="showModule == 'exist'">
         <div class="exist-address-group">
           <ul class="exist-ul">
             <li
@@ -113,7 +113,7 @@
         >
           <div class="btn">{{ customAndExistTitle }}</div>
         </div>
-      </div>
+      </view-block>
     </view-block>
   </nut-popup>
 </template>
