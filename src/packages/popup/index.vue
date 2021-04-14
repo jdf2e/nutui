@@ -57,7 +57,7 @@ import { createComponent } from '@/utils/create';
 import { OverLay } from '@/nutui';
 const { componentName, create } = createComponent('popup');
 
-let _zIndex = 1;
+let _zIndex = 2000;
 
 export const popupProps = {
   ...overlayProps,

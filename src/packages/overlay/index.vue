@@ -22,7 +22,7 @@ const overlayProps = {
   },
   zIndex: {
     type: [Number, String],
-    default: 1
+    default: 2000
   },
   duration: {
     type: [Number, String],
