@@ -16,9 +16,30 @@ import { Dialog } from '@nutui/nutui';
 const app = createApp();
 app.use(Dialog);
 ```
-## 标签式写法
 
-如果Dialog内容有复杂交互，可使用Dialog的标签式用法。注意标签使用的时候，属性不建议使用驼峰，推荐使用如下写法
+
+## 函数调用
+
+``` javascript
+Dialog({
+  title: '基础弹框',
+  content: '支持函数调用和组件调用两种方式。'
+});
+
+Dialog({
+  content: '无标题弹框'
+});
+
+Dialog({
+  title: '提示弹框',
+  content: '支持函数调用和组件调用两种方式。',
+  noCancelBtn: true,
+});
+```
+
+
+
+## 标签式组件使用
 
 ```html
 <nut-dialog :title="title" :close-on-click-overlay="false" :content="content" v-model:visible="visible"></nut-dialog>
