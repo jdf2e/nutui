@@ -30,28 +30,25 @@
 </template>
 
 <script>
-import { getCurrentInstance } from 'vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('toast');
-
+import { Toast } from '@/nutui';
 export default createDemo({
   setup() {
-    const { proxy } = getCurrentInstance();
-
     const textToast = msg => {
-      proxy.$toast.text(msg);
+      Toast.text(msg);
     };
     const successToast = msg => {
-      proxy.$toast.success(msg);
+      Toast.success(msg);
     };
     const errorToast = msg => {
-      proxy.$toast.fail(msg);
+      Toast.fail(msg);
     };
     const warningToast = msg => {
-      proxy.$toast.warn(msg);
+      Toast.warn(msg);
     };
     const loadingToast = msg => {
-      proxy.$toast.loading(msg);
+      Toast.loading(msg);
     };
     return {
       textToast,

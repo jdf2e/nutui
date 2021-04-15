@@ -1,6 +1,5 @@
-import { createVNode, defineComponent, render, App } from 'vue';
-import VueToast from './index.vue';
-const ToastConstructor = defineComponent(VueToast);
+import { createVNode, render } from 'vue';
+import Toast from './index.vue';
 const defaultOptions = {
   msg: '',
   id: '',
@@ -52,7 +51,7 @@ const updateToast = (opts: any) => {
     } else {
       opts = { ...defaultOptions, ...opts };
     }
-    const instance: any = createVNode(ToastConstructor, opts);
+    const instance: any = createVNode(Toast, opts);
     render(instance, container);
     return instance.component.ctx;
   }
@@ -76,7 +75,7 @@ const mountToast = (opts: any) => {
   optsMap.push(opts);
   const container = document.createElement('div');
   container.id = opts.id;
-  const instance: any = createVNode(ToastConstructor, opts);
+  const instance: any = createVNode(Toast, opts);
   render(instance, container);
   document.body.appendChild(container);
   return instance.component.ctx;
@@ -89,7 +88,7 @@ const errorMsg = (msg: string) => {
   }
 };
 
-export const Toast = {
+export const ToastFunction = {
   text(msg: string, opts = {}) {
     errorMsg(msg);
     return mountToast({ ...opts, type: 'text', msg });
@@ -116,14 +115,12 @@ export const Toast = {
   },
   hide() {
     clearToast();
+  },
+  install(app: any): void {
+    app.use(Toast);
+    app.config.globalProperties.$toast = ToastFunction;
   }
 };
 
-// export default Toast;
-
-export default {
-  install(app: App): void {
-    app.config.globalProperties.$toast = Toast;
-  },
-  Toast
-};
+export { Toast };
+export default ToastFunction;
