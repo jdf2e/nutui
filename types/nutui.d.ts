@@ -89,3 +89,4 @@ export declare class Luckycard extends UIComponent {}
 export declare class NumberKeyboard extends UIComponent {}
 export declare class CollapseItem extends UIComponent {}
 export declare class Coupon extends UIComponent {}
+export declare class Magic extends UIComponent {}

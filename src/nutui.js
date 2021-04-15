@@ -140,9 +140,10 @@ import NumberKeyboard from './packages/numberkeyboard/index.js';
 import './packages/numberkeyboard/numberkeyboard.scss';
 import CollapseItem from './packages/collapseitem/index.js';
 import './packages/collapseitem/collapseitem.scss';
-
 import Coupon from './packages/coupon/index.js';
 import './packages/coupon/coupon.scss';
+import Magic from './packages/magic/index.js';
+import './packages/magic/magic.scss';
 
 const packages = {
   Cell,
@@ -213,7 +214,8 @@ const packages = {
   Luckycard: Luckycard,
   NumberKeyboard: NumberKeyboard,
   CollapseItem: CollapseItem,
-  Coupon: Coupon
+  Coupon: Coupon,
+  Magic: Magic
 };
 
 const components = {};
