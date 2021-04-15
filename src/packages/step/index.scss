@@ -1,0 +1,200 @@
+.nut-step {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 33.34%;
+  text-align: center;
+  font-size: 0;
+  &-head {
+    position: relative;
+    display: block;
+    margin-bottom: 10px;
+  }
+  &-line {
+    position: absolute;
+    top: 11px;
+    left: 50%;
+    right: -50%;
+    display: inline-block;
+    height: 1px;
+    background: #909ca4;
+  }
+  &-icon {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-family: PingFangSC-Medium;
+    font-size: 13px;
+    // border-color: #909CA4;
+    z-index: 1;
+    .nut-icon {
+      width: 100%;
+      height: 100%;
+    }
+    &.is-text {
+      border-radius: 50%;
+      border-width: 1px;
+      border-style: solid;
+    }
+    &.is-icon {
+      border-radius: 50%;
+      border-width: 1px;
+      border-style: solid;
+      background-color: transparent;
+    }
+  }
+  &-main {
+    display: inline-block;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+  }
+  &-title {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #909ca4;
+  }
+  &-content {
+    display: block;
+    font-size: 14px;
+    color: #666;
+  }
+  &:last-child {
+    .nut-step-line {
+      display: none;
+    }
+  }
+  &.nut-step-finish {
+    .nut-step-head {
+      color: #3790ff;
+      border-color: #3790ff;
+    }
+    .nut-step-icon.is-text {
+      background-color: #fff;
+    }
+    .nut-step-icon.is-icon {
+      background-color: #fff;
+    }
+    .nut-step-line {
+      background: #3790ff;
+    }
+    .nut-step-title {
+      color: #3790ff;
+    }
+  }
+  &.nut-step-process {
+    .nut-step-head {
+      color: #fff;
+      border-color: #3790ff;
+    }
+    .nut-step-icon.is-text {
+      background-color: #3790ff;
+    }
+    .nut-step-icon.is-icon {
+      background-color: #3790ff;
+    }
+    .nut-step-title {
+      color: #3790ff;
+    }
+  }
+  &.nut-step-wait {
+    .nut-step-head {
+      color: #909ca4;
+      border-color: #909ca4;
+    }
+    .nut-step-icon.is-text {
+      background-color: #fff;
+    }
+    .nut-step-icon.is-icon {
+      background-color: #fff;
+    }
+    .nut-step-content {
+      color: #909ca4;
+    }
+  }
+  &.nut-step-error {
+    .nut-step-head {
+      color: #fff;
+      border-color: #fa2c19;
+    }
+    .nut-step-icon.is-text {
+      background-color: #fa2c19;
+    }
+    .nut-step-icon.is-icon {
+      background-color: #fa2c19;
+    }
+    .nut-step-line {
+      background: #3790ff;
+    }
+  }
+}
+.nut-steps-vertical {
+  .nut-step {
+    display: flex;
+    height: 33.34%;
+  }
+  .nut-step-line {
+    position: absolute;
+    display: inline-block;
+    width: 1px;
+    height: 100%;
+    background: #909ca4;
+  }
+  .nut-step-main {
+    display: inline-block;
+    padding-left: 6%;
+    text-align: left;
+  }
+  &.nut-steps-dot {
+    .nut-step-head {
+      margin-top: 7px;
+      margin-bottom: 0;
+    }
+    .nut-step-line {
+      top: 7px;
+      left: 50%;
+      right: -50%;
+    }
+    .nut-step-icon {
+      width: 8px;
+      height: 8px;
+      background: #3790ff;
+      border-radius: 50%;
+      box-sizing: content-box;
+    }
+    .nut-step-wait {
+      .nut-step-icon {
+        background-color: #959fb1;
+      }
+      .nut-step-content {
+        color: #909ca4;
+      }
+    }
+    .nut-step-finish {
+      .nut-step-icon {
+        background-color: #3790ff;
+      }
+    }
+    .nut-step-process {
+      .nut-step-icon {
+        position: relative;
+        background-color: #3790ff;
+        &:before {
+          content: '';
+          display: inline-block;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin-left: -7px;
+          margin-top: -7px;
+          width: 14px;
+          height: 14px;
+          background-color: rgba(55, 144, 255, 0.23);
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}

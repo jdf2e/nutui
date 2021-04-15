@@ -373,6 +373,24 @@
           "sort": 16,
           "show": true,
           "author": "Drjingfubo"
+        },
+        {
+          "name": "Steps",
+          "sort": 17,
+          "cName": "步骤条",
+          "type": "component",
+          "show": true,
+          "desc": "步骤条",
+          "author": "ailululu"
+        },
+        {
+          "name": "Step",
+          "sort": 17,
+          "cName": "步骤条子组件",
+          "type": "component",
+          "show": false,
+          "desc": "步骤条子组件",
+          "author": "ailululu"
         }
       ]
     },
