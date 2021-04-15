@@ -1,21 +1,19 @@
 <template>
-  <view>
-    <view :class="['nut-checkbox', 'nut-checkbox-size-' + currentSize]">
-      <input
-        type="checkbox"
-        :name="name"
-        :class="{ 'nut-checkbox-ani': isAnimated }"
-        :disabled="isDisabled"
-        :checked.prop="isChecked"
-        :value="submittedValue"
-        @change="changeEvt"
-      />
-      <view class="nut-checkbox-label" v-if="label">
-        {{ label }}
-      </view>
-      <view class="nut-checkbox-label" v-else>
-        <slot></slot>
-      </view>
+  <view :class="['nut-checkbox', 'nut-checkbox-size-' + currentSize]">
+    <input
+      type="checkbox"
+      :name="name"
+      :class="{ 'nut-checkbox-ani': isAnimated }"
+      :disabled="isDisabled"
+      :checked.prop="isChecked"
+      :value="submittedValue"
+      @change="changeEvt"
+    />
+    <view class="nut-checkbox-label" v-if="label">
+      {{ label }}
+    </view>
+    <view class="nut-checkbox-label" v-else>
+      <slot></slot>
     </view>
   </view>
 </template>
