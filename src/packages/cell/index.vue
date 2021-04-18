@@ -21,10 +21,11 @@
         :style="{ 'text-align': descTextAlign }"
         >{{ desc }}</view
       >
+
+      <slot v-if="$slots.link" name="link"></slot>
       <nut-icon
-        v-if="isLink || to"
-        size="14px"
-        color="#979797"
+        v-else-if="isLink || to"
+        class="nut-cell__link"
         name="right"
       ></nut-icon>
     </slot>
@@ -35,6 +36,7 @@
 import { computed } from 'vue';
 import { createComponent } from '@/utils/create';
 import { useRouter } from 'vue-router';
+import CellGroup from '@/packages/cellgroup/index.vue';
 const { componentName, create } = createComponent('cell');
 export default create({
   props: {
@@ -49,6 +51,10 @@ export default create({
     icon: { type: String, default: '' }
   },
   emits: ['click'],
+  children: [CellGroup],
+  components: {
+    [CellGroup.name]: CellGroup
+  },
   setup(props, { emit }) {
     const classes = computed(() => {
       const prefixCls = componentName;
