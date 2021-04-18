@@ -215,6 +215,15 @@
           "author": "richard1015"
         },
         {
+          "name": "CellGroup",
+          "sort": 1,
+          "cName": "单元格组件",
+          "type": "component",
+          "show": false,
+          "desc": "展示分组列表",
+          "author": "richard1015"
+        },
+        {
           "name": "Uploader",
           "sort": 2,
           "cName": "上传组件",
