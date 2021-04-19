@@ -40,8 +40,7 @@
             @change="
               dataIndex => {
                 changeHandler(columnIndex, dataIndex);
-              }
-            "
+              }"
           ></nut-picker-column>
         </view-block>
       </view-block>
@@ -63,7 +62,10 @@ import {
 const { create, componentName } = createComponent('picker');
 
 export default create({
-  children: [column, popup],
+  components: {
+    [column.name]: column,
+    [popup.name]: popup
+  },
   props: {
     visible: {
       type: Boolean,

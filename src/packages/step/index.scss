@@ -1,7 +1,7 @@
 .nut-step {
   flex-grow: 0;
   flex-shrink: 0;
-  flex-basis: 33.34%;
+  flex: 1;
   text-align: center;
   font-size: 0;
   &-head {
@@ -26,7 +26,6 @@
     line-height: 25px;
     font-family: PingFangSC-Medium;
     font-size: 13px;
-    // border-color: #909CA4;
     z-index: 1;
     .nut-icon {
       width: 100%;
@@ -68,35 +67,35 @@
   }
   &.nut-step-finish {
     .nut-step-head {
-      color: #3790ff;
-      border-color: #3790ff;
+      color: $primary-color;
+      border-color: $primary-color;
     }
     .nut-step-icon.is-text {
-      background-color: #fff;
+      background-color: $white;
     }
     .nut-step-icon.is-icon {
-      background-color: #fff;
+      background-color: $white;
     }
     .nut-step-line {
-      background: #3790ff;
+      background: $primary-color;
     }
     .nut-step-title {
-      color: #3790ff;
+      color: $primary-color;
     }
   }
   &.nut-step-process {
     .nut-step-head {
-      color: #fff;
-      border-color: #3790ff;
+      color: $white;
+      border-color: $primary-color;
     }
     .nut-step-icon.is-text {
-      background-color: #3790ff;
+      background-color: $primary-color;
     }
     .nut-step-icon.is-icon {
-      background-color: #3790ff;
+      background-color: $primary-color;
     }
     .nut-step-title {
-      color: #3790ff;
+      color: $primary-color;
     }
   }
   &.nut-step-wait {
@@ -105,28 +104,13 @@
       border-color: #909ca4;
     }
     .nut-step-icon.is-text {
-      background-color: #fff;
+      background-color: $white;
     }
     .nut-step-icon.is-icon {
-      background-color: #fff;
+      background-color: $white;
     }
     .nut-step-content {
       color: #909ca4;
-    }
-  }
-  &.nut-step-error {
-    .nut-step-head {
-      color: #fff;
-      border-color: #fa2c19;
-    }
-    .nut-step-icon.is-text {
-      background-color: #fa2c19;
-    }
-    .nut-step-icon.is-icon {
-      background-color: #fa2c19;
-    }
-    .nut-step-line {
-      background: #3790ff;
     }
   }
 }
@@ -160,7 +144,7 @@
     .nut-step-icon {
       width: 8px;
       height: 8px;
-      background: #3790ff;
+      background: $primary-color;
       border-radius: 50%;
       box-sizing: content-box;
     }
@@ -174,13 +158,13 @@
     }
     .nut-step-finish {
       .nut-step-icon {
-        background-color: #3790ff;
+        background-color: $primary-color;
       }
     }
     .nut-step-process {
       .nut-step-icon {
         position: relative;
-        background-color: #3790ff;
+        background-color: $primary-color;
         &:before {
           content: '';
           display: inline-block;
@@ -191,7 +175,7 @@
           margin-top: -7px;
           width: 14px;
           height: 14px;
-          background-color: rgba(55, 144, 255, 0.23);
+          background-color: $primary-color-end;
           border-radius: 50%;
         }
       }

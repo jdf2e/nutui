@@ -23,6 +23,7 @@ app.use(Steps);
   <nut-step title="进行中">1</nut-step>
   <nut-step title="未开始">2</nut-step>
   <nut-step title="未开始">3</nut-step>
+  <nut-step title="未开始">4</nut-step>
 </nut-steps>
 ```
 
@@ -58,7 +59,7 @@ app.use(Steps);
 
 ### 点状步骤和垂直方向
 ```html
-<nut-steps direction="vertical" progressDot current="2">
+<nut-steps direction="vertical" progress-dot current="2">
   <nut-step title="已完成" content="您的订单已经打包完成，商品已发出" >1</nut-step>
   <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
   <nut-step title="未开始" content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦">3</nut-step>
@@ -74,9 +75,9 @@ app.use(Steps);
 
 | 参数                   | 说明                                                        | 类型           | 默认值      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| direction	             | 	显示方向，`horizontal`,`vertical`  | String        | horizontal  | 
-| current	               | 	当前所在的步骤           | Number、String        | 0       |
-| progressDot            |  点状步骤条     | Boolean | false         |
+| direction	             | 	显示方向，`horizontal`,`vertical`  | String        | 'horizontal'  | 
+| current	               | 	当前所在的步骤           | Number、String        | '0'      |
+| progress-dot            |  点状步骤条     | Boolean | false         |
 
 
 
@@ -85,6 +86,5 @@ app.use(Steps);
 | 参数           | 说明                   | 类型     | 默认值      |
 | ---------------- | ---------------------- | ------------ | ----------- |
 | title            | 流程步骤的标题         | String | 步骤 |
-| content          | 流程步骤的描述性文字       | String | 步骤描述 |
-| icon          | 图标       | String | - |
-| status           | 流程状态       | String | String、Number | "process"（可选值 "wait"、"process"、"finish"、"error" |
+| content          | 流程步骤的描述性文字(支持 html 结构)       | String | 步骤描述 |
+| icon          | 图标       | String | null |

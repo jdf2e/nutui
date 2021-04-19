@@ -13,7 +13,6 @@
 
     <nut-datepicker
       v-model="currentDate"
-      title="日期选择"
       @confirm="
         val => {
           confirm(0, val);
