@@ -3,7 +3,11 @@
   display: flex;
   flex-wrap: wrap;
 
-  .upload {
+  &__slot {
+    position: relative;
+  }
+
+  &__upload {
     position: relative;
     background: $uploader-background;
     width: $uploader-width;
@@ -11,21 +15,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    input {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      cursor: pointer;
-      opacity: 0;
-      &:disabled {
-        cursor: not-allowed;
-      }
+  }
+
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+    &:disabled {
+      cursor: not-allowed;
     }
   }
-  .preview {
+
+  &__preview {
     width: $uploader-width;
     height: $uploader-height;
     display: flex;

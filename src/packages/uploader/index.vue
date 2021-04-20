@@ -1,42 +1,77 @@
 <template>
   <view :class="classes">
-    <view class="preview" v-for="item in fileList" :key="item.uid">
-      <view class="preview-img">
-        <nut-icon
-          v-if="isDeletable"
-          color="rgba(0,0,0,0.6)"
-          @click="onDelete(item, index)"
-          class="close"
-          name="mask-close"
-        ></nut-icon>
-        <img v-if="item.type.includes('image') && item.url" :src="item.url" />
-        <view class="tips" v-if="item.status != 'success'">{{
-          item.status
-        }}</view>
+    <view class="nut-uploader__slot" v-if="$slots.default">
+      <slot></slot>
+      <template v-if="maximum - fileList.length">
+        <input
+          class="nut-uploader__input"
+          v-if="capture"
+          type="file"
+          capture="camera"
+          :accept="accept"
+          :multiple="multiple"
+          :name="name"
+          :disabled="disabled"
+          @change="onChange"
+        />
+        <input
+          class="nut-uploader__input"
+          v-else
+          type="file"
+          :accept="accept"
+          :multiple="multiple"
+          :name="name"
+          :disabled="disabled"
+          @change="onChange"
+        />
+      </template>
+    </view>
+
+    <template v-else>
+      <view
+        class="nut-uploader__preview"
+        v-for="item in fileList"
+        :key="item.uid"
+      >
+        <view class="nut-uploader__preview-img">
+          <nut-icon
+            v-if="isDeletable"
+            color="rgba(0,0,0,0.6)"
+            @click="onDelete(item, index)"
+            class="close"
+            name="mask-close"
+          ></nut-icon>
+          <img v-if="item.type.includes('image') && item.url" :src="item.url" />
+          <view class="tips" v-if="item.status != 'success'">{{
+            item.status
+          }}</view>
+        </view>
       </view>
-    </view>
-    <view class="upload" v-if="maximum - fileList.length">
-      <nut-icon color="#808080" :name="uploadIcon"></nut-icon>
-      <input
-        v-if="capture"
-        type="file"
-        capture="camera"
-        :accept="accept"
-        :multiple="multiple"
-        :name="name"
-        :disabled="disabled"
-        @change="onChange"
-      />
-      <input
-        v-else
-        type="file"
-        :accept="accept"
-        :multiple="multiple"
-        :name="name"
-        :disabled="disabled"
-        @change="onChange"
-      />
-    </view>
+      <view class="nut-uploader__upload" v-if="maximum - fileList.length">
+        <nut-icon color="#808080" :name="uploadIcon"></nut-icon>
+        <input
+          class="nut-uploader__input"
+          v-if="capture"
+          type="file"
+          capture="camera"
+          :accept="accept"
+          :multiple="multiple"
+          :name="name"
+          :disabled="disabled"
+          @change="onChange"
+        />
+        <input
+          class="nut-uploader__input"
+          v-else
+          type="file"
+          :accept="accept"
+          :multiple="multiple"
+          :name="name"
+          :disabled="disabled"
+          @change="onChange"
+        />
+      </view>
+    </template>
   </view>
 </template>
 
@@ -100,7 +135,8 @@ export default create({
     'success',
     'failure',
     'change',
-    'delete'
+    'delete',
+    'update:fileList'
   ],
   setup(props, { emit }) {
     const fileList = reactive(props.fileList) as Array<FileItem>;
@@ -147,6 +183,7 @@ export default create({
           responseText,
           option
         });
+        emit('update:fileList', props.fileList);
       };
       uploadOption.onFailure = (
         responseText: XMLHttpRequest['responseText'],
