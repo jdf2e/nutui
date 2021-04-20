@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import legacy from '@vitejs/plugin-legacy';
 import Markdown from 'vite-plugin-md';
 import path from 'path';
 const resolve = path.resolve;
@@ -31,7 +32,10 @@ export default defineConfig({
     vue({
       include: [/\.vue$/, /\.md$/]
     }),
-    Markdown()
+    Markdown(),
+    legacy({
+      targets: ['defaults', 'not IE 11']
+    })
   ],
   build: {
     target: 'es2015',
