@@ -1,0 +1,1 @@
+System.register(["./index-legacy.579cfc3c.js"],(function(e){"use strict";var t,s,c;return{setters:[function(e){t=e.c,s=e.o,c=e.f}],execute:function(){const n={class:"markdown-body"},o=c("h1",null,"CollapseItem 折叠面板",-1);e("default",{expose:[],setup:e=>(e,c)=>(s(),t("div",n,[o]))})}}}));
