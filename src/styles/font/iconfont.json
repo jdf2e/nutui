@@ -8,14 +8,14 @@
     {
       "icon_id": "20414471",
       "name": "check-disabled",
-      "font_class": "wanshangshide1",
+      "font_class": "checklist-disabled",
       "unicode": "e6c9",
       "unicode_decimal": 59081
     },
     {
       "icon_id": "20414429",
       "name": "checklist",
-      "font_class": "wanshangshide",
+      "font_class": "checklist",
       "unicode": "e6c8",
       "unicode_decimal": 59080
     },
@@ -36,7 +36,7 @@
     {
       "icon_id": "20407571",
       "name": "check-checked",
-      "font_class": "xuanzhong-1",
+      "font_class": "check-checked",
       "unicode": "e6c6",
       "unicode_decimal": 59078
     },
@@ -337,7 +337,7 @@
     {
       "icon_id": "18193367",
       "name": "uplode",
-      "font_class": "uplode",
+      "font_class": "uploader",
       "unicode": "e69b",
       "unicode_decimal": 59035
     },
