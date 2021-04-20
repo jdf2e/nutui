@@ -40,7 +40,7 @@ export default defineConfig({
   build: {
     target: 'es2015',
     outDir: './dist/3x/',
-    cssCodeSplit: false,
+    cssCodeSplit: true,
     rollupOptions: {
       input: {
         doc: resolve(__dirname, 'index.html'),
