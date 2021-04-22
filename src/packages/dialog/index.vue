@@ -16,7 +16,7 @@
 
       <view class="nut-dialog__content" :style="{ textAlign }">
         <slot v-if="$slots.default" name="default"></slot>
-        <template v-else>{{ content }}</template>
+        <view v-else v-html="content"></view>
       </view>
 
       <view class="nut-dialog__footer" v-if="!noFooter">
