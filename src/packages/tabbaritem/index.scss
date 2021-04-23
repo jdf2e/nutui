@@ -28,6 +28,7 @@
       box-shadow: 0 0 0 1px $white;
       font-size: $font-size-1;
       color: $white;
+      z-index: 1;
     }
 
     &_num {
