@@ -30,12 +30,12 @@ class DialogFunction {
   constructor(_options: DialogOptions) {
     let options = Object.assign(this.options, _options);
     let elWarp: HTMLElement = document.body;
-    let teleport = _options.teleport as string;
+    let teleport = options.teleport as string;
     if (teleport != 'body') {
       if (typeof teleport == 'string') {
         elWarp = document.querySelector(teleport) as HTMLElement;
       } else {
-        elWarp = _options.teleport as HTMLElement;
+        elWarp = options.teleport as HTMLElement;
       }
     }
     const root = document.createElement('view');
