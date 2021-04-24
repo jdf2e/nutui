@@ -8,6 +8,7 @@ const resolve = path.resolve;
 export default defineConfig({
   base: '/3x/',
   server: {
+    port: 2021,
     proxy: {
       '/devServer': {
         target: 'https://nutui.jd.com',
