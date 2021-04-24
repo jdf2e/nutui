@@ -12,7 +12,7 @@
       :placeholder="placeholder"
       :disabled="disabled"
       :readonly="readonly"
-      :value="curretvalue"
+      :value="modelValue"
       @input="valueChange"
       @focus="valueFocus"
       @blur="valueBlur"
@@ -20,21 +20,21 @@
     <view
       @click="handleClear"
       class="nut-textinput-clear"
-      v-if="!disableClear && !readonly"
-      v-show="active && curretvalue.length > 0"
+      v-if="clearable && !readonly"
+      v-show="active && modelValue.length > 0"
     >
       <nut-icon name="close-little" size="12px"></nut-icon>
     </view>
   </view>
 </template>
 <script lang="ts">
-import { toRefs, reactive, computed, watch } from 'vue';
+import { ref, computed } from 'vue';
 import { createComponent } from '@/utils/create';
 import { formatNumber } from './util';
 
 const { componentName, create } = createComponent('input');
 interface Events {
-  eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:value';
+  eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
   params: (string | number | Event)[];
 }
 export default create({
@@ -43,7 +43,7 @@ export default create({
       type: String,
       default: 'text'
     },
-    value: {
+    modelValue: {
       type: [String, Number],
       default: ''
     },
@@ -75,20 +75,16 @@ export default create({
       type: [String, Number],
       default: ''
     },
-    disableClear: {
+    clearable: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
 
-  emits: ['change', 'update:value', 'blur', 'focus', 'clear'],
+  emits: ['change', 'update:modelValue', 'blur', 'focus', 'clear'],
 
   setup(props, { emit }) {
-    const state = reactive({
-      curretvalue: props.value,
-      textNum: String(props.value).length,
-      active: false
-    });
+    const active = ref(false);
 
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -104,14 +100,8 @@ export default create({
       };
     });
 
-    const emitChange = (envs: Array<Events>) => {
-      envs.forEach((item: Events) => {
-        return emit(item.eventName, ...item.params);
-      });
-    };
-
-    const valueChange = (e: Event) => {
-      const input = e.target as HTMLInputElement;
+    const valueChange = (event: Event) => {
+      const input = event.target as HTMLInputElement;
       let val = input.value;
 
       if (props.maxLength && val.length > Number(props.maxLength)) {
@@ -123,79 +113,32 @@ export default create({
       if (props.type === 'number') {
         val = formatNumber(val, false);
       }
-      state.textNum = val.length;
-      emitChange([
-        {
-          eventName: 'update:value',
-          params: [val]
-        },
-        {
-          eventName: 'change',
-          params: [val]
-        }
-      ]);
+      emit('change', val, event);
+      emit('update:modelValue', val, event);
     };
 
-    const valueFocus = (e: Event) => {
-      state.active = true;
-      const input = e.target as HTMLInputElement;
-      emitChange([
-        {
-          eventName: 'update:value',
-          params: [state.curretvalue]
-        },
-        {
-          eventName: 'focus',
-          params: [String(input.value)]
-        }
-      ]);
+    const valueFocus = (event: Event) => {
+      const input = event.target as HTMLInputElement;
+      let value = input.value;
+      active.value = true;
+      emit('focus', value, event);
     };
 
-    const valueBlur = (e: Event) => {
-      setTimeout(() => {
-        state.active = false;
-      }, 400);
-      const input = e.target as HTMLInputElement;
-      emitChange([
-        {
-          eventName: 'update:value',
-          params: [String(input.value)]
-        },
-        {
-          eventName: 'blur',
-          params: [String(input.value)]
-        }
-      ]);
+    const valueBlur = (event: Event) => {
+      active.value = false;
+      const input = event.target as HTMLInputElement;
+      let value = input.value;
+
+      emit('blur', value, event);
     };
 
-    const handleClear = () => {
-      emitChange([
-        {
-          eventName: 'update:value',
-          params: ['']
-        },
-        {
-          eventName: 'clear',
-          params: ['']
-        }
-      ]);
+    const handleClear = (event: Event) => {
+      emit('change', '', event);
+      emit('update:modelValue', '', event);
     };
-
-    watch(
-      () => props.value,
-      val => {
-        state.curretvalue = val;
-        emitChange([
-          {
-            eventName: 'update:value',
-            params: [String(val)]
-          }
-        ]);
-      }
-    );
 
     return {
-      ...toRefs(state),
+      active,
       classes,
       styles,
       valueChange,
