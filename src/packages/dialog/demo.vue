@@ -1,15 +1,29 @@
 <template>
   <div class="demo">
-    <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
-    <nut-cell title="无标题弹框" @click="noTitleClick"></nut-cell>
-    <nut-cell title="提示弹框" @click="tipsClick"></nut-cell>
-    <nut-cell title="组件调用" @click="componentClick"></nut-cell>
-    <nut-dialog
-      title="组件调用"
-      content="如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。"
-      v-model:visible="visible"
-    >
-    </nut-dialog>
+    <nut-cell-group title="函数式调用">
+      <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
+      <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
+      <nut-cell title="无标题弹框" @click="noTitleClick"></nut-cell>
+      <nut-cell title="提示弹框" @click="tipsClick"></nut-cell>
+    </nut-cell-group>
+    <nut-cell-group title="标签式调用">
+      <nut-cell title="组件调用" @click="componentClick"></nut-cell>
+      <nut-dialog
+        teleport="#app"
+        title="组件调用"
+        content="如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。"
+        v-model:visible="visible"
+      >
+      </nut-dialog>
+    </nut-cell-group>
+    <nut-cell-group title="teleport 使用，挂载到指定节点">
+      <nut-cell title="body 节点下" @click="teleportClick('body')"></nut-cell>
+      <nut-cell title="#app 节点下" @click="teleportClick('#app')"></nut-cell>
+      <nut-cell
+        title="demo class 元素节点下"
+        @click="teleportClick('.demo')"
+      ></nut-cell>
+    </nut-cell-group>
   </div>
 </template>
 <script lang="ts">
@@ -57,12 +71,23 @@ export default createDemo({
       visible.value = true;
     };
 
+    const teleportClick = (teleport: string) => {
+      Dialog({
+        teleport,
+        title: '挂载至 ' + teleport,
+        content: '打开开发者工具看一下 Elements Tab',
+        noCancelBtn: true,
+        onCancel
+      });
+    };
+
     return {
       visible,
       baseClick,
       noTitleClick,
       componentClick,
-      tipsClick
+      tipsClick,
+      teleportClick
     };
   }
 });
