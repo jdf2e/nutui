@@ -53,15 +53,15 @@ export default create({
   },
 
   setup(props, { emit, slots }) {
-    const instance = getCurrentInstance() as ComponentInternalInstance;
+    const { proxy } = getCurrentInstance() as ComponentInternalInstance;
     const parent: any = inject('parent');
-    parent['relation'](instance);
+    parent['relation'](proxy);
 
     const state = reactive({
       dot: parent.props.progressDot
     });
 
-    const index = computed(() => parent.state.children.indexOf(instance) + 1);
+    const index = computed(() => parent.state.children.indexOf(proxy) + 1);
 
     const getCurrentStatus = () => {
       const activeIndex = index.value;
