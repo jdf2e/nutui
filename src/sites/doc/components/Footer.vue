@@ -1,5 +1,5 @@
 <template>
-  <div class="doc-footer" :class="`doc-footer-${data.theme}`">
+  <div class="doc-footer" :class="`doc-footer-${themeColor}`">
     <div class="doc-footer-content">
       <div class="doc-footer-list">
         <img
@@ -10,17 +10,16 @@
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">相关资源</h4>
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://ling.jd.com/jdw"
-            >羚珑-中后台智能构建平台</a
-          ></div
-        >
+          ><a
+            class="sub-link"
+            target="_blank"
+            href="hhttps://cn.vuejs.org/index.html"
+            v-hover
+            >Vue</a
+          >
+        </div>
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://taro-ui.jd.com"
-            >Taro UI</a
-          ></div
-        >
-        <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://vitejs.dev"
+          ><a class="sub-link" target="_blank" href="https://vitejs.dev" v-hover
             >Vite</a
           ></div
         >
@@ -28,8 +27,18 @@
           ><a
             class="sub-link"
             target="_blank"
-            href="hhttps://cn.vuejs.org/index.html"
-            >Vue</a
+            href="https://taro.jd.com"
+            v-hover
+            >Taro</a
+          ></div
+        >
+        <div class="doc-footer-item"
+          ><a
+            class="sub-link"
+            target="_blank"
+            href="https://ling.jd.com/jdw"
+            v-hover
+            >羚珑</a
           ></div
         >
       </div>
@@ -40,7 +49,8 @@
             class="sub-link"
             target="_blank"
             href="https://github.com/jdf2e/nutui"
-            >Github</a
+            v-hover
+            >GitHub</a
           ></div
         >
         <div class="doc-footer-item"
@@ -48,40 +58,44 @@
             class="sub-link"
             target="_blank"
             href="https://www.zhihu.com/column/c_1263837684834889728"
-            >NUT UI 知乎专栏</a
+            v-hover
+            >NutUI 知乎专栏</a
           ></div
         >
+
         <div class="doc-footer-item vx-item">
-          微信
+          <span v-hover>微信</span>
           <i class="icon-vx"></i>
           <div class="vx-box">
             <p class="vx-desc">微信交流群</p>
             <p class="vx-desc">扫码添加好友</p>
             <img class="img-code" src="../../assets/images/vx-code.png" />
-            <p class="vx-desc"
-              >回复<span class="vx-red">NUT UI</span>即刻进群</p
-            >
+            <p class="vx-desc">回复<span class="vx-red">NutUI</span>即刻进群</p>
           </div>
         </div>
       </div>
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">关于我们</h4>
         <div class="doc-footer-item"
+          ><a class="sub-link" href="#/joinus" v-hover>加入我们</a></div
+        >
+        <div class="doc-footer-item"
+          ><a class="sub-link" href="mailto:nutui@jd.com" v-hover
+            >联系我们</a
+          ></div
+        >
+        <div class="doc-footer-item"
           ><a
             class="sub-link"
             target="_blank"
-            href="https://nutui.jd.com/#/joinus"
-            >加入我们</a
+            href="https://github.com/jdf2e/nutui/issues"
+            v-hover
+            >意见反馈</a
           ></div
         >
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="http://fe.jd.com"
-            >京东零售前端</a
-          ></div
-        >
-        <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="nutui@jd.com"
-            >联系我们</a
+          ><a class="sub-link" target="_blank" href="http://fe.jd.com" v-hover
+            >京东前端</a
           ></div
         >
       </div>
@@ -105,17 +119,18 @@
         </div>
       </div>
     </div>
-    <p class="doc-footer-desc">2020 JDRD-FEB 前端开发部.All Rights Reserved.</p>
+    <p class="doc-footer-desc"
+      >2021 京东零售 - 基础业务体验部.&nbsp;All Rights Reserved.</p
+    >
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
-import { themeColor } from '@/sites/assets/util/ref';
+import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-footer',
   setup() {
     const data = reactive({
-      theme: 'red',
       themeList: [
         {
           name: '热情红',
@@ -143,15 +158,18 @@ export default defineComponent({
         false
       );
     };
+    // checked active index
+    data.activeIndex = data.themeList.findIndex(
+      i => i.color == RefData.getInstance().themeColor.value
+    );
     const checkTheme = (color: string, index: number) => {
       data.isShowSelect = false;
       data.activeIndex = index;
-      data.theme = color;
-      themeColor.value = color;
-      console.log('themeColor1', themeColor);
-      // bus.emit('select-theme', color)
+      RefData.getInstance().themeColor.value = color;
+      localStorage.setItem('nutui-theme-color', color);
     };
     return {
+      themeColor: RefData.getInstance().themeColor,
       data,
       clickOut,
       checkTheme
@@ -166,10 +184,11 @@ export default defineComponent({
     padding: 30px 80px 20px;
     text-align: center;
     &-content {
+      width: 1200px;
+      margin: 0 auto;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: flex-start;
-      margin-right: 50px;
     }
     &-list {
       position: relative;
@@ -197,7 +216,6 @@ export default defineComponent({
       }
     }
     &-desc {
-      margin-top: 30px;
       font-size: 12px;
     }
     &-select-hd {
@@ -252,6 +270,7 @@ export default defineComponent({
 }
 // 颜色
 .doc-footer {
+  height: 240px;
   // 黑色
   &-black {
     background: $theme-black-footer-bg;
@@ -397,7 +416,7 @@ export default defineComponent({
   display: none;
   position: absolute;
   right: -144px;
-  top: -120px;
+  top: -160px;
   padding: 20px 30px;
   background: rgba(255, 255, 255, 1);
   border: 1px solid rgba(238, 238, 238, 1);
@@ -405,7 +424,6 @@ export default defineComponent({
   .vx-desc {
     margin-bottom: 10px;
     line-height: 17px;
-    font-family: PingFangSC-Regular;
     font-size: 12px;
     color: #1a1a1a;
     &:last-child {

@@ -1,4 +1,4 @@
-#  picker组件
+#  Picker组件
 
 ### 介绍
     
@@ -20,7 +20,7 @@ app.use(Picker);
 ```html
 <nut-cell title="请选择城市" :desc="desc" @click="open"></nut-cell>
 <nut-picker
-    v-model:is-visible="show"
+    v-model:visible="show"
     :list-data="listData"
     title="城市选择"
     @confirm="confirm" 
@@ -59,7 +59,7 @@ export default createDemo({
 ```html
 <nut-cell title="请选择时间" :desc="desc" @click="open"></nut-cell>
 <nut-picker
-    v-model:is-visible="show"
+    v-model:visible="show"
     :list-data="listData"
     title="多列选择"
     @confirm="confirm"
@@ -100,7 +100,7 @@ export default createDemo({
 ```html
 <nut-cell title="地址" :desc="desc" @click="open"></nut-cell>
 <nut-picker
-    v-model:is-visible="show"
+    v-model:visible="show"
     :list-data="listData"
     title="地址选择"
     @confirm="confirm" 
@@ -162,7 +162,7 @@ export default createDemo({
     
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| is-visible   | 是否可见               | Boolean | false             |
+| v-model:visible   | 是否可见               | Boolean | false             |
 | title        | 设置标题                         | String | -                |
 | list-data         | 列表数据 | Array | -                |
 | default-value-index         | 初始选中项的索引，默认为 0 | number | 0                |
@@ -173,4 +173,5 @@ export default createDemo({
 |--------|----------------|--------------|
 | close  | 关闭弹窗时触发  | event: Event |
 | confirm  | 点击确认时候触发  | event: Event |
+| change  | 改变时触发  | val |
     

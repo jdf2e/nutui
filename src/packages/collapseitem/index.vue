@@ -1,11 +1,5 @@
 <template>
-  <view
-    :class="[
-      'nut-collapse-item',
-      { 'nut-collapse-item-left': classDirection == 'left' },
-      { 'nut-collapse-item-icon': icon && icon != 'none' }
-    ]"
-  >
+  <view :class="classes">
     <view
       :class="[
         'collapse-item',
@@ -16,47 +10,33 @@
     >
       <view class="collapse-title">
         <view>
-          <img
-            v-if="
-              titleIcon != '' &&
-                titleIcon != 'none' &&
-                titleIconPosition == 'left'
-            "
-            :src="titleIcon"
-            :style="titleIconWH"
-            class="titleIconLeft"
-          />
-          <view v-html="title"></view>
-          <img
-            v-if="
-              titleIcon != '' &&
-                titleIcon != 'none' &&
-                titleIconPosition == 'right'
-            "
-            :src="titleIcon"
-            :style="titleIconWH"
-            class="titleIconRight"
-          />
+          <view class="collapse-title-value">
+            <nut-icon
+              v-if="titleIcon"
+              :name="titleIcon"
+              :size="titleIconSize"
+              :color="titleIconColor"
+              :class="[
+                titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight'
+              ]"
+            ></nut-icon>
+            <view v-html="title"></view>
+          </view>
         </view>
       </view>
       <view v-if="subTitle" v-html="subTitle" class="subTitle"></view>
-      <i
-        v-if="icon && icon != 'none'"
+      <nut-icon
+        v-if="icon"
+        :name="icon"
+        :size="iconSize"
+        :color="iconColor"
         :class="[
           'collapse-icon',
           { 'col-expanded': openExpanded },
           { 'collapse-icon-disabled': disabled }
         ]"
         :style="iconStyle"
-      ></i>
-      <i
-        v-else-if="icon != 'none'"
-        :class="[
-          'collapse-icon',
-          { 'col-expanded': openExpanded },
-          { 'collapse-icon-disabled': disabled }
-        ]"
-      ></i>
+      ></nut-icon>
     </view>
     <view class="collapse-wrapper" ref="wrapperRef">
       <view class="collapse-content" ref="contentRef">
@@ -79,7 +59,7 @@ import {
   ComponentInternalInstance
 } from 'vue';
 import { createComponent } from '@/utils/create';
-const { create } = createComponent('collapse-item');
+const { create, componentName } = createComponent('collapse-item');
 
 export default create({
   props: {
@@ -107,6 +87,14 @@ export default create({
   setup(props) {
     const collapse: any = inject('collapseParent');
     const parent: any = reactive(collapse);
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true,
+        // [`${prefixCls}-left`]: parent.props.classDirection === 'left',
+        [`${prefixCls}-icon`]: parent.props.icon
+      };
+    });
     const relation = (child: ComponentInternalInstance): void => {
       if (child.proxy) {
         parent.children.push(child.proxy);
@@ -114,25 +102,28 @@ export default create({
     };
     relation(getCurrentInstance() as ComponentInternalInstance);
     const proxyData = reactive({
+      icon: parent.props.icon,
+      iconSize: parent.props.iconSize,
+      iconColor: parent.props.iconColor,
       openExpanded: false,
-      classDirection: 'right',
+      // classDirection: 'right',
       iconStyle: {
-        width: '20px',
-        height: '20px',
-        'background-image':
-          'url(https://img10.360buyimg.com/imagetools/jfs/t1/111306/10/17422/341/5f58aa0eEe9218dd6/28d76a42db334e31.png)',
-        'background-repeat': 'no-repeat',
-        'background-size': '100% 100%',
-        transform: 'rotate(0deg)'
+        transform: 'rotate(0deg)',
+        marginTop: parent.props.iconHeght
+          ? '-' + parent.props.iconHeght / 2 + 'px'
+          : '-10px'
       }
     });
+
     const titleIconStyle = reactive({
-      titleIcon: parent.titleIcon,
-      titleIconPosition: parent.titleIconPosition,
-      titleIconWH: {
-        width: '13px',
-        height: '13px'
-      }
+      titleIcon: parent.props.titleIcon,
+      titleIconSize: parent.props.titleIconSize,
+      titleIconColor: parent.props.titleIconColor,
+      titleIconPosition: parent.props.titleIconPosition
+      // titleIconWH: {
+      //   width: '13px',
+      //   height: '13px'
+      // }
     });
 
     // 获取 Dom 元素
@@ -161,10 +152,11 @@ export default create({
         wrapperRefEle.style.height = !proxyData.openExpanded
           ? 0
           : contentHeight;
-        if (parent.icon && parent.icon != 'none' && !proxyData.openExpanded) {
+        if (parent.props.icon && !proxyData.openExpanded) {
           proxyData.iconStyle['transform'] = 'rotate(0deg)';
         } else {
-          proxyData.iconStyle['transform'] = 'rotate(' + parent.rotate + 'deg)';
+          proxyData.iconStyle['transform'] =
+            'rotate(' + parent.props.rotate + 'deg)';
         }
       }
       if (!proxyData.openExpanded) {
@@ -179,15 +171,15 @@ export default create({
 
     const defaultOpen = () => {
       open();
-      if (parent.icon && parent.icon != 'none') {
+      if (parent.props.icon) {
         proxyData['iconStyle']['transform'] =
-          'rotate(' + parent.rotate + 'deg)';
+          'rotate(' + parent.props.rotate + 'deg)';
       }
     };
 
-    const currentName = computed(() => props.name ?? index.value);
+    const currentName = computed(() => props.name);
     const toggleOpen = () => {
-      if (parent.accordion) {
+      if (parent.props.accordion) {
         parent.children.forEach((item: any, index: number) => {
           if (currentName.value == item.name) {
             item.changeOpen(!item.openExpanded);
@@ -197,7 +189,7 @@ export default create({
           }
         });
         nextTick(() => {
-          parent.changeVal(currentName.value, !proxyData.openExpanded);
+          parent.changeVal(currentName.value);
           animation();
         });
       } else {
@@ -225,7 +217,7 @@ export default create({
 
     onMounted(() => {
       const { name } = props;
-      const active = parent && parent.value;
+      const active = parent && parent.props.active;
 
       if (typeof active == 'number' || typeof active == 'string') {
         if (name == active) {
@@ -238,21 +230,23 @@ export default create({
         }
       }
 
-      proxyData.classDirection = parent.expandIconPosition;
-      if (parent.icon && parent.icon != 'none') {
-        proxyData.iconStyle['background-image'] = 'url(' + parent.icon + ')';
-      }
-      if (parent.iconWidth && parent.icon != 'none') {
-        proxyData.iconStyle['width'] = parent.conWidth;
-      }
-      if (parent.iconHeght && parent.icon != 'none') {
-        proxyData.iconStyle['height'] = parent.iconHeight;
-      }
+      // proxyData.classDirection = parent.props.expandIconPosition;
+      // if (parent.props.icon && parent.props.icon != 'none') {
+      //   proxyData.iconStyle['background-image'] =
+      //     'url(' + parent.props.icon + ')';
+      // }
+      // if (parent.props.iconWidth && parent.props.icon != 'none') {
+      //   proxyData.iconStyle['width'] = parent.props.conWidth;
+      // }
+      // if (parent.props.iconHeght && parent.props.icon != 'none') {
+      //   proxyData.iconStyle['height'] = parent.props.iconHeight;
+      // }
     });
 
     return {
+      classes,
       ...toRefs(proxyData),
-      ...toRefs(parent),
+      ...toRefs(parent.props),
       ...toRefs(titleIconStyle),
       wrapperRef,
       contentRef,

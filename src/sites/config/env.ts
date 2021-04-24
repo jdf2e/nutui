@@ -14,8 +14,7 @@ const config: EnvConfig = {
   baseUrl: '',
   isPrd: true // 是否为线上
 };
-let p = 'development';
-switch (p) {
+switch (import.meta.env.MODE) {
   case 'development':
     /*
      * 开发环境    => npm run dev
@@ -28,7 +27,7 @@ switch (p) {
      * 线上环境 => npm run build
      */
     config.isPrd = true;
-    config.baseUrl = 'http://nutui-server.jd.com';
+    config.baseUrl = 'https://nutui.jd.com';
     break;
 }
 export default config;

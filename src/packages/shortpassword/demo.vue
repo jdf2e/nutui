@@ -1,87 +1,110 @@
 <template>
-  <div class="demo full">
-    <h2>基础用法</h2>
-    <nut-cell @click="switchActionSheet('dialogShow')">点击出现输出框</nut-cell>
-    <nut-cell>您输入的密码是：{{ state.value }}</nut-cell>
-    <h2>展示按钮</h2>
-    <nut-cell @click="switchActionSheet('dialogShow1')"
-      >点击出现输出框</nut-cell
-    >
-    <nut-cell>您输入的密码是：{{ state.value1 }}</nut-cell>
-    <h2>自定义长度</h2>
-    <nut-cell @click="switchActionSheet('dialogShow2')"
-      >点击出现输出框</nut-cell
-    >
-    <nut-cell>您输入的密码是：{{ state.value2 }}</nut-cell>
-    <h2>出现提示信息</h2>
-    <nut-cell @click="switchActionSheet('dialogShow3')"
-      >点击出现输出框</nut-cell
-    >
-    <nut-cell>您输入的密码是：{{ state.value3 }}</nut-cell>
+  <div class="demo">
     <nut-shortpassword
-      v-model:value="state.value"
-      v-model:is-visible="state.dialogShow"
-    >
-    </nut-shortpassword>
-    <nut-shortpassword
-      v-model:value="state.value1"
-      v-model:is-visible="state.dialogShow1"
-      :no-button="false"
-      @sure-click="sureClick"
-    >
-    </nut-shortpassword>
-    <nut-shortpassword
-      v-model:value="state.value2"
-      v-model:is-visible="state.dialogShow2"
-      :length="4"
-    >
-    </nut-shortpassword>
-    <nut-shortpassword
-      v-model:value="state.value3"
-      v-model:is-visible="state.dialogShow3"
+      v-model="state.value"
+      v-model:visible="state.visible"
+      :no-button="state.noButton"
+      :length="state.length"
       :error-msg="state.errorMsg"
-      @complete="complete"
-      link="http://m.jd.com"
+      @change="methods.onChange"
+      @complete="methods.onComplete"
+      @ok="methods.onOk"
+      @tips="methods.onTips"
+      @close="methods.close"
+      @cancel="methods.cancel"
     >
     </nut-shortpassword>
+    <nut-cell
+      title="基础用法"
+      is-link
+      @click="
+        state.visible = true;
+        state.noButton = true;
+        state.length = 6;
+        state.errorMsg = '';
+      "
+    ></nut-cell>
+    <nut-cell
+      title="显示按钮组"
+      is-link
+      @click="
+        state.visible = true;
+        state.noButton = false;
+        state.length = 6;
+        state.errorMsg = '';
+      "
+    ></nut-cell>
+    <nut-cell
+      title="自定义密码长度4"
+      is-link
+      @click="
+        state.visible = true;
+        state.noButton = true;
+        state.length = 4;
+        state.errorMsg = '';
+      "
+    ></nut-cell>
+    <nut-cell
+      title="忘记密码提示语事件回调"
+      is-link
+      @click="
+        state.visible = true;
+        state.length = 6;
+        state.errorMsg = '';
+        state.noButton = true;
+      "
+    ></nut-cell>
+    <nut-cell
+      title="错误提示语"
+      is-link
+      @click="
+        state.visible = true;
+        state.length = 6;
+        state.noButton = true;
+        state.errorMsg = '请输入正确密码';
+      "
+    ></nut-cell>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, reactive, watch } from 'vue';
+import { reactive, getCurrentInstance } from 'vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('shortpassword');
 export default createDemo({
   setup() {
+    let { proxy } = getCurrentInstance() as any;
+
     const state = reactive({
-      dialogShow: false,
-      dialogShow1: false,
-      dialogShow2: false,
-      dialogShow3: false,
+      visible: false,
+      noButton: true,
       value: '',
-      value1: '',
-      value2: '',
-      value3: '',
-      errorMsg: ''
+      errorMsg: '',
+      length: 6
     });
-    // 方法
-    function switchActionSheet(
-      param: 'dialogShow' | 'dialogShow1' | 'dialogShow2' | 'dialogShow3'
-    ) {
-      state[param] = !state[param];
-    }
-    function sureClick(val: string) {
-      console.log(val);
-      state.dialogShow1 = false;
-    }
-    function complete() {
-      state.errorMsg = '请输入正确密码';
-    }
+    const methods = {
+      onChange(val: string) {
+        val && proxy.$toast.text(val);
+      },
+      onOk(val: string) {
+        val && proxy.$toast.text(val);
+        state.visible = false;
+      },
+      onComplete() {},
+      onTips() {
+        proxy.$toast.text('执行忘记密码逻辑');
+      },
+      close() {
+        proxy.$toast.text('点击icon关闭弹窗');
+      },
+      cancel() {
+        proxy.$toast.text('点击取消按钮关闭弹窗');
+      }
+    };
+
     return {
       state,
-      switchActionSheet,
-      sureClick,
-      complete
+      methods
     };
   }
 });

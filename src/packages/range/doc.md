@@ -1,4 +1,4 @@
-# range组件
+# Range组件
 
 ### 介绍
   
@@ -117,24 +117,23 @@ export default {
   
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| v-model | 当前进度百分比 | _number \| number[]_ | `0` |
-| range | 是否开启双滑块模式 | _boolean_ | `false` |
-| max | 最大值 | _number \| string_ | `100` |
-| min | 最小值 | _number \| string_ | `0` |
-| step | 步长 | _number \| string_ | `1` |
-| disabled | 是否禁用滑块 | _boolean_ | `false` |
-| hidden-range | 是否隐藏范围值 | _boolean_ | `false` |
-| hidden-tag | 是否隐藏标签 | _boolean_ | `false` |
-| active-color | 进度条激活态颜色 | _string_ | `rgba(250, 44, 25, 1)` |
-| inactive-color | 进度条非激活态颜色 | _string_ | `rgba(255, 163, 154, 1)` |
-| button-color | 按钮颜色 | _string_ | `rgba(250, 44, 25, 1)` |
+| v-model | 当前进度百分比 | Number、Number[] | `0` |
+| range | 是否开启双滑块模式 | Boolean | `false` |
+| max | 最大值 | Number、String | `100` |
+| min | 最小值 | Number、String | `0` |
+| step | 步长 | Number、String | `1` |
+| disabled | 是否禁用滑块 | Boolean | `false` |
+| hidden-range | 是否隐藏范围值 | Boolean | `false` |
+| hidden-tag | 是否隐藏标签 | Boolean | `false` |
+| active-color | 进度条激活态颜色 | String | `rgba(250, 44, 25, 1)` |
+| inactive-color | 进度条非激活态颜色 | String | `rgba(255, 163, 154, 1)` |
+| button-color | 按钮颜色 | String | `rgba(250, 44, 25, 1)` |
 
   
 ### Events
 
 | 事件名             | 说明                     | 回调参数        |
 | ------------------ | ------------------------ | --------------- |
-| update:model-value | 进度变化时实时触发       | value: 当前进度 |
 | change             | 进度变化且结束拖动后触发 | value: 当前进度 |
 | drag-start         | 开始拖动时触发           | -               |
 | drag-end           | 结束拖动时触发           | -               |

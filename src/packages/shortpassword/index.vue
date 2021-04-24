@@ -1,14 +1,19 @@
 <template>
   <view>
-    <nut-dialog
-      :title="title"
-      :visible="isVisible"
-      @ok-btn-click="sureClick"
-      @cancel-btn-click="close"
-      @close="close"
-      :no-footer="noButton"
+    <nut-popup
+      :style="{
+        padding: '32px 24px 28px 24px',
+        borderRadius: '12px',
+        textAlign: 'center'
+      }"
+      v-model:visible="show"
+      :closeable="true"
+      @click-close-icon="closeIcon"
+      :close-on-click-overlay="closeOnClickOverlay"
+      @click-overlay="close"
     >
-      <view class="nut-shortpsd-subtitle">您使用了虚拟资产，请进行验证</view>
+      <view class="nut-shortpsd-title">{{ title }}</view>
+      <view class="nut-shortpsd-subtitle">{{ desc }}</view>
       <view class="nut-input-w">
         <input
           ref="realpwd"
@@ -33,17 +38,20 @@
       </view>
       <view class="nut-shortpsd-message">
         <view class="nut-shortpsd-error">{{ errorMsg }}</view>
-        <view class="nut-shortpsd-forget" v-if="showPasswordTips">
+        <view class="nut-shortpsd-forget" v-if="tips">
           <nut-icon class="icon" size="11px" name="tips"></nut-icon>
-          <view @click="link">忘记密码</view>
+          <view @click="onTips">{{ tips }}</view>
         </view>
       </view>
-    </nut-dialog>
+      <view v-if="!noButton" class="nut-shortpsd-footer">
+        <view class="nut-shortpsd-cancle" @click="close">取消</view>
+        <view class="nut-shortpsd-sure" @click="sureClick">确认</view>
+      </view>
+    </nut-popup>
   </view>
 </template>
-
 <script lang="ts">
-import { ref, watch, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('shortpassword');
 export default create({
@@ -52,7 +60,15 @@ export default create({
       type: String,
       default: '请输入密码'
     },
-    isVisible: {
+    desc: {
+      type: String,
+      default: '您使用了虚拟资产，请进行验证'
+    },
+    tips: {
+      type: String,
+      default: '忘记密码'
+    },
+    visible: {
       type: Boolean,
       default: false
     },
@@ -68,38 +84,43 @@ export default create({
       type: Boolean,
       default: true
     },
-    length: {
-      type: [String, Number], //4～6
-      default: 6
-    },
-    showPasswordTips: {
+    closeOnClickOverlay: {
       type: Boolean,
       default: true
     },
-    link: {
-      type: String,
-      default: ''
+    length: {
+      type: [String, Number], //4～6
+      default: 6
     }
   },
   emits: [
-    'sure-click',
     'update:value',
-    'update:is-visible',
+    'update:visible',
     'complete',
-    'input'
+    'change',
+    'ok',
+    'tips',
+    'close',
+    'cancel'
   ],
   setup(props, { emit }) {
     const realInput = ref(props.value);
     const realpwd = ref();
     const comLen = computed(() => range(Number(props.length)));
-
+    const show = ref(props.visible);
     // 方法
     function sureClick() {
-      emit('sure-click', realInput.value);
+      emit('ok', realInput.value);
     }
     function focus() {
       realpwd.value.focus();
     }
+    watch(
+      () => props.visible,
+      value => {
+        show.value = value;
+      }
+    );
     function changeValue(e: Event) {
       const input = e.target as HTMLInputElement;
       let val = input.value;
@@ -110,17 +131,22 @@ export default create({
       if (realInput.value.length === comLen.value) {
         emit('complete', val);
       }
-      emit('input', val);
+      emit('change', val);
       emit('update:value', val);
     }
     function close() {
-      emit('update:is-visible', false);
+      emit('update:visible', false);
+      emit('cancel');
+    }
+    function closeIcon() {
+      emit('update:visible', false);
+      emit('close');
     }
     function range(val: number) {
       return Math.min(Math.max(4, val), 6);
     }
-    function link() {
-      if (props.link) window.location.href = props.link;
+    function onTips() {
+      emit('tips');
     }
     return {
       comLen,
@@ -131,7 +157,9 @@ export default create({
       range,
       changeValue,
       close,
-      link
+      onTips,
+      show,
+      closeIcon
     };
   }
 });

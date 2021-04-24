@@ -8,21 +8,21 @@
     <nut-cell title="请选择地址" :desc="desc3" @click="open(3)"></nut-cell>
 
     <nut-picker
-      v-model:is-visible="show"
+      v-model:visible="show"
       :list-data="listData1"
       title="城市选择"
       @confirm="confirm"
       @close="close"
     ></nut-picker>
     <nut-picker
-      v-model:is-visible="show2"
+      v-model:visible="show2"
       :list-data="listData2"
       title="多列选择"
       @confirm="confirm2"
       @close="close"
     ></nut-picker>
     <nut-picker
-      v-model:is-visible="show3"
+      v-model:visible="show3"
       :list-data="listData3"
       title="地址选择"
       @confirm="confirm3"
@@ -95,8 +95,8 @@ export default createDemo({
       }`
     );
     const desc3 = ref(
-      `${listData3[0].text} 
-      ${listData3[0].children[0].text} 
+      `${listData3[0].text}
+      ${listData3[0].children[0].text}
       ${listData3[0].children[0].children[0].text}`
     );
     const descList = [desc, desc2, desc3];
@@ -110,16 +110,16 @@ export default createDemo({
       desc,
       desc2,
       desc3,
-      open: index => {
+      open: (index: number) => {
         showList[index - 1].value = true;
       },
-      confirm: res => {
+      confirm: (res: any) => {
         desc.value = res;
       },
-      confirm2: res => {
+      confirm2: (res: any) => {
         desc2.value = res.join(' ');
       },
-      confirm3: res => {
+      confirm3: (res: any) => {
         desc3.value = res.join(' ');
       }
     };

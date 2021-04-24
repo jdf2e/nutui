@@ -1,8 +1,8 @@
-# BackTop 回到顶部
+# BackTop 返回顶部
 
 ### 介绍
 
-提供较长的页面快捷回到顶部功能。
+提供较长的页面快捷返回顶部功能。
 
 ### 安装
 
@@ -21,7 +21,7 @@ app.use(BackTop);
 ### 基本用法
 
 ```html
-<nut-backtop  elId="elId" ></nut-backtop>
+<nut-backtop  el-id="elId" ></nut-backtop>
 ```
 
 ### 设置出现位置
@@ -33,13 +33,8 @@ app.use(BackTop);
 ### 自定义样式
 
 ```html
-<nut-backtop @click="handleClick" elId="elId" :distance="100" :bottom="90" ><div>无</div></nut-backtop>
+<nut-backtop @click="handleClick" el-id="elId" :distance="100" :bottom="90" ><div>无</div></nut-backtop>
 ```
-
-### 设置样式
-<nut-backtop>
-</nut-backtop>
-
 
 ### click事件
 
@@ -52,7 +47,7 @@ app.use(BackTop);
 export default createDemo({
   setup(props, { emit }) {
     const handleClick = () => {
-      console.log('触发回到顶部');
+      console.log('触发返回顶部');
     };
 
     return {
@@ -68,15 +63,17 @@ export default createDemo({
 
 ### Prop  
 
-| 字段            | 说明                                                                                           | 类型    | 默认值  |
-|-----------------|------------------------------------------------------------------------------------------------|---------|---------|
-| elId           | 获取监听元素的父级元素                                                                           | String  | -       |
-| bottom         | 距离页面底部距离                                                                                | Number  | -       |
-| right        | 距离页面右侧距离                                                                                  | Number |    |
-| distance     | 页面垂直滚动多高后出现                                                            | Number  | -       |
-| zIndex         | 设置组件页面层级                                                         | Number  | -       |                                          
+| 字段            | 说明                 | 类型    | 默认值  |
+|-----------------|------------------------------------------|---------|---------|
+| el-id           | 获取监听元素的父级元素         | String | -       |
+| bottom         | 距离页面底部距离    | Number  | `20`       |
+| right        | 距离页面右侧距离      | Number |  `10`  |
+| distance     | 页面垂直滚动多高后出现   | Number  | `200`      |
+| z-index         | 设置组件页面层级   | Number  | `10`       |  
+| is-animation         | 是否有动画,和duration参数互斥   | Boolean  | `true`       |  
+| duration         | 设置动画持续时间   | Number  | `1000`       |                                          
 
 ### Event
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
-| click | 按钮点击时触发事件 | event:Event |
+| click | 按钮点击时触发事件 | event: MouseEvent |

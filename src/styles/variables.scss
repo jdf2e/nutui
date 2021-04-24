@@ -17,21 +17,27 @@ $white: #fff;
 $black: #000;
 
 // padding
-$padding-xs: 8px 12px;
+$padding-xs: 12px;
 
-$font-family: PingHei, 'Lucida Grande', 'Lucida Sans Unicode', STHeiti,
-  Helvetica, Arial, Verdana, 'sans-serif', 'PingHei-light', SimHei, 'Droid Sans' !default;
-$font-size-base: 14px !default;
-$font-size-small: 12px !default;
-$font-size-large: 16px !default;
-$line-height-base: 1.5 !default;
+$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
+  sans-serif !default;
+
+// ---- Animation ----
+$animation-duration: 0.25s !default;
+$animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
+
 // Font
+$font-size-0: 10px;
 $font-size-1: 12px;
 $font-size-2: 14px;
 $font-size-3: 16px;
 $font-size-4: 18px;
 $font-weight-bold: 400;
 
+$font-size-small: $font-size-1;
+$font-size-base: $font-size-2;
+$font-size-large: $font-size-3;
+$line-height-base: 1.5 !default;
 // button
 $button-border-radius: 25px;
 $button-border-width: 1px;
@@ -53,9 +59,7 @@ $button-primary-border-color: $primary-color;
 $button-primary-background-color: linear-gradient(
   135deg,
   $primary-color 0%,
-  rgba(250, 63, 25, 1) 45%,
-  rgba(250, 89, 25, 1) 83%,
-  rgba(250, 100, 25, 1) 100%
+  $primary-color-end 100%
 );
 $button-info-color: $white;
 $button-info-border-color: rgba(73, 106, 242, 1);
@@ -75,8 +79,8 @@ $button-success-background-color: linear-gradient(
 );
 
 $button-danger-color: $white;
-$button-danger-border-color: $primary-color;
-$button-danger-background-color: $primary-color;
+$button-danger-border-color: rgba(250, 44, 25, 1);
+$button-danger-background-color: rgba(250, 44, 25, 1);
 $button-warning-color: $white;
 $button-warning-border-color: rgba(255, 158, 13, 1);
 $button-warning-background-color: linear-gradient(
@@ -96,6 +100,15 @@ $cell-title-font: $font-size-2;
 $cell-title-desc-font: $font-size-1;
 $cell-desc-font: $font-size-2;
 $cell-desc-color: $disable-color;
+$cell-border-radius: 7px;
+
+// cell-group
+
+$cell-group-title-padding: 0 10px;
+$cell-group-title-color: #909ca4;
+$cell-group-title-font-size: $font-size-2;
+$cell-group-title-line-height: 20px;
+$cell-group-background-color: $white;
 
 // icon
 
@@ -109,19 +122,33 @@ $uploader-width: 100px;
 $uploader-height: 100px;
 $uploader-background: #f7f8fa;
 
+//input
+$input-border-bottom: #eaf0fb;
+$input-disabled-color: #c8c9cc;
+
+// textarea
+
+$textarea-font: $font-size-2;
+$textarea-height: 100px;
+$textarea-limit-color: $text-color;
+$textarea-text-color: $title-color;
+$textarea-disabled-color: $disable-color;
+
 // inputnumber
 
+$inputnumber-icon-color: $title-color;
+$inputnumber-icon-void-color: $disable-color;
 $inputnumber-input-background-color: $help-color;
-$inputnumber-input-border-radius: 8px;
+$inputnumber-input-border-radius: 4px;
 $inputnumber-input-width: 40px;
-$inputnumber-input-height: 20px;
+$inputnumber-icon-size: 20px;
 
 // actionsheet
 $zindex-actionsheet: 10001 !default;
 $body-background: #f6f6f6 !default;
 $light-color: #f6f6f6 !default;
-$font-size-base: 14px !default;
-$font-size-small: 12px !default;
+$font-size-base: $font-size-2;
+$font-size-small: $font-size-1;
 
 //shortpassword
 $shortpsd-background-color: rgba(245, 245, 245, 1);
@@ -145,6 +172,9 @@ $avatar-normal-height: 40px;
 $switch-close-bg-color: #ebebeb;
 $switch-close--cline-bg-color: #f0f0f0;
 
+//backtop
+$backtop-border-color: #e0e0e0;
+
 // calendar
 $calendar-primary-color: $primary-color;
 $calendar-choose-color: #fef6f6;
@@ -161,30 +191,16 @@ $overlay-bg-color: rgba(0, 0, 0, 0.7);
 //popup
 $popup-close-icon-margin: 16px;
 $popup-border-radius: 20px;
-// ---- Animation ----
-$animation-duration: 0.25s !default;
-$transition-duration: 0.2s !default;
-$transition-duration-fast: 0.2s !default;
-$transition-duration-slow: 0.4s !default;
-$animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
-$ease-in-out: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-$ease-out: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-
-// ---- z-index ----
-$zindex-mask: 9998 !default;
-$zindex-actionsheet: 10001 !default;
-$zindex-dialog: 10000 !default;
-$zindex-picker: 10050 !default;
 
 // Notify
-$notify-text-color: #fff;
+$notify-text-color: $white;
 $notify-padding: 12px 0;
 $notify-font-size: 14px;
 $notify-height: 44px;
 
 $notify-base-background-color: linear-gradient(
   135deg,
-  $primary-color 0%,
+  rgba(250, 44, 25, 1) 0%,
   rgba(250, 63, 25, 1) 45%,
   rgba(250, 89, 25, 1) 83%,
   rgba(250, 100, 25, 1) 100%
@@ -208,10 +224,44 @@ $notify-warning-background-color: linear-gradient(
   rgba(255, 154, 13, 1) 100%
 );
 
+// rate
+
+$rate-icon-color: $primary-color;
+$rate-icon-void-color: $disable-color;
+
 // tabbar
 
 $tabbar-active-color: $primary-color;
+$tabbar-border-color: #eee;
+
+//infiniteloading
+$infinite-bottom-color: #c8c8c8;
+
+//range
+$range-max: #333333;
+$rang-bg-color: rgba($primary-color, 0.5);
+$rang-bar-bg-color: linear-gradient(
+  135deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+);
+
+//address
+$address-region-tab-line: linear-gradient(
+  90deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+);
+
+//steps
+
+
+// dialog
+$dialog-width: 296px;
 
 view-block {
   display: block;
 }
+
+@import './mixins/index';
+@import './animation/index';

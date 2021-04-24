@@ -17,12 +17,12 @@
     {
       "name": "guide",
       "cName": "指南",
-      "path": "/"
+      "path": "/intro"
     },
     {
       "name": "intro",
       "cName": "组件",
-      "path": "/"
+      "path": "/intro"
     },
     {
       "name": "example",
@@ -56,6 +56,11 @@
       {
         "name": "international",
         "cName": "国际化",
+        "show": false
+      },
+      {
+        "name": "resource",
+        "cName": "资源",
         "show": true
       },
       {
@@ -132,10 +137,10 @@
         {
           "name": "BackTop",
           "sort": "1",
-          "cName": "回到顶部",
+          "cName": "返回顶部",
           "type": "component",
           "show": true,
-          "desc": "较长页面快捷回到顶部",
+          "desc": "较长页面快捷返回顶部",
           "author": "liqiong43"
         },
         {
@@ -160,7 +165,7 @@
           "version": "3.0.0",
           "name": "Notify",
           "type": "component",
-          "cName": "methods",
+          "cName": "消息通知",
           "desc": "在页面顶部展示消息提示，支持函数调用和组件调用两种方式",
           "sort": 4,
           "show": true,
@@ -210,6 +215,15 @@
           "author": "richard1015"
         },
         {
+          "name": "CellGroup",
+          "sort": 1,
+          "cName": "单元格组件",
+          "type": "component",
+          "show": false,
+          "desc": "展示分组列表",
+          "author": "richard1015"
+        },
+        {
           "name": "Uploader",
           "sort": 2,
           "cName": "上传组件",
@@ -252,7 +266,16 @@
           "type": "component",
           "show": true,
           "desc": "轮播",
-          "author": "ailululu"
+          "author": "suzigang"
+        },
+        {
+          "name": "SwiperItem",
+          "sort": 6,
+          "cName": "轮播图子组件",
+          "type": "component",
+          "show": false,
+          "desc": "轮播图子组件",
+          "author": "suzigang"
         },
         {
           "name": "Avatar",
@@ -348,7 +371,7 @@
           "cName": "下拉刷新",
           "desc": "下拉刷新",
           "sort": 16,
-          "show": true,
+          "show": false,
           "author": "yangxiaolu3"
         },
         {
@@ -359,6 +382,24 @@
           "sort": 16,
           "show": true,
           "author": "Drjingfubo"
+        },
+        {
+          "name": "Steps",
+          "sort": 17,
+          "cName": "步骤条",
+          "type": "component",
+          "show": true,
+          "desc": "步骤条",
+          "author": "ailululu"
+        },
+        {
+          "name": "Step",
+          "sort": 17,
+          "cName": "步骤条子组件",
+          "type": "component",
+          "show": false,
+          "desc": "步骤条子组件",
+          "author": "ailululu"
         }
       ]
     },
@@ -388,7 +429,7 @@
           "sort": 2,
           "cName": "菜单组件",
           "type": "component",
-          "show": true,
+          "show": false,
           "desc": "下拉菜单组件",
           "author": "vickyYE"
         },
@@ -408,6 +449,15 @@
           "type": "component",
           "show": true,
           "desc": "标签栏组件",
+          "author": "Drjingfubo"
+        },
+        {
+          "name": "Tabbaritem",
+          "sort": 2,
+          "cName": "标签栏子组件",
+          "type": "component",
+          "show": false,
+          "desc": "标签栏子组件",
           "author": "Drjingfubo"
         },
         {
@@ -471,7 +521,17 @@
           "desc": "日历组件",
           "sort": 5,
           "show": true,
-          "author": ""
+          "author": "songchenglin1"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CalendarItem",
+          "type": "component",
+          "cName": "日历子组件",
+          "desc": "日历子组件",
+          "sort": 5,
+          "show": false,
+          "author": "songchenglin1"
         },
         {
           "version": "3.0.0",
@@ -482,6 +542,16 @@
           "sort": 6,
           "show": true,
           "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "TextArea",
+          "type": "component",
+          "cName": "文本域",
+          "desc": "文本输入",
+          "sort": 7,
+          "show": true,
+          "author": "gx"
         }
       ]
     },

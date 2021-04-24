@@ -1,12 +1,13 @@
 <script lang="ts">
-import { h, PropType, computed } from 'vue';
+import { h, PropType } from 'vue';
 import { createComponent } from '@/utils/create';
 const { componentName, create } = createComponent('icon');
+import { pxCheck } from '@/utils/pxCheck';
 
 export default create({
   props: {
     name: { type: String, default: '' },
-    size: { type: String, default: '' },
+    size: { type: [String, Number], default: '' },
     classPrefix: { type: String, default: 'nutui-iconfont' },
     color: { type: String, default: '' },
     tag: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'i' }
@@ -29,12 +30,12 @@ export default create({
         {
           class: _isImage
             ? `${componentName}__img`
-            : `${props.classPrefix} ${componentName}-${props.name}`,
+            : `${props.classPrefix} ${componentName} ${componentName}-${props.name}`,
           style: {
             color: props.color,
-            fontSize: props.size,
-            width: _isImage ? props.size : '',
-            height: _isImage ? props.size : ''
+            fontSize: pxCheck(props.size),
+            width: pxCheck(props.size),
+            height: pxCheck(props.size)
           },
           onClick: handleClick,
           src: _isImage ? props.name : ''

@@ -1,4 +1,4 @@
-#  datepicker组件
+#  Datepicker组件
 
 ### 介绍
     
@@ -8,10 +8,10 @@
     
 ```javascript
 import { createApp } from 'vue';
-import { Picker } from '@nutui/nutui';
+import { DatePicker } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Picker);
+app.use(DatePicker);
 ```
     
 ## 代码演示
@@ -21,7 +21,7 @@ app.use(Picker);
 <nut-datepicker
     v-model="currentDate"
     @confirm="confirm"
-    v-model:is-visible="show"
+    v-model:visible="show"
     :is-show-chinese="false"
 ></nut-datepicker> 
 ```
@@ -50,10 +50,10 @@ export default createDemo({
 ```html
 <nut-datepicker
     v-model="currentDate"
-    :minDate="minDate"
-    :maxDate="maxDate"
+    :min-date="minDate"
+    :max-date="maxDate"
     @confirm="confirm"
-    v-model:is-visible="show"
+    v-model:visible="show"
     :is-show-chinese="false"
 ></nut-datepicker> 
 ```
@@ -84,11 +84,11 @@ export default createDemo({
 ```html
 <nut-datepicker
     v-model="currentDate"
-    :minDate="minDate"
-    :maxDate="maxDate"
+    :min-date="minDate"
+    :max-date="maxDate"
     type="datetime"
     @confirm="confirm"
-    v-model:is-visible="show" 
+    v-model:visible="show" 
 ></nut-datepicker> 
 ```
 ```javascript
@@ -119,11 +119,11 @@ export default createDemo({
 <nut-datepicker
     v-model="currentDate"
     type="time"
-    :minDate="minDate"
-    :maxDate="maxDate"
+    :min-date="minDate"
+    :max-date="maxDate"
     :is-use12-hours="true"
     @confirm="confirm"
-    v-model:is-visible="show"
+    v-model:visible="show"
 ></nut-datepicker>
 ``` 
 ### 时间选择-分钟数递增步长设置
@@ -132,11 +132,11 @@ export default createDemo({
     v-model="currentDate"
     type="time"
     :minute-step="5"
-    :minDate="minDate"
-    :maxDate="maxDate"
+    :min-date="minDate"
+    :max-date="maxDate"
     :is-use12-hours="true"
     @confirm="confirm"
-    v-model:is-visible="show"
+    v-model:visible="show"
 ></nut-datepicker>
 ```  
 
@@ -144,21 +144,23 @@ export default createDemo({
     
 ### Props
     
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-|  type        |    类型，日期'date'， 日期时间'datetime'，时间'time'            | String |'date'               |isVisible     |     是否可见    |  Boolean    | boolean | false  |
-|     isUse12Hours     | 是否十二小时制度，只限类型为'time'时使用 | boolean | false              |
-| minuteStep | 分钟步进值  | number | 1 |
-|   isShowChinese        |       每列是否展示中文 | boolean | false           |
-|   title | 设置标题 | string | null |
-|   startDate | 开始日期 | Date | 十年前 |
-|   endDate | 结束日期 | Date | 十年后 |
+| 参数            | 说明                                              | 类型    | 默认值   |
+|-----------------|---------------------------------------------------|---------|----------|
+| v-model         | 初始值                                            | Date    | `null`   |
+| v-model:visible | 是否可见                                          | Boolean | `false`  |
+| type            | 类型，日期'date'， 日期时间'datetime'，时间'time' | String  | `'date'` |
+| is-use12-hours  | 是否十二小时制度，只限类型为'time'时使用          | Boolean | `false`  |
+| minute-step     | 分钟步进值                                        | Number  | `1`      |
+| is-show-chinese | 每列是否展示中文                                  | Boolean | `false`  |
+| title           | 设置标题                                          | String  | `null`   |
+| min-date        | 开始日期                                          | Date    | `十年前` |
+| max-date        | 结束日期                                          | Date    | `十年后` |
 
 
 
 ### Events
     
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| confirm  | 点击确定按钮时触发 | event: Event |
-| close  | 关闭时触发 | event: Event |
+| 事件名  | 说明               | 回调参数     |
+|---------|--------------------|--------------|
+| confirm | 点击确定按钮时触发 | event: Event |
+| close   | 关闭时触发         | event: Event |

@@ -1,53 +1,44 @@
 <template>
-  <view>
-    <label :class="['nut-checkbox', 'nut-checkbox-size-' + currentSize]">
-      <input
-        type="checkbox"
-        :name="name"
-        :class="{ 'nut-checkbox-ani': isAnimated }"
-        :disabled="isDisabled"
-        :checked.prop="isChecked"
-        :value="submittedValue"
-        @change="changeEvt"
-      />
-      <span class="nut-checkbox-label" v-if="label">
-        {{ label }}
-      </span>
-      <span class="nut-checkbox-label" v-else>
-        <slot></slot>
-      </span>
-    </label>
+  <view :class="['nut-checkbox', 'nut-checkbox-size-' + currentSize]">
+    <input
+      type="checkbox"
+      :name="name"
+      :class="{ 'nut-checkbox-ani': isAnimated }"
+      :disabled="isDisabled"
+      :checked.prop="isChecked"
+      :value="submittedValue"
+      @change="changeEvt"
+    />
+    <view class="nut-checkbox-label" v-if="label">
+      {{ label }}
+    </view>
+    <view class="nut-checkbox-label" v-else>
+      <slot></slot>
+    </view>
   </view>
 </template>
 <script lang="ts">
-import {
-  reactive,
-  ref,
-  toRefs,
-  watch,
-  watchEffect,
-  computed,
-  getCurrentInstance,
-  inject
-} from 'vue';
+import { reactive, computed, getCurrentInstance, inject } from 'vue';
 import { createComponent } from '@/utils/create';
-const { componentName, create } = createComponent('checkbox');
+import checkboxgroup from '@/packages/checkboxgroup/index.vue';
+const { create } = createComponent('checkbox');
 
 export default create({
+  children: [checkboxgroup],
   props: {
     name: {
       type: String
     },
     size: {
       type: [String, Number, Boolean],
-      default: 'base'
+      default: 'normal'
     },
     label: {
       type: String,
       default: ''
     },
     modelValue: {
-      required: true
+      required: false
     },
     trueValue: {
       default: true
@@ -57,7 +48,7 @@ export default create({
     },
     submittedValue: {
       type: String,
-      default: 'on' // HTML default
+      default: 'on'
     },
     checked: {
       type: Boolean,
@@ -67,7 +58,7 @@ export default create({
       type: Boolean,
       default: false
     },
-    animation: {
+    isAnimation: {
       type: Boolean,
       default: true
     }
@@ -75,8 +66,8 @@ export default create({
   setup(props, { emit }) {
     const parentGroup = inject('checkboxgroup', {
       parentNode: false,
-      changeVal: val => {
-        console.log();
+      changeVal: (val: number) => {
+        console.log(1);
       }
     });
     const parentProps = getCurrentInstance()?.parent?.props;
@@ -93,20 +84,6 @@ export default create({
         return isCheckedVal;
       }
     });
-    // const isCheckedVal = props.modelValue == props.trueValue || props.checked;
-    // const isChecked = ref(isCheckedVal);
-    const isObject = obj => {
-      return obj !== null && typeof obj === 'object';
-    };
-
-    // const looseEqual = (a, b) => {
-    //   return (
-    //     a == b ||
-    //     (isObject(a) && isObject(b)
-    //       ? JSON.stringify(a) === JSON.stringify(b)
-    //       : false)
-    //   );
-    // };
 
     const isDisabled = computed(() => {
       if (parentGroup && parentGroup.parentNode) {
@@ -126,15 +103,15 @@ export default create({
 
     const isAnimated = computed(() => {
       if (parentGroup && parentGroup.parentNode) {
-        return parentProps?.animated;
+        return parentProps?.isAnimation;
       } else {
-        return props.animation;
+        return props.isAnimation;
       }
     });
 
     const { label, name, submittedValue } = reactive(props);
 
-    const setParentValue = checked => {
+    const setParentValue = (checked: boolean) => {
       // const { label } = props;
       // const { max, modelValue } = parentProps?.modelValue;
       const modelValue = parentProps?.modelValue;

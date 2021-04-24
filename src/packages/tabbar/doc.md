@@ -42,7 +42,7 @@ setup() {
 ### 自定义选中
 
 ``` html
-<nut-tabbar v-model:show="active">
+<nut-tabbar v-model:visible="active">
   <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
   <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
   <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
@@ -112,27 +112,27 @@ setup() {
 
 ### nut-tabbar
 
-| 字段           | 说明               | 类型   | 默认值  |
-|----------------|--------------------|--------|---------|
-| bottom         | 是否固定在页面底部 | Booble | false   |
-| show           | 选中标签的索引值   | number | 0       |
-| unactive-color | icon未激活的颜色   | string | #7d7e80 |
-| active-color   | icon激活的颜色     | string | #1989fa |
+| 字段            | 说明               | 类型   | 默认值  |
+|-----------------|--------------------|--------|---------|
+| v-model:visible | 选中标签的索引值   | number | 0       |
+| bottom          | 是否固定在页面底部 | Booble | false   |
+| unactive-color  | icon未激活的颜色   | string | #7d7e80 |
+| active-color    | icon激活的颜色     | string | #1989fa |
 
 ### tabbar-item
 
-| 字段      | 说明                                  | 类型   | 默认值 |
-|-----------|---------------------------------------|--------|--------|
-| tab-title | 标签页的标题                          | String | --     |
-| icon      | 标签页显示的[图标名称](#/icon) 或图片链接                       | String | --     |
-| href      | 标签页的跳转链接                      | String | --     |
-| num       | 页签右上角的数字角标，超出99之后为99+ | Number | --     |
+| 字段      | 说明                                      | 类型   | 默认值 |
+|-----------|-------------------------------------------|--------|--------|
+| tab-title | 标签页的标题                              | String | --     |
+| icon      | 标签页显示的[图标名称](#/icon) 或图片链接 | String | --     |
+| href      | 标签页的跳转链接                          | String | --     |
+| num       | 页签右上角的数字角标，超出99之后为99+     | Number | --     |
 
 
 ### Event
 
-| 事件名称  | 说明               | 回调参数           |
-|-----------|--------------------|--------------------|
+| 事件名称   | 说明               | 回调参数           |
+|------------|--------------------|--------------------|
 | tab-switch | 切换页签时触发事件 | 点击的数据和索引值 |
 
 

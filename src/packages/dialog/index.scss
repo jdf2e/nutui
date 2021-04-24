@@ -1,190 +1,47 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixins/make-animation';
-@import '../../styles/mixins/text-ellipsis.scss';
-@import '../../styles/animation/fade';
-@import '../../styles/animation/ease';
-$mask-bg: rgba(0, 0, 0, 0.5) !default;
-$font-size-base: 14px !default;
-body.dialog-open {
-  position: fixed;
-}
-
-.nut-dialog-wrapper {
-  position: relative;
-  z-index: $zindex-mask;
-}
-
-.nut-dialog-box {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $text-color;
-}
-
-.nut-dialog-mask,
-.nut-dialog-box {
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.nut-dialog-mask {
-  position: fixed;
-  background: $mask-bg;
-}
-
 .nut-dialog {
-  position: relative;
-  width: 86%;
-  max-height: 70vh;
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-}
+  align-items: center;
+  width: $dialog-width;
+  min-height: 156px;
+  padding: 28px 24px 16px 24px;
 
-.nut-dialog-title {
-  display: block;
-  line-height: 1.5;
-  color: #262626;
-  font-size: 16px;
-  text-align: center;
-  flex-shrink: 0;
-  @include text-ellipsis;
-  padding-bottom: 11px;
-  // &:only-child {
-  //     padding-bottom: 0;
-  // }
-}
-
-.nut-dialog-close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 36px;
-  height: 46px;
-  font-size: 20px;
-  text-align: center;
-  text-decoration: none;
-  background: url('//img13.360buyimg.com/imagetools/jfs/t1/144349/40/19537/4004/5fe1ca9bE2daa4196/7afe4a2ac681804a.png')
-    no-repeat center;
-  background-size: 10px 10px;
-  img {
-    height: 10px;
+  &__header {
+    display: block;
+    text-align: center;
+    height: 20px;
+    font-size: 16px;
+    color: rgba(38, 38, 38, 1);
+    @include oneline-ellipsis();
   }
-}
-
-.nut-dialog-image-wrapper {
-  position: relative;
-  .nut-dialog {
-    width: auto;
-    max-width: 80%;
-    max-height: 75%;
-    background: transparent;
-    border-radius: none;
-    display: inline-block;
-    overflow: visible;
+  &__content {
+    width: 100%;
+    overflow: auto;
+    flex: 1;
+    margin: 20px 0;
+    max-height: 268px;
+    line-height: 16px;
+    font-size: 12px;
+    color: $text-color;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
   }
-  .nut-dialog-close {
-    position: absolute;
-    left: 50%;
-    top: auto;
-    bottom: -48px;
-    width: 24px;
-    height: 24px;
-    margin-left: -12px;
-    background: url(./close.svg) no-repeat center;
-    background-size: 100%;
-  }
-}
+  &__footer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
 
-.nut-dialog-link {
-  display: inline-block;
-}
+    .nut-button {
+      flex: 1;
+    }
 
-.nut-dialog-image {
-  max-width: 100%;
-  max-height: 100%;
-  vertical-align: bottom;
-}
-
-.nut-dialog-body {
-  box-sizing: border-box;
-  padding: 30px 20px 20px;
-  display: flex;
-  flex-direction: column;
-  flex: 0 1 auto;
-  overflow: auto;
-}
-
-.nut-dialog-content {
-  flex: 1;
-  justify-content: center;
-  overflow: auto;
-  font-size: $font-size-base;
-  word-break: break-all;
-  padding-bottom: 10px;
-  -webkit-overflow-scrolling: touch;
-}
-
-.nut-dialog-footer {
-  height: 50px;
-  width: 100%;
-  line-height: 50px;
-  display: flex;
-  flex-shrink: 0;
-  overflow: hidden;
-  flex-direction: row;
-  justify-content: center;
-  padding: 0 30px;
-}
-
-.nut-dialog-btn {
-  display: block;
-  max-width: 104px;
-  height: 30px;
-  border-radius: 17px;
-  position: relative;
-  flex: 1;
-  font-size: $font-size-base;
-  border: none;
-  background: transparent;
-  appearance: none;
-  outline: none;
-  user-select: none;
-  margin: 0 10px;
-  &.nut-dialog-ok {
-    width: 128px;
-    color: #fff;
-    background: linear-gradient(
-      135deg,
-      #fa2c19 0%,
-      #fa3f19 45%,
-      #fa5919 83%,
-      #fa6419 100%
-    );
-  }
-
-  &.nut-dialog-cancel {
-    color: #fa2c19;
-    border: 1px solid #fa2c19;
-  }
-  &.disabled {
-    cursor: not-allowed;
-    opacity: 0.68;
-  }
-  &:only-child {
-    max-width: 128px;
-    color: #fff;
-    background: linear-gradient(
-      135deg,
-      #fa2c19 0%,
-      #fa3f19 45%,
-      #fa5919 83%,
-      #fa6419 100%
-    );
+    &-cancel {
+      margin-right: 20px;
+    }
+    &-ok {
+      max-width: 128px;
+    }
   }
 }

@@ -1,18 +1,18 @@
 <template>
-  <view class="nut-tabbar" :class="{ bottom }">
+  <view class="nut-tabbar" :class="{ 'nut-tabbar-bottom': bottom }">
     <slot></slot>
   </view>
 </template>
 
 <script lang="ts">
-import { provide, reactive } from 'vue';
+import { provide, reactive, watch } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create } = createComponent('tabbar');
 import tabbaritem from '@/packages/tabbaritem/index.vue';
 export default create({
   children: [tabbaritem],
   props: {
-    show: {
+    visible: {
       type: [Number, String],
       default: 0
     },
@@ -34,21 +34,22 @@ export default create({
     },
     activeColor: {
       type: String,
-      default: '#fa2c19'
+      default: ''
     }
   },
-  emits: ['tab-switch', 'update:show'],
+  emits: ['tab-switch', 'update:visible'],
   setup(props, { emit, slots }) {
     const mdValue = reactive({
-      val: props.show
+      val: props.visible,
+      children: []
     });
     function changeIndex(active: number) {
-      emit('update:show', active);
+      emit('update:visible', active);
       parentData.modelValue = active;
       emit('tab-switch', parentData.children[active], active);
     }
     let parentData = reactive({
-      children: [],
+      children: mdValue.children,
       size: props.size,
       modelValue: mdValue.val,
       unactiveColor: props.unactiveColor,
@@ -56,6 +57,12 @@ export default create({
       changeIndex
     });
     provide('parent', parentData);
+    watch(
+      () => props.visible,
+      value => {
+        parentData.modelValue = value;
+      }
+    );
     return {
       changeIndex
     };

@@ -47,7 +47,7 @@ const updateNotify = (opts: any) => {
     } else {
       opts = { ...defaultOptions, ...opts };
     }
-    const instance: any = createVNode(NotifyConstructor, opts);
+    const instance: any = createVNode(VueNotify, opts);
     render(instance, container);
     return instance.component.ctx;
   }
@@ -68,15 +68,13 @@ const mountNotify = (opts: any) => {
   opts.id = _id;
   idsMap.push(opts.id);
   optsMap.push(opts);
-  const container = document.createElement('div');
+  const container = document.createElement('view');
   container.id = opts.id;
   const instance: any = createVNode(NotifyConstructor, opts);
   render(instance, container);
   document.body.appendChild(container);
-  console.log(instance.component);
   setTimeout(() => {
     instance.showPopup = true;
-    console.log(instance.component, '====');
   }, 0);
   return instance.component.ctx;
 };

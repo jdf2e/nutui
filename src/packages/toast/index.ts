@@ -1,6 +1,5 @@
-import { createVNode, defineComponent, render, App } from 'vue';
-import VueToast from './index.vue';
-const ToastConstructor = defineComponent(VueToast);
+import { createVNode, render } from 'vue';
+import Toast from './index.vue';
 const defaultOptions = {
   msg: '',
   id: '',
@@ -13,7 +12,7 @@ const defaultOptions = {
   icon: null,
   textAlignCenter: true,
   loadingRotate: true,
-  bgColor: 'rgba(0, 0, 0, 1)',
+  bgColor: 'rgba(0, 0, 0, .8)',
   onClose: null,
   unmount: null,
   cover: false, //透明遮罩层
@@ -52,7 +51,7 @@ const updateToast = (opts: any) => {
     } else {
       opts = { ...defaultOptions, ...opts };
     }
-    const instance: any = createVNode(ToastConstructor, opts);
+    const instance: any = createVNode(Toast, opts);
     render(instance, container);
     return instance.component.ctx;
   }
@@ -76,10 +75,9 @@ const mountToast = (opts: any) => {
   optsMap.push(opts);
   const container = document.createElement('div');
   container.id = opts.id;
-  const instance: any = createVNode(ToastConstructor, opts);
+  const instance: any = createVNode(Toast, opts);
   render(instance, container);
   document.body.appendChild(container);
-  console.log(instance.component);
   return instance.component.ctx;
 };
 
@@ -90,7 +88,7 @@ const errorMsg = (msg: string) => {
   }
 };
 
-export const Toast = {
+export const ToastFunction = {
   text(msg: string, opts = {}) {
     errorMsg(msg);
     return mountToast({ ...opts, type: 'text', msg });
@@ -109,8 +107,7 @@ export const Toast = {
   },
   loading(msg: string, opts = {}) {
     return mountToast({
-      icon:
-        "data:image/svg+xml, %3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='rgb(230,230,230)' d='M874.667 533.333h-192c-12.8 0-21.334-8.533-21.334-21.333 0-12.8 8.534-21.333 21.334-21.333h192c12.8 0 21.333 8.533 21.333 21.333 0 12.8-8.533 21.333-21.333 21.333zM648.533 407.467C640 416 627.2 416 618.667 407.467c-8.534-8.534-8.534-21.334 0-29.867L755.2 241.067c8.533-8.534 21.333-8.534 29.867 0 8.533 8.533 8.533 21.333 0 29.866L648.533 407.467zM512 896c-12.8 0-21.333-8.533-21.333-21.333v-192c0-12.8 8.533-21.334 21.333-21.334s21.333 8.534 21.333 21.334v192c0 12.8-8.533 21.333-21.333 21.333zm0-533.333c-12.8 0-21.333-8.534-21.333-21.334v-192c0-12.8 8.533-21.333 21.333-21.333s21.333 8.533 21.333 21.333v192c0 12.8-8.533 21.334-21.333 21.334zM270.933 782.933c-8.533 8.534-21.333 8.534-29.866 0s-8.534-21.333 0-29.866L377.6 616.533c8.533-8.533 21.333-8.533 29.867 0 8.533 8.534 8.533 21.334 0 29.867L270.933 782.933zm104.534-375.466L238.933 270.933c-8.533-8.533-8.533-21.333 0-29.866s21.334-8.534 29.867 0L405.333 377.6c8.534 8.533 8.534 21.333 0 29.867-6.4 6.4-21.333 6.4-29.866 0zM362.667 512c0 12.8-8.534 21.333-21.334 21.333h-192C136.533 533.333 128 524.8 128 512c0-12.8 8.533-21.333 21.333-21.333h192c12.8 0 21.334 8.533 21.334 21.333zm285.866 104.533l136.534 136.534c8.533 8.533 8.533 21.333 0 29.866-8.534 8.534-21.334 8.534-29.867 0L618.667 646.4c-8.534-8.533-8.534-21.333 0-29.867 6.4-6.4 21.333-6.4 29.866 0z'/%3E%3C/svg%3E",
+      icon: 'loading',
       ...opts,
       msg,
       type: 'loading'
@@ -118,14 +115,12 @@ export const Toast = {
   },
   hide() {
     clearToast();
+  },
+  install(app: any): void {
+    app.use(Toast);
+    app.config.globalProperties.$toast = ToastFunction;
   }
 };
 
-// export default Toast;
-
-export default {
-  install(app: App): void {
-    app.config.globalProperties.$toast = Toast;
-  },
-  Toast
-};
+export { Toast };
+export default ToastFunction;

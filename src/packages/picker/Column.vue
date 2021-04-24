@@ -12,17 +12,23 @@
       <view-block
         class="nut-picker__item"
         :key="index"
-        v-for="(item, index) in state.options"
+        v-for="(item, index) in options"
         >{{ dataType === 'cascade' ? item.text : item }}</view-block
       >
     </view-block>
   </view-block>
 </template>
 <script lang="ts">
-import { reactive, ref, watch, computed } from 'vue';
+import { reactive, ref, watch, computed, toRefs, onMounted } from 'vue';
 import { createComponent } from '@/utils/create';
 import { useTouch } from '@/utils/useTouch';
 import { commonProps } from './commonProps';
+import {
+  PickerObjOpt,
+  PickerOption,
+  PickerObjectColumn,
+  PickerObjectColumns
+} from './types';
 const MOMENTUM_LIMIT_DISTANCE = 15;
 const MOMENTUM_LIMIT_TIME = 300;
 const DEFAULT_DURATION = 200;
@@ -34,7 +40,6 @@ function stopPropagation(event: Event) {
   event.stopPropagation();
 }
 function preventDefault(event: Event, isStopPropagation?: boolean) {
-  /* istanbul ignore else */
   if (typeof event.cancelable !== 'boolean' || event.cancelable) {
     event.preventDefault();
   }
@@ -44,7 +49,7 @@ function preventDefault(event: Event, isStopPropagation?: boolean) {
   }
 }
 
-function getElementTranslateY(element) {
+function getElementTranslateY(element: Element) {
   const style = window.getComputedStyle(element);
   const transform = style.transform || style.webkitTransform;
   const translateY = transform.slice(7, transform.length - 1).split(', ')[5];
@@ -54,7 +59,7 @@ export function isObject(val: unknown): val is Record<any, any> {
   return val !== null && typeof val === 'object';
 }
 
-function isOptionDisabled(option) {
+function isOptionDisabled(option: PickerObjectColumn) {
   return isObject(option) && option.disabled;
 }
 
@@ -66,46 +71,57 @@ export default create({
 
   emits: ['click', 'change'],
   setup(props, { emit }) {
-    let moving;
-    let startOffset, touchStartTime, momentumOffset, transitionEndTrigger;
+    const wrapper = ref();
+
     const state = reactive({
       index: props.defaultIndex,
       offset: 0,
       duration: 0,
-      options: props.listData
+      options: props.listData as PickerObjectColumn[],
+      moving: false,
+      startOffset: 0,
+      touchStartTime: 0,
+      momentumOffset: 0,
+      transitionEndTrigger: null as null | Function
     });
-    watch(
-      () => props.listData,
-      val => {
-        if (val) {
-          state.options = val;
-        }
-      }
-    );
 
-    const wrapper = ref();
     const touch = useTouch();
-    const count = () => state.options.length;
-    const _show = ref(false);
-    const getIndexByOffset = offset =>
-      range(Math.round(-offset / props.itemHeight), 0, count() - 1);
 
-    const baseOffset = () =>
-      (props.itemHeight * (props.visibleItemCount - 1)) / 2;
+    const wrapperStyle = computed(() => ({
+      transform: `translate3d(0, ${state.offset + baseOffset()}px, 0)`,
+      transitionDuration: `${state.duration}ms`,
+      transitionProperty: state.duration ? 'all' : 'none'
+    }));
+
+    const handleClick = (event: Event) => {
+      emit('click', event);
+    };
+
+    const getIndexByOffset = (offset: number) => {
+      return range(
+        Math.round(-offset / +props.itemHeight),
+        0,
+        state.options.length - 1
+      );
+    };
+
+    const baseOffset = () => {
+      return (+props.itemHeight * (+props.visibleItemCount - 1)) / 2;
+    };
 
     const stopMomentum = () => {
-      moving = false;
+      state.moving = false;
       state.duration = 0;
-      if (transitionEndTrigger) {
-        transitionEndTrigger();
-        transitionEndTrigger = null;
+      if (state.transitionEndTrigger) {
+        state.transitionEndTrigger();
+        state.transitionEndTrigger = null;
       }
     };
 
-    const adjustIndex = index => {
-      index = range(index, 0, count());
+    const adjustIndex = (index: number) => {
+      index = range(index, 0, state.options.length);
 
-      for (let i = index; i < count(); i++) {
+      for (let i = index; i < state.options.length; i++) {
         if (!isOptionDisabled(state.options[i])) return i;
       }
       for (let i = index - 1; i >= 0; i--) {
@@ -113,10 +129,10 @@ export default create({
       }
     };
 
-    const setIndex = (index, emitChange = false) => {
+    const setIndex = (index: number, emitChange = false) => {
       index = adjustIndex(index) || 0;
 
-      const offset = -index * props.itemHeight;
+      const offset = -index * +props.itemHeight;
       const trigger = () => {
         if (index !== state.index) {
           state.index = index;
@@ -127,81 +143,76 @@ export default create({
         }
       };
 
-      if (moving && offset !== state.offset) {
-        transitionEndTrigger = trigger;
+      if (state.moving && offset !== state.offset) {
+        state.transitionEndTrigger = trigger;
       } else {
         trigger();
       }
 
       state.offset = offset;
     };
-    watch(
-      () => props.defaultIndex,
-      val => {
-        setIndex(val);
-      }
-    );
-    setIndex(props.defaultIndex);
-    const momentum = (distance, duration) => {
+
+    const momentum = (distance: number, duration: number) => {
       const speed = Math.abs(distance / duration);
 
-      distance = state.offset + (speed / 0.003) * (distance < 0 ? -1 : 1);
+      distance = state.offset + (speed / 0.03) * (distance < 0 ? -1 : 1);
 
       const index = getIndexByOffset(distance);
 
       setIndex(index, true);
     };
-    const onTouchStart = event => {
+
+    const onTouchStart = (event: Event) => {
       if (props.readonly) {
         return;
       }
       touch.start(event);
 
-      if (moving) {
+      if (state.moving) {
         const translateY = getElementTranslateY(wrapper.value);
         state.offset = Math.min(0, translateY - baseOffset());
-        startOffset = state.offset;
+        state.startOffset = state.offset;
       } else {
-        startOffset = state.offset;
+        state.startOffset = state.offset;
       }
 
       state.duration = 0;
-      touchStartTime = Date.now();
-      momentumOffset = startOffset;
-      transitionEndTrigger = null;
+      state.touchStartTime = Date.now();
+      state.momentumOffset = state.startOffset;
+      state.transitionEndTrigger = null;
     };
-    const onTouchMove = event => {
+    const onTouchMove = (event: Event) => {
       if (props.readonly) {
         return;
       }
-      moving = true;
+      state.moving = true;
       touch.move(event);
 
       if (touch.isVertical()) {
-        moving = true;
+        state.moving = true;
         preventDefault(event, true);
       }
 
-      const moveOffset = startOffset + touch.deltaY.value;
+      const moveOffset = state.startOffset + touch.deltaY.value;
       if (moveOffset > props.itemHeight) {
-        state.offset = props.itemHeight;
+        state.offset = props.itemHeight as number;
       } else {
-        state.offset = startOffset + touch.deltaY.value;
+        state.offset = state.startOffset + touch.deltaY.value;
       }
 
       const now = Date.now();
 
-      if (now - touchStartTime > MOMENTUM_LIMIT_TIME) {
-        touchStartTime = now;
-        momentumOffset = state.offset;
+      if (now - state.touchStartTime > MOMENTUM_LIMIT_TIME) {
+        state.touchStartTime = now;
+        state.momentumOffset = state.offset;
       }
     };
     const onTouchEnd = () => {
       const index = getIndexByOffset(state.offset);
       state.duration = DEFAULT_DURATION;
       setIndex(index, true);
-      const distance = state.offset - momentumOffset;
-      const duration = Date.now() - touchStartTime;
+      const distance = state.offset - state.momentumOffset;
+      const duration = Date.now() - state.touchStartTime;
 
       const allowMomentum =
         duration < MOMENTUM_LIMIT_TIME &&
@@ -212,25 +223,37 @@ export default create({
         return;
       }
     };
-    const handleClick = (event: Event) => {
-      emit('click', event);
-    };
-    const wrapperStyle = computed(() => ({
-      transform: `translate3d(0, ${state.offset + baseOffset()}px, 0)`,
-      transitionDuration: `${state.duration}ms`,
-      transitionProperty: state.duration ? 'all' : 'none'
-    }));
+
+    onMounted(() => {
+      setIndex(+props.defaultIndex);
+    });
+
+    watch(
+      () => props.listData,
+      val => {
+        if (val) {
+          state.options = val as PickerObjectColumn[];
+        }
+      }
+    );
+
+    watch(
+      () => props.defaultIndex,
+      val => {
+        setIndex(+val);
+      }
+    );
 
     return {
+      ...toRefs(state),
       wrapper,
       onTouchStart,
       onTouchMove,
       onTouchEnd,
       wrapperStyle,
-      state,
       stopMomentum,
       columns: state.options,
-      height: Number(props.visibleItemCount) * props.itemHeight
+      height: Number(props.visibleItemCount) * +props.itemHeight
     };
   }
 });

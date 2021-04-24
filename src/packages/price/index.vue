@@ -19,7 +19,7 @@ export default create({
     },
     symbol: {
       type: String,
-      default: '$'
+      default: '&yen;'
     },
     decimalDigits: {
       type: Number,
@@ -34,7 +34,7 @@ export default create({
   setup(props) {
     const priceShow = computed(() => {
       const symbol = props.needSymbol
-        ? `<view class="price-symbol">${props.symbol}</view>`
+        ? `<view class="${componentName}--symbol">${props.symbol}</view>`
         : '';
       return symbol + formatToHump(props.price);
     });
@@ -61,13 +61,11 @@ export default create({
     };
 
     const renderPrice = (price: string[] | string) => {
-      return `<view class="price-big">
-              ${formatThousands(typeof price === 'string' ? price : price[0])}
-            </view>
-            <view class="price-point">.</view>
-            <view class="price-small">
-              ${formatDecimal(typeof price === 'string' ? 0 : price[1])}
-            </view>`;
+      return `<view class="${componentName}--big">${formatThousands(
+        typeof price === 'string' ? price : price[0]
+      )}</view><view class="${componentName}--point">.</view><view class="${componentName}--small">${formatDecimal(
+        typeof price === 'string' ? 0 : price[1]
+      )}</view>`;
     };
 
     const formatToHump = (price: string | number) => {

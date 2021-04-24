@@ -65,7 +65,7 @@ import { Notify } from './notify';
 const { createDemo } = createComponent('notify');
 export default createDemo({
   setup() {
-    const baseNotify = msg => {
+    const baseNotify = (msg: string) => {
       Notify.text(msg, {
         onClose: () => {
           console.log('close');
@@ -75,22 +75,22 @@ export default createDemo({
         }
       });
     };
-    const primaryNotify = msg => {
+    const primaryNotify = (msg: string) => {
       Notify.primary(msg);
     };
-    const successNotify = msg => {
+    const successNotify = (msg: string) => {
       Notify.success(msg);
     };
-    const errorNotify = msg => {
+    const errorNotify = (msg: string) => {
       Notify.danger(msg);
     };
-    const warningNotify = msg => {
+    const warningNotify = (msg: string) => {
       Notify.warn(msg);
     };
-    const cusBgNotify = msg => {
+    const cusBgNotify = (msg: string) => {
       Notify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
     };
-    const timeNotify = msg => {
+    const timeNotify = (msg: string) => {
       Notify.text(msg, { duration: 10000 });
     };
     return {
@@ -106,7 +106,4 @@ export default createDemo({
 });
 </script>
 
-<style lang="scss" scoped>
-.nut-temp {
-}
-</style>
+<style lang="scss" scoped></style>

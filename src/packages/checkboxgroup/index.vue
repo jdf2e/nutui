@@ -4,9 +4,9 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, watch, reactive, provide, getCurrentInstance } from 'vue';
+import { watch, provide, getCurrentInstance } from 'vue';
 import { createComponent } from '@/utils/create';
-const { componentName, create } = createComponent('checkboxgroup');
+const { create } = createComponent('checkboxgroup');
 
 export default create({
   props: {
@@ -20,9 +20,9 @@ export default create({
     },
     size: {
       type: String,
-      default: 'base'
+      default: 'normal'
     },
-    animated: {
+    animation: {
       type: Boolean,
       default: true
     },
@@ -47,23 +47,25 @@ export default create({
       }
     }
 
-    const toggleAll = checked => {
+    const toggleAll = (checked: boolean) => {
       const children = (slots as any)?.default();
       if (checked === false) {
         emit('update:modelValue', []);
       } else if (checked === true) {
-        const labels = children.map(item => item.props?.label);
+        const labels = children.map(
+          (item: { props: { label: any } }) => item.props?.label
+        );
         emit('update:modelValue', labels);
       } else {
         const names = children
-          .filter(item => {
+          .filter((item: { props: { label: any } }) => {
             const label = item.props?.label;
             const idx = props.modelValue.indexOf(label);
             if (idx == -1) {
               return label;
             }
           })
-          .map(item => item.props?.label);
+          .map((item: { props: { label: any } }) => item.props?.label);
         emit('update:modelValue', names);
       }
     };
@@ -71,7 +73,7 @@ export default create({
 
     provide('checkboxgroup', {
       parentNode: true,
-      changeVal: val => {
+      changeVal: (val: []) => {
         if (props.disabled) {
           return false;
         }

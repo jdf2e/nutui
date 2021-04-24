@@ -1,13 +1,13 @@
 <template>
-  <view @changeEvt="changeEvt">
+  <view>
     <slot></slot>
   </view>
 </template>
 <script lang="ts">
-import { toRefs, provide } from 'vue';
+import { provide } from 'vue';
 import { createComponent } from '@/utils/create';
-const { create } = createComponent('collapse');
 import collapseitem from '@/packages/collapseitem/index.vue';
+const { create } = createComponent('collapse');
 export default create({
   children: [collapseitem],
   props: {
@@ -17,21 +17,21 @@ export default create({
     accordion: {
       type: Boolean
     },
-    expandIconPosition: {
-      type: String,
-      default: 'right'
-    },
+    // expandIconPosition: {
+    //   type: String,
+    //   default: 'right'
+    // },
     titleIcon: {
       type: String,
       default: ''
     },
-    titleIconWidth: {
+    titleIconSize: {
       type: String,
-      default: '13px'
+      default: '16px'
     },
-    titleIconHeight: {
+    titleIconColor: {
       type: String,
-      default: '13px'
+      default: ''
     },
     titleIconPosition: {
       type: String,
@@ -41,13 +41,13 @@ export default create({
       type: String,
       default: ''
     },
-    iconWidth: {
+    iconSize: {
       type: String,
-      default: '24px'
+      default: '16px'
     },
-    iconHeight: {
+    iconColor: {
       type: String,
-      default: '12px'
+      default: ''
     },
     rotate: {
       type: [String, Number],
@@ -56,54 +56,38 @@ export default create({
   },
   emits: ['update:active', 'change'],
   setup(props, { emit }) {
-    const { active } = toRefs(props);
-    // 多个 item 展开
-    const changeValAry = (name: any) => {
+    const changeVal = (val: string | number | Array<string | number>) => {
+      emit('update:active', val);
+      emit('change', val);
+    };
+
+    const changeValAry = (name: string) => {
       const activeItem: any =
-        active?.value instanceof Object
-          ? Object.values(active.value)
-          : active?.value;
+        props.active instanceof Object
+          ? Object.values(props.active)
+          : props.active;
       let index = -1;
       activeItem.forEach((item: string | number, idx: number) => {
         if (String(item) == String(name)) {
           index = idx;
         }
       });
-      const v = JSON.parse(JSON.stringify(activeItem));
-      index > -1 ? v.splice(index, 1) : v.push(name);
-      emit('update:active', v);
-      emit('change', v);
-    };
-
-    // 更新v-modal的值
-    const changeVal = (
-      val: string | number | Array<string | number>,
-      expanded: boolean
-    ) => {
-      emit('update:active', val);
-      emit('change', val);
+      index > -1 ? activeItem.splice(index, 1) : activeItem.push(name);
+      changeVal(activeItem);
     };
 
     const isExpanded = (name: string | number | Array<string | number>) => {
       const { accordion, active } = props;
       if (accordion) {
-        if (typeof active == 'number' || typeof active == 'string') {
-          return active == name;
-        } else {
-          return false;
-        }
+        return typeof active === 'number' || typeof active === 'string'
+          ? active == name
+          : false;
       }
     };
 
     provide('collapseParent', {
       children: [],
-      value: props.active,
-      accordion: props.accordion,
-      expandIconPosition: props.expandIconPosition,
-      titleIcon: props.titleIcon,
-      titleIconPosition: props.titleIconPosition,
-      icon: props.icon,
-      rotate: props.rotate,
+      props,
       changeValAry,
       changeVal,
       isExpanded

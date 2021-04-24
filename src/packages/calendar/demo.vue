@@ -3,14 +3,14 @@
     <h2>基础用法</h2>
     <div>
       <nut-cell
-        :showIcon="true"
+        :show-icon="true"
         title="选择单个日期"
         :desc="date ? `${date} ${dateWeek}` : '请选择'"
         @click="openSwitch('isVisible')"
       >
       </nut-cell>
       <nut-calendar
-        :is-visible="isVisible"
+        v-model:visible="isVisible"
         :default-value="date"
         @close="closeSwitch('isVisible')"
         @choose="setChooseValue"
@@ -22,14 +22,14 @@
 
     <div>
       <nut-cell
-        :showIcon="true"
+        :show-icon="true"
         title="选择日期区间"
         :desc="date1 ? `${date1[0]}至${date1[1]}` : '请选择'"
         @click="openSwitch('isVisible1')"
       >
       </nut-cell>
       <nut-calendar
-        :is-visible="isVisible1"
+        v-model:visible="isVisible1"
         :default-value="date1"
         type="range"
         :start-date="`2019-12-22`"
@@ -43,14 +43,14 @@
     <h2>自定义日历-自动回填</h2>
     <div>
       <nut-cell
-        :showIcon="true"
+        :show-icon="true"
         title="选择日期"
         :desc="date3 ? date3 : '请选择'"
         @click="openSwitch('isVisible3')"
       >
       </nut-cell>
       <nut-calendar
-        :is-visible="isVisible3"
+        v-model:visible="isVisible3"
         @close="closeSwitch('isVisible3')"
         @choose="setChooseValue3"
         :default-value="date3"
@@ -79,7 +79,6 @@ import { reactive, toRefs } from 'vue';
 import { createComponent } from '@/utils/create';
 
 const { createDemo } = createComponent('calendar');
-import Utils from '@/utils/date';
 
 interface TestCalendarState {
   isVisible: boolean;
@@ -107,29 +106,29 @@ export default createDemo({
       isVisible3: false,
       date3: ''
     });
-    const openSwitch = param => {
+    const openSwitch = (param: string) => {
       state[`${param}`] = true;
     };
 
-    const closeSwitch = param => {
+    const closeSwitch = (param: string) => {
       state[`${param}`] = false;
     };
 
-    const setChooseValue = param => {
+    const setChooseValue = (param: string) => {
       state.date = param[3];
       state.dateWeek = param[4];
     };
 
-    const setChooseValue1 = param => {
+    const setChooseValue1 = (param: string) => {
       state.date1 = [...[param[0][3], param[1][3]]];
     };
 
-    const setChooseValue2 = param => {
+    const setChooseValue2 = (param: string) => {
       state.date2 = param[3];
       console.log(state.date2);
     };
 
-    const setChooseValue3 = param => {
+    const setChooseValue3 = (param: string) => {
       state.date3 = param[3];
     };
 

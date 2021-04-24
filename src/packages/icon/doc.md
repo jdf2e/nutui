@@ -24,7 +24,7 @@ app.use(Icon);
 ```html
 <nut-icon name="dongdong"></nut-icon>
 <nut-icon name="JD"></nut-icon>
-<nut-icon size="40px"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"></nut-icon>
+<nut-icon size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"></nut-icon>
 ```
 
 ### 图标颜色
@@ -43,8 +43,8 @@ app.use(Icon);
 
 ```html
 <nut-icon name="dongdong"></nut-icon>
-<nut-icon name="dongdong" size="24px"></nut-icon>
-<nut-icon name="dongdong" size="16px"></nut-icon>
+<nut-icon name="dongdong" size="24"></nut-icon>
+<nut-icon name="dongdong" size="16"></nut-icon>
 ```
 
 ### 自定义图标
@@ -76,13 +76,13 @@ app.use(Icon);
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| name         | 图标名称或图片链接               | String | -                |
-| color        | 图标颜色                         | String | -                |
-| size         | 图标大小，如 `20px` `2em` `2rem` | String | -                |
-| class-prefix | 类名前缀，用于使用自定义图标     | String | `nutui-iconfont` |
-| tag          | HTML 标签                        | String | `i`              |
+| 参数         | 说明                             | 类型             | 默认值           |
+|--------------|----------------------------------|------------------|------------------|
+| name         | 图标名称或图片链接               | String           | -                |
+| color        | 图标颜色                         | String           | -                |
+| size         | 图标大小，如 `20px` `2em` `2rem` | String or Number | -                |
+| class-prefix | 类名前缀，用于使用自定义图标     | String           | `nutui-iconfont` |
+| tag          | HTML 标签                        | String           | `i`              |
 
 ### Events
 
