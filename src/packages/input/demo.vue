@@ -79,17 +79,17 @@ export default createDemo({
     setTimeout(function() {
       state.val1 = '异步数据';
     }, 2000);
-    const change = (num: string | number) => {
-      console.log('change: ', num);
+    const change = (value: string | number, event: Event) => {
+      console.log('change: ', value, event);
     };
-    const focus = (num: string | number) => {
-      console.log('focus:', num);
+    const focus = (value: string | number, event: Event) => {
+      console.log('focus:', value, event);
     };
-    const blur = (num: string | number) => {
-      console.log('blur:', num);
+    const blur = (value: string | number, event: Event) => {
+      console.log('blur:', value, event);
     };
-    const clear = (num: string | number) => {
-      console.log('clear:', num);
+    const clear = (value: string | number) => {
+      console.log('clear:', value);
     };
 
     return {
