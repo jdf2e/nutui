@@ -1,5 +1,5 @@
 .nut-address {
-  .title {
+  &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,7 +10,7 @@
     font-weight: bold;
     color: #333;
     line-height: 20px;
-    .title-main {
+    &__title {
       color: #262626;
       font-size: 18px;
     }

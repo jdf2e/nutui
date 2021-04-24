@@ -7,35 +7,36 @@
     v-model:visible="showPopup"
   >
     <view-block class="nut-address">
-      <view-block class="title">
-        <view-block
-          class="arrow-back"
-          @click="switchModule"
-          v-if="showModule == 'custom' && type == 'exist' && backBtnIcon"
-        >
-          <nut-icon :name="backBtnIcon" color="#CCCCCC"></nut-icon>
+      <view-block class="nut-address__header">
+        <view-block class="arrow-back" @click="switchModule">
+          <nut-icon
+            :name="backBtnIcon"
+            color="#cccccc"
+            v-if="privateType == 'custom' && backBtnIcon"
+          ></nut-icon>
         </view-block>
-        <view-block class="arrow-back" v-else></view-block>
 
-        <view-block v-show="showModule == 'custom'">{{
-          customAddressTitle
-        }}</view-block>
-        <view-block v-show="showModule == 'exist'">{{
-          existAddressTitle
-        }}</view-block>
+        <view-block class="nut-address__header__title">
+          <template v-if="privateType == 'custom'">
+            {{ customAddressTitle }}
+          </template>
+          <template v-else-if="privateType == 'exist'">
+            {{ existAddressTitle }}
+          </template>
+        </view-block>
 
         <view-block class="arrow-close" @click="handClose('cross')">
           <nut-icon
             v-if="closeBtnIcon"
             :name="closeBtnIcon"
-            color="#CCCCCC"
+            color="#cccccc"
             size="18px"
           ></nut-icon>
         </view-block>
       </view-block>
 
       <!-- 请选择 -->
-      <view-block class="custom-address" v-if="showModule == 'custom'">
+      <view-block class="custom-address" v-if="privateType == 'custom'">
         <view-block class="region-tab">
           <view-block
             class="tab-item"
@@ -77,7 +78,7 @@
       </view-block>
 
       <!-- 配送至 -->
-      <view-block class="exist-address" v-if="showModule == 'exist'">
+      <view-block class="exist-address" v-else-if="privateType == 'exist'">
         <div class="exist-address-group">
           <ul class="exist-ul">
             <li
@@ -109,7 +110,7 @@
         <div
           class="choose-other"
           @click="switchModule"
-          v-if="isShowCustomAddress && showModule == 'exist'"
+          v-if="isShowCustomAddress"
         >
           <div class="btn">{{ customAndExistTitle }}</div>
         </div>
@@ -144,6 +145,7 @@ interface AddressList {
   selectedAddress: boolean;
 }
 export default create({
+  inheritAttrs: false,
   props: {
     visible: {
       type: Boolean,
@@ -212,6 +214,7 @@ export default create({
   },
   emits: [
     'update:visible',
+    'type',
     'change',
     'selected',
     'close',
@@ -228,9 +231,8 @@ export default create({
       country: ref<null | HTMLElement>(null),
       town: ref<null | HTMLElement>(null)
     });
-
-    const showPopup = ref(false);
-    const showModule = ref('exist'); //展示 exist 还是 custom 主要用于’选择其他地址‘
+    const showPopup = ref(props.visible);
+    const privateType = ref(props.type);
     const tabIndex = ref(0);
     const tabName = ref(['province', 'city', 'country', 'town']);
 
@@ -358,11 +360,11 @@ export default create({
       );
 
       const res = {
-        type: showModule.value,
-        data: {}
+        data: {},
+        type: privateType.value
       };
 
-      if (showModule.value == 'custom') {
+      if (privateType.value == 'custom') {
         const { province, city, country, town } = resCopy;
 
         resCopy.addressIdStr = [
@@ -389,19 +391,20 @@ export default create({
       } else {
         emit('close-mask', { closeWay: closeWay });
       }
+      emit('update:visible', false);
     };
 
     // 选择其他地址
     const switchModule = () => {
-      if (showModule.value == 'exist') {
-        showModule.value = 'custom';
+      if (privateType.value == 'exist') {
+        privateType.value = 'custom';
       } else {
-        showModule.value = 'exist';
+        privateType.value = 'exist';
       }
 
       initAddress();
 
-      emit('switch-module', { type: showModule.value });
+      emit('switch-module', { type: privateType.value });
     };
 
     watch(
@@ -410,15 +413,18 @@ export default create({
         showPopup.value = value;
       }
     );
+    // watch(
+    //   () => props.type,
+    //   (value) => {
+    //     privateType.value = value;
+    //   }
+    // );
 
     watch(
       () => showPopup.value,
       value => {
-        if (!value) {
+        if (value == false) {
           close();
-          emit('update:visible', false);
-        } else {
-          showModule.value = props.type;
         }
       }
     );
@@ -462,7 +468,7 @@ export default create({
 
     return {
       showPopup,
-      showModule,
+      privateType,
       tabIndex,
       tabName,
       regionList,
