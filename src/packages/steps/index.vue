@@ -1,11 +1,5 @@
 <script lang="ts">
-import {
-  provide,
-  computed,
-  reactive,
-  h,
-  ComponentInternalInstance
-} from 'vue';
+import { provide, computed, reactive, h, ComponentInternalInstance } from 'vue';
 import Step from '@/packages/step/index.vue';
 import { createComponent } from '@/utils/create';
 const { create, componentName } = createComponent('steps');
@@ -57,12 +51,12 @@ export default create({
           class: classes.value
         },
         slots.default?.()
-      )
-    }
+      );
+    };
   }
 });
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import 'index.scss';
 </style>

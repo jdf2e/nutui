@@ -19,14 +19,20 @@
       <view class="nut-step-title">
         {{ title }}
       </view>
-      <view class="nut-step-content" v-html="content">
-      </view>
+      <view class="nut-step-content" v-html="content"> </view>
     </view>
   </view>
 </template>
 
 <script lang="ts">
-import { reactive, computed, inject, toRefs, getCurrentInstance, ComponentInternalInstance } from 'vue';
+import {
+  reactive,
+  computed,
+  inject,
+  toRefs,
+  getCurrentInstance,
+  ComponentInternalInstance
+} from 'vue';
 import { createComponent } from '@/utils/create';
 const { create, componentName } = createComponent('step');
 
@@ -46,7 +52,7 @@ export default create({
     }
   },
 
-  setup(props, {emit, slots}) {
+  setup(props, { emit, slots }) {
     const instance = getCurrentInstance() as ComponentInternalInstance;
     const parent: any = inject('parent');
     parent['relation'](instance);
@@ -59,7 +65,7 @@ export default create({
 
     const getCurrentStatus = () => {
       const activeIndex = index.value;
-      if(activeIndex < +parent.props.current) return 'finish';
+      if (activeIndex < +parent.props.current) return 'finish';
       return activeIndex === +parent.props.current ? 'process' : 'wait';
     };
 
@@ -84,6 +90,6 @@ export default create({
 });
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import 'index.scss';
 </style>
