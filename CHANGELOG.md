@@ -1,3 +1,21 @@
+## v3.0.0-beta.14
+
+`2021-04-24`
+
+* :bug: fix(steps): style && getCurrentInstance proxy @szg2008
+* :zap: feat(site): site build @vitejs/plugin-legacy @richard1015
+* :zap: feat(husky): v4 to v6 @szg2008
+* :bug: upd(icon): iconfont @richard1015
+* :bug: fix(dialog): v-html;函数式使用支持挂载指定节点teleport功能 @richard1015
+* :zap: feat(uploader): custom slot & update:fileList @richard1015
+* :zap: chore(button): test jest @richard1015
+* :bug: fix(tabbar): 样式修改 #448 @Drjingfubo
+* :bug: fix(input): blur event bug #438 @richard1015
+* :bug: fix(address): change type bug @richard1015
+* :zap: feat: devServer port 2021 @richard1015
+* :zap: chore: Vite 2.2.1 @richard1015
+
+
 ## v3.0.0-beta.13
 
 `2021-04-18`
