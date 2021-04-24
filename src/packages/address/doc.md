@@ -31,7 +31,7 @@ app.use(Popup);
     :town="town"
     @change="onChange"
     @close="close"
-    customAddressTitle="请选择所在地区"
+    custom-address-title="请选择所在地区"
 ></nut-address>
 ```
 ```javascript
@@ -86,11 +86,11 @@ setup() {
 <nut-address
     v-model:visible="showPopupExist"
     type="exist"
-    :existAddress="existAddress"
+    :exist-address="existAddress"
     @close="close"
-    :isShowCustomAddress="false"
+    :is-show-custom-address="false"
     @selected="selected"
-    existAddressTitle="配送至"
+    exist-address-title="配送至"
 ></nut-address>
 ```
 ```javascript
@@ -164,11 +164,11 @@ setup() {
     type="exist"
     :existAddress="existAddress"
     @close="close"
-    :isShowCustomAddress="false"
+    :is-show-custom-address="false"
     @selected="selected3"
-    :defaultIcon="defaultIcon"
-    :selectedIcon="selectedIcon"
-    :closeBtnIcon="closeBtnIcon"
+    :default-icon="defaultIcon"
+    :selected-icon="selectedIcon"
+    :close-btn-icon="closeBtnIcon"
 ></nut-address>
 ```
 ```javascript
@@ -246,17 +246,17 @@ setup() {
 <nut-address
     v-model:visible="showPopupOther"
     type="exist"
-    :existAddress="existAddress"
+    :exist-address="existAddress"
     :province="province"
     :city="city"
     :country="country"
     :town="town"
-    :backBtnIcon="backBtnIcon"
+    :back-btn-icon="backBtnIcon"
     @close="close"
     @selected="selected"
-    customAndExistTitle="选择其他地址"
-    @switchModule="switchModule"
-    @closeMask="closeMask"
+    custom-and-exist-title="选择其他地址"
+    @switch-module="switchModule"
+    @close-mask="closeMask"
 ></nut-address>
 ```
 ```javascript
