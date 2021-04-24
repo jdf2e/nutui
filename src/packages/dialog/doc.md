@@ -38,6 +38,37 @@ Dialog({
 ```
 
 
+## teleport 使用，挂载到指定节点
+
+``` html
+<nut-dialog teleport="#app" ... />
+```
+
+``` javascript
+Dialog({
+  teleport: '#app',
+  ...
+});
+Dialog({
+  teleport: '.demo',
+  ...
+});
+```
+
+## 函数调用 proxy.&dialog(...)
+
+``` javascript
+import { getCurrentInstance } from 'vue';
+
+setup(){
+  const { proxy } = getCurrentInstance();
+  proxy.$dialog({
+    title: '基础弹框',
+    content: '支持函数调用和组件调用两种方式。'
+  });
+}
+```
+
 
 ## 标签式组件使用
 
@@ -64,6 +95,7 @@ export default {
 |---------------------|---------------------------------------|----------|----------|
 | title               | 标题                                  | String   | -        |
 | content             | 内容，支持HTML                        | String   | -        |
+| teleport            | 指定挂载节点                          | String   | "body"   |
 | closeOnClickOverlay | 点击蒙层是否关闭对话框                | Boolean  | false    |
 | noFooter            | 是否隐藏底部按钮栏                    | Boolean  | false    |
 | noOkBtn             | 是否隐藏确定按钮                      | Boolean  | false    |
@@ -87,6 +119,7 @@ export default {
 |------------------------|---------------------------------------|---------|----------|
 | title                  | 标题                                  | String  | -        |
 | content                | 内容，支持HTML                        | String  | -        |
+| teleport               | 指定挂载节点                          | String  | "body"   |
 | close-on-click-overlay | 点击蒙层是否关闭对话框                | Boolean | false    |
 | no-footer              | 是否隐藏底部按钮栏                    | Boolean | false    |
 | no-ok-btn              | 是否隐藏确定按钮                      | Boolean | false    |
