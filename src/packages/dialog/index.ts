@@ -6,7 +6,7 @@ export class DialogOptions {
   cancelText?: string = '取消';
   okText?: string = '确定';
   textAlign?: string = 'center';
-  teleport?: String = 'body';
+  teleport?: String | HTMLElement = 'body';
 
   // function
   onUpdate?: Function = (value: boolean) => {};
@@ -29,13 +29,22 @@ class DialogFunction {
 
   constructor(_options: DialogOptions) {
     let options = Object.assign(this.options, _options);
+    let elWarp: HTMLElement = document.body;
+    let teleport = _options.teleport as string;
+    if (teleport != 'body') {
+      if (typeof teleport == 'string') {
+        elWarp = document.querySelector(teleport) as HTMLElement;
+      } else {
+        elWarp = _options.teleport as HTMLElement;
+      }
+    }
     const root = document.createElement('view');
     root.id = 'dialog-' + new Date().getTime();
     const Wrapper = {
       setup() {
         options.onUpdate = (val: boolean) => {
           if (val == false) {
-            document.body.removeChild(root);
+            elWarp.removeChild(root);
           }
         };
         options.teleport = `#${root.id}`;
@@ -45,7 +54,7 @@ class DialogFunction {
       }
     };
     const instance: any = createVNode(Wrapper);
-    document.body.appendChild(root);
+    elWarp.appendChild(root);
     render(instance, root);
   }
 
