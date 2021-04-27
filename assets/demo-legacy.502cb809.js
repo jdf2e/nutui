@@ -1,1 +1,0 @@
-System.register(["./index-legacy.579cfc3c.js"],(function(e){"use strict";var t,c;return{setters:[function(e){t=e.o,c=e.c}],execute:function(){const n=e("default",{}),r={class:"demo-list"};n.render=function(e,n){return t(),c("div",r)}}}}));
