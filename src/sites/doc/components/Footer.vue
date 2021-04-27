@@ -10,11 +10,7 @@
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">相关资源</h4>
         <div class="doc-footer-item"
-          ><a
-            class="sub-link"
-            target="_blank"
-            href="hhttps://cn.vuejs.org/index.html"
-            v-hover
+          ><a class="sub-link" target="_blank" href="https://vuejs.org" v-hover
             >Vue</a
           >
         </div>
