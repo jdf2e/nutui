@@ -7,7 +7,7 @@
         :class="[!dot ? (icon ? 'is-icon' : 'is-text') : '']"
       >
         <template v-if="icon">
-          <nut-icon class="nut-step-icon-inner" :class="icon" />
+          <nut-icon class="nut-step-icon-inner" :name="icon" />
         </template>
         <template v-else-if="dot"></template>
         <template v-else>
