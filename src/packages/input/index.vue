@@ -125,10 +125,12 @@ export default create({
     };
 
     const valueBlur = (event: Event) => {
-      active.value = false;
+      setTimeout(() => {
+        active.value = false;
+      }, 0);
+
       const input = event.target as HTMLInputElement;
       let value = input.value;
-
       emit('blur', value, event);
     };
 
