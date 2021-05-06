@@ -161,37 +161,28 @@ export default createDemo({
     const existAddress = ref([
       {
         id: 1,
-        addressDetail: 'th ',
-        cityName: '石景山区',
-        countyName: '城区',
-        provinceName: '北京',
+        addressDetail: '',
+        cityName: '次渠镇',
+        countyName: '通州区',
+        provinceName: '北京市',
         selectedAddress: true,
         townName: ''
       },
       {
         id: 2,
-        addressDetail: '12_ ',
-        cityName: '电饭锅',
-        countyName: '扶绥县',
-        provinceName: '北京',
+        addressDetail: '',
+        cityName: '钓鱼岛全区',
+        countyName: '',
+        provinceName: '钓鱼岛',
         selectedAddress: false,
         townName: ''
       },
       {
         id: 3,
-        addressDetail: '发大水比 ',
-        cityName: '放到',
-        countyName: '广宁街道',
-        provinceName: '钓鱼岛全区',
-        selectedAddress: false,
-        townName: ''
-      },
-      {
-        id: 4,
-        addressDetail: '还是想吧百度吧 ',
-        cityName: '研发',
-        countyName: '八里庄街道',
-        provinceName: '北京',
+        addressDetail: '京东大厦',
+        cityName: '大兴区',
+        countyName: '科创十一街18号院',
+        provinceName: '北京市',
         selectedAddress: false,
         townName: ''
       }
