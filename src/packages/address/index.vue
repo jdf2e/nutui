@@ -17,12 +17,7 @@
         </view-block>
 
         <view-block class="nut-address__header__title">
-          <template v-if="privateType == 'custom'">
-            {{ customAddressTitle }}
-          </template>
-          <template v-else-if="privateType == 'exist'">
-            {{ existAddressTitle }}
-          </template>
+          {{ privateType == 'custom' ? customAddressTitle : existAddressTitle }}
         </view-block>
 
         <view-block class="arrow-close" @click="handClose('cross')">
