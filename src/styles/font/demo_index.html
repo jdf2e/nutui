@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8"/>
-  <title>IconFont Demo</title>
+  <title>iconfont Demo</title>
   <link rel="shortcut icon" href="//img.alicdn.com/imgextra/i2/O1CN01ZyAlrn1MwaMhqz36G_!!6000000001499-73-tps-64-64.ico" type="image/x-icon"/>
   <link rel="icon" type="image/svg+xml" href="//img.alicdn.com/imgextra/i4/O1CN01EYTRnJ297D6vehehJ_!!6000000008020-55-tps-64-64.svg"/>
   <link rel="stylesheet" href="https://g.alicdn.com/thx/cube/1.3.2/cube.min.css">
@@ -13,10 +13,33 @@
   <script src="https://a1.alicdn.com/oss/uploads/2018/12/26/7bfddb60-08e8-11e9-9b04-53e73bb6408b.js"></script>
   <!-- 代码高亮 -->
   <script src="https://a1.alicdn.com/oss/uploads/2018/12/26/a3f714d0-08e6-11e9-8a15-ebf944d7534c.js"></script>
+  <style>
+    .main .logo {
+      margin-top: 0;
+      height: auto;
+    }
+
+    .main .logo a {
+      display: flex;
+      align-items: center;
+    }
+
+    .main .logo .sub-title {
+      margin-left: 0.5em;
+      font-size: 22px;
+      color: #fff;
+      background: linear-gradient(-45deg, #3967FF, #B500FE);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
 </head>
 <body>
   <div class="main">
-    <h1 class="logo"><a href="https://www.iconfont.cn/" title="iconfont 首页" target="_blank">&#xe86b;</a></h1>
+    <h1 class="logo"><a href="https://www.iconfont.cn/" title="iconfont 首页" target="_blank">
+      <img width="200" src="https://img.alicdn.com/imgextra/i3/O1CN01Mn65HV1FfSEzR6DKv_!!6000000000514-55-tps-228-59.svg">
+      
+    </a></h1>
     <div class="nav-tabs">
       <ul id="tabs" class="dib-box">
         <li class="dib active"><span>Unicode</span></li>
@@ -32,9 +55,9 @@
           <ul class="icon_lists dib-box">
           
             <li class="dib">
-              <span class="icon nutui-iconfont">&#xe6c9;</span>
-                <div class="name">check-disabled</div>
-                <div class="code-name">&amp;#xe6c9;</div>
+              <span class="icon nutui-iconfont">&#xe601;</span>
+                <div class="name">checked</div>
+                <div class="code-name">&amp;#xe601;</div>
               </li>
           
             <li class="dib">
@@ -698,24 +721,20 @@
 
           <p>Unicode 是字体在网页端最原始的应用方式，特点是：</p>
           <ul>
-            <li>兼容性最好，支持 IE6+，及所有现代浏览器。</li>
             <li>支持按字体的方式去动态调整图标大小，颜色等等。</li>
-            <li>但是因为是字体，所以不支持多色。只能使用平台里单色的图标，就算项目里有多色图标也会自动去色。</li>
+            <li>默认情况下不支持多色，直接添加多色图标会自动去色。</li>
           </ul>
           <blockquote>
-            <p>注意：新版 iconfont 支持多色图标，这些多色图标在 Unicode 模式下将不能使用，如果有需求建议使用symbol 的引用方式</p>
+            <p>注意：新版 iconfont 支持两种方式引用多色图标：SVG symbol 引用方式和彩色字体图标模式。（使用彩色字体图标需要在「编辑项目」中开启「彩色」选项后并重新生成。）</p>
           </blockquote>
           <p>Unicode 使用步骤如下：</p>
           <h3 id="-font-face">第一步：拷贝项目下面生成的 <code>@font-face</code></h3>
 <pre><code class="language-css"
 >@font-face {
   font-family: 'nutui-iconfont';
-  src: url('iconfont.eot');
-  src: url('iconfont.eot?#iefix') format('embedded-opentype'),
-      url('iconfont.woff2') format('woff2'),
-      url('iconfont.woff') format('woff'),
-      url('iconfont.ttf') format('truetype'),
-      url('iconfont.svg#nutui-iconfont') format('svg');
+  src: url('iconfont.woff2?t=1620383008438') format('woff2'),
+       url('iconfont.woff?t=1620383008438') format('woff'),
+       url('iconfont.ttf?t=1620383008438') format('truetype');
 }
 </code></pre>
           <h3 id="-iconfont-">第二步：定义使用 iconfont 的样式</h3>
@@ -742,11 +761,11 @@
         <ul class="icon_lists dib-box">
           
           <li class="dib">
-            <span class="icon nutui-iconfont nut-icon-checklist-disabled"></span>
+            <span class="icon nutui-iconfont nut-icon-checked"></span>
             <div class="name">
-              check-disabled
+              checked
             </div>
-            <div class="code-name">.nut-icon-checklist-disabled
+            <div class="code-name">.nut-icon-checked
             </div>
           </li>
           
@@ -1739,10 +1758,8 @@
         <p>font-class 是 Unicode 使用方式的一种变种，主要是解决 Unicode 书写不直观，语意不明确的问题。</p>
         <p>与 Unicode 使用方式相比，具有如下特点：</p>
         <ul>
-          <li>兼容性良好，支持 IE8+，及所有现代浏览器。</li>
           <li>相比于 Unicode 语意明确，书写更直观。可以很容易分辨这个 icon 是什么。</li>
           <li>因为使用 class 来定义图标，所以当要替换图标时，只需要修改 class 里面的 Unicode 引用。</li>
-          <li>不过因为本质上还是使用的字体，所以多色图标还是不支持的。</li>
         </ul>
         <p>使用步骤如下：</p>
         <h3 id="-fontclass-">第一步：引入项目下面生成的 fontclass 代码：</h3>
@@ -1762,10 +1779,10 @@
           
             <li class="dib">
                 <svg class="icon svg-icon" aria-hidden="true">
-                  <use xlink:href="#nut-icon-checklist-disabled"></use>
+                  <use xlink:href="#nut-icon-checked"></use>
                 </svg>
-                <div class="name">check-disabled</div>
-                <div class="code-name">#nut-icon-checklist-disabled</div>
+                <div class="name">checked</div>
+                <div class="code-name">#nut-icon-checked</div>
             </li>
           
             <li class="dib">
