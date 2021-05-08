@@ -1,56 +1,15 @@
-<template>
-  <view :class="['nut-checkbox', 'nut-checkbox-size-' + currentSize]">
-    <input
-      type="checkbox"
-      :name="name"
-      :class="{ 'nut-checkbox-ani': isAnimated }"
-      :disabled="isDisabled"
-      :checked.prop="isChecked"
-      :value="submittedValue"
-      @change="changeEvt"
-    />
-    <view class="nut-checkbox-label" v-if="label">
-      {{ label }}
-    </view>
-    <view class="nut-checkbox-label" v-else>
-      <slot></slot>
-    </view>
-  </view>
-</template>
 <script lang="ts">
-import { reactive, computed, getCurrentInstance, inject } from 'vue';
+import { h, computed } from 'vue';
 import { createComponent } from '@/utils/create';
-import checkboxgroup from '@/packages/checkboxgroup/index.vue';
-const { create } = createComponent('checkbox');
+const { create, componentName } = createComponent('checkbox');
+import nutIcon from '@/packages/icon/index.vue';
 
 export default create({
-  children: [checkboxgroup],
+  components: {
+    nutIcon
+  },
   props: {
-    name: {
-      type: String
-    },
-    size: {
-      type: [String, Number, Boolean],
-      default: 'normal'
-    },
-    label: {
-      type: String,
-      default: ''
-    },
     modelValue: {
-      required: false
-    },
-    trueValue: {
-      default: true
-    },
-    falseValue: {
-      default: false
-    },
-    submittedValue: {
-      type: String,
-      default: 'on'
-    },
-    checked: {
       type: Boolean,
       default: false
     },
@@ -58,119 +17,94 @@ export default create({
       type: Boolean,
       default: false
     },
-    isAnimation: {
-      type: Boolean,
-      default: true
+    textPosition: {
+      type: String,
+      default: 'right'
+    },
+    iconSize: {
+      type: [String, Number],
+      default: '18'
+    },
+    iconName: {
+      type: String,
+      default: 'check-normal'
+    },
+    iconActiveName: {
+      type: String,
+      default: 'checked'
+    },
+    label: {
+      type: String,
+      default: ''
     }
   },
-  setup(props, { emit }) {
-    const parentGroup = inject('checkboxgroup', {
-      parentNode: false,
-      changeVal: (val: number) => {
-        console.log(1);
-      }
-    });
-    const parentProps = getCurrentInstance()?.parent?.props;
+  emits: ['change', 'update:modelValue'],
+  setup(props, { emit, slots }) {
+    const checked = computed(() => !!props.modelValue);
 
-    const isChecked = computed(() => {
-      if (parentGroup && parentGroup.parentNode) {
-        const choosedVal = parentProps?.modelValue;
-        const chooseFlag =
-          (choosedVal as any).indexOf(props.label) == -1 ? false : true;
-        return chooseFlag;
-      } else {
-        const isCheckedVal =
-          props.modelValue == props.trueValue || props.checked;
-        return isCheckedVal;
-      }
+    const label = computed(() => {
+      return props.label ? props.label : slots.default?.();
     });
 
-    const isDisabled = computed(() => {
-      if (parentGroup && parentGroup.parentNode) {
-        return parentProps?.disabled;
-      } else {
-        return props.disabled;
-      }
+    const color = computed(() => {
+      return !props.disabled
+        ? !props.modelValue
+          ? '#d6d6d6'
+          : '#fa2c19'
+        : '#f5f5f5';
     });
 
-    const currentSize = computed(() => {
-      if (parentGroup && parentGroup.parentNode) {
-        return parentProps?.size;
-      } else {
-        return props.size;
-      }
-    });
-
-    const isAnimated = computed(() => {
-      if (parentGroup && parentGroup.parentNode) {
-        return parentProps?.isAnimation;
-      } else {
-        return props.isAnimation;
-      }
-    });
-
-    const { label, name, submittedValue } = reactive(props);
-
-    const setParentValue = (checked: boolean) => {
-      // const { label } = props;
-      // const { max, modelValue } = parentProps?.modelValue;
-      const modelValue = parentProps?.modelValue;
-      const value = (modelValue as any).slice();
-      if (checked) {
-        if (value.indexOf(label) === -1) {
-          value.push(label);
-          parentGroup?.changeVal(value);
-        }
-      } else {
-        const index = value.indexOf(label);
-        if (index !== -1) {
-          value.splice(index, 1);
-          parentGroup?.changeVal(value);
-        }
-      }
+    const emitChange = (value: string | boolean, label?: string) => {
+      emit('update:modelValue', value);
+      emit('change', value, label);
     };
 
-    const changeEvt = (event: any) => {
-      event?.stopPropagation();
-      const isCheck: boolean = event.target.checked;
-      if (isDisabled.value) {
-        return false;
-      }
-      if (parentGroup.parentNode) {
-        setParentValue(isCheck);
-        return false;
-      }
-      emit('update:modelValue', isCheck);
-      emit(
-        'input',
-        isCheck ? props.trueValue : props.falseValue,
-        props.label,
-        event
+    const renderIcon = () => {
+      const { iconName, iconSize, iconActiveName, modelValue } = props;
+      return h(nutIcon, {
+        name: !modelValue ? iconName : iconActiveName,
+        size: iconSize,
+        color: color.value
+      });
+    };
+
+    const renderLabel = () => {
+      return h(
+        'view',
+        {
+          class: `${componentName}__label ${
+            props.disabled ? `${componentName}__label--disabled` : ''
+          }`
+        },
+        label.value
       );
-      if (isChecked.value !== isCheck) {
-        emit(
-          'change',
-          isCheck ? props.trueValue : props.falseValue,
-          props.label,
-          event
-        );
-      }
     };
 
-    return {
-      currentSize,
-      label,
-      name,
-      isDisabled,
-      submittedValue,
-      isAnimated,
-      isChecked,
-      changeEvt
+    const handleClick = (e: MouseEvent | TouchEvent) => {
+      if (props.disabled) return;
+      const text =
+        typeof label.value === 'string'
+          ? label.value
+          : label.value && label.value[0].children;
+      emitChange(!checked.value, text as string);
+    };
+
+    return () => {
+      return h(
+        'view',
+        {
+          class: `${componentName} ${
+            props.textPosition === 'left' ? `${componentName}--reverse` : ''
+          }`,
+          onClick: handleClick
+        },
+        [renderIcon(), renderLabel()]
+      );
     };
   }
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import 'index.scss';
 </style>

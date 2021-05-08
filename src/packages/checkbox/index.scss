@@ -1,96 +1,19 @@
-.nut-checkboxgroup-vertical .nut-checkbox {
-  display: block;
-  margin-top: 8px;
-}
 .nut-checkbox {
-  margin-right: 10px;
-  .nut-checkbox-label {
-    pointer-events: none;
-    vertical-align: middle;
-  }
-  input {
-    position: relative;
-    -webkit-appearance: none;
-    border-radius: 1%;
-    background-image: url('https://img11.360buyimg.com/imagetools/jfs/t1/153637/38/10229/854/5fd9cfd3E25c62c2a/fed43bc74cd473dd.png');
-    background-size: cover;
-    outline: 0;
-    opacity: 1;
-    vertical-align: middle;
-    margin: 0;
-    &::after {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      content: '';
-      width: 0;
-      height: 0;
-      transform: translate(-50%, -50%);
-      background: $primary-color;
-      border-radius: 1%;
-      opacity: 0;
-      pointer-events: none;
-    }
-    &:checked {
-      background-image: url('https://img13.360buyimg.com/imagetools/jfs/t1/131359/19/19372/2463/5fd3101bEdaf04120/3c8fa97cd4b22c02.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      border-color: $primary-color;
-      &:not(:disabled).nut-checkbox-ani::after {
-        animation: nutPulse 0.25s;
-      }
-    }
-    &:disabled {
-      background-image: url('https://img14.360buyimg.com/imagetools/jfs/t1/155506/4/9365/704/5fd3103cE779ad491/1939699720df7770.png');
-      // border-color: $disable-color;
-      &:checked {
-        background-image: url('https://img12.360buyimg.com/imagetools/jfs/t1/151947/10/10769/2246/5fe04ceeEd31c1a06/2bb48d747c49f9dd.png');
-      }
+  display: inline-flex;
+  align-items: center;
+  &--reverse {
+    flex-direction: row-reverse;
+    .nut-checkbox__label {
+      margin-right: 15px;
+      margin-left: 0;
     }
   }
-  .nut-checkbox-label {
-    color: #1d1e1e;
-  }
-  &.nut-checkbox-size-normal {
-    input {
-      width: 18px;
-      height: 18px;
+  &__label {
+    margin-left: 15px;
+    font-size: 16px;
+    color: $checkbox-label-color;
+    &--disabled {
+      color: $checkbox-label-disable-color;
     }
-    .nut-checkbox-label {
-      font-size: $font-size-2;
-      margin-left: 10px;
-    }
-  }
-  &.nut-checkbox-size-small {
-    input {
-      width: 16px;
-      height: 16px;
-    }
-    .nut-checkbox-label {
-      font-size: $font-size-1;
-      margin-left: 6px;
-    }
-  }
-  &.nut-checkbox-size-large {
-    input {
-      width: 22px;
-      height: 22px;
-    }
-    .nut-checkbox-label {
-      font-size: $font-size-3;
-      margin-left: 10px;
-    }
-  }
-}
-@keyframes nutPulse {
-  0% {
-    width: 100%;
-    height: 100%;
-    opacity: 0.5;
-  }
-  100% {
-    width: 150%;
-    height: 150%;
-    opacity: 0;
   }
 }
