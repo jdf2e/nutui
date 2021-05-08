@@ -255,9 +255,12 @@ $address-region-tab-line: linear-gradient(
 
 //steps
 
-
 // dialog
 $dialog-width: 296px;
+
+// checkbox
+$checkbox-label-color: #1d1e1e;
+$checkbox-label-disable-color: #999;
 
 view-block {
   display: block;
