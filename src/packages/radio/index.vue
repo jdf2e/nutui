@@ -1,104 +1,91 @@
-<template>
-  <view :class="classes" @click="clickEvt">
-    <input
-      type="radio"
-      :value="currentValue"
-      :class="{ 'nut-radio-ani': isAnimated }"
-      :checked="currentValue === label"
-      :disabled="isDisabled"
-      :label="label"
-    />
-    <view class="nut-radio-label">
-      <slot></slot>
-    </view>
-  </view>
-</template>
 <script lang="ts">
-import { computed, getCurrentInstance, inject } from 'vue';
+import { computed, h, inject } from 'vue';
 import { createComponent } from '@/utils/create';
+import nutIcon from '@/packages/icon/index.vue';
 import radiogroup from '@/packages/radiogroup/index.vue';
+import component from '*.vue';
 const { componentName, create } = createComponent('radio');
 
-type Iparent = {
-  parentNode: boolean;
-};
 export default create({
   children: [radiogroup],
   props: {
-    modelValue: {
-      type: [String, Number, Boolean],
-      default: false
-    },
-    label: [String, Number, Boolean],
-    size: {
-      type: String,
-      default: 'base'
-    },
     disabled: {
       type: Boolean,
       default: false
     },
-    isAnimated: {
-      type: Boolean,
-      default: true
+    label: {
+      type: String,
+      default: ''
+    },
+    iconName: {
+      type: String,
+      default: 'check-normal'
+    },
+    iconActiveName: {
+      type: String,
+      default: 'check-checked'
+    },
+    iconSize: {
+      type: [String, Number],
+      default: 18
     }
   },
+  setup(props, { emit, slots }) {
+    let parent: any = inject('parent');
 
-  emits: ['update:modelValue', 'change'],
-  setup(props, { emit }) {
-    const parentGroup = inject('radiogroup', {
-      parentNode: false,
-      changeVal: (val: string) => {}
-    });
-    const internalInstance = getCurrentInstance()?.parent;
-    const parentProps = internalInstance?.props;
-
-    const isParentGroup = computed(() => parentGroup && parentGroup.parentNode);
-
-    const currentSize = computed(() => {
-      return isParentGroup.value ? parentProps?.size : props.size;
+    const isCurValue = computed(() => {
+      return parent.label.value === props.label;
     });
 
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true,
-        [`${prefixCls}-size-${currentSize.value}`]: true
-      };
+    const color = computed(() => {
+      return !props.disabled
+        ? isCurValue.value
+          ? '#fa2c19'
+          : '#d6d6d6'
+        : '#f5f5f5';
     });
 
-    const currentValue = computed(() => {
-      return isParentGroup.value ? parentProps?.modelValue : props.modelValue;
+    const position = computed(() => {
+      return parent.position;
     });
 
-    const isDisabled = computed(() => {
-      return isParentGroup.value ? parentProps?.disabled : props.disabled;
-    });
-
-    const isAnimated = computed(() => {
-      return isParentGroup.value ? parentProps?.isAnimated : props.isAnimated;
-    });
-
-    const getValue = () => {
-      return isParentGroup.value
-        ? parentGroup.changeVal(props.label as string)
-        : props.label;
+    const renderIcon = () => {
+      const { iconName, iconSize, iconActiveName } = props;
+      return h(nutIcon, {
+        name: isCurValue.value ? iconActiveName : iconName,
+        size: iconSize,
+        color: color.value
+      });
     };
 
-    const clickEvt = (event: Event) => {
-      if (isDisabled.value) {
-        return false;
-      }
-      emit('update:modelValue', getValue());
-      !isParentGroup.value && emit('change', getValue());
+    const renderLabel = () => {
+      return h(
+        'view',
+        {
+          class: `${componentName}__label ${
+            props.disabled ? `${componentName}__label--disabled` : ''
+          }`
+        },
+        slots.default?.()
+      );
     };
 
-    return {
-      classes,
-      currentValue,
-      isDisabled,
-      isAnimated,
-      clickEvt
+    const handleClick = () => {
+      if (isCurValue.value || props.disabled) return;
+      parent.updateValue(props.label);
+    };
+
+    return () => {
+      return h(
+        'view',
+        {
+          class: `${componentName} ${
+            position.value === 'left' ? `${componentName}--reverse` : ''
+          }`,
+          onClick: handleClick
+        },
+        [renderIcon(), renderLabel()]
+      );
     };
   }
 });
