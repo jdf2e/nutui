@@ -3,7 +3,6 @@ import { computed, h, inject } from 'vue';
 import { createComponent } from '@/utils/create';
 import nutIcon from '@/packages/icon/index.vue';
 import radiogroup from '@/packages/radiogroup/index.vue';
-import component from '*.vue';
 const { componentName, create } = createComponent('radio');
 
 export default create({
