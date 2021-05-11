@@ -100,11 +100,70 @@ setup() {
 }
 ```
 
-## Prop
+## checkboxGroup使用
+
+```html
+<nut-checkboxgroup v-model="checkboxgroup1">
+  <nut-checkbox v-model="checkbox9" label="1">组合复选框</nut-checkbox>
+  <nut-checkbox v-model="checkbox10" label="2">组合复选框</nut-checkbox>
+  <nut-checkbox v-model="checkbox11" label="3">组合复选框</nut-checkbox>
+  <nut-checkbox v-model="checkbox12" label="4">组合复选框</nut-checkbox>
+</nut-checkboxgroup>
+```
+
+```ts
+setup() {
+  return {
+    checkbox9: false,
+    checkbox10: false,
+    checkbox11: false,
+    checkbox12: false,
+    checkboxgroup1: ['2', '3'],
+  };
+}
+```
+
+## checkboxGroup 全选/取消
+
+```html
+<nut-checkboxgroup v-model="checkboxgroup3" ref="group" @change="changeBox4">
+  <nut-checkbox v-model="checkbox15" label="1">组合复选框</nut-checkbox>
+  <nut-checkbox v-model="checkbox16" label="2">组合复选框</nut-checkbox>
+</nut-checkboxgroup>
+<span class="btn">
+  <nut-button type="primary" @click="toggleAll(true)">全选</nut-button>
+  <nut-button type="primary" @click="toggleAll(false)">取消</nut-button>
+</span>
+```
+
+```ts
+setup() {
+  const group = ref(null);
+  const changeBox4 = (label: any[]) => {
+    Toast.text(`${label.length ? '全选' : '取消全选'}`);
+  };
+
+  const toggleAll = (f: boolean) => {
+    (group.value as any).toggleAll(f);
+  };
+  return {
+    checkbox15: false,
+    checkbox16: false,
+    changeBox4: false,
+    checkbox12: false,
+    checkboxgroup3: ['2'],
+    group,
+    changeBox4,
+    toggleAll
+  };
+}
+```
+
+## Checkbox
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| v-model | 是否处于选中状态 | String | `false`
+| v-model | 是否处于选中状态 | Boolean | `false`
 | disabled | 是否禁用选择 | Boolean | `false`
 | text-position | 文本所在的位置，可选值：`left`,`right` | String | `right`
 | icon-size | [图标尺寸](#/icon) | String、Number | `18`
@@ -113,9 +172,23 @@ setup() {
 | label | 复选框的文本内容 | String | -
 
 
+## CheckboxGroup
 
-## Event
+| 字段 | 说明 | 类型 | 默认值
+|----- | ----- | ----- | ----- 
+| v-model | 当前选中项的标识符，和 `label` 相对应  | String | -
+| disabled | 是否禁用选择,将用于其下的全部复选框 | Boolean | `false`
+
+
+
+## Checkbox Event
 
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 
 | change | 值变化时触发 | (state, label),`state`代表当前状态，`label`表示当前选中的值
+
+## CheckboxGroup Event
+
+| 字段 | 说明 | 回调参数 
+|----- | ----- | ----- 
+| change | 值变化时触发 | label,`label`返回一个数组，表示当前选中项的集合
