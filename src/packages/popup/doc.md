@@ -104,7 +104,7 @@ app.use(Popup);
 | transition             | 动画名                                                      | String         | -             |
 | style                  | 自定义弹框样式                                              | CSSProperties  | -             |
 | pop-class              | 自定义弹框类名                                              | String         | -             |
-| closeable              | 是否显示关闭按钮                                            | Boolean        | `true`        |
+| closeable              | 是否显示关闭按钮                                            | Boolean        | `false`        |
 | close-icon-position    | 关闭按钮位置（top-left,top-right,bottom-left,bottom-right） | String         | `"top-right"` |
 | close-icon             | 自定义 Icon                                                 | String         | `"close"`     |
 | destroy-on-close       | 组件销毁后是否关闭                                          | Boolean        | `true`        |
