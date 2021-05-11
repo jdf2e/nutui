@@ -45,15 +45,48 @@
         >change复选框</nut-checkbox
       >
     </div>
+    <h4>checkboxGroup使用</h4>
+    <div class="show-demo group1">
+      <nut-checkboxgroup v-model="checkboxgroup1">
+        <nut-checkbox v-model="checkbox9" label="1">组合复选框</nut-checkbox>
+        <nut-checkbox v-model="checkbox10" label="2">组合复选框</nut-checkbox>
+        <nut-checkbox v-model="checkbox11" label="3">组合复选框</nut-checkbox>
+        <nut-checkbox v-model="checkbox12" label="4">组合复选框</nut-checkbox>
+      </nut-checkboxgroup>
+      <span>选中：{{ checkboxgroup1 }}</span>
+    </div>
+    <h4>checkboxGroup禁用</h4>
+    <div class="show-demo group2">
+      <nut-checkboxgroup v-model="checkboxgroup2" disabled>
+        <nut-checkbox v-model="checkbox13" label="1">组合复选框</nut-checkbox>
+        <nut-checkbox v-model="checkbox14" label="2">组合复选框</nut-checkbox>
+      </nut-checkboxgroup>
+    </div>
+    <h4>checkboxGroup 全选/取消</h4>
+    <div class="show-demo group1">
+      <nut-checkboxgroup
+        v-model="checkboxgroup3"
+        ref="group"
+        @change="changeBox4"
+      >
+        <nut-checkbox v-model="checkbox15" label="1">组合复选框</nut-checkbox>
+        <nut-checkbox v-model="checkbox16" label="2">组合复选框</nut-checkbox>
+      </nut-checkboxgroup>
+      <span class="btn">
+        <nut-button type="primary" @click="toggleAll(true)">全选</nut-button>
+        <nut-button type="primary" @click="toggleAll(false)">取消</nut-button>
+      </span>
+    </div>
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs } from 'vue';
+import { reactive, ref, toRefs, onMounted } from 'vue';
 import { createComponent } from '@/utils/create';
 import { Toast } from '@/nutui';
 const { createDemo } = createComponent('checkbox');
 export default createDemo({
   setup(props, context) {
+    const group = ref(null);
     const data = reactive({
       checkbox1: true,
       checkbox2: false,
@@ -62,7 +95,18 @@ export default createDemo({
       checkbox5: false,
       checkbox6: false,
       checkbox7: false,
-      checkbox8: false
+      checkbox8: false,
+      checkbox9: false,
+      checkbox10: false,
+      checkbox11: false,
+      checkbox12: false,
+      checkbox13: false,
+      checkbox14: false,
+      checkbox15: false,
+      checkbox16: false,
+      checkboxgroup1: ['2', '3'],
+      checkboxgroup2: ['2'],
+      checkboxgroup3: ['2']
     });
     const changeBox1 = (state: boolean, label: string) => {
       console.log(state, label);
@@ -76,10 +120,21 @@ export default createDemo({
       Toast.text(`您${state ? '选中' : '取消'}了${label}`);
     };
 
+    const changeBox4 = (label: any[]) => {
+      Toast.text(`${label.length ? '全选' : '取消全选'}`);
+    };
+
+    const toggleAll = (f: boolean) => {
+      (group.value as any).toggleAll(f);
+    };
+
     return {
       changeBox1,
       changeBox2,
       changeBox3,
+      changeBox4,
+      toggleAll,
+      group,
       ...toRefs(data)
     };
   }
@@ -104,6 +159,17 @@ export default createDemo({
     background-color: #ffffff;
     border-radius: 7px;
     box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
+    &.group1 {
+      flex-direction: column;
+      ::v-deep(.nut-checkbox) {
+        margin-left: 15px;
+      }
+    }
+    &.group2 {
+      ::v-deep(.nut-checkbox) {
+        margin-left: 15px;
+      }
+    }
     p,
     span {
       display: block;
@@ -111,7 +177,14 @@ export default createDemo({
       color: #636363;
     }
     span {
-      font-size: 12px;
+      color: #1d1e1e;
+      font-size: 16px;
+      &.btn {
+        margin-top: 20px;
+        ::v-deep(.nut-button) {
+          margin-left: 10px;
+        }
+      }
     }
   }
 }

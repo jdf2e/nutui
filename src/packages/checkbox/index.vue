@@ -1,10 +1,12 @@
 <script lang="ts">
-import { h, computed } from 'vue';
+import { h, computed, inject, getCurrentInstance, onMounted } from 'vue';
 import { createComponent } from '@/utils/create';
 const { create, componentName } = createComponent('checkbox');
 import nutIcon from '@/packages/icon/index.vue';
+import CheckboxGroup from '@/packages/checkboxgroup/index.vue';
 
 export default create({
+  children: [CheckboxGroup],
   components: {
     nutIcon
   },
@@ -40,15 +42,27 @@ export default create({
   },
   emits: ['change', 'update:modelValue'],
   setup(props, { emit, slots }) {
-    const checked = computed(() => !!props.modelValue);
+    const parent: any = inject('parent');
 
-    const label = computed(() => {
-      return props.label ? props.label : slots.default?.();
+    const hasParent = computed(() => !!parent);
+
+    const pValue = computed(() => {
+      if (hasParent.value) {
+        return parent.value.value.includes(props.label);
+      } else {
+        return props.modelValue;
+      }
     });
 
+    const pDisabled = computed(() => {
+      return hasParent.value ? parent.disabled : props.disabled;
+    });
+
+    const checked = computed(() => !!props.modelValue);
+
     const color = computed(() => {
-      return !props.disabled
-        ? !props.modelValue
+      return !pDisabled.value
+        ? !pValue.value
           ? '#d6d6d6'
           : '#fa2c19'
         : '#f5f5f5';
@@ -60,9 +74,9 @@ export default create({
     };
 
     const renderIcon = () => {
-      const { iconName, iconSize, iconActiveName, modelValue } = props;
+      const { iconName, iconSize, iconActiveName } = props;
       return h(nutIcon, {
-        name: !modelValue ? iconName : iconActiveName,
+        name: !pValue.value ? iconName : iconActiveName,
         size: iconSize,
         color: color.value
       });
@@ -73,21 +87,32 @@ export default create({
         'view',
         {
           class: `${componentName}__label ${
-            props.disabled ? `${componentName}__label--disabled` : ''
+            pDisabled.value ? `${componentName}__label--disabled` : ''
           }`
         },
-        label.value
+        slots.default?.()
       );
     };
 
     const handleClick = (e: MouseEvent | TouchEvent) => {
-      if (props.disabled) return;
-      const text =
-        typeof label.value === 'string'
-          ? label.value
-          : label.value && label.value[0].children;
-      emitChange(!checked.value, text as string);
+      if (pDisabled.value) return;
+      emitChange(!checked.value, slots.default?.()[0].children as string);
+      if (hasParent.value) {
+        let value = parent.value.value;
+        let { label } = props;
+        const index = value.indexOf(label);
+        if (index > -1) {
+          value.splice(index, 1);
+        } else {
+          value.push(label);
+        }
+        parent.updateValue(value);
+      }
     };
+
+    onMounted(() => {
+      hasParent.value && parent['relation'](getCurrentInstance());
+    });
 
     return () => {
       return h(
