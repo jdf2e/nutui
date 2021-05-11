@@ -1,3 +1,18 @@
+## v3.0.0-beta.15
+
+`2021-05-11`
+
+* :bug: fix(steps): steps icon @szg2008
+* :bug: fix(site): site footer vue link error #450 @richard1015
+* :bug: fix(input): click clear btn bug @richard1015
+* :bug: fix(address): onchange > change change type bug @richard1015
+* :zap: refactor(checkbox): refactor checkbox checkboxgroup @szg2008
+* :zap: refactor(radio): refactor radio radiogroup @szg2008
+* :bug: fix(popup): closeable 默认false文档修改 @richard1015
+* :bug: fix(docs): feat relay link @richard1015
+
+
+
 ## v3.0.0-beta.14
 
 `2021-04-24`
