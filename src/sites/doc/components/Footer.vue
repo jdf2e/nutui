@@ -17,8 +17,17 @@
         <div class="doc-footer-item"
           ><a class="sub-link" target="_blank" href="https://vitejs.dev" v-hover
             >Vite</a
-          ></div
-        >
+          >
+        </div>
+        <div class="doc-footer-item"
+          ><a
+            class="sub-link"
+            target="_blank"
+            href="https://relay.jd.com"
+            v-hover
+            >Relay</a
+          >
+        </div>
         <div class="doc-footer-item"
           ><a
             class="sub-link"
@@ -26,8 +35,8 @@
             href="https://taro.jd.com"
             v-hover
             >Taro</a
-          ></div
-        >
+          >
+        </div>
         <div class="doc-footer-item"
           ><a
             class="sub-link"
@@ -35,8 +44,8 @@
             href="https://ling.jd.com/jdw"
             v-hover
             >羚珑</a
-          ></div
-        >
+          >
+        </div>
       </div>
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">社区</h4>
@@ -266,7 +275,7 @@ export default defineComponent({
 }
 // 颜色
 .doc-footer {
-  height: 240px;
+  // height: 240px;
   // 黑色
   &-black {
     background: $theme-black-footer-bg;
