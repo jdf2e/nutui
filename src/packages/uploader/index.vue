@@ -262,10 +262,6 @@ export default create({
       const $el = event.target as HTMLInputElement;
       let { files } = $el;
 
-      if (props.clearInput) {
-        clearInput($el);
-      }
-
       if (props.beforeUpload) {
         props.beforeUpload(files).then((f: Array<File>) => {
           const _files: File[] = filterFiles(new Array<File>().slice.call(f));
@@ -280,6 +276,10 @@ export default create({
         fileList,
         event
       });
+
+      if (props.clearInput) {
+        clearInput($el);
+      }
     };
 
     return {
