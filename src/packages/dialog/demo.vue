@@ -29,7 +29,7 @@
       </nut-cell>
       <nut-cell :is-link="true" :show-icon="true" @click.native="showDialog6">
         <span slot="title">
-          <label>无弹出动效且关闭时不销毁dislog实例</label>
+          <label>无弹出动效且关闭时不销毁dialog实例</label>
         </span>
       </nut-cell>
       <nut-cell :is-link="true" :show-icon="true" @click.native="showDialog7">
