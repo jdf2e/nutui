@@ -10,3 +10,38 @@
 
 随着 nutui 的用户群体，越来越多，react 版本的呼声越来越高，我们接下来，会将部分的精力投入到 react 技术栈开发中
 
+
+
+## 组件开发状态
+
+### 基础组件
+
+- [ ] Button
+- [ ] Cell
+- [ ] Icon
+- [ ] Layout
+- [ ] Popup
+- [ ] Toast
+- [ ] Calendar
+- [ ] Checkbox
+- [ ] DatePicker
+- [ ] Picker
+- [ ] Radio
+- [ ] Rate
+- [ ] Switch
+- [ ] Uploader
+- [ ] ActionSheet
+- [ ] Dialog
+- [ ] Notify
+- [ ] Overlay
+- [ ] PullRefresh
+- [ ] Badge
+- [ ] Circle
+- [ ] Collapse
+- [ ] CountDown
+- [ ] NoticeBar
+- [ ] Steps
+- [ ] NavBar
+- [ ] Tab
+- [ ] Tabbar
+- [ ] TreeSelect
