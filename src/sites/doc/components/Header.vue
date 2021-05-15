@@ -249,12 +249,12 @@ export default defineComponent({
     position: absolute;
     top: 30px;
     left: 50%;
-    margin-left: -50px;
+    margin-left: -60px;
     border-radius: 3px;
     overflow: hidden;
   }
   &-item {
-    width: 100px;
+    width: 120px;
     height: 28px;
     padding: 0 12px;
     line-height: 26px;
