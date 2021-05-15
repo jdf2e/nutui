@@ -46,6 +46,11 @@
             >羚珑</a
           >
         </div>
+        <div class="doc-footer-item"
+          ><a class="sub-link" href="javascript:void(0);" @click="tips" v-hover
+            >NutUI-Cat</a
+          >
+        </div>
       </div>
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">社区</h4>
