@@ -1,3 +1,11 @@
+## v3.0.0-beta.16
+
+`2021-05-18`
+
+* :zap: feat: site footer nutui-cat @richard1015
+* :zap: feat: site react version @richard1015
+* :zap: style: sites version width @richard1015
+* :bug: fix(uploader): clearInput props bug @richard1015
 ## v3.0.0-beta.15
 
 `2021-05-11`
