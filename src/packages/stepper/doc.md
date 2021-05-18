@@ -51,6 +51,14 @@ export default {
 ></nut-stepper>
 ```
 
+设置禁用
+
+```html
+<nut-stepper 
+    :disabled="true"
+></nut-stepper>
+```
+
 显示边框
 
 ```html
@@ -76,7 +84,8 @@ export default {
 | min | 最小值 | Number, String | 0
 | max | 最大值 | Number, String | Infinity
 | step | 步长 | Number, String | 1
-| readonly | 是否只读 | Boolean | false
+| readonly | 只读状态禁用输入框操作行为 | Boolean | false
+| disabled | 禁用所有功能 | Boolean | false
 | transition | 是否需要过渡效果 | Boolean | true
 | simple | 是否显示简单版 | Boolean | true
 | decimalPlaces | 设置保留的小数位 | Number | 0

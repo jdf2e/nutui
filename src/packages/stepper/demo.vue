@@ -35,6 +35,14 @@
         </span>
       </nut-cell>
     </div>
+    <h4>设置禁用</h4>
+    <div>
+      <nut-cell>
+        <span slot="title">
+          <nut-stepper :value.sync="val4" disabled></nut-stepper>
+        </span>
+      </nut-cell>
+    </div>
     <h4>显示边框</h4>
     <div>
       <nut-cell>
@@ -63,7 +71,7 @@ export default {
       val3: 5,
       val4: 0,
       val5: 0,
-      val6: 0,
+      val6: 0
     };
   },
   methods: {
@@ -84,8 +92,8 @@ export default {
     },
     reduce() {
       this.val1 = Math.max(Number(this.val1) - Number(0.1), 0).toFixed(1);
-    },
-  },
+    }
+  }
 };
 </script>
 

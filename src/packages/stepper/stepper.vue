@@ -1,10 +1,11 @@
 <template>
   <div :class="{ 'nut-stepper': !simple, 'nut-stepper-simple': simple }">
-    <span @click="reduce()" :class="{ 'nut-stepper-grey': isGray }" v-html="require('../../assets/svg/minus.svg')"> </span>
+    <span @click="reduce()" :class="{ 'nut-stepper-grey': isGray || disabled }" v-html="require('../../assets/svg/minus.svg')"> </span>
     <input
       type="number"
       :min="minNum"
       :max="max"
+      :disabled="disabled"
       :readonly="readonly || !isLegal"
       :value="num | maxv(minNum, max)"
       :style="{ visibility: showNum ? 'visible' : 'hidden' }"
@@ -41,7 +42,11 @@
       <div>{{ animNum[0] }}</div>
       <div>{{ animNum[1] }}</div>
     </div>
-    <span @click="add()" :class="{ 'nut-stepper-grey': (max && Number(num) > max - step) || !isLegal }" v-html="require('../../assets/svg/plus.svg')">
+    <span
+      @click="add()"
+      :class="{ 'nut-stepper-grey': (max && Number(num) > max - step) || !isLegal || disabled }"
+      v-html="require('../../assets/svg/plus.svg')"
+    >
     </span>
   </div>
 </template>
@@ -66,6 +71,10 @@ export default {
       default: 1
     },
     readonly: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
       type: Boolean,
       default: false
     },
@@ -143,7 +152,7 @@ export default {
   },
   methods: {
     focus(e) {
-      if (this.readonly || !this.isLegal) return;
+      if (this.readonly || !this.isLegal || this.disabled) return;
       // clear val temporary when focus, e...s
       const v = this.num;
       this.tempNum = v;
@@ -153,7 +162,7 @@ export default {
       this.$emit('focus', e, this.num);
     },
     blur(e) {
-      if (this.readonly || !this.isLegal) return this.$emit('blur', e, this.num);
+      if (this.readonly || !this.isLegal || this.disabled) return this.$emit('blur', e, this.num);
       let v = e.target.value;
       this.minNum = this.min;
       this.focusing = false;
@@ -191,6 +200,7 @@ export default {
       // .replace(/(\d+\.[^0]*)0+$/, '$1').replace(/\.$/, '')
     },
     add() {
+      if (this.disabled) return;
       this.num = Number(this.num);
       if (this.num <= this.max - this.step && this.max > this.minNum) {
         let [n1, n2] = this.fixedDecimalPlaces(this.num + Number(this.step)).split('.');
@@ -220,6 +230,7 @@ export default {
       this.showNum = true;
     },
     reduce() {
+      if (this.disabled) return;
       if (this.num - this.step >= this.minNum) {
         let [n1, n2] = this.fixedDecimalPlaces(this.num - Number(this.step)).split('.');
         let fixedLen = n2 ? n2.length : 0;
