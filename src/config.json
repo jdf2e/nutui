@@ -392,6 +392,16 @@
           "author": "Drjingfubo"
         },
         {
+          "version": "3.0.0",
+          "name": "Video",
+          "type": "component",
+          "cName": "视频播放器",
+          "desc": "视频播放组件",
+          "sort": 20,
+          "show": true,
+          "author": "zy19940510"
+        },
+        {
           "name": "Steps",
           "sort": 17,
           "cName": "步骤条",
