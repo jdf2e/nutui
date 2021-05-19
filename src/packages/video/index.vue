@@ -240,7 +240,6 @@ export default create({
     const play = () => {
       if (props.options.autoplay && props.options.disabled) {
         state.state.playing = true;
-        // this.state.controlShow = false
         return false;
       }
       state.state.playing = !state.state.playing;
