@@ -1,8 +1,8 @@
 <template>
-  <div class="demo-nopading">
+  <div class="demo full">
     <h2>基础用法</h2>
     <nut-input
-      v-model:value="state.val1"
+      v-model="state.val1"
       @change="change"
       @focus="focus"
       @blur="blur"
@@ -11,46 +11,46 @@
     <nut-input
       placeholder="请输入文本"
       @change="change"
-      v-model:value="state.val0"
+      v-model="state.val0"
       :require-show="true"
       label="文本"
       @clear="clear"
     />
     <h2>禁用输入框</h2>
     <nut-input
-      v-model:value="state.val2"
+      v-model="state.val2"
       @change="change"
       :disabled="true"
       label="文本"
     />
     <nut-input
-      v-model:value="state.val3"
+      v-model="state.val3"
       @change="change"
       :readonly="true"
       label="文本"
     />
     <h2>限制输入长度</h2>
     <nut-input
-      v-model:value="state.val4"
+      v-model="state.val4"
       @change="change"
       max-length="7"
       label="限制7"
     />
     <h2>自定义类型</h2>
     <nut-input
-      v-model:value="state.val0"
+      v-model="state.val0"
       @change="change"
       type="password"
       label="密码"
     />
     <nut-input
-      v-model:value="state.val5"
+      v-model="state.val5"
       @change="change"
       type="number"
       label="整数"
     />
     <nut-input
-      v-model:value="state.val6"
+      v-model="state.val6"
       @change="change"
       type="digit"
       placeholder="支持小数点的输入"
@@ -79,17 +79,17 @@ export default createDemo({
     setTimeout(function() {
       state.val1 = '异步数据';
     }, 2000);
-    const change = (num: string | number) => {
-      console.log('change: ', num);
+    const change = (value: string | number, event: Event) => {
+      console.log('change: ', value, event);
     };
-    const focus = (num: string | number) => {
-      console.log('focus:', num);
+    const focus = (value: string | number, event: Event) => {
+      console.log('focus:', value, event);
     };
-    const blur = (num: string | number) => {
-      console.log('blur:', num);
+    const blur = (value: string | number, event: Event) => {
+      console.log('blur:', value, event);
     };
-    const clear = (num: string | number) => {
-      console.log('clear:', num);
+    const clear = (value: string | number) => {
+      console.log('clear:', value);
     };
 
     return {
@@ -103,19 +103,4 @@ export default createDemo({
 });
 </script>
 
-<style lang="scss" scoped>
-.demo-nopading {
-  height: 100%;
-  background: #f7f8fa;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: 0;
-  padding-top: 57px;
-  h2 {
-    padding-left: 25px;
-    margin-top: 25px;
-    margin-bottom: 10px;
-    color: #909ca4;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

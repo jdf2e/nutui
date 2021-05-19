@@ -1,32 +1,77 @@
 <template>
   <view :class="classes">
-    <view class="preview" v-for="item in fileList" :key="item.uid">
-      <view class="preview-img">
-        <nut-icon
-          v-if="isDeletable"
-          color="rgba(0,0,0,0.6)"
-          @click="onDelete(item, index)"
-          class="close"
-          name="mask-close"
-        ></nut-icon>
-        <img v-if="item.type.includes('image') && item.url" :src="item.url" />
-        <view class="tips" v-if="item.status != 'success'">{{
-          item.status
-        }}</view>
+    <view class="nut-uploader__slot" v-if="$slots.default">
+      <slot></slot>
+      <template v-if="maximum - fileList.length">
+        <input
+          class="nut-uploader__input"
+          v-if="capture"
+          type="file"
+          capture="camera"
+          :accept="accept"
+          :multiple="multiple"
+          :name="name"
+          :disabled="disabled"
+          @change="onChange"
+        />
+        <input
+          class="nut-uploader__input"
+          v-else
+          type="file"
+          :accept="accept"
+          :multiple="multiple"
+          :name="name"
+          :disabled="disabled"
+          @change="onChange"
+        />
+      </template>
+    </view>
+
+    <template v-else>
+      <view
+        class="nut-uploader__preview"
+        v-for="item in fileList"
+        :key="item.uid"
+      >
+        <view class="nut-uploader__preview-img">
+          <nut-icon
+            v-if="isDeletable"
+            color="rgba(0,0,0,0.6)"
+            @click="onDelete(item, index)"
+            class="close"
+            name="mask-close"
+          ></nut-icon>
+          <img v-if="item.type.includes('image') && item.url" :src="item.url" />
+          <view class="tips" v-if="item.status != 'success'">{{
+            item.status
+          }}</view>
+        </view>
       </view>
-    </view>
-    <view class="upload" v-if="maxCount - fileList.length">
-      <nut-icon color="#808080" :name="uploadIcon"></nut-icon>
-      <input
-        type="file"
-        :capture="capture"
-        :accept="acceptType"
-        :multiple="multiple"
-        :name="name"
-        :disabled="disabled"
-        @change="onChange"
-      />
-    </view>
+      <view class="nut-uploader__upload" v-if="maximum - fileList.length">
+        <nut-icon color="#808080" :name="uploadIcon"></nut-icon>
+        <input
+          class="nut-uploader__input"
+          v-if="capture"
+          type="file"
+          capture="camera"
+          :accept="accept"
+          :multiple="multiple"
+          :name="name"
+          :disabled="disabled"
+          @change="onChange"
+        />
+        <input
+          class="nut-uploader__input"
+          v-else
+          type="file"
+          :accept="accept"
+          :multiple="multiple"
+          :name="name"
+          :disabled="disabled"
+          @change="onChange"
+        />
+      </view>
+    </template>
   </view>
 </template>
 
@@ -58,13 +103,13 @@ export default create({
     isPreview: { type: Boolean, default: true },
     isDeletable: { type: Boolean, default: true },
     method: { type: String, default: 'post' },
-    capture: { type: String, default: 'camera' },
-    maxSize: { type: [Number, String], default: Number.MAX_VALUE },
-    maxCount: { type: [Number, String], default: 1 },
+    capture: { type: Boolean, default: false },
+    maximize: { type: [Number, String], default: Number.MAX_VALUE },
+    maximum: { type: [Number, String], default: 1 },
     clearInput: { type: Boolean, default: false },
-    acceptType: { type: String, default: '*' },
+    accept: { type: String, default: '*' },
     headers: { type: Object, default: {} },
-    formData: { type: Object, default: {} },
+    data: { type: Object, default: {} },
     uploadIcon: { type: String, default: 'photograph' },
     xhrState: { type: [Number, String], default: 200 },
     withCredentials: { type: Boolean, default: false },
@@ -90,7 +135,8 @@ export default create({
     'success',
     'failure',
     'change',
-    'delete'
+    'delete',
+    'update:fileList'
   ],
   setup(props, { emit }) {
     const fileList = reactive(props.fileList) as Array<FileItem>;
@@ -108,7 +154,7 @@ export default create({
     const executeUpload = (fileItem: FileItem) => {
       const uploadOption = new UploadOptions();
       uploadOption.url = props.url;
-      for (const [key, value] of Object.entries(props.formData)) {
+      for (const [key, value] of Object.entries(props.data)) {
         fileItem.formData.append(key, value);
       }
       uploadOption.formData = fileItem.formData;
@@ -137,6 +183,7 @@ export default create({
           responseText,
           option
         });
+        emit('update:fileList', props.fileList);
       };
       uploadOption.onFailure = (
         responseText: XMLHttpRequest['responseText'],
@@ -177,11 +224,11 @@ export default create({
     };
 
     const filterFiles = (files: File[]) => {
-      const maxCount = (props.maxCount as number) * 1;
-      const maxSize = (props.maxSize as number) * 1;
+      const maximum = (props.maximum as number) * 1;
+      const maximize = (props.maximize as number) * 1;
       const oversizes = new Array<File>();
       files = files.filter((file: File) => {
-        if (file.size > maxSize) {
+        if (file.size > maximize) {
           oversizes.push(file);
           return false;
         } else {
@@ -191,8 +238,8 @@ export default create({
       if (oversizes.length) {
         emit('oversize', oversizes);
       }
-      if (files.length > maxCount) {
-        files.splice(maxCount - 1, files.length - maxCount);
+      if (files.length > maximum) {
+        files.splice(maximum - 1, files.length - maximum);
       }
       return files;
     };
@@ -215,10 +262,6 @@ export default create({
       const $el = event.target as HTMLInputElement;
       let { files } = $el;
 
-      if (props.clearInput) {
-        clearInput($el);
-      }
-
       if (props.beforeUpload) {
         props.beforeUpload(files).then((f: Array<File>) => {
           const _files: File[] = filterFiles(new Array<File>().slice.call(f));
@@ -233,6 +276,10 @@ export default create({
         fileList,
         event
       });
+
+      if (props.clearInput) {
+        clearInput($el);
+      }
     };
 
     return {

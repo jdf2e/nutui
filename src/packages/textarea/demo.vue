@@ -1,67 +1,40 @@
 <template>
-  <div class="demo-nopading">
+  <div class="demo full">
     <h2>基础用法</h2>
-    <nut-textarea
-      v-model:value="state.val0"
-      @change="change"
-      rows="10"
-      placeholder="高度可拉伸"
-      :autosize="true"
-      label="留言："
-    />
+    <nut-textarea v-model="value" />
     <h2>显示字数统计</h2>
-    <nut-textarea
-      v-model:value="state.val1"
-      @change="change"
-      rows="5"
-      :limit-show="true"
-      max-length="20"
-      placeholder="设置输入五行"
-      label="留言："
-    />
+    <nut-textarea v-model="value2" limit-show max-length="20" />
+    <h2>高度自定义，拉伸</h2>
+    <nut-textarea v-model="value3" rows="10" autosize />
     <h2>只读</h2>
-    <nut-textarea readonly="true" rows="5" placeholder="只读" label="留言：" />
+    <nut-textarea readonly model-value="textarea直读状态" />
+    <h2>禁用</h2>
+    <nut-textarea
+      disabled
+      model-value="textarea禁用状态"
+      limit-show
+      max-length="20"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { reactive } from 'vue';
+import { ref } from 'vue';
 import { createComponent } from '@/utils/create';
 const { createDemo } = createComponent('textarea');
 export default createDemo({
   setup() {
-    const state = reactive({
-      val0: '',
-      val1: '初始数据'
-    });
-    setTimeout(function() {
-      state.val1 = '异步测试数据，2秒';
-    }, 2000);
-    const change = (num: string | number) => {
-      console.log('change: ', num);
-    };
+    const value = ref('');
+    const value2 = ref('');
+    const value3 = ref('');
 
     return {
-      state,
-      change
+      value,
+      value2,
+      value3
     };
   }
 });
 </script>
 
-<style lang="scss" scoped>
-.demo-nopading {
-  height: 100%;
-  background: #f7f8fa;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: 0;
-  padding-top: 57px;
-  h2 {
-    padding-left: 25px;
-    margin-top: 25px;
-    margin-bottom: 10px;
-    color: #909ca4;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

@@ -1,10 +1,11 @@
 <template>
   <view :class="classes">
     <nut-popup
-      v-model:show="state.maskIsVisible"
+      pop-class="popclass"
+      :visible="visible"
       position="bottom"
       round
-      @click-overlay="closeMask"
+      @click-overlay="close"
     >
       <view class="nut-actionsheet-panel">
         <view-block v-if="title" class="nut-actionsheet-title">{{
@@ -38,15 +39,12 @@
 </template>
 <script>
 import { createComponent } from '@/utils/create';
-import { watch, reactive, computed } from 'vue';
+import { computed } from 'vue';
 const { componentName, create } = createComponent('actionsheet');
-
+import { popupProps } from '@/packages/popup/index.vue';
 export default create({
   props: {
-    isVisible: {
-      type: Boolean,
-      default: false
-    },
+    ...popupProps,
     cancelTxt: {
       type: String,
       default: ''
@@ -80,13 +78,9 @@ export default create({
       default: () => []
     }
   },
-  emits: ['cancel', 'choose'],
+  emits: ['cancel', 'choose', 'update:visible'],
 
   setup(props, { emit }) {
-    const state = reactive({
-      maskIsVisible: false
-    });
-
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -100,39 +94,29 @@ export default create({
         ? props.color
         : '#1a1a1a';
     };
-    const closeActionSheet = () => {
-      state.maskIsVisible = false;
-    };
 
     const cancelActionSheet = () => {
-      closeActionSheet();
       emit('cancel');
+      emit('update:visible', false);
     };
 
     const chooseItem = (item, index) => {
       if (!item.disable) {
-        closeActionSheet();
         emit('choose', item, index);
+        emit('update:visible', false);
       }
     };
 
-    const closeMask = () => {
-      state.maskIsVisible = false;
+    const close = () => {
+      emit('close');
+      emit('update:visible', false);
     };
 
-    watch(
-      () => props.isVisible,
-      () => {
-        state.maskIsVisible = true;
-      }
-    );
     return {
       isHighlight,
-      closeActionSheet,
       cancelActionSheet,
       chooseItem,
-      closeMask,
-      state,
+      close,
       classes
     };
   }

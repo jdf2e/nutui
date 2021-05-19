@@ -3,13 +3,17 @@
     <nut-popup
       position="bottom"
       :style="{ height: height + 56 + 'px' }"
-      v-model:show="show"
+      v-model:visible="show"
       @close="close"
     >
       <view-block class="nut-picker__bar">
-        <view-block class="nut-picker__left" @click="close">取消</view-block>
+        <view-block class="nut-picker__left nut-picker__button" @click="close"
+          >取消</view-block
+        >
         <view-block> {{ title }}</view-block>
-        <view-block @click="confirm()">确定</view-block>
+        <view-block class="nut-picker__button" @click="confirm()"
+          >确定</view-block
+        >
       </view-block>
 
       <view-block class="nut-picker__column">
@@ -36,8 +40,7 @@
             @change="
               dataIndex => {
                 changeHandler(columnIndex, dataIndex);
-              }
-            "
+              }"
           ></nut-picker-column>
         </view-block>
       </view-block>
@@ -59,9 +62,12 @@ import {
 const { create, componentName } = createComponent('picker');
 
 export default create({
-  children: [column, popup],
+  components: {
+    [column.name]: column,
+    [popup.name]: popup
+  },
   props: {
-    isVisible: {
+    visible: {
       type: Boolean,
       default: false
     },
@@ -71,8 +77,7 @@ export default create({
     },
     ...commonProps
   },
-  emits: ['close', 'change', 'confirm', 'update:isVisible'],
-
+  emits: ['close', 'change', 'confirm', 'update:visible'],
   setup(props, { emit }) {
     const childrenKey = 'children';
     const valuesKey = 'values';
@@ -172,7 +177,7 @@ export default create({
 
     const close = () => {
       emit('close');
-      emit('update:isVisible', false);
+      emit('update:visible', false);
     };
 
     const changeHandler = (columnIndex: number, dataIndex: number) => {
@@ -223,11 +228,11 @@ export default create({
         );
       }
 
-      emit('update:isVisible', false);
+      emit('update:visible', false);
     };
 
     watch(
-      () => props.isVisible,
+      () => props.visible,
       val => {
         state.show = val;
       }

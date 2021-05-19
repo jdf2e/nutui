@@ -1,49 +1,38 @@
 .nut-textarea {
   position: relative;
   width: 100%;
-  padding: 10px 0px 10px 25px;
   display: flex;
   background: $white;
-  border-bottom: 1px solid $input-border-bottom;
-  font-size: 14px;
-  .nut-input-label {
-    width: 80px;
-    overflow: hidden;
-    display: inline-block;
-    text-align: left;
-    .label-string {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+  font-size: $textarea-font;
+  padding: 10px 25px;
+
+  &--disabled {
+    .nut-textarea__textarea,
+    .nut-textarea____limit {
+      cursor: not-allowed;
+      color: $textarea-disabled-color !important;
     }
   }
-  .nut-textinput-clear {
-    width: 16px;
-    height: 16px;
+  &__limit {
     position: absolute;
     right: 15px;
+    bottom: 12px;
+    font-size: $textarea-font;
+    color: $textarea-limit-color;
   }
-  .nut-text {
-    flex: 1;
-    padding: 0 10px;
-    .nut-text-limit {
-      float: right;
-      color: rgba(153, 153, 153, 1);
-    }
-    .nut-text-core {
-      outline: none;
-      display: block;
-      box-sizing: border-box;
-      width: 100%;
-      min-width: 0;
-      margin: 0;
-      padding: 0;
-      color: #323233;
-      line-height: inherit;
-      text-align: left;
-      background-color: transparent;
-      border: 0;
-      resize: none;
-    }
+  &__textarea {
+    min-height: $textarea-height;
+    outline: none;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    color: $textarea-text-color;
+    text-align: left;
+    background-color: transparent;
+    border: 0;
+    resize: none;
   }
 }

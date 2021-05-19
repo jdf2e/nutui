@@ -11,6 +11,14 @@
     {
       "name": "3.x",
       "link": "/3x/"
+    },
+    {
+      "name": "nutui-jdl",
+      "link": "/jdl/"
+    },
+    {
+      "name": "nutui-react",
+      "link": "https://github.com/jdf2e/nutui/tree/nutui-react"
     }
   ],
   "header": [
@@ -215,6 +223,15 @@
           "author": "richard1015"
         },
         {
+          "name": "CellGroup",
+          "sort": 1,
+          "cName": "单元格组件",
+          "type": "component",
+          "show": false,
+          "desc": "展示分组列表",
+          "author": "richard1015"
+        },
+        {
           "name": "Uploader",
           "sort": 2,
           "cName": "上传组件",
@@ -382,7 +399,25 @@
           "desc": "视频播放组件",
           "sort": 20,
           "show": true,
-          "author": "Jerry"
+          "author": "zy19940510"
+        },
+        {
+          "name": "Steps",
+          "sort": 17,
+          "cName": "步骤条",
+          "type": "component",
+          "show": true,
+          "desc": "步骤条",
+          "author": "ailululu"
+        },
+        {
+          "name": "Step",
+          "sort": 17,
+          "cName": "步骤条子组件",
+          "type": "component",
+          "show": false,
+          "desc": "步骤条子组件",
+          "author": "ailululu"
         }
       ]
     },
@@ -412,7 +447,7 @@
           "sort": 2,
           "cName": "菜单组件",
           "type": "component",
-          "show": true,
+          "show": false,
           "desc": "下拉菜单组件",
           "author": "vickyYE"
         },

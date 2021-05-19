@@ -1,6 +1,8 @@
 <template>
   <div v-if="title != '/'" id="nav">
-    <span class="back" @click="goBack"><nut-icon name="left"></nut-icon></span>
+    <div class="back" @click="goBack">
+      <nut-icon name="left"></nut-icon>
+    </div>
     {{ title }}
   </div>
   <router-view />
@@ -19,7 +21,7 @@ export default defineComponent({
 
     //返回demo页
     const goBack = () => {
-      router.push('/');
+      router.back();
     };
     // 当当前路由发生变化时，调用回调函数
     watch(
@@ -68,7 +70,13 @@ export default defineComponent({
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.07);
     .back {
       position: absolute;
-      left: 25px;
+      left: 0;
+      height: 100%;
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
     }
   }
 
@@ -77,12 +85,12 @@ export default defineComponent({
     background: #f7f8fa;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 57px 25px 0 25px;
+    padding: 57px 17px 0 17px;
 
     &.full {
       padding: 57px 0 0 0;
       h2 {
-        padding-left: 25px;
+        padding-left: 17px;
       }
     }
 
@@ -99,6 +107,8 @@ export default defineComponent({
       margin-bottom: 10px;
       font-size: 14px;
       color: rgba(144, 156, 164, 1);
+      padding: 0 10px;
+      font-weight: normal;
     }
     > p {
       font-size: 12px;

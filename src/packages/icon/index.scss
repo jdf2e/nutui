@@ -1,9 +1,18 @@
 @import '../../styles/font/iconfont.css';
 .nut-icon {
+  display: inline-block;
+  position: relative;
   width: $icon-width;
   height: $icon-height;
   line-height: $icon-line-height;
   text-align: right;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
   &__img {
     width: $icon-width;
@@ -12,7 +21,6 @@
   }
   &-loading {
     display: inline-block;
-    -webkit-animation: loadingCircle 1s infinite linear;
     animation: loadingCircle 1s infinite linear;
   }
 }

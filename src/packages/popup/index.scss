@@ -32,6 +32,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  &.round {
+    border-radius: $popup-border-radius;
+  }
 }
 
 .popup-bottom {
@@ -106,7 +109,7 @@
 
 .nutui-popup {
   &__close-icon {
-    position: absolute;
+    position: absolute !important;
     z-index: 1;
     color: #969799;
     font-size: 18px;

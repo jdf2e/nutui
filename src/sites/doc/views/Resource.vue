@@ -50,21 +50,7 @@
             @click="toLink(item.id)"
           >
             <img class="img-design" :src="item.cover_image" />
-            <p class="design-title">{{ item.title }}</p>
-          </div>
-        </div>
-        <div class="tab-bd" v-show="activeIndex === 1">
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title"
-              >NutUI 落地实践-让组件库服务慧采协同采购业务</p
-            >
-          </div>
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title"
-              >NutUI 落地实践-让组件库服务慧采协同采购业务</p
-            >
+            <p class="design-title" v-hover>{{ item.title }}</p>
           </div>
         </div>
       </div>
@@ -97,7 +83,7 @@ import {
 } from 'vue-router';
 import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
-import { currentRoute } from '@/sites/assets/util/ref';
+import { RefData } from '@/sites/assets/util/ref';
 import { ApiService } from '@/sites/service/ApiService';
 export default defineComponent({
   name: 'doc',
@@ -125,7 +111,7 @@ export default defineComponent({
       activeIndex: 0
     });
     const watchDemoUrl = (router: RouteLocationNormalized) => {
-      currentRoute.value = router.name as string;
+      RefData.getInstance().currentRoute.value = router.name as string;
     };
     onMounted(() => {
       // 路由

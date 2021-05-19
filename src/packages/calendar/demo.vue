@@ -10,7 +10,7 @@
       >
       </nut-cell>
       <nut-calendar
-        :is-visible="isVisible"
+        v-model:visible="isVisible"
         :default-value="date"
         @close="closeSwitch('isVisible')"
         @choose="setChooseValue"
@@ -29,7 +29,7 @@
       >
       </nut-cell>
       <nut-calendar
-        :is-visible="isVisible1"
+        v-model:visible="isVisible1"
         :default-value="date1"
         type="range"
         :start-date="`2019-12-22`"
@@ -50,7 +50,7 @@
       >
       </nut-cell>
       <nut-calendar
-        :is-visible="isVisible3"
+        v-model:visible="isVisible3"
         @close="closeSwitch('isVisible3')"
         @choose="setChooseValue3"
         :default-value="date3"
@@ -79,7 +79,6 @@ import { reactive, toRefs } from 'vue';
 import { createComponent } from '@/utils/create';
 
 const { createDemo } = createComponent('calendar');
-import Utils from '@/utils/date';
 
 interface TestCalendarState {
   isVisible: boolean;

@@ -8,10 +8,11 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Cell } from '@nutui/nutui';
+import { Cell,CellGroup } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Cell);
+app.use(CellGroup);
 
 ```
 
@@ -27,11 +28,16 @@ app.use(Cell);
 
 ``` javascript
 // ...
-setup() {
-    const testClick = (event) => {
-      alert(event);
-    };
-    return { testClick };
+import { ref } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+      const switchChecked = ref(true);
+      const testClick = (event) => {
+        Toast.text('点击事件')
+      };
+      return { testClick,switchChecked };
+  }
 }
 // ...
 ```
@@ -44,13 +50,28 @@ setup() {
  </nut-cell>  
 ```
 
-### 链接
+### 链接 | 分组用法
 
 ``` html
-<nut-cell title="链接" is-link></nut-cell>
-<nut-cell title="URL 跳转" desc="https://jd.com" is-link url="https://jd.com"></nut-cell>
-<nut-cell title="路由跳转 ’/‘ " to="/"></nut-cell>
+<nut-cell-group title="链接 | 分组用法">
+  <nut-cell title="链接" is-link></nut-cell>
+  <nut-cell title="URL 跳转" desc="https://jd.com" is-link url="https://jd.com"></nut-cell>
+  <nut-cell title="路由跳转 ’/‘ " to="/"></nut-cell>
+</nut-cell-group>
 ```
+
+### 自定义右侧箭头区域
+
+``` html
+<nut-cell-group title="自定义右侧箭头区域">
+  <nut-cell title="Switch">
+    <template v-slot:link>
+      <nut-switch v-model="switchChecked" />
+    </template>
+  </nut-cell>
+</nut-cell-group>
+```
+
 
 ### 单元格展示图标
 
@@ -67,17 +88,17 @@ setup() {
 
 ### Prop
 
-| 字段            | 说明                                                                                           | 类型    | 默认值  |
-|-----------------|------------------------------------------------------------------------------------------------|---------|---------|
-| title           | 标题名称                                                                                       | String  | -       |
-| sub-title       | 左侧副标题                                                                                     | String  | -       |
-| desc            | 右侧描述                                                                                       | String  | -       |
-| desc-text-align | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)   | String  | "right" |
-| is-link         | 是否展示右侧箭头并开启点击反馈                                                                 | Boolean | false   |
-| icon            | 左侧 [图标名称](#/icon) 或图片链接                                                             | String  | -       |
-| url             | 点击后跳转的链接地址                                                                           | String  | -       |
-| to              | 点击后跳转的目标路由对象，同 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | String  | -       |
-| replace         | 是否在跳转时替换当前页面历史                                                                   | Boolean | false   |
+| 字段            | 说明                                                                                           | 类型    | 默认值 |
+|-----------------|------------------------------------------------------------------------------------------------|---------|--------|
+| title           | 标题名称                                                                                       | String  | -      |
+| sub-title       | 左侧副标题                                                                                     | String  | -      |
+| desc            | 右侧描述                                                                                       | String  | -      |
+| desc-text-align | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)   | String  | right  |
+| is-link         | 是否展示右侧箭头并开启点击反馈                                                                 | Boolean | false  |
+| icon            | 左侧 [图标名称](#/icon) 或图片链接                                                             | String  | -      |
+| url             | 点击后跳转的链接地址                                                                           | String  | -      |
+| to              | 点击后跳转的目标路由对象，同 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | String  | -      |
+| replace         | 是否在跳转时替换当前页面历史                                                                   | Boolean | false  |
 
 ### Event
 

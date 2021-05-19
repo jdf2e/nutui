@@ -115,7 +115,7 @@ export default {
 | input-width    | 输入框宽度                 | String         | `40px`     |
 | button-size    | 操作符+、-尺寸             | String         | `20px`     |
 | min            | 最小值限制                 | String、Number | `1`        |
-| max            | 最大值限制                 | String、Number | `Infinity` |
+| max            | 最大值限制                 | String、Number | `9999` |
 | step           | 步长                       | String、Number | `1`        |
 | decimal-places | 设置保留的小数位           | String、Number | `0`        |
 | disabled       | 禁用所有功能               | Boolean        | false      |

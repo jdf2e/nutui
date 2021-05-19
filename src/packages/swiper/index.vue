@@ -18,7 +18,10 @@
     </view>
     <slot name="page"></slot>
     <view
-      :class="{ [`${componentName}-pagination`]: true }"
+      :class="{
+        [`${componentName}-pagination`]: true,
+        [`${componentName}-pagination-vertical`]: isVertical
+      }"
       v-if="paginationVisible && !slots.page"
     >
       <i
@@ -49,7 +52,7 @@ import {
 } from 'vue';
 import { createComponent } from '@/utils/create';
 import { useTouch } from './use-touch';
-import { useExpose } from './use-expose';
+import { useExpose } from '@/utils/useExpose/index';
 const { create, componentName } = createComponent('swiper');
 import swiperItem from '@/packages/swiperitem/index.vue';
 export default create({

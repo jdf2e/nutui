@@ -1,12 +1,16 @@
-<template>
-  <view :class="['nut-checkboxgroup', 'nut-checkboxgroup-' + direction]">
-    <slot></slot>
-  </view>
-</template>
 <script lang="ts">
-import { watch, provide, getCurrentInstance } from 'vue';
+import {
+  h,
+  watch,
+  provide,
+  computed,
+  ComponentInternalInstance,
+  reactive,
+  ComponentPublicInstance
+} from 'vue';
 import { createComponent } from '@/utils/create';
-const { create } = createComponent('checkboxgroup');
+import { useExpose } from '@/utils/useExpose/index';
+const { create, componentName } = createComponent('checkboxgroup');
 
 export default create({
   props: {
@@ -17,22 +21,41 @@ export default create({
     disabled: {
       type: Boolean,
       default: false
-    },
-    size: {
-      type: String,
-      default: 'base'
-    },
-    animation: {
-      type: Boolean,
-      default: true
-    },
-    direction: {
-      type: String,
-      default: 'horizontal'
     }
   },
   emits: ['change', 'update:modelValue'],
   setup(props, { slots, emit }) {
+    const state = reactive({
+      children: [] as ComponentPublicInstance[]
+    });
+
+    const relation = (child: ComponentInternalInstance) => {
+      if (child.proxy) {
+        state.children.push(child.proxy);
+      }
+    };
+
+    const updateValue = (value: any[]) => {
+      emit('update:modelValue', value);
+    };
+
+    const toggleAll = (checked: boolean) => {
+      let values: any[] = [];
+      if (!!checked) {
+        state.children.forEach((item: any) => {
+          values.push(item?.label);
+        });
+      }
+      emit('update:modelValue', values);
+    };
+
+    provide('parent', {
+      value: computed(() => props.modelValue),
+      disabled: props.disabled,
+      updateValue,
+      relation
+    });
+
     watch(
       () => props.modelValue,
       value => {
@@ -40,46 +63,17 @@ export default create({
       }
     );
 
-    function useExtend(apis: any) {
-      const instance = getCurrentInstance();
-      if (instance) {
-        Object.assign(instance.proxy, apis);
-      }
-    }
+    useExpose({ toggleAll });
 
-    const toggleAll = (checked: boolean) => {
-      const children = (slots as any)?.default();
-      if (checked === false) {
-        emit('update:modelValue', []);
-      } else if (checked === true) {
-        const labels = children.map(
-          (item: { props: { label: any } }) => item.props?.label
-        );
-        emit('update:modelValue', labels);
-      } else {
-        const names = children
-          .filter((item: { props: { label: any } }) => {
-            const label = item.props?.label;
-            const idx = props.modelValue.indexOf(label);
-            if (idx == -1) {
-              return label;
-            }
-          })
-          .map((item: { props: { label: any } }) => item.props?.label);
-        emit('update:modelValue', names);
-      }
+    return () => {
+      return h(
+        'view',
+        {
+          class: `${componentName}`
+        },
+        slots.default?.()
+      );
     };
-    useExtend({ toggleAll });
-
-    provide('checkboxgroup', {
-      parentNode: true,
-      changeVal: (val: []) => {
-        if (props.disabled) {
-          return false;
-        }
-        emit('update:modelValue', val);
-      }
-    });
   }
 });
 </script>

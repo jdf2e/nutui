@@ -24,14 +24,14 @@ app.use(Popup);
 ```html
 <nut-cell title="选择地址" :desc="text" is-link @click="showAddress"></nut-cell>
 <nut-address
-    v-model:show="showPopup"
+    v-model:visible="showPopup"
     :province="province"
     :city="city"
     :country="country"
     :town="town"
     @change="onChange"
     @close="close"
-    customAddressTitle="请选择所在地区"
+    custom-address-title="请选择所在地区"
 ></nut-address>
 ```
 ```javascript
@@ -84,13 +84,13 @@ setup() {
 ```html
 <nut-cell title="选择地址" :desc="text" is-link @click="showAddressExist"></nut-cell>
 <nut-address
-    v-model:show="showPopupExist"
+    v-model:visible="showPopupExist"
     type="exist"
-    :existAddress="existAddress"
+    :exist-address="existAddress"
     @close="close"
-    :isShowCustomAddress="false"
+    :is-show-custom-address="false"
     @selected="selected"
-    existAddressTitle="配送至"
+    exist-address-title="配送至"
 ></nut-address>
 ```
 ```javascript
@@ -160,15 +160,15 @@ setup() {
 ```html
 <nut-cell title="选择地址" :desc="text" is-link @click="showCustomImg"></nut-cell>
 <nut-address
-    v-model:show="showPopupCustomImg"
+    v-model:visible="showPopupCustomImg"
     type="exist"
     :existAddress="existAddress"
     @close="close"
-    :isShowCustomAddress="false"
+    :is-show-custom-address="false"
     @selected="selected3"
-    :defaultIcon="defaultIcon"
-    :selectedIcon="selectedIcon"
-    :closeBtnIcon="closeBtnIcon"
+    :default-icon="defaultIcon"
+    :selected-icon="selectedIcon"
+    :close-btn-icon="closeBtnIcon"
 ></nut-address>
 ```
 ```javascript
@@ -244,19 +244,19 @@ setup() {
 ```html
 <nut-cell title="选择地址" :desc="text" is-link @click="showAddressOther"></nut-cell>
 <nut-address
-    v-model:show="showPopupOther"
+    v-model:visible="showPopupOther"
     type="exist"
-    :existAddress="existAddress"
+    :exist-address="existAddress"
     :province="province"
     :city="city"
     :country="country"
     :town="town"
-    :backBtnIcon="backBtnIcon"
+    :back-btn-icon="backBtnIcon"
     @close="close"
     @selected="selected"
-    customAndExistTitle="选择其他地址"
-    @switchModule="switchModule"
-    @closeMask="closeMask"
+    custom-and-exist-title="选择其他地址"
+    @switch-module="switchModule"
+    @close-mask="closeMask"
 ></nut-address>
 ```
 ```javascript
@@ -360,7 +360,7 @@ setup() {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| v-model:show | 是否打开地址选择 | String | ''
+| v-model:visible | 是否打开地址选择 | String | ''
 | type | 地址选择类型 exist/custom | String | 'custom'
 | province | 省，每个省的对象中，必须有 name 字段 | Array | []
 | city | 市，每个市的对象中，必须有 name 字段 | Array | []
@@ -387,14 +387,14 @@ setup() {
 ## Event
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 
-| on-change | 自定义选择地址时，选择地区时触发 |  参考 onChange
+| change | 自定义选择地址时，选择地区时触发 |  参考 onChange
 | selected | 选择已有地址列表时触发 | 参考 selected
 | close | 地址选择弹框关闭时触发 | 参考 close
 | close-mask |点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'}
 | switch-module | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'}
 
 
-## onChange 回调参数
+## change 回调参数
 | 参数 | 说明 | 可能值 
 |----- | ----- | ----- 
 | custom | 当前点击的行政区域  |  province(省) / city(市) / country(县) / town(乡)

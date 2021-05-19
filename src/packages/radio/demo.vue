@@ -2,98 +2,55 @@
   <div class="demo-list">
     <h4>Radio基本用法</h4>
     <div class="show-demo">
-      <nut-radio v-model:value="radioVal" :label="2">备选项</nut-radio>
-    </div>
-    <h4>组合使用Radio</h4>
-    <div class="show-demo">
-      <nut-radio v-model:value="radioVal1" :label="1">备选项1</nut-radio>
-      <nut-radio v-model:value="radioVal1" :label="2">备选项2</nut-radio>
-      <span>radioVal1: {{ radioVal1 }} </span>
-    </div>
-
-    <h4>RadioGroup基本用法</h4>
-    <div class="show-demo">
-      <nut-radiogroup v-model:value="radioGroupVal1">
-        <nut-radio label="a">备选项1</nut-radio>
-        <nut-radio label="b">备选项2</nut-radio>
+      <nut-radiogroup v-model="radioVal" @change="handleChange1">
+        <nut-radio :label="1">单选框1</nut-radio>
+        <nut-radio :label="2">单选框2</nut-radio>
       </nut-radiogroup>
-      <span>radioGroupVal1: {{ radioGroupVal1 }} </span>
+      <span>{{ radioVal }}</span>
     </div>
-
-    <h4>Radio禁用</h4>
     <div class="show-demo">
-      <div>
-        <span>未选中时的禁用状态：</span>
-        <nut-radio :disabled="true" v-model:value="radioVal2" label="禁用"
-          >备选项1</nut-radio
-        >
-      </div>
-      <div>
-        <span>已选中时的禁用状态：</span>
-        <nut-radio :disabled="true" v-model:value="radioVal2" label="选中且禁用"
-          >备选项2</nut-radio
-        >
-      </div>
+      <nut-radiogroup
+        v-model="radioVal2"
+        @change="handleChange2"
+        text-position="left"
+      >
+        <nut-radio :label="1">单选框文本在左侧</nut-radio>
+        <nut-radio :label="2">单选框文本在左侧</nut-radio>
+      </nut-radiogroup>
+      <span>{{ radioVal2 }}</span>
     </div>
-
-    <h4>RadioGroup整体禁用</h4>
+    <h4>Radio单选框禁用</h4>
     <div class="show-demo">
-      <nut-radiogroup v-model:value="radioGroupVal2" :disabled="true">
-        <nut-radio label="1">备选项1</nut-radio>
-        <nut-radio label="2">备选项2</nut-radio>
-        <nut-radio label="3">备选项3</nut-radio>
+      <nut-radiogroup v-model="radioVal3">
+        <nut-radio :label="1" disabled>禁用单选框</nut-radio>
+        <nut-radio :label="2" disabled>禁用单选框</nut-radio>
       </nut-radiogroup>
     </div>
-
     <h4>Radio自定义尺寸</h4>
-    <div class="show-demo show-demo-block">
-      <nut-radio size="small">小号</nut-radio>
-      <nut-radio size="base">默认</nut-radio>
-      <nut-radio size="large">大号</nut-radio>
-      <p>size可选值：'small', 'base', 'large'</p>
-    </div>
-
-    <h4>RadioGroup整体定义尺寸</h4>
     <div class="show-demo">
-      <nut-radiogroup v-model:value="radioGroupVal3" size="large">
-        <nut-radio label="1">备选项1</nut-radio>
-        <nut-radio label="2">备选项2</nut-radio>
-        <nut-radio label="3">备选项3</nut-radio>
+      <nut-radiogroup v-model="radioVal4">
+        <nut-radio :label="1" icon-size="12">自定义尺寸12</nut-radio>
+        <nut-radio :label="2" icon-size="12">自定义尺寸12</nut-radio>
       </nut-radiogroup>
     </div>
-
-    <h4>Radio禁用动效</h4>
+    <h4>Radio自定义图标</h4>
     <div class="show-demo">
-      <nut-radio :animated="false" v-model:value="radioVal3" label="a"
-        >备选项1</nut-radio
-      >
-      <nut-radio :animated="false" v-model:value="radioVal3" label="b"
-        >备选项2</nut-radio
-      >
-      <p>animated 属性值为 false 时，禁用自带动效</p>
-    </div>
-
-    <h4>RadioGroup禁用动效</h4>
-    <div class="show-demo">
-      <nut-radiogroup v-model:value="radioGroupVal4" :animated="false">
-        <nut-radio label="a">备选项1</nut-radio>
-        <nut-radio label="b">备选项2</nut-radio>
-        <nut-radio label="c">备选项3</nut-radio>
+      <nut-radiogroup v-model="radioVal5">
+        <nut-radio :label="1" icon-name="checklist" icon-active-name="checklist"
+          >自定义图标</nut-radio
+        >
+        <nut-radio :label="2" icon-name="checklist" icon-active-name="checklist"
+          >自定义图标</nut-radio
+        >
       </nut-radiogroup>
     </div>
-
-    <h4>自定义Class</h4>
+    <h4>Radio触发change事件</h4>
     <div class="show-demo">
-      <div>
-        <nut-radio class="my-radio" v-model:value="radioVal5" label="a"
-          >备选项1</nut-radio
-        >
-      </div>
-      <div>
-        <nut-radio class="my-radio" v-model:value="radioVal5" label="b"
-          >备选项2</nut-radio
-        >
-      </div>
+      <nut-radiogroup v-model="radioVal6" @change="handleChange3">
+        <nut-radio :label="1">触发事件</nut-radio>
+        <nut-radio :label="2">触发事件</nut-radio>
+      </nut-radiogroup>
+      <span>{{ radioVal6 }}</span>
     </div>
   </div>
 </template>
@@ -101,24 +58,33 @@
 <script lang="ts">
 import { createComponent } from '@/utils/create';
 import { reactive, toRefs } from 'vue';
+import { Toast } from '@/nutui';
 const { createDemo } = createComponent('radio');
 export default createDemo({
   props: {},
   setup() {
     const data = reactive({
       radioVal: 1,
-      radioVal1: 2,
-      radioVal2: '选中且禁用',
-      radioVal3: 'b',
-      radioVal4: 'b',
-      radioVal5: 'a',
-      radioGroupVal1: 'b',
-      radioGroupVal2: '2',
-      radioGroupVal3: '2',
-      radioGroupVal4: 'c'
+      radioVal2: 2,
+      radioVal3: 1,
+      radioVal4: 1,
+      radioVal5: 1,
+      radioVal6: 1
     });
+    const handleChange1 = (value: any) => {
+      console.log(value);
+    };
+    const handleChange2 = (value: any) => {
+      console.log(value);
+    };
+    const handleChange3 = (value: any) => {
+      Toast.text(`您选中了${value}`);
+    };
     return {
-      ...toRefs(data)
+      ...toRefs(data),
+      handleChange1,
+      handleChange2,
+      handleChange3
     };
   }
 });
@@ -135,39 +101,17 @@ export default createDemo({
     font-size: 14px;
   }
   .show-demo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-top: 10px;
     padding: 15px;
     background-color: #ffffff;
     border-radius: 7px;
     box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
-    p,
-    span {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #636363;
-    }
-    span {
-      font-size: 12px;
-    }
-  }
-  .p-word {
-    margin: 15px 0;
-    font-size: 14px;
-    color: #636363;
-    padding-left: 5px;
-    border-left: 8px solid #03a9f4;
-  }
-  .show-demo-block {
-    label {
-      display: block;
-      margin-bottom: 10px;
-    }
-  }
-  .my-radio::v-deep {
-    input:checked {
-      background-image: url('https://img13.360buyimg.com/imagetools/jfs/t1/154120/1/10623/372/5fe013e6E4694fbf9/fd38d389b3a3b9c6.png');
-      background-size: 100%;
-      border: none;
+    ::v-deep(.nut-radio) {
+      height: 25px;
+      line-height: 25px;
     }
   }
 }

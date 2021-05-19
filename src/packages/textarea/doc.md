@@ -2,16 +2,16 @@
 
 ### 介绍
 
-支持多行文本
+文本框内输入或编辑文字，支持限制输入数量。
 
 ### 安装
 
 ``` javascript
 import { createApp } from 'vue';
-import { Textarea } from '@nutui/nutui';
+import { TextArea } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Textarea);
+app.use(TextArea);
 
 ```
 ## 代码演示
@@ -20,56 +20,63 @@ app.use(Textarea);
 
 
 ```html
-<nut-textarea
-  v-model:value="state.val0"
-  @change="change"
-  rows="5"
-  placeholder="高度可拉伸"
-  :autosize="true"
-  label="留言："
-/>
+<nut-textarea v-model="value" />
+```
+``` javascript
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const value = ref('');
+    return { value };
+  },
+};
 ```
 
 ### 显示字数统计
 
 
 ```html
- <nut-textarea
-  v-model:value="state.val1"
-  @change="change"
-  rows="5"
-  :limit-show="true"
-  max-length="20"
-  type="textarea"
-  placeholder="设置输入五行"
-  label="留言："
-/>
+<nut-textarea v-model="value" limit-show max-length="20" />
+```
+
+### 高度自定义，拉伸
+
+
+```html
+<nut-textarea v-model="value" rows="10" autosize />
+```
+### 直读、禁用
+
+
+```html
+<nut-textarea readonly model-value="textarea直读状态" />
+<nut-textarea disabled model-value="textarea禁用状态" limit-show max-length="20" />
 ```
 
 
 ### Prop
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| value      | 输入值，支持双向绑定 | String |  -     |
-| placeholder         | 为空时占位符 | String |       `'请输入信息'`       |
-| label          | 	左侧文案                       | String | -             |
-| max-length          | 限制最长输入字符                   | String、Number | -               |
-| rows          | textarea的高度   | String、Number | `2`             |
-| limit-show          | textarea是否展示输入字符。须配合`max-length`使用  | Boolean | `false` |
-| autosize          | 高度是否可拉伸  | Boolean | `false` |
-| text-align          | 文本位置,可选值`left`,`center`,`right`     | String | `left` |
-| readonly          | 只读属性     | Boolean | `false` |
-| disabled          | 禁用属性     | Boolean | `false` |
+| 参数        | 说明                                             | 类型           | 默认值         |
+|-------------|--------------------------------------------------|----------------|----------------|
+| v-model     | 输入值，支持双向绑定                             | String         | -              |
+| placeholder | 设置占位提示文字                                 | String         | `'请输入内容'` |
+| max-length  | 限制最长输入字符                                 | String、Number | -              |
+| rows        | textarea的高度                                   | String、Number | `2`            |
+| limit-show  | textarea是否展示输入字符。须配合`max-length`使用 | Boolean        | `false`        |
+| autosize    | 高度是否可拉伸                                   | Boolean        | `false`        |
+| text-align  | 文本位置,可选值`left`,`center`,`right`           | String         | `left`         |
+| readonly    | 只读属性                                         | Boolean        | `false`        |
+| disabled    | 禁用属性                                         | Boolean        | `false`        |
 
 
 ### Event
 
-| 名称  | 说明     | 回调参数    |
-|-------|----------|-------------|
-| change | 输入内容时触发 | val |
-| focus | 聚焦时触发 | val |
-| blur | 失焦时触发 | val |
+| 名称   | 说明           | 回调参数 |
+|--------|----------------|----------|
+| change | 输入内容时触发 | val      |
+| focus  | 聚焦时触发     | val      |
+| blur   | 失焦时触发     | val      |
 
 
 

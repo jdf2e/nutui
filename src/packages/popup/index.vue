@@ -1,10 +1,13 @@
 <template>
   <Teleport :to="teleport">
     <nut-overlay
-      :show="show && overlay"
+      v-if="overlay"
+      :visible="visible"
+      :close-on-click-overlay="closeOnClickOverlay"
       :class="overlayClass"
       :style="overlayStyle"
       :z-index="zIndex"
+      :lock-scroll="lockScroll"
       :duration="duration"
       @click="onClickOverlay"
     />
@@ -13,7 +16,12 @@
       @after-enter="onOpened"
       @after-leave="onClosed"
     >
-      <view v-show="show" :class="classes" :style="popStyle" @click="onClick">
+      <view
+        v-show="visible"
+        :class="classes"
+        :style="popStyle"
+        @click="onClick"
+      >
         <slot v-if="showSlot"></slot>
         <nut-icon
           v-if="closeable"
@@ -46,11 +54,13 @@ import { useLockScroll } from './use-lock-scroll';
 import { overlayProps } from './../overlay/index.vue';
 import overlay from '@/packages/overlay/index.vue';
 import { createComponent } from '@/utils/create';
+import { OverLay } from '@/nutui';
 const { componentName, create } = createComponent('popup');
 
 let _zIndex = 2000;
 
-const popupProps = {
+export const popupProps = {
+  ...overlayProps,
   position: {
     type: String,
     default: 'center'
@@ -104,8 +114,10 @@ const popupProps = {
 };
 export default create({
   children: [overlay],
+  components: {
+    'nut-overlay': OverLay
+  },
   props: {
-    ...overlayProps,
     ...popupProps
   },
   emits: [
@@ -115,18 +127,17 @@ export default create({
     'close',
     'opend',
     'closed',
-    'update:show',
+    'update:visible',
     'click-overlay'
   ],
 
   setup(props, { emit }) {
     const state = reactive({
-      zIndex: 0,
+      zIndex: props.zIndex ? (props.zIndex as number) : _zIndex,
       showSlot: true,
       transitionName: `popup-fade-${props.position}`,
       overLayCount: 1,
-      keepAlive: false,
-      opened: false
+      keepAlive: false
     });
 
     const [lockScroll, unlockScroll] = useLockScroll(() => props.lockScroll);
@@ -150,26 +161,24 @@ export default create({
     });
 
     const open = () => {
-      if (!state.opened) {
+      if (!props.visible) {
         if (props.zIndex !== undefined) {
           _zIndex = Number(props.zIndex);
         }
-        state.opened = true;
+        emit('update:visible', true);
         lockScroll();
         state.zIndex = ++_zIndex;
-
-        if (props.destroyOnClose) {
-          state.showSlot = true;
-        }
+      }
+      if (props.destroyOnClose) {
+        state.showSlot = true;
       }
       emit('open');
     };
 
     const close = () => {
-      if (state.opened) {
-        state.opened = false;
+      if (props.visible) {
         unlockScroll();
-        emit('update:show', false);
+        emit('update:visible', false);
         if (props.destroyOnClose) {
           setTimeout(() => {
             state.showSlot = false;
@@ -208,35 +217,35 @@ export default create({
         ? (state.transitionName = props.transition)
         : (state.transitionName = `popup-slide-${props.position}`);
 
-      props.show && open();
+      props.visible && open();
     });
 
     onBeforeUnmount(() => {
-      props.show && close();
+      props.visible && close();
     });
 
     onBeforeMount(() => {
-      if (state.opened) {
+      if (props.visible) {
         unlockScroll();
       }
     });
 
     onActivated(() => {
       if (state.keepAlive) {
-        emit('update:show', true);
+        emit('update:visible', true);
         state.keepAlive = false;
       }
     });
 
     onDeactivated(() => {
-      if (props.show) {
+      if (props.visible) {
         close();
         state.keepAlive = true;
       }
     });
 
     watch(
-      () => props.show,
+      () => props.visible,
       value => {
         if (value) {
           open();

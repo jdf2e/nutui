@@ -9,7 +9,8 @@
     <nut-popup
       pop-class="popclass"
       :style="{ padding: '30px 50px' }"
-      v-model:show="state.showBasic"
+      v-model:visible="state.showBasic"
+      :z-index="100"
       >正文</nut-popup
     >
     <h2>弹出位置</h2>
@@ -17,7 +18,7 @@
     <nut-popup
       position="top"
       :style="{ height: '20%' }"
-      v-model:show="state.showTop"
+      v-model:visible="state.showTop"
     ></nut-popup>
     <nut-cell
       title="底部弹出"
@@ -27,7 +28,7 @@
     <nut-popup
       position="bottom"
       :style="{ height: '20%' }"
-      v-model:show="state.showBottom"
+      v-model:visible="state.showBottom"
     ></nut-popup>
     <nut-cell
       title="左侧弹出"
@@ -37,7 +38,7 @@
     <nut-popup
       position="left"
       :style="{ width: '20%', height: '100%' }"
-      v-model:show="state.showLeft"
+      v-model:visible="state.showLeft"
     ></nut-popup>
     <nut-cell
       title="右侧弹出"
@@ -47,7 +48,7 @@
     <nut-popup
       position="right"
       :style="{ width: '20%', height: '100%' }"
-      v-model:show="state.showRight"
+      v-model:visible="state.showRight"
     ></nut-popup>
     <h2>关闭图标</h2>
     <nut-cell
@@ -59,7 +60,7 @@
       position="bottom"
       closeable
       :style="{ height: '20%' }"
-      v-model:show="state.showIcon"
+      v-model:visible="state.showIcon"
     ></nut-popup>
     <nut-cell
       title="图标位置"
@@ -71,7 +72,7 @@
       closeable
       close-icon-position="top-left"
       :style="{ height: '20%' }"
-      v-model:show="state.showIconPosition"
+      v-model:visible="state.showIconPosition"
     ></nut-popup>
     <nut-cell
       title="自定义图标"
@@ -84,7 +85,7 @@
       close-icon-position="top-left"
       close-icon="heart"
       :style="{ height: '20%' }"
-      v-model:show="state.showCloseIcon"
+      v-model:visible="state.showCloseIcon"
     ></nut-popup>
     <h2>圆角弹框</h2>
     <nut-cell
@@ -97,7 +98,7 @@
       closeable
       round
       :style="{ height: '30%' }"
-      v-model:show="state.showRound"
+      v-model:visible="state.showRound"
     ></nut-popup>
     <h2>指定挂载节点</h2>
     <nut-cell
@@ -108,7 +109,7 @@
     <nut-popup
       :style="{ padding: '30px 50px' }"
       teleport="#app"
-      v-model:show="state.showTeleport"
+      v-model:visible="state.showTeleport"
       >app</nut-popup
     >
   </div>

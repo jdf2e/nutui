@@ -1,13 +1,13 @@
 <template>
   <div class="demo-list demo">
-    <h2>基本用法(选择类)</h2>
+    <h2>基本用法</h2>
     <nut-cell
-      :showIcon="true"
+      :show-icon="true"
       :isLink="true"
       @click="switchActionSheet('isVisible1')"
     >
       <span><label>基础用法</label></span>
-      <div class="selected-option">{{ state.val1 }}</div>
+      <div class="selected-option" v-html="state.val1"></div>
     </nut-cell>
     <nut-cell
       :showIcon="true"
@@ -15,11 +15,11 @@
       @click="switchActionSheet('isVisible2')"
     >
       <span><label>展示取消按钮</label></span>
-      <div class="selected-option">{{ state.val2 }}</div>
+      <div class="selected-option" v-html="state.val2"></div>
     </nut-cell>
     <nut-cell :isLink="true" @click="switchActionSheet('isVisible3')">
       <span><label>展示描述信息</label></span>
-      <div class="selected-option">{{ state.val3 }}</div>
+      <div class="selected-option" v-html="state.val3"></div>
     </nut-cell>
     <h2>选项状态</h2>
 
@@ -29,20 +29,22 @@
 
     <!-- demo 基础用法 -->
     <nut-actionsheet
-      :is-visible="state.isVisible1"
+      v-model:visible="state.isVisible1"
       :menu-items="menuItemsOne"
       @choose="chooseItem"
-    ></nut-actionsheet>
+    >
+    </nut-actionsheet>
     <!-- demo(带取消按钮） -->
     <nut-actionsheet
-      :is-visible="state.isVisible2"
+      v-model:visible="state.isVisible2"
       cancel-txt="取消"
       :menu-items="menuItemsOne"
       @choose="chooseItemTwo"
-    ></nut-actionsheet>
+    >
+    </nut-actionsheet>
     <!-- 展示描述信息 -->
     <nut-actionsheet
-      :is-visible="state.isVisible3"
+      v-model:visible="state.isVisible3"
       :description="state.desc"
       :menu-items="menuItemsTwo"
       @choose="chooseItemThree"
@@ -51,7 +53,7 @@
     </nut-actionsheet>
     <!-- demo 选项状态-->
     <nut-actionsheet
-      :is-visible="state.isVisible4"
+      v-model:visible="state.isVisible4"
       cancel-txt="取消"
       :menu-items="menuItemsThree"
       :choose-tag-value="state.chooseTagValue"

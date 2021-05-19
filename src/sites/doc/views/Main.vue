@@ -101,7 +101,7 @@
           @click="toLink(item.id)"
         >
           <img :src="item.cover_image" />
-          <p class="more-title">{{ item.title }}</p>
+          <p class="more-title" v-hover>{{ item.title }}</p>
         </li>
       </ul>
     </div>
@@ -113,7 +113,7 @@ import { defineComponent, onMounted, reactive, toRefs, computed } from 'vue';
 import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
 import router from '../router';
-import { themeColor } from '@/sites/assets/util/ref';
+import { RefData } from '@/sites/assets/util/ref';
 import { ApiService } from '@/sites/service/ApiService';
 export default defineComponent({
   name: 'main',
@@ -175,7 +175,7 @@ export default defineComponent({
 
     const themeName = computed(() => {
       return function() {
-        return `doc-content-${themeColor.value}`;
+        return `doc-content-${RefData.getInstance().themeColor.value}`;
       };
     });
     const toLink = (id: number) => {
@@ -296,7 +296,7 @@ export default defineComponent({
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: rgba(71, 71, 83, 1);
+        background: #959fb1;
         border-radius: 29px 20px 20px 29px;
         &-iphone {
           width: 210px;
@@ -310,10 +310,15 @@ export default defineComponent({
           margin-right: 20px;
           width: 36px;
           height: 36px;
-          background-image: url('../../assets/images/left-arrow.png');
+          background-image: url('../../assets/images/right-arrow.png');
+          transform: rotate(180deg);
           background-repeat: no-repeat;
           background-size: 100% 100%;
           cursor: pointer;
+          &:hover {
+            transform: rotate(0);
+            background-image: url('../../assets/images/left-arrow.png');
+          }
         }
         &-righticon {
           margin-left: 20px;
@@ -324,6 +329,10 @@ export default defineComponent({
           background-size: 100% 100%;
           cursor: pointer;
           z-index: 1;
+          &:hover {
+            transform: rotate(180deg);
+            background-image: url('../../assets/images/left-arrow.png');
+          }
         }
         &-iconinfo {
           width: 190px;
@@ -351,7 +360,7 @@ export default defineComponent({
       &__list {
         flex: 1;
         display: flex;
-        margin-left: -274px;
+        margin-left: -275px;
         > li {
           width: 180px;
           height: 390px;
@@ -360,7 +369,7 @@ export default defineComponent({
           box-shadow: 0px 1px 7px 0px #edeef1;
           transition: all 0.5s;
           &:first-child {
-            margin-right: 120px;
+            margin-right: 139px;
             transform: scale(1.04);
           }
           > img {
@@ -517,17 +526,30 @@ export default defineComponent({
   .doc-content-title {
     color: white;
   }
-  .doc-content-feature {
+  .doc-content-features {
     .features-title {
       color: white;
     }
     .features-desc {
-      color: white;
+      color: #a5a5a5;
     }
   }
   .doc-content-more {
     .more-title {
       color: #fff;
+    }
+  }
+  .doc-content-cases-content__main {
+    background: #474753;
+  }
+  .doc-content-cases-content__list {
+    li {
+      box-shadow: none;
+    }
+  }
+  .doc-content-more {
+    .more-item img {
+      box-shadow: none;
     }
   }
 }

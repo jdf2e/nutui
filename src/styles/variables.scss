@@ -17,10 +17,14 @@ $white: #fff;
 $black: #000;
 
 // padding
-$padding-xs: 8px 12px;
+$padding-xs: 12px;
 
-$font-family: PingHei, 'Lucida Grande', 'Lucida Sans Unicode', STHeiti,
-  Helvetica, Arial, Verdana, 'sans-serif', 'PingHei-light', SimHei, 'Droid Sans' !default;
+$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
+  sans-serif !default;
+
+// ---- Animation ----
+$animation-duration: 0.25s !default;
+$animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
 
 // Font
 $font-size-0: 10px;
@@ -96,6 +100,15 @@ $cell-title-font: $font-size-2;
 $cell-title-desc-font: $font-size-1;
 $cell-desc-font: $font-size-2;
 $cell-desc-color: $disable-color;
+$cell-border-radius: 7px;
+
+// cell-group
+
+$cell-group-title-padding: 0 10px;
+$cell-group-title-color: #909ca4;
+$cell-group-title-font-size: $font-size-2;
+$cell-group-title-line-height: 20px;
+$cell-group-background-color: $white;
 
 // icon
 
@@ -112,6 +125,14 @@ $uploader-background: #f7f8fa;
 //input
 $input-border-bottom: #eaf0fb;
 $input-disabled-color: #c8c9cc;
+
+// textarea
+
+$textarea-font: $font-size-2;
+$textarea-height: 100px;
+$textarea-limit-color: $text-color;
+$textarea-text-color: $title-color;
+$textarea-disabled-color: $disable-color;
 
 // inputnumber
 
@@ -170,20 +191,6 @@ $overlay-bg-color: rgba(0, 0, 0, 0.7);
 //popup
 $popup-close-icon-margin: 16px;
 $popup-border-radius: 20px;
-// ---- Animation ----
-$animation-duration: 0.25s !default;
-$transition-duration: 0.2s !default;
-$transition-duration-fast: 0.2s !default;
-$transition-duration-slow: 0.4s !default;
-$animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
-$ease-in-out: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-$ease-out: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-
-// ---- z-index ----
-$zindex-mask: 9998 !default;
-$zindex-actionsheet: 10001 !default;
-$zindex-dialog: 10000 !default;
-$zindex-picker: 10050 !default;
 
 // Notify
 $notify-text-color: $white;
@@ -245,6 +252,19 @@ $address-region-tab-line: linear-gradient(
   $primary-color 0%,
   $primary-color-end 100%
 );
+
+//steps
+
+// dialog
+$dialog-width: 296px;
+
+// checkbox
+$checkbox-label-color: #1d1e1e;
+$checkbox-label-disable-color: #999;
+
+//radio
+$radio-label-color: #1d1e1e;
+$radio-label-disable-color: #999;
 
 view-block {
   display: block;

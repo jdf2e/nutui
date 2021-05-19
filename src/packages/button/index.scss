@@ -1,6 +1,7 @@
 .nut-button {
   position: relative;
   display: inline-block;
+  flex-shrink: 0;
   height: $button-default-height;
   box-sizing: border-box;
   margin: 0;
@@ -34,6 +35,13 @@
   }
   &:active::before {
     opacity: 0.1;
+  }
+  &__warp {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &--loading,
@@ -128,9 +136,6 @@
   &--block {
     display: block;
     width: 100%;
-    height: $button-block-height;
-    line-height: $button-block-line-height;
-    font-size: $font-size-3;
   }
 
   &--disabled {

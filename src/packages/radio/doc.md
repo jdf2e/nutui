@@ -1,143 +1,105 @@
 # Radio 单选按钮
 
-## Radio 基本用法
+### 介绍
 
-通过 **v-model** 绑定值当前选中项的 **label** ，二者一致时 **Radio** 选中。
-```html
-<nut-radio v-model:value="radioVal" :label="b">备选项1</nut-radio>
-```
-```javascript
-setup() {
-  return {
-    radioVal:"a",
-  };
-}
-```
+用于在一组备选项中进行单选
 
-## 组合使用 Radio
+### 安装
 
-```html
-<nut-radio v-model:value="radioVal" :label="1">备选项1</nut-radio>
-<nut-radio v-model:value="radioVal" :label="2">备选项2</nut-radio>
-```
-```javascript
-setup() {
-  return {
-    radioVal:"2",
-  };
-}
-```
+``` ts
+import { createApp } from 'vue';
+import { Radio } from '@nutui/nutui';
 
-## RadioGroup基本用法
+const app = createApp();
+app.use(Radio);
+```
+## 基本用法
+
+通过 **v-model** 绑定值当前选项的 **label** 。并且必须 **nut-radiogroup** 和 **nut-radio** 相结合进行使用
 
 ```html
-<nut-radiogroup v-model:value="radioGroupVal">
-  <nut-radio label="a">备选项1</nut-radio>
-  <nut-radio label="b">备选项2</nut-radio>
+<nut-radiogroup v-model="radioVal">
+  <nut-radio :label="1">单选框1</nut-radio>
+  <nut-radio :label="2">单选框2</nut-radio>
 </nut-radiogroup>
 ```
-```javascript
+```ts
 setup() {
   return {
-    radioGroupVal:"b",
+    radioVal:"1",
   };
 }
 ```
 
-
-## Radio 禁用
-
-通过给 **disabled** 传布尔值 **false** ，可将组件禁用
+## 禁用选择
 
 ```html
-<nut-radio :disabled="true" label="禁用">备选项1</nut-radio>
-```
-
-## RadioGroup 整体禁用
-
-```html
-<nut-radiogroup v-model:value="radioGroupVal" :animated="false">
-  <nut-radio label="a">备选项1</nut-radio>
-  <nut-radio label="b">备选项2</nut-radio>
-  <nut-radio label="c">备选项3</nut-radio>
+<nut-radiogroup v-model="radioVal3">
+  <nut-radio :label="1" disabled>禁用单选框</nut-radio>
+  <nut-radio :label="2" disabled>禁用单选框</nut-radio>
 </nut-radiogroup>
 ```
-```javascript
+```ts
 setup() {
   return {
-    radioGroupVal:"c",
+    radioVal3:"1",
   };
 }
 ```
 
-## Radio 自定义尺寸
-
-内置 **small**，**base**，**large** 三种规格供使用。
+## 自定义尺寸
 
 ```html
-<nut-radio size="small">小号</nut-radio>
-<nut-radio size="base">默认</nut-radio>
-<nut-radio size="large">大号</nut-radio>
-```
-
-## RadioGroup整体定义尺寸
-
-内置 **small**，**base**，**large** 三种规格供使用。
-
-```html
-<nut-radiogroup v-model:value="radioGroupVal" size="large">
-  <nut-radio label="1">备选项1</nut-radio>
-  <nut-radio label="2">备选项2</nut-radio>
-  <nut-radio label="3">备选项3</nut-radio>
+<nut-radiogroup v-model="radioVal4">
+  <nut-radio :label="1" icon-size="12">自定义尺寸12</nut-radio>
+  <nut-radio :label="2" icon-size="12">自定义尺寸12</nut-radio>
 </nut-radiogroup>
 ```
-```javascript
+```ts
 setup() {
   return {
-    radioGroupVal:"2",
+    radioVal4:"1",
   };
 }
 ```
 
-## 禁用动效
+## 自定义图标
 
-通过给 **animated** 传布尔值 **false** ，禁用自带动效
-
-```html
-<nut-radio :animated="false" v-model:value="radioVal" label="a">备选项1</nut-radio>
-<nut-radio :animated="false" v-model:value="radioVal" label="b">备选项2</nut-radio>
-```
-```javascript
-setup() {
-  return {
-    radioVal: 'b',
-  };
-}
-```
-
-## RadioGroup 禁用动效
+建议 `icon-name` `icon-active-name` 一起修改
 
 ```html
-<nut-radiogroup v-model:value="radioGroupVal" :animated="false">
-  <nut-radio label="a">备选项1</nut-radio>
-  <nut-radio label="b">备选项2</nut-radio>
-  <nut-radio label="c">备选项3</nut-radio>
+<nut-radiogroup v-model="radioVal5">
+  <nut-radio :label="1" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
+  <nut-radio :label="2" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
 </nut-radiogroup>
 ```
-```javascript
+```ts
 setup() {
   return {
-    radioGroupVal: 'c',
+    radioVal5:"1",
   };
 }
 ```
 
+## 触发 change 事件
 
-## 新增自定义class
 ```html
-<nut-radio class="my-radio">备选项</nut-radio>
+<nut-radiogroup v-model="radioVal6" @change="handleChange3">
+  <nut-radio :label="1" >触发事件</nut-radio>
+  <nut-radio :label="2" >触发事件</nut-radio>
+</nut-radiogroup>
 ```
-**RadioGroup** 也支持新增自定义class
+```ts
+setup() {
+  const handleChange3 = (value: any) => {
+    Toast.text(`您选中了${value}`);
+  }
+  return {
+    radioVal6:"1",
+    handleChange3
+  };
+}
+```
 
 ## Prop
 
@@ -145,22 +107,20 @@ setup() {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| v-model:value | 当前选中项的标识符，与label值一致时呈选中状态 | 任意类型 | -
-| label | 标识符，与v-model值一致时呈选中状态 | 任意类型 | -
-| size | 尺寸，可选值small/base/large | String | base
-| disabled | 是否禁用 | Boolean | false
-| animated | 是否需要动效 | Boolean | true
+| disabled | 是否禁用选择 | Boolean | `false`
+| icon-size | [图标尺寸](#/icon) | String、Number | `18`
+| icon-name | [图标名称](#/icon)，选中前(建议和`icon-active-name`一起修改) | String | `'check-normal'`
+| icon-active-name | [图标名称](#/icon)，选中后(建议和`icon-name`一起修改) | String | `'check-checked'`
+| label | 单选框标识 | String、Number、Boolean | -
 
 ### RadioGroup
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| v-model:value | 当前选中项的标识符，与label值一致时呈选中状态 | String、Number、Boolean | -
-| size | 尺寸，可选值small/base/large | String | `base`
-| disabled | 是否禁用 | Boolean | `false`
-| animated | 是否需要动效 | Boolean | `true`
+| v-model | 当前选中项的标识符，与label值一致时呈选中状态 | String、Number、Boolean | -
+| text-position | 文本所在的位置，可选值：`left`,`right` | String | `right`
 
-## Event
+## RadioGroup Event
 
 | 字段 | 说明 | 回调参数 
 |----- | ----- | ----- 
