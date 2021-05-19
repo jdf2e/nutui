@@ -21,7 +21,7 @@ export interface InstallationOptions {
   lang?: any;
 }
 declare function install(app: App, options?: InstallationOptions): void;
-export { ${packages.join(',')} };
+export { ${packages.join(',')},install };
 declare const _default: {
   install: typeof install;
   version: string;
