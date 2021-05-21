@@ -18,7 +18,7 @@ export default defineConfig({
       scss: {
         // example : additionalData: `@import "./src/design/styles/variables";`
         // dont need include file extend .scss
-        additionalData: `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
+        additionalData: `@import "@/packages/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
       }
     }
   },
@@ -36,7 +36,7 @@ export default defineConfig({
       }
     },
     lib: {
-      entry: 'src/nutui.ts',
+      entry: 'src/packages/nutui.vue.ts',
       name: 'nutui',
       formats: ['es', 'umd']
     }
