@@ -7,7 +7,7 @@ yarn.lock
 package-lock.json
 /cache
 /src/nutui.ts
-/src/nutui.vue.ts
+/src/packages/nutui.vue.ts
 /tsc/test
 
 
