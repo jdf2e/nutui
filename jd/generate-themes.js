@@ -9,7 +9,10 @@ config.nav.map(item => {
     tasks.push(
       fs
         .copy(
-          path.resolve(__dirname, `../src/packages/${folderName}/index.scss`),
+          path.resolve(
+            __dirname,
+            `../src/packages/__VUE/${folderName}/index.scss`
+          ),
           path.resolve(__dirname, `../dist/packages/${folderName}/index.scss`)
         )
         .then(success => {
@@ -22,7 +25,7 @@ config.nav.map(item => {
 
 tasks.push(
   fs.copy(
-    path.resolve(__dirname, '../src/styles'),
+    path.resolve(__dirname, '../src/packages/styles'),
     path.resolve(__dirname, '../dist/styles')
   )
 );

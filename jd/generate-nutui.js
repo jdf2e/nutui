@@ -8,7 +8,7 @@ config.nav.map(item => {
   item.packages.forEach(element => {
     let { name, show, type } = element;
     if (show) {
-      importStr += `import ${name} from './packages/${name.toLowerCase()}/index${
+      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${
         type === 'methods' ? '' : '.vue'
       }';\n`;
       packages.push(name);
@@ -30,7 +30,7 @@ ${installFunction}
 export { ${packages.join(',')}  };
 export default { install, version:'${package.version}'};`;
 fs.outputFile(
-  path.resolve(__dirname, '../src/nutui.ts'),
+  path.resolve(__dirname, '../src/packages/nutui.vue.ts'),
   fileStr,
   'utf8',
   error => {
