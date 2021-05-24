@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="telephone=no" name="format-detection" />
+    <link rel="shortcut icon" href="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png" />
+    <meta
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+            name="viewport"
+    />
+    <title>NutUI - 移动端React组件库</title>
+    <script src="https://h5.m.jd.com/babelDiy/Zeus/2846ykuM7PwipD9E2RzMj2BGEQpA/plugin/share.min.js"></script>
+    <style>
+        html {
+            background: #f7f7f7;
+        }
+
+        a[title="站长统计"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<noscript>
+    <strong
+    >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+    >
+</noscript>
+<div id="app"></div>
+<script type="module" src="/src/sites/mobile/main.tsx"></script>
+<script>
+  //分享配置
+  var shareOption = {
+    iconUrl: "https://nutui.jd.com/img/logo_share.png",
+    url: "https://nutui.jd.com/demo.html#/index",
+    title: "轻量级移动端React组件库 - NutUI-React 1.0",
+    desc: "京东风格的React组件库",
+  };
+
+  try {
+    /*初始化分享*/
+    share.shareInit(shareOption);
+  } catch (e) {
+    console.log(e);
+  }
+</script>
+<script type="text/javascript">
+  var jaq = jaq || [];
+  jaq.push(["account", "JA2018_1831300"]);
+  jaq.push(["domain", "jd.com"]);
+  (function() {
+    var ja = document.createElement("script");
+    ja.type = "text/javascript";
+    ja.async = true;
+    ja.src = "//wl.jd.com/joya.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(ja, s);
+  })();
+</script>
+<script
+        type="text/javascript"
+        src="https://s23.cnzz.com/z_stat.php?id=1276268086&web_id=1276268086"
+></script>
+</body>
+</html>

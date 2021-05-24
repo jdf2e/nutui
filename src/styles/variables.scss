@@ -1,0 +1,274 @@
+// color
+
+// 主色调
+$primary-color: #fa2c19 !default;
+$primary-color-end: #fa6419 !default;
+// 辅助色
+$help-color: #f5f5f5 !default;
+// 标题常规文字
+$title-color: #1a1a1a !default;
+// 副标题
+$title-color2: #666666 !default;
+// 次内容
+$text-color: #808080 !default;
+// 特殊禁用色
+$disable-color: #cccccc !default;
+$white: #fff;
+$black: #000;
+
+// padding
+$padding-xs: 12px;
+
+$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
+  sans-serif !default;
+
+// ---- Animation ----
+$animation-duration: 0.25s !default;
+$animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
+
+// Font
+$font-size-0: 10px;
+$font-size-1: 12px;
+$font-size-2: 14px;
+$font-size-3: 16px;
+$font-size-4: 18px;
+$font-weight-bold: 400;
+
+$font-size-small: $font-size-1;
+$font-size-base: $font-size-2;
+$font-size-large: $font-size-3;
+$line-height-base: 1.5 !default;
+// button
+$button-border-radius: 25px;
+$button-border-width: 1px;
+$button-default-bg-color: $white;
+$button-default-border-color: rgba(204, 204, 204, 1);
+$button-default-color: rgba(102, 102, 102, 1);
+$button-small-height: 28px;
+$button-default-height: 38px;
+$button-large-height: 48px;
+$button-large-line-height: 46px;
+$button-small-line-height: 26px;
+$button-block-height: 48px;
+$button-default-line-height: 36px;
+$button-block-line-height: 46px;
+$button-default-font-size: $font-size-2;
+$button-disabled-opacity: 0.68;
+$button-primary-color: $white;
+$button-primary-border-color: $primary-color;
+$button-primary-background-color: linear-gradient(
+  135deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+);
+$button-info-color: $white;
+$button-info-border-color: rgba(73, 106, 242, 1);
+$button-info-background-color: linear-gradient(
+  315deg,
+  rgba(73, 143, 242, 1) 0%,
+  rgba(73, 101, 242, 1) 100%
+);
+$button-success-color: $white;
+$button-success-border-color: rgba(38, 191, 38, 1);
+$button-success-background-color: linear-gradient(
+  135deg,
+  rgba(38, 191, 38, 1) 0%,
+  rgba(39, 197, 48, 1) 45%,
+  rgba(40, 207, 63, 1) 83%,
+  rgba(41, 212, 70, 1) 100%
+);
+
+$button-danger-color: $white;
+$button-danger-border-color: rgba(250, 44, 25, 1);
+$button-danger-background-color: rgba(250, 44, 25, 1);
+$button-warning-color: $white;
+$button-warning-border-color: rgba(255, 158, 13, 1);
+$button-warning-background-color: linear-gradient(
+  135deg,
+  rgba(255, 158, 13, 1) 0%,
+  rgba(255, 167, 13, 1) 45%,
+  rgba(255, 182, 13, 1) 83%,
+  rgba(255, 190, 13, 1) 100%
+);
+$button-plain-background-color: #fff;
+$button-plain-background-color: $white;
+
+// cell
+
+$cell-color: $title-color2;
+$cell-title-font: $font-size-2;
+$cell-title-desc-font: $font-size-1;
+$cell-desc-font: $font-size-2;
+$cell-desc-color: $disable-color;
+$cell-border-radius: 7px;
+
+// cell-group
+
+$cell-group-title-padding: 0 10px;
+$cell-group-title-color: #909ca4;
+$cell-group-title-font-size: $font-size-2;
+$cell-group-title-line-height: 20px;
+$cell-group-background-color: $white;
+
+// icon
+
+$icon-height: 20px;
+$icon-width: 20px;
+$icon-line-height: 20px;
+
+// uploader
+
+$uploader-width: 100px;
+$uploader-height: 100px;
+$uploader-background: #f7f8fa;
+
+//input
+$input-border-bottom: #eaf0fb;
+$input-disabled-color: #c8c9cc;
+
+// textarea
+
+$textarea-font: $font-size-2;
+$textarea-height: 100px;
+$textarea-limit-color: $text-color;
+$textarea-text-color: $title-color;
+$textarea-disabled-color: $disable-color;
+
+// inputnumber
+
+$inputnumber-icon-color: $title-color;
+$inputnumber-icon-void-color: $disable-color;
+$inputnumber-input-background-color: $help-color;
+$inputnumber-input-border-radius: 4px;
+$inputnumber-input-width: 40px;
+$inputnumber-icon-size: 20px;
+
+// actionsheet
+$zindex-actionsheet: 10001 !default;
+$body-background: #f6f6f6 !default;
+$light-color: #f6f6f6 !default;
+$font-size-base: $font-size-2;
+$font-size-small: $font-size-1;
+
+//shortpassword
+$shortpsd-background-color: rgba(245, 245, 245, 1);
+$shortpsd-border-color: #ddd;
+$shortpsd-error: rgba(242, 39, 12, 1);
+$shortpsd-forget: rgba(128, 128, 128, 1);
+
+//price
+$price-big-size: 24px;
+
+//avatar
+$avatar-square: 5px;
+$avatar-large-width: 60px;
+$avatar-large-height: 60px;
+$avatar-small-width: 32px;
+$avatar-small-height: 32px;
+$avatar-normal-width: 40px;
+$avatar-normal-height: 40px;
+
+//switch
+$switch-close-bg-color: #ebebeb;
+$switch-close--cline-bg-color: #f0f0f0;
+
+//backtop
+$backtop-border-color: #e0e0e0;
+
+// calendar
+$calendar-primary-color: $primary-color;
+$calendar-choose-color: #fef6f6;
+$calendar-base-color: #333333;
+$calendar-disable-color: #d1d0d0;
+$calendar-title-font: $font-size-4;
+$calendar-base-font: $font-size-3;
+$calendar-text-font: $font-size-1;
+$calendar-day-font: 18px;
+
+//overlay
+$overlay-bg-color: rgba(0, 0, 0, 0.7);
+
+//popup
+$popup-close-icon-margin: 16px;
+$popup-border-radius: 20px;
+
+// Notify
+$notify-text-color: $white;
+$notify-padding: 12px 0;
+$notify-font-size: 14px;
+$notify-height: 44px;
+
+$notify-base-background-color: linear-gradient(
+  135deg,
+  rgba(250, 44, 25, 1) 0%,
+  rgba(250, 63, 25, 1) 45%,
+  rgba(250, 89, 25, 1) 83%,
+  rgba(250, 100, 25, 1) 100%
+);
+$notify-primary-background-color: linear-gradient(
+  315deg,
+  rgba(73, 143, 242, 1) 0%,
+  rgba(73, 101, 242, 1) 100%
+);
+$notify-success-background-color: linear-gradient(
+  135deg,
+  rgba(38, 191, 38, 1) 0%,
+  rgba(39, 197, 48, 1) 45%,
+  rgba(40, 207, 63, 1) 83%,
+  rgba(41, 212, 70, 1) 100%
+);
+$notify-danger-background-color: rgba(250, 50, 25, 1);
+$notify-warning-background-color: linear-gradient(
+  135deg,
+  rgba(255, 93, 13, 1) 0%,
+  rgba(255, 154, 13, 1) 100%
+);
+
+// rate
+
+$rate-icon-color: $primary-color;
+$rate-icon-void-color: $disable-color;
+
+// tabbar
+
+$tabbar-active-color: $primary-color;
+$tabbar-border-color: #eee;
+
+//infiniteloading
+$infinite-bottom-color: #c8c8c8;
+
+//range
+$range-max: #333333;
+$rang-bg-color: rgba($primary-color, 0.5);
+$rang-bar-bg-color: linear-gradient(
+  135deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+);
+
+//address
+$address-region-tab-line: linear-gradient(
+  90deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+);
+
+//steps
+
+// dialog
+$dialog-width: 296px;
+
+// checkbox
+$checkbox-label-color: #1d1e1e;
+$checkbox-label-disable-color: #999;
+
+//radio
+$radio-label-color: #1d1e1e;
+$radio-label-disable-color: #999;
+
+view-block {
+  display: block;
+}
+
+@import './mixins/index';
+@import './animation/index';

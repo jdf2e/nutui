@@ -1,0 +1,9 @@
+**/*.html
+**/*.txt
+**/*.md
+**/*.svg
+**/*.ttf
+**/*.woff
+**/*.eot
+package.json
+node_modules
