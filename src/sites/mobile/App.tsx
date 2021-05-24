@@ -1,20 +1,32 @@
 import './App.scss'
-import React from 'react'
+import React, { FunctionComponent, PropsWithChildren } from 'react'
 import { HashRouter, Switch, Route } from 'react-router-dom'
-import loadable from '@loadable/component'
+import loadable, { LoadableComponent } from '@loadable/component'
 import routes from './router'
+
+const WithNavRouter = (C: LoadableComponent<any>) => {
+  const WithNav: FunctionComponent = (props: PropsWithChildren<any>) => {
+    return (
+      <>
+        <div id="nav">
+          <div className="back"></div>
+          {props.location.pathname.replace('/', '')}
+        </div>
+        <C />
+      </>
+    )
+  }
+  return WithNav
+}
 
 const App = () => {
   return (
     <>
-      <div id="nav">
-        <div className="back"></div>
-      </div>
       <HashRouter>
         <Switch>
           {routes.map((item: any, index: number) => {
             const C = loadable(item.component)
-            return <Route key={index} path={item.path} component={C} />
+            return <Route key={index} path={item.path} component={WithNavRouter(C)} />
           })}
         </Switch>
       </HashRouter>

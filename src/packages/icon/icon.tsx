@@ -1,4 +1,5 @@
 import React, { FunctionComponent, ReactHTML } from 'react'
+import bem from '@/utils/bem'
 import './icon.scss'
 
 interface IconProps {
@@ -27,6 +28,8 @@ export const Icon: FunctionComponent<Partial<IconProps>> = (props) => {
   const { name, size, classPrefix, color, tag, children } = { ...defaultProps, ...props }
   const isImage = name ? name.indexOf('/') !== -1 : false
   const type = isImage ? 'img' : tag
+  const b = bem('icon')
+
   const handleClick = (e: MouseEvent) => {
     if (props.click) {
       props.click(e)
@@ -39,7 +42,7 @@ export const Icon: FunctionComponent<Partial<IconProps>> = (props) => {
   return React.createElement(
     type,
     {
-      className: isImage ? 'nut-icon__img' : `${classPrefix} nut-icon nut-icon-${name}`,
+      className: isImage ? `${b('img')}` : `nut-icon-${name} ${b(null, [classPrefix])}`,
       style: {
         color,
         fontSize: pxCheck(size),
