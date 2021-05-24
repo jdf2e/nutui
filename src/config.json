@@ -1,0 +1,130 @@
+{
+  "versions": [
+    {
+      "name": "1.x",
+      "link": "/1x/"
+    },
+    {
+      "name": "2.x",
+      "link": "/"
+    },
+    {
+      "name": "3.x",
+      "link": "/3x/"
+    },
+    {
+      "name": "nutui-jdl",
+      "link": "/jdl/"
+    },
+    {
+      "name": "nutui-react",
+      "link": "https://github.com/jdf2e/nutui/tree/nutui-react"
+    }
+  ],
+  "header": [
+    {
+      "name": "guide",
+      "cName": "指南",
+      "path": "/intro"
+    },
+    {
+      "name": "intro",
+      "cName": "组件",
+      "path": "/intro"
+    },
+    {
+      "name": "example",
+      "cName": "示例",
+      "path": "/"
+    },
+    {
+      "name": "resource",
+      "cName": "资源",
+      "path": "/resource"
+    }
+  ],
+  "docs": {
+    "name": "指南",
+    "packages": [
+      {
+        "name": "intro",
+        "cName": "介绍",
+        "show": true
+      },
+      {
+        "name": "start",
+        "cName": "快速上手",
+        "show": true
+      },
+      {
+        "name": "theme",
+        "cName": "主题定制",
+        "show": true
+      },
+      {
+        "name": "international",
+        "cName": "国际化",
+        "show": false
+      },
+      {
+        "name": "resource",
+        "cName": "资源",
+        "show": true
+      },
+      {
+        "name": "https://github.com/jdf2e/nutui/releases",
+        "cName": "更新日志",
+        "show": true,
+        "isLink": true
+      }
+    ]
+  },
+  "nav": [
+    {
+      "name": "布局组件",
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Button",
+          "type": "component",
+          "cName": "按钮",
+          "desc": "按钮",
+          "sort": 1,
+          "show": true,
+          "author": ""
+        }
+      ]
+    },
+    {
+      "name": "操作反馈",
+      "packages": []
+    },
+    {
+      "name": "基础组件",
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Icon",
+          "type": "component",
+          "cName": "图标组件",
+          "desc": "图标",
+          "sort": 1,
+          "show": true,
+          "author": "oasis-cloud"
+        }
+      ]
+    },
+    {
+      "name": "导航组件",
+      "packages": []
+    },
+    {
+      "name": "数据录入",
+      "packages": []
+    },
+    {
+      "name": "业务组件",
+      "packages": []
+    }
+  ]
+}
