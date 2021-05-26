@@ -1,0 +1,4 @@
+<import src="./base.wxml" />
+  <block wx:for="{{i.cn}}" wx:key="uid">
+    <template is="tmpl_0_container" data="{{i:item,l:''}}" />
+  </block>

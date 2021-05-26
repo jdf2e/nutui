@@ -90,7 +90,8 @@
           "type": "component",
           "show": true,
           "desc": "按钮用于触发一个操作，如提交表单。",
-          "author": "richard1015"
+          "author": "richard1015",
+          "path": "/pages/button/index"
         },
         {
           "name": "Collapse",
@@ -99,7 +100,8 @@
           "type": "component",
           "show": true,
           "desc": "折叠面板",
-          "author": "Ymm0008"
+          "author": "Ymm0008",
+          "path": "/pages/collapse/index"
         },
         {
           "name": "CollapseItem",
@@ -108,7 +110,8 @@
           "type": "component",
           "show": false,
           "desc": "折叠面板-item",
-          "author": "Ymm0008"
+          "author": "Ymm0008",
+          "path": "/pages/collapseitem/index"
         },
         {
           "name": "Layout",
@@ -117,7 +120,8 @@
           "type": "component",
           "show": true,
           "desc": "简便地创建布局",
-          "author": "undo"
+          "author": "undo",
+          "path": "/pages/layout/index"
         },
         {
           "name": "Col",
@@ -126,7 +130,8 @@
           "type": "component",
           "show": false,
           "desc": "布局组件Col",
-          "author": "undo"
+          "author": "undo",
+          "path": "/pages/col/index"
         },
         {
           "name": "Row",
@@ -135,7 +140,8 @@
           "type": "component",
           "show": false,
           "desc": "布局组件Row",
-          "author": "undo"
+          "author": "undo",
+          "path": "/pages/row/index"
         }
       ]
     },
@@ -149,7 +155,8 @@
           "type": "component",
           "show": true,
           "desc": "较长页面快捷返回顶部",
-          "author": "liqiong43"
+          "author": "liqiong43",
+          "path": "/pages/backtop/index"
         },
         {
           "name": "ActionSheet",
@@ -158,7 +165,8 @@
           "type": "component",
           "show": true,
           "desc": "底部弹出动作菜单面板",
-          "author": "zhangyufei"
+          "author": "zhangyufei",
+          "path": "/pages/actionsheet/index"
         },
         {
           "name": "Toast",
@@ -167,7 +175,8 @@
           "type": "methods",
           "show": true,
           "desc": "轻提示",
-          "author": "undo"
+          "author": "undo",
+          "path": "/pages/toast/index"
         },
         {
           "version": "3.0.0",
@@ -177,7 +186,8 @@
           "desc": "在页面顶部展示消息提示，支持函数调用和组件调用两种方式",
           "sort": 4,
           "show": true,
-          "author": "wangyue217"
+          "author": "wangyue217",
+          "path": "/pages/notify/index"
         },
         {
           "version": "3.0.0",
@@ -187,7 +197,8 @@
           "desc": "提供多个选型集合供用户选择,支持单列选择和多列级联,通常与弹出层配合使用",
           "sort": 5,
           "show": true,
-          "author": "yangkaixuan"
+          "author": "yangkaixuan",
+          "path": "/pages/picker/index"
         },
         {
           "version": "3.0.0",
@@ -197,7 +208,8 @@
           "desc": "提供多个选型集合供用户选择,支持单列选择和多列级联,通常与弹出层配合使用",
           "sort": 5,
           "show": true,
-          "author": "yangkaixuan"
+          "author": "yangkaixuan",
+          "path": "/pages/datepicker/index"
         }
       ]
     },
@@ -211,7 +223,8 @@
           "type": "component",
           "show": false,
           "desc": "组件模板示例",
-          "author": "richard1015"
+          "author": "richard1015",
+          "path": "/pages/temp/index"
         },
         {
           "name": "Cell",
@@ -220,7 +233,8 @@
           "type": "component",
           "show": true,
           "desc": "展示列表",
-          "author": "richard1015"
+          "author": "richard1015",
+          "path": "/pages/cell/index"
         },
         {
           "name": "CellGroup",
@@ -229,7 +243,8 @@
           "type": "component",
           "show": false,
           "desc": "展示分组列表",
-          "author": "richard1015"
+          "author": "richard1015",
+          "path": "/pages/cellgroup/index"
         },
         {
           "name": "Uploader",
@@ -238,7 +253,8 @@
           "type": "component",
           "show": true,
           "desc": "上传文件、图片",
-          "author": "richard1015"
+          "author": "richard1015",
+          "path": "/pages/uploader/index"
         },
         {
           "name": "Icon",
@@ -247,7 +263,8 @@
           "type": "component",
           "show": true,
           "desc": "图标",
-          "author": "richard1015"
+          "author": "richard1015",
+          "path": "/pages/icon/index"
         },
         {
           "name": "Price",
@@ -256,7 +273,8 @@
           "type": "component",
           "show": true,
           "desc": "价格组件",
-          "author": "ailululu"
+          "author": "ailululu",
+          "path": "/pages/price/index"
         },
         {
           "name": "Checkbox",
@@ -265,7 +283,8 @@
           "type": "component",
           "show": true,
           "desc": "复选按钮",
-          "author": "Ymm0008"
+          "author": "Ymm0008",
+          "path": "/pages/checkbox/index"
         },
         {
           "name": "Swiper",
@@ -274,7 +293,8 @@
           "type": "component",
           "show": true,
           "desc": "轮播",
-          "author": "suzigang"
+          "author": "suzigang",
+          "path": "/pages/swiper/index"
         },
         {
           "name": "SwiperItem",
@@ -283,7 +303,8 @@
           "type": "component",
           "show": false,
           "desc": "轮播图子组件",
-          "author": "suzigang"
+          "author": "suzigang",
+          "path": "/pages/swiperitem/index"
         },
         {
           "name": "Avatar",
@@ -292,7 +313,8 @@
           "type": "component",
           "show": true,
           "desc": "头像",
-          "author": "ailululu"
+          "author": "ailululu",
+          "path": "/pages/avatar/index"
         },
         {
           "name": "Popup",
@@ -302,7 +324,8 @@
           "show": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008",
-          "version": "3.0.0"
+          "version": "3.0.0",
+          "path": "/pages/popup/index"
         },
         {
           "name": "Dialog",
@@ -311,7 +334,8 @@
           "desc": "模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。",
           "sort": 8,
           "show": true,
-          "author": "dsj"
+          "author": "dsj",
+          "path": "/pages/dialog/index"
         },
         {
           "version": "3.0.0",
@@ -321,7 +345,8 @@
           "desc": "单选按钮",
           "sort": 9,
           "show": true,
-          "author": "Ymm0008"
+          "author": "Ymm0008",
+          "path": "/pages/radio/index"
         },
         {
           "version": "3.0.0",
@@ -331,7 +356,8 @@
           "desc": "单选按钮组",
           "sort": 10,
           "show": false,
-          "author": "Ymm0008"
+          "author": "Ymm0008",
+          "path": "/pages/radiogroup/index"
         },
         {
           "version": "3.0.0",
@@ -341,7 +367,8 @@
           "desc": "多选按钮组",
           "sort": 11,
           "show": false,
-          "author": "Ymm0008"
+          "author": "Ymm0008",
+          "path": "/pages/checkboxgroup/index"
         },
         {
           "version": "3.0.0",
@@ -351,7 +378,8 @@
           "desc": "创建一个遮罩层，通常用于阻止用户进行其他操作",
           "sort": 14,
           "show": true,
-          "author": "szg2008"
+          "author": "szg2008",
+          "path": "/pages/overlay/index"
         },
         {
           "version": "3.0.0",
@@ -361,7 +389,8 @@
           "desc": "列表滚动到底部自动加载更多数据",
           "sort": 15,
           "show": true,
-          "author": "yangxiaolu"
+          "author": "yangxiaolu",
+          "path": "/pages/infiniteloading/index"
         },
         {
           "version": "3.0.0",
@@ -371,7 +400,8 @@
           "desc": "滑动输入条，用于在给定的范围内选择一个值。",
           "sort": 16,
           "show": true,
-          "author": "Jerry"
+          "author": "Jerry",
+          "path": "/pages/range/index"
         },
         {
           "name": "PullRefresh",
@@ -380,7 +410,8 @@
           "desc": "下拉刷新",
           "sort": 16,
           "show": false,
-          "author": "yangxiaolu3"
+          "author": "yangxiaolu3",
+          "path": "/pages/pullrefresh/index"
         },
         {
           "name": "Drag",
@@ -389,17 +420,8 @@
           "desc": "拖拽组件",
           "sort": 16,
           "show": true,
-          "author": "Drjingfubo"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Video",
-          "type": "component",
-          "cName": "视频播放器",
-          "desc": "视频播放组件",
-          "sort": 20,
-          "show": true,
-          "author": "zy19940510"
+          "author": "Drjingfubo",
+          "path": "/pages/drag/index"
         },
         {
           "name": "Steps",
@@ -408,7 +430,8 @@
           "type": "component",
           "show": true,
           "desc": "步骤条",
-          "author": "ailululu"
+          "author": "ailululu",
+          "path": "/pages/steps/index"
         },
         {
           "name": "Step",
@@ -417,7 +440,8 @@
           "type": "component",
           "show": false,
           "desc": "步骤条子组件",
-          "author": "ailululu"
+          "author": "ailululu",
+          "path": "/pages/step/index"
         }
       ]
     },
@@ -431,7 +455,8 @@
           "type": "componment",
           "show": true,
           "desc": "导航组件",
-          "author": "liqiong43"
+          "author": "liqiong43",
+          "path": "/pages/navbar/index"
         },
         {
           "name": "Tab",
@@ -440,7 +465,8 @@
           "type": "component",
           "show": false,
           "desc": "标签组件",
-          "author": "zhenyulei"
+          "author": "zhenyulei",
+          "path": "/pages/tab/index"
         },
         {
           "name": "Menu",
@@ -449,7 +475,8 @@
           "type": "component",
           "show": false,
           "desc": "下拉菜单组件",
-          "author": "vickyYE"
+          "author": "vickyYE",
+          "path": "/pages/menu/index"
         },
         {
           "name": "MenuItem",
@@ -458,7 +485,8 @@
           "type": "component",
           "show": false,
           "desc": "下拉菜单组件",
-          "author": "vickyYE"
+          "author": "vickyYE",
+          "path": "/pages/menuitem/index"
         },
         {
           "name": "Tabbar",
@@ -467,7 +495,8 @@
           "type": "component",
           "show": true,
           "desc": "标签栏组件",
-          "author": "Drjingfubo"
+          "author": "Drjingfubo",
+          "path": "/pages/tabbar/index"
         },
         {
           "name": "Tabbaritem",
@@ -476,7 +505,8 @@
           "type": "component",
           "show": false,
           "desc": "标签栏子组件",
-          "author": "Drjingfubo"
+          "author": "Drjingfubo",
+          "path": "/pages/tabbaritem/index"
         },
         {
           "version": "3.0.0",
@@ -486,7 +516,8 @@
           "desc": "用于循环播放展示一组消息通知",
           "sort": 5,
           "show": false,
-          "author": "wangyue92"
+          "author": "wangyue92",
+          "path": "/pages/noticebar/index"
         }
       ]
     },
@@ -500,7 +531,8 @@
           "type": "component",
           "show": true,
           "desc": "数字输入框组件",
-          "author": "szg2008"
+          "author": "szg2008",
+          "path": "/pages/inputnumber/index"
         },
         {
           "name": "Input",
@@ -509,7 +541,8 @@
           "type": "component",
           "show": true,
           "desc": "输入框组件",
-          "author": "gxx158"
+          "author": "gxx158",
+          "path": "/pages/input/index"
         },
         {
           "version": "3.0.0",
@@ -519,7 +552,8 @@
           "desc": "用来打开或关闭选项",
           "sort": 3,
           "show": true,
-          "author": "zongyue3"
+          "author": "zongyue3",
+          "path": "/pages/switch/index"
         },
         {
           "version": "3.0.0",
@@ -529,7 +563,8 @@
           "type": "component",
           "show": true,
           "desc": "评分组件",
-          "author": "undo"
+          "author": "undo",
+          "path": "/pages/rate/index"
         },
         {
           "version": "3.0.0",
@@ -539,7 +574,8 @@
           "desc": "日历组件",
           "sort": 5,
           "show": true,
-          "author": "songchenglin1"
+          "author": "songchenglin1",
+          "path": "/pages/calendar/index"
         },
         {
           "version": "3.0.0",
@@ -549,7 +585,8 @@
           "desc": "日历子组件",
           "sort": 5,
           "show": false,
-          "author": "songchenglin1"
+          "author": "songchenglin1",
+          "path": "/pages/calendaritem/index"
         },
         {
           "version": "3.0.0",
@@ -559,7 +596,8 @@
           "desc": "短密码组件",
           "sort": 6,
           "show": true,
-          "author": "Drjingfubo"
+          "author": "Drjingfubo",
+          "path": "/pages/shortpassword/index"
         },
         {
           "version": "3.0.0",
@@ -569,7 +607,8 @@
           "desc": "文本输入",
           "sort": 7,
           "show": true,
-          "author": "gx"
+          "author": "gx",
+          "path": "/pages/textarea/index"
         }
       ]
     },
@@ -584,7 +623,8 @@
           "desc": "地址组件",
           "sort": 1,
           "show": true,
-          "author": "yangxiaolu3"
+          "author": "yangxiaolu3",
+          "path": "/pages/address/index"
         }
       ]
     }

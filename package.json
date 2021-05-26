@@ -37,7 +37,9 @@
   ],
   "scripts": {
     "checked": "npm run generate:file && tsc",
+    "checked:taro:vue": "npm run generate:file:taro:vue && tsc",
     "dev": "npm run checked && vite --open --force",
+    "dev:taro:vue": "npm run checked:taro:vue && vite --open --force",
     "build:site": "npm run checked && vite build",
     "build:gh-pages": "npm run checked && vite build --base=/nutui/",
     "build:site:oss": "npm run checked && vite build --base=/nutui/3x/",
@@ -48,6 +50,7 @@
     "add": "node jd/createComponentMode.js",
     "publish:beta": "npm publish --tag=beta",
     "generate:file": "node jd/generate-nutui.js",
+    "generate:file:taro:vue": "node jd/generate-nutui-taro-vue.js",
     "generate:types": "node jd/generate-types.js",
     "generate:themes": "node jd/generate-themes.js",
     "prepare": "husky install",

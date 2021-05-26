@@ -1,0 +1,28 @@
+.h2 {
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+  font-size: 14rpx;
+  color: #909ca4;
+  padding: 0 10rpx;
+  font-weight: 400;
+}
+view {
+  display: block;
+}
+.demo-button-row {
+  margin-bottom: 20rpx;
+}
+.demo-button-row2 {
+  margin-bottom: 10rpx;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.nut-button {
+  margin-right: 15rpx;
+}
+.nut-button:last-child {
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
