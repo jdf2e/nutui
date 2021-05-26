@@ -1,5 +1,6 @@
 .nut-picker {
   &__content {
+    display: block;
     position: relative;
     text-align: center;
     overflow-y: hidden;
@@ -48,6 +49,9 @@
   }
   &__button {
     cursor: pointer;
+  }
+  &__wrapper {
+    display: block;
   }
   &__item {
     display: flex;

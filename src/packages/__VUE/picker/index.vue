@@ -1,52 +1,47 @@
 <template>
-  <view-block :class="classes">
+  <view :class="classes">
     <nut-popup
       position="bottom"
       :style="{ height: height + 56 + 'px' }"
       v-model:visible="show"
       @close="close"
     >
-      <view-block class="nut-picker__bar">
-        <view-block class="nut-picker__left nut-picker__button" @click="close"
-          >取消</view-block
+      <view class="nut-picker__bar">
+        <view class="nut-picker__left nut-picker__button" @click="close"
+          >取消</view
         >
-        <view-block> {{ title }}</view-block>
-        <view-block class="nut-picker__button" @click="confirm()"
-          >确定</view-block
-        >
-      </view-block>
+        <view> {{ title }}</view>
+        <view class="nut-picker__button" @click="confirm()">确定</view>
+      </view>
 
-      <view-block class="nut-picker__column">
-        <view-block
+      <view class="nut-picker__column">
+        <view
           class="nut-picker__mask"
           :style="{ backgroundSize: `100% ${top}px` }"
-        ></view-block>
-        <view-block
-          class="nut-picker__hairline"
-          :style="{ top: ` ${top}px` }"
-        ></view-block>
-        <view-block
+        ></view>
+        <view class="nut-picker__hairline" :style="{ top: ` ${top}px` }"></view>
+        <view
           class="nut-picker__columnitem"
           v-for="(item, columnIndex) in columnList"
           :key="columnIndex"
         >
           <nut-picker-column
-            :listData="item.values"
+            :list-data="item.values"
             :readonly="readonly"
-            :defaultIndex="item.defaultIndex"
-            :visibleItemCount="visibleItemCount"
-            :itemHeight="itemHeight"
-            :dataType="dataType"
+            :default-index="item.defaultIndex"
+            :visible-item-count="visibleItemCount"
+            :item-height="itemHeight"
+            :data-type="dataType"
             @change="
               dataIndex => {
                 changeHandler(columnIndex, dataIndex);
               }
             "
           ></nut-picker-column>
-        </view-block>
-      </view-block>
+        </view>
+      </view>
     </nut-popup>
-  </view-block>
+  </view>
 </template>
 <script lang="ts">
 import { reactive, watch, computed, toRaw, toRefs } from 'vue';

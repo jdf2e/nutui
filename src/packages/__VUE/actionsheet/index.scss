@@ -1,5 +1,7 @@
 .nut-actionsheet-panel {
+  display: block;
   .nut-actionsheet-title {
+    display: block;
     padding: 10px;
     margin: 0;
     text-align: center;
@@ -16,6 +18,7 @@
     }
 
     .nut-actionsheet-sub-title {
+      display: block;
       font-size: $font-size-small;
       color: $title-color;
       margin-inline-start: 0px;
@@ -23,6 +26,7 @@
   }
 
   .nut-actionsheet-menu {
+    display: block;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -30,6 +34,7 @@
 
   .nut-actionsheet-cancel,
   .nut-actionsheet-item {
+    display: block;
     //   height: 24px;
     padding: 10px;
     line-height: 24px;
@@ -37,6 +42,7 @@
     color: $title-color;
     text-align: center;
     background-color: #fff;
+    cursor: pointer;
   }
 
   .desc {
@@ -48,10 +54,6 @@
     display: block;
     font-size: $font-size-small;
     color: #999;
-  }
-
-  .nut-actionsheet-item {
-    cursor: pointer;
   }
 
   .nut-actionsheet-item-disabled {
