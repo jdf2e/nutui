@@ -1,5 +1,7 @@
 <template>
   <view>
+    <nut-button type="primary">主要按钮</nut-button>
+    <!-- <nut-icon name="dongdong"></nut-icon> -->
     <Demo></Demo>
   </view>
 </template>

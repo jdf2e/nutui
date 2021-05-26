@@ -2,27 +2,10 @@
 .nut-icon {
   display: inline-block;
   position: relative;
-  width: $icon-width;
-  height: $icon-height;
-  line-height: $icon-line-height;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
   text-align: right;
-
-  &::before {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  &__img {
-    width: $icon-width;
-    height: $icon-height;
-    object-fit: contain;
-  }
-  &-loading {
-    display: inline-block;
-    animation: loadingCircle 1s infinite linear;
-  }
 }
 
 @-webkit-keyframes loadingCircle {

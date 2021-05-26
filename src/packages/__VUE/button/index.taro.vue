@@ -12,10 +12,8 @@
 
 <script lang="ts">
 import { PropType, CSSProperties, toRefs, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from './../../../packages/utils/create';
 const { componentName, create } = createComponent('button');
-
-console.log(1111);
 
 export type ButtonType =
   | 'default'

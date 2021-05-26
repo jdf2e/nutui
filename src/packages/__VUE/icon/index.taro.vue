@@ -1,8 +1,8 @@
 <script lang="ts">
 import { h, PropType } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from './../../../packages/utils/create';
 const { componentName, create } = createComponent('icon');
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { pxCheck } from './../../../packages/utils/pxCheck';
 
 export default create({
   props: {
