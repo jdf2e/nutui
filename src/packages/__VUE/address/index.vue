@@ -12,7 +12,7 @@
           <nut-icon
             :name="backBtnIcon"
             color="#cccccc"
-            v-if="privateType == 'custom' && backBtnIcon"
+            v-show="privateType == 'custom' && backBtnIcon"
           ></nut-icon>
         </view>
 
