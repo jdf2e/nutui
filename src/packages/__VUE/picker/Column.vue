@@ -1,5 +1,5 @@
 <template>
-  <view-block
+  <view
     class="nut-picker__content"
     :style="{ height: height + 'px' }"
     @touchstart="onTouchStart"
@@ -8,15 +8,15 @@
     @touchcancel="onTouchEnd"
     @transitionend="stopMomentum"
   >
-    <view-block class="nut-picker__wrapper" ref="wrapper" :style="wrapperStyle">
-      <view-block
+    <view class="nut-picker__wrapper" ref="wrapper" :style="wrapperStyle">
+      <view
         class="nut-picker__item"
         :key="index"
         v-for="(item, index) in options"
-        >{{ dataType === 'cascade' ? item.text : item }}</view-block
+        >{{ dataType === 'cascade' ? item.text : item }}</view
       >
-    </view-block>
-  </view-block>
+    </view>
+  </view>
 </template>
 <script lang="ts">
 import { reactive, ref, watch, computed, toRefs, onMounted } from 'vue';

@@ -1,11 +1,13 @@
 .nut-pullrefresh {
   position: relative;
   height: 100%;
+  display: block;
 
   .pullrefresh-top {
     position: absolute;
     left: 0;
 
+    display: block;
     overflow: hidden;
     color: #969799;
     font-size: 14px;
@@ -32,11 +34,14 @@
     height: 100%;
     overflow: auto;
     background: #fff;
+
+    display: block;
   }
 
   .pullrefresh-bottom {
     position: absolute;
 
+    display: block;
     overflow: hidden;
     color: #969799;
     font-size: 14px;

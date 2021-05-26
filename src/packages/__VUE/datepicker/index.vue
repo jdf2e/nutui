@@ -1,14 +1,12 @@
 <template>
-  <view-block>
-    <nut-picker
-      :visible="show"
-      @close="closeHandler"
-      :list-data="columns"
-      @change="changeHandler"
-      :title="title"
-      @confirm="confirm"
-    ></nut-picker>
-  </view-block>
+  <nut-picker
+    :visible="show"
+    @close="closeHandler"
+    :list-data="columns"
+    @change="changeHandler"
+    :title="title"
+    @confirm="confirm"
+  ></nut-picker>
 </template>
 <script lang="ts">
 import { toRefs, watch, computed, reactive, onMounted } from 'vue';

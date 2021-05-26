@@ -1,5 +1,5 @@
 <template>
-  <view-block
+  <view
     class="nut-pullrefresh"
     ref="scroller"
     :style="getStyle"
@@ -7,18 +7,18 @@
     @touchmove="touchMove"
     @touchend="touchEnd"
   >
-    <view-block
+    <view
       class="pullrefresh-top"
       :class="
         direction == 'horizontal' ? 'pullrefresh-top-h' : 'pullrefresh-top-v'
       "
-      >{{ refreshTopTem }}</view-block
+      >{{ refreshTopTem }}</view
     >
-    <view-block class="pullrefresh-content" ref="pull">
+    <view class="pullrefresh-content" ref="pull">
       <slot></slot>
-    </view-block>
+    </view>
 
-    <view-block
+    <view
       class="pullrefresh-bottom"
       :class="
         direction == 'horizontal'
@@ -26,9 +26,9 @@
           : 'pullrefresh-bottom-v'
       "
       :style="getBottomStyle"
-      >{{ refreshBottomTem }}</view-block
+      >{{ refreshBottomTem }}</view
     >
-  </view-block>
+  </view>
 </template>
 
 <script lang="ts">

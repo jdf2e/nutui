@@ -65,13 +65,14 @@
 </template>
 
 <script lang="ts">
-import { onMounted, ref, reactive, toRefs } from 'vue';
+import { onMounted, ref, reactive, toRefs, getCurrentInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('infiniteloading');
-import { Toast } from '../toast';
 export default createDemo({
   props: {},
   setup() {
+    let { proxy } = getCurrentInstance() as any;
+
     const hasMore = ref(true);
     const customHasMore = ref(true);
     const refreshHasMore = ref(true);
@@ -120,7 +121,7 @@ export default createDemo({
 
     const refresh = done => {
       setTimeout(() => {
-        Toast.success('刷新成功');
+        proxy.$toast.text('刷新成功');
         done();
       }, 1000);
     };

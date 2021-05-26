@@ -8,14 +8,12 @@
       @click-overlay="close"
     >
       <view class="nut-actionsheet-panel">
-        <view-block v-if="title" class="nut-actionsheet-title">{{
-          title
-        }}</view-block>
-        <view-block class="nut-actionsheet-item desc" v-if="description">{{
+        <view v-if="title" class="nut-actionsheet-title">{{ title }}</view>
+        <view class="nut-actionsheet-item desc" v-if="description">{{
           description
-        }}</view-block>
+        }}</view>
         <view class="nut-actionsheet-menu" v-if="menuItems.length">
-          <view-block
+          <view
             v-for="(item, index) of menuItems"
             class="nut-actionsheet-item"
             :class="{ 'nut-actionsheet-item-disabled': item.disable }"
@@ -24,15 +22,15 @@
             @click="chooseItem(item, index)"
             >{{ item[optionTag]
             }}<view class="subdesc">{{ item[optionSubTag] }}</view>
-          </view-block>
+          </view>
         </view>
-        <view-block
+        <view
           class="nut-actionsheet-cancel"
           v-if="cancelTxt"
           @click="cancelActionSheet"
         >
           {{ cancelTxt }}
-        </view-block>
+        </view>
       </view>
     </nut-popup>
   </view>
