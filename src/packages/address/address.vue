@@ -34,7 +34,7 @@
             ><span>{{ getTabName(item, index) }}</span></div
           >
 
-          <span class="region-tab-line" ref="regionLine"></span>
+          <span class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></span>
         </div>
 
         <div class="region-con">
@@ -80,7 +80,6 @@
 <script>
 import Popup from './../popup/popup.vue';
 import Icon from './../icon/icon.vue';
-import { TweenMax } from 'gsap';
 export default {
   name: 'nut-address',
   props: {
@@ -168,7 +167,8 @@ export default {
         town: {}
       }, //已选择的 省、市、县、镇
 
-      selectedExistAddress: {} // 当前选择的地址
+      selectedExistAddress: {}, // 当前选择的地址
+      lineDistance: 20
     };
   },
   components: {
@@ -257,7 +257,8 @@ export default {
       this.$nextTick(() => {
         if (this.$refs[name] && this.$refs[name][0]) {
           const distance = this.$refs[name][0].offsetLeft;
-          TweenMax.to(this.$refs.regionLine, 0.5, { left: distance });
+          // TweenMax.to(this.$refs.regionLine, 0.5, { left: distance });
+          this.lineDistance = distance;
         }
       });
     },
