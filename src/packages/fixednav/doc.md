@@ -103,7 +103,7 @@ export default {
 ## Prop
 | 字段           | 说明                       | 类型    | 默认值     |
 |:---------------|:---------------------------|:--------|:-----------|
-| active         | 是否打开                   | Boolean | false      |
+| active.sync         | 是否打开                   | Boolean | false      |
 | navList        | 悬浮列表内容数据           | Array   | []         |
 | active-text    | 收起列表按钮文案           | String  | '收起导航' |
 | un-active-text | 展开列表按钮文案           | String  | '快速导航' |

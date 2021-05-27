@@ -55,6 +55,9 @@ export default {
     }
   },
   watch: {
+    active(newV, oldV) {
+      this.defaultActive = newV;
+    },
     defaultActive(newV, oldV) {
       this.$emit('update:active', newV);
     }
