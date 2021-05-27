@@ -44,7 +44,11 @@
             <view>{{ getTabName(item, index) }}</view>
           </view>
 
-          <view class="region-tab-line" ref="regionLine"></view>
+          <view
+            class="region-tab-line"
+            ref="regionLine"
+            :style="{ left: lineDistance + 'px' }"
+          ></view>
         </view>
 
         <view class="region-con">
@@ -117,7 +121,6 @@
 import { reactive, ref, toRefs, watch, nextTick } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('address');
-import { TweenMax } from 'gsap';
 interface RegionData {
   name: string;
   [key: string]: any;
@@ -249,6 +252,8 @@ export default create({
 
     const closeWay = ref('self');
 
+    const lineDistance = ref(20);
+
     //获取已选地区列表名称
     const getTabName = (item: RegionData, index: number) => {
       if (item.name) return item.name;
@@ -277,7 +282,7 @@ export default create({
       nextTick(() => {
         if (name) {
           const distance = name.offsetLeft;
-          TweenMax.to(regionLine.value, 0.5, { left: distance });
+          lineDistance.value = distance;
         }
       });
     };
@@ -475,6 +480,7 @@ export default create({
       getTabName,
       nextAreaList,
       regionLine,
+      lineDistance,
       changeRegionTab,
       selectedExist,
       clickOverlay,
