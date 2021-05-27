@@ -1,3 +1,16 @@
+
+## v3.0.0
+
+`2021-05-27`
+  
+* :zap: chore: multi technology stack structure adjustment @richard1015
+* :zap: feat: Video (#464) @zy19940510
+* :bug: fix: typescript global error #461 @richard1015
+* :bug: fix: view-block warn #469 @richard1015
+* :bug: fix(address): change type bug、使用css3替换GASP动画函数 (#472) @richard1015 @yangxiaolu3
+* :zap: chore: rollup external vue-router  @richard1015
+* :zap: doc:  更新 nutui-cat 跳转链接 (#465)  @zy19940510 
+
 ## v3.0.0-beta.16
 
 `2021-05-18`
