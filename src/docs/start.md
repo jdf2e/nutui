@@ -11,7 +11,7 @@
 npm i @nutui/nutui -S
 
 # Vue3 项目
-npm i @nutui/nutui@beta -S
+npm i @nutui/nutui@next -S
 ```
 
 #### CDN 安装使用示例
@@ -25,11 +25,11 @@ npm i @nutui/nutui@beta -S
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- 引入样式 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@beta/dist/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@next/dist/style.css" />
     <!-- 引入Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
     <!-- 引入NutUI组件库 -->
-    <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@beta/dist/nutui.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@next/dist/nutui.umd.js"></script>
   </head>
   <body>
     <div id="app">
