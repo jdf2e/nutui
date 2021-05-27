@@ -1,3 +1,20 @@
+
+## [2.3.0](https://github.com/jdf2e/nutui/compare/v2.2.15...v2.3.0)
+`2021-05-27`
+
+
+* 📝  docs: design link target _blank ([5dec073](https://github.com/jdf2e/nutui/commit/5dec073966169d684bdb38b9910d8a6e1e9258c4))
+* 📝  docs: dialog demo desc ([dbe2b6b](https://github.com/jdf2e/nutui/commit/dbe2b6bd82a25136310a09a71f743354a0a55967))
+* 📝  docs: notify ([d4af736](https://github.com/jdf2e/nutui/commit/d4af736c6b97ff9a4e3b735628d835593caf74a1))
+
+
+* ✨ feat: **stepper:** prop disabled state ([42408c2](https://github.com/jdf2e/nutui/commit/42408c201996e9ab2055896d14baa41b609b982c))
+* ✨ feat: 增加导购魔方组件 ([#446](https://github.com/jdf2e/nutui/issues/446)) ([4fa04bc](https://github.com/jdf2e/nutui/commit/4fa04bcc93796f7399f9d7fa4d7f37f251b38b42))
+
+
+* 🐛 fix: **fixednav:** active state watch bug ([f892410](https://github.com/jdf2e/nutui/commit/f8924100fd808131e2fed14b69f215cd23e18102))
+* 🐛 fix: SearchBar 搜索栏组件的输入框无法水平居中对齐 ([#408](https://github.com/jdf2e/nutui/issues/408)) ([d0e4c23](https://github.com/jdf2e/nutui/commit/d0e4c238daf4d4ac2a4f9927a1d535320d7c1070))
+
 ## 2.2.15
 
 `2020-03-03`
