@@ -35,7 +35,7 @@
           discount="2"
           cText1="满49元可用"
           cText2="仅可购买年货节头号京贴活动商品"
-          cImage="http://m.360buyimg.com/babel/s250x250_jfs/t1/137621/21/15770/49049/5fbe0520E043b4ce5/f8a1e0e877908389.jpg"
+          cImage="https://m.360buyimg.com/babel/s250x250_jfs/t1/137621/21/15770/49049/5fbe0520E043b4ce5/f8a1e0e877908389.jpg"
           state="0"
           @click="handleClick()"
         />
@@ -46,7 +46,7 @@
           discount="8折"
           cText1="满199元可用"
           cText2="仅可购买年货节头号京贴活动商品"
-          cImage="http://m.360buyimg.com/babel/s250x250_jfs/t1/132022/33/3322/189592/5ef9d0c4Ece6a3708/c5dc348d3f943324.jpg"
+          cImage="https://m.360buyimg.com/babel/s250x250_jfs/t1/132022/33/3322/189592/5ef9d0c4Ece6a3708/c5dc348d3f943324.jpg"
           state="1"
           @click="handleClick()"
         />
@@ -57,7 +57,7 @@
           discount="5"
           cText1="满99元可用"
           cText2="全品类券"
-          cImage="http://m.360buyimg.com/babel/s250x250_jfs/t1/113459/35/17982/103219/5f6338c6Ec5691153/7e8cf299c6318afe.jpg"
+          cImage="https://m.360buyimg.com/babel/s250x250_jfs/t1/113459/35/17982/103219/5f6338c6Ec5691153/7e8cf299c6318afe.jpg"
           state="2"
           @click="handleClick()"
         />

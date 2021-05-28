@@ -11,57 +11,57 @@ export default {
       dataArr: [
         {
           type: 'rank',
-          name: 'name1',
-          pictureUrl: 'https://img10.360buyimg.com/n5/s54x54_jfs/t1/164065/10/8839/39628/603ee7edE9dee283f/e56acfa461919177.jpg',
+          name: 'iphone',
+          pictureUrl: 'https://img14.360buyimg.com/n1/s54x54_jfs/t1/135834/8/12159/69414/5f8619caE7d358383/d44b88e3bcaff342.jpg',
           desc: 'desc',
           link: 'link'
         },
         {
           type: 'rank',
-          name: 'name2',
-          pictureUrl: 'https://img10.360buyimg.com/n5/s54x54_jfs/t1/164065/10/8839/39628/603ee7edE9dee283f/e56acfa461919177.jpg',
+          name: 'iphone2',
+          pictureUrl: 'https://img14.360buyimg.com/n1/s54x54_jfs/t1/135834/8/12159/69414/5f8619caE7d358383/d44b88e3bcaff342.jpg',
           desc: 'desc',
           link: 'link'
         },
         {
           type: 'lbs',
-          name: 'name3',
-          pictureUrl: 'https://img10.360buyimg.com/n5/s54x54_jfs/t1/164065/10/8839/39628/603ee7edE9dee283f/e56acfa461919177.jpg',
+          name: 'iphone3',
+          pictureUrl: 'https://img14.360buyimg.com/n1/s54x54_jfs/t1/135834/8/12159/69414/5f8619caE7d358383/d44b88e3bcaff342.jpg',
           desc: 'desc',
           link: 'link'
         },
         {
           type: 'lbs',
-          name: 'name4',
-          pictureUrl: 'https://img10.360buyimg.com/n5/s54x54_jfs/t1/164065/10/8839/39628/603ee7edE9dee283f/e56acfa461919177.jpg',
+          name: 'iphone4',
+          pictureUrl: 'https://img14.360buyimg.com/n1/s54x54_jfs/t1/135834/8/12159/69414/5f8619caE7d358383/d44b88e3bcaff342.jpg',
           desc: 'desc',
           link: 'link'
         },
         {
           type: 'act',
-          name: 'name5',
-          pictureUrl: 'https://img10.360buyimg.com/n5/s54x54_jfs/t1/164065/10/8839/39628/603ee7edE9dee283f/e56acfa461919177.jpg',
+          name: 'iphone5',
+          pictureUrl: 'https://img14.360buyimg.com/n1/s54x54_jfs/t1/135834/8/12159/69414/5f8619caE7d358383/d44b88e3bcaff342.jpg',
           desc: 'desc',
           link: 'link'
         },
         {
           type: 'act',
-          name: 'name6',
-          pictureUrl: 'https://img10.360buyimg.com/n5/s54x54_jfs/t1/164065/10/8839/39628/603ee7edE9dee283f/e56acfa461919177.jpg',
+          name: 'iphone6',
+          pictureUrl: 'https://img14.360buyimg.com/n1/s54x54_jfs/t1/135834/8/12159/69414/5f8619caE7d358383/d44b88e3bcaff342.jpg',
           desc: 'desc',
           link: 'link'
         },
         {
           type: 'rank',
-          name: 'name7',
-          pictureUrl: 'https://img10.360buyimg.com/n5/s54x54_jfs/t1/164065/10/8839/39628/603ee7edE9dee283f/e56acfa461919177.jpg',
+          name: 'iphone7',
+          pictureUrl: 'https://img14.360buyimg.com/n1/s54x54_jfs/t1/135834/8/12159/69414/5f8619caE7d358383/d44b88e3bcaff342.jpg',
           desc: 'desc',
           link: 'link'
         },
         {
           type: 'rank',
-          name: 'name8',
-          pictureUrl: 'https://img10.360buyimg.com/n5/s54x54_jfs/t1/164065/10/8839/39628/603ee7edE9dee283f/e56acfa461919177.jpg',
+          name: 'iphone8',
+          pictureUrl: 'https://img14.360buyimg.com/n1/s54x54_jfs/t1/135834/8/12159/69414/5f8619caE7d358383/d44b88e3bcaff342.jpg',
           desc: 'desc',
           link: 'link'
         }

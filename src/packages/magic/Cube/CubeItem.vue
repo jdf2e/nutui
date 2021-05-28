@@ -119,7 +119,8 @@ $module_name: '.cube-item';
   // 图片
   &--pic {
     &::before {
-      background: url('../../../assets/img/magic/bg-cube-pic.png') no-repeat center/100%;
+      background: url('https://img12.360buyimg.com/imagetools/jfs/t1/184083/34/6101/38841/60b065caEaaf7c5d0/eec4cd260f46d9f0.png') no-repeat
+        center/100%;
       height: 100%;
     }
     .cube-item-box {
@@ -135,7 +136,8 @@ $module_name: '.cube-item';
   // 活动
   &--act {
     &::before {
-      background: url('../../../assets/img/magic/bg-cube-act.png') no-repeat center/100%;
+      background: url('https://img11.360buyimg.com/imagetools/jfs/t1/195605/17/5252/39357/60b065caEe0aa4c7e/04a341f4e51c6a9b.png') no-repeat
+        center/100%;
     }
     .sub-desc {
       background: #ff5c17;
@@ -144,7 +146,8 @@ $module_name: '.cube-item';
   // 榜单
   &--rank {
     &::before {
-      background: url('../../../assets/img/magic/bg-cube-rank.png') no-repeat center/100%;
+      background: url('https://img14.360buyimg.com/imagetools/jfs/t1/183388/37/6207/39741/60b065caEea1440a1/8860c63660fc9ac4.png') no-repeat
+        center/100%;
     }
     .sub-desc {
       background: #1f95fb;
@@ -153,7 +156,8 @@ $module_name: '.cube-item';
   // shop
   &--shop {
     &::before {
-      background: url('../../../assets/img/magic/bg-cube-pic.png') no-repeat center/100%;
+      background: url('https://img12.360buyimg.com/imagetools/jfs/t1/184083/34/6101/38841/60b065caEaaf7c5d0/eec4cd260f46d9f0.png') no-repeat
+        center/100%;
     }
     .sub-desc {
       background: #ffd01f;
@@ -165,7 +169,8 @@ $module_name: '.cube-item';
   // lbs
   &--lbs {
     &::before {
-      background: url('../../../assets/img/magic/bg-cube-lbs.png') no-repeat center/100%;
+      background: url('https://img10.360buyimg.com/imagetools/jfs/t1/129094/23/18726/38672/60b065caEb849e8cb/da761e3ebae5bc84.png') no-repeat
+        center/100%;
     }
     .sub-desc {
       background: #ffd01f;
