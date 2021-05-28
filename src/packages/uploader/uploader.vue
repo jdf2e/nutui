@@ -192,7 +192,6 @@ export default {
       this.$emit('afterChange', tar, $event);
     },
     async upload($event) {
-      console.log(2222);
       if (typeof this.beforeUpload === 'function') {
         const promise = new Promise((reslove, reject) => {
           reslove(this.beforeUpload($event));

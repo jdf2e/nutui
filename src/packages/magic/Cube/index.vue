@@ -81,11 +81,9 @@ export default {
   computed: {
     data_top() {
       return this.dataMagic.filter((item, i) => i % 2 == 0);
-      // console.log('data_top', data_top)
     },
     data_bottom() {
       return this.dataMagic.filter((item, i) => i % 2 == 1);
-      // console.log('data_bottom', data_top)
     }
   },
   watch: {
@@ -213,7 +211,6 @@ export default {
     },
     touchMoveHandler(e) {
       if (!this.canMove || !this.touching) return;
-      console.log('moving2');
 
       let moveX = e.touches[0].pageX - this.startX;
       let moveY = e.touches[0].pageY - this.startY;
@@ -290,7 +287,6 @@ export default {
      * wait: 运动是否需要滞后
      */
     setWrapper(nowX, time, wait) {
-      console.log('set?');
       this.offsetX = nowX;
       if (time > 0) {
         this.$wrapper.style.transitionDuration = `${time}ms`;
