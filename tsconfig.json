@@ -8,13 +8,13 @@
     "strict": true,
     "jsx": "preserve",
     "sourceMap": false,
-    "declaration": false,
     "removeComments": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "outDir": "./tsc/test",
     "types": ["vite/client", "jest"],
+    "composite": true,
     "paths": {
       "@/*": ["src/*"]
     }

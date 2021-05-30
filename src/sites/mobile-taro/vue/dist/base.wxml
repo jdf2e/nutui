@@ -77,14 +77,6 @@
   </image>
 </template>
 
-<template name="tmpl_0_slot">
-  <view slot="{{i.name}}"  id="{{i.uid}}">
-    <block wx:for="{{i.cn}}" wx:key="uid">
-      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
-    </block>
-  </view>
-</template>
-
 <template name="tmpl_0_#text" data="{{i:i}}">
   <block>{{i.v}}</block>
 </template>
@@ -149,14 +141,6 @@
   </scroll-view>
 </template>
 
-<template name="tmpl_1_slot">
-  <view slot="{{i.name}}"  id="{{i.uid}}">
-    <block wx:for="{{i.cn}}" wx:key="uid">
-      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
-    </block>
-  </view>
-</template>
-
 <template name="tmpl_1_container">
   <template is="{{xs.a(1, i.nn, l)}}" data="{{i:i,cid:1,l:xs.f(l,i.nn)}}" />
 </template>
@@ -215,14 +199,6 @@
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
   </scroll-view>
-</template>
-
-<template name="tmpl_2_slot">
-  <view slot="{{i.name}}"  id="{{i.uid}}">
-    <block wx:for="{{i.cn}}" wx:key="uid">
-      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
-    </block>
-  </view>
 </template>
 
 <template name="tmpl_2_container">
@@ -285,14 +261,6 @@
   </scroll-view>
 </template>
 
-<template name="tmpl_3_slot">
-  <view slot="{{i.name}}"  id="{{i.uid}}">
-    <block wx:for="{{i.cn}}" wx:key="uid">
-      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
-    </block>
-  </view>
-</template>
-
 <template name="tmpl_3_container">
   <template is="{{xs.a(3, i.nn, l)}}" data="{{i:i,cid:3,l:xs.f(l,i.nn)}}" />
 </template>
@@ -343,14 +311,6 @@
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
   </text>
-</template>
-
-<template name="tmpl_4_slot">
-  <view slot="{{i.name}}"  id="{{i.uid}}">
-    <block wx:for="{{i.cn}}" wx:key="uid">
-      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
-    </block>
-  </view>
 </template>
 
 <template name="tmpl_4_container">
@@ -405,14 +365,6 @@
   </text>
 </template>
 
-<template name="tmpl_5_slot">
-  <view slot="{{i.name}}"  id="{{i.uid}}">
-    <block wx:for="{{i.cn}}" wx:key="uid">
-      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
-    </block>
-  </view>
-</template>
-
 <template name="tmpl_5_container">
   <template is="{{xs.a(5, i.nn, l)}}" data="{{i:i,cid:5,l:xs.f(l,i.nn)}}" />
 </template>
@@ -457,14 +409,6 @@
   </text>
 </template>
 
-<template name="tmpl_6_slot">
-  <view slot="{{i.name}}"  id="{{i.uid}}">
-    <block wx:for="{{i.cn}}" wx:key="uid">
-      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
-    </block>
-  </view>
-</template>
-
 <template name="tmpl_6_container">
   <template is="{{xs.a(6, i.nn, l)}}" data="{{i:i,cid:6,l:xs.f(l,i.nn)}}" />
 </template>
@@ -507,14 +451,6 @@
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
   </text>
-</template>
-
-<template name="tmpl_7_slot">
-  <view slot="{{i.name}}"  id="{{i.uid}}">
-    <block wx:for="{{i.cn}}" wx:key="uid">
-      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
-    </block>
-  </view>
 </template>
 
 <template name="tmpl_7_container">

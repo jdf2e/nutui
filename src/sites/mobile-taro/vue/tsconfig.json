@@ -8,24 +8,32 @@
     "experimentalDecorators": true,
     "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
-    "outDir": "lib",
+    "outDir": "./../../../../tsc/test/test",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "sourceMap": true,
-    "baseUrl": ".",
-    "rootDir": ".",
+    "baseUrl": "./../../../../src",
     "jsx": "react-jsx",
     "allowJs": true,
+    "composite": true,
     "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types",
       "global.d.ts"
     ],
+    "paths": {
+      "@/*": ["./../../../../src/*"]
+    }
   },
+  "references": [
+    {
+      "path": "./../../../../tsconfig.json",
+    }
+  ],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": [
     "node_modules",
     "dist"
   ],
-  "compileOnSave": false
 }

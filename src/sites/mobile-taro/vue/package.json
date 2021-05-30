@@ -43,7 +43,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
-    "@nutui/nutui": "^3.0.0-beta.15",
     "@tarojs/cli": "^3.3.0-alpha.2",
     "@tarojs/mini-runner": "^3.3.0-alpha.2",
     "@tarojs/plugin-html": "^3.3.0-alpha.2",
