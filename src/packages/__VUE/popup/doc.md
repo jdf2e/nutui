@@ -97,7 +97,7 @@ app.use(Popup);
 | duration               | 动画时长，单位秒                                            | String、Number | `0.3`         |
 | overlay-class          | 自定义遮罩类名                                              | String         | -             |
 | overlay-style          | 自定义遮罩样式                                              | CSSProperties  | -             |
-| lock-scroll            | 背景是否锁定                                                | Boolean        | `false`       |
+| lock-scroll            | 背景是否锁定                                                | Boolean        | `true`       |
 | overlay                | 是否显示遮罩                                                | Boolean        | `true`        |
 | close-on-click-overlay | 是否点击遮罩关闭                                            | Boolean        | `true`        |
 | position               | 弹出位置（top,bottom,left,right,center）                    | String         | `"center"`    |
