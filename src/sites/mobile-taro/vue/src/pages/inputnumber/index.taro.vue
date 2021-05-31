@@ -8,7 +8,11 @@
       @click="reduce"
     >
     </nut-icon>
+    <view v-if="readonly" class="nut-inputnumber__text--readonly">
+      {{ modelValue }}
+    </view>
     <input
+      v-else
       type="number"
       :min="min"
       :max="max"
@@ -32,9 +36,11 @@
 </template>
 <script lang="ts">
 import { computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { createComponent } from './../../../../../../packages/utils/create';
+import { pxCheck } from './../../../../../../packages/utils/pxCheck';
+import Icon from './../icon/index.taro.vue';
 const { componentName, create } = createComponent('inputnumber');
+// console.log(wx.canIUse('console.log'))
 export default create({
   props: {
     modelValue: {
@@ -74,6 +80,9 @@ export default create({
       default: false
     }
   },
+  components: {
+    'nut-icon': Icon
+  },
   emits: [
     'update:modelValue',
     'change',
@@ -99,7 +108,7 @@ export default create({
 
     const change = (event: Event) => {
       const input = event.target as HTMLInputElement;
-      emit('update:modelValue', input.valueAsNumber, event);
+      emit('update:modelValue', input.value, event);
     };
 
     const emitChange = (value: string | number, event: Event) => {
@@ -136,18 +145,12 @@ export default create({
       }
     };
 
-    const focus = (event: Event) => {
-      if (props.disabled) return;
-      if (props.readonly) return;
-      emit('focus', event);
-    };
-
     const blur = (event: Event) => {
       if (props.disabled) return;
       if (props.readonly) return;
       const input = event.target as HTMLInputElement;
 
-      let value = input.valueAsNumber;
+      let value = input.value;
 
       if (value < Number(props.min)) {
         value = Number(props.min);
@@ -156,6 +159,16 @@ export default create({
       }
       emitChange(value, event);
       emit('blur', event);
+    };
+
+    const focus = (event: Event) => {
+      if (props.disabled) return;
+      if (props.readonly) {
+        console.log(12333);
+        blur();
+        return;
+      }
+      emit('focus', event);
     };
 
     return {
@@ -174,5 +187,5 @@ export default create({
 </script>
 
 <style lang="scss">
-@import 'index.scss';
+@import '../../../../../../packages/__VUE/inputnumber/index.scss';
 </style>

@@ -1421,7 +1421,7 @@ require('./taro');
 
           function NumberOf(val) {
             var res = Object(
-              _vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__[/* toNumber */ 'K']
+              _vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__[/* toNumber */ 'L']
             )(val);
             if (true) validateDuration(res);
             return res;
@@ -1882,7 +1882,7 @@ require('./taro');
                 } else if (castToNumber) {
                   domValue = Object(
                     _vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__[
-                      /* toNumber */ 'K'
+                      /* toNumber */ 'L'
                     ]
                   )(domValue);
                 }
@@ -1929,7 +1929,7 @@ require('./taro');
                   (number || el.type === 'number') &&
                   Object(
                     _vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__[
-                      /* toNumber */ 'K'
+                      /* toNumber */ 'L'
                     ]
                   )(el.value) === value
                 ) {
@@ -2084,7 +2084,7 @@ require('./taro');
                     return number
                       ? Object(
                           _vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__[
-                            /* toNumber */ 'K'
+                            /* toNumber */ 'L'
                           ]
                         )(getValue(o))
                       : getValue(o);
@@ -2705,7 +2705,7 @@ require('./taro');
               slots = _ref.slots;
 
             var _toRefs = Object(
-                vue__WEBPACK_IMPORTED_MODULE_1__[/* toRefs */ 'q']
+                vue__WEBPACK_IMPORTED_MODULE_1__[/* toRefs */ 'r']
               )(props),
               type = _toRefs.type,
               size = _toRefs.size,
@@ -2849,11 +2849,11 @@ require('./taro');
         };
         function render(_ctx, _cache, $props, $setup, $data, $options) {
           var _component_nut_icon = Object(
-            vue__WEBPACK_IMPORTED_MODULE_0__[/* resolveComponent */ 'h']
+            vue__WEBPACK_IMPORTED_MODULE_0__[/* resolveComponent */ 'p']
           )('nut-icon');
 
           return (
-            Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* openBlock */ 'f'])(),
+            Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* openBlock */ 'm'])(),
             Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createBlock */ 'b'])(
               'view',
               {
@@ -2875,7 +2875,7 @@ require('./taro');
                   [
                     _ctx.loading
                       ? (Object(
-                          vue__WEBPACK_IMPORTED_MODULE_0__[/* openBlock */ 'f']
+                          vue__WEBPACK_IMPORTED_MODULE_0__[/* openBlock */ 'm']
                         )(),
                         Object(
                           vue__WEBPACK_IMPORTED_MODULE_0__[
@@ -2892,7 +2892,7 @@ require('./taro');
                         )('v-if', true),
                     _ctx.icon && !_ctx.loading
                       ? (Object(
-                          vue__WEBPACK_IMPORTED_MODULE_0__[/* openBlock */ 'f']
+                          vue__WEBPACK_IMPORTED_MODULE_0__[/* openBlock */ 'm']
                         )(),
                         Object(
                           vue__WEBPACK_IMPORTED_MODULE_0__[
@@ -2917,7 +2917,7 @@ require('./taro');
                         )('v-if', true),
                     _ctx.$slots.default
                       ? (Object(
-                          vue__WEBPACK_IMPORTED_MODULE_0__[/* openBlock */ 'f']
+                          vue__WEBPACK_IMPORTED_MODULE_0__[/* openBlock */ 'm']
                         )(),
                         Object(
                           vue__WEBPACK_IMPORTED_MODULE_0__[
@@ -2934,7 +2934,7 @@ require('./taro');
                           [
                             Object(
                               vue__WEBPACK_IMPORTED_MODULE_0__[
-                                /* renderSlot */ 'g'
+                                /* renderSlot */ 'o'
                               ]
                             )(_ctx.$slots, 'default')
                           ],
@@ -3048,7 +3048,7 @@ require('./taro');
         );
 
         var config = {
-          pages: ['pages/icon-demo/index', 'pages/button-demo/index'],
+          pages: ['pages/inputnumber/demo', 'pages/button/demo'],
           window: {
             backgroundTextStyle: 'light',
             navigationBarBackgroundColor: '#fff',

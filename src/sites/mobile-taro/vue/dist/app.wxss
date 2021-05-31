@@ -329,6 +329,49 @@ view-block {
   -webkit-animation-name: nutRotateOut;
           animation-name: nutRotateOut;
 }
+
+.demo {
+  height: 100%;
+  background: #f7f8fa;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 114rpx 34rpx 0 34rpx;
+}
+
+.demo.full {
+  padding: 114rpx 0 0 0;
+}
+
+.demo.full .h5-h2 {
+  padding-left: 34rpx;
+}
+
+.demo.bg-w {
+  background: #fff;
+}
+
+.demo::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.demo > .h5-h2 {
+  margin-top: 60rpx;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #909ca4;
+  padding: 0 20rpx;
+  font-weight: normal;
+}
+
+.demo > .h5-p {
+  font-size: 24rpx;
+}
+
+.demo .card {
+  padding: 50rpx 36rpx;
+  background: white;
+}
 view-block {
   display: block;
 }
@@ -933,5 +976,3 @@ to {
 .nut-button--square {
   border-radius: 0;
 }
-
-@import "./common.wxss";

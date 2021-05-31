@@ -34,9 +34,9 @@
 
 <script lang="ts">
 import { computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from './../../../../../../packages/utils/create';
 import { useRouter } from 'vue-router';
-import CellGroup from '@/packages/__VUE/cellgroup/index.vue';
+import CellGroup from './../cellgroup/index.taro.vue';
 const { componentName, create } = createComponent('cell');
 export default create({
   props: {
@@ -84,5 +84,5 @@ export default create({
 </script>
 
 <style lang="scss">
-@import 'index.scss';
+@import '../../../../../../packages/__VUE/cell/index.scss';
 </style>

@@ -9,6 +9,8 @@
   }
 
   &__icon {
+    display: flex;
+    align-items: center;
     color: $inputnumber-icon-color;
     font-size: $inputnumber-icon-size;
     cursor: pointer;
@@ -16,6 +18,15 @@
       color: $inputnumber-icon-void-color;
       cursor: not-allowed;
     }
+  }
+
+  &__text--readonly {
+    width: $inputnumber-input-width;
+    height: 100%;
+    text-align: center;
+    margin: 0 6px;
+    background-color: $inputnumber-input-background-color;
+    border-radius: $inputnumber-input-border-radius;
   }
 
   input {
