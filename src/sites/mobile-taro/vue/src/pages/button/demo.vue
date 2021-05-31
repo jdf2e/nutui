@@ -1,0 +1,131 @@
+<template>
+  <view class="demo">
+    <h2 class="h2">按钮类型</h2>
+    <view class="demo-button-row">
+      <nut-button type="primary" @click="handleClick">主要按钮</nut-button>
+      <nut-button type="info">信息按钮</nut-button>
+      <nut-button type="default">默认按钮</nut-button>
+    </view>
+    <view class="demo-button-row2">
+      <nut-button type="danger">危险按钮</nut-button>
+      <nut-button type="warning">警告按钮</nut-button>
+      <nut-button type="success">成功按钮</nut-button>
+    </view>
+    <view class="h2">朴素按钮</view>
+    <view class="demo-button-row2">
+      <nut-button plain type="primary">朴素按钮</nut-button>
+      <nut-button plain type="info">朴素按钮</nut-button>
+    </view>
+    <view class="h2">禁用状态</view>
+    <view class="demo-button-row2">
+      <nut-button disabled type="primary">禁用状态</nut-button>
+      <nut-button plain disabled type="info">禁用状态</nut-button>
+      <nut-button plain disabled type="primary">禁用状态</nut-button>
+    </view>
+    <view class="h2">按钮形状</view>
+    <view class="demo-button-row2">
+      <nut-button shape="square" type="primary">方形按钮</nut-button>
+      <nut-button type="info">圆形按钮</nut-button>
+    </view>
+    <view class="h2">加载状态</view>
+    <view class="demo-button-row2">
+      <nut-button loading type="info"></nut-button>
+      <nut-button loading type="warning">加载中...</nut-button>
+      <nut-button :loading="isLoading" type="success" @click="changeLoading"
+        >Click me!</nut-button
+      >
+    </view>
+    <view class="h2">图标按钮</view>
+    <view class="demo-button-row2">
+      <nut-button
+        shape="square"
+        plain
+        type="primary"
+        icon="star-fill"
+      ></nut-button>
+      <nut-button shape="square" type="primary" icon="star">收藏</nut-button>
+    </view>
+
+    <view class="h2">按钮尺寸</view>
+    <view class="demo-button-row2">
+      <nut-button size="large" type="primary" style="margin-bottom: 10px"
+        >大号按钮</nut-button
+      >
+      <nut-button type="primary">普通按钮</nut-button>
+      <nut-button size="small" type="primary">小型按钮</nut-button>
+    </view>
+    <view class="h2">块级元素</view>
+    <view class="demo-button-row2">
+      <nut-button block type="primary">块级元素</nut-button>
+    </view>
+    <view class="h2">自定义颜色</view>
+    <view class="demo-button-row2">
+      <nut-button color="#7232dd">单色按钮</nut-button>
+      <nut-button color="#7232dd" plain>单色按钮</nut-button>
+      <nut-button color="linear-gradient(to right, #ff6034, #ee0a24)">
+        渐变按钮
+      </nut-button>
+    </view>
+  </view>
+</template>
+
+<script lang="ts">
+import { ref } from 'vue';
+import { createComponent } from './../../../../../../packages/utils/create';
+import Button from './index.taro.vue';
+const { createDemo } = createComponent('button');
+export default createDemo({
+  props: {},
+  components: {
+    'nut-button': Button
+  },
+  setup(props) {
+    let isLoading = ref(false);
+    const changeLoading = () => {
+      isLoading.value = true;
+      setTimeout(() => {
+        isLoading.value = false;
+      }, 3000);
+    };
+    const handleClick = () => {
+      console.log('click~~');
+    };
+
+    return {
+      isLoading,
+      changeLoading,
+      handleClick
+    };
+  }
+});
+</script>
+
+<style lang="scss">
+.h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #909ca4;
+  padding: 0 10px;
+  font-weight: 400;
+}
+view {
+  display: block;
+}
+.demo-button-row {
+  margin-bottom: 20px;
+}
+.demo-button-row2 {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.nut-button {
+  margin-right: 15px;
+  &:last-child {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+}
+</style>
