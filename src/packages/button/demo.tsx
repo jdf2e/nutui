@@ -6,7 +6,9 @@ const ButtonDemo = () => {
     <>
       <div className="demo">
         <h2>基础用法</h2>
-        <Button></Button>
+        <Button type="danger" shape="circle">
+          1232
+        </Button>
       </div>
     </>
   )
