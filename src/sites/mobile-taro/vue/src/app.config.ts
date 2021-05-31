@@ -1,7 +1,7 @@
 export default {
   pages: [
-    // 'pages/index/index',
-    'pages/button/index'
+    // 'pages/icon-demo/index',
+    'pages/button-demo/index'
   ],
   window: {
     backgroundTextStyle: 'light',

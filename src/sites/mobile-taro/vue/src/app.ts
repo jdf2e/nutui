@@ -1,9 +1,7 @@
 import { createApp } from 'vue';
 import './app.scss';
-import NUTUI from '@/packages/nutui.taro.vue';
-// import NUTUI from './../../../../packages/nutui.taro.vue';
-
-console.log(NUTUI);
+// import NUTUI from '@/packages/nutui.taro.vue';
+import NUTUI from './../../../../packages/nutui.taro.vue';
 
 const App = createApp({
   onShow() {}

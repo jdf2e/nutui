@@ -1,15 +1,24 @@
+const path = require('path');
 const config = {
-  projectName: 'myApp',
-  date: '2021-5-25',
-  designWidth: 750,
+  projectName: '@nutui/nutui-taro-mobile',
+  date: '2021-5-29',
+  designWidth: 375,
   deviceRatio: {
     640: 2.34 / 2,
     750: 1,
-    828: 1.81 / 2
+    828: 1.81 / 2,
+    375: 2 / 1
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  plugins: [],
+  plugins: ['@tarojs/plugin-html'],
+  sass: {
+    resource: path.resolve(
+      __dirname,
+      '../../../../',
+      'packages/styles/variables.scss'
+    )
+  },
   defineConstants: {},
   copy: {
     patterns: [],
