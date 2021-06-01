@@ -218,7 +218,7 @@ export default create({
     onMounted(() => {
       // document.getElementById('app').appendChild(proxy.$el);
       const query = wx.createSelectorQuery();
-      console.log(query.in(proxy));
+      // console.log(query.in(proxy));
       query.selectViewport().scrollOffset();
       query.exec(res => {
         // console.log(res[0].scrollTop)
