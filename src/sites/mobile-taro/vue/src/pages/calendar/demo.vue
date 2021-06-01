@@ -1,6 +1,76 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
+    <div>
+      <nut-cell
+        :show-icon="true"
+        title="选择单个日期"
+        :desc="date ? `${date} ${dateWeek}` : '请选择'"
+        @click="openSwitch('isVisible')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible"
+        :default-value="date"
+        @close="closeSwitch('isVisible')"
+        @choose="setChooseValue"
+        :start-date="`2019-10-11`"
+        :end-date="`2022-11-11`"
+      >
+      </nut-calendar>
+    </div>
+
+    <div>
+      <nut-cell
+        :show-icon="true"
+        title="选择日期区间"
+        :desc="date1 ? `${date1[0]}至${date1[1]}` : '请选择'"
+        @click="openSwitch('isVisible1')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible1"
+        :default-value="date1"
+        type="range"
+        :start-date="`2019-12-22`"
+        :end-date="`2021-01-08`"
+        @close="closeSwitch('isVisible1')"
+        @choose="setChooseValue1"
+      >
+      </nut-calendar>
+    </div>
+
+    <h2>自定义日历-自动回填</h2>
+    <div>
+      <nut-cell
+        :show-icon="true"
+        title="选择日期"
+        :desc="date3 ? date3 : '请选择'"
+        @click="openSwitch('isVisible3')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible3"
+        @close="closeSwitch('isVisible3')"
+        @choose="setChooseValue3"
+        :default-value="date3"
+        :start-date="null"
+        :end-date="null"
+        :is-auto-back-fill="true"
+      >
+      </nut-calendar>
+    </div>
+
+    <h2>平铺展示</h2>
+    <div class="test-calendar-wrapper">
+      <nut-calendar
+        :poppable="false"
+        :default-value="date2"
+        :is-auto-back-fill="true"
+        @choose="setChooseValue2"
+      >
+      </nut-calendar>
+    </div>
   </div>
 </template>
 
@@ -41,11 +111,12 @@ export default createDemo({
       date3: ''
     });
     const openSwitch = (param: string) => {
-      state[`${param}`] = true;
+      // state[`${param}`] = true;
+      state.isVisible1 = true;
     };
 
     const closeSwitch = (param: string) => {
-      state[`${param}`] = false;
+      //state[`${param}`] = false;
     };
 
     const setChooseValue = (param: string) => {
