@@ -14352,7 +14352,7 @@ and limitations under the License.
   !*** ./node_modules/@tarojs/taro/index.js ***!
   \********************************************/
       /*! no static exports found */
-      /*! exports used: initPxTransform */
+      /*! exports used: default, initPxTransform */
       /***/ function(module, exports, __webpack_require__) {
         var _require = __webpack_require__(
             /*! @tarojs/runtime */ './node_modules/@tarojs/runtime/dist/runtime.esm.js'

@@ -180,148 +180,6 @@ require('./taro');
         /***/
       },
 
-    /***/ './node_modules/@babel/runtime/helpers/classCallCheck.js':
-      /*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
-  \***************************************************************/
-      /*! no static exports found */
-      /*! exports used: default */
-      /***/ function(module, exports) {
-        function _classCallCheck(instance, Constructor) {
-          if (!(instance instanceof Constructor)) {
-            throw new TypeError('Cannot call a class as a function');
-          }
-        }
-
-        module.exports = _classCallCheck;
-        (module.exports['default'] = module.exports),
-          (module.exports.__esModule = true);
-
-        /***/
-      },
-
-    /***/ './node_modules/@babel/runtime/helpers/createClass.js':
-      /*!************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/createClass.js ***!
-  \************************************************************/
-      /*! no static exports found */
-      /*! exports used: default */
-      /***/ function(module, exports) {
-        function _defineProperties(target, props) {
-          for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];
-            descriptor.enumerable = descriptor.enumerable || false;
-            descriptor.configurable = true;
-            if ('value' in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
-          }
-        }
-
-        function _createClass(Constructor, protoProps, staticProps) {
-          if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-          if (staticProps) _defineProperties(Constructor, staticProps);
-          return Constructor;
-        }
-
-        module.exports = _createClass;
-        (module.exports['default'] = module.exports),
-          (module.exports.__esModule = true);
-
-        /***/
-      },
-
-    /***/ './node_modules/@babel/runtime/helpers/defineProperty.js':
-      /*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/defineProperty.js ***!
-  \***************************************************************/
-      /*! no static exports found */
-      /*! all exports used */
-      /***/ function(module, exports) {
-        function _defineProperty(obj, key, value) {
-          if (key in obj) {
-            Object.defineProperty(obj, key, {
-              value: value,
-              enumerable: true,
-              configurable: true,
-              writable: true
-            });
-          } else {
-            obj[key] = value;
-          }
-
-          return obj;
-        }
-
-        module.exports = _defineProperty;
-        (module.exports['default'] = module.exports),
-          (module.exports.__esModule = true);
-
-        /***/
-      },
-
-    /***/ './node_modules/@babel/runtime/helpers/objectSpread2.js':
-      /*!**************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/objectSpread2.js ***!
-  \**************************************************************/
-      /*! no static exports found */
-      /*! exports used: default */
-      /***/ function(module, exports, __webpack_require__) {
-        var defineProperty = __webpack_require__(
-          /*! ./defineProperty.js */ './node_modules/@babel/runtime/helpers/defineProperty.js'
-        );
-
-        function ownKeys(object, enumerableOnly) {
-          var keys = Object.keys(object);
-
-          if (Object.getOwnPropertySymbols) {
-            var symbols = Object.getOwnPropertySymbols(object);
-
-            if (enumerableOnly) {
-              symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-              });
-            }
-
-            keys.push.apply(keys, symbols);
-          }
-
-          return keys;
-        }
-
-        function _objectSpread2(target) {
-          for (var i = 1; i < arguments.length; i++) {
-            var source = arguments[i] != null ? arguments[i] : {};
-
-            if (i % 2) {
-              ownKeys(Object(source), true).forEach(function(key) {
-                defineProperty(target, key, source[key]);
-              });
-            } else if (Object.getOwnPropertyDescriptors) {
-              Object.defineProperties(
-                target,
-                Object.getOwnPropertyDescriptors(source)
-              );
-            } else {
-              ownKeys(Object(source)).forEach(function(key) {
-                Object.defineProperty(
-                  target,
-                  key,
-                  Object.getOwnPropertyDescriptor(source, key)
-                );
-              });
-            }
-          }
-
-          return target;
-        }
-
-        module.exports = _objectSpread2;
-        (module.exports['default'] = module.exports),
-          (module.exports.__esModule = true);
-
-        /***/
-      },
-
     /***/ './node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/index.js?!../../../packages/__VUE/button/index.taro.vue?vue&type=script&lang=ts':
       /*!**************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/dist??ref--10-0!/Users/yangxiaolu3/Documents/JD/workspace/nutui/src/packages/__VUE/button/index.taro.vue?vue&type=script&lang=ts ***!
@@ -738,7 +596,16 @@ require('./taro');
         );
 
         var config = {
-          pages: ['pages/button/demo'],
+          pages: [
+            'pages/address/demo',
+            'pages/infiniteloading/demo',
+            'pages/input/demo',
+            'pages/popup/demo',
+            'pages/inputnumber/demo',
+            'pages/calendar/demo',
+            'pages/textarea/demo',
+            'pages/button/demo'
+          ],
           window: {
             backgroundTextStyle: 'light',
             navigationBarBackgroundColor: '#fff',
@@ -754,7 +621,7 @@ require('./taro');
             _node_modules_babel_loader_lib_index_js_app_ts__WEBPACK_IMPORTED_MODULE_4__[
               /* default */ 'a'
             ],
-            vue__WEBPACK_IMPORTED_MODULE_5__[/* h */ 'n'],
+            vue__WEBPACK_IMPORTED_MODULE_5__[/* h */ 'm'],
             config
           )
         );

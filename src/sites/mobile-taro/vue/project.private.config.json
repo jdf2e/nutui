@@ -23,6 +23,12 @@
           "pathName": "pages/infiniteloading/demo",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/button/demo",
+          "pathName": "pages/button/demo",
+          "query": "",
+          "scene": null
         }
       ]
     }
