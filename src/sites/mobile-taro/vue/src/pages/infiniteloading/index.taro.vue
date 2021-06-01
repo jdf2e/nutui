@@ -39,8 +39,9 @@ import {
   computed,
   CSSProperties
 } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from './../../../../../../packages/utils/create';
 const { componentName, create } = createComponent('infiniteloading');
+import Icon from './../icon/index.taro.vue';
 export default create({
   props: {
     hasMore: {
@@ -91,7 +92,9 @@ export default create({
     }
   },
   emits: ['scroll-change', 'load-more', 'refresh'],
-
+  components: {
+    'nut-icon': Icon
+  },
   setup(props, { emit, slots }) {
     const state = reactive({
       scrollEl: window as Window | HTMLElement | (Node & ParentNode),
@@ -283,5 +286,5 @@ export default create({
 </script>
 
 <style lang="scss">
-@import 'index.scss';
+@import '../../../../../../packages/__VUE/infiniteloading/index.scss';
 </style>
