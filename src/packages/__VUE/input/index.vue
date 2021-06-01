@@ -104,14 +104,14 @@ export default create({
       const input = event.target as HTMLInputElement;
       let val = input.value;
 
-      if (props.maxLength && val.length > Number(props.maxLength)) {
-        val = val.slice(0, Number(props.maxLength));
-      }
       if (props.type === 'digit') {
         val = formatNumber(val, true);
       }
       if (props.type === 'number') {
         val = formatNumber(val, false);
+      }
+      if (props.maxLength && val.length > Number(props.maxLength)) {
+        val = val.slice(0, Number(props.maxLength));
       }
       emit('change', val, event);
       emit('update:modelValue', val, event);
@@ -131,6 +131,9 @@ export default create({
 
       const input = event.target as HTMLInputElement;
       let value = input.value;
+      if (props.maxLength && value.length > Number(props.maxLength)) {
+        value = value.slice(0, Number(props.maxLength));
+      }
       emit('blur', value, event);
     };
 
