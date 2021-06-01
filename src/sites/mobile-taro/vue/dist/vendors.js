@@ -30448,9 +30448,8 @@ return withDirectives(h(comp), [
               // component nodes also should always be patched, because even if the
               // component doesn't need to update, it needs to persist the instance on to
               // the next vnode so that it can be properly unmounted later.
-              (patchFlag > 0 || shapeFlag & 6) && // the EVENTS flag is only for hydration and if it is the only flag, the
-              /* COMPONENT */ // vnode should not be considered dynamic due to handler caching.
-              patchFlag !== 32
+              (patchFlag > 0 || shapeFlag & 6) && // the EVENTS flag is only for hydration and if it is the only flag, the // vnode should not be considered dynamic due to handler caching.
+              /* COMPONENT */ patchFlag !== 32
               /* HYDRATE_EVENTS */
             ) {
               currentBlock.push(vnode);
