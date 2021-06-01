@@ -5,6 +5,7 @@
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"
     v-model:visible="showPopup"
+    :class="classes"
   >
     <view-block class="nut-address">
       <view-block class="nut-address__header">
@@ -114,10 +115,13 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, nextTick } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('address');
-import { TweenMax } from 'gsap';
+import { reactive, ref, toRefs, watch, nextTick, computed } from 'vue';
+import { createComponent } from './../../../../../../packages/utils/create';
+import Icon from './../icon/index.taro.vue';
+import Popup from './../popup/index.taro.vue';
+
+const { create, componentName } = createComponent('address');
+
 interface RegionData {
   name: string;
   [key: string]: any;
@@ -207,6 +211,10 @@ export default create({
       default: 'left'
     }
   },
+  components: {
+    'nut-icon': Icon,
+    'nut-popup': Popup
+  },
   emits: [
     'update:visible',
     'type',
@@ -218,6 +226,13 @@ export default create({
   ],
 
   setup(props, { emit }) {
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true
+      };
+    });
+
     const regionLine = ref<null | HTMLElement>(null);
 
     const tabItemRef = reactive({
@@ -276,8 +291,8 @@ export default create({
       const name = (tabItemRef as any)[tabName.value[tabIndex.value]];
       nextTick(() => {
         if (name) {
-          const distance = name.offsetLeft;
-          TweenMax.to(regionLine.value, 0.5, { left: distance });
+          // const distance = name.offsetLeft;
+          // TweenMax.to(regionLine.value, 0.5, { left: distance });
         }
       });
     };
@@ -462,6 +477,7 @@ export default create({
     );
 
     return {
+      classes,
       showPopup,
       privateType,
       tabIndex,
@@ -487,5 +503,5 @@ export default create({
 </script>
 
 <style lang="scss">
-@import 'index.scss';
+@import '../../../../../../packages/__VUE/address/index.scss';
 </style>

@@ -1,0 +1,30 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/address/demo",
+          "pathName": "pages/address/demo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/infiniteloading/demo",
+          "pathName": "pages/infiniteloading/demo",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

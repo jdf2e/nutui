@@ -175,6 +175,7 @@ export default create({
     };
 
     const close = () => {
+      console.log(props.visible);
       if (props.visible) {
         unlockScroll();
         emit('update:visible', false);
