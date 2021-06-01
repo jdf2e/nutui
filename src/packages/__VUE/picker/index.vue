@@ -4,6 +4,9 @@
       position="bottom"
       :style="{ height: height + 56 + 'px' }"
       v-model:visible="show"
+      :teleport="teleport"
+      :lock-scroll="lockScroll"
+      :close-on-click-overlay="closeOnClickOverlay"
       @close="close"
     >
       <view class="nut-picker__bar">
@@ -47,7 +50,7 @@
 import { reactive, watch, computed, toRaw, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import column from './Column.vue';
-import popup from '@/packages/__VUE/popup/index.vue';
+import popup, { popupProps } from '@/packages/__VUE/popup/index.vue';
 import { commonProps } from './commonProps';
 import {
   PickerObjOpt,
@@ -63,10 +66,7 @@ export default create({
     [popup.name]: popup
   },
   props: {
-    visible: {
-      type: Boolean,
-      default: false
-    },
+    ...popupProps,
     title: {
       type: String,
       default: ''
