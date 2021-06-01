@@ -14,37 +14,48 @@ export interface ButtonProps {
   block: boolean
   icon: string
   children: any
-  click: (e: MouseEvent) => void
+  onClick: (e: MouseEvent) => void
 }
 
 export type ButtonType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
 export type ButtonSize = 'large' | 'normal' | 'small'
 export type ButtonShape = 'square' | 'round'
-const defaultProps = {} as ButtonProps
+const defaultProps = {
+  className: '',
+  color: '',
+  shape: 'round',
+  plain: false,
+  loading: false,
+  disabled: false,
+  type: 'default',
+  size: 'normal',
+  block: false,
+  icon: '',
+  style: {},
+  children: undefined,
+  onClick: (e: MouseEvent) => {},
+} as ButtonProps
 export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
-  const defaultProps: ButtonProps = {
-    className: '',
-    color: '',
-    shape: 'round',
-    plain: false,
-    loading: false,
-    disabled: false,
-    type: 'default',
-    size: 'normal',
-    block: false,
-    icon: '',
-    style: {},
-    children: undefined,
-    click: (e: MouseEvent) => {},
-  }
-  const { color, shape, plain, loading, disabled, type, size, block, icon, children, click } = {
+  const {
+    color,
+    shape,
+    plain,
+    loading,
+    disabled,
+    type,
+    size,
+    block,
+    icon,
+    children,
+    onClick,
+    className,
+    style,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
-  const { className, style, ...rest } = {
-    ...defaultProps,
-    ...props,
-  }
+
   const [btnName, setBtnName] = useState('')
   const [btnStyle, setBtnStyle] = useState({})
   useEffect(() => {
@@ -63,24 +74,27 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     block,
     icon,
     children,
-    click,
+    onClick,
   ])
   const classes = () => {
     const prefixCls = 'nut-button'
-    return `${prefixCls} ${type ? `${prefixCls}--${type}` : ''} ${
-      size ? `${prefixCls}--${size}` : ''
-    } ${shape ? `${prefixCls}--${shape}` : ''} ${plain ? `${prefixCls}--plain` : ''} ${
-      block ? `${prefixCls}--block` : ''
-    } ${disabled ? `${prefixCls}--disabled` : ''} ${loading ? `${prefixCls}--loading` : ''}`
+    return `${prefixCls} ${type ? `${prefixCls}--${type}` : ''} 
+    ${size ? `${prefixCls}--${size}` : ''} 
+    ${shape ? `${prefixCls}--${shape}` : ''} 
+    ${plain ? `${prefixCls}--plain` : ''} 
+    ${block ? `${prefixCls}--block` : ''} 
+    ${disabled ? `${prefixCls}--disabled` : ''} 
+    ${loading ? `${prefixCls}--loading` : ''}`
   }
 
-  const handleClick = (e: MouseEvent) => {
-    if (!loading && !disabled && click) {
-      click(e)
+  const handleClick = (e: any) => {
+    if (!loading && !disabled && onClick) {
+      onClick(e)
     }
   }
   const getStyle = () => {
     const style: CSSProperties = {}
+    console.log(plain)
     if (color) {
       if (plain) {
         style.color = color
@@ -100,7 +114,7 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
       className={`${btnName} ${className}`}
       style={{ ...btnStyle, ...style }}
       {...rest}
-      onClick={(e: MouseEvent) => handleClick(e)}
+      onClick={(e) => handleClick(e)}
     >
       <div className="nut-button__warp" style={getStyle()}>
         {loading && <Icon name="loading"></Icon>}
@@ -112,4 +126,4 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
 }
 
 Button.defaultProps = defaultProps
-Button.displayName = 'nut-button'
+Button.displayName = 'NutButton'

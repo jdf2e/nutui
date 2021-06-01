@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from './button'
 const ButtonDemo = () => {
+  const [loading, setLoading] = useState(false)
   return (
     <>
       <div className="demo">
@@ -25,26 +26,44 @@ const ButtonDemo = () => {
         </Button>
 
         <h2>朴素按钮</h2>
-        <Button plain style={{ margin: 8 }} type="primary">
+        <Button plain={true} style={{ margin: 8 }} type="primary">
           朴素按钮
         </Button>
-        <Button plain style={{ margin: 8 }} type="info">
+        <Button plain={true} style={{ margin: 8 }} type="info">
           朴素按钮
         </Button>
         <h2>禁用状态</h2>
         <Button disabled style={{ margin: 8 }} type="primary">
           禁用状态
         </Button>
-        <Button plain disabled style={{ margin: 8 }} type="info">
+        <Button plain={true} disabled style={{ margin: 8 }} type="info">
           禁用状态
         </Button>
-        <Button plain disabled style={{ margin: 8 }} type="primary">
+        <Button plain={true} disabled style={{ margin: 8 }} type="primary">
           禁用状态
         </Button>
         <h2>加载状态</h2>
         <Button loading type="info" style={{ margin: 8 }}></Button>
         <Button loading type="warning" style={{ margin: 8 }}>
           加载中
+        </Button>
+        <Button
+          loading={loading}
+          type="success"
+          onClick={() => {
+            setTimeout(() => {
+              setLoading(false)
+            }, 1500),
+              setLoading(!loading)
+          }}
+          style={{ margin: 8 }}
+        >
+          Click me!
+        </Button>
+        <h2>按钮尺寸</h2>
+        <Button shape="square" plain type="primary" icon="star-fill" style={{ margin: 8 }}></Button>
+        <Button shape="square" type="primary" icon="star" style={{ margin: 8 }}>
+          收藏
         </Button>
         <h2>按钮尺寸</h2>
         <Button size="large" type="primary">
@@ -64,7 +83,7 @@ const ButtonDemo = () => {
         <Button color="#7232dd" style={{ margin: 8 }}>
           单色按钮
         </Button>
-        <Button color="#7232dd" plain style={{ margin: 8 }}>
+        <Button color="#7232dd" plain={true} style={{ margin: 8 }}>
           单色按钮
         </Button>
         <Button color="linear-gradient(to right, #ff6034, #ee0a24)" style={{ margin: 8 }}>
