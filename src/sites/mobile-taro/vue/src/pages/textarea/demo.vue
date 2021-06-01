@@ -20,9 +20,14 @@
 
 <script lang="ts">
 import { ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from './../../../../../../packages/utils/create';
+import Textarea from './index.taro.vue';
 const { createDemo } = createComponent('textarea');
 export default createDemo({
+  props: {},
+  components: {
+    'nut-textarea': Textarea
+  },
   setup() {
     const value = ref('');
     const value2 = ref('');

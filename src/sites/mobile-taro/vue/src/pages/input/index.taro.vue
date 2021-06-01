@@ -4,7 +4,11 @@
       <view class="nut-input-require" v-if="requireShow">*</view>
       <view v-if="label" class="label-string">{{ label }}</view>
     </view>
+    <view v-if="readonly">
+      {{ modelValue }}
+    </view>
     <input
+      v-else
       class="input-text"
       :style="styles"
       :type="type"
@@ -29,8 +33,39 @@
 </template>
 <script lang="ts">
 import { ref, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { formatNumber } from './util';
+import { createComponent } from './../../../../../../packages/utils/create';
+
+function trimExtraChar(value: string, char: string, regExp: RegExp) {
+  const index = value.indexOf(char);
+
+  if (index === -1) {
+    return value;
+  }
+
+  if (char === '-' && index !== 0) {
+    return value.slice(0, index);
+  }
+
+  return value.slice(0, index + 1) + value.slice(index).replace(regExp, '');
+}
+
+function formatNumber(value: string, allowDot = true, allowMinus = true) {
+  if (allowDot) {
+    value = trimExtraChar(value, '.', /\./g);
+  } else {
+    value = value.replace(/\./g, '');
+  }
+
+  if (allowMinus) {
+    value = trimExtraChar(value, '-', /-/g);
+  } else {
+    value = value.replace(/-/, '');
+  }
+
+  const regExp = allowDot ? /[^-0-9.]/g : /[^-0-9]/g;
+
+  return value.replace(regExp, '');
+}
 
 const { componentName, create } = createComponent('input');
 interface Events {
@@ -73,7 +108,7 @@ export default create({
     },
     maxLength: {
       type: [String, Number],
-      default: ''
+      default: '99999999'
     },
     clearable: {
       type: Boolean,
@@ -153,5 +188,6 @@ export default create({
 </script>
 
 <style lang="scss">
-@import 'index.scss';
+// @import 'index.scss';
+@import '../../../../../../packages/__VUE/input/index.scss';
 </style>

@@ -13,7 +13,7 @@
 </template>
 <script lang="ts">
 import { CSSProperties, PropType, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from './../../../../../../packages/utils/create';
 const { componentName, create } = createComponent('overlay');
 const overlayProps = {
   visible: {
@@ -83,5 +83,5 @@ export default create({
 });
 </script>
 <style lang="scss">
-@import 'index.scss';
+@import '../../../../../../packages/__VUE/overlay/index.scss';
 </style>

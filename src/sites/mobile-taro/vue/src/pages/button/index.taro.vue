@@ -14,6 +14,7 @@
 import { PropType, CSSProperties, toRefs, computed } from 'vue';
 import { createComponent } from './../../../../../../packages/utils/create';
 const { componentName, create } = createComponent('button');
+console.log(wx);
 
 export type ButtonType =
   | 'default'

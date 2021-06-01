@@ -1,6 +1,10 @@
 <template>
   <view :class="classes">
+    <view v-if="readonly">
+      {{ modelValue }}
+    </view>
     <textarea
+      v-else
       class="nut-textarea__textarea"
       :style="styles"
       :rows="rows"
@@ -19,8 +23,8 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { computed } from 'vue';
+import { createComponent } from './../../../../../../packages/utils/create';
 
 const { componentName, create } = createComponent('textarea');
 
@@ -124,5 +128,5 @@ export default create({
 </script>
 
 <style lang="scss">
-@import 'index.scss';
+@import '../../../../../../packages/__VUE/textarea/index.scss';
 </style>
