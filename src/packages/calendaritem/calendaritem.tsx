@@ -101,192 +101,192 @@ class CalendarItem extends React.Component<Partial<CalendarItemProps>> {
 
   b = bem('calendar')
 
-  choose = (e: MouseEvent) => {
-    if (this.props?.choose) {
-      this.props?.choose(e)
-    }
-  }
-  // 日期转化成数组
-  splitDate = (date: string) => {
-    return date.split('-')
-  }
-  isStart = (currDate: string) => {
-    return Utils.isEqual(this.state?.currDate[0], currDate)
-  }
-  isEnd = (currDate: string) => {
-    return Utils.isEqual(this.state?.currDate[1], currDate)
-  }
-  //计算滚动方向和距离
-  setMove = (move: number, type?: string, time?: number) => {
-    let updateMove = move + this.state.transformY
-    const h = this.months?.value?.offsetHeight || 0
-    const offsetHeight = this?.monthsPanel?.value?.offsetHeight || 0
-    if (type === 'end') {
-      // 限定滚动距离
-      if (updateMove > 0) {
-        updateMove = 0
-      }
-      if (updateMove < 0 && updateMove < -offsetHeight + h) {
-        updateMove = -offsetHeight + h
-      }
-      if (offsetHeight <= h && this.state.monthsData?.length == 1) {
-        updateMove = 0
-      }
-      setTransform(updateMove, type, time)
-    } else {
-      if (updateMove > 0 && updateMove > 100) {
-        updateMove = 100
-      }
-      if (updateMove < -offsetHeight + h - 100 && this.state.monthsData?.length > 1) {
-        updateMove = -offsetHeight + h - 100
-      }
-      if (updateMove < 0 && updateMove < -100 && this.state.monthsData?.length == 1) {
-        updateMove = -100
-      }
-      setTransform(updateMove)
-    }
-  }
-  // 设置月份滚动距离和速度
-  setTransform = (translateY = 0, type?: string, time = 1000) => {
-    if (this.monthsPanel?.value) {
-      if (type === 'end') {
-        // this.monthsPanel?.value.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`
-        clearTimeout(this.state.timer)
-        const timer = setTimeout(() => {
-          loadScroll()
-        }, time)
-        this.setState({ timer })
-      } else {
-        // this.monthsPanel?.value.style.webkitTransition = ''
-        loadScroll()
-      }
-      // this.monthsPanel?.value.style.webkitTransform = `translateY(${translateY}px)`
-      this.setState({
-        scrollDistance: translateY,
-      })
-    }
-  }
-  //监听月份
-  // 监听月份滚动，改变月份标题
-  loadScroll = () => {
-    if (!this.props.poppable) {
-      return false
-    }
-    requestAniFrame(() => {
-      if (this.weeksPanel?.value && this.monthsPanel?.value) {
-        const top = this.weeksPanel?.value.getBoundingClientRect().bottom
-        const monthsDoms = this.monthsPanel?.value.querySelectorAll('.calendar-month')
-        for (let i = 0; i < monthsDoms.length; i++) {
-          if (
-            monthsDoms[i].getBoundingClientRect().top <= top &&
-            monthsDoms[i].getBoundingClientRect().bottom >= top
-          ) {
-            this.setState({ yearMonthTitle: this.state.monthsData[i].title })
-          } else if (this.state.scrollDistance === 0) {
-            this.setState({ yearMonthTitle: monthsData[0].title })
-          }
-        }
-      }
-    })
-  }
-
-  // 监听touch开始
-  touchStart = (event: any) => {
-    const changedTouches = event.changedTouches[0]
-    let touchParams = Object.assign({}, this.state.touchParams, {
-      startY: changedTouches.pageY,
-      startTime: event.timeStamp || Date.now(),
-    })
-    // console.log('touchStart:', event, data, this.state.scrollDistance)
-    this.setState({
-      touchParams,
-      transformY: this.state.scrollDistance,
-    })
-  }
-
-  // 监听touchmove
-  touchMove = (event: TouchEvent) => {
-    event.preventDefault()
-    const changedTouches = event.changedTouches[0]
-    let touchParams = Object.assign({}, this.state.touchParams, {
-      lastY: changedTouches.pageY,
-      lastTime: event.timeStamp || Date.now(),
-    })
-    this.setState({ touchParams })
-    const move = this.state.touchParams.lastY - this.state.touchParams.startY
-    if (Math.abs(move) < 5) {
-      return false
-    }
-    this.setMove(move)
-  }
-  // 获取当前数据
-  getCurrDate = (day: Day, month: MonthInfo, isRange?: boolean) => {
-    return isRange
-      ? month.curData[3] + '-' + month.curData[4] + '-' + Utils.getNumTwoBit(+day.day)
-      : month.curData[0] + '-' + month.curData[1] + '-' + Utils.getNumTwoBit(+day.day)
-  }
-  // 区间选择&&当前月&&选中态
-  isActive = (day: Day, month: MonthInfo) => {
-    return (
-      this.state.isRange &&
-      day.type == 'curr' &&
-      this.getClass(day, month) == 'calendar-month-day-active'
-    )
-  }
-  // 获取样式
-  getClass = (day: Day, month: MonthInfo, isRange?: boolean) => {
-    const currDate = getCurrDate(day, month, isRange)
-    if (day.type == 'curr') {
-      if (
-        (!this.state.isRange && Utils.isEqual(this.state.currDate as string, currDate)) ||
-        (this.state.isRange && (this.isStart(currDate) || this.isEnd(currDate)))
-      ) {
-        return `${state.dayPrefix}-active`
-      } else if (
-        (this.props.startDate && Utils.compareDate(currDate, this.props.startDate)) ||
-        (this.props.endDate && Utils.compareDate(this.props.endDate, currDate))
-      ) {
-        return `${this.state.dayPrefix}-disabled`
-      } else if (
-        this.state.isRange &&
-        Array.isArray(this.state.currDate) &&
-        Object.values(this.state.currDate).length == 2 &&
-        Utils.compareDate(this.state.currDate[0], currDate) &&
-        Utils.compareDate(currDate, this.state.currDate[1])
-      ) {
-        return `${this.state.dayPrefix}-choose`
-      } else {
-        return null
-      }
-    } else {
-      return `${this.state.dayPrefix}-disabled`
-    }
-  }
-  // confirm = () => {
-  //   if ((this.state.isRange && this.state.chooseData.length == 2) || !state.isRange) {
-  //     this.choose(this.state.chooseData)
-  //     if (this.props.poppable) {
-  //       this.props.update()
-  //     }
+  // choose = (e: MouseEvent) => {
+  //   if (this.props?.choose) {
+  //     this.props?.choose(e)
   //   }
   // }
+  // // 日期转化成数组
+  // splitDate = (date: string) => {
+  //   return date.split('-')
+  // }
+  // isStart = (currDate: string) => {
+  //   return Utils.isEqual(this.state?.currDate[0], currDate)
+  // }
+  // isEnd = (currDate: string) => {
+  //   return Utils.isEqual(this.state?.currDate[1], currDate)
+  // }
+  // //计算滚动方向和距离
+  // setMove = (move: number, type?: string, time?: number) => {
+  //   let updateMove = move + this.state.transformY
+  //   const h = this.months?.offsetHeight || 0
+  //   const offsetHeight = this?.monthsPanel?.offsetHeight || 0
+  //   if (type === 'end') {
+  //     // 限定滚动距离
+  //     if (updateMove > 0) {
+  //       updateMove = 0
+  //     }
+  //     if (updateMove < 0 && updateMove < -offsetHeight + h) {
+  //       updateMove = -offsetHeight + h
+  //     }
+  //     if (offsetHeight <= h && this.state.monthsData?.length == 1) {
+  //       updateMove = 0
+  //     }
+  //     // setTransform(updateMove, type, time)
+  //   } else {
+  //     if (updateMove > 0 && updateMove > 100) {
+  //       updateMove = 100
+  //     }
+  //     if (updateMove < -offsetHeight + h - 100 && this.state.monthsData?.length > 1) {
+  //       updateMove = -offsetHeight + h - 100
+  //     }
+  //     if (updateMove < 0 && updateMove < -100 && this.state.monthsData?.length == 1) {
+  //       updateMove = -100
+  //     }
+  //     // setTransform(updateMove)
+  //   }
+  // }
+  // // 设置月份滚动距离和速度
+  // setTransform = (translateY = 0, type?: string, time = 1000) => {
+  //   if (this.monthsPanel?.value) {
+  //     if (type === 'end') {
+  //       // this.monthsPanel?.value.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`
+  //       clearTimeout(this.state.timer)
+  //       const timer = setTimeout(() => {
+  //         // loadScroll()
+  //       }, time)
+  //       this.setState({ timer })
+  //     } else {
+  //       // this.monthsPanel?.value.style.webkitTransition = ''
+  //       // loadScroll()
+  //     }
+  //     // this.monthsPanel?.value.style.webkitTransform = `translateY(${translateY}px)`
+  //     this.setState({
+  //       scrollDistance: translateY,
+  //     })
+  //   }
+  // }
+  // //监听月份
+  // // 监听月份滚动，改变月份标题
+  // loadScroll = () => {
+  //   if (!this.props.poppable) {
+  //     return false
+  //   }
+  //   requestAniFrame(() => {
+  //     if (this.weeksPanel?.value && this.monthsPanel?.value) {
+  //       const top = this.weeksPanel?.value.getBoundingClientRect().bottom
+  //       const monthsDoms = this.monthsPanel?.value.querySelectorAll('.calendar-month')
+  //       for (let i = 0; i < monthsDoms.length; i++) {
+  //         if (
+  //           monthsDoms[i].getBoundingClientRect().top <= top &&
+  //           monthsDoms[i].getBoundingClientRect().bottom >= top
+  //         ) {
+  //           this.setState({ yearMonthTitle: this.state.monthsData[i].title })
+  //         } else if (this.state.scrollDistance === 0) {
+  //           this.setState({ yearMonthTitle: monthsData[0].title })
+  //         }
+  //       }
+  //     }
+  //   })
+  // }
 
-  isStartTip = (day: Day, month: MonthInfo) => {
-    if (this.isActive(day, month)) {
-      return this.isStart(this.getCurrDate(day, month))
-    } else {
-      return false
-    }
-  }
-  // 是否有结束提示
-  isEndTip = (day: Day, month: MonthInfo) => {
-    return this.isActive(day, month)
-  }
-  // 是否有是当前日期
-  isCurrDay = (month: any, day: string) => {
-    const date = `${month.curData[0]}-${month.curData[1]}-${day}`
-    return Utils.isEqual(date, Utils.date2Str(new Date()))
-  }
+  // // 监听touch开始
+  // touchStart = (event: any) => {
+  //   const changedTouches = event.changedTouches[0]
+  //   let touchParams = Object.assign({}, this.state.touchParams, {
+  //     startY: changedTouches.pageY,
+  //     startTime: event.timeStamp || Date.now(),
+  //   })
+  //   // console.log('touchStart:', event, data, this.state.scrollDistance)
+  //   this.setState({
+  //     touchParams,
+  //     transformY: this.state.scrollDistance,
+  //   })
+  // }
+
+  // // 监听touchmove
+  // touchMove = (event: TouchEvent) => {
+  //   event.preventDefault()
+  //   const changedTouches = event.changedTouches[0]
+  //   let touchParams = Object.assign({}, this.state.touchParams, {
+  //     lastY: changedTouches.pageY,
+  //     lastTime: event.timeStamp || Date.now(),
+  //   })
+  //   this.setState({ touchParams })
+  //   const move = this.state.touchParams.lastY - this.state.touchParams.startY
+  //   if (Math.abs(move) < 5) {
+  //     return false
+  //   }
+  //   this.setMove(move)
+  // }
+  // // 获取当前数据
+  // getCurrDate = (day: Day, month: MonthInfo, isRange?: boolean) => {
+  //   return isRange
+  //     ? month.curData[3] + '-' + month.curData[4] + '-' + Utils.getNumTwoBit(+day.day)
+  //     : month.curData[0] + '-' + month.curData[1] + '-' + Utils.getNumTwoBit(+day.day)
+  // }
+  // // 区间选择&&当前月&&选中态
+  // isActive = (day: Day, month: MonthInfo) => {
+  //   return (
+  //     this.state.isRange &&
+  //     day.type == 'curr' &&
+  //     this.getClass(day, month) == 'calendar-month-day-active'
+  //   )
+  // }
+  // // 获取样式
+  // getClass = (day: Day, month: MonthInfo, isRange?: boolean) => {
+  //   const currDate = getCurrDate(day, month, isRange)
+  //   if (day.type == 'curr') {
+  //     if (
+  //       (!this.state.isRange && Utils.isEqual(this.state.currDate as string, currDate)) ||
+  //       (this.state.isRange && (this.isStart(currDate) || this.isEnd(currDate)))
+  //     ) {
+  //       return `${state.dayPrefix}-active`
+  //     } else if (
+  //       (this.props.startDate && Utils.compareDate(currDate, this.props.startDate)) ||
+  //       (this.props.endDate && Utils.compareDate(this.props.endDate, currDate))
+  //     ) {
+  //       return `${this.state.dayPrefix}-disabled`
+  //     } else if (
+  //       this.state.isRange &&
+  //       Array.isArray(this.state.currDate) &&
+  //       Object.values(this.state.currDate).length == 2 &&
+  //       Utils.compareDate(this.state.currDate[0], currDate) &&
+  //       Utils.compareDate(currDate, this.state.currDate[1])
+  //     ) {
+  //       return `${this.state.dayPrefix}-choose`
+  //     } else {
+  //       return null
+  //     }
+  //   } else {
+  //     return `${this.state.dayPrefix}-disabled`
+  //   }
+  // }
+  // // confirm = () => {
+  // //   if ((this.state.isRange && this.state.chooseData.length == 2) || !state.isRange) {
+  // //     this.choose(this.state.chooseData)
+  // //     if (this.props.poppable) {
+  // //       this.props.update()
+  // //     }
+  // //   }
+  // // }
+
+  // isStartTip = (day: Day, month: MonthInfo) => {
+  //   if (this.isActive(day, month)) {
+  //     return this.isStart(this.getCurrDate(day, month))
+  //   } else {
+  //     return false
+  //   }
+  // }
+  // // 是否有结束提示
+  // isEndTip = (day: Day, month: MonthInfo) => {
+  //   return this.isActive(day, month)
+  // }
+  // // 是否有是当前日期
+  // isCurrDay = (month: any, day: string) => {
+  //   const date = `${month.curData[0]}-${month.curData[1]}-${day}`
+  //   return Utils.isEqual(date, Utils.date2Str(new Date()))
+  // }
   render() {
     const { type, isAutoBackFill, poppable, title, defaultValue, startDate, endDate } = {
       ...defaultProps,
@@ -339,12 +339,15 @@ class CalendarItem extends React.Component<Partial<CalendarItemProps>> {
           {/* <!-- content--> */}
           <div
             className="nut-calendar-content"
-            ref={this.months}
-            onTouchStart={(event) => this.touchStart(event)}
-            onTouchMove={(event) => this.touchMove(event)}
+            // ref={this.months}
+            // onTouchStart={(event) => this.touchStart(event)}
+            // onTouchMove={(event) => this.touchMove(event)}
             // onTouchEnd={}
           >
-            <div className="calendar-months-panel" ref={this.monthsPanel}>
+            <div
+              className="calendar-months-panel"
+              // ref={this.monthsPanel}
+            >
               <div className="calendar-loading-tip">
                 {!unLoadPrev ? '加载上一个月' : '没有更早月份'}
               </div>
@@ -373,7 +376,7 @@ class CalendarItem extends React.Component<Partial<CalendarItemProps>> {
                                   <div className={'calendar-day'}>
                                     {day.type === 'curr' ? day.day : ''}
                                   </div>
-                                  {this.isCurrDay(month, day.day) && (
+                                  {/* {this.isCurrDay(month, day.day) && (
                                     <div className={'calendar-curr-tips'}>今天</div>
                                   )}
                                   {this.isStartTip(day, month) ? (
@@ -382,7 +385,7 @@ class CalendarItem extends React.Component<Partial<CalendarItemProps>> {
                                     this.isEndTip(day, month) && (
                                       <div className="calendar-day-tip">结束</div>
                                     )
-                                  )}
+                                  )} */}
                                 </div>
                               )
                             }

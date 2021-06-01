@@ -1,23 +1,29 @@
-import React, { CSSProperties, FunctionComponent } from 'react'
+import React, { CSSProperties, FunctionComponent, useEffect, useState } from 'react'
 import './button.scss'
 import Icon from '@/packages/icon'
 export interface ButtonProps {
+  className: string
   color: string
   shape: string
   plain: boolean
   loading: boolean
   disabled: boolean
+  style: object
   type: string
   size: string
   block: boolean
   icon: string
+  children: any
+  click: (e: MouseEvent) => void
 }
+
 export type ButtonType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
 export type ButtonSize = 'large' | 'normal' | 'small'
 export type ButtonShape = 'square' | 'round'
 const defaultProps = {} as ButtonProps
 export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
   const defaultProps: ButtonProps = {
+    className: '',
     color: '',
     shape: 'round',
     plain: false,
@@ -27,25 +33,52 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     size: 'normal',
     block: false,
     icon: '',
+    style: {},
+    children: undefined,
+    click: (e: MouseEvent) => {},
   }
-  const { color, shape, plain, loading, disabled, type, size, block, icon, children } = {
+  const { color, shape, plain, loading, disabled, type, size, block, icon, children, click } = {
     ...defaultProps,
     ...props,
   }
+  const { className, style, ...rest } = {
+    ...defaultProps,
+    ...props,
+  }
+  const [btnName, setBtnName] = useState('')
+  const [btnStyle, setBtnStyle] = useState({})
+  useEffect(() => {
+    setBtnName(classes())
+    setBtnStyle(getStyle())
+  }, [
+    className,
+    color,
+    shape,
+    plain,
+    loading,
+    disabled,
+    style,
+    type,
+    size,
+    block,
+    icon,
+    children,
+    click,
+  ])
   const classes = () => {
-    const prefixCls = console.log(prefixCls)
-    return {
-      [`${prefixCls}`]: true,
-      [`${prefixCls}--${type}`]: type,
-      [`${prefixCls}--${size}`]: size,
-      [`${prefixCls}--${shape}`]: shape,
-      [`${prefixCls}--plain`]: plain,
-      [`${prefixCls}--block`]: block,
-      [`${prefixCls}--disabled`]: disabled,
-      [`${prefixCls}--loading`]: loading,
-    }
+    const prefixCls = 'nut-button'
+    return `${prefixCls} ${type ? `${prefixCls}--${type}` : ''} ${
+      size ? `${prefixCls}--${size}` : ''
+    } ${shape ? `${prefixCls}--${shape}` : ''} ${plain ? `${prefixCls}--plain` : ''} ${
+      block ? `${prefixCls}--block` : ''
+    } ${disabled ? `${prefixCls}--disabled` : ''} ${loading ? `${prefixCls}--loading` : ''}`
   }
 
+  const handleClick = (e: MouseEvent) => {
+    if (!loading && !disabled && click) {
+      click(e)
+    }
+  }
   const getStyle = () => {
     const style: CSSProperties = {}
     if (color) {
@@ -63,16 +96,16 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     return style
   }
   return (
-    <div style={classes()}>
-      <div className="nut-button">
-        <div className="nut-button__warp" style={getStyle()}>
-          {icon && !loading && <Icon name="loading"></Icon>}
-          <Icon name={'icon'}></Icon>
-          {children}
-          {/* <div className={ text icon || loading } v-if="$slots.default">
-          <slot></slot>
-        </div> */}
-        </div>
+    <div
+      className={`${btnName} ${className}`}
+      style={{ ...btnStyle, ...style }}
+      {...rest}
+      onClick={(e: MouseEvent) => handleClick(e)}
+    >
+      <div className="nut-button__warp" style={getStyle()}>
+        {loading && <Icon name="loading"></Icon>}
+        {!loading && icon ? <Icon name={icon}></Icon> : ''}
+        {children}
       </div>
     </div>
   )
