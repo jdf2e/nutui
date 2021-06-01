@@ -1,8 +1,5 @@
 export default {
-  pages: [
-    // 'pages/inputnumber/demo',
-    'pages/button/demo'
-  ],
+  pages: ['pages/popup/demo', 'pages/inputnumber/demo', 'pages/button/demo'],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',

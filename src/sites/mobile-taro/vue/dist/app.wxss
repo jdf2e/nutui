@@ -976,3 +976,5 @@ to {
 .nut-button--square {
   border-radius: 0;
 }
+
+@import "./common.wxss";
