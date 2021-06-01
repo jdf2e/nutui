@@ -50,10 +50,11 @@ import {
   CSSProperties,
   toRefs
 } from 'vue';
-import { useLockScroll } from './use-lock-scroll';
-import { overlayProps } from './../overlay/index.vue';
-import overlay from '@/packages/__VUE/overlay/index.vue';
-import { createComponent } from '@/packages/utils/create';
+import { useLockScroll } from './../../../../../../packages/__VUE/popup/use-lock-scroll';
+import { overlayProps } from './../overlay/index.taro.vue';
+import overlay from './../overlay/index.taro.vue';
+import Icon from './../icon/index.taro.vue';
+import { createComponent } from './../../../../../../packages/utils/create';
 const { componentName, create } = createComponent('popup');
 
 let _zIndex = 2000;
@@ -278,5 +279,5 @@ export default create({
 </script>
 
 <style lang="scss">
-@import 'index.scss';
+@import '../../../../../../packages/__VUE/popup/index.scss';
 </style>
