@@ -1,10 +1,10 @@
 export default {
   pages: [
-    // 'pages/inputnumber/demo',
-    // 'pages/calendaritem/index.taro'
+    'pages/input/demo',
+    'pages/popup/demo',
+    'pages/inputnumber/demo',
     'pages/calendar/demo',
     'pages/textarea/demo',
-    'pages/input/demo',
     'pages/button/demo'
   ],
   window: {

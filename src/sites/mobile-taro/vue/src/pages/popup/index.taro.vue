@@ -1,5 +1,5 @@
 <template>
-  <Teleport :to="teleport">
+  <view>
     <nut-overlay
       v-if="overlay"
       :visible="visible"
@@ -34,7 +34,7 @@
         </nut-icon>
       </view>
     </Transition>
-  </Teleport>
+  </view>
 </template>
 <script lang="ts">
 import {
@@ -48,7 +48,8 @@ import {
   reactive,
   PropType,
   CSSProperties,
-  toRefs
+  toRefs,
+  getCurrentInstance
 } from 'vue';
 import { useLockScroll } from './../../../../../../packages/__VUE/popup/use-lock-scroll';
 import { overlayProps } from './../overlay/index.taro.vue';
@@ -115,7 +116,8 @@ export const popupProps = {
 export default create({
   children: [overlay],
   components: {
-    'nut-overlay': overlay
+    'nut-overlay': overlay,
+    'nut-icon': Icon
   },
   props: {
     ...popupProps
@@ -132,6 +134,7 @@ export default create({
   ],
 
   setup(props, { emit }) {
+    const { proxy } = getCurrentInstance() as any;
     const state = reactive({
       zIndex: props.zIndex ? (props.zIndex as number) : _zIndex,
       showSlot: true,
@@ -213,6 +216,13 @@ export default create({
     };
 
     onMounted(() => {
+      // document.getElementById('app').appendChild(proxy.$el);
+      const query = wx.createSelectorQuery();
+      console.log(query.in(proxy));
+      query.selectViewport().scrollOffset();
+      query.exec(res => {
+        // console.log(res[0].scrollTop)
+      });
       props.transition
         ? (state.transitionName = props.transition)
         : (state.transitionName = `popup-slide-${props.position}`);
