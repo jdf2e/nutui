@@ -166,6 +166,9 @@ export default createDemo({
 | title        | 设置标题                         | String | -                |
 | list-data         | 列表数据 | Array | -                |
 | default-value-index         | 初始选中项的索引，默认为 0 | number | 0                |
+| teleport               | 指定挂载节点                          | String  | "body"   |
+| close-on-click-overlay | 点击蒙层是否关闭对话框                | Boolean | false    |
+| lock-scroll            | 背景是否锁定                          | Boolean | false    |
    
 ### Events
     
