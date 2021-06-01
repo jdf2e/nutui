@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .nut-col {
   float: left;
   box-sizing: border-box;
@@ -15,10 +17,10 @@
 
 @for $i from 1 through 24 {
   .nut-col-offset-#{$i} {
-    margin-left: 100/24 * $i * 1%;
+    margin-left: math.div(100, 24) * $i * 1%;
   }
 
   .nut-col-#{$i} {
-    width: 100/24 * $i * 1%;
+    width: math.div(100, 24) * $i * 1%;
   }
 }
