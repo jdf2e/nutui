@@ -1,12 +1,12 @@
 <template>
   <view :class="classes" @click="onClick" :style="style">
     <view class="switch-button">
-      <view v-show="!isOpen" class="close-line"></view>
+      <view v-show="!modelValue" class="close-line"></view>
       <template v-if="activeText">
-        <view class="nut-switch-label open" v-show="isOpen">{{
+        <view class="nut-switch-label open" v-show="modelValue">{{
           activeText
         }}</view>
-        <view class="nut-switch-label close" v-show="!isOpen">{{
+        <view class="nut-switch-label close" v-show="!modelValue">{{
           inactiveText
         }}</view>
       </template>
@@ -24,10 +24,6 @@ export default create({
     modelValue: {
       type: Boolean,
       default: false
-    },
-    checked: {
-      type: Boolean,
-      default: true
     },
     disable: {
       type: Boolean,
