@@ -1,82 +1,96 @@
 <template>
-  <div class="demo-list">
-    <h4>基础用法</h4>
-    <div class="show-demo">
-      <nut-checkbox v-model="checkbox1" label="复选框" @change="changeBox1"
-        ><span>复选框</span></nut-checkbox
-      >
-      <span>{{ checkbox1 }}</span>
-    </div>
-    <div class="show-demo">
-      <nut-checkbox
-        v-model="checkbox2"
-        text-position="left"
-        @change="changeBox2"
-        >复选框</nut-checkbox
-      >
-      <span>{{ checkbox2 }}</span>
-    </div>
-    <h4>禁用状态</h4>
-    <div class="show-demo">
-      <nut-checkbox v-model="checkbox3" disabled>未选时禁用状态</nut-checkbox>
-      <nut-checkbox v-model="checkbox4" disabled>选中时禁用状态</nut-checkbox>
-    </div>
-    <h4>自定义尺寸</h4>
-    <div class="show-demo">
-      <nut-checkbox v-model="checkbox5" icon-size="25"
-        >自定义尺寸25</nut-checkbox
-      >
-      <nut-checkbox v-model="checkbox6" icon-size="10"
-        >自定义尺寸10</nut-checkbox
-      >
-    </div>
-    <h4>自定义图标</h4>
-    <div class="show-demo">
-      <nut-checkbox
-        v-model="checkbox7"
-        icon-name="checklist"
-        icon-active-name="checklist"
-        >自定义图标</nut-checkbox
-      >
-    </div>
-    <h4>点击触发change事件</h4>
-    <div class="show-demo">
-      <nut-checkbox v-model="checkbox8" @change="changeBox3"
-        >change复选框</nut-checkbox
-      >
-    </div>
-    <h4>checkboxGroup使用</h4>
-    <div class="show-demo group1">
-      <nut-checkboxgroup v-model="checkboxgroup1">
-        <nut-checkbox v-model="checkbox9" label="1">组合复选框</nut-checkbox>
-        <nut-checkbox v-model="checkbox10" label="2">组合复选框</nut-checkbox>
-        <nut-checkbox v-model="checkbox11" label="3">组合复选框</nut-checkbox>
-        <nut-checkbox v-model="checkbox12" label="4">组合复选框</nut-checkbox>
-      </nut-checkboxgroup>
-      <span>选中：{{ checkboxgroup1 }}</span>
-    </div>
-    <h4>checkboxGroup禁用</h4>
-    <div class="show-demo group2">
-      <nut-checkboxgroup v-model="checkboxgroup2" disabled>
-        <nut-checkbox v-model="checkbox13" label="1">组合复选框</nut-checkbox>
-        <nut-checkbox v-model="checkbox14" label="2">组合复选框</nut-checkbox>
-      </nut-checkboxgroup>
-    </div>
-    <h4>checkboxGroup 全选/取消</h4>
-    <div class="show-demo group1">
-      <nut-checkboxgroup
-        v-model="checkboxgroup3"
-        ref="group"
-        @change="changeBox4"
-      >
-        <nut-checkbox v-model="checkbox15" label="1">组合复选框</nut-checkbox>
-        <nut-checkbox v-model="checkbox16" label="2">组合复选框</nut-checkbox>
-      </nut-checkboxgroup>
-      <span class="btn">
+  <div class="demo">
+    <nut-cell-group title="基本用法-左右">
+      <nut-cell>
+        <nut-checkbox v-model="checkbox1" label="复选框" @change="changeBox1"
+          >复选框</nut-checkbox
+        >
+      </nut-cell>
+      <nut-cell>
+        <nut-checkbox
+          v-model="checkbox1"
+          text-position="left"
+          @change="changeBox1"
+          >复选框</nut-checkbox
+        >
+      </nut-cell>
+      <nut-cell title="当前选中值" :desc="checkbox1" />
+    </nut-cell-group>
+
+    <nut-cell-group title="禁用状态">
+      <nut-cell>
+        <nut-checkbox v-model="checkbox3" disabled>未选时禁用状态</nut-checkbox>
+      </nut-cell>
+      <nut-cell>
+        <nut-checkbox v-model="checkbox4" disabled>选中时禁用状态</nut-checkbox>
+      </nut-cell>
+    </nut-cell-group>
+    <nut-cell-group title="自定义尺寸">
+      <nut-cell>
+        <nut-checkbox v-model="checkbox5" icon-size="25"
+          >自定义尺寸25</nut-checkbox
+        >
+      </nut-cell>
+      <nut-cell>
+        <nut-checkbox v-model="checkbox6" icon-size="10"
+          >自定义尺寸10</nut-checkbox
+        >
+      </nut-cell>
+    </nut-cell-group>
+    <nut-cell-group title="自定义图标">
+      <nut-cell>
+        <nut-checkbox
+          v-model="checkbox7"
+          icon-name="checklist"
+          icon-active-name="checklist"
+          >自定义图标</nut-checkbox
+        >
+      </nut-cell>
+    </nut-cell-group>
+    <nut-cell-group title="点击触发change事件">
+      <nut-cell>
+        <nut-checkbox v-model="checkbox8" @change="changeBox3"
+          >change复选框</nut-checkbox
+        >
+      </nut-cell>
+    </nut-cell-group>
+    <nut-cell-group title="checkboxGroup使用">
+      <nut-cell>
+        <nut-checkboxgroup v-model="checkboxgroup1">
+          <nut-checkbox v-model="checkbox9" label="1">组合复选框</nut-checkbox>
+          <nut-checkbox v-model="checkbox10" label="2">组合复选框</nut-checkbox>
+          <nut-checkbox v-model="checkbox11" label="3">组合复选框</nut-checkbox>
+          <nut-checkbox v-model="checkbox12" label="4">组合复选框</nut-checkbox>
+        </nut-checkboxgroup>
+      </nut-cell>
+      <nut-cell title="当前选中值" :desc="checkboxgroup1" />
+    </nut-cell-group>
+    <nut-cell-group title="checkboxGroup禁用">
+      <nut-cell>
+        <nut-checkboxgroup v-model="checkboxgroup1" disabled>
+          <nut-checkbox v-model="checkbox9" label="1">组合复选框</nut-checkbox>
+          <nut-checkbox v-model="checkbox10" label="2">组合复选框</nut-checkbox>
+          <nut-checkbox v-model="checkbox11" label="3">组合复选框</nut-checkbox>
+          <nut-checkbox v-model="checkbox12" label="4">组合复选框</nut-checkbox>
+        </nut-checkboxgroup>
+      </nut-cell>
+    </nut-cell-group>
+    <nut-cell-group title="checkboxGroup 全选/取消">
+      <nut-cell>
+        <nut-checkboxgroup
+          v-model="checkboxgroup3"
+          ref="group"
+          @change="changeBox4"
+        >
+          <nut-checkbox v-model="checkbox15" label="1">组合复选框</nut-checkbox>
+          <nut-checkbox v-model="checkbox16" label="2">组合复选框</nut-checkbox>
+        </nut-checkboxgroup>
+      </nut-cell>
+      <nut-cell>
         <nut-button type="primary" @click="toggleAll(true)">全选</nut-button>
-        <nut-button type="primary" @click="toggleAll(false)">取消</nut-button>
-      </span>
-    </div>
+        <nut-button type="info" @click="toggleAll(false)">取消</nut-button>
+      </nut-cell>
+    </nut-cell-group>
   </div>
 </template>
 <script lang="ts">
@@ -140,52 +154,4 @@ export default createDemo({
   }
 });
 </script>
-<style lang="scss" scoped>
-.demo-list {
-  margin: 57px 0 60px 0;
-  padding: 0 17px 17px;
-  h4 {
-    margin: 25px 0 10px;
-    line-height: 20px;
-    color: #909ca4;
-    font-size: 14px;
-  }
-  .show-demo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 10px;
-    padding: 15px;
-    background-color: #ffffff;
-    border-radius: 7px;
-    box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
-    &.group1 {
-      flex-direction: column;
-      ::v-deep(.nut-checkbox) {
-        margin-left: 15px;
-      }
-    }
-    &.group2 {
-      ::v-deep(.nut-checkbox) {
-        margin-left: 15px;
-      }
-    }
-    p,
-    span {
-      display: block;
-      font-size: 14px;
-      color: #636363;
-    }
-    span {
-      color: #1d1e1e;
-      font-size: 16px;
-      &.btn {
-        margin-top: 20px;
-        ::v-deep(.nut-button) {
-          margin-left: 10px;
-        }
-      }
-    }
-  }
-}
-</style>
+<style lang="scss" scoped></style>

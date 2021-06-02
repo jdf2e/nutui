@@ -1,5 +1,5 @@
 <template>
-  <div class="demo-list demo">
+  <div class="demo">
     <h2>基本用法</h2>
     <nut-cell
       :show-icon="true"
