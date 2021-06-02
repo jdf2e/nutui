@@ -9,25 +9,22 @@
       /*! exports used: default */
       /***/ function(module, __webpack_exports__, __webpack_require__) {
         'use strict';
-        /* harmony import */ var _demo_vue_vue_type_template_id_355c0724_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./demo.vue?vue&type=template&id=355c0724&scoped=true */ './src/pages/infiniteloading/demo.vue?vue&type=template&id=355c0724&scoped=true'
+        /* harmony import */ var _demo_vue_vue_type_template_id_355c0724__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          /*! ./demo.vue?vue&type=template&id=355c0724 */ './src/pages/infiniteloading/demo.vue?vue&type=template&id=355c0724'
         );
         /* harmony import */ var _demo_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! ./demo.vue?vue&type=script&lang=ts */ './src/pages/infiniteloading/demo.vue?vue&type=script&lang=ts'
         );
-        /* harmony import */ var _demo_vue_vue_type_style_index_0_id_355c0724_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./demo.vue?vue&type=style&index=0&id=355c0724&lang=scss&scoped=true */ './src/pages/infiniteloading/demo.vue?vue&type=style&index=0&id=355c0724&lang=scss&scoped=true'
+        /* harmony import */ var _demo_vue_vue_type_style_index_0_id_355c0724_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+          /*! ./demo.vue?vue&type=style&index=0&id=355c0724&lang=css */ './src/pages/infiniteloading/demo.vue?vue&type=style&index=0&id=355c0724&lang=css'
         );
 
         _demo_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__[
           /* default */ 'a'
         ].render =
-          _demo_vue_vue_type_template_id_355c0724_scoped_true__WEBPACK_IMPORTED_MODULE_0__[
+          _demo_vue_vue_type_template_id_355c0724__WEBPACK_IMPORTED_MODULE_0__[
             /* render */ 'a'
           ];
-        _demo_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__[
-          /* default */ 'a'
-        ].__scopeId = 'data-v-355c0724';
         /* hot reload */
         if (false) {
         }
@@ -64,8 +61,11 @@
         /* harmony import */ var _packages_utils_create__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! ./../../../../../../packages/utils/create */ '../../../packages/utils/create/index.ts'
         );
-        /* harmony import */ var _toast_index_taro_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          /*! ./../toast/index.taro.vue */ './src/pages/toast/index.taro.vue'
+        /* harmony import */ var _index_taro_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+          /*! ./index.taro.vue */ './src/pages/infiniteloading/index.taro.vue'
+        );
+        /* harmony import */ var _cell_index_taro_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+          /*! ./../cell/index.taro.vue */ './src/pages/cell/index.taro.vue'
         );
 
         var _createComponent = Object(
@@ -75,8 +75,18 @@
           )('infiniteloading'),
           createDemo = _createComponent.createDemo;
 
+        // import Toast from './../toast/index.taro.vue';
+
         /* harmony default export */ __webpack_exports__['a'] = createDemo({
           props: {},
+          components: {
+            'nut-infiniteloading':
+              _index_taro_vue__WEBPACK_IMPORTED_MODULE_4__[/* default */ 'a'],
+            'nut-cell':
+              _cell_index_taro_vue__WEBPACK_IMPORTED_MODULE_5__[
+                /* default */ 'a'
+              ]
+          },
           setup: function setup() {
             var hasMore = Object(
               vue__WEBPACK_IMPORTED_MODULE_1__[/* ref */ 'j']
@@ -109,6 +119,7 @@
             };
 
             var customLoadMore = function customLoadMore(done) {
+              console.log('记载更多');
               setTimeout(function() {
                 var curLen = data.customList.length;
 
@@ -136,9 +147,7 @@
 
             var refresh = function refresh(done) {
               setTimeout(function() {
-                _toast_index_taro_vue__WEBPACK_IMPORTED_MODULE_4__[
-                  /* default */ 'a'
-                ].success('刷新成功');
+                // Toast.success('刷新成功');
                 done();
               }, 1000);
             };
@@ -178,223 +187,296 @@
         /***/
       },
 
-    /***/ './node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/index.js?!./src/pages/toast/index.taro.vue?vue&type=script&lang=js':
-      /*!******************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/dist??ref--10-0!./src/pages/toast/index.taro.vue?vue&type=script&lang=js ***!
-  \******************************************************************************************************************************************/
+    /***/ './node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/index.js?!./src/pages/infiniteloading/index.taro.vue?vue&type=script&lang=ts':
+      /*!****************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/dist??ref--10-0!./src/pages/infiniteloading/index.taro.vue?vue&type=script&lang=ts ***!
+  \****************************************************************************************************************************************************/
       /*! exports provided: default */
       /*! exports used: default */
       /***/ function(module, __webpack_exports__, __webpack_require__) {
         'use strict';
-        /* harmony import */ var _Users_yangxiaolu3_Documents_JD_workspace_nutui_src_sites_mobile_taro_vue_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+        /* harmony import */ var _Users_yangxiaolu3_Documents_JD_workspace_nutui_src_sites_mobile_taro_vue_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          /*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ './node_modules/@babel/runtime/helpers/esm/objectSpread2.js'
+        );
+        /* harmony import */ var _Users_yangxiaolu3_Documents_JD_workspace_nutui_src_sites_mobile_taro_vue_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
           /*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ './node_modules/@babel/runtime/helpers/esm/defineProperty.js'
         );
-        /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+        /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
           /*! vue */ './node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js'
         );
-        /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+        /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
           /*! vue */ './node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js'
         );
-        !(function webpackMissingModule() {
-          var e = new Error("Cannot find module '@/packages/utils/create'");
-          e.code = 'MODULE_NOT_FOUND';
-          throw e;
-        })();
-        !(function webpackMissingModule() {
-          var e = new Error(
-            "Cannot find module '@/packages/__VUE/icon/index.vue'"
-          );
-          e.code = 'MODULE_NOT_FOUND';
-          throw e;
-        })();
+        /* harmony import */ var _packages_utils_create__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+          /*! ./../../../../../../packages/utils/create */ '../../../packages/utils/create/index.ts'
+        );
+        /* harmony import */ var _icon_index_taro_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+          /*! ./../icon/index.taro.vue */ './src/pages/icon/index.taro.vue'
+        );
+        /* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+          /*! @tarojs/taro */ './node_modules/@tarojs/taro/index.js'
+        );
+        /* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/ __webpack_require__.n(
+          _tarojs_taro__WEBPACK_IMPORTED_MODULE_6__
+        );
 
-        var _createComponent = !(function webpackMissingModule() {
-            var e = new Error("Cannot find module '@/packages/utils/create'");
-            e.code = 'MODULE_NOT_FOUND';
-            throw e;
-          })()('toast'),
+        var _createComponent = Object(
+            _packages_utils_create__WEBPACK_IMPORTED_MODULE_4__[
+              /* createComponent */ 'a'
+            ]
+          )('infiniteloading'),
+          componentName = _createComponent.componentName,
           create = _createComponent.create;
 
         /* harmony default export */ __webpack_exports__['a'] = create({
-          components: Object(
-            _Users_yangxiaolu3_Documents_JD_workspace_nutui_src_sites_mobile_taro_vue_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__[
-              /* default */ 'a'
-            ]
-          )(
-            {},
-            !(function webpackMissingModule() {
-              var e = new Error(
-                "Cannot find module '@/packages/__VUE/icon/index.vue'"
-              );
-              e.code = 'MODULE_NOT_FOUND';
-              throw e;
-            })().name,
-            !(function webpackMissingModule() {
-              var e = new Error(
-                "Cannot find module '@/packages/__VUE/icon/index.vue'"
-              );
-              e.code = 'MODULE_NOT_FOUND';
-              throw e;
-            })()
-          ),
           props: {
-            id: String,
-            msg: String,
-            duration: {
+            hasMore: {
+              type: Boolean,
+              default: true
+            },
+            threshold: {
               type: Number,
-              default: 2000
+              default: 200
             },
-            center: {
-              type: Boolean,
-              default: true
-            },
-            type: String,
-            customClass: String,
-            bottom: {
-              type: Number,
-              default: 30
-            },
-            size: {
-              type: [String, Number],
-              default: 'base'
-            },
-            icon: String,
-            textAlignCenter: {
-              type: Boolean,
-              default: true
-            },
-            loadingRotate: {
-              type: Boolean,
-              default: true
-            },
-            bgColor: {
+            pullIcon: {
               type: String,
-              default: 'rgba(0, 0, 0, .8)'
+              default:
+                'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png'
             },
-            onClose: Function,
-            unmount: Function,
-            cover: {
+            pullTxt: {
+              type: String,
+              default: '松开刷新'
+            },
+            loadIcon: {
+              type: String,
+              default:
+                'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png'
+            },
+            loadTxt: {
+              type: String,
+              default: '加载中···'
+            },
+            loadMoreTxt: {
+              type: String,
+              default: '哎呀，这里是底部了啦'
+            },
+            useWindow: {
+              type: Boolean,
+              default: true
+            },
+            containerId: {
+              type: String,
+              default: ''
+            },
+            useCapture: {
               type: Boolean,
               default: false
             },
-            coverColor: {
-              type: String,
-              default: 'rgba(0, 0, 0, 0)'
-            },
-            closeOnClickOverlay: {
+            isOpenRefresh: {
               type: Boolean,
               default: false
             }
           },
-          setup: function setup(props) {
-            var timer;
+          emits: ['scroll-change', 'load-more', 'refresh'],
+          components: {
+            'nut-icon':
+              _icon_index_taro_vue__WEBPACK_IMPORTED_MODULE_5__[
+                /* default */ 'a'
+              ]
+          },
+          setup: function setup(props, _ref) {
+            var emit = _ref.emit,
+              slots = _ref.slots;
             var state = Object(
-              vue__WEBPACK_IMPORTED_MODULE_1__[/* reactive */ 'i']
+              vue__WEBPACK_IMPORTED_MODULE_2__[/* reactive */ 'i']
             )({
-              mounted: false
+              scrollHeight: 0,
+              scrollTop: 0,
+              isInfiniting: false,
+              direction: 'down',
+              isTouching: false,
+              refreshMaxH: 0,
+              y: 0,
+              x: 0,
+              distance: 0
             });
-            Object(vue__WEBPACK_IMPORTED_MODULE_2__[/* onMounted */ 's'])(
-              function() {
-                state.mounted = true;
-              }
-            );
-
-            var clearTimer = function clearTimer() {
-              if (timer) {
-                clearTimeout(timer);
-                timer = null;
-              }
-            };
-
-            var hide = function hide() {
-              state.mounted = false;
-            };
-
-            var show = function show() {
-              clearTimer();
-
-              if (props.duration) {
-                timer = setTimeout(function() {
-                  hide();
-                }, props.duration);
-              }
-            };
-
-            var clickCover = function clickCover() {
-              if (props.closeOnClickOverlay) {
-                hide();
-              }
-            };
-
-            if (props.duration) {
-              show();
-            }
-
-            Object(vue__WEBPACK_IMPORTED_MODULE_2__[/* watch */ 'E'])(
-              function() {
-                return props.duration;
-              },
-              function(val) {
-                if (val) {
-                  show();
-                }
-              }
-            );
-            var hasIcon = Object(
-              vue__WEBPACK_IMPORTED_MODULE_2__[/* computed */ 'd']
+            var classes = Object(
+              vue__WEBPACK_IMPORTED_MODULE_3__[/* computed */ 'd']
             )(function() {
-              if (props.type !== 'text') {
-                return true;
+              var prefixCls = componentName;
+              return Object(
+                _Users_yangxiaolu3_Documents_JD_workspace_nutui_src_sites_mobile_taro_vue_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__[
+                  /* default */ 'a'
+                ]
+              )({}, prefixCls, true);
+            });
+            var getStyle = Object(
+              vue__WEBPACK_IMPORTED_MODULE_3__[/* computed */ 'd']
+            )(function() {
+              var style = {};
+              return {
+                height:
+                  state.distance < 0 ? '0px' : ''.concat(state.distance, 'px'),
+                transition: state.isTouching
+                  ? 'height 0s cubic-bezier(0.25,0.1,0.25,1)'
+                  : 'height 0.2s cubic-bezier(0.25,0.1,0.25,1)'
+              };
+            });
+
+            var getParentElement = function getParentElement(el) {
+              return _tarojs_taro__WEBPACK_IMPORTED_MODULE_6___default.a
+                .createSelectorQuery()
+                .select(
+                  !!props.containerId
+                    ? '#'.concat(props.containerId, ' #').concat(el)
+                    : '#'.concat(el)
+                );
+            };
+            /** 获取需要滚动的距离 */
+
+            var getScrollHeight = function getScrollHeight() {
+              var parentElement = getParentElement('scroller'); // state.scrollEl = props.useWindow ? window : parentElement;
+
+              parentElement
+                .boundingClientRect(function(rect) {
+                  state.scrollHeight = rect.height;
+                  console.log(rect.height);
+                })
+                .exec();
+            };
+            /** 滚动到底部 */
+
+            var lower = function lower() {
+              console.log('加载到底部', props.containerId);
+
+              if (
+                state.direction == 'up' ||
+                !props.hasMore ||
+                state.isInfiniting
+              ) {
+                return false;
               } else {
-                return !!props.icon;
+                console.log('加载到底部1111');
+                state.isInfiniting = true;
+                emit('load-more', infiniteDone);
               }
-            });
-            var toastBodyClass = Object(
-              vue__WEBPACK_IMPORTED_MODULE_2__[/* computed */ 'd']
-            )(function() {
-              return [
-                'nut-toast',
-                {
-                  'nut-toast-center': props.center
-                },
-                {
-                  'nut-toast-has-icon': hasIcon.value
-                },
-                {
-                  'nut-toast-cover': props.cover
-                },
-                {
-                  'nut-toast-loading': props.type === 'loading'
-                },
-                props.customClass,
-                'nut-toast-' + props.size
-              ];
-            });
-
-            var onAfterLeave = function onAfterLeave() {
-              clearTimer();
-              props.unmount(props.id);
-              props.onClose && props.onClose();
             };
 
-            return {
-              state: state,
-              hide: hide,
-              clickCover: clickCover,
-              hasIcon: hasIcon,
-              toastBodyClass: toastBodyClass,
-              onAfterLeave: onAfterLeave
+            var scroll = function scroll(e) {
+              // 滚动方向
+              if (e.detail.scrollTop <= 0) {
+                // 滚动到最顶部
+                e.detail.scrollTop = 0;
+              } else if (e.detail.scrollTop >= state.scrollHeight) {
+                // 滚动到最底部
+                e.detail.scrollTop = state.scrollHeight;
+              }
+
+              if (
+                e.detail.scrollTop > state.scrollTop ||
+                e.detail.scrollTop >= state.scrollHeight
+              ) {
+                state.direction = 'down';
+              } else {
+                state.direction = 'up';
+              }
+
+              state.scrollTop = e.detail.scrollTop;
+              console.log(state.scrollTop);
+              emit('scroll-change', e.detail.scrollTop);
             };
+
+            var infiniteDone = function infiniteDone() {
+              state.isInfiniting = false;
+            };
+
+            var touchStart = function touchStart(event) {
+              if (
+                state.scrollTop == 0 &&
+                !state.isTouching &&
+                props.isOpenRefresh
+              ) {
+                state.y = event.touches[0].pageY;
+                state.isTouching = true;
+                getParentElement('refreshTop')
+                  .boundingClientRect(function(rect) {
+                    console.log(rect);
+                    state.refreshMaxH = Math.floor(rect.height * 1 + 10);
+                  })
+                  .exec();
+              }
+            };
+
+            var touchMove = function touchMove(event) {
+              state.distance = event.touches[0].pageY - state.y;
+
+              if (state.distance > 0 && state.isTouching) {
+                event.preventDefault();
+                if (state.distance >= state.refreshMaxH)
+                  state.distance = state.refreshMaxH;
+              } else {
+                state.distance = 0;
+                state.isTouching = false;
+              }
+            };
+
+            var touchEnd = function touchEnd() {
+              if (state.distance < state.refreshMaxH) {
+                state.distance = 0;
+              } else {
+                emit('refresh', refreshDone);
+              }
+            };
+
+            var refreshDone = function refreshDone() {
+              state.distance = 0;
+              state.isTouching = false;
+            };
+
+            Object(vue__WEBPACK_IMPORTED_MODULE_3__[/* onMounted */ 's'])(
+              function() {
+                setTimeout(function() {
+                  getScrollHeight();
+                }, 200);
+              }
+            );
+            return Object(
+              _Users_yangxiaolu3_Documents_JD_workspace_nutui_src_sites_mobile_taro_vue_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[
+                /* default */ 'a'
+              ]
+            )(
+              Object(
+                _Users_yangxiaolu3_Documents_JD_workspace_nutui_src_sites_mobile_taro_vue_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[
+                  /* default */ 'a'
+                ]
+              )(
+                {
+                  classes: classes
+                },
+                Object(vue__WEBPACK_IMPORTED_MODULE_2__[/* toRefs */ 'q'])(
+                  state
+                )
+              ),
+              {},
+              {
+                lower: lower,
+                scroll: scroll,
+                touchStart: touchStart,
+                touchMove: touchMove,
+                touchEnd: touchEnd,
+                getStyle: getStyle
+              }
+            );
           }
         });
 
         /***/
       },
 
-    /***/ './node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/infiniteloading/demo.vue?vue&type=template&id=355c0724&scoped=true':
-      /*!*************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/dist/templateLoader.js??ref--6!./node_modules/vue-loader/dist??ref--10-0!./src/pages/infiniteloading/demo.vue?vue&type=template&id=355c0724&scoped=true ***!
-  \*************************************************************************************************************************************************************************************************************************/
+    /***/ './node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/infiniteloading/demo.vue?vue&type=template&id=355c0724':
+      /*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/dist/templateLoader.js??ref--6!./node_modules/vue-loader/dist??ref--10-0!./src/pages/infiniteloading/demo.vue?vue&type=template&id=355c0724 ***!
+  \*************************************************************************************************************************************************************************************************************/
       /*! exports provided: render */
       /*! exports used: render */
       /***/ function(module, __webpack_exports__, __webpack_require__) {
@@ -413,14 +495,6 @@
           /*! vue */ './node_modules/@vue/shared/dist/shared.esm-bundler.js'
         );
 
-        var _withId = /*#__PURE__*/ Object(
-          vue__WEBPACK_IMPORTED_MODULE_0__[/* withScopeId */ 'I']
-        )('data-v-355c0724');
-
-        Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* pushScopeId */ 'w'])(
-          'data-v-355c0724'
-        );
-
         var _hoisted_1 = {
           class: 'demo'
         };
@@ -430,56 +504,16 @@
         )(
           'h2',
           null,
-          '基础用法',
-          -1
-          /* HOISTED */
-        );
-
-        var _hoisted_3 = {
-          class: 'infiniteUl',
-          id: 'scroll'
-        };
-
-        var _hoisted_4 = /*#__PURE__*/ Object(
-          vue__WEBPACK_IMPORTED_MODULE_0__[/* createVNode */ 'j']
-        )(
-          'h2',
-          null,
           '下拉刷新',
           -1
           /* HOISTED */
         );
 
-        var _hoisted_5 = {
-          class: 'infiniteUl',
-          id: 'refreshScroll'
-        };
+        function render(_ctx, _cache, $props, $setup, $data, $options) {
+          var _component_view_block = Object(
+            vue__WEBPACK_IMPORTED_MODULE_0__[/* resolveComponent */ 'z']
+          )('view-block');
 
-        var _hoisted_6 = /*#__PURE__*/ Object(
-          vue__WEBPACK_IMPORTED_MODULE_0__[/* createVNode */ 'j']
-        )(
-          'h2',
-          null,
-          '自定义加载文案',
-          -1
-          /* HOISTED */
-        );
-
-        var _hoisted_7 = {
-          class: 'infiniteUl',
-          id: 'customScroll'
-        };
-
-        Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* popScopeId */ 'v'])();
-
-        var render = /*#__PURE__*/ _withId(function(
-          _ctx,
-          _cache,
-          $props,
-          $setup,
-          $data,
-          $options
-        ) {
           var _component_nut_infiniteloading = Object(
             vue__WEBPACK_IMPORTED_MODULE_0__[/* resolveComponent */ 'z']
           )('nut-infiniteloading');
@@ -494,296 +528,168 @@
               'view',
               _hoisted_1,
               [
+                Object(
+                  vue__WEBPACK_IMPORTED_MODULE_0__[/* createCommentVNode */ 'f']
+                )(
+                  ' <h2>基础用法</h2>\n    <nut-cell>\n      <view-block class="infiniteUl" id="scrollDemo">\n        <nut-infiniteloading\n          container-id="scrollDemo"\n          :has-more="hasMore"\n          @load-more="loadMore"\n        >\n          <view-block\n            class="infiniteLi"\n            v-for="(item, index) in defultList"\n            :key="index"\n            >{{ item }}</view-block\n          >\n        </nut-infiniteloading>\n      </view-block>\n    </nut-cell> '
+                ),
                 _hoisted_2,
                 Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createVNode */ 'j'])(
                   _component_nut_cell,
                   null,
                   {
-                    default: _withId(function() {
+                    default: Object(
+                      vue__WEBPACK_IMPORTED_MODULE_0__[/* withCtx */ 'G']
+                    )(function() {
                       return [
                         Object(
                           vue__WEBPACK_IMPORTED_MODULE_0__[
                             /* createVNode */ 'j'
                           ]
-                        )('ul', _hoisted_3, [
-                          Object(
-                            vue__WEBPACK_IMPORTED_MODULE_0__[
-                              /* createVNode */ 'j'
-                            ]
-                          )(
-                            _component_nut_infiniteloading,
-                            {
-                              'container-id': 'scroll',
-                              'use-window': false,
-                              'has-more': _ctx.hasMore,
-                              onLoadMore: _ctx.loadMore
-                            },
-                            {
-                              default: _withId(function() {
-                                return [
-                                  (Object(
-                                    vue__WEBPACK_IMPORTED_MODULE_0__[
-                                      /* openBlock */ 'u'
-                                    ]
-                                  )(true),
-                                  Object(
-                                    vue__WEBPACK_IMPORTED_MODULE_0__[
-                                      /* createBlock */ 'e'
-                                    ]
-                                  )(
-                                    vue__WEBPACK_IMPORTED_MODULE_0__[
-                                      /* Fragment */ 'b'
-                                    ],
-                                    null,
-                                    Object(
+                        )(
+                          _component_view_block,
+                          {
+                            class: 'infiniteUl',
+                            id: 'refreshScroll'
+                          },
+                          {
+                            default: Object(
+                              vue__WEBPACK_IMPORTED_MODULE_0__[
+                                /* withCtx */ 'G'
+                              ]
+                            )(function() {
+                              return [
+                                Object(
+                                  vue__WEBPACK_IMPORTED_MODULE_0__[
+                                    /* createVNode */ 'j'
+                                  ]
+                                )(
+                                  _component_nut_infiniteloading,
+                                  {
+                                    'pull-icon': 'JD',
+                                    'container-id': 'refreshScroll',
+                                    'use-window': false,
+                                    'is-open-refresh': true,
+                                    'has-more': _ctx.refreshHasMore,
+                                    onLoadMore: _ctx.refreshLoadMore,
+                                    onRefresh: _ctx.refresh
+                                  },
+                                  {
+                                    default: Object(
                                       vue__WEBPACK_IMPORTED_MODULE_0__[
-                                        /* renderList */ 'x'
+                                        /* withCtx */ 'G'
                                       ]
-                                    )(_ctx.defultList, function(item, index) {
-                                      return (
-                                        Object(
+                                    )(function() {
+                                      return [
+                                        (Object(
                                           vue__WEBPACK_IMPORTED_MODULE_0__[
                                             /* openBlock */ 'u'
                                           ]
-                                        )(),
+                                        )(true),
                                         Object(
                                           vue__WEBPACK_IMPORTED_MODULE_0__[
                                             /* createBlock */ 'e'
                                           ]
                                         )(
-                                          'li',
-                                          {
-                                            class: 'infiniteLi',
-                                            key: index
-                                          },
+                                          vue__WEBPACK_IMPORTED_MODULE_0__[
+                                            /* Fragment */ 'b'
+                                          ],
+                                          null,
                                           Object(
-                                            vue__WEBPACK_IMPORTED_MODULE_1__[
-                                              /* toDisplayString */ 'J'
+                                            vue__WEBPACK_IMPORTED_MODULE_0__[
+                                              /* renderList */ 'x'
                                             ]
-                                          )(item),
-                                          1
-                                          /* TEXT */
-                                        )
-                                      );
+                                          )(_ctx.refreshList, function(
+                                            item,
+                                            index
+                                          ) {
+                                            return (
+                                              Object(
+                                                vue__WEBPACK_IMPORTED_MODULE_0__[
+                                                  /* openBlock */ 'u'
+                                                ]
+                                              )(),
+                                              Object(
+                                                vue__WEBPACK_IMPORTED_MODULE_0__[
+                                                  /* createBlock */ 'e'
+                                                ]
+                                              )(
+                                                _component_view_block,
+                                                {
+                                                  class: 'infiniteLi',
+                                                  key: index
+                                                },
+                                                {
+                                                  default: Object(
+                                                    vue__WEBPACK_IMPORTED_MODULE_0__[
+                                                      /* withCtx */ 'G'
+                                                    ]
+                                                  )(function() {
+                                                    return [
+                                                      Object(
+                                                        vue__WEBPACK_IMPORTED_MODULE_0__[
+                                                          /* createTextVNode */ 'i'
+                                                        ]
+                                                      )(
+                                                        Object(
+                                                          vue__WEBPACK_IMPORTED_MODULE_1__[
+                                                            /* toDisplayString */ 'J'
+                                                          ]
+                                                        )(item),
+                                                        1
+                                                        /* TEXT */
+                                                      )
+                                                    ];
+                                                  }),
+                                                  _: 2
+                                                  /* DYNAMIC */
+                                                },
+                                                1024
+                                                /* DYNAMIC_SLOTS */
+                                              )
+                                            );
+                                          }),
+                                          128
+                                          /* KEYED_FRAGMENT */
+                                        ))
+                                      ];
                                     }),
-                                    128
-                                    /* KEYED_FRAGMENT */
-                                  ))
-                                ];
-                              }),
-                              _: 1
-                              /* STABLE */
-                            },
-                            8,
-                            /* PROPS */
-                            ['has-more', 'onLoadMore']
-                          )
-                        ])
+                                    _: 1
+                                    /* STABLE */
+                                  },
+                                  8,
+                                  /* PROPS */
+                                  ['has-more', 'onLoadMore', 'onRefresh']
+                                )
+                              ];
+                            }),
+                            _: 1
+                            /* STABLE */
+                          }
+                        )
                       ];
                     }),
                     _: 1
                     /* STABLE */
                   }
                 ),
-                _hoisted_4,
-                Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createVNode */ 'j'])(
-                  _component_nut_cell,
-                  null,
-                  {
-                    default: _withId(function() {
-                      return [
-                        Object(
-                          vue__WEBPACK_IMPORTED_MODULE_0__[
-                            /* createVNode */ 'j'
-                          ]
-                        )('ul', _hoisted_5, [
-                          Object(
-                            vue__WEBPACK_IMPORTED_MODULE_0__[
-                              /* createVNode */ 'j'
-                            ]
-                          )(
-                            _component_nut_infiniteloading,
-                            {
-                              'pull-icon': 'JD',
-                              'container-id': 'refreshScroll',
-                              'use-window': false,
-                              'is-open-refresh': true,
-                              'has-more': _ctx.refreshHasMore,
-                              onLoadMore: _ctx.refreshLoadMore,
-                              onRefresh: _ctx.refresh
-                            },
-                            {
-                              default: _withId(function() {
-                                return [
-                                  (Object(
-                                    vue__WEBPACK_IMPORTED_MODULE_0__[
-                                      /* openBlock */ 'u'
-                                    ]
-                                  )(true),
-                                  Object(
-                                    vue__WEBPACK_IMPORTED_MODULE_0__[
-                                      /* createBlock */ 'e'
-                                    ]
-                                  )(
-                                    vue__WEBPACK_IMPORTED_MODULE_0__[
-                                      /* Fragment */ 'b'
-                                    ],
-                                    null,
-                                    Object(
-                                      vue__WEBPACK_IMPORTED_MODULE_0__[
-                                        /* renderList */ 'x'
-                                      ]
-                                    )(_ctx.refreshList, function(item, index) {
-                                      return (
-                                        Object(
-                                          vue__WEBPACK_IMPORTED_MODULE_0__[
-                                            /* openBlock */ 'u'
-                                          ]
-                                        )(),
-                                        Object(
-                                          vue__WEBPACK_IMPORTED_MODULE_0__[
-                                            /* createBlock */ 'e'
-                                          ]
-                                        )(
-                                          'li',
-                                          {
-                                            class: 'infiniteLi',
-                                            key: index
-                                          },
-                                          Object(
-                                            vue__WEBPACK_IMPORTED_MODULE_1__[
-                                              /* toDisplayString */ 'J'
-                                            ]
-                                          )(item),
-                                          1
-                                          /* TEXT */
-                                        )
-                                      );
-                                    }),
-                                    128
-                                    /* KEYED_FRAGMENT */
-                                  ))
-                                ];
-                              }),
-                              _: 1
-                              /* STABLE */
-                            },
-                            8,
-                            /* PROPS */
-                            ['has-more', 'onLoadMore', 'onRefresh']
-                          )
-                        ])
-                      ];
-                    }),
-                    _: 1
-                    /* STABLE */
-                  }
-                ),
-                _hoisted_6,
-                Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createVNode */ 'j'])(
-                  _component_nut_cell,
-                  null,
-                  {
-                    default: _withId(function() {
-                      return [
-                        Object(
-                          vue__WEBPACK_IMPORTED_MODULE_0__[
-                            /* createVNode */ 'j'
-                          ]
-                        )('ul', _hoisted_7, [
-                          Object(
-                            vue__WEBPACK_IMPORTED_MODULE_0__[
-                              /* createVNode */ 'j'
-                            ]
-                          )(
-                            _component_nut_infiniteloading,
-                            {
-                              'load-txt': 'loading',
-                              'load-more-txt': '没有啦～',
-                              'container-id': 'customScroll',
-                              'use-window': false,
-                              'has-more': _ctx.customHasMore,
-                              onLoadMore: _ctx.customLoadMore
-                            },
-                            {
-                              default: _withId(function() {
-                                return [
-                                  (Object(
-                                    vue__WEBPACK_IMPORTED_MODULE_0__[
-                                      /* openBlock */ 'u'
-                                    ]
-                                  )(true),
-                                  Object(
-                                    vue__WEBPACK_IMPORTED_MODULE_0__[
-                                      /* createBlock */ 'e'
-                                    ]
-                                  )(
-                                    vue__WEBPACK_IMPORTED_MODULE_0__[
-                                      /* Fragment */ 'b'
-                                    ],
-                                    null,
-                                    Object(
-                                      vue__WEBPACK_IMPORTED_MODULE_0__[
-                                        /* renderList */ 'x'
-                                      ]
-                                    )(_ctx.customList, function(item, index) {
-                                      return (
-                                        Object(
-                                          vue__WEBPACK_IMPORTED_MODULE_0__[
-                                            /* openBlock */ 'u'
-                                          ]
-                                        )(),
-                                        Object(
-                                          vue__WEBPACK_IMPORTED_MODULE_0__[
-                                            /* createBlock */ 'e'
-                                          ]
-                                        )(
-                                          'li',
-                                          {
-                                            class: 'infiniteLi',
-                                            key: index
-                                          },
-                                          Object(
-                                            vue__WEBPACK_IMPORTED_MODULE_1__[
-                                              /* toDisplayString */ 'J'
-                                            ]
-                                          )(item),
-                                          1
-                                          /* TEXT */
-                                        )
-                                      );
-                                    }),
-                                    128
-                                    /* KEYED_FRAGMENT */
-                                  ))
-                                ];
-                              }),
-                              _: 1
-                              /* STABLE */
-                            },
-                            8,
-                            /* PROPS */
-                            ['has-more', 'onLoadMore']
-                          )
-                        ])
-                      ];
-                    }),
-                    _: 1
-                    /* STABLE */
-                  }
+                Object(
+                  vue__WEBPACK_IMPORTED_MODULE_0__[/* createCommentVNode */ 'f']
+                )(
+                  ' <h2>自定义加载文案</h2>\n    <nut-cell>\n      <view-block class="infiniteUl" id="customScroll">\n        <nut-infiniteloading\n          load-txt="loading"\n          load-more-txt="没有啦～"\n          container-id="customScroll"\n          :use-window="false"\n          :has-more="customHasMore"\n          @load-more="customLoadMore"\n        >\n          <view-block\n            class="infiniteLi"\n            v-for="(item, index) in customList"\n            :key="index"\n            >{{ item }}</view-block\n          >\n        </nut-infiniteloading>\n      </view-block>\n    </nut-cell> '
                 )
               ]
             )
           );
-        });
+        }
 
         /***/
       },
 
-    /***/ './node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/toast/index.taro.vue?vue&type=template&id=161ad11c':
-      /*!*********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/dist/templateLoader.js??ref--6!./node_modules/vue-loader/dist??ref--10-0!./src/pages/toast/index.taro.vue?vue&type=template&id=161ad11c ***!
-  \*********************************************************************************************************************************************************************************************************/
+    /***/ './node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/infiniteloading/index.taro.vue?vue&type=template&id=6ed18bd1':
+      /*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/dist/templateLoader.js??ref--6!./node_modules/vue-loader/dist??ref--10-0!./src/pages/infiniteloading/index.taro.vue?vue&type=template&id=6ed18bd1 ***!
+  \*******************************************************************************************************************************************************************************************************************/
       /*! exports provided: render */
       /*! exports used: render */
       /***/ function(module, __webpack_exports__, __webpack_require__) {
@@ -799,81 +705,207 @@
           /*! vue */ './node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js'
         );
         /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! vue */ './node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js'
+          /*! vue */ './node_modules/@vue/shared/dist/shared.esm-bundler.js'
         );
 
-        var _hoisted_1 = {
-          key: 0,
-          class: 'nut-toast-icon-wrapper'
-        };
         function render(_ctx, _cache, $props, $setup, $data, $options) {
           var _component_nut_icon = Object(
             vue__WEBPACK_IMPORTED_MODULE_0__[/* resolveComponent */ 'z']
           )('nut-icon');
 
+          var _component_view_block = Object(
+            vue__WEBPACK_IMPORTED_MODULE_0__[/* resolveComponent */ 'z']
+          )('view-block');
+
           return (
             Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* openBlock */ 'u'])(),
             Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createBlock */ 'e'])(
-              vue__WEBPACK_IMPORTED_MODULE_1__[/* Transition */ 'a'],
+              'scroll-view',
               {
-                name: 'toast-fade',
-                onAfterLeave: _ctx.onAfterLeave
+                class: _ctx.classes,
+                scrollY: 'true',
+                style: {
+                  height: '100%'
+                },
+                id: 'scroller',
+                onScrolltolower:
+                  _cache[1] ||
+                  (_cache[1] = function() {
+                    return _ctx.lower && _ctx.lower.apply(_ctx, arguments);
+                  }),
+                onScroll:
+                  _cache[2] ||
+                  (_cache[2] = function() {
+                    return _ctx.scroll && _ctx.scroll.apply(_ctx, arguments);
+                  }),
+                onTouchstart:
+                  _cache[3] ||
+                  (_cache[3] = function() {
+                    return (
+                      _ctx.touchStart && _ctx.touchStart.apply(_ctx, arguments)
+                    );
+                  }),
+                onTouchmove:
+                  _cache[4] ||
+                  (_cache[4] = function() {
+                    return (
+                      _ctx.touchMove && _ctx.touchMove.apply(_ctx, arguments)
+                    );
+                  }),
+                onTouchend:
+                  _cache[5] ||
+                  (_cache[5] = function() {
+                    return (
+                      _ctx.touchEnd && _ctx.touchEnd.apply(_ctx, arguments)
+                    );
+                  })
               },
-              {
-                default: Object(
-                  vue__WEBPACK_IMPORTED_MODULE_0__[/* withCtx */ 'G']
-                )(function() {
-                  return [
-                    Object(
-                      vue__WEBPACK_IMPORTED_MODULE_0__[/* withDirectives */ 'H']
-                    )(
-                      Object(
-                        vue__WEBPACK_IMPORTED_MODULE_0__[/* createVNode */ 'j']
-                      )(
-                        'view',
-                        {
-                          class: _ctx.toastBodyClass,
-                          style: {
-                            bottom: _ctx.center ? 'auto' : _ctx.bottom + 'px',
-                            'background-color': _ctx.coverColor
+              [
+                Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createVNode */ 'j'])(
+                  _component_view_block,
+                  {
+                    class: 'nut-infinite-top',
+                    style: _ctx.getStyle
+                  },
+                  {
+                    default: Object(
+                      vue__WEBPACK_IMPORTED_MODULE_0__[/* withCtx */ 'G']
+                    )(function() {
+                      return [
+                        Object(
+                          vue__WEBPACK_IMPORTED_MODULE_0__[
+                            /* createVNode */ 'j'
+                          ]
+                        )(
+                          _component_view_block,
+                          {
+                            class: 'top-box',
+                            id: 'refreshTop'
                           },
-                          onClick:
-                            _cache[1] ||
-                            (_cache[1] = function() {
-                              return (
-                                _ctx.clickCover &&
-                                _ctx.clickCover.apply(_ctx, arguments)
-                              );
-                            })
-                        },
-                        [
-                          Object(
-                            vue__WEBPACK_IMPORTED_MODULE_0__[
-                              /* createVNode */ 'j'
-                            ]
-                          )(
-                            'view',
-                            {
-                              class: 'nut-toast-inner',
-                              style: {
-                                'text-align': _ctx.textAlignCenter
-                                  ? 'center'
-                                  : 'left',
-                                'background-color': _ctx.bgColor
-                              }
-                            },
-                            [
-                              _ctx.hasIcon
-                                ? (Object(
-                                    vue__WEBPACK_IMPORTED_MODULE_0__[
-                                      /* openBlock */ 'u'
-                                    ]
-                                  )(),
-                                  Object(
-                                    vue__WEBPACK_IMPORTED_MODULE_0__[
-                                      /* createBlock */ 'e'
-                                    ]
-                                  )('view', _hoisted_1, [
+                          {
+                            default: Object(
+                              vue__WEBPACK_IMPORTED_MODULE_0__[
+                                /* withCtx */ 'G'
+                              ]
+                            )(function() {
+                              return [
+                                Object(
+                                  vue__WEBPACK_IMPORTED_MODULE_0__[
+                                    /* createVNode */ 'j'
+                                  ]
+                                )(
+                                  _component_nut_icon,
+                                  {
+                                    class: 'top-img',
+                                    name: _ctx.pullIcon
+                                  },
+                                  null,
+                                  8,
+                                  /* PROPS */
+                                  ['name']
+                                ),
+                                Object(
+                                  vue__WEBPACK_IMPORTED_MODULE_0__[
+                                    /* createVNode */ 'j'
+                                  ]
+                                )(
+                                  _component_view_block,
+                                  {
+                                    class: 'top-text'
+                                  },
+                                  {
+                                    default: Object(
+                                      vue__WEBPACK_IMPORTED_MODULE_0__[
+                                        /* withCtx */ 'G'
+                                      ]
+                                    )(function() {
+                                      return [
+                                        Object(
+                                          vue__WEBPACK_IMPORTED_MODULE_0__[
+                                            /* createTextVNode */ 'i'
+                                          ]
+                                        )(
+                                          Object(
+                                            vue__WEBPACK_IMPORTED_MODULE_1__[
+                                              /* toDisplayString */ 'J'
+                                            ]
+                                          )(_ctx.pullTxt),
+                                          1
+                                          /* TEXT */
+                                        )
+                                      ];
+                                    }),
+                                    _: 1
+                                    /* STABLE */
+                                  }
+                                )
+                              ];
+                            }),
+                            _: 1
+                            /* STABLE */
+                          }
+                        )
+                      ];
+                    }),
+                    _: 1
+                    /* STABLE */
+                  },
+                  8,
+                  /* PROPS */
+                  ['style']
+                ),
+                Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createVNode */ 'j'])(
+                  _component_view_block,
+                  {
+                    class: 'nut-infinite-container'
+                  },
+                  {
+                    default: Object(
+                      vue__WEBPACK_IMPORTED_MODULE_0__[/* withCtx */ 'G']
+                    )(function() {
+                      return [
+                        Object(
+                          vue__WEBPACK_IMPORTED_MODULE_0__[/* renderSlot */ 'y']
+                        )(_ctx.$slots, 'default')
+                      ];
+                    }),
+                    _: 3
+                    /* FORWARDED */
+                  }
+                ),
+                Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createVNode */ 'j'])(
+                  _component_view_block,
+                  {
+                    class: 'nut-infinite-bottom'
+                  },
+                  {
+                    default: Object(
+                      vue__WEBPACK_IMPORTED_MODULE_0__[/* withCtx */ 'G']
+                    )(function() {
+                      return [
+                        _ctx.isInfiniting
+                          ? (Object(
+                              vue__WEBPACK_IMPORTED_MODULE_0__[
+                                /* openBlock */ 'u'
+                              ]
+                            )(),
+                            Object(
+                              vue__WEBPACK_IMPORTED_MODULE_0__[
+                                /* createBlock */ 'e'
+                              ]
+                            )(
+                              _component_view_block,
+                              {
+                                key: 0,
+                                class: 'bottom-box'
+                              },
+                              {
+                                default: Object(
+                                  vue__WEBPACK_IMPORTED_MODULE_0__[
+                                    /* withCtx */ 'G'
+                                  ]
+                                )(function() {
+                                  return [
                                     Object(
                                       vue__WEBPACK_IMPORTED_MODULE_0__[
                                         /* createVNode */ 'j'
@@ -881,59 +913,111 @@
                                     )(
                                       _component_nut_icon,
                                       {
-                                        size: '20',
-                                        color: '#ffffff',
-                                        name: _ctx.icon
+                                        class: 'bottom-img',
+                                        name: _ctx.loadIcon
                                       },
                                       null,
                                       8,
                                       /* PROPS */
                                       ['name']
+                                    ),
+                                    Object(
+                                      vue__WEBPACK_IMPORTED_MODULE_0__[
+                                        /* createVNode */ 'j'
+                                      ]
+                                    )(
+                                      _component_view_block,
+                                      {
+                                        class: 'bottom-text'
+                                      },
+                                      {
+                                        default: Object(
+                                          vue__WEBPACK_IMPORTED_MODULE_0__[
+                                            /* withCtx */ 'G'
+                                          ]
+                                        )(function() {
+                                          return [
+                                            Object(
+                                              vue__WEBPACK_IMPORTED_MODULE_0__[
+                                                /* createTextVNode */ 'i'
+                                              ]
+                                            )(
+                                              Object(
+                                                vue__WEBPACK_IMPORTED_MODULE_1__[
+                                                  /* toDisplayString */ 'J'
+                                                ]
+                                              )(_ctx.loadTxt),
+                                              1
+                                              /* TEXT */
+                                            )
+                                          ];
+                                        }),
+                                        _: 1
+                                        /* STABLE */
+                                      }
                                     )
-                                  ]))
-                                : Object(
-                                    vue__WEBPACK_IMPORTED_MODULE_0__[
-                                      /* createCommentVNode */ 'f'
-                                    ]
-                                  )('v-if', true),
-                              Object(
-                                vue__WEBPACK_IMPORTED_MODULE_0__[
-                                  /* createVNode */ 'j'
-                                ]
-                              )(
-                                'view',
-                                {
-                                  class: 'nut-toast-text',
-                                  innerHTML: _ctx.msg
-                                },
-                                null,
-                                8,
-                                /* PROPS */
-                                ['innerHTML']
-                              )
-                            ],
-                            4
-                            /* STYLE */
-                          )
-                        ],
-                        6
-                        /* CLASS, STYLE */
-                      ),
-                      [
-                        [
-                          vue__WEBPACK_IMPORTED_MODULE_1__[/* vShow */ 'c'],
-                          _ctx.state.mounted
-                        ]
-                      ]
-                    )
-                  ];
-                }),
-                _: 1
-                /* STABLE */
-              },
-              8,
-              /* PROPS */
-              ['onAfterLeave']
+                                  ];
+                                }),
+                                _: 1
+                                /* STABLE */
+                              }
+                            ))
+                          : !_ctx.hasMore
+                          ? (Object(
+                              vue__WEBPACK_IMPORTED_MODULE_0__[
+                                /* openBlock */ 'u'
+                              ]
+                            )(),
+                            Object(
+                              vue__WEBPACK_IMPORTED_MODULE_0__[
+                                /* createBlock */ 'e'
+                              ]
+                            )(
+                              _component_view_block,
+                              {
+                                key: 1,
+                                class: 'tips'
+                              },
+                              {
+                                default: Object(
+                                  vue__WEBPACK_IMPORTED_MODULE_0__[
+                                    /* withCtx */ 'G'
+                                  ]
+                                )(function() {
+                                  return [
+                                    Object(
+                                      vue__WEBPACK_IMPORTED_MODULE_0__[
+                                        /* createTextVNode */ 'i'
+                                      ]
+                                    )(
+                                      Object(
+                                        vue__WEBPACK_IMPORTED_MODULE_1__[
+                                          /* toDisplayString */ 'J'
+                                        ]
+                                      )(_ctx.loadMoreTxt),
+                                      1
+                                      /* TEXT */
+                                    )
+                                  ];
+                                }),
+                                _: 1
+                                /* STABLE */
+                              }
+                            ))
+                          : Object(
+                              vue__WEBPACK_IMPORTED_MODULE_0__[
+                                /* createCommentVNode */ 'f'
+                              ]
+                            )('v-if', true)
+                      ];
+                    }),
+                    _: 1
+                    /* STABLE */
+                  }
+                )
+              ],
+              34
+              /* CLASS, HYDRATE_EVENTS */
             )
           );
         }
@@ -941,26 +1025,23 @@
         /***/
       },
 
-    /***/ './node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/infiniteloading/demo.vue?vue&type=style&index=0&id=355c0724&lang=scss&scoped=true':
-      /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ref--1-oneOf-0-1!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/src??postcss!./node_modules/resolve-url-loader!./node_modules/sass-loader/dist/cjs.js??ref--1-oneOf-0-4!./node_modules/vue-loader/dist??ref--10-0!./src/pages/infiniteloading/demo.vue?vue&type=style&index=0&id=355c0724&lang=scss&scoped=true ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+    /***/ './node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/infiniteloading/index.taro.vue?vue&type=style&index=0&id=6ed18bd1&lang=scss':
+      /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ref--1-oneOf-0-1!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/src??postcss!./node_modules/resolve-url-loader!./node_modules/sass-loader/dist/cjs.js??ref--1-oneOf-0-4!./node_modules/vue-loader/dist??ref--10-0!./src/pages/infiniteloading/index.taro.vue?vue&type=style&index=0&id=6ed18bd1&lang=scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
       /*! no static exports found */
       /***/ function(module, exports, __webpack_require__) {
         // extracted by mini-css-extract-plugin
         /***/
       },
 
-    /***/ './node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/toast/index.taro.vue?vue&type=style&index=0&id=161ad11c&lang=scss':
-      /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ref--1-oneOf-0-1!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/src??postcss!./node_modules/resolve-url-loader!./node_modules/sass-loader/dist/cjs.js??ref--1-oneOf-0-4!./node_modules/vue-loader/dist??ref--10-0!./src/pages/toast/index.taro.vue?vue&type=style&index=0&id=161ad11c&lang=scss ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+    /***/ './node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/infiniteloading/demo.vue?vue&type=style&index=0&id=355c0724&lang=css':
+      /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ref--4-oneOf-0-1!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/src??postcss!./node_modules/vue-loader/dist??ref--10-0!./src/pages/infiniteloading/demo.vue?vue&type=style&index=0&id=355c0724&lang=css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
       /*! no static exports found */
-      /***/ function(module, exports) {
-        throw new Error(
-          "Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Can't find stylesheet to import.\n    ╷\n432 │ @import 'index.scss';\n    │         ^^^^^^^^^^^^\n    ╵\n  src/pages/toast/index.taro.vue 432:9  root stylesheet\n    at /Users/yangxiaolu3/Documents/JD/workspace/nutui/src/sites/mobile-taro/vue/node_modules/webpack/lib/NormalModule.js:316:20\n    at /Users/yangxiaolu3/Documents/JD/workspace/nutui/src/sites/mobile-taro/vue/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Users/yangxiaolu3/Documents/JD/workspace/nutui/src/sites/mobile-taro/vue/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/Users/yangxiaolu3/Documents/JD/workspace/nutui/src/sites/mobile-taro/vue/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at /Users/yangxiaolu3/Documents/JD/workspace/nutui/src/sites/mobile-taro/vue/node_modules/sass-loader/dist/index.js:62:7\n    at Function.call$2 (/Users/yangxiaolu3/Documents/JD/workspace/nutui/src/sites/mobile-taro/vue/node_modules/sass/sass.dart.js:92571:16)\n    at _render_closure.call$0 (/Users/yangxiaolu3/Documents/JD/workspace/nutui/src/sites/mobile-taro/vue/node_modules/sass/sass.dart.js:81055:23)\n    at Object.Primitives_applyFunction (/Users/yangxiaolu3/Documents/JD/workspace/nutui/src/sites/mobile-taro/vue/node_modules/sass/sass.dart.js:1128:30)\n    at Object.Function_apply (/Users/yangxiaolu3/Documents/JD/workspace/nutui/src/sites/mobile-taro/vue/node_modules/sass/sass.dart.js:5886:16)\n    at _callDartFunctionFast (/Users/yangxiaolu3/Documents/JD/workspace/nutui/src/sites/mobile-taro/vue/node_modules/sass/sass.dart.js:7552:16)\n    at /Users/yangxiaolu3/Documents/JD/workspace/nutui/src/sites/mobile-taro/vue/node_modules/sass/sass.dart.js:7530:18"
-        );
-
+      /***/ function(module, exports, __webpack_require__) {
+        // extracted by mini-css-extract-plugin
         /***/
       },
 
@@ -1022,40 +1103,40 @@
         /***/
       },
 
-    /***/ './src/pages/infiniteloading/demo.vue?vue&type=style&index=0&id=355c0724&lang=scss&scoped=true':
-      /*!*****************************************************************************************************!*\
-  !*** ./src/pages/infiniteloading/demo.vue?vue&type=style&index=0&id=355c0724&lang=scss&scoped=true ***!
-  \*****************************************************************************************************/
+    /***/ './src/pages/infiniteloading/demo.vue?vue&type=style&index=0&id=355c0724&lang=css':
+      /*!****************************************************************************************!*\
+  !*** ./src/pages/infiniteloading/demo.vue?vue&type=style&index=0&id=355c0724&lang=css ***!
+  \****************************************************************************************/
       /*! no static exports found */
       /***/ function(module, __webpack_exports__, __webpack_require__) {
         'use strict';
-        /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_oneOf_0_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_postcss_node_modules_resolve_url_loader_index_js_node_modules_sass_loader_dist_cjs_js_ref_1_oneOf_0_4_node_modules_vue_loader_dist_index_js_ref_10_0_demo_vue_vue_type_style_index_0_id_355c0724_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! -!../../../node_modules/mini-css-extract-plugin/dist/loader.js!../../../node_modules/css-loader/dist/cjs.js??ref--1-oneOf-0-1!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/src??postcss!../../../node_modules/resolve-url-loader!../../../node_modules/sass-loader/dist/cjs.js??ref--1-oneOf-0-4!../../../node_modules/vue-loader/dist??ref--10-0!./demo.vue?vue&type=style&index=0&id=355c0724&lang=scss&scoped=true */ './node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/infiniteloading/demo.vue?vue&type=style&index=0&id=355c0724&lang=scss&scoped=true'
+        /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_4_oneOf_0_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_postcss_node_modules_vue_loader_dist_index_js_ref_10_0_demo_vue_vue_type_style_index_0_id_355c0724_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          /*! -!../../../node_modules/mini-css-extract-plugin/dist/loader.js!../../../node_modules/css-loader/dist/cjs.js??ref--4-oneOf-0-1!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/src??postcss!../../../node_modules/vue-loader/dist??ref--10-0!./demo.vue?vue&type=style&index=0&id=355c0724&lang=css */ './node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/infiniteloading/demo.vue?vue&type=style&index=0&id=355c0724&lang=css'
         );
-        /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_oneOf_0_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_postcss_node_modules_resolve_url_loader_index_js_node_modules_sass_loader_dist_cjs_js_ref_1_oneOf_0_4_node_modules_vue_loader_dist_index_js_ref_10_0_demo_vue_vue_type_style_index_0_id_355c0724_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
-          _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_oneOf_0_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_postcss_node_modules_resolve_url_loader_index_js_node_modules_sass_loader_dist_cjs_js_ref_1_oneOf_0_4_node_modules_vue_loader_dist_index_js_ref_10_0_demo_vue_vue_type_style_index_0_id_355c0724_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__
+        /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_4_oneOf_0_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_postcss_node_modules_vue_loader_dist_index_js_ref_10_0_demo_vue_vue_type_style_index_0_id_355c0724_lang_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
+          _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_4_oneOf_0_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_postcss_node_modules_vue_loader_dist_index_js_ref_10_0_demo_vue_vue_type_style_index_0_id_355c0724_lang_css__WEBPACK_IMPORTED_MODULE_0__
         );
         /* unused harmony reexport * */
 
         /***/
       },
 
-    /***/ './src/pages/infiniteloading/demo.vue?vue&type=template&id=355c0724&scoped=true':
-      /*!**************************************************************************************!*\
-  !*** ./src/pages/infiniteloading/demo.vue?vue&type=template&id=355c0724&scoped=true ***!
-  \**************************************************************************************/
+    /***/ './src/pages/infiniteloading/demo.vue?vue&type=template&id=355c0724':
+      /*!**************************************************************************!*\
+  !*** ./src/pages/infiniteloading/demo.vue?vue&type=template&id=355c0724 ***!
+  \**************************************************************************/
       /*! exports provided: render */
       /*! exports used: render */
       /***/ function(module, __webpack_exports__, __webpack_require__) {
         'use strict';
-        /* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_dist_templateLoader_js_ref_6_node_modules_vue_loader_dist_index_js_ref_10_0_demo_vue_vue_type_template_id_355c0724_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! -!../../../node_modules/babel-loader/lib!../../../node_modules/vue-loader/dist/templateLoader.js??ref--6!../../../node_modules/vue-loader/dist??ref--10-0!./demo.vue?vue&type=template&id=355c0724&scoped=true */ './node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/infiniteloading/demo.vue?vue&type=template&id=355c0724&scoped=true'
+        /* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_dist_templateLoader_js_ref_6_node_modules_vue_loader_dist_index_js_ref_10_0_demo_vue_vue_type_template_id_355c0724__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          /*! -!../../../node_modules/babel-loader/lib!../../../node_modules/vue-loader/dist/templateLoader.js??ref--6!../../../node_modules/vue-loader/dist??ref--10-0!./demo.vue?vue&type=template&id=355c0724 */ './node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/infiniteloading/demo.vue?vue&type=template&id=355c0724'
         );
         /* harmony reexport (safe) */ __webpack_require__.d(
           __webpack_exports__,
           'a',
           function() {
-            return _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_dist_templateLoader_js_ref_6_node_modules_vue_loader_dist_index_js_ref_10_0_demo_vue_vue_type_template_id_355c0724_scoped_true__WEBPACK_IMPORTED_MODULE_0__[
+            return _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_dist_templateLoader_js_ref_6_node_modules_vue_loader_dist_index_js_ref_10_0_demo_vue_vue_type_template_id_355c0724__WEBPACK_IMPORTED_MODULE_0__[
               'a'
             ];
           }
@@ -1064,62 +1145,62 @@
         /***/
       },
 
-    /***/ './src/pages/toast/index.taro.vue':
-      /*!****************************************!*\
-  !*** ./src/pages/toast/index.taro.vue ***!
-  \****************************************/
+    /***/ './src/pages/infiniteloading/index.taro.vue':
+      /*!**************************************************!*\
+  !*** ./src/pages/infiniteloading/index.taro.vue ***!
+  \**************************************************/
       /*! exports provided: default */
       /*! exports used: default */
       /***/ function(module, __webpack_exports__, __webpack_require__) {
         'use strict';
-        /* harmony import */ var _index_taro_vue_vue_type_template_id_161ad11c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! ./index.taro.vue?vue&type=template&id=161ad11c */ './src/pages/toast/index.taro.vue?vue&type=template&id=161ad11c'
+        /* harmony import */ var _index_taro_vue_vue_type_template_id_6ed18bd1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          /*! ./index.taro.vue?vue&type=template&id=6ed18bd1 */ './src/pages/infiniteloading/index.taro.vue?vue&type=template&id=6ed18bd1'
         );
-        /* harmony import */ var _index_taro_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-          /*! ./index.taro.vue?vue&type=script&lang=js */ './src/pages/toast/index.taro.vue?vue&type=script&lang=js'
+        /* harmony import */ var _index_taro_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+          /*! ./index.taro.vue?vue&type=script&lang=ts */ './src/pages/infiniteloading/index.taro.vue?vue&type=script&lang=ts'
         );
-        /* harmony import */ var _index_taro_vue_vue_type_style_index_0_id_161ad11c_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          /*! ./index.taro.vue?vue&type=style&index=0&id=161ad11c&lang=scss */ './src/pages/toast/index.taro.vue?vue&type=style&index=0&id=161ad11c&lang=scss'
+        /* harmony import */ var _index_taro_vue_vue_type_style_index_0_id_6ed18bd1_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+          /*! ./index.taro.vue?vue&type=style&index=0&id=6ed18bd1&lang=scss */ './src/pages/infiniteloading/index.taro.vue?vue&type=style&index=0&id=6ed18bd1&lang=scss'
         );
 
-        _index_taro_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__[
+        _index_taro_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__[
           /* default */ 'a'
         ].render =
-          _index_taro_vue_vue_type_template_id_161ad11c__WEBPACK_IMPORTED_MODULE_0__[
+          _index_taro_vue_vue_type_template_id_6ed18bd1__WEBPACK_IMPORTED_MODULE_0__[
             /* render */ 'a'
           ];
         /* hot reload */
         if (false) {
         }
 
-        _index_taro_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__[
+        _index_taro_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__[
           /* default */ 'a'
-        ].__file = 'src/pages/toast/index.taro.vue';
+        ].__file = 'src/pages/infiniteloading/index.taro.vue';
 
         /* harmony default export */ __webpack_exports__['a'] =
-          _index_taro_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__[
+          _index_taro_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__[
             /* default */ 'a'
           ];
 
         /***/
       },
 
-    /***/ './src/pages/toast/index.taro.vue?vue&type=script&lang=js':
-      /*!****************************************************************!*\
-  !*** ./src/pages/toast/index.taro.vue?vue&type=script&lang=js ***!
-  \****************************************************************/
+    /***/ './src/pages/infiniteloading/index.taro.vue?vue&type=script&lang=ts':
+      /*!**************************************************************************!*\
+  !*** ./src/pages/infiniteloading/index.taro.vue?vue&type=script&lang=ts ***!
+  \**************************************************************************/
       /*! exports provided: default */
       /*! exports used: default */
       /***/ function(module, __webpack_exports__, __webpack_require__) {
         'use strict';
-        /* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_dist_index_js_ref_10_0_index_taro_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! -!../../../node_modules/babel-loader/lib!../../../node_modules/vue-loader/dist??ref--10-0!./index.taro.vue?vue&type=script&lang=js */ './node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/index.js?!./src/pages/toast/index.taro.vue?vue&type=script&lang=js'
+        /* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_dist_index_js_ref_10_0_index_taro_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          /*! -!../../../node_modules/babel-loader/lib!../../../node_modules/vue-loader/dist??ref--10-0!./index.taro.vue?vue&type=script&lang=ts */ './node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/index.js?!./src/pages/infiniteloading/index.taro.vue?vue&type=script&lang=ts'
         );
         /* harmony reexport (safe) */ __webpack_require__.d(
           __webpack_exports__,
           'a',
           function() {
-            return _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_dist_index_js_ref_10_0_index_taro_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__[
+            return _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_dist_index_js_ref_10_0_index_taro_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__[
               'a'
             ];
           }
@@ -1128,40 +1209,40 @@
         /***/
       },
 
-    /***/ './src/pages/toast/index.taro.vue?vue&type=style&index=0&id=161ad11c&lang=scss':
-      /*!*************************************************************************************!*\
-  !*** ./src/pages/toast/index.taro.vue?vue&type=style&index=0&id=161ad11c&lang=scss ***!
-  \*************************************************************************************/
+    /***/ './src/pages/infiniteloading/index.taro.vue?vue&type=style&index=0&id=6ed18bd1&lang=scss':
+      /*!***********************************************************************************************!*\
+  !*** ./src/pages/infiniteloading/index.taro.vue?vue&type=style&index=0&id=6ed18bd1&lang=scss ***!
+  \***********************************************************************************************/
       /*! no static exports found */
       /***/ function(module, __webpack_exports__, __webpack_require__) {
         'use strict';
-        /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_oneOf_0_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_postcss_node_modules_resolve_url_loader_index_js_node_modules_sass_loader_dist_cjs_js_ref_1_oneOf_0_4_node_modules_vue_loader_dist_index_js_ref_10_0_index_taro_vue_vue_type_style_index_0_id_161ad11c_lang_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! -!../../../node_modules/mini-css-extract-plugin/dist/loader.js!../../../node_modules/css-loader/dist/cjs.js??ref--1-oneOf-0-1!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/src??postcss!../../../node_modules/resolve-url-loader!../../../node_modules/sass-loader/dist/cjs.js??ref--1-oneOf-0-4!../../../node_modules/vue-loader/dist??ref--10-0!./index.taro.vue?vue&type=style&index=0&id=161ad11c&lang=scss */ './node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/toast/index.taro.vue?vue&type=style&index=0&id=161ad11c&lang=scss'
+        /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_oneOf_0_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_postcss_node_modules_resolve_url_loader_index_js_node_modules_sass_loader_dist_cjs_js_ref_1_oneOf_0_4_node_modules_vue_loader_dist_index_js_ref_10_0_index_taro_vue_vue_type_style_index_0_id_6ed18bd1_lang_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          /*! -!../../../node_modules/mini-css-extract-plugin/dist/loader.js!../../../node_modules/css-loader/dist/cjs.js??ref--1-oneOf-0-1!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/src??postcss!../../../node_modules/resolve-url-loader!../../../node_modules/sass-loader/dist/cjs.js??ref--1-oneOf-0-4!../../../node_modules/vue-loader/dist??ref--10-0!./index.taro.vue?vue&type=style&index=0&id=6ed18bd1&lang=scss */ './node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/infiniteloading/index.taro.vue?vue&type=style&index=0&id=6ed18bd1&lang=scss'
         );
-        /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_oneOf_0_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_postcss_node_modules_resolve_url_loader_index_js_node_modules_sass_loader_dist_cjs_js_ref_1_oneOf_0_4_node_modules_vue_loader_dist_index_js_ref_10_0_index_taro_vue_vue_type_style_index_0_id_161ad11c_lang_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
-          _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_oneOf_0_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_postcss_node_modules_resolve_url_loader_index_js_node_modules_sass_loader_dist_cjs_js_ref_1_oneOf_0_4_node_modules_vue_loader_dist_index_js_ref_10_0_index_taro_vue_vue_type_style_index_0_id_161ad11c_lang_scss__WEBPACK_IMPORTED_MODULE_0__
+        /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_oneOf_0_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_postcss_node_modules_resolve_url_loader_index_js_node_modules_sass_loader_dist_cjs_js_ref_1_oneOf_0_4_node_modules_vue_loader_dist_index_js_ref_10_0_index_taro_vue_vue_type_style_index_0_id_6ed18bd1_lang_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
+          _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_oneOf_0_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_postcss_node_modules_resolve_url_loader_index_js_node_modules_sass_loader_dist_cjs_js_ref_1_oneOf_0_4_node_modules_vue_loader_dist_index_js_ref_10_0_index_taro_vue_vue_type_style_index_0_id_6ed18bd1_lang_scss__WEBPACK_IMPORTED_MODULE_0__
         );
         /* unused harmony reexport * */
 
         /***/
       },
 
-    /***/ './src/pages/toast/index.taro.vue?vue&type=template&id=161ad11c':
-      /*!**********************************************************************!*\
-  !*** ./src/pages/toast/index.taro.vue?vue&type=template&id=161ad11c ***!
-  \**********************************************************************/
+    /***/ './src/pages/infiniteloading/index.taro.vue?vue&type=template&id=6ed18bd1':
+      /*!********************************************************************************!*\
+  !*** ./src/pages/infiniteloading/index.taro.vue?vue&type=template&id=6ed18bd1 ***!
+  \********************************************************************************/
       /*! exports provided: render */
       /*! exports used: render */
       /***/ function(module, __webpack_exports__, __webpack_require__) {
         'use strict';
-        /* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_dist_templateLoader_js_ref_6_node_modules_vue_loader_dist_index_js_ref_10_0_index_taro_vue_vue_type_template_id_161ad11c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          /*! -!../../../node_modules/babel-loader/lib!../../../node_modules/vue-loader/dist/templateLoader.js??ref--6!../../../node_modules/vue-loader/dist??ref--10-0!./index.taro.vue?vue&type=template&id=161ad11c */ './node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/toast/index.taro.vue?vue&type=template&id=161ad11c'
+        /* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_dist_templateLoader_js_ref_6_node_modules_vue_loader_dist_index_js_ref_10_0_index_taro_vue_vue_type_template_id_6ed18bd1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          /*! -!../../../node_modules/babel-loader/lib!../../../node_modules/vue-loader/dist/templateLoader.js??ref--6!../../../node_modules/vue-loader/dist??ref--10-0!./index.taro.vue?vue&type=template&id=6ed18bd1 */ './node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js?!./node_modules/vue-loader/dist/index.js?!./src/pages/infiniteloading/index.taro.vue?vue&type=template&id=6ed18bd1'
         );
         /* harmony reexport (safe) */ __webpack_require__.d(
           __webpack_exports__,
           'a',
           function() {
-            return _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_dist_templateLoader_js_ref_6_node_modules_vue_loader_dist_index_js_ref_10_0_index_taro_vue_vue_type_template_id_161ad11c__WEBPACK_IMPORTED_MODULE_0__[
+            return _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_dist_templateLoader_js_ref_6_node_modules_vue_loader_dist_index_js_ref_10_0_index_taro_vue_vue_type_template_id_6ed18bd1__WEBPACK_IMPORTED_MODULE_0__[
               'a'
             ];
           }

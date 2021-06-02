@@ -323,15 +323,3 @@ export default createDemo({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.demo {
-  .nut-cell {
-    align-items: center;
-
-    .nut-cell__value {
-      margin-right: 8px;
-    }
-  }
-}
-</style>

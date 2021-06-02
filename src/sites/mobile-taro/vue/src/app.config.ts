@@ -5,7 +5,8 @@ export default {
     'pages/popup/demo',
     'pages/inputnumber/demo',
     'pages/textarea/demo',
-    'pages/button/demo'
+    'pages/button/demo',
+    'pages/infiniteloading/demo'
   ],
   window: {
     backgroundTextStyle: 'light',

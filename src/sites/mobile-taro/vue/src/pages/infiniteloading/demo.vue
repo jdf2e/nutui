@@ -1,27 +1,26 @@
 <template>
   <view class="demo">
-    <h2>基础用法</h2>
+    <!-- <h2>基础用法</h2>
     <nut-cell>
-      <ul class="infiniteUl" id="scroll">
+      <view-block class="infiniteUl" id="scrollDemo">
         <nut-infiniteloading
-          container-id="scroll"
-          :use-window="false"
+          container-id="scrollDemo"
           :has-more="hasMore"
           @load-more="loadMore"
         >
-          <li
+          <view-block
             class="infiniteLi"
             v-for="(item, index) in defultList"
             :key="index"
-            >{{ item }}</li
+            >{{ item }}</view-block
           >
         </nut-infiniteloading>
-      </ul>
-    </nut-cell>
+      </view-block>
+    </nut-cell> -->
 
     <h2>下拉刷新</h2>
     <nut-cell>
-      <ul class="infiniteUl" id="refreshScroll">
+      <view-block class="infiniteUl" id="refreshScroll">
         <nut-infiniteloading
           pull-icon="JD"
           container-id="refreshScroll"
@@ -31,19 +30,19 @@
           @load-more="refreshLoadMore"
           @refresh="refresh"
         >
-          <li
+          <view-block
             class="infiniteLi"
             v-for="(item, index) in refreshList"
             :key="index"
-            >{{ item }}</li
+            >{{ item }}</view-block
           >
         </nut-infiniteloading>
-      </ul>
+      </view-block>
     </nut-cell>
 
-    <h2>自定义加载文案</h2>
+    <!-- <h2>自定义加载文案</h2>
     <nut-cell>
-      <ul class="infiniteUl" id="customScroll">
+      <view-block class="infiniteUl" id="customScroll">
         <nut-infiniteloading
           load-txt="loading"
           load-more-txt="没有啦～"
@@ -52,15 +51,15 @@
           :has-more="customHasMore"
           @load-more="customLoadMore"
         >
-          <li
+          <view-block
             class="infiniteLi"
             v-for="(item, index) in customList"
             :key="index"
-            >{{ item }}</li
+            >{{ item }}</view-block
           >
         </nut-infiniteloading>
-      </ul>
-    </nut-cell>
+      </view-block>
+    </nut-cell> -->
   </view>
 </template>
 
@@ -68,9 +67,16 @@
 import { onMounted, ref, reactive, toRefs } from 'vue';
 import { createComponent } from './../../../../../../packages/utils/create';
 const { createDemo } = createComponent('infiniteloading');
-import Toast from './../toast/index.taro.vue';
+import Infiniteloading from './index.taro.vue';
+import Cell from './../cell/index.taro.vue';
+
+// import Toast from './../toast/index.taro.vue';
 export default createDemo({
   props: {},
+  components: {
+    'nut-infiniteloading': Infiniteloading,
+    'nut-cell': Cell
+  },
   setup() {
     const hasMore = ref(true);
     const customHasMore = ref(true);
@@ -97,6 +103,7 @@ export default createDemo({
     };
 
     const customLoadMore = done => {
+      console.log('记载更多');
       setTimeout(() => {
         const curLen = data.customList.length;
         for (let i = curLen; i < curLen + 10; i++) {
@@ -120,7 +127,7 @@ export default createDemo({
 
     const refresh = done => {
       setTimeout(() => {
-        Toast.success('刷新成功');
+        // Toast.success('刷新成功');
         done();
       }, 1000);
     };
@@ -150,7 +157,7 @@ export default createDemo({
 });
 </script>
 
-<style lang="scss" scoped>
+<style>
 .infiniteUl {
   height: 300px;
   width: 100%;

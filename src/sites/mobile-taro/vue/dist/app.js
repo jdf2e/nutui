@@ -597,12 +597,10 @@ require('./taro');
 
         var config = {
           pages: [
-            'pages/address/demo',
-            'pages/infiniteloading/demo',
+            'pages/calendar/demo',
             'pages/input/demo',
             'pages/popup/demo',
             'pages/inputnumber/demo',
-            'pages/calendar/demo',
             'pages/textarea/demo',
             'pages/button/demo'
           ],
