@@ -43,9 +43,7 @@
 
 <script lang="ts">
 import { ref, getCurrentInstance } from 'vue';
-import { createComponent } from '../../utils/create';
-const { createDemo } = createComponent('switch');
-export default createDemo({
+export default {
   setup() {
     let { proxy } = getCurrentInstance() as any;
     const checked = ref(true);
@@ -68,5 +66,5 @@ export default createDemo({
       changeAsync
     };
   }
-});
+};
 </script>

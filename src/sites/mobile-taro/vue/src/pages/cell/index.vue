@@ -43,9 +43,7 @@
 
 <script lang="ts">
 import { ref } from 'vue';
-import { createComponent } from '../../utils/create';
-const { createDemo } = createComponent('cell');
-export default createDemo({
+export default {
   setup() {
     const testClick = (event: Event) => {
       console.log('点击事件');
@@ -53,7 +51,5 @@ export default createDemo({
     const switchChecked = ref(true);
     return { testClick, switchChecked };
   }
-});
+};
 </script>
-
-<style lang="scss" scoped></style>

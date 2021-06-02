@@ -69,11 +69,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { ref } from 'vue';
-import { createComponent } from '../../utils/create';
-const { createDemo } = createComponent('button');
-export default createDemo({
+export default {
   props: {},
   setup(props) {
     let isLoading = ref(false);
@@ -89,10 +87,10 @@ export default createDemo({
       changeLoading
     };
   }
-});
+};
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo-button-row {
   margin-bottom: 20px;
 }
