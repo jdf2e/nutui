@@ -250,10 +250,12 @@ export default {
       } else {
         this.initX = parseInt(this.navWidth * index);
       }
-      if (this.positionNav == 'top' || this.positionNav == 'bottom') {
-        this.$refs.navlist.scroll(this.initX - this.tapWidth, 0, 0);
-      } else {
-        this.$refs.navlist.scroll(0, this.initX - this.tapWidth);
+      if (this.$refs.navlist.scroll) {
+        if (this.positionNav == 'top' || this.positionNav == 'bottom') {
+          this.$refs.navlist.scroll(this.initX - this.tapWidth, 0, 0);
+        } else {
+          this.$refs.navlist.scroll(0, this.initX - this.tapWidth);
+        }
       }
       let items = this.$refs.items.children;
       for (let i = 0; i < items.length; i++) {
