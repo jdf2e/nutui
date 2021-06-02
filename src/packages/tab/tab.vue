@@ -161,14 +161,14 @@ export default {
         const tapWidth = this.$refs.navlist.offsetWidth;
         this.navWidth = currWidth;
         this.initX = currLeft;
-        this.$refs.navlist.scroll(currLeft - tapWidth / 2 + currWidth / 2, 0);
+        this.$refs.navlist.scroll && this.$refs.navlist.scroll(currLeft - tapWidth / 2 + currWidth / 2, 0);
       } else {
         const currTop = currEle.offsetTop;
         const currHeight = currEle.offsetHeight;
         const tapHeight = this.$refs.navlist.offsetHeight;
         this.navWidth = currHeight;
         this.initX = currTop;
-        this.$refs.navlist.scroll(0, currTop - tapHeight / 2 + currHeight / 2);
+        this.$refs.navlist.scroll && this.$refs.navlist.scroll(0, currTop - tapHeight / 2 + currHeight / 2);
       }
     },
     switchTab: function (index, event, disable) {
