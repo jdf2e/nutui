@@ -35,7 +35,7 @@
 <script lang="ts">
 import { computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import CellGroup from '@/packages/__VUE/cellgroup/index.vue';
 const { componentName, create } = createComponent('cell');
 export default create({
@@ -66,8 +66,14 @@ export default create({
     const router = useRouter();
     const handleClick = (event: Event) => {
       emit('click', event);
+
       if (props.to && router) {
         router[props.replace ? 'replace' : 'push'](props.to);
+        // if(props.replace){
+        //   router.replace(props.to)
+        // }else{
+        //    router.push(props.to)
+        // }
       } else if (props.url) {
         props.replace
           ? location.replace(props.url)

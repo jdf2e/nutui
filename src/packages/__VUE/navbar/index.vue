@@ -61,7 +61,6 @@
 <script lang="ts">
 import { computed, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { useRouter } from 'vue-router';
 const { componentName, create } = createComponent('navbar');
 export default create({
   props: {
@@ -104,7 +103,6 @@ export default create({
         [prefixCls]: true
       };
     });
-    const router = useRouter();
 
     function switchTitle(id: number, name: string) {
       activeIndex.value = id;
