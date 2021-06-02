@@ -17,7 +17,7 @@ app.use(Checkbox);
 ## 基本用法
 
 ```html
-<nut-checkbox v-model="checkbox1" label="复选框"><span>复选框</span></nut-checkbox>
+<nut-checkbox v-model="checkbox1" label="复选框">复选框</nut-checkbox>
 <nut-checkbox v-model="checkbox2" text-position="left">复选框</nut-checkbox>
 ```
 ```ts
