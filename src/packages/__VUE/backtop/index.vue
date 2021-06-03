@@ -67,8 +67,8 @@ export default create({
     });
     const style = computed(() => {
       return {
-        right: `${props.bottom}px`,
-        bottom: `${props.right}px`,
+        right: `${props.right}px`,
+        bottom: `${props.bottom}px`,
         zIndex: props.zIndex
       };
     });
