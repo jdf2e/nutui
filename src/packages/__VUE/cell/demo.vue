@@ -43,13 +43,12 @@
 
 <script lang="ts">
 import { ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { Toast } from '@/packages/nutui.vue';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('cell');
 export default createDemo({
   setup() {
     const testClick = (event: Event) => {
-      Toast.text('点击事件');
+      console.log('点击事件');
     };
     const switchChecked = ref(true);
     return { testClick, switchChecked };

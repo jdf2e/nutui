@@ -85,6 +85,7 @@
       "packages": [
         {
           "name": "Button",
+          "taro": true,
           "sort": 1,
           "cName": "按钮组件",
           "type": "component",
@@ -112,6 +113,7 @@
         },
         {
           "name": "Layout",
+          "taro": true,
           "sort": 4,
           "cName": "布局",
           "type": "component",
@@ -215,6 +217,7 @@
         },
         {
           "name": "Cell",
+          "taro": true,
           "sort": 1,
           "cName": "单元格组件",
           "type": "component",
@@ -260,6 +263,7 @@
         },
         {
           "name": "Checkbox",
+          "taro": true,
           "sort": 5,
           "cName": "复选按钮",
           "type": "component",
@@ -316,6 +320,7 @@
         {
           "version": "3.0.0",
           "name": "Radio",
+          "taro": true,
           "type": "component",
           "cName": "单选按钮",
           "desc": "单选按钮",
@@ -346,6 +351,7 @@
         {
           "version": "3.0.0",
           "name": "OverLay",
+          "taro": true,
           "type": "component",
           "cName": "遮罩层",
           "desc": "创建一个遮罩层，通常用于阻止用户进行其他操作",
@@ -403,6 +409,7 @@
         },
         {
           "name": "Steps",
+          "taro": true,
           "sort": 17,
           "cName": "步骤条",
           "type": "component",
@@ -426,6 +433,7 @@
       "packages": [
         {
           "name": "Navbar",
+          "taro": true,
           "sort": 3,
           "cName": "导航组件",
           "type": "componment",
@@ -462,6 +470,7 @@
         },
         {
           "name": "Tabbar",
+          "taro": true,
           "sort": 2,
           "cName": "标签栏组件",
           "type": "component",
@@ -514,6 +523,7 @@
         {
           "version": "3.0.0",
           "name": "Switch",
+          "taro": true,
           "type": "component",
           "cName": "开关组件",
           "desc": "用来打开或关闭选项",
