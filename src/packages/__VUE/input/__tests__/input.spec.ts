@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
 import Input from '../index.vue';
+import Icon from '../../icon/index.vue';
 
 test('base', () => {
   const wrapper = mount(Input, { props: { modelValue: 3 } });
