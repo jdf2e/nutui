@@ -1,17 +1,13 @@
 <template>
-  <scroll-view
+  <view-block
     :class="classes"
-    scrollY="true"
-    style="height: 100%"
-    id="scroller"
-    @scrolltolower="lower"
-    @scroll="scroll"
+    ref="scroller"
     @touchstart="touchStart"
     @touchmove="touchMove"
     @touchend="touchEnd"
   >
-    <view-block class="nut-infinite-top" :style="getStyle">
-      <view-block class="top-box" id="refreshTop">
+    <view-block class="nut-infinite-top" ref="refreshTop" :style="getStyle">
+      <view-block class="top-box">
         <nut-icon class="top-img" :name="pullIcon"></nut-icon>
         <view-block class="top-text">{{ pullTxt }}</view-block>
       </view-block>
@@ -32,14 +28,19 @@
         <view-block class="tips">{{ loadMoreTxt }}</view-block>
       </template>
     </view-block>
-  </scroll-view>
+  </view-block>
 </template>
 <script lang="ts">
-import { toRefs, onMounted, reactive, computed, CSSProperties } from 'vue';
-import { createComponent } from './../../../../../../packages/utils/create';
+import {
+  toRefs,
+  onMounted,
+  onUnmounted,
+  reactive,
+  computed,
+  CSSProperties
+} from 'vue';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('infiniteloading');
-import Icon from './../icon/index.taro.vue';
-import Taro from '@tarojs/taro';
 export default create({
   props: {
     hasMore: {
@@ -90,16 +91,15 @@ export default create({
     }
   },
   emits: ['scroll-change', 'load-more', 'refresh'],
-  components: {
-    'nut-icon': Icon
-  },
+
   setup(props, { emit, slots }) {
     const state = reactive({
-      scrollHeight: 0,
-      scrollTop: 0,
-      isInfiniting: false,
-      direction: 'down',
+      scrollEl: window as Window | HTMLElement | (Node & ParentNode),
+      scroller: null as null | HTMLElement,
+      refreshTop: null as null | HTMLElement,
+      beforeScrollTop: 0,
       isTouching: false,
+      isInfiniting: false,
       refreshMaxH: 0,
       y: 0,
       x: 0,
@@ -122,67 +122,113 @@ export default create({
           : `height 0.2s cubic-bezier(0.25,0.1,0.25,1)`
       };
     });
-    const getParentElement = el => {
-      return Taro.createSelectorQuery().select(
-        !!props.containerId ? `#${props.containerId} #${el}` : `#${el}`
+
+    const getParentElement = (el: HTMLElement) => {
+      return !!props.containerId
+        ? document.querySelector(`#${props.containerId}`)
+        : el && el.parentNode;
+    };
+
+    const requestAniFrame = () => {
+      return (
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        }
       );
     };
-    /** 获取需要滚动的距离 */
-    const getScrollHeight = () => {
-      const parentElement = getParentElement('scroller');
 
-      parentElement
-        .boundingClientRect(rect => {
-          state.scrollHeight = rect.height;
-        })
-        .exec();
+    const getWindowScrollTop = () => {
+      return window.pageYOffset !== undefined
+        ? window.pageYOffset
+        : (
+            document.documentElement ||
+            document.body.parentNode ||
+            document.body
+          ).scrollTop;
     };
 
-    /** 滚动到底部 */
-    const lower = () => {
-      if (state.direction == 'up' || !props.hasMore || state.isInfiniting) {
-        return false;
-      } else {
-        state.isInfiniting = true;
-        emit('load-more', infiniteDone);
-      }
+    const calculateTopPosition = (el: HTMLElement): number => {
+      return !el
+        ? 0
+        : el.offsetTop + calculateTopPosition(el.offsetParent as HTMLElement);
     };
 
-    const scroll = e => {
-      // 滚动方向
-      if (e.detail.scrollTop <= 0) {
-        // 滚动到最顶部
-        e.detail.scrollTop = 0;
-      } else if (e.detail.scrollTop >= state.scrollHeight) {
-        // 滚动到最底部
-        e.detail.scrollTop = state.scrollHeight;
-      }
-      if (
-        e.detail.scrollTop > state.scrollTop ||
-        e.detail.scrollTop >= state.scrollHeight
-      ) {
-        state.direction = 'down';
+    const isScrollAtBottom = () => {
+      let offsetDistance = 0;
+      let resScrollTop = 0;
+      let direction = 'down';
+      const windowScrollTop = getWindowScrollTop();
+      if (props.useWindow) {
+        if (state.scroller) {
+          offsetDistance =
+            calculateTopPosition(state.scroller) +
+            state.scroller.offsetHeight -
+            windowScrollTop -
+            window.innerHeight;
+        }
+        resScrollTop = windowScrollTop;
       } else {
-        state.direction = 'up';
-      }
-      state.scrollTop = e.detail.scrollTop;
+        const {
+          scrollHeight,
+          clientHeight,
+          scrollTop
+        } = state.scrollEl as HTMLElement;
 
-      emit('scroll-change', e.detail.scrollTop);
+        offsetDistance = scrollHeight - clientHeight - scrollTop;
+        resScrollTop = scrollTop;
+      }
+
+      if (state.beforeScrollTop > resScrollTop) {
+        direction = 'up';
+      } else {
+        direction = 'down';
+      }
+
+      state.beforeScrollTop = resScrollTop;
+
+      emit('scroll-change', resScrollTop);
+
+      return offsetDistance <= props.threshold && direction == 'down';
     };
 
     const infiniteDone = () => {
       state.isInfiniting = false;
     };
 
+    const handleScroll = () => {
+      requestAniFrame()(() => {
+        if (!isScrollAtBottom() || !props.hasMore || state.isInfiniting) {
+          return false;
+        } else {
+          state.isInfiniting = true;
+          emit('load-more', infiniteDone);
+        }
+      });
+    };
+
+    const scrollListener = () => {
+      state.scrollEl.addEventListener('scroll', handleScroll, props.useCapture);
+    };
+
+    const refreshDone = () => {
+      state.distance = 0;
+      state.isTouching = false;
+    };
+
     const touchStart = (event: TouchEvent) => {
-      if (state.scrollTop == 0 && !state.isTouching && props.isOpenRefresh) {
+      if (
+        state.beforeScrollTop == 0 &&
+        !state.isTouching &&
+        props.isOpenRefresh
+      ) {
         state.y = event.touches[0].pageY;
         state.isTouching = true;
-        getParentElement('refreshTop')
-          .boundingClientRect(rect => {
-            state.refreshMaxH = Math.floor(rect.height * 1 + 10);
-          })
-          .exec();
+
+        const childHeight = ((state.refreshTop as HTMLElement)
+          .firstElementChild as HTMLElement).offsetHeight;
+        state.refreshMaxH = Math.floor(childHeight * 1 + 10);
       }
     };
 
@@ -207,22 +253,26 @@ export default create({
       }
     };
 
-    const refreshDone = () => {
-      state.distance = 0;
-      state.isTouching = false;
-    };
-
     onMounted(() => {
-      setTimeout(() => {
-        getScrollHeight();
-      }, 200);
+      const parentElement = getParentElement(
+        state.scroller as HTMLElement
+      ) as Node & ParentNode;
+      state.scrollEl = props.useWindow ? window : parentElement;
+
+      scrollListener();
+    });
+
+    onUnmounted(() => {
+      state.scrollEl.removeEventListener(
+        'scroll',
+        handleScroll,
+        props.useCapture
+      );
     });
 
     return {
       classes,
       ...toRefs(state),
-      lower,
-      scroll,
       touchStart,
       touchMove,
       touchEnd,
@@ -233,5 +283,5 @@ export default create({
 </script>
 
 <style lang="scss">
-@import '../../../../../../packages/__VUE/infiniteloading/index.scss';
+@import 'index.scss';
 </style>

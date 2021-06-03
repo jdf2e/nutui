@@ -36,7 +36,7 @@
         <view-block class="region-tab">
           <view-block
             class="tab-item"
-            :class="[index == tabIndex ? 'active' : '']"
+            :class="[index == tabIndex ? 'active' : '', key]"
             v-for="(item, key, index) in selectedRegion"
             :key="index"
             :ref="key"
@@ -45,7 +45,11 @@
             <view>{{ getTabName(item, index) }}</view>
           </view-block>
 
-          <view-block class="region-tab-line" ref="regionLine"></view-block>
+          <view-block
+            class="region-tab-line"
+            ref="regionLine"
+            :style="{ left: lineDistance + 'px' }"
+          ></view-block>
         </view-block>
 
         <view-block class="region-con">
@@ -119,6 +123,7 @@ import { reactive, ref, toRefs, watch, nextTick, computed } from 'vue';
 import { createComponent } from './../../../../../../packages/utils/create';
 import Icon from './../icon/index.taro.vue';
 import Popup from './../popup/index.taro.vue';
+import Taro from '@tarojs/taro';
 
 const { create, componentName } = createComponent('address');
 
@@ -264,6 +269,8 @@ export default create({
 
     const closeWay = ref('self');
 
+    const lineDistance = ref(20);
+
     //获取已选地区列表名称
     const getTabName = (item: RegionData, index: number) => {
       if (item.name) return item.name;
@@ -288,13 +295,16 @@ export default create({
     };
     // 移动下面的红线
     const lineAnimation = () => {
-      const name = (tabItemRef as any)[tabName.value[tabIndex.value]];
-      nextTick(() => {
-        if (name) {
-          // const distance = name.offsetLeft;
-          // TweenMax.to(regionLine.value, 0.5, { left: distance });
-        }
-      });
+      setTimeout(() => {
+        Taro.createSelectorQuery()
+          .selectAll(`.${tabName.value[tabIndex.value]}`)
+          .boundingClientRect(rects => {
+            (rects as any).forEach(rect => {
+              if (rect.width > 0) lineDistance.value = rect.left;
+            });
+          })
+          .exec();
+      }, 100);
     };
     // 切换下一级列表
     const nextAreaList = (item: RegionData | string) => {
@@ -491,6 +501,7 @@ export default create({
       getTabName,
       nextAreaList,
       regionLine,
+      lineDistance,
       changeRegionTab,
       selectedExist,
       clickOverlay,

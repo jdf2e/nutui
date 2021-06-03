@@ -6,10 +6,10 @@
   "setting": {
     "urlCheck": true,
     "es6": false,
-    "enhance": false,
+    "enhance": true,
     "postcss": false,
     "preloadBackgroundData": false,
-    "minified": false,
+    "minified": true,
     "newFeature": false,
     "coverView": true,
     "nodeModules": false,
