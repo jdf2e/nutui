@@ -1,12 +1,17 @@
 <template>
   <view class="demo">
-    <!-- <h2>基础用法</h2>
+    <h2>基础演示</h2>
     <nut-cell>
       <view-block class="infiniteUl" id="scrollDemo">
         <nut-infiniteloading
+          pull-icon="JD"
+          load-txt="loading"
+          load-more-txt="没有啦～"
+          :is-open-refresh="true"
           container-id="scrollDemo"
           :has-more="hasMore"
           @load-more="loadMore"
+          @refresh="refresh"
         >
           <view-block
             class="infiniteLi"
@@ -16,50 +21,7 @@
           >
         </nut-infiniteloading>
       </view-block>
-    </nut-cell> -->
-
-    <h2>下拉刷新</h2>
-    <nut-cell>
-      <view-block class="infiniteUl" id="refreshScroll">
-        <nut-infiniteloading
-          pull-icon="JD"
-          container-id="refreshScroll"
-          :use-window="false"
-          :is-open-refresh="true"
-          :has-more="refreshHasMore"
-          @load-more="refreshLoadMore"
-          @refresh="refresh"
-        >
-          <view-block
-            class="infiniteLi"
-            v-for="(item, index) in refreshList"
-            :key="index"
-            >{{ item }}</view-block
-          >
-        </nut-infiniteloading>
-      </view-block>
     </nut-cell>
-
-    <!-- <h2>自定义加载文案</h2>
-    <nut-cell>
-      <view-block class="infiniteUl" id="customScroll">
-        <nut-infiniteloading
-          load-txt="loading"
-          load-more-txt="没有啦～"
-          container-id="customScroll"
-          :use-window="false"
-          :has-more="customHasMore"
-          @load-more="customLoadMore"
-        >
-          <view-block
-            class="infiniteLi"
-            v-for="(item, index) in customList"
-            :key="index"
-            >{{ item }}</view-block
-          >
-        </nut-infiniteloading>
-      </view-block>
-    </nut-cell> -->
   </view>
 </template>
 
@@ -70,7 +32,6 @@ const { createDemo } = createComponent('infiniteloading');
 import Infiniteloading from './index.taro.vue';
 import Cell from './../cell/index.taro.vue';
 
-// import Toast from './../toast/index.taro.vue';
 export default createDemo({
   props: {},
   components: {
@@ -79,13 +40,9 @@ export default createDemo({
   },
   setup() {
     const hasMore = ref(true);
-    const customHasMore = ref(true);
-    const refreshHasMore = ref(true);
 
     const data = reactive({
-      defultList: [''],
-      customList: [''],
-      refreshList: ['']
+      defultList: ['']
     });
 
     const loadMore = done => {
@@ -102,41 +59,16 @@ export default createDemo({
       }, 500);
     };
 
-    const customLoadMore = done => {
-      console.log('记载更多');
-      setTimeout(() => {
-        const curLen = data.customList.length;
-        for (let i = curLen; i < curLen + 10; i++) {
-          data.customList.push(`${i}`);
-        }
-        if (data.customList.length > 30) customHasMore.value = false;
-        done();
-      }, 500);
-    };
-
-    const refreshLoadMore = done => {
-      setTimeout(() => {
-        const curLen = data.refreshList.length;
-        for (let i = curLen; i < curLen + 10; i++) {
-          data.refreshList.push(`${i}`);
-        }
-        if (data.refreshList.length > 30) refreshHasMore.value = false;
-        done();
-      }, 500);
-    };
-
     const refresh = done => {
       setTimeout(() => {
-        // Toast.success('刷新成功');
+        console.log('刷新成功');
         done();
       }, 1000);
     };
 
     const init = () => {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 20; i++) {
         data.defultList.push(`${i}`);
-        data.customList.push(`${i}`);
-        data.refreshList.push(`${i}`);
       }
     };
     onMounted(() => {
@@ -146,10 +78,6 @@ export default createDemo({
     return {
       loadMore,
       hasMore,
-      customHasMore,
-      customLoadMore,
-      refreshHasMore,
-      refreshLoadMore,
       refresh,
       ...toRefs(data)
     };
@@ -159,7 +87,7 @@ export default createDemo({
 
 <style>
 .infiniteUl {
-  height: 300px;
+  height: 500px;
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;

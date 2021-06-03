@@ -142,7 +142,7 @@ export default create({
 
     /** 滚动到底部 */
     const lower = () => {
-      console.log('加载到底部', props.containerId);
+      // console.log('加载到底部', props.containerId);
       if (state.direction == 'up' || !props.hasMore || state.isInfiniting) {
         return false;
       } else {
@@ -153,6 +153,7 @@ export default create({
     };
 
     const scroll = e => {
+      console.log('加载到底部', props.containerId);
       // 滚动方向
       if (e.detail.scrollTop <= 0) {
         // 滚动到最顶部

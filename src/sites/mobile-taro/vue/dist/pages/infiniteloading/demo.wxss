@@ -355,7 +355,7 @@ to {
 }
 
 .infiniteUl {
-  height: 600rpx;
+  height: 1000rpx;
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;

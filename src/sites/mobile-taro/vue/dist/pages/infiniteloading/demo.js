@@ -75,8 +75,6 @@
           )('infiniteloading'),
           createDemo = _createComponent.createDemo;
 
-        // import Toast from './../toast/index.taro.vue';
-
         /* harmony default export */ __webpack_exports__['a'] = createDemo({
           props: {},
           components: {
@@ -91,18 +89,10 @@
             var hasMore = Object(
               vue__WEBPACK_IMPORTED_MODULE_1__[/* ref */ 'j']
             )(true);
-            var customHasMore = Object(
-              vue__WEBPACK_IMPORTED_MODULE_1__[/* ref */ 'j']
-            )(true);
-            var refreshHasMore = Object(
-              vue__WEBPACK_IMPORTED_MODULE_1__[/* ref */ 'j']
-            )(true);
             var data = Object(
               vue__WEBPACK_IMPORTED_MODULE_1__[/* reactive */ 'i']
             )({
-              defultList: [''],
-              customList: [''],
-              refreshList: ['']
+              defultList: ['']
             });
 
             var loadMore = function loadMore(done) {
@@ -118,45 +108,16 @@
               }, 500);
             };
 
-            var customLoadMore = function customLoadMore(done) {
-              console.log('记载更多');
-              setTimeout(function() {
-                var curLen = data.customList.length;
-
-                for (var i = curLen; i < curLen + 10; i++) {
-                  data.customList.push(''.concat(i));
-                }
-
-                if (data.customList.length > 30) customHasMore.value = false;
-                done();
-              }, 500);
-            };
-
-            var refreshLoadMore = function refreshLoadMore(done) {
-              setTimeout(function() {
-                var curLen = data.refreshList.length;
-
-                for (var i = curLen; i < curLen + 10; i++) {
-                  data.refreshList.push(''.concat(i));
-                }
-
-                if (data.refreshList.length > 30) refreshHasMore.value = false;
-                done();
-              }, 500);
-            };
-
             var refresh = function refresh(done) {
               setTimeout(function() {
-                // Toast.success('刷新成功');
+                console.log('刷新成功');
                 done();
               }, 1000);
             };
 
             var init = function init() {
-              for (var i = 0; i < 10; i++) {
+              for (var i = 0; i < 20; i++) {
                 data.defultList.push(''.concat(i));
-                data.customList.push(''.concat(i));
-                data.refreshList.push(''.concat(i));
               }
             };
 
@@ -173,10 +134,6 @@
               {
                 loadMore: loadMore,
                 hasMore: hasMore,
-                customHasMore: customHasMore,
-                customLoadMore: customLoadMore,
-                refreshHasMore: refreshHasMore,
-                refreshLoadMore: refreshLoadMore,
                 refresh: refresh
               },
               Object(vue__WEBPACK_IMPORTED_MODULE_1__[/* toRefs */ 'q'])(data)
@@ -347,8 +304,7 @@
             /** 滚动到底部 */
 
             var lower = function lower() {
-              console.log('加载到底部', props.containerId);
-
+              // console.log('加载到底部', props.containerId);
               if (
                 state.direction == 'up' ||
                 !props.hasMore ||
@@ -363,7 +319,8 @@
             };
 
             var scroll = function scroll(e) {
-              // 滚动方向
+              console.log('加载到底部', props.containerId); // 滚动方向
+
               if (e.detail.scrollTop <= 0) {
                 // 滚动到最顶部
                 e.detail.scrollTop = 0;
@@ -504,7 +461,7 @@
         )(
           'h2',
           null,
-          '下拉刷新',
+          '基础演示',
           -1
           /* HOISTED */
         );
@@ -528,11 +485,6 @@
               'view',
               _hoisted_1,
               [
-                Object(
-                  vue__WEBPACK_IMPORTED_MODULE_0__[/* createCommentVNode */ 'f']
-                )(
-                  ' <h2>基础用法</h2>\n    <nut-cell>\n      <view-block class="infiniteUl" id="scrollDemo">\n        <nut-infiniteloading\n          container-id="scrollDemo"\n          :has-more="hasMore"\n          @load-more="loadMore"\n        >\n          <view-block\n            class="infiniteLi"\n            v-for="(item, index) in defultList"\n            :key="index"\n            >{{ item }}</view-block\n          >\n        </nut-infiniteloading>\n      </view-block>\n    </nut-cell> '
-                ),
                 _hoisted_2,
                 Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createVNode */ 'j'])(
                   _component_nut_cell,
@@ -550,7 +502,7 @@
                           _component_view_block,
                           {
                             class: 'infiniteUl',
-                            id: 'refreshScroll'
+                            id: 'scrollDemo'
                           },
                           {
                             default: Object(
@@ -567,11 +519,12 @@
                                   _component_nut_infiniteloading,
                                   {
                                     'pull-icon': 'JD',
-                                    'container-id': 'refreshScroll',
-                                    'use-window': false,
+                                    'load-txt': 'loading',
+                                    'load-more-txt': '没有啦～',
                                     'is-open-refresh': true,
-                                    'has-more': _ctx.refreshHasMore,
-                                    onLoadMore: _ctx.refreshLoadMore,
+                                    'container-id': 'scrollDemo',
+                                    'has-more': _ctx.hasMore,
+                                    onLoadMore: _ctx.loadMore,
                                     onRefresh: _ctx.refresh
                                   },
                                   {
@@ -599,7 +552,7 @@
                                             vue__WEBPACK_IMPORTED_MODULE_0__[
                                               /* renderList */ 'x'
                                             ]
-                                          )(_ctx.refreshList, function(
+                                          )(_ctx.defultList, function(
                                             item,
                                             index
                                           ) {
@@ -672,11 +625,6 @@
                     _: 1
                     /* STABLE */
                   }
-                ),
-                Object(
-                  vue__WEBPACK_IMPORTED_MODULE_0__[/* createCommentVNode */ 'f']
-                )(
-                  ' <h2>自定义加载文案</h2>\n    <nut-cell>\n      <view-block class="infiniteUl" id="customScroll">\n        <nut-infiniteloading\n          load-txt="loading"\n          load-more-txt="没有啦～"\n          container-id="customScroll"\n          :use-window="false"\n          :has-more="customHasMore"\n          @load-more="customLoadMore"\n        >\n          <view-block\n            class="infiniteLi"\n            v-for="(item, index) in customList"\n            :key="index"\n            >{{ item }}</view-block\n          >\n        </nut-infiniteloading>\n      </view-block>\n    </nut-cell> '
                 )
               ]
             )
