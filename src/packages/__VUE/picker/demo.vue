@@ -13,14 +13,16 @@
       title="城市选择"
       @confirm="confirm"
       @close="close"
-    ></nut-picker>
+    >
+    </nut-picker>
     <nut-picker
       v-model:visible="show2"
       :list-data="listData2"
       title="多列选择"
       @confirm="confirm2"
       @close="close"
-    ></nut-picker>
+    >
+    </nut-picker>
     <nut-picker
       v-model:visible="show3"
       :list-data="listData3"

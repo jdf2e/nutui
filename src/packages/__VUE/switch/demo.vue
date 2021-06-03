@@ -43,7 +43,7 @@
 
 <script lang="ts">
 import { ref, getCurrentInstance } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('switch');
 export default createDemo({
   setup() {
@@ -70,5 +70,3 @@ export default createDemo({
   }
 });
 </script>
-
-<style lang="scss" scoped></style>
