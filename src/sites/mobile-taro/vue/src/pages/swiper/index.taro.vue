@@ -50,13 +50,16 @@ import {
   ref,
   watch
 } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { useTouch } from './use-touch';
-import { useExpose } from '@/packages/utils/useExpose/index';
+import { createComponent } from './../../../../../../packages/utils/create';
+import { useTouch } from './../../../../../../packages/__VUE/swiper/use-touch';
+import { useExpose } from './../../../../../../packages/utils/useExpose/index';
 const { create, componentName } = createComponent('swiper');
-import swiperItem from '@/packages/__VUE/swiperitem/index.vue';
+// import swiperItem from './../swiperitem/index.taro.vue';
 export default create({
-  children: [swiperItem],
+  // children: [swiperItem],
+  // components: {
+  //   'nut-swiper-item': swiperItem
+  // },
   props: {
     width: {
       type: [Number, String],
@@ -80,7 +83,7 @@ export default create({
     },
     loop: {
       type: Boolean,
-      default: true
+      default: false
     },
     duration: {
       type: [Number, String],
@@ -201,6 +204,8 @@ export default create({
         targetOffset = range(targetOffset, minOffset.value, 0);
       }
 
+      console.log(targetOffset);
+
       return targetOffset;
     };
 
@@ -223,18 +228,26 @@ export default create({
       const targetActive = getActive(pace);
       const targetOffset = getOffset(targetActive, offset);
 
+      // console.log(targetActive, targetOffset)
+
       if (props.loop) {
         if (state.children[0] && targetOffset !== minOffset.value) {
           const rightBound = targetOffset < minOffset.value;
           (state.children[0] as any).setOffset(
             rightBound ? trackSize.value : 0
           );
+          // wx.createSelectorQuery().select(`.${(state.children[0] as any).$el.className}`).scrollOffset((rect) => {
+          //   rect.scrollLeft = rightBound ? trackSize.value : 0;
+          // }).exec();
         }
         if (state.children[childCount.value - 1] && targetOffset !== 0) {
           const leftBound = targetOffset > 0;
           (state.children[childCount.value - 1] as any).setOffset(
             leftBound ? -trackSize.value : 0
           );
+          // wx.createSelectorQuery().select(`.${(state.children[childCount.value - 1] as any).$el.className}`).scrollOffset((rect) => {
+          //   rect.scrollLeft = leftBound ? -trackSize.value : 0
+          // }).exec();
         }
       }
 
@@ -327,18 +340,28 @@ export default create({
 
     const init = (active: number = +props.initPage) => {
       stopAutoPlay();
-      state.rect = container.value.getBoundingClientRect();
-      active = Math.min(childCount.value - 1, active);
-      state.width = props.width ? +props.width : (state.rect as DOMRect).width;
-      state.height = props.height
-        ? +props.height
-        : (state.rect as DOMRect).height;
-      state.active = active;
-      state.offset = getOffset(state.active);
-      state.moving = true;
-      getStyle();
-
-      autoplay();
+      setTimeout(() => {
+        const query = wx
+          .createSelectorQuery()
+          .select(`.${container.value.className}`);
+        query
+          .boundingClientRect(rect => {
+            state.rect = rect;
+            active = Math.min(childCount.value - 1, active);
+            state.width = props.width
+              ? +props.width
+              : (state.rect as DOMRect).width;
+            state.height = props.height
+              ? +props.height
+              : (state.rect as DOMRect).height;
+            state.active = active;
+            state.offset = getOffset(state.active);
+            state.moving = true;
+            getStyle();
+            autoplay();
+          })
+          .exec();
+      }, 0);
     };
 
     const onTouchStart = (e: TouchEvent) => {
@@ -466,6 +489,6 @@ export default create({
 });
 </script>
 
-<style scoped lang="scss">
-@import 'index.scss';
+<style lang="scss">
+@import '../../../../../../packages/__VUE/swiper/index.scss';
 </style>

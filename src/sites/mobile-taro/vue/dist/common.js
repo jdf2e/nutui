@@ -2,9 +2,9 @@
   ['common'],
   {
     /***/ '../../../packages/utils/create/component.ts':
-      /*!**********************************************************************************************!*\
-  !*** /Users/yangxiaolu3/Documents/JD/workspace/nutui/src/packages/utils/create/component.ts ***!
-  \**********************************************************************************************/
+      /*!***********************************************************************************************!*\
+  !*** /Users/suzigang/Downloads/project/nutui3.0/nutui/src/packages/utils/create/component.ts ***!
+  \***********************************************************************************************/
       /*! exports provided: createComponent */
       /*! exports used: createComponent */
       /***/ function(module, __webpack_exports__, __webpack_require__) {
@@ -61,9 +61,9 @@
       },
 
     /***/ '../../../packages/utils/create/index.ts':
-      /*!******************************************************************************************!*\
-  !*** /Users/yangxiaolu3/Documents/JD/workspace/nutui/src/packages/utils/create/index.ts ***!
-  \******************************************************************************************/
+      /*!*******************************************************************************************!*\
+  !*** /Users/suzigang/Downloads/project/nutui3.0/nutui/src/packages/utils/create/index.ts ***!
+  \*******************************************************************************************/
       /*! exports provided: createComponent */
       /*! exports used: createComponent */
       /***/ function(module, __webpack_exports__, __webpack_require__) {

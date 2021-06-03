@@ -25,6 +25,9 @@ const config = {
     options: {}
   },
   framework: 'vue3',
+  runtime: {
+    enableSizeAPIs: true
+  },
   mini: {
     postcss: {
       pxtransform: {
