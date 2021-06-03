@@ -10,11 +10,11 @@
       @close="close"
     >
       <view class="nut-picker__bar">
-        <view class="nut-picker__left nut-picker__button" @click="close"
-          >取消</view
-        >
+        <view class="nut-picker__left nut-picker__button" @click="close">{{
+          cancelText
+        }}</view>
         <view> {{ title }}</view>
-        <view class="nut-picker__button" @click="confirm()">确定</view>
+        <view class="nut-picker__button" @click="confirm()">{{ okText }}</view>
       </view>
 
       <view class="nut-picker__column">
@@ -70,6 +70,14 @@ export default create({
     title: {
       type: String,
       default: ''
+    },
+    cancelText: {
+      type: String,
+      default: '取消'
+    },
+    okText: {
+      type: String,
+      default: '确定'
     },
     ...commonProps
   },
