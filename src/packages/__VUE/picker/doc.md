@@ -160,21 +160,23 @@ export default createDemo({
     
 ### Props
     
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| v-model:visible   | 是否可见               | Boolean | false             |
-| title        | 设置标题                         | String | -                |
-| list-data         | 列表数据 | Array | -                |
-| default-value-index         | 初始选中项的索引，默认为 0 | number | 0                |
-| teleport               | 指定挂载节点                          | String  | "body"   |
-| close-on-click-overlay | 点击蒙层是否关闭对话框                | Boolean | false    |
-| lock-scroll            | 背景是否锁定                          | Boolean | false    |
+| 参数                   | 说明                       | 类型    | 默认值 |
+|------------------------|----------------------------|---------|--------|
+| v-model:visible        | 是否可见                   | Boolean | false  |
+| title                  | 设置标题                   | String  | -      |
+| cancel-text            | 取消按钮文案               | String  | 取消   |
+| ok-text                | 确定按钮文案               | String  | 确定   |
+| list-data              | 列表数据                   | Array   | -      |
+| default-value-index    | 初始选中项的索引，默认为 0 | number  | 0      |
+| teleport               | 指定挂载节点               | String  | "body" |
+| close-on-click-overlay | 点击蒙层是否关闭对话框     | Boolean | false  |
+| lock-scroll            | 背景是否锁定               | Boolean | false  |
    
 ### Events
     
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| close  | 关闭弹窗时触发  | event: Event |
-| confirm  | 点击确认时候触发  | event: Event |
-| change  | 改变时触发  | val |
+| 事件名  | 说明             | 回调参数     |
+|---------|------------------|--------------|
+| close   | 关闭弹窗时触发   | event: Event |
+| confirm | 点击确认时候触发 | event: Event |
+| change  | 改变时触发       | val          |
     
