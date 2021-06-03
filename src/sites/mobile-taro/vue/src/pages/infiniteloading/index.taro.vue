@@ -130,30 +130,25 @@ export default create({
     /** 获取需要滚动的距离 */
     const getScrollHeight = () => {
       const parentElement = getParentElement('scroller');
-      // state.scrollEl = props.useWindow ? window : parentElement;
 
       parentElement
         .boundingClientRect(rect => {
           state.scrollHeight = rect.height;
-          console.log(rect.height);
         })
         .exec();
     };
 
     /** 滚动到底部 */
     const lower = () => {
-      // console.log('加载到底部', props.containerId);
       if (state.direction == 'up' || !props.hasMore || state.isInfiniting) {
         return false;
       } else {
-        console.log('加载到底部1111');
         state.isInfiniting = true;
         emit('load-more', infiniteDone);
       }
     };
 
     const scroll = e => {
-      console.log('加载到底部', props.containerId);
       // 滚动方向
       if (e.detail.scrollTop <= 0) {
         // 滚动到最顶部
@@ -171,7 +166,6 @@ export default create({
         state.direction = 'up';
       }
       state.scrollTop = e.detail.scrollTop;
-      console.log(state.scrollTop);
 
       emit('scroll-change', e.detail.scrollTop);
     };
@@ -186,7 +180,6 @@ export default create({
         state.isTouching = true;
         getParentElement('refreshTop')
           .boundingClientRect(rect => {
-            console.log(rect);
             state.refreshMaxH = Math.floor(rect.height * 1 + 10);
           })
           .exec();
