@@ -1,5 +1,6 @@
 export default {
   pages: [
+    'pages/popup/index',
     'pages/icon/index',
     'pages/inputnumber/index',
     'pages/tabbar/index',
