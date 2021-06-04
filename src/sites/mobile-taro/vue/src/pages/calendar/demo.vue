@@ -78,7 +78,7 @@
 import { reactive, toRefs } from 'vue';
 import { createComponent } from './../../../../../../packages/utils/create';
 import Calendar from './index.taro.vue';
-
+import Cell from '../cell/index.taro.vue';
 const { createDemo } = createComponent('calendar');
 
 interface TestCalendarState {
@@ -94,7 +94,8 @@ interface TestCalendarState {
 export default createDemo({
   props: {},
   components: {
-    'nut-calendar': Calendar
+    'nut-calendar': Calendar,
+    'nut-cell': Cell
   },
   setup() {
     const state: TestCalendarState = reactive({
@@ -111,12 +112,13 @@ export default createDemo({
       date3: ''
     });
     const openSwitch = (param: string) => {
-      // state[`${param}`] = true;
-      state.isVisible1 = true;
+      state[`${param}`] = true;
+      //state.isVisible = true;
     };
 
     const closeSwitch = (param: string) => {
-      //state[`${param}`] = false;
+      state[`${param}`] = false;
+      //state.isVisible = false;
     };
 
     const setChooseValue = (param: string) => {

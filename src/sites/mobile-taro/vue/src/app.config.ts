@@ -1,7 +1,8 @@
 export default {
   pages: [
-    'pages/picker/demo',
     'pages/calendar/demo',
+    'pages/picker/demo',
+
     'pages/input/demo',
     'pages/popup/demo',
     'pages/inputnumber/demo',

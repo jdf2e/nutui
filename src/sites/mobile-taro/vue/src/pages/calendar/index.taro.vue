@@ -1,7 +1,7 @@
 <template>
   <nut-popup
     v-if="poppable"
-    :visible="visible"
+    v-model:visible="visible"
     position="bottom"
     round
     :closeable="true"
@@ -24,6 +24,7 @@
     >
     </nut-calendar-item>
   </nut-popup>
+
   <nut-calendar-item
     v-else
     :type="type"
@@ -49,6 +50,10 @@ import Utils from './../../../../../../packages/utils/date';
 type InputDate = string | string[];
 export default create({
   children: [CalendarItem, Popup],
+  components: {
+    'nut-calendar-item': CalendarItem,
+    'nut-popup': Popup
+  },
   props: {
     type: {
       type: String,
@@ -64,7 +69,7 @@ export default create({
     },
     visible: {
       type: Boolean,
-      default: false
+      default: true
     },
     title: {
       type: String,
