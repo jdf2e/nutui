@@ -1,7 +1,7 @@
 <template>
   <picker
     :mode="mode"
-    :range="computedData"
+    :range="range"
     @change="onChange"
     @columnChange="onColumnChange"
     :value="value"
@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { toRefs, onMounted, reactive, computed, CSSProperties, ref } from 'vue';
+import { onUpdated, ref, watch } from 'vue';
 const { create } = createComponent('picker');
 import { commonProps } from '../../../../../../packages/__VUE/picker/commonProps';
 import { createComponent } from './../../../../../../packages/utils/create';
@@ -26,47 +26,61 @@ export default create({
   emits: ['confirm'],
   setup(props, { emit }) {
     let value = ref<any>([]);
+    let range = ref<any>([]);
+
+    onUpdated(() => {
+      console.log('updated', props.listData);
+    });
 
     const onChange = (e: any) => {
       let ret;
+
       if (props.mode === 'selector') {
         ret = props.listData[e.detail.value];
       } else if (props.mode === 'multiSelector') {
-        ret = computedData.value?.map(
-          (item: any, idx) => item[e.detail.value[idx]]
-        );
+        ret = range.value
+          ?.map((item: any, idx: number) => item[e.detail.value[idx]])
+          .filter((res: any) => res);
       }
-      emit('confirm', ret);
+      console.log(e.detail.value, ret);
+
+      emit('confirm', e.detail.value, ret);
     };
 
-    const computedData = computed(() => {
-      if (props.mode === 'selector') {
-        return props.listData;
-      } else if (props.mode === 'multiSelector') {
+    watch(
+      props.listData,
+      (val: any) => {
+        console.log('change');
+
         try {
-          if (props.listData.length) {
-            const range: object[] = []; // 构造range
-            props.listData.forEach((item: any, idx: number) => {
-              value.value.push(item.defaultIndex);
-              range.push(item.values);
-            });
-            return range;
+          if (val.length) {
+            value.value = [];
+            range.value = [];
+            if (props.mode === 'selector') {
+              range.value = props.listData;
+            } else if (props.mode === 'multiSelector') {
+              val.forEach((item: any) => {
+                value.value.push(item.defaultIndex);
+                range.value.push(item.values);
+              });
+            }
           }
         } catch (error) {
           console.log('listData参数格式错误', error);
         }
-      }
-    });
+      },
+      { immediate: true, deep: true }
+    );
 
-    const onColumnChange = e => {
+    const onColumnChange = (e: any) => {
       console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     };
 
     return {
       confirm,
       onChange,
-      computedData,
       value,
+      range,
       onColumnChange
     };
   }
