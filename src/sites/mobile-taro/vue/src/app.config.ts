@@ -1,5 +1,6 @@
 export default {
   pages: [
+    'pages/picker/demo',
     'pages/calendar/demo',
     'pages/input/demo',
     'pages/popup/demo',
