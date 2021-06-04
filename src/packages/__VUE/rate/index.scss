@@ -11,6 +11,14 @@
     &__icon {
       color: $rate-icon-color;
       cursor: pointer;
+
+      &::before {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+      }
+
       &--disabled {
         color: $rate-icon-void-color;
       }
@@ -20,12 +28,6 @@
         left: 0;
         top: 0;
         overflow: hidden;
-
-        &::before {
-          top: 0;
-          left: 0;
-          transform: translate(0, 0);
-        }
       }
     }
   }
