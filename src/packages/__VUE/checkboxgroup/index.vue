@@ -37,6 +37,7 @@ export default create({
 
     const updateValue = (value: any[]) => {
       emit('update:modelValue', value);
+      emit('change', value);
     };
 
     const toggleAll = (checked: boolean) => {
