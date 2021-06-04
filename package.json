@@ -44,6 +44,7 @@
     "build:gh-pages": "npm run checked && vite build --base=/nutui/",
     "build:site:oss": "npm run checked && vite build --base=/nutui/3x/",
     "build": "npm run checked && vite build --config vite.config.build.ts && npm run generate:types && npm run generate:themes",
+    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && npm run generate:types && npm run generate:themes && npm run copytaro",
     "build:disperse": "vite build --config vite.config.build.disperse.ts",
     "serve": "vite preview",
     "upload": "yarn build:site:oss && node ./jd/upload.js",
@@ -55,7 +56,8 @@
     "generate:themes": "node jd/generate-themes.js",
     "prepare": "husky install",
     "test": "jest",
-    "release": "standard-version -a"
+    "release": "standard-version -a",
+    "copytaro": "node jd/copyDistToTaro.js"
   },
   "standard-version": {
     "scripts": {

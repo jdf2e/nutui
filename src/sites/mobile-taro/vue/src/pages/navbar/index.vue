@@ -72,8 +72,8 @@
 </template>
 
 <script lang="ts">
-import { reactive } from 'vue';
-export default {
+import { reactive, defineComponent } from 'vue';
+export default defineComponent({
   setup(props, { emit }) {
     const tabList = [
       {
@@ -110,34 +110,34 @@ export default {
       }
     ];
     const back = () => {
-      alert('header头部， 点击返回');
+      console.log('header头部， 点击返回');
     };
     const title = () => {
-      alert('header头部， 点击title');
+      console.log('header头部， 点击title');
     };
     const right = () => {
-      alert('header头部， 点击右侧按钮');
+      console.log('header头部， 点击右侧按钮');
     };
     const icon = () => {
-      alert('icon');
+      console.log('icon');
     };
     const send = () => {
-      alert('发送');
+      console.log('发送');
     };
     const edit = () => {
-      alert('编辑');
+      console.log('编辑');
     };
     const more = () => {
-      alert('更多');
+      console.log('更多');
     };
     const clear = () => {
-      alert('清空');
+      console.log('清空');
     };
     const list = () => {
-      alert('列表');
+      console.log('列表');
     };
     const morelist = () => {
-      alert('多个更多');
+      console.log('多个更多');
     };
     function switchTab(id: number, name: string) {
       console.log(id, name);
@@ -160,7 +160,7 @@ export default {
       })
     };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped></style>

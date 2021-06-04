@@ -245,6 +245,7 @@
         },
         {
           "name": "Icon",
+          "taro": true,
           "sort": 3,
           "cName": "图标组件",
           "type": "component",
@@ -504,6 +505,7 @@
       "packages": [
         {
           "name": "InputNumber",
+          "taro": true,
           "sort": 1,
           "cName": "数字输入框",
           "type": "component",
