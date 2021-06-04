@@ -8,6 +8,7 @@ module.exports = {
   },
   // 匹配 __tests__ 目录下的 .js/.ts 文件 或其他目录下的 xx.test.js/ts xx.spec.js/ts
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(ts)$',
+  //testRegex: '__tests__.action.spec.ts',
   // 支持源代码中相同的 `@` -> `src` 别名
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1'
