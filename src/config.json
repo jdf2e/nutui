@@ -301,6 +301,7 @@
         },
         {
           "name": "Popup",
+          "taro": true,
           "sort": 8,
           "cName": "弹出层",
           "type": "component",
