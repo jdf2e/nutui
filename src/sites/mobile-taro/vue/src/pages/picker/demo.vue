@@ -1,27 +1,17 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-picker :list-data="listData1" @confirm="confirm">
+    <nut-picker mode="selector" :list-data="listData1" @confirm="confirm">
       <nut-cell title="请选择城市" :desc="desc"></nut-cell>
     </nut-picker>
     <h2>多列样式</h2>
-    <nut-cell title="请选择时间" :desc="desc2"></nut-cell>
+    <nut-picker mode="multiSelector" :list-data="listData2" @confirm="confirm2">
+      <nut-cell title="请选择时间" :desc="desc2"></nut-cell>
+    </nut-picker>
     <h2>多级联动</h2>
-    <nut-cell title="请选择地址" :desc="desc3"></nut-cell>
-
-    <!-- <nut-picker
-      v-model:visible="show2"
-      :list-data="listData2"
-      title="多列选择"
-      @confirm="confirm2"
-      @close="close"
-    ></nut-picker>
-    <nut-picker
-      v-model:visible="show3"
-      :list-data="listData3"
-      title="地址选择"
-      @confirm="confirm3"
-    ></nut-picker> -->
+    <nut-picker :list-data="listData3" @confirm="confirm3">
+      <nut-cell title="请选择地址" :desc="desc3"></nut-cell>
+    </nut-picker>
   </div>
 </template>
 <script lang="ts">
@@ -100,7 +90,6 @@ export default createDemo({
       ${listData3[0].children[0].text}
       ${listData3[0].children[0].children[0].text}`
     );
-    const descList = [desc, desc2, desc3];
     return {
       listData1,
       listData2,
