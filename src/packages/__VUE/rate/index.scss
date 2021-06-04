@@ -16,10 +16,16 @@
       }
       &--half {
         position: absolute;
-        width: 50%;
+        width: 50% !important;
         left: 0;
         top: 0;
         overflow: hidden;
+
+        &::before {
+          top: 0;
+          left: 0;
+          transform: translate(0, 0);
+        }
       }
     }
   }
