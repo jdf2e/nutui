@@ -1,6 +1,7 @@
 .nut-textarea {
   position: relative;
   width: 100%;
+  box-sizing: border-box;
   display: flex;
   background: $white;
   font-size: $textarea-font;

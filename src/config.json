@@ -516,6 +516,7 @@
         },
         {
           "name": "Input",
+          "taro": true,
           "sort": 2,
           "cName": "输入框",
           "type": "component",
@@ -546,6 +547,7 @@
         },
         {
           "version": "3.0.0",
+          "taro": true,
           "name": "Calendar",
           "type": "component",
           "cName": "日历",
@@ -576,6 +578,7 @@
         },
         {
           "version": "3.0.0",
+          "taro": true,
           "name": "TextArea",
           "type": "component",
           "cName": "文本域",
