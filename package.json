@@ -97,7 +97,8 @@
     "typescript": "^4.1.5",
     "vite": "^2.3.4",
     "vite-plugin-md": "^0.6.7",
-    "vue-jest": "^5.0.0-alpha.7"
+    "vue-jest": "^5.0.0-alpha.7",
+    "@tarojs/taro": "3.3.0-alpha.6"
   },
   "eslintConfig": {
     "root": true,
