@@ -148,7 +148,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .custom-wrap {
   padding: 110px 0;
   text-align: center;
