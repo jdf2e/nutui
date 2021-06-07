@@ -1,5 +1,6 @@
 export default {
   pages: [
+    'pages/actionsheet/index',
     'pages/popup/index',
     'pages/icon/index',
     'pages/inputnumber/index',
