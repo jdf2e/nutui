@@ -3,10 +3,10 @@
     <h2>基本用法</h2>
     <nut-collapse v-model:active="active1" icon="down-arrow">
       <nut-collapse-item :title="title1" :name="1">
-        京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+        <view>京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府</view>
       </nut-collapse-item>
       <nut-collapse-item :title="title2" :name="2">
-        京东到家：教师节期间 创意花束销量增长53倍
+        <view>京东到家：教师节期间 创意花束销量增长53倍</view>
       </nut-collapse-item>
       <nut-collapse-item :title="title3" :name="3" disabled>
       </nut-collapse-item>
@@ -68,9 +68,7 @@
 </template>
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('collapse');
-export default createDemo({
+export default {
   setup(props, context) {
     const data = reactive({
       active1: [1, '2'],
@@ -91,5 +89,5 @@ export default createDemo({
       ...toRefs(data)
     };
   }
-});
+};
 </script>
