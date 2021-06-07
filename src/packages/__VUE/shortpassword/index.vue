@@ -72,7 +72,7 @@ export default create({
       type: Boolean,
       default: false
     },
-    value: {
+    modelValue: {
       type: String,
       default: ''
     },
@@ -94,7 +94,7 @@ export default create({
     }
   },
   emits: [
-    'update:value',
+    'update:modelValue',
     'update:visible',
     'complete',
     'change',
@@ -104,7 +104,7 @@ export default create({
     'cancel'
   ],
   setup(props, { emit }) {
-    const realInput = ref(props.value);
+    const realInput = ref(props.modelValue);
     const realpwd = ref();
     const comLen = computed(() => range(Number(props.length)));
     const show = ref(props.visible);
@@ -132,7 +132,7 @@ export default create({
         emit('complete', val);
       }
       emit('change', val);
-      emit('update:value', val);
+      emit('update:modelValue', val);
     }
     function close() {
       emit('update:visible', false);
