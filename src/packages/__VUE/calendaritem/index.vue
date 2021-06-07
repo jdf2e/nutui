@@ -1,6 +1,6 @@
 <template>
   <view
-    class="nut-calendar"
+    class="nut-calendar .nut-calendar-taro"
     :class="{
       'nut-calendar-tile': !poppable,
       'nut-calendar-nofooter': isAutoBackFill

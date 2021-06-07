@@ -17,6 +17,7 @@
     overflow: hidden;
     display: inline-block;
     text-align: left;
+    display: flex;
     .label-string {
       overflow: hidden;
       white-space: nowrap;
@@ -41,5 +42,7 @@
   }
   &-require {
     color: $primary-color;
+    display: inline-block;
+    margin-right: 5px;
   }
 }
