@@ -3,3 +3,4 @@
 
 node ./jd/verifymail.js
 yarn lint-staged
+yarn test
