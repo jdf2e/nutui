@@ -155,6 +155,7 @@
         },
         {
           "name": "ActionSheet",
+          "taro": true,
           "sort": "1",
           "cName": "动作面板",
           "type": "component",
