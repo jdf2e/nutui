@@ -1,0 +1,68 @@
+.nut-actionsheet-panel {
+  display: block;
+  .nut-actionsheet-title {
+    display: block;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    background-color: $white;
+    border-bottom: 1px solid $light-color;
+    font-size: $font-size-base;
+    color: $title-color;
+  }
+
+  .nut-actionsheet-modal {
+    .nut-actionsheet-title,
+    .nut-actionsheet-sub-title {
+      padding: 5px 0;
+    }
+
+    .nut-actionsheet-sub-title {
+      display: block;
+      font-size: $font-size-small;
+      color: $title-color;
+      margin-inline-start: 0px;
+    }
+  }
+
+  .nut-actionsheet-menu {
+    display: block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nut-actionsheet-cancel,
+  .nut-actionsheet-item {
+    display: block;
+    //   height: 24px;
+    padding: 10px;
+    line-height: 24px;
+    font-size: $font-size-base;
+    color: $title-color;
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .desc {
+    font-size: $font-size-2;
+    color: #999;
+  }
+
+  .subdesc {
+    display: block;
+    font-size: $font-size-small;
+    color: #999;
+  }
+
+  .nut-actionsheet-item-disabled {
+    color: #e1e1e1 !important;
+    cursor: not-allowed;
+  }
+
+  .nut-actionsheet-cancel {
+    margin-top: 5px;
+    border-top: 1px solid $light-color;
+  }
+}

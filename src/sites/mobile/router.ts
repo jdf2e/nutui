@@ -20,9 +20,10 @@ const routes: Array<RouteRecordRaw> = [
 // });
 
 /** vite */
-const modulesPage = import.meta.glob('/src/packages/**/demo.vue');
+const modulesPage = import.meta.glob('/src/packages/__VUE/**/demo.vue');
+
 for (const path in modulesPage) {
-  let name = (/packages\/(.*)\/demo.vue/.exec(path) as any[])[1];
+  let name = (/packages\/__VUE\/(.*)\/demo.vue/.exec(path) as any[])[1];
   routes.push({
     path: '/' + name,
     component: modulesPage[path],
