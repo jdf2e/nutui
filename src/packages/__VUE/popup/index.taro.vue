@@ -190,13 +190,6 @@ export default create({
       emit('closed', e);
     };
     onMounted(() => {
-      // document.getElementById('app').appendChild(proxy.$el);
-      const query = wx.createSelectorQuery();
-      // console.log(query.in(proxy));
-      query.selectViewport().scrollOffset();
-      query.exec(res => {
-        // console.log(res[0].scrollTop)
-      });
       props.transition
         ? (state.transitionName = props.transition)
         : (state.transitionName = `popup-slide-${props.position}`);
