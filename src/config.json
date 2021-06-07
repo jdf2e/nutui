@@ -155,6 +155,7 @@
         },
         {
           "name": "ActionSheet",
+          "taro": true,
           "sort": "1",
           "cName": "动作面板",
           "type": "component",
@@ -274,6 +275,7 @@
         },
         {
           "name": "Swiper",
+          "taro": true,
           "sort": 6,
           "cName": "轮播",
           "type": "component",

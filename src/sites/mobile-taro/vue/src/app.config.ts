@@ -3,6 +3,8 @@ export default {
     'pages/textarea/index',
     'pages/calendar/index',
     'pages/input/index',
+    'pages/swiper/index',
+    'pages/actionsheet/index',
     'pages/popup/index',
     'pages/icon/index',
     'pages/inputnumber/index',
