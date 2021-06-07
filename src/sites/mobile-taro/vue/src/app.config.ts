@@ -1,6 +1,7 @@
 export default {
   pages: [
     'pages/shortpassword/index',
+    'pages/swiper/index',
     'pages/actionsheet/index',
     'pages/popup/index',
     'pages/icon/index',
