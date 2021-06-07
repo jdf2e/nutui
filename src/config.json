@@ -275,6 +275,7 @@
         },
         {
           "name": "Swiper",
+          "taro": true,
           "sort": 6,
           "cName": "轮播",
           "type": "component",

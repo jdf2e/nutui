@@ -1,5 +1,6 @@
 export default {
   pages: [
+    'pages/swiper/index',
     'pages/actionsheet/index',
     'pages/popup/index',
     'pages/icon/index',
