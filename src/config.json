@@ -95,6 +95,7 @@
         },
         {
           "name": "Collapse",
+          "taro": true,
           "sort": 2,
           "cName": "折叠面板",
           "type": "component",
@@ -104,6 +105,7 @@
         },
         {
           "name": "CollapseItem",
+          "taro": true,
           "sort": 3,
           "cName": "折叠面板-item",
           "type": "component",

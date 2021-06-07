@@ -136,9 +136,6 @@ export default create({
         'collapse-wrapper'
       )[0];
       wrapperRefEle.style.willChange = 'auto';
-
-      // const query = wx.createSelectorQuery();
-      // query.select('#productServe').boundingClientRect();
     };
 
     // 手风琴模式
@@ -182,6 +179,8 @@ export default create({
 
     const currentName = computed(() => props.name);
     const toggleOpen = () => {
+      console.log('点击了——————-----');
+
       if (parent.props.accordion) {
         parent.children.forEach((item: any, index: number) => {
           if (currentName.value == item.name) {
