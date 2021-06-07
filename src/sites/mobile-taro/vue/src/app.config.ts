@@ -1,5 +1,8 @@
 export default {
   pages: [
+    'pages/textarea/index',
+    'pages/calendar/index',
+    'pages/input/index',
     'pages/swiper/index',
     'pages/actionsheet/index',
     'pages/popup/index',
