@@ -45,9 +45,9 @@
                 <div class="header-select-bd" v-show="data.isShowSelect">
                   <div
                     class="header-select-item"
-                    v-for="(item, index) in data.versonList"
+                    v-for="(item, index) in versions"
                     :key="index"
-                    @click.stop="checkTheme(item.name, index)"
+                    @click.stop="checkTheme(item)"
                     :class="{ active: data.activeIndex === index }"
                   >
                     {{ item.name }}
@@ -71,8 +71,8 @@
 <script lang="ts">
 import { defineComponent, reactive, computed, onMounted } from 'vue';
 import Search from './Search.vue';
-import { header } from '@/config.json';
-import { currentRoute, themeColor } from '@/sites/assets/util/ref';
+import { header, versions } from '@/config.json';
+import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-header',
   components: {
@@ -82,17 +82,6 @@ export default defineComponent({
     const data = reactive({
       theme: 'black',
       // headerBg: 'url(' + require('../../assets/images/header-bg.png') + ')',
-      versonList: [
-        {
-          name: '1.x'
-        },
-        {
-          name: '2.x'
-        },
-        {
-          name: '3.x'
-        }
-      ],
       verson: '3.x',
       navIndex: 0,
       activeIndex: 0,
@@ -106,30 +95,23 @@ export default defineComponent({
     };
     const isActive = computed(() => {
       return function(name: string) {
-        // console.log(name, currentRoute.value);
-        // console.log('name1', currentRoute.value == name.toLowerCase());
-        return currentRoute.value == name.toLowerCase();
+        return RefData.getInstance().currentRoute.value == name.toLowerCase();
       };
     });
     const themeName = computed(() => {
       return function() {
-        return `doc-header-${themeColor.value}`;
+        return `doc-header-${RefData.getInstance().themeColor.value}`;
       };
     });
-    const checkTheme = (item: string, index: number) => {
+    const checkTheme = (item: any, index: number) => {
       data.isShowSelect = false;
       data.activeIndex = index;
-      data.verson = item;
-      if (index === 0) {
-        window.location.href = '//nutui.jd.com/1x/';
-      } else if (index === 1) {
-        window.location.href = 'https://nutui.jd.com/#/index';
-      } else {
-        // window.location.href = ""
-      }
+      data.verson = item.name;
+      window.location.href = item.link;
     };
     return {
       header,
+      versions,
       data,
       isActive,
       checkTheme,
@@ -266,11 +248,13 @@ export default defineComponent({
   &-bd {
     position: absolute;
     top: 30px;
+    left: 50%;
+    margin-left: -60px;
     border-radius: 3px;
     overflow: hidden;
   }
   &-item {
-    width: 77px;
+    width: 120px;
     height: 28px;
     padding: 0 12px;
     line-height: 26px;

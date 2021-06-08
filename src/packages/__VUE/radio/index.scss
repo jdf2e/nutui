@@ -1,0 +1,19 @@
+.nut-radio {
+  display: flex;
+  align-items: center;
+  &--reverse {
+    flex-direction: row-reverse;
+    .nut-radio__label {
+      margin-right: 15px;
+      margin-left: 0;
+    }
+  }
+  &__label {
+    margin-left: 15px;
+    font-size: 16px;
+    color: $radio-label-color;
+    &--disabled {
+      color: $radio-label-disable-color;
+    }
+  }
+}

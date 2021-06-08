@@ -1,5 +1,5 @@
 <template>
-  <div class="doc-footer" :class="`doc-footer-${data.theme}`">
+  <div class="doc-footer" :class="`doc-footer-${themeColor}`">
     <div class="doc-footer-content">
       <div class="doc-footer-list">
         <img
@@ -10,28 +10,42 @@
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">相关资源</h4>
         <div class="doc-footer-item"
+          ><a class="sub-link" target="_blank" href="https://vuejs.org" v-hover
+            >Vue</a
+          >
+        </div>
+        <div class="doc-footer-item"
+          ><a class="sub-link" target="_blank" href="https://vitejs.dev" v-hover
+            >Vite</a
+          >
+        </div>
+        <div class="doc-footer-item"
           ><a
             class="sub-link"
             target="_blank"
-            href="hhttps://cn.vuejs.org/index.html"
-            >Vue</a
-          ></div
-        >
+            href="https://relay.jd.com"
+            v-hover
+            >Relay</a
+          >
+        </div>
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://vitejs.dev"
-            >Vite</a
-          ></div
-        >
-        <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://taro.jd.com"
+          ><a
+            class="sub-link"
+            target="_blank"
+            href="https://taro.jd.com"
+            v-hover
             >Taro</a
-          ></div
-        >
+          >
+        </div>
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://ling.jd.com/jdw"
+          ><a
+            class="sub-link"
+            target="_blank"
+            href="https://ling.jd.com/jdw"
+            v-hover
             >羚珑</a
-          ></div
-        >
+          >
+        </div>
       </div>
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">社区</h4>
@@ -40,6 +54,7 @@
             class="sub-link"
             target="_blank"
             href="https://github.com/jdf2e/nutui"
+            v-hover
             >GitHub</a
           ></div
         >
@@ -48,12 +63,13 @@
             class="sub-link"
             target="_blank"
             href="https://www.zhihu.com/column/c_1263837684834889728"
+            v-hover
             >NutUI 知乎专栏</a
           ></div
         >
 
         <div class="doc-footer-item vx-item">
-          微信
+          <span v-hover>微信</span>
           <i class="icon-vx"></i>
           <div class="vx-box">
             <p class="vx-desc">微信交流群</p>
@@ -66,21 +82,24 @@
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">关于我们</h4>
         <div class="doc-footer-item"
-          ><a class="sub-link" href="#/joinus">加入我们</a></div
+          ><a class="sub-link" href="#/joinus" v-hover>加入我们</a></div
         >
         <div class="doc-footer-item"
-          ><a class="sub-link" href="mailto:nutui@jd.com">联系我们</a></div
+          ><a class="sub-link" href="mailto:nutui@jd.com" v-hover
+            >联系我们</a
+          ></div
         >
         <div class="doc-footer-item"
           ><a
             class="sub-link"
             target="_blank"
             href="https://github.com/jdf2e/nutui/issues"
+            v-hover
             >意见反馈</a
           ></div
         >
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="http://fe.jd.com"
+          ><a class="sub-link" target="_blank" href="http://fe.jd.com" v-hover
             >京东前端</a
           ></div
         >
@@ -106,18 +125,17 @@
       </div>
     </div>
     <p class="doc-footer-desc"
-      >2021 京东零售 - 基础业务体验部.All Rights Reserved.</p
+      >2021 京东零售 - 基础业务体验部.&nbsp;All Rights Reserved.</p
     >
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
-import { themeColor } from '@/sites/assets/util/ref';
+import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-footer',
   setup() {
     const data = reactive({
-      theme: 'red',
       themeList: [
         {
           name: '热情红',
@@ -145,15 +163,18 @@ export default defineComponent({
         false
       );
     };
+    // checked active index
+    data.activeIndex = data.themeList.findIndex(
+      i => i.color == RefData.getInstance().themeColor.value
+    );
     const checkTheme = (color: string, index: number) => {
       data.isShowSelect = false;
       data.activeIndex = index;
-      data.theme = color;
-      themeColor.value = color;
-      console.log('themeColor1', themeColor);
-      // bus.emit('select-theme', color)
+      RefData.getInstance().themeColor.value = color;
+      localStorage.setItem('nutui-theme-color', color);
     };
     return {
+      themeColor: RefData.getInstance().themeColor,
       data,
       clickOut,
       checkTheme
@@ -168,10 +189,11 @@ export default defineComponent({
     padding: 30px 80px 20px;
     text-align: center;
     &-content {
+      width: 1200px;
+      margin: 0 auto;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: flex-start;
-      margin-right: 50px;
     }
     &-list {
       position: relative;
@@ -253,7 +275,7 @@ export default defineComponent({
 }
 // 颜色
 .doc-footer {
-  height: 240px;
+  // height: 240px;
   // 黑色
   &-black {
     background: $theme-black-footer-bg;
@@ -407,7 +429,6 @@ export default defineComponent({
   .vx-desc {
     margin-bottom: 10px;
     line-height: 17px;
-    font-family: PingFangSC-Regular;
     font-size: 12px;
     color: #1a1a1a;
     &:last-child {

@@ -11,6 +11,14 @@
     {
       "name": "3.x",
       "link": "/3x/"
+    },
+    {
+      "name": "nutui-jdl",
+      "link": "/jdl/"
+    },
+    {
+      "name": "nutui-react",
+      "link": "https://github.com/jdf2e/nutui/tree/nutui-react"
     }
   ],
   "header": [
@@ -77,6 +85,7 @@
       "packages": [
         {
           "name": "Button",
+          "taro": true,
           "sort": 1,
           "cName": "按钮组件",
           "type": "component",
@@ -104,6 +113,7 @@
         },
         {
           "name": "Layout",
+          "taro": true,
           "sort": 4,
           "cName": "布局",
           "type": "component",
@@ -145,6 +155,7 @@
         },
         {
           "name": "ActionSheet",
+          "taro": true,
           "sort": "1",
           "cName": "动作面板",
           "type": "component",
@@ -207,11 +218,21 @@
         },
         {
           "name": "Cell",
+          "taro": true,
           "sort": 1,
           "cName": "单元格组件",
           "type": "component",
           "show": true,
           "desc": "展示列表",
+          "author": "richard1015"
+        },
+        {
+          "name": "CellGroup",
+          "sort": 1,
+          "cName": "单元格组件",
+          "type": "component",
+          "show": false,
+          "desc": "展示分组列表",
           "author": "richard1015"
         },
         {
@@ -225,6 +246,7 @@
         },
         {
           "name": "Icon",
+          "taro": true,
           "sort": 3,
           "cName": "图标组件",
           "type": "component",
@@ -243,6 +265,7 @@
         },
         {
           "name": "Checkbox",
+          "taro": true,
           "sort": 5,
           "cName": "复选按钮",
           "type": "component",
@@ -252,12 +275,22 @@
         },
         {
           "name": "Swiper",
+          "taro": true,
           "sort": 6,
           "cName": "轮播",
           "type": "component",
           "show": true,
           "desc": "轮播",
-          "author": "ailululu"
+          "author": "suzigang"
+        },
+        {
+          "name": "SwiperItem",
+          "sort": 6,
+          "cName": "轮播图子组件",
+          "type": "component",
+          "show": false,
+          "desc": "轮播图子组件",
+          "author": "suzigang"
         },
         {
           "name": "Avatar",
@@ -270,6 +303,7 @@
         },
         {
           "name": "Popup",
+          "taro": true,
           "sort": 8,
           "cName": "弹出层",
           "type": "component",
@@ -290,6 +324,7 @@
         {
           "version": "3.0.0",
           "name": "Radio",
+          "taro": true,
           "type": "component",
           "cName": "单选按钮",
           "desc": "单选按钮",
@@ -320,6 +355,7 @@
         {
           "version": "3.0.0",
           "name": "OverLay",
+          "taro": true,
           "type": "component",
           "cName": "遮罩层",
           "desc": "创建一个遮罩层，通常用于阻止用户进行其他操作",
@@ -353,7 +389,7 @@
           "cName": "下拉刷新",
           "desc": "下拉刷新",
           "sort": 16,
-          "show": true,
+          "show": false,
           "author": "yangxiaolu3"
         },
         {
@@ -364,6 +400,35 @@
           "sort": 16,
           "show": true,
           "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Video",
+          "type": "component",
+          "cName": "视频播放器",
+          "desc": "视频播放组件",
+          "sort": 20,
+          "show": true,
+          "author": "zy19940510"
+        },
+        {
+          "name": "Steps",
+          "taro": true,
+          "sort": 17,
+          "cName": "步骤条",
+          "type": "component",
+          "show": true,
+          "desc": "步骤条",
+          "author": "ailululu"
+        },
+        {
+          "name": "Step",
+          "sort": 17,
+          "cName": "步骤条子组件",
+          "type": "component",
+          "show": false,
+          "desc": "步骤条子组件",
+          "author": "ailululu"
         }
       ]
     },
@@ -372,6 +437,7 @@
       "packages": [
         {
           "name": "Navbar",
+          "taro": true,
           "sort": 3,
           "cName": "导航组件",
           "type": "componment",
@@ -393,7 +459,7 @@
           "sort": 2,
           "cName": "菜单组件",
           "type": "component",
-          "show": true,
+          "show": false,
           "desc": "下拉菜单组件",
           "author": "vickyYE"
         },
@@ -408,11 +474,21 @@
         },
         {
           "name": "Tabbar",
+          "taro": true,
           "sort": 2,
           "cName": "标签栏组件",
           "type": "component",
           "show": true,
           "desc": "标签栏组件",
+          "author": "Drjingfubo"
+        },
+        {
+          "name": "Tabbaritem",
+          "sort": 2,
+          "cName": "标签栏子组件",
+          "type": "component",
+          "show": false,
+          "desc": "标签栏子组件",
           "author": "Drjingfubo"
         },
         {
@@ -432,6 +508,7 @@
       "packages": [
         {
           "name": "InputNumber",
+          "taro": true,
           "sort": 1,
           "cName": "数字输入框",
           "type": "component",
@@ -441,6 +518,7 @@
         },
         {
           "name": "Input",
+          "taro": true,
           "sort": 2,
           "cName": "输入框",
           "type": "component",
@@ -451,6 +529,7 @@
         {
           "version": "3.0.0",
           "name": "Switch",
+          "taro": true,
           "type": "component",
           "cName": "开关组件",
           "desc": "用来打开或关闭选项",
@@ -470,13 +549,24 @@
         },
         {
           "version": "3.0.0",
+          "taro": true,
           "name": "Calendar",
           "type": "component",
           "cName": "日历",
           "desc": "日历组件",
           "sort": 5,
           "show": true,
-          "author": ""
+          "author": "songchenglin1"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CalendarItem",
+          "type": "component",
+          "cName": "日历子组件",
+          "desc": "日历子组件",
+          "sort": 5,
+          "show": false,
+          "author": "songchenglin1"
         },
         {
           "version": "3.0.0",
@@ -490,6 +580,7 @@
         },
         {
           "version": "3.0.0",
+          "taro": true,
           "name": "TextArea",
           "type": "component",
           "cName": "文本域",

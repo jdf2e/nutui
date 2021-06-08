@@ -19,9 +19,9 @@ const pagesRouter: Array<RouteRecordRaw> = [];
 // });
 
 /** vite */
-const modulesPage = import.meta.glob('/src/packages/**/doc.md');
+const modulesPage = import.meta.glob('/src/packages/__VUE/**/doc.md');
 for (const path in modulesPage) {
-  let name = (/packages\/(.*)\/doc.md/.exec(path) as any[])[1];
+  let name = (/packages\/__VUE\/(.*)\/doc.md/.exec(path) as any[])[1];
   pagesRouter.push({
     path: '/' + name,
     component: modulesPage[path],

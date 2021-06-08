@@ -1,0 +1,45 @@
+.nut-swiper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  box-sizing: content-box;
+  overflow: hidden;
+  &-inner {
+    display: flex;
+    height: 100%;
+  }
+  &-vertical {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+  }
+  &-pagination {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+    transform: translateX(-50%);
+    i {
+      width: 8px;
+      height: 3px;
+      margin-right: 7px;
+      border-radius: 2px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &-pagination-vertical {
+    top: 50%;
+    left: 12px;
+    bottom: auto;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    transform: translateY(-50%);
+    i {
+      margin-bottom: 5px;
+    }
+  }
+}

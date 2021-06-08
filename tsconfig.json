@@ -14,11 +14,11 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "outDir": "./tsc/test",
-    "types": ["vite/client"],
+    "types": ["vite/client", "jest"],
     "paths": {
       "@/*": ["src/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["./node_modules"]
+  "exclude": ["./node_modules","src/sites/mobile-taro"]
 }

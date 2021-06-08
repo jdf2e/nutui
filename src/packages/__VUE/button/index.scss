@@ -1,0 +1,156 @@
+.nut-button {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  height: $button-default-height;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: $button-default-line-height;
+  font-size: $button-default-font-size;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  -webkit-appearance: none;
+  user-select: none;
+  touch-action: manipulation;
+  .text {
+    margin-left: 5px;
+  }
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: $black;
+    border: inherit;
+    border-color: $black;
+    border-radius: inherit;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    content: ' ';
+  }
+  &:active::before {
+    opacity: 0.1;
+  }
+  &__warp {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--loading,
+  &--disabled {
+    &::before {
+      display: none;
+    }
+  }
+  &--default {
+    color: $button-default-color;
+    background: $button-default-bg-color;
+    border: $button-border-width solid $button-default-border-color;
+  }
+
+  &--primary {
+    color: $button-primary-color;
+    background: $button-primary-background-color;
+    border: $button-border-width solid transparent;
+  }
+
+  &--info {
+    color: $button-info-color;
+    background: $button-info-background-color;
+    border: $button-border-width solid transparent;
+  }
+
+  &--success {
+    color: $button-success-color;
+    background: $button-success-background-color;
+    border: $button-border-width solid transparent;
+  }
+
+  &--danger {
+    color: $button-danger-color;
+    background: $button-danger-background-color;
+    border: $button-border-width solid transparent;
+  }
+
+  &--warning {
+    color: $button-warning-color;
+    background: $button-warning-background-color;
+    border: $button-border-width solid transparent;
+  }
+
+  &--plain {
+    background: $button-plain-background-color;
+
+    &.nut-button--primary {
+      color: $button-primary-border-color;
+      border-color: $button-primary-border-color;
+    }
+
+    &.nut-button--info {
+      color: $button-info-border-color;
+      border-color: $button-info-border-color;
+    }
+
+    &.nut-button--success {
+      color: $button-success-border-color;
+      border-color: $button-success-border-color;
+    }
+
+    &.nut-button--danger {
+      color: $button-danger-border-color;
+      border-color: $button-danger-border-color;
+    }
+
+    &.nut-button--warning {
+      color: $button-warning-border-color;
+      border-color: $button-warning-border-color;
+    }
+  }
+
+  &--large {
+    width: 100%;
+    height: $button-large-height;
+    line-height: $button-large-line-height;
+  }
+
+  &--normal {
+    padding: 0 18px;
+    font-size: $button-default-font-size;
+  }
+
+  &--small {
+    height: $button-small-height;
+    line-height: $button-small-line-height;
+    padding: 0 $padding-xs;
+    font-size: $font-size-1;
+  }
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: $button-disabled-opacity;
+  }
+
+  &--loading {
+    cursor: default;
+    opacity: 0.9;
+  }
+
+  &--round {
+    border-radius: $button-border-radius;
+  }
+
+  &--square {
+    border-radius: 0;
+  }
+}

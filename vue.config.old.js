@@ -34,7 +34,7 @@ module.exports = {
       // `scss` 语法会要求语句结尾必须有分号，`sass` 则要求必须没有分号
       // 在这种情况下，我们可以使用 `scss` 选项，对 `scss` 语法进行单独配置
       scss: {
-        additionalData: `@import "~@/styles/variables.scss";@import "~@/sites/assets/styles/variables.scss";`
+        additionalData: `@import "~@/packages/styles/variables.scss";@import "~@/sites/assets/styles/variables.scss";`
       },
       postcss: {
         plugins: [

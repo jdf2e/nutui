@@ -1,6 +1,6 @@
 # NutUI 3.0
 
-NutUI 是一套京东风格的 Vue 移动端组件库，开发和服务于移动Web界面的企业级产品。
+NutUI 是京东风格的 Vue 移动端组件库，开发和服务于移动Web界面的企业级产品。
 
 <div style="margin:30px 0;">
     <img src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png" width="150" alt="NutUI">
@@ -20,7 +20,7 @@ NutUI 是一套京东风格的 Vue 移动端组件库，开发和服务于移动
 * 详尽的文档和示例
 * 支持 TypeScript
 * 支持服务端渲染（测试阶段）
-* 支持定制主题（3.0 开发中）
+* 支持定制主题
 * 单元测试覆盖（3.0 开发中）
 
 ## 示例

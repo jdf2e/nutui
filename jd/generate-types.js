@@ -1,6 +1,6 @@
 const config = require('../src/config.json');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs-extra');
 let importStr = `import { App } from 'vue';
 declare class UIComponent {
   static install(vue: App): void;
@@ -21,14 +21,14 @@ export interface InstallationOptions {
   lang?: any;
 }
 declare function install(app: App, options?: InstallationOptions): void;
-export { ${packages.join(',')} };
+export { ${packages.join(',')},install };
 declare const _default: {
   install: typeof install;
   version: string;
 };
 export default _default;`;
 let fileStr = importStr + installFunction;
-fs.writeFile(
+fs.outputFile(
   path.resolve(__dirname, '../dist/nutui.d.ts'),
   fileStr,
   'utf8',
@@ -36,7 +36,7 @@ fs.writeFile(
     // logger.success(`${package_config_path} 文件写入成功`);
   }
 );
-fs.writeFile(
+fs.outputFile(
   path.resolve(__dirname, '../dist/index.d.ts'),
   `import * as NutUI from './nutui';
 export default NutUI;

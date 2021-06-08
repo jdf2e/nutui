@@ -8,6 +8,15 @@
   </div>
   <!-- 设计资源 -->
   <div class="resource-content">
+    <div class="resource-block" v-if="showNutuiCat">
+      <h4 class="sub-title">模板资源</h4>
+      <p class="sub-desc">
+        目前已提供京东大促模板工程
+        <a target="_blank" href="https://coding.jd.com/jdc-activity/Nutui-Cat"
+          >NutUI-Cat</a
+        >，含有开发京东大促项目过程中使用到的通用模块、组件、模板，可以在未来的大促项目中复用，达到提效降本的效果。
+      </p>
+    </div>
     <div class="resource-block" v-if="articleList.length === 0">
       <h4 class="sub-title">设计资源</h4>
       <p class="sub-desc"
@@ -50,21 +59,7 @@
             @click="toLink(item.id)"
           >
             <img class="img-design" :src="item.cover_image" />
-            <p class="design-title">{{ item.title }}</p>
-          </div>
-        </div>
-        <div class="tab-bd" v-show="activeIndex === 1">
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title"
-              >NutUI 落地实践-让组件库服务慧采协同采购业务</p
-            >
-          </div>
-          <div class="design-item">
-            <img class="img-design" src="../../assets/images/img-article.jpg" />
-            <p class="design-title"
-              >NutUI 落地实践-让组件库服务慧采协同采购业务</p
-            >
+            <p class="design-title" v-hover>{{ item.title }}</p>
           </div>
         </div>
       </div>
@@ -78,9 +73,8 @@
           class="article-item"
           v-for="item in communityArticleList"
           :key="item.id"
-          @click="toLink(item.id)"
         >
-          <a class="article-link" :href="item.link">
+          <a class="article-link" target="_blank" :href="item.link">
             {{ item.title }} - {{ item.user_name }}
           </a>
         </li>
@@ -98,8 +92,9 @@ import {
 } from 'vue-router';
 import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
-import { currentRoute } from '@/sites/assets/util/ref';
-import { ArticleApiService } from '@/sites/service/ArticleApiService';
+import { RefData } from '@/sites/assets/util/ref';
+import { ApiService } from '@/sites/service/ApiService';
+import axios from 'axios';
 export default defineComponent({
   name: 'doc',
   components: {
@@ -123,10 +118,11 @@ export default defineComponent({
         //   title: '性能体验'
         // }
       ],
-      activeIndex: 0
+      activeIndex: 0,
+      showNutuiCat: false
     });
     const watchDemoUrl = (router: RouteLocationNormalized) => {
-      currentRoute.value = router.name as string;
+      RefData.getInstance().currentRoute.value = router.name as string;
     };
     onMounted(() => {
       // 路由
@@ -134,8 +130,13 @@ export default defineComponent({
       watchDemoUrl(route);
 
       // 文章列表接口
-      const articleApiService = new ArticleApiService();
-      articleApiService.getArticle().then(res => {
+      const apiService = new ApiService();
+      axios('https://relayapi.jd.com/').then(res => {
+        if (res) {
+          data.showNutuiCat = true;
+        }
+      });
+      apiService.getArticle().then(res => {
         if (res?.state == 0) {
           (res.value.data.arrays as any[]).forEach(element => {
             if (element.type == 1) {

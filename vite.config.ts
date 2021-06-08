@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import legacy from '@vitejs/plugin-legacy';
 import Markdown from 'vite-plugin-md';
 import path from 'path';
 const resolve = path.resolve;
@@ -7,9 +8,10 @@ const resolve = path.resolve;
 export default defineConfig({
   base: '/3x/',
   server: {
+    port: 2021,
     proxy: {
       '/devServer': {
-        target: 'http://nutui-server.jd.com',
+        target: 'https://nutui.jd.com',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/devServer/, '')
       }
@@ -23,7 +25,7 @@ export default defineConfig({
       scss: {
         // example : additionalData: `@import "./src/design/styles/variables";`
         // dont need include file extend .scss
-        additionalData: `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
+        additionalData: `@import "@/packages/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
       }
     }
   },
@@ -31,12 +33,15 @@ export default defineConfig({
     vue({
       include: [/\.vue$/, /\.md$/]
     }),
-    Markdown()
+    Markdown(),
+    legacy({
+      targets: ['defaults', 'not IE 11']
+    })
   ],
   build: {
     target: 'es2015',
     outDir: './dist/3x/',
-    cssCodeSplit: false,
+    cssCodeSplit: true,
     rollupOptions: {
       input: {
         doc: resolve(__dirname, 'index.html'),

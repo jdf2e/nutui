@@ -18,7 +18,7 @@ export default defineConfig({
       scss: {
         // example : additionalData: `@import "./src/design/styles/variables";`
         // dont need include file extend .scss
-        additionalData: `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
+        additionalData: `@import "@/packages/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
       }
     }
   },
@@ -26,7 +26,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
-      external: ['vue'],
+      external: ['vue', 'vue-router'],
       output: {
         banner,
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
@@ -36,7 +36,7 @@ export default defineConfig({
       }
     },
     lib: {
-      entry: 'src/nutui.ts',
+      entry: 'src/packages/nutui.vue.ts',
       name: 'nutui',
       formats: ['es', 'umd']
     }

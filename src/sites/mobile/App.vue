@@ -1,10 +1,15 @@
 <template>
-  <div v-if="title != '/'" id="nav">{{ title }}</div>
+  <div v-if="title != '/'" id="nav">
+    <div class="back" @click="goBack">
+      <nut-icon name="left"></nut-icon>
+    </div>
+    {{ title }}
+  </div>
   <router-view />
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { isMobile } from '@/sites/assets/util';
 export default defineComponent({
   name: 'app',
@@ -12,6 +17,12 @@ export default defineComponent({
     const title = ref('NutUI');
     // 获取当前路由
     const route = useRoute();
+    const router = useRouter();
+
+    //返回demo页
+    const goBack = () => {
+      router.back();
+    };
     // 当当前路由发生变化时，调用回调函数
     watch(
       () => route,
@@ -31,7 +42,7 @@ export default defineComponent({
       }
     );
 
-    return { title };
+    return { title, goBack };
   }
 });
 </script>
@@ -57,6 +68,16 @@ export default defineComponent({
     font-size: 20px;
     color: rgba(51, 51, 51, 1);
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.07);
+    .back {
+      position: absolute;
+      left: 0;
+      height: 100%;
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
   }
 
   .demo {
@@ -64,12 +85,12 @@ export default defineComponent({
     background: #f7f8fa;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 57px 25px 0 25px;
+    padding: 57px 17px 0 17px;
 
     &.full {
       padding: 57px 0 0 0;
       h2 {
-        padding-left: 25px;
+        padding-left: 17px;
       }
     }
 
@@ -86,6 +107,8 @@ export default defineComponent({
       margin-bottom: 10px;
       font-size: 14px;
       color: rgba(144, 156, 164, 1);
+      padding: 0 10px;
+      font-weight: normal;
     }
     > p {
       font-size: 12px;

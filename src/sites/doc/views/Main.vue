@@ -5,9 +5,7 @@
       <div class="content-left">
         <div class="content-title"> NutUI 3.0 </div>
         <div class="content-smile"> </div>
-        <div class="content-subTitle"
-          >一套京东风格的轻量级移动端 Vue 组件库</div
-        >
+        <div class="content-subTitle">京东风格的轻量级移动端 Vue 组件库</div>
         <div class="content-button">
           <div class="leftButton" @click="toIntro">
             <div class="leftButtonText">开始使用</div>
@@ -30,9 +28,6 @@
             title="GitHub"
           ></iframe>
         </div>
-      </div>
-      <div class="content-right">
-        <div class="content-img"> </div>
       </div>
     </div>
     <div class="doc-content-features">
@@ -65,7 +60,35 @@
         </li>
       </ul>
     </div>
-    <div class="doc-content-more" v-if="articleList.length > 0">
+    <div class="doc-content-cases" v-if="casesImages.length">
+      <div class="doc-content-hd">
+        <h4 class="doc-content-title">赋能案例</h4>
+      </div>
+      <div class="doc-content-cases-content">
+        <div class="doc-content-cases-content__main">
+          <div
+            class="doc-content-cases-content__main-lefticon"
+            @click="onLeft"
+          ></div>
+          <div class="doc-content-cases-content__main-iconinfo">
+            <h4>{{ currentCaseItem.product_name }}</h4>
+            <p>{{ currentCaseItem.product_info }}</p>
+            <img :src="currentCaseItem.logo" />
+          </div>
+          <div class="doc-content-cases-content__main-iphone"></div>
+          <div
+            class="doc-content-cases-content__main-righticon"
+            @click="onRight"
+          ></div>
+        </div>
+        <ul class="doc-content-cases-content__list">
+          <li v-for="img in casesImages">
+            <img :src="img" />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="doc-content-more" v-if="articleList.length">
       <div class="doc-content-hd">
         <h4 class="doc-content-title">更多内容</h4>
         <a class="sub-more" href="#/resource">More</a>
@@ -78,7 +101,7 @@
           @click="toLink(item.id)"
         >
           <img :src="item.cover_image" />
-          <p class="more-title">{{ item.title }}</p>
+          <p class="more-title" v-hover>{{ item.title }}</p>
         </li>
       </ul>
     </div>
@@ -90,8 +113,8 @@ import { defineComponent, onMounted, reactive, toRefs, computed } from 'vue';
 import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
 import router from '../router';
-import { themeColor } from '@/sites/assets/util/ref';
-import { ArticleApiService } from '@/sites/service/ArticleApiService';
+import { RefData } from '@/sites/assets/util/ref';
+import { ApiService } from '@/sites/service/ApiService';
 export default defineComponent({
   name: 'main',
   components: {
@@ -100,14 +123,19 @@ export default defineComponent({
   },
   setup() {
     const articleList: any[] = [];
+    let casesList: any[] = [];
+    const casesImages: string[] = [];
+    const currentCaseItem: any = {};
     const data = reactive({
       // theme: 'white',
-      articleList
+      articleList,
+      casesImages,
+      currentCaseItem
     });
     onMounted(() => {
       // 文章列表接口
-      const articleApiService = new ArticleApiService();
-      articleApiService.getArticle().then(res => {
+      const apiService = new ApiService();
+      apiService.getArticle().then(res => {
         if (res?.state == 0) {
           data.articleList = (res.value.data.arrays as any[])
             .map(item => {
@@ -118,10 +146,36 @@ export default defineComponent({
             .filter(i => i);
         }
       });
+      apiService.getCases().then(res => {
+        if (res?.state == 0) {
+          data.casesImages = (res.value.data.arrays as any[])
+            .map(item => {
+              return item.cover_image.split(',');
+            })
+            .toString()
+            .split(',');
+          casesList = res.value.data.arrays as any[];
+          data.currentCaseItem = casesList[0];
+        }
+      });
     });
+    const findCasesItem = (url: string) => {
+      data.currentCaseItem = casesList.find(i => i.cover_image.includes(url));
+    };
+    const onLeft = () => {
+      let url = data.casesImages.shift() as string;
+      findCasesItem(url);
+      data.casesImages.push(url);
+    };
+    const onRight = () => {
+      let url = data.casesImages.pop() as string;
+      findCasesItem(url);
+      data.casesImages.unshift(url);
+    };
+
     const themeName = computed(() => {
       return function() {
-        return `doc-content-${themeColor.value}`;
+        return `doc-content-${RefData.getInstance().themeColor.value}`;
       };
     });
     const toLink = (id: number) => {
@@ -134,7 +188,9 @@ export default defineComponent({
       toIntro,
       ...toRefs(data),
       themeName,
-      toLink
+      toLink,
+      onLeft,
+      onRight
     };
   }
 });
@@ -152,6 +208,11 @@ export default defineComponent({
 }
 .doc-content-index {
   .content-left {
+    background: url(https://storage.360buyimg.com/imgtools/a423faab46-8b142e80-8bb1-11eb-853a-6fded8704e77.png)
+      no-repeat;
+    background-size: 1126px 568px;
+    background-position-x: right;
+    background-position-y: 150px;
     .content-title {
       animation: fadeInLeft 1s both;
     }
@@ -193,7 +254,6 @@ export default defineComponent({
   &-title {
     display: inline-block;
     font-size: 26px;
-    font-family: PingFangSC-Medium;
   }
   &-features {
     width: 1200px;
@@ -214,12 +274,110 @@ export default defineComponent({
     }
     .features-title {
       margin-bottom: 20px;
-      font-family: PingFangSC-Medium;
       font-size: 24px;
     }
     .features-desc {
       font-size: 14px;
       line-height: 18px;
+    }
+  }
+  &-cases {
+    width: 1200px;
+    overflow: hidden;
+    margin: 0 auto 90px;
+    &-content {
+      height: 463px;
+      display: flex;
+      align-items: center;
+      &__main {
+        padding: 0 22px;
+        width: 590px;
+        height: 463px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #959fb1;
+        border-radius: 29px 20px 20px 29px;
+        &-iphone {
+          width: 210px;
+          height: 420px;
+          background-image: url('../../assets/images/iphone-cases.png');
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          z-index: 1;
+        }
+        &-lefticon {
+          margin-right: 20px;
+          width: 36px;
+          height: 36px;
+          background-image: url('../../assets/images/right-arrow.png');
+          transform: rotate(180deg);
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          cursor: pointer;
+          &:hover {
+            transform: rotate(0);
+            background-image: url('../../assets/images/left-arrow.png');
+          }
+        }
+        &-righticon {
+          margin-left: 20px;
+          width: 36px;
+          height: 36px;
+          background-image: url('../../assets/images/right-arrow.png');
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          cursor: pointer;
+          z-index: 1;
+          &:hover {
+            transform: rotate(180deg);
+            background-image: url('../../assets/images/left-arrow.png');
+          }
+        }
+        &-iconinfo {
+          width: 190px;
+          flex-shrink: 0;
+          display: flex;
+          flex-direction: column;
+          > h4 {
+            line-height: 42px;
+            font-size: 26px;
+            color: rgba(255, 255, 255, 1);
+          }
+          > p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 1);
+          }
+          > img {
+            width: 114px;
+            height: 114px;
+            overflow: hidden;
+            border-radius: 29px;
+          }
+        }
+      }
+      &__list {
+        flex: 1;
+        display: flex;
+        margin-left: -275px;
+        > li {
+          width: 180px;
+          height: 390px;
+          flex-shrink: 0;
+          margin-right: 20px;
+          box-shadow: 0px 1px 7px 0px #edeef1;
+          transition: all 0.5s;
+          &:first-child {
+            margin-right: 139px;
+            transform: scale(1.04);
+          }
+          > img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
     }
   }
   &-more {
@@ -262,14 +420,14 @@ export default defineComponent({
   height: 926px;
   margin-bottom: 70px;
   background-color: #070505;
+  min-width: 1200px;
   .content-left {
     padding: 15% 0 0 8.8%;
     // margin: auto 0;
-    width: 1300px;
+    flex: 1;
     min-width: 550px;
     .content-title {
       // line-height: 36px;
-      font-family: PingFangSC-Medium;
       font-size: 42px;
       color: rgba(255, 255, 255, 1);
     }
@@ -283,7 +441,6 @@ export default defineComponent({
     }
     .content-subTitle {
       margin-top: 12px;
-      font-family: PingFangSC-Regular;
       font-size: 20px;
       color: rgba(255, 255, 255, 1);
     }
@@ -302,7 +459,6 @@ export default defineComponent({
           font-size: 14px;
           color: rgba(255, 255, 255, 1);
         }
-        font-family: PingFangSC-Regular;
         width: 150px;
         height: 40px;
         background: linear-gradient(
@@ -363,17 +519,6 @@ export default defineComponent({
       }
     }
   }
-  .content-right {
-    flex: 1;
-    margin: auto 0;
-    .content-img {
-      width: 900px;
-      height: 514px;
-      background: url(https://storage.360buyimg.com/imgtools/2386827bf5-0c3c6fb0-444d-11eb-a71e-e96ecf999ecc.png)
-        no-repeat;
-      background-size: cover;
-    }
-  }
 }
 .doc-content-black {
   background: $theme-black-content-bg;
@@ -381,17 +526,30 @@ export default defineComponent({
   .doc-content-title {
     color: white;
   }
-  .doc-content-feature {
+  .doc-content-features {
     .features-title {
       color: white;
     }
     .features-desc {
-      color: white;
+      color: #a5a5a5;
     }
   }
   .doc-content-more {
     .more-title {
       color: #fff;
+    }
+  }
+  .doc-content-cases-content__main {
+    background: #474753;
+  }
+  .doc-content-cases-content__list {
+    li {
+      box-shadow: none;
+    }
+  }
+  .doc-content-more {
+    .more-item img {
+      box-shadow: none;
     }
   }
 }

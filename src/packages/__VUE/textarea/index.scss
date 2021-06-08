@@ -1,0 +1,39 @@
+.nut-textarea {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  background: $white;
+  font-size: $textarea-font;
+  padding: 10px 25px;
+
+  &--disabled {
+    .nut-textarea__textarea,
+    .nut-textarea____limit {
+      cursor: not-allowed;
+      color: $textarea-disabled-color !important;
+    }
+  }
+  &__limit {
+    position: absolute;
+    right: 15px;
+    bottom: 12px;
+    font-size: $textarea-font;
+    color: $textarea-limit-color;
+  }
+  &__textarea {
+    min-height: $textarea-height;
+    outline: none;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    color: $textarea-text-color;
+    text-align: left;
+    background-color: transparent;
+    border: 0;
+    resize: none;
+  }
+}
