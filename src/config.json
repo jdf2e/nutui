@@ -580,7 +580,6 @@
         },
         {
           "version": "3.0.0",
-<<<<<<< HEAD
           "name": "TextArea",
           "type": "component",
           "cName": "文本域",
@@ -588,15 +587,6 @@
           "sort": 7,
           "show": true,
           "author": "gx"
-=======
-          "name": "CountUp",
-          "type": "component",
-          "cName": "数字滚动",
-          "desc": "数字滚动，可自定义图片，可模拟抽奖",
-          "sort": 7,
-          "show": true,
-          "author": "Ymm0008"
->>>>>>> 50ee824b330a60b0784a5fd9b0c71c44ef7aaf2e
         }
       ]
     },
