@@ -1,6 +1,6 @@
 <template>
   <view
-    class="nut-calendar .nut-calendar-taro"
+    class="nut-calendar nut-calendar-taro"
     :class="{
       'nut-calendar-tile': !poppable,
       'nut-calendar-nofooter': isAutoBackFill
@@ -635,7 +635,7 @@ export default create({
     //监听 默认值更改
     watch(
       () => props.defaultValue,
-      val => {
+      (val) => {
         if (val) {
           resetRender();
         }
