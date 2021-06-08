@@ -2,25 +2,22 @@
   <div class="demo">
     <h2>基本用法</h2>
     <view class="demo-box">
-      <nut-swiper
-        :init-page="page"
-        :pagination-visible="true"
-        pagination-color="#426543"
-      >
-        <nut-swiper-item v-for="item in list" :key="item">
+      <nut-swiper>
+        1111
+        <!-- <nut-swiper-item v-for="item in list" :key="item">
           <img :src="item" alt="" />
-        </nut-swiper-item>
+        </nut-swiper-item> -->
       </nut-swiper>
     </view>
-    <h2>自定义大小</h2>
+    <!-- <h2>自定义大小</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page2" :loop="false" width="300">
         <nut-swiper-item v-for="item in list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
       </nut-swiper>
-    </view>
-    <h2>自定义指示器</h2>
+    </view> -->
+    <!-- <h2>自定义指示器</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page3" :loop="true" @change="change">
         <nut-swiper-item v-for="item in list" :key="item">
@@ -30,8 +27,8 @@
           <div class="page"> {{ current }}/4 </div>
         </template>
       </nut-swiper>
-    </view>
-    <h2>垂直方向</h2>
+    </view> -->
+    <!-- <h2>垂直方向</h2>
     <view class="demo-box">
       <nut-swiper
         :init-page="page4"
@@ -46,12 +43,15 @@
           <img :src="item" alt="" />
         </nut-swiper-item>
       </nut-swiper>
-    </view>
+    </view> -->
   </div>
 </template>
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
+import Taro from '@tarojs/taro';
+// console.log(Taro)
+// console.log(Taro.createSelectorQuery)
 export default {
   props: {},
   setup() {

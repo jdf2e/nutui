@@ -43,17 +43,12 @@
 import { PropType, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('calendar');
-import Popup from './../popup/index.taro.vue';
+import Popup from '@/packages/__VUE/popup/index.taro.vue';
 import CalendarItem from '@/packages/__VUE/calendaritem/index.vue';
-// import CalendarItem from './../calendaritem/index.taro.vue';
 import Utils from '@/packages/utils/date';
 type InputDate = string | string[];
 export default create({
   children: [CalendarItem, Popup],
-  components: {
-    'nut-calendar-item': CalendarItem,
-    'nut-popup': Popup
-  },
   props: {
     type: {
       type: String,
