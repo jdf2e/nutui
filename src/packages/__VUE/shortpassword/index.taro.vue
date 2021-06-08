@@ -13,17 +13,17 @@
       @click-overlay="close"
     >
       <view class="nut-shortpsd-title">{{ title }}</view>
-      <view class="nut-shortpsd-subtitle">{{ desc }}</view>
+      <view class="nut-shortpsdWx-subtitle">{{ desc }}</view>
       <view class="nut-input-w">
         <input
           ref="realpwd"
-          class="nut-input-real"
+          class="nut-inputWx-real"
           type="number"
-          maxlength="6"
+          :maxlength="length"
           v-model="realInput"
           @input="changeValue"
         />
-        <view class="nut-shortpsd-fake" @click="focus">
+        <view class="nut-shortpsd-fake">
           <view
             class="nut-shortpsd-li"
             v-for="(sublen, index) in new Array(comLen)"
@@ -38,9 +38,9 @@
       </view>
       <view class="nut-shortpsd-message">
         <view class="nut-shortpsd-error">{{ errorMsg }}</view>
-        <view class="nut-shortpsd-forget" v-if="tips">
+        <view class="nut-shortpsd-forget" @click="onTips" v-if="tips">
           <nut-icon class="icon" size="11px" name="tips"></nut-icon>
-          <view @click="onTips">{{ tips }}</view>
+          <view>{{ tips }}</view>
         </view>
       </view>
       <view v-if="!noButton" class="nut-shortpsd-footer">
@@ -54,7 +54,7 @@
 import { ref, computed, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('shortpassword');
-// import Taro from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 export default create({
   props: {
     title: {
@@ -113,11 +113,6 @@ export default create({
     function sureClick() {
       emit('ok', realInput.value);
     }
-    function focus() {
-      console.log('点击了', realpwd, realpwd.value);
-
-      // realpwd.value.focus();
-    }
     watch(
       () => props.visible,
       value => {
@@ -156,7 +151,6 @@ export default create({
       sureClick,
       realInput,
       realpwd,
-      focus,
       range,
       changeValue,
       close,
