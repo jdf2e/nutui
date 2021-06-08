@@ -35,7 +35,6 @@
 import { ref, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 
-console.log('aaaa');
 function trimExtraChar(value: string, char: string, regExp: RegExp) {
   const index = value.indexOf(char);
 

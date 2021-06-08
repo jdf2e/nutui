@@ -493,7 +493,7 @@ export default create({
       requestAniFrame(() => {
         if (weeksPanel?.value && monthsPanel?.value) {
           const top = weeksPanel?.value.getBoundingClientRect().bottom;
-          const monthsDoms = monthsPanel.value.querySelectorAll(
+          const monthsDoms = monthsPanel.value.getElementsByClassName(
             '.calendar-month'
           );
           for (let i = 0; i < monthsDoms.length; i++) {
