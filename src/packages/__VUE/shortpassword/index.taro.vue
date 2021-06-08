@@ -17,13 +17,13 @@
       <view class="nut-input-w">
         <input
           ref="realpwd"
-          class="nut-inputWx-real"
+          class="nut-input-real"
           type="number"
           :maxlength="length"
           v-model="realInput"
           @input="changeValue"
         />
-        <view class="nut-shortpsd-fake">
+        <view class="nut-shortpsd-fake" @click="focus">
           <view
             class="nut-shortpsd-li"
             v-for="(sublen, index) in new Array(comLen)"
@@ -51,10 +51,10 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('shortpassword');
-import Taro from '@tarojs/taro';
+import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 export default create({
   props: {
     title: {
@@ -113,6 +113,10 @@ export default create({
     function sureClick() {
       emit('ok', realInput.value);
     }
+    function focus() {
+      let a = document.getElementsByClassName('nut-input-real')[0] as any;
+      a.focus();
+    }
     watch(
       () => props.visible,
       (value) => {
@@ -146,6 +150,9 @@ export default create({
     function onTips() {
       emit('tips');
     }
+    onMounted(() => {
+      eventCenter.once((getCurrentInstance() as any).router.onReady, () => {});
+    });
     return {
       comLen,
       sureClick,
@@ -155,6 +162,7 @@ export default create({
       changeValue,
       close,
       onTips,
+      focus,
       show,
       closeIcon
     };
