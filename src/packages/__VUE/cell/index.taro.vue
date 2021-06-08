@@ -39,6 +39,7 @@ import { useRouter } from 'vue-router';
 import CellGroup from '../cellgroup/index.vue';
 const { componentName, create } = createComponent('cell');
 export default create({
+  children: [CellGroup],
   props: {
     title: { type: String, default: '' },
     subTitle: { type: String, default: '' },
