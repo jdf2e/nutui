@@ -82,7 +82,7 @@ export default {
     });
     const methods = {
       onChange(val: string) {
-        console.log(123);
+        console.log(val);
 
         // val && proxy.$toast.text(val);
       },
@@ -90,6 +90,7 @@ export default {
         // val && proxy.$toast.text(val);
         state.visible = false;
       },
+
       onComplete() {},
       onTips() {
         // proxy.$toast.text('执行忘记密码逻辑');
