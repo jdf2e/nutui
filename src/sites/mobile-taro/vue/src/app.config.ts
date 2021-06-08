@@ -1,5 +1,7 @@
 export default {
   pages: [
+    'pages/range/index',
+    'pages/picker/index',
     'pages/popup/index',
     'pages/icon/index',
     'pages/inputnumber/index',
