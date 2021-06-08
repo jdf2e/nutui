@@ -3,6 +3,7 @@
     <view class="min" v-if="!hiddenRange">{{ +min }}</view>
     <view
       ref="root"
+      id="root"
       :style="wrapperStyle"
       :class="classes"
       @click.stop="onClick"
@@ -23,7 +24,7 @@
             :aria-valuemax="+max"
             aria-orientation="horizontal"
             @touchstart.stop.prevent="
-              e => {
+              (e) => {
                 if (typeof index === 'number') {
                   // 实时更新当前拖动的按钮索引
                   buttonIndex = index;
@@ -34,7 +35,7 @@
             @touchmove.stop.prevent="onTouchMove"
             @touchend.stop.prevent="onTouchEnd"
             @touchcancel.stop.prevent="onTouchEnd"
-            @click="e => e.stopPropagation()"
+            @click="(e) => e.stopPropagation()"
           >
             <slot v-if="$slots.button" name="button"></slot>
             <view class="nut-range-button" v-else :style="buttonStyle">
@@ -54,14 +55,14 @@
             :aria-valuemax="+max"
             aria-orientation="horizontal"
             @touchstart.stop.prevent="
-              e => {
+              (e) => {
                 onTouchStart(e);
               }
             "
             @touchmove.stop.prevent="onTouchMove"
             @touchend.stop.prevent="onTouchEnd"
             @touchcancel.stop.prevent="onTouchEnd"
-            @click="e => e.stopPropagation()"
+            @click="(e) => e.stopPropagation()"
           >
             <slot v-if="$slots.button" name="button"></slot>
             <view class="nut-range-button" v-else :style="buttonStyle">
@@ -78,6 +79,7 @@
 </template>
 <script lang="ts">
 import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
+import Taro from '@tarojs/taro';
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
 import { useRect } from '@/packages/utils/useRect';
@@ -221,7 +223,13 @@ export default create({
       }
 
       const { min, modelValue } = props;
-      const rect = useRect(root);
+      let rect;
+      const query = Taro.createSelectorQuery();
+      query.select('#root').boundingClientRect();
+      query.exec((res: any) => {
+        rect = res;
+        console.log(res, 'res');
+      });
       const delta = event.clientX - rect.left;
       const total = rect.width;
       const value = Number(min) + (delta / total) * scope.value;

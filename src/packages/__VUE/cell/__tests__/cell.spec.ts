@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
 import Cell from '../index.vue';
+import Icon from '../../icon/index.vue';
 
 test('prop title desc', () => {
   const wrapper = mount(Cell, {

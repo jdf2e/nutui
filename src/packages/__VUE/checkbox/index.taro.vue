@@ -6,6 +6,7 @@ import nutIcon from '../icon/index.taro.vue';
 import nutCheckboxGroup from '../checkboxgroup/index.vue';
 
 export default create({
+  children: [nutCheckboxGroup],
   components: {
     nutIcon,
     nutCheckboxGroup
