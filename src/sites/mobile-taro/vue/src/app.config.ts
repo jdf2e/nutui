@@ -1,6 +1,10 @@
 export default {
   pages: [
     'pages/collapse/index',
+    'pages/shortpassword/index',
+    'pages/textarea/index',
+    'pages/calendar/index',
+    'pages/input/index',
     'pages/swiper/index',
     'pages/actionsheet/index',
     'pages/popup/index',
