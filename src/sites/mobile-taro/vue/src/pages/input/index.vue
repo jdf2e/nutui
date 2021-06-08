@@ -77,7 +77,7 @@ export default {
       val7: '',
       val8: '文案'
     });
-    setTimeout(function() {
+    setTimeout(function () {
       state.val1 = '异步数据';
     }, 2000);
     const change = (value: string | number, event: Event) => {
