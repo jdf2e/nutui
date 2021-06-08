@@ -79,10 +79,10 @@
 </template>
 <script lang="ts">
 import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
-import Taro from '@tarojs/taro';
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
 import { useRect } from '@/packages/utils/useRect';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { componentName, create } = createComponent('range');
 
 type SliderValue = number | number[];
@@ -223,13 +223,7 @@ export default create({
       }
 
       const { min, modelValue } = props;
-      let rect;
-      const query = Taro.createSelectorQuery();
-      query.select('#root').boundingClientRect();
-      query.exec((res: any) => {
-        rect = res;
-        console.log(res, 'res');
-      });
+      let rect = useTaroRect(root);
       const delta = event.clientX - rect.left;
       const total = rect.width;
       const value = Number(min) + (delta / total) * scope.value;
