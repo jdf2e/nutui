@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
     <h2>基本用法</h2>
-    <view class="demo-box">
+    <view class="demo-box1" id="test">
       <nut-swiper>
         1111
         <!-- <nut-swiper-item v-for="item in list" :key="item">
@@ -48,10 +48,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
-import Taro from '@tarojs/taro';
-// console.log(Taro)
-// console.log(Taro.createSelectorQuery)
+import { reactive, toRefs, onMounted } from 'vue';
+import Taro, { nextTick, eventCenter, getCurrentInstance } from '@tarojs/taro';
+
 export default {
   props: {},
   setup() {
@@ -71,6 +70,23 @@ export default {
     const change = (index: number) => {
       state.current = index + 1;
     };
+    onMounted(() => {
+      eventCenter.once(
+        (getCurrentInstance() as any).router.onReady,
+        async () => {
+          // const query = Taro.createSelectorQuery()
+          const query = document.querySelector('#test') as any;
+          const res = await query.getBoundingClientRect();
+          console.log(res);
+          // console.log(document.querySelector('#test'))
+          // console.log(query)
+          // query.select('#test').boundingClientRect()
+          // query.exec(res => {
+          // })
+          // console.log('onReady')
+        }
+      );
+    });
     return {
       ...toRefs(state),
       change
