@@ -25,7 +25,7 @@
         :show-icon="true"
         title="选择日期区间"
         :desc="date1 ? `${date1[0]}至${date1[1]}` : '请选择'"
-        @click="openSwitch('isVisible1')"
+        @click="openSwitch1('isVisible1')"
       >
       </nut-cell>
       <nut-calendar
@@ -34,7 +34,7 @@
         type="range"
         :start-date="`2019-12-22`"
         :end-date="`2021-01-08`"
-        @close="closeSwitch('isVisible1')"
+        @close="closeSwitch1('isVisible1')"
         @choose="setChooseValue1"
       >
       </nut-calendar>
@@ -46,12 +46,12 @@
         :show-icon="true"
         title="选择日期"
         :desc="date3 ? date3 : '请选择'"
-        @click="openSwitch('isVisible3')"
+        @click="openSwitch3('isVisible3')"
       >
       </nut-cell>
       <nut-calendar
         v-model:visible="isVisible3"
-        @close="closeSwitch('isVisible3')"
+        @close="closeSwitch3('isVisible3')"
         @choose="setChooseValue3"
         :default-value="date3"
         :start-date="null"
@@ -104,15 +104,23 @@ export default {
       date3: ''
     });
     const openSwitch = (param: string) => {
-      state[`${param}`] = true;
-      //state.isVisible = true;
+      state.isVisible = true;
     };
-
+    const openSwitch1 = (param: string) => {
+      state.isVisible1 = true;
+    };
+    const openSwitch3 = (param: string) => {
+      state.isVisible3 = true;
+    };
     const closeSwitch = (param: string) => {
-      state[`${param}`] = false;
-      //state.isVisible = false;
+      state.isVisible = false;
     };
-
+    const closeSwitch1 = (param: string) => {
+      state.isVisible1 = false;
+    };
+    const closeSwitch3 = (param: string) => {
+      state.isVisible3 = false;
+    };
     const setChooseValue = (param: string) => {
       state.date = param[3];
       state.dateWeek = param[4];
@@ -134,7 +142,11 @@ export default {
     return {
       ...toRefs(state),
       openSwitch,
+      openSwitch1,
+      openSwitch3,
       closeSwitch,
+      closeSwitch1,
+      closeSwitch3,
       setChooseValue,
       setChooseValue1,
       setChooseValue2,
