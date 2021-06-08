@@ -115,7 +115,7 @@ export default create({
     }
     watch(
       () => props.visible,
-      value => {
+      (value) => {
         show.value = value;
       }
     );

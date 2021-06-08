@@ -58,6 +58,10 @@ import {
   getCurrentInstance,
   ComponentInternalInstance
 } from 'vue';
+import Taro, {
+  eventCenter,
+  getCurrentInstance as getCurrentInstanceTaro
+} from '@tarojs/taro';
 import { createComponent } from '@/packages/utils/create';
 const { create, componentName } = createComponent('collapse-item');
 
@@ -136,9 +140,6 @@ export default create({
         'collapse-wrapper'
       )[0];
       wrapperRefEle.style.willChange = 'auto';
-
-      // const query = wx.createSelectorQuery();
-      // query.select('#productServe').boundingClientRect();
     };
 
     // 手风琴模式
@@ -182,6 +183,9 @@ export default create({
 
     const currentName = computed(() => props.name);
     const toggleOpen = () => {
+      console.log('点击了——————-----');
+      console.log(document.getElementsByClassName('collapse-content')[0]);
+
       if (parent.props.accordion) {
         parent.children.forEach((item: any, index: number) => {
           if (currentName.value == item.name) {
@@ -232,6 +236,19 @@ export default create({
           defaultOpen();
         }
       }
+
+      // 获取 DOM 元素
+      eventCenter.once((getCurrentInstanceTaro() as any).router.onReady, () => {
+        let a = document.getElementsByClassName('collapse-wrapper')[0];
+        console.log(a);
+
+        // const query = Taro.createSelectorQuery()
+        // query.select('.collapse-wrapper').boundingClientRect()
+        // query.exec(res => {
+        //   console.log(res, 'res')
+        // })
+        // console.log('onReady')
+      });
 
       // proxyData.classDirection = parent.props.expandIconPosition;
       // if (parent.props.icon && parent.props.icon != 'none') {

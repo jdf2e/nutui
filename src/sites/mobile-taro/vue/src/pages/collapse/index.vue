@@ -68,9 +68,7 @@
 </template>
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('collapse');
-export default createDemo({
+export default {
   setup(props, context) {
     const data = reactive({
       active1: [1, '2'],
@@ -91,5 +89,5 @@ export default createDemo({
       ...toRefs(data)
     };
   }
-});
+};
 </script>
