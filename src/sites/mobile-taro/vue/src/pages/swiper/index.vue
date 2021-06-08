@@ -82,6 +82,7 @@ export default {
           // console.log(query)
           // query.select('#test').boundingClientRect()
           // query.exec(res => {
+          //   console.log(res)
           // })
           // console.log('onReady')
         }
