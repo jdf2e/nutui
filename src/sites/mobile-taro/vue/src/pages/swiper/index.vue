@@ -1,26 +1,23 @@
 <template>
   <div class="demo">
     <h2>基本用法</h2>
-    <view class="demo-box">
-      <nut-swiper
-        :init-page="page"
-        :pagination-visible="true"
-        pagination-color="#426543"
-      >
-        <nut-swiper-item v-for="item in list" :key="item">
+    <view class="demo-box1" id="test">
+      <nut-swiper>
+        1111
+        <!-- <nut-swiper-item v-for="item in list" :key="item">
           <img :src="item" alt="" />
-        </nut-swiper-item>
+        </nut-swiper-item> -->
       </nut-swiper>
     </view>
-    <h2>自定义大小</h2>
+    <!-- <h2>自定义大小</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page2" :loop="false" width="300">
         <nut-swiper-item v-for="item in list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
       </nut-swiper>
-    </view>
-    <h2>自定义指示器</h2>
+    </view> -->
+    <!-- <h2>自定义指示器</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page3" :loop="true" @change="change">
         <nut-swiper-item v-for="item in list" :key="item">
@@ -30,8 +27,8 @@
           <div class="page"> {{ current }}/4 </div>
         </template>
       </nut-swiper>
-    </view>
-    <h2>垂直方向</h2>
+    </view> -->
+    <!-- <h2>垂直方向</h2>
     <view class="demo-box">
       <nut-swiper
         :init-page="page4"
@@ -46,12 +43,14 @@
           <img :src="item" alt="" />
         </nut-swiper-item>
       </nut-swiper>
-    </view>
+    </view> -->
   </div>
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, onMounted } from 'vue';
+import Taro, { nextTick, eventCenter, getCurrentInstance } from '@tarojs/taro';
+
 export default {
   props: {},
   setup() {
@@ -71,6 +70,23 @@ export default {
     const change = (index: number) => {
       state.current = index + 1;
     };
+    onMounted(() => {
+      eventCenter.once(
+        (getCurrentInstance() as any).router.onReady,
+        async () => {
+          // const query = Taro.createSelectorQuery()
+          const query = document.querySelector('#test') as any;
+          const res = await query.getBoundingClientRect();
+          console.log(res);
+          // console.log(document.querySelector('#test'))
+          // console.log(query)
+          // query.select('#test').boundingClientRect()
+          // query.exec(res => {
+          // })
+          // console.log('onReady')
+        }
+      );
+    });
     return {
       ...toRefs(state),
       change
