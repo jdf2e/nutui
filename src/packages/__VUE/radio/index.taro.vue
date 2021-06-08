@@ -1,12 +1,15 @@
 <script lang="ts">
 import { computed, h, inject } from 'vue';
+import nutIcon from '@/packages/__VUE/icon/index.taro.vue';
+import radiogroup from '@/packages/__VUE/radiogroup/index.vue';
 import { createComponent } from '../../utils/create';
-import nutIcon from '../icon/index.taro.vue';
-import radiogroup from '../radiogroup/index.vue';
 const { componentName, create } = createComponent('radio');
 
 export default create({
   children: [radiogroup],
+  components: {
+    'nut-radiogroup': radiogroup
+  },
   props: {
     disabled: {
       type: Boolean,
