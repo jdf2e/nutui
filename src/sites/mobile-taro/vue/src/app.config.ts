@@ -1,5 +1,6 @@
 export default {
   pages: [
+    'pages/shortpassword/index',
     'pages/textarea/index',
     'pages/calendar/index',
     'pages/input/index',
