@@ -1,6 +1,6 @@
 <template>
   <swiper
-    class="test-h"
+    class="nut-swiper"
     indicator-color="#999"
     indicator-active-color="#333"
     vertical
@@ -8,15 +8,6 @@
     indicator-dots
     autoplay
   >
-    <swiper-item>
-      <view class="demo-text-1">1</view>
-    </swiper-item>
-    <swiper-item>
-      <view class="demo-text-2">2</view>
-    </swiper-item>
-    <swiper-item>
-      <view class="demo-text-3">3</view>
-    </swiper-item>
   </swiper>
 </template>
 
@@ -27,6 +18,8 @@ import { useTouch } from './use-touch';
 import { useExpose } from '@/packages/utils/useExpose/index';
 const { create, componentName } = createComponent('swiper');
 // import swiperItem from '@/packages/__VUE/swiperitem/index.vue';
+// console.log(Taro)
+// console.log(Taro.createSelectorQuery)
 export default create({
   // children: [swiperItem],
   props: {},
