@@ -1,6 +1,6 @@
 <template>
   <view
-    class="nut-calendar .nut-calendar-taro"
+    class="nut-calendar nut-calendar-taro"
     :class="{
       'nut-calendar-tile': !poppable,
       'nut-calendar-nofooter': isAutoBackFill
@@ -493,9 +493,8 @@ export default create({
       requestAniFrame(() => {
         if (weeksPanel?.value && monthsPanel?.value) {
           const top = weeksPanel?.value.getBoundingClientRect().bottom;
-          const monthsDoms = monthsPanel.value.querySelectorAll(
-            '.calendar-month'
-          );
+          const monthsDoms =
+            monthsPanel.value.querySelectorAll('.calendar-month');
           for (let i = 0; i < monthsDoms.length; i++) {
             if (
               monthsDoms[i].getBoundingClientRect().top <= top &&
@@ -635,7 +634,7 @@ export default create({
     //监听 默认值更改
     watch(
       () => props.defaultValue,
-      val => {
+      (val) => {
         if (val) {
           resetRender();
         }

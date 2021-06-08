@@ -1,15 +1,11 @@
 <script lang="ts">
 import { provide, computed, reactive, h, ComponentInternalInstance } from 'vue';
 import Step from '../step/index.vue';
-import Icon from '../icon/index.taro.vue';
 import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('steps');
 
 export default create({
-  components: {
-    [Step.name]: Step,
-    [Icon.name]: Icon
-  },
+  children: [Step],
   props: {
     direction: {
       type: String,
