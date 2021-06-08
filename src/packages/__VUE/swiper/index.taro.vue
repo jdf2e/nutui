@@ -14,8 +14,6 @@
 <script lang="ts">
 import Taro from '@tarojs/taro';
 import { createComponent } from '@/packages/utils/create';
-import { useTouch } from './use-touch';
-import { useExpose } from '@/packages/utils/useExpose/index';
 const { create, componentName } = createComponent('swiper');
 // import swiperItem from '@/packages/__VUE/swiperitem/index.vue';
 // console.log(Taro)
