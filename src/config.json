@@ -573,6 +573,7 @@
         {
           "version": "3.0.0",
           "name": "ShortPassword",
+          "taro": true,
           "type": "component",
           "cName": "短密码",
           "desc": "短密码组件",

@@ -494,7 +494,7 @@ export default create({
         if (weeksPanel?.value && monthsPanel?.value) {
           const top = weeksPanel?.value.getBoundingClientRect().bottom;
           const monthsDoms =
-            monthsPanel.value.querySelectorAll('.calendar-month');
+            monthsPanel.value.getElementsByClassName('.calendar-month');
           for (let i = 0; i < monthsDoms.length; i++) {
             if (
               monthsDoms[i].getBoundingClientRect().top <= top &&

@@ -2,6 +2,7 @@ export default {
   pages: [
     'pages/range/index',
     'pages/picker/index',
+    'pages/shortpassword/index',
     'pages/textarea/index',
     'pages/calendar/index',
     'pages/input/index',
