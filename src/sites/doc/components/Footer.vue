@@ -157,7 +157,7 @@ export default defineComponent({
       //点击组件以外的地方，收起
       document.addEventListener(
         'click',
-        e => {
+        (e) => {
           console.log('e.target', e.target);
         },
         false
@@ -165,7 +165,7 @@ export default defineComponent({
     };
     // checked active index
     data.activeIndex = data.themeList.findIndex(
-      i => i.color == RefData.getInstance().themeColor.value
+      (i) => i.color == RefData.getInstance().themeColor.value
     );
     const checkTheme = (color: string, index: number) => {
       data.isShowSelect = false;
@@ -222,6 +222,7 @@ export default defineComponent({
     }
     &-desc {
       font-size: 12px;
+      line-height: 30px;
     }
     &-select-hd {
       width: 92px;
