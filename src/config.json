@@ -542,6 +542,7 @@
         {
           "version": "3.0.0",
           "name": "Rate",
+          "taro": true,
           "sort": 4,
           "cName": "评分",
           "type": "component",
