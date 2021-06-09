@@ -136,6 +136,9 @@ export default create({
         'collapse-wrapper'
       )[0];
       wrapperRefEle.style.willChange = 'auto';
+
+      // const query = wx.createSelectorQuery();
+      // query.select('#productServe').boundingClientRect();
     };
 
     // 手风琴模式
@@ -259,6 +262,6 @@ export default create({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

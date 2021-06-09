@@ -33,7 +33,7 @@ import {
   getCurrentInstance,
   ComponentInternalInstance
 } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('step');
 
 export default create({

@@ -7,10 +7,10 @@
 ```html
 <nut-collapse v-model:active="active1" icon="down-arrow">
   <nut-collapse-item :title="title1" :name="1">
-    京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+    NutUI是一套拥有京东风格的轻量级的 Vue 组件库
   </nut-collapse-item>
   <nut-collapse-item :title="title2" :name="2">
-    京东到家：教师节期间 创意花束销量增长53倍
+    在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！
   </nut-collapse-item>
   <nut-collapse-item :title="title3" :name="3" disabled>
   </nut-collapse-item>
@@ -36,10 +36,10 @@ setup() {
 ```html
 <nut-collapse v-model:active="activeName" :accordion="true">
   <nut-collapse-item :title="title1" :name="1">
-    2020年中国数字游戏市场规模超2786亿元
+   引入Vue3新特性 Composition API、Teleport、Emits 等
   </nut-collapse-item>
   <nut-collapse-item :title="title2" :name="2">
-    基于区块链技术的取证APP在浙江省杭州市发布
+    全面使用 TypeScipt
   </nut-collapse-item>
 </nut-collapse>
 ```
@@ -66,13 +66,13 @@ setup() {
 ```html
  <nut-collapse v-model:active="activeName" :accordion="true" icon="down-arrow">
   <nut-collapse-item :title="title1" :name="1">
-    华为终端操作系统EMUI 11发布，9月11日正式开启
+    基于京东设计语言体系，构建场景
   </nut-collapse-item>
   <nut-collapse-item :title="title2" :name="2" :sub-title="subTitle">
-    中国服务机器人市场已占全球市场超1/4
+   提高界⾯的模块化通用程度
   </nut-collapse-item>
   <nut-collapse-item :title="title3" :name="3">
-    QuestMobile：90后互联网用户规模超越80后达3.62亿
+  采用组合式 API Composition 语法重构，结构清晰，功能模块化
   </nut-collapse-item>
 </nut-collapse>
 ```
@@ -107,10 +107,10 @@ setup() {
   rotate="90"
 >
   <nut-collapse-item :title="title1" :name="1">
-    京东数科IPO将引入“绿鞋机制”
+      NUTUI3.0重新思考其内在的一致性和可组合性
   </nut-collapse-item>
   <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">
-    世界制造业大会开幕，阿里巴巴与安徽合作再升级
+    提⾼产研输出对接的效率，降低输出工作量
   </nut-collapse-item>
 </nut-collapse>
 ```
@@ -143,10 +143,10 @@ return {
   :accordion="true"
 >
   <nut-collapse-item :title="title1" :name="1">
-    “森亿智能”获4亿元D轮融资
+  组件 emits 事件单独提取，增强代码可读性
   </nut-collapse-item>
   <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">
-    快看漫画与全球潮玩集合店X11达成战略合作
+  使用 Teleport 新特性重构挂载类组件
   </nut-collapse-item>
 </nut-collapse>
 ```

@@ -1,5 +1,5 @@
 <template>
-  <div class="demo-list demo">
+  <div class="demo">
     <h2>基本用法</h2>
     <nut-cell
       :show-icon="true"
@@ -63,14 +63,12 @@
 
 <script lang="ts">
 import { reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('actionsheet');
 interface Item {
   name: string;
   subname?: string;
   disable?: boolean;
 }
-export default createDemo({
+export default {
   props: {},
   setup() {
     const state = reactive({
@@ -147,7 +145,7 @@ export default createDemo({
       switchActionSheet
     };
   }
-});
+};
 </script>
 
 <style lang="scss" scoped>

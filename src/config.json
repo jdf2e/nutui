@@ -85,6 +85,7 @@
       "packages": [
         {
           "name": "Button",
+          "taro": true,
           "sort": 1,
           "cName": "按钮组件",
           "type": "component",
@@ -94,6 +95,7 @@
         },
         {
           "name": "Collapse",
+          "taro": true,
           "sort": 2,
           "cName": "折叠面板",
           "type": "component",
@@ -103,6 +105,7 @@
         },
         {
           "name": "CollapseItem",
+          "taro": true,
           "sort": 3,
           "cName": "折叠面板-item",
           "type": "component",
@@ -112,6 +115,7 @@
         },
         {
           "name": "Layout",
+          "taro": true,
           "sort": 4,
           "cName": "布局",
           "type": "component",
@@ -153,6 +157,7 @@
         },
         {
           "name": "ActionSheet",
+          "taro": true,
           "sort": "1",
           "cName": "动作面板",
           "type": "component",
@@ -215,6 +220,7 @@
         },
         {
           "name": "Cell",
+          "taro": true,
           "sort": 1,
           "cName": "单元格组件",
           "type": "component",
@@ -242,6 +248,7 @@
         },
         {
           "name": "Icon",
+          "taro": true,
           "sort": 3,
           "cName": "图标组件",
           "type": "component",
@@ -260,6 +267,7 @@
         },
         {
           "name": "Checkbox",
+          "taro": true,
           "sort": 5,
           "cName": "复选按钮",
           "type": "component",
@@ -269,6 +277,7 @@
         },
         {
           "name": "Swiper",
+          "taro": true,
           "sort": 6,
           "cName": "轮播",
           "type": "component",
@@ -296,6 +305,7 @@
         },
         {
           "name": "Popup",
+          "taro": true,
           "sort": 8,
           "cName": "弹出层",
           "type": "component",
@@ -316,6 +326,7 @@
         {
           "version": "3.0.0",
           "name": "Radio",
+          "taro": true,
           "type": "component",
           "cName": "单选按钮",
           "desc": "单选按钮",
@@ -346,6 +357,7 @@
         {
           "version": "3.0.0",
           "name": "OverLay",
+          "taro": true,
           "type": "component",
           "cName": "遮罩层",
           "desc": "创建一个遮罩层，通常用于阻止用户进行其他操作",
@@ -403,6 +415,7 @@
         },
         {
           "name": "Steps",
+          "taro": true,
           "sort": 17,
           "cName": "步骤条",
           "type": "component",
@@ -426,6 +439,7 @@
       "packages": [
         {
           "name": "Navbar",
+          "taro": true,
           "sort": 3,
           "cName": "导航组件",
           "type": "componment",
@@ -462,6 +476,7 @@
         },
         {
           "name": "Tabbar",
+          "taro": true,
           "sort": 2,
           "cName": "标签栏组件",
           "type": "component",
@@ -495,6 +510,7 @@
       "packages": [
         {
           "name": "InputNumber",
+          "taro": true,
           "sort": 1,
           "cName": "数字输入框",
           "type": "component",
@@ -504,6 +520,7 @@
         },
         {
           "name": "Input",
+          "taro": true,
           "sort": 2,
           "cName": "输入框",
           "type": "component",
@@ -514,6 +531,7 @@
         {
           "version": "3.0.0",
           "name": "Switch",
+          "taro": true,
           "type": "component",
           "cName": "开关组件",
           "desc": "用来打开或关闭选项",
@@ -524,6 +542,7 @@
         {
           "version": "3.0.0",
           "name": "Rate",
+          "taro": true,
           "sort": 4,
           "cName": "评分",
           "type": "component",
@@ -533,6 +552,7 @@
         },
         {
           "version": "3.0.0",
+          "taro": true,
           "name": "Calendar",
           "type": "component",
           "cName": "日历",
@@ -554,6 +574,7 @@
         {
           "version": "3.0.0",
           "name": "ShortPassword",
+          "taro": true,
           "type": "component",
           "cName": "短密码",
           "desc": "短密码组件",
@@ -563,6 +584,7 @@
         },
         {
           "version": "3.0.0",
+          "taro": true,
           "name": "TextArea",
           "type": "component",
           "cName": "文本域",

@@ -12,6 +12,13 @@
   font-size: $font-size-1;
   color: $text-color;
 }
+.nut-shortpsdWx-subtitle {
+  display: block;
+  margin-top: 12px;
+  line-height: 1;
+  font-size: $font-size-1;
+  color: $text-color;
+}
 
 .nut-input-w {
   padding: 24px 0 10px 0;
@@ -83,6 +90,7 @@
     line-height: 1;
     font-size: $font-size-1;
     color: $shortpsd-forget;
+    display: flex;
   }
 }
 

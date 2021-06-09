@@ -8,6 +8,9 @@ package-lock.json
 /cache
 /src/nutui.ts
 /src/packages/nutui.vue.ts
+/src/packages/nutui.taro.vue.ts
+/.nyc_output
+/coverage
 /tsc/test
 
 

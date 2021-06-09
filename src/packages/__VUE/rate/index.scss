@@ -11,12 +11,20 @@
     &__icon {
       color: $rate-icon-color;
       cursor: pointer;
+
+      &::before {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+      }
+
       &--disabled {
         color: $rate-icon-void-color;
       }
       &--half {
         position: absolute;
-        width: 50%;
+        width: 50% !important;
         left: 0;
         top: 0;
         overflow: hidden;

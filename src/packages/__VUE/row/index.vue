@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { provide } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('row');
 
 export default create({

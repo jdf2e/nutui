@@ -1,0 +1,9 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "@nutui/nutui-taro-mobile",
+  "appid": "touristappid",
+  "setting": {
+    "es6": false,
+    "minified": false
+  }
+}
