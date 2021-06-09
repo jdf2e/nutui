@@ -321,7 +321,7 @@ export default defineComponent({
         margin-left: 145px;
         .right-img {
           width: 436px;
-          height: 214px;
+          height: 213px;
           background: url('../../assets/images/img-taro-right.png') no-repeat;
           background-size: cover;
           margin-bottom: 58px;
@@ -640,7 +640,7 @@ export default defineComponent({
       margin-left: 145px;
       .right-img {
         width: 436px;
-        height: 214px;
+        height: 213px;
         background: url('../../assets/images/img-taro-right-white.png')
           no-repeat;
         background-size: cover;
