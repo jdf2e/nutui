@@ -74,11 +74,9 @@
         <h4 class="doc-content-title">一处代码 多端运行</h4>
       </div>
       <div class="taro-content">
-        <div class="taro-left">
-          <img src="../../assets/images/img-taro-left.png" />
-        </div>
+        <div class="taro-left"> </div>
         <div class="taro-right">
-          <img src="../../assets/images/img-taro-right.png" />
+          <div class="right-img"></div>
           <p class="taro-desc"
             >Taro 官方推荐框架，基于Taro 使用 nutui组件库，场景<br />覆盖多端小程序、h5等</p
           >
@@ -313,16 +311,19 @@ export default defineComponent({
     .taro-content {
       display: flex;
       .taro-left {
-        img {
-          width: 453px;
-          height: 386px;
-        }
+        margin-left: 50px;
+        width: 453px;
+        height: 386px;
+        background: url('../../assets/images/img-taro-left.png') no-repeat;
+        background-size: cover;
       }
       .taro-right {
         margin-left: 145px;
-        img {
+        .right-img {
           width: 436px;
           height: 214px;
+          background: url('../../assets/images/img-taro-right.png') no-repeat;
+          background-size: cover;
           margin-bottom: 58px;
         }
         .taro-desc {
@@ -624,6 +625,33 @@ export default defineComponent({
   .doc-content-more {
     .more-title {
       color: $theme-white-footer-word3;
+    }
+  }
+  .taro-content {
+    display: flex;
+    .taro-left {
+      margin-left: 50px;
+      width: 453px;
+      height: 386px;
+      background: url('../../assets/images/img-taro-left-white.png') no-repeat;
+      background-size: cover;
+    }
+    .taro-right {
+      margin-left: 145px;
+      .right-img {
+        width: 436px;
+        height: 214px;
+        background: url('../../assets/images/img-taro-right-white.png')
+          no-repeat;
+        background-size: cover;
+        margin-bottom: 58px;
+      }
+      .taro-desc {
+        color: #1a1a1a;
+        font-weight: lighter;
+        font-size: 18px;
+        line-height: 30px;
+      }
     }
   }
 }
