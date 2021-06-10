@@ -15,7 +15,7 @@
       <div>自定义内容</div>
     </nut-cell>
 
-    <nut-cell-group title="链接 | 分组用法">
+    <!-- <nut-cell-group title="链接 | 分组用法">
       <nut-cell title="链接" is-link></nut-cell>
       <nut-cell
         title="URL 跳转"
@@ -24,7 +24,7 @@
         url="https://jd.com"
       ></nut-cell>
       <nut-cell title="路由跳转 ’/‘ " to="/"></nut-cell>
-    </nut-cell-group>
+    </nut-cell-group> -->
 
     <nut-cell-group title="自定义右侧箭头区域">
       <nut-cell title="Switch">
