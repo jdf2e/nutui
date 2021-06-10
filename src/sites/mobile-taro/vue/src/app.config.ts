@@ -1,6 +1,7 @@
 export default {
   pages: [
     'pages/address/index',
+    'pages/cell/index',
     'pages/rate/index',
     'pages/collapse/index',
     'pages/shortpassword/index',
@@ -20,7 +21,6 @@ export default {
     'pages/checkbox/index',
     'pages/button/index',
     'pages/switch/index',
-    'pages/cell/index',
     'pages/layout/index',
     'pages/index/index'
   ],
