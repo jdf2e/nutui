@@ -43,10 +43,7 @@
         <li class="features-item">
           <img src="../../assets/images/img-home-features5.png" />
           <p class="features-title">适配多端</p>
-          <p class="features-desc a-l"
-            >基于taro使用 nutui 组件库场景覆盖多端小程序、h5等,taro
-            官方推荐框架</p
-          >
+          <p class="features-desc a-l">基于 Taro 轻松开发多端小程序</p>
         </li>
         <li class="features-item">
           <img src="../../assets/images/img-home-features2.png" />
@@ -78,7 +75,8 @@
         <div class="taro-right">
           <div class="right-img"></div>
           <p class="taro-desc"
-            >Taro 官方推荐框架，基于Taro 使用 nutui组件库，场景<br />覆盖多端小程序、h5等</p
+            >联手 Taro 团队打造基于 NutUI 的 Taro 语言组件库<br />支持多端小程序和
+            H5 开发</p
           >
         </div>
       </div>
@@ -656,6 +654,6 @@ export default defineComponent({
   }
 }
 .a-l {
-  text-align: left;
+  text-align: center;
 }
 </style>
