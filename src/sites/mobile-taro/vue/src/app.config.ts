@@ -1,5 +1,6 @@
 export default {
   pages: [
+    'pages/address/index',
     'pages/rate/index',
     'pages/collapse/index',
     'pages/shortpassword/index',

@@ -600,6 +600,7 @@
       "packages": [
         {
           "version": "3.0.0",
+          "taro": true,
           "name": "Address",
           "type": "component",
           "cName": "地址组件",
