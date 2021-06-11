@@ -101,9 +101,9 @@ const CollapseDemo = () => {
             title="标题1"
             name="1"
             titleIcon="checked"
-            titleSize="16"
-            titleColor="red"
-            titlePosition="left"
+            titleIconSize="16"
+            titleIconColor="red"
+            titleIconPosition="left"
           >
             京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
           </CollapseItem>
@@ -111,8 +111,8 @@ const CollapseDemo = () => {
             title="标题2"
             name="2"
             titleIcon={'heart-fill'}
-            titleColor={'red'}
-            titlePosition={'right'}
+            titleIconColor={'red'}
+            titleIconPosition={'right'}
           >
             京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
           </CollapseItem>
