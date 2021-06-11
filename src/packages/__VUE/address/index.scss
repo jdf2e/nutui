@@ -30,6 +30,7 @@
       color: #1d1e1e;
 
       .tab-item {
+        min-width: 2px;
         margin-right: 30px;
         display: block;
         &.active {
