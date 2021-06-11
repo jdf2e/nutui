@@ -15,7 +15,6 @@
       position: absolute;
     }
     .tab-title-box {
-      min-width: 75px;
       height: 100%;
       display: flex;
       flex: 1;
@@ -24,6 +23,9 @@
       box-sizing: border-box;
       text-align: center;
       font-size: 14px;
+    }
+    .tab-title-box-scroll {
+      min-width: 75px;
     }
     .nut-tab-active {
       color: #1a1a1a;
@@ -43,7 +45,7 @@
       }
     }
   }
-  .nutui-tab-swiper {
+  .tab-swiper {
     overflow: hidden;
     display: block;
     width: 100%;
@@ -54,9 +56,9 @@
 }
 .vertical-tab {
   display: flex;
-  height: 150px;
+  height: 175px;
   .tab-title {
-    width: 70px;
+    width: 100px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -68,19 +70,23 @@
       width: 100%;
       flex: 1;
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
-      min-height: 35px;
+      background-color: #f5f5f5;
+    }
+    .tab-title-box-scroll {
+      min-height: 50px;
     }
     .nut-tab-active {
       color: #1a1a1a;
       font-weight: bold;
       font-size: 16px;
       position: relative;
+      background-color: #fff;
       &::after {
         content: '';
         position: absolute;
-        right: 5px;
+        right: -4px;
         top: 50%;
         left: auto;
         transform: translateY(-50%) rotate(270deg);
@@ -91,7 +97,7 @@
       }
     }
   }
-  .nutui-tab-swiper {
+  .tab-swiper {
     overflow: hidden;
     display: block;
     flex: 1;

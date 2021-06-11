@@ -2,7 +2,11 @@
   <view :class="[direction === 'vertical' ? 'vertical-tab' : 'nutui-tab']">
     <view class="tab-title" ref="navlist">
       <view
-        :class="['tab-title-box', { 'nut-tab-active': activeIndex == index }]"
+        :class="[
+          'tab-title-box',
+          { 'nut-tab-active': activeIndex == index },
+          { 'tab-title-box-scroll': scrollType == 'scroll' }
+        ]"
         v-for="(item, index) in titles"
         :key="index"
         @click="switchTitle(index, $event)"
@@ -12,21 +16,27 @@
       </view>
       <view class="underline"></view>
     </view>
-    <view :class="['nutui-tab-swiper', swiperClassName]">
-      <view :class="['swiper-wrapper', { 'swiper-no-swiping': noSwiping }]">
-        <slot></slot>
-      </view>
-    </view>
+    <nut-swiper
+      :init-page="defaultIndex"
+      :pagination-visible="false"
+      :duration="animatedTime"
+      pagination-color="#426543"
+      @change="changeTab"
+      ref="nutuiSwiper"
+      :touchable="!noSwiping"
+      :direction="direction"
+      class="tab-swiper"
+    >
+      <slot></slot>
+    </nut-swiper>
   </view>
 </template>
 <script lang="ts">
 import { PropType, reactive, ref, onMounted, watch, VNode } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import tabpanel from '@/packages/__VUE/tabpanel/index.vue';
 const { create } = createComponent('tab');
 import TabTitle from './tabTitle';
-import Swiper from 'swiper';
-import 'swiper/dist/css/swiper.min.css';
-// import { extend } from '@vue/shared';
 type TabDirection = 'horizontal' | 'vertical';
 
 interface DataTitle {
@@ -39,6 +49,7 @@ type currChild = {
 } & VNode[];
 
 export default create({
+  children: [tabpanel],
   props: {
     defaultIndex: {
       type: Number,
@@ -55,6 +66,10 @@ export default create({
     noSwiping: {
       type: Boolean,
       default: false
+    },
+    scrollType: {
+      type: String,
+      default: 'flex'
     }
   },
   components: {
@@ -62,10 +77,10 @@ export default create({
   },
   setup(props, ctx) {
     const titles: Array<DataTitle> = reactive([]);
-    let mySwiper = reactive({});
     const isLock = ref(false);
     const activeIndex = ref(props.defaultIndex);
     const navlist = ref<null | HTMLElement>(null);
+    const nutuiSwiper = ref(null);
     // 生成随机的id
     function createHash() {
       return Array.from(Array(10), () =>
@@ -97,36 +112,45 @@ export default create({
         }
       }
     }
+    const changeTab = (index: number) => {
+      console.log(index);
+      activeIndex.value = index;
+      centerTitle(index);
 
+      //
+    };
     //切换tab
     function switchTitle(index: number) {
       activeIndex.value = index;
       centerTitle(index);
-      (mySwiper as Swiper).slideToLoop(index, props.animatedTime, false);
+      console.log(nutuiSwiper.value);
+      nutuiSwiper.value.to(index);
+
+      // (mySwiper as Swiper).slideToLoop(index, props.animatedTime, false);
     }
-    function initSwiper(currIndex: number) {
-      mySwiper = new Swiper('.' + swiperClassName.value, {
-        loop: true /** 循环模式选项 */,
-        noSwiping: true,
-        observer: true, //修改swiper自己或子元素时，自动初始化swiper
-        observeParents: true, //修改swiper的父元素时，自动初始化swiper
-        setWrapperSize: true,
-        direction: props.direction,
-        initialSlide: currIndex,
-        on: {
-          touchStart: function() {
-            isLock.value = true;
-          },
-          transitionEnd: function(): void {
-            ctx.emit('switchTab', (mySwiper as Swiper).realIndex, mySwiper);
-            if (isLock.value) {
-              activeIndex.value = (mySwiper as Swiper).realIndex;
-              centerTitle((mySwiper as Swiper).realIndex);
-            }
-          }
-        }
-      });
-    }
+    // function initSwiper(currIndex: number) {
+    //   mySwiper = new Swiper('.' + swiperClassName.value, {
+    //     loop: true /** 循环模式选项 */,
+    //     noSwiping: true,
+    //     observer: true, //修改swiper自己或子元素时，自动初始化swiper
+    //     observeParents: true, //修改swiper的父元素时，自动初始化swiper
+    //     setWrapperSize: true,
+    //     direction: props.direction,
+    //     initialSlide: currIndex,
+    //     on: {
+    //       touchStart: function () {
+    //         isLock.value = true;
+    //       },
+    //       transitionEnd: function (): void {
+    //         ctx.emit('switchTab', (mySwiper as Swiper).realIndex, mySwiper);
+    //         if (isLock.value) {
+    //           activeIndex.value = (mySwiper as Swiper).realIndex;
+    //           centerTitle((mySwiper as Swiper).realIndex);
+    //         }
+    //       }
+    //     }
+    //   });
+    // }
     function initTitle() {
       titles.length = 0;
       if (ctx.slots.default) {
@@ -149,9 +173,9 @@ export default create({
             });
           });
       }
-      setTimeout(() => {
-        initSwiper(activeIndex.value);
-      }, 0);
+      // setTimeout(() => {
+      //   initSwiper(activeIndex.value);
+      // }, 0);
     }
     onMounted(() => {
       initTitle();
@@ -167,7 +191,9 @@ export default create({
       titles,
       navlist,
       activeIndex,
-      switchTitle
+      switchTitle,
+      changeTab,
+      nutuiSwiper
     };
   }
 });

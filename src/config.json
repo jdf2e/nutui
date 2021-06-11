@@ -368,7 +368,6 @@
         {
           "version": "3.0.0",
           "name": "InfiniteLoading",
-          "taro": true,
           "type": "component",
           "cName": "滚动加载",
           "desc": "列表滚动到底部自动加载更多数据",
@@ -453,7 +452,16 @@
           "sort": 1,
           "cName": "标签组件",
           "type": "component",
-          "show": false,
+          "show": true,
+          "desc": "标签组件",
+          "author": "zhenyulei"
+        },
+        {
+          "name": "TabPanel",
+          "sort": 2,
+          "cName": "标签组件",
+          "type": "component",
+          "show": true,
           "desc": "标签组件",
           "author": "zhenyulei"
         },
@@ -601,7 +609,6 @@
       "packages": [
         {
           "version": "3.0.0",
-          "taro": true,
           "name": "Address",
           "type": "component",
           "cName": "地址组件",
