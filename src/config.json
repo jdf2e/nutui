@@ -610,8 +610,8 @@
       "packages": [
         {
           "version": "3.0.0",
-          "name": "Address",
           "taro": true,
+          "name": "Address",
           "type": "component",
           "cName": "地址组件",
           "desc": "地址组件",

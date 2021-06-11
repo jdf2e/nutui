@@ -125,32 +125,7 @@ export default create({
       centerTitle(index);
       console.log(nutuiSwiper.value);
       nutuiSwiper.value.to(index);
-
-      // (mySwiper as Swiper).slideToLoop(index, props.animatedTime, false);
     }
-    // function initSwiper(currIndex: number) {
-    //   mySwiper = new Swiper('.' + swiperClassName.value, {
-    //     loop: true /** 循环模式选项 */,
-    //     noSwiping: true,
-    //     observer: true, //修改swiper自己或子元素时，自动初始化swiper
-    //     observeParents: true, //修改swiper的父元素时，自动初始化swiper
-    //     setWrapperSize: true,
-    //     direction: props.direction,
-    //     initialSlide: currIndex,
-    //     on: {
-    //       touchStart: function () {
-    //         isLock.value = true;
-    //       },
-    //       transitionEnd: function (): void {
-    //         ctx.emit('switchTab', (mySwiper as Swiper).realIndex, mySwiper);
-    //         if (isLock.value) {
-    //           activeIndex.value = (mySwiper as Swiper).realIndex;
-    //           centerTitle((mySwiper as Swiper).realIndex);
-    //         }
-    //       }
-    //     }
-    //   });
-    // }
     function initTitle() {
       titles.length = 0;
       if (ctx.slots.default) {
@@ -173,9 +148,6 @@ export default create({
             });
           });
       }
-      // setTimeout(() => {
-      //   initSwiper(activeIndex.value);
-      // }, 0);
     }
     onMounted(() => {
       initTitle();
