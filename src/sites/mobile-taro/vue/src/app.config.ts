@@ -1,5 +1,7 @@
 export default {
   pages: [
+    'pages/infiniteloading/index',
+    'pages/address/index',
     'pages/cell/index',
     'pages/rate/index',
     'pages/collapse/index',

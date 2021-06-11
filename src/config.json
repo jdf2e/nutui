@@ -368,6 +368,7 @@
         {
           "version": "3.0.0",
           "name": "InfiniteLoading",
+          "taro": true,
           "type": "component",
           "cName": "滚动加载",
           "desc": "列表滚动到底部自动加载更多数据",
@@ -600,6 +601,7 @@
       "packages": [
         {
           "version": "3.0.0",
+          "taro": true,
           "name": "Address",
           "type": "component",
           "cName": "地址组件",
