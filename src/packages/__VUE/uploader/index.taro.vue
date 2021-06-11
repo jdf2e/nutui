@@ -3,27 +3,7 @@
     <view class="nut-uploader__slot" v-if="$slots.default">
       <slot></slot>
       <template v-if="maximum - fileList.length">
-        <input
-          class="nut-uploader__input"
-          v-if="capture"
-          type="file"
-          capture="camera"
-          :accept="accept"
-          :multiple="multiple"
-          :name="name"
-          :disabled="disabled"
-          @change="onChange"
-        />
-        <input
-          class="nut-uploader__input"
-          v-else
-          type="file"
-          :accept="accept"
-          :multiple="multiple"
-          :name="name"
-          :disabled="disabled"
-          @change="onChange"
-        />
+        <nut-button class="nut-uploader__input" @click="chooseImage" />
       </template>
     </view>
 
@@ -41,9 +21,9 @@
             class="close"
             name="mask-close"
           ></nut-icon>
-          <img
+          <image
             class="nut-uploader__preview-img__c"
-            v-if="item.type.includes('image') && item.url"
+            v-if="item.url"
             :src="item.url"
           />
           <view class="tips" v-if="item.status != 'success'">{{
@@ -53,37 +33,18 @@
       </view>
       <view class="nut-uploader__upload" v-if="maximum - fileList.length">
         <nut-icon color="#808080" :name="uploadIcon"></nut-icon>
-        <input
-          class="nut-uploader__input"
-          v-if="capture"
-          type="file"
-          capture="camera"
-          :accept="accept"
-          :multiple="multiple"
-          :name="name"
-          :disabled="disabled"
-          @change="onChange"
-        />
-        <input
-          class="nut-uploader__input"
-          v-else
-          type="file"
-          :accept="accept"
-          :multiple="multiple"
-          :name="name"
-          :disabled="disabled"
-          @change="onChange"
-        />
+        <nut-button class="nut-uploader__input" @click="chooseImage" />
       </view>
     </template>
   </view>
 </template>
 
 <script lang="ts">
-import { computed, reactive } from 'vue';
+import { computed, PropType, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Uploader, UploadOptions } from './uploader';
 const { componentName, create } = createComponent('uploader');
+import Taro from '@tarojs/taro';
 export type FileItemStatus =
   | 'ready'
   | 'uploading'
@@ -93,37 +54,41 @@ export type FileItemStatus =
 export class FileItem {
   status: FileItemStatus = 'ready';
   uid: string = new Date().getTime().toString();
-  name?: string;
   url?: string;
+  path?: string;
   type?: string;
-  formData: FormData = new FormData();
+  formData: any = {};
 }
+export type SizeType = 'original' | 'compressed';
+export type SourceType = 'album' | 'camera' | 'user' | 'environment';
 export default create({
   props: {
     name: { type: String, default: 'file' },
     url: { type: String, default: '' },
-    // defaultFileList: { type: Array, default: () => new Array<FileItem>() },
+    sizeType: {
+      type: Array as PropType<SizeType[]>,
+      default: () => ['original', 'compressed']
+    },
+    sourceType: {
+      type: Array as PropType<SourceType[]>,
+      default: () => ['album', 'camera']
+    },
     timeout: { type: [Number, String], default: 1000 * 30 },
+    // defaultFileList: { type: Array, default: () => new Array<FileItem>() },
     fileList: { type: Array, default: () => [] },
     isPreview: { type: Boolean, default: true },
     isDeletable: { type: Boolean, default: true },
     method: { type: String, default: 'post' },
     capture: { type: Boolean, default: false },
     maximize: { type: [Number, String], default: Number.MAX_VALUE },
-    maximum: { type: [Number, String], default: 1 },
+    maximum: { type: [Number, String], default: 9 },
     clearInput: { type: Boolean, default: false },
     accept: { type: String, default: '*' },
     headers: { type: Object, default: {} },
     data: { type: Object, default: {} },
     uploadIcon: { type: String, default: 'photograph' },
     xhrState: { type: [Number, String], default: 200 },
-    withCredentials: { type: Boolean, default: false },
-    multiple: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
-    beforeUpload: {
-      type: Function,
-      default: null
-    },
     beforeDelete: {
       type: Function,
       default: (file: FileItem, files: FileItem[]) => {
@@ -131,7 +96,6 @@ export default create({
       }
     },
     onChange: { type: Function }
-    // customRequest: { type: Function }
   },
   emits: [
     'start',
@@ -152,88 +116,81 @@ export default create({
       };
     });
 
-    const clearInput = (el: HTMLInputElement) => {
-      el.value = '';
+    const chooseImage = () => {
+      if (props.disabled) {
+        return;
+      }
+      Taro.chooseImage({
+        // 选择数量
+        count: (props.maximize as number) * 1 - props.fileList.length,
+        // 可以指定是原图还是压缩图，默认二者都有
+        sizeType: props.sizeType,
+        sourceType: props.sourceType,
+        success: onChange
+      });
     };
 
     const executeUpload = (fileItem: FileItem) => {
       const uploadOption = new UploadOptions();
       uploadOption.url = props.url;
       for (const [key, value] of Object.entries(props.data)) {
-        fileItem.formData.append(key, value);
+        fileItem.formData[key] = value;
       }
       uploadOption.formData = fileItem.formData;
-      uploadOption.timeout = (props.timeout as number) * 1;
       uploadOption.method = props.method;
-      uploadOption.xhrState = props.xhrState as number;
       uploadOption.headers = props.headers;
-      uploadOption.withCredentials = props.withCredentials;
       uploadOption.onStart = (option: UploadOptions) => {
         fileItem.status = 'ready';
         emit('start', option);
       };
-      uploadOption.onProgress = (
-        e: ProgressEvent<XMLHttpRequestEventTarget>,
-        option: UploadOptions
-      ) => {
+      uploadOption.onProgress = (e: any, option: UploadOptions) => {
         fileItem.status = 'uploading';
         emit('progress', { e, option });
       };
 
       uploadOption.onSuccess = (
-        responseText: XMLHttpRequest['responseText'],
+        data: Taro.uploadFile.SuccessCallbackResult,
         option: UploadOptions
       ) => {
         fileItem.status = 'success';
         emit('success', {
-          responseText,
+          data,
           option
         });
         emit('update:fileList', fileList);
       };
       uploadOption.onFailure = (
-        responseText: XMLHttpRequest['responseText'],
+        data: Taro.uploadFile.SuccessCallbackResult,
         option: UploadOptions
       ) => {
         fileItem.status = 'error';
         emit('failure', {
-          responseText,
+          data,
           option
         });
       };
-      new Uploader(uploadOption).upload();
+      new Uploader(uploadOption).uploadTaro(fileItem.path!, Taro);
     };
 
-    const readFile = (files: File[]) => {
-      files.forEach((file: File) => {
-        const formData = new FormData();
-        formData.append(props.name, file);
-
+    const readFile = (files: Taro.chooseImage.ImageFile[]) => {
+      files.forEach((file: Taro.chooseImage.ImageFile) => {
         const fileItem = reactive(new FileItem());
-        fileItem.name = file.name;
+        fileItem.path = file.path;
         fileItem.status = 'uploading';
         fileItem.type = file.type;
-        fileItem.formData = formData;
-        executeUpload(fileItem);
-
-        if (props.isPreview && file.type.includes('image')) {
-          const reader = new FileReader();
-          reader.onload = (event: ProgressEvent<FileReader>) => {
-            fileItem.url = (event.target as FileReader).result as string;
-            fileList.push(fileItem);
-          };
-          reader.readAsDataURL(file);
-        } else {
-          fileList.push(fileItem);
+        if (props.isPreview) {
+          fileItem.url = file.path;
         }
+        fileList.push(fileItem);
+        executeUpload(fileItem);
       });
     };
 
-    const filterFiles = (files: File[]) => {
+    const filterFiles = (files: Taro.chooseImage.ImageFile[]) => {
       const maximum = (props.maximum as number) * 1;
       const maximize = (props.maximize as number) * 1;
-      const oversizes = new Array<File>();
-      files = files.filter((file: File) => {
+      const oversizes = new Array<Taro.chooseImage.ImageFile>();
+      files = files.filter((file: Taro.chooseImage.ImageFile) => {
         if (file.size > maximize) {
           oversizes.push(file);
           return false;
@@ -261,38 +218,22 @@ export default create({
       }
     };
 
-    const onChange = (event: InputEvent) => {
-      if (props.disabled) {
-        return;
-      }
-      const $el = event.target as HTMLInputElement;
-      let { files } = $el;
-
-      if (props.beforeUpload) {
-        props.beforeUpload(files).then((f: Array<File>) => {
-          const _files: File[] = filterFiles(new Array<File>().slice.call(f));
-          readFile(_files);
-        });
-      } else {
-        const _files: File[] = filterFiles(new Array<File>().slice.call(files));
-        readFile(_files);
-      }
+    const onChange = (res: Taro.chooseImage.SuccessCallbackResult) => {
+      // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+      const { tempFilePaths, tempFiles } = res;
+      const _files: Taro.chooseImage.ImageFile[] = filterFiles(tempFiles);
+      readFile(_files);
 
       emit('change', {
-        fileList,
-        event
+        fileList
       });
-
-      if (props.clearInput) {
-        clearInput($el);
-      }
     };
 
     return {
-      onChange,
       onDelete,
       fileList,
-      classes
+      classes,
+      chooseImage
     };
   }
 });

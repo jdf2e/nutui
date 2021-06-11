@@ -1,5 +1,6 @@
 export default {
   pages: [
+    'pages/uploader/index',
     'pages/cell/index',
     'pages/rate/index',
     'pages/collapse/index',
