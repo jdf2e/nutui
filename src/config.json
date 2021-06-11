@@ -239,6 +239,7 @@
         },
         {
           "name": "Uploader",
+          "taro": true,
           "sort": 2,
           "cName": "上传组件",
           "type": "component",
