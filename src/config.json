@@ -92,6 +92,16 @@
           "sort": 1,
           "show": true,
           "author": ""
+        },
+        {
+          "version": "1.0.0",
+          "name": "Collapse",
+          "type": "component",
+          "cName": "折叠面板",
+          "desc": "折叠面板，可进行内容折叠展开操作，可以多面板配合使用。",
+          "sort": 2,
+          "show": true,
+          "author": "zhenyulei"
         }
       ]
     },
