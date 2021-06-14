@@ -1,30 +1,22 @@
 <template>
-  <swiper
-    class="nut-swiper"
-    indicator-color="#999"
-    indicator-active-color="#333"
-    vertical
-    circular
-    indicator-dots
-    autoplay
-  >
+  <swiper v-bind="attrs">
+    <slot></slot>
   </swiper>
 </template>
 
 <script lang="ts">
-import Taro from '@tarojs/taro';
 import { createComponent } from '@/packages/utils/create';
 const { create, componentName } = createComponent('swiper');
-// import swiperItem from '@/packages/__VUE/swiperitem/index.vue';
-// console.log(Taro)
-// console.log(Taro.createSelectorQuery)
+import swiperItem from '@/packages/__VUE/swiperitem/index.taro.vue';
 export default create({
-  // children: [swiperItem],
+  inheritAttrs: false,
+  children: [swiperItem],
   props: {},
   emits: [],
 
-  setup(props, { emit, slots }) {
-    return {};
+  setup(props, context) {
+    const attrs = context.attrs;
+    return { attrs };
   }
 });
 </script>
