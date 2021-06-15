@@ -223,7 +223,7 @@ export default create({
       }
 
       const { min, modelValue } = props;
-      let rect = (await useTaroRect(root, Taro)) as any;
+      let rect = await useTaroRect(root, Taro);
       const delta = (event as any).touches[0].clientX - rect.left;
       const total = rect.width;
       const value = Number(min) + (delta / total) * scope.value;
@@ -269,7 +269,7 @@ export default create({
       touch.move(event);
       dragStatus.value = 'draging';
 
-      const rect = (await useTaroRect(root, Taro)) as any;
+      const rect = await useTaroRect(root, Taro);
       const delta = touch.deltaX.value;
       const total = rect.width;
       const diff = (delta / total) * scope.value;

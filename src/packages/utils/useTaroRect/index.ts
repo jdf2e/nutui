@@ -13,7 +13,7 @@ import { Ref, unref } from 'vue';
 export const useTaroRect = (
   elementRef: (Element | Window) | Ref<Element | Window | undefined>,
   Taro: any
-) => {
+): any => {
   const element = unref(elementRef);
 
   return new Promise((resolve) => {
