@@ -5,53 +5,54 @@
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"
     v-model:visible="showPopup"
+    :class="classes"
   >
-    <view class="nut-address">
-      <view class="nut-address__header">
-        <view class="arrow-back" @click="switchModule">
+    <view-block class="nut-address">
+      <view-block class="nut-address__header">
+        <view-block class="arrow-back" @click="switchModule">
           <nut-icon
             :name="backBtnIcon"
             color="#cccccc"
-            v-show="privateType == 'custom' && backBtnIcon"
+            v-if="privateType == 'custom' && type == 'exist' && backBtnIcon"
           ></nut-icon>
-        </view>
+        </view-block>
 
-        <view class="nut-address__header__title">
+        <view-block class="nut-address__header__title">
           {{ privateType == 'custom' ? customAddressTitle : existAddressTitle }}
-        </view>
+        </view-block>
 
-        <view class="arrow-close" @click="handClose('cross')">
+        <view-block class="arrow-close" @click="handClose('cross')">
           <nut-icon
             v-if="closeBtnIcon"
             :name="closeBtnIcon"
             color="#cccccc"
             size="18px"
           ></nut-icon>
-        </view>
-      </view>
+        </view-block>
+      </view-block>
 
       <!-- 请选择 -->
-      <view class="custom-address" v-if="privateType == 'custom'">
-        <view class="region-tab">
-          <view
+      <view-block class="custom-address" v-if="privateType == 'custom'">
+        <view-block class="region-tab">
+          <view-block
             class="tab-item"
-            :class="[index == tabIndex ? 'active' : '']"
+            :class="[index == tabIndex ? 'active' : '', key]"
             v-for="(item, key, index) in selectedRegion"
             :key="index"
             :ref="key"
             @click="changeRegionTab(item, key, index)"
           >
             <view>{{ getTabName(item, index) }}</view>
-          </view>
+          </view-block>
 
-          <view
+          <view-block
             class="region-tab-line"
             ref="regionLine"
             :style="{ left: lineDistance + 'px' }"
-          ></view>
-        </view>
+          ></view-block>
+        </view-block>
 
-        <view class="region-con">
+        <view-block class="region-con">
           <ul class="region-group">
             <li
               v-for="(item, index) in regionList[tabName[tabIndex]]"
@@ -73,11 +74,11 @@
               >{{ item.name }}
             </li>
           </ul>
-        </view>
-      </view>
+        </view-block>
+      </view-block>
 
       <!-- 配送至 -->
-      <view class="exist-address" v-else-if="privateType == 'exist'">
+      <view-block class="exist-address" v-else-if="privateType == 'exist'">
         <div class="exist-address-group">
           <ul class="exist-ul">
             <li
@@ -113,14 +114,19 @@
         >
           <div class="btn">{{ customAndExistTitle }}</div>
         </div>
-      </view>
-    </view>
+      </view-block>
+    </view-block>
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, nextTick } from 'vue';
+import { reactive, ref, toRefs, watch, nextTick, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('address');
+import Icon from '@/packages/__VUE/icon/index.taro.vue';
+import Popup from '@/packages/__VUE/popup/index.taro.vue';
+import Taro from '@tarojs/taro';
+
+const { create, componentName } = createComponent('address');
+
 interface RegionData {
   name: string;
   [key: string]: any;
@@ -210,6 +216,10 @@ export default create({
       default: 'left'
     }
   },
+  components: {
+    'nut-icon': Icon,
+    'nut-popup': Popup
+  },
   emits: [
     'update:visible',
     'type',
@@ -221,6 +231,13 @@ export default create({
   ],
 
   setup(props, { emit }) {
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true
+      };
+    });
+
     const regionLine = ref<null | HTMLElement>(null);
 
     const tabItemRef = reactive({
@@ -278,14 +295,16 @@ export default create({
     };
     // 移动下面的红线
     const lineAnimation = () => {
-      const name = (tabItemRef as any)[tabName.value[tabIndex.value]];
-      nextTick(() => {
-        if (name) {
-          const distance = name.offsetLeft;
-          lineDistance.value = distance;
-          console.log(name);
-        }
-      });
+      setTimeout(() => {
+        Taro.createSelectorQuery()
+          .selectAll(`.${tabName.value[tabIndex.value]}`)
+          .boundingClientRect((rects) => {
+            (rects as any).forEach((rect) => {
+              if (rect.width > 0) lineDistance.value = rect.left;
+            });
+          })
+          .exec();
+      }, 100);
     };
     // 切换下一级列表
     const nextAreaList = (item: RegionData | string) => {
@@ -468,6 +487,7 @@ export default create({
     );
 
     return {
+      classes,
       showPopup,
       privateType,
       tabIndex,
@@ -494,5 +514,5 @@ export default create({
 </script>
 
 <style lang="scss">
-@import 'index.scss';
+@import './index.scss';
 </style>

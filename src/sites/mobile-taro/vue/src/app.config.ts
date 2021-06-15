@@ -2,6 +2,12 @@ export default {
   pages: [
     'pages/range/index',
     'pages/picker/index',
+    'pages/uploader/index',
+    'pages/infiniteloading/index',
+    'pages/address/index',
+    'pages/cell/index',
+    'pages/rate/index',
+    'pages/collapse/index',
     'pages/shortpassword/index',
     'pages/textarea/index',
     'pages/calendar/index',
@@ -19,7 +25,6 @@ export default {
     'pages/checkbox/index',
     'pages/button/index',
     'pages/switch/index',
-    'pages/cell/index',
     'pages/layout/index',
     'pages/index/index'
   ],

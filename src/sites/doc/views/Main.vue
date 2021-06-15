@@ -41,6 +41,11 @@
           <p class="features-desc">遵循京东 App 9.0 设计规范</p>
         </li>
         <li class="features-item">
+          <img src="../../assets/images/img-home-features5.png" />
+          <p class="features-title">适配多端</p>
+          <p class="features-desc a-l">基于 Taro 轻松开发多端小程序</p>
+        </li>
+        <li class="features-item">
           <img src="../../assets/images/img-home-features2.png" />
           <p class="features-title">组件丰富</p>
           <p class="features-desc a-l"
@@ -60,6 +65,23 @@
         </li>
       </ul>
     </div>
+    <!-- taro楼层 -->
+    <div class="doc-content-taro">
+      <div class="doc-content-hd">
+        <h4 class="doc-content-title">一处代码 多端运行</h4>
+      </div>
+      <div class="taro-content">
+        <div class="taro-left"> </div>
+        <div class="taro-right">
+          <div class="right-img"></div>
+          <p class="taro-desc"
+            >联手 Taro 团队打造基于 NutUI 的 Taro 语言组件库<br />支持多端小程序和
+            H5 开发</p
+          >
+        </div>
+      </div>
+    </div>
+
     <div class="doc-content-cases" v-if="casesImages.length">
       <div class="doc-content-hd">
         <h4 class="doc-content-title">赋能案例</h4>
@@ -135,21 +157,21 @@ export default defineComponent({
     onMounted(() => {
       // 文章列表接口
       const apiService = new ApiService();
-      apiService.getArticle().then(res => {
+      apiService.getArticle().then((res) => {
         if (res?.state == 0) {
           data.articleList = (res.value.data.arrays as any[])
-            .map(item => {
+            .map((item) => {
               if (item.type == 1) {
                 return item;
               }
             })
-            .filter(i => i);
+            .filter((i) => i);
         }
       });
-      apiService.getCases().then(res => {
+      apiService.getCases().then((res) => {
         if (res?.state == 0) {
           data.casesImages = (res.value.data.arrays as any[])
-            .map(item => {
+            .map((item) => {
               return item.cover_image.split(',');
             })
             .toString()
@@ -160,7 +182,7 @@ export default defineComponent({
       });
     });
     const findCasesItem = (url: string) => {
-      data.currentCaseItem = casesList.find(i => i.cover_image.includes(url));
+      data.currentCaseItem = casesList.find((i) => i.cover_image.includes(url));
     };
     const onLeft = () => {
       let url = data.casesImages.shift() as string;
@@ -174,7 +196,7 @@ export default defineComponent({
     };
 
     const themeName = computed(() => {
-      return function() {
+      return function () {
         return `doc-content-${RefData.getInstance().themeColor.value}`;
       };
     });
@@ -264,7 +286,7 @@ export default defineComponent({
       margin-top: 50px;
     }
     .features-item {
-      width: 296px;
+      width: 198px;
       text-align: center;
       img {
         width: 100px;
@@ -279,6 +301,36 @@ export default defineComponent({
     .features-desc {
       font-size: 14px;
       line-height: 18px;
+    }
+  }
+  &-taro {
+    width: 1200px;
+    margin: 0 auto 90px;
+    .taro-content {
+      display: flex;
+      .taro-left {
+        margin-left: 50px;
+        width: 453px;
+        height: 386px;
+        background: url('../../assets/images/img-taro-left.png') no-repeat;
+        background-size: cover;
+      }
+      .taro-right {
+        margin-left: 145px;
+        .right-img {
+          width: 436px;
+          height: 213px;
+          background: url('../../assets/images/img-taro-right.png') no-repeat;
+          background-size: cover;
+          margin-bottom: 58px;
+        }
+        .taro-desc {
+          color: #f2f2f2;
+          font-weight: lighter;
+          font-size: 18px;
+          line-height: 30px;
+        }
+      }
     }
   }
   &-cases {
@@ -573,8 +625,35 @@ export default defineComponent({
       color: $theme-white-footer-word3;
     }
   }
+  .taro-content {
+    display: flex;
+    .taro-left {
+      margin-left: 50px;
+      width: 453px;
+      height: 386px;
+      background: url('../../assets/images/img-taro-left-white.png') no-repeat;
+      background-size: cover;
+    }
+    .taro-right {
+      margin-left: 145px;
+      .right-img {
+        width: 436px;
+        height: 213px;
+        background: url('../../assets/images/img-taro-right-white.png')
+          no-repeat;
+        background-size: cover;
+        margin-bottom: 58px;
+      }
+      .taro-desc {
+        color: #1a1a1a;
+        font-weight: lighter;
+        font-size: 18px;
+        line-height: 30px;
+      }
+    }
+  }
 }
 .a-l {
-  text-align: left;
+  text-align: center;
 }
 </style>

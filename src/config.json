@@ -95,6 +95,7 @@
         },
         {
           "name": "Collapse",
+          "taro": true,
           "sort": 2,
           "cName": "折叠面板",
           "type": "component",
@@ -104,6 +105,7 @@
         },
         {
           "name": "CollapseItem",
+          "taro": true,
           "sort": 3,
           "cName": "折叠面板-item",
           "type": "component",
@@ -238,6 +240,7 @@
         },
         {
           "name": "Uploader",
+          "taro": true,
           "sort": 2,
           "cName": "上传组件",
           "type": "component",
@@ -367,6 +370,7 @@
         {
           "version": "3.0.0",
           "name": "InfiniteLoading",
+          "taro": true,
           "type": "component",
           "cName": "滚动加载",
           "desc": "列表滚动到底部自动加载更多数据",
@@ -542,6 +546,7 @@
         {
           "version": "3.0.0",
           "name": "Rate",
+          "taro": true,
           "sort": 4,
           "cName": "评分",
           "type": "component",
@@ -599,6 +604,7 @@
       "packages": [
         {
           "version": "3.0.0",
+          "taro": true,
           "name": "Address",
           "type": "component",
           "cName": "地址组件",
