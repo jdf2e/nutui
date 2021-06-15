@@ -25,6 +25,8 @@ export default {
     'pages/checkbox/index',
     'pages/button/index',
     'pages/switch/index',
+    'pages/price/index',
+    'pages/avatar/index',
     'pages/layout/index',
     'pages/index/index'
   ],

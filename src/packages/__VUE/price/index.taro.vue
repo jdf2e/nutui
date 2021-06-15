@@ -1,10 +1,11 @@
 <template>
   <view :class="classes">
-    <view
+    <text
       v-if="needSymbol"
       class="nut-price--symbol"
+      decode="true"
       v-html="showSymbol"
-    ></view>
+    ></text>
     <view class="nut-price--big">
       {{ formatThousands(price) }}
     </view>
@@ -50,8 +51,18 @@ export default create({
         [componentName]: true
       };
     });
+    const replaceSpecialChar = (url: string) => {
+      url = url.replace(/&quot;/g, '"');
+      url = url.replace(/&amp;/g, '&');
+      url = url.replace(/&lt;/g, '<');
+      url = url.replace(/&gt;/g, '>');
+      url = url.replace(/&nbsp;/g, ' ');
+      url = url.replace(/&yen;/g, '￥');
+      console.log('转义字符', url);
+      return url;
+    };
     const showSymbol = computed(() => {
-      const symbol = props.needSymbol ? props.symbol : '';
+      const symbol = props.needSymbol ? replaceSpecialChar(props.symbol) : '';
       return symbol;
     });
     const checkPoint = (price: string | number) => {
@@ -124,7 +135,8 @@ export default create({
       showSymbol,
       checkPoint,
       formatThousands,
-      formatDecimal
+      formatDecimal,
+      replaceSpecialChar
     };
   }
 });

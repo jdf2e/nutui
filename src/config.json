@@ -260,6 +260,7 @@
         },
         {
           "name": "Price",
+          "taro": true,
           "sort": 4,
           "cName": "价格组件",
           "type": "component",
@@ -298,6 +299,7 @@
         },
         {
           "name": "Avatar",
+          "taro": true,
           "sort": 7,
           "cName": "头像",
           "type": "component",
