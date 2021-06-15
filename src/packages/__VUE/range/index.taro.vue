@@ -78,10 +78,10 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
+import Taro from '@tarojs/taro';
+import { ref, toRefs, computed, PropType, CSSProperties, onUpdated } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from '@/packages/utils/useTouch';
-import { useRect } from '@/packages/utils/useRect';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { componentName, create } = createComponent('range');
 
@@ -217,14 +217,14 @@ export default create({
       }
     };
 
-    const onClick = (event: MouseEvent) => {
+    const onClick = async (event: MouseEvent) => {
       if (props.disabled) {
         return;
       }
 
       const { min, modelValue } = props;
-      let rect = useTaroRect(root);
-      const delta = event.clientX - rect.left;
+      let rect = (await useTaroRect(root, Taro)) as any;
+      const delta = (event as any).touches[0].clientX - rect.left;
       const total = rect.width;
       const value = Number(min) + (delta / total) * scope.value;
       if (isRange(modelValue)) {
@@ -257,7 +257,7 @@ export default create({
       dragStatus.value = 'start';
     };
 
-    const onTouchMove = (event: TouchEvent) => {
+    const onTouchMove = async (event: TouchEvent) => {
       if (props.disabled) {
         return;
       }
@@ -269,7 +269,7 @@ export default create({
       touch.move(event);
       dragStatus.value = 'draging';
 
-      const rect = useRect(root);
+      const rect = (await useTaroRect(root, Taro)) as any;
       const delta = touch.deltaX.value;
       const total = rect.width;
       const diff = (delta / total) * scope.value;
