@@ -1,6 +1,6 @@
 <template>
   <div class="demo full">
-    <h2>默认用法 (内置"small","normal","large","largest"四种尺寸规格)</h2>
+    <h2>默认用法 (内置"small","normal","large"三种尺寸规格)</h2>
     <nut-cell>
       <nut-avatar
         size="large"
@@ -25,7 +25,7 @@
     </nut-cell>
     <h2>修改背景色</h2>
     <nut-cell>
-      <nut-avatar icon="my" bg-color="#FA2C19"></nut-avatar>
+      <nut-avatar class="demo-avatar" icon="my" bg-color="#FA2C19"></nut-avatar>
     </nut-cell>
     <h2>修改背景图片</h2>
     <nut-cell>
@@ -61,5 +61,8 @@ export default createDemo({
 .nut-cell {
   align-items: flex-end;
   border-radius: 0;
+}
+.demo-avatar {
+  color: #fff;
 }
 </style>
