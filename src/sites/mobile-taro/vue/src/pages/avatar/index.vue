@@ -45,9 +45,7 @@
   </div>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('avatar');
-export default createDemo({
+export default {
   props: {},
   setup() {
     const handleClick = () => {
@@ -55,9 +53,9 @@ export default createDemo({
     };
     return { handleClick };
   }
-});
+};
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .nut-cell {
   align-items: flex-end;
   border-radius: 0;
