@@ -475,9 +475,8 @@ export default create({
       if (scrolling && !customBgImg) {
         // 数字都是从小加到大的，所以我们循环转动最后一个数字，传入最后一个数字的DOM
         nextTick(() => {
-          let refsDom: HTMLCollectionOf<Element> = document.getElementsByClassName(
-            'numberItem'
-          );
+          let refsDom: HTMLCollectionOf<Element> =
+            document.getElementsByClassName('numberItem');
           let element = refsDom[data.num_total_len - 1];
           runTurn(element);
         });
