@@ -187,6 +187,7 @@
         {
           "version": "3.0.0",
           "name": "Picker",
+          "taro": true,
           "type": "component",
           "cName": "选择器",
           "desc": "提供多个选型集合供用户选择,支持单列选择和多列级联,通常与弹出层配合使用",
@@ -382,12 +383,13 @@
         {
           "version": "3.0.0",
           "name": "Range",
+          "taro": true,
           "type": "component",
           "cName": "区间选择器",
           "desc": "滑动输入条，用于在给定的范围内选择一个值。",
           "sort": 16,
           "show": true,
-          "author": "Jerry"
+          "author": "zy19940510"
         },
         {
           "name": "PullRefresh",

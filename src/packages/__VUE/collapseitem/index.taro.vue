@@ -136,9 +136,8 @@ export default create({
 
     // 清除 willChange 减少性能浪费
     const onTransitionEnd = () => {
-      const wrapperRefEle: any = document.getElementsByClassName(
-        'collapse-wrapper'
-      )[0];
+      const wrapperRefEle: any =
+        document.getElementsByClassName('collapse-wrapper')[0];
       wrapperRefEle.style.willChange = 'auto';
     };
 
@@ -231,7 +230,7 @@ export default create({
           defaultOpen();
         }
       } else if (Object.values(active) instanceof Array) {
-        const f = Object.values(active).filter(item => item == name);
+        const f = Object.values(active).filter((item) => item == name);
         if (f.length > 0) {
           defaultOpen();
         }

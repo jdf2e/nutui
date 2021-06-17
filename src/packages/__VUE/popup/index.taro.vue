@@ -217,7 +217,7 @@ export default create({
     });
     watch(
       () => props.visible,
-      value => {
+      (value) => {
         if (value) {
           open();
         } else {
@@ -227,7 +227,7 @@ export default create({
     );
     watch(
       () => props.position,
-      value => {
+      (value) => {
         value === 'center'
           ? (state.transitionName = 'popup-fade')
           : (state.transitionName = `popup-slide-${value}`);

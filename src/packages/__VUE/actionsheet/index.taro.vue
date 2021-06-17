@@ -86,7 +86,7 @@ export default create({
       };
     });
 
-    const isHighlight = item => {
+    const isHighlight = (item) => {
       return props.chooseTagValue &&
         props.chooseTagValue === item[props.optionTag]
         ? props.color
