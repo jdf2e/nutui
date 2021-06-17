@@ -33,7 +33,6 @@
       </nut-collapse-item>
     </nut-collapse>
     <h2>自定义折叠图标</h2>
-
     <nut-collapse
       v-model:active="active3"
       :accordion="true"
