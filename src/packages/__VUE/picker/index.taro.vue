@@ -14,7 +14,7 @@
 import { onUpdated, ref, watch } from 'vue';
 const { create } = createComponent('picker');
 import { commonProps } from './commonProps';
-import { createComponent } from './../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 export default create({
   props: {
     mode: {
