@@ -74,10 +74,10 @@
         <div class="taro-left"> </div>
         <div class="taro-right">
           <div class="right-img"></div>
-          <p class="taro-desc"
-            >联手 Taro 团队打造基于 NutUI 的 Taro 语言组件库<br />支持多端小程序和
-            H5 开发</p
-          >
+          <p class="taro-desc">
+            基于 Taro 对 NutUI 每一个组件进行深度适配<br />
+            支持开发多端小程序
+          </p>
         </div>
       </div>
     </div>
@@ -325,6 +325,7 @@ export default defineComponent({
           margin-bottom: 58px;
         }
         .taro-desc {
+          padding-left: 25px;
           color: #f2f2f2;
           font-weight: lighter;
           font-size: 18px;
