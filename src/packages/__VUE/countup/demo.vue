@@ -65,7 +65,7 @@
 
 <script lang="ts">
 import { ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { reactive, toRefs } from '@vue/reactivity';
 import { onMounted } from '@vue/runtime-core';
 const { createDemo } = createComponent('countup');

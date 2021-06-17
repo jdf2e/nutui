@@ -41,7 +41,7 @@
 
 <script lang="ts">
 import { computed, PropType, reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { Uploader, UploadOptions } from './uploader';
 const { componentName, create } = createComponent('uploader');
 import Taro from '@tarojs/taro';

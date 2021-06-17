@@ -29,7 +29,7 @@
 </template>
 <script lang="ts">
 import { ref, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { formatNumber } from './util';
 
 const { componentName, create } = createComponent('input');

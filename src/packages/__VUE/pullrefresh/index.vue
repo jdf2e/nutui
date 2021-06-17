@@ -33,7 +33,7 @@
 
 <script lang="ts">
 import { ref, toRefs, reactive, onMounted, computed, CSSProperties } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { useTouch } from './use-touch';
 import { preventDefault } from './util';
 const { componentName, create } = createComponent('pullrefresh');
@@ -252,7 +252,7 @@ export default create({
     };
 
     /** 获取监听自定义滚动节点 */
-    const getParentElement = el => {
+    const getParentElement = (el) => {
       if (containerId.value != '') {
         return document.querySelector(`#${containerId.value}`);
       }
@@ -289,7 +289,7 @@ export default create({
       setStatus(0);
     };
 
-    const touchStart = event => {
+    const touchStart = (event) => {
       if (isTouchable()) {
         if (direction.value == 'vertical') {
           /** 判断滚动条是否在顶部 */
@@ -325,7 +325,7 @@ export default create({
       }
     };
 
-    const touchMove = event => {
+    const touchMove = (event) => {
       if (isTouchable()) {
         const { deltaY, deltaX } = touch;
         touch.move(event);

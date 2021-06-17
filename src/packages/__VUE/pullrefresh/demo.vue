@@ -50,19 +50,19 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('pullrefresh');
 export default createDemo({
   props: {},
   setup() {
-    const refresh = done => {
+    const refresh = (done) => {
       console.log('上拉加载');
       setTimeout(() => {
         done();
       }, 1000);
     };
 
-    const downRefresh = done => {
+    const downRefresh = (done) => {
       console.log('下拉刷新');
       setTimeout(() => {
         done();

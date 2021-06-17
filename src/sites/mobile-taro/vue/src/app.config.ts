@@ -1,6 +1,6 @@
 export default {
   pages: [
-    'pages/uploader/index',
+    'pages/notify/index',
     'pages/infiniteloading/index',
     'pages/address/index',
     'pages/cell/index',

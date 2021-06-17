@@ -61,7 +61,7 @@
 
 <script lang="ts">
 import { reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('input');
 export default createDemo({
   setup() {
@@ -76,7 +76,7 @@ export default createDemo({
       val7: '',
       val8: '文案'
     });
-    setTimeout(function() {
+    setTimeout(function () {
       state.val1 = '异步数据';
     }, 2000);
     const change = (value: string | number, event: Event) => {

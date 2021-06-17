@@ -34,7 +34,7 @@
 
 <script>
 import { reactive, getCurrentInstance } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('rate');
 export default createDemo({
   setup() {
@@ -51,7 +51,7 @@ export default createDemo({
       val7: 3,
       val8: 3
     });
-    const onChange = val => {
+    const onChange = (val) => {
       proxy.$toast.text(val);
     };
     return {

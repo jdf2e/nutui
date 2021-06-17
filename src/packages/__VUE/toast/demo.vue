@@ -30,24 +30,24 @@
 </template>
 
 <script>
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('toast');
 import { Toast } from '@/packages/nutui.vue';
 export default createDemo({
   setup() {
-    const textToast = msg => {
+    const textToast = (msg) => {
       Toast.text(msg);
     };
-    const successToast = msg => {
+    const successToast = (msg) => {
       Toast.success(msg);
     };
-    const errorToast = msg => {
+    const errorToast = (msg) => {
       Toast.fail(msg);
     };
-    const warningToast = msg => {
+    const warningToast = (msg) => {
       Toast.warn(msg);
     };
-    const loadingToast = msg => {
+    const loadingToast = (msg) => {
       Toast.loading(msg);
     };
     return {

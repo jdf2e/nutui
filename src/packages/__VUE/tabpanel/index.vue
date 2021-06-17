@@ -4,7 +4,7 @@
   </div>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('tab-panel');
 
 export default create({

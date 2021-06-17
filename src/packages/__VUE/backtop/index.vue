@@ -15,7 +15,7 @@ import {
   onDeactivated,
   reactive
 } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('backtop');
 export default create({
   props: {
@@ -122,7 +122,7 @@ export default create({
       return (
         window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
-        function(callback) {
+        function (callback) {
           window.setTimeout(callback, 1000 / 60);
         }
       );

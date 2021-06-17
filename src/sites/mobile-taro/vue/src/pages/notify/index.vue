@@ -59,51 +59,7 @@
 </template>
 
 <script lang="ts">
-import { createApp } from 'vue';
-import { createComponent } from '../../utils/create';
-import { Notify } from './notify';
-const { createDemo } = createComponent('notify');
-export default createDemo({
-  setup() {
-    const baseNotify = (msg: string) => {
-      Notify.text(msg, {
-        onClose: () => {
-          console.log('close');
-        },
-        onClick: () => {
-          console.log('click');
-        }
-      });
-    };
-    const primaryNotify = (msg: string) => {
-      Notify.primary(msg);
-    };
-    const successNotify = (msg: string) => {
-      Notify.success(msg);
-    };
-    const errorNotify = (msg: string) => {
-      Notify.danger(msg);
-    };
-    const warningNotify = (msg: string) => {
-      Notify.warn(msg);
-    };
-    const cusBgNotify = (msg: string) => {
-      Notify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
-    };
-    const timeNotify = (msg: string) => {
-      Notify.text(msg, { duration: 10000 });
-    };
-    return {
-      baseNotify,
-      primaryNotify,
-      successNotify,
-      errorNotify,
-      warningNotify,
-      cusBgNotify,
-      timeNotify
-    };
-  }
-});
+export default {
+  setup() {}
+};
 </script>
-
-<style lang="scss" scoped></style>

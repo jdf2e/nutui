@@ -5,9 +5,9 @@
 </template>
 <script lang="ts">
 import { toRefs, reactive, provide, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('menu');
-import menuitem from '@/packages/__VUE/menuitem/index.vue';
+import menuitem from '../menuitem/index.vue';
 export default create({
   children: [menuitem],
   props: {

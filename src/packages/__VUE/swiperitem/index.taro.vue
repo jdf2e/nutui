@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, reactive, inject, getCurrentInstance, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('swiper-item');
 export default create({
   props: {},
