@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { FileItem } from './index.vue';
 const { createDemo } = createComponent('uploader');
 export default createDemo({
@@ -52,14 +52,14 @@ export default createDemo({
       custom: 'test'
     };
     const fileToDataURL = (file: Blob): Promise<any> => {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         const reader = new FileReader();
-        reader.onloadend = e => resolve((e.target as FileReader).result);
+        reader.onloadend = (e) => resolve((e.target as FileReader).result);
         reader.readAsDataURL(file);
       });
     };
     const dataURLToImage = (dataURL: string): Promise<HTMLImageElement> => {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         const img = new Image();
         img.onload = () => resolve(img);
         img.src = dataURL;
@@ -70,8 +70,8 @@ export default createDemo({
       type: string,
       quality: number
     ): Promise<Blob | null> => {
-      return new Promise(resolve =>
-        canvas.toBlob(blob => resolve(blob), type, quality)
+      return new Promise((resolve) =>
+        canvas.toBlob((blob) => resolve(blob), type, quality)
       );
     };
     const onOversize = (files: File[]) => {

@@ -28,7 +28,7 @@
 </template>
 <script lang="ts">
 import { ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('dialog');
 import { Dialog } from '@/packages/nutui.vue';
 

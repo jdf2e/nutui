@@ -50,10 +50,10 @@
 </template>
 <script lang="ts">
 import { onMounted, computed, watch, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('dialog');
-import Popup, { popupProps } from '@/packages/__VUE/popup/index.vue';
-import Button from '@/packages/__VUE/button/index.vue';
+import Popup, { popupProps } from '../popup/index.vue';
+import Button from '../button/index.vue';
 export default create({
   inheritAttrs: false,
   children: [Popup, Button],
@@ -142,7 +142,7 @@ export default create({
     const showPopup = ref(props.visible);
     onMounted(() => {
       if (props.closeOnPopstate) {
-        window.addEventListener('popstate', function() {
+        window.addEventListener('popstate', function () {
           closed();
         });
       }
@@ -150,7 +150,7 @@ export default create({
 
     watch(
       () => props.visible,
-      value => {
+      (value) => {
         showPopup.value = value;
       }
     );

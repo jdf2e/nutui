@@ -21,7 +21,7 @@
 </template>
 <script lang="ts">
 import { PropType, reactive, ref, onMounted, watch, VNode } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('tab');
 import TabTitle from './tabTitle';
 import Swiper from 'swiper';
@@ -114,10 +114,10 @@ export default create({
         direction: props.direction,
         initialSlide: currIndex,
         on: {
-          touchStart: function() {
+          touchStart: function () {
             isLock.value = true;
           },
-          transitionEnd: function(): void {
+          transitionEnd: function (): void {
             ctx.emit('switchTab', (mySwiper as Swiper).realIndex, mySwiper);
             if (isLock.value) {
               activeIndex.value = (mySwiper as Swiper).realIndex;

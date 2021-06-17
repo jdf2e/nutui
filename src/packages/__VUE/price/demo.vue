@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { ref } from 'vue';
 const { createDemo } = createComponent('price');
 export default createDemo({

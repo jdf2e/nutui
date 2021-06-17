@@ -52,8 +52,8 @@ import {
 } from 'vue';
 import { useLockScroll } from './use-lock-scroll';
 import { overlayProps } from './../overlay/index.vue';
-import overlay from '@/packages/__VUE/overlay/index.vue';
-import { createComponent } from '@/packages/utils/create';
+import overlay from '../overlay/index.vue';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('popup');
 
 let _zIndex = 2000;
@@ -245,7 +245,7 @@ export default create({
 
     watch(
       () => props.visible,
-      value => {
+      (value) => {
         if (value) {
           open();
         } else {
@@ -256,7 +256,7 @@ export default create({
 
     watch(
       () => props.position,
-      value => {
+      (value) => {
         value === 'center'
           ? (state.transitionName = 'popup-fade')
           : (state.transitionName = `popup-slide-${value}`);

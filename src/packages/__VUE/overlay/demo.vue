@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import { reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('overlay');
 export default createDemo({
   props: {},

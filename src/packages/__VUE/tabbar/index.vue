@@ -6,9 +6,9 @@
 
 <script lang="ts">
 import { provide, reactive, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('tabbar');
-import tabbaritem from '@/packages/__VUE/tabbaritem/index.vue';
+import tabbaritem from '../tabbaritem/index.vue';
 export default create({
   children: [tabbaritem],
   props: {
@@ -59,7 +59,7 @@ export default create({
     provide('parent', parentData);
     watch(
       () => props.visible,
-      value => {
+      (value) => {
         parentData.modelValue = value;
       }
     );

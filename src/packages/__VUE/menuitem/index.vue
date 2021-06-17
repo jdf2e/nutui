@@ -46,7 +46,7 @@ import {
   onUnmounted,
   inject
 } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('menu-item');
 export default create({
   props: {
