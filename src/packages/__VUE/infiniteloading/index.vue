@@ -37,7 +37,10 @@ import {
   onUnmounted,
   reactive,
   computed,
-  CSSProperties
+  CSSProperties,
+  onActivated,
+  onDeactivated,
+  ref
 } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('infiniteloading');
@@ -261,6 +264,24 @@ export default create({
     });
 
     onUnmounted(() => {
+      state.scrollEl.removeEventListener(
+        'scroll',
+        handleScroll,
+        props.useCapture
+      );
+    });
+
+    const isKeepAlive = ref(false);
+
+    onActivated(() => {
+      if (isKeepAlive.value) {
+        isKeepAlive.value = false;
+        scrollListener();
+      }
+    });
+
+    onDeactivated(() => {
+      isKeepAlive.value = true;
       state.scrollEl.removeEventListener(
         'scroll',
         handleScroll,
