@@ -9,10 +9,10 @@ export interface NavBarProps {
   leftShow: boolean
   icon: string
   titIcon: string
-  onClickTitle: (e: MouseEvent) => void
-  onClickIcon: (e: MouseEvent) => void
-  onClickBack: (e: MouseEvent) => void
-  onClickClear: (e: MouseEvent) => void
+  onClickTitle: (e: React.MouseEvent<HTMLDivElement>) => void
+  onClickIcon: (e: React.MouseEvent<HTMLDivElement>) => void
+  onClickBack: (e: React.MouseEvent<HTMLElement>) => void
+  onClickClear: (e: React.MouseEvent<HTMLDivElement>) => void
 }
 const defaultProps = {
   title: '',
