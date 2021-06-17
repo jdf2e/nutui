@@ -23,15 +23,14 @@
         @click="onClick"
       >
         <slot v-if="showSlot"></slot>
-        <nut-icon
+        <view
           v-if="closeable"
           @click="onClickCloseIcon"
-          :name="closeIcon"
-          size="12px"
           class="nutui-popup__close-icon"
           :class="'nutui-popup__close-icon--' + closeIconPosition"
         >
-        </nut-icon>
+          <nut-icon :name="closeIcon" size="12px" />
+        </view>
       </view>
     </Transition>
   </view>
