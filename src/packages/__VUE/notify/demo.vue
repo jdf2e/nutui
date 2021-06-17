@@ -60,7 +60,7 @@
 
 <script lang="ts">
 import { createApp } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { Notify } from './notify';
 const { createDemo } = createComponent('notify');
 export default createDemo({

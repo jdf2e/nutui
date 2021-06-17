@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, h, inject } from 'vue';
-import nutIcon from '@/packages/__VUE/icon/index.taro.vue';
-import radiogroup from '@/packages/__VUE/radiogroup/index.vue';
+import nutIcon from '../icon/index.taro.vue';
+import radiogroup from '../radiogroup/index.vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('radio');
 

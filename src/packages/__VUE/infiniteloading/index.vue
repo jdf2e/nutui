@@ -39,7 +39,7 @@ import {
   computed,
   CSSProperties
 } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('infiniteloading');
 export default create({
   props: {
@@ -133,7 +133,7 @@ export default create({
       return (
         window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
-        function(callback) {
+        function (callback) {
           window.setTimeout(callback, 1000 / 60);
         }
       );
@@ -170,11 +170,8 @@ export default create({
         }
         resScrollTop = windowScrollTop;
       } else {
-        const {
-          scrollHeight,
-          clientHeight,
-          scrollTop
-        } = state.scrollEl as HTMLElement;
+        const { scrollHeight, clientHeight, scrollTop } =
+          state.scrollEl as HTMLElement;
 
         offsetDistance = scrollHeight - clientHeight - scrollTop;
         resScrollTop = scrollTop;
@@ -226,8 +223,9 @@ export default create({
         state.y = event.touches[0].pageY;
         state.isTouching = true;
 
-        const childHeight = ((state.refreshTop as HTMLElement)
-          .firstElementChild as HTMLElement).offsetHeight;
+        const childHeight = (
+          (state.refreshTop as HTMLElement).firstElementChild as HTMLElement
+        ).offsetHeight;
         state.refreshMaxH = Math.floor(childHeight * 1 + 10);
       }
     };

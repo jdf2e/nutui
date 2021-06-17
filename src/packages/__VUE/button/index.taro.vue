@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { PropType, CSSProperties, toRefs, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('button');
 
 export type ButtonType =
@@ -62,16 +62,8 @@ export default create({
   },
   emits: ['click'],
   setup(props, { emit, slots }) {
-    const {
-      type,
-      size,
-      shape,
-      disabled,
-      loading,
-      color,
-      plain,
-      block
-    } = toRefs(props);
+    const { type, size, shape, disabled, loading, color, plain, block } =
+      toRefs(props);
 
     const handleClick = (event: MouseEvent) => {
       if (!loading.value && !disabled.value) {

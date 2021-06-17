@@ -6,7 +6,7 @@
 </template>
 <script lang="ts">
 import { toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('temp');
 
 export default create({

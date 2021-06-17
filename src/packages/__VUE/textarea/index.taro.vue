@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
 import { computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 
 const { componentName, create } = createComponent('textarea');
 

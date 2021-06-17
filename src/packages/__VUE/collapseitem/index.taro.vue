@@ -67,7 +67,7 @@ import Taro, {
   eventCenter,
   getCurrentInstance as getCurrentInstanceTaro
 } from '@tarojs/taro';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('collapse-item');
 
 export default create({

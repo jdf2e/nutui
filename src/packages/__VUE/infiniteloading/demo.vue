@@ -66,7 +66,7 @@
 
 <script lang="ts">
 import { onMounted, ref, reactive, toRefs, getCurrentInstance } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('infiniteloading');
 export default createDemo({
   props: {},
@@ -83,7 +83,7 @@ export default createDemo({
       refreshList: ['']
     });
 
-    const loadMore = done => {
+    const loadMore = (done) => {
       setTimeout(() => {
         const curLen = data.defultList.length;
 
@@ -97,7 +97,7 @@ export default createDemo({
       }, 500);
     };
 
-    const customLoadMore = done => {
+    const customLoadMore = (done) => {
       setTimeout(() => {
         const curLen = data.customList.length;
         for (let i = curLen; i < curLen + 10; i++) {
@@ -108,7 +108,7 @@ export default createDemo({
       }, 500);
     };
 
-    const refreshLoadMore = done => {
+    const refreshLoadMore = (done) => {
       setTimeout(() => {
         const curLen = data.refreshList.length;
         for (let i = curLen; i < curLen + 10; i++) {
@@ -119,7 +119,7 @@ export default createDemo({
       }, 500);
     };
 
-    const refresh = done => {
+    const refresh = (done) => {
       setTimeout(() => {
         proxy.$toast.text('刷新成功');
         done();

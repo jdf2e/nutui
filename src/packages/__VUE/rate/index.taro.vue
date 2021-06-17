@@ -27,8 +27,8 @@
 </template>
 <script lang="ts">
 import { computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { createComponent } from '../../utils/create';
+import { pxCheck } from '../../utils/pxCheck';
 const { componentName, create } = createComponent('rate');
 import Taro from '@tarojs/taro';
 export default create({

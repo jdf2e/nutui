@@ -13,7 +13,7 @@
 </template>
 <script lang="ts">
 import { CSSProperties, PropType, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('overlay');
 const overlayProps = {
   visible: {

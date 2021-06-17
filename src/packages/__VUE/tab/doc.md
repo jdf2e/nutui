@@ -26,7 +26,7 @@ switchTab监听切换tab返回事件
   <nut-tab-panel tab-title="已完成"><p class="content">这里是页签已完成内容</p></nut-tab-panel>
 </nut-tab>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('tab');
 export default createDemo({
   setup() {
@@ -115,7 +115,7 @@ export default createDemo({
 </div>
 <script lang="ts">
 import { ref , reactive,toRefs } from "vue";
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('tab');
 export default createDemo({
   setup() {

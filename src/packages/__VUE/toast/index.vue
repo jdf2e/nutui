@@ -26,9 +26,9 @@
 </template>
 <script>
 import { toRefs, toRef, reactive, computed, watch, onMounted } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('toast');
-import Icon from '@/packages/__VUE/icon/index.vue';
+import Icon from '../icon/index.vue';
 export default create({
   components: {
     [Icon.name]: Icon
@@ -120,7 +120,7 @@ export default create({
 
     watch(
       () => props.duration,
-      val => {
+      (val) => {
         if (val) {
           show();
         }

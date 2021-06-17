@@ -76,7 +76,7 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 
 const { createDemo } = createComponent('calendar');
 

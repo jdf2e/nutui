@@ -34,9 +34,9 @@
 
 <script lang="ts">
 import { computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { useRoute, useRouter } from 'vue-router';
-import CellGroup from '@/packages/__VUE/cellgroup/index.vue';
+import CellGroup from '../cellgroup/index.vue';
 const { componentName, create } = createComponent('cell');
 export default create({
   props: {

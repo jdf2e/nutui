@@ -2,10 +2,10 @@ const package = require('../package.json');
 const config = require('../src/config.json');
 const path = require('path');
 const fs = require('fs-extra');
-let importStr = `import { App } from 'vue';\n`;
+let importStr = `//import { App } from 'vue';\n`;
 const packages = [];
-config.nav.map(item => {
-  item.packages.forEach(element => {
+config.nav.map((item) => {
+  item.packages.forEach((element) => {
     let { name, show, type, taro } = element;
     if (show && taro) {
       importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${
@@ -15,7 +15,7 @@ config.nav.map(item => {
     }
   });
 });
-let installFunction = `function install(app: App) {
+let installFunction = `function install(app: any) {
   const packages = [${packages.join(',')}];
   packages.forEach((item:any) => {
     if (item.install) {
@@ -33,7 +33,7 @@ fs.outputFile(
   path.resolve(__dirname, '../src/packages/nutui.taro.vue.ts'),
   fileStr,
   'utf8',
-  error => {
+  (error) => {
     // logger.success(`${package_config_path} 文件写入成功`);
   }
 );

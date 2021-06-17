@@ -120,9 +120,9 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, watch, nextTick, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import Icon from '@/packages/__VUE/icon/index.taro.vue';
-import Popup from '@/packages/__VUE/popup/index.taro.vue';
+import { createComponent } from '../../utils/create';
+import Icon from '../icon/index.taro.vue';
+import Popup from '../popup/index.taro.vue';
 import Taro from '@tarojs/taro';
 
 const { create, componentName } = createComponent('address');
