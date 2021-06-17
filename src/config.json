@@ -121,6 +121,16 @@
           "sort": 1,
           "show": true,
           "author": "oasis-cloud"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Avatar",
+          "type": "component",
+          "cName": "头像",
+          "desc": "用来代表用户或事物，支持图片、图标或字符展示。",
+          "sort": 2,
+          "show": true,
+          "author": "junjun"
         }
       ]
     },
