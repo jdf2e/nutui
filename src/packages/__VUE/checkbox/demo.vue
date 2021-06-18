@@ -108,7 +108,10 @@
           ref="group"
           @change="changeBox4"
         >
-          <nut-checkbox v-model="checkbox15" label="1" style="marginright: 20px"
+          <nut-checkbox
+            v-model="checkbox15"
+            label="1"
+            style="margin: 0 20px 0 0"
             >组合复选框</nut-checkbox
           >
           <nut-checkbox v-model="checkbox16" label="2">组合复选框</nut-checkbox>
@@ -118,7 +121,7 @@
         <nut-button
           type="primary"
           @click="toggleAll(true)"
-          style="marginright: 20px"
+          style="margin: 0 20px 0 0"
           >全选</nut-button
         >
         <nut-button type="info" @click="toggleAll(false)">取消</nut-button>
