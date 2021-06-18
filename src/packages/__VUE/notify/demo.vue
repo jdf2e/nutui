@@ -59,9 +59,8 @@
 </template>
 
 <script lang="ts">
-import { createApp } from 'vue';
 import { createComponent } from '../../utils/create';
-import { Notify } from './notify';
+import { Notify } from '../../nutui.vue';
 const { createDemo } = createComponent('notify');
 export default createDemo({
   setup() {
