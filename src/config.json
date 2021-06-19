@@ -177,7 +177,7 @@
         {
           "version": "3.0.0",
           "name": "Notify",
-          "taro": true,
+          "taro": false,
           "type": "methods",
           "cName": "消息通知",
           "desc": "在页面顶部展示消息提示，支持函数调用和组件调用两种方式",
@@ -321,6 +321,7 @@
         },
         {
           "name": "Dialog",
+          "taro": true,
           "type": "methods",
           "cName": "对话框",
           "desc": "模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。",

@@ -8,9 +8,7 @@ config.nav.map((item) => {
   item.packages.forEach((element) => {
     let { name, show, type, taro } = element;
     if (show && taro) {
-      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${
-        type === 'methods' ? '' : '.taro.vue'
-      }';\n`;
+      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index.taro.vue';\n`;
       packages.push(name);
     }
   });
