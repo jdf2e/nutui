@@ -1,5 +1,5 @@
 <template>
-  <div v-if="title != '/'" id="nav">
+  <div v-if="isShow" id="nav">
     <div class="back" @click="goBack">
       <nut-icon name="left"></nut-icon>
     </div>
@@ -8,7 +8,7 @@
   <router-view />
 </template>
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent, ref, watch, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { isMobile } from '@/sites/assets/util';
 export default defineComponent({
@@ -23,6 +23,13 @@ export default defineComponent({
     const goBack = () => {
       router.back();
     };
+
+    // 是否显示 title
+    const isShow = computed(() => {
+      return (
+        title.value && title.value != '/' && !title.value.includes('-taro')
+      );
+    });
     // 当当前路由发生变化时，调用回调函数
     watch(
       () => route,
@@ -42,7 +49,7 @@ export default defineComponent({
       }
     );
 
-    return { title, goBack };
+    return { title, isShow, goBack };
   }
 });
 </script>
