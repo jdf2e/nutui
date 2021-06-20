@@ -167,6 +167,7 @@
         },
         {
           "name": "Toast",
+          "taro": true,
           "sort": "1",
           "cName": "吐司",
           "type": "methods",
