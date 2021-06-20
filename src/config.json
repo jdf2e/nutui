@@ -183,8 +183,8 @@
         {
           "version": "3.0.0",
           "name": "Notify",
-          "taro": false,
           "tarodoc": true,
+          "taro": true,
           "type": "methods",
           "cName": "消息通知",
           "desc": "在页面顶部展示消息提示，支持函数调用和组件调用两种方式",
