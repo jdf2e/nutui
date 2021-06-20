@@ -79,7 +79,10 @@ export default create({
     };
 
     const onAfterLeave = () => {
-      clearTimer();
+      if (props.visible) {
+        clearTimer();
+        hide();
+      }
     };
     return { hide, onAfterLeave, onClick };
   }
