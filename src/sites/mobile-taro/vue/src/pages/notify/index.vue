@@ -1,65 +1,131 @@
 <template>
   <div class="demo">
-    <h2>基础用法</h2>
-    <nut-cell :showIcon="true" :isLink="true" @click="baseNotify('基础用法')">
-      <span>
-        <label>基础用法</label>
-      </span>
-    </nut-cell>
-    <h2>通知类型</h2>
-    <nut-cell
-      :showIcon="true"
-      :isLink="true"
-      @click="primaryNotify('主要通知')"
-    >
-      <span>
-        <label>主要通知</label>
-      </span>
-    </nut-cell>
-    <nut-cell
-      :showIcon="true"
-      :isLink="true"
-      @click="successNotify('成功通知')"
-    >
-      <span>
-        <label>成功通知</label>
-      </span>
-    </nut-cell>
-    <nut-cell :showIcon="true" :isLink="true" @click="errorNotify('危险通知')">
-      <span>
-        <label>危险通知</label>
-      </span>
-    </nut-cell>
-    <nut-cell
-      :showIcon="true"
-      :isLink="true"
-      @click="warningNotify('警告通知')"
-    >
-      <span>
-        <label>警告通知</label>
-      </span>
-    </nut-cell>
-    <h2>自定义样式</h2>
-    <nut-cell
-      :showIcon="true"
-      :isLink="true"
-      @click="cusBgNotify('自定义背景色和字体颜色')"
-    >
-      <span>
-        <label>自定义背景色和字体颜色</label>
-      </span>
-    </nut-cell>
-    <h2>自定义时长</h2>
-    <nut-cell :showIcon="true" :isLink="true" @click="timeNotify('自定义时长')">
-      <span>
-        <label>自定义时长</label>
-      </span>
-    </nut-cell>
+    <nut-cell-group :title="baseState.state.desc">
+      <nut-cell is-Link @click="baseState.methods.cellClick">{{
+        baseState.state.desc
+      }}</nut-cell>
+      <nut-notify
+        @click="onClick"
+        @closed="onClosed"
+        v-model:visible="baseState.state.show"
+        :msg="baseState.state.desc"
+      />
+    </nut-cell-group>
+
+    <nut-cell-group title="通知类型">
+      <nut-notify
+        @click="onClick"
+        @closed="onClosed"
+        :type="notifyState.state.type"
+        v-model:visible="notifyState.state.show"
+        :msg="notifyState.state.desc"
+      />
+      <nut-cell
+        is-Link
+        @click="notifyState.methods.cellClick('primary', '主要通知')"
+        >主要通知</nut-cell
+      >
+      <nut-cell
+        is-Link
+        @click="notifyState.methods.cellClick('success', '成功通知')"
+        >成功通知</nut-cell
+      >
+      <nut-cell
+        is-Link
+        @click="notifyState.methods.cellClick('danger', '危险通知')"
+        >危险通知</nut-cell
+      >
+      <nut-cell
+        is-Link
+        @click="notifyState.methods.cellClick('warning', '警告通知')"
+        >警告通知</nut-cell
+      >
+    </nut-cell-group>
+    <nut-cell-group title="自定义样式">
+      <nut-notify
+        @click="onClick"
+        @closed="onClosed"
+        color="#ad0000"
+        background="#ffe1e1"
+        :type="customState.state.type"
+        v-model:visible="customState.state.show"
+        :msg="customState.state.desc"
+        :duration="customState.state.duration"
+      />
+      <nut-cell
+        is-Link
+        @click="
+          customState.methods.cellClick('primary', '自定义背景色和字体颜色')
+        "
+      >
+        自定义背景色和字体颜色
+      </nut-cell>
+      <nut-cell
+        is-Link
+        @click="customState.methods.cellClick('primary', '自定义时长5s', 5000)"
+      >
+        自定义时长5s
+      </nut-cell>
+    </nut-cell-group>
   </div>
 </template>
 
 <script lang="ts">
+import { reactive } from 'vue';
 export default {
-  setup() {}
+  setup() {
+    const onClosed = () => console.log('closed');
+    const onClick = () => console.log('click');
+
+    const baseState = {
+      state: reactive({
+        show: false,
+        desc: '基础用法'
+      }),
+      methods: {
+        cellClick() {
+          baseState.state.show = true;
+        }
+      }
+    };
+
+    const notifyState = {
+      state: reactive({
+        show: false,
+        desc: '',
+        type: 'primary'
+      }),
+      methods: {
+        cellClick(type: string, desc: string) {
+          notifyState.state.show = true;
+          notifyState.state.type = type;
+          notifyState.state.desc = desc;
+        }
+      }
+    };
+    const customState = {
+      state: reactive({
+        show: false,
+        desc: '',
+        type: 'primary',
+        duration: 3000
+      }),
+      methods: {
+        cellClick(type: string, desc: string, duration: number) {
+          customState.state.show = true;
+          customState.state.type = type;
+          customState.state.desc = desc;
+          customState.state.duration = duration;
+        }
+      }
+    };
+    return {
+      baseState,
+      notifyState,
+      customState,
+      onClosed,
+      onClick
+    };
+  }
 };
 </script>

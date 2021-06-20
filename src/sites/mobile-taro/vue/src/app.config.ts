@@ -1,5 +1,7 @@
 export default {
   pages: [
+    'pages/toast/index',
+    'pages/notify/index',
     'pages/dialog/index',
     'pages/range/index',
     'pages/picker/index',
@@ -34,7 +36,7 @@ export default {
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: 'WeChat',
+    navigationBarTitleText: 'NutUI',
     navigationBarTextStyle: 'black'
   }
 };
