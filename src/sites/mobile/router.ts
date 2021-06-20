@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Index from './components/Index.vue';
-import IndexTaro from './components/Index-Taro.vue';
+import IndexTaro from './components/IndexTaro.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
