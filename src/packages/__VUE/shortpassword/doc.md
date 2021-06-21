@@ -1,4 +1,4 @@
-# ShortPassword 短密码组件
+# ShortPassword 短密码
 
 ### 介绍
 

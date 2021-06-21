@@ -1,4 +1,4 @@
-#  Switch组件
+#  Switch 开关
 
 ### 介绍
 
