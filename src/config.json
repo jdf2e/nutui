@@ -124,6 +124,16 @@
         },
         {
           "version": "1.0.0",
+          "name": "Avatar",
+          "type": "component",
+          "cName": "头像",
+          "desc": "用来代表用户或事物，支持图片、图标或字符展示。",
+          "sort": 2,
+          "show": true,
+          "author": "junjun"
+        },
+        {
+          "version": "1.0.0",
           "name": "Cell",
           "type": "component",
           "cName": "列表组件",
@@ -133,15 +143,15 @@
           "author": "songsong"
         },
         {
-            "version": "1.0.0",
-            "name": "CellGroup",
-            "type": "component",
-            "cName": "单元格组件",
-            "desc": "展示分组列表",
-            "sort": 1,
-            "show": false,
-            "author": "songsong"
-          }
+          "version": "1.0.0",
+          "name": "CellGroup",
+          "type": "component",
+          "cName": "单元格组件",
+          "desc": "展示分组列表",
+          "sort": 1,
+          "show": false,
+          "author": "songsong"
+        }
       ]
     },
     {
