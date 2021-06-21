@@ -31,7 +31,6 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive, toRefs, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('drag');
 export default createDemo({
