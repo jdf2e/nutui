@@ -1,5 +1,6 @@
 export default {
   pages: [
+    'pages/drag/index',
     'pages/notify/index',
     'pages/range/index',
     'pages/picker/index',

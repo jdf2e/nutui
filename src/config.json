@@ -403,6 +403,7 @@
         },
         {
           "name": "Drag",
+          "taro": true,
           "type": "component",
           "cName": "拖拽",
           "desc": "拖拽组件",
