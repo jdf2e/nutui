@@ -1,5 +1,6 @@
 export default {
   pages: [
+    'pages/backtop/index',
     'pages/toast/index',
     'pages/notify/index',
     'pages/dialog/index',

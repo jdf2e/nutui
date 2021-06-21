@@ -9,7 +9,7 @@
     </div>
     <div class="index-wxcode">
       <img
-        src="https://img12.360buyimg.com/imagetools/jfs/t1/162421/39/13392/9425/6052ea60E592310a9/264bdff23ef5fe95.png"
+        src="https://img12.360buyimg.com/imagetools/jfs/t1/174054/4/15968/66201/60d0028dE590f0aa8/752ecef62e4f1cbe.jpg"
         width="200"
       />
     </div>
@@ -62,7 +62,6 @@ export default defineComponent({
   &-wxcode {
     display: flex;
     height: calc(100% - 117px);
-    background: #f7f8fa;
     border-radius: 30px 30px 0 0;
     overflow: hidden;
     padding: 30px 25px;
