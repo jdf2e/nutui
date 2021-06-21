@@ -24,8 +24,13 @@ function pxCheck(value: string | number): string {
   return Number.isNaN(Number(value)) ? String(value) : `${value}px`
 }
 
-export const Icon: FunctionComponent<Partial<IconProps>> = (props) => {
-  const { name, size, classPrefix, color, tag, children } = { ...defaultProps, ...props }
+export const Icon: FunctionComponent<Partial<IconProps> & React.HTMLAttributes<HTMLDivElement>> = (
+  props
+) => {
+  const { name, size, classPrefix, color, tag, children, className, style, ...rest } = {
+    ...defaultProps,
+    ...props,
+  }
   const isImage = name ? name.indexOf('/') !== -1 : false
   const type = isImage ? 'img' : tag
   const b = bem('icon')
@@ -42,13 +47,17 @@ export const Icon: FunctionComponent<Partial<IconProps>> = (props) => {
   return React.createElement(
     type,
     {
-      className: isImage ? `${b('img')}` : `nut-icon-${name} ${b(null, [classPrefix])}`,
+      className: isImage
+        ? `${className} ${b('img')}`
+        : `${className} nut-icon-${name} ${b(null, [classPrefix])}`,
       style: {
         color,
         fontSize: pxCheck(size),
         width: pxCheck(size),
         height: pxCheck(size),
+        ...style,
       },
+      ...rest,
       onClick: handleClick,
       ...hasSrc(),
     },
