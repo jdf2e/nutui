@@ -23,7 +23,7 @@
             :aria-valuemax="+max"
             aria-orientation="horizontal"
             @touchstart.stop.prevent="
-              e => {
+              (e) => {
                 if (typeof index === 'number') {
                   // 实时更新当前拖动的按钮索引
                   buttonIndex = index;
@@ -34,7 +34,7 @@
             @touchmove.stop.prevent="onTouchMove"
             @touchend.stop.prevent="onTouchEnd"
             @touchcancel.stop.prevent="onTouchEnd"
-            @click="e => e.stopPropagation()"
+            @click="(e) => e.stopPropagation()"
           >
             <slot v-if="$slots.button" name="button"></slot>
             <view class="nut-range-button" v-else :style="buttonStyle">
@@ -54,14 +54,14 @@
             :aria-valuemax="+max"
             aria-orientation="horizontal"
             @touchstart.stop.prevent="
-              e => {
+              (e) => {
                 onTouchStart(e);
               }
             "
             @touchmove.stop.prevent="onTouchMove"
             @touchend.stop.prevent="onTouchEnd"
             @touchcancel.stop.prevent="onTouchEnd"
-            @click="e => e.stopPropagation()"
+            @click="(e) => e.stopPropagation()"
           >
             <slot v-if="$slots.button" name="button"></slot>
             <view class="nut-range-button" v-else :style="buttonStyle">
@@ -78,9 +78,9 @@
 </template>
 <script lang="ts">
 import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { useTouch } from '@/packages/utils/useTouch';
-import { useRect } from '@/packages/utils/useRect';
+import { createComponent } from '../../utils/create';
+import { useTouch } from '../../utils/useTouch';
+import { useRect } from '../../utils/useRect';
 const { componentName, create } = createComponent('range');
 
 type SliderValue = number | number[];

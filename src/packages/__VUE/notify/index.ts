@@ -1,6 +1,6 @@
 import { createVNode, defineComponent, render, App } from 'vue';
-import VueNotify from './index.vue';
-const NotifyConstructor = defineComponent(VueNotify);
+import Notify from './index.vue';
+const NotifyConstructor = defineComponent(Notify);
 const defaultOptions = {
   type: 'base',
   showPopup: false,
@@ -21,13 +21,13 @@ let optsMap: any[] = [];
 const clearNotify = (id?: string) => {
   if (id) {
     const container = document.getElementById(id);
-    optsMap = optsMap.filter(item => item.id !== id);
-    idsMap = idsMap.filter(item => item !== id);
+    optsMap = optsMap.filter((item) => item.id !== id);
+    idsMap = idsMap.filter((item) => item !== id);
     if (container) {
       document.body.removeChild(container);
     }
   } else {
-    idsMap.forEach(item => {
+    idsMap.forEach((item) => {
       const container = document.getElementById(item);
       if (container) {
         document.body.removeChild(container);
@@ -41,13 +41,13 @@ const clearNotify = (id?: string) => {
 const updateNotify = (opts: any) => {
   const container = document.getElementById(opts.id);
   if (container) {
-    const currentOpt = optsMap.find(item => item.id === opts.id);
+    const currentOpt = optsMap.find((item) => item.id === opts.id);
     if (currentOpt) {
       opts = { ...defaultOptions, ...currentOpt, ...opts };
     } else {
       opts = { ...defaultOptions, ...opts };
     }
-    const instance: any = createVNode(VueNotify, opts);
+    const instance: any = createVNode(Notify, opts);
     render(instance, container);
     return instance.component.ctx;
   }
@@ -58,7 +58,7 @@ const mountNotify = (opts: any) => {
   let _id;
   if (opts.id) {
     _id = opts.id;
-    if (idsMap.find(item => item === opts.id)) {
+    if (idsMap.find((item) => item === opts.id)) {
       return updateNotify(opts);
     }
   } else {
@@ -86,7 +86,7 @@ const errorMsg = (msg: string) => {
   }
 };
 
-export const Notify = {
+export const NotifyFunction = {
   text(msg: string, obj = {}) {
     errorMsg(msg);
     return mountNotify({ ...obj, msg });
@@ -109,11 +109,11 @@ export const Notify = {
   },
   hide() {
     clearNotify();
+  },
+  install(app: App): void {
+    app.config.globalProperties.$notify = NotifyFunction;
   }
 };
 
-export default {
-  install(app: App): void {
-    app.config.globalProperties.$notify = Notify;
-  }
-};
+export default NotifyFunction;
+export { Notify };

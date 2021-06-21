@@ -21,8 +21,8 @@
 </template>
 <script lang="ts">
 import { toRefs, reactive, onMounted, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import Popup from '@/packages/__VUE/popup/index.vue';
+import { createComponent } from '../../utils/create';
+import Popup from '../popup/index.vue';
 const { componentName, create } = createComponent('notify');
 
 export default create({
@@ -87,7 +87,7 @@ export default create({
 
     watch(
       () => props.duration,
-      val => {
+      (val) => {
         if (val) {
           show();
         }

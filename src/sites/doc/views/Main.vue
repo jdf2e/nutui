@@ -103,8 +103,13 @@
             @click="onRight"
           ></div>
         </div>
-        <ul class="doc-content-cases-content__list">
-          <li v-for="img in casesImages">
+        <ul
+          :class="[
+            'doc-content-cases-content__list',
+            themeNameValue() == 'black' ? 'noShadow' : ''
+          ]"
+        >
+          <li v-for="(img, index) in casesImages" :key="index">
             <img :src="img" />
           </li>
         </ul>
@@ -112,7 +117,7 @@
     </div>
     <div class="doc-content-more" v-if="articleList.length">
       <div class="doc-content-hd">
-        <h4 class="doc-content-title">更多内容</h4>
+        <h4 class="doc-content-title"></h4>
         <a class="sub-more" href="#/resource">More</a>
       </div>
       <ul class="more-list">
@@ -152,7 +157,8 @@ export default defineComponent({
       // theme: 'white',
       articleList,
       casesImages,
-      currentCaseItem
+      currentCaseItem,
+      localTheme: localStorage.getItem('nutui-theme-color')
     });
     onMounted(() => {
       // 文章列表接口
@@ -200,6 +206,11 @@ export default defineComponent({
         return `doc-content-${RefData.getInstance().themeColor.value}`;
       };
     });
+    const themeNameValue = computed(() => {
+      return function () {
+        return RefData.getInstance().themeColor.value;
+      };
+    });
     const toLink = (id: number) => {
       window.open('//jelly.jd.com/article/' + id);
     };
@@ -210,6 +221,7 @@ export default defineComponent({
       toIntro,
       ...toRefs(data),
       themeName,
+      themeNameValue,
       toLink,
       onLeft,
       onRight
@@ -419,15 +431,26 @@ export default defineComponent({
           height: 390px;
           flex-shrink: 0;
           margin-right: 20px;
-          box-shadow: 0px 1px 7px 0px #edeef1;
           transition: all 0.5s;
           &:first-child {
             margin-right: 139px;
             transform: scale(1.04);
+            border-radius: 10px;
+            overflow: hidden;
+          }
+          &:nth-child(-n + 4) {
+            box-shadow: 0 4px 7px 0 rgb(144 156 164 / 80%);
+            border-radius: 3px;
+            overflow: hidden;
           }
           > img {
             width: 100%;
             height: 100%;
+          }
+        }
+        &.noShadow {
+          > li {
+            box-shadow: none !important;
           }
         }
       }
@@ -594,11 +617,6 @@ export default defineComponent({
   }
   .doc-content-cases-content__main {
     background: #474753;
-  }
-  .doc-content-cases-content__list {
-    li {
-      box-shadow: none;
-    }
   }
   .doc-content-more {
     .more-item img {

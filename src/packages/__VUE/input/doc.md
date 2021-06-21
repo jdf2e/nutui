@@ -61,9 +61,7 @@ app.use(Input);
 ### 代码
 ```html
 import { reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('input');
-export default createDemo({
+export default {
   setup() {
     const state = reactive({
       val0: '',
@@ -100,7 +98,7 @@ export default createDemo({
       focus
     };
   }
-});
+}
 ```
 ### Prop
 

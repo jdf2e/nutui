@@ -60,7 +60,7 @@
 
 <script lang="ts">
 import { computed, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('navbar');
 export default create({
   props: {

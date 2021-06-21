@@ -23,15 +23,14 @@
         @click="onClick"
       >
         <slot v-if="showSlot"></slot>
-        <nut-icon
+        <view
           v-if="closeable"
           @click="onClickCloseIcon"
-          :name="closeIcon"
-          size="12px"
           class="nutui-popup__close-icon"
           :class="'nutui-popup__close-icon--' + closeIconPosition"
         >
-        </nut-icon>
+          <nut-icon :name="closeIcon" size="12px" />
+        </view>
       </view>
     </Transition>
   </view>
@@ -51,10 +50,10 @@ import {
   toRefs,
   getCurrentInstance
 } from 'vue';
-import { useLockScroll } from '@/packages/__VUE/popup/use-lock-scroll';
-import { overlayProps } from '@/packages/__VUE/overlay/index.taro.vue';
-import overlay from '@/packages/__VUE/overlay/index.taro.vue';
-import { createComponent } from '@/packages/utils/create';
+import { useLockScroll } from '../popup/use-lock-scroll';
+import { overlayProps } from '../overlay/index.taro.vue';
+import overlay from '../overlay/index.taro.vue';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('popup');
 let _zIndex = 2000;
 export const popupProps = {
@@ -217,7 +216,7 @@ export default create({
     });
     watch(
       () => props.visible,
-      value => {
+      (value) => {
         if (value) {
           open();
         } else {
@@ -227,7 +226,7 @@ export default create({
     );
     watch(
       () => props.position,
-      value => {
+      (value) => {
         value === 'center'
           ? (state.transitionName = 'popup-fade')
           : (state.transitionName = `popup-slide-${value}`);
