@@ -20,8 +20,8 @@
 </template>
 <script lang="ts">
 import { reactive, ref, watch, computed, toRefs, onMounted } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { useTouch } from '@/packages/utils/useTouch';
+import { createComponent } from '../../utils/create';
+import { useTouch } from '../../utils/useTouch';
 import { commonProps } from './commonProps';
 import {
   PickerObjOpt,
@@ -230,7 +230,7 @@ export default create({
 
     watch(
       () => props.listData,
-      val => {
+      (val) => {
         if (val) {
           state.options = val as PickerObjectColumn[];
         }
@@ -239,7 +239,7 @@ export default create({
 
     watch(
       () => props.defaultIndex,
-      val => {
+      (val) => {
         setIndex(+val);
       }
     );

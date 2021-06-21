@@ -6,8 +6,8 @@
 
 <script lang="ts">
 import { computed, reactive, inject, getCurrentInstance, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { useExpose } from '@/packages/__VUE/swiper/use-expose';
+import { createComponent } from '../../utils/create';
+import { useExpose } from '../swiper/use-expose';
 const { create, componentName } = createComponent('swiper-item');
 interface IStyle {
   width?: string;

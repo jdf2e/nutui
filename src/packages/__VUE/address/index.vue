@@ -119,7 +119,7 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, watch, nextTick } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('address');
 interface RegionData {
   name: string;

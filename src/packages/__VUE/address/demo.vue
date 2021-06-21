@@ -14,7 +14,7 @@
       :city="city"
       :country="country"
       :town="town"
-      @change="cal => onChange(cal, 'normal')"
+      @change="(cal) => onChange(cal, 'normal')"
       @close="close1"
       custom-address-title="请选择所在地区"
     ></nut-address>
@@ -31,7 +31,7 @@
       v-model:visible="exist"
       type="exist"
       :exist-address="existAddress"
-      @change="cal => onChange(cal, 'exist')"
+      @change="(cal) => onChange(cal, 'exist')"
       @close="close2"
       :is-show-custom-address="false"
       @selected="selected"
@@ -50,7 +50,7 @@
       v-model:visible="customImg"
       type="exist"
       :exist-address="existAddress"
-      @change="cal => onChange(cal, 'customImg')"
+      @change="(cal) => onChange(cal, 'customImg')"
       @close="close3"
       :is-show-custom-address="false"
       @selected="selected"
@@ -76,7 +76,7 @@
       :country="country"
       :town="town"
       :back-btn-icon="backBtnIcon"
-      @change="cal => onChange(cal, 'other')"
+      @change="(cal) => onChange(cal, 'other')"
       @close="close4"
       @selected="selected"
       custom-and-exist-title="选择其他地址"
@@ -87,7 +87,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { reactive, ref, toRefs } from 'vue';
 const { createDemo } = createComponent('address');
 interface CalBack {
@@ -217,13 +217,8 @@ export default createDemo({
     const close2 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
-        const {
-          provinceName,
-          cityName,
-          countyName,
-          townName,
-          addressDetail
-        } = val.data;
+        const { provinceName, cityName, countyName, townName, addressDetail } =
+          val.data;
         text.two =
           provinceName + cityName + countyName + townName + addressDetail;
       } else {
@@ -249,13 +244,8 @@ export default createDemo({
     const close3 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
-        const {
-          provinceName,
-          cityName,
-          countyName,
-          townName,
-          addressDetail
-        } = val.data;
+        const { provinceName, cityName, countyName, townName, addressDetail } =
+          val.data;
         text.three =
           provinceName + cityName + countyName + townName + addressDetail;
       } else {
@@ -266,13 +256,8 @@ export default createDemo({
     const close4 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
-        const {
-          provinceName,
-          cityName,
-          countyName,
-          townName,
-          addressDetail
-        } = val.data;
+        const { provinceName, cityName, countyName, townName, addressDetail } =
+          val.data;
         text.four =
           provinceName + cityName + countyName + townName + addressDetail;
       } else {

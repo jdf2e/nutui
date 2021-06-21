@@ -9,6 +9,16 @@ const config = {
     828: 1.81 / 2,
     375: 2 / 1
   },
+  mini: {
+    webpackChain(chain, webpack) {
+      chain.merge({
+        alias: {
+          '@vue': path.resolve(__dirname, '../node_modules/@vue'),
+          vue: path.resolve(__dirname, '../node_modules/@vue')
+        }
+      });
+    }
+  },
   sourceRoot: 'src',
   outputRoot: 'dist',
   plugins: ['@tarojs/plugin-html'],

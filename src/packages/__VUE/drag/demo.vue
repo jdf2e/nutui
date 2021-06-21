@@ -19,7 +19,7 @@
     >
       <nut-button type="primary">拖动我</nut-button>
     </nut-drag>
-    <h2 style=" top: 90px ;position: relative">限制拖动边界</h2>
+    <h2 style="top: 90px; position: relative">限制拖动边界</h2>
     <div class="drag-boundary"></div>
     <nut-drag
       :boundary="{ top: 361, left: 9, bottom: bottom(), right: right() }"
@@ -31,8 +31,7 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive, toRefs, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('drag');
 export default createDemo({
   setup() {

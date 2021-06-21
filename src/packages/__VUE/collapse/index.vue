@@ -5,8 +5,8 @@
 </template>
 <script lang="ts">
 import { provide } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import collapseitem from '@/packages/__VUE/collapseitem/index.vue';
+import { createComponent } from '../../utils/create';
+import collapseitem from '../collapseitem/index.vue';
 const { create } = createComponent('collapse');
 export default create({
   children: [collapseitem],

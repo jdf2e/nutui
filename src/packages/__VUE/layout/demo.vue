@@ -117,10 +117,10 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('layout');
-import Row from '@/packages/__VUE/row/index.vue';
-import Col from '@/packages/__VUE/col/index.vue';
+import Row from '../row/index.vue';
+import Col from '../col/index.vue';
 export default createDemo({
   components: {
     [Row.name]: Row,

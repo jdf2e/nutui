@@ -67,7 +67,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { reactive, toRefs } from 'vue';
 import { Toast } from '@/packages/nutui.vue';
 const { createDemo } = createComponent('radio');

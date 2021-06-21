@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('steps');
 export default createDemo({
   props: {},

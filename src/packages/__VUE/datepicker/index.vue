@@ -10,8 +10,8 @@
 </template>
 <script lang="ts">
 import { toRefs, watch, computed, reactive, onMounted } from 'vue';
-import picker from '@/packages/__VUE/picker/index.vue';
-import { createComponent } from '@/packages/utils/create';
+import picker from '../picker/index.vue';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('datepicker');
 const currentYear = new Date().getFullYear();
 function isDate(val: Date): val is Date {
@@ -124,23 +124,11 @@ export default create({
     };
 
     const ranges = computed(() => {
-      const {
-        maxYear,
-        maxDate,
-        maxMonth,
-        maxHour,
-        maxMinute,
-        maxSeconds
-      } = getBoundary('max', state.currentDate);
+      const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } =
+        getBoundary('max', state.currentDate);
 
-      const {
-        minYear,
-        minDate,
-        minMonth,
-        minHour,
-        minMinute,
-        minSeconds
-      } = getBoundary('min', state.currentDate);
+      const { minYear, minDate, minMonth, minHour, minMinute, minSeconds } =
+        getBoundary('min', state.currentDate);
 
       let result = [
         {
@@ -276,7 +264,7 @@ export default create({
     };
 
     const columns = computed(() => {
-      const val = ranges.value.map(res => {
+      const val = ranges.value.map((res) => {
         return generateValue(
           res.range[0],
           res.range[1],
@@ -305,14 +293,14 @@ export default create({
 
     watch(
       () => props.title,
-      val => {
+      (val) => {
         state.title = val;
       }
     );
 
     watch(
       () => props.visible,
-      val => {
+      (val) => {
         state.show = val;
       }
     );

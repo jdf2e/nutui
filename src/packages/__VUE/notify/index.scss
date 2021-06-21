@@ -8,6 +8,18 @@
   z-index: 9999;
 }
 
+.nut-fade-enter-active {
+  transition: opacity 1s;
+}
+
+.nut-fade-leave-active {
+  transition: opacity 1s;
+}
+
+.nut-fade-enter-from,
+.nut-fade-leave-to {
+  opacity: 0;
+}
 .nut-notify {
   box-sizing: border-box;
   padding: $notify-padding;

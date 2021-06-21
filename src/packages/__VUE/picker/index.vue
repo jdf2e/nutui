@@ -36,7 +36,7 @@
             :item-height="itemHeight"
             :data-type="dataType"
             @change="
-              dataIndex => {
+              (dataIndex) => {
                 changeHandler(columnIndex, dataIndex);
               }
             "
@@ -48,9 +48,9 @@
 </template>
 <script lang="ts">
 import { reactive, watch, computed, toRaw, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import column from './Column.vue';
-import popup, { popupProps } from '@/packages/__VUE/popup/index.vue';
+import popup, { popupProps } from '../popup/index.vue';
 import { commonProps } from './commonProps';
 import {
   PickerObjOpt,
@@ -140,7 +140,7 @@ export default create({
 
     const addDefaultIndexList = (listData: PickerObjectColumn[]) => {
       defaultIndexList = [];
-      listData.forEach(res => {
+      listData.forEach((res) => {
         defaultIndexList.push((res.defaultIndex as number) || 0);
       });
     };
@@ -237,14 +237,14 @@ export default create({
 
     watch(
       () => props.visible,
-      val => {
+      (val) => {
         state.show = val;
       }
     );
 
     watch(
       () => props.listData,
-      val => {
+      (val) => {
         state.formattedColumns = val as PickerObjectColumns;
       }
     );

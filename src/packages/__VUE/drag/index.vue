@@ -19,8 +19,8 @@ import {
   ref,
   computed
 } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import requestAniFrame from '@/packages/utils/raf';
+import { createComponent } from '../../utils/create';
+import requestAniFrame from '../../utils/raf';
 const { componentName, create } = createComponent('drag');
 export default create({
   props: {
