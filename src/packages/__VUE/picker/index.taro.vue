@@ -3,7 +3,7 @@
     :mode="mode"
     :range="range"
     @change="onChange"
-    @columnChange="onColumnChange"
+    @columnchange="onColumnChange"
     :value="value"
   >
     <slot></slot>

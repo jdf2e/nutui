@@ -1,7 +1,7 @@
 export default {
   pages: [
-    'pages/range/index',
     'pages/picker/index',
+    'pages/range/index',
     'pages/uploader/index',
     'pages/infiniteloading/index',
     'pages/address/index',
