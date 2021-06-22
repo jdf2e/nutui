@@ -1,4 +1,10 @@
 
+## 2.3.2
+`2021-06-22`
+
+* :bug: fix：server 构建环境 vue-qr 依赖包打包问题 @richard1015 
+* :bug: fix(tab)：微信浏览器中不显示的问题 @zhenyulei 
+
 ## [2.3.0](https://github.com/jdf2e/nutui/compare/v2.2.15...v2.3.0)
 `2021-05-27`
 
