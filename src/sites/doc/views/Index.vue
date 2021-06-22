@@ -15,7 +15,7 @@
           >
         </div>
         <div class="doc-content-tabs" v-if="isShow() && !isShowTaroDoc">
-          <div class="tab-item cur">Vue/Taro</div>
+          <div class="tab-item cur">vue/mp</div>
         </div>
         <router-view />
       </div>
@@ -55,11 +55,11 @@ export default defineComponent({
       tabs: [
         {
           key: 'vue',
-          text: 'Vue'
+          text: 'vue'
         },
         {
           key: 'taro',
-          text: 'Vue - Taro'
+          text: 'mp'
         }
       ]
     });
