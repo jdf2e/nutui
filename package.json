@@ -63,8 +63,7 @@
     "gsap": "^3.2.6",
     "hammerjs": "^2.0.8",
     "standard-version": "^9.1.0",
-    "vue-lazyload": "^1.3.3",
-    "vue-qr": "^2.2.1"
+    "vue-lazyload": "^1.3.3"
   },
   "peerDependencies": {
     "vue": "^2.6.10"
