@@ -1,3 +1,10 @@
+## @nutui/nutui-jdl v1.0.5
+
+`2021-06-22`
+
+* :bug: fix(imagepreview)：数量显示问题修复  @Ivanwangcy 
+* :bug: fix(tab)：微信浏览器中不显示的问题 @zhenyulei 
+* :bug: fix：server 构建环境 vue-qr 依赖包打包问题 @richard1015 
 ## @nutui/nutui-jdl v1.0.4
 
 `2020-10-16`
