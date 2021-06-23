@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts">
-import icons from './../../../../../../packages/styles/font/iconfont.json';
+import icons from './../../../../../../../packages/styles/font/iconfont.json';
 export default {
   props: {},
   setup() {
