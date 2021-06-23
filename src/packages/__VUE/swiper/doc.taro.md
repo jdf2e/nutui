@@ -8,9 +8,6 @@
 
 ```javascript
 import { createApp } from 'vue';
-//vue
-import { Swiper } from '@nutui/nutui';
-//vue-taro
 import { Swiper } from '@nutui/nutui@taro';
 
 const app = createApp();
