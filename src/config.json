@@ -161,7 +161,6 @@
         {
           "name": "ActionSheet",
           "taro": true,
-          "tarodoc": true,
           "sort": "1",
           "cName": "动作面板",
           "type": "component",
@@ -607,7 +606,6 @@
           "version": "3.0.0",
           "name": "ShortPassword",
           "taro": true,
-          "tarodoc": true,
           "type": "component",
           "cName": "短密码",
           "desc": "短密码组件",
