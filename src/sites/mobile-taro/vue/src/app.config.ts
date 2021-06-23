@@ -1,5 +1,6 @@
 export default {
   pages: [
+    'pages/index/index',
     'pages/backtop/index',
     'pages/drag/index',
     'pages/toast/index',
@@ -32,8 +33,7 @@ export default {
     'pages/switch/index',
     'pages/price/index',
     'pages/avatar/index',
-    'pages/layout/index',
-    'pages/index/index'
+    'pages/layout/index'
   ],
   window: {
     backgroundTextStyle: 'light',
