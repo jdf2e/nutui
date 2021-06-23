@@ -1,11 +1,11 @@
 <template>
   <view :class="classes">
-    <text
+    <view
       v-if="needSymbol"
       class="nut-price--symbol"
       decode="true"
       v-html="showSymbol"
-    ></text>
+    ></view>
     <view class="nut-price--big">
       {{ formatThousands(price) }}
     </view>
@@ -58,7 +58,6 @@ export default create({
       url = url.replace(/&gt;/g, '>');
       url = url.replace(/&nbsp;/g, ' ');
       url = url.replace(/&yen;/g, '￥');
-      console.log('转义字符', url);
       return url;
     };
     const showSymbol = computed(() => {
@@ -69,28 +68,12 @@ export default create({
       return String(price).indexOf('.') > 0;
     };
 
-    // const formatToHump = (price: any) => {
-    //   if (Number(price) == 0) {
-    //     price = 0;
-    //   }
-    //   if (checkPoint(price)) {
-    //     price = Number(price).toFixed(props.decimalDigits);
-    //     price = typeof price.split('.') === 'string' ? price.split('.') : price.split('.')[0]
-    //   } else {
-    //     price = price.toString()
-    //   }
-    // };
-
     const formatThousands = (num: any) => {
-      console.log('num', num, typeof num);
-      // formatToHump(num)
       if (Number(num) == 0) {
         num = 0;
       }
       if (checkPoint(num)) {
         num = Number(num).toFixed(props.decimalDigits);
-        console.log('num1', num, typeof num);
-        // return rendernum(num.split('.'));
         num =
           typeof num.split('.') === 'string'
             ? num.split('.')
@@ -98,26 +81,18 @@ export default create({
       } else {
         num = num.toString();
       }
-      console.log('num2', num, typeof num);
       if (props.thousands) {
-        console.log(
-          '33',
-          (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,')
-        );
         return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
       } else {
         return num;
       }
     };
     const formatDecimal = (decimalNum: any) => {
-      // formatToHump(decimalNum)
       if (Number(decimalNum) == 0) {
         decimalNum = 0;
       }
       if (checkPoint(decimalNum)) {
         decimalNum = Number(decimalNum).toFixed(props.decimalDigits);
-        console.log('decimalNum1', decimalNum, typeof decimalNum);
-        // return renderdecimalNum(decimalNum.split('.'));
         decimalNum =
           typeof decimalNum.split('.') === 'string'
             ? 0
@@ -125,7 +100,6 @@ export default create({
       } else {
         decimalNum = decimalNum.toString();
       }
-      console.log('decimalNum1', decimalNum);
       const result = '0.' + decimalNum;
       const resultFixed = Number(result).toFixed(props.decimalDigits);
       return String(resultFixed).substring(2, resultFixed.length);
