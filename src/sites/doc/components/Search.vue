@@ -40,8 +40,8 @@ export default defineComponent({
     });
     onMounted(() => {
       // console.log('nav', nav);
-      nav.forEach(item => {
-        item.packages.forEach(value => {
+      nav.forEach((item) => {
+        item.packages.forEach((value) => {
           // console.log('value', value)
           data.navList.push(value);
         });
@@ -50,9 +50,9 @@ export default defineComponent({
     });
     watch(
       () => data.searchVal,
-      sVal => {
+      (sVal) => {
         if (sVal) {
-          data.searchList = data.navList.filter(item => {
+          data.searchList = data.navList.filter((item) => {
             if (item.show === false) return false;
             // console.log('item', item);
             const rx = new RegExp(sVal, 'gi');
@@ -67,10 +67,10 @@ export default defineComponent({
         // console.log(data.searchList)
       }
     );
-    const onfocus = e => {
+    const onfocus = (e) => {
       // e.target.select();
     };
-    const onblur = e => {
+    const onblur = (e) => {
       setTimeout(() => {
         data.searchList = [];
         data.searchVal = '';
@@ -81,7 +81,7 @@ export default defineComponent({
       data.searchCurName = '';
       data.searchIndex = 0;
     };
-    const choseList = e => {
+    const choseList = (e) => {
       let searchIndex = data.searchIndex;
       if (e.keyCode == 40) {
         searchIndex++;
@@ -130,8 +130,9 @@ export default defineComponent({
     padding-left: 42px;
     font-size: 14px;
     vertical-align: middle;
-    background: transparent url('../../assets/images/input-search.png')
-      no-repeat;
+    background-color: transparent;
+    background-image: url('../../assets/images/input-search.png');
+    background-repeat: no-repeat;
     font-size: 14px;
     color: #fff;
     &:focus {
