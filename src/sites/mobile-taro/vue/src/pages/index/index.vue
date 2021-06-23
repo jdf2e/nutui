@@ -7,8 +7,8 @@
         srcset=""
       />
       <div class="info">
-        <h1>NutUI-Taro</h1>
-        <p>京东风格的轻量级移动端 Vue 组件库</p>
+        <h1>NutUI</h1>
+        <p>京东风格的轻量级小程序组件库</p>
       </div>
     </div>
     <div class="index-components">
@@ -17,7 +17,7 @@
         <ul>
           <template v-for="_package in _nav.packages" :key="_package">
             <li v-if="_package.show">
-              <a @click="navigateTo(_package.name.toLowerCase())">
+              <a @click="navigateTo(_package.name.toLowerCase(), _nav.enName)">
                 {{ _package.name }}
                 &nbsp;&nbsp;
                 {{ _package.cName }}
@@ -33,19 +33,17 @@
 
 <script>
 import { reactive, toRefs } from 'vue';
-import { nav, versions } from '../../../../../../config.json';
-import Taro from '@tarojs/taro';
+import { nav } from '../../../../../../config.json';
 export default {
-  name: 'NutUI-Taro',
+  name: 'NutUI',
   setup() {
     const state = reactive({
-      nav,
-      versions
+      nav
     });
 
-    const navigateTo = (name) => {
-      Taro.navigateTo({
-        url: `/pages/${name}/index`
+    const navigateTo = (name, enName) => {
+      wx.navigateTo({
+        url: `/${enName}/pages/${name}/index`
       });
     };
 

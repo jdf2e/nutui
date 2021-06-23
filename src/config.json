@@ -82,6 +82,7 @@
   "nav": [
     {
       "name": "布局组件",
+      "enName": "layout",
       "packages": [
         {
           "name": "Button",
@@ -146,6 +147,7 @@
     },
     {
       "name": "操作反馈",
+      "enName": "feedback",
       "packages": [
         {
           "name": "BackTop",
@@ -217,6 +219,7 @@
     },
     {
       "name": "基础组件",
+      "enName": "base",
       "packages": [
         {
           "name": "Temp",
@@ -463,6 +466,7 @@
     },
     {
       "name": "导航组件",
+      "enName": "nav",
       "packages": [
         {
           "name": "Navbar",
@@ -534,6 +538,7 @@
     },
     {
       "name": "数据录入",
+      "enName": "dentry",
       "packages": [
         {
           "name": "InputNumber",
@@ -629,6 +634,7 @@
     },
     {
       "name": "业务组件",
+      "enName": "business",
       "packages": [
         {
           "version": "3.0.0",
