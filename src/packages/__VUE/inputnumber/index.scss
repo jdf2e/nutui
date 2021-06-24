@@ -18,7 +18,8 @@
     }
   }
 
-  input {
+  input,
+  &__text--readonly {
     width: $inputnumber-input-width;
     height: 100%;
     text-align: center;

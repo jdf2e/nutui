@@ -8,7 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
+//vue
 import { InputNumber,Icon } from '@nutui/nutui';
+//mp
+import { InputNumber,Icon } from '@nutui/nutui@taro';
 
 const app = createApp();
 app.use(InputNumber).use(Icon);

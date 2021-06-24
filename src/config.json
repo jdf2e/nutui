@@ -327,7 +327,6 @@
         {
           "name": "Popup",
           "taro": true,
-          "tarodoc": true,
           "sort": 8,
           "cName": "弹出层",
           "type": "component",
@@ -543,7 +542,6 @@
         {
           "name": "InputNumber",
           "taro": true,
-          "tarodoc": true,
           "sort": 1,
           "cName": "数字输入框",
           "type": "component",
