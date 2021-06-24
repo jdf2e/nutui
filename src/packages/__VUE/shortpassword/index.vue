@@ -52,7 +52,7 @@
 </template>
 <script lang="ts">
 import { ref, computed, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('shortpassword');
 export default create({
   props: {
@@ -117,7 +117,7 @@ export default create({
     }
     watch(
       () => props.visible,
-      value => {
+      (value) => {
         show.value = value;
       }
     );

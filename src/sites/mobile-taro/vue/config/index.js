@@ -9,6 +9,19 @@ const config = {
     828: 1.81 / 2,
     375: 2 / 1
   },
+  mini: {
+    webpackChain(chain, webpack) {
+      chain.merge({
+        alias: {
+          '@vue': path.resolve(__dirname, '../node_modules/@vue'),
+          vue: path.resolve(__dirname, '../node_modules/@vue')
+        },
+        runtime: {
+          enableSizeAPIs: true
+        }
+      });
+    }
+  },
   sourceRoot: 'src',
   outputRoot: 'dist',
   plugins: ['@tarojs/plugin-html'],
@@ -20,9 +33,6 @@ const config = {
     )
   },
   defineConstants: {},
-  runtime: {
-    enableSizeAPIs: true
-  },
   copy: {
     patterns: [],
     options: {}

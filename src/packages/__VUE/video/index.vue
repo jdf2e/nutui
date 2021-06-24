@@ -75,8 +75,8 @@ import {
   nextTick,
   onMounted
 } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { throttle } from '@/packages/utils/throttle.js';
+import { createComponent } from '../../utils/create';
+import { throttle } from '../../utils/throttle.js';
 import './index.scss';
 const { create } = createComponent('video');
 
@@ -153,7 +153,7 @@ export default create({
       return props.options.disabled;
     });
 
-    watch(props.source, newValue => {
+    watch(props.source, (newValue) => {
       if (newValue.src) {
         nextTick(() => {
           (state.videoElm as any).load();
@@ -163,7 +163,7 @@ export default create({
 
     watch(
       props.options,
-      newValue => {
+      (newValue) => {
         state.state.isMuted = newValue.muted ? newValue.muted : false;
       },
       { immediate: true }

@@ -1,9 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "3.0.0",
-  "npm": {
-    "tag": "next"
-  },
+  "version": "3.0.1",
   "description": "京东风格的轻量级移动端 Vue 组件库",
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
@@ -37,19 +34,20 @@
   ],
   "scripts": {
     "checked": "npm run generate:file && tsc",
-    "checked:taro:vue": "npm run generate:file:taro:vue && tsc",
+    "checked:taro:vue": "npm run generate:file:taro:vue",
     "dev": "npm run checked && vite --open --force",
     "dev:taro:vue": "npm run checked:taro:vue && cd src/sites/mobile-taro/vue/ && npm run dev:weapp",
     "build:site": "npm run checked && vite build",
     "build:gh-pages": "npm run checked && vite build --base=/nutui/",
     "build:site:oss": "npm run checked && vite build --base=/nutui/3x/",
     "build": "npm run checked && vite build --config vite.config.build.ts && npm run generate:types && npm run generate:themes",
-    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && npm run generate:types && npm run generate:themes && npm run copytaro",
+    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && npm run generate:types && npm run generate:themes",
     "build:disperse": "vite build --config vite.config.build.disperse.ts",
     "serve": "vite preview",
     "upload": "yarn build:site:oss && node ./jd/upload.js",
     "add": "node jd/createComponentMode.js",
-    "publish:beta": "npm publish --tag=beta",
+    "publish:next": "npm publish --tag=next",
+    "publish:taro": "npm publish --tag=taro",
     "generate:file": "node jd/generate-nutui.js",
     "generate:file:taro:vue": "node jd/generate-nutui-taro-vue.js",
     "generate:types": "node jd/generate-types.js",
@@ -73,7 +71,7 @@
   "devDependencies": {
     "@commitlint/cli": "^10.0.0",
     "@commitlint/config-conventional": "^10.0.0",
-    "@tarojs/taro": "3.3.0-alpha.6",
+    "@tarojs/taro": "^3.3.0-alpha.8",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.31",
     "@vitejs/plugin-legacy": "^1.4.0",

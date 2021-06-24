@@ -11,7 +11,7 @@
     <h2>带人民币符号，有千位分隔，保留小数点后三位</h2>
     <nut-cell>
       <nut-price
-        :price="15213.123"
+        :price="15213.1221"
         :decimal-digits="3"
         :need-symbol="true"
         :thousands="true"
@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { ref } from 'vue';
 const { createDemo } = createComponent('price');
 export default createDemo({

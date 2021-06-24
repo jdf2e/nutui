@@ -40,11 +40,11 @@
 </template>
 <script lang="ts">
 import { PropType, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('calendar');
-import Popup from '@/packages/__VUE/popup/index.vue';
-import CalendarItem from '@/packages/__VUE/calendaritem/index.vue';
-import Utils from '@/packages/utils/date';
+import Popup from '../popup/index.vue';
+import CalendarItem from '../calendaritem/index.vue';
+import Utils from '../../utils/date';
 type InputDate = string | string[];
 export default create({
   children: [CalendarItem, Popup],

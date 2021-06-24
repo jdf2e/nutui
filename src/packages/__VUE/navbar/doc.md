@@ -10,7 +10,10 @@
 ```javascript
 
 import { createApp } from 'vue';
+//vue
 import { Navbar } from '@nutui/nutui';
+//mp
+import { Navbar } from '@nutui/nutui@taro';
 
 const app = createApp();
 app.use(Navbar);

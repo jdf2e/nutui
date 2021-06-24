@@ -17,10 +17,11 @@
               :size="titleIconSize"
               :color="titleIconColor"
               :class="[
+                'collapse-title-icon',
                 titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight'
               ]"
             ></nut-icon>
-            <view v-html="title"></view>
+            <view v-html="title" class="collapse-icon-title"></view>
           </view>
         </view>
       </view>
@@ -38,7 +39,11 @@
         :style="iconStyle"
       ></nut-icon>
     </view>
-    <view class="collapse-wrapper" ref="wrapperRef">
+    <view
+      :class="['collapse-wrapper', openExpanded ? 'open-style' : 'close-style']"
+      ref="wrapperRef"
+      :style="{ height: openExpanded ? conHeight + 'px' : 0 }"
+    >
       <view class="collapse-content" ref="contentRef">
         <slot></slot>
       </view>
@@ -62,7 +67,7 @@ import Taro, {
   eventCenter,
   getCurrentInstance as getCurrentInstanceTaro
 } from '@tarojs/taro';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('collapse-item');
 
 export default create({
@@ -90,6 +95,7 @@ export default create({
   },
   setup(props) {
     const collapse: any = inject('collapseParent');
+    const conHeight: any = ref(0);
     const parent: any = reactive(collapse);
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -99,17 +105,18 @@ export default create({
         [`${prefixCls}-icon`]: parent.props.icon
       };
     });
+
     const relation = (child: ComponentInternalInstance): void => {
       if (child.proxy) {
         parent.children.push(child.proxy);
       }
     };
     relation(getCurrentInstance() as ComponentInternalInstance);
-    const proxyData = reactive({
+    const proxyData: any = reactive({
       icon: parent.props.icon,
       iconSize: parent.props.iconSize,
       iconColor: parent.props.iconColor,
-      openExpanded: false,
+      openExpanded: null,
       // classDirection: 'right',
       iconStyle: {
         transform: 'rotate(0deg)',
@@ -136,35 +143,35 @@ export default create({
 
     // 清除 willChange 减少性能浪费
     const onTransitionEnd = () => {
-      const wrapperRefEle: any =
-        document.getElementsByClassName('collapse-wrapper')[0];
-      wrapperRefEle.style.willChange = 'auto';
+      nextTick(() => {
+        parent.children.forEach((item1: any, index: number) => {
+          item1.$el.children.forEach((item2: any, index: number) => {
+            if (item2.className.includes('collapse-wrapper')) {
+              item2.style.willChange = 'auto';
+            }
+          });
+        });
+      });
     };
 
     // 手风琴模式
     const animation = () => {
-      const wrapperRefEle: any = wrapperRef.value;
-      const contentRefEle: any = contentRef.value;
-      if (!wrapperRefEle || !contentRefEle) {
-        return;
+      if (parent.props.icon && !proxyData.openExpanded) {
+        proxyData.iconStyle['transform'] = 'rotate(0deg)';
+      } else {
+        proxyData.iconStyle['transform'] =
+          'rotate(' + parent.props.rotate + 'deg)';
       }
-      const offsetHeight = contentRefEle.offsetHeight;
-      if (offsetHeight) {
-        const contentHeight = `${offsetHeight}px`;
-        wrapperRefEle.style.willChange = 'height';
-        wrapperRefEle.style.height = !proxyData.openExpanded
-          ? 0
-          : contentHeight;
-        if (parent.props.icon && !proxyData.openExpanded) {
-          proxyData.iconStyle['transform'] = 'rotate(0deg)';
-        } else {
-          proxyData.iconStyle['transform'] =
-            'rotate(' + parent.props.rotate + 'deg)';
+      nextTick(() => {
+        const query = Taro.createSelectorQuery();
+        query.selectAll('.collapse-content').boundingClientRect();
+        query.exec((res) => {
+          getH();
+        });
+        if (!proxyData.openExpanded) {
+          onTransitionEnd();
         }
-      }
-      if (!proxyData.openExpanded) {
-        onTransitionEnd();
-      }
+      });
     };
 
     const open = () => {
@@ -182,9 +189,6 @@ export default create({
 
     const currentName = computed(() => props.name);
     const toggleOpen = () => {
-      console.log('点击了——————-----');
-      console.log(document.getElementsByClassName('collapse-content')[0]);
-
       if (parent.props.accordion) {
         parent.children.forEach((item: any, index: number) => {
           if (currentName.value == item.name) {
@@ -221,10 +225,42 @@ export default create({
       }
     });
 
+    const getH = () => {
+      parent.children.forEach((item1: any, index: number) => {
+        item1.$el.children.forEach((item2: any, index: number) => {
+          item2.children.length > 0 &&
+            item2.children.forEach((item3: any, index: number) => {
+              if (domID.includes(item3.uid)) {
+                const h = list.filter((item4: any) => item4.id == item3.uid)[0]
+                  ?.height;
+                item1.conHeight = h;
+              }
+            });
+        });
+      });
+    };
+
+    let list: any = [],
+      domID: any = [];
     onMounted(() => {
       const { name } = props;
       const active = parent && parent.props.active;
-
+      // 获取 DOM 元素
+      eventCenter.once((getCurrentInstanceTaro() as any).router.onReady, () => {
+        const query = Taro.createSelectorQuery();
+        query.selectAll('.collapse-content').boundingClientRect();
+        query.exec((res) => {
+          list = res[0];
+          list.forEach((item: any) => {
+            domID.push(item.id);
+          });
+          getH();
+          // parent.activeIndex().forEach((item:any) => {
+          //   const h = list[item]?.height;
+          //   parent.children[item].conHeight = h;
+          // });
+        });
+      });
       if (typeof active == 'number' || typeof active == 'string') {
         if (name == active) {
           defaultOpen();
@@ -235,31 +271,6 @@ export default create({
           defaultOpen();
         }
       }
-
-      // 获取 DOM 元素
-      eventCenter.once((getCurrentInstanceTaro() as any).router.onReady, () => {
-        let a = document.getElementsByClassName('collapse-wrapper')[0];
-        console.log(a);
-
-        // const query = Taro.createSelectorQuery()
-        // query.select('.collapse-wrapper').boundingClientRect()
-        // query.exec(res => {
-        //   console.log(res, 'res')
-        // })
-        // console.log('onReady')
-      });
-
-      // proxyData.classDirection = parent.props.expandIconPosition;
-      // if (parent.props.icon && parent.props.icon != 'none') {
-      //   proxyData.iconStyle['background-image'] =
-      //     'url(' + parent.props.icon + ')';
-      // }
-      // if (parent.props.iconWidth && parent.props.icon != 'none') {
-      //   proxyData.iconStyle['width'] = parent.props.conWidth;
-      // }
-      // if (parent.props.iconHeght && parent.props.icon != 'none') {
-      //   proxyData.iconStyle['height'] = parent.props.iconHeight;
-      // }
     });
 
     return {
@@ -267,6 +278,7 @@ export default create({
       ...toRefs(proxyData),
       ...toRefs(parent.props),
       ...toRefs(titleIconStyle),
+      conHeight,
       wrapperRef,
       contentRef,
       open,

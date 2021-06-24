@@ -1,7 +1,7 @@
 <script lang="ts">
 import { provide, computed, reactive, h, ComponentInternalInstance } from 'vue';
-import Step from '@/packages/__VUE/step/index.vue';
-import { createComponent } from '@/packages/utils/create';
+import Step from '../step/index.vue';
+import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('steps');
 
 export default create({

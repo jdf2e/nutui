@@ -33,7 +33,7 @@
 </template>
 <script lang="ts">
 import { ref, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 function trimExtraChar(value: string, char: string, regExp: RegExp) {
   const index = value.indexOf(char);
 

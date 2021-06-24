@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('backtop');
 
 export default createDemo({

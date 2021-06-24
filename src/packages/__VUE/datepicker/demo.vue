@@ -14,7 +14,7 @@
     <nut-datepicker
       v-model="currentDate"
       @confirm="
-        val => {
+        (val) => {
           confirm(0, val);
         }
       "
@@ -27,7 +27,7 @@
       :min-date="minDate"
       :max-date="maxDate"
       @confirm="
-        val => {
+        (val) => {
           confirm(1, val);
         }
       "
@@ -41,7 +41,7 @@
       :min-date="minDate"
       :max-date="maxDate"
       @confirm="
-        val => {
+        (val) => {
           confirm(2, val);
         }
       "
@@ -54,7 +54,7 @@
       :min-date="minDate"
       :max-date="maxDate"
       @confirm="
-        val => {
+        (val) => {
           confirm(3, val);
         }
       "
@@ -68,7 +68,7 @@
       :minute-step="5"
       :max-date="maxDate"
       @confirm="
-        val => {
+        (val) => {
           confirm(4, val);
         }
       "
@@ -79,7 +79,7 @@
 
 <script lang="ts">
 import { toRefs, watch, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('datepicker');
 export default createDemo({
   props: {},
