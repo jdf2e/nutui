@@ -1,4 +1,4 @@
-#  Infiniteloading组件
+#  Infiniteloading 滚动加载
 
 ### 介绍
 
