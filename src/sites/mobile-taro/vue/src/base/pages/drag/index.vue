@@ -2,7 +2,12 @@
   <div class="demo full">
     <h2>基础用法</h2>
     <nut-drag
-      style="width: 90%; height: 200px; border: 1px solid red"
+      style="
+        width: 70%;
+        height: 200px;
+        border: 1px solid red;
+        margin: 0 0 0 20px;
+      "
       direction="all"
       width="120"
       height="40"
@@ -11,30 +16,25 @@
         >触摸移动</nut-button
       >
     </nut-drag>
-    <h2 style="margin: 60px 0 0 0">限制拖拽方向</h2>
+    <h2 style="margin: 30px 0 0 0">限制拖拽方向</h2>
     <nut-drag
-      style="width: 100%; height: 200px; position: absolute"
+      style="width: 80%; height: 50px; margin: 10px 0 0 20px"
       direction="x"
       width="120"
       height="40"
     >
       <nut-button style="width: 120px; height: 40px" type="primary"
-        >只能X轴拖拽</nut-button
+        >X轴拖拽</nut-button
       >
     </nut-drag>
     <nut-drag
-      style="
-        width: 100%;
-        height: 200px;
-        position: absolute;
-        margin: 0 0 0 200px;
-      "
+      style="width: 100%; height: 200px; margin: 0 0 0 20px"
       direction="y"
       width="120"
       height="40"
     >
       <nut-button style="width: 120px; height: 40px" type="primary"
-        >只能y轴拖拽</nut-button
+        >y轴拖拽</nut-button
       >
     </nut-drag>
   </div>
@@ -46,4 +46,8 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.dragDemo {
+  margin-left: 20px;
+}
+</style>
