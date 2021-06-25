@@ -63,7 +63,7 @@
           <nut-checkbox
             v-model="checkbox9"
             label="1"
-            style="margin: 2px 20px 15px 0"
+            style="margin: 2px 20px 0 0"
             >组合复选框</nut-checkbox
           >
           <nut-checkbox v-model="checkbox10" label="2">组合复选框</nut-checkbox>
@@ -87,7 +87,7 @@
           <nut-checkbox
             v-model="checkbox9"
             label="1"
-            style="margin: 2px 20px 15px 0"
+            style="margin: 2px 20px 0 0"
             >组合复选框</nut-checkbox
           >
           <nut-checkbox v-model="checkbox10" label="2">组合复选框</nut-checkbox>
@@ -193,5 +193,16 @@ export default createDemo({
 <style lang="scss" scoped>
 .demo-check {
   margin-right: 10px;
+}
+.nut-checkboxgroup {
+  display: flex;
+  flex-wrap: wrap;
+}
+.nut-checkbox {
+  display: flex;
+  margin-right: 20px;
+  .nut-checkbox__label {
+    margin-left: 10px;
+  }
 }
 </style>
