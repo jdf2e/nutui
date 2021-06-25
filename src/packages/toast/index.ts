@@ -1,2 +1,2 @@
-import Toast from './test'
+import Toast from './toast'
 export default Toast

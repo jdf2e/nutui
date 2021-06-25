@@ -59,24 +59,6 @@ export default class Notification extends React.PureComponent<NotificationProps,
       }, duration * 1000)
     }
   }
-  //   hasIcon() {
-  //     if (type !== 'text') {
-  //       return true
-  //     } else {
-  //       return !!icon
-  //     }
-  //   }
-  //   toastBodyClass() {
-  //     return `
-  //       nut-toast
-  //       ${center ? 'nut-toast-center' : ''}
-  //       ${hasIcon() ? 'nut-toast-has-icon' : ''}
-  //       ${cover ? 'nut-toast-cover' : ''}
-  //       ${type === 'loading' ? 'nut-toast-loading' : ''}
-  //       ${customClass ? customClass : ''}
-  //       ${size ? 'nut-toast-' + size : ''}
-  //     `
-  //   }
 
   clearCloseTimer() {
     if (this.closeTimer) {
@@ -109,10 +91,11 @@ export default class Notification extends React.PureComponent<NotificationProps,
             className="nut-toast-inner"
             style={{ bottom: 'auto', backgroundColor: 'rgba(0, 0, 0, .8)' }}
           >
-            <span className="nut-toast-icon-wrapper">
-              <Icon name={icon ? icon : ''} />
-            </span>
-            <br />
+            {icon ? (
+              <p className="nut-toast-icon-wrapper">
+                <Icon name={icon ? icon : ''} size="20" />
+              </p>
+            ) : null}
 
             <span className="nut-toast-text">{message}</span>
           </div>

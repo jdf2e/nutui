@@ -1,142 +1,122 @@
-import React, { FunctionComponent, useState, useLayoutEffect } from 'react'
-import bem from '@/utils/bem'
-import './toast.scss'
+import * as React from 'react'
 import Icon from '../icon/index'
-export interface ToastProps {
-  msg: string
-  id?: string
-  duration?: number
-  center?: boolean
-  type?: string
-  customClass?: string
-  bottom?: number
-  size?: string
-  icon?: string
-  textAlignCenter?: boolean
-  loadingRotate?: boolean
-  bgColor?: string
-  onClose?: (params?: string | number) => void
-  unmount?: () => void
-  cover?: boolean
-  coverColor?: string
-  closeOnClickOverlay?: boolean
-  noticeKey: number | string
+import Notification, { NotificationProps } from './Notification'
+// const { JiaZai } = Icon
+let messageInstance: any = null
+interface IToastOptions {
+  duration: number
+  mask: boolean
 }
-const defaultProps = {
-  msg: '',
-  id: '',
-  duration: 2000, //显示时间(毫秒)
-  center: true,
-  type: 'text',
-  customClass: '',
-  bottom: 30,
-  size: 'base',
-  icon: '',
-  textAlignCenter: true,
-  loadingRotate: true,
-  bgColor: 'rgba(0, 0, 0, .8)',
-  onClose: (params?: string | number) => {},
-  unmount: () => {},
-  cover: false, //透明遮罩层
-  coverColor: 'rgba(0, 0, 0, 0)',
-  closeOnClickOverlay: false,
-} as ToastProps
-
-export const Toast: FunctionComponent<Partial<ToastProps>> = (props) => {
-  const {
-    msg,
-    id,
-    duration,
-    center,
-    type,
-    customClass,
-    bottom,
-    size,
-    icon,
-    textAlignCenter,
-    loadingRotate,
-    bgColor,
-    onClose,
-    cover,
-    coverColor,
-    closeOnClickOverlay,
-    noticeKey,
-  } = { ...defaultProps, ...props }
-  const [mounted, SetMAounted] = useState(false)
-  const [isRef, SetRef] = useState(false)
-  const [value, SetValue] = useState(false)
-  let timer: any
-
-  useLayoutEffect(() => {
-    if (duration) {
-      show()
-    }
-  }, [])
-  const hasIcon = () => {
-    if (type !== 'text') {
-      return true
-    } else {
-      return !!icon
-    }
-  }
-  const toastBodyClass = () => {
-    return `
-      nut-toast
-      ${center ? 'nut-toast-center' : ''}
-      ${hasIcon() ? 'nut-toast-has-icon' : ''}
-      ${cover ? 'nut-toast-cover' : ''}
-      ${type === 'loading' ? 'nut-toast-loading' : ''}
-      ${customClass ? customClass : ''}
-      ${size ? 'nut-toast-' + size : ''}
-    `
-  }
-  const clickCover = () => {
-    if (closeOnClickOverlay) {
-      hide()
-    }
-  }
-  const hide = () => {
-    SetMAounted(false)
-  }
-  const show = () => {
-    SetMAounted(true)
-    clearTimer()
-    if (duration) {
-      timer = setTimeout(() => {
-        hide()
-      }, duration)
-    }
-  }
-  const clearTimer = () => {
-    if (timer) {
-      clearTimeout(timer)
-      timer = null
-    }
-  }
-
-  const alignStyle = () => {
-    return center ? 'auto' : bottom + 'px'
-  }
-
-  return mounted ? (
-    <div className={toastBodyClass()} style={{ bottom: alignStyle(), backgroundColor: coverColor }}>
-      <div
-        className="nut-toast-inner"
-        style={{
-          textAlign: textAlignCenter ? 'center' : 'left',
-          backgroundColor: bgColor,
-        }}
-      >
-        {hasIcon() ? (
-          <span className="nut-toast-icon-wrapper">
-            <Icon name={icon} />
-          </span>
-        ) : null}
-        <span className="nut-toast-text">{msg}</span>
-      </div>
-    </div>
-  ) : null
+const SHORT = 3
+const options: IToastOptions = {
+  duration: SHORT,
+  mask: false,
 }
 
-Toast.defaultProps = defaultProps
-Toast.displayName = 'NutToast'
+function getInstance(props: NotificationProps, callback: (notification: any) => void) {
+  if (messageInstance) {
+    messageInstance.destroy()
+    messageInstance = null
+  }
+
+  Notification.newInstance(props, (notification: any) => {
+    return callback && callback(notification)
+  })
+}
+
+function notice(
+  message: string | React.ReactNode,
+  icon: any,
+  duration = options.duration,
+  onClose: (() => void) | undefined | null,
+  mask = options.mask
+) {
+  function close() {
+    if (messageInstance) {
+      messageInstance.destroy()
+      messageInstance = null
+    }
+    if (onClose) {
+      onClose()
+    }
+  }
+
+  getInstance(
+    {
+      message,
+      icon,
+      duration,
+      onClose: close,
+      mask,
+    },
+    (notification: any) => {
+      messageInstance = notification
+    }
+  )
+}
+
+export default {
+  SHORT,
+  LONG: 8,
+  text(message: string | React.ReactNode, duration?: number, onClose?: () => void, mask?: boolean) {
+    return notice(message, null, duration, onClose, mask)
+  },
+  success(
+    message: string | React.ReactNode,
+    duration?: number,
+    icon?: string,
+    onClose?: () => void,
+    mask?: boolean
+  ) {
+    return notice(message, icon ? icon : 'success', duration, onClose, mask)
+  },
+  fail(
+    message: string | React.ReactNode,
+    duration?: number,
+    icon?: string,
+    onClose?: () => void,
+    mask?: boolean
+  ) {
+    return notice(message, icon ? icon : 'failure', duration, onClose, mask)
+  },
+  loading(
+    message: string | React.ReactNode,
+    duration?: number,
+    icon?: string,
+    onClose?: () => void,
+    mask?: boolean
+  ) {
+    return notice(message, icon ? icon : 'loading', duration, onClose, mask)
+  },
+  warn(
+    message: string | React.ReactNode,
+    duration?: number,
+    icon?: string,
+    onClose?: () => void,
+    mask?: boolean
+  ) {
+    return notice(message, icon ? icon : 'tips', duration, onClose, mask)
+  },
+  customIcon(
+    message: string | React.ReactNode,
+    duration?: number,
+    icon?: string,
+    onClose?: () => void,
+    mask?: boolean
+  ) {
+    return notice(message, icon ? icon : null, duration, onClose, mask)
+  },
+  hide() {
+    if (messageInstance) {
+      messageInstance.destroy()
+      messageInstance = null
+    }
+  },
+  config(option: Partial<IToastOptions> = {}) {
+    const { duration = SHORT, mask } = option
+    options.duration = duration
+    if (mask === true) {
+      options.mask = true
+    }
+  },
+}
