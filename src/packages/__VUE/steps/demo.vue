@@ -20,12 +20,9 @@
       <nut-step class="nut-step-wait" title="未开始" icon="notice">3</nut-step>
     </nut-steps>
     <h2>竖向步骤条</h2>
-    <div style="height: 300px">
+    <div style="height: 300px; padding: 0 20px">
       <nut-steps direction="vertical" current="2">
-        <nut-step
-          title="已完成"
-          icon="nut-icon-wanshangshide"
-          content="您的订单已经打包完成，商品已发出"
+        <nut-step title="已完成" content="您的订单已经打包完成，商品已发出"
           >1</nut-step
         >
         <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
@@ -36,7 +33,7 @@
         >
       </nut-steps>
     </div>
-    <div style="height: 300px">
+    <div style="height: 300px; padding: 0 20px">
       <nut-steps direction="vertical" progress-dot current="2">
         <nut-step title="已完成" content="您的订单已经打包完成，商品已发出"
           >1</nut-step
@@ -63,7 +60,7 @@ export default createDemo({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo-box {
 }
 </style>

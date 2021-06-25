@@ -15,7 +15,7 @@
         >
       </nut-cell>
       <nut-cell>
-        <div style="marginright: 10px">当前选中值</div>
+        <div class="demo-check">当前选中值</div>
         <div>{{ checkbox1 }}</div>
       </nut-cell>
     </nut-cell-group>
@@ -77,7 +77,7 @@
         </nut-checkboxgroup>
       </nut-cell>
       <nut-cell>
-        <div style="marginright: 10px">当前选中值</div>
+        <div class="demo-check">当前选中值</div>
         <div>{{ checkboxgroup1 }}</div>
       </nut-cell>
     </nut-cell-group>
@@ -190,4 +190,8 @@ export default createDemo({
   }
 });
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.demo-check {
+  margin-right: 10px;
+}
+</style>

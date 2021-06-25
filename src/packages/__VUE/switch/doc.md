@@ -8,7 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
+//vue
 import { Switch } from '@nutui/nutui';
+//mp
+import { Switch } from '@nutui/nutui@taro';
 const app = createApp();
 app.use(Switch);
 

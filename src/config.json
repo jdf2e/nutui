@@ -82,6 +82,7 @@
   "nav": [
     {
       "name": "布局组件",
+      "enName": "layout",
       "packages": [
         {
           "name": "Button",
@@ -146,6 +147,7 @@
     },
     {
       "name": "操作反馈",
+      "enName": "feedback",
       "packages": [
         {
           "name": "BackTop",
@@ -161,7 +163,6 @@
         {
           "name": "ActionSheet",
           "taro": true,
-          "tarodoc": true,
           "sort": "1",
           "cName": "动作面板",
           "type": "component",
@@ -218,6 +219,7 @@
     },
     {
       "name": "基础组件",
+      "enName": "base",
       "packages": [
         {
           "name": "Temp",
@@ -273,7 +275,6 @@
         {
           "name": "Price",
           "taro": true,
-          "tarodoc": true,
           "sort": 4,
           "cName": "价格",
           "type": "component",
@@ -314,7 +315,6 @@
         {
           "name": "Avatar",
           "taro": true,
-          "tarodoc": true,
           "sort": 7,
           "cName": "头像",
           "type": "component",
@@ -325,7 +325,6 @@
         {
           "name": "Popup",
           "taro": true,
-          "tarodoc": true,
           "sort": 8,
           "cName": "弹出层",
           "type": "component",
@@ -464,6 +463,7 @@
     },
     {
       "name": "导航组件",
+      "enName": "nav",
       "packages": [
         {
           "name": "Navbar",
@@ -535,11 +535,11 @@
     },
     {
       "name": "数据录入",
+      "enName": "dentry",
       "packages": [
         {
           "name": "InputNumber",
           "taro": true,
-          "tarodoc": true,
           "sort": 1,
           "cName": "数字输入框",
           "type": "component",
@@ -607,7 +607,6 @@
           "version": "3.0.0",
           "name": "ShortPassword",
           "taro": true,
-          "tarodoc": true,
           "type": "component",
           "cName": "短密码",
           "desc": "短密码组件",
@@ -631,6 +630,7 @@
     },
     {
       "name": "业务组件",
+      "enName": "business",
       "packages": [
         {
           "version": "3.0.0",
