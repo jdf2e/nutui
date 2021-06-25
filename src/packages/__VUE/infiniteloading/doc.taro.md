@@ -8,7 +8,7 @@
 
 ```javascript
   import { createApp } from 'vue';
-  import { InfiniteLoading } from '@nutui/nutui';
+  import { InfiniteLoading } from '@nutui/nutui@taro';
 
   const app = createApp();
   app.use(InfiniteLoading);
@@ -18,152 +18,75 @@
     
 ### 基础用法
 
+在一个页面中，只能有一个 Infiniteloading，不可同时存在两个以及更多。
+
 ```html
-<ul class="infiniteUl" id="scroll">
-    <nut-infiniteloading
-        containerId = 'scroll'
-        :use-window='false'
-        :has-more="hasMore"
-        @load-more="loadMore"
+<div class="infiniteUl" id="scrollDemo">
+  <nut-infiniteloading
+    pull-icon="JD"
+    load-txt="loading"
+    load-more-txt="没有啦～"
+    :is-open-refresh="true"
+    container-id="scrollDemo"
+    :has-more="hasMore"
+    @load-more="loadMore"
+    @refresh="refresh"
+  >
+    <div
+      class="infiniteLi"
+      v-for="(item, index) in defultList"
+      :key="index"
+      >{{ item }}</div
     >
-        <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{item}}</li>
-    </nut-infiniteloading>
-</ul>
+  </nut-infiniteloading>
+</div>
 ```
 ```javascript
 setup() {
     const hasMore = ref(true);
+
     const data = reactive({
-      defultList: []
+      defultList: ['']
     });
-    const loadMore = done => {  
+
+    const loadMore = (done) => {
       setTimeout(() => {
         const curLen = data.defultList.length;
+
         for (let i = curLen; i < curLen + 10; i++) {
           data.defultList.push(`${i}`);
         }
-        if (data.defultList.length > 30) hasMore.value = false;
-        done()
-      }, 500);
-    };
-    const init = () => {
-      for (let i = 0; i < 10; i++) {
-        data.defultList.push(`${i}`);
-      }
-    }
-    onMounted(() => {
-      init()
-    });
-    return { loadMore, hasMore, ...toRefs(data) };
-}
-```
-### 下拉刷新
 
-```html
-<ul class="infiniteUl" id="refreshScroll">
-  <nut-infiniteloading
-    pull-icon="JD"
-    container-id="refreshScroll"
-    :use-window="false"
-    :is-open-refresh="true"
-    :has-more="refreshHasMore"
-    @load-more="refreshLoadMore"
-    @refresh="refresh"
-  >
-    <li
-      class="infiniteLi"
-      v-for="(item, index) in refreshList"
-      :key="index"
-      >{{ item }}</li
-    >
-  </nut-infiniteloading>
-</ul>
-```
-```javascript
-setup() {
-    const refreshHasMore = ref(true);
-    const data = reactive({
-      refreshList: []
-    });
-    const refreshLoadMore = done => {
-      setTimeout(() => {
-        const curLen = data.refreshList.length;
-        for (let i = curLen; i < curLen + 10; i++) {
-          data.refreshList.push(
-            `${i}`
-          );
-        }
-        if (data.refreshList.length > 30) refreshHasMore.value = false;
-        done()
+        if (data.defultList.length > 30) hasMore.value = false;
+
+        done();
       }, 500);
     };
 
     const refresh = (done) => {
-      setTimeout(()=>{
-        Toast.success('刷新成功');
-        done()
-      },1000)
-    }
-    const init = () => {
-      for (let i = 0; i < 10; i++) {
-        data.refreshList.push(`${i}`);
-      }
-    }
-    onMounted(() => {
-      init()
-    });
-    return { refreshLoadMore, refreshHasMore, refresh, ...toRefs(data) };
-}
-```
-### 自定义加载文案
-
-```html
-<ul class="infiniteUl" id="customScroll">
-    <nut-infiniteloading
-        container-id = 'customScroll'
-        :use-window='false'
-        :has-more="customHasMore"
-        @load-more="customLoadMore"
-    >
-        <li class="infiniteLi" v-for="(item, index) in customList" :key="index">{{item}}</li>
-        <template v-slot:loading>
-            <div class="loading">
-                <span>加载中...</span>
-            </div>
-        </template>
-        <template v-slot:unloadMore>
-            <div class="unload-more">没有数据啦 ~~</div>
-        </template>
-    </nut-infiniteloading>
-</ul>
-```
-```javascript
-setup() {
-    const customHasMore = ref(true);
-    const data = reactive({
-      customList: ['']
-    });
-    const customLoadMore = done => {
       setTimeout(() => {
-        const curLen = data.customList.length;
-        for (let i = curLen; i < curLen + 10; i++) {
-          data.customList.push(`${i}`);
-        }
-        if (data.customList.length > 30) customHasMore.value = false;
-        done()
-      }, 500);
+        console.log('刷新成功');
+        done();
+      }, 1000);
     };
+
     const init = () => {
-      for (let i = 0; i < 10; i++) {
-        data.customList.push(`${i}`);
+      for (let i = 0; i < 20; i++) {
+        data.defultList.push(`${i}`);
       }
-    }
+    };
     onMounted(() => {
-      init()
+      init();
     });
-    return { customHasMore, customLoadMore,...toRefs(data) };
+    return {
+      loadMore,
+      hasMore,
+      refresh,
+      ...toRefs(data)
+    };
 }
 ```
+
 
 ## API
 
@@ -172,10 +95,7 @@ setup() {
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | has-more         | 是否还有更多数据               | Boolean | `true`                |
-| threshold         | 距离底部多远加载 | Number | `200`               |
-| use-window | 将滚动侦听器添加到 window 否则侦听组件的父节点     | Boolean | `true` |
-| use-capture          | 是否使用捕获模式 true 捕获 false 冒泡                        | Boolean | `false`            |
-| container-id          | 在 useWindow 属性为 false 的时候，自定义设置节点ID                        | String | `''`            |
+| container-id          | 必填，设置滚动节点ID                        | String | `''`            |
 | load-more-txt          | “没有更多数”据展示文案                        | String | `'哎呀，这里是底部了啦'`            |
 | is-open-refresh        | 是否开启下拉刷新                         | Boolean | `false`                |
 | pull-icon        | 下拉刷新[图标名称](#/icon)                        | String | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40/>                |
