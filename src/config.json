@@ -97,7 +97,6 @@
         {
           "name": "Collapse",
           "taro": true,
-          "tarodoc": true,
           "sort": 2,
           "cName": "折叠面板",
           "type": "component",
