@@ -97,7 +97,18 @@
     },
     {
       "name": "操作反馈",
-      "packages": []
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Toast",
+          "type": "component",
+          "cName": "吐司",
+          "desc": "轻提示",
+          "sort": 1,
+          "show": true,
+          "author": "VickyYe"
+        }
+      ]
     },
     {
       "name": "基础组件",
