@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo demo-nut-radio">
     <nut-cell-group title="基本用法-左右侧">
       <nut-cell>
         <nut-radiogroup v-model="radioVal" @change="handleChange1">
@@ -110,5 +110,10 @@ export default createDemo({
 <style lang="scss" scoped>
 .demo-check {
   margin-right: 10px;
+}
+.demo-nut-radio {
+  .nut-radio {
+    margin-bottom: 8px;
+  }
 }
 </style>
