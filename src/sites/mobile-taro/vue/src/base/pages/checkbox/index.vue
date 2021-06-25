@@ -14,7 +14,10 @@
           >复选框</nut-checkbox
         >
       </nut-cell>
-      <nut-cell title="当前选中值" :desc="checkbox1" />
+      <nut-cell>
+        <div class="demo-check">当前选中值</div>
+        <div>{{ checkbox1 }}</div>
+      </nut-cell>
     </nut-cell-group>
 
     <nut-cell-group title="禁用状态">
@@ -63,7 +66,10 @@
           <nut-checkbox v-model="checkbox12" label="4">组合复选框</nut-checkbox>
         </nut-checkboxgroup>
       </nut-cell>
-      <nut-cell title="当前选中值" :desc="checkboxgroup1" />
+      <nut-cell>
+        <div class="demo-check">当前选中值</div>
+        <div>{{ checkboxgroup1 }}</div>
+      </nut-cell>
     </nut-cell-group>
     <nut-cell-group title="checkboxGroup禁用">
       <nut-cell>
@@ -87,7 +93,12 @@
         </nut-checkboxgroup>
       </nut-cell>
       <nut-cell>
-        <nut-button type="primary" @click="toggleAll(true)">全选</nut-button>
+        <nut-button
+          type="primary"
+          @click="toggleAll(true)"
+          style="margin: 0 10px 0 0"
+          >全选</nut-button
+        >
         <nut-button type="info" @click="toggleAll(false)">取消</nut-button>
       </nut-cell>
     </nut-cell-group>
@@ -151,4 +162,19 @@ export default {
   }
 };
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.demo-check {
+  margin-right: 10px;
+}
+.nut-checkboxgroup {
+  display: flex;
+  flex-wrap: wrap;
+}
+.nut-checkbox {
+  display: flex;
+  margin-right: 20px;
+  .nut-checkbox__label {
+    margin-left: 10px;
+  }
+}
+</style>
