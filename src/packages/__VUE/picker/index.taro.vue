@@ -12,9 +12,9 @@
 
 <script lang="ts">
 import { onUpdated, ref, watch } from 'vue';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('picker');
 import { commonProps } from './commonProps';
-import { createComponent } from '../../utils/create';
 export default create({
   props: {
     mode: {
