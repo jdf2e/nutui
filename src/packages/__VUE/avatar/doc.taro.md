@@ -7,7 +7,10 @@
 ### 安装
 ``` javascript
 import { createApp } from 'vue';
+//vue
 import { Avatar } from '@nutui/nutui';
+//mp
+import { Avatar } from '@nutui/nutui@taro';
 
 const app = createApp();
 app.use(Avatar);

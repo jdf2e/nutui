@@ -50,10 +50,10 @@ export default {
     const checkedAsync = ref(true);
 
     const change = (value: boolean, event: Event) => {
-      proxy.$toast.text(`触发了change事件，开关状态：${value}`);
+      console.log(`触发了change事件，开关状态：${value}`);
     };
     const changeAsync = (value: boolean, event: Event) => {
-      proxy.$toast.text(`2秒后异步触发 ${value}`);
+      console.log(`2秒后异步触发 ${value}`);
       setTimeout(() => {
         checkedAsync.value = value;
       }, 2000);
