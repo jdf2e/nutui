@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Index from './components/Index.vue';
+import IndexTaro from './components/IndexTaro.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -28,6 +29,12 @@ for (const path in modulesPage) {
     path: '/' + name,
     component: modulesPage[path],
     name
+  });
+
+  routes.push({
+    path: '/' + name + '-taro',
+    component: IndexTaro,
+    name: name + '-taro'
   });
 }
 

@@ -1,4 +1,4 @@
-# Popup 弹出层 组件
+# Popup 弹出层
 
 ### 介绍
 
@@ -8,7 +8,10 @@
 
 ```javascript
 import { createApp } from 'vue';
+//vue
 import { Popup } from '@nutui/nutui';
+//mp
+import { Popup } from '@nutui/nutui@taro';
 
 const app = createApp();
 app.use(Popup);
@@ -109,7 +112,7 @@ app.use(Popup);
 | close-icon             | 自定义 Icon                                                 | String         | `"close"`     |
 | destroy-on-close       | 组件销毁后是否关闭                                          | Boolean        | `true`        |
 | round                  | 是否显示圆角                                                | Boolean        | `false`       |
-| teleport               | 指定挂载节点                                                | String         | `"body"`      |
+| teleport               | 指定挂载节点(`小程序不支持`)                                                | String         | `"body"`      |
 
 ### Events
 

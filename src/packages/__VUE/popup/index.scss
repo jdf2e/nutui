@@ -1,10 +1,12 @@
 .popup-slide {
-  &-center-enter-active {
-    animation: nut-fade-in;
+  &-center-enter-active,
+  &-center-leave-active {
+    transition: opacity 0.5s ease;
   }
 
-  &-center-leave-active {
-    animation: nut-fade-out;
+  &-center-enter-from,
+  &-center-leave-to {
+    opacity: 0;
   }
 
   &-top-enter-from,
@@ -79,28 +81,8 @@
   max-height: 100%;
   overflow-y: auto;
   background-color: $white;
-  transition: transform 0.3s;
+  transition: transform 0.2s;
   -webkit-overflow-scrolling: touch;
-}
-
-@keyframes nut-fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes nut-fade-out {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
 }
 
 .nut-overflow-hidden {
@@ -114,6 +96,10 @@
     color: #969799;
     font-size: 18px;
     cursor: pointer;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
 
     &:active {
       opacity: 0.7;

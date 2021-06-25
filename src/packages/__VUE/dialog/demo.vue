@@ -2,7 +2,6 @@
   <div class="demo">
     <nut-cell-group title="函数式调用">
       <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
-      <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
       <nut-cell title="无标题弹框" @click="noTitleClick"></nut-cell>
       <nut-cell title="提示弹框" @click="tipsClick"></nut-cell>
     </nut-cell-group>

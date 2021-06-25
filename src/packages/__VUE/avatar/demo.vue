@@ -40,7 +40,7 @@
     </nut-cell>
     <h2>点击头像触发事件</h2>
     <nut-cell>
-      <nut-avatar icon="my" @activeAvatar="handleClick"></nut-avatar>
+      <nut-avatar icon="my" @active-avatar="handleClick"></nut-avatar>
     </nut-cell>
   </div>
 </template>

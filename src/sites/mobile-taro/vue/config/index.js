@@ -15,6 +15,9 @@ const config = {
         alias: {
           '@vue': path.resolve(__dirname, '../node_modules/@vue'),
           vue: path.resolve(__dirname, '../node_modules/@vue')
+        },
+        runtime: {
+          enableSizeAPIs: true
         }
       });
     }
@@ -30,9 +33,6 @@ const config = {
     )
   },
   defineConstants: {},
-  runtime: {
-    enableSizeAPIs: true
-  },
   copy: {
     patterns: [],
     options: {}

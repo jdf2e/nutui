@@ -1,4 +1,4 @@
-# Tabbar 标签栏组件
+# Tabbar 标签栏
 
 ### 介绍
 
@@ -7,10 +7,13 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Tabbar,Icon } from '@nutui/nutui';
+//vue
+import { Tabbar } from '@nutui/nutui';
+//mp
+import { Tabbar } from '@nutui/nutui@taro';
 
 const app = createApp();
-app.use(Tabbar).use(Icon);
+app.use(Tabbar);
 
 ```
 

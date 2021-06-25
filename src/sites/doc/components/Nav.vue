@@ -31,7 +31,10 @@
           :key="_package"
         >
           <li v-if="_package.show">
-            <router-link :to="_package.name.toLowerCase()">
+            <router-link
+              :to="_package.name.toLowerCase()"
+              :class="{ active: isActive(_package.name) }"
+            >
               {{ _package.name }}&nbsp;&nbsp;<b>{{ _package.cName }}</b>
             </router-link>
           </li>
@@ -48,12 +51,13 @@ export default defineComponent({
   name: 'doc-nav',
   setup() {
     const isActive = computed(() => {
-      return function(name: string) {
-        return RefData.getInstance().currentRoute.value == name.toLowerCase();
+      return function (name: string) {
+        return (
+          RefData.getInstance().currentRoute.value == name.toLowerCase() ||
+          RefData.getInstance().currentRoute.value.indexOf(name.toLowerCase()) >
+            -1
+        );
       };
-    });
-    onMounted(() => {
-      console.log('123' + nav);
     });
     return {
       isActive,
@@ -122,7 +126,8 @@ export default defineComponent({
             }
           }
           a {
-            &.router-link-active {
+            &.router-link-active,
+            &.active {
               color: $doc-default-color !important;
             }
 

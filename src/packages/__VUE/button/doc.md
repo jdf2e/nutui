@@ -1,4 +1,4 @@
-# Button 按钮组件
+# Button 按钮
 
 ### 介绍
 
@@ -8,7 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
+//vue
 import { Button } from '@nutui/nutui';
+//mp
+import { Button } from '@nutui/nutui@taro';
 
 const app = createApp();
 app.use(Button);

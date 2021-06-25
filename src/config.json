@@ -82,12 +82,13 @@
   "nav": [
     {
       "name": "布局组件",
+      "enName": "layout",
       "packages": [
         {
           "name": "Button",
           "taro": true,
           "sort": 1,
-          "cName": "按钮组件",
+          "cName": "按钮",
           "type": "component",
           "show": true,
           "desc": "按钮用于触发一个操作，如提交表单。",
@@ -96,6 +97,7 @@
         {
           "name": "Collapse",
           "taro": true,
+          "tarodoc": true,
           "sort": 2,
           "cName": "折叠面板",
           "type": "component",
@@ -145,9 +147,12 @@
     },
     {
       "name": "操作反馈",
+      "enName": "feedback",
       "packages": [
         {
           "name": "BackTop",
+          "taro": true,
+          "tarodoc": true,
           "sort": "1",
           "cName": "返回顶部",
           "type": "component",
@@ -167,6 +172,8 @@
         },
         {
           "name": "Toast",
+          "taro": true,
+          "tarodoc": true,
           "sort": "1",
           "cName": "吐司",
           "type": "methods",
@@ -177,7 +184,9 @@
         {
           "version": "3.0.0",
           "name": "Notify",
-          "type": "component",
+          "tarodoc": true,
+          "taro": true,
+          "type": "methods",
           "cName": "消息通知",
           "desc": "在页面顶部展示消息提示，支持函数调用和组件调用两种方式",
           "sort": 4,
@@ -188,6 +197,7 @@
           "version": "3.0.0",
           "name": "Picker",
           "taro": true,
+          "tarodoc": true,
           "type": "component",
           "cName": "选择器",
           "desc": "提供多个选型集合供用户选择,支持单列选择和多列级联,通常与弹出层配合使用",
@@ -199,7 +209,7 @@
           "version": "3.0.0",
           "name": "DatePicker",
           "type": "component",
-          "cName": "选择器",
+          "cName": "日期选择器",
           "desc": "提供多个选型集合供用户选择,支持单列选择和多列级联,通常与弹出层配合使用",
           "sort": 5,
           "show": true,
@@ -209,6 +219,7 @@
     },
     {
       "name": "基础组件",
+      "enName": "base",
       "packages": [
         {
           "name": "Temp",
@@ -222,8 +233,9 @@
         {
           "name": "Cell",
           "taro": true,
+          "tarodoc": true,
           "sort": 1,
-          "cName": "单元格组件",
+          "cName": "单元格",
           "type": "component",
           "show": true,
           "desc": "展示列表",
@@ -241,8 +253,9 @@
         {
           "name": "Uploader",
           "taro": true,
+          "tarodoc": true,
           "sort": 2,
-          "cName": "上传组件",
+          "cName": "上传",
           "type": "component",
           "show": true,
           "desc": "上传文件、图片",
@@ -251,8 +264,9 @@
         {
           "name": "Icon",
           "taro": true,
+          "tarodoc": true,
           "sort": 3,
-          "cName": "图标组件",
+          "cName": "图标",
           "type": "component",
           "show": true,
           "desc": "图标",
@@ -262,7 +276,7 @@
           "name": "Price",
           "taro": true,
           "sort": 4,
-          "cName": "价格组件",
+          "cName": "价格",
           "type": "component",
           "show": true,
           "desc": "价格组件",
@@ -281,6 +295,7 @@
         {
           "name": "Swiper",
           "taro": true,
+          "tarodoc": true,
           "sort": 6,
           "cName": "轮播",
           "type": "component",
@@ -320,6 +335,8 @@
         },
         {
           "name": "Dialog",
+          "taro": true,
+          "tarodoc": true,
           "type": "methods",
           "cName": "对话框",
           "desc": "模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。",
@@ -373,6 +390,7 @@
           "version": "3.0.0",
           "name": "InfiniteLoading",
           "taro": true,
+          "tarodoc": true,
           "type": "component",
           "cName": "滚动加载",
           "desc": "列表滚动到底部自动加载更多数据",
@@ -384,6 +402,7 @@
           "version": "3.0.0",
           "name": "Range",
           "taro": true,
+          "tarodoc": true,
           "type": "component",
           "cName": "区间选择器",
           "desc": "滑动输入条，用于在给定的范围内选择一个值。",
@@ -402,6 +421,8 @@
         },
         {
           "name": "Drag",
+          "taro": true,
+          "tarodoc": true,
           "type": "component",
           "cName": "拖拽",
           "desc": "拖拽组件",
@@ -416,7 +437,7 @@
           "cName": "视频播放器",
           "desc": "视频播放组件",
           "sort": 20,
-          "show": true,
+          "show": false,
           "author": "zy19940510"
         },
         {
@@ -442,15 +463,16 @@
     },
     {
       "name": "导航组件",
+      "enName": "nav",
       "packages": [
         {
           "name": "Navbar",
           "taro": true,
           "sort": 3,
-          "cName": "导航组件",
+          "cName": "头部导航",
           "type": "componment",
           "show": true,
-          "desc": "导航组件",
+          "desc": "头部导航",
           "author": "liqiong43"
         },
         {
@@ -484,10 +506,10 @@
           "name": "Tabbar",
           "taro": true,
           "sort": 2,
-          "cName": "标签栏组件",
+          "cName": "标签栏",
           "type": "component",
           "show": true,
-          "desc": "标签栏组件",
+          "desc": "标签栏",
           "author": "Drjingfubo"
         },
         {
@@ -513,6 +535,7 @@
     },
     {
       "name": "数据录入",
+      "enName": "dentry",
       "packages": [
         {
           "name": "InputNumber",
@@ -527,6 +550,7 @@
         {
           "name": "Input",
           "taro": true,
+          "tarodoc": true,
           "sort": 2,
           "cName": "输入框",
           "type": "component",
@@ -539,7 +563,7 @@
           "name": "Switch",
           "taro": true,
           "type": "component",
-          "cName": "开关组件",
+          "cName": "开关",
           "desc": "用来打开或关闭选项",
           "sort": 3,
           "show": true,
@@ -549,6 +573,7 @@
           "version": "3.0.0",
           "name": "Rate",
           "taro": true,
+          "tarodoc": true,
           "sort": 4,
           "cName": "评分",
           "type": "component",
@@ -559,6 +584,7 @@
         {
           "version": "3.0.0",
           "taro": true,
+          "tarodoc": true,
           "name": "Calendar",
           "type": "component",
           "cName": "日历",
@@ -591,6 +617,7 @@
         {
           "version": "3.0.0",
           "taro": true,
+          "tarodoc": true,
           "name": "TextArea",
           "type": "component",
           "cName": "文本域",
@@ -603,13 +630,15 @@
     },
     {
       "name": "业务组件",
+      "enName": "business",
       "packages": [
         {
           "version": "3.0.0",
           "taro": true,
+          "tarodoc": true,
           "name": "Address",
           "type": "component",
-          "cName": "地址组件",
+          "cName": "地址",
           "desc": "地址组件",
           "sort": 1,
           "show": true,

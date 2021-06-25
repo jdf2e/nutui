@@ -29,6 +29,17 @@ for (const path in modulesPage) {
   });
 }
 
+/** vite-taro **/
+const modulesPageTaro = import.meta.glob('/src/packages/__VUE/**/*.taro.md');
+for (const path in modulesPageTaro) {
+  let name = (/packages\/__VUE\/(.*)\/doc.taro.md/.exec(path) as any[])[1];
+  pagesRouter.push({
+    path: `/${name}-taro`,
+    component: modulesPageTaro[path],
+    name: `${name}-taro`
+  });
+}
+
 /** webpack */
 // const docs = require.context('@/docs', true, /\.md$/);
 // docs.keys().forEach(component => {

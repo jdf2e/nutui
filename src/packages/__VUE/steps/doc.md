@@ -1,4 +1,4 @@
-# Steps 步骤条 组件
+# Steps 步骤条
 
 ### 介绍
 
@@ -8,7 +8,10 @@
 
 ```javascript
 import { createApp } from 'vue';
+//vue
 import { Steps } from '@nutui/nutui';
+//mp
+import { Steps } from '@nutui/nutui@taro';
 
 const app = createApp();
 app.use(Steps);
