@@ -635,7 +635,6 @@
         {
           "version": "3.0.0",
           "taro": true,
-          "tarodoc": true,
           "name": "Address",
           "type": "component",
           "cName": "地址",
