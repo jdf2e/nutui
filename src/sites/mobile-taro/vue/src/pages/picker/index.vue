@@ -12,15 +12,7 @@
 </template>
 <script lang="ts">
 import { ref } from 'vue';
-import { createComponent } from './../../utils/create';
-import Picker from './index.taro.vue';
-import Cell from './../cell/index.taro.vue';
-const { createDemo } = createComponent('picker');
-export default createDemo({
-  components: {
-    'nut-picker': Picker,
-    'nut-cell': Cell
-  },
+export default {
   props: {},
   setup() {
     const listData1 = [
@@ -69,5 +61,5 @@ export default createDemo({
       confirm2
     };
   }
-});
+};
 </script>
