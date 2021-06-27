@@ -265,7 +265,6 @@
         {
           "name": "Icon",
           "taro": true,
-          "tarodoc": true,
           "sort": 3,
           "cName": "图标",
           "type": "component",
@@ -550,7 +549,6 @@
         {
           "name": "Input",
           "taro": true,
-          "tarodoc": true,
           "sort": 2,
           "cName": "输入框",
           "type": "component",
@@ -573,7 +571,6 @@
           "version": "3.0.0",
           "name": "Rate",
           "taro": true,
-          "tarodoc": true,
           "sort": 4,
           "cName": "评分",
           "type": "component",
@@ -584,7 +581,6 @@
         {
           "version": "3.0.0",
           "taro": true,
-          "tarodoc": true,
           "name": "Calendar",
           "type": "component",
           "cName": "日历",
@@ -617,7 +613,6 @@
         {
           "version": "3.0.0",
           "taro": true,
-          "tarodoc": true,
           "name": "TextArea",
           "type": "component",
           "cName": "文本域",

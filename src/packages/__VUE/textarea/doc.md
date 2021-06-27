@@ -8,7 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
+//vue
 import { TextArea } from '@nutui/nutui';
+//mp
+import { TextArea } from '@nutui/nutui@taro';
 
 const app = createApp();
 app.use(TextArea);
