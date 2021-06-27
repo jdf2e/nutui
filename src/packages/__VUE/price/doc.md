@@ -1,4 +1,4 @@
-# Price 价格
+# Price 商品价格
 
 ### 介绍
 
@@ -8,7 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
+//vue
 import { Price } from '@nutui/nutui';
+//mp
+import { Price } from '@nutui/nutui@taro';
 
 const app = createApp();
 app.use(Price);
