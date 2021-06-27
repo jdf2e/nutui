@@ -42,10 +42,10 @@ app.use(Uploader);
 ``` html
 <nut-uploader url="http://服务器地址" multiple maximum="5"></nut-uploader>
 ```
-### 限制上传大小（每个文件最大不超过 50kb，也可以在beforeupload中自行处理）
+### 限制上传大小（每个文件最大不超过 50kb）
 
 ``` html
-<nut-uploader url="http://服务器地址" multiple :maximize="1024 * 50" :before-upload="beforeUpload" @oversize="onOversize"></nut-uploader>
+<nut-uploader url="http://服务器地址" multiple :maximize="1024 * 50"  @oversize="onOversize"></nut-uploader>
 ```
 
 ``` javascript
@@ -57,10 +57,6 @@ setup() {
       console.log('oversize 触发 文件大小不能超过 50kb', files);
     };
 
-    const beforeUpload = (files: File[]) => {
-      //自定义处理
-      return files;
-    }
    
     return {
       onOversize,
@@ -96,8 +92,6 @@ setup() {
 ``` html
 <nut-uploader disabled></nut-uploader>
 ```
-
-## API
 
 ### Prop
 
