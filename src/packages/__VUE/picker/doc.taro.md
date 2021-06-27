@@ -1,4 +1,4 @@
-#  Picker组件
+#  Picker 选择器
 
 ### 介绍
     

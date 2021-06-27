@@ -52,11 +52,12 @@ export default defineComponent({
   setup() {
     const isActive = computed(() => {
       return function (name: string) {
-        return (
-          RefData.getInstance().currentRoute.value == name.toLowerCase() ||
-          RefData.getInstance().currentRoute.value.indexOf(name.toLowerCase()) >
-            -1
-        );
+        const currentValue = RefData.getInstance().currentRoute.value;
+        let value =
+          currentValue.indexOf('-taro') > -1
+            ? currentValue.split('-taro')[0]
+            : currentValue;
+        return value == name.toLowerCase();
       };
     });
     return {

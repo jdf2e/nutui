@@ -403,7 +403,6 @@
           "version": "3.0.0",
           "name": "Range",
           "taro": true,
-          "tarodoc": true,
           "type": "component",
           "cName": "区间选择器",
           "desc": "滑动输入条，用于在给定的范围内选择一个值。",
