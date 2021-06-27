@@ -8,7 +8,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Icon } from '@nutui/nutui';
+import { Icon } from '@nutui/nutui@taro';
 
 const app = createApp();
 app.use(Icon);
