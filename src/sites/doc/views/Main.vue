@@ -38,7 +38,7 @@
         <li class="features-item">
           <img src="../../assets/images/img-home-features1.png" />
           <p class="features-title">京东风格</p>
-          <p class="features-desc">遵循京东 App 9.0 设计规范</p>
+          <p class="features-desc">遵循京东 App 10.0 设计规范</p>
         </li>
         <li class="features-item">
           <img src="../../assets/images/img-home-features5.png" />
@@ -48,10 +48,7 @@
         <li class="features-item">
           <img src="../../assets/images/img-home-features2.png" />
           <p class="features-title">组件丰富</p>
-          <p class="features-desc a-l"
-            >提供 70+ 组件，丰富的 demo
-            快速体验交互细节，覆盖各类场景满足各种功能的需求</p
-          >
+          <p class="features-desc a-l">提供 70+ 组件，覆盖绝大多数业务场景</p>
         </li>
         <li class="features-item">
           <img src="../../assets/images/img-home-features3.png" />

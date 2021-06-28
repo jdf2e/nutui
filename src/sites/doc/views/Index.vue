@@ -15,7 +15,7 @@
           >
         </div>
         <div class="doc-content-tabs" v-if="isShow() && !isShowTaroDoc">
-          <div class="tab-item cur">vue/mp</div>
+          <div class="tab-item cur">vue/taro</div>
         </div>
         <router-view />
       </div>
@@ -59,7 +59,7 @@ export default defineComponent({
         },
         {
           key: 'taro',
-          text: 'mp'
+          text: 'taro'
         }
       ]
     });
