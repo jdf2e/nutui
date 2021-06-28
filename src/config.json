@@ -23,14 +23,14 @@
   ],
   "header": [
     {
-      "name": "guide",
+      "name": "intro,theme,start",
       "cName": "指南",
       "path": "/intro"
     },
     {
-      "name": "intro",
+      "name": "component",
       "cName": "组件",
-      "path": "/intro"
+      "path": "/button"
     },
     {
       "name": "example",

@@ -48,7 +48,7 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const router = useRouter();
-    const excludeTaro = ['/intro', '/start', '/theme'];
+    const excludeTaro = ['/intro', '/start', '/theme', '/joinus'];
     const data = reactive({
       demoUrl: 'demo.html',
       curKey: 'vue',

@@ -9,12 +9,12 @@
       <Search />
       <div class="nav-box">
         <ul class="nav-list">
-          <li class="nav-item">
+          <li class="nav-item" :class="{ active: isActive(header[0].name) }">
             <router-link :to="header[0].path">
               {{ header[0].cName }}
             </router-link>
           </li>
-          <li class="nav-item" :class="{ active: isActive(header[1].path) }">
+          <li class="nav-item" :class="{ active: isActive(header[1].name) }">
             <router-link :to="header[1].path">
               {{ header[1].cName }}
             </router-link>
@@ -71,7 +71,7 @@
 <script lang="ts">
 import { defineComponent, reactive, computed, onMounted } from 'vue';
 import Search from './Search.vue';
-import { header, versions } from '@/config.json';
+import { header, versions, nav } from '@/config.json';
 import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-header',
@@ -79,6 +79,10 @@ export default defineComponent({
     Search
   },
   setup() {
+    let packages = [];
+    nav.forEach((item) => {
+      packages.push(...item.packages);
+    });
     const data = reactive({
       theme: 'black',
       // headerBg: 'url(' + require('../../assets/images/header-bg.png') + ')',
@@ -94,12 +98,23 @@ export default defineComponent({
       data.isShowSelect = false;
     };
     const isActive = computed(() => {
-      return function(name: string) {
-        return RefData.getInstance().currentRoute.value == name.toLowerCase();
+      let value = RefData.getInstance().currentRoute.value;
+      return function (name: string) {
+        const lName = name.toLowerCase();
+        if (lName === 'component') {
+          if (value.indexOf('-taro') > -1) {
+            value = value.split('-taro')[0];
+          }
+          return (
+            packages.findIndex((item) => item.name.toLowerCase() === value) > -1
+          );
+        } else {
+          return value === lName || lName.includes(value);
+        }
       };
     });
     const themeName = computed(() => {
-      return function() {
+      return function () {
         return `doc-header-${RefData.getInstance().themeColor.value}`;
       };
     });

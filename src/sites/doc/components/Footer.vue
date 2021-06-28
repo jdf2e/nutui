@@ -64,7 +64,7 @@
             target="_blank"
             href="https://www.zhihu.com/column/c_1263837684834889728"
             v-hover
-            >NutUI 知乎专栏</a
+            >知乎专栏</a
           ></div
         >
 
