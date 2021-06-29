@@ -10,7 +10,7 @@
 import { createApp } from 'vue';
 //vue
 import { Steps } from '@nutui/nutui';
-//mp
+//taro
 import { Steps } from '@nutui/nutui@taro';
 
 const app = createApp();

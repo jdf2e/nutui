@@ -9,7 +9,7 @@
 import { createApp } from 'vue';
 //vue
 import { Tabbar } from '@nutui/nutui';
-//mp
+//taro
 import { Tabbar } from '@nutui/nutui@taro';
 
 const app = createApp();

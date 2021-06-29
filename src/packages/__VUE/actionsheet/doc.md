@@ -10,7 +10,7 @@
 import { createApp } from 'vue';
 //vue
 import { ActionSheet } from '@nutui/nutui';
-//mp
+//taro
 import { ActionSheet } from '@nutui/nutui@taro';
 
 const app = createApp();

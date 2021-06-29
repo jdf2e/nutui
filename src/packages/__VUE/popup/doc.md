@@ -10,7 +10,7 @@
 import { createApp } from 'vue';
 //vue
 import { Popup } from '@nutui/nutui';
-//mp
+//taro
 import { Popup } from '@nutui/nutui@taro';
 
 const app = createApp();

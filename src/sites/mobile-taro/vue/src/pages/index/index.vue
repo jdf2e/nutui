@@ -36,14 +36,17 @@ import { reactive, toRefs } from 'vue';
 import { nav } from '../../../../../../config.json';
 export default {
   name: 'NutUI',
-  // onShareAppMessage: function (res) {
-  //   if (res.from === 'button') {
-  //     // 来自页面内转发按钮
-  //     console.log(res.target)
-  //   }
+  onShareAppMessage() {
+    return {
+      title: '',
+      path: '/pages/index/index',
+      success: function (res) {}
+    };
+  },
+  // onShareTimeline() {
   //   return {
-  //     title: '自定义转发标题',
-  //     path: '/page/user?id=123'
+  //     title: '京东风格的轻量级小程序组件库',
+  // 	  success: function(res) {}
   //   }
   // },
   setup() {

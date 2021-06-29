@@ -10,7 +10,7 @@
 import { createApp } from 'vue';
 //vue
 import { Button } from '@nutui/nutui';
-//mp
+//taro
 import { Button } from '@nutui/nutui@taro';
 
 const app = createApp();

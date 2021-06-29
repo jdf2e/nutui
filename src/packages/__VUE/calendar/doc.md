@@ -10,7 +10,7 @@
 import { createApp } from 'vue';
 //vue
 import { Calendar } from '@nutui/nutui';
-//mp
+//taro
 import { Calendar } from '@nutui/nutui@taro';
 
 const app = createApp();

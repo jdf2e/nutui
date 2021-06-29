@@ -6,6 +6,7 @@
         :init-page="page"
         :pagination-visible="true"
         pagination-color="#426543"
+        auto-play="2000"
       >
         <nut-swiper-item v-for="item in list" :key="item">
           <img :src="item" alt="" />
@@ -64,10 +65,10 @@ export default createDemo({
       page4: 0,
       current: 1,
       list: [
-        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/128047/5/6706/178631/5f068cefE53bff564/4dd870d8932daecf.jpg',
-        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/159602/22/7999/126515/6035f371E6f95bfee/559cb1ee48c962c9.jpg',
-        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/166846/13/7534/136440/60338b5cEd491d8b3/9e5527429136ab86.jpg',
-        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/145433/27/14059/141680/5facf066Ec402354c/530d5a316aed55fc.jpg'
+        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/195274/24/9649/144035/60d15d37E76e91580/51273fd51174d91a.jpg',
+        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/180629/11/11039/120751/60d53a52Eca8b4b0c/12a396e3f73a6424.jpg',
+        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/172985/20/11254/250873/60ab712bE2cfd0e52/f184257039a404d1.png',
+        'https://imgcps.jd.com/ling4/71587695091/5Lqs6YCJ5aW96LSn/5L2g5YC85b6X5oul5pyJ/p-5c11d16482acdd181dbc1fc9/4fbc0e05/cr_1125x449_0_166/s1125x690/q70.jpg'
       ]
     });
     const change = (index: number) => {

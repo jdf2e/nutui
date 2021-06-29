@@ -11,7 +11,7 @@
 import { createApp } from 'vue';
 //vue
 import { Collapse } from '@nutui/nutui';
-//mp
+//taro
 import { Collapse } from '@nutui/nutui@taro';
 
 const app = createApp();

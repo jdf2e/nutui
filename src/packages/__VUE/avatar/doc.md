@@ -9,7 +9,7 @@
 import { createApp } from 'vue';
 //vue
 import { Avatar } from '@nutui/nutui';
-//mp
+//taro
 import { Avatar } from '@nutui/nutui@taro';
 
 const app = createApp();

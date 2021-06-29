@@ -10,7 +10,7 @@
 import { createApp } from 'vue';
 //vue
 import { OverLay } from '@nutui/nutui';
-//mp
+//taro
 import { OverLay } from '@nutui/nutui@taro';
 
 const app = createApp();

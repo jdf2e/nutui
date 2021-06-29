@@ -9,7 +9,7 @@
 import { createApp } from 'vue';
 //vue
 import { ShortPassword } from '@nutui/nutui';
-//mp
+//taro
 import { ShortPassword } from '@nutui/nutui@taro';
 
 const app = createApp();
