@@ -67,9 +67,7 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
-import { createComponent } from '../../utils/create';
-const { createDemo } = createComponent('steps');
-export default createDemo({
+export default {
   props: {},
   setup() {
     const state = reactive({
@@ -93,7 +91,7 @@ export default createDemo({
       handleStep
     };
   }
-});
+};
 </script>
 
 <style lang="scss">

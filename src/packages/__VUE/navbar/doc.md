@@ -12,7 +12,7 @@
 import { createApp } from 'vue';
 //vue
 import { Navbar } from '@nutui/nutui';
-//mp
+//taro
 import { Navbar } from '@nutui/nutui@taro';
 
 const app = createApp();

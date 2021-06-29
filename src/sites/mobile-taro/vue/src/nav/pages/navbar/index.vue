@@ -163,4 +163,8 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.nut-navbar {
+  padding: 0 !important;
+}
+</style>

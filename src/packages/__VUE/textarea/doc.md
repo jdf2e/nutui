@@ -10,7 +10,7 @@
 import { createApp } from 'vue';
 //vue
 import { TextArea } from '@nutui/nutui';
-//mp
+//taro
 import { TextArea } from '@nutui/nutui@taro';
 
 const app = createApp();

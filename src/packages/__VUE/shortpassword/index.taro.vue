@@ -17,7 +17,7 @@
       <view class="nut-shortpsdWx-subtitle">{{ desc }}</view>
       <view class="nut-input-w">
         <input
-          class="nut-input-real"
+          class="nut-input-real-taro"
           type="number"
           :maxlength="length"
           v-model="realInput"
@@ -115,7 +115,7 @@ export default create({
       emit('ok', realInput.value);
     }
     function focus() {
-      let a = document.getElementsByClassName('nut-input-real')[0] as any;
+      let a = document.getElementsByClassName('nut-input-real-taro')[0] as any;
       a.focus();
       realpwd.value = document.getElementsByClassName('popup-center')[0] as any;
       realpwd.value.style.top = '45%';
