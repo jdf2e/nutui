@@ -2,7 +2,7 @@
   <!-- <div class="doc-header" :style="{ background: themeColor === 'red' ? headerBg : themeColor }" :class="`doc-header-${data.theme}`"> -->
   <div class="doc-header" :class="themeName()">
     <div class="header-logo">
-      <a class="logo-link" href="#"></a>
+      <a class="logo-link" href="#" @click="toHome"></a>
       <span class="logo-border"></span>
     </div>
     <div class="header-nav">
@@ -97,6 +97,11 @@ export default defineComponent({
     const handleFocusOut = () => {
       data.isShowSelect = false;
     };
+
+    const toHome = () => {
+      RefData.getInstance().currentRoute.value = '/';
+    };
+
     const isActive = computed(() => {
       let value = RefData.getInstance().currentRoute.value;
       return function (name: string) {
@@ -128,6 +133,7 @@ export default defineComponent({
       header,
       versions,
       data,
+      toHome,
       isActive,
       checkTheme,
       themeName,
