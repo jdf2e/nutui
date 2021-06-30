@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "3.0.1",
+  "version": "3.0.2-taro",
   "description": "京东风格的轻量级移动端 Vue 组件库",
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
