@@ -57,6 +57,11 @@
         "show": true
       },
       {
+        "name": "starttaro",
+        "cName": "小程序开发",
+        "show": true
+      },
+      {
         "name": "theme",
         "cName": "主题定制",
         "show": true
