@@ -1,0 +1,1 @@
+System.register(["./vendor-legacy.da43a34b.js"],(function(e){"use strict";var t,s,n;return{setters:[function(e){t=e.c,s=e.o,n=e.f}],execute:function(){const c={class:"markdown-body"},o=n("h1",null,"CollapseItem 折叠面板",-1);e("default",{setup:e=>(e,n)=>(s(),t("div",c,[o]))})}}}));
