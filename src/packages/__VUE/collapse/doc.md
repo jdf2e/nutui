@@ -9,10 +9,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { Collapse } from '@nutui/nutui';
-//taro
-import { Collapse } from '@nutui/nutui@taro';
 
 const app = createApp();
 app.use(Collapse);

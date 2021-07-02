@@ -8,10 +8,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
 import { Input } from '@nutui/nutui';
-//taro
-import { Input } from '@nutui/nutui@taro';
 
 const app = createApp();
 app.use(Input);
