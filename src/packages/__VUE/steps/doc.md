@@ -8,10 +8,7 @@
 
 ```javascript
 import { createApp } from 'vue';
-//vue
 import { Steps } from '@nutui/nutui';
-//taro
-import { Steps } from '@nutui/nutui@taro';
 
 const app = createApp();
 app.use(Steps);

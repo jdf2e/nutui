@@ -8,7 +8,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Cell,CellGroup } from '@nutui/nutui@taro';
+import { Cell,CellGroup } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Cell);

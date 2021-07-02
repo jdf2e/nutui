@@ -79,7 +79,7 @@ export default defineComponent({
     Search
   },
   setup() {
-    let packages = [];
+    let packages = [] as any[];
     nav.forEach((item) => {
       packages.push(...item.packages);
     });

@@ -7,7 +7,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Drag } from '@nutui/nutui@taro';
+import { Drag } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Drag);

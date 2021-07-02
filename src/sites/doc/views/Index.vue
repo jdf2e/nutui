@@ -48,7 +48,7 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const router = useRouter();
-    const excludeTaro = ['/intro', '/start', '/theme', '/joinus'];
+    const excludeTaro = ['/intro', '/start', '/theme', '/joinus', '/starttaro'];
     const data = reactive({
       demoUrl: 'demo.html',
       curKey: 'vue',
@@ -65,7 +65,7 @@ export default defineComponent({
     });
 
     const configNav = computed(() => {
-      let tarodocs = [];
+      let tarodocs = [] as string[];
       nav.map((item) => {
         item.packages.forEach((element) => {
           let { tarodoc, name } = element;
