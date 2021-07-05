@@ -5,12 +5,10 @@ import Notification, { NotificationProps } from './Notification'
 let messageInstance: any = null
 interface IToastOptions {
   duration: number
-  mask: boolean
 }
 const SHORT = 3
 const options: IToastOptions = {
   duration: SHORT,
-  mask: false,
 }
 
 function getInstance(props: NotificationProps, callback: (notification: any) => void) {
@@ -28,8 +26,7 @@ function notice(
   message: string | React.ReactNode,
   icon: any,
   duration = options.duration,
-  onClose: (() => void) | undefined | null,
-  mask = options.mask
+  onClose: (() => void) | undefined | null
 ) {
   function close() {
     if (messageInstance) {
@@ -47,7 +44,6 @@ function notice(
       icon,
       duration,
       onClose: close,
-      mask,
     },
     (notification: any) => {
       messageInstance = notification
@@ -58,53 +54,38 @@ function notice(
 export default {
   SHORT,
   LONG: 8,
-  text(message: string | React.ReactNode, duration?: number, onClose?: () => void, mask?: boolean) {
-    return notice(message, null, duration, onClose, mask)
+  text(message: string | React.ReactNode, duration?: number, onClose?: () => void) {
+    return notice(message, null, duration, onClose)
   },
   success(
     message: string | React.ReactNode,
     duration?: number,
     icon?: string,
-    onClose?: () => void,
-    mask?: boolean
+    onClose?: () => void
   ) {
-    return notice(message, icon ? icon : 'success', duration, onClose, mask)
+    return notice(message, icon ? icon : 'success', duration, onClose)
   },
-  fail(
-    message: string | React.ReactNode,
-    duration?: number,
-    icon?: string,
-    onClose?: () => void,
-    mask?: boolean
-  ) {
-    return notice(message, icon ? icon : 'failure', duration, onClose, mask)
+  fail(message: string | React.ReactNode, duration?: number, icon?: string, onClose?: () => void) {
+    return notice(message, icon ? icon : 'failure', duration, onClose)
   },
   loading(
     message: string | React.ReactNode,
     duration?: number,
     icon?: string,
-    onClose?: () => void,
-    mask?: boolean
+    onClose?: () => void
   ) {
-    return notice(message, icon ? icon : 'loading', duration, onClose, mask)
+    return notice(message, icon ? icon : 'loading', duration, onClose)
   },
-  warn(
-    message: string | React.ReactNode,
-    duration?: number,
-    icon?: string,
-    onClose?: () => void,
-    mask?: boolean
-  ) {
-    return notice(message, icon ? icon : 'tips', duration, onClose, mask)
+  warn(message: string | React.ReactNode, duration?: number, icon?: string, onClose?: () => void) {
+    return notice(message, icon ? icon : 'tips', duration, onClose)
   },
   customIcon(
     message: string | React.ReactNode,
     duration?: number,
     icon?: string,
-    onClose?: () => void,
-    mask?: boolean
+    onClose?: () => void
   ) {
-    return notice(message, icon ? icon : null, duration, onClose, mask)
+    return notice(message, icon ? icon : null, duration, onClose)
   },
   hide() {
     if (messageInstance) {
@@ -113,10 +94,7 @@ export default {
     }
   },
   config(option: Partial<IToastOptions> = {}) {
-    const { duration = SHORT, mask } = option
+    const { duration = SHORT } = option
     options.duration = duration
-    if (mask === true) {
-      options.mask = true
-    }
   },
 }

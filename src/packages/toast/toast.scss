@@ -11,29 +11,30 @@
   position: fixed;
   left: 0;
   bottom: 150px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 100%;
   text-align: center;
   pointer-events: none;
   z-index: 9999;
-  font-family: $font-family;
-  &-small {
-    .nut-toast-inner {
+  &__small {
+    .nut-toast__inner {
       font-size: $font-size-small;
     }
   }
-  &-large {
-    .nut-toast-inner {
+  &__large {
+    .nut-toast__inner {
       font-size: $font-size-large;
     }
   }
-  &-cover {
+  &__cover {
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: auto;
     height: 100%;
   }
-  &-inner {
+  &__inner {
     display: inline-block;
     font-size: $font-size-base;
     min-width: 40%;
@@ -45,14 +46,14 @@
     border-radius: 12px;
     color: $white;
   }
-  &-text {
+  &__text {
     font-size: 14px;
     &:empty {
       margin-bottom: -8px;
     }
   }
-  &-has-icon {
-    .nut-toast-icon-wrapper {
+  &__has-icon {
+    .nut-toast__icon-wrapper {
       width: 100%;
       display: flex;
       align-items: center;
@@ -60,18 +61,18 @@
       margin-bottom: 8px;
     }
   }
-  &-center {
+  &--center {
     top: 50%;
     transform: translateY(-50%);
   }
-  &-loading {
-    .nut-toast-inner {
+  &__loading {
+    .nut-toast__inner {
       display: inline-flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
-    .nut-toast-icon-wrapper {
+    .nut-toast__icon-wrapper {
       animation: rotation 2s linear infinite;
     }
   }

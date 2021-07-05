@@ -1,8 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-// import { CSSTransition } from 'react-transition-group'
-// import classNames from 'classnames'
-// import Mask from '../mask'
+import bem from '@/utils/bem'
 import Icon from '../icon/index'
 import './toast.scss'
 export interface NotificationProps {
@@ -14,7 +12,6 @@ export interface NotificationProps {
   duration?: number
   onClose: () => void
   className?: string
-  mask?: boolean
 }
 
 interface State {
@@ -23,12 +20,11 @@ interface State {
 
 export default class Notification extends React.PureComponent<NotificationProps, State> {
   static defaultProps = {
-    prefixCls: 'nut-toast',
+    // prefixCls: 'nut-toast',
     style: {},
-    //show:false,
+    show: false,
     bottom: false,
     duration: 1.5,
-    mask: false,
   }
   private closeTimer: number | undefined
   static newInstance: (properties: NotificationProps, callback: any) => void
@@ -76,28 +72,23 @@ export default class Notification extends React.PureComponent<NotificationProps,
   }
 
   render() {
-    const { className, prefixCls, style, icon, message, bottom, mask } = this.props
+    const { style, icon, message, bottom } = this.props
     const { show } = this.state
-    // const cls = classNames(prefixCls, className, `${prefixCls}-mask`, {
-    //   [`${prefixCls}-bottom`]: bottom,
-    // })
+    const toastBem = bem('toast')
     return (
       <>
-        <div
-          className="nut-toast nut-toast-center"
-          style={{ bottom: 'auto', backgroundColor: 'rgba(0, 0, 0, 0)' }}
-        >
+        <div className={toastBem()} style={{ bottom: 'auto', backgroundColor: 'rgba(0, 0, 0, 0)' }}>
           <div
-            className="nut-toast-inner"
+            className={toastBem('inner')}
             style={{ bottom: 'auto', backgroundColor: 'rgba(0, 0, 0, .8)' }}
           >
             {icon ? (
-              <p className="nut-toast-icon-wrapper">
+              <p className={toastBem('icon-wrapper')}>
                 <Icon name={icon ? icon : ''} size="20" />
               </p>
             ) : null}
 
-            <span className="nut-toast-text">{message}</span>
+            <span className={toastBem('text')}>{message}</span>
           </div>
         </div>
       </>

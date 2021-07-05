@@ -21,7 +21,9 @@ const ToastDemo = () => {
     Toast.text(msg, 10)
   }
   const iconToast = (msg: string) => {
-    Toast.customIcon(msg, 5, 'JD')
+    Toast.customIcon(msg, 5, 'JD', () => {
+      console.log('closeToast')
+    })
   }
 
   return (

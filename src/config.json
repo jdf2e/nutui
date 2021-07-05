@@ -141,7 +141,18 @@
     },
     {
       "name": "数据录入",
-      "packages": []
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Input",
+          "type": "component",
+          "cName": "输入框",
+          "desc": "单行输入框",
+          "sort": 1,
+          "show": true,
+          "author": "VickyYe"
+        }
+      ]
     },
     {
       "name": "业务组件",
