@@ -1,2 +1,47 @@
 .nut-input {
+  position: relative;
+  width: 100%;
+  padding: 10px 0px 10px 25px;
+  display: flex;
+  background: $white;
+  border-bottom: 1px solid $input-border-bottom;
+  font-size: 14px;
+  input {
+    width: 230px;
+    flex: 1;
+    padding: 0 10px;
+    padding-right: 35px;
+  }
+  &__label {
+    width: 80px;
+    overflow: hidden;
+    text-align: left;
+    display: flex;
+    .label-string {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  &__clear {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 15px;
+  }
+  &__disabled {
+    color: $input-disabled-color !important;
+    input:disabled {
+      background: none;
+      color: $input-disabled-color;
+      cursor: not-allowed;
+      opacity: 1;
+      -webkit-text-fill-color: $input-disabled-color;
+    }
+  }
+  &__require {
+    color: $primary-color;
+    display: inline-block;
+    margin-right: 5px;
+  }
 }
