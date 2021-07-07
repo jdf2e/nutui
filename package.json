@@ -64,7 +64,6 @@
   },
   "dependencies": {
     "sass": "^1.34.0",
-    "taro-ui": "^3.0.0-alpha.10",
     "vue": "^3.0.5",
     "vue-router": "^4.0.4"
   },
