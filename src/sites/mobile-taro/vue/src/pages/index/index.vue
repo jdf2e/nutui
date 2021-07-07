@@ -34,6 +34,7 @@
 <script>
 import { reactive, toRefs } from 'vue';
 import { nav } from '../../../../../../config.json';
+import Taro from '@tarojs/taro';
 export default {
   name: 'NutUI',
   onShareAppMessage() {
@@ -55,7 +56,7 @@ export default {
     });
 
     const navigateTo = (name, enName) => {
-      wx.navigateTo({
+      Taro.navigateTo({
         url: `/${enName}/pages/${name}/index`
       });
     };
