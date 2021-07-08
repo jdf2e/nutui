@@ -10,7 +10,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Toast } from '@nutui/nutui';
+import { Toast } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Toast);

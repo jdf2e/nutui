@@ -7,7 +7,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
+//vue
 import { ShortPassword } from '@nutui/nutui';
+//taro
+import { ShortPassword } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(ShortPassword);

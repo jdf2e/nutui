@@ -8,7 +8,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Uploader } from '@nutui/nutui';
+import { Uploader } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Uploader);
