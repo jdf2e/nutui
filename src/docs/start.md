@@ -14,7 +14,7 @@ npm i @nutui/nutui
 npm i @nutui/nutui@next
 
 # taro 小程序项目
-npm i @nutui/nutui@taro
+npm i @nutui/nutui-taro
 ```
 
 #### CDN 安装使用示例
