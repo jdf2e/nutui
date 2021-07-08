@@ -37,7 +37,9 @@ taro -v
 taro init myApp
 ```
 
-按照下方图片依次选择，选择 Vue3 + NutUI 模板
+#### 按照下方图片依次选择，选择 Vue3 + NutUI 模板
+
+<img src="https://storage.360buyimg.com/jdc-article/taro.jpg" />
 
 #### NPM 使用示例
 
