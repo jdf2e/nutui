@@ -44,9 +44,9 @@ taro init myApp
 ```javascript
 import { createApp } from "vue";
 import App from "./App.vue";
-import NutUI from "@nutui/nutui";
-import "@nutui/nutui/dist/style.css";
-createApp(App).use(NutUI).mount("#app");
+import NutUI from "@nutui/nutui-taro";
+import "@nutui/nutui-taro/dist/style.css";
+createApp(App).use(NutUI);
 ```
 
 > 注意：这种方式将会导入所有组件
@@ -56,7 +56,7 @@ createApp(App).use(NutUI).mount("#app");
 ```javascript
 import { createApp } from "vue";
 import App from "./App.vue";
-import { Button, Cell, Icon } from "@nutui/nutui";
-import "@nutui/nutui/dist/style.css";
-createApp(App).use(Button).use(Cell).use(Icon).mount("#app");
+import { Button, Cell, Icon } from "@nutui/nutui-taro";
+import "@nutui/nutui-taro/dist/style.css";
+createApp(App).use(Button).use(Cell).use(Icon);
 ```

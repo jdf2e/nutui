@@ -8,7 +8,7 @@
 
 ```javascript
   import { createApp } from 'vue';
-  import { InfiniteLoading } from '@nutui/nutui';
+  import { InfiniteLoading } from '@nutui/nutui-taro';
 
   const app = createApp();
   app.use(InfiniteLoading);

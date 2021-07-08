@@ -9,7 +9,7 @@
 ```javascript
 
 import { createApp } from 'vue';
-import { BackTop } from '@nutui/nutui';
+import { BackTop } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(BackTop);
