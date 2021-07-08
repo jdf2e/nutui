@@ -7,7 +7,7 @@
 ## 安装
 ```javascript
 import { createApp } from 'vue';
-import { Picker } from '@nutui/nutui';
+import { Picker } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Picker);
