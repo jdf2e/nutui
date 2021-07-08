@@ -6,7 +6,6 @@
         borderRadius: '12px',
         textAlign: 'center'
       }"
-      class="nut-short-popup"
       v-model:visible="show"
       :closeable="true"
       @click-close-icon="closeIcon"
@@ -15,15 +14,15 @@
     >
       <view class="nut-shortpsd-title">{{ title }}</view>
       <view class="nut-shortpsdWx-subtitle">{{ desc }}</view>
+      <input
+        class="nut-input-real-taro"
+        type="number"
+        :maxlength="length"
+        v-model="realInput"
+        @input="changeValue"
+      />
       <view class="nut-input-w">
-        <input
-          class="nut-input-real-taro"
-          type="number"
-          :maxlength="length"
-          v-model="realInput"
-          @input="changeValue"
-          @blur="blur"
-        />
+        <view class="nut-input-site"></view>
         <view class="nut-shortpsd-fake" @click="focus">
           <view
             class="nut-shortpsd-li"
@@ -117,8 +116,6 @@ export default create({
     function focus() {
       let a = document.getElementsByClassName('nut-input-real-taro')[0] as any;
       a.focus();
-      realpwd.value = document.getElementsByClassName('popup-center')[0] as any;
-      realpwd.value.style.top = '45%';
     }
     watch(
       () => props.visible,
@@ -153,12 +150,6 @@ export default create({
     function onTips() {
       emit('tips');
     }
-    function blur() {
-      let popupCenter = document.getElementsByClassName(
-        'popup-center'
-      )[0] as any;
-      popupCenter.style.top = '50%';
-    }
     onMounted(() => {
       eventCenter.once((getCurrentInstance() as any).router.onReady, () => {});
     });
@@ -173,8 +164,7 @@ export default create({
       onTips,
       focus,
       show,
-      closeIcon,
-      blur
+      closeIcon
     };
   }
 });
