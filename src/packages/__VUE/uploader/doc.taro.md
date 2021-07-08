@@ -35,7 +35,7 @@ app.use(Uploader);
 ### 直接调起摄像头 camera
     
 ``` html
-<nut-uploader url="http://服务器地址" source-type="camera" ></nut-uploader>
+<nut-uploader url="http://服务器地址" :source-type="['camera']" ></nut-uploader>
 ```
 ### 限制上传数量5个
 

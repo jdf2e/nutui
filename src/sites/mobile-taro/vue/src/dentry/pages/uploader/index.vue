@@ -13,7 +13,7 @@
       environment 使用后置摄像头(仅H5纯浏览器)
       -->
     <h2>直接调起摄像头 camera </h2>
-    <nut-uploader source-type="camera"></nut-uploader>
+    <nut-uploader :source-type="['camera']"></nut-uploader>
     <h2>上传状态</h2>
     <nut-uploader :url="uploadUrl" @delete="onDelete"></nut-uploader>
     <h2>限制上传数量5个</h2>
