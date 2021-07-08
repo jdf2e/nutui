@@ -1,3 +1,12 @@
+## v3.0.3
+`2021-07-07`
+
+
+* :zap: chore: build lib fileName raname nutui @richard1015
+* :zap: chore: dep del taroui @richard1015
+ 
+
+
 ## v3.0.2
 `2021-06-30`
 
@@ -115,7 +124,7 @@
 ### 新特性
 
 - :zap: 全新的架构，基于 vite 构建
-- :lipstick: 全新的视觉样式，参照京东 APP v9.0视觉规范
+- :lipstick: 全新的视觉样式，参照京东 APP v10.0视觉规范
 - :sparkles: 全新的按需加载方式
 - :art: 支持定制主题
 - :sparkles: 支持 TypeScript
