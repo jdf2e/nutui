@@ -1,4 +1,4 @@
-# Cell 列表组件
+# Cell 单元格
 
 ### 介绍
 
@@ -29,12 +29,11 @@ app.use(CellGroup);
 ``` javascript
 // ...
 import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
 export default {
   setup() {
       const switchChecked = ref(true);
       const testClick = (event) => {
-        Toast.text('点击事件')
+        console.log('点击事件')
       };
       return { testClick,switchChecked };
   }
@@ -96,9 +95,6 @@ export default {
 | desc-text-align | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)   | String  | right  |
 | is-link         | 是否展示右侧箭头并开启点击反馈                                                                 | Boolean | false  |
 | icon            | 左侧 [图标名称](#/icon) 或图片链接                                                             | String  | -      |
-| url             | 点击后跳转的链接地址                                                                           | String  | -      |
-| to              | 点击后跳转的目标路由对象，同 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | String  | -      |
-| replace         | 是否在跳转时替换当前页面历史                                                                   | Boolean | false  |
 
 ### Event
 

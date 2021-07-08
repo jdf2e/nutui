@@ -7,7 +7,7 @@
         :class="[!dot ? (icon ? 'is-icon' : 'is-text') : '']"
       >
         <template v-if="icon">
-          <nut-icon class="nut-step-icon-inner" :name="icon" />
+          <nut-icon class="nut-step-icon-inner" :name="icon" :size="size" />
         </template>
         <template v-else-if="dot"></template>
         <template v-else>
@@ -19,7 +19,7 @@
       <view class="nut-step-title">
         {{ title }}
       </view>
-      <view class="nut-step-content" v-html="content"> </view>
+      <view class="nut-step-content" v-html="content" v-if="content"> </view>
     </view>
   </view>
 </template>
@@ -49,6 +49,10 @@ export default create({
     icon: {
       type: String,
       default: null
+    },
+    size: {
+      type: [String, Number],
+      default: '12px'
     }
   },
 

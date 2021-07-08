@@ -6,8 +6,9 @@
   font-size: 0;
   &-head {
     position: relative;
-    display: block;
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
   }
   &-line {
     position: absolute;
@@ -20,12 +21,13 @@
   }
   &-icon {
     position: relative;
-    display: inline-block;
+    display: flex;
     width: 25px;
     height: 25px;
     line-height: 25px;
-    font-family: PingFangSC-Medium;
     font-size: 13px;
+    align-items: center;
+    justify-content: center;
     z-index: 1;
     .nut-icon {
       width: 100%;
@@ -107,7 +109,10 @@
       background-color: $white;
     }
     .nut-step-icon.is-icon {
-      background-color: $white;
+      background-color: $step-wait-bg-color;
+      .nut-icon {
+        color: $white;
+      }
     }
     .nut-step-content {
       color: #909ca4;
@@ -177,6 +182,7 @@
           height: 14px;
           background-color: $primary-color-end;
           border-radius: 50%;
+          opacity: 0.23;
         }
       }
     }

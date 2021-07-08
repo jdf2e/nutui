@@ -41,11 +41,17 @@
     text-align: center;
     &.icon {
       .icon {
-        margin-left: 8px;
+        margin-left: 13px;
       }
+    }
+    .nut-icon {
+      display: inline;
     }
     &-desc {
       font-size: $cell-title-desc-font;
+    }
+    .text__title {
+      display: inline-block;
     }
 
     .tab-title {

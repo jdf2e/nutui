@@ -100,18 +100,6 @@
       :style="{ height: '30%' }"
       v-model:visible="state.showRound"
     ></nut-popup>
-    <h2>指定挂载节点</h2>
-    <nut-cell
-      title="指定挂载节点"
-      is-link
-      @click="state.showTeleport = true"
-    ></nut-cell>
-    <nut-popup
-      :style="{ padding: '30px 50px' }"
-      teleport="#app"
-      v-model:visible="state.showTeleport"
-      >app</nut-popup
-    >
   </div>
 </template>
 

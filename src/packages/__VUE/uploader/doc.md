@@ -97,8 +97,6 @@ setup() {
 <nut-uploader disabled></nut-uploader>
 ```
 
-## API
-
 ### Prop
 
 | 字段              | 说明                                                                                                                                                                                   | 类型                              | 默认值           |

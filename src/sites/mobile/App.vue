@@ -97,7 +97,7 @@ export default defineComponent({
     &.full {
       padding: 57px 0 0 0;
       h2 {
-        padding-left: 17px;
+        padding-left: 27px;
       }
     }
 

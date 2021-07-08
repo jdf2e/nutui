@@ -1,4 +1,12 @@
 import { Ref, ref } from 'vue';
+
+const browserBlack = () => {
+  return (
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+  );
+};
+
 export class RefData {
   private static instance: RefData;
   public static getInstance(): RefData {

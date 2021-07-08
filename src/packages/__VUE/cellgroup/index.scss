@@ -21,4 +21,9 @@
       border-radius: 0;
     }
   }
+  .nut-cell {
+    &::after {
+      border-bottom: 2px solid #f5f6f7;
+    }
+  }
 }

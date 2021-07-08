@@ -19,7 +19,7 @@
             color="rgba(0,0,0,0.6)"
             @click="onDelete(item, index)"
             class="close"
-            name="mask-close"
+            name="circle-close"
           ></nut-icon>
           <image
             class="nut-uploader__preview-img__c"

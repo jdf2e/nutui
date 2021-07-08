@@ -8,10 +8,7 @@
 
 ``` ts
 import { createApp } from 'vue';
-//vue
 import { Radio } from '@nutui/nutui';
-//mp
-import { Radio } from '@nutui/nutui@taro';
 
 const app = createApp();
 app.use(Radio);

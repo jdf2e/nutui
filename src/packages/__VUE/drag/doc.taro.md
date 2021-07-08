@@ -1,5 +1,17 @@
 # Drag 拖拽
+### 介绍
+
 实现可拖拽的任意元素
+
+### 安装
+
+``` javascript
+import { createApp } from 'vue';
+import { Drag } from '@nutui/nutui';
+
+const app = createApp();
+app.use(Drag);
+```
 
 ## 限制拖拽边界
 ```html
