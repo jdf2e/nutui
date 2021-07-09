@@ -22,6 +22,18 @@
         :size="iconSize"
         :name="checkedIcon"
       />
+      <nut-icon
+        v-else-if="allowHalf && modelValue + 1 < n"
+        class="
+          nut-rate-item__icon
+          nut-rate-item__icon--disabled
+          nut-rate-item__icon--half
+        "
+        @click="onClick(2, n)"
+        :color="voidColor"
+        :size="iconSize"
+        :name="uncheckedIcon"
+      />
     </view>
   </view>
 </template>
