@@ -13,7 +13,9 @@
       :class="{ icon }"
       v-if="title || titIcon || tabs"
     >
-      <view v-if="title" @click="handleCenter">{{ title }}</view>
+      <view v-if="title" class="text__title" @click="handleCenter">{{
+        title
+      }}</view>
       <nut-icon
         v-if="titIcon"
         class="icon"

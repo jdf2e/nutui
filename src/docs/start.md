@@ -8,10 +8,13 @@
 
 ```bash
 # Vue2 项目
-npm i @nutui/nutui -S
+npm i @nutui/nutui
 
 # Vue3 项目
-npm i @nutui/nutui@next -S
+npm i @nutui/nutui@next
+
+# taro 小程序项目
+npm i @nutui/nutui-taro
 ```
 
 #### CDN 安装使用示例

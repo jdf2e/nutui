@@ -1,9 +1,9 @@
 .nut-rate {
   display: flex;
   &-item {
+    display: flex;
     flex-shrink: 0;
     position: relative;
-    background-size: cover;
     &:last-child {
       margin-right: 0;
     }

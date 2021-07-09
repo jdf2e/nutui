@@ -9,7 +9,7 @@
     
 ```javascript
 import { createApp } from 'vue';
-import { Dialog } from '@nutui/nutui@taro';
+import { Dialog } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Dialog);

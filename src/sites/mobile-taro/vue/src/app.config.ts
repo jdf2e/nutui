@@ -3,41 +3,33 @@ export default {
   subpackages: [
     {
       root: 'layout',
-      pages: [
-        'pages/button/index',
-        'pages/collapse/index',
-        'pages/layout/index'
-      ]
+      pages: ['pages/layout/index']
     },
     {
       root: 'feedback',
       pages: [
+        'pages/collapse/index',
         'pages/backtop/index',
         'pages/actionsheet/index',
+        'pages/dialog/index',
         'pages/toast/index',
         'pages/notify/index',
-        'pages/picker/index',
-        'pages/datepicker/index'
+        'pages/swiper/index',
+        'pages/drag/index',
+        'pages/steps/index',
+        'pages/infiniteloading/index'
       ]
     },
     {
       root: 'base',
       pages: [
         'pages/cell/index',
-        'pages/uploader/index',
         'pages/icon/index',
         'pages/price/index',
-        'pages/checkbox/index',
-        'pages/swiper/index',
+        'pages/button/index',
         'pages/avatar/index',
         'pages/popup/index',
-        'pages/dialog/index',
-        'pages/radio/index',
-        'pages/overlay/index',
-        'pages/infiniteloading/index',
-        'pages/range/index',
-        'pages/drag/index',
-        'pages/steps/index'
+        'pages/overlay/index'
       ]
     },
     {
@@ -48,11 +40,17 @@ export default {
       root: 'dentry',
       pages: [
         'pages/inputnumber/index',
+        'pages/checkbox/index',
         'pages/input/index',
         'pages/switch/index',
+        'pages/uploader/index',
         'pages/rate/index',
+        'pages/radio/index',
         'pages/calendar/index',
         'pages/shortpassword/index',
+        'pages/picker/index',
+        'pages/datepicker/index',
+        'pages/range/index',
         'pages/textarea/index'
       ]
     },

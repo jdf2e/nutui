@@ -8,7 +8,10 @@
     
 ```javascript
 import { createApp } from 'vue';
+//vue
 import { PullRefresh } from '@nutui/nutui';
+//taro
+import { PullRefresh } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(PullRefresh);

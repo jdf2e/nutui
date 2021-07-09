@@ -1,4 +1,4 @@
-# Swiper 轮播图 组件
+# Swiper 轮播
 
 ### 介绍
 
@@ -8,7 +8,7 @@
 
 ```javascript
 import { createApp } from 'vue';
-import { Swiper } from '@nutui/nutui@taro';
+import { Swiper } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Swiper);

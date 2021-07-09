@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo demo-nut-radio">
     <nut-cell-group title="基本用法-左右侧">
       <nut-cell>
         <nut-radiogroup v-model="radioVal" @change="handleChange1">
@@ -17,7 +17,10 @@
           <nut-radio :label="2">单选框2</nut-radio>
         </nut-radiogroup>
       </nut-cell>
-      <nut-cell title="当前选中值" :desc="radioVal" />
+      <nut-cell>
+        <div class="demo-check">当前选中值</div>
+        <div>{{ radioVal }}</div>
+      </nut-cell>
     </nut-cell-group>
 
     <nut-cell-group title="单选框禁用">
@@ -61,7 +64,10 @@
           <nut-radio :label="2">触发事件</nut-radio>
         </nut-radiogroup>
       </nut-cell>
-      <nut-cell title="当前选中值" :desc="radioVal6" />
+      <nut-cell>
+        <div class="demo-check">当前选中值</div>
+        <div>{{ radioVal6 }}</div>
+      </nut-cell>
     </nut-cell-group>
   </div>
 </template>
@@ -98,4 +104,13 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.demo-check {
+  margin-right: 10px;
+}
+.demo-nut-radio {
+  .nut-radio {
+    margin-bottom: 8px;
+  }
+}
+</style>

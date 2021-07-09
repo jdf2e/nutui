@@ -34,15 +34,29 @@
 <script>
 import { reactive, toRefs } from 'vue';
 import { nav } from '../../../../../../config.json';
+import Taro from '@tarojs/taro';
 export default {
   name: 'NutUI',
+  onShareAppMessage() {
+    return {
+      title: '',
+      path: '/pages/index/index',
+      success: function (res) {}
+    };
+  },
+  // onShareTimeline() {
+  //   return {
+  //     title: '京东风格的轻量级小程序组件库',
+  // 	  success: function(res) {}
+  //   }
+  // },
   setup() {
     const state = reactive({
       nav
     });
 
     const navigateTo = (name, enName) => {
-      wx.navigateTo({
+      Taro.navigateTo({
         url: `/${enName}/pages/${name}/index`
       });
     };

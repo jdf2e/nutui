@@ -6,11 +6,11 @@
     },
     {
       "name": "2.x",
-      "link": "/"
+      "link": "/2x/"
     },
     {
       "name": "3.x",
-      "link": "/3x/"
+      "link": "/"
     },
     {
       "name": "nutui-jdl",
@@ -23,14 +23,14 @@
   ],
   "header": [
     {
-      "name": "guide",
+      "name": "intro,theme,start",
       "cName": "指南",
       "path": "/intro"
     },
     {
-      "name": "intro",
+      "name": "component",
       "cName": "组件",
-      "path": "/intro"
+      "path": "/button"
     },
     {
       "name": "example",
@@ -54,6 +54,11 @@
       {
         "name": "start",
         "cName": "快速上手",
+        "show": true
+      },
+      {
+        "name": "starttaro",
+        "cName": "小程序开发",
         "show": true
       },
       {
@@ -81,10 +86,11 @@
   },
   "nav": [
     {
-      "name": "布局组件",
-      "enName": "layout",
+      "name": "基础组件",
+      "enName": "base",
       "packages": [
         {
+          "version": "3.0.0",
           "name": "Button",
           "taro": true,
           "sort": 1,
@@ -95,27 +101,91 @@
           "author": "richard1015"
         },
         {
-          "name": "Collapse",
+          "version": "3.0.0",
+          "name": "Cell",
           "taro": true,
           "tarodoc": true,
-          "sort": 2,
-          "cName": "折叠面板",
+          "sort": 1,
+          "cName": "单元格",
           "type": "component",
           "show": true,
-          "desc": "折叠面板",
-          "author": "Ymm0008"
+          "desc": "展示列表",
+          "author": "richard1015"
         },
         {
-          "name": "CollapseItem",
-          "taro": true,
-          "sort": 3,
-          "cName": "折叠面板-item",
+          "version": "3.0.0",
+          "name": "CellGroup",
+          "sort": 1,
+          "cName": "单元格组件",
           "type": "component",
           "show": false,
-          "desc": "折叠面板-item",
-          "author": "Ymm0008"
+          "desc": "展示分组列表",
+          "author": "richard1015"
+        },
+        
+        {
+          "version": "3.0.0",
+          "name": "Icon",
+          "taro": true,
+          "sort": 3,
+          "cName": "图标",
+          "type": "component",
+          "show": true,
+          "desc": "图标",
+          "author": "richard1015"
         },
         {
+          "version": "3.0.0",
+          "name": "Price",
+          "taro": true,
+          "sort": 4,
+          "cName": "价格",
+          "type": "component",
+          "show": true,
+          "desc": "价格组件",
+          "author": "ailululu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Avatar",
+          "taro": true,
+          "sort": 7,
+          "cName": "头像",
+          "type": "component",
+          "show": true,
+          "desc": "头像",
+          "author": "ailululu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Popup",
+          "taro": true,
+          "sort": 8,
+          "cName": "弹出层",
+          "type": "component",
+          "show": true,
+          "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "OverLay",
+          "taro": true,
+          "type": "component",
+          "cName": "遮罩层",
+          "desc": "创建一个遮罩层，通常用于阻止用户进行其他操作",
+          "sort": 14,
+          "show": true,
+          "author": "szg2008"
+        }
+      ]
+    },
+    {
+      "name": "布局组件",
+      "enName": "layout",
+      "packages": [
+        {
+          "version": "3.0.0",
           "name": "Layout",
           "taro": true,
           "sort": 4,
@@ -126,6 +196,7 @@
           "author": "undo"
         },
         {
+          "version": "3.0.0",
           "name": "Col",
           "sort": 5,
           "cName": "布局-Col",
@@ -135,6 +206,7 @@
           "author": "undo"
         },
         {
+          "version": "3.0.0",
           "name": "Row",
           "sort": 6,
           "cName": "布局-Row",
@@ -150,27 +222,7 @@
       "enName": "feedback",
       "packages": [
         {
-          "name": "BackTop",
-          "taro": true,
-          "tarodoc": true,
-          "sort": "1",
-          "cName": "返回顶部",
-          "type": "component",
-          "show": true,
-          "desc": "较长页面快捷返回顶部",
-          "author": "liqiong43"
-        },
-        {
-          "name": "ActionSheet",
-          "taro": true,
-          "sort": "1",
-          "cName": "动作面板",
-          "type": "component",
-          "show": true,
-          "desc": "底部弹出动作菜单面板",
-          "author": "zhangyufei"
-        },
-        {
+          "version": "3.0.0",
           "name": "Toast",
           "taro": true,
           "tarodoc": true,
@@ -195,104 +247,6 @@
         },
         {
           "version": "3.0.0",
-          "name": "Picker",
-          "taro": true,
-          "tarodoc": true,
-          "type": "component",
-          "cName": "选择器",
-          "desc": "提供多个选型集合供用户选择,支持单列选择和多列级联,通常与弹出层配合使用",
-          "sort": 5,
-          "show": true,
-          "author": "yangkaixuan"
-        },
-        {
-          "version": "3.0.0",
-          "name": "DatePicker",
-          "type": "component",
-          "cName": "日期选择器",
-          "desc": "提供多个选型集合供用户选择,支持单列选择和多列级联,通常与弹出层配合使用",
-          "sort": 5,
-          "show": true,
-          "author": "yangkaixuan"
-        }
-      ]
-    },
-    {
-      "name": "基础组件",
-      "enName": "base",
-      "packages": [
-        {
-          "name": "Temp",
-          "sort": 1,
-          "cName": "模板组件",
-          "type": "component",
-          "show": false,
-          "desc": "组件模板示例",
-          "author": "richard1015"
-        },
-        {
-          "name": "Cell",
-          "taro": true,
-          "tarodoc": true,
-          "sort": 1,
-          "cName": "单元格",
-          "type": "component",
-          "show": true,
-          "desc": "展示列表",
-          "author": "richard1015"
-        },
-        {
-          "name": "CellGroup",
-          "sort": 1,
-          "cName": "单元格组件",
-          "type": "component",
-          "show": false,
-          "desc": "展示分组列表",
-          "author": "richard1015"
-        },
-        {
-          "name": "Uploader",
-          "taro": true,
-          "tarodoc": true,
-          "sort": 2,
-          "cName": "上传",
-          "type": "component",
-          "show": true,
-          "desc": "上传文件、图片",
-          "author": "richard1015"
-        },
-        {
-          "name": "Icon",
-          "taro": true,
-          "tarodoc": true,
-          "sort": 3,
-          "cName": "图标",
-          "type": "component",
-          "show": true,
-          "desc": "图标",
-          "author": "richard1015"
-        },
-        {
-          "name": "Price",
-          "taro": true,
-          "sort": 4,
-          "cName": "价格",
-          "type": "component",
-          "show": true,
-          "desc": "价格组件",
-          "author": "ailululu"
-        },
-        {
-          "name": "Checkbox",
-          "taro": true,
-          "sort": 5,
-          "cName": "复选按钮",
-          "type": "component",
-          "show": true,
-          "desc": "复选按钮",
-          "author": "Ymm0008"
-        },
-        {
           "name": "Swiper",
           "taro": true,
           "tarodoc": true,
@@ -304,6 +258,7 @@
           "author": "suzigang"
         },
         {
+          "version": "3.0.0",
           "name": "SwiperItem",
           "sort": 6,
           "cName": "轮播图子组件",
@@ -313,27 +268,7 @@
           "author": "suzigang"
         },
         {
-          "name": "Avatar",
-          "taro": true,
-          "sort": 7,
-          "cName": "头像",
-          "type": "component",
-          "show": true,
-          "desc": "头像",
-          "author": "ailululu"
-        },
-        {
-          "name": "Popup",
-          "taro": true,
-          "sort": 8,
-          "cName": "弹出层",
-          "type": "component",
-          "show": true,
-          "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
-          "author": "szg2008",
-          "version": "3.0.0"
-        },
-        {
+          "version": "3.0.0",
           "name": "Dialog",
           "taro": true,
           "tarodoc": true,
@@ -346,45 +281,26 @@
         },
         {
           "version": "3.0.0",
-          "name": "Radio",
+          "name": "BackTop",
           "taro": true,
+          "tarodoc": true,
+          "sort": "1",
+          "cName": "返回顶部",
           "type": "component",
-          "cName": "单选按钮",
-          "desc": "单选按钮",
-          "sort": 9,
           "show": true,
-          "author": "Ymm0008"
+          "desc": "较长页面快捷返回顶部",
+          "author": "liqiong43"
         },
         {
           "version": "3.0.0",
-          "name": "RadioGroup",
-          "type": "component",
-          "cName": "单选按钮组",
-          "desc": "单选按钮组",
-          "sort": 10,
-          "show": false,
-          "author": "Ymm0008"
-        },
-        {
-          "version": "3.0.0",
-          "name": "CheckboxGroup",
-          "type": "component",
-          "cName": "多选按钮组",
-          "desc": "多选按钮组",
-          "sort": 11,
-          "show": false,
-          "author": "Ymm0008"
-        },
-        {
-          "version": "3.0.0",
-          "name": "OverLay",
+          "name": "ActionSheet",
           "taro": true,
+          "sort": "1",
+          "cName": "动作面板",
           "type": "component",
-          "cName": "遮罩层",
-          "desc": "创建一个遮罩层，通常用于阻止用户进行其他操作",
-          "sort": 14,
           "show": true,
-          "author": "szg2008"
+          "desc": "底部弹出动作菜单面板",
+          "author": "zhangyufei"
         },
         {
           "version": "3.0.0",
@@ -400,17 +316,6 @@
         },
         {
           "version": "3.0.0",
-          "name": "Range",
-          "taro": true,
-          "tarodoc": true,
-          "type": "component",
-          "cName": "区间选择器",
-          "desc": "滑动输入条，用于在给定的范围内选择一个值。",
-          "sort": 16,
-          "show": true,
-          "author": "zy19940510"
-        },
-        {
           "name": "PullRefresh",
           "type": "component",
           "cName": "下拉刷新",
@@ -420,6 +325,7 @@
           "author": "yangxiaolu3"
         },
         {
+          "version": "3.0.0",
           "name": "Drag",
           "taro": true,
           "tarodoc": true,
@@ -441,6 +347,7 @@
           "author": "zy19940510"
         },
         {
+          "version": "3.0.0",
           "name": "Steps",
           "taro": true,
           "sort": 17,
@@ -451,6 +358,7 @@
           "author": "ailululu"
         },
         {
+          "version": "3.0.0",
           "name": "Step",
           "sort": 17,
           "cName": "步骤条子组件",
@@ -458,6 +366,28 @@
           "show": false,
           "desc": "步骤条子组件",
           "author": "ailululu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Collapse",
+          "taro": true,
+          "sort": 2,
+          "cName": "折叠面板",
+          "type": "component",
+          "show": true,
+          "desc": "折叠面板",
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CollapseItem",
+          "taro": true,
+          "sort": 3,
+          "cName": "折叠面板-item",
+          "type": "component",
+          "show": false,
+          "desc": "折叠面板-item",
+          "author": "Ymm0008"
         }
       ]
     },
@@ -466,6 +396,7 @@
       "enName": "nav",
       "packages": [
         {
+          "version": "3.0.0",
           "name": "Navbar",
           "taro": true,
           "sort": 3,
@@ -476,6 +407,7 @@
           "author": "liqiong43"
         },
         {
+          "version": "3.0.0",
           "name": "Tab",
           "sort": 1,
           "cName": "标签组件",
@@ -485,6 +417,7 @@
           "author": "zhenyulei"
         },
         {
+          "version": "3.0.0",
           "name": "Menu",
           "sort": 2,
           "cName": "菜单组件",
@@ -494,6 +427,7 @@
           "author": "vickyYE"
         },
         {
+          "version": "3.0.0",
           "name": "MenuItem",
           "sort": 2,
           "cName": "菜单组件",
@@ -503,6 +437,7 @@
           "author": "vickyYE"
         },
         {
+          "version": "3.0.0",
           "name": "Tabbar",
           "taro": true,
           "sort": 2,
@@ -513,6 +448,7 @@
           "author": "Drjingfubo"
         },
         {
+          "version": "3.0.0",
           "name": "Tabbaritem",
           "sort": 2,
           "cName": "标签栏子组件",
@@ -538,6 +474,7 @@
       "enName": "dentry",
       "packages": [
         {
+          "version": "3.0.0",
           "name": "InputNumber",
           "taro": true,
           "sort": 1,
@@ -548,15 +485,68 @@
           "author": "szg2008"
         },
         {
+          "version": "3.0.0",
           "name": "Input",
           "taro": true,
-          "tarodoc": true,
           "sort": 2,
           "cName": "输入框",
           "type": "component",
           "show": true,
           "desc": "输入框组件",
           "author": "gxx158"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Checkbox",
+          "taro": true,
+          "sort": 5,
+          "cName": "复选按钮",
+          "type": "component",
+          "show": true,
+          "desc": "复选按钮",
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CheckboxGroup",
+          "type": "component",
+          "cName": "多选按钮组",
+          "desc": "多选按钮组",
+          "sort": 11,
+          "show": false,
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Radio",
+          "taro": true,
+          "type": "component",
+          "cName": "单选按钮",
+          "desc": "单选按钮",
+          "sort": 9,
+          "show": true,
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "RadioGroup",
+          "type": "component",
+          "cName": "单选按钮组",
+          "desc": "单选按钮组",
+          "sort": 10,
+          "show": false,
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Rate",
+          "taro": true,
+          "sort": 4,
+          "cName": "评分",
+          "type": "component",
+          "show": true,
+          "desc": "评分组件",
+          "author": "undo"
         },
         {
           "version": "3.0.0",
@@ -571,20 +561,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "Rate",
           "taro": true,
-          "tarodoc": true,
-          "sort": 4,
-          "cName": "评分",
-          "type": "component",
-          "show": true,
-          "desc": "评分组件",
-          "author": "undo"
-        },
-        {
-          "version": "3.0.0",
-          "taro": true,
-          "tarodoc": true,
           "name": "Calendar",
           "type": "component",
           "cName": "日历",
@@ -605,6 +582,30 @@
         },
         {
           "version": "3.0.0",
+          "name": "Picker",
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "cName": "选择器",
+          "desc": "提供多个选型集合供用户选择,支持单列选择和多列级联,通常与弹出层配合使用",
+          "sort": 5,
+          "show": true,
+          "author": "yangkaixuan"
+        },
+        {
+          "version": "3.0.0",
+          "name": "DatePicker",
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "cName": "日期选择器",
+          "desc": "提供多个选型集合供用户选择,支持单列选择和多列级联,通常与弹出层配合使用",
+          "sort": 5,
+          "show": true,
+          "author": "yangkaixuan"
+        },
+        {
+          "version": "3.0.0",
           "name": "ShortPassword",
           "taro": true,
           "type": "component",
@@ -616,8 +617,18 @@
         },
         {
           "version": "3.0.0",
+          "name": "Range",
           "taro": true,
-          "tarodoc": true,
+          "type": "component",
+          "cName": "区间选择器",
+          "desc": "滑动输入条，用于在给定的范围内选择一个值。",
+          "sort": 16,
+          "show": true,
+          "author": "zy19940510"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
           "name": "TextArea",
           "type": "component",
           "cName": "文本域",
@@ -625,6 +636,18 @@
           "sort": 7,
           "show": true,
           "author": "gx"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Uploader",
+          "taro": true,
+          "tarodoc": true,
+          "sort": 2,
+          "cName": "上传",
+          "type": "component",
+          "show": true,
+          "desc": "上传文件、图片",
+          "author": "richard1015"
         }
       ]
     },
@@ -635,7 +658,6 @@
         {
           "version": "3.0.0",
           "taro": true,
-          "tarodoc": true,
           "name": "Address",
           "type": "component",
           "cName": "地址",

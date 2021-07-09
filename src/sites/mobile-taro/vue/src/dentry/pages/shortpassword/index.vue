@@ -64,6 +64,12 @@
         state.errorMsg = '请输入正确密码';
       "
     ></nut-cell>
+    <nut-toast
+      msg="忘记密码"
+      v-model:visible="state.show"
+      type="text"
+      :cover="state.cover"
+    />
   </div>
 </template>
 
@@ -78,7 +84,9 @@ export default {
       noButton: true,
       value: '',
       errorMsg: '',
-      length: 6
+      length: 6,
+      show: false,
+      cover: false
     });
     const methods = {
       onChange(val: string) {
@@ -93,6 +101,8 @@ export default {
 
       onComplete() {},
       onTips() {
+        state.show = true;
+        state.cover = false;
         // proxy.$toast.text('执行忘记密码逻辑');
       },
       close() {

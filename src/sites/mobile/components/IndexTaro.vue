@@ -3,8 +3,8 @@
     <div class="index-header">
       <img src="../../assets/images/logo-red.png" alt="" srcset="" />
       <div class="info">
-        <h1>NutUI-Taro</h1>
-        <p>请使用微信扫描下方二维码查看效果</p>
+        <h1>NutUI</h1>
+        <p>请使用微信扫描下方二维码体验</p>
       </div>
     </div>
     <div class="index-wxcode">

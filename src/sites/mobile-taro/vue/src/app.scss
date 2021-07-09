@@ -1,18 +1,17 @@
 page {
-  height: 100%;
   width: 100%;
-
+  height: 100%;
   .demo {
     height: 100%;
     background: #f7f8fa;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 0 17px 0 17px;
+    padding: 0 17px 17px 17px;
 
     &.full {
       padding: 0 0 0 0;
       h2 {
-        padding-left: 17px;
+        padding-left: 27px;
       }
     }
 

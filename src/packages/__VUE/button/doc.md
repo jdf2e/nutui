@@ -8,10 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
+// vue
 import { Button } from '@nutui/nutui';
-//mp
-import { Button } from '@nutui/nutui@taro';
+// taro
+import { Button } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Button);

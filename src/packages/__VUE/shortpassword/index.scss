@@ -24,18 +24,27 @@
   padding: 24px 0 10px 0;
   text-align: center;
   position: relative;
-
+  .nut-input-site {
+    width: 247px;
+    height: 41px;
+    border-radius: 4px;
+  }
   input {
     width: 247px;
     height: 41px;
     border-radius: 4px;
   }
-
   .nut-input-real {
-    width: 0;
     padding: 0 12px;
     opacity: 0;
   }
+}
+.nut-input-real-taro {
+  width: 0;
+  padding: 0 12px;
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
 }
 
 .psd-blink {
@@ -118,8 +127,4 @@
     font-size: $font-size-2;
     color: $white;
   }
-}
-
-.nut-dialog-content {
-  padding-bottom: 0;
 }
