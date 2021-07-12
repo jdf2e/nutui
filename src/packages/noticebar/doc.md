@@ -32,12 +32,84 @@
     </nut-noticebar>
 ```
 
+### 纵向滚动
+
+```html
+<nut-noticebar direction='vertical' :list="horseLamp1" :speed='10' :standTime='1000'  @click='go' :closeMode="true"></nut-noticebar>
+```
+```javascript
+data() {
+    return {
+        horseLamp1: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
+    };
+},
+
+methods:{
+    go(item){
+        console.log(item)
+    }
+}
+```
+
+
+### 复杂滚动动画
+
+```html
+<nut-noticebar direction='vertical' :list="horseLamp2" :speed='10' :standTime='2000' :complexAm='true'></nut-noticebar>
+```
+```javascript
+data() {
+    return {
+        horseLamp2: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
+    };
+}
+```
+
+### 自定义滚动内容
+
+```html
+<nut-noticebar direction='vertical' :height='50' :speed='10' :standTime='1000' :list="[]"  @close='go'>
+  <div class="custom-item" :data-index='index' v-for="(item,index) in horseLamp3" :key="index">{{item}}</div>
+</nut-noticebar>
+```
+```javascript
+data() {
+    return {
+        horseLamp3: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
+    };
+}
+```
+
+
+### 纵向自定义右侧图标
+
+```html
+<nut-noticebar direction='vertical' :list="horseLamp1" :speed='10' :standTime='1000' >
+  <template v-slot:rightIcon>
+    <nut-icon 
+      type="trolley" 
+      color="#f0250f"
+    >
+    </nut-icon>
+
+  </template>
+</nut-noticebar>
+```
+```javascript
+data() {
+    return {
+        horseLamp1: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
+    };
+}
+```
+
 
 
 ## Prop
 
 | 字段       | 说明                                                       | 类型          | 默认值 |
 | ---------- | ---------------------------------------------------------- | ------------- | ------ |
+| direction       | 滚动的方向，可选 across、vertical                         | String        | across     |
 | text       | 提示的信息                                                 | String        | 空     |
 | closeMode  | 是否启用关闭模式                                           | Boolean       | false  |
 | leftIcon   | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | String        | 空     |
@@ -46,6 +118,17 @@
 | delay      | 延时多少秒                                                 | String/Number | 1      |
 | scrollable | 是否可以滚动                                               | Boolean       | true   |
 | speed      | 滚动速率 (px/s)                                            | Number        | 50     |
+
+### Prop（direction=vertical）
+
+| 参数         | 说明                             | 类型   | 默认值           |
+|--------------|----------------------------------|--------|------------------|
+| list         | 纵向滚动数据列表               | Array | []               |
+| speed        | 滚动的速度                         | Number | 50               |
+| standTime         | 停留时间(毫秒) | Number | 1000                |
+| complexAm | 稍复杂的动画，耗能会高     | Boolean | false |
+| height          | 每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值                 | Number | 40              |
+| closeMode  | 是否启用右侧关闭图标，可以通过slot[name=rightIcon]自定义图标                                   | Boolean       | false  |
 
 ## Event
 
