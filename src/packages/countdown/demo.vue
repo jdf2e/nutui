@@ -45,7 +45,7 @@
     <div>
       <nut-cell>
         <span slot="title">
-          <nut-countdown v-model="resetTime" :endTime="end" ref="countdown">
+          <nut-countdown v-model="resetTime" :endTime="end">
             <div class="countdown-part-box">
               <div class="part-item-symbol">{{ resetTime.d }}天</div>
               <div class="part-item h">{{ resetTime.h }}</div>
