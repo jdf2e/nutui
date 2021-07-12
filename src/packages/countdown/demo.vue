@@ -41,6 +41,23 @@
         </div>
       </nut-cell>
     </div>
+    <h4>自定义展示</h4>
+    <div>
+      <nut-cell>
+        <span slot="title">
+          <nut-countdown v-model="resetTime" :endTime="end">
+            <div class="countdown-part-box">
+              <div class="part-item-symbol">{{ resetTime.d }}天</div>
+              <div class="part-item h">{{ resetTime.h }}</div>
+              <span class="part-item-symbol">:</span>
+              <div class="part-item m">{{ resetTime.m }}</div>
+              <span class="part-item-symbol">:</span>
+              <div class="part-item s">{{ resetTime.s }}</div>
+            </div>
+          </nut-countdown>
+        </span>
+      </nut-cell>
+    </div>
     <h4>自定义显示</h4>
     <div>
       <nut-cell>
@@ -57,7 +74,13 @@ export default {
       serverTime: Date.now() - 30 * 1000,
       end: Date.now() + 50 * 1000,
       asyncEnd: 0,
-      paused: false
+      paused: false,
+      resetTime: {
+        d: '1',
+        h: '00',
+        m: '00',
+        s: '00'
+      }
     };
   },
   methods: {
@@ -82,4 +105,26 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.countdown-part-box {
+  display: flex;
+  align-items: center;
+
+  .part-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 25px;
+    background: #e8220e;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+
+  .part-item-symbol {
+    margin: 0 5px;
+  }
+}
+</style>

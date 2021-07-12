@@ -62,10 +62,65 @@
 </nut-countdown>
 ```
 
+自定义展示
+
+```html
+<nut-countdown v-model="resetTime" :endTime="end">
+    <div class="countdown-part-box">
+        <div class="part-item-symbol">{{ resetTime.d }}天</div>
+        <div class="part-item h">{{ resetTime.h }}</div>
+        <span class="part-item-symbol">:</span>
+        <div class="part-item m">{{ resetTime.m }}</div>
+        <span class="part-item-symbol">:</span>
+        <div class="part-item s">{{ resetTime.s }}</div>
+    </div>
+</nut-countdown>
+
+<style lang="scss" scoped>
+.countdown-part-box {
+  display: flex;
+  align-items: center;
+
+  .part-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 25px;
+    background: #e8220e;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+
+  .part-item-symbol {
+    margin: 0 5px;
+  }
+}
+</style>
+```
+```javascript
+export default {
+  data() {
+    return {
+        end: Date.now() + 50 * 1000,
+        resetTime: {
+            d: '1',
+            h: '00',
+            m: '00',
+            s: '00'
+        }
+    };
+  }
+};
+```
+
 ## Prop
 
 | 字段 | 说明 | 类型 | 默认值
 | ----- | ----- | ----- | -----
+| v-model | 当前时间，自定义展示内容时生效 | Object | {}
 | start-time | 开始时间 | String, Number | Date.now()
 | end-time | 结束时间 | String, Number | Date.now()
 | show-days | 是否显示天 | Boolean | false

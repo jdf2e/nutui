@@ -1,6 +1,9 @@
 <template>
   <span class="nut-cd-timer">
-    <template v-if="showPlainText">
+    <template v-if="$slots.default">
+      <slot></slot>
+    </template>
+    <template v-else-if="showPlainText">
       <span class="nut-cd-block">{{ plainText }}</span>
     </template>
     <template v-else>
@@ -66,6 +69,12 @@ const countdownTimer = {
     };
   },
   props: {
+    value: {
+      type: Object,
+      default: () => {
+        return {};
+      }
+    },
     paused: {
       default: false,
       type: Boolean
@@ -111,6 +120,11 @@ const countdownTimer = {
     }
   },
   watch: {
+    value(newVal, oldVal) {},
+    restTime(n, o) {
+      let tranTime = restTime(n);
+      this.$emit('input', tranTime);
+    },
     paused(v, ov) {
       if (!ov) {
         this._curr = this.getTimeStamp();

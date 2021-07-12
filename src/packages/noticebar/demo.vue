@@ -15,17 +15,53 @@
     <nut-noticebar left-icon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png">
       <a href="https://www.jd.com">京东商城</a>
     </nut-noticebar>
+
+    <h4>纵向滚动</h4>
+    <div class="interstroll-list">
+      <nut-noticebar direction="vertical" :list="horseLamp1" :speed="10" :standTime="1000" @click="go" :closeMode="true"></nut-noticebar>
+    </div>
+
+    <h4>纵向复杂滚动动画</h4>
+    <nut-noticebar direction="vertical" :list="horseLamp2" :speed="10" :standTime="2000" :complexAm="true"></nut-noticebar>
+
+    <h4>纵向自定义滚动内容</h4>
+    <nut-noticebar direction="vertical" :height="50" :speed="10" :standTime="1000" :list="[]" @close="go">
+      <div class="custom-item" :data-index="index" v-for="(item, index) in horseLamp3" :key="index">{{ item }}</div>
+    </nut-noticebar>
+
+    <h4>纵向自定义右侧图标</h4>
+    <nut-noticebar direction="vertical" :list="horseLamp1" :speed="10" :standTime="1000">
+      <template v-slot:rightIcon>
+        <nut-icon type="trolley" color="#f0250f"> </nut-icon>
+      </template>
+    </nut-noticebar>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      horseLamp1: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
+      horseLamp2: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
+      horseLamp3: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']
+    };
+  },
   methods: {
     hello() {
       console.log('hello world');
+    },
+    go(item) {
+      console.log(item);
     }
   }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.custom-item {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+</style>

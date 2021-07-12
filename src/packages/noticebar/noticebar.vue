@@ -1,36 +1,88 @@
 <template>
-  <div
-    v-show="showNoticeBar"
-    class="nut-noticebar"
-    :class="{ withicon: closeMode, close: closeMode, wrapable: wrapable }"
-    :style="barStyle"
-    @click="handleClick"
-  >
-    <div class="left-icon" v-if="iconShow" :style="{ 'background-image': `url(${iconBg})` }">
-      <nut-icon type="notice" :color="color" size="16px" v-if="!iconBg"></nut-icon>
-    </div>
-    <div ref="wrap" class="wrap">
-      <div
-        ref="content"
-        class="content"
-        :class="[animationClass, { 'nut-ellipsis': !scrollable && !wrapable }]"
-        :style="contentStyle"
-        @animationend="onAnimationEnd"
-        @webkitAnimationEnd="onAnimationEnd"
-      >
-        <slot>{{ text }}</slot>
+  <div>
+    <div
+      v-show="showNoticeBar"
+      class="nut-noticebar"
+      :class="{ withicon: closeMode, close: closeMode, wrapable: wrapable }"
+      :style="barStyle"
+      @click="handleClick"
+      v-if="direction == 'across'"
+    >
+      <div class="left-icon" v-if="iconShow" :style="{ 'background-image': `url(${iconBg})` }">
+        <nut-icon type="notice" :color="color" size="16px" v-if="!iconBg"></nut-icon>
+      </div>
+      <div ref="wrap" class="wrap">
+        <div
+          ref="content"
+          class="content"
+          :class="[animationClass, { 'nut-ellipsis': !scrollable && !wrapable }]"
+          :style="contentStyle"
+          @animationend="onAnimationEnd"
+          @webkitAnimationEnd="onAnimationEnd"
+        >
+          <slot>{{ text }}</slot>
+        </div>
+      </div>
+      <div v-if="closeMode" class="right-icon" @click.stop="onClickIcon">
+        <nut-icon type="cross" :color="color" size="11px"></nut-icon>
       </div>
     </div>
-    <div v-if="closeMode" class="right-icon" @click.stop="onClickIcon">
-      <nut-icon type="cross" :color="color" size="11px"></nut-icon>
+
+    <div class="nut-noticebar-vertical" v-if="scrollList.length > 0 && direction == 'vertical'" :style="barStyle">
+      <template v-if="$slots.default">
+        <div class="horseLamp_list" :style="horseLampStyle">
+          <ScrollItem v-for="(item, index) in scrollList" v-bind:key="index" :style="{ height: height }" :item="item"></ScrollItem>
+        </div>
+      </template>
+
+      <template v-else>
+        <ul class="horseLamp_list" :style="horseLampStyle">
+          <li class="horseLamp_list_item" v-for="(item, index) in scrollList" :key="index" :style="{ height: height }" @click="go(item)">
+            {{ item }}
+          </li>
+        </ul>
+      </template>
+
+      <div class="go" @click="!$slots.rightIcon && handleClickIcon()">
+        <template v-if="$slots.rightIcon">
+          <slot name="rightIcon"></slot>
+        </template>
+        <template v-else-if="closeMode">
+          <nut-icon type="cross" :color="color" size="11px"></nut-icon>
+        </template>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import ScrollItem from './item';
 export default {
   name: 'nut-noticebar',
   props: {
+    // 滚动方向  across 横向 vertical 纵向
+    direction: {
+      type: String,
+      default: 'across'
+    },
+    list: {
+      type: Array,
+      default: () => {
+        return [];
+      }
+    },
+    standTime: {
+      type: Number,
+      default: 1000
+    },
+    complexAm: {
+      type: Boolean,
+      default: false
+    },
+    height: {
+      type: Number,
+      default: 40
+    },
     text: {
       type: String,
       default: ''
@@ -72,8 +124,17 @@ export default {
       duration: 0,
       offsetWidth: 0,
       showNoticeBar: true,
-      animationClass: ''
+      animationClass: '',
+
+      animate: false,
+      scrollList: [],
+      distance: 0,
+      timer: null,
+      keepAlive: false
     };
+  },
+  components: {
+    ScrollItem: ScrollItem
   },
   computed: {
     iconShow() {
@@ -84,10 +145,15 @@ export default {
       }
     },
     barStyle() {
-      return {
+      let style = {
         color: this.color,
         background: this.background
       };
+
+      if (this.direction == 'vertical') {
+        style.height = `${this.height}px`;
+      }
+      return style;
     },
     contentStyle() {
       return {
@@ -102,6 +168,22 @@ export default {
         iconBg = this.leftIcon;
       }
       return iconBg;
+    },
+    horseLampStyle() {
+      let styles = {};
+      if (this.complexAm) {
+        styles = {
+          transform: `translateY(${this.distance}px)`
+        };
+      } else {
+        if (this.animate) {
+          styles = {
+            transition: `all ${~~(this.height / this.speed / 4)}s`,
+            'margin-top': `-${this.height}px`
+          };
+        }
+      }
+      return styles;
     }
   },
   watch: {
@@ -135,6 +217,23 @@ export default {
         });
       },
       immediate: true
+    },
+    list(newValue, oldValue) {
+      this.scrollList = [].concat(newValue);
+    }
+  },
+  mounted() {
+    console.log(this.direction);
+    if (this.direction == 'vertical') {
+      if (this.$slots.default) {
+        this.scrollList = [].concat(this.$slots.default);
+      } else {
+        this.scrollList = [].concat(this.list);
+      }
+
+      setTimeout(() => {
+        this.complexAm ? this.startRoll() : this.startRollEasy();
+      }, this.standTime);
     }
   },
   methods: {
@@ -151,7 +250,70 @@ export default {
         this.duration = (this.offsetWidth + this.wrapWidth) / this.speed;
         this.animationClass = 'play-infinite';
       });
+    },
+    /**
+     * 利益点滚动方式一
+     */
+    startRollEasy() {
+      this.showhorseLamp();
+      this.timer = setInterval(this.showhorseLamp, ~~(this.height / this.speed / 4) * 1000 + this.standTime);
+    },
+    showhorseLamp() {
+      this.animate = true;
+      setTimeout(() => {
+        this.scrollList.push(this.scrollList[0]);
+        this.scrollList.shift();
+        this.animate = false;
+      }, ~~(this.height / this.speed / 4) * 1000);
+    },
+
+    startRoll() {
+      this.timer = setInterval(() => {
+        let chunk = 100;
+        for (let i = 0; i < chunk; i++) {
+          this.scroll(i, i < chunk - 1 ? false : true);
+        }
+      }, this.standTime + 100 * this.speed);
+    },
+    scroll(n, last) {
+      setTimeout(() => {
+        this.distance -= this.height / 100;
+        if (last) {
+          this.scrollList.push(this.scrollList[0]);
+          this.scrollList.shift();
+          this.distance = 0;
+        }
+      }, n * this.speed);
+    },
+
+    /**
+     * 点击滚动单元
+     */
+    go(item) {
+      this.$emit('click', item);
+    },
+
+    handleClickIcon() {
+      this.$emit('close', this.scrollList[0]);
+    },
+
+    activated() {
+      if (this.keepAlive) {
+        this.keepAlive = false;
+      }
+    },
+
+    deactivated() {
+      this.keepAlive = true;
+      clearInterval(this.timer);
+    },
+
+    destroyed() {
+      clearInterval(this.timer);
     }
   }
 };
 </script>
+<style lang="scss">
+@import 'noticebar.scss';
+</style>
