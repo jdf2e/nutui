@@ -8,11 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Cell,CellGroup } from '@nutui/nutui-taro';
+import { Cell } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Cell);
-app.use(CellGroup);
 
 ```
 

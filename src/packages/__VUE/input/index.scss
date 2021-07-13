@@ -6,6 +6,7 @@
   background: $white;
   border-bottom: 1px solid $input-border-bottom;
   font-size: 14px;
+  box-sizing: border-box;
   input {
     width: 230px;
     flex: 1;
