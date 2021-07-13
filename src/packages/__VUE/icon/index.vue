@@ -8,7 +8,8 @@ export default create({
   props: {
     name: { type: String, default: '' },
     size: { type: [String, Number], default: '' },
-    classPrefix: { type: String, default: 'nutui-iconfont' },
+    classPrefix: { type: String, default: 'nut-icon' },
+    fontClassName: { type: String, default: 'nutui-iconfont' },
     color: { type: String, default: '' },
     tag: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'i' }
   },
@@ -30,7 +31,7 @@ export default create({
         {
           class: _isImage
             ? `${componentName}__img`
-            : `${props.classPrefix} ${componentName} ${componentName}-${props.name}`,
+            : `${props.fontClassName} ${componentName} ${props.classPrefix}-${props.name}`,
           style: {
             color: props.color,
             fontSize: pxCheck(props.size),
