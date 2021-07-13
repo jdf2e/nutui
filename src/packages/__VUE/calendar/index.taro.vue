@@ -132,4 +132,10 @@ export default create({
 .popup-box {
   height: 518px;
 }
+.nut-calendar-content {
+  overflow-y: auto;
+}
+::-webkit-scrollbar {
+  display: none;
+}
 </style>
