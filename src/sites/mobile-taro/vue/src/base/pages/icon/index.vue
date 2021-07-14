@@ -10,7 +10,8 @@
       <nut-icon
         size="40"
         name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-      ></nut-icon>
+      >
+      </nut-icon>
     </nut-cell>
     <h2>图标颜色</h2>
     <nut-cell>
@@ -23,23 +24,24 @@
     <nut-cell>
       <nut-icon name="dongdong"></nut-icon>
       <nut-icon name="dongdong" size="24"></nut-icon>
-      <nut-icon name="dongdong" size="16"></nut-icon>
+      <nut-icon name="dongdong" size="26"></nut-icon>
     </nut-cell>
 
-    <h2>基础图标</h2>
-    <nut-cell>
-      <ul>
-        <li v-for="item in icons.glyphs" :key="item.font_class">
-          <nut-icon :name="item.font_class"></nut-icon>
-          <span>{{ item.name }}</span>
-        </li>
-      </ul>
-    </nut-cell>
+    <nut-cell-group v-for="item in icons.data" :title="item.name">
+      <nut-cell>
+        <ul>
+          <li v-for="item in item.icons" :key="item">
+            <nut-icon :name="item"></nut-icon>
+            <span>{{ item }}</span>
+          </li>
+        </ul>
+      </nut-cell>
+    </nut-cell-group>
   </div>
 </template>
 
 <script lang="ts">
-import icons from './../../../../../../../packages/styles/font/iconfont.json';
+import icons from './../../../../../../../packages/styles/font/config.json';
 export default {
   props: {},
   setup() {
@@ -57,7 +59,6 @@ export default {
 ul {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   li {
     flex: 0 0 25%;
     max-width: 25%;
@@ -68,6 +69,8 @@ ul {
 
     span {
       height: 40px;
+      font-size: 12px;
+      text-align: center;
     }
     .nutui-iconfont {
       margin: 16px 0 16px;

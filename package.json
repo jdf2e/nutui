@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "3.0.3",
+  "version": "3.1.1",
   "description": "京东风格的轻量级移动端 Vue 组件库",
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
@@ -47,7 +47,7 @@
     "upload": "yarn build:site:oss && node ./jd/upload.js",
     "add": "node jd/createComponentMode.js",
     "publish:next": "npm publish --tag=next",
-    "publish:taro": "npm publish --tag=taro",
+    "publish:taro": "npm publish",
     "generate:file": "node jd/generate-nutui.js",
     "generate:file:taro:vue": "node jd/generate-nutui-taro-vue.js",
     "generate:types": "node jd/generate-types.js",

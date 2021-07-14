@@ -93,6 +93,7 @@ export default {
         line-height: 48px;
         font-size: 34px;
         color: rgba(51, 51, 51, 1);
+        font-weight: 500;
       }
       p {
         height: 18px;
@@ -138,6 +139,10 @@ export default {
           }
         }
       }
+    }
+    ol,
+    li {
+      list-style: none;
     }
   }
 }
