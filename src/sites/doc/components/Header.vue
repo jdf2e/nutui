@@ -62,6 +62,14 @@
               target="_blank"
               href="https://github.com/jdf2e/nutui"
             ></a>
+            <a
+              class="gitee"
+              target="_blank"
+              href="https://gitee.com/jd-platform-opensource/nutui"
+              ><img
+                src="https://storage.360buyimg.com/imgtools/158748bd85-17a80c60-e547-11eb-995a-377f565026ba.png"
+                alt="Fork me on Gitee"
+            /></a>
           </li>
         </ul>
       </div>
@@ -243,6 +251,18 @@ export default defineComponent({
         vertical-align: middle;
         background: url('../../assets/images/icon-user.png') no-repeat;
         background-size: 26px;
+      }
+      .gitee {
+        display: inline-block;
+        width: 26px;
+        height: 26px;
+        background-size: 100%;
+        margin-left: 10px;
+        > img {
+          height: 100%;
+          width: 100%;
+          vertical-align: text-top;
+        }
       }
     }
   }
