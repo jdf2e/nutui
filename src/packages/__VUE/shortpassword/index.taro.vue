@@ -115,7 +115,11 @@ export default create({
     }
     function focus() {
       let a = document.getElementsByClassName('nut-input-real-taro')[0] as any;
+      let h = a.children[0];
       a.focus();
+      if (h) {
+        h.focus();
+      }
     }
     watch(
       () => props.visible,
