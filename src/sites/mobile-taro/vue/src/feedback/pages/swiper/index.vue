@@ -62,9 +62,10 @@ export default {
   setup() {
     const state = reactive({
       list: [
-        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/195274/24/9649/144035/60d15d37E76e91580/51273fd51174d91a.jpg',
-        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/180629/11/11039/120751/60d53a52Eca8b4b0c/12a396e3f73a6424.jpg',
-        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/172985/20/11254/250873/60ab712bE2cfd0e52/f184257039a404d1.png'
+        'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+        'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+        'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+        'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
       ]
     });
     return {
