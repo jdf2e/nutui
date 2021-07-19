@@ -144,6 +144,8 @@ import Coupon from './packages/coupon/index.js';
 import './packages/coupon/coupon.scss';
 import Magic from './packages/magic/index.js';
 import './packages/magic/magic.scss';
+import NineGrid from './packages/ninegrid/index.js';
+import './packages/ninegrid/ninegrid.scss';
 
 const packages = {
   Cell,
@@ -215,7 +217,8 @@ const packages = {
   NumberKeyboard: NumberKeyboard,
   CollapseItem: CollapseItem,
   Coupon: Coupon,
-  Magic: Magic
+  Magic: Magic,
+  NineGrid: NineGrid
 };
 
 const components = {};
