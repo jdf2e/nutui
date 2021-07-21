@@ -127,13 +127,16 @@ export default {
         { id: 1, name: '北京' },
         { id: 2, name: '广西' },
         { id: 3, name: '江西' },
-        { id: 4, name: '四川' }
+        { id: 4, name: '四川' },
+        { id: 5, name: '浙江' }
       ],
       city: [
         { id: 7, name: '朝阳区' },
         { id: 8, name: '崇文区' },
         { id: 9, name: '昌平区' },
-        { id: 6, name: '石景山区' }
+        { id: 6, name: '石景山区' },
+        { id: 3, name: '八里庄街道' },
+        { id: 9, name: '北苑' }
       ],
       country: [
         { id: 3, name: '八里庄街道' },
@@ -165,7 +168,9 @@ export default {
         countyName: '通州区',
         provinceName: '北京市',
         selectedAddress: true,
-        townName: ''
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718'
       },
       {
         id: 2,
@@ -174,7 +179,9 @@ export default {
         countyName: '',
         provinceName: '钓鱼岛',
         selectedAddress: false,
-        townName: ''
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718'
       },
       {
         id: 3,
@@ -183,7 +190,9 @@ export default {
         countyName: '科创十一街18号院',
         provinceName: '北京市',
         selectedAddress: false,
-        townName: ''
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718'
       }
     ]);
 
