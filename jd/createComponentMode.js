@@ -107,7 +107,7 @@ function init() {
         message: '组件作者(可署化名):'
       }
     ])
-    .then(function(answers) {
+    .then(function (answers) {
       // answers.sort = String(sorts.indexOf(answers.sort));
       newCpt = Object.assign(newCpt, answers);
       createNew();
@@ -115,7 +115,7 @@ function init() {
 }
 function createIndexJs() {
   const nameLc = newCpt.name.toLowerCase();
-  const destPath = path.join('src/packages/' + nameLc);
+  const destPath = path.join('src/packages/__VUE' + nameLc);
   if (!fs.existsSync(destPath)) {
     fs.mkdirSync(destPath);
   }
@@ -163,7 +163,7 @@ function createVue() {
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(filePath);
     }
-    fs.writeFile(filePath, content, err => {
+    fs.writeFile(filePath, content, (err) => {
       if (err) throw err;
       resolve(`生成${newCpt.name}.vue文件成功`);
     });
@@ -179,7 +179,7 @@ function createDemo() {
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(filePath);
     }
-    fs.writeFile(filePath, content, err => {
+    fs.writeFile(filePath, content, (err) => {
       if (err) throw err;
       resolve(`生成demo.vue文件成功`);
     });
@@ -197,7 +197,7 @@ function addToPackageJson() {
     const filePath = path.join(dirPath, `src/config.json`);
 
     var tempfile = JSON.stringify(config, null, 2);
-    fs.writeFile(filePath, tempfile, err => {
+    fs.writeFile(filePath, tempfile, (err) => {
       if (err) throw err;
       resolve(`修改config.json文件成功`);
     });
@@ -212,7 +212,7 @@ function createScss() {
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(filePath);
     }
-    fs.writeFile(filePath, content, err => {
+    fs.writeFile(filePath, content, (err) => {
       if (err) throw err;
       resolve(`index.scss文件成功`);
     });
@@ -227,7 +227,7 @@ function createDoc() {
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(filePath);
     }
-    fs.writeFile(filePath, content, err => {
+    fs.writeFile(filePath, content, (err) => {
       if (err) throw err;
       resolve(`doc.md文件成功`);
     });
