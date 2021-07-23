@@ -13,7 +13,7 @@
 
 > 微信扫描下方二维码体验，体验组件库示例 , Demo 源码  https://github.com/jdf2e/nutui-demo/tree/master/taro
 
-<img width="200" src="http://storage.360buyimg.com/jdc-article/gh_f2231eb941be_258.jpg" />
+<img width="200" src="https://storage.360buyimg.com/jdc-article/gh_f2231eb941be_258.jpg" />
 
 ## 安装
 
