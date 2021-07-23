@@ -23,9 +23,10 @@ NutUI 是京东风格的 Vue 移动端组件库，开发和服务于移动Web界
 * 支持定制主题
 * 单元测试覆盖（3.0 开发中）
 
-## 示例
+## 示例 H5 & 小程序
 
-<img src="https://img12.360buyimg.com/imagetools/jfs/t1/162421/39/13392/9425/6052ea60E592310a9/264bdff23ef5fe95.png" width="200" alt="NutUI">
+<img src="https://img12.360buyimg.com/imagetools/jfs/t1/162421/39/13392/9425/6052ea60E592310a9/264bdff23ef5fe95.png" width="200" alt="NutUI" />
+<img src="https://storage.360buyimg.com/jdc-article/gh_f2231eb941be_258.jpg" width="200" alt="NutUI" />
 
 ## 支持环境
 
