@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import legacy from '@vitejs/plugin-legacy';
 import Markdown from 'vite-plugin-md';
 import path from 'path';
+import config from './package.json';
 const resolve = path.resolve;
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,7 +14,7 @@ export default defineConfig({
       '/devServer': {
         target: 'https://nutui.jd.com',
         changeOrigin: true,
-        rewrite: path => path.replace(/^\/devServer/, '')
+        rewrite: (path) => path.replace(/^\/devServer/, '')
       }
     }
   },
@@ -41,6 +42,7 @@ export default defineConfig({
   build: {
     target: 'es2015',
     outDir: './dist/3x/',
+    assetsDir: config.version,
     cssCodeSplit: true,
     rollupOptions: {
       input: {
