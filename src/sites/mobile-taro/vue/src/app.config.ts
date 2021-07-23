@@ -34,7 +34,7 @@ export default {
     },
     {
       root: 'nav',
-      pages: ['pages/navbar/index', 'pages/tabbar/index']
+      pages: ['pages/navbar/index', 'pages/tabbar/index', 'pages/tab/index']
     },
     {
       root: 'dentry',
