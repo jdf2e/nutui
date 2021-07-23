@@ -1,5 +1,4 @@
 const path = require('path');
-console.log(path.resolve(__dirname, '../../../../../node_modules/@vue'));
 const config = {
   projectName: '@nutui/nutui-taro-mobile',
   date: '2021-5-29',
@@ -10,22 +9,12 @@ const config = {
     828: 1.81 / 2,
     375: 2 / 1
   },
-  mini: {
-    webpackChain(chain, webpack) {
-      chain.merge({
-        alias: {
-          '@vue': path.resolve(__dirname, '../../../../../node_modules/@vue'),
-          vue: path.resolve(__dirname, '../../../../../node_modules/@vue')
-        },
-        runtime: {
-          enableSizeAPIs: true
-        }
-      });
-    }
-  },
   sourceRoot: 'src',
   outputRoot: 'dist',
   plugins: ['@tarojs/plugin-html'],
+  alias: {
+    '@vue': path.resolve(__dirname, '../../../../../node_modules/@vue')
+  },
   sass: {
     resource: path.resolve(
       __dirname,
