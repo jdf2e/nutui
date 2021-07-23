@@ -4,6 +4,7 @@
     <div class="header-logo">
       <a class="logo-link" href="#" @click="toHome"></a>
       <span class="logo-border"></span>
+      <span class="version">v{{ version }}</span>
     </div>
     <div class="header-nav">
       <Search />
@@ -80,6 +81,7 @@
 import { defineComponent, reactive, computed, onMounted } from 'vue';
 import Search from './Search.vue';
 import { header, versions, nav } from '@/config.json';
+import { version } from '/package.json';
 import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-header',
@@ -140,6 +142,7 @@ export default defineComponent({
     return {
       header,
       versions,
+      version,
       data,
       toHome,
       isActive,
@@ -178,7 +181,6 @@ export default defineComponent({
     width: 240px;
     height: 64px;
     .logo-link {
-      display: inline-block;
       width: 120px;
       height: 46px;
       vertical-align: middle;
@@ -187,13 +189,17 @@ export default defineComponent({
       margin-top: -23px;
     }
     .logo-border {
-      display: inline-block;
       width: 1px;
       height: 26px;
       position: absolute;
       right: 0;
       top: 50%;
       margin-top: -13px;
+    }
+    .version {
+      position: absolute;
+      right: 76px;
+      font-size: 14px;
     }
   }
   &-nav {
