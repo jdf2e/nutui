@@ -115,7 +115,6 @@
           "version": "3.0.0",
           "name": "Cell",
           "taro": true,
-          "tarodoc": true,
           "sort": 1,
           "cName": "单元格",
           "type": "component",
@@ -133,7 +132,6 @@
           "desc": "展示分组列表",
           "author": "richard1015"
         },
-        
         {
           "version": "3.0.0",
           "name": "Icon",
@@ -156,7 +154,6 @@
           "desc": "价格组件",
           "author": "ailululu"
         },
-       
         {
           "version": "3.0.0",
           "name": "OverLay",
@@ -325,7 +322,6 @@
           "show": false,
           "author": "yangxiaolu3"
         },
-    
         {
           "version": "3.0.0",
           "name": "Video",
@@ -413,7 +409,6 @@
           "desc": "轻提示",
           "author": "undo"
         }
-       
       ]
     },
     {

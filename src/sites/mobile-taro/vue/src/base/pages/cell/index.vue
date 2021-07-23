@@ -8,6 +8,7 @@
       desc="描述文字"
     ></nut-cell>
     <nut-cell title="点击测试" @click="testClick"></nut-cell>
+    <nut-cell title="圆角设置 0" round-radius="0"></nut-cell>
 
     <h2>直接使用插槽(slot)</h2>
 
