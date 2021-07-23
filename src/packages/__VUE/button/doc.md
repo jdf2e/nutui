@@ -9,12 +9,12 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { Button } from '@nutui/nutui';
+import { Button,Icon } from '@nutui/nutui';
 // taro
-import { Button } from '@nutui/nutui-taro';
+import { Button,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Button);
+app.use(Button).use(Icon);
 ```
 
 ## 代码演示
@@ -63,8 +63,25 @@ app.use(Button);
 ### 加载状态
 
 ```html
-<nut-button loading></nut-button>
-<nut-button loading>加载中</nut-button>
+<nut-button loading type="info"></nut-button>
+<nut-button loading type="warning">加载中...</nut-button>
+<nut-button :loading="isLoading" type="success" @click="changeLoading">Click me!</nut-button>
+```
+``` javascript
+  // ...
+  let isLoading = ref(false);
+  const changeLoading = () => {
+    isLoading.value = true;
+    setTimeout(() => {
+      isLoading.value = false;
+    }, 3000);
+  };
+
+  return {
+    isLoading,
+    changeLoading
+  };
+  // ...
 ```
 
 ### 图标按钮
