@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" @click="handleClick">
+  <view :class="classes" :style="baseStyle" @click="handleClick">
     <slot>
       <view
         class="nut-cell__title"
@@ -37,6 +37,7 @@ import { computed } from 'vue';
 import { createComponent } from '../../utils/create';
 import { useRouter } from 'vue-router';
 import CellGroup from '../cellgroup/index.vue';
+import { pxCheck } from '../../utils/pxCheck';
 const { componentName, create } = createComponent('cell');
 export default create({
   children: [CellGroup],
@@ -48,6 +49,7 @@ export default create({
     isLink: { type: Boolean, default: false },
     to: { type: String, default: '' },
     replace: { type: Boolean, default: false },
+    roundRadius: { type: [String, Number], default: '' },
     url: { type: String, default: '' },
     icon: { type: String, default: '' }
   },
@@ -64,6 +66,13 @@ export default create({
       };
     });
     const router = useRouter();
+
+    const baseStyle = computed(() => {
+      return {
+        borderRadius: pxCheck(props.roundRadius)
+      };
+    });
+
     const handleClick = (event: Event) => {
       emit('click', event);
 
@@ -83,7 +92,8 @@ export default create({
 
     return {
       handleClick,
-      classes
+      classes,
+      baseStyle
     };
   }
 });
