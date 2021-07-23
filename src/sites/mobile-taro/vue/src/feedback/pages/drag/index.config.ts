@@ -1,3 +1,4 @@
 export default {
-  navigationBarTitleText: 'Drag'
+  navigationBarTitleText: 'Drag',
+  disableScroll: true
 };
