@@ -1,7 +1,7 @@
 <template>
-  <div class="swiper-slide">
+  <nut-swiper-item>
     <slot></slot>
-  </div>
+  </nut-swiper-item>
 </template>
 <script lang="ts">
 import { createComponent } from '../../utils/create';
