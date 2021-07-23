@@ -145,7 +145,8 @@ export default create({
     const onTransitionEnd = () => {
       nextTick(() => {
         parent.children.forEach((item1: any, index: number) => {
-          item1.$el.children.forEach((item2: any, index: number) => {
+          let ary = Array.from(item1.$el.children);
+          ary.forEach((item2: any, index: number) => {
             if (item2.className.includes('collapse-wrapper')) {
               item2.style.willChange = 'auto';
             }
@@ -226,17 +227,20 @@ export default create({
     });
 
     const getH = () => {
-      parent.children.forEach((item1: any, index: number) => {
-        item1.$el.children.forEach((item2: any, index: number) => {
-          item2.children.length > 0 &&
-            item2.children.forEach((item3: any, index: number) => {
-              if (domID.includes(item3.uid)) {
-                const h = list.filter((item4: any) => item4.id == item3.uid)[0]
-                  ?.height;
-                item1.conHeight = h;
-              }
-            });
-        });
+      parent.children.forEach((item1: any, index1: number) => {
+        let ary: any = Array.from(item1.$el.children);
+        item1.conHeight = ary[1].children[0].offsetHeight;
+        // ary.forEach((item2: any, index2: number) => {
+        //   let ary2 = Array.from(item2.children);
+        //   ary2.length > 0 &&
+        //     ary2.forEach((item3: any, index3: number) => {
+        //       if (domID.includes(item3.uid)) {
+        //         const h = list.filter((item4: any) => item4.id == item3.uid)[0]
+        //           ?.height;
+        //         item1.conHeight = h;
+        //       }
+        //     });
+        // });
       });
     };
 
