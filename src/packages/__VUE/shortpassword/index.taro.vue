@@ -14,15 +14,15 @@
     >
       <view class="nut-shortpsd-title">{{ title }}</view>
       <view class="nut-shortpsdWx-subtitle">{{ desc }}</view>
+      <input
+        class="nut-input-real-taro"
+        type="number"
+        :maxlength="length"
+        v-model="realInput"
+        @input="changeValue"
+      />
       <view class="nut-input-w">
-        <input
-          ref="realpwd"
-          class="nut-input-real"
-          type="number"
-          :maxlength="length"
-          v-model="realInput"
-          @input="changeValue"
-        />
+        <view class="nut-input-site"></view>
         <view class="nut-shortpsd-fake" @click="focus">
           <view
             class="nut-shortpsd-li"
@@ -52,7 +52,7 @@
 </template>
 <script lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('shortpassword');
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 export default create({
@@ -114,8 +114,12 @@ export default create({
       emit('ok', realInput.value);
     }
     function focus() {
-      let a = document.getElementsByClassName('nut-input-real')[0] as any;
+      let a = document.getElementsByClassName('nut-input-real-taro')[0] as any;
+      let h = a.children[0];
       a.focus();
+      if (h) {
+        h.focus();
+      }
     }
     watch(
       () => props.visible,

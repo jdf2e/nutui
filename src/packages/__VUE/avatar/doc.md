@@ -7,7 +7,10 @@
 ### 安装
 ``` javascript
 import { createApp } from 'vue';
+// vue
 import { Avatar } from '@nutui/nutui';
+// taro
+import { Avatar } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Avatar);
@@ -68,4 +71,4 @@ app.use(Avatar);
 
 | 字段     | 说明                 | 类型     | 回调参数 |
 |----------|----------------------|----------|----------|
-| on-error | 加载图片失败触发事件 | Function | event    |
+| active-avatarror | 点击图片触发事件 | Function | event    |

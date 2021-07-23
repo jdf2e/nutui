@@ -158,7 +158,7 @@
 
 <script lang="ts">
 import { ref, reactive, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('tab');
 export default createDemo({
   props: {},

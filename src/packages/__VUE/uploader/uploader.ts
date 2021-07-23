@@ -1,8 +1,9 @@
 export class UploadOptions {
   url = '';
-  formData: FormData = new FormData();
+  formData?: FormData;
   method = 'post';
   xhrState = 200;
+  timeout = 30 * 1000;
   headers = {};
   withCredentials = false;
   onStart?: Function;
@@ -18,6 +19,7 @@ export class Uploader {
   upload() {
     const options = this.options;
     const xhr = new XMLHttpRequest();
+    xhr.timeout = options.timeout;
     if (xhr.upload) {
       xhr.upload.addEventListener(
         'progress',
@@ -46,5 +48,43 @@ export class Uploader {
     } else {
       console.warn('浏览器不支持 XMLHttpRequest');
     }
+  }
+  uploadTaro(filePath: string, Taro: any) {
+    const options = this.options;
+    const uploadTask = Taro.uploadFile({
+      url: options.url,
+      filePath,
+      header: {
+        'Content-Type': 'multipart/form-data',
+        ...options.headers
+      }, //
+      formData: options.formData,
+      name: 'files',
+      success(response: { errMsg: any; statusCode: number; data: string }) {
+        if (response.errMsg) {
+          options.onFailure?.(response, options);
+        } else if (options.xhrState === response.statusCode) {
+          options.onSuccess?.(response, options);
+        }
+      },
+      fail(e: any) {
+        options.onFailure?.(e, options);
+      }
+    });
+    options.onStart?.(options);
+    uploadTask.progress(
+      (res: {
+        progress: any;
+        totalBytesSent: any;
+        totalBytesExpectedToSend: any;
+      }) => {
+        options.onProgress?.(res, options);
+        // console.log('上传进度', res.progress);
+        // console.log('已经上传的数据长度', res.totalBytesSent);
+        // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend);
+      }
+    );
+
+    // uploadTask.abort(); // 取消上传任务
   }
 }

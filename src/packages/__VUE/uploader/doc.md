@@ -97,8 +97,6 @@ setup() {
 <nut-uploader disabled></nut-uploader>
 ```
 
-## API
-
 ### Prop
 
 | 字段              | 说明                                                                                                                                                                                   | 类型                              | 默认值           |
@@ -121,6 +119,7 @@ setup() {
 | with-credentials  | 支持发送 cookie 凭证信息                                                                                                                                                               | Boolean                           | fasle            |
 | multiple          | 是否支持文件多选                                                                                                                                                                       | Boolean                           | fasle            |
 | disabled          | 是否禁用文件上传                                                                                                                                                                       | Boolean                           | fasle            |
+| timeout           | 超时时间，单位为毫秒                                                                                                   | Number丨String                    | 1000 * 30                 |
 | before-upload     | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                          | null             |
 | before-delete     | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除                                                                 | Function(file): boolean 丨Promise | -                |
 

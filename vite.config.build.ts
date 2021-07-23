@@ -38,6 +38,7 @@ export default defineConfig({
     lib: {
       entry: 'src/packages/nutui.vue.ts',
       name: 'nutui',
+      fileName: 'nutui',
       formats: ['es', 'umd']
     }
   }

@@ -2,7 +2,7 @@
   <div class="demo">
     <h2>基本用法</h2>
     <nut-cell>
-      <nut-price :price="1010" :need-symbol="false" :thousands="true" />
+      <nut-price :price="0" :need-symbol="false" :thousands="true" />
     </nut-cell>
     <h2>有人民币符号，无千位分隔</h2>
     <nut-cell>
@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { ref } from 'vue';
 const { createDemo } = createComponent('price');
 export default createDemo({

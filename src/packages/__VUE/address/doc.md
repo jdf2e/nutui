@@ -1,4 +1,4 @@
-#  Address组件
+#  Address 地址
 
 ### 介绍
 
@@ -8,7 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
+// vue
 import { Address, Icon, Popup } from '@nutui/nutui';
+// taro
+import { Address, Icon, Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Address);

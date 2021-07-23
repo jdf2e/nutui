@@ -22,7 +22,7 @@
       @on-click-clear="edit"
       @on-click-send="more"
       title="购物车"
-      titIcon="locationg3"
+      titIcon="cart2"
       desc="编辑"
       icon="more-x"
     ></nut-navbar>
@@ -71,7 +71,7 @@
 
 <script lang="ts">
 import { reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('navbar');
 export default createDemo({
   setup(props, { emit }) {

@@ -6,6 +6,7 @@
         :init-page="page"
         :pagination-visible="true"
         pagination-color="#426543"
+        auto-play="2000"
       >
         <nut-swiper-item v-for="item in list" :key="item">
           <img :src="item" alt="" />
@@ -52,7 +53,7 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('swiper');
 export default createDemo({
   props: {},
@@ -64,10 +65,10 @@ export default createDemo({
       page4: 0,
       current: 1,
       list: [
-        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/128047/5/6706/178631/5f068cefE53bff564/4dd870d8932daecf.jpg',
-        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/159602/22/7999/126515/6035f371E6f95bfee/559cb1ee48c962c9.jpg',
-        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/166846/13/7534/136440/60338b5cEd491d8b3/9e5527429136ab86.jpg',
-        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/145433/27/14059/141680/5facf066Ec402354c/530d5a316aed55fc.jpg'
+        'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+        'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+        'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+        'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
       ]
     });
     const change = (index: number) => {

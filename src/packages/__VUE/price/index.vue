@@ -1,10 +1,23 @@
 <template>
-  <view :class="classes" v-html="priceShow"> </view>
+  <view :class="classes">
+    <view
+      v-if="needSymbol"
+      class="nut-price--symbol"
+      v-html="showSymbol"
+    ></view>
+    <view class="nut-price--big">
+      {{ formatThousands(price) }}
+    </view>
+    <view class="nut-price--point">.</view>
+    <view class="nut-price--small">
+      {{ formatDecimal(price) }}
+    </view>
+  </view>
 </template>
 
 <script lang="ts">
 import { computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('price');
 
 export default create({
@@ -32,56 +45,61 @@ export default create({
   },
 
   setup(props) {
-    const priceShow = computed(() => {
-      const symbol = props.needSymbol
-        ? `<view class="${componentName}--symbol">${props.symbol}</view>`
-        : '';
-      return symbol + formatToHump(props.price);
-    });
     const classes = computed(() => {
       return {
         [componentName]: true
       };
     });
-
+    const showSymbol = computed(() => {
+      const symbol = props.needSymbol ? props.symbol : '';
+      return symbol;
+    });
     const checkPoint = (price: string | number) => {
       return String(price).indexOf('.') > 0;
     };
-    const formatThousands = (num: string | number) => {
+
+    const formatThousands = (num: any) => {
+      if (Number(num) == 0) {
+        num = 0;
+      }
+      if (checkPoint(num)) {
+        num = Number(num).toFixed(props.decimalDigits);
+        num =
+          typeof num.split('.') === 'string'
+            ? num.split('.')
+            : num.split('.')[0];
+      } else {
+        num = num.toString();
+      }
       if (props.thousands) {
         return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
       } else {
         return num;
       }
     };
-    const formatDecimal = (decimalNum: string | number) => {
+    const formatDecimal = (decimalNum: any) => {
+      if (Number(decimalNum) == 0) {
+        decimalNum = 0;
+      }
+      if (checkPoint(decimalNum)) {
+        decimalNum = Number(decimalNum).toFixed(props.decimalDigits);
+        decimalNum =
+          typeof decimalNum.split('.') === 'string'
+            ? 0
+            : decimalNum.split('.')[1];
+      } else {
+        decimalNum = decimalNum.toString();
+      }
       const result = '0.' + decimalNum;
       const resultFixed = Number(result).toFixed(props.decimalDigits);
       return String(resultFixed).substring(2, resultFixed.length);
     };
-
-    const renderPrice = (price: string[] | string) => {
-      return `<view class="${componentName}--big">${formatThousands(
-        typeof price === 'string' ? price : price[0]
-      )}</view><view class="${componentName}--point">.</view><view class="${componentName}--small">${formatDecimal(
-        typeof price === 'string' ? 0 : price[1]
-      )}</view>`;
-    };
-
-    const formatToHump = (price: string | number) => {
-      if (Number(price) == 0) {
-        return 0;
-      }
-      if (checkPoint(price)) {
-        price = Number(price).toFixed(props.decimalDigits);
-        return renderPrice(price.split('.'));
-      } else {
-        return renderPrice(price.toString());
-      }
-    };
     return {
-      priceShow,
-      classes
+      classes,
+      showSymbol,
+      checkPoint,
+      formatThousands,
+      formatDecimal
     };
   }
 });

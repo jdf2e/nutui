@@ -36,10 +36,10 @@
   </view>
 </template>
 <script>
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { computed } from 'vue';
 const { componentName, create } = createComponent('actionsheet');
-import { popupProps } from '@/packages/__VUE/popup/index.vue';
+import { popupProps } from '../popup/index.vue';
 export default create({
   props: {
     ...popupProps,
@@ -86,7 +86,7 @@ export default create({
       };
     });
 
-    const isHighlight = item => {
+    const isHighlight = (item) => {
       return props.chooseTagValue &&
         props.chooseTagValue === item[props.optionTag]
         ? props.color

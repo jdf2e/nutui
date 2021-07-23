@@ -1,10 +1,10 @@
 <template>
   <nut-popup
     v-if="poppable"
-    v-model:visible="visible"
+    v-model:visible="show"
     position="bottom"
     round
-    :closeable="true"
+    closeable
     @click-overlay="closePopup"
     @click-close-icon="closePopup"
   >
@@ -40,12 +40,12 @@
   </nut-calendar-item>
 </template>
 <script lang="ts">
-import { PropType, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { PropType, ref, watch } from 'vue';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('calendar');
-import Popup from '@/packages/__VUE/popup/index.taro.vue';
-import CalendarItem from '@/packages/__VUE/calendaritem/index.vue';
-import Utils from '@/packages/utils/date';
+import Popup from '../popup/index.taro.vue';
+import CalendarItem from '../calendaritem/index.vue';
+import Utils from '../../utils/date';
 type InputDate = string | string[];
 export default create({
   children: [CalendarItem, Popup],
@@ -84,15 +84,18 @@ export default create({
   },
   emits: ['choose', 'close', 'update:visible'],
   setup(props, { emit }) {
+    let show = ref(props.visible);
     // element refs
     const calendarRef = ref<null | HTMLElement>(null);
 
     // methods
     const update = () => {
+      show.value = false;
       emit('update:visible', false);
     };
 
     const close = () => {
+      show.value = false;
       emit('close');
       emit('update:visible', false);
     };
@@ -106,7 +109,15 @@ export default create({
       close();
     };
 
+    watch(
+      () => props.visible,
+      (value: boolean) => {
+        show.value = value;
+      }
+    );
+
     return {
+      show,
       closePopup,
       update,
       close,
@@ -120,5 +131,11 @@ export default create({
 <style lang="scss">
 .popup-box {
   height: 518px;
+}
+.nut-calendar-content {
+  overflow-y: auto;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 </style>

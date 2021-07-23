@@ -30,7 +30,7 @@
     <template v-else>
       <view
         class="nut-uploader__preview"
-        v-for="item in fileList"
+        v-for="(item, index) in fileList"
         :key="item.uid"
       >
         <view class="nut-uploader__preview-img">
@@ -39,9 +39,13 @@
             color="rgba(0,0,0,0.6)"
             @click="onDelete(item, index)"
             class="close"
-            name="mask-close"
+            name="circle-close"
           ></nut-icon>
-          <img v-if="item.type.includes('image') && item.url" :src="item.url" />
+          <img
+            class="nut-uploader__preview-img__c"
+            v-if="item.type.includes('image') && item.url"
+            :src="item.url"
+          />
           <view class="tips" v-if="item.status != 'success'">{{
             item.status
           }}</view>
@@ -77,7 +81,7 @@
 
 <script lang="ts">
 import { computed, reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { Uploader, UploadOptions } from './uploader';
 const { componentName, create } = createComponent('uploader');
 export type FileItemStatus =
@@ -99,6 +103,7 @@ export default create({
     name: { type: String, default: 'file' },
     url: { type: String, default: '' },
     // defaultFileList: { type: Array, default: () => new Array<FileItem>() },
+    timeout: { type: [Number, String], default: 1000 * 30 },
     fileList: { type: Array, default: () => [] },
     isPreview: { type: Boolean, default: true },
     isDeletable: { type: Boolean, default: true },
@@ -158,6 +163,7 @@ export default create({
         fileItem.formData.append(key, value);
       }
       uploadOption.formData = fileItem.formData;
+      uploadOption.timeout = (props.timeout as number) * 1;
       uploadOption.method = props.method;
       uploadOption.xhrState = props.xhrState as number;
       uploadOption.headers = props.headers;
@@ -183,7 +189,7 @@ export default create({
           responseText,
           option
         });
-        emit('update:fileList', props.fileList);
+        emit('update:fileList', fileList);
       };
       uploadOption.onFailure = (
         responseText: XMLHttpRequest['responseText'],
@@ -203,7 +209,7 @@ export default create({
         const formData = new FormData();
         formData.append(props.name, file);
 
-        const fileItem = new FileItem();
+        const fileItem = reactive(new FileItem());
         fileItem.name = file.name;
         fileItem.status = 'uploading';
         fileItem.type = file.type;

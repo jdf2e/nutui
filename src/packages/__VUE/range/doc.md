@@ -1,4 +1,4 @@
-# Range组件
+# Range 区间选择器
 
 ### 介绍
   
@@ -8,7 +8,11 @@
 
 ```javascript
 import { createApp } from 'vue';
+//vue
 import { Range } from '@nutui/nutui';
+//taro
+import { Range } from '@nutui/nutui-taro';
+
 const app = createApp();
 app.use(Range);
 ```

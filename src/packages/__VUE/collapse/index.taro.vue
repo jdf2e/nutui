@@ -5,8 +5,8 @@
 </template>
 <script lang="ts">
 import { provide } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import collapseitem from '@/packages/__VUE/collapseitem/index.taro.vue';
+import { createComponent } from '../../utils/create';
+import collapseitem from '../collapseitem/index.taro.vue';
 const { create } = createComponent('collapse');
 export default create({
   children: [collapseitem],
@@ -55,7 +55,7 @@ export default create({
     }
   },
   emits: ['update:active', 'change'],
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const changeVal = (val: string | number | Array<string | number>) => {
       emit('update:active', val);
       emit('change', val);
@@ -85,12 +85,43 @@ export default create({
       }
     };
 
+    const activeIndex = () => {
+      const activeCollapse: any = props.active;
+      const childrenList: any = slots.default?.();
+      let act: any = [];
+      childrenList.forEach((item: any, index: number) => {
+        if (
+          typeof activeCollapse == 'number' ||
+          typeof activeCollapse == 'string'
+        ) {
+          if (item.props.name == activeCollapse) {
+            act.push(item.flag);
+            return act;
+          }
+        } else {
+          let ary = Array.from(activeCollapse);
+          if (
+            ary.includes(String(item.props.name)) ||
+            ary.includes(Number(item.props.name))
+          ) {
+            act.push(item.flag);
+          }
+        }
+      });
+      return act;
+    };
+
+    const getParentChildren = () => {
+      return slots.default?.();
+    };
     provide('collapseParent', {
       children: [],
       props,
       changeValAry,
       changeVal,
-      isExpanded
+      isExpanded,
+      activeIndex,
+      getParentChildren
     });
   }
 });

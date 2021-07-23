@@ -1,4 +1,4 @@
-# Cell 列表组件
+# Cell 单元格
 
 ### 介绍
 
@@ -8,11 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Cell,CellGroup } from '@nutui/nutui';
+import { Cell } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Cell);
-app.use(CellGroup);
 
 ```
 

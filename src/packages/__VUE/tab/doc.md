@@ -188,7 +188,7 @@ switchTab 监听切换 tab 返回事件
 </div>
 <script lang="ts">
 import { ref , reactive,toRefs } from "vue";
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('tab');
 export default createDemo({
   setup() {

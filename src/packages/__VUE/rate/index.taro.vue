@@ -22,13 +22,25 @@
         :size="iconSize"
         :name="checkedIcon"
       />
+      <nut-icon
+        v-else-if="allowHalf && modelValue + 1 < n"
+        class="
+          nut-rate-item__icon
+          nut-rate-item__icon--disabled
+          nut-rate-item__icon--half
+        "
+        @click="onClick(2, n)"
+        :color="voidColor"
+        :size="iconSize"
+        :name="uncheckedIcon"
+      />
     </view>
   </view>
 </template>
 <script lang="ts">
 import { computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { createComponent } from '../../utils/create';
+import { pxCheck } from '../../utils/pxCheck';
 const { componentName, create } = createComponent('rate');
 import Taro from '@tarojs/taro';
 export default create({

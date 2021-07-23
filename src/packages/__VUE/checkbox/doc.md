@@ -8,7 +8,10 @@
 
 ``` ts
 import { createApp } from 'vue';
+// vue
 import { Checkbox } from '@nutui/nutui';
+// taro
+import { Checkbox } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Checkbox);

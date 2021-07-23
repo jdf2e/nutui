@@ -1,5 +1,6 @@
 <template>
   <div class="demo" id="elId">
+    <h2>基本用法</h2>
     <div class="text-data">我是测试数据1</div>
     <div class="text-data">我是测试数据2</div>
     <div class="text-data">我是测试数据3</div>
@@ -36,7 +37,7 @@
 </template>
 
 <script>
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('backtop');
 
 export default createDemo({

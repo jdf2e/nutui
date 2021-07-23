@@ -1,5 +1,5 @@
 var nameLc = 'test';
-var demoModel = function(nameLc) {
+var demoModel = function (nameLc) {
   var temp = {
     demo: `<template>
     <div class="demo">
@@ -12,7 +12,7 @@ var demoModel = function(nameLc) {
   </template>
   
   <script lang="ts">
-  import { createComponent } from '@/packages/utils/create';
+  import { createComponent } from '../../utils/create';
   const { createDemo } = createComponent('${nameLc}');
   export default createDemo({
     props: {},
@@ -35,7 +35,7 @@ var demoModel = function(nameLc) {
   </template>
   <script lang="ts">
   import { toRefs } from 'vue';
-  import { createComponent } from '@/packages/utils/create';
+  import { createComponent } from '../../utils/create';
   const { componentName, create } = createComponent('${nameLc}');
   
   export default create({

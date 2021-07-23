@@ -33,7 +33,7 @@
 </template>
 <script lang="ts">
 import { toRefs, ref } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('picker');
 export default createDemo({
   props: {},

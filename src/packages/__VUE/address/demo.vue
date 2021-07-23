@@ -14,7 +14,7 @@
       :city="city"
       :country="country"
       :town="town"
-      @change="cal => onChange(cal, 'normal')"
+      @change="(cal) => onChange(cal, 'normal')"
       @close="close1"
       custom-address-title="请选择所在地区"
     ></nut-address>
@@ -31,7 +31,7 @@
       v-model:visible="exist"
       type="exist"
       :exist-address="existAddress"
-      @change="cal => onChange(cal, 'exist')"
+      @change="(cal) => onChange(cal, 'exist')"
       @close="close2"
       :is-show-custom-address="false"
       @selected="selected"
@@ -50,7 +50,7 @@
       v-model:visible="customImg"
       type="exist"
       :exist-address="existAddress"
-      @change="cal => onChange(cal, 'customImg')"
+      @change="(cal) => onChange(cal, 'customImg')"
       @close="close3"
       :is-show-custom-address="false"
       @selected="selected"
@@ -76,7 +76,7 @@
       :country="country"
       :town="town"
       :back-btn-icon="backBtnIcon"
-      @change="cal => onChange(cal, 'other')"
+      @change="(cal) => onChange(cal, 'other')"
       @close="close4"
       @selected="selected"
       custom-and-exist-title="选择其他地址"
@@ -87,7 +87,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { reactive, ref, toRefs } from 'vue';
 const { createDemo } = createComponent('address');
 interface CalBack {
@@ -128,13 +128,16 @@ export default createDemo({
         { id: 1, name: '北京' },
         { id: 2, name: '广西' },
         { id: 3, name: '江西' },
-        { id: 4, name: '四川' }
+        { id: 4, name: '四川' },
+        { id: 5, name: '浙江' }
       ],
       city: [
         { id: 7, name: '朝阳区' },
         { id: 8, name: '崇文区' },
         { id: 9, name: '昌平区' },
-        { id: 6, name: '石景山区' }
+        { id: 6, name: '石景山区' },
+        { id: 3, name: '八里庄街道' },
+        { id: 9, name: '北苑' }
       ],
       country: [
         { id: 3, name: '八里庄街道' },
@@ -166,7 +169,9 @@ export default createDemo({
         countyName: '通州区',
         provinceName: '北京市',
         selectedAddress: true,
-        townName: ''
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718'
       },
       {
         id: 2,
@@ -175,7 +180,9 @@ export default createDemo({
         countyName: '',
         provinceName: '钓鱼岛',
         selectedAddress: false,
-        townName: ''
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718'
       },
       {
         id: 3,
@@ -184,7 +191,9 @@ export default createDemo({
         countyName: '科创十一街18号院',
         provinceName: '北京市',
         selectedAddress: false,
-        townName: ''
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718'
       }
     ]);
 
@@ -217,13 +226,8 @@ export default createDemo({
     const close2 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
-        const {
-          provinceName,
-          cityName,
-          countyName,
-          townName,
-          addressDetail
-        } = val.data;
+        const { provinceName, cityName, countyName, townName, addressDetail } =
+          val.data;
         text.two =
           provinceName + cityName + countyName + townName + addressDetail;
       } else {
@@ -249,13 +253,8 @@ export default createDemo({
     const close3 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
-        const {
-          provinceName,
-          cityName,
-          countyName,
-          townName,
-          addressDetail
-        } = val.data;
+        const { provinceName, cityName, countyName, townName, addressDetail } =
+          val.data;
         text.three =
           provinceName + cityName + countyName + townName + addressDetail;
       } else {
@@ -266,13 +265,8 @@ export default createDemo({
     const close4 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
-        const {
-          provinceName,
-          cityName,
-          countyName,
-          townName,
-          addressDetail
-        } = val.data;
+        const { provinceName, cityName, countyName, townName, addressDetail } =
+          val.data;
         text.four =
           provinceName + cityName + countyName + townName + addressDetail;
       } else {

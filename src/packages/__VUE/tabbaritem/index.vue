@@ -38,7 +38,7 @@
   </div>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import {
   ComponentInternalInstance,
   computed,

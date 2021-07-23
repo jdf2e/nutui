@@ -2,13 +2,13 @@
   <div class="index">
     <div class="index-header">
       <img
-        src="../../../../../moblie/assets/images/logo-red.png"
+        src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
         alt=""
         srcset=""
       />
       <div class="info">
         <h1>NutUI</h1>
-        <p>京东风格的轻量级移动端 Vue 组件库</p>
+        <p>京东风格的轻量级小程序组件库</p>
       </div>
     </div>
     <div class="index-components">
@@ -17,11 +17,11 @@
         <ul>
           <template v-for="_package in _nav.packages" :key="_package">
             <li v-if="_package.show">
-              <router-link :to="_package.name.toLowerCase()"
-                >{{ _package.name }}&nbsp;&nbsp;{{
-                  _package.cName
-                }}</router-link
-              >
+              <a @click="navigateTo(_package.name.toLowerCase(), _nav.enName)">
+                {{ _package.name }}
+                &nbsp;&nbsp;
+                {{ _package.cName }}
+              </a>
               <nut-icon size="14px" color="#979797" name="right"></nut-icon>
             </li>
           </template>
@@ -32,15 +32,39 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
-import { nav, versions } from '../../../../../../config.json';
+import { reactive, toRefs } from 'vue';
+import { nav } from '../../../../../../config.json';
+import Taro from '@tarojs/taro';
 export default {
-  name: 'doc',
+  name: 'NutUI',
+  onShareAppMessage() {
+    return {
+      title: '',
+      path: '/pages/index/index',
+      success: function (res) {}
+    };
+  },
+  // onShareTimeline() {
+  //   return {
+  //     title: '京东风格的轻量级小程序组件库',
+  // 	  success: function(res) {}
+  //   }
+  // },
   setup() {
-    return reactive({
-      nav,
-      versions
+    const state = reactive({
+      nav
     });
+
+    const navigateTo = (name, enName) => {
+      Taro.navigateTo({
+        url: `/${enName}/pages/${name}/index`
+      });
+    };
+
+    return {
+      ...toRefs(state),
+      navigateTo
+    };
   }
 };
 </script>
@@ -69,6 +93,7 @@ export default {
         line-height: 48px;
         font-size: 34px;
         color: rgba(51, 51, 51, 1);
+        font-weight: 500;
       }
       p {
         height: 18px;
@@ -103,6 +128,7 @@ export default {
           border-radius: 22px;
           box-shadow: 0px 1px 4px 0px rgba(102, 102, 102, 0.06);
           margin-bottom: 13px;
+          box-sizing: border-box;
           a {
             width: 100%;
             height: 100%;
@@ -113,6 +139,10 @@ export default {
           }
         }
       }
+    }
+    ol,
+    li {
+      list-style: none;
     }
   }
 }

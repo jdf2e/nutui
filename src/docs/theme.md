@@ -14,7 +14,7 @@ NutUI 的样式是基于 **[SCSS](https://sass-lang.com/)** 开发的，定义�
 
 > 现阶段需要开发者手动配置，可视化生成配置目前正在开发中。
 
-以下是一些与颜色相关基本样式变量，所有可用的变量请参考[配置文件 variables.scss](https://github.com/jdf2e/nutui/blob/next/src/styles/variables.scss)。
+以下是一些与颜色相关基本样式变量，所有可用的变量请参考[配置文件 variables.scss](https://github.com/jdf2e/nutui/blob/next/src/packages/styles/variables.scss)。
 
 ```scss
 // 主色调

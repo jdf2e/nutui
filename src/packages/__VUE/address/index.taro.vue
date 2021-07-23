@@ -44,7 +44,6 @@
           >
             <view>{{ getTabName(item, index) }}</view>
           </view-block>
-
           <view-block
             class="region-tab-line"
             ref="regionLine"
@@ -52,28 +51,60 @@
           ></view-block>
         </view-block>
 
-        <view-block class="region-con">
-          <ul class="region-group">
+        <view-block
+          class="region-con"
+          v-if="regionList[tabName[tabIndex]].length"
+        >
+          <ul class="region-group" ref="listview">
             <li
-              v-for="(item, index) in regionList[tabName[tabIndex]]"
-              :key="index"
               class="region-item"
-              :class="[
-                selectedRegion[tabName[tabIndex]].id == item.id ? 'active' : ''
-              ]"
-              @click="nextAreaList(item)"
+              v-for="item in regionList[tabName[tabIndex]]"
+              :key="item.title"
+              :ref="setListGroup"
             >
-              <nut-icon
-                class="region-item-icon"
-                type="self"
-                :name="selectedIcon"
-                color="#FA2C19"
-                size="13px"
-                v-if="selectedRegion[tabName[tabIndex]].id == item.id"
-              ></nut-icon
-              >{{ item.name }}
+              <div class="region-item-code">{{ item.title }}</div>
+              <div
+                class="region-item-name"
+                v-for="subitem in item.list"
+                :key="subitem.id"
+                :class="[
+                  selectedRegion[tabName[tabIndex]].id == subitem.id
+                    ? 'active'
+                    : ''
+                ]"
+                @click="nextAreaList(subitem)"
+              >
+                <nut-icon
+                  class="region-item-icon"
+                  type="self"
+                  :name="selectedIcon"
+                  color="#FA2C19"
+                  size="13px"
+                  v-if="selectedRegion[tabName[tabIndex]].id == subitem.id"
+                ></nut-icon>
+                {{ subitem.name }}
+              </div>
             </li>
           </ul>
+          <div class="region-con-current-code" v-show="scrollStart">{{
+            regionList[tabName[tabIndex]][currentIndex].title
+          }}</div>
+          <div
+            class="region-con-codes-wrapper"
+            @touchstart="touchStart"
+            @touchmove.stop.prevent="touchMove"
+            @touchend="touchEnd"
+          >
+            <div class="region-con-codes">
+              <div
+                class="region-con-codes-item"
+                :data-index="index"
+                v-for="(item, index) in regionList[tabName[tabIndex]]"
+                :key="item.title"
+                >{{ item.title }}</div
+              >
+            </div>
+          </div>
         </view-block>
       </view-block>
 
@@ -96,13 +127,23 @@
                 size="13px"
               ></nut-icon>
 
-              <view>{{
-                item.provinceName +
-                item.cityName +
-                item.countyName +
-                item.townName +
-                item.addressDetail
-              }}</view>
+              <div class="exist-item-info">
+                <div class="exist-item-info-top" v-if="item.name && item.phone">
+                  <div class="exist-item-info-name">{{ item.name }}</div>
+                  <div class="exist-item-info-phone">{{ item.phone }}</div>
+                </div>
+                <div class="exist-item-info-bottom">
+                  <view>
+                    {{
+                      item.provinceName +
+                      item.cityName +
+                      item.countyName +
+                      item.townName +
+                      item.addressDetail
+                    }}
+                  </view>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
@@ -119,11 +160,21 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, nextTick, computed } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-import Icon from '@/packages/__VUE/icon/index.taro.vue';
-import Popup from '@/packages/__VUE/popup/index.taro.vue';
+import {
+  reactive,
+  ref,
+  toRefs,
+  watch,
+  nextTick,
+  computed,
+  Ref,
+  onMounted
+} from 'vue';
+import { createComponent } from '../../utils/create';
+import Icon from '../icon/index.taro.vue';
+import Popup from '../popup/index.taro.vue';
 import Taro from '@tarojs/taro';
+import { transformData } from './transformData';
 
 const { create, componentName } = createComponent('address');
 
@@ -252,10 +303,10 @@ export default create({
     const tabName = ref(['province', 'city', 'country', 'town']);
 
     const regionList = reactive({
-      province: props.province,
-      city: props.city,
-      country: props.country,
-      town: props.town
+      province: transformData(props.province),
+      city: transformData(props.city),
+      country: transformData(props.country),
+      town: transformData(props.town)
     });
 
     const selectedRegion = reactive({
@@ -270,6 +321,20 @@ export default create({
     const closeWay = ref('self');
 
     const lineDistance = ref(20);
+
+    const listview = ref(null);
+
+    const scrollState = reactive({
+      anchorIndex: 0,
+      listHeight: [] as number[],
+      listGroup: [] as HTMLLIElement[],
+      touchState: {
+        y1: 0,
+        y2: 0
+      },
+      scrollStart: false,
+      currentIndex: 0
+    });
 
     //获取已选地区列表名称
     const getTabName = (item: RegionData, index: number) => {
@@ -293,13 +358,25 @@ export default create({
     const clickOverlay = () => {
       closeWay.value = 'mask';
     };
+    //重置滚动参数
+    const resetScrollState = () => {
+      scrollState.anchorIndex = 0;
+      scrollState.listHeight = [];
+      scrollState.listGroup = [];
+      scrollState.currentIndex = 0;
+      scrollState.scrollStart = false;
+      scrollState.touchState = {
+        y1: 0,
+        y2: 0
+      };
+    };
     // 移动下面的红线
     const lineAnimation = () => {
       setTimeout(() => {
         Taro.createSelectorQuery()
           .selectAll(`.${tabName.value[tabIndex.value]}`)
           .boundingClientRect((rects) => {
-            (rects as any).forEach((rect) => {
+            (rects as any).forEach((rect: any) => {
               if (rect.width > 0) lineDistance.value = rect.left;
             });
           })
@@ -323,9 +400,7 @@ export default create({
 
       if (tabIndex.value < 3) {
         tabIndex.value = tabIndex.value + 1;
-
         lineAnimation();
-
         // 切换下一个
         calBack.next = tabName.value[tabIndex.value];
         calBack.value = item as string;
@@ -333,6 +408,9 @@ export default create({
       } else {
         handClose();
       }
+
+      resetScrollState();
+      (listview.value as any).scrollTo(0, 0);
     };
     //切换地区Tab
     const changeRegionTab = (item: RegionData, key: number, index: number) => {
@@ -427,18 +505,75 @@ export default create({
       emit('switch-module', { type: privateType.value });
     };
 
+    const getData = (el: any, name: string, val?: string) => {
+      const prefix = 'data-';
+      if (val) {
+        return el.setAttribute(prefix + name, val);
+      }
+      return +el.getAttribute(prefix + name);
+    };
+
+    const setListGroup = (el: HTMLLIElement) => {
+      nextTick(() => {
+        if (!scrollState.listGroup.includes(el) && el != null) {
+          scrollState.listGroup.push(el);
+        }
+      });
+    };
+
+    const calculateHeight = () => {
+      let height = 0;
+      scrollState.listHeight.push(height);
+      for (let i = 0; i < scrollState.listGroup.length; i++) {
+        let item = scrollState.listGroup[i];
+        height += item.clientHeight;
+        scrollState.listHeight.push(height);
+      }
+    };
+
+    const scrollTo = (index: number) => {
+      if (!index && index !== 0) {
+        return;
+      }
+      if (!scrollState.listHeight.length) {
+        calculateHeight();
+      }
+      if (index < 0) index = 0;
+      if (index > scrollState.listHeight.length - 2)
+        index = scrollState.listHeight.length - 2;
+      scrollState.currentIndex = index;
+      (listview.value as any).scrollTo(0, scrollState.listHeight[index]);
+    };
+
+    const touchStart = (e: TouchEvent) => {
+      scrollState.scrollStart = true;
+      let index = getData(e.target, 'index');
+      let firstTouch = e.touches[0];
+      scrollState.touchState.y1 = firstTouch.pageY;
+      scrollState.anchorIndex = index;
+      scrollState.currentIndex = index;
+      scrollTo(index);
+    };
+
+    const touchMove = (e: TouchEvent) => {
+      let firstTouch = e.touches[0];
+      scrollState.touchState.y2 = firstTouch.pageY;
+      let delta =
+        ((scrollState.touchState.y2 - scrollState.touchState.y1) / 23) | 0;
+      scrollState.currentIndex = scrollState.anchorIndex + delta;
+      scrollTo(scrollState.currentIndex);
+    };
+
+    const touchEnd = (e: TouchEvent) => {
+      resetScrollState();
+    };
+
     watch(
       () => props.visible,
       (value) => {
         showPopup.value = value;
       }
     );
-    // watch(
-    //   () => props.type,
-    //   (value) => {
-    //     privateType.value = value;
-    //   }
-    // );
 
     watch(
       () => showPopup.value,
@@ -452,32 +587,31 @@ export default create({
     watch(
       () => props.province,
       (value) => {
-        regionList.province = value;
+        regionList.province = transformData(value);
       }
     );
     watch(
       () => props.city,
       (value) => {
-        regionList.city = value;
+        regionList.city = transformData(value);
       }
     );
     watch(
       () => props.country,
       (value) => {
-        regionList.country = value;
+        regionList.country = transformData(value);
       }
     );
     watch(
       () => props.town,
       (value) => {
-        regionList.town = value;
+        regionList.town = transformData(value);
       }
     );
 
     watch(
       () => props.existAddress,
       (value) => {
-        //  existAddress.value = value;
         value.forEach((item, index) => {
           if ((item as AddressList).selectedAddress) {
             selectedExistAddress = item as {};
@@ -506,6 +640,12 @@ export default create({
       selectedExist,
       clickOverlay,
       handClose,
+      touchStart,
+      touchMove,
+      touchEnd,
+      setListGroup,
+      listview,
+      ...toRefs(scrollState),
       ...toRefs(props),
       ...toRefs(tabItemRef)
     };

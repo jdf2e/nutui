@@ -1,4 +1,4 @@
-# Input 输入框组件
+# Input 输入框
 
 ### 介绍
 
@@ -8,7 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
+// vue
 import { Input } from '@nutui/nutui';
+// taro
+import { Input } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Input);
@@ -61,9 +64,7 @@ app.use(Input);
 ### 代码
 ```html
 import { reactive } from 'vue';
-import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('input');
-export default createDemo({
+export default {
   setup() {
     const state = reactive({
       val0: '',
@@ -100,7 +101,7 @@ export default createDemo({
       focus
     };
   }
-});
+}
 ```
 ### Prop
 

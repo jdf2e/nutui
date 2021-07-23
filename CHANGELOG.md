@@ -1,3 +1,27 @@
+## v3.0.3
+`2021-07-07`
+
+
+* :zap: chore: build lib fileName raname nutui @richard1015
+* :zap: chore: dep del taroui @richard1015
+ 
+
+
+## v3.0.2
+`2021-06-30`
+
+* :zap: feat: 官网 taro 特性 @ninidesign
+* :zap: feat: taro 所有组件适配 @jdf2e
+* :zap: feat(picker): “确定”和“取消”按钮文字自定义 #439  @richard1015
+* :zap: chore: taro build  @szg2008 
+* :bug: fix(switch): active-text props bug @richard1015
+* :bug: fix(popup): popup props feat lock-scroll @richard1015
+* :bug: fix(notify): function bug  @richard1015
+* :bug: fix(infiniteloading): keepalive remove event bug @yangxiaolu3
+* :zap: test: 单元测试 Checkbox、Radio、Switch、cell、backtop、button、input、rate、 shortpassword @guoxiao158 @Mindyzone
+* :zap: docs: lock-scroll default value modify @richard1015
+* :zap: docs: password绑定value值修改,文档修改 @richard1015
+
 
 ## v3.0.0
 
@@ -100,7 +124,7 @@
 ### 新特性
 
 - :zap: 全新的架构，基于 vite 构建
-- :lipstick: 全新的视觉样式，参照京东 APP v9.0视觉规范
+- :lipstick: 全新的视觉样式，参照京东 APP v10.0视觉规范
 - :sparkles: 全新的按需加载方式
 - :art: 支持定制主题
 - :sparkles: 支持 TypeScript

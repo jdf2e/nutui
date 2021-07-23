@@ -50,11 +50,11 @@ import {
   ref,
   watch
 } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { useTouch } from './use-touch';
-import { useExpose } from '@/packages/utils/useExpose/index';
+import { useExpose } from '../../utils/useExpose/index';
 const { create, componentName } = createComponent('swiper');
-import swiperItem from '@/packages/__VUE/swiperitem/index.vue';
+import swiperItem from '../swiperitem/index.vue';
 export default create({
   children: [swiperItem],
   props: {
@@ -168,8 +168,9 @@ export default create({
         transform: `translate${isVertical.value ? 'Y' : 'X'}(${
           state.offset
         }px)`,
-        [isVertical.value ? 'height' : 'width']: `${size.value *
-          childCount.value}px`,
+        [isVertical.value ? 'height' : 'width']: `${
+          size.value * childCount.value
+        }px`,
         [isVertical.value ? 'width' : 'height']: `${
           isVertical.value ? state.width : state.height
         }px`
@@ -427,7 +428,7 @@ export default create({
 
     watch(
       () => props.initPage,
-      val => {
+      (val) => {
         nextTick(() => {
           init(Number(val));
         });
@@ -445,7 +446,7 @@ export default create({
 
     watch(
       () => props.autoPlay,
-      val => {
+      (val) => {
         val > 0 ? autoplay() : stopAutoPlay();
       }
     );

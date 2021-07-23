@@ -3,7 +3,7 @@
     :mode="mode"
     :range="range"
     @change="onChange"
-    @columnChange="onColumnChange"
+    @columnchange="onColumnChange"
     :value="value"
   >
     <slot></slot>
@@ -12,9 +12,9 @@
 
 <script lang="ts">
 import { onUpdated, ref, watch } from 'vue';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('picker');
 import { commonProps } from './commonProps';
-import { createComponent } from './../../utils/create';
 export default create({
   props: {
     mode: {

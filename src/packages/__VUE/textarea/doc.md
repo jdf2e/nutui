@@ -1,4 +1,4 @@
-# TextArea 文本域组件
+# TextArea 文本域
 
 ### 介绍
 
@@ -8,7 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
+//vue
 import { TextArea } from '@nutui/nutui';
+//taro
+import { TextArea } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(TextArea);

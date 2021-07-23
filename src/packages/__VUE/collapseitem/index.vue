@@ -58,7 +58,7 @@ import {
   getCurrentInstance,
   ComponentInternalInstance
 } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('collapse-item');
 
 export default create({
@@ -132,9 +132,8 @@ export default create({
 
     // 清除 willChange 减少性能浪费
     const onTransitionEnd = () => {
-      const wrapperRefEle: any = document.getElementsByClassName(
-        'collapse-wrapper'
-      )[0];
+      const wrapperRefEle: any =
+        document.getElementsByClassName('collapse-wrapper')[0];
       wrapperRefEle.style.willChange = 'auto';
 
       // const query = wx.createSelectorQuery();
@@ -227,7 +226,7 @@ export default create({
           defaultOpen();
         }
       } else if (Object.values(active) instanceof Array) {
-        const f = Object.values(active).filter(item => item == name);
+        const f = Object.values(active).filter((item) => item == name);
         if (f.length > 0) {
           defaultOpen();
         }

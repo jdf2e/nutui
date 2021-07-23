@@ -3,7 +3,7 @@
   <div class="doc-content" :class="themeName()">
     <div class="doc-content-index">
       <div class="content-left">
-        <div class="content-title"> NutUI 3.0 </div>
+        <div class="content-title"> NutUI </div>
         <div class="content-smile"> </div>
         <div class="content-subTitle">京东风格的轻量级移动端 Vue 组件库</div>
         <div class="content-button">
@@ -38,7 +38,7 @@
         <li class="features-item">
           <img src="../../assets/images/img-home-features1.png" />
           <p class="features-title">京东风格</p>
-          <p class="features-desc">遵循京东 App 9.0 设计规范</p>
+          <p class="features-desc">遵循京东 App 10.0 设计规范</p>
         </li>
         <li class="features-item">
           <img src="../../assets/images/img-home-features5.png" />
@@ -48,10 +48,7 @@
         <li class="features-item">
           <img src="../../assets/images/img-home-features2.png" />
           <p class="features-title">组件丰富</p>
-          <p class="features-desc a-l"
-            >提供 70+ 组件，丰富的 demo
-            快速体验交互细节，覆盖各类场景满足各种功能的需求</p
-          >
+          <p class="features-desc a-l">提供 70+ 组件，覆盖绝大多数业务场景</p>
         </li>
         <li class="features-item">
           <img src="../../assets/images/img-home-features3.png" />
@@ -74,10 +71,10 @@
         <div class="taro-left"> </div>
         <div class="taro-right">
           <div class="right-img"></div>
-          <p class="taro-desc"
-            >联手 Taro 团队打造基于 NutUI 的 Taro 语言组件库<br />支持多端小程序和
-            H5 开发</p
-          >
+          <p class="taro-desc">
+            基于 Taro 对 NutUI 每一个组件进行深度适配<br />
+            支持开发多端小程序
+          </p>
         </div>
       </div>
     </div>
@@ -103,8 +100,13 @@
             @click="onRight"
           ></div>
         </div>
-        <ul class="doc-content-cases-content__list">
-          <li v-for="img in casesImages">
+        <ul
+          :class="[
+            'doc-content-cases-content__list',
+            themeNameValue() == 'black' ? 'noShadow' : ''
+          ]"
+        >
+          <li v-for="(img, index) in casesImages" :key="index">
             <img :src="img" />
           </li>
         </ul>
@@ -112,7 +114,7 @@
     </div>
     <div class="doc-content-more" v-if="articleList.length">
       <div class="doc-content-hd">
-        <h4 class="doc-content-title">更多内容</h4>
+        <h4 class="doc-content-title"></h4>
         <a class="sub-more" href="#/resource">More</a>
       </div>
       <ul class="more-list">
@@ -152,7 +154,8 @@ export default defineComponent({
       // theme: 'white',
       articleList,
       casesImages,
-      currentCaseItem
+      currentCaseItem,
+      localTheme: localStorage.getItem('nutui-theme-color')
     });
     onMounted(() => {
       // 文章列表接口
@@ -200,6 +203,11 @@ export default defineComponent({
         return `doc-content-${RefData.getInstance().themeColor.value}`;
       };
     });
+    const themeNameValue = computed(() => {
+      return function () {
+        return RefData.getInstance().themeColor.value;
+      };
+    });
     const toLink = (id: number) => {
       window.open('//jelly.jd.com/article/' + id);
     };
@@ -210,6 +218,7 @@ export default defineComponent({
       toIntro,
       ...toRefs(data),
       themeName,
+      themeNameValue,
       toLink,
       onLeft,
       onRight
@@ -325,6 +334,7 @@ export default defineComponent({
           margin-bottom: 58px;
         }
         .taro-desc {
+          padding-left: 25px;
           color: #f2f2f2;
           font-weight: lighter;
           font-size: 18px;
@@ -418,15 +428,26 @@ export default defineComponent({
           height: 390px;
           flex-shrink: 0;
           margin-right: 20px;
-          box-shadow: 0px 1px 7px 0px #edeef1;
           transition: all 0.5s;
           &:first-child {
             margin-right: 139px;
             transform: scale(1.04);
+            border-radius: 10px;
+            overflow: hidden;
+          }
+          &:nth-child(-n + 4) {
+            box-shadow: 0 4px 7px 0 rgb(144 156 164 / 80%);
+            border-radius: 3px;
+            overflow: hidden;
           }
           > img {
             width: 100%;
             height: 100%;
+          }
+        }
+        &.noShadow {
+          > li {
+            box-shadow: none !important;
           }
         }
       }
@@ -593,11 +614,6 @@ export default defineComponent({
   }
   .doc-content-cases-content__main {
     background: #474753;
-  }
-  .doc-content-cases-content__list {
-    li {
-      box-shadow: none;
-    }
   }
   .doc-content-more {
     .more-item img {

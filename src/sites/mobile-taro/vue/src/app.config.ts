@@ -1,34 +1,68 @@
 export default {
-  pages: [
-    'pages/infiniteloading/index',
-    'pages/address/index',
-    'pages/cell/index',
-    'pages/rate/index',
-    'pages/collapse/index',
-    'pages/shortpassword/index',
-    'pages/textarea/index',
-    'pages/calendar/index',
-    'pages/input/index',
-    'pages/swiper/index',
-    'pages/actionsheet/index',
-    'pages/popup/index',
-    'pages/icon/index',
-    'pages/inputnumber/index',
-    'pages/tabbar/index',
-    'pages/navbar/index',
-    'pages/overlay/index',
-    'pages/steps/index',
-    'pages/radio/index',
-    'pages/checkbox/index',
-    'pages/button/index',
-    'pages/switch/index',
-    'pages/layout/index',
-    'pages/index/index'
+  pages: ['pages/index/index'],
+  subpackages: [
+    {
+      root: 'layout',
+      pages: ['pages/layout/index']
+    },
+    {
+      root: 'feedback',
+      pages: [
+        'pages/collapse/index',
+        'pages/backtop/index',
+        'pages/actionsheet/index',
+        'pages/dialog/index',
+        'pages/toast/index',
+        'pages/notify/index',
+        'pages/swiper/index',
+        'pages/drag/index',
+        'pages/steps/index',
+        'pages/infiniteloading/index'
+      ]
+    },
+    {
+      root: 'base',
+      pages: [
+        'pages/cell/index',
+        'pages/icon/index',
+        'pages/price/index',
+        'pages/button/index',
+        'pages/avatar/index',
+        'pages/popup/index',
+        'pages/overlay/index'
+      ]
+    },
+    {
+      root: 'nav',
+      pages: ['pages/navbar/index', 'pages/tabbar/index']
+    },
+    {
+      root: 'dentry',
+      pages: [
+        'pages/inputnumber/index',
+        'pages/checkbox/index',
+        'pages/input/index',
+        'pages/switch/index',
+        'pages/uploader/index',
+        'pages/rate/index',
+        'pages/radio/index',
+        'pages/calendar/index',
+        'pages/shortpassword/index',
+        'pages/picker/index',
+        'pages/datepicker/index',
+        'pages/range/index',
+        'pages/textarea/index'
+      ]
+    },
+    {
+      root: 'business',
+      pages: ['pages/address/index']
+    }
   ],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: 'WeChat',
+    navigationBarTitleText: 'NutUI',
     navigationBarTextStyle: 'black'
   }
 };

@@ -1,4 +1,4 @@
-# Swiper 轮播图 组件
+# Swiper 轮播
 
 ### 介绍
 
@@ -26,16 +26,16 @@ app.use(Swiper);
 ```html
 <nut-swiper :init-page="state.page" :pagination-visible="true" pagination-color="#426543" auto-play="3000">
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/152158/32/19170/280589/6035429fE08208901/024578cf04ce3b47.jpg!cr_1125x445_0_171" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
   </nut-swiper-item>
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/159602/22/7999/126515/6035f371E6f95bfee/559cb1ee48c962c9.jpg" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
   </nut-swiper-item>
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/166846/13/7534/136440/60338b5cEd491d8b3/9e5527429136ab86.jpg" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
   </nut-swiper-item>
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/145433/27/14059/141680/5facf066Ec402354c/530d5a316aed55fc.jpg!cr_1125x445_0_171" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
   </nut-swiper-item>
 </nut-swiper>
 ```
@@ -47,16 +47,16 @@ app.use(Swiper);
 ```html
 <nut-swiper :init-page="state.page2" :loop="false" width="300">
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/152158/32/19170/280589/6035429fE08208901/024578cf04ce3b47.jpg!cr_1125x445_0_171" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
   </nut-swiper-item>
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/159602/22/7999/126515/6035f371E6f95bfee/559cb1ee48c962c9.jpg" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
   </nut-swiper-item>
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/166846/13/7534/136440/60338b5cEd491d8b3/9e5527429136ab86.jpg" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
   </nut-swiper-item>
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/145433/27/14059/141680/5facf066Ec402354c/530d5a316aed55fc.jpg!cr_1125x445_0_171" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
   </nut-swiper-item>
 </nut-swiper>
 ```
@@ -67,17 +67,17 @@ app.use(Swiper);
 
 ```html
 <nut-swiper :init-page="state.page3" :loop="true" @change="change">
-  <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/152158/32/19170/280589/6035429fE08208901/024578cf04ce3b47.jpg!cr_1125x445_0_171" alt="" />
+    <nut-swiper-item>
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
   </nut-swiper-item>
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/159602/22/7999/126515/6035f371E6f95bfee/559cb1ee48c962c9.jpg" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
   </nut-swiper-item>
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/166846/13/7534/136440/60338b5cEd491d8b3/9e5527429136ab86.jpg" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
   </nut-swiper-item>
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/145433/27/14059/141680/5facf066Ec402354c/530d5a316aed55fc.jpg!cr_1125x445_0_171" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
   </nut-swiper-item>
   <template v-slot:page>
     <div class="page"></div>
@@ -93,16 +93,16 @@ app.use(Swiper);
 ```html
 <nut-swiper :init-page="state.page4" :loop="true" auto-play="3000" direction="vertical" height="150" :pagination-visible="true" style="height: 150px">
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/152158/32/19170/280589/6035429fE08208901/024578cf04ce3b47.jpg!cr_1125x445_0_171" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
   </nut-swiper-item>
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/159602/22/7999/126515/6035f371E6f95bfee/559cb1ee48c962c9.jpg" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
   </nut-swiper-item>
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/166846/13/7534/136440/60338b5cEd491d8b3/9e5527429136ab86.jpg" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
   </nut-swiper-item>
   <nut-swiper-item>
-    <img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/145433/27/14059/141680/5facf066Ec402354c/530d5a316aed55fc.jpg!cr_1125x445_0_171" alt="" />
+    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
   </nut-swiper-item>
 </nut-swiper>
 ```
