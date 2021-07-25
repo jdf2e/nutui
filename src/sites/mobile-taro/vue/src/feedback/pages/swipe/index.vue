@@ -79,9 +79,7 @@
 
 <script lang="ts">
 import { ref } from 'vue';
-import { createComponent } from '../../utils/create';
-const { createDemo } = createComponent('swipe');
-export default createDemo({
+export default {
   props: {},
   setup() {
     const refSwipe = ref<HTMLElement>();
@@ -103,7 +101,7 @@ export default createDemo({
     };
     return { checked, number, changSwitch, refSwipe, open, close };
   }
-});
+};
 </script>
 
 <style lang="scss" scoped></style>
