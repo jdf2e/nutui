@@ -210,6 +210,17 @@
       "packages": [
         {
           "version": "3.0.0",
+          "name": "Swipe",
+          "taro": true,
+          "type": "component",
+          "cName": "滑动手势操作",
+          "desc": "列表项左滑删除场景使用",
+          "sort": 4,
+          "show": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
           "name": "ActionSheet",
           "taro": true,
           "sort": "1",

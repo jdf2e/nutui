@@ -62,7 +62,7 @@ app.use(Swipe);
 ### 异步控制
 
 ``` html
-<nut-swipe ref="refSwipe">
+<nut-swipe ref="refSwipe" @open="open" @close="close">
     <nut-cell title="异步打开关闭">
     <template v-slot:link>
         <nut-switch v-model="checked" @change="changSwitch" active-text="开" inactive-text="关" />
@@ -78,13 +78,20 @@ app.use(Swipe);
         const refSwipe = ref<HTMLElement>();
         const checked = ref(false);
         const changSwitch = (value: boolean) => {
-        if (value) {
-            refSwipe.value?.open('left');
-        } else {
-            refSwipe.value?.close();
-        }
+            if (value) {
+                refSwipe.value?.open('left');
+            } else {
+                refSwipe.value?.close();
+            }
         };
-        return { checked, changSwitch, refSwipe };
+         const open = (obj: any) => {
+            console.log(obj);
+            checked.value = true;
+        };
+        const close = () => {
+            checked.value = false;
+        };
+        return { checked, changSwitch, refSwipe, open, close };
     }
 ```
 
