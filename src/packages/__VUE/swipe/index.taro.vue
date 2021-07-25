@@ -56,7 +56,7 @@ export default create({
 
     const getRefWidth = async (ref: Ref<HTMLElement | undefined>) => {
       if (Taro.getEnv() === 'WEB') {
-        return ref.value.$el.clientWidth || 0;
+        return ref.value?.clientWidth || ref.value?.$el?.clientWidth || 0;
       } else {
         let rect = await useTaroRect(ref, Taro);
         return rect.width || 0;
