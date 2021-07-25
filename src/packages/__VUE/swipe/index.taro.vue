@@ -27,7 +27,7 @@
 <script lang="ts">
 import Taro from '@tarojs/taro';
 import { useTouch } from '../../utils/useTouch';
-import { computed, nextTick, onMounted, reactive, Ref, ref } from 'vue';
+import { computed, onMounted, reactive, Ref, ref } from 'vue';
 import { createComponent } from '../../utils/create';
 import { useTaroRect } from '../../utils/useTaroRect';
 const { componentName, create } = createComponent('swipe');
@@ -69,10 +69,8 @@ export default create({
       rightRefWidth.value = await getRefWidth(rightRef);
     };
 
-    onMounted(async () => {
-      setTimeout(async () => {
-        await initWidth();
-      }, 300);
+    onMounted(() => {
+      Taro.nextTick(initWidth);
     });
 
     let opened: boolean = false;
@@ -147,7 +145,6 @@ export default create({
       async onTouchMove(event: Event) {
         if (props.disabled) return;
         if (touch.isVertical()) return;
-        await initWidth();
         state.moving = true;
         touch.move(event);
         setoffset(touch.deltaX.value);
