@@ -94,22 +94,33 @@
             <p>{{ currentCaseItem.product_info }}</p>
             <img :src="currentCaseItem.logo" />
           </div>
-          <div class="doc-content-cases-content__main-iphone"></div>
+          <div
+            class="doc-content-cases-content__main-iphone"
+            :style="{
+              backgroundImage: 'url(' + currentCaseItem.cover_image + ')'
+            }"
+          >
+            <img src="../../assets/images/iphone-cases.png" alt="" srcset="" />
+          </div>
           <div
             class="doc-content-cases-content__main-righticon"
             @click="onRight"
           ></div>
         </div>
-        <ul
-          :class="[
-            'doc-content-cases-content__list',
-            themeNameValue() == 'black' ? 'noShadow' : ''
-          ]"
-        >
-          <li v-for="(img, index) in casesImages" :key="index">
-            <img :src="img" />
-          </li>
-        </ul>
+        <div class="doc-content-cases-content__list">
+          <div
+            class="swiper-wrapper"
+            :class="[themeNameValue() == 'black' ? 'noShadow' : '']"
+          >
+            <div
+              class="swiper-slide"
+              v-for="(item, index) in casesImages"
+              :key="index"
+            >
+              <img :src="item.cover_image" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="doc-content-more" v-if="articleList.length">
@@ -133,12 +144,21 @@
   <doc-footer></doc-footer>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted, reactive, toRefs, computed } from 'vue';
+import {
+  defineComponent,
+  onMounted,
+  reactive,
+  toRefs,
+  computed,
+  ref
+} from 'vue';
 import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
 import router from '../router';
 import { RefData } from '@/sites/assets/util/ref';
 import { ApiService } from '@/sites/service/ApiService';
+import 'swiper/css/swiper.min.css';
+import Swiper from 'swiper/js/swiper.min.js';
 export default defineComponent({
   name: 'main',
   components: {
@@ -146,17 +166,15 @@ export default defineComponent({
     [Footer.name]: Footer
   },
   setup() {
-    const articleList: any[] = [];
-    let casesList: any[] = [];
-    const casesImages: string[] = [];
-    const currentCaseItem: any = {};
     const data = reactive({
       // theme: 'white',
-      articleList,
-      casesImages,
-      currentCaseItem,
+      articleList: new Array(),
+      casesImages: new Array(),
+      currentCaseItem: {},
+      currentCaseIndex: 0,
       localTheme: localStorage.getItem('nutui-theme-color')
     });
+    let caseSwiper: any = null;
     onMounted(() => {
       // 文章列表接口
       const apiService = new ApiService();
@@ -173,29 +191,47 @@ export default defineComponent({
       });
       apiService.getCases().then((res) => {
         if (res?.state == 0) {
-          data.casesImages = (res.value.data.arrays as any[])
-            .map((item) => {
-              return item.cover_image.split(',');
-            })
-            .toString()
-            .split(',');
-          casesList = res.value.data.arrays as any[];
-          data.currentCaseItem = casesList[0];
+          data.casesImages = (res.value.data.arrays as any[]).map((item) => {
+            if (item.cover_image?.length) {
+              item.cover_image = item.cover_image.split(',')[0];
+            }
+            return item;
+          });
+          if (data.casesImages?.length) {
+            data.currentCaseItem = data.casesImages[data.currentCaseIndex];
+          }
+
+          setTimeout(() => {
+            caseSwiper = new Swiper('.doc-content-cases-content__list', {
+              direction: 'horizontal',
+              slidesPerView: 'auto',
+              initialSlide: 1,
+              loop: true,
+              on: {
+                slideChange: function () {
+                  let realIndex = (this as any).realIndex;
+                  data.currentCaseIndex =
+                    realIndex === 0
+                      ? data.casesImages.length - 1
+                      : realIndex - 1;
+                  setTimeout(() => {
+                    data.currentCaseItem =
+                      data.casesImages[data.currentCaseIndex];
+                  }, 230);
+                }
+              }
+            });
+          }, 500);
         }
       });
     });
-    const findCasesItem = (url: string) => {
-      data.currentCaseItem = casesList.find((i) => i.cover_image.includes(url));
-    };
+
     const onLeft = () => {
-      let url = data.casesImages.shift() as string;
-      findCasesItem(url);
-      data.casesImages.push(url);
+      caseSwiper.slidePrev();
     };
+
     const onRight = () => {
-      let url = data.casesImages.pop() as string;
-      findCasesItem(url);
-      data.casesImages.unshift(url);
+      caseSwiper.slideNext();
     };
 
     const themeName = computed(() => {
@@ -363,10 +399,17 @@ export default defineComponent({
         &-iphone {
           width: 210px;
           height: 420px;
-          background-image: url('../../assets/images/iphone-cases.png');
           background-repeat: no-repeat;
-          background-size: 100% 100%;
-          z-index: 1;
+          background-position: center center;
+          background-size: 188px 397px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          > img {
+            width: 100%;
+            height: 100%;
+          }
         }
         &-lefticon {
           margin-right: 20px;
@@ -421,33 +464,28 @@ export default defineComponent({
       }
       &__list {
         flex: 1;
-        display: flex;
-        margin-left: -275px;
-        > li {
-          width: 180px;
-          height: 390px;
-          flex-shrink: 0;
-          margin-right: 20px;
-          transition: all 0.5s;
-          &:first-child {
-            margin-right: 139px;
-            transform: scale(1.04);
-            border-radius: 10px;
+        overflow: hidden;
+        margin-left: 30px;
+        .swiper-wrapper {
+          display: flex;
+          transform: translate3d(0, 0, 0);
+          transition: all 0.6s ease;
+          .swiper-slide {
+            width: 180px;
+            height: 390px;
+            flex-shrink: 0;
+            margin-right: 20px;
+            border-radius: 4px;
             overflow: hidden;
+            > img {
+              width: 100%;
+              height: 100%;
+            }
           }
-          &:nth-child(-n + 4) {
-            box-shadow: 0 4px 7px 0 rgb(144 156 164 / 80%);
-            border-radius: 3px;
-            overflow: hidden;
-          }
-          > img {
-            width: 100%;
-            height: 100%;
-          }
-        }
-        &.noShadow {
-          > li {
-            box-shadow: none !important;
+          &.noShadow {
+            .swiper-slide {
+              box-shadow: none !important;
+            }
           }
         }
       }
