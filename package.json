@@ -1,7 +1,7 @@
 {
   "name": "@nutui/nutui",
   "version": "3.1.1",
-  "description": "京东风格的轻量级移动端 Vue 组件库",
+  "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
   "style": "dist/style.css",
@@ -94,6 +94,7 @@
     "pinyin": "^2.10.2",
     "prettier": "^2.0.0",
     "standard-version": "^9.3.0",
+    "swiper": "5.3.6",
     "transliteration": "^2.2.0",
     "ts-jest": "^26.5.5",
     "typescript": "^4.1.5",
