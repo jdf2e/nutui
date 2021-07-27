@@ -8,6 +8,7 @@ export default {
     {
       root: 'feedback',
       pages: [
+        'pages/swipe/index',
         'pages/collapse/index',
         'pages/backtop/index',
         'pages/actionsheet/index',

@@ -32,7 +32,7 @@ export default create({
   props: {
     id: String,
     color: { type: String, default: '' },
-    msg: { type: Number, default: '' },
+    msg: { type: String, default: '' },
     duration: { type: Number, default: 3000 },
     className: {
       type: String,
