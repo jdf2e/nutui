@@ -8,10 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Cell } from '@nutui/nutui';
+import { Cell,Icon } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Cell);
+app.use(Cell).use(Icon);
 
 ```
 
@@ -23,6 +23,7 @@ app.use(Cell);
 <nut-cell title="我是标题" desc="描述文字"></nut-cell>
 <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
 <nut-cell title="点击测试" @click="testClick"></nut-cell>
+<nut-cell title="圆角设置 0" round-radius="0"></nut-cell>
 ```
 
 ``` javascript
@@ -87,17 +88,18 @@ export default {
 
 ### Prop
 
-| 字段            | 说明                                                                                           | 类型    | 默认值 |
-|-----------------|------------------------------------------------------------------------------------------------|---------|--------|
-| title           | 标题名称                                                                                       | String  | -      |
-| sub-title       | 左侧副标题                                                                                     | String  | -      |
-| desc            | 右侧描述                                                                                       | String  | -      |
-| desc-text-align | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)   | String  | right  |
-| is-link         | 是否展示右侧箭头并开启点击反馈                                                                 | Boolean | false  |
-| icon            | 左侧 [图标名称](#/icon) 或图片链接                                                             | String  | -      |
-| url             | 点击后跳转的链接地址                                                                           | String  | -      |
-| to              | 点击后跳转的目标路由对象，同 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | String  | -      |
-| replace         | 是否在跳转时替换当前页面历史                                                                   | Boolean | false  |
+| 字段                   | 说明                                                                                           | 类型    | 默认值 |
+|------------------------|------------------------------------------------------------------------------------------------|---------|--------|
+| title                  | 标题名称                                                                                       | String  | -      |
+| sub-title              | 左侧副标题                                                                                     | String  | -      |
+| desc                   | 右侧描述                                                                                       | String  | -      |
+| desc-text-align        | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)   | String  | right  |
+| is-link                | 是否展示右侧箭头并开启点击反馈                                                                 | Boolean | false  |
+| icon                   | 左侧 [图标名称](#/icon) 或图片链接                                                             | String  | -      |
+| round-radius           | 圆角半径                                                                                       | Number  | 6px    |
+| url `小程序不支持`     | 点击后跳转的链接地址                                                                           | String  | -      |
+| to   `小程序不支持`    | 点击后跳转的目标路由对象，同 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | String  | -      |
+| replace `小程序不支持` | 是否在跳转时替换当前页面历史                                                                   | Boolean | false  |
 
 ### Event
 

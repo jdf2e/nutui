@@ -115,7 +115,6 @@
           "version": "3.0.0",
           "name": "Cell",
           "taro": true,
-          "tarodoc": true,
           "sort": 1,
           "cName": "单元格",
           "type": "component",
@@ -133,7 +132,6 @@
           "desc": "展示分组列表",
           "author": "richard1015"
         },
-        
         {
           "version": "3.0.0",
           "name": "Icon",
@@ -156,7 +154,6 @@
           "desc": "价格组件",
           "author": "ailululu"
         },
-       
         {
           "version": "3.0.0",
           "name": "OverLay",
@@ -211,6 +208,17 @@
       "name": "操作反馈",
       "enName": "feedback",
       "packages": [
+        {
+          "version": "3.0.0",
+          "name": "Swipe",
+          "taro": true,
+          "type": "component",
+          "cName": "滑动手势操作",
+          "desc": "列表项左滑删除场景使用",
+          "sort": 4,
+          "show": true,
+          "author": "richard1015"
+        },
         {
           "version": "3.0.0",
           "name": "ActionSheet",
@@ -325,7 +333,6 @@
           "show": false,
           "author": "yangxiaolu3"
         },
-    
         {
           "version": "3.0.0",
           "name": "Video",
@@ -413,7 +420,6 @@
           "desc": "轻提示",
           "author": "undo"
         }
-       
       ]
     },
     {
