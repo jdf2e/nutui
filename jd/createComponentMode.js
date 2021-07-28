@@ -115,7 +115,7 @@ function init() {
 }
 function createIndexJs() {
   const nameLc = newCpt.name.toLowerCase();
-  const destPath = path.join('src/packages/__VUE' + nameLc);
+  const destPath = path.join('src/packages/__VUE/' + nameLc);
   if (!fs.existsSync(destPath)) {
     fs.mkdirSync(destPath);
   }
@@ -158,7 +158,7 @@ function createVue() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
     let content = demoModel(nameLc).vue;
-    const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`);
+    const dirPath = path.join(__dirname, `../src/packages/__VUE/${nameLc}/`);
     const filePath = path.join(dirPath, `index.vue`);
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(filePath);
@@ -174,7 +174,7 @@ function createDemo() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
     let content = demoModel(nameLc).demo;
-    const dirPath = path.join(__dirname, '../src/packages/' + nameLc);
+    const dirPath = path.join(__dirname, '../src/packages/__VUE/' + nameLc);
     const filePath = path.join(dirPath, `demo.vue`);
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(filePath);
@@ -207,7 +207,7 @@ function createScss() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
     let content = `.nut-${nameLc} {}`;
-    const dirPath = path.join(__dirname, '../src/packages/' + nameLc);
+    const dirPath = path.join(__dirname, '../src/packages/__VUE/' + nameLc);
     const filePath = path.join(dirPath, `index.scss`);
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(filePath);
@@ -222,7 +222,7 @@ function createDoc() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
     let content = demoModel(nameLc).doc;
-    const dirPath = path.join(__dirname, '../src/packages/' + nameLc);
+    const dirPath = path.join(__dirname, '../src/packages/__VUE/' + nameLc);
     const filePath = path.join(dirPath, `doc.md`);
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(filePath);
