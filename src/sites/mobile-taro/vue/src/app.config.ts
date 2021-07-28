@@ -18,7 +18,8 @@ export default {
         'pages/swiper/index',
         'pages/drag/index',
         'pages/steps/index',
-        'pages/infiniteloading/index'
+        'pages/infiniteloading/index',
+        'pages/progress/index'
       ]
     },
     {
