@@ -27,7 +27,7 @@
       :style="{ lineHeight: height }"
       v-if="showText && !textInside"
     >
-      <template v-if="status == 'active'">
+      <template v-if="status == 'active' || status == ''">
         <span :style="textStyle">{{ percentage }}%</span>
       </template>
       <template v-else-if="status == 'icon'">
@@ -108,10 +108,25 @@ export default create({
         color: props.textColor || ''
       };
     });
+
+    watch(
+      () => props.percentage,
+      (values) => {
+        console.log(
+          'progressOuter.value.offsetWidth',
+          progressOuter.value.offsetWidth
+        );
+
+        console.log('values', values);
+
+        left.value =
+          progressOuter.value.offsetWidth * Number(values) * 0.01 - 4 + 'px';
+      }
+    );
     onMounted(() => {
       left.value =
         progressOuter.value.offsetWidth * Number(props.percentage) * 0.01 -
-        3 +
+        4 +
         'px';
     });
     return {

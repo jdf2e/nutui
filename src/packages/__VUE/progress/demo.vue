@@ -39,14 +39,16 @@
     <p>线形进度条-自定义尺寸(内置"small","base","large"三种规格)</p>
     <div>
       <nut-cell>
-        <nut-progress percentage="30" size="small"> </nut-progress>
+        <nut-progress percentage="30" :text-inside="true" size="small">
+        </nut-progress>
       </nut-cell>
       <nut-cell>
         <nut-progress percentage="50" :text-inside="true" size="base">
         </nut-progress>
       </nut-cell>
       <nut-cell>
-        <nut-progress percentage="70" size="large"> </nut-progress>
+        <nut-progress percentage="70" :text-inside="true" size="large">
+        </nut-progress>
       </nut-cell>
     </div>
     <p>线形进度条-状态显示</p>

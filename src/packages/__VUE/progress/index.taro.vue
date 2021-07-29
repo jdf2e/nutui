@@ -30,7 +30,7 @@
       <template v-if="status == 'text' || status == 'active'">
         <span :style="textStyle">{{ percentage }}%</span>
       </template>
-      <template v-else-if="status == 'success' || 'wrong'">
+      <template v-else-if="status == 'icon'">
         <nut-icon size="16px" :name="iconName" :color="iconColor"></nut-icon>
       </template>
     </div>
@@ -45,10 +45,11 @@ import {
   reactive,
   nextTick,
   ref,
+  getCurrentInstance,
   watch
 } from 'vue';
 import { createComponent } from '../../utils/create';
-import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
+import Taro, { eventCenter } from '@tarojs/taro';
 const { create } = createComponent('progress');
 export default create({
   props: {
@@ -109,28 +110,32 @@ export default create({
         color: props.textColor || ''
       };
     });
-    const slideLeft = () => {
+    const slideLeft = async (values: String | Number) => {
       if (Taro.getEnv() === 'WEB') {
         left.value =
-          progressOuter.value.offsetWidth * Number(props.percentage) * 0.01 -
-          3 +
-          'px';
+          progressOuter.value.offsetWidth * Number(values) * 0.01 - 4 + 'px';
       } else {
         setTimeout(() => {
-          const query = Taro.createSelectorQuery();
+          const query = (Taro.createSelectorQuery() as any).in(
+            getCurrentInstance
+          );
           query
             .select('.nut-progress-outer')
             .boundingClientRect((rec: any) => {
-              left.value =
-                rec.width * Number(props.percentage) * 0.01 - 3 + 'px';
+              left.value = rec.width * Number(values) * 0.01 - 4 + 'px';
             })
             .exec();
         }, 200);
       }
     };
-    onMounted(() => {
-      slideLeft();
-    });
+    watch(
+      () => props.percentage,
+      (values) => {
+        slideLeft(values);
+      },
+      { immediate: true }
+    );
+    onMounted(() => {});
     return {
       height,
       bgStyle,

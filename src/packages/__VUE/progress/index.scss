@@ -57,8 +57,10 @@
     &.nut-progress-small {
       height: 5px;
       .nut-progress-text {
-        font-size: 12px;
-        line-height: 12px;
+        font-size: 7px;
+        line-height: 10px;
+        padding: 2px 4px;
+        top: -100%;
       }
     }
     &.nut-progress-base {
@@ -69,10 +71,10 @@
       }
     }
     &.nut-progress-large {
-      height: 12px;
+      height: 15px;
       .nut-progress-text {
-        font-size: 20px;
-        line-height: 20px;
+        font-size: 13px;
+        line-height: 18px;
       }
     }
   }
@@ -89,6 +91,7 @@
     background: rgba(250, 44, 25, 1);
     border-radius: 5px;
     position: absolute;
+    transition: all 0.4s;
     top: -26%;
   }
   .nut-icon-success,
