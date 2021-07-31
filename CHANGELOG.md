@@ -1,4 +1,22 @@
 
+## v3.1.2
+
+`2021-07-31`
+
+* :zap: feat: 新增选项卡 Tab 组件 @zhenyulei
+* :zap: feat: 手势滑动组件 Swipe @richard1015
+* :zap: feat: Address 地址组件规范10.0升级 @szg2008
+* :zap: feat(icon): fontClassName prop @richard1015
+* :zap: feat(cell): add round-radius prop #547 @richard1015
+* :zap: chore: 修改组件分类及排序 (#540) @ninidesign
+* :bug: fix(calender): 小程序场景无法滑动 bug (#534) @guoxiaoxiao
+* :bug: fix: taro的h5环境下shortpassword聚焦事件修复 (#541) @Drjingfubo
+* :bug: fix(collapse ): taro H5 环境适配 (#546) @Ymm0008
+* :bug: fix: run add comp script @richard1015
+* :bug: fix(drag): taro h5 touch bug (#549) @Drjingfubo
+* :bug: fix(notify): props msg type error @richard1015
+* :zap: docs: 官网轮播图片变更、gitee log添加、官网案例效果优化、版本显示  @ninidesign @richard1015
+
 ## v3.1.0
 `2021-07-12`
 ### 新特性
