@@ -16,9 +16,9 @@
       >
     </nut-tab>
 
-    <h2>defaultIndex设置默认显示tab</h2>
+    <h2>defaultIndex设置默认显示tab,iconType为half时切换选中icon样式</h2>
     <h2>switchTab监听切换tab返回事件</h2>
-    <nut-tab :default-index="1" @switch-tab="switchTab">
+    <nut-tab :default-index="1" @switch-tab="switchTab" icon-type="half">
       <nut-tab-panel tab-title="全部"
         ><p class="content">这里是页签全部内容</p></nut-tab-panel
       >
@@ -118,6 +118,7 @@
       :animated-time="500"
       :default-index="2"
       scrollType="scroll"
+      icon-type="half"
     >
       <nut-tab-panel tab-title="页签一"
         ><p class="content">这里是页签一内容</p></nut-tab-panel

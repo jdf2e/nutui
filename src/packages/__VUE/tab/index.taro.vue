@@ -1,31 +1,42 @@
 <template>
   <view :class="[direction === 'vertical' ? 'vertical-tab' : 'nutui-tab']">
-    <view class="tab-title" ref="navlist">
-      <view
-        :class="[
-          'tab-title-box',
-          { 'nut-tab-active': activeIndex == index },
-          { 'tab-title-box-scroll': scrollType == 'scroll' }
-        ]"
-        v-for="(item, index) in titles"
-        :key="index"
-        @click="switchTitle(index, $event)"
-      >
-        {{ item.title }}
-        <TabTitle v-bind:slots="item.content" v-if="item.content"></TabTitle>
+    <scroll-view
+      :scroll-x="!scrollYDirection"
+      :scroll-y="scrollYDirection"
+      :scroll-left="scrollLeft"
+      :scroll-top="scrollTop"
+      class="tab-title-scroll"
+      :scroll-with-animation="true"
+    >
+      <view :class="['tab-title', randomTitleClass, iconType]">
+        <view
+          :class="[
+            'tab-title-box',
+            randomClass,
+            { 'nut-tab-active': activeIndex == index },
+            { 'tab-title-box-scroll': scrollType == 'scroll' }
+          ]"
+          v-for="(item, index) in titles"
+          :key="index"
+          @click="switchTitle(index, $event)"
+        >
+          <span class="world">{{ item.title }}</span>
+          <TabTitle v-bind:slots="item.content" v-if="item.content"></TabTitle>
+        </view>
+        <view class="underline"></view>
       </view>
-      <view class="underline"></view>
-    </view>
+    </scroll-view>
     <nut-swiper
-      :init-page="defaultIndex"
+      :current="activeIndex"
       :pagination-visible="false"
       :duration="animatedTime"
       pagination-color="#426543"
-      @change="changeTab"
+      @change="(current) => changeTab(current)"
       ref="nutuiSwiper"
       :touchable="!noSwiping"
-      :direction="direction"
+      :vertical="scrollYDirection"
       class="tab-swiper"
+      :circular="true"
     >
       <slot></slot>
     </nut-swiper>
@@ -34,8 +45,9 @@
 <script lang="ts">
 import { PropType, reactive, ref, onMounted, watch, VNode } from 'vue';
 import { createComponent } from '../../utils/create';
-import tabpanel from '../../__VUE/tabpanel/index.vue';
+import tabpanel from '../../__VUE/tabpanel/index.taro.vue';
 const { create } = createComponent('tab');
+import Taro from '@tarojs/taro';
 import TabTitle from './tabTitle';
 type TabDirection = 'horizontal' | 'vertical';
 
@@ -61,7 +73,7 @@ export default create({
     },
     direction: {
       type: String as PropType<TabDirection>,
-      default: 'horizontal'
+      default: 'false'
     },
     noSwiping: {
       type: Boolean,
@@ -70,6 +82,10 @@ export default create({
     scrollType: {
       type: String,
       default: 'flex'
+    },
+    iconType: {
+      type: String,
+      default: 'all'
     }
   },
   components: {
@@ -78,53 +94,69 @@ export default create({
   setup(props, ctx) {
     const titles: Array<DataTitle> = reactive([]);
     const isLock = ref(false);
+    const scrollLeft = ref('0px');
+    const scrollTop = ref('0px');
     const activeIndex = ref(props.defaultIndex);
     const navlist = ref<null | HTMLElement>(null);
     const nutuiSwiper = ref(null);
+    const arr = ref([]);
+    const scrollYDirection = ref(props.direction === 'vertical');
+    const randomClass = ref('tab-title-boxs-' + createHash());
+    const randomTitleClass = ref('tab-title-' + createHash());
     // 生成随机的id
     function createHash() {
       return Array.from(Array(10), () =>
         Math.floor(Math.random() * 36).toString(36)
       ).join('');
     }
-
     const swiperClassName = ref('swiper-' + createHash());
     //title点击后居中显示
     function centerTitle(index: number) {
-      if (navlist.value) {
-        const currEle = navlist.value.querySelectorAll('.tab-title-box')[
-          index
-        ] as HTMLElement;
-        if (props.direction === 'vertical') {
-          const currTitleTop = navlist.value.offsetTop;
-          const currTop = currEle.offsetTop;
-          const currHeight = currEle.offsetHeight;
-          const tapHeight = navlist.value.offsetHeight;
-          navlist.value.scroll(
-            0,
-            currTop - currTitleTop - tapHeight / 2 + currHeight / 2
-          );
-        } else {
-          const currLeft = currEle.offsetLeft;
-          const currWidth = currEle.offsetWidth;
-          const tapWidth = navlist.value.offsetWidth;
-          navlist.value.scroll(currLeft - tapWidth / 2 + currWidth / 2, 0);
-        }
+      let navlistValueTop = 0;
+      let navlistValueHeight = 0;
+      let navlistValuewidth = 0;
+      const query = Taro.createSelectorQuery();
+      if (props.direction === 'vertical') {
+        query
+          .select(`.${randomTitleClass.value}`)
+          .boundingClientRect()
+          .selectAll(`.${randomClass.value}`)
+          .boundingClientRect()
+          .exec((rects) => {
+            let navlistValueTop = rects[0].top;
+            let navlistValueHeight = rects[0].height;
+            const currTop = rects[1][index].top;
+            const currHeight = rects[1][index].height;
+            scrollTop.value =
+              currTop -
+              navlistValueTop -
+              navlistValueHeight / 2 +
+              currHeight / 2 +
+              'px';
+          });
+      } else {
+        query
+          .select(`.${randomTitleClass.value}`)
+          .boundingClientRect()
+          .selectAll(`.${randomClass.value}`)
+          .boundingClientRect()
+          .exec((rects) => {
+            let navlistValuewidth = rects[0].width;
+            const currLeft = rects[1][index].left;
+            const currWidth = rects[1][index].width;
+            scrollLeft.value =
+              currLeft - navlistValuewidth / 2 + currWidth / 2 + 'px';
+          });
       }
     }
-    const changeTab = (index: number) => {
-      console.log(index);
-      activeIndex.value = index;
-      centerTitle(index);
-
-      //
+    const changeTab = (current) => {
+      activeIndex.value = current.detail.current;
+      centerTitle(current.detail.current);
     };
     //切换tab
     function switchTitle(index: number) {
       activeIndex.value = index;
       centerTitle(index);
-      console.log(nutuiSwiper.value);
-      nutuiSwiper.value.to(index);
     }
     function initTitle() {
       titles.length = 0;
@@ -151,6 +183,9 @@ export default create({
     }
     onMounted(() => {
       initTitle();
+      let arrnew = [];
+      for (let i = 0; i < 100; i++) arrnew.push(i);
+      arr.value = arrnew;
     });
     watch(
       () => (ctx.slots.default ? ctx.slots.default() : ''),
@@ -165,7 +200,13 @@ export default create({
       activeIndex,
       switchTitle,
       changeTab,
-      nutuiSwiper
+      nutuiSwiper,
+      scrollLeft,
+      scrollTop,
+      arr,
+      randomClass,
+      scrollYDirection,
+      randomTitleClass
     };
   }
 });
