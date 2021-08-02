@@ -14,7 +14,9 @@ export const transformData = (regionData: any[]) => {
 
   regionData = regionData.map((item: any) => {
     if (!item.name) return new Error('the data must includes `name` props');
-    let code = pinyin(item.name);
+    let code = pinyin(item.name, {
+      style: pinyin.STYLE_NORMAL
+    });
     return {
       ...item,
       firstCode: code[0][0].charAt(0).toUpperCase()
