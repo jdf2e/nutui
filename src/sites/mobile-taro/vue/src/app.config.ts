@@ -58,7 +58,7 @@ export default {
     },
     {
       root: 'business',
-      pages: ['pages/address/index']
+      pages: ['pages/address/index', 'pages/barrage/index']
     }
   ],
   window: {

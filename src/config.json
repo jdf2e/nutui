@@ -682,7 +682,7 @@
       ]
     },
     {
-      "name": "业务组件",
+      "name": "特色组件",
       "enName": "business",
       "packages": [
         {
@@ -695,6 +695,17 @@
           "sort": 1,
           "show": true,
           "author": "yangxiaolu3"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Barrage",
+          "type": "component",
+          "cName": "弹幕组件",
+          "desc": "用于视频弹幕等展示",
+          "sort": 2,
+          "show": true,
+          "author": "Ymm0008"
         }
       ]
     }
