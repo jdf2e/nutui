@@ -15,10 +15,10 @@ export interface InputProps {
   textAlign: string
   maxLength: any
   clearable: boolean
-  change?: (value: string | number, event: Event) => void
-  blur?: (value: string | number, event: Event) => void
-  focus?: (value: string | number, event: Event) => void
-  clear?: (value: string | number, event: Event) => void
+  change?: (value: any, event: Event) => void
+  blur?: (value: any, event: Event) => void
+  focus?: (value: any, event: Event) => void
+  clear?: (value: any, event: Event) => void
 }
 const defaultProps = {
   type: 'text',
@@ -117,12 +117,23 @@ export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes
           readOnly={readonly}
           value={inputValue}
           maxLength={maxLength}
-          onBlur={valueBlur}
-          onFocus={valueFocus}
-          onChange={valueChange}
+          onBlur={(e: any) => {
+            valueBlur(e)
+          }}
+          onFocus={(e: any) => {
+            valueFocus(e)
+          }}
+          onChange={(e: any) => {
+            valueChange(e)
+          }}
         />
         {clearable && !readonly ? (
-          <div onClick={handleClear} className={inputBem('clear')}>
+          <div
+            onClick={(e: any) => {
+              handleClear(e)
+            }}
+            className={inputBem('clear')}
+          >
             {active && inputValue.length > 0 ? <Icon name="close-little" size="12px"></Icon> : null}
           </div>
         ) : null}

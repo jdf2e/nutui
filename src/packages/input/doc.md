@@ -76,7 +76,7 @@ const clear = (value: string) => {
 
 | 参数         | 说明                                   | 类型           | 默认值  |
 | ------------ | -------------------------------------- | -------------- | ------- |
-| v-model      | 输入值，双向绑定                       | String         | -       |
+| defaultValue | 初始默认值，双向绑定                   | String         | -       |
 | type         | 类型，可选值为 `text` `number` 等      | String         | `text`  |
 | placeholder  | 为空时占位符                           | String         | -       |
 | label        | 左侧文案                               | String         | -       |
