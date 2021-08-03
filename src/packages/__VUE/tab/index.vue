@@ -1,6 +1,6 @@
 <template>
   <view :class="[direction === 'vertical' ? 'vertical-tab' : 'nutui-tab']">
-    <view class="tab-title" ref="navlist">
+    <view :class="['tab-title', iconType, 'tab-title-scroll']" ref="navlist">
       <view
         :class="[
           'tab-title-box',
@@ -11,7 +11,7 @@
         :key="index"
         @click="switchTitle(index, $event)"
       >
-        {{ item.title }}
+        <span class="world">{{ item.title }}</span>
         <TabTitle v-bind:slots="item.content" v-if="item.content"></TabTitle>
       </view>
       <view class="underline"></view>
@@ -70,6 +70,10 @@ export default create({
     scrollType: {
       type: String,
       default: 'flex'
+    },
+    iconType: {
+      type: String,
+      default: 'all'
     }
   },
   components: {

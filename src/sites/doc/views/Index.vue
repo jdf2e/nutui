@@ -156,7 +156,7 @@ export default defineComponent({
         padding: 10px 25px;
         height: 100%;
         cursor: pointer;
-        font-size: 20px;
+        font-size: 16px;
         color: #323232;
         text-align: center;
         border-radius: 4px;

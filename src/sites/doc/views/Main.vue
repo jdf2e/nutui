@@ -157,8 +157,8 @@ import Footer from '@/sites/doc/components/Footer.vue';
 import router from '../router';
 import { RefData } from '@/sites/assets/util/ref';
 import { ApiService } from '@/sites/service/ApiService';
-import 'swiper/css/swiper.min.css';
-import Swiper from 'swiper/js/swiper.min.js';
+import 'swiper/swiper.min.css';
+import Swiper from 'swiper/swiper-bundle.min.js';
 export default defineComponent({
   name: 'main',
   components: {
