@@ -19,7 +19,8 @@ export default {
         'pages/drag/index',
         'pages/steps/index',
         'pages/infiniteloading/index',
-        'pages/progress/index'
+        'pages/progress/index',
+        'pages/circleprogress/index'
       ]
     },
     {
