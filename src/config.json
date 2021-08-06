@@ -678,6 +678,17 @@
           "show": true,
           "desc": "上传文件、图片",
           "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CountUp",
+          "taro": true,
+          "sort": 12,
+          "cName": "数字滚动",
+          "type": "component",
+          "show": true,
+          "desc": "数字滚动组件，动态变化展示",
+          "author": "Ymm0008"
         }
       ]
     },

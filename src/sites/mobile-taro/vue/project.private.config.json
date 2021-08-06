@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -14,6 +15,18 @@
         {
           "name": "business/pages/barrage/index",
           "pathName": "business/pages/barrage/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "dentry/pages/countup/index",
+          "pathName": "dentry/pages/countup/index",
           "query": "",
           "scene": null
         }
