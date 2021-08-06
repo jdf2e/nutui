@@ -430,6 +430,17 @@
           "show": true,
           "desc": "用来展示进度",
           "author": "Drjingubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CircleProgress",
+          "taro": true,
+          "sort": 8,
+          "cName": "环形进度条",
+          "type": "component",
+          "show": true,
+          "desc": "用来展示进度",
+          "author": "Drjingubo"
         }
       ]
     },
