@@ -131,7 +131,6 @@ export const Uploader: FunctionComponent<
       e: ProgressEvent<XMLHttpRequestEventTarget>,
       option: UploadOptions
     ) => {
-      console.log('progress', e, option)
       setFileList((fileList: FileItem[]) => {
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
