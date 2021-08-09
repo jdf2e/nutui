@@ -1,6 +1,7 @@
 import React from 'react'
 import { Avatar } from './avatar'
 import Cell from '@/packages/cell'
+import './demo.scss'
 
 const AvatarDemo = () => {
   const AvatarStyle = {
@@ -29,16 +30,16 @@ const AvatarDemo = () => {
         </Cell>
         <h2>修改形状</h2>
         <Cell>
-          <Avatar shape="square"></Avatar>
-          <Avatar shape="round"></Avatar>
+          <Avatar icon="my" shape="square"></Avatar>
+          <Avatar icon="my" shape="round"></Avatar>
         </Cell>
         <h2>修改背景色</h2>
         <Cell>
-          <Avatar bgColor="#FA2C19"></Avatar>
+          <Avatar className="demo-avatar" bgColor="#FA2C19" icon="my"></Avatar>
         </Cell>
         <h2>修改背景图片</h2>
         <Cell>
-          <Avatar icon="https://img30.360buyimg.com/uba/jfs/t1/84318/29/2102/10483/5d0704c1Eb767fa74/fc456b03fdd6cbab.png"></Avatar>
+          <Avatar icon="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"></Avatar>
         </Cell>
         <h2>可以修改头像的内容</h2>
         <Cell>
