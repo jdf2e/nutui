@@ -107,7 +107,18 @@
     },
     {
       "name": "操作反馈",
-      "packages": []
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Toast",
+          "type": "component",
+          "cName": "吐司",
+          "desc": "轻提示",
+          "sort": 1,
+          "show": true,
+          "author": "VickyYe"
+        }
+      ]
     },
     {
       "name": "基础组件",
@@ -160,7 +171,28 @@
     },
     {
       "name": "数据录入",
-      "packages": []
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Input",
+          "type": "component",
+          "cName": "输入框",
+          "desc": "单行输入框",
+          "sort": 1,
+          "show": true,
+          "author": "VickyYe"
+        },
+        {
+          "version": "1.0.0",
+          "name": "TextArea",
+          "type": "component",
+          "cName": "文本域",
+          "desc": "文本框内输入或编辑文字，支持限制输入数量。",
+          "sort": 2,
+          "show": true,
+          "author": "VickyYe"
+        }
+      ]
     },
     {
       "name": "业务组件",
