@@ -25,22 +25,27 @@
     {
       "name": "intro,theme,start",
       "cName": "指南",
-      "path": "/intro"
+      "path": "#/intro"
     },
     {
       "name": "component",
       "cName": "组件",
-      "path": "/button"
+      "path": "#/button"
     },
     {
       "name": "example",
       "cName": "示例",
-      "path": "/"
+      "path": "demo.html"
     },
     {
       "name": "resource",
       "cName": "资源",
-      "path": "/resource"
+      "path": "#/resource"
+    },
+    {
+      "name": "joinus",
+      "cName": "加入我们",
+      "path": "#/joinus"
     }
   ],
   "docs": {
