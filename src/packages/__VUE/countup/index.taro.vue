@@ -14,8 +14,8 @@
             :style="{
               width: numWidth + 'px',
               height: numHeight + 'px',
-              backgroundImage: 'url(' + customBgImg + ')',
-              backgroundPositionY: prizeY[index] + 'px'
+              background: 'url(' + customBgImg + ') ',
+              backgroundPosition: '0 ' + prizeY[index] + 'px'
             }"
           ></view>
           <!-- backgroundPositionY: prizeLevelTrun + 'px', -->
@@ -75,6 +75,7 @@
           v-for="(val, index) of num_total_len"
           :key="val"
           :style="{
+            all: turnNumber(index),
             top: topNumber(index),
             left:
               numWidth *
@@ -506,7 +507,8 @@ export default create({
     };
 
     const runStep = (el: any) => {
-      let currentTurn = el.getAttribute('turn-number');
+      // let currentTurn = el.getAttribute('turn-number');
+      let currentTurn = el.style.all;
       let turningNum: number;
       if (data.sortFlag == 'add') {
         turningNum = parseInt(String(currentTurn)) + 1;
@@ -516,21 +518,25 @@ export default create({
             ? parseInt(String(currentTurn)) - 1
             : 9;
       }
-      el.setAttribute('turn-number', String(turningNum));
+      // el.setAttribute('turn-number', String(turningNum));
+      el.style.all = String(turningNum);
+
       if (
-        el.style.transition == 'none 0s ease 0s' ||
+        el.style.transition == 'none' ||
         turningNum == 1 ||
         !el.style.transition
       ) {
         el.style.transition = `all linear ${props.during}ms`;
       }
+
       if (turningNum == 10 || (data.sortFlag == 'reduce' && turningNum == 0)) {
         var timeOut: any = null;
         // el.style.top = `-${turningNum * 100}%`;
         el.style.top = `-${
           data.sortFlag == 'add' ? turningNum * 100 : (10 - turningNum) * 100
         }%`;
-        el.setAttribute('turn-number', '0');
+        // el.setAttribute('turn-number', '0');
+        el.style.all = '0';
         timeOut = setTimeout(() => {
           timeOut && clearTimeout(timeOut);
           el.style.transition = 'none';
@@ -593,6 +599,7 @@ export default create({
       if (data.prizeLevelTrun < 0) {
         generateRandom();
       }
+
       for (let i = 0; i < props.machineNum; i++) {
         setTimeout(() => {
           let turn =

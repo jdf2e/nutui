@@ -132,12 +132,13 @@ export default create({
       },
       onTouchMove(event: Event) {
         if (props.disabled) return;
-        if (touch.isVertical()) return;
-        state.moving = true;
-        touch.move(event);
-        setoffset(touch.deltaX.value);
+        if (touch.isVertical() == false) {
+          state.moving = true;
+          touch.move(event);
+          setoffset(touch.deltaX.value);
 
-        event.preventDefault();
+          event.preventDefault();
+        }
       },
       onTouchEnd() {
         if (state.moving) {

@@ -10,25 +10,15 @@
       <Search />
       <div class="nav-box">
         <ul class="nav-list">
-          <li class="nav-item" :class="{ active: isActive(header[0].name) }">
-            <router-link :to="header[0].path">
-              {{ header[0].cName }}
-            </router-link>
-          </li>
-          <li class="nav-item" :class="{ active: isActive(header[1].name) }">
-            <router-link :to="header[1].path">
-              {{ header[1].cName }}
-            </router-link>
-          </li>
-          <li class="nav-item" :class="{ active: isActive(header[2].name) }">
-            <a href="demo.html#/">
-              {{ header[2].cName }}
+          <li
+            class="nav-item"
+            v-for="item in header"
+            :key="item.name"
+            :class="{ active: isActive(item.name) }"
+          >
+            <a :href="item.path">
+              {{ item.cName }}
             </a>
-          </li>
-          <li class="nav-item" :class="{ active: isActive(header[3].name) }">
-            <router-link :to="header[3].name">
-              {{ header[3].cName }}
-            </router-link>
           </li>
           <li class="nav-item">
             <div
