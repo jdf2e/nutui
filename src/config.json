@@ -213,7 +213,7 @@
           "name": "Swipe",
           "taro": true,
           "type": "component",
-          "cName": "滑动手势操作",
+          "cName": "滑动手势",
           "desc": "列表项左滑删除场景使用",
           "sort": 4,
           "show": true,
@@ -447,6 +447,17 @@
           "show": true,
           "desc": "头部导航",
           "author": "liqiong43"
+        },
+        {
+          "version": "3.0.0",
+          "name": "FixedNav",
+          "type": "component",
+          "cName": "悬浮导航",
+          "desc": "可拖拽的悬浮导航",
+          "taro": true,
+          "sort": 9,
+          "show": true,
+          "author": "richard1015"
         },
         {
           "version": "3.0.0",
