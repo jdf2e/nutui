@@ -36,7 +36,12 @@ export default {
     },
     {
       root: 'nav',
-      pages: ['pages/navbar/index', 'pages/tabbar/index', 'pages/tab/index']
+      pages: [
+        'pages/navbar/index',
+        'pages/tabbar/index',
+        'pages/tab/index',
+        'pages/fixednav/index'
+      ]
     },
     {
       root: 'dentry',

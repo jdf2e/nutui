@@ -267,5 +267,15 @@ $checkbox-label-disable-color: #999;
 $radio-label-color: #1d1e1e;
 $radio-label-disable-color: #999;
 
+//fixednav
+$fixednav-bg-color: $white;
+$fixednav-font-color: $black;
+$fixednav-index: 201;
+$fixednav-btn-bg: linear-gradient(
+  135deg,
+  rgba(250, 25, 44, 1) 0%,
+  rgba(250, 63, 25, 1) 100%
+);
+
 @import './mixins/index';
 @import './animation/index';
