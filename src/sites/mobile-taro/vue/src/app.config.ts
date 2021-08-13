@@ -19,7 +19,8 @@ export default {
         'pages/drag/index',
         'pages/steps/index',
         'pages/infiniteloading/index',
-        'pages/progress/index'
+        'pages/progress/index',
+        'pages/circleprogress/index'
       ]
     },
     {
@@ -58,7 +59,8 @@ export default {
         'pages/picker/index',
         'pages/datepicker/index',
         'pages/range/index',
-        'pages/textarea/index'
+        'pages/textarea/index',
+        'pages/countup/index'
       ]
     },
     {
