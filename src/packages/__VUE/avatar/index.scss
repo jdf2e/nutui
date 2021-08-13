@@ -42,6 +42,7 @@
 }
 .avatar-round {
   border-radius: 50%;
+  overflow: hidden;
 }
 .avatar-square {
   border-radius: $avatar-square;
