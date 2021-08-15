@@ -13,12 +13,12 @@ export function createComponent(name: string) {
             vue.component(item.name as string, item);
           });
       };
-      return defineComponent(_component);
+      return defineComponent(_component as any);
     } as typeof defineComponent,
     createDemo: function (_component: ComponentOptions) {
       _component.baseName = name;
       _component.name = 'demo-' + name;
-      return defineComponent(_component);
+      return defineComponent(_component as any);
     } as typeof defineComponent
   };
 }
