@@ -81,58 +81,8 @@
   },
   "nav": [
     {
-      "name": "布局组件",
-      "packages": [
-        {
-          "version": "1.0.0",
-          "name": "Button",
-          "type": "component",
-          "cName": "按钮",
-          "desc": "按钮",
-          "sort": 1,
-          "show": true,
-          "author": ""
-        },
-        {
-          "version": "1.0.0",
-          "name": "Collapse",
-          "type": "component",
-          "cName": "折叠面板",
-          "desc": "折叠面板，可进行内容折叠展开操作，可以多面板配合使用。",
-          "sort": 2,
-          "show": true,
-          "author": "zhenyulei"
-        }
-      ]
-    },
-    {
-      "name": "操作反馈",
-      "packages": [
-        {
-          "version": "1.0.0",
-          "name": "Toast",
-          "type": "component",
-          "cName": "吐司",
-          "desc": "轻提示",
-          "sort": 1,
-          "show": true,
-          "author": "VickyYe"
-        }
-      ]
-    },
-    {
       "name": "基础组件",
       "packages": [
-        {
-          "version": "1.0.0",
-          "name": "Icon",
-          "type": "component",
-          "cName": "图标组件",
-          "desc": "图标",
-          "sort": 1,
-          "show": true,
-          "author": "oasis-cloud"
-        },
         {
           "version": "1.0.0",
           "name": "Avatar",
@@ -142,6 +92,16 @@
           "sort": 2,
           "show": true,
           "author": "junjun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Button",
+          "type": "component",
+          "cName": "按钮",
+          "desc": "按钮",
+          "sort": 1,
+          "show": true,
+          "author": ""
         },
         {
           "version": "1.0.0",
@@ -155,12 +115,22 @@
         },
         {
           "version": "1.0.0",
-          "name": "CellGroup",
+          "name": "Icon",
           "type": "component",
-          "cName": "单元格组件",
-          "desc": "展示分组列表",
+          "cName": "图标组件",
+          "desc": "图标",
           "sort": 1,
-          "show": false,
+          "show": true,
+          "author": "oasis-cloud"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Price",
+          "type": "component",
+          "cName": "价格",
+          "desc": "用来对商品价格数值的小数点前后部分应用不同样式，还支持人民币符号、千位分隔符、设置小数点位数等功能。",
+          "sort": 4,
+          "show": true,
           "author": "songsong"
         },
         {
@@ -172,16 +142,45 @@
           "sort": 5,
           "show": true,
           "author": "junjun"
+        }
+      ]
+    },
+    {
+      "name": "布局组件",
+      "packages": []
+    },
+    {
+      "name": "操作反馈",
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Collapse",
+          "type": "component",
+          "cName": "折叠面板",
+          "desc": "折叠面板，可进行内容折叠展开操作，可以多面板配合使用。",
+          "sort": 2,
+          "show": true,
+          "author": "zhenyulei"
         },
         {
           "version": "1.0.0",
-          "name": "Price",
+          "name": "Toast",
           "type": "component",
-          "cName": "价格",
-          "desc": "用来对商品价格数值的小数点前后部分应用不同样式，还支持人民币符号、千位分隔符、设置小数点位数等功能。",
-          "sort": 4,
+          "cName": "吐司",
+          "desc": "轻提示",
+          "sort": 1,
           "show": true,
-          "author": "songsong"
+          "author": "VickyYe"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Steps",
+          "type": "component",
+          "cName": "步骤条",
+          "desc": "拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。",
+          "sort": 7,
+          "show": true,
+          "author": "swag~jun"
         }
       ]
     },
@@ -225,7 +224,7 @@
       ]
     },
     {
-      "name": "业务组件",
+      "name": "特色组件",
       "packages": []
     }
   ]
