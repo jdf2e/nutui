@@ -15,6 +15,9 @@ export default {
         'pages/dialog/index',
         'pages/toast/index',
         'pages/notify/index',
+        'pages/range/index',
+        'pages/popup/index',
+        'pages/switch/index',
         'pages/swiper/index',
         'pages/drag/index',
         'pages/steps/index',
@@ -31,13 +34,17 @@ export default {
         'pages/price/index',
         'pages/button/index',
         'pages/avatar/index',
-        'pages/popup/index',
         'pages/overlay/index'
       ]
     },
     {
       root: 'nav',
-      pages: ['pages/navbar/index', 'pages/tabbar/index', 'pages/tab/index']
+      pages: [
+        'pages/navbar/index',
+        'pages/tabbar/index',
+        'pages/tab/index',
+        'pages/fixednav/index'
+      ]
     },
     {
       root: 'dentry',
@@ -45,7 +52,6 @@ export default {
         'pages/inputnumber/index',
         'pages/checkbox/index',
         'pages/input/index',
-        'pages/switch/index',
         'pages/uploader/index',
         'pages/rate/index',
         'pages/radio/index',
@@ -53,7 +59,6 @@ export default {
         'pages/shortpassword/index',
         'pages/picker/index',
         'pages/datepicker/index',
-        'pages/range/index',
         'pages/textarea/index',
         'pages/countup/index'
       ]
