@@ -1,4 +1,21 @@
 
+## v3.1.3
+
+`2021-08-15`
+
+* :zap: feat: 新增 CircleProgress 环形进度条组件 (#569) @Drjingfubo
+* :zap: feat: 新增 Progress 条形进度条组件 (#569) @Drjingfubo
+* :zap: feat: 新增 FixedNav 悬浮导航组件 @richar1015
+* :zap: feat: 新增 CountUp 数字滚动组件适配 (#568) @Ymm0008
+* :zap: feat: 新增 Barrage 弹幕组件 @Ymm0008
+* :bug: fix(avatar): 设置圆角无效修复 (#571) @Drjingfubo
+* :bug: fix(address): modify transform data (#534) @szg2008
+* :bug: fix(swipe): 列表滚动场景滑动体验优化 @richard1015
+* :zap: docs: 新增主题定制样式引用说明 @richard1015
+* :zap: docs: 3.0 支持环境说明修改 @szg2008
+* :zap: docs: 官网新增 加入我们模块 @richard1015
+
+
 ## v3.1.2
 
 `2021-07-31`
