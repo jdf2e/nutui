@@ -38,9 +38,11 @@ export default defineComponent({
         const { hash } = window.top.location;
         if (!isMobile && route.hash != hash) {
           // window.top.location.replace(`${origin}${pathname}#/${route.hash}`);
-          title.value = route.name as string;
+          title.value =
+            (route?.meta?.ComponentName as string) || (route.name as string);
         } else {
-          title.value = route.name as string;
+          title.value =
+            (route?.meta?.ComponentName as string) || (route.name as string);
         }
       },
       {

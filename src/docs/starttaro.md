@@ -68,7 +68,7 @@ createApp(App).use(NutUI);
 
 > 注意：这种方式将会导入所有组件
 
-## 推荐使用按需加载
+#### 推荐使用按需加载
 
 ```javascript
 import { createApp } from "vue";
@@ -76,4 +76,58 @@ import App from "./App.vue";
 import { Button, Cell, Icon } from "@nutui/nutui-taro";
 import "@nutui/nutui-taro/dist/style.css";
 createApp(App).use(Button).use(Cell).use(Icon);
+```
+
+
+
+### 定制化主题使用
+
+#### 首先需要在 **app.ts** 文件中配置 使用 scss 样式文件如：
+
+```javascript
+import { createApp } from "vue";
+import App from "./App.vue";
+import { Button, Cell, Icon } from "@nutui/nutui-taro";
+// 定制化主题必须使用 scss 
+import '@nutui/nutui-taro/dist/styles/themes/default.scss';
+createApp(App).use(Button).use(Cell).use(Icon);
+```
+
+#### 创建定制化主题样式文件 ```assets/styles/custom_theme.scss``` ，样式变量覆盖表参考 [nutui variables](https://github.com/jdf2e/nutui/blob/next/src/packages/styles/variables.scss)
+
+```custom_theme.scss```
+``` scss
+$primary-color: #478EF2;
+$primary-color-end: #496AF2;
+```
+
+
+
+#### 然后需要在 **config/index.js** 文件中配置 scss 文件全局覆盖如：
+
+``` javascript
+const path = require('path');
+const config = {
+  deviceRatio: {
+    640: 2.34 / 2,
+    750: 1,
+    828: 1.81 / 2,
+    375: 2 / 1
+  },
+  sass: {
+    resource: [
+        path.resolve(__dirname, '..', 'src/assets/styles/custom_theme.scss')
+    ]
+  },
+  // ...
+```
+
+#### vue 文件中使用查看效果
+
+``` html
+<template>
+  <view>
+      <nut-button type="primary" >nutui</nut-button>
+  </view>
+</template>
 ```

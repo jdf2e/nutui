@@ -124,6 +124,7 @@ export default {
   setup() {
     const address = reactive({
       province: [
+        { id: 10, name: '安徽' },
         { id: 1, name: '北京' },
         { id: 2, name: '广西' },
         { id: 3, name: '江西' },

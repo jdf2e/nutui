@@ -125,8 +125,8 @@ import {
   nextTick,
   watch
 } from 'vue';
-import { createComponent } from '@/utils/create';
-import { useExtend } from '@/utils/useRelation/useRelation';
+import { createComponent } from '../../utils/create';
+import { useExtend } from '../../utils/useRelation/useRelation';
 const { componentName, create } = createComponent('countup');
 
 interface IData {
@@ -566,7 +566,6 @@ export default create({
         // }, props.during);
         f.addEventListener('webkitTransitionEnd', () => {
           emit('scroll-end');
-          console.log('ooopppsss');
           data.valFlag = false;
           // setTimeout(() => {
           //   data.relNum = calculation(data.relNum, m * props.speed, '+');

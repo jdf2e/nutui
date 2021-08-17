@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Index from './components/Index.vue';
 import IndexTaro from './components/IndexTaro.vue';
+import { nav } from '../../config.json';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -20,6 +21,20 @@ const routes: Array<RouteRecordRaw> = [
 //   });
 // });
 
+const findComponentName = (name: string) => {
+  for (const key in nav) {
+    if (Object.prototype.hasOwnProperty.call(nav, key)) {
+      const element = nav[key];
+      let idx = element.packages.findIndex(
+        (i) => i.name.toLowerCase() === name
+      );
+      if (idx !== -1) {
+        return element.packages[idx].name;
+      }
+    }
+  }
+};
+
 /** vite */
 const modulesPage = import.meta.glob('/src/packages/__VUE/**/demo.vue');
 
@@ -28,13 +43,19 @@ for (const path in modulesPage) {
   routes.push({
     path: '/' + name,
     component: modulesPage[path],
-    name
+    name,
+    meta: {
+      ComponentName: findComponentName(name)
+    }
   });
 
   routes.push({
     path: '/' + name + '-taro',
     component: IndexTaro,
-    name: name + '-taro'
+    name: name + '-taro',
+    meta: {
+      ComponentName: findComponentName(name)
+    }
   });
 }
 
