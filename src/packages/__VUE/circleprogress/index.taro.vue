@@ -1,12 +1,16 @@
 <template>
   <div :class="classes" :style="pieStyle">
-    <div v-if="!isMobile">
-      <div class="nut-circleprogress__line nut-circleprogress__r">
-        <div class="nut-circleprogress__line__c" :style="RightStyle"></div>
+    <div :style="mobileStyle" v-if="!isMobile">
+      <div class="nut-circleprogress__right">
+        <div class="nut-circleprogress__line nut-circleprogress__r">
+          <div class="nut-circleprogress__line__c" :style="RightStyle"></div>
+        </div>
       </div>
-      <div class="nut-circleprogress__progress">{{ progress }}%</div>
-      <div class="nut-circleprogress__line nut-circleprogress__l">
-        <div class="nut-circleprogress__line__c" :style="LeftStyle"></div>
+      <div class="nut-circleprogress__progress">{{ progress }} %</div>
+      <div class="nut-circleprogress__left">
+        <div class="nut-circleprogress__line nut-circleprogress__l">
+          <div class="nut-circleprogress__line__c" :style="LeftStyle"></div>
+        </div>
       </div>
     </div>
     <div v-else>
@@ -120,11 +124,17 @@ export default create({
         height: (cricleData.radius + cricleData.strokeOutWidth) * 2 + 'px'
       };
     });
+    const mobileStyle = computed(() => {
+      return {
+        width: '100%',
+        height: '100%'
+      };
+    });
     const RightStyle = computed(() => {
       // taro转的h5不支持使用border-top这种边框属性，目前解决方案，taro转的h5使用svg实现
       return {
         transform: `rotate(${rotateRight.value + 'deg'})`,
-        transition: `all 0.2s`,
+        transition: `all 0.3s`,
         borderTop: `${InnerWidth.value + 'px'} solid ${cricleData.backColor};`,
         borderLeft: `${InnerWidth.value + 'px'} solid  ${
           cricleData.backColor
@@ -141,7 +151,7 @@ export default create({
       // taro转的h5不支持使用border-top这种边框属性
       return {
         transform: `rotate(${rotateLeft.value + 'deg'})`,
-        transition: `all 0.2s`,
+        transition: `all 0.3s`,
         borderTop: `${InnerWidth.value + 'px'} solid ${cricleData.backColor};`,
         borderLeft: `${InnerWidth.value + 'px'} solid  ${
           cricleData.backColor
@@ -191,7 +201,8 @@ export default create({
       RightStyle,
       LeftStyle,
       option,
-      arcLength
+      arcLength,
+      mobileStyle
     };
   }
 });

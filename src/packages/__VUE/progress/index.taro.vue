@@ -97,7 +97,7 @@ export default create({
   },
   setup(props, { emit }) {
     const height = ref(props.strokeWidth + 'px');
-    const progressOuter = ref();
+    const progressOuter = ref<any>();
     const left = ref();
     const bgStyle = computed(() => {
       return {
@@ -112,13 +112,13 @@ export default create({
     });
     const slideLeft = async (values: String | Number) => {
       if (Taro.getEnv() === 'WEB') {
-        left.value =
-          progressOuter.value.offsetWidth * Number(values) * 0.01 - 4 + 'px';
+        setTimeout(() => {
+          left.value =
+            progressOuter.value.offsetWidth * Number(values) * 0.01 - 4 + 'px';
+        }, 200);
       } else {
         setTimeout(() => {
-          const query = (Taro.createSelectorQuery() as any).in(
-            getCurrentInstance
-          );
+          const query = Taro.createSelectorQuery() as any;
           query
             .select('.nut-progress-outer')
             .boundingClientRect((rec: any) => {
