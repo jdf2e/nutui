@@ -1,13 +1,13 @@
 <template>
   <div class="demo full">
-    <h4>基本用法</h4>
+    <h2>基本用法</h2>
     <div>
       <nut-cell>
         <nut-progress percentage="30" />
       </nut-cell>
     </div>
 
-    <p>线形进度条-设置颜色高度</p>
+    <h2>线形进度条-设置颜色高度</h2>
     <div>
       <nut-cell>
         <nut-progress
@@ -18,25 +18,25 @@
         />
       </nut-cell>
     </div>
-    <p>线形进度条-百分比不显示</p>
+    <h2>线形进度条-百分比不显示</h2>
     <div>
       <nut-cell>
         <nut-progress percentage="50" :show-text="false" stroke-height="24" />
       </nut-cell>
     </div>
-    <p>线形进度条-百分比外显</p>
+    <h2>线形进度条-百分比外显</h2>
     <div>
       <nut-cell>
         <nut-progress percentage="30" />
       </nut-cell>
     </div>
-    <p>线形进度条-百分比内显</p>
+    <h2>线形进度条-百分比内显</h2>
     <div>
       <nut-cell>
         <nut-progress percentage="60" :text-inside="true" />
       </nut-cell>
     </div>
-    <p>线形进度条-自定义尺寸(内置"small","base","large"三种规格)</p>
+    <h2>线形进度条-自定义尺寸(内置"small","base","large"三种规格)</h2>
     <div>
       <nut-cell>
         <nut-progress percentage="30" size="small"> </nut-progress>
@@ -49,7 +49,7 @@
         <nut-progress percentage="70" size="large"> </nut-progress>
       </nut-cell>
     </div>
-    <p>线形进度条-状态显示</p>
+    <h2>线形进度条-状态显示</h2>
     <div>
       <nut-cell>
         <nut-progress
@@ -76,7 +76,7 @@
         />
       </nut-cell>
     </div>
-    <h4>设置百分比</h4>
+    <h2>设置百分比</h2>
     <div>
       <nut-cell>
         <nut-progress :percentage="val" />
