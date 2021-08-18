@@ -14,7 +14,8 @@ import {
   reactive,
   toRefs,
   watch,
-  nextTick
+  nextTick,
+  onUnmounted
 } from 'vue';
 import Taro from '@tarojs/taro';
 import { createComponent } from '../../utils/create';
@@ -66,6 +67,11 @@ export default create({
 
     onMounted(() => {
       run();
+    });
+
+    onUnmounted(() => {
+      clearInterval(timer);
+      timer = 0;
     });
 
     watch(
