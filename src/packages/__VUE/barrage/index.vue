@@ -11,6 +11,7 @@ import {
   computed,
   onMounted,
   onUnmounted,
+  onDeactivated,
   ref,
   reactive,
   toRefs,
@@ -74,6 +75,11 @@ export default create({
     });
 
     onUnmounted(() => {
+      clearInterval(timer);
+      timer = 0;
+    });
+
+    onDeactivated(() => {
       clearInterval(timer);
       timer = 0;
     });

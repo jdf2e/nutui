@@ -15,7 +15,8 @@ import {
   toRefs,
   watch,
   nextTick,
-  onUnmounted
+  onUnmounted,
+  onDeactivated
 } from 'vue';
 import Taro from '@tarojs/taro';
 import { createComponent } from '../../utils/create';
@@ -70,6 +71,11 @@ export default create({
     });
 
     onUnmounted(() => {
+      clearInterval(timer);
+      timer = 0;
+    });
+
+    onDeactivated(() => {
       clearInterval(timer);
       timer = 0;
     });
