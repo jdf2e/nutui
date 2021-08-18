@@ -21,7 +21,9 @@
                 titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight'
               ]"
             ></nut-icon>
-            <view v-html="title" class="collapse-icon-title"></view>
+            <slot name="title">
+              <view v-html="title" class="collapse-icon-title"></view>
+            </slot>
           </view>
         </view>
       </view>

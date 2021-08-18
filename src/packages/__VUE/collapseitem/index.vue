@@ -20,7 +20,9 @@
                 titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight'
               ]"
             ></nut-icon>
-            <view v-html="title"></view>
+            <slot name="title">
+              <view v-html="title"></view>
+            </slot>
           </view>
         </view>
       </view>
