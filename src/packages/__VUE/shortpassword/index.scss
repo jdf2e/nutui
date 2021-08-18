@@ -29,16 +29,36 @@
     height: 41px;
     border-radius: 4px;
   }
-  input {
+  .nut-input-real {
+    position: absolute;
+    right: 247px;
+    width: 247px;
+    height: 41px;
+  }
+}
+.nut-input-normalw {
+  padding: 0px 0 10px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  .nut-input-site {
     width: 247px;
     height: 41px;
     border-radius: 4px;
   }
   .nut-input-real {
-    padding: 0 12px;
-    opacity: 0;
+    padding: 0 1200px 0 0;
+    width: 0;
+    position: absolute;
+    right: 0;
+    width: 247px;
+    height: 41px;
+  }
+  .nut-shortpsd-fake {
+    top: 5%;
   }
 }
+
 .nut-input-real-taro {
   width: 0;
   padding: 0 12px;
@@ -62,7 +82,7 @@
   position: absolute;
   left: 0;
   top: 29%;
-  z-index: 0;
+  z-index: 10;
 }
 
 .nut-shortpsd-li {
