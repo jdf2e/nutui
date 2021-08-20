@@ -10,6 +10,8 @@
 import {
   computed,
   onMounted,
+  onUnmounted,
+  onDeactivated,
   ref,
   reactive,
   toRefs,
@@ -70,6 +72,16 @@ export default create({
     onMounted(() => {
       danmuCWidth.value = dmBody.value.offsetWidth;
       run();
+    });
+
+    onUnmounted(() => {
+      clearInterval(timer);
+      timer = 0;
+    });
+
+    onDeactivated(() => {
+      clearInterval(timer);
+      timer = 0;
     });
 
     watch(
