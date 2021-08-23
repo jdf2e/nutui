@@ -215,6 +215,7 @@ export default {
         // this.tapWidth = tapWidth / 2 - this.navWidth / 2;
         if (this.lineWidth > 0 && this.lineWidth < this.navWidth) {
           this.initX = parseInt((this.navWidth - this.lineWidth) / 2 + this.navWidth * this.defIndex);
+          this.tapWidth = tapWidth / 2 - this.navWidth / 2;
         } else {
           this.initX = parseInt(this.navWidth * this.defIndex);
           this.tapWidth = tapWidth / 2 - this.navWidth / 2;
