@@ -9,19 +9,18 @@
   color: $text-color;
   background-color: rgba(251, 248, 220, 1);
   color: rgba(211, 125, 066, 1);
-  &.wrapable{
+  &.wrapable {
     height: auto;
     padding: 8px 16px;
-    .wrap{
+    .wrap {
       height: auto;
-      .content{
+      .content {
         position: relative;
         white-space: normal;
         word-wrap: break-word;
       }
     }
-
-  }    
+  }
   a {
     text-decoration: none;
     color: rgba(211, 125, 066, 1);
@@ -51,7 +50,6 @@
     height: 24px;
     overflow: hidden;
     position: relative;
-    
   }
   .content {
     position: absolute;
@@ -60,7 +58,7 @@
       max-width: 100%;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow:ellipsis;
+      text-overflow: ellipsis;
     }
   }
   // 只跑一次
@@ -76,19 +74,46 @@
 }
 
 @keyframes nut-notice-bar-play {
-	to {
-		transform: translate3d(-100%, 0, 0);
-	}
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
 }
 
 @keyframes nut-notice-bar-play-infinite {
-	to {
-		transform: translate3d(-100%, 0, 0);
-	}
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
 }
 // 垂直方向的滚动
 @keyframes nut-notice-bar-play-vertical {
-	to {
-		transform: translateY(40px);
-	}
+  to {
+    transform: translateY(40px);
+  }
+}
+
+// 纵向
+.nut-noticebar-vertical {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  .horseLamp_list {
+    display: block;
+    flex: 1;
+    .horseLamp_list_item {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      font-size: 16px;
+    }
+  }
+
+  .go {
+    align-self: center;
+  }
 }

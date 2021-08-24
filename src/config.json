@@ -724,6 +724,17 @@
       "showDemo": true,
       "author": "zongyue3",
       "showTest": false
+    },
+    {
+      "version": "1.0.0",
+      "name": "NineGrid",
+      "type": "component",
+      "chnName": "九宫格",
+      "desc": "九宫格展示",
+      "sort": "6",
+      "showDemo": true,
+      "author": "Drjingfubo",
+      "showTest": true
     }
   ]
 }
