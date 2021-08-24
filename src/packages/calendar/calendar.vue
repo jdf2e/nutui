@@ -151,7 +151,7 @@ export default {
           month = month == 12 ? 1 : ++month;
           break;
       }
-      return [year, Utils.getNumTwoBit(month), monthData.curData[2]];
+      return [year, Utils.getNumTwoBit(month), Utils.getMonthDays(year, month)];
     },
 
     getDaysStatus(days, type) {
