@@ -392,12 +392,14 @@ export default create({
       const copyExistAdd = props.existAddress as AddressList[];
       let prevExistAdd = {};
 
-      copyExistAdd.forEach((list, index) => {
-        if (list && (list as AddressList).selectedAddress) {
-          prevExistAdd = list;
-        }
-        (list as AddressList).selectedAddress = false;
-      });
+      if (copyExistAdd != null) {
+        copyExistAdd.forEach((list, index) => {
+          if (list && (list as AddressList).selectedAddress) {
+            prevExistAdd = list;
+          }
+          (list as AddressList).selectedAddress = false;
+        });
+      }
 
       item.selectedAddress = true;
 
@@ -586,6 +588,13 @@ export default create({
             selectedExistAddress = item as {};
           }
         });
+      }
+    );
+
+    watch(
+      () => props.type,
+      (value) => {
+        privateType.value = value;
       }
     );
 

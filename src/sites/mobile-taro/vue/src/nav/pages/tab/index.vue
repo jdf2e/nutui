@@ -16,9 +16,9 @@
       >
     </nut-tab>
 
-    <h2>defaultIndex设置默认显示tab</h2>
+    <h2>defaultIndex设置默认显示tab，iconType为half时切换选中icon样式</h2>
     <h2>switchTab监听切换tab返回事件</h2>
-    <nut-tab :default-index="1" @switch-tab="switchTab">
+    <nut-tab :default-index="1" @switch-tab="switchTab" icon-type="half">
       <nut-tab-panel tab-title="全部"
         ><p class="content">这里是页签全部内容</p></nut-tab-panel
       >
@@ -35,22 +35,6 @@
 
     <h2> animatedTime 开启切换标签内容时的转场动画时间</h2>
     <nut-tab :animated-time="500">
-      <nut-tab-panel tab-title="全部"
-        ><p class="content">这里是页签全部内容</p></nut-tab-panel
-      >
-      <nut-tab-panel tab-title="待付款"
-        ><p class="content">这里是页签待付款内容</p></nut-tab-panel
-      >
-      <nut-tab-panel tab-title="待收获"
-        ><p class="content">这里是页签待收获内容</p></nut-tab-panel
-      >
-      <nut-tab-panel tab-title="已完成"
-        ><p class="content">这里是页签已完成内容</p></nut-tab-panel
-      >
-    </nut-tab>
-
-    <h2> 禁止tab内容滑动</h2>
-    <nut-tab :no-swiping="true">
       <nut-tab-panel tab-title="全部"
         ><p class="content">这里是页签全部内容</p></nut-tab-panel
       >

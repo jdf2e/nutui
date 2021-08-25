@@ -14,7 +14,8 @@
     >
       <view class="nut-shortpsd-title">{{ title }}</view>
       <view class="nut-shortpsd-subtitle">{{ desc }}</view>
-      <view class="nut-input-w">
+
+      <div class="nut-input-normalw">
         <input
           ref="realpwd"
           class="nut-input-real"
@@ -23,6 +24,7 @@
           v-model="realInput"
           @input="changeValue"
         />
+        <div class="nut-input-site"></div>
         <view class="nut-shortpsd-fake" @click="focus">
           <view
             class="nut-shortpsd-li"
@@ -35,7 +37,7 @@
             ></view>
           </view>
         </view>
-      </view>
+      </div>
       <view class="nut-shortpsd-message">
         <view class="nut-shortpsd-error">{{ errorMsg }}</view>
         <view class="nut-shortpsd-forget" v-if="tips">

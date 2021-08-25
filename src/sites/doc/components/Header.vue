@@ -10,25 +10,15 @@
       <Search />
       <div class="nav-box">
         <ul class="nav-list">
-          <li class="nav-item" :class="{ active: isActive(header[0].name) }">
-            <router-link :to="header[0].path">
-              {{ header[0].cName }}
-            </router-link>
-          </li>
-          <li class="nav-item" :class="{ active: isActive(header[1].name) }">
-            <router-link :to="header[1].path">
-              {{ header[1].cName }}
-            </router-link>
-          </li>
-          <li class="nav-item" :class="{ active: isActive(header[2].name) }">
-            <a href="demo.html#/">
-              {{ header[2].cName }}
+          <li
+            class="nav-item"
+            v-for="item in header"
+            :key="item.name"
+            :class="{ active: isActive(item.name) }"
+          >
+            <a :href="item.path">
+              {{ item.cName }}
             </a>
-          </li>
-          <li class="nav-item" :class="{ active: isActive(header[3].name) }">
-            <router-link :to="header[3].name">
-              {{ header[3].cName }}
-            </router-link>
           </li>
           <li class="nav-item">
             <div
@@ -64,13 +54,10 @@
               href="https://github.com/jdf2e/nutui"
             ></a>
             <a
-              class="gitee"
+              class="user-link gitee"
               target="_blank"
               href="https://gitee.com/jd-platform-opensource/nutui"
-              ><img
-                src="https://storage.360buyimg.com/imgtools/158748bd85-17a80c60-e547-11eb-995a-377f565026ba.png"
-                alt="Fork me on Gitee"
-            /></a>
+            ></a>
           </li>
         </ul>
       </div>
@@ -255,19 +242,13 @@ export default defineComponent({
         width: 26px;
         height: 26px;
         vertical-align: middle;
-        background: url('../../assets/images/icon-user.png') no-repeat;
+        background-repeat: no-repeat;
+        background-image: url('../../assets/images/icon-user.png');
         background-size: 26px;
-      }
-      .gitee {
-        display: inline-block;
-        width: 26px;
-        height: 26px;
-        background-size: 100%;
-        margin-left: 10px;
-        > img {
-          height: 100%;
-          width: 100%;
-          vertical-align: text-top;
+
+        &.gitee {
+          margin-left: 4px;
+          background-image: url('../../assets/images/icon-gitee.png');
         }
       }
     }
