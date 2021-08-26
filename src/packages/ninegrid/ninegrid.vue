@@ -7,7 +7,11 @@
       :key="index"
     >
       <div v-if="index == 4" class="center" @click="refresh(true)">
-        <img :class="{ rotate: loadingDataState }" src="~@/assets/img/refresh.png" alt="refresh.png" />
+        <img
+          :class="{ rotate: loadingDataState }"
+          src="//img13.360buyimg.com/imagetools/jfs/t1/190805/24/20092/1136/6126fce9E6c61cf21/acd44eec9fc694bd.png"
+          alt="refresh.png"
+        />
         <span>换一换</span>
         <p>{{ countDown }}S&nbsp;后自动换</p>
       </div>
