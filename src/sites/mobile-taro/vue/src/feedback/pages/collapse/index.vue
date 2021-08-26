@@ -23,6 +23,7 @@
     <h2>手风琴</h2>
     <nut-collapse v-model:active="active2" :accordion="true" icon="down-arrow">
       <nut-collapse-item :title="title1" :name="1">
+        <template v-slot:sTitle> 文本测试 </template>
         华为终端操作系统EMUI 11发布，9月11日正式开启
       </nut-collapse-item>
       <nut-collapse-item :title="title2" :name="2" :sub-title="subTitle">

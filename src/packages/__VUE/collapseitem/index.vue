@@ -20,11 +20,17 @@
                 titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight'
               ]"
             ></nut-icon>
-            <view v-html="title"></view>
+            <slot v-if="$slots.mTitle" name="mTitle"></slot>
+            <template v-else>
+              <view v-html="title"></view>
+            </template>
           </view>
         </view>
       </view>
-      <view v-if="subTitle" v-html="subTitle" class="subTitle"></view>
+      <view v-if="$slots.sTitle" class="subTitle">
+        <slot name="sTitle"></slot>
+      </view>
+      <view v-else v-html="subTitle" class="subTitle"></view>
       <nut-icon
         v-if="icon"
         :name="icon"
