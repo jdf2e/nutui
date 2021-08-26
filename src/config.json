@@ -717,6 +717,17 @@
           "show": true,
           "desc": "数字滚动组件，动态变化展示",
           "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CountDown",
+          "type": "component",
+          "cName": "倒计时",
+          "desc": "倒计时",
+          "sort": 16,
+          "show": true,
+          "taro": false,
+          "author": "yangxiaolu"
         }
       ]
     },

@@ -90,6 +90,7 @@ import {
   computed,
   CSSProperties,
   onActivated,
+  onDeactivated,
   ref,
   watch,
   h
@@ -367,20 +368,20 @@ export default create({
       }
     });
 
-    // const activated =() =>{
-    //   if (this.keepAlive) {
-    //     this.keepAlive = false;
-    //   }
-    // }
+    onActivated(() => {
+      if (state.keepAlive) {
+        state.keepAlive = false;
+      }
+    });
 
-    // const deactivated=()=> {
-    //   this.keepAlive = true;
-    //   clearInterval(this.timer);
-    // },
+    onDeactivated(() => {
+      state.keepAlive = true;
+      clearInterval(state.timer as any);
+    });
 
-    // destroyed() {
-    //   clearInterval(this.timer);
-    // }
+    onUnmounted(() => {
+      clearInterval(state.timer as any);
+    });
 
     return {
       ...toRefs(props),
