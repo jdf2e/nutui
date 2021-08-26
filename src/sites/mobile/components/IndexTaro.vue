@@ -29,7 +29,7 @@ export default defineComponent({
 .index {
   height: 100%;
   width: 100%;
-  padding-top: 30px;
+  padding-top: 60px;
 
   &-header {
     display: flex;
