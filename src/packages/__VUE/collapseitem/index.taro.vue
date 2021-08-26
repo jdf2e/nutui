@@ -27,7 +27,14 @@
           </view>
         </view>
       </view>
-      <view v-if="subTitle" v-html="subTitle" class="subTitle"></view>
+      <!-- <view v-if="subTitle" v-html="subTitle" class="subTitle"></view>
+      <view class="subTitle" v-else>
+        <slot name="sTitle"></slot>
+      </view> -->
+      <view v-if="$slots.sTitle" class="subTitle">
+        <slot name="sTitle"></slot>
+      </view>
+      <view v-else v-html="subTitle" class="subTitle"></view>
       <nut-icon
         v-if="icon"
         :name="icon"
@@ -169,7 +176,7 @@ export default create({
         const query = Taro.createSelectorQuery();
         query.selectAll('.collapse-content').boundingClientRect();
         query.exec((res) => {
-          getH();
+          getH(res[0]);
         });
         if (!proxyData.openExpanded) {
           onTransitionEnd();
@@ -228,10 +235,15 @@ export default create({
       }
     });
 
-    const getH = () => {
+    const getH = (list: any) => {
       parent.children.forEach((item1: any, index1: number) => {
         let ary: any = Array.from(item1.$el.children);
-        item1.conHeight = ary[1].children[0].offsetHeight;
+        let _uid = ary[1].children[0]['uid'];
+        let tm = list.filter((item2: any) => item2.id == _uid);
+        if (tm && tm.length > 0) {
+          let h = tm[0]['height'];
+          item1.conHeight = h;
+        }
         // ary.forEach((item2: any, index2: number) => {
         //   let ary2 = Array.from(item2.children);
         //   ary2.length > 0 &&
@@ -246,8 +258,8 @@ export default create({
       });
     };
 
-    let list: any = [],
-      domID: any = [];
+    // let list: any = [],
+    //   domID: any = [];
     onMounted(() => {
       const { name } = props;
       const active = parent && parent.props.active;
@@ -256,11 +268,11 @@ export default create({
         const query = Taro.createSelectorQuery();
         query.selectAll('.collapse-content').boundingClientRect();
         query.exec((res) => {
-          list = res[0];
-          list.forEach((item: any) => {
-            domID.push(item.id);
-          });
-          getH();
+          // list = res[0];
+          // list.forEach((item: any) => {
+          //   domID.push(item.id);
+          // });
+          getH(res[0]);
           // parent.activeIndex().forEach((item:any) => {
           //   const h = list[item]?.height;
           //   parent.children[item].conHeight = h;
