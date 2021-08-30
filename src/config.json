@@ -726,7 +726,7 @@
           "desc": "倒计时",
           "sort": 16,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "yangxiaolu"
         }
       ]

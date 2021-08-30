@@ -61,6 +61,7 @@ export default {
         'pages/picker/index',
         'pages/datepicker/index',
         'pages/textarea/index',
+        'pages/countdown/index',
         'pages/countup/index'
       ]
     },
