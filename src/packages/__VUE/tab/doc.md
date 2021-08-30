@@ -2,21 +2,35 @@
 
 常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式。
 
+## 安装
+
+```js
+import { createApp } from 'vue';
+// vue
+import { Tab, TabPanel,Swiper } from '@nutui/nutui';
+// taro
+import { Tab, TabPanel,Swiper } from '@nutui/nutui-taro';
+
+const app = createApp();
+app.use(Tab).use(TabPanel).use(Swiper);
+
+```
+
 ## 基础样式，默认 tab-title 宽度均分相等
 
 ```html
 <nut-tab>
   <nut-tab-panel tab-title="全部"
-    ><p class="content">这里是页签全部内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签全部内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="待付款"
-    ><p class="content">这里是页签待付款内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签待付款内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="待收获"
-    ><p class="content">这里是页签待收获内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签待收获内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="已完成"
-    ><p class="content">这里是页签已完成内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签已完成内容</p></nut-tab-panel
   >
 </nut-tab>
 ```
@@ -29,16 +43,16 @@ switchTab 监听切换 tab 返回事件
 ```html
 <nut-tab :defaultIndex="1" @switchTab="switchTab">
   <nut-tab-panel tab-title="全部"
-    ><p class="content">这里是页签全部内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签全部内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="待付款"
-    ><p class="content">这里是页签待付款内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签待付款内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="待收获"
-    ><p class="content">这里是页签待收获内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签待收获内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="已完成"
-    ><p class="content">这里是页签已完成内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签已完成内容</p></nut-tab-panel
   >
 </nut-tab>
 <script lang="ts">
@@ -62,16 +76,16 @@ switchTab 监听切换 tab 返回事件
 ```html
 <nut-tab :animatedTime="500">
   <nut-tab-panel tab-title="全部"
-    ><p class="content">这里是页签全部内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签全部内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="待付款"
-    ><p class="content">这里是页签待付款内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签待付款内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="待收获"
-    ><p class="content">这里是页签待收获内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签待收获内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="已完成"
-    ><p class="content">这里是页签已完成内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签已完成内容</p></nut-tab-panel
   >
 </nut-tab>
 ```
@@ -81,16 +95,16 @@ switchTab 监听切换 tab 返回事件
 ```html
 <nut-tab :no-swiping="true">
   <nut-tab-panel tab-title="全部"
-    ><p class="content">这里是页签全部内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签全部内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="待付款"
-    ><p class="content">这里是页签待付款内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签待付款内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="待收获"
-    ><p class="content">这里是页签待收获内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签待收获内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="已完成"
-    ><p class="content">这里是页签已完成内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签已完成内容</p></nut-tab-panel
   >
 </nut-tab>
 ```
@@ -100,24 +114,24 @@ switchTab 监听切换 tab 返回事件
 切换时会自动将当前标签居中。
 
 ```html
-<nut-tab :animatedTime="500">
+<nut-tab :animatedTime="500" scrollType="scroll">
   <nut-tab-panel tab-title="全部"
-    ><p class="content">这里是页签全部内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签全部内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="待付款"
-    ><p class="content">这里是页签待付款内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签待付款内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="待收获"
-    ><p class="content">这里是页签待收获内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签待收获内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="已完成"
-    ><p class="content">这里是页签已完成内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签已完成内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="已取消"
-    ><p class="content">这里是页签已取消内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签已取消内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="待评价"
-    ><p class="content">这里是页签待评价内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签待评价内容</p></nut-tab-panel
   >
 </nut-tab>
 ```
@@ -128,22 +142,22 @@ switchTab 监听切换 tab 返回事件
 <nut-tab>
   <nut-tab-panel tab-title="全部">
     <template v-slot:header><nut-icon name="dongdong"></nut-icon></template>
-    <p class="content">这里是页签全部内容</p>
+    <p class="content-tab">这里是页签全部内容</p>
   </nut-tab-panel>
   <nut-tab-panel tab-title="待付款"
-    ><p class="content">这里是页签待付款内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签待付款内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="待收获"
-    ><p class="content">这里是页签待收获内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签待收获内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="已完成"
-    ><p class="content">这里是页签已完成内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签已完成内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="已取消"
-    ><p class="content">这里是页签已取消内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签已取消内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="待评价"
-    ><p class="content">这里是页签待评价内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签待评价内容</p></nut-tab-panel
   >
 </nut-tab>
 ```
@@ -153,25 +167,25 @@ switchTab 监听切换 tab 返回事件
 ```html
 <nut-tab direction="vertical" :animatedTime="500" :defaultIndex="2">
   <nut-tab-panel tab-title="页签一"
-    ><p class="content">这里是页签一内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签一内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="页签二"
-    ><p class="content">这里是页签二内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签二内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="页签三"
-    ><p class="content">这里是页签三内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签三内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="页签四"
-    ><p class="content">这里是页签四内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签四内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="页签五"
-    ><p class="content">这里是页签五内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签五内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="页签六"
-    ><p class="content">这里是页签六内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签六内容</p></nut-tab-panel
   >
   <nut-tab-panel tab-title="页签七"
-    ><p class="content">这里是页签七内容</p></nut-tab-panel
+    ><p class="content-tab">这里是页签七内容</p></nut-tab-panel
   >
 </nut-tab>
 ```
@@ -181,7 +195,7 @@ switchTab 监听切换 tab 返回事件
 ```html
 <nut-tab :animatedTime="500" v-if="editList.length>0">
     <nut-tab-panel :tab-title="item.title" v-for="(item,index) in editList" :key="index">
-      <p class="content">这里是页签{{index}}内容</p>
+      <p class="content-tab">这里是页签{{index}}内容</p>
     </nut-tab-panel>
 </nut-tab>
 <nut-button type="primary" @click="changeList">改变数据</nut-button>
