@@ -9,6 +9,8 @@
 import { createApp } from 'vue';
 // vue
 import { CountDown } from '@nutui/nutui';
+// taro
+import { CountDown } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(CountDown);
