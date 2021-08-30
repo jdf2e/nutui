@@ -47,7 +47,7 @@ app.use(ActionSheet);
 ```
 ## 展示描述信息
 ```html
-<div @click.native="switchActionSheet">
+<div @click="switchActionSheet">
    <span><label>展示取消按钮</label></span>
     <div class="selected-option" v-html="state.val"></div>
 </div>
@@ -62,7 +62,7 @@ app.use(ActionSheet);
 
 ## 选项状态
 ```html
-<div @click.native="switchActionSheet">
+<div @click="switchActionSheet">
     <span class="title"><label>性别</label></span>
     <span class="selected-option" v-html="sex"></span>
 </div>

@@ -720,6 +720,16 @@
         },
         {
           "version": "3.0.0",
+          "name": "NumberKeyboard",
+          "taro": true,
+          "sort": 13,
+          "cName": "数字键盘",
+          "type": "component",
+          "show": true,
+          "desc": "虚拟数字键盘",
+          "author": "Drjingfubo"
+        },
+        {
           "name": "CountDown",
           "type": "component",
           "cName": "倒计时",

@@ -12,7 +12,6 @@ import { Cell,Icon } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Cell).use(Icon);
-
 ```
 
 ## 代码示例
