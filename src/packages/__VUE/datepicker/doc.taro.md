@@ -3,8 +3,10 @@
 ### 介绍
     
 时间选择器，支持日期、年月、时分等维度，通常与弹出层组件配合使用。
+
+#### 直接使用 Taro 现有 Picker[mode="date"] 组件开发 [参考文档](https://docs.taro.zone/docs/components/forms/picker)
     
-### 安装
+<!-- ### 安装
 
 ```javascript
 import { createApp } from 'vue';
@@ -57,4 +59,4 @@ export default createDemo({
     
 | 事件名  | 说明               | 回调参数     |
 |---------|--------------------|--------------|
-| onChange | 点击确定按钮时触发 | event: Event |
+| onChange | 点击确定按钮时触发 | event: Event | -->

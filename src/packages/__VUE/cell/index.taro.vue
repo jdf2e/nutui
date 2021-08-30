@@ -3,10 +3,12 @@
     <slot>
       <view
         class="nut-cell__title"
-        :class="{ icon: icon }"
+        :class="{ icon: icon || $slots.icon }"
         v-if="title || subTitle || icon"
       >
-        <nut-icon v-if="icon" class="icon" :name="icon"></nut-icon>
+        <slot v-if="$slots.icon" name="icon"></slot>
+        <nut-icon v-else-if="icon" class="icon" :name="icon"></nut-icon>
+
         <template v-if="subTitle">
           <view class="title">{{ title }}</view>
           <view class="nut-cell__title-desc">{{ subTitle }}</view>
@@ -35,7 +37,6 @@
 <script lang="ts">
 import { computed } from 'vue';
 import { createComponent } from '../../utils/create';
-import { useRouter } from 'vue-router';
 import CellGroup from '../cellgroup/index.vue';
 import { pxCheck } from '../../utils/pxCheck';
 const { componentName, create } = createComponent('cell');
@@ -65,7 +66,6 @@ export default create({
         [`${prefixCls}--clickable`]: props.isLink || props.to
       };
     });
-    const router = useRouter();
 
     const baseStyle = computed(() => {
       return {
@@ -75,19 +75,6 @@ export default create({
 
     const handleClick = (event: Event) => {
       emit('click', event);
-
-      if (props.to && router) {
-        router[props.replace ? 'replace' : 'push'](props.to);
-        // if(props.replace){
-        //   router.replace(props.to)
-        // }else{
-        //    router.push(props.to)
-        // }
-      } else if (props.url) {
-        props.replace
-          ? location.replace(props.url)
-          : (location.href = props.url);
-      }
     };
 
     return {

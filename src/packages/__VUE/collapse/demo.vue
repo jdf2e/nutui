@@ -2,7 +2,10 @@
   <div class="demo full">
     <h2>基本用法</h2>
     <nut-collapse v-model:active="active1" icon="down-arrow">
-      <nut-collapse-item :title="title1" :name="1">
+      <nut-collapse-item :name="1">
+        <template v-slot:mTitle>
+          {{ title1 }}
+        </template>
         NutUI是一套拥有京东风格的轻量级的 Vue 组件库
       </nut-collapse-item>
       <nut-collapse-item :title="title2" :name="2">
@@ -41,6 +44,7 @@
       rotate="90"
     >
       <nut-collapse-item :title="title1" :name="1">
+        <template v-slot:sTitle> 文本测试 </template>
         NUTUI3.0重新思考其内在的一致性和可组合性
       </nut-collapse-item>
       <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">

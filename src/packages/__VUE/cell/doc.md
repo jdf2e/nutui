@@ -71,7 +71,17 @@ export default {
   </nut-cell>
 </nut-cell-group>
 ```
+### 自定义左侧 Icon 区域
 
+``` html
+<nut-cell-group title="自定义左侧 Icon 区域">
+  <nut-cell title="图片">
+    <template v-slot:icon>
+      <img class="nut-icon" src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png" />
+    </template>
+  </nut-cell>
+</nut-cell-group>
+```
 
 ### 单元格展示图标
 
@@ -107,4 +117,12 @@ export default {
 |-------|----------|-------------|
 | click | 点击事件 | event:Event |
 
+
+## Slots
+
+| 名称          | 说明                 |
+|---------------|----------------------|
+| icon `v3.1.4` | 自定义左侧 icon 区域 |
+| default       | 自定义内容           |
+| link          | 自定义右侧 link 区域 |
 

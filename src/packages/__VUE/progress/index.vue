@@ -120,13 +120,13 @@ export default create({
         console.log('values', values);
 
         left.value =
-          progressOuter.value.offsetWidth * Number(values) * 0.01 - 4 + 'px';
+          progressOuter.value.offsetWidth * Number(values) * 0.01 - 5 + 'px';
       }
     );
     onMounted(() => {
       left.value =
         progressOuter.value.offsetWidth * Number(props.percentage) * 0.01 -
-        4 +
+        5 +
         'px';
     });
     return {

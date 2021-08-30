@@ -315,7 +315,11 @@ export default create({
           month = month == 12 ? 1 : ++month;
           break;
       }
-      return [year, Utils.getNumTwoBit(month), monthData.curData[2]];
+      return [
+        year,
+        Utils.getNumTwoBit(month),
+        Utils.getMonthDays(String(year), String(month))
+      ];
     };
 
     // 获取日期状态
