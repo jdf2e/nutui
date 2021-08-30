@@ -1,3 +1,3 @@
 export default {
-  navigationBarTitleText: 'Backtop'
+  navigationBarTitleText: 'CricleProgress'
 };
