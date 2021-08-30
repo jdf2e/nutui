@@ -29,6 +29,12 @@
           "pathName": "dentry/pages/countup/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "feedback/pages/collapse/index",
+          "pathName": "feedback/pages/collapse/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

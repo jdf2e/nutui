@@ -247,7 +247,7 @@ export default defineComponent({
         background-size: 26px;
 
         &.gitee {
-          margin-left: 4px;
+          margin-left: 8px;
           background-image: url('../../assets/images/icon-gitee.png');
         }
       }

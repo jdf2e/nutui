@@ -542,9 +542,10 @@
           "type": "component",
           "cName": "公告栏",
           "desc": "用于循环播放展示一组消息通知",
-          "sort": 5,
-          "show": false,
-          "author": "wangyue92"
+          "sort": 8,
+          "show": true,
+          "taro": false,
+          "author": "yangxiaolu"
         }
       ]
     },
@@ -727,6 +728,16 @@
           "show": true,
           "desc": "虚拟数字键盘",
           "author": "Drjingfubo"
+        },
+        {
+          "name": "CountDown",
+          "type": "component",
+          "cName": "倒计时",
+          "desc": "倒计时",
+          "sort": 16,
+          "show": true,
+          "taro": false,
+          "author": "yangxiaolu"
         }
       ]
     },
