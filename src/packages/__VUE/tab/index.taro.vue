@@ -1,49 +1,53 @@
 <template>
-  <view :class="[direction === 'vertical' ? 'vertical-tab' : 'nutui-tab']">
-    <scroll-view
-      :scroll-x="!scrollYDirection"
-      :scroll-y="scrollYDirection"
-      :scroll-left="scrollLeft"
-      :scroll-top="scrollTop"
-      class="tab-title-scroll"
-      :scroll-with-animation="true"
+  <view class="nutui-tab">
+    <view
+      :class="[direction === 'vertical' ? 'vertical-tab' : 'horizontal-tab']"
     >
-      <view :class="['tab-title', randomTitleClass, iconType]">
-        <view
-          :class="[
-            'tab-title-box',
-            randomClass,
-            { 'nut-tab-active': activeIndex == index },
-            { 'tab-title-box-scroll': scrollType == 'scroll' }
-          ]"
-          v-for="(item, index) in titles"
-          :key="index"
-          @click="switchTitle(index, $event)"
-        >
-          <span class="world">{{ item.title }}</span>
-          <TabTitle v-bind:slots="item.content" v-if="item.content"></TabTitle>
+      <scroll-view
+        :scroll-x="!scrollYDirection"
+        :scroll-y="scrollYDirection"
+        :scroll-left="scrollLeft"
+        :scroll-top="scrollTop"
+        class="tab-title-scroll"
+        :scroll-with-animation="true"
+      >
+        <view :class="['tab-title', randomTitleClass, iconType]">
+          <view
+            :class="[
+              'tab-title-box',
+              randomClass,
+              { 'nut-tab-active': activeIndex == index },
+              { 'tab-title-box-scroll': scrollType == 'scroll' }
+            ]"
+            v-for="(item, index) in titles"
+            :key="index"
+            @click="switchTitle(index, $event)"
+          >
+            <span class="world">{{ item.title }}</span>
+            <TabTitle
+              v-bind:slots="item.content"
+              v-if="item.content"
+            ></TabTitle>
+          </view>
+          <view class="underline"></view>
         </view>
-        <view class="underline"></view>
+      </scroll-view>
+      <view v-if="titles.length > 0" class="tab-swiper" ref="nutuiSwiper">
+        <TabTitle v-bind:slots="titles[activeIndex].main"></TabTitle>
       </view>
-    </scroll-view>
-    <nut-swiper
-      :current="activeIndex"
-      :pagination-visible="false"
-      :duration="animatedTime"
-      pagination-color="#426543"
-      @change="(current) => changeTab(current)"
-      ref="nutuiSwiper"
-      :touchable="!noSwiping"
-      :vertical="scrollYDirection"
-      class="tab-swiper"
-      :circular="true"
-    >
-      <slot></slot>
-    </nut-swiper>
+    </view>
   </view>
 </template>
 <script lang="ts">
-import { PropType, reactive, ref, onMounted, watch, VNode } from 'vue';
+import {
+  PropType,
+  reactive,
+  ref,
+  onMounted,
+  watch,
+  VNode,
+  watchEffect
+} from 'vue';
 import { createComponent } from '../../utils/create';
 import tabpanel from '../../__VUE/tabpanel/index.taro.vue';
 const { create } = createComponent('tab');
@@ -54,10 +58,12 @@ type TabDirection = 'horizontal' | 'vertical';
 interface DataTitle {
   title?: string;
   content?: VNode[];
+  main?: VNode[];
 }
 
 type currChild = {
   header: Function;
+  default: Function;
 } & VNode[];
 
 export default create({
@@ -91,6 +97,7 @@ export default create({
   components: {
     TabTitle
   },
+  emits: ['switchTab'],
   setup(props, ctx) {
     const titles: Array<DataTitle> = reactive([]);
     const isLock = ref(false);
@@ -154,9 +161,10 @@ export default create({
       centerTitle(current.detail.current);
     };
     //切换tab
-    function switchTitle(index: number) {
+    function switchTitle(index: number, event) {
       activeIndex.value = index;
       centerTitle(index);
+      ctx.emit('switchTab', index, event);
     }
     function initTitle() {
       titles.length = 0;
@@ -176,6 +184,10 @@ export default create({
               content:
                 item.children && (item.children as currChild).header
                   ? (item.children as currChild).header()
+                  : null,
+              main:
+                item.children && (item.children as currChild).default
+                  ? (item.children as currChild).default()
                   : null
             });
           });
@@ -187,7 +199,7 @@ export default create({
       for (let i = 0; i < 100; i++) arrnew.push(i);
       arr.value = arrnew;
     });
-    watch(
+    watchEffect(
       () => (ctx.slots.default ? ctx.slots.default() : ''),
       () => {
         initTitle();
