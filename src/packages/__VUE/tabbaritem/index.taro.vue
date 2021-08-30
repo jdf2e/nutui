@@ -25,6 +25,8 @@
           class="nut-tabbar-item_icon-box_icon"
           :size="state.size"
           :name="icon"
+          :font-class-name="fontClassName"
+          :class-prefix="classPrefix"
         ></nut-icon>
       </view>
       <view
@@ -69,10 +71,20 @@ export default create({
       // 页签右上角的数字角标
       type: String,
       default: ''
+    },
+    classPrefix: {
+      type: String,
+      default: 'nut-icon'
+    },
+    fontClassName: {
+      type: String,
+      default: 'nutui-iconfont'
     }
   },
   setup(props, ctx) {
     const parent: any = inject('parent');
+    console.log(props.classPrefix);
+
     const state = reactive({
       size: parent.size,
       unactiveColor: parent.unactiveColor, // 未选中的颜色

@@ -25,6 +25,8 @@
           class="nut-tabbar-item_icon-box_icon"
           :size="state.size"
           :name="icon"
+          :font-class-name="fontClassName"
+          :class-prefix="classPrefix"
         ></nut-icon>
       </view>
       <view
@@ -69,6 +71,14 @@ export default create({
       // 页签右上角的数字角标
       type: String,
       default: ''
+    },
+    classPrefix: {
+      type: String,
+      default: 'nut-icon'
+    },
+    fontClassName: {
+      type: String,
+      default: 'nutui-iconfont'
     }
   },
   setup(props, ctx) {
