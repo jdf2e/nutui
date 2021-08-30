@@ -60,7 +60,8 @@ export default {
         'pages/picker/index',
         'pages/datepicker/index',
         'pages/textarea/index',
-        'pages/countup/index'
+        'pages/countup/index',
+        'pages/numberkeyboard/index'
       ]
     },
     {
