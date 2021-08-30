@@ -9,7 +9,7 @@
     >
       <span class="icon-box">
         <b class="tips num" v-if="value.num && value.num <= 99">{{ value.num }}</b>
-        <b class="tips" v-else-if="value.num && value.num > 100">{{ '...' }}</b>
+        <b class="tips" v-else-if="value.num && value.num >= 100">{{ '...' }}</b>
         <template v-if="value.icon">
           <div class="icon" :style="{ backgroundImage: `url(${index == currIndex ? value.activeIcon : value.icon})` }"></div>
         </template>
