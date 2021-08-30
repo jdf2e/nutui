@@ -19,45 +19,30 @@
         </view>
         <view class="underline"></view>
       </view>
-      <nut-swiper
-        :init-page="defaultIndex"
-        :pagination-visible="false"
-        :duration="animatedTime"
-        pagination-color="#426543"
-        @change="changeTab"
-        ref="nutuiSwiper"
-        :touchable="!noSwiping"
-        :direction="direction"
-        class="tab-swiper"
-      >
-        <slot></slot>
-      </nut-swiper>
+      <view v-if="titles.length > 0" class="tab-swiper" ref="nutuiSwiper">
+        <TabTitle v-bind:slots="titles[activeIndex].main"></TabTitle>
+      </view>
     </view>
   </view>
 </template>
 <script lang="ts">
-import {
-  PropType,
-  reactive,
-  ref,
-  onMounted,
-  watch,
-  VNode,
-  watchEffect
-} from 'vue';
+import { PropType, reactive, ref, onMounted, watch, VNode } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import tabpanel from '@/packages/__VUE/tabpanel/index.vue';
+import tabpanel from '@/packages/__VUE/tabpanel/index.taro.vue';
 const { create } = createComponent('tab');
 import TabTitle from './tabTitle';
+
 type TabDirection = 'horizontal' | 'vertical';
 
 interface DataTitle {
   title?: string;
   content?: VNode[];
+  main?: VNode[];
 }
 
 type currChild = {
   header: Function;
+  default: Function;
 } & VNode[];
 
 export default create({
@@ -139,6 +124,7 @@ export default create({
     function switchTitle(index: number) {
       activeIndex.value = index;
       centerTitle(index);
+      console.log(nutuiSwiper.value);
       nutuiSwiper.value.to(index);
     }
     function initTitle() {
@@ -148,9 +134,11 @@ export default create({
           ctx.slots.default().length === 1
             ? (ctx.slots.default()[0].children as VNode[])
             : ctx.slots.default();
+        console.log(slots);
         slots &&
           slots.map((item, index) => {
             if (typeof item.children == 'string') return;
+
             titles.push({
               title:
                 item.props && item.props['tab-title']
@@ -159,6 +147,10 @@ export default create({
               content:
                 item.children && (item.children as currChild).header
                   ? (item.children as currChild).header()
+                  : null,
+              main:
+                item.children && (item.children as currChild).default
+                  ? (item.children as currChild).default()
                   : null
             });
           });
@@ -167,7 +159,7 @@ export default create({
     onMounted(() => {
       initTitle();
     });
-    watchEffect(
+    watch(
       () => (ctx.slots.default ? ctx.slots.default() : ''),
       () => {
         initTitle();
