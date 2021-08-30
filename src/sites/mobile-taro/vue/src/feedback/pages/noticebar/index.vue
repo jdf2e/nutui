@@ -77,9 +77,8 @@
 
 <script lang="ts">
 import { onMounted, reactive, toRefs } from 'vue';
-import { createComponent } from '../../utils/create';
-const { createDemo } = createComponent('noticebar');
-export default createDemo({
+
+export default {
   props: {},
   setup() {
     const state = reactive({
@@ -102,7 +101,7 @@ export default createDemo({
       go
     };
   }
-});
+};
 </script>
 
 <style lang="scss" scoped>

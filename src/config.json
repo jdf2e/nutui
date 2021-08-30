@@ -446,6 +446,17 @@
           "show": true,
           "desc": "用来展示进度",
           "author": "Drjingubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "NoticeBar",
+          "type": "component",
+          "cName": "公告栏",
+          "desc": "用于循环播放展示一组消息通知",
+          "sort": 8,
+          "show": true,
+          "taro": true,
+          "author": "yangxiaolu"
         }
       ]
     },
@@ -535,17 +546,6 @@
           "show": false,
           "desc": "标签栏子组件",
           "author": "Drjingfubo"
-        },
-        {
-          "version": "3.0.0",
-          "name": "NoticeBar",
-          "type": "component",
-          "cName": "公告栏",
-          "desc": "用于循环播放展示一组消息通知",
-          "sort": 8,
-          "show": true,
-          "taro": false,
-          "author": "yangxiaolu"
         }
       ]
     },
@@ -736,7 +736,7 @@
           "desc": "倒计时",
           "sort": 16,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "yangxiaolu"
         }
       ]
