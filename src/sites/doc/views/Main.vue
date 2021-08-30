@@ -79,6 +79,41 @@
       </div>
     </div>
 
+    <!-- nutui-cat / nutui-营销 -->
+    <div class="doc-content-cat-marketing">
+      <div class="cat-content">
+        <div class="cat-content-left">
+          <img src="./../../assets/images/cat-back.png" alt="" />
+        </div>
+        <div class="cat-content-right">
+          <div class="cat-content-right-title">
+            <img src="./../../assets/images/cat-title.png" alt="" />
+          </div>
+          <p class="cat-content-right-desc">基于NutUI的大促组件库</p>
+          <div class="cat-content-right-godetail" @click="toDetail"
+            >查看详情</div
+          >
+        </div>
+      </div>
+      <div class="marketing-content">
+        <div class="marketing-content-left">
+          <img src="./../../assets/images/marketing-back.png" alt="" />
+        </div>
+        <div class="marketing-content-right">
+          <div class="marketing-content-right-title">
+            <img src="./../../assets/images/marketing-title.png" alt="" />
+          </div>
+          <p class="marketing-content-right-desc">基于NutUI的营销组件库</p>
+          <div class="marketing-content-right-godetail" @click="goAwait"
+            >敬请期待</div
+          >
+        </div>
+        <div class="marketing-content-mask" v-if="showAwait" @click="hideAwait">
+          正在建设中，敬请期待~
+        </div>
+      </div>
+    </div>
+
     <div class="doc-content-cases" v-if="casesImages.length">
       <div class="doc-content-hd">
         <h4 class="doc-content-title">赋能案例</h4>
@@ -172,7 +207,8 @@ export default defineComponent({
       casesImages: new Array(),
       currentCaseItem: {},
       currentCaseIndex: 0,
-      localTheme: localStorage.getItem('nutui-theme-color')
+      localTheme: localStorage.getItem('nutui-theme-color'),
+      showAwait: false
     });
     let caseSwiper: any = null;
     onMounted(() => {
@@ -225,7 +261,12 @@ export default defineComponent({
         }
       });
     });
-
+    const goAwait = () => {
+      data.showAwait = true;
+    };
+    const hideAwait = () => {
+      data.showAwait = false;
+    };
     const onLeft = () => {
       caseSwiper.slidePrev();
     };
@@ -250,6 +291,9 @@ export default defineComponent({
     function toIntro() {
       router.push({ path: '/intro' });
     }
+    const toDetail = () => {
+      window.open('/cat');
+    };
     return {
       toIntro,
       ...toRefs(data),
@@ -257,7 +301,10 @@ export default defineComponent({
       themeNameValue,
       toLink,
       onLeft,
-      onRight
+      onRight,
+      toDetail,
+      goAwait,
+      hideAwait
     };
   }
 });
@@ -376,6 +423,120 @@ export default defineComponent({
           font-size: 18px;
           line-height: 30px;
         }
+      }
+    }
+  }
+  &-cat-marketing {
+    width: 1200px;
+    margin: 0 auto 90px;
+    display: flex;
+    .cat-content,
+    .marketing-content {
+      width: 585px;
+      height: 270px;
+      background: linear-gradient(
+        130.16deg,
+        rgba(249, 188, 203, 1) 0%,
+        rgba(247, 239, 247, 1) 26.666302447552447%,
+        rgba(241, 240, 246, 1) 66.69307255244755%,
+        rgba(180, 228, 228, 1) 100%
+      );
+      border-radius: 4px 4px 4px 0 4px;
+      margin-left: 44px;
+    }
+    .cat-content,
+    .marketing-content {
+      margin-left: 0px;
+      display: flex;
+      align-items: center;
+      &-left {
+        height: 182px;
+        width: 270px;
+        margin-left: 14px;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+      &-right {
+        height: 182px;
+        width: 233px;
+        margin-left: 37px;
+        font-family: PingFangSC;
+        font-weight: normal;
+        padding-top: 11px;
+        box-sizing: border-box;
+        &-title {
+          img {
+            height: 46px;
+            width: 177px;
+          }
+        }
+        &-desc {
+          margin-top: 26px;
+          font-size: 18px;
+          color: rgba(51, 51, 51, 1);
+        }
+        &-godetail {
+          width: 130px;
+          height: 35px;
+          margin-top: 24px;
+          line-height: 35px;
+          text-align: center;
+          font-size: 19px;
+          cursor: pointer;
+          color: rgba(255, 255, 255, 1);
+          background: linear-gradient(
+            135deg,
+            rgba(255, 28, 101, 1) 0%,
+            rgba(255, 133, 202, 1) 67.83430752051981%,
+            rgba(255, 142, 155, 1) 87.35307751528254%,
+            rgba(255, 169, 151, 1) 100%
+          );
+          border-radius: 17px;
+        }
+      }
+    }
+    .marketing-content {
+      position: relative;
+      margin-left: 44px;
+      background: linear-gradient(
+        130.16deg,
+        rgba(219, 210, 255, 1) 0%,
+        rgba(247, 239, 247, 1) 26.666302447552447%,
+        rgba(241, 240, 246, 1) 66.69307255244755%,
+        rgba(255, 236, 203, 1) 100%
+      );
+      &-left {
+        height: 196px;
+        width: 243px;
+        margin-left: 28px;
+      }
+      &-right {
+        height: 196px;
+        padding-top: 20px;
+        &-godetail {
+          background: linear-gradient(
+            135deg,
+            rgba(114, 60, 255, 1) 0%,
+            rgba(111, 58, 255, 1) 63.49938195167575%,
+            rgba(150, 110, 255, 1) 87.35307751528254%,
+            rgba(149, 117, 241, 1) 100%
+          );
+        }
+      }
+      &-mask {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.52);
+        border-radius: 4px 4px 4px 0 4px;
+        text-align: center;
+        line-height: 270px;
+        font-size: 30px;
+        color: #ffffff;
       }
     }
   }

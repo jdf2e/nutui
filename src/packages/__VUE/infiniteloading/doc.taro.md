@@ -4,7 +4,9 @@
 
 列表滚动到底部自动加载更多数据。
 
-### 安装
+#### 直接使用 Taro 现有 ScrollView 组件开发 [参考文档](https://docs.taro.zone/docs/components/viewContainer/scroll-view)
+
+<!-- ### 安装
 
 ```javascript
   import { createApp } from 'vue';
@@ -109,5 +111,5 @@ setup() {
 |--------|----------------|--------------|
 | load-more  | 继续加载的回调函数 | done 函数，用于关闭加载中状态 |
 | scroll-change  | 实时监听滚动高度 | 滚动高度 |
-| refresh  | 下拉刷新事件回调 | done 函数，用于关闭加载中状态 |
+| refresh  | 下拉刷新事件回调 | done 函数，用于关闭加载中状态 | -->
     
