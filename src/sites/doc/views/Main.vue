@@ -292,8 +292,7 @@ export default defineComponent({
       router.push({ path: '/intro' });
     }
     const toDetail = () => {
-      window.location.href =
-        '//storage.jd.local/jdc-activity/Nutui-Cat/1.0.0/index.html#/intro';
+      window.open('/cat');
     };
     return {
       toIntro,
