@@ -35,6 +35,17 @@
       </nut-cell>
     </nut-cell-group>
 
+    <nut-cell-group title="自定义左侧 Icon 区域">
+      <nut-cell title="图片">
+        <template v-slot:icon>
+          <img
+            class="nut-icon"
+            src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+          />
+        </template>
+      </nut-cell>
+    </nut-cell-group>
+
     <h2>展示图标</h2>
     <nut-cell title="姓名" icon="my" desc="张三" isLink> </nut-cell>
     <h2>只展示 desc ，可通过 desc-text-align 调整内容位置</h2>

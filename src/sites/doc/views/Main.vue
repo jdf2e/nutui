@@ -1,4 +1,7 @@
 <template>
+  <div class="v3-banner" :class="{ active: false }"
+    >NutUI 现已发布 Vue3.x 版本，带来更强大的功能和出色的体验</div
+  >
   <doc-header></doc-header>
   <div class="doc-content" :class="themeName()">
     <div class="doc-content-index">
@@ -80,43 +83,52 @@
     </div>
 
     <!-- nutui-cat / nutui-营销 -->
-    <div class="doc-content-cat-marketing">
-      <div class="cat-content">
-        <div class="cat-content-left">
-          <img src="./../../assets/images/cat-back.png" alt="" />
-        </div>
-        <div class="cat-content-right">
-          <div class="cat-content-right-title">
-            <img src="./../../assets/images/cat-title.png" alt="" />
-          </div>
-          <p class="cat-content-right-desc">基于NutUI的大促组件库</p>
-          <div class="cat-content-right-godetail" @click="toDetail"
-            >查看详情</div
-          >
-        </div>
+    <div class="doc-content-catmarketing">
+      <div class="doc-content-hd">
+        <h4 class="doc-content-title">业务组件</h4>
       </div>
-      <div class="marketing-content">
-        <div class="marketing-content-left">
-          <img src="./../../assets/images/marketing-back.png" alt="" />
-        </div>
-        <div class="marketing-content-right">
-          <div class="marketing-content-right-title">
-            <img src="./../../assets/images/marketing-title.png" alt="" />
+      <div class="doc-content-catmarketing-content">
+        <div class="cat-content">
+          <div class="cat-content-left">
+            <img src="./../../assets/images/cat-back.png" alt="" />
           </div>
-          <p class="marketing-content-right-desc">基于NutUI的营销组件库</p>
-          <div class="marketing-content-right-godetail" @click="goAwait"
-            >敬请期待</div
-          >
+          <div class="cat-content-right">
+            <div class="cat-content-right-title">
+              <img src="./../../assets/images/cat-title.png" alt="" />
+            </div>
+            <p class="cat-content-right-desc">基于 NutUI 的大促组件</p>
+            <div class="cat-content-right-godetail" @click="toDetail"
+              >查看详情</div
+            >
+          </div>
         </div>
-        <div class="marketing-content-mask" v-if="showAwait" @click="hideAwait">
-          正在建设中，敬请期待~
+        <div class="marketing-content">
+          <div class="marketing-content-left">
+            <img src="./../../assets/images/marketing-back.png" alt="" />
+          </div>
+          <div class="marketing-content-right">
+            <div class="marketing-content-right-title">
+              <img src="./../../assets/images/marketing-title.png" alt="" />
+            </div>
+            <p class="marketing-content-right-desc">基于 NutUI 的营销组件</p>
+            <div class="marketing-content-right-godetail" @click="goAwait"
+              >敬请期待</div
+            >
+          </div>
+          <div
+            class="marketing-content-mask"
+            v-if="showAwait"
+            @click="hideAwait"
+          >
+            正在建设中，敬请期待~
+          </div>
         </div>
       </div>
     </div>
 
     <div class="doc-content-cases" v-if="casesImages.length">
       <div class="doc-content-hd">
-        <h4 class="doc-content-title">赋能案例</h4>
+        <h4 class="doc-content-title">应用案例</h4>
       </div>
       <div class="doc-content-cases-content">
         <div class="doc-content-cases-content__main">
@@ -160,7 +172,7 @@
     </div>
     <div class="doc-content-more" v-if="articleList.length">
       <div class="doc-content-hd">
-        <h4 class="doc-content-title"></h4>
+        <h4 class="doc-content-title">学习资源</h4>
         <a class="sub-more" href="#/resource">More</a>
       </div>
       <ul class="more-list">
@@ -292,8 +304,7 @@ export default defineComponent({
       router.push({ path: '/intro' });
     }
     const toDetail = () => {
-      window.location.href =
-        '//storage.jd.local/jdc-activity/Nutui-Cat/1.0.0/index.html#/intro';
+      window.open('/cat');
     };
     return {
       toIntro,
@@ -311,6 +322,26 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
+.v3-banner {
+  position: fixed;
+  top: 0;
+  transition: all 0.3s;
+  &.active {
+    top: $doc-header-height;
+  }
+  font-size: 14px;
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+  padding: 10px 60px;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    rgba(242, 20, 12, 1) 0%,
+    rgba(232, 34, 14, 1) 69.83950099728881%,
+    rgba(242, 77, 12, 1) 100%
+  );
+}
 @keyframes fadeInLeft {
   from {
     opacity: 0;
@@ -427,12 +458,17 @@ export default defineComponent({
       }
     }
   }
-  &-cat-marketing {
+  &-catmarketing {
     width: 1200px;
     margin: 0 auto 90px;
-    display: flex;
+
+    &-content {
+      display: flex;
+    }
+
     .cat-content,
     .marketing-content {
+      display: flex;
       width: 585px;
       height: 270px;
       background: linear-gradient(
