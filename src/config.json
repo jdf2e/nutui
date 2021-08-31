@@ -546,6 +546,17 @@
           "show": true,
           "taro": false,
           "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Elevator",
+          "type": "component",
+          "cName": "电梯楼层",
+          "desc": "用于列表快速定位以及索引的显示",
+          "sort": 5,
+          "show": true,
+          "taro": true,
+          "author": "szg2008"
         }
       ]
     },
