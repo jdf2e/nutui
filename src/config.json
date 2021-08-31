@@ -446,6 +446,17 @@
           "show": true,
           "desc": "用来展示进度",
           "author": "Drjingubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "NoticeBar",
+          "type": "component",
+          "cName": "公告栏",
+          "desc": "用于循环播放展示一组消息通知",
+          "sort": 8,
+          "show": true,
+          "taro": true,
+          "author": "yangxiaolu"
         }
       ]
     },
@@ -535,17 +546,6 @@
           "show": false,
           "desc": "标签栏子组件",
           "author": "Drjingfubo"
-        },
-        {
-          "version": "3.0.0",
-          "name": "NoticeBar",
-          "type": "component",
-          "cName": "公告栏",
-          "desc": "用于循环播放展示一组消息通知",
-          "sort": 8,
-          "show": true,
-          "taro": false,
-          "author": "yangxiaolu"
         }
       ]
     },
@@ -720,13 +720,23 @@
         },
         {
           "version": "3.0.0",
+          "name": "NumberKeyboard",
+          "taro": true,
+          "sort": 13,
+          "cName": "数字键盘",
+          "type": "component",
+          "show": true,
+          "desc": "虚拟数字键盘",
+          "author": "Drjingfubo"
+        },
+        {
           "name": "CountDown",
           "type": "component",
           "cName": "倒计时",
           "desc": "倒计时",
           "sort": 16,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "yangxiaolu"
         }
       ]
