@@ -546,6 +546,28 @@
           "show": false,
           "desc": "标签栏子组件",
           "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "NoticeBar",
+          "type": "component",
+          "cName": "公告栏",
+          "desc": "用于循环播放展示一组消息通知",
+          "sort": 8,
+          "show": true,
+          "taro": false,
+          "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Elevator",
+          "type": "component",
+          "cName": "电梯楼层",
+          "desc": "用于列表快速定位以及索引的显示",
+          "sort": 5,
+          "show": true,
+          "taro": true,
+          "author": "szg2008"
         }
       ]
     },
