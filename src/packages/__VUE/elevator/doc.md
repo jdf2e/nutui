@@ -14,7 +14,60 @@ import { Elevator } from '@nutui/nutui';
 import { Elevator } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Elevator).use(Icon);
+app.use(Elevator);
+
+```
+
+### 基本用法
+
+```js
+<nut-elevator :index-list="dataList" :height="260" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
+
+setup() {
+    const state = reactive({
+      acceptKey: 'num',
+      dataList: [
+        {
+          title: 'A',
+          list: [
+            {
+              name: '安徽',
+              id: 1
+            }
+          ]
+        }
+        ...
+      ],
+      dataList2: [
+        {
+          num: '一',
+          list: [
+            {
+              name: '北京',
+              id: 1
+            }
+          ]
+        }
+        ...
+      ]
+    });
+
+    const clickItem = (key: string, item: any) => {
+      console.log(key, JSON.stringify(item));
+    };
+
+    const clickIndex = (key: string) => {
+      console.log(key);
+    };
+
+    return { ...toRefs(state), clickItem, clickIndex };
+  }
+```
+
+### 自定义索引
+
+```js
+<nut-elevator :index-list="dataList2" :height="220" :acceptKey="acceptKey" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
 
 ```
 
@@ -24,14 +77,15 @@ app.use(Elevator).use(Icon);
 
 | 字段                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
-| show-indicator         | 是否显示索引值提示符                                                         | Boolean  | `true`     |
-| init-index             | 初始化进入后，当前定位到的索引值                                                        | Number/String  | `0`    |
-| index-list             | 索引字符列表                                                         | String[]  | -     |
+| height                 | 电梯区域的高度                                                    | Number、String  | `200px`
+| accept-key             | 索引 key 值                                                      | String  | `title` |
+| index-list             | 索引列表                                                         | Array（item需包含 id、name属性）  | `[{id: 0, name: ''}]` |
 
 ### Event
 
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
-| click | 点击事件 | event:Event |
+| click-item | 点击内容 | key: string, item: { id: 0, name: '' } |
+| click-index | 点击索引 | key: string |
 
 
