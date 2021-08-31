@@ -109,7 +109,7 @@ export default create({
       let value = input.value;
 
       emitChange(value, event);
-      emit('blur', event);
+      emit('blur', { value, event });
     };
 
     return {
