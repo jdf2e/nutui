@@ -36,15 +36,7 @@
   </view>
 </template>
 <script lang="ts">
-import {
-  PropType,
-  reactive,
-  ref,
-  onMounted,
-  watch,
-  VNode,
-  watchEffect
-} from 'vue';
+import { PropType, reactive, ref, onMounted, watch, VNode } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import tabpanel from '@/packages/__VUE/tabpanel/index.vue';
 const { create } = createComponent('tab');
@@ -139,6 +131,7 @@ export default create({
     function switchTitle(index: number) {
       activeIndex.value = index;
       centerTitle(index);
+      console.log(nutuiSwiper.value);
       nutuiSwiper.value.to(index);
     }
     function initTitle() {
@@ -167,7 +160,7 @@ export default create({
     onMounted(() => {
       initTitle();
     });
-    watchEffect(
+    watch(
       () => (ctx.slots.default ? ctx.slots.default() : ''),
       () => {
         initTitle();

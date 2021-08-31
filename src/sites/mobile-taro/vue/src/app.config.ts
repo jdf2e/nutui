@@ -15,6 +15,7 @@ export default {
         'pages/dialog/index',
         'pages/toast/index',
         'pages/notify/index',
+        'pages/noticebar/index',
         'pages/range/index',
         'pages/popup/index',
         'pages/switch/index',
@@ -61,7 +62,9 @@ export default {
         'pages/picker/index',
         'pages/datepicker/index',
         'pages/textarea/index',
-        'pages/countup/index'
+        'pages/countdown/index',
+        'pages/countup/index',
+        'pages/numberkeyboard/index'
       ]
     },
     {
