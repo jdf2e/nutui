@@ -1,4 +1,4 @@
-# Elevator 电梯组件
+# Elevator 电梯楼层
 
 ### 介绍
 
@@ -15,14 +15,14 @@ import { Elevator } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Elevator);
-
 ```
 
 ### 基本用法
 
-```js
+``` html
 <nut-elevator :index-list="dataList" :height="260" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
-
+```
+``` javascript
 setup() {
     const state = reactive({
       acceptKey: 'num',
@@ -66,9 +66,8 @@ setup() {
 
 ### 自定义索引
 
-```js
+``` html
 <nut-elevator :index-list="dataList2" :height="220" :acceptKey="acceptKey" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
-
 ```
 
 ## API
