@@ -16,4 +16,13 @@
       color: $checkbox-label-disable-color;
     }
   }
+  &__icon {
+    color: $primary-color;
+  }
+  &__icon--unchecked {
+    color: $checkbox-icon-disable-color;
+  }
+  &__icon--disable {
+    color: $help-color;
+  }
 }
