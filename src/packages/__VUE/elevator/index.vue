@@ -23,9 +23,12 @@
         >
       </view>
     </view>
-    <view class="nut-elevator__code--current" v-show="scrollStart">{{
-      indexList[currentIndex][acceptKey]
-    }}</view>
+    <view
+      class="nut-elevator__code--current"
+      v-show="scrollStart"
+      v-if="indexList.length"
+      >{{ indexList[currentIndex][acceptKey] }}</view
+    >
     <view
       class="nut-elevator__bars"
       @touchstart="touchStart"
