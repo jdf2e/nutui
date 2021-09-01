@@ -16,4 +16,13 @@
       color: $radio-label-disable-color;
     }
   }
+  &__icon {
+    color: $primary-color;
+  }
+  &__icon--unchecked {
+    color: $radio-icon-disable-color;
+  }
+  &__icon--disable {
+    color: $help-color;
+  }
 }

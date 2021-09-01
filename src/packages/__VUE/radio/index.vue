@@ -39,9 +39,9 @@ export default create({
     const color = computed(() => {
       return !props.disabled
         ? isCurValue.value
-          ? '#fa2c19'
-          : '#d6d6d6'
-        : '#f5f5f5';
+          ? 'nut-radio__icon'
+          : 'nut-radio__icon--unchecked'
+        : 'nut-radio__icon--disable';
     });
 
     const position = computed(() => {
@@ -53,7 +53,7 @@ export default create({
       return h(nutIcon, {
         name: isCurValue.value ? iconActiveName : iconName,
         size: iconSize,
-        color: color.value
+        class: color.value
       });
     };
 

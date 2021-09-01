@@ -25,7 +25,10 @@ app.use(Collapse);
 
 ```html
 <nut-collapse v-model:active="active1" icon="down-arrow">
-  <nut-collapse-item :title="title1" :name="1">
+  <nut-collapse-item :name="1">
+    <template v-slot:mTitle>
+      {{title1}}
+    </template>
     NutUI是一套拥有京东风格的轻量级的 Vue 组件库
   </nut-collapse-item>
   <nut-collapse-item :title="title2" :name="2">
@@ -126,7 +129,10 @@ setup() {
   rotate="90"
 >
   <nut-collapse-item :title="title1" :name="1">
-      NUTUI3.0重新思考其内在的一致性和可组合性
+    <template v-slot:sTitle>
+      文本测试
+    </template>
+    NUTUI3.0重新思考其内在的一致性和可组合性
   </nut-collapse-item>
   <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">
     提⾼产研输出对接的效率，降低输出工作量
@@ -191,7 +197,6 @@ return {
 | icon | 图标链接/或使用 NutUI 的 icon | string | ‘’ |
 | icon-size | 图标大小 | string | 16px |
 | icon-color | 图标颜色 | string | '' |
-| sub-title | 标题栏副标题 | string | - |
 | title-icon | 标题图标链接/或使用 NutUI 的 icon | string | ‘’ |
 | title-icon-size | 标题图标大小 | string | 16px |
 | title-icon-color | 标题图标颜色 | string | ’‘ |
@@ -202,8 +207,8 @@ return {
 | 参数 | 说明 | 类型 | 默认值 | 
 |------|------|------|------|
 | name | 唯一标识符，必填 | string \ number | -1 |
-| title | 标题栏左侧内容 | string | - |
-| sub-title | 标题栏副标题 | string | - |
+| title | 标题栏左侧内容，支持插槽传入（props传入的优先级更高） | string | - |
+| sub-title | 标题栏副标题，支持插槽传入（props传入的优先级更高） | string | - |
 | disabled | 标题栏是否禁用 | boolean | false |
 
 ### Events

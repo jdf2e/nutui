@@ -1,38 +1,50 @@
 <template>
-  <view :class="[direction === 'vertical' ? 'vertical-tab' : 'nutui-tab']">
-    <view :class="['tab-title', iconType, 'tab-title-scroll']" ref="navlist">
-      <view
-        :class="[
-          'tab-title-box',
-          { 'nut-tab-active': activeIndex == index },
-          { 'tab-title-box-scroll': scrollType == 'scroll' }
-        ]"
-        v-for="(item, index) in titles"
-        :key="index"
-        @click="switchTitle(index, $event)"
-      >
-        <span class="world">{{ item.title }}</span>
-        <TabTitle v-bind:slots="item.content" v-if="item.content"></TabTitle>
-      </view>
-      <view class="underline"></view>
-    </view>
-    <nut-swiper
-      :init-page="defaultIndex"
-      :pagination-visible="false"
-      :duration="animatedTime"
-      pagination-color="#426543"
-      @change="changeTab"
-      ref="nutuiSwiper"
-      :touchable="!noSwiping"
-      :direction="direction"
-      class="tab-swiper"
+  <view class="nutui-tab">
+    <view
+      :class="[direction === 'vertical' ? 'vertical-tab' : 'horizontal-tab']"
     >
-      <slot></slot>
-    </nut-swiper>
+      <view :class="['tab-title', iconType, 'tab-title-scroll']" ref="navlist">
+        <view
+          :class="[
+            'tab-title-box',
+            { 'nut-tab-active': activeIndex == index },
+            { 'tab-title-box-scroll': scrollType == 'scroll' }
+          ]"
+          v-for="(item, index) in titles"
+          :key="index"
+          @click="switchTitle(index, $event)"
+        >
+          <span class="world">{{ item.title }}</span>
+          <TabTitle v-bind:slots="item.content" v-if="item.content"></TabTitle>
+        </view>
+        <view class="underline"></view>
+      </view>
+      <nut-swiper
+        :init-page="defaultIndex"
+        :pagination-visible="false"
+        :duration="animatedTime"
+        pagination-color="#426543"
+        @change="changeTab"
+        ref="nutuiSwiper"
+        :touchable="!noSwiping"
+        :direction="direction"
+        class="tab-swiper"
+      >
+        <slot></slot>
+      </nut-swiper>
+    </view>
   </view>
 </template>
 <script lang="ts">
-import { PropType, reactive, ref, onMounted, watch, VNode } from 'vue';
+import {
+  PropType,
+  reactive,
+  ref,
+  onMounted,
+  watch,
+  VNode,
+  watchEffect
+} from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import tabpanel from '@/packages/__VUE/tabpanel/index.vue';
 const { create } = createComponent('tab');
@@ -127,7 +139,6 @@ export default create({
     function switchTitle(index: number) {
       activeIndex.value = index;
       centerTitle(index);
-      console.log(nutuiSwiper.value);
       nutuiSwiper.value.to(index);
     }
     function initTitle() {
@@ -156,7 +167,7 @@ export default create({
     onMounted(() => {
       initTitle();
     });
-    watch(
+    watchEffect(
       () => (ctx.slots.default ? ctx.slots.default() : ''),
       () => {
         initTitle();
