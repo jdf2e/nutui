@@ -773,7 +773,7 @@
           "taro": true,
           "name": "Barrage",
           "type": "component",
-          "cName": "弹幕组件",
+          "cName": "弹幕",
           "desc": "用于视频弹幕等展示",
           "sort": 2,
           "show": true,
