@@ -26,6 +26,18 @@
       is-link
       @click="loadingToast('加载中')"
     ></nut-cell>
+    <h2>Toast不消失</h2>
+    <nut-cell
+      title="Toast 文字提示不消失"
+      is-link
+      @click="NoToast('Toast不消失~')"
+    ></nut-cell>
+    <h2>Loading带透明遮罩</h2>
+    <nut-cell
+      title="带文案+带透明遮罩+自动消失"
+      is-link
+      @click="NoLoading('加载中~')"
+    ></nut-cell>
   </div>
 </template>
 
@@ -50,12 +62,24 @@ export default createDemo({
     const loadingToast = (msg) => {
       Toast.loading(msg);
     };
+    const NoToast = (msg) => {
+      Toast.text(msg, {
+        duration: 0
+      });
+    };
+    const NoLoading = (msg) => {
+      Toast.loading(msg, {
+        cover: true
+      });
+    };
     return {
       textToast,
       successToast,
       errorToast,
       warningToast,
-      loadingToast
+      loadingToast,
+      NoToast,
+      NoLoading
     };
   }
 });
