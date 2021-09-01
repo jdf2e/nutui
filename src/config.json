@@ -345,6 +345,7 @@
           "cName": "视频播放器",
           "desc": "视频播放组件",
           "sort": 20,
+          "taro": false,
           "show": true,
           "tarodoc": true,
           "author": "zy19940510"
