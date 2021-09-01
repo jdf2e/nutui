@@ -345,6 +345,7 @@
           "cName": "视频播放器",
           "desc": "视频播放组件",
           "sort": 20,
+          "taro": false,
           "show": true,
           "tarodoc": true,
           "author": "zy19940510"
@@ -773,7 +774,7 @@
           "taro": true,
           "name": "Barrage",
           "type": "component",
-          "cName": "弹幕组件",
+          "cName": "弹幕",
           "desc": "用于视频弹幕等展示",
           "sort": 2,
           "show": true,
