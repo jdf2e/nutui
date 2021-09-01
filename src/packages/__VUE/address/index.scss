@@ -61,42 +61,20 @@
 
     .region-con {
       display: block;
-      margin: 20px 0 0;
-      position: relative;
+      margin: 20px 20px 0;
       .region-group {
+        padding-top: 15px;
         height: 270px;
         overflow-y: auto;
 
         .region-item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 20px;
           font-size: $font-size-1;
           color: #333;
-          &-code {
-            position: relative;
-            height: 35px;
-            line-height: 35px;
-            font-size: $font-size-2;
-            color: $title-color;
-            padding: 0 20px;
-            font-weight: 500;
-            &:after {
-              content: ' ';
-              width: 100%;
-              height: 1px;
-              position: absolute;
-              left: 0;
-              bottom: 0;
-              background-color: $help-color;
-            }
-          }
-          &-name {
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-            height: 30px;
-            line-height: 30px;
-            &.active {
-              font-weight: bold;
-            }
+          &.active {
+            font-weight: bold;
           }
 
           .region-item-icon {
@@ -104,36 +82,10 @@
           }
         }
       }
-      &-current-code {
-        position: absolute;
-        right: 60px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 45px;
-        height: 45px;
-        line-height: 45px;
-        border-radius: 50%;
-        background: $white;
-        box-shadow: 0 3px 3px 1px rgba(240, 240, 240, 1);
-        text-align: center;
-      }
-      &-codes-wrapper {
-        position: absolute;
-        right: 8px;
-        top: 50%;
-        transform: translateY(-50%);
-        padding: 15px 0;
-        background-color: #eeeff2;
-        border-radius: 6px;
-        text-align: center;
-        z-index: 10;
-      }
-      &-codes {
-        &-item {
-          padding: 3px;
-          font-size: $font-size-0;
-        }
-      }
+    }
+    .elevator-group {
+      display: flex;
+      margin-top: 20px;
     }
   }
 
@@ -149,7 +101,6 @@
 
       .exist-ul {
         .exist-item {
-          width: 100%;
           display: flex;
           align-items: center;
           margin-bottom: 20px;
@@ -160,18 +111,7 @@
             font-weight: bold;
           }
           .exist-item-icon {
-            width: 15px;
             margin-right: 9px;
-          }
-          &-info {
-            flex: 1;
-            &-top {
-              display: flex;
-              justify-content: space-between;
-              margin-bottom: 10px;
-              color: #292929;
-              font-size: 14px;
-            }
           }
           span {
             display: inline-block;
