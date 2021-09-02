@@ -23,7 +23,7 @@ app.use(NumberKeyboard);
 ### 基础用法 默认键盘
 
 ```html
- <nut-numberkeyboard v-model:visible="visible" @input="input" @delete="onDelete" @close="close()"> </nut-numberkeyboard>
+<nut-numberkeyboard :visible="true" @input="input" @delete="onDelete" @close="close()"> </nut-numberkeyboard>
 ```
 ### 带右侧栏键盘
 
