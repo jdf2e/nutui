@@ -779,6 +779,16 @@
           "sort": 2,
           "show": true,
           "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Signature",
+          "type": "component",
+          "cName": "签名",
+          "desc": "签名组件",
+          "sort": 3,
+          "show": true,
+          "author": "guoxiaoxiao"
         }
       ]
     }
