@@ -86,7 +86,6 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     ${disabled ? `${prefixCls}--disabled` : ''} 
     ${loading ? `${prefixCls}--loading` : ''}`
   }
-
   const handleClick = (e: any) => {
     if (!loading && !disabled && onClick) {
       onClick(e)
@@ -94,7 +93,6 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
   }
   const getStyle = () => {
     const style: CSSProperties = {}
-    console.log(plain)
     if (color) {
       if (plain) {
         style.color = color

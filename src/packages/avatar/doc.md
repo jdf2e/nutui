@@ -6,11 +6,7 @@
 
 ### 安装
 ``` javascript
-import { createApp } from 'vue';
 import { Avatar } from '@nutui/nutui';
-
-const app = createApp();
-app.use(Avatar);
 ```
 
 ## 代码示例
@@ -19,38 +15,38 @@ app.use(Avatar);
 
 内置 smal / normal / large 三种尺寸规格
 
-``` html
-<nut-avatar size="large" src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-></nut-avatar>
-<nut-avatar size="normal" src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-></nut-avatar>
-<nut-avatar size="small" src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-></nut-avatar>  
+``` tsx
+<Avatar size="large" src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+></Avatar>
+<Avatar size="normal" src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+></Avatar>
+<Avatar size="small" src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+></Avatar>  
 ```
 
 ### 修改形状类型
 
-``` html
-<nut-avatar shape="square"></nut-avatar>
-<nut-avatar shape="round"></nut-avatar>
+``` tsx
+<Avatar shape="square"></Avatar>
+<Avatar shape="round"></Avatar>
 ```
 
 ### 修改背景色
 
-``` html
-<nut-avatar bg-color="#f0250f"></nut-avatar>
+``` tsx
+<Avatar bg-color="#f0250f"></Avatar>
 ```
 
 ### 修改背景icon
 
-``` html
-<nut-avatar icon="https://img30.360buyimg.com/uba/jfs/t1/84318/29/2102/10483/5d0704c1Eb767fa74/fc456b03fdd6cbab.png"></nut-avatar>
+``` tsx
+<Avatar icon="https://img30.360buyimg.com/uba/jfs/t1/84318/29/2102/10483/5d0704c1Eb767fa74/fc456b03fdd6cbab.png"></Avatar>
 ```
 
 ### 设置头像的文本内容
 
-``` html
-<nut-avatar icon>N</nut-avatar>
+``` tsx
+<Avatar icon>N</Avatar>
 ```
 
 
@@ -58,7 +54,7 @@ app.use(Avatar);
 
 | 字段     | 说明                                                                     | 类型   | 默认值 |
 |----------|--------------------------------------------------------------------------|--------|--------|
-| bg-color | 设置头像背景色                                                           | String | #eee   |
+| bgColor | 设置头像背景色                                                           | String | #eee   |
 | size     | 设置头像的大小，提供三种：large/normal/small，支持直接输入数字           | String | normal |
 | shape    | 设置头像的形状，默认是圆形，可以设置为square方形                         | String | round  |
 | src      | 设置头像的背景图片                                                       | String | ''     |
@@ -68,4 +64,4 @@ app.use(Avatar);
 
 | 字段     | 说明                 | 类型     | 回调参数 |
 |----------|----------------------|----------|----------|
-| on-error | 加载图片失败触发事件 | Function | event    |
+| onClick | 点击图片触发事件 | Function | event    |
