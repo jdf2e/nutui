@@ -1,4 +1,22 @@
 
+## v3.1.4
+
+`2021-09-01`
+* :zap: feat: 新增 numberkeyboard 数字键盘组件 (#610) @Drjingfubo
+* :zap: feat: 新增 countdown 倒计时组件 (#611) @yangxiaolu3
+* :zap: feat: 新增 noticebar 公告通知栏组件 @yangxiaolu3
+* :zap: feat: 新增 elevator 电梯组件 @szg2008
+* :zap: feat: 新增 video 视频播放器组件添加 @zy19940510
+* :zap: feat(cell): add icon slot #605 @richard1015
+* :zap: feat(address): add address type 多样式切换 @szg2008
+* :zap: feat(checkbox & radio): 选中状态主题定制优化 @szg2008
+* :zap: feat(textarea): blur event add value @richard1015
+* :zap: style(swipe): transition 滑动动画优化  @richard1015
+* :bug: fix(tabbar): 自定义icon不显示 (#612) @Drjingfubo
+* :bug: fix(tab): 兼容taro中tab组件 (#609) @zhenyulei
+* :zap: docs(toast): 文档及demo优化 (#616) @Drjingfubo
+* :zap: docs: 官网新增 cat 入口 @richard1015
+
 ## v3.1.3
 
 `2021-08-15`
