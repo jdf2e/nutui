@@ -15,7 +15,7 @@
         @close="closeSwitch('isVisible')"
         @choose="setChooseValue"
         :start-date="`2019-10-11`"
-        :end-date="`2022-11-11`"
+        :end-date="`2029-11-11`"
       >
       </nut-calendar>
     </div>
