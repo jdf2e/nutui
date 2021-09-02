@@ -128,6 +128,9 @@ export default create({
 </script>
 
 <style lang="scss">
+.nut-calendar-taro {
+  height: 60vh;
+}
 .popup-box {
   height: 518px;
 }
