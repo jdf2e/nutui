@@ -4,7 +4,7 @@
 
 常用于一组图片或卡片轮播，当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。
 
-### 安装
+<!-- ### 安装
 
 ```javascript
 import { createApp } from 'vue';
@@ -83,7 +83,7 @@ app.use(Swiper);
     <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
   </nut-swiper-item>
 </nut-swiper>
-```
+``` -->
 
 
-#### API [参考文档](https://docs.taro.zone/docs/components/viewContainer/swiper)
+#### 直接使用 Taro 现有 Swiper 组件开发 [参考文档](https://docs.taro.zone/docs/components/viewContainer/swiper)

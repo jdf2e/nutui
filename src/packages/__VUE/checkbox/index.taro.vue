@@ -64,9 +64,9 @@ export default create({
     const color = computed(() => {
       return !pDisabled.value
         ? !pValue.value
-          ? '#d6d6d6'
-          : '#fa2c19'
-        : '#f5f5f5';
+          ? 'nut-checkbox__icon--unchecked'
+          : 'nut-checkbox__icon'
+        : 'nut-checkbox__icon--disable';
     });
 
     const emitChange = (value: string | boolean, label?: string) => {
@@ -79,7 +79,7 @@ export default create({
       return h(nutIcon, {
         name: !pValue.value ? iconName : iconActiveName,
         size: iconSize,
-        color: color.value
+        class: color.value
       });
     };
 

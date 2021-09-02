@@ -27,7 +27,7 @@ let installFunction = `function install(app: App) {
 }`;
 let fileStr = `${importStr}
 ${installFunction}
-export { ${packages.join(',')}  };
+export { install, ${packages.join(',')}  };
 export default { install, version:'${package.version}'};`;
 fs.outputFile(
   path.resolve(__dirname, '../src/packages/nutui.vue.ts'),

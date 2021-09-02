@@ -1,9 +1,9 @@
-import { App, defineComponent, ComponentOptions } from 'vue';
+import { App, defineComponent } from 'vue';
 export function createComponent(name: string) {
   const componentName = 'nut-' + name;
   return {
     componentName,
-    create: function (_component: ComponentOptions) {
+    create: function (_component: any) {
       _component.baseName = name;
       _component.name = componentName;
       _component.install = (vue: App) => {
@@ -14,11 +14,11 @@ export function createComponent(name: string) {
           });
       };
       return defineComponent(_component);
-    } as typeof defineComponent,
-    createDemo: function (_component: ComponentOptions) {
+    },
+    createDemo: function (_component: any) {
       _component.baseName = name;
       _component.name = 'demo-' + name;
       return defineComponent(_component);
-    } as typeof defineComponent
+    }
   };
 }

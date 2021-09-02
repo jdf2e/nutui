@@ -27,9 +27,11 @@
 <script>
 import { defineComponent, reactive, onMounted, watch } from 'vue';
 import { nav } from '@/config.json';
+import { useRouter } from 'vue-router';
 export default defineComponent({
   name: 'search',
   setup() {
+    const router = useRouter();
     const data = reactive({
       nav,
       navList: [],
@@ -99,7 +101,7 @@ export default defineComponent({
           data.searchCurName = cName;
           data.searchIndex = searchIndex;
           if (e.keyCode == 13) {
-            data.$router.push({
+            router.push({
               path: '/' + searchList[searchIndex].name
             });
             data.searchCurName = '';

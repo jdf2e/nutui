@@ -8,16 +8,23 @@ export default {
     {
       root: 'feedback',
       pages: [
+        'pages/swipe/index',
         'pages/collapse/index',
         'pages/backtop/index',
         'pages/actionsheet/index',
         'pages/dialog/index',
         'pages/toast/index',
         'pages/notify/index',
+        'pages/noticebar/index',
+        'pages/range/index',
+        'pages/popup/index',
+        'pages/switch/index',
         'pages/swiper/index',
         'pages/drag/index',
         'pages/steps/index',
-        'pages/infiniteloading/index'
+        'pages/infiniteloading/index',
+        'pages/progress/index',
+        'pages/circleprogress/index'
       ]
     },
     {
@@ -28,13 +35,18 @@ export default {
         'pages/price/index',
         'pages/button/index',
         'pages/avatar/index',
-        'pages/popup/index',
         'pages/overlay/index'
       ]
     },
     {
       root: 'nav',
-      pages: ['pages/navbar/index', 'pages/tabbar/index']
+      pages: [
+        'pages/navbar/index',
+        'pages/tabbar/index',
+        'pages/tab/index',
+        'pages/fixednav/index',
+        'pages/elevator/index'
+      ]
     },
     {
       root: 'dentry',
@@ -42,7 +54,6 @@ export default {
         'pages/inputnumber/index',
         'pages/checkbox/index',
         'pages/input/index',
-        'pages/switch/index',
         'pages/uploader/index',
         'pages/rate/index',
         'pages/radio/index',
@@ -50,13 +61,15 @@ export default {
         'pages/shortpassword/index',
         'pages/picker/index',
         'pages/datepicker/index',
-        'pages/range/index',
-        'pages/textarea/index'
+        'pages/textarea/index',
+        'pages/countdown/index',
+        'pages/countup/index',
+        'pages/numberkeyboard/index'
       ]
     },
     {
       root: 'business',
-      pages: ['pages/address/index']
+      pages: ['pages/address/index', 'pages/barrage/index']
     }
   ],
   window: {

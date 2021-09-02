@@ -77,6 +77,33 @@
         </view-block>
       </view-block>
 
+      <view-block class="custom-address" v-else-if="privateType === 'custom2'">
+        <view class="region-tab">
+          <view
+            class="tab-item"
+            :class="[index == tabIndex ? 'active' : '']"
+            v-for="(item, key, index) in selectedRegion"
+            :key="index"
+            :ref="key"
+            @click="changeRegionTab(item, key, index)"
+          >
+            <view>{{ getTabName(item, index) }}</view>
+          </view>
+          <view
+            class="region-tab-line"
+            ref="regionLine"
+            :style="{ left: lineDistance + 'px' }"
+          ></view>
+        </view>
+        <view class="elevator-group" v-if="showPopup">
+          <nut-elevator
+            :height="height"
+            :index-list="regionList[tabName[tabIndex]]"
+            @click-item="handleElevatorItem"
+          ></nut-elevator>
+        </view>
+      </view-block>
+
       <!-- 配送至 -->
       <view-block class="exist-address" v-else-if="privateType == 'exist'">
         <div class="exist-address-group">
@@ -95,14 +122,23 @@
                 :color="item.selectedAddress ? '#FA2C19' : ''"
                 size="13px"
               ></nut-icon>
-
-              <view>{{
-                item.provinceName +
-                item.cityName +
-                item.countyName +
-                item.townName +
-                item.addressDetail
-              }}</view>
+              <div class="exist-item-info">
+                <div class="exist-item-info-top" v-if="item.name && item.phone">
+                  <div class="exist-item-info-name">{{ item.name }}</div>
+                  <div class="exist-item-info-phone">{{ item.phone }}</div>
+                </div>
+                <div class="exist-item-info-bottom">
+                  <view>
+                    {{
+                      item.provinceName +
+                      item.cityName +
+                      item.countyName +
+                      item.townName +
+                      item.addressDetail
+                    }}
+                  </view>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
@@ -124,6 +160,8 @@ import { createComponent } from '../../utils/create';
 import Icon from '../icon/index.taro.vue';
 import Popup from '../popup/index.taro.vue';
 import Taro from '@tarojs/taro';
+import { transformData } from './transformData';
+import Elevator from './../elevator/index.taro.vue';
 
 const { create, componentName } = createComponent('address');
 
@@ -149,6 +187,7 @@ interface AddressList {
   selectedAddress: boolean;
 }
 export default create({
+  children: [Elevator],
   inheritAttrs: false,
   props: {
     visible: {
@@ -214,11 +253,16 @@ export default create({
       // 选择其他地址左上角返回 icon
       type: String,
       default: 'left'
+    },
+    height: {
+      type: [String, Number],
+      default: '200px'
     }
   },
   components: {
     'nut-icon': Icon,
-    'nut-popup': Popup
+    'nut-popup': Popup,
+    'nut-elevator': Elevator
   },
   emits: [
     'update:visible',
@@ -251,11 +295,15 @@ export default create({
     const tabIndex = ref(0);
     const tabName = ref(['province', 'city', 'country', 'town']);
 
+    const isCustom2 = computed(() => props.type === 'custom2');
+
     const regionList = reactive({
-      province: props.province,
-      city: props.city,
-      country: props.country,
-      town: props.town
+      province: isCustom2.value
+        ? transformData(props.province)
+        : props.province,
+      city: isCustom2.value ? transformData(props.city) : props.city,
+      country: isCustom2.value ? transformData(props.country) : props.country,
+      town: isCustom2.value ? transformData(props.town) : props.town
     });
 
     const selectedRegion = reactive({
@@ -384,7 +432,7 @@ export default create({
         type: privateType.value
       };
 
-      if (privateType.value == 'custom') {
+      if (privateType.value == 'custom' || privateType.value == 'custom2') {
         const { province, city, country, town } = resCopy;
 
         resCopy.addressIdStr = [
@@ -427,18 +475,16 @@ export default create({
       emit('switch-module', { type: privateType.value });
     };
 
+    const handleElevatorItem = (key: string, item: RegionData | string) => {
+      nextAreaList(item);
+    };
+
     watch(
       () => props.visible,
       (value) => {
         showPopup.value = value;
       }
     );
-    // watch(
-    //   () => props.type,
-    //   (value) => {
-    //     privateType.value = value;
-    //   }
-    // );
 
     watch(
       () => showPopup.value,
@@ -452,25 +498,25 @@ export default create({
     watch(
       () => props.province,
       (value) => {
-        regionList.province = value;
+        regionList.province = isCustom2.value ? transformData(value) : value;
       }
     );
     watch(
       () => props.city,
       (value) => {
-        regionList.city = value;
+        regionList.city = isCustom2.value ? transformData(value) : value;
       }
     );
     watch(
       () => props.country,
       (value) => {
-        regionList.country = value;
+        regionList.country = isCustom2.value ? transformData(value) : value;
       }
     );
     watch(
       () => props.town,
       (value) => {
-        regionList.town = value;
+        regionList.town = isCustom2.value ? transformData(value) : value;
       }
     );
 
@@ -506,6 +552,7 @@ export default create({
       selectedExist,
       clickOverlay,
       handClose,
+      handleElevatorItem,
       ...toRefs(props),
       ...toRefs(tabItemRef)
     };

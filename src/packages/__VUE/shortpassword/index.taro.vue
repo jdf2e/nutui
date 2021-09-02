@@ -15,6 +15,7 @@
       <view class="nut-shortpsd-title">{{ title }}</view>
       <view class="nut-shortpsdWx-subtitle">{{ desc }}</view>
       <input
+        v-if="isWx"
         class="nut-input-real-taro"
         type="number"
         :maxlength="length"
@@ -22,6 +23,15 @@
         @input="changeValue"
       />
       <view class="nut-input-w">
+        <input
+          v-if="!isWx"
+          ref="realpwd"
+          class="nut-input-real"
+          type="number"
+          maxlength="6"
+          v-model="realInput"
+          @input="changeValue"
+        />
         <view class="nut-input-site"></view>
         <view class="nut-shortpsd-fake" @click="focus">
           <view
@@ -109,13 +119,21 @@ export default create({
     const realpwd = ref();
     const comLen = computed(() => range(Number(props.length)));
     const show = ref(props.visible);
+    const isWx = ref(false); // 判断是否为微信端
     // 方法
     function sureClick() {
       emit('ok', realInput.value);
     }
     function focus() {
-      let a = document.getElementsByClassName('nut-input-real-taro')[0] as any;
-      a.focus();
+      let a: any = '';
+      if (isWx.value) {
+        a = document.getElementsByClassName('nut-input-real-taro')[0] as any;
+        a.focus();
+      } else {
+        a = document.getElementsByClassName('nut-input-real')[0] as any;
+        let h = a.children[0];
+        h.focus();
+      }
     }
     watch(
       () => props.visible,
@@ -152,6 +170,13 @@ export default create({
     }
     onMounted(() => {
       eventCenter.once((getCurrentInstance() as any).router.onReady, () => {});
+      console.log(Taro.getEnv());
+
+      if (Taro.getEnv() === 'WEB') {
+        isWx.value = false;
+      } else {
+        isWx.value = true;
+      }
     });
     return {
       comLen,
@@ -164,7 +189,8 @@ export default create({
       onTips,
       focus,
       show,
-      closeIcon
+      closeIcon,
+      isWx
     };
   }
 });

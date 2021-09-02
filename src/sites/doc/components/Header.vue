@@ -4,30 +4,21 @@
     <div class="header-logo">
       <a class="logo-link" href="#" @click="toHome"></a>
       <span class="logo-border"></span>
+      <span class="version">v{{ version }}</span>
     </div>
     <div class="header-nav">
       <Search />
       <div class="nav-box">
         <ul class="nav-list">
-          <li class="nav-item" :class="{ active: isActive(header[0].name) }">
-            <router-link :to="header[0].path">
-              {{ header[0].cName }}
-            </router-link>
-          </li>
-          <li class="nav-item" :class="{ active: isActive(header[1].name) }">
-            <router-link :to="header[1].path">
-              {{ header[1].cName }}
-            </router-link>
-          </li>
-          <li class="nav-item" :class="{ active: isActive(header[2].name) }">
-            <a href="demo.html#/">
-              {{ header[2].cName }}
+          <li
+            class="nav-item"
+            v-for="item in header"
+            :key="item.name"
+            :class="{ active: isActive(item.name) }"
+          >
+            <a :href="item.path">
+              {{ item.cName }}
             </a>
-          </li>
-          <li class="nav-item" :class="{ active: isActive(header[3].name) }">
-            <router-link :to="header[3].name">
-              {{ header[3].cName }}
-            </router-link>
           </li>
           <li class="nav-item">
             <div
@@ -62,6 +53,11 @@
               target="_blank"
               href="https://github.com/jdf2e/nutui"
             ></a>
+            <a
+              class="user-link gitee"
+              target="_blank"
+              href="https://gitee.com/jd-platform-opensource/nutui"
+            ></a>
           </li>
         </ul>
       </div>
@@ -72,6 +68,7 @@
 import { defineComponent, reactive, computed, onMounted } from 'vue';
 import Search from './Search.vue';
 import { header, versions, nav } from '@/config.json';
+import { version } from '/package.json';
 import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-header',
@@ -132,6 +129,7 @@ export default defineComponent({
     return {
       header,
       versions,
+      version,
       data,
       toHome,
       isActive,
@@ -170,7 +168,6 @@ export default defineComponent({
     width: 240px;
     height: 64px;
     .logo-link {
-      display: inline-block;
       width: 120px;
       height: 46px;
       vertical-align: middle;
@@ -179,13 +176,17 @@ export default defineComponent({
       margin-top: -23px;
     }
     .logo-border {
-      display: inline-block;
       width: 1px;
       height: 26px;
       position: absolute;
       right: 0;
       top: 50%;
       margin-top: -13px;
+    }
+    .version {
+      position: absolute;
+      right: 76px;
+      font-size: 14px;
     }
   }
   &-nav {
@@ -241,8 +242,14 @@ export default defineComponent({
         width: 26px;
         height: 26px;
         vertical-align: middle;
-        background: url('../../assets/images/icon-user.png') no-repeat;
+        background-repeat: no-repeat;
+        background-image: url('../../assets/images/icon-user.png');
         background-size: 26px;
+
+        &.gitee {
+          margin-left: 8px;
+          background-image: url('../../assets/images/icon-gitee.png');
+        }
       }
     }
   }

@@ -13,11 +13,11 @@ $title-color2: #666666 !default;
 $text-color: #808080 !default;
 // 特殊禁用色
 $disable-color: #cccccc !default;
-$white: #fff;
-$black: #000;
+$white: #fff !default;
+$black: #000 !default;
 
 // padding
-$padding-xs: 12px;
+$padding-xs: 12px !default;
 
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
   sans-serif !default;
@@ -27,176 +27,176 @@ $animation-duration: 0.25s !default;
 $animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
 
 // Font
-$font-size-0: 10px;
-$font-size-1: 12px;
-$font-size-2: 14px;
-$font-size-3: 16px;
-$font-size-4: 18px;
-$font-weight-bold: 400;
+$font-size-0: 10px !default;
+$font-size-1: 12px !default;
+$font-size-2: 14px !default;
+$font-size-3: 16px !default;
+$font-size-4: 18px !default;
+$font-weight-bold: 400 !default;
 
-$font-size-small: $font-size-1;
-$font-size-base: $font-size-2;
-$font-size-large: $font-size-3;
+$font-size-small: $font-size-1 !default;
+$font-size-base: $font-size-2 !default;
+$font-size-large: $font-size-3 !default;
 $line-height-base: 1.5 !default;
 // button
-$button-border-radius: 25px;
-$button-border-width: 1px;
-$button-default-bg-color: $white;
-$button-default-border-color: rgba(204, 204, 204, 1);
-$button-default-color: rgba(102, 102, 102, 1);
-$button-small-height: 28px;
-$button-default-height: 38px;
-$button-large-height: 48px;
-$button-large-line-height: 46px;
-$button-small-line-height: 26px;
-$button-block-height: 48px;
-$button-default-line-height: 36px;
-$button-block-line-height: 46px;
-$button-default-font-size: $font-size-2;
-$button-disabled-opacity: 0.68;
-$button-primary-color: $white;
-$button-primary-border-color: $primary-color;
+$button-border-radius: 25px !default;
+$button-border-width: 1px !default;
+$button-default-bg-color: $white !default;
+$button-default-border-color: rgba(204, 204, 204, 1) !default;
+$button-default-color: rgba(102, 102, 102, 1) !default;
+$button-small-height: 28px !default;
+$button-default-height: 38px !default;
+$button-large-height: 48px !default;
+$button-large-line-height: 46px !default;
+$button-small-line-height: 26px !default;
+$button-block-height: 48px !default;
+$button-default-line-height: 36px !default;
+$button-block-line-height: 46px !default;
+$button-default-font-size: $font-size-2 !default;
+$button-disabled-opacity: 0.68 !default;
+$button-primary-color: $white !default;
+$button-primary-border-color: $primary-color !default;
 $button-primary-background-color: linear-gradient(
   135deg,
   $primary-color 0%,
   $primary-color-end 100%
-);
-$button-info-color: $white;
-$button-info-border-color: rgba(73, 106, 242, 1);
+) !default;
+$button-info-color: $white !default;
+$button-info-border-color: rgba(73, 106, 242, 1) !default;
 $button-info-background-color: linear-gradient(
   315deg,
   rgba(73, 143, 242, 1) 0%,
   rgba(73, 101, 242, 1) 100%
-);
-$button-success-color: $white;
-$button-success-border-color: rgba(38, 191, 38, 1);
+) !default;
+$button-success-color: $white !default;
+$button-success-border-color: rgba(38, 191, 38, 1) !default;
 $button-success-background-color: linear-gradient(
   135deg,
   rgba(38, 191, 38, 1) 0%,
   rgba(39, 197, 48, 1) 45%,
   rgba(40, 207, 63, 1) 83%,
   rgba(41, 212, 70, 1) 100%
-);
+) !default;
 
-$button-danger-color: $white;
-$button-danger-border-color: rgba(250, 44, 25, 1);
-$button-danger-background-color: rgba(250, 44, 25, 1);
-$button-warning-color: $white;
-$button-warning-border-color: rgba(255, 158, 13, 1);
+$button-danger-color: $white !default;
+$button-danger-border-color: rgba(250, 44, 25, 1) !default;
+$button-danger-background-color: rgba(250, 44, 25, 1) !default;
+$button-warning-color: $white !default;
+$button-warning-border-color: rgba(255, 158, 13, 1) !default;
 $button-warning-background-color: linear-gradient(
   135deg,
   rgba(255, 158, 13, 1) 0%,
   rgba(255, 167, 13, 1) 45%,
   rgba(255, 182, 13, 1) 83%,
   rgba(255, 190, 13, 1) 100%
-);
-$button-plain-background-color: #fff;
-$button-plain-background-color: $white;
+) !default;
+$button-plain-background-color: #fff !default;
+$button-plain-background-color: $white !default;
 
 // cell
 
-$cell-color: $title-color2;
-$cell-title-font: $font-size-2;
-$cell-title-desc-font: $font-size-1;
-$cell-desc-font: $font-size-2;
-$cell-desc-color: $disable-color;
-$cell-border-radius: 7px;
+$cell-color: $title-color2 !default;
+$cell-title-font: $font-size-2 !default;
+$cell-title-desc-font: $font-size-1 !default;
+$cell-desc-font: $font-size-2 !default;
+$cell-desc-color: $disable-color !default;
+$cell-border-radius: 6px !default;
 
 // cell-group
 
-$cell-group-title-padding: 0 10px;
-$cell-group-title-color: #909ca4;
-$cell-group-title-font-size: $font-size-2;
-$cell-group-title-line-height: 20px;
-$cell-group-background-color: $white;
+$cell-group-title-padding: 0 10px !default;
+$cell-group-title-color: #909ca4 !default;
+$cell-group-title-font-size: $font-size-2 !default;
+$cell-group-title-line-height: 20px !default;
+$cell-group-background-color: $white !default;
 
 // icon
 
-$icon-height: 20px;
-$icon-width: 20px;
-$icon-line-height: 20px;
+$icon-height: 20px !default;
+$icon-width: 20px !default;
+$icon-line-height: 20px !default;
 
 // uploader
 
-$uploader-width: 100px;
-$uploader-height: 100px;
-$uploader-background: #f7f8fa;
+$uploader-width: 100px !default;
+$uploader-height: 100px !default;
+$uploader-background: #f7f8fa !default;
 
 //input
-$input-border-bottom: #eaf0fb;
-$input-disabled-color: #c8c9cc;
+$input-border-bottom: #eaf0fb !default;
+$input-disabled-color: #c8c9cc !default;
 
 // textarea
 
-$textarea-font: $font-size-2;
-$textarea-height: 100px;
-$textarea-limit-color: $text-color;
-$textarea-text-color: $title-color;
-$textarea-disabled-color: $disable-color;
+$textarea-font: $font-size-2 !default;
+$textarea-height: 100px !default;
+$textarea-limit-color: $text-color !default;
+$textarea-text-color: $title-color !default;
+$textarea-disabled-color: $disable-color !default;
 
 // inputnumber
 
-$inputnumber-icon-color: $title-color;
-$inputnumber-icon-void-color: $disable-color;
-$inputnumber-input-background-color: $help-color;
-$inputnumber-input-border-radius: 4px;
-$inputnumber-input-width: 40px;
-$inputnumber-icon-size: 20px;
+$inputnumber-icon-color: $title-color !default;
+$inputnumber-icon-void-color: $disable-color !default;
+$inputnumber-input-background-color: $help-color !default;
+$inputnumber-input-border-radius: 4px !default;
+$inputnumber-input-width: 40px !default;
+$inputnumber-icon-size: 20px !default;
 
 // actionsheet
 $zindex-actionsheet: 10001 !default;
 $body-background: #f6f6f6 !default;
 $light-color: #f6f6f6 !default;
-$font-size-base: $font-size-2;
-$font-size-small: $font-size-1;
+$font-size-base: $font-size-2 !default;
+$font-size-small: $font-size-1 !default;
 
 //shortpassword
-$shortpsd-background-color: rgba(245, 245, 245, 1);
-$shortpsd-border-color: #ddd;
-$shortpsd-error: rgba(242, 39, 12, 1);
-$shortpsd-forget: rgba(128, 128, 128, 1);
+$shortpsd-background-color: rgba(245, 245, 245, 1) !default;
+$shortpsd-border-color: #ddd !default;
+$shortpsd-error: rgba(242, 39, 12, 1) !default;
+$shortpsd-forget: rgba(128, 128, 128, 1) !default;
 
 //price
-$price-big-size: 24px;
+$price-big-size: 24px !default;
 
 //avatar
-$avatar-square: 5px;
-$avatar-large-width: 60px;
-$avatar-large-height: 60px;
-$avatar-small-width: 32px;
-$avatar-small-height: 32px;
-$avatar-normal-width: 40px;
-$avatar-normal-height: 40px;
+$avatar-square: 5px !default;
+$avatar-large-width: 60px !default;
+$avatar-large-height: 60px !default;
+$avatar-small-width: 32px !default;
+$avatar-small-height: 32px !default;
+$avatar-normal-width: 40px !default;
+$avatar-normal-height: 40px !default;
 
 //switch
-$switch-close-bg-color: #ebebeb;
-$switch-close--cline-bg-color: #f0f0f0;
+$switch-close-bg-color: #ebebeb !default;
+$switch-close--cline-bg-color: #f0f0f0 !default;
 
 //backtop
-$backtop-border-color: #e0e0e0;
+$backtop-border-color: #e0e0e0 !default;
 
 // calendar
-$calendar-primary-color: $primary-color;
-$calendar-choose-color: #fef6f6;
-$calendar-base-color: #333333;
-$calendar-disable-color: #d1d0d0;
-$calendar-title-font: $font-size-4;
-$calendar-base-font: $font-size-3;
-$calendar-text-font: $font-size-1;
-$calendar-day-font: 18px;
+$calendar-primary-color: $primary-color !default;
+$calendar-choose-color: #fef6f6 !default;
+$calendar-base-color: #333333 !default;
+$calendar-disable-color: #d1d0d0 !default;
+$calendar-title-font: $font-size-4 !default;
+$calendar-base-font: $font-size-3 !default;
+$calendar-text-font: $font-size-1 !default;
+$calendar-day-font: 18px !default;
 
 //overlay
-$overlay-bg-color: rgba(0, 0, 0, 0.7);
+$overlay-bg-color: rgba(0, 0, 0, 0.7) !default;
 
 //popup
-$popup-close-icon-margin: 16px;
-$popup-border-radius: 20px;
+$popup-close-icon-margin: 16px !default;
+$popup-border-radius: 20px !default;
 
 // Notify
-$notify-text-color: $white;
-$notify-padding: 12px 0;
-$notify-font-size: 14px;
-$notify-height: 44px;
+$notify-text-color: $white !default;
+$notify-padding: 12px 0 !default;
+$notify-font-size: 14px !default;
+$notify-height: 44px !default;
 
 $notify-base-background-color: linear-gradient(
   135deg,
@@ -204,68 +204,80 @@ $notify-base-background-color: linear-gradient(
   rgba(250, 63, 25, 1) 45%,
   rgba(250, 89, 25, 1) 83%,
   rgba(250, 100, 25, 1) 100%
-);
+) !default;
 $notify-primary-background-color: linear-gradient(
   315deg,
   rgba(73, 143, 242, 1) 0%,
   rgba(73, 101, 242, 1) 100%
-);
+) !default;
 $notify-success-background-color: linear-gradient(
   135deg,
   rgba(38, 191, 38, 1) 0%,
   rgba(39, 197, 48, 1) 45%,
   rgba(40, 207, 63, 1) 83%,
   rgba(41, 212, 70, 1) 100%
-);
-$notify-danger-background-color: rgba(250, 50, 25, 1);
+) !default;
+$notify-danger-background-color: rgba(250, 50, 25, 1) !default;
 $notify-warning-background-color: linear-gradient(
   135deg,
   rgba(255, 93, 13, 1) 0%,
   rgba(255, 154, 13, 1) 100%
-);
+) !default;
 
 // rate
 
-$rate-icon-color: $primary-color;
-$rate-icon-void-color: $disable-color;
+$rate-icon-color: $primary-color !default;
+$rate-icon-void-color: $disable-color !default;
 
 // tabbar
 
-$tabbar-active-color: $primary-color;
-$tabbar-border-color: #eee;
+$tabbar-active-color: $primary-color !default;
+$tabbar-border-color: #eee !default;
 
 //infiniteloading
-$infinite-bottom-color: #c8c8c8;
+$infinite-bottom-color: #c8c8c8 !default;
 
 //range
-$range-max: #333333;
-$rang-bg-color: rgba($primary-color, 0.5);
+$range-max: #333333 !default;
+$rang-bg-color: rgba($primary-color, 0.5) !default;
 $rang-bar-bg-color: linear-gradient(
   135deg,
   $primary-color 0%,
   $primary-color-end 100%
-);
+) !default;
 
 //address
 $address-region-tab-line: linear-gradient(
   90deg,
   $primary-color 0%,
   $primary-color-end 100%
-);
+) !default;
 
 //steps
-$step-wait-bg-color: #959fb1;
+$step-wait-bg-color: #959fb1 !default;
 
 // dialog
-$dialog-width: 296px;
+$dialog-width: 296px !default;
 
 // checkbox
-$checkbox-label-color: #1d1e1e;
-$checkbox-label-disable-color: #999;
+$checkbox-label-color: #1d1e1e !default;
+$checkbox-label-disable-color: #999 !default;
+$checkbox-icon-disable-color: #d6d6d6 !default;
 
 //radio
-$radio-label-color: #1d1e1e;
-$radio-label-disable-color: #999;
+$radio-label-color: #1d1e1e !default;
+$radio-label-disable-color: #999 !default;
+$radio-icon-disable-color: #d6d6d6 !default;
+
+//fixednav
+$fixednav-bg-color: $white !default;
+$fixednav-font-color: $black !default;
+$fixednav-index: 201 !default;
+$fixednav-btn-bg: linear-gradient(
+  135deg,
+  rgba(250, 25, 44, 1) 0%,
+  rgba(250, 63, 25, 1) 100%
+) !default;
 
 @import './mixins/index';
 @import './animation/index';

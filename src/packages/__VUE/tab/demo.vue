@@ -1,6 +1,6 @@
 <template>
   <div class="demo full">
-    <h2>基础用法</h2>
+    <h2>基础用法，默认tab-title宽度均分相等</h2>
     <nut-tab>
       <nut-tab-panel tab-title="全部"
         ><p class="content">这里是页签全部内容</p></nut-tab-panel
@@ -16,9 +16,9 @@
       >
     </nut-tab>
 
-    <h2>defaultIndex设置默认显示tab</h2>
+    <h2>defaultIndex设置默认显示tab,iconType为half时切换选中icon样式</h2>
     <h2>switchTab监听切换tab返回事件</h2>
-    <nut-tab :default-index="1" @switch-tab="switchTab">
+    <nut-tab :default-index="1" @switch-tab="switchTab" icon-type="half">
       <nut-tab-panel tab-title="全部"
         ><p class="content">这里是页签全部内容</p></nut-tab-panel
       >
@@ -65,11 +65,10 @@
       >
     </nut-tab>
 
-    <h2
-      >标签数量超过 5
-      个时，标签栏可以在水平方向上滚动，切换时会自动将当前标签居中。</h2
+    <h2>
+      设置scrollType="scroll"，标签栏可以在水平方向上滚动，切换时会自动将当前标签居中。</h2
     >
-    <nut-tab :animated-time="500">
+    <nut-tab :animated-time="500" scrollType="scroll">
       <nut-tab-panel tab-title="全部"
         ><p class="content">这里是页签全部内容</p></nut-tab-panel
       >
@@ -91,7 +90,7 @@
     </nut-tab>
 
     <h2>设置slot:header可以自定义标签</h2>
-    <nut-tab>
+    <nut-tab scrollType="scroll">
       <nut-tab-panel tab-title="全部">
         <template v-slot:header><nut-icon name="dongdong"></nut-icon></template>
         <p class="content">这里是页签全部内容</p>
@@ -114,7 +113,13 @@
     </nut-tab>
 
     <h2>左右tab布局</h2>
-    <nut-tab direction="vertical" :animated-time="500" :default-index="2">
+    <nut-tab
+      direction="vertical"
+      :animated-time="500"
+      :default-index="2"
+      scrollType="scroll"
+      icon-type="half"
+    >
       <nut-tab-panel tab-title="页签一"
         ><p class="content">这里是页签一内容</p></nut-tab-panel
       >
@@ -186,7 +191,7 @@ export default createDemo({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .content {
   padding: 10px;
 }

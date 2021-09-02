@@ -1,8 +1,11 @@
 # 快速上手
 
-## 安装
+## 预览
 
-* 通过 Npm 或 Yarn 安装
+
+> 扫描下方二维码体验，体验 Vue3 组件库示例
+
+<img src="https://img12.360buyimg.com/imagetools/jfs/t1/162421/39/13392/9425/6052ea60E592310a9/264bdff23ef5fe95.png" width="200" alt="NutUI">
 
 #### NPM 安装
 

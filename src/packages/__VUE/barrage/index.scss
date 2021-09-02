@@ -1,0 +1,47 @@
+.nut-barrage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  .dmitem {
+    display: block;
+    position: absolute;
+    right: 0;
+    padding: 5px 25px;
+    border-radius: 50px;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    white-space: pre;
+    transform: translateX(100%);
+    background: linear-gradient(
+      to right,
+      rgba(26, 25, 25, 0.15),
+      rgba(0, 0, 0, 0.2)
+    );
+    &.move {
+      will-change: transform;
+      animation-name: moving;
+      animation-timing-function: linear;
+      animation-play-state: running;
+    }
+  }
+  @keyframes moving {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(var(--move-distance));
+    }
+  }
+  @-webkit-keyframes moving {
+    from {
+      -webkit-transform: translateX(100%);
+    }
+    to {
+      -webkit-transform: translateX(var(--move-distance));
+    }
+  }
+}
