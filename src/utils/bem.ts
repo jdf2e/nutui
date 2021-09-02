@@ -2,7 +2,7 @@ import { withNaming } from '@bem-react/classname'
 
 const cn = withNaming({ n: 'nut-', e: '__', m: '--', v: '-' })
 
-const b = cn('icon', 'Element')
+// const b = cn('icon', 'Element')
 //
 // console.log(b()) // nut-icon__Element
 // console.log(b('Element')) // nut-icon__Element
