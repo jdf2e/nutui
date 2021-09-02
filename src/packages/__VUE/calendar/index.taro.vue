@@ -9,7 +9,6 @@
     @click-close-icon="closePopup"
   >
     <nut-calendar-item
-      props
       ref="calendarRef"
       :type="type"
       :is-auto-back-fill="isAutoBackFill"
