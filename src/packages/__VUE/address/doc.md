@@ -69,7 +69,7 @@ setup() {
 
     const onChange = (cal) => {
       const name = address[cal.next]
-      if (name.value.length < 1) {
+      if (name.length < 1) {
         showPopup.value = false;
       }
     };
@@ -129,7 +129,7 @@ setup() {
 
     const onChange = (cal) => {
       const name = address[cal.next]
-      if (name.value.length < 1) {
+      if (name.length < 1) {
         showPopup.value = false;
       }
     };
