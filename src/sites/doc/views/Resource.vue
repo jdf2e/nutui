@@ -8,15 +8,6 @@
   </div>
   <!-- 设计资源 -->
   <div class="resource-content">
-    <div class="resource-block" v-if="showNutuiCat">
-      <h4 class="sub-title">模板资源</h4>
-      <p class="sub-desc">
-        目前已提供京东大促模板工程
-        <a target="_blank" href="https://coding.jd.com/jdc-activity/Nutui-Cat"
-          >NutUI-Cat</a
-        >，含有开发京东大促项目过程中使用到的通用模块、组件、模板，可以在未来的大促项目中复用，达到提效降本的效果。
-      </p>
-    </div>
     <div class="resource-block" v-if="articleList.length === 0">
       <h4 class="sub-title">设计资源</h4>
       <p class="sub-desc"
@@ -131,14 +122,9 @@ export default defineComponent({
 
       // 文章列表接口
       const apiService = new ApiService();
-      axios('https://relayapi.jd.com/').then(res => {
-        if (res) {
-          data.showNutuiCat = true;
-        }
-      });
-      apiService.getArticle().then(res => {
+      apiService.getArticle().then((res) => {
         if (res?.state == 0) {
-          (res.value.data.arrays as any[]).forEach(element => {
+          (res.value.data.arrays as any[]).forEach((element) => {
             if (element.type == 1) {
               data.articleList.push(element);
             } else {
@@ -148,7 +134,7 @@ export default defineComponent({
         }
       });
     });
-    onBeforeRouteUpdate(to => {
+    onBeforeRouteUpdate((to) => {
       watchDemoUrl(to);
     });
     const clickTab = (index: number) => {
