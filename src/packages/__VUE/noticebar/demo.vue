@@ -69,7 +69,7 @@
       :standTime="1000"
     >
       <template v-slot:rightIcon>
-        <nut-icon type="trolley" color="#f0250f"> </nut-icon>
+        <nut-icon name="fabulous" color="#f0250f"> </nut-icon>
       </template>
     </nut-noticebar>
   </div>

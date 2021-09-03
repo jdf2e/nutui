@@ -1,7 +1,7 @@
 .nut-swipe {
   position: relative;
   display: block;
-  transition: all 0.3s linear;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   &__left,
   &__right {
     position: absolute;

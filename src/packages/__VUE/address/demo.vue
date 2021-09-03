@@ -19,6 +19,27 @@
       custom-address-title="请选择所在地区"
     ></nut-address>
 
+    <h2>选择自定义地址2</h2>
+    <nut-cell
+      title="选择地址"
+      :desc="five"
+      is-link
+      @click="showAddress2"
+    ></nut-cell>
+
+    <nut-address
+      v-model:visible="normal2"
+      type="custom2"
+      :province="province"
+      :city="city"
+      :country="country"
+      :town="town"
+      height="270px"
+      @change="(cal) => onChange(cal, 'normal2')"
+      @close="close5"
+      custom-address-title="请选择所在地区"
+    ></nut-address>
+
     <h2>选择已有地址</h2>
     <nut-cell
       title="选择地址"
@@ -149,6 +170,7 @@ export default createDemo({
 
     const showPopup = reactive({
       normal: false,
+      normal2: false,
       exist: false,
       customImg: false,
       other: false
@@ -201,11 +223,16 @@ export default createDemo({
       one: '请选择地址',
       two: '请选择地址',
       three: '请选择地址',
-      four: '请选择地址'
+      four: '请选择地址',
+      five: '请选择地址'
     });
 
     const showAddress = () => {
       showPopup.normal = !showPopup.normal;
+    };
+
+    const showAddress2 = () => {
+      showPopup.normal2 = !showPopup.normal2;
     };
 
     const onChange = (cal: CalBack, tag: string) => {
@@ -217,6 +244,11 @@ export default createDemo({
     const close1 = (val: CalResult) => {
       console.log(val);
       text.one = val.data.addressStr;
+    };
+
+    const close5 = (val: CalResult) => {
+      console.log(val);
+      text.five = val.data.addressStr;
     };
 
     const showAddressExist = () => {
@@ -288,11 +320,13 @@ export default createDemo({
 
     return {
       showAddress,
+      showAddress2,
       showPopup,
       onChange,
       close1,
       showAddressExist,
       close2,
+      close5,
       selected,
       existAddress,
       showAddressOther,
