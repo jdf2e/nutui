@@ -9,7 +9,6 @@
     @click-close-icon="closePopup"
   >
     <nut-calendar-item
-      props
       ref="calendarRef"
       :type="type"
       :is-auto-back-fill="isAutoBackFill"
@@ -129,6 +128,9 @@ export default create({
 </script>
 
 <style lang="scss">
+.nut-calendar-taro {
+  height: 60vh;
+}
 .popup-box {
   height: 518px;
 }

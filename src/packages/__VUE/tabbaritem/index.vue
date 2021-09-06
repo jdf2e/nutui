@@ -25,12 +25,25 @@
           class="nut-tabbar-item_icon-box_icon"
           :size="state.size"
           :name="icon"
+          :font-class-name="fontClassName"
+          :class-prefix="classPrefix"
         ></nut-icon>
       </view>
+      <div
+        v-if="!icon && activeImg"
+        class="nut-tabbar-item_icon-box_icon"
+        :style="{
+          backgroundImage: `url(${
+            state.active == state.index ? activeImg : img
+          })`,
+          width: state.size,
+          height: state.size
+        }"
+      ></div>
       <view
         :class="[
           'nut-tabbar-item_icon-box_nav-word',
-          { 'nut-tabbar-item_icon-box_big-word': !icon }
+          { 'nut-tabbar-item_icon-box_big-word': !icon && !activeImg }
         ]"
         >{{ tabTitle }}</view
       >
@@ -69,6 +82,22 @@ export default create({
       // 页签右上角的数字角标
       type: String,
       default: ''
+    },
+    activeImg: {
+      type: String,
+      default: ''
+    },
+    img: {
+      type: String,
+      default: ''
+    },
+    classPrefix: {
+      type: String,
+      default: 'nut-icon'
+    },
+    fontClassName: {
+      type: String,
+      default: 'nutui-iconfont'
     }
   },
   setup(props, ctx) {

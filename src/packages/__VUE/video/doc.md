@@ -21,6 +21,7 @@ app.use(Video);
 ```html
 <nut-video
   :source="source"
+  :options="options"
   @play="play"
   @pause="pause"
   @playend="playend">
@@ -31,9 +32,12 @@ app.use(Video);
 setup() {
     const state = reactive({
       source: {
-        src: 'https://storage.jd.com/about/big-final.mp4',
-        type: 'video/mp4'
-      }
+        src: "https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D",
+        type: "video/mp4",
+      },
+      options: {
+        controls: true,
+      },
     });
     const play = (elm: any) => console.log('play', elm);
     const pause = (elm: any) => console.log('pause', elm);

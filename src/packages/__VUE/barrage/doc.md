@@ -1,4 +1,4 @@
-# Barrage 组件
+# Barrage 弹幕
 
 ### 介绍
 

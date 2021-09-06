@@ -57,11 +57,14 @@
       @close="close(4)"
     >
     </nut-numberkeyboard>
-    <div class="boardValue" @click="showKeyBoard(5)">
-      <div class="value">
-        <nut-input v-model="value" readonly label="双向绑定：" />
-      </div>
-    </div>
+    <nut-cell
+      :isLink="true"
+      desc-text-align="left"
+      @click="showKeyBoard(5)"
+      :desc="value"
+      :showIcon="true"
+      title="双向绑定："
+    ></nut-cell>
     <nut-numberkeyboard
       v-model:visible="visible5"
       v-model:value="value"
