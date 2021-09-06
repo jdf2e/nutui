@@ -50,6 +50,7 @@ app.use(NoticeBar);
 ```html
     <nut-noticebar
       left-icon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+      :scrollable="false"
     >
       <a href="https://www.jd.com">京东商城</a>
     </nut-noticebar>
