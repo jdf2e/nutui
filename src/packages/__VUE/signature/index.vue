@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-signature" :class="customClass">
+  <div :class="classes">
     <div class="nut-signature-inner" ref="wrap">
       <canvas
         ref="canvas"
@@ -9,15 +9,17 @@
       ></canvas>
       <p class="nut-signature-unsopport" v-else>{{ unSupportTpl }}</p>
     </div>
-    <slot></slot>
-    <nut-button type="red" shape="circle" small @click="clear()"
+
+    <nut-button class="nut-signature-btn" type="default" @click="clear()"
       >重签</nut-button
     >
-    <nut-button shape="circle" small @click="confirm()">确认</nut-button>
+    <nut-button class="nut-signature-btn" type="primary" @click="confirm()"
+      >确认</nut-button
+    >
   </div>
 </template>
 <script lang="ts">
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive, onMounted, computed } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('signature');
 
@@ -45,12 +47,18 @@ export default create({
     }
   },
   components: {},
-  emits: ['click'],
+  emits: ['confirm', 'clear'],
 
   setup(props, { emit }) {
     const canvas = ref<HTMLElement | null>(null);
     const wrap = ref<HTMLElement | null>(null);
-
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true,
+        [`${props.customClass}`]: props.customClass
+      };
+    });
     const state = reactive({
       canvasHeight: 0,
       canvasWidth: 0,
@@ -144,11 +152,8 @@ export default create({
         addEvent();
       }
     });
-    const handleClick = (event: Event) => {
-      emit('click', event);
-    };
 
-    return { canvas, wrap, handleClick, isCanvasSupported, confirm, clear };
+    return { canvas, wrap, isCanvasSupported, confirm, clear, classes };
   }
 });
 </script>

@@ -1,34 +1,81 @@
 #  signature组件
 
-    ### 介绍
+### 介绍
     
-    基于 xxxxxxx
+    基于Canvas的签名组件。
     
-    ### 安装
-    
-    
-    
-    ## 代码演示
-    
-    ### 基础用法1
-    
+### 安装
 
+``` javascript
+import { createApp } from 'vue';
+// vue
+import { Signature} from '@nutui/nutui';
+
+const app = createApp();
+app.use(Signature);
+
+```
     
-    ## API
     
-    ### Props
+## 代码演示
     
-    | 参数         | 说明                             | 类型   | 默认值           |
-    |--------------|----------------------------------|--------|------------------|
-    | name         | 图标名称或图片链接               | String | -                |
-    | color        | 图标颜色                         | String | -                |
-    | size         | 图标大小，如 '20px' '2em' '2rem' | String | -                |
-    | class-prefix | 类名前缀，用于使用自定义图标     | String | 'nutui-iconfont' |
-    | tag          | HTML 标签                        | String | 'i'              |
+### 基础用法1
     
-    ### Events
+```html
+<nut-signature  
+    @confirm="confirm" 
+    @clear="clear"
+></nut-signature>
+<p class="demo-tips demo">Tips: 点击确认按钮,下方显示签名图片</p>
+```
+```javascript
+export default {
+    data(){
+        return{
+        }
+    },
+    methods:{
+        confirm(canvas, data) {
+            let img = document.createElement('img');
+            img.src = data;
+            document.querySelector('.demo').appendChild(img);
+        },
+
+        clear() {
+            let img = document.querySelector('.demo img'); 
+            if (img) {
+                img.remove();
+            }
+        }
+    }
+}
+```
+
+### 修改颜色和签字粗细
+
+```html
+<nut-signature  
+    :lineWidth="lineWidth" 
+    :strokeStyle="strokeStyle"
+></nut-signature>
+
+```
     
-    | 事件名 | 说明           | 回调参数     |
-    |--------|----------------|--------------|
-    | click  | 点击图标时触发 | event: Event |
+## API
     
+### Props
+    
+| 参数 | 说明 | 类型 | 默认值
+|----- | ----- | ----- | ----- 
+| custom-class | 自定义class | String | -
+| line-width | 线条的宽度 | Number | 3
+| stroke-style | 绘图笔触颜色 | String | '#000'
+| type | 图片格式 | String | 'png'
+| un-support-tpl | 不支持Canvas情况下的展示文案 | String | '对不起，当前浏览器不支持Canvas，无法使用本控件！'
+
+## Event
+
+| 字段 | 说明 | 回调参数 
+|----- | ----- | ----- 
+| confirm | 点击确认按钮触发事件回调函数 | canvas和签名图片展示的 data URI
+| clear | 点击重签按钮触发事件回调函数 | 无
