@@ -779,6 +779,26 @@
           "sort": 2,
           "show": true,
           "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Signature",
+          "type": "component",
+          "cName": "签名",
+          "desc": "签名组件",
+          "sort": 3,
+          "show": true,
+          "author": "guoxiaoxiao"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Luckycard",
+          "type": "component",
+          "cName": "刮刮卡",
+          "desc": "适合抽奖等小游戏",
+          "sort": 4,
+          "show": true,
+          "author": "guoxiaoxiao8"
         }
       ]
     }
