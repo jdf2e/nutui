@@ -117,6 +117,16 @@
           "sort": 1,
           "show": true,
           "author": "VickyYe"
+        },
+        {
+          "version": "1.0.0",
+          "name": "BackTop",
+          "type": "component",
+          "cName": "返回顶部",
+          "desc": "提供较长的页面快捷返回顶部功能。",
+          "sort": 2,
+          "show": true,
+          "author": "vickyYe"
         }
       ]
     },
