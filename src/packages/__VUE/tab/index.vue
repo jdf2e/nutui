@@ -46,7 +46,6 @@ import {
   watchEffect
 } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import tabpanel from '@/packages/__VUE/tabpanel/index.vue';
 const { create } = createComponent('tab');
 import TabTitle from './tabTitle';
 type TabDirection = 'horizontal' | 'vertical';
@@ -61,7 +60,6 @@ type currChild = {
 } & VNode[];
 
 export default create({
-  children: [tabpanel],
   props: {
     defaultIndex: {
       type: Number,

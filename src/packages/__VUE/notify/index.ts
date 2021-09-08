@@ -1,6 +1,5 @@
 import { createVNode, defineComponent, render, App } from 'vue';
 import Notify from './index.vue';
-const NotifyConstructor = defineComponent(Notify);
 const defaultOptions = {
   type: 'base',
   showPopup: false,
@@ -70,7 +69,7 @@ const mountNotify = (opts: any) => {
   optsMap.push(opts);
   const container = document.createElement('view');
   container.id = opts.id;
-  const instance: any = createVNode(NotifyConstructor, opts);
+  const instance: any = createVNode(Notify, opts);
   render(instance, container);
   document.body.appendChild(container);
   setTimeout(() => {

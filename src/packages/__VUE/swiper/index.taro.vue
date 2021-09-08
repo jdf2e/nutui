@@ -7,10 +7,8 @@
 <script lang="ts">
 import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('swiper');
-import swiperItem from '../swiperitem/index.taro.vue';
 export default create({
   inheritAttrs: false,
-  children: [swiperItem],
   props: {},
   emits: [],
 

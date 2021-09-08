@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo full">
     <h2>默认用法</h2>
     <nut-noticebar :text="text"></nut-noticebar>
 

@@ -8,9 +8,7 @@
 import { provide, reactive, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('tabbar');
-import tabbaritem from '../tabbaritem/index.vue';
 export default create({
-  children: [tabbaritem],
   props: {
     visible: {
       type: [Number, String],

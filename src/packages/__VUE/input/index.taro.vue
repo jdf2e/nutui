@@ -147,8 +147,8 @@ export default create({
       if (props.type === 'number') {
         val = formatNumber(val, false);
       }
-      emit('change', val, event);
       emit('update:modelValue', val, event);
+      emit('change', val, event);
     };
 
     const valueFocus = (event: Event) => {

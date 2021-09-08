@@ -7,9 +7,7 @@
 import { toRefs, reactive, provide, computed } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('menu');
-import menuitem from '../menuitem/index.vue';
 export default create({
-  children: [menuitem],
   props: {
     type: {
       //单选 simple  多选  multiple，暂留

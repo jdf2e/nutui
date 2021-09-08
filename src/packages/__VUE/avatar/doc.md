@@ -8,12 +8,13 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { Avatar } from '@nutui/nutui';
+import { Avatar,Icon } from '@nutui/nutui';
 // taro
-import { Avatar } from '@nutui/nutui-taro';
+import { Avatar,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Avatar);
+app.use(Icon);
 ```
 
 ## 代码示例
