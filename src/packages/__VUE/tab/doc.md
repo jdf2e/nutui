@@ -9,12 +9,16 @@
 ```js
 import { createApp } from 'vue';
 // vue
-import { Tab,Swiper } from '@nutui/nutui';
+import { Tab, TabPanel,Swiper,SwiperItem } from '@nutui/nutui';
 // taro
-import { Tab,Swiper } from '@nutui/nutui-taro';
+import { Tab, TabPanel,Swiper,SwiperItem } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Tab).use(Swiper);
+app.use(Tab);
+app.use(TabPanel);
+app.use(Swiper);
+app.use(SwiperItem);
+
 
 ```
 

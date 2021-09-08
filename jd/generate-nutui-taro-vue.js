@@ -6,9 +6,11 @@ let importStr = `//import { App } from 'vue';\n`;
 const packages = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, show, type, taro } = element;
-    if (show && taro) {
-      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index.taro.vue';\n`;
+    let { name, show, type, taro, exportEmpty } = element;
+    if (taro && (show || exportEmpty)) {
+      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${
+        exportEmpty ? '' : '.taro'
+      }.vue';\n`;
       packages.push(name);
     }
   });

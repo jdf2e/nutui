@@ -9,10 +9,11 @@
 ```javascript
 
 import { createApp } from 'vue';
-import { BackTop } from '@nutui/nutui';
+import { BackTop,Icon } from '@nutui/nutui';
 
 const app = createApp();
 app.use(BackTop);
+app.use(Icon);
 
 ```
 
