@@ -745,6 +745,7 @@
           "version": "3.0.0",
           "name": "CountUp",
           "taro": true,
+          "tarodoc": true,
           "sort": 12,
           "cName": "数字滚动",
           "type": "component",
@@ -755,6 +756,7 @@
         {
           "version": "3.0.0",
           "name": "NumberKeyboard",
+          "tarodoc": true,
           "taro": true,
           "sort": 13,
           "cName": "数字键盘",
@@ -803,6 +805,8 @@
         },
         {
           "version": "3.0.0",
+          "taro": false,
+          "tarodoc": true,
           "name": "Signature",
           "type": "component",
           "cName": "签名",
@@ -813,6 +817,8 @@
         },
         {
           "version": "3.0.0",
+          "taro": false,
+          "tarodoc": true,
           "name": "Luckycard",
           "type": "component",
           "cName": "刮刮卡",
