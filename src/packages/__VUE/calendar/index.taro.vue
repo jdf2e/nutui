@@ -46,7 +46,9 @@ import CalendarItem from '../calendaritem/index.vue';
 import Utils from '../../utils/date';
 type InputDate = string | string[];
 export default create({
-  children: [CalendarItem],
+  components: {
+    [CalendarItem.name]: CalendarItem
+  },
   props: {
     type: {
       type: String,
