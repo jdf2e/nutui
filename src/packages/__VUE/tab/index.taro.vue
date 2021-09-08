@@ -11,7 +11,7 @@
         class="tab-title-scroll"
         :scroll-with-animation="true"
       >
-        <view :class="['tab-title', randomTitleClass, iconType]">
+        <view :class="['tab-title', randomTitleClass, iconType]" ref="navlist">
           <view
             :class="[
               'tab-title-box',
@@ -95,7 +95,7 @@ export default create({
   components: {
     TabTitle
   },
-  emits: ['switchTab'],
+  emits: ['switch-tab'],
   setup(props, ctx) {
     const titles: Array<DataTitle> = reactive([]);
     const isLock = ref(false);
@@ -162,7 +162,6 @@ export default create({
     function switchTitle(index: number, event) {
       activeIndex.value = index;
       centerTitle(index);
-      ctx.emit('switchTab', index, event);
     }
     function initTitle() {
       titles.length = 0;
@@ -201,6 +200,15 @@ export default create({
       () => (ctx.slots.default ? ctx.slots.default() : ''),
       () => {
         initTitle();
+      }
+    );
+    watchEffect(() => {
+      activeIndex.value = props.defaultIndex;
+    });
+    watch(
+      () => activeIndex.value,
+      (val, oldVal) => {
+        ctx.emit('switch-tab', activeIndex.value);
       }
     );
     return {
