@@ -53,6 +53,7 @@ import {
 import { useLockScroll } from '../popup/use-lock-scroll';
 import { overlayProps } from '../overlay/index.taro.vue';
 import overlay from '../overlay/index.taro.vue';
+import icon from '../icon/index.taro.vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('popup');
 let _zIndex = 2000;
@@ -102,7 +103,8 @@ export const popupProps = {
 export default create({
   children: [overlay],
   components: {
-    'nut-overlay': overlay
+    [overlay.name]: overlay,
+    [icon.name]: icon
   },
   props: {
     ...popupProps

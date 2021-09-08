@@ -14,9 +14,11 @@
 import { toRefs } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('datepicker');
-
+import picker from '../picker/index.vue';
 export default create({
-  children: [],
+  components: {
+    [picker.name]: [picker]
+  },
   props: {
     value: {
       type: String,

@@ -11,9 +11,10 @@ import { createApp } from 'vue';
 // vue
 import { Menu } from '@nutui/nutui';
 // taro
-import { Menu } from '@nutui/nutui-taro';
+import { Menu,MenuItem } from '@nutui/nutui-taro';
 const app = createApp();
 app.use(Menu);
+app.use(MenuItem);
 
 ```
 

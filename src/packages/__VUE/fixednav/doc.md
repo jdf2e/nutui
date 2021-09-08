@@ -9,12 +9,12 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { FixedNav,OverLay } from '@nutui/nutui';
+import { FixedNav } from '@nutui/nutui';
 // taro
-import { FixedNav,OverLay } from '@nutui/nutui-taro';
+import { FixedNav } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(FixedNav).use(OverLay);
+app.use(FixedNav);
 
 ```
 

@@ -9,12 +9,14 @@
 ``` ts
 import { createApp } from 'vue';
 // vue
-import { Checkbox } from '@nutui/nutui';
+import { Checkbox,CheckboxGroup,Icon } from '@nutui/nutui';
 // taro
-import { Checkbox } from '@nutui/nutui-taro';
+import { Checkbox,CheckboxGroup,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Checkbox);
+app.use(CheckboxGroup);
+app.use(Icon);
 ```
 
 ## 基本用法

@@ -9,12 +9,13 @@
 ``` javascript
 import { createApp } from 'vue';
 //vue
-import { Progress } from '@nutui/nutui';
+import { Progress,Icon } from '@nutui/nutui';
 //taro
-import { Progress } from '@nutui/nutui-taro';
+import { Progress,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Progress);
+app.use(Icon);
 
 ```
 
