@@ -9,12 +9,12 @@
 ```js
 import { createApp } from 'vue';
 // vue
-import { Tab, TabPanel,Swiper } from '@nutui/nutui';
+import { Tab,Swiper } from '@nutui/nutui';
 // taro
-import { Tab, TabPanel,Swiper } from '@nutui/nutui-taro';
+import { Tab,Swiper } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Tab).use(TabPanel).use(Swiper);
+app.use(Tab).use(Swiper);
 
 ```
 
@@ -58,18 +58,16 @@ switchTab 监听切换 tab 返回事件
   >
 </nut-tab>
 <script lang="ts">
-  import { createComponent } from '@/packages/utils/create';
-  const { createDemo } = createComponent('tab');
-  export default createDemo({
+  export default {
     setup() {
-      function switchTab(activeInddex: number, event: MouseEvent) {
-        console.log(activeInddex, event);
+      function switchTab(activeInddex: number) {
+        console.log(activeInddex);
       }
       return {
         switchTab
       };
     }
-  });
+  }
 </script>
 ```
 
@@ -204,9 +202,7 @@ switchTab 监听切换 tab 返回事件
 </div>
 <script lang="ts">
 import { ref , reactive,toRefs } from "vue";
-import { createComponent } from '../../utils/create';
-const { createDemo } = createComponent('tab');
-export default createDemo({
+export default {
   setup() {
     const resData = reactive({
       editList:[
@@ -228,7 +224,7 @@ export default createDemo({
       changeList
     };
   }
-});
+}
 </script>
 ```
 
@@ -255,4 +251,4 @@ export default createDemo({
 
 | 事件名称   | 说明               | 回调参数               |
 | ---------- | ------------------ | ---------------------- |
-| switch-tab | 切换页签时触发事件 | 点击的索引值和触发元素 |
+| switch-tab | 切换页签时触发事件 | 当前活动状态的索引值 |

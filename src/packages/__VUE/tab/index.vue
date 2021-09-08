@@ -91,6 +91,7 @@ export default create({
   components: {
     TabTitle
   },
+  emits: ['switch-tab'],
   setup(props, ctx) {
     const titles: Array<DataTitle> = reactive([]);
     const isLock = ref(false);
@@ -129,7 +130,6 @@ export default create({
       }
     }
     const changeTab = (index: number) => {
-      console.log(index);
       activeIndex.value = index;
       centerTitle(index);
 
@@ -142,6 +142,7 @@ export default create({
       nutuiSwiper.value.to(index);
     }
     function initTitle() {
+      console.log(11);
       titles.length = 0;
       if (ctx.slots.default) {
         const slots: VNode[] =
@@ -171,6 +172,15 @@ export default create({
       () => (ctx.slots.default ? ctx.slots.default() : ''),
       () => {
         initTitle();
+      }
+    );
+    watchEffect(() => {
+      activeIndex.value = props.defaultIndex;
+    });
+    watch(
+      () => activeIndex.value,
+      (val, oldVal) => {
+        ictx.emit('switch-tab', activeIndex.value);
       }
     );
     return {
