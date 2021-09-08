@@ -9,12 +9,12 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { ActionSheet } from '@nutui/nutui';
+import { ActionSheet, Popup } from '@nutui/nutui';
 // taro
-import { ActionSheet } from '@nutui/nutui-taro';
+import { ActionSheet, Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(ActionSheet);
+app.use(ActionSheet).use(Popup);
 ```
 
 ## 基本用法

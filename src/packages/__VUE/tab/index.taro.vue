@@ -49,7 +49,6 @@ import {
   watchEffect
 } from 'vue';
 import { createComponent } from '../../utils/create';
-import tabpanel from '../../__VUE/tabpanel/index.taro.vue';
 const { create } = createComponent('tab');
 import Taro from '@tarojs/taro';
 import TabTitle from './tabTitle';
@@ -67,7 +66,6 @@ type currChild = {
 } & VNode[];
 
 export default create({
-  children: [tabpanel],
   props: {
     defaultIndex: {
       type: Number,

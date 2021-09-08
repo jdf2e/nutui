@@ -30,7 +30,9 @@ const zhCNType = {
   seconds: '秒'
 };
 export default create({
-  children: [picker],
+  components: {
+    [picker.name]: [picker]
+  },
   props: {
     modelValue: null,
     visible: {
