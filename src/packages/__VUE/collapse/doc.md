@@ -10,12 +10,13 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { Collapse } from '@nutui/nutui';
+import { Collapse,CollapseItem } from '@nutui/nutui';
 // taro
-import { Collapse } from '@nutui/nutui-taro';
+import { Collapse,CollapseItem } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Collapse);
+app.use(CollapseItem);
 ```
 
 ## 代码演示

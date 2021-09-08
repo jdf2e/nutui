@@ -3,10 +3,8 @@ import { h, computed, inject, getCurrentInstance, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('checkbox');
 import nutIcon from '../icon/index.vue';
-import CheckboxGroup from '../checkboxgroup/index.vue';
 
 export default create({
-  children: [CheckboxGroup],
   components: {
     nutIcon
   },

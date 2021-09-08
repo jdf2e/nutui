@@ -37,11 +37,10 @@
 <script lang="ts">
 import { computed } from 'vue';
 import { createComponent } from '../../utils/create';
-import CellGroup from '../cellgroup/index.vue';
 import { pxCheck } from '../../utils/pxCheck';
 const { componentName, create } = createComponent('cell');
+
 export default create({
-  children: [CellGroup],
   props: {
     title: { type: String, default: '' },
     subTitle: { type: String, default: '' },
@@ -55,9 +54,6 @@ export default create({
     icon: { type: String, default: '' }
   },
   emits: ['click'],
-  components: {
-    [CellGroup.name]: CellGroup
-  },
   setup(props, { emit }) {
     const classes = computed(() => {
       const prefixCls = componentName;

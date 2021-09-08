@@ -2,21 +2,21 @@
 
 ### 介绍
 
-按需加载请加载对应依赖组件 Icon Popup
+按需加载请加载对应依赖组件 Icon Popup Elevator
 
 ### 安装
 
 ``` javascript
 import { createApp } from 'vue';
 //vue
-import { Address, Icon, Popup } from '@nutui/nutui';
+import { Address, Popup, Elevator } from '@nutui/nutui';
 //taro
-import { Address, Icon, Popup } from '@nutui/nutui-taro';
+import { Address, Popup, Elevator } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Address);
-app.use(Icon);
 app.use(Popup);
+app.use(Elevator);
 
 ```
 

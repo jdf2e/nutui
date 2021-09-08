@@ -13,6 +13,7 @@
 <script lang="ts">
 import { PropType, CSSProperties, toRefs, computed } from 'vue';
 import { createComponent } from '../../utils/create';
+import Icon from '../icon/index.vue';
 const { componentName, create } = createComponent('button');
 
 export type ButtonType =
@@ -25,6 +26,9 @@ export type ButtonType =
 export type ButtonSize = 'large' | 'normal' | 'small';
 export type ButtonShape = 'square' | 'round';
 export default create({
+  components: {
+    [Icon.name]: Icon
+  },
   props: {
     color: String,
     shape: {

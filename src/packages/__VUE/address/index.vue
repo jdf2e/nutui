@@ -158,7 +158,6 @@ import { reactive, ref, toRefs, watch, nextTick, computed } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('address');
 import { transformData } from './transformData';
-import Elevator from './../elevator/index.vue';
 interface RegionData {
   name: string;
   [key: string]: any;
@@ -181,7 +180,6 @@ interface AddressList {
   selectedAddress: boolean;
 }
 export default create({
-  children: [Elevator],
   inheritAttrs: false,
   props: {
     visible: {

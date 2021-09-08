@@ -56,10 +56,9 @@ import Popup, { popupProps } from '../popup/index.vue';
 import Button from '../button/index.vue';
 export default create({
   inheritAttrs: false,
-  children: [Popup, Button],
   components: {
-    'nut-popup': Popup,
-    'nut-button': Button
+    [Popup.name]: Popup,
+    [Button.name]: Button
   },
   props: {
     ...popupProps,

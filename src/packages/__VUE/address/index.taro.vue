@@ -157,11 +157,8 @@
 <script lang="ts">
 import { reactive, ref, toRefs, watch, nextTick, computed } from 'vue';
 import { createComponent } from '../../utils/create';
-import Icon from '../icon/index.taro.vue';
-import Popup from '../popup/index.taro.vue';
 import Taro from '@tarojs/taro';
 import { transformData } from './transformData';
-import Elevator from './../elevator/index.taro.vue';
 
 const { create, componentName } = createComponent('address');
 
@@ -187,7 +184,6 @@ interface AddressList {
   selectedAddress: boolean;
 }
 export default create({
-  children: [Elevator],
   inheritAttrs: false,
   props: {
     visible: {
@@ -258,11 +254,6 @@ export default create({
       type: [String, Number],
       default: '200px'
     }
-  },
-  components: {
-    'nut-icon': Icon,
-    'nut-popup': Popup,
-    'nut-elevator': Elevator
   },
   emits: [
     'update:visible',

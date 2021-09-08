@@ -33,7 +33,7 @@
 import { computed, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('toast');
-import Icon from '../icon/index.vue';
+import Icon from '../icon/index.taro.vue';
 export default create({
   components: {
     [Icon.name]: Icon
