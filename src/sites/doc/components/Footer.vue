@@ -67,6 +67,15 @@
             >知乎专栏</a
           ></div
         >
+        <div class="doc-footer-item"
+          ><a
+            class="sub-link"
+            target="_blank"
+            href="timline://chat/?topin=82957939&type=2"
+            v-hover
+            >咚咚群：82957939</a
+          ></div
+        >
 
         <div class="doc-footer-item vx-item">
           <span v-hover>微信</span>
