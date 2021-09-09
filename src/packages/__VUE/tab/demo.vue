@@ -18,7 +18,11 @@
 
     <h2>defaultIndex设置默认显示tab,iconType为half时切换选中icon样式</h2>
     <h2>switchTab监听切换tab返回事件</h2>
-    <nut-tab :default-index="1" @switch-tab="switchTab" icon-type="half">
+    <nut-tab
+      :default-index="defaultIndexs"
+      @switch-tab="switchTab"
+      icon-type="half"
+    >
       <nut-tab-panel tab-title="全部"
         ><p class="content">这里是页签全部内容</p></nut-tab-panel
       >
@@ -160,6 +164,7 @@
 <script lang="ts">
 import { ref, reactive, toRefs } from 'vue';
 import { createComponent } from '../../utils/create';
+import func from './vue-temp/vue-editor-bridge';
 const { createDemo } = createComponent('tab');
 export default createDemo({
   props: {},
@@ -174,16 +179,18 @@ export default createDemo({
         }
       ]
     });
+    const defaultIndexs = ref(1);
     function changeList() {
       resData.editList.push({
         title: '标签' + resData.editList.length
       });
     }
-    function switchTab(activeInddex: number, event: MouseEvent) {
-      console.log(activeInddex, event);
+    function switchTab(activeInddex: number) {
+      console.log(activeInddex);
     }
     return {
       ...toRefs(resData),
+      defaultIndexs,
       changeList,
       switchTab
     };

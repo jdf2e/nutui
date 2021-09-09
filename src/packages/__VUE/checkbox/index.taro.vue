@@ -3,13 +3,9 @@ import { h, computed, inject, getCurrentInstance, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('checkbox');
 import nutIcon from '../icon/index.taro.vue';
-import nutCheckboxGroup from '../checkboxgroup/index.vue';
-
 export default create({
-  children: [nutCheckboxGroup],
   components: {
-    nutIcon,
-    nutCheckboxGroup
+    nutIcon
   },
   props: {
     modelValue: {

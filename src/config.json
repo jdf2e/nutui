@@ -134,6 +134,8 @@
           "cName": "单元格组件",
           "type": "component",
           "show": false,
+          "taro":true,
+          "exportEmpty": true,
           "desc": "展示分组列表",
           "author": "richard1015"
         },
@@ -194,6 +196,8 @@
           "cName": "布局-Col",
           "type": "component",
           "show": false,
+          "taro":true,
+          "exportEmpty": true,
           "desc": "布局组件Col",
           "author": "undo"
         },
@@ -204,6 +208,8 @@
           "cName": "布局-Row",
           "type": "component",
           "show": false,
+          "taro":true,
+          "exportEmpty": true,
           "desc": "布局组件Row",
           "author": "undo"
         }
@@ -266,6 +272,7 @@
           "cName": "折叠面板-item",
           "type": "component",
           "show": false,
+          "exportEmpty": true,
           "desc": "折叠面板-item",
           "author": "Ymm0008"
         },
@@ -379,6 +386,8 @@
           "cName": "步骤条子组件",
           "type": "component",
           "show": false,
+          "taro":true,
+          "exportEmpty": true,
           "desc": "步骤条子组件",
           "author": "ailululu"
         },
@@ -401,6 +410,8 @@
           "cName": "轮播图子组件",
           "type": "component",
           "show": false,
+          "taro":true,
+          "exportEmpty": true,
           "desc": "轮播图子组件",
           "author": "suzigang"
         },
@@ -505,6 +516,8 @@
           "cName": "标签组件",
           "type": "component",
           "show": false,
+          "taro":true,
+          "exportEmpty": true,
           "desc": "标签组件",
           "author": "zhenyulei"
         },
@@ -524,6 +537,8 @@
           "sort": 2,
           "cName": "菜单组件",
           "type": "component",
+          "taro":true,
+          "exportEmpty": true,
           "show": false,
           "desc": "下拉菜单组件",
           "author": "vickyYE"
@@ -541,11 +556,13 @@
         },
         {
           "version": "3.0.0",
-          "name": "Tabbaritem",
+          "name": "TabbarItem",
           "sort": 2,
           "cName": "标签栏子组件",
           "type": "component",
           "show": false,
+          "taro":true,
+          "exportEmpty": true,
           "desc": "标签栏子组件",
           "author": "Drjingfubo"
         },
@@ -596,6 +613,8 @@
           "desc": "多选按钮组",
           "sort": 11,
           "show": false,
+          "taro": true,
+          "exportEmpty": true,
           "author": "Ymm0008"
         },
         {
@@ -650,6 +669,8 @@
           "cName": "单选按钮组",
           "desc": "单选按钮组",
           "sort": 10,
+          "taro": true,
+          "exportEmpty": true,
           "show": false,
           "author": "Ymm0008"
         },
@@ -724,6 +745,7 @@
           "version": "3.0.0",
           "name": "CountUp",
           "taro": true,
+          "tarodoc": true,
           "sort": 12,
           "cName": "数字滚动",
           "type": "component",
@@ -734,6 +756,7 @@
         {
           "version": "3.0.0",
           "name": "NumberKeyboard",
+          "tarodoc": true,
           "taro": true,
           "sort": 13,
           "cName": "数字键盘",
@@ -779,6 +802,30 @@
           "sort": 2,
           "show": true,
           "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "taro": false,
+          "tarodoc": true,
+          "name": "Signature",
+          "type": "component",
+          "cName": "签名",
+          "desc": "签名组件",
+          "sort": 3,
+          "show": true,
+          "author": "guoxiaoxiao"
+        },
+        {
+          "version": "3.0.0",
+          "taro": false,
+          "tarodoc": true,
+          "name": "Luckycard",
+          "type": "component",
+          "cName": "刮刮卡",
+          "desc": "适合抽奖等小游戏",
+          "sort": 4,
+          "show": true,
+          "author": "guoxiaoxiao8"
         }
       ]
     }

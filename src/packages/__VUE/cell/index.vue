@@ -8,7 +8,6 @@
       >
         <slot v-if="$slots.icon" name="icon"></slot>
         <nut-icon v-else-if="icon" class="icon" :name="icon"></nut-icon>
-
         <template v-if="subTitle">
           <view class="title">{{ title }}</view>
           <view class="nut-cell__title-desc">{{ subTitle }}</view>
@@ -38,7 +37,6 @@
 import { computed } from 'vue';
 import { createComponent } from '../../utils/create';
 import { useRouter } from 'vue-router';
-import CellGroup from '../cellgroup/index.vue';
 import { pxCheck } from '@/packages/utils/pxCheck';
 const { componentName, create } = createComponent('cell');
 export default create({
@@ -55,10 +53,6 @@ export default create({
     icon: { type: String, default: '' }
   },
   emits: ['click'],
-  children: [CellGroup],
-  components: {
-    [CellGroup.name]: CellGroup
-  },
   setup(props, { emit }) {
     const classes = computed(() => {
       const prefixCls = componentName;

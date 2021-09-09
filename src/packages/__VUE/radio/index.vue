@@ -2,11 +2,9 @@
 import { computed, h, inject } from 'vue';
 import { createComponent } from '../../utils/create';
 import nutIcon from '../icon/index.vue';
-import radiogroup from '../radiogroup/index.vue';
 const { componentName, create } = createComponent('radio');
 
 export default create({
-  children: [radiogroup],
   props: {
     disabled: {
       type: Boolean,

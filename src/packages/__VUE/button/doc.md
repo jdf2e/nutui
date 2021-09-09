@@ -9,12 +9,12 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { Button,Icon } from '@nutui/nutui';
+import { Button } from '@nutui/nutui';
 // taro
-import { Button,Icon } from '@nutui/nutui-taro';
+import { Button } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Button).use(Icon);
+app.use(Button);
 ```
 
 ## 代码演示

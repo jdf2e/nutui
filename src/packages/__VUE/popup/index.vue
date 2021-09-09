@@ -52,6 +52,7 @@ import {
 import { useLockScroll } from './use-lock-scroll';
 import { overlayProps } from './../overlay/index.vue';
 import overlay from '../overlay/index.vue';
+import icon from '../icon/index.vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('popup');
 
@@ -111,9 +112,9 @@ export const popupProps = {
   }
 };
 export default create({
-  children: [overlay],
   components: {
-    'nut-overlay': overlay
+    [overlay.name]: overlay,
+    [icon.name]: icon
   },
   props: {
     ...popupProps

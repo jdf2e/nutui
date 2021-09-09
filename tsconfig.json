@@ -12,6 +12,7 @@
     "removeComments": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "lib": ["esnext", "dom"],
     "outDir": "./tsc/test",
     "types": ["vite/client", "jest"],

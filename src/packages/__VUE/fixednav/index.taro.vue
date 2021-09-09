@@ -32,8 +32,11 @@
 import { computed } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('fixednav');
-
+import overlay from '../overlay/index.taro.vue';
 export default create({
+  components: {
+    [overlay.name]: overlay
+  },
   props: {
     visible: {
       type: Boolean,
