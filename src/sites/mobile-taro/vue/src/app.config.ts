@@ -35,7 +35,8 @@ export default {
         'pages/price/index',
         'pages/button/index',
         'pages/avatar/index',
-        'pages/overlay/index'
+        'pages/overlay/index',
+        'pages/divider/index'
       ]
     },
     {
