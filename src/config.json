@@ -171,6 +171,17 @@
           "sort": 14,
           "show": true,
           "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Divider",
+          "taro": true,
+          "type": "component",
+          "cName": "分割线",
+          "desc": "用于将内容分隔为多个区域。",
+          "sort": 23,
+          "show": true,
+          "author": "yangjinjun3"
         }
       ]
     },
