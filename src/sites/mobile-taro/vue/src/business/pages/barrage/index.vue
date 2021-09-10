@@ -6,7 +6,7 @@
     </nut-cell>
     <div class="test">
       <nut-input label="文本" v-model="inputVal" />
-      <nut-button type="primary" @click="addDanmu">添加</nut-button>
+      <nut-button shape type="primary" @click="addDanmu">添加</nut-button>
     </div>
   </div>
 </template>
