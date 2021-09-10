@@ -1,6 +1,6 @@
 <template>
-  <view-block :class="classes">
-    <view-block
+  <view :class="classes">
+    <view
       v-show="showNoticeBar"
       class="nut-noticebar-page"
       :class="{ withicon: closeMode, close: closeMode, wrapable: wrapable }"
@@ -8,7 +8,7 @@
       @click="handleClick"
       v-if="direction == 'across'"
     >
-      <view-block
+      <view
         class="left-icon"
         v-if="iconShow"
         :style="{ 'background-image': `url(${iconBg})` }"
@@ -19,9 +19,9 @@
           :color="color"
           v-if="!iconBg"
         ></nut-icon>
-      </view-block>
-      <view-block ref="wrap" class="wrap">
-        <view-block
+      </view>
+      <view ref="wrap" class="wrap">
+        <view
           ref="content"
           class="content"
           :class="[
@@ -33,27 +33,27 @@
           @webkitAnimationEnd="onAnimationEnd"
         >
           <slot>{{ text }}</slot>
-        </view-block>
-      </view-block>
-      <view-block v-if="closeMode" class="right-icon" @click.stop="onClickIcon">
+        </view>
+      </view>
+      <view v-if="closeMode" class="right-icon" @click.stop="onClickIcon">
         <nut-icon name="close" size="11" :color="color"></nut-icon>
-      </view-block>
-    </view-block>
+      </view>
+    </view>
 
-    <view-block
+    <view
       class="nut-noticebar-vertical"
       v-if="scrollList.length > 0 && direction == 'vertical'"
       :style="barStyle"
     >
       <template v-if="slots.default">
-        <view-block class="horseLamp_list" :style="horseLampStyle">
+        <view class="horseLamp_list" :style="horseLampStyle">
           <ScrollItem
             v-for="(item, index) in scrollList"
             v-bind:key="index"
             :style="{ height: height + 'px', 'line-height': height + 'px' }"
             :item="item"
           ></ScrollItem>
-        </view-block>
+        </view>
       </template>
 
       <template v-else>
@@ -70,16 +70,16 @@
         </ul>
       </template>
 
-      <view-block class="go" @click="!slots.rightIcon && handleClickIcon()">
+      <view class="go" @click="!slots.rightIcon && handleClickIcon()">
         <template v-if="slots.rightIcon">
           <slot name="rightIcon"></slot>
         </template>
         <template v-else-if="closeMode">
           <nut-icon type="cross" :color="color" size="11px"></nut-icon>
         </template>
-      </view-block>
-    </view-block>
-  </view-block>
+      </view>
+    </view>
+  </view>
 </template>
 <script lang="ts">
 import {
@@ -97,6 +97,7 @@ import {
 } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('noticebar');
+import Taro from '@tarojs/taro';
 
 export default create({
   props: {
@@ -222,8 +223,9 @@ export default create({
         animationDuration: state.duration + 's'
       };
     });
+
     const iconBg = computed(() => {
-      let iconBg = null;
+      let iconBg = '';
       if (props.leftIcon) {
         iconBg = props.leftIcon;
       }
@@ -268,20 +270,33 @@ export default create({
         if (!wrap.value || !content.value) {
           return;
         }
-        const wrapWidth = wrap.value.getBoundingClientRect().width;
+        let wrapWidth = 0;
+        let offsetWidth = 0;
 
-        const offsetWidth = content.value.getBoundingClientRect().width;
+        Taro.createSelectorQuery()
+          .select('.wrap')
+          .boundingClientRect((rect) => {
+            if (rect.width > 0) wrapWidth = rect.width;
+          })
+          .exec();
+        Taro.createSelectorQuery()
+          .select(`.content`)
+          .boundingClientRect((rect) => {
+            if (rect.width > 0) offsetWidth = rect.width;
 
-        if (props.scrollable && offsetWidth > wrapWidth) {
-          state.wrapWidth = wrapWidth;
-          state.offsetWidth = offsetWidth;
+            if (props.scrollable && offsetWidth > wrapWidth) {
+              state.wrapWidth = wrapWidth;
+              state.offsetWidth = offsetWidth;
 
-          state.duration = offsetWidth / props.speed;
-          state.animationClass = 'play';
-        } else {
-          state.animationClass = '';
-        }
-      });
+              state.duration = offsetWidth / props.speed;
+              state.animationClass = 'play';
+            } else {
+              state.animationClass = '';
+            }
+            // contentStyle()
+          })
+          .exec();
+      }, 100);
     };
     const handleClick = (event: Event) => {
       emit('click', event);
