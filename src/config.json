@@ -805,7 +805,7 @@
         },
         {
           "version": "3.0.0",
-          "taro": false,
+          "taro": true,
           "tarodoc": true,
           "name": "Signature",
           "type": "component",
