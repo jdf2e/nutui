@@ -11,7 +11,7 @@
         class="tab-title-scroll"
         :scroll-with-animation="true"
       >
-        <view :class="['tab-title', randomTitleClass, iconType]">
+        <view :class="['tab-title', randomTitleClass, iconType]" ref="navlist">
           <view
             :class="[
               'tab-title-box',
@@ -49,7 +49,6 @@ import {
   watchEffect
 } from 'vue';
 import { createComponent } from '../../utils/create';
-import tabpanel from '../../__VUE/tabpanel/index.taro.vue';
 const { create } = createComponent('tab');
 import Taro from '@tarojs/taro';
 import TabTitle from './tabTitle';
@@ -67,7 +66,6 @@ type currChild = {
 } & VNode[];
 
 export default create({
-  children: [tabpanel],
   props: {
     defaultIndex: {
       type: Number,
@@ -97,7 +95,7 @@ export default create({
   components: {
     TabTitle
   },
-  emits: ['switchTab'],
+  emits: ['switch-tab'],
   setup(props, ctx) {
     const titles: Array<DataTitle> = reactive([]);
     const isLock = ref(false);
@@ -164,7 +162,6 @@ export default create({
     function switchTitle(index: number, event) {
       activeIndex.value = index;
       centerTitle(index);
-      ctx.emit('switchTab', index, event);
     }
     function initTitle() {
       titles.length = 0;
@@ -203,6 +200,15 @@ export default create({
       () => (ctx.slots.default ? ctx.slots.default() : ''),
       () => {
         initTitle();
+      }
+    );
+    watchEffect(() => {
+      activeIndex.value = props.defaultIndex;
+    });
+    watch(
+      () => activeIndex.value,
+      (val, oldVal) => {
+        ctx.emit('switch-tab', activeIndex.value);
       }
     );
     return {

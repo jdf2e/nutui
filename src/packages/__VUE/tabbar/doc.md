@@ -8,12 +8,13 @@
 ``` javascript
 import { createApp } from 'vue';
 //vue
-import { Tabbar } from '@nutui/nutui';
+import { Tabbar,TabbarItem } from '@nutui/nutui';
 //taro
-import { Tabbar } from '@nutui/nutui-taro';
+import { Tabbar,TabbarItem } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Tabbar);
+app.use(TabbarItem);
 
 ```
 
