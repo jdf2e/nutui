@@ -1,11 +1,9 @@
 <script lang="ts">
 import { provide, computed, reactive, h, ComponentInternalInstance } from 'vue';
-import Step from '../step/index.vue';
 import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('steps');
 
 export default create({
-  children: [Step],
   props: {
     direction: {
       type: String,

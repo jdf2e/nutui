@@ -9,12 +9,13 @@
 ``` javascript
 import { createApp } from 'vue';
 //vue
-import { NumberKeyboard } from '@nutui/nutui';
+import { NumberKeyboard,Popup } from '@nutui/nutui';
 //taro
-import { NumberKeyboard } from '@nutui/nutui-taro';
+import { NumberKeyboard,Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(NumberKeyboard);
+app.use(Popup);
 
 ```
 
@@ -23,7 +24,7 @@ app.use(NumberKeyboard);
 ### 基础用法 默认键盘
 
 ```html
- <nut-numberkeyboard v-model:visible="visible" @input="input" @delete="onDelete" @close="close()"> </nut-numberkeyboard>
+<nut-numberkeyboard :visible="true" @input="input" @delete="onDelete" @close="close()"> </nut-numberkeyboard>
 ```
 ### 带右侧栏键盘
 

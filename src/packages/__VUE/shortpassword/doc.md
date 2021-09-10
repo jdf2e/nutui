@@ -8,12 +8,13 @@
 ``` javascript
 import { createApp } from 'vue';
 //vue
-import { ShortPassword } from '@nutui/nutui';
+import { ShortPassword,Popup } from '@nutui/nutui';
 //taro
-import { ShortPassword } from '@nutui/nutui-taro';
+import { ShortPassword,Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(ShortPassword);
+app.use(Popup);
 
 ```
 

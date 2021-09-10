@@ -113,8 +113,8 @@ export default create({
       if (props.maxLength && val.length > Number(props.maxLength)) {
         val = val.slice(0, Number(props.maxLength));
       }
-      emit('change', val, event);
       emit('update:modelValue', val, event);
+      emit('change', val, event);
     };
 
     const valueFocus = (event: Event) => {

@@ -1,15 +1,10 @@
 <script lang="ts">
 import { computed, h, inject } from 'vue';
 import nutIcon from '../icon/index.taro.vue';
-import radiogroup from '../radiogroup/index.vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('radio');
 
 export default create({
-  children: [radiogroup],
-  components: {
-    'nut-radiogroup': radiogroup
-  },
   props: {
     disabled: {
       type: Boolean,
@@ -42,9 +37,9 @@ export default create({
     const color = computed(() => {
       return !props.disabled
         ? isCurValue.value
-          ? '#fa2c19'
-          : '#d6d6d6'
-        : '#f5f5f5';
+          ? 'nut-radio__icon'
+          : 'nut-radio__icon--unchecked'
+        : 'nut-radio__icon--disable';
     });
 
     const position = computed(() => {
@@ -56,7 +51,7 @@ export default create({
       return h(nutIcon, {
         name: isCurValue.value ? iconActiveName : iconName,
         size: iconSize,
-        color: color.value
+        class: color.value
       });
     };
 

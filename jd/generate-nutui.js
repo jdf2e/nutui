@@ -4,10 +4,10 @@ const path = require('path');
 const fs = require('fs-extra');
 let importStr = `import { App } from 'vue';\n`;
 const packages = [];
-config.nav.map(item => {
-  item.packages.forEach(element => {
-    let { name, show, type } = element;
-    if (show) {
+config.nav.map((item) => {
+  item.packages.forEach((element) => {
+    let { name, show, type, exportEmpty } = element;
+    if (show || exportEmpty) {
       importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${
         type === 'methods' ? '' : '.vue'
       }';\n`;
@@ -33,7 +33,7 @@ fs.outputFile(
   path.resolve(__dirname, '../src/packages/nutui.vue.ts'),
   fileStr,
   'utf8',
-  error => {
+  (error) => {
     // logger.success(`${package_config_path} 文件写入成功`);
   }
 );

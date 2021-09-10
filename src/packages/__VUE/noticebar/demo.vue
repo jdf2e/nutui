@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo full">
     <h2>默认用法</h2>
     <nut-noticebar :text="text" :background="`rgba(251, 248, 220, 1)`" :color='`#D9500B`'></nut-noticebar>
 

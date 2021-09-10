@@ -2,21 +2,21 @@
 
 ### 介绍
 
-按需加载请加载对应依赖组件 Icon Popup
+按需加载请加载对应依赖组件 Icon Popup Elevator
 
 ### 安装
 
 ``` javascript
 import { createApp } from 'vue';
-// vue
-import { Address, Icon, Popup } from '@nutui/nutui';
-// taro
-import { Address, Icon, Popup } from '@nutui/nutui-taro';
+//vue
+import { Address, Popup, Elevator } from '@nutui/nutui';
+//taro
+import { Address, Popup, Elevator } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Address);
-app.use(Icon);
 app.use(Popup);
+app.use(Elevator);
 
 ```
 
@@ -69,7 +69,67 @@ setup() {
 
     const onChange = (cal) => {
       const name = address[cal.next]
-      if (name.value.length < 1) {
+      if (name.length < 1) {
+        showPopup.value = false;
+      }
+    };
+    const close = val => {
+      console.log(val);
+      text.value = val.data.addressStr;
+    };
+
+    return { showPopup, text, showAddress, onChange, close, ...toRefs(address) };
+}
+```
+
+### 选择自定义地址2
+
+```html
+<nut-cell title="选择地址" :desc="text" type="custom2" is-link @click="showAddress"></nut-cell>
+<nut-address
+    v-model:visible="showPopup"
+    :province="province"
+    :city="city"
+    :country="country"
+    :town="town"
+    @change="onChange"
+    @close="close"
+    custom-address-title="请选择所在地区"
+></nut-address>
+```
+```javascript
+setup() {
+    const showPopup = ref(false);
+    const address = reactive({
+      province:[
+        { id: 1, name: '北京' },
+        { id: 2, name: '广西' },
+        { id: 3, name: '江西' },
+        { id: 4, name: '四川' }
+      ],
+      city:[
+        { id: 7, name: '朝阳区' },
+        { id: 8, name: '崇文区' },
+        { id: 9, name: '昌平区' },
+        { id: 6, name: '石景山区' }
+      ],
+      country:[
+        { id: 3, name: '八里庄街道' },
+        { id: 9, name: '北苑' },
+        { id: 4, name: '常营乡' }
+      ],
+      town:[]
+    })
+
+    const text = ref('请选择地址')
+
+    const showAddress = () => {
+      showPopup.value = !showPopup.value;
+    };
+
+    const onChange = (cal) => {
+      const name = address[cal.next]
+      if (name.length < 1) {
         showPopup.value = false;
       }
     };
@@ -364,20 +424,21 @@ setup() {
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | v-model:visible | 是否打开地址选择 | String | ''
-| type | 地址选择类型 exist/custom | String | 'custom'
+| type | 地址选择类型 exist/custom/custom2 | String | 'custom'
 | province | 省，每个省的对象中，必须有 name 字段 | Array | []
 | city | 市，每个市的对象中，必须有 name 字段 | Array | []
 | country | 县，每个县的对象中，必须有 name 字段 | Array | []
 | town | 乡/镇，每个乡/镇的对象中，必须有 name 字段 | Array | []
+| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | String、Number | '200px'
 | exist-address | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | []
-| default-icon | 已有地址列表默认图标，type=‘exist’ 时生效 | string | ''
-| selected-icon | 已有地址列表选中图标，type=‘exist’ 时生效 | string | ''
+| default-icon | 已有地址列表默认图标，type=‘exist’ 时生效 | String | ''
+| selected-icon | 已有地址列表选中图标，type=‘exist’ 时生效 | String | ''
 | close-btn-icon | 自定义关闭弹框按钮图标 | string | -
-| back-btn-icon | 自定义地址与已有地址切换时，自定义返回的按钮图标 | string | -
+| back-btn-icon | 自定义地址与已有地址切换时，自定义返回的按钮图标 | String | -
 | is-show-custom-address | 是否可以切换自定义地址选择，type=‘exist’ 时生效 | Boolean | true
-| custom-address-title  | 自定义地址选择文案，type='custom' 时生效 | string | '请选择所在地区'
-| exist-address-title| 已有地址文案 ，type=‘exist’ 时生效| string | '配送至'
-| custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| string | '选择其他地址'
+| custom-address-title  | 自定义地址选择文案，type='custom' 时生效 | String | '请选择所在地区'
+| exist-address-title| 已有地址文案 ，type=‘exist’ 时生效| String | '配送至'
+| custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| String | '选择其他地址'
 
 
   * provinceName 省的名字
@@ -394,7 +455,7 @@ setup() {
 | selected | 选择已有地址列表时触发 | 参考 selected
 | close | 地址选择弹框关闭时触发 | 参考 close
 | close-mask |点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'}
-| switch-module | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'}
+| switch-module | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'/'custom2'}
 
 
 ## change 回调参数
@@ -414,6 +475,6 @@ setup() {
 ## close 回调参数
 | 参数 | 说明 | 可能值 
 |----- | ----- | ----- 
-| type | 地址选择类型 exist/custom  |  exist/custom
+| type | 地址选择类型 exist/custom/custom2  |  exist/custom/custom2
 | data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | {} 
     
