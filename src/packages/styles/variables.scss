@@ -279,5 +279,12 @@ $fixednav-btn-bg: linear-gradient(
   rgba(250, 63, 25, 1) 100%
 ) !default;
 
+// NoticeBar
+$noticeBar-font-size: 14px !default;
+$noticeBar-height: 40px !default;
+$noticeBar-line-height: 24px !default;
+$noticeBar-left-icon-width: 16px !default;
+$noticeBar-right-icon-width: 16px !default;
+
 @import './mixins/index';
 @import './animation/index';
