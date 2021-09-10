@@ -18,7 +18,11 @@
 
     <h2>defaultIndex设置默认显示tab，iconType为half时切换选中icon样式</h2>
     <h2>switchTab监听切换tab返回事件</h2>
-    <nut-tab :default-index="1" @switch-tab="switchTab" icon-type="half">
+    <nut-tab
+      :default-index="currIndex"
+      @switch-tab="switchTab"
+      icon-type="half"
+    >
       <nut-tab-panel tab-title="全部"
         ><p class="content">这里是页签全部内容</p></nut-tab-panel
       >
@@ -155,17 +159,23 @@ export default {
         }
       ]
     });
+    const currIndex = ref(0);
     function changeList() {
       resData.editList.push({
         title: '标签' + resData.editList.length
       });
     }
-    function switchTab(activeInddex: number, event: MouseEvent) {
-      console.log(activeInddex, event);
+    function switchTab(activeInddex: number) {
+      console.log(activeInddex);
+    }
+    function changeIndex() {
+      let aa = currIndex.value;
+      currIndex.value = aa + 1;
     }
     return {
       ...toRefs(resData),
       changeList,
+      currIndex,
       switchTab
     };
   }
