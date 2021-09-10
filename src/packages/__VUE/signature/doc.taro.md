@@ -1,87 +1,79 @@
-# signature 签名
+#  signature组件
 
 ### 介绍
+    
+    基于Canvas的签名组件。
+    
+### 安装
 
-由于 taro 对原生 canvas 的转换未完成。暂时不支持该组件转小程序的应用
-
-<!-- ### 安装
-
-```javascript
+``` javascript
 import { createApp } from 'vue';
-import { Swiper } from '@nutui/nutui-taro';
+// vue
+import { Signature} from '@nutui/nutui';
 
 const app = createApp();
-app.use(Swiper);
-```
+app.use(Signature);
 
+```
+    
+    
 ## 代码演示
-
-### 基础用法
-
-`autoplay` 是否自动切换
-`interval` 自动切换时间间隔
-`current` 当前所在滑块的 index
-`indicator-dots` 是否显示面板指示点
-`indicator-color` 指示点颜色
+ 
+### 修改颜色和签字粗细
 
 ```html
-<nut-swiper current="1" indicator-dots="true" indicator-color="#426543" autoplay="true" interval="3000">
-   <nut-swiper-item>
-    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-  </nut-swiper-item>
-  <nut-swiper-item>
-    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
-  </nut-swiper-item>
-  <nut-swiper-item>
-    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-  </nut-swiper-item>
-  <nut-swiper-item>
-    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-  </nut-swiper-item>
-</nut-swiper>
+<div class="demo">
+    <nut-signature
+      :lineWidth="lineWidth"
+      :strokeStyle="strokeStyle"
+      @confirm="confirm"
+      @clear="clear"
+    />
+  </div>
+setup() {
+    const state = reactive({
+      lineWidth: 4,
+      strokeStyle: 'green',
+      testimg: ''
+    });
+    const clear = () => {
+      console.log('清除事件');
+    };
+    const confirm = (data: any) => {
+      console.log('图片地址', data);
+      Taro.saveImageToPhotosAlbum({
+        filePath: `${data}`,
+        success(res) {
+          Taro.showToast({
+            title: '保存成功'
+          });
+        },
+        fail(err) {
+          Taro.showToast({
+            title: '保存失败'
+          });
+        }
+      });
+    };
+    return { ...state, confirm, clear };
+  }
 ```
+    
+## API
+    
+### Props
+    
+| 参数 | 说明 | 类型 | 默认值
+|----- | ----- | ----- | ----- 
+| custom-class | 自定义class | String | -
+| line-width | 线条的宽度 | Number | 3
+| stroke-style | 绘图笔触颜色 | String | '#000'
+| type | 图片格式 | String | 'png'
+| un-support-tpl | 不支持Canvas情况下的展示文案 | String | '对不起，当前浏览器不支持Canvas，无法使用本控件！'
 
-### 自定义大小
+## Event
 
-`previous-margin` 前边距，可用于露出前一项的一小部分，接受 px 和 rpx 值
-`next-margin` 后边距，可用于露出后一项的一小部分，接受 px 和 rpx 值
-
-```html
-<nut-swiper previous-margin="10px" next-margin="10px">
-   <nut-swiper-item>
-    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-  </nut-swiper-item>
-  <nut-swiper-item>
-    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
-  </nut-swiper-item>
-  <nut-swiper-item>
-    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-  </nut-swiper-item>
-  <nut-swiper-item>
-    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-  </nut-swiper-item>
-</nut-swiper>
-```
-
-### 垂直方向
-
-`vertical` 滑动方向是否为纵向
-
-
-```html
-<nut-swiper vertical="true">
-    <nut-swiper-item>
-    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-  </nut-swiper-item>
-  <nut-swiper-item>
-    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
-  </nut-swiper-item>
-  <nut-swiper-item>
-    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-  </nut-swiper-item>
-  <nut-swiper-item>
-    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-  </nut-swiper-item>
-</nut-swiper>
-``` -->
-
+| 字段 | 说明 | 回调参数 
+|----- | ----- | ----- 
+| confirm | 点击确认按钮触发事件回调函数 | data URI
+| clear | 点击重签按钮触发事件回调函数 | 无
