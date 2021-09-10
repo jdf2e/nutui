@@ -69,7 +69,11 @@ export default {
     },
     {
       root: 'business',
-      pages: ['pages/address/index', 'pages/barrage/index']
+      pages: [
+        'pages/address/index',
+        'pages/signature/index',
+        'pages/barrage/index'
+      ]
     }
   ],
   window: {
