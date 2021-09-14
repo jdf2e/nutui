@@ -20,7 +20,8 @@ import {
   onBeforeUnmount,
   onDeactivated,
   onMounted,
-  onActivated
+  onActivated,
+  watchEffect
 } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('overlay');
@@ -68,12 +69,15 @@ export default create({
       };
     });
 
-    watch(props.lockScroll, (value) => {
-      value ? lock() : unlock();
-    });
+    watch(
+      () => props.visible,
+      (value) => {
+        value ? lock() : unlock();
+      }
+    );
 
     const lock = () => {
-      if (props.lockScroll) {
+      if (props.lockScroll && props.visible) {
         document.body.classList.add('nut-overflow-hidden');
       }
     };
