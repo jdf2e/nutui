@@ -221,6 +221,16 @@
           "sort": 2,
           "show": true,
           "author": "VickyYe"
+        },
+        {
+          "version": "1.0.0",
+          "name": "CheckBox",
+          "type": "component",
+          "cName": "复选按钮",
+          "desc": "多选按钮用于选择。",
+          "sort": 4,
+          "show": true,
+          "author": "oasis"
         }
       ]
     },
