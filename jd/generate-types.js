@@ -6,10 +6,10 @@ declare class UIComponent {
   static install(vue: App): void;
 }\n`;
 const packages = [];
-config.nav.map(item => {
-  item.packages.forEach(element => {
-    let { name, show } = element;
-    if (show) {
+config.nav.map((item) => {
+  item.packages.forEach((element) => {
+    let { name, show, exportEmpty } = element;
+    if (show || exportEmpty) {
       importStr += `declare class ${name} extends UIComponent {}\n`;
       packages.push(name);
     }
@@ -32,7 +32,7 @@ fs.outputFile(
   path.resolve(__dirname, '../dist/nutui.d.ts'),
   fileStr,
   'utf8',
-  error => {
+  (error) => {
     // logger.success(`${package_config_path} 文件写入成功`);
   }
 );
@@ -42,7 +42,7 @@ fs.outputFile(
 export default NutUI;
 export * from './nutui';`,
   'utf8',
-  error => {
+  (error) => {
     // logger.success(`${package_config_path} 文件写入成功`);
   }
 );
