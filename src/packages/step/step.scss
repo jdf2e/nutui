@@ -1,0 +1,190 @@
+.nut-step {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex: 1;
+  text-align: center;
+  font-size: 0;
+  &-head {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  &-line {
+    position: absolute;
+    top: 11px;
+    left: 50%;
+    right: -50%;
+    display: inline-block;
+    height: 1px;
+    background: #909ca4;
+  }
+  &-icon {
+    position: relative;
+    display: flex;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 13px;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    .nut-icon {
+      width: 100%;
+      height: 100%;
+    }
+    &.is-text {
+      border-radius: 50%;
+      border-width: 1px;
+      border-style: solid;
+    }
+    &.is-icon {
+      border-radius: 50%;
+      border-width: 1px;
+      border-style: solid;
+      background-color: transparent;
+    }
+  }
+  &-main {
+    display: inline-block;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+  }
+  &-title {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #909ca4;
+  }
+  &-content {
+    display: block;
+    font-size: 14px;
+    color: #666;
+  }
+  &:last-child {
+    .nut-step-line {
+      display: none;
+    }
+  }
+  &.nut-step-finish {
+    .nut-step-head {
+      color: $primary-color;
+      border-color: $primary-color;
+    }
+    .nut-step-icon.is-text {
+      background-color: $white;
+    }
+    .nut-step-icon.is-icon {
+      background-color: $white;
+    }
+    .nut-step-line {
+      background: $primary-color;
+    }
+    .nut-step-title {
+      color: $primary-color;
+    }
+  }
+  &.nut-step-process {
+    .nut-step-head {
+      color: $white;
+      border-color: $primary-color;
+    }
+    .nut-step-icon.is-text {
+      background-color: $primary-color;
+    }
+    .nut-step-icon.is-icon {
+      background-color: $primary-color;
+    }
+    .nut-step-title {
+      color: $primary-color;
+    }
+  }
+  &.nut-step-wait {
+    .nut-step-head {
+      color: #909ca4;
+      border-color: #909ca4;
+    }
+    .nut-step-icon.is-text {
+      background-color: $white;
+    }
+    .nut-step-icon.is-icon {
+      background-color: $step-wait-bg-color;
+      .nut-icon {
+        color: $white;
+      }
+    }
+    .nut-step-content {
+      color: #909ca4;
+    }
+  }
+}
+.nut-steps-vertical {
+  .nut-step {
+    display: flex;
+    height: 33.34%;
+  }
+  .nut-step-line {
+    position: absolute;
+    display: inline-block;
+    width: 1px;
+    height: 100%;
+    background: #909ca4;
+  }
+  .nut-step-main {
+    display: inline-block;
+    padding-left: 6%;
+    text-align: left;
+  }
+  &.nut-steps-dot {
+    .nut-step-head {
+      margin-top: 7px;
+      margin-bottom: 0;
+    }
+    .nut-step-line {
+      top: 7px;
+      left: 50%;
+      right: -50%;
+    }
+    .nut-step-icon {
+      width: 8px;
+      height: 8px;
+      background: $primary-color;
+      border-radius: 50%;
+      box-sizing: content-box;
+    }
+    .nut-step-wait {
+      .nut-step-icon {
+        background-color: #959fb1;
+      }
+      .nut-step-content {
+        color: #909ca4;
+      }
+    }
+    .nut-step-finish {
+      .nut-step-icon {
+        background-color: $primary-color;
+      }
+    }
+    .nut-step-process {
+      .nut-step-icon {
+        position: relative;
+        background-color: $primary-color;
+        &:before {
+          content: '';
+          display: inline-block;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin-left: -7px;
+          margin-top: -7px;
+          width: 14px;
+          height: 14px;
+          background-color: $primary-color-end;
+          border-radius: 50%;
+          opacity: 0.23;
+        }
+      }
+    }
+  }
+}
