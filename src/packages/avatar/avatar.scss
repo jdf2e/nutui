@@ -1,0 +1,48 @@
+.nut-avatar {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: inline-block;
+  position: relative;
+  margin-right: 24px;
+  flex: 0 0 auto; // 防止被压缩
+  .icon {
+    background-size: 100% 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .nut-icon__img {
+    width: 100%;
+    height: 100%;
+  }
+  .text {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    overflow: hidden;
+  }
+}
+.avatar-large {
+  width: $avatar-large-width;
+  height: $avatar-large-height;
+  line-height: $avatar-large-height;
+}
+.avatar-small {
+  width: $avatar-small-width;
+  height: $avatar-small-height;
+  line-height: $avatar-small-height;
+}
+.avatar-normal {
+  width: $avatar-normal-width;
+  height: $avatar-normal-height;
+  line-height: $avatar-normal-height;
+}
+.avatar-round {
+  border-radius: 50%;
+}
+.avatar-square {
+  border-radius: $avatar-square;
+}

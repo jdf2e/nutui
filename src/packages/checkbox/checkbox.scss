@@ -1,0 +1,19 @@
+.nut-checkbox {
+  display: flex;
+  align-items: center;
+  &--reverse {
+    flex-direction: row-reverse;
+    .nut-checkbox__label {
+      margin-right: 15px;
+      margin-left: 0;
+    }
+  }
+  &__label {
+    margin-left: 15px;
+    font-size: 16px;
+    color: $checkbox-label-color;
+    &--disabled {
+      color: $checkbox-label-disable-color;
+    }
+  }
+}
