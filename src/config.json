@@ -171,6 +171,17 @@
           "sort": 14,
           "show": true,
           "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Divider",
+          "taro": true,
+          "type": "component",
+          "cName": "分割线",
+          "desc": "用于将内容分隔为多个区域。",
+          "sort": 23,
+          "show": true,
+          "author": "yangjinjun3"
         }
       ]
     },
@@ -805,7 +816,7 @@
         },
         {
           "version": "3.0.0",
-          "taro": false,
+          "taro": true,
           "tarodoc": true,
           "name": "Signature",
           "type": "component",
@@ -814,18 +825,6 @@
           "sort": 3,
           "show": true,
           "author": "guoxiaoxiao"
-        },
-        {
-          "version": "3.0.0",
-          "taro": false,
-          "tarodoc": true,
-          "name": "Luckycard",
-          "type": "component",
-          "cName": "刮刮卡",
-          "desc": "适合抽奖等小游戏",
-          "sort": 4,
-          "show": true,
-          "author": "guoxiaoxiao8"
         }
       ]
     }
