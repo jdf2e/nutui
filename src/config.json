@@ -154,6 +154,16 @@
       "packages": [
         {
           "version": "1.0.0",
+          "name": "Drag",
+          "type": "component",
+          "cName": "拖拽",
+          "desc": "实现可拖拽的任意元素",
+          "sort": 1,
+          "show": true,
+          "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
           "name": "Collapse",
           "type": "component",
           "cName": "折叠面板",
