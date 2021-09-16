@@ -375,8 +375,10 @@ export default create({
     };
     //切换地区Tab
     const changeRegionTab = (item: RegionData, key: number, index: number) => {
-      tabIndex.value = index;
-      lineAnimation();
+      if (getTabName(item, index)) {
+        tabIndex.value = index;
+        lineAnimation();
+      }
     };
 
     // 选择现有地址
