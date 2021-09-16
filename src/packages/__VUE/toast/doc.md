@@ -1,7 +1,5 @@
 # Toast 吐司
 
-轻提示。
-
 ### 介绍
 
 用于轻提示。
@@ -18,54 +16,73 @@ app.use(Toast);
 
 ## 代码演示
 
-### 基本用法
+#### 全局使用方式
+``` javascript
+import { getCurrentInstance } from 'vue';
 
-文字提示
-```javascript
-Toast.text('网络失败，请稍后再试~');
+export default {
+  setup() {
+    const { proxy } = getCurrentInstance();
+    proxy.$toast.text('全局使用方式');
+    return {};
+  },
+};
 ```
 
-成功提示
+#### 文字提示
+``` javascript
+import { Toast } from '@nutui/nutui';
 
-```javascript
+export default {
+  setup() {
+    Toast.text('网络失败，请稍后再试~');
+    return {};
+  },
+};
+```
+
+#### 成功提示
+
+``` javascript
 Toast.success('成功提示');
 ```
 
-失败提示
+#### 失败提示
 
-```javascript
+``` javascript
 Toast.fail('失败提示');
 ```
 
-警告提示
+#### 警告提示
 
-```javascript
+``` javascript
 Toast.warn('警告提示');
 ```
 
-加载提示
+#### 加载提示
 
-```javascript
+``` javascript
 Toast.loading('加载中');
 ```
 
-Toast不消失
-```javascript
+#### Toast不消失
+
+``` javascript
 Toast.text(msg,{
     duration:0
 });
 ```
 
-Loading带透明罩
-```javascript
- Toast.loading(msg,{
+#### Loading带透明罩
+``` javascript
+Toast.loading(msg,{
      cover:true
 });
 ```
 
 
-##¥ 支持在JS模块中导入使用
-```javascript
+####  支持在JS模块中导入使用
+``` javascript
 import { Toast } from "@nutui/nutui";
 Toast.text('在js模块中使用');
 // 返回实例，可以手动调用实例中的hide方法关闭提示
