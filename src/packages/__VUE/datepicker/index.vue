@@ -31,7 +31,7 @@ const zhCNType = {
 };
 export default create({
   components: {
-    [picker.name]: [picker]
+    [picker.name]: picker
   },
   props: {
     modelValue: null,
