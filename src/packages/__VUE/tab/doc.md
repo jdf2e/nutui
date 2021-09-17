@@ -240,13 +240,14 @@ export default {
 
 ### nut-tab
 
-| 字段          | 说明                                                             | 类型    | 默认值     |
-| ------------- | ---------------------------------------------------------------- | ------- | ---------- |
-| direction     | 页签栏的位置，可选值 horizontal/vertical                         | String  | horizontal |
-| default-index | 默认选中的页签栏                                                 | Number  | 0          |
-| animated-time | 开启切换标签内容时的转场动画时间                                 | Number  | 0          |
-| no-swiping    | 禁止 tab 内容滑动                                                | Boolean | false      |
-| scrollType    | 页签栏的分布，默认平均分布，设置为"scroll"，有最小宽度，发生滚动 | string  | “default“  |
+| 字段          | 说明                                                                                                        | 类型    | 默认值     |
+| ------------- | ----------------------------------------------------------------------------------------------------------- | ------- | ---------- |
+| direction     | 页签栏的位置，可选值 horizontal/vertical                                                                    | String  | horizontal |
+| default-index | 默认选中的页签栏                                                                                            | Number  | 0          |
+| animated-time | 开启切换标签内容时的转场动画时间                                                                            | Number  | 0          |
+| no-swiping    | 禁止 tab 内容滑动                                                                                           | Boolean | false      |
+| scrollType    | 页签栏的分布，默认平均分布，设置为"scroll"，有最小宽度，发生滚动                                            | string  | “default“  |
+| icon-type     | 页签底部选中的红色样式，当为 half 的时候，显示半圆的红色 icon，默认为 all：红色横线，用来兼容不同的视觉规范 | String  | all        |
 
 ### nut-tab-panel
 
