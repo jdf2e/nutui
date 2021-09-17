@@ -33,7 +33,8 @@ app.use(Barrage);
     const danmu = ref<any>(null);
     let list = ref(["画美不看", "不明觉厉", "喜大普奔", "男默女泪", "累觉不爱", "爷青结"]); 
     function addDanmu() {
-      danmu.value.add(inputVal.value);
+      let n = Math.random();
+      danmu.value.add('随机——' + String(n).substr(2, 10));
     }
     return {
       inputVal,
@@ -53,7 +54,7 @@ app.use(Barrage);
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | danmu         | 弹幕列表数据               | Array | []              |
-| frequency        | 可视区域内每个弹幕出现的时间间隔                         | Number | 200               |
+| frequency        | 可视区域内每个弹幕出现的时间间隔                         | Number | 500               |
 | speeds         | 每个弹幕的滚动时间 | Number |  2000               |
 | rows  | 弹幕行数，分几行展示     | Number | 1 |
 | top  | 弹幕垂直距离    | Number | 10 |

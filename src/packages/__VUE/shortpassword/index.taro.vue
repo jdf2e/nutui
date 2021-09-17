@@ -41,7 +41,7 @@
           >
             <view
               class="nut-shortpsd-icon"
-              v-if="realInput.length > index"
+              v-if="String(realInput).length > index"
             ></view>
           </view>
         </view>
@@ -148,7 +148,7 @@ export default create({
         val = val.slice(0, comLen.value);
         realInput.value = val;
       }
-      if (realInput.value.length === comLen.value) {
+      if (String(realInput.value).length === comLen.value) {
         emit('complete', val);
       }
       emit('change', val);

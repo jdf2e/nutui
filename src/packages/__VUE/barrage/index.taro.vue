@@ -126,7 +126,8 @@ export default create({
             let height = domList[_index]['height'];
             el.classList.add('move');
             el.style.animationDuration = `${speeds}ms`;
-            el.style.top = (_index % rows.value) * (height + top.value) + 'px';
+            el.style.top =
+              (_index % rows.value) * (height + top.value) + 20 + 'px';
             // el.style.width = width + 20 + 'px';
             el.style.width = 'auto';
             // el.style.left = "-"+(_index % rows.value) + 'px';
