@@ -97,7 +97,18 @@
     },
     {
       "name": "操作反馈",
-      "packages": []
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Switch",
+          "type": "component",
+          "cName": "开关",
+          "desc": "用来打开或关闭选项。",
+          "sort": 1,
+          "show": true,
+          "author": "dsj"
+        }
+      ]
     },
     {
       "name": "基础组件",
@@ -141,7 +152,18 @@
     },
     {
       "name": "数据录入",
-      "packages": []
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Rate",
+          "type": "component",
+          "cName": "评分",
+          "desc": "用于快速的评级操作，或对评价进行展示。",
+          "sort": 1,
+          "show": true,
+          "author": "dsj"
+        }
+      ]
     },
     {
       "name": "业务组件",

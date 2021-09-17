@@ -9,6 +9,7 @@ interface IconProps {
   color: string
   tag: keyof ReactHTML
   click: (e: MouseEvent) => void
+  className: string
 }
 
 const defaultProps: IconProps = {
@@ -18,6 +19,7 @@ const defaultProps: IconProps = {
   color: '',
   tag: 'i',
   click: (e: MouseEvent) => {},
+  className: '',
 }
 
 function pxCheck(value: string | number): string {
@@ -25,7 +27,7 @@ function pxCheck(value: string | number): string {
 }
 
 export const Icon: FunctionComponent<Partial<IconProps>> = (props) => {
-  const { name, size, classPrefix, color, tag, children } = { ...defaultProps, ...props }
+  const { name, size, classPrefix, color, tag, children, className } = { ...defaultProps, ...props }
   const isImage = name ? name.indexOf('/') !== -1 : false
   const type = isImage ? 'img' : tag
   const b = bem('icon')
@@ -42,7 +44,9 @@ export const Icon: FunctionComponent<Partial<IconProps>> = (props) => {
   return React.createElement(
     type,
     {
-      className: isImage ? `${b('img')}` : `nut-icon-${name} ${b(null, [classPrefix])}`,
+      className: isImage
+        ? `${b('img')} ${className}`
+        : `nut-icon-${name} ${b(null, [classPrefix])} ${className}`,
       style: {
         color,
         fontSize: pxCheck(size),
