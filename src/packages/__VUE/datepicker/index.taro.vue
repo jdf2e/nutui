@@ -51,5 +51,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss"></style>
