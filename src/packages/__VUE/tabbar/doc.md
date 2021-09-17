@@ -43,6 +43,18 @@ setup() {
 },
 ```
 
+### 路由跳转
+
+``` html
+<nut-tabbar @tab-switch="tabSwitch">
+  <nut-tabbar-item tab-title="首页" icon="home" to="/home"></nut-tabbar-item>
+  <nut-tabbar-item tab-title="分类" icon="category" :to="{ path: '/home', query: { plan: 'private' }}"></nut-tabbar-item>
+  <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
+  <nut-tabbar-item tab-title="购物车" icon="cart"></nut-tabbar-item>
+  <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
+</nut-tabbar>
+```
+
 ### 自定义图片链接
 ```html
 <nut-tabbar @tab-switch="tabSwitch">
@@ -159,6 +171,7 @@ setup() {
 | img      | 标签页显示图片链接 | String | --     |
 | activeImg      | 激活以后的标签页显示图片链接（同一个item中icon和img只能选择一个） | String | --     |
 | href      | 标签页的跳转链接                          | String | --     |
+| to  `小程序不支持`      | 	标签页的路由对象，等于 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | String｜Object | --     |
 | num       | 页签右上角的数字角标，超出99之后为99+     | Number | --     |
 
 

@@ -52,6 +52,7 @@
 </template>
 <script lang="ts">
 import { createComponent } from '../../utils/create';
+import { useRouter } from 'vue-router';
 import {
   ComponentInternalInstance,
   computed,
@@ -98,7 +99,8 @@ export default create({
     fontClassName: {
       type: String,
       default: 'nutui-iconfont'
-    }
+    },
+    to: [Object, String]
   },
   setup(props, ctx) {
     const parent: any = inject('parent');
@@ -109,6 +111,7 @@ export default create({
       active: parent.modelValue, // 是否选中
       index: 0
     });
+    const router = useRouter();
     const relation = (child: ComponentInternalInstance): void => {
       if (child.proxy) {
         let index = parent.children.length;
@@ -127,12 +130,15 @@ export default create({
       }
       return null;
     });
-
     watch(choosed, (value, oldValue) => {
       state.active = value;
       setTimeout(() => {
         if (parent.children[value].href) {
           window.location.href = parent.children[value].href;
+        }
+        if (parent.children[value].to) {
+          let to = parent.children[value].to;
+          router.push(to);
         }
       });
     });
