@@ -9,12 +9,13 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { Input } from '@nutui/nutui';
+import { Input,Icon } from '@nutui/nutui';
 // taro
-import { Input } from '@nutui/nutui-taro';
+import { Input,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Input);
+app.use(Icon);
 
 ```
 ## 代码演示
