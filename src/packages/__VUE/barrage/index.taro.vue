@@ -123,7 +123,7 @@ export default create({
           .boundingClientRect((rec) => {
             let danmuCWidth = rec.width;
             // let width = domList[_index]['width'];
-            let height = domList[_index]['height'];
+            let height = domList[_index]?.height || 0;
             el.classList.add('move');
             el.style.animationDuration = `${speeds}ms`;
             el.style.top =
