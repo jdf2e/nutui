@@ -9,7 +9,7 @@ const banner = `/*!
 
 export default defineConfig({
   build: {
-    minify: false,
+    minify: true,
     lib: {
       entry: './dist/styles/themes/default.scss',
       formats: ['es'],
