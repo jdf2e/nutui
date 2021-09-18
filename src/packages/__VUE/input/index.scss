@@ -7,21 +7,22 @@
   border-bottom: 1px solid $input-border-bottom;
   font-size: 14px;
   box-sizing: border-box;
-  input {
-    width: 230px;
-    flex: 1;
-    padding: 0 10px;
-    padding-right: 35px;
-    outline: 0 none;
-    border: 0;
-    text-decoration: none;
-  }
+
   &-label {
     width: 80px;
     overflow: hidden;
     display: inline-block;
     text-align: left;
     display: flex;
+    .input-text {
+      width: 230px;
+      flex: 1;
+      padding: 0 10px;
+      padding-right: 35px;
+      outline: 0 none;
+      border: 0;
+      text-decoration: none;
+    }
     .label-string {
       overflow: hidden;
       white-space: nowrap;
