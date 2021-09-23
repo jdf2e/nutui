@@ -52,7 +52,11 @@
         </view>
       </view>
       <view class="nut-uploader__upload" v-if="maximum - fileList.length">
-        <nut-icon color="#808080" :name="uploadIcon"></nut-icon>
+        <nut-icon
+          :size="uploadIconSize"
+          color="#808080"
+          :name="uploadIcon"
+        ></nut-icon>
         <input
           class="nut-uploader__input"
           v-if="capture"
@@ -116,6 +120,7 @@ export default create({
     headers: { type: Object, default: {} },
     data: { type: Object, default: {} },
     uploadIcon: { type: String, default: 'photograph' },
+    uploadIconSize: { type: [String, Number], default: '' },
     xhrState: { type: [Number, String], default: 200 },
     withCredentials: { type: Boolean, default: false },
     multiple: { type: Boolean, default: false },
