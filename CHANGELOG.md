@@ -1,4 +1,27 @@
 
+## v3.1.5~6
+
+`2021-09-18`
+
+* :zap: feat: 新增 signature 签名组件 @guoxiaoxiao
+* :zap: feat: 新增 divider (#644) @yangjinjun3
+* :bug: fix(tabbar,cell): 支持路由跳转 (#667) @Drjingfubo
+* :bug: fix(barrage): demo 优化 (#661) @Ymm0008
+* :bug: fix(price): 配置为整数时小数位显示问题修复 #659 (#665) @Drjingfubo
+* :bug: fix(address): 点击空白处触发事件问题修改 (#657) @yangxiaolu3
+* :bug: fix(shortpassword): 密码圆点不展示修复 (#638)  @Drjingfubo
+* :bug: fix(tab): 修复 switch-tab 事件失效、点击事件报错处理 #635 @zhenyulei
+* :bug: fix(input): change event data update delay @richard1015
+* :bug: fix(popup): h5 滑动内容穿透修复 @richard1015
+* :bug: fix(calendar): 个别月份不展示问题, 滑动卡顿问题 、滑动月份不变更问题 (#618) @irisSong
+* :zap: upd(tabbar): 新增支持自定义图片链接 (#620) @Drjingfubo
+* :zap: style(noticebar) : 默认样式调整 (#641) @yangxiaolu3
+* :zap: chore: add postcss plugin autoprefixer @richard1015
+* :zap: chore: components docs、install optimization @richard1015
+* :zap: docs: toast optimization @richard1015
+* :zap: docs(address): address docs modify @szg2008
+* :zap: docs: add version intro @richard1015
+
 ## v3.1.4
 
 `2021-09-01`

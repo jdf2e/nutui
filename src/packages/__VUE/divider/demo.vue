@@ -39,8 +39,3 @@ export default createDemo({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.demo {
-}
-</style>

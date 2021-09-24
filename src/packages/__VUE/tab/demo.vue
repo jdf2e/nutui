@@ -18,11 +18,7 @@
 
     <h2>defaultIndex设置默认显示tab,iconType为half时切换选中icon样式</h2>
     <h2>switchTab监听切换tab返回事件</h2>
-    <nut-tab
-      :default-index="defaultIndexs"
-      @switch-tab="switchTab"
-      icon-type="half"
-    >
+    <nut-tab :default-index="defaultIndexs" @switch-tab="switchTab">
       <nut-tab-panel tab-title="全部"
         ><p class="content">这里是页签全部内容</p></nut-tab-panel
       >

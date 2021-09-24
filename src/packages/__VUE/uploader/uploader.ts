@@ -1,5 +1,6 @@
 export class UploadOptions {
   url = '';
+  name = 'file';
   formData?: FormData;
   method = 'post';
   xhrState = 200;
@@ -59,12 +60,12 @@ export class Uploader {
         ...options.headers
       }, //
       formData: options.formData,
-      name: 'files',
+      name: options.name,
       success(response: { errMsg: any; statusCode: number; data: string }) {
-        if (response.errMsg) {
-          options.onFailure?.(response, options);
-        } else if (options.xhrState === response.statusCode) {
+        if (options.xhrState === response.statusCode) {
           options.onSuccess?.(response, options);
+        } else {
+          options.onFailure?.(response, options);
         }
       },
       fail(e: any) {

@@ -25,9 +25,15 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     minify: false,
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    },
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
-      external: ['vue', 'vue-router', '@tarojs/taro'],
+      external: ['vue', 'vue-router', '@tarojs/taro', 'pinyin'],
       output: {
         banner,
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
@@ -37,7 +43,7 @@ export default defineConfig({
       }
     },
     lib: {
-      entry: 'src/packages/nutui.taro.vue.ts',
+      entry: 'src/packages/nutui.taro.vue.build.ts',
       name: 'nutui',
       fileName: 'nutui',
       formats: ['es', 'umd']

@@ -26,32 +26,32 @@ export default defineConfig({
   build: {
     minify: false,
     lib: {
-      entry: './src/packages/__VUE/button/index.vue',
-      name: 'index'
-      // formats: ['umd']
+      entry: '',
+      name: 'index',
+      fileName: (format) => 'index',
+      formats: ['es']
     },
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
-      external: ['vue'],
-      input: ['./src/packages/button/index.vue'],
-      output: [
-        {
-          dir: null,
-          file: './dist/lib/button/index.js',
-          banner,
-          format: 'umd',
-          // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
-          globals: {
-            vue: 'Vue'
-          }
-        },
-        {
-          dir: null,
-          file: path.resolve(__dirname, './dist/es/button/index.js'),
-          banner,
-          format: 'es'
-        }
-      ]
+      external: ['vue', 'vue-router', 'pinyin'],
+
+      input: [
+        './src/packages/__VUE/price/index.vue',
+        './src/packages/__VUE/cell/index.vue'
+      ],
+      output: {
+        dir: path.resolve(__dirname, './dist/packages/')
+        // entryFileNames: '[name].js',
+        // file: path.resolve(__dirname, './dist/packages/price/index.js'),
+      }
+      //  [
+      //   {
+      //     // dir: path.resolve(__dirname, './dist/packages/'),
+      //     // file: path.resolve(__dirname, './dist/packages/price/index.js'),
+      //     // banner,
+      //     // format: 'es'
+      //   }
+      // ]
     },
     emptyOutDir: true
   }

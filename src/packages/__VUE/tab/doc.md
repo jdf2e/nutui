@@ -2,24 +2,22 @@
 
 常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式。
 
-> 注意，由于小程序端依赖的swiper组件存在兼容性问题，因此在小程序端暂时只支持基础的tab切换功能，待swiper组件修复后，开放所有功能。
+> 注意，由于小程序端依赖的 swiper 组件存在兼容性问题，因此在小程序端暂时只支持基础的 tab 切换功能，待 swiper 组件修复后，开放所有功能。
 
 ## 安装
 
 ```js
 import { createApp } from 'vue';
 // vue
-import { Tab, TabPanel,Swiper,SwiperItem } from '@nutui/nutui';
+import { Tab, TabPanel, Swiper, SwiperItem } from '@nutui/nutui';
 // taro
-import { Tab, TabPanel,Swiper,SwiperItem } from '@nutui/nutui-taro';
+import { Tab, TabPanel, Swiper, SwiperItem } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Tab);
 app.use(TabPanel);
 app.use(Swiper);
 app.use(SwiperItem);
-
-
 ```
 
 ## 基础样式，默认 tab-title 宽度均分相等
@@ -71,7 +69,7 @@ switchTab 监听切换 tab 返回事件
         switchTab
       };
     }
-  }
+  };
 </script>
 ```
 
@@ -169,7 +167,13 @@ switchTab 监听切换 tab 返回事件
 ## 左右 tab 布局
 
 ```html
-<nut-tab direction="vertical" :animatedTime="500" :defaultIndex="2">
+<nut-tab
+  direction="vertical"
+  :animated-time="500"
+  :default-index="2"
+  scrollType="scroll"
+  icon-type="half"
+>
   <nut-tab-panel tab-title="页签一"
     ><p class="content-tab">这里是页签一内容</p></nut-tab-panel
   >
@@ -236,13 +240,14 @@ export default {
 
 ### nut-tab
 
-| 字段          | 说明                                                             | 类型    | 默认值     |
-| ------------- | ---------------------------------------------------------------- | ------- | ---------- |
-| direction     | 页签栏的位置，可选值 horizontal/vertical                         | String  | horizontal |
-| default-index | 默认选中的页签栏                                                 | Number  | 0          |
-| animated-time | 开启切换标签内容时的转场动画时间                                 | Number  | 0          |
-| no-swiping    | 禁止 tab 内容滑动                                                | Boolean | false      |
-| scrollType    | 页签栏的分布，默认平均分布，设置为"scroll"，有最小宽度，发生滚动 | string  | “default“  |
+| 字段          | 说明                                                                                                        | 类型    | 默认值     |
+| ------------- | ----------------------------------------------------------------------------------------------------------- | ------- | ---------- |
+| direction     | 页签栏的位置，可选值 horizontal/vertical                                                                    | String  | horizontal |
+| default-index | 默认选中的页签栏                                                                                            | Number  | 0          |
+| animated-time | 开启切换标签内容时的转场动画时间                                                                            | Number  | 0          |
+| no-swiping    | 禁止 tab 内容滑动                                                                                           | Boolean | false      |
+| scrollType    | 页签栏的分布，默认平均分布，设置为"scroll"，有最小宽度，发生滚动                                            | string  | “default“  |
+| icon-type     | 页签底部选中的红色样式，当为 half 的时候，显示半圆的红色 icon，默认为 all：红色横线，用来兼容不同的视觉规范 | String  | all        |
 
 ### nut-tab-panel
 
@@ -253,6 +258,6 @@ export default {
 
 ### Event
 
-| 事件名称   | 说明               | 回调参数               |
-| ---------- | ------------------ | ---------------------- |
+| 事件名称   | 说明               | 回调参数             |
+| ---------- | ------------------ | -------------------- |
 | switch-tab | 切换页签时触发事件 | 当前活动状态的索引值 |

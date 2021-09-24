@@ -77,7 +77,6 @@ import {
 } from 'vue';
 import { createComponent } from '../../utils/create';
 import { throttle } from '../../utils/throttle.js';
-import './index.scss';
 const { create } = createComponent('video');
 
 export default create({
@@ -401,7 +400,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>
