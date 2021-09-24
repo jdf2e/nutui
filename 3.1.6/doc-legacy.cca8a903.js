@@ -1,0 +1,1 @@
+System.register(["./vendor-legacy.0d969a90.js"],(function(e){"use strict";var t,s;return{setters:[function(e){t=e.e,s=e.o}],execute:function(){const n={class:"markdown-body"};e("default",{setup:(e,{expose:r})=>(r({frontmatter:{}}),(e,r)=>(s(),t("div",n)))})}}}));
