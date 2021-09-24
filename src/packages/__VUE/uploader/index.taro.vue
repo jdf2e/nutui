@@ -32,7 +32,11 @@
         </view>
       </view>
       <view class="nut-uploader__upload" v-if="maximum - fileList.length">
-        <nut-icon color="#808080" :name="uploadIcon"></nut-icon>
+        <nut-icon
+          :size="uploadIconSize"
+          color="#808080"
+          :name="uploadIcon"
+        ></nut-icon>
         <nut-button class="nut-uploader__input" @click="chooseImage" />
       </view>
     </template>
@@ -87,6 +91,7 @@ export default create({
     headers: { type: Object, default: {} },
     data: { type: Object, default: {} },
     uploadIcon: { type: String, default: 'photograph' },
+    uploadIconSize: { type: [String, Number], default: '' },
     xhrState: { type: [Number, String], default: 200 },
     disabled: { type: Boolean, default: false },
     beforeDelete: {
@@ -132,6 +137,7 @@ export default create({
 
     const executeUpload = (fileItem: FileItem) => {
       const uploadOption = new UploadOptions();
+      uploadOption.name = props.name;
       uploadOption.url = props.url;
       for (const [key, value] of Object.entries(props.data)) {
         fileItem.formData[key] = value;
@@ -238,7 +244,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

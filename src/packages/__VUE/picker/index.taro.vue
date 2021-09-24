@@ -82,5 +82,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss" scoped></style>
