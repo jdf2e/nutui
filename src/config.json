@@ -785,6 +785,39 @@
           "show": true,
           "taro": true,
           "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Badge",
+          "type": "component",
+          "cName": "徽标",
+          "desc": "徽标",
+          "sort": 17,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Tag",
+          "type": "component",
+          "cName": "标签",
+          "desc": "标签",
+          "sort": 18,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Popover",
+          "type": "component",
+          "cName": "气泡弹出框",
+          "desc": "气泡弹出框",
+          "sort": 19,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
         }
       ]
     },

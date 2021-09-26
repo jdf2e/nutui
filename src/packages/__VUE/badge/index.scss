@@ -1,0 +1,51 @@
+.demo {
+  background: rgba(255, 255, 255, 1);
+}
+
+.nut-badge {
+  position: relative;
+  display: inline-block;
+  .slot-icons {
+    position: absolute;
+    background: linear-gradient(
+      135deg,
+      rgba(250, 44, 25, 1) 0%,
+      rgba(250, 63, 25, 1) 44.59259259%,
+      rgba(250, 89, 25, 1) 83.40740741%,
+      rgba(250, 100, 25, 1) 100%
+    );
+    border-radius: 7px;
+    top: -20%;
+    right: -20%;
+    padding: 0 5px;
+    text-align: center;
+    border-radius: 14px;
+  }
+  sup {
+    position: absolute;
+    background: linear-gradient(
+      135deg,
+      rgba(250, 44, 25, 1) 0%,
+      rgba(250, 63, 25, 1) 44.59259259%,
+      rgba(250, 89, 25, 1) 83.40740741%,
+      rgba(250, 100, 25, 1) 100%
+    );
+    border-radius: 7px;
+    padding: 0 5px;
+    text-align: center;
+    border-radius: 14px;
+    font-size: 11px;
+    font-family: PingFangSC;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 1);
+  }
+  .nut-badge__content {
+    transform: translateY(-50%) translateX(100%);
+  }
+  .is-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 7px;
+    padding: 0;
+  }
+}
