@@ -65,12 +65,8 @@ var demoModel = function (nameLc) {
     }
   });
   </script>
-  
-  <style lang="scss">
-  @import 'index.scss';
-  </style>
   `,
-    doc: `#  ${nameLc}组件
+    doc: `# ${nameLc}组件
 
     ### 介绍
     
@@ -82,7 +78,7 @@ var demoModel = function (nameLc) {
     
     ## 代码演示
     
-    ### 基础用法1
+    ### 基础用法
     
 
     

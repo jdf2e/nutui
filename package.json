@@ -41,8 +41,8 @@
     "build:site": "npm run checked && vite build",
     "build:gh-pages": "npm run checked && vite build --base=/nutui/",
     "build:site:oss": "npm run checked && vite build --base=/nutui/3x/",
-    "build": "npm run checked && vite build --config vite.config.build.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts",
-    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts",
+    "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts",
+    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts",
     "serve": "vite preview",
     "upload": "yarn build:site:oss && node ./jd/upload.js",
     "add": "node jd/createComponentMode.js",
@@ -63,12 +63,12 @@
     }
   },
   "dependencies": {
-    "pinyin": "^2.10.2",
-    "sass": "^1.34.0",
-    "vue": "^3.0.5",
-    "vue-router": "^4.0.4"
+    "pinyin": "^2.10.2"
   },
   "devDependencies": {
+    "sass": "^1.34.0",
+    "vue": "^3.0.5",
+    "vue-router": "^4.0.4",
     "@commitlint/cli": "^10.0.0",
     "@commitlint/config-conventional": "^10.0.0",
     "@tarojs/taro": "^3.3.0-alpha.8",
