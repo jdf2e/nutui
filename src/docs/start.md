@@ -10,7 +10,7 @@
 #### NPM 安装
 
 ```bash
-# Vue2 项目
+# Vue2 项目 需要参考 2.x 文档 https://nutui.jd.com/2x
 npm i @nutui/nutui
 
 # Vue3 项目
