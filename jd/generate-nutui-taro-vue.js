@@ -27,22 +27,28 @@ let installFunction = `function install(app: any) {
     }
   });
 }`;
-let fileStr = `${importStr}
+let fileStrBuild = `${importStr}
 ${installFunction}
-export { ${packages.join(',')}  };
-export default { install, version:'${package.version}'};`;
+const version = '${package.version}';
+export { install, version };
+export default { install, version};`;
+
 fs.outputFile(
   path.resolve(__dirname, '../src/packages/nutui.taro.vue.build.ts'),
-  fileStr,
+  fileStrBuild,
   'utf8',
   (error) => {
     // logger.success(`${package_config_path} 文件写入成功`);
   }
 );
-fileStr += importScssStr;
+let fileStrDev = `${importStr}
+${installFunction}
+${importScssStr}
+export { install, ${packages.join(',')}  };
+export default { install, version:'${package.version}'};`;
 fs.outputFile(
   path.resolve(__dirname, '../src/packages/nutui.taro.vue.ts'),
-  fileStr,
+  fileStrDev,
   'utf8',
   (error) => {
     // logger.success(`${package_config_path} 文件写入成功`);
