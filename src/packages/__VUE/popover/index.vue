@@ -36,10 +36,9 @@ export type PopoverLocation = 'bottom' | 'top' | 'left' | 'right';
 
 export default create({
   inheritAttrs: false,
-  children: [Popup, Button],
   components: {
-    'nut-popup': Popup,
-    'nut-button': Button
+    [Popup.name]: Popup,
+    [Button.name]: Button
   },
   props: {
     ...popupProps,
@@ -123,7 +122,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

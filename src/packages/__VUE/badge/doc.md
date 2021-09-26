@@ -136,7 +136,7 @@ app.use(Badge);
 |-----------------|------------------------------------------|---------|---------|
 | value           | 显示的内容         | String | -       |
 | max         | value 为数值时，最大值    | Number  | `10000`       |
-| zIndex        | 徽标的 z-index 值      | Number |  `10`  |
+| z-index        | 徽标的 z-index 值      | Number |  `10`  |
 | isDot     | 是否为小点   | Boolean  | `false`      |
 | hidden         | 是否隐藏   | Boolean  | `false`       |  
 | top         | 上下偏移量，支持单位设置，可设置为：5px 等   | Number  | `0`       |  
