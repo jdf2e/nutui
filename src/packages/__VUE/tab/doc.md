@@ -24,18 +24,18 @@ app.use(SwiperItem);
 
 ```html
 <nut-tab>
-  <nut-tab-panel tab-title="全部"
-    ><p class="content-tab">这里是页签全部内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="待付款"
-    ><p class="content-tab">这里是页签待付款内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="待收获"
-    ><p class="content-tab">这里是页签待收获内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="已完成"
-    ><p class="content-tab">这里是页签已完成内容</p></nut-tab-panel
-  >
+  <nut-tab-panel tab-title="全部">
+    <p class="content-tab">这里是页签全部内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="待付款">
+    <p class="content-tab">这里是页签待付款内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="待收获">
+    <p class="content-tab">这里是页签待收获内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="已完成">
+    <p class="content-tab">这里是页签已完成内容</p>
+  </nut-tab-panel>
 </nut-tab>
 ```
 
@@ -46,18 +46,18 @@ switchTab 监听切换 tab 返回事件
 
 ```html
 <nut-tab :defaultIndex="1" @switchTab="switchTab">
-  <nut-tab-panel tab-title="全部"
-    ><p class="content-tab">这里是页签全部内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="待付款"
-    ><p class="content-tab">这里是页签待付款内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="待收获"
-    ><p class="content-tab">这里是页签待收获内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="已完成"
-    ><p class="content-tab">这里是页签已完成内容</p></nut-tab-panel
-  >
+  <nut-tab-panel tab-title="全部">
+    <p class="content-tab">这里是页签全部内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="待付款">
+    <p class="content-tab">这里是页签待付款内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="待收获">
+    <p class="content-tab">这里是页签待收获内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="已完成">
+    <p class="content-tab">这里是页签已完成内容</p>
+  </nut-tab-panel>
 </nut-tab>
 <script lang="ts">
   export default {
@@ -77,18 +77,18 @@ switchTab 监听切换 tab 返回事件
 
 ```html
 <nut-tab :animatedTime="500">
-  <nut-tab-panel tab-title="全部"
-    ><p class="content-tab">这里是页签全部内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="待付款"
-    ><p class="content-tab">这里是页签待付款内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="待收获"
-    ><p class="content-tab">这里是页签待收获内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="已完成"
-    ><p class="content-tab">这里是页签已完成内容</p></nut-tab-panel
-  >
+  <nut-tab-panel tab-title="全部">
+    <p class="content-tab">这里是页签全部内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="待付款">
+    <p class="content-tab">这里是页签待付款内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="待收获">
+    <p class="content-tab">这里是页签待收获内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="已完成">
+    <p class="content-tab">这里是页签已完成内容</p>
+  </nut-tab-panel>
 </nut-tab>
 ```
 
@@ -96,18 +96,18 @@ switchTab 监听切换 tab 返回事件
 
 ```html
 <nut-tab :no-swiping="true">
-  <nut-tab-panel tab-title="全部"
-    ><p class="content-tab">这里是页签全部内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="待付款"
-    ><p class="content-tab">这里是页签待付款内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="待收获"
-    ><p class="content-tab">这里是页签待收获内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="已完成"
-    ><p class="content-tab">这里是页签已完成内容</p></nut-tab-panel
-  >
+  <nut-tab-panel tab-title="全部">
+    <p class="content-tab">这里是页签全部内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="待付款">
+    <p class="content-tab">这里是页签待付款内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="待收获">
+    <p class="content-tab">这里是页签待收获内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="已完成">
+    <p class="content-tab">这里是页签已完成内容</p>
+  </nut-tab-panel>
 </nut-tab>
 ```
 
@@ -117,24 +117,24 @@ switchTab 监听切换 tab 返回事件
 
 ```html
 <nut-tab :animatedTime="500" scrollType="scroll">
-  <nut-tab-panel tab-title="全部"
-    ><p class="content-tab">这里是页签全部内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="待付款"
-    ><p class="content-tab">这里是页签待付款内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="待收获"
-    ><p class="content-tab">这里是页签待收获内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="已完成"
-    ><p class="content-tab">这里是页签已完成内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="已取消"
-    ><p class="content-tab">这里是页签已取消内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="待评价"
-    ><p class="content-tab">这里是页签待评价内容</p></nut-tab-panel
-  >
+  <nut-tab-panel tab-title="全部">
+    <p class="content-tab">这里是页签全部内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="待付款">
+    <p class="content-tab">这里是页签待付款内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="待收获">
+    <p class="content-tab">这里是页签待收获内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="已完成">
+    <p class="content-tab">这里是页签已完成内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="已取消">
+    <p class="content-tab">这里是页签已取消内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="待评价">
+    <p class="content-tab">这里是页签待评价内容</p>
+  </nut-tab-panel>
 </nut-tab>
 ```
 
@@ -146,21 +146,21 @@ switchTab 监听切换 tab 返回事件
     <template v-slot:header><nut-icon name="dongdong"></nut-icon></template>
     <p class="content-tab">这里是页签全部内容</p>
   </nut-tab-panel>
-  <nut-tab-panel tab-title="待付款"
-    ><p class="content-tab">这里是页签待付款内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="待收获"
-    ><p class="content-tab">这里是页签待收获内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="已完成"
-    ><p class="content-tab">这里是页签已完成内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="已取消"
-    ><p class="content-tab">这里是页签已取消内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="待评价"
-    ><p class="content-tab">这里是页签待评价内容</p></nut-tab-panel
-  >
+  <nut-tab-panel tab-title="待付款">
+    <p class="content-tab">这里是页签待付款内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="待收获">
+    <p class="content-tab">这里是页签待收获内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="已完成">
+    <p class="content-tab">这里是页签已完成内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="已取消">
+    <p class="content-tab">这里是页签已取消内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="待评价">
+    <p class="content-tab">这里是页签待评价内容</p>
+  </nut-tab-panel>
 </nut-tab>
 ```
 
@@ -174,27 +174,27 @@ switchTab 监听切换 tab 返回事件
   scrollType="scroll"
   icon-type="half"
 >
-  <nut-tab-panel tab-title="页签一"
-    ><p class="content-tab">这里是页签一内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="页签二"
-    ><p class="content-tab">这里是页签二内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="页签三"
-    ><p class="content-tab">这里是页签三内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="页签四"
-    ><p class="content-tab">这里是页签四内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="页签五"
-    ><p class="content-tab">这里是页签五内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="页签六"
-    ><p class="content-tab">这里是页签六内容</p></nut-tab-panel
-  >
-  <nut-tab-panel tab-title="页签七"
-    ><p class="content-tab">这里是页签七内容</p></nut-tab-panel
-  >
+  <nut-tab-panel tab-title="页签一">
+    <p class="content-tab">这里是页签一内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="页签二">
+    <p class="content-tab">这里是页签二内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="页签三">
+    <p class="content-tab">这里是页签三内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="页签四">
+    <p class="content-tab">这里是页签四内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="页签五">
+    <p class="content-tab">这里是页签五内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="页签六">
+    <p class="content-tab">这里是页签六内容</p>
+  </nut-tab-panel>
+  <nut-tab-panel tab-title="页签七">
+    <p class="content-tab">这里是页签七内容</p>
+  </nut-tab-panel>
 </nut-tab>
 ```
 
@@ -246,7 +246,7 @@ export default {
 | default-index | 默认选中的页签栏                                                                                            | Number  | 0          |
 | animated-time | 开启切换标签内容时的转场动画时间                                                                            | Number  | 0          |
 | no-swiping    | 禁止 tab 内容滑动                                                                                           | Boolean | false      |
-| scrollType    | 页签栏的分布，默认平均分布，设置为"scroll"，有最小宽度，发生滚动                                            | string  | “default“  |
+| scroll-type    | 页签栏的分布，默认平均分布，设置为"scroll"，有最小宽度，发生滚动                                            | string  | “default“  |
 | icon-type     | 页签底部选中的红色样式，当为 half 的时候，显示半圆的红色 icon，默认为 all：红色横线，用来兼容不同的视觉规范 | String  | all        |
 
 ### nut-tab-panel
