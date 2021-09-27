@@ -6,7 +6,7 @@
         class="nut-tag--close"
         v-if="closeable"
         name="close"
-        size="11"
+        size="12"
         @click="onClose"
       ></nut-icon>
     </view>

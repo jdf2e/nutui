@@ -1,5 +1,8 @@
 .nut-tag {
   padding: 0 4px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
   &--default {
     color: $tag-default-color;
     background: $tag-default-background-color;
