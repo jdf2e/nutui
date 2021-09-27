@@ -76,8 +76,6 @@ var demoModel = function (nameLc) {
     
     ${''}
     
-    ## 代码演示
-    
     ### 基础用法
     
 
