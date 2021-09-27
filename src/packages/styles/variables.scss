@@ -287,6 +287,7 @@ $noticeBar-left-icon-width: 16px !default;
 $noticeBar-right-icon-width: 16px !default;
 
 //tag
+$tag-font-size: 12px !default;
 $tag-default-background-color: #000000 !default;
 $tag-primary-background-color: #3460fa !default;
 $tag-success-background-color: #4fc08d !default;
@@ -297,7 +298,7 @@ $tag-danger-background-color: linear-gradient(
   rgba(242, 77, 12, 1) 100%
 ) !default;
 $tag-warning-background-color: #f3812e !default;
-$tag-default-color: #ffffff;
+$tag-default-color: #ffffff !default;
 $tag-border-width: 1px !default;
 
 $tag-plain-background-color: #fff !default;

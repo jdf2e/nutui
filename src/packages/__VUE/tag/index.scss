@@ -2,7 +2,7 @@
   padding: 0 4px;
   display: inline-flex;
   align-items: center;
-  font-size: 12px;
+  font-size: $tag-font-size;
   &--default {
     color: $tag-default-color;
     background: $tag-default-background-color;
