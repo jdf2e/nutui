@@ -21,8 +21,7 @@ app.use(NoticeBar);
 
 ```
 
-### 代码示例
-
+#
 ### 基本用法
 
 ```html
