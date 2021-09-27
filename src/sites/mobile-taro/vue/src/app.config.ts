@@ -65,7 +65,10 @@ export default {
         'pages/textarea/index',
         'pages/countdown/index',
         'pages/countup/index',
-        'pages/numberkeyboard/index'
+        'pages/numberkeyboard/index',
+        'pages/badge/index',
+        'pages/tag/index',
+        'pages/popover/index'
       ]
     },
     {
