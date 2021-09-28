@@ -1,0 +1,59 @@
+.nut-pagination {
+  display: flex;
+  font-size: 14px;
+  font-family: PingFangSC;
+  font-weight: normal;
+  color: rgba(250, 36, 0, 1);
+  &-contain {
+    display: flex;
+  }
+  &-simple {
+    height: 39px;
+    width: 124px;
+    line-height: 39px;
+    text-align: center;
+  }
+  &-prev,
+  &-item,
+  &-next {
+    height: 39px;
+    min-width: 39px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary-color;
+    background: #fff;
+    border-radius: 2px;
+    border: 1px solid $pagination-item-border-color;
+    cursor: pointer;
+  }
+  &-prev,
+  &-item {
+    border-right: none;
+  }
+  &-prev,
+  &-next {
+    padding: 0 11px;
+  }
+  .simple-border {
+    border-right: 1px solid $pagination-item-border-color;
+  }
+  .active {
+    color: #fff;
+    border: none;
+    background: linear-gradient(
+      135deg,
+      rgba(250, 44, 25, 1) 0%,
+      rgba(250, 63, 25, 1) 44.59259259%,
+      rgba(250, 89, 25, 1) 83.40740741%,
+      rgba(250, 100, 25, 1) 100%
+    );
+  }
+  .disabled {
+    color: rgba(116, 116, 116, 0.31);
+    background-color: #f7f8fa;
+    cursor: not-allowed;
+  }
+}
