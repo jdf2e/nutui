@@ -9,14 +9,8 @@
 
         <slot name="content"></slot>
 
-        <div
-          v-for="item in iconItemList"
-          :key="item.name"
-          :class="{ 'title-item': true, disabled: item.disabled }"
-        >
-          <slot v-if="item.icon">
-            <nut-icon class="item-img" :name="item.icon"></nut-icon
-          ></slot>
+        <div v-for="item in lists" :key="item.name" :class="{ 'title-item': true, disabled: item.disabled }">
+          <slot v-if="item.icon"> <nut-icon class="item-img" :name="item.icon"></nut-icon></slot>
           <div class="title-name">{{ item.name }}</div>
         </div>
       </div>
@@ -42,7 +36,7 @@ export default create({
   },
   props: {
     ...popupProps,
-    iconItemList: {
+    lists: {
       type: Array,
       default: []
     },
