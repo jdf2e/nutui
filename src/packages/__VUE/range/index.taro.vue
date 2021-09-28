@@ -1,7 +1,7 @@
 <template>
   <view class="nut-range-container">
     <view class="min" v-if="!hiddenRange">{{ +min }}</view>
-    <view ref="root" id="root" :style="wrapperStyle" :class="classes" @click.stop="onClick">
+    <view ref="root" :id="'root-' + refRandomId" :style="wrapperStyle" :class="classes" @click.stop="onClick">
       <view class="nut-range-bar" :style="barStyle">
         <template v-if="range">
           <view
@@ -290,6 +290,8 @@ export default create({
       return value;
     };
 
+    const refRandomId = Math.random().toString(36).slice(-8);
+
     return {
       root,
       classes,
@@ -302,7 +304,8 @@ export default create({
       ...toRefs(props),
       barStyle,
       curValue,
-      buttonIndex
+      buttonIndex,
+      refRandomId
     };
   }
 });
