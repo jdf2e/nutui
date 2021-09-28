@@ -138,8 +138,9 @@ export default create({
     };
 
     const handleClear = (event: Event) => {
-      emit('change', '', event);
       emit('update:modelValue', '', event);
+      emit('change', '', event);
+      emit('clear', '');
     };
 
     return {

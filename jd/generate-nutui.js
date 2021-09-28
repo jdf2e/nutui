@@ -27,23 +27,29 @@ let installFunction = `function install(app: App) {
     }
   });
 }`;
-let fileStr = `${importStr}
+let fileStrBuild = `${importStr}
 ${installFunction}
-export { install, ${packages.join(',')}  };
-export default { install, version:'${package.version}'};`;
+const version = '${package.version}';
+export { install, version, ${packages.join(',')}};
+export default { install, version};`;
+
 fs.outputFile(
   path.resolve(__dirname, '../src/packages/nutui.vue.build.ts'),
-  fileStr,
+  fileStrBuild,
   'utf8',
   (error) => {
     // logger.success(`${package_config_path} 文件写入成功`);
   }
 );
 
-fileStr += importScssStr;
+let fileStrDev = `${importStr}
+${installFunction}
+${importScssStr}
+export { install, ${packages.join(',')}  };
+export default { install, version:'${package.version}'};`;
 fs.outputFile(
   path.resolve(__dirname, '../src/packages/nutui.vue.ts'),
-  fileStr,
+  fileStrDev,
   'utf8',
   (error) => {
     // logger.success(`${package_config_path} 文件写入成功`);

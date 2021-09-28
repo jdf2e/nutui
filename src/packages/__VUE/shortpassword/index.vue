@@ -123,6 +123,13 @@ export default create({
         show.value = value;
       }
     );
+    watch(
+      () => props.modelValue,
+      (value) => {
+        realInput.value = value;
+        console.log('watch', value);
+      }
+    );
     function changeValue(e: Event) {
       const input = e.target as HTMLInputElement;
       let val = input.value;

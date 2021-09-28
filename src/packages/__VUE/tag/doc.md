@@ -62,7 +62,7 @@ app.use(Tag);
 
 ```html
  <nut-tag color="#FA685D">标签</nut-tag>
- <nut-tag color="#E9E9E9" textColor="#999999">标签</nut-tag>
+ <nut-tag color="#E9E9E9" text-color="#999999">标签</nut-tag>
  <nut-tag color="#FA2400" plain>标签</nut-tag>
 ```
 
@@ -70,13 +70,25 @@ app.use(Tag);
 
 ### Prop  
 
-| 字段            | 说明                 | 类型    | 默认值  |
-|-----------------|------------------------------------------|---------|---------|
-| type           | 标签类型，可选值为primary success danger warning         | String | `default`       |
-| color         | 标签颜色    | String  | -       |
-| textColor        | 文本颜色，优先级高于color属性         | String |     `white`   |
-| plain     | 是否为空心样式   | Boolean  | `false`      |
-| round         | 是否为圆角样式   | Boolean  | `false`       |  
-| mark         | 是否为标记样式   | Boolean  | `false`       |  
-| closeable         | 是否为可关闭标签   | Boolean  | `false`       |                                          
+| 字段       | 说明                                             | 类型    | 默认值    |
+|------------|--------------------------------------------------|---------|-----------|
+| type       | 标签类型，可选值为primary success danger warning | String  | `default` |
+| color      | 标签颜色                                         | String  | -         |
+| text-color | 文本颜色，优先级高于color属性                    | String  | `white`   |
+| plain      | 是否为空心样式                                   | Boolean | `false`   |
+| round      | 是否为圆角样式                                   | Boolean | `false`   |
+| mark       | 是否为标记样式                                   | Boolean | `false`   |
+| closeable  | 是否为可关闭标签                                 | Boolean | `false`   |
 
+
+### Slots
+
+| 名称    | 说明         |
+|---------|--------------|
+| default | 标签显示内容 |
+
+### Event
+
+| 事件名称 | 说明     | 回调参数 |
+|----------|----------|----------|
+| close    | 关闭事件 | event    |
