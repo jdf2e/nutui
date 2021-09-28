@@ -55,7 +55,7 @@
     "prepare": "husky install",
     "test": "jest",
     "release": "standard-version -a",
-    "copytaro": "node jd/copyDistToTaro.js"
+    "codeformat": "prettier --write ."
   },
   "standard-version": {
     "scripts": {

@@ -4,6 +4,8 @@
   "bracketSpacing": true,
   "tabWidth": 2,
   "useTabs": false,
+  "printWidth": 120,
+  "proseWrap": "preserve",
   "htmlWhitespaceSensitivity": "strict",
   "trailingComma": "none"
 }
