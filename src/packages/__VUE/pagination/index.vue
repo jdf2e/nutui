@@ -1,19 +1,15 @@
 <template>
-  <ul class="nut-pagination">
-    <li
-      :class="[
-        'nut-pagination-prev',
-        mode == 'multi' ? '' : 'simple-border',
-        modelValue == 1 ? 'disabled' : ''
-      ]"
+  <view class="nut-pagination">
+    <view
+      :class="['nut-pagination-prev', mode == 'multi' ? '' : 'simple-border', modelValue == 1 ? 'disabled' : '']"
       @click="select(modelValue - 1, true)"
     >
       <slot name="prev-text">
         {{ prevText }}
       </slot>
-    </li>
-    <div class="nut-pagination-contain" v-if="mode == 'multi'">
-      <li
+    </view>
+    <view class="nut-pagination-contain" v-if="mode == 'multi'">
+      <view
         v-for="(item, index) of pages"
         :key="index + 'pagination'"
         :class="['nut-pagination-item', item.active ? 'active' : '']"
@@ -22,20 +18,20 @@
         <slot name="page" :item="item">
           {{ item.text }}
         </slot>
-      </li>
-    </div>
-    <div class="nut-pagination-contain" v-if="mode == 'simple'">
-      <li class="nut-pagination-simple">{{ modelValue }}/{{ countRef }}</li>
-    </div>
-    <li
+      </view>
+    </view>
+    <view class="nut-pagination-contain" v-if="mode == 'simple'">
+      <view class="nut-pagination-simple">{{ modelValue }}/{{ countRef }}</view>
+    </view>
+    <view
       :class="['nut-pagination-next', modelValue >= countRef ? 'disabled' : '']"
       @click="select(modelValue + 1, true)"
     >
       <slot name="next-text">
         {{ nextText }}
       </slot>
-    </li>
-  </ul>
+    </view>
+  </view>
 </template>
 <script lang="ts">
 import { toRefs, onMounted, watchEffect, computed } from 'vue';
@@ -91,8 +87,7 @@ export default create({
     //计算页面的数量
     const countRef = computed(() => {
       const { pageCount, totalItems, itemsPerPage } = toRefs(props);
-      const num =
-        +pageCount.value || Math.ceil(+totalItems.value / +itemsPerPage.value);
+      const num = +pageCount.value || Math.ceil(+totalItems.value / +itemsPerPage.value);
       return Math.max(1, num);
     });
 
