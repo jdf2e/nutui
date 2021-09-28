@@ -1,9 +1,7 @@
 .nut-pagination {
   display: flex;
-  font-size: 14px;
-  font-family: PingFangSC;
-  font-weight: normal;
-  color: rgba(250, 36, 0, 1);
+  font-size: $pagination-font-size;
+  color: $pagination-color;
   &-contain {
     display: flex;
   }
@@ -23,10 +21,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #f00;
-    background: #fff;
-    border-radius: 2px;
-    border: 1px solid #e4e7eb;
+    background: $white;
+    border-radius: $pagination-item-border-radius;
+    border: $pagination-item-border-width solid $pagination-item-border-color;
     cursor: pointer;
   }
   &-prev,
@@ -35,25 +32,20 @@
   }
   &-prev,
   &-next {
-    padding: 0 11px;
+    padding: $pagination-prev-next-padding;
   }
   .simple-border {
-    border-right: 1px solid #e4e7eb;
+    border-right: $pagination-item-border-width solid
+      $pagination-item-border-color;
   }
   .active {
-    color: #fff;
+    color: $white;
     border: none;
-    background: linear-gradient(
-      135deg,
-      rgba(250, 44, 25, 1) 0%,
-      rgba(250, 63, 25, 1) 44.59259259%,
-      rgba(250, 89, 25, 1) 83.40740741%,
-      rgba(250, 100, 25, 1) 100%
-    );
+    background: $pagination-active-background-color;
   }
   .disabled {
-    color: rgba(116, 116, 116, 0.31);
-    background-color: #f7f8fa;
+    color: $pagination-disable-color;
+    background-color: $pagination-disable-background-color;
     cursor: not-allowed;
   }
 }
