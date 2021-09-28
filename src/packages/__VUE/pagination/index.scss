@@ -23,10 +23,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $primary-color;
+    color: #f00;
     background: #fff;
     border-radius: 2px;
-    border: 1px solid $pagination-item-border-color;
+    border: 1px solid #e4e7eb;
     cursor: pointer;
   }
   &-prev,
@@ -38,7 +38,7 @@
     padding: 0 11px;
   }
   .simple-border {
-    border-right: 1px solid $pagination-item-border-color;
+    border-right: 1px solid #e4e7eb;
   }
   .active {
     color: #fff;
