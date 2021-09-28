@@ -12,7 +12,7 @@ import { Ref, unref } from 'vue';
 function isWindow(val: unknown): val is Window {
   return val === window;
 }
-export const useTaroRect = (elementRef: (Element | Window) | Ref<Element | Window | undefined>, Taro: any): any => {
+export const useTaroRect = (elementRef: (Element | Window | any) | Ref<Element | Window | any>, Taro: any): any => {
   let element = unref(elementRef);
 
   return new Promise((resolve) => {
