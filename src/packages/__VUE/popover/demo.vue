@@ -1,26 +1,26 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-popover v-model:visible="visible.lightTheme" :lists="iconItemList">
+    <nut-popover v-model:visible="visible.lightTheme" :list="iconItemList" @choose="chooseItem">
       <template #reference>
         <nut-button type="primary" shape="square">明朗风格</nut-button>
       </template>
     </nut-popover>
 
-    <nut-popover v-model:visible="visible.darkTheme" theme="dark" :lists="iconItemList">
+    <nut-popover v-model:visible="visible.darkTheme" theme="dark" :list="iconItemList">
       <template #reference>
         <nut-button type="primary" shape="square">暗黑风格</nut-button>
       </template>
     </nut-popover>
 
     <h2>选项配置</h2>
-    <nut-popover v-model:visible="visible.showIcon" theme="dark" :lists="itemList">
+    <nut-popover v-model:visible="visible.showIcon" theme="dark" :list="itemList">
       <template #reference>
         <nut-button type="primary" shape="square">展示图标</nut-button>
       </template>
     </nut-popover>
 
-    <nut-popover v-model:visible="visible.disableAction" :lists="itemListDisabled">
+    <nut-popover v-model:visible="visible.disableAction" :list="itemListDisabled">
       <template #reference>
         <nut-button type="primary" shape="square">禁用选项</nut-button>
       </template>
@@ -43,19 +43,19 @@
     </nut-popover>
 
     <h2>位置自定义</h2>
-    <nut-popover v-model:visible="visible.topLocation" location="top" theme="dark" :lists="iconItemList">
+    <nut-popover v-model:visible="visible.topLocation" location="top" theme="dark" :list="iconItemList">
       <template #reference>
         <nut-button type="primary" shape="square">向上弹出</nut-button>
       </template>
     </nut-popover>
 
     <h2></h2>
-    <nut-popover v-model:visible="visible.rightLocation" location="right" theme="dark" :lists="iconItemList">
+    <nut-popover v-model:visible="visible.rightLocation" location="right" theme="dark" :list="iconItemList">
       <template #reference>
         <nut-button type="primary" shape="square">向右弹出</nut-button>
       </template>
     </nut-popover>
-    <nut-popover v-model:visible="visible.leftLocation" location="left" theme="dark" :lists="iconItemList">
+    <nut-popover v-model:visible="visible.leftLocation" location="left" theme="dark" :list="iconItemList">
       <template #reference>
         <nut-button type="primary" shape="square">向左弹出</nut-button>
       </template>
@@ -149,12 +149,17 @@ export default createDemo({
       }
     ]);
 
+    const chooseItem = () => {
+      alert('选择项');
+    };
+
     return {
       iconItemList,
       itemList,
       visible,
       itemListDisabled,
-      selfContent
+      selfContent,
+      chooseItem
     };
   }
 });
