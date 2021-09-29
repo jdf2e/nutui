@@ -3,7 +3,7 @@ export default {
   subpackages: [
     {
       root: 'layout',
-      pages: ['pages/layout/index']
+      pages: ['pages/layout/index', 'pages/imagepreview/index']
     },
     {
       root: 'feedback',
