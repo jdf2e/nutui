@@ -134,7 +134,7 @@
           "cName": "单元格组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "展示分组列表",
           "author": "richard1015"
@@ -207,7 +207,7 @@
           "cName": "布局-Col",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "布局组件Col",
           "author": "undo"
@@ -219,10 +219,20 @@
           "cName": "布局-Row",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "布局组件Row",
           "author": "undo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "ImagePreview",
+          "type": "component",
+          "cName": "图片预览",
+          "desc": "图片预览",
+          "sort": 4,
+          "show": true,
+          "author": "zongyue3"
         }
       ]
     },
@@ -397,7 +407,7 @@
           "cName": "步骤条子组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "步骤条子组件",
           "author": "ailululu"
@@ -421,7 +431,7 @@
           "cName": "轮播图子组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "轮播图子组件",
           "author": "suzigang"
@@ -527,7 +537,7 @@
           "cName": "标签组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "标签组件",
           "author": "zhenyulei"
@@ -548,7 +558,7 @@
           "sort": 2,
           "cName": "菜单组件",
           "type": "component",
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "show": false,
           "desc": "下拉菜单组件",
@@ -572,7 +582,7 @@
           "cName": "标签栏子组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "标签栏子组件",
           "author": "Drjingfubo"
