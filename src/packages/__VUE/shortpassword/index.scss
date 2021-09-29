@@ -47,14 +47,18 @@
     border-radius: 4px;
   }
   .nut-input-real {
-    padding: 0 1200px 0 0;
-    width: 0;
+    // padding: 0 1200px 0 0; // ios必需
     position: absolute;
     right: 0;
     width: 247px;
     height: 41px;
+    // opacity: 0; // 安卓必需
+    // z-index: 11; // 安卓必需
   }
   .nut-shortpsd-fake {
+    top: 5%;
+  }
+  .nut-shortpsd-fake-taro {
     top: 5%;
   }
 }
@@ -72,6 +76,18 @@
 }
 
 .nut-shortpsd-fake {
+  width: 100%;
+  height: 41px;
+  margin: 0 auto;
+  background: $shortpsd-background-color;
+  border-radius: 4px;
+  border: 1px solid $shortpsd-border-color;
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 29%;
+}
+.nut-shortpsd-fake-taro {
   width: 100%;
   height: 41px;
   margin: 0 auto;
@@ -136,11 +152,7 @@
   }
 
   .nut-shortpsd-sure {
-    background: linear-gradient(
-      135deg,
-      $primary-color 0%,
-      $primary-color-end 100%
-    );
+    background: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%);
     border-radius: 15px;
     padding: 8px 38px;
     line-height: 1;

@@ -33,16 +33,9 @@
           @input="changeValue"
         />
         <view class="nut-input-site"></view>
-        <view class="nut-shortpsd-fake" @click="focus">
-          <view
-            class="nut-shortpsd-li"
-            v-for="(sublen, index) in new Array(comLen)"
-            v-bind:key="index"
-          >
-            <view
-              class="nut-shortpsd-icon"
-              v-if="String(realInput).length > index"
-            ></view>
+        <view class="nut-shortpsd-fake-taro" @click="focus">
+          <view class="nut-shortpsd-li" v-for="(sublen, index) in new Array(comLen)" v-bind:key="index">
+            <view class="nut-shortpsd-icon" v-if="String(realInput).length > index"></view>
           </view>
         </view>
       </view>
@@ -104,16 +97,7 @@ export default create({
       default: 6
     }
   },
-  emits: [
-    'update:modelValue',
-    'update:visible',
-    'complete',
-    'change',
-    'ok',
-    'tips',
-    'close',
-    'cancel'
-  ],
+  emits: ['update:modelValue', 'update:visible', 'complete', 'change', 'ok', 'tips', 'close', 'cancel'],
   setup(props, { emit }) {
     const realInput = ref(props.modelValue);
     const realpwd = ref();
@@ -129,9 +113,7 @@ export default create({
       let dom: any = '';
       if (isWx.value) {
         setTimeout(() => {
-          dom = document.getElementsByClassName(
-            'nut-input-real-taro'
-          )[0] as any;
+          dom = document.getElementsByClassName('nut-input-real-taro')[0] as any;
           if (!dom) return;
           dom.focus();
         }, 100);
