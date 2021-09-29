@@ -1,27 +1,21 @@
 <template>
-  <div @click="openPopover()" :class="classes">
+  <view @click="openPopover()" :class="classes">
     <slot name="reference"></slot>
 
     <template v-if="showPopup">
-      <div class="more-background" @click="closePopover()"> </div>
-      <div :class="popoverContent">
-        <div :class="popoverArrow"> </div>
+      <view class="more-background" @click="closePopover()"> </view>
+      <view :class="popoverContent">
+        <view :class="popoverArrow"> </view>
 
         <slot name="content"></slot>
 
-        <div
-          v-for="item in iconItemList"
-          :key="item.name"
-          :class="{ 'title-item': true, disabled: item.disabled }"
-        >
-          <slot v-if="item.icon">
-            <nut-icon class="item-img" :name="item.icon"></nut-icon
-          ></slot>
-          <div class="title-name">{{ item.name }}</div>
-        </div>
-      </div>
+        <view v-for="item in lists" :key="item.name" :class="{ 'title-item': true, disabled: item.disabled }">
+          <slot v-if="item.icon"> <nut-icon class="item-img" :name="item.icon"></nut-icon></slot>
+          <view class="title-name">{{ item.name }}</view>
+        </view>
+      </view>
     </template>
-  </div>
+  </view>
 </template>
 <script lang="ts">
 import { onMounted, computed, watch, ref, PropType, toRefs } from 'vue';
@@ -43,7 +37,7 @@ export default create({
   },
   props: {
     ...popupProps,
-    iconItemList: {
+    lists: {
       type: Array,
       default: []
     },
