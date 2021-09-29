@@ -1,15 +1,17 @@
 <template>
   <view class="nut-badge">
-    <view class="slot-icons"> <slot name="icons"></slot></view>
+    <view class="slot-icons">
+      <slot name="icons"></slot>
+    </view>
     <slot></slot>
-    <sup
-      v-show="!hidden && (content || isDot)"
+    <view
+      v-show="!hidden && (content || dot)"
       v-text="content"
-      class="nut-badge__content"
-      :class="{ 'is-dot': isDot }"
+      class="nut-badge__content sup"
+      :class="{ 'is-dot': dot }"
       :style="stl"
     >
-    </sup>
+    </view>
   </view>
 </template>
 
@@ -26,7 +28,7 @@ export default create({
       type: Number,
       default: 10000
     },
-    isDot: {
+    dot: {
       type: Boolean,
       default: false
     },
@@ -48,8 +50,7 @@ export default create({
     },
     color: {
       type: String,
-      default:
-        'linear-gradient(135deg,rgba(250, 44, 25, 1) 0%,rgba(250, 63, 25, 1) 44.59259259%,rgba(250, 89, 25, 1) 83.40740741%,rgba(250, 100, 25, 1) 100%);'
+      default: ''
     }
   },
 
@@ -66,7 +67,7 @@ export default create({
     });
 
     const content = computed(() => {
-      if (props.isDot) return;
+      if (props.dot) return;
       const value = props.value;
       const max = props.max;
       if (typeof value === 'number' && typeof max === 'number') {

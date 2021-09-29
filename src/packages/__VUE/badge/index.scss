@@ -10,16 +10,16 @@
     padding: 0 5px;
     text-align: center;
     border-radius: 14px;
+    z-index: 1;
   }
-  sup {
+  .sup {
     position: absolute;
     background: $badge-background-color;
     border-radius: 7px;
     padding: 0 5px;
     text-align: center;
     border-radius: 14px;
-    font-size: 11px;
-    font-family: PingFangSC;
+    font-size: $badge-font-size;
     font-weight: normal;
     color: $badge-default-background-color;
   }
