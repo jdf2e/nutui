@@ -50,11 +50,7 @@
         <template #icons>
           <nut-icon name="Check" color="#ffffff" size="12"></nut-icon>
         </template>
-        <<<<<<< HEAD
-        <nut-avatar class="demo-svg" shape="square"></nut-avatar>
-        =======
         <nut-avatar icon="my" shape="square"></nut-avatar>
-        >>>>>>> ec301dcac73a54ecd23b34a611f253061d9b92ec
       </nut-badge>
       <nut-badge>
         <template #icons>
