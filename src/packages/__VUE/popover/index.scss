@@ -30,13 +30,13 @@
     .popoverArrow {
       position: absolute;
       left: 10px;
-      top: -10px;
+      top: -18px;
       width: 0;
       height: 0;
-      border-left: 7px solid transparent;
-      border-right: 7px solid transparent;
-      border-top: 5px solid transparent;
-      border-bottom: 5px solid $popover-white-background-color;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid $popover-white-background-color;
     }
     .title-item {
       display: flex;
@@ -59,16 +59,16 @@
     }
   }
   .popoverContent--top {
-    top: -120px;
+    top: -126px;
     .popoverArrow--top {
       position: absolute;
       left: 10px;
-      bottom: -10px;
+      bottom: -15px;
       top: auto;
-      border-left: 7px solid transparent;
-      border-right: 7px solid transparent;
-      border-top: 5px solid $popover-white-background-color;
-      border-bottom: 5px solid transparent;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 10px solid $popover-white-background-color;
+      border-bottom: 10px solid transparent;
     }
   }
   .popoverContent--left {
@@ -78,10 +78,10 @@
       position: absolute;
       right: -13px;
       top: 49px;
-      border-left: 5px solid $popover-white-background-color;
-      border-right: 5px solid transparent;
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
+      border-left: 10px solid $popover-white-background-color;
+      border-right: 10px solid transparent;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
     }
   }
   .popoverContent--right {
@@ -91,10 +91,10 @@
       position: absolute;
       left: -10px;
       top: 49px;
-      border-left: 5px solid transparent;
-      border-right: 5px solid $popover-white-background-color;
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
+      border-left: 10px solid transparent;
+      border-right: 10px solid $popover-white-background-color;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
     }
   }
 
@@ -114,20 +114,20 @@
     background: $popover-dark-background-color;
     color: $popover-white-background-color;
     .popoverArrow {
-      border-bottom: 5px solid $popover-dark-background-color;
+      border-bottom: 10px solid $popover-dark-background-color;
     }
   }
   .popoverContent--top {
-    top: -120px;
+    top: -126px;
     .popoverArrow--top {
       position: absolute;
       left: 10px;
-      bottom: -10px;
+      bottom: -20px;
       top: auto;
-      border-left: 7px solid transparent;
-      border-right: 7px solid transparent;
-      border-top: 5px solid $popover-dark-background-color;
-      border-bottom: 5px solid transparent;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 10px solid $popover-dark-background-color;
+      border-bottom: 10px solid transparent;
     }
   }
   .popoverContent--left {
@@ -135,12 +135,12 @@
     left: -90px;
     .popoverArrow--left {
       position: absolute;
-      left: 78px;
+      left: 75px;
       top: 49px;
-      border-left: 5px solid $popover-dark-background-color;
-      border-right: 5px solid transparent;
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
+      border-left: 10px solid $popover-dark-background-color;
+      border-right: 10px solid transparent;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
     }
   }
   .popoverContent--right {
@@ -148,12 +148,12 @@
     right: -90px;
     .popoverArrow--right {
       position: absolute;
-      left: -10px;
+      left: -19px;
       top: 49px;
-      border-left: 5px solid transparent;
-      border-right: 5px solid $popover-dark-background-color;
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
+      border-left: 10px solid transparent;
+      border-right: 10px solid $popover-dark-background-color;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
     }
   }
 }
