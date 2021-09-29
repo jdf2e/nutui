@@ -281,14 +281,8 @@ $tag-border-width: 1px !default;
 $tag-plain-background-color: #fff !default;
 
 //badge
-$badge-background-color: linear-gradient(
-  135deg,
-  rgba(250, 44, 25, 1) 0%,
-  rgba(250, 63, 25, 1) 44.59259259%,
-  rgba(250, 89, 25, 1) 83.40740741%,
-  rgba(250, 100, 25, 1) 100%
-) !default;
-
+$badge-background-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
+$badge-font-size: $font-size-1 !default;
 $badge-default-background-color: rgba(255, 255, 255, 1) !default;
 
 //popover
