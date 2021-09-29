@@ -3,10 +3,10 @@
     <view class="slot-icons"> <slot name="icons"></slot></view>
     <slot></slot>
     <sup
-      v-show="!hidden && (content || isDot)"
+      v-show="!hidden && (content || dot)"
       v-text="content"
       class="nut-badge__content"
-      :class="{ 'is-dot': isDot }"
+      :class="{ 'is-dot': dot }"
       :style="stl"
     >
     </sup>
@@ -14,14 +14,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  onMounted,
-  onUnmounted,
-  onActivated,
-  onDeactivated,
-  reactive
-} from 'vue';
+import { computed, onMounted, onUnmounted, onActivated, onDeactivated, reactive } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('badge');
 export default create({
@@ -33,7 +26,7 @@ export default create({
       type: Number,
       default: 10000
     },
-    isDot: {
+    dot: {
       type: Boolean,
       default: false
     },
@@ -73,7 +66,7 @@ export default create({
     });
 
     const content = computed(() => {
-      if (props.isDot) return;
+      if (props.dot) return;
       const value = props.value;
       const max = props.max;
       if (typeof value === 'number' && typeof max === 'number') {
