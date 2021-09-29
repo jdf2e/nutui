@@ -1,15 +1,20 @@
 <template>
-  <view @click="openPopover()" :class="classes">
+  <view @click="openPopover" :class="classes">
     <slot name="reference"></slot>
 
     <template v-if="showPopup">
-      <view class="more-background" @click="closePopover()"> </view>
+      <view class="more-background" @click="closePopover"> </view>
       <view :class="popoverContent">
         <view :class="popoverArrow"> </view>
 
         <slot name="content"></slot>
 
-        <view v-for="item in lists" :key="item.name" :class="{ 'title-item': true, disabled: item.disabled }">
+        <view
+          v-for="item in list"
+          :key="item.name"
+          :class="{ 'title-item': true, disabled: item.disabled }"
+          @click="chooseItem"
+        >
           <slot v-if="item.icon"> <nut-icon class="item-img" :name="item.icon"></nut-icon></slot>
           <view class="title-name">{{ item.name }}</view>
         </view>
@@ -30,14 +35,13 @@ export type PopoverLocation = 'bottom' | 'top' | 'left' | 'right';
 
 export default create({
   inheritAttrs: false,
-  children: [Popup, Button],
   components: {
-    'nut-popup': Popup,
-    'nut-button': Button
+    [Popup.name]: Popup,
+    [Button.name]: Button
   },
   props: {
     ...popupProps,
-    lists: {
+    list: {
       type: Array,
       default: []
     },
@@ -52,7 +56,7 @@ export default create({
       default: 'bottom'
     }
   },
-  emits: ['update', 'update:visible', 'close'],
+  emits: ['update', 'update:visible', 'close', 'choose', 'openPopover'],
   setup(props, { emit }) {
     const showPopup = ref(props.visible);
 
@@ -96,14 +100,24 @@ export default create({
       emit('update:visible', val);
     };
 
-    const openPopover = () => {
+    const openPopover = (event: Event) => {
+      event.stopPropagation();
+      event.preventDefault();
       update(!props.visible);
+      emit('open');
     };
 
-    const closePopover = (e) => {
-      e.stopPropagation();
+    const closePopover = (event: Event) => {
+      event.stopPropagation();
+      event.preventDefault();
       emit('close');
       emit('update:visible', false);
+    };
+
+    const chooseItem = (event: Event) => {
+      event.stopPropagation();
+      event.preventDefault();
+      emit('choose');
     };
 
     return {
@@ -112,7 +126,8 @@ export default create({
       openPopover,
       popoverContent,
       popoverArrow,
-      closePopover
+      closePopover,
+      chooseItem
     };
   }
 });

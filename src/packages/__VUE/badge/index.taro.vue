@@ -16,9 +16,9 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, onUnmounted, onActivated, onDeactivated, reactive } from 'vue';
+import { computed, reactive } from 'vue';
 import { createComponent } from '../../utils/create';
-const { componentName, create } = createComponent('badge');
+const { create } = createComponent('badge');
 export default create({
   props: {
     value: {

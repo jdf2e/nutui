@@ -28,7 +28,7 @@ Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme �
 ```html
   <nut-popover
       v-model:visible="visible"
-      :lists="List"
+      :list="List"
     >
       <template #reference>
         <nut-button type="primary" shape="square">明朗风格</nut-button>
@@ -38,7 +38,7 @@ Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme �
   <nut-popover
       v-model:visible="visible"
       theme="dark"
-      :lists="List"
+      :list="List"
     >
       <template #reference>
         <nut-button type="primary" shape="square">暗黑风格</nut-button>
@@ -65,7 +65,7 @@ Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme �
   <nut-popover
       v-model:visible="visible"
       theme="dark"
-      :lists="List"
+      :list="List"
     >
       <template #reference>
         <nut-button type="primary" shape="square">展示图标</nut-button>
@@ -92,12 +92,12 @@ Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme �
 ```
 
 
-在 lists 数组中，可以通过 disabled 字段来禁用某个选项。
+在 list 数组中，可以通过 disabled 字段来禁用某个选项。
 
 ```html
   <nut-popover
       v-model:visible="visible"
-      :lists="List"
+      :list="List"
     >
       <template #reference>
         <nut-button type="primary" shape="square">禁用选项</nut-button>
@@ -163,7 +163,7 @@ Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme �
       v-model:visible="visible"
       location="top"
       theme="dark"
-      :lists="List"
+      :list="List"
     >
       <template #reference>
         <nut-button type="primary" shape="square">向上弹出</nut-button>
@@ -178,10 +178,10 @@ Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme �
 
 | 字段            | 说明                            | 类型     | 默认值      |
 |----------------|---------------------------------|---------|------------|
-| lists          | 选项列表                         | List[]   | []        |
+| list          | 选项列表                          | List[]   | []        |
 | v-model        | 是否展示气泡弹出层                 | boolean  | false     |
 | theme          | 主题风格，可选值为 dark            | string   | `light`   |
-| location       | 弹出位置，可选值为 top,left,right  | string   | `bottom`  |                                       
+| location       | 弹出位置，可选值为 top,left,right  | string   | `bottom`  |
 
 ### List 数据结构  
 
@@ -192,3 +192,19 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 | name           | 选项文字               | string   | -      |
 | icon           | nut-icon 图标名称      | string   | -      |
 | disabled       | 是否为禁用状态          | boolean  | false  | 
+
+
+### Slots
+
+| 名称    | 说明         |
+|---------|--------------|
+| default | 自定义气泡组件菜单内容 |
+| reference | 触发 Popover 显示的元素内容 |
+
+### Events
+
+| 名称    | 说明         |
+|---------|--------------|
+| choose | 点击选项时触发 |
+| open   | 打开菜单时触发 |
+| close  | 关闭菜单时触发 |
