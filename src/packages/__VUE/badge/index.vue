@@ -1,15 +1,17 @@
 <template>
   <view class="nut-badge">
-    <view class="slot-icons"> <slot name="icons"></slot></view>
+    <view class="slot-icons">
+      <slot name="icons"></slot>
+    </view>
     <slot></slot>
-    <sup
+    <view
       v-show="!hidden && (content || dot)"
       v-text="content"
-      class="nut-badge__content"
+      class="nut-badge__content sup"
       :class="{ 'is-dot': dot }"
       :style="stl"
     >
-    </sup>
+    </view>
   </view>
 </template>
 
@@ -48,8 +50,7 @@ export default create({
     },
     color: {
       type: String,
-      default:
-        'linear-gradient(135deg,rgba(250, 44, 25, 1) 0%,rgba(250, 63, 25, 1) 44.59259259%,rgba(250, 89, 25, 1) 83.40740741%,rgba(250, 100, 25, 1) 100%);'
+      default: ''
     }
   },
 
