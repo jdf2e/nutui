@@ -1,4 +1,4 @@
-# imagepreview组件
+# Imagepreview 组件
 
 ### 介绍
     
@@ -7,18 +7,23 @@
 ### 安装
 
 ```javascript
-import { createApp } from 'vue';
-import { ImagePreview } from '@nutui/nutui';
+import { createApp, reactive, toRefs } from 'vue';
+
+// vue
+import { ImagePreview, Swiper, SwiperItem, Popup } from '@nutui/nutui';
+// taro
+import { ImagePreview, Swiper, SwiperItem, Popup } from '@nutui/nutui-taro';
+
 
 const app = createApp();
-app.use(ImagePreview);
+app.use(ImagePreview).use(Swiper).use(SwiperItem).use(Popup).use(Cell).use(Icon);
 ```
 
 ### 基础用法
 
 ```html
 <nut-imagepreview :show="showPreview" :images="dataImgItem" @close="hideFn" />
-<nut-cell isLink title="展示图片预览" :showIcon="true" @click="showFn"></nut-cell>
+<nut-cell title="展示图片预览" :showIcon="true" @click="showFn"></nut-cell>
 ```
 
 ```javascript
