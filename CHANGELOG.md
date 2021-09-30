@@ -1,4 +1,21 @@
 
+## v3.1.7
+
+`2021-09-30`
+
+* :zap: feat: 新增 pagination 分页组件 @yushuang-d
+* :zap: feat: 新增 tag 标签组件 @liqiong-lab
+* :zap: feat: 新增 badge 徽标组件 @liqiong-lab
+* :zap: feat: 新增 popover 气泡组件 @liqiong-lab
+* :zap: feat: 新增 imagepreview 图片预览组件 @JackieScorpio
+* :bug: fix(shortpassword): 修复部分安卓机value值倒序问题 #679  @Drjingfubo
+* :bug: fix(uploader): taro场景 name 字段关联问题、新增 upload-icon-size 字段、上传成功返回值逻辑优化 @richard1015
+* :bug: fix(popup): taro 环境滑动内容穿透修复 @richard1015
+* :bug: fix(input): clear event bug、readonly 导致内容前移 #628 @richard1015
+* :bug: fix(range): taro env 多个Range 组件滑动值异常 #648
+* :zap: chore: 按需加载性能优化 @richard1015
+* :zap: docs(checkbox): update checkbox docs @szg2008
+
 ## v3.1.5~6
 
 `2021-09-18`
