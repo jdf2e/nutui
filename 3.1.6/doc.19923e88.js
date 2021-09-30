@@ -1,1 +1,1 @@
-import{e as o,o as s}from"./vendor.9cc7b6f2.js";const e={class:"markdown-body"},t={setup:(t,{expose:a})=>(a({frontmatter:{}}),(t,a)=>(s(),o("div",e)))};export{t as default};
+import{e as o,o as e}from"./vendor.9cc7b6f2.js";const r={class:"markdown-body"},m={setup(c,{expose:t}){return t({frontmatter:{}}),(n,a)=>(e(),o("div",r))}};export{m as default};

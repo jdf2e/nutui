@@ -1,1 +1,32 @@
-import{e as n,o as e,g as r}from"./vendor.9cc7b6f2.js";const t={class:"markdown-body"},o=[r("h1",null,"radiogroup组件",-1),r("pre",null,[r("code",null,"### 介绍\n\n基于 xxxxxxx\n\n### 安装\n\n\n\n## 代码演示\n\n### 基础用法1\n\n\n\n## API\n\n### Props\n\n| 参数         | 说明                             | 类型   | 默认值           |\n|--------------|----------------------------------|--------|------------------|\n| name         | 图标名称或图片链接               | String | -                |\n| color        | 图标颜色                         | String | -                |\n| size         | 图标大小，如 '20px' '2em' '2rem' | String | -                |\n| class-prefix | 类名前缀，用于使用自定义图标     | String | 'nutui-iconfont' |\n| tag          | HTML 标签                        | String | 'i'              |\n\n### Events\n\n| 事件名 | 说明           | 回调参数     |\n|--------|----------------|--------------|\n| click  | 点击图标时触发 | event: Event |\n")],-1)],s={setup:(r,{expose:s})=>(s({frontmatter:{}}),(r,s)=>(e(),n("div",t,o)))};export{s as default};
+import{e,o,g as n}from"./vendor.9cc7b6f2.js";const r={class:"markdown-body"},s=n("h1",null,"radiogroup\u7EC4\u4EF6",-1),c=n("pre",null,[n("code",null,`### \u4ECB\u7ECD
+
+\u57FA\u4E8E xxxxxxx
+
+### \u5B89\u88C5
+
+
+
+## \u4EE3\u7801\u6F14\u793A
+
+### \u57FA\u7840\u7528\u6CD51
+
+
+
+## API
+
+### Props
+
+| \u53C2\u6570         | \u8BF4\u660E                             | \u7C7B\u578B   | \u9ED8\u8BA4\u503C           |
+|--------------|----------------------------------|--------|------------------|
+| name         | \u56FE\u6807\u540D\u79F0\u6216\u56FE\u7247\u94FE\u63A5               | String | -                |
+| color        | \u56FE\u6807\u989C\u8272                         | String | -                |
+| size         | \u56FE\u6807\u5927\u5C0F\uFF0C\u5982 '20px' '2em' '2rem' | String | -                |
+| class-prefix | \u7C7B\u540D\u524D\u7F00\uFF0C\u7528\u4E8E\u4F7F\u7528\u81EA\u5B9A\u4E49\u56FE\u6807     | String | 'nutui-iconfont' |
+| tag          | HTML \u6807\u7B7E                        | String | 'i'              |
+
+### Events
+
+| \u4E8B\u4EF6\u540D | \u8BF4\u660E           | \u56DE\u8C03\u53C2\u6570     |
+|--------|----------------|--------------|
+| click  | \u70B9\u51FB\u56FE\u6807\u65F6\u89E6\u53D1 | event: Event |
+`)],-1),i=[s,c],x={setup(a,{expose:t}){return t({frontmatter:{}}),(_,d)=>(o(),e("div",r,i))}};export{x as default};
