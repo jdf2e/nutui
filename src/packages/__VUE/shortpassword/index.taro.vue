@@ -15,8 +15,9 @@
       <view class="nut-shortpsd-title">{{ title }}</view>
       <view class="nut-shortpsdWx-subtitle">{{ desc }}</view>
       <input
-        v-if="isWx"
+        v-if="isWx && visible"
         class="nut-input-real-taro"
+        :id="'nut-input-real-taro-' + randRef"
         type="number"
         :maxlength="length"
         v-model="realInput"
@@ -103,20 +104,24 @@ export default create({
     const realpwd = ref();
     const comLen = computed(() => range(Number(props.length)));
     const show = ref(props.visible);
+    const refRandomId = Math.random().toString(36).slice(-8);
+    const randRef = ref(refRandomId);
     const isWx = ref(false); // 判断是否为微信端
-    const dom = ref();
     // 方法
     function sureClick() {
       emit('ok', realInput.value);
     }
     function focus() {
       let dom: any = '';
+      console.log(123);
+
       if (isWx.value) {
         setTimeout(() => {
-          dom = document.getElementsByClassName('nut-input-real-taro')[0] as any;
+          if (!document.getElementById('nut-input-real-taro-' + randRef.value)) return;
+          dom = document.getElementById('nut-input-real-taro-' + randRef.value) as any;
           if (!dom) return;
           dom.focus();
-        }, 100);
+        }, 150);
       } else {
         dom = document.getElementsByClassName('nut-input-real')[0] as any;
         let h = dom.children[0];
@@ -127,6 +132,14 @@ export default create({
       () => props.visible,
       (value) => {
         show.value = value;
+        if (value) {
+          randRef.value = Math.random().toString(36).slice(-8);
+          if (Taro.getEnv() === 'WEB') {
+            isWx.value = false;
+          } else {
+            isWx.value = true;
+          }
+        }
       }
     );
     watch(
@@ -164,8 +177,6 @@ export default create({
     }
     onMounted(() => {
       eventCenter.once((getCurrentInstance() as any).router.onReady, () => {});
-      console.log(Taro.getEnv());
-
       if (Taro.getEnv() === 'WEB') {
         isWx.value = false;
       } else {
@@ -184,7 +195,9 @@ export default create({
       focus,
       show,
       closeIcon,
-      isWx
+      isWx,
+      refRandomId,
+      randRef
     };
   }
 });
