@@ -1,6 +1,6 @@
 <template>
   <view class="nut-imagepreview">
-    <nut-popup v-model:visible="showPop" @click="closePop">
+    <nut-popup pop-class="custom-pop" v-model:visible="showPop" @click="closePop">
       <swiper
         v-if="showPop"
         :autoplay="true"
@@ -13,9 +13,7 @@
           <img :src="item.imgSrc" class="nut-imagepreview-img" />
         </swiper-item>
       </swiper>
-      <view class="nut-imagepreview-index">
-        {{ active }} / {{ images.length }}
-      </view>
+      <view class="nut-imagepreview-index"> {{ active }} / {{ images.length }} </view>
     </nut-popup>
   </view>
 </template>
