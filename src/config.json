@@ -825,6 +825,41 @@
           "sort": 3,
           "show": true,
           "author": "guoxiaoxiao"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "TimeSelect",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间",
+          "sort": 4,
+          "show": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "TimePannel",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间",
+          "sort": 5,
+          "show": false,
+          "exportEmpty": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "TimeDetail",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间",
+          "sort": 6,
+          "show": false,
+          "exportEmpty": true,
+          "author": "szg2008"
         }
       ]
     }
