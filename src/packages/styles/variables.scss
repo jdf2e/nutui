@@ -19,8 +19,7 @@ $black: #000 !default;
 // padding
 $padding-xs: 12px !default;
 
-$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
-  sans-serif !default;
+$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif !default;
 
 // ---- Animation ----
 $animation-duration: 0.25s !default;
@@ -56,18 +55,10 @@ $button-default-font-size: $font-size-2 !default;
 $button-disabled-opacity: 0.68 !default;
 $button-primary-color: $white !default;
 $button-primary-border-color: $primary-color !default;
-$button-primary-background-color: linear-gradient(
-  135deg,
-  $primary-color 0%,
-  $primary-color-end 100%
-) !default;
+$button-primary-background-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
 $button-info-color: $white !default;
 $button-info-border-color: rgba(73, 106, 242, 1) !default;
-$button-info-background-color: linear-gradient(
-  315deg,
-  rgba(73, 143, 242, 1) 0%,
-  rgba(73, 101, 242, 1) 100%
-) !default;
+$button-info-background-color: linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%) !default;
 $button-success-color: $white !default;
 $button-success-border-color: rgba(38, 191, 38, 1) !default;
 $button-success-background-color: linear-gradient(
@@ -125,6 +116,8 @@ $uploader-background: #f7f8fa !default;
 //input
 $input-border-bottom: #eaf0fb !default;
 $input-disabled-color: #c8c9cc !default;
+$input-require-color: $primary-color !default;
+$input-font-size: $font-size-2 !default;
 
 // textarea
 
@@ -218,11 +211,7 @@ $notify-success-background-color: linear-gradient(
   rgba(41, 212, 70, 1) 100%
 ) !default;
 $notify-danger-background-color: rgba(250, 50, 25, 1) !default;
-$notify-warning-background-color: linear-gradient(
-  135deg,
-  rgba(255, 93, 13, 1) 0%,
-  rgba(255, 154, 13, 1) 100%
-) !default;
+$notify-warning-background-color: linear-gradient(135deg, rgba(255, 93, 13, 1) 0%, rgba(255, 154, 13, 1) 100%) !default;
 
 // rate
 
@@ -240,18 +229,10 @@ $infinite-bottom-color: #c8c8c8 !default;
 //range
 $range-max: #333333 !default;
 $rang-bg-color: rgba($primary-color, 0.5) !default;
-$rang-bar-bg-color: linear-gradient(
-  135deg,
-  $primary-color 0%,
-  $primary-color-end 100%
-) !default;
+$rang-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
 
 //address
-$address-region-tab-line: linear-gradient(
-  90deg,
-  $primary-color 0%,
-  $primary-color-end 100%
-) !default;
+$address-region-tab-line: linear-gradient(90deg, $primary-color 0%, $primary-color-end 100%) !default;
 
 //steps
 $step-wait-bg-color: #959fb1 !default;
@@ -273,11 +254,7 @@ $radio-icon-disable-color: #d6d6d6 !default;
 $fixednav-bg-color: $white !default;
 $fixednav-font-color: $black !default;
 $fixednav-index: 201 !default;
-$fixednav-btn-bg: linear-gradient(
-  135deg,
-  rgba(250, 25, 44, 1) 0%,
-  rgba(250, 63, 25, 1) 100%
-) !default;
+$fixednav-btn-bg: linear-gradient(135deg, rgba(250, 25, 44, 1) 0%, rgba(250, 63, 25, 1) 100%) !default;
 
 // NoticeBar
 $noticeBar-font-size: 14px !default;
@@ -306,6 +283,51 @@ $timedetail-item-cur-border: #f0250f !default;
 $timedetail-item-cur-text-color: #f0250f !default;
 $timedetail-time-text-color: #999 !default;
 $timedetail-time-font-size: $font-size-1 !default;
+//tag
+$tag-font-size: 12px !default;
+$tag-default-background-color: #000000 !default;
+$tag-primary-background-color: #3460fa !default;
+$tag-success-background-color: #4fc08d !default;
+$tag-danger-background-color: linear-gradient(
+  135deg,
+  rgba(242, 20, 12, 1) 0%,
+  rgba(232, 34, 14, 1) 69.83950099728881%,
+  rgba(242, 77, 12, 1) 100%
+) !default;
+$tag-warning-background-color: #f3812e !default;
+$tag-default-color: #ffffff !default;
+$tag-border-width: 1px !default;
+
+$tag-plain-background-color: #fff !default;
+
+//badge
+$badge-background-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
+$badge-font-size: $font-size-1 !default;
+$badge-default-background-color: rgba(255, 255, 255, 1) !default;
+
+//popover
+$popover-white-background-color: rgba(255, 255, 255, 1) !default;
+$popover-dark-background-color: rgba(75, 76, 77, 1) !default;
+$popover-border-bottom-color: rgba(229, 229, 229, 1) !default;
+$popover-primary-text-color: rgba(51, 51, 51, 1) !default;
+$popover-disable-color: rgba(154, 155, 157, 1) !default;
+
+//分页
+$pagination-color: $primary-color !default;
+$pagination-font-size: $font-size-2 !default;
+$pagination-item-border-color: #e4e7eb !default;
+$pagination-active-background-color: linear-gradient(
+  135deg,
+  rgba(250, 44, 25, 1) 0%,
+  rgba(250, 63, 25, 1) 44.59259259%,
+  rgba(250, 89, 25, 1) 83.40740741%,
+  rgba(250, 100, 25, 1) 100%
+) !default;
+$pagination-disable-color: rgba(116, 116, 116, 0.31) !default;
+$pagination-disable-background-color: #f7f8fa !default;
+$pagination-item-border-width: 1px !default;
+$pagination-item-border-radius: 2px !default;
+$pagination-prev-next-padding: 0 11px !default;
 
 @import './mixins/index';
 @import './animation/index';

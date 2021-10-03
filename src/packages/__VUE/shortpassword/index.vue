@@ -21,20 +21,14 @@
           class="nut-input-real"
           type="number"
           maxlength="6"
+          :style="systemStyle()"
           v-model="realInput"
           @input="changeValue"
         />
         <div class="nut-input-site"></div>
         <view class="nut-shortpsd-fake" @click="focus">
-          <view
-            class="nut-shortpsd-li"
-            v-for="(sublen, index) in new Array(comLen)"
-            v-bind:key="index"
-          >
-            <view
-              class="nut-shortpsd-icon"
-              v-if="String(realInput).length > index"
-            ></view>
+          <view class="nut-shortpsd-li" v-for="(sublen, index) in new Array(comLen)" v-bind:key="index">
+            <view class="nut-shortpsd-icon" v-if="String(realInput).length > index"></view>
           </view>
         </view>
       </div>
@@ -53,7 +47,7 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('shortpassword');
 export default create({
@@ -95,16 +89,7 @@ export default create({
       default: 6
     }
   },
-  emits: [
-    'update:modelValue',
-    'update:visible',
-    'complete',
-    'change',
-    'ok',
-    'tips',
-    'close',
-    'cancel'
-  ],
+  emits: ['update:modelValue', 'update:visible', 'complete', 'change', 'ok', 'tips', 'close', 'cancel'],
   setup(props, { emit }) {
     const realInput = ref(props.modelValue);
     const realpwd = ref();
@@ -121,6 +106,13 @@ export default create({
       () => props.visible,
       (value) => {
         show.value = value;
+      }
+    );
+    watch(
+      () => props.modelValue,
+      (value) => {
+        realInput.value = value;
+        console.log('watch', value);
       }
     );
     function changeValue(e: Event) {
@@ -150,6 +142,22 @@ export default create({
     function onTips() {
       emit('tips');
     }
+    function systemStyle() {
+      let u = navigator.userAgent;
+      let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+      let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+      if (isIOS) {
+        return {
+          paddingRight: '1200px'
+        };
+      }
+      if (isAndroid) {
+        return {
+          opacity: 0,
+          zindex: 10
+        };
+      }
+    }
     return {
       comLen,
       sureClick,
@@ -161,6 +169,7 @@ export default create({
       close,
       onTips,
       show,
+      systemStyle,
       closeIcon
     };
   }

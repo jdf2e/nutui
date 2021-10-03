@@ -7,10 +7,10 @@
 
 <img src="https://img12.360buyimg.com/imagetools/jfs/t1/162421/39/13392/9425/6052ea60E592310a9/264bdff23ef5fe95.png" width="200" alt="NutUI">
 
-#### NPM 安装
+## NPM 安装
 
 ```bash
-# Vue2 项目
+# Vue2 项目 需要参考 2.x 文档 https://nutui.jd.com/2x
 npm i @nutui/nutui
 
 # Vue3 项目
@@ -18,6 +18,100 @@ npm i @nutui/nutui@next
 
 # taro 小程序项目
 npm i @nutui/nutui-taro
+```
+
+### NPM 使用示例
+
+
+#### Vite 构建工具 通过 vite-plugin 使用按需加载
+
+[Vite](https://vitejs.dev/) 构建工具，使用 [vite-plugin-style-import](https://github.com/anncwb/vite-plugin-style-import) 实现按需引入。
+
+##### 安装插件
+``` bash
+npm install babel-plugin-import --save-dev
+```
+在 `vite.config` 中添加配置：
+``` javascript
+import vue from '@vitejs/plugin-vue'
+import styleImport from 'vite-plugin-style-import';
+export default {
+  plugins: [
+    vue(),
+    styleImport({
+      libs: [
+        {
+          libraryName: '@nutui/nutui',
+          libraryNameChangeCase: 'pascalCase',
+          resolveStyle: (name) => {
+            return `@nutui/nutui/dist/packages/${name}/index.scss`
+          }
+        }
+      ],
+    }),
+  ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@nutui/nutui/dist/styles/variables.scss";`
+      }
+    }
+  }
+};
+```
+#### WebPack 构建工具 通过 babel 使用按需加载
+
+[babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 是一款 babel 插件，它会在编译过程中将 import 语句自动转换为按需引入的方式。
+##### 安装插件
+``` bash
+npm install babel-plugin-import --save-dev
+```
+在 `.babelrc` 或 `babel.config.js` 中添加配置：
+``` javascript
+{
+  // ...
+  plugins: [
+    [
+      "import",
+      {
+        "libraryName": "@nutui/nutui",
+        "libraryDirectory": "dist/packages/_es",
+        "camel2DashComponentName": false
+      },
+      'nutui3-vue'
+    ],
+    [
+      "import",
+      {
+        "libraryName": "@nutui/nutui-taro",
+        "libraryDirectory": "dist/packages/_es",
+        "camel2DashComponentName": false
+      },
+      'nutui3-taro'
+    ]
+  ]
+}
+```
+接着像这样在代码中直接引入组件。
+
+```javascript
+import { createApp } from "vue";
+import App from "./App.vue";
+import { Button, Icon } from "@nutui/nutui";
+import "@nutui/nutui/dist/style.css";
+createApp(App).use(Button).use(Icon).mount("#app");
+```
+
+#### 导入全部组件
+
+> 注意：这种方式将会导入所有组件，打包文件大小会很大
+```javascript
+import { createApp } from "vue";
+import App from "./App.vue";
+// 注意：这种方式将会导入所有组件
+import NutUI from "@nutui/nutui";
+import "@nutui/nutui/dist/style.css";
+createApp(App).use(NutUI).mount("#app");
 ```
 
 #### CDN 安装使用示例
@@ -61,30 +155,9 @@ npm i @nutui/nutui-taro
 ```
 
 > 在页面中直接引入，将无法使用 **主题定制** 等功能。我们推荐使用 *NPM* 或 *YARN* 方式安装，不推荐在页面中直接引入的用法
-#### NPM 使用示例
-
-```javascript
-import { createApp } from "vue";
-import App from "./App.vue";
-import NutUI from "@nutui/nutui";
-import "@nutui/nutui/dist/style.css";
-createApp(App).use(NutUI).mount("#app");
-```
-
-> 注意：这种方式将会导入所有组件
-
-## 推荐使用按需加载
-
-```javascript
-import { createApp } from "vue";
-import App from "./App.vue";
-import { Button, Cell, Icon } from "@nutui/nutui";
-import "@nutui/nutui/dist/style.css";
-createApp(App).use(Button).use(Cell).use(Icon).mount("#app");
-```
 
 
-## 注意事项
+## 使用注意事项
 
 - 使用:prop传递数据格式为 数字、布尔值或函数时，必须带:(兼容字符串类型除外)，比如：
 ```html

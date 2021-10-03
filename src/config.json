@@ -134,7 +134,7 @@
           "cName": "单元格组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "展示分组列表",
           "author": "richard1015"
@@ -207,7 +207,7 @@
           "cName": "布局-Col",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "布局组件Col",
           "author": "undo"
@@ -219,10 +219,21 @@
           "cName": "布局-Row",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "布局组件Row",
           "author": "undo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "ImagePreview",
+          "type": "component",
+          "cName": "图片预览",
+          "desc": "图片预览",
+          "sort": 4,
+          "show": true,
+          "taro": true,
+          "author": "zongyue3"
         }
       ]
     },
@@ -397,7 +408,7 @@
           "cName": "步骤条子组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "步骤条子组件",
           "author": "ailululu"
@@ -421,7 +432,7 @@
           "cName": "轮播图子组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "轮播图子组件",
           "author": "suzigang"
@@ -527,7 +538,7 @@
           "cName": "标签组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "标签组件",
           "author": "zhenyulei"
@@ -548,7 +559,7 @@
           "sort": 2,
           "cName": "菜单组件",
           "type": "component",
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "show": false,
           "desc": "下拉菜单组件",
@@ -572,7 +583,7 @@
           "cName": "标签栏子组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "标签栏子组件",
           "author": "Drjingfubo"
@@ -587,6 +598,17 @@
           "show": true,
           "taro": true,
           "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Pagination",
+          "type": "component",
+          "cName": "分页",
+          "desc": "当数据量较多时，采用分页的形式分隔长列表。",
+          "sort": 10,
+          "show": true,
+          "taro": true,
+          "author": "yushuang24"
         }
       ]
     },
@@ -785,6 +807,39 @@
           "show": true,
           "taro": true,
           "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Badge",
+          "type": "component",
+          "cName": "徽标",
+          "desc": "徽标",
+          "sort": 17,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Tag",
+          "type": "component",
+          "cName": "标签",
+          "desc": "标签",
+          "sort": 18,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Popover",
+          "type": "component",
+          "cName": "气泡弹出框",
+          "desc": "气泡弹出框",
+          "sort": 19,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
         }
       ]
     },

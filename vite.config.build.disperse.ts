@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import config from './package.json';
+import configPkg from './src/config.json';
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
@@ -9,50 +10,46 @@ const banner = `/*!
 * Released under the MIT License.
 */`;
 
+let input = {};
+
+configPkg.nav.map((item) => {
+  item.packages.forEach((element) => {
+    let { name, show, type, exportEmpty } = element;
+    if (show || exportEmpty) {
+      input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${type === 'methods' ? '.ts' : '.vue'}`;
+    }
+  });
+});
+
 export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: path.resolve(__dirname, './src') }]
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // example : additionalData: `@import "./src/design/styles/variables";`
-        // dont need include file extend .scss
-        additionalData: `@import "@/packages/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
-      }
-    }
-  },
   plugins: [vue()],
   build: {
     minify: false,
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    },
     lib: {
       entry: '',
       name: 'index',
-      fileName: (format) => 'index',
+      // fileName: (format) => format,
       formats: ['es']
     },
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
       external: ['vue', 'vue-router', 'pinyin'],
-
-      input: [
-        './src/packages/__VUE/price/index.vue',
-        './src/packages/__VUE/cell/index.vue'
-      ],
+      input,
       output: {
-        dir: path.resolve(__dirname, './dist/packages/')
-        // entryFileNames: '[name].js',
-        // file: path.resolve(__dirname, './dist/packages/price/index.js'),
+        banner,
+        dir: path.resolve(__dirname, './dist/packages/_es'),
+        entryFileNames: '[name].js'
       }
-      //  [
-      //   {
-      //     // dir: path.resolve(__dirname, './dist/packages/'),
-      //     // file: path.resolve(__dirname, './dist/packages/price/index.js'),
-      //     // banner,
-      //     // format: 'es'
-      //   }
-      // ]
     },
-    emptyOutDir: true
+    emptyOutDir: false
   }
 });
