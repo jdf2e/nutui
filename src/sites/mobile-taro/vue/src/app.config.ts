@@ -3,7 +3,7 @@ export default {
   subpackages: [
     {
       root: 'layout',
-      pages: ['pages/layout/index']
+      pages: ['pages/layout/index', 'pages/imagepreview/index']
     },
     {
       root: 'feedback',
@@ -46,7 +46,8 @@ export default {
         'pages/tabbar/index',
         'pages/tab/index',
         'pages/fixednav/index',
-        'pages/elevator/index'
+        'pages/elevator/index',
+        'pages/pagination/index'
       ]
     },
     {
@@ -65,17 +66,15 @@ export default {
         'pages/textarea/index',
         'pages/countdown/index',
         'pages/countup/index',
-        'pages/numberkeyboard/index'
+        'pages/numberkeyboard/index',
+        'pages/badge/index',
+        'pages/tag/index',
+        'pages/popover/index'
       ]
     },
     {
       root: 'business',
-      pages: [
-        'pages/address/index',
-        'pages/signature/index',
-        'pages/barrage/index',
-        'pages/timeselect/index'
-      ]
+      pages: ['pages/address/index', 'pages/signature/index', 'pages/barrage/index', 'pages/timeselect/index']
     }
   ],
   window: {

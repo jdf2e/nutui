@@ -15,8 +15,9 @@
       <view class="nut-shortpsd-title">{{ title }}</view>
       <view class="nut-shortpsdWx-subtitle">{{ desc }}</view>
       <input
-        v-if="isWx"
+        v-if="isWx && visible"
         class="nut-input-real-taro"
+        :id="'nut-input-real-taro-' + randRef"
         type="number"
         :maxlength="length"
         v-model="realInput"
@@ -33,16 +34,9 @@
           @input="changeValue"
         />
         <view class="nut-input-site"></view>
-        <view class="nut-shortpsd-fake" @click="focus">
-          <view
-            class="nut-shortpsd-li"
-            v-for="(sublen, index) in new Array(comLen)"
-            v-bind:key="index"
-          >
-            <view
-              class="nut-shortpsd-icon"
-              v-if="String(realInput).length > index"
-            ></view>
+        <view class="nut-shortpsd-fake-taro" @click="focus">
+          <view class="nut-shortpsd-li" v-for="(sublen, index) in new Array(comLen)" v-bind:key="index">
+            <view class="nut-shortpsd-icon" v-if="String(realInput).length > index"></view>
           </view>
         </view>
       </view>
@@ -104,34 +98,33 @@ export default create({
       default: 6
     }
   },
-  emits: [
-    'update:modelValue',
-    'update:visible',
-    'complete',
-    'change',
-    'ok',
-    'tips',
-    'close',
-    'cancel'
-  ],
+  emits: ['update:modelValue', 'update:visible', 'complete', 'change', 'ok', 'tips', 'close', 'cancel'],
   setup(props, { emit }) {
     const realInput = ref(props.modelValue);
     const realpwd = ref();
     const comLen = computed(() => range(Number(props.length)));
     const show = ref(props.visible);
+    const refRandomId = Math.random().toString(36).slice(-8);
+    const randRef = ref(refRandomId);
     const isWx = ref(false); // 判断是否为微信端
     // 方法
     function sureClick() {
       emit('ok', realInput.value);
     }
     function focus() {
-      let a: any = '';
+      let dom: any = '';
+      console.log(123);
+
       if (isWx.value) {
-        a = document.getElementsByClassName('nut-input-real-taro')[0] as any;
-        a.focus();
+        setTimeout(() => {
+          if (!document.getElementById('nut-input-real-taro-' + randRef.value)) return;
+          dom = document.getElementById('nut-input-real-taro-' + randRef.value) as any;
+          if (!dom) return;
+          dom.focus();
+        }, 150);
       } else {
-        a = document.getElementsByClassName('nut-input-real')[0] as any;
-        let h = a.children[0];
+        dom = document.getElementsByClassName('nut-input-real')[0] as any;
+        let h = dom.children[0];
         h.focus();
       }
     }
@@ -139,6 +132,20 @@ export default create({
       () => props.visible,
       (value) => {
         show.value = value;
+        if (value) {
+          randRef.value = Math.random().toString(36).slice(-8);
+          if (Taro.getEnv() === 'WEB') {
+            isWx.value = false;
+          } else {
+            isWx.value = true;
+          }
+        }
+      }
+    );
+    watch(
+      () => props.modelValue,
+      (value) => {
+        realInput.value = value;
       }
     );
     function changeValue(e: Event) {
@@ -170,8 +177,6 @@ export default create({
     }
     onMounted(() => {
       eventCenter.once((getCurrentInstance() as any).router.onReady, () => {});
-      console.log(Taro.getEnv());
-
       if (Taro.getEnv() === 'WEB') {
         isWx.value = false;
       } else {
@@ -190,7 +195,9 @@ export default create({
       focus,
       show,
       closeIcon,
-      isWx
+      isWx,
+      refRandomId,
+      randRef
     };
   }
 });
