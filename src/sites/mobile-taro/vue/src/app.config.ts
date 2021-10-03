@@ -73,7 +73,8 @@ export default {
       pages: [
         'pages/address/index',
         'pages/signature/index',
-        'pages/barrage/index'
+        'pages/barrage/index',
+        'pages/timeselect/index'
       ]
     }
   ],
