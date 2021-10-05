@@ -263,6 +263,26 @@ $noticeBar-line-height: 24px !default;
 $noticeBar-left-icon-width: 16px !default;
 $noticeBar-right-icon-width: 16px !default;
 
+// TimeSelect
+$timeselect-title-font-size: $font-size-1 !default;
+$timeselect-title-color: $title-color !default;
+$timeselect-pannel-bg-color: #f6f7f9 !default;
+
+// TimePannel
+$timepannel-text-color: $title-color2 !default;
+$timepannel-font-size: $font-size-2 !default;
+$timepannel-cur-bg-color: $white !default;
+$timepannel-cur-text-color: #333333 !default;
+// TimeDetail
+$timedetail-item-bg-color: #f6f7f9 !default;
+$timedetail-item-border-radius: 5px !default;
+$timedetail-item-text-color: #333333 !default;
+$timedetail-item-text-font-size: $font-size-2 !default;
+$timedetail-item-cur-bg-color: #fef4f3 !default;
+$timedetail-item-cur-border: #f0250f !default;
+$timedetail-item-cur-text-color: #f0250f !default;
+$timedetail-time-text-color: #999 !default;
+$timedetail-time-font-size: $font-size-1 !default;
 //tag
 $tag-font-size: 12px !default;
 $tag-default-background-color: #000000 !default;
