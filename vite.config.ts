@@ -11,6 +11,7 @@ export default defineConfig({
   base: '/3x/',
   server: {
     port: 2021,
+    host: '0.0.0.0',
     proxy: {
       '/devServer': {
         target: 'https://nutui.jd.com',
