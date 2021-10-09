@@ -44,7 +44,7 @@ export default {
       pages: [
         'pages/navbar/index',
         'pages/tabbar/index',
-        'pages/tab/index',
+        'pages/tabs/index',
         'pages/fixednav/index',
         'pages/elevator/index',
         'pages/pagination/index'

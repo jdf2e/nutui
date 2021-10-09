@@ -232,7 +232,7 @@ $rang-bg-color: rgba($primary-color, 0.5) !default;
 $rang-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
 
 //address
-$address-region-tab-line: linear-gradient(90deg, $primary-color 0%, $primary-color-end 100%) !default;
+$address-region-tab-line: linear-gradient(90deg, #f5503a 0%, #fad1cb 100%) !default;
 
 //steps
 $step-wait-bg-color: #959fb1 !default;
@@ -328,6 +328,18 @@ $pagination-disable-background-color: #f7f8fa !default;
 $pagination-item-border-width: 1px !default;
 $pagination-item-border-radius: 2px !default;
 $pagination-prev-next-padding: 0 11px !default;
+
+// tabs
+$tabs-tab-line: linear-gradient(90deg, #f5503a 0%, #fad1cb 100%) !default;
+$tabs-titles-border-radius: 0 !default;
+$tabs-titles-item-font-size: $font-size-2 !default;
+$tabs-titles-item-color: $title-color !default;
+$tabs-titles-background-color: $help-color !default;
+$tabs-horizontal-titles-height: 46px !default;
+$tabs-horizontal-titles-item-min-width: 50px !default;
+$tabs-horizontal-titles-item-active-line-width: 40px !default;
+$tabs-vertical-titles-item-height: 40px !default;
+$tabs-vertical-titles-width: 100px !default;
 
 @import './mixins/index';
 @import './animation/index';

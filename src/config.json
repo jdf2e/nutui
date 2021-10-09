@@ -82,6 +82,12 @@
         "show": true
       },
       {
+        "name": "contributing",
+        "cName": "贡献指南",
+        "path": "#/contributing",
+        "show": true
+      },
+      {
         "name": "https://github.com/jdf2e/nutui/releases",
         "cName": "更新日志",
         "show": true,
@@ -527,8 +533,9 @@
           "sort": 1,
           "cName": "标签组件",
           "type": "component",
-          "show": true,
-          "taro": true,
+          "show": false,
+          "exportEmpty": true,
+          "taro": false,
           "desc": "标签组件",
           "author": "zhenyulei"
         },
@@ -609,6 +616,29 @@
           "show": true,
           "taro": true,
           "author": "yushuang24"
+        },
+        {
+          "version": "3.1.9",
+          "name": "Tabs",
+          "type": "component",
+          "cName": "选项卡切换",
+          "desc": "常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式",
+          "sort": 11,
+          "show": true,
+          "taro": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.1.9",
+          "name": "TabPane",
+          "type": "component",
+          "cName": "选项卡子组件",
+          "desc": "",
+          "sort": 12,
+          "exportEmpty": true,
+          "taro": true,
+          "show": false,
+          "author": "richard1015"
         }
       ]
     },
