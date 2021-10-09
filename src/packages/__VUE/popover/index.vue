@@ -100,6 +100,7 @@ export default create({
       const style: CSSProperties = {};
       if (location.value == 'top') {
         style.bottom = state.elHeight + 20 + 'px';
+        style.left = 0 + 'px';
       } else if (location.value == 'right') {
         style.top = 0 + 'px';
         style.right = -state.elWidth + 'px';
@@ -108,6 +109,7 @@ export default create({
         style.left = -state.elWidth + 'px';
       } else {
         style.top = state.elHeight + 20 + 'px';
+        style.left = 0 + 'px';
       }
 
       return style;
