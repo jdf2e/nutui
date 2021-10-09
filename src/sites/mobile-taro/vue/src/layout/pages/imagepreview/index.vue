@@ -1,17 +1,8 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-imagepreview
-      :show="showPreview"
-      :images="dataImgItem"
-      @close="hideFn"
-    />
-    <nut-cell
-      isLink
-      title="展示图片预览"
-      :showIcon="true"
-      @click="showFn"
-    ></nut-cell>
+    <nut-imagepreview :show="showPreview" :images="dataImgItem" @close="hideFn" />
+    <nut-cell isLink title="展示图片预览" :showIcon="true" @click="showFn"></nut-cell>
   </div>
 </template>
 

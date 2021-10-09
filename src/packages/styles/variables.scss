@@ -232,7 +232,7 @@ $rang-bg-color: rgba($primary-color, 0.5) !default;
 $rang-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
 
 //address
-$address-region-tab-line: linear-gradient(90deg, $primary-color 0%, $primary-color-end 100%) !default;
+$address-region-tab-line: linear-gradient(90deg, #f5503a 0%, #fad1cb 100%) !default;
 
 //steps
 $step-wait-bg-color: #959fb1 !default;
@@ -263,6 +263,26 @@ $noticeBar-line-height: 24px !default;
 $noticeBar-left-icon-width: 16px !default;
 $noticeBar-right-icon-width: 16px !default;
 
+// TimeSelect
+$timeselect-title-font-size: $font-size-1 !default;
+$timeselect-title-color: $title-color !default;
+$timeselect-pannel-bg-color: #f6f7f9 !default;
+
+// TimePannel
+$timepannel-text-color: $title-color2 !default;
+$timepannel-font-size: $font-size-2 !default;
+$timepannel-cur-bg-color: $white !default;
+$timepannel-cur-text-color: #333333 !default;
+// TimeDetail
+$timedetail-item-bg-color: #f6f7f9 !default;
+$timedetail-item-border-radius: 5px !default;
+$timedetail-item-text-color: #333333 !default;
+$timedetail-item-text-font-size: $font-size-2 !default;
+$timedetail-item-cur-bg-color: #fef4f3 !default;
+$timedetail-item-cur-border: #f0250f !default;
+$timedetail-item-cur-text-color: #f0250f !default;
+$timedetail-time-text-color: #999 !default;
+$timedetail-time-font-size: $font-size-1 !default;
 //tag
 $tag-font-size: 12px !default;
 $tag-default-background-color: #000000 !default;
@@ -308,6 +328,18 @@ $pagination-disable-background-color: #f7f8fa !default;
 $pagination-item-border-width: 1px !default;
 $pagination-item-border-radius: 2px !default;
 $pagination-prev-next-padding: 0 11px !default;
+
+// tabs
+$tabs-tab-line: linear-gradient(90deg, #f5503a 0%, #fad1cb 100%) !default;
+$tabs-titles-border-radius: 0 !default;
+$tabs-titles-item-font-size: $font-size-2 !default;
+$tabs-titles-item-color: $title-color !default;
+$tabs-titles-background-color: $help-color !default;
+$tabs-horizontal-titles-height: 46px !default;
+$tabs-horizontal-titles-item-min-width: 50px !default;
+$tabs-horizontal-titles-item-active-line-width: 40px !default;
+$tabs-vertical-titles-item-height: 40px !default;
+$tabs-vertical-titles-width: 100px !default;
 
 @import './mixins/index';
 @import './animation/index';

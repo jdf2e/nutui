@@ -44,7 +44,7 @@ export default {
       pages: [
         'pages/navbar/index',
         'pages/tabbar/index',
-        'pages/tab/index',
+        'pages/tabs/index',
         'pages/fixednav/index',
         'pages/elevator/index',
         'pages/pagination/index'
@@ -74,11 +74,7 @@ export default {
     },
     {
       root: 'business',
-      pages: [
-        'pages/address/index',
-        'pages/signature/index',
-        'pages/barrage/index'
-      ]
+      pages: ['pages/address/index', 'pages/signature/index', 'pages/barrage/index', 'pages/timeselect/index']
     }
   ],
   window: {

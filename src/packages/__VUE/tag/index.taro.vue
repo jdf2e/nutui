@@ -2,13 +2,7 @@
   <view :class="classes" :style="getStyle()">
     <view class="nut-tag">
       <slot></slot>
-      <nut-icon
-        class="nut-tag--close"
-        v-if="closeable"
-        name="close"
-        size="11"
-        @click="onClose"
-      ></nut-icon>
+      <nut-icon class="nut-tag--close" v-if="closeable" name="close" size="11" @click="onClose"></nut-icon>
     </view>
   </view>
 </template>

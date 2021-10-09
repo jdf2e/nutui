@@ -8,7 +8,7 @@
 * :zap: feat: 新增 badge 徽标组件 @liqiong-lab
 * :zap: feat: 新增 popover 气泡组件 @liqiong-lab
 * :zap: feat: 新增 imagepreview 图片预览组件 @JackieScorpio
-* :bug: fix(shortpassword): 修复部分安卓机value值倒序问题 #679  @Drjingfubo
+* :bug: fix(shortpassword): 修复部分安卓机value值倒序问题、taro环境二次点击无法弹起 #679  @Drjingfubo
 * :bug: fix(uploader): taro场景 name 字段关联问题、新增 upload-icon-size 字段、上传成功返回值逻辑优化 @richard1015
 * :bug: fix(popup): taro 环境滑动内容穿透修复 @richard1015
 * :bug: fix(input): clear event bug、readonly 导致内容前移 #628 @richard1015
