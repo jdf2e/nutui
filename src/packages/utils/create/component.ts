@@ -8,7 +8,7 @@ import {
   Component
 } from 'vue';
 export function createComponent(name: string) {
-  const componentName = 'miner-' + name;
+  const componentName = 'nut-' + name;
   return {
     componentName,
     create: function <
