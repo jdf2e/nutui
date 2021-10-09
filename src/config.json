@@ -82,6 +82,12 @@
         "show": true
       },
       {
+        "name": "contributing",
+        "cName": "贡献指南",
+        "path": "#/contributing",
+        "show": true
+      },
+      {
         "name": "https://github.com/jdf2e/nutui/releases",
         "cName": "更新日志",
         "show": true,
