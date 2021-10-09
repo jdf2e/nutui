@@ -14,9 +14,7 @@
           <template v-for="_package in _nav.packages" :key="_package">
             <li v-if="_package.show">
               <router-link :to="_package.name.toLowerCase()"
-                >{{ _package.name }}&nbsp;&nbsp;{{
-                  _package.cName
-                }}</router-link
+                >{{ _package.name }}&nbsp;&nbsp;{{ _package.cName }}</router-link
               >
               <nut-icon size="14px" color="#979797" name="right"></nut-icon>
             </li>
@@ -41,6 +39,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@import '@/sites/assets/styles/reset.scss';
 .index {
   height: 100%;
   width: 100%;
@@ -75,6 +74,7 @@ export default defineComponent({
     }
   }
   &-components {
+    box-sizing: border-box;
     background: #f7f8fa;
     border-radius: 30px 30px 0 0;
     overflow: hidden;

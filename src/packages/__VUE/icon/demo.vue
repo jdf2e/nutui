@@ -62,6 +62,7 @@ export default createDemo({
 ul {
   display: flex;
   flex-wrap: wrap;
+  padding: 0;
   li {
     flex: 0 0 25%;
     max-width: 25%;
