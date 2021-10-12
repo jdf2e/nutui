@@ -1,0 +1,98 @@
+# Navbar 头部导航
+
+### 介绍 
+
+
+提供导航功能。
+
+### 安装
+
+```javascript
+
+
+
+```
+
+### 代码示例
+
+### 基本用法
+
+```html
+   <NavBar
+      title="订单详情"
+      icon="share"
+      leftShow={true}
+      onClickTitle={(e) => alert('标题')}
+      onClickBack={(e) => alert('返回')}
+      onClickIcon={(e) => alert('icon')}
+    ></NavBar>
+    <NavBar
+      title="浏览记录"
+      desc="清空"
+      leftShow={true}
+      onClickTitle={(e) => alert('标题')}
+      onClickBack={(e) => alert('返回')}
+      onClickClear={(e) => alert('清空')}
+    ></NavBar>
+    <NavBar
+      title="购物车"
+      icon="more"
+      desc="编辑"
+      titIcon="locationg3"
+      onClickTitle={(e) => alert('标题')}
+      onClickBack={(e) => alert('返回')}
+      onClickClear={(e) => alert('编辑')}
+      onClickIcon={(e) => alert('icon')}
+    ></NavBar>
+
+```
+
+### 设置slot:tabs可以增加tab
+
+```html
+    <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-clear="edit" @on-click-send="list" desc="编辑" icon="horizontal">
+      <template v-slot:tabs>
+        <nut-tab>
+          <nut-tab-panel tab-title="商品"><p class="content">这里是页签全部内容</p></nut-tab-panel>
+          <nut-tab-panel tab-title="店铺"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
+        </nut-tab>
+      </template>
+    </nut-navbar>
+```
+
+### 多tab切换导航及增加右侧按钮
+
+```html
+    <nut-navbar @on-click-back="back" icon="share" @on-click-send="send">
+      <template v-slot:tabs>
+        <nut-tab>
+          <nut-tab-panel tab-title="商品"><p class="content">这里是页签全部内容</p></nut-tab-panel>
+          <nut-tab-panel tab-title="评价"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
+          <nut-tab-panel tab-title="详情"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
+          <nut-tab-panel tab-title="推荐"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
+        </nut-tab>
+      </template>
+
+      <template #icons >
+        <nut-icon class="icon" name="more" @on-click-slot-send="morelist"></nut-icon>
+      </template>
+    </nut-navbar>
+```
+
+### Prop  
+
+| 字段            | 说明                                                                                           | 类型    | 默认值  |
+|-----------------|------------------------------------------------------------------------------------------------|---------|---------|
+| title           | 标题名称                                                                                       | String  | -       |
+| desc            | 右侧描述                                                                                       | String  | -       |
+| left-show        | 是否展示左侧箭头                                                                              | Boolean | false   |
+| icon            | 左侧 [图标名称](#/icon) 或图片链接                                                             | String  | -       |
+| tit-icon         | 标题带icon                                                         | String  | -       |                                          
+
+### Event
+| 名称  | 说明     | 回调参数    |
+|-------|----------|-------------|
+| onClickTitle | 点击页面标题事件 | event:Event |
+| onClickClear | 点击右侧文案事件 | event:Event |
+| onClickBack | 点击返回上一页事件 | event:Event |
+| onClickIcon | 点击右侧icon事件 | event:Event |

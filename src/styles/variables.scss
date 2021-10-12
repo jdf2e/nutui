@@ -19,8 +19,7 @@ $black: #000;
 // padding
 $padding-xs: 12px;
 
-$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
-  sans-serif !default;
+$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif !default;
 
 // ---- Animation ----
 $animation-duration: 0.25s !default;
@@ -100,7 +99,7 @@ $cell-title-font: $font-size-2;
 $cell-title-desc-font: $font-size-1;
 $cell-desc-font: $font-size-2;
 $cell-desc-color: $disable-color;
-$cell-border-radius: 7px;
+$cell-border-radius: 6px;
 
 // cell-group
 
@@ -240,20 +239,13 @@ $infinite-bottom-color: #c8c8c8;
 //range
 $range-max: #333333;
 $rang-bg-color: rgba($primary-color, 0.5);
-$rang-bar-bg-color: linear-gradient(
-  135deg,
-  $primary-color 0%,
-  $primary-color-end 100%
-);
+$rang-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%);
 
 //address
-$address-region-tab-line: linear-gradient(
-  90deg,
-  $primary-color 0%,
-  $primary-color-end 100%
-);
+$address-region-tab-line: linear-gradient(90deg, $primary-color 0%, $primary-color-end 100%);
 
 //steps
+$step-wait-bg-color: #959fb1;
 
 // dialog
 $dialog-width: 296px;
@@ -266,9 +258,11 @@ $checkbox-label-disable-color: #999;
 $radio-label-color: #1d1e1e;
 $radio-label-disable-color: #999;
 
-view-block {
-  display: block;
-}
+//fixednav
+$fixednav-bg-color: $white;
+$fixednav-font-color: $black;
+$fixednav-index: 201;
+$fixednav-btn-bg: linear-gradient(135deg, rgba(250, 25, 44, 1) 0%, rgba(250, 63, 25, 1) 100%);
 
 @import './mixins/index';
 @import './animation/index';
