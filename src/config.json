@@ -81,8 +81,18 @@
   },
   "nav": [
     {
-      "name": "布局组件",
+      "name": "基础组件",
       "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Avatar",
+          "type": "component",
+          "cName": "头像",
+          "desc": "用来代表用户或事物，支持图片、图标或字符展示。",
+          "sort": 2,
+          "show": true,
+          "author": "junjun"
+        },
         {
           "version": "1.0.0",
           "name": "Button",
@@ -95,34 +105,14 @@
         },
         {
           "version": "1.0.0",
-          "name": "Collapse",
+          "name": "Cell",
           "type": "component",
-          "cName": "折叠面板",
-          "desc": "折叠面板，可进行内容折叠展开操作，可以多面板配合使用。",
+          "cName": "列表组件",
+          "desc": "列表项，可组成列表",
           "sort": 2,
           "show": true,
-          "author": "zhenyulei"
-        }
-      ]
-    },
-    {
-      "name": "操作反馈",
-      "packages": [
-        {
-          "version": "1.0.0",
-          "name": "Switch",
-          "type": "component",
-          "cName": "开关",
-          "desc": "用来打开或关闭选项。",
-          "sort": 1,
-          "show": true,
-          "author": "dsj"
-        }
-      ]
-    },
-    {
-      "name": "基础组件",
-      "packages": [
+          "author": "songsong"
+        },
         {
           "version": "1.0.0",
           "name": "Icon",
@@ -132,6 +122,90 @@
           "sort": 1,
           "show": true,
           "author": "oasis-cloud"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Price",
+          "type": "component",
+          "cName": "价格",
+          "desc": "用来对商品价格数值的小数点前后部分应用不同样式，还支持人民币符号、千位分隔符、设置小数点位数等功能。",
+          "sort": 4,
+          "show": true,
+          "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Overlay",
+          "type": "component",
+          "cName": "遮罩层",
+          "desc": "创建一个遮罩层，通常用于阻止用户进行其他操作",
+          "sort": 5,
+          "show": true,
+          "author": "junjun"
+        }
+      ]
+    },
+    {
+      "name": "布局组件",
+      "packages": []
+    },
+    {
+      "name": "操作反馈",
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Drag",
+          "type": "component",
+          "cName": "拖拽",
+          "desc": "实现可拖拽的任意元素",
+          "sort": 1,
+          "show": true,
+          "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Collapse",
+          "type": "component",
+          "cName": "折叠面板",
+          "desc": "折叠面板，可进行内容折叠展开操作，可以多面板配合使用。",
+          "sort": 2,
+          "show": true,
+          "author": "zhenyulei"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Toast",
+          "type": "component",
+          "cName": "吐司",
+          "desc": "轻提示",
+          "sort": 1,
+          "show": true,
+          "author": "VickyYe"
+        },
+        {
+          "version": "1.0.0",
+          "name": "BackTop",
+          "type": "component",
+          "cName": "返回顶部",
+          "desc": "提供较长的页面快捷返回顶部功能。",
+          "sort": 2,
+          "show": true,
+          "author": "vickyYe"
+        }
+      ]
+    },
+    {
+      "name": "基础组件",
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Steps",
+          "type": "component",
+          "cName": "步骤条",
+          "desc": "拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。",
+          "sort": 7,
+          "show": true,
+          "author": "swag~jun"
         }
       ]
     },
@@ -157,6 +231,16 @@
           "sort": 2,
           "show": true,
           "author": "dsj"
+        },
+        {
+          "version": "1.0.0",
+          "name": "InputNumber",
+          "type": "component",
+          "cName": "数字输入框",
+          "desc": "通过点击按钮控制数字增减。",
+          "sort": 3,
+          "show": true,
+          "author": "swag~jun"
         }
       ]
     },
@@ -172,11 +256,51 @@
           "sort": 1,
           "show": true,
           "author": "dsj"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Uploader",
+          "type": "component",
+          "cName": "上传",
+          "desc": "用于将本地的图片或文件上传至服务器。",
+          "sort": 1,
+          "show": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Input",
+          "type": "component",
+          "cName": "输入框",
+          "desc": "单行输入框",
+          "sort": 1,
+          "show": true,
+          "author": "VickyYe"
+        },
+        {
+          "version": "1.0.0",
+          "name": "TextArea",
+          "type": "component",
+          "cName": "文本域",
+          "desc": "文本框内输入或编辑文字，支持限制输入数量。",
+          "sort": 2,
+          "show": true,
+          "author": "VickyYe"
+        },
+        {
+          "version": "1.0.0",
+          "name": "CheckBox",
+          "type": "component",
+          "cName": "复选按钮",
+          "desc": "多选按钮用于选择。",
+          "sort": 4,
+          "show": true,
+          "author": "oasis"
         }
       ]
     },
     {
-      "name": "业务组件",
+      "name": "特色组件",
       "packages": []
     }
   ]

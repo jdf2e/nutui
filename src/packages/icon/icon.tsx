@@ -29,7 +29,7 @@ function pxCheck(value: string | number): string {
 export const Icon: FunctionComponent<Partial<IconProps> & React.HTMLAttributes<HTMLDivElement>> = (
   props
 ) => {
-  const { name, size, classPrefix, color, tag, children, className, style, ...rest } = {
+  const { name, size, classPrefix, color, tag, children, className, style, click, ...rest } = {
     ...defaultProps,
     ...props,
   }
@@ -50,8 +50,8 @@ export const Icon: FunctionComponent<Partial<IconProps> & React.HTMLAttributes<H
     type,
     {
       className: isImage
-        ? `${className} ${b('img')}`
-        : `${className} nut-icon-${name} ${b(null, [classPrefix])}`,
+        ? `${className || ''} ${b('img')}`
+        : `${className || ''} ${b(null, [classPrefix])} nut-icon-${name} `,
       style: {
         color,
         fontSize: pxCheck(size),
