@@ -249,6 +249,16 @@
       "packages": [
         {
           "version": "1.0.0",
+          "name": "Rate",
+          "type": "component",
+          "cName": "评分",
+          "desc": "用于快速的评级操作，或对评价进行展示。",
+          "sort": 1,
+          "show": true,
+          "author": "dsj"
+        },
+        {
+          "version": "1.0.0",
           "name": "Uploader",
           "type": "component",
           "cName": "上传",

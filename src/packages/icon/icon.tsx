@@ -9,6 +9,7 @@ interface IconProps {
   color: string
   tag: keyof ReactHTML
   click: (e: MouseEvent) => void
+  className: string
 }
 
 const defaultProps: IconProps = {
@@ -18,6 +19,7 @@ const defaultProps: IconProps = {
   color: '',
   tag: 'i',
   click: (e: MouseEvent) => {},
+  className: '',
 }
 
 function pxCheck(value: string | number): string {
