@@ -231,6 +231,16 @@
           "sort": 2,
           "show": true,
           "author": "dsj"
+        },
+        {
+          "version": "1.0.0",
+          "name": "InputNumber",
+          "type": "component",
+          "cName": "数字输入框",
+          "desc": "通过点击按钮控制数字增减。",
+          "sort": 3,
+          "show": true,
+          "author": "swag~jun"
         }
       ]
     },
