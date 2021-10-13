@@ -7,7 +7,6 @@
     background: $popover-white-background-color;
     opacity: 0;
     position: fixed;
-    top: 49px;
     width: 100%;
     height: 1000px;
     z-index: 10;
@@ -26,11 +25,8 @@
     font-weight: normal;
     color: $popover-primary-text-color;
     position: absolute;
-    top: 49px;
     .popoverArrow {
       position: absolute;
-      left: 10px;
-      top: -18px;
       width: 0;
       height: 0;
       border-left: 8px solid transparent;
@@ -59,11 +55,8 @@
     }
   }
   .popoverContent--top {
-    top: -126px;
     .popoverArrow--top {
       position: absolute;
-      left: 10px;
-      bottom: -15px;
       top: auto;
       border-left: 8px solid transparent;
       border-right: 8px solid transparent;
@@ -72,12 +65,8 @@
     }
   }
   .popoverContent--left {
-    top: -30px;
-    left: -90px;
     .popoverArrow--left {
       position: absolute;
-      right: -13px;
-      top: 49px;
       border-left: 10px solid $popover-white-background-color;
       border-right: 10px solid transparent;
       border-top: 8px solid transparent;
@@ -85,12 +74,8 @@
     }
   }
   .popoverContent--right {
-    top: -30px;
-    right: -90px;
     .popoverArrow--right {
       position: absolute;
-      left: -10px;
-      top: 49px;
       border-left: 10px solid transparent;
       border-right: 10px solid $popover-white-background-color;
       border-top: 8px solid transparent;
@@ -118,11 +103,8 @@
     }
   }
   .popoverContent--top {
-    top: -126px;
     .popoverArrow--top {
       position: absolute;
-      left: 10px;
-      bottom: -20px;
       top: auto;
       border-left: 8px solid transparent;
       border-right: 8px solid transparent;
@@ -131,12 +113,8 @@
     }
   }
   .popoverContent--left {
-    top: -30px;
-    left: -90px;
     .popoverArrow--left {
       position: absolute;
-      left: 75px;
-      top: 49px;
       border-left: 10px solid $popover-dark-background-color;
       border-right: 10px solid transparent;
       border-top: 8px solid transparent;
@@ -144,12 +122,8 @@
     }
   }
   .popoverContent--right {
-    top: -30px;
-    right: -90px;
     .popoverArrow--right {
       position: absolute;
-      left: -19px;
-      top: 49px;
       border-left: 10px solid transparent;
       border-right: 10px solid $popover-dark-background-color;
       border-top: 8px solid transparent;
