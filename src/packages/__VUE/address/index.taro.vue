@@ -22,12 +22,7 @@
         </view-block>
 
         <view-block class="arrow-close" @click="handClose('cross')">
-          <nut-icon
-            v-if="closeBtnIcon"
-            :name="closeBtnIcon"
-            color="#cccccc"
-            size="18px"
-          ></nut-icon>
+          <nut-icon v-if="closeBtnIcon" :name="closeBtnIcon" color="#cccccc" size="18px"></nut-icon>
         </view-block>
       </view-block>
 
@@ -45,11 +40,7 @@
             <view>{{ getTabName(item, index) }}</view>
           </view-block>
 
-          <view-block
-            class="region-tab-line"
-            ref="regionLine"
-            :style="{ left: lineDistance + 'px' }"
-          ></view-block>
+          <view-block class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view-block>
         </view-block>
 
         <view-block class="region-con">
@@ -58,9 +49,7 @@
               v-for="(item, index) in regionList[tabName[tabIndex]]"
               :key="index"
               class="region-item"
-              :class="[
-                selectedRegion[tabName[tabIndex]].id == item.id ? 'active' : ''
-              ]"
+              :class="[selectedRegion[tabName[tabIndex]].id == item.id ? 'active' : '']"
               @click="nextAreaList(item)"
             >
               <nut-icon
@@ -89,11 +78,7 @@
           >
             <view>{{ getTabName(item, index) }}</view>
           </view>
-          <view
-            class="region-tab-line"
-            ref="regionLine"
-            :style="{ left: lineDistance + 'px' }"
-          ></view>
+          <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
         </view>
         <view class="elevator-group" v-if="showPopup">
           <nut-elevator
@@ -129,13 +114,7 @@
                 </div>
                 <div class="exist-item-info-bottom">
                   <view>
-                    {{
-                      item.provinceName +
-                      item.cityName +
-                      item.countyName +
-                      item.townName +
-                      item.addressDetail
-                    }}
+                    {{ item.provinceName + item.cityName + item.countyName + item.townName + item.addressDetail }}
                   </view>
                 </div>
               </div>
@@ -143,11 +122,7 @@
           </ul>
         </div>
 
-        <div
-          class="choose-other"
-          @click="switchModule"
-          v-if="isShowCustomAddress"
-        >
+        <div class="choose-other" @click="switchModule" v-if="isShowCustomAddress">
           <div class="btn">{{ customAndExistTitle }}</div>
         </div>
       </view-block>
@@ -158,7 +133,6 @@
 import { reactive, ref, toRefs, watch, nextTick, computed } from 'vue';
 import { createComponent } from '../../utils/create';
 import Taro from '@tarojs/taro';
-import { transformData } from './transformData';
 
 const { create, componentName } = createComponent('address');
 
@@ -166,12 +140,9 @@ interface RegionData {
   name: string;
   [key: string]: any;
 }
-interface Region {
-  province: RegionData[];
-  city: RegionData[];
-  country: RegionData[];
-  town: RegionData[];
-  [key: string]: any;
+interface CustomRegionData {
+  title: string;
+  list: any[];
 }
 
 interface AddressList {
@@ -255,15 +226,7 @@ export default create({
       default: '200px'
     }
   },
-  emits: [
-    'update:visible',
-    'type',
-    'change',
-    'selected',
-    'close',
-    'close-mask',
-    'switch-module'
-  ],
+  emits: ['update:visible', 'type', 'change', 'selected', 'close', 'close-mask', 'switch-module'],
 
   setup(props, { emit }) {
     const classes = computed(() => {
@@ -288,10 +251,37 @@ export default create({
 
     const isCustom2 = computed(() => props.type === 'custom2');
 
+    const transformData = (data: RegionData[]) => {
+      if (!Array.isArray(data)) throw new TypeError('params muse be array.');
+
+      if (!data.length) return [];
+
+      const newData: CustomRegionData[] = [];
+
+      data = data.sort((a: RegionData, b: RegionData) => {
+        return a.title.localeCompare(b.title);
+      });
+
+      data.forEach((item: RegionData) => {
+        const index = newData.findIndex((value: CustomRegionData) => value.title === item.title);
+        if (index <= -1) {
+          newData.push({
+            title: item.title,
+            list: [].concat(item)
+          });
+        } else {
+          newData[index] = {
+            title: item.title,
+            list: newData[index].list.concat(item)
+          };
+        }
+      });
+
+      return newData;
+    };
+
     const regionList = reactive({
-      province: isCustom2.value
-        ? transformData(props.province)
-        : props.province,
+      province: isCustom2.value ? transformData(props.province) : props.province,
       city: isCustom2.value ? transformData(props.city) : props.city,
       country: isCustom2.value ? transformData(props.country) : props.country,
       town: isCustom2.value ? transformData(props.town) : props.town
