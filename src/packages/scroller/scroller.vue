@@ -8,6 +8,7 @@
         :threshold="threshold"
         :pulldown-txt="pulldownTxt"
         :load-more-txt="loadMoreTxt"
+        :loading-txt="loadingTxt"
         :unload-more-txt="unloadMoreTxt"
         :props-time="propsTime"
         :scroll-to="scrollTo"
@@ -61,6 +62,10 @@ export default {
     loadMoreTxt: {
       type: String,
       default: '上拉加载'
+    },
+    loadingTxt: {
+      type: String,
+      default: '加载中...'
     },
     unloadMoreTxt: {
       type: String,

@@ -5,7 +5,8 @@
         <div class="nut-vert-pulldown-txt" v-if="!isLoading">{{ pulldownTxt }}</div>
         <div class="nut-vert-pulldown-status" v-else>
           <span class="nut-vert-loading"></span>
-          <span class="nut-vert-loading-txt">加载中...</span>
+          <!-- <span class="nut-vert-loading-txt">加载中...</span> -->
+          <span class="nut-vert-loading-txt">{{loadingTxt}}</span>
         </div>
       </div>
       <slot name="list"></slot>
@@ -14,7 +15,7 @@
           <!-- <div class="nut-vert-load-txt" >{{loadMoreTxt}}</div> -->
           <div class="nut-vert-load-status" v-if="isLoading">
             <span class="nut-vert-loading"></span>
-            <span class="nut-vert-loading-txt">加载中...</span>
+            <span class="nut-vert-loading-txt">{{loadingTxt}}</span>
           </div>
         </template>
         <template v-else-if="isUnMore">
@@ -47,6 +48,10 @@ export default {
     loadMoreTxt: {
       type: String,
       default: '上拉加载'
+    },
+    loadingTxt: {
+      type: String,
+      default: '加载中...'
     },
     unloadMoreTxt: {
       type: String,

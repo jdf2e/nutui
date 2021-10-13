@@ -173,6 +173,7 @@ export default {
 | threshold | 距离底部多少开始加载 | Number | 100
 | pulldownTxt | 下拉展示文案 | String | '下拉刷新'
 | loadMoreTxt | 上拉展示文案 | String | '上拉加载'
+| loadingTxt | 加载中展示文案 | String | '加载中...'
 | unloadMoreTxt | 没有更多数据展示文案 | String | '没有更多了'
 | scrollTo | 滚动到指定位置，只能设置负数，需要配合scrollToCbk使用 | Number | 1
 
