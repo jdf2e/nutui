@@ -191,12 +191,17 @@
           "sort": 2,
           "show": true,
           "author": "vickyYe"
-        }
-      ]
-    },
-    {
-      "name": "基础组件",
-      "packages": [
+        },
+        {
+          "version": "1.0.0",
+          "name": "Infiniteloading",
+          "type": "component",
+          "cName": "滚动加载",
+          "desc": "列表滚动到底部自动加载更多数据。",
+          "sort": 5,
+          "show": true,
+          "author": "swag~jun"
+        },
         {
           "version": "1.0.0",
           "name": "Steps",
