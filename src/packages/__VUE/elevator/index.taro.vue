@@ -13,30 +13,20 @@
         :key="item[acceptKey]"
         :ref="setListGroup"
       >
-        <view class="nut-elevator__list__item__code">{{
-          item[acceptKey]
-        }}</view>
+        <view class="nut-elevator__list__item__code">{{ item[acceptKey] }}</view>
         <view
           class="nut-elevator__list__item__name"
           v-for="subitem in item.list"
           :key="subitem['id']"
           @click="handleClickItem(item[acceptKey], subitem)"
-          >{{ subitem.name }}</view
-        >
+          v-html="subitem.name"
+        ></view>
       </view>
     </scroll-view>
-    <view
-      class="nut-elevator__code--current"
-      v-show="scrollStart"
-      v-if="indexList.length"
-      >{{ indexList[currentIndex][acceptKey] }}</view
-    >
-    <view
-      class="nut-elevator__bars"
-      @touchstart="touchStart"
-      @touchmove.stop.prevent="touchMove"
-      @touchend="touchEnd"
-    >
+    <view class="nut-elevator__code--current" v-show="scrollStart" v-if="indexList.length">{{
+      indexList[currentIndex][acceptKey]
+    }}</view>
+    <view class="nut-elevator__bars" @touchstart="touchStart" @touchmove.stop.prevent="touchMove" @touchend="touchEnd">
       <view class="nut-elevator__bars__inner">
         <view
           class="nut-elevator__bars__inner__item"
@@ -153,8 +143,7 @@ export default create({
         state.listHeight = state.storageListHeight.slice();
       }
       if (index < 0) index = 0;
-      if (index > state.listHeight.length - 2)
-        index = state.listHeight.length - 2;
+      if (index > state.listHeight.length - 2) index = state.listHeight.length - 2;
       state.currentIndex = index;
       state.scrollTop = state.listHeight[index];
     };
@@ -172,8 +161,7 @@ export default create({
     const touchMove = (e: TouchEvent) => {
       let firstTouch = e.touches[0];
       state.touchState.y2 = firstTouch.pageY;
-      let delta =
-        ((state.touchState.y2 - state.touchState.y1) / spaceHeight) | 0;
+      let delta = ((state.touchState.y2 - state.touchState.y1) / spaceHeight) | 0;
       state.currentIndex = state.anchorIndex + delta;
       scrollTo(state.currentIndex);
     };
