@@ -4,7 +4,7 @@
     <div class="load-more">
       <div class="bottom-tips" v-if="isShowBottomTips">
         <template v-if="isLoading">
-          <template v-if="!slotLoading"> <i class="loading-hint"></i><span class="loading-txt">加载中...</span> </template>
+          <template v-if="!slotLoading"> <i class="loading-hint"></i><span class="loading-txt">{{loadingTxt}}</span> </template>
           <slot name="loading" v-else></slot>
         </template>
 
@@ -51,6 +51,10 @@ export default {
     unloadMoreTxt: {
       type: String,
       default: '哎呀，这里是底部了啦'
+    },
+    loadingTxt: {
+      type: String,
+      default: '加载中...'
     },
     scrollChange: {
       type: Function
