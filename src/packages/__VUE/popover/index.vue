@@ -1,11 +1,10 @@
 <template>
   <view @click="openPopover" :class="classes">
-    <slot name="reference"></slot>
-
+    <div ref="reference"> <slot name="reference"></slot></div>
     <template v-if="showPopup">
       <view class="more-background" @click="closePopover"> </view>
-      <view :class="popoverContent">
-        <view :class="popoverArrow"> </view>
+      <view :class="popoverContent" :style="getStyle">
+        <view :class="popoverArrow" :style="getArrowStyle"> </view>
 
         <slot name="content"></slot>
 
@@ -23,7 +22,7 @@
   </view>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, ref, PropType, toRefs } from 'vue';
+import { onMounted, computed, watch, ref, PropType, toRefs, reactive, CSSProperties } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('popover');
 import Popup, { popupProps } from '../popup/index.vue';
@@ -58,6 +57,11 @@ export default create({
   },
   emits: ['update', 'update:visible', 'close', 'choose', 'openPopover'],
   setup(props, { emit }) {
+    const reference = ref();
+    const state = reactive({
+      elWidth: 0,
+      elHeight: 0
+    });
     const showPopup = ref(props.visible);
 
     const { theme, location } = toRefs(props);
@@ -86,7 +90,53 @@ export default create({
       };
     });
 
-    onMounted(() => {});
+    function getReference() {
+      const domElem = document.documentElement;
+      state.elWidth = reference.value.offsetWidth;
+      state.elHeight = reference.value.offsetHeight;
+    }
+
+    const getStyle = computed(() => {
+      const style: CSSProperties = {};
+      if (location.value == 'top') {
+        style.bottom = state.elHeight + 20 + 'px';
+        style.left = 0 + 'px';
+      } else if (location.value == 'right') {
+        style.top = 0 + 'px';
+        style.right = -state.elWidth + 'px';
+      } else if (location.value == 'left') {
+        style.top = 0 + 'px';
+        style.left = -state.elWidth + 'px';
+      } else {
+        style.top = state.elHeight + 20 + 'px';
+        style.left = 0 + 'px';
+      }
+
+      return style;
+    });
+
+    const getArrowStyle = computed(() => {
+      const style: CSSProperties = {};
+      if (location.value == 'top') {
+        style.bottom = -20 + 'px';
+        style.left = state.elWidth / 2 + 'px';
+      } else if (location.value == 'right') {
+        style.top = 20 + 'px';
+        style.left = -20 + 'px';
+      } else if (location.value == 'left') {
+        style.top = 20 + 'px';
+        style.right = -20 + 'px';
+      } else {
+        style.left = state.elWidth / 2 + 'px';
+        style.top = -20 + 'px';
+      }
+
+      return style;
+    });
+
+    onMounted(() => {
+      getReference();
+    });
 
     watch(
       () => props.visible,
@@ -127,7 +177,11 @@ export default create({
       popoverContent,
       popoverArrow,
       closePopover,
-      chooseItem
+      chooseItem,
+      getReference,
+      reference,
+      getStyle,
+      getArrowStyle
     };
   }
 });

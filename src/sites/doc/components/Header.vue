@@ -10,12 +10,7 @@
       <Search />
       <div class="nav-box">
         <ul class="nav-list">
-          <li
-            class="nav-item"
-            v-for="item in header"
-            :key="item.name"
-            :class="{ active: isActive(item.name) }"
-          >
+          <li class="nav-item" v-for="item in header" :key="item.name" :class="{ active: isActive(item.name) }">
             <a :href="item.path">
               {{ item.cName }}
             </a>
@@ -29,9 +24,7 @@
               @click.stop="data.isShowSelect = !data.isShowSelect"
               :class="[data.isShowSelect == true ? 'select-up' : 'select-down']"
             >
-              <div class="header-select-hd"
-                >{{ data.verson }}<i class=""></i
-              ></div>
+              <div class="header-select-hd">{{ data.verson }}<i class=""></i></div>
               <transition name="fade">
                 <div class="header-select-bd" v-show="data.isShowSelect">
                   <div
@@ -48,16 +41,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <a
-              class="user-link"
-              target="_blank"
-              href="https://github.com/jdf2e/nutui"
-            ></a>
-            <a
-              class="user-link gitee"
-              target="_blank"
-              href="https://gitee.com/jd-platform-opensource/nutui"
-            ></a>
+            <a class="user-link" target="_blank" href="https://github.com/jdf2e/nutui"></a>
+            <a class="user-link gitee" target="_blank" href="https://gitee.com/jd-platform-opensource/nutui"></a>
           </li>
         </ul>
       </div>
@@ -107,9 +92,7 @@ export default defineComponent({
           if (value.indexOf('-taro') > -1) {
             value = value.split('-taro')[0];
           }
-          return (
-            packages.findIndex((item) => item.name.toLowerCase() === value) > -1
-          );
+          return packages.findIndex((item) => item.name.toLowerCase() === value) > -1;
         } else {
           return value === lName || lName.includes(value);
         }
@@ -200,7 +183,7 @@ export default defineComponent({
     .nav-box {
       margin-right: 140px;
       .nav-list {
-        min-width: 445px;
+        min-width: 490px;
         display: flex;
         list-style: none;
         align-items: center;
@@ -304,8 +287,7 @@ export default defineComponent({
     .header {
       &-logo {
         .logo-link {
-          background: url('../../assets/images/logo-header-white.png') no-repeat
-            center/100%;
+          background: url('../../assets/images/logo-header-white.png') no-repeat center/100%;
         }
         .logo-border {
           background: $theme-red-border;
@@ -383,8 +365,7 @@ export default defineComponent({
     .header {
       &-logo {
         .logo-link {
-          background: url('../../assets/images/logo-header-red.png') no-repeat
-            center/100%;
+          background: url('../../assets/images/logo-header-red.png') no-repeat center/100%;
         }
         .logo-border {
           background: $theme-white-border;
@@ -462,8 +443,7 @@ export default defineComponent({
     .header {
       &-logo {
         .logo-link {
-          background: url('../../assets/images/logo-header-red.png') no-repeat
-            center/100%;
+          background: url('../../assets/images/logo-header-red.png') no-repeat center/100%;
         }
         .logo-border {
           background: $theme-black-border;
