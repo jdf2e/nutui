@@ -39,10 +39,10 @@ export default create({
   },
 
   setup(props, { emit }) {
-    const { value, images } = toRefs(props);
+    const { show, images } = toRefs(props);
 
     const state = reactive({
-      showPop: value,
+      showPop: show,
       active: 1
     });
 

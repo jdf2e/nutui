@@ -1,0 +1,114 @@
+.nut-searchbar {
+  display: flex;
+  flex-flow: row;
+  padding: 10px 15px;
+  background: #fff;
+  .search-input {
+    display: flex;
+    height: 36px;
+    flex: 1;
+    padding: 0 0 0 13px;
+    background-color: rgba(247, 247, 247, 1);
+    border-radius: 18px;
+
+    form {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      position: relative;
+
+      .search-icon {
+        width: 40px;
+        height: 40px;
+        // margin-right: 5px;
+      }
+
+      input {
+        width: 100%;
+        flex: 1;
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        border-color: transparent;
+        outline: none;
+        color: #323232;
+        font-size: 14px;
+
+        &.left {
+          text-align: left;
+        }
+        &.center {
+          text-align: center;
+        }
+        &.right {
+          text-align: right;
+        }
+
+        &::-webkit-search-cancel-button {
+          display: none;
+        }
+
+        &::-webkit-input-placeholder {
+          font-size: 14px;
+          color: #c8c8c8;
+          font-weight: normal;
+        }
+        &:-moz-placeholder {
+          font-size: 14px;
+          color: #c8c8c8;
+          font-weight: normal;
+        }
+        &::-moz-placeholder {
+          font-size: 14px;
+          color: #c8c8c8;
+          font-weight: normal;
+        }
+        &:-ms-input-placeholder {
+          font-size: 14px;
+          color: #c8c8c8;
+          font-weight: normal;
+        }
+      }
+
+      .input-right {
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        &:last-child {
+          margin: 0 16px 0 4px;
+        }
+
+        &.pos {
+          margin: 0 8px 0 4px;
+        }
+      }
+    }
+
+    &.focus {
+      box-shadow: 0 0 5px 0 $light-color;
+    }
+
+    &.nut-search-ani {
+      // animation: nutPulse $animation-duration;
+    }
+  }
+
+  .btn-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 12px;
+    font-size: 14px;
+    color: #e1251b;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .nut-icon {
+    vertical-align: middle;
+  }
+}
