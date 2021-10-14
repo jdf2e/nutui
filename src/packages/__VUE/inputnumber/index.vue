@@ -74,15 +74,7 @@ export default create({
       default: false
     }
   },
-  emits: [
-    'update:modelValue',
-    'change',
-    'blur',
-    'focus',
-    'reduce',
-    'add',
-    'overlimit'
-  ],
+  emits: ['update:modelValue', 'change', 'blur', 'focus', 'reduce', 'add', 'overlimit'],
 
   setup(props, { emit }) {
     const classes = computed(() => {
@@ -172,7 +164,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

@@ -10,10 +10,7 @@
       <view
         v-if="menuList && menuList.length"
         class="menu-list"
-        :class="[
-          { 'bubble-line': multiStyle == 2 },
-          { 'three-line': multiStyle == 3 }
-        ]"
+        :class="[{ 'bubble-line': multiStyle == 2 }, { 'three-line': multiStyle == 3 }]"
       >
         <view
           class="menu-option"
@@ -22,13 +19,7 @@
           :key="index"
           @click="checkMenus(item, index)"
         >
-          <nut-icon
-            class="check-icon"
-            v-if="currMenu === index"
-            name="Check"
-            size="14px"
-          ></nut-icon
-          >{{ item.value }}
+          <nut-icon class="check-icon" v-if="currMenu === index" name="Check" size="14px"></nut-icon>{{ item.value }}
         </view>
       </view>
       <slot></slot>
@@ -36,16 +27,7 @@
   </view>
 </template>
 <script lang="ts">
-import {
-  reactive,
-  toRefs,
-  onMounted,
-  ref,
-  computed,
-  watch,
-  onUnmounted,
-  inject
-} from 'vue';
+import { reactive, toRefs, onMounted, ref, computed, watch, onUnmounted, inject } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('menu-item');
 export default create({
@@ -157,7 +139,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

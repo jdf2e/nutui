@@ -1,11 +1,7 @@
 <template>
   <view :class="classes" :style="baseStyle" @click="handleClick">
     <slot>
-      <view
-        class="nut-cell__title"
-        :class="{ icon: icon || $slots.icon }"
-        v-if="title || subTitle || icon"
-      >
+      <view class="nut-cell__title" :class="{ icon: icon || $slots.icon }" v-if="title || subTitle || icon">
         <slot v-if="$slots.icon" name="icon"></slot>
         <nut-icon v-else-if="icon" class="icon" :name="icon"></nut-icon>
 
@@ -17,19 +13,10 @@
           {{ title }}
         </template>
       </view>
-      <view
-        v-if="desc"
-        class="nut-cell__value"
-        :style="{ 'text-align': descTextAlign }"
-        >{{ desc }}</view
-      >
+      <view v-if="desc" class="nut-cell__value" :style="{ 'text-align': descTextAlign }">{{ desc }}</view>
 
       <slot v-if="$slots.link" name="link"></slot>
-      <nut-icon
-        v-else-if="isLink || to"
-        class="nut-cell__link"
-        name="right"
-      ></nut-icon>
+      <nut-icon v-else-if="isLink || to" class="nut-cell__link" name="right"></nut-icon>
     </slot>
   </view>
 </template>
@@ -81,7 +68,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

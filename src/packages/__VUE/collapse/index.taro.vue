@@ -60,10 +60,7 @@ export default create({
     };
 
     const changeValAry = (name: string) => {
-      const activeItem: any =
-        props.active instanceof Object
-          ? Object.values(props.active)
-          : props.active;
+      const activeItem: any = props.active instanceof Object ? Object.values(props.active) : props.active;
       let index = -1;
       activeItem.forEach((item: string | number, idx: number) => {
         if (String(item) == String(name)) {
@@ -77,9 +74,7 @@ export default create({
     const isExpanded = (name: string | number | Array<string | number>) => {
       const { accordion, active } = props;
       if (accordion) {
-        return typeof active === 'number' || typeof active === 'string'
-          ? active == name
-          : false;
+        return typeof active === 'number' || typeof active === 'string' ? active == name : false;
       }
     };
 
@@ -88,20 +83,14 @@ export default create({
       const childrenList: any = slots.default?.();
       let act: any = [];
       childrenList.forEach((item: any, index: number) => {
-        if (
-          typeof activeCollapse == 'number' ||
-          typeof activeCollapse == 'string'
-        ) {
+        if (typeof activeCollapse == 'number' || typeof activeCollapse == 'string') {
           if (item.props.name == activeCollapse) {
             act.push(item.flag);
             return act;
           }
         } else {
           let ary = Array.from(activeCollapse);
-          if (
-            ary.includes(String(item.props.name)) ||
-            ary.includes(Number(item.props.name))
-          ) {
+          if (ary.includes(String(item.props.name)) || ary.includes(Number(item.props.name))) {
             act.push(item.flag);
           }
         }
@@ -124,7 +113,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

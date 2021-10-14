@@ -16,7 +16,6 @@ app.use(Icon);
 
 ```
 
-## 代码示例
 
 ### 基本用法
 
@@ -110,7 +109,8 @@ setup() {
 | size-type         | 选择图片的来源，[详细说明](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)       | String                            | ['original','compressed'] |
 | headers           | 设置上传的请求头部                                                                                                     | Object                            | {}                        |
 | data              | 附加上传的信息 formData                                                                                                | Object                            | {}                        |
-| upload-icon       | 上传区域[图标名称](#/zh-CN/icon)或图片链接                                                                             | String                            | "photograph"              |
+| upload-icon       | 上传区域[图标名称](#/icon)或图片链接                                                                                   | String                            | "photograph"              |
+| upload-icon-size  | 上传区域[图标尺寸](#/icon)大小，如 `20px` `2em` `2rem`                                                                 | String or Number                  | -                         |
 | xhr-state         | 接口响应的成功状态（status）值                                                                                         | Number                            | 200                       |
 | disabled          | 是否禁用文件上传                                                                                                       | Boolean                           | fasle                     |
 | timeout           | 超时时间，单位为毫秒                                                                                                   | Number丨String                    | 1000 * 30                 |

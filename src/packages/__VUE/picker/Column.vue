@@ -9,12 +9,9 @@
     @transitionend="stopMomentum"
   >
     <view class="nut-picker__wrapper" ref="wrapper" :style="wrapperStyle">
-      <view
-        class="nut-picker__item"
-        :key="index"
-        v-for="(item, index) in options"
-        >{{ dataType === 'cascade' ? item.text : item }}</view
-      >
+      <view class="nut-picker__item" :key="index" v-for="(item, index) in options">{{
+        dataType === 'cascade' ? item.text : item
+      }}</view>
     </view>
   </view>
 </template>
@@ -23,12 +20,7 @@ import { reactive, ref, watch, computed, toRefs, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 import { useTouch } from '../../utils/useTouch';
 import { commonProps } from './commonProps';
-import {
-  PickerObjOpt,
-  PickerOption,
-  PickerObjectColumn,
-  PickerObjectColumns
-} from './types';
+import { PickerObjOpt, PickerOption, PickerObjectColumn, PickerObjectColumns } from './types';
 const MOMENTUM_LIMIT_DISTANCE = 15;
 const MOMENTUM_LIMIT_TIME = 300;
 const DEFAULT_DURATION = 200;
@@ -98,11 +90,7 @@ export default create({
     };
 
     const getIndexByOffset = (offset: number) => {
-      return range(
-        Math.round(-offset / +props.itemHeight),
-        0,
-        state.options.length - 1
-      );
+      return range(Math.round(-offset / +props.itemHeight), 0, state.options.length - 1);
     };
 
     const baseOffset = () => {
@@ -214,9 +202,7 @@ export default create({
       const distance = state.offset - state.momentumOffset;
       const duration = Date.now() - state.touchStartTime;
 
-      const allowMomentum =
-        duration < MOMENTUM_LIMIT_TIME &&
-        Math.abs(distance) > MOMENTUM_LIMIT_DISTANCE;
+      const allowMomentum = duration < MOMENTUM_LIMIT_TIME && Math.abs(distance) > MOMENTUM_LIMIT_DISTANCE;
 
       if (allowMomentum) {
         momentum(distance, duration);
@@ -258,7 +244,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

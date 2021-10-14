@@ -52,8 +52,7 @@ export default create({
     },
     pullIcon: {
       type: String,
-      default:
-        'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png'
+      default: 'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png'
     },
     pullTxt: {
       type: String,
@@ -61,8 +60,7 @@ export default create({
     },
     loadIcon: {
       type: String,
-      default:
-        'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png'
+      default: 'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png'
     },
     loadTxt: {
       type: String,
@@ -123,9 +121,7 @@ export default create({
       };
     });
     const getParentElement = (el) => {
-      return Taro.createSelectorQuery().select(
-        !!props.containerId ? `#${props.containerId} #${el}` : `#${el}`
-      );
+      return Taro.createSelectorQuery().select(!!props.containerId ? `#${props.containerId} #${el}` : `#${el}`);
     };
     /** 获取需要滚动的距离 */
     const getScrollHeight = () => {
@@ -157,10 +153,7 @@ export default create({
         // 滚动到最底部
         e.detail.scrollTop = state.scrollHeight;
       }
-      if (
-        e.detail.scrollTop > state.scrollTop ||
-        e.detail.scrollTop >= state.scrollHeight
-      ) {
+      if (e.detail.scrollTop > state.scrollTop || e.detail.scrollTop >= state.scrollHeight) {
         state.direction = 'down';
       } else {
         state.direction = 'up';
@@ -191,8 +184,7 @@ export default create({
 
       if (state.distance > 0 && state.isTouching) {
         event.preventDefault();
-        if (state.distance >= state.refreshMaxH)
-          state.distance = state.refreshMaxH;
+        if (state.distance >= state.refreshMaxH) state.distance = state.refreshMaxH;
       } else {
         state.distance = 0;
         state.isTouching = false;
@@ -231,7 +223,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

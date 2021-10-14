@@ -1,11 +1,6 @@
 <template>
   <view :class="classes">
-    <view
-      class="nut-rate-item"
-      v-for="n in count"
-      :key="n"
-      :style="{ marginRight: pxCheck(spacing) }"
-    >
+    <view class="nut-rate-item" v-for="n in count" :key="n" :style="{ marginRight: pxCheck(spacing) }">
       <nut-icon
         :size="iconSize"
         class="nut-rate-item__icon"
@@ -24,11 +19,7 @@
       />
       <nut-icon
         v-else-if="allowHalf && modelValue + 1 < n"
-        class="
-          nut-rate-item__icon
-          nut-rate-item__icon--disabled
-          nut-rate-item__icon--half
-        "
+        class="nut-rate-item__icon nut-rate-item__icon--disabled nut-rate-item__icon--half"
         @click="onClick(2, n)"
         :color="voidColor"
         :size="iconSize"
@@ -120,7 +111,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

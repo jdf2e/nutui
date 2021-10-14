@@ -7,17 +7,7 @@
   </view>
 </template>
 <script lang="ts">
-import {
-  computed,
-  onMounted,
-  onUnmounted,
-  onDeactivated,
-  ref,
-  reactive,
-  toRefs,
-  watch,
-  nextTick
-} from 'vue';
+import { computed, onMounted, onUnmounted, onDeactivated, ref, reactive, toRefs, watch, nextTick } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('barrage');
 
@@ -106,9 +96,7 @@ export default create({
     };
 
     const play = () => {
-      const _index = props.loop
-        ? index.value % danmuList.value.length
-        : index.value;
+      const _index = props.loop ? index.value % danmuList.value.length : index.value;
       let el = document.createElement(`view`);
       el.innerHTML = danmuList.value[_index] as string;
       el.classList.add('dmitem');
@@ -134,7 +122,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

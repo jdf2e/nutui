@@ -1,12 +1,5 @@
 <template>
-  <picker
-    mode="date"
-    @change="onChange"
-    :value="value"
-    :start="start"
-    :end="end"
-    :fields="fields"
-  >
+  <picker mode="date" @change="onChange" :value="value" :start="start" :end="end" :fields="fields">
     <slot></slot>
   </picker>
 </template>
@@ -51,5 +44,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss"></style>

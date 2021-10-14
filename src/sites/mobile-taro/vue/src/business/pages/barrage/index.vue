@@ -5,8 +5,7 @@
       <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
     </nut-cell>
     <div class="test">
-      <nut-input label="文本" v-model="inputVal" />
-      <nut-button shape type="primary" @click="addDanmu">添加</nut-button>
+      <button @click="addDanmu" class="add nut-button--primary">随机添加</button>
     </div>
   </div>
 </template>
@@ -18,16 +17,10 @@ export default {
   setup() {
     const inputVal = ref<any>('');
     const danmu = ref<any>(null);
-    let list = ref([
-      '画美不看',
-      '不明觉厉',
-      '喜大普奔',
-      '男默女泪',
-      '累觉不爱',
-      '爷青结'
-    ]);
+    let list = ref(['画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结']);
     function addDanmu() {
-      danmu.value.add(inputVal.value);
+      let n = Math.random();
+      danmu.value.add('随机——' + String(n).substr(2, 10));
     }
     return {
       inputVal,
@@ -43,13 +36,16 @@ export default {
 .nut-cell,
 .nut-barrage {
   padding: 20px 0;
-  height: 120px;
+  height: 150px;
 }
+
 .test {
-  display: flex;
-  justify-content: space-between;
-  .nut-input {
-    width: 80%;
+  .add {
+    display: block;
+    padding: 5px 30px;
+    margin: 20px auto;
+    border-radius: 15px;
+    font-size: 12px;
   }
 }
 </style>

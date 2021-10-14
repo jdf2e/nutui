@@ -35,11 +35,7 @@ export default create({
     const prefixCls = componentName;
     provide('gutter', props.gutter);
     const getClass = (prefix: string, type: string) => {
-      return prefix
-        ? type
-          ? `nut-row-${prefix}-${type}`
-          : ''
-        : `nut-row-${type}`;
+      return prefix ? (type ? `nut-row-${prefix}-${type}` : '') : `nut-row-${type}`;
     };
     const getClasses = () => {
       return `
@@ -57,6 +53,3 @@ export default create({
   }
 });
 </script>
-<style lang="scss">
-@import 'index.scss';
-</style>

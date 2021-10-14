@@ -17,9 +17,7 @@
       :maxlength="maxLength"
       :placeholder="placeholder"
     />
-    <view class="nut-textarea__limit" v-if="limitShow">
-      {{ modelValue.length }}/{{ maxLength }}</view
-    >
+    <view class="nut-textarea__limit" v-if="limitShow"> {{ modelValue.length }}/{{ maxLength }}</view>
   </view>
 </template>
 <script lang="ts">
@@ -126,7 +124,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

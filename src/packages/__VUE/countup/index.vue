@@ -2,10 +2,7 @@
   <view class="nut-countup">
     <template v-if="customBgImg != ''">
       <template v-if="type == 'machine'">
-        <view
-          class="run-number-machine-img"
-          :style="{ height: numHeight + 'px' }"
-        >
+        <view class="run-number-machine-img" :style="{ height: numHeight + 'px' }">
           <view
             class="run-number-machine-img-li"
             ref="run-number-machine-img-li"
@@ -40,12 +37,7 @@
                 'px',
               backgroundImage: 'url(' + customBgImg + ')',
               backgroundPosition:
-                '0 ' +
-                -(
-                  String(relNum)[index] * numHeight +
-                  customSpacNum * String(relNum)[index]
-                ) +
-                'px',
+                '0 ' + -(String(relNum)[index] * numHeight + customSpacNum * String(relNum)[index]) + 'px',
               transition: 'all linear ' + during / 10 + 'ms'
             }"
           ></view>
@@ -64,11 +56,7 @@
       </template>
     </template>
     <template v-else>
-      <view
-        v-if="scrolling"
-        class="run-number"
-        :style="{ height: numHeight + 'px', lineHeight: numHeight + 'px' }"
-      >
+      <view v-if="scrolling" class="run-number" :style="{ height: numHeight + 'px', lineHeight: numHeight + 'px' }">
         <view
           ref="numberItem"
           class="numberItem"
@@ -76,10 +64,7 @@
           :key="val"
           :style="{
             top: topNumber(index),
-            left:
-              numWidth *
-                (index > num_total_len - pointNum - 1 ? index * 1.1 : index) +
-              'px'
+            left: numWidth * (index > num_total_len - pointNum - 1 ? index * 1.1 : index) + 'px'
           }"
           :turn-number="turnNumber(index)"
         >
@@ -116,15 +101,7 @@
   </view>
 </template>
 <script lang="ts">
-import {
-  reactive,
-  toRefs,
-  ref,
-  onMounted,
-  onUnmounted,
-  nextTick,
-  watch
-} from 'vue';
+import { reactive, toRefs, ref, onMounted, onUnmounted, nextTick, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 import { useExtend } from '../../utils/useRelation/useRelation';
 const { componentName, create } = createComponent('countup');
@@ -326,10 +303,7 @@ export default create({
         sortFlag == 'add'
           ? String(initDigit2)[index - (num_total_len - pointNum)]
           : 10 - Number(String(initDigit2)[index - (num_total_len - pointNum)]);
-      let idx2 =
-        sortFlag == 'add'
-          ? String(initDigit1)[index]
-          : 10 - Number(String(initDigit1)[index]);
+      let idx2 = sortFlag == 'add' ? String(initDigit1)[index] : 10 - Number(String(initDigit1)[index]);
       let num =
         index > num_total_len - pointNum - 1
           ? -idx1 * 100 + '%'
@@ -368,11 +342,7 @@ export default create({
             emit('scroll-end');
             data.valFlag = false;
           } else {
-            data.current = Number(
-              (
-                parseFloat(String(data.current)) - parseFloat(String(speed))
-              ).toFixed(toFixed)
-            );
+            data.current = Number((parseFloat(String(data.current)) - parseFloat(String(speed))).toFixed(toFixed));
           }
         } else {
           //增加
@@ -382,11 +352,7 @@ export default create({
             emit('scroll-end');
             data.valFlag = false;
           } else {
-            data.current = Number(
-              (
-                parseFloat(String(data.current)) + parseFloat(String(speed))
-              ).toFixed(toFixed)
-            );
+            data.current = Number((parseFloat(String(data.current)) + parseFloat(String(speed))).toFixed(toFixed));
           }
         }
       }, props.during);
@@ -458,9 +424,7 @@ export default create({
       // this.totalCount = rel_big;
       if (toFixed != 0) {
         //计算小数点后的位数，小数位
-        data.pointNum = String(data.numberVal).split('.')[1]
-          ? String(data.numberVal).split('.')[1].length
-          : 0;
+        data.pointNum = String(data.numberVal).split('.')[1] ? String(data.numberVal).split('.')[1].length : 0;
         //数字长度
         data.num_total_len = String(rel_big).length;
       }
@@ -475,8 +439,7 @@ export default create({
       if (scrolling && !customBgImg) {
         // 数字都是从小加到大的，所以我们循环转动最后一个数字，传入最后一个数字的DOM
         nextTick(() => {
-          let refsDom: HTMLCollectionOf<Element> =
-            document.getElementsByClassName('numberItem');
+          let refsDom: HTMLCollectionOf<Element> = document.getElementsByClassName('numberItem');
           let element = refsDom[data.num_total_len - 1];
           runTurn(element);
         });
@@ -511,25 +474,16 @@ export default create({
       if (data.sortFlag == 'add') {
         turningNum = parseInt(String(currentTurn)) + 1;
       } else {
-        turningNum =
-          parseInt(String(currentTurn)) - 1 >= 0
-            ? parseInt(String(currentTurn)) - 1
-            : 9;
+        turningNum = parseInt(String(currentTurn)) - 1 >= 0 ? parseInt(String(currentTurn)) - 1 : 9;
       }
       el.setAttribute('turn-number', String(turningNum));
-      if (
-        el.style.transition == 'none 0s ease 0s' ||
-        turningNum == 1 ||
-        !el.style.transition
-      ) {
+      if (el.style.transition == 'none 0s ease 0s' || turningNum == 1 || !el.style.transition) {
         el.style.transition = `all linear ${props.during}ms`;
       }
       if (turningNum == 10 || (data.sortFlag == 'reduce' && turningNum == 0)) {
         var timeOut: any = null;
         // el.style.top = `-${turningNum * 100}%`;
-        el.style.top = `-${
-          data.sortFlag == 'add' ? turningNum * 100 : (10 - turningNum) * 100
-        }%`;
+        el.style.top = `-${data.sortFlag == 'add' ? turningNum * 100 : (10 - turningNum) * 100}%`;
         el.setAttribute('turn-number', '0');
         timeOut = setTimeout(() => {
           timeOut && clearTimeout(timeOut);
@@ -544,9 +498,7 @@ export default create({
         }, 0.975 * props.during);
       } else {
         // el.style.top = `-${(10-turningNum)*100}%`;
-        el.style.top = `-${
-          data.sortFlag == 'add' ? turningNum * 100 : (10 - turningNum) * 100
-        }%`;
+        el.style.top = `-${data.sortFlag == 'add' ? turningNum * 100 : (10 - turningNum) * 100}%`;
       }
       // 用于递减的时候
       if (el.style.top == '-100%' && data.sortFlag == 'reduce') {
@@ -577,9 +529,7 @@ export default create({
     const generateRandom = () => {
       data.notPrize = [];
       while (data.notPrize.length < 3) {
-        var rand: number = Math.floor(
-          Math.random() * props.machinePrizeNum + 1
-        );
+        var rand: number = Math.floor(Math.random() * props.machinePrizeNum + 1);
         if (data.notPrize.indexOf(rand) == -1) {
           data.notPrize.push(rand);
         }
@@ -587,16 +537,14 @@ export default create({
     };
     // 抽奖
     const machineLuck = () => {
-      const machineTrunMoreNum =
-        props.machineTrunMore < 0 ? 0 : props.machineTrunMore;
+      const machineTrunMoreNum = props.machineTrunMore < 0 ? 0 : props.machineTrunMore;
       let distance = props.numHeight * props.machinePrizeNum; // 所有奖品的高度，雪碧图的高度
       if (data.prizeLevelTrun < 0) {
         generateRandom();
       }
       for (let i = 0; i < props.machineNum; i++) {
         setTimeout(() => {
-          let turn =
-            distance * (i + 1 + parseFloat(String(machineTrunMoreNum)));
+          let turn = distance * (i + 1 + parseFloat(String(machineTrunMoreNum)));
           if (data.prizeYPrev.length != 0) {
             // this.machineTransition = 'none';
             // console.log(this.prizeYPrev[i]-(this.numHeight * this.machinePrizeNum));
@@ -605,11 +553,7 @@ export default create({
           }
           let local = data.prizeYPrev[i] ? data.prizeYPrev[i] : 0;
           let newLocation =
-            turn +
-            local +
-            (props.machinePrizeNum - data.prizeLevelTrun + 1) *
-              props.numHeight +
-            (distance - local);
+            turn + local + (props.machinePrizeNum - data.prizeLevelTrun + 1) * props.numHeight + (distance - local);
           if (data.prizeLevelTrun < 0) {
             newLocation += props.numHeight * data.notPrize[i];
           }
@@ -692,7 +636,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

@@ -15,11 +15,7 @@
       <slot name="default"></slot>
     </view>
 
-    <view
-      class="nut-swipe__right"
-      ref="rightRef"
-      :id="'rightRef-' + refRandomId"
-    >
+    <view class="nut-swipe__right" ref="rightRef" :id="'rightRef-' + refRandomId">
       <slot name="right"></slot>
     </view>
   </view>
@@ -55,12 +51,8 @@ export default create({
     });
 
     const getRefWidth = async (ref: Ref<HTMLElement | undefined>) => {
-      if (Taro.getEnv() === 'WEB') {
-        return ref.value?.clientWidth || ref.value?.$el?.clientWidth || 0;
-      } else {
-        let rect = await useTaroRect(ref, Taro);
-        return rect.width || 0;
-      }
+      let rect = await useTaroRect(ref, Taro);
+      return rect.width || 0;
     };
 
     const leftRef = ref<HTMLElement>();
@@ -74,7 +66,9 @@ export default create({
     };
 
     onMounted(() => {
-      Taro.nextTick(initWidth);
+      setTimeout(() => {
+        initWidth();
+      }, 100);
     });
 
     let opened: boolean = false;
@@ -120,20 +114,14 @@ export default create({
           if (opened && oldPosition === position) {
             offset = -rightRefWidth.value;
           } else {
-            offset =
-              Math.abs(deltaX) > rightRefWidth.value
-                ? -rightRefWidth.value
-                : deltaX;
+            offset = Math.abs(deltaX) > rightRefWidth.value ? -rightRefWidth.value : deltaX;
           }
           break;
         case 'right':
           if (opened && oldPosition === position) {
             offset = leftRefWidth.value;
           } else {
-            offset =
-              Math.abs(deltaX) > leftRefWidth.value
-                ? leftRefWidth.value
-                : deltaX;
+            offset = Math.abs(deltaX) > leftRefWidth.value ? leftRefWidth.value : deltaX;
           }
           break;
       }
@@ -194,7 +182,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

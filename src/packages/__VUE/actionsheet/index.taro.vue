@@ -1,17 +1,9 @@
 <template>
   <view :class="classes">
-    <nut-popup
-      pop-class="popclass"
-      :visible="visible"
-      position="bottom"
-      round
-      @click-overlay="close"
-    >
+    <nut-popup pop-class="popclass" :visible="visible" position="bottom" round @click-overlay="close">
       <view class="nut-actionsheet-panel">
         <view v-if="title" class="nut-actionsheet-title">{{ title }}</view>
-        <view class="nut-actionsheet-item desc" v-if="description">{{
-          description
-        }}</view>
+        <view class="nut-actionsheet-item desc" v-if="description">{{ description }}</view>
         <view class="nut-actionsheet-menu" v-if="menuItems.length">
           <view
             v-for="(item, index) of menuItems"
@@ -20,15 +12,10 @@
             :style="{ color: isHighlight(item) }"
             :key="index"
             @click="chooseItem(item, index)"
-            >{{ item[optionTag]
-            }}<view class="subdesc">{{ item[optionSubTag] }}</view>
+            >{{ item[optionTag] }}<view class="subdesc">{{ item[optionSubTag] }}</view>
           </view>
         </view>
-        <view
-          class="nut-actionsheet-cancel"
-          v-if="cancelTxt"
-          @click="cancelActionSheet"
-        >
+        <view class="nut-actionsheet-cancel" v-if="cancelTxt" @click="cancelActionSheet">
           {{ cancelTxt }}
         </view>
       </view>
@@ -87,10 +74,7 @@ export default create({
     });
 
     const isHighlight = (item) => {
-      return props.chooseTagValue &&
-        props.chooseTagValue === item[props.optionTag]
-        ? props.color
-        : '#1a1a1a';
+      return props.chooseTagValue && props.chooseTagValue === item[props.optionTag] ? props.color : '#1a1a1a';
     };
 
     const cancelActionSheet = () => {
@@ -120,6 +104,3 @@ export default create({
   }
 });
 </script>
-<style lang="scss">
-@import 'index.scss';
-</style>

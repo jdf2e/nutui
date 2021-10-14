@@ -24,22 +24,23 @@ export default defineConfig({
     postcss: {
       plugins: [
         require('autoprefixer')({
-          overrideBrowserslist: [
-            '> 0.5%',
-            'last 2 versions',
-            'ie > 11',
-            'iOS >= 10',
-            'Android >= 5'
-          ]
+          overrideBrowserslist: ['> 0.5%', 'last 2 versions', 'ie > 11', 'iOS >= 10', 'Android >= 5']
         })
       ]
     }
   },
   plugins: [vue()],
   build: {
+    minify: false,
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    },
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
-      external: ['vue', 'vue-router'],
+      external: ['vue', 'vue-router', 'pinyin'],
       output: {
         banner,
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
@@ -49,7 +50,7 @@ export default defineConfig({
       }
     },
     lib: {
-      entry: 'src/packages/nutui.vue.ts',
+      entry: 'src/packages/nutui.vue.build.ts',
       name: 'nutui',
       fileName: 'nutui',
       formats: ['es', 'umd']

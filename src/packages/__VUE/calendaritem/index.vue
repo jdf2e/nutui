@@ -7,21 +7,13 @@
     }"
   >
     <!-- header -->
-    <view
-      class="nut-calendar-header"
-      :class="{ 'nut-calendar-header-tile': !poppable }"
-    >
+    <view class="nut-calendar-header" :class="{ 'nut-calendar-header-tile': !poppable }">
       <template v-if="poppable">
         <view class="calendar-title">{{ title }}</view>
         <view class="calendar-curr-month">{{ yearMonthTitle }}</view>
       </template>
       <view class="calendar-weeks" ref="weeksPanel">
-        <view
-          class="calendar-week-item"
-          v-for="(item, index) of weeks"
-          :key="index"
-          >{{ item }}</view
-        >
+        <view class="calendar-week-item" v-for="(item, index) of weeks" :key="index">{{ item }}</view>
       </view>
     </view>
     <!-- content-->
@@ -33,44 +25,17 @@
       @touchend.stop="touchEnd"
     >
       <view class="calendar-months-panel" ref="monthsPanel">
-        <view class="calendar-loading-tip">{{
-          !unLoadPrev ? '加载上一个月' : '没有更早月份'
-        }}</view>
-        <view
-          class="calendar-month"
-          v-for="(month, index) of monthsData"
-          :key="index"
-        >
+        <view class="calendar-loading-tip">{{ !unLoadPrev ? '加载上一个月' : '没有更早月份' }}</view>
+        <view class="calendar-month" v-for="(month, index) of monthsData" :key="index">
           <view class="calendar-month-title">{{ month.title }}</view>
           <view class="calendar-month-con">
-            <view
-              class="calendar-month-item"
-              :class="type === 'range' ? 'month-item-range' : ''"
-            >
+            <view class="calendar-month-item" :class="type === 'range' ? 'month-item-range' : ''">
               <template v-for="(day, i) of month.monthData" :key="i">
-                <view
-                  class="calendar-month-day"
-                  :class="getClass(day, month)"
-                  @click="chooseDay(day, month)"
-                >
-                  <view class="calendar-day">{{
-                    day.type == 'curr' ? day.day : ''
-                  }}</view>
-                  <view
-                    class="calendar-curr-tips"
-                    v-if="isCurrDay(month, day.day)"
-                    >今天</view
-                  >
-                  <view
-                    class="calendar-day-tip"
-                    v-if="isStartTip(day, month)"
-                    >{{ '开始' }}</view
-                  >
-                  <view
-                    class="calendar-day-tip"
-                    v-else-if="isEndTip(day, month)"
-                    >{{ '结束' }}</view
-                  >
+                <view class="calendar-month-day" :class="getClass(day, month)" @click="chooseDay(day, month)">
+                  <view class="calendar-day">{{ day.type == 'curr' ? day.day : '' }}</view>
+                  <view class="calendar-curr-tips" v-if="isCurrDay(month, day.day)">今天</view>
+                  <view class="calendar-day-tip" v-if="isStartTip(day, month)">{{ '开始' }}</view>
+                  <view class="calendar-day-tip" v-else-if="isEndTip(day, month)">{{ '结束' }}</view>
                 </view>
               </template>
             </view>
@@ -201,16 +166,8 @@ export default create({
     // 获取当前数据
     const getCurrDate = (day: Day, month: MonthInfo, isRange?: boolean) => {
       return isRange
-        ? month.curData[3] +
-            '-' +
-            month.curData[4] +
-            '-' +
-            Utils.getNumTwoBit(+day.day)
-        : month.curData[0] +
-            '-' +
-            month.curData[1] +
-            '-' +
-            Utils.getNumTwoBit(+day.day);
+        ? month.curData[3] + '-' + month.curData[4] + '-' + Utils.getNumTwoBit(+day.day)
+        : month.curData[0] + '-' + month.curData[1] + '-' + Utils.getNumTwoBit(+day.day);
     };
 
     // 获取样式
@@ -218,8 +175,7 @@ export default create({
       const currDate = getCurrDate(day, month, isRange);
       if (day.type == 'curr') {
         if (
-          (!state.isRange &&
-            Utils.isEqual(state.currDate as string, currDate)) ||
+          (!state.isRange && Utils.isEqual(state.currDate as string, currDate)) ||
           (state.isRange && (isStart(currDate) || isEnd(currDate)))
         ) {
           return `${state.dayPrefix}-active`;
@@ -254,17 +210,11 @@ export default create({
     };
 
     // 选中数据
-    const chooseDay = (
-      day: Day,
-      month: MonthInfo,
-      isFirst: boolean,
-      isRange?: boolean
-    ) => {
+    const chooseDay = (day: Day, month: MonthInfo, isFirst: boolean, isRange?: boolean) => {
       if (getClass(day, month, isRange) != `${state.dayPrefix}-disabled`) {
         let days = [...month.curData];
         days = isRange ? days.splice(3) : days.splice(0, 3);
-        days[2] =
-          typeof day.day == 'number' ? Utils.getNumTwoBit(day.day) : day.day;
+        days[2] = typeof day.day == 'number' ? Utils.getNumTwoBit(day.day) : day.day;
         days[3] = `${days[0]}-${days[1]}-${days[2]}`;
         days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
         if (!state.isRange) {
@@ -299,10 +249,7 @@ export default create({
 
     // 获取当前月数据
     const getCurrData = (type: string) => {
-      const monthData =
-        type == 'prev'
-          ? state.monthsData[0]
-          : state.monthsData[state.monthsData.length - 1];
+      const monthData = type == 'prev' ? state.monthsData[0] : state.monthsData[state.monthsData.length - 1];
       let year = parseInt(monthData.curData[0]);
       let month = parseInt(monthData.curData[1].toString().replace(/^0/, ''));
       switch (type) {
@@ -315,11 +262,7 @@ export default create({
           month = month == 12 ? 1 : ++month;
           break;
       }
-      return [
-        year,
-        Utils.getNumTwoBit(month),
-        Utils.getMonthDays(String(year), String(month))
-      ];
+      return [year, Utils.getNumTwoBit(month), Utils.getMonthDays(String(year), String(month))];
     };
 
     // 获取日期状态
@@ -356,10 +299,7 @@ export default create({
         if (
           !state.endData ||
           !Utils.compareDate(
-            `${state.endData[0]}-${state.endData[1]}-${Utils.getMonthDays(
-              state.endData[0],
-              state.endData[1]
-            )}`,
+            `${state.endData[0]}-${state.endData[1]}-${Utils.getMonthDays(state.endData[0], state.endData[1])}`,
             `${curData[0]}-${curData[1]}-${curData[2]}`
           )
         ) {
@@ -388,43 +328,24 @@ export default create({
 
       // 初始化当前日期
       if (!props.defaultValue) {
-        state.currDate = state.isRange
-          ? [Utils.date2Str(new Date()), Utils.getDay(1)]
-          : Utils.date2Str(new Date());
+        state.currDate = state.isRange ? [Utils.date2Str(new Date()), Utils.getDay(1)] : Utils.date2Str(new Date());
       } else {
-        state.currDate = state.isRange
-          ? [...props.defaultValue]
-          : props.defaultValue;
+        state.currDate = state.isRange ? [...props.defaultValue] : props.defaultValue;
       }
 
       // 日期转化为数组
       if (state.isRange && Array.isArray(state.currDate)) {
-        if (
-          props.startDate &&
-          Utils.compareDate(state.currDate[0], props.startDate)
-        ) {
+        if (props.startDate && Utils.compareDate(state.currDate[0], props.startDate)) {
           state.currDate.splice(0, 1, props.startDate);
         }
-        if (
-          props.endDate &&
-          Utils.compareDate(props.endDate, state.currDate[1])
-        ) {
+        if (props.endDate && Utils.compareDate(props.endDate, state.currDate[1])) {
           state.currDate.splice(1, 1, props.endDate);
         }
-        state.defaultData = [
-          ...splitDate(state.currDate[0]),
-          ...splitDate(state.currDate[1])
-        ];
+        state.defaultData = [...splitDate(state.currDate[0]), ...splitDate(state.currDate[1])];
       } else {
-        if (
-          props.startDate &&
-          Utils.compareDate(state.currDate as string, props.startDate)
-        ) {
+        if (props.startDate && Utils.compareDate(state.currDate as string, props.startDate)) {
           state.currDate = props.startDate;
-        } else if (
-          props.endDate &&
-          !Utils.compareDate(state.currDate as string, props.endDate)
-        ) {
+        } else if (props.endDate && !Utils.compareDate(state.currDate as string, props.endDate)) {
           state.currDate = props.endDate;
         }
 
@@ -440,33 +361,16 @@ export default create({
       } while (i++ < 4);
 
       if (state.isRange) {
-        chooseDay(
-          { day: state.defaultData[2], type: 'curr' },
-          state.monthsData[0],
-          true
-        );
-        chooseDay(
-          { day: state.defaultData[5], type: 'curr' },
-          state.monthsData[0],
-          true,
-          true
-        );
+        chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[0], true);
+        chooseDay({ day: state.defaultData[5], type: 'curr' }, state.monthsData[0], true, true);
       } else {
-        chooseDay(
-          { day: state.defaultData[2], type: 'curr' },
-          state.monthsData[0],
-          true
-        );
+        chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[0], true);
       }
     };
 
     // 区间选择&&当前月&&选中态
     const isActive = (day: Day, month: MonthInfo) => {
-      return (
-        state.isRange &&
-        day.type == 'curr' &&
-        getClass(day, month) == 'calendar-month-day-active'
-      );
+      return state.isRange && day.type == 'curr' && getClass(day, month) == 'calendar-month-day-active';
     };
 
     // 是否有开始提示
@@ -497,8 +401,7 @@ export default create({
       requestAniFrame(() => {
         if (weeksPanel?.value && monthsPanel?.value) {
           const top = weeksPanel?.value.getBoundingClientRect().bottom;
-          const monthsDoms =
-            monthsPanel.value.getElementsByClassName('calendar-month');
+          const monthsDoms = monthsPanel.value.getElementsByClassName('calendar-month');
           for (let i = 0; i < monthsDoms.length; i++) {
             if (
               monthsDoms[i].getBoundingClientRect().top <= top &&
@@ -552,17 +455,10 @@ export default create({
         if (updateMove > 0 && updateMove > 100) {
           updateMove = 100;
         }
-        if (
-          updateMove < -offsetHeight + h - 100 &&
-          state.monthsData.length > 1
-        ) {
+        if (updateMove < -offsetHeight + h - 100 && state.monthsData.length > 1) {
           updateMove = -offsetHeight + h - 100;
         }
-        if (
-          updateMove < 0 &&
-          updateMove < -100 &&
-          state.monthsData.length == 1
-        ) {
+        if (updateMove < 0 && updateMove < -100 && state.monthsData.length == 1) {
           updateMove = -100;
         }
         setTransform(updateMove);
@@ -604,11 +500,7 @@ export default create({
       const offsetHeight = monthsPanel.value?.offsetHeight || 0;
       if (updateMove > 0) {
         getMonth(getCurrData('prev'), 'prev');
-      } else if (
-        updateMove < 0 &&
-        updateMove <
-          -offsetHeight + (Math.abs(move) > h ? Math.abs(move) : h) * 5
-      ) {
+      } else if (updateMove < 0 && updateMove < -offsetHeight + (Math.abs(move) > h ? Math.abs(move) : h) * 5) {
         getMonth(getCurrData('next'), 'next');
         if (Math.abs(move) >= 300) {
           getMonth(getCurrData('next'), 'next');
@@ -668,7 +560,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

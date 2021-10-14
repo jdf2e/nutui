@@ -1,11 +1,5 @@
 <template>
-  <picker
-    :mode="mode"
-    :range="range"
-    @change="onChange"
-    @columnchange="onColumnChange"
-    :value="value"
-  >
+  <picker :mode="mode" :range="range" @change="onChange" @columnchange="onColumnChange" :value="value">
     <slot></slot>
   </picker>
 </template>
@@ -38,9 +32,7 @@ export default create({
       if (props.mode === 'selector') {
         ret = props.listData[e.detail.value];
       } else if (props.mode === 'multiSelector') {
-        ret = range.value
-          ?.map((item: any, idx: number) => item[e.detail.value[idx]])
-          .filter((res: any) => res);
+        ret = range.value?.map((item: any, idx: number) => item[e.detail.value[idx]]).filter((res: any) => res);
       }
       emit('confirm', e.detail.value, ret);
     };
@@ -82,5 +74,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss" scoped></style>

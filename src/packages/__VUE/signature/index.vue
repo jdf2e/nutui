@@ -1,21 +1,12 @@
 <template>
   <div :class="classes">
     <div class="nut-signature-inner" ref="wrap">
-      <canvas
-        ref="canvas"
-        :height="canvasHeight"
-        :width="canvasWidth"
-        v-if="isCanvasSupported"
-      ></canvas>
+      <canvas ref="canvas" :height="canvasHeight" :width="canvasWidth" v-if="isCanvasSupported"></canvas>
       <p class="nut-signature-unsopport" v-else>{{ unSupportTpl }}</p>
     </div>
 
-    <nut-button class="nut-signature-btn" type="default" @click="clear()"
-      >重签</nut-button
-    >
-    <nut-button class="nut-signature-btn" type="primary" @click="confirm()"
-      >确认</nut-button
-    >
+    <nut-button class="nut-signature-btn" type="default" @click="clear()">重签</nut-button>
+    <nut-button class="nut-signature-btn" type="primary" @click="confirm()">确认</nut-button>
   </div>
 </template>
 <script lang="ts">
@@ -103,20 +94,12 @@ export default create({
     const endEventHandler = (event) => {
       event.preventDefault();
 
-      canvas.value.removeEventListener(
-        state.events[1],
-        moveEventHandler,
-        false
-      );
+      canvas.value.removeEventListener(state.events[1], moveEventHandler, false);
       canvas.value.removeEventListener(state.events[2], endEventHandler, false);
     };
     const leaveEventHandler = (event) => {
       event.preventDefault();
-      canvas.value.removeEventListener(
-        state.events[1],
-        moveEventHandler,
-        false
-      );
+      canvas.value.removeEventListener(state.events[1], moveEventHandler, false);
       canvas.value.removeEventListener(state.events[2], endEventHandler, false);
     };
     const clear = () => {
@@ -157,7 +140,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

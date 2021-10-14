@@ -7,17 +7,7 @@
   </view>
 </template>
 <script lang="ts">
-import {
-  computed,
-  onMounted,
-  ref,
-  reactive,
-  toRefs,
-  watch,
-  nextTick,
-  onUnmounted,
-  onDeactivated
-} from 'vue';
+import { computed, onMounted, ref, reactive, toRefs, watch, nextTick, onUnmounted, onDeactivated } from 'vue';
 import Taro from '@tarojs/taro';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('barrage');
@@ -104,9 +94,7 @@ export default create({
     const play = () => {
       const query = Taro.createSelectorQuery();
       let dmContainer: any = document.getElementById('dmContainer');
-      const _index = props.loop
-        ? index.value % danmuList.value.length
-        : index.value;
+      const _index = props.loop ? index.value % danmuList.value.length : index.value;
       let el: any = document.createElement(`view`);
       el.innerHTML = danmuList.value[_index] as string;
       el.classList.add('dmitem');
@@ -123,11 +111,10 @@ export default create({
           .boundingClientRect((rec) => {
             let danmuCWidth = rec.width;
             // let width = domList[_index]['width'];
-            let height = domList[_index]['height'];
+            let height = domList[_index]?.height || 0;
             el.classList.add('move');
             el.style.animationDuration = `${speeds}ms`;
-            el.style.top =
-              (_index % rows.value) * (height + top.value) + 20 + 'px';
+            el.style.top = (_index % rows.value) * (height + top.value) + 20 + 'px';
             // el.style.width = width + 20 + 'px';
             el.style.width = 'auto';
             // el.style.left = "-"+(_index % rows.value) + 'px';
@@ -145,7 +132,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

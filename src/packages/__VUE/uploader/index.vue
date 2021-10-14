@@ -28,11 +28,7 @@
     </view>
 
     <template v-else>
-      <view
-        class="nut-uploader__preview"
-        v-for="(item, index) in fileList"
-        :key="item.uid"
-      >
+      <view class="nut-uploader__preview" v-for="(item, index) in fileList" :key="item.uid">
         <view class="nut-uploader__preview-img">
           <nut-icon
             v-if="isDeletable"
@@ -41,18 +37,12 @@
             class="close"
             name="circle-close"
           ></nut-icon>
-          <img
-            class="nut-uploader__preview-img__c"
-            v-if="item.type.includes('image') && item.url"
-            :src="item.url"
-          />
-          <view class="tips" v-if="item.status != 'success'">{{
-            item.status
-          }}</view>
+          <img class="nut-uploader__preview-img__c" v-if="item.type.includes('image') && item.url" :src="item.url" />
+          <view class="tips" v-if="item.status != 'success'">{{ item.status }}</view>
         </view>
       </view>
       <view class="nut-uploader__upload" v-if="maximum - fileList.length">
-        <nut-icon color="#808080" :name="uploadIcon"></nut-icon>
+        <nut-icon :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
         <input
           class="nut-uploader__input"
           v-if="capture"
@@ -84,12 +74,7 @@ import { computed, reactive } from 'vue';
 import { createComponent } from '../../utils/create';
 import { Uploader, UploadOptions } from './uploader';
 const { componentName, create } = createComponent('uploader');
-export type FileItemStatus =
-  | 'ready'
-  | 'uploading'
-  | 'success'
-  | 'error'
-  | 'removed';
+export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error' | 'removed';
 export class FileItem {
   status: FileItemStatus = 'ready';
   uid: string = new Date().getTime().toString();
@@ -116,6 +101,7 @@ export default create({
     headers: { type: Object, default: {} },
     data: { type: Object, default: {} },
     uploadIcon: { type: String, default: 'photograph' },
+    uploadIconSize: { type: [String, Number], default: '' },
     xhrState: { type: [Number, String], default: 200 },
     withCredentials: { type: Boolean, default: false },
     multiple: { type: Boolean, default: false },
@@ -133,16 +119,7 @@ export default create({
     onChange: { type: Function }
     // customRequest: { type: Function }
   },
-  emits: [
-    'start',
-    'progress',
-    'oversize',
-    'success',
-    'failure',
-    'change',
-    'delete',
-    'update:fileList'
-  ],
+  emits: ['start', 'progress', 'oversize', 'success', 'failure', 'change', 'delete', 'update:fileList'],
   setup(props, { emit }) {
     const fileList = reactive(props.fileList) as Array<FileItem>;
     const classes = computed(() => {
@@ -172,18 +149,12 @@ export default create({
         fileItem.status = 'ready';
         emit('start', option);
       };
-      uploadOption.onProgress = (
-        e: ProgressEvent<XMLHttpRequestEventTarget>,
-        option: UploadOptions
-      ) => {
+      uploadOption.onProgress = (e: ProgressEvent<XMLHttpRequestEventTarget>, option: UploadOptions) => {
         fileItem.status = 'uploading';
         emit('progress', { e, option });
       };
 
-      uploadOption.onSuccess = (
-        responseText: XMLHttpRequest['responseText'],
-        option: UploadOptions
-      ) => {
+      uploadOption.onSuccess = (responseText: XMLHttpRequest['responseText'], option: UploadOptions) => {
         fileItem.status = 'success';
         emit('success', {
           responseText,
@@ -191,10 +162,7 @@ export default create({
         });
         emit('update:fileList', fileList);
       };
-      uploadOption.onFailure = (
-        responseText: XMLHttpRequest['responseText'],
-        option: UploadOptions
-      ) => {
+      uploadOption.onFailure = (responseText: XMLHttpRequest['responseText'], option: UploadOptions) => {
         fileItem.status = 'error';
         emit('failure', {
           responseText,
@@ -297,7 +265,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

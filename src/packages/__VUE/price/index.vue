@@ -1,10 +1,6 @@
 <template>
   <view :class="classes">
-    <view
-      v-if="needSymbol"
-      class="nut-price--symbol"
-      v-html="showSymbol"
-    ></view>
+    <view v-if="needSymbol" class="nut-price--symbol" v-html="showSymbol"></view>
     <view class="nut-price--big">
       {{ formatThousands(price) }}
     </view>
@@ -64,10 +60,7 @@ export default create({
       }
       if (checkPoint(num)) {
         num = Number(num).toFixed(props.decimalDigits);
-        num =
-          typeof num.split('.') === 'string'
-            ? num.split('.')
-            : num.split('.')[0];
+        num = typeof num.split('.') === 'string' ? num.split('.') : num.split('.')[0];
       } else {
         num = num.toString();
       }
@@ -83,12 +76,9 @@ export default create({
       }
       if (checkPoint(decimalNum)) {
         decimalNum = Number(decimalNum).toFixed(props.decimalDigits);
-        decimalNum =
-          typeof decimalNum.split('.') === 'string'
-            ? 0
-            : decimalNum.split('.')[1];
+        decimalNum = typeof decimalNum.split('.') === 'string' ? 0 : decimalNum.split('.')[1];
       } else {
-        decimalNum = decimalNum.toString();
+        decimalNum = 0;
       }
       const result = '0.' + decimalNum;
       const resultFixed = Number(result).toFixed(props.decimalDigits);
@@ -104,7 +94,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

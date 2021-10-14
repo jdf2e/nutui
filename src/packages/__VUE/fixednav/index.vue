@@ -1,11 +1,6 @@
 <template>
   <view :class="classes" :style="position">
-    <nut-overlay
-      v-if="overlay"
-      :visible="visible"
-      :z-index="200"
-      @click="updateValue(false)"
-    />
+    <nut-overlay v-if="overlay" :visible="visible" :z-index="200" @click="updateValue(false)" />
     <slot name="list">
       <view class="nut-fixednav__list">
         <view
@@ -100,7 +95,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

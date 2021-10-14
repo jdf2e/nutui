@@ -1,11 +1,7 @@
 <template>
   <view :class="classes">
     <view
-      :class="[
-        'collapse-item',
-        { 'item-expanded': openExpanded },
-        { 'nut-collapse-item-disabled': disabled }
-      ]"
+      :class="['collapse-item', { 'item-expanded': openExpanded }, { 'nut-collapse-item-disabled': disabled }]"
       @click="toggleOpen"
     >
       <view class="collapse-title">
@@ -16,10 +12,7 @@
               :name="titleIcon"
               :size="titleIconSize"
               :color="titleIconColor"
-              :class="[
-                'collapse-title-icon',
-                titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight'
-              ]"
+              :class="['collapse-title-icon', titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight']"
             ></nut-icon>
             <template v-if="$slots.mTitle">
               <slot name="mTitle"></slot>
@@ -51,11 +44,7 @@
         :name="icon"
         :size="iconSize"
         :color="iconColor"
-        :class="[
-          'collapse-icon',
-          { 'col-expanded': openExpanded },
-          { 'collapse-icon-disabled': disabled }
-        ]"
+        :class="['collapse-icon', { 'col-expanded': openExpanded }, { 'collapse-icon-disabled': disabled }]"
         :style="iconStyle"
       ></nut-icon>
     </view>
@@ -83,10 +72,7 @@ import {
   getCurrentInstance,
   ComponentInternalInstance
 } from 'vue';
-import Taro, {
-  eventCenter,
-  getCurrentInstance as getCurrentInstanceTaro
-} from '@tarojs/taro';
+import Taro, { eventCenter, getCurrentInstance as getCurrentInstanceTaro } from '@tarojs/taro';
 import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('collapse-item');
 
@@ -140,9 +126,7 @@ export default create({
       // classDirection: 'right',
       iconStyle: {
         transform: 'rotate(0deg)',
-        marginTop: parent.props.iconHeght
-          ? '-' + parent.props.iconHeght / 2 + 'px'
-          : '-10px'
+        marginTop: parent.props.iconHeght ? '-' + parent.props.iconHeght / 2 + 'px' : '-10px'
       }
     });
 
@@ -180,8 +164,7 @@ export default create({
       if (parent.props.icon && !proxyData.openExpanded) {
         proxyData.iconStyle['transform'] = 'rotate(0deg)';
       } else {
-        proxyData.iconStyle['transform'] =
-          'rotate(' + parent.props.rotate + 'deg)';
+        proxyData.iconStyle['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
       }
       nextTick(() => {
         const query = Taro.createSelectorQuery();
@@ -203,8 +186,7 @@ export default create({
     const defaultOpen = () => {
       open();
       if (parent.props.icon) {
-        proxyData['iconStyle']['transform'] =
-          'rotate(' + parent.props.rotate + 'deg)';
+        proxyData['iconStyle']['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
       }
     };
 
@@ -318,7 +300,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

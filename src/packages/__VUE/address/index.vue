@@ -9,11 +9,7 @@
     <view class="nut-address">
       <view class="nut-address__header">
         <view class="arrow-back" @click="switchModule">
-          <nut-icon
-            :name="backBtnIcon"
-            color="#cccccc"
-            v-show="privateType == 'custom' && backBtnIcon"
-          ></nut-icon>
+          <nut-icon :name="backBtnIcon" color="#cccccc" v-show="privateType == 'custom' && backBtnIcon"></nut-icon>
         </view>
 
         <view class="nut-address__header__title">
@@ -21,12 +17,7 @@
         </view>
 
         <view class="arrow-close" @click="handClose('cross')">
-          <nut-icon
-            v-if="closeBtnIcon"
-            :name="closeBtnIcon"
-            color="#cccccc"
-            size="18px"
-          ></nut-icon>
+          <nut-icon v-if="closeBtnIcon" :name="closeBtnIcon" color="#cccccc" size="18px"></nut-icon>
         </view>
       </view>
 
@@ -44,11 +35,7 @@
             <view>{{ getTabName(item, index) }}</view>
           </view>
 
-          <view
-            class="region-tab-line"
-            ref="regionLine"
-            :style="{ left: lineDistance + 'px' }"
-          ></view>
+          <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
         </view>
 
         <view class="region-con">
@@ -57,9 +44,7 @@
               v-for="(item, index) in regionList[tabName[tabIndex]]"
               :key="index"
               class="region-item"
-              :class="[
-                selectedRegion[tabName[tabIndex]].id == item.id ? 'active' : ''
-              ]"
+              :class="[selectedRegion[tabName[tabIndex]].id == item.id ? 'active' : '']"
               @click="nextAreaList(item)"
             >
               <nut-icon
@@ -89,11 +74,7 @@
           >
             <view>{{ getTabName(item, index) }}</view>
           </view>
-          <view
-            class="region-tab-line"
-            ref="regionLine"
-            :style="{ left: lineDistance + 'px' }"
-          ></view>
+          <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
         </view>
         <view class="elevator-group">
           <nut-elevator
@@ -129,24 +110,14 @@
                 </div>
                 <div class="exist-item-info-bottom">
                   <view>
-                    {{
-                      item.provinceName +
-                      item.cityName +
-                      item.countyName +
-                      item.townName +
-                      item.addressDetail
-                    }}
+                    {{ item.provinceName + item.cityName + item.countyName + item.townName + item.addressDetail }}
                   </view>
                 </div>
               </div>
             </li>
           </ul>
         </div>
-        <div
-          class="choose-other"
-          @click="switchModule"
-          v-if="isShowCustomAddress"
-        >
+        <div class="choose-other" @click="switchModule" v-if="isShowCustomAddress">
           <div class="btn">{{ customAndExistTitle }}</div>
         </div>
       </view>
@@ -251,15 +222,7 @@ export default create({
       default: '200px'
     }
   },
-  emits: [
-    'update:visible',
-    'type',
-    'change',
-    'selected',
-    'close',
-    'close-mask',
-    'switch-module'
-  ],
+  emits: ['update:visible', 'type', 'change', 'selected', 'close', 'close-mask', 'switch-module'],
 
   setup(props: any, { emit }) {
     const regionLine = ref<null | HTMLElement>(null);
@@ -278,9 +241,7 @@ export default create({
     const isCustom2 = computed(() => props.type === 'custom2');
 
     const regionList = reactive({
-      province: isCustom2.value
-        ? transformData(props.province)
-        : props.province,
+      province: isCustom2.value ? transformData(props.province) : props.province,
       city: isCustom2.value ? transformData(props.city) : props.city,
       country: isCustom2.value ? transformData(props.country) : props.country,
       town: isCustom2.value ? transformData(props.town) : props.town
@@ -538,7 +499,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-@import 'index.scss';
-</style>

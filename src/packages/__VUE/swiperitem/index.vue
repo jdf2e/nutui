@@ -34,15 +34,11 @@ export default create({
       const style: IStyle = {};
       const direction = parent?.props.direction;
       if (parent?.size.value) {
-        style[
-          direction === 'horizontal' ? 'width' : 'height'
-        ] = `${parent?.size.value}px`;
+        style[direction === 'horizontal' ? 'width' : 'height'] = `${parent?.size.value}px`;
       }
 
       if (state.offset) {
-        style['transform'] = `translate${
-          direction === 'horizontal' ? 'X' : 'Y'
-        }(${state.offset}px)`;
+        style['transform'] = `translate${direction === 'horizontal' ? 'X' : 'Y'}(${state.offset}px)`;
       }
 
       return style;
@@ -61,7 +57,3 @@ export default create({
   }
 });
 </script>
-
-<style scoped lang="scss">
-@import 'index.scss';
-</style>

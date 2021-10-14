@@ -13,12 +13,7 @@
     >
       <source :src="source.src" :type="source.type" />
     </video>
-    <div
-      class="playing-mask"
-      ref="touchMask"
-      v-if="showToolbox && !isDisabled"
-      @click="play"
-    ></div>
+    <div class="playing-mask" ref="touchMask" v-if="showToolbox && !isDisabled" @click="play"></div>
     <div
       class="nut-video-play-btn"
       v-if="showToolbox && !isDisabled"
@@ -51,11 +46,7 @@
         </div>
       </div>
       <div class="duration-time">{{ videoSet.totalTime }}</div>
-      <div
-        class="volume"
-        @click="handleMuted"
-        :class="{ muted: state.isMuted }"
-      ></div>
+      <div class="volume" @click="handleMuted" :class="{ muted: state.isMuted }"></div>
       <div class="fullscreen-icon" @click="fullScreen"></div>
     </div>
     <!-- 错误弹窗 -->
@@ -66,18 +57,9 @@
   </div>
 </template>
 <script lang="ts">
-import {
-  computed,
-  reactive,
-  ref,
-  toRefs,
-  watch,
-  nextTick,
-  onMounted
-} from 'vue';
+import { computed, reactive, ref, toRefs, watch, nextTick, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 import { throttle } from '../../utils/throttle.js';
-import './index.scss';
 const { create } = createComponent('video');
 
 export default create({
@@ -180,19 +162,10 @@ export default create({
       }
 
       if (props.options.playsinline) {
-        (state.videoElm as any).setAttribute(
-          'playsinline',
-          props.options.playsinline
-        );
-        (state.videoElm as any).setAttribute(
-          'webkit-playsinline',
-          props.options.playsinline
-        );
+        (state.videoElm as any).setAttribute('playsinline', props.options.playsinline);
+        (state.videoElm as any).setAttribute('webkit-playsinline', props.options.playsinline);
         (state.videoElm as any).setAttribute('x5-video-player-type', 'h5-page');
-        (state.videoElm as any).setAttribute(
-          'x5-video-player-fullscreen',
-          false
-        );
+        (state.videoElm as any).setAttribute('x5-video-player-fullscreen', false);
       }
       volumeHandle();
 
@@ -209,10 +182,7 @@ export default create({
         });
         (state.videoElm as any).addEventListener('ended', playEnded);
 
-        (state.videoElm as any).addEventListener(
-          'timeupdate',
-          throttle(getPlayTime, 100, 1)
-        );
+        (state.videoElm as any).addEventListener('timeupdate', throttle(getPlayTime, 100, 1));
       }
     };
 
@@ -223,9 +193,7 @@ export default create({
       (state.player.$player as any) = $player;
       (state.progressBar.progressElm as any) = $progress;
       (state.progressBar.pos as any) = $progress.getBoundingClientRect();
-      state.videoSet.progress.width = Math.round(
-        $progress.getBoundingClientRect().width
-      );
+      state.videoSet.progress.width = Math.round($progress.getBoundingClientRect().width);
     };
 
     const play = () => {
@@ -244,10 +212,7 @@ export default create({
               getLoadTime();
             });
             // 监听播放进度
-            (state.videoElm as any).addEventListener(
-              'timeupdate',
-              throttle(getPlayTime, 100, 1)
-            );
+            (state.videoElm as any).addEventListener('timeupdate', throttle(getPlayTime, 100, 1));
             // 监听结束
             (state.videoElm as any).addEventListener('ended', playEnded);
             emit('play', state.videoElm);
@@ -287,24 +252,16 @@ export default create({
 
     const getLoadTime = () => {
       if (state.videoSet.loaded)
-        state.videoSet.loaded =
-          ((state.videoElm as any).buffered.end(0) /
-            (state.videoElm as any).duration) *
-          100;
+        state.videoSet.loaded = ((state.videoElm as any).buffered.end(0) / (state.videoElm as any).duration) * 100;
     };
 
     const getPlayTime = () => {
-      const percent =
-        (state.videoElm as any).currentTime / (state.videoElm as any).duration;
-      state.videoSet.progress.current = Math.round(
-        state.videoSet.progress.width * percent
-      );
+      const percent = (state.videoElm as any).currentTime / (state.videoElm as any).duration;
+      state.videoSet.progress.current = Math.round(state.videoSet.progress.width * percent);
 
       // 赋值时长
       state.videoSet.totalTime = timeFormat((state.videoElm as any).duration);
-      state.videoSet.displayTime = timeFormat(
-        (state.videoElm as any).currentTime
-      );
+      state.videoSet.displayTime = timeFormat((state.videoElm as any).currentTime);
     };
 
     const playEnded = () => {
@@ -344,10 +301,8 @@ export default create({
       }
       state.videoSet.progress.current = offsetX;
 
-      let percent =
-        state.videoSet.progress.current / state.videoSet.progress.width;
-      (state.videoElm as any).duration &&
-        setPlayTime(percent, (state.videoElm as any).duration);
+      let percent = state.videoSet.progress.current / state.videoSet.progress.width;
+      (state.videoElm as any).duration && setPlayTime(percent, (state.videoElm as any).duration);
     };
 
     const touchSlidEnd = (e: any) => {
@@ -356,8 +311,7 @@ export default create({
       state.videoSet.progress.current = offsetX;
       // 这里的offsetX都是正数
       let percent = offsetX / state.videoSet.progress.width;
-      (state.videoElm as any).duration &&
-        setPlayTime(percent, (state.videoElm as any).duration);
+      (state.videoElm as any).duration && setPlayTime(percent, (state.videoElm as any).duration);
     };
 
     const setPlayTime = (percent: number, totalTime: number) => {
@@ -401,7 +355,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

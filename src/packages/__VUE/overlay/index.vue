@@ -1,12 +1,6 @@
 <template>
   <Transition name="overlay-fade">
-    <view
-      :class="classes"
-      @touchmove.stop="touchmove"
-      @click="onClick"
-      :style="style"
-      v-show="visible"
-    >
+    <view :class="classes" @touchmove.stop="touchmove" @click="onClick" :style="style" v-show="visible">
       <slot></slot>
     </view>
   </Transition>
@@ -113,6 +107,3 @@ export default create({
   }
 });
 </script>
-<style lang="scss">
-@import 'index.scss';
-</style>

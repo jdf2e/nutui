@@ -3,16 +3,10 @@
     <div
       class="nut-progress-outer"
       ref="progressOuter"
-      :class="[
-        showText && !textInside ? 'nut-progress-outer-part' : '',
-        size ? 'nut-progress-' + size : ''
-      ]"
+      :class="[showText && !textInside ? 'nut-progress-outer-part' : '', size ? 'nut-progress-' + size : '']"
       :style="{ height: height }"
     >
-      <div
-        :class="['nut-progress-inner', status == 'active' ? 'nut-active' : '']"
-        :style="bgStyle"
-      >
+      <div :class="['nut-progress-inner', status == 'active' ? 'nut-active' : '']" :style="bgStyle">
         <div
           class="nut-progress-text nut-progress-insidetext"
           :style="{ lineHeight: height, left: left }"
@@ -22,11 +16,7 @@
         </div>
       </div>
     </div>
-    <div
-      class="nut-progress-text"
-      :style="{ lineHeight: height }"
-      v-if="showText && !textInside"
-    >
+    <div class="nut-progress-text" :style="{ lineHeight: height }" v-if="showText && !textInside">
       <template v-if="status == 'text' || status == 'active'">
         <span :style="textStyle">{{ percentage }}%</span>
       </template>
@@ -38,16 +28,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  onMounted,
-  provide,
-  reactive,
-  nextTick,
-  ref,
-  getCurrentInstance,
-  watch
-} from 'vue';
+import { computed, onMounted, provide, reactive, nextTick, ref, getCurrentInstance, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 import Taro, { eventCenter } from '@tarojs/taro';
 const { create } = createComponent('progress');
@@ -113,8 +94,7 @@ export default create({
     const slideLeft = async (values: String | Number) => {
       if (Taro.getEnv() === 'WEB') {
         setTimeout(() => {
-          left.value =
-            progressOuter.value.offsetWidth * Number(values) * 0.01 - 4 + 'px';
+          left.value = progressOuter.value.offsetWidth * Number(values) * 0.01 - 4 + 'px';
         }, 200);
       } else {
         setTimeout(() => {
@@ -146,7 +126,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

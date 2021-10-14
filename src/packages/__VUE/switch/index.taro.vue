@@ -3,12 +3,8 @@
     <view class="switch-button">
       <view v-show="!modelValue" class="close-line"></view>
       <template v-if="activeText">
-        <view class="nut-switch-label open" v-show="modelValue">{{
-          activeText
-        }}</view>
-        <view class="nut-switch-label close" v-show="!modelValue">{{
-          inactiveText
-        }}</view>
+        <view class="nut-switch-label open" v-show="modelValue">{{ activeText }}</view>
+        <view class="nut-switch-label close" v-show="!modelValue">{{ inactiveText }}</view>
       </template>
     </view>
   </view>
@@ -60,9 +56,7 @@ export default create({
 
     const style = computed(() => {
       return {
-        backgroundColor: props.modelValue
-          ? props.activeColor
-          : props.inactiveColor
+        backgroundColor: props.modelValue ? props.activeColor : props.inactiveColor
       };
     });
 
@@ -80,7 +74,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

@@ -1,8 +1,6 @@
 <template>
   <view class="nutui-tab">
-    <view
-      :class="[direction === 'vertical' ? 'vertical-tab' : 'horizontal-tab']"
-    >
+    <view :class="[direction === 'vertical' ? 'vertical-tab' : 'horizontal-tab']">
       <view :class="['tab-title', iconType, 'tab-title-scroll']" ref="navlist">
         <view
           :class="[
@@ -84,27 +82,20 @@ export default create({
     const nutuiSwiper = ref(null);
     // 生成随机的id
     function createHash() {
-      return Array.from(Array(10), () =>
-        Math.floor(Math.random() * 36).toString(36)
-      ).join('');
+      return Array.from(Array(10), () => Math.floor(Math.random() * 36).toString(36)).join('');
     }
 
     const swiperClassName = ref('swiper-' + createHash());
     //title点击后居中显示
     function centerTitle(index: number) {
       if (navlist.value) {
-        const currEle = navlist.value.querySelectorAll('.tab-title-box')[
-          index
-        ] as HTMLElement;
+        const currEle = navlist.value.querySelectorAll('.tab-title-box')[index] as HTMLElement;
         if (props.direction === 'vertical') {
           const currTitleTop = navlist.value.offsetTop;
           const currTop = currEle.offsetTop;
           const currHeight = currEle.offsetHeight;
           const tapHeight = navlist.value.offsetHeight;
-          navlist.value.scroll(
-            0,
-            currTop - currTitleTop - tapHeight / 2 + currHeight / 2
-          );
+          navlist.value.scroll(0, currTop - currTitleTop - tapHeight / 2 + currHeight / 2);
         } else {
           const currLeft = currEle.offsetLeft;
           const currWidth = currEle.offsetWidth;
@@ -131,27 +122,18 @@ export default create({
       titles.length = 0;
       if (ctx.slots.default) {
         const slots: VNode[] =
-          ctx.slots.default().length === 1
-            ? (ctx.slots.default()[0].children as VNode[])
-            : ctx.slots.default();
+          ctx.slots.default().length === 1 ? (ctx.slots.default()[0].children as VNode[]) : ctx.slots.default();
         console.log(slots);
         slots &&
           slots.map((item, index) => {
             if (typeof item.children == 'string') return;
 
             titles.push({
-              title:
-                item.props && item.props['tab-title']
-                  ? item.props['tab-title']
-                  : '',
+              title: item.props && item.props['tab-title'] ? item.props['tab-title'] : '',
               content:
-                item.children && (item.children as currChild).header
-                  ? (item.children as currChild).header()
-                  : null,
+                item.children && (item.children as currChild).header ? (item.children as currChild).header() : null,
               main:
-                item.children && (item.children as currChild).default
-                  ? (item.children as currChild).default()
-                  : null
+                item.children && (item.children as currChild).default ? (item.children as currChild).default() : null
             });
           });
       }
@@ -177,7 +159,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

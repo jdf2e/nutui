@@ -59,9 +59,7 @@ export default create({
       return h(
         'view',
         {
-          class: `${componentName}__label ${
-            props.disabled ? `${componentName}__label--disabled` : ''
-          }`
+          class: `${componentName}__label ${props.disabled ? `${componentName}__label--disabled` : ''}`
         },
         slots.default?.()
       );
@@ -76,9 +74,7 @@ export default create({
       return h(
         'view',
         {
-          class: `${componentName} ${
-            position.value === 'left' ? `${componentName}--reverse` : ''
-          }`,
+          class: `${componentName} ${position.value === 'left' ? `${componentName}--reverse` : ''}`,
           onClick: handleClick
         },
         [renderIcon(), renderLabel()]
@@ -87,7 +83,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

@@ -1,8 +1,6 @@
 <template>
   <view class="nutui-tab">
-    <view
-      :class="[direction === 'vertical' ? 'vertical-tab' : 'horizontal-tab']"
-    >
+    <view :class="[direction === 'vertical' ? 'vertical-tab' : 'horizontal-tab']">
       <view :class="['tab-title', iconType, 'tab-title-scroll']" ref="navlist">
         <view
           :class="[
@@ -36,15 +34,7 @@
   </view>
 </template>
 <script lang="ts">
-import {
-  PropType,
-  reactive,
-  ref,
-  onMounted,
-  watch,
-  VNode,
-  watchEffect
-} from 'vue';
+import { PropType, reactive, ref, onMounted, watch, VNode, watchEffect } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('tab');
 import TabTitle from './tabTitle';
@@ -98,27 +88,20 @@ export default create({
     const nutuiSwiper = ref(null);
     // 生成随机的id
     function createHash() {
-      return Array.from(Array(10), () =>
-        Math.floor(Math.random() * 36).toString(36)
-      ).join('');
+      return Array.from(Array(10), () => Math.floor(Math.random() * 36).toString(36)).join('');
     }
 
     const swiperClassName = ref('swiper-' + createHash());
     //title点击后居中显示
     function centerTitle(index: number) {
       if (navlist.value) {
-        const currEle = navlist.value.querySelectorAll('.tab-title-box')[
-          index
-        ] as HTMLElement;
+        const currEle = navlist.value.querySelectorAll('.tab-title-box')[index] as HTMLElement;
         if (props.direction === 'vertical') {
           const currTitleTop = navlist.value.offsetTop;
           const currTop = currEle.offsetTop;
           const currHeight = currEle.offsetHeight;
           const tapHeight = navlist.value.offsetHeight;
-          navlist.value.scroll(
-            0,
-            currTop - currTitleTop - tapHeight / 2 + currHeight / 2
-          );
+          navlist.value.scroll(0, currTop - currTitleTop - tapHeight / 2 + currHeight / 2);
         } else {
           const currLeft = currEle.offsetLeft;
           const currWidth = currEle.offsetWidth;
@@ -140,25 +123,17 @@ export default create({
       nutuiSwiper.value.to(index);
     }
     function initTitle() {
-      console.log(11);
       titles.length = 0;
       if (ctx.slots.default) {
         const slots: VNode[] =
-          ctx.slots.default().length === 1
-            ? (ctx.slots.default()[0].children as VNode[])
-            : ctx.slots.default();
+          ctx.slots.default().length === 1 ? (ctx.slots.default()[0].children as VNode[]) : ctx.slots.default();
         slots &&
           slots.map((item, index) => {
             if (typeof item.children == 'string') return;
             titles.push({
-              title:
-                item.props && item.props['tab-title']
-                  ? item.props['tab-title']
-                  : '',
+              title: item.props && item.props['tab-title'] ? item.props['tab-title'] : '',
               content:
-                item.children && (item.children as currChild).header
-                  ? (item.children as currChild).header()
-                  : null
+                item.children && (item.children as currChild).header ? (item.children as currChild).header() : null
             });
           });
       }
@@ -166,10 +141,13 @@ export default create({
     onMounted(() => {
       initTitle();
     });
-    watchEffect(
-      () => (ctx.slots.default ? ctx.slots.default() : ''),
-      () => {
-        initTitle();
+    watch(
+      () => ctx.slots.default(),
+      (val, oldVal) => {
+        if (val) {
+          ctx.slots.default();
+          initTitle();
+        }
       }
     );
     watchEffect(() => {
@@ -178,7 +156,7 @@ export default create({
     watch(
       () => activeIndex.value,
       (val, oldVal) => {
-        ictx.emit('switch-tab', activeIndex.value);
+        ctx.emit('switch-tab', activeIndex.value);
       }
     );
     return {
@@ -193,7 +171,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

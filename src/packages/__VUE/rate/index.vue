@@ -23,11 +23,7 @@
       />
       <nut-icon
         v-else-if="allowHalf && modelValue + 1 < n"
-        class="
-          nut-rate-item__icon
-          nut-rate-item__icon--disabled
-          nut-rate-item__icon--half
-        "
+        class="nut-rate-item__icon nut-rate-item__icon--disabled nut-rate-item__icon--half"
         :color="voidColor"
         :size="iconSize"
         :name="uncheckedIcon"
@@ -121,7 +117,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

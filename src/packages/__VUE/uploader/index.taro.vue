@@ -8,11 +8,7 @@
     </view>
 
     <template v-else>
-      <view
-        class="nut-uploader__preview"
-        v-for="(item, index) in fileList"
-        :key="item.uid"
-      >
+      <view class="nut-uploader__preview" v-for="(item, index) in fileList" :key="item.uid">
         <view class="nut-uploader__preview-img">
           <nut-icon
             v-if="isDeletable"
@@ -21,18 +17,12 @@
             class="close"
             name="circle-close"
           ></nut-icon>
-          <image
-            class="nut-uploader__preview-img__c"
-            v-if="item.url"
-            :src="item.url"
-          />
-          <view class="tips" v-if="item.status != 'success'">{{
-            item.status
-          }}</view>
+          <image class="nut-uploader__preview-img__c" v-if="item.url" :src="item.url" />
+          <view class="tips" v-if="item.status != 'success'">{{ item.status }}</view>
         </view>
       </view>
       <view class="nut-uploader__upload" v-if="maximum - fileList.length">
-        <nut-icon color="#808080" :name="uploadIcon"></nut-icon>
+        <nut-icon :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
         <nut-button class="nut-uploader__input" @click="chooseImage" />
       </view>
     </template>
@@ -45,12 +35,7 @@ import { createComponent } from '../../utils/create';
 import { Uploader, UploadOptions } from './uploader';
 const { componentName, create } = createComponent('uploader');
 import Taro from '@tarojs/taro';
-export type FileItemStatus =
-  | 'ready'
-  | 'uploading'
-  | 'success'
-  | 'error'
-  | 'removed';
+export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error' | 'removed';
 export class FileItem {
   status: FileItemStatus = 'ready';
   uid: string = new Date().getTime().toString();
@@ -87,6 +72,7 @@ export default create({
     headers: { type: Object, default: {} },
     data: { type: Object, default: {} },
     uploadIcon: { type: String, default: 'photograph' },
+    uploadIconSize: { type: [String, Number], default: '' },
     xhrState: { type: [Number, String], default: 200 },
     disabled: { type: Boolean, default: false },
     beforeDelete: {
@@ -97,16 +83,7 @@ export default create({
     },
     onChange: { type: Function }
   },
-  emits: [
-    'start',
-    'progress',
-    'oversize',
-    'success',
-    'failure',
-    'change',
-    'delete',
-    'update:fileList'
-  ],
+  emits: ['start', 'progress', 'oversize', 'success', 'failure', 'change', 'delete', 'update:fileList'],
   setup(props, { emit }) {
     const fileList = reactive(props.fileList) as Array<FileItem>;
     const classes = computed(() => {
@@ -132,6 +109,7 @@ export default create({
 
     const executeUpload = (fileItem: FileItem) => {
       const uploadOption = new UploadOptions();
+      uploadOption.name = props.name;
       uploadOption.url = props.url;
       for (const [key, value] of Object.entries(props.data)) {
         fileItem.formData[key] = value;
@@ -148,10 +126,7 @@ export default create({
         emit('progress', { e, option });
       };
 
-      uploadOption.onSuccess = (
-        data: Taro.uploadFile.SuccessCallbackResult,
-        option: UploadOptions
-      ) => {
+      uploadOption.onSuccess = (data: Taro.uploadFile.SuccessCallbackResult, option: UploadOptions) => {
         fileItem.status = 'success';
         emit('success', {
           data,
@@ -159,17 +134,15 @@ export default create({
         });
         emit('update:fileList', fileList);
       };
-      uploadOption.onFailure = (
-        data: Taro.uploadFile.SuccessCallbackResult,
-        option: UploadOptions
-      ) => {
+      uploadOption.onFailure = (data: Taro.uploadFile.SuccessCallbackResult, option: UploadOptions) => {
         fileItem.status = 'error';
         emit('failure', {
           data,
           option
         });
       };
-      new Uploader(uploadOption).uploadTaro(fileItem.path!, Taro);
+
+      new Uploader(uploadOption).uploadTaro(fileItem.path!, Taro.uploadFile);
     };
 
     const readFile = (files: Taro.chooseImage.ImageFile[]) => {
@@ -238,7 +211,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

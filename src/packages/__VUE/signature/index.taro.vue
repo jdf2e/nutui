@@ -14,12 +14,8 @@
         @touchleave="leaveEventHandler"
       />
     </div>
-    <nut-button class="nut-signature-btn" type="default" @click="clear()"
-      >重签</nut-button
-    >
-    <nut-button class="nut-signature-btn" type="primary" @click="confirm()"
-      >确认</nut-button
-    >
+    <nut-button class="nut-signature-btn" type="default" @click="clear()">重签</nut-button>
+    <nut-button class="nut-signature-btn" type="primary" @click="confirm()">确认</nut-button>
   </div>
 </template>
 <script lang="ts">
@@ -152,7 +148,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

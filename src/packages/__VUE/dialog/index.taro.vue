@@ -127,16 +127,7 @@ export default create({
       default: false
     }
   },
-  emits: [
-    'update',
-    'update:visible',
-    'ok',
-    'cancel',
-    'open',
-    'opened',
-    'close',
-    'closed'
-  ],
+  emits: ['update', 'update:visible', 'ok', 'cancel', 'open', 'opened', 'close', 'closed'],
   setup(props, { emit }) {
     const showPopup = ref(props.visible);
     onMounted(() => {
@@ -192,7 +183,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

@@ -21,10 +21,7 @@
     </nut-cell>
     <h2>自定义样式</h2>
     <nut-cell>
-      <nut-divider
-        :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }"
-        >文本</nut-divider
-      >
+      <nut-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">文本</nut-divider>
     </nut-cell>
   </div>
 </template>
@@ -39,8 +36,3 @@ export default createDemo({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.demo {
-}
-</style>

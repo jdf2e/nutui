@@ -1,8 +1,6 @@
 <template>
   <view class="nutui-tab">
-    <view
-      :class="[direction === 'vertical' ? 'vertical-tab' : 'horizontal-tab']"
-    >
+    <view :class="[direction === 'vertical' ? 'vertical-tab' : 'horizontal-tab']">
       <scroll-view
         :scroll-x="!scrollYDirection"
         :scroll-y="scrollYDirection"
@@ -24,10 +22,7 @@
             @click="switchTitle(index, $event)"
           >
             <span class="world">{{ item.title }}</span>
-            <TabTitle
-              v-bind:slots="item.content"
-              v-if="item.content"
-            ></TabTitle>
+            <TabTitle v-bind:slots="item.content" v-if="item.content"></TabTitle>
           </view>
           <view class="underline"></view>
         </view>
@@ -39,15 +34,7 @@
   </view>
 </template>
 <script lang="ts">
-import {
-  PropType,
-  reactive,
-  ref,
-  onMounted,
-  watch,
-  VNode,
-  watchEffect
-} from 'vue';
+import { PropType, reactive, ref, onMounted, watch, VNode, watchEffect } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('tab');
 import Taro from '@tarojs/taro';
@@ -110,9 +97,7 @@ export default create({
     const randomTitleClass = ref('tab-title-' + createHash());
     // 生成随机的id
     function createHash() {
-      return Array.from(Array(10), () =>
-        Math.floor(Math.random() * 36).toString(36)
-      ).join('');
+      return Array.from(Array(10), () => Math.floor(Math.random() * 36).toString(36)).join('');
     }
     const swiperClassName = ref('swiper-' + createHash());
     //title点击后居中显示
@@ -132,12 +117,7 @@ export default create({
             let navlistValueHeight = rects[0].height;
             const currTop = rects[1][index].top;
             const currHeight = rects[1][index].height;
-            scrollTop.value =
-              currTop -
-              navlistValueTop -
-              navlistValueHeight / 2 +
-              currHeight / 2 +
-              'px';
+            scrollTop.value = currTop - navlistValueTop - navlistValueHeight / 2 + currHeight / 2 + 'px';
           });
       } else {
         query
@@ -149,8 +129,7 @@ export default create({
             let navlistValuewidth = rects[0].width;
             const currLeft = rects[1][index].left;
             const currWidth = rects[1][index].width;
-            scrollLeft.value =
-              currLeft - navlistValuewidth / 2 + currWidth / 2 + 'px';
+            scrollLeft.value = currLeft - navlistValuewidth / 2 + currWidth / 2 + 'px';
           });
       }
     }
@@ -167,25 +146,16 @@ export default create({
       titles.length = 0;
       if (ctx.slots.default) {
         const slots: VNode[] =
-          ctx.slots.default().length === 1
-            ? (ctx.slots.default()[0].children as VNode[])
-            : ctx.slots.default();
+          ctx.slots.default().length === 1 ? (ctx.slots.default()[0].children as VNode[]) : ctx.slots.default();
         slots &&
           slots.map((item, index) => {
             if (typeof item.children == 'string') return;
             titles.push({
-              title:
-                item.props && item.props['tab-title']
-                  ? item.props['tab-title']
-                  : '',
+              title: item.props && item.props['tab-title'] ? item.props['tab-title'] : '',
               content:
-                item.children && (item.children as currChild).header
-                  ? (item.children as currChild).header()
-                  : null,
+                item.children && (item.children as currChild).header ? (item.children as currChild).header() : null,
               main:
-                item.children && (item.children as currChild).default
-                  ? (item.children as currChild).default()
-                  : null
+                item.children && (item.children as currChild).default ? (item.children as currChild).default() : null
             });
           });
       }
@@ -196,10 +166,13 @@ export default create({
       for (let i = 0; i < 100; i++) arrnew.push(i);
       arr.value = arrnew;
     });
-    watchEffect(
-      () => (ctx.slots.default ? ctx.slots.default() : ''),
-      () => {
-        initTitle();
+    watch(
+      () => ctx.slots.default(),
+      (val, oldVal) => {
+        if (val) {
+          ctx.slots.default();
+          initTitle();
+        }
       }
     );
     watchEffect(() => {
@@ -229,7 +202,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>
