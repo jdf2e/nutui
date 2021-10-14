@@ -19,8 +19,8 @@
           v-for="subitem in item.list"
           :key="subitem['id']"
           @click="handleClickItem(item[acceptKey], subitem)"
-          >{{ subitem.name }}</view
-        >
+          v-html="subitem.name"
+        ></view>
       </view>
     </scroll-view>
     <view class="nut-elevator__code--current" v-show="scrollStart" v-if="indexList.length">{{

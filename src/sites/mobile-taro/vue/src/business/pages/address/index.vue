@@ -1,12 +1,7 @@
 <template>
   <div class="demo">
     <h2>选择自定义地址</h2>
-    <nut-cell
-      title="选择地址"
-      :desc="one"
-      is-link
-      @click="showAddress"
-    ></nut-cell>
+    <nut-cell title="选择地址" :desc="one" is-link @click="showAddress"></nut-cell>
 
     <nut-address
       v-model:visible="normal"
@@ -20,12 +15,7 @@
     ></nut-address>
 
     <h2>选择自定义地址2</h2>
-    <nut-cell
-      title="选择地址"
-      :desc="five"
-      is-link
-      @click="showAddress2"
-    ></nut-cell>
+    <nut-cell title="选择地址" :desc="five" is-link @click="showAddress2"></nut-cell>
 
     <nut-address
       v-model:visible="normal2"
@@ -41,12 +31,7 @@
     ></nut-address>
 
     <h2>选择已有地址</h2>
-    <nut-cell
-      title="选择地址"
-      :desc="two"
-      is-link
-      @click="showAddressExist"
-    ></nut-cell>
+    <nut-cell title="选择地址" :desc="two" is-link @click="showAddressExist"></nut-cell>
 
     <nut-address
       v-model:visible="exist"
@@ -60,12 +45,7 @@
     ></nut-address>
 
     <h2>自定义图标</h2>
-    <nut-cell
-      title="选择地址"
-      :desc="three"
-      is-link
-      @click="showCustomImg"
-    ></nut-cell>
+    <nut-cell title="选择地址" :desc="three" is-link @click="showCustomImg"></nut-cell>
 
     <nut-address
       v-model:visible="customImg"
@@ -81,12 +61,7 @@
     ></nut-address>
 
     <h2>自定义地址与已有地址切换</h2>
-    <nut-cell
-      title="选择地址"
-      :desc="four"
-      is-link
-      @click="showAddressOther"
-    ></nut-cell>
+    <nut-cell title="选择地址" :desc="four" is-link @click="showAddressOther"></nut-cell>
 
     <nut-address
       v-model:visible="other"
@@ -144,24 +119,24 @@ export default defineComponent({
   setup() {
     const address = reactive({
       province: [
-        { id: 1, name: '北京' },
-        { id: 2, name: '广西' },
-        { id: 3, name: '江西' },
-        { id: 4, name: '四川' },
-        { id: 5, name: '浙江' }
+        { id: 1, name: '北京', title: 'B' },
+        { id: 2, name: '广西', title: 'G' },
+        { id: 3, name: '江西', title: 'J' },
+        { id: 4, name: '四川', title: 'S' },
+        { id: 5, name: '浙江', title: 'Z' }
       ],
       city: [
-        { id: 7, name: '朝阳区' },
-        { id: 8, name: '崇文区' },
-        { id: 9, name: '昌平区' },
-        { id: 6, name: '石景山区' },
-        { id: 3, name: '八里庄街道' },
-        { id: 9, name: '北苑' }
+        { id: 7, name: '朝阳区', title: 'C' },
+        { id: 8, name: '崇文区', title: 'C' },
+        { id: 9, name: '昌平区', title: 'C' },
+        { id: 6, name: '石景山区', title: 'S' },
+        { id: 3, name: '八里庄街道', title: 'B' },
+        { id: 9, name: '北苑', title: 'B' }
       ],
       country: [
-        { id: 3, name: '八里庄街道' },
-        { id: 9, name: '北苑' },
-        { id: 4, name: '常营乡' }
+        { id: 3, name: '八里庄街道', title: 'B' },
+        { id: 9, name: '北苑', title: 'B' },
+        { id: 4, name: '常营乡', title: 'C' }
       ],
       town: []
     });
@@ -256,19 +231,13 @@ export default defineComponent({
     const close2 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
-        const { provinceName, cityName, countyName, townName, addressDetail } =
-          val.data;
-        text.two =
-          provinceName + cityName + countyName + townName + addressDetail;
+        const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
+        text.two = provinceName + cityName + countyName + townName + addressDetail;
       } else {
         text.two = val.data.addressStr;
       }
     };
-    const selected = (
-      prevExistAdd: AddressList,
-      nowExistAdd: RegionData,
-      arr: AddressList[]
-    ) => {
+    const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
       console.log(prevExistAdd);
       console.log(nowExistAdd);
     };
@@ -283,10 +252,8 @@ export default defineComponent({
     const close3 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
-        const { provinceName, cityName, countyName, townName, addressDetail } =
-          val.data;
-        text.three =
-          provinceName + cityName + countyName + townName + addressDetail;
+        const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
+        text.three = provinceName + cityName + countyName + townName + addressDetail;
       } else {
         text.three = val.data.addressStr;
       }
@@ -295,10 +262,8 @@ export default defineComponent({
     const close4 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
-        const { provinceName, cityName, countyName, townName, addressDetail } =
-          val.data;
-        text.four =
-          provinceName + cityName + countyName + townName + addressDetail;
+        const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
+        text.four = provinceName + cityName + countyName + townName + addressDetail;
       } else {
         text.four = val.data.addressStr;
       }
