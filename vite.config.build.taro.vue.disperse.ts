@@ -42,7 +42,7 @@ export default defineConfig({
     },
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
-      external: ['vue', 'vue-router', '@tarojs/taro', 'pinyin'],
+      external: ['vue', 'vue-router', '@tarojs/taro'],
       input,
       output: {
         banner,
