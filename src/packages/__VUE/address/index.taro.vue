@@ -130,7 +130,7 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, nextTick, computed } from 'vue';
+import { reactive, ref, toRefs, watch, computed } from 'vue';
 import { createComponent } from '../../utils/create';
 import Taro from '@tarojs/taro';
 
