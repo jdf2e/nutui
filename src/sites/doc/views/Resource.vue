@@ -69,7 +69,6 @@ import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
 import { RefData } from '@/sites/assets/util/ref';
 import { ApiService } from '@/sites/service/ApiService';
-import axios from 'axios';
 export default defineComponent({
   name: 'doc',
   components: {
