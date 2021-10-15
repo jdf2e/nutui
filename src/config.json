@@ -43,6 +43,11 @@
       "path": "#/resource"
     },
     {
+      "name": "notice",
+      "cName": "通知",
+      "path": "#/notice"
+    },
+    {
       "name": "joinus",
       "cName": "加入我们",
       "path": "#/joinus"
