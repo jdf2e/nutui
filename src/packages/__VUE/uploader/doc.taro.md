@@ -87,6 +87,27 @@ setup() {
 }
 ```
 
+### 手动上传
+    
+``` html 
+<nut-uploader url="http://服务器地址" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
+<nut-button type="success" size="small" @click="submitUpload">执行上传</nut-button>
+```
+
+``` javascript
+import { ref } from 'vue';
+setup() {
+    const uploadRef = ref<any>(null);
+    const submitUpload = () => {
+      uploadRef.value.submit();
+    };
+    return {
+      uploadRef,
+      submitUpload
+    };
+}
+```
+
 ### 禁用状态
 
 ``` html
@@ -97,6 +118,7 @@ setup() {
 
 | 字段              | 说明                                                                                                                   | 类型                              | 默认值                    |
 |-------------------|------------------------------------------------------------------------------------------------------------------------|-----------------------------------|---------------------------|
+| auto-upload       | 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传                                             | Boolean                           | true                      |
 | name              | 发到后台的文件参数名                                                                                                   | String                            | "file"                    |
 | url               | 上传服务器的接口地址                                                                                                   | String                            | -                         |
 | v-model:file-list | 默认已经上传的文件列表                                                                                                 | FileItem[]                        | []                        |
@@ -140,3 +162,12 @@ setup() {
 | change   | 上传文件改变时的状态   | fileList,event   |
 | delete   | 文件删除之前的状态     | files,fileList   |
 
+
+### Methods
+
+通过 [ref](https://v3.cn.vuejs.org/api/special-attributes.html#key) 可以获取到 Uploader 实例并调用实例方法
+
+| 方法名           | 说明                                                       | 参数 | 返回值 |
+|------------------|------------------------------------------------------------|------|--------|
+| submit           | 手动上传模式，执行上传操作                                 | -    | -      |
+| clearUploadQueue | 清空已选择的文件队列（该方法一般配合在手动模式上传时使用） | -    | -      |
