@@ -301,6 +301,7 @@
           "type": "component",
           "show": false,
           "exportEmpty": true,
+          "exportEmptyTaro": true,
           "desc": "折叠面板-item",
           "author": "Ymm0008"
         },
@@ -440,6 +441,7 @@
           "show": false,
           "taro": true,
           "exportEmpty": true,
+          "exportEmptyTaro": true,
           "desc": "轮播图子组件",
           "author": "suzigang"
         },
