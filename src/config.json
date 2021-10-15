@@ -255,6 +255,16 @@
           "sort": 4,
           "show": true,
           "author": "oasis"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Signature",
+          "type": "component",
+          "cName": "签名",
+          "desc": "基于Canvas的签名组件",
+          "sort": 5,
+          "show": true,
+          "author": "songsong"
         }
       ]
     },
