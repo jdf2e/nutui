@@ -2,77 +2,36 @@
   <div class="doc-footer" :class="`doc-footer-${themeColor}`">
     <div class="doc-footer-content">
       <div class="doc-footer-list">
-        <img
-          class="doc-footer-logo"
-          src="../../assets/images/logo-header-red.png"
-        />
+        <img class="doc-footer-logo" src="../../assets/images/logo-header-red.png" />
       </div>
       <div class="doc-footer-list">
-        <h4 class="doc-footer-title">相关资源</h4>
+        <h4 class="doc-footer-title">相关产品</h4>
+        <div class="doc-footer-item"><a class="sub-link" target="_blank" href="https://vuejs.org" v-hover>Vue</a> </div>
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://vuejs.org" v-hover
-            >Vue</a
-          >
+          ><a class="sub-link" target="_blank" href="https://vitejs.dev" v-hover>Vite</a>
         </div>
         <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://vitejs.dev" v-hover
-            >Vite</a
-          >
+          ><a class="sub-link" target="_blank" href="https://relay.jd.com" v-hover>Relay</a>
         </div>
         <div class="doc-footer-item"
-          ><a
-            class="sub-link"
-            target="_blank"
-            href="https://relay.jd.com"
-            v-hover
-            >Relay</a
-          >
+          ><a class="sub-link" target="_blank" href="https://taro.jd.com" v-hover>Taro</a>
         </div>
         <div class="doc-footer-item"
-          ><a
-            class="sub-link"
-            target="_blank"
-            href="https://taro.jd.com"
-            v-hover
-            >Taro</a
-          >
-        </div>
-        <div class="doc-footer-item"
-          ><a
-            class="sub-link"
-            target="_blank"
-            href="https://ling.jd.com/jdw"
-            v-hover
-            >羚珑</a
-          >
+          ><a class="sub-link" target="_blank" href="https://ling.jd.com/jdw" v-hover>羚珑</a>
         </div>
       </div>
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">社区</h4>
         <div class="doc-footer-item"
-          ><a
-            class="sub-link"
-            target="_blank"
-            href="https://github.com/jdf2e/nutui"
-            v-hover
-            >GitHub</a
-          ></div
+          ><a class="sub-link" target="_blank" href="https://github.com/jdf2e/nutui" v-hover>GitHub</a></div
         >
         <div class="doc-footer-item"
-          ><a
-            class="sub-link"
-            target="_blank"
-            href="https://www.zhihu.com/column/c_1263837684834889728"
-            v-hover
+          ><a class="sub-link" target="_blank" href="https://www.zhihu.com/column/c_1263837684834889728" v-hover
             >知乎专栏</a
           ></div
         >
         <div class="doc-footer-item"
-          ><a
-            class="sub-link"
-            target="_blank"
-            href="timline://chat/?topin=82957939&type=2"
-            v-hover
+          ><a class="sub-link" target="_blank" href="timline://chat/?topin=82957939&type=2" v-hover
             >咚咚群：82957939</a
           ></div
         >
@@ -87,39 +46,22 @@
             <p class="vx-desc">回复<span class="vx-red">NutUI</span>即刻进群</p>
           </div>
         </div>
+
+        <div class="doc-footer-item"><a class="sub-link" href="#/notice" target="_blank" v-hover>常见问题</a></div>
       </div>
       <div class="doc-footer-list">
         <h4 class="doc-footer-title">关于我们</h4>
+        <div class="doc-footer-item"><a class="sub-link" href="#/joinus" v-hover>加入我们</a></div>
+        <div class="doc-footer-item"><a class="sub-link" href="mailto:nutui@jd.com" v-hover>联系我们</a></div>
         <div class="doc-footer-item"
-          ><a class="sub-link" href="#/joinus" v-hover>加入我们</a></div
+          ><a class="sub-link" target="_blank" href="https://github.com/jdf2e/nutui/issues" v-hover>意见反馈</a></div
         >
         <div class="doc-footer-item"
-          ><a class="sub-link" href="mailto:nutui@jd.com" v-hover
-            >联系我们</a
-          ></div
-        >
-        <div class="doc-footer-item"
-          ><a
-            class="sub-link"
-            target="_blank"
-            href="https://github.com/jdf2e/nutui/issues"
-            v-hover
-            >意见反馈</a
-          ></div
-        >
-        <div class="doc-footer-item"
-          ><a class="sub-link" target="_blank" href="https://fe.jd.com" v-hover
-            >京东前端</a
-          ></div
+          ><a class="sub-link" target="_blank" href="https://fe.jd.com" v-hover>京东前端</a></div
         >
       </div>
-      <div
-        class="doc-footer-list"
-        @click.stop="data.isShowSelect = !data.isShowSelect"
-      >
-        <div class="doc-footer-select-hd"
-          ><i class="icon-color"></i>主题换肤</div
-        >
+      <div class="doc-footer-list" @click.stop="data.isShowSelect = !data.isShowSelect">
+        <div class="doc-footer-select-hd"><i class="icon-color"></i>主题换肤</div>
         <div class="doc-footer-select-bd" v-show="data.isShowSelect">
           <div
             class="doc-footer-select-item"
@@ -133,9 +75,7 @@
         </div>
       </div>
     </div>
-    <p class="doc-footer-desc"
-      >2021 京东零售 - 基础业务体验部.&nbsp;All Rights Reserved.</p
-    >
+    <p class="doc-footer-desc">2021 京东零售 - 基础业务体验部.&nbsp;All Rights Reserved.</p>
   </div>
 </template>
 <script lang="ts">
@@ -173,9 +113,7 @@ export default defineComponent({
       );
     };
     // checked active index
-    data.activeIndex = data.themeList.findIndex(
-      (i) => i.color == RefData.getInstance().themeColor.value
-    );
+    data.activeIndex = data.themeList.findIndex((i) => i.color == RefData.getInstance().themeColor.value);
     const checkTheme = (color: string, index: number) => {
       data.isShowSelect = false;
       data.activeIndex = index;
@@ -266,8 +204,7 @@ export default defineComponent({
       width: 12px;
       height: 10px;
       margin-right: 10px;
-      background: url('../../assets/images/icon-color.png') no-repeat
-        center/100%;
+      background: url('../../assets/images/icon-color.png') no-repeat center/100%;
     }
     .circle-red,
     .circle-black,
@@ -424,8 +361,7 @@ export default defineComponent({
   height: 13px;
   margin-left: 5px;
   vertical-align: -2px;
-  background: url('../../assets/images/icon-footer-vx.png') no-repeat
-    center/100%;
+  background: url('../../assets/images/icon-footer-vx.png') no-repeat center/100%;
 }
 .vx-box {
   display: none;

@@ -97,6 +97,11 @@
         "cName": "更新日志",
         "show": true,
         "isLink": true
+      },
+      {
+        "name": "notice",
+        "cName": "常见问题",
+        "show": true
       }
     ]
   },
