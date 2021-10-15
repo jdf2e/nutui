@@ -1,11 +1,16 @@
 {
   "name": "nutui-react",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "main": "dist/nutui.react.umd.js",
+  "module": "dist/nutui.react.es.js",
+  "style": "dist/style.css",
+  "typings": "dist/dts/src/packages/nutui.react.d.ts",
   "scripts": {
     "add": "node scripts/createComponentMode.js",
     "generate:file": "node scripts/generate-nutui.js",
     "checked": "npm run generate:file && tsc",
     "dev": "npm run checked && vite --open --force",
+    "build": "npm run checked && vite build --config vite.config.build.ts && tsc",
     "prepare": "husky install"
   },
   "lint-staged": {

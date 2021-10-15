@@ -6,7 +6,7 @@ const SwitchDemo = () => {
   const change = (value: boolean, event: Event) => {
     alert(`触发了change事件，开关状态：${value}`)
   }
-  const changeAsync = (value: boolean, event: Event) => {
+  const changeAsync = (value: boolean, event: any) => {
     alert(`2秒后异步触发 ${value}`)
     setTimeout(() => {
       setCheckedAsync(value)
