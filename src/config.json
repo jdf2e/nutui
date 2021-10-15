@@ -211,7 +211,28 @@
     },
     {
       "name": "导航组件",
-      "packages": []
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "NavBar",
+          "type": "component",
+          "cName": "导航组件",
+          "desc": "提供导航功能。",
+          "sort": 1,
+          "show": true,
+          "author": "dsj"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Tabbar",
+          "type": "component",
+          "cName": "标签栏组件",
+          "desc": "底部导航常用场景",
+          "sort": 2,
+          "show": true,
+          "author": "dsj"
+        }
+      ]
     },
     {
       "name": "数据录入",

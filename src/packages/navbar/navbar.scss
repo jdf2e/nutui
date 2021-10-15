@@ -1,0 +1,34 @@
+.nut-navbar {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 44px;
+  padding: 13px 16px;
+  background: #fff;
+  box-shadow: 0 1px 7px 0 #edeef1;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  &__back {
+    padding: 0 16px;
+    &:before {
+      content: '\e673';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &__icon {
+    display: flex;
+    margin-left: 16px;
+    .nut-icon:before {
+      max-width: 100%;
+    }
+  }
+  &__title {
+    flex: 1;
+    text-align: center;
+  }
+}
