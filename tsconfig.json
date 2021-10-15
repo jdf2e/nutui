@@ -5,7 +5,10 @@
     "target": "ESNext",
     "types": ["vite/client"],
     "allowJs": false,
-    "skipLibCheck": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationDir": "./dist/dts",
+    "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -14,7 +17,6 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
     "jsx": "react",
     "lib": ["esnext", "dom"],
     "outDir": "./tsc/test",
@@ -23,5 +25,5 @@
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"],
-  "exclude": ["./node_modules"]
+  "exclude": ["./node_modules/*"]
 }
