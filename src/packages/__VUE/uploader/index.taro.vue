@@ -75,6 +75,7 @@ export default create({
     uploadIconSize: { type: [String, Number], default: '' },
     xhrState: { type: [Number, String], default: 200 },
     disabled: { type: Boolean, default: false },
+    autoUpload: { type: Boolean, default: true },
     beforeDelete: {
       type: Function,
       default: (file: FileItem, files: FileItem[]) => {
@@ -86,6 +87,8 @@ export default create({
   emits: ['start', 'progress', 'oversize', 'success', 'failure', 'change', 'delete', 'update:fileList'],
   setup(props, { emit }) {
     const fileList = reactive(props.fileList) as Array<FileItem>;
+    let uploadQueue: Promise<Uploader>[] = [];
+
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -107,7 +110,7 @@ export default create({
       });
     };
 
-    const executeUpload = (fileItem: FileItem) => {
+    const executeUpload = (fileItem: FileItem, index: number) => {
       const uploadOption = new UploadOptions();
       uploadOption.name = props.name;
       uploadOption.url = props.url;
@@ -117,7 +120,9 @@ export default create({
       uploadOption.formData = fileItem.formData;
       uploadOption.method = props.method;
       uploadOption.headers = props.headers;
+      uploadOption.taroFilePath = fileItem.path;
       uploadOption.onStart = (option: UploadOptions) => {
+        clearUploadQueue(index);
         fileItem.status = 'ready';
         emit('start', option);
       };
@@ -141,21 +146,42 @@ export default create({
           option
         });
       };
+      let task = new Uploader(uploadOption);
+      if (props.autoUpload) {
+        task.uploadTaro(Taro.uploadFile);
+      } else {
+        uploadQueue.push(
+          new Promise((resolve, reject) => {
+            resolve(task);
+          })
+        );
+      }
+    };
 
-      new Uploader(uploadOption).uploadTaro(fileItem.path!, Taro.uploadFile);
+    const clearUploadQueue = (index = -1) => {
+      if (index > -1) {
+        uploadQueue.splice(index, 1);
+      } else {
+        uploadQueue = [];
+      }
+    };
+    const submit = () => {
+      Promise.all(uploadQueue).then((res) => {
+        res.forEach((i) => i.uploadTaro(Taro.uploadFile));
+      });
     };
 
     const readFile = (files: Taro.chooseImage.ImageFile[]) => {
-      files.forEach((file: Taro.chooseImage.ImageFile) => {
+      files.forEach((file: Taro.chooseImage.ImageFile, index: number) => {
         const fileItem = reactive(new FileItem());
         fileItem.path = file.path;
-        fileItem.status = 'uploading';
+        fileItem.status = 'ready';
         fileItem.type = file.type;
         if (props.isPreview) {
           fileItem.url = file.path;
         }
         fileList.push(fileItem);
-        executeUpload(fileItem);
+        executeUpload(fileItem, index);
       });
     };
 
@@ -180,6 +206,7 @@ export default create({
       return files;
     };
     const onDelete = (file: FileItem, index: number) => {
+      clearUploadQueue(index);
       if (props.beforeDelete(file, fileList)) {
         fileList.splice(index, 1);
         emit('delete', {
@@ -206,7 +233,9 @@ export default create({
       onDelete,
       fileList,
       classes,
-      chooseImage
+      chooseImage,
+      clearUploadQueue,
+      submit
     };
   }
 });
