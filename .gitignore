@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 .idea
+.eslintcache
 /dist
 /libs
 /jd/upload.js
