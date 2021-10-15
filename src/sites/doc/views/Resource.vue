@@ -11,9 +11,7 @@
     <div class="resource-block" v-if="articleList.length === 0">
       <h4 class="sub-title">设计资源</h4>
       <p class="sub-desc"
-        >这里提供 NUTUI
-        相关设计资源和设计工具的下载，更多设计资源正在整理和完善中。你可以在这个<span
-          class="sub-red"
+        >这里提供 NUTUI 相关设计资源和设计工具的下载，更多设计资源正在整理和完善中。你可以在这个<span class="sub-red"
           >地址</span
         >中反馈对新版本 Sketch Symbols 组件的意见。</p
       >
@@ -25,10 +23,8 @@
     <div class="resource-block" v-else>
       <h4 class="sub-title">设计资源</h4>
       <p class="sub-desc"
-        >想要了解 NutUI
-        设计体系背后的故事？如何才能更好的应用？你可以查阅下述我们为你精挑细选的文章。也欢迎关注
-        NutUI 官方专栏，这里常有关于 NutUI
-        设计体系下相关话题内容的最新分享和讨论。</p
+        >想要了解 NutUI 设计体系背后的故事？如何才能更好的应用？你可以查阅下述我们为你精挑细选的文章。也欢迎关注 NutUI
+        官方专栏，这里常有关于 NutUI 设计体系下相关话题内容的最新分享和讨论。</p
       >
       <div class="tab-box">
         <div class="tab-hd">
@@ -42,17 +38,15 @@
             {{ item.title }}
           </div>
         </div>
-        <div class="tab-bd" v-show="activeIndex === 0">
-          <div
-            class="design-item"
-            v-for="item in articleList"
-            :key="item.id"
-            @click="toLink(item.id)"
-          >
-            <img class="img-design" :src="item.cover_image" />
-            <p class="design-title" v-hover>{{ item.title }}</p>
+        <template v-for="pItem in articleList" v-show="activeIndex === 0">
+          <h3>{{ pItem.year }}</h3>
+          <div class="tab-bd">
+            <div class="design-item" v-for="item in pItem.list" :key="item.id" @click="toLink(item.id)">
+              <img class="img-design" :src="item.cover_image" />
+              <p class="design-title" v-hover>{{ item.title }}</p>
+            </div>
           </div>
-        </div>
+        </template>
       </div>
     </div>
     <!-- 社区文章 -->
@@ -60,14 +54,8 @@
       <h4 class="sub-title">社区文章</h4>
       <p class="sub-desc"></p>
       <ul class="article-box">
-        <li
-          class="article-item"
-          v-for="item in communityArticleList"
-          :key="item.id"
-        >
-          <a class="article-link" target="_blank" :href="item.link">
-            {{ item.title }} - {{ item.user_name }}
-          </a>
+        <li class="article-item" v-for="item in communityArticleList" :key="item.id">
+          <a class="article-link" target="_blank" :href="item.link"> {{ item.title }} - {{ item.user_name }} </a>
         </li>
       </ul>
     </div>
@@ -76,11 +64,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, reactive, toRefs } from 'vue';
-import {
-  onBeforeRouteUpdate,
-  RouteLocationNormalized,
-  useRoute
-} from 'vue-router';
+import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute } from 'vue-router';
 import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
 import { RefData } from '@/sites/assets/util/ref';
@@ -125,7 +109,16 @@ export default defineComponent({
         if (res?.state == 0) {
           (res.value.data.arrays as any[]).forEach((element) => {
             if (element.type == 1) {
-              data.articleList.push(element);
+              let year = element.create_time.split('-')[0];
+              let index = data.articleList.findIndex((item) => item.year == year);
+              if (index == -1) {
+                data.articleList.push({
+                  year,
+                  list: [element]
+                });
+              } else {
+                data.articleList[index].list.push(element);
+              }
             } else {
               data.communityArticleList.push(element);
             }
@@ -217,6 +210,9 @@ $mainRed: #fa685d;
 }
 .tab {
   &-box {
+    > h3 {
+      margin-bottom: 10px;
+    }
   }
   &-hd {
     display: flex;

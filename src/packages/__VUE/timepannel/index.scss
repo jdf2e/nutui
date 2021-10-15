@@ -1,0 +1,16 @@
+.nut-timepannel {
+  display: flex;
+  width: 140px;
+  height: 40px;
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+  color: $timepannel-text-color;
+  font-size: $timepannel-font-size;
+  box-sizing: border-box;
+  &--curr {
+    background-color: $timepannel-cur-bg-color;
+    color: $timepannel-cur-text-color;
+    font-weight: bold;
+  }
+}

@@ -66,7 +66,8 @@
         padding-top: 15px;
         height: 270px;
         overflow-y: auto;
-
+        box-sizing: border-box;
+        padding: 0;
         .region-item {
           display: flex;
           align-items: center;
@@ -100,6 +101,8 @@
       overflow-y: scroll;
 
       .exist-ul {
+        box-sizing: border-box;
+        padding: 0;
         .exist-item {
           display: flex;
           align-items: center;

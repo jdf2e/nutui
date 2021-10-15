@@ -87,6 +87,12 @@
         "show": true
       },
       {
+        "name": "contributing",
+        "cName": "贡献指南",
+        "path": "#/contributing",
+        "show": true
+      },
+      {
         "name": "https://github.com/jdf2e/nutui/releases",
         "cName": "更新日志",
         "show": true,
@@ -139,7 +145,7 @@
           "cName": "单元格组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "展示分组列表",
           "author": "richard1015"
@@ -212,7 +218,7 @@
           "cName": "布局-Col",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "布局组件Col",
           "author": "undo"
@@ -224,10 +230,21 @@
           "cName": "布局-Row",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "布局组件Row",
           "author": "undo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "ImagePreview",
+          "type": "component",
+          "cName": "图片预览",
+          "desc": "图片预览",
+          "sort": 4,
+          "show": true,
+          "taro": true,
+          "author": "zongyue3"
         }
       ]
     },
@@ -402,7 +419,7 @@
           "cName": "步骤条子组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "步骤条子组件",
           "author": "ailululu"
@@ -426,7 +443,7 @@
           "cName": "轮播图子组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "轮播图子组件",
           "author": "suzigang"
@@ -521,8 +538,9 @@
           "sort": 1,
           "cName": "标签组件",
           "type": "component",
-          "show": true,
-          "taro": true,
+          "show": false,
+          "exportEmpty": true,
+          "taro": false,
           "desc": "标签组件",
           "author": "zhenyulei"
         },
@@ -532,7 +550,7 @@
           "cName": "标签组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "标签组件",
           "author": "zhenyulei"
@@ -553,7 +571,7 @@
           "sort": 2,
           "cName": "菜单组件",
           "type": "component",
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "show": false,
           "desc": "下拉菜单组件",
@@ -577,7 +595,7 @@
           "cName": "标签栏子组件",
           "type": "component",
           "show": false,
-          "taro":true,
+          "taro": true,
           "exportEmpty": true,
           "desc": "标签栏子组件",
           "author": "Drjingfubo"
@@ -592,6 +610,40 @@
           "show": true,
           "taro": true,
           "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Pagination",
+          "type": "component",
+          "cName": "分页",
+          "desc": "当数据量较多时，采用分页的形式分隔长列表。",
+          "sort": 10,
+          "show": true,
+          "taro": true,
+          "author": "yushuang24"
+        },
+        {
+          "version": "3.1.9",
+          "name": "Tabs",
+          "type": "component",
+          "cName": "选项卡切换",
+          "desc": "常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式",
+          "sort": 11,
+          "show": true,
+          "taro": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.1.9",
+          "name": "TabPane",
+          "type": "component",
+          "cName": "选项卡子组件",
+          "desc": "",
+          "sort": 12,
+          "exportEmpty": true,
+          "taro": true,
+          "show": false,
+          "author": "richard1015"
         }
       ]
     },
@@ -790,6 +842,39 @@
           "show": true,
           "taro": true,
           "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Badge",
+          "type": "component",
+          "cName": "徽标",
+          "desc": "徽标",
+          "sort": 17,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Tag",
+          "type": "component",
+          "cName": "标签",
+          "desc": "标签",
+          "sort": 18,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Popover",
+          "type": "component",
+          "cName": "气泡弹出框",
+          "desc": "气泡弹出框",
+          "sort": 19,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
         }
       ]
     },
@@ -830,6 +915,41 @@
           "sort": 3,
           "show": true,
           "author": "guoxiaoxiao"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "TimeSelect",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间",
+          "sort": 4,
+          "show": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "TimePannel",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间",
+          "sort": 5,
+          "show": false,
+          "exportEmpty": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "TimeDetail",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间",
+          "sort": 6,
+          "show": false,
+          "exportEmpty": true,
+          "author": "szg2008"
         }
       ]
     }
