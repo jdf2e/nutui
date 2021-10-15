@@ -17,7 +17,6 @@ app.use(Avatar);
 app.use(Icon);
 ```
 
-## 代码示例
 
 ### 基本用法
 

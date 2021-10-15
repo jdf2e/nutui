@@ -33,6 +33,14 @@ export default create({
       type: String,
       default: ''
     },
+    touchMoveStopPropagation: {
+      type: Boolean,
+      default: false
+    },
+    touchMovePreventDefault: {
+      type: Boolean,
+      default: false
+    },
     disabled: {
       type: Boolean,
       default: false
@@ -104,20 +112,14 @@ export default create({
           if (opened && oldPosition === position) {
             offset = -rightRefWidth.value;
           } else {
-            offset =
-              Math.abs(deltaX) > rightRefWidth.value
-                ? -rightRefWidth.value
-                : deltaX;
+            offset = Math.abs(deltaX) > rightRefWidth.value ? -rightRefWidth.value : deltaX;
           }
           break;
         case 'right':
           if (opened && oldPosition === position) {
             offset = leftRefWidth.value;
           } else {
-            offset =
-              Math.abs(deltaX) > leftRefWidth.value
-                ? leftRefWidth.value
-                : deltaX;
+            offset = Math.abs(deltaX) > leftRefWidth.value ? leftRefWidth.value : deltaX;
           }
           break;
       }
@@ -132,12 +134,16 @@ export default create({
       },
       onTouchMove(event: Event) {
         if (props.disabled) return;
-        if (touch.isVertical() == false) {
+        touch.move(event);
+        if (touch.isHorizontal()) {
           state.moving = true;
-          touch.move(event);
           setoffset(touch.deltaX.value);
-
-          event.preventDefault();
+          if (props.touchMovePreventDefault) {
+            event.preventDefault();
+          }
+          if (props.touchMoveStopPropagation) {
+            event.stopPropagation();
+          }
         }
       },
       onTouchEnd() {

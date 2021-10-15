@@ -31,7 +31,7 @@ setup() {
           title: 'A',
           list: [
             {
-              name: '安徽',
+              name: '<span>安徽</span>',
               id: 1
             }
           ]
@@ -61,7 +61,7 @@ setup() {
     };
 
     return { ...toRefs(state), clickItem, clickIndex };
-  }
+}
 ```
 
 ### 自定义索引
@@ -78,7 +78,7 @@ setup() {
 |------------------------|----------------------------------------------------------------|---------|------|
 | height                 | 电梯区域的高度                                                    | Number、String  | `200px`
 | accept-key             | 索引 key 值                                                      | String  | `title` |
-| index-list             | 索引列表                                                         | Array（item需包含 id、name属性）  | `[{id: 0, name: ''}]` |
+| index-list             | 索引列表                                                         | Array（item需包含 id、name属性, name支持传入 html 结构）  | `[{id: 0, name: ''}]` |
 
 ### Event
 

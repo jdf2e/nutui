@@ -18,7 +18,6 @@ app.use(TabbarItem);
 
 ```
 
-## 代码示例
 
 ### 基础用法
 

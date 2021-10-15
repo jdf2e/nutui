@@ -14,7 +14,6 @@ const app = createApp();
 app.use(Cell).use(Icon);
 ```
 
-## 代码示例
 
 ### 基本用法
 

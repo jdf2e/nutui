@@ -1,10 +1,9 @@
 <template>
   <view :class="classes">
     <view class="nut-input-label">
-      <view class="nut-input-require" v-if="requireShow">*</view>
       <view v-if="label" class="label-string">{{ label }}</view>
     </view>
-    <view v-if="readonly">
+    <view v-if="readonly" class="input-text">
       {{ modelValue }}
     </view>
     <input
@@ -124,7 +123,8 @@ export default create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [`${prefixCls}-disabled`]: props.disabled
+        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-require`]: props.requireShow
       };
     });
 
@@ -169,8 +169,9 @@ export default create({
     };
 
     const handleClear = (event: Event) => {
-      emit('change', '', event);
       emit('update:modelValue', '', event);
+      emit('change', '', event);
+      emit('clear', '');
     };
 
     return {
