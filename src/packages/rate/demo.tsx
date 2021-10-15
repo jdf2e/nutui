@@ -2,7 +2,7 @@ import React from 'react'
 import { Rate } from './rate'
 
 const RateDemo = () => {
-  const onChange = (val) => {
+  const onChange = (val: any) => {
     alert(val)
   }
   return (
