@@ -1,0 +1,47 @@
+.nut-infiniteloading {
+  display: block;
+  width: 100%;
+  .nut-infinite-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    .top-box {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .top-img {
+        width: 28px;
+        height: 24px;
+      }
+      .top-text {
+        font-size: 10px;
+        color: $text-color;
+      }
+    }
+  }
+  .nut-infinite-bottom {
+    display: block;
+    width: 100%;
+    padding-top: 16px;
+    font-size: $font-size-small;
+    color: $infinite-bottom-color;
+    text-align: center;
+
+    .bottom-box {
+      .bottom-img {
+        margin-right: 5px;
+        width: 28px;
+        height: 24px;
+      }
+      .bottom-text {
+        font-size: 10px;
+        color: $text-color;
+      }
+    }
+  }
+}
