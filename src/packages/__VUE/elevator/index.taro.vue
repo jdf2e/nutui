@@ -179,9 +179,11 @@ export default create({
     };
 
     onMounted(() => {
-      Taro.nextTick(() => {
-        calculateHeight();
-      });
+      setTimeout(() => {
+        Taro.nextTick(() => {
+          calculateHeight();
+        });
+      }, 300);
     });
 
     return {
