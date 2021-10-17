@@ -1,0 +1,35 @@
+.nut-badge {
+  position: relative;
+  display: inline-block;
+  .slot-icons {
+    position: absolute;
+    background: $badge-background-color;
+    border-radius: 7px;
+    top: -20%;
+    right: -20%;
+    padding: 0 5px;
+    text-align: center;
+    border-radius: 14px;
+    z-index: 1;
+  }
+  .sup {
+    position: absolute;
+    background: $badge-background-color;
+    border-radius: 7px;
+    padding: 0 5px;
+    text-align: center;
+    border-radius: 14px;
+    font-size: $badge-font-size;
+    font-weight: normal;
+    color: $badge-default-background-color;
+  }
+  .nut-badge__content {
+    transform: translateY(-50%) translateX(100%);
+  }
+  .is-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 7px;
+    padding: 0;
+  }
+}

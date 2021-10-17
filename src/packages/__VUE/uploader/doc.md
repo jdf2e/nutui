@@ -16,7 +16,6 @@ app.use(Icon);
 
 ```
 
-## 代码示例
 
 ### 基本用法
 
@@ -92,6 +91,28 @@ setup() {
 }
 ```
 
+### 手动上传
+    
+``` html 
+<nut-uploader url="http://服务器地址" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
+<nut-button type="success" size="small" @click="submitUpload">执行上传</nut-button>
+```
+
+``` javascript
+import { ref } from 'vue';
+setup() {
+    const uploadRef = ref<any>(null);
+    const submitUpload = () => {
+      uploadRef.value.submit();
+    };
+    return {
+      uploadRef,
+      submitUpload
+    };
+}
+```
+
+
 ### 禁用状态
 
 ``` html
@@ -102,6 +123,7 @@ setup() {
 
 | 字段              | 说明                                                                                                                                                                                   | 类型                              | 默认值           |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|------------------|
+| auto-upload       | 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传                                                                                                             | Boolean                           | true             |
 | name              | `input` 标签 `name` 的名称，发到后台的文件参数名                                                                                                                                       | String                            | "file"           |
 | url               | 上传服务器的接口地址                                                                                                                                                                   | String                            | -                |
 | v-model:file-list | 默认已经上传的文件列表                                                                                                                                                                 | FileItem[]                        | []               |
@@ -115,12 +137,13 @@ setup() {
 | accept            | 允许上传的文件类型，[详细说明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | String                            | *                |
 | headers           | 设置上传的请求头部                                                                                                                                                                     | Object                            | {}               |
 | data              | 附加上传的信息 formData                                                                                                                                                                | Object                            | {}               |
-| upload-icon       | 上传区域[图标名称](#/zh-CN/icon)或图片链接                                                                                                                                             | String                            | "photograph"     |
+| upload-icon       | 上传区域[图标名称](#/icon)或图片链接                                                                                                                                                   | String                            | "photograph"     |
+| upload-icon-size  | 上传区域[图标尺寸](#/icon)大小，如 `20px` `2em` `2rem`                                                                                                                                 | String or Number                  | -                |
 | xhr-state         | 接口响应的成功状态（status）值                                                                                                                                                         | Number                            | 200              |
 | with-credentials  | 支持发送 cookie 凭证信息                                                                                                                                                               | Boolean                           | fasle            |
 | multiple          | 是否支持文件多选                                                                                                                                                                       | Boolean                           | fasle            |
 | disabled          | 是否禁用文件上传                                                                                                                                                                       | Boolean                           | fasle            |
-| timeout           | 超时时间，单位为毫秒                                                                                                   | Number丨String                    | 1000 * 30                 |
+| timeout           | 超时时间，单位为毫秒                                                                                                                                                                   | Number丨String                    | 1000 * 30        |
 | before-upload     | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                          | null             |
 | before-delete     | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除                                                                 | Function(file): boolean 丨Promise | -                |
 
@@ -149,3 +172,11 @@ setup() {
 | change   | 上传文件改变时的状态   | fileList,event       |
 | delete   | 文件删除之前的状态     | files,fileList       |
 
+### Methods
+
+通过 [ref](https://v3.cn.vuejs.org/api/special-attributes.html#key) 可以获取到 Uploader 实例并调用实例方法
+
+| 方法名           | 说明                                                       | 参数 | 返回值 |
+|------------------|------------------------------------------------------------|------|--------|
+| submit           | 手动上传模式，执行上传操作                                 | -    | -      |
+| clearUploadQueue | 清空已选择的文件队列（该方法一般配合在手动模式上传时使用） | -    | -      |

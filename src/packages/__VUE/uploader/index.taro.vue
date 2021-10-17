@@ -8,11 +8,7 @@
     </view>
 
     <template v-else>
-      <view
-        class="nut-uploader__preview"
-        v-for="(item, index) in fileList"
-        :key="item.uid"
-      >
+      <view class="nut-uploader__preview" v-for="(item, index) in fileList" :key="item.uid">
         <view class="nut-uploader__preview-img">
           <nut-icon
             v-if="isDeletable"
@@ -21,18 +17,12 @@
             class="close"
             name="circle-close"
           ></nut-icon>
-          <image
-            class="nut-uploader__preview-img__c"
-            v-if="item.url"
-            :src="item.url"
-          />
-          <view class="tips" v-if="item.status != 'success'">{{
-            item.status
-          }}</view>
+          <image class="nut-uploader__preview-img__c" v-if="item.url" :src="item.url" />
+          <view class="tips" v-if="item.status != 'success'">{{ item.status }}</view>
         </view>
       </view>
       <view class="nut-uploader__upload" v-if="maximum - fileList.length">
-        <nut-icon color="#808080" :name="uploadIcon"></nut-icon>
+        <nut-icon :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
         <nut-button class="nut-uploader__input" @click="chooseImage" />
       </view>
     </template>
@@ -45,12 +35,7 @@ import { createComponent } from '../../utils/create';
 import { Uploader, UploadOptions } from './uploader';
 const { componentName, create } = createComponent('uploader');
 import Taro from '@tarojs/taro';
-export type FileItemStatus =
-  | 'ready'
-  | 'uploading'
-  | 'success'
-  | 'error'
-  | 'removed';
+export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error' | 'removed';
 export class FileItem {
   status: FileItemStatus = 'ready';
   uid: string = new Date().getTime().toString();
@@ -87,8 +72,10 @@ export default create({
     headers: { type: Object, default: {} },
     data: { type: Object, default: {} },
     uploadIcon: { type: String, default: 'photograph' },
+    uploadIconSize: { type: [String, Number], default: '' },
     xhrState: { type: [Number, String], default: 200 },
     disabled: { type: Boolean, default: false },
+    autoUpload: { type: Boolean, default: true },
     beforeDelete: {
       type: Function,
       default: (file: FileItem, files: FileItem[]) => {
@@ -97,18 +84,11 @@ export default create({
     },
     onChange: { type: Function }
   },
-  emits: [
-    'start',
-    'progress',
-    'oversize',
-    'success',
-    'failure',
-    'change',
-    'delete',
-    'update:fileList'
-  ],
+  emits: ['start', 'progress', 'oversize', 'success', 'failure', 'change', 'delete', 'update:fileList'],
   setup(props, { emit }) {
     const fileList = reactive(props.fileList) as Array<FileItem>;
+    let uploadQueue: Promise<Uploader>[] = [];
+
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -130,8 +110,9 @@ export default create({
       });
     };
 
-    const executeUpload = (fileItem: FileItem) => {
+    const executeUpload = (fileItem: FileItem, index: number) => {
       const uploadOption = new UploadOptions();
+      uploadOption.name = props.name;
       uploadOption.url = props.url;
       for (const [key, value] of Object.entries(props.data)) {
         fileItem.formData[key] = value;
@@ -139,7 +120,9 @@ export default create({
       uploadOption.formData = fileItem.formData;
       uploadOption.method = props.method;
       uploadOption.headers = props.headers;
+      uploadOption.taroFilePath = fileItem.path;
       uploadOption.onStart = (option: UploadOptions) => {
+        clearUploadQueue(index);
         fileItem.status = 'ready';
         emit('start', option);
       };
@@ -148,10 +131,7 @@ export default create({
         emit('progress', { e, option });
       };
 
-      uploadOption.onSuccess = (
-        data: Taro.uploadFile.SuccessCallbackResult,
-        option: UploadOptions
-      ) => {
+      uploadOption.onSuccess = (data: Taro.uploadFile.SuccessCallbackResult, option: UploadOptions) => {
         fileItem.status = 'success';
         emit('success', {
           data,
@@ -159,30 +139,49 @@ export default create({
         });
         emit('update:fileList', fileList);
       };
-      uploadOption.onFailure = (
-        data: Taro.uploadFile.SuccessCallbackResult,
-        option: UploadOptions
-      ) => {
+      uploadOption.onFailure = (data: Taro.uploadFile.SuccessCallbackResult, option: UploadOptions) => {
         fileItem.status = 'error';
         emit('failure', {
           data,
           option
         });
       };
-      new Uploader(uploadOption).uploadTaro(fileItem.path!, Taro);
+      let task = new Uploader(uploadOption);
+      if (props.autoUpload) {
+        task.uploadTaro(Taro.uploadFile);
+      } else {
+        uploadQueue.push(
+          new Promise((resolve, reject) => {
+            resolve(task);
+          })
+        );
+      }
+    };
+
+    const clearUploadQueue = (index = -1) => {
+      if (index > -1) {
+        uploadQueue.splice(index, 1);
+      } else {
+        uploadQueue = [];
+      }
+    };
+    const submit = () => {
+      Promise.all(uploadQueue).then((res) => {
+        res.forEach((i) => i.uploadTaro(Taro.uploadFile));
+      });
     };
 
     const readFile = (files: Taro.chooseImage.ImageFile[]) => {
-      files.forEach((file: Taro.chooseImage.ImageFile) => {
+      files.forEach((file: Taro.chooseImage.ImageFile, index: number) => {
         const fileItem = reactive(new FileItem());
         fileItem.path = file.path;
-        fileItem.status = 'uploading';
+        fileItem.status = 'ready';
         fileItem.type = file.type;
         if (props.isPreview) {
           fileItem.url = file.path;
         }
         fileList.push(fileItem);
-        executeUpload(fileItem);
+        executeUpload(fileItem, index);
       });
     };
 
@@ -207,6 +206,7 @@ export default create({
       return files;
     };
     const onDelete = (file: FileItem, index: number) => {
+      clearUploadQueue(index);
       if (props.beforeDelete(file, fileList)) {
         fileList.splice(index, 1);
         emit('delete', {
@@ -233,12 +233,10 @@ export default create({
       onDelete,
       fileList,
       classes,
-      chooseImage
+      chooseImage,
+      clearUploadQueue,
+      submit
     };
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

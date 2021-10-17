@@ -14,7 +14,6 @@ const app = createApp();
 app.use(Cell).use(Icon);
 ```
 
-## 代码示例
 
 ### 基本用法
 
@@ -107,7 +106,7 @@ export default {
 | icon                   | 左侧 [图标名称](#/icon) 或图片链接                                                             | String  | -      |
 | round-radius           | 圆角半径                                                                                       | Number  | 6px    |
 | url `小程序不支持`     | 点击后跳转的链接地址                                                                           | String  | -      |
-| to   `小程序不支持`    | 点击后跳转的目标路由对象，同 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | String  | -      |
+| to   `小程序不支持`    | 点击后跳转的目标路由对象，同 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | String｜Object | -      |
 | replace `小程序不支持` | 是否在跳转时替换当前页面历史                                                                   | Boolean | false  |
 
 ### Event

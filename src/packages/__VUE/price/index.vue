@@ -88,7 +88,7 @@ export default create({
             ? 0
             : decimalNum.split('.')[1];
       } else {
-        decimalNum = decimalNum.toString();
+        decimalNum = 0;
       }
       const result = '0.' + decimalNum;
       const resultFixed = Number(result).toFixed(props.decimalDigits);
@@ -104,7 +104,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

@@ -29,4 +29,16 @@ export class ApiService {
       {}
     );
   }
+  /**
+   * 获取nutui常见问题
+   * @returns
+   * @memberof FaqApiService
+   */
+  getFaq() {
+    return this.httpClient.request(
+      '/openapi/faq?pageIndex=1&pageSize=100',
+      'get',
+      {}
+    );
+  }
 }

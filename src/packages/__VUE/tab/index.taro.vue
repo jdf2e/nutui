@@ -196,10 +196,13 @@ export default create({
       for (let i = 0; i < 100; i++) arrnew.push(i);
       arr.value = arrnew;
     });
-    watchEffect(
-      () => (ctx.slots.default ? ctx.slots.default() : ''),
-      () => {
-        initTitle();
+    watch(
+      () => ctx.slots.default(),
+      (val, oldVal) => {
+        if (val) {
+          ctx.slots.default();
+          initTitle();
+        }
       }
     );
     watchEffect(() => {
@@ -229,7 +232,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

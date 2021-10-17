@@ -123,10 +123,11 @@ export default create({
           .boundingClientRect((rec) => {
             let danmuCWidth = rec.width;
             // let width = domList[_index]['width'];
-            let height = domList[_index]['height'];
+            let height = domList[_index]?.height || 0;
             el.classList.add('move');
             el.style.animationDuration = `${speeds}ms`;
-            el.style.top = (_index % rows.value) * (height + top.value) + 'px';
+            el.style.top =
+              (_index % rows.value) * (height + top.value) + 20 + 'px';
             // el.style.width = width + 20 + 'px';
             el.style.width = 'auto';
             // el.style.left = "-"+(_index % rows.value) + 'px';
@@ -144,7 +145,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

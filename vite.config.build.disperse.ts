@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import config from './package.json';
+import configPkg from './src/config.json';
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
@@ -9,50 +10,46 @@ const banner = `/*!
 * Released under the MIT License.
 */`;
 
+let input = {};
+
+configPkg.nav.map((item) => {
+  item.packages.forEach((element) => {
+    let { name, show, type, exportEmpty } = element;
+    if (show || exportEmpty) {
+      input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${type === 'methods' ? '.ts' : '.vue'}`;
+    }
+  });
+});
+
 export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: path.resolve(__dirname, './src') }]
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // example : additionalData: `@import "./src/design/styles/variables";`
-        // dont need include file extend .scss
-        additionalData: `@import "@/packages/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
-      }
-    }
-  },
   plugins: [vue()],
   build: {
     minify: false,
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    },
     lib: {
-      entry: './src/packages/__VUE/button/index.vue',
-      name: 'index'
-      // formats: ['umd']
+      entry: '',
+      name: 'index',
+      // fileName: (format) => format,
+      formats: ['es']
     },
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
-      external: ['vue'],
-      input: ['./src/packages/button/index.vue'],
-      output: [
-        {
-          dir: null,
-          file: './dist/lib/button/index.js',
-          banner,
-          format: 'umd',
-          // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
-          globals: {
-            vue: 'Vue'
-          }
-        },
-        {
-          dir: null,
-          file: path.resolve(__dirname, './dist/es/button/index.js'),
-          banner,
-          format: 'es'
-        }
-      ]
+      external: ['vue', 'vue-router'],
+      input,
+      output: {
+        banner,
+        dir: path.resolve(__dirname, './dist/packages/_es'),
+        entryFileNames: '[name].js'
+      }
     },
-    emptyOutDir: true
+    emptyOutDir: false
   }
 });

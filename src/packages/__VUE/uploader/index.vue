@@ -28,11 +28,7 @@
     </view>
 
     <template v-else>
-      <view
-        class="nut-uploader__preview"
-        v-for="(item, index) in fileList"
-        :key="item.uid"
-      >
+      <view class="nut-uploader__preview" v-for="(item, index) in fileList" :key="item.uid">
         <view class="nut-uploader__preview-img">
           <nut-icon
             v-if="isDeletable"
@@ -41,18 +37,12 @@
             class="close"
             name="circle-close"
           ></nut-icon>
-          <img
-            class="nut-uploader__preview-img__c"
-            v-if="item.type.includes('image') && item.url"
-            :src="item.url"
-          />
-          <view class="tips" v-if="item.status != 'success'">{{
-            item.status
-          }}</view>
+          <img class="nut-uploader__preview-img__c" v-if="item.type.includes('image') && item.url" :src="item.url" />
+          <view class="tips" v-if="item.status != 'success'">{{ item.status }}</view>
         </view>
       </view>
       <view class="nut-uploader__upload" v-if="maximum - fileList.length">
-        <nut-icon color="#808080" :name="uploadIcon"></nut-icon>
+        <nut-icon :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
         <input
           class="nut-uploader__input"
           v-if="capture"
@@ -84,12 +74,7 @@ import { computed, reactive } from 'vue';
 import { createComponent } from '../../utils/create';
 import { Uploader, UploadOptions } from './uploader';
 const { componentName, create } = createComponent('uploader');
-export type FileItemStatus =
-  | 'ready'
-  | 'uploading'
-  | 'success'
-  | 'error'
-  | 'removed';
+export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error' | 'removed';
 export class FileItem {
   status: FileItemStatus = 'ready';
   uid: string = new Date().getTime().toString();
@@ -116,10 +101,12 @@ export default create({
     headers: { type: Object, default: {} },
     data: { type: Object, default: {} },
     uploadIcon: { type: String, default: 'photograph' },
+    uploadIconSize: { type: [String, Number], default: '' },
     xhrState: { type: [Number, String], default: 200 },
     withCredentials: { type: Boolean, default: false },
     multiple: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
+    autoUpload: { type: Boolean, default: true },
     beforeUpload: {
       type: Function,
       default: null
@@ -133,18 +120,11 @@ export default create({
     onChange: { type: Function }
     // customRequest: { type: Function }
   },
-  emits: [
-    'start',
-    'progress',
-    'oversize',
-    'success',
-    'failure',
-    'change',
-    'delete',
-    'update:fileList'
-  ],
+  emits: ['start', 'progress', 'oversize', 'success', 'failure', 'change', 'delete', 'update:fileList'],
   setup(props, { emit }) {
     const fileList = reactive(props.fileList) as Array<FileItem>;
+    let uploadQueue: Promise<Uploader>[] = [];
+
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -156,7 +136,7 @@ export default create({
       el.value = '';
     };
 
-    const executeUpload = (fileItem: FileItem) => {
+    const executeUpload = (fileItem: FileItem, index: number) => {
       const uploadOption = new UploadOptions();
       uploadOption.url = props.url;
       for (const [key, value] of Object.entries(props.data)) {
@@ -170,20 +150,15 @@ export default create({
       uploadOption.withCredentials = props.withCredentials;
       uploadOption.onStart = (option: UploadOptions) => {
         fileItem.status = 'ready';
+        clearUploadQueue(index);
         emit('start', option);
       };
-      uploadOption.onProgress = (
-        e: ProgressEvent<XMLHttpRequestEventTarget>,
-        option: UploadOptions
-      ) => {
+      uploadOption.onProgress = (e: ProgressEvent<XMLHttpRequestEventTarget>, option: UploadOptions) => {
         fileItem.status = 'uploading';
         emit('progress', { e, option });
       };
 
-      uploadOption.onSuccess = (
-        responseText: XMLHttpRequest['responseText'],
-        option: UploadOptions
-      ) => {
+      uploadOption.onSuccess = (responseText: XMLHttpRequest['responseText'], option: UploadOptions) => {
         fileItem.status = 'success';
         emit('success', {
           responseText,
@@ -191,30 +166,48 @@ export default create({
         });
         emit('update:fileList', fileList);
       };
-      uploadOption.onFailure = (
-        responseText: XMLHttpRequest['responseText'],
-        option: UploadOptions
-      ) => {
+      uploadOption.onFailure = (responseText: XMLHttpRequest['responseText'], option: UploadOptions) => {
         fileItem.status = 'error';
         emit('failure', {
           responseText,
           option
         });
       };
-      new Uploader(uploadOption).upload();
+      let task = new Uploader(uploadOption);
+      if (props.autoUpload) {
+        task.upload();
+      } else {
+        uploadQueue.push(
+          new Promise((resolve, reject) => {
+            resolve(task);
+          })
+        );
+      }
+    };
+    const clearUploadQueue = (index = -1) => {
+      if (index > -1) {
+        uploadQueue.splice(index, 1);
+      } else {
+        uploadQueue = [];
+      }
+    };
+    const submit = () => {
+      Promise.all(uploadQueue).then((res) => {
+        res.forEach((i) => i.upload());
+      });
     };
 
     const readFile = (files: File[]) => {
-      files.forEach((file: File) => {
+      files.forEach((file: File, index: number) => {
         const formData = new FormData();
         formData.append(props.name, file);
 
         const fileItem = reactive(new FileItem());
         fileItem.name = file.name;
-        fileItem.status = 'uploading';
+        fileItem.status = 'ready';
         fileItem.type = file.type;
         fileItem.formData = formData;
-        executeUpload(fileItem);
+        executeUpload(fileItem, index);
 
         if (props.isPreview && file.type.includes('image')) {
           const reader = new FileReader();
@@ -250,6 +243,7 @@ export default create({
       return files;
     };
     const onDelete = (file: FileItem, index: number) => {
+      clearUploadQueue(index);
       if (props.beforeDelete(file, fileList)) {
         fileList.splice(index, 1);
         emit('delete', {
@@ -292,12 +286,10 @@ export default create({
       onChange,
       onDelete,
       fileList,
-      classes
+      classes,
+      clearUploadQueue,
+      submit
     };
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

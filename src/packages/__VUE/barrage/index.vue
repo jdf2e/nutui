@@ -29,7 +29,7 @@ export default create({
     },
     frequency: {
       type: Number,
-      default: 200
+      default: 500
     },
     speeds: {
       type: Number,
@@ -119,7 +119,7 @@ export default create({
         const height = el.offsetHeight;
         el.classList.add('move');
         el.style.animationDuration = `${speeds}ms`;
-        el.style.top = (_index % rows.value) * (height + top.value) + 'px';
+        el.style.top = (_index % rows.value) * (height + top.value) + 20 + 'px';
         el.style.width = width + 20 + 'px';
         // el.style.left = "-"+(_index % rows.value) + 'px';
         el.style.setProperty('--move-distance', `-${danmuCWidth.value}px`);
@@ -134,7 +134,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

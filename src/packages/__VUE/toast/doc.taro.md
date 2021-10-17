@@ -14,7 +14,6 @@ const app = createApp();
 app.use(Toast);
 ```
 
-## 代码示例
 
 ``` html
 <nut-toast :msg="page.state.msg" v-model:visible="page.state.show" :type="page.state.type" @closed="page.methods.onClosed" :cover="page.state.cover" />

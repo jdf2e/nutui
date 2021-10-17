@@ -46,7 +46,7 @@ export default create({
     desc: { type: String, default: '' },
     descTextAlign: { type: String, default: 'right' },
     isLink: { type: Boolean, default: false },
-    to: { type: String, default: '' },
+    to: [String, Object],
     replace: { type: Boolean, default: false },
     roundRadius: { type: [String, Number], default: '' },
     url: { type: String, default: '' },
@@ -94,7 +94,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

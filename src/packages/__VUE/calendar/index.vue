@@ -116,9 +116,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-.popup-box {
-  height: 518px;
-}
-</style>

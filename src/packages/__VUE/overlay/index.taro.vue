@@ -1,12 +1,9 @@
 <template>
   <Transition name="overlay-fade">
-    <view
-      :class="classes"
-      @touchmove.stop="touchmove"
-      @click="onClick"
-      :style="style"
-      v-show="visible"
-    >
+    <view v-if="lockScroll" :class="classes" @click="onClick" :style="style" v-show="visible" :catch-move="true">
+      <slot></slot>
+    </view>
+    <view v-else :class="classes" @click="onClick" :style="style" v-show="visible">
       <slot></slot>
     </view>
   </Transition>
@@ -67,10 +64,6 @@ export default create({
       };
     });
 
-    const touchmove = (e: TouchEvent) => {
-      if (props.lockScroll) e.preventDefault();
-    };
-
     const onClick = (e: MouseEvent) => {
       emit('click', e);
       if (props.closeOnClickOverlay) {
@@ -78,10 +71,7 @@ export default create({
       }
     };
 
-    return { classes, style, touchmove, onClick };
+    return { classes, style, onClick };
   }
 });
 </script>
-<style lang="scss">
-@import 'index.scss';
-</style>

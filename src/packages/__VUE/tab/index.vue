@@ -140,7 +140,6 @@ export default create({
       nutuiSwiper.value.to(index);
     }
     function initTitle() {
-      console.log(11);
       titles.length = 0;
       if (ctx.slots.default) {
         const slots: VNode[] =
@@ -166,10 +165,13 @@ export default create({
     onMounted(() => {
       initTitle();
     });
-    watchEffect(
-      () => (ctx.slots.default ? ctx.slots.default() : ''),
-      () => {
-        initTitle();
+    watch(
+      () => ctx.slots.default(),
+      (val, oldVal) => {
+        if (val) {
+          ctx.slots.default();
+          initTitle();
+        }
       }
     );
     watchEffect(() => {
@@ -178,7 +180,7 @@ export default create({
     watch(
       () => activeIndex.value,
       (val, oldVal) => {
-        ictx.emit('switch-tab', activeIndex.value);
+        ctx.emit('switch-tab', activeIndex.value);
       }
     );
     return {
@@ -193,7 +195,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>
