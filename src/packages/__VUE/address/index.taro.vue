@@ -256,6 +256,13 @@ export default create({
 
       if (!data.length) return [];
 
+      data.forEach((item: RegionData) => {
+        if (!item.title) {
+          console.error('[NutUI] <Address> 请检查数组选项的 title 值是否有设置 ,title 为必填项 .');
+          return;
+        }
+      });
+
       const newData: CustomRegionData[] = [];
 
       data = data.sort((a: RegionData, b: RegionData) => {
