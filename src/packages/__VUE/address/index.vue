@@ -237,7 +237,6 @@ export default create({
     const isCustom2 = computed(() => props.type === 'custom2');
 
     const transformData = (data: RegionData[]) => {
-      console.log(data);
       if (!Array.isArray(data)) throw new TypeError('params muse be array.');
 
       if (!data.length) return [];
