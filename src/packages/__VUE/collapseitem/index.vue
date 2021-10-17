@@ -1,11 +1,7 @@
 <template>
   <view :class="classes">
     <view
-      :class="[
-        'collapse-item',
-        { 'item-expanded': openExpanded },
-        { 'nut-collapse-item-disabled': disabled }
-      ]"
+      :class="['collapse-item', { 'item-expanded': openExpanded }, { 'nut-collapse-item-disabled': disabled }]"
       @click="toggleOpen"
     >
       <view class="collapse-title">
@@ -16,13 +12,11 @@
               :name="titleIcon"
               :size="titleIconSize"
               :color="titleIconColor"
-              :class="[
-                titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight'
-              ]"
+              :class="[titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight']"
             ></nut-icon>
             <slot v-if="$slots.mTitle" name="mTitle"></slot>
             <template v-else>
-              <view v-html="title"></view>
+              <view v-html="title" class="collapse-icon-title"></view>
             </template>
           </view>
         </view>
@@ -36,11 +30,7 @@
         :name="icon"
         :size="iconSize"
         :color="iconColor"
-        :class="[
-          'collapse-icon',
-          { 'col-expanded': openExpanded },
-          { 'collapse-icon-disabled': disabled }
-        ]"
+        :class="['collapse-icon', { 'col-expanded': openExpanded }, { 'collapse-icon-disabled': disabled }]"
         :style="iconStyle"
       ></nut-icon>
     </view>
@@ -115,9 +105,7 @@ export default create({
       // classDirection: 'right',
       iconStyle: {
         transform: 'rotate(0deg)',
-        marginTop: parent.props.iconHeght
-          ? '-' + parent.props.iconHeght / 2 + 'px'
-          : '-10px'
+        marginTop: parent.props.iconHeght ? '-' + parent.props.iconHeght / 2 + 'px' : '-10px'
       }
     });
 
@@ -138,8 +126,7 @@ export default create({
 
     // 清除 willChange 减少性能浪费
     const onTransitionEnd = () => {
-      const wrapperRefEle: any =
-        document.getElementsByClassName('collapse-wrapper')[0];
+      const wrapperRefEle: any = document.getElementsByClassName('collapse-wrapper')[0];
       wrapperRefEle.style.willChange = 'auto';
 
       // const query = wx.createSelectorQuery();
@@ -157,14 +144,11 @@ export default create({
       if (offsetHeight) {
         const contentHeight = `${offsetHeight}px`;
         wrapperRefEle.style.willChange = 'height';
-        wrapperRefEle.style.height = !proxyData.openExpanded
-          ? 0
-          : contentHeight;
+        wrapperRefEle.style.height = !proxyData.openExpanded ? 0 : contentHeight;
         if (parent.props.icon && !proxyData.openExpanded) {
           proxyData.iconStyle['transform'] = 'rotate(0deg)';
         } else {
-          proxyData.iconStyle['transform'] =
-            'rotate(' + parent.props.rotate + 'deg)';
+          proxyData.iconStyle['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
         }
       }
       if (!proxyData.openExpanded) {
@@ -180,8 +164,7 @@ export default create({
     const defaultOpen = () => {
       open();
       if (parent.props.icon) {
-        proxyData['iconStyle']['transform'] =
-          'rotate(' + parent.props.rotate + 'deg)';
+        proxyData['iconStyle']['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
       }
     };
 

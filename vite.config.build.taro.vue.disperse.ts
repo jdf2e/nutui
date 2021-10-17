@@ -14,9 +14,11 @@ let input = {};
 
 configPkg.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, show, taro, type, exportEmpty } = element;
+    let { name, show, taro, type, exportEmpty, exportEmptyTaro } = element;
     if (taro && (show || exportEmpty)) {
-      input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${exportEmpty ? '.vue' : '.taro.vue'}`;
+      input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${
+        exportEmpty && !exportEmptyTaro ? '.vue' : '.taro.vue'
+      }`;
     }
   });
 });
