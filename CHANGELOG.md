@@ -1,4 +1,10 @@
 
+## 2.3.6
+
+`2021-10-17`
+
+* :sparkles: feat(infiniteloading、scroller): 加载中文案 props 提取 #662 (#719) @lzzwoniu
+* :bug: fix(tabbar): 标签栏右上角数字角标等于100时不显示 (#590) @yuyuko233
 ## 2.3.3~2.3.5
 
 `2021-08-26`
