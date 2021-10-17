@@ -237,9 +237,17 @@ export default create({
     const isCustom2 = computed(() => props.type === 'custom2');
 
     const transformData = (data: RegionData[]) => {
+      console.log(data);
       if (!Array.isArray(data)) throw new TypeError('params muse be array.');
 
       if (!data.length) return [];
+
+      data.forEach((item: RegionData) => {
+        if (!item.title) {
+          console.error('[NutUI] <Address> 请检查数组选项的 title 值是否有设置 ,title 为必填项 .');
+          return;
+        }
+      });
 
       const newData: CustomRegionData[] = [];
 
