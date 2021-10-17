@@ -43,6 +43,11 @@
       "path": "#/resource"
     },
     {
+      "name": "notice",
+      "cName": "通知",
+      "path": "#/notice"
+    },
+    {
       "name": "joinus",
       "cName": "加入我们",
       "path": "#/joinus"
@@ -92,6 +97,11 @@
         "cName": "更新日志",
         "show": true,
         "isLink": true
+      },
+      {
+        "name": "notice",
+        "cName": "常见问题",
+        "show": true
       }
     ]
   },
@@ -301,6 +311,7 @@
           "type": "component",
           "show": false,
           "exportEmpty": true,
+          "exportEmptyTaro": true,
           "desc": "折叠面板-item",
           "author": "Ymm0008"
         },
@@ -440,6 +451,7 @@
           "show": false,
           "taro": true,
           "exportEmpty": true,
+          "exportEmptyTaro": true,
           "desc": "轮播图子组件",
           "author": "suzigang"
         },

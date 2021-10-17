@@ -10,28 +10,28 @@
     @touchmove="touchMove"
     @touchend="touchEnd"
   >
-    <view-block class="nut-infinite-top" :style="getStyle">
-      <view-block class="top-box" id="refreshTop">
+    <view class="nut-infinite-top" :style="getStyle">
+      <view class="top-box" id="refreshTop">
         <nut-icon class="top-img" :name="pullIcon"></nut-icon>
-        <view-block class="top-text">{{ pullTxt }}</view-block>
-      </view-block>
-    </view-block>
+        <view class="top-text">{{ pullTxt }}</view>
+      </view>
+    </view>
 
-    <view-block class="nut-infinite-container">
+    <view class="nut-infinite-container">
       <slot></slot>
-    </view-block>
+    </view>
 
-    <view-block class="nut-infinite-bottom">
+    <view class="nut-infinite-bottom">
       <template v-if="isInfiniting">
-        <view-block class="bottom-box">
+        <view class="bottom-box">
           <nut-icon class="bottom-img" :name="loadIcon"></nut-icon>
-          <view-block class="bottom-text">{{ loadTxt }}</view-block>
-        </view-block>
+          <view class="bottom-text">{{ loadTxt }}</view>
+        </view>
       </template>
       <template v-else-if="!hasMore">
-        <view-block class="tips">{{ loadMoreTxt }}</view-block>
+        <view class="tips">{{ loadMoreTxt }}</view>
       </template>
-    </view-block>
+    </view>
   </scroll-view>
 </template>
 <script lang="ts">

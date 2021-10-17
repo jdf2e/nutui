@@ -2,6 +2,8 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Index from './views/Index.vue';
 import Resource from './views/Resource.vue';
+import Notice from './views/Notice.vue';
+import NoticeDetail from './views/NoticeDetail.vue';
 import Main from './views/Main.vue';
 import config from '../config/env';
 const pagesRouter: Array<RouteRecordRaw> = [];
@@ -62,7 +64,6 @@ for (const path in modulesDocs) {
     name
   });
 }
-
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -80,6 +81,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/resource',
     name: 'resource',
     component: Resource
+  },
+  {
+    path: '/notice',
+    name: 'notice',
+    component: Notice
+  },
+  {
+    path: '/noticedetail',
+    name: 'noticedetail',
+    component: NoticeDetail
   }
 ];
 routes.push({
@@ -106,9 +117,7 @@ router.afterEach((to, from) => {
   window.scrollTo(0, 0);
   try {
     setTimeout(() => {
-      new Image().src = `${config.baseUrl}/openapi/point?p=${encodeURIComponent(
-        JSON.stringify(location)
-      )}`;
+      new Image().src = `${config.baseUrl}/openapi/point?p=${encodeURIComponent(JSON.stringify(location))}`;
     }, 500);
   } catch (error) {}
 });

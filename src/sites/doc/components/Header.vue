@@ -197,6 +197,7 @@ export default defineComponent({
         line-height: 63px;
         text-align: center;
         cursor: pointer;
+        flex-shrink: 0;
         a {
           display: inline-block;
           line-height: 64px;
