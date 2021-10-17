@@ -313,7 +313,8 @@ export default create({
       nextTick(() => {
         if (name) {
           const distance = name.offsetLeft;
-          lineDistance.value = distance;
+
+          lineDistance.value = distance ? distance : 20;
         }
       });
     };
