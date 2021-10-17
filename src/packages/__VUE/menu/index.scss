@@ -1,7 +1,69 @@
 .nut-menu {
-  background: $white;
-  display: flex;
-  align-items: center;
   position: relative;
-  height: 46px;
+  font-size: 14px;
+  color: #1a1a1a;
+
+  .title-list {
+    display: flex;
+    line-height: 46px;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1px solid #eaf0fb;
+
+    .title {
+      flex: 1;
+      text-align: center;
+
+      &.is-active {
+        font-weight: 600;
+      }
+
+      &.disabled {
+        color: #999;
+      }
+
+      [class*='nut-icon-arrow'] {
+        vertical-align: middle;
+        margin-right: 2px;
+      }
+    }
+  }
+
+  %itemCommon {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 0 0 12px 12px;
+    background-color: #fff;
+  }
+
+  .option-list {
+    @extend %itemCommon;
+    max-height: 214px;
+    overflow-y: auto;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    li {
+      line-height: 38px;
+      padding-left: 24px;
+
+      .nut-icon-Check {
+        vertical-align: middle;
+        margin-right: 6px;
+      }
+    }
+  }
+
+  .customer-item {
+    @extend %itemCommon;
+    padding-left: 24px;
+    padding-right: 24px;
+    box-sizing: border-box;
+  }
 }

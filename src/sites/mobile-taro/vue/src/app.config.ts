@@ -46,7 +46,8 @@ export default {
         'pages/tabbar/index',
         'pages/tab/index',
         'pages/fixednav/index',
-        'pages/elevator/index'
+        'pages/elevator/index',
+        'pages/menu/index'
       ]
     },
     {

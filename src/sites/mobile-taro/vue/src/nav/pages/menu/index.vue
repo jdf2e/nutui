@@ -49,9 +49,7 @@
 
 <script lang="ts">
 import { ref, reactive, toRefs } from 'vue';
-import { createComponent } from '../../utils/create';
-const { createDemo } = createComponent('menu');
-export default createDemo({
+export default {
   props: {},
   setup() {
     const options1 = [
@@ -84,7 +82,7 @@ export default createDemo({
       handleClick
     };
   }
-});
+};
 </script>
 
 <style lang="scss" scoped></style>
