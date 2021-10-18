@@ -1,18 +1,23 @@
 <template>
-  <view :class="classes">
-    <view
-      v-if="needSymbol"
-      class="nut-price--symbol"
-      decode="true"
-      v-html="showSymbol"
-    ></view>
+  <view :class="classes" v-if="beforeOrAfter == 'before'">
+    <view v-if="needSymbol" class="nut-price--symbol" decode="true" v-html="showSymbol"></view>
     <view class="nut-price--big">
       {{ formatThousands(price) }}
     </view>
-    <view class="nut-price--point">.</view>
+    <view class="nut-price--point" v-if="decimalDigits != 0">.</view>
     <view class="nut-price--small">
       {{ formatDecimal(price) }}
     </view>
+  </view>
+  <view :class="classes" v-if="beforeOrAfter == 'after'">
+    <view class="nut-price--big">
+      {{ formatThousands(price) }}
+    </view>
+    <view class="nut-price--point" v-if="decimalDigits != 0">.</view>
+    <view class="nut-price--small">
+      {{ formatDecimal(price) }}
+    </view>
+    <view v-if="needSymbol" class="nut-price--symbol" decode="true" v-html="showSymbol"></view>
   </view>
 </template>
 
@@ -42,6 +47,10 @@ export default create({
     thousands: {
       type: Boolean,
       default: false
+    },
+    beforeOrAfter: {
+      type: String,
+      default: 'before'
     }
   },
 
@@ -74,10 +83,7 @@ export default create({
       }
       if (checkPoint(num)) {
         num = Number(num).toFixed(props.decimalDigits);
-        num =
-          typeof num.split('.') === 'string'
-            ? num.split('.')
-            : num.split('.')[0];
+        num = typeof num.split('.') === 'string' ? num.split('.') : num.split('.')[0];
       } else {
         num = num.toString();
       }
@@ -94,9 +100,7 @@ export default create({
       if (checkPoint(decimalNum)) {
         decimalNum = Number(decimalNum).toFixed(props.decimalDigits);
         decimalNum =
-          typeof decimalNum.split('.') === 'string'
-            ? 0
-            : decimalNum.split('.')[1];
+          typeof decimalNum.split('.') === 'string' ? 0 : decimalNum.split('.')[1] ? decimalNum.split('.')[1] : 0;
       } else {
         decimalNum = 0;
       }
