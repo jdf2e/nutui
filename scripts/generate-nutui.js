@@ -8,7 +8,7 @@ config.nav.map((item) => {
   item.packages.forEach((element) => {
     let { name, show, type } = element
     if (show) {
-      importStr += `import ${name} from './packages/${name.toLowerCase()}';\n`
+      importStr += `import ${name} from './${name.toLowerCase()}';\n`
       packages.push(name)
     }
   })
@@ -17,6 +17,11 @@ config.nav.map((item) => {
 let fileStr = `${importStr}
 export { ${packages.join(',')} };`
 
-fs.outputFile(path.resolve(__dirname, '../src/nutui.ts'), fileStr, 'utf8', (error) => {
-  if (error) throw error
-})
+fs.outputFile(
+  path.resolve(__dirname, '../src/packages/nutui.react.ts'),
+  fileStr,
+  'utf8',
+  (error) => {
+    if (error) throw error
+  }
+)
