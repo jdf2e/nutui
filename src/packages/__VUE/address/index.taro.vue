@@ -137,6 +137,7 @@ import Taro from '@tarojs/taro';
 const { create, componentName } = createComponent('address');
 
 interface RegionData {
+  id: string;
   name: string;
   [key: string]: any;
 }
