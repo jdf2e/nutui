@@ -1,0 +1,65 @@
+.nut-circleprogress {
+  position: relative;
+
+  .nut-circleprogress-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .nut-circleprogress__right {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    float: right;
+  }
+  .nut-circleprogress__left {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    float: left;
+  }
+
+  .nut-circleprogress__line {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    overflow: hidden;
+    &.nut-circleprogress__l {
+      top: 0px;
+      transform: rotate(0deg);
+      left: 0px;
+    }
+
+    &.nut-circleprogress__r {
+      top: 0px;
+      transform: rotate(180deg);
+      right: 0px;
+    }
+  }
+
+  .nut-circleprogress__progress {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    font-family: PingFangSC;
+    font-weight: normal;
+    color: rgba(29, 29, 33, 1);
+  }
+
+  .nut-circleprogress__line__c {
+    width: 200%;
+    height: 100%;
+    border: 10px solid transparent;
+    border-radius: 50%;
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    transform: rotate(-45deg);
+  }
+}
