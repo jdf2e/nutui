@@ -63,4 +63,7 @@ export default {
 .demo-avatar {
   color: #fff;
 }
+.nut-avatar {
+  margin-right: 24px;
+}
 </style>
