@@ -7,29 +7,29 @@
     v-model:visible="showPopup"
     :class="classes"
   >
-    <view-block class="nut-address">
-      <view-block class="nut-address__header">
-        <view-block class="arrow-back" @click="switchModule">
+    <view class="nut-address">
+      <view class="nut-address__header">
+        <view class="arrow-back" @click="switchModule">
           <nut-icon
             :name="backBtnIcon"
             color="#cccccc"
             v-if="privateType == 'custom' && type == 'exist' && backBtnIcon"
           ></nut-icon>
-        </view-block>
+        </view>
 
-        <view-block class="nut-address__header__title">
+        <view class="nut-address__header__title">
           {{ privateType == 'custom' ? customAddressTitle : existAddressTitle }}
-        </view-block>
+        </view>
 
-        <view-block class="arrow-close" @click="handClose('cross')">
+        <view class="arrow-close" @click="handClose('cross')">
           <nut-icon v-if="closeBtnIcon" :name="closeBtnIcon" color="#cccccc" size="18px"></nut-icon>
-        </view-block>
-      </view-block>
+        </view>
+      </view>
 
       <!-- 请选择 -->
-      <view-block class="custom-address" v-if="privateType == 'custom'">
-        <view-block class="region-tab">
-          <view-block
+      <view class="custom-address" v-if="privateType == 'custom'">
+        <view class="region-tab">
+          <view
             class="tab-item"
             :class="[index == tabIndex ? 'active' : '', key]"
             v-for="(item, key, index) in selectedRegion"
@@ -38,12 +38,12 @@
             @click="changeRegionTab(item, key, index)"
           >
             <view>{{ getTabName(item, index) }}</view>
-          </view-block>
+          </view>
 
-          <view-block class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view-block>
-        </view-block>
+          <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
+        </view>
 
-        <view-block class="region-con">
+        <view class="region-con">
           <ul class="region-group">
             <li
               v-for="(item, index) in regionList[tabName[tabIndex]]"
@@ -63,10 +63,10 @@
               >{{ item.name }}
             </li>
           </ul>
-        </view-block>
-      </view-block>
+        </view>
+      </view>
 
-      <view-block class="custom-address" v-else-if="privateType === 'custom2'">
+      <view class="custom-address" v-else-if="privateType === 'custom2'">
         <view class="region-tab">
           <view
             class="tab-item"
@@ -87,10 +87,10 @@
             @click-item="handleElevatorItem"
           ></nut-elevator>
         </view>
-      </view-block>
+      </view>
 
       <!-- 配送至 -->
-      <view-block class="exist-address" v-else-if="privateType == 'exist'">
+      <view class="exist-address" v-else-if="privateType == 'exist'">
         <div class="exist-address-group">
           <ul class="exist-ul">
             <li
@@ -125,8 +125,8 @@
         <div class="choose-other" @click="switchModule" v-if="isShowCustomAddress">
           <div class="btn">{{ customAndExistTitle }}</div>
         </div>
-      </view-block>
-    </view-block>
+      </view>
+    </view>
   </nut-popup>
 </template>
 <script lang="ts">
@@ -137,6 +137,7 @@ import Taro from '@tarojs/taro';
 const { create, componentName } = createComponent('address');
 
 interface RegionData {
+  id: string;
   name: string;
   [key: string]: any;
 }
@@ -255,6 +256,13 @@ export default create({
       if (!Array.isArray(data)) throw new TypeError('params muse be array.');
 
       if (!data.length) return [];
+
+      data.forEach((item: RegionData) => {
+        if (!item.title) {
+          console.error('[NutUI] <Address> 请检查数组选项的 title 值是否有设置 ,title 为必填项 .');
+          return;
+        }
+      });
 
       const newData: CustomRegionData[] = [];
 

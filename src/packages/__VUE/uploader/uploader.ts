@@ -8,6 +8,7 @@ export class UploadOptions {
   headers = {};
   withCredentials = false;
   onStart?: Function;
+  taroFilePath?: string;
   onProgress?: Function;
   onSuccess?: Function;
   onFailure?: Function;
@@ -50,11 +51,11 @@ export class Uploader {
       console.warn('浏览器不支持 XMLHttpRequest');
     }
   }
-  uploadTaro(filePath: string, uploadFile: Function) {
+  uploadTaro(uploadFile: Function) {
     const options = this.options;
     const uploadTask = uploadFile({
       url: options.url,
-      filePath,
+      filePath: options.taroFilePath,
       header: {
         'Content-Type': 'multipart/form-data',
         ...options.headers
