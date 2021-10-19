@@ -21,6 +21,8 @@
 import { toRefs, reactive, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 import Popup from '../popup/index.vue';
+import Swiper from '../swiper/index.vue';
+import SwiperItem from '../Swiperitem/index.vue';
 const { componentName, create } = createComponent('imagepreview');
 
 export default create({
@@ -35,7 +37,9 @@ export default create({
     }
   },
   components: {
-    [Popup.name]: Popup
+    [Popup.name]: Popup,
+    [Swiper.name]: Swiper,
+    [SwiperItem.name]: SwiperItem
   },
 
   setup(props, { emit }) {
