@@ -1,98 +1,76 @@
 .nut-searchbar {
   display: flex;
-  flex-flow: row;
-  padding: 10px 15px;
-  background: #fff;
+  align-items: center;
   .search-input {
     display: flex;
-    height: 36px;
+    align-items: center;
+    width: 100%;
+    height: 32px;
     flex: 1;
     padding: 0 0 0 13px;
-    background-color: rgba(247, 247, 247, 1);
-    border-radius: 18px;
+    background-color: #fff;
+    border-radius: 16px;
 
-    form {
+    .input-inner {
       display: flex;
-      height: 100%;
-      width: 100%;
-      align-items: center;
       position: relative;
-
-      .search-icon {
-        width: 40px;
-        height: 40px;
-        // margin-right: 5px;
-      }
-
-      input {
-        width: 100%;
-        flex: 1;
-        padding: 0;
-        margin: 0;
-        background-color: transparent;
-        border-color: transparent;
-        outline: none;
-        color: #323232;
-        font-size: 14px;
-
-        &.left {
-          text-align: left;
-        }
-        &.center {
-          text-align: center;
-        }
-        &.right {
-          text-align: right;
-        }
-
-        &::-webkit-search-cancel-button {
-          display: none;
-        }
-
-        &::-webkit-input-placeholder {
-          font-size: 14px;
-          color: #c8c8c8;
-          font-weight: normal;
-        }
-        &:-moz-placeholder {
-          font-size: 14px;
-          color: #c8c8c8;
-          font-weight: normal;
-        }
-        &::-moz-placeholder {
-          font-size: 14px;
-          color: #c8c8c8;
-          font-weight: normal;
-        }
-        &:-ms-input-placeholder {
-          font-size: 14px;
-          color: #c8c8c8;
-          font-weight: normal;
-        }
-      }
-
-      .input-right {
-        height: 100%;
+      .input-clear {
         display: flex;
+        justify-content: center;
         align-items: center;
-
-        &:last-child {
-          margin: 0 16px 0 4px;
-        }
-
-        &.pos {
-          margin: 0 8px 0 4px;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 16px;
+        height: 16px;
+        margin-top: -8px;
+        & .nut-icon-mask-close {
+          color: rgb(204, 204, 204);
+          &:hover {
+            cursor: pointer;
+            color: rgb(104, 104, 104);
+          }
         }
       }
     }
 
-    &.focus {
-      box-shadow: 0 0 5px 0 $light-color;
+    .iptleft-search-icon {
+      margin-left: 12px;
+      margin-right: 6px;
+      width: 14px;
+      height: 14px;
     }
 
-    &.nut-search-ani {
-      // animation: nutPulse $animation-duration;
+    .iptright-sarch-icon {
     }
+
+    .input-bar {
+      width: 200px;
+      height: 32px;
+      flex: 1;
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+      border-color: transparent;
+      border-radius: 16px;
+      outline: none;
+      font-size: 14px;
+    }
+  }
+
+  .left-search-icon {
+    margin-right: 8px;
+  }
+
+  .search-icon {
+    display: flex;
+    overflow: hidden;
+    width: 20px;
+    height: 20px;
+  }
+
+  .right-search-icon {
+    margin-left: 16px;
   }
 
   .btn-right {
