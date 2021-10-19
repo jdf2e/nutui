@@ -519,6 +519,7 @@
           "desc": "搜索栏",
           "sort": 23,
           "show": true,
+          "taro": true,
           "author": "zongyue3"
         }
       ]

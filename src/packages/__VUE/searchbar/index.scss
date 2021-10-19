@@ -19,6 +19,7 @@
         justify-content: center;
         align-items: center;
         position: absolute;
+        z-index: 2;
         top: 50%;
         right: 0;
         width: 16px;
@@ -64,9 +65,8 @@
 
   .search-icon {
     display: flex;
-    overflow: hidden;
-    width: 20px;
-    height: 20px;
+    justify-content: center;
+    align-items: center;
   }
 
   .right-search-icon {
