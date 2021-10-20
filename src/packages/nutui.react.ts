@@ -4,6 +4,7 @@ import Cell from './cell'
 import Icon from './icon'
 import Price from './price'
 import Overlay from './overlay'
+import Divider from './divider'
 import Drag from './drag'
 import Collapse from './collapse'
 import Toast from './toast'
@@ -27,6 +28,7 @@ export {
   Icon,
   Price,
   Overlay,
+  Divider,
   Drag,
   Collapse,
   Toast,

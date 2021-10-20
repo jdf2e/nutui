@@ -142,6 +142,16 @@
           "sort": 5,
           "show": true,
           "author": "junjun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Divider",
+          "type": "component",
+          "cName": "分割线",
+          "desc": "用于将内容分隔为多个区域",
+          "sort": 7,
+          "show": true,
+          "author": "vickyYE"
         }
       ]
     },
