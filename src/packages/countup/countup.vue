@@ -49,7 +49,11 @@
       </template>
     </template>
     <template v-else>
-      <ul v-if="scrolling" class="run-number" :style="{ height: numHeight + 'px', lineHeight: numHeight + 'px' }">
+      <ul
+        v-if="scrolling"
+        class="run-number"
+        :style="{ width: numWidth * num_total_len + numWidth / 3 + 'px', height: numHeight + 'px', lineHeight: numHeight + 'px' }"
+      >
         <li
           ref="numberItem"
           v-for="(val, index) of num_total_len"
@@ -282,8 +286,11 @@ export default {
     // 数字滚动-top值
     topNumber(index) {
       let { num_total_len, pointNum, initDigit1, initDigit2, sortFlag } = this;
-      let idx1 = sortFlag == 'add' ? initDigit2[index - (num_total_len - pointNum)] : 10 - initDigit2[index - (num_total_len - pointNum)];
-      let idx2 = sortFlag == 'add' ? initDigit1[index] : 10 - initDigit1[index];
+      let idx1 =
+        sortFlag == 'add' || sortFlag == 'equal'
+          ? initDigit2[index - (num_total_len - pointNum)]
+          : 10 - initDigit2[index - (num_total_len - pointNum)];
+      let idx2 = sortFlag == 'add' || sortFlag == 'equal' ? initDigit1[index] : 10 - initDigit1[index];
       let num = index > num_total_len - pointNum - 1 ? -idx1 * 100 + '%' : index <= initDigit1.length - 1 ? -idx2 * 100 + '%' : 0;
       if (num == '-1000%') {
         num = 0;
@@ -298,12 +305,12 @@ export default {
       return num;
     },
     countGo() {
-      let val = null;
-      if (this.toFixed != 0) {
-        // val = this.endNum.toFixed(this.toFixed);
-        // this.initNum = this.initNum.toFixed(this.toFixed);
-        // this.endNum = this.endNum.toFixed(this.toFixed);
-      }
+      // let val = null;
+      // if (this.toFixed != 0) {
+      // val = this.endNum.toFixed(this.toFixed);
+      // this.initNum = this.initNum.toFixed(this.toFixed);
+      // this.endNum = this.endNum.toFixed(this.toFixed);
+      // }
       let { initNum, endNum, toFixed, customBgImg } = this;
 
       if (customBgImg) {
@@ -352,12 +359,14 @@ export default {
         this.to0_10 = [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
         this.totalCount = this.calculation(initNum, endNum, '-');
         this.numberVal = String(initNum);
-      } else {
+      } else if (initNum < endNum) {
         //增加
         this.sortFlag = 'add';
         this.to0_10 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
         this.totalCount = this.calculation(endNum, initNum, '-');
         this.numberVal = String(endNum);
+      } else {
+        this.sortFlag = 'equal';
       }
       //将小数位数计算后，补0
       var unit = 1;
@@ -384,6 +393,9 @@ export default {
       if (this.scrolling && !customBgImg) {
         this.$nextTick(() => {
           // 数字都是从小加到大的，所以我们循环转动最后一个数字，传入最后一个数字的DOM
+          if (this.sortFlag == 'equal') {
+            return false;
+          }
           let element = this.$refs.numberItem[this.num_total_len - 1];
           this.runTurn(element);
         });
