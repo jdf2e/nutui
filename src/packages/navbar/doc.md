@@ -17,7 +17,7 @@
 
 ### 基本用法
 
-```html
+```jsx
    <NavBar
       title="订单详情"
       icon="share"
@@ -47,37 +47,6 @@
 
 ```
 
-### 设置slot:tabs可以增加tab
-
-```html
-    <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-clear="edit" @on-click-send="list" desc="编辑" icon="horizontal">
-      <template v-slot:tabs>
-        <nut-tab>
-          <nut-tab-panel tab-title="商品"><p class="content">这里是页签全部内容</p></nut-tab-panel>
-          <nut-tab-panel tab-title="店铺"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
-        </nut-tab>
-      </template>
-    </nut-navbar>
-```
-
-### 多tab切换导航及增加右侧按钮
-
-```html
-    <nut-navbar @on-click-back="back" icon="share" @on-click-send="send">
-      <template v-slot:tabs>
-        <nut-tab>
-          <nut-tab-panel tab-title="商品"><p class="content">这里是页签全部内容</p></nut-tab-panel>
-          <nut-tab-panel tab-title="评价"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
-          <nut-tab-panel tab-title="详情"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
-          <nut-tab-panel tab-title="推荐"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
-        </nut-tab>
-      </template>
-
-      <template #icons >
-        <nut-icon class="icon" name="more" @on-click-slot-send="morelist"></nut-icon>
-      </template>
-    </nut-navbar>
-```
 
 ### Prop  
 

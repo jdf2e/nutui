@@ -274,7 +274,7 @@ export const Uploader: FunctionComponent<
                     <input
                       className="nut-uploader__input"
                       type="file"
-                      capture="camera"
+                      capture="user"
                       name={name}
                       accept={accept}
                       disabled={disabled}
@@ -327,7 +327,7 @@ export const Uploader: FunctionComponent<
                 <input
                   className="nut-uploader__input"
                   type="file"
-                  capture="camera"
+                  capture="user"
                   name={name}
                   accept={accept}
                   disabled={disabled}

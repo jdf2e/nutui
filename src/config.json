@@ -191,12 +191,17 @@
           "sort": 2,
           "show": true,
           "author": "vickyYe"
-        }
-      ]
-    },
-    {
-      "name": "基础组件",
-      "packages": [
+        },
+        {
+          "version": "1.0.0",
+          "name": "Infiniteloading",
+          "type": "component",
+          "cName": "滚动加载",
+          "desc": "列表滚动到底部自动加载更多数据。",
+          "sort": 5,
+          "show": true,
+          "author": "swag~jun"
+        },
         {
           "version": "1.0.0",
           "name": "Steps",
@@ -231,12 +236,32 @@
           "sort": 2,
           "show": true,
           "author": "dsj"
+        },
+        {
+          "version": "1.0.0",
+          "name": "InputNumber",
+          "type": "component",
+          "cName": "数字输入框",
+          "desc": "通过点击按钮控制数字增减。",
+          "sort": 3,
+          "show": true,
+          "author": "swag~jun"
         }
       ]
     },
     {
       "name": "数据录入",
       "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Rate",
+          "type": "component",
+          "cName": "评分",
+          "desc": "用于快速的评级操作，或对评价进行展示。",
+          "sort": 1,
+          "show": true,
+          "author": "dsj"
+        },
         {
           "version": "1.0.0",
           "name": "Uploader",
