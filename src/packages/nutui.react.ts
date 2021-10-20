@@ -8,6 +8,7 @@ import Drag from './drag'
 import Collapse from './collapse'
 import Toast from './toast'
 import BackTop from './backtop'
+import Range from './range'
 import Infiniteloading from './infiniteloading'
 import Steps from './steps'
 import NavBar from './navbar'
@@ -30,6 +31,7 @@ export {
   Collapse,
   Toast,
   BackTop,
+  Range,
   Infiniteloading,
   Steps,
   NavBar,
