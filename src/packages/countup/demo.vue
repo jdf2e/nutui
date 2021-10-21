@@ -10,7 +10,7 @@
     </div>
     <h4>数字滚动</h4>
     <div class="show-demo">
-      <nut-countup :scrolling="true" :init-num="17.618" :during="600"> </nut-countup>
+      <nut-countup :scrolling="true" :init-num="18.618" :during="600"> </nut-countup>
     </div>
     <h4>自定义滚动图片展示</h4>
     <div class="show-demo">
@@ -90,6 +90,7 @@ export default {
 
 <style lang="scss" scoped>
 .show-demo {
+  padding: 0 15px;
   background: #ffffff;
 }
 .disabledClick {
