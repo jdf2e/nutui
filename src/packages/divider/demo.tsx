@@ -27,7 +27,7 @@ const DividerDemo = () => {
         </Cell>
         <h2>自定义样式</h2>
         <Cell>
-          <Divider style={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }}>
+          <Divider styles={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }}>
             文本
           </Divider>
         </Cell>
