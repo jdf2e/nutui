@@ -149,8 +149,20 @@ $shortpsd-border-color: #ddd !default;
 $shortpsd-error: rgba(242, 39, 12, 1) !default;
 $shortpsd-forget: rgba(128, 128, 128, 1) !default;
 
-//price
+//big price
 $price-big-size: 24px !default;
+$price-decimal-big-size: 16px !default;
+$price-symbol-big-size: 16px !default;
+
+//medium price
+$price-medium-size: 16px !default;
+$price-decimal-medium-size: 9.88px !default;
+$price-symbol-medium-size: 9.88px !default;
+
+// small price
+$price-small-size: 13px !default;
+$price-decimal-small-size: 8.125px !default;
+$price-symbol-small-size: 10.4px !default;
 
 //avatar
 $avatar-square: 5px !default;

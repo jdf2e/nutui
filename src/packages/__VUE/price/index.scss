@@ -15,8 +15,45 @@
     display: inline-block;
     font-size: $price-big-size;
   }
+  // &--small {
+  //   display: inline-block;
+  //   font-size: $font-size-4;
+  // }
+
+  &--decimal-big {
+    display: inline-block;
+    font-size: $price-decimal-big-size;
+  }
+  &--symbol-big {
+    display: inline-block;
+    font-size: $price-symbol-big-size;
+  }
+  &--medium {
+    display: inline-block;
+    font-size: $price-medium-size;
+  }
+  &--decimal-medium {
+    display: inline-block;
+    font-size: $price-decimal-medium-size;
+  }
+  &--symbol-medium {
+    display: inline-block;
+    font-size: $price-symbol-medium-size;
+  }
   &--small {
     display: inline-block;
-    font-size: $font-size-4;
+    font-size: $price-small-size;
   }
+  &--decimal-small {
+    display: inline-block;
+    font-size: $price-decimal-small-size;
+  }
+  &--symbol-small {
+    display: inline-block;
+    font-size: $price-symbol-small-size;
+  }
+  // &--decimal--big {
+  //   display: inline-block;
+  //   font-size: $price-medium-size;
+  // }
 }

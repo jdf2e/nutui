@@ -1,23 +1,26 @@
 <template>
-  <view :class="classes" v-if="beforeOrAfter == 'before'">
-    <view v-if="needSymbol" class="nut-price--symbol" decode="true" v-html="showSymbol"></view>
-    <view class="nut-price--big">
+  <view :class="classes">
+    <view
+      v-if="needSymbol && position == 'before'"
+      class="nut-price--symbol"
+      :class="`nut-price--symbol-${fontSize}`"
+      decode="true"
+      v-html="showSymbol"
+    ></view>
+    <view :class="`nut-price--${fontSize}`">
       {{ formatThousands(price) }}
     </view>
-    <view class="nut-price--point" v-if="decimalDigits != 0">.</view>
-    <view class="nut-price--small">
+    <view :class="`nut-price--decimal-${fontSize}`" v-if="decimalDigits != 0">.</view>
+    <view :class="`nut-price--decimal-${fontSize}`">
       {{ formatDecimal(price) }}
     </view>
-  </view>
-  <view :class="classes" v-if="beforeOrAfter == 'after'">
-    <view class="nut-price--big">
-      {{ formatThousands(price) }}
-    </view>
-    <view class="nut-price--point" v-if="decimalDigits != 0">.</view>
-    <view class="nut-price--small">
-      {{ formatDecimal(price) }}
-    </view>
-    <view v-if="needSymbol" class="nut-price--symbol" decode="true" v-html="showSymbol"></view>
+    <view
+      v-if="needSymbol && position == 'after'"
+      class="nut-price--symbol"
+      :class="`nut-price--symbol-${fontSize}`"
+      decode="true"
+      v-html="showSymbol"
+    ></view>
   </view>
 </template>
 
@@ -48,9 +51,13 @@ export default create({
       type: Boolean,
       default: false
     },
-    beforeOrAfter: {
+    position: {
       type: String,
       default: 'before'
+    },
+    fontSize: {
+      type: String,
+      default: 'big'
     }
   },
 
