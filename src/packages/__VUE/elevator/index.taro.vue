@@ -23,7 +23,7 @@
         ></view>
       </view>
     </scroll-view>
-    <view class="nut-elevator__code--current" v-show="scrollStart" v-if="indexList.length">
+    <view class="nut-elevator__code--current" v-show="scrollStart" v-if="indexList.length > 0">
       {{ indexList[currentIndex][acceptKey] }}
     </view>
     <view class="nut-elevator__bars" @touchstart="touchStart" @touchmove.stop.prevent="touchMove" @touchend="touchEnd">
@@ -179,6 +179,9 @@ export default create({
     };
 
     onMounted(() => {
+      Taro.nextTick(() => {
+        calculateHeight();
+      });
       if (Taro.getEnv() === 'WEB') {
         calculateHeight();
       } else {
