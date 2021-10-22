@@ -13,41 +13,29 @@
     <h2>限制上传数量5个</h2>
     <nut-uploader :url="uploadUrl" multiple maximum="5"></nut-uploader>
     <h2>限制上传大小（每个文件最大不超过 50kb）</h2>
-    <nut-uploader
-      :url="uploadUrl"
-      multiple
-      :maximize="1024 * 50"
-      @oversize="onOversize"
-    ></nut-uploader>
+    <nut-uploader :url="uploadUrl" multiple :maximize="1024 * 50" @oversize="onOversize"></nut-uploader>
     <h2>限制上传大小（在beforeupload钩子中处理）</h2>
-    <nut-uploader
-      :url="uploadUrl"
-      multiple
-      :before-upload="beforeUpload"
-      :maximize="1024 * 50"
-      @oversize="onOversize"
-    >
+    <nut-uploader :url="uploadUrl" multiple :before-upload="beforeUpload" :maximize="1024 * 50" @oversize="onOversize">
     </nut-uploader>
     <h2>自定义数据 FormData 、 headers </h2>
-    <nut-uploader
-      :url="uploadUrl"
-      :data="formData"
-      :headers="formData"
-      :with-credentials="true"
-    ></nut-uploader>
+    <nut-uploader :url="uploadUrl" :data="formData" :headers="formData" :with-credentials="true"></nut-uploader>
+    <h2>手动上传 </h2>
+    <nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
+    <br />
+    <nut-button type="success" size="small" @click="submitUpload">执行上传</nut-button>
     <h2>禁用状态</h2>
     <nut-uploader disabled></nut-uploader>
   </div>
 </template>
 
 <script lang="ts">
+import { ref } from 'vue';
 import { createComponent } from '../../utils/create';
 import { FileItem } from './index.vue';
 const { createDemo } = createComponent('uploader');
 export default createDemo({
   setup() {
-    const uploadUrl =
-      'https://my-json-server.typicode.com/linrufeng/demo/posts';
+    const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts';
     const formData = {
       custom: 'test'
     };
@@ -65,14 +53,8 @@ export default createDemo({
         img.src = dataURL;
       });
     };
-    const canvastoFile = (
-      canvas: HTMLCanvasElement,
-      type: string,
-      quality: number
-    ): Promise<Blob | null> => {
-      return new Promise((resolve) =>
-        canvas.toBlob((blob) => resolve(blob), type, quality)
-      );
+    const canvastoFile = (canvas: HTMLCanvasElement, type: string, quality: number): Promise<Blob | null> => {
+      return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality));
     };
     const onOversize = (files: File[]) => {
       console.log('oversize 触发 文件大小不能超过 50kb', files);
@@ -95,12 +77,18 @@ export default createDemo({
       const f = await new File([blob], file[0].name);
       return [f];
     };
+    const uploadRef = ref<any>(null);
+    const submitUpload = () => {
+      uploadRef.value.submit();
+    };
     return {
       onOversize,
       beforeUpload,
       onDelete,
       uploadUrl,
-      formData
+      formData,
+      uploadRef,
+      submitUpload
     };
   }
 });

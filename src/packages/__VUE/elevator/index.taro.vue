@@ -23,9 +23,9 @@
         ></view>
       </view>
     </scroll-view>
-    <view class="nut-elevator__code--current" v-show="scrollStart" v-if="indexList.length">{{
-      indexList[currentIndex][acceptKey]
-    }}</view>
+    <view class="nut-elevator__code--current" v-show="scrollStart" v-if="indexList.length > 0">
+      {{ indexList[currentIndex][acceptKey] }}
+    </view>
     <view class="nut-elevator__bars" @touchstart="touchStart" @touchmove.stop.prevent="touchMove" @touchend="touchEnd">
       <view class="nut-elevator__bars__inner">
         <view
@@ -182,6 +182,13 @@ export default create({
       Taro.nextTick(() => {
         calculateHeight();
       });
+      if (Taro.getEnv() === 'WEB') {
+        calculateHeight();
+      } else {
+        eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
+          calculateHeight();
+        });
+      }
     });
 
     return {
