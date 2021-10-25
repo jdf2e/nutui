@@ -11,14 +11,7 @@
 </template>
 
 <script lang="ts">
-import {
-  onMounted,
-  onDeactivated,
-  onActivated,
-  reactive,
-  ref,
-  computed
-} from 'vue';
+import { onMounted, onDeactivated, onActivated, reactive, ref, computed } from 'vue';
 import { createComponent } from '../../utils/create';
 import requestAniFrame from '../../utils/raf';
 const { componentName, create } = createComponent('drag');
@@ -105,8 +98,7 @@ export default create({
     }
     function goRight(target: HTMLElement, rightLocation: number) {
       if (rightLocation - parseInt(target.style.left.split('px')[0]) > 10) {
-        target.style.left =
-          parseInt(target.style.left.split('px')[0]) + 10 + 'px';
+        target.style.left = parseInt(target.style.left.split('px')[0]) + 10 + 'px';
         requestAniFrame(() => {
           goRight(target, rightLocation);
         });
@@ -123,8 +115,7 @@ export default create({
         state.ny = touch.clientY - state.position.y;
         state.xPum = state.startLeft + state.nx;
         state.yPum = state.startTop + state.ny;
-        const rightLocation =
-          state.screenWidth - state.elWidth - state.boundary.right;
+        const rightLocation = state.screenWidth - state.elWidth - state.boundary.right;
         if (Math.abs(state.xPum) > rightLocation) {
           state.xPum = rightLocation;
         } else if (state.xPum <= state.boundary.left) {
@@ -132,12 +123,8 @@ export default create({
         }
         if (state.yPum < state.boundary.top) {
           state.yPum = state.boundary.top;
-        } else if (
-          state.yPum >
-          state.screenHeight - state.elHeight - state.boundary.bottom
-        ) {
-          state.yPum =
-            state.screenHeight - state.elHeight - state.boundary.bottom;
+        } else if (state.yPum > state.screenHeight - state.elHeight - state.boundary.bottom) {
+          state.yPum = state.screenHeight - state.elHeight - state.boundary.bottom;
         }
         if (props.direction != 'y') {
           target.style.left = state.xPum + 'px';
@@ -151,15 +138,13 @@ export default create({
       const target = e.currentTarget as HTMLElement;
       const touch = e.changedTouches[0];
       let currX = touch.clientX;
-      const rightLocation =
-        state.screenWidth - state.elWidth - state.boundary.right;
+      const rightLocation = state.screenWidth - state.elWidth - state.boundary.right;
       if (currX > rightLocation) {
         currX = rightLocation;
       } else if (currX < state.boundary.left) {
         currX = state.boundary.left;
       } else {
-        currX =
-          currX < state.screenWidth / 2 ? state.boundary.left : rightLocation;
+        currX = currX < state.screenWidth / 2 ? state.boundary.left : rightLocation;
       }
       if (props.direction != 'y' && props.attract) {
         if (currX < state.screenWidth / 2) {
@@ -172,17 +157,22 @@ export default create({
           });
         }
       }
-      if (props.direction !== 'x') {
+      if (props.direction != 'x') {
         target.style.top = state.yPum + 'px';
       }
     }
     function touchStart(e: TouchEvent) {
       const target = e.currentTarget as HTMLElement;
       const touches = e.touches[0];
+      const touch = e.targetTouches[0];
       state.startTop = target.offsetTop;
       state.startLeft = target.offsetLeft;
       state.position.x = touches.clientX;
       state.position.y = touches.clientY;
+      state.nx = touch.clientX - state.position.x;
+      state.ny = touch.clientY - state.position.y;
+      state.xPum = state.startLeft + state.nx;
+      state.yPum = state.startTop + state.ny;
     }
     onMounted(() => {
       getInfo();
