@@ -142,6 +142,16 @@
           "sort": 5,
           "show": true,
           "author": "junjun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Divider",
+          "type": "component",
+          "cName": "分割线",
+          "desc": "用于将内容分隔为多个区域",
+          "sort": 7,
+          "show": true,
+          "author": "vickyYE"
         }
       ]
     },
@@ -189,6 +199,16 @@
           "cName": "返回顶部",
           "desc": "提供较长的页面快捷返回顶部功能。",
           "sort": 2,
+          "show": true,
+          "author": "vickyYe"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Range",
+          "type": "component",
+          "cName": "区间选择器",
+          "desc": "滑动输入条，用于在给定的范围内选择一个值。",
+          "sort": 3,
           "show": true,
           "author": "vickyYe"
         },
