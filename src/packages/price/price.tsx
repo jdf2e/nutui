@@ -20,7 +20,7 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
   const { price, needSymbol, symbol, decimalDigits, thousands } = { ...defaultProps, ...props }
   const b = bem('price')
   const showSymbol = () => {
-    return { __html: (props.needSymbol ? props.symbol : '') || '' }
+    return { __html: (needSymbol ? symbol : '') || '' }
   }
   const checkPoint = (price: string | number) => {
     return String(price).indexOf('.') > 0
@@ -35,7 +35,7 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     } else {
       num = num.toString()
     }
-    if (props.thousands) {
+    if (thousands) {
       return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,')
     } else {
       return num

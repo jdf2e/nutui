@@ -1,6 +1,7 @@
 import React, { MouseEvent } from 'react'
 import { Cell } from './cell'
 import { CellGroup } from '../cellgroup/cellgroup'
+import { Switch } from '../switch/switch'
 
 const CellDemo = () => {
   const testClick = (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
@@ -29,7 +30,7 @@ const CellDemo = () => {
         </CellGroup>
 
         <CellGroup title="自定义右侧箭头区域">
-          <Cell title="Switch" extra={<div>这里是switch组件</div>}></Cell>
+          <Cell title="Switch" extra={<Switch checked={true}></Switch>}></Cell>
         </CellGroup>
         <h2>展示图标</h2>
         <Cell title="姓名" icon="my" desc="张三" isLink={true}></Cell>
