@@ -121,6 +121,18 @@ setup() {
   <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
 </nut-tabbar>
 ```
+
+### 自定义Icon
+如果需要在现有 Icon 的基础上使用更多图标，请参考icon组件自定义图标引入。
+``` html
+<nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
+  <nut-tabbar-item tab-title="首页" font-class-name="iconfont" class-prefix="icon" icon="home"></nut-tabbar-item>
+  <nut-tabbar-item tab-title="分类" font-class-name="iconfont" class-prefix="icon"  icon="category"></nut-tabbar-item>
+  <nut-tabbar-item tab-title="发现" font-class-name="iconfont" class-prefix="icon"  icon="find"></nut-tabbar-item>
+  <nut-tabbar-item tab-title="购物车" font-class-name="iconfont" class-prefix="icon"  icon="cart"></nut-tabbar-item>
+  <nut-tabbar-item tab-title="我的" font-class-name="iconfont" class-prefix="icon" icon="my"></nut-tabbar-item>
+</nut-tabbar>
+```
 ### 三个图标的标签栏
 
 ``` html
@@ -167,6 +179,8 @@ setup() {
 |-----------|-------------------------------------------|--------|--------|
 | tab-title | 标签页的标题                              | String | --     |
 | icon      | 标签页显示的[图标名称](#/icon)  | String | --     |
+| font-class-name | 自定义icon 字体基础类名     | String           | `nutui-iconfont` |
+| class-prefix | 自定义icon 类名前缀，用于使用自定义图标     | String           | `nut-icon` |
 | img      | 标签页显示图片链接 | String | --     |
 | activeImg      | 激活以后的标签页显示图片链接（同一个item中icon和img只能选择一个） | String | --     |
 | href      | 标签页的跳转链接                          | String | --     |
