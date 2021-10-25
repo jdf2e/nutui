@@ -81,8 +81,6 @@ export const TextArea: FunctionComponent<
     if (blur) {
       blur(event)
     }
-    //  emitChange(value, event)
-    //  emit('blur', event)
   }
 
   return (
