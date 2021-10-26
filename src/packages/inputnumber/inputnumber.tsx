@@ -97,7 +97,13 @@ export const InputNumber: FunctionComponent<
     const output_value: number | string = fixedDecimalPlaces(value)
     change && change(output_value, e)
     if (!isAsync) {
-      setInputValue(output_value)
+      if (Number(output_value) < Number(min)) {
+        setInputValue(Number(min))
+      } else if (Number(output_value) > Number(max)) {
+        setInputValue(Number(max))
+      } else {
+        setInputValue(output_value)
+      }
     }
   }
 

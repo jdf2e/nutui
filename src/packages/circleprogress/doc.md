@@ -7,7 +7,7 @@
 ### 安装
 
 ``` javascript
-import { CirecleProgress } from '@nutui/nutui';
+import { CirecleProgress } from '@nutui/nutui-react';
 ```
 
 ## 代码演示
