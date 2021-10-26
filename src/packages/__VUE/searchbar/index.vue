@@ -8,17 +8,18 @@
         <slot name="leftin"></slot>
       </view>
       <view class="input-inner">
-        <input
-          class="input-bar"
-          :type="text"
-          :maxlength="maxLength"
-          :placeholder="placeholder"
-          :value="modelValue"
-          @input="valueChange"
-          @focus="valueFocus"
-          @blur="valueBlur"
-          @keypress="searchAction"
-        />
+        <form action="#" @submit.prevent="handleSubmit">
+          <input
+            class="input-bar"
+            :type="inputType"
+            :maxlength="maxLength"
+            :placeholder="placeholder"
+            :value="modelValue"
+            @input="valueChange"
+            @focus="valueFocus"
+            @blur="valueBlur"
+          />
+        </form>
         <view @click="handleClear" class="input-clear" v-if="clearable" v-show="modelValue.length > 0">
           <nut-icon name="mask-close" size="12px"></nut-icon>
         </view>
@@ -47,6 +48,10 @@ export default create({
     modelValue: {
       type: [String, Number],
       default: ''
+    },
+    inputType: {
+      type: String,
+      default: 'text'
     },
     maxLength: {
       type: [String, Number],
@@ -108,15 +113,6 @@ export default create({
       emit('focus', value, event);
     };
 
-    const searchAction = (event: any) => {
-      if (event.keyCode == 13) {
-        const input = event.target as HTMLInputElement;
-        let value = input.value;
-        state.active = true;
-        emit('search', value, event);
-      }
-    };
-
     const valueBlur = (event: Event) => {
       setTimeout(() => {
         state.active = false;
@@ -136,13 +132,17 @@ export default create({
       emit('clear', '');
     };
 
+    const handleSubmit = () => {
+      emit('search', props.modelValue);
+    };
+
     return {
       ...toRefs(state),
       valueChange,
       valueFocus,
       valueBlur,
       handleClear,
-      searchAction
+      handleSubmit
     };
   }
 });

@@ -65,6 +65,7 @@ app.use(SearchBar);
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | max-length         | 最大输入长度   | [Number,String] | '9999'      |
+| input-type    | 输入框类型   | String | 'text'      |
 | placeholder        | 输入框默认暗纹  | String | '请输入'   |
 | clearable          | 是否展示清除按钮 | Boolean | true     |
 | has-left-in     | 是否展示输入框内 左icon     | Boolean | true |
