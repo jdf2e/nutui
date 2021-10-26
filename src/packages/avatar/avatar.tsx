@@ -4,13 +4,16 @@ import classNames from 'classnames'
 import './avatar.scss'
 
 export interface AvatarProps {
-  size: string
+  size: AvatarSize
   icon: string
-  shape: string
+  shape: AvatarShape
   bgColor: string
   prefixCls: string
   src: string
 }
+
+export type AvatarSize = 'large' | 'normal' | 'small'
+export type AvatarShape = 'round' | 'square'
 const defaultProps: AvatarProps = {
   size: 'normal',
   icon: '',

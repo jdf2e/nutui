@@ -142,6 +142,16 @@
           "sort": 5,
           "show": true,
           "author": "junjun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Divider",
+          "type": "component",
+          "cName": "分割线",
+          "desc": "用于将内容分隔为多个区域",
+          "sort": 7,
+          "show": true,
+          "author": "vickyYE"
         }
       ]
     },
@@ -194,6 +204,16 @@
         },
         {
           "version": "1.0.0",
+          "name": "Range",
+          "type": "component",
+          "cName": "区间选择器",
+          "desc": "滑动输入条，用于在给定的范围内选择一个值。",
+          "sort": 3,
+          "show": true,
+          "author": "vickyYe"
+        },
+        {
+          "version": "1.0.0",
           "name": "Infiniteloading",
           "type": "component",
           "cName": "滚动加载",
@@ -208,6 +228,16 @@
           "type": "component",
           "cName": "步骤条",
           "desc": "拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。",
+          "sort": 7,
+          "show": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "CircleProgress",
+          "type": "component",
+          "cName": "进度条",
+          "desc": "展示操作或任务的当前进度。",
           "sort": 7,
           "show": true,
           "author": "swag~jun"
