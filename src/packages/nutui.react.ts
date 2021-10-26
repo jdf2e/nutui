@@ -18,6 +18,7 @@ import Uploader from './uploader'
 import Input from './input'
 import TextArea from './textarea'
 import CheckBox from './checkbox'
+import Signature from './signature'
 
 export {
   Avatar,
@@ -40,4 +41,5 @@ export {
   Input,
   TextArea,
   CheckBox,
+  Signature,
 }

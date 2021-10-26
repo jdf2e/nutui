@@ -306,7 +306,18 @@
     },
     {
       "name": "特色组件",
-      "packages": []
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Signature",
+          "type": "component",
+          "cName": "签字",
+          "desc": "基于Canvas的签名组件",
+          "sort": 1,
+          "show": true,
+          "author": "songsong"
+        }
+      ]
     }
   ]
 }
