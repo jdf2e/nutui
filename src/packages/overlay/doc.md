@@ -38,8 +38,9 @@ import { OverLay } from '@nutui/nutui';
 | visible                   | 当前组件是否显示 | Boolean        | `false`  |
 | zIndex                | 遮罩层级         | Number | 2000   |
 | duration               | 动画时长，单位秒 | Number | 0.3    |
-| overlayClass          | 自定义遮罩类名   | String         | -      |
-| overlayStyle          | 自定义遮罩样式   | CSSProperties  | -      |
+| className          | 自定义遮罩类名   | String         | -      |
+| style          | 自定义遮罩样式   | CSSProperties  | -      |
+| lockScroll          | 背景是否锁定   | Boolean  | `false`     |
 | closeOnClickOverlay | 是否点击遮罩关闭 | Boolean        | `true`   |
 
 ### Events
