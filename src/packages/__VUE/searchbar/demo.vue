@@ -29,8 +29,8 @@ export default createDemo({
       searchValue: ''
     });
 
-    const search = function () {
-      console.log('ENTER clicked');
+    const search = function (e: any) {
+      console.log('search now', e);
     };
 
     const clickLeft = function () {
@@ -48,7 +48,5 @@ export default createDemo({
 
 <style lang="scss" scoped>
 .wrap {
-  height: 80px;
-  background: rgba(0, 0, 0, 0.1);
 }
 </style>
