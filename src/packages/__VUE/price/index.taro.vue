@@ -3,21 +3,21 @@
     <view
       v-if="needSymbol && position == 'before'"
       class="nut-price--symbol"
-      :class="`nut-price--symbol-${fontSize}`"
+      :class="`nut-price--symbol-${size}`"
       decode="true"
       v-html="showSymbol"
     ></view>
-    <view :class="`nut-price--${fontSize}`">
+    <view :class="`nut-price--${size}`">
       {{ formatThousands(price) }}
     </view>
-    <view :class="`nut-price--decimal-${fontSize}`" v-if="decimalDigits != 0">.</view>
-    <view :class="`nut-price--decimal-${fontSize}`">
+    <view :class="`nut-price--decimal-${size}`" v-if="decimalDigits != 0">.</view>
+    <view :class="`nut-price--decimal-${size}`">
       {{ formatDecimal(price) }}
     </view>
     <view
       v-if="needSymbol && position == 'after'"
       class="nut-price--symbol"
-      :class="`nut-price--symbol-${fontSize}`"
+      :class="`nut-price--symbol-${size}`"
       decode="true"
       v-html="showSymbol"
     ></view>
@@ -55,9 +55,9 @@ export default create({
       type: String,
       default: 'before'
     },
-    fontSize: {
+    size: {
       type: String,
-      default: 'big'
+      default: 'normal'
     }
   },
 

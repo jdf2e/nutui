@@ -5,9 +5,9 @@
   &--symbol {
     display: inline-block;
     font-size: $font-size-3;
-    margin-right: 4px;
+    // margin-right: 4px;
   }
-  &--big {
+  &--large {
     display: inline-block;
     font-size: $price-big-size;
   }
@@ -20,23 +20,23 @@
   //   font-size: $font-size-4;
   // }
 
-  &--decimal-big {
+  &--decimal-large {
     display: inline-block;
     font-size: $price-decimal-big-size;
   }
-  &--symbol-big {
+  &--symbol-large {
     display: inline-block;
     font-size: $price-symbol-big-size;
   }
-  &--medium {
+  &--normal {
     display: inline-block;
     font-size: $price-medium-size;
   }
-  &--decimal-medium {
+  &--decimal-normal {
     display: inline-block;
     font-size: $price-decimal-medium-size;
   }
-  &--symbol-medium {
+  &--symbol-normal {
     display: inline-block;
     font-size: $price-symbol-medium-size;
   }

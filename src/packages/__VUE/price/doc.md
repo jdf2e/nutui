@@ -63,4 +63,4 @@ setup() {
 | decimal-digits | 小数位位数               | Number  | 2      |
 | thousands      | 是否按照千分号形式显示   | Boolean | false  |
 | position      | 符号显示在(价格)前或者后(before、after)   | String | before  |
-| font-size      | 价格尺寸(big、medium、small)   | String | big  |
+| size      | 价格尺寸(large、normal、small)   | String | normal  |
