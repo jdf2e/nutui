@@ -4,30 +4,20 @@
     <div class="notice-main">
       <div class="notice-main-tab">
         <div class="notice-main-tab-title">
-          <img
-            class="notice-main-tab-title-img"
-            src="../../assets/images/order.png"
-            alt=""
-          />
+          <img class="notice-main-tab-title-img" src="../../assets/images/order.png" alt="" />
           <div class="notice-main-tab-title-tip">站内消息</div>
         </div>
-        <div
-          v-for="(item, index) in tips"
-          :key="index"
-          class="notice-main-tab-panel"
-        >
+        <div v-for="(item, index) in tips" :key="index" class="notice-main-tab-panel">
           {{ item.name }}
         </div>
       </div>
       <div class="notice-main-content">
         <div class="notice-main-title">常见问题</div>
-        <div class="notice-main-line"></div>
-        <div
-          v-for="(item, index) in list"
-          :key="index"
-          class="notice-main-item"
-          @click="link(item)"
+        <div class="notice-sub-title"
+          >以下为一些NutUi常见的问题和官方答复，在提问之前可以看下是否为类似的问题,可以直接点击链接查看文档</div
         >
+        <div class="notice-main-line"></div>
+        <div v-for="(item, index) in list" :key="index" class="notice-main-item" @click="link(item)">
           <div class="article-title">{{ item.title }} </div>
           <div class="article-time">{{ item.update_time }}</div>
         </div>
@@ -40,12 +30,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, reactive, toRefs } from 'vue';
-import {
-  onBeforeRouteUpdate,
-  RouteLocationNormalized,
-  useRoute,
-  useRouter
-} from 'vue-router';
+import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute, useRouter } from 'vue-router';
 import Header from '@/sites/doc/components/Header.vue';
 import { ApiService } from '@/sites/service/ApiService';
 import Footer from '@/sites/doc/components/Footer.vue';
@@ -132,8 +117,7 @@ export default defineComponent({
           display: inline-block;
           width: 10px;
           height: 22px;
-          background: url('../../assets/images/item-rotate-active.png')
-            no-repeat;
+          background: url('../../assets/images/item-rotate-active.png') no-repeat;
           position: absolute;
           left: 42px;
         }
@@ -151,12 +135,17 @@ export default defineComponent({
         font-weight: 500;
         color: rgba(26, 26, 26, 1);
       }
+      .notice-sub-title {
+        line-height: 1;
+        font-size: 15px;
+        font-family: PingFangSC;
+        color: #1a1a1aad;
+      }
       .notice-main-line {
         width: 644px;
         height: 1px;
         background: rgba(247, 248, 250, 1);
         margin: 11px auto 0;
-        margin-bottom: 15px;
       }
       .notice-main-item {
         padding-top: 18px;
