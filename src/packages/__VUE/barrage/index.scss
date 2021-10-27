@@ -8,6 +8,8 @@
   box-sizing: border-box;
   background-color: #f7f8fa;
   .dmitem {
+    width: 100px;
+    // max-width: 150px;
     display: block;
     position: absolute;
     right: 0;
@@ -30,7 +32,9 @@
       transform: translateX(100%);
     }
     to {
-      transform: translateX(var(--move-distance));
+      transform: translateX(-250%);
+      // transform: translateX(-180%);
+      // transform: translateX(var(--move-distance));
     }
   }
   @-webkit-keyframes moving {
@@ -38,7 +42,7 @@
       -webkit-transform: translateX(100%);
     }
     to {
-      -webkit-transform: translateX(var(--move-distance));
+      transform: translateX(-250%);
     }
   }
 }

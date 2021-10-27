@@ -510,6 +510,17 @@
           "show": true,
           "taro": true,
           "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "SearchBar",
+          "type": "component",
+          "cName": "搜索栏",
+          "desc": "搜索栏",
+          "sort": 23,
+          "show": true,
+          "taro": true,
+          "author": "zongyue3"
         }
       ]
     },

@@ -5,9 +5,7 @@
       <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
     </nut-cell>
     <div class="test">
-      <button @click="addDanmu" class="add nut-button--primary"
-        >随机添加</button
-      >
+      <button @click="addDanmu" class="add nut-button--primary">随机添加</button>
     </div>
   </div>
 </template>
@@ -19,14 +17,7 @@ export default {
   setup() {
     const inputVal = ref<any>('');
     const danmu = ref<any>(null);
-    let list = ref([
-      '画美不看',
-      '不明觉厉',
-      '喜大普奔',
-      '男默女泪',
-      '累觉不爱',
-      '爷青结'
-    ]);
+    let list = ref(['画美不看画美不看画美不看画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结']);
     function addDanmu() {
       let n = Math.random();
       danmu.value.add('随机——' + String(n).substr(2, 10));
