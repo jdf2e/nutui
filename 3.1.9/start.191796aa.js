@@ -6,7 +6,13 @@ npm i @nutui/nutui@next
 
 <span class="hljs-comment"># taro \u5C0F\u7A0B\u5E8F\u9879\u76EE</span>
 npm i @nutui/nutui-taro
-</code></pre><h3>NPM \u4F7F\u7528\u793A\u4F8B</h3><h4>Vite \u6784\u5EFA\u5DE5\u5177 \u901A\u8FC7 vite-plugin \u4F7F\u7528\u6309\u9700\u52A0\u8F7D</h4><h4>\u4E3A\u4EC0\u4E48\u53EA\u6309\u9700\u5F15\u5165\u6837\u5F0F</h4><p>\u7531\u4E8E vite \u672C\u8EAB\u5DF2\u6309\u9700\u5BFC\u5165\u4E86\u7EC4\u4EF6\u5E93\uFF0C\u56E0\u6B64\u4EC5\u6837\u5F0F\u4E0D\u662F\u6309\u9700\u5BFC\u5165\u7684\uFF0C\u56E0\u6B64\u53EA\u9700\u6309\u9700\u5BFC\u5165\u6837\u5F0F\u5373\u53EF\u3002</p><p><a href="https://vitejs.dev/">Vite</a> \u6784\u5EFA\u5DE5\u5177\uFF0C\u4F7F\u7528 <a href="https://github.com/anncwb/vite-plugin-style-import">vite-plugin-style-import</a> \u5B9E\u73B0\u6309\u9700\u5F15\u5165\u3002</p><h5>\u5B89\u88C5\u63D2\u4EF6</h5><pre><code class="language-bash">npm install vite-plugin-style-import --save-dev
+</code></pre><h3>NPM \u4F7F\u7528\u793A\u4F8B</h3><h4>\u5BFC\u5165\u5168\u90E8\u7EC4\u4EF6</h4><blockquote><p>\u6CE8\u610F\uFF1A\u8FD9\u79CD\u65B9\u5F0F\u5C06\u4F1A\u5BFC\u5165\u6240\u6709\u7EC4\u4EF6\uFF0C\u6253\u5305\u6587\u4EF6\u5927\u5C0F\u4F1A\u5F88\u5927\uFF0C\u6211\u4EEC\u63A8\u8350\u4F7F\u7528\u6309\u9700\u52A0\u8F7D</p></blockquote><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./App.vue&quot;</span>;
+<span class="hljs-comment">// \u6CE8\u610F\uFF1A\u8FD9\u79CD\u65B9\u5F0F\u5C06\u4F1A\u5BFC\u5165\u6240\u6709\u7EC4\u4EF6</span>
+<span class="hljs-keyword">import</span> NutUI <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@nutui/nutui&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@nutui/nutui/dist/style.css&quot;</span>;
+createApp(App).use(NutUI).mount(<span class="hljs-string">&quot;#app&quot;</span>);
+</code></pre><h4>Vite \u6784\u5EFA\u5DE5\u5177 \u901A\u8FC7 vite-plugin \u4F7F\u7528\u6309\u9700\u52A0\u8F7D</h4><h4>\u4E3A\u4EC0\u4E48\u53EA\u6309\u9700\u5F15\u5165\u6837\u5F0F</h4><p>\u7531\u4E8E vite \u672C\u8EAB\u5DF2\u6309\u9700\u5BFC\u5165\u4E86\u7EC4\u4EF6\u5E93\uFF0C\u56E0\u6B64\u4EC5\u6837\u5F0F\u4E0D\u662F\u6309\u9700\u5BFC\u5165\u7684\uFF0C\u56E0\u6B64\u53EA\u9700\u6309\u9700\u5BFC\u5165\u6837\u5F0F\u5373\u53EF\u3002</p><p><a href="https://vitejs.dev/">Vite</a> \u6784\u5EFA\u5DE5\u5177\uFF0C\u4F7F\u7528 <a href="https://github.com/anncwb/vite-plugin-style-import">vite-plugin-style-import</a> \u5B9E\u73B0\u6309\u9700\u5F15\u5165\u3002</p><h5>\u5B89\u88C5\u63D2\u4EF6</h5><pre><code class="language-bash">npm install vite-plugin-style-import --save-dev
 </code></pre><p>\u5728 <code>vite.config</code> \u4E2D\u6DFB\u52A0\u914D\u7F6E\uFF1A</p><pre><code class="language-javascript"><span class="hljs-keyword">import</span> vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@vitejs/plugin-vue&#39;</span>
 <span class="hljs-keyword">import</span> styleImport <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vite-plugin-style-import&#39;</span>;
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
@@ -62,12 +68,6 @@ npm i @nutui/nutui-taro
 <span class="hljs-keyword">import</span> { Button, Icon } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@nutui/nutui&quot;</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@nutui/nutui/dist/style.css&quot;</span>;
 createApp(App).use(Button).use(Icon).mount(<span class="hljs-string">&quot;#app&quot;</span>);
-</code></pre><h4>\u5BFC\u5165\u5168\u90E8\u7EC4\u4EF6</h4><blockquote><p>\u6CE8\u610F\uFF1A\u8FD9\u79CD\u65B9\u5F0F\u5C06\u4F1A\u5BFC\u5165\u6240\u6709\u7EC4\u4EF6\uFF0C\u6253\u5305\u6587\u4EF6\u5927\u5C0F\u4F1A\u5F88\u5927</p></blockquote><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./App.vue&quot;</span>;
-<span class="hljs-comment">// \u6CE8\u610F\uFF1A\u8FD9\u79CD\u65B9\u5F0F\u5C06\u4F1A\u5BFC\u5165\u6240\u6709\u7EC4\u4EF6</span>
-<span class="hljs-keyword">import</span> NutUI <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@nutui/nutui&quot;</span>;
-<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@nutui/nutui/dist/style.css&quot;</span>;
-createApp(App).use(NutUI).mount(<span class="hljs-string">&quot;#app&quot;</span>);
 </code></pre><h4>CDN \u5B89\u88C5\u4F7F\u7528\u793A\u4F8B</h4><blockquote><p>\u53EF\u4EE5\u901A\u8FC7 CDN \u7684\u65B9\u5F0F\u5F15\u5165\uFF0C \u53EF\u4EE5\u5728 <strong>jsdelivr</strong> \u548C <strong>unpkg</strong> \u7B49\u516C\u5171 CDN \u4E0A\u83B7\u53D6\u5230 NutUI\u3002</p></blockquote><pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
