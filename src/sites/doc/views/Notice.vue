@@ -14,7 +14,7 @@
       <div class="notice-main-content">
         <div class="notice-main-title">常见问题</div>
         <div class="notice-sub-title"
-          >以下为一些NutUi常见的问题和官方答复，在提问之前可以看下是否为类似的问题,可以直接点击链接查看文档</div
+          >以下为一些 NutUI 常见的问题和官方答复，在提问之前可以看下是否为类似的问题,可以直接点击链接查看文档</div
         >
         <div class="notice-main-line"></div>
         <div v-for="(item, index) in list" :key="index" class="notice-main-item" @click="link(item)">
@@ -36,7 +36,7 @@ import { ApiService } from '@/sites/service/ApiService';
 import Footer from '@/sites/doc/components/Footer.vue';
 import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
-  name: 'doc',
+  name: 'notice',
   components: {
     [Header.name]: Header,
     [Footer.name]: Footer
@@ -86,6 +86,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .notice {
   background: #f7f8fa;
+  height: 100%;
   .notice-main {
     width: 1006px;
     margin: 30px auto;
@@ -136,10 +137,10 @@ export default defineComponent({
         color: rgba(26, 26, 26, 1);
       }
       .notice-sub-title {
-        line-height: 1;
+        line-height: 1.4;
         font-size: 15px;
+        margin-bottom: 10px;
         font-family: PingFangSC;
-        color: #1a1a1aad;
       }
       .notice-main-line {
         width: 644px;
