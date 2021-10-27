@@ -10,7 +10,7 @@
 import { createApp, reactive, toRefs } from 'vue';
 
 // vue
-import { ImagePreview } from '@nutui/nutui';
+import { ImagePreview, Swiper, SwiperItem } from '@nutui/nutui';
 // taro
 import { ImagePreview } from '@nutui/nutui-taro';
 
