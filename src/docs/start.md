@@ -25,11 +25,15 @@ npm i @nutui/nutui-taro
 
 #### Vite 构建工具 通过 vite-plugin 使用按需加载
 
+#### 为什么只按需引入样式
+
+由于 vite 本身已按需导入了组件库，因此仅样式不是按需导入的，因此只需按需导入样式即可。
+
 [Vite](https://vitejs.dev/) 构建工具，使用 [vite-plugin-style-import](https://github.com/anncwb/vite-plugin-style-import) 实现按需引入。
 
 ##### 安装插件
 ``` bash
-npm install babel-plugin-import --save-dev
+npm install vite-plugin-style-import --save-dev
 ```
 在 `vite.config` 中添加配置：
 ``` javascript
@@ -53,6 +57,7 @@ export default {
   css: {
     preprocessorOptions: {
       scss: {
+        // 配置 nutui 全局 scss 变量
         additionalData: `@import "@nutui/nutui/dist/styles/variables.scss";`
       }
     }
