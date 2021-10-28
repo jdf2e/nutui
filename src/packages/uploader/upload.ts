@@ -1,5 +1,6 @@
 export class UploadOptions {
   url = ''
+  name = 'file'
   formData?: FormData
   method = 'post'
   xhrState: string | number = 200
@@ -7,6 +8,7 @@ export class UploadOptions {
   headers = {}
   withCredentials = false
   onStart?: Function
+  taroFilePath?: string
   onProgress?: Function
   onSuccess?: Function
   onFailure?: Function

@@ -1,6 +1,7 @@
-import React, { useState, FunctionComponent } from 'react'
+import React, { useState, useImperativeHandle, FunctionComponent } from 'react'
 import Icon from '@/packages/icon'
 import { Upload, UploadOptions } from './upload'
+import classNames from 'classnames'
 import bem from '@/utils/bem'
 import './uploader.scss'
 
@@ -12,6 +13,7 @@ export interface UploaderProps {
   name: string
   accept: string
   disabled: boolean
+  autoUpload: boolean
   multiple: boolean
   timeout: number
   data: object
@@ -23,6 +25,9 @@ export interface UploaderProps {
   isPreview: boolean
   isDeletable: boolean
   capture: boolean
+  className: string
+  style: React.CSSProperties
+  ref: any
   start?: (option: UploadOptions) => void
   removeImage?: (file: FileItem, fileList: FileItem[]) => void
   success?: (param: { responseText: XMLHttpRequest['responseText']; option: UploadOptions }) => void
@@ -36,13 +41,14 @@ export interface UploaderProps {
 }
 export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error' | 'removed'
 
-const defaultProps: UploaderProps = {
+const defaultProps = {
   url: '',
   maximum: 1,
   uploadIcon: 'photograph',
   name: 'file',
   accept: '*',
   disabled: false,
+  autoUpload: true,
   multiple: false,
   maximize: Number.MAX_VALUE,
   data: {},
@@ -58,7 +64,7 @@ const defaultProps: UploaderProps = {
   beforeDelete: (file: FileItem, files: FileItem[]) => {
     return true
   },
-}
+} as UploaderProps
 export class FileItem {
   status: FileItemStatus = 'ready'
   uid: string = new Date().getTime().toString()
@@ -69,7 +75,7 @@ export class FileItem {
 }
 export const Uploader: FunctionComponent<
   Partial<UploaderProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+> = React.forwardRef((props, ref) => {
   const {
     children,
     uploadIcon,
@@ -89,22 +95,48 @@ export const Uploader: FunctionComponent<
     maximum,
     capture,
     maximize,
+    className,
+    autoUpload,
+    clearInput,
     start,
     removeImage,
     progress,
     success,
     update,
     failure,
+    oversize,
+    beforeUpload,
     beforeDelete,
+    ...restProps
   } = { ...defaultProps, ...props }
   const [fileList, setFileList] = useState<any>([])
-  const b = bem('uploader')
+  const [uploadQueue, setUploadQueue] = useState<Promise<Upload>[]>([])
 
-  const clearInput = (el: HTMLInputElement) => {
+  const b = bem('uploader')
+  const classes = classNames(className, b(''))
+
+  useImperativeHandle(ref, () => ({
+    submit: () => {
+      Promise.all(uploadQueue).then((res) => {
+        res.forEach((i) => i.upload())
+      })
+    },
+  }))
+
+  const clearUploadQueue = (index = -1) => {
+    if (index > -1) {
+      uploadQueue.splice(index, 1)
+      setUploadQueue(uploadQueue)
+    } else {
+      setUploadQueue([])
+    }
+  }
+
+  const clearInputValue = (el: HTMLInputElement) => {
     el.value = ''
   }
 
-  const executeUpload = (fileItem: FileItem) => {
+  const executeUpload = (fileItem: FileItem, index: number) => {
     const uploadOption = new UploadOptions()
     uploadOption.url = url
     for (const [key, value] of Object.entries(data)) {
@@ -117,6 +149,7 @@ export const Uploader: FunctionComponent<
     uploadOption.headers = headers
     uploadOption.withCredentials = withCredentials
     uploadOption.onStart = (option: UploadOptions) => {
+      clearUploadQueue(index)
       setFileList((fileList: FileItem[]) => {
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
@@ -178,19 +211,29 @@ export const Uploader: FunctionComponent<
           option,
         })
     }
-    new Upload(uploadOption).upload()
+    let task = new Upload(uploadOption)
+    if (props.autoUpload) {
+      task.upload()
+    } else {
+      uploadQueue.push(
+        new Promise((resolve, reject) => {
+          resolve(task)
+        })
+      )
+      setUploadQueue(uploadQueue)
+    }
   }
 
   const readFile = (files: File[]) => {
-    files.forEach((file: File) => {
+    files.forEach((file: File, index: number) => {
       const formData = new FormData()
       formData.append(name, file)
       const fileItem = new FileItem()
       fileItem.name = file.name
-      fileItem.status = 'uploading'
+      fileItem.status = 'ready'
       fileItem.type = file.type
       fileItem.formData = formData
-      executeUpload(fileItem)
+      executeUpload(fileItem, index)
 
       if (isPreview && file.type.includes('image')) {
         const reader = new FileReader()
@@ -219,7 +262,7 @@ export const Uploader: FunctionComponent<
       }
     })
     if (oversizes.length) {
-      props.oversize && props.oversize(files)
+      oversize && oversize(files)
     }
     if (filterFile.length > maximum) {
       filterFile.splice(maximum - 1, filterFile.length - maximum)
@@ -228,6 +271,7 @@ export const Uploader: FunctionComponent<
   }
 
   const onDelete = (file: FileItem, index: number) => {
+    clearUploadQueue(index)
     if (beforeDelete && beforeDelete(file, fileList)) {
       fileList.splice(index, 1)
       removeImage && removeImage(file, fileList)
@@ -244,8 +288,8 @@ export const Uploader: FunctionComponent<
     const $el = event.target
     let { files } = $el
 
-    if (props.beforeUpload) {
-      props.beforeUpload(new Array<File>().slice.call(files)).then((f: Array<File>) => {
+    if (beforeUpload) {
+      beforeUpload(new Array<File>().slice.call(files)).then((f: Array<File>) => {
         const _files: File[] = filterFiles(new Array<File>().slice.call(f))
         readFile(_files)
       })
@@ -256,13 +300,13 @@ export const Uploader: FunctionComponent<
 
     props.change && props.change({ fileList, event })
 
-    if (props.clearInput) {
-      clearInput($el)
+    if (clearInput) {
+      clearInputValue($el)
     }
   }
 
   return (
-    <div className={`${b()}`}>
+    <div className={classes} {...restProps}>
       {children ? (
         <div className="nut-uploader__slot">
           {
@@ -301,6 +345,7 @@ export const Uploader: FunctionComponent<
         <>
           {fileList.length !== 0 &&
             fileList.map((item: any, index: number) => {
+              console.log('item', item)
               return (
                 <div className="nut-uploader__preview" key={item.uid}>
                   <div className="nut-uploader__preview-img">
@@ -351,7 +396,7 @@ export const Uploader: FunctionComponent<
       )}
     </div>
   )
-}
+})
 
 Uploader.defaultProps = defaultProps
 Uploader.displayName = 'NutUploader'
