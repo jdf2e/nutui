@@ -15,6 +15,7 @@ import Steps from './steps'
 import NavBar from './navbar'
 import Tabbar from './tabbar'
 import InputNumber from './inputnumber'
+import Elevator from './elevator'
 import Rate from './rate'
 import Uploader from './uploader'
 import Input from './input'
@@ -40,6 +41,7 @@ export {
   NavBar,
   Tabbar,
   InputNumber,
+  Elevator,
   Rate,
   Uploader,
   Input,
