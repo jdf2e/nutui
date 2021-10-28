@@ -18,6 +18,8 @@
   }
   &__icon {
     color: $primary-color;
+    transition-duration: 0.3s;
+    transition-property: color, border-color, background-color;
   }
   &__icon--unchecked {
     color: $radio-icon-disable-color;
