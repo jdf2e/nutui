@@ -77,7 +77,18 @@ export default create({
   },
   emits: ['choose'],
   setup(props, { slots, emit }) {
-    const menuList = reactive([]);
+    interface IOption {
+      text: string,
+      value: string | number
+    }
+
+    interface IMenuItem {
+      title: string,
+      disabled: boolean,
+      options?: Array<IOption>
+    }
+
+    const menuList:Array<IMenuItem> = reactive([]);
     let activeTitle = ref('');
     let showMask = ref(false);
     let styleObj = reactive({
@@ -87,22 +98,24 @@ export default create({
     let hasOptions = ref(true);
     let isShowCustomer = ref(false);
 
-    for (let i = 0; i < slots.default().length; i++) {
-      if (slots.default()[i].type['name'] === 'nut-menu-item') {
-        let item = {
-          title: slots.default()[i].props['title'],
-          disabled: !!slots.default()[i].props['disabled']
-        };
-        if (slots.default()[i].props['options']) {
-          item['options'] = slots.default()[i].props['options'];
-        } else {
-          hasOptions.value = false;
+    if(slots.default){
+      for (let i = 0; i < slots.default().length; i++) {
+        if ((slots.default()[i] as any).type['name'] === 'nut-menu-item') {
+          let item:IMenuItem = {
+            title: (slots.default()[i] as any).props['title'],
+            disabled: !!(slots.default()[i] as any).props['disabled']
+          };
+          if ((slots.default()[i] as any).props['options']) {
+            item['options'] = (slots.default()[i] as any).props['options'];
+          } else {
+            hasOptions.value = false;
+          }
+          menuList.push(item);
         }
-        menuList.push(item);
       }
     }
 
-    const handleClickTitle = (title, index) => {
+    const handleClickTitle = (title: string, index: number) => {
       if (!hasOptions.value) {
         if (activeTitle.value) {
           activeTitle.value = '';
@@ -141,7 +154,7 @@ export default create({
       }
     };
 
-    const handleClickOption = (text, index, value) => {
+    const handleClickOption = (text: string, index: number, value: string | number) => {
       menuList[index].title = text;
       activeTitle.value = '';
       showMask.value = false;
