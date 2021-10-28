@@ -579,9 +579,10 @@
           "sort": 2,
           "cName": "菜单组件",
           "type": "component",
-          "show": false,
+          "taro":true,
+          "show": true,
           "desc": "下拉菜单组件",
-          "author": "vickyYE"
+          "author": "yangjinjun3"
         },
         {
           "version": "3.0.0",
@@ -593,7 +594,7 @@
           "exportEmpty": true,
           "show": false,
           "desc": "下拉菜单组件",
-          "author": "vickyYE"
+          "author": "yangjinjun3"
         },
         {
           "version": "3.0.0",
