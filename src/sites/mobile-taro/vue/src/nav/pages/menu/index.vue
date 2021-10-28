@@ -66,12 +66,12 @@ export default {
 
     const item = ref<HTMLElement>();
 
-    const handleChoose = (val, index) => {
+    const handleChoose = (val: string, index: string | number) => {
       console.log(val, index);
     };
 
     const handleClick = () => {
-      item.value.toggle();
+      (item.value as any).toggle();
     };
 
     return {
