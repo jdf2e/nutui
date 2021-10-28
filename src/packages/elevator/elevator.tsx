@@ -31,11 +31,11 @@ export const Elevator: FunctionComponent<
   }
   const b = bem('elevator')
   const spaceHeight = 23
-  const listview = useRef(null)
+  const listview = useRef<HTMLDivElement>(null)
   const initData = {
     anchorIndex: 0,
     listHeight: [] as number[],
-    listGroup: [] as HTMLElement[],
+    listGroup: [] as Element[],
   }
   const touchState = useRef({
     y1: 0,
@@ -114,9 +114,9 @@ export const Elevator: FunctionComponent<
 
     const target = e.currentTarget as HTMLElement
 
-    target.removeEventListener('touchmove', touchMove, false)
+    target.removeEventListener('touchmove', () => touchMove(e), false)
     target.removeEventListener('touchend', touchEnd, false)
-    target.addEventListener('touchmove', touchMove, false)
+    target.addEventListener('touchmove', () => touchMove(e), false)
     target.addEventListener('touchend', touchEnd, false)
   }
 
@@ -129,13 +129,15 @@ export const Elevator: FunctionComponent<
   }
 
   const setListGroup = () => {
-    const els = listview.current.querySelectorAll('.nut-elevator__list__item')
+    if (listview.current) {
+      const els = listview.current.querySelectorAll('.nut-elevator__list__item')
 
-    els.forEach((el: HTMLLIElement) => {
-      if (el != null && !state.current.listGroup.includes(el)) {
-        state.current.listGroup.push(el)
-      }
-    })
+      els.forEach((el: Element) => {
+        if (el != null && !state.current.listGroup.includes(el)) {
+          state.current.listGroup.push(el)
+        }
+      })
+    }
   }
   useEffect(() => {
     if (listview.current) {
