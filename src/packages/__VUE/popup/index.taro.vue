@@ -11,17 +11,8 @@
       :duration="duration"
       @click="onClickOverlay"
     />
-    <Transition
-      :name="transitionName"
-      @after-enter="onOpened"
-      @after-leave="onClosed"
-    >
-      <view
-        v-show="visible"
-        :class="classes"
-        :style="popStyle"
-        @click="onClick"
-      >
+    <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
+      <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
         <slot v-if="showSlot"></slot>
         <view
           v-if="closeable"
@@ -109,16 +100,7 @@ export default create({
   props: {
     ...popupProps
   },
-  emits: [
-    'click',
-    'click-close-icon',
-    'open',
-    'close',
-    'opend',
-    'closed',
-    'update:visible',
-    'click-overlay'
-  ],
+  emits: ['click', 'click-close-icon', 'open', 'close', 'opend', 'closed', 'update:visible', 'click-overlay'],
   setup(props, { emit }) {
     const { proxy } = getCurrentInstance() as any;
     const state = reactive({
@@ -229,9 +211,7 @@ export default create({
     watch(
       () => props.position,
       (value) => {
-        value === 'center'
-          ? (state.transitionName = 'popup-fade')
-          : (state.transitionName = `popup-slide-${value}`);
+        value === 'center' ? (state.transitionName = 'popup-fade') : (state.transitionName = `popup-slide-${value}`);
       }
     );
     return {

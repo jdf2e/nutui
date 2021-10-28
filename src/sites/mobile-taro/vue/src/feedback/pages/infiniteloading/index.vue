@@ -2,7 +2,7 @@
   <view class="demo">
     <h2>基础演示</h2>
     <nut-cell>
-      <view-block class="infiniteUl" id="scrollDemo">
+      <view class="infiniteUl" id="scrollDemo">
         <nut-infiniteloading
           pull-icon="JD"
           load-txt="loading"
@@ -13,14 +13,9 @@
           @load-more="loadMore"
           @refresh="refresh"
         >
-          <view-block
-            class="infiniteLi"
-            v-for="(item, index) in defultList"
-            :key="index"
-            >{{ item }}</view-block
-          >
+          <view class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</view>
         </nut-infiniteloading>
-      </view-block>
+      </view>
     </nut-cell>
   </view>
 </template>
@@ -81,6 +76,8 @@ export default {
 .infiniteUl {
   height: 500px;
   width: 100%;
+  padding: 0;
+  margin: 0;
   overflow-y: auto;
   overflow-x: hidden;
 }

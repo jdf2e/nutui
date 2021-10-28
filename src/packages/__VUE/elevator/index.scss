@@ -3,8 +3,10 @@
   display: block;
   position: relative;
   &__list {
+    display: block;
     overflow: auto;
     &__item {
+      display: block;
       font-size: 12px;
       color: #333;
       &__code {
@@ -65,8 +67,4 @@
       }
     }
   }
-}
-
-view {
-  display: block;
 }

@@ -3,7 +3,7 @@ export default {
   subpackages: [
     {
       root: 'layout',
-      pages: ['pages/layout/index']
+      pages: ['pages/layout/index', 'pages/imagepreview/index']
     },
     {
       root: 'feedback',
@@ -24,7 +24,8 @@ export default {
         'pages/steps/index',
         'pages/infiniteloading/index',
         'pages/progress/index',
-        'pages/circleprogress/index'
+        'pages/circleprogress/index',
+        'pages/searchbar/index'
       ]
     },
     {
@@ -44,10 +45,11 @@ export default {
       pages: [
         'pages/navbar/index',
         'pages/tabbar/index',
-        'pages/tab/index',
+        'pages/tabs/index',
         'pages/fixednav/index',
         'pages/elevator/index',
-        'pages/menu/index'
+        'pages/menu/index',
+        'pages/pagination/index'
       ]
     },
     {
@@ -74,11 +76,7 @@ export default {
     },
     {
       root: 'business',
-      pages: [
-        'pages/address/index',
-        'pages/signature/index',
-        'pages/barrage/index'
-      ]
+      pages: ['pages/address/index', 'pages/signature/index', 'pages/barrage/index', 'pages/timeselect/index']
     }
   ],
   window: {

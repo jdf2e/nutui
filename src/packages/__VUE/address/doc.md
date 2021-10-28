@@ -101,22 +101,25 @@ setup() {
 setup() {
     const showPopup = ref(false);
     const address = reactive({
-      province:[
-        { id: 1, name: '北京' },
-        { id: 2, name: '广西' },
-        { id: 3, name: '江西' },
-        { id: 4, name: '四川' }
+      province: [
+        { id: 1, name: '北京', title: 'B' },
+        { id: 2, name: '广西', title: 'G' },
+        { id: 3, name: '江西', title: 'J' },
+        { id: 4, name: '四川', title: 'S' },
+        { id: 5, name: '浙江', title: 'Z' }
       ],
-      city:[
-        { id: 7, name: '朝阳区' },
-        { id: 8, name: '崇文区' },
-        { id: 9, name: '昌平区' },
-        { id: 6, name: '石景山区' }
+      city: [
+        { id: 7, name: '朝阳区', title: 'C' },
+        { id: 8, name: '崇文区', title: 'C' },
+        { id: 9, name: '昌平区', title: 'C' },
+        { id: 6, name: '石景山区', title: 'S' },
+        { id: 3, name: '八里庄街道', title: 'B' },
+        { id: 9, name: '北苑', title: 'B' }
       ],
-      country:[
-        { id: 3, name: '八里庄街道' },
-        { id: 9, name: '北苑' },
-        { id: 4, name: '常营乡' }
+      country: [
+        { id: 3, name: '八里庄街道', title: 'B' },
+        { id: 9, name: '北苑', title: 'B' },
+        { id: 4, name: '常营乡', title: 'C' }
       ],
       town:[]
     })
@@ -424,11 +427,11 @@ setup() {
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | v-model:visible | 是否打开地址选择 | String | ''
-| type | 地址选择类型 exist/custom/custom2 | String | 'custom'
-| province | 省，每个省的对象中，必须有 name 字段 | Array | []
-| city | 市，每个市的对象中，必须有 name 字段 | Array | []
-| country | 县，每个县的对象中，必须有 name 字段 | Array | []
-| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段 | Array | []
+| type | 地址选择类型 exist/custom/custom2  | String | 'custom'
+| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | []
+| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | []
+| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | []
+| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | []
 | height | 弹层中内容容器的高度，仅在type="custom2"时有效 | String、Number | '200px'
 | exist-address | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | []
 | default-icon | 已有地址列表默认图标，type=‘exist’ 时生效 | String | ''

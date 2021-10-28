@@ -9,9 +9,7 @@ config.nav.map((item) => {
   item.packages.forEach((element) => {
     let { name, show, type, exportEmpty } = element;
     if (show || exportEmpty) {
-      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${
-        type === 'methods' ? '' : '.vue'
-      }';\n`;
+      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${type === 'methods' ? '' : '.vue'}';\n`;
       importScssStr += `import './__VUE/${name.toLowerCase()}/index.scss';\n`;
       packages.push(name);
     }
@@ -33,25 +31,15 @@ const version = '${package.version}';
 export { install, version, ${packages.join(',')}};
 export default { install, version};`;
 
-fs.outputFile(
-  path.resolve(__dirname, '../src/packages/nutui.vue.build.ts'),
-  fileStrBuild,
-  'utf8',
-  (error) => {
-    // logger.success(`${package_config_path} 文件写入成功`);
-  }
-);
+fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.build.ts'), fileStrBuild, 'utf8', (error) => {
+  // logger.success(`${package_config_path} 文件写入成功`);
+});
 
 let fileStrDev = `${importStr}
 ${installFunction}
 ${importScssStr}
 export { install, ${packages.join(',')}  };
 export default { install, version:'${package.version}'};`;
-fs.outputFile(
-  path.resolve(__dirname, '../src/packages/nutui.vue.ts'),
-  fileStrDev,
-  'utf8',
-  (error) => {
-    // logger.success(`${package_config_path} 文件写入成功`);
-  }
-);
+fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.ts'), fileStrDev, 'utf8', (error) => {
+  // logger.success(`${package_config_path} 文件写入成功`);
+});

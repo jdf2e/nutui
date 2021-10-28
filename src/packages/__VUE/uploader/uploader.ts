@@ -8,6 +8,7 @@ export class UploadOptions {
   headers = {};
   withCredentials = false;
   onStart?: Function;
+  taroFilePath?: string;
   onProgress?: Function;
   onSuccess?: Function;
   onFailure?: Function;
@@ -50,11 +51,11 @@ export class Uploader {
       console.warn('浏览器不支持 XMLHttpRequest');
     }
   }
-  uploadTaro(filePath: string, Taro: any) {
+  uploadTaro(uploadFile: Function) {
     const options = this.options;
-    const uploadTask = Taro.uploadFile({
+    const uploadTask = uploadFile({
       url: options.url,
-      filePath,
+      filePath: options.taroFilePath,
       header: {
         'Content-Type': 'multipart/form-data',
         ...options.headers
@@ -73,18 +74,12 @@ export class Uploader {
       }
     });
     options.onStart?.(options);
-    uploadTask.progress(
-      (res: {
-        progress: any;
-        totalBytesSent: any;
-        totalBytesExpectedToSend: any;
-      }) => {
-        options.onProgress?.(res, options);
-        // console.log('上传进度', res.progress);
-        // console.log('已经上传的数据长度', res.totalBytesSent);
-        // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend);
-      }
-    );
+    uploadTask.progress((res: { progress: any; totalBytesSent: any; totalBytesExpectedToSend: any }) => {
+      options.onProgress?.(res, options);
+      // console.log('上传进度', res.progress);
+      // console.log('已经上传的数据长度', res.totalBytesSent);
+      // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend);
+    });
 
     // uploadTask.abort(); // 取消上传任务
   }

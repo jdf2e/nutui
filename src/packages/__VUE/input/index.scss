@@ -5,8 +5,17 @@
   display: flex;
   background: $white;
   border-bottom: 1px solid $input-border-bottom;
-  font-size: 14px;
+  font-size: $input-font-size;
   box-sizing: border-box;
+
+  &.nut-input-require {
+    &::before {
+      position: absolute;
+      left: 14px;
+      color: $input-require-color;
+      content: '*';
+    }
+  }
 
   .input-text {
     width: 230px;
@@ -46,10 +55,5 @@
       opacity: 1;
       -webkit-text-fill-color: $input-disabled-color;
     }
-  }
-  &-require {
-    color: $primary-color;
-    display: inline-block;
-    margin-right: 5px;
   }
 }

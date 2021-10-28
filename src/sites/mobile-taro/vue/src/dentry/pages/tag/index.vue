@@ -41,9 +41,7 @@
       >
       <nut-cell title="可关闭标签">
         <template v-slot:link>
-          <nut-tag v-if="show" closeable @close="close" type="primary"
-            >标签</nut-tag
-          >
+          <nut-tag v-if="show" closeable @close="close" type="primary">标签</nut-tag>
         </template></nut-cell
       >
     </nut-cell-group>

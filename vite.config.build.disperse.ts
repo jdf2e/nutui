@@ -16,9 +16,7 @@ configPkg.nav.map((item) => {
   item.packages.forEach((element) => {
     let { name, show, type, exportEmpty } = element;
     if (show || exportEmpty) {
-      input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${
-        type === 'methods' ? '.ts' : '.vue'
-      }`;
+      input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${type === 'methods' ? '.ts' : '.vue'}`;
     }
   });
 });
@@ -44,7 +42,7 @@ export default defineConfig({
     },
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
-      external: ['vue', 'vue-router', 'pinyin'],
+      external: ['vue', 'vue-router'],
       input,
       output: {
         banner,

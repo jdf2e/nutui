@@ -1,3 +1,37 @@
+## v3.1.8~9
+
+`2021-10-17`
+
+* :zap: feat: 新增 timeselect 配送时间组件 @szg2008
+* :zap: feat: 新增 tabs 选项卡组件 @richard1015
+* :zap: feat(swipe): add props prevent-default、stop-propagation @richard1015
+* :zap: feat(uploader): add props auto-upload 支持手动上传 #688 @richard1015
+* :zap: upd(popover): 位置计算逻辑优化 (#710) @liqiong-lab
+* :bug: fix(overlay): modify overlay background style @szg2008
+* :bug: fix(popup): taro env touchmove content disable @richard1015
+* :bug: fix: child component taro export bug #707  @Ymm0008
+* :bug: fix(address): 组件红线位置错乱问题 (#732) @yangxiaolu1993
+* :bug: fix(address & elevator): remove pinyin dependence & 支持cdn使用 @szg2008
+* :zap: upd(elevator): add name props support html #691 @szg2008
+* :zap: upd: create 函数添加 ts 类型 (#704) @qqjay2017
+* :zap: 官网优化（文章时间分类、贡献者指南、FAQ常见问题模块） @richard1015 @Drjingfubo @lzzwoniu
+
+## v3.1.7
+
+`2021-09-30`
+
+* :zap: feat: 新增 pagination 分页组件 @yushuang-d
+* :zap: feat: 新增 tag 标签组件 @liqiong-lab
+* :zap: feat: 新增 badge 徽标组件 @liqiong-lab
+* :zap: feat: 新增 popover 气泡组件 @liqiong-lab
+* :zap: feat: 新增 imagepreview 图片预览组件 @JackieScorpio
+* :bug: fix(shortpassword): 修复部分安卓机value值倒序问题、taro环境二次点击无法弹起 #679  @Drjingfubo
+* :bug: fix(uploader): taro场景 name 字段关联问题、新增 upload-icon-size 字段、上传成功返回值逻辑优化 @richard1015
+* :bug: fix(popup): taro 环境滑动内容穿透修复 @richard1015
+* :bug: fix(input): clear event bug、readonly 导致内容前移 #628 @richard1015
+* :bug: fix(range): taro env 多个Range 组件滑动值异常 #648
+* :zap: chore: 按需加载性能优化 @richard1015
+* :zap: docs(checkbox): update checkbox docs @szg2008
 
 ## v3.1.5~6
 
