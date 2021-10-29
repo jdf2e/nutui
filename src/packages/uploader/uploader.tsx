@@ -1,6 +1,7 @@
 import React, { useState, FunctionComponent } from 'react'
 import Icon from '@/packages/icon'
 import { Upload, UploadOptions } from './upload'
+import classNames from 'classnames'
 import bem from '@/utils/bem'
 import './uploader.scss'
 
@@ -23,6 +24,8 @@ export interface UploaderProps {
   isPreview: boolean
   isDeletable: boolean
   capture: boolean
+  className: string
+  style: React.CSSProperties
   start?: (option: UploadOptions) => void
   removeImage?: (file: FileItem, fileList: FileItem[]) => void
   success?: (param: { responseText: XMLHttpRequest['responseText']; option: UploadOptions }) => void
@@ -36,7 +39,7 @@ export interface UploaderProps {
 }
 export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error' | 'removed'
 
-const defaultProps: UploaderProps = {
+const defaultProps = {
   url: '',
   maximum: 1,
   uploadIcon: 'photograph',
@@ -58,7 +61,7 @@ const defaultProps: UploaderProps = {
   beforeDelete: (file: FileItem, files: FileItem[]) => {
     return true
   },
-}
+} as UploaderProps
 export class FileItem {
   status: FileItemStatus = 'ready'
   uid: string = new Date().getTime().toString()
@@ -89,6 +92,7 @@ export const Uploader: FunctionComponent<
     maximum,
     capture,
     maximize,
+    className,
     start,
     removeImage,
     progress,
@@ -96,9 +100,12 @@ export const Uploader: FunctionComponent<
     update,
     failure,
     beforeDelete,
+    ...restProps
   } = { ...defaultProps, ...props }
   const [fileList, setFileList] = useState<any>([])
+
   const b = bem('uploader')
+  const classes = classNames(className, b(''))
 
   const clearInput = (el: HTMLInputElement) => {
     el.value = ''
@@ -262,7 +269,7 @@ export const Uploader: FunctionComponent<
   }
 
   return (
-    <div className={`${b()}`}>
+    <div className={classes} {...restProps}>
       {children ? (
         <div className="nut-uploader__slot">
           {
