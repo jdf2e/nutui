@@ -10,21 +10,11 @@
     </nut-cell>
     <h2>带人民币符号，有千位分隔，保留小数点后三位</h2>
     <nut-cell>
-      <nut-price
-        :price="15213.1221"
-        :decimal-digits="3"
-        :need-symbol="true"
-        :thousands="true"
-      />
+      <nut-price :price="15213.1221" :decimal-digits="2" :need-symbol="true" :thousands="true" />
     </nut-cell>
     <h2>异步随机变更</h2>
     <nut-cell>
-      <nut-price
-        :price="price"
-        :decimal-digits="3"
-        :need-symbol="false"
-        :thousands="true"
-      />
+      <nut-price :price="price" :decimal-digits="3" :need-symbol="false" :thousands="true" />
     </nut-cell>
   </div>
 </template>
