@@ -14,7 +14,7 @@ export interface CellProps {
   replace: boolean
   url: string
   icon: string
-  classPrefix: string
+  className: string
   extra: ReactNode
   click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
@@ -28,7 +28,7 @@ const defaultProps = {
   replace: false,
   url: '',
   icon: '',
-  classPrefix: 'nutui-cell',
+  className: '',
   extra: '',
   click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
@@ -42,7 +42,7 @@ export const Cell: FunctionComponent<Partial<CellProps> & React.HTMLAttributes<H
     to,
     url,
     replace,
-    classPrefix,
+    className,
     descTextAlign,
     desc,
     icon,
@@ -65,12 +65,16 @@ export const Cell: FunctionComponent<Partial<CellProps> & React.HTMLAttributes<H
     }
   }
 
-  const styles = {
-    textAlign: descTextAlign,
-  }
+  const styles =
+    title || subTitle || icon
+      ? {}
+      : {
+          textAlign: descTextAlign,
+          flex: 1,
+        }
   return (
     <div
-      className={`${b({ clickable: isLink || to ? true : false }, [classPrefix])} `}
+      className={`${b({ clickable: isLink || to ? true : false }, [className])} `}
       onClick={(event) => handleClick(event)}
       {...rest}
     >
@@ -80,12 +84,8 @@ export const Cell: FunctionComponent<Partial<CellProps> & React.HTMLAttributes<H
         <>
           {title || subTitle || icon ? (
             <>
-              {icon ? (
-                <div className={`${b('icon')}`}>
-                  <Icon name={icon} />
-                </div>
-              ) : null}
               <div className={`${b('title', { icon: icon ? true : false })}`}>
+                {icon ? <Icon name={icon} className={`${b('icon')}`} /> : null}
                 {subTitle ? (
                   <>
                     <div className={b('maintitle')}>{title}</div>
@@ -98,18 +98,14 @@ export const Cell: FunctionComponent<Partial<CellProps> & React.HTMLAttributes<H
             </>
           ) : null}
           {desc ? (
-            <div className={b('desc')} style={styles as CSSProperties}>
+            <div className={b('desc')} style={styles as React.CSSProperties}>
               {desc}
             </div>
           ) : null}
         </>
       )}
       {extra ? extra : null}
-      {!extra && (isLink || to) ? (
-        <div className={b('link')}>
-          <Icon name="right"></Icon>
-        </div>
-      ) : null}
+      {!extra && (isLink || to) ? <Icon name="right" className={b('link')}></Icon> : null}
     </div>
   )
 }

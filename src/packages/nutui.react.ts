@@ -16,11 +16,13 @@ import CircleProgress from './circleprogress'
 import NavBar from './navbar'
 import Tabbar from './tabbar'
 import InputNumber from './inputnumber'
+import Elevator from './elevator'
 import Rate from './rate'
 import Uploader from './uploader'
 import Input from './input'
 import TextArea from './textarea'
 import CheckBox from './checkbox'
+import Signature from './signature'
 
 export {
   Avatar,
@@ -41,9 +43,11 @@ export {
   NavBar,
   Tabbar,
   InputNumber,
+  Elevator,
   Rate,
   Uploader,
   Input,
   TextArea,
   CheckBox,
+  Signature,
 }
