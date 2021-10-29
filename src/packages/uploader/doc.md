@@ -7,7 +7,7 @@
 ### 安装
 
 ``` javascript
-import { Uploader } from '@nutui/nutui';
+import { Uploader } from '@nutui/nutui-react';
 ```
 
 ## 代码示例

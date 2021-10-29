@@ -7,7 +7,7 @@
 ### 安装
 
 ``` javascript
-import { InputNumber } from '@nutui/nutui';
+import { InputNumber } from '@nutui/nutui-react';
 ```
 
 ## 代码演示

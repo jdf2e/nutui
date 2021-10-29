@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef, FunctionComponent, useReducer } from 'react'
+import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
+import bem from '@/utils/bem'
+import classNames from 'classnames'
 import Icon from '@/packages/icon'
 import './infiniteloading.scss'
 
@@ -14,6 +16,8 @@ export interface InfiniteloadingProps {
   loadIcon: string
   loadTxt: string
   loadMoreTxt: string
+  className: string
+  style: React.CSSProperties
   refresh: (param: () => void) => void
   loadMore: (param: () => void) => void
   scrollChange: (param: number) => void
@@ -52,9 +56,11 @@ export const Infiniteloading: FunctionComponent<
     loadIcon,
     loadTxt,
     loadMoreTxt,
+    className,
     refresh,
     loadMore,
     scrollChange,
+    ...restProps
   } = {
     ...defaultProps,
     ...props,
@@ -66,9 +72,11 @@ export const Infiniteloading: FunctionComponent<
   const isTouching = useRef(false)
   const beforeScrollTop = useRef(0)
   const refreshMaxH = useRef(0)
-  const x = useRef(0)
   const y = useRef(0)
   const distance = useRef(0)
+
+  const b = bem('infiniteloading')
+  const classes = classNames(className, b())
 
   useEffect(() => {
     const parentElement = getParentElement(scroller.current as HTMLDivElement) as Node & ParentNode
@@ -213,11 +221,12 @@ export const Infiniteloading: FunctionComponent<
 
   return (
     <div
-      className="nut-infiniteloading"
+      className={classes}
       ref={scroller}
       onTouchStart={(event) => touchStart(event)}
       onTouchMove={(event) => touchMove(event)}
       onTouchEnd={() => touchEnd()}
+      {...restProps}
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">

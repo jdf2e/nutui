@@ -15,6 +15,8 @@ export interface InputNumberProps {
   step: string | number
   decimalPlaces: string | number
   isAsync: boolean
+  className: string
+  style: React.CSSProperties
   add: (e: MouseEvent) => void
   reduce: (e: MouseEvent) => void
   overlimit: (e: MouseEvent) => void
@@ -52,12 +54,15 @@ export const InputNumber: FunctionComponent<
     decimalPlaces,
     step,
     isAsync,
+    className,
+    style,
     add,
     reduce,
     change,
     overlimit,
     blur,
     focus,
+    ...restProps
   } = {
     ...defaultProps,
     ...props,
@@ -68,7 +73,17 @@ export const InputNumber: FunctionComponent<
   }, [modelValue])
 
   const b = bem('inputnumber')
-
+  const classes = classNames(
+    {
+      [`${b('')}--disabled`]: disabled,
+    },
+    className,
+    b('')
+  )
+  const styles = {
+    height: pxCheck(buttonSize),
+    ...style,
+  }
   const addAllow = (value = Number(inputValue)) => {
     return value < Number(max) && !disabled
   }
@@ -76,10 +91,6 @@ export const InputNumber: FunctionComponent<
   const reduceAllow = (value = Number(inputValue)) => {
     return value > Number(min) && !disabled
   }
-
-  const classes = classNames(b(''), {
-    [`${b('')}--disabled`]: disabled,
-  })
 
   const iconMinusClasses = classNames('nut-inputnumber__icon', {
     'nut-inputnumber__icon--disabled': !reduceAllow(),
@@ -97,7 +108,13 @@ export const InputNumber: FunctionComponent<
     const output_value: number | string = fixedDecimalPlaces(value)
     change && change(output_value, e)
     if (!isAsync) {
-      setInputValue(output_value)
+      if (Number(output_value) < Number(min)) {
+        setInputValue(Number(min))
+      } else if (Number(output_value) > Number(max)) {
+        setInputValue(Number(max))
+      } else {
+        setInputValue(output_value)
+      }
     }
   }
 
@@ -153,7 +170,7 @@ export const InputNumber: FunctionComponent<
     blur && blur(e)
   }
   return (
-    <div className={classes} style={{ height: pxCheck(buttonSize) }}>
+    <div className={classes} style={styles} {...restProps}>
       <Icon className={iconMinusClasses} size={buttonSize} name="minus" click={reduceNumber} />
       <input
         type="number"
