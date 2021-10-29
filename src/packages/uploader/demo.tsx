@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Uploader, FileItem } from './uploader'
 import Button from '@/packages/button'
 
+interface uploadRefState {
+  submit: () => void
+}
 const UploaderDemo = () => {
+  const uploadRef = useRef<uploadRefState>(null)
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
   const formData = {
     custom: 'test',
@@ -50,6 +54,9 @@ const UploaderDemo = () => {
     const f = await new File([blob], files[0].name, { type: files[0].type })
     return [f]
   }
+  const submitUpload = () => {
+    ;(uploadRef.current as uploadRefState).submit()
+  }
   return (
     <>
       <div className="demo bg-w">
@@ -84,6 +91,12 @@ const UploaderDemo = () => {
           headers={formData}
           withCredentials={true}
         ></Uploader>
+        <h2>手动上传 </h2>
+        <Uploader url={uploadUrl} maximum="5" autoUpload={false} ref={uploadRef}></Uploader>
+        <br />
+        <Button type="success" size="small" onClick={submitUpload}>
+          执行上传
+        </Button>
         <h2>禁用状态</h2>
         <Uploader disabled></Uploader>
       </div>

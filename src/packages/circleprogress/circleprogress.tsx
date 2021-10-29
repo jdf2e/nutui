@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import bem from '@/utils/bem'
+import classNames from 'classnames'
 import './circleprogress.scss'
 
 export interface CircleProgressProps {
@@ -7,6 +8,7 @@ export interface CircleProgressProps {
   progress: string | number
   isAuto: boolean
   progressOption: object
+  className: string
 }
 const defaultProps = {
   strokeInnerWidth: 10,
@@ -17,11 +19,21 @@ const defaultProps = {
 export const CircleProgress: FunctionComponent<
   Partial<CircleProgressProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { children, strokeInnerWidth, progress, isAuto, progressOption } = {
+  const {
+    children,
+    strokeInnerWidth,
+    progress,
+    isAuto,
+    progressOption,
+    className,
+    style,
+    ...restProps
+  } = {
     ...defaultProps,
     ...props,
   }
   const b = bem('circleprogress')
+  const classes = classNames(className, b(''))
   const option = () => {
     // 所有进度条的可配置项
     let baseOption = {
@@ -41,13 +53,18 @@ export const CircleProgress: FunctionComponent<
     baseOption.startPosition = 'rotate(-90,' + baseOption.cx + ',' + baseOption.cy + ')'
     return baseOption
   }
+  const styles: React.CSSProperties = {
+    height: `${option().size}px`,
+    width: `${option().size}px`,
+    ...style,
+  }
   const arcLength = () => {
     let circleLength = Math.floor(2 * Math.PI * option().radius)
     let progressLength = ((progress as number) / 100) * circleLength
     return `${progressLength},${circleLength}`
   }
   return (
-    <div className={`${b()}`} style={{ height: `${option().size}px`, width: `${option().size}px` }}>
+    <div className={classes} style={styles} {...restProps}>
       <svg height={option().size} width={option().size} x-mlns="http://www.w3.org/200/svg">
         <circle
           r={option().radius}

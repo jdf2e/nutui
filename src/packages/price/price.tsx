@@ -8,6 +8,8 @@ export interface PriceProps {
   symbol: string
   decimalDigits: number
   thousands: boolean
+  className: string
+  style: React.CSSProperties
 }
 const defaultProps = {
   price: 0,
@@ -15,9 +17,13 @@ const defaultProps = {
   symbol: '&yen;',
   decimalDigits: 2,
   thousands: false,
+  className: '',
 } as PriceProps
 export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
-  const { price, needSymbol, symbol, decimalDigits, thousands } = { ...defaultProps, ...props }
+  const { price, needSymbol, symbol, decimalDigits, thousands, className, ...rest } = {
+    ...defaultProps,
+    ...props,
+  }
   const b = bem('price')
   const showSymbol = () => {
     return { __html: (needSymbol ? symbol : '') || '' }
@@ -45,18 +51,19 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     if (Number(decimalNum) == 0) {
       decimalNum = 0
     }
+
     if (checkPoint(decimalNum)) {
       decimalNum = Number(decimalNum).toFixed(decimalDigits)
       decimalNum = typeof decimalNum.split('.') === 'string' ? 0 : decimalNum.split('.')[1]
     } else {
-      decimalNum = decimalNum.toString()
+      decimalNum = 0
     }
     const result = '0.' + decimalNum
     const resultFixed = Number(result).toFixed(decimalDigits)
     return String(resultFixed).substring(2, resultFixed.length)
   }
   return (
-    <div className="nut-price">
+    <div className={`${b()} ${className}`} {...rest}>
       {needSymbol ? (
         <div className={`${b('symbol')}`} dangerouslySetInnerHTML={showSymbol()}></div>
       ) : null}

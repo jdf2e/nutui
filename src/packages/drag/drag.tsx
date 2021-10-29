@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
 import './drag.scss'
+import bem from '@/utils/bem'
 
 export interface DragProps {
   attract: boolean
@@ -10,7 +11,8 @@ export interface DragProps {
     right: number
     bottom: number
   }
-  style: any
+  className: string
+  style: React.CSSProperties
 }
 const defaultProps = {
   attract: false,
@@ -21,12 +23,16 @@ const defaultProps = {
     right: 0,
     bottom: 0,
   },
-  style: {},
+  className: '',
 } as DragProps
 export const Drag: FunctionComponent<Partial<DragProps> & React.HTMLAttributes<HTMLDivElement>> = (
   props
 ) => {
-  const { attract, direction, boundary, style, children } = { ...defaultProps, ...props }
+  const { attract, direction, boundary, children, className, ...reset } = {
+    ...defaultProps,
+    ...props,
+  }
+  const b = bem('drag')
   const elWidth = useRef(0)
   const elHeight = useRef(0)
   const screenWidth = useRef(0)
@@ -164,8 +170,8 @@ export const Drag: FunctionComponent<Partial<DragProps> & React.HTMLAttributes<H
 
   return (
     <div
-      className="nut-drag"
-      style={style}
+      className={`${b()} ${className}`}
+      {...reset}
       ref={myDrag}
       onTouchStart={(event) => touchStart(event)}
     >

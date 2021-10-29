@@ -8,6 +8,8 @@ export interface StepsProps {
   current: number
   direction: string
   progressDot: boolean
+  className: string
+  style: React.CSSProperties
 }
 const defaultProps = {
   current: 0,
@@ -18,7 +20,7 @@ const defaultProps = {
 export const Steps: FunctionComponent<Partial<StepsProps> & React.HTMLAttributes<HTMLDivElement>> =
   (props) => {
     const propSteps = { ...defaultProps, ...props }
-    const { children, direction } = propSteps
+    const { children, direction, className, ...restProps } = propSteps
 
     const parentSteps = {
       propSteps,
@@ -30,6 +32,7 @@ export const Steps: FunctionComponent<Partial<StepsProps> & React.HTMLAttributes
         [`${b('')}-${direction}`]: true,
         [`${b('')}-dot`]: !!props.progressDot,
       },
+      className,
       b('')
     )
     return (
@@ -38,6 +41,7 @@ export const Steps: FunctionComponent<Partial<StepsProps> & React.HTMLAttributes
           'div',
           {
             className: classes,
+            ...restProps,
           },
           children
         )}

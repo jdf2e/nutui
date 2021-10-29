@@ -8,7 +8,7 @@
 
 
 ``` javascript
-import { OverLay } from '@nutui/nutui';
+import { OverLay } from '@nutui/nutui-react';
 ```
 
 ## 代码演示
