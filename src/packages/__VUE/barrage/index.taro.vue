@@ -1,9 +1,15 @@
 <template>
   <view class="dmBody" :class="classes">
-    <view class="dmContainer" id="dmContainer"></view>
-    <!-- <view v-for="(item, index) of danmuList" :key="'danmu'+index" class="dmitem">
-      {{item}}
-    </view> -->
+    <view class="dmContainer" id="dmContainer">
+      <view
+        v-for="(item, index) of danmuList"
+        :key="'danmu' + index"
+        :class="['dmitem', 'dmitem' + index, 'move']"
+        :style="styleList[index]"
+      >
+        {{ item.length > 8 ? item.substr(0, 8) + '...' : item }}
+      </view>
+    </view>
   </view>
 </template>
 <script lang="ts">
@@ -16,10 +22,11 @@ import {
   watch,
   nextTick,
   onUnmounted,
-  onDeactivated
+  onDeactivated,
+  getCurrentInstance
 } from 'vue';
-import Taro from '@tarojs/taro';
 import { createComponent } from '../../utils/create';
+import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('barrage');
 
 export default create({
@@ -52,32 +59,30 @@ export default create({
   emits: ['click'],
 
   setup(props, { emit }) {
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
-    let timer: number = 0;
+    const timeId = ref(new Date().getTime());
     const danmuList = ref<any[]>(props.danmu);
     const rows = ref<number>(props.rows);
     const top = ref<number>(props.top);
-    const index = ref<number>(0);
     const speeds = props.speeds;
 
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true,
+        ['dmBody' + timeId.value]: true
+      };
+    });
+
     onMounted(() => {
-      run();
+      runStep();
     });
 
     onUnmounted(() => {
-      clearInterval(timer);
-      timer = 0;
+      danmuList.value = [];
     });
 
     onDeactivated(() => {
-      clearInterval(timer);
-      timer = 0;
+      danmuList.value = [];
     });
 
     watch(
@@ -88,60 +93,62 @@ export default create({
     );
 
     const add = (word: string) => {
-      const _index = index.value % danmuList.value.length;
-      danmuList.value.splice(_index, 0, word);
+      danmuList.value = [...danmuList.value, word];
+      runStep();
     };
 
-    const run = () => {
-      clearInterval(timer);
-      timer = 0;
-      timer = setInterval(() => {
-        play();
-        run();
-      }, props.frequency);
-    };
-
-    const play = () => {
+    const getNode = (index) => {
       const query = Taro.createSelectorQuery();
-      let dmContainer: any = document.getElementById('dmContainer');
-      const _index = props.loop
-        ? index.value % danmuList.value.length
-        : index.value;
-      let el: any = document.createElement(`view`);
-      el.innerHTML = danmuList.value[_index] as string;
-      el.classList.add('dmitem');
-      dmContainer.appendChild(el);
-
-      let domList: Array<any> = [];
-      query.selectAll('.dmitem').boundingClientRect((recs: any) => {
-        domList = recs;
-      });
-
-      nextTick(() => {
+      setTimeout(() => {
+        let width = 100;
+        query.select('.dmBody' + timeId.value).boundingClientRect((rec) => {
+          width = rec.width || 300;
+        });
         query
-          .select('.dmBody')
-          .boundingClientRect((rec) => {
-            let danmuCWidth = rec.width;
-            // let width = domList[_index]['width'];
-            let height = domList[_index]?.height || 0;
-            el.classList.add('move');
-            el.style.animationDuration = `${speeds}ms`;
-            el.style.top =
-              (_index % rows.value) * (height + top.value) + 20 + 'px';
-            // el.style.width = width + 20 + 'px';
-            el.style.width = 'auto';
-            // el.style.left = "-"+(_index % rows.value) + 'px';
-            el.style.setProperty('--move-distance', `-${danmuCWidth}px`);
-            el.dataset.index = `${_index}`;
-            el.addEventListener('animationend', () => {
-              dmContainer.removeChild(el);
-            });
-            index.value++;
+          .select('.dmitem' + index)
+          .boundingClientRect((recs: any) => {
+            let height = recs.height;
+            let nodeTop = (index % rows.value) * (height + top.value) + 20 + 'px';
+            styleInfo(index, nodeTop, width);
           })
           .exec();
+        // let ele = document.getElementsByClassName('dmitem'+index)[0];
+        // let transitionFlag = false;
+        // ele.addEventListener('animationend', (e:any) => {
+        //   if(e.target.id === e.currentTarget.id && transitionFlag) {
+        //     transitionFlag = false;
+        //     // deleteNode(index)
+        //   }else {
+        //     transitionFlag = true;
+        //   }
+        // }, false);
+      }, 500);
+    };
+
+    const runStep = () => {
+      danmuList.value.forEach((item, index) => {
+        getNode(index);
       });
     };
-    return { classes, danmuList, add };
+    let styleList = reactive([]);
+    const styleInfo = (index, nodeTop, width) => {
+      let n = Math.floor(Math.random() * (10 - 5)) + 5;
+      let timeIndex = index - rows.value > 0 ? index - rows.value : 0;
+      let list = styleList;
+      let time = list[timeIndex] ? Number(list[timeIndex]['--time']) : 0;
+
+      let obj = {
+        top: nodeTop,
+        '--time': `${props.frequency * index + time}`,
+        animationDuration: `${speeds}ms`,
+        animationIterationCount: `${props.loop ? 'infinite' : 1}`,
+        animationDelay: `${props.frequency * index + time}ms`,
+        '--move-distance': `-${width}px`
+      };
+      styleList.push(obj);
+    };
+
+    return { classes, danmuList, add, styleList };
   }
 });
 </script>

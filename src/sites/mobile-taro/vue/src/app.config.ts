@@ -24,7 +24,8 @@ export default {
         'pages/steps/index',
         'pages/infiniteloading/index',
         'pages/progress/index',
-        'pages/circleprogress/index'
+        'pages/circleprogress/index',
+        'pages/searchbar/index'
       ]
     },
     {
@@ -47,6 +48,7 @@ export default {
         'pages/tabs/index',
         'pages/fixednav/index',
         'pages/elevator/index',
+        'pages/menu/index',
         'pages/pagination/index'
       ]
     },

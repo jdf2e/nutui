@@ -92,3 +92,4 @@ app.use(Step);
 | title            | 流程步骤的标题         | String | 步骤 |
 | content          | 流程步骤的描述性文字(支持 html 结构)       | String | 步骤描述 |
 | icon          | 图标       | String | null |
+| icon-color          | 图标颜色       | String | null |

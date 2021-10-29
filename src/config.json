@@ -510,6 +510,17 @@
           "show": true,
           "taro": true,
           "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "SearchBar",
+          "type": "component",
+          "cName": "搜索栏",
+          "desc": "搜索栏",
+          "sort": 23,
+          "show": true,
+          "taro": true,
+          "author": "zongyue3"
         }
       ]
     },
@@ -568,9 +579,10 @@
           "sort": 2,
           "cName": "菜单组件",
           "type": "component",
-          "show": false,
+          "taro":true,
+          "show": true,
           "desc": "下拉菜单组件",
-          "author": "vickyYE"
+          "author": "yangjinjun3"
         },
         {
           "version": "3.0.0",
@@ -582,7 +594,7 @@
           "exportEmpty": true,
           "show": false,
           "desc": "下拉菜单组件",
-          "author": "vickyYE"
+          "author": "yangjinjun3"
         },
         {
           "version": "3.0.0",
