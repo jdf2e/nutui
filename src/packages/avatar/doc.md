@@ -6,7 +6,7 @@
 
 ### 安装
 ``` javascript
-import { Avatar } from '@nutui/nutui';
+import { Avatar } from '@nutui/nutui-react';
 ```
 
 ## 代码示例
