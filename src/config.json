@@ -241,6 +241,16 @@
           "sort": 8,
           "show": false,
           "author": "vickyYE"
+        },
+        {
+          "version": "1.0.0",
+          "name": "CircleProgress",
+          "type": "component",
+          "cName": "进度条",
+          "desc": "展示操作或任务的当前进度。",
+          "sort": 7,
+          "show": true,
+          "author": "swag~jun"
         }
       ]
     },

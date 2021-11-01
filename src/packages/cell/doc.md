@@ -46,7 +46,7 @@ const testClick = (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent
 
 ```tsx
 <CellGroup title="自定义右侧箭头区域">
-  <Cell title="Switch" extra={<div>这里是switch组件</div>}></Cell>
+  <Cell title="Switch" extra={<Switch checked={true}></Switch>}></Cell>
 </CellGroup>
 ```
 

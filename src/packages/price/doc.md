@@ -11,19 +11,19 @@
 ### 基本用法
 
 ```tsx
-<Price price={0} need-symbol={false} thousands={true} />
+<Price price={0} needSymbol={false} thousands={true} />
 ```
 
 ### 有人民币符号，无千位分隔
 
 ```tsx
-<Price price={10010.01} need-symbol={true} thousands={false} />
+<Price price={10010.01} needSymbol={true} thousands={false} />
 ```
 
 ### 带人民币符号，有千位分隔，保留小数点后三位
 
 ```tsx
-<Price price={15213.1221} decimal-digits={3} need-symbol={true} thousands={true} />
+<Price price={15213.1221} decimalDigits={3} needSymbol={true} thousands={true} />
 ```
 
 ### 异步随机变更
