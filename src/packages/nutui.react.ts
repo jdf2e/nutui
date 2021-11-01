@@ -12,6 +12,7 @@ import BackTop from './backtop'
 import Range from './range'
 import Infiniteloading from './infiniteloading'
 import Steps from './steps'
+import Notify from './notify'
 import NavBar from './navbar'
 import Tabbar from './tabbar'
 import InputNumber from './inputnumber'
@@ -36,6 +37,7 @@ export {
   Range,
   Infiniteloading,
   Steps,
+  Notify,
   NavBar,
   Tabbar,
   InputNumber,

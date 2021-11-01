@@ -231,6 +231,16 @@
           "sort": 7,
           "show": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Notify",
+          "type": "component",
+          "cName": "消息通知",
+          "desc": "在页面顶部展示消息提示",
+          "sort": 8,
+          "show": false,
+          "author": "vickyYE"
         }
       ]
     },
