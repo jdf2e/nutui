@@ -28,7 +28,7 @@
         <slot name="rightin"></slot>
       </view>
     </view>
-    <view v-if="hasRightIn" class="search-icon right-search-icon">
+    <view v-if="hasRightOut" class="search-icon right-search-icon">
       <slot name="rightout"></slot>
     </view>
   </view>
@@ -67,19 +67,19 @@ export default create({
     },
     hasLeftIn: {
       type: Boolean,
-      default: true
+      default: false
     },
     hasLeftOut: {
       type: Boolean,
-      default: true
+      default: false
     },
     hasRightIn: {
       type: Boolean,
-      default: true
+      default: false
     },
     hasRightOut: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   components: {
