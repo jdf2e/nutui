@@ -10,6 +10,8 @@ export interface TabbarProps {
   size: string
   unactiveColor: string
   activeColor: string
+  className: string
+  style: React.CSSProperties
   tabSwitch: (child: React.ReactElement<any>, active: number) => void
 }
 const defaultProps = {
@@ -19,11 +21,13 @@ const defaultProps = {
   size: '',
   unactiveColor: '',
   activeColor: '',
+  className: '',
+  style: {},
   tabSwitch: () => {},
 } as TabbarProps
 
 export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
-  const { children, visible, bottom, activeColor, unactiveColor, tabSwitch } = {
+  const { children, visible, bottom, activeColor, unactiveColor, className, style, tabSwitch } = {
     ...defaultProps,
     ...props,
   }
@@ -37,7 +41,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
   }
 
   return (
-    <div className={[`${b()}`, bottom ? `${b('bottom')}` : ''].join(' ')}>
+    <div className={[`${b()}`, bottom ? `${b('bottom')}` : '', className].join(' ')} style={style}>
       {React.Children.map(children, (child, idx) => {
         if (!React.isValidElement(child)) {
           return null

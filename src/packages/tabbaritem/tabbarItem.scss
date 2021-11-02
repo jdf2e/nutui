@@ -2,13 +2,13 @@
   flex: 1;
   text-align: center;
   text-decoration: none;
-  color: $primary-color;
+  color: $black;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  &--unactive {
-    color: $black;
+  &--active {
+    color: $primary-color;
   }
 
   &__icon-box {
@@ -20,7 +20,7 @@
       position: absolute;
       background: $tabbar-active-color;
       border: 1px solid $white;
-      border-radius: 7px;
+      border-radius: 8px;
       text-align: center;
       top: -2px;
       right: -7px;
@@ -34,14 +34,15 @@
       line-height: 1;
       font-size: $font-size-0;
       color: $white;
-      padding: 1px 2px 2px 3px;
+      padding: 1px 2px 2px 2px;
+      min-width: 17px;
     }
 
     &__nums {
       line-height: 1;
       font-size: $font-size-0;
       color: $white;
-      padding: 2px 1px 2px 2px;
+      padding: 1px 2px 2px 2px;
     }
     &_icon {
       display: block;
