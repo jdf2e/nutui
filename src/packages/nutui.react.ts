@@ -23,6 +23,7 @@ import Input from './input'
 import TextArea from './textarea'
 import CheckBox from './checkbox'
 import Signature from './signature'
+import Barrage from './barrage'
 
 export {
   Avatar,
@@ -50,4 +51,5 @@ export {
   TextArea,
   CheckBox,
   Signature,
+  Barrage,
 }

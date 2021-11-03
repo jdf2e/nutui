@@ -232,15 +232,15 @@
           "show": true,
           "author": "swag~jun"
         },
-          {
-            "version": "1.0.0",
-            "name": "CircleProgress",
-            "type": "component",
-            "cName": "进度条",
-            "desc": "展示操作或任务的当前进度。",
-            "sort": 7,
-            "show": true,
-            "author": "swag~jun"
+        {
+          "version": "1.0.0",
+          "name": "CircleProgress",
+          "type": "component",
+          "cName": "进度条",
+          "desc": "展示操作或任务的当前进度。",
+          "sort": 7,
+          "show": true,
+          "author": "swag~jun"
         }
       ]
     },
@@ -356,6 +356,16 @@
           "sort": 1,
           "show": true,
           "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Barrage",
+          "type": "component",
+          "cName": "弹幕",
+          "desc": "用于话语和词组的轮播展示，适用于视频中或其他类似需求中。",
+          "sort": 2,
+          "show": true,
+          "author": "swag~jun"
         }
       ]
     }
