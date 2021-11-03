@@ -7,7 +7,7 @@
 ### 安装
 
 ```javascript
-  import { InfiniteLoading } from '@nutui/nutui';
+  import { InfiniteLoading } from '@nutui/nutui-react';
 ```
 
 ## 代码演示

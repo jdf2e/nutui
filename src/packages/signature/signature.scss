@@ -1,0 +1,16 @@
+.nut-signature {
+  &__inner {
+    height: 10rem;
+    margin-bottom: 1rem;
+    border: 1px solid $signature-border-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__unsopport {
+    font-size: $font-size-base;
+  }
+  &__btn {
+    margin-right: 15px !important;
+  }
+}
