@@ -4,9 +4,8 @@
     <div class="resource-main-content">
       <h3 class="sub-title">资源</h3>
       <p class="sub-desc"
-        >这里提供 NutUI 相关设计资源和设计工具的下载，更多设计资源正在整理和完善中。你可以在这个<span class="sub-red"
-          >地址</span
-        >中反馈对新版本 Sketch Symbols 组件的意见。</p
+        >想要了解 NutUI 设计体系背后的故事？如何才能更好的应用？你可以查阅下述我们为你精挑细选的文章。也欢迎关注 NutUI
+        官方专栏，这里常有关于 NutUI 设计体系下相关话题内容的最新分享和讨论。</p
       >
     </div>
   </div>
@@ -14,22 +13,17 @@
   <div class="resource-content">
     <div class="resource-block">
       <h4 class="sub-title">设计资源</h4>
-
-      <a class="download" download href="https://storage.360buyimg.com/nutui-static/NutUI3xStyleGuide.sketch"
-        >点击下载
-      </a>
-
+      <p class="sub-desc"
+        >NutUI 3x 基于 JD APP 10.0 视觉规范实现的组件库，在这里可以下载 NutUI 的设计资源。
+        <a class="download" download href="https://storage.360buyimg.com/nutui-static/NutUI3xStyleGuide.sketch"
+          >点击下载
+        </a></p
+      >
       <img
-        style="margin-top: 20px; width: 90%"
-        src="https://img13.360buyimg.com/imagetools/jfs/t1/217516/19/2297/1091750/617b97caEf8b14bd3/11fe4befd5d685cc.jpg"
+        src="https://img11.360buyimg.com/imagetools/jfs/t1/206767/18/7920/405226/6181e655E6b5be4de/47a13df50b92106b.jpg"
       />
     </div>
     <div class="resource-block">
-      <p class="sub-desc"
-        >想要了解 NutUI 设计体系背后的故事？如何才能更好的应用？你可以查阅下述我们为你精挑细选的文章。也欢迎关注 NutUI
-        官方专栏，这里常有关于 NutUI 设计体系下相关话题内容的最新分享和讨论。</p
-      >
-
       <div class="no-data" v-if="articleList.length === 0">
         <img class="nodata-img-joy" src="../../assets/images/img-joy.png" />
         <p class="nodata-desc">敬请期待</p>
@@ -188,13 +182,11 @@ $mainRed: #fa685d;
     margin-bottom: 50px;
     text-align: left;
     .download {
-      display: block;
-      width: 100px;
-      color: #fff;
-      line-height: 40px;
-      text-align: center;
-      background-color: #38f;
-      border-radius: 3px;
+      color: #38f;
+    }
+    > img {
+      width: 100%;
+      box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
     }
     .sub-title {
       margin-bottom: 15px;
