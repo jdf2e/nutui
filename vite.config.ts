@@ -71,6 +71,11 @@ export default defineConfig({
       input: {
         doc: resolve(__dirname, 'index.html'),
         mobile: resolve(__dirname, 'demo.html')
+      },
+      output: {
+        entryFileNames: `${config.version}/[name].js`,
+        chunkFileNames: `${config.version}/[name].js`,
+        assetFileNames: `${config.version}/[name].[ext]`
       }
     }
   }

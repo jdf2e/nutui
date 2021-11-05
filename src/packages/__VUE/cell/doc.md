@@ -116,7 +116,7 @@ export default {
 | click | 点击事件 | event:Event |
 
 
-## Slots
+## Cell Slots
 
 | 名称          | 说明                 |
 |---------------|----------------------|
