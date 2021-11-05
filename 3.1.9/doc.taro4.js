@@ -1,0 +1,15 @@
+import{e as a,o as t,G as n}from"./vendor.js";const l={class:"markdown-body"},p=n(`<h1>Drag \u62D6\u62FD</h1><h3>\u4ECB\u7ECD</h3><p>\u5B9E\u73B0\u53EF\u62D6\u62FD\u7684\u4EFB\u610F\u5143\u7D20</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
+<span class="hljs-keyword">import</span> { Drag } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
+
+<span class="hljs-keyword">const</span> app = createApp();
+app.use(Drag);
+</code></pre><h2>\u57FA\u672C\u7528\u6CD5</h2><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-drag</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;touch-dom&quot;</span>&gt;</span>\u53EF\u70B9\u51FB\uFF0C\u53EF\u62D6\u62FD<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nut-drag</span>&gt;</span>
+</code></pre><h2>\u9650\u5236\u62D6\u62FD\u65B9\u5411</h2><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-drag</span> <span class="hljs-attr">direction</span>=<span class="hljs-string">&quot;x&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;touch-dom&quot;</span>&gt;</span>\u53EA\u80FD\u5728X\u8F74\u62D6\u52A8<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nut-drag</span>&gt;</span>
+</code></pre><h2>\u9650\u5236\u62D6\u62FD\u65B9\u5411</h2><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-drag</span> <span class="hljs-attr">direction</span>=<span class="hljs-string">&quot;y&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;touch-dom&quot;</span>&gt;</span>\u53EA\u80FD\u5728Y\u8F74\u62D6\u52A8<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nut-drag</span>&gt;</span>
+</code></pre><h2>Prop</h2><table><thead><tr><th style="text-align:left;">\u5B57\u6BB5</th><th style="text-align:left;">\u8BF4\u660E</th><th style="text-align:left;">\u7C7B\u578B</th><th style="text-align:left;">\u9ED8\u8BA4\u503C</th></tr></thead><tbody><tr><td style="text-align:left;">direction</td><td style="text-align:left;">\u62D6\u62FD\u5143\u7D20\u7684\u62D6\u62FD\u65B9\u5411\u9650\u5236\uFF0C<strong>x</strong>/<strong>y</strong>/<strong>all</strong>\u4E09\u9009\u4E00</td><td style="text-align:left;">String</td><td style="text-align:left;">\u2018all\u2019</td></tr></tbody></table>`,13),e=[p],d={setup(c,{expose:s}){return s({frontmatter:{}}),(r,o)=>(t(),a("div",l,e))}};export{d as default};
