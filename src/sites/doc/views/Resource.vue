@@ -13,15 +13,16 @@
   <div class="resource-content">
     <div class="resource-block">
       <h4 class="sub-title">设计资源</h4>
+      <!-- <h4 class="sub-title">学习资料</h4> -->
       <p class="sub-desc"
         >NutUI 3x 基于 JD APP 10.0 视觉规范实现的组件库，在这里可以下载 NutUI 的设计资源。
         <a class="download" download href="https://storage.360buyimg.com/nutui-static/NutUI3xStyleGuide.sketch"
           >点击下载
-        </a></p
-      >
-      <img
+        </a>
+      </p>
+      <!-- <img
         src="https://img11.360buyimg.com/imagetools/jfs/t1/206767/18/7920/405226/6181e655E6b5be4de/47a13df50b92106b.jpg"
-      />
+      /> -->
     </div>
     <div class="resource-block">
       <div class="no-data" v-if="articleList.length === 0">
@@ -29,17 +30,7 @@
         <p class="nodata-desc">敬请期待</p>
       </div>
       <div class="tab-box" v-else>
-        <div class="tab-hd">
-          <div
-            class="tab-hd-item"
-            :class="{ active: activeIndex === index }"
-            v-for="(item, index) in tabData"
-            :key="index"
-            @click="clickTab(index)"
-          >
-            {{ item.title }}
-          </div>
-        </div>
+        <h4 class="sub-title">全部文章</h4>
         <template v-for="pItem in articleList" v-show="activeIndex === 0">
           <h3>{{ pItem.year }}</h3>
           <div class="tab-bd">
