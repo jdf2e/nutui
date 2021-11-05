@@ -19,7 +19,12 @@
     </nut-searchbar>
 
     <h2>更改输入框内部及外部的背景样式</h2>
-    <nut-searchbar v-model="searchValue4" background="red" input-background="#fff"> </nut-searchbar>
+    <nut-searchbar
+      v-model="searchValue4"
+      background="linear-gradient(to right, #9866F0, #EB4D50)"
+      input-background="#fff"
+    >
+    </nut-searchbar>
 
     <h2>显示全部 icon</h2>
     <nut-searchbar v-model="searchValue5">

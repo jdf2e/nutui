@@ -360,6 +360,7 @@ $tabs-vertical-titles-width: 100px !default;
 // searchbar
 $searchbar-background: $white !default;
 $searchbar-input-background: #f7f7f7 !default;
+$searchbar-right-out-color: $black !default;
 
 @import './mixins/index';
 @import './animation/index';

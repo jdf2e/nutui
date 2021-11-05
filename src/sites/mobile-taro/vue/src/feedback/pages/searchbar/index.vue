@@ -19,7 +19,12 @@
     </nut-searchbar>
 
     <h2>更改输入框内部及外部的背景样式</h2>
-    <nut-searchbar v-model="searchValue4" background="red" input-background="#fff"> </nut-searchbar>
+    <nut-searchbar
+      v-model="searchValue4"
+      background="linear-gradient(to right, #9866F0, #EB4D50)"
+      input-background="#fff"
+    >
+    </nut-searchbar>
 
     <h2>显示全部 icon</h2>
     <nut-searchbar v-model="searchValue5">
@@ -41,10 +46,7 @@
 
 <script lang="ts">
 import { toRefs, reactive } from 'vue';
-import { createComponent } from '../../utils/create';
-import { Toast } from '@/packages/nutui.vue';
-const { createDemo } = createComponent('searchbar');
-export default createDemo({
+export default {
   props: {},
   setup() {
     const state = reactive({
@@ -57,11 +59,11 @@ export default createDemo({
     });
 
     const search = function (e: any) {
-      Toast.text('搜索触发');
+      console.log('搜索触发');
     };
 
     const clickLeft = function () {
-      Toast.text('点击回退按钮');
+      console.log('点击回退按钮');
     };
 
     return {
@@ -70,7 +72,7 @@ export default createDemo({
       ...toRefs(state)
     };
   }
-});
+};
 </script>
 
 <style lang="scss" scoped></style>
