@@ -7,16 +7,16 @@
 ### 安装
     
 ```javascript
-import { createApp, reactive, toRefs } from 'vue';
+import { createApp } from 'vue';
 
 // vue
-import { SearchBar } from '@nutui/nutui';
+import { SearchBar, Icon } from '@nutui/nutui';
 // taro
-import { SearchBar } from '@nutui/nutui-taro';
+import { SearchBar, Icon } from '@nutui/nutui-taro';
 
 
 const app = createApp();
-app.use(SearchBar);
+app.use(SearchBar).use(Icon);
 ```    
     
 ### 基础用法
@@ -72,7 +72,7 @@ app.use(SearchBar);
 ### 显示搜索 icon
 
 ```html
-  <nut-searchbar v-model="searchValue" :has-left-in="true">
+  <nut-searchbar v-model="searchValue">
     <template v-slot:leftin>
       <nut-icon size="14" name="search2"></nut-icon>
     </template>
@@ -99,7 +99,7 @@ app.use(SearchBar);
 ### 右侧添加搜索文字
 
 ```html
-  <nut-searchbar v-model="searchValue" :has-right-out="true">
+  <nut-searchbar v-model="searchValue">
     <template v-slot:rightout>
       搜索
     </template>
@@ -121,11 +121,33 @@ app.use(SearchBar);
     }
   }
 ```
+    <h2>更改输入框内部及外部的背景样式</h2>
 
+### 更改输入框内部及外部的背景样式
+
+```html
+  <nut-searchbar v-model="searchValue" background="red" input-background="#fff"></nut-searchbar> 
+```
+
+```javascript
+  import { toRefs, reactive } from 'vue';
+
+  export default {
+    setup() {
+      const state = reactive({
+        searchValue: ""
+      });
+
+      return {
+        ...toRefs(state),
+      };
+    }
+  }
+```
 ### 显示全部 icon
 
 ```html
-  <nut-searchbar v-model="searchValue" :has-left-in="true" :has-left-out="true" :has-right-in="true" :has-right-out="true">
+  <nut-searchbar v-model="searchValue">
     <template v-slot:leftout>
       <nut-icon @click="clickLeft" size="20" name="left"></nut-icon>
     </template>
@@ -166,10 +188,10 @@ app.use(SearchBar);
 | input-type    | 输入框类型   | String | 'text'      |
 | placeholder        | 输入框默认暗纹  | String | '请输入'   |
 | clearable          | 是否展示清除按钮 | Boolean | true     |
-| has-left-in     | 是否展示输入框内 左icon     | Boolean | false |
-| has-left-out     | 是否展示输入框外 左icon     | Boolean | false |
-| has-right-in     | 是否展示输入框内 右icon     | Boolean | false |
-| has-right-out     | 是否展示输入框外 右icon     | Boolean | false |
+| background      | 输入框外部背景 | String |      |
+| input-background   | 输入框内部背景 | String |      |
+
+
 
 ### Events
 

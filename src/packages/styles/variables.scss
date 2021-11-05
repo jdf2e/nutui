@@ -357,5 +357,9 @@ $tabs-vertical-titles-item-height: 40px !default;
 $tabs-vertical-titles-item-active-line-height: 14px !default;
 $tabs-vertical-titles-width: 100px !default;
 
+// searchbar
+$searchbar-background: $white !default;
+$searchbar-input-background: #f7f7f7 !default;
+
 @import './mixins/index';
 @import './animation/index';

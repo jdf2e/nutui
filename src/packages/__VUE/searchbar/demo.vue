@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo full">
     <h2>基础用法</h2>
     <nut-searchbar v-model="searchValue"> </nut-searchbar>
 
@@ -7,25 +7,22 @@
     <nut-searchbar v-model="searchValue1" @search="search"> </nut-searchbar>
 
     <h2>显示搜索 icon</h2>
-    <nut-searchbar v-model="searchValue2" :has-left-in="true">
+    <nut-searchbar v-model="searchValue2">
       <template v-slot:leftin>
         <nut-icon size="14" name="search2"></nut-icon>
       </template>
     </nut-searchbar>
 
     <h2>右侧添加搜索文字</h2>
-    <nut-searchbar v-model="searchValue3" :has-right-out="true">
+    <nut-searchbar v-model="searchValue3">
       <template v-slot:rightout> 搜索 </template>
     </nut-searchbar>
 
+    <h2>更改输入框内部及外部的背景样式</h2>
+    <nut-searchbar v-model="searchValue4" background="red" input-background="#fff"> </nut-searchbar>
+
     <h2>显示全部 icon</h2>
-    <nut-searchbar
-      v-model="searchValue4"
-      :has-left-in="true"
-      :has-left-out="true"
-      :has-right-in="true"
-      :has-right-out="true"
-    >
+    <nut-searchbar v-model="searchValue5">
       <template v-slot:leftout>
         <nut-icon @click="clickLeft" size="20" name="left"></nut-icon>
       </template>
@@ -55,7 +52,8 @@ export default createDemo({
       searchValue1: '',
       searchValue2: '',
       searchValue3: '',
-      searchValue4: ''
+      searchValue4: '',
+      searchValue5: ''
     });
 
     const search = function (e: any) {
