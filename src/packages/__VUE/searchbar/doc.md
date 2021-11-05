@@ -188,8 +188,8 @@ app.use(SearchBar).use(Icon);
 | input-type    | 输入框类型   | String | 'text'      |
 | placeholder        | 输入框默认暗纹  | String | '请输入'   |
 | clearable          | 是否展示清除按钮 | Boolean | true     |
-| background      | 输入框外部背景 | String |      |
-| input-background   | 输入框内部背景 | String |      |
+| background      | 输入框外部背景 | String |   '#fff'   |
+| input-background   | 输入框内部背景 | String |   '#f7f7f7'   |
 
 
 
