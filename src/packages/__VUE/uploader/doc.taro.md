@@ -134,7 +134,7 @@ setup() {
 | upload-icon       | 上传区域[图标名称](#/icon)或图片链接                                                                                   | String                            | "photograph"              |
 | upload-icon-size  | 上传区域[图标尺寸](#/icon)大小，如 `20px` `2em` `2rem`                                                                 | String or Number                  | -                         |
 | xhr-state         | 接口响应的成功状态（status）值                                                                                         | Number                            | 200                       |
-| disabled          | 是否禁用文件上传                                                                                                       | Boolean                           | fasle                     |
+| disabled          | 是否禁用文件上传                                                                                                       | Boolean                           | false                     |
 | timeout           | 超时时间，单位为毫秒                                                                                                   | Number丨String                    | 1000 * 30                 |
 | before-delete     | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除 | Function(file): boolean 丨Promise | -                         |
 
