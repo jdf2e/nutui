@@ -41,13 +41,19 @@ app.use(MenuItem);
 </code></pre><h3>\u7981\u7528\u83DC\u5355</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-menu</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">nut-menu-item</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;\u5168\u90E8\u5546\u54C1&quot;</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">:options</span>=<span class="hljs-string">&quot;options1&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-menu-item</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nut-menu</span>&gt;</span>
-</code></pre><h3>\u81EA\u5B9A\u4E49\u9009\u9879\u7684\u9009\u4E2D\u6001\u56FE\u6807\u989C\u8272</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-menu</span> <span class="hljs-attr">active-color</span>=<span class="hljs-string">&quot;green&quot;</span>&gt;</span>
+</code></pre><h3>\u81EA\u5B9A\u4E49\u9009\u9879\u7684\u9009\u4E2D\u6001\u56FE\u6807\u989C\u8272</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-menu</span> <span class="hljs-attr">active-color</span>=<span class="hljs-string">&quot;#0f0&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">nut-menu-item</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;\u5168\u90E8\u5546\u54C1&quot;</span> <span class="hljs-attr">:options</span>=<span class="hljs-string">&quot;options1&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-menu-item</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nut-menu</span>&gt;</span>
 </code></pre><h3>\u81EA\u5B9A\u4E49\u83DC\u5355\u5185\u5BB9</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-menu</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">nut-menu-item</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;\u7B5B\u9009&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;customer-item-demo&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">&quot;{&#39;display&#39;: &#39;flex&#39;,&#39;justify-content&#39;: &#39;space-between&#39;, &#39;align-items&#39;: &#39;center&#39;}&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+      <span class="hljs-attr">:style</span>=<span class="hljs-string">&quot;{
+        display: &#39;flex&#39;,
+        &#39;justify-content&#39;: &#39;space-between&#39;,
+        &#39;align-items&#39;: &#39;center&#39;
+      }&quot;</span>
+    &gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">&quot;{ &#39;font-size&#39;: &#39;12px&#39; }&quot;</span>&gt;</span>\u6211\u662F\u81EA\u5B9A\u4E49\u5185\u5BB9<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">nut-button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;handleClick&quot;</span>&gt;</span>\u5173\u95ED<span class="hljs-tag">&lt;/<span class="hljs-name">nut-button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">nut-menu-item</span>&gt;</span>
@@ -56,7 +62,7 @@ app.use(MenuItem);
   <span class="hljs-keyword">const</span> item = ref&lt;HTMLElement&gt;()
 
   <span class="hljs-keyword">const</span> handleClick = <span class="hljs-function">() =&gt;</span> {
-    item.value.toggle()
+    (item.value <span class="hljs-keyword">as</span> any).toggle()
   }
  }
 </code></pre><h2>API</h2><h3>Props</h3><h3>nut-menu</h3><table><thead><tr><th>\u53C2\u6570</th><th>\u8BF4\u660E</th><th>\u7C7B\u578B</th><th>\u9ED8\u8BA4\u503C</th></tr></thead><tbody><tr><td>col</td><td>\u663E\u793A\u7684\u5217\u6570</td><td>String/Number</td><td>1</td></tr><tr><td>active-color</td><td>\u9009\u9879\u7684\u9009\u4E2D\u6001\u56FE\u6807\u989C\u8272</td><td>String</td><td>#f00</td></tr></tbody></table><h3>nut-menu-item</h3><table><thead><tr><th>\u53C2\u6570</th><th>\u8BF4\u660E</th><th>\u7C7B\u578B</th><th>\u9ED8\u8BA4\u503C</th></tr></thead><tbody><tr><td>title</td><td>\u6807\u9898</td><td>String</td><td>-</td></tr><tr><td>options</td><td>\u5217\u8868\u5BF9\u8C61</td><td>Array</td><td>-</td></tr><tr><td>disabled</td><td>\u662F\u5426\u7981\u7528\u83DC\u5355</td><td>Boolean</td><td>false</td></tr></tbody></table><h3>Events</h3><table><thead><tr><th>\u4E8B\u4EF6\u540D</th><th>\u8BF4\u660E</th><th>\u56DE\u8C03\u53C2\u6570</th></tr></thead><tbody><tr><td>choose</td><td>\u5355\u9009\u4E0B\uFF0C\u9009\u62E9\u4E4B\u540E\u89E6\u53D1</td><td>1.\u9009\u62E9\u7684\u5217\u8868\u5BF9\u8C61\u30022.\u5217\u8868\u7D22\u5F15</td></tr></tbody></table>`,31),e=[p],u={setup(c,{expose:s}){return s({frontmatter:{}}),(o,j)=>(n(),a("div",l,e))}};export{u as default};
