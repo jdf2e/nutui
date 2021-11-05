@@ -86,7 +86,7 @@ app.use(MenuItem);
 ### 自定义选项的选中态图标颜色
 
 ```html
-<nut-menu active-color="green">
+<nut-menu active-color="#0f0">
   <nut-menu-item title="全部商品" :options="options1"></nut-menu-item>
 </nut-menu>
 ```
@@ -96,8 +96,14 @@ app.use(MenuItem);
 ```html
 <nut-menu>
   <nut-menu-item title="筛选" ref="item">
-    <div class="customer-item-demo">
-      <div :style="{'display': 'flex','justify-content': 'space-between', 'align-items': 'center'}">
+    <div
+      :style="{
+        display: 'flex',
+        'justify-content': 'space-between',
+        'align-items': 'center'
+      }"
+    >
+      <div :style="{ 'font-size': '12px' }">我是自定义内容</div>
       <nut-button @click="handleClick">关闭</nut-button>
     </div>
   </nut-menu-item>
@@ -108,7 +114,7 @@ app.use(MenuItem);
   const item = ref<HTMLElement>()
 
   const handleClick = () => {
-    item.value.toggle()
+    (item.value as any).toggle()
   }
  }
 ```
