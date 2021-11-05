@@ -124,3 +124,7 @@ export default {
 | default       | 自定义内容           |
 | link          | 自定义右侧 link 区域 |
 
+## CellGroup Slots
+| 名称          | 说明                 |
+|---------------|----------------------|
+| title `v3.1.10` | 自定义title区域 |

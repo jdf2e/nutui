@@ -7,7 +7,7 @@
     <h2>高度自定义，拉伸</h2>
     <nut-textarea v-model="value3" rows="10" autosize />
     <h2>只读</h2>
-    <nut-textarea readonly model-value="textarea直读状态" />
+    <nut-textarea readonly model-value="textarea只读状态" />
     <h2>禁用</h2>
     <nut-textarea
       disabled
