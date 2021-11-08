@@ -168,7 +168,7 @@ export default defineComponent({
     }
     .version {
       position: absolute;
-      right: 76px;
+      right: 70px;
       font-size: 14px;
     }
   }
