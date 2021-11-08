@@ -8,16 +8,14 @@
 ### 安装
 
 ```javascript
-
-
-
+import { NavBar } from '@nutui/nutui-react';
 ```
 
 ### 代码示例
 
 ### 基本用法
 
-```jsx
+```tsx
    <NavBar
       title="订单详情"
       icon="share"
