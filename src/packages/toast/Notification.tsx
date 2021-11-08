@@ -3,13 +3,24 @@ import * as ReactDOM from 'react-dom'
 import bem from '@/utils/bem'
 import Icon from '../icon/index'
 import './toast.scss'
+import classNames from 'classnames'
 export interface NotificationProps {
-  prefixCls?: string
+  id?: string
   style?: React.CSSProperties
   icon?: string
   msg: string | React.ReactNode
   bottom?: boolean
   duration?: number
+  center: boolean
+  type: string
+  customClass: string
+  size: string | number
+  textAlignCenter: boolean
+  loadingRotate: boolean
+  bgColor: string
+  cover: boolean
+  coverColor: string
+  closeOnClickOverlay: boolean
   onClose: () => void
   className?: string
 }
@@ -19,13 +30,6 @@ interface State {
 }
 
 export default class Notification extends React.PureComponent<NotificationProps, State> {
-  static defaultProps = {
-    // prefixCls: 'nut-toast',
-    style: {},
-    show: false,
-    bottom: false,
-    duration: 1.5,
-  }
   private closeTimer: number | undefined
   static newInstance: (properties: NotificationProps, callback: any) => void
   constructor(props: NotificationProps) {
@@ -34,6 +38,7 @@ export default class Notification extends React.PureComponent<NotificationProps,
     this.startCloseTimer = this.startCloseTimer.bind(this)
     this.clearCloseTimer = this.clearCloseTimer.bind(this)
     this.close = this.close.bind(this)
+    this.clickCover = this.clickCover.bind(this)
     this.state = {
       show: true,
     }
@@ -62,6 +67,12 @@ export default class Notification extends React.PureComponent<NotificationProps,
       this.closeTimer = -1
     }
   }
+  clickCover() {
+    const { closeOnClickOverlay } = this.props
+    if (closeOnClickOverlay) {
+      this.close()
+    }
+  }
 
   componentDidMount() {
     this.startCloseTimer()
@@ -72,15 +83,46 @@ export default class Notification extends React.PureComponent<NotificationProps,
   }
 
   render() {
-    const { style, icon, msg, bottom } = this.props
+    const {
+      style,
+      icon,
+      msg,
+      bottom,
+      center,
+      bgColor,
+      coverColor,
+      textAlignCenter,
+      size,
+      customClass,
+      cover,
+      type,
+    } = this.props
     const { show } = this.state
     const toastBem = bem('toast')
+
+    const classes = classNames({
+      ['nut-toast-center']: center,
+      ['nut-toast-has-icon']: icon,
+      ['nut-toast-cover']: cover,
+      ['nut-toast-loading']: type === 'loading',
+      customClass,
+      ['nut-toast-' + size]: true,
+    })
     return (
       <>
-        <div className={toastBem()} style={{ bottom: 'auto', backgroundColor: 'rgba(0, 0, 0, 0)' }}>
+        <div
+          className={`${toastBem()} ${classes}`}
+          style={{
+            bottom: center ? 'auto' : bottom + 'px',
+            backgroundColor: cover ? coverColor : '',
+          }}
+          onClick={() => {
+            this.clickCover()
+          }}
+        >
           <div
             className={toastBem('inner')}
-            style={{ bottom: 'auto', backgroundColor: 'rgba(0, 0, 0, .8)' }}
+            style={{ textAlign: textAlignCenter ? 'center' : 'left', backgroundColor: bgColor }}
           >
             {icon ? (
               <p className={toastBem('icon-wrapper')}>
@@ -98,6 +140,9 @@ export default class Notification extends React.PureComponent<NotificationProps,
 
 Notification.newInstance = (properties, callback) => {
   const element = document.createElement('div')
+  if (properties.id) {
+    element.setAttribute('id', `${properties.id}`)
+  }
   document.body.appendChild(element)
 
   let called = false

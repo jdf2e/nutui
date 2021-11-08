@@ -19,11 +19,26 @@ const ToastDemo = () => {
     Toast.loading(msg)
   }
   const duringToast = (msg: string) => {
-    Toast.text(msg, 10)
+    Toast.text(msg, { duration: 10 })
   }
   const iconToast = (msg: string) => {
-    Toast.customIcon(msg, 5, 'JD', () => {
-      console.log('closeToast')
+    Toast.customIcon(msg, {
+      duration: 0, //duration为0则一直展示
+      icon: 'JD',
+      id: '',
+      center: true, // toast是否居中展示
+      type: 'text',
+      customClass: '', // 自定义样式名
+      bottom: 30, // toast不居中时距离底部位置
+      size: 'base', // 设置字体大小，默认base,可选large\small\base
+      textAlignCenter: true, // 文字是否居中显示,true为居中，false为left
+      bgColor: 'rgba(0, 0, 0, .8)',
+      cover: true, //是否展示透明遮罩层
+      coverColor: 'rgba(0, 0, 0, 0.4)', // 遮罩颜色设定
+      closeOnClickOverlay: true, // 点击遮罩可关闭
+      onClose: () => {
+        console.log('closeToast')
+      },
     })
   }
 
@@ -83,12 +98,17 @@ const ToastDemo = () => {
             duringToast('设置展示时长为10秒')
           }
         ></Cell>
+        <Cell
+          title="关闭正在显示的toast"
+          isLink={true}
+          click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => Toast.hide()}
+        ></Cell>
         <h2>自定义icon图标</h2>
         <Cell
           title="传入icon组件中的'JD'图标"
           isLink={true}
           click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) =>
-            iconToast('设置icon为JD图标')
+            iconToast('设置icon为JD')
           }
         ></Cell>
       </div>

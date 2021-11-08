@@ -1,14 +1,44 @@
 import * as React from 'react'
 import Icon from '../icon/index'
 import Notification, { NotificationProps } from './Notification'
-// const { JiaZai } = Icon
+import classNames from 'classnames'
 let messageInstance: any = null
 interface IToastOptions {
+  id: string
+  msg: string
   duration: number
+  center: boolean
+  type: string
+  customClass: string
+  bottom: number
+  size: string | number
+  icon: string
+  textAlignCenter: boolean
+  loadingRotate: boolean
+  bgColor: string
+  onClose: () => void
+  cover: boolean
+  coverColor: string
+  closeOnClickOverlay: boolean
 }
-const SHORT = 3
+
 const options: IToastOptions = {
-  duration: SHORT,
+  msg: '',
+  id: '',
+  duration: 1.5, //时长,duration为0则一直展示
+  center: true, // toast是否居中展示
+  type: 'text',
+  customClass: '', // 自定义样式名
+  bottom: 30, // center为false时生效，距离底部位置
+  size: 'base', // 设置字体大小，默认base,可选large\small\base
+  icon: '', // 未实现
+  textAlignCenter: true, // 文字是否居中显示,true为居中，false为left
+  loadingRotate: true, // 未实现
+  bgColor: 'rgba(0, 0, 0, .8)',
+  onClose: () => {}, // 未实现
+  cover: false, //是否展示透明遮罩层
+  coverColor: 'rgba(0, 0, 0, 0)', // 遮罩颜色设定
+  closeOnClickOverlay: false, // 是否点击遮罩可关闭
 }
 
 function getInstance(props: NotificationProps, callback: (notification: any) => void) {
@@ -22,69 +52,54 @@ function getInstance(props: NotificationProps, callback: (notification: any) => 
   })
 }
 
-function notice(
-  msg: string | React.ReactNode,
-  icon: any,
-  duration = options.duration,
-  onClose: (() => void) | undefined | null
-) {
+function notice(opts: any) {
   function close() {
     if (messageInstance) {
       messageInstance.destroy()
       messageInstance = null
     }
-    if (onClose) {
-      onClose()
-    }
   }
-
-  getInstance(
-    {
-      msg,
-      icon,
-      duration,
-      onClose: close,
-    },
-    (notification: any) => {
-      messageInstance = notification
-    }
-  )
+  opts = { ...options, ...opts, onClose: close }
+  getInstance(opts, (notification: any) => {
+    messageInstance = notification
+  })
+}
+const errorMsg = (msg: string) => {
+  if (!msg) {
+    console.warn('[NutUI Toast]: msg不能为空')
+    return
+  }
 }
 
 export default {
-  SHORT,
-  LONG: 8,
-  text(msg: string | React.ReactNode, duration?: number, onClose?: () => void) {
-    return notice(msg, null, duration, onClose)
+  text(msg: string | React.ReactNode, option = {}) {
+    errorMsg(msg)
+    return notice({ msg, type: 'text', ...option })
   },
-  success(msg: string | React.ReactNode, duration?: number, icon?: string, onClose?: () => void) {
-    return notice(msg, icon ? icon : 'success', duration, onClose)
+  success(msg: string | React.ReactNode, option = {}) {
+    errorMsg(msg)
+    return notice({ msg, icon: 'success', type: 'success', ...option })
   },
-  fail(msg: string | React.ReactNode, duration?: number, icon?: string, onClose?: () => void) {
-    return notice(msg, icon ? icon : 'failure', duration, onClose)
+  fail(msg: string | React.ReactNode, option = {}) {
+    errorMsg(msg)
+    return notice({ msg, icon: 'failure', type: 'fail', ...option })
   },
-  loading(msg: string | React.ReactNode, duration?: number, icon?: string, onClose?: () => void) {
-    return notice(msg, icon ? icon : 'loading', duration, onClose)
+  loading(msg: string | React.ReactNode, option = {}) {
+    errorMsg(msg)
+    return notice({ msg, icon: 'loading', type: 'loading', ...option })
   },
-  warn(msg: string | React.ReactNode, duration?: number, icon?: string, onClose?: () => void) {
-    return notice(msg, icon ? icon : 'tips', duration, onClose)
+  warn(msg: string | React.ReactNode, option = {}) {
+    errorMsg(msg)
+    return notice({ msg, icon: 'tips', type: 'warn', ...option })
   },
-  customIcon(
-    msg: string | React.ReactNode,
-    duration?: number,
-    icon?: string,
-    onClose?: () => void
-  ) {
-    return notice(msg, icon ? icon : null, duration, onClose)
+  customIcon(msg: string | React.ReactNode, option = {}) {
+    errorMsg(msg)
+    return notice({ msg, ...option })
   },
   hide() {
     if (messageInstance) {
       messageInstance.destroy()
       messageInstance = null
     }
-  },
-  config(option: Partial<IToastOptions> = {}) {
-    const { duration = SHORT } = option
-    options.duration = duration
   },
 }
