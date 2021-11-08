@@ -4,25 +4,30 @@ import classNames from 'classnames'
 import './avatar.scss'
 
 export interface AvatarProps {
-  size: string
+  size: AvatarSize
   icon: string
-  shape: string
+  shape: AvatarShape
   bgColor: string
   prefixCls: string
   src: string
+  className: string
+  style: React.CSSProperties
 }
-const defaultProps: AvatarProps = {
+
+export type AvatarSize = 'large' | 'normal' | 'small'
+export type AvatarShape = 'round' | 'square'
+const defaultProps = {
   size: 'normal',
   icon: '',
   shape: 'round',
   bgColor: '#eee',
   prefixCls: 'nut-avatar',
   src: '',
-}
+} as AvatarProps
 export const Avatar: FunctionComponent<
   Partial<AvatarProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { children, prefixCls, size, shape, bgColor, src, icon, className, ...rest } = {
+  const { children, prefixCls, size, shape, bgColor, src, icon, className, style, ...rest } = {
     ...defaultProps,
     ...props,
   }
@@ -38,6 +43,7 @@ export const Avatar: FunctionComponent<
     height: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
     backgroundImage: src ? `url(${src})` : '',
     backgroundColor: `${bgColor}`,
+    ...style,
   }
   const iconStyles = !!icon && !src ? icon : ''
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {

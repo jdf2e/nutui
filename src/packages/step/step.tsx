@@ -11,6 +11,8 @@ export interface StepProps {
   activeIndex: number
   icon: string
   size: string
+  className: string
+  style: React.CSSProperties
   renderContent: () => React.ReactNode
 }
 const defaultProps = {
@@ -23,7 +25,17 @@ const defaultProps = {
 export const Step: FunctionComponent<Partial<StepProps> & React.HTMLAttributes<HTMLDivElement>> = (
   props
 ) => {
-  const { children, title, content, activeIndex, icon, size, renderContent } = {
+  const {
+    children,
+    title,
+    content,
+    activeIndex,
+    icon,
+    size,
+    className,
+    renderContent,
+    ...restProps
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -41,10 +53,11 @@ export const Step: FunctionComponent<Partial<StepProps> & React.HTMLAttributes<H
     {
       [`${b('')}-${getCurrentStatus()}`]: true,
     },
+    className,
     b('')
   )
   return (
-    <div className={classes}>
+    <div className={classes} {...restProps}>
       <div className="nut-step-head">
         <div className="nut-step-line"></div>
         <div className={`nut-step-icon ${!dot ? (icon ? 'is-icon' : 'is-text') : ''}`}>

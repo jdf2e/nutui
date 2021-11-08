@@ -6,26 +6,28 @@
 
 ### 安装
 
-
+```javascript
+import { Switch } from '@nutui/nutui-react';
+```
 
 ## 代码演示
 
 ### 基础用法
 
-``` jsx
+``` tsx
 <Switch checked={true}></Switch>
 ```
 
 
 ### 禁用状态
 
-``` jsx
+``` tsx
 <Switch checked={true} disable></Switch>
 ```
 
 ### change事件
 
-``` jsx
+``` tsx
 <Switch change={() => change}></Switch>
 ```
 ``` javascript
@@ -36,7 +38,7 @@ const change = (value: boolean, event: Event) => {
 
 ### 异步控制
 
-``` jsx
+``` tsx
 <Switch
   checked={checkedAsync}
   change={(value, event) => changeAsync(value, event)}
@@ -54,12 +56,12 @@ const change = (value: boolean, event: Event) => {
 ```
 ### 自定义颜色
 
-``` jsx
+``` tsx
 <Switch activeColor="blue"></Switch>
 ```
 ### 支持文字
 
-``` jsx
+``` tsx
 <Switch activeText="开" inactiveText="关"></Switch>
 ```
 

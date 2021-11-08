@@ -142,6 +142,16 @@
           "sort": 5,
           "show": true,
           "author": "junjun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Divider",
+          "type": "component",
+          "cName": "分割线",
+          "desc": "用于将内容分隔为多个区域",
+          "sort": 7,
+          "show": true,
+          "author": "vickyYE"
         }
       ]
     },
@@ -191,12 +201,27 @@
           "sort": 2,
           "show": true,
           "author": "vickyYe"
-        }
-      ]
-    },
-    {
-      "name": "基础组件",
-      "packages": [
+        },
+        {
+          "version": "1.0.0",
+          "name": "Range",
+          "type": "component",
+          "cName": "区间选择器",
+          "desc": "滑动输入条，用于在给定的范围内选择一个值。",
+          "sort": 3,
+          "show": true,
+          "author": "vickyYe"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Infiniteloading",
+          "type": "component",
+          "cName": "滚动加载",
+          "desc": "列表滚动到底部自动加载更多数据。",
+          "sort": 5,
+          "show": true,
+          "author": "swag~jun"
+        },
         {
           "version": "1.0.0",
           "name": "Steps",
@@ -206,6 +231,16 @@
           "sort": 7,
           "show": true,
           "author": "swag~jun"
+        },
+          {
+            "version": "1.0.0",
+            "name": "CircleProgress",
+            "type": "component",
+            "cName": "进度条",
+            "desc": "展示操作或任务的当前进度。",
+            "sort": 7,
+            "show": true,
+            "author": "swag~jun"
         }
       ]
     },
@@ -241,6 +276,16 @@
           "sort": 3,
           "show": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Elevator",
+          "type": "component",
+          "cName": "电梯楼层",
+          "desc": "用于列表快速定位以及索引的显示",
+          "sort": 4,
+          "show": true,
+          "author": "songsong"
         }
       ]
     },
@@ -301,7 +346,18 @@
     },
     {
       "name": "特色组件",
-      "packages": []
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Signature",
+          "type": "component",
+          "cName": "签字",
+          "desc": "基于Canvas的签名组件",
+          "sort": 1,
+          "show": true,
+          "author": "songsong"
+        }
+      ]
     }
   ]
 }

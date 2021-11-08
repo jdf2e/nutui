@@ -1,6 +1,7 @@
 .nut-cell {
   position: relative;
   display: flex;
+  align-items: center;
   width: 100%;
   line-height: 20px;
   padding: 13px 16px;
@@ -57,10 +58,11 @@
     flex: 1;
     &--icon {
       flex-direction: row;
-      .icon {
-        margin-right: 10px;
-      }
+      overflow: hidden;
     }
+  }
+  &__icon {
+    margin-right: 10px;
   }
   &__subtitle {
     font-size: $cell-title-desc-font;

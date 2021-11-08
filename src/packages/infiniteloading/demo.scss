@@ -1,0 +1,18 @@
+.infiniteUl {
+  height: 300px;
+  width: 100%;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.infiniteLi {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgba(100, 100, 100, 1);
+  text-align: center;
+}
+.loading {
+  display: block;
+  width: 100%;
+  text-align: center;
+}

@@ -42,7 +42,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (props) =
 
   return (
     <div
-      className={`${b({ unactive: !active })}`}
+      className={`${b({ active: active })}`}
       style={{
         color: active ? activeColor : unactiveColor,
       }}
