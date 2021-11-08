@@ -102,7 +102,7 @@ export default create({
       }
       Taro.chooseImage({
         // 选择数量
-        count: (props.maximize as number) * 1 - props.fileList.length,
+        count: (props.maximum as number) * 1 - props.fileList.length,
         // 可以指定是原图还是压缩图，默认二者都有
         sizeType: props.sizeType,
         sourceType: props.sourceType,
