@@ -1,14 +1,45 @@
 import * as React from 'react'
 import Icon from '../icon/index'
 import Notification, { NotificationProps } from './Notification'
+import classNames from 'classnames'
 // const { JiaZai } = Icon
 let messageInstance: any = null
 interface IToastOptions {
+  id: string
+  msg: string
   duration: number
+  center: boolean
+  type: string
+  customClass: string
+  bottom: number
+  size: string | number
+  icon: string
+  textAlignCenter: boolean
+  loadingRotate: boolean
+  bgColor: string
+  onClose: Function
+  cover: boolean
+  coverColor: string
+  closeOnClickOverlay: boolean
 }
-const SHORT = 3
+// const SHORT = 3//展示秒数
 const options: IToastOptions = {
-  duration: SHORT,
+  msg: '',
+  id: '',
+  duration: 1.5,
+  center: true, // 未实现
+  type: 'text',
+  customClass: '', // 未实现
+  bottom: 30, // 未实现
+  size: 'base', // 未实现
+  icon: '', // 未实现
+  textAlignCenter: true, // 未实现
+  loadingRotate: true, // 未实现
+  bgColor: 'rgba(0, 0, 0, .8)',
+  onClose: () => {}, // 未实现
+  cover: false, //透明遮罩层 // 未实现
+  coverColor: 'rgba(0, 0, 0, 0)', // 未实现
+  closeOnClickOverlay: false, // 未实现
 }
 
 function getInstance(props: NotificationProps, callback: (notification: any) => void) {
@@ -52,8 +83,6 @@ function notice(
 }
 
 export default {
-  SHORT,
-  LONG: 8,
   text(msg: string | React.ReactNode, duration?: number, onClose?: () => void) {
     return notice(msg, null, duration, onClose)
   },
@@ -84,7 +113,7 @@ export default {
     }
   },
   config(option: Partial<IToastOptions> = {}) {
-    const { duration = SHORT } = option
+    const { duration = 2 } = option
     options.duration = duration
   },
 }

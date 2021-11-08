@@ -52,8 +52,8 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
   }
   const [backTop, SetBackTop] = useState(false)
   const [scrollTop, SetScrollTop] = useState(0)
-  const [startTime, SetStartTime] = useState(0)
-  let scrollEl: any = elId ? useRef<HTMLElement>(document.getElementById(elId)) : (window as Window)
+  let startTime = 0
+  let scrollEl: any = elId ? document.getElementById(elId) : (window as Window)
   //初始化
   useEffect(() => {
     init()
@@ -85,9 +85,7 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
     if (scrollEl instanceof Window) {
       window.scrollTo(0, y)
     } else {
-      let dom = document.getElementById(elId)
-      dom?.scrollTo(0, y)
-      //   scrollEl.scrollTop = y
+      scrollEl.scrollTop = y
     }
   }
 
@@ -95,7 +93,6 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
     let cid = requestAniFrame()(function fn() {
       var t = duration - Math.max(0, startTime - +new Date() + duration)
       var y = (t * -scrollTop) / duration + scrollTop
-      //   console.log('animi', t, y, startTime, duration, scrollTop)
       scroll(y)
       cid = requestAniFrame()(fn)
       if (t == duration || y == 0) {
@@ -132,7 +129,7 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
   const goTop = (e: any) => {
     backTopClick(e)
     let otime = +new Date()
-    SetStartTime(otime)
+    startTime = otime
     isAnimation && duration > 0 ? scrollAnimation() : scroll()
   }
 

@@ -10,6 +10,16 @@ export interface NotificationProps {
   msg: string | React.ReactNode
   bottom?: boolean
   duration?: number
+  center: boolean
+  type: string
+  customClass: string
+  size: string | number
+  textAlignCenter: boolean
+  loadingRotate: boolean
+  bgColor: string
+  cover: boolean
+  coverColor: string
+  closeOnClickOverlay: boolean
   onClose: () => void
   className?: string
 }
@@ -23,8 +33,22 @@ export default class Notification extends React.PureComponent<NotificationProps,
     // prefixCls: 'nut-toast',
     style: {},
     show: false,
-    bottom: false,
-    duration: 1.5,
+    duration: 3,
+    msg: '',
+    id: '',
+    center: true, // 未实现
+    type: 'text',
+    customClass: '', // 未实现
+    bottom: 30, // 未实现
+    size: 'base', // 未实现
+    icon: null, // 未实现
+    textAlignCenter: true, // 未实现
+    loadingRotate: true, // 未实现
+    bgColor: 'rgba(0, 0, 0, .8)',
+    onClose: null, // 未实现
+    cover: false, //透明遮罩层 // 未实现
+    coverColor: 'rgba(0, 0, 0, 0)', // 未实现
+    closeOnClickOverlay: false, // 未实现
   }
   private closeTimer: number | undefined
   static newInstance: (properties: NotificationProps, callback: any) => void
