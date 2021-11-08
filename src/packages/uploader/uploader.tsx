@@ -1,4 +1,9 @@
-import React, { useState, useImperativeHandle, FunctionComponent } from 'react'
+import React, {
+  useState,
+  useImperativeHandle,
+  ForwardRefRenderFunction,
+  PropsWithChildren,
+} from 'react'
 import Icon from '@/packages/icon'
 import { Upload, UploadOptions } from './upload'
 import classNames from 'classnames'
@@ -27,7 +32,6 @@ export interface UploaderProps {
   capture: boolean
   className: string
   style: React.CSSProperties
-  ref: any
   start?: (option: UploadOptions) => void
   removeImage?: (file: FileItem, fileList: FileItem[]) => void
   success?: (param: { responseText: XMLHttpRequest['responseText']; option: UploadOptions }) => void
@@ -73,9 +77,10 @@ export class FileItem {
   type?: string
   formData: FormData = new FormData()
 }
-export const Uploader: FunctionComponent<
-  Partial<UploaderProps> & React.HTMLAttributes<HTMLDivElement>
-> = React.forwardRef((props, ref) => {
+const InternalUploader: ForwardRefRenderFunction<
+  unknown,
+  PropsWithChildren<Partial<UploaderProps>>
+> = (props, ref) => {
   const {
     children,
     uploadIcon,
@@ -233,6 +238,7 @@ export const Uploader: FunctionComponent<
       fileItem.status = 'ready'
       fileItem.type = file.type
       fileItem.formData = formData
+      fileItem.uid = file.lastModified + fileItem.uid
       executeUpload(fileItem, index)
 
       if (isPreview && file.type.includes('image')) {
@@ -264,9 +270,15 @@ export const Uploader: FunctionComponent<
     if (oversizes.length) {
       oversize && oversize(files)
     }
+
     if (filterFile.length > maximum) {
-      filterFile.splice(maximum - 1, filterFile.length - maximum)
+      filterFile.splice(maximum, filterFile.length - maximum)
     }
+    if (fileList.length !== 0) {
+      const index = maximum - fileList.length
+      filterFile.splice(index, filterFile.length - index)
+    }
+
     return filterFile
   }
 
@@ -396,7 +408,9 @@ export const Uploader: FunctionComponent<
       )}
     </div>
   )
-})
+}
+
+export const Uploader = React.forwardRef(InternalUploader)
 
 Uploader.defaultProps = defaultProps
 Uploader.displayName = 'NutUploader'
