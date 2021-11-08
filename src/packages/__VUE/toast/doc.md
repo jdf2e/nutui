@@ -98,7 +98,7 @@ toast.hide();
 | Toast.success             | 展示成功提示                                                            | message｜ options| toast 实例 |
 | Toast.fail                | 展示失败提示                                                            | message｜ options| toast 实例 |
 | Toast.warn                | 展示警告提示                                                            | message｜ options | toast 实例 |
-| Toast.hide                | 关闭提示                                                                | force:boolean   | void       |
+| Toast.hide                | 关闭提示                                                                | 默认关闭所有实例，可传id关闭指定实例   | void       |
 | Toast.loading             | 展示加载提示                                                            | message｜ options | toast 实例 |
 
 ## Options
