@@ -3,7 +3,7 @@ import { Switch } from './switch'
 
 const SwitchDemo = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
-  const change = (value: boolean, event: Event) => {
+  const change = (value: boolean, event: React.MouseEvent<Element, MouseEvent>) => {
     alert(`触发了change事件，开关状态：${value}`)
   }
   const changeAsync = (value: boolean, event: any) => {
@@ -16,11 +16,10 @@ const SwitchDemo = () => {
     <>
       <div className="demo">
         <h2>基础用法</h2>
-        <Switch checked={true}></Switch>
         <h2>禁用状态</h2>
         <Switch checked={true} disable></Switch>
         <h2>change事件</h2>
-        <Switch change={() => change}></Switch>
+        <Switch change={(value, event) => change(value, event)}></Switch>
         <h2>异步控制</h2>
         <Switch
           checked={checkedAsync}

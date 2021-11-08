@@ -10,6 +10,8 @@ export interface SwitchProps {
   inactiveColor: string
   activeText: string
   inactiveText: string
+  className: string
+  style: React.CSSProperties
   change: (val: boolean, event: React.MouseEvent) => void
 }
 const defaultProps = {
@@ -20,6 +22,7 @@ const defaultProps = {
   inactiveColor: '',
   activeText: '',
   inactiveText: '',
+  className: '',
 } as SwitchProps
 export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
   const {
@@ -31,6 +34,8 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
     activeText,
     inactiveText,
     change,
+    className,
+    style,
   } = {
     ...defaultProps,
     ...props,
@@ -46,16 +51,20 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
   const classes = () => {
     return `${b()} ${value ? 'switch-open' : 'switch-close'} ${
       disable ? `${b()}-disable` : ''
-    } ${`${b()}-base`}`
+    } ${`${b()}-base`} ${className}`
   }
 
-  const style = () => {
-    return {
-      backgroundColor: value ? activeColor : inactiveColor,
-    }
+  const styles = () => {
+    const myStyle = Object.assign(
+      {},
+      { backgroundColor: value ? activeColor : inactiveColor },
+      style || {}
+    )
+
+    return myStyle
   }
 
-  const onClick = (event: React.MouseEvent) => {
+  const onClick = (event: React.MouseEvent<Element, MouseEvent>) => {
     if (disable) return
     if (!isAsync) {
       setValue(!value)
@@ -63,7 +72,7 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
     change && change(!value, event)
   }
   return (
-    <div className={classes()} onClick={(e) => onClick(e)} style={style()}>
+    <div className={classes()} onClick={(e) => onClick(e)} style={styles()}>
       <div className="switch-button">
         {!value && <div className="close-line"></div>}
         {activeText && (
