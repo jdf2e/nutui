@@ -158,9 +158,7 @@ setup() {
           // 数据结构见下方文档
         }
     });
-    onMounted(() => {
-      // 模拟数据请求
-      setTimeout(()=>{});
+   
     // 自定义起购文案
     const saleLowestText = (count:any)=>`${count} 件起售`;
     // 自定义限购文案
