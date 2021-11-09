@@ -1,5 +1,5 @@
 .nut-collapse-item {
-  .nut-collapse-item__header {
+  &__header {
     position: relative;
     display: block;
     width: 100%;
@@ -23,50 +23,49 @@
       -webkit-transform: scaleY(0.5);
       transform: scaleY(0.5);
     }
-    .nut-collapse-item__title {
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    &-icon-left {
+      margin-right: 10px;
       display: flex;
       align-items: center;
-      .nut-collapse-item__title-icon-left {
-        margin-right: 10px;
-        display: flex;
-        align-items: center;
-      }
-      .nut-collapse-item__title-icon-right {
-        margin-left: 10px;
-        display: flex;
-        align-items: center;
-      }
     }
-
-    .nut-collapse-item__sub-title {
-      flex: 1;
-      display: flex;
-      justify-content: flex-end;
-      padding: 0px 20px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .nut-collapse-item__icon-box {
-      display: flex;
-      padding-right: 40px;
-      position: relative;
-    }
-    .nut-collapse-item__icon {
+    &-icon-right {
+      margin-left: 10px;
       display: flex;
       align-items: center;
-      position: absolute;
-      top: 50%;
-      left: 5px;
-      transform: translateY(-50%);
-      transform-origin: center;
-      transition: transform 0.3s;
     }
   }
-  .nut-collapse-item__header--disabled {
+  &__sub-title {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__icon-box {
+    display: flex;
+    padding-right: 40px;
+    position: relative;
+  }
+  &__icon {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    transform-origin: center;
+    transition: transform 0.3s;
+  }
+  &__header--disabled {
     color: #c2c2c2;
   }
-  .nut-collapse-item__content {
+  &__content {
     overflow: hidden;
     display: block;
     color: #666666;
@@ -74,7 +73,7 @@
     line-height: 1.5;
     background-color: #fff;
     transition: all 0.3s linear;
-    .nut-collapse-item__content-text {
+    &-text {
       padding: 12px 26px;
     }
   }
