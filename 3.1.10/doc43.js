@@ -1,66 +1,31 @@
-import{e as a,o as n,G as t}from"./vendor.js";const l={class:"markdown-body"},p=t(`<h1>Range \u533A\u95F4\u9009\u62E9\u5668</h1><h3>\u4ECB\u7ECD</h3><p>\u6ED1\u52A8\u8F93\u5165\u6761\uFF0C\u7528\u4E8E\u5728\u7ED9\u5B9A\u7684\u8303\u56F4\u5185\u9009\u62E9\u4E00\u4E2A\u503C\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
+import{e as a,o as t,G as n}from"./vendor.js";const l={class:"markdown-body"},p=n(`<h1>Rate \u8BC4\u5206</h1><h3>\u4ECB\u7ECD</h3><p>\u7528\u4E8E\u5FEB\u901F\u7684\u8BC4\u7EA7\u64CD\u4F5C\uFF0C\u6216\u5BF9\u8BC4\u4EF7\u8FDB\u884C\u5C55\u793A\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
 <span class="hljs-comment">//vue</span>
-<span class="hljs-keyword">import</span> { Range } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
+<span class="hljs-keyword">import</span> { Rate,Icon } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
 <span class="hljs-comment">//taro</span>
-<span class="hljs-keyword">import</span> { Range } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui-taro&#39;</span>;
+<span class="hljs-keyword">import</span> { Rate,Icon } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui-taro&#39;</span>;
 
 <span class="hljs-keyword">const</span> app = createApp();
-app.use(Range);
-</code></pre><h2>\u4EE3\u7801\u6F14\u793A</h2><h3>\u57FA\u7840\u7528\u6CD5</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-range</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;onChange&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-range</span>&gt;</span>
+app.use(Rate);
+app.use(Icon);
+</code></pre><h2>\u4EE3\u7801\u6F14\u793A</h2><h3>\u57FA\u7840\u7528\u6CD5</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-rate</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> /&gt;</span>
 </code></pre><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
-<span class="hljs-keyword">import</span> { Toast } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
-  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-keyword">const</span> value = ref(<span class="hljs-number">40</span>);
-    <span class="hljs-keyword">const</span> onChange = <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> Toast.text(<span class="hljs-string">&#39;\u5F53\u524D\u503C\uFF1A&#39;</span> + value);
-    <span class="hljs-keyword">return</span> {
-      value,
-      onChange,
-    };
-  },
-};
-</code></pre><h3>\u53CC\u6ED1\u5757</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-range</span> <span class="hljs-attr">range</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;onChange&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-range</span>&gt;</span>
+<span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-keyword">const</span> value = ref(<span class="hljs-number">3</span>);
+    <span class="hljs-keyword">return</span> { value }
+}
+</code></pre><h3>\u81EA\u5B9A\u4E49icon</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-rate</span> <span class="hljs-attr">checked-icon</span>=<span class="hljs-string">&quot;heart-fill1&quot;</span> <span class="hljs-attr">unchecked-icon</span>=<span class="hljs-string">&quot;heart&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> /&gt;</span>
+</code></pre><h3>\u81EA\u5B9A\u4E49\u6570\u91CF</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-rate</span> <span class="hljs-attr">:total</span>=<span class="hljs-string">&quot;6&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> /&gt;</span>
+</code></pre><h3>\u81EA\u5B9A\u4E49\u989C\u8272</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-rate</span> <span class="hljs-attr">active-color</span>=<span class="hljs-string">&quot;#FFC800&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> /&gt;</span>
+</code></pre><h3>\u7981\u7528\u72B6\u6001</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-rate</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> /&gt;</span>
+</code></pre><h3>\u53EA\u8BFB</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-rate</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> <span class="hljs-attr">readOnly</span> /&gt;</span>
+</code></pre><h3>\u7ED1\u5B9A\u4E8B\u4EF6</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-rate</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;onChange&quot;</span> /&gt;</span>
 </code></pre><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
-<span class="hljs-keyword">import</span> { Toast } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
-  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-keyword">const</span> value = ref([<span class="hljs-number">20</span>, <span class="hljs-number">80</span>]);
-    <span class="hljs-keyword">const</span> onChange = <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> Toast.text(<span class="hljs-string">&#39;\u5F53\u524D\u503C\uFF1A&#39;</span> + value);
-    <span class="hljs-keyword">return</span> {
-      value,
-      onChange,
-    };
-  },
-};
-</code></pre><h3>\u6307\u5B9A\u8303\u56F4</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-range</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> <span class="hljs-attr">:max</span>=<span class="hljs-string">&quot;10&quot;</span> <span class="hljs-attr">:min</span>=<span class="hljs-string">&quot;-10&quot;</span> @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;onChange&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-range</span>&gt;</span>
-</code></pre><h3>\u8BBE\u7F6E\u6B65\u957F</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-range</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> <span class="hljs-attr">:step</span>=<span class="hljs-string">&quot;5&quot;</span> @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;onChange&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-range</span>&gt;</span>
-</code></pre><h3>\u9690\u85CF\u8303\u56F4</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-range</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> <span class="hljs-attr">hidden-range</span> @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;onChange&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-range</span>&gt;</span>
-</code></pre><h3>\u9690\u85CF\u6807\u7B7E</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-range</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> <span class="hljs-attr">hidden-tag</span> @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;onChange&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-range</span>&gt;</span>
-</code></pre><h3>\u7981\u7528</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-range</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> <span class="hljs-attr">disabled</span> @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;onChange&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-range</span>&gt;</span>
-</code></pre><h3>\u81EA\u5B9A\u4E49\u6837\u5F0F</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-range</span>
-  <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span>
-  <span class="hljs-attr">inactive-color</span>=<span class="hljs-string">&quot;rgba(163,184,255,1)&quot;</span>
-  <span class="hljs-attr">button-color</span>=<span class="hljs-string">&quot;rgba(52,96,250,1)&quot;</span>
-  <span class="hljs-attr">active-color</span>=<span class="hljs-string">&quot;linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%&quot;</span>
-  @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;onChange&quot;</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nut-range</span>&gt;</span>
-</code></pre><h3>\u81EA\u5B9A\u4E49\u6309\u94AE</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-range</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;onChange&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;custom-button&quot;</span>&gt;</span>{{ value }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nut-range</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-  <span class="hljs-selector-class">.custom-button</span> {
-    <span class="hljs-attribute">width</span>: <span class="hljs-number">26px</span>;
-    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
-    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">10px</span>;
-    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">18px</span>;
-    <span class="hljs-attribute">text-align</span>: center;
-    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ee0a24</span>;
-    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100px</span>;
-  }
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-</code></pre><h2>API</h2><h3>Props</h3><table><thead><tr><th>\u53C2\u6570</th><th>\u8BF4\u660E</th><th>\u7C7B\u578B</th><th>\u9ED8\u8BA4\u503C</th></tr></thead><tbody><tr><td>v-model</td><td>\u5F53\u524D\u8FDB\u5EA6\u767E\u5206\u6BD4</td><td>Number\u3001Number[]</td><td><code>0</code></td></tr><tr><td>range</td><td>\u662F\u5426\u5F00\u542F\u53CC\u6ED1\u5757\u6A21\u5F0F</td><td>Boolean</td><td><code>false</code></td></tr><tr><td>max</td><td>\u6700\u5927\u503C</td><td>Number\u3001String</td><td><code>100</code></td></tr><tr><td>min</td><td>\u6700\u5C0F\u503C</td><td>Number\u3001String</td><td><code>0</code></td></tr><tr><td>step</td><td>\u6B65\u957F</td><td>Number\u3001String</td><td><code>1</code></td></tr><tr><td>disabled</td><td>\u662F\u5426\u7981\u7528\u6ED1\u5757</td><td>Boolean</td><td><code>false</code></td></tr><tr><td>hidden-range</td><td>\u662F\u5426\u9690\u85CF\u8303\u56F4\u503C</td><td>Boolean</td><td><code>false</code></td></tr><tr><td>hidden-tag</td><td>\u662F\u5426\u9690\u85CF\u6807\u7B7E</td><td>Boolean</td><td><code>false</code></td></tr><tr><td>active-color</td><td>\u8FDB\u5EA6\u6761\u6FC0\u6D3B\u6001\u989C\u8272</td><td>String</td><td><code>rgba(250, 44, 25, 1)</code></td></tr><tr><td>inactive-color</td><td>\u8FDB\u5EA6\u6761\u975E\u6FC0\u6D3B\u6001\u989C\u8272</td><td>String</td><td><code>rgba(255, 163, 154, 1)</code></td></tr><tr><td>button-color</td><td>\u6309\u94AE\u989C\u8272</td><td>String</td><td><code>rgba(250, 44, 25, 1)</code></td></tr></tbody></table><h3>Events</h3><table><thead><tr><th>\u4E8B\u4EF6\u540D</th><th>\u8BF4\u660E</th><th>\u56DE\u8C03\u53C2\u6570</th></tr></thead><tbody><tr><td>change</td><td>\u8FDB\u5EA6\u53D8\u5316\u4E14\u7ED3\u675F\u62D6\u52A8\u540E\u89E6\u53D1</td><td>value: \u5F53\u524D\u8FDB\u5EA6</td></tr><tr><td>drag-start</td><td>\u5F00\u59CB\u62D6\u52A8\u65F6\u89E6\u53D1</td><td>-</td></tr><tr><td>drag-end</td><td>\u7ED3\u675F\u62D6\u52A8\u65F6\u89E6\u53D1</td><td>-</td></tr></tbody></table><h3>Slots</h3><table><thead><tr><th>\u540D\u79F0</th><th>\u8BF4\u660E</th></tr></thead><tbody><tr><td>button</td><td>\u81EA\u5B9A\u4E49\u6ED1\u52A8\u6309\u94AE</td></tr></tbody></table>`,33),e=[p],g={setup(c,{expose:s}){return s({frontmatter:{}}),(h,o)=>(n(),a("div",l,e))}};export{g as default};
+<span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-keyword">const</span> value = ref(<span class="hljs-number">3</span>);
+    <span class="hljs-keyword">const</span> onChange = <span class="hljs-function">(<span class="hljs-params">val</span>)=&gt;</span>{
+        Toast.text(val);
+    }
+    <span class="hljs-keyword">return</span> { value }
+}
+</code></pre><h3>\u81EA\u5B9A\u4E49\u5C3A\u5BF8</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-rate</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;value&quot;</span> <span class="hljs-attr">icon-size</span>=<span class="hljs-string">&quot;35&quot;</span> /&gt;</span>
+</code></pre><h2>Prop</h2><table><thead><tr><th>\u5B57\u6BB5</th><th>\u8BF4\u660E</th><th>\u7C7B\u578B</th><th>\u9ED8\u8BA4\u503C</th></tr></thead><tbody><tr><td>v-model</td><td>\u5F53\u524D star \u6570\uFF0C\u53EF\u4F7F\u7528 v-model \u53CC\u5411\u7ED1\u5B9A\u6570\u636E</td><td>Number</td><td>-</td></tr><tr><td>count</td><td>star \u603B\u6570</td><td>Number</td><td>5</td></tr><tr><td>icon-size</td><td>star \u5927\u5C0F</td><td>Number</td><td>18</td></tr><tr><td>active-color</td><td>\u56FE\u6807\u9009\u4E2D\u989C\u8272</td><td>String</td><td>#fa200c</td></tr><tr><td>void-color</td><td>\u56FE\u6807\u672A\u9009\u4E2D\u989C\u8272</td><td>String</td><td>#ccc</td></tr><tr><td>unchecked-icon</td><td>\u4F7F\u7528\u56FE\u6807(\u672A\u9009\u4E2D)</td><td>String</td><td>star-n</td></tr><tr><td>checked-icon</td><td>\u4F7F\u7528\u56FE\u6807(\u9009\u4E2D)</td><td>String</td><td>star-fill-n</td></tr><tr><td>allow-half</td><td>\u662F\u5426\u534A\u661F</td><td>Boolean</td><td>false</td></tr><tr><td>readonly</td><td>\u662F\u5426\u53EA\u8BFB</td><td>Boolean</td><td>false</td></tr><tr><td>disabled</td><td>\u662F\u5426\u7981\u7528</td><td>Boolean</td><td>false</td></tr><tr><td>spacing</td><td>\u95F4\u8DDD</td><td>Number</td><td>20</td></tr></tbody></table><h2>Event</h2><table><thead><tr><th>\u5B57\u6BB5</th><th>\u8BF4\u660E</th><th>\u56DE\u8C03\u53C2\u6570</th></tr></thead><tbody><tr><td>change</td><td>\u5F53\u524D\u5206\u503C\u4FEE\u6539\u65F6\u65F6\u89E6\u53D1\u7684\u4E8B\u4EF6</td><td>\u5F53\u524D\u503C</td></tr></tbody></table>`,28),e=[p],u={setup(r,{expose:s}){return s({frontmatter:{}}),(d,o)=>(t(),a("div",l,e))}};export{u as default};
