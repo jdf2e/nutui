@@ -52,15 +52,15 @@ setup() {
     // 切换规格类目
     const selectSku = (ss: string) => {
       const { sku, skuIndex, parentSku, parentIndex } = ss;
-      if (sku._disable) return false;
+      if (sku.disable) return false;
       data.sku[parentIndex].list.forEach((s) => {
-        s._active = s.id == sku.id;
+        s.active = s.id == sku.id;
       });
       data.goods = {
         skuId: sku.id,
-        price: '9.10',
+        price: '4599.00',
         imagePath:
-          'https://img20.360buyimg.com/imagetools/s750x750_jfs/t1/201286/22/5692/60152/6136fb94Eea1a9d48/211f40f9d27e6cea.jpg' 
+          '//img14.360buyimg.com/n4/jfs/t1/215845/12/3788/221990/618a5c4dEc71cb4c7/7bd6eb8d17830991.jpg' 
       };
     };
     // 底部操作按钮触发
@@ -73,29 +73,30 @@ setup() {
 }
 ```
 
-
-### 限购、起购、已购
+### 不可售
 
 ```html
 <nut-sku
-  v-model:visible="openQuota"
-  :sku="sku"
-  :goods="goods"
-  :showSaleLimit="true"
-  :showSaleLowest="true"
-  :stepperMax="7"
-  :stepperMin="2"
-  :purchased="2"
-  :btnOptions="['buy', 'cart']"
+  v-model:visible="notSell"
+  :sku="skuData"
+  :goods="goodsInfo"
+  :btnExtraText="btnExtraText"
+  @changeStepper="changeStepper"
   @selectSku="selectSku"
-  @clickBtnOperate="clickBtnOperate"
   @close="close"
-></nut-sku>
+>
+  <template #sku-operate>
+    <div class="sku-operate-box">
+      <nut-button class="sku-operate-box-dis" type="warning">查看相似商品</nut-button>
+      <nut-button class="sku-operate-box-dis" type="info">到货通知</nut-button>
+    </div>
+  </template>
+</nut-sku>
 ```
 
 ```javascript
 setup() {
-    const openQuota = ref(false);
+    const notSell = ref(false);
     const data = reactive({
       sku: [
           // 数据结构见下方文档
@@ -104,29 +105,55 @@ setup() {
           // 数据结构见下方文档
         }
     });
-    onMounted(() => {});
+
+    const btnExtraText = ref('抱歉，此商品在所选区域暂无存货');
+    // inputNumber 更改
+    const changeStepper = (count: number) => {
+      console.log('购买数量', count);
+    };
+
+    // 切换规格类目
     const selectSku = (ss: string) => {
       const { sku, skuIndex, parentSku, parentIndex } = ss;
-      if (sku._disable) return false;
+      if (sku.disable) return false;
       data.sku[parentIndex].list.forEach((s) => {
-        s._active = s.id == sku.id;
+        s.active = s.id == sku.id;
       });
       data.goods = {
         skuId: sku.id,
-        price: '9.10',
+        price: '4599.00',
         imagePath:
-          'https://img20.360buyimg.com/imagetools/s750x750_jfs/t1/201286/22/5692/60152/6136fb94Eea1a9d48/211f40f9d27e6cea.jpg' 
+          '//img14.360buyimg.com/n4/jfs/t1/216079/14/3895/201095/618a5c0cEe0b9e2ba/cf5b98fb6128a09e.jpg' 
       };
     };
     // 底部操作按钮触发
     const clickBtnOperate = (op:string)=>{
       console.log('点击了操作按钮',op)
     } 
-    return { openQuota, selectSku, clickBtnOperate, ...toRefs(data) };
+    return { notSell, changeStepper,selectSku,btnExtraText,...toRefs(data) };
+}
+```
+
+```css
+.sku-operate-box {
+  width: 100%;
+  display: flex;
+  padding: 8px 10px;
+  box-sizing: border-box;
+
+  .sku-operate-box-dis{
+    width: 100%;
+    flex-shrink: 1;
+    &:first-child{
+      margin-right: 18px;
+    }
+  }
 }
 ```
 
 ### 自定义步进器
+
+可以按照需求配置数字输入框的最大值、最小值、文案等
 
 ```html
 <nut-sku
@@ -136,8 +163,7 @@ setup() {
   :showSaleLimit="true"
   :stepperMax="7"
   :stepperMin="2"
-  :saleLowestText="saleLowestText"
-  :saleLimitText="saleLimitText"
+  :stepperExtraText="stepperExtraText"
   @changeStepper="changeStepper"
   @overLimit="overLimit"
   :btnOptions="['buy', 'cart']"
@@ -158,17 +184,16 @@ setup() {
           // 数据结构见下方文档
         }
     });
-   
-    // 自定义起购文案
-    const saleLowestText = (count:any)=>`${count} 件起售`;
-    // 自定义限购文案
-    const saleLimitText = (count:any)=>`最多买${count}件`;
-    // stepper 更改
+
+    const stepperExtraText = () => {
+      return `<div style="width:100%;text-align:right;color:#F00">2 件起售</div>`
+    };
+    // inputNumber 更改
     const changeStepper = (count: number) => {
       console.log('购买数量', count);
     };
 
-    // stepper 极限值
+    // inputNumber 极限值
     const overLimit = (val: any) => {
       if (val.action == 'reduce') {
         Toast.text(`至少买${val.value}件哦`);
@@ -179,22 +204,22 @@ setup() {
     // 切换规格类目
     const selectSku = (ss: string) => {
       const { sku, skuIndex, parentSku, parentIndex } = ss;
-      if (sku._disable) return false;
+      if (sku.disable) return false;
       data.sku[parentIndex].list.forEach((s) => {
-        s._active = s.id == sku.id;
+        s.active = s.id == sku.id;
       });
       data.goods = {
         skuId: sku.id,
-        price: '9.10',
+        price: '4599.00',
         imagePath:
-          'https://img20.360buyimg.com/imagetools/s750x750_jfs/t1/201286/22/5692/60152/6136fb94Eea1a9d48/211f40f9d27e6cea.jpg' 
+          '//img14.360buyimg.com/n4/jfs/t1/215845/12/3788/221990/618a5c4dEc71cb4c7/7bd6eb8d17830991.jpg' 
       };
     };
     // 底部操作按钮触发
     const clickBtnOperate = (op:string)=>{
       console.log('点击了操作按钮',op)
     } 
-    return { overLimit, changeStepper,selectSku, clickBtnOperate,saleLowestText,saleLimitText,...toRefs(data) };
+    return { overLimit, changeStepper,selectSku, clickBtnOperate,stepperExtraText,...toRefs(data) };
 }
 ```
 
@@ -274,7 +299,7 @@ setup() {
       },
       {
         id: 2,
-        addressDetail: '12_ ',
+        addressDetail: '12 ',
         cityName: '电饭锅',
         countyName: '扶绥县',
         provinceName: '北京',
@@ -304,15 +329,15 @@ setup() {
     // 切换规格类目
     const selectSku = (ss: string) => {
       const { sku, skuIndex, parentSku, parentIndex } = ss;
-      if (sku._disable) return false;
+      if (sku.disable) return false;
       data.sku[parentIndex].list.forEach((s) => {
-        s._active = s.id == sku.id;
+        s.active = s.id == sku.id;
       });
       data.goods = {
         skuId: sku.id,
-        price: '9.10',
+        price: '6002.10',
         imagePath:
-          'https://img20.360buyimg.com/imagetools/s750x750_jfs/t1/201286/22/5692/60152/6136fb94Eea1a9d48/211f40f9d27e6cea.jpg' 
+          '//img14.360buyimg.com/n4/jfs/t1/215845/12/3788/221990/618a5c4dEc71cb4c7/7bd6eb8d17830991.jpg' 
       };
     };
     const selectedAddress = (prevExistAdd: any, nowExistAdd: any) => {
@@ -337,16 +362,12 @@ setup() {
 | v-model:visible         | 是否显示商品规格弹框               | boolean |  false              |
 | sku         | 商品 sku 数据 | Array | []               |
 | goods |  商品信息    | Object | - |
-| show-sale-limit        |    是否显示限购文案       | boolean | false              |
-| show-sale-lowest |  是否显示起购文案    | boolean | true |
 | stepper-max         | 设置 inputNumber 最大值  | [String, Number] | 99999               |
 | stepper-min         | 设置 inputNumber 最小值  | [String, Number] | 1               |
-| purchased |  设置已购数量    | [String, Number] | 0 |
 | btn-options        |           底部按钮设置。['confirm','buy','cart' ] 分别对应确定、立即购买、加入购物车              | Array | ['confirm']           |
+| btn-extra-text | 按钮上部添加文案，默认为空，有值时显示 | String | -            |
 | stepper-title         | 数量选择组件左侧文案 | String | '购买数量'                |
-| sale-lowest-text        |   数量选择前起购文案       | [Function, false] | false              |
-| sale-limit-text        |    限购文案       | [Function, false] | false              |
-| purchased-text        |    已购文案       | [Function, false] | false              |
+| stepper-extra-text        |   inputNumber 与标题之间的文案       | [Function, false] | false              |
 | buy-text |  立即购买按钮文案    | String | 立即购买 |
 | add-cart-text          |        加入购物车按钮文案                 | String | 加入购物车             |
 | confirm-text          |           确定按钮文案              | String | 确定             |
@@ -394,52 +415,87 @@ goods:{
 
 ### sku 数组结构
 
-sku 数组中，每一个数组索引代表一个规格类目。其中，list 代表该规格类目下的类目值。每个类目值对象包括：name、id、_active(是否选中)、_disable(是否可选)
+sku 数组中，每一个数组索引代表一个规格类目。其中，list 代表该规格类目下的类目值。每个类目值对象包括：name、id、active(是否选中)、disable(是否可选)
 
 ```javascript
 sku : [{
     id: 1,
-    name: '种类',
+    name: '颜色',
     list: [{
-        name: '五香味150g*3',
+        name: '亮黑色',
         id: 100016015112,
-        _active: true,
-        _disable: false
+        active: true,
+        disable: false
       },
       {
-        name: '五香味150g*8',
+        name: '釉白色',
         id: 100016015142,
-        _active: false,
-        _disable: true
+        active: false,
+        disable: false
       },
       {
-        name: '香辣味150g*3',
+        name: '秘银色',
         id: 100016015078,
-        _active: false,
-        _disable: false
+        active: false,
+        disable: false
       },
       {
-        name: '香辣味150g*8',
+        name: '夏日胡杨',
         id: 100009064831,
-        _active: false,
-        _disable: true
+        active: false,
+        disable: false
+      },
+      {
+        name: '秋日胡杨',
+        id: 100009064830,
+        active: false,
+        disable: false
       }
     ]
   },
   {
     id: 2,
-    name: '规格',
+    name: '版本',
     list: [{
-        name: '150g',
+        name: '8GB+128GB',
         id: 100016015102,
-        _active: true,
-        _disable: false
+        active: true,
+        disable: false
       },
       {
-        name: '150g*8',
+        name: '8GB+256GB',
         id: 100016015122,
-        _active: false,
-        _disable: false
+        active: false,
+        disable: false
+      }
+    ]
+  },
+  {
+    id: 3,
+    name: '版本',
+    list: [{
+        name: '4G（有充版）',
+        id: 100016015103,
+        active: true,
+        disable: false
+      },
+      {
+        name: '5G（有充版）',
+        id: 100016015123,
+        active: false,
+        disable: false
+      },
+      {
+        name: '5G（无充版）',
+        id: 100016015104,
+        active: true,
+        disable: true
+      },
+      {
+        name: '5G（无充）质保换新版',
+        id: 100016015125,
+        active: false,
+        disable: false
       }
     ]
   }

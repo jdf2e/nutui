@@ -6,7 +6,7 @@
         <view
           class="nut-sku-select-item-skus-sku"
           @click="changeSaleChild(itemAttr, itemAttrIndex, item, index)"
-          :class="[{ active: itemAttr._active }, { disable: itemAttr._disable }]"
+          :class="[{ active: !itemAttr.disable && itemAttr.active }, { disable: itemAttr.disable }]"
           :key="itemAttr.name"
           v-for="(itemAttr, itemAttrIndex) in item.list"
         >
@@ -17,8 +17,7 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, watch, reactive, toRefs, onMounted } from 'vue';
-import { TypeOfFun } from '../../../utils/util';
+import { ref, watch, onMounted } from 'vue';
 import { createComponent } from '../../../utils/create';
 const { componentName, create } = createComponent('sku-select');
 
@@ -37,7 +36,7 @@ export default create({
     watch(
       () => props.sku,
       (value) => {
-        console.log('发生变化');
+        // console.log('发生变化');
         skuInfo.value = [].slice.call(value);
       },
       { deep: true }

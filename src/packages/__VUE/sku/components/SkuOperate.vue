@@ -1,12 +1,18 @@
 <template>
-  <view class="nut-sku-operate">
-    <view
-      :class="[`nut-sku-operate-btn-${btn}`, 'nut-sku-operate-btn']"
-      v-for="(btn, i) in btnOptions"
-      :key="i"
-      @click="clickBtnOperate(btn)"
-      >{{ getBtnDesc(btn) }}</view
-    >
+  <view class="nut-sku-operate" v-if="btnOptions.length > 0">
+    <view class="nut-sku-operate-desc" v-if="btnExtraText" v-html="btnExtraText"></view>
+
+    <slot name="operate-btn"></slot>
+
+    <view class="nut-sku-operate-btn" v-if="!getSlots('operate-btn')">
+      <view
+        :class="[`nut-sku-operate-btn-${btn}`, 'nut-sku-operate-btn-item']"
+        v-for="(btn, i) in btnOptions"
+        :key="i"
+        @click="clickBtnOperate(btn)"
+        >{{ getBtnDesc(btn) }}</view
+      >
+    </view>
   </view>
 </template>
 <script lang="ts">
@@ -20,6 +26,11 @@ export default create({
     btnOptions: {
       type: Array,
       default: () => ['confirm']
+    },
+
+    btnExtraText: {
+      type: String,
+      default: ''
     },
 
     // 立即购买文案
@@ -40,11 +51,7 @@ export default create({
   },
   emits: ['click', 'changeSku', 'changeBuyCount', 'clickBtnOperate'],
 
-  setup(props: any, { emit }) {
-    const skuIds = ref('');
-
-    onMounted(() => {});
-
+  setup(props: any, { emit, slots }) {
     const getBtnDesc = (type: string) => {
       let mapD: { [props: string]: string } = {
         confirm: props.confirmText,
@@ -55,6 +62,12 @@ export default create({
       return mapD[type];
     };
 
+    onMounted(() => {
+      console.log(slots);
+    });
+
+    const getSlots = (name: string) => slots[name];
+
     const clickBtnOperate = (btn: string) => {
       emit('clickBtnOperate', btn);
     };
@@ -62,7 +75,7 @@ export default create({
     return {
       getBtnDesc,
       clickBtnOperate,
-      skuIds
+      getSlots
     };
   }
 });

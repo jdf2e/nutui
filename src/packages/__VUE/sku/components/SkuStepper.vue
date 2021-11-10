@@ -1,16 +1,8 @@
 <template>
   <view class="nut-sku-stepper">
-    <view class="nut-sku-stepper-desc">
-      <view class="nut-sku-stepper-desc-title">{{ stepperTitle }}</view>
-      <view class="nut-sku-stepper-desc-limit" v-if="showSaleLimit">
-        <view class="limi" v-html="getSaleText('saleLimit')"></view>
-        <template v-if="purchased > 0">
-          <view v-html="getSaleText('purchased')"></view>
-        </template>
-      </view>
-    </view>
+    <view class="nut-sku-stepper-title">{{ stepperTitle }}</view>
+    <view class="nut-sku-stepper-limit" v-html="getExtraText()"></view>
     <view class="nut-sku-stepper-count">
-      <view class="nut-sku-stepper-count-lowestBuy" v-if="showSaleLowest" v-html="getSaleText('saleLowest')"> </view>
       <nut-inputnumber
         v-model="goodsCount"
         :min="stepperMin"
@@ -24,19 +16,13 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, watch, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { TypeOfFun } from '../../../utils/util';
 import { createComponent } from '../../../utils/create';
 const { componentName, create } = createComponent('sku-stepper');
 
 export default create({
   props: {
-    // 是否开启限购
-    showSaleLimit: {
-      type: Boolean,
-      default: false
-    },
-
     // 购买数量最大值
     stepperMax: {
       type: [Number, String],
@@ -48,31 +34,8 @@ export default create({
       default: 1
     },
 
-    purchased: {
-      type: [Number, String],
-      default: 0
-    },
-
-    // 起购状态
-    showSaleLowest: {
-      type: [Boolean, Object],
-      default: false
-    },
-
-    // 起购文案提示
-    saleLowestText: {
-      type: [Function, Boolean],
-      default: false
-    },
-
-    // 限购文案提示
-    saleLimitText: {
-      type: [Function, Boolean],
-      default: false
-    },
-
-    // 已购文案提示
-    purchasedText: {
+    // stepper 前文案提示
+    stepperExtraText: {
       type: [Function, Boolean],
       default: false
     },
@@ -83,36 +46,22 @@ export default create({
       default: '购买数量'
     }
   },
-  emits: ['click', 'changeSku', 'changeStepper', 'clickBtnOptions', 'stepperOverLimit', 'reduce', 'add'],
+  emits: ['click', 'changeSku', 'changeStepper', 'clickBtnOptions', 'overLimit', 'reduce', 'add'],
 
   setup(props: any, { emit }) {
     const goodsCount = ref(props.stepperMin);
 
     onMounted(() => {
-      console.log('计步器变化');
       goodsCount.value = props.stepperMin;
     });
 
-    const getSaleText = (t: string) => {
-      // saleLimit 限购  saleLowest 起购  purchased 已购
-      const { stepperMax, stepperMin } = props;
-      const m: any = {
-        saleLimit: stepperMax,
-        saleLowest: stepperMin,
-        purchased: props.purchased
-      };
+    const getExtraText = () => {
+      const { stepperExtraText } = props;
 
-      if (props[`${t}Text`] && TypeOfFun(props[`${t}Text`]) == 'function') {
-        return props[`${t}Text`](m[t]);
+      if (stepperExtraText && TypeOfFun(stepperExtraText) == 'function') {
+        return stepperExtraText();
       } else {
-        switch (t) {
-          case 'saleLimit':
-            return `限购${stepperMax}件`;
-          case 'saleLowest':
-            return `(${stepperMin}件起购)`;
-          default:
-            return ` | 已购${props.purchased}件`;
-        }
+        return '';
       }
     };
 
@@ -127,7 +76,7 @@ export default create({
 
     // stepper 极限值
     const overlimit = (e: Event, action: string) => {
-      emit('stepperOverLimit', {
+      emit('overLimit', {
         action,
         value: parseInt(goodsCount.value + '')
       });
@@ -144,7 +93,7 @@ export default create({
       add,
       reduce,
       overlimit,
-      getSaleText,
+      getExtraText,
       changeStepper
     };
   }
