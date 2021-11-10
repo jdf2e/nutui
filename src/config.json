@@ -946,6 +946,17 @@
           "show": false,
           "exportEmpty": true,
           "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Sku",
+          "type": "component",
+          "cName": "商品规格选择",
+          "desc": "商品规格选择",
+          "sort": 1,
+          "show": true,
+          "author": "yangxiaolu3"
         }
       ]
     }
