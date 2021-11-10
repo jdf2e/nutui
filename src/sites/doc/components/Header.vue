@@ -4,7 +4,7 @@
     <div class="header-logo">
       <a class="logo-link" href="#" @click="toHome"></a>
       <span class="logo-border"></span>
-      <span class="version">v{{ version }}</span>
+      <span class="version">{{ version }}</span>
     </div>
     <div class="header-nav">
       <Search />
