@@ -9,6 +9,10 @@ export default create({
       type: [Number, String, Boolean],
       default: ''
     },
+    direction: {
+      type: String,
+      default: 'vertical' //horizontal
+    },
     textPosition: {
       type: String,
       default: 'right'
@@ -16,8 +20,7 @@ export default create({
   },
   emits: ['change', 'update:modelValue'],
   setup(props, { emit, slots }) {
-    const updateValue = (value: string | boolean | number) =>
-      emit('update:modelValue', value);
+    const updateValue = (value: string | boolean | number) => emit('update:modelValue', value);
 
     provide('parent', {
       label: readonly(computed(() => props.modelValue)),
@@ -27,14 +30,14 @@ export default create({
 
     watch(
       () => props.modelValue,
-      value => emit('change', value)
+      (value) => emit('change', value)
     );
 
     return () => {
       return h(
         'view',
         {
-          class: `${componentName}`
+          class: `${componentName} ${componentName}--${props.direction}`
         },
         slots.default?.()
       );

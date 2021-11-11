@@ -10,8 +10,12 @@ export default create({
       type: Boolean,
       default: false
     },
-    label: {
+    shape: {
       type: String,
+      default: 'round' // button
+    },
+    label: {
+      type: [String, Number],
       default: ''
     },
     iconName: {
@@ -31,7 +35,7 @@ export default create({
     let parent: any = inject('parent');
 
     const isCurValue = computed(() => {
-      return parent.label.value === props.label;
+      return parent.label.value == props.label;
     });
 
     const color = computed(() => {
@@ -59,8 +63,17 @@ export default create({
       return h(
         'view',
         {
-          class: `${componentName}__label ${
-            props.disabled ? `${componentName}__label--disabled` : ''
+          class: `${componentName}__label ${props.disabled ? `${componentName}__label--disabled` : ''}`
+        },
+        slots.default?.()
+      );
+    };
+    const renderButton = () => {
+      return h(
+        'view',
+        {
+          class: `${componentName}__button ${isCurValue.value && `${componentName}__button--active`} ${
+            props.disabled ? `${componentName}__button--disabled` : ''
           }`
         },
         slots.default?.()
@@ -72,16 +85,22 @@ export default create({
       parent.updateValue(props.label);
     };
 
+    let reverseState = position.value === 'left';
+
     return () => {
       return h(
         'view',
         {
-          class: `${componentName} ${
-            position.value === 'left' ? `${componentName}--reverse` : ''
-          }`,
+          class: `${componentName} ${componentName}--${props.shape} ${reverseState ? `${componentName}--reverse` : ''}`,
           onClick: handleClick
         },
-        [renderIcon(), renderLabel()]
+        [
+          props.shape == 'button'
+            ? renderButton()
+            : reverseState
+            ? [renderLabel(), renderIcon()]
+            : [renderIcon(), renderLabel()]
+        ]
       );
     };
   }
