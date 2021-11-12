@@ -85,6 +85,7 @@
     padding: 0 5px;
     font-size: 13px;
     line-height: 1;
+    min-width: 35px;
   }
   .nut-progress-insidetext {
     padding: 3px 5px 3px 6px;
@@ -93,6 +94,7 @@
     position: absolute;
     transition: all 0.4s;
     top: -42%;
+    min-width: 0px;
   }
   .nut-icon-success,
   .nut-icon-fail {
