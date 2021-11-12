@@ -1,3 +1,29 @@
+## v3.1.10
+
+`2021-11-5`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @Licoy、@297cwrun、@novrain、@puppet-666
+
+* :zap: feat: 新增 Searchbar 搜索栏组件 @JackieScorpio
+* :zap: feat(tabs): add vertical line & add props color #760 @richard1015
+* :zap: feat(inputnumber): events overlimit add click type @richard1015
+* :zap: feat(step): add props iconColor @richard1015
+* :zap: feat(cellgroup): 支持title使用插槽设置 (#816) @297cwrun
+* :zap: feat(price): 前后加符号，可不保留小数点 (#739) #748 @lzzwoniu
+* :zap: chore(countup、barrage): 优化重构 (#775) @Ymm0008
+* :bug: fix(divider): 在taro下无法正常显示 (#800) @297cwrun
+* :bug: fix(tag): del class nut-tag repeat @richard1015
+* :bug: fix(tabbar): 文档优化，解决控制台warn #712  @Drjingfubo
+* :bug: fix(drag): 优化首次点击跳动问题 (#780) @Drjingfubo
+* :bug: fix(address): 内嵌 elevator 滑动问题修复 @szg2008
+* :bug: fix(imagepreview): 引入 swiper 报错问题修复 (#792) @JackieScorpio
+* :bug: fix(textarea): modelValue 值为null时的length引用错误 (#805) @Licoy
+* :zap: style(checkbox、radio): add transition animation @richard1015
+* :zap: style(dialog): add border-box & footer__button min-width modify @richard1015
+* :zap: chore: fix generate types methods bug  @richard1015
+* :zap: docs: 官网优化（Sketch资源下载、FAQ常见问题模块、部分文档文案错误） @richard1015 @Drjingfubo @lzzwoniu @novrain @snandy @puppet-666
+
 ## v3.1.8~9
 
 `2021-10-17`

@@ -49,11 +49,11 @@ export default {
 ```html
 <nut-textarea v-model="value" rows="10" autosize />
 ```
-### 直读、禁用
+### 只读、禁用
 
 
 ```html
-<nut-textarea readonly model-value="textarea直读状态" />
+<nut-textarea readonly model-value="textarea只读状态" />
 <nut-textarea disabled model-value="textarea禁用状态" limit-show max-length="20" />
 ```
 

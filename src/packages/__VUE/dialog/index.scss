@@ -5,6 +5,7 @@
   width: $dialog-width;
   min-height: 156px;
   padding: 28px 24px 16px 24px;
+  box-sizing: border-box;
 
   &__header {
     display: block;
@@ -34,7 +35,7 @@
     justify-content: space-around;
 
     .nut-button {
-      flex: 1;
+      min-width: 100px;
     }
 
     &-cancel {
