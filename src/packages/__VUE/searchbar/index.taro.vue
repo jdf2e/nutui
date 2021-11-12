@@ -1,42 +1,42 @@
 <template>
-  <view class="nut-searchbar">
-    <view v-if="hasLeftOut" class="search-icon left-search-icon">
+  <view class="nut-searchbar" :style="searchbarStyle">
+    <view v-if="$slots.leftout" class="nut-searchbar__search-icon nut-searchbar__left-search-icon">
       <slot name="leftout"></slot>
     </view>
-    <view class="search-input">
-      <view v-if="hasLeftIn" class="search-icon iptleft-search-icon">
+    <view class="nut-searchbar__search-input" :style="inputSearchbarStyle">
+      <view v-if="$slots.leftin" class="nut-searchbar__search-icon nut-searchbar__iptleft-search-icon">
         <slot name="leftin"></slot>
       </view>
-      <view class="input-inner">
-        <input
-          class="input-bar"
-          :type="text"
-          :maxlength="maxLength"
-          :placeholder="placeholder"
-          :value="modelValue"
-          @input="valueChange"
-          @focus="valueFocus"
-          @blur="valueBlur"
-          @keypress="searchAction"
-        />
-        <view @click="handleClear" class="input-clear" v-if="clearable" v-show="modelValue.length > 0">
-          <nut-icon name="mask-close" size="12px"></nut-icon>
+      <view class="nut-searchbar__input-inner">
+        <form action="#" @submit.prevent="handleSubmit">
+          <input
+            class="nut-searchbar__input-bar"
+            :type="inputType"
+            :maxlength="maxLength"
+            :placeholder="placeholder"
+            :value="modelValue"
+            @input="valueChange"
+            @focus="valueFocus"
+            @blur="valueBlur"
+          />
+        </form>
+        <view @click="handleClear" class="nut-searchbar__input-clear" v-if="clearable" v-show="modelValue.length > 0">
+          <nut-icon name="circle-close" size="12" color="#555"></nut-icon>
         </view>
       </view>
-      <view v-if="hasRightIn" class="search-icon iptright-sarch-icon">
+      <view v-if="$slots.rightin" class="nut-searchbar__search-icon nut-searchbar__iptright-sarch-icon">
         <slot name="rightin"></slot>
       </view>
     </view>
-    <view v-if="hasRightIn" class="search-icon right-search-icon">
+    <view v-if="$slots.rightout" class="nut-searchbar__search-icon nut-searchbar__right-search-icon">
       <slot name="rightout"></slot>
     </view>
   </view>
 </template>
 
 <script lang="ts">
-import { toRefs, reactive } from 'vue';
+import { toRefs, reactive, computed } from 'vue';
 import { createComponent } from '../../utils/create';
-import Icon from '../icon/index.vue';
 const { create } = createComponent('searchbar');
 interface Events {
   eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
@@ -47,6 +47,10 @@ export default create({
     modelValue: {
       type: [String, Number],
       default: ''
+    },
+    inputType: {
+      type: String,
+      default: 'text'
     },
     maxLength: {
       type: [String, Number],
@@ -60,34 +64,32 @@ export default create({
       type: Boolean,
       default: true
     },
-    hasLeftIn: {
-      type: Boolean,
-      default: true
+    background: {
+      type: String,
+      default: ''
     },
-    hasLeftOut: {
-      type: Boolean,
-      default: true
-    },
-    hasRightIn: {
-      type: Boolean,
-      default: true
-    },
-    hasRightOut: {
-      type: Boolean,
-      default: true
+    inputBackground: {
+      type: String,
+      default: ''
     }
-  },
-  components: {
-    [Icon.name]: Icon
   },
 
   emits: ['change', 'update:modelValue', 'blur', 'focus', 'clear', 'search'],
 
   setup(props, { emit }) {
-    const {} = toRefs(props);
-
     const state = reactive({
       active: false
+    });
+
+    const searchbarStyle = computed(() => {
+      return {
+        background: props.background
+      };
+    });
+    const inputSearchbarStyle = computed(() => {
+      return {
+        background: props.inputBackground
+      };
     });
 
     const valueChange = (event: Event) => {
@@ -106,15 +108,6 @@ export default create({
       let value = input.value;
       state.active = true;
       emit('focus', value, event);
-    };
-
-    const searchAction = (event: any) => {
-      if (event.keyCode == 13) {
-        const input = event.target as HTMLInputElement;
-        let value = input.value;
-        state.active = true;
-        emit('search', value, event);
-      }
     };
 
     const valueBlur = (event: Event) => {
@@ -136,13 +129,19 @@ export default create({
       emit('clear', '');
     };
 
+    const handleSubmit = () => {
+      emit('search', props.modelValue);
+    };
+
     return {
       ...toRefs(state),
       valueChange,
       valueFocus,
       valueBlur,
       handleClear,
-      searchAction
+      handleSubmit,
+      searchbarStyle,
+      inputSearchbarStyle
     };
   }
 });

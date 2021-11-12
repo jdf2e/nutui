@@ -74,15 +74,7 @@ export default create({
       default: false
     }
   },
-  emits: [
-    'update:modelValue',
-    'change',
-    'blur',
-    'focus',
-    'reduce',
-    'add',
-    'overlimit'
-  ],
+  emits: ['update:modelValue', 'change', 'blur', 'focus', 'reduce', 'add', 'overlimit'],
 
   setup(props, { emit }) {
     const classes = computed(() => {
@@ -122,7 +114,7 @@ export default create({
         let output_value = Number(props.modelValue) - Number(props.step);
         emitChange(output_value, event);
       } else {
-        emit('overlimit', event);
+        emit('overlimit', event, 'reduce');
       }
     };
 
@@ -132,7 +124,7 @@ export default create({
         let output_value = Number(props.modelValue) + Number(props.step);
         emitChange(output_value, event);
       } else {
-        emit('overlimit', event);
+        emit('overlimit', event, 'add');
       }
     };
 

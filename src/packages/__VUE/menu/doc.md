@@ -2,7 +2,7 @@
 
 ### 介绍
 
-下拉选择菜单组件
+向下弹出的菜单列表
 
 ### 安装
 
@@ -20,140 +20,126 @@ app.use(MenuItem);
 
 ## 代码演示
 
-### 基础用法1
-
-`Menu`  属性支持传入列表数据menuList和title名称设置。
+### 基础用法
 
 ```html
 <nut-menu>
-  <nut-menu-item :menu-list="menuList" title="最新商品" ></nut-menu-item>
-  <nut-menu-item :menu-list="menuList" :title="title" ></nut-menu-item>
+  <nut-menu-item title="全部商品" :options="options1"></nut-menu-item>
 </nut-menu>
 ```
 ```js
  setup() {
-    const resData = reactive({
-      title: '热门推荐',
-      menuList: [
-        {value: '手机'},
-        {value: '电脑'},
-        {value: '家用电器'},
-        {value: '日用百货'}
-      ]
-    });
+  const options1 = [
+      { text: '全部商品', value: 0 },
+      { text: '新款商品', value: 1 },
+      { text: '活动商品', value: 2 },
+  ]
+
+  const options2 = [
+    { text: '默认排序', value: 'a' },
+    { text: '好评排序', value: 'b' },
+    { text: '销量排序', value: 'c' },
+  ]
  }
-
 ```
 
-### 菜单多列展示
-
-`Menu` 的 ` multiStyle` 属性配置1列、2列、3列展示菜单列表，默认单列展示。
-`maxHeight` 属性可控制菜单列表的最大高度。
+### 两列标题
 
 ```html
 <nut-menu>
-    <nut-menu-item :menu-list="menuList2" title="单列展示" multi-style="1" maxHeight="200"></nut-menu-item>
-    <nut-menu-item :menu-list="menuList2" title="双列展示"  multi-style="2"></nut-menu-item>
-    <nut-menu-item :menu-list="menuList2" title="三列展示"  multi-style="3"></nut-menu-item>
+  <nut-menu-item title="全部商品" :options="options1"></nut-menu-item>
+  <nut-menu-item title="默认排序" :options="options2"></nut-menu-item>
 </nut-menu>
 ```
 
-### 禁用操作
-
-`Menu` 的 `disabled` 属性可对菜单列表进行禁用操作。
-`autoClose` 属性控制下拉菜单列表是否选择后自动收起，默认自动收起。
+### 获取选择的列表对象
 
 ```html
-<nut-menu>
-    <nut-menu-item :menu-list="menuList" title="最新商品"></nut-menu-item>
-    <nut-menu-item :menu-list="menuList" title="title" :auto-close="false"></nut-menu-item>
-    <nut-menu-item :menu-list="menuList2" title="筛选" disabled ></nut-menu-item>
+<nut-menu @choose="handleChoose">
+  <nut-menu-item title="全部商品" :options="options1"></nut-menu-item>
 </nut-menu>
-```
-
-### 禁止蒙层展示
-属性`hasMask`控制是否有蒙层，默认为 `true`展示蒙层 
-
-```html
-<nut-menu :hasMask="false">
-    <nut-menu-item :menu-list="menuList" title="最新商品">
-    </nut-menu-item>
-    <nut-menu-item :menu-list="menuList" :title="title">
-    </nut-menu-item>
-</nut-menu>
-```
-
-### 点击事件
-
-`Menu` 的 `@menu-click` 事件返回点击的菜单标题，`@change`事件返回菜单列表选中的数据。
-
-```html
-<nut-menu>
-    <nut-menu-item
-        :menu-list="menuList2"
-        title="选择菜单列表项"
-        multi-style="2"
-        @menu-click="alertText($event, 'title')"
-        @change="getChecked"
-    ></nut-menu-item>
-    <nut-menu-item
-        :menu-list="menuList2"
-        title="选中标题触发"
-        disabled
-        @menu-click="alertText"
-    ></nut-menu-item>
- </nut-menu>
 ```
 ```js
-const getChecked = (info: any, name: string) => {
-    alert('选择菜单选项：' + name);
-    console.log(11, info, name);
-};
-const alertText = (info, type) => {
-    console.log(info, type);
-    if (type == 'title') {
-        alert('菜单标题点击：' + info);
-    } else {
-        alert('禁用操作');
-    }
-};
+ setup() {
+  const handleChoose = (val, index) => {
+    console.log(val, index)
+  }
+ }
 ```
 
-### 自定义内容
+### 一行两列列表对象
 
+```html
+<nut-menu col="2">
+  <nut-menu-item title="全部商品" :options="options1"></nut-menu-item>
+</nut-menu>
+```
+
+### 禁用菜单
 
 ```html
 <nut-menu>
-    <nut-menu-item title="自定义选项">
-        <div class="user-style">
-          <nut-cell>
-            设置为默认 <nut-switch></nut-switch>
-          </nut-cell>
-          <nut-cell>
-            <nut-button size="large" type="primary">确认提交</nut-button>
-          </nut-cell>
-        </div>
-    </nut-menu-item>
+  <nut-menu-item title="全部商品" disabled="true" :options="options1"></nut-menu-item>
 </nut-menu>
+```
+
+### 自定义选项的选中态图标颜色
+
+```html
+<nut-menu active-color="#0f0">
+  <nut-menu-item title="全部商品" :options="options1"></nut-menu-item>
+</nut-menu>
+```
+
+### 自定义菜单内容
+
+```html
+<nut-menu>
+  <nut-menu-item title="筛选" ref="item">
+    <div
+      :style="{
+        display: 'flex',
+        'justify-content': 'space-between',
+        'align-items': 'center'
+      }"
+    >
+      <div :style="{ 'font-size': '12px' }">我是自定义内容</div>
+      <nut-button @click="handleClick">关闭</nut-button>
+    </div>
+  </nut-menu-item>
+</nut-menu>
+```
+```js
+ setup() {
+  const item = ref<HTMLElement>()
+
+  const handleClick = () => {
+    (item.value as any).toggle()
+  }
+ }
 ```
 
 ## API
 
 ### Props
 
+### nut-menu
+
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| title         | 菜单标题名称或可为菜单列表第一项，必填     | String | -                |
-| menu-list        | 菜单列表数据，必填                     | Array | -                |
-| multi-style        | 列表列数设置，默认1列，可选值 `1` `2` `3` | String, Number | 1                |
-| disabled | 是否开启禁用设置，默认不开启    | Boolean | false |
-| max-height | 菜单列表最大高度，单位px    | String, Number | - |
-| auto-close | 选择后下拉菜单列表是否自动收起，默认自动收起   | Boolean | true |
-|has-mask| 是否有蒙层 | Boolean | true|
+| col         | 显示的列数     | String/Number | 1                |
+| active-color         | 选项的选中态图标颜色     | String | #f00               |
+
+### nut-menu-item
+
+| 参数         | 说明                             | 类型   | 默认值           |
+|--------------|----------------------------------|--------|------------------|
+| title         | 标题     | String | -                |
+| options         | 列表对象     | Array | -                |
+| disabled         | 是否禁用菜单     | Boolean | false                |
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| menu-click  | 点击菜单标题触发，返回菜单标题名称 | event: Event |
-| change  | 点击菜单列表选项触发，返回选中菜单项数据、名称 | event: Event |
+| choose  | 单选下，选择之后触发 | 1.选择的列表对象。2.列表索引 |

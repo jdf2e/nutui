@@ -8,6 +8,7 @@
         :loop="true"
         direction="horizontal"
         @change="slideChangeEnd"
+        :is-preventDefault="false"
       >
         <nut-swiper-item v-for="(item, index) in images" :key="index">
           <img :src="item.imgSrc" class="nut-imagepreview-img" />

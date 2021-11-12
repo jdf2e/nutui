@@ -48,6 +48,7 @@ export default {
         'pages/tabs/index',
         'pages/fixednav/index',
         'pages/elevator/index',
+        'pages/menu/index',
         'pages/pagination/index'
       ]
     },
@@ -75,7 +76,13 @@ export default {
     },
     {
       root: 'business',
-      pages: ['pages/address/index', 'pages/signature/index', 'pages/barrage/index', 'pages/timeselect/index']
+      pages: [
+        'pages/address/index',
+        'pages/signature/index',
+        'pages/barrage/index',
+        'pages/timeselect/index',
+        'pages/sku/index'
+      ]
     }
   ],
   window: {

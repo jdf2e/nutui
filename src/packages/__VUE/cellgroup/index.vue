@@ -1,6 +1,7 @@
 <template>
   <view :class="classes">
-    <view v-if="title" class="nut-cell-group__title">{{ title }}</view>
+    <slot v-if="$slots.title" name="title"></slot>
+    <view v-else-if="title" class="nut-cell-group__title">{{ title }}</view>
     <view class="nut-cell-group__warp">
       <slot></slot>
     </view>
