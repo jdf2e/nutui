@@ -106,7 +106,7 @@
             <div class="marketing-content-right-title">
               <img src="./../../assets/images/marketing-title.png" alt="" />
             </div>
-            <p class="marketing-content-right-desc">基于 NutUI 的营销组件</p>
+            <p class="marketing-content-right-desc">基于 NutUI 的抽奖组件</p>
             <div class="marketing-content-right-godetail" @click="goAwait">敬请期待</div>
           </div>
           <div class="marketing-content-mask" v-if="showAwait" @click="hideAwait"> 正在建设中，敬请期待~ </div>
