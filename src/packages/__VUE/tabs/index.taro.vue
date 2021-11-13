@@ -90,7 +90,7 @@ export default create({
   setup(props, { emit, slots }) {
     provide('activeKey', { activeKey: computed(() => props.modelValue) });
     const titles: Ref<Title[]> = ref([]);
-    const currentIndex = ref(0);
+    const currentIndex = ref((props.modelValue as number) || 0);
 
     const renderTitles = (vnodes: VNode[]) => {
       vnodes.forEach((vnode: VNode, index: number) => {
@@ -132,8 +132,7 @@ export default create({
         } else {
           currentIndex.value = index;
         }
-      },
-      { immediate: true }
+      }
     );
     onMounted(init);
     onActivated(init);
