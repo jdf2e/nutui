@@ -132,7 +132,8 @@ export default create({
         } else {
           currentIndex.value = index;
         }
-      }
+      },
+      { immediate: true }
     );
     onMounted(init);
     onActivated(init);
