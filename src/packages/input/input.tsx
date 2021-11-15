@@ -1,8 +1,9 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { CSSProperties, FunctionComponent, useEffect, useState } from 'react'
 import './input.scss'
 import bem from '@/utils/bem'
 import { formatNumber } from './util'
 import Icon from '../icon'
+import classNames from 'classnames'
 
 export interface InputProps {
   type: string
@@ -12,9 +13,11 @@ export interface InputProps {
   requireShow: boolean
   disabled: boolean
   readonly: boolean
-  textAlign: string
+  textAlign: any
   maxLength: any
   clearable: boolean
+  style?: CSSProperties
+  className?: string
   change?: (value: any, event: Event) => void
   blur?: (value: any, event: Event) => void
   focus?: (value: any, event: Event) => void
@@ -46,6 +49,8 @@ export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes
       textAlign,
       maxLength,
       clearable,
+      style,
+      className,
       change,
       blur,
       focus,
@@ -64,18 +69,17 @@ export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes
 
     const valueChange = (event: Event) => {
       let val: any = (event.target as any).value
-      if (maxLength && val.length > Number(maxLength)) {
-        val = val.slice(0, Number(maxLength))
-      }
+
       if (type === 'digit') {
         val = formatNumber(val, true)
       }
       if (type === 'number') {
         val = formatNumber(val, false)
       }
-      if (change) {
-        change(val, event)
+      if (maxLength && val.length > Number(maxLength)) {
+        val = val.slice(0, Number(maxLength))
       }
+      change && change(val, event)
       SetInputValue(val)
     }
 
@@ -102,9 +106,16 @@ export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes
       }
       SetInputValue('')
     }
+    const textAlignStyle = {
+      textAlign: textAlign,
+    }
 
     return (
-      <div className={`${inputBem()} ${disabled ? inputBem('disabled') : ''}`}>
+      <div
+        className={`${inputBem()} ${disabled ? inputBem('disabled') : ''}  ${
+          className ? className : ''
+        }`}
+      >
         <div className={inputBem('label')}>
           {requireShow ? <div className={inputBem('require')}>*</div> : null}
           {label ? <div className="label-string">{label}</div> : null}
@@ -116,6 +127,7 @@ export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes
           disabled={disabled}
           readOnly={readonly}
           value={inputValue}
+          style={{ ...style, ...textAlignStyle }}
           maxLength={maxLength}
           onBlur={(e: any) => {
             valueBlur(e)
@@ -127,7 +139,7 @@ export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes
             valueChange(e)
           }}
         />
-        {clearable && !readonly ? (
+        {clearable && !readonly && active ? (
           <div
             onClick={(e: any) => {
               handleClear(e)

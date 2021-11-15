@@ -30,7 +30,7 @@ const InputDemo = () => {
     <>
       <div className="demo">
         <h2>基础用法</h2>
-        <Input label="文本(异步)" defaultValue={value1} change={change} focus={focus} blur={blur} />
+        <Input label="文本(异步)" defaultValue={value1} focus={focus} blur={blur} />
 
         <Input label="文本" defaultValue={value2} change={change} clear={clear} requireShow />
         <h2>禁用输入框</h2>

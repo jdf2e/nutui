@@ -94,14 +94,18 @@ const BackTopDemo = () => {
           我是测试数据24
         </div>
         <BackTop
+          className="test123"
           elId="elId"
           distance={200}
           bottom={100}
-          children={<div>无</div>}
+          isAnimation={false}
+          style={{ color: 'red' }}
           backTopClick={() => {
             console.log('触发点击')
           }}
-        />
+        >
+          <div>无</div>
+        </BackTop>
         <BackTop
           elId="elId"
           distance={200}

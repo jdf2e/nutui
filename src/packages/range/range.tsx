@@ -5,6 +5,7 @@ import React, {
   useRef,
   useLayoutEffect,
   ReactNode,
+  CSSProperties,
 } from 'react'
 import './range.scss'
 import bem from '@/utils/bem'
@@ -13,6 +14,8 @@ import { useRect } from '../../utils/useRect'
 
 type SliderValue = number | number[]
 export interface RangeProps {
+  className: string
+  style: CSSProperties
   range: boolean
   disabled: boolean
   activeColor: string
@@ -45,6 +48,7 @@ let currentValue: any
 export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes<HTMLDivElement>> =
   (props) => {
     const {
+      className,
       range,
       disabled,
       activeColor,
@@ -73,11 +77,7 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
       if (modelValue) {
         SetInitValue(modelValue)
       }
-      //   console.log(modelValue)
     }, [modelValue])
-    // useEffect(() => {
-    //   console.log('initValue', initValue)
-    // }, [initValue])
 
     const scope = () => {
       return Number(max) - Number(min)
@@ -148,7 +148,6 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
 
       if (!isSameValue(value, modelVal)) {
         SetInitValue(value)
-        // change(value)
       }
 
       if (end && !isSameValue(value, startValue)) {
@@ -176,7 +175,6 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
       }
       if (dragStatus === 'start') {
         dragStart && dragStart()
-        // emit('drag-start')
       }
 
       touch.move(event)
@@ -204,7 +202,6 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
       }
       if (dragStatus === 'draging') {
         updateValue(currentValue, true)
-        // emit('drag-end')
         dragEnd && dragEnd()
       }
       SetDragStatus('')
@@ -217,7 +214,7 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
     }
 
     return (
-      <div className="nut-range-container">
+      <div className={`nut-range-container ${className ? className : ''}`}>
         {!hiddenRange ? <div className="min">{+min}</div> : null}
         <div
           ref={root}
