@@ -1,0 +1,38 @@
+.nut-form-item {
+  display: flex;
+
+  &__label {
+    font-size: 14px;
+    font-weight: normal;
+    width: 90px;
+    flex: none;
+    display: inline-block;
+    word-wrap: break-word;
+    &.required {
+      &::before {
+        content: '*';
+        color: $primary-color;
+        margin-right: 4px;
+      }
+    }
+  }
+  &__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    &__slots {
+      .nut-input-text {
+        font-size: 14px;
+        width: 100%;
+        outline: 0 none;
+        border: 0;
+        text-decoration: none;
+      }
+    }
+    &__tips {
+      font-size: 10px;
+      color: $primary-color;
+    }
+  }
+}
