@@ -4,13 +4,13 @@ import Icon from '@/packages/icon'
 export interface ButtonProps {
   className: string
   color: string
-  shape: string
+  shape: ButtonShape
   plain: boolean
   loading: boolean
   disabled: boolean
   style: object
-  type: string
-  size: string
+  type: ButtonType
+  size: ButtonSize
   block: boolean
   icon: string
   children: any
@@ -78,12 +78,12 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
   ])
   const classes = () => {
     const prefixCls = 'nut-button'
-    return `${prefixCls} ${type ? `${prefixCls}--${type}` : ''} 
-    ${size ? `${prefixCls}--${size}` : ''} 
-    ${shape ? `${prefixCls}--${shape}` : ''} 
-    ${plain ? `${prefixCls}--plain` : ''} 
-    ${block ? `${prefixCls}--block` : ''} 
-    ${disabled ? `${prefixCls}--disabled` : ''} 
+    return `${prefixCls} ${type ? `${prefixCls}--${type}` : ''}
+    ${size ? `${prefixCls}--${size}` : ''}
+    ${shape ? `${prefixCls}--${shape}` : ''}
+    ${plain ? `${prefixCls}--plain` : ''}
+    ${block ? `${prefixCls}--block` : ''}
+    ${disabled ? `${prefixCls}--disabled` : ''}
     ${loading ? `${prefixCls}--loading` : ''}`
   }
   const handleClick = (e: any) => {

@@ -5,12 +5,33 @@
   "module": "dist/nutui.react.es.js",
   "style": "dist/style.css",
   "typings": "dist/dts/src/packages/nutui.react.d.ts",
+  "keywords": [
+    "nutui",
+    "nutui2",
+    "nutui3",
+    "react",
+    "webpack",
+    "react component",
+    "vite",
+    "jdc",
+    "jdcfe"
+  ],
+  "author": "jdcfe",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "add": "node scripts/createComponentMode.js",
     "generate:file": "node scripts/generate-nutui.js",
+    "generate:themes": "node scripts/generate-themes.js",
     "checked": "npm run generate:file && tsc",
     "dev": "npm run checked && vite --open --force",
-    "build": "npm run checked && vite build --config vite.config.build.ts && tsc",
+    "build": "npm run checked && vite build --config vite.config.build.ts && tsc && npm run generate:themes",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -21,16 +42,16 @@
   },
   "dependencies": {
     "@bem-react/classname": "^1.5.10",
-    "@loadable/component": "^5.15.0",
+    "classnames": "^2.3.1"
+  },
+  "devDependencies": {
     "axios": "^0.21.1",
-    "classnames": "^2.3.1",
+    "@loadable/component": "^5.15.0",
     "fs-extra": "^10.0.0",
     "marked": "^2.0.3",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "react-router-dom": "^5.2.0"
-  },
-  "devDependencies": {
+    "react-router-dom": "^5.2.0",
     "@babel/preset-react": "^7.13.13",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
