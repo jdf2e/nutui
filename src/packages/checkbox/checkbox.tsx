@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import Icon from '../icon'
+import { CheckboxGroup } from '@/packages/checkboxgroup/checkboxgroup'
 import './checkbox.scss'
 import bem from '@/utils/bem'
 
@@ -23,9 +24,9 @@ const defaultProps = {
   iconActiveName: 'checked',
   onChange: (state, label) => {},
 } as CheckBoxProps
-export const CheckBox: FunctionComponent<
+export const Checkbox: FunctionComponent<
   Partial<CheckBoxProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
-> = (props) => {
+> & { Group: typeof CheckboxGroup } = (props) => {
   const { children } = { ...defaultProps, ...props }
   const b = bem('checkbox')
   const {
@@ -81,5 +82,6 @@ export const CheckBox: FunctionComponent<
   )
 }
 
-CheckBox.defaultProps = defaultProps
-CheckBox.displayName = 'NutCheckBox'
+Checkbox.defaultProps = defaultProps
+Checkbox.displayName = 'NutCheckBox'
+Checkbox.Group = CheckboxGroup

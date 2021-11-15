@@ -13,7 +13,7 @@ const defaultProps = {
   checkedValue: [],
   onChange: (value: string[]) => {},
 } as CheckBoxGroupProps
-export const CheckBoxGroup = React.forwardRef(
+export const CheckboxGroup = React.forwardRef(
   (
     props: Partial<CheckBoxGroupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
     ref
@@ -87,5 +87,5 @@ export const CheckBoxGroup = React.forwardRef(
   }
 )
 
-CheckBoxGroup.defaultProps = defaultProps
-CheckBoxGroup.displayName = 'NutCheckBoxGroup'
+CheckboxGroup.defaultProps = defaultProps
+CheckboxGroup.displayName = 'NutCheckboxGroup'
