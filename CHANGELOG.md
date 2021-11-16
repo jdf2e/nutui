@@ -1,3 +1,20 @@
+## v3.1.11
+
+`2021-11-15`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @AsherSun、@muitang、@MechaGirls
+
+* :zap: feat: 新增 sku 商品规格组件 #64 (#827) @yangxiaolu1993
+* :zap: feat(toast): hide methods add id param  @richard1015
+* :zap: feat(radio、radiogroup): add props direction、shape @richard1015
+* :zap: feat(uploader): add prop list-type、progress @richard1015
+* :bug: fix(signature): 在“微信小程序”中点确认后保存的图片无法打开查看签名图片 #829 (#830) @muitang
+* :bug: fix(tabs):当父组件默认值传入时无法更新tabs当前标签状态 (#832) @MechaGirls
+* :bug: fix(progreass): 优化百分比抖动问题 @Drjingfubo
+* :bug: fix(uploader): taro env quantity limit (#822) @AsherSun
+* :bug: fix(dialog): method onOk unable dom  @richard1015
+
 ## v3.1.10
 
 `2021-11-5`

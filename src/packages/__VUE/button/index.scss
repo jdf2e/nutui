@@ -14,6 +14,9 @@
   appearance: none;
   user-select: none;
   touch-action: manipulation;
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
   .text {
     margin-left: 5px;
   }
