@@ -113,8 +113,8 @@ export const ToastFunction = {
       type: 'loading'
     });
   },
-  hide() {
-    clearToast();
+  hide(id?: string) {
+    clearToast(id);
   },
   install(app: any): void {
     app.use(Toast);

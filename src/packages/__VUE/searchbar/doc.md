@@ -1,4 +1,4 @@
-# Searchbar组件
+# Searchbar 搜索栏
 
 ### 介绍
 
@@ -14,7 +14,6 @@ import { SearchBar, Icon } from '@nutui/nutui';
 // taro
 import { SearchBar, Icon } from '@nutui/nutui-taro';
 
-
 const app = createApp();
 app.use(SearchBar).use(Icon);
 ```    
@@ -26,158 +25,158 @@ app.use(SearchBar).use(Icon);
 ```
 
 ```javascript
-  import { toRefs, reactive } from 'vue';
+import { toRefs, reactive } from 'vue';
 
-  export default {
-    setup() {
-      const state = reactive({
-        searchValue: ""
-      });
+export default {
+  setup() {
+    const state = reactive({
+      searchValue: ""
+    });
 
-      return {
-        ...toRefs(state),
-      };
-    }
+    return {
+      ...toRefs(state),
+    };
   }
+}
 ```
 
 ### 搜索事件监听
 
 ```html
-  <nut-searchbar v-model="searchValue" @search="search"></nut-searchbar>
+<nut-searchbar v-model="searchValue" @search="search"></nut-searchbar>
 ```
 
 ```javascript
-  import { toRefs, reactive } from 'vue';
-  import { Toast } from '@nutui/nutui';
+import { toRefs, reactive } from 'vue';
+import { Toast } from '@nutui/nutui';
 
-  export default {
-    setup() {
-      const state = reactive({
-        searchValue: ""
-      });
+export default {
+  setup() {
+    const state = reactive({
+      searchValue: ""
+    });
 
-      const search = function () {
-        Toast.text('搜索触发');
-      };
+    const search = function () {
+      Toast.text('搜索触发');
+    };
 
-      return {
-        ...toRefs(state),
-        search,
-      };
-    }
+    return {
+      ...toRefs(state),
+      search,
+    };
   }
+}
 ```
 
 ### 显示搜索 icon
 
 ```html
-  <nut-searchbar v-model="searchValue">
-    <template v-slot:leftin>
-      <nut-icon size="14" name="search2"></nut-icon>
-    </template>
-  </nut-searchbar>
+<nut-searchbar v-model="searchValue">
+  <template v-slot:leftin>
+    <nut-icon size="14" name="search2"></nut-icon>
+  </template>
+</nut-searchbar>
 ```
 
 ```javascript
-  import { toRefs, reactive } from 'vue';
-  import { Icon } from '@nutui/nutui';
+import { toRefs, reactive } from 'vue';
+import { Icon } from '@nutui/nutui';
 
-  export default {
-    setup() {
-      const state = reactive({
-        searchValue: ""
-      });
+export default {
+  setup() {
+    const state = reactive({
+      searchValue: ""
+    });
 
-      return {
-        ...toRefs(state),
-      };
-    }
+    return {
+      ...toRefs(state),
+    };
   }
+}
 ```
 
 ### 右侧添加搜索文字
 
 ```html
-  <nut-searchbar v-model="searchValue">
-    <template v-slot:rightout>
-      搜索
-    </template>
-  </nut-searchbar>
+<nut-searchbar v-model="searchValue">
+  <template v-slot:rightout>
+    搜索
+  </template>
+</nut-searchbar>
 ```
 
 ```javascript
-  import { toRefs, reactive } from 'vue';
+import { toRefs, reactive } from 'vue';
 
-  export default {
-    setup() {
-      const state = reactive({
-        searchValue: ""
-      });
+export default {
+  setup() {
+    const state = reactive({
+      searchValue: ""
+    });
 
-      return {
-        ...toRefs(state),
-      };
-    }
+    return {
+      ...toRefs(state),
+    };
   }
+}
 ```
     <h2>更改输入框内部及外部的背景样式</h2>
 
 ### 更改输入框内部及外部的背景样式
 
 ```html
-  <nut-searchbar v-model="searchValue" background="red" input-background="#fff"></nut-searchbar> 
+<nut-searchbar v-model="searchValue4" background="linear-gradient(to right, #9866F0, #EB4D50)" input-background="#fff"> </nut-searchbar>
 ```
 
 ```javascript
-  import { toRefs, reactive } from 'vue';
+import { toRefs, reactive } from 'vue';
 
-  export default {
-    setup() {
-      const state = reactive({
-        searchValue: ""
-      });
+export default {
+  setup() {
+    const state = reactive({
+      searchValue: ""
+    });
 
-      return {
-        ...toRefs(state),
-      };
-    }
+    return {
+      ...toRefs(state),
+    };
   }
+}
 ```
 ### 显示全部 icon
 
 ```html
-  <nut-searchbar v-model="searchValue">
-    <template v-slot:leftout>
-      <nut-icon @click="clickLeft" size="20" name="left"></nut-icon>
-    </template>
-    <template v-slot:leftin>
-      <nut-icon size="14" name="search2"></nut-icon>
-    </template>
-    <template v-slot:rightin>
-      <nut-icon size="20" name="photograph"></nut-icon>
-    </template>
-    <template v-slot:rightout>
-      <nut-icon size="20" name="message"></nut-icon>
-    </template>
-  </nut-searchbar> 
+<nut-searchbar v-model="searchValue">
+  <template v-slot:leftout>
+    <nut-icon @click="clickLeft" size="20" name="left"></nut-icon>
+  </template>
+  <template v-slot:leftin>
+    <nut-icon size="14" name="search2"></nut-icon>
+  </template>
+  <template v-slot:rightin>
+    <nut-icon size="20" name="photograph"></nut-icon>
+  </template>
+  <template v-slot:rightout>
+    <nut-icon size="20" name="message"></nut-icon>
+  </template>
+</nut-searchbar> 
 ```
 
-```javascript
-  import { toRefs, reactive } from 'vue';
-  import { Icon } from '@nutui/nutui';
+``` javascript
+import { toRefs, reactive } from 'vue';
+import { Icon } from '@nutui/nutui';
 
-  export default {
-    setup() {
-      const state = reactive({
-        searchValue: ""
-      });
+export default {
+  setup() {
+    const state = reactive({
+      searchValue: ""
+    });
 
-      return {
-        ...toRefs(state),
-      };
-    }
+    return {
+      ...toRefs(state),
+    };
   }
+}
 ```
     
 ### Props

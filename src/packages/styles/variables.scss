@@ -109,8 +109,8 @@ $icon-line-height: 20px !default;
 
 // uploader
 
-$uploader-width: 100px !default;
-$uploader-height: 100px !default;
+$uploader-picture-width: 100px !default;
+$uploader-picture-height: 100px !default;
 $uploader-background: #f7f8fa !default;
 
 //input
@@ -258,10 +258,13 @@ $checkbox-label-disable-color: #999 !default;
 $checkbox-icon-disable-color: #d6d6d6 !default;
 
 //radio
-$radio-label-color: #1d1e1e !default;
+$radio-label-font-color: #1d1e1e !default;
+$radio-label-font-active-color: #f0250f !default;
 $radio-label-disable-color: #999 !default;
 $radio-icon-disable-color: #d6d6d6 !default;
 
+$radio-label-button-border-color: #f0250f !default;
+$radio-label-button-background: rgba(240, 37, 15, 0.05) !default;
 //fixednav
 $fixednav-bg-color: $white !default;
 $fixednav-font-color: $black !default;
@@ -360,6 +363,23 @@ $tabs-vertical-titles-width: 100px !default;
 // searchbar
 $searchbar-background: $white !default;
 $searchbar-input-background: #f7f7f7 !default;
+$searchbar-right-out-color: $black !default;
+
+// sku
+$sku-item-border: 1px solid $primary-color;
+$sku-item-disable-line: line-through;
+$sku-opetate-bg-default: linear-gradient(
+  135deg,
+  rgba(242, 20, 12, 1) 0%,
+  rgba(242, 39, 12, 1) 70%,
+  rgba(242, 77, 12, 1) 100%
+);
+$sku-opetate-bg-buy: linear-gradient(
+  135deg,
+  rgba(255, 186, 13, 1) 0%,
+  rgba(255, 195, 13, 1) 69%,
+  rgba(255, 207, 13, 1) 100%
+);
 
 @import './mixins/index';
 @import './animation/index';
