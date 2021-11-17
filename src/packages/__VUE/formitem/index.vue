@@ -1,11 +1,11 @@
 <template>
-  <nut-cell class="nut-form-item">
+  <nut-cell class="nut-form-item" :class="{ error: parent[prop] }">
     <view class="nut-cell__title nut-form-item__label" v-if="label" :class="{ required: required }">{{ label }}</view>
     <view class="nut-cell__value nut-form-item__body">
       <view class="nut-form-item__body__slots">
         <slot></slot>
       </view>
-      <view class="nut-form-item__body__tips" v-if="message">{{ message }}</view>
+      <view class="nut-form-item__body__tips" v-if="parent[prop]">{{ parent[prop] }}</view>
     </view>
   </nut-cell>
 </template>
@@ -13,22 +13,20 @@
 import { inject, PropType, ref } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('form-item');
-export class RuleItem {
-  regex?: RegExp;
-  trigger?: string;
-  required?: boolean;
-  validator?: (value: any, rule: RuleItem) => boolean | string | Promise<boolean | string>;
-  formatter?: (value: any, rule: RuleItem) => string;
-}
+import { FormItemRule } from './types';
 export default create({
   inheritAttrs: false,
   props: {
+    prop: {
+      type: String,
+      default: ''
+    },
     label: {
       type: String,
       default: ''
     },
     rules: {
-      type: Array as PropType<RuleItem[]>,
+      type: Array as PropType<FormItemRule[]>,
       default: () => {
         return [];
       }
@@ -44,18 +42,14 @@ export default create({
     labelAlign: {
       type: String,
       default: ''
-    },
-    readonly: {
-      type: String,
-      default: false
     }
   },
   components: {},
   emits: [''],
 
   setup(props, { emit }) {
-    const message = ref('');
-    return { message };
+    const parent = inject('formErrorTip') as any;
+    return { parent };
   }
 });
 </script>

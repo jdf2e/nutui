@@ -1,5 +1,22 @@
 .nut-form-item {
   display: flex;
+  &::before {
+    position: absolute;
+    box-sizing: border-box;
+    content: ' ';
+    pointer-events: none;
+    right: 16px;
+    bottom: 0;
+    left: 16px;
+    transform: scaleX(0);
+  }
+  &.error {
+    &::before {
+      border-bottom: 2px solid red;
+      transform: scaleX(1);
+      transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    }
+  }
 
   &__label {
     font-size: 14px;
