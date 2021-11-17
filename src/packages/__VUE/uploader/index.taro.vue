@@ -9,7 +9,10 @@
 
     <view class="nut-uploader__preview" :class="[listType]" v-for="(item, index) in fileList" :key="item.uid">
       <view class="nut-uploader__preview-img" v-if="listType == 'picture' && !$slots.default">
-        <view class="nut-uploader__preview__progress" v-if="item.status != 'success'">
+        <view class="nut-uploader__preview__progress" v-if="item.status == 'ready'">
+          <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
+        </view>
+        <view class="nut-uploader__preview__progress" v-else-if="item.status != 'success'">
           <nut-icon color="#fff" :name="item.status == 'error' ? 'failure' : 'loading'"></nut-icon>
           <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
         </view>
@@ -243,6 +246,7 @@ export default create({
         fileItem.path = file.path;
         fileItem.name = file.path;
         fileItem.status = 'ready';
+        fileItem.message = '等待上传';
         fileItem.type = fileType;
         if (props.isPreview) {
           fileItem.url = file.path;
