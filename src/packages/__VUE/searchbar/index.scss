@@ -1,0 +1,98 @@
+.nut-searchbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 9px 16px;
+  background: $searchbar-background;
+  box-sizing: border-box;
+  &__search-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 32px;
+    flex: 1;
+    padding: 0 0 0 13px;
+    border-radius: 16px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
+    background: $searchbar-input-background;
+
+    .nut-searchbar__input-inner {
+      display: flex;
+      position: relative;
+      width: 100%;
+      > taro-form-core {
+        width: 100%;
+      }
+      form {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+      input {
+        width: 100%;
+        height: 100%;
+        min-width: 214px;
+        padding-left: 4px;
+      }
+      .nut-searchbar__input-clear {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        right: 0;
+        width: 16px;
+        height: 16px;
+        margin-top: -8px;
+        margin-right: 10px;
+        & .nut-searchbar__nut-icon-mask-close {
+          color: rgb(204, 204, 204);
+          &:hover {
+            cursor: pointer;
+            color: rgb(104, 104, 104);
+          }
+        }
+      }
+    }
+
+    .nut-searchbar__iptleft-search-icon {
+      margin-right: 6px;
+      width: 14px;
+      height: 14px;
+    }
+
+    .nut-searchbar__iptright-sarch-icon {
+      margin-right: 12px;
+    }
+
+    .nut-searchbar__input-bar {
+      width: 100%;
+      height: 36px;
+      flex: 1;
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+      border-color: transparent;
+      border-radius: 16px;
+      outline: none;
+      font-size: 14px;
+    }
+  }
+
+  &__left-search-icon {
+    margin-right: 8px;
+  }
+
+  &__search-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__right-search-icon {
+    margin-left: 16px;
+    font-size: 14px;
+    color: $searchbar-right-out-color;
+  }
+}

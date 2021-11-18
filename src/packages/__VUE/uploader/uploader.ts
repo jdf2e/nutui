@@ -32,7 +32,7 @@ export class Uploader {
       );
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
-          if (xhr.status === options.xhrState) {
+          if (xhr.status == options.xhrState) {
             options.onSuccess?.(xhr.responseText, options);
           } else {
             options.onFailure?.(xhr.responseText, options);
@@ -63,7 +63,7 @@ export class Uploader {
       formData: options.formData,
       name: options.name,
       success(response: { errMsg: any; statusCode: number; data: string }) {
-        if (options.xhrState === response.statusCode) {
+        if (options.xhrState == response.statusCode) {
           options.onSuccess?.(response, options);
         } else {
           options.onFailure?.(response, options);

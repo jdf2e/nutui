@@ -510,6 +510,17 @@
           "show": true,
           "taro": true,
           "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "SearchBar",
+          "type": "component",
+          "cName": "搜索栏",
+          "desc": "搜索栏",
+          "sort": 23,
+          "show": true,
+          "taro": true,
+          "author": "zongyue3"
         }
       ]
     },
@@ -541,36 +552,14 @@
         },
         {
           "version": "3.0.0",
-          "name": "Tab",
-          "sort": 1,
-          "cName": "标签组件",
-          "type": "component",
-          "show": false,
-          "exportEmpty": true,
-          "taro": false,
-          "desc": "标签组件",
-          "author": "zhenyulei"
-        },
-        {
-          "name": "TabPanel",
-          "sort": 2,
-          "cName": "标签组件",
-          "type": "component",
-          "show": false,
-          "taro": true,
-          "exportEmpty": true,
-          "desc": "标签组件",
-          "author": "zhenyulei"
-        },
-        {
-          "version": "3.0.0",
           "name": "Menu",
           "sort": 2,
           "cName": "菜单组件",
           "type": "component",
-          "show": false,
+          "taro":true,
+          "show": true,
           "desc": "下拉菜单组件",
-          "author": "vickyYE"
+          "author": "yangjinjun3"
         },
         {
           "version": "3.0.0",
@@ -582,7 +571,7 @@
           "exportEmpty": true,
           "show": false,
           "desc": "下拉菜单组件",
-          "author": "vickyYE"
+          "author": "yangjinjun3"
         },
         {
           "version": "3.0.0",
@@ -957,6 +946,17 @@
           "show": false,
           "exportEmpty": true,
           "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Sku",
+          "type": "component",
+          "cName": "商品规格选择",
+          "desc": "商品规格选择",
+          "sort": 1,
+          "show": true,
+          "author": "yangxiaolu3"
         }
       ]
     }

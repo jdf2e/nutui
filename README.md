@@ -1,7 +1,7 @@
 # NutUI 3
 ![npm version](https://img.shields.io/npm/v/@nutui/nutui.svg)  [![Build Status](https://api.travis-ci.org/jdf2e/nutui.svg?branch=master)](https://github.com/jdf2e/nutui/) [![Coverage Status](https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master)](https://coveralls.io/github/jdf2e/nutui?branch=master) ![license](https://img.shields.io/npm/l/@nutui/nutui.svg)
  
-京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）
+京东风格的轻量级移动端 Vue2、Vue3 组件库（支持多端小程序开发）
     
 ![NutUI](https://img14.360buyimg.com/imagetools/s200x200_jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png)
 

@@ -1,9 +1,7 @@
 <template>
   <view :class="classes" :style="getStyle()">
-    <view class="nut-tag">
-      <slot></slot>
-      <nut-icon class="nut-tag--close" v-if="closeable" name="close" size="12" @click="onClose"></nut-icon>
-    </view>
+    <slot></slot>
+    <nut-icon class="nut-tag--close" v-if="closeable" name="close" size="12" @click="onClose"></nut-icon>
   </view>
 </template>
 
@@ -15,8 +13,8 @@ export type TagType = 'primary' | 'success' | 'danger' | 'warning';
 
 export default create({
   props: {
-    color: String,
-    textColor: String,
+    color: { type: String, default: '' },
+    textColor: { type: String, default: '' },
     type: {
       type: String as PropType<TagType>,
       default: 'default'
