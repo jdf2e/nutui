@@ -1,0 +1,36 @@
+.nut-countup {
+  &__list {
+    display: inline-flex;
+    height: 32px;
+    overflow: hidden;
+  }
+  &__listitem {
+    height: 32px;
+    overflow: hidden;
+    font-size: 18px;
+    color: #000;
+    font-weight: bold;
+  }
+  &__number,
+  &__separator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    span {
+      height: 32px;
+      line-height: 32px;
+    }
+  }
+}
+// 自定义样式
+.custom-coutup {
+  .nut-countup__listitem--number {
+    margin: 0 1px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #031f63;
+  }
+  .nut-countup__number {
+    width: 24px;
+  }
+}
