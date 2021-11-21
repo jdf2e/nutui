@@ -1,7 +1,15 @@
 <template>
   <view :class="classes" v-show="state.showWrapper">
+    <div
+      v-show="state.isShowPlaceholderElement"
+      @click="handleClickOutside"
+      class="placeholder-element"
+      :style="{ height: parent.offset.value + 'px' }"
+    >
+    </div>
     <nut-popup
       :style="{ top: parent.offset.value + 'px' }"
+      :overlayStyle="{ top: parent.offset.value + 'px' }"
       v-bind="$attrs"
       v-model:visible="state.showPopup"
       position="top"
@@ -75,7 +83,8 @@ export default create({
     const state = reactive({
       showPopup: false,
       transition: true,
-      showWrapper: false
+      showWrapper: false,
+      isShowPlaceholderElement: false
     });
 
     const useParent: any = () => {
@@ -111,6 +120,7 @@ export default create({
       }
 
       state.showPopup = show;
+      state.isShowPlaceholderElement = show;
       // state.transition = !options.immediate;
 
       if (show) {
@@ -130,6 +140,7 @@ export default create({
 
     const onClick = (option: MenuItemOption) => {
       state.showPopup = false;
+      state.isShowPlaceholderElement = false;
 
       if (option.value !== props.modelValue) {
         emit('update:modelValue', option.value);
@@ -139,6 +150,11 @@ export default create({
 
     const handleClose = () => {
       state.showWrapper = false;
+      state.isShowPlaceholderElement = false;
+    };
+
+    const handleClickOutside = () => {
+      state.showPopup = false;
     };
 
     return {
@@ -148,7 +164,8 @@ export default create({
       parent,
       toggle,
       onClick,
-      handleClose
+      handleClose,
+      handleClickOutside
     };
   }
 });

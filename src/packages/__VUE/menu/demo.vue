@@ -94,9 +94,3 @@ export default createDemo({
   }
 });
 </script>
-
-<style>
-.nut-overflow-hidden {
-  overflow: inherit !important;
-}
-</style>

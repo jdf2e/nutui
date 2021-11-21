@@ -27,10 +27,20 @@
 
 .nut-menu__overlay {
   position: absolute;
+  top: auto !important;
 }
 
 .nut-menu__pop {
   transition: all 0 ease 0;
   transform: none;
   top: auto !important;
+}
+
+.placeholder-element {
+  position: fixed;
+  top: -$nut-menu-bar-line-height;
+  left: 0;
+  right: 0;
+  z-index: $nut-menu-bar-opened-z-index;
+  background-color: transparent;
 }
