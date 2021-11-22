@@ -146,7 +146,6 @@ export default {
 | disabled         | 是否禁用菜单     | Boolean | false                |
 | cols         | 可以设置一行展示多少列 options     | Number | 1                |
 | title-icon         | 自定义标题图标     | String | 'down-arrow'                |
-| is-title-icon-transform         | 标题图标是否带有动画     | Boolean | true                |
 
 ### MenuItem Events
 

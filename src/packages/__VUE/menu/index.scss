@@ -20,7 +20,7 @@
       color: $nut-menu-item-disabled-color;
     }
 
-    .transform {
+    .nut-menu__title-icon {
       transition: all 0.2s linear;
     }
 
@@ -37,7 +37,7 @@
         padding-right: $nut-menu-title-text-padding-right;
       }
 
-      &.active .transform {
+      &.active .nut-menu__title-icon {
         transform: rotate(180deg);
       }
     }

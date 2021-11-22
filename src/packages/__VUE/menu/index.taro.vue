@@ -10,12 +10,7 @@
         >
           <view class="nut-menu__title" :class="{ active: item.state.showPopup }">
             <view class="nut-menu__title-text">{{ item.renderTitle() }}</view>
-            <nut-icon
-              :name="item.titleIcon"
-              size="10"
-              class="nut-menu__title-icon"
-              :class="{ transform: item.isTitleIconTransform }"
-            ></nut-icon>
+            <nut-icon :name="item.titleIcon" size="10" class="nut-menu__title-icon"></nut-icon>
           </view>
         </view>
       </template>

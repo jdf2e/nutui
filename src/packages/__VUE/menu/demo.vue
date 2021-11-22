@@ -1,5 +1,5 @@
 <template>
-  <div class="demo" :style="{ 'padding-left': 0, height: 'auto', 'padding-right': 0, overflow: 'inherit' }">
+  <div class="demo" :style="{ 'padding-left': 0, 'padding-right': 0 }">
     <h2>基础用法</h2>
     <nut-menu>
       <nut-menu-item v-model="state.value1" :options="state.options1" />

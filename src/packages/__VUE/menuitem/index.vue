@@ -68,10 +68,6 @@ export default create({
     titleIcon: {
       type: String,
       default: 'down-arrow'
-    },
-    isTitleIconTransform: {
-      type: Boolean,
-      default: true
     }
   },
   components: {
