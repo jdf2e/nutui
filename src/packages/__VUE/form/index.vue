@@ -6,7 +6,7 @@
   </form>
 </template>
 <script lang="ts">
-import { isFunction, isPromise } from '@/packages/utils/util';
+import { isPromise } from '@/packages/utils/util';
 import { computed, provide, reactive, toRefs, VNode, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('form');
@@ -14,6 +14,10 @@ import { FormItemRule } from '../formitem/types';
 export type FormRule = {
   prop: string;
   rules: FormItemRule[];
+};
+export type ErrorMessage = {
+  prop: string;
+  message: string;
 };
 export default create({
   props: {
@@ -61,49 +65,73 @@ export default create({
       });
       return task;
     };
-    const tipMessage = (prop: string, message: string) => {
-      console.log(prop, message);
-      formErrorTip.value[prop] = message;
+
+    const tipMessage = (errorMsg: ErrorMessage) => {
+      formErrorTip.value[errorMsg.prop] = errorMsg.message;
+    };
+
+    const checkRule = (item: FormRule): Promise<ErrorMessage | boolean> => {
+      const { rules, prop } = item;
+
+      const _Promise = (errorMsg: ErrorMessage): Promise<ErrorMessage> => {
+        return new Promise((resolve, reject) => {
+          tipMessage(errorMsg);
+          resolve(errorMsg);
+        });
+      };
+
+      const value = props.modelValue[prop];
+      // clear tips
+      tipMessage({ prop, message: '' });
+
+      while (rules.length) {
+        const { required, validator, message } = rules.shift() as FormItemRule;
+        const errorMsg = { prop, message };
+        if (required) {
+          if (!value) {
+            return _Promise(errorMsg);
+          }
+        }
+        if (validator) {
+          const result = validator(value);
+          if (isPromise(result)) {
+            return new Promise((r, j) => {
+              result.then((res) => {
+                if (!res) {
+                  tipMessage(errorMsg);
+                  r(errorMsg);
+                } else {
+                  r(true);
+                }
+              });
+            });
+          } else {
+            if (!result) {
+              return _Promise(errorMsg);
+            }
+          }
+        }
+      }
+      return Promise.resolve(true);
     };
 
     const validate = () => {
       return new Promise((resolve, reject) => {
         let task = findFormItem(slots.default());
-        let error = 0;
-        task.forEach(({ rules, prop }: FormRule) => {
-          let value = props.modelValue[prop];
-          tipMessage(prop, '');
-          for (let index = 0; index < rules.length; index++) {
-            const { required, validator, message } = rules[index];
-            if (required) {
-              if (!value) {
-                error++;
-                tipMessage(prop, message);
-                return;
-              }
-            }
-            if (validator) {
-              let result = validator(value);
-              if (isPromise(result)) {
-                result.then((res) => {
-                  if (!res) {
-                    error++;
-                    tipMessage(prop, message);
-                    return;
-                  }
-                });
-              } else {
-                if (!result) {
-                  error++;
-                  tipMessage(prop, message);
-                  return;
-                }
-              }
-            }
-          }
+
+        let errors = task.map((item) => {
+          return checkRule(item);
         });
-        // 控制异步的校验，bug
-        resolve(!error);
+
+        Promise.all(errors).then((errorRes) => {
+          errorRes = errorRes.filter((item) => item != true);
+          const res = { valid: true, errors: [] };
+          if (errorRes.length) {
+            res.valid = false;
+            res.errors = errorRes as any;
+          }
+          resolve(res);
+        });
       });
     };
     const onSubmit = () => {

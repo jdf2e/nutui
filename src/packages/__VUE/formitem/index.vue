@@ -1,16 +1,21 @@
 <template>
-  <nut-cell class="nut-form-item" :class="{ error: parent[prop] }">
-    <view class="nut-cell__title nut-form-item__label" v-if="label" :class="{ required: required }">{{ label }}</view>
-    <view class="nut-cell__value nut-form-item__body">
+  <nut-cell class="nut-form-item" :class="{ error: parent[prop], line: showError }">
+    <view class="nut-cell__title nut-form-item__label" :style="labelStyle" v-if="label" :class="{ required: required }">
+      {{ label }}</view
+    >
+    <view class="nut-cell__value nut-form-item__body" :style="bodyStyle">
       <view class="nut-form-item__body__slots">
         <slot></slot>
       </view>
-      <view class="nut-form-item__body__tips" v-if="parent[prop]">{{ parent[prop] }}</view>
+      <view class="nut-form-item__body__tips" :style="errorMessageStyle" v-if="parent[prop] && showErrorMessage">
+        {{ parent[prop] }}</view
+      >
     </view>
   </nut-cell>
 </template>
 <script lang="ts">
-import { inject, PropType, ref } from 'vue';
+import { pxCheck } from '@/packages/utils/pxCheck';
+import { computed, inject, PropType, ref } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('form-item');
 import { FormItemRule } from './types';
@@ -35,13 +40,29 @@ export default create({
       type: Boolean,
       default: false
     },
+    showErrorMessage: {
+      type: Boolean,
+      default: true
+    },
+    showError: {
+      type: Boolean,
+      default: true
+    },
     labelWidth: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
     labelAlign: {
       type: String,
-      default: ''
+      default: 'left'
+    },
+    errorMessageAlign: {
+      type: String,
+      default: 'left'
+    },
+    bodyAlign: {
+      type: String,
+      default: 'left'
     }
   },
   components: {},
@@ -49,7 +70,25 @@ export default create({
 
   setup(props, { emit }) {
     const parent = inject('formErrorTip') as any;
-    return { parent };
+
+    const labelStyle = computed(() => {
+      return {
+        width: pxCheck(props.labelWidth),
+        textAlign: props.labelAlign
+      };
+    });
+    const bodyStyle = computed(() => {
+      return {
+        textAlign: props.bodyAlign
+      };
+    });
+    const errorMessageStyle = computed(() => {
+      return {
+        textAlign: props.errorMessageAlign
+      };
+    });
+
+    return { parent, labelStyle, bodyStyle, errorMessageStyle };
   }
 });
 </script>
