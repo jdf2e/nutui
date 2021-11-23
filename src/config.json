@@ -556,7 +556,7 @@
           "sort": 2,
           "cName": "菜单组件",
           "type": "component",
-          "taro":true,
+          "taro": true,
           "show": true,
           "desc": "下拉菜单组件",
           "author": "yangjinjun3"
@@ -871,6 +871,29 @@
           "show": true,
           "taro": true,
           "author": "liqiong"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Form",
+          "type": "component",
+          "cName": "表单",
+          "desc": "1",
+          "sort": 21,
+          "show": true,
+          "taro": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "FormItem",
+          "type": "component",
+          "cName": "表单Item",
+          "desc": "表单Item",
+          "sort": 22,
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "author": "richard1015"
         }
       ]
     },
