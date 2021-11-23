@@ -133,6 +133,12 @@
     padding: 0 $padding-xs;
     font-size: $font-size-1;
   }
+  &--mini {
+    height: $button-mini-height;
+    line-height: 1.2;
+    padding: 0 $padding-xs;
+    font-size: $font-size-1;
+  }
 
   &--block {
     display: block;
