@@ -360,10 +360,28 @@ $tabs-vertical-titles-item-height: 40px !default;
 $tabs-vertical-titles-item-active-line-height: 14px !default;
 $tabs-vertical-titles-width: 100px !default;
 
+// menu
+$nut-menu-bar-line-height: 46px !default;
+$nut-menu-bar-border-bottom-color: #eaf0fb !default;
+$nut-menu-bar-opened-z-index: 2001 !default;
+$nut-menu-item-disabled-color: #969799 !default;
+$nut-menu-title-text-padding-left: 8px !default;
+$nut-menu-title-text-padding-right: 8px !default;
+$nut-menu-item-content-padding: 12px 24px !default;
+$nut-menu-item-content-max-height: 214px !default;
+$nut-menu-item-option-padding-top: 12px !default;
+$nut-menu-item-option-padding-bottom: 12px !default;
+$nut-menu-item-option-i-margin-right: 6px !default;
+
 // searchbar
 $searchbar-background: $white !default;
 $searchbar-input-background: #f7f7f7 !default;
 $searchbar-right-out-color: $black !default;
+
+// form
+$form-item-error-line-color: $primary-color !default;
+$form-item-required-color: $primary-color !default;
+$form-item-error-message-color: $primary-color !default;
 
 // sku
 $sku-item-border: 1px solid $primary-color;
