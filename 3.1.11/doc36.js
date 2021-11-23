@@ -1,147 +1,128 @@
-import{e as a,o as n,G as t}from"./vendor.js";const l={class:"markdown-body"},p=t(`<h1>Popover \u6C14\u6CE1\u5F39\u51FA\u6846</h1><h3>\u4ECB\u7ECD</h3><p>\u70B9\u51FB\u6216\u5728\u5143\u7D20\u4E0A\u60AC\u505C\u9F20\u6807\uFF0C\u5F39\u51FA\u6C14\u6CE1\u5361\u7247\u6D6E\u5C42\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript">
-<span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
-<span class="hljs-comment">// vue</span>
-<span class="hljs-keyword">import</span> { Popover } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
-<span class="hljs-comment">// taro</span>
-<span class="hljs-keyword">import</span> { Popover } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui-taro&#39;</span>;
+import{e as a,o as n,G as t}from"./vendor.js";const l={class:"markdown-body"},p=t(`<h1>Picker \u9009\u62E9\u5668</h1><h3>\u4ECB\u7ECD</h3><p>\u63D0\u4F9B\u591A\u4E2A\u9009\u9879\u96C6\u5408\u4F9B\u7528\u6237\u9009\u62E9\u5176\u4E2D\u4E00\u9879\u3002</p><h2>\u5B89\u88C5</h2><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
+<span class="hljs-keyword">import</span> { Picker,Popup } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
 
 <span class="hljs-keyword">const</span> app = createApp();
-app.use(Popover);
+app.use(Picker);
+app.use(Popup);
+</code></pre><h2>\u4EE3\u7801\u6F14\u793A</h2><h3>\u57FA\u7840\u7528\u6CD5</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;\u8BF7\u9009\u62E9\u57CE\u5E02&quot;</span> <span class="hljs-attr">:desc</span>=<span class="hljs-string">&quot;desc&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;open&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-cell</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nut-picker</span>
+    <span class="hljs-attr">v-model:visible</span>=<span class="hljs-string">&quot;show&quot;</span>
+    <span class="hljs-attr">:list-data</span>=<span class="hljs-string">&quot;listData&quot;</span>
+    <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;\u57CE\u5E02\u9009\u62E9&quot;</span>
+    @<span class="hljs-attr">confirm</span>=<span class="hljs-string">&quot;confirm&quot;</span> 
+&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-picker</span>&gt;</span>
+</code></pre><pre><code class="language-javascript">&lt;script&gt;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> createDemo({
+  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params">props, { emit }</span>)</span> {
+    <span class="hljs-keyword">const</span> show = ref(<span class="hljs-literal">false</span>);
+    <span class="hljs-keyword">const</span> listData = [
+      <span class="hljs-string">&#39;\u5357\u4EAC\u5E02&#39;</span>,
+      <span class="hljs-string">&#39;\u65E0\u9521\u5E02&#39;</span>,
+      <span class="hljs-string">&#39;\u6D77\u5317\u85CF\u65CF\u81EA\u6CBB\u533A&#39;</span>,
+      <span class="hljs-string">&#39;\u5317\u4EAC\u5E02&#39;</span>,
+      <span class="hljs-string">&#39;\u8FDE\u4E91\u6E2F\u5E02&#39;</span>,
+      <span class="hljs-string">&#39;\u6D59\u6C5F\u5E02&#39;</span>,
+      <span class="hljs-string">&#39;\u6C5F\u82CF\u5E02&#39;</span>
+    ];
 
-</code></pre><h3>\u4EE3\u7801\u5B9E\u4F8B</h3><h3>\u57FA\u672C\u7528\u6CD5</h3><p>Popover \u652F\u6301\u660E\u6717\u548C\u6697\u9ED1\u4E24\u79CD\u98CE\u683C\uFF0C\u9ED8\u8BA4\u4E3A\u660E\u6717\u98CE\u683C\uFF0C\u5C06 theme \u5C5E\u6027\u8BBE\u7F6E\u4E3A dark \u53EF\u5207\u6362\u4E3A\u6697\u9ED1\u98CE\u683C\u3002</p><pre><code class="language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">nut-popover</span>
-      <span class="hljs-attr">:visible</span>=<span class="hljs-string">&quot;visible&quot;</span>
-      <span class="hljs-attr">:list</span>=<span class="hljs-string">&quot;List&quot;</span>
-      @<span class="hljs-attr">open</span>=<span class="hljs-string">&quot;open&quot;</span>
-      @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;close&quot;</span>
-    &gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">reference</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nut-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">&quot;square&quot;</span>&gt;</span>\u660E\u6717\u98CE\u683C<span class="hljs-tag">&lt;/<span class="hljs-name">nut-button</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nut-popover</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-popover</span>
-      <span class="hljs-attr">:visible</span>=<span class="hljs-string">&quot;visible&quot;</span>
-      <span class="hljs-attr">theme</span>=<span class="hljs-string">&quot;dark&quot;</span>
-      <span class="hljs-attr">:list</span>=<span class="hljs-string">&quot;List&quot;</span>
-      @<span class="hljs-attr">open</span>=<span class="hljs-string">&quot;open&quot;</span>
-      @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;close&quot;</span>
-    &gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">reference</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nut-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">&quot;square&quot;</span>&gt;</span>\u6697\u9ED1\u98CE\u683C<span class="hljs-tag">&lt;/<span class="hljs-name">nut-button</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nut-popover</span>&gt;</span>
-</code></pre><pre><code class="language-javascript">
-  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span>{
-  <span class="hljs-keyword">const</span> visible = ref(<span class="hljs-literal">false</span>);
-  <span class="hljs-keyword">const</span> List =  [
-    {<span class="hljs-attr">name</span>: <span class="hljs-string">&#39;\u9009\u9879\u4E00&#39;</span>},
-    {<span class="hljs-attr">name</span>: <span class="hljs-string">&#39;\u9009\u9879\u4E8C&#39;</span>},
-    {<span class="hljs-attr">name</span>: <span class="hljs-string">&#39;\u9009\u9879\u4E09&#39;</span>}];
+    <span class="hljs-keyword">return</span> {
+      listData,
+      <span class="hljs-attr">open</span>: <span class="hljs-function">(<span class="hljs-params">index</span>) =&gt;</span> {
+        show.value = <span class="hljs-literal">true</span>;
+      },
+      <span class="hljs-attr">confirm</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        desc.value = res;
+      }
+    };
   }
+});
+&lt;/script&gt;
+</code></pre><h3>\u591A\u5217\u6837\u5F0F</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;\u8BF7\u9009\u62E9\u65F6\u95F4&quot;</span> <span class="hljs-attr">:desc</span>=<span class="hljs-string">&quot;desc&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;open&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-cell</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nut-picker</span>
+    <span class="hljs-attr">v-model:visible</span>=<span class="hljs-string">&quot;show&quot;</span>
+    <span class="hljs-attr">:list-data</span>=<span class="hljs-string">&quot;listData&quot;</span>
+    <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;\u591A\u5217\u9009\u62E9&quot;</span>
+    @<span class="hljs-attr">confirm</span>=<span class="hljs-string">&quot;confirm&quot;</span>
+    @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;close&quot;</span>
+&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-picker</span>&gt;</span>
+</code></pre><pre><code class="language-javascript">&lt;script&gt;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> createDemo({
+  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params">props, { emit }</span>)</span> {
+    <span class="hljs-keyword">const</span> show = ref(<span class="hljs-literal">false</span>);
+    <span class="hljs-keyword">const</span> listData = [
+      {
+        <span class="hljs-attr">values</span>: [<span class="hljs-string">&#39;\u5468\u4E00&#39;</span>, <span class="hljs-string">&#39;\u5468\u4E8C&#39;</span>, <span class="hljs-string">&#39;\u5468\u4E09&#39;</span>, <span class="hljs-string">&#39;\u5468\u56DB&#39;</span>, <span class="hljs-string">&#39;\u5468\u4E94&#39;</span>],
+        <span class="hljs-attr">defaultIndex</span>: <span class="hljs-number">2</span>
+      },
+      <span class="hljs-comment">// \u7B2C\u4E8C\u5217</span>
+      {
+        <span class="hljs-attr">values</span>: [<span class="hljs-string">&#39;\u4E0A\u5348&#39;</span>, <span class="hljs-string">&#39;\u4E0B\u5348&#39;</span>, <span class="hljs-string">&#39;\u665A\u4E0A&#39;</span>],
+        <span class="hljs-attr">defaultIndex</span>: <span class="hljs-number">1</span>
+      }
+    ];
 
-  <span class="hljs-keyword">const</span> open = <span class="hljs-function">() =&gt;</span>{
-      visible.value = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">return</span> {
+      listData,
+      <span class="hljs-attr">open</span>: <span class="hljs-function">(<span class="hljs-params">index</span>) =&gt;</span> {
+        show.value = <span class="hljs-literal">true</span>;
+      },
+      <span class="hljs-attr">confirm</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        desc.value = res.join(<span class="hljs-string">&#39; &#39;</span>);
+      }
+    };
   }
-  <span class="hljs-keyword">const</span> close = <span class="hljs-function">() =&gt;</span>{
-      visible.value = <span class="hljs-literal">false</span>;
+});
+&lt;/script&gt;
+</code></pre><h3>\u591A\u7EA7\u8054\u52A8</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;\u5730\u5740&quot;</span> <span class="hljs-attr">:desc</span>=<span class="hljs-string">&quot;desc&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;open&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-cell</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nut-picker</span>
+    <span class="hljs-attr">v-model:visible</span>=<span class="hljs-string">&quot;show&quot;</span>
+    <span class="hljs-attr">:list-data</span>=<span class="hljs-string">&quot;listData&quot;</span>
+    <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;\u5730\u5740\u9009\u62E9&quot;</span>
+    @<span class="hljs-attr">confirm</span>=<span class="hljs-string">&quot;confirm&quot;</span> 
+&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-picker</span>&gt;</span>
+</code></pre><pre><code class="language-javascript">&lt;script&gt;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> createDemo({
+  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params">props, { emit }</span>)</span> {
+    <span class="hljs-keyword">const</span> show = ref(<span class="hljs-literal">false</span>);
+    <span class="hljs-keyword">const</span> listData = [
+      {
+        <span class="hljs-attr">text</span>: <span class="hljs-string">&#39;\u6D59\u6C5F&#39;</span>,
+        <span class="hljs-attr">children</span>: [
+          {
+            <span class="hljs-attr">text</span>: <span class="hljs-string">&#39;\u676D\u5DDE&#39;</span>,
+            <span class="hljs-attr">children</span>: [{ <span class="hljs-attr">text</span>: <span class="hljs-string">&#39;\u897F\u6E56\u533A&#39;</span> }, { <span class="hljs-attr">text</span>: <span class="hljs-string">&#39;\u4F59\u676D\u533A&#39;</span> }]
+          },
+          {
+            <span class="hljs-attr">text</span>: <span class="hljs-string">&#39;\u6E29\u5DDE&#39;</span>,
+            <span class="hljs-attr">children</span>: [{ <span class="hljs-attr">text</span>: <span class="hljs-string">&#39;\u9E7F\u57CE\u533A&#39;</span> }, { <span class="hljs-attr">text</span>: <span class="hljs-string">&#39;\u74EF\u6D77\u533A&#39;</span> }]
+          }
+        ]
+      },
+      {
+        <span class="hljs-attr">text</span>: <span class="hljs-string">&#39;\u798F\u5EFA&#39;</span>,
+        <span class="hljs-attr">children</span>: [
+          {
+            <span class="hljs-attr">text</span>: <span class="hljs-string">&#39;\u798F\u5DDE&#39;</span>,
+            <span class="hljs-attr">children</span>: [{ <span class="hljs-attr">text</span>: <span class="hljs-string">&#39;\u9F13\u697C\u533A&#39;</span> }, { <span class="hljs-attr">text</span>: <span class="hljs-string">&#39;\u53F0\u6C5F\u533A&#39;</span> }]
+          },
+          {
+            <span class="hljs-attr">text</span>: <span class="hljs-string">&#39;\u53A6\u95E8&#39;</span>,
+            <span class="hljs-attr">children</span>: [{ <span class="hljs-attr">text</span>: <span class="hljs-string">&#39;\u601D\u660E\u533A&#39;</span> }, { <span class="hljs-attr">text</span>: <span class="hljs-string">&#39;\u6D77\u6CA7\u533A&#39;</span> }]
+          }
+        ]
+      }
+    ];
+
+    <span class="hljs-keyword">return</span> {
+      listData,
+      <span class="hljs-attr">open</span>: <span class="hljs-function">(<span class="hljs-params">index</span>) =&gt;</span> {
+        show.value = <span class="hljs-literal">true</span>;
+      },
+      <span class="hljs-attr">confirm</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        desc.value = res.join(<span class="hljs-string">&#39; &#39;</span>);
+      }
+    };
   }
-
-</code></pre><h3>\u9009\u9879\u914D\u7F6E</h3><pre><code class="language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">nut-popover</span>
-      <span class="hljs-attr">:visible</span>=<span class="hljs-string">&quot;visible&quot;</span>
-      <span class="hljs-attr">theme</span>=<span class="hljs-string">&quot;dark&quot;</span>
-      <span class="hljs-attr">:list</span>=<span class="hljs-string">&quot;List&quot;</span>
-      @<span class="hljs-attr">open</span>=<span class="hljs-string">&quot;open&quot;</span>
-      @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;close&quot;</span>
-    &gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">reference</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nut-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">&quot;square&quot;</span>&gt;</span>\u5C55\u793A\u56FE\u6807<span class="hljs-tag">&lt;/<span class="hljs-name">nut-button</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nut-popover</span>&gt;</span>
-
-</code></pre><pre><code class="language-javascript">
-  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-keyword">const</span> visible = ref(<span class="hljs-literal">false</span>);
-    <span class="hljs-keyword">const</span> List = [
-      {<span class="hljs-attr">name</span>: <span class="hljs-string">&#39;\u9009\u9879\u4E00&#39;</span>,<span class="hljs-attr">icon</span>: <span class="hljs-string">&#39;my2&#39;</span>},
-      {<span class="hljs-attr">name</span>: <span class="hljs-string">&#39;\u9009\u9879\u4E8C&#39;</span>,<span class="hljs-attr">icon</span>: <span class="hljs-string">&#39;cart2&#39;</span>},
-      {<span class="hljs-attr">name</span>: <span class="hljs-string">&#39;\u9009\u9879\u4E09&#39;</span>,<span class="hljs-attr">icon</span>: <span class="hljs-string">&#39;location2&#39;</span>}
-    ],
-
-    <span class="hljs-keyword">const</span> open = <span class="hljs-function">() =&gt;</span>{
-      visible.value =   <span class="hljs-literal">true</span>;
-    }
-    <span class="hljs-keyword">const</span> close = <span class="hljs-function">() =&gt;</span>{
-      visible.value =  <span class="hljs-literal">false</span>;
-    }
-  }
-
-
-</code></pre><p>\u5728 list \u6570\u7EC4\u4E2D\uFF0C\u53EF\u4EE5\u901A\u8FC7 disabled \u5B57\u6BB5\u6765\u7981\u7528\u67D0\u4E2A\u9009\u9879\u3002</p><pre><code class="language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">nut-popover</span>
-      <span class="hljs-attr">:visible</span>=<span class="hljs-string">&quot;visible&quot;</span>
-      <span class="hljs-attr">:list</span>=<span class="hljs-string">&quot;List&quot;</span>
-      @<span class="hljs-attr">open</span>=<span class="hljs-string">&quot;open&quot;</span>
-      @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;close&quot;</span>
-    &gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">reference</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nut-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">&quot;square&quot;</span>&gt;</span>\u7981\u7528\u9009\u9879<span class="hljs-tag">&lt;/<span class="hljs-name">nut-button</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nut-popover</span>&gt;</span>
-</code></pre><pre><code class="language-javascript">
-
-  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-keyword">const</span> visible = ref(<span class="hljs-literal">false</span>);
-    <span class="hljs-keyword">const</span> List = [{
-              <span class="hljs-attr">name</span>: <span class="hljs-string">&#39;\u9009\u9879\u4E00&#39;</span>,
-              <span class="hljs-attr">disabled</span>: <span class="hljs-literal">true</span>
-            },
-            {
-              <span class="hljs-attr">name</span>: <span class="hljs-string">&#39;\u9009\u9879\u4E8C&#39;</span>,
-              <span class="hljs-attr">disabled</span>: <span class="hljs-literal">true</span>
-            },
-            {
-              <span class="hljs-attr">name</span>: <span class="hljs-string">&#39;\u9009\u9879\u4E09&#39;</span>
-            }],
-
-    <span class="hljs-keyword">const</span> open = <span class="hljs-function">() =&gt;</span>{
-      visible.value =   <span class="hljs-literal">true</span>;
-    }
-    <span class="hljs-keyword">const</span> close = <span class="hljs-function">() =&gt;</span>{
-      visible.value =  <span class="hljs-literal">false</span>;
-    }
-  }
-
-</code></pre><h3>\u81EA\u5B9A\u4E49\u5185\u5BB9</h3><p>\u5728\u540D\u4E3A content \u63D2\u69FD\u4E2D\u81EA\u5B9A\u4E49\u5185\u5BB9\u3002</p><pre><code class="language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">nut-popover</span> 
-      <span class="hljs-attr">:visible</span>=<span class="hljs-string">&quot;visible&quot;</span>
-      @<span class="hljs-attr">open</span>=<span class="hljs-string">&quot;open&quot;</span>
-      @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;close&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">reference</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nut-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">&quot;square&quot;</span>&gt;</span>\u81EA\u5B9A\u4E49\u5185\u5BB9<span class="hljs-tag">&lt;/<span class="hljs-name">nut-button</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">content</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;self-content&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
-                      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;self-content-item&quot;</span>
-                      <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(item, index) in selfContent&quot;</span>
-                      <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;index&quot;</span>
-                    &gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nut-icon</span> <span class="hljs-attr">:name</span>=<span class="hljs-string">&quot;item.name&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;15&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-icon</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;self-content-desc&quot;</span>&gt;</span>{{ item.desc }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nut-popover</span>&gt;</span>
-</code></pre><h3>\u4F4D\u7F6E\u81EA\u5B9A\u4E49</h3><p>\u652F\u6301 bottom, top, left, right \u56DB\u79CD\u5F39\u51FA\u4F4D\u7F6E\uFF0C\u9ED8\u8BA4\u503C\u4E3A bottom\u3002</p><pre><code class="language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">nut-popover</span>
-      <span class="hljs-attr">:visible</span>=<span class="hljs-string">&quot;visible&quot;</span>
-      <span class="hljs-attr">location</span>=<span class="hljs-string">&quot;top&quot;</span>
-      <span class="hljs-attr">theme</span>=<span class="hljs-string">&quot;dark&quot;</span>
-      <span class="hljs-attr">:list</span>=<span class="hljs-string">&quot;List&quot;</span>
-      @<span class="hljs-attr">open</span>=<span class="hljs-string">&quot;open&quot;</span>
-      @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;close&quot;</span>
-    &gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">reference</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nut-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">&quot;square&quot;</span>&gt;</span>\u5411\u4E0A\u5F39\u51FA<span class="hljs-tag">&lt;/<span class="hljs-name">nut-button</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-popover</span>&gt;</span>
-
-</code></pre><h3>Prop</h3><table><thead><tr><th>\u5B57\u6BB5</th><th>\u8BF4\u660E</th><th>\u7C7B\u578B</th><th>\u9ED8\u8BA4\u503C</th></tr></thead><tbody><tr><td>list</td><td>\u9009\u9879\u5217\u8868</td><td>List[]</td><td>[]</td></tr><tr><td>visible</td><td>\u662F\u5426\u5C55\u793A\u6C14\u6CE1\u5F39\u51FA\u5C42</td><td>boolean</td><td>false</td></tr><tr><td>theme</td><td>\u4E3B\u9898\u98CE\u683C\uFF0C\u53EF\u9009\u503C\u4E3A dark</td><td>string</td><td><code>light</code></td></tr><tr><td>location</td><td>\u5F39\u51FA\u4F4D\u7F6E\uFF0C\u53EF\u9009\u503C\u4E3A top,left,right</td><td>string</td><td><code>bottom</code></td></tr></tbody></table><h3>List \u6570\u636E\u7ED3\u6784</h3><p>List \u5C5E\u6027\u662F\u4E00\u4E2A\u7531\u5BF9\u8C61\u6784\u6210\u7684\u6570\u7EC4\uFF0C\u6570\u7EC4\u4E2D\u7684\u6BCF\u4E2A\u5BF9\u8C61\u914D\u7F6E\u4E00\u5217\uFF0C\u5BF9\u8C61\u53EF\u4EE5\u5305\u542B\u4EE5\u4E0B\u503C\uFF1A</p><table><thead><tr><th>\u952E\u540D</th><th>\u8BF4\u660E</th><th>\u7C7B\u578B</th><th>\u9ED8\u8BA4\u503C</th></tr></thead><tbody><tr><td>name</td><td>\u9009\u9879\u6587\u5B57</td><td>string</td><td>-</td></tr><tr><td>icon</td><td>nut-icon \u56FE\u6807\u540D\u79F0</td><td>string</td><td>-</td></tr><tr><td>disabled</td><td>\u662F\u5426\u4E3A\u7981\u7528\u72B6\u6001</td><td>boolean</td><td>false</td></tr></tbody></table><h3>Slots</h3><table><thead><tr><th>\u540D\u79F0</th><th>\u8BF4\u660E</th></tr></thead><tbody><tr><td>content</td><td>\u81EA\u5B9A\u4E49\u6C14\u6CE1\u7EC4\u4EF6\u83DC\u5355\u5185\u5BB9</td></tr><tr><td>reference</td><td>\u89E6\u53D1 Popover \u663E\u793A\u7684\u5143\u7D20\u5185\u5BB9</td></tr></tbody></table><h3>Events</h3><table><thead><tr><th>\u540D\u79F0</th><th>\u8BF4\u660E</th></tr></thead><tbody><tr><td>choose</td><td>\u70B9\u51FB\u9009\u9879\u65F6\u89E6\u53D1</td></tr><tr><td>open</td><td>\u6253\u5F00\u83DC\u5355\u65F6\u89E6\u53D1</td></tr><tr><td>close</td><td>\u5173\u95ED\u83DC\u5355\u65F6\u89E6\u53D1</td></tr></tbody></table>`,31),e=[p],i={setup(c,{expose:s}){return s({frontmatter:{}}),(o,r)=>(n(),a("div",l,e))}};export{i as default};
+});
+&lt;/script&gt;
+</code></pre><h2>API</h2><h3>Props</h3><table><thead><tr><th>\u53C2\u6570</th><th>\u8BF4\u660E</th><th>\u7C7B\u578B</th><th>\u9ED8\u8BA4\u503C</th></tr></thead><tbody><tr><td>v-model:visible</td><td>\u662F\u5426\u53EF\u89C1</td><td>Boolean</td><td>false</td></tr><tr><td>title</td><td>\u8BBE\u7F6E\u6807\u9898</td><td>String</td><td>-</td></tr><tr><td>cancel-text</td><td>\u53D6\u6D88\u6309\u94AE\u6587\u6848</td><td>String</td><td>\u53D6\u6D88</td></tr><tr><td>ok-text</td><td>\u786E\u5B9A\u6309\u94AE\u6587\u6848</td><td>String</td><td>\u786E\u5B9A</td></tr><tr><td>list-data</td><td>\u5217\u8868\u6570\u636E</td><td>Array</td><td>-</td></tr><tr><td>default-value-index</td><td>\u521D\u59CB\u9009\u4E2D\u9879\u7684\u7D22\u5F15\uFF0C\u9ED8\u8BA4\u4E3A 0</td><td>number</td><td>0</td></tr><tr><td>teleport</td><td>\u6307\u5B9A\u6302\u8F7D\u8282\u70B9</td><td>String</td><td>\u201Cbody\u201D</td></tr><tr><td>close-on-click-overlay</td><td>\u70B9\u51FB\u8499\u5C42\u662F\u5426\u5173\u95ED\u5BF9\u8BDD\u6846</td><td>Boolean</td><td>false</td></tr><tr><td>lock-scroll</td><td>\u80CC\u666F\u662F\u5426\u9501\u5B9A</td><td>Boolean</td><td>false</td></tr></tbody></table><h3>Events</h3><table><thead><tr><th>\u4E8B\u4EF6\u540D</th><th>\u8BF4\u660E</th><th>\u56DE\u8C03\u53C2\u6570</th></tr></thead><tbody><tr><td>close</td><td>\u5173\u95ED\u5F39\u7A97\u65F6\u89E6\u53D1</td><td>event: Event</td></tr><tr><td>confirm</td><td>\u70B9\u51FB\u786E\u8BA4\u65F6\u5019\u89E6\u53D1</td><td>event: Event</td></tr><tr><td>change</td><td>\u6539\u53D8\u65F6\u89E6\u53D1</td><td>val</td></tr></tbody></table>`,20),c=[p],d={setup(r,{expose:s}){return s({frontmatter:{}}),(h,j)=>(n(),a("div",l,c))}};export{d as default};
