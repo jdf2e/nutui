@@ -1,116 +1,109 @@
-import{e as a,o as t,G as n}from"./vendor.js";const l={class:"markdown-body"},p=n(`<h1>Tabs \u9009\u9879\u5361\u5207\u6362</h1><h3>\u4ECB\u7ECD</h3><p>\u5E38\u7528\u4E8E\u5E73\u7EA7\u533A\u57DF\u5927\u5757\u5185\u5BB9\u7684\u7684\u6536\u7EB3\u548C\u5C55\u73B0\uFF0C\u652F\u6301\u5185\u5D4C\u6807\u7B7E\u5F62\u5F0F\u548C\u6E32\u67D3\u5FAA\u73AF\u6570\u636E\u5F62\u5F0F</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
-<span class="hljs-comment">// vue</span>
-<span class="hljs-keyword">import</span> { Tabs, TabPane } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
-<span class="hljs-comment">// taro</span>
-<span class="hljs-keyword">import</span> { Tabs, TabPane } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui-taro&#39;</span>;
+import{e as a,o as t,G as n}from"./vendor.js";const l={class:"markdown-body"},p=n(`<h1>Tabbar \u6807\u7B7E\u680F</h1><h3>\u4ECB\u7ECD</h3><p>\u5E95\u90E8\u5BFC\u822A\u5E38\u7528\u573A\u666F</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
+<span class="hljs-comment">//vue</span>
+<span class="hljs-keyword">import</span> { Tabbar,TabbarItem } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
+<span class="hljs-comment">//taro</span>
+<span class="hljs-keyword">import</span> { Tabbar,TabbarItem } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui-taro&#39;</span>;
 
 <span class="hljs-keyword">const</span> app = createApp();
-app.use(Tabs);
-app.use(TabPane);
-</code></pre><h3>\u57FA\u7840\u7528\u6CD5</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabs</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;state.tab1value&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabpane</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Tab 1&quot;</span>&gt;</span>
-    Tab 1
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabpane</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabpane</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Tab 2&quot;</span>&gt;</span>
-    Tab 2
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabpane</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabpane</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Tab 3&quot;</span>&gt;</span>
-    Tab 3
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabpane</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabs</span>&gt;</span>
-</code></pre><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { reactive } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
-  <span class="hljs-attr">props</span>: {},
-  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-keyword">const</span> state = reactive({
-      <span class="hljs-attr">tab1value</span>: <span class="hljs-string">&#39;0&#39;</span>,
-      <span class="hljs-attr">tab11value</span>: <span class="hljs-string">&#39;0&#39;</span>,
-      <span class="hljs-attr">tab2value</span>: <span class="hljs-string">&#39;0&#39;</span>,
-      <span class="hljs-attr">tab3value</span>: <span class="hljs-string">&#39;0&#39;</span>,
-      <span class="hljs-attr">tab4value</span>: <span class="hljs-string">&#39;0&#39;</span>,
-      <span class="hljs-attr">tab5value</span>: <span class="hljs-string">&#39;0&#39;</span>,
-      <span class="hljs-attr">tab6value</span>: <span class="hljs-string">&#39;0&#39;</span>,
-      <span class="hljs-attr">tab7value</span>: <span class="hljs-string">&#39;c1&#39;</span>,
-      <span class="hljs-attr">list3</span>: <span class="hljs-built_in">Array</span>.from(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">2</span>).keys()),
-      <span class="hljs-attr">list4</span>: <span class="hljs-built_in">Array</span>.from(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">10</span>).keys()),
-      <span class="hljs-attr">list5</span>: <span class="hljs-built_in">Array</span>.from(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">2</span>).keys()),
-      <span class="hljs-attr">list6</span>: [
-        {
-          <span class="hljs-attr">title</span>: <span class="hljs-string">&#39;\u81EA\u5B9A\u4E49 1&#39;</span>,
-          <span class="hljs-attr">paneKey</span>: <span class="hljs-string">&#39;c1&#39;</span>,
-          <span class="hljs-attr">icon</span>: <span class="hljs-string">&#39;dongdong&#39;</span>
-        },
-        {
-          <span class="hljs-attr">title</span>: <span class="hljs-string">&#39;\u81EA\u5B9A\u4E49 2&#39;</span>,
-          <span class="hljs-attr">paneKey</span>: <span class="hljs-string">&#39;c2&#39;</span>,
-          <span class="hljs-attr">icon</span>: <span class="hljs-string">&#39;JD&#39;</span>
-        },
-        {
-          <span class="hljs-attr">title</span>: <span class="hljs-string">&#39;\u81EA\u5B9A\u4E49 3&#39;</span>,
-          <span class="hljs-attr">paneKey</span>: <span class="hljs-string">&#39;c3&#39;</span>
-        }
-      ]
-    });
-    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-      state.list3.push(<span class="hljs-number">999</span>);
-      state.tab3value = <span class="hljs-string">&#39;2&#39;</span>;
-    }, <span class="hljs-number">3000</span>);
+app.use(Tabbar);
+app.use(TabbarItem);
 
-    <span class="hljs-keyword">return</span> { state };
+</code></pre><h3>\u57FA\u7840\u7528\u6CD5</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar</span> @<span class="hljs-attr">tab-switch</span>=<span class="hljs-string">&quot;tabSwitch&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u9996\u9875&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;home&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u5206\u7C7B&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;category&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u53D1\u73B0&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;find&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u8D2D\u7269\u8F66&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;cart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u6211\u7684&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;my&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar</span>&gt;</span>
+</code></pre><pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span> {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tabSwitch</span>(<span class="hljs-params">item: object, index: number</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(item, index);
   }
-};
-</code></pre><h3>\u57FA\u7840\u7528\u6CD5-\u5FAE\u7B11\u66F2\u7EBF</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabs</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;state.tab11value&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;smile&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabpane</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Tab 1&quot;</span>&gt;</span>
-    Tab 1
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabpane</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabpane</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Tab 2&quot;</span>&gt;</span>
-    Tab 2
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabpane</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabpane</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Tab 3&quot;</span>&gt;</span>
-    Tab 3
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabpane</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabs</span>&gt;</span>
-</code></pre><h3>\u901A\u8FC7 pane-key \u5339\u914D</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabs</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;state.tab2value&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabpane</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Tab 1&quot;</span> <span class="hljs-attr">pane-key</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>
-    Tab 1
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabpane</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabpane</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Tab 2&quot;</span> <span class="hljs-attr">pane-key</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">:disabled</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
-    Tab 2
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabpane</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabpane</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Tab 3&quot;</span> <span class="hljs-attr">pane-key</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>
-    Tab 3
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabpane</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabs</span>&gt;</span>
-</code></pre><h3>\u6570\u636E\u5F02\u6B65\u6E32\u67D3 3s</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabs</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;state.tab3value&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabpane</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in state.list3&quot;</span> <span class="hljs-attr">:title</span>=<span class="hljs-string">&quot;&#39;Tab &#39;+ item&quot;</span>&gt;</span>
-    Tab {{item}}
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabpane</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabs</span>&gt;</span>
-</code></pre><h3>\u6570\u91CF\u591A,\u6EDA\u52A8\u64CD\u4F5C</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabs</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;state.tab4value&quot;</span> <span class="hljs-attr">title-scroll</span> <span class="hljs-attr">title-gutter</span>=<span class="hljs-string">&quot;10&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabpane</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in state.list4&quot;</span> <span class="hljs-attr">:title</span>=<span class="hljs-string">&quot;&#39;Tab &#39;+ item&quot;</span>&gt;</span>
-    Tab {{item}}
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabpane</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabs</span>&gt;</span>
-</code></pre><h3>\u5DE6\u53F3\u5E03\u5C40</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabs</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height:300px&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;state.tab5value&quot;</span> <span class="hljs-attr">title-scroll</span> <span class="hljs-attr">direction</span>=<span class="hljs-string">&quot;vertical&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabpane</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in state.list5&quot;</span> <span class="hljs-attr">:title</span>=<span class="hljs-string">&quot;&#39;Tab &#39;+ item&quot;</span>&gt;</span>
-    Tab {{item}}
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabpane</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabs</span>&gt;</span>
-</code></pre><h3>\u5DE6\u53F3\u5E03\u5C40-\u5FAE\u7B11\u66F2\u7EBF</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabs</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height:300px&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;state.tab5value&quot;</span> <span class="hljs-attr">title-scroll</span> <span class="hljs-attr">direction</span>=<span class="hljs-string">&quot;vertical&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabpane</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in state.list5&quot;</span> <span class="hljs-attr">:title</span>=<span class="hljs-string">&quot;&#39;Tab &#39;+ item&quot;</span>&gt;</span>
-    Tab {{item}}
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabpane</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabs</span>&gt;</span>
-</code></pre><h3>\u81EA\u5B9A\u4E49\u6807\u7B7E\u680F</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabs</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;state.tab7value&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-slot:titles</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nut-tabs__titles-item&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;state.tab7value=item.paneKey&quot;</span>
-      <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;{active:state.tab7value==item.paneKey}&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item.paneKey&quot;</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in state.list6&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nut-icon</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;item.icon&quot;</span> <span class="hljs-attr">:name</span>=<span class="hljs-string">&quot;item.icon&quot;</span> /&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nut-tabs__titles-item__text&quot;</span>&gt;</span>{{item.title}}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabpane</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in state.list6&quot;</span> <span class="hljs-attr">:pane-key</span>=<span class="hljs-string">&quot;item.paneKey&quot;</span>&gt;</span>
-    {{item.title}}
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabpane</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabs</span>&gt;</span>
-</code></pre><h2>API</h2><h3>Tabs Props</h3><table><thead><tr><th>\u53C2\u6570</th><th>\u8BF4\u660E</th><th>\u7C7B\u578B</th><th>\u9ED8\u8BA4\u503C</th></tr></thead><tbody><tr><td>v-model</td><td>\u7ED1\u5B9A\u5F53\u524D\u9009\u4E2D\u6807\u7B7E\u7684\u6807\u8BC6\u7B26</td><td>number,string</td><td>0</td></tr><tr><td>color</td><td>\u6807\u7B7E\u9009\u4E2D\u8272</td><td>string</td><td>#1a1a1a</td></tr><tr><td>background</td><td>\u6807\u7B7E\u680F\u80CC\u666F\u989C\u8272</td><td>string</td><td>#f5f5f5</td></tr><tr><td>direction</td><td>\u4F7F\u7528\u6A2A\u7EB5\u65B9\u5411 \u53EF\u9009\u503C horizontal\u3001vertical</td><td>string</td><td>horizontal</td></tr><tr><td>type</td><td>\u9009\u4E2D\u5E95\u90E8\u5C55\u793A\u6837\u5F0F \u53EF\u9009\u503C line\u3001smile</td><td>string</td><td>line</td></tr><tr><td>title-scroll</td><td>\u6807\u7B7E\u680F\u662F\u5426\u53EF\u4EE5\u6EDA\u52A8</td><td>boolean</td><td>false</td></tr><tr><td>ellipsis</td><td>\u662F\u5426\u7701\u7565\u8FC7\u957F\u7684\u6807\u9898\u6587\u5B57</td><td>boolean</td><td>true</td></tr><tr><td>animated-time</td><td>\u5207\u6362\u52A8\u753B\u65F6\u957F,\u5355\u4F4D ms 0\u4EE3\u8868\u65E0\u52A8\u753B</td><td>number,string</td><td>300</td></tr><tr><td>title-gutter</td><td>\u6807\u7B7E\u95F4\u9699</td><td>number,string</td><td>0</td></tr></tbody></table><h2>Tabs Slots</h2><table><thead><tr><th>\u540D\u79F0</th><th>\u8BF4\u660E</th></tr></thead><tbody><tr><td>titles</td><td>\u81EA\u5B9A\u4E49\u5BFC\u822A\u533A\u57DF</td></tr><tr><td>default</td><td>\u81EA\u5B9A\u4E49\u5185\u5BB9</td></tr></tbody></table><h3>Tabpane Props</h3><table><thead><tr><th>\u53C2\u6570</th><th>\u8BF4\u660E</th><th>\u7C7B\u578B</th><th>\u9ED8\u8BA4\u503C</th></tr></thead><tbody><tr><td>title</td><td>\u6807\u9898</td><td>string</td><td></td></tr><tr><td>pane-key</td><td>\u6807\u7B7E Key , \u5339\u914D\u7684\u6807\u8BC6\u7B26</td><td>string</td><td>\u9ED8\u8BA4\u7D22\u5F150,1,2\u2026</td></tr><tr><td>disabled</td><td>\u662F\u5426\u7981\u7528\u6807\u7B7E</td><td>boolean</td><td>false</td></tr></tbody></table><h2>Tabpane Slots</h2><table><thead><tr><th>\u540D\u79F0</th><th>\u8BF4\u660E</th></tr></thead><tbody><tr><td>default</td><td>\u81EA\u5B9A\u4E49\u5185\u5BB9</td></tr></tbody></table><h3>Tabs Events</h3><table><thead><tr><th>\u4E8B\u4EF6\u540D</th><th>\u8BF4\u660E</th><th>\u56DE\u8C03\u53C2\u6570</th></tr></thead><tbody><tr><td>click</td><td>\u70B9\u51FB\u6807\u7B7E\u65F6\u89E6\u53D1</td><td>{title,paneKey,disabled}</td></tr><tr><td>change</td><td>\u5F53\u524D\u6FC0\u6D3B\u7684\u6807\u7B7E\u6539\u53D8\u65F6\u89E6\u53D1</td><td>{title,paneKey,disabled}</td></tr></tbody></table>`,33),e=[p],i={setup(h,{expose:s}){return s({frontmatter:{}}),(r,j)=>(t(),a("div",l,e))}};export{i as default};
+  <span class="hljs-keyword">return</span> {
+    tabSwitch,
+  };
+},
+</code></pre><h3>\u8DEF\u7531\u8DF3\u8F6C</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar</span> @<span class="hljs-attr">tab-switch</span>=<span class="hljs-string">&quot;tabSwitch&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u9996\u9875&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;home&quot;</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/home&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u5206\u7C7B&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;category&quot;</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">&quot;{ path: &#39;/home&#39;, query: { plan: &#39;private&#39; }}&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u53D1\u73B0&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;find&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u8D2D\u7269\u8F66&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;cart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u6211\u7684&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;my&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar</span>&gt;</span>
+</code></pre><h3>\u81EA\u5B9A\u4E49\u56FE\u7247\u94FE\u63A5</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar</span> @<span class="hljs-attr">tab-switch</span>=<span class="hljs-string">&quot;tabSwitch&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u9996\u9875&quot;</span>
+          <span class="hljs-attr">img</span>= <span class="hljs-string">&#39;http://img13.360buyimg.com/uba/jfs/t1/29316/38/1115/3203/5c0f3d61E35d0c7da/9e557f2cb5c9dab6.jpg&#39;</span>
+           <span class="hljs-attr">activeImg</span>=<span class="hljs-string">&#39;http://img20.360buyimg.com/uba/jfs/t1/9996/36/8646/4833/5c0f3d61E7c1b7e0f/c98ad61124172e93.jpg&#39;</span>
+      &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u5206\u7C7B&quot;</span> 
+          <span class="hljs-attr">img</span>=<span class="hljs-string">&quot;http://img12.360buyimg.com/uba/jfs/t1/25443/23/1062/4600/5c0f3d61E2e9f1360/c9b3421fe18614e2.jpg&quot;</span>
+          <span class="hljs-attr">activeImg</span>=<span class="hljs-string">&#39;http://img20.360buyimg.com/uba/jfs/t1/19241/12/1048/8309/5c0f3d61E17ed5a56/c3af0964cade47f8.jpg&#39;</span>
+      &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u53D1\u73B0&quot;</span> 
+          <span class="hljs-attr">img</span>=<span class="hljs-string">&quot;http://img13.360buyimg.com/uba/jfs/t1/10361/35/4713/4643/5c0f3d62E437a3c94/273fd0fb90798f03.jpg&quot;</span>
+          <span class="hljs-attr">activeImg</span>=<span class="hljs-string">&#39;http://img14.360buyimg.com/uba/jfs/t1/26604/35/1073/7896/5c0f3d61Eb9f5f184/5f01c938abe4216d.jpg&#39;</span>
+      &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u8D2D\u7269\u8F66&quot;</span> 
+         <span class="hljs-attr">img</span>=<span class="hljs-string">&quot;http://img11.360buyimg.com/uba/jfs/t1/14848/18/1066/3723/5c0f41bdE9f2a38fe/e6ed6768717297fb.jpg&quot;</span>
+         <span class="hljs-attr">activeImg</span>=<span class="hljs-string">&#39;http://img30.360buyimg.com/uba/jfs/t1/17538/16/1070/6214/5c0f41bdE4bc9a1db/74cf978e5015454b.jpg&#39;</span>
+      &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u6211\u7684&quot;</span> 
+         <span class="hljs-attr">img</span>=<span class="hljs-string">&quot;http://img20.360buyimg.com/uba/jfs/t1/20004/20/1045/3620/5c0f3d61Eaaec1670/9e59db63983b7b9f.jpg&quot;</span>
+         <span class="hljs-attr">activeImg</span>=<span class="hljs-string">&#39;http://img14.360buyimg.com/uba/jfs/t1/23967/14/1072/6714/5c0f3d61E0ad8991e/8f741953f6e38f15.jpg&#39;</span>
+      &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar</span>&gt;</span>
+</code></pre><h3>\u81EA\u5B9A\u4E49\u9009\u4E2D</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar</span> <span class="hljs-attr">v-model:visible</span>=<span class="hljs-string">&quot;active&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u9996\u9875&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;home&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u5206\u7C7B&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;category&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u53D1\u73B0&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;find&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u8D2D\u7269\u8F66&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;cart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u6211\u7684&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;my&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar</span>&gt;</span>
+</code></pre><pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span> {
+  <span class="hljs-keyword">const</span> active = ref(<span class="hljs-number">2</span>)
+  <span class="hljs-keyword">return</span> {
+    active
+  };
+},
+</code></pre><h3>\u5FBD\u6807\u63D0\u793A</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u9996\u9875&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;home&quot;</span> <span class="hljs-attr">num</span>=<span class="hljs-string">&quot;11&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u5206\u7C7B&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;category&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u53D1\u73B0&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;find&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u8D2D\u7269\u8F66&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;cart&quot;</span> <span class="hljs-attr">num</span>=<span class="hljs-string">&quot;110&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u6211\u7684&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;my&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar</span>&gt;</span>
+</code></pre><h3>\u81EA\u5B9A\u4E49\u989C\u8272</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar</span> <span class="hljs-attr">unactive-color</span>=<span class="hljs-string">&quot;#7d7e80&quot;</span> <span class="hljs-attr">active-color</span>=<span class="hljs-string">&quot;#1989fa&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u9996\u9875&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;home&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u5206\u7C7B&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;category&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u53D1\u73B0&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;find&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u8D2D\u7269\u8F66&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;cart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u6211\u7684&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;my&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar</span>&gt;</span>
+</code></pre><h3>\u81EA\u5B9A\u4E49Icon</h3><p>\u5982\u679C\u9700\u8981\u5728\u73B0\u6709 Icon \u7684\u57FA\u7840\u4E0A\u4F7F\u7528\u66F4\u591A\u56FE\u6807\uFF0C\u8BF7\u53C2\u8003icon\u7EC4\u4EF6\u81EA\u5B9A\u4E49\u56FE\u6807\u5F15\u5165\u3002</p><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar</span> <span class="hljs-attr">unactive-color</span>=<span class="hljs-string">&quot;#7d7e80&quot;</span> <span class="hljs-attr">active-color</span>=<span class="hljs-string">&quot;#1989fa&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u9996\u9875&quot;</span> <span class="hljs-attr">font-class-name</span>=<span class="hljs-string">&quot;iconfont&quot;</span> <span class="hljs-attr">class-prefix</span>=<span class="hljs-string">&quot;icon&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;home&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u5206\u7C7B&quot;</span> <span class="hljs-attr">font-class-name</span>=<span class="hljs-string">&quot;iconfont&quot;</span> <span class="hljs-attr">class-prefix</span>=<span class="hljs-string">&quot;icon&quot;</span>  <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;category&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u53D1\u73B0&quot;</span> <span class="hljs-attr">font-class-name</span>=<span class="hljs-string">&quot;iconfont&quot;</span> <span class="hljs-attr">class-prefix</span>=<span class="hljs-string">&quot;icon&quot;</span>  <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;find&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u8D2D\u7269\u8F66&quot;</span> <span class="hljs-attr">font-class-name</span>=<span class="hljs-string">&quot;iconfont&quot;</span> <span class="hljs-attr">class-prefix</span>=<span class="hljs-string">&quot;icon&quot;</span>  <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;cart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u6211\u7684&quot;</span> <span class="hljs-attr">font-class-name</span>=<span class="hljs-string">&quot;iconfont&quot;</span> <span class="hljs-attr">class-prefix</span>=<span class="hljs-string">&quot;icon&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;my&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar</span>&gt;</span>
+</code></pre><h3>\u4E09\u4E2A\u56FE\u6807\u7684\u6807\u7B7E\u680F</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar</span> <span class="hljs-attr">unactive-color</span>=<span class="hljs-string">&quot;#7d7e80&quot;</span> <span class="hljs-attr">active-color</span>=<span class="hljs-string">&quot;#1989fa&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u9996\u9875&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;home&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u5206\u7C7B&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;category&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u53D1\u73B0&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;find&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar</span>&gt;</span>
+</code></pre><h3>\u56FA\u5B9A\u5E95\u90E8\uFF0C\u53EF\u81EA\u7531\u8DF3\u8F6C</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar</span> <span class="hljs-attr">:bottom</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u9996\u9875&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;home&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u5206\u7C7B&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;category&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span> <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u53D1\u73B0&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;find&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span>
+    <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u8D2D\u7269\u8F66&quot;</span>
+    <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://m.jd.com&quot;</span>
+    <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;cart&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nut-tabbar-item</span>
+    <span class="hljs-attr">tab-title</span>=<span class="hljs-string">&quot;\u6211\u7684&quot;</span>
+    <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;######&quot;</span>
+    <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;my&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar-item</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nut-tabbar</span>&gt;</span>
+</code></pre><h3>Prop</h3><h3>nut-tabbar</h3><table><thead><tr><th>\u5B57\u6BB5</th><th>\u8BF4\u660E</th><th>\u7C7B\u578B</th><th>\u9ED8\u8BA4\u503C</th></tr></thead><tbody><tr><td>v-model:visible</td><td>\u9009\u4E2D\u6807\u7B7E\u7684\u7D22\u5F15\u503C</td><td>number</td><td>0</td></tr><tr><td>bottom</td><td>\u662F\u5426\u56FA\u5B9A\u5728\u9875\u9762\u5E95\u90E8</td><td>Booble</td><td>false</td></tr><tr><td>size</td><td>icon\u7684\u5C3A\u5BF8/\u56FE\u7247\u7684\u5BBD\u9AD8</td><td>string</td><td>\u201820px\u2019</td></tr><tr><td>unactive-color</td><td>icon\u672A\u6FC0\u6D3B\u7684\u989C\u8272</td><td>string</td><td>#7d7e80</td></tr><tr><td>active-color</td><td>icon\u6FC0\u6D3B\u7684\u989C\u8272</td><td>string</td><td>#1989fa</td></tr></tbody></table><h3>tabbar-item</h3><table><thead><tr><th>\u5B57\u6BB5</th><th>\u8BF4\u660E</th><th>\u7C7B\u578B</th><th>\u9ED8\u8BA4\u503C</th></tr></thead><tbody><tr><td>tab-title</td><td>\u6807\u7B7E\u9875\u7684\u6807\u9898</td><td>String</td><td>\u2013</td></tr><tr><td>icon</td><td>\u6807\u7B7E\u9875\u663E\u793A\u7684<a href="#/icon">\u56FE\u6807\u540D\u79F0</a></td><td>String</td><td>\u2013</td></tr><tr><td>font-class-name</td><td>\u81EA\u5B9A\u4E49icon \u5B57\u4F53\u57FA\u7840\u7C7B\u540D</td><td>String</td><td><code>nutui-iconfont</code></td></tr><tr><td>class-prefix</td><td>\u81EA\u5B9A\u4E49icon \u7C7B\u540D\u524D\u7F00\uFF0C\u7528\u4E8E\u4F7F\u7528\u81EA\u5B9A\u4E49\u56FE\u6807</td><td>String</td><td><code>nut-icon</code></td></tr><tr><td>img</td><td>\u6807\u7B7E\u9875\u663E\u793A\u56FE\u7247\u94FE\u63A5</td><td>String</td><td>\u2013</td></tr><tr><td>activeImg</td><td>\u6FC0\u6D3B\u4EE5\u540E\u7684\u6807\u7B7E\u9875\u663E\u793A\u56FE\u7247\u94FE\u63A5\uFF08\u540C\u4E00\u4E2Aitem\u4E2Dicon\u548Cimg\u53EA\u80FD\u9009\u62E9\u4E00\u4E2A\uFF09</td><td>String</td><td>\u2013</td></tr><tr><td>href</td><td>\u6807\u7B7E\u9875\u7684\u8DF3\u8F6C\u94FE\u63A5</td><td>String</td><td>\u2013</td></tr><tr><td>to <code>\u5C0F\u7A0B\u5E8F\u4E0D\u652F\u6301</code></td><td>\u6807\u7B7E\u9875\u7684\u8DEF\u7531\u5BF9\u8C61\uFF0C\u7B49\u4E8E vue-router \u7684 <a href="https://router.vuejs.org/zh/api/#to">to \u5C5E\u6027</a> \u5C5E\u6027</td><td>String\uFF5CObject</td><td>\u2013</td></tr><tr><td>num</td><td>\u9875\u7B7E\u53F3\u4E0A\u89D2\u7684\u6570\u5B57\u89D2\u6807\uFF0C\u8D85\u51FA99\u4E4B\u540E\u4E3A99+</td><td>Number</td><td>\u2013</td></tr></tbody></table><h3>Event</h3><table><thead><tr><th>\u4E8B\u4EF6\u540D\u79F0</th><th>\u8BF4\u660E</th><th>\u56DE\u8C03\u53C2\u6570</th></tr></thead><tbody><tr><td>tab-switch</td><td>\u5207\u6362\u9875\u7B7E\u65F6\u89E6\u53D1\u4E8B\u4EF6</td><td>\u70B9\u51FB\u7684\u6570\u636E\u548C\u7D22\u5F15\u503C</td></tr></tbody></table>`,33),c=[p],i={setup(h,{expose:s}){return s({frontmatter:{}}),(j,e)=>(t(),a("div",l,c))}};export{i as default};
