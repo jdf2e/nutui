@@ -380,6 +380,10 @@ $sku-opetate-bg-buy: linear-gradient(
   rgba(255, 195, 13, 1) 69%,
   rgba(255, 207, 13, 1) 100%
 );
-
+// card
+$card-font-size-0: $font-size-0;
+$card-font-size-1: $font-size-1;
+$card-font-size-2: $font-size-2;
+$card-font-size-3: $font-size-3;
 @import './mixins/index';
 @import './animation/index';

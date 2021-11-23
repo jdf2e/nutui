@@ -957,6 +957,17 @@
           "sort": 1,
           "show": true,
           "author": "yangxiaolu3"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Card",
+          "type": "component",
+          "cName": "商品卡片",
+          "desc": "展示商品",
+          "sort": 1,
+          "show": true,
+          "author": "Drjingfubo"
         }
       ]
     }
