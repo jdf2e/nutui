@@ -365,6 +365,11 @@ $searchbar-background: $white !default;
 $searchbar-input-background: #f7f7f7 !default;
 $searchbar-right-out-color: $black !default;
 
+// form
+$form-item-error-line-color: $primary-color !default;
+$form-item-required-color: $primary-color !default;
+$form-item-error-message-color: $primary-color !default;
+
 // sku
 $sku-item-border: 1px solid $primary-color;
 $sku-item-disable-line: line-through;

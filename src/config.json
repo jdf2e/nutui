@@ -880,6 +880,7 @@
           "desc": "1",
           "sort": 21,
           "show": true,
+          "taro": true,
           "author": "richard1015"
         },
         {
@@ -890,6 +891,7 @@
           "desc": "表单Item",
           "sort": 22,
           "show": false,
+          "taro": true,
           "exportEmpty": true,
           "author": "richard1015"
         }

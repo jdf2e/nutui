@@ -13,14 +13,7 @@
   &.error {
     &.line {
       &::before {
-        border-bottom: 1px solid red;
-        transform: scaleX(1);
-        transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-      }
-    }
-    &.border {
-      &::before {
-        border-bottom: 1px solid red;
+        border-bottom: 1px solid $form-item-error-line-color;
         transform: scaleX(1);
         transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
       }
@@ -31,13 +24,14 @@
     font-size: 14px;
     font-weight: normal;
     width: 90px;
+    margin-right: 10px;
     flex: none;
     display: inline-block;
     word-wrap: break-word;
     &.required {
       &::before {
         content: '*';
-        color: $primary-color;
+        color: $form-item-required-color;
         margin-right: 4px;
       }
     }
@@ -60,7 +54,7 @@
     }
     &__tips {
       font-size: 10px;
-      color: $primary-color;
+      color: $form-item-error-message-color;
     }
   }
 }

@@ -1,10 +1,10 @@
 <template>
-  <nut-cell class="nut-form-item" :class="{ error: parent[prop], line: showError }">
+  <nut-cell class="nut-form-item" :class="{ error: parent[prop], line: showErrorLine }">
     <view class="nut-cell__title nut-form-item__label" :style="labelStyle" v-if="label" :class="{ required: required }">
       {{ label }}</view
     >
-    <view class="nut-cell__value nut-form-item__body" :style="bodyStyle">
-      <view class="nut-form-item__body__slots">
+    <view class="nut-cell__value nut-form-item__body">
+      <view class="nut-form-item__body__slots" :style="bodyStyle">
         <slot></slot>
       </view>
       <view class="nut-form-item__body__tips" :style="errorMessageStyle" v-if="parent[prop] && showErrorMessage">
@@ -14,7 +14,7 @@
   </nut-cell>
 </template>
 <script lang="ts">
-import { pxCheck } from '@/packages/utils/pxCheck';
+import { pxCheck } from '../../utils/pxCheck';
 import { computed, inject, PropType, ref } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('form-item');
@@ -44,7 +44,7 @@ export default create({
       type: Boolean,
       default: true
     },
-    showError: {
+    showErrorLine: {
       type: Boolean,
       default: true
     },
