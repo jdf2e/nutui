@@ -1,166 +1,81 @@
 <template>
-  <view>
-    <nut-popup
-      v-bind="$attrs"
-      v-model:visible="showMask"
-      @close="handleClose"
-    ></nut-popup>
-    <div :class="classes" :style="{ 'z-index': nutMenuIndex }">
-      <div class="title-list">
-        <div
-          v-for="(menu, index) in menuList"
-          :key="index"
-          class="title"
-          :class="{
-            'is-active': activeTitle === menu.title,
-            disabled: menu.disabled
-          }"
-          @click="!menu.disabled && handleClickTitle(menu.title, index)"
+  <view :class="classes">
+    <view class="nut-menu__bar" :class="{ opened: opened }" ref="barRef">
+      <template v-for="(item, index) in children" :key="index">
+        <view
+          class="nut-menu__item"
+          @click="!item.disabled && toggleItem(index)"
+          :class="{ disabled: item.disabled }"
+          :style="{ color: item.state.showPopup ? activeColor : '' }"
         >
-          {{ menu.title }}
-          <nut-icon
-            size="10"
-            color="#333"
-            name="arrow-up"
-            v-if="activeTitle === menu.title"
-          ></nut-icon>
-          <nut-icon size="10" color="#999" name="arrow-down" v-else></nut-icon>
-        </div>
-      </div>
-      <div
-        :key="index"
-        v-for="(menu, index) in menuList"
-        v-show="hasOptions && activeTitle === menu.title"
-        class="option-list"
-      >
-        <ul>
-          <li
-            v-for="(option, index2) in menu.options"
-            :key="index2"
-            @click="handleClickOption(option.text, index, option.value)"
-            :style="styleObj"
-          >
-            <nut-icon
-              size="20"
-              :color="activeColor"
-              name="Check"
-              v-if="menu.title === option.text"
-            ></nut-icon
-            >{{ option.text }}
-          </li>
-        </ul>
-      </div>
-      <view v-show="!hasOptions && isShowCustomer" class="customer-item">
-        <slot></slot>
-      </view>
-    </div>
+          <view class="nut-menu__title" :class="{ active: item.state.showPopup }">
+            <view class="nut-menu__title-text">{{ item.renderTitle() }}</view>
+            <nut-icon :name="item.titleIcon" size="10" class="nut-menu__title-icon"></nut-icon>
+          </view>
+        </view>
+      </template>
+    </view>
+    <slot></slot>
   </view>
 </template>
 <script lang="ts">
-import { toRefs, ref, computed, onMounted, reactive, toRaw } from 'vue';
+import { reactive, provide, computed, ref, Ref, unref } from 'vue';
 import { createComponent } from '../../utils/create';
-import Icon from '../icon/index.vue';
+import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('menu');
 export default create({
-  components: {
-    [Icon.name]: Icon
-  },
   props: {
-    col: {
-      type: [String, Number],
-      default: 1
-    },
     activeColor: {
       type: String,
-      default: '#f00'
+      default: '#FA2C19'
+    },
+    overlay: {
+      type: Boolean,
+      default: true as const
+    },
+    duration: {
+      type: [Number, String],
+      default: 0.3
     }
   },
-  emits: ['choose'],
-  setup(props, { slots, emit }) {
-    interface IOption {
-      text: string,
-      value: string | number
-    }
+  setup(props, { emit, slots }) {
+    const barRef = ref<HTMLElement>();
+    const offset = ref(0);
 
-    interface IMenuItem {
-      title: string,
-      disabled: boolean,
-      options?: Array<IOption>
-    }
+    const useChildren = () => {
+      const publicChildren: any[] = reactive([]);
+      const internalChildren: any[] = reactive([]);
 
-    const menuList:Array<IMenuItem> = reactive([]);
-    let activeTitle = ref('');
-    let showMask = ref(false);
-    let styleObj = reactive({
-      flexBasis: 100 / Number(props.col) + '%'
-    });
-    let nutMenuIndex = ref<String | Number>('auto');
-    let hasOptions = ref(true);
-    let isShowCustomer = ref(false);
-
-    if(slots.default){
-      for (let i = 0; i < slots.default().length; i++) {
-        if ((slots.default()[i] as any).type['name'] === 'nut-menu-item') {
-          let item:IMenuItem = {
-            title: (slots.default()[i] as any).props['title'],
-            disabled: !!(slots.default()[i] as any).props['disabled']
-          };
-          if ((slots.default()[i] as any).props['options']) {
-            item['options'] = (slots.default()[i] as any).props['options'];
-          } else {
-            hasOptions.value = false;
+      const linkChildren = (value?: any) => {
+        const link = (child: any) => {
+          if (child.proxy) {
+            internalChildren.push(child);
+            publicChildren.push(child.proxy as any);
           }
-          menuList.push(item);
-        }
-      }
-    }
+        };
 
-    const handleClickTitle = (title: string, index: number) => {
-      if (!hasOptions.value) {
-        if (activeTitle.value) {
-          activeTitle.value = '';
-          isShowCustomer.value = false;
-          showMask.value = false;
-          nutMenuIndex.value = 'auto';
-        } else {
-          activeTitle.value = title;
-          isShowCustomer.value = true;
-          showMask.value = true;
-          nutMenuIndex.value = 2001;
-        }
-        return;
-      }
+        provide(
+          'menuParent',
+          Object.assign(
+            {
+              link,
+              children: publicChildren,
+              internalChildren
+            },
+            value
+          )
+        );
+      };
 
-      if (menuList.length > 1) {
-        if (activeTitle.value === title) {
-          activeTitle.value = '';
-          nutMenuIndex.value = 'auto';
-          showMask.value = false;
-        } else {
-          activeTitle.value = title;
-          nutMenuIndex.value = 2001;
-          showMask.value = true;
-        }
-      } else {
-        if (activeTitle.value) {
-          activeTitle.value = '';
-          nutMenuIndex.value = 'auto';
-          showMask.value = false;
-        } else {
-          activeTitle.value = title;
-          nutMenuIndex.value = 2001;
-          showMask.value = true;
-        }
-      }
+      return {
+        children: publicChildren,
+        linkChildren
+      };
     };
 
-    const handleClickOption = (text: string, index: number, value: string | number) => {
-      menuList[index].title = text;
-      activeTitle.value = '';
-      showMask.value = false;
-      nutMenuIndex.value = 'auto';
-      emit('choose', text, value);
-    };
+    const { children, linkChildren } = useChildren();
+
+    const opened = computed(() => children.some((item) => item.state.showWrapper));
 
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -169,32 +84,39 @@ export default create({
       };
     });
 
-    const handleClose = () => {
-      activeTitle.value = '';
-      nutMenuIndex.value = 'auto';
-
-      if (isShowCustomer.value) {
-        isShowCustomer.value = false;
+    const updateOffset = () => {
+      if (barRef.value) {
+        setTimeout(() => {
+          Taro.createSelectorQuery()
+            .select('.nut-menu__bar.opened')
+            .boundingClientRect((rect) => {
+              offset.value = rect.bottom;
+            })
+            .exec();
+        }, 100);
       }
     };
 
+    linkChildren({ props, offset });
+
+    const toggleItem = (active: number) => {
+      children.forEach((item, index) => {
+        if (index === active) {
+          updateOffset();
+          item.toggle();
+        } else if (item.state.showPopup) {
+          item.toggle(false, { immediate: true });
+        }
+      });
+    };
+
     return {
-      menuList,
-      activeTitle,
+      toggleItem,
+      children,
+      opened,
       classes,
-      showMask,
-      styleObj,
-      nutMenuIndex,
-      hasOptions,
-      isShowCustomer,
-      handleClickTitle,
-      handleClickOption,
-      handleClose
+      barRef
     };
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

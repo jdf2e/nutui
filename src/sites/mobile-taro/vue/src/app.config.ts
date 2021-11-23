@@ -62,6 +62,7 @@ export default {
         'pages/rate/index',
         'pages/radio/index',
         'pages/calendar/index',
+        'pages/form/index',
         'pages/shortpassword/index',
         'pages/picker/index',
         'pages/datepicker/index',
