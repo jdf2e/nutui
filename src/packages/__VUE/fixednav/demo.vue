@@ -23,12 +23,8 @@
       :nav-list="navList"
       @selected="selected"
     />
-    <nut-fixednav
-      :position="{ top: '280px' }"
-      type="left"
-      v-model:visible="myActive"
-      @selected="selected"
-    >
+
+    <nut-fixednav :position="{ top: '280px' }" type="left" v-model:visible="myActive" @selected="selected">
       <template v-slot:list>
         <ul class="nut-fixednav__list">
           <li class="nut-fixednav__list-item">1</li>
@@ -43,6 +39,11 @@
         <span class="text">{{ myActive ? '自定义开' : '自定义关' }}</span>
       </template>
     </nut-fixednav>
+
+    <!-- 配合 Drag 支持拖拽 ，小程序暂不支持 -->
+    <nut-drag direction="y" :style="{ right: '0px', bottom: '240px' }">
+      <nut-fixednav un-active-text="支持拖拽" v-model:visible="visible3" :nav-list="navList" @selected="selected" />
+    </nut-drag>
   </div>
 </template>
 
@@ -56,6 +57,7 @@ export default createDemo({
     const visible = ref(false);
     const visible1 = ref(false);
     const visible2 = ref(false);
+    const visible3 = ref(false);
     const myActive = ref(false);
 
     onMounted(() => {
@@ -94,6 +96,7 @@ export default createDemo({
       visible,
       visible1,
       visible2,
+      visible3,
       myActive,
       navList,
       selected
