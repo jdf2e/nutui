@@ -1,7 +1,14 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-imagepreview :show="showPreview" :images="dataImgItem" @close="hideFn" />
+    <nut-imagepreview
+      :show="showPreview"
+      :images="dataImgItem"
+      @close="hideFn"
+      :init-no="3"
+      :pagination-visible="true"
+      pagination-color="red"
+    />
     <nut-cell isLink title="展示图片预览" :showIcon="true" @click="showFn"></nut-cell>
   </div>
 </template>
@@ -10,6 +17,7 @@
 import { reactive, toRefs } from 'vue';
 import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('imagepreview');
+// import { ImagePreview } from '@/packages/nutui.vue';
 export default createDemo({
   props: {},
   setup() {
@@ -36,6 +44,10 @@ export default createDemo({
     });
 
     const showFn = () => {
+      // ImagePreview({
+      //   show: resData.showPreview,
+      //   images: resData.dataImgItem
+      // })
       resData.showPreview = true;
     };
 

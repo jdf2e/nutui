@@ -5,13 +5,18 @@
         v-if="showPop"
         :auto-play="3000"
         class="nut-imagepreview-swiper"
-        :loop="true"
+        :loop="false"
         direction="horizontal"
         @change="slideChangeEnd"
         :is-preventDefault="false"
+        :init-page="initNo - 1"
+        :pagination-visible="paginationVisible"
+        :pagination-color="paginationColor"
       >
         <nut-swiper-item v-for="(item, index) in images" :key="index">
-          <img :src="item.imgSrc" class="nut-imagepreview-img" />
+          <nut-video :source="source" :options="options"></nut-video>
+          <!-- <video src="https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D"></video> -->
+          <!-- <img :src="item.imgSrc" class="nut-imagepreview-img" /> -->
         </nut-swiper-item>
       </nut-swiper>
       <view class="nut-imagepreview-index"> {{ active }} / {{ images.length }} </view>
@@ -19,9 +24,10 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, reactive, watch } from 'vue';
+import { toRefs, reactive, watch, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 import Popup from '../popup/index.vue';
+import Video from '../video/index.vue';
 const { componentName, create } = createComponent('imagepreview');
 
 export default create({
@@ -33,10 +39,23 @@ export default create({
     images: {
       type: Array,
       default: () => []
+    },
+    initNo: {
+      type: Number,
+      default: 1
+    },
+    paginationVisible: {
+      type: Boolean,
+      default: false
+    },
+    paginationColor: {
+      type: String,
+      default: '#fff'
     }
   },
   components: {
-    [Popup.name]: Popup
+    [Popup.name]: Popup,
+    [Video.name]: Video
   },
 
   setup(props, { emit }) {
@@ -44,7 +63,15 @@ export default create({
 
     const state = reactive({
       showPop: show,
-      active: 1
+      active: 1,
+      source: {
+        src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+        type: 'video/mp4'
+      },
+      options: {
+        muted: true,
+        controls: true
+      }
     });
 
     const slideChangeEnd = function (page: number) {
@@ -63,6 +90,11 @@ export default create({
         state.showPop = val;
       }
     );
+
+    onMounted(() => {
+      // 初始化页码
+      state.active = props.initNo;
+    });
 
     return {
       ...toRefs(state),

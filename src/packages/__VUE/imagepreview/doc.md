@@ -68,6 +68,9 @@ setup() {
 |----- | ----- | ----- | ----- 
 | show | 是否展示预览图片 | Boolean | false
 | images | 预览图片数组 | Array<`String`> | []
+| init-no | 初始页码 | Number | 1
+| pagination-visible | 分页指示器是否展示    | Boolean | false |
+| pagination-color   | 分页指示器选中的颜色    | String  | '#fff'  |
     
 ### Events
 
