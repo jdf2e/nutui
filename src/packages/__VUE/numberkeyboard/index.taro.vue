@@ -2,6 +2,7 @@
   <nut-popup
     v-model:visible="show"
     position="bottom"
+    :overlay="overlay"
     @click-overlay="closeBoard()"
     overlay-class="nut-numberkeyboard-overlay"
   >
@@ -17,10 +18,7 @@
               'key-board-wrapper',
               {
                 'key-board-wrapper-large':
-                  item.id == 0 &&
-                  type == 'rightColumn' &&
-                  Array.isArray(customKey) &&
-                  customKey.length == 1
+                  item.id == 0 && type == 'rightColumn' && Array.isArray(customKey) && customKey.length == 1
               }
             ]"
             v-for="item of keysList"
@@ -37,9 +35,7 @@
               @touchmove="(event) => onTouchMove(item, event)"
               @touchend="onTouchEnd"
             >
-              <template v-if="item.type == 'number' || item.type == 'custom'">{{
-                item.id
-              }}</template>
+              <template v-if="item.type == 'number' || item.type == 'custom'">{{ item.id }}</template>
               <img
                 v-if="item.type == 'lock'"
                 src="https://img11.360buyimg.com/imagetools/jfs/t1/146371/38/8485/738/5f606425Eca239740/14f4b4f5f20d8a68.png"
@@ -55,12 +51,8 @@
           <div class="key-board-wrapper">
             <div
               :class="['key', { active: clickKeyIndex == 'delete' }]"
-              @touchstart="
-                (event) => onTouchstart({ id: 'delete', type: 'delete' }, event)
-              "
-              @touchmove="
-                (event) => onTouchMove({ id: 'delete', type: 'delete' }, event)
-              "
+              @touchstart="(event) => onTouchstart({ id: 'delete', type: 'delete' }, event)"
+              @touchmove="(event) => onTouchMove({ id: 'delete', type: 'delete' }, event)"
               @touchend="onTouchEnd"
             >
               <img
@@ -68,20 +60,8 @@
               />
             </div>
           </div>
-          <div
-            class="key-board-wrapper"
-            @click="closeBoard()"
-            v-if="title == ''"
-          >
-            <div
-              :class="[
-                'key',
-                'finish',
-                { activeFinsh: clickKeyIndex == 'finish' }
-              ]"
-            >
-              完成
-            </div>
+          <div class="key-board-wrapper" @click="closeBoard()" v-if="title == ''">
+            <div :class="['key', 'finish', { activeFinsh: clickKeyIndex == 'finish' }]"> 完成 </div>
           </div>
         </div>
       </div>
@@ -90,16 +70,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  onMounted,
-  provide,
-  reactive,
-  nextTick,
-  ref,
-  watch,
-  Ref
-} from 'vue';
+import { computed, onMounted, provide, reactive, nextTick, ref, watch, Ref } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('numberkeyboard');
 export default create({
@@ -131,6 +102,10 @@ export default create({
     randomKeys: {
       type: Boolean,
       default: false
+    },
+    overlay: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['input', 'delete', 'close', 'update:value'],
@@ -168,16 +143,9 @@ export default create({
       }
       if (customKeys.length === 1) {
         if (props.title) {
-          keys.push(
-            { id: customKeys[0], type: 'custom' },
-            { id: 0, type: 'number' },
-            { id: 'delete', type: 'delete' }
-          );
+          keys.push({ id: customKeys[0], type: 'custom' }, { id: 0, type: 'number' }, { id: 'delete', type: 'delete' });
         } else {
-          keys.push(
-            { id: 0, type: 'number' },
-            { id: customKeys[0], type: 'custom' }
-          );
+          keys.push({ id: 0, type: 'number' }, { id: customKeys[0], type: 'custom' });
         }
       } else if (customKeys.length === 2) {
         keys.push(

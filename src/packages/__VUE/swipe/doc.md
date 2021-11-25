@@ -125,11 +125,12 @@ app.use(Swipe);
 
 ### Props
 
-| 参数     | 说明         | 类型   | 默认值 |
-|----------|--------------|--------|--------|
-| name     | 唯一标识     | String | -      |
-| disabled | 是否禁用滑动 | String | false  |
-
+| 参数                     | 说明                 | 类型    | 默认值 |
+|--------------------------|----------------------|---------|--------|
+| name                     | 唯一标识             | String  | -      |
+| disabled                 | 是否禁用滑动         | String  | false  |
+| touch-move-prevent-default  | 是否阻止滑动事件行为 | boolean | false  |
+| touch-move-stop-propagation | 是否阻止滑动事件冒泡 | boolean | false  |
 ### Events
 
 | 事件名 | 说明       | 回调参数               |

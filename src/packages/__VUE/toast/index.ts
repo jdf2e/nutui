@@ -4,20 +4,21 @@ const defaultOptions = {
   msg: '',
   id: '',
   duration: 2000, //显示时间(毫秒)
-  center: true,
+  center: true, // 未实现
   type: 'text',
-  customClass: '',
-  bottom: 30,
-  size: 'base',
-  icon: null,
-  textAlignCenter: true,
-  loadingRotate: true,
+  title: '',
+  customClass: '', // 未实现
+  bottom: '30px', // 未实现
+  size: 'base', // 未实现
+  icon: null, // 未实现
+  textAlignCenter: true, // 未实现
+  loadingRotate: true, // 未实现
   bgColor: 'rgba(0, 0, 0, .8)',
-  onClose: null,
+  onClose: null, // 未实现
   unmount: null,
-  cover: false, //透明遮罩层
-  coverColor: 'rgba(0, 0, 0, 0)',
-  closeOnClickOverlay: false
+  cover: false, //透明遮罩层 // 未实现
+  coverColor: 'rgba(0, 0, 0, 0)', // 未实现
+  closeOnClickOverlay: false // 未实现
 };
 
 let idsMap: string[] = [];
@@ -25,13 +26,13 @@ let optsMap: any[] = [];
 const clearToast = (id?: string) => {
   if (id) {
     const container = document.getElementById(id);
-    optsMap = optsMap.filter(item => item.id !== id);
-    idsMap = idsMap.filter(item => item !== id);
+    optsMap = optsMap.filter((item) => item.id !== id);
+    idsMap = idsMap.filter((item) => item !== id);
     if (container) {
       document.body.removeChild(container);
     }
   } else {
-    idsMap.forEach(item => {
+    idsMap.forEach((item) => {
       const container = document.getElementById(item);
       if (container) {
         document.body.removeChild(container);
@@ -45,7 +46,7 @@ const clearToast = (id?: string) => {
 const updateToast = (opts: any) => {
   const container = document.getElementById(opts.id);
   if (container) {
-    const currentOpt = optsMap.find(item => item.id === opts.id);
+    const currentOpt = optsMap.find((item) => item.id === opts.id);
     if (currentOpt) {
       opts = { ...defaultOptions, ...currentOpt, ...opts };
     } else {
@@ -63,7 +64,7 @@ const mountToast = (opts: any) => {
   // 如果是更新已有的toast
   if (opts.id) {
     _id = opts.id;
-    if (idsMap.find(item => item === opts.id)) {
+    if (idsMap.find((item) => item === opts.id)) {
       return updateToast(opts);
     }
   } else {
@@ -113,8 +114,8 @@ export const ToastFunction = {
       type: 'loading'
     });
   },
-  hide() {
-    clearToast();
+  hide(id?: string) {
+    clearToast(id);
   },
   install(app: any): void {
     app.use(Toast);

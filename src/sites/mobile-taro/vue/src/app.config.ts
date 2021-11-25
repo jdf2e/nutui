@@ -24,7 +24,8 @@ export default {
         'pages/steps/index',
         'pages/infiniteloading/index',
         'pages/progress/index',
-        'pages/circleprogress/index'
+        'pages/circleprogress/index',
+        'pages/searchbar/index'
       ]
     },
     {
@@ -47,6 +48,7 @@ export default {
         'pages/tabs/index',
         'pages/fixednav/index',
         'pages/elevator/index',
+        'pages/menu/index',
         'pages/pagination/index'
       ]
     },
@@ -60,6 +62,7 @@ export default {
         'pages/rate/index',
         'pages/radio/index',
         'pages/calendar/index',
+        'pages/form/index',
         'pages/shortpassword/index',
         'pages/picker/index',
         'pages/datepicker/index',
@@ -74,7 +77,14 @@ export default {
     },
     {
       root: 'business',
-      pages: ['pages/address/index', 'pages/signature/index', 'pages/barrage/index', 'pages/timeselect/index']
+      pages: [
+        'pages/address/index',
+        'pages/signature/index',
+        'pages/barrage/index',
+        'pages/timeselect/index',
+        'pages/sku/index',
+        'pages/card/index'
+      ]
     }
   ],
   window: {

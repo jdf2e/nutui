@@ -1,7 +1,45 @@
-.nut-menu {
-  background: $white;
-  display: flex;
-  align-items: center;
+.nut-menu__bar {
   position: relative;
-  height: 46px;
+  display: flex;
+  line-height: $nut-menu-bar-line-height;
+  background-color: $white;
+  border-bottom: 1px solid $nut-menu-bar-border-bottom-color;
+
+  &.opened {
+    z-index: $nut-menu-bar-opened-z-index;
+  }
+
+  .nut-menu__item {
+    flex: 1;
+    text-align: center;
+    font-size: $font-size-2;
+    color: $title-color;
+    min-width: 0;
+
+    &.disabled {
+      color: $nut-menu-item-disabled-color;
+    }
+
+    .nut-menu__title-icon {
+      transition: all 0.2s linear;
+    }
+
+    .nut-menu__title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+
+      .nut-menu__title-text {
+        @include text-ellipsis;
+        display: block;
+        padding-left: $nut-menu-title-text-padding-left;
+        padding-right: $nut-menu-title-text-padding-right;
+      }
+
+      &.active .nut-menu__title-icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
 }

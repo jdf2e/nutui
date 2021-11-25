@@ -11,6 +11,10 @@
           v-for="(item, index) in titles"
           :key="item.paneKey"
         >
+          <view class="nut-tabs__titles-item__line" :style="tabsActiveStyle" v-if="type == 'line'"></view>
+          <view class="nut-tabs__titles-item__smile" :style="tabsActiveStyle" v-if="type == 'smile'">
+            <nut-icon :color="color" name="joy-smile" />
+          </view>
           <view
             class="nut-tabs__titles-item__text"
             :class="{ ellipsis: ellipsis && !titleScroll && direction == 'horizontal' }"
@@ -41,6 +45,10 @@ export default create({
     modelValue: {
       type: [String, Number],
       default: 0
+    },
+    color: {
+      type: String,
+      default: ''
     },
     direction: {
       type: String,
@@ -78,7 +86,7 @@ export default create({
   setup(props, { emit, slots }) {
     provide('activeKey', { activeKey: computed(() => props.modelValue) });
     const titles: Ref<Title[]> = ref([]);
-    const currentIndex = ref(0);
+    const currentIndex = ref((props.modelValue as number) || 0);
 
     const renderTitles = (vnodes: VNode[]) => {
       vnodes.forEach((vnode: VNode, index: number) => {
@@ -113,7 +121,7 @@ export default create({
     );
     watch(
       () => props.modelValue,
-      (value: string) => {
+      (value: string | number) => {
         let index = titles.value.findIndex((item) => item.paneKey == value);
         if (index == -1) {
           console.error('[NutUI] <Tabs> 请检查 v-model 值是否为 paneKey ,如 paneKey 未设置，请采用下标控制 .');
@@ -138,6 +146,12 @@ export default create({
         background: props.background
       };
     });
+    const tabsActiveStyle = computed(() => {
+      return {
+        color: props.type == 'smile' ? props.color : '',
+        background: props.type == 'line' ? props.color : ''
+      };
+    });
     const titleStyle = computed(() => {
       return {
         marginLeft: pxCheck(props.titleGutter),
@@ -160,6 +174,7 @@ export default create({
       titles,
       contentStyle,
       tabsNavStyle,
+      tabsActiveStyle,
       titleStyle,
       ...methods
     };

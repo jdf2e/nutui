@@ -71,6 +71,13 @@ app.use(FixedNav);
 <nut-fixednav :overlay="false"  :position="{top:'210px' }" v-model:visible="visible" :nav-list="navList" />
 ```
 
+### 配合 Drag 支持拖拽 , 小程序暂不支持
+
+``` html
+<nut-drag direction="y" :style="{right:'0px',bottom:'240px'}">
+  <nut-fixednav un-active-text="支持拖拽" v-model:visible="visible" :nav-list="navList" />
+</nut-drag>
+```
 
 ### 自定义使用
 

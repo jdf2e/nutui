@@ -44,6 +44,7 @@ $button-default-bg-color: $white !default;
 $button-default-border-color: rgba(204, 204, 204, 1) !default;
 $button-default-color: rgba(102, 102, 102, 1) !default;
 $button-small-height: 28px !default;
+$button-mini-height: 24px !default;
 $button-default-height: 38px !default;
 $button-large-height: 48px !default;
 $button-large-line-height: 46px !default;
@@ -109,8 +110,8 @@ $icon-line-height: 20px !default;
 
 // uploader
 
-$uploader-width: 100px !default;
-$uploader-height: 100px !default;
+$uploader-picture-width: 100px !default;
+$uploader-picture-height: 100px !default;
 $uploader-background: #f7f8fa !default;
 
 //input
@@ -149,8 +150,20 @@ $shortpsd-border-color: #ddd !default;
 $shortpsd-error: rgba(242, 39, 12, 1) !default;
 $shortpsd-forget: rgba(128, 128, 128, 1) !default;
 
-//price
+//large price
+$price-symbol-big-size: 18px !default;
 $price-big-size: 24px !default;
+$price-decimal-big-size: 18px !default;
+
+//normal price
+$price-symbol-medium-size: 14px !default;
+$price-medium-size: 16px !default;
+$price-decimal-medium-size: 14px !default;
+
+// small price
+$price-symbol-small-size: 10px !default;
+$price-small-size: 12px !default;
+$price-decimal-small-size: 10px !default;
 
 //avatar
 $avatar-square: 5px !default;
@@ -246,10 +259,13 @@ $checkbox-label-disable-color: #999 !default;
 $checkbox-icon-disable-color: #d6d6d6 !default;
 
 //radio
-$radio-label-color: #1d1e1e !default;
+$radio-label-font-color: #1d1e1e !default;
+$radio-label-font-active-color: #f0250f !default;
 $radio-label-disable-color: #999 !default;
 $radio-icon-disable-color: #d6d6d6 !default;
 
+$radio-label-button-border-color: #f0250f !default;
+$radio-label-button-background: rgba(240, 37, 15, 0.05) !default;
 //fixednav
 $fixednav-bg-color: $white !default;
 $fixednav-font-color: $black !default;
@@ -285,6 +301,8 @@ $timedetail-time-text-color: #999 !default;
 $timedetail-time-font-size: $font-size-1 !default;
 //tag
 $tag-font-size: 12px !default;
+$tag-default-border-radius: 4px !default;
+$tag-round-border-radius: 8px !default;
 $tag-default-background-color: #000000 !default;
 $tag-primary-background-color: #3460fa !default;
 $tag-success-background-color: #4fc08d !default;
@@ -328,18 +346,63 @@ $pagination-disable-background-color: #f7f8fa !default;
 $pagination-item-border-width: 1px !default;
 $pagination-item-border-radius: 2px !default;
 $pagination-prev-next-padding: 0 11px !default;
-
 // tabs
-$tabs-tab-line: linear-gradient(90deg, #f5503a 0%, #fad1cb 100%) !default;
+$tabs-tab-smile-color: $primary-color !default;
 $tabs-titles-border-radius: 0 !default;
 $tabs-titles-item-font-size: $font-size-2 !default;
 $tabs-titles-item-color: $title-color !default;
 $tabs-titles-background-color: $help-color !default;
+$tabs-horizontal-tab-line-color: linear-gradient(90deg, #f5503a 0%, #fad1cb 100%) !default;
 $tabs-horizontal-titles-height: 46px !default;
 $tabs-horizontal-titles-item-min-width: 50px !default;
 $tabs-horizontal-titles-item-active-line-width: 40px !default;
+$tabs-vertical-tab-line-color: linear-gradient(180deg, #f5503a 0%, #fad1cb 100%) !default;
 $tabs-vertical-titles-item-height: 40px !default;
+$tabs-vertical-titles-item-active-line-height: 14px !default;
 $tabs-vertical-titles-width: 100px !default;
 
+// menu
+$nut-menu-bar-line-height: 46px !default;
+$nut-menu-bar-border-bottom-color: #eaf0fb !default;
+$nut-menu-bar-opened-z-index: 2001 !default;
+$nut-menu-item-disabled-color: #969799 !default;
+$nut-menu-title-text-padding-left: 8px !default;
+$nut-menu-title-text-padding-right: 8px !default;
+$nut-menu-item-content-padding: 12px 24px !default;
+$nut-menu-item-content-max-height: 214px !default;
+$nut-menu-item-option-padding-top: 12px !default;
+$nut-menu-item-option-padding-bottom: 12px !default;
+$nut-menu-item-option-i-margin-right: 6px !default;
+
+// searchbar
+$searchbar-background: $white !default;
+$searchbar-input-background: #f7f7f7 !default;
+$searchbar-right-out-color: $black !default;
+
+// form
+$form-item-error-line-color: $primary-color !default;
+$form-item-required-color: $primary-color !default;
+$form-item-error-message-color: $primary-color !default;
+
+// sku
+$sku-item-border: 1px solid $primary-color;
+$sku-item-disable-line: line-through;
+$sku-opetate-bg-default: linear-gradient(
+  135deg,
+  rgba(242, 20, 12, 1) 0%,
+  rgba(242, 39, 12, 1) 70%,
+  rgba(242, 77, 12, 1) 100%
+);
+$sku-opetate-bg-buy: linear-gradient(
+  135deg,
+  rgba(255, 186, 13, 1) 0%,
+  rgba(255, 195, 13, 1) 69%,
+  rgba(255, 207, 13, 1) 100%
+);
+// card
+$card-font-size-0: $font-size-0;
+$card-font-size-1: $font-size-1;
+$card-font-size-2: $font-size-2;
+$card-font-size-3: $font-size-3;
 @import './mixins/index';
 @import './animation/index';

@@ -3,41 +3,34 @@
   <div class="resource-main">
     <div class="resource-main-content">
       <h3 class="sub-title">资源</h3>
-      <p class="sub-desc">这里汇总了 NutUI 相关的所有的资源</p>
-    </div>
-  </div>
-  <!-- 设计资源 -->
-  <div class="resource-content">
-    <div class="resource-block" v-if="articleList.length === 0">
-      <h4 class="sub-title">设计资源</h4>
-      <p class="sub-desc"
-        >这里提供 NUTUI 相关设计资源和设计工具的下载，更多设计资源正在整理和完善中。你可以在这个<span class="sub-red"
-          >地址</span
-        >中反馈对新版本 Sketch Symbols 组件的意见。</p
-      >
-      <div class="no-data">
-        <img class="nodata-img-joy" src="../../assets/images/img-joy.png" />
-        <p class="nodata-desc">敬请期待</p>
-      </div>
-    </div>
-    <div class="resource-block" v-else>
-      <h4 class="sub-title">设计资源</h4>
       <p class="sub-desc"
         >想要了解 NutUI 设计体系背后的故事？如何才能更好的应用？你可以查阅下述我们为你精挑细选的文章。也欢迎关注 NutUI
         官方专栏，这里常有关于 NutUI 设计体系下相关话题内容的最新分享和讨论。</p
       >
-      <div class="tab-box">
-        <div class="tab-hd">
-          <div
-            class="tab-hd-item"
-            :class="{ active: activeIndex === index }"
-            v-for="(item, index) in tabData"
-            :key="index"
-            @click="clickTab(index)"
-          >
-            {{ item.title }}
-          </div>
-        </div>
+    </div>
+  </div>
+  <!-- 设计资源 -->
+  <div class="resource-content">
+    <div class="resource-block">
+      <h4 class="sub-title">设计资源</h4>
+      <!-- <h4 class="sub-title">学习资料</h4> -->
+      <p class="sub-desc"
+        >NutUI 3x 基于 JD APP 10.0 视觉规范实现的组件库，在这里可以下载 NutUI 的设计资源。
+        <a class="download" download href="https://storage.360buyimg.com/nutui-static/NutUI3xStyleGuide.sketch"
+          >点击下载
+        </a>
+      </p>
+      <!-- <img
+        src="https://img11.360buyimg.com/imagetools/jfs/t1/206767/18/7920/405226/6181e655E6b5be4de/47a13df50b92106b.jpg"
+      /> -->
+    </div>
+    <div class="resource-block">
+      <div class="no-data" v-if="articleList.length === 0">
+        <img class="nodata-img-joy" src="../../assets/images/img-joy.png" />
+        <p class="nodata-desc">敬请期待</p>
+      </div>
+      <div class="tab-box" v-else>
+        <h4 class="sub-title">全部文章</h4>
         <template v-for="pItem in articleList" v-show="activeIndex === 0">
           <h3>{{ pItem.year }}</h3>
           <div class="tab-bd">
@@ -69,7 +62,6 @@ import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
 import { RefData } from '@/sites/assets/util/ref';
 import { ApiService } from '@/sites/service/ApiService';
-import axios from 'axios';
 export default defineComponent({
   name: 'doc',
   components: {
@@ -180,6 +172,13 @@ $mainRed: #fa685d;
   &-block {
     margin-bottom: 50px;
     text-align: left;
+    .download {
+      color: #38f;
+    }
+    > img {
+      width: 100%;
+      box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
+    }
     .sub-title {
       margin-bottom: 15px;
       line-height: 42px;

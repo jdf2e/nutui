@@ -8,6 +8,7 @@ export class UploadOptions {
   headers = {};
   withCredentials = false;
   onStart?: Function;
+  taroFilePath?: string;
   onProgress?: Function;
   onSuccess?: Function;
   onFailure?: Function;
@@ -31,7 +32,7 @@ export class Uploader {
       );
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
-          if (xhr.status === options.xhrState) {
+          if (xhr.status == options.xhrState) {
             options.onSuccess?.(xhr.responseText, options);
           } else {
             options.onFailure?.(xhr.responseText, options);
@@ -50,11 +51,11 @@ export class Uploader {
       console.warn('浏览器不支持 XMLHttpRequest');
     }
   }
-  uploadTaro(filePath: string, uploadFile: Function) {
+  uploadTaro(uploadFile: Function) {
     const options = this.options;
     const uploadTask = uploadFile({
       url: options.url,
-      filePath,
+      filePath: options.taroFilePath,
       header: {
         'Content-Type': 'multipart/form-data',
         ...options.headers
@@ -62,7 +63,7 @@ export class Uploader {
       formData: options.formData,
       name: options.name,
       success(response: { errMsg: any; statusCode: number; data: string }) {
-        if (options.xhrState === response.statusCode) {
+        if (options.xhrState == response.statusCode) {
           options.onSuccess?.(response, options);
         } else {
           options.onFailure?.(response, options);

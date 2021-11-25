@@ -10,13 +10,13 @@
 import { createApp, reactive, toRefs } from 'vue';
 
 // vue
-import { ImagePreview, Swiper, SwiperItem, Popup } from '@nutui/nutui';
+import { ImagePreview, Swiper, SwiperItem } from '@nutui/nutui';
 // taro
-import { ImagePreview, Swiper, SwiperItem, Popup } from '@nutui/nutui-taro';
+import { ImagePreview } from '@nutui/nutui-taro';
 
 
 const app = createApp();
-app.use(ImagePreview).use(Swiper).use(SwiperItem).use(Popup).use(Cell).use(Icon);
+app.use(ImagePreview);
 ```
 
 ### 基础用法

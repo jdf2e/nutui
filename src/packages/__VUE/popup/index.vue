@@ -1,5 +1,5 @@
 <template>
-  <Teleport :to="teleport">
+  <Teleport :to="teleport" v-if="isWrapTeleport">
     <nut-overlay
       v-if="overlay"
       :visible="visible"
@@ -11,17 +11,8 @@
       :duration="duration"
       @click="onClickOverlay"
     />
-    <Transition
-      :name="transitionName"
-      @after-enter="onOpened"
-      @after-leave="onClosed"
-    >
-      <view
-        v-show="visible"
-        :class="classes"
-        :style="popStyle"
-        @click="onClick"
-      >
+    <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
+      <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
         <slot v-if="showSlot"></slot>
         <view
           v-if="closeable"
@@ -34,6 +25,32 @@
       </view>
     </Transition>
   </Teleport>
+  <view v-else>
+    <nut-overlay
+      v-if="overlay"
+      :visible="visible"
+      :close-on-click-overlay="closeOnClickOverlay"
+      :class="overlayClass"
+      :style="overlayStyle"
+      :z-index="zIndex"
+      :lock-scroll="lockScroll"
+      :duration="duration"
+      @click="onClickOverlay"
+    />
+    <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
+      <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
+        <slot v-if="showSlot"></slot>
+        <view
+          v-if="closeable"
+          @click="onClickCloseIcon"
+          class="nutui-popup__close-icon"
+          :class="'nutui-popup__close-icon--' + closeIconPosition"
+        >
+          <nut-icon :name="closeIcon" size="12px" />
+        </view>
+      </view>
+    </Transition>
+  </view>
 </template>
 <script lang="ts">
 import {
@@ -109,6 +126,11 @@ export const popupProps = {
   round: {
     type: Boolean,
     default: false
+  },
+
+  isWrapTeleport: {
+    type: Boolean,
+    default: true
   }
 };
 export default create({
@@ -119,16 +141,7 @@ export default create({
   props: {
     ...popupProps
   },
-  emits: [
-    'click',
-    'click-close-icon',
-    'open',
-    'close',
-    'opend',
-    'closed',
-    'update:visible',
-    'click-overlay'
-  ],
+  emits: ['click', 'click-close-icon', 'open', 'close', 'opend', 'closed', 'update:visible', 'click-overlay'],
 
   setup(props, { emit }) {
     const state = reactive({
@@ -257,9 +270,7 @@ export default create({
     watch(
       () => props.position,
       (value) => {
-        value === 'center'
-          ? (state.transitionName = 'popup-fade')
-          : (state.transitionName = `popup-slide-${value}`);
+        value === 'center' ? (state.transitionName = 'popup-fade') : (state.transitionName = `popup-slide-${value}`);
       }
     );
 

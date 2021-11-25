@@ -1,3 +1,63 @@
+## v3.1.11
+
+`2021-11-15`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @AsherSun、@muitang、@MechaGirls
+
+* :zap: feat: 新增 sku 商品规格组件 #64 (#827) @yangxiaolu1993
+* :zap: feat(toast): hide methods add id param  @richard1015
+* :zap: feat(radio、radiogroup): add props direction、shape @richard1015
+* :zap: feat(uploader): add prop list-type、progress @richard1015
+* :bug: fix(signature): 在“微信小程序”中点确认后保存的图片无法打开查看签名图片 #829 (#830) @muitang
+* :bug: fix(tabs):当父组件默认值传入时无法更新tabs当前标签状态 (#832) @MechaGirls
+* :bug: fix(progreass): 优化百分比抖动问题 @Drjingfubo
+* :bug: fix(uploader): taro env quantity limit (#822) @AsherSun
+* :bug: fix(dialog): method onOk unable dom  @richard1015
+
+## v3.1.10
+
+`2021-11-5`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @Licoy、@297cwrun、@novrain、@puppet-666
+
+* :zap: feat: 新增 Searchbar 搜索栏组件 @JackieScorpio
+* :zap: feat(tabs): add vertical line & add props color #760 @richard1015
+* :zap: feat(inputnumber): events overlimit add click type @richard1015
+* :zap: feat(step): add props iconColor @richard1015
+* :zap: feat(cellgroup): 支持title使用插槽设置 (#816) @297cwrun
+* :zap: feat(price): 前后加符号，可不保留小数点 (#739) #748 @lzzwoniu
+* :zap: chore(countup、barrage): 优化重构 (#775) @Ymm0008
+* :bug: fix(divider): 在taro下无法正常显示 (#800) @297cwrun
+* :bug: fix(tag): del class nut-tag repeat @richard1015
+* :bug: fix(tabbar): 文档优化，解决控制台warn #712  @Drjingfubo
+* :bug: fix(drag): 优化首次点击跳动问题 (#780) @Drjingfubo
+* :bug: fix(address): 内嵌 elevator 滑动问题修复 @szg2008
+* :bug: fix(imagepreview): 引入 swiper 报错问题修复 (#792) @JackieScorpio
+* :bug: fix(textarea): modelValue 值为null时的length引用错误 (#805) @Licoy
+* :zap: style(checkbox、radio): add transition animation @richard1015
+* :zap: style(dialog): add border-box & footer__button min-width modify @richard1015
+* :zap: chore: fix generate types methods bug  @richard1015
+* :zap: docs: 官网优化（Sketch资源下载、FAQ常见问题模块、部分文档文案错误） @richard1015 @Drjingfubo @lzzwoniu @novrain @snandy @puppet-666
+
+## v3.1.8~9
+
+`2021-10-17`
+
+* :zap: feat: 新增 timeselect 配送时间组件 @szg2008
+* :zap: feat: 新增 tabs 选项卡组件 @richard1015
+* :zap: feat(swipe): add props prevent-default、stop-propagation @richard1015
+* :zap: feat(uploader): add props auto-upload 支持手动上传 #688 @richard1015
+* :zap: upd(popover): 位置计算逻辑优化 (#710) @liqiong-lab
+* :bug: fix(overlay): modify overlay background style @szg2008
+* :bug: fix(popup): taro env touchmove content disable @richard1015
+* :bug: fix: child component taro export bug #707  @Ymm0008
+* :bug: fix(address): 组件红线位置错乱问题 (#732) @yangxiaolu1993
+* :bug: fix(address & elevator): remove pinyin dependence & 支持cdn使用 @szg2008
+* :zap: upd(elevator): add name props support html #691 @szg2008
+* :zap: upd: create 函数添加 ts 类型 (#704) @qqjay2017
+* :zap: 官网优化（文章时间分类、贡献者指南、FAQ常见问题模块） @richard1015 @Drjingfubo @lzzwoniu
 
 ## v3.1.7
 

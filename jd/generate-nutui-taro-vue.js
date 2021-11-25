@@ -7,9 +7,11 @@ let importScssStr = `\n`;
 const packages = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, show, type, taro, exportEmpty } = element;
+    let { name, show, type, taro, exportEmpty, exportEmptyTaro } = element;
     if (taro && (show || exportEmpty)) {
-      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${exportEmpty ? '' : '.taro'}.vue';\n`;
+      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${
+        exportEmpty && !exportEmptyTaro ? '' : '.taro'
+      }.vue';\n`;
       importScssStr += `import './__VUE/${name.toLowerCase()}/index.scss';\n`;
       packages.push(name);
     }
