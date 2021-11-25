@@ -9,19 +9,11 @@
       height="50%"
       :current-key="currentKey1"
       :current-time="currentTime1"
-      @selected="handleSelected1"
+      @select="handleSelected1"
     >
       <template #pannel>
-        <nut-timepannel
-          name="2月23日(今天)"
-          pannel-key="0"
-          @change="handleChange1"
-        ></nut-timepannel>
-        <nut-timepannel
-          name="2月24日(星期三)"
-          pannel-key="1"
-          @change="handleChange1"
-        ></nut-timepannel>
+        <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-timepannel>
+        <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-timepannel>
       </template>
       <template #detail>
         <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
@@ -36,19 +28,11 @@
       height="50%"
       :current-key="currentKey2"
       :current-time="currentTime2"
-      @selected="handleSelected2"
+      @select="handleSelected2"
     >
       <template #pannel>
-        <nut-timepannel
-          name="2月23日(今天)"
-          pannel-key="0"
-          @change="handleChange2"
-        ></nut-timepannel>
-        <nut-timepannel
-          name="2月24日(星期三)"
-          pannel-key="1"
-          @change="handleChange2"
-        ></nut-timepannel>
+        <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange2"></nut-timepannel>
+        <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange2"></nut-timepannel>
       </template>
       <template #detail>
         <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
@@ -107,9 +91,7 @@ export default createDemo({
     };
 
     const selectTime1 = (item: string) => {
-      let curTimeIndex = state.currentTime1[0]['list'].findIndex(
-        (time: string) => time === item
-      );
+      let curTimeIndex = state.currentTime1[0]['list'].findIndex((time: string) => time === item);
       if (curTimeIndex === -1) {
         state.currentTime1[0]['list'].push(item);
       } else {
@@ -118,14 +100,13 @@ export default createDemo({
     };
 
     const handleSelected1 = (obj: any) => {
+      console.log(123);
       proxy.$toast.text(`您选择了：${JSON.stringify(obj)}`);
     };
 
     const handleChange2 = (pannelKey: number) => {
       state.currentKey2 = pannelKey;
-      let curTime = state.currentTime2.find(
-        (item: any) => item.key == pannelKey
-      );
+      let curTime = state.currentTime2.find((item: any) => item.key == pannelKey);
       if (!curTime) {
         state.currentTime2.push({
           key: pannelKey,
@@ -139,12 +120,8 @@ export default createDemo({
     };
 
     const selectTime2 = (item: string) => {
-      let findIndex = state.currentTime2.findIndex(
-        (item: any) => item.key == state.currentKey2
-      );
-      let curTimeIndex = state.currentTime2[findIndex]['list'].findIndex(
-        (time: string) => time === item
-      );
+      let findIndex = state.currentTime2.findIndex((item: any) => item.key == state.currentKey2);
+      let curTimeIndex = state.currentTime2[findIndex]['list'].findIndex((time: string) => time === item);
       if (curTimeIndex === -1) {
         state.currentTime2[findIndex]['list'].push(item);
       } else {
