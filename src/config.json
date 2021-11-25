@@ -157,7 +157,38 @@
     },
     {
       "name": "布局组件",
-      "packages": []
+      "packages": [
+        {
+          "version": "1.0.0",
+          "name": "Layout",
+          "type": "component",
+          "cName": "布局",
+          "desc": "协助进行页面级整体布局。",
+          "sort": 1,
+          "show": true,
+          "author": "yushuang24"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Row",
+          "type": "component",
+          "cName": "行",
+          "desc": "布局组件中的行",
+          "sort": 2,
+          "show": true,
+          "author": "yushuang24"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Col",
+          "type": "component",
+          "cName": "列",
+          "desc": "布局组件中的列",
+          "sort": 3,
+          "show": true,
+          "author": "yushuang24"
+        }
+      ]
     },
     {
       "name": "操作反馈",
