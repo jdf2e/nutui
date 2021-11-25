@@ -36,14 +36,15 @@ import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     Toast.text('网络失败，请稍后再试~');
-    Toast.text(msg,{
-        title:'标题文字'
-        });
     return {};
   },
 };
 ```
+#### 标题提示
 
+``` javascript
+Toast.text(msg,{title:'标题文字' });
+```
 #### 成功提示
 
 ``` javascript
@@ -73,6 +74,14 @@ Toast.loading('加载中');
 ``` javascript
 Toast.text(msg,{
     duration:0
+});
+```
+#### Toast自定义底部高度
+
+``` javascript
+Toast.text(msg, {
+    center: false,
+    bottom: '10%'
 });
 ```
 
