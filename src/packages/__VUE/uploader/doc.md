@@ -240,7 +240,7 @@ setup() {
 
 ### Methods
 
-通过 [ref](https://v3.cn.vuejs.org/api/special-attributes.html#key) 可以获取到 Uploader 实例并调用实例方法
+通过 [ref](https://v3.cn.vuejs.org/api/special-attributes.html#ref) 可以获取到 Uploader 实例并调用实例方法
 
 | 方法名           | 说明                                                       | 参数 | 返回值 |
 |------------------|------------------------------------------------------------|------|--------|

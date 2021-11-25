@@ -6,7 +6,13 @@
           <div class="nut-circleprogress__line__c" :style="RightStyle"></div>
         </div>
       </div>
-      <div class="nut-circleprogress__progress">{{ progress }} %</div>
+      <div class="nut-circleprogress__progress">
+        <template v-if="!isAuto">
+          <slot>{{ progress }}%</slot>
+        </template>
+        <template v-else><slot></slot></template>
+      </div>
+
       <div class="nut-circleprogress__left">
         <div class="nut-circleprogress__line nut-circleprogress__l">
           <div class="nut-circleprogress__line__c" :style="LeftStyle"></div>
@@ -14,11 +20,7 @@
       </div>
     </div>
     <div v-else>
-      <svg
-        :height="option.size"
-        :width="option.size"
-        x-mlns="http://www.w3.org/200/svg"
-      >
+      <svg :height="option.size" :width="option.size" x-mlns="http://www.w3.org/200/svg">
         <circle
           :r="option.radius"
           :cx="option.cx"
@@ -40,7 +42,12 @@
           style="transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s"
         />
       </svg>
-      <div class="nut-circleprogress__progress">{{ progress }}%</div>
+      <div class="nut-circleprogress__progress">
+        <template v-if="!isAuto">
+          <slot>{{ progress }}%</slot>
+        </template>
+        <template v-else><slot></slot></template>
+      </div>
     </div>
   </div>
 </template>
@@ -136,15 +143,9 @@ export default create({
         transform: `rotate(${rotateRight.value + 'deg'})`,
         transition: `all 0.3s`,
         borderTop: `${InnerWidth.value + 'px'} solid ${cricleData.backColor};`,
-        borderLeft: `${InnerWidth.value + 'px'} solid  ${
-          cricleData.backColor
-        };`,
-        borderBottom: `${InnerWidth.value + 'px'} solid ${
-          cricleData.progressColor
-        };`,
-        borderRight: `${InnerWidth.value + 'px'} solid ${
-          cricleData.progressColor
-        };`
+        borderLeft: `${InnerWidth.value + 'px'} solid  ${cricleData.backColor};`,
+        borderBottom: `${InnerWidth.value + 'px'} solid ${cricleData.progressColor};`,
+        borderRight: `${InnerWidth.value + 'px'} solid ${cricleData.progressColor};`
       };
     });
     const LeftStyle = computed(() => {
@@ -153,15 +154,9 @@ export default create({
         transform: `rotate(${rotateLeft.value + 'deg'})`,
         transition: `all 0.3s`,
         borderTop: `${InnerWidth.value + 'px'} solid ${cricleData.backColor};`,
-        borderLeft: `${InnerWidth.value + 'px'} solid  ${
-          cricleData.backColor
-        };`,
-        borderBottom: `${InnerWidth.value + 'px'} solid ${
-          cricleData.progressColor
-        };`,
-        borderRight: `${InnerWidth.value + 'px'} solid ${
-          cricleData.progressColor
-        };`
+        borderLeft: `${InnerWidth.value + 'px'} solid  ${cricleData.backColor};`,
+        borderBottom: `${InnerWidth.value + 'px'} solid ${cricleData.progressColor};`,
+        borderRight: `${InnerWidth.value + 'px'} solid ${cricleData.progressColor};`
       };
     });
     const option = computed(() => {
@@ -178,11 +173,9 @@ export default create({
       };
       Object.assign(baseOption, props.progressOption);
       // 圆心位置自动生成
-      baseOption.cy = baseOption.cx =
-        baseOption.radius + baseOption.strokeOutWidth;
+      baseOption.cy = baseOption.cx = baseOption.radius + baseOption.strokeOutWidth;
       baseOption.size = (baseOption.radius + baseOption.strokeOutWidth) * 2;
-      baseOption.startPosition =
-        'rotate(-90,' + baseOption.cx + ',' + baseOption.cy + ')';
+      baseOption.startPosition = 'rotate(-90,' + baseOption.cx + ',' + baseOption.cy + ')';
       return baseOption;
     });
     const arcLength = computed(() => {
