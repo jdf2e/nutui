@@ -149,7 +149,8 @@ export default createDemo({
       }
     ]);
 
-    const chooseItem = () => {
+    const chooseItem = (item: unknown, index: number) => {
+      console.log(item, index);
       alert('选择项');
     };
 
