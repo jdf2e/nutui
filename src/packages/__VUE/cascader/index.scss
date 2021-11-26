@@ -1,0 +1,61 @@
+.nut-cascader {
+  width: 100%;
+  font-size: 14px;
+  line-height: 22px;
+
+  .nut-tabpane {
+    padding: 0;
+  }
+
+  .nut-tabs__titles-item {
+    flex: initial;
+    min-width: auto;
+    padding: 0 10px;
+    white-space: nowrap;
+  }
+
+  .nut-tabs__titles {
+    padding: 0 10px;
+  }
+
+  &-pane {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    padding-top: 10px;
+    height: 342px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    margin: 0;
+    cursor: pointer;
+
+    &__title {
+      flex: 1;
+    }
+
+    &__icon-check {
+      margin-left: 10px;
+      visibility: hidden;
+    }
+
+    &__icon-loading {
+      margin-left: 10px;
+    }
+
+    &.active &__icon-check {
+      visibility: visible;
+    }
+
+    &.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
