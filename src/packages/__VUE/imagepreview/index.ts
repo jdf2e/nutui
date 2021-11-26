@@ -1,33 +1,21 @@
-import Dialog from './index.vue';
+import ImagePreview from './index.vue';
 import { render, createVNode, h } from 'vue';
-export class DialogOptions {
-  title?: string = '';
-  content?: string = '';
-  cancelText?: string = '取消';
-  okText?: string = '确定';
-  textAlign?: string = 'center';
+export class ImagePreviewOptions {
+  show?: Boolean = false;
+  images?: Array<string> = [];
+  initNo?: Number = 1;
+  paginationVisible?: Boolean = false;
+  paginationColor?: string = '';
   teleport?: String | HTMLElement = 'body';
 
   // function
-  onUpdate?: Function = (value: boolean) => {};
-  onOk?: Function = () => {};
-  onCancel?: Function = () => {};
   onClose?: Function = () => {};
-  onClosed?: Function = () => {};
-
-  visible?: boolean = true;
-  noFooter?: boolean = false;
-  noOkBtn?: boolean = false;
-  noCancelBtn?: boolean = false;
-  okBtnDisabled?: boolean = false;
-  closeOnPopstate?: boolean = false;
-  lockScroll?: boolean = false;
 }
 
-class DialogFunction {
-  options: DialogOptions = new DialogOptions();
+class ImagePreviewFunction {
+  options: ImagePreviewOptions = new ImagePreviewOptions();
 
-  constructor(_options: DialogOptions) {
+  constructor(_options: ImagePreviewOptions) {
     let options = Object.assign(this.options, _options);
     let elWarp: HTMLElement = document.body;
     let teleport = options.teleport as string;
@@ -39,17 +27,15 @@ class DialogFunction {
       }
     }
     const root = document.createElement('view');
-    root.id = 'dialog-' + new Date().getTime();
+    root.id = 'imagepreview-' + new Date().getTime();
     const Wrapper = {
       setup() {
-        options.onUpdate = (val: boolean) => {
-          if (val == false) {
-            elWarp.removeChild(root);
-          }
-        };
+        // options.onClose = () => {
+        //     elWarp.removeChild(root);
+        // };
         options.teleport = `#${root.id}`;
         return () => {
-          return h(Dialog, options);
+          return h(ImagePreview, options);
         };
       }
     };
@@ -57,28 +43,14 @@ class DialogFunction {
     elWarp.appendChild(root);
     render(instance, root);
   }
-
-  close = () => {
-    // if (instance) {
-    //   instance.component.ctx.close();
-    // }
-  };
-
-  setDefaultOptions = (options: DialogOptions) => {
-    // Object.assign(this.currentOptions, options);
-  };
-
-  resetDefaultOptions = () => {
-    // Dialog.currentOptions = { ...Dialog.defaultOptions };
-  };
 }
 
-const _Dialog = function (options: DialogOptions) {
-  return new DialogFunction(options);
+const _ImagePreview = function (options: ImagePreviewOptions) {
+  return new ImagePreviewFunction(options);
 };
-_Dialog.install = (app: any) => {
-  app.use(Dialog);
-  app.config.globalProperties.$dialog = _Dialog;
+_ImagePreview.install = (app: any) => {
+  app.use(ImagePreview);
+  app.config.globalProperties.$imagepreview = _ImagePreview;
 };
-export { Dialog };
-export default _Dialog;
+export { ImagePreview };
+export default _ImagePreview;

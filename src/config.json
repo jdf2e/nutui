@@ -243,7 +243,7 @@
         {
           "version": "3.0.0",
           "name": "ImagePreview",
-          "type": "component",
+          "type": "methods",
           "cName": "图片预览",
           "desc": "图片预览",
           "sort": 4,
