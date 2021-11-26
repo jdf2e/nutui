@@ -14,12 +14,8 @@
         @touchleave="leaveEventHandler"
       />
     </div>
-    <nut-button class="nut-signature-btn" type="default" @click="clear()"
-      >重签</nut-button
-    >
-    <nut-button class="nut-signature-btn" type="primary" @click="confirm()"
-      >确认</nut-button
-    >
+    <nut-button class="nut-signature-btn" type="default" @click="clear()">重签</nut-button>
+    <nut-button class="nut-signature-btn" type="primary" @click="confirm()">确认</nut-button>
   </div>
 </template>
 <script lang="ts">
@@ -108,21 +104,21 @@ export default create({
         return;
       }
       Taro.createSelectorQuery()
-        .select("#spcanvas")
+        .select('#spcanvas')
         .fields({
           node: true,
-          size: true,
+          size: true
         })
         .exec(async (res) => {
           Taro.canvasToTempFilePath({
             canvas: res[0].node,
-            fileType: props.type,
+            fileType: props.type
           })
             .then((res) => {
-              emit("confirm", res.tempFilePath);
+              emit('confirm', res.tempFilePath);
             })
             .catch((e) => {
-              emit("confirm", e);
+              emit('confirm', e);
             });
         });
     };
