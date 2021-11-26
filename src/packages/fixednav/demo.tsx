@@ -1,6 +1,7 @@
 import React, { useState, MouseEvent } from 'react'
 import { Icon } from '../icon/icon'
 import { FixedNav } from './fixednav'
+import Drag from './../drag'
 
 const FixedNavDemo = () => {
   const navList = [
@@ -31,6 +32,7 @@ const FixedNavDemo = () => {
   const [visible2, setVisible2] = useState(false)
   const [visible3, setVisible3] = useState(false)
   const [visible4, setVisible4] = useState(false)
+  const [visible5, setVisible5] = useState(false)
 
   const change1 = (value: boolean) => {
     setVisible1(value)
@@ -57,6 +59,13 @@ const FixedNavDemo = () => {
     setVisible4(value)
   }
   const selected4 = (item: any, event: MouseEvent) => {
+    console.log(item, event)
+  }
+
+  const change5 = (value: boolean) => {
+    setVisible5(value)
+  }
+  const selected5 = (item: any, event: MouseEvent) => {
     console.log(item, event)
   }
 
@@ -114,6 +123,16 @@ const FixedNavDemo = () => {
             </>
           }
         />
+        {/* <!-- 配合 Drag 支持拖拽 ，小程序暂不支持 --> */}
+        <Drag direction={'y'} style={{ right: '0px', bottom: '240px' }}>
+          <FixedNav
+            navList={navList}
+            unActiveText="支持拖拽"
+            visible={visible5}
+            change={change5}
+            selected={selected5}
+          />
+        </Drag>
       </div>
     </>
   )

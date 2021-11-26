@@ -117,6 +117,21 @@ const selected = (item: any, event: MouseEvent) => {
 ```
 
 
+### 支持拖拽
+
+``` tsx
+// 配合 Drag 支持拖拽 ，小程序暂不支持
+<Drag direction={"y"} style={{ right: '0px', bottom: '240px' }}>
+  <FixedNav
+    navList={navList}
+    unActiveText="支持拖拽"
+    visible={visible} 
+    change={change}
+    selected={selected} />
+</Drag>
+```
+
+
 ### Prop
 | 字段           | 说明                       | 类型    | 默认值                       |
 |:---------------|:---------------------------|:--------|:-----------------------------|
