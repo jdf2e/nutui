@@ -23,12 +23,8 @@
       :nav-list="navList"
       @selected="selected"
     />
-    <nut-fixednav
-      :position="{ top: '280px' }"
-      type="left"
-      v-model:visible="myActive"
-      @selected="selected"
-    >
+
+    <nut-fixednav :position="{ top: '280px' }" type="left" v-model:visible="myActive" @selected="selected">
       <template v-slot:list>
         <ul class="nut-fixednav__list">
           <li class="nut-fixednav__list-item">1</li>
@@ -47,13 +43,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive, ref } from 'vue';
-export default defineComponent({
+import { onMounted, reactive, ref } from 'vue';
+export default {
   props: {},
   setup() {
     const visible = ref(false);
     const visible1 = ref(false);
     const visible2 = ref(false);
+    const visible3 = ref(false);
     const myActive = ref(false);
 
     onMounted(() => {
@@ -92,10 +89,11 @@ export default defineComponent({
       visible,
       visible1,
       visible2,
+      visible3,
       myActive,
       navList,
       selected
     };
   }
-});
+};
 </script>

@@ -51,7 +51,7 @@ export default {
 ### 链接 | 分组用法
 
 ``` html
-<nut-cell-group title="链接 | 分组用法">
+<nut-cell-group title="链接 | 分组用法" desc="使用 nut-cell-group 支持 title desc slots">
   <nut-cell title="链接" is-link></nut-cell>
   <nut-cell title="URL 跳转" desc="https://jd.com" is-link url="https://jd.com"></nut-cell>
   <nut-cell title="路由跳转 ’/‘ " to="/"></nut-cell>
@@ -94,22 +94,29 @@ export default {
 
 ## API
 
-### Prop
+### CellGroup Prop
 
-| 字段                   | 说明                                                                                           | 类型    | 默认值 |
-|------------------------|------------------------------------------------------------------------------------------------|---------|--------|
-| title                  | 标题名称                                                                                       | String  | -      |
-| sub-title              | 左侧副标题                                                                                     | String  | -      |
-| desc                   | 右侧描述                                                                                       | String  | -      |
-| desc-text-align        | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)   | String  | right  |
-| is-link                | 是否展示右侧箭头并开启点击反馈                                                                 | Boolean | false  |
-| icon                   | 左侧 [图标名称](#/icon) 或图片链接                                                             | String  | -      |
-| round-radius           | 圆角半径                                                                                       | Number  | 6px    |
-| url `小程序不支持`     | 点击后跳转的链接地址                                                                           | String  | -      |
+| 字段  | 说明     | 类型   | 默认值 |
+|-------|----------|--------|--------|
+| title | 分组标题 | String | -      |
+| desc  | 分组描述 | String | -      |
+
+### Cell Prop
+
+| 字段                   | 说明                                                                                           | 类型           | 默认值 |
+|------------------------|------------------------------------------------------------------------------------------------|----------------|--------|
+| title                  | 标题名称                                                                                       | String         | -      |
+| sub-title              | 左侧副标题                                                                                     | String         | -      |
+| desc                   | 右侧描述                                                                                       | String         | -      |
+| desc-text-align        | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)   | String         | right  |
+| is-link                | 是否展示右侧箭头并开启点击反馈                                                                 | Boolean        | false  |
+| icon                   | 左侧 [图标名称](#/icon) 或图片链接                                                             | String         | -      |
+| round-radius           | 圆角半径                                                                                       | Number         | 6px    |
+| url `小程序不支持`     | 点击后跳转的链接地址                                                                           | String         | -      |
 | to   `小程序不支持`    | 点击后跳转的目标路由对象，同 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | String｜Object | -      |
-| replace `小程序不支持` | 是否在跳转时替换当前页面历史                                                                   | Boolean | false  |
+| replace `小程序不支持` | 是否在跳转时替换当前页面历史                                                                   | Boolean        | false  |
 
-### Event
+### Cell Event
 
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
@@ -120,11 +127,12 @@ export default {
 
 | 名称          | 说明                 |
 |---------------|----------------------|
-| icon `v3.1.4` | 自定义左侧 icon 区域 |
+| icon `v3.1.4` | 自定义左侧`icon`区域 |
 | default       | 自定义内容           |
-| link          | 自定义右侧 link 区域 |
+| link          | 自定义右侧`link`区域 |
 
 ## CellGroup Slots
-| 名称          | 说明                 |
-|---------------|----------------------|
-| title `v3.1.10` | 自定义title区域 |
+| 名称            | 说明                |
+|-----------------|---------------------|
+| title `v3.1.10` | 自定义`title`标题区域 |
+| desc `v3.1.12`  | 自定义`desc`描述区域  |
