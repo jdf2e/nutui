@@ -7,23 +7,18 @@
 
     <h2>环形进度条自定义样式</h2>
     <div class="demo__piece">
-      <nut-circleprogress :progress="50" :progress-option="progressOption">
-      </nut-circleprogress>
+      <nut-circleprogress :progress="50" :progress-option="progressOption"> </nut-circleprogress>
     </div>
 
     <h2>环形进度条自定义内容</h2>
     <div class="demo__piece">
       <nut-circleprogress :progress="50" :is-auto="isAuto">
-        <slot>自定义</slot>
+        <div>自定义</div>
       </nut-circleprogress>
     </div>
     <h2>动态改变环形进度条的进度</h2>
     <div class="demo__piece">
-      <nut-circleprogress
-        :progress="percent"
-        :progress-option="progressOption"
-        :stroke-inner-width="strokeInnerWidth"
-      >
+      <nut-circleprogress :progress="percent" :progress-option="progressOption" :stroke-inner-width="strokeInnerWidth">
       </nut-circleprogress>
     </div>
     <div class="demo__btn">

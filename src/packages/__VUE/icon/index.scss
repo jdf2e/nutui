@@ -19,7 +19,8 @@
     height: $icon-height;
     object-fit: contain;
   }
-  &-loading {
+  &-loading,
+  &-loading1 {
     display: inline-block;
     animation: loadingCircle 1s infinite linear;
   }

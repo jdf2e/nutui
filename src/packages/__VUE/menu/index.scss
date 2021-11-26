@@ -1,73 +1,45 @@
-.nut-menu {
+.nut-menu__bar {
   position: relative;
-  font-size: 14px;
-  color: #1a1a1a;
+  display: flex;
+  line-height: $nut-menu-bar-line-height;
+  background-color: $white;
+  border-bottom: 1px solid $nut-menu-bar-border-bottom-color;
 
-  .title-list {
-    display: flex;
-    line-height: 46px;
-    align-items: center;
-    background-color: #fff;
-    border-bottom: 1px solid #eaf0fb;
+  &.opened {
+    z-index: $nut-menu-bar-opened-z-index;
+  }
 
-    .title {
-      flex: 1;
-      text-align: center;
+  .nut-menu__item {
+    flex: 1;
+    text-align: center;
+    font-size: $font-size-2;
+    color: $title-color;
+    min-width: 0;
 
-      &.is-active {
-        font-weight: 600;
-      }
-
-      &.disabled {
-        color: #999;
-      }
-
-      [class*='nut-icon-arrow'] {
-        vertical-align: middle;
-        margin-right: 2px;
-      }
+    &.disabled {
+      color: $nut-menu-item-disabled-color;
     }
-  }
 
-  %itemCommon {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    border-radius: 0 0 12px 12px;
-    background-color: #fff;
-  }
+    .nut-menu__title-icon {
+      transition: all 0.2s linear;
+    }
 
-  .option-list {
-    @extend %itemCommon;
-    max-height: 214px;
-    overflow-y: auto;
-
-    ul {
+    .nut-menu__title {
       display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
 
-    li {
-      line-height: 38px;
-      padding-left: 24px;
-      box-sizing: border-box;
+      .nut-menu__title-text {
+        @include text-ellipsis;
+        display: block;
+        padding-left: $nut-menu-title-text-padding-left;
+        padding-right: $nut-menu-title-text-padding-right;
+      }
 
-      .nut-icon-Check {
-        vertical-align: middle;
-        margin-right: 6px;
+      &.active .nut-menu__title-icon {
+        transform: rotate(180deg);
       }
     }
-  }
-
-  .customer-item {
-    @extend %itemCommon;
-    padding-left: 24px;
-    padding-right: 24px;
-    box-sizing: border-box;
   }
 }

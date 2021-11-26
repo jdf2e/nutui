@@ -58,7 +58,7 @@ export default create({
       default: false
     }
   },
-  emits: ['update:visible', 'selected'],
+  emits: ['update:visible', 'select'],
   setup: (props: any, context: any) => {
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -82,7 +82,7 @@ export default create({
 
     const close = () => {
       context.emit('update:visible', false);
-      context.emit('selected', currentTime.value);
+      context.emit('select', currentTime.value);
     };
 
     provide('currentKey', currentKey);

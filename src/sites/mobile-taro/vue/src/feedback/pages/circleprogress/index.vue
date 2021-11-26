@@ -7,23 +7,18 @@
 
     <h2>环形进度条自定义样式</h2>
     <div class="demo__piece">
-      <nut-circleprogress :progress="50" :progress-option="progressOption">
-      </nut-circleprogress>
+      <nut-circleprogress :progress="20" :progress-option="progressOption"> </nut-circleprogress>
     </div>
 
     <h2>环形进度条自定义内容</h2>
     <div class="demo__piece">
-      <nut-circleprogress :progress="50" :is-auto="isAuto">
-        <slot>自定义</slot>
+      <nut-circleprogress :progress="60" :is-auto="isAuto">
+        <div>自定义</div>
       </nut-circleprogress>
     </div>
     <h2>动态改变环形进度条的进度</h2>
     <div class="demo__piece">
-      <nut-circleprogress
-        :progress="percent"
-        :progress-option="progressOption"
-        :stroke-inner-width="strokeInnerWidth"
-      >
+      <nut-circleprogress :progress="percent" :progress-option="progressOption" :stroke-inner-width="strokeInnerWidth">
       </nut-circleprogress>
     </div>
     <div class="demo__btn">
@@ -42,7 +37,7 @@ export default {
       radius: 50,
       strokeOutWidth: 10,
       backColor: '#d9d9d9',
-      progressColor: 'red'
+      progressColor: 'blue'
     });
     const percent = ref(50);
     const strokeInnerWidth = ref(10);

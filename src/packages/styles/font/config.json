@@ -113,7 +113,8 @@
         "check-disabled",
         "check-normal",
         "check-checked",
-        "loading"
+        "loading",
+        "loading1"
       ]
     }
   ]
