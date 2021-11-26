@@ -1,8 +1,8 @@
-# Imagepreview 组件
+# Imagepreview 图片预览
 
 ### 介绍
     
-支持预览视频和图片，可函数式调用
+支持全屏预览视频和图片，可函数式调用
 
 ### 安装
 
@@ -238,7 +238,7 @@ setup() {
 ```
 
 ```javascript
-import { Dialog } from '@nutui/nutui';
+import { ImagePreview } from '@nutui/nutui';
 
 export default {
     setup() {
@@ -289,7 +289,7 @@ export default {
 | init-no | 初始页码 | Number | 1
 | pagination-visible | 分页指示器是否展示    | Boolean | false |
 | pagination-color   | 分页指示器选中的颜色    | String  | '#fff'  |
-| content-close   | 点击图片可以退出预览    | Boolean  | true  |
+| content-close   | 点击图片可以退出预览    | Boolean  | false  |
 
     
 ### Events
