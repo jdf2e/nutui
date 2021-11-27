@@ -119,6 +119,10 @@ export default create({
     xhrState: { type: [Number, String], default: 200 },
     disabled: { type: Boolean, default: false },
     autoUpload: { type: Boolean, default: true },
+    beforeUpload: {
+      type: Function,
+      default: null
+    },
     beforeDelete: {
       type: Function,
       default: (file: FileItem, files: FileItem[]) => {
@@ -292,8 +296,16 @@ export default create({
     const onChange = (res: Taro.chooseImage.SuccessCallbackResult) => {
       // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
       const { tempFilePaths, tempFiles } = res;
-      const _files: Taro.chooseImage.ImageFile[] = filterFiles(tempFiles);
-      readFile(_files);
+
+      if (props.beforeUpload) {
+        props.beforeUpload(tempFiles).then((f: Array<Taro.chooseImage.ImageFile>) => {
+          const _files: Taro.chooseImage.ImageFile[] = filterFiles(f);
+          readFile(_files);
+        });
+      } else {
+        const _files: Taro.chooseImage.ImageFile[] = filterFiles(tempFiles);
+        readFile(_files);
+      }
 
       emit('change', {
         fileList
