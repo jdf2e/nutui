@@ -100,6 +100,10 @@ $cell-group-title-padding: 0 10px !default;
 $cell-group-title-color: #909ca4 !default;
 $cell-group-title-font-size: $font-size-2 !default;
 $cell-group-title-line-height: 20px !default;
+$cell-group-desc-padding: 0 10px !default;
+$cell-group-desc-color: #909ca4 !default;
+$cell-group-desc-font-size: $font-size-1 !default;
+$cell-group-desc-line-height: 16px !default;
 $cell-group-background-color: $white !default;
 
 // icon
@@ -280,7 +284,7 @@ $noticeBar-left-icon-width: 16px !default;
 $noticeBar-right-icon-width: 16px !default;
 
 // TimeSelect
-$timeselect-title-font-size: $font-size-1 !default;
+$timeselect-title-font-size: $font-size-2 !default;
 $timeselect-title-color: $title-color !default;
 $timeselect-pannel-bg-color: #f6f7f9 !default;
 
