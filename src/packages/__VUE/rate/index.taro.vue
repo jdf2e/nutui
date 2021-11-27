@@ -17,7 +17,7 @@
         @click="onClick(2, n)"
         :font-class-name="fontClassName"
         :class-prefix="classPrefix"
-        :color="n <= modelValue ? activeColor : voidColor"
+        :color="n <= modelValue + 1 ? activeColor : voidColor"
         :size="iconSize"
         :name="checkedIcon"
       />
