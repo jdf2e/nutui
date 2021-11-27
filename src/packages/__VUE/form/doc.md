@@ -38,6 +38,9 @@ app.use(CellGroup);
     <nut-form-item label="地址">
         <input class="nut-input-text" placeholder="请输入地址" type="text" />
     </nut-form-item>
+    <nut-form-item label="备注">
+        <nut-textarea  placeholder="请输入备注" type="text" />
+    </nut-form-item>
 </nut-form>
 ```
 
