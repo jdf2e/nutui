@@ -21,7 +21,7 @@
         class="nut-rate-item__icon nut-rate-item__icon--half"
         :font-class-name="fontClassName"
         :class-prefix="classPrefix"
-        :color="n <= modelValue ? activeColor : voidColor"
+        :color="n <= modelValue + 1 ? activeColor : voidColor"
         :size="iconSize"
         :name="checkedIcon"
       />
