@@ -5,6 +5,11 @@
       <nut-switch v-model="checked" />
     </nut-cell>
 
+    <h2>值为字符串</h2>
+    <nut-cell>
+      <nut-switch v-model="checkedStr" activeValue="开" inactiveValue="关" @change="change" />
+    </nut-cell>
+
     <h2>禁用状态</h2>
     <nut-cell>
       <nut-switch v-model="checked" disable />
@@ -22,21 +27,12 @@
 
     <h2>自定义颜色</h2>
     <nut-cell>
-      <nut-switch
-        v-model="checked"
-        @change="switchChange"
-        active-color="blue"
-      />
+      <nut-switch v-model="checked" @change="switchChange" active-color="blue" />
     </nut-cell>
 
     <h2>支持文字</h2>
     <nut-cell>
-      <nut-switch
-        v-model="checked"
-        @change="switchChange"
-        active-text="开"
-        inactive-text="关"
-      />
+      <nut-switch v-model="checked" @change="switchChange" active-text="开" inactive-text="关" />
     </nut-cell>
   </div>
 </template>
@@ -51,6 +47,8 @@ export default createDemo({
     const checked = ref(true);
     const checkedAsync = ref(true);
 
+    const checkedStr = ref('开');
+
     const change = (value: boolean, event: Event) => {
       proxy.$toast.text(`触发了change事件，开关状态：${value}`);
     };
@@ -64,6 +62,7 @@ export default createDemo({
     return {
       checked,
       checkedAsync,
+      checkedStr,
       change,
       changeAsync
     };
