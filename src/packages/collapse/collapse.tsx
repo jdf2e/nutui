@@ -21,11 +21,7 @@ const defaultProps = {
 } as CollapseProps
 
 function areEqual(prevProps: Partial<CollapseProps>, nextProps: Partial<CollapseProps>) {
-  if (JSON.stringify(prevProps.activeName) == JSON.stringify(nextProps.activeName)) {
-    return true
-  } else {
-    return false
-  }
+  return JSON.stringify(prevProps.activeName) == JSON.stringify(nextProps.activeName)
 }
 
 export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo((props) => {
@@ -42,7 +38,7 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo((props) 
     } else {
       //数组
       if (accordion && activeName.length > 1) {
-        alert('手风琴模式不支持传递多个打开页签')
+        console.warn('手风琴模式不支持传递多个打开页签')
       }
       const activeNameStr = activeName.map((item) => {
         return item.toString()

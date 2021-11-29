@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import Icon from '../icon'
 import bem from '@/utils/bem'
 import './navbar.scss'
+import classNames from 'classnames'
 
 export interface NavBarProps {
   title: string
@@ -9,6 +10,8 @@ export interface NavBarProps {
   leftShow: boolean
   icon: string
   titIcon: string
+  className: string
+  style: React.CSSProperties
   onClickTitle: (e: React.MouseEvent<HTMLDivElement>) => void
   onClickIcon: (e: React.MouseEvent<HTMLDivElement>) => void
   onClickBack: (e: React.MouseEvent<HTMLElement>) => void
@@ -20,6 +23,7 @@ const defaultProps = {
   leftShow: false,
   icon: '',
   titIcon: '',
+  className: '',
 } as NavBarProps
 export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   const {
@@ -28,6 +32,8 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
     title,
     titIcon,
     leftShow,
+    className,
+    style,
     onClickTitle,
     onClickIcon,
     onClickBack,
@@ -38,7 +44,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   }
   const b = bem('navbar')
   return (
-    <div className="nut-navbar">
+    <div className={`nut-navbar ${className}`} style={style}>
       {leftShow && (
         <i
           className={['nut-icon', 'nutui-iconfont', `${b('back')}`].join(' ')}

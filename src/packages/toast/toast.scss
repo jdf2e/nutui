@@ -17,17 +17,19 @@
   text-align: center;
   pointer-events: none;
   z-index: 9999;
-  &__small {
-    .nut-toast__inner {
+  &-small {
+    .nut-toast__inner,
+    .nut-toast__text {
       font-size: $font-size-small;
     }
   }
-  &__large {
-    .nut-toast__inner {
+  &-large {
+    .nut-toast__inner,
+    .nut-toast__text {
       font-size: $font-size-large;
     }
   }
-  &__cover {
+  &-cover {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,7 +54,7 @@
       margin-bottom: -8px;
     }
   }
-  &__has-icon {
+  &-has-icon {
     .nut-toast__icon-wrapper {
       width: 100%;
       display: flex;
@@ -61,11 +63,11 @@
       margin-bottom: 8px;
     }
   }
-  &--center {
+  &-center {
     top: 50%;
     transform: translateY(-50%);
   }
-  &__loading {
+  &-loading {
     .nut-toast__inner {
       display: inline-flex;
       flex-direction: column;

@@ -1,8 +1,17 @@
-import React, { FunctionComponent, useLayoutEffect, useEffect, useState, useRef } from 'react'
+import React, {
+  FunctionComponent,
+  useLayoutEffect,
+  useEffect,
+  useState,
+  useRef,
+  CSSProperties,
+} from 'react'
 import './backtop.scss'
 import Icon from '../icon'
+import classNames from 'classnames'
 declare const window: any
 export interface BackTopProps {
+  className?: string
   bottom: number
   right: number
   elId: string
@@ -11,6 +20,7 @@ export interface BackTopProps {
   isAnimation: boolean
   duration: number
   children?: HTMLElement | any
+  style?: CSSProperties
   backTopClick: (event: MouseEvent) => void
 }
 const defaultProps = {
@@ -24,14 +34,26 @@ const defaultProps = {
 } as BackTopProps
 
 export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
-  const { children, bottom, right, elId, distance, zIndex, isAnimation, duration, backTopClick } = {
+  const {
+    children,
+    bottom,
+    right,
+    elId,
+    distance,
+    zIndex,
+    isAnimation,
+    className,
+    duration,
+    style,
+    backTopClick,
+  } = {
     ...defaultProps,
     ...props,
   }
   const [backTop, SetBackTop] = useState(false)
   const [scrollTop, SetScrollTop] = useState(0)
-  const [startTime, SetStartTime] = useState(0)
-  let scrollEl: any = elId ? useRef<HTMLElement>(document.getElementById(elId)) : (window as Window)
+  let startTime = 0
+  let scrollEl: any = elId ? document.getElementById(elId) : (window as Window)
   //初始化
   useEffect(() => {
     init()
@@ -63,9 +85,7 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
     if (scrollEl instanceof Window) {
       window.scrollTo(0, y)
     } else {
-      let dom = document.getElementById(elId)
-      dom?.scrollTo(0, y)
-      //   scrollEl.scrollTop = y
+      scrollEl.scrollTop = y
     }
   }
 
@@ -109,7 +129,7 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
   const goTop = (e: any) => {
     backTopClick(e)
     let otime = +new Date()
-    SetStartTime(otime)
+    startTime = otime
     isAnimation && duration > 0 ? scrollAnimation() : scroll()
   }
 
@@ -120,7 +140,11 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
   }
 
   return (
-    <div className={`nut-backtop ${backTop ? 'show' : ''}`} style={backTopClass} onClick={goTop}>
+    <div
+      className={`nut-backtop ${backTop ? 'show' : ''} ${className ? className : ''}`}
+      style={{ ...backTopClass, ...style }}
+      onClick={goTop}
+    >
       {children ? children : <Icon size="19px" className="nut-backtop-main" name="top"></Icon>}
     </div>
   )

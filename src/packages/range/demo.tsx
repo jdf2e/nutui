@@ -95,10 +95,12 @@ const RangeDemo = () => {
         <h2>自定义样式</h2>
         <Cell style={cellStyle}>
           <Range
+            className={'test-range'}
             modelValue={40}
             inactiveColor="rgba(163,184,255,1)"
             buttonColor="rgba(52,96,250,1)"
             activeColor="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
+            style={{ color: 'red' }}
             change={(value: number) => {
               change(value)
             }}
