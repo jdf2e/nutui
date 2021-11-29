@@ -13,6 +13,7 @@ import Range from './range'
 import Infiniteloading from './infiniteloading'
 import Steps from './steps'
 import CircleProgress from './circleprogress'
+import Popup from './popup'
 import NavBar from './navbar'
 import Tabbar from './tabbar'
 import InputNumber from './inputnumber'
@@ -42,6 +43,7 @@ export {
   Infiniteloading,
   Steps,
   CircleProgress,
+  Popup,
   NavBar,
   Tabbar,
   InputNumber,
