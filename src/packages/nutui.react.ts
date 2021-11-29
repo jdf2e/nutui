@@ -23,6 +23,8 @@ import Uploader from './uploader'
 import Input from './input'
 import TextArea from './textarea'
 import CheckBox from './checkbox'
+import Tag from './tag'
+import Badge from './badge'
 import Signature from './signature'
 
 export {
@@ -51,5 +53,7 @@ export {
   Input,
   TextArea,
   CheckBox,
+  Tag,
+  Badge,
   Signature,
 }

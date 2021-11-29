@@ -1,0 +1,52 @@
+.nut-tag {
+  padding: 0 4px;
+  border-radius: 4px;
+  ._icon {
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+  &--default {
+    color: $tag-default-color;
+    background: $tag-default-background-color;
+    border: $tag-border-width solid transparent;
+  }
+
+  &--primary {
+    color: $tag-default-color;
+    background: $tag-primary-background-color;
+    border: $tag-border-width solid transparent;
+  }
+
+  &--success {
+    color: $tag-default-color;
+    background: $tag-success-background-color;
+    border: $tag-border-width solid transparent;
+  }
+
+  &--danger {
+    color: $tag-default-color;
+    background: $tag-danger-background-color;
+    border: $tag-border-width solid transparent;
+  }
+
+  &--warning {
+    color: $tag-default-color;
+    background: $tag-warning-background-color;
+    border: $tag-border-width solid transparent;
+  }
+  &--plain {
+    color: $tag-plain-color;
+    background: $tag-plain-background-color;
+    border: $tag-border-width solid $tag-plain-color;
+  }
+  &--round {
+    border-radius: 8px;
+  }
+  &--mark {
+    border-radius: 0 12px 12px 0;
+  }
+  &--close {
+    margin-left: 4px;
+    cursor: pointer;
+  }
+}
