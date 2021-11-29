@@ -1,14 +1,15 @@
+const _window = window as any;
 function requestAniFrame() {
-  if (typeof window !== 'undefined') {
+  if (typeof _window !== 'undefined') {
     return (
-      window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      function(callback) {
-        window.setTimeout(callback, 1000 / 60);
+      _window.requestAnimationFrame ||
+      _window.webkitRequestAnimationFrame ||
+      function (callback: Function) {
+        _window.setTimeout(callback, 1000 / 60);
       }
     );
   } else {
-    return function(callback: Function) {
+    return function (callback: Function) {
       setTimeout(callback, 1000 / 60);
     };
   }

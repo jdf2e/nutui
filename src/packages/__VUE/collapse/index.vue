@@ -6,10 +6,8 @@
 <script lang="ts">
 import { provide } from 'vue';
 import { createComponent } from '../../utils/create';
-import collapseitem from '../collapseitem/index.vue';
 const { create } = createComponent('collapse');
 export default create({
-  children: [collapseitem],
   props: {
     active: {
       type: [String, Number, Array]
@@ -95,7 +93,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

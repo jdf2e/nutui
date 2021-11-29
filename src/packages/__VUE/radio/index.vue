@@ -2,18 +2,20 @@
 import { computed, h, inject } from 'vue';
 import { createComponent } from '../../utils/create';
 import nutIcon from '../icon/index.vue';
-import radiogroup from '../radiogroup/index.vue';
 const { componentName, create } = createComponent('radio');
 
 export default create({
-  children: [radiogroup],
   props: {
     disabled: {
       type: Boolean,
       default: false
     },
-    label: {
+    shape: {
       type: String,
+      default: 'round' // button
+    },
+    label: {
+      type: [String, Number],
       default: ''
     },
     iconName: {
@@ -33,15 +35,15 @@ export default create({
     let parent: any = inject('parent');
 
     const isCurValue = computed(() => {
-      return parent.label.value === props.label;
+      return parent.label.value == props.label;
     });
 
     const color = computed(() => {
       return !props.disabled
         ? isCurValue.value
-          ? '#fa2c19'
-          : '#d6d6d6'
-        : '#f5f5f5';
+          ? 'nut-radio__icon'
+          : 'nut-radio__icon--unchecked'
+        : 'nut-radio__icon--disable';
     });
 
     const position = computed(() => {
@@ -53,7 +55,7 @@ export default create({
       return h(nutIcon, {
         name: isCurValue.value ? iconActiveName : iconName,
         size: iconSize,
-        color: color.value
+        class: color.value
       });
     };
 
@@ -61,8 +63,17 @@ export default create({
       return h(
         'view',
         {
-          class: `${componentName}__label ${
-            props.disabled ? `${componentName}__label--disabled` : ''
+          class: `${componentName}__label ${props.disabled ? `${componentName}__label--disabled` : ''}`
+        },
+        slots.default?.()
+      );
+    };
+    const renderButton = () => {
+      return h(
+        'view',
+        {
+          class: `${componentName}__button ${isCurValue.value && `${componentName}__button--active`} ${
+            props.disabled ? `${componentName}__button--disabled` : ''
           }`
         },
         slots.default?.()
@@ -74,22 +85,24 @@ export default create({
       parent.updateValue(props.label);
     };
 
+    let reverseState = position.value === 'left';
+
     return () => {
       return h(
         'view',
         {
-          class: `${componentName} ${
-            position.value === 'left' ? `${componentName}--reverse` : ''
-          }`,
+          class: `${componentName} ${componentName}--${props.shape} ${reverseState ? `${componentName}--reverse` : ''}`,
           onClick: handleClick
         },
-        [renderIcon(), renderLabel()]
+        [
+          props.shape == 'button'
+            ? renderButton()
+            : reverseState
+            ? [renderLabel(), renderIcon()]
+            : [renderIcon(), renderLabel()]
+        ]
       );
     };
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

@@ -1,0 +1,48 @@
+.nut-tag {
+  padding: 0 4px;
+  display: inline-flex;
+  align-items: center;
+  font-size: $tag-font-size;
+  border-radius: $tag-default-border-radius;
+  &--default {
+    color: $tag-default-color;
+    background: $tag-default-background-color;
+    border: $tag-border-width solid transparent;
+  }
+
+  &--primary {
+    color: $tag-default-color;
+    background: $tag-primary-background-color;
+    border: $tag-border-width solid transparent;
+  }
+
+  &--success {
+    color: $tag-default-color;
+    background: $tag-success-background-color;
+    border: $tag-border-width solid transparent;
+  }
+
+  &--danger {
+    color: $tag-default-color;
+    background: $tag-danger-background-color;
+    border: $tag-border-width solid transparent;
+  }
+
+  &--warning {
+    color: $tag-default-color;
+    background: $tag-warning-background-color;
+    border: $tag-border-width solid transparent;
+  }
+
+  &--round {
+    border-radius: $tag-round-border-radius;
+  }
+
+  &--mark {
+    border-radius: 0 12px 12px 0;
+  }
+  &--close {
+    margin-left: 4px;
+    cursor: pointer;
+  }
+}

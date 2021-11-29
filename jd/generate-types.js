@@ -6,11 +6,14 @@ declare class UIComponent {
   static install(vue: App): void;
 }\n`;
 const packages = [];
-config.nav.map(item => {
-  item.packages.forEach(element => {
-    let { name, show } = element;
-    if (show) {
-      importStr += `declare class ${name} extends UIComponent {}\n`;
+config.nav.map((item) => {
+  item.packages.forEach((element) => {
+    let { name, show, exportEmpty, type } = element;
+    if (show || exportEmpty) {
+      importStr +=
+        type == 'methods'
+          ? `declare function ${name}(options: any): void\n`
+          : `declare class ${name} extends UIComponent {}\n`;
       packages.push(name);
     }
   });
@@ -28,21 +31,16 @@ declare const _default: {
 };
 export default _default;`;
 let fileStr = importStr + installFunction;
-fs.outputFile(
-  path.resolve(__dirname, '../dist/nutui.d.ts'),
-  fileStr,
-  'utf8',
-  error => {
-    // logger.success(`${package_config_path} 文件写入成功`);
-  }
-);
+fs.outputFile(path.resolve(__dirname, '../dist/nutui.d.ts'), fileStr, 'utf8', (error) => {
+  // logger.success(`${package_config_path} 文件写入成功`);
+});
 fs.outputFile(
   path.resolve(__dirname, '../dist/index.d.ts'),
   `import * as NutUI from './nutui';
 export default NutUI;
 export * from './nutui';`,
   'utf8',
-  error => {
+  (error) => {
     // logger.success(`${package_config_path} 文件写入成功`);
   }
 );

@@ -1,13 +1,7 @@
 <template>
   <view class="nut-range-container">
     <view class="min" v-if="!hiddenRange">{{ +min }}</view>
-    <view
-      ref="root"
-      id="root"
-      :style="wrapperStyle"
-      :class="classes"
-      @click.stop="onClick"
-    >
+    <view ref="root" :id="'root-' + refRandomId" :style="wrapperStyle" :class="classes" @click.stop="onClick">
       <view class="nut-range-bar" :style="barStyle">
         <template v-if="range">
           <view
@@ -39,9 +33,7 @@
           >
             <slot v-if="$slots.button" name="button"></slot>
             <view class="nut-range-button" v-else :style="buttonStyle">
-              <view class="number" v-if="!hiddenTag">{{
-                curValue(index)
-              }}</view>
+              <view class="number" v-if="!hiddenTag">{{ curValue(index) }}</view>
             </view>
           </view>
         </template>
@@ -66,9 +58,7 @@
           >
             <slot v-if="$slots.button" name="button"></slot>
             <view class="nut-range-button" v-else :style="buttonStyle">
-              <view class="number" v-if="!hiddenTag">{{
-                curValue(index)
-              }}</view>
+              <view class="number" v-if="!hiddenTag">{{ curValue(index) }}</view>
             </view>
           </view>
         </template>
@@ -157,8 +147,7 @@ export default create({
       };
     });
 
-    const isRange = (val: unknown): val is number[] =>
-      !!props.range && Array.isArray(val);
+    const isRange = (val: unknown): val is number[] => !!props.range && Array.isArray(val);
 
     const calcMainAxis = () => {
       const { modelValue, min } = props;
@@ -223,7 +212,7 @@ export default create({
       }
 
       const { min, modelValue } = props;
-      let rect = await useTaroRect(root, Taro);
+      const rect = await useTaroRect(root, Taro);
       const delta = (event as any).touches[0].clientX - rect.left;
       const total = rect.width;
       const value = Number(min) + (delta / total) * scope.value;
@@ -275,12 +264,14 @@ export default create({
       const diff = (delta / total) * scope.value;
 
       if (isRange(startValue)) {
-        (currentValue as number[])[buttonIndex.value] =
-          startValue[buttonIndex.value] + diff;
+        (currentValue as number[])[buttonIndex.value] = startValue[buttonIndex.value] + diff;
       } else {
         currentValue = startValue + diff;
       }
       updateValue(currentValue);
+
+      event.stopPropagation();
+      event.preventDefault();
     };
 
     const onTouchEnd = () => {
@@ -295,12 +286,11 @@ export default create({
     };
 
     const curValue = (idx?: number) => {
-      const value =
-        typeof idx === 'number'
-          ? (props.modelValue as number[])[idx]
-          : props.modelValue;
+      const value = typeof idx === 'number' ? (props.modelValue as number[])[idx] : props.modelValue;
       return value;
     };
+
+    const refRandomId = Math.random().toString(36).slice(-8);
 
     return {
       root,
@@ -314,12 +304,9 @@ export default create({
       ...toRefs(props),
       barStyle,
       curValue,
-      buttonIndex
+      buttonIndex,
+      refRandomId
     };
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

@@ -1,0 +1,105 @@
+.nut-progress {
+  width: 100%;
+  position: relative;
+  display: flex;
+  .nut-progress-outer {
+    flex: 1;
+    background-color: #f3f3f3;
+    border-radius: 12px;
+    height: 10px;
+    .nut-progress-inner {
+      width: 30%;
+      height: 100%;
+      border-radius: 12px;
+      background: linear-gradient(
+        268deg,
+        rgba(250, 44, 25, 1) 0%,
+        rgba(250, 63, 25, 1) 44.59259259%,
+        rgba(250, 89, 25, 1) 83.40740741%,
+        rgba(250, 100, 25, 1) 100%
+      );
+      -webkit-transition: all 0.4s;
+      transition: all 0.4s;
+      position: relative;
+      .nut-progress-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #fff;
+      }
+    }
+    .nut-active {
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 10px;
+        animation: progressActive 2s ease-in-out infinite;
+      }
+    }
+    @keyframes progressActive {
+      0% {
+        background: rgba(255, 255, 255, 0.1);
+        width: 0;
+      }
+      20% {
+        background: rgba(255, 255, 255, 0.5);
+        width: 0;
+      }
+      to {
+        background: rgba(255, 255, 255, 0);
+        width: 100%;
+      }
+    }
+    &.nut-progress-small {
+      height: 5px;
+      .nut-progress-text {
+        font-size: 7px;
+        line-height: 10px;
+        padding: 2px 4px;
+        top: -100%;
+      }
+    }
+    &.nut-progress-base {
+      height: 10px;
+      .nut-progress-text {
+        font-size: 9px;
+        line-height: 13px;
+      }
+    }
+    &.nut-progress-large {
+      height: 15px;
+      .nut-progress-text {
+        font-size: 13px;
+        line-height: 18px;
+      }
+    }
+  }
+  .nut-progress-outer-part {
+    width: 90%;
+  }
+  .nut-progress-text {
+    padding: 0 5px;
+    font-size: 13px;
+    line-height: 1;
+    min-width: 35px;
+  }
+  .nut-progress-insidetext {
+    padding: 3px 5px 3px 6px;
+    background: rgba(250, 44, 25, 1);
+    border-radius: 5px;
+    position: absolute;
+    transition: all 0.4s;
+    top: -42%;
+    min-width: 0px;
+  }
+  .nut-icon-success,
+  .nut-icon-fail {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+  }
+}

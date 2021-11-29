@@ -8,9 +8,7 @@
 import { provide, reactive, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('tabbar');
-import tabbaritem from '../../__VUE/tabbaritem/index.taro.vue';
 export default create({
-  children: [tabbaritem],
   props: {
     visible: {
       type: [Number, String],
@@ -59,7 +57,7 @@ export default create({
     provide('parent', parentData);
     watch(
       () => props.visible,
-      value => {
+      (value) => {
         parentData.modelValue = value;
       }
     );
@@ -69,7 +67,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

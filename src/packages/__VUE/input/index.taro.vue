@@ -1,21 +1,15 @@
 <template>
   <view :class="classes">
     <view class="nut-input-label">
-      <view class="nut-input-require" v-if="requireShow">*</view>
       <view v-if="label" class="label-string">{{ label }}</view>
     </view>
-    <view v-if="readonly">
-      {{ modelValue }}
-    </view>
     <input
-      v-else
       class="input-text"
       :style="styles"
       :type="type"
       :maxlength="maxLength"
       :placeholder="placeholder"
-      :disabled="disabled"
-      :readonly="readonly"
+      :disabled="disabled || readonly"
       :value="modelValue"
       @input="valueChange"
       @focus="valueFocus"
@@ -124,7 +118,8 @@ export default create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [`${prefixCls}-disabled`]: props.disabled
+        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-require`]: props.requireShow
       };
     });
 
@@ -147,8 +142,8 @@ export default create({
       if (props.type === 'number') {
         val = formatNumber(val, false);
       }
-      emit('change', val, event);
       emit('update:modelValue', val, event);
+      emit('change', val, event);
     };
 
     const valueFocus = (event: Event) => {
@@ -169,8 +164,9 @@ export default create({
     };
 
     const handleClear = (event: Event) => {
-      emit('change', '', event);
       emit('update:modelValue', '', event);
+      emit('change', '', event);
+      emit('clear', '');
     };
 
     return {
@@ -185,7 +181,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

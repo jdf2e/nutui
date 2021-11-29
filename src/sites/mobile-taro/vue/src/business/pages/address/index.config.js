@@ -1,3 +1,4 @@
 export default {
-  navigationBarTitleText: 'Address'
+  navigationBarTitleText: 'Address',
+  disableScroll: true
 };

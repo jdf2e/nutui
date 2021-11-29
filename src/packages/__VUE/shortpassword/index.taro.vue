@@ -6,7 +6,6 @@
         borderRadius: '12px',
         textAlign: 'center'
       }"
-      class="nut-short-popup"
       v-model:visible="show"
       :closeable="true"
       @click-close-icon="closeIcon"
@@ -15,25 +14,29 @@
     >
       <view class="nut-shortpsd-title">{{ title }}</view>
       <view class="nut-shortpsdWx-subtitle">{{ desc }}</view>
+      <input
+        v-if="isWx && visible"
+        class="nut-input-real-taro"
+        :id="'nut-input-real-taro-' + randRef"
+        type="number"
+        :maxlength="length"
+        v-model="realInput"
+        @input="changeValue"
+      />
       <view class="nut-input-w">
         <input
+          v-if="!isWx"
+          ref="realpwd"
           class="nut-input-real"
           type="number"
-          :maxlength="length"
+          maxlength="6"
           v-model="realInput"
           @input="changeValue"
-          @blur="blur"
         />
-        <view class="nut-shortpsd-fake" @click="focus">
-          <view
-            class="nut-shortpsd-li"
-            v-for="(sublen, index) in new Array(comLen)"
-            v-bind:key="index"
-          >
-            <view
-              class="nut-shortpsd-icon"
-              v-if="realInput.length > index"
-            ></view>
+        <view class="nut-input-site"></view>
+        <view class="nut-shortpsd-fake-taro" @click="focus">
+          <view class="nut-shortpsd-li" v-for="(sublen, index) in new Array(comLen)" v-bind:key="index">
+            <view class="nut-shortpsd-icon" v-if="String(realInput).length > index"></view>
           </view>
         </view>
       </view>
@@ -95,35 +98,54 @@ export default create({
       default: 6
     }
   },
-  emits: [
-    'update:modelValue',
-    'update:visible',
-    'complete',
-    'change',
-    'ok',
-    'tips',
-    'close',
-    'cancel'
-  ],
+  emits: ['update:modelValue', 'update:visible', 'complete', 'change', 'ok', 'tips', 'close', 'cancel'],
   setup(props, { emit }) {
     const realInput = ref(props.modelValue);
     const realpwd = ref();
     const comLen = computed(() => range(Number(props.length)));
     const show = ref(props.visible);
+    const refRandomId = Math.random().toString(36).slice(-8);
+    const randRef = ref(refRandomId);
+    const isWx = ref(false); // 判断是否为微信端
     // 方法
     function sureClick() {
       emit('ok', realInput.value);
     }
     function focus() {
-      let a = document.getElementsByClassName('nut-input-real')[0] as any;
-      a.focus();
-      realpwd.value = document.getElementsByClassName('popup-center')[0] as any;
-      realpwd.value.style.top = '45%';
+      let dom: any = '';
+      console.log(123);
+
+      if (isWx.value) {
+        setTimeout(() => {
+          if (!document.getElementById('nut-input-real-taro-' + randRef.value)) return;
+          dom = document.getElementById('nut-input-real-taro-' + randRef.value) as any;
+          if (!dom) return;
+          dom.focus();
+        }, 150);
+      } else {
+        dom = document.getElementsByClassName('nut-input-real')[0] as any;
+        let h = dom.children[0];
+        h.focus();
+      }
     }
     watch(
       () => props.visible,
       (value) => {
         show.value = value;
+        if (value) {
+          randRef.value = Math.random().toString(36).slice(-8);
+          if (Taro.getEnv() === 'WEB') {
+            isWx.value = false;
+          } else {
+            isWx.value = true;
+          }
+        }
+      }
+    );
+    watch(
+      () => props.modelValue,
+      (value) => {
+        realInput.value = value;
       }
     );
     function changeValue(e: Event) {
@@ -133,7 +155,7 @@ export default create({
         val = val.slice(0, comLen.value);
         realInput.value = val;
       }
-      if (realInput.value.length === comLen.value) {
+      if (String(realInput.value).length === comLen.value) {
         emit('complete', val);
       }
       emit('change', val);
@@ -153,14 +175,13 @@ export default create({
     function onTips() {
       emit('tips');
     }
-    function blur() {
-      let popupCenter = document.getElementsByClassName(
-        'popup-center'
-      )[0] as any;
-      popupCenter.style.top = '50%';
-    }
     onMounted(() => {
       eventCenter.once((getCurrentInstance() as any).router.onReady, () => {});
+      if (Taro.getEnv() === 'WEB') {
+        isWx.value = false;
+      } else {
+        isWx.value = true;
+      }
     });
     return {
       comLen,
@@ -174,12 +195,10 @@ export default create({
       focus,
       show,
       closeIcon,
-      blur
+      isWx,
+      refRandomId,
+      randRef
     };
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

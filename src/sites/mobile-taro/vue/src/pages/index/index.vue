@@ -16,7 +16,7 @@
         <li>{{ _nav.name }}</li>
         <ul>
           <template v-for="_package in _nav.packages" :key="_package">
-            <li v-if="_package.show">
+            <li v-if="_package.show && _package.taro == true">
               <a @click="navigateTo(_package.name.toLowerCase(), _nav.enName)">
                 {{ _package.name }}
                 &nbsp;&nbsp;
@@ -34,15 +34,29 @@
 <script>
 import { reactive, toRefs } from 'vue';
 import { nav } from '../../../../../../config.json';
+import Taro from '@tarojs/taro';
 export default {
   name: 'NutUI',
+  onShareAppMessage() {
+    return {
+      title: '',
+      path: '/pages/index/index',
+      success: function (res) {}
+    };
+  },
+  // onShareTimeline() {
+  //   return {
+  //     title: '京东风格的轻量级小程序组件库',
+  // 	  success: function(res) {}
+  //   }
+  // },
   setup() {
     const state = reactive({
       nav
     });
 
     const navigateTo = (name, enName) => {
-      wx.navigateTo({
+      Taro.navigateTo({
         url: `/${enName}/pages/${name}/index`
       });
     };
@@ -79,6 +93,7 @@ export default {
         line-height: 48px;
         font-size: 34px;
         color: rgba(51, 51, 51, 1);
+        font-weight: 500;
       }
       p {
         height: 18px;
@@ -124,6 +139,10 @@ export default {
           }
         }
       }
+    }
+    ol,
+    li {
+      list-style: none;
     }
   }
 }

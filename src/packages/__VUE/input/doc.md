@@ -8,10 +8,14 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Input } from '@nutui/nutui';
+// vue
+import { Input,Icon } from '@nutui/nutui';
+// taro
+import { Input,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Input);
+app.use(Icon);
 
 ```
 ## 代码演示

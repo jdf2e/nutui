@@ -2,32 +2,18 @@
   <!-- <div class="doc-header" :style="{ background: themeColor === 'red' ? headerBg : themeColor }" :class="`doc-header-${data.theme}`"> -->
   <div class="doc-header" :class="themeName()">
     <div class="header-logo">
-      <a class="logo-link" href="#"></a>
+      <a class="logo-link" href="#" @click="toHome"></a>
       <span class="logo-border"></span>
+      <span class="version">{{ version }}</span>
     </div>
     <div class="header-nav">
       <Search />
       <div class="nav-box">
         <ul class="nav-list">
-          <li class="nav-item">
-            <router-link :to="header[0].path">
-              {{ header[0].cName }}
-            </router-link>
-          </li>
-          <li class="nav-item" :class="{ active: isActive(header[1].path) }">
-            <router-link :to="header[1].path">
-              {{ header[1].cName }}
-            </router-link>
-          </li>
-          <li class="nav-item" :class="{ active: isActive(header[2].name) }">
-            <a href="demo.html#/">
-              {{ header[2].cName }}
+          <li class="nav-item" v-for="item in header" :key="item.name" :class="{ active: isActive(item.name) }">
+            <a :href="item.path">
+              {{ item.cName }}
             </a>
-          </li>
-          <li class="nav-item" :class="{ active: isActive(header[3].name) }">
-            <router-link :to="header[3].name">
-              {{ header[3].cName }}
-            </router-link>
           </li>
           <li class="nav-item">
             <div
@@ -38,9 +24,7 @@
               @click.stop="data.isShowSelect = !data.isShowSelect"
               :class="[data.isShowSelect == true ? 'select-up' : 'select-down']"
             >
-              <div class="header-select-hd"
-                >{{ data.verson }}<i class=""></i
-              ></div>
+              <div class="header-select-hd">{{ data.verson }}<i class=""></i></div>
               <transition name="fade">
                 <div class="header-select-bd" v-show="data.isShowSelect">
                   <div
@@ -57,11 +41,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <a
-              class="user-link"
-              target="_blank"
-              href="https://github.com/jdf2e/nutui"
-            ></a>
+            <a class="user-link" target="_blank" href="https://github.com/jdf2e/nutui"></a>
+            <a class="user-link gitee" target="_blank" href="https://gitee.com/jd-platform-opensource/nutui"></a>
           </li>
         </ul>
       </div>
@@ -71,7 +52,8 @@
 <script lang="ts">
 import { defineComponent, reactive, computed, onMounted } from 'vue';
 import Search from './Search.vue';
-import { header, versions } from '@/config.json';
+import { header, versions, nav } from '@/config.json';
+import { version } from '/package.json';
 import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-header',
@@ -79,6 +61,10 @@ export default defineComponent({
     Search
   },
   setup() {
+    let packages = [] as any[];
+    nav.forEach((item) => {
+      packages.push(...item.packages);
+    });
     const data = reactive({
       theme: 'black',
       // headerBg: 'url(' + require('../../assets/images/header-bg.png') + ')',
@@ -93,13 +79,27 @@ export default defineComponent({
     const handleFocusOut = () => {
       data.isShowSelect = false;
     };
+
+    const toHome = () => {
+      RefData.getInstance().currentRoute.value = '/';
+    };
+
     const isActive = computed(() => {
-      return function(name: string) {
-        return RefData.getInstance().currentRoute.value == name.toLowerCase();
+      let value = RefData.getInstance().currentRoute.value;
+      return function (name: string) {
+        const lName = name.toLowerCase();
+        if (lName === 'component') {
+          if (value.indexOf('-taro') > -1) {
+            value = value.split('-taro')[0];
+          }
+          return packages.findIndex((item) => item.name.toLowerCase() === value) > -1;
+        } else {
+          return value === lName || lName.includes(value);
+        }
       };
     });
     const themeName = computed(() => {
-      return function() {
+      return function () {
         return `doc-header-${RefData.getInstance().themeColor.value}`;
       };
     });
@@ -112,7 +112,9 @@ export default defineComponent({
     return {
       header,
       versions,
+      version,
       data,
+      toHome,
       isActive,
       checkTheme,
       themeName,
@@ -149,7 +151,6 @@ export default defineComponent({
     width: 240px;
     height: 64px;
     .logo-link {
-      display: inline-block;
       width: 120px;
       height: 46px;
       vertical-align: middle;
@@ -158,13 +159,17 @@ export default defineComponent({
       margin-top: -23px;
     }
     .logo-border {
-      display: inline-block;
       width: 1px;
       height: 26px;
       position: absolute;
       right: 0;
       top: 50%;
       margin-top: -13px;
+    }
+    .version {
+      position: absolute;
+      right: 70px;
+      font-size: 14px;
     }
   }
   &-nav {
@@ -178,7 +183,7 @@ export default defineComponent({
     .nav-box {
       margin-right: 140px;
       .nav-list {
-        min-width: 445px;
+        min-width: 490px;
         display: flex;
         list-style: none;
         align-items: center;
@@ -192,6 +197,7 @@ export default defineComponent({
         line-height: 63px;
         text-align: center;
         cursor: pointer;
+        flex-shrink: 0;
         a {
           display: inline-block;
           line-height: 64px;
@@ -220,8 +226,14 @@ export default defineComponent({
         width: 26px;
         height: 26px;
         vertical-align: middle;
-        background: url('../../assets/images/icon-user.png') no-repeat;
+        background-repeat: no-repeat;
+        background-image: url('../../assets/images/icon-user.png');
         background-size: 26px;
+
+        &.gitee {
+          margin-left: 8px;
+          background-image: url('../../assets/images/icon-gitee.png');
+        }
       }
     }
   }
@@ -276,8 +288,7 @@ export default defineComponent({
     .header {
       &-logo {
         .logo-link {
-          background: url('../../assets/images/logo-header-white.png') no-repeat
-            center/100%;
+          background: url('../../assets/images/logo-header-white.png') no-repeat center/100%;
         }
         .logo-border {
           background: $theme-red-border;
@@ -355,8 +366,7 @@ export default defineComponent({
     .header {
       &-logo {
         .logo-link {
-          background: url('../../assets/images/logo-header-red.png') no-repeat
-            center/100%;
+          background: url('../../assets/images/logo-header-red.png') no-repeat center/100%;
         }
         .logo-border {
           background: $theme-white-border;
@@ -434,8 +444,7 @@ export default defineComponent({
     .header {
       &-logo {
         .logo-link {
-          background: url('../../assets/images/logo-header-red.png') no-repeat
-            center/100%;
+          background: url('../../assets/images/logo-header-red.png') no-repeat center/100%;
         }
         .logo-border {
           background: $theme-black-border;

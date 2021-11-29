@@ -3,18 +3,8 @@
     <h2>基础用法</h2>
     <nut-cell>
       <ul class="infiniteUl" id="scroll">
-        <nut-infiniteloading
-          container-id="scroll"
-          :use-window="false"
-          :has-more="hasMore"
-          @load-more="loadMore"
-        >
-          <li
-            class="infiniteLi"
-            v-for="(item, index) in defultList"
-            :key="index"
-            >{{ item }}</li
-          >
+        <nut-infiniteloading container-id="scroll" :use-window="false" :has-more="hasMore" @load-more="loadMore">
+          <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{ item }}</li>
         </nut-infiniteloading>
       </ul>
     </nut-cell>
@@ -31,12 +21,7 @@
           @load-more="refreshLoadMore"
           @refresh="refresh"
         >
-          <li
-            class="infiniteLi"
-            v-for="(item, index) in refreshList"
-            :key="index"
-            >{{ item }}</li
-          >
+          <li class="infiniteLi" v-for="(item, index) in refreshList" :key="index">{{ item }}</li>
         </nut-infiniteloading>
       </ul>
     </nut-cell>
@@ -52,12 +37,7 @@
           :has-more="customHasMore"
           @load-more="customLoadMore"
         >
-          <li
-            class="infiniteLi"
-            v-for="(item, index) in customList"
-            :key="index"
-            >{{ item }}</li
-          >
+          <li class="infiniteLi" v-for="(item, index) in customList" :key="index">{{ item }}</li>
         </nut-infiniteloading>
       </ul>
     </nut-cell>
@@ -155,6 +135,8 @@ export default createDemo({
 .infiniteUl {
   height: 300px;
   width: 100%;
+  padding: 0;
+  margin: 0;
   overflow-y: auto;
   overflow-x: hidden;
 }

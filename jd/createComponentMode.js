@@ -80,7 +80,7 @@ function init() {
         type: 'input',
         name: 'sort',
         message:
-          '请选择组件分类(输入编号)：1布局组件，2操作反馈，3基础组件，4导航组件，5数据录入，6业务组件',
+          '请选择组件分类(输入编号)：1布局组件，2操作反馈，3基础组件，4导航组件，5数据录入，6特色组件',
         validate(value) {
           const pass = /^[1-6]$/.test(value);
           if (pass) {
@@ -107,7 +107,7 @@ function init() {
         message: '组件作者(可署化名):'
       }
     ])
-    .then(function(answers) {
+    .then(function (answers) {
       // answers.sort = String(sorts.indexOf(answers.sort));
       newCpt = Object.assign(newCpt, answers);
       createNew();
@@ -115,7 +115,7 @@ function init() {
 }
 function createIndexJs() {
   const nameLc = newCpt.name.toLowerCase();
-  const destPath = path.join('src/packages/' + nameLc);
+  const destPath = path.join('src/packages/__VUE/' + nameLc);
   if (!fs.existsSync(destPath)) {
     fs.mkdirSync(destPath);
   }
@@ -158,12 +158,12 @@ function createVue() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
     let content = demoModel(nameLc).vue;
-    const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`);
+    const dirPath = path.join(__dirname, `../src/packages/__VUE/${nameLc}/`);
     const filePath = path.join(dirPath, `index.vue`);
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(filePath);
     }
-    fs.writeFile(filePath, content, err => {
+    fs.writeFile(filePath, content, (err) => {
       if (err) throw err;
       resolve(`生成${newCpt.name}.vue文件成功`);
     });
@@ -174,12 +174,12 @@ function createDemo() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
     let content = demoModel(nameLc).demo;
-    const dirPath = path.join(__dirname, '../src/packages/' + nameLc);
+    const dirPath = path.join(__dirname, '../src/packages/__VUE/' + nameLc);
     const filePath = path.join(dirPath, `demo.vue`);
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(filePath);
     }
-    fs.writeFile(filePath, content, err => {
+    fs.writeFile(filePath, content, (err) => {
       if (err) throw err;
       resolve(`生成demo.vue文件成功`);
     });
@@ -197,7 +197,7 @@ function addToPackageJson() {
     const filePath = path.join(dirPath, `src/config.json`);
 
     var tempfile = JSON.stringify(config, null, 2);
-    fs.writeFile(filePath, tempfile, err => {
+    fs.writeFile(filePath, tempfile, (err) => {
       if (err) throw err;
       resolve(`修改config.json文件成功`);
     });
@@ -207,12 +207,12 @@ function createScss() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
     let content = `.nut-${nameLc} {}`;
-    const dirPath = path.join(__dirname, '../src/packages/' + nameLc);
+    const dirPath = path.join(__dirname, '../src/packages/__VUE/' + nameLc);
     const filePath = path.join(dirPath, `index.scss`);
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(filePath);
     }
-    fs.writeFile(filePath, content, err => {
+    fs.writeFile(filePath, content, (err) => {
       if (err) throw err;
       resolve(`index.scss文件成功`);
     });
@@ -222,12 +222,12 @@ function createDoc() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase();
     let content = demoModel(nameLc).doc;
-    const dirPath = path.join(__dirname, '../src/packages/' + nameLc);
+    const dirPath = path.join(__dirname, '../src/packages/__VUE/' + nameLc);
     const filePath = path.join(dirPath, `doc.md`);
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(filePath);
     }
-    fs.writeFile(filePath, content, err => {
+    fs.writeFile(filePath, content, (err) => {
       if (err) throw err;
       resolve(`doc.md文件成功`);
     });

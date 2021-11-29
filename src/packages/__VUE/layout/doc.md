@@ -8,13 +8,15 @@
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
-import { Layout } from '@nutui/nutui';
-//mp
-import { Layout } from '@nutui/nutui@taro';
+// vue
+import { Layout,Row,Col } from '@nutui/nutui';
+// taro
+import { Layout,Row,Col } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Layout);
+app.use(Row);
+app.use(Col);
 ```
 
 ## 代码演示

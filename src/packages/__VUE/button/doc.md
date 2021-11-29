@@ -8,10 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
+// vue
 import { Button } from '@nutui/nutui';
-//mp
-import { Button } from '@nutui/nutui@taro';
+// taro
+import { Button } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Button);
@@ -63,8 +63,25 @@ app.use(Button);
 ### 加载状态
 
 ```html
-<nut-button loading></nut-button>
-<nut-button loading>加载中</nut-button>
+<nut-button loading type="info"></nut-button>
+<nut-button loading type="warning">加载中...</nut-button>
+<nut-button :loading="isLoading" type="success" @click="changeLoading">Click me!</nut-button>
+```
+``` javascript
+  // ...
+  let isLoading = ref(false);
+  const changeLoading = () => {
+    isLoading.value = true;
+    setTimeout(() => {
+      isLoading.value = false;
+    }, 3000);
+  };
+
+  return {
+    isLoading,
+    changeLoading
+  };
+  // ...
 ```
 
 ### 图标按钮
@@ -76,12 +93,13 @@ app.use(Button);
 
 ### 按钮尺寸
 
-支持 `large`、`normal`、`small` 三种尺寸，默认为 `normal`。
+支持 `large`、`normal`、`small`、`mini` 四种尺寸，默认为 `normal`。
 
 ```html
 <nut-button size="large" type="primary">大号按钮</nut-button>
 <nut-button type="primary">普通按钮</nut-button>
 <nut-button size="small" type="primary">小型按钮</nut-button>
+<nut-button size="mini" type="primary">小型按钮</nut-button>
 ```
 
 ### 块级元素
@@ -108,7 +126,7 @@ app.use(Button);
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | type         | 类型，可选值为 `primary` `info` `warning` `danger` `success` | String |`default`         |
-| size        | 尺寸，可选值为 `large` `small`  | String | `normal`      |
+| size        | 尺寸，可选值为 `large` `small` `mini`  | String | `normal`      |
 | shape         | 形状，可选值为 `square` | String | `round`             |
 | color | 按钮颜色，支持传入 linear-gradient 渐变色     | String | - |
 | plain          | 	是否为朴素按钮                       | Boolean | `false`             |

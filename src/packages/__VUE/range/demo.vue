@@ -10,12 +10,7 @@
     </nut-cell>
     <h2>指定范围</h2>
     <nut-cell class="cell">
-      <nut-range
-        v-model="value3"
-        :max="10"
-        :min="-10"
-        @change="onChange"
-      ></nut-range>
+      <nut-range v-model="value3" :max="10" :min="-10" @change="onChange"></nut-range>
     </nut-cell>
     <h2>设置步长</h2>
     <nut-cell class="cell">
@@ -47,7 +42,7 @@
     <nut-cell class="cell">
       <nut-range v-model="value9" @change="onChange">
         <template #button>
-          <div class="custom-button">{{ value10 }}</div>
+          <div class="custom-button">{{ value9 }}</div>
         </template>
       </nut-range>
     </nut-cell>
@@ -57,7 +52,7 @@
 <script lang="ts">
 import { toRefs, reactive } from 'vue';
 import { createComponent } from '../../utils/create';
-import { Toast } from '../toast';
+import { Toast } from '@/packages/nutui.vue';
 
 const { createDemo } = createComponent('range');
 export default createDemo({
@@ -72,8 +67,7 @@ export default createDemo({
       value6: 40,
       value7: 50,
       value8: 40,
-      value9: 60,
-      value10: 50
+      value9: 60
     });
     const onChange = (value: number) => Toast.text('当前值：' + value);
     return {

@@ -1,0 +1,54 @@
+.nut-divider {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #909ca4;
+  margin: 8px 0;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    border: 1px solid currentColor;
+    border-width: 1px 0 0;
+    flex: 1;
+  }
+
+  &.nut-divider-center,
+  &.nut-divider-left,
+  &.nut-divider-right {
+    &::before {
+      margin-right: 8px;
+    }
+
+    &::after {
+      margin-left: 8px;
+    }
+  }
+
+  &.nut-divider-left {
+    &::before {
+      max-width: 10%;
+    }
+  }
+
+  &.nut-divider-right {
+    &::after {
+      max-width: 10%;
+    }
+  }
+
+  &.nut-divider-dashed {
+    &::before,
+    &::after {
+      border-style: dashed;
+    }
+  }
+
+  &.nut-divider-hairline {
+    &::before,
+    &::after {
+      transform: scaleY(0.5);
+    }
+  }
+}

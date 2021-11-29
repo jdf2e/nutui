@@ -8,10 +8,10 @@
 
 ```javascript
 import { createApp } from 'vue';
-//vue
+// vue
 import { OverLay } from '@nutui/nutui';
-//mp
-import { OverLay } from '@nutui/nutui@taro';
+// taro
+import { OverLay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(OverLay);

@@ -1,0 +1,109 @@
+.nut-noticebar-page {
+  width: 100%;
+  display: flex;
+  height: $noticeBar-height;
+  font-size: $noticeBar-font-size;
+  position: relative;
+  align-items: center;
+  &.wrapable {
+    height: auto;
+    padding: 8px 16px;
+    .wrap {
+      height: auto;
+      .content {
+        position: relative;
+        white-space: normal;
+        word-wrap: break-word;
+      }
+    }
+  }
+
+  .withicon {
+    position: relative;
+    padding-right: 40px;
+  }
+  .left-icon {
+    height: $noticeBar-left-icon-width;
+    min-width: $noticeBar-left-icon-width;
+    margin: 0 5px 0 10px;
+    background-size: 100% 100%;
+  }
+  .right-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $noticeBar-right-icon-width;
+    margin: 0 10px 0 5px;
+  }
+  .wrap {
+    flex: 1;
+    height: $noticeBar-line-height;
+    line-height: $noticeBar-line-height;
+    overflow: hidden;
+    position: relative;
+  }
+  .content {
+    position: absolute;
+    white-space: nowrap;
+    &.nut-ellipsis {
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  // 只跑一次
+  .play {
+    animation: nut-notice-bar-play linear both running;
+  }
+  .play-infinite {
+    animation: nut-notice-bar-play-infinite linear infinite both running;
+  }
+  .play-vertical {
+    animation: nut-notice-bar-play-vertical linear infinite both running;
+  }
+}
+
+@keyframes nut-notice-bar-play {
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes nut-notice-bar-play-infinite {
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+// 垂直方向的滚动
+@keyframes nut-notice-bar-play-vertical {
+  to {
+    transform: translateY($noticeBar-height);
+  }
+}
+
+// 纵向
+.nut-noticebar-vertical {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: $noticeBar-height;
+  font-size: $noticeBar-font-size;
+  overflow: hidden;
+
+  .horseLamp_list {
+    margin: 0;
+    padding: 0;
+    display: block;
+    flex: 1;
+    .horseLamp_list_item {
+      display: flex;
+      align-items: center;
+      height: $noticeBar-height;
+    }
+  }
+
+  .go {
+    align-self: center;
+  }
+}

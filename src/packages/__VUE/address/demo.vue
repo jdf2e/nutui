@@ -1,12 +1,7 @@
 <template>
   <div class="demo">
     <h2>选择自定义地址</h2>
-    <nut-cell
-      title="选择地址"
-      :desc="one"
-      is-link
-      @click="showAddress"
-    ></nut-cell>
+    <nut-cell title="选择地址" :desc="one" is-link @click="showAddress"></nut-cell>
 
     <nut-address
       v-model:visible="normal"
@@ -19,13 +14,24 @@
       custom-address-title="请选择所在地区"
     ></nut-address>
 
+    <h2>选择自定义地址2</h2>
+    <nut-cell title="选择地址" :desc="five" is-link @click="showAddress2"></nut-cell>
+
+    <nut-address
+      v-model:visible="normal2"
+      type="custom2"
+      :province="province"
+      :city="city"
+      :country="country"
+      :town="town"
+      height="270px"
+      @change="(cal) => onChange(cal, 'normal2')"
+      @close="close5"
+      custom-address-title="请选择所在地区"
+    ></nut-address>
+
     <h2>选择已有地址</h2>
-    <nut-cell
-      title="选择地址"
-      :desc="two"
-      is-link
-      @click="showAddressExist"
-    ></nut-cell>
+    <nut-cell title="选择地址" :desc="two" is-link @click="showAddressExist"></nut-cell>
 
     <nut-address
       v-model:visible="exist"
@@ -39,12 +45,7 @@
     ></nut-address>
 
     <h2>自定义图标</h2>
-    <nut-cell
-      title="选择地址"
-      :desc="three"
-      is-link
-      @click="showCustomImg"
-    ></nut-cell>
+    <nut-cell title="选择地址" :desc="three" is-link @click="showCustomImg"></nut-cell>
 
     <nut-address
       v-model:visible="customImg"
@@ -60,12 +61,7 @@
     ></nut-address>
 
     <h2>自定义地址与已有地址切换</h2>
-    <nut-cell
-      title="选择地址"
-      :desc="four"
-      is-link
-      @click="showAddressOther"
-    ></nut-cell>
+    <nut-cell title="选择地址" :desc="four" is-link @click="showAddressOther"></nut-cell>
 
     <nut-address
       v-model:visible="other"
@@ -125,27 +121,31 @@ export default createDemo({
   setup() {
     const address = reactive({
       province: [
-        { id: 1, name: '北京' },
-        { id: 2, name: '广西' },
-        { id: 3, name: '江西' },
-        { id: 4, name: '四川' }
+        { id: 1, name: '北京', title: 'B' },
+        { id: 2, name: '广西', title: 'G' },
+        { id: 3, name: '江西', title: 'J' },
+        { id: 4, name: '四川', title: 'S' },
+        { id: 5, name: '浙江', title: 'Z' }
       ],
       city: [
-        { id: 7, name: '朝阳区' },
-        { id: 8, name: '崇文区' },
-        { id: 9, name: '昌平区' },
-        { id: 6, name: '石景山区' }
+        { id: 7, name: '朝阳区', title: 'C' },
+        { id: 8, name: '崇文区', title: 'C' },
+        { id: 9, name: '昌平区', title: 'C' },
+        { id: 6, name: '石景山区', title: 'S' },
+        { id: 3, name: '八里庄街道', title: 'B' },
+        { id: 9, name: '北苑', title: 'B' }
       ],
       country: [
-        { id: 3, name: '八里庄街道' },
-        { id: 9, name: '北苑' },
-        { id: 4, name: '常营乡' }
+        { id: 3, name: '八里庄街道', title: 'B' },
+        { id: 9, name: '北苑', title: 'B' },
+        { id: 4, name: '常营乡', title: 'C' }
       ],
       town: []
     });
 
     const showPopup = reactive({
       normal: false,
+      normal2: false,
       exist: false,
       customImg: false,
       other: false
@@ -166,7 +166,9 @@ export default createDemo({
         countyName: '通州区',
         provinceName: '北京市',
         selectedAddress: true,
-        townName: ''
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718'
       },
       {
         id: 2,
@@ -175,7 +177,9 @@ export default createDemo({
         countyName: '',
         provinceName: '钓鱼岛',
         selectedAddress: false,
-        townName: ''
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718'
       },
       {
         id: 3,
@@ -184,7 +188,9 @@ export default createDemo({
         countyName: '科创十一街18号院',
         provinceName: '北京市',
         selectedAddress: false,
-        townName: ''
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718'
       }
     ]);
 
@@ -192,11 +198,16 @@ export default createDemo({
       one: '请选择地址',
       two: '请选择地址',
       three: '请选择地址',
-      four: '请选择地址'
+      four: '请选择地址',
+      five: '请选择地址'
     });
 
     const showAddress = () => {
       showPopup.normal = !showPopup.normal;
+    };
+
+    const showAddress2 = () => {
+      showPopup.normal2 = !showPopup.normal2;
     };
 
     const onChange = (cal: CalBack, tag: string) => {
@@ -210,6 +221,11 @@ export default createDemo({
       text.one = val.data.addressStr;
     };
 
+    const close5 = (val: CalResult) => {
+      console.log(val);
+      text.five = val.data.addressStr;
+    };
+
     const showAddressExist = () => {
       showPopup.exist = true;
     };
@@ -217,19 +233,13 @@ export default createDemo({
     const close2 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
-        const { provinceName, cityName, countyName, townName, addressDetail } =
-          val.data;
-        text.two =
-          provinceName + cityName + countyName + townName + addressDetail;
+        const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
+        text.two = provinceName + cityName + countyName + townName + addressDetail;
       } else {
         text.two = val.data.addressStr;
       }
     };
-    const selected = (
-      prevExistAdd: AddressList,
-      nowExistAdd: RegionData,
-      arr: AddressList[]
-    ) => {
+    const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
       console.log(prevExistAdd);
       console.log(nowExistAdd);
     };
@@ -244,10 +254,8 @@ export default createDemo({
     const close3 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
-        const { provinceName, cityName, countyName, townName, addressDetail } =
-          val.data;
-        text.three =
-          provinceName + cityName + countyName + townName + addressDetail;
+        const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
+        text.three = provinceName + cityName + countyName + townName + addressDetail;
       } else {
         text.three = val.data.addressStr;
       }
@@ -256,10 +264,8 @@ export default createDemo({
     const close4 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
-        const { provinceName, cityName, countyName, townName, addressDetail } =
-          val.data;
-        text.four =
-          provinceName + cityName + countyName + townName + addressDetail;
+        const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
+        text.four = provinceName + cityName + countyName + townName + addressDetail;
       } else {
         text.four = val.data.addressStr;
       }
@@ -279,11 +285,13 @@ export default createDemo({
 
     return {
       showAddress,
+      showAddress2,
       showPopup,
       onChange,
       close1,
       showAddressExist,
       close2,
+      close5,
       selected,
       existAddress,
       showAddressOther,

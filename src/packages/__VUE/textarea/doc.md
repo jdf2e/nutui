@@ -8,7 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
+//vue
 import { TextArea } from '@nutui/nutui';
+//taro
+import { TextArea } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(TextArea);
@@ -46,11 +49,11 @@ export default {
 ```html
 <nut-textarea v-model="value" rows="10" autosize />
 ```
-### 直读、禁用
+### 只读、禁用
 
 
 ```html
-<nut-textarea readonly model-value="textarea直读状态" />
+<nut-textarea readonly model-value="textarea只读状态" />
 <nut-textarea disabled model-value="textarea禁用状态" limit-show max-length="20" />
 ```
 
@@ -72,11 +75,11 @@ export default {
 
 ### Event
 
-| 名称   | 说明           | 回调参数 |
-|--------|----------------|----------|
-| change | 输入内容时触发 | val      |
-| focus  | 聚焦时触发     | val      |
-| blur   | 失焦时触发     | val      |
+| 名称   | 说明           | 回调参数    |
+|--------|----------------|-------------|
+| change | 输入框值改变时触发 | value       |
+| focus  | 聚焦时触发     | event       |
+| blur   | 失焦时触发     | {value,event} |
 
 
 

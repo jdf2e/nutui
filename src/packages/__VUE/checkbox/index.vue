@@ -3,10 +3,8 @@ import { h, computed, inject, getCurrentInstance, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('checkbox');
 import nutIcon from '../icon/index.vue';
-import CheckboxGroup from '../checkboxgroup/index.vue';
 
 export default create({
-  children: [CheckboxGroup],
   components: {
     nutIcon
   },
@@ -63,9 +61,9 @@ export default create({
     const color = computed(() => {
       return !pDisabled.value
         ? !pValue.value
-          ? '#d6d6d6'
-          : '#fa2c19'
-        : '#f5f5f5';
+          ? 'nut-checkbox__icon--unchecked'
+          : 'nut-checkbox__icon'
+        : 'nut-checkbox__icon--disable';
     });
 
     const emitChange = (value: string | boolean, label?: string) => {
@@ -78,7 +76,7 @@ export default create({
       return h(nutIcon, {
         name: !pValue.value ? iconName : iconActiveName,
         size: iconSize,
-        color: color.value
+        class: color.value
       });
     };
 
@@ -129,7 +127,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-@import 'index.scss';
-</style>

@@ -1,0 +1,42 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "business/pages/barrage/index",
+          "pathName": "business/pages/barrage/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "dentry/pages/countup/index",
+          "pathName": "dentry/pages/countup/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "feedback/pages/collapse/index",
+          "pathName": "feedback/pages/collapse/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

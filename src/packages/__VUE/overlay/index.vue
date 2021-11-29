@@ -12,7 +12,17 @@
   </Transition>
 </template>
 <script lang="ts">
-import { CSSProperties, PropType, computed } from 'vue';
+import {
+  CSSProperties,
+  PropType,
+  computed,
+  watch,
+  onBeforeUnmount,
+  onDeactivated,
+  onMounted,
+  onActivated,
+  watchEffect
+} from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('overlay');
 const overlayProps = {
@@ -59,6 +69,27 @@ export default create({
       };
     });
 
+    watch(
+      () => props.visible,
+      (value) => {
+        value ? lock() : unlock();
+      }
+    );
+
+    const lock = () => {
+      if (props.lockScroll && props.visible) {
+        document.body.classList.add('nut-overflow-hidden');
+      }
+    };
+    const unlock = () => {
+      document.body.classList.remove('nut-overflow-hidden');
+    };
+
+    onDeactivated(unlock);
+    onBeforeUnmount(unlock);
+    onMounted(lock);
+    onActivated(lock);
+
     const style = computed(() => {
       return {
         animationDuration: `${props.duration}s`,
@@ -82,6 +113,3 @@ export default create({
   }
 });
 </script>
-<style lang="scss">
-@import 'index.scss';
-</style>

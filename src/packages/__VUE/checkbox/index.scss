@@ -10,10 +10,21 @@
   }
   &__label {
     margin-left: 15px;
-    font-size: 16px;
+    font-size: 14px;
     color: $checkbox-label-color;
     &--disabled {
       color: $checkbox-label-disable-color;
     }
+  }
+  &__icon {
+    color: $primary-color;
+    transition-duration: 0.3s;
+    transition-property: color, border-color, background-color;
+  }
+  &__icon--unchecked {
+    color: $checkbox-icon-disable-color;
+  }
+  &__icon--disable {
+    color: $help-color;
   }
 }

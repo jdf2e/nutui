@@ -10,18 +10,18 @@
 ```javascript
 
 import { createApp } from 'vue';
-//vue
-import { Navbar } from '@nutui/nutui';
-//mp
-import { Navbar } from '@nutui/nutui@taro';
+// vue
+import { Navbar,Icon } from '@nutui/nutui';
+// taro
+import { Navbar,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Navbar);
+app.use(Icon);
 
 ```
 
-### 代码示例
-
+#
 ### 基本用法
 
 ```html

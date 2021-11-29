@@ -24,7 +24,7 @@
       @on-click-clear="edit"
       @on-click-send="more"
       title="购物车"
-      titIcon="locationg3"
+      titIcon="cart2"
       desc="编辑"
       icon="more-x"
     ></nut-navbar>
@@ -163,4 +163,8 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.nut-navbar {
+  padding: 0 !important;
+}
+</style>

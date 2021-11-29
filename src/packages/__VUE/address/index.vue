@@ -9,11 +9,7 @@
     <view class="nut-address">
       <view class="nut-address__header">
         <view class="arrow-back" @click="switchModule">
-          <nut-icon
-            :name="backBtnIcon"
-            color="#cccccc"
-            v-show="privateType == 'custom' && backBtnIcon"
-          ></nut-icon>
+          <nut-icon :name="backBtnIcon" color="#cccccc" v-show="privateType == 'custom' && backBtnIcon"></nut-icon>
         </view>
 
         <view class="nut-address__header__title">
@@ -21,12 +17,7 @@
         </view>
 
         <view class="arrow-close" @click="handClose('cross')">
-          <nut-icon
-            v-if="closeBtnIcon"
-            :name="closeBtnIcon"
-            color="#cccccc"
-            size="18px"
-          ></nut-icon>
+          <nut-icon v-if="closeBtnIcon" :name="closeBtnIcon" color="#cccccc" size="18px"></nut-icon>
         </view>
       </view>
 
@@ -44,11 +35,7 @@
             <view>{{ getTabName(item, index) }}</view>
           </view>
 
-          <view
-            class="region-tab-line"
-            ref="regionLine"
-            :style="{ left: lineDistance + 'px' }"
-          ></view>
+          <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
         </view>
 
         <view class="region-con">
@@ -57,9 +44,7 @@
               v-for="(item, index) in regionList[tabName[tabIndex]]"
               :key="index"
               class="region-item"
-              :class="[
-                selectedRegion[tabName[tabIndex]].id == item.id ? 'active' : ''
-              ]"
+              :class="[selectedRegion[tabName[tabIndex]].id == item.id ? 'active' : '']"
               @click="nextAreaList(item)"
             >
               <nut-icon
@@ -73,6 +58,30 @@
               >{{ item.name }}
             </li>
           </ul>
+        </view>
+      </view>
+
+      <!-- 请选择 -->
+      <view class="custom-address" v-else-if="privateType == 'custom2'">
+        <view class="region-tab">
+          <view
+            class="tab-item"
+            :class="[index == tabIndex ? 'active' : '']"
+            v-for="(item, key, index) in selectedRegion"
+            :key="index"
+            :ref="key"
+            @click="changeRegionTab(item, key, index)"
+          >
+            <view>{{ getTabName(item, index) }}</view>
+          </view>
+          <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
+        </view>
+        <view class="elevator-group">
+          <nut-elevator
+            :height="height"
+            :index-list="regionList[tabName[tabIndex]]"
+            @click-item="handleElevatorItem"
+          ></nut-elevator>
         </view>
       </view>
 
@@ -94,23 +103,21 @@
                 :color="item.selectedAddress ? '#FA2C19' : ''"
                 size="13px"
               ></nut-icon>
-
-              <view>{{
-                item.provinceName +
-                item.cityName +
-                item.countyName +
-                item.townName +
-                item.addressDetail
-              }}</view>
+              <div class="exist-item-info">
+                <div class="exist-item-info-top" v-if="item.name && item.phone">
+                  <div class="exist-item-info-name">{{ item.name }}</div>
+                  <div class="exist-item-info-phone">{{ item.phone }}</div>
+                </div>
+                <div class="exist-item-info-bottom">
+                  <view>
+                    {{ item.provinceName + item.cityName + item.countyName + item.townName + item.addressDetail }}
+                  </view>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
-
-        <div
-          class="choose-other"
-          @click="switchModule"
-          v-if="isShowCustomAddress"
-        >
+        <div class="choose-other" @click="switchModule" v-if="isShowCustomAddress">
           <div class="btn">{{ customAndExistTitle }}</div>
         </div>
       </view>
@@ -118,19 +125,16 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, nextTick } from 'vue';
+import { reactive, ref, toRefs, watch, nextTick, computed } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('address');
 interface RegionData {
   name: string;
   [key: string]: any;
 }
-interface Region {
-  province: RegionData[];
-  city: RegionData[];
-  country: RegionData[];
-  town: RegionData[];
-  [key: string]: any;
+interface CustomRegionData {
+  title: string;
+  list: any[];
 }
 
 interface AddressList {
@@ -208,19 +212,15 @@ export default create({
       // 选择其他地址左上角返回 icon
       type: String,
       default: 'left'
+    },
+    height: {
+      type: [String, Number],
+      default: '200px'
     }
   },
-  emits: [
-    'update:visible',
-    'type',
-    'change',
-    'selected',
-    'close',
-    'close-mask',
-    'switch-module'
-  ],
+  emits: ['update:visible', 'type', 'change', 'selected', 'close', 'close-mask', 'switch-module'],
 
-  setup(props, { emit }) {
+  setup(props: any, { emit }) {
     const regionLine = ref<null | HTMLElement>(null);
 
     const tabItemRef = reactive({
@@ -234,11 +234,49 @@ export default create({
     const tabIndex = ref(0);
     const tabName = ref(['province', 'city', 'country', 'town']);
 
+    const isCustom2 = computed(() => props.type === 'custom2');
+
+    const transformData = (data: RegionData[]) => {
+      if (!Array.isArray(data)) throw new TypeError('params muse be array.');
+
+      if (!data.length) return [];
+
+      data.forEach((item: RegionData) => {
+        if (!item.title) {
+          console.error('[NutUI] <Address> 请检查数组选项的 title 值是否有设置 ,title 为必填项 .');
+          return;
+        }
+      });
+
+      const newData: CustomRegionData[] = [];
+
+      data = data.sort((a: RegionData, b: RegionData) => {
+        return a.title.localeCompare(b.title);
+      });
+
+      data.forEach((item: RegionData) => {
+        const index = newData.findIndex((value: CustomRegionData) => value.title === item.title);
+        if (index <= -1) {
+          newData.push({
+            title: item.title,
+            list: [].concat(item)
+          });
+        } else {
+          newData[index] = {
+            title: item.title,
+            list: newData[index].list.concat(item)
+          };
+        }
+      });
+
+      return newData;
+    };
+
     const regionList = reactive({
-      province: props.province,
-      city: props.city,
-      country: props.country,
-      town: props.town
+      province: isCustom2.value ? transformData(props.province) : props.province,
+      city: isCustom2.value ? transformData(props.city) : props.city,
+      country: isCustom2.value ? transformData(props.country) : props.country,
+      town: isCustom2.value ? transformData(props.town) : props.town
     });
 
     const selectedRegion = reactive({
@@ -282,8 +320,8 @@ export default create({
       nextTick(() => {
         if (name) {
           const distance = name.offsetLeft;
-          lineDistance.value = distance;
-          console.log(name);
+
+          lineDistance.value = distance ? distance : 20;
         }
       });
     };
@@ -317,8 +355,10 @@ export default create({
     };
     //切换地区Tab
     const changeRegionTab = (item: RegionData, key: number, index: number) => {
-      tabIndex.value = index;
-      lineAnimation();
+      if (getTabName(item, index)) {
+        tabIndex.value = index;
+        lineAnimation();
+      }
     };
 
     // 选择现有地址
@@ -365,7 +405,7 @@ export default create({
         type: privateType.value
       };
 
-      if (privateType.value == 'custom') {
+      if (privateType.value == 'custom' || privateType.value == 'custom2') {
         const { province, city, country, town } = resCopy;
 
         resCopy.addressIdStr = [
@@ -408,18 +448,16 @@ export default create({
       emit('switch-module', { type: privateType.value });
     };
 
+    const handleElevatorItem = (key: string, item: RegionData | string) => {
+      nextAreaList(item);
+    };
+
     watch(
       () => props.visible,
       (value) => {
         showPopup.value = value;
       }
     );
-    // watch(
-    //   () => props.type,
-    //   (value) => {
-    //     privateType.value = value;
-    //   }
-    // );
 
     watch(
       () => showPopup.value,
@@ -433,25 +471,25 @@ export default create({
     watch(
       () => props.province,
       (value) => {
-        regionList.province = value;
+        regionList.province = isCustom2.value ? transformData(value) : value;
       }
     );
     watch(
       () => props.city,
       (value) => {
-        regionList.city = value;
+        regionList.city = isCustom2.value ? transformData(value) : value;
       }
     );
     watch(
       () => props.country,
       (value) => {
-        regionList.country = value;
+        regionList.country = isCustom2.value ? transformData(value) : value;
       }
     );
     watch(
       () => props.town,
       (value) => {
-        regionList.town = value;
+        regionList.town = isCustom2.value ? transformData(value) : value;
       }
     );
 
@@ -486,13 +524,10 @@ export default create({
       selectedExist,
       clickOverlay,
       handClose,
+      handleElevatorItem,
       ...toRefs(props),
       ...toRefs(tabItemRef)
     };
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

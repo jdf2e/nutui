@@ -9,11 +9,11 @@
 ```javascript
 
 import { createApp } from 'vue';
-import { BackTop } from '@nutui/nutui@taro';
+import { BackTop,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(BackTop);
-
+app.use(Icon);
 ```
 
 ### 代码实例

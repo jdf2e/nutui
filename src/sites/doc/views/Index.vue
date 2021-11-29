@@ -15,7 +15,7 @@
           >
         </div>
         <div class="doc-content-tabs" v-if="isShow() && !isShowTaroDoc">
-          <div class="tab-item cur">vue/mp</div>
+          <div class="tab-item cur">vue/taro</div>
         </div>
         <router-view />
       </div>
@@ -26,12 +26,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive, toRefs, computed } from 'vue';
 import { nav } from '@/config.json';
-import {
-  onBeforeRouteUpdate,
-  RouteLocationNormalized,
-  useRoute,
-  useRouter
-} from 'vue-router';
+import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute, useRouter } from 'vue-router';
 import Header from '@/sites/doc/components/Header.vue';
 import Nav from '@/sites/doc/components/Nav.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
@@ -48,7 +43,7 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const router = useRouter();
-    const excludeTaro = ['/intro', '/start', '/theme'];
+    const excludeTaro = ['/intro', '/start', '/theme', '/joinus', '/starttaro', '/contributing'];
     const data = reactive({
       demoUrl: 'demo.html',
       curKey: 'vue',
@@ -59,13 +54,13 @@ export default defineComponent({
         },
         {
           key: 'taro',
-          text: 'mp'
+          text: 'taro'
         }
       ]
     });
 
     const configNav = computed(() => {
-      let tarodocs = [];
+      let tarodocs = [] as string[];
       nav.map((item) => {
         item.packages.forEach((element) => {
           let { tarodoc, name } = element;
@@ -87,24 +82,18 @@ export default defineComponent({
     };
 
     const isShowTaroDoc = computed(() => {
-      return (
-        configNav.value.findIndex((item) => item === route.path.substr(1)) > -1
-      );
+      return configNav.value.findIndex((item) => item === route.path.substr(1)) > -1;
     });
 
     const watchDemoUrl = (router: RouteLocationNormalized) => {
       const { origin, pathname } = window.location;
       RefData.getInstance().currentRoute.value = router.name as string;
-      data.demoUrl = `${origin}${pathname.replace('index.html', '')}demo.html#${
-        router.path
-      }`;
+      data.demoUrl = `${origin}${pathname.replace('index.html', '')}demo.html#${router.path}`;
     };
 
     const watchDocMd = () => {
       const path = route.path;
-      router.replace(
-        isTaro(route) ? path.substr(0, path.length - 5) : `${path}-taro`
-      );
+      router.replace(isTaro(route) ? path.substr(0, path.length - 5) : `${path}-taro`);
     };
 
     const handleTabs = (curKey: string) => {
@@ -156,7 +145,7 @@ export default defineComponent({
         padding: 10px 25px;
         height: 100%;
         cursor: pointer;
-        font-size: 20px;
+        font-size: 16px;
         color: #323232;
         text-align: center;
         border-radius: 4px;

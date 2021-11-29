@@ -8,13 +8,15 @@
 
 ``` ts
 import { createApp } from 'vue';
-//vue
-import { Checkbox } from '@nutui/nutui';
-//mp
-import { Checkbox } from '@nutui/nutui@taro';
+// vue
+import { Checkbox,CheckboxGroup,Icon } from '@nutui/nutui';
+// taro
+import { Checkbox,CheckboxGroup,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Checkbox);
+app.use(CheckboxGroup);
+app.use(Icon);
 ```
 
 ## 基本用法
@@ -87,7 +89,7 @@ setup() {
 值发生变化时，将触发change事件
 
 ```html
-<nut-checkbox v-model="checkbox8" @change="changeBox3">change复选框</nut-checkbox>
+<nut-checkbox v-model="checkbox" @change="changeBox3">change复选框</nut-checkbox>
 ```
 
 ```ts
@@ -107,20 +109,16 @@ setup() {
 
 ```html
 <nut-checkboxgroup v-model="checkboxgroup1">
-  <nut-checkbox v-model="checkbox9" label="1">组合复选框</nut-checkbox>
-  <nut-checkbox v-model="checkbox10" label="2">组合复选框</nut-checkbox>
-  <nut-checkbox v-model="checkbox11" label="3">组合复选框</nut-checkbox>
-  <nut-checkbox v-model="checkbox12" label="4">组合复选框</nut-checkbox>
+  <nut-checkbox label="1">组合复选框</nut-checkbox>
+  <nut-checkbox label="2">组合复选框</nut-checkbox>
+  <nut-checkbox label="3">组合复选框</nut-checkbox>
+  <nut-checkbox label="4">组合复选框</nut-checkbox>
 </nut-checkboxgroup>
 ```
 
 ```ts
 setup() {
   return {
-    checkbox9: false,
-    checkbox10: false,
-    checkbox11: false,
-    checkbox12: false,
     checkboxgroup1: ['2', '3'],
   };
 }
@@ -130,8 +128,8 @@ setup() {
 
 ```html
 <nut-checkboxgroup v-model="checkboxgroup3" ref="group" @change="changeBox4">
-  <nut-checkbox v-model="checkbox15" label="1">组合复选框</nut-checkbox>
-  <nut-checkbox v-model="checkbox16" label="2">组合复选框</nut-checkbox>
+  <nut-checkbox label="1">组合复选框</nut-checkbox>
+  <nut-checkbox label="2">组合复选框</nut-checkbox>
 </nut-checkboxgroup>
 <span class="btn">
   <nut-button type="primary" @click="toggleAll(true)">全选</nut-button>
@@ -150,10 +148,6 @@ setup() {
     (group.value as any).toggleAll(f);
   };
   return {
-    checkbox15: false,
-    checkbox16: false,
-    changeBox4: false,
-    checkbox12: false,
     checkboxgroup3: ['2'],
     group,
     changeBox4,

@@ -2,12 +2,9 @@
   <div class="demo">
     <h2>基本用法</h2>
     <nut-cell title="我是标题" desc="描述文字"></nut-cell>
-    <nut-cell
-      title="我是标题"
-      sub-title="副标题描述"
-      desc="描述文字"
-    ></nut-cell>
+    <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
     <nut-cell title="点击测试" @click="testClick"></nut-cell>
+    <nut-cell title="圆角设置 0" round-radius="0"></nut-cell>
 
     <h2>直接使用插槽(slot)</h2>
 
@@ -25,11 +22,21 @@
       ></nut-cell>
       <nut-cell title="路由跳转 ’/‘ " to="/"></nut-cell>
     </nut-cell-group> -->
-
-    <nut-cell-group title="自定义右侧箭头区域">
+    <nut-cell-group title="自定义右侧箭头区域" desc="使用 nut-cell-group 支持 title desc slots">
       <nut-cell title="Switch">
         <template v-slot:link>
           <nut-switch v-model="switchChecked" />
+        </template>
+      </nut-cell>
+    </nut-cell-group>
+
+    <nut-cell-group title="自定义左侧 Icon 区域">
+      <nut-cell title="图片">
+        <template v-slot:icon>
+          <img
+            class="nut-icon"
+            src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+          />
         </template>
       </nut-cell>
     </nut-cell-group>

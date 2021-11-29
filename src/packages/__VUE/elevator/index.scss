@@ -1,0 +1,70 @@
+.nut-elevator {
+  width: 100%;
+  display: block;
+  position: relative;
+  &__list {
+    display: block;
+    overflow: auto;
+    &__item {
+      display: block;
+      font-size: 12px;
+      color: #333;
+      &__code {
+        position: relative;
+        height: 35px;
+        line-height: 35px;
+        font-size: 14px;
+        color: #1a1a1a;
+        padding: 0 20px;
+        font-weight: 500;
+        &::after {
+          content: ' ';
+          width: 100%;
+          height: 1px;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          background-color: #f5f5f5;
+        }
+      }
+      &__name {
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        height: 30px;
+        line-height: 30px;
+      }
+    }
+  }
+  &__code--current {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 50%;
+    background: $white;
+    box-shadow: 0 3px 3px 1px rgba(240, 240, 240, 1);
+    text-align: center;
+  }
+  &__bars {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 15px 0;
+    background-color: #eeeff2;
+    border-radius: 6px;
+    text-align: center;
+    z-index: 10;
+    &__inner {
+      &__item {
+        display: block;
+        padding: 3px;
+        font-size: 10px;
+      }
+    }
+  }
+}

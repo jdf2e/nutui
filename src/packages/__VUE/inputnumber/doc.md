@@ -8,10 +8,10 @@
 
 ``` javascript
 import { createApp } from 'vue';
-//vue
+// vue
 import { InputNumber,Icon } from '@nutui/nutui';
-//mp
-import { InputNumber,Icon } from '@nutui/nutui@taro';
+// taro
+import { InputNumber,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(InputNumber).use(Icon);
@@ -130,7 +130,7 @@ export default {
 |-----------|------------------------|--------------------------------|
 | add       | 点击增加按钮时触发     | event: Event                   |
 | reduce    | 点击减少按钮时触发     | event: Event                   |
-| overlimit | 点击不可用的按钮时触发 | event: Event                   |
+| overlimit | 点击不可用的按钮时触发 | event: Event,type:string (reduce or add)                    |
 | change    | 值改变时触发           | value:  number , event : Event |
 | blur      | 输入框失去焦点时触发   | event: Event                   |
 | focus     | 输入框获得焦点时触发   | event: Event                   |

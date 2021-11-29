@@ -1,4 +1,4 @@
-# Price 价格
+# Price 商品价格
 
 ### 介绍
 
@@ -8,19 +8,32 @@
 
 ``` javascript
 import { createApp } from 'vue';
+//vue
 import { Price } from '@nutui/nutui';
+//taro
+import { Price } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Price);
 
 ```
 
-## 代码示例
 
-### 基本用法
+### 基本用法 small normal large
 
 ``` html
-<nut-price :price="1010" :need-symbol="false" :thousands="true" />
+<nut-price :price="0" size="small" :need-symbol="false" :thousands="true" />
+<nut-price :price="0" size="normal" :need-symbol="false" :thousands="true" />
+<nut-price :price="0" size="large" :need-symbol="false" :thousands="true" />
+```
+
+### 不保留小数
+``` html
+<nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
+```
+### 调整 symbol 符号位置
+``` html
+<nut-price :price="8888.01" position="after" symbol="元" size="normal" :need-symbol="true" :thousands="true" />
 ```
 
 ### 有人民币符号，无千位分隔
@@ -53,10 +66,12 @@ setup() {
 
 ### Prop
 
-| 字段           | 说明                     | 类型    | 默认值 |
-|----------------|--------------------------|---------|--------|
-| price          | 价格数量                 | Number  | 0      |
-| need-symbol    | 是否需要加上 symbol 符号 | Boolean | true   |
-| symbol         | 符号类型                 | String  | &yen;  |
-| decimal-digits | 小数位位数               | Number  | 2      |
-| thousands      | 是否按照千分号形式显示   | Boolean | false  |
+| 字段           | 说明                                    | 类型    | 默认值 |
+|----------------|-----------------------------------------|---------|--------|
+| price          | 价格数量                                | Number  | 0      |
+| need-symbol    | 是否需要加上 symbol 符号                | Boolean | true   |
+| symbol         | 符号类型                                | String  | &yen;  |
+| decimal-digits | 小数位位数                              | Number  | 2      |
+| thousands      | 是否按照千分号形式显示                  | Boolean | false  |
+| position       | 符号显示在(价格)前或者后(before、after) | String  | before |
+| size           | 价格尺寸(large、normal、small)          | String  | large |

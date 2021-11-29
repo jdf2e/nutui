@@ -21,6 +21,19 @@
     }
   }
 
+  .nut-calendar-taro {
+    height: 60vh;
+  }
+  .popup-box {
+    height: 518px;
+  }
+  .nut-calendar-content {
+    overflow-y: auto;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   // 头部导航
   .nut-calendar-header {
     position: absolute;
@@ -185,7 +198,4 @@
       line-height: 44px;
     }
   }
-}
-.nut-calendar-taro {
-  height: 65vh;
 }

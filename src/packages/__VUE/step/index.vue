@@ -2,12 +2,9 @@
   <view :class="classes">
     <view class="nut-step-head">
       <view class="nut-step-line"></view>
-      <view
-        class="nut-step-icon"
-        :class="[!dot ? (icon ? 'is-icon' : 'is-text') : '']"
-      >
+      <view class="nut-step-icon" :class="[!dot ? (icon ? 'is-icon' : 'is-text') : '']">
         <template v-if="icon">
-          <nut-icon class="nut-step-icon-inner" :name="icon" />
+          <nut-icon class="nut-step-icon-inner" :color="iconColor" :name="icon" :size="size" />
         </template>
         <template v-else-if="dot"></template>
         <template v-else>
@@ -19,20 +16,13 @@
       <view class="nut-step-title">
         {{ title }}
       </view>
-      <view class="nut-step-content" v-html="content"> </view>
+      <view class="nut-step-content" v-html="content" v-if="content"> </view>
     </view>
   </view>
 </template>
 
 <script lang="ts">
-import {
-  reactive,
-  computed,
-  inject,
-  toRefs,
-  getCurrentInstance,
-  ComponentInternalInstance
-} from 'vue';
+import { reactive, computed, inject, toRefs, getCurrentInstance, ComponentInternalInstance } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create, componentName } = createComponent('step');
 
@@ -49,6 +39,14 @@ export default create({
     icon: {
       type: String,
       default: null
+    },
+    iconColor: {
+      type: String,
+      default: ''
+    },
+    size: {
+      type: [String, Number],
+      default: '12px'
     }
   },
 
@@ -89,7 +87,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

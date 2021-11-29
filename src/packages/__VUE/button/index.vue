@@ -13,18 +13,16 @@
 <script lang="ts">
 import { PropType, CSSProperties, toRefs, computed } from 'vue';
 import { createComponent } from '../../utils/create';
+import Icon from '../icon/index.vue';
 const { componentName, create } = createComponent('button');
 
-export type ButtonType =
-  | 'default'
-  | 'primary'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'danger';
-export type ButtonSize = 'large' | 'normal' | 'small';
+export type ButtonType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger';
+export type ButtonSize = 'large' | 'normal' | 'small' | 'mini';
 export type ButtonShape = 'square' | 'round';
 export default create({
+  components: {
+    [Icon.name]: Icon
+  },
   props: {
     color: String,
     shape: {
@@ -62,8 +60,7 @@ export default create({
   },
   emits: ['click'],
   setup(props, { emit, slots }) {
-    const { type, size, shape, disabled, loading, color, plain, block } =
-      toRefs(props);
+    const { type, size, shape, disabled, loading, color, plain, block } = toRefs(props);
 
     const handleClick = (event: MouseEvent) => {
       if (!loading.value && !disabled.value) {
@@ -111,7 +108,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

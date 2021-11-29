@@ -14,7 +14,7 @@
       :placeholder="placeholder"
     />
     <view class="nut-textarea__limit" v-if="limitShow">
-      {{ modelValue.length }}/{{ maxLength }}</view
+      {{ modelValue ? modelValue.length : 0 }}/{{ maxLength }}</view
     >
   </view>
 </template>
@@ -109,7 +109,7 @@ export default create({
       let value = input.value;
 
       emitChange(value, event);
-      emit('blur', event);
+      emit('blur', { value, event });
     };
 
     return {
@@ -122,7 +122,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

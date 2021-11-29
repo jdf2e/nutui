@@ -1,0 +1,38 @@
+.nut-timedetail {
+  display: flex;
+  width: 100%;
+  padding: 0 5px 50px 13px;
+  &__detail {
+    width: 100%;
+    &__list {
+      &__item {
+        display: inline-block;
+        width: 100px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        background-color: $timedetail-item-bg-color;
+        border-radius: $timedetail-item-border-radius;
+        color: $timedetail-item-text-color;
+        font-size: $timedetail-item-text-font-size;
+        border: 1px solid transparent;
+        font-weight: bold;
+        &--curr {
+          background-color: $timedetail-item-cur-bg-color;
+          border: 1px solid $timedetail-item-cur-border;
+          color: $timedetail-item-cur-text-color;
+        }
+      }
+    }
+    &__time {
+      margin-bottom: 10px;
+      color: $timedetail-time-text-color;
+      font-size: $timedetail-time-font-size;
+    }
+  }
+  &__detail--afternoon {
+    margin-top: 30px;
+  }
+}

@@ -1,12 +1,13 @@
 <template>
-  <view :class="classes" @click="handleClick">
+  <view :class="classes" :style="baseStyle" @click="handleClick">
     <slot>
       <view
         class="nut-cell__title"
-        :class="{ icon: icon }"
+        :class="{ icon: icon || $slots.icon }"
         v-if="title || subTitle || icon"
       >
-        <nut-icon v-if="icon" class="icon" :name="icon"></nut-icon>
+        <slot v-if="$slots.icon" name="icon"></slot>
+        <nut-icon v-else-if="icon" class="icon" :name="icon"></nut-icon>
         <template v-if="subTitle">
           <view class="title">{{ title }}</view>
           <view class="nut-cell__title-desc">{{ subTitle }}</view>
@@ -35,8 +36,8 @@
 <script lang="ts">
 import { computed } from 'vue';
 import { createComponent } from '../../utils/create';
-import { useRoute, useRouter } from 'vue-router';
-import CellGroup from '../cellgroup/index.vue';
+import { useRouter } from 'vue-router';
+import { pxCheck } from '@/packages/utils/pxCheck';
 const { componentName, create } = createComponent('cell');
 export default create({
   props: {
@@ -45,16 +46,13 @@ export default create({
     desc: { type: String, default: '' },
     descTextAlign: { type: String, default: 'right' },
     isLink: { type: Boolean, default: false },
-    to: { type: String, default: '' },
+    to: [String, Object],
     replace: { type: Boolean, default: false },
+    roundRadius: { type: [String, Number], default: '' },
     url: { type: String, default: '' },
     icon: { type: String, default: '' }
   },
   emits: ['click'],
-  children: [CellGroup],
-  components: {
-    [CellGroup.name]: CellGroup
-  },
   setup(props, { emit }) {
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -64,6 +62,13 @@ export default create({
       };
     });
     const router = useRouter();
+
+    const baseStyle = computed(() => {
+      return {
+        borderRadius: pxCheck(props.roundRadius)
+      };
+    });
+
     const handleClick = (event: Event) => {
       emit('click', event);
 
@@ -83,12 +88,9 @@ export default create({
 
     return {
       handleClick,
-      classes
+      classes,
+      baseStyle
     };
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

@@ -1,11 +1,7 @@
 <template>
   <view :class="classes">
     <view
-      :class="[
-        'collapse-item',
-        { 'item-expanded': openExpanded },
-        { 'nut-collapse-item-disabled': disabled }
-      ]"
+      :class="['collapse-item', { 'item-expanded': openExpanded }, { 'nut-collapse-item-disabled': disabled }]"
       @click="toggleOpen"
     >
       <view class="collapse-title">
@@ -16,26 +12,39 @@
               :name="titleIcon"
               :size="titleIconSize"
               :color="titleIconColor"
-              :class="[
-                'collapse-title-icon',
-                titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight'
-              ]"
+              :class="['collapse-title-icon', titleIconPosition == 'left' ? 'titleIconLeft' : 'titleIconRight']"
             ></nut-icon>
-            <view v-html="title" class="collapse-icon-title"></view>
+            <template v-if="$slots.mTitle">
+              <slot name="mTitle"></slot>
+            </template>
+            <template v-else>
+              <view v-html="title" class="collapse-icon-title"></view>
+            </template>
+            <!-- <view
+              v-html="title"
+              class="collapse-icon-title"
+              v-if="title"
+            ></view>
+            <mTitle v-else>
+              <slot name="mTitle"></slot>
+            </mTitle> -->
           </view>
         </view>
       </view>
-      <view v-if="subTitle" v-html="subTitle" class="subTitle"></view>
+      <!-- <view v-if="subTitle" v-html="subTitle" class="subTitle"></view>
+      <view class="subTitle" v-else>
+        <slot name="sTitle"></slot>
+      </view> -->
+      <view v-if="$slots.sTitle" class="subTitle">
+        <slot name="sTitle"></slot>
+      </view>
+      <view v-else v-html="subTitle" class="subTitle"></view>
       <nut-icon
         v-if="icon"
         :name="icon"
         :size="iconSize"
         :color="iconColor"
-        :class="[
-          'collapse-icon',
-          { 'col-expanded': openExpanded },
-          { 'collapse-icon-disabled': disabled }
-        ]"
+        :class="['collapse-icon', { 'col-expanded': openExpanded }, { 'collapse-icon-disabled': disabled }]"
         :style="iconStyle"
       ></nut-icon>
     </view>
@@ -56,18 +65,18 @@ import {
   inject,
   toRefs,
   onMounted,
+  Ref,
   ref,
+  unref,
   nextTick,
   computed,
   watch,
   getCurrentInstance,
   ComponentInternalInstance
 } from 'vue';
-import Taro, {
-  eventCenter,
-  getCurrentInstance as getCurrentInstanceTaro
-} from '@tarojs/taro';
+import Taro, { eventCenter, getCurrentInstance as getCurrentInstanceTaro } from '@tarojs/taro';
 import { createComponent } from '../../utils/create';
+import { useTaroRect } from '../../utils/useTaroRect';
 const { create, componentName } = createComponent('collapse-item');
 
 export default create({
@@ -120,9 +129,7 @@ export default create({
       // classDirection: 'right',
       iconStyle: {
         transform: 'rotate(0deg)',
-        marginTop: parent.props.iconHeght
-          ? '-' + parent.props.iconHeght / 2 + 'px'
-          : '-10px'
+        marginTop: parent.props.iconHeght ? '-' + parent.props.iconHeght / 2 + 'px' : '-10px'
       }
     });
 
@@ -145,7 +152,8 @@ export default create({
     const onTransitionEnd = () => {
       nextTick(() => {
         parent.children.forEach((item1: any, index: number) => {
-          item1.$el.children.forEach((item2: any, index: number) => {
+          let ary = Array.from(item1.$el.children);
+          ary.forEach((item2: any, index: number) => {
             if (item2.className.includes('collapse-wrapper')) {
               item2.style.willChange = 'auto';
             }
@@ -159,14 +167,13 @@ export default create({
       if (parent.props.icon && !proxyData.openExpanded) {
         proxyData.iconStyle['transform'] = 'rotate(0deg)';
       } else {
-        proxyData.iconStyle['transform'] =
-          'rotate(' + parent.props.rotate + 'deg)';
+        proxyData.iconStyle['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
       }
       nextTick(() => {
         const query = Taro.createSelectorQuery();
         query.selectAll('.collapse-content').boundingClientRect();
         query.exec((res) => {
-          getH();
+          getH(res[0]);
         });
         if (!proxyData.openExpanded) {
           onTransitionEnd();
@@ -182,8 +189,7 @@ export default create({
     const defaultOpen = () => {
       open();
       if (parent.props.icon) {
-        proxyData['iconStyle']['transform'] =
-          'rotate(' + parent.props.rotate + 'deg)';
+        proxyData['iconStyle']['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
       }
     };
 
@@ -225,42 +231,57 @@ export default create({
       }
     });
 
-    const getH = () => {
-      parent.children.forEach((item1: any, index: number) => {
-        item1.$el.children.forEach((item2: any, index: number) => {
-          item2.children.length > 0 &&
-            item2.children.forEach((item3: any, index: number) => {
-              if (domID.includes(item3.uid)) {
-                const h = list.filter((item4: any) => item4.id == item3.uid)[0]
-                  ?.height;
-                item1.conHeight = h;
-              }
-            });
-        });
+    const getH = (list: any) => {
+      parent.children.forEach((item1: any, index1: number) => {
+        let ary: any = Array.from(item1.$el.children);
+        let _uid = ary[1].children[0]['uid'];
+        let tm = list.filter((item2: any) => item2.id == _uid);
+        if (tm && tm.length > 0) {
+          let h = tm[0]['height'];
+          item1.conHeight = h;
+        }
       });
     };
 
-    let list: any = [],
-      domID: any = [];
+    const getH5 = () => {
+      parent.children.forEach((item1: any, index1: number) => {
+        let ary: any = Array.from(item1.$el.children);
+        let h = ary[1].children[0]['offsetHeight'];
+        item1.conHeight = h;
+      });
+    };
+
+    const getRefHeight = () => {
+      const query = Taro.createSelectorQuery();
+      query.selectAll('.collapse-content').boundingClientRect();
+      query.exec((res) => {
+        if (Taro.getEnv() === 'WEB') {
+          getH5();
+        } else {
+          getH(res[0]);
+        }
+      });
+    };
+
     onMounted(() => {
       const { name } = props;
       const active = parent && parent.props.active;
       // 获取 DOM 元素
-      eventCenter.once((getCurrentInstanceTaro() as any).router.onReady, () => {
-        const query = Taro.createSelectorQuery();
-        query.selectAll('.collapse-content').boundingClientRect();
-        query.exec((res) => {
-          list = res[0];
-          list.forEach((item: any) => {
-            domID.push(item.id);
-          });
-          getH();
-          // parent.activeIndex().forEach((item:any) => {
-          //   const h = list[item]?.height;
-          //   parent.children[item].conHeight = h;
-          // });
+      if (Taro.getEnv() === 'WEB') {
+        getRefHeight();
+      } else {
+        eventCenter.once((getCurrentInstanceTaro() as any).router.onReady, () => {
+          getRefHeight();
         });
-      });
+      }
+
+      // const query = Taro.createSelectorQuery();
+      // query.selectAll('.collapse-content').boundingClientRect();
+      // query.exec((res) => {
+      //   console.log(res[0]);
+      //   getH(res[0]);
+      // });
+
       if (typeof active == 'number' || typeof active == 'string') {
         if (name == active) {
           defaultOpen();
@@ -289,7 +310,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

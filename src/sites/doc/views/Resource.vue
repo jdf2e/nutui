@@ -3,65 +3,43 @@
   <div class="resource-main">
     <div class="resource-main-content">
       <h3 class="sub-title">资源</h3>
-      <p class="sub-desc">这里汇总了 NutUI 相关的所有的资源</p>
+      <p class="sub-desc"
+        >想要了解 NutUI 设计体系背后的故事？如何才能更好的应用？你可以查阅下述我们为你精挑细选的文章。也欢迎关注 NutUI
+        官方专栏，这里常有关于 NutUI 设计体系下相关话题内容的最新分享和讨论。</p
+      >
     </div>
   </div>
   <!-- 设计资源 -->
   <div class="resource-content">
-    <div class="resource-block" v-if="showNutuiCat">
-      <h4 class="sub-title">模板资源</h4>
-      <p class="sub-desc">
-        目前已提供京东大促模板工程
-        <a target="_blank" href="https://coding.jd.com/jdc-activity/Nutui-Cat"
-          >NutUI-Cat</a
-        >，含有开发京东大促项目过程中使用到的通用模块、组件、模板，可以在未来的大促项目中复用，达到提效降本的效果。
-      </p>
-    </div>
-    <div class="resource-block" v-if="articleList.length === 0">
+    <div class="resource-block">
       <h4 class="sub-title">设计资源</h4>
+      <!-- <h4 class="sub-title">学习资料</h4> -->
       <p class="sub-desc"
-        >这里提供 NUTUI
-        相关设计资源和设计工具的下载，更多设计资源正在整理和完善中。你可以在这个<span
-          class="sub-red"
-          >地址</span
-        >中反馈对新版本 Sketch Symbols 组件的意见。</p
-      >
-      <div class="no-data">
+        >NutUI 3x 基于 JD APP 10.0 视觉规范实现的组件库，在这里可以下载 NutUI 的设计资源。
+        <a class="download" download href="https://storage.360buyimg.com/nutui-static/NutUI3xStyleGuide.sketch"
+          >点击下载
+        </a>
+      </p>
+      <!-- <img
+        src="https://img11.360buyimg.com/imagetools/jfs/t1/206767/18/7920/405226/6181e655E6b5be4de/47a13df50b92106b.jpg"
+      /> -->
+    </div>
+    <div class="resource-block">
+      <div class="no-data" v-if="articleList.length === 0">
         <img class="nodata-img-joy" src="../../assets/images/img-joy.png" />
         <p class="nodata-desc">敬请期待</p>
       </div>
-    </div>
-    <div class="resource-block" v-else>
-      <h4 class="sub-title">设计资源</h4>
-      <p class="sub-desc"
-        >想要了解 NutUI
-        设计体系背后的故事？如何才能更好的应用？你可以查阅下述我们为你精挑细选的文章。也欢迎关注
-        NutUI 官方专栏，这里常有关于 NutUI
-        设计体系下相关话题内容的最新分享和讨论。</p
-      >
-      <div class="tab-box">
-        <div class="tab-hd">
-          <div
-            class="tab-hd-item"
-            :class="{ active: activeIndex === index }"
-            v-for="(item, index) in tabData"
-            :key="index"
-            @click="clickTab(index)"
-          >
-            {{ item.title }}
+      <div class="tab-box" v-else>
+        <h4 class="sub-title">全部文章</h4>
+        <template v-for="pItem in articleList" v-show="activeIndex === 0">
+          <h3>{{ pItem.year }}</h3>
+          <div class="tab-bd">
+            <div class="design-item" v-for="item in pItem.list" :key="item.id" @click="toLink(item.id)">
+              <img class="img-design" :src="item.cover_image" />
+              <p class="design-title" v-hover>{{ item.title }}</p>
+            </div>
           </div>
-        </div>
-        <div class="tab-bd" v-show="activeIndex === 0">
-          <div
-            class="design-item"
-            v-for="item in articleList"
-            :key="item.id"
-            @click="toLink(item.id)"
-          >
-            <img class="img-design" :src="item.cover_image" />
-            <p class="design-title" v-hover>{{ item.title }}</p>
-          </div>
-        </div>
+        </template>
       </div>
     </div>
     <!-- 社区文章 -->
@@ -69,14 +47,8 @@
       <h4 class="sub-title">社区文章</h4>
       <p class="sub-desc"></p>
       <ul class="article-box">
-        <li
-          class="article-item"
-          v-for="item in communityArticleList"
-          :key="item.id"
-        >
-          <a class="article-link" target="_blank" :href="item.link">
-            {{ item.title }} - {{ item.user_name }}
-          </a>
+        <li class="article-item" v-for="item in communityArticleList" :key="item.id">
+          <a class="article-link" target="_blank" :href="item.link"> {{ item.title }} - {{ item.user_name }} </a>
         </li>
       </ul>
     </div>
@@ -85,16 +57,11 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, reactive, toRefs } from 'vue';
-import {
-  onBeforeRouteUpdate,
-  RouteLocationNormalized,
-  useRoute
-} from 'vue-router';
+import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute } from 'vue-router';
 import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
 import { RefData } from '@/sites/assets/util/ref';
 import { ApiService } from '@/sites/service/ApiService';
-import axios from 'axios';
 export default defineComponent({
   name: 'doc',
   components: {
@@ -131,16 +98,20 @@ export default defineComponent({
 
       // 文章列表接口
       const apiService = new ApiService();
-      axios('https://relayapi.jd.com/').then(res => {
-        if (res) {
-          data.showNutuiCat = true;
-        }
-      });
-      apiService.getArticle().then(res => {
+      apiService.getArticle().then((res) => {
         if (res?.state == 0) {
-          (res.value.data.arrays as any[]).forEach(element => {
+          (res.value.data.arrays as any[]).forEach((element) => {
             if (element.type == 1) {
-              data.articleList.push(element);
+              let year = element.create_time.split('-')[0];
+              let index = data.articleList.findIndex((item) => item.year == year);
+              if (index == -1) {
+                data.articleList.push({
+                  year,
+                  list: [element]
+                });
+              } else {
+                data.articleList[index].list.push(element);
+              }
             } else {
               data.communityArticleList.push(element);
             }
@@ -148,7 +119,7 @@ export default defineComponent({
         }
       });
     });
-    onBeforeRouteUpdate(to => {
+    onBeforeRouteUpdate((to) => {
       watchDemoUrl(to);
     });
     const clickTab = (index: number) => {
@@ -201,6 +172,13 @@ $mainRed: #fa685d;
   &-block {
     margin-bottom: 50px;
     text-align: left;
+    .download {
+      color: #38f;
+    }
+    > img {
+      width: 100%;
+      box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
+    }
     .sub-title {
       margin-bottom: 15px;
       line-height: 42px;
@@ -232,6 +210,9 @@ $mainRed: #fa685d;
 }
 .tab {
   &-box {
+    > h3 {
+      margin-bottom: 10px;
+    }
   }
   &-hd {
     display: flex;

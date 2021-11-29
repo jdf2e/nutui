@@ -54,9 +54,7 @@ import { createComponent } from '../../utils/create';
 import { useTouch } from './use-touch';
 import { useExpose } from '../../utils/useExpose/index';
 const { create, componentName } = createComponent('swiper');
-import swiperItem from '../swiperitem/index.vue';
 export default create({
-  children: [swiperItem],
   props: {
     width: {
       type: [Number, String],
@@ -466,7 +464,3 @@ export default create({
   }
 });
 </script>
-
-<style scoped lang="scss">
-@import 'index.scss';
-</style>

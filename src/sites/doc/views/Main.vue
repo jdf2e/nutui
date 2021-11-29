@@ -1,9 +1,10 @@
 <template>
+  <div class="v3-banner" :class="{ active: false }">NutUI 现已发布 Vue3.x 版本，带来更强大的功能和出色的体验</div>
   <doc-header></doc-header>
   <div class="doc-content" :class="themeName()">
     <div class="doc-content-index">
       <div class="content-left">
-        <div class="content-title"> NutUI 3.0 </div>
+        <div class="content-title"> NutUI </div>
         <div class="content-smile"> </div>
         <div class="content-subTitle">京东风格的轻量级移动端 Vue 组件库</div>
         <div class="content-button">
@@ -38,7 +39,12 @@
         <li class="features-item">
           <img src="../../assets/images/img-home-features1.png" />
           <p class="features-title">京东风格</p>
-          <p class="features-desc">遵循京东 App 9.0 设计规范</p>
+          <p class="features-desc">遵循京东 App 10.0 设计规范</p>
+        </li>
+        <li class="features-item">
+          <img src="../../assets/images/img-home-features3.png" />
+          <p class="features-title">前沿技术</p>
+          <p class="features-desc">vue3 vite2.x typescript</p>
         </li>
         <li class="features-item">
           <img src="../../assets/images/img-home-features5.png" />
@@ -48,21 +54,13 @@
         <li class="features-item">
           <img src="../../assets/images/img-home-features2.png" />
           <p class="features-title">组件丰富</p>
-          <p class="features-desc a-l"
-            >提供 70+ 组件，丰富的 demo
-            快速体验交互细节，覆盖各类场景满足各种功能的需求</p
-          >
+          <p class="features-desc a-l">70+ 组件，覆盖多数业务场景</p>
         </li>
-        <li class="features-item">
-          <img src="../../assets/images/img-home-features3.png" />
-          <p class="features-title">前沿技术</p>
-          <p class="features-desc">vue3 vite2.x typescript</p>
-        </li>
-        <li class="features-item">
+        <!-- <li class="features-item">
           <img src="../../assets/images/img-home-features4.png" />
           <p class="features-title">贴心通道</p>
           <p class="features-desc">社区维护 高效服务<br />技术支持 经验沉淀</p>
-        </li>
+        </li> -->
       </ul>
     </div>
     <!-- taro楼层 -->
@@ -82,51 +80,78 @@
       </div>
     </div>
 
+    <!-- nutui-cat / nutui-营销 -->
+    <div class="doc-content-catmarketing">
+      <div class="doc-content-hd">
+        <h4 class="doc-content-title">业务组件</h4>
+      </div>
+      <div class="doc-content-catmarketing-content">
+        <div class="cat-content">
+          <div class="cat-content-left">
+            <img src="./../../assets/images/cat-back.png" alt="" />
+          </div>
+          <div class="cat-content-right">
+            <div class="cat-content-right-title">
+              <img src="./../../assets/images/cat-title.png" alt="" />
+            </div>
+            <p class="cat-content-right-desc">基于 NutUI 的大促组件</p>
+            <div class="cat-content-right-godetail" @click="toDetail">查看详情</div>
+          </div>
+        </div>
+        <div class="marketing-content">
+          <div class="marketing-content-left">
+            <img src="./../../assets/images/marketing-back.png" alt="" />
+          </div>
+          <div class="marketing-content-right">
+            <div class="marketing-content-right-title">
+              <img src="./../../assets/images/marketing-title.png" alt="" />
+            </div>
+            <p class="marketing-content-right-desc">基于 NutUI 的抽奖组件</p>
+            <div class="marketing-content-right-godetail" @click="goAwait">敬请期待</div>
+          </div>
+          <div class="marketing-content-mask" v-if="showAwait" @click="hideAwait"> 正在建设中，敬请期待~ </div>
+        </div>
+      </div>
+    </div>
+
     <div class="doc-content-cases" v-if="casesImages.length">
       <div class="doc-content-hd">
-        <h4 class="doc-content-title">赋能案例</h4>
+        <h4 class="doc-content-title">应用案例</h4>
       </div>
       <div class="doc-content-cases-content">
         <div class="doc-content-cases-content__main">
-          <div
-            class="doc-content-cases-content__main-lefticon"
-            @click="onLeft"
-          ></div>
+          <div class="doc-content-cases-content__main-lefticon" @click="onLeft"></div>
           <div class="doc-content-cases-content__main-iconinfo">
             <h4>{{ currentCaseItem.product_name }}</h4>
             <p>{{ currentCaseItem.product_info }}</p>
             <img :src="currentCaseItem.logo" />
           </div>
-          <div class="doc-content-cases-content__main-iphone"></div>
           <div
-            class="doc-content-cases-content__main-righticon"
-            @click="onRight"
-          ></div>
+            class="doc-content-cases-content__main-iphone"
+            :style="{
+              backgroundImage: 'url(' + currentCaseItem.cover_image + ')'
+            }"
+          >
+            <img src="../../assets/images/iphone-cases.png" alt="" srcset="" />
+          </div>
+          <div class="doc-content-cases-content__main-righticon" @click="onRight"></div>
         </div>
-        <ul
-          :class="[
-            'doc-content-cases-content__list',
-            themeNameValue() == 'black' ? 'noShadow' : ''
-          ]"
-        >
-          <li v-for="(img, index) in casesImages" :key="index">
-            <img :src="img" />
-          </li>
-        </ul>
+        <div class="doc-content-cases-content__list">
+          <div class="swiper-wrapper" :class="[themeNameValue() == 'black' ? 'noShadow' : '']">
+            <div class="swiper-slide" v-for="(item, index) in casesImages" :key="index">
+              <img :src="item.cover_image" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="doc-content-more" v-if="articleList.length">
       <div class="doc-content-hd">
-        <h4 class="doc-content-title"></h4>
+        <h4 class="doc-content-title">学习资源</h4>
         <a class="sub-more" href="#/resource">More</a>
       </div>
       <ul class="more-list">
-        <li
-          class="more-item"
-          v-for="item in articleList.slice(0, 4)"
-          :key="item.id"
-          @click="toLink(item.id)"
-        >
+        <li class="more-item" v-for="item in articleList.slice(0, 4)" :key="item.id" @click="toLink(item.id)">
           <img :src="item.cover_image" />
           <p class="more-title" v-hover>{{ item.title }}</p>
         </li>
@@ -136,12 +161,14 @@
   <doc-footer></doc-footer>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted, reactive, toRefs, computed } from 'vue';
+import { defineComponent, onMounted, reactive, toRefs, computed, ref } from 'vue';
 import Header from '@/sites/doc/components/Header.vue';
 import Footer from '@/sites/doc/components/Footer.vue';
 import router from '../router';
 import { RefData } from '@/sites/assets/util/ref';
 import { ApiService } from '@/sites/service/ApiService';
+import 'swiper/swiper.min.css';
+import Swiper from 'swiper/swiper-bundle.min.js';
 export default defineComponent({
   name: 'main',
   components: {
@@ -149,17 +176,16 @@ export default defineComponent({
     [Footer.name]: Footer
   },
   setup() {
-    const articleList: any[] = [];
-    let casesList: any[] = [];
-    const casesImages: string[] = [];
-    const currentCaseItem: any = {};
     const data = reactive({
       // theme: 'white',
-      articleList,
-      casesImages,
-      currentCaseItem,
-      localTheme: localStorage.getItem('nutui-theme-color')
+      articleList: new Array(),
+      casesImages: new Array(),
+      currentCaseItem: {},
+      currentCaseIndex: 0,
+      localTheme: localStorage.getItem('nutui-theme-color'),
+      showAwait: false
     });
+    let caseSwiper: any = null;
     onMounted(() => {
       // 文章列表接口
       const apiService = new ApiService();
@@ -176,29 +202,48 @@ export default defineComponent({
       });
       apiService.getCases().then((res) => {
         if (res?.state == 0) {
-          data.casesImages = (res.value.data.arrays as any[])
-            .map((item) => {
-              return item.cover_image.split(',');
-            })
-            .toString()
-            .split(',');
-          casesList = res.value.data.arrays as any[];
-          data.currentCaseItem = casesList[0];
+          data.casesImages = (res.value.data.arrays as any[]).map((item) => {
+            if (item.cover_image?.length) {
+              item.cover_image = item.cover_image.split(',')[0];
+            }
+            return item;
+          });
+          if (data.casesImages?.length) {
+            data.currentCaseItem = data.casesImages[data.currentCaseIndex];
+          }
+
+          setTimeout(() => {
+            caseSwiper = new Swiper('.doc-content-cases-content__list', {
+              direction: 'horizontal',
+              slidesPerView: 'auto',
+              initialSlide: 1,
+              loop: true,
+              on: {
+                slideChange: function () {
+                  let realIndex = (this as any).realIndex;
+                  data.currentCaseIndex = realIndex === 0 ? data.casesImages.length - 1 : realIndex - 1;
+                  setTimeout(() => {
+                    data.currentCaseItem = data.casesImages[data.currentCaseIndex];
+                  }, 230);
+                }
+              }
+            });
+          }, 500);
         }
       });
     });
-    const findCasesItem = (url: string) => {
-      data.currentCaseItem = casesList.find((i) => i.cover_image.includes(url));
+    const goAwait = () => {
+      data.showAwait = true;
+    };
+    const hideAwait = () => {
+      data.showAwait = false;
     };
     const onLeft = () => {
-      let url = data.casesImages.shift() as string;
-      findCasesItem(url);
-      data.casesImages.push(url);
+      caseSwiper.slidePrev();
     };
+
     const onRight = () => {
-      let url = data.casesImages.pop() as string;
-      findCasesItem(url);
-      data.casesImages.unshift(url);
+      caseSwiper.slideNext();
     };
 
     const themeName = computed(() => {
@@ -217,6 +262,9 @@ export default defineComponent({
     function toIntro() {
       router.push({ path: '/intro' });
     }
+    const toDetail = () => {
+      window.open('/cat');
+    };
     return {
       toIntro,
       ...toRefs(data),
@@ -224,12 +272,35 @@ export default defineComponent({
       themeNameValue,
       toLink,
       onLeft,
-      onRight
+      onRight,
+      toDetail,
+      goAwait,
+      hideAwait
     };
   }
 });
 </script>
 <style lang="scss">
+.v3-banner {
+  position: fixed;
+  top: 0;
+  transition: all 0.3s;
+  &.active {
+    top: $doc-header-height;
+  }
+  font-size: 14px;
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+  padding: 10px 60px;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    rgba(242, 20, 12, 1) 0%,
+    rgba(232, 34, 14, 1) 69.83950099728881%,
+    rgba(242, 77, 12, 1) 100%
+  );
+}
 @keyframes fadeInLeft {
   from {
     opacity: 0;
@@ -346,6 +417,125 @@ export default defineComponent({
       }
     }
   }
+  &-catmarketing {
+    width: 1200px;
+    margin: 0 auto 90px;
+
+    &-content {
+      display: flex;
+    }
+
+    .cat-content,
+    .marketing-content {
+      display: flex;
+      width: 585px;
+      height: 270px;
+      background: linear-gradient(
+        130.16deg,
+        rgba(249, 188, 203, 1) 0%,
+        rgba(247, 239, 247, 1) 26.666302447552447%,
+        rgba(241, 240, 246, 1) 66.69307255244755%,
+        rgba(180, 228, 228, 1) 100%
+      );
+      border-radius: 4px 4px 4px 0 4px;
+      margin-left: 44px;
+    }
+    .cat-content,
+    .marketing-content {
+      margin-left: 0px;
+      display: flex;
+      align-items: center;
+      &-left {
+        height: 182px;
+        width: 270px;
+        margin-left: 14px;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+      &-right {
+        height: 182px;
+        width: 233px;
+        margin-left: 37px;
+        font-family: PingFangSC;
+        font-weight: normal;
+        padding-top: 11px;
+        box-sizing: border-box;
+        &-title {
+          img {
+            height: 46px;
+            width: 177px;
+          }
+        }
+        &-desc {
+          margin-top: 26px;
+          font-size: 18px;
+          color: rgba(51, 51, 51, 1);
+        }
+        &-godetail {
+          width: 130px;
+          height: 35px;
+          margin-top: 24px;
+          line-height: 35px;
+          text-align: center;
+          font-size: 19px;
+          cursor: pointer;
+          color: rgba(255, 255, 255, 1);
+          background: linear-gradient(
+            135deg,
+            rgba(255, 28, 101, 1) 0%,
+            rgba(255, 133, 202, 1) 67.83430752051981%,
+            rgba(255, 142, 155, 1) 87.35307751528254%,
+            rgba(255, 169, 151, 1) 100%
+          );
+          border-radius: 17px;
+        }
+      }
+    }
+    .marketing-content {
+      position: relative;
+      margin-left: 44px;
+      background: linear-gradient(
+        130.16deg,
+        rgba(219, 210, 255, 1) 0%,
+        rgba(247, 239, 247, 1) 26.666302447552447%,
+        rgba(241, 240, 246, 1) 66.69307255244755%,
+        rgba(255, 236, 203, 1) 100%
+      );
+      &-left {
+        height: 196px;
+        width: 243px;
+        margin-left: 28px;
+      }
+      &-right {
+        height: 196px;
+        padding-top: 20px;
+        &-godetail {
+          background: linear-gradient(
+            135deg,
+            rgba(114, 60, 255, 1) 0%,
+            rgba(111, 58, 255, 1) 63.49938195167575%,
+            rgba(150, 110, 255, 1) 87.35307751528254%,
+            rgba(149, 117, 241, 1) 100%
+          );
+        }
+      }
+      &-mask {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.52);
+        border-radius: 4px 4px 4px 0 4px;
+        text-align: center;
+        line-height: 270px;
+        font-size: 30px;
+        color: #ffffff;
+      }
+    }
+  }
   &-cases {
     width: 1200px;
     overflow: hidden;
@@ -366,10 +556,17 @@ export default defineComponent({
         &-iphone {
           width: 210px;
           height: 420px;
-          background-image: url('../../assets/images/iphone-cases.png');
           background-repeat: no-repeat;
-          background-size: 100% 100%;
-          z-index: 1;
+          background-position: center center;
+          background-size: 188px 397px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          > img {
+            width: 100%;
+            height: 100%;
+          }
         }
         &-lefticon {
           margin-right: 20px;
@@ -424,33 +621,28 @@ export default defineComponent({
       }
       &__list {
         flex: 1;
-        display: flex;
-        margin-left: -275px;
-        > li {
-          width: 180px;
-          height: 390px;
-          flex-shrink: 0;
-          margin-right: 20px;
-          transition: all 0.5s;
-          &:first-child {
-            margin-right: 139px;
-            transform: scale(1.04);
-            border-radius: 10px;
+        overflow: hidden;
+        margin-left: 30px;
+        .swiper-wrapper {
+          display: flex;
+          transform: translate3d(0, 0, 0);
+          transition: all 0.6s ease;
+          .swiper-slide {
+            width: 180px;
+            height: 390px;
+            flex-shrink: 0;
+            margin-right: 20px;
+            border-radius: 4px;
             overflow: hidden;
+            > img {
+              width: 100%;
+              height: 100%;
+            }
           }
-          &:nth-child(-n + 4) {
-            box-shadow: 0 4px 7px 0 rgb(144 156 164 / 80%);
-            border-radius: 3px;
-            overflow: hidden;
-          }
-          > img {
-            width: 100%;
-            height: 100%;
-          }
-        }
-        &.noShadow {
-          > li {
-            box-shadow: none !important;
+          &.noShadow {
+            .swiper-slide {
+              box-shadow: none !important;
+            }
           }
         }
       }
@@ -658,8 +850,7 @@ export default defineComponent({
       .right-img {
         width: 436px;
         height: 213px;
-        background: url('../../assets/images/img-taro-right-white.png')
-          no-repeat;
+        background: url('../../assets/images/img-taro-right-white.png') no-repeat;
         background-size: cover;
         margin-bottom: 58px;
       }

@@ -15,6 +15,11 @@
       <nut-switch v-model="checked" disable />
     </nut-cell>
 
+    <h2>加载状态</h2>
+    <nut-cell>
+      <nut-switch v-model="checked" loading color="red" />
+    </nut-cell>
+
     <h2>change事件</h2>
     <nut-cell>
       <nut-switch v-model="checked" @change="change" />
@@ -22,7 +27,7 @@
 
     <h2>异步控制</h2>
     <nut-cell>
-      <nut-switch :model-value="checkedAsync" @change="changeAsync" />
+      <nut-switch :model-value="checkedAsync" @change="changeAsync" :loading="loadingAsync" />
     </nut-cell>
 
     <h2>自定义颜色</h2>
@@ -46,16 +51,20 @@ export default createDemo({
     let { proxy } = getCurrentInstance() as any;
     const checked = ref(true);
     const checkedAsync = ref(true);
+    const loadingAsync = ref(false);
 
     const checkedStr = ref('开');
 
     const change = (value: boolean, event: Event) => {
       proxy.$toast.text(`触发了change事件，开关状态：${value}`);
     };
+
     const changeAsync = (value: boolean, event: Event) => {
       proxy.$toast.text(`2秒后异步触发 ${value}`);
+      loadingAsync.value = true;
       setTimeout(() => {
         checkedAsync.value = value;
+        loadingAsync.value = false;
       }, 2000);
     };
 
@@ -63,6 +72,7 @@ export default createDemo({
       checked,
       checkedAsync,
       checkedStr,
+      loadingAsync,
       change,
       changeAsync
     };

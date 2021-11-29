@@ -315,7 +315,11 @@ export default create({
           month = month == 12 ? 1 : ++month;
           break;
       }
-      return [year, Utils.getNumTwoBit(month), monthData.curData[2]];
+      return [
+        year,
+        Utils.getNumTwoBit(month),
+        Utils.getMonthDays(String(year), String(month))
+      ];
     };
 
     // 获取日期状态
@@ -494,7 +498,7 @@ export default create({
         if (weeksPanel?.value && monthsPanel?.value) {
           const top = weeksPanel?.value.getBoundingClientRect().bottom;
           const monthsDoms =
-            monthsPanel.value.getElementsByClassName('.calendar-month');
+            monthsPanel.value.getElementsByClassName('calendar-month');
           for (let i = 0; i < monthsDoms.length; i++) {
             if (
               monthsDoms[i].getBoundingClientRect().top <= top &&
@@ -598,10 +602,13 @@ export default create({
       const updateMove = move + state.transformY;
       const h = months.value?.offsetHeight || 0;
       const offsetHeight = monthsPanel.value?.offsetHeight || 0;
-
       if (updateMove > 0) {
         getMonth(getCurrData('prev'), 'prev');
-      } else if (updateMove < -offsetHeight + h * 2) {
+      } else if (
+        updateMove < 0 &&
+        updateMove <
+          -offsetHeight + (Math.abs(move) > h ? Math.abs(move) : h) * 5
+      ) {
         getMonth(getCurrData('next'), 'next');
         if (Math.abs(move) >= 300) {
           getMonth(getCurrData('next'), 'next');
@@ -661,7 +668,3 @@ export default create({
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>
