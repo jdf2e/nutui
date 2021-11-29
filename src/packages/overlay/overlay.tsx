@@ -6,20 +6,20 @@ import './overlay.scss'
 export interface OverlayProps {
   zIndex: number
   duration: number
-  className: string
-  style: React.CSSProperties
+  overlayClass: string
+  overlayStyle: React.CSSProperties
   closeOnClickOverlay: boolean
   visible: boolean
   lockScroll: boolean
 }
-const defaultProps = {
+export const defaultOverlayProps = {
   zIndex: 2000,
   duration: 0.3,
-  className: '',
+  overlayClass: '',
   closeOnClickOverlay: true,
   visible: false,
   lockScroll: true,
-  style: {},
+  overlayStyle: {},
 } as OverlayProps
 export const Overlay: FunctionComponent<
   Partial<OverlayProps> & React.HTMLAttributes<HTMLDivElement>
@@ -31,14 +31,14 @@ export const Overlay: FunctionComponent<
     children,
     zIndex,
     duration,
-    className,
+    overlayClass,
     closeOnClickOverlay,
     visible,
     lockScroll,
-    style,
+    overlayStyle,
     ...rest
   } = {
-    ...defaultProps,
+    ...defaultOverlayProps,
     ...props,
   }
 
@@ -63,14 +63,14 @@ export const Overlay: FunctionComponent<
       'first-render': renderRef.current && !visible,
       'hidden-render': show,
     },
-    className,
+    overlayClass,
     b('')
   )
 
   const styles = {
     zIndex: zIndex,
     animationDuration: `${props.duration}s`,
-    ...style,
+    ...overlayStyle,
   }
 
   const lock = () => {
@@ -101,5 +101,5 @@ export const Overlay: FunctionComponent<
   )
 }
 
-Overlay.defaultProps = defaultProps
+Overlay.defaultProps = defaultOverlayProps
 Overlay.displayName = 'NutOverlay'
