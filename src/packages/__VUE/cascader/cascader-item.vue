@@ -208,11 +208,9 @@ export default create({
       async handleNode(node: CascaderOption, silent?: boolean) {
         const { disabled, loading } = node;
 
-        if ((!silent && disabled) || loading || !panes.value[tabsCursor.value]) {
+        if ((!silent && disabled) || !panes.value[tabsCursor.value]) {
           return;
         }
-
-        currentProcessNode = node;
 
         if (tree.value.isLeaf(node, isLazy.value)) {
           node.leaf = true;
@@ -247,10 +245,15 @@ export default create({
           return;
         }
 
-        const currentCursor = tabsCursor.value;
+        currentProcessNode = node;
+
+        if (loading) {
+          return;
+        }
+
         await invokeLazyLoad(node);
 
-        if (currentProcessNode === node && currentCursor === tabsCursor.value) {
+        if (currentProcessNode === node) {
           panes.value[tabsCursor.value].selectedNode = node;
           methods.handleNode(node, silent);
         }

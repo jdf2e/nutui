@@ -148,7 +148,8 @@ export default createDemo({
 
     // 动态加载
     const demo3 = reactive({
-      value: ['A0', 'A12', 'A23', 'A32'],
+      // value: ['A0', 'A12', 'A23', 'A32'],
+      value: [],
       lazyLoad(node: any, resolve: (children: any) => void) {
         setTimeout(() => {
           // root表示第一层数据
@@ -170,7 +171,7 @@ export default createDemo({
               { value: value3, text: value3, leaf: level >= 6 }
             ]);
           }
-        }, 300);
+        }, 2000);
       }
     });
 
