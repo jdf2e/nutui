@@ -213,10 +213,10 @@ export default create({
         }
 
         currentProcessNode = node;
-        panes.value[tabsCursor.value].selectedNode = node;
 
         if (tree.value.isLeaf(node, isLazy.value)) {
           node.leaf = true;
+          panes.value[tabsCursor.value].selectedNode = node;
           panes.value = panes.value.slice(0, (node.level as number) + 1);
 
           if (!silent) {
@@ -231,6 +231,7 @@ export default create({
         if (tree.value.hasChildren(node, isLazy.value)) {
           const level = (node.level as number) + 1;
 
+          panes.value[tabsCursor.value].selectedNode = node;
           panes.value = panes.value.slice(0, level);
           panes.value.push({
             nodes: node.children || [],
@@ -246,9 +247,11 @@ export default create({
           return;
         }
 
+        const currentCursor = tabsCursor.value;
         await invokeLazyLoad(node);
 
-        if (currentProcessNode === node) {
+        if (currentProcessNode === node && currentCursor === tabsCursor.value) {
+          panes.value[tabsCursor.value].selectedNode = node;
           methods.handleNode(node, silent);
         }
       },
