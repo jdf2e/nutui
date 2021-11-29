@@ -306,6 +306,16 @@
           "sort": 4,
           "show": true,
           "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "FixedNav",
+          "type": "component",
+          "cName": "悬浮导航",
+          "desc": "悬浮收齐体验交互，用于快捷导航",
+          "sort": 5,
+          "show": true,
+          "author": "Ymm0008"
         }
       ]
     },

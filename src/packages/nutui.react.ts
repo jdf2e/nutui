@@ -18,6 +18,7 @@ import NavBar from './navbar'
 import Tabbar from './tabbar'
 import InputNumber from './inputnumber'
 import Elevator from './elevator'
+import FixedNav from './fixednav'
 import Rate from './rate'
 import Uploader from './uploader'
 import Input from './input'
@@ -48,6 +49,7 @@ export {
   Tabbar,
   InputNumber,
   Elevator,
+  FixedNav,
   Rate,
   Uploader,
   Input,
