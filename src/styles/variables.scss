@@ -267,5 +267,32 @@ $fixednav-font-color: $black;
 $fixednav-index: 201;
 $fixednav-btn-bg: linear-gradient(135deg, rgba(250, 25, 44, 1) 0%, rgba(250, 63, 25, 1) 100%);
 
+// Tag
+$tag-font-size: 12px !default;
+$tag-default-background-color: #000000 !default;
+$tag-primary-background-color: #3460fa !default;
+$tag-success-background-color: #4fc08d !default;
+$tag-danger-background-color: linear-gradient(
+  135deg,
+  rgba(242, 20, 12, 1) 0%,
+  rgba(232, 34, 14, 1) 69.83950099728881%,
+  rgba(242, 77, 12, 1) 100%
+) !default;
+$tag-warning-background-color: #f3812e !default;
+$tag-default-color: #ffffff !default;
+$tag-border-width: 1px !default;
+
+$tag-plain-background-color: #fff !default;
+$tag-plain-color: rgb(250, 36, 0) !default;
+
+//badge
+$badge-background-color: linear-gradient(
+  135deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+) !default;
+$badge-font-size: $font-size-1 !default;
+$badge-default-background-color: rgba(255, 255, 255, 1) !default;
+
 @import './mixins/index';
 @import './animation/index';
