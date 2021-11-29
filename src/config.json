@@ -251,6 +251,16 @@
           "sort": 7,
           "show": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Popup",
+          "sort": 9,
+          "cName": "弹出层",
+          "type": "component",
+          "show": true,
+          "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
+          "author": "szg2008"
         }
       ]
     },
