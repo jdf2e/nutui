@@ -432,6 +432,16 @@
           "sort": 4,
           "show": true,
           "author": "lzz"
+        },
+        {
+          "version": "1.0.0",
+          "name": "AnimatingNumbers",
+          "type": "component",
+          "cName": "数字动画",
+          "desc": "带特效的数字",
+          "sort": 7,
+          "show": true,
+          "author": "songsong"
         }
       ]
     },
