@@ -16,6 +16,21 @@
 
   .nut-tabs__titles {
     padding: 0 10px;
+    background: #fff;
+  }
+
+  &__bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    margin-bottom: 17px;
+    padding: 0 20px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 20px;
+    color: #262626;
+    font-size: 18px;
   }
 
   &-pane {

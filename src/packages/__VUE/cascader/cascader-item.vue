@@ -38,6 +38,7 @@ import Tree from './tree';
 
 export default create({
   props: {
+    visible: Boolean,
     modelValue: Array,
     options: {
       type: Array,
@@ -101,7 +102,12 @@ export default create({
       });
 
       if (isLazy.value && !tree.value.nodes.length) {
-        await invokeLazyLoad();
+        await invokeLazyLoad({
+          root: true,
+          loading: true,
+          text: '',
+          value: ''
+        });
       }
 
       panes.value = [{ nodes: tree.value.nodes, selectedNode: null }];
@@ -124,25 +130,20 @@ export default create({
           initLoading.value = true;
           needToSync = currentValue.slice(0, 1);
 
-          const last = await currentValue.slice(1).reduce(async (p: Promise<CascaderOption | void>, value, index) => {
+          const last = await currentValue.slice(1).reduce(async (p: Promise<CascaderOption | void>, value) => {
             const parent = await p;
 
-            if (parent) {
-              await invokeLazyLoad(parent);
+            await invokeLazyLoad(parent);
+            const node = parent?.children?.find((item) => item.value === value);
 
-              const node = parent.children?.find((item) => item.value === value);
-              if (node) {
-                needToSync.push(value);
-                return Promise.resolve(node);
-              }
+            if (node) {
+              needToSync.push(value);
             }
 
-            return Promise.resolve();
+            return Promise.resolve(node);
           }, Promise.resolve(parent));
 
-          if (last) {
-            await invokeLazyLoad(last);
-          }
+          await invokeLazyLoad(last);
 
           initLoading.value = false;
         }
@@ -150,26 +151,27 @@ export default create({
 
       if (needToSync.length && currentValue === props.modelValue) {
         const pathNodes = tree.value.getPathNodesByValue(needToSync);
-        pathNodes.map((node) => {
+        pathNodes.map((node, index) => {
+          tabsCursor.value = index;
           methods.handleNode(node, true);
         });
       }
     };
 
-    const invokeLazyLoad = async (node?: CascaderOption) => {
-      if (!configs.value.lazyLoad) {
-        if (node) {
-          node.leaf = true;
-        }
+    const invokeLazyLoad = async (node?: CascaderOption | void) => {
+      if (!node) {
         return;
       }
 
-      node = node || {
-        root: true,
-        loading: true,
-        text: '',
-        value: ''
-      };
+      if (!configs.value.lazyLoad) {
+        node.leaf = true;
+        return;
+      }
+
+      if (tree.value.isLeaf(node, isLazy.value) || tree.value.hasChildren(node, isLazy.value)) {
+        return;
+      }
+
       node.loading = true;
 
       const parent = node.root ? null : node;
@@ -285,6 +287,14 @@ export default create({
       (value) => {
         if (value !== innerValue.value) {
           innerValue.value = value as CascaderValue;
+          syncValue();
+        }
+      }
+    );
+    watch(
+      () => props.visible,
+      (val) => {
+        if (val) {
           syncValue();
         }
       }

@@ -36,7 +36,7 @@ class Tree {
   }
 
   getPathNodesByNode(node: CascaderOption): CascaderOption[] {
-    const nodes = [node];
+    const nodes = [];
 
     while (node) {
       nodes.unshift(node);

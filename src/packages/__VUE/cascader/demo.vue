@@ -1,66 +1,127 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-cell>
-      <nut-cascader
-        v-model="demo1.value"
-        @change="events.change"
-        @pathChange="events.pathChange"
-        :options="demo1.options"
-      ></nut-cascader>
-    </nut-cell>
+
+    <nut-form>
+      <nut-form-item label="选择地址">
+        <input
+          class="nut-input-text"
+          @click="demo1.visible = true"
+          :value="demo1.value"
+          readonly
+          placeholder="请选择地址"
+          type="text"
+        />
+        <nut-cascader
+          title="地址选择"
+          v-model:visible="demo1.visible"
+          v-model="demo1.value"
+          @change="events.change"
+          @pathChange="events.pathChange"
+          :options="demo1.options"
+        ></nut-cascader>
+      </nut-form-item>
+    </nut-form>
 
     <h2>自定义属性名称</h2>
-    <nut-cell>
-      <nut-cascader
-        v-model="demo2.value"
-        labelKey="text"
-        @change="events.change"
-        @pathChange="events.pathChange"
-        valueKey="text"
-        childrenKey="items"
-        :options="demo2.options"
-      ></nut-cascader>
-    </nut-cell>
+    <nut-form>
+      <nut-form-item label="选择地址">
+        <input
+          class="nut-input-text"
+          @click="demo2.visible = true"
+          :value="demo2.value"
+          readonly
+          placeholder="请选择地址"
+          type="text"
+        />
+        <nut-cascader
+          title="地址选择"
+          v-model:visible="demo2.visible"
+          v-model="demo2.value"
+          labelKey="text"
+          @change="events.change"
+          @pathChange="events.pathChange"
+          valueKey="text"
+          childrenKey="items"
+          :options="demo2.options"
+        ></nut-cascader>
+      </nut-form-item>
+    </nut-form>
 
     <h2>动态加载</h2>
-    <nut-cell>
-      <nut-cascader
-        v-model="demo3.value"
-        @change="events.change"
-        @pathChange="events.pathChange"
-        lazy
-        :lazyLoad="demo3.lazyLoad"
-      ></nut-cascader>
-    </nut-cell>
+    <nut-form>
+      <nut-form-item label="选择地址">
+        <input
+          class="nut-input-text"
+          @click="demo3.visible = true"
+          :value="demo3.value"
+          readonly
+          placeholder="请选择地址"
+          type="text"
+        />
+        <nut-cascader
+          title="地址选择"
+          v-model:visible="demo3.visible"
+          v-model="demo3.value"
+          @change="events.change"
+          @pathChange="events.pathChange"
+          lazy
+          :lazyLoad="demo3.lazyLoad"
+        ></nut-cascader>
+      </nut-form-item>
+    </nut-form>
 
     <h2>部分数据动态加载</h2>
-    <nut-cell>
-      <nut-cascader
-        v-model="demo4.value"
-        @change="events.change"
-        @pathChange="events.pathChange"
-        :options="demo4.options"
-        lazy
-        :lazyLoad="demo4.lazyLoad"
-      ></nut-cascader>
-    </nut-cell>
+    <nut-form>
+      <nut-form-item label="选择地址">
+        <input
+          class="nut-input-text"
+          @click="demo4.visible = true"
+          :value="demo4.value"
+          readonly
+          placeholder="请选择地址"
+          type="text"
+        />
+        <nut-cascader
+          title="地址选择"
+          v-model:visible="demo4.visible"
+          v-model="demo4.value"
+          @change="events.change"
+          @pathChange="events.pathChange"
+          :options="demo4.options"
+          lazy
+          :lazyLoad="demo4.lazyLoad"
+        ></nut-cascader>
+      </nut-form-item>
+    </nut-form>
 
     <h2>自动转换</h2>
-    <nut-cell>
-      <nut-cascader
-        v-model="demo5.value"
-        @change="events.change"
-        @pathChange="events.pathChange"
-        :options="demo5.options"
-        :convertConfig="demo5.convertConfig"
-      ></nut-cascader>
-    </nut-cell>
+    <nut-form>
+      <nut-form-item label="选择地址">
+        <input
+          class="nut-input-text"
+          @click="demo5.visible = true"
+          :value="demo5.value"
+          readonly
+          placeholder="请选择地址"
+          type="text"
+        />
+        <nut-cascader
+          title="地址选择"
+          v-model:visible="demo5.visible"
+          v-model="demo5.value"
+          @change="events.change"
+          @pathChange="events.pathChange"
+          :options="demo5.options"
+          :convertConfig="demo5.convertConfig"
+        ></nut-cascader>
+      </nut-form-item>
+    </nut-form>
   </div>
 </template>
 
 <script lang="ts">
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('cascader');
 
@@ -69,6 +130,7 @@ export default createDemo({
   setup() {
     // 基础用法
     const demo1 = reactive({
+      visible: false,
       value: ['湖南'],
       options: [
         {
@@ -118,7 +180,8 @@ export default createDemo({
 
     // 自定义属性名称
     const demo2 = reactive({
-      value: ['湖南'],
+      visible: false,
+      value: ['福建', '福州', '台江区'],
       options: [
         {
           text: '浙江',
@@ -148,8 +211,8 @@ export default createDemo({
 
     // 动态加载
     const demo3 = reactive({
-      // value: ['A0', 'A12', 'A23', 'A32'],
-      value: [],
+      visible: false,
+      value: ['A0', 'A12', 'A23', 'A32'],
       lazyLoad(node: any, resolve: (children: any) => void) {
         setTimeout(() => {
           // root表示第一层数据
@@ -177,6 +240,7 @@ export default createDemo({
 
     // 部分数据动态加载
     const demo4 = reactive({
+      visible: false,
       value: [],
       options: [
         { value: 'A0', text: 'A0' },
@@ -205,6 +269,7 @@ export default createDemo({
     });
 
     const demo5 = reactive({
+      visible: false,
       value: ['广东省', '广州市'],
       convertConfig: {
         topId: null,
@@ -221,11 +286,14 @@ export default createDemo({
       ]
     });
 
-    onMounted(() => {
-      setTimeout(() => {
-        demo1.value = ['浙江', '温州', '瓯海区'];
-      }, 2000);
-    });
+    // onMounted(() => {
+    //   setTimeout(() => {
+    //     demo1.value = ['浙江', '温州', '瓯海区'];
+    //     setTimeout(() => {
+    //       demo1.value = ['浙江', '杭州', '西湖区'];
+    //     }, 2000);
+    //   }, 2000);
+    // });
 
     const events = {
       change(...args: any) {

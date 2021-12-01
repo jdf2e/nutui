@@ -21,17 +21,32 @@ app.use(Cascader);
 
 传入`options`列表。
 ```html
-<nut-cascader
-  v-model="state.value"
-  @change="events.change"
-  @pathChange="events.pathChange"
-  :options="state.options"
-></nut-cascader>
+<nut-form>
+  <nut-form-item label="选择地址">
+    <input
+      class="nut-input-text"
+      @click="state.visible = true"
+      :value="state.value"
+      readonly
+      placeholder="请选择地址"
+      type="text"
+    />
+    <nut-cascader
+      title="地址选择"
+      v-model:visible="state.visible"
+      v-model="state.value"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      :options="state.options"
+    ></nut-cascader>
+  </nut-form-item>
+</nut-form>
 ```
 
 ```javascript
 setup() {
   const state = reactive({
+    visible: false,
     value: ['湖南'],
     options: [
       {
@@ -95,20 +110,35 @@ setup() {
 
 可通过`textKey`、`valueKey`、`childrenKey`指定属性名。
 ```html
-<nut-cascader
-  v-model="state.value"
-  textKey="text"
-  @change="events.change"
-  @pathChange="events.pathChange"
-  valueKey="text"
-  childrenKey="items"
-  :options="state.options"
-></nut-cascader>
+<nut-form>
+  <nut-form-item label="选择地址">
+    <input
+      class="nut-input-text"
+      @click="state.visible = true"
+      :value="state.value"
+      readonly
+      placeholder="请选择地址"
+      type="text"
+    />
+    <nut-cascader
+      title="地址选择"
+      v-model:visible="state.visible"
+      v-model="state.value"
+      labelKey="text"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      valueKey="text"
+      childrenKey="items"
+      :options="state.options"
+    ></nut-cascader>
+  </nut-form-item>
+</nut-form>
 ```
 
 ```javascript
 setup() {
   const state = reactive({
+    visible: false,
     value: ['浙江', '杭州', '西湖区'],
     options: [
       {
@@ -153,18 +183,33 @@ setup() {
 
 使用`lazy`标识是否需要动态获取数据，此时不传`options`代表所有数据都需要通过`lazyLoad`加载，首次加载通过`root`属性区分，当遇到非叶子节点时会调用`lazyLoad`方法，参数为当前节点和`resolve`方法，注意`resolve`方法必须调用，不传子节点时会被当做叶子节点处理。
 ```html
-<nut-cascader
-  v-model="state.value"
-  @change="events.change"
-  @pathChange="events.pathChange"
-  lazy
-  :lazyLoad="state.lazyLoad"
-></nut-cascader>
+<nut-form>
+  <nut-form-item label="选择地址">
+    <input
+      class="nut-input-text"
+      @click="state.visible = true"
+      :value="state.value"
+      readonly
+      placeholder="请选择地址"
+      type="text"
+    />
+    <nut-cascader
+      title="地址选择"
+      v-model:visible="state.visible"
+      v-model="state.value"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      lazy
+      :lazyLoad="state.lazyLoad"
+    ></nut-cascader>
+  </nut-form-item>
+</nut-form>
 ```
 
 ```javascript
 setup() {
   const state = reactive({
+    visible: false,
     value: ['A0', 'A12', 'A23', 'A32'],
     lazyLoad(node: any, resolve: (children: any) => void) {
       setTimeout(() => {
@@ -206,19 +251,34 @@ setup() {
 ### 部分数据动态加载
 
 ```html
-<nut-cascader
-  v-model="state.value"
-  @change="events.change"
-  @pathChange="events.pathChange"
-  :options="state.options"
-  lazy
-  :lazyLoad="state.lazyLoad"
-></nut-cascader>
+<nut-form>
+  <nut-form-item label="选择地址">
+    <input
+      class="nut-input-text"
+      @click="state.visible = true"
+      :value="state.value"
+      readonly
+      placeholder="请选择地址"
+      type="text"
+    />
+    <nut-cascader
+      title="地址选择"
+      v-model:visible="state.visible"
+      v-model="state.value"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      :options="state.options"
+      lazy
+      :lazyLoad="state.lazyLoad"
+    ></nut-cascader>
+  </nut-form-item>
+</nut-form>
 ```
 
 ```javascript
 setup() {
   const state = reactive({
+    visible: false,
     value: [],
     options: [
       { value: 'A0', text: 'A0' },
@@ -264,18 +324,33 @@ setup() {
 
 
 ```html
-<nut-cascader
-  v-model="state.value"
-  @change="events.change"
-  @pathChange="events.pathChange"
-  :options="state.options"
-  :convertConfig="state.convertConfig"
-></nut-cascader>
+<nut-form>
+  <nut-form-item label="选择地址" @click="state.visible = true">
+    <input
+      class="nut-input-text"
+      @click="state.visible = true"
+      :value="state.value"
+      readonly
+      placeholder="请选择地址"
+      type="text"
+    />
+    <nut-cascader
+      title="地址选择"
+      v-model:visible="state.visible"
+      v-model="state.value"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      :options="state.options"
+      :convertConfig="state.convertConfig"
+    ></nut-cascader>
+  </nut-form-item>
+</nut-form>
 ```
 
 ```javascript
 setup() {
   const state = reactive({
+    visible: false,
     value: ['广东省', '广州市'],
     convertConfig: {
       topId: null,
