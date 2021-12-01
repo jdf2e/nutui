@@ -124,11 +124,12 @@ export default create({
       let needToSync = currentValue;
 
       if (isLazy.value && Array.isArray(currentValue) && currentValue.length) {
+        needToSync = [];
         let parent = tree.value.nodes.find((node) => node.value === currentValue[0]);
 
         if (parent) {
+          needToSync = [parent.value];
           initLoading.value = true;
-          needToSync = currentValue.slice(0, 1);
 
           const last = await currentValue.slice(1).reduce(async (p: Promise<CascaderOption | void>, value) => {
             const parent = await p;
