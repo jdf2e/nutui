@@ -5,14 +5,14 @@ class Tree {
   nodes: CascaderOption[];
   readonly config: CascaderConfig;
 
-  constructor(nodes: CascaderOption[], config: CascaderConfig) {
+  constructor(nodes: CascaderOption[], config?: CascaderConfig) {
     this.config = {
       value: 'value',
       text: 'text',
       children: 'children',
-      ...config
+      ...(config || {})
     };
-    this.nodes = formatTree(nodes, null, config);
+    this.nodes = formatTree(nodes, null, this.config);
   }
 
   updateChildren(nodes: CascaderOption[], parent: CascaderOption | null): void {

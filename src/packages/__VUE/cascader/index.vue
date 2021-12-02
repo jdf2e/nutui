@@ -2,6 +2,7 @@
   <nut-popup
     :visible="visible"
     position="bottom"
+    pop-class="nut-cascader__popup"
     round
     :closeable="true"
     :destroy-on-close="false"
@@ -40,10 +41,7 @@ export default create({
   },
   props: {
     modelValue: Array,
-    visible: {
-      type: Boolean,
-      default: false
-    },
+    visible: Boolean,
     title: String,
     options: {
       type: Array,

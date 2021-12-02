@@ -121,6 +121,11 @@ export default create({
         return;
       }
 
+      if (currentValue.length === 0) {
+        panes.value = [{ nodes: tree.value.nodes, selectedNode: null }];
+        return;
+      }
+
       let needToSync = currentValue;
 
       if (isLazy.value && Array.isArray(currentValue) && currentValue.length) {
@@ -183,6 +188,7 @@ export default create({
           // 外部必须resolve
           configs.value.lazyLoad?.(node, resolve);
         });
+        lazyLoadMap.set(node, lazyLoadPromise);
       }
 
       const nodes: CascaderOption[] | void = await lazyLoadPromise;

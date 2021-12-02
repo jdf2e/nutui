@@ -10,8 +10,8 @@ export type CascaderConfig = {
 };
 
 export type CascaderOption = {
-  text: string;
-  value: number | string;
+  text?: string;
+  value?: number | string;
   disabled?: boolean;
   children?: CascaderOption[];
   leaf?: boolean;
