@@ -236,7 +236,7 @@ export default create({
     };
 
     const readFile = (files: Taro.chooseImage.ImageFile[]) => {
-      const imgReg = /\.(png|jpeg|jpg|webp|gif)$/gi;
+      const imgReg = /\.(png|jpeg|jpg|webp|gif)$/i;
       files.forEach((file: Taro.chooseImage.ImageFile, index: number) => {
         let fileType = file.type;
         const fileItem = reactive(new FileItem());
