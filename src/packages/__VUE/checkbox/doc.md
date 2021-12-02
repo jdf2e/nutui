@@ -173,7 +173,7 @@ setup() {
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
-| v-model | 当前选中项的标识符，和 `label` 相对应  | String | -
+| v-model | 当前选中项的标识符，和 `label` 相对应  | Array | -
 | disabled | 是否禁用选择,将用于其下的全部复选框 | Boolean | `false`
 
 
