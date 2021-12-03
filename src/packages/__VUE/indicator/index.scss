@@ -1,0 +1,60 @@
+.nut-indicator {
+  &--block {
+    display: block;
+    width: 100%;
+  }
+  &--align__left {
+    text-align: left;
+  }
+  &--align__right {
+    text-align: right;
+  }
+  &--align__center {
+    text-align: center;
+  }
+  &--dot,
+  &--number {
+    margin: 0 7px;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &--dot {
+    display: inline-block;
+    vertical-align: middle;
+    width: $indicator-dot-size;
+    height: $indicator-dot-size;
+    border-radius: 50%;
+    background-color: #ccc;
+  }
+  &--number {
+    display: inline-block;
+    position: relative;
+    width: $indicator-size;
+    height: $indicator-size;
+    text-align: center;
+    font-size: 10px;
+    line-height: $indicator-size;
+    color: #fff;
+    vertical-align: middle;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-color: $indicator-color;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: $indicator-border-size;
+      height: $indicator-border-size;
+      border-radius: 50%;
+      border-style: solid;
+      border-width: 1px;
+      border-color: opacify($indicator-color, 0.5);
+    }
+  }
+}
