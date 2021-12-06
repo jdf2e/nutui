@@ -56,8 +56,8 @@ app.use(Popup);
 | type | 键盘模式  | String | `default`：默认样式<br>`rightColumn`：带右侧栏 |
 | random-keys | 随机数  | Boolean | false |
 | custom-key | 自定义键盘额外的键  | array<br>string | 数组形式最多支持添加2个,超出默认取前2项 |
-| overlay | 自定义键盘额外的键  | array<br>string | 数组形式最多支持添加2个,超出默认取前2项 |
-| v-model:value | 是否显示遮罩	 | Boolean | true |
+| overlay | 是否显示遮罩  | Boolean| true |
+| v-model:value | 当前输入值		 | String | - |
 | maxlength  | 输入值最大长度，结合 v-model 使用 | number <br> String| 6 |
 
 
