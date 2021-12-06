@@ -48,6 +48,8 @@
     padding: $nut-cascader-item-padding;
     margin: 0;
     cursor: pointer;
+    font-size: $nut-cascader-item-font-size;
+    color: $nut-cascader-item-color;
 
     &__title {
       flex: 1;
@@ -62,8 +64,13 @@
       margin-left: 10px;
     }
 
+    &.active {
+      color: $nut-cascader-item-active-color;
+    }
+
     &.active &__icon-check {
       visibility: visible;
+      color: $nut-cascader-item-active-color;
     }
 
     &.disabled {
