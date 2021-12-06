@@ -33,7 +33,7 @@ app.use(Popup);
 <nut-popup
   position="top"
   v-model:visible="show"
-  :style="{ height: '20% }"
+  :style="{ height: '20%' }"
 ></nut-popup>
 
 <nut-popup
