@@ -169,8 +169,10 @@ export default create({
           let restTime = end - (Date.now() - state.p + diffTime);
           state.restTime = restTime;
           if (restTime < delay) {
-            state.restTime = 0;
-            emit('on-end');
+            setTimeout(() => {
+              state.restTime = 0;
+              emit('on-end');
+            }, restTime);
             clearInterval(state.timer as any);
           }
         } else {
