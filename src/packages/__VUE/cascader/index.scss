@@ -1,7 +1,7 @@
 .nut-cascader {
   width: 100%;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: $nut-cascader-font-size;
+  line-height: $nut-cascader-line-height;
 
   .nut-tabpane {
     padding: 0;
@@ -10,12 +10,12 @@
   .nut-tabs__titles-item {
     flex: initial;
     min-width: auto;
-    padding: 0 10px;
+    padding: $nut-cascader-tabs-item-padding;
     white-space: nowrap;
   }
 
   .nut-tabs__titles {
-    padding: 0 10px;
+    padding: $nut-cascader-tabs-item-padding;
     background: #fff;
   }
 
@@ -23,14 +23,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 24px;
-    margin-bottom: 17px;
-    padding: 0 20px;
+    padding: $nut-cascader-bar-padding;
     text-align: center;
     font-weight: bold;
-    line-height: 20px;
-    color: #262626;
-    font-size: 18px;
+    line-height: $nut-cascader-bar-line-height;
+    color: $nut-cascader-bar-color;
+    font-size: $nut-cascader-bar-font-size;
   }
 
   &-pane {
@@ -47,7 +45,7 @@
   &-item {
     display: flex;
     align-items: center;
-    padding: 10px 20px;
+    padding: $nut-cascader-item-padding;
     margin: 0;
     cursor: pointer;
 

@@ -383,6 +383,16 @@ $searchbar-background: $white !default;
 $searchbar-input-background: #f7f7f7 !default;
 $searchbar-right-out-color: $black !default;
 
+// cascader
+$nut-cascader-font-size: 14px;
+$nut-cascader-line-height: 22px;
+$nut-cascader-tabs-item-padding: 0 10px;
+$nut-cascader-bar-padding: 24px 20px 17px;
+$nut-cascader-bar-font-size: 18px;
+$nut-cascader-bar-line-height: 18px;
+$nut-cascader-bar-color: #262626;
+$nut-cascader-item-padding: 10px 20px;
+
 // form
 $form-item-error-line-color: $primary-color !default;
 $form-item-required-color: $primary-color !default;
