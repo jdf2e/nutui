@@ -1,4 +1,4 @@
-import{e as a,o as n,G as t}from"./vendor.js";const l={class:"markdown-body"},p=t(`<h1>Popover \u6C14\u6CE1\u5F39\u51FA\u6846</h1><h3>\u4ECB\u7ECD</h3><p>\u70B9\u51FB\u6216\u5728\u5143\u7D20\u4E0A\u60AC\u505C\u9F20\u6807\uFF0C\u5F39\u51FA\u6C14\u6CE1\u5361\u7247\u6D6E\u5C42\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript">
+import{e as a,o as n,y as t}from"./vendor.js";const l={class:"markdown-body"},p=t(`<h1>Popover \u6C14\u6CE1\u5F39\u51FA\u6846</h1><h3>\u4ECB\u7ECD</h3><p>\u70B9\u51FB\u6216\u5728\u5143\u7D20\u4E0A\u60AC\u505C\u9F20\u6807\uFF0C\u5F39\u51FA\u6C14\u6CE1\u5361\u7247\u6D6E\u5C42\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript">
 <span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
 <span class="hljs-comment">// vue</span>
 <span class="hljs-keyword">import</span> { Popover } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;

@@ -1,4 +1,4 @@
-import{e as a,o as t,G as n}from"./vendor.js";const p={class:"markdown-body"},l=n(`<h1>Divider \u5206\u5272\u7EBF</h1><h3>\u4ECB\u7ECD</h3><p>\u7528\u4E8E\u5C06\u5185\u5BB9\u5206\u9694\u4E3A\u591A\u4E2A\u533A\u57DF\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
+import{e as a,o as t,y as n}from"./vendor.js";const p={class:"markdown-body"},l=n(`<h1>Divider \u5206\u5272\u7EBF</h1><h3>\u4ECB\u7ECD</h3><p>\u7528\u4E8E\u5C06\u5185\u5BB9\u5206\u9694\u4E3A\u591A\u4E2A\u533A\u57DF\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
 <span class="hljs-comment">// vue</span>
 <span class="hljs-keyword">import</span> { Divider } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
 <span class="hljs-comment">// taro</span>

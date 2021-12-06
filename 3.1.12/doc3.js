@@ -1,4 +1,4 @@
-import{e as a,o as n,G as t}from"./vendor.js";const l={class:"markdown-body"},p=t(`<h1>Address \u5730\u5740</h1><h3>\u4ECB\u7ECD</h3><p>\u6309\u9700\u52A0\u8F7D\u8BF7\u52A0\u8F7D\u5BF9\u5E94\u4F9D\u8D56\u7EC4\u4EF6 Icon Popup Elevator</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
+import{e as a,o as n,y as t}from"./vendor.js";const l={class:"markdown-body"},p=t(`<h1>Address \u5730\u5740</h1><h3>\u4ECB\u7ECD</h3><p>\u6309\u9700\u52A0\u8F7D\u8BF7\u52A0\u8F7D\u5BF9\u5E94\u4F9D\u8D56\u7EC4\u4EF6 Icon Popup Elevator</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
 <span class="hljs-comment">//vue</span>
 <span class="hljs-keyword">import</span> { Address, Popup, Elevator } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
 <span class="hljs-comment">//taro</span>

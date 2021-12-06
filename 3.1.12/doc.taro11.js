@@ -1,4 +1,4 @@
-import{e as t,o as a,G as n}from"./vendor.js";const l={class:"markdown-body"},p=n(`<h1>Toast \u5410\u53F8</h1><h3>\u4ECB\u7ECD</h3><p>\u7528\u4E8E\u8F7B\u63D0\u793A\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
+import{e as t,o as a,y as n}from"./vendor.js";const l={class:"markdown-body"},p=n(`<h1>Toast \u5410\u53F8</h1><h3>\u4ECB\u7ECD</h3><p>\u7528\u4E8E\u8F7B\u63D0\u793A\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
 <span class="hljs-keyword">import</span> { Toast } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui-taro&#39;</span>;
 
 <span class="hljs-keyword">const</span> app = createApp();

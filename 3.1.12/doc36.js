@@ -1,4 +1,4 @@
-import{e as a,o as t,G as n}from"./vendor.js";const p={class:"markdown-body"},l=n(`<h1>Pagination \u5206\u9875</h1><h3>\u4ECB\u7ECD</h3><p>\u5F53\u6570\u636E\u91CF\u8F83\u591A\u65F6\uFF0C\u91C7\u7528\u5206\u9875\u7684\u5F62\u5F0F\u5206\u9694\u957F\u5217\u8868\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
+import{e as a,o as t,y as n}from"./vendor.js";const p={class:"markdown-body"},l=n(`<h1>Pagination \u5206\u9875</h1><h3>\u4ECB\u7ECD</h3><p>\u5F53\u6570\u636E\u91CF\u8F83\u591A\u65F6\uFF0C\u91C7\u7528\u5206\u9875\u7684\u5F62\u5F0F\u5206\u9694\u957F\u5217\u8868\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
 <span class="hljs-keyword">import</span> { Pagination,Icon } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
 
 <span class="hljs-keyword">const</span> app = createApp();

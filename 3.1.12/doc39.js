@@ -1,4 +1,4 @@
-import{e as t,o as a,G as n}from"./vendor.js";const l={class:"markdown-body"},p=n(`<h1>Popup \u5F39\u51FA\u5C42</h1><h3>\u4ECB\u7ECD</h3><p>\u5F39\u51FA\u5C42\u5BB9\u5668\uFF0C\u7528\u4E8E\u5C55\u793A\u5F39\u7A97\u3001\u4FE1\u606F\u63D0\u793A\u7B49\u5185\u5BB9\uFF0C\u652F\u6301\u591A\u4E2A\u5F39\u51FA\u5C42\u53E0\u52A0\u5C55\u793A</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
+import{e as t,o as a,y as n}from"./vendor.js";const l={class:"markdown-body"},p=n(`<h1>Popup \u5F39\u51FA\u5C42</h1><h3>\u4ECB\u7ECD</h3><p>\u5F39\u51FA\u5C42\u5BB9\u5668\uFF0C\u7528\u4E8E\u5C55\u793A\u5F39\u7A97\u3001\u4FE1\u606F\u63D0\u793A\u7B49\u5185\u5BB9\uFF0C\u652F\u6301\u591A\u4E2A\u5F39\u51FA\u5C42\u53E0\u52A0\u5C55\u793A</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
 <span class="hljs-comment">//vue</span>
 <span class="hljs-keyword">import</span> { Popup } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
 <span class="hljs-comment">//taro</span>
@@ -10,7 +10,7 @@ app.use(Popup);
 </code></pre><h3>\u5F39\u51FA\u4F4D\u7F6E</h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-popup</span>
   <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;top&quot;</span>
   <span class="hljs-attr">v-model:visible</span>=<span class="hljs-string">&quot;show&quot;</span>
-  <span class="hljs-attr">:style</span>=<span class="hljs-string">&quot;{ height: &#39;20% }&quot;</span>
+  <span class="hljs-attr">:style</span>=<span class="hljs-string">&quot;{ height: &#39;20%&#39; }&quot;</span>
 &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-popup</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nut-popup</span>

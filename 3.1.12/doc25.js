@@ -1,4 +1,4 @@
-import{e as a,o as n,G as t}from"./vendor.js";const l={class:"markdown-body"},p=t(`<h1>Imagepreview \u56FE\u7247\u9884\u89C8</h1><h3>\u4ECB\u7ECD</h3><p>\u652F\u6301\u5168\u5C4F\u9884\u89C8\u89C6\u9891\u548C\u56FE\u7247\uFF0C\u53EF\u51FD\u6570\u5F0F\u8C03\u7528</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp, reactive, toRefs } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
+import{e as a,o as n,y as t}from"./vendor.js";const l={class:"markdown-body"},p=t(`<h1>Imagepreview \u56FE\u7247\u9884\u89C8</h1><h3>\u4ECB\u7ECD</h3><p>\u652F\u6301\u5168\u5C4F\u9884\u89C8\u89C6\u9891\u548C\u56FE\u7247\uFF0C\u53EF\u51FD\u6570\u5F0F\u8C03\u7528</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp, reactive, toRefs } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
 
 <span class="hljs-keyword">import</span> { ImagePreview } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
 

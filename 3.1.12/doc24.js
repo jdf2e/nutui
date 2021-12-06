@@ -1,4 +1,4 @@
-import{e as n,o as a,G as t}from"./vendor.js";const l={class:"markdown-body"},p=t(`<h1>Icon \u56FE\u6807</h1><h3>\u4ECB\u7ECD</h3><p>\u57FA\u4E8E IconFont \u5B57\u4F53\u7684\u56FE\u6807\u96C6\uFF0C\u53EF\u4EE5\u901A\u8FC7 Icon \u7EC4\u4EF6\u4F7F\u7528\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
+import{e as n,o as a,y as t}from"./vendor.js";const l={class:"markdown-body"},p=t(`<h1>Icon \u56FE\u6807</h1><h3>\u4ECB\u7ECD</h3><p>\u57FA\u4E8E IconFont \u5B57\u4F53\u7684\u56FE\u6807\u96C6\uFF0C\u53EF\u4EE5\u901A\u8FC7 Icon \u7EC4\u4EF6\u4F7F\u7528\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
 <span class="hljs-comment">// vue</span>
 <span class="hljs-keyword">import</span> { Icon } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
 <span class="hljs-comment">// taro</span>

@@ -1,4 +1,4 @@
-import{e as a,o as n,G as t}from"./vendor.js";const l={class:"markdown-body"},p=t(`<h1>Checkbox \u590D\u9009\u6309\u94AE</h1><h3>\u4ECB\u7ECD</h3><p>\u591A\u9009\u6309\u94AE\u7528\u4E8E\u9009\u62E9\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-ts"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
+import{e as a,o as n,y as t}from"./vendor.js";const l={class:"markdown-body"},p=t(`<h1>Checkbox \u590D\u9009\u6309\u94AE</h1><h3>\u4ECB\u7ECD</h3><p>\u591A\u9009\u6309\u94AE\u7528\u4E8E\u9009\u62E9\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-ts"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
 <span class="hljs-comment">// vue</span>
 <span class="hljs-keyword">import</span> { Checkbox,CheckboxGroup,Icon } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
 <span class="hljs-comment">// taro</span>

@@ -1,4 +1,4 @@
-import{e as t,o as a,G as e}from"./vendor.js";const n={class:"markdown-body"},p=e(`<h1>TimeSelect \u914D\u9001\u65F6\u95F4</h1><h3>\u4ECB\u7ECD</h3><p>\u7528\u4E8Exxx</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
+import{e as t,o as a,y as e}from"./vendor.js";const n={class:"markdown-body"},p=e(`<h1>TimeSelect \u914D\u9001\u65F6\u95F4</h1><h3>\u4ECB\u7ECD</h3><p>\u7528\u4E8Exxx</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
 <span class="hljs-comment">// vue</span>
 <span class="hljs-keyword">import</span> { TimeSelect } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui&#39;</span>;
 <span class="hljs-comment">// taro</span>
