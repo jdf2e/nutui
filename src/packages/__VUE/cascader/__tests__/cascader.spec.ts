@@ -354,10 +354,12 @@ describe('Cascader', () => {
   it('visible', async () => {
     const wrapper = mountCascader({
       props: {
-        modelValue: ['福建', '福州', '鼓楼区'],
+        visible: false,
+        modelValue: [],
         options: mockOptions
       }
     });
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.find('.nut-cascader__popup').isVisible()).toBe(false);
 
@@ -365,7 +367,28 @@ describe('Cascader', () => {
       visible: true
     });
     expect(wrapper.find('.nut-cascader__popup').isVisible()).toBe(true);
+    expect(wrapper.html()).toMatchSnapshot();
 
+    // TODO: 单元测试时，cascader-item中的watch监听props.visible回调不会触发
+    // // value为空时，会保留上次的选择记录
+    // await wrapper.find('.nut-cascader-item').trigger('click');
+    // expect(wrapper.html()).toMatchSnapshot();
+    // expect(wrapper.findAll('.nut-tabs__titles-item__text').length).toBe(2);
+    // await wrapper.setProps({
+    //   visible: false
+    // });
+    // expect(wrapper.html()).toMatchSnapshot();
+    // await wrapper.setProps({
+    //   visible: true
+    // });
+    // await wrapper.vm.$nextTick();
+    // expect(wrapper.html()).toMatchSnapshot();
+    // expect(wrapper.findAll('.nut-tabs__titles-item__text').length).toBe(2);
+
+    // 点击叶子节点时关闭popup
+    await wrapper.setProps({
+      modelValue: ['福建', '福州', '鼓楼区']
+    });
     await wrapper.findAll('.nut-cascader-pane')[2].find('.nut-cascader-item').trigger('click');
     expect((wrapper.emitted('update:visible') as any)[0][0]).toBe(false);
   });
@@ -483,8 +506,7 @@ describe('Cascader', () => {
             if (node.root) {
               resolve([
                 { value: 'A0', text: 'A0' },
-                { value: 'B0', text: 'B0' },
-                { value: 'C0', text: 'C0' }
+                { value: 'B0', text: 'B0' }
               ]);
             } else {
               const { value, level } = node;
@@ -538,9 +560,45 @@ describe('Cascader', () => {
     await wrapper.setProps({
       modelValue: []
     });
-    await wrapper.findAll('.nut-cascader-item')[1].trigger('click');
-    expect(wrapper.emitted().pathChange.length).toBe(3);
-    expect(wrapper.emitted().change.length).toBe(1);
+    await later();
     expect(wrapper.html()).toMatchSnapshot();
+    await wrapper.findAll('.nut-cascader-item')[1].trigger('click');
+    await later(60);
+    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.emitted().pathChange.length).toBe(4);
+    expect(wrapper.emitted().change.length).toBe(1);
+  });
+
+  it('change tab', async () => {
+    const wrapper = mountCascader({
+      props: {
+        visible: true,
+        modelValue: ['福建', '福州', '鼓楼区'],
+        options: mockOptions
+      }
+    });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.html()).toMatchSnapshot();
+
+    await wrapper.findAll('.nut-tabs__titles-item__text')[1].trigger('click');
+    expect(wrapper.html()).toMatchSnapshot();
+
+    await wrapper.findAll('.nut-tabs__titles-item__text')[0].trigger('click');
+    expect(wrapper.html()).toMatchSnapshot();
+
+    await wrapper.find('.nut-tabs__content .nut-cascader-item').trigger('click');
+    expect(wrapper.findAll('.nut-tabs__titles-item__text').length).toBe(2);
+
+    await wrapper.setProps({
+      visible: false
+    });
+
+    // 重新打开时，绑定值和显示一致
+    await wrapper.setProps({
+      visible: true
+    });
+    expect(wrapper.findAll('.nut-tabs__titles-item__text').length).toBe(3);
+    expect(wrapper.findAll('.nut-tabs__titles-item__text')[2].text()).toBe('鼓楼区');
   });
 });

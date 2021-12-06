@@ -131,7 +131,8 @@ export default createDemo({
     // 基础用法
     const demo1 = reactive({
       visible: false,
-      value: ['湖南'],
+      // value: ['湖南'],
+      value: [],
       options: [
         {
           value: '浙江',

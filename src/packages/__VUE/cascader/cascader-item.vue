@@ -122,6 +122,7 @@ export default create({
       }
 
       if (currentValue.length === 0) {
+        tabsCursor.value = 0;
         panes.value = [{ nodes: tree.value.nodes, selectedNode: null }];
         return;
       }
@@ -301,7 +302,8 @@ export default create({
     watch(
       () => props.visible,
       (val) => {
-        if (val) {
+        // console.log('watch: props.visible', val);
+        if (val && Array.isArray(innerValue.value) && innerValue.value.length > 0) {
           syncValue();
         }
       }
