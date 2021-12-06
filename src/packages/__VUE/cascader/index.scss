@@ -64,7 +64,7 @@
       margin-left: 10px;
     }
 
-    &.active {
+    &.active:not(.disabled) {
       color: $nut-cascader-item-active-color;
     }
 

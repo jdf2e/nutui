@@ -72,7 +72,8 @@ export default {
         'pages/numberkeyboard/index',
         'pages/badge/index',
         'pages/tag/index',
-        'pages/popover/index'
+        'pages/popover/index',
+        'pages/cascader/index'
       ]
     },
     {
