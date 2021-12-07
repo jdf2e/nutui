@@ -9,12 +9,12 @@
 ```javascript
 import { createApp } from 'vue';
 //vue
-import { Popup } from '@nutui/nutui';
+import { Popup,OverLay } from '@nutui/nutui';
 //taro
-import { Popup } from '@nutui/nutui-taro';
+import { Popup,OverLay } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Popup);
+app.use(Popup).use(OverLay)
 ```
 
 ## 代码演示

@@ -11,10 +11,10 @@
     
 ```javascript
 import { createApp } from 'vue';
-import { Dialog } from '@nutui/nutui';
+import { Dialog,Popup,OverLay } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Dialog);
+app.use(Dialog).use(Popup).use(OverLay)
 ```
 
 

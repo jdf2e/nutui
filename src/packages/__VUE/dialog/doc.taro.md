@@ -9,10 +9,10 @@
     
 ```javascript
 import { createApp } from 'vue';
-import { Dialog } from '@nutui/nutui-taro';
+import { Dialog,Popup,OverLay } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Dialog);
+app.use(Dialog).use(Popup).use(OverLay)
 ```
 
 ## 使用方式
