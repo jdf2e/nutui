@@ -8,7 +8,7 @@
         <slot name="leftin"></slot>
       </view>
       <view class="nut-searchbar__input-inner">
-        <form action="#" @submit.prevent="handleSubmit">
+        <form action="#">
           <input
             class="nut-searchbar__input-bar"
             :type="inputType"
@@ -18,6 +18,7 @@
             @input="valueChange"
             @focus="valueFocus"
             @blur="valueBlur"
+            @confirm="handleSubmit"
           />
         </form>
         <view @click="handleClear" class="nut-searchbar__input-clear" v-if="clearable" v-show="modelValue.length > 0">
