@@ -1,8 +1,8 @@
 import{e as a,o as n,y as t}from"./vendor.js";const l={class:"markdown-body"},p=t(`<h1>Dialog \u5BF9\u8BDD\u6846</h1><h3>\u4ECB\u7ECD</h3><p>\u6A21\u6001\u5BF9\u8BDD\u6846\uFF0C\u5728\u6D6E\u5C42\u4E2D\u663E\u793A\uFF0C\u5F15\u5BFC\u7528\u6237\u8FDB\u884C\u76F8\u5173\u64CD\u4F5C\uFF0C\u5E38\u7528\u4E8E\u6D88\u606F\u63D0\u793A\u3001\u6D88\u606F\u786E\u8BA4\uFF0C\u6216\u5728\u5F53\u524D\u9875\u9762\u5185\u5B8C\u6210\u7279\u5B9A\u7684\u4EA4\u4E92\u64CD\u4F5C\u3002</p><h3>\u5B89\u88C5</h3><pre><code class="language-javascript"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vue&#39;</span>;
-<span class="hljs-keyword">import</span> { Dialog } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui-taro&#39;</span>;
+<span class="hljs-keyword">import</span> { Dialog,Popup,OverLay } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@nutui/nutui-taro&#39;</span>;
 
 <span class="hljs-keyword">const</span> app = createApp();
-app.use(Dialog);
+app.use(Dialog).use(Popup).use(OverLay)
 </code></pre><h2>\u4F7F\u7528\u65B9\u5F0F</h2><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nut-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;\u57FA\u7840\u5F39\u6846&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;baseClick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nut-cell</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">nut-dialog</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;\u57FA\u7840\u5F39\u6846&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;\u8FD9\u662F\u57FA\u7840\u5F39\u6846\u3002&quot;</span> <span class="hljs-attr">v-model:visible</span>=<span class="hljs-string">&quot;visible1&quot;</span> @<span class="hljs-attr">cancel</span>=<span class="hljs-string">&quot;onCancel&quot;</span> @<span class="hljs-attr">ok</span>=<span class="hljs-string">&quot;onOk&quot;</span> /&gt;</span>
 
