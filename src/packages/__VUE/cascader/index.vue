@@ -13,15 +13,15 @@
 
     <nut-cascader-item
       @change="onChange"
-      @pathChange="onPathChange"
+      @path-change="onPathChange"
       :modelValue="innerValue"
       :options="options"
       :lazy="lazy"
-      :lazyLoad="lazyLoad"
-      :valueKey="valueKey"
-      :textKey="textKey"
-      :childrenKey="childrenKey"
-      :convertConfig="convertConfig"
+      :lazy-load="lazyLoad"
+      :value-key="valueKey"
+      :text-key="textKey"
+      :children-key="childrenKey"
+      :convert-config="convertConfig"
       :visible="innerVisible"
     />
   </nut-popup>

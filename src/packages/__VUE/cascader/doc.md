@@ -36,7 +36,7 @@ app.use(Cascader);
       v-model:visible="state.visible"
       v-model="state.value"
       @change="events.change"
-      @pathChange="events.pathChange"
+      @path-change="events.pathChange"
       :options="state.options"
     ></nut-cascader>
   </nut-form-item>
@@ -124,11 +124,11 @@ setup() {
       title="地址选择"
       v-model:visible="state.visible"
       v-model="state.value"
-      labelKey="text"
+      label-key="text"
       @change="events.change"
-      @pathChange="events.pathChange"
-      valueKey="text"
-      childrenKey="items"
+      @path-change="events.pathChange"
+      value-key="text"
+      children-key="items"
       :options="state.options"
     ></nut-cascader>
   </nut-form-item>
@@ -198,9 +198,9 @@ setup() {
       v-model:visible="state.visible"
       v-model="state.value"
       @change="events.change"
-      @pathChange="events.pathChange"
+      @path-change="events.pathChange"
       lazy
-      :lazyLoad="state.lazyLoad"
+      :lazy-load="state.lazyLoad"
     ></nut-cascader>
   </nut-form-item>
 </nut-form>
@@ -266,10 +266,10 @@ setup() {
       v-model:visible="state.visible"
       v-model="state.value"
       @change="events.change"
-      @pathChange="events.pathChange"
+      @path-change="events.pathChange"
       :options="state.options"
       lazy
-      :lazyLoad="state.lazyLoad"
+      :lazy-load="state.lazyLoad"
     ></nut-cascader>
   </nut-form-item>
 </nut-form>
@@ -339,7 +339,7 @@ setup() {
       v-model:visible="state.visible"
       v-model="state.value"
       @change="events.change"
-      @pathChange="events.pathChange"
+      @path-change="events.pathChange"
       :options="state.options"
       :convertConfig="state.convertConfig"
     ></nut-cascader>
@@ -388,11 +388,11 @@ setup() {
 | v-model       | 选中值，双向绑定                                      | Array    | -      |
 | options       | 级联数据                                              | Array    | -      |
 | lazy          | 是否开启动态加载                                      | Boolean  | -      |
-| lazyLoad      | 动态加载回调，开启动态加载时生效                      | Function | -      |
-| valueKey      | 自定义`options`结构中`value`的字段                    | String   | -      |
-| textKey       | 自定义`options`结构中`text`的字段                     | String   | -      |
-| childrenKey   | 自定义`options`结构中`children`的字段                 | String   | -      |
-| convertConfig | 当options为可转换为树形结构的扁平结构时，配置转换规则 | Object   | -      |
+| lazy-load      | 动态加载回调，开启动态加载时生效                      | Function | -      |
+| value-key      | 自定义`options`结构中`value`的字段                    | String   | -      |
+| text-key       | 自定义`options`结构中`text`的字段                     | String   | -      |
+| children-key   | 自定义`options`结构中`children`的字段                 | String   | -      |
+| convert-config | 当options为可转换为树形结构的扁平结构时，配置转换规则 | Object   | -      |
 
 ### Events
 

@@ -17,7 +17,7 @@
           v-model:visible="demo1.visible"
           v-model="demo1.value"
           @change="events.change"
-          @pathChange="events.pathChange"
+          @path-change="events.pathChange"
           :options="demo1.options"
         ></nut-cascader>
       </nut-form-item>
@@ -38,11 +38,11 @@
           title="地址选择"
           v-model:visible="demo2.visible"
           v-model="demo2.value"
-          labelKey="text"
+          label-key="text"
           @change="events.change"
-          @pathChange="events.pathChange"
-          valueKey="text"
-          childrenKey="items"
+          @path-change="events.pathChange"
+          value-key="text"
+          children-key="items"
           :options="demo2.options"
         ></nut-cascader>
       </nut-form-item>
@@ -64,9 +64,9 @@
           v-model:visible="demo3.visible"
           v-model="demo3.value"
           @change="events.change"
-          @pathChange="events.pathChange"
+          @path-change="events.pathChange"
           lazy
-          :lazyLoad="demo3.lazyLoad"
+          :lazy-load="demo3.lazyLoad"
         ></nut-cascader>
       </nut-form-item>
     </nut-form>
@@ -87,10 +87,10 @@
           v-model:visible="demo4.visible"
           v-model="demo4.value"
           @change="events.change"
-          @pathChange="events.pathChange"
+          @path-change="events.pathChange"
           :options="demo4.options"
           lazy
-          :lazyLoad="demo4.lazyLoad"
+          :lazy-load="demo4.lazyLoad"
         ></nut-cascader>
       </nut-form-item>
     </nut-form>
@@ -111,7 +111,7 @@
           v-model:visible="demo5.visible"
           v-model="demo5.value"
           @change="events.change"
-          @pathChange="events.pathChange"
+          @path-change="events.pathChange"
           :options="demo5.options"
           :convertConfig="demo5.convertConfig"
         ></nut-cascader>

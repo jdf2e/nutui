@@ -369,7 +369,7 @@ describe('Cascader', () => {
     expect(wrapper.find('.nut-cascader__popup').isVisible()).toBe(true);
     expect(wrapper.html()).toMatchSnapshot();
 
-    // TODO: 单元测试时，cascader-item中的watch监听props.visible回调不会触发
+    // TODO: 无法通过，每次更新props都重新执行了setup，原因待发现
     // // value为空时，会保留上次的选择记录
     // await wrapper.find('.nut-cascader-item').trigger('click');
     // expect(wrapper.html()).toMatchSnapshot();

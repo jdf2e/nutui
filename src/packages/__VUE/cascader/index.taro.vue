@@ -1,13 +1,11 @@
 <template>
   <nut-popup
-    :visible="visible"
+    v-model:visible="innerVisible"
     position="bottom"
     pop-class="nut-cascader__popup"
     round
     :closeable="true"
     :destroy-on-close="false"
-    @click-overlay="closePopup"
-    @click-close-icon="closePopup"
   >
     <template v-if="title">
       <view class="nut-cascader__bar">{{ title }}</view>
@@ -15,21 +13,21 @@
 
     <nut-cascader-item
       @change="onChange"
-      @pathChange="onPathChange"
+      @path-change="onPathChange"
       :modelValue="innerValue"
       :options="options"
       :lazy="lazy"
-      :lazyLoad="lazyLoad"
-      :valueKey="valueKey"
-      :textKey="textKey"
-      :childrenKey="childrenKey"
-      :convertConfig="convertConfig"
-      :visible="visible"
+      :lazy-load="lazyLoad"
+      :value-key="valueKey"
+      :text-key="textKey"
+      :children-key="childrenKey"
+      :convert-config="convertConfig"
+      :visible="innerVisible"
     />
   </nut-popup>
 </template>
 <script lang="ts">
-import { watch, ref, Ref } from 'vue';
+import { watch, ref, Ref, computed } from 'vue';
 import { CascaderValue, CascaderOption } from './types';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('cascader');
@@ -63,24 +61,27 @@ export default create({
     },
     convertConfig: Object
   },
-  emits: ['update:modelValue', 'change', 'pathChange', 'update:visible', 'close'],
+  emits: ['update:modelValue', 'change', 'pathChange', 'update:visible'],
   setup(props, { emit }) {
     const innerValue: Ref<CascaderValue> = ref(props.modelValue as CascaderValue);
+    const innerVisible = computed({
+      get() {
+        return props.visible;
+      },
+      set(value) {
+        emit('update:visible', value);
+      }
+    });
 
     const onChange = (value: CascaderValue, pathNodes: CascaderOption[]) => {
       innerValue.value = value;
+      innerVisible.value = false;
       emit('change', value, pathNodes);
       emit('update:modelValue', value);
-      closePopup();
     };
 
     const onPathChange = (pathNodes: CascaderOption[]) => {
       emit('pathChange', pathNodes);
-    };
-
-    const closePopup = () => {
-      emit('close');
-      emit('update:visible', false);
     };
 
     watch(
@@ -95,8 +96,8 @@ export default create({
     return {
       onChange,
       onPathChange,
-      closePopup,
-      innerValue
+      innerValue,
+      innerVisible
     };
   }
 });
