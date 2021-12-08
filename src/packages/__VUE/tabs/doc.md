@@ -150,6 +150,25 @@ export default {
 </nut-tabs>
 ```
 
+### 标签栏字体尺寸 large normal small
+``` html
+<nut-tabs v-model="state.tab1value" size="large">
+  <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
+  <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
+  <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+</nut-tabs>
+<nut-tabs v-model="state.tab1value" size="normal">
+  <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
+  <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
+  <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+</nut-tabs>
+<nut-tabs v-model="state.tab1value" size="small">
+  <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
+  <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
+  <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+</nut-tabs>
+```
+
 ### 自定义标签栏
 ``` html
 <nut-tabs v-model="state.tab7value">
@@ -170,17 +189,18 @@ export default {
 
 ### Tabs Props
 
-| 参数          | 说明                                     | 类型          | 默认值     |
-|---------------|------------------------------------------|---------------|------------|
-| v-model       | 绑定当前选中标签的标识符                 | number,string | 0          |
-| color         | 标签选中色                               | string        | #1a1a1a    |
-| background    | 标签栏背景颜色                           | string        | #f5f5f5    |
-| direction     | 使用横纵方向 可选值 horizontal、vertical | string        | horizontal |
-| type          | 选中底部展示样式 可选值 line、smile      | string        | line       |
-| title-scroll  | 标签栏是否可以滚动                       | boolean       | false      |
-| ellipsis      | 是否省略过长的标题文字                   | boolean       | true       |
-| animated-time | 切换动画时长,单位 ms 0代表无动画         | number,string | 300        |
-| title-gutter  | 标签间隙                                 | number,string | 0          |
+| 参数          | 说明                                          | 类型          | 默认值     |
+|---------------|-----------------------------------------------|---------------|------------|
+| v-model       | 绑定当前选中标签的标识符                      | number,string | 0          |
+| color         | 标签选中色                                    | string        | #1a1a1a    |
+| background    | 标签栏背景颜色                                | string        | #f5f5f5    |
+| direction     | 使用横纵方向 可选值 horizontal、vertical      | string        | horizontal |
+| type          | 选中底部展示样式 可选值 line、smile           | string        | line       |
+| title-scroll  | 标签栏是否可以滚动                            | boolean       | false      |
+| ellipsis      | 是否省略过长的标题文字                        | boolean       | true       |
+| animated-time | 切换动画时长,单位 ms 0 代表无动画              | number,string | 300        |
+| title-gutter  | 标签间隙                                      | number,string | 0          |
+| size`v3.1.13`          | 标签栏字体尺寸大小 可选值  large normal small | string        | normal     |
 
 ## Tabs Slots
 

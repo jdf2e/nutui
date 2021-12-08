@@ -1,6 +1,10 @@
 <template>
   <view class="nut-tabs" :class="[direction]">
-    <view class="nut-tabs__titles" :class="{ [type]: type, scrollable: titleScroll }" :style="tabsNavStyle">
+    <view
+      class="nut-tabs__titles"
+      :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
+      :style="tabsNavStyle"
+    >
       <slot v-if="$slots.titles" name="titles"></slot>
       <template v-else>
         <view
@@ -30,7 +34,7 @@
 </template>
 <script lang="ts">
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch } from 'vue';
+import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, PropType } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('tabs');
 class Title {
@@ -40,6 +44,7 @@ class Title {
   disabled: boolean = false;
   constructor() {}
 }
+export type TabsSize = 'large' | 'normal' | 'small';
 export default create({
   props: {
     modelValue: {
@@ -53,6 +58,10 @@ export default create({
     direction: {
       type: String,
       default: 'horizontal' //vertical
+    },
+    size: {
+      type: String as PropType<TabsSize>,
+      default: 'normal'
     },
     type: {
       type: String,
