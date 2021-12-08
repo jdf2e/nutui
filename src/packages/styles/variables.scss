@@ -353,7 +353,10 @@ $pagination-prev-next-padding: 0 11px !default;
 // tabs
 $tabs-tab-smile-color: $primary-color !default;
 $tabs-titles-border-radius: 0 !default;
+$tabs-titles-item-large-font-size: $font-size-3 !default;
 $tabs-titles-item-font-size: $font-size-2 !default;
+$tabs-titles-item-small-font-size: $font-size-1 !default;
+
 $tabs-titles-item-color: $title-color !default;
 $tabs-titles-background-color: $help-color !default;
 $tabs-horizontal-tab-line-color: linear-gradient(90deg, #f5503a 0%, #fad1cb 100%) !default;
