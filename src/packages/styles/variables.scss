@@ -44,6 +44,7 @@ $button-default-bg-color: $white !default;
 $button-default-border-color: rgba(204, 204, 204, 1) !default;
 $button-default-color: rgba(102, 102, 102, 1) !default;
 $button-small-height: 28px !default;
+$button-mini-height: 24px !default;
 $button-default-height: 38px !default;
 $button-large-height: 48px !default;
 $button-large-line-height: 46px !default;
@@ -99,6 +100,10 @@ $cell-group-title-padding: 0 10px !default;
 $cell-group-title-color: #909ca4 !default;
 $cell-group-title-font-size: $font-size-2 !default;
 $cell-group-title-line-height: 20px !default;
+$cell-group-desc-padding: 0 10px !default;
+$cell-group-desc-color: #909ca4 !default;
+$cell-group-desc-font-size: $font-size-1 !default;
+$cell-group-desc-line-height: 16px !default;
 $cell-group-background-color: $white !default;
 
 // icon
@@ -279,7 +284,7 @@ $noticeBar-left-icon-width: 16px !default;
 $noticeBar-right-icon-width: 16px !default;
 
 // TimeSelect
-$timeselect-title-font-size: $font-size-1 !default;
+$timeselect-title-font-size: $font-size-2 !default;
 $timeselect-title-color: $title-color !default;
 $timeselect-pannel-bg-color: #f6f7f9 !default;
 
@@ -348,7 +353,10 @@ $pagination-prev-next-padding: 0 11px !default;
 // tabs
 $tabs-tab-smile-color: $primary-color !default;
 $tabs-titles-border-radius: 0 !default;
+$tabs-titles-item-large-font-size: $font-size-3 !default;
 $tabs-titles-item-font-size: $font-size-2 !default;
+$tabs-titles-item-small-font-size: $font-size-1 !default;
+
 $tabs-titles-item-color: $title-color !default;
 $tabs-titles-background-color: $help-color !default;
 $tabs-horizontal-tab-line-color: linear-gradient(90deg, #f5503a 0%, #fad1cb 100%) !default;
@@ -360,10 +368,28 @@ $tabs-vertical-titles-item-height: 40px !default;
 $tabs-vertical-titles-item-active-line-height: 14px !default;
 $tabs-vertical-titles-width: 100px !default;
 
+// menu
+$nut-menu-bar-line-height: 46px !default;
+$nut-menu-bar-border-bottom-color: #eaf0fb !default;
+$nut-menu-bar-opened-z-index: 2001 !default;
+$nut-menu-item-disabled-color: #969799 !default;
+$nut-menu-title-text-padding-left: 8px !default;
+$nut-menu-title-text-padding-right: 8px !default;
+$nut-menu-item-content-padding: 12px 24px !default;
+$nut-menu-item-content-max-height: 214px !default;
+$nut-menu-item-option-padding-top: 12px !default;
+$nut-menu-item-option-padding-bottom: 12px !default;
+$nut-menu-item-option-i-margin-right: 6px !default;
+
 // searchbar
 $searchbar-background: $white !default;
 $searchbar-input-background: #f7f7f7 !default;
 $searchbar-right-out-color: $black !default;
+
+// form
+$form-item-error-line-color: $primary-color !default;
+$form-item-required-color: $primary-color !default;
+$form-item-error-message-color: $primary-color !default;
 
 // sku
 $sku-item-border: 1px solid $primary-color;
@@ -380,6 +406,10 @@ $sku-opetate-bg-buy: linear-gradient(
   rgba(255, 195, 13, 1) 69%,
   rgba(255, 207, 13, 1) 100%
 );
-
+// card
+$card-font-size-0: $font-size-0;
+$card-font-size-1: $font-size-1;
+$card-font-size-2: $font-size-2;
+$card-font-size-3: $font-size-3;
 @import './mixins/index';
 @import './animation/index';

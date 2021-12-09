@@ -41,6 +41,12 @@ export default {
 <nut-switch v-model="checked" disable />
 ```
 
+### 加载状态
+
+``` html
+<nut-switch v-model="checked" loading color="loading" />
+```
+
 ### change事件
 
 ``` html
@@ -107,6 +113,10 @@ export default {
 |----------------|------------------|---------|-----------------------|
 | v-model        | 开关状态         | Boolean | `false`               |
 | disable        | 禁用状态         | Boolean | `false`               |
+| loading        | 加载状态         | Boolean | `false`               |
+| name        | [图标名称](#/icon)         | String | `loading`               |
+| color        | [图标颜色](#/icon)          | String | -               |
+| size        | [图标尺寸](#/icon)          | String、Number | `12px`               |
 | active-color   | 打开时的背景颜色 | String  | `#fa2c19`    |
 | inactive-color | 关闭时的背景颜色 | String  | `#ebebeb` |
 | active-text    | 打开时文字描述   | String  | -                     |

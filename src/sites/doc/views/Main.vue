@@ -1,5 +1,4 @@
 <template>
-  <div class="v3-banner" :class="{ active: false }">NutUI 现已发布 Vue3.x 版本，带来更强大的功能和出色的体验</div>
   <doc-header></doc-header>
   <div class="doc-content" :class="themeName()">
     <div class="doc-content-index">
@@ -281,26 +280,6 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
-.v3-banner {
-  position: fixed;
-  top: 0;
-  transition: all 0.3s;
-  &.active {
-    top: $doc-header-height;
-  }
-  font-size: 14px;
-  width: 100%;
-  z-index: 1;
-  text-align: center;
-  padding: 10px 60px;
-  color: #fff;
-  background: linear-gradient(
-    135deg,
-    rgba(242, 20, 12, 1) 0%,
-    rgba(232, 34, 14, 1) 69.83950099728881%,
-    rgba(242, 77, 12, 1) 100%
-  );
-}
 @keyframes fadeInLeft {
   from {
     opacity: 0;

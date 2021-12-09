@@ -6,8 +6,9 @@ const defaultOptions = {
   duration: 2000, //显示时间(毫秒)
   center: true, // 未实现
   type: 'text',
+  title: '',
   customClass: '', // 未实现
-  bottom: 30, // 未实现
+  bottom: '30px', // 未实现
   size: 'base', // 未实现
   icon: null, // 未实现
   textAlignCenter: true, // 未实现

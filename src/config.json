@@ -243,12 +243,13 @@
         {
           "version": "3.0.0",
           "name": "ImagePreview",
-          "type": "component",
+          "type": "methods",
           "cName": "图片预览",
           "desc": "图片预览",
           "sort": 4,
           "show": true,
-          "taro": true,
+          "taro": false,
+          "tarodoc": true,
           "author": "zongyue3"
         }
       ]
@@ -556,7 +557,7 @@
           "sort": 2,
           "cName": "菜单组件",
           "type": "component",
-          "taro":true,
+          "taro": true,
           "show": true,
           "desc": "下拉菜单组件",
           "author": "yangjinjun3"
@@ -871,6 +872,29 @@
           "show": true,
           "taro": true,
           "author": "liqiong"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Form",
+          "type": "component",
+          "cName": "表单",
+          "desc": "1",
+          "sort": 21,
+          "show": true,
+          "taro": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "FormItem",
+          "type": "component",
+          "cName": "表单Item",
+          "desc": "表单Item",
+          "sort": 22,
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "author": "richard1015"
         }
       ]
     },
@@ -957,6 +981,17 @@
           "sort": 1,
           "show": true,
           "author": "yangxiaolu3"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Card",
+          "type": "component",
+          "cName": "商品卡片",
+          "desc": "展示商品",
+          "sort": 1,
+          "show": true,
+          "author": "Drjingfubo"
         }
       ]
     }

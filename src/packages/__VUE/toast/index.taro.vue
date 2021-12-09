@@ -4,7 +4,7 @@
       :class="toastBodyClass"
       v-show="visible"
       :style="{
-        bottom: center ? 'auto' : bottom + 'px',
+        bottom: center ? 'auto' : bottom,
         'background-color': coverColor
       }"
       @click="clickCover"
@@ -23,6 +23,9 @@
           <view v-if="hasIcon" class="nut-toast-icon-wrapper">
             <nut-icon size="20" color="#ffffff" :name="iconName"></nut-icon>
           </view>
+          <div v-if="title" class="nut-toast-title">
+            {{ title }}
+          </div>
           <view class="nut-toast-text" v-html="msg"></view>
         </view>
       </template>
@@ -55,8 +58,8 @@ export default create({
     },
     customClass: String,
     bottom: {
-      type: Number,
-      default: 30
+      type: String,
+      default: '30px'
     },
     size: {
       type: [String, Number],
@@ -85,6 +88,10 @@ export default create({
     coverColor: {
       type: String,
       default: 'rgba(0, 0, 0, 0)'
+    },
+    title: {
+      type: String,
+      default: ''
     },
     closeOnClickOverlay: {
       type: Boolean,
