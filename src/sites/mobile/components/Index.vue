@@ -14,8 +14,8 @@
           <template v-for="_package in _nav.packages" :key="_package">
             <li v-if="_package.show">
               <router-link :to="_package.name.toLowerCase()"
-                >{{ _package.name }}&nbsp;&nbsp;{{ _package.cName }}</router-link
-              >
+                >{{ _package.name }}&nbsp;&nbsp;{{ _package.cName }}
+              </router-link>
               <nut-icon size="14px" color="#979797" name="right"></nut-icon>
             </li>
           </template>
@@ -27,13 +27,12 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
-import { nav, versions } from '@/config.json';
+import { nav } from '@/config.json';
 export default defineComponent({
   name: 'doc',
   setup() {
     return reactive({
-      nav,
-      versions
+      nav
     });
   }
 });
