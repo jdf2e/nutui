@@ -521,6 +521,16 @@
           "show": true,
           "taro": true,
           "author": "zongyue3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Empty",
+          "type": "component",
+          "cName": "空状态",
+          "desc": "空状态时占位提示",
+          "sort": 24,
+          "show": true,
+          "author": "wujia8"
         }
       ]
     },
@@ -556,7 +566,7 @@
           "sort": 2,
           "cName": "菜单组件",
           "type": "component",
-          "taro":true,
+          "taro": true,
           "show": true,
           "desc": "下拉菜单组件",
           "author": "yangjinjun3"
