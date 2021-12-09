@@ -29,7 +29,6 @@ import { nav } from '@/config.json';
 import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute, useRouter } from 'vue-router';
 import Header from '@/sites/doc/components/Header.vue';
 import Nav from '@/sites/doc/components/Nav.vue';
-import Footer from '@/sites/doc/components/Footer.vue';
 import DemoPreview from '@/sites/doc/components/DemoPreview.vue';
 import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
@@ -37,7 +36,6 @@ export default defineComponent({
   components: {
     [Header.name]: Header,
     [Nav.name]: Nav,
-    [Footer.name]: Footer,
     [DemoPreview.name]: DemoPreview
   },
   setup() {
