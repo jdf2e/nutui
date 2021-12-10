@@ -8,7 +8,6 @@
 <p align="center">（支持一套代码生成 H5 和小程序）</p>
 
 <p align="center">
-    <img src="https://img.shields.io/npm/v/@nutui/nutui.svg" alt="npm version" />
     <img src="https://api.travis-ci.org/jdf2e/nutui.svg?branch=master" alt="CI Status" />
     <img src="https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master" alt="Coverage Status" />
     <img src="https://img.shields.io/npm/l/@nutui/nutui.svg" alt="license"/>
