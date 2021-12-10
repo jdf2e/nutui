@@ -12,6 +12,12 @@
     <img src="https://api.travis-ci.org/jdf2e/nutui.svg?branch=master" alt="CI Status" />
     <img src="https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master" alt="Coverage Status" />
     <img src="https://img.shields.io/npm/l/@nutui/nutui.svg" alt="license"/>
+    <a href="https://github.com/jdf2e/nutui">
+    <img src="https://img.shields.io/github/commits-since/jdf2e/nutui/latest/next" alt="GitHub commits since latest release (by date)">
+    </a>
+    <a href="https://github.com/jdf2e/nutui">
+    <img src="https://img.shields.io/github/release-date/jdf2e/nutui" alt="GitHub Release Date">
+  </a>
 </p>
 
 <!-- <p align="center">
