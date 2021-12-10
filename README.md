@@ -8,10 +8,12 @@
 <p align="center">（支持一套代码生成 H5 和小程序）</p>
 
 <p align="center">
-  
+    <a href="https://github.com/jdf2e/nutui">
     <img src="https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master" alt="Coverage Status" />
+    </a>
+    <a href="https://github.com/jdf2e/nutui">
     <img src="https://img.shields.io/npm/l/@nutui/nutui.svg" alt="license"/>
-  
+    </a>
   <a href="http://makeapullrequest.com">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome">
   </a>
