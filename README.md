@@ -54,9 +54,6 @@
 
 > @next 和 @nutui-taro 属于并行版本，存在部分的差异化，版本号始终保持一致。如果想要兼容低版本，请使用 @nutui/nutui
 
-* @nutui/nutui 基于 Vue2， 京东 APP 7.0 规范 ，只能开发 H5；支持现代浏览器以及 Android >= 4.0、iOS >= 8.0
-
-* @nutui/nutui-jdl 基于 Vue2，京东物流视觉规范，只能开发 H5；支持现代浏览器以及 Android >= 4.0、iOS >= 8.0
 
 * @nutui/nutui@next 基于 Vue3，京东 APP 10.0 规范，只能开发 h5；支持现代浏览器以及 Chrome >= 51、iOS >= 10.0（与 Vue3 一致）
 
@@ -65,7 +62,9 @@
 | 版本 | 支持的框架 | 视觉规范 | 支持的应用类型 | 兼容
 | --- | --- | --- | --- | --- |
 | @nutui/nutui  | Vue 2x | 京东 APP 7.0 规范 | H5 | 现代浏览器以及 Android >= 4.0、iOS >= 8.0
-| @nutui/nutui  | Vue 2x | 京东 APP 7.0 规范 | H5 | 现代浏览器以及 Android >= 4.0、iOS >= 8.0
+| @nutui/nutui-jdl  | Vue 2x | 京东物流视觉规范 | H5 | 现代浏览器以及 Android >= 4.0、iOS >= 8.0
+| @nutui/nutui@next  | Vue 3x | 京东 APP 10.0 规范 | H5 | 现代浏览器以及 Chrome >= 51、iOS >= 10.0（与 Vue3 一致）
+| @nutui/nutui-taro  | Vue3 + Taro | 京东 APP 10.0 规范 | H5&小程序，可开发多端 | 现代浏览器以及 Chrome >= 51、iOS >= 10.0（与 Vue3 一致）
 
 
 ## 构建版本
