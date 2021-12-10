@@ -13,6 +13,15 @@
     <img src="https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master" alt="Coverage Status" />
     <img src="https://img.shields.io/npm/l/@nutui/nutui.svg" alt="license"/>
     <a href="https://github.com/jdf2e/nutui">
+    <img src="https://img.shields.io/github/contributors/jdf2e/nutui" alt="GitHub contributors">
+    </a>
+    <a href="https://github.com/jdf2e/nutui">
+    <img src="https://img.shields.io/github/commit-activity/w/jdf2e/nutui" alt="GitHub commit activity">
+    </a>
+    <a href="https://github.com/jdf2e/nutui">
+    <img src="https://img.shields.io/github/issues-closed/jdf2e/nutui" alt="GitHub closed issues">
+    </a>  
+    <a href="https://github.com/jdf2e/nutui">
     <img src="https://img.shields.io/github/commits-since/jdf2e/nutui/latest/next" alt="GitHub commits since latest release (by date)">
     </a>
     <a href="https://github.com/jdf2e/nutui">
