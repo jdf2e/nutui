@@ -59,7 +59,7 @@
 | @nutui/nutui  | Vue 2x | 京东 APP 7.0 规范 | H5 | 现代浏览器及 Android >= 4.0、iOS >= 8.0
 | @nutui/nutui-jdl  | Vue 2x | [京东物流视觉规范](https://nutui.jd.com/jdl/#/design) | H5 | 现代浏览器及 Android >= 4.0、iOS >= 8.0
 | @nutui/nutui@next  | Vue 3x | 京东 [APP 10.0](https://nutui.jd.com/#/resource) 规范 | H5 | 现代浏览器以 Chrome >= 51、iOS >= 10.0（与 Vue3 一致）
-| @nutui/nutui-taro  | Vue3 + Taro | 京东 [APP 10.0](https://nutui.jd.com/#/resource) 规范 | H5&小程序，可开发多端 | 现代浏览器及 Chrome >= 51、iOS >= 10.0（与 Vue3 一致）
+| @nutui/nutui-taro  | Vue3 + Taro | 京东 [APP 10.0](https://nutui.jd.com/#/resource) 规范 | H5&小程序，可[开发多端](https://nutui.jd.com/#/starttaro) | 现代浏览器及 Chrome >= 51、iOS >= 10.0（与 Vue3 一致）
 
 
 ## 构建版本
