@@ -136,6 +136,9 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 
 我们非常欢迎你给我们提 [PR](https://github.com/jdf2e/nutui/pulls) ,参与共建。当然关于 NutUI 建设的方方面面，我们都欢迎和感谢你给我们提供好的建议和想法。
 
+## 更新日志
+
+本项目遵从 [Angular Style Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)，更新日志请查阅 [Release](https://github.com/jdf2e/nutui/releases)。
 
 ## 开源协议
 
