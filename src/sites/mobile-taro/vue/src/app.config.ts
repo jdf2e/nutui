@@ -49,7 +49,8 @@ export default {
         'pages/fixednav/index',
         'pages/elevator/index',
         'pages/menu/index',
-        'pages/pagination/index'
+        'pages/pagination/index',
+        'pages/grid/index'
       ]
     },
     {

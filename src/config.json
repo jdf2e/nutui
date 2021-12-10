@@ -587,6 +587,30 @@
           "taro": true,
           "show": false,
           "author": "richard1015"
+        },
+        {
+          "version": "3.1.13",
+          "name": "Grid",
+          "type": "component",
+          "cName": "宫格",
+          "desc": "用于分隔成等宽区块进行页面导航",
+          "sort": 13,
+          "taro": true,
+          "show": true,
+          "author": "haiweilian"
+        },
+        {
+          "version": "3.1.13",
+          "name": "GridItem",
+          "type": "component",
+          "cName": "宫格子组件",
+          "desc": "",
+          "sort": 13,
+          "taro": true,
+          "show": false,
+          "exportEmpty": true,
+          "exportEmptyTaro": true,
+          "author": "haiweilian"
         }
       ]
     },
