@@ -12,6 +12,13 @@
     <img src="https://api.travis-ci.org/jdf2e/nutui.svg?branch=master" alt="CI Status" />
     <img src="https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master" alt="Coverage Status" />
     <img src="https://img.shields.io/npm/l/@nutui/nutui.svg" alt="license"/>
+  
+  <a href="http://makeapullrequest.com">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome">
+  </a>
+    <a href="https://www.npmjs.com/package/@nutui/nutui">
+    <img src="https://img.shields.io/npm/v/@nutui/nutui.svg?style=flat-square">
+    </a>
     <a href="https://www.npmjs.com/package/@nutui/nutui">
     <img src="https://img.shields.io/npm/dt/@nutui/nutui.svg?style=flat-square">
     </a>
