@@ -77,13 +77,8 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 
 <img src="https://raw.githubusercontent.com/jdf2e/nutui-user-cases/master/user-cases.jpg" width="800" alt="NutUI" />
 
-<p>
-    <a href="https://nutui.jd.com/#/case">查看等多的案例，请点击</a>
-</p>
-
-<p>
-    <a href="https://get.jd.com/#/survey/index?id=4217247740034539">我们正在征集更多优秀案例，欢迎点击提交</a>
-</p>
+<p><a href="https://nutui.jd.com/#/case">查看等多的案例，请点击</a></p>
+<p><a href="https://get.jd.com/#/survey/index?id=4217247740034539">我们正在征集更多优秀案例，欢迎点击提交</a></p>
 
 ## 链接
 
@@ -116,6 +111,8 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 | --- | --- |--- |
 | [NutUI Vue](https://github.com/jdf2e/nutui/issues) | <img src="https://nutui.jd.com/3x/3.1.12/vx-code1.png" width="100" /> 关注后回复「NutUI」 | 82957939
 | [NutUI x Taro](https://github.com/jdf2e/nutui/issues) | <img src="https://camo.githubusercontent.com/db4276b4ee4b443158195e943e9e678cb4d2afb7580f70d4d817ef0a90413aec/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f7461726f2d6a642d636f6d2f7374617469632f636f6e746163745f7461726f5f6e757475695f71722e706e67" width="100" /> 关注后回复「NutUI」 | 1022545110 |
+| [NutUI React](https://github.com/jdf2e/nutui-react/issues) | 回复「NutUI」 | 1022619199
+
 
 ## 贡献者们
 
