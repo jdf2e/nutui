@@ -52,9 +52,7 @@
 
 ## 版本说明 & 支持环境
 
-> @nutui/nutui@next 和 @nutui/nutui-taro 属于并行版本，存在部分的差异化，版本号始终保持一致
-
-> 如果想要兼容低版本，请使用 @nutui/nutui
+> @next 和 @nutui-taro 属于并行版本，存在部分的差异化，版本号始终保持一致。如果想要兼容低版本，请使用 @nutui/nutui
 
 * @nutui/nutui 基于 Vue2， 京东 APP 7.0 规范 ，只能开发 H5；支持现代浏览器以及 Android >= 4.0、iOS >= 8.0
 
