@@ -79,15 +79,11 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 <img src="https://raw.githubusercontent.com/jdf2e/nutui-user-cases/master/user-cases.jpg" width="800" alt="NutUI" />
 
 <p>
-    <a href="https://github.com/jdf2e/nutui-user-cases">
-       查看等多的案例，请点击
-    </a>
+    <a href="https://nutui.jd.com/#/case">查看等多的案例，请点击</a>
 </p>
 
 <p>
-    <a href="https://github.com/jdf2e/nutui-user-cases/edit/master/index.js">
-       我们正在征集更多优秀案例，欢迎点击提交
-    </a>
+    <a href="https://get.jd.com/#/survey/index?id=4217247740034539">我们正在征集更多优秀案例，欢迎点击提交</a>
 </p>
 
 ## 链接
