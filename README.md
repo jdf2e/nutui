@@ -132,9 +132,9 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 
 ## 参与共建
 
-非常欢迎社区开发者为 NutUI 贡献代码，在贡献之前请先阅读[贡献指南](https://nutui.jd.com/#/contributing)，参与共建提 [PR](https://github.com/jdf2e/nutui/pulls)。
+非常欢迎社区开发者为 NutUI 贡献代码，在贡献之前请先阅读 [贡献指南](https://nutui.jd.com/#/contributing)，参与共建提 [PR](https://github.com/jdf2e/nutui/pulls)。
 
-感谢以下所有给 NutUI 贡献过代码的 [开发者](https://github.com/jdf2e/nutui/graphs/contributors)
+感谢以下所有给 NutUI 贡献过代码的 [开发者](https://github.com/jdf2e/nutui/graphs/contributors)。
 
 ## 开发计划
 
