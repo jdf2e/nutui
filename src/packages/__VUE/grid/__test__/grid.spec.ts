@@ -40,7 +40,7 @@ test('should render gutter correctly', () => {
       gutter: 20
     },
     slots: {
-      default: [GridItem, GridItem, GridItem, GridItem]
+      default: [GridItem, GridItem, GridItem, GridItem, GridItem, GridItem, GridItem, GridItem]
     }
   });
 
