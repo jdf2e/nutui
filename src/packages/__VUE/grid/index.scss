@@ -1,0 +1,10 @@
+.nut-grid {
+  display: flex;
+  flex-wrap: wrap;
+  border: 0 solid $grid-border-color;
+
+  &--border {
+    border-top-width: 1px;
+    border-left-width: 1px;
+  }
+}
