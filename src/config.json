@@ -865,6 +865,17 @@
           "taro": true,
           "exportEmpty": true,
           "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Cascader",
+          "type": "component",
+          "cName": "级联选择",
+          "desc": "级联选择，用于多层级数据的选择，典型场景为省市区选择.",
+          "sort": 23,
+          "show": true,
+          "taro": true,
+          "author": "dongj0316"
         }
       ]
     },
