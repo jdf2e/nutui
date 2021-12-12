@@ -1,7 +1,8 @@
-import { h, provide, computed } from 'vue';
+import { h, computed } from 'vue';
 import type { PropType, CSSProperties, ExtractPropTypes, SetupContext, RenderFunction } from 'vue';
 import { createComponent } from '../../utils/create';
 import { pxCheck } from '../../utils/pxCheck';
+import { useProvide } from '../../utils/useRelation/useProvide';
 
 const { componentName } = createComponent('grid');
 
@@ -65,7 +66,7 @@ export type GridProps = ExtractPropTypes<typeof gridProps>;
 export const component = {
   props: gridProps,
   setup(props: GridProps, { slots }: SetupContext): RenderFunction {
-    provide(GRID_KEY, props);
+    useProvide(GRID_KEY, `${componentName}-item`)({ props });
 
     const rootClass = computed(() => {
       const prefixCls = componentName;
