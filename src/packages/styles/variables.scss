@@ -386,6 +386,19 @@ $searchbar-background: $white !default;
 $searchbar-input-background: #f7f7f7 !default;
 $searchbar-right-out-color: $black !default;
 
+// cascader
+$nut-cascader-font-size: $font-size-2;
+$nut-cascader-line-height: 22px;
+$nut-cascader-tabs-item-padding: 0 10px;
+$nut-cascader-bar-padding: 24px 20px 17px;
+$nut-cascader-bar-font-size: $font-size-4;
+$nut-cascader-bar-line-height: 20px;
+$nut-cascader-bar-color: $title-color;
+$nut-cascader-item-padding: 10px 20px;
+$nut-cascader-item-color: $title-color;
+$nut-cascader-item-font-size: $font-size-2;
+$nut-cascader-item-active-color: $primary-color;
+
 // form
 $form-item-error-line-color: $primary-color !default;
 $form-item-required-color: $primary-color !default;
