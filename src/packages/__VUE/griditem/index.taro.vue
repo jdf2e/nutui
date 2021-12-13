@@ -16,9 +16,10 @@
 </template>
 
 <script lang="ts">
-import { inject, computed, CSSProperties } from 'vue';
+import { computed, CSSProperties } from 'vue';
 import { createComponent } from '../../utils/create';
 import { pxCheck } from '../../utils/pxCheck';
+import { useInject } from '../../utils/useRelation/useInject';
 import { GRID_KEY, GridProps } from '../grid/common';
 const { create, componentName } = createComponent('grid-item');
 
@@ -52,7 +53,10 @@ export default create({
   },
   emits: ['click'],
   setup(props, { emit }) {
-    const parent = inject(GRID_KEY) as Required<GridProps>;
+    const Parent = useInject<{ props: Required<GridProps> }>(GRID_KEY);
+    if (!Parent.parent) return;
+    const index = Parent.index;
+    const parent = Parent.parent.props;
 
     // root
     const rootClass = computed(() => {
@@ -71,9 +75,9 @@ export default create({
         style.paddingTop = `${100 / +parent.columnNum}%`;
       } else if (parent.gutter) {
         style.paddingRight = pxCheck(parent.gutter);
-        // TODO: 上边缘间隔处理 index >= columnNum
-        // style.marginTop = pxCheck(parent.gutter);
-        style.marginBottom = pxCheck(parent.gutter);
+        if (index.value >= parent.columnNum) {
+          style.marginTop = pxCheck(parent.gutter);
+        }
       }
 
       return style;
