@@ -23,7 +23,7 @@
 
       <!-- 请选择 -->
       <view class="custom-address" v-if="privateType == 'custom'">
-        <view class="region-tab" ref="tabProvince">
+        <view class="region-tab" ref="tabRegion">
           <view
             class="tab-item"
             :class="[index == tabIndex ? 'active' : '']"
@@ -62,7 +62,7 @@
 
       <!-- 请选择 -->
       <view class="custom-address" v-else-if="privateType == 'custom2'">
-        <view class="region-tab" ref="tabProvince">
+        <view class="region-tab" ref="tabRegion">
           <view
             class="tab-item"
             :class="[index == tabIndex ? 'active' : '']"
@@ -221,17 +221,8 @@ export default create({
   setup(props: any, { emit }) {
     const regionLine = ref<null | HTMLElement>(null);
 
-    const tabProvince: Ref<any> = ref(null);
-    const tabCity: Ref<any> = ref(null);
-    const tabCountry: Ref<any> = ref(null);
-    const tabTown: Ref<any> = ref(null);
+    const tabRegion: Ref<any> = ref(null);
 
-    const tabItemRef = reactive({
-      province: ref<null | HTMLElement>(null),
-      city: ref<null | HTMLElement>(null),
-      country: ref<null | HTMLElement>(null),
-      town: ref<null | HTMLElement>(null)
-    });
     const showPopup = ref(props.visible);
     const privateType = ref(props.type);
     const tabIndex = ref(0);
@@ -322,7 +313,7 @@ export default create({
       console.log('滑动红线');
 
       nextTick(() => {
-        const name = tabProvince.value && tabProvince.value.getElementsByClassName('active')[0];
+        const name = tabRegion.value && tabRegion.value.getElementsByClassName('active')[0];
 
         if (name) {
           const distance = name.offsetLeft;
@@ -525,16 +516,14 @@ export default create({
       getTabName,
       nextAreaList,
       regionLine,
-      tabProvince,
-      tabCity,
+      tabRegion,
       lineDistance,
       changeRegionTab,
       selectedExist,
       clickOverlay,
       handClose,
       handleElevatorItem,
-      ...toRefs(props),
-      ...toRefs(tabItemRef)
+      ...toRefs(props)
     };
   }
 });
