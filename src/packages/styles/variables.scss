@@ -386,6 +386,19 @@ $searchbar-background: $white !default;
 $searchbar-input-background: #f7f7f7 !default;
 $searchbar-right-out-color: $black !default;
 
+// cascader
+$nut-cascader-font-size: $font-size-2;
+$nut-cascader-line-height: 22px;
+$nut-cascader-tabs-item-padding: 0 10px;
+$nut-cascader-bar-padding: 24px 20px 17px;
+$nut-cascader-bar-font-size: $font-size-4;
+$nut-cascader-bar-line-height: 20px;
+$nut-cascader-bar-color: $title-color;
+$nut-cascader-item-padding: 10px 20px;
+$nut-cascader-item-color: $title-color;
+$nut-cascader-item-font-size: $font-size-2;
+$nut-cascader-item-active-color: $primary-color;
+
 // form
 $form-item-error-line-color: $primary-color !default;
 $form-item-required-color: $primary-color !default;
@@ -406,10 +419,20 @@ $sku-opetate-bg-buy: linear-gradient(
   rgba(255, 195, 13, 1) 69%,
   rgba(255, 207, 13, 1) 100%
 );
+
 // card
 $card-font-size-0: $font-size-0;
 $card-font-size-1: $font-size-1;
 $card-font-size-2: $font-size-2;
 $card-font-size-3: $font-size-3;
+
+// grid
+$grid-border-color: #f5f6f7 !default;
+$grid-item-content-padding: 16px 8px !default;
+$grid-item-content-bg-color: $white !default;
+$grid-item-text-margin: 8px !default;
+$grid-item-text-color: $title-color2 !default;
+$grid-item-text-font-size: $font-size-1 !default;
+
 @import './mixins/index';
 @import './animation/index';

@@ -1,9 +1,4 @@
 <template>
-  <!-- <div class="doc-header" :style="{ background: themeColor === 'red' ? headerBg : themeColor }" :class="`doc-header-${data.theme}`"> -->
-  <div class="v3-banner" :class="{ active: true }">
-    NutUI 正在参与 OSC 2021 年度中国开源项目评选（您的鼓励是我们坚持不懈的源动力)，请为我们投上宝贵的一票吧。
-    <a href="https://www.oschina.net/project/top_cn_2021/?id=65&fr=nutui" target="_blank">去投票</a>
-  </div>
   <div class="doc-header" :class="themeName()">
     <div class="header-logo">
       <a class="logo-link" href="#" @click="toHome"></a>
@@ -11,59 +6,20 @@
       <span class="version">{{ version }}</span>
     </div>
     <div class="header-nav">
-      <Search />
-      <div class="nav-box">
-        <ul class="nav-list">
-          <li class="nav-item" v-for="item in header" :key="item.name" :class="{ active: isActive(item.name) }">
-            <a :href="item.path">
-              {{ item.cName }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <div
-              @focus="handleFocus"
-              @focusout="handleFocusOut"
-              tabindex="0"
-              class="header-select-box"
-              @click.stop="data.isShowSelect = !data.isShowSelect"
-              :class="[data.isShowSelect == true ? 'select-up' : 'select-down']"
-            >
-              <div class="header-select-hd">{{ data.verson }}<i class=""></i></div>
-              <transition name="fade">
-                <div class="header-select-bd" v-show="data.isShowSelect">
-                  <div
-                    class="header-select-item"
-                    v-for="(item, index) in versions"
-                    :key="index"
-                    @click.stop="checkTheme(item)"
-                    :class="{ active: data.activeIndex === index }"
-                  >
-                    {{ item.name }}
-                  </div>
-                </div>
-              </transition>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="user-link" target="_blank" href="https://github.com/jdf2e/nutui"></a>
-            <a class="user-link gitee" target="_blank" href="https://gitee.com/jd-platform-opensource/nutui"></a>
-          </li>
-        </ul>
-      </div>
+      <a href="https://github.com/jdf2e/nutui-docs" target="_blank"
+        >当前环境：development ,代码 PR 合并后，文档会自动同步至 https://github.com/jdf2e/nutui-docs</a
+      >
     </div>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, reactive, computed, onMounted } from 'vue';
-import Search from './Search.vue';
-import { header, versions, nav } from '@/config.json';
+import { nav } from '@/config.json';
 import { version } from '/package.json';
 import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-header',
-  components: {
-    Search
-  },
+  components: {},
   setup() {
     let packages = [] as any[];
     nav.forEach((item) => {
@@ -114,8 +70,6 @@ export default defineComponent({
       window.location.href = item.link;
     };
     return {
-      header,
-      versions,
       version,
       data,
       toHome,
@@ -130,32 +84,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.v3-banner {
-  position: fixed;
-  top: 0;
-  transition: all 0.3s;
-  > a {
-    color: #fff;
-    font-weight: bold;
-  }
-  font-size: 14px;
-  width: 100%;
-  z-index: 999;
-  text-align: center;
-  padding: 10px 60px;
-  color: #fff;
-  background: linear-gradient(
-    135deg,
-    rgba(242, 20, 12, 1) 0%,
-    rgba(232, 34, 14, 1) 69.83950099728881%,
-    rgba(242, 77, 12, 1) 100%
-  );
-}
 .doc {
   &-header {
     position: fixed;
     z-index: 2;
-    top: 40px;
+    top: 0;
     left: 0;
     right: 0;
     min-width: 1300px;
@@ -205,6 +138,9 @@ export default defineComponent({
     width: calc(100% - 240px);
     min-width: 900px;
     padding: 0 40px;
+    > a {
+      color: #fff;
+    }
     .nav-box {
       margin-right: 140px;
       .nav-list {
