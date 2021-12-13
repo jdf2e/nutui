@@ -9,7 +9,7 @@ exports[`Cascader change tab 1`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -74,7 +74,7 @@ exports[`Cascader change tab 2`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -139,7 +139,7 @@ exports[`Cascader change tab 3`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -204,7 +204,7 @@ exports[`Cascader modelValue 1`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\"></view>
+        <view class=\\"nut-tabs__titles line scrollable normal\\"></view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
           <view class=\\"nut-tabpane active\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
@@ -236,7 +236,7 @@ exports[`Cascader modelValue 2`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -301,7 +301,7 @@ exports[`Cascader modelValue 3`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -339,7 +339,7 @@ exports[`Cascader modelValue 4`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -377,7 +377,7 @@ exports[`Cascader modelValue with lazy 1`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -405,7 +405,7 @@ exports[`Cascader modelValue with lazy 2`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -473,7 +473,7 @@ exports[`Cascader options 1`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -538,7 +538,7 @@ exports[`Cascader options with convertConfig 1`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -585,7 +585,7 @@ exports[`Cascader options with valueKey/textKey/childrenKey 1`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -650,7 +650,7 @@ exports[`Cascader select 1`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -688,7 +688,7 @@ exports[`Cascader select 2`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -753,7 +753,7 @@ exports[`Cascader select 3`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -818,7 +818,7 @@ exports[`Cascader select 4`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -856,7 +856,7 @@ exports[`Cascader select with lazy 1`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\"></view>
+        <view class=\\"nut-tabs__titles line scrollable normal\\"></view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
           <view class=\\"nut-tabpane active\\">
             <view class=\\"nut-cascader-pane\\"></view>
@@ -878,7 +878,7 @@ exports[`Cascader select with lazy 2`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -913,7 +913,7 @@ exports[`Cascader select with lazy 3`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -963,7 +963,7 @@ exports[`Cascader select with lazy 4`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -1028,7 +1028,7 @@ exports[`Cascader select with lazy 5`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -1093,7 +1093,7 @@ exports[`Cascader select with lazy 6`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -1128,7 +1128,7 @@ exports[`Cascader select with lazy 7`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s; display: none;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
@@ -1178,7 +1178,7 @@ exports[`Cascader visible 1`] = `
     <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
-        <view class=\\"nut-tabs__titles line scrollable\\">
+        <view class=\\"nut-tabs__titles line scrollable normal\\">
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
