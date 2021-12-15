@@ -9,13 +9,13 @@
     <div class="show">
       <nut-tabs v-model="tabValue">
         <nut-tabpane title="无内容">
-          <nut-empty name="empty" description="无内容"></nut-empty>
+          <nut-empty image="empty" description="无内容"></nut-empty>
         </nut-tabpane>
         <nut-tabpane title="加载失败/错误">
-          <nut-empty name="error" description="加载失败/错误"></nut-empty>
+          <nut-empty image="error" description="加载失败/错误"></nut-empty>
         </nut-tabpane>
         <nut-tabpane title="无网络">
-          <nut-empty name="network" description="无网络"></nut-empty>
+          <nut-empty image="network" description="无网络"></nut-empty>
         </nut-tabpane>
       </nut-tabs>
     </div>

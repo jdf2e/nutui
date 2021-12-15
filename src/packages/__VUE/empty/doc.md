@@ -24,11 +24,11 @@ app.use(Empty);
 
 ### 图片类型，内置 3 个
 ```html
-<nut-empty name="empty" description="无内容"></nut-empty>
+<nut-empty image="empty" description="无内容"></nut-empty>
     
-<nut-empty name="error" description="加载失败/错误"></nut-empty>
+<nut-empty image="error" description="加载失败/错误"></nut-empty>
 
-<nut-empty name="network" description="无网络"></nut-empty>
+<nut-empty image="network" description="无网络"></nut-empty>
 ```
 ### 自定义图片
 ```html
