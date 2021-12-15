@@ -51,6 +51,7 @@ export default {
         'pages/menu/index',
         'pages/pagination/index',
         'pages/indicator/index'
+        'pages/grid/index'
       ]
     },
     {
@@ -73,7 +74,8 @@ export default {
         'pages/numberkeyboard/index',
         'pages/badge/index',
         'pages/tag/index',
-        'pages/popover/index'
+        'pages/popover/index',
+        'pages/cascader/index'
       ]
     },
     {
