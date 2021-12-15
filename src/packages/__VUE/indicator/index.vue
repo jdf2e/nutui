@@ -1,8 +1,8 @@
 <template>
   <view :class="classes">
-    <template v-for="item of ary" :key="item">
+    <template v-for="item in size" :key="item">
       <view v-if="item === current" :class="`${componentName}--number`">
-        {{ fillZero && fillZero < 10 ? `0${item}` : item }}
+        {{ fillZero && item < 10 ? `0${item}` : item }}
       </view>
       <view v-else :class="`${componentName}--dot`"></view>
     </template>
@@ -38,17 +38,9 @@ export default create({
       default: true
     }
   },
-  components: {},
-  emits: ['click'],
-
   setup(props) {
-    console.log('componentName', componentName);
+    const { block, align } = toRefs(props);
 
-    const { size, block, align } = toRefs(props);
-
-    const ary = computed(() => [...Array(size.value).keys()].map((item) => ++item));
-
-    console.log(ary.value, 'ary', size.value, 1, block.value);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -58,7 +50,7 @@ export default create({
       };
     });
 
-    return { classes, componentName, ary };
+    return { classes, componentName };
   }
 });
 </script>

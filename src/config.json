@@ -649,6 +649,7 @@
           "cName": "指示器",
           "desc": "显示一个任务或流程的进度，常用语开通流程。",
           "sort": 11,
+          "taro": true,
           "show": true,
           "author": "senyawang"
         }
