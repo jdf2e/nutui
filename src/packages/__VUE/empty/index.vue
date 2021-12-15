@@ -1,19 +1,24 @@
 <template>
   <view class="nut-empty">
-    <view class="nut-empty-image" :style="imgStl">
+    <!-- 占位图 -->
+    <view class="nut-empty-image" :style="imgStyle">
       <template v-if="$slots.image">
         <slot name="image"></slot>
       </template>
       <template v-else>
-        <img v-if="image" class="img" :src="image" />
+        <img v-if="imageUrl" class="img" :src="imageUrl" />
       </template>
     </view>
+
+    <!-- 文本区 -->
     <template v-if="$slots.description">
       <slot name="description"></slot>
     </template>
     <template v-else>
       <view class="nut-empty-description">{{ description }}</view>
     </template>
+
+    <!-- 自定义slot -->
     <template v-if="$slots.default">
       <slot></slot>
     </template>
@@ -24,29 +29,42 @@ import { toRefs, computed } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('empty');
 
+type statusOptions = {
+  [key: string]: string;
+};
+
+/**
+ * 内置图片地址
+ */
+const defaultStatus: statusOptions = {
+  empty: 'https://static-ftcms.jd.com/p/files/61a9e3183985005b3958672b.png',
+  error: 'https://ftcms.jd.com/p/files/61a9e33ee7dcdbcc0ce62736.png',
+  network: 'https://static-ftcms.jd.com/p/files/61a9e31de7dcdbcc0ce62734.png'
+};
+
 export default create({
   props: {
     image: {
       type: String,
-      default: 'https://ftcms.jd.com/p/files/61a9e33ee7dcdbcc0ce62736.png'
+      default: 'empty' //默认empty
     },
     imageSize: {
-      type: [Number, String],
+      type: [Number, String], // 图片大小，正方形
       default: ''
     },
     description: {
-      type: String,
-      default: '无数据'
+      type: String, // 文字区
+      default: '无内容'
     }
   },
 
   setup(props) {
-    const { image, imageSize, description } = toRefs(props);
+    const { image, imageSize } = toRefs(props);
 
     /**
      * 根据imgSize计算行内样式
      */
-    const imgStl = computed(() => {
+    const imgStyle = computed(() => {
       if (!imageSize.value) {
         return '';
       }
@@ -56,7 +74,10 @@ export default create({
       return `width:${imageSize.value};height:${imageSize.value}`;
     });
 
-    return { image, description, imgStl };
+    return {
+      imageUrl: defaultStatus[image.value],
+      imgStyle
+    };
   }
 });
 </script>

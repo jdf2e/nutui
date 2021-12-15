@@ -15,6 +15,7 @@ export default {
         'pages/dialog/index',
         'pages/toast/index',
         'pages/notify/index',
+        'pages/empty/index',
         'pages/noticebar/index',
         'pages/range/index',
         'pages/popup/index',

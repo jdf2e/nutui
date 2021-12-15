@@ -531,6 +531,18 @@
           "sort": 24,
           "show": true,
           "author": "wujia8"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Empty",
+          "tarodoc": true,
+          "taro": true,
+          "type": "methods",
+          "cName": "空状态",
+          "desc": "空状态展位",
+          "sort": 25,
+          "show": true,
+          "author": "wujia8"
         }
       ]
     },

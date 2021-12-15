@@ -42,9 +42,7 @@
 
 <script lang="ts">
 import { ref } from 'vue';
-import { createComponent } from '../../utils/create';
-const { createDemo } = createComponent('empty');
-export default createDemo({
+export default {
   props: {},
   setup() {
     const tabValue = ref(0);
@@ -52,10 +50,10 @@ export default createDemo({
       tabValue
     };
   }
-});
+};
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo {
   .show {
     background: #ffffff;
