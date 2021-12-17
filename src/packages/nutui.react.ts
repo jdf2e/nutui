@@ -13,7 +13,6 @@ import Range from './range'
 import Infiniteloading from './infiniteloading'
 import Steps from './steps'
 import CircleProgress from './circleprogress'
-import Popup from './popup'
 import NavBar from './navbar'
 import Tabbar from './tabbar'
 import InputNumber from './inputnumber'
@@ -25,6 +24,7 @@ import TextArea from './textarea'
 import CheckBox from './checkbox'
 import Tag from './tag'
 import Badge from './badge'
+import Popover from './popover'
 import Signature from './signature'
 
 export {
@@ -43,7 +43,6 @@ export {
   Infiniteloading,
   Steps,
   CircleProgress,
-  Popup,
   NavBar,
   Tabbar,
   InputNumber,
@@ -55,5 +54,6 @@ export {
   CheckBox,
   Tag,
   Badge,
+  Popover,
   Signature,
 }

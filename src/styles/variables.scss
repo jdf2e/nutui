@@ -294,5 +294,12 @@ $badge-background-color: linear-gradient(
 $badge-font-size: $font-size-1 !default;
 $badge-default-background-color: rgba(255, 255, 255, 1) !default;
 
+//popover
+$popover-white-background-color: rgba(255, 255, 255, 1) !default;
+$popover-dark-background-color: rgba(75, 76, 77, 1) !default;
+$popover-border-bottom-color: rgba(229, 229, 229, 1) !default;
+$popover-primary-text-color: rgba(51, 51, 51, 1) !default;
+$popover-disable-color: rgba(154, 155, 157, 1) !default;
+
 @import './mixins/index';
 @import './animation/index';

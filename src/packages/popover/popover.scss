@@ -1,0 +1,141 @@
+.popBox {
+  // background: skyblue;
+  // // background: #fff;
+  // padding: 20px;
+  .titBox {
+    // margin-bottom: 20px;
+  }
+}
+.nut-popover--dark,
+.nut-popover {
+  position: relative;
+  display: inline-block;
+  margin-right: 20px;
+  .more-background {
+    background: $popover-white-background-color;
+    opacity: 0;
+    position: fixed;
+    width: 100%;
+    height: 1000px;
+    z-index: 10;
+    left: 0;
+  }
+  .popoverContent--left,
+  .popoverContent--right,
+  .popoverContent--top,
+  .popoverContent {
+    z-index: 12;
+    background: $popover-white-background-color;
+    border-radius: 5px;
+    opacity: 1;
+    font-size: 14px;
+    font-family: PingFangSC;
+    font-weight: normal;
+    color: $popover-primary-text-color;
+    position: absolute;
+    .popoverArrow {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid $popover-white-background-color;
+    }
+    .title-item {
+      display: flex;
+      align-items: center;
+      padding-bottom: 8px;
+      margin: 8px;
+      border-bottom: 1px solid $popover-border-bottom-color;
+      &:first-child {
+        margin-top: 15px;
+      }
+      &:last-child {
+        margin-bottom: 2px;
+        border-bottom: none;
+      }
+      .title-name {
+        margin-right: 12px;
+        margin-left: 8px;
+        width: 100%;
+      }
+    }
+  }
+  .popoverContent--top {
+    .popoverArrow--top {
+      position: absolute;
+      top: auto;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 10px solid $popover-white-background-color;
+      border-bottom: 10px solid transparent;
+    }
+  }
+  .popoverContent--left {
+    .popoverArrow--left {
+      position: absolute;
+      border-left: 10px solid $popover-white-background-color;
+      border-right: 10px solid transparent;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+    }
+  }
+  .popoverContent--right {
+    .popoverArrow--right {
+      position: absolute;
+      border-left: 10px solid transparent;
+      border-right: 10px solid $popover-white-background-color;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+    }
+  }
+
+  .disabled {
+    color: $popover-disable-color;
+    cursor: not-allowed;
+  }
+}
+
+.nut-popover--dark {
+  background: $popover-dark-background-color;
+  color: $popover-white-background-color;
+  .popoverContent--left,
+  .popoverContent--right,
+  .popoverContent--top,
+  .popoverContent {
+    background: $popover-dark-background-color;
+    color: $popover-white-background-color;
+    .popoverArrow {
+      border-bottom: 10px solid $popover-dark-background-color;
+    }
+  }
+  .popoverContent--top {
+    .popoverArrow--top {
+      position: absolute;
+      top: auto;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 10px solid $popover-dark-background-color;
+      border-bottom: 10px solid transparent;
+    }
+  }
+  .popoverContent--left {
+    .popoverArrow--left {
+      position: absolute;
+      border-left: 10px solid $popover-dark-background-color;
+      border-right: 10px solid transparent;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+    }
+  }
+  .popoverContent--right {
+    .popoverArrow--right {
+      position: absolute;
+      border-left: 10px solid transparent;
+      border-right: 10px solid $popover-dark-background-color;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+    }
+  }
+}
