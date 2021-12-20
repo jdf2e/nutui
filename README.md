@@ -43,11 +43,6 @@
   </a>
 </p>
 
-<p align="center">
-    <a href="https://www.oschina.net/project/top_cn_2021/?id=65&fr=nutui">
-        <img src="https://img11.360buyimg.com/imagetools/jfs/t1/139357/25/22692/81953/61b1bd11E7615bca2/f6eec2f25c6b8914.jpg" width="600" alt="license"/>
-    </a>
-</p>
 
 > Nut[nʌt]，源自电影《冰河世纪》里松鼠 Scrat "执迷不悟"，一生追求，即便引发大灾难也绝不松手的坚果。
 ---
