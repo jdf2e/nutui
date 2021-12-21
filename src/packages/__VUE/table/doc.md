@@ -271,7 +271,7 @@ setup() {
         },
         {
           title: '操作',
-          key: 'action'
+          key: 'render'
         }
       ],
       data: [
@@ -279,19 +279,45 @@ setup() {
           name: 'Tom',
           sex: '男',
           record: '小学',
-          action: "<button style='color: #fff; font-size: 14px; background: linear-gradient(135deg,#fa2c19 0%,#fa6419 100%);border: 0;border-radius: 5px;'>删除</button>"
+          render: () => {
+            return h(
+              Button,
+              {
+                onClick: () => {
+                  (Toast as any).text('hello');
+                },
+                size: 'small',
+                type: 'primary'
+              },
+              'Hello'
+            );
+          }
         },
         {
           name: 'Lucy',
           sex: '女',
           record: '本科',
-          action: "<a href='https://www.jd.com' style='text-decoration: none; color: #498ff2;'>跳转至京东</a>"
+          render: () => {
+            return h(Icon, { name: 'dongdong', size: '14px' });
+          }
         },
         {
           name: 'Jack',
           sex: '男',
           record: '高中',
-          action:  "<div style='color: #498ff2;'>编辑</div>"
+          render: () => {
+            return h(
+              Button,
+              {
+                type: 'success',
+                size: 'small',
+                onClick: () => {
+                  window.open('https://www.jd.com');
+                }
+              },
+              '跳转到京东'
+            );
+          }
         }
       ]
     });
