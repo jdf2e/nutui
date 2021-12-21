@@ -434,5 +434,11 @@ $grid-item-text-margin: 8px !default;
 $grid-item-text-color: $title-color2 !default;
 $grid-item-text-font-size: $font-size-1 !default;
 
+// table
+$table-border-color: #ececec;
+$table-cols-padding: 10px;
+$table-tr-even-bg-color: #f3f3f3;
+$table-tr-odd-bg-color: $white;
+
 @import './mixins/index';
 @import './animation/index';
