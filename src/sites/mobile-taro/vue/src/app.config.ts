@@ -49,7 +49,8 @@ export default {
         'pages/fixednav/index',
         'pages/elevator/index',
         'pages/menu/index',
-        'pages/pagination/index'
+        'pages/pagination/index',
+        'pages/grid/index'
       ]
     },
     {
@@ -72,7 +73,8 @@ export default {
         'pages/numberkeyboard/index',
         'pages/badge/index',
         'pages/tag/index',
-        'pages/popover/index'
+        'pages/popover/index',
+        'pages/cascader/index'
       ]
     },
     {
