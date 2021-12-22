@@ -74,8 +74,12 @@ export default create({
       return `width:${imageSize.value};height:${imageSize.value}`;
     });
 
+    const isHttpUrl =
+      image.value.startsWith('https://') || image.value.startsWith('http://') || image.value.startsWith('//');
+    const imageUrl = isHttpUrl ? image.value : defaultStatus[image.value];
+
     return {
-      imageUrl: defaultStatus[image.value],
+      imageUrl,
       imgStyle
     };
   }

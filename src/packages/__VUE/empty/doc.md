@@ -55,7 +55,7 @@ app.use(Empty);
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | image         | 图片类型，可选值为 error network search，支持传入图片 URL               | String | empty        |
-| imageSize        | 图片大小，number 类型单位为 px                         | number \| String | -       |
+| image-size        | 图片大小，Number 类型单位为 px                         | Number \| String | -       |
 | description         | 图片下方的描述文字 | String | 无内容                |
 
 ### Slots
