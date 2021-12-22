@@ -8,15 +8,15 @@
 <p align="center">（支持一套代码生成 H5 和小程序）</p>
 
 <p align="center">
+    <a href="http://makeapullrequest.com">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome">
+  </a>
     <a href="https://github.com/jdf2e/nutui">
     <img src="https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master" alt="Coverage Status" />
     </a>
     <a href="https://github.com/jdf2e/nutui">
     <img src="https://img.shields.io/npm/l/@nutui/nutui.svg" alt="license"/>
     </a>
-  <a href="http://makeapullrequest.com">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome">
-  </a>
     <a href="https://www.npmjs.com/package/@nutui/nutui">
     <img src="https://img.shields.io/npm/v/@nutui/nutui.svg?style=flat-square">
     </a>
@@ -43,18 +43,8 @@
   </a>
 </p>
 
-<!-- <p align="center">
-    <a href="https://www.oschina.net/project/top_cn_2021/?id=65&fr=nutui" style="width:600px;height:60px;background:#f00;color:#fff;padding:5px;">
-        NutUI 正在参加《2021 年度 OSC 中国开源项目》评选，请为我们投上宝贵的一票吧。 去投票💪
-    </a>
-</p> -->
 
-<p align="center">
-    <a href="https://www.oschina.net/project/top_cn_2021/?id=65&fr=nutui">
-        <img src="https://img11.360buyimg.com/imagetools/jfs/t1/139357/25/22692/81953/61b1bd11E7615bca2/f6eec2f25c6b8914.jpg" width="600" alt="license"/>
-    </a>
-</p>
-
+> Nut[nʌt]，源自电影《冰河世纪》里松鼠 Scrat "执迷不悟"，一生追求，即便引发大灾难也绝不松手的坚果。
 ---
 
 
@@ -74,9 +64,10 @@
 ## 示例 H5 & 小程序
 
 <p>
-   <img src="https://img12.360buyimg.com/imagetools/jfs/t1/162421/39/13392/9425/6052ea60E592310a9/264bdff23ef5fe95.png" width="100" alt="NutUI" />
+   <!-- <img src="https://img12.360buyimg.com/imagetools/jfs/t1/162421/39/13392/9425/6052ea60E592310a9/264bdff23ef5fe95.png" width="100" alt="NutUI" />
   <span>  </span>
-   <img src="https://storage.360buyimg.com/jdc-article/gh_f2231eb941be_258.jpg" style="margin-left:40px" width="100" alt="NutUI" />  
+   <img src="https://storage.360buyimg.com/jdc-article/gh_f2231eb941be_258.jpg" style="margin-left:40px" width="100" alt="NutUI" />   -->
+   <img src="https://img10.360buyimg.com/imagetools/jfs/t1/200153/16/20367/65061/61b87cf5Edd8c846b/0f64b38d096f9ab9.jpg" height="250" alt="NutUI" />  
 </p>
 
 ## 版本说明
