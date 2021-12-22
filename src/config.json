@@ -598,6 +598,8 @@
           "taro": true,
           "show": true,
           "author": "senyawang"
+        },
+        {
           "version": "3.1.13",
           "name": "Grid",
           "type": "component",

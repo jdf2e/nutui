@@ -26,7 +26,7 @@
     </nut-cell>
     <h2>不补0</h2>
     <nut-cell>
-      <nut-indicator :fillZero="false" :size="6" :current="5">step1</nut-indicator>
+      <nut-indicator :fill-zero="false" :size="6" :current="5">step1</nut-indicator>
     </nut-cell>
   </div>
 </template>
