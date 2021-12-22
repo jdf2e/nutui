@@ -879,6 +879,15 @@
         },
         {
           "version": "3.0.0",
+          "name": "Skeleton",
+          "type": "component",
+          "cName": "骨架屏",
+          "desc": "骨架屏",
+          "sort": 23,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
+        },{
           "name": "Cascader",
           "type": "component",
           "cName": "级联选择",
