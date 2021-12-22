@@ -368,6 +368,14 @@ $tabs-vertical-titles-item-height: 40px !default;
 $tabs-vertical-titles-item-active-line-height: 14px !default;
 $tabs-vertical-titles-width: 100px !default;
 
+// indicator
+$indicator-color: $primary-color !default;
+$indicator-dot-color: $disable-color !default;
+$indicator-white: $white !default;
+$indicator-size: 18px !default;
+$indicator-dot-size: $indicator-size / 3 !default;
+$indicator-border-size: $indicator-size + 2 !default;
+
 // menu
 $nut-menu-bar-line-height: 46px !default;
 $nut-menu-bar-border-bottom-color: #eaf0fb !default;
