@@ -50,6 +50,7 @@ export default {
         'pages/elevator/index',
         'pages/menu/index',
         'pages/pagination/index',
+        'pages/indicator/index',
         'pages/grid/index'
       ]
     },
