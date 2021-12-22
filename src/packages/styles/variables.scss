@@ -368,6 +368,14 @@ $tabs-vertical-titles-item-height: 40px !default;
 $tabs-vertical-titles-item-active-line-height: 14px !default;
 $tabs-vertical-titles-width: 100px !default;
 
+// indicator
+$indicator-color: $primary-color !default;
+$indicator-dot-color: $disable-color !default;
+$indicator-white: $white !default;
+$indicator-size: 18px !default;
+$indicator-dot-size: $indicator-size / 3 !default;
+$indicator-border-size: $indicator-size + 2 !default;
+
 // menu
 $nut-menu-bar-line-height: 46px !default;
 $nut-menu-bar-border-bottom-color: #eaf0fb !default;
@@ -385,6 +393,15 @@ $nut-menu-item-option-i-margin-right: 6px !default;
 $searchbar-background: $white !default;
 $searchbar-input-background: #f7f7f7 !default;
 $searchbar-right-out-color: $black !default;
+
+// empty
+$empty-padding: 32px 0;
+$empty-image-size: 170px;
+$empty-description-margin-top: 4px;
+$empty-description-color: #666666;
+$empty-description-font-size: 14px;
+$empty-description-line-height: 20px;
+$empty-description-padding: 0 40px;
 
 // cascader
 $nut-cascader-font-size: $font-size-2;

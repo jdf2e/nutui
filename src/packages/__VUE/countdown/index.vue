@@ -74,8 +74,6 @@ export default create({
   emits: ['input', 'on-end', 'on-restart', 'on-paused', 'update:modelValue'],
 
   setup(props, { emit, slots }) {
-    console.log('componentName', componentName);
-
     const state = reactive({
       restTime: 0,
       p: 0,
@@ -166,7 +164,8 @@ export default create({
         if (!props.paused) {
           let restTime = end - (Date.now() - state.p + diffTime);
           state.restTime = restTime;
-          if (restTime < delay) {
+
+          if (restTime < 0) {
             state.restTime = 0;
             emit('on-end');
             clearInterval(state.timer as any);

@@ -23,13 +23,12 @@
 
       <!-- 请选择 -->
       <view class="custom-address" v-if="privateType == 'custom'">
-        <view class="region-tab">
+        <view class="region-tab" ref="tabRegion">
           <view
             class="tab-item"
             :class="[index == tabIndex ? 'active' : '']"
             v-for="(item, key, index) in selectedRegion"
             :key="index"
-            :ref="key"
             @click="changeRegionTab(item, key, index)"
           >
             <view>{{ getTabName(item, index) }}</view>
@@ -63,13 +62,12 @@
 
       <!-- 请选择 -->
       <view class="custom-address" v-else-if="privateType == 'custom2'">
-        <view class="region-tab">
+        <view class="region-tab" ref="tabRegion">
           <view
             class="tab-item"
             :class="[index == tabIndex ? 'active' : '']"
             v-for="(item, key, index) in selectedRegion"
             :key="index"
-            :ref="key"
             @click="changeRegionTab(item, key, index)"
           >
             <view>{{ getTabName(item, index) }}</view>
@@ -125,7 +123,7 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, nextTick, computed } from 'vue';
+import { reactive, ref, toRefs, watch, nextTick, computed, Ref } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('address');
 interface RegionData {
@@ -223,12 +221,8 @@ export default create({
   setup(props: any, { emit }) {
     const regionLine = ref<null | HTMLElement>(null);
 
-    const tabItemRef = reactive({
-      province: ref<null | HTMLElement>(null),
-      city: ref<null | HTMLElement>(null),
-      country: ref<null | HTMLElement>(null),
-      town: ref<null | HTMLElement>(null)
-    });
+    const tabRegion: Ref<any> = ref(null);
+
     const showPopup = ref(props.visible);
     const privateType = ref(props.type);
     const tabIndex = ref(0);
@@ -316,8 +310,11 @@ export default create({
     };
     // 移动下面的红线
     const lineAnimation = () => {
-      const name = (tabItemRef as any)[tabName.value[tabIndex.value]];
+      console.log('滑动红线');
+
       nextTick(() => {
+        const name = tabRegion.value && tabRegion.value.getElementsByClassName('active')[0];
+
         if (name) {
           const distance = name.offsetLeft;
 
@@ -519,14 +516,14 @@ export default create({
       getTabName,
       nextAreaList,
       regionLine,
+      tabRegion,
       lineDistance,
       changeRegionTab,
       selectedExist,
       clickOverlay,
       handClose,
       handleElevatorItem,
-      ...toRefs(props),
-      ...toRefs(tabItemRef)
+      ...toRefs(props)
     };
   }
 });
