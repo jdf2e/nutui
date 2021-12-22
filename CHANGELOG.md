@@ -1,3 +1,30 @@
+## v3.1.12
+
+`2021-11-27`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @AsherSun、@LeeHarlan、@297cwrun
+
+* :zap: feat: 新增 form 表单校验组件 #846  @richard1015
+* :zap: feat: 新增 menu 菜单组件 #844 @yangjinjun3
+* :zap: feat: 新增 card 商品卡片 @Drjingfubo
+* :zap: feat(imagepreview): 新增函数式调用、视频 (#858) @JackieScorpio
+* :zap: feat(uploader): 新增 ready 状态对应的UI展示 (#837) @AsherSun
+* :zap: feat(button): 新增 mini 尺寸 (#837) @Drjingfubo
+* :zap: feat(numberkeyboard): add overlay props @Drjingfubo
+* :zap: feat(switch、icon): 图标库增加loading，switch组件增加加载中状态 @szg2008
+* :zap: feat(toast): 增加标题属性，调整自定义位置 @Drjingfubo
+* :zap: feat(fixednav): Demo 增加拖拽效果 @richard1015
+* :zap: feat(cellgroup): add desc props & slots @richard1015
+* :zap: feat(dialog): add props footer-direction @richard1015
+* :zap: feat(rate): 支持自定义 icon @richard1015
+* :bug: fix(input): readonly时不显示placeholder (#840) @297cwrun
+* :bug: fix(rate): 半星情况出现颜色差异 #810  @richard1015
+* :bug: fix(timeselect): 修改配送时间组件 style @szg2008
+* :bug: fix(popover): 关闭点击优化 #851 @liqiong-lab
+* :bug: fix(popover): popover list item click error (#843) @LeeHarlan
+* :bug: fix(uploader): 修复小程序端传图后报错问题 (#836) @AsherSun
+
 ## v3.1.11
 
 `2021-11-15`

@@ -1,58 +1,4 @@
 {
-  "versions": [
-    {
-      "name": "1.x",
-      "link": "/1x/"
-    },
-    {
-      "name": "2.x",
-      "link": "/2x/"
-    },
-    {
-      "name": "3.x",
-      "link": "/"
-    },
-    {
-      "name": "nutui-jdl",
-      "link": "/jdl/"
-    },
-    {
-      "name": "nutui-react",
-      "link": "https://github.com/jdf2e/nutui/tree/nutui-react"
-    }
-  ],
-  "header": [
-    {
-      "name": "intro,theme,start",
-      "cName": "指南",
-      "path": "#/intro"
-    },
-    {
-      "name": "component",
-      "cName": "组件",
-      "path": "#/button"
-    },
-    {
-      "name": "example",
-      "cName": "示例",
-      "path": "demo.html"
-    },
-    {
-      "name": "resource",
-      "cName": "资源",
-      "path": "#/resource"
-    },
-    {
-      "name": "notice",
-      "cName": "通知",
-      "path": "#/notice"
-    },
-    {
-      "name": "joinus",
-      "cName": "加入我们",
-      "path": "#/joinus"
-    }
-  ],
   "docs": {
     "name": "指南",
     "packages": [
@@ -243,12 +189,13 @@
         {
           "version": "3.0.0",
           "name": "ImagePreview",
-          "type": "component",
+          "type": "methods",
           "cName": "图片预览",
           "desc": "图片预览",
           "sort": 4,
           "show": true,
-          "taro": true,
+          "taro": false,
+          "tarodoc": true,
           "author": "zongyue3"
         }
       ]
@@ -652,6 +599,41 @@
           "taro": true,
           "show": false,
           "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Indicator",
+          "type": "component",
+          "cName": "指示器",
+          "desc": "显示一个任务或流程的进度，常用语开通流程。",
+          "sort": 11,
+          "taro": true,
+          "show": true,
+          "author": "senyawang"
+        },
+        {
+          "version": "3.1.13",
+          "name": "Grid",
+          "type": "component",
+          "cName": "宫格",
+          "desc": "用于分隔成等宽区块进行页面导航",
+          "sort": 13,
+          "taro": true,
+          "show": true,
+          "author": "haiweilian"
+        },
+        {
+          "version": "3.1.13",
+          "name": "GridItem",
+          "type": "component",
+          "cName": "宫格子组件",
+          "desc": "",
+          "sort": 13,
+          "taro": true,
+          "show": false,
+          "exportEmpty": true,
+          "exportEmptyTaro": true,
+          "author": "haiweilian"
         }
       ]
     },
@@ -883,6 +865,49 @@
           "show": true,
           "taro": true,
           "author": "liqiong"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Form",
+          "type": "component",
+          "cName": "表单",
+          "desc": "1",
+          "sort": 21,
+          "show": true,
+          "taro": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "FormItem",
+          "type": "component",
+          "cName": "表单Item",
+          "desc": "表单Item",
+          "sort": 22,
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Skeleton",
+          "type": "component",
+          "cName": "骨架屏",
+          "desc": "骨架屏",
+          "sort": 23,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
+        },{
+          "name": "Cascader",
+          "type": "component",
+          "cName": "级联选择",
+          "desc": "级联选择，用于多层级数据的选择，典型场景为省市区选择.",
+          "sort": 23,
+          "show": true,
+          "taro": true,
+          "author": "dongj0316"
         }
       ]
     },
@@ -969,6 +994,28 @@
           "sort": 1,
           "show": true,
           "author": "yangxiaolu3"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Card",
+          "type": "component",
+          "cName": "商品卡片",
+          "desc": "展示商品",
+          "sort": 1,
+          "show": true,
+          "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Table",
+          "type": "component",
+          "cName": "表格组件",
+          "desc": "用于展示多条结构类似的数据，并具有一定的操作功能",
+          "sort": 9,
+          "show": true,
+          "author": "szg2008"
         }
       ]
     }

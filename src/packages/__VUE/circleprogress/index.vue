@@ -1,13 +1,6 @@
 <template>
-  <div
-    :class="classes"
-    :style="{ height: option.size + 'px', width: option.size + 'px' }"
-  >
-    <svg
-      :height="option.size"
-      :width="option.size"
-      x-mlns="http://www.w3.org/200/svg"
-    >
+  <div :class="classes" :style="{ height: option.size + 'px', width: option.size + 'px' }">
+    <svg :height="option.size" :width="option.size" x-mlns="http://www.w3.org/200/svg">
       <circle
         :r="option.radius"
         :cx="option.cx"
@@ -30,9 +23,9 @@
       />
     </svg>
     <div class="nut-circleprogress-content">
-      <template v-if="!isAuto"
-        ><slot>{{ progress }}%</slot></template
-      >
+      <template v-if="!isAuto">
+        <slot>{{ progress }}%</slot>
+      </template>
       <template v-else><slot></slot></template>
     </div>
   </div>
@@ -82,11 +75,9 @@ export default create({
       };
       Object.assign(baseOption, props.progressOption);
       // 圆心位置自动生成
-      baseOption.cy = baseOption.cx =
-        baseOption.radius + baseOption.strokeOutWidth;
+      baseOption.cy = baseOption.cx = baseOption.radius + baseOption.strokeOutWidth;
       baseOption.size = (baseOption.radius + baseOption.strokeOutWidth) * 2;
-      baseOption.startPosition =
-        'rotate(-90,' + baseOption.cx + ',' + baseOption.cy + ')';
+      baseOption.startPosition = 'rotate(-90,' + baseOption.cx + ',' + baseOption.cy + ')';
       return baseOption;
     });
     const arcLength = computed(() => {

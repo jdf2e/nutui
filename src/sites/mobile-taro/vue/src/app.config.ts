@@ -50,7 +50,9 @@ export default {
         'pages/fixednav/index',
         'pages/elevator/index',
         'pages/menu/index',
-        'pages/pagination/index'
+        'pages/pagination/index',
+        'pages/indicator/index',
+        'pages/grid/index'
       ]
     },
     {
@@ -63,6 +65,7 @@ export default {
         'pages/rate/index',
         'pages/radio/index',
         'pages/calendar/index',
+        'pages/form/index',
         'pages/shortpassword/index',
         'pages/picker/index',
         'pages/datepicker/index',
@@ -72,7 +75,9 @@ export default {
         'pages/numberkeyboard/index',
         'pages/badge/index',
         'pages/tag/index',
-        'pages/popover/index'
+        'pages/popover/index',
+        'pages/skeleton/index',
+        'pages/cascader/index'
       ]
     },
     {
@@ -82,7 +87,9 @@ export default {
         'pages/signature/index',
         'pages/barrage/index',
         'pages/timeselect/index',
-        'pages/sku/index'
+        'pages/sku/index',
+        'pages/card/index',
+        'pages/table/index'
       ]
     }
   ],

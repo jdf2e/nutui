@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="doc-header" :style="{ background: themeColor === 'red' ? headerBg : themeColor }" :class="`doc-header-${data.theme}`"> -->
   <div class="doc-header" :class="themeName()">
     <div class="header-logo">
       <a class="logo-link" href="#" @click="toHome"></a>
@@ -7,59 +6,20 @@
       <span class="version">{{ version }}</span>
     </div>
     <div class="header-nav">
-      <Search />
-      <div class="nav-box">
-        <ul class="nav-list">
-          <li class="nav-item" v-for="item in header" :key="item.name" :class="{ active: isActive(item.name) }">
-            <a :href="item.path">
-              {{ item.cName }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <div
-              @focus="handleFocus"
-              @focusout="handleFocusOut"
-              tabindex="0"
-              class="header-select-box"
-              @click.stop="data.isShowSelect = !data.isShowSelect"
-              :class="[data.isShowSelect == true ? 'select-up' : 'select-down']"
-            >
-              <div class="header-select-hd">{{ data.verson }}<i class=""></i></div>
-              <transition name="fade">
-                <div class="header-select-bd" v-show="data.isShowSelect">
-                  <div
-                    class="header-select-item"
-                    v-for="(item, index) in versions"
-                    :key="index"
-                    @click.stop="checkTheme(item)"
-                    :class="{ active: data.activeIndex === index }"
-                  >
-                    {{ item.name }}
-                  </div>
-                </div>
-              </transition>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="user-link" target="_blank" href="https://github.com/jdf2e/nutui"></a>
-            <a class="user-link gitee" target="_blank" href="https://gitee.com/jd-platform-opensource/nutui"></a>
-          </li>
-        </ul>
-      </div>
+      <a href="https://github.com/jdf2e/nutui-docs" target="_blank"
+        >当前环境：development ,代码 PR 合并后，文档会自动同步至 https://github.com/jdf2e/nutui-docs</a
+      >
     </div>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, reactive, computed, onMounted } from 'vue';
-import Search from './Search.vue';
-import { header, versions, nav } from '@/config.json';
+import { nav } from '@/config.json';
 import { version } from '/package.json';
 import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc-header',
-  components: {
-    Search
-  },
+  components: {},
   setup() {
     let packages = [] as any[];
     nav.forEach((item) => {
@@ -110,8 +70,6 @@ export default defineComponent({
       window.location.href = item.link;
     };
     return {
-      header,
-      versions,
       version,
       data,
       toHome,
@@ -180,6 +138,9 @@ export default defineComponent({
     width: calc(100% - 240px);
     min-width: 900px;
     padding: 0 40px;
+    > a {
+      color: #fff;
+    }
     .nav-box {
       margin-right: 140px;
       .nav-list {

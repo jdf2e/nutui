@@ -65,17 +65,17 @@ export default defineConfig({
   build: {
     target: 'es2015',
     outDir: './dist/3x/',
-    assetsDir: config.version,
+    // assetsDir: config.version,
     cssCodeSplit: true,
     rollupOptions: {
       input: {
-        doc: resolve(__dirname, 'index.html'),
+        // doc: resolve(__dirname, 'index.html'),
         mobile: resolve(__dirname, 'demo.html')
       },
       output: {
-        entryFileNames: `${config.version}/[name].js`,
-        chunkFileNames: `${config.version}/[name].js`,
-        assetFileNames: `${config.version}/[name].[ext]`
+        entryFileNames: `demo-${config.version}/[name].js`,
+        chunkFileNames: `demo-${config.version}/[name].js`,
+        assetFileNames: `demo-${config.version}/[name].[ext]`
       }
     }
   }

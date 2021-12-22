@@ -35,6 +35,22 @@
     <nut-tabs style="height: 300px" v-model="state.tab6value" type="smile" title-scroll direction="vertical">
       <nut-tabpane v-for="item in state.list5" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>
     </nut-tabs>
+    <h2>标签栏字体尺寸 large normal small </h2>
+    <nut-tabs v-model="state.tab1value" size="large">
+      <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
+      <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
+      <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+    </nut-tabs>
+    <nut-tabs v-model="state.tab1value" size="normal">
+      <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
+      <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
+      <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+    </nut-tabs>
+    <nut-tabs v-model="state.tab1value" size="small">
+      <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
+      <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
+      <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+    </nut-tabs>
     <h2>自定义标签栏</h2>
     <nut-tabs v-model="state.tab7value">
       <template v-slot:titles>

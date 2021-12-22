@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "3.1.11",
+  "version": "3.1.12",
   "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
@@ -39,7 +39,6 @@
     "dev:taro:vue": "npm run checked:taro:vue && cd src/sites/mobile-taro/vue/ && npm run dev:weapp",
     "dev:taro:h5": "npm run checked:taro:vue && cd src/sites/mobile-taro/vue/ && npm run dev:h5",
     "build:site": "npm run checked && vite build",
-    "build:gh-pages": "npm run checked && vite build --base=/nutui/",
     "build:site:oss": "npm run checked && vite build --base=/nutui/3x/",
     "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts",
     "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts",
@@ -64,7 +63,7 @@
     }
   },
   "dependencies": {
-    "sass": "^1.34.0",
+    "sass": "~1.32.0",
     "vue-router": "^4.0.11"
   },
   "devDependencies": {
@@ -80,7 +79,7 @@
     "@vue/compiler-sfc": "^3.0.11",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
-    "@vue/test-utils": "^2.0.0-rc.6",
+    "@vue/test-utils": "^2.0.0-rc.17",
     "autoprefixer": "^10.3.4",
     "axios": "^0.21.0",
     "eslint": "^7.23.2",

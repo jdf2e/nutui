@@ -11,10 +11,10 @@
     
 ```javascript
 import { createApp } from 'vue';
-import { Dialog } from '@nutui/nutui';
+import { Dialog,Popup,OverLay } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Dialog);
+app.use(Dialog).use(Popup).use(OverLay)
 ```
 
 
@@ -34,6 +34,12 @@ Dialog({
   title: '提示弹框',
   content: '支持函数调用和组件调用两种方式。',
   noCancelBtn: true,
+});
+
+Dialog({
+  title: '温馨提示',
+  content: '支持底部按钮纵向排列。',
+  footerDirection:"vertical"
 });
 ```
 
@@ -73,7 +79,10 @@ setup(){
 ## 标签式组件使用
 
 ```html
-<nut-dialog :title="title" :close-on-click-overlay="false" :content="content" v-model:visible="visible"></nut-dialog>
+<nut-cell title="标签式使用使用" @click="componentClick"></nut-cell>
+<nut-cell title="底部按钮垂直使用" @click="componentvVrticalClick"></nut-cell>
+<nut-dialog title="标签式使用" :close-on-click-overlay="false" content="内容" v-model:visible="visible"></nut-dialog>
+<nut-dialog title="标签式使用" footer-direction="vertical" :close-on-click-overlay="false" content="内容" v-model:visible="visible1"></nut-dialog>
 ```
 
 ``` javascript
@@ -82,10 +91,14 @@ import { Dialog } from '@nutui/nutui';
 export default {
   setup() {
     const visible = ref(true);
-    const title = '标签式使用';
-    const content = '内容';
-  
-    return { visible,title,content };
+    const visible1 = ref(true);
+    const componentClick = () => {
+      visible.value = true;
+    };
+    const componentvVrticalClick = () => {
+      visible1.value = true;
+    };
+    return { visible,visible1,componentClick,componentvVrticalClick };
   },
 };
 ```
@@ -115,23 +128,23 @@ export default {
 
 ## Props
 
-| 字段                   | 说明                                  | 类型    | 默认值   |
-|------------------------|---------------------------------------|---------|----------|
-| title                  | 标题                                  | String  | -        |
-| content                | 内容，支持HTML                        | String  | -        |
-| teleport               | 指定挂载节点                          | String  | "body"   |
-| close-on-click-overlay | 点击蒙层是否关闭对话框                | Boolean | false    |
-| no-footer              | 是否隐藏底部按钮栏                    | Boolean | false    |
-| no-ok-btn              | 是否隐藏确定按钮                      | Boolean | false    |
-| no-cancel-btn          | 是否隐藏取消按钮                      | Boolean | false    |
-| cancel-text            | 取消按钮文案                          | String  | ”取消“   |
-| ok-text                | 确定按钮文案                          | String  | ”确 定“  |
-| ok-btn-disabled        | 禁用确定按钮                          | Boolean | false    |
-| cancel-auto-close      | 取消按钮是否默认关闭弹窗              | Boolean | true     |
-| text-align             | 文字对齐方向，可选值同css的text-align | String  | "center" |
-| close-on-popstate      | 是否在页面回退时自动关闭              | Boolean | false    |
-| lock-scroll            | 背景是否锁定                          | Boolean | false    |
-
+| 字段                   | 说明                                     | 类型    | 默认值     |
+|------------------------|------------------------------------------|---------|------------|
+| title                  | 标题                                     | String  | -          |
+| content                | 内容，支持HTML                           | String  | -          |
+| teleport               | 指定挂载节点                             | String  | "body"     |
+| close-on-click-overlay | 点击蒙层是否关闭对话框                   | Boolean | false      |
+| no-footer              | 是否隐藏底部按钮栏                       | Boolean | false      |
+| no-ok-btn              | 是否隐藏确定按钮                         | Boolean | false      |
+| no-cancel-btn          | 是否隐藏取消按钮                         | Boolean | false      |
+| cancel-text            | 取消按钮文案                             | String  | ”取消“     |
+| ok-text                | 确定按钮文案                             | String  | ”确 定“    |
+| ok-btn-disabled        | 禁用确定按钮                             | Boolean | false      |
+| cancel-auto-close      | 取消按钮是否默认关闭弹窗                 | Boolean | true       |
+| text-align             | 文字对齐方向，可选值同css的text-align    | String  | "center"   |
+| close-on-popstate      | 是否在页面回退时自动关闭                 | Boolean | false      |
+| lock-scroll            | 背景是否锁定                             | Boolean | false      |
+| footer-direction       | 使用横纵方向 可选值 horizontal、vertical | string  | horizontal |
 
 ## Events
 

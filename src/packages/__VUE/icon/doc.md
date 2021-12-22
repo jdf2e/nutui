@@ -116,18 +116,20 @@ import './assets/font/iconfont.css';
 
 ```
 
+自定义 iconfont [Demo示例](https://github.com/jdf2e/nutui-demo/blob/master/vite/src/App.vue#L15) 
+
 ## API
 
 ### Props
 
-| 参数         | 说明                             | 类型             | 默认值           |
-|--------------|----------------------------------|------------------|------------------|
-| name         | 图标名称或图片链接               | String           | -                |
-| color        | 图标颜色                         | String           | -                |
-| size         | 图标大小，如 `20px` `2em` `2rem` | String or Number | -                |
-| font-class-name | 字体基础类名     | String           | `nutui-iconfont` |
-| class-prefix | 类名前缀，用于使用自定义图标     | String           | `nut-icon` |
-| tag          | HTML 标签                        | String           | `i`              |
+| 参数            | 说明                                    | 类型             | 默认值           |
+|-----------------|-----------------------------------------|------------------|------------------|
+| name            | 图标名称或图片链接                      | String           | -                |
+| color           | 图标颜色                                | String           | -                |
+| size            | 图标大小，如 `20px` `2em` `2rem`        | String or Number | -                |
+| font-class-name | 自定义 icon 字体基础类名                | String           | `nutui-iconfont` |
+| class-prefix    | 自定义 icon 类名前缀，用于使用自定义图标 | String           | `nut-icon`       |
+| tag             | HTML 标签                               | String           | `i`              |
 
 ### Events
 
