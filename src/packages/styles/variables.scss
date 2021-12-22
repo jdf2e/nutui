@@ -353,7 +353,10 @@ $pagination-prev-next-padding: 0 11px !default;
 // tabs
 $tabs-tab-smile-color: $primary-color !default;
 $tabs-titles-border-radius: 0 !default;
+$tabs-titles-item-large-font-size: $font-size-3 !default;
 $tabs-titles-item-font-size: $font-size-2 !default;
+$tabs-titles-item-small-font-size: $font-size-1 !default;
+
 $tabs-titles-item-color: $title-color !default;
 $tabs-titles-background-color: $help-color !default;
 $tabs-horizontal-tab-line-color: linear-gradient(90deg, #f5503a 0%, #fad1cb 100%) !default;
@@ -364,6 +367,14 @@ $tabs-vertical-tab-line-color: linear-gradient(180deg, #f5503a 0%, #fad1cb 100%)
 $tabs-vertical-titles-item-height: 40px !default;
 $tabs-vertical-titles-item-active-line-height: 14px !default;
 $tabs-vertical-titles-width: 100px !default;
+
+// indicator
+$indicator-color: $primary-color !default;
+$indicator-dot-color: $disable-color !default;
+$indicator-white: $white !default;
+$indicator-size: 18px !default;
+$indicator-dot-size: $indicator-size / 3 !default;
+$indicator-border-size: $indicator-size + 2 !default;
 
 // menu
 $nut-menu-bar-line-height: 46px !default;
@@ -382,6 +393,19 @@ $nut-menu-item-option-i-margin-right: 6px !default;
 $searchbar-background: $white !default;
 $searchbar-input-background: #f7f7f7 !default;
 $searchbar-right-out-color: $black !default;
+
+// cascader
+$nut-cascader-font-size: $font-size-2;
+$nut-cascader-line-height: 22px;
+$nut-cascader-tabs-item-padding: 0 10px;
+$nut-cascader-bar-padding: 24px 20px 17px;
+$nut-cascader-bar-font-size: $font-size-4;
+$nut-cascader-bar-line-height: 20px;
+$nut-cascader-bar-color: $title-color;
+$nut-cascader-item-padding: 10px 20px;
+$nut-cascader-item-color: $title-color;
+$nut-cascader-item-font-size: $font-size-2;
+$nut-cascader-item-active-color: $primary-color;
 
 // form
 $form-item-error-line-color: $primary-color !default;
@@ -403,10 +427,26 @@ $sku-opetate-bg-buy: linear-gradient(
   rgba(255, 195, 13, 1) 69%,
   rgba(255, 207, 13, 1) 100%
 );
+
 // card
 $card-font-size-0: $font-size-0;
 $card-font-size-1: $font-size-1;
 $card-font-size-2: $font-size-2;
 $card-font-size-3: $font-size-3;
+
+// grid
+$grid-border-color: #f5f6f7 !default;
+$grid-item-content-padding: 16px 8px !default;
+$grid-item-content-bg-color: $white !default;
+$grid-item-text-margin: 8px !default;
+$grid-item-text-color: $title-color2 !default;
+$grid-item-text-font-size: $font-size-1 !default;
+
+// table
+$table-border-color: #ececec;
+$table-cols-padding: 10px;
+$table-tr-even-bg-color: #f3f3f3;
+$table-tr-odd-bg-color: $white;
+
 @import './mixins/index';
 @import './animation/index';

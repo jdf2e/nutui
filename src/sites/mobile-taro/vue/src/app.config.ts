@@ -49,7 +49,9 @@ export default {
         'pages/fixednav/index',
         'pages/elevator/index',
         'pages/menu/index',
-        'pages/pagination/index'
+        'pages/pagination/index',
+        'pages/indicator/index',
+        'pages/grid/index'
       ]
     },
     {
@@ -73,7 +75,8 @@ export default {
         'pages/badge/index',
         'pages/tag/index',
         'pages/popover/index',
-        'pages/skeleton/index'
+        'pages/skeleton/index',
+        'pages/cascader/index'
       ]
     },
     {
@@ -84,7 +87,8 @@ export default {
         'pages/barrage/index',
         'pages/timeselect/index',
         'pages/sku/index',
-        'pages/card/index'
+        'pages/card/index',
+        'pages/table/index'
       ]
     }
   ],

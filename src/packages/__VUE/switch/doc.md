@@ -111,7 +111,7 @@ export default {
 
 | 参数           | 说明             | 类型    | 默认值                |
 |----------------|------------------|---------|-----------------------|
-| v-model        | 开关状态         | Boolean | `false`               |
+| v-model        | 开关状态         | Boolean、String、Number | `false`               |
 | disable        | 禁用状态         | Boolean | `false`               |
 | loading        | 加载状态         | Boolean | `false`               |
 | name        | [图标名称](#/icon)         | String | `loading`               |
@@ -121,6 +121,8 @@ export default {
 | inactive-color | 关闭时的背景颜色 | String  | `#ebebeb` |
 | active-text    | 打开时文字描述   | String  | -                     |
 | inactive-text  | 关闭时文字描述   | String  | -                     |
+| active-value  | 打开时组件的值   | Boolean、String、Number  | true                     |
+| inactive-value  | 关闭组件的值   | Boolean、String、Number  | false                     |
 
 
 ### Events
