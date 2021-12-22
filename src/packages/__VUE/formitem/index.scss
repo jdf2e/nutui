@@ -25,7 +25,7 @@
     font-weight: normal;
     width: 90px;
     margin-right: 10px;
-    flex: none;
+    flex: none !important;
     display: inline-block;
     word-wrap: break-word;
     &.required {

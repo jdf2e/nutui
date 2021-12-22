@@ -34,7 +34,7 @@ export const component = (componentName: string) => {
       }
     },
     emits: ['sorter'],
-    setup(props, { emit, slots }) {
+    setup(props: any, { emit, slots }: any) {
       const state = reactive({
         curData: props.data
       });
