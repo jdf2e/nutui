@@ -472,7 +472,6 @@
         {
           "version": "3.0.0",
           "name": "Empty",
-          "tarodoc": true,
           "taro": true,
           "type": "component",
           "cName": "空状态",
