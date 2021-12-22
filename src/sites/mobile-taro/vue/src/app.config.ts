@@ -86,7 +86,8 @@ export default {
         'pages/barrage/index',
         'pages/timeselect/index',
         'pages/sku/index',
-        'pages/card/index'
+        'pages/card/index',
+        'pages/table/index'
       ]
     }
   ],

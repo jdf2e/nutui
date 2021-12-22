@@ -982,6 +982,17 @@
           "sort": 1,
           "show": true,
           "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Table",
+          "type": "component",
+          "cName": "表格组件",
+          "desc": "用于展示多条结构类似的数据，并具有一定的操作功能",
+          "sort": 9,
+          "show": true,
+          "author": "szg2008"
         }
       ]
     }
