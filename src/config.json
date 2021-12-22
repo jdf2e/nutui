@@ -468,6 +468,18 @@
           "show": true,
           "taro": true,
           "author": "zongyue3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Empty",
+          "tarodoc": true,
+          "taro": true,
+          "type": "component",
+          "cName": "空状态",
+          "desc": "空状态时占位提示",
+          "sort": 24,
+          "show": true,
+          "author": "wujia8"
         }
       ]
     },
