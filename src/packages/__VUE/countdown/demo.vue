@@ -31,16 +31,9 @@
     <h2>控制开始和暂停的倒计时</h2>
 
     <nut-cell>
-      <nut-countdown
-        :endTime="end"
-        :paused="paused"
-        @on-paused="onpaused"
-        @on-restart="onrestart"
-      />
+      <nut-countdown :endTime="end" :paused="paused" @on-paused="onpaused" @on-restart="onrestart" />
       <div style="position: absolute; right: 10px; top: 9px">
-        <nut-button type="primary" size="small" @click="toggle">{{
-          paused ? 'start' : 'stop'
-        }}</nut-button>
+        <nut-button type="primary" size="small" @click="toggle">{{ paused ? 'start' : 'stop' }}</nut-button>
       </div>
     </nut-cell>
 
@@ -70,19 +63,7 @@
 </template>
 
 <script lang="ts">
-import {
-  toRefs,
-  onMounted,
-  onUnmounted,
-  reactive,
-  computed,
-  CSSProperties,
-  onActivated,
-  onDeactivated,
-  ref,
-  watch,
-  h
-} from 'vue';
+import { toRefs, onMounted, onUnmounted, reactive } from 'vue';
 import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('countdown');
 export default createDemo({

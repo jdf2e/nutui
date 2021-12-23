@@ -88,19 +88,21 @@ setup() {
 
 ## Prop
 
-| 字段           | 说明                                      | 类型    | 默认值      |
-|----------------|-------------------------------------------|---------|-------------|
-| v-model        | 当前 star 数，可使用 v-model 双向绑定数据 | Number  | -           |
-| count          | star 总数                                 | Number  | 5           |
-| icon-size      | star 大小                                 | Number  | 18          |
-| active-color   | 图标选中颜色                              | String  | #fa200c     |
-| void-color     | 图标未选中颜色                            | String  | #ccc        |
-| unchecked-icon | 使用图标(未选中)                          | String  | star-n      |
-| checked-icon   | 使用图标(选中)                            | String  | star-fill-n |
-| allow-half     | 是否半星                                  | Boolean | false       |
-| readonly       | 是否只读                                  | Boolean | false       |
-| disabled       | 是否禁用                                  | Boolean | false       |
-| spacing        | 间距                                      | Number  | 20          |
+| 字段            | 说明                                      | 类型    | 默认值           |
+|-----------------|-------------------------------------------|---------|------------------|
+| v-model         | 当前 star 数，可使用 v-model 双向绑定数据 | Number  | -                |
+| count           | star 总数                                 | Number  | 5                |
+| icon-size       | star 大小                                 | Number  | 18               |
+| active-color    | 图标选中颜色                              | String  | #fa200c          |
+| void-color      | 图标未选中颜色                            | String  | #ccc             |
+| unchecked-icon  | 使用图标(未选中)[图标名称](#/icon)    | String  | star-n           |
+| checked-icon    | 使用图标(选中)[图标名称](#/icon)       | String  | star-fill-n      |
+| font-class-name | 自定义icon 字体基础类名                   | String  | `nutui-iconfont` |
+| class-prefix    | 自定义icon 类名前缀，用于使用自定义图标   | String  | `nut-icon`       |
+| allow-half      | 是否半星                                  | Boolean | false            |
+| readonly        | 是否只读                                  | Boolean | false            |
+| disabled        | 是否禁用                                  | Boolean | false            |
+| spacing         | 间距                                      | Number  | 20               |
 
 ## Event
 | 字段   | 说明                       | 回调参数 |

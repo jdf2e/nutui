@@ -1,4 +1,4 @@
-#  Infiniteloading 滚动加载
+#  InfiniteLoading 滚动加载
 
 ### 介绍
 
@@ -19,7 +19,7 @@
 ### 基础用法
 
 ```html
-<ul class="infiniteUl" id="scroll">
+<ul class="infiniteUl" id="scroll"  style='height: 300px;'>
     <nut-infiniteloading
         containerId = 'scroll'
         :use-window='false'
@@ -60,7 +60,7 @@ setup() {
 ### 下拉刷新
 
 ```html
-<ul class="infiniteUl" id="refreshScroll">
+<ul class="infiniteUl" id="refreshScroll" style='height: 300px;'>
   <nut-infiniteloading
     pull-icon="JD"
     container-id="refreshScroll"
@@ -118,7 +118,7 @@ setup() {
 ### 自定义加载文案
 
 ```html
-<ul class="infiniteUl" id="customScroll">
+<ul class="infiniteUl" id="customScroll" style='height: 300px;'>
     <nut-infiniteloading
         container-id = 'customScroll'
         :use-window='false'
