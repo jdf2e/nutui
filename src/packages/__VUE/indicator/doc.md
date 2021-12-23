@@ -1,4 +1,4 @@
-# Indicator组件
+# Indicator 指示器
 
 ### 介绍
 
