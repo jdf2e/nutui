@@ -1,4 +1,4 @@
-#  Infiniteloading 滚动加载
+#  InfiniteLoading 滚动加载
 
 ### 介绍
 
