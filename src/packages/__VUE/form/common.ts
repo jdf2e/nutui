@@ -44,7 +44,7 @@ export const component = {
             prop: vnode.props?.['prop'],
             rules: vnode.props?.['rules'] || []
           });
-        } else if (vnode.children?.length) {
+        } else if (Array.isArray(vnode.children) && vnode.children?.length) {
           task = task.concat(findFormItem(vnode.children as VNode[]));
         }
       });
