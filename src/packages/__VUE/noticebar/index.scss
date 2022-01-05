@@ -1,8 +1,8 @@
 .nut-noticebar-page {
   width: 100%;
   display: flex;
-  height: $noticeBar-height;
-  font-size: $noticeBar-font-size;
+  height: $noticebar-height;
+  font-size: $noticebar-font-size;
   position: relative;
   align-items: center;
   &.wrapable {
@@ -23,8 +23,8 @@
     padding-right: 40px;
   }
   .left-icon {
-    height: $noticeBar-left-icon-width;
-    min-width: $noticeBar-left-icon-width;
+    height: $noticebar-left-icon-width;
+    min-width: $noticebar-left-icon-width;
     margin: 0 5px 0 10px;
     background-size: 100% 100%;
   }
@@ -32,13 +32,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: $noticeBar-right-icon-width;
+    width: $noticebar-right-icon-width;
     margin: 0 10px 0 5px;
   }
   .wrap {
     flex: 1;
-    height: $noticeBar-line-height;
-    line-height: $noticeBar-line-height;
+    height: $noticebar-line-height;
+    line-height: $noticebar-line-height;
     overflow: hidden;
     position: relative;
   }
@@ -78,7 +78,7 @@
 // 垂直方向的滚动
 @keyframes nut-notice-bar-play-vertical {
   to {
-    transform: translateY($noticeBar-height);
+    transform: translateY($noticebar-height);
   }
 }
 
@@ -87,8 +87,8 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  height: $noticeBar-height;
-  font-size: $noticeBar-font-size;
+  height: $noticebar-height;
+  font-size: $noticebar-font-size;
   overflow: hidden;
 
   .horseLamp_list {
@@ -99,7 +99,7 @@
     .horseLamp_list_item {
       display: flex;
       align-items: center;
-      height: $noticeBar-height;
+      height: $noticebar-height;
     }
   }
 
