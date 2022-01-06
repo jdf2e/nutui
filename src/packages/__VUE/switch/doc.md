@@ -115,14 +115,14 @@ export default {
 | disable        | 禁用状态         | Boolean | `false`               |
 | loading        | 加载状态         | Boolean | `false`               |
 | name        | [图标名称](#/icon)         | String | `loading`               |
-| color        | [图标颜色](#/icon)          | String | -               |
-| size        | [图标尺寸](#/icon)          | String、Number | `12px`               |
+| color        | [图标颜色](#/icon)，仅在`loading`状态下生效          | String | -               |
+| size        | [图标尺寸](#/icon)，仅在`loading`状态下生效          | String、Number | `12px`               |
 | active-color   | 打开时的背景颜色 | String  | `#fa2c19`    |
 | inactive-color | 关闭时的背景颜色 | String  | `#ebebeb` |
 | active-text    | 打开时文字描述   | String  | -                     |
 | inactive-text  | 关闭时文字描述   | String  | -                     |
-| active-value  | 打开时组件的值   | Boolean、String、Number  | true                     |
-| inactive-value  | 关闭组件的值   | Boolean、String、Number  | false                     |
+| active-value  | 打开时组件的值   | Boolean、String、Number  | `true`  |
+| inactive-value  | 关闭组件的值   | Boolean、String、Number  | `false`  |
 
 
 ### Events
