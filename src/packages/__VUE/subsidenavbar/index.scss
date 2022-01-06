@@ -1,0 +1,39 @@
+.nut-subsidenavbar {
+  display: grid;
+  float: left;
+  width: 100%;
+  position: relative;
+  &__title {
+    display: block;
+    width: 100%;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    border-bottom: 1px solid $subsidenavbar-title-border-color;
+    color: $title-color;
+    font-size: $font-size-large;
+    background-color: $subsidenavbar-title-bg-color;
+    &__text {
+      line-height: 40px;
+      color: $title-color;
+    }
+    &__icon {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      i {
+        transition: transform 0.5s ease-in-out;
+        &.up {
+          transform: rotate(-180deg);
+        }
+      }
+    }
+  }
+  &__list {
+    width: 100%;
+  }
+}
