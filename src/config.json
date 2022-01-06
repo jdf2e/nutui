@@ -633,6 +633,41 @@
           "exportEmpty": true,
           "exportEmptyTaro": true,
           "author": "haiweilian"
+        },
+        {
+          "version": "3.1.15",
+          "name": "SideNavBar",
+          "type": "component",
+          "cName": "侧边栏导航",
+          "desc": "垂直展示的导航栏，用于内容选择和切换",
+          "sort": 14,
+          "taro": true,
+          "show": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.1.15",
+          "name": "SideNavBarItem",
+          "type": "component",
+          "cName": "侧边栏导航子组件",
+          "desc": "",
+          "sort": 15,
+          "exportEmpty": true,
+          "taro": true,
+          "show": false,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.1.15",
+          "name": "SubSideNavBar",
+          "type": "component",
+          "cName": "侧边栏导航子组件",
+          "desc": "",
+          "sort": 16,
+          "exportEmpty": true,
+          "taro": true,
+          "show": false,
+          "author": "szg2008"
         }
       ]
     },
