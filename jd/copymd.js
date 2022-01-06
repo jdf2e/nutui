@@ -1,6 +1,5 @@
-const computerBase = '';
-const vueBaseUrl = `${computerBase}..`;
-const reactBaseUrl = `${computerBase}nutui-react`;
+const vueBaseUrl = `..`;
+const targetBaseUrl = 'site_docs';
 const fse = require('fs-extra');
 const copyFile = (from, to) => {
   fse
@@ -15,21 +14,20 @@ const copyFile = (from, to) => {
 const copy = async (fromGit, type) => {
   let configPath = `src/config.json`;
   let configPkgPath = `package.json`;
-  let nutuiDocsConfigPath = `docs/docs_${type}/config.json`;
+  let nutuiDocsConfigPath = `${targetBaseUrl}/docs_${type}/config.json`;
 
   const exists = await fse.pathExists(configPath);
-  console.log(exists, configPath);
+
   if (exists) {
     const fromConfig = await fse.readJson(configPath);
 
     const fromPkgConfig = await fse.readJson(configPkgPath);
 
     const docsConfig = await fse.readJson(nutuiDocsConfigPath);
-    console.log(docsConfig);
+
     docsConfig.version = fromPkgConfig.version;
     docsConfig.nav = fromConfig.nav;
     docsConfig.docs = fromConfig.docs;
-    console.log(fromConfig.docs);
 
     fse
       .writeJson(nutuiDocsConfigPath, docsConfig, {
@@ -43,18 +41,15 @@ const copy = async (fromGit, type) => {
         if (item.show) {
           let cmpName = item.name.toLowerCase();
           let docpath = `src/packages/__VUE/${cmpName}/doc.md`;
-          if (type == 'react') {
-            docpath = `${fromGit}/src/packages/${cmpName}/doc.md`;
-          }
           let doctaropath = `src/packages/__VUE/${cmpName}/doc.taro.md`;
           fse.readFile(docpath, (err, data) => {
             if (!err) {
-              copyFile(docpath, `docs/docs_${type}/docs/${cmpName}/doc.md`);
+              copyFile(docpath, `${targetBaseUrl}/docs_${type}/docs/${cmpName}/doc.md`);
             }
           });
           fse.readFile(doctaropath, (err, data) => {
             if (!err) {
-              copyFile(doctaropath, `docs/docs_${type}/docs/${cmpName}/doc.taro.md`);
+              copyFile(doctaropath, `${targetBaseUrl}/docs_${type}/docs/${cmpName}/doc.taro.md`);
             }
           });
         }
