@@ -15,11 +15,13 @@ jobs:
       - uses: actions/checkout@v2 
       - run: yarn install
       - run: yarn copydocs
-      - name : Deploy 
+      - name : Sync 
         uses : JamesIves/github-pages-deploy-action@4.1.7 
         with :
           branch : docs_dev # action 应该部署到的分支。
-          folder : site_docs/docs_vue #操作应该部署的文件夹。
+          folder : site_docs/docs #操作应该部署的文件夹。
           repository-name: jdf2e/nutui-docs
           token: ${{ secrets.GIT_ACTION }}
-          target-folder: src/docs_vue
+          target-folder: src/docs_vue/docs
+
+          

@@ -1,4 +1,3 @@
-const vueBaseUrl = `..`;
 const targetBaseUrl = 'site_docs';
 const fse = require('fs-extra');
 const copyFile = (from, to) => {
@@ -11,10 +10,10 @@ const copyFile = (from, to) => {
       console.error(err);
     });
 };
-const copy = async (fromGit, type) => {
+const copy = async () => {
   let configPath = `src/config.json`;
   let configPkgPath = `package.json`;
-  let nutuiDocsConfigPath = `${targetBaseUrl}/docs_${type}/config.json`;
+  let nutuiDocsConfigPath = `${targetBaseUrl}/config.json`;
 
   const exists = await fse.pathExists(configPath);
 
@@ -44,12 +43,12 @@ const copy = async (fromGit, type) => {
           let doctaropath = `src/packages/__VUE/${cmpName}/doc.taro.md`;
           fse.readFile(docpath, (err, data) => {
             if (!err) {
-              copyFile(docpath, `${targetBaseUrl}/docs_${type}/docs/${cmpName}/doc.md`);
+              copyFile(docpath, `${targetBaseUrl}/docs/${cmpName}/doc.md`);
             }
           });
           fse.readFile(doctaropath, (err, data) => {
             if (!err) {
-              copyFile(doctaropath, `${targetBaseUrl}/docs_${type}/docs/${cmpName}/doc.taro.md`);
+              copyFile(doctaropath, `${targetBaseUrl}/docs/${cmpName}/doc.taro.md`);
             }
           });
         }
@@ -58,4 +57,4 @@ const copy = async (fromGit, type) => {
   }
 };
 // copy(reactBaseUrl, 'react');
-copy(vueBaseUrl, 'vue');
+copy();
