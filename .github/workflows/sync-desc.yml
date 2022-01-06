@@ -1,0 +1,25 @@
+name: sync to docs
+
+on:
+  push:
+    branches:
+      - next_dev # default branch
+    paths:
+      - '.github/workflows/**'
+      - 'src/**'
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest  
+    steps:
+      - uses: actions/checkout@v2 
+      # - run: yarn install
+      # - run: yarn copydocs
+      - name : Deploy 
+        uses : JamesIves/github-pages-deploy-action@4.1.7 
+        with :
+          branch : docs_dev # action 应该部署到的分支。
+          folder : docs #操作应该部署的文件夹。
+          repository-name: jdf2e/nutui-docs
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target-folder: docs_copy

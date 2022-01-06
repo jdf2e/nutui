@@ -1,0 +1,1023 @@
+{
+  "version": "3.1.14",
+  "demoUrl": "https://nutui.jd.com/3x/demo.html#",
+  "nav": [
+    {
+      "name": "基础组件",
+      "enName": "base",
+      "packages": [
+        {
+          "version": "3.0.0",
+          "name": "Avatar",
+          "taro": true,
+          "sort": 7,
+          "cName": "头像",
+          "type": "component",
+          "show": true,
+          "desc": "头像",
+          "author": "ailululu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Button",
+          "taro": true,
+          "sort": 1,
+          "cName": "按钮",
+          "type": "component",
+          "show": true,
+          "desc": "按钮用于触发一个操作，如提交表单。",
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Cell",
+          "taro": true,
+          "sort": 1,
+          "cName": "单元格",
+          "type": "component",
+          "show": true,
+          "desc": "展示列表",
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CellGroup",
+          "sort": 1,
+          "cName": "单元格组件",
+          "type": "component",
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "desc": "展示分组列表",
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Icon",
+          "taro": true,
+          "sort": 3,
+          "cName": "图标",
+          "type": "component",
+          "show": true,
+          "desc": "图标",
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Price",
+          "taro": true,
+          "sort": 4,
+          "cName": "价格",
+          "type": "component",
+          "show": true,
+          "desc": "价格组件",
+          "author": "ailululu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "OverLay",
+          "taro": true,
+          "type": "component",
+          "cName": "遮罩层",
+          "desc": "创建一个遮罩层，通常用于阻止用户进行其他操作",
+          "sort": 14,
+          "show": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Divider",
+          "taro": true,
+          "type": "component",
+          "cName": "分割线",
+          "desc": "用于将内容分隔为多个区域。",
+          "sort": 23,
+          "show": true,
+          "author": "yangjinjun3"
+        }
+      ]
+    },
+    {
+      "name": "布局组件",
+      "enName": "layout",
+      "packages": [
+        {
+          "version": "3.0.0",
+          "name": "Layout",
+          "taro": true,
+          "sort": 4,
+          "cName": "布局",
+          "type": "component",
+          "show": true,
+          "desc": "简便地创建布局",
+          "author": "undo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Col",
+          "sort": 5,
+          "cName": "布局-Col",
+          "type": "component",
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "desc": "布局组件Col",
+          "author": "undo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Row",
+          "sort": 6,
+          "cName": "布局-Row",
+          "type": "component",
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "desc": "布局组件Row",
+          "author": "undo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "ImagePreview",
+          "type": "methods",
+          "cName": "图片预览",
+          "desc": "图片预览",
+          "sort": 4,
+          "show": true,
+          "taro": false,
+          "tarodoc": true,
+          "author": "zongyue3"
+        }
+      ]
+    },
+    {
+      "name": "操作反馈",
+      "enName": "feedback",
+      "packages": [
+        {
+          "version": "3.0.0",
+          "name": "Swipe",
+          "taro": true,
+          "type": "component",
+          "cName": "滑动手势",
+          "desc": "列表项左滑删除场景使用",
+          "sort": 4,
+          "show": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "ActionSheet",
+          "taro": true,
+          "sort": "1",
+          "cName": "动作面板",
+          "type": "component",
+          "show": true,
+          "desc": "底部弹出动作菜单面板",
+          "author": "zhangyufei"
+        },
+        {
+          "version": "3.0.0",
+          "name": "BackTop",
+          "taro": true,
+          "tarodoc": true,
+          "sort": "1",
+          "cName": "返回顶部",
+          "type": "component",
+          "show": true,
+          "desc": "较长页面快捷返回顶部",
+          "author": "liqiong43"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Collapse",
+          "taro": true,
+          "sort": 2,
+          "cName": "折叠面板",
+          "type": "component",
+          "show": true,
+          "desc": "折叠面板",
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CollapseItem",
+          "taro": true,
+          "sort": 3,
+          "cName": "折叠面板-item",
+          "type": "component",
+          "show": false,
+          "exportEmpty": true,
+          "exportEmptyTaro": true,
+          "desc": "折叠面板-item",
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Drag",
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "cName": "拖拽",
+          "desc": "拖拽组件",
+          "sort": 16,
+          "show": true,
+          "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Dialog",
+          "taro": true,
+          "tarodoc": true,
+          "type": "methods",
+          "cName": "对话框",
+          "desc": "模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。",
+          "sort": 8,
+          "show": true,
+          "author": "dsj"
+        },
+        {
+          "version": "3.0.0",
+          "name": "InfiniteLoading",
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "cName": "滚动加载",
+          "desc": "列表滚动到底部自动加载更多数据",
+          "sort": 15,
+          "show": true,
+          "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Notify",
+          "tarodoc": true,
+          "taro": true,
+          "type": "methods",
+          "cName": "消息通知",
+          "desc": "在页面顶部展示消息提示，支持函数调用和组件调用两种方式",
+          "sort": 4,
+          "show": true,
+          "author": "wangyue217"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Range",
+          "taro": true,
+          "type": "component",
+          "cName": "区间选择器",
+          "desc": "滑动输入条，用于在给定的范围内选择一个值。",
+          "sort": 16,
+          "show": true,
+          "author": "zy19940510"
+        },
+        {
+          "version": "3.0.0",
+          "name": "PullRefresh",
+          "type": "component",
+          "cName": "下拉刷新",
+          "desc": "下拉刷新",
+          "sort": 16,
+          "show": false,
+          "author": "yangxiaolu3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Video",
+          "type": "component",
+          "cName": "视频播放器",
+          "desc": "视频播放组件",
+          "sort": 20,
+          "taro": false,
+          "show": true,
+          "tarodoc": true,
+          "author": "zy19940510"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Popup",
+          "taro": true,
+          "sort": 8,
+          "cName": "弹出层",
+          "type": "component",
+          "show": true,
+          "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Steps",
+          "taro": true,
+          "sort": 17,
+          "cName": "步骤条",
+          "type": "component",
+          "show": true,
+          "desc": "步骤条",
+          "author": "ailululu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Step",
+          "sort": 17,
+          "cName": "步骤条子组件",
+          "type": "component",
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "desc": "步骤条子组件",
+          "author": "ailululu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Swiper",
+          "taro": true,
+          "tarodoc": true,
+          "sort": 6,
+          "cName": "轮播",
+          "type": "component",
+          "show": true,
+          "desc": "轮播",
+          "author": "suzigang"
+        },
+        {
+          "version": "3.0.0",
+          "name": "SwiperItem",
+          "sort": 6,
+          "cName": "轮播图子组件",
+          "type": "component",
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "exportEmptyTaro": true,
+          "desc": "轮播图子组件",
+          "author": "suzigang"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Switch",
+          "taro": true,
+          "type": "component",
+          "cName": "开关",
+          "desc": "用来打开或关闭选项",
+          "sort": 3,
+          "show": true,
+          "author": "zongyue3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Toast",
+          "taro": true,
+          "tarodoc": true,
+          "sort": "1",
+          "cName": "吐司",
+          "type": "methods",
+          "show": true,
+          "desc": "轻提示",
+          "author": "undo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Progress",
+          "taro": true,
+          "sort": 8,
+          "cName": "进度条",
+          "type": "component",
+          "show": true,
+          "desc": "用来展示进度",
+          "author": "Drjingubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CircleProgress",
+          "taro": true,
+          "sort": 8,
+          "cName": "环形进度条",
+          "type": "component",
+          "show": true,
+          "desc": "用来展示进度",
+          "author": "Drjingubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "NoticeBar",
+          "type": "component",
+          "cName": "公告栏",
+          "desc": "用于循环播放展示一组消息通知",
+          "sort": 8,
+          "show": true,
+          "taro": true,
+          "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "SearchBar",
+          "type": "component",
+          "cName": "搜索栏",
+          "desc": "搜索栏",
+          "sort": 23,
+          "show": true,
+          "taro": true,
+          "author": "zongyue3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Empty",
+          "taro": true,
+          "type": "component",
+          "cName": "空状态",
+          "desc": "空状态时占位提示",
+          "sort": 24,
+          "show": true,
+          "author": "wujia8"
+        }
+      ]
+    },
+    {
+      "name": "导航组件",
+      "enName": "nav",
+      "packages": [
+        {
+          "version": "3.0.0",
+          "name": "Navbar",
+          "taro": true,
+          "sort": 3,
+          "cName": "头部导航",
+          "type": "componment",
+          "show": true,
+          "desc": "头部导航",
+          "author": "liqiong43"
+        },
+        {
+          "version": "3.0.0",
+          "name": "FixedNav",
+          "type": "component",
+          "cName": "悬浮导航",
+          "desc": "可拖拽的悬浮导航",
+          "taro": true,
+          "sort": 9,
+          "show": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Menu",
+          "sort": 2,
+          "cName": "菜单组件",
+          "type": "component",
+          "taro": true,
+          "show": true,
+          "desc": "下拉菜单组件",
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "MenuItem",
+          "sort": 2,
+          "cName": "菜单组件",
+          "type": "component",
+          "taro": true,
+          "exportEmpty": true,
+          "show": false,
+          "desc": "下拉菜单组件",
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Tabbar",
+          "taro": true,
+          "sort": 2,
+          "cName": "标签栏",
+          "type": "component",
+          "show": true,
+          "desc": "标签栏",
+          "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "TabbarItem",
+          "sort": 2,
+          "cName": "标签栏子组件",
+          "type": "component",
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "desc": "标签栏子组件",
+          "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Elevator",
+          "type": "component",
+          "cName": "电梯楼层",
+          "desc": "用于列表快速定位以及索引的显示",
+          "sort": 5,
+          "show": true,
+          "taro": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Pagination",
+          "type": "component",
+          "cName": "分页",
+          "desc": "当数据量较多时，采用分页的形式分隔长列表。",
+          "sort": 10,
+          "show": true,
+          "taro": true,
+          "author": "yushuang24"
+        },
+        {
+          "version": "3.1.9",
+          "name": "Tabs",
+          "type": "component",
+          "cName": "选项卡切换",
+          "desc": "常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式",
+          "sort": 11,
+          "show": true,
+          "taro": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.1.9",
+          "name": "TabPane",
+          "type": "component",
+          "cName": "选项卡子组件",
+          "desc": "",
+          "sort": 12,
+          "exportEmpty": true,
+          "taro": true,
+          "show": false,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Indicator",
+          "type": "component",
+          "cName": "指示器",
+          "desc": "显示一个任务或流程的进度，常用语开通流程。",
+          "sort": 11,
+          "taro": true,
+          "show": true,
+          "author": "senyawang"
+        },
+        {
+          "version": "3.1.13",
+          "name": "Grid",
+          "type": "component",
+          "cName": "宫格",
+          "desc": "用于分隔成等宽区块进行页面导航",
+          "sort": 13,
+          "taro": true,
+          "show": true,
+          "author": "haiweilian"
+        },
+        {
+          "version": "3.1.13",
+          "name": "GridItem",
+          "type": "component",
+          "cName": "宫格子组件",
+          "desc": "",
+          "sort": 13,
+          "taro": true,
+          "show": false,
+          "exportEmpty": true,
+          "exportEmptyTaro": true,
+          "author": "haiweilian"
+        }
+      ]
+    },
+    {
+      "name": "数据录入",
+      "enName": "dentry",
+      "packages": [
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Calendar",
+          "type": "component",
+          "cName": "日历",
+          "desc": "日历组件",
+          "sort": 5,
+          "show": true,
+          "author": "songchenglin1"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Checkbox",
+          "taro": true,
+          "sort": 5,
+          "cName": "复选按钮",
+          "type": "component",
+          "show": true,
+          "desc": "复选按钮",
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CheckboxGroup",
+          "type": "component",
+          "cName": "多选按钮组",
+          "desc": "多选按钮组",
+          "sort": 11,
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "DatePicker",
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "cName": "日期选择器",
+          "desc": "提供多个选型集合供用户选择,支持单列选择和多列级联,通常与弹出层配合使用",
+          "sort": 5,
+          "show": true,
+          "author": "yangkaixuan"
+        },
+        {
+          "version": "3.0.0",
+          "name": "InputNumber",
+          "taro": true,
+          "sort": 1,
+          "cName": "数字输入框",
+          "type": "component",
+          "show": true,
+          "desc": "数字输入框组件",
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Input",
+          "taro": true,
+          "sort": 2,
+          "cName": "输入框",
+          "type": "component",
+          "show": true,
+          "desc": "输入框组件",
+          "author": "gxx158"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Radio",
+          "taro": true,
+          "type": "component",
+          "cName": "单选按钮",
+          "desc": "单选按钮",
+          "sort": 9,
+          "show": true,
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "RadioGroup",
+          "type": "component",
+          "cName": "单选按钮组",
+          "desc": "单选按钮组",
+          "sort": 10,
+          "taro": true,
+          "exportEmpty": true,
+          "show": false,
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Rate",
+          "taro": true,
+          "sort": 4,
+          "cName": "评分",
+          "type": "component",
+          "show": true,
+          "desc": "评分组件",
+          "author": "undo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CalendarItem",
+          "type": "component",
+          "cName": "日历子组件",
+          "desc": "日历子组件",
+          "sort": 5,
+          "show": false,
+          "author": "songchenglin1"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Picker",
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "cName": "选择器",
+          "desc": "提供多个选型集合供用户选择,支持单列选择和多列级联,通常与弹出层配合使用",
+          "sort": 5,
+          "show": true,
+          "author": "yangkaixuan"
+        },
+        {
+          "version": "3.0.0",
+          "name": "ShortPassword",
+          "taro": true,
+          "type": "component",
+          "cName": "短密码",
+          "desc": "短密码组件",
+          "sort": 6,
+          "show": true,
+          "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "TextArea",
+          "type": "component",
+          "cName": "文本域",
+          "desc": "文本输入",
+          "sort": 7,
+          "show": true,
+          "author": "gx"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Uploader",
+          "taro": true,
+          "tarodoc": true,
+          "sort": 2,
+          "cName": "上传",
+          "type": "component",
+          "show": true,
+          "desc": "上传文件、图片",
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CountUp",
+          "taro": true,
+          "sort": 12,
+          "cName": "数字滚动",
+          "type": "component",
+          "show": true,
+          "desc": "数字滚动组件，动态变化展示",
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "NumberKeyboard",
+          "taro": true,
+          "sort": 13,
+          "cName": "数字键盘",
+          "type": "component",
+          "show": true,
+          "desc": "虚拟数字键盘",
+          "author": "Drjingfubo"
+        },
+        {
+          "name": "CountDown",
+          "type": "component",
+          "cName": "倒计时",
+          "desc": "倒计时",
+          "sort": 16,
+          "show": true,
+          "taro": true,
+          "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Badge",
+          "type": "component",
+          "cName": "徽标",
+          "desc": "徽标",
+          "sort": 17,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Tag",
+          "type": "component",
+          "cName": "标签",
+          "desc": "标签",
+          "sort": 18,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Popover",
+          "type": "component",
+          "cName": "气泡弹出框",
+          "desc": "气泡弹出框",
+          "sort": 19,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Form",
+          "type": "component",
+          "cName": "表单",
+          "desc": "1",
+          "sort": 21,
+          "show": true,
+          "taro": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "FormItem",
+          "type": "component",
+          "cName": "表单Item",
+          "desc": "表单Item",
+          "sort": 22,
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Skeleton",
+          "type": "component",
+          "cName": "骨架屏",
+          "desc": "骨架屏",
+          "sort": 23,
+          "show": true,
+          "taro": true,
+          "author": "liqiong"
+        },
+        {
+          "name": "Cascader",
+          "type": "component",
+          "cName": "级联选择",
+          "desc": "级联选择，用于多层级数据的选择，典型场景为省市区选择.",
+          "sort": 23,
+          "show": true,
+          "taro": true,
+          "author": "dongj0316"
+        }
+      ]
+    },
+    {
+      "name": "特色组件",
+      "enName": "business",
+      "packages": [
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Address",
+          "type": "component",
+          "cName": "地址",
+          "desc": "地址组件",
+          "sort": 1,
+          "show": true,
+          "author": "yangxiaolu3"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Barrage",
+          "type": "component",
+          "cName": "弹幕",
+          "desc": "用于视频弹幕等展示",
+          "sort": 2,
+          "show": true,
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "tarodoc": true,
+          "name": "Signature",
+          "type": "component",
+          "cName": "签名",
+          "desc": "签名组件",
+          "sort": 3,
+          "show": true,
+          "author": "guoxiaoxiao"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "TimeSelect",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间",
+          "sort": 4,
+          "show": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "TimePannel",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间",
+          "sort": 5,
+          "show": false,
+          "exportEmpty": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "TimeDetail",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间",
+          "sort": 6,
+          "show": false,
+          "exportEmpty": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Sku",
+          "type": "component",
+          "cName": "商品规格选择",
+          "desc": "商品规格选择",
+          "sort": 1,
+          "show": true,
+          "author": "yangxiaolu3"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Card",
+          "type": "component",
+          "cName": "商品卡片",
+          "desc": "展示商品",
+          "sort": 1,
+          "show": true,
+          "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Table",
+          "type": "component",
+          "cName": "表格",
+          "desc": "用于展示多条结构类似的数据，并具有一定的操作功能",
+          "sort": 9,
+          "show": true,
+          "author": "szg2008"
+        }
+      ]
+    }
+  ],
+  "docs": {
+    "name": "指南",
+    "packages": [
+      {
+        "name": "intro",
+        "cName": "介绍",
+        "show": true
+      },
+      {
+        "name": "start",
+        "cName": "快速上手",
+        "show": true
+      },
+      {
+        "name": "starttaro",
+        "cName": "小程序开发",
+        "show": true
+      },
+      {
+        "name": "theme",
+        "cName": "主题定制",
+        "show": true
+      },
+      {
+        "name": "international",
+        "cName": "国际化",
+        "show": false
+      },
+      {
+        "name": "resource",
+        "cName": "资源",
+        "show": true
+      },
+      {
+        "name": "contributing",
+        "cName": "贡献指南",
+        "path": "#/contributing",
+        "show": true
+      },
+      {
+        "name": "https://github.com/jdf2e/nutui/releases",
+        "cName": "更新日志",
+        "show": true,
+        "isLink": true
+      },
+      {
+        "name": "notice",
+        "cName": "常见问题",
+        "show": true
+      }
+    ]
+  }
+}
