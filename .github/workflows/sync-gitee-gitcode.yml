@@ -15,9 +15,6 @@ jobs:
         with:
           source-repo: git@github.com:jdf2e/nutui.git
           destination-repo: git@gitee.com:jd-platform-opensource/nutui.git
-jobs:
-  deploy-site-sync-gitcode:
-    steps:
       - name: Sync to Gitcode
         uses: wearerequired/git-mirror-action@master
         env:
