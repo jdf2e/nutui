@@ -452,5 +452,15 @@ $table-cols-padding: 10px;
 $table-tr-even-bg-color: #f3f3f3;
 $table-tr-odd-bg-color: $white;
 
+// sidenavbar
+$sidenavbar-content-bg-color: $white !default;
+
+// subsidenavbar
+$subsidenavbar-title-border-color: #f6f6f6 !default;
+$subsidenavbar-title-bg-color: #f6f6f6 !default;
+
+// sidenavbaritem
+$sidenavbaritem-title-color: $white !default;
+
 @import './mixins/index';
 @import './animation/index';
