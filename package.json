@@ -55,7 +55,8 @@
     "prepare": "husky install",
     "test": "jest",
     "release": "standard-version -a",
-    "codeformat": "prettier --write ."
+    "codeformat": "prettier --write .",
+    "copydocs": "node ./jd/copymd.js"
   },
   "standard-version": {
     "scripts": {
