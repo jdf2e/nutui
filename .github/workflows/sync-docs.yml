@@ -3,7 +3,7 @@ name: sync to docs
 on:
   push:
     branches:
-      - next_dev # default branch
+      - next # default branch
     paths:
       - '.github/workflows/**'
       - 'src/**'
