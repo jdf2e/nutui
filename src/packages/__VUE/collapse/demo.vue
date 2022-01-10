@@ -57,7 +57,7 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { onMounted, reactive, ref, toRefs } from 'vue';
 import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('collapse');
 export default createDemo({
