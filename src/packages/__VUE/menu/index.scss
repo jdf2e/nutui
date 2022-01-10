@@ -16,6 +16,10 @@
     color: $title-color;
     min-width: 0;
 
+    &.active {
+      color: $menu-item-active-text-color;
+    }
+
     &.disabled {
       color: $menu-item-disabled-color;
     }

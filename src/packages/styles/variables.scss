@@ -119,6 +119,9 @@ $uploader-picture-width: 100px !default;
 $uploader-picture-height: 100px !default;
 $uploader-background: #f7f8fa !default;
 
+// picker
+$picker-cancel-color: $primary-color !default;
+
 //input
 $input-border-bottom: #eaf0fb !default;
 $input-disabled-color: #c8c9cc !default;
@@ -148,7 +151,7 @@ $actionsheet-light-color: #f6f6f6 !default;
 //shortpassword
 $shortpassword-background-color: rgba(245, 245, 245, 1) !default;
 $shortpassword-border-color: #ddd !default;
-$shortpassword-error: rgba(242, 39, 12, 1) !default;
+$shortpassword-error: $primary-color !default;
 $shortpassword-forget: rgba(128, 128, 128, 1) !default;
 
 //large price
@@ -243,7 +246,8 @@ $rang-bg-color: rgba($primary-color, 0.5) !default;
 $rang-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
 
 //address
-$address-region-tab-line: linear-gradient(90deg, #f5503a 0%, #fad1cb 100%) !default;
+$address-region-tab-line: linear-gradient(90deg, $primary-color 0%, rgba($primary-color, 0.15) 100%) !default;
+$address-icon-color: $primary-color !default;
 
 //steps
 $step-wait-bg-color: #959fb1 !default;
@@ -258,17 +262,17 @@ $checkbox-icon-disable-color: #d6d6d6 !default;
 
 //radio
 $radio-label-font-color: #1d1e1e !default;
-$radio-label-font-active-color: #f0250f !default;
+$radio-label-font-active-color: $primary-color !default;
 $radio-label-disable-color: #999 !default;
 $radio-icon-disable-color: #d6d6d6 !default;
-$radio-label-button-border-color: #f0250f !default;
-$radio-label-button-background: rgba(240, 37, 15, 0.05) !default;
+$radio-label-button-border-color: $primary-color !default;
+$radio-label-button-background: rgba($primary-color, 0.05) !default;
 
 //fixednav
 $fixednav-bg-color: $white !default;
 $fixednav-font-color: $black !default;
 $fixednav-index: 201 !default;
-$fixednav-btn-bg: linear-gradient(135deg, rgba(250, 25, 44, 1) 0%, rgba(250, 63, 25, 1) 100%) !default;
+$fixednav-btn-bg: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
 
 // NoticeBar
 $noticebar-font-size: 14px !default;
@@ -293,9 +297,9 @@ $timedetail-item-bg-color: #f6f7f9 !default;
 $timedetail-item-border-radius: 5px !default;
 $timedetail-item-text-color: #333333 !default;
 $timedetail-item-text-font-size: $font-size-2 !default;
-$timedetail-item-cur-bg-color: #fef4f3 !default;
-$timedetail-item-cur-border: #f0250f !default;
-$timedetail-item-cur-text-color: #f0250f !default;
+$timedetail-item-cur-bg-color: rgba($primary-color, 0.15) !default;
+$timedetail-item-cur-border: $primary-color !default;
+$timedetail-item-cur-text-color: $primary-color !default;
 $timedetail-time-text-color: #999 !default;
 $timedetail-time-font-size: $font-size-1 !default;
 
@@ -329,17 +333,15 @@ $popover-border-bottom-color: rgba(229, 229, 229, 1) !default;
 $popover-primary-text-color: rgba(51, 51, 51, 1) !default;
 $popover-disable-color: rgba(154, 155, 157, 1) !default;
 
+//progress
+$progress-inner-background-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
+$progress-insidetext-background: $primary-color !default;
+
 //pagination
 $pagination-color: $primary-color !default;
 $pagination-font-size: $font-size-2 !default;
 $pagination-item-border-color: #e4e7eb !default;
-$pagination-active-background-color: linear-gradient(
-  135deg,
-  rgba(250, 44, 25, 1) 0%,
-  rgba(250, 63, 25, 1) 44.59259259%,
-  rgba(250, 89, 25, 1) 83.40740741%,
-  rgba(250, 100, 25, 1) 100%
-) !default;
+$pagination-active-background-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
 $pagination-disable-color: rgba(116, 116, 116, 0.31) !default;
 $pagination-disable-background-color: #f7f8fa !default;
 $pagination-item-border-width: 1px !default;
@@ -354,11 +356,11 @@ $tabs-titles-item-font-size: $font-size-2 !default;
 $tabs-titles-item-small-font-size: $font-size-1 !default;
 $tabs-titles-item-color: $title-color !default;
 $tabs-titles-background-color: $help-color !default;
-$tabs-horizontal-tab-line-color: linear-gradient(90deg, #f5503a 0%, #fad1cb 100%) !default;
+$tabs-horizontal-tab-line-color: linear-gradient(90deg, $primary-color 0%, rgba($primary-color, 0.15) 100%) !default;
 $tabs-horizontal-titles-height: 46px !default;
 $tabs-horizontal-titles-item-min-width: 50px !default;
 $tabs-horizontal-titles-item-active-line-width: 40px !default;
-$tabs-vertical-tab-line-color: linear-gradient(180deg, #f5503a 0%, #fad1cb 100%) !default;
+$tabs-vertical-tab-line-color: linear-gradient(180deg, $primary-color 0%, rgba($primary-color, 0.15) 100%) !default;
 $tabs-vertical-titles-item-height: 40px !default;
 $tabs-vertical-titles-item-active-line-height: 14px !default;
 $tabs-vertical-titles-width: 100px !default;
@@ -373,6 +375,7 @@ $indicator-border-size: $indicator-size + 2 !default;
 
 // menu
 $menu-bar-line-height: 46px !default;
+$menu-item-active-text-color: $primary-color !default;
 $menu-bar-border-bottom-color: #eaf0fb !default;
 $menu-bar-opened-z-index: 2001 !default;
 $menu-item-disabled-color: #969799 !default;
@@ -417,20 +420,16 @@ $form-item-required-color: $primary-color !default;
 $form-item-error-message-color: $primary-color !default;
 
 // sku
-$sku-item-border: 1px solid $primary-color;
-$sku-item-disable-line: line-through;
-$sku-opetate-bg-default: linear-gradient(
-  135deg,
-  rgba(242, 20, 12, 1) 0%,
-  rgba(242, 39, 12, 1) 70%,
-  rgba(242, 77, 12, 1) 100%
-);
+$sku-item-border: 1px solid $primary-color !default;
+$sku-item-disable-line: line-through !default;
+$sku-opetate-bg-default: linear-gradient(90deg, $primary-color, $primary-color-end 100%) !default;
+$sku-item-active-bg: rgba($primary-color, 0.15) !default;
 $sku-opetate-bg-buy: linear-gradient(
   135deg,
   rgba(255, 186, 13, 1) 0%,
   rgba(255, 195, 13, 1) 69%,
   rgba(255, 207, 13, 1) 100%
-);
+) !default;
 
 // card
 $card-font-size-0: $font-size-0;

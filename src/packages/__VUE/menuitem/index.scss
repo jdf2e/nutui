@@ -1,6 +1,7 @@
 .nut-menu-item {
   .active {
     font-weight: 500;
+    color: $menu-item-active-text-color !important;
   }
 }
 

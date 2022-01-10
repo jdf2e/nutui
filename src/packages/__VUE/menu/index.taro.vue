@@ -5,7 +5,7 @@
         <view
           class="nut-menu__item"
           @click="!item.disabled && toggleItem(index)"
-          :class="{ disabled: item.disabled }"
+          :class="{ disabled: item.disabled, active: item.state.showPopup }"
           :style="{ color: item.state.showPopup ? activeColor : '' }"
         >
           <view class="nut-menu__title" :class="{ active: item.state.showPopup }">
@@ -27,7 +27,7 @@ export default create({
   props: {
     activeColor: {
       type: String,
-      default: '#FA2C19'
+      default: ''
     },
     overlay: {
       type: Boolean,
