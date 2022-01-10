@@ -50,7 +50,6 @@
                 class="region-item-icon"
                 type="self"
                 :name="selectedIcon"
-                color="#FA2C19"
                 size="13px"
                 v-if="selectedRegion[tabName[tabIndex]].id == item.id"
               ></nut-icon
@@ -98,7 +97,6 @@
                 class="exist-item-icon"
                 type="self"
                 :name="item.selectedAddress ? selectedIcon : defaultIcon"
-                :color="item.selectedAddress ? '#FA2C19' : ''"
                 size="13px"
               ></nut-icon>
               <div class="exist-item-info">
