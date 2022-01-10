@@ -25,21 +25,21 @@ export default {
   props: {
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     subTitle: {
       type: String,
-      default: ''
+      default: '',
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     name: {
       type: Number | String,
       default: -1,
-      required: true
-    }
+      required: true,
+    },
   },
   mounted() {
     this.$nextTick(() => {
@@ -50,7 +50,7 @@ export default {
         }
       }
       if (active instanceof Array) {
-        let f = active.filter(item => item == this.name);
+        let f = active.filter((item) => item == this.name);
         if (f.length > 0) {
           this.defaultOpen();
         }
@@ -69,8 +69,8 @@ export default {
         'background-image': 'url(https://img10.360buyimg.com/imagetools/jfs/t1/111306/10/17422/341/5f58aa0eEe9218dd6/28d76a42db334e31.png)',
         'background-repeat': 'no-repeat',
         'background-size': '100% 100%',
-        transform: 'rotate(0deg)'
-      }
+        transform: 'rotate(0deg)',
+      },
     };
   },
   methods: {
@@ -81,13 +81,13 @@ export default {
       }
     },
     toggleOpen() {
-      this.$parent.changeEvt(this.name);
+      // this.$parent.changeEvt(this.name);
       if (this.$parent.accordion) {
-        this.$parent.changeVal(this.name);
         if (this.$parent.value == this.name) {
           this.$parent.accordionFun(this.name);
         }
         this.animation();
+        this.$parent.changeVal(this.name);
       } else {
         this.$parent.changeValAry(this.name);
         this.open();
@@ -127,7 +127,7 @@ export default {
     // 清除 willChange 减少性能浪费
     onTransitionEnd() {
       this.$refs.wrapper.style.willChange = 'auto';
-    }
-  }
+    },
+  },
 };
 </script>

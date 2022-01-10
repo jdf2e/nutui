@@ -28,12 +28,12 @@ CollapseItem.install(Vue);
 export default {
   data() {
     return {
-        activeNames: [1, 2]
+      activeNames: [1, 2]
     };
   },
   methods: {
     callback(name) {
-      console.log(`点击了name是${name}的面板,callback`);
+      console.log(activeNames, `点击了name是${name}的面板,callback`);
     }
   }
 };
@@ -65,6 +65,11 @@ export default {
       activeName: 1,
       subTitle: '副标题'
     };
+  },
+   methods: {
+    callback(name) {
+      console.log(activeNames, `点击了name是${name}的面板,callback`);
+    }
   }
 };
 ```
