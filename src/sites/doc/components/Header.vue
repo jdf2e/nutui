@@ -6,8 +6,8 @@
       <span class="version">{{ version }}</span>
     </div>
     <div class="header-nav">
-      <a href="https://github.com/jdf2e/nutui-docs" target="_blank"
-        >当前环境：development ,代码 PR 合并后，文档会自动同步至 https://github.com/jdf2e/nutui-docs</a
+      <a href="https://github.com/jdf2e/nutui/tree/theme" target="_blank"
+        >NutUI 主题定制 https://github.com/jdf2e/nutui/tree/theme</a
       >
     </div>
   </div>

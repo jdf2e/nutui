@@ -1,8 +1,15 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Index from './views/Index.vue';
+import ThemeSetting from './components/ThemeSetting.vue';
 import config from '../config/env';
-const pagesRouter: Array<RouteRecordRaw> = [];
+const pagesRouter: Array<RouteRecordRaw> = [
+  {
+    path: '/base',
+    name: 'base',
+    component: ThemeSetting
+  }
+];
 
 /** vite */
 const modulesPage = import.meta.glob('/src/packages/__VUE/**/doc.md');
@@ -10,7 +17,7 @@ for (const path in modulesPage) {
   let name = (/packages\/__VUE\/(.*)\/doc.md/.exec(path) as any[])[1];
   pagesRouter.push({
     path: '/' + name,
-    component: modulesPage[path],
+    component: ThemeSetting || modulesPage[path],
     name
   });
 }

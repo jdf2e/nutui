@@ -1,5 +1,13 @@
 <template>
   <div class="doc-nav">
+    <ol>
+      <li>全局样式变量</li>
+      <ul>
+        <li>
+          <router-link to="base" :class="{ active: isActive('base') }"> 基础样式 </router-link>
+        </li>
+      </ul>
+    </ol>
     <ol v-for="_nav in nav" :key="_nav">
       <li>{{ _nav.name }}</li>
       <ul>
