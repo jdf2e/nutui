@@ -58,7 +58,7 @@
           >
             <slot v-if="$slots.button" name="button"></slot>
             <view class="nut-range-button" v-else :style="buttonStyle">
-              <view class="number" v-if="!hiddenTag">{{ curValue(index) }}</view>
+              <view class="number" v-if="!hiddenTag">{{ curValue() }}</view>
             </view>
           </view>
         </template>
@@ -69,7 +69,7 @@
 </template>
 <script lang="ts">
 import Taro from '@tarojs/taro';
-import { ref, toRefs, computed, PropType, CSSProperties, onUpdated } from 'vue';
+import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
 import { createComponent } from '../../utils/create';
 import { useTouch } from '../../utils/useTouch';
 import { useTaroRect } from '../../utils/useTaroRect';
