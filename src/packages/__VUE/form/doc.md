@@ -24,50 +24,58 @@ app.use(CellGroup);
 
 ### 基础用法
 
-``` html
-<nut-form>
-    <nut-form-item label="姓名">
-        <input class="nut-input-text" placeholder="请输入姓名" type="text" />
-    </nut-form-item>
-    <nut-form-item label="年龄">
-        <input class="nut-input-text" placeholder="请输入年龄" type="text" />
-    </nut-form-item>
-    <nut-form-item label="联系电话">
-        <input class="nut-input-text" placeholder="请输入联系电话" type="text" />
-    </nut-form-item>
-    <nut-form-item label="地址">
-        <input class="nut-input-text" placeholder="请输入地址" type="text" />
-    </nut-form-item>
-    <nut-form-item label="备注">
-        <nut-textarea  placeholder="请输入备注" type="text" />
-    </nut-form-item>
-</nut-form>
-```
+:::demo
 
+```html
+<template>
+  <nut-form>
+      <nut-form-item label="姓名">
+          <input class="nut-input-text" placeholder="请输入姓名" type="text" />
+      </nut-form-item>
+      <nut-form-item label="年龄">
+          <input class="nut-input-text" placeholder="请输入年龄" type="text" />
+      </nut-form-item>
+      <nut-form-item label="联系电话">
+          <input class="nut-input-text" placeholder="请输入联系电话" type="text" />
+      </nut-form-item>
+      <nut-form-item label="地址">
+          <input class="nut-input-text" placeholder="请输入地址" type="text" />
+      </nut-form-item>
+      <nut-form-item label="备注">
+          <nut-textarea  placeholder="请输入备注" type="text" />
+      </nut-form-item>
+  </nut-form>
+</template>
+```
+:::
 
 
 ### 动态表单
 
-``` html
-<nut-form :model-value="dynamicForm.state" ref="dynamicRefForm">
-  <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
-    <input class="nut-input-text" v-model="dynamicForm.state.name" placeholder="请输入姓名" type="text" />
-  </nut-form-item>
-  <nut-form-item :label="'联系方式'+index" :prop="'tels.' + index + '.value'" required
-    :rules="[{ required: true, message: '请填写联系方式'+index }]" :key="item.key"
-    v-for="(item,index) in dynamicForm.state.tels">
-    <input class="nut-input-text" v-model="item.value" :placeholder="'请输入联系方式'+index" type="text" />
-  </nut-form-item>
-  <nut-cell>
-    <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.add">添加</nut-button>
-    <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.remove">删除</nut-button>
-    <nut-button type="primary" size="small" @click="dynamicForm.methods.submit">提交</nut-button>
-  </nut-cell>
-</nut-form>
-```
+:::demo
 
-``` javascript
-setup(){
+```html
+<template>
+  <nut-form :model-value="dynamicForm.state" ref="dynamicRefForm">
+    <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
+      <input class="nut-input-text" v-model="dynamicForm.state.name" placeholder="请输入姓名" type="text" />
+    </nut-form-item>
+    <nut-form-item :label="'联系方式'+index" :prop="'tels.' + index + '.value'" required
+      :rules="[{ required: true, message: '请填写联系方式'+index }]" :key="item.key"
+      v-for="(item,index) in dynamicForm.state.tels">
+      <input class="nut-input-text" v-model="item.value" :placeholder="'请输入联系方式'+index" type="text" />
+    </nut-form-item>
+    <nut-cell>
+      <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.add">添加</nut-button>
+      <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.remove">删除</nut-button>
+      <nut-button type="primary" size="small" @click="dynamicForm.methods.submit">提交</nut-button>
+    </nut-cell>
+  </nut-form>
+</template>
+<script lang="ts">
+import { ref,reactive } from 'vue';
+export default {
+  setup(){
     const dynamicRefForm = ref<any>(null);
     const dynamicForm = {
       state: reactive({
@@ -104,13 +112,20 @@ setup(){
       dynamicForm,
       dynamicRefForm
     };
+  }
 }
+</script>
 ```
+
+:::
 
 
 ### 表单校验
 
-``` html
+:::demo
+
+```html
+<template>
 <nut-form :model-value="formData" ref="ruleForm">
   <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
     <input class="nut-input-text" @blur="customBlurValidate('name')" v-model="formData.name"
@@ -137,8 +152,10 @@ setup(){
     <nut-button size="small" @click="reset">重置提示状态</nut-button>
   </nut-cell>
 </nut-form>
-```
-``` javascript
+</template>
+<script lang="ts">
+import { ref,reactive } from 'vue';
+export default {
 setup(){
     const formData = reactive({
         name: '',
@@ -187,11 +204,18 @@ setup(){
     };
     return { ruleForm, formData, validate, customValidator, asyncValidator, customBlurValidate, submit, reset };
 }
+}
+</script>
 ```
+:::
 
 
 ### 表单类型
-``` html
+
+:::demo
+
+```html
+<template>
 <nut-form>
     <nut-form-item label="开关">
         <nut-switch v-model="formData2.switch"></nut-switch>
@@ -228,8 +252,10 @@ setup(){
             @change="addressModule.methods.onChange" custom-address-title="请选择所在地区"></nut-address>
     </nut-form-item>
 </nut-form>
-```
-``` javascript
+</template>
+<script lang="ts">
+import { ref,reactive } from 'vue';
+export default {
 setup(){
     const formData2 = reactive({
       switch: false,
@@ -297,8 +323,9 @@ setup(){
     });
     return { formData2, addressModule };
 }
+}
 ```
-
+:::
 
 
 ### Form Props
