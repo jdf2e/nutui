@@ -58,7 +58,7 @@
           >
             <slot v-if="$slots.button" name="button"></slot>
             <view class="nut-range-button" v-else :style="buttonStyle">
-              <view class="number" v-if="!hiddenTag">{{ curValue(index) }}</view>
+              <view class="number" v-if="!hiddenTag">{{ curValue() }}</view>
             </view>
           </view>
         </template>
