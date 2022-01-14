@@ -18,8 +18,12 @@
     
 ### 基础用法
 
+
+:::demo
+
 ```html
-<ul class="infiniteUl" id="scroll"  style='height: 300px;'>
+<template>
+  <ul class="infiniteUl" id="scroll"  style='height: 300px;'>
     <nut-infiniteloading
         containerId = 'scroll'
         :use-window='false'
@@ -28,142 +32,213 @@
     >
         <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{item}}</li>
     </nut-infiniteloading>
-</ul>
-```
-```javascript
-setup() {
-    const hasMore = ref(true);
-    const data = reactive({
-      defultList: []
-    });
-    const loadMore = done => {  
-      setTimeout(() => {
-        const curLen = data.defultList.length;
-        for (let i = curLen; i < curLen + 10; i++) {
+  </ul>
+</template>
+
+<script>
+  import { ref,reactive,onMounted,toRefs} from 'vue';
+  export default {
+    setup(props) {
+      const hasMore = ref(true);
+      const data = reactive({
+        defultList: []
+      });
+      const loadMore = done => {  
+        setTimeout(() => {
+          const curLen = data.defultList.length;
+          for (let i = curLen; i < curLen + 10; i++) {
+            data.defultList.push(`${i}`);
+          }
+          if (data.defultList.length > 30) hasMore.value = false;
+          done()
+        }, 500);
+      };
+      const init = () => {
+        for (let i = 0; i < 10; i++) {
           data.defultList.push(`${i}`);
         }
-        if (data.defultList.length > 30) hasMore.value = false;
-        done()
-      }, 500);
-    };
-    const init = () => {
-      for (let i = 0; i < 10; i++) {
-        data.defultList.push(`${i}`);
       }
+      onMounted(() => {
+        init()
+      });
+      return { loadMore, hasMore, ...toRefs(data) };
     }
-    onMounted(() => {
-      init()
-    });
-    return { loadMore, hasMore, ...toRefs(data) };
+  }
+</script>
+
+<style>
+.infiniteUl {
+  height: 300px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background:#eee
 }
+.infiniteLi {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgba(100, 100, 100, 1);
+  text-align: center;
+}
+</style>
 ```
+:::
 ### 下拉刷新
 
-```html
-<ul class="infiniteUl" id="refreshScroll" style='height: 300px;'>
-  <nut-infiniteloading
-    pull-icon="JD"
-    container-id="refreshScroll"
-    :use-window="false"
-    :is-open-refresh="true"
-    :has-more="refreshHasMore"
-    @load-more="refreshLoadMore"
-    @refresh="refresh"
-  >
-    <li
-      class="infiniteLi"
-      v-for="(item, index) in refreshList"
-      :key="index"
-      >{{ item }}</li
-    >
-  </nut-infiniteloading>
-</ul>
-```
-```javascript
-setup() {
-    const refreshHasMore = ref(true);
-    const data = reactive({
-      refreshList: []
-    });
-    const refreshLoadMore = done => {
-      setTimeout(() => {
-        const curLen = data.refreshList.length;
-        for (let i = curLen; i < curLen + 10; i++) {
-          data.refreshList.push(
-            `${i}`
-          );
-        }
-        if (data.refreshList.length > 30) refreshHasMore.value = false;
-        done()
-      }, 500);
-    };
-
-    const refresh = (done) => {
-      setTimeout(()=>{
-        Toast.success('刷新成功');
-        done()
-      },1000)
-    }
-    const init = () => {
-      for (let i = 0; i < 10; i++) {
-        data.refreshList.push(`${i}`);
-      }
-    }
-    onMounted(() => {
-      init()
-    });
-    return { refreshLoadMore, refreshHasMore, refresh, ...toRefs(data) };
-}
-```
-### 自定义加载文案
+:::demo
 
 ```html
-<ul class="infiniteUl" id="customScroll" style='height: 300px;'>
+<template>
+  <ul class="infiniteUl" id="refreshScroll" style='height: 300px;'>
     <nut-infiniteloading
-        container-id = 'customScroll'
-        :use-window='false'
-        :has-more="customHasMore"
-        @load-more="customLoadMore"
+      pull-icon="JD"
+      container-id="refreshScroll"
+      :use-window="false"
+      :is-open-refresh="true"
+      :has-more="refreshHasMore"
+      @load-more="refreshLoadMore"
+      @refresh="refresh"
     >
-        <li class="infiniteLi" v-for="(item, index) in customList" :key="index">{{item}}</li>
-        <template v-slot:loading>
-            <div class="loading">
-                <span>加载中...</span>
-            </div>
-        </template>
-        <template v-slot:unloadMore>
-            <div class="unload-more">没有数据啦 ~~</div>
-        </template>
+      <li
+        class="infiniteLi"
+        v-for="(item, index) in refreshList"
+        :key="index"
+        >{{ item }}</li
+      >
     </nut-infiniteloading>
-</ul>
+  </ul>
+</template>
+
+<script>
+  import { ref,reactive,onMounted,toRefs} from 'vue';
+  export default {
+    setup(props) {
+      const refreshHasMore = ref(true);
+      const data = reactive({
+        refreshList: []
+      });
+      const refreshLoadMore = done => {
+        setTimeout(() => {
+          const curLen = data.refreshList.length;
+          for (let i = curLen; i < curLen + 10; i++) {
+            data.refreshList.push(
+              `${i}`
+            );
+          }
+          if (data.refreshList.length > 30) refreshHasMore.value = false;
+          done()
+        }, 500);
+      };
+
+      const refresh = (done) => {
+        setTimeout(()=>{
+          Toast.success('刷新成功');
+          done()
+        },1000)
+      }
+      const init = () => {
+        for (let i = 0; i < 10; i++) {
+          data.refreshList.push(`${i}`);
+        }
+      }
+      onMounted(() => {
+        init()
+      });
+      return { refreshLoadMore, refreshHasMore, refresh, ...toRefs(data) };
+    }
+  }
+</script>
+
+<style>
+.infiniteUl {
+  height: 300px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background:#eee
+}
+.infiniteLi {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgba(100, 100, 100, 1);
+  text-align: center;
+}
+</style>
 ```
-```javascript
-setup() {
-    const customHasMore = ref(true);
-    const data = reactive({
-      customList: ['']
-    });
-    const customLoadMore = done => {
-      setTimeout(() => {
-        const curLen = data.customList.length;
-        for (let i = curLen; i < curLen + 10; i++) {
+:::
+### 自定义加载文案
+:::demo
+
+```html
+<template>
+  <ul class="infiniteUl" id="customScroll">
+    <nut-infiniteloading
+      load-txt="loading"
+      load-more-txt="没有啦～"
+      container-id="customScroll"
+      :use-window="false"
+      :has-more="customHasMore"
+      @load-more="customLoadMore"
+    >
+      <li class="infiniteLi" v-for="(item, index) in customList" :key="index">{{ item }}</li>
+    </nut-infiniteloading>
+  </ul>
+</template>
+
+<script>
+  import { ref,reactive,onMounted,toRefs} from 'vue';
+  export default {
+    setup(props) {
+      const customHasMore = ref(true);
+      const data = reactive({
+        customList: ['']
+      });
+      const customLoadMore = done => {
+        setTimeout(() => {
+          const curLen = data.customList.length;
+          for (let i = curLen; i < curLen + 10; i++) {
+            data.customList.push(`${i}`);
+          }
+          if (data.customList.length > 30) customHasMore.value = false;
+          done()
+        }, 500);
+      };
+      const init = () => {
+        for (let i = 0; i < 10; i++) {
           data.customList.push(`${i}`);
         }
-        if (data.customList.length > 30) customHasMore.value = false;
-        done()
-      }, 500);
-    };
-    const init = () => {
-      for (let i = 0; i < 10; i++) {
-        data.customList.push(`${i}`);
       }
+      onMounted(() => {
+        init()
+      });
+      return { customHasMore, customLoadMore,...toRefs(data) };
     }
-    onMounted(() => {
-      init()
-    });
-    return { customHasMore, customLoadMore,...toRefs(data) };
+  }
+</script>
+
+<style>
+.infiniteUl {
+  height: 300px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background:#eee
 }
+.infiniteLi {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgba(100, 100, 100, 1);
+  text-align: center;
+}
+</style>
 ```
+:::
 
 ## API
 
