@@ -75,6 +75,10 @@ export default create({
       type: [Number, String],
       default: 10
     },
+    isAuto: {
+      tyep: Boolean,
+      default: false
+    },
     progressOption: {
       type: Object,
       default: () => {}
