@@ -184,36 +184,36 @@ app.use(Elevator);
         const existAddress = ref([
           {
             id: 1,
-            addressDetail: 'th ',
-            cityName: '石景山区',
-            countyName: '城区',
-            provinceName: '北京',
+            addressDetail: '',
+            cityName: '次渠镇',
+            countyName: '通州区',
+            provinceName: '北京市',
             selectedAddress: true,
-            townName: ''
-          },{
+            townName: '',
+            name: '探探鱼',
+            phone: '182****1718'
+          },
+          {
             id: 2,
-            addressDetail: '12_ ',
-            cityName: '电饭锅',
-            countyName: '扶绥县',
-            provinceName: '北京',
+            addressDetail: '',
+            cityName: '钓鱼岛全区',
+            countyName: '',
+            provinceName: '钓鱼岛',
             selectedAddress: false,
-            townName: ''
-          },{
+            townName: '',
+            name: '探探鱼',
+            phone: '182****1718'
+          },
+          {
             id: 3,
-            addressDetail: '发大水比 ',
-            cityName: '放到',
-            countyName: '广宁街道',
-            provinceName: '钓鱼岛全区',
+            addressDetail: '京东大厦',
+            cityName: '大兴区',
+            countyName: '科创十一街18号院',
+            provinceName: '北京市',
             selectedAddress: false,
-            townName: ''
-          },{
-            id: 4,
-            addressDetail: '还是想吧百度吧 ',
-            cityName: '研发',
-            countyName: '八里庄街道',
-            provinceName: '北京',
-            selectedAddress: false,
-            townName: ''
+            townName: '',
+            name: '探探鱼',
+            phone: '182****1718'
           }
         ]);
 
@@ -274,36 +274,36 @@ app.use(Elevator);
         const existAddress = ref([
           {
             id: 1,
-            addressDetail: 'th ',
-            cityName: '石景山区',
-            countyName: '城区',
-            provinceName: '北京',
+            addressDetail: '',
+            cityName: '次渠镇',
+            countyName: '通州区',
+            provinceName: '北京市',
             selectedAddress: true,
-            townName: ''
-          },{
+            townName: '',
+            name: '探探鱼',
+            phone: '182****1718'
+          },
+          {
             id: 2,
-            addressDetail: '12_ ',
-            cityName: '电饭锅',
-            countyName: '扶绥县',
-            provinceName: '北京',
+            addressDetail: '',
+            cityName: '钓鱼岛全区',
+            countyName: '',
+            provinceName: '钓鱼岛',
             selectedAddress: false,
-            townName: ''
-          },{
+            townName: '',
+            name: '探探鱼',
+            phone: '182****1718'
+          },
+          {
             id: 3,
-            addressDetail: '发大水比 ',
-            cityName: '放到',
-            countyName: '广宁街道',
-            provinceName: '钓鱼岛全区',
+            addressDetail: '京东大厦',
+            cityName: '大兴区',
+            countyName: '科创十一街18号院',
+            provinceName: '北京市',
             selectedAddress: false,
-            townName: ''
-          },{
-            id: 4,
-            addressDetail: '还是想吧百度吧 ',
-            cityName: '研发',
-            countyName: '八里庄街道',
-            provinceName: '北京',
-            selectedAddress: false,
-            townName: ''
+            townName: '',
+            name: '探探鱼',
+            phone: '182****1718'
           }
         ]);
 
@@ -382,39 +382,36 @@ app.use(Elevator);
         const existAddress = ref([
           {
             id: 1,
-            addressDetail: 'th ',
-            cityName: '石景山区',
-            countyName: '城区',
-            provinceName: '北京',
+            addressDetail: '',
+            cityName: '次渠镇',
+            countyName: '通州区',
+            provinceName: '北京市',
             selectedAddress: true,
-            townName: ''
+            townName: '',
+            name: '探探鱼',
+            phone: '182****1718'
           },
           {
             id: 2,
-            addressDetail: '12_ ',
-            cityName: '电饭锅',
-            countyName: '扶绥县',
-            provinceName: '北京',
+            addressDetail: '',
+            cityName: '钓鱼岛全区',
+            countyName: '',
+            provinceName: '钓鱼岛',
             selectedAddress: false,
-            townName: ''
+            townName: '',
+            name: '探探鱼',
+            phone: '182****1718'
           },
           {
             id: 3,
-            addressDetail: '发大水比 ',
-            cityName: '放到',
-            countyName: '广宁街道',
-            provinceName: '钓鱼岛全区',
+            addressDetail: '京东大厦',
+            cityName: '大兴区',
+            countyName: '科创十一街18号院',
+            provinceName: '北京市',
             selectedAddress: false,
-            townName: ''
-          },
-          {
-            id: 4,
-            addressDetail: '还是想吧百度吧 ',
-            cityName: '研发',
-            countyName: '八里庄街道',
-            provinceName: '北京',
-            selectedAddress: false,
-            townName: ''
+            townName: '',
+            name: '探探鱼',
+            phone: '182****1718'
           }
         ]);
         const backBtnIcon = ref('left')
