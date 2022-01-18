@@ -1,4 +1,4 @@
-# Form 表单组件
+# Form 表单
 
 ### 介绍
 
@@ -24,56 +24,138 @@ app.use(CellGroup);
 
 ### 基础用法
 
-``` html
-<nut-form>
-    <nut-form-item label="姓名">
-        <input class="nut-input-text" placeholder="请输入姓名" type="text" />
-    </nut-form-item>
-    <nut-form-item label="年龄">
-        <input class="nut-input-text" placeholder="请输入年龄" type="text" />
-    </nut-form-item>
-    <nut-form-item label="联系电话">
-        <input class="nut-input-text" placeholder="请输入联系电话" type="text" />
-    </nut-form-item>
-    <nut-form-item label="地址">
-        <input class="nut-input-text" placeholder="请输入地址" type="text" />
-    </nut-form-item>
-    <nut-form-item label="备注">
-        <nut-textarea  placeholder="请输入备注" type="text" />
-    </nut-form-item>
-</nut-form>
+:::demo
+
+```html
+<template>
+  <nut-form>
+      <nut-form-item label="姓名">
+          <input class="nut-input-text" placeholder="请输入姓名" type="text" />
+      </nut-form-item>
+      <nut-form-item label="年龄">
+          <input class="nut-input-text" placeholder="请输入年龄" type="text" />
+      </nut-form-item>
+      <nut-form-item label="联系电话">
+          <input class="nut-input-text" placeholder="请输入联系电话" type="text" />
+      </nut-form-item>
+      <nut-form-item label="地址">
+          <input class="nut-input-text" placeholder="请输入地址" type="text" />
+      </nut-form-item>
+      <nut-form-item label="备注">
+          <nut-textarea  placeholder="请输入备注" type="text" />
+      </nut-form-item>
+  </nut-form>
+</template>
 ```
+:::
+
+
+### 动态表单
+
+:::demo
+
+```html
+<template>
+  <nut-form :model-value="dynamicForm.state" ref="dynamicRefForm">
+    <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
+      <input class="nut-input-text" v-model="dynamicForm.state.name" placeholder="请输入姓名" type="text" />
+    </nut-form-item>
+    <nut-form-item :label="'联系方式'+index" :prop="'tels.' + index + '.value'" required
+      :rules="[{ required: true, message: '请填写联系方式'+index }]" :key="item.key"
+      v-for="(item,index) in dynamicForm.state.tels">
+      <input class="nut-input-text" v-model="item.value" :placeholder="'请输入联系方式'+index" type="text" />
+    </nut-form-item>
+    <nut-cell>
+      <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.add">添加</nut-button>
+      <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.remove">删除</nut-button>
+      <nut-button type="primary" size="small" @click="dynamicForm.methods.submit">提交</nut-button>
+    </nut-cell>
+  </nut-form>
+</template>
+<script lang="ts">
+import { ref,reactive } from 'vue';
+export default {
+  setup(){
+    const dynamicRefForm = ref<any>(null);
+    const dynamicForm = {
+      state: reactive({
+        name: '',
+        tels: new Array({
+          key: 1,
+          value: ''
+        })
+      }),
+
+      methods: {
+        submit() {
+          dynamicRefForm.value.validate().then(({ valid, errors }: any) => {
+            if (valid) {
+              console.log('success', dynamicForm);
+            } else {
+              console.log('error submit!!', errors);
+            }
+          });
+        },
+        remove() {
+          dynamicForm.state.tels.splice(dynamicForm.state.tels.length - 1, 1);
+        },
+        add() {
+          let newIndex = dynamicForm.state.tels.length;
+          dynamicForm.state.tels.push({
+            key: Date.now(),
+            value: ''
+          });
+        }
+      }
+    };
+    return {
+      dynamicForm,
+      dynamicRefForm
+    };
+  }
+}
+</script>
+```
+
+:::
+
 
 ### 表单校验
 
-``` html
+:::demo
+
+```html
+<template>
 <nut-form :model-value="formData" ref="ruleForm">
-    <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
-        <input class="nut-input-text" v-model="formData.name" placeholder="请输入姓名" type="text" />
-    </nut-form-item>
-    <nut-form-item label="年龄" prop="age" required :rules="[
-        { required: true, message: '请填写年龄' },
-        { validator: customValidator, message: '必须输入数字' },
-        { regex: /^(\d{1,2}|1\d{2}|200)$/, message: '必须输入0-200区间' }
+  <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
+    <input class="nut-input-text" @blur="customBlurValidate('name')" v-model="formData.name"
+      placeholder="请输入姓名，blur 事件校验" type="text" />
+  </nut-form-item>
+  <nut-form-item label="年龄" prop="age" required :rules="[
+      { required: true, message: '请填写年龄' },
+      { validator: customValidator, message: '必须输入数字' },
+      { regex: /^(\d{1,2}|1\d{2}|200)$/, message: '必须输入0-200区间' }
     ]">
-        <input class="nut-input-text" v-model="formData.age" placeholder="请输入年龄，必须数字且0-200区间" type="text" />
-    </nut-form-item>
-    <nut-form-item label="联系电话" prop="tel" required :rules="[
-        { required: true, message: '请填写联系电话' },
-        { validator: asyncValidator, message: '电话格式不正确' }
+    <input class="nut-input-text" v-model="formData.age" placeholder="请输入年龄，必须数字且0-200区间" type="text" />
+  </nut-form-item>
+  <nut-form-item label="联系电话" prop="tel" required :rules="[
+      { required: true, message: '请填写联系电话' },
+      { validator: asyncValidator, message: '电话格式不正确' }
     ]">
-        <input class="nut-input-text" v-model="formData.tel" placeholder="请输入联系电话，异步校验电话格式" type="text" />
-    </nut-form-item>
-    <nut-form-item label="地址" prop="address" required :rules="[{ required: true, message: '请填写地址' }]">
-        <input class="nut-input-text" v-model="formData.address" placeholder="请输入地址" type="text" />
-    </nut-form-item>
-    <nut-cell>
-        <nut-button type="primary" size="small" style="margin-right: 10px" @click="submit">提交</nut-button>
-        <nut-button size="small" @click="reset">重置提示状态</nut-button>
-    </nut-cell>
+    <input class="nut-input-text" v-model="formData.tel" placeholder="请输入联系电话，异步校验电话格式" type="text" />
+  </nut-form-item>
+  <nut-form-item label="地址" prop="address" required :rules="[{ required: true, message: '请填写地址' }]">
+    <input class="nut-input-text" v-model="formData.address" placeholder="请输入地址" type="text" />
+  </nut-form-item>
+  <nut-cell>
+    <nut-button type="primary" size="small" style="margin-right: 10px" @click="submit">提交</nut-button>
+    <nut-button size="small" @click="reset">重置提示状态</nut-button>
+  </nut-cell>
 </nut-form>
-```
-``` javascript
+</template>
+<script lang="ts">
+import { ref,reactive } from 'vue';
+export default {
 setup(){
     const formData = reactive({
         name: '',
@@ -98,6 +180,16 @@ setup(){
     const reset = () => {
       ruleForm.value.reset();
     };
+    // 失去焦点校验
+    const customBlurValidate = (prop: string) => {
+      ruleForm.value.validate(prop).then(({ valid, errors }: any) => {
+        if (valid) {
+          console.log('success', formData);
+        } else {
+          console.log('error submit!!', errors);
+        }
+      });
+    };
     // 函数校验
     const customValidator = (val: string) => /^\d+$/.test(val);
     // Promise 异步校验
@@ -110,13 +202,20 @@ setup(){
         }, 1000);
       });
     };
-    return { ruleForm, formData, validate, customValidator, asyncValidator, submit, reset, formData2, addressModule };
+    return { ruleForm, formData, validate, customValidator, asyncValidator, customBlurValidate, submit, reset };
 }
+}
+</script>
 ```
+:::
 
 
 ### 表单类型
-``` html
+
+:::demo
+
+```html
+<template>
 <nut-form>
     <nut-form-item label="开关">
         <nut-switch v-model="formData2.switch"></nut-switch>
@@ -153,8 +252,10 @@ setup(){
             @change="addressModule.methods.onChange" custom-address-title="请选择所在地区"></nut-address>
     </nut-form-item>
 </nut-form>
-```
-``` javascript
+</template>
+<script lang="ts">
+import { ref,reactive } from 'vue';
+export default {
 setup(){
     const formData2 = reactive({
       switch: false,
@@ -222,8 +323,9 @@ setup(){
     });
     return { formData2, addressModule };
 }
+}
 ```
-
+:::
 
 
 ### Form Props
@@ -240,15 +342,16 @@ setup(){
 
 ### FormItem Props
 
-| 参数                | 说明                                             | 类型             | 默认值  |
-|---------------------|--------------------------------------------------|------------------|---------|
-| required            | 是否显示必填字段的标签旁边的红色星号             | boolean          | `false` |
-| label-width         | 表单项 label 宽度，默认单位为`px`                | number \| string | `90px`  |
-| label-align         | 表单项 label 对齐方式，可选值为 `center` `right` | string           | `left`  |
-| body-align          | 输入框对齐方式，可选值为 `center` `right`        | string           | `left`  |
-| error-message-align | 错误提示文案对齐方式，可选值为 `center` `right`  | string           | `left`  |
-| show-error-line     | 是否在校验不通过时标红输入框                     | boolean          | `true`  |
-| show-error-message  | 是否在校验不通过时在输入框下方展示错误提示       | boolean          | `true`  |
+| 参数                | 说明                                                             | 类型             | 默认值  |
+|---------------------|------------------------------------------------------------------|------------------|---------|
+| required            | 是否显示必填字段的标签旁边的红色星号                             | boolean          | `false` |
+| prop                | 表单域 v-model 字段， 在使用表单校验功能的情况下，该属性是必填的 | string           | -       |
+| label-width         | 表单项 label 宽度，默认单位为`px`                                | number \| string | `90px`  |
+| label-align         | 表单项 label 对齐方式，可选值为 `center` `right`                 | string           | `left`  |
+| body-align          | 输入框对齐方式，可选值为 `center` `right`                        | string           | `left`  |
+| error-message-align | 错误提示文案对齐方式，可选值为 `center` `right`                  | string           | `left`  |
+| show-error-line     | 是否在校验不通过时标红输入框                                     | boolean          | `true`  |
+| show-error-message  | 是否在校验不通过时在输入框下方展示错误提示                       | boolean          | `true`  |
 
 ### FormItem Rule 数据结构
 
@@ -265,7 +368,8 @@ setup(){
 
 通过 [ref](https://v3.cn.vuejs.org/api/special-attributes.html#ref) 可以获取到 Form 实例并调用实例方法
 
-| 方法名 | 说明                   | 参数 | 返回值  |
-|--------|------------------------|------|---------|
-| submit | 提交表单进行校验的方法 | -    | Promise |
-| reset  | 清空校验结果           | -    | -       |
+| 方法名            | 说明                                                               | 参数                | 返回值  |
+|-------------------|--------------------------------------------------------------------|---------------------|---------|
+| submit            | 提交表单进行校验的方法                                             | -                   | Promise |
+| reset             | 清空校验结果                                                       | -                   | -       |
+| validate`v3.1.13` | 用户主动触发校验，用于用户自定义场景时触发，例如 blur、change 事件 | 同 FormItem prop 值 | -       |

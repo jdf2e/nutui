@@ -1,0 +1,57 @@
+.skeleton {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+  .content {
+    display: flex;
+    .avatarClass {
+      margin-right: 20px;
+      background: rgb(239, 239, 239);
+    }
+
+    .blockClass,
+    .blockClass--round {
+      width: 100%;
+      height: 100%;
+      background: rgb(239, 239, 239);
+      margin-top: 10px;
+      &:last-child {
+        width: 70% !important;
+      }
+    }
+    .blockClass--round {
+      border-radius: 10px;
+    }
+
+    .content-line {
+      display: flex;
+      flex-direction: column;
+      .title {
+        width: 30%;
+        height: 15px;
+        background: #efefef;
+      }
+    }
+  }
+
+  .skeleton-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%);
+    background-repeat: no-repeat;
+    animation: backpos 2s ease-in-out 0s infinite;
+  }
+  @keyframes backpos {
+    0% {
+      background-position-x: -500px;
+    }
+    to {
+      background-position-x: calc(500px + 100%);
+    }
+  }
+}

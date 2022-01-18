@@ -5,6 +5,7 @@ import Markdown from 'vite-plugin-md';
 import path from 'path';
 import config from './package.json';
 const hljs = require('highlight.js'); // https://highlightjs.org/
+import { compressText } from './src/sites/doc/components/demo-block/basedUtil';
 const resolve = path.resolve;
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -56,6 +57,25 @@ export default defineConfig({
 
           return ''; // 使用额外的默认转义
         }
+      },
+      markdownItSetup(md) {
+        md.use(require('markdown-it-container'), 'demo', {
+          validate: function (params) {
+            return params.match(/^demo\s*(.*)$/);
+          },
+
+          render: function (tokens, idx) {
+            const m = tokens[idx].info.trim().match(/^demo\s*(.*)$/);
+            if (tokens[idx].nesting === 1) {
+              // opening tag
+              const contentHtml = compressText(tokens[idx + 1].content);
+              return `<demo-block data-type="vue" data-value="${contentHtml}">` + md.utils.escapeHtml(m[1]) + '\n';
+            } else {
+              // closing tag
+              return '</demo-block>\n';
+            }
+          }
+        });
       }
     })
     // legacy({
@@ -65,17 +85,17 @@ export default defineConfig({
   build: {
     target: 'es2015',
     outDir: './dist/3x/',
-    assetsDir: config.version,
+    // assetsDir: config.version,
     cssCodeSplit: true,
     rollupOptions: {
       input: {
-        doc: resolve(__dirname, 'index.html'),
+        // doc: resolve(__dirname, 'index.html'),
         mobile: resolve(__dirname, 'demo.html')
       },
       output: {
-        entryFileNames: `${config.version}/[name].js`,
-        chunkFileNames: `${config.version}/[name].js`,
-        assetFileNames: `${config.version}/[name].[ext]`
+        entryFileNames: `demo-${config.version}/[name].js`,
+        chunkFileNames: `demo-${config.version}/[name].js`,
+        assetFileNames: `demo-${config.version}/[name].[ext]`
       }
     }
   }

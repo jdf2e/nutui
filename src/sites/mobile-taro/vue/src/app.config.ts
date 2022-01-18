@@ -15,6 +15,7 @@ export default {
         'pages/dialog/index',
         'pages/toast/index',
         'pages/notify/index',
+        'pages/empty/index',
         'pages/noticebar/index',
         'pages/range/index',
         'pages/popup/index',
@@ -49,7 +50,10 @@ export default {
         'pages/fixednav/index',
         'pages/elevator/index',
         'pages/menu/index',
-        'pages/pagination/index'
+        'pages/pagination/index',
+        'pages/indicator/index',
+        'pages/grid/index',
+        'pages/sidenavbar/index'
       ]
     },
     {
@@ -72,7 +76,9 @@ export default {
         'pages/numberkeyboard/index',
         'pages/badge/index',
         'pages/tag/index',
-        'pages/popover/index'
+        'pages/popover/index',
+        'pages/skeleton/index',
+        'pages/cascader/index'
       ]
     },
     {
@@ -83,7 +89,8 @@ export default {
         'pages/barrage/index',
         'pages/timeselect/index',
         'pages/sku/index',
-        'pages/card/index'
+        'pages/card/index',
+        'pages/table/index'
       ]
     }
   ],

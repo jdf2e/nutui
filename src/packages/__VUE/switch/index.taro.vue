@@ -19,7 +19,7 @@ const { componentName, create } = createComponent('switch');
 export default create({
   props: {
     modelValue: {
-      type: Boolean,
+      type: [String, Number, Boolean],
       default: false
     },
     disable: {
@@ -42,6 +42,14 @@ export default create({
       type: String,
       default: ''
     },
+    activeValue: {
+      type: [String, Number, Boolean],
+      default: true
+    },
+    inactiveValue: {
+      type: [String, Number, Boolean],
+      default: false
+    },
     loading: {
       type: Boolean,
       default: false
@@ -59,13 +67,14 @@ export default create({
       default: ''
     }
   },
-  emits: ['change', 'update:modelValue'],
+  emits: ['change', 'update:modelValue', 'update:loading'],
   setup(props, { emit }) {
+    const isActive = computed(() => props.modelValue === props.activeValue);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [props.modelValue ? 'switch-open' : 'switch-close']: true,
+        [isActive.value ? 'switch-open' : 'switch-close']: true,
         [`${prefixCls}-disable`]: props.disable,
         [`${prefixCls}-base`]: true
       };
@@ -73,15 +82,16 @@ export default create({
 
     const style = computed(() => {
       return {
-        backgroundColor: props.modelValue ? props.activeColor : props.inactiveColor
+        backgroundColor: isActive.value ? props.activeColor : props.inactiveColor
       };
     });
 
     const onClick = (event: Event) => {
       if (props.disable || props.loading) return;
-      emit('update:modelValue', !props.modelValue);
+      const value = isActive.value ? props.inactiveValue : props.activeValue;
+      emit('update:modelValue', value);
       emit('update:loading');
-      emit('change', !props.modelValue, event);
+      emit('change', value, event);
     };
 
     return {
