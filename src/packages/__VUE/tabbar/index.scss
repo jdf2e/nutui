@@ -4,7 +4,7 @@
   border-top: 1px solid $tabbar-border-color;
   width: 100%;
   display: flex;
-  height: 50px;
+  padding: 7px 0;
   box-sizing: border-box;
   background: $white;
 
@@ -16,5 +16,9 @@
     bottom: 0px;
     left: 0px;
     z-index: 888;
+  }
+  &-safebottom {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
