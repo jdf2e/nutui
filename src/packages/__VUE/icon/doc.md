@@ -24,31 +24,70 @@ app.use(Icon);
 
 `Icon` 的 `name` 属性支持传入图标名称或图片链接。
 
+:::demo
 ```html
-<nut-icon name="dongdong"></nut-icon>
-<nut-icon name="JD"></nut-icon>
-<nut-icon size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"></nut-icon>
+<template>
+  <nut-icon name="dongdong"></nut-icon>
+  <nut-icon name="JD"></nut-icon>
+  <nut-icon size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"></nut-icon>
+</template>
 ```
+:::
 
 ### 图标颜色
 
 `Icon` 的 `color` 属性用来设置图标的颜色。
 
+:::demo
 ```html
-<nut-icon name="dongdong" color="#fa2c19"></nut-icon>
-<nut-icon name="dongdong" color="#64b578"></nut-icon>
-<nut-icon name="JD" color="#fa2c19"></nut-icon>
+<template>
+  <nut-icon name="dongdong" color="#fa2c19"></nut-icon>
+  <nut-icon name="dongdong" color="#64b578"></nut-icon>
+  <nut-icon name="JD" color="#fa2c19"></nut-icon>
+</template>
 ```
+:::
 
 ### 图标大小
 
 `Icon` 的 `size` 属性用来设置图标的尺寸大小，默认单位为 `px`。
 
+:::demo
 ```html
-<nut-icon name="dongdong"></nut-icon>
-<nut-icon name="dongdong" size="24"></nut-icon>
-<nut-icon name="dongdong" size="16"></nut-icon>
+<template>
+  <nut-icon name="dongdong"></nut-icon>
+  <nut-icon name="dongdong" size="24"></nut-icon>
+  <nut-icon name="dongdong" size="16"></nut-icon>
+</template>
 ```
+:::
+### 通用动态图标
+
+添加指定的 class 类就可以实现图片动态效果
+
+:::demo
+```html
+<template>
+  <nut-icon name="dou-arrow-up" class="nut-icon-am-jump"></nut-icon>
+  <nut-icon name="star-fill-n" class="nut-icon-am-blink"></nut-icon>
+  <nut-icon name="refresh2" class="nut-icon-am-rotate"></nut-icon>
+</template>
+```
+:::
+
+### 动态图标
+
+与基础图标的使用方式一致，通过 `Icon` 的 `name` 属性传入图标名称
+
+:::demo
+```html
+<template>
+  <nut-icon name="am-loading1" ></nut-icon>
+  <nut-icon name="am-loading2"></nut-icon>
+  <nut-icon name="am-loading7"></nut-icon>
+</template>
+```
+:::
 
 ### 自定义图标
 

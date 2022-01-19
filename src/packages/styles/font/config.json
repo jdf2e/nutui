@@ -117,5 +117,47 @@
         "loading1"
       ]
     }
+    
+  ],
+  "style":[
+    {
+      "name": "通用动态样式",
+      "icons": [{
+        "name":"locationg3",
+        "am":"am-jump"
+      },{
+        "name":"star-fill-n",
+        "am":"am-blink"
+      },{
+        "name":"refresh2",
+        "am":"am-rotate"
+      }
+      ]
+    }
+  ],
+  "animate":[
+    {
+      "name": "动态图标",
+      "icons": [{
+        "name":"am-loading1"
+      },{
+        "name":"am-loading2"
+      },{
+        "name":"am-loading3"
+      },{
+        "name":"am-loading4"
+      },{
+        "name":"am-loading5"
+      },{
+        "name":"am-loading6"
+      },{
+        "name":"am-loading7"
+      },{
+        "name":"am-loading8"
+      },{
+        "name":"am-loading9"
+      }
+      ]
+    }
   ]
 }
