@@ -64,13 +64,14 @@
     }
   },
   "dependencies": {
+    "@tarojs/cli": "^3.4.0",
     "sass": "~1.32.0",
     "vue-router": "^4.0.11"
   },
   "devDependencies": {
     "@commitlint/cli": "^10.0.0",
     "@commitlint/config-conventional": "^10.0.0",
-    "@tarojs/taro": "^3.3.0-alpha.8",
+    "@tarojs/taro": "^3.4.0",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.31",
     "@typescript-eslint/eslint-plugin": "^4.20.0",
