@@ -15,10 +15,7 @@ import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('datepicker');
 const currentYear = new Date().getFullYear();
 function isDate(val: Date): val is Date {
-  return (
-    Object.prototype.toString.call(val) === '[object Date]' &&
-    !isNaN(val.getTime())
-  );
+  return Object.prototype.toString.call(val) === '[object Date]' && !isNaN(val.getTime());
 }
 
 const zhCNType = {
@@ -126,11 +123,11 @@ export default create({
     };
 
     const ranges = computed(() => {
-      const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } =
-        getBoundary('max', state.currentDate);
+      console.log('sss');
 
-      const { minYear, minDate, minMonth, minHour, minMinute, minSeconds } =
-        getBoundary('min', state.currentDate);
+      const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } = getBoundary('max', state.currentDate);
+
+      const { minYear, minDate, minMonth, minHour, minMinute, minSeconds } = getBoundary('min', state.currentDate);
 
       let result = [
         {
@@ -195,10 +192,7 @@ export default create({
             new Date(
               formatDate[0],
               formatDate[1] - 1,
-              Math.min(
-                formatDate[2],
-                getMonthEndDay(formatDate[0], formatDate[1])
-              )
+              Math.min(formatDate[2], getMonthEndDay(formatDate[0], formatDate[1]))
             )
           );
         } else if (props.type === 'datetime') {
@@ -206,10 +200,7 @@ export default create({
             new Date(
               formatDate[0],
               formatDate[1] - 1,
-              Math.min(
-                formatDate[2],
-                getMonthEndDay(formatDate[0], formatDate[1])
-              ),
+              Math.min(formatDate[2], getMonthEndDay(formatDate[0], formatDate[1])),
               formatDate[3],
               formatDate[4]
             )
@@ -218,13 +209,8 @@ export default create({
       }
     };
 
-    const generateValue = (
-      min: number,
-      max: number,
-      val: number,
-      type: string
-    ) => {
-      if (!(max > min)) return;
+    const generateValue = (min: number, max: number, val: number, type: string) => {
+      // if (!(max > min)) return;
       const arr: Array<number | string> = [];
       let index = 0;
       while (min <= max) {
@@ -266,13 +252,9 @@ export default create({
     };
 
     const columns = computed(() => {
+      console.log(ranges.value);
       const val = ranges.value.map((res) => {
-        return generateValue(
-          res.range[0],
-          res.range[1],
-          getDateIndex(res.type),
-          res.type
-        );
+        return generateValue(res.range[0], res.range[1], getDateIndex(res.type), res.type);
       });
       return val;
     });
