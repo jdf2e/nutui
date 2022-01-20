@@ -9,41 +9,45 @@
 ```javascript
 import { createApp } from 'vue';
 // vue
-import { Calendar,Popup } from '@nutui/nutui';
+import { Calendar,Popup,Cell } from '@nutui/nutui';
 // taro
-import { Calendar,Popup } from '@nutui/nutui-taro';
+import { Calendar,Popup,Cell } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Calendar);
 app.use(Popup);
+app.use(Cell);
+
 ```
 
 ## 代码演示
 
 ### 基础用法
-
+:::demo
 ```html
-<nut-cell
-  :showIcon="true"
-  title="选择单个日期"
-  :desc="date ? `${date} ${dateWeek}` : '请选择'"
-  @click="openSwitch('isVisible')"
->
-</nut-cell>
-<nut-calendar
-  v-model:visible="isVisible"
-  :default-value="date"
-  @close="closeSwitch('isVisible')"
-  @choose="setChooseValue"
-  :start-date="`2019-10-11`"
-  :end-date="`2022-11-11`"
->
-</nut-calendar>
-```
-
-```javascript
-setup() {
-    const state: TestCalendarState = reactive({
+<template>
+  <nut-cell
+    :showIcon="true"
+    title="选择单个日期"
+    :desc="date ? `${date} ${dateWeek}` : '请选择'"
+    @click="openSwitch('isVisible')"
+  >
+  </nut-cell>
+  <nut-calendar
+    v-model:visible="isVisible"
+    :default-value="date"
+    @close="closeSwitch('isVisible')"
+    @choose="setChooseValue"
+    :start-date="`2019-10-11`"
+    :end-date="`2022-11-11`"
+  >
+  </nut-calendar>
+</template>
+<script lang="ts">
+import { reactive, toRefs } from 'vue';
+export default {
+  setup() {
+    const state = reactive({
       isVisible: false,
       date: '',
       dateWeek: ''
@@ -65,35 +69,39 @@ setup() {
       setChooseValue
     };
   }
+};
+</script>
 ```
-
+:::
 ### 区间选择
-
+:::demo
 ```html
-<nut-cell
-  :showIcon="true"
-  title="选择日期区间"
-  :desc="date ? `${date[0]}至${date[1]}` : '请选择'"
-  @click="openSwitch('isVisible')"
->
-</nut-cell>
-<nut-calendar
-  v-model:visible="isVisible"
-  :default-value="date"
-  type="range"
-  :start-date="`2019-12-22`"
-  :end-date="`2021-01-08`"
-  @close="closeSwitch('isVisible')"
-  @choose="setChooseValue"
->
-</nut-calendar>
-```
-
-```javascript
-setup() {
-    const state: TestCalendarState = reactive({
+<template>
+  <nut-cell
+    :showIcon="true"
+    title="选择日期区间"
+    :desc="date ? `${date[0]}至${date[1]}` : '请选择'"
+    @click="openSwitch('isVisible')"
+  >
+  </nut-cell>
+  <nut-calendar
+    v-model:visible="isVisible"
+    :default-value="date"
+    type="range"
+    :start-date="`2019-12-22`"
+    :end-date="`2021-01-08`"
+    @close="closeSwitch('isVisible')"
+    @choose="setChooseValue"
+  >
+  </nut-calendar>
+</template>
+<script lang="ts">
+import { reactive, toRefs } from 'vue';
+export default {
+  setup() {
+    const state = reactive({
       date: ['2019-12-23', '2019-12-26'],
-      isVisible2: true
+      isVisible: false
     });
     const openSwitch = param => {
       state[`${param}`] = true;
@@ -110,33 +118,37 @@ setup() {
       closeSwitch,
       setChooseValue,
     };
-  }
+  }  
+};
+</script>
 ```
-
+:::
 ### 自定义日历-自动回填
-
+:::demo
 ```html
-<nut-cell
-  :showIcon="true"
-  title="选择日期"
-  :desc="date ? date : '请选择'"
-  @click="openSwitch('isVisible')"
->
-</nut-cell>
-<nut-calendar
-  v-model:visible="isVisible"
-  @close="closeSwitch('isVisible')"
-  @choose="setChooseValue"
-  :start-date="null"
-  :end-date="null"
-  :is-auto-back-fill="true"
->
-</nut-calendar>
-```
-
-```javascript
-setup() {
-    const state: TestCalendarState = reactive({
+<template>
+  <nut-cell
+    :showIcon="true"
+    title="选择日期"
+    :desc="date ? date : '请选择'"
+    @click="openSwitch('isVisible')"
+  >
+  </nut-cell>
+  <nut-calendar
+    v-model:visible="isVisible"
+    @close="closeSwitch('isVisible')"
+    @choose="setChooseValue"
+    :start-date="null"
+    :end-date="null"
+    :is-auto-back-fill="true"
+  >
+  </nut-calendar>
+</template>
+<script lang="ts">
+import { reactive, toRefs } from 'vue';
+export default {
+  setup() {
+    const state = reactive({
       date: '',
       isVisible: false
     });
@@ -151,29 +163,35 @@ setup() {
     };
     return {
       ...toRefs(state),
-      setChooseValue
+      setChooseValue,
+      openSwitch,
+      closeSwitch
     };
   }
+}
+</script>
 ```
-
+:::
 ### 平铺展示
-
+:::demo
 ```html
-<div class="test-calendar-wrapper">
-  <nut-calendar
-    :poppable="false"
-    :is-auto-back-fill="true"
-    :default-value="date"
-    @choose="setChooseValue"
-  >
-  </nut-calendar
-></div>
-```
-
-```javascript
-setup() {
-    const state: TestCalendarState = reactive({
-      date: '2020-07-08'
+<template>
+  <div class="test-calendar-wrapper">
+    <nut-calendar
+        :poppable="false"
+        :default-value="date"
+        :is-auto-back-fill="true"
+        @choose="setChooseValue"
+    >
+    </nut-calendar>
+  </div>
+</template>
+<script lang="ts">
+import { reactive, toRefs } from 'vue';
+export default {
+  setup() {
+    const state = reactive({
+      date: '2022-07-08'
     });
     const setChooseValue = param => {
       state.date = param[3];
@@ -183,16 +201,11 @@ setup() {
       setChooseValue
     };
   }
+}
+</script>
 ```
+:::
 
-### 基础用法
-
-```html
-
-```
-
-```javascript
-```
 
 ## API
 

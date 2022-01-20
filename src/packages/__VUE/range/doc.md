@@ -9,44 +9,57 @@
 ```javascript
 import { createApp } from 'vue';
 //vue
-import { Range } from '@nutui/nutui';
+import { Range, Cell } from '@nutui/nutui';
 //taro
-import { Range } from '@nutui/nutui-taro';
+import { Range, Cell} from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Range);
+app.use(Cell);
 ```
 
 ## 代码演示
 
 ### 基础用法
-```html
-<nut-range v-model="value" @change="onChange"></nut-range>
-```
-```javascript
-import { ref } from 'vue';
-import { Toast } from '@nutui/nutui';
+:::demo
 
-export default {
-  setup() {
-    const value = ref(40);
-    const onChange = (value) => Toast.text('当前值：' + value);
-    return {
-      value,
-      onChange,
-    };
-  },
-};
+```html
+<template>
+  <nut-cell :style="{padding: '40px 18px'}">
+    <nut-range v-model="value" @change="onChange"></nut-range>
+  </nut-cell>
+</template>
+
+<script lang="ts">
+  import { ref } from 'vue';
+  import { Toast } from '@nutui/nutui';
+  export default {
+    setup() {
+      const value = ref(40);
+      const onChange = (value) => Toast.text('当前值：' + value);
+      return {
+        value,
+        onChange,
+      };
+    },
+  };
+</script>
+
 ```
+:::
 
 ### 双滑块
+:::demo
 ```html
-<nut-range range v-model="value" @change="onChange"></nut-range>
-```
-```javascript
+<template>
+  <nut-cell :style="{padding: '40px 18px'}">
+    <nut-range range v-model="value" @change="onChange"></nut-range>
+  </nut-cell>
+</template>
+
+<script lang="ts">
 import { ref } from 'vue';
 import { Toast } from '@nutui/nutui';
-
 export default {
   setup() {
     const value = ref([20, 80]);
@@ -57,51 +70,175 @@ export default {
     };
   },
 };
+</script>
 ```
-
+:::
 ### 指定范围
+:::demo
 ```html
-<nut-range v-model="value" :max="10" :min="-10" @change="onChange"></nut-range>
-```
+<template>
+  <nut-cell :style="{padding: '40px 18px'}">
+    <nut-range v-model="value" :max="10" :min="-10" @change="onChange" />
+  </nut-cell>
+</template>
 
+<script lang="ts">
+import { ref } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+    const value = ref(0);
+    const onChange = (value) => Toast.text('当前值：' + value);
+    return {
+      value,
+      onChange,
+    };
+  },
+};
+</script>
+```
+:::
 ### 设置步长
+:::demo
 ```html
-<nut-range v-model="value" :step="5" @change="onChange"></nut-range>
-```
-### 隐藏范围
-```html
-<nut-range v-model="value" hidden-range @change="onChange"></nut-range>
-```
+<template>
+  <nut-cell :style="{padding: '40px 18px'}">
+    <nut-range v-model="value" :step="5" @change="onChange"></nut-range>
+  </nut-cell>
+</template>
 
-### 隐藏标签
-```html
-<nut-range v-model="value" hidden-tag @change="onChange"></nut-range>
+<script lang="ts">
+import { ref } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+    const value = ref(20);
+    const onChange = (value) => Toast.text('当前值：' + value);
+    return {
+      value,
+      onChange,
+    };
+  },
+};
+</script>
 ```
+:::
+### 隐藏范围
+:::demo
+```html
+<template>
+  <nut-cell :style="{padding: '40px 18px'}">
+    <nut-range v-model="value" hidden-range @change="onChange"></nut-range>
+  </nut-cell>
+</template>
+
+<script lang="ts">
+import { ref } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+    const value = ref(30);
+    const onChange = (value) => Toast.text('当前值：' + value);
+    return {
+      value,
+      onChange,
+    };
+  },
+};
+</script>
+```
+:::
+### 隐藏标签
+:::demo
+```html
+<template>
+  <nut-cell :style="{padding: '40px 18px'}">
+    <nut-range v-model="value" :hidden-tag="true" @change="onChange"></nut-range>
+  </nut-cell>
+</template>
+
+<script lang="ts">
+import { ref } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+    const value = ref(40);
+    const onChange = (value) => Toast.text('当前值：' + value);
+    return {
+      value,
+      onChange,
+    };
+  },
+};
+</script>
+```
+:::
 
 ### 禁用
+:::demo
 ```html
-<nut-range v-model="value" disabled @change="onChange"></nut-range>
-```
+<template>
+  <nut-cell :style="{padding: '40px 18px'}">
+    <nut-range v-model="value" disabled @change="onChange"></nut-range>
+  </nut-cell>
+</template>
 
-### 自定义样式
-```html
-<nut-range
-  v-model="value"
-  inactive-color="rgba(163,184,255,1)"
-  button-color="rgba(52,96,250,1)"
-  active-color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%"
-  @change="onChange">
-</nut-range>
+<script lang="ts">
+import { ref } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+    const value = ref(50);
+    const onChange = (value) => Toast.text('当前值：' + value);
+    return {
+      value,
+      onChange,
+    };
+  },
+};
+</script>
 ```
+:::
+### 自定义样式
+:::demo
+```html
+<template>
+  <nut-cell :style="{padding: '40px 18px'}">
+    <nut-range
+      v-model="value"
+      inactive-color="rgba(163,184,255,1)"
+      button-color="rgba(52,96,250,1)"
+      active-color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%"
+      @change="onChange">
+    </nut-range>
+  </nut-cell>
+</template>
+
+<script lang="ts">
+import { ref } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+    const value = ref(40);
+    const onChange = (value) => Toast.text('当前值：' + value);
+    return {
+      value,
+      onChange,
+    };
+  },
+};
+</script>
+```
+:::
 
 ### 自定义按钮
 ```html
-<nut-range v-model="value" @change="onChange">
-  <template #button>
-    <div class="custom-button">{{ value }}</div>
-  </template>
-</nut-range>
 
+
+
+```
+:::demo
+```html
 <style>
   .custom-button {
     width: 26px;
@@ -113,8 +250,32 @@ export default {
     border-radius: 100px;
   }
 </style>
-```
+<template>
+  <nut-cell :style="{padding: '40px 18px'}">
+   <nut-range v-model="value" @change="onChange">
+      <template #button>
+        <div class="custom-button">{{ value }}</div>
+      </template>
+    </nut-range>
+  </nut-cell>
+</template>
 
+<script lang="ts">
+import { ref } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+    const value = ref(60);
+    const onChange = (value) => Toast.text('当前值：' + value);
+    return {
+      value,
+      onChange,
+    };
+  },
+};
+</script>
+```
+:::
   ## API
   
   ### Props
