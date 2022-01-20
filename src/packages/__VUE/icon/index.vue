@@ -1,10 +1,14 @@
 <script lang="ts">
-import { h, PropType } from 'vue';
+import { h, PropType, ref } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('icon');
 import { pxCheck } from '../../utils/pxCheck';
+import IconAm from './iconAm/index.vue';
 
 export default create({
+  components: {
+    [IconAm.name]: IconAm
+  },
   props: {
     name: { type: String, default: '' },
     size: { type: [String, Number], default: '' },
@@ -24,7 +28,11 @@ export default create({
       return props.name ? props.name.indexOf('/') !== -1 : false;
     };
 
-    return () => {
+    const isAmIcon = () => {
+      return props.name ? props.name.indexOf('am-') !== -1 : true;
+    };
+
+    const renderIcon = () => {
       const _isImage = isImage();
       return h(
         _isImage ? 'img' : props.tag,
@@ -44,6 +52,13 @@ export default create({
         slots.default?.()
       );
     };
+    const renderAmIcon = () => {
+      return h(IconAm, {
+        // name: props.name,
+        ...props
+      });
+    };
+    return isAmIcon() ? renderAmIcon : renderIcon;
   }
 });
 </script>

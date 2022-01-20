@@ -53,11 +53,7 @@
       <nut-tabbar-item tab-title="首页" icon="home" num="11"></nut-tabbar-item>
       <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
       <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
-      <nut-tabbar-item
-        tab-title="购物车"
-        icon="cart"
-        num="110"
-      ></nut-tabbar-item>
+      <nut-tabbar-item tab-title="购物车" icon="cart" num="110"></nut-tabbar-item>
       <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
     </nut-tabbar>
 
@@ -76,20 +72,12 @@
       <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
     </nut-tabbar>
     <h2>固定底部，可自由跳转</h2>
-    <nut-tabbar :bottom="true">
+    <nut-tabbar :bottom="true" :safeAreaInsetBottom="true">
       <nut-tabbar-item tab-title="首页" href="" icon="home"></nut-tabbar-item>
       <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
       <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
-      <nut-tabbar-item
-        tab-title="购物车"
-        href="https://m.jd.com"
-        icon="cart"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        tab-title="我的"
-        href="######"
-        icon="my"
-      ></nut-tabbar-item>
+      <nut-tabbar-item tab-title="购物车" href="https://m.jd.com" icon="cart"></nut-tabbar-item>
+      <nut-tabbar-item tab-title="我的" href="######" icon="my"></nut-tabbar-item>
     </nut-tabbar>
   </div>
 </template>
