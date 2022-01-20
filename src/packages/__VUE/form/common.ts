@@ -16,20 +16,20 @@ export const component = {
   setup(props: any, { emit, slots }: any) {
     const formErrorTip = computed(() => reactive<any>({}));
     provide('formErrorTip', formErrorTip);
-    const init = (value = props.modelValue) => {
-      Object.keys(value).forEach((item) => {
+    const clearErrorTips = (value = props.modelValue) => {
+      Object.keys(formErrorTip.value).forEach((item) => {
         formErrorTip.value[item] = '';
       });
     };
 
     const reset = () => {
-      init();
+      clearErrorTips();
     };
 
     watch(
       () => props.modelValue,
       (value: any) => {
-        init(value);
+        clearErrorTips(value);
       },
       { immediate: true }
     );
@@ -44,6 +44,8 @@ export const component = {
             prop: vnode.props?.['prop'],
             rules: vnode.props?.['rules'] || []
           });
+        } else if (Array.isArray(vnode.children) && vnode.children?.length) {
+          task = task.concat(findFormItem(vnode.children as VNode[]));
         }
       });
       return task;
@@ -66,7 +68,16 @@ export const component = {
         });
       };
 
-      const value = props.modelValue[prop];
+      const getPropByPath = (obj: any, keyPath: string) => {
+        return keyPath.split('.').reduce((prev, curr) => prev[curr], obj);
+      };
+
+      if (!prop) {
+        console.warn('[NutUI] <FormItem> 使用 rules 校验规则时 , 必须设置 prop 参数');
+      }
+
+      let value = getPropByPath(props.modelValue, prop || '');
+
       // clear tips
       tipMessage({ prop, message: '' });
 
@@ -104,12 +115,25 @@ export const component = {
       return Promise.resolve(true);
     };
 
-    const validate = () => {
+    /**
+     * 校验
+     * @param customProp 指定校验，用于用户自定义场景时触发，例如 blur、change 事件
+     * @returns
+     */
+    const validate = (customProp: string = '') => {
       return new Promise((resolve, reject) => {
         let task = findFormItem(slots.default());
 
         let errors = task.map((item) => {
-          return checkRule(item);
+          if (customProp) {
+            if (customProp == item.prop) {
+              return checkRule(item);
+            } else {
+              return Promise.resolve(true);
+            }
+          } else {
+            return checkRule(item);
+          }
         });
 
         Promise.all(errors).then((errorRes) => {

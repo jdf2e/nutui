@@ -15,6 +15,7 @@ export default {
         'pages/dialog/index',
         'pages/toast/index',
         'pages/notify/index',
+        'pages/empty/index',
         'pages/noticebar/index',
         'pages/range/index',
         'pages/popup/index',
@@ -51,7 +52,8 @@ export default {
         'pages/menu/index',
         'pages/pagination/index',
         'pages/indicator/index',
-        'pages/grid/index'
+        'pages/grid/index',
+        'pages/sidenavbar/index'
       ]
     },
     {

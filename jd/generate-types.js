@@ -11,9 +11,7 @@ config.nav.map((item) => {
     let { name, show, exportEmpty, type } = element;
     if (show || exportEmpty) {
       importStr +=
-        type == 'methods'
-          ? `declare function ${name}(options: any): void\n`
-          : `declare class ${name} extends UIComponent {}\n`;
+        type == 'methods' ? `declare const ${name}: any;\n` : `declare class ${name} extends UIComponent {}\n`;
       packages.push(name);
     }
   });

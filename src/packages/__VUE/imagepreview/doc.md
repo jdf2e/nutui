@@ -1,4 +1,4 @@
-# Imagepreview 图片预览
+# ImagePreview 图片预览
 
 ### 介绍
     
@@ -286,10 +286,12 @@ export default {
 | show | 是否展示预览图片 | Boolean | false
 | videos | 预览的视频数组（视频自动放到图片之前） | Array<`Object`> | []
 | images | 预览图片数组 | Array<`String`> | []
+| autoplay | 自动轮播时长，0表示不会自动轮播 | Number、String  | 3000  |
 | init-no | 初始页码 | Number | 1
 | pagination-visible | 分页指示器是否展示    | Boolean | false |
 | pagination-color   | 分页指示器选中的颜色    | String  | '#fff'  |
 | content-close   | 点击图片可以退出预览    | Boolean  | false  |
+
 
     
 ### Events

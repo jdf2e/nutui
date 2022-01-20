@@ -15,7 +15,7 @@
       <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
         <slot v-if="showSlot"></slot>
         <view
-          v-if="closeable"
+          v-if="closed"
           @click="onClickCloseIcon"
           class="nutui-popup__close-icon"
           :class="'nutui-popup__close-icon--' + closeIconPosition"
@@ -41,7 +41,7 @@
       <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
         <slot v-if="showSlot"></slot>
         <view
-          v-if="closeable"
+          v-if="closed"
           @click="onClickCloseIcon"
           class="nutui-popup__close-icon"
           :class="'nutui-popup__close-icon--' + closeIconPosition"
@@ -149,7 +149,8 @@ export default create({
       showSlot: true,
       transitionName: `popup-fade-${props.position}`,
       overLayCount: 1,
-      keepAlive: false
+      keepAlive: false,
+      closed: props.closeable
     });
 
     const [lockScroll, unlockScroll] = useLockScroll(() => props.lockScroll);
@@ -271,6 +272,13 @@ export default create({
       () => props.position,
       (value) => {
         value === 'center' ? (state.transitionName = 'popup-fade') : (state.transitionName = `popup-slide-${value}`);
+      }
+    );
+
+    watch(
+      () => props.closeable,
+      (value) => {
+        state.closed = value;
       }
     );
 
