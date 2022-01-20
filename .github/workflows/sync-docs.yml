@@ -1,0 +1,30 @@
+name: sync to docs
+
+on:
+  push:
+    branches:
+      - next # default branch
+    paths:
+      - '.github/workflows/**'
+      - 'src/**'
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest  
+    steps:
+      - uses: actions/checkout@v2 
+      - run: yarn install
+      - run: yarn copydocs
+      - name : Sync 
+        uses : JamesIves/github-pages-deploy-action@4.1.7 
+        with :
+          branch : master # action 应该部署到的分支 。
+          folder : site_docs #操作应该部署的文件夹 。
+          clean: false
+          repository-name: jdf2e/nutui-docs
+          token: ${{ secrets.GIT_ACTION }}
+          target-folder: src/docs_vue
+
+     
+
+          

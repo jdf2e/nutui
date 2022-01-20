@@ -8,10 +8,10 @@
 
 ```javascript
 import { createApp } from 'vue';
-import { Cell, Icon } from '@nutui/nutui';
+import { Cell, CellGroup, Icon } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Cell).use(Icon);
+app.use(Cell).use(CellGroup).use(Icon);
 ```
 
 ### 基本用法

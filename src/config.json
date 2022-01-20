@@ -931,7 +931,8 @@
           "show": true,
           "taro": true,
           "author": "liqiong"
-        },{
+        },
+        {
           "name": "Cascader",
           "type": "component",
           "cName": "级联选择",
