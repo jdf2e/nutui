@@ -71,6 +71,7 @@ export default {
 | text-align  | 文本位置,可选值`left`,`center`,`right`           | String         | `left`         |
 | readonly    | 只读属性                                         | Boolean        | `false`        |
 | disabled    | 禁用属性                                         | Boolean        | `false`        |
+| autofocus   | 自动获取焦点                                     | Boolean        | `false`        |
 
 
 ### Event
