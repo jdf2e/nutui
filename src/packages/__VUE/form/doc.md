@@ -68,7 +68,8 @@ app.use(CellGroup);
     <nut-cell>
       <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.add">添加</nut-button>
       <nut-button size="small" style="margin-right: 10px" @click="dynamicForm.methods.remove">删除</nut-button>
-      <nut-button type="primary" size="small" @click="dynamicForm.methods.submit">提交</nut-button>
+      <nut-button type="primary" style="margin-right: 10px" size="small" @click="dynamicForm.methods.submit">提交</nut-button>
+      <nut-button size="small" @click="dynamicForm.methods.reset">重置提示状态</nut-button>
     </nut-cell>
   </nut-form>
 </template>
@@ -95,6 +96,9 @@ export default {
               console.log('error submit!!', errors);
             }
           });
+        },
+        reset() {
+          dynamicRefForm.value.reset();
         },
         remove() {
           dynamicForm.state.tels.splice(dynamicForm.state.tels.length - 1, 1);

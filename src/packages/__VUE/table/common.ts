@@ -68,6 +68,12 @@ export const component = (componentName: string) => {
         }
       };
 
+      const sortDataItem = () => {
+        return props.columns.map((value: any) => {
+          return value.key;
+        });
+      };
+
       watch(
         () => props.data,
         (val) => {
@@ -80,7 +86,8 @@ export const component = (componentName: string) => {
         classes,
         cellClasses,
         getColumnItem,
-        handleSorterClick
+        handleSorterClick,
+        sortDataItem
       };
     }
   };

@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, getCurrentInstance, onMounted, onUnmounted, h } from 'vue';
+import { reactive, toRefs, onMounted, onUnmounted, h } from 'vue';
 import { createComponent } from '../../utils/create';
 import { TableColumnProps } from './types';
 import { Toast } from '@/packages/nutui.vue';
@@ -138,8 +138,8 @@ export default createDemo({
       ],
       data1: [
         {
-          name: 'Tom',
           sex: '男',
+          name: 'Tom',
           record: '小学'
         },
         {
