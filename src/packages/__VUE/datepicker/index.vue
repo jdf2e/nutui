@@ -123,8 +123,6 @@ export default create({
     };
 
     const ranges = computed(() => {
-      console.log('sss');
-
       const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } = getBoundary('max', state.currentDate);
 
       const { minYear, minDate, minMonth, minHour, minMinute, minSeconds } = getBoundary('min', state.currentDate);
