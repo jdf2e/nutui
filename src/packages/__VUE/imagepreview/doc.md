@@ -1,4 +1,4 @@
-# Imagepreview 图片预览
+# ImagePreview 图片预览
 
 ### 介绍
     

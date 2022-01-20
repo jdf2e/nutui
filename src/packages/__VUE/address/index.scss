@@ -80,6 +80,7 @@
 
           .region-item-icon {
             margin-right: 6px;
+            color: $address-icon-color !important;
           }
         }
       }
@@ -115,6 +116,7 @@
           }
           .exist-item-icon {
             margin-right: 9px;
+            color: $address-icon-color !important;
           }
           span {
             display: inline-block;

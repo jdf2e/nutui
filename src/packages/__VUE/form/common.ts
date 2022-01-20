@@ -44,7 +44,7 @@ export const component = {
             prop: vnode.props?.['prop'],
             rules: vnode.props?.['rules'] || []
           });
-        } else if (vnode.children?.length) {
+        } else if (Array.isArray(vnode.children) && vnode.children?.length) {
           task = task.concat(findFormItem(vnode.children as VNode[]));
         }
       });
@@ -72,7 +72,11 @@ export const component = {
         return keyPath.split('.').reduce((prev, curr) => prev[curr], obj);
       };
 
-      let value = getPropByPath(props.modelValue, prop);
+      if (!prop) {
+        console.warn('[NutUI] <FormItem> 使用 rules 校验规则时 , 必须设置 prop 参数');
+      }
+
+      let value = getPropByPath(props.modelValue, prop || '');
 
       // clear tips
       tipMessage({ prop, message: '' });

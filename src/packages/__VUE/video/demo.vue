@@ -2,84 +2,33 @@
   <div class="demo">
     <h4>基础用法</h4>
     <nut-cell class="cell">
-      <nut-video
-        :source="source"
-        :options="options"
-        @play="play"
-        @pause="pause"
-        @playend="playend"
-      >
-      </nut-video>
+      <nut-video :source="source" :options="options" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
     <h4>自动播放</h4>
     <nut-cell class="cell">
-      <nut-video
-        :source="source"
-        :options="options1"
-        @play="play"
-        @pause="pause"
-        @playend="playend"
-      >
-      </nut-video>
+      <nut-video :source="source" :options="options1" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
     <h4>初始化静音</h4>
     <nut-cell class="cell">
-      <nut-video
-        :source="source"
-        :options="options2"
-        @play="play"
-        @pause="pause"
-        @playend="playend"
-      >
-      </nut-video>
+      <nut-video :source="source" :options="options2" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
     <h4>视频封面海报设置</h4>
     <nut-cell class="cell">
-      <nut-video
-        :source="source"
-        :options="options3"
-        @play="play"
-        @pause="pause"
-        @playend="playend"
-      >
-      </nut-video>
+      <nut-video :source="source" :options="options3" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
     <h4>行内播放</h4>
     <nut-cell class="cell">
-      <nut-video
-        :source="source"
-        :options="options4"
-        @play="play"
-        @pause="pause"
-        @playend="playend"
-      >
-      </nut-video>
+      <nut-video :source="source" :options="options4" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
     <h4>设置视频为背景图</h4>
     <nut-cell class="cell">
-      <nut-video
-        :source="source"
-        :options="options5"
-        @play="play"
-        @pause="pause"
-        @playend="playend"
-      >
-      </nut-video>
+      <nut-video :source="source" :options="options5" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
     <h4>视频切换</h4>
     <nut-cell class="cell">
-      <nut-video
-        :source="source1"
-        :options="options"
-        @play="play"
-        @pause="pause"
-        @playend="playend"
-      >
-      </nut-video>
+      <nut-video :source="source1" :options="options" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
-    <nut-button type="primary" @click="changeVideo" class="m-b"
-      >切换视频</nut-button
-    >
+    <nut-button type="primary" @click="changeVideo" class="m-b">切换视频</nut-button>
   </div>
 </template>
 
@@ -92,11 +41,11 @@ export default createDemo({
   setup() {
     const state = reactive({
       source: {
-        src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+        src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',
         type: 'video/mp4'
       },
       source1: {
-        src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+        src: 'https://storage.360buyimg.com/nutui/video/legao-%E6%9D%A8%E8%BF%9B%E5%86%9B.mp4',
         type: 'video/mp4'
       },
       options: {

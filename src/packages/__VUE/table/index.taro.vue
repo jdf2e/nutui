@@ -24,8 +24,8 @@
             v-for="value in Object.keys(item)"
             :key="value"
           >
-            {{ typeof item[value] !== 'function' ? item[value] : '' }}
             <RenderColumn :slots="item[value]" v-if="typeof item[value] === 'function'"></RenderColumn>
+            <view v-else> {{ item[value] }} </view>
           </span>
         </view>
       </view>

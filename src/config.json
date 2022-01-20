@@ -633,6 +633,41 @@
           "exportEmpty": true,
           "exportEmptyTaro": true,
           "author": "haiweilian"
+        },
+        {
+          "version": "3.1.15",
+          "name": "SideNavBar",
+          "type": "component",
+          "cName": "侧边栏导航",
+          "desc": "垂直展示的导航栏，用于内容选择和切换",
+          "sort": 14,
+          "taro": true,
+          "show": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.1.15",
+          "name": "SideNavBarItem",
+          "type": "component",
+          "cName": "侧边栏导航子组件",
+          "desc": "",
+          "sort": 15,
+          "exportEmpty": true,
+          "taro": true,
+          "show": false,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.1.15",
+          "name": "SubSideNavBar",
+          "type": "component",
+          "cName": "侧边栏导航子组件",
+          "desc": "",
+          "sort": 16,
+          "exportEmpty": true,
+          "taro": true,
+          "show": false,
+          "author": "szg2008"
         }
       ]
     },
@@ -802,7 +837,6 @@
           "version": "3.0.0",
           "name": "CountUp",
           "taro": true,
-          "tarodoc": true,
           "sort": 12,
           "cName": "数字滚动",
           "type": "component",
@@ -813,7 +847,6 @@
         {
           "version": "3.0.0",
           "name": "NumberKeyboard",
-          "tarodoc": true,
           "taro": true,
           "sort": 13,
           "cName": "数字键盘",
@@ -898,7 +931,8 @@
           "show": true,
           "taro": true,
           "author": "liqiong"
-        },{
+        },
+        {
           "name": "Cascader",
           "type": "component",
           "cName": "级联选择",
@@ -1010,7 +1044,7 @@
           "taro": true,
           "name": "Table",
           "type": "component",
-          "cName": "表格组件",
+          "cName": "表格",
           "desc": "用于展示多条结构类似的数据，并具有一定的操作功能",
           "sort": 9,
           "show": true,

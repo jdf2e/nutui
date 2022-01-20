@@ -51,7 +51,7 @@
     <view
       :class="['collapse-wrapper', openExpanded ? 'open-style' : 'close-style']"
       ref="wrapperRef"
-      :style="{ height: openExpanded ? conHeight + 'px' : 0 }"
+      :style="{ height: openExpanded ? (conHeight == 'auto' ? 'auto' : conHeight + 'px') : 0 }"
     >
       <view class="collapse-content" ref="contentRef">
         <slot></slot>
@@ -65,14 +65,13 @@ import {
   inject,
   toRefs,
   onMounted,
-  Ref,
   ref,
-  unref,
   nextTick,
   computed,
   watch,
   getCurrentInstance,
-  ComponentInternalInstance
+  ComponentInternalInstance,
+  VNode
 } from 'vue';
 import Taro, { eventCenter, getCurrentInstance as getCurrentInstanceTaro } from '@tarojs/taro';
 import { createComponent } from '../../utils/create';
@@ -102,9 +101,9 @@ export default create({
       type: Object
     }
   },
-  setup(props) {
+  setup(props, ctx: any) {
     const collapse: any = inject('collapseParent');
-    const conHeight: any = ref(0);
+    const conHeight: any = ref('auto');
     const parent: any = reactive(collapse);
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -170,7 +169,8 @@ export default create({
         proxyData.iconStyle['transform'] = 'rotate(' + parent.props.rotate + 'deg)';
       }
       nextTick(() => {
-        const query = Taro.createSelectorQuery();
+        // const query = Taro.createSelectorQuery();
+        const query = Taro.getEnv() === 'ALIPAY' ? my.createSelectorQuery() : Taro.createSelectorQuery();
         query.selectAll('.collapse-content').boundingClientRect();
         query.exec((res) => {
           getH(res[0]);
@@ -231,6 +231,15 @@ export default create({
       }
     });
 
+    watch(
+      () => ctx?.slots?.default?.(),
+      (vnodes: VNode[]) => {
+        setTimeout(() => {
+          getRefHeight();
+        }, 300);
+      }
+    );
+
     const getH = (list: any) => {
       parent.children.forEach((item1: any, index1: number) => {
         let ary: any = Array.from(item1.$el.children);
@@ -252,7 +261,8 @@ export default create({
     };
 
     const getRefHeight = () => {
-      const query = Taro.createSelectorQuery();
+      const query = Taro.getEnv() === 'ALIPAY' ? my.createSelectorQuery() : Taro.createSelectorQuery();
+      // const query = Taro.createSelectorQuery();
       query.selectAll('.collapse-content').boundingClientRect();
       query.exec((res) => {
         if (Taro.getEnv() === 'WEB') {
@@ -266,21 +276,6 @@ export default create({
     onMounted(() => {
       const { name } = props;
       const active = parent && parent.props.active;
-      // 获取 DOM 元素
-      if (Taro.getEnv() === 'WEB') {
-        getRefHeight();
-      } else {
-        eventCenter.once((getCurrentInstanceTaro() as any).router.onReady, () => {
-          getRefHeight();
-        });
-      }
-
-      // const query = Taro.createSelectorQuery();
-      // query.selectAll('.collapse-content').boundingClientRect();
-      // query.exec((res) => {
-      //   console.log(res[0]);
-      //   getH(res[0]);
-      // });
 
       if (typeof active == 'number' || typeof active == 'string') {
         if (name == active) {
@@ -292,6 +287,19 @@ export default create({
           defaultOpen();
         }
       }
+      // 获取 DOM 元素
+      if (Taro.getEnv() === 'WEB') {
+        getRefHeight();
+      } else {
+        eventCenter.once((getCurrentInstanceTaro() as any).router.onReady, () => {
+          getRefHeight();
+        });
+      }
+      // const query = Taro.createSelectorQuery();
+      // query.selectAll('.collapse-content').boundingClientRect();
+      // query.exec((res) => {
+      //   getH(res[0]);
+      // });
     });
 
     return {

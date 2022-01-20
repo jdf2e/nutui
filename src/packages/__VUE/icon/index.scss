@@ -1,4 +1,5 @@
 @import '../../styles/font/iconfont.css';
+
 .nut-icon {
   display: inline-block;
   position: relative;
@@ -22,20 +23,59 @@
   &-loading,
   &-loading1 {
     display: inline-block;
-    animation: loadingCircle 1s infinite linear;
+    animation: rotate 1s infinite linear;
+  }
+
+  &-am-jump {
+    animation: jump 1s ease infinite alternate;
+  }
+
+  &-am-rotate {
+    animation: rotate 1s infinite linear;
+  }
+  &-am-blink {
+    animation: blink 1s ease-in-out 0.1s infinite alternate;
   }
 }
 
-@-webkit-keyframes loadingCircle {
+@-webkit-keyframes jump {
+  to {
+    transform: scale3d(0.8, 1, 0.9) translateY(-10px);
+  }
+}
+
+@keyframes jump {
+  to {
+    transform: scale3d(0.8, 1, 0.9) translateY(-10px);
+  }
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
 
-@keyframes loadingCircle {
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
   100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
