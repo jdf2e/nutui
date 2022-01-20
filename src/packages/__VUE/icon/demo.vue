@@ -48,17 +48,6 @@
         </ul>
       </nut-cell>
     </nut-cell-group>
-
-    <nut-cell-group v-for="item in icons.animate" :title="item.name" :key="item">
-      <nut-cell>
-        <ul>
-          <li v-for="it in item.icons" :key="it">
-            <nut-icon :name="it.name"></nut-icon>
-            <span>{{ it.name }}</span>
-          </li>
-        </ul>
-      </nut-cell>
-    </nut-cell-group>
   </div>
 </template>
 
