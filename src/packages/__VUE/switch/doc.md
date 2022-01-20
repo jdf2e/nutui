@@ -21,7 +21,7 @@ app.use(Switch);
 ## 代码演示
 
 ### 基础用法
-
+:::demo
 ``` html
 <nut-switch v-model="checked" />
 ```
@@ -34,21 +34,24 @@ export default {
   },
 };
 ```
+:::
 
 ### 禁用状态
-
+:::demo
 ``` html
 <nut-switch v-model="checked" disable />
 ```
+:::
 
 ### 加载状态
-
+:::demo
 ``` html
 <nut-switch v-model="checked" loading color="loading" />
 ```
+:::
 
 ### change事件
-
+:::demo
 ``` html
 <nut-switch v-model="checked" @change="change" />
 ```
@@ -68,9 +71,9 @@ export default {
   }
 };
 ```
-
+:::
 ### 异步控制
-
+:::demo
 ``` html
 <nut-switch :model-value="checkedAsync" @change="changeAsync" />
 ```
@@ -94,16 +97,19 @@ export default {
   }
 };
 ```
+:::
 ### 自定义颜色
-
+:::demo
 ``` html
 <nut-switch v-model="checked" @change="switchChange" active-color="blue" />
 ```
+:::
 ### 支持文字
-
+:::demo
 ``` html
 <nut-switch v-model="checked" @change="switchChange" active-text="开" inactive-text="关" />
 ```
+:::
 
 ## API
 

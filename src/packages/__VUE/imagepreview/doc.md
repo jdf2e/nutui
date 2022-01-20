@@ -17,7 +17,7 @@ app.use(ImagePreview);
 ```
 
 ### 基础用法
-
+:::demo
 ```html
 <nut-imagepreview
     :show="showPreview"
@@ -62,9 +62,10 @@ setup() {
     };
 },
 ```
+:::
 
 ### 设置初始页码
-
+:::demo
 ```html
 <nut-imagepreview
     :show="showPreview"
@@ -111,9 +112,10 @@ setup() {
     };
 },
 ```
+:::
 
 ### 设置轮播指示器及颜色
-
+:::demo
 ```html
 <nut-imagepreview
     :show="showPreview"
@@ -160,9 +162,10 @@ setup() {
     };
 },
 ```
+:::
 
 ### 视频、图片预览
-
+:::demo
 ```html
 <nut-imagepreview
     :show="showPreview"
@@ -230,9 +233,10 @@ setup() {
     };
 },
 ```
+:::
                 
 ### 函数式调用
-
+:::demo
 ```html
 <nut-cell isLink title="函数式调用的图片预览" :showIcon="true" @click="fnShow"></nut-cell>
 ```
@@ -278,6 +282,7 @@ export default {
     },
 }
 ```
+:::
     
 ### Props
 

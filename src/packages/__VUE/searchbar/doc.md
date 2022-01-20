@@ -19,7 +19,7 @@ app.use(SearchBar).use(Icon);
 ```    
     
 ### 基础用法
-
+:::demo
 ```html
   <nut-searchbar v-model="searchValue"></nut-searchbar>
 ```
@@ -39,9 +39,10 @@ export default {
   }
 }
 ```
+:::
 
 ### 搜索事件监听
-
+:::demo
 ```html
 <nut-searchbar v-model="searchValue" @search="search"></nut-searchbar>
 ```
@@ -67,9 +68,10 @@ export default {
   }
 }
 ```
+:::
 
 ### 显示搜索 icon
-
+:::demo
 ```html
 <nut-searchbar v-model="searchValue">
   <template v-slot:leftin>
@@ -94,9 +96,10 @@ export default {
   }
 }
 ```
+:::
 
 ### 右侧添加搜索文字
-
+:::demo
 ```html
 <nut-searchbar v-model="searchValue">
   <template v-slot:rightout>
@@ -120,10 +123,12 @@ export default {
   }
 }
 ```
+:::
+
     <h2>更改输入框内部及外部的背景样式</h2>
 
 ### 更改输入框内部及外部的背景样式
-
+:::demo
 ```html
 <nut-searchbar v-model="searchValue4" background="linear-gradient(to right, #9866F0, #EB4D50)" input-background="#fff"> </nut-searchbar>
 ```
@@ -143,8 +148,9 @@ export default {
   }
 }
 ```
+:::
 ### 显示全部 icon
-
+:::demo
 ```html
 <nut-searchbar v-model="searchValue">
   <template v-slot:leftout>
@@ -178,6 +184,7 @@ export default {
   }
 }
 ```
+:::
     
 ### Props
     
