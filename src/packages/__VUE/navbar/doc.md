@@ -34,12 +34,19 @@ app.use(Icon);
 ### 设置slot:tabs可以增加tab
 
 ```html
-    <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-clear="edit" @on-click-send="list" desc="编辑" icon="horizontal">
-      <template v-slot:tabs>
-        <nut-tab>
-          <nut-tab-panel tab-title="商品"><p class="content">这里是页签全部内容</p></nut-tab-panel>
-          <nut-tab-panel tab-title="店铺"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
-        </nut-tab>
+    <nut-navbar
+      @on-click-back="back"
+      @on-click-title="title"
+      @on-click-clear="edit"
+      @on-click-send="list"
+      desc="编辑"
+      icon="horizontal-n"
+    >
+      <template #tabs>
+        <nut-tabs v-model="tab1value" @click="changeTab">
+          <nut-tabpane title="商品"> </nut-tabpane>
+          <nut-tabpane title="店铺"> </nut-tabpane>
+        </nut-tabs>
       </template>
     </nut-navbar>
 ```
@@ -47,18 +54,17 @@ app.use(Icon);
 ### 多tab切换导航及增加右侧按钮
 
 ```html
-    <nut-navbar @on-click-back="back" icon="share" @on-click-send="send">
-      <template v-slot:tabs>
-        <nut-tab>
-          <nut-tab-panel tab-title="商品"><p class="content">这里是页签全部内容</p></nut-tab-panel>
-          <nut-tab-panel tab-title="评价"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
-          <nut-tab-panel tab-title="详情"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
-          <nut-tab-panel tab-title="推荐"><p class="content">这里是页签待付款内容</p></nut-tab-panel>
-        </nut-tab>
+   <nut-navbar @on-click-back="back" @on-click-send="list" icon="more-x">
+      <template #tabs>
+        <nut-tabs v-model="tab2value" @click="changeTabList">
+          <nut-tabpane title="商品"> </nut-tabpane>
+          <nut-tabpane title="评价"> </nut-tabpane>
+          <nut-tabpane title="详情"> </nut-tabpane>
+          <nut-tabpane title="推荐"> </nut-tabpane>
+        </nut-tabs>
       </template>
-
-      <template #icons >
-        <nut-icon class="icon" name="more" @on-click-slot-send="morelist"></nut-icon>
+      <template #icons>
+        <nut-icon class="icon" name="share" @on-click-slot-send="morelist"></nut-icon>
       </template>
     </nut-navbar>
 ```
@@ -79,3 +85,9 @@ app.use(Icon);
 | title | 点击页面标题事件 | event:Event |
 | right | 点击右侧按钮事件 | event:Event |
 | back | 点击返回上一页事件 | event:Event |
+
+### Slot
+| 名称  | 说明     | 回调参数    |
+|-------|----------|-------------|
+| icons | 增加右侧图标 |  |
+| tabs |  增加tab |  |

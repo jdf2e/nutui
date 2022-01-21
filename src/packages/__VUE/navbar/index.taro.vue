@@ -1,60 +1,22 @@
 <template>
   <view :class="classes">
     <view class="nut-navbar__left">
-      <nut-icon
-        v-if="leftShow"
-        color="#979797"
-        name="left"
-        @click="handleLeft"
-      ></nut-icon>
+      <nut-icon v-if="leftShow" color="#979797" name="left" @click="handleLeft"></nut-icon>
     </view>
-    <view
-      class="nut-navbar__title"
-      :class="{ icon }"
-      v-if="title || titIcon || tabs"
-    >
-      <view v-if="title" class="text__title" @click="handleCenter">{{
-        title
-      }}</view>
-      <nut-icon
-        v-if="titIcon"
-        class="icon"
-        :name="titIcon"
-        @click="handleCenterIcon"
-      ></nut-icon>
-      <view class="tab-title">
-        <view
-          :class="[
-            'tab-title-box',
-            { 'nut-tab-active': activeIndex == item.id || activeIndex == index }
-          ]"
-          @click="switchTitle(item.id, item.name)"
-          v-for="(item, index) in tabs"
-          :key="item.id"
-        >
-          {{ item.name }}
-        </view>
-      </view>
+    <view class="nut-navbar__title" :class="{ icon }">
+      <view v-if="title" class="text__title" @click="handleCenter">{{ title }}</view>
+      <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
+      <slot name="tabs"></slot>
     </view>
     <view class="nut-navbar__right" :class="{ icon }" v-if="desc || icon">
-      <view
-        v-if="desc"
-        :style="{ 'text-align': descTextAlign }"
-        @click="handleClear"
-        >{{ desc }}</view
-      >
+      <view v-if="desc" :style="{ 'text-align': descTextAlign }" @click="handleClear">{{ desc }}</view>
       <template v-if="icon">
         <view @click="handleSends">
           <slot name="icons"></slot>
         </view>
       </template>
       <view>
-        <nut-icon
-          v-if="icon"
-          class="rightIcon"
-          :name="icon"
-          @click="handleSend"
-        ></nut-icon>
+        <nut-icon v-if="icon" class="rightIcon" :name="icon" @click="handleSend"></nut-icon>
       </view>
     </view>
   </view>

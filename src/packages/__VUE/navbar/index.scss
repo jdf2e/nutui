@@ -54,40 +54,12 @@
       display: inline-block;
     }
 
-    .tab-title {
-      width: 164px;
-      white-space: nowrap;
-      overflow-x: auto;
-      display: flex;
-      .tab-title-box {
-        height: 50px;
-        display: flex;
-        flex: 1;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
-        text-align: center;
-        font-size: 14px;
-        color: rgba(26, 26, 26, 1);
-        margin-left: 10px;
-      }
-      .nut-tab-active {
-        color: #1a1a1a;
-        font-weight: bold;
-        font-size: 16px;
-        position: relative;
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: 7px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 12px;
-          height: 4px;
-          background-image: url('https://img12.360buyimg.com/imagetools/jfs/t1/127200/40/18747/536/5fb36b5aE61cac2d8/638032e8da9b93f4.png');
-          background-size: 100% 100%;
-        }
-      }
+    .nut-tabs__titles {
+      background: $white;
+    }
+
+    .nut-tabpane {
+      display: none;
     }
   }
 
