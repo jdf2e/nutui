@@ -16,20 +16,20 @@ export const component = {
   setup(props: any, { emit, slots }: any) {
     const formErrorTip = computed(() => reactive<any>({}));
     provide('formErrorTip', formErrorTip);
-    const init = (value = props.modelValue) => {
-      Object.keys(value).forEach((item) => {
+    const clearErrorTips = (value = props.modelValue) => {
+      Object.keys(formErrorTip.value).forEach((item) => {
         formErrorTip.value[item] = '';
       });
     };
 
     const reset = () => {
-      init();
+      clearErrorTips();
     };
 
     watch(
       () => props.modelValue,
       (value: any) => {
-        init(value);
+        clearErrorTips(value);
       },
       { immediate: true }
     );

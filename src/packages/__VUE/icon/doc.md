@@ -75,19 +75,6 @@ app.use(Icon);
 ```
 :::
 
-### 动态图标
-
-与基础图标的使用方式一致，通过 `Icon` 的 `name` 属性传入图标名称
-
-:::demo
-```html
-<template>
-  <nut-icon name="am-loading1" ></nut-icon>
-  <nut-icon name="am-loading2"></nut-icon>
-  <nut-icon name="am-loading7"></nut-icon>
-</template>
-```
-:::
 
 ### 自定义图标
 
