@@ -6,6 +6,7 @@
 
 ### 安装
 
+
 ```javascript
 import { createApp } from 'vue';
 // vue
@@ -21,19 +22,77 @@ app.use(OverLay);
 
 ### 基础用法
 
+:::demo
+
 ```html
+<template>
+<nut-button type="primary" @click="state.show = true">显示遮罩层</nut-button>
 <nut-overlay v-model:visible="state.show" :z-index="2000"></nut-overlay>
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        show: false,
+      });
+      return {
+        state
+      };
+    }
+  };
+</script>
 ```
+
+:::
 
 ### 嵌套内容
 
+:::demo
+
 ```html
+<template>
+<nut-button type="success" @click="state.show2 = true">嵌套内容</nut-button>
 <nut-overlay v-model:visible="state.show2" :z-index="2000">
   <div class="wrapper">
     <div class="content">这里是正文</div>
   </div>
 </nut-overlay>
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        show2: false,
+      });
+      return {
+        state
+      };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+.wrapper {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  .content {
+    display: flex;
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    color: red;
+  }
+}
+</style>
 ```
+
+:::
 
 ## API
 

@@ -8,7 +8,7 @@
 
 ``` javascript
 import { createApp } from 'vue';
-import { Video } from '@nutui/nutui';
+import { Video, Button } from '@nutui/nutui';
 
 const app = createApp();
 app.use(Video);
@@ -18,18 +18,21 @@ app.use(Video);
 
 ### 基础用法
 
+:::demo
 ```html
-<nut-video
-  :source="source"
-  :options="options"
-  @play="play"
-  @pause="pause"
-  @playend="playend">
-</nut-video>
-```
-
-```javascript
-setup() {
+<template>
+  <nut-video
+    :source="source"
+    :options="options"
+    @play="play"
+    @pause="pause"
+    @playend="playend">
+  </nut-video>
+</template>
+<script lang="ts">
+import { toRefs, reactive } from 'vue';
+export default {
+  setup() {
     const state = reactive({
       source: {
         src: "https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D",
@@ -43,155 +46,201 @@ setup() {
     const pause = (elm: any) => console.log('pause', elm);
     const playend = (elm: any) => console.log('playend', elm);
 
-    return { play, pause, playend, ...toRefs(state) };
+    return { ...toRefs(state), play, pause, playend,  };
+  }
 }
+</script>
 ```
+:::
 
 ### 自动播放
 autoplay 属性设置视频自动播放
+
+:::demo
 ```html
-<nut-video :source="source" :options="options"></nut-video>
-```
+<template>
+  <nut-video :source="source" :options="options"></nut-video>
+</template>
+<script lang="ts">
+import { toRefs, reactive } from 'vue';
+export default {
+  setup() {
+      const state = reactive({
+        source: {
+          src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+          type: 'video/mp4'
+        },
+        options: {
+          autoplay: true,
+          muted: true,
+          controls: true
+        },
+      });
 
-```javascript
-setup() {
-    const state = reactive({
-      source: {
-        src: 'https://storage.jd.com/about/big-final.mp4',
-        type: 'video/mp4'
-      },
-      options: {
-        autoplay: true,
-        muted: true,
-        controls: true
-      },
-    });
-
-    return { ...toRefs(state) };
+      return { ...toRefs(state) };
+  }
 }
+</script>
 ```
+:::
 
 ### 初始化静音
 muted属性设置视频初始化静音
+
+:::demo
 ```html
-<nut-video :source="source" :options="options"></nut-video>
-```
+<template>
+  <nut-video :source="source" :options="options"></nut-video>
+</template>
+<script lang="ts">
+import { toRefs, reactive } from 'vue';
+export default {
+  setup() {
+      const state = reactive({
+        source: {
+          src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+          type: 'video/mp4'
+        },
+        options: {
+          muted: true,
+          controls: true
+        },
+      });
 
-```javascript
-setup() {
-    const state = reactive({
-      source: {
-        src: 'https://storage.jd.com/about/big-final.mp4',
-        type: 'video/mp4'
-      },
-      options: {
-        muted: true,
-        controls: true
-      },
-    });
-
-    return { ...toRefs(state) };
+      return { ...toRefs(state) };
+  }
 }
+</script>
 ```
+:::
 
 ### 视频封面海报设置
 poster 属性设置视频海报
+
+:::demo
 ```html
-<nut-video :source="source" :options="options"></nut-video>
-```
+<template>
+  <nut-video :source="source" :options="options"></nut-video>
+</template>
+<script lang="ts">
+import { toRefs, reactive } from 'vue';
+export default {
+  setup() {
+      const state = reactive({
+        source: {
+          src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+          type: 'video/mp4'
+        },
+        options: {
+          controls: true,
+          poster: 'https://img12.360buyimg.com/ling/s345x208_jfs/t1/168105/33/8417/54825/603df06dEfcddc4cb/21f9f5d0a1b3dad4.jpg.webp'
+        },
+      });
 
-```javascript
-setup() {
-    const state = reactive({
-      source: {
-        src: 'https://storage.jd.com/about/big-final.mp4',
-        type: 'video/mp4'
-      },
-      options: {
-        controls: true,
-        poster: 'https://img12.360buyimg.com/ling/s345x208_jfs/t1/168105/33/8417/54825/603df06dEfcddc4cb/21f9f5d0a1b3dad4.jpg.webp'
-      },
-    });
-
-    return { ...toRefs(state) };
+      return { ...toRefs(state) };
+  }
 }
+</script>
 ```
+
+:::
 
 ### 行内播放
 playsinline 属性设置移动端视频行内播放，阻止新打开页面播放（兼容 ios，兼容部分安卓机）
+
+:::demo
 ```html
-<nut-video :source="source" :options="options"></nut-video>
-```
+<template>
+  <nut-video :source="source" :options="options"></nut-video>
+</template>
+<script lang="ts">
+import { toRefs, reactive } from 'vue';
+export default {
+  setup() {
+      const state = reactive({
+        source: {
+          src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+          type: 'video/mp4'
+        },
+        options: {
+          playsinline: true,
+          controls: true,
+        },
+      });
 
-```javascript
-setup() {
-    const state = reactive({
-      source: {
-        src: 'https://storage.jd.com/about/big-final.mp4',
-        type: 'video/mp4'
-      },
-      options: {
-        playsinline: true,
-        controls: true,
-      },
-    });
-
-    return { ...toRefs(state) };
+      return { ...toRefs(state) };
+  }
 }
+</script>
 ```
+:::
 
 ### 视频背景图
 当设置视频为背景图时需要将 muted 静音、 disabled 禁止操作、loop 循环播放、autoplay 自动播放设置为 true，移动端需要设置 playsinline 行内展示
+
+:::demo
 ```html
-<nut-video :source="source" :options="options"></nut-video>
-```
+<template>
+  <nut-video :source="source" :options="options"></nut-video>
+</template>
+<script lang="ts">
+import { toRefs, reactive } from 'vue';
+export default {
+  setup() {
+      const state = reactive({
+        source: {
+          src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+          type: 'video/mp4'
+        },
+        options: {
+          controls: false,
+          autoplay: true,
+          muted: true,
+          disabled: true,
+          playsinline: true,
+          loop: true
+        },
+      });
 
-```javascript
-setup() {
-    const state = reactive({
-      source: {
-        src: 'https://storage.jd.com/about/big-final.mp4',
-        type: 'video/mp4'
-      },
-      options: {
-        controls: false,
-        autoplay: true,
-        muted: true,
-        disabled: true,
-        playsinline: true,
-        loop: true
-      },
-    });
-
-    return { ...toRefs(state) };
+      return { ...toRefs(state) };
+  }
 }
+</script>
 ```
+:::
 
 ### 视频切换
 当视频地址发生变化时，重置视频
+
+:::demo
 ```html
-<nut-video :source="source"></nut-video>
-<nut-button type="primary" @click="changeVideo">切换视频</nut-button>
-```
-
-```javascript
-setup() {
-    const state = reactive({
-      source: {
-        src: 'https://storage.jd.com/about/big-final.mp4',
-        type: 'video/mp4'
-      },
-    });
-    const changeVideo = () => {
-      state.source1 = {
-        src: 'https://vjs.zencdn.net/v/oceans.mp4',
-        type: 'video/mp4'
+<template>
+  <nut-video :source="source"></nut-video>
+  <nut-button type="primary" @click="changeVideo">切换视频</nut-button>
+</template>
+<script lang="ts">
+import { toRefs, reactive } from 'vue';
+export default {
+  setup() {
+      const state = reactive({
+        source: {
+          src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+          type: 'video/mp4'
+        },
+      });
+      const changeVideo = () => {
+        state.source1 = {
+          src: 'https://vjs.zencdn.net/v/oceans.mp4',
+          type: 'video/mp4'
+        };
       };
-    };
 
-    return { ...toRefs(state), changeVideo };
+      return { ...toRefs(state), changeVideo };
+  }
 }
+</script>
 ```
+:::
 
 
 ## API

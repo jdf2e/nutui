@@ -18,142 +18,175 @@ app.use(Popup);
 
     
 ### 基础用法
+:::demo
 ```html
-<nut-cell title="请选择城市" :desc="desc" @click="open"></nut-cell>
-<nut-picker
-    v-model:visible="show"
-    :list-data="listData"
-    title="城市选择"
-    @confirm="confirm" 
-></nut-picker>
-```
-```javascript
+<template>
+  <nut-cell title="请选择城市" :desc="desc" @click="open"></nut-cell>
+  <nut-picker
+      v-model:visible="show"
+      :list-data="listData"
+      title="城市选择"
+      @confirm="confirm" 
+  ></nut-picker>
+</template>
 <script>
-export default createDemo({
-  setup(props, { emit }) {
-    const show = ref(false);
-    const listData = [
-      '南京市',
-      '无锡市',
-      '海北藏族自治区',
-      '北京市',
-      '连云港市',
-      '浙江市',
-      '江苏市'
-    ];
-
-    return {
-      listData,
-      open: (index) => {
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const listData = [
+        '南京市',
+        '无锡市',
+        '海北藏族自治区',
+        '北京市',
+        '连云港市',
+        '浙江市',
+        '江苏市'
+      ];
+      const desc = ref(listData[0]);
+      const open = ()=>{
         show.value = true;
-      },
-      confirm: (res) => {
+      }
+      const confirm = (res)=>{
         desc.value = res;
       }
-    };
-  }
-});
+      return {
+        show,
+        desc,
+        listData,
+        open,
+        confirm
+      };
+    }
+  };
 </script>
 ```
+:::
+
 ### 多列样式
 
+### 基础用法
+:::demo
 ```html
-<nut-cell title="请选择时间" :desc="desc" @click="open"></nut-cell>
-<nut-picker
-    v-model:visible="show"
-    :list-data="listData"
-    title="多列选择"
-    @confirm="confirm"
-    @close="close"
-></nut-picker>
-```
-```javascript
+<template>
+  <nut-cell title="请选择时间" :desc="desc" @click="open"></nut-cell>
+  <nut-picker
+      v-model:visible="show"
+      :list-data="listData"
+      title="多列选择"
+      @confirm="confirm"
+      @close="close"
+  ></nut-picker>
+</template>
 <script>
-export default createDemo({
-  setup(props, { emit }) {
-    const show = ref(false);
-    const listData = [
-      {
-        values: ['周一', '周二', '周三', '周四', '周五'],
-        defaultIndex: 2
-      },
-      // 第二列
-      {
-        values: ['上午', '下午', '晚上'],
-        defaultIndex: 1
-      }
-    ];
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const listData = [
+        {
+          values: ['周一', '周二', '周三', '周四', '周五'],
+          defaultIndex: 2
+        },
+        // 第二列
+        {
+          values: ['上午', '下午', '晚上'],
+          defaultIndex: 1
+        }
+      ];
+      const desc = ref(
+      `${listData[0].values[listData[0].defaultIndex]} ${
+        listData[1].values[listData[1].defaultIndex]
+      }`
+    );
 
-    return {
-      listData,
-      open: (index) => {
-        show.value = true;
-      },
-      confirm: (res) => {
-        desc.value = res.join(' ');
-      }
-    };
-  }
-});
+  
+      return {
+        show,
+        desc,
+        listData,
+        open: (index) => {
+          show.value = true;
+        },
+        confirm: (res) => {
+          desc.value = res.join(' ');
+        }
+      };
+    }
+  };
 </script>
 ```
+:::
+
 ### 多级联动
-```html
-<nut-cell title="地址" :desc="desc" @click="open"></nut-cell>
-<nut-picker
-    v-model:visible="show"
-    :list-data="listData"
-    title="地址选择"
-    @confirm="confirm" 
-></nut-picker>
-```
-```javascript
-<script>
-export default createDemo({
-  setup(props, { emit }) {
-    const show = ref(false);
-    const listData = [
-      {
-        text: '浙江',
-        children: [
-          {
-            text: '杭州',
-            children: [{ text: '西湖区' }, { text: '余杭区' }]
-          },
-          {
-            text: '温州',
-            children: [{ text: '鹿城区' }, { text: '瓯海区' }]
-          }
-        ]
-      },
-      {
-        text: '福建',
-        children: [
-          {
-            text: '福州',
-            children: [{ text: '鼓楼区' }, { text: '台江区' }]
-          },
-          {
-            text: '厦门',
-            children: [{ text: '思明区' }, { text: '海沧区' }]
-          }
-        ]
-      }
-    ];
 
-    return {
-      listData,
-      open: (index) => {
-        show.value = true;
-      },
-      confirm: (res) => {
-        desc.value = res.join(' ');
-      }
-    };
-  }
-});
+:::demo
+```html
+<template>
+  <nut-cell title="地址" :desc="desc" @click="open"></nut-cell>
+  <nut-picker
+      v-model:visible="show"
+      :list-data="listData"
+      title="地址选择"
+      @confirm="confirm" 
+  ></nut-picker>
+</template>
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const listData = [
+        {
+          text: '浙江',
+          children: [
+            {
+              text: '杭州',
+              children: [{ text: '西湖区' }, { text: '余杭区' }]
+            },
+            {
+              text: '温州',
+              children: [{ text: '鹿城区' }, { text: '瓯海区' }]
+            }
+          ]
+        },
+        {
+          text: '福建',
+          children: [
+            {
+              text: '福州',
+              children: [{ text: '鼓楼区' }, { text: '台江区' }]
+            },
+            {
+              text: '厦门',
+              children: [{ text: '思明区' }, { text: '海沧区' }]
+            }
+          ]
+        }
+      ];
+
+      const desc = ref(
+        `${listData[0].text}
+        ${listData[0].children[0].text}
+        ${listData[0].children[0].children[0].text}`
+      );
+
+      return {
+        desc,
+        show,
+        listData,
+        open: (index) => {
+          show.value = true;
+        },
+        confirm: (res) => {
+          desc.value = res.join(' ');
+        }
+      };
+    }
+  };
 </script>
-``` 
+```
+:::
 
 
 
