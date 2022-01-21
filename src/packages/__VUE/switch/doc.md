@@ -23,91 +23,141 @@ app.use(Switch);
 ### 基础用法
 :::demo
 ``` html
-<nut-switch v-model="checked" />
-```
-``` javascript
-import { ref } from 'vue';
-export default {
-  setup() {
-    const checked = ref(true);
-    return { checked };
-  },
-};
+<template>
+  <nut-switch v-model="checked" />
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    setup() {
+      const checked = ref(true);
+      return { checked };
+    }
+  };
+</script>
 ```
 :::
 
 ### 禁用状态
 :::demo
 ``` html
-<nut-switch v-model="checked" disable />
+<template>
+  <nut-switch v-model="checked" disable />
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    setup() {
+      const checked = ref(true);
+      return { checked };
+    }
+  };
+</script>
 ```
 :::
 
 ### 加载状态
 :::demo
 ``` html
-<nut-switch v-model="checked" loading color="loading" />
+<template>
+  <nut-switch v-model="checked" loading color="red" />
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    setup() {
+      const checked = ref(true);
+      return { checked };
+    }
+  };
+</script>
 ```
 :::
 
 ### change事件
 :::demo
 ``` html
-<nut-switch v-model="checked" @change="change" />
-```
-``` javascript
-import { ref, getCurrentInstance } from 'vue';
-export default {
-  setup() {
-    let { proxy } = getCurrentInstance() as any;
-    const checked = ref(true);
-    const change = (value: boolean, event: Event) => {
-      proxy.$toast.text(`触发了change事件，开关状态：${value}`);
-    };
-    return {
-      checked,
-      change
-    };
-  }
-};
+<template>
+  <nut-switch v-model="checked" @change="change" />
+</template>
+<script lang="ts">
+  import { ref, getCurrentInstance } from 'vue';
+  export default {
+    setup() {
+      let { proxy } = getCurrentInstance() as any;
+      const checked = ref(true);
+      const change = (value: boolean, event: Event) => {
+        proxy.$toast.text(`触发了change事件，开关状态：${value}`);
+      };
+      return {
+        checked,
+        change
+      };
+    }
+  };
+</script>
 ```
 :::
 ### 异步控制
 :::demo
 ``` html
-<nut-switch :model-value="checkedAsync" @change="changeAsync" />
-```
-``` javascript
-import { ref, getCurrentInstance } from 'vue';
-export default {
-  setup() {
-    let { proxy } = getCurrentInstance() as any;
-    const checkedAsync = ref(true);
-    const changeAsync = (value: boolean, event: Event) => {
-      proxy.$toast.text(`2秒后异步触发 ${value}`);
-      setTimeout(() => {
-        checkedAsync.value = value;
-      }, 2000);
-    };
-    
-    return {
-      checkedAsync,
-      changeAsync
-    };
-  }
-};
+<template>
+  <nut-switch :model-value="checkedAsync" @change="changeAsync" />
+</template>
+<script lang="ts">
+  import { ref, getCurrentInstance } from 'vue';
+  export default {
+    setup() {
+      let { proxy } = getCurrentInstance() as any;
+      const checkedAsync = ref(true);
+      const changeAsync = (value: boolean, event: Event) => {
+        proxy.$toast.text(`2秒后异步触发 ${value}`);
+        setTimeout(() => {
+          checkedAsync.value = value;
+        }, 2000);
+      };
+      
+      return {
+        checkedAsync,
+        changeAsync
+      };
+    }
+  };
+</script>
 ```
 :::
 ### 自定义颜色
 :::demo
 ``` html
-<nut-switch v-model="checked" @change="switchChange" active-color="blue" />
+<template>
+  <nut-switch v-model="checked" active-color="blue" />
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    setup() {
+      const checked = ref(true);
+      return { checked };
+    }
+  };
+</script>
 ```
 :::
 ### 支持文字
 :::demo
 ``` html
-<nut-switch v-model="checked" @change="switchChange" active-text="开" inactive-text="关" />
+<template>
+  <nut-switch v-model="checked" active-text="开" inactive-text="关" />
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    setup() {
+      const checked = ref(true);
+      return { checked };
+    }
+  };
+</script>
 ```
 :::
 
