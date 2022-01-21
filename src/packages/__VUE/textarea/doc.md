@@ -20,42 +20,55 @@ app.use(TextArea);
 ## 代码演示
 
 ### 基础用法
-
+:::demo
 
 ```html
-<nut-textarea v-model="value" />
-```
-``` javascript
+<template>
+  <nut-textarea v-model="value" />
+</template>
+<script>
 import { ref } from 'vue';
-
 export default {
   setup() {
     const value = ref('');
     return { value };
   },
 };
+</script>
 ```
+:::
 
 ### 显示字数统计
 
+:::demo
 
 ```html
-<nut-textarea v-model="value" limit-show max-length="20" />
+<template>
+  <nut-textarea v-model="value" limit-show max-length="20" />
+</template>
 ```
+:::
 
 ### 高度自定义，拉伸
-
+:::demo
 
 ```html
-<nut-textarea v-model="value" rows="10" autosize />
+<template>
+  <nut-textarea v-model="value" rows="10" autosize />
+</template>
 ```
+:::
 ### 只读、禁用
 
+:::demo
 
 ```html
-<nut-textarea readonly model-value="textarea只读状态" />
-<nut-textarea disabled model-value="textarea禁用状态" limit-show max-length="20" />
+<template>
+  <nut-textarea readonly model-value="textarea只读状态" />
+  <nut-textarea disabled model-value="textarea禁用状态" limit-show max-length="20" />
+</template>
 ```
+:::
 
 
 ### Prop
@@ -71,6 +84,7 @@ export default {
 | text-align  | 文本位置,可选值`left`,`center`,`right`           | String         | `left`         |
 | readonly    | 只读属性                                         | Boolean        | `false`        |
 | disabled    | 禁用属性                                         | Boolean        | `false`        |
+| autofocus   | 自动获取焦点                                     | Boolean        | `false`        |
 
 
 ### Event

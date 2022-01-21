@@ -23,71 +23,144 @@ app.use(Popup).use(OverLay)
 
 `visible` 控制显示/隐藏
 
+:::demo
+
 ```html
-<nut-popup :style="{ padding: '30px' }" v-model:visible="show">正文</nut-popup>
+<template>
+  <nut-cell title="展示弹出层" is-link @click="state.showBasic = true"></nut-cell>
+  <nut-popup pop-class="popclass" :style="{ padding: '30px 50px' }" v-model:visible="state.showBasic" :z-index="100">正文</nut-popup>
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        showBasic: false
+      });
+      return { state };
+    }
+  };
+</script>
 ```
+
+:::
 
 ### 弹出位置
 
-```html
-<nut-popup
-  position="top"
-  v-model:visible="show"
-  :style="{ height: '20%' }"
-></nut-popup>
+:::demo
 
-<nut-popup
-  position="left"
-  v-model:visible="show"
-  :style="{ height: '100%', width: '20%' }"
-></nut-popup>
+```html
+<template>
+  <nut-cell title="顶部弹出" is-link @click="state.showTop = true"></nut-cell>
+  <nut-popup position="top" :style="{ height: '20%' }" v-model:visible="state.showTop"></nut-popup>
+  <nut-cell title="底部弹出" is-link @click="state.showBottom = true"></nut-cell>
+  <nut-popup position="bottom" :style="{ height: '20%' }" v-model:visible="state.showBottom"></nut-popup>
+  <nut-cell title="左侧弹出" is-link @click="state.showLeft = true"></nut-cell>
+  <nut-popup position="left" :style="{ width: '20%', height: '100%' }" v-model:visible="state.showLeft"></nut-popup>
+  <nut-cell title="右侧弹出" is-link @click="state.showRight = true"></nut-cell>
+  <nut-popup position="right" :style="{ width: '20%', height: '100%' }" v-model:visible="state.showRight"></nut-popup>
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        showTop: false,
+        showBottom: false,
+        showLeft: false,
+        showRight: false,
+      });
+      return { state };
+    }
+  };
+</script>
 ```
+
+:::
 
 ### 图标
 
+
+:::demo
+
 ```html
-<nut-popup
-  position="bottom"
-  closeable
-  :style="{ height: '20%' }"
-  v-model:visible="show"
-></nut-popup>
-
-<nut-popup
-  position="bottom"
-  closeable
-  close-icon-position="top-left"
-  :style="{ height: '20%' }"
-  v-model:visible="show"
-></nut-popup>
-
-<nut-popup
-  position="bottom"
-  closeable
-  close-icon-position="top-left"
-  close-icon="heart"
-  :style="{ height: '20%' }"
-  v-model:visible="show"
-></nut-popup>
+<template>
+  <nut-cell title="关闭图标" is-link @click="state.showIcon = true"></nut-cell>
+  <nut-popup position="bottom" closeable :style="{ height: '20%' }" v-model:visible="state.showIcon"></nut-popup>
+  <nut-cell title="图标位置" is-link @click="state.showIconPosition = true" ></nut-cell>
+  <nut-popup position="bottom" closeable close-icon-position="top-left" :style="{ height: '20%' }" v-model:visible="state.showIconPosition" ></nut-popup>
+  <nut-cell title="自定义图标" is-link @click="state.showCloseIcon = true" ></nut-cell>
+  <nut-popup position="bottom" closeable close-icon-position="top-left" close-icon="heart" :style="{ height: '20%' }" v-model:visible="state.showCloseIcon"></nut-popup>
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        showIcon: false,
+        showIconPosition: false,
+        showCloseIcon: false,
+      });
+      return { state };
+    }
+  };
+</script>
 ```
+
+:::
 
 ### 圆角弹框
 
+:::demo
+
 ```html
-<nut-popup
-  position="bottom"
-  closeable
-  round
-  :style="{ height: '30%' }"
-  v-model:visible="show"
-></nut-popup>
+<template>
+  <nut-cell title="圆角弹框" is-link @click="state.showRound = true"></nut-cell>
+  <nut-popup position="bottom" closeable round :style="{ height: '30%' }" v-model:visible="state.showRound"></nut-popup>
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        showRound: false,
+      });
+      return { state };
+    }
+  };
+</script>
 ```
+
+:::
 
 ### 指定挂载节点
 
+:::demo
+
 ```html
-<nut-popup :style="{ padding: '30px' }" teleport="#app" v-model:visible="show">app</nut-popup>
+<template>
+  <nut-cell title="指定挂载节点" is-link @click="state.showTeleport = true"></nut-cell>
+  <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" v-model:visible="state.showTeleport" >app</nut-popup>
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        showTeleport: false,
+      });
+      return { state };
+    }
+  };
+</script>
 ```
+
+:::
 
 ## API
 

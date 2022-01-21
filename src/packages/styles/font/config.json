@@ -117,5 +117,22 @@
         "loading1"
       ]
     }
+    
+  ],
+  "style":[
+    {
+      "name": "通用动态样式",
+      "icons": [{
+        "name":"locationg3",
+        "am":"am-jump"
+      },{
+        "name":"star-fill-n",
+        "am":"am-blink"
+      },{
+        "name":"refresh2",
+        "am":"am-rotate"
+      }
+      ]
+    }
   ]
 }
