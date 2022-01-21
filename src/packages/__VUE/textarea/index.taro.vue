@@ -16,6 +16,7 @@
       @focus="focus"
       :maxlength="maxLength"
       :placeholder="placeholder"
+      :auto-focus="autofocus"
     />
     <view class="nut-textarea__limit" v-if="limitShow"> {{ modelValue ? modelValue.length : 0 }}/{{ maxLength }}</view>
   </view>
@@ -61,6 +62,10 @@ export default create({
       default: false
     },
     autosize: {
+      type: Boolean,
+      default: false
+    },
+    autofocus: {
       type: Boolean,
       default: false
     }
