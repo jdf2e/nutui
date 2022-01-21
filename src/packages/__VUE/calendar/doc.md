@@ -9,14 +9,13 @@
 ```javascript
 import { createApp } from 'vue';
 // vue
-import { Calendar,Popup,Cell } from '@nutui/nutui';
+import { Calendar,Popup } from '@nutui/nutui';
 // taro
-import { Calendar,Popup,Cell } from '@nutui/nutui-taro';
+import { Calendar,Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Calendar);
 app.use(Popup);
-app.use(Cell);
 
 ```
 

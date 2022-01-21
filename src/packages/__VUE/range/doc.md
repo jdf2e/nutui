@@ -9,13 +9,12 @@
 ```javascript
 import { createApp } from 'vue';
 //vue
-import { Range, Cell } from '@nutui/nutui';
+import { Range } from '@nutui/nutui';
 //taro
-import { Range, Cell} from '@nutui/nutui-taro';
+import { Range } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Range);
-app.use(Cell);
 ```
 
 ## 代码演示
