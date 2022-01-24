@@ -27,7 +27,7 @@
       icon="more-x"
     ></nut-navbar>
 
-    <h2>设置slot:content自定义导航栏中间内容</h2>
+    <h2>自定义导航栏中间内容</h2>
     <nut-navbar
       @on-click-back="back"
       @on-click-title="title"
