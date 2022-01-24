@@ -11,30 +11,96 @@
 
 import { createApp } from 'vue';
 // vue
-import { Navbar,Icon } from '@nutui/nutui';
+import { Navbar,Icon,Tabs, TabPane } from '@nutui/nutui';
 // taro
-import { Navbar,Icon } from '@nutui/nutui-taro';
+import { Navbar,Icon,Tabs, TabPane } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Navbar);
 app.use(Icon);
+app.use(Tabs);
+app.use(TabPane);
 
 ```
 
 #
 ### 基本用法
 
+:::demo
 ```html
-  <nut-navbar  @on-click-back="back" @on-click-title="title" @on-click-send="send" title="订单详情" icon="share"></nut-navbar>
-  <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-clear="clear"  title="浏览记录" desc="清空"></nut-navbar>
-  <nut-navbar :left-show="false" @on-click-title="title" @on-click-icon="icon" @on-click-clear="edit"  @on-click-send="more" title="购物车" titIcon="locationg3" desc="编辑" icon="more"></nut-navbar>
+  <template>
+<nut-navbar
+      @on-click-back="back"
+      @on-click-title="title"
+      @on-click-send="send"
+      title="订单详情"
+      icon="share-n"
+    ></nut-navbar>
+    <nut-navbar
+      @on-click-back="back"
+      @on-click-title="title"
+      @on-click-clear="clear"
+      title="浏览记录"
+      desc="清空"
+    ></nut-navbar>
+    <nut-navbar
+      :left-show="false"
+      @on-click-title="title"
+      @on-click-icon="icon"
+      @on-click-clear="edit"
+      @on-click-send="more"
+      title="购物车"
+      titIcon="cart2"
+      desc="编辑"
+      icon="more-x"
+    ></nut-navbar>
+  
+  </template>
+
+  <script lang="ts">
+  import { ref } from 'vue';
+  export default {
+  setup() {
+    const methods = {
+      back() {
+        alert('header头部， 点击返回');
+      },
+      title() {
+        alert('header头部， 点击title');
+      },
+      icon() {
+        alert('icon');
+      },
+      send() {
+        alert('发送');
+      },
+      edit() {
+        alert('编辑');
+      },
+      more() {
+        alert('更多');
+      },
+      clear() {
+        alert('清空');
+      },
+    };
+
+    return {
+      ...methods,
+    };
+  }
+}
+</script>
 
 ```
+:::
 
 ### 设置slot:content可以自定义导航栏中间内容
 
+:::demo
 ```html
-    <nut-navbar
+<template>
+ <nut-navbar
       @on-click-back="back"
       @on-click-title="title"
       @on-click-clear="edit"
@@ -49,11 +115,47 @@ app.use(Icon);
         </nut-tabs>
       </template>
     </nut-navbar>
+  </template>
+
+  <script lang="ts">
+    import { ref } from 'vue';
+    export default {
+    setup() {
+      const tab1value = ref(0);
+      const methods = {
+        back () {
+          alert('header头部， 点击返回');
+        },
+        title () {
+          alert('header头部， 点击title');
+        },
+        edit () {
+          alert('编辑');
+        },
+        list () {
+          alert('列表');
+        },
+        changeTab(tab: any) {
+          tab1value.value = tab.paneKey as number;
+        },
+      };
+
+    return {
+      tab1value,
+      ...methods
+    };
+  }
+}
+</script>
+
 ```
+:::
 
 ### 多tab切换导航及增加右侧按钮
 
+:::demo
 ```html
+<template>
    <nut-navbar @on-click-back="back" @on-click-send="list" icon="more-x">
       <template #content>
         <nut-tabs v-model="tab2value" @click="changeTabList">
@@ -67,7 +169,37 @@ app.use(Icon);
         <nut-icon class="icon" name="share" @on-click-slot-send="morelist"></nut-icon>
       </template>
     </nut-navbar>
+  </template>
+
+  <script lang="ts">
+    import { ref } from 'vue';
+    export default {
+      setup() {
+      const tab2value = ref(0);
+      const methods = {
+        back() {
+          alert('header头部， 点击返回');
+        },
+        list() {
+          alert('列表');
+        },
+        morelist () {
+          alert('多个更多');
+        },
+        changeTabList(tab: any) {
+          tab2value.value = tab.paneKey as number;
+        }
+      };
+      return {
+        tab2value,
+        ...methods
+      };
+    }
+}
+</script>
+
 ```
+:::
 
 ### Prop  
 

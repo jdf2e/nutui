@@ -67,38 +67,34 @@ export default defineComponent({
   setup(props, { emit }) {
     const tab1value = ref(0);
     const tab2value = ref(0);
-    const back = () => {
-      alert('header头部， 点击返回');
-    };
-    const title = () => {
-      alert('header头部， 点击title');
-    };
-    const right = () => {
-      alert('header头部， 点击右侧按钮');
-    };
-    const icon = () => {
-      alert('icon');
-    };
-    const send = () => {
-      alert('发送');
-    };
-    const edit = () => {
-      alert('编辑');
-    };
-    const more = () => {
-      alert('更多');
-    };
-    const clear = () => {
-      alert('清空');
-    };
-    const list = () => {
-      alert('列表');
-    };
-    const morelist = () => {
-      alert('多个更多');
-    };
-
     const methods = {
+      back() {
+        alert('header头部， 点击返回');
+      },
+      title() {
+        alert('header头部， 点击title');
+      },
+      icon() {
+        alert('icon');
+      },
+      send() {
+        alert('发送');
+      },
+      edit() {
+        alert('编辑');
+      },
+      more() {
+        alert('更多');
+      },
+      clear() {
+        alert('清空');
+      },
+      list() {
+        alert('列表');
+      },
+      morelist() {
+        alert('多个更多');
+      },
       changeTab(tab: any) {
         tab1value.value = tab.paneKey as number;
       },
@@ -108,16 +104,6 @@ export default defineComponent({
     };
 
     return {
-      back,
-      title,
-      right,
-      send,
-      edit,
-      clear,
-      more,
-      list,
-      icon,
-      morelist,
       tab1value,
       tab2value,
       ...methods
