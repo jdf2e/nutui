@@ -14,45 +14,79 @@ app.use(Drag);
 ```
 
 ## 基本用法
+:::demo
 ```html
-<nut-drag>
-  <div class="touch-dom">可点击，可拖拽</div>
-</nut-drag>
+<template>
+ <nut-drag>
+      <nut-button type="primary">触摸移动</nut-button>
+  </nut-drag>
+</template>
 ```
+:::
 ## 限制拖拽方向
+:::demo
 ```html
-<nut-drag direction="x">
-  <div class="touch-dom">只能在X轴拖动</div>
-</nut-drag>
+<template>
+  <nut-drag direction="x" :style="{ top: '200px', left: '8px' }">
+      <nut-button type="primary">只能X轴拖拽</nut-button>
+  </nut-drag>
+  </template>
 ```
+:::
 ## 自动吸边
+:::demo
 ```html
-<nut-drag direction="x" :attract="true">
-  <div class="touch-dom">拖动我</div>
-</nut-drag>
+<template>
+  <nut-drag
+      direction="x"
+      :attract="true"
+    >
+      <nut-button type="primary">拖动我</nut-button>
+    </nut-drag>
+    </template>
 ```
+:::
 ## 限制拖拽边界
+:::demo
 ```html
-<nut-drag
-  :boundary="{ top: 401, left: 9, bottom: bottom(), right: right() }"
-  :attract="true"
->
-  <div class="touch-dom">拖动我</div>
-</nut-drag>
+<template>
+ <div class="drag-boundary"></div>
+    <nut-drag
+      :boundary="{ top: 100, left: 9, bottom: bottom(), right: right() }"
+      :style="{ top: '100px', left: '50px' }"
+    >
+      <nut-button type="primary">限制拖拽边界</nut-button>
+    </nut-drag>
+</template>
 <script>
+  export default {
  setup() {
     function right() {
       return document.documentElement.clientWidth - 300 - 9;
     }
     function bottom() {
-      return document.documentElement.clientHeight - 559;
+      return document.documentElement.clientHeight - 300;
     }
     return {
       right,
       bottom
     };
   }
+  }
 </script>
+
+<style>
+.drag-boundary {
+  position: absolute;
+  top: 100px;
+  left: 8px;
+  width: 300px;
+  height: 200px;
+  border: 1px solid red;
+}
+</style>
+:::
+
 ```
 ## Prop
 

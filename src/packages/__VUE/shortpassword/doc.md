@@ -19,82 +19,252 @@ app.use(Popup);
 ```
 
 
-### 公用片段
-
-``` html
-<nut-shortpassword
-  v-model="state.value"
-  v-model:visible="state.visible"
-  :no-button="state.noButton"
-  :length="state.length"
-  :error-msg="state.errorMsg"
-  @change="methods.onChange"
-  @complete="methods.onComplete"
-  @ok="methods.onOk"
-  @tips="methods.onTips">
-</nut-shortpassword>
-```
-
-``` javascript
-import { reactive, getCurrentInstance } from 'vue';
-setup() {
-  let { proxy } = getCurrentInstance();
-  const state = reactive({
-    visible: false,
-    noButton: true,
-    value: '',
-    errorMsg: '',
-    length: 6
-  });
-  const methods = {
-    onChange(val: string) {
-      val && proxy.$toast.text(val);
-    },
-    onOk(val: string) {
-      val && proxy.$toast.text(val);
-      state.visible = false;
-    },
-    onComplete() {
-      
-    },
-    onTips() {
-      proxy.$toast.text('执行忘记密码逻辑');
-    }
-  };
-  return {
-    state,
-    methods
-  };
-}
-
-```
 ### 基础用法
-
-``` html
+:::demo
+```html
+<template>
 <nut-cell title="基础用法" is-link @click="state.visible = true;"></nut-cell>
+ <nut-shortpassword
+      v-model="state.value"
+      v-model:visible="state.visible"
+      @change="methods.onChange"
+      @close="methods.close"
+      @cancel="methods.cancel"
+    >
+    </nut-shortpassword>
+</template>
+<script>
+import { reactive } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default{
+  setup() {
+    const state = reactive({
+      visible: false,
+      value: '',
+    });
+    const methods = {
+      onChange(val) {
+        val && Toast.text(val);
+      },
+      close() {
+        Toast.text('点击icon关闭弹窗');
+      },
+      cancel() {
+        Toast.text('点击弹层关闭弹窗');
+      }
+    };
+    return {
+      state,
+      methods
+    };
+  }
+  }
+</script>
 ```
+:::
 
 ### 显示按钮组
-
-``` html
-<nut-cell title="显示按钮组" is-link @click="state.visible = true;state.noButton = false;"></nut-cell>
+:::demo
+```html
+<template>
+<nut-cell title="显示按钮组" is-link @click="state.visible = true;"></nut-cell>
+ <nut-shortpassword
+      v-model="state.value"
+      v-model:visible="state.visible"
+      :no-button="false"
+      @change="methods.onChange"
+      @ok="methods.onOk"
+      @close="methods.close"
+      @cancel="methods.cancel"
+    >
+    </nut-shortpassword>
+</template>
+<script>
+import { reactive } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default{
+  setup() {
+    const state = reactive({
+      visible: false,
+      noButton: true,
+      value: '',
+      errorMsg: '',
+      length: 6
+    });
+    const methods = {
+      onChange(val) {
+        val && Toast.text(val);
+      },
+      onOk(val) {
+        val && Toast.text(val);
+        state.visible = false;
+      },
+      close() {
+        Toast.text('点击icon关闭弹窗');
+      },
+      cancel() {
+        Toast.text('关闭弹窗');
+      }
+    };
+    return {
+      state,
+      methods
+    };
+  }
+  }
+</script>
 ```
+:::
 
 ### 自定义密码长度4
 
-``` html
-<nut-cell title="自定义密码长度4" is-link @click="state.visible = true;state.length = 4;"></nut-cell>
+:::demo
+```html
+<template>
+<nut-cell title="显示按钮组" is-link @click="state.visible = true;"></nut-cell>
+ <nut-shortpassword
+      v-model="state.value"
+      v-model:visible="state.visible"
+      :length="state.length"
+      @change="methods.onChange"
+      @close="methods.close"
+      @cancel="methods.cancel"
+    >
+    </nut-shortpassword>
+</template>
+<script>
+import { reactive } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default{
+  setup() {
+    const state = reactive({
+      visible: false,
+      value: '',
+      length: 4
+    });
+    const methods = {
+      onChange(val) {
+        val && Toast.text(val);
+      },
+      onOk(val) {
+        val && Toast.text(val);
+        state.visible = false;
+      },
+      close() {
+        Toast.text('点击icon关闭弹窗');
+      },
+      cancel() {
+        Toast.text('关闭弹窗');
+      }
+    };
+    return {
+      state,
+      methods
+    };
+  }
+  }
+</script>
 ```
+:::
 ### 忘记密码提示语事件回调
 
-``` html
-<nut-cell title="忘记密码提示语事件回调" is-link @click="state.visible = true;"></nut-cell>
+
+:::demo
+```html
+<template>
+<nut-cell title="显示按钮组" is-link @click="state.visible = true;"></nut-cell>
+ <nut-shortpassword
+      v-model="state.value"
+      v-model:visible="state.visible"
+      @change="methods.onChange"
+      @close="methods.close"
+      @tips="methods.onTips"
+      @cancel="methods.cancel"
+    >
+    </nut-shortpassword>
+</template>
+<script>
+import { reactive } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default{
+  setup() {
+    const state = reactive({
+      visible: false,
+      value: '',
+    });
+    const methods = {
+      onChange(val) {
+        val && Toast.text(val);
+      },
+      onTips() {
+        Toast.text('执行忘记密码逻辑');
+      },
+      close() {
+        Toast.text('点击icon关闭弹窗');
+      },
+      cancel() {
+        Toast.text('关闭弹窗');
+      }
+    };
+    return {
+      state,
+      methods
+    };
+  }
+  }
+</script>
 ```
+:::
 
 ### 错误提示语
-``` html
-<nut-cell title="错误提示语" is-link @click="state.visible = true;state.errorMsg = '请输入正确密码';"></nut-cell>
+:::demo
+```html
+<template>
+<nut-cell title="显示按钮组" is-link @click="state.visible = true;"></nut-cell>
+ <nut-shortpassword
+      v-model="state.value"
+      v-model:visible="state.visible"
+      :error-msg="state.errorMsg"
+      @change="methods.onChange"
+      @close="methods.close"
+      @tips="methods.onTips"
+      @cancel="methods.cancel"
+    >
+    </nut-shortpassword>
+</template>
+<script>
+import { reactive } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default{
+  setup() {
+    const state = reactive({
+      visible: false,
+      value: '',
+      errorMsg: '请输入正确密码',
+    });
+    const methods = {
+      onChange(val) {
+        val && Toast.text(val);
+      },
+      onTips() {
+        Toast.text('执行忘记密码逻辑');
+      },
+      close() {
+        Toast.text('点击icon关闭弹窗');
+      },
+      cancel() {
+        Toast.text('关闭弹窗');
+      }
+    };
+    return {
+      state,
+      methods
+    };
+  }
+  }
+</script>
 ```
+:::
 
 ### Prop
 
@@ -118,7 +288,7 @@ setup() {
 |----------|------------------------|----------|
 | change   | 输入密码时触发事件     |  当前输入框值value    |
 | ok       | 点击确实时触发事件     | 当前输入框值value    |
-| cancel   | 点击取消时触发事件     | -    |
+| cancel   | 点击弹层或取消时触发事件     | -    |
 | close    | 点击关闭图标时触发事件 | -    |
 | complete | 输入完成的回调         | 当前输入框值value    |
 
