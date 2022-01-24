@@ -215,7 +215,7 @@ export default {
 :::demo
 ```html
 <template>
-  <nut-video :source="source"></nut-video>
+  <nut-video :source="source1" :options="options"></nut-video>
   <nut-button type="primary" @click="changeVideo">切换视频</nut-button>
 </template>
 <script lang="ts">
@@ -223,16 +223,16 @@ import { toRefs, reactive } from 'vue';
 export default {
   setup() {
       const state = reactive({
-        source: {
-          src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+        source1: {
+          src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',
           type: 'video/mp4'
+        },
+        options: {
+          controls: true
         },
       });
       const changeVideo = () => {
-        state.source1 = {
-          src: 'https://vjs.zencdn.net/v/oceans.mp4',
-          type: 'video/mp4'
-        };
+        state.source1.src = 'https://vjs.zencdn.net/v/oceans.mp4';
       };
 
       return { ...toRefs(state), changeVideo };
