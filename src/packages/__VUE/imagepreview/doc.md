@@ -17,230 +17,242 @@ app.use(ImagePreview);
 ```
 
 ### 基础用法
-
+:::demo
 ```html
-<nut-imagepreview
-    :show="showPreview"
-    :images="imgData"
-    @close="hideFn"
-/>
-<nut-cell isLink title="展示图片预览" :showIcon="true" @click="showFn"></nut-cell>
-```
+<template>
+    <nut-imagepreview :show="showPreview" :images="imgData" @close="hideFn"/>
+    <nut-cell isLink title="展示图片预览" :showIcon="true" @click="showFn"></nut-cell>
+</template>
 
-```javascript
-setup() {
-    const resData = reactive({
-        showPreview: false,
-        imgData: [
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg',
-            },
-        ]
-    });
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+        const resData = reactive({
+            showPreview: false,
+            imgData: [
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg',
+                },
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png',
+                },
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg',
+                },
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg',
+                },
+            ]
+        });
 
-    const showFn = () => {
-        resData.showPreview = true;
+        const showFn = () => {
+            resData.showPreview = true;
+        }
+
+        const hideFn = () => {
+            resData.showPreview = false;
+        }
+        
+        return {
+            ...toRefs(resData),
+            showFn,
+            hideFn
+        };
     }
-
-    const hideFn = () => {
-        resData.showPreview = false;
-    }
-    
-    return {
-        ...toRefs(resData),
-        showFn,
-        hideFn
-    };
-},
+  };
+</script>
 ```
+:::
 
 ### 设置初始页码
-
+:::demo
 ```html
-<nut-imagepreview
-    :show="showPreview"
-    :images="imgData"
-    :content-close="true"
-    :init-no="3"
-    @close="hideFn"
-/>
-<nut-cell isLink title="设置初始页码的图片预览" :showIcon="true" @click="showFn"></nut-cell>
-```
+<template>
+    <nut-imagepreview :show="showPreview" :images="imgData" :content-close="true" :init-no="3" @close="hideFn"/>
+    <nut-cell isLink title="设置初始页码的图片预览" :showIcon="true" @click="showFn"></nut-cell>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+        const resData = reactive({
+            showPreview: false,
+            imgData: [
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg',
+                },
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png',
+                },
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg',
+                },
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg',
+                },
+            ]
+        });
 
-```javascript
-setup() {
-    const resData = reactive({
-        showPreview: false,
-        imgData: [
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg',
-            },
-        ]
-    });
+        const showFn = () => {
+            resData.showPreview = true;
+        }
 
-    const showFn = () => {
-        resData.showPreview = true;
+        const hideFn = () => {
+            resData.showPreview = false;
+        }
+        
+        return {
+            ...toRefs(resData),
+            showFn,
+            hideFn
+        };
     }
-
-    const hideFn = () => {
-        resData.showPreview = false;
-    }
-    
-    return {
-        ...toRefs(resData),
-        showFn,
-        hideFn
-    };
-},
+  };
+</script>
 ```
+:::
 
 ### 设置轮播指示器及颜色
-
+:::demo
 ```html
-<nut-imagepreview
-    :show="showPreview"
-    :images="imgData"
-    :pagination-visible="true"
-    pagination-color="red"
-    @close="hideFn"
-/>
-<nut-cell isLink title="设置轮播指示器及颜色" :showIcon="true" @click="showFn"></nut-cell>
-```
+<template>
+    <nut-imagepreview
+        :show="showPreview"
+        :images="imgData"
+        :pagination-visible="true"
+        pagination-color="red"
+        @close="hideFn"
+    />
+    <nut-cell isLink title="设置轮播指示器及颜色" :showIcon="true" @click="showFn"></nut-cell>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+        const resData = reactive({
+            showPreview: false,
+            imgData: [
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg',
+                },
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png',
+                },
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg',
+                },
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg',
+                },
+            ]
+        });
 
-```javascript
-setup() {
-    const resData = reactive({
-        showPreview: false,
-        imgData: [
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg',
-            },
-        ]
-    });
+        const showFn = () => {
+            resData.showPreview = true;
+        }
 
-    const showFn = () => {
-        resData.showPreview = true;
+        const hideFn = () => {
+            resData.showPreview = false;
+        }
+        
+        return {
+            ...toRefs(resData),
+            showFn,
+            hideFn
+        };
     }
-
-    const hideFn = () => {
-        resData.showPreview = false;
-    }
-    
-    return {
-        ...toRefs(resData),
-        showFn,
-        hideFn
-    };
-},
+  };
+</script>
 ```
+:::
 
 ### 视频、图片预览
-
+:::demo
 ```html
-<nut-imagepreview
-    :show="showPreview"
-    :images="imgData"
-    :videos="videoData"      
-    @close="hideFn"
-/>
-<nut-cell isLink title="视频、图片预览" :showIcon="true" @click="showFn"></nut-cell>
-```
-
-```javascript
-setup() {
-    const resData = reactive({
-        showPreview: false,
-        imgData: [
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg',
-            },
-        ],
-        videoData: [
-            {
-                source: {
-                    src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-                    type: 'video/mp4'
+<template>
+    <nut-imagepreview
+        :show="showPreview"
+        :images="imgData"
+        :videos="videoData"      
+        @close="hideFn"
+    />
+    <nut-cell isLink title="视频、图片预览" :showIcon="true" @click="showFn"></nut-cell>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+        const resData = reactive({
+            showPreview: false,
+            imgData: [
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg',
                 },
-                options: {
-                    muted: true,
-                    controls: true
-                }
-            },
-            {
-                source: {
-                    src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-                    type: 'video/mp4'
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png',
                 },
-                options: {
-                    muted: true,
-                    controls: true
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg',
+                },
+                {
+                    src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg',
+                },
+            ],
+            videoData: [
+                {
+                    source: {
+                        src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+                        type: 'video/mp4'
+                    },
+                    options: {
+                        muted: true,
+                        controls: true
+                    }
+                },
+                {
+                    source: {
+                        src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+                        type: 'video/mp4'
+                    },
+                    options: {
+                        muted: true,
+                        controls: true
+                    }
                 }
-            }
-        ],
-    });
+            ],
+        });
 
-    const showFn = () => {
-        resData.showPreview = true;
-    }
+        const showFn = () => {
+            resData.showPreview = true;
+        }
 
-    const hideFn = () => {
-        resData.showPreview = false;
+        const hideFn = () => {
+            resData.showPreview = false;
+        }
+        
+        return {
+            ...toRefs(resData),
+            showFn,
+            hideFn
+        };
     }
-    
-    return {
-        ...toRefs(resData),
-        showFn,
-        hideFn
-    };
-},
+  };
+</script>
 ```
+:::
                 
 ### 函数式调用
-
+:::demo
 ```html
-<nut-cell isLink title="函数式调用的图片预览" :showIcon="true" @click="fnShow"></nut-cell>
-```
+<template>
+    <nut-cell isLink title="函数式调用的图片预览" :showIcon="true" @click="fnShow"></nut-cell>
+</template>
 
-```javascript
-import { ImagePreview } from '@nutui/nutui';
-
-export default {
+<script lang="ts">
+  import { ImagePreview } from '@nutui/nutui';
+  import { reactive, toRefs } from 'vue';
+  export default {
     setup() {
         const resData = reactive({
             imgData: [
@@ -275,9 +287,11 @@ export default {
             ...toRefs(resData),
             fnShow
         };
-    },
-}
+    }
+  };
+</script>
 ```
+:::
     
 ### Props
 
