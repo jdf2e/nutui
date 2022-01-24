@@ -21,416 +21,580 @@ app.use(Table);
 
 ### 基础使用
 
+:::demo
 
 ```html
-<nut-table :columns="columns" :data="data"></nut-table>
+<template>
+  <nut-table :columns="columns" :data="data"></nut-table>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+        const state = reactive({
+            columns: [
+            {
+              title: '姓名',
+              key: 'name'
+            },
+            {
+              title: '性别',
+              key: 'sex'
+            },
+            {
+              title: '学历',
+              key: 'record'
+            }
+          ],
+          data: [
+            {
+              name: 'Tom',
+              sex: '男',
+              record: '小学'
+            },
+            {
+              name: 'Lucy',
+              sex: '女',
+              record: '本科'
+            },
+            {
+              name: 'Jack',
+              sex: '男',
+              record: '高中'
+            }
+          ],
+        });
+        return {
+            ...toRefs(state),
+        };
+    }
+  };
+</script>
 ```
-```ts
-setup() {
-    const state = reactive({
-        columns: [
-        {
-          title: '姓名',
-          key: 'name'
-        },
-        {
-          title: '性别',
-          key: 'sex'
-        },
-        {
-          title: '学历',
-          key: 'record'
-        }
-      ],
-      data: [
-        {
-          name: 'Tom',
-          sex: '男',
-          record: '小学'
-        },
-        {
-          name: 'Lucy',
-          sex: '女',
-          record: '本科'
-        },
-        {
-          name: 'Jack',
-          sex: '男',
-          record: '高中'
-        }
-      ],
-    });
-    return {
-        ...toRefs(state),
-    };
-}
-```
+
+:::
 
 ### 是否显示边框，文字对齐
 
+:::demo
 
 ```html
-<nut-table :columns="columns" :data="data" :bordered="bordered"></nut-table>
+<template>
+  <nut-table :columns="columns" :data="data" :bordered="bordered"></nut-table>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+        const state = reactive({
+            bordered: false,
+            columns: [
+            {
+              title: '姓名',
+              key: 'name',
+              align: 'center'
+            },
+            {
+              title: '性别',
+              key: 'sex'
+            },
+            {
+              title: '学历',
+              key: 'record'
+            }
+          ],
+          data: [
+            {
+              name: 'Tom',
+              sex: '男',
+              record: '小学'
+            },
+            {
+              name: 'Lucy',
+              sex: '女',
+              record: '本科'
+            },
+            {
+              name: 'Jack',
+              sex: '男',
+              record: '高中'
+            }
+          ],
+        });
+        return {
+            ...toRefs(state),
+        };
+    }
+  };
+</script>
 ```
-```ts
-setup() {
-    const state = reactive({
-        bordered: false,
-        columns: [
-        {
-          title: '姓名',
-          key: 'name',
-          align: 'center'
-        },
-        {
-          title: '性别',
-          key: 'sex'
-        },
-        {
-          title: '学历',
-          key: 'record'
-        }
-      ],
-      data: [
-        {
-          name: 'Tom',
-          sex: '男',
-          record: '小学'
-        },
-        {
-          name: 'Lucy',
-          sex: '女',
-          record: '本科'
-        },
-        {
-          name: 'Jack',
-          sex: '男',
-          record: '高中'
-        }
-      ],
-    });
-    return {
-        ...toRefs(state),
-    };
-}
-```
+
+:::
 
 ### 显示总结栏
 
+:::demo
 
 ```html
-<nut-table :columns="columns" :data="data" :summary="summary"></nut-table>
-```
-```ts
-setup() {
-    const state = reactive({
-        columns: [
-        {
-          title: '姓名',
-          key: 'name'
-        },
-        {
-          title: '性别',
-          key: 'sex'
-        },
-        {
-          title: '学历',
-          key: 'record'
-        },
-        {
-          title: '年龄',
-          key: 'age'
-        },
-        {
-          title: '地址',
-          key: 'address'
-        }
-      ],
-      data: [
-        {
-          name: 'Tom',
-          sex: '男',
-          record: '小学',
-          age: 13,
-          address: '北京'
-        },
-        {
-          name: 'Lucy',
-          sex: '女',
-          record: '本科',
-          age: 34,
-          address: '上海'
-        },
-        {
-          name: 'Jack',
-          sex: '男',
-          record: '高中',
-          age: 4,
-          address: '杭州'
-        }
-      ],
-      summary: () => {
+<template>
+  <nut-table :columns="columns" :data="data" :summary="summary"></nut-table>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+        const state = reactive({
+            columns: [
+            {
+              title: '姓名',
+              key: 'name'
+            },
+            {
+              title: '性别',
+              key: 'sex'
+            },
+            {
+              title: '学历',
+              key: 'record'
+            },
+            {
+              title: '年龄',
+              key: 'age'
+            },
+            {
+              title: '地址',
+              key: 'address'
+            }
+          ],
+          data: [
+            {
+              name: 'Tom',
+              sex: '男',
+              record: '小学',
+              age: 13,
+              address: '北京'
+            },
+            {
+              name: 'Lucy',
+              sex: '女',
+              record: '本科',
+              age: 34,
+              address: '上海'
+            },
+            {
+              name: 'Jack',
+              sex: '男',
+              record: '高中',
+              age: 4,
+              address: '杭州'
+            }
+          ],
+          summary: () => {
+            return {
+              value: '这是总结栏',
+              colspan: 5
+            }
+          }
+        });
         return {
-          value: '这是总结栏',
-          colspan: 5
-        }
-      }
-    });
-    return {
-        ...toRefs(state),
-    };
-}
+            ...toRefs(state),
+        };
+    }
+  };
+</script>
 ```
+
+:::
 
 ### 条纹、明暗交替
 
+:::demo
 
 ```html
-<nut-table :columns="columns3" :data="data2" :striped="striped"></nut-table>
+<template>
+  <nut-table :columns="columns3" :data="data2" :striped="striped"></nut-table>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+        const state = reactive({
+          striped: true,
+          columns3: [
+            {
+              title: '姓名',
+              key: 'name'
+            },
+            {
+              title: '性别',
+              key: 'sex'
+            },
+            {
+              title: '学历',
+              key: 'record'
+            },
+            {
+              title: '年龄',
+              key: 'age'
+            },
+            {
+              title: '地址',
+              key: 'address'
+            }
+          ],
+          data2: [
+            {
+              name: 'Tom',
+              sex: '男',
+              record: '小学',
+              age: 13,
+              address: '北京'
+            },
+            {
+              name: 'Lucy',
+              sex: '女',
+              record: '本科',
+              age: 34,
+              address: '上海'
+            },
+            {
+              name: 'Jack',
+              sex: '男',
+              record: '高中',
+              age: 4,
+              address: '杭州'
+            }
+          ]
+        });
+        return {
+            ...toRefs(state),
+        };
+    }
+  };
+</script>
 ```
-```ts
-setup() {
-    const state = reactive({
-      ...,
-      striped: true,
-    });
-    return {
-        ...toRefs(state),
-    };
-}
-```
+
+:::
 
 ### 无数据默认展示，支持自定义
 
-```html
-<nut-table :columns="columns" :data="data"></nut-table>
+:::demo
 
-<nut-table :columns="columns3" :data="data3">
-    <template #nodata>
-    <div class="no-data">
-        这里是自定义展示
-    </div>
-    </template>
-</nut-table>
+```html
+<template>
+  <nut-table :columns="columns" :data="data"></nut-table>
+  <nut-table :columns="columns3" :data="data3">
+      <template #nodata>
+      <div class="no-data">
+          这里是自定义展示
+      </div>
+      </template>
+  </nut-table>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        columns: [
+          {
+            title: '姓名',
+            key: 'name'
+          },
+          {
+            title: '性别',
+            key: 'sex'
+          },
+          {
+            title: '学历',
+            key: 'record'
+          },
+          {
+            title: '年龄',
+            key: 'age'
+          },
+          {
+            title: '地址',
+            key: 'address'
+          }
+        ],
+        data: [],
+        columns3: [
+          {
+            title: '姓名',
+            key: 'name'
+          },
+          {
+            title: '性别',
+            key: 'sex'
+          },
+          {
+            title: '学历',
+            key: 'record'
+          },
+          {
+            title: '年龄',
+            key: 'age'
+          },
+          {
+            title: '地址',
+            key: 'address'
+          }
+        ],
+        data3: [],
+      });
+      return {
+          ...toRefs(state),
+      };
+    }
+  }
+</script>
 ```
-```ts
-setup() {
-    const state = reactive({
-      columns: [
-        {
-          title: '姓名',
-          key: 'name'
-        },
-        {
-          title: '性别',
-          key: 'sex'
-        },
-        {
-          title: '学历',
-          key: 'record'
-        },
-        {
-          title: '年龄',
-          key: 'age'
-        },
-        {
-          title: '地址',
-          key: 'address'
-        }
-      ],
-      data: [],
-      striped: true,
-    });
-    return {
-        ...toRefs(state),
-    };
-}
-```
+
+:::
 
 ### 自定义单元格
 
+:::demo
+
 ```html
-<nut-table :columns="columns" :data="data">
-```
-```ts
-setup() {
-    const state = reactive({
-      columns: [
-        {
-          title: '姓名',
-          key: 'name',
-          align: 'center'
-        },
-        {
-          title: '性别',
-          key: 'sex'
-        },
-        {
-          title: '学历',
-          key: 'record'
-        },
-        {
-          title: '操作',
-          key: 'render'
-        }
-      ],
-      data: [
-          {
-          name: 'Tom',
-          sex: '男',
-          record: '小学',
-          render: () => {
-            return h(
-              Button,
+<template>
+  <nut-table :columns="columns" :data="data"></nut-table>
+</template>
+<script lang="ts">
+  import { reactive, toRefs, h } from 'vue';
+  import { Button, Icon } from '@nutui/nutui';
+  export default {
+    setup() {
+        const state = reactive({
+          columns: [
+            {
+              title: '姓名',
+              key: 'name',
+              align: 'center'
+            },
+            {
+              title: '性别',
+              key: 'sex'
+            },
+            {
+              title: '学历',
+              key: 'record'
+            },
+            {
+              title: '操作',
+              key: 'render'
+            }
+          ],
+          data: [
               {
-                onClick: () => {
-                  (Toast as any).text('hello');
-                },
-                size: 'small',
-                type: 'primary'
-              },
-              'Hello'
-            );
-          }
-        },
-        {
-          name: 'Lucy',
-          sex: '女',
-          record: '本科',
-          render: () => {
-            return h(Icon, { name: 'dongdong', size: '14px' });
-          }
-        },
-        {
-          name: 'Jack',
-          sex: '男',
-          record: '高中',
-          render: () => {
-            return h(
-              Button,
-              {
-                type: 'success',
-                size: 'small',
-                onClick: () => {
-                  window.open('https://www.jd.com');
-                }
-              },
-              '跳转到京东'
-            );
-          }
-        }
-      ]
-    });
-    return {
-        ...toRefs(state),
-    };
-}
+              name: 'Tom',
+              sex: '男',
+              record: '小学',
+              render: () => {
+                return h(
+                  Button,
+                  {
+                    onClick: () => {
+                      (Toast as any).text('hello');
+                    },
+                    size: 'small',
+                    type: 'primary'
+                  },
+                  'Hello'
+                );
+              }
+            },
+            {
+              name: 'Lucy',
+              sex: '女',
+              record: '本科',
+              render: () => {
+                return h(Icon, { name: 'dongdong', size: '14px' });
+              }
+            },
+            {
+              name: 'Jack',
+              sex: '男',
+              record: '高中',
+              render: () => {
+                return h(
+                  Button,
+                  {
+                    type: 'success',
+                    size: 'small',
+                    onClick: () => {
+                      window.open('https://www.jd.com');
+                    }
+                  },
+                  '跳转到京东'
+                );
+              }
+            }
+          ]
+        });
+        return {
+            ...toRefs(state),
+        };
+    }
+  }
+</script>
 ```
+
+:::
 
 ### 支持异步渲染
 
+:::demo
+
 ```html
-<nut-table :columns="columns" :data="data">
+<template>
+  <h2>支持异步渲染(5s之后看效果)</h2>
+  <nut-table :columns="columns" :data="data"></nut-table>
+</template>
+<script lang="ts">
+  import { reactive, toRefs, onMounted } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        columns: [
+          {
+            title: '姓名',
+            key: 'name'
+          },
+          {
+            title: '性别',
+            key: 'sex'
+          },
+          {
+            title: '学历',
+            key: 'record'
+          },
+          {
+            title: '年龄',
+            key: 'age'
+          },
+          {
+            title: '地址',
+            key: 'address'
+          }
+        ],
+        data: [],
+        data1: [
+          {
+            address: '北京',
+            name: 'Tom',
+            sex: '男',
+            record: '小学',
+            age: 13
+          },
+          {
+            record: '本科',
+            name: 'Lucy',
+            sex: '女',
+            age: 34,
+            address: '上海'
+          },
+          {
+            name: 'Jack',
+            sex: '男',
+            record: '高中',
+            age: 4,
+            address: '杭州'
+          }
+        ]
+      });
+      onMounted(() => {
+          setTimeout(() => {
+              state.data = state.data1.slice();
+          }, 5000);
+      });
+      return {
+          ...toRefs(state),
+      };
+    }
+  }
+</script>
 ```
-```ts
-setup() {
-    const state = reactive({
-      data: [],
-      data1: [
-        {
-          name: 'Tom',
-          sex: '男',
-          record: '小学',
-          age: 13,
-          address: '北京'
-        },
-        {
-          name: 'Lucy',
-          sex: '女',
-          record: '本科',
-          age: 34,
-          address: '上海'
-        },
-        {
-          name: 'Jack',
-          sex: '男',
-          record: '高中',
-          age: 4,
-          address: '杭州'
-        }
-      ]
-    });
-    onMounted(() => {
-        setTimeout(() => {
-            state.data = state.data1.slice();
-        }, 5000);
-    });
-    return {
-        ...toRefs(state),
-    };
-}
-```
+
+:::
 
 ### 支持排序
 
-```html
-<nut-table :columns="columns" :data="data" @sorter="handleSorter">
-```
-```ts
-setup() {
-    const state = reactive({
-      columns: [
-        {
-          title: '姓名',
-          key: 'name',
-          align: 'center',
-          sorter: true
-        },
-        {
-          title: '性别',
-          key: 'sex',
-        },
-        {
-          title: '学历',
-          key: 'record'
-        },
-        {
-          title: '年龄',
-          key: 'age',
-          sorter: (row1: any, row2: any) => { return row1.age - row2.age }
-        }
-      ],
-      data: [
-        {
-          name: 'Tom',
-          sex: '男',
-          record: '小学',
-          age: 10
-        },
-        {
-          name: 'Lucy',
-          sex: '女',
-          record: '本科',
-          age: 30
-        },
-        {
-          name: 'Jack',
-          sex: '男',
-          record: '高中',
-          age: 4
-        }
-      ]
-    });
-    
-    const handleSorter = (item: TableColumnProps) => {
-      (Toast as any).text(`${JSON.stringify(item)}`);
-    }
+:::demo
 
-    return {
-        ...toRefs(state),
-    };
-}
+```html
+<template>
+  <nut-table :columns="columns" :data="data" @sorter="handleSorter"></nut-table>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  import { Toast } from '@nutui/nutui';
+  export default {
+    setup() {
+      const state = reactive({
+        columns: [
+          {
+            title: '姓名',
+            key: 'name',
+            align: 'center',
+            sorter: true
+          },
+          {
+            title: '性别',
+            key: 'sex',
+          },
+          {
+            title: '学历',
+            key: 'record'
+          },
+          {
+            title: '年龄',
+            key: 'age',
+            sorter: (row1: any, row2: any) => { return row1.age - row2.age }
+          }
+        ],
+        data: [
+          {
+            name: 'Tom',
+            sex: '男',
+            record: '小学',
+            age: 10
+          },
+          {
+            name: 'Lucy',
+            sex: '女',
+            record: '本科',
+            age: 30
+          },
+          {
+            name: 'Jack',
+            sex: '男',
+            record: '高中',
+            age: 4
+          }
+        ]
+      });
+      
+      const handleSorter = (item: TableColumnProps) => {
+        (Toast as any).text(`${JSON.stringify(item)}`);
+      }
+
+      return {
+          ...toRefs(state),
+          handleSorter
+      };
+  }
+  }
+</script>
 ```
+
+:::
 
 ## API
 

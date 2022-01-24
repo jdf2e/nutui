@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "3.1.14",
+  "version": "3.1.15",
   "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
@@ -55,7 +55,8 @@
     "prepare": "husky install",
     "test": "jest",
     "release": "standard-version -a",
-    "codeformat": "prettier --write ."
+    "codeformat": "prettier --write .",
+    "copydocs": "node ./jd/copymd.js"
   },
   "standard-version": {
     "scripts": {
@@ -63,13 +64,14 @@
     }
   },
   "dependencies": {
+    "@tarojs/cli": "^3.4.0",
     "sass": "~1.32.0",
     "vue-router": "^4.0.11"
   },
   "devDependencies": {
     "@commitlint/cli": "^10.0.0",
     "@commitlint/config-conventional": "^10.0.0",
-    "@tarojs/taro": "^3.3.0-alpha.8",
+    "@tarojs/taro": "^3.4.0",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.31",
     "@typescript-eslint/eslint-plugin": "^4.20.0",
@@ -92,6 +94,8 @@
     "inquirer": "^8.2.0",
     "jest": "^26.6.3",
     "lint-staged": "^10.5.0",
+    "lzutf8": "^0.6.0",
+    "markdown-it-container": "^3.0.0",
     "prettier": "^2.0.0",
     "standard-version": "^9.3.0",
     "swiper": "6.5.1",

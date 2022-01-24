@@ -21,7 +21,7 @@
           <span
             class="nut-table__main__body__tr__td"
             :class="cellClasses(getColumnItem(value))"
-            v-for="value in Object.keys(item)"
+            v-for="value in sortDataItem()"
             :key="value"
           >
             <RenderColumn :slots="item[value]" v-if="typeof item[value] === 'function'"></RenderColumn>

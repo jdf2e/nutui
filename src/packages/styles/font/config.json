@@ -117,5 +117,41 @@
         "loading1"
       ]
     }
+    
+  ],
+  "style":[
+    {
+      "name": "通用动态样式",
+      "icons": [{
+        "name":"dou-arrow-up",
+        "animation-name":"am-jump",
+        "animation-time":"am-infinite"
+      },{
+        "name":"star",
+        "animation-name":"am-blink",
+        "animation-time":"am-infinite"
+      },{
+        "name":"refresh2",
+        "animation-name":"am-rotate",
+        "animation-time":"am-infinite"
+      },{
+        "name":"heart-fill",
+        "animation-name":"am-breathe",
+        "animation-time":"am-infinite"
+      },{
+        "name":"microphone",
+        "animation-name":"am-flash",
+        "animation-time":"am-infinite"
+      },{
+        "name":"download",
+        "animation-name":"am-bounce",
+        "animation-time":"am-infinite"
+      },{
+        "name":"message",
+        "animation-name":"am-shake",
+        "animation-time":"am-infinite"
+      }
+      ]
+    }
   ]
 }

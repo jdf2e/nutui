@@ -80,7 +80,7 @@ export default create({
       type: Object
     }
   },
-  setup(props) {
+  setup(props, ctx: any) {
     const collapse: any = inject('collapseParent');
     const parent: any = reactive(collapse);
     const classes = computed(() => {
@@ -140,7 +140,7 @@ export default create({
       if (!wrapperRefEle || !contentRefEle) {
         return;
       }
-      const offsetHeight = contentRefEle.offsetHeight;
+      const offsetHeight = contentRefEle.offsetHeight || 'auto';
       if (offsetHeight) {
         const contentHeight = `${offsetHeight}px`;
         wrapperRefEle.style.willChange = 'height';
@@ -205,6 +205,15 @@ export default create({
         proxyData.openExpanded = true;
       }
     });
+
+    watch(
+      () => ctx?.slots?.default?.(),
+      () => {
+        setTimeout(() => {
+          animation();
+        }, 300);
+      }
+    );
 
     onMounted(() => {
       const { name } = props;
