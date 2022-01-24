@@ -6,7 +6,7 @@
 
 ### 安装
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 //vue
 import { Price } from '@nutui/nutui';
@@ -21,48 +21,90 @@ app.use(Price);
 
 ### 基本用法 small normal large
 
+:::demo
+
 ``` html
-<nut-price :price="0" size="small" :need-symbol="false" :thousands="true" />
-<nut-price :price="0" size="normal" :need-symbol="false" :thousands="true" />
-<nut-price :price="0" size="large" :need-symbol="false" :thousands="true" />
+<template>
+    <nut-price :price="0" size="small" :need-symbol="false" :thousands="true" />
+    <nut-price :price="0" size="normal" :need-symbol="false" :thousands="true" />
+    <nut-price :price="0" size="large" :need-symbol="false" :thousands="true" />
+</template>
 ```
 
+:::
+
 ### 不保留小数
+
+:::demo
+
 ``` html
-<nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
+<template>
+    <nut-price :price="8888" decimal-digits="0" size="normal" :need-symbol="true" :thousands="true" />
+</template>
 ```
+
+:::
+
 ### 调整 symbol 符号位置
+
+:::demo
+
 ``` html
-<nut-price :price="8888.01" position="after" symbol="元" size="normal" :need-symbol="true" :thousands="true" />
+<template>
+    <nut-price :price="8888.01" position="after" symbol="元" size="normal" :need-symbol="true" :thousands="true" />
+</template>
 ```
+
+:::
 
 ### 有人民币符号，无千位分隔
 
-``` html
-<nut-price :price="10010.01" :need-symbol="true" :thousands="false" />
-```
+:::demo
 
+``` html
+
+<template>
+    <nut-price :price="10010.01" :need-symbol="true" :thousands="false" />
+</template>
+```
+:::
 ### 带人民币符号，有千位分隔，保留小数点后三位
 
-``` html
-<nut-price :price="15213.1221" :decimal-digits="3" :need-symbol="true" :thousands="true" />
-```
-### 异步随机变更
+:::demo
 
 ``` html
-<nut-price :price="price" :decimal-digits="3" :need-symbol="true" :thousands="true" />
+<template>
+    <nut-price :price="15213.1221" :decimal-digits="3" :need-symbol="true" :thousands="true" />
+</template>
 ```
-``` javascript
-setup() {
-    const price = ref(0);
-    setInterval(() => {
-        price.value = Math.random()*10000000;
-    }, 1000);
-    return {
-        price
-    };
-}
+
+:::
+### 异步随机变更
+
+:::demo
+
+``` html
+<template>
+    <nut-price :price="price" :decimal-digits="3" :need-symbol="true" :thousands="true" />
+</template>
+
+
+<script lang="ts">
+    import { ref } from 'vue';
+    export default {
+        setup() {
+            const price = ref(0);
+            setInterval(() => {
+                price.value = Math.random()*10000000;
+            }, 1000);
+            return {
+                price
+            };
+        }
+    }
+</script>
 ```
+:::
 
 ### Prop
 
