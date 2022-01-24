@@ -31,7 +31,7 @@ app.use(Icon);
 
 ```
 
-### 设置slot:tabs可以增加tab
+### 设置slot:content可以自定义导航栏中间内容
 
 ```html
     <nut-navbar
@@ -42,7 +42,7 @@ app.use(Icon);
       desc="编辑"
       icon="horizontal-n"
     >
-      <template #tabs>
+      <template #content>
         <nut-tabs v-model="tab1value" @click="changeTab">
           <nut-tabpane title="商品"> </nut-tabpane>
           <nut-tabpane title="店铺"> </nut-tabpane>
@@ -55,7 +55,7 @@ app.use(Icon);
 
 ```html
    <nut-navbar @on-click-back="back" @on-click-send="list" icon="more-x">
-      <template #tabs>
+      <template #content>
         <nut-tabs v-model="tab2value" @click="changeTabList">
           <nut-tabpane title="商品"> </nut-tabpane>
           <nut-tabpane title="评价"> </nut-tabpane>
@@ -90,4 +90,4 @@ app.use(Icon);
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
 | icons | 增加右侧图标 |  |
-| tabs |  增加tab |  |
+| content |  自定义导航栏中间内容 |  |

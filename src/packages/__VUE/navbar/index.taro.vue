@@ -6,7 +6,7 @@
     <view class="nut-navbar__title" :class="{ icon }">
       <view v-if="title" class="text__title" @click="handleCenter">{{ title }}</view>
       <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
-      <slot name="tabs"></slot>
+      <slot name="content"></slot>
     </view>
     <view class="nut-navbar__right" :class="{ icon }" v-if="desc || icon">
       <view v-if="desc" :style="{ 'text-align': descTextAlign }" @click="handleClear">{{ desc }}</view>
@@ -31,15 +31,8 @@ export default create({
     leftShow: { type: Boolean, default: true }, //左侧  是否显示返回
     title: { type: String, default: '' }, //中间  文字标题
     titIcon: { type: String, default: '' }, //中间  标题icon
-    tabs: {
-      type: Array,
-      defaul: () => {
-        return [];
-      }
-    },
     icon: { type: String, default: '' }, //右侧   按钮图标
     desc: { type: String, default: '' }, //右侧   按钮文字
-
     defaultIndex: {
       type: Number,
       default: 0

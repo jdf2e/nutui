@@ -27,7 +27,7 @@
       icon="more-x"
     ></nut-navbar>
 
-    <h2>增加tab及右侧按钮</h2>
+    <h2>设置slot:content自定义导航栏中间内容</h2>
     <nut-navbar
       @on-click-back="back"
       @on-click-title="title"
@@ -36,7 +36,7 @@
       desc="编辑"
       icon="horizontal-n"
     >
-      <template #tabs>
+      <template #content>
         <nut-tabs v-model="tab1value" @click="changeTab">
           <nut-tabpane title="商品"> </nut-tabpane>
           <nut-tabpane title="店铺"> </nut-tabpane>
@@ -46,7 +46,7 @@
 
     <h2>多tab切换导航</h2>
     <nut-navbar @on-click-back="back" @on-click-send="list" icon="more-x">
-      <template #tabs>
+      <template #content>
         <nut-tabs v-model="tab2value" @click="changeTabList">
           <nut-tabpane title="商品"> </nut-tabpane>
           <nut-tabpane title="评价"> </nut-tabpane>
