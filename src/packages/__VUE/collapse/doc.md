@@ -23,9 +23,11 @@ app.use(CollapseItem);
 ## 基本用法
 
 通过`v-model`控制展开的面板列表，`activeNames`为数组格式
+:::demo
 
 ```html
-<nut-collapse v-model:active="active1" icon="down-arrow">
+<template>
+<nut-collapse v-model:active="activeNames" icon="down-arrow">
   <nut-collapse-item :name="1">
     <template v-slot:mTitle>
       {{title1}}
@@ -38,157 +40,187 @@ app.use(CollapseItem);
   <nut-collapse-item :title="title3" :name="3" disabled>
   </nut-collapse-item>
 </nut-collapse>
-```
-
-``` javascript
-setup() {
-  const activeNames = reactive([1, 2]);
-  const title = reactive({
-    title1: '标题1',
-    title2: '标题2',
-    title3: '标题3',
-  })
-  return {
-    activeNames,
-    ...toRefs(title)
-  };
+</template>
+<script>
+import { reactive, toRefs } from 'vue';
+export default {
+  setup() {
+    const activeNames = reactive([1, 2]);
+    const title = reactive({
+      title1: '标题1',
+      title2: '标题2',
+      title3: '标题3',
+    })
+    return {
+      activeNames,
+      ...toRefs(title)
+    };
+  }
 }
+
 ```
+:::
 ### 无icon样式
+:::demo
 
 ```html
-<nut-collapse v-model:active="activeName" :accordion="true">
-  <nut-collapse-item :title="title1" :name="1">
-   引入Vue3新特性 Composition API、Teleport、Emits 等
-  </nut-collapse-item>
-  <nut-collapse-item :title="title2" :name="2">
-    全面使用 TypeScipt
-  </nut-collapse-item>
-</nut-collapse>
-```
-
-``` javascript
-setup() {
-  const activeName = ref(1);
-  const title = reactive({
-    title1: '标题1',
-    title2: '标题2',
-    title3: '标题3',
-  })
-  return {
-    activeName,
-    ...toRefs(title)
-  };
+<template>
+  <nut-collapse v-model:active="activeName" :accordion="true">
+    <nut-collapse-item :title="title1" :name="1">
+    引入Vue3新特性 Composition API、Teleport、Emits 等
+    </nut-collapse-item>
+    <nut-collapse-item :title="title2" :name="2">
+      全面使用 TypeScipt
+    </nut-collapse-item>
+  </nut-collapse>
+</template>
+<script>
+import { reactive, ref, toRefs } from 'vue';
+export default {
+  setup() {
+    const activeName = ref(1);
+    const title = reactive({
+      title1: '标题1',
+      title2: '标题2',
+      title3: '标题3',
+    })
+    return {
+      activeName,
+      ...toRefs(title)
+    };
+  }
 }
+</script>
 ```
-
+:::
 ### 手风琴
 
 通过`accordion`可以设置为手风琴模式，最多展开一个面板，此时`activeName`为字符串格式；`subTitle`可以设置副标题的内容
 
+:::demo
+
 ```html
- <nut-collapse v-model:active="activeName" :accordion="true" icon="down-arrow">
-  <nut-collapse-item :title="title1" :name="1">
-    基于京东设计语言体系，构建场景
-  </nut-collapse-item>
-  <nut-collapse-item :title="title2" :name="2" :sub-title="subTitle">
-   提高界⾯的模块化通用程度
-  </nut-collapse-item>
-  <nut-collapse-item :title="title3" :name="3">
-  采用组合式 API Composition 语法重构，结构清晰，功能模块化
-  </nut-collapse-item>
-</nut-collapse>
-```
-
-``` javascript
-setup() {
-  const activeName = ref(1);
-  const subTitle = '副标题';
-  const title = reactive({
-    title1: '标题1',
-    title2: '标题2',
-    title3: '标题3',
-  })
-  return {
-    activeName,
-    subTitle,
-    ...toRefs(title)
-  };
+<template>
+  <nut-collapse v-model:active="activeName" :accordion="true" icon="down-arrow">
+    <nut-collapse-item :title="title1" :name="1">
+      基于京东设计语言体系，构建场景
+    </nut-collapse-item>
+    <nut-collapse-item :title="title2" :name="2" :sub-title="subTitle">
+      提高界⾯的模块化通用程度
+    </nut-collapse-item>
+    <nut-collapse-item :title="title3" :name="3">
+      采用组合式 API Composition 语法重构，结构清晰，功能模块化
+    </nut-collapse-item>
+  </nut-collapse>
+</template>
+<script>
+import { reactive, ref, toRefs } from 'vue';
+export default {
+  setup() {
+    const activeName = ref(1);
+    const subTitle = '副标题';
+    const title = reactive({
+      title1: '标题1',
+      title2: '标题2',
+      title3: '标题3',
+    })
+    return {
+      activeName,
+      subTitle,
+      ...toRefs(title)
+    };
+  }
 }
+</script>
 ```
 
-
+:::
 ### 自定义折叠图标
 
 通过icon设置自定义图标，rotate设置图标旋转的角度
 
+:::demo
+
 ```html
-<nut-collapse
-  v-model:active="activeName"
-  :accordion="true"
-  icon="arrow-right2"
-  rotate="90"
->
-  <nut-collapse-item :title="title1" :name="1">
-    <template v-slot:sTitle>
-      文本测试
-    </template>
-    NUTUI3.0重新思考其内在的一致性和可组合性
-  </nut-collapse-item>
-  <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">
-    提⾼产研输出对接的效率，降低输出工作量
-  </nut-collapse-item>
-</nut-collapse>
+<template>
+  <nut-collapse
+    v-model:active="activeName"
+    :accordion="true"
+    icon="arrow-right2"
+    rotate="90"
+  >
+    <nut-collapse-item :title="title1" :name="1">
+      <template v-slot:sTitle>
+        文本测试
+      </template>
+      NUTUI3.0重新思考其内在的一致性和可组合性
+    </nut-collapse-item>
+    <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">
+      提⾼产研输出对接的效率，降低输出工作量
+    </nut-collapse-item>
+  </nut-collapse>
+</template>
+<script>
+import { reactive, ref, toRefs } from 'vue';
+export default {
+  setup() {
+    const activeName = ref(1);
+    const title = reactive({
+      title1: '标题1',
+      title2: '标题2',
+    })
+    return {
+      activeName,
+      ...toRefs(title)
+    };
+  }
+}
+</script>
 ```
-
-``` javascript
-const activeName = ref(1);
-const title = reactive({
-  title1: '标题1',
-  title2: '标题2',
-})
-return {
-  activeName,
-  ...toRefs(title)
-};
-```
-
+:::
 
 ### 自定义标题图标
 
 通过icon设置自定义图标，rotate设置图标旋转的角度
+:::demo
 
 ```html
-<nut-collapse
-  v-model:active="activeName"
-  title-icon="issue"
-  title-icon-color="red"
-  title-icon-size="20px"
-  title-icon-position="left"
-  icon="down-arrow"
-  :accordion="true"
->
-  <nut-collapse-item :title="title1" :name="1">
-  组件 emits 事件单独提取，增强代码可读性
-  </nut-collapse-item>
-  <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">
-  使用 Teleport 新特性重构挂载类组件
-  </nut-collapse-item>
-</nut-collapse>
+<template>
+  <nut-collapse
+    v-model:active="activeName"
+    title-icon="issue"
+    title-icon-color="red"
+    title-icon-size="20px"
+    title-icon-position="left"
+    icon="down-arrow"
+    :accordion="true"
+  >
+    <nut-collapse-item :title="title1" :name="1">
+    组件 emits 事件单独提取，增强代码可读性
+    </nut-collapse-item>
+    <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">
+    使用 Teleport 新特性重构挂载类组件
+    </nut-collapse-item>
+  </nut-collapse>
+</template>
+<script>
+import { reactive, ref, toRefs } from 'vue';
+export default {
+  setup() {
+    const activeName = ref(1);
+    const title = reactive({
+      title1: '标题1',
+      title2: '标题2',
+    })
+    return {
+      activeName,
+      ...toRefs(title)
+    };
+  }
+}
+</script>
 ```
-
-``` javascript
-const activeName = ref(1);
-const title = reactive({
-  title1: '标题1',
-  title2: '标题2',
-})
-return {
-  activeName,
-  ...toRefs(title)
-};
-```
-
+:::
 ## Collapse Prop
 
 | 字段 | 说明 | 类型 | 默认值

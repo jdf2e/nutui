@@ -177,6 +177,7 @@ export default {
       :class="{active:state.tab7value==item.paneKey}" :key="item.paneKey" v-for="item in state.list6">
       <nut-icon v-if="item.icon" :name="item.icon" />
       <span class="nut-tabs__titles-item__text">{{item.title}}</span>
+      <span class="nut-tabs__titles-item__line"></span>
     </div>
   </template>
   <nut-tabpane v-for="item in state.list6" :pane-key="item.paneKey">

@@ -1,12 +1,12 @@
 .nut-menu__bar {
   position: relative;
   display: flex;
-  line-height: $nut-menu-bar-line-height;
+  line-height: $menu-bar-line-height;
   background-color: $white;
-  border-bottom: 1px solid $nut-menu-bar-border-bottom-color;
+  border-bottom: 1px solid $menu-bar-border-bottom-color;
 
   &.opened {
-    z-index: $nut-menu-bar-opened-z-index;
+    z-index: $menu-bar-opened-z-index;
   }
 
   .nut-menu__item {
@@ -16,8 +16,12 @@
     color: $title-color;
     min-width: 0;
 
+    &.active {
+      color: $menu-item-active-text-color;
+    }
+
     &.disabled {
-      color: $nut-menu-item-disabled-color;
+      color: $menu-item-disabled-color;
     }
 
     .nut-menu__title-icon {
@@ -33,8 +37,8 @@
       .nut-menu__title-text {
         @include text-ellipsis;
         display: block;
-        padding-left: $nut-menu-title-text-padding-left;
-        padding-right: $nut-menu-title-text-padding-right;
+        padding-left: $menu-title-text-padding-left;
+        padding-right: $menu-title-text-padding-right;
       }
 
       &.active .nut-menu__title-icon {

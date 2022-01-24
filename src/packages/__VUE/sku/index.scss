@@ -65,7 +65,7 @@
           border: 1px solid rgba(242, 242, 242, 1);
 
           &.active {
-            background: rgba(252, 237, 235, 1);
+            background: $sku-item-active-bg;
             border: $sku-item-border;
             color: $primary-color;
           }

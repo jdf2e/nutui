@@ -3,39 +3,35 @@ const path = require('path');
 const fs = require('fs-extra');
 let fileStr = `@import '../variables.scss';\n`;
 let tasks = [];
-config.nav.map(item => {
-  item.packages.forEach(element => {
+config.nav.map((item) => {
+  item.packages.forEach((element) => {
     let folderName = element.name.toLowerCase();
     tasks.push(
       fs
         .copy(
-          path.resolve(
-            __dirname,
-            `../src/packages/__VUE/${folderName}/index.scss`
-          ),
+          path.resolve(__dirname, `../src/packages/__VUE/${folderName}/index.scss`),
           path.resolve(__dirname, `../dist/packages/${folderName}/index.scss`)
         )
-        .then(success => {
+        .then((success) => {
           fileStr += `@import '../../packages/${folderName}/index.scss';\n`;
         })
-        .catch(error => {})
+        .catch((error) => {})
     );
   });
 });
 
-tasks.push(
-  fs.copy(
-    path.resolve(__dirname, '../src/packages/styles'),
-    path.resolve(__dirname, '../dist/styles')
-  )
-);
+tasks.push(fs.copy(path.resolve(__dirname, '../src/packages/styles'), path.resolve(__dirname, '../dist/styles')));
 
-Promise.all(tasks).then(res => {
+Promise.all(tasks).then((res) => {
+  fs.outputFile(path.resolve(__dirname, '../dist/styles/themes/default.scss'), fileStr, 'utf8', (error) => {
+    // logger.success(`文件写入成功`);
+  });
   fs.outputFile(
-    path.resolve(__dirname, '../dist/styles/themes/default.scss'),
-    fileStr,
+    path.resolve(__dirname, '../dist/styles/themes/jdd.scss'),
+    `$primary-color: #2c68ff;
+$primary-color-end: #2c68ff;`,
     'utf8',
-    error => {
+    (error) => {
       // logger.success(`文件写入成功`);
     }
   );

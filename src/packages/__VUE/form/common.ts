@@ -16,20 +16,20 @@ export const component = {
   setup(props: any, { emit, slots }: any) {
     const formErrorTip = computed(() => reactive<any>({}));
     provide('formErrorTip', formErrorTip);
-    const init = (value = props.modelValue) => {
-      Object.keys(value).forEach((item) => {
+    const clearErrorTips = (value = props.modelValue) => {
+      Object.keys(formErrorTip.value).forEach((item) => {
         formErrorTip.value[item] = '';
       });
     };
 
     const reset = () => {
-      init();
+      clearErrorTips();
     };
 
     watch(
       () => props.modelValue,
       (value: any) => {
-        init(value);
+        clearErrorTips(value);
       },
       { immediate: true }
     );
@@ -72,7 +72,11 @@ export const component = {
         return keyPath.split('.').reduce((prev, curr) => prev[curr], obj);
       };
 
-      let value = getPropByPath(props.modelValue, prop);
+      if (!prop) {
+        console.warn('[NutUI] <FormItem> 使用 rules 校验规则时 , 必须设置 prop 参数');
+      }
+
+      let value = getPropByPath(props.modelValue, prop || '');
 
       // clear tips
       tipMessage({ prop, message: '' });

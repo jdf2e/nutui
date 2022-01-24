@@ -20,7 +20,7 @@
           @animationend="onAnimationEnd"
           @webkitAnimationEnd="onAnimationEnd"
         >
-          <slot>1{{ text }}</slot>
+          <slot>{{ text }}</slot>
         </view>
       </view>
       <view v-if="closeMode" class="right-icon" @click.stop="onClickIcon">

@@ -1,0 +1,17 @@
+name: Sync to Gitcode
+
+on:
+  push:
+    branches: [next]
+
+jobs:
+  deploy-site-sync-gitcode:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync to Gitcode
+        uses: wearerequired/git-mirror-action@master
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
+        with:
+          source-repo: git@github.com:jdf2e/nutui.git
+          destination-repo: git@gitcode.net:jd/nutui.git

@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-tabbar" :class="{ 'nut-tabbar-bottom': bottom }">
+  <view class="nut-tabbar" :class="{ 'nut-tabbar-bottom': bottom, 'nut-tabbar-safebottom': safeAreaInsetBottom }">
     <slot></slot>
   </view>
 </template>
@@ -33,6 +33,10 @@ export default create({
     activeColor: {
       type: String,
       default: ''
+    },
+    safeAreaInsetBottom: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['tab-switch', 'update:visible'],

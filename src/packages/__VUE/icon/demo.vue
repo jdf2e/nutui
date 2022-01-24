@@ -27,12 +27,26 @@
       <nut-icon name="dongdong" size="26"></nut-icon>
     </nut-cell>
 
-    <nut-cell-group v-for="item in icons.data" :title="item.name">
+    <nut-cell-group v-for="item in icons.data" :title="item.name" :key="item">
       <nut-cell>
         <ul>
           <li v-for="item in item.icons" :key="item">
             <nut-icon :name="item"></nut-icon>
             <span>{{ item }}</span>
+          </li>
+        </ul>
+      </nut-cell>
+    </nut-cell-group>
+
+    <nut-cell-group v-for="item in icons.style" :title="item.name" :key="item">
+      <nut-cell>
+        <ul>
+          <li v-for="it in item.icons" :key="it">
+            <nut-icon
+              :name="it.name"
+              :class="`nut-icon-${it['animation-name']} nut-icon-${it['animation-time']}`"
+            ></nut-icon>
+            <span>{{ it['animation-name'] }}</span>
           </li>
         </ul>
       </nut-cell>
@@ -63,6 +77,7 @@ ul {
   display: flex;
   flex-wrap: wrap;
   padding: 0;
+  width: 100%;
   li {
     flex: 0 0 25%;
     max-width: 25%;
