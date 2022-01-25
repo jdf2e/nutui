@@ -29,9 +29,8 @@
     <nut-uploader :url="uploadUrl" multiple maximum="5"></nut-uploader>
     <h2>限制上传大小（每个文件最大不超过 50kb）</h2>
     <nut-uploader :url="uploadUrl" multiple :maximize="1024 * 50" @oversize="onOversize"></nut-uploader>
-    <h2>限制上传大小（在beforeupload钩子中处理）</h2>
-    <nut-uploader :url="uploadUrl" multiple :before-upload="beforeUpload" :maximize="1024 * 50" @oversize="onOversize">
-    </nut-uploader>
+    <h2>图片压缩（在 beforeupload 钩子中处理）</h2>
+    <nut-uploader :url="uploadUrl" multiple :before-upload="beforeUpload"> </nut-uploader>
     <h2>自定义数据 FormData 、 headers </h2>
     <nut-uploader :url="uploadUrl" :data="formData" :headers="formData" :with-credentials="true"></nut-uploader>
     <h2>选中文件后，通过按钮手动执行上传 </h2>
@@ -106,6 +105,7 @@ export default createDemo({
       console.log('progress 事件触发', percentage);
     };
     const beforeUpload = async (file: File[]) => {
+      let fileName = file[0].name;
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d') as CanvasRenderingContext2D;
       const base64 = await fileToDataURL(file[0]);
@@ -117,7 +117,7 @@ export default createDemo({
       context.drawImage(img, 0, 0, img.width, img.height);
 
       let blob = (await canvastoFile(canvas, 'image/jpeg', 0.5)) as Blob; //quality:0.5可根据实际情况计算
-      const f = await new File([blob], file[0].name);
+      const f = await new File([blob], fileName);
       return [f];
     };
     const uploadRef = ref<any>(null);
