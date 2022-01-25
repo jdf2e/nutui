@@ -2,38 +2,27 @@
   <view :class="classes">
     <nut-popup
       position="bottom"
-      :style="{ height: height + 56 + 'px' }"
       v-model:visible="show"
       :teleport="teleport"
       :lock-scroll="lockScroll"
       :close-on-click-overlay="closeOnClickOverlay"
       @close="close"
+      :round="true"
     >
       <view class="nut-picker__bar">
-        <view class="nut-picker__left nut-picker__button" @click="close">{{
-          cancelText
-        }}</view>
+        <view class="nut-picker__left nut-picker__button" @click="close">{{ cancelText }}</view>
         <view> {{ title }}</view>
         <view class="nut-picker__button" @click="confirm()">{{ okText }}</view>
       </view>
 
       <view class="nut-picker__column">
-        <view
-          class="nut-picker__mask"
-          :style="{ backgroundSize: `100% ${top}px` }"
-        ></view>
-        <view class="nut-picker__hairline" :style="{ top: ` ${top}px` }"></view>
-        <view
-          class="nut-picker__columnitem"
-          v-for="(item, columnIndex) in columnList"
-          :key="columnIndex"
-        >
+        <view class="nut-picker__hairline"></view>
+        <view class="nut-picker__columnitem" v-for="(item, columnIndex) in columnList" :key="columnIndex">
           <nut-picker-column
-            :list-data="item.values"
+            :list-data="item"
             :readonly="readonly"
             :default-index="item.defaultIndex"
             :visible-item-count="visibleItemCount"
-            :item-height="itemHeight"
             :data-type="dataType"
             @change="
               (dataIndex) => {
@@ -52,12 +41,7 @@ import { createComponent } from '../../utils/create';
 import column from './Column.vue';
 import popup, { popupProps } from '../popup/index.vue';
 import { commonProps } from './commonProps';
-import {
-  PickerObjOpt,
-  PickerOption,
-  PickerObjectColumn,
-  PickerObjectColumns
-} from './types';
+import { PickerObjOpt, PickerOption, PickerObjectColumn, PickerObjectColumns } from './types';
 const { create, componentName } = createComponent('picker');
 
 export default create({
@@ -101,14 +85,6 @@ export default create({
       };
     });
 
-    const top = computed(() => {
-      return (Number(+props.visibleItemCount - 1) / 2) * +props.itemHeight;
-    });
-
-    const height = computed(() => {
-      return Number(props.visibleItemCount) * +props.itemHeight;
-    });
-
     const dataType = computed(() => {
       const firstColumn = state.formattedColumns[0] as PickerObjectColumn;
       if (typeof firstColumn === 'object') {
@@ -124,16 +100,11 @@ export default create({
 
     const columnList = computed(() => {
       if (dataType.value === 'text') {
-        return [
-          { values: state.formattedColumns, defaultIndex: state.defaultIndex }
-        ];
+        return [{ values: state.formattedColumns, defaultIndex: state.defaultIndex }];
       } else if (dataType.value === 'multipleColumns') {
         return state.formattedColumns;
       } else if (dataType.value === 'cascade') {
-        return formatCascade(
-          state.formattedColumns as PickerObjectColumn[],
-          state.defaultIndex
-        );
+        return formatCascade(state.formattedColumns as PickerObjectColumn[], state.defaultIndex);
       }
       return state.formattedColumns;
     });
@@ -145,10 +116,7 @@ export default create({
       });
     };
 
-    const formatCascade = (
-      listData: PickerObjectColumn[],
-      defaultIndex: number
-    ) => {
+    const formatCascade = (listData: PickerObjectColumn[], defaultIndex: number) => {
       const formatted: PickerObjectColumn[] = [];
       let children = listData as PickerObjectColumns;
       children.defaultIndex = defaultIndex;
@@ -163,10 +131,7 @@ export default create({
       return formatted;
     };
 
-    const getCascadeData = (
-      listData: PickerObjectColumn[],
-      defaultIndex: number
-    ) => {
+    const getCascadeData = (listData: PickerObjectColumn[], defaultIndex: number) => {
       let arr = listData as PickerObjectColumns;
       arr.defaultIndex = defaultIndex;
       const dataList: string[] = [];
@@ -205,10 +170,10 @@ export default create({
       } else if (dataType.value === 'multipleColumns') {
         defaultIndexList[columnIndex] = dataIndex;
         const val = defaultIndexList.map(
-          (res, i) =>
-            toRaw(state.formattedColumns as PickerObjectColumns)[i].values[res]
+          (res, i) => toRaw(state.formattedColumns as PickerObjectColumns)[i].values[res]
         );
-        emit('change', val);
+
+        emit('change', val, columnIndex, dataIndex);
       }
     };
 
@@ -221,15 +186,11 @@ export default create({
           state.formattedColumns[i].defaultIndex = defaultIndexList[i];
         }
         const checkedArr = toRaw(state.formattedColumns).map(
-          (res: PickerObjectColumn) =>
-            res.values && res.values[res.defaultIndex as number]
+          (res: PickerObjectColumn) => res.values && res.values[res.defaultIndex as number]
         );
         emit('confirm', checkedArr);
       } else if (dataType.value === 'cascade') {
-        emit(
-          'confirm',
-          getCascadeData(toRaw(state.formattedColumns), state.defaultIndex)
-        );
+        emit('confirm', getCascadeData(toRaw(state.formattedColumns), state.defaultIndex));
       }
 
       emit('update:visible', false);
@@ -245,6 +206,7 @@ export default create({
     watch(
       () => props.listData,
       (val) => {
+        console.log('变化');
         state.formattedColumns = val as PickerObjectColumns;
       }
     );
@@ -255,8 +217,6 @@ export default create({
       column,
       dataType,
       columnList,
-      top,
-      height,
       close,
       changeHandler,
       confirm

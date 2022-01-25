@@ -2,7 +2,7 @@
   <div class="demo">
     <h2>基础用法</h2>
     <nut-picker mode="selector" :list-data="listData1" @confirm="confirm">
-      <nut-cell title="请选择城市" :desc="desc"></nut-cell>
+      <nut-cell title="请选择城市1" :desc="desc"></nut-cell>
     </nut-picker>
     <h2>多列样式</h2>
     <nut-picker mode="multiSelector" :list-data="listData2" @confirm="confirm2">
@@ -15,15 +15,7 @@ import { ref } from 'vue';
 export default {
   props: {},
   setup() {
-    const listData1 = [
-      '南京市',
-      '无锡市',
-      '海北藏族自治区',
-      '北京市',
-      '连云港市',
-      '浙江市',
-      '江苏市'
-    ];
+    const listData1 = ['南京市', '无锡市', '海北藏族自治区', '北京市', '连云港市', '浙江市', '江苏市'];
     const listData2 = ref([
       {
         values: ['周一', '周二', '周三', '周四', '周五'],
