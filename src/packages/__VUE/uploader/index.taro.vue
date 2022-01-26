@@ -286,7 +286,8 @@ export default create({
         fileList.splice(index, 1);
         emit('delete', {
           file,
-          fileList
+          fileList,
+          index
         });
       } else {
         console.log('用户阻止了删除！');

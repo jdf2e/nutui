@@ -185,6 +185,7 @@ app.use(Icon);
 | placeholder  | 为空时占位符                           | String         | -       |
 | label        | 左侧文案                               | String         | -       |
 | require-show | 左侧*号是否展示                        | Boolean        | `false` |
+| has-border   | 下边框是否展示                         | Boolean        | `true` |
 | disabled     | 是否禁用                               | Boolean        | `false` |
 | readonly     | 是否只读                               | Boolean        | `false` |
 | max-length   | 限制最长输入字符                       | String、Number | -       |

@@ -3,7 +3,8 @@
     <h2>基础用法</h2>
     <nut-uploader :url="uploadUrl"></nut-uploader>
     <h2>上传状态</h2>
-    <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="3" multiple></nut-uploader>
+    <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" @delete="onDelete" maximum="3" multiple>
+    </nut-uploader>
     <h2>基础用法-上传列表展示</h2>
     <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="10" multiple list-type="list">
       <nut-button type="success" size="small">上传文件</nut-button>
@@ -97,8 +98,8 @@ export default createDemo({
     const onOversize = (files: File[]) => {
       console.log('oversize 触发 文件大小不能超过 50kb', files);
     };
-    const onDelete = (file: FileItem, fileList: FileItem[]) => {
-      console.log('delete 事件触发', file, fileList);
+    const onDelete = (obj: any) => {
+      console.log('delete 事件触发', obj);
     };
     const onProgress = ({ event, options, percentage }: any) => {
       progressPercentage.value = percentage;
