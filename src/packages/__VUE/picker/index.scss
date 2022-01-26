@@ -1,4 +1,9 @@
 .nut-picker {
+  color: #f00;
+
+  view {
+    display: block;
+  }
   &__content {
     display: block;
     position: relative;
@@ -8,31 +13,19 @@
       cursor: grab;
     }
   }
-  &__mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4)),
-      linear-gradient(0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4));
-    background-repeat: no-repeat;
-    background-position: top, bottom;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    pointer-events: none;
-  }
+
   &__bar {
     display: flex;
     height: 56px;
     align-items: center;
     justify-content: space-between;
-    padding: 15px;
+    padding: 0 15px;
+    font-size: 16px;
   }
   &__column {
     display: flex;
     position: relative;
+    height: 252px;
   }
   &__columnitem {
     width: 0;
@@ -57,10 +50,73 @@
   }
   &__hairline {
     position: absolute;
-    height: 35px;
+    top: 108px;
+    height: 34px;
     width: 100%;
     border: 1px solid #d8d8d8;
     border-left: 0;
     border-right: 0;
+  }
+
+  &__list {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 252px;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  &-roller {
+    display: block;
+    position: absolute;
+    top: 108px;
+    width: 100%;
+    height: 36px;
+    z-index: 1;
+    transform-style: preserve-3d;
+
+    &-item {
+      display: block;
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 36px;
+      line-height: 36px;
+      color: #808080;
+      font-size: 16px;
+
+      &-hidden {
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+  }
+
+  &-content {
+    display: block;
+    position: absolute;
+    top: 108px;
+    width: 100%;
+    height: 36px;
+    z-index: 2;
+    overflow: hidden;
+    border-left: 0;
+    border-right: 0;
+  }
+  &-list-panel {
+    display: block;
+    transform-style: preserve-3d;
+  }
+  &-item {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 16px;
   }
 }
