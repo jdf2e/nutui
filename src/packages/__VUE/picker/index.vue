@@ -19,6 +19,7 @@
         <view class="nut-picker__hairline"></view>
         <view class="nut-picker__columnitem" v-for="(item, columnIndex) in columnList" :key="columnIndex">
           <nut-picker-column
+            :itemShow="show"
             :list-data="item"
             :readonly="readonly"
             :default-index="item.defaultIndex"
@@ -42,6 +43,7 @@ import column from './Column.vue';
 import popup, { popupProps } from '../popup/index.vue';
 import { commonProps } from './commonProps';
 import { PickerObjOpt, PickerOption, PickerObjectColumn, PickerObjectColumns } from './types';
+
 const { create, componentName } = createComponent('picker');
 
 export default create({
@@ -206,7 +208,6 @@ export default create({
     watch(
       () => props.listData,
       (val) => {
-        console.log('变化');
         state.formattedColumns = val as PickerObjectColumns;
       }
     );
