@@ -83,7 +83,6 @@ export default create({
     });
 
     const onTouchStart = (event: TouchEvent) => {
-      console.log(event);
       event.preventDefault();
       let changedTouches = event.changedTouches[0];
       state.touchParams.startY = changedTouches.pageY;
