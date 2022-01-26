@@ -107,7 +107,6 @@
 
 <script lang="ts">
 import { reactive, ref, toRefs, onMounted } from 'vue';
-import { Sku, Goods, imagePathMap } from './data';
 
 import { createComponent } from '../../utils/create';
 import { Toast } from '@/packages/nutui.vue';
@@ -136,7 +135,8 @@ interface GoodsProps {
 
 interface Data {
   skuData: Skus[];
-  goodsInfo: GoodsProps;
+  goodsInfo: any;
+  imagePathMap: any;
 }
 
 export default createDemo({
@@ -153,7 +153,8 @@ export default createDemo({
 
     const data = reactive<Data>({
       skuData: [],
-      goodsInfo: {}
+      goodsInfo: {},
+      imagePathMap: {}
     });
 
     const stepperExtraText = () => {
@@ -206,10 +207,15 @@ export default createDemo({
     });
 
     const getData = () => {
-      setTimeout(() => {
-        data.skuData = Sku;
-        data.goodsInfo = Goods;
-      }, 500);
+      fetch('http://storage.360buyimg.com/nutui/3x/data.js')
+        .then((response) => response.json())
+        .then((res) => {
+          const { Sku, Goods, imagePathMap } = res;
+          data.skuData = Sku;
+          data.goodsInfo = Goods;
+          data.imagePathMap = imagePathMap;
+        }) //执行结果是 resolve就调用then方法
+        .catch((err) => console.log('Oh, error', err)); //执行结果是 reject就调用catch方法
     };
     const selectSku = (s: any) => {
       const { sku, parentIndex } = s;
@@ -227,7 +233,7 @@ export default createDemo({
 
       data.skuData[0].list.forEach((el) => {
         if (el.active && !el.disable) {
-          data.goodsInfo.imagePath = imagePathMap[el.id];
+          data.goodsInfo.imagePath = data.imagePathMap[el.id];
         }
       });
     };
@@ -262,7 +268,6 @@ export default createDemo({
     return {
       selectSku,
       changeStepper,
-      Goods,
       clickBtnOperate,
       close,
       existAddress,
