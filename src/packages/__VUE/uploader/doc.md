@@ -370,7 +370,7 @@ export default {
 | success         | 上传成功               | {responseText,option,fileItem} |
 | failure         | 上传失败               | {responseText,option,fileItem} |
 | change          | 上传文件改变时的状态   | {fileList,event}               |
-| delete          | 文件删除之前的状态     | {files,fileList}               |
+| delete          | 文件删除事件     | {files,fileList,index}               |
 | file-item-click | 文件上传成功后点击触发 | {fileItem}                     |
 
 ### Methods
