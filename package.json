@@ -96,6 +96,7 @@
     "lint-staged": "^10.5.0",
     "lzutf8": "^0.6.0",
     "markdown-it-container": "^3.0.0",
+    "naive-ui": "^2.24.7",
     "prettier": "^2.0.0",
     "standard-version": "^9.3.0",
     "swiper": "6.5.1",
