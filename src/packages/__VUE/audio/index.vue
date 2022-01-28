@@ -30,7 +30,7 @@
         ><nut-button type="info" size="small">{{ playing ? '开始' : '暂停' }}</nut-button></div
       >
       <div class="op" @click="forward"><nut-button type="info" size="small">快进</nut-button></div>
-      <div class="op" @click="mute"><nut-button type="info" size="small">静音</nut-button></div>
+      <div class="op" @click="handleMute"><nut-button type="info" size="small">静音</nut-button></div>
     </div>
 
     <audio
@@ -43,7 +43,7 @@
       :loop="loop"
       @timeupdate="onTimeupdate"
       @ended="audioEnd"
-      :muted="muted"
+      :muted="hanMuted"
     >
     </audio>
   </div>
@@ -112,7 +112,7 @@ export default create({
       percent: 0,
       duration: '00:00:00',
       second: 0,
-
+      hanMuted: props.muted,
       playing: props.autoplay
     });
 
@@ -200,6 +200,11 @@ export default create({
       audioRef.value.currentTime = (audioData.second * val) / 100;
     };
 
+    // 静音
+    const handleMute = () => {
+      audioData.hanMuted = !audioData.hanMuted;
+    };
+
     const formatSeconds = (value) => {
       let theTime = parseInt(value); // 秒
       let theTime1 = 0; // 分
@@ -251,7 +256,8 @@ export default create({
       changeStatus,
       progressChange,
       audioEnd,
-      onTimeupdate
+      onTimeupdate,
+      handleMute
     };
   }
 });

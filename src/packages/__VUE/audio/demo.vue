@@ -8,6 +8,15 @@
       :loop="true"
       ref="audioDemo"
     ></nut-audio>
+
+    <h2>自定义</h2>
+    <nut-audio
+      url="http://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      :muted="muted"
+      :autoplay="autoplay"
+      :loop="true"
+      ref="audioDemo"
+    ></nut-audio>
   </div>
 </template>
 
