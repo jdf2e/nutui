@@ -1,0 +1,47 @@
+.player {
+  background: #fff;
+  padding: 0 20px;
+  .progress-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0px auto;
+    padding: 10px 0;
+
+    .progress-bar-wrapper {
+      flex: 1;
+      margin: 0 10px;
+    }
+
+    .time {
+      min-width: 50px;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+
+  .operators {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    .op {
+      margin: 0 5px;
+    }
+  }
+
+  .audioMain {
+    margin-top: 30px;
+  }
+
+  .custom-button {
+    width: 8px;
+    height: 8px;
+    color: #fff;
+    font-size: 10px;
+    line-height: 18px;
+    text-align: center;
+    background-color: #ee0a24;
+    border-radius: 100px;
+  }
+}

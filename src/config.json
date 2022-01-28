@@ -479,6 +479,16 @@
           "sort": 24,
           "show": true,
           "author": "wujia8"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Audio",
+          "type": "component",
+          "cName": "音频播放器",
+          "desc": "音频播放器",
+          "sort": 25,
+          "show": true,
+          "author": "yangxiaolu"
         }
       ]
     },
