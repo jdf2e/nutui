@@ -1,5 +1,11 @@
 <template>
-  <view class="nut-picker__list" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
+  <view
+    class="nut-picker__list"
+    @touchstart="onTouchStart"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+    v-if="itemShow"
+  >
     <view class="nut-picker-roller" ref="roller" :style="touchRollerStyle">
       <view
         class="nut-picker-roller-item"
@@ -29,8 +35,9 @@
 import { reactive, ref, watch, computed, toRefs, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 import { commonProps } from './commonProps';
-import { TouchParams } from './types';
 const { create } = createComponent('picker-column');
+import { TouchParams } from './types';
+import Taro from '@tarojs/taro';
 
 export default create({
   props: {
@@ -51,7 +58,8 @@ export default create({
         endY: 0,
         startTime: 0,
         endTime: 0,
-        lastY: 0
+        lastY: 0,
+        lastTime: 0
       },
       currIndex: 1,
       transformY: 0,
@@ -83,6 +91,7 @@ export default create({
     });
 
     const onTouchStart = (event: TouchEvent) => {
+      console.log(event);
       event.preventDefault();
       let changedTouches = event.changedTouches[0];
       state.touchParams.startY = changedTouches.pageY;
@@ -105,7 +114,7 @@ export default create({
 
       let changedTouches = event.changedTouches[0];
       state.touchParams.lastY = changedTouches.pageY;
-      state.touchParams.lastTime = event.timestamp || Date.now();
+      state.touchParams.lastTime = event.timeStamp || Date.now();
       let move = state.touchParams.lastY - state.touchParams.startY;
 
       let moveTime = state.touchParams.lastTime - state.touchParams.startTime;
@@ -194,6 +203,23 @@ export default create({
       (val) => {
         state.transformY = 0;
         modifyStatus(false);
+      },
+      {
+        deep: true
+      }
+    );
+
+    watch(
+      () => props.itemShow,
+      (val) => {
+        setTimeout(() => {
+          Taro.createSelectorQuery()
+            .selectAll('.nut-picker-item-ref')
+            .boundingClientRect((rects) => {
+              state.lineSpacing = (rects as any)[0].height;
+            })
+            .exec();
+        }, 500);
       },
       {
         deep: true

@@ -9,10 +9,6 @@ export const commonProps = {
     type: Boolean,
     default: false
   },
-  visibleItemCount: {
-    type: [Number, String],
-    default: 7
-  },
   defaultIndex: {
     type: [Number, String],
     default: 0
