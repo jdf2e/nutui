@@ -212,14 +212,16 @@ export default create({
     watch(
       () => props.itemShow,
       (val) => {
-        setTimeout(() => {
-          Taro.createSelectorQuery()
-            .selectAll('.nut-picker-item-ref')
-            .boundingClientRect((rects) => {
-              state.lineSpacing = (rects as any)[0].height;
-            })
-            .exec();
-        }, 500);
+        if (val) {
+          setTimeout(() => {
+            Taro.createSelectorQuery()
+              .selectAll('.nut-picker-item-ref')
+              .boundingClientRect((rects) => {
+                state.lineSpacing = (rects as any)[0].height;
+              })
+              .exec();
+          }, 100);
+        }
       },
       {
         deep: true
