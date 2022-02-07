@@ -181,7 +181,7 @@ export default create({
     );
 
     onMounted(() => {
-      console.log('更新参数');
+      // console.log('更新参数');
     });
 
     const getSlots = (name: string) => slots[name];

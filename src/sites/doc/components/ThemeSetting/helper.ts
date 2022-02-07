@@ -15,7 +15,7 @@ type Store = {
 
 const components = configs.nav.map(({ packages }) => packages.map(({ name }) => name)).flat(1);
 
-const getFile = async function (url: string) {
+const getGithubRawFile = async function (url: string) {
   const response = await fetch(url);
   const res = await response.text();
   return res;
@@ -77,7 +77,7 @@ const getSassVariables = async (url: string) => {
     return store;
   }
 
-  const variables = await getFile(url);
+  const variables = await getGithubRawFile(url);
   const matchedComponentVariables = components
     .map((name) => {
       const lowerCaseName = name.toLowerCase();
@@ -132,7 +132,7 @@ const extractStyle = (style: string) => {
 };
 export const getSassStyle = async (name: string): Promise<void> => {
   if (!store.rawStyles[name]) {
-    const style = await getFile(
+    const style = await getGithubRawFile(
       `https://raw.githubusercontent.com/jdf2e/nutui/next/src/packages/__VUE/${name}/index.scss`
     );
     store.rawStyles[name] = style;

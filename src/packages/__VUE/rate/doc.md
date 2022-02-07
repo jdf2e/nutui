@@ -22,67 +22,169 @@ app.use(Icon);
 
 ### 基础用法
 
-``` html
-<nut-rate v-model="value" />
-```
-
-``` javascript
+:::demo
+```html
+<template>
+    <nut-rate v-model="value" />
+</template>
+<script lang="ts">
 import { ref } from 'vue';
-setup() {
-    const value = ref(3);
-    return { value }
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
+    }
 }
 ```
+:::
+
+### 半星
+
+:::demo
+```html
+<template>
+    <nut-rate allow-half v-model="value"></nut-rate>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+    setup() {
+        const value = ref(3.5);
+        return { value }
+    }
+}
+```
+:::
 
 ### 自定义icon
 
-``` html
-<nut-rate checked-icon="heart-fill1" unchecked-icon="heart" v-model="value" />
+:::demo
+```html
+<template>
+    <nut-rate checked-icon="heart-fill1" unchecked-icon="heart" v-model="value" />
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
+    }
+}
 ```
+:::
 
 ### 自定义数量
 
-``` html
-<nut-rate :total="6" v-model="value" />
+:::demo
+```html
+<template>
+    <nut-rate :count="6" v-model="value" />
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
+    }
+}
 ```
+:::
 
 ### 自定义颜色
 
-``` html
-<nut-rate active-color="#FFC800" v-model="value" />
+:::demo
+```html
+<template>
+    <nut-rate active-color="#FFC800" v-model="value" />
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
+    }
+}
 ```
+:::
 
 ### 禁用状态
 
-``` html
-<nut-rate disabled v-model="value" />
+:::demo
+```html
+<template>
+    <nut-rate disabled v-model="value" />
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
+    }
+}
 ```
+:::
 
 ### 只读
 
-``` html
-<nut-rate v-model="value" readOnly />
-```
-### 绑定事件
-
-``` html
-<nut-rate v-model="value" @change="onChange" />
-```
-``` javascript
+:::demo
+```html
+<template>
+    <nut-rate v-model="value" readonly />
+</template>
+<script lang="ts">
 import { ref } from 'vue';
-setup() {
-    const value = ref(3);
-    const onChange = (val)=>{
-        Toast.text(val);
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
     }
-    return { value }
 }
 ```
+:::
+### 绑定事件
+
+:::demo
+```html
+<template>
+    <nut-rate v-model="value" @change="onChange" />
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default {
+    setup() {
+        const value = ref(3);
+        const onChange = (val)=>{
+            Toast.text(val);
+        }
+    return { value,onChange }
+    }
+}
+```
+:::
+
 ### 自定义尺寸
 
-``` html
-<nut-rate v-model="value" icon-size="35" />
+:::demo
+```html
+<template>
+    <nut-rate v-model="value" icon-size="35" />
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
+    }
+}
 ```
+:::
 
 
 

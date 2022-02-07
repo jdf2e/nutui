@@ -4,9 +4,12 @@
   padding: 10px 0px 10px 25px;
   display: flex;
   background: $white;
-  border-bottom: 1px solid $input-border-bottom;
   font-size: $input-font-size;
   box-sizing: border-box;
+
+  &.nut-input-border {
+    border-bottom: 1px solid $input-border-bottom;
+  }
 
   &.nut-input-require {
     &::before {

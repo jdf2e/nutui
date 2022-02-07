@@ -1,19 +1,11 @@
 <template>
   <div class="demo">
     <h2>基本用法</h2>
-    <nut-cell
-      :show-icon="true"
-      :isLink="true"
-      @click="switchActionSheet('isVisible1')"
-    >
+    <nut-cell :show-icon="true" :isLink="true" @click="switchActionSheet('isVisible1')">
       <span><label>基础用法</label></span>
       <div class="selected-option" v-html="state.val1"></div>
     </nut-cell>
-    <nut-cell
-      :showIcon="true"
-      :isLink="true"
-      @click="switchActionSheet('isVisible2')"
-    >
+    <nut-cell :showIcon="true" :isLink="true" @click="switchActionSheet('isVisible2')">
       <span><label>展示取消按钮</label></span>
       <div class="selected-option" v-html="state.val2"></div>
     </nut-cell>
@@ -25,14 +17,11 @@
 
     <nut-cell :isLink="true" @click="switchActionSheet('isVisible4')">
       <span><label>选项状态</label></span>
+      <div class="selected-option" v-html="state.val4"></div>
     </nut-cell>
 
     <!-- demo 基础用法 -->
-    <nut-actionsheet
-      v-model:visible="state.isVisible1"
-      :menu-items="menuItemsOne"
-      @choose="chooseItem"
-    >
+    <nut-actionsheet v-model:visible="state.isVisible1" :menu-items="menuItemsOne" @choose="chooseItem">
     </nut-actionsheet>
     <!-- demo(带取消按钮） -->
     <nut-actionsheet
@@ -56,6 +45,7 @@
       v-model:visible="state.isVisible4"
       cancel-txt="取消"
       :menu-items="menuItemsThree"
+      @choose="chooseItemFour"
       :choose-tag-value="state.chooseTagValue"
     ></nut-actionsheet>
   </div>
@@ -116,9 +106,7 @@ export default {
         disable: true
       }
     ];
-    const switchActionSheet = (
-      param: 'isVisible1' | 'isVisible2' | 'isVisible3' | 'isVisible4'
-    ) => {
+    const switchActionSheet = (param: 'isVisible1' | 'isVisible2' | 'isVisible3' | 'isVisible4') => {
       state[param] = !state[param];
     };
 
@@ -133,6 +121,9 @@ export default {
     function chooseItemThree(itemParams: Item) {
       state.val3 = itemParams.name;
     }
+    function chooseItemFour(itemParams: Item) {
+      state.val4 = itemParams.name;
+    }
 
     return {
       state,
@@ -142,6 +133,7 @@ export default {
       chooseItem,
       chooseItemTwo,
       chooseItemThree,
+      chooseItemFour,
       switchActionSheet
     };
   }

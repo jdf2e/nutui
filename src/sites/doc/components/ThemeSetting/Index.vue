@@ -6,9 +6,13 @@
       <li :key="item.key" v-for="item in formItems">
         <p
           ><b>{{ item.key }}</b
-          >: {{ item.rawValue }}</p
+          >: {{ item.value }} （<del>{{ item.rawValue }}</del
+          >）</p
         >
-        <input :type="item.inputType" v-model="item.value" />
+        <div>
+          <n-color-picker v-if="item.inputType === 'color'" :modes="['rgb', 'hex']" v-model:value="item.value" />
+          <n-input v-else v-model:value="item.value" type="text" />
+        </div>
       </li>
     </ul>
   </div>
@@ -16,11 +20,16 @@
 <script lang="ts">
 import { defineComponent, watch } from 'vue';
 import { useThemeEditor } from './helper';
+import { NColorPicker, NInput } from 'naive-ui';
 
 export default defineComponent({
   name: 'theme-setting',
   props: {
     name: String
+  },
+  components: {
+    NColorPicker,
+    NInput
   },
   setup(props) {
     // 获取样式文件，正则匹配
@@ -41,29 +50,19 @@ export default defineComponent({
 <style lang="scss" scoped>
 .theme-setting {
   li {
-    width: 500px;
     list-style: none;
     margin-bottom: 12px;
     &::before {
       display: none;
     }
     .color-picker {
-      display: flex;
-      align-items: center;
+      width: 300px;
+      margin-left: 20px;
     }
+
     p {
       font-size: 14px;
       text-overflow: ellipsis;
-      margin-bottom: 12px;
-    }
-    input {
-      padding: 0;
-      margin: 0;
-      width: 100%;
-      background: none;
-      border: 1px solid #ccc;
-      border-radius: 2px;
-      height: 34px;
     }
   }
 }

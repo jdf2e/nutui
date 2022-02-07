@@ -275,8 +275,9 @@ export default create({
       if (oversizes.length) {
         emit('oversize', oversizes);
       }
-      if (files.length > maximum) {
-        files.splice(maximum - 1, files.length - maximum);
+      let currentFileLength = files.length + fileList.length;
+      if (currentFileLength > maximum) {
+        files.splice(files.length - (currentFileLength - maximum));
       }
       return files;
     };
@@ -286,7 +287,8 @@ export default create({
         fileList.splice(index, 1);
         emit('delete', {
           file,
-          fileList
+          fileList,
+          index
         });
       } else {
         console.log('用户阻止了删除！');
