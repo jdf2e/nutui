@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Index from './views/Index.vue';
-import ThemeSetting from './components/ThemeSetting.vue';
+import ThemeSetting from './components/ThemeSetting/Index.vue';
 import config from '../config/env';
 const pagesRouter: Array<RouteRecordRaw> = [
   {

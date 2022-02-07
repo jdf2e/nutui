@@ -1,19 +1,22 @@
 <template>
   <div class="theme-setting">
     {{ name }}
+    <button @click="downloadScssVariables">点击下载主题变量</button>
     <ul>
-      <li :key="index" v-for="(item, index) in styleList">
-        <p>{{ item.name }}</p>
-        <div class="color-picker">
-          <span>{{ item.value }}</span>
-          <input type="color" v-model="item.value" />
-        </div>
+      <li :key="item.key" v-for="item in formItems">
+        <p
+          ><b>{{ item.key }}</b
+          >: {{ item.rawValue }}</p
+        >
+        <input :type="item.inputType" v-model="item.value" />
       </li>
     </ul>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, watch } from 'vue';
+import { useThemeEditor } from './helper';
+
 export default defineComponent({
   name: 'theme-setting',
   props: {
@@ -21,24 +24,16 @@ export default defineComponent({
   },
   setup(props) {
     // 获取样式文件，正则匹配
+    const { formItems, downloadScssVariables } = useThemeEditor();
 
-    // https://raw.githubusercontent.com/jdf2e/nutui/next/src/packages/styles/variables.scss
-    var pattern = /\$button.*;/;
-    // 需要包含换行
-    console.log(pattern.test('str'));
-
-    const styleList = reactive([
-      {
-        name: '$primary-color',
-        value: '#2c68ff'
-      },
-      {
-        name: '$primary-color',
-        value: '#2c68ff'
+    watch(
+      () => formItems.value,
+      (val) => {
+        console.log(JSON.parse(JSON.stringify(val)));
       }
-    ]);
+    );
 
-    return { styleList };
+    return { formItems, downloadScssVariables };
   }
 });
 </script>

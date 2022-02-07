@@ -17,7 +17,7 @@ import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute, useRouter } fro
 import Header from '@/sites/doc/components/Header.vue';
 import Nav from '@/sites/doc/components/Nav.vue';
 import DemoPreview from '@/sites/doc/components/DemoPreview.vue';
-import ThemeSetting from '@/sites/doc/components/ThemeSetting.vue';
+import ThemeSetting from '@/sites/doc/components/ThemeSetting/Index.vue';
 import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc',
