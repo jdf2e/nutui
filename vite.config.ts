@@ -18,6 +18,11 @@ export default defineConfig({
         target: 'https://nutui.jd.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/devServer/, '')
+      },
+      '/devRaw': {
+        target: 'https://gitee.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/devRaw/, '')
       }
     }
   },

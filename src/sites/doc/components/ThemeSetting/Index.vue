@@ -10,7 +10,12 @@
           >）</p
         >
         <div>
-          <n-color-picker v-if="item.inputType === 'color'" :modes="['rgb', 'hex']" v-model:value="item.value" />
+          <n-color-picker
+            v-if="['hex', 'rgb'].includes(item.inputType)"
+            :show-alpha="item.inputType != 'hex'"
+            :modes="['hex', 'rgb']"
+            v-model:value="item.value"
+          />
           <n-input v-else v-model:value="item.value" type="text" />
         </div>
       </li>

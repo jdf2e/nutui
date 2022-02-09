@@ -25,8 +25,12 @@ const getInputType = (value: string) => {
     return 'number';
   }
   if (/^#[A-Za-z0-9]+$/.test(value)) {
-    return 'color';
+    return 'hex';
   }
+  if (/^(rgb|hsl)a?\((\s*\/?\s*[+-]?\d*(\.\d+)?%?,?\s*){3,5}\)/gim.test(value)) {
+    return 'rgb';
+  }
+
   return 'input';
 };
 const loadScript = async (url: string) =>
@@ -133,7 +137,7 @@ const extractStyle = (style: string) => {
 export const getSassStyle = async (name: string): Promise<void> => {
   if (!store.rawStyles[name]) {
     const style = await getGithubRawFile(
-      `https://raw.githubusercontent.com/jdf2e/nutui/next/src/packages/__VUE/${name}/index.scss`
+      `/devRaw/jd-platform-opensource/nutui/raw/next/src/packages/__VUE/${name}/index.scss`
     );
     store.rawStyles[name] = style;
   }
@@ -164,7 +168,7 @@ export const useThemeEditor = function (): Obj {
   onMounted(async () => {
     if (!store.init) {
       await Promise.all([
-        getSassVariables('https://raw.githubusercontent.com/jdf2e/nutui/next/src/packages/styles/variables.scss'),
+        getSassVariables('/devRaw/jd-platform-opensource/nutui/raw/next/src/packages/styles/variables.scss'),
         loadScript('https://cdnout.com/sass.js/sass.sync.min.js')
       ]);
       store.init = true;
