@@ -1,4 +1,4 @@
-# CricleProgress 进度条
+# Circleprogress 进度条
 
 ### 介绍
 
@@ -9,12 +9,12 @@
 ``` javascript
 import { createApp } from 'vue';
 //vue
-import { CirecleProgress } from '@nutui/nutui';
+import { Circleprogress } from '@nutui/nutui';
 //taro
-import { CirecleProgress } from '@nutui/nutui-taro';
+import { Circleprogress } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(CirecleProgress);
+app.use(Circleprogress);
 
 ```
 
