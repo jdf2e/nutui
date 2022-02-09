@@ -63,7 +63,7 @@ export default create({
 
     function switchTitle(id: number, name: string) {
       activeIndex.value = id;
-      console.log(id);
+      // console.log(id);
       emit('switch-tab', activeIndex.value, name);
     }
 
