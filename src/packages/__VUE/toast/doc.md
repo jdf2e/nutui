@@ -17,80 +17,233 @@ app.use(Toast);
 ## 代码演示
 
 #### 全局使用方式
-``` javascript
+:::demo
+``` html
+<template>
+</template>
+<script>
 import { getCurrentInstance } from 'vue';
-
 export default {
   setup() {
-    const { proxy } = getCurrentInstance();
+   const { proxy } = getCurrentInstance();
     proxy.$toast.text('全局使用方式');
     return {};
-  },
-};
+  }
+}
+</script>
 ```
+:::
 
 #### 文字提示
-``` javascript
+:::demo
+```html
+<template>
+  <nut-cell title="Text 文字提示" is-link @click="textToast('网络失败，请稍后再试~')"></nut-cell>
+</template>
+<script>
 import { Toast } from '@nutui/nutui';
-
 export default {
   setup() {
-    Toast.text('网络失败，请稍后再试~');
-    return {};
-  },
-};
+     const textToast = (msg) => {
+      Toast.text(msg);
+    };
+    return {
+      textToast,
+    };
+  }
+}
+</script>
 ```
+:::
 #### 标题提示
 
-``` javascript
-Toast.text(msg,{title:'标题文字' });
+:::demo
+```html
+<template>
+  <nut-cell title="Toast 标题展示" is-link @click="textToast('网络失败，请稍后再试~')"></nut-cell>
+</template>
+<script>
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+     const textToast = (msg) => {
+      Toast.text(msg, {
+        title: '标题文字'
+      });
+    };
+    return {
+      textToast,
+    };
+  }
+}
+</script>
 ```
+:::
 #### 成功提示
 
-``` javascript
-Toast.success('成功提示');
+:::demo
+```html
+<template>
+  <nut-cell title="Toast 成功提示" is-link @click="textToast('成功提示')"></nut-cell>
+</template>
+<script>
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+     const textToast = (msg) => {
+       Toast.success(msg);
+    };
+    return {
+      textToast,
+    };
+  }
+}
+</script>
 ```
+:::
 
 #### 失败提示
 
-``` javascript
-Toast.fail('失败提示');
+:::demo
+```html
+<template>
+  <nut-cell title="Toast 失败提示" is-link @click="textToast('失败提示')"></nut-cell>
+</template>
+<script>
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+     const textToast = (msg) => {
+      Toast.fail(msg);
+    };
+    return {
+      textToast,
+    };
+  }
+}
+</script>
 ```
+:::
 
 #### 警告提示
 
-``` javascript
-Toast.warn('警告提示');
+:::demo
+```html
+<template>
+  <nut-cell title="Toast 警告提示" is-link @click="textToast('警告提示')"></nut-cell>
+</template>
+<script>
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+     const textToast = (msg) => {
+      Toast.warn(msg);
+    };
+    return {
+      textToast,
+    };
+  }
+}
+</script>
 ```
+:::
 
 #### 加载提示
 
-``` javascript
-Toast.loading('加载中');
+:::demo
+```html
+<template>
+  <nut-cell title="Toast 加载提示" is-link @click="textToast('加载中')"></nut-cell>
+</template>
+<script>
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+     const textToast = (msg) => {
+      Toast.loading(msg);
+    };
+    return {
+      textToast,
+    };
+  }
+}
+</script>
 ```
+:::
 
 #### Toast不消失
 
-``` javascript
-Toast.text(msg,{
-    duration:0
-});
+:::demo
+```html
+<template>
+  <nut-cell title="Toast不消失" is-link @click="textToast('Toast不消失')"></nut-cell>
+</template>
+<script>
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+     const textToast = (msg) => {
+     Toast.text(msg, {
+        duration: 0
+      });
+    };
+    return {
+      textToast,
+    };
+  }
+}
+</script>
 ```
+:::
 #### Toast自定义底部高度
 
-``` javascript
-Toast.text(msg, {
-    center: false,
-    bottom: '10%'
-});
+:::demo
+```html
+<template>
+  <nut-cell title="Toast 自定义底部高度" is-link @click="textToast('自定义距离')"></nut-cell>
+</template>
+<script>
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+     const textToast = (msg) => {
+      Toast.text(msg, {
+        center: false,
+        bottom: '10%'
+      });
+    };
+    return {
+      textToast,
+    };
+  }
+}
+</script>
 ```
+:::
 
 #### Loading带透明罩
-``` javascript
-Toast.loading(msg,{
-     cover:true
-});
+:::demo
+```html
+<template>
+  <nut-cell title="Loading带透明罩" is-link @click="textToast('加载中')"></nut-cell>
+</template>
+<script>
+import { Toast } from '@nutui/nutui';
+export default {
+  setup() {
+     const textToast = (msg) => {
+       Toast.loading(msg, {
+        cover: true
+      });
+    };
+    return {
+      textToast,
+    };
+  }
+}
+</script>
 ```
+:::
 
 
 ####  支持在JS模块中导入使用

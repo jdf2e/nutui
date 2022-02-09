@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" :style="getStyle" @click="handleClick">
+  <button :class="classes" :style="getStyle" @click="handleClick">
     <view class="nut-button__warp">
       <nut-icon class="nut-icon-loading" v-if="loading"></nut-icon>
       <nut-icon :class="icon" v-if="icon && !loading" :name="icon"></nut-icon>
@@ -7,7 +7,7 @@
         <slot></slot>
       </view>
     </view>
-  </view>
+  </button>
 </template>
 
 <script lang="ts">

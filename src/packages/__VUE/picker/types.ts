@@ -12,4 +12,13 @@ export type PickerObjectColumn = {
   [key: string]: any;
 };
 
+export type TouchParams = {
+  startY: number;
+  endY: number;
+  startTime: number;
+  endTime: number;
+  lastY: number;
+  lastTime: number;
+};
+
 export type PickerObjectColumns = PickerObjectColumn & PickerObjOpt[];

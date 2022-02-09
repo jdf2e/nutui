@@ -21,13 +21,211 @@ app.use(Menu);
 
 ### 基础用法
 
+:::demo
+
 ```html
-<nut-menu>
-  <nut-menu-item v-model="state.value1" :options="state.options1" />
-  <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
-</nut-menu>
+<template>
+  <nut-menu>
+    <nut-menu-item v-model="state.value1" :options="state.options1" />
+    <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
+  </nut-menu>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+
+export default {
+  setup() {
+    const state = reactive({
+      options1: [
+        { text: '全部商品', value: 0 },
+        { text: '新款商品', value: 1 },
+        { text: '活动商品', value: 2 }
+      ],
+      options2: [
+        { text: '默认排序', value: 'a' },
+        { text: '好评排序', value: 'b' },
+        { text: '销量排序', value: 'c' },
+      ],
+      value1: 0,
+      value2: 'a'
+    });
+
+    const handleChange = val => {
+      console.log('val', val);
+    }
+
+    return {
+      state,
+      handleChange
+    };
+  }
+}
+</script>
 ```
-```js
+
+:::
+
+### 自定义菜单内容
+使用实例上的 toggle 方法可以手动关闭弹框。
+
+:::demo
+
+```html
+<template>
+  <nut-menu>
+    <nut-menu-item v-model="state.value1" :options="state.options1" />
+    <nut-menu-item title="筛选" ref="item">
+      <div :style="{display: 'flex', flex: 1, 'justify-content': 'space-between', 'align-items': 'center'}">
+        <div>自定义内容</div>
+        <nut-button @click="onConfirm">关闭</nut-button>
+      </div>
+    </nut-menu-item>
+  </nut-menu>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+
+export default {
+  setup() {
+    const state = reactive({
+      options1: [
+        { text: '全部商品', value: 0 },
+        { text: '新款商品', value: 1 },
+        { text: '活动商品', value: 2 }
+      ],
+      value1: 0
+    });
+
+    const item = ref('');
+
+    const onConfirm = () => {
+      item.value.toggle();
+    }
+
+    return {
+      state,
+      item,
+      onConfirm
+    };
+  }
+}
+</script>
+```
+
+:::
+
+### 一行两列
+
+:::demo
+
+```html
+<template>
+  <nut-menu>
+    <nut-menu-item v-model="state.value3" :cols="2" :options="state.options3" />
+  </nut-menu>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+
+export default {
+  setup() {
+    const state = reactive({
+      options3: [
+        { text: '全部商品', value: 0 },
+        { text: '家庭清洁/纸品', value: 1 },
+        { text: '个人护理', value: 2 },
+        { text: '美妆护肤', value: 3 },
+        { text: '食品饮料', value: 4 },
+        { text: '家用电器', value: 5 },
+        { text: '母婴', value: 6 },
+        { text: '数码', value: 7 },
+        { text: '电脑、办公', value: 8 },
+        { text: '运动户外', value: 9 },
+        { text: '厨具', value: 10 },
+        { text: '医疗保健', value: 11 },
+        { text: '酒类', value: 12 },
+        { text: '生鲜', value: 13 },
+        { text: '家具', value: 14 },
+        { text: '传统滋补', value: 15 },
+        { text: '汽车用品', value: 16 },
+        { text: '家居日用', value: 17 },
+      ],
+      value3: 0
+    });
+
+    return {
+      state
+    };
+  }
+}
+</script>
+```
+
+:::
+
+### 自定义选中态颜色
+
+:::demo
+
+```html
+<template>
+  <nut-menu active-color="green">
+    <nut-menu-item v-model="state.value1" :options="state.options1" />
+    <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
+  </nut-menu>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+
+export default {
+  setup() {
+    const state = reactive({
+      options1: [
+        { text: '全部商品', value: 0 },
+        { text: '新款商品', value: 1 },
+        { text: '活动商品', value: 2 }
+      ],
+      options2: [
+        { text: '默认排序', value: 'a' },
+        { text: '好评排序', value: 'b' },
+        { text: '销量排序', value: 'c' },
+      ],
+      value1: 0,
+      value2: 'a'
+    });
+
+    const handleChange = val => {
+      console.log('val', val);
+    }
+
+    return {
+      state,
+      handleChange
+    };
+  }
+}
+</script>
+```
+
+:::
+
+### 禁用菜单
+
+:::demo
+
+```html
+<template>
+  <nut-menu>
+    <nut-menu-item disabled v-model="state.value1" :options="state.options1" />
+    <nut-menu-item disabled v-model="state.value2" @change="handleChange" :options="state.options2" />
+  </nut-menu>
+</template>
+
+<script>
 import { reactive, ref } from 'vue';
 
 export default {
@@ -86,48 +284,10 @@ export default {
     };
   }
 }
+</script>
 ```
 
-### 自定义菜单内容
-使用实例上的 toggle 方法可以手动关闭弹框。
-
-```html
-<nut-menu>
-  <nut-menu-item v-model="state.value1" :options="state.options1" />
-  <nut-menu-item title="筛选" ref="item">
-    <div :style="{display: 'flex', flex: 1, 'justify-content': 'space-between', 'align-items': 'center'}">
-      <div>自定义内容</div>
-      <div @click="onConfirm">关闭</div>
-    </div>
-  </nut-menu-item>
-</nut-menu>
-```
-
-### 一行两列
-
-```html
-<nut-menu>
-  <nut-menu-item v-model="state.value3" :cols="2" :options="state.options3" />
-</nut-menu>
-```
-
-### 自定义选中态颜色
-
-```html
-<nut-menu active-color="green">
-  <nut-menu-item v-model="state.value1" :options="state.options1" />
-  <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
-</nut-menu>
-```
-
-### 禁用菜单
-
-```html
-<nut-menu>
-  <nut-menu-item disabled v-model="state.value1" :options="state.options1" />
-  <nut-menu-item disabled v-model="state.value2" @change="handleChange" :options="state.options2" />
-</nut-menu>
-```
+:::
 
 ## API
 
