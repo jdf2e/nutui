@@ -110,7 +110,7 @@ export default create({
   },
   emits: ['input', 'delete', 'close', 'update:value'],
   setup(props, { emit }) {
-    console.log(props.overlay);
+    // console.log(props.overlay);
 
     const clickKeyIndex = ref(undefined);
     const show = ref(props.visible);
