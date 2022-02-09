@@ -134,7 +134,7 @@ export default create({
       state.touchState.y1 = firstTouch.pageY;
       state.anchorIndex = +index;
       state.currentIndex = +index;
-      console.log(state.currentIndex);
+      // console.log(state.currentIndex);
       scrollTo(+index);
     };
 

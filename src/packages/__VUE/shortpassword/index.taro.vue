@@ -113,7 +113,7 @@ export default create({
     }
     function focus() {
       let dom: any = '';
-      console.log(123);
+      // console.log(123);
 
       if (isWx.value) {
         setTimeout(() => {

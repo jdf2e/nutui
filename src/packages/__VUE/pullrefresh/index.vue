@@ -7,24 +7,16 @@
     @touchmove="touchMove"
     @touchend="touchEnd"
   >
-    <view
-      class="pullrefresh-top"
-      :class="
-        direction == 'horizontal' ? 'pullrefresh-top-h' : 'pullrefresh-top-v'
-      "
-      >{{ refreshTopTem }}</view
-    >
+    <view class="pullrefresh-top" :class="direction == 'horizontal' ? 'pullrefresh-top-h' : 'pullrefresh-top-v'">{{
+      refreshTopTem
+    }}</view>
     <view class="pullrefresh-content" ref="pull">
       <slot></slot>
     </view>
 
     <view
       class="pullrefresh-bottom"
-      :class="
-        direction == 'horizontal'
-          ? 'pullrefresh-bottom-h'
-          : 'pullrefresh-bottom-v'
-      "
+      :class="direction == 'horizontal' ? 'pullrefresh-bottom-h' : 'pullrefresh-bottom-v'"
       :style="getBottomStyle"
       >{{ refreshBottomTem }}</view
     >
@@ -90,7 +82,7 @@ export default create({
   emits: ['refresh', 'downRefresh'], // refresh 上拉加载、右滑加载更多  downRefresh 下拉刷新、左滑刷新
 
   setup(props, { emit }) {
-    console.log('componentName', componentName);
+    // console.log('componentName', componentName);
 
     const { containerId, useWindow, direction, disabled } = toRefs(props);
 
@@ -116,28 +108,22 @@ export default create({
       const { deltaY, deltaX } = touch;
       if (
         direction.value == 'vertical' &&
-        ((reachTop.value && deltaY.value > 0) ||
-          (reachBottom.value && deltaY.value < 0)) &&
+        ((reachTop.value && deltaY.value > 0) || (reachBottom.value && deltaY.value < 0)) &&
         touch.isVertical()
       ) {
         style = {
           transitionDuration: `${state.duration}ms`,
-          transform: state.distance
-            ? `translate3d(0,${state.distance}px, 0)`
-            : `translate3d(0,0,0)`
+          transform: state.distance ? `translate3d(0,${state.distance}px, 0)` : `translate3d(0,0,0)`
         };
       }
       if (
         direction.value == 'horizontal' &&
-        ((reachLeft.value && deltaX.value > 0) ||
-          (reachRight.value && deltaX.value < 0)) &&
+        ((reachLeft.value && deltaX.value > 0) || (reachRight.value && deltaX.value < 0)) &&
         touch.isHorizontal()
       ) {
         style = {
           transitionDuration: `${state.duration}ms`,
-          transform: state.distance
-            ? `translate3d(${state.distance}px, 0,0)`
-            : `translate3d(0,0,0)`
+          transform: state.distance ? `translate3d(${state.distance}px, 0,0)` : `translate3d(0,0,0)`
         };
       }
 
@@ -146,24 +132,14 @@ export default create({
 
     const getBottomStyle = computed(() => {
       let style: CSSProperties = {};
-      if (
-        direction.value == 'vertical' &&
-        reachBottom.value &&
-        touch.deltaY.value < 0 &&
-        touch.isVertical()
-      ) {
+      if (direction.value == 'vertical' && reachBottom.value && touch.deltaY.value < 0 && touch.isVertical()) {
         const dis = Math.abs(state.distance) < 50 ? -state.distance : 50;
         style = {
           height: dis + 'px'
         };
       }
 
-      if (
-        direction.value == 'horizontal' &&
-        reachRight.value &&
-        touch.deltaX.value < 0 &&
-        touch.isVertical()
-      ) {
+      if (direction.value == 'horizontal' && reachRight.value && touch.deltaX.value < 0 && touch.isVertical()) {
         const dis = Math.abs(state.distance) < 50 ? -state.distance : 50;
         style = {
           width: dis + 'px'
@@ -177,27 +153,15 @@ export default create({
       const { status, distance } = state;
 
       const tag = direction.value == 'vertical' ? 'top' : 'left';
-      if (
-        status == 'loading' &&
-        (reachTop.value || reachLeft.value) &&
-        distance > 0
-      ) {
+      if (status == 'loading' && (reachTop.value || reachLeft.value) && distance > 0) {
         return props.loadingText[tag];
       }
 
-      if (
-        status == 'pulling' &&
-        (reachTop.value || reachLeft.value) &&
-        distance > 0
-      ) {
+      if (status == 'pulling' && (reachTop.value || reachLeft.value) && distance > 0) {
         return props.pullingText[tag];
       }
 
-      if (
-        status == 'loosing' &&
-        (reachTop.value || reachLeft.value) &&
-        distance > 0
-      ) {
+      if (status == 'loosing' && (reachTop.value || reachLeft.value) && distance > 0) {
         return props.loosingText[tag];
       }
 
@@ -208,27 +172,15 @@ export default create({
       const { status, distance } = state;
 
       const tag = direction.value == 'vertical' ? 'bottom' : 'right';
-      if (
-        status == 'loading' &&
-        (reachBottom.value || reachRight.value) &&
-        distance < 0
-      ) {
+      if (status == 'loading' && (reachBottom.value || reachRight.value) && distance < 0) {
         return props.loadingText[tag];
       }
 
-      if (
-        status == 'pulling' &&
-        (reachBottom.value || reachRight.value) &&
-        distance < 0
-      ) {
+      if (status == 'pulling' && (reachBottom.value || reachRight.value) && distance < 0) {
         return props.pullingText[tag];
       }
 
-      if (
-        status == 'loosing' &&
-        (reachBottom.value || reachRight.value) &&
-        distance < 0
-      ) {
+      if (status == 'loosing' && (reachBottom.value || reachRight.value) && distance < 0) {
         return props.loosingText[tag];
       }
 
@@ -298,8 +250,7 @@ export default create({
 
           /** 判断滚动条是否在底部*/
           const { scrollHeight, clientHeight, scrollTop } = scrollEl;
-          reachBottom.value =
-            clientHeight + scrollTop == scrollHeight ? true : false;
+          reachBottom.value = clientHeight + scrollTop == scrollHeight ? true : false;
 
           if (reachTop.value || reachBottom.value) {
             state.duration = 0;
@@ -312,8 +263,7 @@ export default create({
           reachLeft.value = Math.max(left, 0) == 0 ? true : false;
 
           /** 判断滚动条是否在右边 */
-          reachRight.value =
-            clientWidth + scrollLeft == scrollWidth ? true : false;
+          reachRight.value = clientWidth + scrollLeft == scrollWidth ? true : false;
 
           if (reachLeft.value || reachRight.value) {
             state.duration = 0;
@@ -332,8 +282,7 @@ export default create({
 
         if (
           direction.value == 'vertical' &&
-          ((reachBottom.value && deltaY.value < 0) ||
-            (reachTop.value && deltaY.value >= 0)) &&
+          ((reachBottom.value && deltaY.value < 0) || (reachTop.value && deltaY.value >= 0)) &&
           touch.isVertical()
         ) {
           preventDefault(event);
@@ -342,8 +291,7 @@ export default create({
 
         if (
           direction.value == 'horizontal' &&
-          ((reachLeft.value && deltaX.value >= 0) ||
-            (reachRight.value && deltaX.value < 0)) &&
+          ((reachLeft.value && deltaX.value >= 0) || (reachRight.value && deltaX.value < 0)) &&
           touch.isHorizontal()
         ) {
           preventDefault(event);
@@ -359,35 +307,19 @@ export default create({
         if (state.status === 'loosing') {
           let dis = 0;
 
-          if (
-            direction.value == 'vertical' &&
-            reachTop.value &&
-            deltaY.value > 0
-          ) {
+          if (direction.value == 'vertical' && reachTop.value && deltaY.value > 0) {
             dis = 50;
             emit('downRefresh', refreshDone);
           }
-          if (
-            direction.value == 'vertical' &&
-            reachBottom.value &&
-            deltaY.value < 0
-          ) {
+          if (direction.value == 'vertical' && reachBottom.value && deltaY.value < 0) {
             dis = -50;
             emit('refresh', refreshDone);
           }
-          if (
-            direction.value == 'horizontal' &&
-            reachLeft.value &&
-            deltaX.value > 0
-          ) {
+          if (direction.value == 'horizontal' && reachLeft.value && deltaX.value > 0) {
             dis = 50;
             emit('downRefresh', refreshDone);
           }
-          if (
-            direction.value == 'horizontal' &&
-            reachRight.value &&
-            deltaX.value < 0
-          ) {
+          if (direction.value == 'horizontal' && reachRight.value && deltaX.value < 0) {
             dis = -50;
             emit('refresh', refreshDone);
           }
