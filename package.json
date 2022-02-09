@@ -16,6 +16,7 @@
     "build": "nutui-cli build",
     "release": "standard-version -a",
     "build:site": "nutui-cli build-site",
+    "publish": "npm publish --tag=legacy",
     "clean": "nutui-cli clean",
     "add": "nutui-cli add",
     "test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config node_modules/@nutui/cli/dist_cli/webpack/test.config.js  --require node_modules/@nutui/cli/dist_cli/test/setup.js src/packages/**/__test__/**.spec.js",
