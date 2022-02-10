@@ -1,7 +1,7 @@
 <template>
   <view :class="classes">
-    <view class="nut-input-label">
-      <view v-if="label" class="label-string">{{ label }}</view>
+    <view v-if="label" class="nut-input-label">
+      <view class="label-string">{{ label }}</view>
     </view>
     <input
       class="input-text"
@@ -106,6 +106,10 @@ export default create({
     clearable: {
       type: Boolean,
       default: true
+    },
+    hasBorder: {
+      type: Boolean,
+      default: true
     }
   },
 
@@ -119,7 +123,8 @@ export default create({
       return {
         [prefixCls]: true,
         [`${prefixCls}-disabled`]: props.disabled,
-        [`${prefixCls}-require`]: props.requireShow
+        [`${prefixCls}-require`]: props.requireShow,
+        [`${prefixCls}-border`]: props.hasBorder
       };
     });
 
