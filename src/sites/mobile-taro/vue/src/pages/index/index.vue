@@ -16,7 +16,7 @@
         <li>{{ _nav.name }}</li>
         <ul>
           <template v-for="_package in _nav.packages" :key="_package">
-            <li v-if="_package.show && _package.taro == true">
+            <li v-if="_package.show">
               <a @click="navigateTo(_package.name.toLowerCase(), _nav.enName)">
                 {{ _package.name }}
                 &nbsp;&nbsp;
