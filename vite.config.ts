@@ -9,7 +9,7 @@ import { compressText } from './src/sites/doc/components/demo-block/basedUtil';
 const resolve = path.resolve;
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/3x/',
+  base: '/theme/',
   server: {
     port: 2021,
     host: '0.0.0.0',
