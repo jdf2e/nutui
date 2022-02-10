@@ -23,7 +23,7 @@ export default create({
   emits: ['click'],
 
   setup(props, { emit }) {
-    console.log('componentName', componentName);
+    // console.log('componentName', componentName);
 
     const { name, txt } = toRefs(props);
 

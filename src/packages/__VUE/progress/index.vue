@@ -3,16 +3,10 @@
     <div
       class="nut-progress-outer"
       ref="progressOuter"
-      :class="[
-        showText && !textInside ? 'nut-progress-outer-part' : '',
-        size ? 'nut-progress-' + size : ''
-      ]"
+      :class="[showText && !textInside ? 'nut-progress-outer-part' : '', size ? 'nut-progress-' + size : '']"
       :style="{ height: height }"
     >
-      <div
-        :class="['nut-progress-inner', status == 'active' ? 'nut-active' : '']"
-        :style="bgStyle"
-      >
+      <div :class="['nut-progress-inner', status == 'active' ? 'nut-active' : '']" :style="bgStyle">
         <div
           class="nut-progress-text nut-progress-insidetext"
           :style="{ lineHeight: height, left: left }"
@@ -22,11 +16,7 @@
         </div>
       </div>
     </div>
-    <div
-      class="nut-progress-text"
-      :style="{ lineHeight: height }"
-      v-if="showText && !textInside"
-    >
+    <div class="nut-progress-text" :style="{ lineHeight: height }" v-if="showText && !textInside">
       <template v-if="status == 'active' || status == ''">
         <span :style="textStyle">{{ percentage }}%</span>
       </template>
@@ -38,15 +28,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  onMounted,
-  provide,
-  reactive,
-  nextTick,
-  ref,
-  watch
-} from 'vue';
+import { computed, onMounted, provide, reactive, nextTick, ref, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('progress');
 export default create({
@@ -112,22 +94,18 @@ export default create({
     watch(
       () => props.percentage,
       (values) => {
-        console.log(
-          'progressOuter.value.offsetWidth',
-          progressOuter.value.offsetWidth
-        );
+        // console.log(
+        //   'progressOuter.value.offsetWidth',
+        //   progressOuter.value.offsetWidth
+        // );
 
-        console.log('values', values);
+        // console.log('values', values);
 
-        left.value =
-          progressOuter.value.offsetWidth * Number(values) * 0.01 - 5 + 'px';
+        left.value = progressOuter.value.offsetWidth * Number(values) * 0.01 - 5 + 'px';
       }
     );
     onMounted(() => {
-      left.value =
-        progressOuter.value.offsetWidth * Number(props.percentage) * 0.01 -
-        5 +
-        'px';
+      left.value = progressOuter.value.offsetWidth * Number(props.percentage) * 0.01 - 5 + 'px';
     });
     return {
       height,

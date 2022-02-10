@@ -130,7 +130,7 @@ export default create({
     };
 
     const onTouchStart = (event: any) => {
-      console.log('start');
+      // console.log('start');
       // 如果已经放大，双击应变回原尺寸；如果是原尺寸，双击应放大
       const curTouchTime = new Date().getTime();
       if (curTouchTime - state.lastTouchEndTime < 300) {
@@ -208,7 +208,7 @@ export default create({
     };
 
     const onTouchEnd = () => {
-      console.log('end');
+      // console.log('end');
       state.lastTouchEndTime = new Date().getTime();
       const store = state.store as any;
       store.moveable = false;

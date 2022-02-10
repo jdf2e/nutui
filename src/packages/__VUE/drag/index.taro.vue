@@ -17,14 +17,7 @@
 </template>
 
 <script lang="ts">
-import {
-  onMounted,
-  onDeactivated,
-  onActivated,
-  reactive,
-  ref,
-  computed
-} from 'vue';
+import { onMounted, onDeactivated, onActivated, reactive, ref, computed } from 'vue';
 import { createComponent } from '../../utils/create';
 import requestAniFrame from '../../utils/raf';
 const { componentName, create } = createComponent('drag');
@@ -94,7 +87,7 @@ export default create({
           state.initTop = rec.top;
         })
         .exec();
-      console.log(domElem.windowWidth);
+      // console.log(domElem.windowWidth);
 
       state.screenWidth = domElem.screenWidth;
       state.screenHeight = domElem.screenHeight;
@@ -142,8 +135,7 @@ export default create({
         state.xPum = state.startLeft + state.nx;
         state.yPum = state.startTop + state.ny;
 
-        const rightLocation =
-          state.screenWidth - state.elWidth - state.boundary.right;
+        const rightLocation = state.screenWidth - state.elWidth - state.boundary.right;
         if (Math.abs(state.xPum) > rightLocation) {
           state.xPum = rightLocation;
         } else if (state.xPum <= state.boundary.left) {
@@ -151,12 +143,8 @@ export default create({
         }
         if (state.yPum < state.boundary.top) {
           state.yPum = state.boundary.top;
-        } else if (
-          state.yPum >
-          state.screenHeight - state.elHeight - state.boundary.bottom
-        ) {
-          state.yPum =
-            state.screenHeight - state.elHeight - state.boundary.bottom;
+        } else if (state.yPum > state.screenHeight - state.elHeight - state.boundary.bottom) {
+          state.yPum = state.screenHeight - state.elHeight - state.boundary.bottom;
         }
 
         if (props.direction != 'y') {
@@ -172,15 +160,13 @@ export default create({
 
       const touch = e.changedTouches[0];
       let currX = touch.clientX;
-      const rightLocation =
-        state.screenWidth - state.elWidth - state.boundary.right;
+      const rightLocation = state.screenWidth - state.elWidth - state.boundary.right;
       if (currX > rightLocation) {
         currX = rightLocation;
       } else if (currX < state.boundary.left) {
         currX = state.boundary.left;
       } else {
-        currX =
-          currX < state.screenWidth / 2 ? state.boundary.left : rightLocation;
+        currX = currX < state.screenWidth / 2 ? state.boundary.left : rightLocation;
       }
       if (props.direction != 'y' && props.attract) {
         if (currX < state.screenWidth / 2) {
