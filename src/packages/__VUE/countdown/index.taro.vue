@@ -12,10 +12,8 @@
         <view class="nut-cd-dot">天</view>
       </template>
       <view class="nut-cd-block">{{ resttime.h }}</view
-      ><view class="nut-cd-dot">:</view
-      ><view class="nut-cd-block">{{ resttime.m }}</view
-      ><view class="nut-cd-dot">:</view
-      ><view class="nut-cd-block">{{ resttime.s }}</view>
+      ><view class="nut-cd-dot">:</view><view class="nut-cd-block">{{ resttime.m }}</view
+      ><view class="nut-cd-dot">:</view><view class="nut-cd-block">{{ resttime.s }}</view>
     </template>
   </view>
 </template>
@@ -76,7 +74,7 @@ export default create({
   emits: ['input', 'on-end', 'on-restart', 'on-paused'],
 
   setup(props, { emit, slots }) {
-    console.log('componentName', componentName);
+    // console.log('componentName', componentName);
 
     const state = reactive({
       restTime: 0,
@@ -209,10 +207,7 @@ export default create({
 
         const d = ts >= ds ? parseInt(ts / ds) : 0;
         const h = ts - d * ds >= hs ? parseInt((ts - d * ds) / hs) : 0;
-        const m =
-          ts - d * ds - h * hs >= ms
-            ? parseInt((ts - d * ds - h * hs) / ms)
-            : 0;
+        const m = ts - d * ds - h * hs >= ms ? parseInt((ts - d * ds - h * hs) / ms) : 0;
         const s = Math.round((ts - d * ds - h * hs - m * ms) / 1000);
 
         if (d >= 0) rest.d = d + '';

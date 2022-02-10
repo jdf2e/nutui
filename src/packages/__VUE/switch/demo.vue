@@ -32,12 +32,12 @@
 
     <h2>自定义颜色</h2>
     <nut-cell>
-      <nut-switch v-model="checked" @change="switchChange" active-color="blue" />
+      <nut-switch v-model="checked" @change="change" active-color="blue" />
     </nut-cell>
 
     <h2>支持文字</h2>
     <nut-cell>
-      <nut-switch v-model="checked" @change="switchChange" active-text="开" inactive-text="关" />
+      <nut-switch v-model="checked" @change="change" active-text="开" inactive-text="关" />
     </nut-cell>
   </div>
 </template>
