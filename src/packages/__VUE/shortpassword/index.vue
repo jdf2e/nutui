@@ -112,7 +112,11 @@ export default create({
       () => props.modelValue,
       (value) => {
         realInput.value = value;
-        // console.log('watch', value);
+        emit('update:modelValue', value);
+      },
+      {
+        deep: true,
+        immediate: true
       }
     );
     function changeValue(e: Event) {
