@@ -1,9 +1,9 @@
 <template>
   <!-- 显示进度条 、 播放时长、 兼容是否支持 、暂停、 开启-->
 
-  <div class="player">
+  <div class="nut-audio">
     <!-- 进度条 -->
-    <div class="progress-wrapper">
+    <div class="progress-wrapper" v-if="type == 'progress'">
       <!-- 时间显示 -->
       <div class="time">{{ currentDuration }}</div>
       <div class="progress-bar-wrapper">
@@ -23,19 +23,29 @@
       <div class="time">{{ duration }}</div>
     </div>
 
-    <!-- 操作按钮 -->
-    <div class="operators">
-      <div class="op" @click="fastBack"><nut-button type="info" size="small">倒退</nut-button></div>
-      <div class="op" @click="changeStatus"
-        ><nut-button type="info" size="small">{{ playing ? '开始' : '暂停' }}</nut-button></div
+    <!-- 自定义 -->
+    <div class="nut-audio-icon" v-if="type == 'icon'">
+      <div
+        :class="['nut-audio-icon-box', playing ? 'nut-audio-icon-play' : 'nut-audio-icon-stop']"
+        @click="changeStatus"
       >
-      <div class="op" @click="forward"><nut-button type="info" size="small">快进</nut-button></div>
-      <div class="op" @click="handleMute"><nut-button type="info" size="small">静音</nut-button></div>
+        <nut-icon v-if="playing" name="service" class="nut-icon-am-rotate nut-icon-am-infinite"></nut-icon>
+        <nut-icon v-if="!playing" name="service"></nut-icon>
+      </div>
     </div>
+
+    <div v-if="type == 'none'" @click="changeStatus">
+      <slot></slot>
+    </div>
+
+    <!-- 操作按钮 -->
+    <template v-if="type != 'none'">
+      <slot></slot>
+    </template>
 
     <audio
       class="audioMain"
-      controls
+      :controls="type == 'controls'"
       ref="audioRef"
       :src="url"
       :preload="preload"
@@ -49,8 +59,7 @@
   </div>
 </template>
 <script lang="ts">
-import { authorize } from '@tarojs/taro';
-import { toRefs, ref, onMounted, reactive, watch } from 'vue';
+import { toRefs, ref, onMounted, reactive, watch, provide } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('audio');
 
@@ -98,10 +107,18 @@ export default create({
       default() {
         return 0;
       }
+    },
+
+    // 展示的形式   controls 控制面板   progress 进度条  icon 图标 none 自定义
+    type: {
+      type: String,
+      default() {
+        return 'progress';
+      }
     }
   },
   components: {},
-  emits: ['click'],
+  emits: ['fastBack', 'play', 'forward', 'ended', 'changeProgress', 'mute'],
 
   setup(props, { emit }) {
     const audioRef = ref(null);
@@ -163,6 +180,8 @@ export default create({
     const fastBack = () => {
       audioData.currentTime--;
       audioRef.value.currentTime = audioData.currentTime;
+
+      emit('fastBack', audioData.currentTime);
     };
 
     //改变播放状态
@@ -176,12 +195,16 @@ export default create({
         audioData.handPlaying = true;
       }
       audioData.playing = !audioData.playing;
+
+      emit('play', audioData.playing);
     };
 
     //快进
     const forward = () => {
       audioData.currentTime++;
       audioRef.value.currentTime = audioData.currentTime;
+
+      emit('forward', audioData.currentTime);
     };
 
     //处理
@@ -193,16 +216,21 @@ export default create({
     //播放结束 修改播放状态
     const audioEnd = () => {
       audioData.playing = false;
+      emit('ended');
     };
 
     //点击进度条
     const progressChange = (val) => {
       audioRef.value.currentTime = (audioData.second * val) / 100;
+
+      emit('changeProgress', audioRef.value.currentTime);
     };
 
     // 静音
     const handleMute = () => {
       audioData.hanMuted = !audioData.hanMuted;
+
+      emit('mute', audioData.hanMuted);
     };
 
     const formatSeconds = (value) => {
@@ -246,6 +274,16 @@ export default create({
         handle(value);
       }
     );
+
+    provide('audioParent', {
+      children: [],
+      props,
+      audioData,
+      handleMute,
+      forward,
+      fastBack,
+      changeStatus
+    });
 
     return {
       ...toRefs(props),

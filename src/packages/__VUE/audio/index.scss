@@ -1,6 +1,5 @@
-.player {
-  background: #fff;
-  padding: 0 20px;
+.nut-audio {
+  padding: 0;
   .progress-wrapper {
     display: flex;
     align-items: center;
@@ -20,13 +19,33 @@
     }
   }
 
-  .operators {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    .op {
-      margin: 0 5px;
+  .nut-audio-icon {
+    position: relative;
+    display: inline-block;
+
+    .nut-audio-icon-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba($color: $text-color, $alpha: 0.5);
+      &.nut-audio-icon-stop {
+        &::after {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translateX(-15px);
+          content: '';
+          height: 2px;
+          width: 30px;
+          background: $disable-color;
+          transform: rotate(45deg);
+          transform-origin: 8px -18px;
+        }
+      }
     }
   }
 

@@ -198,6 +198,7 @@
           "tarodoc": true,
           "author": "zongyue3"
         }
+        
       ]
     },
     {
@@ -488,6 +489,16 @@
           "desc": "音频播放器",
           "sort": 25,
           "show": true,
+          "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "AudioOperate",
+          "type": "component",
+          "cName": "音频操作按钮",
+          "desc": "音频操作按钮",
+          "sort": 26,
+          "show": false,
           "author": "yangxiaolu"
         }
       ]
