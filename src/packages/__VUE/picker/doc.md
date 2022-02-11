@@ -50,13 +50,48 @@ app.use(Popup);
       const confirm = (res)=>{
         desc.value = res;
       }
-      return {
-        show,
-        desc,
-        listData,
-        open,
-        confirm
-      };
+      return {show,desc,listData,open, confirm};
+    }
+  };
+</script>
+```
+:::
+
+### 默认选中项
+:::demo
+```html
+<template>
+  <nut-cell title="请选择城市" :desc="desc" @click="open"></nut-cell>
+  <nut-picker
+      v-model:visible="show"
+      :list-data="listData"
+      title="城市选择"
+      @confirm="confirm" 
+      :defaultIndex="2"
+  ></nut-picker>
+</template>
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const listData = [
+        '南京市',
+        '无锡市',
+        '海北藏族自治区',
+        '北京市',
+        '连云港市',
+        '浙江市',
+        '江苏市'
+      ];
+      const desc = ref(listData[2]);
+      const open = ()=>{
+        show.value = true;
+      }
+      const confirm = (res)=>{
+        desc.value = res;
+      }
+      return {show,desc,listData,open, confirm};
     }
   };
 </script>
@@ -65,17 +100,15 @@ app.use(Popup);
 
 ### 多列样式
 
-### 基础用法
 :::demo
 ```html
 <template>
-  <nut-cell title="请选择时间" :desc="desc" @click="open"></nut-cell>
+  <nut-cell title="请选择城市" :desc="desc" @click="open"></nut-cell>
   <nut-picker
       v-model:visible="show"
       :list-data="listData"
-      title="多列选择"
-      @confirm="confirm"
-      @close="close"
+      title="城市选择"
+      @confirm="confirm" 
   ></nut-picker>
 </template>
 <script>
@@ -94,29 +127,20 @@ app.use(Popup);
           defaultIndex: 1
         }
       ];
-      const desc = ref(
-      `${listData[0].values[listData[0].defaultIndex]} ${
-        listData[1].values[listData[1].defaultIndex]
-      }`
-    );
-
-  
-      return {
-        show,
-        desc,
-        listData,
-        open: (index) => {
-          show.value = true;
-        },
-        confirm: (res) => {
-          desc.value = res.join(' ');
-        }
-      };
+      const desc = ref(`${listData[0].values[listData[0].defaultIndex]} ${listData[1].values[listData[1].defaultIndex]}`);
+      const open = ()=>{
+        show.value = true;
+      }
+      const confirm = (res)=>{
+        desc.value = res.join(' ');
+      }
+      return {show,desc,listData,open, confirm};
     }
   };
 </script>
 ```
 :::
+
 
 ### 多级联动
 
@@ -188,7 +212,60 @@ app.use(Popup);
 ```
 :::
 
+### 动态设置
+:::demo
+```html
+<template>
+  <nut-cell title="请选择时间" :desc="desc" @click="open"></nut-cell>
+  <nut-picker
+      v-model:visible="show"
+      :list-data="listData"
+      :demoIndex="demoIndex"
+      title="地址选择"
+      @change="onChange"
+      @confirm="confirm"
+    ></nut-picker>
+</template>
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const cities = {
+        浙江: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
+        福建: ['福州', '厦门', '莆田', '三明']
+      };
 
+      const listData = ref([
+        {
+          values: Object.keys(cities)
+        },
+        {
+          values: cities['浙江']
+        }
+      ]);
+      const desc = ref('浙江 杭州');
+
+  
+      return {
+        show,
+        desc,
+        listData,
+        open: (index) => {
+          show.value = true;
+        },
+        confirm: (res) => {
+          desc.value = res[0]+' '+res[1];
+        },
+        onChange: (res, columnIndex, dataIndex) => {
+          listData.value[1].values = cities[res[0]];
+        }
+      };
+    }
+  };
+</script>
+```
+:::
 
 ## API
     
@@ -200,17 +277,27 @@ app.use(Popup);
 | title                  | 设置标题                   | String  | -      |
 | cancel-text            | 取消按钮文案               | String  | 取消   |
 | ok-text                | 确定按钮文案               | String  | 确定   |
-| list-data              | 列表数据                   | Array   | -      |
-| default-value-index    | 初始选中项的索引，默认为 0 | number  | 0      |
+| list-data              | 列表数据                   | Column[]   | -      |
+| default-index    | 单列选择时，初始选中项的索引，默认为 0 | number  | 0      |
 | teleport               | 指定挂载节点               | String  | "body" |
 | close-on-click-overlay | 点击蒙层是否关闭对话框     | Boolean | false  |
 | lock-scroll            | 背景是否锁定               | Boolean | false  |
    
+### Column 数据结构
+
+当传入多列时，columns 为一个对象数组，数组中的每一个对象配置每一列
+    
+| 事件名  | 说明             | 回调参数     |
+|---------|------------------|--------------|
+| values   | 列中对应的值   | string |
+| default-index | 初始选中项的索引，默认值 0 | number |
+| children  | 级联选项       | Column |
+
 ### Events
     
 | 事件名  | 说明             | 回调参数     |
 |---------|------------------|--------------|
 | close   | 关闭弹窗时触发   | event: Event |
 | confirm | 点击确认时候触发 | event: Event |
-| change  | 改变时触发       | val          |
+| change  | 改变时触发       | 选中的值, 第几列, 第几个 |
     

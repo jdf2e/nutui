@@ -1,6 +1,27 @@
+## v3.1.16
+
+`2022-01-30` 此版本依赖 Taro 3.4.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @Anberm
+
+* :zap: feat(button): use taro button (#918) @Anberm
+* :zap: feat(uploader): delete 事件增加文件下标字段 @richard1015
+* :zap: chore(navbar): 底层tabs组件替换 (#971) @liqiong-lab
+* :zap: chore(picker): 增加3d滚动效果、支持小程序场景使用 (#981) @yangxiaolu1993
+* :bug: fix(taro env): taro failed resolve component @szg2008
+* :bug: fix(tabbar): taro vue-router warn (#980) @Drjingfubo
+* :bug: fix(icon): loading icon rotate bug @richard1015
+* :bug: fix(input): 修复close 按钮清除延迟bug  @ailululu
+* :bug: fix(uploader): multiple 状态文件限制bug修复 @richard1015
+* :bug: fix(menu): 页面内容过长滑动位置固定 bug @yangjinjun3
+* :bug: fix(price,switch): vue warn  @richard1015
+* :zap: docs: 官网所有组件文档支持在线调试 @teams/nutui
+
+
 ## v3.1.15
 
-`2022-01-21`
+`2022-01-21` 此版本依赖 Taro 3.4.x
 
 NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
 本次社区贡献者 @Anberm、@odex21

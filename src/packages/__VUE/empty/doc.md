@@ -18,35 +18,49 @@ app.use(Empty);
 ```
 
 ### 基础用法
+:::demo
 ```html
-<nut-empty description="无数据"></nut-empty>
+<template>
+    <nut-empty description="无数据"></nut-empty>
+</template>
 ```
+:::
 
 ### 图片类型，内置 3 个
+:::demo
 ```html
-<nut-empty image="empty" description="无内容"></nut-empty>
-    
-<nut-empty image="error" description="加载失败/错误"></nut-empty>
-
-<nut-empty image="network" description="无网络"></nut-empty>
+<template>
+    <nut-empty image="empty" description="无内容"></nut-empty>
+    <nut-empty image="error" description="加载失败/错误"></nut-empty>
+    <nut-empty image="network" description="无网络"></nut-empty>
+</template>
 ```
+:::
 ### 自定义图片
+:::demo
 ```html
-<nut-empty description="无优惠券">
-    <template #image>
-        <img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" />
-    </template>
-</nut-empty>
+<template>
+    <nut-empty description="无优惠券">
+        <template #image>
+            <img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" />
+        </template>
+    </nut-empty>
+</template>
 ```
+:::
 
 ### 底部内容
+:::demo
 ```html
-<nut-empty image="error" description="加载失败">
-    <div style="margin-top: 10px">
-        <nut-button icon="refresh" type="primary">重试</nut-button>
-    </div>
-</nut-empty>
+<template>
+    <nut-empty image="error" description="加载失败">
+        <div style="margin-top: 10px">
+            <nut-button icon="refresh" type="primary">重试</nut-button>
+        </div>
+    </nut-empty>
+</template>
 ```
+:::
 
 ## API
 

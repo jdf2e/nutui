@@ -23,11 +23,11 @@
   &-loading,
   &-loading1 {
     display: inline-block;
-    animation: rotate 1s infinite linear;
+    animation: rotation 1s infinite linear;
   }
 
   --animate-duration: 1s;
-  --animate-delay: 1s;
+  --animate-delay: 0s;
 
   &-am-infinite {
     -webkit-animation-iteration-count: infinite;

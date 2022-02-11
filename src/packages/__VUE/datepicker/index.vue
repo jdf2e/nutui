@@ -250,7 +250,7 @@ export default create({
     };
 
     const columns = computed(() => {
-      console.log(ranges.value);
+      // console.log(ranges.value);
       const val = ranges.value.map((res) => {
         return generateValue(res.range[0], res.range[1], getDateIndex(res.type), res.type);
       });

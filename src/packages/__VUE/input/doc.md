@@ -29,7 +29,7 @@ app.use(Icon);
 ```html
 <template>
   <nut-input
-        v-model="state.val1"
+        v-model="state.val0"
         @change="change"
         @focus="focus"
         @blur="blur"
@@ -37,7 +37,7 @@ app.use(Icon);
       />
   <nut-input placeholder="请输入文本"
         @change="change"
-        v-model="state.val0"
+        v-model="state.val1"
         :require-show="true"
         label="文本"
         @clear="clear"
@@ -48,11 +48,11 @@ app.use(Icon);
   export default {
     setup() {
       const state = reactive({
-        val0: '',
-        val1: '初始数据'
+        val0: '初始数据',
+        val1: ''
       });
       setTimeout(function() {
-        state.val1 = '异步数据';
+        state.val0 = '异步数据';
       }, 2000);
       const change = (value: string | number,event:Event) => {
         console.log('change: ', value,event);
@@ -148,18 +148,50 @@ app.use(Icon);
 
 ```html
 <template>
-  <nut-input v-model="state.val0" @change="change" type="password" label="密码"/>
-  <nut-input v-model="state.val5" @change="change" type="number" label="整数" />
-  <nut-input v-model="state.val6" @change="change" type="digit" placeholder="支持小数点的输入" label="数字"/>
+  <nut-input v-model="state.val5" @change="change" type="password" label="密码"/>
+  <nut-input v-model="state.val6" @change="change" type="number" label="整数" />
+  <nut-input v-model="state.val7" @change="change" type="digit" placeholder="支持小数点的输入" label="数字"/>
 </template>
 <script lang="ts">
   import { reactive } from 'vue';
   export default {
     setup() {
       const state = reactive({
-        val0: '',
         val5: '',
-        val6: ''
+        val6: '',
+        val7: ''
+      });
+      const change = (value: string | number,event:Event) => {
+        console.log('change: ', value,event);
+      };
+
+      return {
+        state,
+        change
+      };
+    }
+  }
+</script>
+```
+
+:::
+
+### 无边框
+
+:::demo
+
+```html
+<template>
+  <nut-input v-model="state.val8" @change="change" :hasBorder="false" label="无边框" />
+  <nut-input v-model="state.val9" @change="change" :hasBorder="false" label="无边框" />
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        val8: '',
+        val9: ''
       });
       const change = (value: string | number,event:Event) => {
         console.log('change: ', value,event);
@@ -185,6 +217,7 @@ app.use(Icon);
 | placeholder  | 为空时占位符                           | String         | -       |
 | label        | 左侧文案                               | String         | -       |
 | require-show | 左侧*号是否展示                        | Boolean        | `false` |
+| has-border   | 下边框是否展示                         | Boolean        | `true` |
 | disabled     | 是否禁用                               | Boolean        | `false` |
 | readonly     | 是否只读                               | Boolean        | `false` |
 | max-length   | 限制最长输入字符                       | String、Number | -       |
