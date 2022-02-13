@@ -7,7 +7,7 @@ type Obj = {
 };
 
 type Store = {
-  rawVariables: Obj[];
+  variables: Obj[];
   variablesMap: Obj;
   rawStyles: Obj;
   [k: string]: any;
@@ -15,7 +15,7 @@ type Store = {
 
 const components = configs.nav.map(({ packages }) => packages.map(({ name }) => name)).flat(1);
 
-const getGithubRawFile = async function (url: string) {
+const getRawFileText = async function (url: string) {
   const response = await fetch(url);
   const res = await response.text();
   return res;
@@ -47,16 +47,8 @@ const awaitIframe = async () => {
   }
 };
 
-const cachedStyles: Obj = {};
-const store: Store = reactive({
-  init: false,
-  rawVariables: [],
-  variablesMap: {},
-  rawStyles: {}
-});
-
-// 提取变量，区分base和组件
-const extractVariable = (matched: string[], variables: string, name: string, lowerCaseName: string) =>
+// 提取变量
+const extractVariables = (matched: string[], name: string, lowerCaseName: string) =>
   matched.reduce((res, str) => {
     const extract = str.replace(/\s+!default/, '').match(/(.*):(?:\s+)?([\s\S]*)(?:\s+)?;/);
 
@@ -76,50 +68,10 @@ const extractVariable = (matched: string[], variables: string, name: string, low
     }
     return res;
   }, [] as Obj[]);
-const getSassVariables = async (url: string) => {
-  if (Object.keys(store.rawVariables).length) {
-    return store;
-  }
-
-  const variables = await getGithubRawFile(url);
-  const matchedComponentVariables = components
-    .map((name) => {
-      const lowerCaseName = name.toLowerCase();
-      const reg = new RegExp(`(?<!\\/\\/(\\s+)?)\\$(${name}|${lowerCaseName})\\b[\\w-]+:[^:;]+;`, 'g');
-      const matched = variables.match(reg);
-      if (matched) {
-        return extractVariable(matched, variables, name, lowerCaseName);
-      }
-    })
-    .filter(Boolean)
-    .flat(2);
-
-  const baseVariablesReg = new RegExp(
-    `\\$(?!(${matchedComponentVariables
-      .map((item) => (item && `${item.name}|${item.lowerCaseName}`) || '')
-      .join('|')})\\b)[\\w-]+:[^:]+;`,
-    'g'
-  );
-
-  const rawVariables = matchedComponentVariables as Obj[];
-
-  const matchedBaseVariables = variables.match(baseVariablesReg);
-
-  if (matchedBaseVariables) {
-    rawVariables.unshift(...extractVariable(matchedBaseVariables, variables, 'Base', 'base'));
-  }
-
-  const variablesMap = rawVariables.reduce((map, item) => {
-    map[item.key] = 1;
-    return map;
-  }, {});
-  store.rawVariables = rawVariables;
-  store.variablesMap = variablesMap;
-};
 
 // 提取样式代码，只保留有使用变量的行
 const extractStyle = (style: string) => {
-  if (!store.rawVariables.length) {
+  if (!store.variables.length) {
     return '';
   }
 
@@ -134,9 +86,82 @@ const extractStyle = (style: string) => {
 
   return extract.join('');
 };
-export const getSassStyle = async (name: string): Promise<void> => {
+
+const parseSassVariables = (text: string, components: string[]) => {
+  const matchedComponentVariables = components
+    .map((name) => {
+      const lowerCaseName = name.toLowerCase();
+      const reg = new RegExp(`(?<!\\/\\/(\\s+)?)\\$(${name}|${lowerCaseName})\\b[\\w-]+:[^:;]+;`, 'g');
+      const matched = text.match(reg);
+      if (matched) {
+        return extractVariables(matched, name, lowerCaseName);
+      }
+    })
+    .filter(Boolean)
+    .flat(2);
+
+  const baseVariablesReg = new RegExp(
+    `\\$(?!(${matchedComponentVariables
+      .map((item) => (item && `${item.name}|${item.lowerCaseName}`) || '')
+      .join('|')})\\b)[\\w-]+:[^:]+;`,
+    'g'
+  );
+
+  const variables = matchedComponentVariables as Obj[];
+
+  const matchedBaseVariables = text.match(baseVariablesReg);
+
+  // 组件变量以外的都作为基础变量
+  if (matchedBaseVariables) {
+    variables.unshift(...extractVariables(matchedBaseVariables, 'Base', 'base'));
+  }
+
+  return variables;
+};
+
+const cachedStyles: Obj = {};
+const store: Store = reactive({
+  init: false,
+  variables: [],
+  variablesMap: {},
+  rawStyles: {}
+});
+
+const getSassVariables = async () => {
+  const rawVariablesText = await getRawFileText(
+    '/devRaw/jd-platform-opensource/nutui/raw/next/src/packages/styles/variables.scss'
+  );
+  const rawVariables = parseSassVariables(rawVariablesText, components);
+
+  // 固定自定义主题的访问链接: https://nutui.jd.com/theme/?theme=自定义变量的文件地址#/
+  // e.g. https://nutui.jd.com/theme/?theme=xxx.com%2variables.scss#/
+  // vite issue https://github.com/vitejs/vite/issues/6894
+  const params = new URLSearchParams(window.location.search);
+  const customUrl = params.get('theme');
+  if (customUrl) {
+    const customVariablesText = await getRawFileText(customUrl);
+    const customVariables = parseSassVariables(customVariablesText, components);
+
+    // merge
+    rawVariables.forEach((item) => {
+      const custom = customVariables.find(({ key }) => key === item.key);
+      if (custom) {
+        item.value = custom.value;
+      }
+    });
+  }
+
+  const variablesMap = rawVariables.reduce((map, item) => {
+    map[item.key] = 1;
+    return map;
+  }, {});
+  store.variables = rawVariables;
+  store.variablesMap = variablesMap;
+};
+
+export const getRawSassStyle = async (name: string): Promise<void> => {
   if (!store.rawStyles[name]) {
-    const style = await getGithubRawFile(
+    const style = await getRawFileText(
       `/devRaw/jd-platform-opensource/nutui/raw/next/src/packages/__VUE/${name}/index.scss`
     );
     store.rawStyles[name] = style;
@@ -147,7 +172,7 @@ export const useThemeEditor = function (): Obj {
   const route = useRoute();
 
   const cssText = computed(() => {
-    const variablesText = store.rawVariables.map(({ key, value }) => `${key}:${value}`).join(';');
+    const variablesText = store.variables.map(({ key, value }) => `${key}:${value}`).join(';');
 
     const styleText = Object.keys(store.rawStyles)
       .map((name) => {
@@ -162,15 +187,12 @@ export const useThemeEditor = function (): Obj {
   const formItems = computed(() => {
     const name = route.path.substring(1);
 
-    return store.rawVariables.filter(({ lowerCaseName }) => lowerCaseName === name);
+    return store.variables.filter(({ lowerCaseName }) => lowerCaseName === name);
   });
 
   onMounted(async () => {
     if (!store.init) {
-      await Promise.all([
-        getSassVariables('/devRaw/jd-platform-opensource/nutui/raw/next/src/packages/styles/variables.scss'),
-        loadScript('https://cdnout.com/sass.js/sass.sync.min.js')
-      ]);
+      await Promise.all([getSassVariables(), loadScript('https://cdnout.com/sass.js/sass.sync.min.js')]);
       store.init = true;
     }
   });
@@ -180,7 +202,7 @@ export const useThemeEditor = function (): Obj {
     (path) => {
       const name = path.substring(1);
       if (name !== 'base') {
-        getSassStyle(name);
+        getRawSassStyle(name);
       }
     },
     {
@@ -220,12 +242,12 @@ export const useThemeEditor = function (): Obj {
   return {
     formItems,
     downloadScssVariables() {
-      if (!store.rawVariables.length) {
+      if (!store.variables.length) {
         return;
       }
 
       let temp = '';
-      const variablesText = store.rawVariables
+      const variablesText = store.variables
         .map(({ name, key, value }) => {
           let comment = '';
           if (temp !== name) {
