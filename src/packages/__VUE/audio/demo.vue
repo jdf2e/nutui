@@ -80,7 +80,8 @@ export default createDemo({
     const playing = ref(false);
     const duration = ref(0);
     const data = reactive({
-      muted: false
+      muted: false,
+      autoplay: false
     });
 
     const fastBack = () => {

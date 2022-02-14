@@ -36,7 +36,7 @@ export default {
   setup() {
     const data = reactive({
       muted: false,
-      autoplay: 'autoplay'
+      autoplay: false
     });
     return {
       ...toRefs(data)
@@ -72,7 +72,7 @@ export default {
   setup() {
     const data = reactive({
       muted: false,
-      autoplay: 'autoplay'
+      autoplay: false
     });
     const duration = ref(0);
     onMounted(() => {
@@ -131,7 +131,7 @@ export default {
   setup() {
     const data = reactive({
       muted: false,
-      autoplay: 'autoplay'
+      autoplay: false
     });
     return {
       ...toRefs(data)
@@ -175,7 +175,7 @@ export default {
   setup() {
     const data = reactive({
       muted: false,
-      autoplay: 'autoplay'
+      autoplay: false
     });
     const playing = ref(false);
 
