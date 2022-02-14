@@ -484,6 +484,8 @@
         {
           "version": "3.0.0",
           "name": "Audio",
+          "taro": true,
+          "tarodoc": true,
           "type": "component",
           "cName": "音频播放器",
           "desc": "音频播放器",

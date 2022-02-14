@@ -1,4 +1,4 @@
-# audio组件
+# Audio组件
 
 ### 介绍
 
@@ -11,8 +11,6 @@
 import { createApp } from 'vue';
 // vue
 import { Audio} from '@nutui/nutui';
-// taro
-import { Audio } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Audio);
