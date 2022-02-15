@@ -85,9 +85,9 @@ app.use(Drag);
   border: 1px solid red;
 }
 </style>
-:::
 
 ```
+:::
 ## Prop
 
 | 字段      | 说明                                              | 类型           | 默认值                              |
