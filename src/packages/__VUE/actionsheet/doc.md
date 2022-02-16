@@ -20,89 +20,246 @@ app.use(ActionSheet).use(Popup);
 ## 基本用法
 
 默认
+:::demo
 ``` html
-<div @click="switchActionSheet">
-   <span><label>基础用法</label></span>
-   <div class="selected-option" v-html="state.val"></div>
-</div>
-<nut-actionsheet
-  v-model:visible="state.isVisible"
-  :menu-items="menuItems"
-  @choose="chooseItem"
-></nut-actionsheet>
-```
-
-## 展示取消按钮
-```html
-<div @click="switchActionSheet">
-  <span><label>展示取消按钮</label></span>
-  <div class="selected-option" v-html="state.val"></div>
-</div>
-<nut-actionsheet v-model:visible="isVisible" 
-  @close="switchActionSheet"
-  :menu-items="menuItems"
-  @choose="chooseItem"
-  cancel-txt="取消"
-></nut-actionsheet>
-```
-## 展示描述信息
-```html
-<div @click="switchActionSheet">
-   <span><label>展示取消按钮</label></span>
-    <div class="selected-option" v-html="state.val"></div>
-</div>
- <nut-actionsheet v-model:visible="isVisible" 
-    @close="switchActionSheet"
-    description="state.desc"
-    :menu-items="menuItems"
-    @choose="chooseItem"
-    cancel-txt="取消"
-></nut-actionsheet>
-```
-
-## 选项状态
-```html
-<div @click="switchActionSheet">
-    <span class="title"><label>性别</label></span>
-    <span class="selected-option" v-html="sex"></span>
-</div>
-<nut-actionsheet
-@close="switchActionSheet"
-  v-model:visible="state.isVisible4"
-  cancel-txt="取消"
-  :menu-items="menuItemsThree"
-></nut-actionsheet>
-```
-
-```javascript
-setup() {
-    const state = reactive({
+<template>
+  <div>
+  <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+     
+    >
+      <span><label>基础用法</label></span>
+      <div v-html="state.val"></div>
+    </nut-cell>
+     <!-- demo 基础用法 -->
+    <nut-actionsheet
+      v-model:visible="state.isVisible"
+      :menu-items="menuItems"
+      @choose="chooseItem"
+    >
+    </nut-actionsheet>
+    </div>
+</template>
+<script>
+import { reactive } from 'vue';
+export default {
+  setup() {
+  const state = reactive({
       isVisible: false,
-      value: '',
-      desc: '这是一段描述信息'
+      val: '',
     });
-    const menuItems = [
+     const menuItems = [
       {
-        name: '选项一',
-        value: 0
+        name: '选项一'
       },
       {
-        name: '选项二',
-        value: 1
+        name: '选项二'
+      },
+      {
+        name: '选项三'
+      }
+    ];
+    const switchActionSheet = ( param ) => {
+      state.isVisible = !state.isVisible;
+    };
+      const chooseItem = (itemParams) => {
+      state.val = itemParams.name;
+    };
+    return {
+      state,
+      switchActionSheet,
+      menuItems,
+      chooseItem,
+    };
+  }
+}
+ </script>
+```
+:::
+
+## 展示取消按钮
+:::demo
+``` html
+<template>
+  <div>
+  <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+    >
+      <span><label>基础用法</label></span>
+      <div v-html="state.val"></div>
+    </nut-cell>
+     <!-- demo 基础用法 -->
+    <nut-actionsheet
+      v-model:visible="state.isVisible"
+      :menu-items="menuItems"
+      cancel-txt="取消"
+      @choose="chooseItem"
+    >
+    </nut-actionsheet>
+    </div>
+</template>
+<script>
+import { reactive } from 'vue';
+export default {
+  setup() {
+  const state = reactive({
+      isVisible: false,
+      val: '',
+    });
+     const menuItems = [
+      {
+        name: '选项一'
+      },
+      {
+        name: '选项二'
+      },
+      {
+        name: '选项三'
+      }
+    ];
+    const switchActionSheet = ( param ) => {
+      state.isVisible = !state.isVisible;
+    };
+      const chooseItem = (itemParams) => {
+      state.val = itemParams.name;
+    };
+    return {
+      state,
+      switchActionSheet,
+      menuItems,
+      chooseItem,
+    };
+  }
+}
+ </script>
+```
+:::
+## 展示描述信息
+:::demo
+``` html
+<template>
+  <div>
+  <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+    >
+      <span><label>基础用法</label></span>
+      <div v-html="state.val"></div>
+    </nut-cell>
+     <!-- demo 基础用法 -->
+    <nut-actionsheet
+      v-model:visible="state.isVisible"
+      cancel-txt="取消"
+      description="这是一段展示信息"
+      :menu-items="menuItems"
+      @choose="chooseItem"
+    >
+    </nut-actionsheet>
+    </div>
+</template>
+<script>
+import { reactive } from 'vue';
+export default {
+  setup() {
+  const state = reactive({
+      isVisible: false,
+      val: '',
+    });
+     const menuItems = [
+      {
+        name: '选项一'
+      },
+      {
+        name: '选项二'
       },
       {
         name: '选项三',
-        value: 2
+        subname: '描述信息'
       }
     ];
-     const switchActionSheet = () => {
-       state.isVisible = !state.isVisible
+    const switchActionSheet = ( param ) => {
+      state.isVisible = !state.isVisible;
     };
-    const chooseItem = (item,index) => {
-      console.log(item,index);
+      const chooseItem = (itemParams) => {
+      state.val = itemParams.name;
     };
-
+    return {
+      state,
+      switchActionSheet,
+      menuItems,
+      chooseItem,
+    };
+  }
+}
+ </script>
 ```
+:::
+
+## 选项状态
+
+:::demo
+``` html
+<template>
+  <div>
+  <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+     
+    >
+      <span><label>基础用法</label></span>
+      <div v-html="state.val"></div>
+    </nut-cell>
+     <!-- demo 基础用法 -->
+    <nut-actionsheet
+      v-model:visible="state.isVisible"
+      :menu-items="menuItems"
+      choose-tag-value="着色选项"
+      @choose="chooseItem"
+       cancel-txt="取消"
+    >
+    </nut-actionsheet>
+    </div>
+</template>
+<script>
+import { reactive } from 'vue';
+export default {
+  setup() {
+  const state = reactive({
+      isVisible: false,
+      val: '',
+    });
+     const menuItems = [
+      {
+        name: '着色选项'
+      },
+      {
+        name: '禁用选项',
+        disable: true
+      }
+    ];
+    const switchActionSheet = ( param ) => {
+      state.isVisible = !state.isVisible;
+    };
+      const chooseItem = (itemParams) => {
+      state.val = itemParams.name;
+    };
+    return {
+      state,
+      switchActionSheet,
+      menuItems,
+      chooseItem,
+    };
+  }
+}
+ </script>
+```
+:::
 
 ## Prop
 

@@ -7,7 +7,7 @@
   .min,
   .max {
     font-size: $font-size-1;
-    color: $range-max;
+    color: $range-tip-font-color;
     user-select: none;
   }
 }
@@ -16,7 +16,7 @@
   position: relative;
   width: 100%;
   height: 3px;
-  background-color: $rang-bg-color;
+  background-color: $range-bg-color;
   border-radius: 2px;
   cursor: pointer;
   &::before {
@@ -33,7 +33,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background: $rang-bar-bg-color;
+    background: $range-bar-bg-color;
     border-radius: inherit;
     transition: all 0.2s;
   }
@@ -75,7 +75,7 @@
       justify-content: center;
       user-select: none;
       font-size: $font-size-1;
-      color: $range-max;
+      color: $range-tip-font-color;
       transform: translate3d(0, -100%, 0);
     }
   }

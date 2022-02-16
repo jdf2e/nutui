@@ -2,7 +2,7 @@
 
 ### 介绍
 
-显示一个任务或流程的进度，常用语开通流程。
+显示一个任务或流程的进度，常用于开通流程。
 
 ### 安装
 
@@ -21,7 +21,9 @@ app.use(Indicator);
 
 ### 基础用法
 
+:::demo
 ```html
+<template>
   <nut-cell>
     <nut-indicator :size="3" :current="3">step1</nut-indicator>
   </nut-cell>
@@ -35,10 +37,14 @@ app.use(Indicator);
       </nut-col>
     </nut-row>
   </nut-cell>
+</template>
 ```
+:::
 
 ### block用法
+:::demo
 ```html
+<template>
     <nut-cell>
       <nut-indicator :block="true" algin="center" :size="6" :current="5">step1</nut-indicator>
     </nut-cell>
@@ -48,14 +54,20 @@ app.use(Indicator);
     <nut-cell>
       <nut-indicator :block="true" align="right" :size="6" :current="5">step1</nut-indicator>
     </nut-cell>
+</template>
 ```
+:::
 
 ### 不补0
+:::demo
 ```html
+<template>
     <nut-cell>
       <nut-indicator :fill-zero="false" :size="6" :current="5">step1</nut-indicator>
     </nut-cell>
+</template>
 ```
+:::
 
 
 ## API

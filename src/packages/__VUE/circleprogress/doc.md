@@ -1,4 +1,4 @@
-# CricleProgress 进度条
+# CircleProgress 进度条
 
 ### 介绍
 
@@ -9,42 +9,92 @@
 ``` javascript
 import { createApp } from 'vue';
 //vue
-import { CirecleProgress } from '@nutui/nutui';
+import { CircleProgress } from '@nutui/nutui';
 //taro
-import { CirecleProgress } from '@nutui/nutui-taro';
+import { CircleProgress } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(CirecleProgress);
+app.use(CircleProgress);
 
 ```
 
 
 ### 基础用法
-
+:::demo
 ```html
-<nut-circleprogress progress="10"></nut-circleprogress>
+<template>
+    <nut-cell>
+    <nut-circleprogress :progress="10"> </nut-circleprogress>
+   </nut-cell>
+</template>
 ```
+:::
 ### 环形进度条自定义样式
-
+:::demo
 ```html
-<nut-circleprogress progress="50" :progress-option="progressOption"></nut-circleprogress>
+<template>
+  <nut-cell>
+    <nut-circleprogress :progress="50" :progress-option="progressOption"> </nut-circleprogress>
+  </nut-cell>
+</template>
+<script>
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
+    const progressOption = reactive({
+      radius: 50,
+      strokeOutWidth: 10,
+      backColor: '#d9d9d9',
+      progressColor: 'red'
+    });
+    return {
+      progressOption,
+    };
+  }
+}
+</script>
 ```
+:::
 ### 环形进度条自定义内容
-
+:::demo
 ```html
- <nut-circleprogress progress="50" :is-auto="true">
-    <div>自定义</div>
- </nut-circleprogress>
+<template>
+  <nut-cell>
+     <nut-circleprogress :progress="50" :is-auto="isAuto">
+       <div>自定义</div>
+    </nut-circleprogress>
+  </nut-cell>
+</template>
+<script>
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
+    const isAuto = ref(true);
+    return {
+      isAuto,
+    };
+  }
+}
+</script>
 ```
+:::
 ### 动态改变环形进度条的进度
-
+:::demo
 ```html
-  <nut-circleprogress :progress="percent" :progress-option="progressOption" :stroke-inner-width="strokeInnerWidth"> </nut-circleprogress>
-  <nut-button type="primary"  @click="setReduceVal" >减少</nut-button>
-  <nut-button type="primary"  @click="setAddVal">增加</nut-button>
-```
-```javascript
- setup() {
+<template>
+  <div>
+    <nut-circleprogress :progress="percent" :progress-option="progressOption" :stroke-inner-width="strokeInnerWidth">
+    </nut-circleprogress>
+  </div>
+  <div>
+    <nut-button type="primary" @click="setReduceVal">减少</nut-button>
+    <nut-button type="primary" @click="setAddVal">增加</nut-button>
+  </div>
+</template>
+<script>
+import { reactive, ref } from 'vue';
+export default {
+  setup() {
     const progressOption = reactive({
       radius: 50,
       strokeOutWidth: 10,
@@ -77,7 +127,10 @@ app.use(CirecleProgress);
       percent
     };
   }
+}
+</script>
 ```
+:::
 
 
 ## Prop

@@ -141,8 +141,8 @@ setup() {
   const onOversize = (files: File[]) => {
     console.log('oversize 触发 文件大小不能超过 50kb', files);
   };
-  const onDelete = (file: FileItem, fileList: FileItem[]) => {
-    console.log('delete 事件触发', file, fileList);
+  const onDelete = (obj: any) => {
+    console.log('delete 事件触发', obj);
   };
   const onProgress = ({ event, options, percentage }: any) => {
     progressPercentage.value = percentage;
@@ -214,7 +214,7 @@ setup() {
 | success         | 上传成功               | {data,option,fileItem}    |
 | failure         | 上传失败               | {data,option,fileItem}    |
 | change          | 上传文件改变时的状态   | {fileList,event}          |
-| delete          | 文件删除之前的状态     | {files,fileList}          |
+| delete          | 文件删除事件     | {files,fileList,index}          |
 | file-item-click | 文件上传成功后点击触发 | {fileItem}                |
 
 

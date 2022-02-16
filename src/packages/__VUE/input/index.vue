@@ -1,7 +1,7 @@
 <template>
   <view :class="classes">
-    <view class="nut-input-label">
-      <view v-if="label" class="label-string">{{ label }}</view>
+    <view v-if="label" class="nut-input-label">
+      <view class="label-string">{{ label }}</view>
     </view>
     <input
       class="input-text"
@@ -12,6 +12,7 @@
       :disabled="disabled"
       :readonly="readonly"
       :value="modelValue"
+      :inputmode="inputmode"
       @input="valueChange"
       @focus="valueFocus"
       @blur="valueBlur"
@@ -77,6 +78,10 @@ export default create({
     clearable: {
       type: Boolean,
       default: true
+    },
+    hasBorder: {
+      type: Boolean,
+      default: true
     }
   },
 
@@ -90,8 +95,13 @@ export default create({
       return {
         [prefixCls]: true,
         [`${prefixCls}-disabled`]: props.disabled,
-        [`${prefixCls}-require`]: props.requireShow
+        [`${prefixCls}-require`]: props.requireShow,
+        [`${prefixCls}-border`]: props.hasBorder
       };
+    });
+
+    const inputmode = computed(() => {
+      return props.type === 'digit' ? 'decimal' : props.type === 'number' ? 'numeric' : 'text';
     });
 
     const styles = computed(() => {
@@ -127,7 +137,7 @@ export default create({
     const valueBlur = (event: Event) => {
       setTimeout(() => {
         active.value = false;
-      }, 0);
+      }, 200);
 
       const input = event.target as HTMLInputElement;
       let value = input.value;
@@ -147,6 +157,7 @@ export default create({
       active,
       classes,
       styles,
+      inputmode,
       valueChange,
       valueFocus,
       valueBlur,

@@ -14,147 +14,226 @@ import { Checkbox,CheckboxGroup,Icon } from '@nutui/nutui';
 import { Checkbox,CheckboxGroup,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Checkbox);
-app.use(CheckboxGroup);
-app.use(Icon);
+app.use(Checkbox).use(CheckboxGroup).use(Icon);
 ```
 
 ## 基本用法
 
+:::demo
+
 ```html
-<nut-checkbox v-model="checkbox1" label="复选框">复选框</nut-checkbox>
-<nut-checkbox v-model="checkbox2" text-position="left">复选框</nut-checkbox>
-```
-```ts
-setup() {
-  return {
-    checkbox1: false,
-    checkbox2: false,
+<template>
+  <nut-checkbox v-model="checkbox1" label="复选框">复选框</nut-checkbox>
+  <nut-checkbox v-model="checkbox2" text-position="left">复选框</nut-checkbox>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        checkbox1: false,
+        checkbox2: false
+      });
+      return { ...toRefs(state) };
+    }
   };
-}
+</script>
+<style lang="scss" scoped>
+  .nut-checkbox {
+    display: flex;
+    margin-right: 20px;
+    .nut-checkbox__label {
+      margin-left: 10px;
+    }
+  }
+</style>
 ```
+
+:::
 
 ## 禁用状态
 
+:::demo
+
 ```html
-<nut-checkbox v-model="checkbox3" disabled>未选时禁用状态</nut-checkbox>
-<nut-checkbox v-model="checkbox4" disabled>选中时禁用状态</nut-checkbox>
+<template>
+  <nut-checkbox v-model="checkbox3" disabled>未选时禁用状态</nut-checkbox>
+  <nut-checkbox v-model="checkbox4" disabled>选中时禁用状态</nut-checkbox>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        checkbox3: false,
+        checkbox4: true,
+      });
+      return { ...toRefs(state) };
+    }
+  };
+</script>
 ```
 
-```ts
-setup() {
-  return {
-    checkbox3: false,
-    checkbox4: true,
-  };
-}
-```
+:::
 
 ## 自定义尺寸
 
+:::demo
+
 ```html
-<nut-checkbox v-model="checkbox5" icon-size="25">自定义尺寸25</nut-checkbox>
-<nut-checkbox v-model="checkbox6" icon-size="10">自定义尺寸10</nut-checkbox>
-```
-
-```ts
-setup() {
-  return {
-    checkbox5: true,
-    checkbox6: false,
+<template>
+  <nut-checkbox v-model="checkbox5" icon-size="25">自定义尺寸25</nut-checkbox>
+  <nut-checkbox v-model="checkbox6" icon-size="10">自定义尺寸10</nut-checkbox>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        checkbox5: true,
+        checkbox6: true,
+      });
+      return { ...toRefs(state) };
+    }
   };
-}
-
+</script>
 ```
+
+:::
 
 ## 自定义图标
 
 这里建议同时设置 `icon-name` 和 `icon-active-name` 属性
 
+:::demo
+
 ```html
-<nut-checkbox v-model="checkbox7" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-checkbox>
-```
-
-```ts
-setup() {
-  return {
-    checkbox7: true,
+<template>
+  <nut-checkbox v-model="checkbox7" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-checkbox>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        checkbox7: true,
+      });
+      return { ...toRefs(state) };
+    }
   };
-}
-
+</script>
 ```
+
+:::
 
 ## change事件
 
 值发生变化时，将触发change事件
 
+:::demo
+
 ```html
-<nut-checkbox v-model="checkbox" @change="changeBox3">change复选框</nut-checkbox>
+<template>
+  <nut-checkbox v-model="checkbox" @change="changeBox3">change复选框</nut-checkbox>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        checkbox: false,
+      });
+      const changeBox3= (checked: boolean, label: string) => {
+        console.log('change事件触发' + checked, label);
+      } 
+      return { ...toRefs(state), changeBox3 };
+    }
+  };
+</script>
 ```
 
-```ts
-setup() {
-  const checkbox = ref(false);
-  const changeBox3= (checked: boolean, label: string) => {
-    console.log('change事件触发' + checked, label);
-	}  
-  return {
-    checkbox,
-    changeBox3
-  };
-}
-```
+:::
 
 ## checkboxGroup使用
 
+:::demo
+
 ```html
-<nut-checkboxgroup v-model="checkboxgroup1">
-  <nut-checkbox label="1">组合复选框</nut-checkbox>
-  <nut-checkbox label="2">组合复选框</nut-checkbox>
-  <nut-checkbox label="3">组合复选框</nut-checkbox>
-  <nut-checkbox label="4">组合复选框</nut-checkbox>
-</nut-checkboxgroup>
+<template>
+  <nut-checkboxgroup v-model="checkboxgroup1">
+    <nut-checkbox label="1">组合复选框</nut-checkbox>
+    <nut-checkbox label="2">组合复选框</nut-checkbox>
+    <nut-checkbox label="3">组合复选框</nut-checkbox>
+    <nut-checkbox label="4">组合复选框</nut-checkbox>
+  </nut-checkboxgroup>
+  <nut-cell>
+    <div class="demo-check">当前选中值</div>
+    <div>{{ checkboxgroup1 }}</div>
+  </nut-cell>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        checkboxgroup1: ['2', '3'],
+      });
+
+      return { ...toRefs(state) };
+    }
+  };
+</script>
 ```
 
-```ts
-setup() {
-  return {
-    checkboxgroup1: ['2', '3'],
-  };
-}
-```
+:::
 
 ## checkboxGroup 全选/取消
 
+:::demo
+
 ```html
-<nut-checkboxgroup v-model="checkboxgroup3" ref="group" @change="changeBox4">
-  <nut-checkbox label="1">组合复选框</nut-checkbox>
-  <nut-checkbox label="2">组合复选框</nut-checkbox>
-</nut-checkboxgroup>
-<span class="btn">
-  <nut-button type="primary" @click="toggleAll(true)">全选</nut-button>
-  <nut-button type="primary" @click="toggleAll(false)">取消</nut-button>
-</span>
+<template>
+  <nut-checkboxgroup v-model="checkboxgroup3" ref="group" @change="changeBox4">
+    <nut-checkbox label="1">组合复选框</nut-checkbox>
+    <nut-checkbox label="2">组合复选框</nut-checkbox>
+  </nut-checkboxgroup>
+  <span class="btn">
+    <nut-button type="primary" @click="toggleAll(true)">全选</nut-button>
+    <nut-button type="primary" @click="toggleAll(false)">取消</nut-button>
+  </span>
+</template>
+<script lang="ts">
+  import { reactive, toRefs, ref } from 'vue';
+  import { Toast } from '@nutui/nutui';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        checkboxgroup3: ['2'],
+      });
+
+      const group = ref(null);
+      const changeBox4 = (label: any[]) => {
+        Toast.text(`${label.length ? '全选' : '取消全选'}`);
+      };
+
+      const toggleAll = (f: boolean) => {
+        (group.value as any).toggleAll(f);
+      };
+
+      return { ...toRefs(state), group, changeBox4, toggleAll };
+    }
+  };
+</script>
 ```
 
-```ts
-setup() {
-  const group = ref(null);
-  const changeBox4 = (label: any[]) => {
-    Toast.text(`${label.length ? '全选' : '取消全选'}`);
-  };
-
-  const toggleAll = (f: boolean) => {
-    (group.value as any).toggleAll(f);
-  };
-  return {
-    checkboxgroup3: ['2'],
-    group,
-    changeBox4,
-    toggleAll
-  };
-}
-```
+:::
 
 ## Checkbox
 

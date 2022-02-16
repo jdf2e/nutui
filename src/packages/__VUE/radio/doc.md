@@ -14,116 +14,188 @@ import { Radio,RadioGroup } from '@nutui/nutui';
 import { Radio,RadioGroup } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Radio);
-app.use(RadioGroup);
+app.use(Radio).use(RadioGroup);
 ```
 ## 基本用法
 
 通过 **v-model** 绑定值当前选项的 **label** 。并且必须 **nut-radiogroup** 和 **nut-radio** 相结合进行使用
 
+:::demo
+
 ```html
-<nut-radiogroup v-model="radioVal">
-  <nut-radio label="1">选项1</nut-radio>
-  <nut-radio disabled label="2">选项2</nut-radio>
-  <nut-radio label="3">选项3</nut-radio>
-</nut-radiogroup>
-<nut-radiogroup v-model="radioVal" text-position="left">
-  <nut-radio label="1">选项1</nut-radio>
-  <nut-radio disabled label="2">选项2</nut-radio>
-  <nut-radio label="3">选项3</nut-radio>
-</nut-radiogroup>
-<nut-radiogroup v-model="radioVal">
-  <nut-radio shape="button" label="1">选项1</nut-radio>
-  <nut-radio disabled shape="button" label="2">选项2</nut-radio>
-  <nut-radio shape="button" label="3">选项3</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  return {
-    radioVal:"1",
+<template>
+  <nut-cell-group title="基本用法">
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal">
+        <nut-radio label="1">选项1</nut-radio>
+        <nut-radio disabled label="2">选项2</nut-radio>
+        <nut-radio label="3">选项3</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal" text-position="left">
+        <nut-radio label="1">选项1</nut-radio>
+        <nut-radio disabled label="2">选项2</nut-radio>
+        <nut-radio label="3">选项3</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal">
+        <nut-radio shape="button" label="1">选项1</nut-radio>
+        <nut-radio disabled shape="button" label="2">选项2</nut-radio>
+        <nut-radio shape="button" label="3">选项3</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const radioVal = ref('1');
+      return { radioVal };
+    },
   };
-}
+</script>
 ```
+
+:::
+
 ## 水平使用
 
-```html
-<nut-radiogroup v-model="radioVal" direction="horizontal">
-  <nut-radio label="1">选项1</nut-radio>
-  <nut-radio disabled label="2">选项2</nut-radio>
-  <nut-radio label="3">选项3</nut-radio>
-</nut-radiogroup>
-<nut-radiogroup v-model="radioVal" text-position="left" direction="horizontal">
-  <nut-radio label="1">选项1</nut-radio>
-  <nut-radio disabled label="2">选项2</nut-radio>
-  <nut-radio label="3">选项3</nut-radio>
-</nut-radiogroup>
-<nut-radiogroup v-model="radioVal" direction="horizontal">
-  <nut-radio shape="button" label="1">选项1</nut-radio>
-  <nut-radio disabled shape="button" label="2">选项2</nut-radio>
-  <nut-radio shape="button" label="3">选项3</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  return {
-    radioVal:"1",
-  };
-}
-```
-## 自定义尺寸
+:::demo
 
 ```html
-<nut-radiogroup v-model="radioVal">
-  <nut-radio :label="1" icon-size="12">自定义尺寸12</nut-radio>
-  <nut-radio :label="2" icon-size="12">自定义尺寸12</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  return {
-    radioVal:"1",
+<template>
+  <nut-cell-group title="水平使用">
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal" direction="horizontal">
+        <nut-radio label="1">选项1</nut-radio>
+        <nut-radio label="2">选项2</nut-radio>
+        <nut-radio label="3">选项3</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal" text-position="left" direction="horizontal">
+        <nut-radio label="1">选项1</nut-radio>
+        <nut-radio label="2">选项2</nut-radio>
+        <nut-radio label="3">选项3</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal" direction="horizontal">
+        <nut-radio shape="button" label="1">选项1</nut-radio>
+        <nut-radio shape="button" label="2">选项2</nut-radio>
+        <nut-radio shape="button" label="3">选项3</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const radioVal = ref('1');
+      return { radioVal };
+    },
   };
-}
+</script>
 ```
+
+:::
+## 自定义尺寸
+
+:::demo
+
+```html
+<template>
+  <nut-cell-group title="自定义尺寸">
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal">
+        <nut-radio label="1" icon-size="12">自定义尺寸12</nut-radio>
+        <nut-radio label="2" icon-size="12">自定义尺寸12</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const radioVal = ref('1');
+      return { radioVal };
+    },
+  };
+</script>
+```
+
+:::
 
 ## 自定义图标
 
 建议 `icon-name` `icon-active-name` 一起修改
 
+:::demo
+
 ```html
-<nut-radiogroup v-model="radioVal">
-  <nut-radio :label="1" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
-  <nut-radio :label="2" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  return {
-    radioVal:"1",
+<template>
+  <nut-cell-group title="Radio自定义图标">
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal">
+        <nut-radio label="1" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
+        <nut-radio label="2" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const radioVal = ref('1');
+      return { radioVal };
+    },
   };
-}
+</script>
 ```
+
+:::
 
 ## 触发 change 事件
 
+:::demo
+
 ```html
-<nut-radiogroup v-model="radioVal" @change="handleChange">
-  <nut-radio :label="1" >触发事件</nut-radio>
-  <nut-radio :label="2" >触发事件</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  const handleChange = (value: any) => {
-    console.log(value)
-  }
-  return {
-    radioVal:"1",
-    handleChange
+<template>
+  <nut-cell-group title="触发事件">
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal" @change="handleChange">
+        <nut-radio label="1">触发事件</nut-radio>
+        <nut-radio label="2">触发事件</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+    <nut-cell title="当前选中值" :desc="radioVal"></nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const radioVal = ref('1');
+      const handleChange = (value: any) => {
+        console.log(value);
+      };
+      return { radioVal, handleChange };
+    },
   };
-}
+</script>
 ```
+:::
 
 ## Prop
 
