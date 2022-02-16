@@ -16,11 +16,12 @@ let spinner;
 let componentConfig = {
   version: '3.0.0', //版本
   name: '', //组件名称
-  type: '', //组件属于哪种类型
+  cType: '', //组件属于哪种类型
   cName: '', //组件中文名称
   desc: '', //组件描述
   show: '', //组件是否显示在demo/文档中
   tarodoc: false, //是否显示taro文档
+  type: 'component',
   // taro: true, //是否生成.taro.vue文件，因为目前默认组件都会生成，所以，此项目前用不到
   // exportEmpty: true, //表示是否要在生成运行时文件时导出组件模块，目前用不到
   // exportEmptyTaro: true, //表示是否要在生成taro运行文件时导出组件模块，目前用不到
@@ -66,7 +67,7 @@ const questions = [
   },
   {
     type: 'rawlist',
-    name: 'type',
+    name: 'cType',
     message: '请选择组件的分类',
     choices: nav.map((item) => `${item.name}`),
     validate(value) {
@@ -74,6 +75,12 @@ const questions = [
       if (value && /\d+$/.test(value) && value <= nav.length) return true;
       return `您的输入有误，请输入编号`;
     }
+  },
+  {
+    type: 'confrim',
+    name: 'type',
+    message: '组件是否支持函数式调用(y/n)',
+    default: 'n'
   },
   {
     type: 'confrim',
@@ -171,7 +178,7 @@ const createTest = (paths) => {
 
 const updateConfig = () => {
   /**更新 config 文件 */
-  const componentTypeItem = nav.find((navitem) => navitem.name === componentConfig.type);
+  const componentTypeItem = nav.find((navitem) => navitem.name === componentConfig.cType);
   if (!componentTypeItem.packages.find((item) => item.name === componentConfig.name)) {
     componentTypeItem.packages.push(componentConfig);
   }
@@ -182,7 +189,7 @@ const updateConfig = () => {
 
 const createDir = () => {
   const componentName = componentConfig.name.toLowerCase();
-  const componentType = nav.find((navitem) => navitem.name === componentConfig.type).enName;
+  const componentType = nav.find((navitem) => navitem.name === componentConfig.cType).enName;
   const sourcePath = path.join(`src/packages/__VUE/${componentName}`);
   const taroPath = path.join(`src/sites/mobile-taro/vue/src/${componentType}`);
   if (!fs.existsSync(sourcePath)) fs.mkdirSync(sourcePath);
@@ -223,6 +230,7 @@ const create = () => {
 const init = () => {
   inquirer.prompt(questions).then((answers) => {
     answers.show = answers.show === 'y' ? true : false;
+    answers.type = answers.type === 'y' ? 'methods' : 'component';
     componentConfig = Object.assign(componentConfig, answers);
     spinner = ora('正在生成组件模版，请稍后...').start();
     create();
