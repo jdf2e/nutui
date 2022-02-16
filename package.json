@@ -63,7 +63,6 @@
     }
   },
   "dependencies": {
-    "remark-codesandbox": "^0.10.1",
     "sass": "~1.32.0",
     "vue-router": "^4.0.12"
   },
@@ -82,6 +81,7 @@
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "^2.0.0-rc.18",
     "autoprefixer": "^10.3.4",
+    "remark-codesandbox": "^0.10.1",
     "axios": "^0.21.0",
     "eslint": "^7.23.2",
     "eslint-plugin-prettier": "^3.3.1",
