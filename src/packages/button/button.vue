@@ -1,7 +1,7 @@
 <template>
   <button :class="clsStyle" :disabled="disabled" @click="clickHandler">
-    <nut-icon class="txt-icon" v-if="icon != ''" :type="icon" :color="this.color"></nut-icon>
-    <span :style="{ color: this.color }">
+    <nut-icon class="txt-icon" v-if="icon != ''" :type="icon" :color="color"></nut-icon>
+    <span :style="{ color: color }">
       <slot></slot>
     </span>
   </button>
