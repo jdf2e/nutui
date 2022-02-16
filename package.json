@@ -63,6 +63,7 @@
     }
   },
   "dependencies": {
+    "remark-codesandbox": "^0.10.1",
     "sass": "~1.32.0",
     "vue-router": "^4.0.12"
   },
