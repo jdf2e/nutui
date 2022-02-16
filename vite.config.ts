@@ -10,6 +10,7 @@ const resolve = path.resolve;
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/theme/',
+  // assetsInclude: ['/dist/**/source/*.scss'],
   server: {
     port: 2021,
     host: '0.0.0.0',
@@ -18,11 +19,6 @@ export default defineConfig({
         target: 'https://nutui.jd.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/devServer/, '')
-      },
-      '/devRaw': {
-        target: 'https://gitee.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/devRaw/, '')
       }
     }
   },
@@ -94,8 +90,8 @@ export default defineConfig({
     cssCodeSplit: true,
     rollupOptions: {
       input: {
-        doc: resolve(__dirname, 'index.html')
-        // mobile: resolve(__dirname, 'demo.html')
+        doc: resolve(__dirname, 'index.html'),
+        mobile: resolve(__dirname, 'demo.html')
       }
     }
   }

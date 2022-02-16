@@ -1,3 +1,4 @@
+import config from '@/sites/config/env';
 import { reactive, watch, onMounted, computed, onBeforeUnmount } from 'vue';
 import { useRoute } from 'vue-router';
 import configs from '../../../../config.json';
@@ -128,9 +129,8 @@ const store: Store = reactive({
 });
 
 const getSassVariables = async () => {
-  const rawVariablesText = await getRawFileText(
-    '/devRaw/jd-platform-opensource/nutui/raw/next/src/packages/styles/variables.scss'
-  );
+  // vite 启动模式 bug 待修复
+  const rawVariablesText = await getRawFileText(`${config.themeUrl}/styles/variables.scss`);
   const rawVariables = parseSassVariables(rawVariablesText, components);
 
   // 固定自定义主题的访问链接: https://nutui.jd.com/theme/?theme=自定义变量的文件地址#/
@@ -161,9 +161,7 @@ const getSassVariables = async () => {
 
 export const getRawSassStyle = async (name: string): Promise<void> => {
   if (!store.rawStyles[name]) {
-    const style = await getRawFileText(
-      `/devRaw/jd-platform-opensource/nutui/raw/next/src/packages/__VUE/${name}/index.scss`
-    );
+    const style = await getRawFileText(`${config.themeUrl}/packages/${name}/index.scss`);
     store.rawStyles[name] = style;
   }
 };

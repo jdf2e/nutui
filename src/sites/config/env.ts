@@ -1,5 +1,6 @@
 type EnvConfig = {
   baseUrl: string;
+  themeUrl: string;
   isPrd: boolean;
 };
 
@@ -12,6 +13,7 @@ type EnvConfig = {
 
 const config: EnvConfig = {
   baseUrl: '',
+  themeUrl: '',
   isPrd: true // 是否为线上
 };
 switch (import.meta.env.MODE) {
@@ -21,6 +23,7 @@ switch (import.meta.env.MODE) {
      */
     config.isPrd = false;
     config.baseUrl = '/devServer';
+    config.themeUrl = '/theme/dist/theme/source';
     break;
   case 'production':
     /*
@@ -28,6 +31,7 @@ switch (import.meta.env.MODE) {
      */
     config.isPrd = true;
     config.baseUrl = 'https://nutui.jd.com';
+    config.themeUrl = './source';
     break;
 }
 export default config;

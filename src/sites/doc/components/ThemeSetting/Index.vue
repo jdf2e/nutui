@@ -1,7 +1,10 @@
 <template>
   <div class="theme-setting">
-    {{ name }}
-    <button @click="downloadScssVariables">点击下载主题变量</button>
+    <n-space>
+      <n-button dashed type="info">主题定制：{{ name }} 组件</n-button>
+      <n-button type="info" @click="downloadScssVariables">下载主题变量</n-button>
+    </n-space>
+    <n-divider />
     <ul>
       <li :key="item.key" v-for="item in formItems">
         <p
@@ -25,7 +28,7 @@
 <script lang="ts">
 import { defineComponent, watch } from 'vue';
 import { useThemeEditor } from './helper';
-import { NColorPicker, NInput } from 'naive-ui';
+import { NColorPicker, NInput, NButton, NSpace, NDivider } from 'naive-ui';
 
 export default defineComponent({
   name: 'theme-setting',
@@ -34,7 +37,10 @@ export default defineComponent({
   },
   components: {
     NColorPicker,
-    NInput
+    NInput,
+    NButton,
+    NSpace,
+    NDivider
   },
   setup(props) {
     // 获取样式文件，正则匹配
@@ -57,6 +63,8 @@ export default defineComponent({
   li {
     list-style: none;
     margin-bottom: 12px;
+    margin-left: 0px;
+    padding-left: 0px;
     &::before {
       display: none;
     }
