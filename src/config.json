@@ -197,6 +197,17 @@
           "taro": false,
           "tarodoc": true,
           "author": "zongyue3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Sticky",
+          "cType": "布局组件",
+          "cName": "粘性布局",
+          "type": "component",
+          "desc": "当组件在屏幕范围内时，会按照正常的布局排列，当组件滚出屏幕范围时，始终会固定在距离屏幕固定的距离处",
+          "show": true,
+          "tarodoc": false,
+          "author": "szg2008"
         }
       ]
     },
