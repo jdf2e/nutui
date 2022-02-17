@@ -1,7 +1,7 @@
 let subpackages = [
   {
     root: 'layout',
-    pages: ['pages/layout/index', 'pages/imagepreview/index']
+    pages: ['pages/layout/index', 'pages/imagepreview/index', 'pages/sticky/index']
   },
   {
     root: 'feedback',
