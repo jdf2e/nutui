@@ -1,0 +1,66 @@
+.nut-audio {
+  padding: 0;
+  .progress-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0px auto;
+    padding: 10px 0;
+
+    .progress-bar-wrapper {
+      flex: 1;
+      margin: 0 10px;
+    }
+
+    .time {
+      min-width: 50px;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+
+  .nut-audio-icon {
+    position: relative;
+    display: inline-block;
+
+    .nut-audio-icon-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba($color: $text-color, $alpha: 0.5);
+      &.nut-audio-icon-stop {
+        &::after {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translateX(-15px);
+          content: '';
+          height: 2px;
+          width: 30px;
+          background: $disable-color;
+          transform: rotate(45deg);
+          transform-origin: 8px -18px;
+        }
+      }
+    }
+  }
+
+  .audioMain {
+    margin-top: 30px;
+  }
+
+  .custom-button {
+    width: 8px;
+    height: 8px;
+    color: #fff;
+    font-size: 10px;
+    line-height: 18px;
+    text-align: center;
+    background-color: #ee0a24;
+    border-radius: 100px;
+  }
+}

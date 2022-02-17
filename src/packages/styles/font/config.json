@@ -68,7 +68,12 @@
         "horizontal",
         "date",
         "photograph",
-        "more-s"
+        "more-s",
+        "play-stop",
+        "play-start",
+        "play-double-back",
+        "play-double-forward",
+        "voice"
       ]
     },
     {
