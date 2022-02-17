@@ -1,8 +1,8 @@
 @font-face {
   font-family: "nutui-iconfont"; /* Project id 2166874 */
-  src: url('iconfont.woff2?t=1642470100417') format('woff2'),
-       url('iconfont.woff?t=1642470100417') format('woff'),
-       url('iconfont.ttf?t=1642470100417') format('truetype');
+  src: url('iconfont.woff2?t=1644572435352') format('woff2'),
+       url('iconfont.woff?t=1644572435352') format('woff'),
+       url('iconfont.ttf?t=1644572435352') format('truetype');
 }
 
 .nutui-iconfont {
@@ -11,6 +11,26 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.nut-icon-voice:before {
+  content: "\e608";
+}
+
+.nut-icon-play-stop:before {
+  content: "\e604";
+}
+
+.nut-icon-play-start:before {
+  content: "\e605";
+}
+
+.nut-icon-play-double-back:before {
+  content: "\e606";
+}
+
+.nut-icon-play-double-forward:before {
+  content: "\e607";
 }
 
 .nut-icon-dou-arrow-up:before {
