@@ -1,6 +1,16 @@
-import { mount } from '@vue/test-utils';
+import { config, mount } from '@vue/test-utils';
 import Input from '../index.vue';
-import Icon from '../../icon/index.vue';
+import NutIcon from '../../icon/index.vue';
+
+beforeAll(() => {
+  config.global.components = {
+    NutIcon
+  };
+});
+
+afterAll(() => {
+  config.global.components = {};
+});
 
 test('base', () => {
   const wrapper = mount(Input, { props: { modelValue: 3 } });

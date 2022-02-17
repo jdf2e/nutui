@@ -56,7 +56,7 @@ test('should render buttonShortpassword and error msg when noButton is false ', 
   expect((wrapper.emitted('ok') as any)[0][0]).toBe('123');
 });
 
-test('should allow to format value with formatter prop', async () => {
+test('should change  value when prop changed', async () => {
   const wrapper = mount(ShortPassword, {
     props: {
       visible: true,
