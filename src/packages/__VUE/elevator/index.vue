@@ -32,6 +32,7 @@
 <script lang="ts">
 import { computed, reactive, toRefs, nextTick, ref, Ref } from 'vue';
 import { createComponent } from '../../utils/create';
+import { useExpose } from '../../utils/useExpose/index';
 const { componentName, create } = createComponent('elevator');
 interface ElevatorData {
   name: string;
@@ -134,7 +135,6 @@ export default create({
       state.touchState.y1 = firstTouch.pageY;
       state.anchorIndex = +index;
       state.currentIndex = +index;
-      // console.log(state.currentIndex);
       scrollTo(+index);
     };
 
@@ -157,6 +157,10 @@ export default create({
     const handleClickIndex = (key: string) => {
       context.emit('click-index', key);
     };
+
+    useExpose({
+      scrollTo
+    });
 
     return {
       classes,
