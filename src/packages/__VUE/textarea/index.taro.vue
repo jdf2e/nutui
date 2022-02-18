@@ -16,10 +16,9 @@
       @focus="focus"
       :maxlength="maxLength"
       :placeholder="placeholder"
+      :auto-focus="autofocus"
     />
-    <view class="nut-textarea__limit" v-if="limitShow">
-      {{ modelValue.length }}/{{ maxLength }}</view
-    >
+    <view class="nut-textarea__limit" v-if="limitShow"> {{ modelValue ? modelValue.length : 0 }}/{{ maxLength }}</view>
   </view>
 </template>
 <script lang="ts">
@@ -65,6 +64,10 @@ export default create({
     autosize: {
       type: Boolean,
       default: false
+    },
+    autofocus: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -90,8 +93,8 @@ export default create({
       if (props.maxLength && value.length > Number(props.maxLength)) {
         value = value.substring(0, Number(props.maxLength));
       }
-      emit('change', value, event);
       emit('update:modelValue', value, event);
+      emit('change', value, event);
     };
 
     const change = (event: Event) => {

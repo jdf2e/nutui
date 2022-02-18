@@ -1,35 +1,32 @@
 <template>
   <view :class="classes">
-    <view
-      class="nut-rate-item"
-      v-for="n in count"
-      :key="n"
-      :style="{ marginRight: pxCheck(spacing) }"
-    >
+    <view class="nut-rate-item" v-for="n in count" :key="n" :style="{ marginRight: pxCheck(spacing) }">
       <nut-icon
         :size="iconSize"
         class="nut-rate-item__icon"
         @click="onClick(1, n)"
         :class="{ 'nut-rate-item__icon--disabled': disabled || n > modelValue }"
         :color="n <= modelValue ? activeColor : voidColor"
+        :font-class-name="fontClassName"
+        :class-prefix="classPrefix"
         :name="n <= modelValue ? checkedIcon : uncheckedIcon"
       />
       <nut-icon
         v-if="allowHalf && modelValue + 1 > n"
         class="nut-rate-item__icon nut-rate-item__icon--half"
         @click="onClick(2, n)"
-        :color="n <= modelValue ? activeColor : voidColor"
+        :font-class-name="fontClassName"
+        :class-prefix="classPrefix"
+        :color="n <= modelValue + 1 ? activeColor : voidColor"
         :size="iconSize"
         :name="checkedIcon"
       />
       <nut-icon
         v-else-if="allowHalf && modelValue + 1 < n"
-        class="
-          nut-rate-item__icon
-          nut-rate-item__icon--disabled
-          nut-rate-item__icon--half
-        "
+        class="nut-rate-item__icon nut-rate-item__icon--disabled nut-rate-item__icon--half"
         @click="onClick(2, n)"
+        :font-class-name="fontClassName"
+        :class-prefix="classPrefix"
         :color="voidColor"
         :size="iconSize"
         :name="uncheckedIcon"
@@ -88,6 +85,14 @@ export default create({
     spacing: {
       type: [String, Number],
       default: 14
+    },
+    classPrefix: {
+      type: String,
+      default: 'nut-icon'
+    },
+    fontClassName: {
+      type: String,
+      default: 'nutui-iconfont'
     }
   },
   emits: ['update:modelValue', 'change'],

@@ -1,159 +1,314 @@
-# Menu 菜单组件
+# Menu 菜单
 
 ### 介绍
 
-下拉选择菜单组件
+向下弹出的菜单列表
 
 ### 安装
 
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { Menu } from '@nutui/nutui';
+import { Menu, MenuItem } from '@nutui/nutui';
 // taro
-import { Menu,MenuItem } from '@nutui/nutui-taro';
+import { Menu, MenuItem } from '@nutui/nutui-taro';
 const app = createApp();
 app.use(Menu);
-app.use(MenuItem);
 
 ```
 
 ## 代码演示
 
-### 基础用法1
+### 基础用法
 
-`Menu`  属性支持传入列表数据menuList和title名称设置。
+:::demo
 
 ```html
-<nut-menu>
-  <nut-menu-item :menu-list="menuList" title="最新商品" ></nut-menu-item>
-  <nut-menu-item :menu-list="menuList" :title="title" ></nut-menu-item>
-</nut-menu>
-```
-```js
- setup() {
-    const resData = reactive({
-      title: '热门推荐',
-      menuList: [
-        {value: '手机'},
-        {value: '电脑'},
-        {value: '家用电器'},
-        {value: '日用百货'}
-      ]
+<template>
+  <nut-menu>
+    <nut-menu-item v-model="state.value1" :options="state.options1" />
+    <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
+  </nut-menu>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+
+export default {
+  setup() {
+    const state = reactive({
+      options1: [
+        { text: '全部商品', value: 0 },
+        { text: '新款商品', value: 1 },
+        { text: '活动商品', value: 2 }
+      ],
+      options2: [
+        { text: '默认排序', value: 'a' },
+        { text: '好评排序', value: 'b' },
+        { text: '销量排序', value: 'c' },
+      ],
+      value1: 0,
+      value2: 'a'
     });
- }
 
-```
-
-### 菜单多列展示
-
-`Menu` 的 ` multiStyle` 属性配置1列、2列、3列展示菜单列表，默认单列展示。
-`maxHeight` 属性可控制菜单列表的最大高度。
-
-```html
-<nut-menu>
-    <nut-menu-item :menu-list="menuList2" title="单列展示" multi-style="1" maxHeight="200"></nut-menu-item>
-    <nut-menu-item :menu-list="menuList2" title="双列展示"  multi-style="2"></nut-menu-item>
-    <nut-menu-item :menu-list="menuList2" title="三列展示"  multi-style="3"></nut-menu-item>
-</nut-menu>
-```
-
-### 禁用操作
-
-`Menu` 的 `disabled` 属性可对菜单列表进行禁用操作。
-`autoClose` 属性控制下拉菜单列表是否选择后自动收起，默认自动收起。
-
-```html
-<nut-menu>
-    <nut-menu-item :menu-list="menuList" title="最新商品"></nut-menu-item>
-    <nut-menu-item :menu-list="menuList" title="title" :auto-close="false"></nut-menu-item>
-    <nut-menu-item :menu-list="menuList2" title="筛选" disabled ></nut-menu-item>
-</nut-menu>
-```
-
-### 禁止蒙层展示
-属性`hasMask`控制是否有蒙层，默认为 `true`展示蒙层 
-
-```html
-<nut-menu :hasMask="false">
-    <nut-menu-item :menu-list="menuList" title="最新商品">
-    </nut-menu-item>
-    <nut-menu-item :menu-list="menuList" :title="title">
-    </nut-menu-item>
-</nut-menu>
-```
-
-### 点击事件
-
-`Menu` 的 `@menu-click` 事件返回点击的菜单标题，`@change`事件返回菜单列表选中的数据。
-
-```html
-<nut-menu>
-    <nut-menu-item
-        :menu-list="menuList2"
-        title="选择菜单列表项"
-        multi-style="2"
-        @menu-click="alertText($event, 'title')"
-        @change="getChecked"
-    ></nut-menu-item>
-    <nut-menu-item
-        :menu-list="menuList2"
-        title="选中标题触发"
-        disabled
-        @menu-click="alertText"
-    ></nut-menu-item>
- </nut-menu>
-```
-```js
-const getChecked = (info: any, name: string) => {
-    alert('选择菜单选项：' + name);
-    console.log(11, info, name);
-};
-const alertText = (info, type) => {
-    console.log(info, type);
-    if (type == 'title') {
-        alert('菜单标题点击：' + info);
-    } else {
-        alert('禁用操作');
+    const handleChange = val => {
+      console.log('val', val);
     }
-};
+
+    return {
+      state,
+      handleChange
+    };
+  }
+}
+</script>
 ```
 
-### 自定义内容
+:::
 
+### 自定义菜单内容
+使用实例上的 toggle 方法可以手动关闭弹框。
+
+:::demo
 
 ```html
-<nut-menu>
-    <nut-menu-item title="自定义选项">
-        <div class="user-style">
-          <nut-cell>
-            设置为默认 <nut-switch></nut-switch>
-          </nut-cell>
-          <nut-cell>
-            <nut-button size="large" type="primary">确认提交</nut-button>
-          </nut-cell>
-        </div>
+<template>
+  <nut-menu>
+    <nut-menu-item v-model="state.value1" :options="state.options1" />
+    <nut-menu-item title="筛选" ref="item">
+      <div :style="{display: 'flex', flex: 1, 'justify-content': 'space-between', 'align-items': 'center'}">
+        <div>自定义内容</div>
+        <nut-button @click="onConfirm">关闭</nut-button>
+      </div>
     </nut-menu-item>
-</nut-menu>
+  </nut-menu>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+
+export default {
+  setup() {
+    const state = reactive({
+      options1: [
+        { text: '全部商品', value: 0 },
+        { text: '新款商品', value: 1 },
+        { text: '活动商品', value: 2 }
+      ],
+      value1: 0
+    });
+
+    const item = ref('');
+
+    const onConfirm = () => {
+      item.value.toggle();
+    }
+
+    return {
+      state,
+      item,
+      onConfirm
+    };
+  }
+}
+</script>
 ```
+
+:::
+
+### 一行两列
+
+:::demo
+
+```html
+<template>
+  <nut-menu>
+    <nut-menu-item v-model="state.value3" :cols="2" :options="state.options3" />
+  </nut-menu>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+
+export default {
+  setup() {
+    const state = reactive({
+      options3: [
+        { text: '全部商品', value: 0 },
+        { text: '家庭清洁/纸品', value: 1 },
+        { text: '个人护理', value: 2 },
+        { text: '美妆护肤', value: 3 },
+        { text: '食品饮料', value: 4 },
+        { text: '家用电器', value: 5 },
+        { text: '母婴', value: 6 },
+        { text: '数码', value: 7 },
+        { text: '电脑、办公', value: 8 },
+        { text: '运动户外', value: 9 },
+        { text: '厨具', value: 10 },
+        { text: '医疗保健', value: 11 },
+        { text: '酒类', value: 12 },
+        { text: '生鲜', value: 13 },
+        { text: '家具', value: 14 },
+        { text: '传统滋补', value: 15 },
+        { text: '汽车用品', value: 16 },
+        { text: '家居日用', value: 17 },
+      ],
+      value3: 0
+    });
+
+    return {
+      state
+    };
+  }
+}
+</script>
+```
+
+:::
+
+### 自定义选中态颜色
+
+:::demo
+
+```html
+<template>
+  <nut-menu active-color="green">
+    <nut-menu-item v-model="state.value1" :options="state.options1" />
+    <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
+  </nut-menu>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+
+export default {
+  setup() {
+    const state = reactive({
+      options1: [
+        { text: '全部商品', value: 0 },
+        { text: '新款商品', value: 1 },
+        { text: '活动商品', value: 2 }
+      ],
+      options2: [
+        { text: '默认排序', value: 'a' },
+        { text: '好评排序', value: 'b' },
+        { text: '销量排序', value: 'c' },
+      ],
+      value1: 0,
+      value2: 'a'
+    });
+
+    const handleChange = val => {
+      console.log('val', val);
+    }
+
+    return {
+      state,
+      handleChange
+    };
+  }
+}
+</script>
+```
+
+:::
+
+### 禁用菜单
+
+:::demo
+
+```html
+<template>
+  <nut-menu>
+    <nut-menu-item disabled v-model="state.value1" :options="state.options1" />
+    <nut-menu-item disabled v-model="state.value2" @change="handleChange" :options="state.options2" />
+  </nut-menu>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+
+export default {
+  setup() {
+    const state = reactive({
+      options1: [
+        { text: '全部商品', value: 0 },
+        { text: '新款商品', value: 1 },
+        { text: '活动商品', value: 2 }
+      ],
+      options2: [
+        { text: '默认排序', value: 'a' },
+        { text: '好评排序', value: 'b' },
+        { text: '销量排序', value: 'c' },
+      ],
+      options3: [
+        { text: '全部商品', value: 0 },
+        { text: '家庭清洁/纸品', value: 1 },
+        { text: '个人护理', value: 2 },
+        { text: '美妆护肤', value: 3 },
+        { text: '食品饮料', value: 4 },
+        { text: '家用电器', value: 5 },
+        { text: '母婴', value: 6 },
+        { text: '数码', value: 7 },
+        { text: '电脑、办公', value: 8 },
+        { text: '运动户外', value: 9 },
+        { text: '厨具', value: 10 },
+        { text: '医疗保健', value: 11 },
+        { text: '酒类', value: 12 },
+        { text: '生鲜', value: 13 },
+        { text: '家具', value: 14 },
+        { text: '传统滋补', value: 15 },
+        { text: '汽车用品', value: 16 },
+        { text: '家居日用', value: 17 },
+      ],
+      value1: 0,
+      value2: 'a',
+      value3: 0
+    });
+
+    const item = ref('');
+
+    const onConfirm = () => {
+      item.value.toggle();
+    }
+
+    const handleChange = val => {
+      console.log('val', val);
+    }
+
+    return {
+      state,
+      item,
+      onConfirm,
+      handleChange
+    };
+  }
+}
+</script>
+```
+
+:::
 
 ## API
 
-### Props
+### Menu Props
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| title         | 菜单标题名称或可为菜单列表第一项，必填     | String | -                |
-| menu-list        | 菜单列表数据，必填                     | Array | -                |
-| multi-style        | 列表列数设置，默认1列，可选值 `1` `2` `3` | String, Number | 1                |
-| disabled | 是否开启禁用设置，默认不开启    | Boolean | false |
-| max-height | 菜单列表最大高度，单位px    | String, Number | - |
-| auto-close | 选择后下拉菜单列表是否自动收起，默认自动收起   | Boolean | true |
-|has-mask| 是否有蒙层 | Boolean | true|
+| active-color         | 选项的选中态图标颜色     | String | #F2270C               |
 
-### Events
+### MenuItem Props
+
+| 参数         | 说明                             | 类型   | 默认值           |
+|--------------|----------------------------------|--------|------------------|
+| title         | 菜单项标题     | String | 当前选中项文字               |
+| options         | 选项数组     | Array | -                |
+| disabled         | 是否禁用菜单     | Boolean | false                |
+| cols         | 可以设置一行展示多少列 options     | Number | 1                |
+| title-icon         | 自定义标题图标     | String | 'down-arrow'                |
+
+### MenuItem Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| menu-click  | 点击菜单标题触发，返回菜单标题名称 | event: Event |
-| change  | 点击菜单列表选项触发，返回选中菜单项数据、名称 | event: Event |
+| change  | 选择 option 之后触发 | 选择的 value |

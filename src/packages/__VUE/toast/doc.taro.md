@@ -18,6 +18,8 @@ app.use(Toast);
 ``` html
 <nut-toast :msg="page.state.msg" v-model:visible="page.state.show" :type="page.state.type" @closed="page.methods.onClosed" :cover="page.state.cover" />
 <nut-cell title="Text 文字提示" is-link @click="page.methods.openToast('text','网络失败，请稍后再试~')"></nut-cell>
+<nut-cell title="Title 标题文字" is-link @click="page.methods.openToast('text', '网络失败，请稍后再试~',false,'标题文字')" ></nut-cell>
+<nut-cell title="Text 自定义位置" is-link @click="page.methods.openToast('text', '自定义位置',false,'','20%',false)"></nut-cell>
 <nut-cell title="Success 成功提示" is-link @click="page.methods.openToast('success','成功提示')"></nut-cell>
 <nut-cell title="Error 失败提示" is-link @click="page.methods.openToast('fail','失败提示')"></nut-cell>
 <nut-cell title="Warning 警告提示" is-link @click="page.methods.openToast('warn','警告提示')"></nut-cell>
@@ -33,7 +35,10 @@ export default {
         msg: 'toast',
         type: 'text',
         show: false,
-        cover: false
+        cover: false,
+        title:'',
+        bottom:'',
+        center:true,
       }),
       methods: {
         openToast: (type: string, msg: string, cover: boolean = false) => {
@@ -41,6 +46,9 @@ export default {
           page.state.msg = msg;
           page.state.type = type;
           page.state.cover = cover;
+          page.state.title = title;
+          page.state.bottom = bottom;
+          page.state.center = center
         },
         onClosed: () => console.log('closed')
       }
@@ -70,8 +78,9 @@ export default {
 |------------------------|-------------------------------------------------------------------------------|---------------|-------------------------------|
 | msg                    | 消息文本内容,支持传入HTML                                                     | String/VNode  | ""                            |
 | duration               | 展示时长（毫秒）<br>值为 0 时，toast 不会自动消失（loading类型默认为0）       | Number        | 2000                          |
-| center                 | 是否展示在页面中部（为false时展示在底部）                                     | Boolean       | true                          |
-| bottom                 | 距页面底部的距离（像素），center为false时生效                                 | Number        | 30                            |
+| title            | 标题     | String        | ''                          |
+| center              | 是否展示在页面中部（为false时展示在底部）                                     | Boolean       | true                          |
+| bottom              | 距页面底部的距离（像素或者百分比），option.center为false时生效                          | String       | "30px"                     |                | 距页面底部的距离（像素），center为false时生效                                 | Number        | 30                            |
 | text-align-center      | 多行文案是否居中                                                              | Boolean       | true                          |
 | bg-color               | 背景颜色（透明度）                                                            | String        | "rgba(0, 0, 0, 0.8)"          |
 | custom-class           | 自定义类名                                                                    | String        | ""                            |

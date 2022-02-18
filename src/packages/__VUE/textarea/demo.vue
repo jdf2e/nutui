@@ -7,14 +7,11 @@
     <h2>高度自定义，拉伸</h2>
     <nut-textarea v-model="value3" rows="10" autosize />
     <h2>只读</h2>
-    <nut-textarea readonly model-value="textarea直读状态" />
+    <nut-textarea readonly model-value="textarea只读状态" />
     <h2>禁用</h2>
-    <nut-textarea
-      disabled
-      model-value="textarea禁用状态"
-      limit-show
-      max-length="20"
-    />
+    <nut-textarea disabled model-value="textarea禁用状态" limit-show max-length="20" />
+    <h2>自动获取焦点</h2>
+    <nut-textarea autofocus v-model="value4" />
   </div>
 </template>
 
@@ -27,11 +24,13 @@ export default createDemo({
     const value = ref('');
     const value2 = ref('');
     const value3 = ref('');
+    const value4 = ref('');
 
     return {
       value,
       value2,
-      value3
+      value3,
+      value4
     };
   }
 });

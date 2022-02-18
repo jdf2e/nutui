@@ -30,7 +30,7 @@ export function createComponent(name: string) {
         vue.component(_component.name as string, _component as any);
       };
       return defineComponent(_component as any);
-    },
+    } as typeof defineComponent,
     createDemo: function (_component: any) {
       _component.baseName = name;
 

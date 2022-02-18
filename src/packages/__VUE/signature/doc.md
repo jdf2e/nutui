@@ -1,4 +1,4 @@
-#  signature组件
+#  Signature 签名
 
 ### 介绍
     
@@ -20,47 +20,99 @@ app.use(Signature);
 ## 代码演示
     
 ### 基础用法1
-    
+
+:::demo
+
 ```html
-<nut-signature  
+<template>
+  <nut-signature  
     @confirm="confirm" 
     @clear="clear"
-></nut-signature>
-<p class="demo-tips demo">Tips: 点击确认按钮,下方显示签名图片</p>
-```
-```javascript
+  ></nut-signature>
+  <p class="demo-tips demo">Tips: 点击确认按钮,下方显示签名图片</p>
+</template>
+<script>
 export default {
-    data(){
-        return{
-        }
-    },
-    methods:{
-        confirm(canvas, data) {
+    props: {},
+    setup() {
+        const confirm = (canvas, data) => {
             let img = document.createElement('img');
             img.src = data;
             document.querySelector('.demo').appendChild(img);
-        },
-
-        clear() {
+        };
+        const clear = () => {
             let img = document.querySelector('.demo img'); 
             if (img) {
                 img.remove();
             }
         }
+        return { confirm, clear };
     }
 }
+</script>
+<script>
+import { reactive } from 'vue';
+export default {
+  props: {},
+  setup() {
+    const confirm = (canvas, data) => {
+        let img = document.createElement('img');
+        img.src = data;
+        document.querySelector('.demo').appendChild(img);
+    };
+    const clear = () => {
+        let img = document.querySelector('.demo img'); 
+        if (img) {
+            img.remove();
+        }
+    }
+    return { confirm, clear };
+  }
+};
+</script>
 ```
-
+:::
 ### 修改颜色和签字粗细
 
+:::demo
+
 ```html
-<nut-signature  
+<template>
+  <nut-signature  
     :lineWidth="lineWidth" 
     :strokeStyle="strokeStyle"
-></nut-signature>
+    @confirm="confirm" 
+    @clear="clear"
+  ></nut-signature>
+  <p class="demo-tips demo">Tips: 点击确认按钮,下方显示签名图片</p>
+</template>
+<script>
+import { reactive } from 'vue';
+export default {
+  props: {},
+  setup() {
+    const state = reactive({
+      lineWidth: 4,
+      strokeStyle: 'green'
+    });
+    const confirm = (canvas, data) => {
+        let img = document.createElement('img');
+        img.src = data;
+        document.querySelector('.demo').appendChild(img);
+    };
+    const clear = () => {
+        let img = document.querySelector('.demo img'); 
+        if (img) {
+            img.remove();
+        }
+    }
+    return { ...state, confirm, clear };
+  }
+};
+</script>
 
 ```
-    
+:::  
 ## API
     
 ### Props

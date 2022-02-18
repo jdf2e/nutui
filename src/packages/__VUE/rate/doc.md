@@ -22,85 +22,189 @@ app.use(Icon);
 
 ### 基础用法
 
-``` html
-<nut-rate v-model="value" />
-```
-
-``` javascript
+:::demo
+```html
+<template>
+    <nut-rate v-model="value" />
+</template>
+<script lang="ts">
 import { ref } from 'vue';
-setup() {
-    const value = ref(3);
-    return { value }
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
+    }
 }
 ```
+:::
+
+### 半星
+
+:::demo
+```html
+<template>
+    <nut-rate allow-half v-model="value"></nut-rate>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+    setup() {
+        const value = ref(3.5);
+        return { value }
+    }
+}
+```
+:::
 
 ### 自定义icon
 
-``` html
-<nut-rate checked-icon="heart-fill1" unchecked-icon="heart" v-model="value" />
+:::demo
+```html
+<template>
+    <nut-rate checked-icon="heart-fill1" unchecked-icon="heart" v-model="value" />
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
+    }
+}
 ```
+:::
 
 ### 自定义数量
 
-``` html
-<nut-rate :total="6" v-model="value" />
+:::demo
+```html
+<template>
+    <nut-rate :count="6" v-model="value" />
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
+    }
+}
 ```
+:::
 
 ### 自定义颜色
 
-``` html
-<nut-rate active-color="#FFC800" v-model="value" />
+:::demo
+```html
+<template>
+    <nut-rate active-color="#FFC800" v-model="value" />
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
+    }
+}
 ```
+:::
 
 ### 禁用状态
 
-``` html
-<nut-rate disabled v-model="value" />
+:::demo
+```html
+<template>
+    <nut-rate disabled v-model="value" />
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
+    }
+}
 ```
+:::
 
 ### 只读
 
-``` html
-<nut-rate v-model="value" readOnly />
-```
-### 绑定事件
-
-``` html
-<nut-rate v-model="value" @change="onChange" />
-```
-``` javascript
+:::demo
+```html
+<template>
+    <nut-rate v-model="value" readonly />
+</template>
+<script lang="ts">
 import { ref } from 'vue';
-setup() {
-    const value = ref(3);
-    const onChange = (val)=>{
-        Toast.text(val);
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
     }
-    return { value }
 }
 ```
+:::
+### 绑定事件
+
+:::demo
+```html
+<template>
+    <nut-rate v-model="value" @change="onChange" />
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default {
+    setup() {
+        const value = ref(3);
+        const onChange = (val)=>{
+            Toast.text(val);
+        }
+    return { value,onChange }
+    }
+}
+```
+:::
+
 ### 自定义尺寸
 
-``` html
-<nut-rate v-model="value" icon-size="35" />
+:::demo
+```html
+<template>
+    <nut-rate v-model="value" icon-size="35" />
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default {
+    setup() {
+        const value = ref(3);
+        return { value }
+    }
+}
 ```
+:::
 
 
 
 ## Prop
 
-| 字段           | 说明                                      | 类型    | 默认值      |
-|----------------|-------------------------------------------|---------|-------------|
-| v-model        | 当前 star 数，可使用 v-model 双向绑定数据 | Number  | -           |
-| count          | star 总数                                 | Number  | 5           |
-| icon-size      | star 大小                                 | Number  | 18          |
-| active-color   | 图标选中颜色                              | String  | #fa200c     |
-| void-color     | 图标未选中颜色                            | String  | #ccc        |
-| unchecked-icon | 使用图标(未选中)                          | String  | star-n      |
-| checked-icon   | 使用图标(选中)                            | String  | star-fill-n |
-| allow-half     | 是否半星                                  | Boolean | false       |
-| readonly       | 是否只读                                  | Boolean | false       |
-| disabled       | 是否禁用                                  | Boolean | false       |
-| spacing        | 间距                                      | Number  | 20          |
+| 字段            | 说明                                      | 类型    | 默认值           |
+|-----------------|-------------------------------------------|---------|------------------|
+| v-model         | 当前 star 数，可使用 v-model 双向绑定数据 | Number  | -                |
+| count           | star 总数                                 | Number  | 5                |
+| icon-size       | star 大小                                 | Number  | 18               |
+| active-color    | 图标选中颜色                              | String  | #fa200c          |
+| void-color      | 图标未选中颜色                            | String  | #ccc             |
+| unchecked-icon  | 使用图标(未选中)[图标名称](#/icon)    | String  | star-n           |
+| checked-icon    | 使用图标(选中)[图标名称](#/icon)       | String  | star-fill-n      |
+| font-class-name | 自定义icon 字体基础类名                   | String  | `nutui-iconfont` |
+| class-prefix    | 自定义icon 类名前缀，用于使用自定义图标   | String  | `nut-icon`       |
+| allow-half      | 是否半星                                  | Boolean | false            |
+| readonly        | 是否只读                                  | Boolean | false            |
+| disabled        | 是否禁用                                  | Boolean | false            |
+| spacing         | 间距                                      | Number  | 20               |
 
 ## Event
 | 字段   | 说明                       | 回调参数 |
