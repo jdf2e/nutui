@@ -393,7 +393,6 @@
           "version": "3.0.0",
           "name": "Swiper",
           "taro": true,
-          "tarodoc": true,
           "sort": 6,
           "cName": "轮播",
           "type": "component",
