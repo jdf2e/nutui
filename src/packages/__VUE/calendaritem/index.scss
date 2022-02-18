@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   flex: 1;
-  height: 518px;
+  height: 418px;
   padding-top: 132px;
   padding-bottom: 78px;
   color: $calendar-base-color;
@@ -76,8 +76,11 @@
       width: 100%;
       height: auto;
       display: block;
-
+      .viewArea {
+        display: block;
+      }
       .calendar-month {
+        // height: 360px;
         display: flex;
         flex-direction: column;
         text-align: center;

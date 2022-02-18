@@ -2,9 +2,9 @@
   position: relative;
   display: flex;
   flex: 1;
-  height: 518px;
+  height: 400px;
   padding-top: 132px;
-  padding-bottom: 78px;
+  padding-bottom: 70px;
   color: $calendar-base-color;
   font-size: $calendar-base-font;
   background-color: $white;
@@ -25,7 +25,7 @@
     height: 60vh;
   }
   .popup-box {
-    height: 518px;
+    height: 100%;
   }
   .nut-calendar-content {
     overflow-y: auto;
@@ -48,7 +48,7 @@
     z-index: 1;
 
     .calendar-title {
-      padding-top: 22px;
+      padding-top: 16px;
       font-size: $calendar-title-font;
       line-height: 25px;
       border-radius: 12px 12px 0 0;
@@ -85,11 +85,15 @@
       width: 100%;
       height: auto;
       display: block;
-
+      box-sizing: border-box;
+      .viewArea {
+        display: block;
+      }
       .calendar-month {
         display: flex;
         flex-direction: column;
         text-align: center;
+        // height: 360px;
       }
 
       div:nth-of-type(2) {
@@ -183,7 +187,7 @@
     right: 0;
     bottom: -1px;
     display: flex;
-    height: 78px;
+    height: 70px;
     width: 100%;
     background-color: $white;
 

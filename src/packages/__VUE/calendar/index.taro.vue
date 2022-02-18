@@ -20,6 +20,7 @@
       @update="update"
       @close="close"
       @choose="choose"
+      v-if="visible"
     >
     </nut-calendar-item>
   </nut-popup>
@@ -42,7 +43,8 @@
 import { PropType, ref, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('calendar');
-import CalendarItem from '../calendaritem/index.vue';
+// import CalendarItem from '../calendaritem/index.vue';
+import CalendarItem from '../calendaritem/index.taro.vue';
 import Utils from '../../utils/date';
 type InputDate = string | string[];
 export default create({

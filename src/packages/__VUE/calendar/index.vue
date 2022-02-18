@@ -21,6 +21,7 @@
       @update="update"
       @close="close"
       @choose="choose"
+      v-if="visible"
     >
     </nut-calendar-item>
   </nut-popup>
