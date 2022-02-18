@@ -56,6 +56,7 @@ export default createDemo({
 <style lang="scss">
 .content {
   .nut-switch {
+    display: flex;
     margin: 0 16px 8px 0;
   }
   .container {

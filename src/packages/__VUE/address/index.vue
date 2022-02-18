@@ -308,7 +308,7 @@ export default create({
     };
     // 移动下面的红线
     const lineAnimation = () => {
-      console.log('滑动红线');
+      // console.log('滑动红线');
 
       nextTick(() => {
         const name = tabRegion.value && tabRegion.value.getElementsByClassName('active')[0];

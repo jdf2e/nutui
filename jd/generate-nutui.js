@@ -7,12 +7,10 @@ let importScssStr = `\n`;
 const packages = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, show, type, exportEmpty } = element;
-    if (show || exportEmpty) {
-      importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${type === 'methods' ? '' : '.vue'}';\n`;
-      importScssStr += `import './__VUE/${name.toLowerCase()}/index.scss';\n`;
-      packages.push(name);
-    }
+    let { name, type } = element;
+    importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${type === 'methods' ? '' : '.vue'}';\n`;
+    importScssStr += `import './__VUE/${name.toLowerCase()}/index.scss';\n`;
+    packages.push(name);
   });
 });
 let installFunction = `function install(app: App) {

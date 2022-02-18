@@ -42,19 +42,11 @@
       <nut-cell>
         <ul>
           <li v-for="it in item.icons" :key="it">
-            <nut-icon :name="it.name" :class="`nut-icon-${it.am}`"></nut-icon>
-            <span>{{ it.am }}</span>
-          </li>
-        </ul>
-      </nut-cell>
-    </nut-cell-group>
-
-    <nut-cell-group v-for="item in icons.animate" :title="item.name" :key="item">
-      <nut-cell>
-        <ul>
-          <li v-for="it in item.icons" :key="it">
-            <nut-icon :name="it.name"></nut-icon>
-            <span>{{ it.name }}</span>
+            <nut-icon
+              :name="it.name"
+              :class="`nut-icon-${it['animation-name']} nut-icon-${it['animation-time']}`"
+            ></nut-icon>
+            <span>{{ it['animation-name'] }}</span>
           </li>
         </ul>
       </nut-cell>

@@ -23,42 +23,84 @@ app.use(Divider);
 
 默认渲染一条水平分割线。
 
+:::demo
+
 ``` html
-<nut-divider />
+<template>
+    <nut-cell>
+        <nut-divider />
+    </nut-cell>
+</template>
 ```
+
+:::
 
 ### 展示文本
 
 通过插槽在可以分割线中间插入内容。
 
+:::demo
+
 ``` html
-<nut-divider>文本</nut-divider>
+<template>
+    <nut-cell>
+        <nut-divider>文本</nut-divider>
+    </nut-cell>
+</template>
 ```
+
+:::
 
 ### 内容位置
 
 通过 content-position 指定内容所在位置。
 
+:::demo
+
 ``` html
-<nut-divider content-position="left">文本</nut-divider>
-<nut-divider content-position="right">文本</nut-divider>
+<template>
+    <nut-cell>
+        <nut-divider content-position="left">文本</nut-divider>
+    </nut-cell>
+    <nut-cell>
+        <nut-divider content-position="right">文本</nut-divider>
+    </nut-cell>
+</template>
 ```
+
+:::
 
 ### 虚线
 
 添加 dashed 属性使分割线渲染为虚线。
 
+:::demo
+
 ``` html
-<nut-divider dashed />
+<template>
+    <nut-cell>
+        <nut-divider dashed>文本</nut-divider>
+    </nut-cell>
+</template>
 ```
+
+:::
 
 ### 自定义样式
 
 可以直接通过 style 属性设置分割线的样式。
 
+:::demo
+
 ``` html
-<nut-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">文本</nut-divider>
+<template>
+    <nut-cell>
+        <nut-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">文本</nut-divider>
+    </nut-cell>
+</template>
 ```
+
+:::
 
 ## API
 

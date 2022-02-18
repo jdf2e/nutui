@@ -150,7 +150,7 @@ export default create({
   emits: ['click', 'close'],
 
   setup(props, { emit, slots }) {
-    console.log('componentName', componentName);
+    // console.log('componentName', componentName);
 
     const wrap = ref<null | HTMLElement>(null);
     const content = ref<null | HTMLElement>(null);
@@ -332,7 +332,7 @@ export default create({
     };
 
     onMounted(() => {
-      console.log(props.direction);
+      // console.log(props.direction);
       if (props.direction == 'vertical') {
         if (slots.default) {
           state.scrollList = [].concat(slots.default()[0].children as any);
@@ -340,7 +340,7 @@ export default create({
           state.scrollList = [].concat(props.list as any);
         }
 
-        console.log(state.scrollList);
+        // console.log(state.scrollList);
 
         setTimeout(() => {
           props.complexAm ? startRoll() : startRollEasy();
