@@ -16,6 +16,7 @@
         <view class="nut-elevator__list__item__code">{{ item[acceptKey] }}</view>
         <view
           class="nut-elevator__list__item__name"
+          :class="{ 'nut-elevator__list__item__name--highcolor': currentData.id === subitem.id }"
           v-for="subitem in item.list"
           :key="subitem['id']"
           @click="handleClickItem(item[acceptKey], subitem)"
@@ -84,7 +85,8 @@ export default create({
       currentIndex: 0,
       query: Taro.createSelectorQuery(),
       scrollTop: 0,
-      storageListHeight: [] as number[]
+      storageListHeight: [] as number[],
+      currentData: {} as ElevatorData
     });
 
     const classes = computed(() => {
@@ -173,6 +175,7 @@ export default create({
 
     const handleClickItem = (key: string, item: ElevatorData) => {
       context.emit('click-item', key, item);
+      state.currentData = item;
     };
 
     const handleClickIndex = (key: string) => {
@@ -180,9 +183,6 @@ export default create({
     };
 
     onMounted(() => {
-      Taro.nextTick(() => {
-        calculateHeight();
-      });
       if (Taro.getEnv() === 'WEB') {
         calculateHeight();
       } else {
