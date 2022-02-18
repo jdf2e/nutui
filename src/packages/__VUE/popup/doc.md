@@ -183,7 +183,7 @@ app.use(Popup).use(OverLay)
 | closeable              | 是否显示关闭按钮                                            | Boolean        | `false`        |
 | close-icon-position    | 关闭按钮位置（top-left,top-right,bottom-left,bottom-right） | String         | `"top-right"` |
 | close-icon             | 自定义 Icon                                                 | String         | `"close"`     |
-| destroy-on-close       | 组件销毁后是否关闭                                          | Boolean        | `true`        |
+| destroy-on-close       | 弹层关闭后 `slot`内容会不会清空                                          | Boolean        | `true`        |
 | round                  | 是否显示圆角                                                | Boolean        | `false`       |
 | teleport               | 指定挂载节点(`小程序不支持`)                                                | String         | `"body"`      |
 

@@ -2,15 +2,15 @@
   <div class="demo">
     <h2>基本用法</h2>
     <view class="demo-box">
-      <nut-swiper autoplay="true" circular="true">
+      <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
         <nut-swiper-item v-for="item in list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
       </nut-swiper>
     </view>
-    <h2>改变起始位置</h2>
+    <h2>自定义大小</h2>
     <view class="demo-box">
-      <nut-swiper current="1">
+      <nut-swiper :init-page="page2" :loop="false" width="300">
         <nut-swiper-item v-for="item in list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
@@ -18,13 +18,7 @@
     </view>
     <h2>自定义指示器</h2>
     <view class="demo-box">
-      <nut-swiper
-        autoplay="true"
-        circular="true"
-        indicator-dots="true"
-        indicator-color="pink"
-        indicator-active-color="red"
-      >
+      <nut-swiper :init-page="page3" :loop="true" @change="change">
         <nut-swiper-item v-for="item in list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
@@ -36,19 +30,17 @@
     <h2>垂直方向</h2>
     <view class="demo-box">
       <nut-swiper
-        vertical="true"
-        autoplay="true"
-        circular="true"
-        indicator-dots="true"
-        indicator-color="pink"
-        indicator-active-color="red"
+        :init-page="page4"
+        :loop="true"
+        auto-play="3000"
+        direction="vertical"
+        height="150"
+        :pagination-visible="true"
+        style="height: 150px"
       >
         <nut-swiper-item v-for="item in list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
-        <template v-slot:page>
-          <div class="page"> {{ current }}/4 </div>
-        </template>
       </nut-swiper>
     </view>
   </div>
@@ -61,6 +53,11 @@ export default {
   props: {},
   setup() {
     const state = reactive({
+      page: 2,
+      page2: 0,
+      page3: 0,
+      page4: 0,
+      current: 1,
       list: [
         'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
         'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
@@ -68,8 +65,12 @@ export default {
         'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
       ]
     });
+    const change = (index: number) => {
+      state.current = index + 1;
+    };
     return {
-      ...toRefs(state)
+      ...toRefs(state),
+      change
     };
   }
 };
@@ -78,6 +79,7 @@ export default {
 <style lang="scss">
 .demo-box {
   .nut-swiper-item {
+    line-height: 150px;
     img {
       width: 100%;
       height: 100%;
