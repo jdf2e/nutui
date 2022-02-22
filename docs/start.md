@@ -10,12 +10,12 @@
 
 #### NPM
 ```bash
-npm i @nutui/nutui -S
+npm i @nutui/nutui@2 -S
 ```
 
 #### YARN
 ```bash
-yarn add @nutui/nutui
+yarn add @nutui/nutui@2
 ```
 > 如果你的网络环境不佳，不妨试试国内的npm镜像
 
@@ -32,7 +32,7 @@ yarn add @nutui/nutui
 <!-- 引入样式 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.css">
 <!-- 引入Vue -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <!-- 引入组件库 -->
 <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.js"></script>
 ```
@@ -42,7 +42,7 @@ yarn add @nutui/nutui
 <!-- 引入样式 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.css">
 <!-- 引入Vue -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
 <!-- 引入组件库 -->
 <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.js"></script>
 ```
@@ -66,7 +66,7 @@ CDN 引入示例
     </div>
 
     <!-- 引入Vue -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
     <!-- 引入NutUI组件库 -->
     <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/nutui.min.js"></script>
     <script>
@@ -108,7 +108,7 @@ CDN 按需加载引入示例
       href="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/packages/button/button.css"
     />
     <!-- 引入Vue -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <!-- 引入组件库 -->
     <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@latest/dist/packages/button/button.js"></script>
     <script>

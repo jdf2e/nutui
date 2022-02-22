@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui",
-  "version": "2.3.7",
+  "version": "2.3.9",
   "description": "一套轻量级移动端Vue组件库",
   "typings": "dist/types/index.d.ts",
   "main": "dist/nutui.js",
@@ -16,7 +16,7 @@
     "build": "nutui-cli build",
     "release": "standard-version -a",
     "build:site": "nutui-cli build-site",
-    "publish": "npm publish --tag=legacy",
+    "publish-npm": "npm publish --tag=old",
     "clean": "nutui-cli clean",
     "add": "nutui-cli add",
     "test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config node_modules/@nutui/cli/dist_cli/webpack/test.config.js  --require node_modules/@nutui/cli/dist_cli/test/setup.js src/packages/**/__test__/**.spec.js",

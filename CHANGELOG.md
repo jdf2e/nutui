@@ -1,4 +1,14 @@
 
+## 2.3.7~2.3.9
+
+`2022-2-22`
+
+* :sparkles: chore: edit v2 publish tag legacy @richard1015
+* :bug: fix(countup): 优化滚动逻辑 (#744) @Ymm0008
+* :bug: fix(collapse): v-modal更新问题修复(#936)  @Ymm0008
+* :bug: fix(button): template this #1008 @richard1015
+
+
 ## 2.3.6
 
 `2021-10-17`
