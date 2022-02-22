@@ -36,6 +36,7 @@ fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.build.ts'), fil
 let fileStrDev = `${importStr}
 ${installFunction}
 ${importScssStr}
+export const testComponents = { ${packages.join(',')}};
 export { install, ${packages.join(',')}  };
 export default { install, version:'${package.version}'};`;
 fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.ts'), fileStrDev, 'utf8', (error) => {

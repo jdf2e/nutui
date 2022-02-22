@@ -462,5 +462,8 @@ $subsidenavbar-title-bg-color: #f6f6f6 !default;
 // sidenavbaritem
 $sidenavbaritem-title-color: $white !default;
 
+// elevator
+$elevator-list-item-highcolor: $primary-color !default;
+
 @import './mixins/index';
 @import './animation/index';
