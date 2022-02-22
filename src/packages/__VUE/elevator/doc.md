@@ -245,4 +245,8 @@ app.use(Elevator);
 | click-item | 点击内容 | key: string, item: { id: 0, name: '' } |
 | click-index | 点击索引 | key: string |
 
+### API
 
+| 事件名           | 说明                   | 参数           |
+| ---------------- | ---------------------- | ------------ |
+| scrollTo         | 滚动到对应索引的位置       | index:number |
