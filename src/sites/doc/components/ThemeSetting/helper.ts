@@ -76,20 +76,21 @@ const extractStyle = (style: string) => {
     return '';
   }
 
-  const extract = style.split('\n').filter((str) => {
-    if (/^(\s+)?\/\//.test(str)) {
-      return false;
-    }
+  // comment
+  style = style
+    .split('\n')
+    .filter((str) => !/^(\s+)?\/\//.test(str))
+    .join('\n');
 
-    const matched = str.match(/\$[\w-]+\b/g);
-
-    if (matched) {
-      return matched.some((k) => store.variablesMap[k]);
+  style = style.replace(/[\w-]+:[^:;]+;/g, (matched) => {
+    const matchedKey = matched.match(/\$[\w-]+\b/g);
+    if (matchedKey && matchedKey.some((k) => store.variablesMap[k])) {
+      return matched;
     }
-    return /(\{|\})/.test(str);
+    return '';
   });
 
-  return extract.join('');
+  return style;
 };
 
 const parseSassVariables = (text: string, components: string[]) => {
