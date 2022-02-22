@@ -81,14 +81,21 @@ const extractStyle = (style: string) => {
     .split('\n')
     .filter((str) => !/^(\s+)?\/\//.test(str))
     .join('\n');
+  // todo: parse mixin
+  style = style
+    .split('\n')
+    .filter((str) => !/^(\s+)?@include/.test(str))
+    .join('\n');
 
-  style = style.replace(/[\w-]+:[^:;]+;/g, (matched) => {
+  style = style.replace(/[\w-]+:([^;{}]|;base64)+;(?!base64)/g, (matched) => {
     const matchedKey = matched.match(/\$[\w-]+\b/g);
     if (matchedKey && matchedKey.some((k) => store.variablesMap[k])) {
       return matched;
     }
     return '';
   });
+
+  // console.log(style);
 
   return style;
 };
@@ -97,7 +104,10 @@ const parseSassVariables = (text: string, components: string[]) => {
   const matchedComponentVariables = components
     .map((name) => {
       const lowerCaseName = name.toLowerCase();
-      const reg = new RegExp(`(?<!\\/\\/(\\s+)?)\\$(${name}|${lowerCaseName})\\b[\\w-]+:[^:;]+;`, 'g');
+      const reg = new RegExp(
+        `(?<!\\/\\/(\\s+)?)\\$(${name}|${lowerCaseName})\\b[\\w-]+:([^;{}]|;base64)+;(?!base64)`,
+        'g'
+      );
       const matched = text.match(reg);
       if (matched) {
         return extractVariables(matched, name, lowerCaseName);
