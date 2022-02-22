@@ -77,6 +77,10 @@ const extractStyle = (style: string) => {
   }
 
   const extract = style.split('\n').filter((str) => {
+    if (/^(\s+)?\/\//.test(str)) {
+      return false;
+    }
+
     const matched = str.match(/\$[\w-]+\b/g);
 
     if (matched) {
@@ -230,6 +234,10 @@ export const useThemeEditor = function (): Obj {
               }
               iframe.__styleEl.innerHTML = res.text;
               iframe.document.head.appendChild(iframe.__styleEl);
+            }
+
+            if (res.status !== 0 && res.message) {
+              console.log(res.message);
             }
           });
       }, 300);
