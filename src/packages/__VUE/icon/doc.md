@@ -71,6 +71,10 @@ app.use(Icon);
   <nut-icon name="dou-arrow-up" class="nut-icon-am-jump nut-icon-am-infinite"></nut-icon>
   <nut-icon name="star-fill-n" class="nut-icon-am-blink nut-icon-am-infinite"></nut-icon>
   <nut-icon name="refresh2" class="nut-icon-am-rotate nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="heart-fill" class="nut-icon-am-breathe nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="microphone" class="nut-icon-am-flash nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="download" class="nut-icon-am-bounce nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="message" class="nut-icon-am-shake nut-icon-am-infinite"></nut-icon>
 </template>
 
 <style>

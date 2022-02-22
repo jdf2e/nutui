@@ -238,13 +238,13 @@ export default{
 </script>
 ```
 :::
-```
 
-## Prop
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| v-model:visible | 是否显示键盘 | Boolean | false
+### Prop
+
+| 字段 | 说明 | 类型 | 默认值 |
+|----- | ----- | ----- | ----- |
+| v-model:visible | 是否显示键盘 | Boolean | false | 
 | title | 键盘标题 | String | - |
 | type | 键盘模式  | String | `default`：默认样式<br>`rightColumn`：带右侧栏 |
 | random-keys | 随机数  | Boolean | false |
@@ -254,7 +254,7 @@ export default{
 | maxlength  | 输入值最大长度，结合 v-model 使用 | number <br> String| 6 |
 
 
-## Event
+### Event
 
 | 字段 | 说明 | 回调参数
 |----- | ----- | -----
