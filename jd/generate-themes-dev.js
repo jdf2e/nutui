@@ -10,7 +10,7 @@ config.nav.map((item) => {
       fs
         .copy(
           path.resolve(__dirname, `../src/packages/__VUE/${folderName}/index.scss`),
-          path.resolve(__dirname, `../dist/theme/source/packages/${folderName}/index.scss`)
+          path.resolve(__dirname, `../dist/theme/source/packages/${folderName}/index.scss_source`)
         )
         .then((success) => {
           fileStr += `@import '../../packages/${folderName}/index.scss';\n`;
@@ -22,6 +22,12 @@ config.nav.map((item) => {
 
 tasks.push(
   fs.copy(path.resolve(__dirname, '../src/packages/styles'), path.resolve(__dirname, '../dist/theme/source/styles'))
+);
+tasks.push(
+  fs.copy(
+    path.resolve(__dirname, '../src/packages/styles/variables.scss'),
+    path.resolve(__dirname, '../dist/theme/source/styles/variables.scss_source')
+  )
 );
 
 Promise.all(tasks).then((res) => {

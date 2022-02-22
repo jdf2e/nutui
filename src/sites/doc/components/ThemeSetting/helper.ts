@@ -130,7 +130,7 @@ const store: Store = reactive({
 
 const getSassVariables = async () => {
   // vite 启动模式 bug 待修复
-  const rawVariablesText = await getRawFileText(`${config.themeUrl}/styles/variables.scss`);
+  const rawVariablesText = await getRawFileText(`${config.themeUrl}/styles/variables.scss_source`);
   const rawVariables = parseSassVariables(rawVariablesText, components);
 
   // 固定自定义主题的访问链接: https://nutui.jd.com/theme/?theme=自定义变量的文件地址#/
@@ -161,7 +161,7 @@ const getSassVariables = async () => {
 
 export const getRawSassStyle = async (name: string): Promise<void> => {
   if (!store.rawStyles[name]) {
-    const style = await getRawFileText(`${config.themeUrl}/packages/${name}/index.scss`);
+    const style = await getRawFileText(`${config.themeUrl}/packages/${name}/index.scss_source`);
     store.rawStyles[name] = style;
   }
 };
