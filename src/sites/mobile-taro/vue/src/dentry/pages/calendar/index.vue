@@ -267,7 +267,6 @@ export default {
 .wrapper {
   display: flex;
   padding: 0 40px;
-  justify-content: center;
 }
 .d_div {
   margin: 0px 5px;
@@ -276,7 +275,7 @@ export default {
     color: #fff;
     font-size: 12px;
     padding: 2px 8px;
-    border-radius: 10px;
+    border-radius: 4px;
     display: inline-block;
     height: 16px;
   }
