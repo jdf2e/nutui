@@ -489,9 +489,9 @@ export default {
 | start-date        | 开始日期， 如果不限制开始日期传 null              | String          | 今天            |
 | end-date          | 结束日期，如果不限制结束日期传 null               | String          | 距离今天 365 天 |
 | show-today          | 是否展示今天标记               | Boolean          | true |
-| start-text         | 范围选择，开始信息文案               | String          | 开始 |
-| end-text         | 范围选择，结束信息文案               | String          | 结束 |
-| confirm-text          | 底部确认按钮文案               | String          | 确认 |
+| start-text         | 范围选择，开始信息文案               | String          | ’开始‘ |
+| end-text         | 范围选择，结束信息文案               | String          | ‘结束’ |
+| confirm-text          | 底部确认按钮文案               | String          | ’确认‘ |
 | show-title          | 是否在展示日历标题               | Boolean          | true |
 | show-sub-title          | 是否展示日期标题              | Boolean          | true |
 
