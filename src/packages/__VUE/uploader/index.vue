@@ -27,45 +27,83 @@
       </template>
     </view>
 
-    <template v-else>
-      <view class="nut-uploader__preview" v-for="(item, index) in fileList" :key="item.uid">
-        <view class="nut-uploader__preview-img">
-          <nut-icon
-            v-if="isDeletable"
-            color="rgba(0,0,0,0.6)"
-            @click="onDelete(item, index)"
-            class="close"
-            name="circle-close"
-          ></nut-icon>
-          <img class="nut-uploader__preview-img__c" v-if="item.type.includes('image') && item.url" :src="item.url" />
-          <view class="tips" v-if="item.status != 'success'">{{ item.status }}</view>
+    <view class="nut-uploader__preview" :class="[listType]" v-for="(item, index) in fileList" :key="item.uid">
+      <view class="nut-uploader__preview-img" v-if="listType == 'picture' && !$slots.default">
+        <view class="nut-uploader__preview__progress" v-if="item.status == 'ready'">
+          <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
         </view>
-      </view>
-      <view class="nut-uploader__upload" v-if="maximum - fileList.length">
-        <nut-icon :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
-        <input
-          class="nut-uploader__input"
-          v-if="capture"
-          type="file"
-          capture="camera"
-          :accept="accept"
-          :multiple="multiple"
-          :name="name"
-          :disabled="disabled"
-          @change="onChange"
+        <view class="nut-uploader__preview__progress" v-else-if="item.status != 'success'">
+          <nut-icon color="#fff" :name="item.status == 'error' ? 'failure' : 'loading'"></nut-icon>
+          <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
+        </view>
+        <nut-icon
+          v-if="isDeletable"
+          color="rgba(0,0,0,0.6)"
+          @click="onDelete(item, index)"
+          class="close"
+          name="failure"
+        ></nut-icon>
+        <img
+          class="nut-uploader__preview-img__c"
+          @click="fileItemClick(item)"
+          v-if="item.type.includes('image') && item.url"
+          :src="item.url"
         />
-        <input
-          class="nut-uploader__input"
-          v-else
-          type="file"
-          :accept="accept"
-          :multiple="multiple"
-          :name="name"
-          :disabled="disabled"
-          @change="onChange"
-        />
+        <view v-else class="nut-uploader__preview-img__file">
+          <view @click="fileItemClick(item)" class="nut-uploader__preview-img__file__name">
+            <nut-icon color="#808080" name="link"></nut-icon>&nbsp;{{ item.name }}
+          </view>
+        </view>
+        <view class="tips">{{ item.name }}</view>
       </view>
-    </template>
+      <view class="nut-uploader__preview-list" v-else-if="listType == 'list'">
+        <view @click="fileItemClick(item)" class="nut-uploader__preview-img__file__name" :class="[item.status]">
+          <nut-icon name="link" />&nbsp;{{ item.name }}
+        </view>
+        <nut-icon
+          class="nut-uploader__preview-img__file__del"
+          @click="onDelete(item, index)"
+          color="#808080"
+          name="del"
+        />
+        <nut-progress
+          size="small"
+          :percentage="item.percentage"
+          v-if="item.status == 'uploading'"
+          stroke-color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
+          :show-text="false"
+        >
+        </nut-progress>
+      </view>
+    </view>
+    <view
+      class="nut-uploader__upload"
+      :class="[listType]"
+      v-if="listType == 'picture' && !$slots.default && maximum - fileList.length"
+    >
+      <nut-icon :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
+      <input
+        class="nut-uploader__input"
+        v-if="capture"
+        type="file"
+        capture="camera"
+        :accept="accept"
+        :multiple="multiple"
+        :name="name"
+        :disabled="disabled"
+        @change="onChange"
+      />
+      <input
+        class="nut-uploader__input"
+        v-else
+        type="file"
+        :accept="accept"
+        :multiple="multiple"
+        :name="name"
+        :disabled="disabled"
+        @change="onChange"
+      />
+    </view>
   </view>
 </template>
 
@@ -74,13 +112,15 @@ import { computed, reactive } from 'vue';
 import { createComponent } from '../../utils/create';
 import { Uploader, UploadOptions } from './uploader';
 const { componentName, create } = createComponent('uploader');
-export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error' | 'removed';
+export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error';
 export class FileItem {
   status: FileItemStatus = 'ready';
+  message: string = '准备完成';
   uid: string = new Date().getTime().toString();
   name?: string;
   url?: string;
   type?: string;
+  percentage: string | number = 0;
   formData: FormData = new FormData();
 }
 export default create({
@@ -91,12 +131,14 @@ export default create({
     timeout: { type: [Number, String], default: 1000 * 30 },
     fileList: { type: Array, default: () => [] },
     isPreview: { type: Boolean, default: true },
+    // picture、list
+    listType: { type: String, default: 'picture' },
     isDeletable: { type: Boolean, default: true },
     method: { type: String, default: 'post' },
     capture: { type: Boolean, default: false },
     maximize: { type: [Number, String], default: Number.MAX_VALUE },
     maximum: { type: [Number, String], default: 1 },
-    clearInput: { type: Boolean, default: false },
+    clearInput: { type: Boolean, default: true },
     accept: { type: String, default: '*' },
     headers: { type: Object, default: {} },
     data: { type: Object, default: {} },
@@ -120,7 +162,17 @@ export default create({
     onChange: { type: Function }
     // customRequest: { type: Function }
   },
-  emits: ['start', 'progress', 'oversize', 'success', 'failure', 'change', 'delete', 'update:fileList'],
+  emits: [
+    'start',
+    'progress',
+    'oversize',
+    'success',
+    'failure',
+    'change',
+    'delete',
+    'update:fileList',
+    'file-item-click'
+  ],
   setup(props, { emit }) {
     const fileList = reactive(props.fileList) as Array<FileItem>;
     let uploadQueue: Promise<Uploader>[] = [];
@@ -136,12 +188,13 @@ export default create({
       el.value = '';
     };
 
+    const fileItemClick = (fileItem: FileItem) => {
+      emit('file-item-click', { fileItem });
+    };
+
     const executeUpload = (fileItem: FileItem, index: number) => {
       const uploadOption = new UploadOptions();
       uploadOption.url = props.url;
-      for (const [key, value] of Object.entries(props.data)) {
-        fileItem.formData.append(key, value);
-      }
       uploadOption.formData = fileItem.formData;
       uploadOption.timeout = (props.timeout as number) * 1;
       uploadOption.method = props.method;
@@ -150,27 +203,34 @@ export default create({
       uploadOption.withCredentials = props.withCredentials;
       uploadOption.onStart = (option: UploadOptions) => {
         fileItem.status = 'ready';
+        fileItem.message = '准备上传';
         clearUploadQueue(index);
         emit('start', option);
       };
-      uploadOption.onProgress = (e: ProgressEvent<XMLHttpRequestEventTarget>, option: UploadOptions) => {
+      uploadOption.onProgress = (event: ProgressEvent<XMLHttpRequestEventTarget>, option: UploadOptions) => {
         fileItem.status = 'uploading';
-        emit('progress', { e, option });
+        fileItem.message = '上传中';
+        fileItem.percentage = ((event.loaded / event.total) * 100).toFixed(0);
+        emit('progress', { event, option, percentage: fileItem.percentage });
       };
 
       uploadOption.onSuccess = (responseText: XMLHttpRequest['responseText'], option: UploadOptions) => {
         fileItem.status = 'success';
+        fileItem.message = '上传成功';
         emit('success', {
           responseText,
-          option
+          option,
+          fileItem
         });
         emit('update:fileList', fileList);
       };
       uploadOption.onFailure = (responseText: XMLHttpRequest['responseText'], option: UploadOptions) => {
         fileItem.status = 'error';
+        fileItem.message = '上传失败';
         emit('failure', {
           responseText,
-          option
+          option,
+          fileItem
         });
       };
       let task = new Uploader(uploadOption);
@@ -200,6 +260,9 @@ export default create({
     const readFile = (files: File[]) => {
       files.forEach((file: File, index: number) => {
         const formData = new FormData();
+        for (const [key, value] of Object.entries(props.data)) {
+          formData.append(key, value);
+        }
         formData.append(props.name, file);
 
         const fileItem = reactive(new FileItem());
@@ -207,6 +270,7 @@ export default create({
         fileItem.status = 'ready';
         fileItem.type = file.type;
         fileItem.formData = formData;
+        fileItem.message = '等待上传';
         executeUpload(fileItem, index);
 
         if (props.isPreview && file.type.includes('image')) {
@@ -237,8 +301,9 @@ export default create({
       if (oversizes.length) {
         emit('oversize', oversizes);
       }
-      if (files.length > maximum) {
-        files.splice(maximum - 1, files.length - maximum);
+      let currentFileLength = files.length + fileList.length;
+      if (currentFileLength > maximum) {
+        files.splice(files.length - (currentFileLength - maximum));
       }
       return files;
     };
@@ -248,7 +313,8 @@ export default create({
         fileList.splice(index, 1);
         emit('delete', {
           file,
-          fileList
+          fileList,
+          index
         });
       } else {
         console.log('用户阻止了删除！');
@@ -287,6 +353,7 @@ export default create({
       onDelete,
       fileList,
       classes,
+      fileItemClick,
       clearUploadQueue,
       submit
     };

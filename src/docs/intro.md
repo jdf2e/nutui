@@ -29,7 +29,7 @@ NutUI 是京东风格的 Vue 移动端组件库，开发和服务于移动Web界
 <img src="https://storage.360buyimg.com/jdc-article/gh_f2231eb941be_258.jpg" width="200" alt="NutUI" />
 
 ## 版本说明
-> @nutui/nutui@next 和 @nutui/nutui-taro 属于并行版本，存才部分的差异化，版本号始终保持一致
+> @nutui/nutui@next 和 @nutui/nutui-taro 属于并行版本，存在部分的差异化，版本号始终保持一致
 - @nutui/nutui 基于Vue2 视觉风格 JD APP 7.0规范 ，只能开发 h5
 - @nutui/nutui-jdl 基于Vue2 视觉风格 JDL 规范 ，只能开发 h5
 - @nutui/nutui@next 基于Vue3 视觉风格 JD APP 10.0规范 ，只能开发 h5

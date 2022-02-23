@@ -14,6 +14,9 @@
   appearance: none;
   user-select: none;
   touch-action: manipulation;
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
   .text {
     margin-left: 5px;
   }
@@ -30,6 +33,9 @@
     transform: translate(-50%, -50%);
     opacity: 0;
     content: ' ';
+  }
+  &::after {
+    border: none;
   }
   &:active::before {
     opacity: 0.1;
@@ -127,6 +133,12 @@
   &--small {
     height: $button-small-height;
     line-height: $button-small-line-height;
+    padding: 0 $padding-xs;
+    font-size: $font-size-1;
+  }
+  &--mini {
+    height: $button-mini-height;
+    line-height: 1.2;
     padding: 0 $padding-xs;
     font-size: $font-size-1;
   }

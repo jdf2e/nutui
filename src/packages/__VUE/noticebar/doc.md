@@ -21,111 +21,158 @@ app.use(NoticeBar);
 
 ```
 
-#
+
 ### 基本用法
 
+:::demo
+
 ```html
-    <nut-noticebar
-      text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
-    ></nut-noticebar>
+<template>
+  <nut-noticebar text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"></nut-noticebar>
+</template>
+
 ```
+:::
 ### 禁用滚动
 文字内容多于一行时，可通过scrollable参数控制是否开启滚动
+
+:::demo
+
 ```html
-    <nut-noticebar
+<template>
+  <nut-noticebar
       text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
       :scrollable="false"
     ></nut-noticebar>
+</template>
+
 ```
+:::
+
 ### 通告栏模式--关闭模式
+
+:::demo
+
 ```html
-    <nut-noticebar
+<template>
+  <nut-noticebar
       :closeMode="true"
       @click="hello"
     >华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！
     </nut-noticebar>
+</template>
+
 ```
+:::
+
+
 ### 通告栏模式--链接模式
+
+:::demo
 ```html
+<template>
     <nut-noticebar
       left-icon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
       :scrollable="false"
     >
       <a href="https://www.jd.com">京东商城</a>
     </nut-noticebar>
+</template>
 ```
-
+:::
 ### 纵向滚动
-
+:::demo
 ```html
-<nut-noticebar direction='vertical' :list="horseLamp1" :speed='10' :standTime='1000'  @click='go' :closeMode="true"></nut-noticebar>
-```
-```javascript
-data() {
-    return {
-        horseLamp1: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
-    };
-},
+<template>
+    <nut-noticebar direction='vertical' :list="horseLamp1" :speed='10' :standTime='1000'  @click='go' :closeMode="true"></nut-noticebar>
+</template>
 
-methods:{
-    go(item){
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const horseLamp1 = ref(['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']);
+      const go = (item) => {
         console.log(item)
+      }
+      return { horseLamp1 };
     }
-}
+  }
+</script>
 ```
 
+:::
 
 ### 复杂滚动动画
 
+:::demo
 ```html
-<nut-noticebar direction='vertical' :list="horseLamp2" :speed='10' :standTime='2000' :complexAm='true'></nut-noticebar>
+<template>
+    <nut-noticebar direction='vertical' :list="horseLamp2" :speed='10' :standTime='2000' :complexAm='true'></nut-noticebar>
+</template>
+
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const horseLamp2 = ref(['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']);
+      return { horseLamp2 };
+    }
+  }
+</script>
 ```
-```javascript
-data() {
-    return {
-        horseLamp2: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
-    };
-}
-```
+:::
 
 ### 自定义滚动内容
 
+:::demo
 ```html
-<nut-noticebar direction='vertical' :height='50' :speed='10' :standTime='1000' :list="[]"  @close='go'>
-  <div class="custom-item" :data-index='index' v-for="(item,index) in horseLamp3" :key="index">{{item}}</div>
-</nut-noticebar>
-```
-```javascript
-data() {
-    return {
-        horseLamp3: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
-    };
-}
-```
+<template>
+    <nut-noticebar direction='vertical' :height='50' :speed='10' :standTime='1000' :list="[]"  @close='go'>
+      <div class="custom-item" :data-index='index' v-for="(item,index) in horseLamp3" :key="index">{{item}}</div>
+    </nut-noticebar>
+</template>
 
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const horseLamp3 = ref(['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']);
+      return { horseLamp3 };
+    }
+  }
+</script>
+```
+:::
 
 ### 纵向自定义右侧图标
 
+:::demo
 ```html
-<nut-noticebar direction='vertical' :list="horseLamp1" :speed='10' :standTime='1000' >
-  <template v-slot:rightIcon>
-    <nut-icon 
-      type="trolley" 
-      color="#f0250f"
-    >
-    </nut-icon>
+<template>
+    <nut-noticebar direction='vertical' :list="horseLamp1" :speed='10' :standTime='1000' >
+      <template v-slot:rightIcon>
+        <nut-icon 
+          type="trolley" 
+          color="#f0250f"
+        >
+        </nut-icon>
 
-  </template>
-</nut-noticebar>
-```
-```javascript
-data() {
-    return {
-        horseLamp1: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
-    };
-}
-```
+      </template>
+    </nut-noticebar>
+</template>
 
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const horseLamp1 = ref(['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']);
+      return { horseLamp1 };
+    }
+  }
+</script>
+```
+:::
 
 
 ### Prop

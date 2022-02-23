@@ -22,14 +22,29 @@ npm i @nutui/nutui-taro
 
 ### NPM 使用示例
 
+#### 导入全部组件
+
+> 注意：这种方式将会导入所有组件，打包文件大小会很大，我们推荐使用按需加载
+```javascript
+import { createApp } from "vue";
+import App from "./App.vue";
+// 注意：这种方式将会导入所有组件
+import NutUI from "@nutui/nutui";
+import "@nutui/nutui/dist/style.css";
+createApp(App).use(NutUI).mount("#app");
+```
 
 #### Vite 构建工具 通过 vite-plugin 使用按需加载
+
+#### 为什么只按需引入样式
+
+由于 vite 本身已按需导入了组件库，因此仅样式不是按需导入的，因此只需按需导入样式即可。
 
 [Vite](https://vitejs.dev/) 构建工具，使用 [vite-plugin-style-import](https://github.com/anncwb/vite-plugin-style-import) 实现按需引入。
 
 ##### 安装插件
 ``` bash
-npm install babel-plugin-import --save-dev
+npm install vite-plugin-style-import --save-dev
 ```
 在 `vite.config` 中添加配置：
 ``` javascript
@@ -53,6 +68,7 @@ export default {
   css: {
     preprocessorOptions: {
       scss: {
+        // 配置 nutui 全局 scss 变量
         additionalData: `@import "@nutui/nutui/dist/styles/variables.scss";`
       }
     }
@@ -100,18 +116,6 @@ import App from "./App.vue";
 import { Button, Icon } from "@nutui/nutui";
 import "@nutui/nutui/dist/style.css";
 createApp(App).use(Button).use(Icon).mount("#app");
-```
-
-#### 导入全部组件
-
-> 注意：这种方式将会导入所有组件，打包文件大小会很大
-```javascript
-import { createApp } from "vue";
-import App from "./App.vue";
-// 注意：这种方式将会导入所有组件
-import NutUI from "@nutui/nutui";
-import "@nutui/nutui/dist/style.css";
-createApp(App).use(NutUI).mount("#app");
 ```
 
 #### CDN 安装使用示例

@@ -1,24 +1,9 @@
 <template>
   <div class="demo full">
-    <nut-cell
-      :isLink="true"
-      @click="showKeyBoard(1)"
-      :showIcon="true"
-      title="默认键盘"
-    ></nut-cell>
-    <nut-numberkeyboard
-      v-model:visible="visible1"
-      @input="input"
-      @delete="onDelete"
-      @close="close(1)"
-    >
+    <nut-cell :isLink="true" @click="showKeyBoard(1)" :showIcon="true" title="默认键盘"></nut-cell>
+    <nut-numberkeyboard v-model:visible="visible1" @input="input" @delete="onDelete" @close="close(1)">
     </nut-numberkeyboard>
-    <nut-cell
-      :isLink="true"
-      @click="showKeyBoard(2)"
-      :showIcon="true"
-      title="带右侧栏键盘"
-    ></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard(2)" :showIcon="true" title="带右侧栏键盘"></nut-cell>
     <nut-numberkeyboard
       type="rightColumn"
       v-model:visible="visible2"
@@ -27,28 +12,18 @@
       @close="close(2)"
     >
     </nut-numberkeyboard>
-    <nut-cell
-      :isLink="true"
-      @click="showKeyBoard(3)"
-      :showIcon="true"
-      title="随机数键盘"
-    ></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard(3)" :showIcon="true" title="随机数键盘"></nut-cell>
     <nut-numberkeyboard
       type="rightColumn"
       v-model:visible="visible3"
-      randomKeys="true"
+      :randomKeys="true"
       :custom-key="customKey1"
       @input="input"
       @close="close(3)"
     >
     </nut-numberkeyboard>
 
-    <nut-cell
-      :isLink="true"
-      @click="showKeyBoard(4)"
-      :showIcon="true"
-      title="带标题栏键盘"
-    ></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="带标题栏键盘"></nut-cell>
     <nut-numberkeyboard
       title="默认键盘"
       v-model:visible="visible4"
@@ -65,12 +40,7 @@
       :showIcon="true"
       title="双向绑定："
     ></nut-cell>
-    <nut-numberkeyboard
-      v-model:visible="visible5"
-      v-model:value="value"
-      maxlength="6"
-      @close="close(5)"
-    >
+    <nut-numberkeyboard v-model:visible="visible5" v-model:value="value" maxlength="6" @close="close(5)">
     </nut-numberkeyboard>
   </div>
 </template>

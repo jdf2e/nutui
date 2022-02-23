@@ -4,7 +4,7 @@
       :class="toastBodyClass"
       v-show="state.mounted"
       :style="{
-        bottom: center ? 'auto' : bottom + 'px',
+        bottom: center ? 'auto' : bottom,
         'background-color': coverColor
       }"
       @click="clickCover"
@@ -19,6 +19,9 @@
         <view v-if="hasIcon" class="nut-toast-icon-wrapper">
           <nut-icon size="20" color="#ffffff" :name="icon"></nut-icon>
         </view>
+        <div v-if="title" class="nut-toast-title">
+          {{ title }}
+        </div>
         <view class="nut-toast-text" v-html="msg"></view>
       </view>
     </view>
@@ -47,8 +50,8 @@ export default create({
     type: String,
     customClass: String,
     bottom: {
-      type: Number,
-      default: 30
+      type: String,
+      default: '30px'
     },
     size: {
       type: [String, Number],
@@ -67,7 +70,6 @@ export default create({
       type: String,
       default: 'rgba(0, 0, 0, .8)'
     },
-
     onClose: Function,
     unmount: Function,
     cover: {
@@ -77,6 +79,10 @@ export default create({
     coverColor: {
       type: String,
       default: 'rgba(0, 0, 0, 0)'
+    },
+    title: {
+      type: String,
+      default: ''
     },
     closeOnClickOverlay: {
       type: Boolean,

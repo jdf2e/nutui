@@ -2,11 +2,7 @@
   <div class="demo">
     <h2>基本用法</h2>
     <nut-cell title="我是标题" desc="描述文字"></nut-cell>
-    <nut-cell
-      title="我是标题"
-      sub-title="副标题描述"
-      desc="描述文字"
-    ></nut-cell>
+    <nut-cell title="我是标题" sub-title="副标题描述" desc="描述文字"></nut-cell>
     <nut-cell title="点击测试" @click="testClick"></nut-cell>
     <nut-cell title="圆角设置 0" round-radius="0"></nut-cell>
 
@@ -26,8 +22,7 @@
       ></nut-cell>
       <nut-cell title="路由跳转 ’/‘ " to="/"></nut-cell>
     </nut-cell-group> -->
-
-    <nut-cell-group title="自定义右侧箭头区域">
+    <nut-cell-group title="自定义右侧箭头区域" desc="使用 nut-cell-group 支持 title desc slots">
       <nut-cell title="Switch">
         <template v-slot:link>
           <nut-switch v-model="switchChecked" />

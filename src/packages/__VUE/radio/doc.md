@@ -14,118 +14,212 @@ import { Radio,RadioGroup } from '@nutui/nutui';
 import { Radio,RadioGroup } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Radio);
-app.use(RadioGroup);
+app.use(Radio).use(RadioGroup);
 ```
 ## 基本用法
 
 通过 **v-model** 绑定值当前选项的 **label** 。并且必须 **nut-radiogroup** 和 **nut-radio** 相结合进行使用
 
-```html
-<nut-radiogroup v-model="radioVal">
-  <nut-radio :label="1">单选框1</nut-radio>
-  <nut-radio :label="2">单选框2</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  return {
-    radioVal:"1",
-  };
-}
-```
-
-## 禁用选择
+:::demo
 
 ```html
-<nut-radiogroup v-model="radioVal3">
-  <nut-radio :label="1" disabled>禁用单选框</nut-radio>
-  <nut-radio :label="2" disabled>禁用单选框</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  return {
-    radioVal3:"1",
+<template>
+  <nut-cell-group title="基本用法">
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal">
+        <nut-radio label="1">选项1</nut-radio>
+        <nut-radio disabled label="2">选项2</nut-radio>
+        <nut-radio label="3">选项3</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal" text-position="left">
+        <nut-radio label="1">选项1</nut-radio>
+        <nut-radio disabled label="2">选项2</nut-radio>
+        <nut-radio label="3">选项3</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal">
+        <nut-radio shape="button" label="1">选项1</nut-radio>
+        <nut-radio disabled shape="button" label="2">选项2</nut-radio>
+        <nut-radio shape="button" label="3">选项3</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const radioVal = ref('1');
+      return { radioVal };
+    },
   };
-}
+</script>
 ```
 
+:::
+
+## 水平使用
+
+:::demo
+
+```html
+<template>
+  <nut-cell-group title="水平使用">
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal" direction="horizontal">
+        <nut-radio label="1">选项1</nut-radio>
+        <nut-radio label="2">选项2</nut-radio>
+        <nut-radio label="3">选项3</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal" text-position="left" direction="horizontal">
+        <nut-radio label="1">选项1</nut-radio>
+        <nut-radio label="2">选项2</nut-radio>
+        <nut-radio label="3">选项3</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal" direction="horizontal">
+        <nut-radio shape="button" label="1">选项1</nut-radio>
+        <nut-radio shape="button" label="2">选项2</nut-radio>
+        <nut-radio shape="button" label="3">选项3</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const radioVal = ref('1');
+      return { radioVal };
+    },
+  };
+</script>
+```
+
+:::
 ## 自定义尺寸
 
+:::demo
+
 ```html
-<nut-radiogroup v-model="radioVal4">
-  <nut-radio :label="1" icon-size="12">自定义尺寸12</nut-radio>
-  <nut-radio :label="2" icon-size="12">自定义尺寸12</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  return {
-    radioVal4:"1",
+<template>
+  <nut-cell-group title="自定义尺寸">
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal">
+        <nut-radio label="1" icon-size="12">自定义尺寸12</nut-radio>
+        <nut-radio label="2" icon-size="12">自定义尺寸12</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const radioVal = ref('1');
+      return { radioVal };
+    },
   };
-}
+</script>
 ```
+
+:::
 
 ## 自定义图标
 
 建议 `icon-name` `icon-active-name` 一起修改
 
+:::demo
+
 ```html
-<nut-radiogroup v-model="radioVal5">
-  <nut-radio :label="1" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
-  <nut-radio :label="2" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  return {
-    radioVal5:"1",
+<template>
+  <nut-cell-group title="Radio自定义图标">
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal">
+        <nut-radio label="1" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
+        <nut-radio label="2" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const radioVal = ref('1');
+      return { radioVal };
+    },
   };
-}
+</script>
 ```
+
+:::
 
 ## 触发 change 事件
 
+:::demo
+
 ```html
-<nut-radiogroup v-model="radioVal6" @change="handleChange3">
-  <nut-radio :label="1" >触发事件</nut-radio>
-  <nut-radio :label="2" >触发事件</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  const handleChange3 = (value: any) => {
-    Toast.text(`您选中了${value}`);
-  }
-  return {
-    radioVal6:"1",
-    handleChange3
+<template>
+  <nut-cell-group title="触发事件">
+    <nut-cell>
+      <nut-radiogroup v-model="radioVal" @change="handleChange">
+        <nut-radio label="1">触发事件</nut-radio>
+        <nut-radio label="2">触发事件</nut-radio>
+      </nut-radiogroup>
+    </nut-cell>
+    <nut-cell title="当前选中值" :desc="radioVal"></nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const radioVal = ref('1');
+      const handleChange = (value: any) => {
+        console.log(value);
+      };
+      return { radioVal, handleChange };
+    },
   };
-}
+</script>
 ```
+:::
 
 ## Prop
 
 ### Radio
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| disabled | 是否禁用选择 | Boolean | `false`
-| icon-size | [图标尺寸](#/icon) | String、Number | `18`
-| icon-name | [图标名称](#/icon)，选中前(建议和`icon-active-name`一起修改) | String | `'check-normal'`
-| icon-active-name | [图标名称](#/icon)，选中后(建议和`icon-name`一起修改) | String | `'check-checked'`
-| label | 单选框标识 | String、Number、Boolean | -
+| 字段             | 说明                                                         | 类型                    | 默认值            |
+|------------------|--------------------------------------------------------------|-------------------------|-------------------|
+| disabled         | 是否禁用选择                                                 | Boolean                 | `false`           |
+| icon-size        | [图标尺寸](#/icon)                                           | String、Number          | `18`              |
+| icon-name        | [图标名称](#/icon)，选中前(建议和`icon-active-name`一起修改) | String                  | `'check-normal'`  |
+| icon-active-name | [图标名称](#/icon)，选中后(建议和`icon-name`一起修改)        | String                  | `'check-checked'` |
+| label            | 单选框标识                                                   | String、Number、Boolean | -                 |
+| shape            | 形状，可选值为 button、round                                 | String                  | round             |
 
 ### RadioGroup
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| v-model | 当前选中项的标识符，与label值一致时呈选中状态 | String、Number、Boolean | -
-| text-position | 文本所在的位置，可选值：`left`,`right` | String | `right`
+| 字段          | 说明                                          | 类型                    | 默认值     |
+|---------------|-----------------------------------------------|-------------------------|------------|
+| v-model       | 当前选中项的标识符，与label值一致时呈选中状态 | String、Number、Boolean | -          |
+| text-position | 文本所在的位置，可选值：`left`,`right`        | String                  | `right`    |
+| direction     | 使用横纵方向 可选值 horizontal、vertical      | String                  | `vertical` |
 
 ## RadioGroup Event
 
-| 字段 | 说明 | 回调参数 
-|----- | ----- | ----- 
-| change | 值变化时触发 | 当前选中项值（label）【设置label后有值、默认为空】
+| 字段   | 说明         | 回调参数                                           |
+|--------|--------------|----------------------------------------------------|
+| change | 值变化时触发 | 当前选中项值（label）【设置label后有值、默认为空】 |
