@@ -33,6 +33,9 @@
         padding: 0 20px;
         height: 30px;
         line-height: 30px;
+        &--highcolor {
+          color: $elevator-list-item-highcolor;
+        }
       }
     }
   }

@@ -187,6 +187,17 @@ app.use(Col);
       <div class="flex-content">span:6</div>
     </nut-col>
   </nut-row>
+  <nut-row type="flex" justify="space-evenly">
+    <nut-col :span="6">
+      <div class="flex-content">span:6</div>
+    </nut-col>
+    <nut-col :span="6">
+      <div class="flex-content flex-content-light">span:6</div>
+    </nut-col>
+    <nut-col :span="6">
+      <div class="flex-content">span:6</div>
+    </nut-col>
+  </nut-row>
 </template>
 <style lang="scss" scoped>
 .nut-row {
@@ -220,7 +231,7 @@ app.use(Col);
 |----- | ----- | ----- | ----- 
 | type | 布局方式，可选值为flex | String | -
 | gutter | 列元素之间的间距（单位为px） | String、Number | -
-| justify | Flex 主轴对齐方式，可选值为 start end center space-around space-between | String | start
+| justify | Flex 主轴对齐方式，可选值为 start end center space-around space-between space-evenly | String | start
 | align | Flex 交叉轴对齐方式，可选值为 flex-start center flex-end | String | flex-start
 | flex-wrap | Flex是否换行，可选值为 nowrap wrap reverse | String | nowrap
 
