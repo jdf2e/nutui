@@ -189,7 +189,6 @@ export default {
       isVisible6: false
     });
     const openSwitch = (param: string) => {
-      console.log(new Date().getTime());
       state[`${param}`] = true;
     };
 
@@ -198,8 +197,6 @@ export default {
     };
 
     const setChooseValue = (param: string) => {
-      console.log(param);
-
       state.date = param[3];
       state.dateWeek = param[4];
     };
@@ -208,7 +205,6 @@ export default {
       console.log(param);
     };
     const setChooseValue1 = (param: string) => {
-      console.log(param);
       state.date1 = [...[param[0][3], param[1][3]]];
     };
 
@@ -220,7 +216,6 @@ export default {
       state.date3 = param[3];
     };
     const setChooseValue4 = (param: string) => {
-      console.log(param);
       state.date4 = [...[param[0][3], param[1][3]]];
     };
 

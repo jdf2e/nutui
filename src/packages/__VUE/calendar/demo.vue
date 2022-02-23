@@ -202,8 +202,6 @@ export default createDemo({
     };
 
     const setChooseValue = (param: string) => {
-      console.log(param);
-
       state.date = param[3];
       state.dateWeek = param[4];
     };
@@ -212,7 +210,6 @@ export default createDemo({
       console.log(param);
     };
     const setChooseValue1 = (param: string) => {
-      console.log(param);
       state.date1 = [...[param[0][3], param[1][3]]];
     };
 
@@ -224,7 +221,6 @@ export default createDemo({
       state.date3 = param[3];
     };
     const setChooseValue4 = (param: string) => {
-      console.log(param);
       state.date4 = [...[param[0][3], param[1][3]]];
     };
 
