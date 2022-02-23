@@ -1,17 +1,24 @@
 <template>
   <view :class="classes">
     <view
-      v-if="needSymbol"
+      v-if="needSymbol && position == 'before'"
       class="nut-price--symbol"
+      :class="`nut-price--symbol-${size}`"
       v-html="showSymbol"
     ></view>
-    <view class="nut-price--big">
+    <view :class="`nut-price--${size}`">
       {{ formatThousands(price) }}
     </view>
-    <view class="nut-price--point">.</view>
-    <view class="nut-price--small">
+    <view :class="`nut-price--decimal-${size}`" v-if="decimalDigits != 0">.</view>
+    <view :class="`nut-price--decimal-${size}`">
       {{ formatDecimal(price) }}
     </view>
+    <view
+      v-if="needSymbol && position == 'after'"
+      class="nut-price--symbol"
+      :class="`nut-price--symbol-${size}`"
+      v-html="showSymbol"
+    ></view>
   </view>
 </template>
 
@@ -35,12 +42,20 @@ export default create({
       default: '&yen;'
     },
     decimalDigits: {
-      type: Number,
+      type: [Number, String],
       default: 2
     },
     thousands: {
       type: Boolean,
       default: false
+    },
+    position: {
+      type: String,
+      default: 'before'
+    },
+    size: {
+      type: String,
+      default: 'large'
     }
   },
 
@@ -64,10 +79,7 @@ export default create({
       }
       if (checkPoint(num)) {
         num = Number(num).toFixed(props.decimalDigits);
-        num =
-          typeof num.split('.') === 'string'
-            ? num.split('.')
-            : num.split('.')[0];
+        num = typeof num.split('.') === 'string' ? num.split('.') : num.split('.')[0];
       } else {
         num = num.toString();
       }
@@ -84,9 +96,7 @@ export default create({
       if (checkPoint(decimalNum)) {
         decimalNum = Number(decimalNum).toFixed(props.decimalDigits);
         decimalNum =
-          typeof decimalNum.split('.') === 'string'
-            ? 0
-            : decimalNum.split('.')[1];
+          typeof decimalNum.split('.') === 'string' ? 0 : decimalNum.split('.')[1] ? decimalNum.split('.')[1] : 0;
       } else {
         decimalNum = 0;
       }

@@ -31,18 +31,39 @@
     <nut-tabs style="height: 300px" v-model="state.tab5value" title-scroll direction="vertical">
       <nut-tabpane v-for="item in state.list5" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>
     </nut-tabs>
+    <h2>左右布局-微笑曲线</h2>
+    <nut-tabs style="height: 300px" v-model="state.tab6value" type="smile" title-scroll direction="vertical">
+      <nut-tabpane v-for="item in state.list5" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>
+    </nut-tabs>
+    <h2>标签栏字体尺寸 large normal small </h2>
+    <nut-tabs v-model="state.tab1value" size="large">
+      <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
+      <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
+      <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+    </nut-tabs>
+    <nut-tabs v-model="state.tab1value" size="normal">
+      <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
+      <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
+      <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+    </nut-tabs>
+    <nut-tabs v-model="state.tab1value" size="small">
+      <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
+      <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
+      <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
+    </nut-tabs>
     <h2>自定义标签栏</h2>
-    <nut-tabs v-model="state.tab6value">
+    <nut-tabs v-model="state.tab7value">
       <template v-slot:titles>
         <div
           class="nut-tabs__titles-item"
-          @click="state.tab6value = item.paneKey"
-          :class="{ active: state.tab6value == item.paneKey }"
+          @click="state.tab7value = item.paneKey"
+          :class="{ active: state.tab7value == item.paneKey }"
           :key="item.paneKey"
           v-for="item in state.list6"
         >
           <nut-icon v-if="item.icon" :name="item.icon" />
           <span class="nut-tabs__titles-item__text">{{ item.title }}</span>
+          <span class="nut-tabs__titles-item__line"></span>
         </div>
       </template>
       <nut-tabpane v-for="item in state.list6" :pane-key="item.paneKey">
@@ -64,7 +85,8 @@ export default {
       tab3value: '0',
       tab4value: '0',
       tab5value: '0',
-      tab6value: 'c1',
+      tab6value: '0',
+      tab7value: 'c1',
       list3: Array.from(new Array(2).keys()),
       list4: Array.from(new Array(10).keys()),
       list5: Array.from(new Array(2).keys()),

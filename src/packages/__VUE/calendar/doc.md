@@ -498,6 +498,12 @@ export default {
 | default-value     | 默认值，日期选择 String 格式，区间选择 Array 格式 | String 、 Array | null            |
 | start-date        | 开始日期， 如果不限制开始日期传 null              | String          | 今天            |
 | end-date          | 结束日期，如果不限制结束日期传 null               | String          | 距离今天 365 天 |
+| show-today          | 结束日期，如果不限制结束日期传 null               | Boolean          | true |
+| start-text         | 范围选择，开始信息文案               | String          | 开始 |
+| end-text         | 范围选择，结束信息文案               | String          | 结束 |
+| confirm-text          | 底部确认按钮文案               | String          | 确认 |
+| show-title          | 结束日期，如果不限制结束日期传 null               | Boolean          | true |
+| show-sub-title          | 结束日期，如果不限制结束日期传 null               | Boolean          | true |
 
 ### Events
 
@@ -505,3 +511,15 @@ export default {
 |--------|------------------------------|------------------------------|
 | choose | 选择之后或是点击确认按钮触发 | 日期数组（包含年月日和星期） |
 | close  | 关闭时触发                   | -                            |
+| select  | 点击/选择后触发              |  Day:object                          |
+
+
+
+### Slots
+
+| 名称    | 说明         |
+|---------|--------------|
+| btn | 	自定义标题部分 |
+| day | 	日期信息 |
+| topInfo | 	日期顶部信息 |
+| bottomInfo | 	日期底部信息 |

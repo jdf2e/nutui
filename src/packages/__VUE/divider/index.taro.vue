@@ -1,7 +1,7 @@
 <template>
-  <div :class="classes">
+  <view :class="classes">
     <slot></slot>
-  </div>
+  </view>
 </template>
 <script lang="ts">
 import { login } from '@tarojs/taro';

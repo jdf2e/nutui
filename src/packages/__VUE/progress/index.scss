@@ -11,13 +11,7 @@
       width: 30%;
       height: 100%;
       border-radius: 12px;
-      background: linear-gradient(
-        268deg,
-        rgba(250, 44, 25, 1) 0%,
-        rgba(250, 63, 25, 1) 44.59259259%,
-        rgba(250, 89, 25, 1) 83.40740741%,
-        rgba(250, 100, 25, 1) 100%
-      );
+      background: $progress-inner-background-color;
       -webkit-transition: all 0.4s;
       transition: all 0.4s;
       position: relative;
@@ -85,14 +79,16 @@
     padding: 0 5px;
     font-size: 13px;
     line-height: 1;
+    min-width: 35px;
   }
   .nut-progress-insidetext {
     padding: 3px 5px 3px 6px;
-    background: rgba(250, 44, 25, 1);
+    background: $progress-insidetext-background;
     border-radius: 5px;
     position: absolute;
     transition: all 0.4s;
     top: -42%;
+    min-width: 0px;
   }
   .nut-icon-success,
   .nut-icon-fail {

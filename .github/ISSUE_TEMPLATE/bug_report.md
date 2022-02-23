@@ -1,6 +1,6 @@
 ---
 name: 'Bug Report'
-about: '创建错误报告以帮助我们改进。'
+about: '创建错误报告以帮助我们改进。在提问之前可以看下是否为类似的问题 https://github.com/jdf2e/nutui/discussions/categories/q-a '
 title: '[bug]'
 labels: 'bug'
 assignees: ''

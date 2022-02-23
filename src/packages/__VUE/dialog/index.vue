@@ -19,7 +19,7 @@
         <view v-else v-html="content"></view>
       </view>
 
-      <view class="nut-dialog__footer" v-if="!noFooter">
+      <view class="nut-dialog__footer" :class="{ [footerDirection]: footerDirection }" v-if="!noFooter">
         <slot v-if="$slots.footer" name="footer"></slot>
         <template v-else>
           <nut-button
@@ -106,37 +106,16 @@ export default create({
       type: String,
       default: 'center'
     },
-    onOk: {
-      type: Function,
-      default: null
-    },
-    onCancel: {
-      type: Function,
-      default: null
-    },
-    onClose: {
-      type: Function,
-      default: null
-    },
-    onClosed: {
-      type: Function,
-      default: null
-    },
     closeOnPopstate: {
       type: Boolean,
       default: false
+    },
+    footerDirection: {
+      type: String,
+      default: 'horizontal' //vertical
     }
   },
-  emits: [
-    'update',
-    'update:visible',
-    'ok',
-    'cancel',
-    'open',
-    'opened',
-    'close',
-    'closed'
-  ],
+  emits: ['update', 'update:visible', 'ok', 'cancel', 'open', 'opened', 'close', 'closed'],
   setup(props, { emit }) {
     const showPopup = ref(props.visible);
     onMounted(() => {
@@ -178,8 +157,8 @@ export default create({
     };
 
     const onOk = () => {
-      closed();
       emit('ok');
+      closed();
     };
 
     return {

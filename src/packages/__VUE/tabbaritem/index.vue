@@ -3,23 +3,17 @@
     class="nut-tabbar-item"
     :class="{ 'nut-tabbar-item__icon--unactive': state.active != state.index }"
     :style="{
-      color:
-        state.active == state.index ? state.activeColor : state.unactiveColor
+      color: state.active == state.index ? state.activeColor : state.unactiveColor
     }"
     @click="change(state.index)"
   >
     <view class="nut-tabbar-item_icon-box">
-      <view
-        class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_num"
-        v-if="num && num <= 99"
-      >
+      <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_num" v-if="num && num <= 99">
         {{ num }}
       </view>
-      <view
-        class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_nums"
-        v-else-if="num && num > 100"
-        >{{ '99+' }}</view
-      >
+      <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_nums" v-else-if="num && num > 100">{{
+        '99+'
+      }}</view>
       <view v-if="icon">
         <nut-icon
           class="nut-tabbar-item_icon-box_icon"
@@ -33,18 +27,13 @@
         v-if="!icon && activeImg"
         class="nut-tabbar-item_icon-box_icon"
         :style="{
-          backgroundImage: `url(${
-            state.active == state.index ? activeImg : img
-          })`,
+          backgroundImage: `url(${state.active == state.index ? activeImg : img})`,
           width: state.size,
           height: state.size
         }"
       ></div>
       <view
-        :class="[
-          'nut-tabbar-item_icon-box_nav-word',
-          { 'nut-tabbar-item_icon-box_big-word': !icon && !activeImg }
-        ]"
+        :class="['nut-tabbar-item_icon-box_nav-word', { 'nut-tabbar-item_icon-box_big-word': !icon && !activeImg }]"
         >{{ tabTitle }}</view
       >
     </view>
@@ -53,14 +42,7 @@
 <script lang="ts">
 import { createComponent } from '../../utils/create';
 import { useRouter } from 'vue-router';
-import {
-  ComponentInternalInstance,
-  computed,
-  getCurrentInstance,
-  inject,
-  reactive,
-  watch
-} from 'vue';
+import { ComponentInternalInstance, computed, getCurrentInstance, inject, onMounted, reactive, watch } from 'vue';
 const { create } = createComponent('tabbar-item');
 export default create({
   props: {
@@ -116,8 +98,7 @@ export default create({
       if (child.proxy) {
         let index = parent.children.length;
         state.index = index;
-        let obj = Object.assign({}, child.proxy, { index });
-        parent.children.push(obj);
+        parent.children.push(child.proxy);
       }
     };
     relation(getCurrentInstance() as ComponentInternalInstance);

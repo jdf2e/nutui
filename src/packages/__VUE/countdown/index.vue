@@ -12,10 +12,8 @@
         <view class="nut-cd-dot">天</view>
       </template>
       <view class="nut-cd-block">{{ resttime.h }}</view
-      ><view class="nut-cd-dot">:</view
-      ><view class="nut-cd-block">{{ resttime.m }}</view
-      ><view class="nut-cd-dot">:</view
-      ><view class="nut-cd-block">{{ resttime.s }}</view>
+      ><view class="nut-cd-dot">:</view><view class="nut-cd-block">{{ resttime.m }}</view
+      ><view class="nut-cd-dot">:</view><view class="nut-cd-block">{{ resttime.s }}</view>
     </template>
   </view>
 </template>
@@ -73,11 +71,9 @@ export default create({
     }
   },
   components: {},
-  emits: ['input', 'on-end', 'on-restart', 'on-paused'],
+  emits: ['input', 'on-end', 'on-restart', 'on-paused', 'update:modelValue'],
 
   setup(props, { emit, slots }) {
-    console.log('componentName', componentName);
-
     const state = reactive({
       restTime: 0,
       p: 0,
@@ -168,7 +164,8 @@ export default create({
         if (!props.paused) {
           let restTime = end - (Date.now() - state.p + diffTime);
           state.restTime = restTime;
-          if (restTime < delay) {
+
+          if (restTime < 0) {
             state.restTime = 0;
             emit('on-end');
             clearInterval(state.timer as any);
@@ -209,10 +206,7 @@ export default create({
 
         const d = ts >= ds ? parseInt(ts / ds) : 0;
         const h = ts - d * ds >= hs ? parseInt((ts - d * ds) / hs) : 0;
-        const m =
-          ts - d * ds - h * hs >= ms
-            ? parseInt((ts - d * ds - h * hs) / ms)
-            : 0;
+        const m = ts - d * ds - h * hs >= ms ? parseInt((ts - d * ds - h * hs) / ms) : 0;
         const s = Math.round((ts - d * ds - h * hs - m * ms) / 1000);
 
         if (d >= 0) rest.d = d + '';

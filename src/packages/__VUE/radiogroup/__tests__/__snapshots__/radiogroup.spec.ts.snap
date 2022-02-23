@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`prop modelValue 1`] = `"<view class=\\"nut-radiogroup\\"></view>"`;
+exports[`prop modelValue 1`] = `"<view class=\\"nut-radiogroup nut-radiogroup--vertical\\"></view>"`;

@@ -8,31 +8,19 @@
       @click="handleClick"
       v-if="direction == 'across'"
     >
-      <view
-        class="left-icon"
-        v-if="iconShow"
-        :style="{ 'background-image': `url(${iconBg})` }"
-      >
-        <nut-icon
-          name="notice"
-          size="16"
-          :color="color"
-          v-if="!iconBg"
-        ></nut-icon>
+      <view class="left-icon" v-if="iconShow" :style="{ 'background-image': `url(${iconBg})` }">
+        <nut-icon name="notice" size="16" :color="color" v-if="!iconBg"></nut-icon>
       </view>
       <view ref="wrap" class="wrap">
         <view
           ref="content"
           class="content"
-          :class="[
-            animationClass,
-            { 'nut-ellipsis': !scrollable && !wrapable }
-          ]"
+          :class="[animationClass, { 'nut-ellipsis': !scrollable && !wrapable }]"
           :style="contentStyle"
           @animationend="onAnimationEnd"
           @webkitAnimationEnd="onAnimationEnd"
         >
-          <slot>1{{ text }}</slot>
+          <slot>{{ text }}</slot>
         </view>
       </view>
       <view v-if="closeMode" class="right-icon" @click.stop="onClickIcon">
@@ -40,11 +28,7 @@
       </view>
     </view>
 
-    <view
-      class="nut-noticebar-vertical"
-      v-if="scrollList.length > 0 && direction == 'vertical'"
-      :style="barStyle"
-    >
+    <view class="nut-noticebar-vertical" v-if="scrollList.length > 0 && direction == 'vertical'" :style="barStyle">
       <template v-if="slots.default">
         <view class="horseLamp_list" :style="horseLampStyle">
           <ScrollItem
@@ -166,7 +150,7 @@ export default create({
   emits: ['click', 'close'],
 
   setup(props, { emit, slots }) {
-    console.log('componentName', componentName);
+    // console.log('componentName', componentName);
 
     const wrap = ref<null | HTMLElement>(null);
     const content = ref<null | HTMLElement>(null);
@@ -237,8 +221,9 @@ export default create({
         };
       } else {
         if (state.animate) {
+          let a = ~~(props.height / props.speed / 4);
           styles = {
-            transition: `all ${~~(props.height / props.speed / 4)}s`,
+            transition: `all ${a == 0 ? ~~(props.height / props.speed) : a}s`,
             'margin-top': `-${props.height}px`
           };
         }
@@ -306,10 +291,7 @@ export default create({
      */
     const startRollEasy = () => {
       showhorseLamp();
-      (state.timer as any) = setInterval(
-        showhorseLamp,
-        ~~(props.height / props.speed / 4) * 1000 + props.standTime
-      );
+      (state.timer as any) = setInterval(showhorseLamp, ~~((props.height / props.speed / 4) * 1000) + props.standTime);
     };
     const showhorseLamp = () => {
       state.animate = true;
@@ -317,7 +299,7 @@ export default create({
         state.scrollList.push(state.scrollList[0]);
         state.scrollList.shift();
         state.animate = false;
-      }, ~~(props.height / props.speed / 4) * 1000);
+      }, ~~((props.height / props.speed / 4) * 1000));
     };
 
     const startRoll = () => {
@@ -350,7 +332,7 @@ export default create({
     };
 
     onMounted(() => {
-      console.log(props.direction);
+      // console.log(props.direction);
       if (props.direction == 'vertical') {
         if (slots.default) {
           state.scrollList = [].concat(slots.default()[0].children as any);
@@ -358,7 +340,7 @@ export default create({
           state.scrollList = [].concat(props.list as any);
         }
 
-        console.log(state.scrollList);
+        // console.log(state.scrollList);
 
         setTimeout(() => {
           props.complexAm ? startRoll() : startRollEasy();

@@ -78,15 +78,7 @@ export default create({
       default: false
     }
   },
-  emits: [
-    'update:modelValue',
-    'change',
-    'blur',
-    'focus',
-    'reduce',
-    'add',
-    'overlimit'
-  ],
+  emits: ['update:modelValue', 'change', 'blur', 'focus', 'reduce', 'add', 'overlimit'],
   setup(props, { emit }) {
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -104,8 +96,8 @@ export default create({
     };
     const emitChange = (value: string | number, event: Event) => {
       let output_value: number | string = fixedDecimalPlaces(value);
-      emit('change', output_value, event);
       emit('update:modelValue', output_value, event);
+      emit('change', output_value, event);
     };
     const addAllow = (value = Number(props.modelValue)): boolean => {
       return value < Number(props.max) && !props.disabled;
@@ -119,7 +111,7 @@ export default create({
         let output_value = Number(props.modelValue) - Number(props.step);
         emitChange(output_value, event);
       } else {
-        emit('overlimit', event);
+        emit('overlimit', event, 'reduce');
       }
     };
     const add = (event: Event) => {
@@ -128,7 +120,7 @@ export default create({
         let output_value = Number(props.modelValue) + Number(props.step);
         emitChange(output_value, event);
       } else {
-        emit('overlimit', event);
+        emit('overlimit', event, 'add');
       }
     };
     const blur = (event: Event) => {

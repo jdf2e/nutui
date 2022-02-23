@@ -3,6 +3,7 @@
   display: inline-flex;
   align-items: center;
   font-size: $tag-font-size;
+  border-radius: $tag-default-border-radius;
   &--default {
     color: $tag-default-color;
     background: $tag-default-background-color;
@@ -34,7 +35,7 @@
   }
 
   &--round {
-    border-radius: 8px;
+    border-radius: $tag-round-border-radius;
   }
 
   &--mark {
