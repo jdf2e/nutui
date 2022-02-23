@@ -345,12 +345,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.test-calendar-wrapper {
-  display: flex;
-  width: 100%;
-  height: 560px;
-  overflow: hidden;
-}
 .wrapper {
   display: flex;
   padding: 0 40px;
@@ -363,7 +357,7 @@ export default {
     color: #fff;
     font-size: 12px;
     padding: 2px 8px;
-    border-radius: 10px;
+    border-radius: 4px;
     display: inline-block;
     height: 16px;
   }
@@ -401,7 +395,7 @@ export default {
       <span>{{ date.date.day <= 9 ? '0' + date.date.day : date.date.day }}</span>
     </template>
     <template v-slot:bottomInfo="date">
-      <span class="info">{{
+      <span class="info" style="fontSize:12px;lineHeight:14px">{{
         date.date ? (date.date.day == 10 ? '十' :  '') : ''
       }}</span>
     </template>
@@ -433,19 +427,14 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-.info {
-  font-size: 12px;
-  line-height: 14px;
-}
-</style>
+
 ```
 :::
 ### 平铺展示
 :::demo
 ```html
 <template>
-  <div class="test-calendar-wrapper">
+  <div class="test-calendar-wrapper" >
     <nut-calendar
         :poppable="false"
         :default-value="date"
@@ -480,6 +469,7 @@ export default {
   overflow: hidden;
 }
 </style>
+
 ```
 :::
 
@@ -498,12 +488,12 @@ export default {
 | default-value     | 默认值，日期选择 String 格式，区间选择 Array 格式 | String 、 Array | null            |
 | start-date        | 开始日期， 如果不限制开始日期传 null              | String          | 今天            |
 | end-date          | 结束日期，如果不限制结束日期传 null               | String          | 距离今天 365 天 |
-| show-today          | 结束日期，如果不限制结束日期传 null               | Boolean          | true |
+| show-today          | 是否展示今天标记               | Boolean          | true |
 | start-text         | 范围选择，开始信息文案               | String          | 开始 |
 | end-text         | 范围选择，结束信息文案               | String          | 结束 |
 | confirm-text          | 底部确认按钮文案               | String          | 确认 |
-| show-title          | 结束日期，如果不限制结束日期传 null               | Boolean          | true |
-| show-sub-title          | 结束日期，如果不限制结束日期传 null               | Boolean          | true |
+| show-title          | 是否在展示日历标题               | Boolean          | true |
+| show-sub-title          | 是否展示日期标题              | Boolean          | true |
 
 ### Events
 
@@ -519,7 +509,7 @@ export default {
 
 | 名称    | 说明         |
 |---------|--------------|
-| btn | 	自定义标题部分 |
+| btn | 	自定义日历标题下部，可用以添加自定义操作 |
 | day | 	日期信息 |
 | topInfo | 	日期顶部信息 |
 | bottomInfo | 	日期底部信息 |
