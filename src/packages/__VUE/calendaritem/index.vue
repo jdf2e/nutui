@@ -573,8 +573,6 @@ export default create({
     const mothsViewScroll = (e: any) => {
       var currentScrollTop = e.target.scrollTop;
       let current = Math.floor(currentScrollTop / state.avgHeight);
-      // console.log(state.monthsData);
-      // console.log(currentScrollTop, state.monthsNum, state.avgHeight, current);
       if (current == 0) {
         if (currentScrollTop >= state.monthsData[current + 1].cssScrollHeight) {
           current += 1;

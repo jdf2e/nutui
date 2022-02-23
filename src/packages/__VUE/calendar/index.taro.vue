@@ -190,7 +190,6 @@ export default create({
       () => props.visible,
       (value: boolean) => {
         show.value = value;
-        console.log('show.value', new Date().getTime());
       }
     );
 

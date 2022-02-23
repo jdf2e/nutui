@@ -449,7 +449,6 @@ export default create({
 
     // 初始化数据
     const initData = () => {
-      console.log('---init', new Date().getTime());
       // 初始化开始结束数据
       let propStartDate = props.startDate ? props.startDate : Utils.getDay(0);
       let propEndDate = props.endDate ? props.endDate : Utils.getDay(365);
@@ -529,16 +528,15 @@ export default create({
         chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
       }
 
-      // let lastItem = state.monthsData[state.monthsData.length - 1];
-      // let containerHeight = lastItem.cssHeight + lastItem.cssScrollHeight;
-      // if (months?.value && monthsPanel?.value && viewArea?.value) {
-      //   viewHeight.value = months.value.clientHeight;
-      //   monthsPanel.value.style.height = `${containerHeight}px`;
+      let lastItem = state.monthsData[state.monthsData.length - 1];
+      let containerHeight = lastItem.cssHeight + lastItem.cssScrollHeight;
+      if (months?.value && monthsPanel?.value && viewArea?.value) {
+        viewHeight.value = months.value.clientHeight;
+        monthsPanel.value.style.height = `${containerHeight}px`;
 
-      //   state.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
-      // }
-      // state.avgHeight = Math.floor(containerHeight / (monthsNum + 1));
-      console.log('init', new Date().getTime());
+        state.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
+      }
+      state.avgHeight = Math.floor(containerHeight / (monthsNum + 1));
     };
     const setDefaultRange = (monthsNum: number, current: number) => {
       let rangeArr: any[] = [];
@@ -595,12 +593,8 @@ export default create({
     };
 
     const mothsViewScroll = (e: any) => {
-      console.log('mothsViewScroll', e);
-      // console.log(e);
       var currentScrollTop = e.target.scrollTop;
       let current = Math.floor(currentScrollTop / state.avgHeight);
-      console.log(state.monthsData);
-      console.log(currentScrollTop, state.monthsNum, state.avgHeight, current);
       if (current == 0) {
         if (currentScrollTop >= state.monthsData[current + 1].cssScrollHeight) {
           current += 1;
@@ -636,7 +630,6 @@ export default create({
         setDefaultRange(state.monthsNum, current);
       }
       state.yearMonthTitle = state.monthsData[current].title;
-      console.log(new Date().getTime());
     };
     // 重新渲染
     const resetRender = () => {
@@ -646,18 +639,15 @@ export default create({
     };
     onMounted(() => {
       // 初始化数据
-      console.log('onMounted');
-      console.log(new Date().getTime());
       Taro.getSystemInfo({
         success(res) {
           let scale = 2;
           let screenWidth = res.screenWidth;
           scale = Number((screenWidth / 750).toFixed(3));
           scalePx.value = scale;
-          console.log('success', new Date().getTime());
+          initData();
         }
       });
-      initData();
     });
 
     //监听 默认值更改
