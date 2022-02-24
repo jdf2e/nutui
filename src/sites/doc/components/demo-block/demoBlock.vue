@@ -5,7 +5,7 @@
       <a class="list" :href="jumpHref1" target="_blank">
         <img
           class="online-icon"
-          src="https://img13.360buyimg.com/imagetools/jfs/t1/125518/28/24027/2723/6204ae85E8bf8b7e9/af2d55aabeb6bbb6.png"
+          src="https://img11.360buyimg.com/imagetools/jfs/t1/159023/13/28499/5084/620f4c48E244573d5/28bfddee9718336e.png"
         />
         <div class="online-tips">codesandbox</div>
       </a>
@@ -32,6 +32,7 @@ import { compressText, copyCodeHtml, decompressText } from './basedUtil';
 
 import { getParameters } from 'codesandbox/lib/api/define';
 import codesandboxPackage from './demoCodePackage.json'; // 引入josn文件
+import codesandboxtsconfig from './demoCodetsconfig.json'; // 引入ts文件
 
 export default {
   setup(props, ctx) {
@@ -61,6 +62,28 @@ import NutUI from "@nutui/nutui";
 import "@nutui/nutui/dist/style.css";
 createApp(App).use(NutUI).mount("#app");`;
 
+    const codesandboxHtml = `<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"><\/script>
+  </body>
+</html>`;
+
+    const codesandboxVite = `import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue()]
+});`;
+
     const onlineCode = ref(null);
     const sourceMainJs = compressText(sourceMainJsStr);
     const mainJs = ref(sourceMainJs);
@@ -71,17 +94,22 @@ createApp(App).use(NutUI).mount("#app");`;
     const jumpHref = ref(``);
     const jumpHref1 = ref(``);
     onMounted(() => {
-      console.log('codesandboxPackage', codesandboxPackage);
-      console.log('onlineCode', onlineCode.value.dataset);
       const sourceValue = decompressText(onlineCode.value.dataset.value);
-      console.log('sourceValue', sourceValue);
-
       const parameters = getParameters({
         files: {
           'package.json': {
             content: codesandboxPackage
           },
-          'src/main.js': {
+          'tsconfig.json': {
+            content: codesandboxtsconfig
+          },
+          'vite.config.ts': {
+            content: codesandboxVite
+          },
+          'index.html': {
+            content: codesandboxHtml
+          },
+          'src/main.ts': {
             content: MainJsStr
           },
           'src/App.vue': {

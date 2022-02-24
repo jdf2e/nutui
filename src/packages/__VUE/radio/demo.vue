@@ -87,7 +87,7 @@ export default createDemo({
       radioVal3: 1,
       radioVal4: 1,
       radioVal5: 1,
-      radioVal6: 1
+      radioVal6: '1'
     });
     const handleChange = (value: any) => {
       console.log(value);

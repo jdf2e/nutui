@@ -35,6 +35,7 @@ export default {
         return { value }
     }
 }
+</script>
 ```
 :::
 
@@ -53,6 +54,7 @@ export default {
         return { value }
     }
 }
+</script>
 ```
 :::
 
@@ -71,6 +73,7 @@ export default {
         return { value }
     }
 }
+</script>
 ```
 :::
 
@@ -89,6 +92,7 @@ export default {
         return { value }
     }
 }
+</script>
 ```
 :::
 
@@ -107,6 +111,7 @@ export default {
         return { value }
     }
 }
+</script>
 ```
 :::
 
@@ -125,6 +130,7 @@ export default {
         return { value }
     }
 }
+</script>
 ```
 :::
 
@@ -143,6 +149,7 @@ export default {
         return { value }
     }
 }
+</script>
 ```
 :::
 ### 绑定事件
@@ -164,6 +171,7 @@ export default {
     return { value,onChange }
     }
 }
+</script>
 ```
 :::
 
@@ -183,6 +191,7 @@ export default {
         return { value }
     }
 }
+</script>
 ```
 :::
 

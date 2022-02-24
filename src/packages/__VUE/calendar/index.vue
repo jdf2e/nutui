@@ -7,21 +7,43 @@
     :closeable="true"
     @click-overlay="closePopup"
     @click-close-icon="closePopup"
+    :destroy-on-close="true"
+    :style="{ height: '85vh' }"
   >
     <nut-calendar-item
+      v-if="visible"
       props
       ref="calendarRef"
       :type="type"
       :is-auto-back-fill="isAutoBackFill"
       :poppable="poppable"
       :title="title"
+      :confirm-text="confirmText"
+      :start-text="startText"
+      :end-text="endText"
       :default-value="defaultValue"
+      :show-today="showToday"
       :start-date="startDate"
       :end-date="endDate"
       @update="update"
       @close="close"
       @choose="choose"
+      @select="select"
+      :show-title="showTitle"
+      :show-sub-title="showSubTitle"
     >
+      <template v-slot:btn v-if="showTopBtn">
+        <slot name="btn"> </slot>
+      </template>
+      <template v-slot:day="date" v-if="dayInfo">
+        <slot name="day" :date="date.date"> </slot>
+      </template>
+      <template v-slot:topInfo="date" v-if="topInfo">
+        <slot name="topInfo" :date="date.date"> </slot>
+      </template>
+      <template v-slot:bottomInfo="date" v-if="bottomInfo">
+        <slot name="bottomInfo" :date="date.date"> </slot>
+      </template>
     </nut-calendar-item>
   </nut-popup>
   <nut-calendar-item
@@ -30,16 +52,34 @@
     :is-auto-back-fill="isAutoBackFill"
     :poppable="poppable"
     :title="title"
+    :confirm-text="confirmText"
+    :start-text="startText"
+    :end-text="endText"
     :default-value="defaultValue"
     :start-date="startDate"
     :end-date="endDate"
     @close="close"
     @choose="choose"
+    @select="select"
+    :show-title="showTitle"
+    :show-sub-title="showSubTitle"
   >
+    <template v-slot:btn v-if="showTopBtn">
+      <slot name="btn"> </slot>
+    </template>
+    <template v-slot:day="date" v-if="dayInfo">
+      <slot name="day" :date="date.date"> </slot>
+    </template>
+    <template v-slot:topInfo="date" v-if="topInfo">
+      <slot name="topInfo" :date="date.date"> </slot>
+    </template>
+    <template v-slot:bottomInfo="date" v-if="bottomInfo">
+      <slot name="bottomInfo" :date="date.date"> </slot>
+    </template>
   </nut-calendar-item>
 </template>
 <script lang="ts">
-import { PropType, ref } from 'vue';
+import { PropType, ref, computed } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('calendar');
 import CalendarItem from '../calendaritem/index.vue';
@@ -62,16 +102,40 @@ export default create({
       type: Boolean,
       default: true
     },
+    showTitle: {
+      type: Boolean,
+      default: true
+    },
+    showSubTitle: {
+      type: Boolean,
+      default: true
+    },
     visible: {
       type: Boolean,
       default: false
+    },
+    showToday: {
+      type: Boolean,
+      default: true
     },
     title: {
       type: String,
       default: '日历选择'
     },
+    confirmText: {
+      type: String,
+      default: '确认'
+    },
+    startText: {
+      type: String,
+      default: '开始'
+    },
+    endText: {
+      type: String,
+      default: '结束'
+    },
     defaultValue: {
-      type: String as PropType<InputDate>
+      type: [String, Array]
     },
     startDate: {
       type: String,
@@ -82,8 +146,20 @@ export default create({
       default: Utils.getDay(365)
     }
   },
-  emits: ['choose', 'close', 'update:visible'],
-  setup(props, { emit }) {
+  emits: ['choose', 'close', 'update:visible', 'select'],
+  setup(props, { emit, slots }) {
+    const showTopBtn = computed(() => {
+      return slots.btn;
+    });
+    const topInfo = computed(() => {
+      return slots.topInfo;
+    });
+    const dayInfo = computed(() => {
+      return slots.day;
+    });
+    const bottomInfo = computed(() => {
+      return slots.bottomInfo;
+    });
     // element refs
     const calendarRef = ref<null | HTMLElement>(null);
 
@@ -101,6 +177,10 @@ export default create({
       close();
       emit('choose', param);
     };
+    const select = (param: string) => {
+      // close();
+      emit('select', param);
+    };
 
     const closePopup = () => {
       close();
@@ -111,7 +191,12 @@ export default create({
       update,
       close,
       choose,
-      calendarRef
+      select,
+      calendarRef,
+      showTopBtn,
+      topInfo,
+      dayInfo,
+      bottomInfo
     };
   }
 });
