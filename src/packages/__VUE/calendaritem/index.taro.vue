@@ -18,10 +18,16 @@
       </view>
     </view>
     <!-- content-->
-    <view class="nut-calendar-content" ref="months" @scroll="mothsViewScroll">
+    <scroll-view
+      :scroll-top="scrollTop"
+      :scroll-y="true"
+      class="nut-calendar-content"
+      ref="months"
+      @scroll="mothsViewScroll"
+    >
       <view class="calendar-months-panel" ref="monthsPanel">
         <view class="viewArea" ref="viewArea" :style="{ transform: `translateY(${translateY}px)` }">
-          <view class="calendar-month" v-for="(month, index) of compConthsData" :key="index">
+          <view class="calendar-month" v-for="(month, index) of compConthsDatas" :key="index" :id="month.title">
             <view class="calendar-month-title">{{ month.title }}</view>
             <view class="calendar-month-con">
               <view class="calendar-month-item" :class="type === 'range' ? 'month-item-range' : ''">
@@ -57,7 +63,7 @@
           </view>
         </view>
       </view>
-    </view>
+    </scroll-view>
     <!-- footer-->
     <view class="nut-calendar-footer" v-if="poppable && !isAutoBackFill">
       <view class="calendar-confirm-btn" @click="confirm">{{ confirmText }}</view>
@@ -65,11 +71,13 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, reactive, ref, watch, toRefs, computed } from 'vue';
+import { PropType, reactive, ref, watch, toRefs, computed, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('calendar-item');
+import Taro from '@tarojs/taro';
 import Utils from '../../utils/date';
 import requestAniFrame from '../../utils/raf';
+
 type InputDate = string | string[];
 interface CalendarState {
   yearMonthTitle: string;
@@ -93,6 +101,8 @@ interface CalendarState {
   avgHeight: number;
   monthsNum: number;
   defaultRange: any[];
+  scrollTop: number;
+  compConthsDatas: any[];
 }
 interface Day {
   day: string | number;
@@ -171,7 +181,9 @@ export default create({
     const monthsPanel = ref<null | HTMLElement>(null);
     const weeksPanel = ref<null | HTMLElement>(null);
     const viewArea = ref<null | HTMLElement>(null);
+    const scalePx = ref(2);
     const viewHeight = ref(0);
+
     const compConthsData = computed(() => {
       return state.monthsData.slice(state.defaultRange[0], state.defaultRange[1]);
     });
@@ -184,10 +196,12 @@ export default create({
     const bottomInfo = computed(() => {
       return slots.bottomInfo;
     });
-
+    // state
     const state: CalendarState = reactive({
       yearMonthTitle: '',
-      defaultRange: [],
+      defaultRange: [0, 1],
+      compConthsDatas: [],
+
       currDate: '',
       propStartDate: '',
       propEndDate: '',
@@ -213,6 +227,7 @@ export default create({
       timer: 0,
       currentIndex: 0,
       avgHeight: 0,
+      scrollTop: 0,
       monthsNum: 0
     });
     // 日期转化成数组
@@ -243,8 +258,8 @@ export default create({
         ) {
           return `${state.dayPrefix}-active`;
         } else if (
-          (state.propStartDate && Utils.compareDate(currDate, state.propStartDate)) ||
-          (state.propEndDate && Utils.compareDate(state.propEndDate, currDate))
+          (props.startDate && Utils.compareDate(currDate, props.startDate)) ||
+          (props.endDate && Utils.compareDate(props.endDate, currDate))
         ) {
           return `${state.dayPrefix}-disabled`;
         } else if (
@@ -262,7 +277,7 @@ export default create({
         return `${state.dayPrefix}-disabled`;
       }
     };
-    // 确认选择时触发
+
     const confirm = () => {
       if ((state.isRange && state.chooseData.length == 2) || !state.isRange) {
         emit('choose', state.chooseData);
@@ -276,6 +291,7 @@ export default create({
     const chooseDay = (day: Day, month: MonthInfo, isFirst: boolean, isRange?: boolean) => {
       if (getClass(day, month, isRange) != `${state.dayPrefix}-disabled`) {
         let days = [...month.curData];
+        // days = isRange ? days.splice(3) : days.splice(0, 3);
         days[2] = typeof day.day == 'number' ? Utils.getNumTwoBit(day.day) : day.day;
         days[3] = `${days[0]}-${days[1]}-${days[2]}`;
         days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
@@ -302,6 +318,7 @@ export default create({
             }
           }
         }
+
         if (!isFirst) {
           // 点击日期 触发
           emit('select', state.chooseData);
@@ -390,7 +407,11 @@ export default create({
           ...(getDaysStatus(currMonthDays, 'curr', title) as Day[])
         ]
       };
-      monthInfo.cssHeight = 39 + (monthInfo.monthData.length > 35 ? 384 : 320);
+
+      let titleHeight = Math.floor(46 * scalePx.value) + Math.floor(16 * scalePx.value) * 2;
+      let itemHeight = Math.floor(128 * scalePx.value);
+      monthInfo.cssHeight = titleHeight + (monthInfo.monthData.length > 35 ? itemHeight * 6 : itemHeight * 5);
+
       let cssScrollHeight = 0;
 
       if (state.monthsData.length > 0) {
@@ -442,7 +463,6 @@ export default create({
       } else {
         state.currDate = state.isRange ? [...props.defaultValue] : props.defaultValue;
       }
-
       // 判断时间范围内存在多少个月
       const startDate = {
         year: Number(state.startData[0]),
@@ -464,7 +484,6 @@ export default create({
       do {
         getMonth(getCurrData('next'), 'next');
       } while (i++ < monthsNum);
-
       state.monthsNum = monthsNum;
 
       // 日期转化为数组，限制初始日期。判断时间范围
@@ -484,7 +503,7 @@ export default create({
         }
         state.defaultData = [...splitDate(state.currDate as string)];
       }
-      // 设置默认可见区域
+
       let current = 0;
       let lastCurrent = 0;
       state.monthsData.forEach((item, index) => {
@@ -511,28 +530,31 @@ export default create({
 
       let lastItem = state.monthsData[state.monthsData.length - 1];
       let containerHeight = lastItem.cssHeight + lastItem.cssScrollHeight;
-      requestAniFrame(() => {
-        // 初始化 日历位置
-        if (months?.value && monthsPanel?.value && viewArea?.value) {
-          viewHeight.value = months.value.clientHeight;
-          monthsPanel.value.style.height = `${containerHeight}px`;
-          months.value.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
-        }
-      });
+      if (months?.value && monthsPanel?.value && viewArea?.value) {
+        viewHeight.value = months.value.clientHeight;
+        monthsPanel.value.style.height = `${containerHeight}px`;
+
+        state.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
+      }
       state.avgHeight = Math.floor(containerHeight / (monthsNum + 1));
     };
-    // 设置当前可见月份
     const setDefaultRange = (monthsNum: number, current: number) => {
+      let rangeArr: any[] = [];
       if (monthsNum >= 3) {
         if (current > 0 && current < monthsNum) {
-          state.defaultRange = [current - 1, current + 3];
+          rangeArr = [current - 1, current + 3];
         } else if (current == 0) {
-          state.defaultRange = [current, current + 4];
+          rangeArr = [current, current + 4];
         } else if (current == monthsNum) {
-          state.defaultRange = [current - 2, current + 2];
+          rangeArr = [current - 2, current + 2];
         }
       } else {
-        state.defaultRange = [0, monthsNum + 2];
+        rangeArr = [0, monthsNum + 1];
+      }
+      if (JSON.stringify(state.defaultRange) !== JSON.stringify(rangeArr)) {
+        state.defaultRange[0] = rangeArr[0];
+        state.defaultRange[1] = rangeArr[1];
+        state.compConthsDatas = state.monthsData.slice(rangeArr[0], rangeArr[1]);
       }
       let defaultScrollTop = state.monthsData[state.defaultRange[0]].cssScrollHeight;
       state.translateY = defaultScrollTop;
@@ -564,12 +586,12 @@ export default create({
         return Utils.isEqual(state.currDate[0], state.currDate[1]);
       }
     };
-    // 是否有 当前日期
+    // 是否有是当前日期
     const isCurrDay = (month: any, day: string) => {
       const date = `${month.curData[0]}-${month.curData[1]}-${day}`;
       return Utils.isEqual(date, Utils.date2Str(new Date()));
     };
-    // 滚动处理事件
+
     const mothsViewScroll = (e: any) => {
       var currentScrollTop = e.target.scrollTop;
       let current = Math.floor(currentScrollTop / state.avgHeight);
@@ -602,24 +624,33 @@ export default create({
           current -= 1;
         }
       }
+
       if (state.currentIndex !== current) {
         state.currentIndex = current;
         setDefaultRange(state.monthsNum, current);
       }
       state.yearMonthTitle = state.monthsData[current].title;
     };
-
     // 重新渲染
     const resetRender = () => {
       state.chooseData.splice(0);
       state.monthsData.splice(0);
       initData();
     };
+    onMounted(() => {
+      // 初始化数据
+      Taro.getSystemInfo({
+        success(res) {
+          let scale = 2;
+          let screenWidth = res.screenWidth;
+          scale = Number((screenWidth / 750).toFixed(3));
+          scalePx.value = scale;
+          initData();
+        }
+      });
+    });
 
-    // 初始化数据
-    initData();
-
-    // //监听 默认值更改
+    //监听 默认值更改
     watch(
       () => props.defaultValue,
       (val) => {
@@ -633,7 +664,6 @@ export default create({
 
     return {
       weeks,
-      compConthsData,
       showTopBtn,
       topInfo,
       bottomInfo,
