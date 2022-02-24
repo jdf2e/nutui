@@ -95,7 +95,6 @@ export default defineConfig({
     const jumpHref1 = ref(``);
     onMounted(() => {
       const sourceValue = decompressText(onlineCode.value.dataset.value);
-
       const parameters = getParameters({
         files: {
           'package.json': {
