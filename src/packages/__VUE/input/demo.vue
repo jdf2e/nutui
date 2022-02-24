@@ -2,6 +2,7 @@
   <div class="demo full">
     <h2>基础用法</h2>
     <nut-input v-model="state.val0" @change="change" @focus="focus" @blur="blur" label="文本(异步)" />
+    <nut-input placeholder="请输入文本" @change="change" v-model="state.val1" @clear="clear" />
     <nut-input
       placeholder="请输入文本"
       @change="change"
@@ -17,8 +18,8 @@
     <nut-input v-model="state.val4" @change="change" max-length="7" label="限制7" />
     <h2>自定义类型</h2>
     <nut-input v-model="state.val5" @change="change" type="password" label="密码" />
-    <nut-input v-model="state.val6" @change="change" type="number" label="整数" />
-    <nut-input v-model="state.val7" @change="change" type="digit" placeholder="支持小数点的输入" label="数字" />
+    <nut-input v-model="state.val6" @change="change" type="number" placeholder="支持小数点的输入" label="数字" />
+    <nut-input v-model="state.val7" @change="change" type="digit" label="整数" />
     <h2>无边框</h2>
     <nut-input v-model="state.val8" @change="change" :hasBorder="false" label="无边框" />
     <nut-input v-model="state.val9" @change="change" :hasBorder="false" label="无边框" />
