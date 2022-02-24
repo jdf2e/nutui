@@ -35,12 +35,6 @@
           "pathName": "feedback/pages/collapse/index",
           "query": "",
           "scene": null
-        },
-        {
-          "name": "input/index",
-          "pathName": "dentry/pages/input/index",
-          "query": "",
-          "scene": null
         }
       ]
     }
