@@ -71,10 +71,10 @@ createApp(App).use(NutUI).mount("#app");`;
     const jumpHref = ref(``);
     const jumpHref1 = ref(``);
     onMounted(() => {
-      console.log('codesandboxPackage', codesandboxPackage);
-      console.log('onlineCode', onlineCode.value.dataset);
+      // console.log('codesandboxPackage', codesandboxPackage);
+      // console.log('onlineCode', onlineCode.value.dataset);
       const sourceValue = decompressText(onlineCode.value.dataset.value);
-      console.log('sourceValue', sourceValue);
+      // console.log('sourceValue', sourceValue);
 
       const parameters = getParameters({
         files: {
