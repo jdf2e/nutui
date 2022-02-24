@@ -38,6 +38,7 @@ export default {
     }
   }
 }
+</script>
 ```
 :::
 ## 通知类型
@@ -76,6 +77,7 @@ export default {
     }
   }
 }
+</script>
 ```
 :::
 ## 自定义
@@ -106,6 +108,7 @@ export default {
     };
   }
 }
+</script>
 ```
 :::
     
