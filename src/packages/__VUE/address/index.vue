@@ -9,7 +9,11 @@
     <view class="nut-address">
       <view class="nut-address__header">
         <view class="arrow-back" @click="switchModule">
-          <nut-icon :name="backBtnIcon" color="#cccccc" v-show="privateType == 'custom' && backBtnIcon"></nut-icon>
+          <nut-icon
+            :name="backBtnIcon"
+            color="#cccccc"
+            v-show="type == 'exist' && privateType == 'custom' && backBtnIcon"
+          ></nut-icon>
         </view>
 
         <view class="nut-address__header__title">

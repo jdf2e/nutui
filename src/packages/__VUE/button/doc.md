@@ -130,6 +130,16 @@ app.use(Button);
 
 :::
 
+#### 自定义图标
+
+参照 `Icon` 组件说明中的自定义图标，其中 `icon-font-class-name` 对应 Icon 组件的 `font-class-name`，`icon-class-prefix` 对应 Icon 组件的 `class-prefix`。
+
+```html
+<template>
+  <nut-button shape="square" plain type="primary" icon-font-class-name="iconfont" icon-class-prefix="icon" icon="close"></nut-button>
+</template>
+```
+
 ### 按钮尺寸
 
 支持 `large`、`normal`、`small`、`mini` 四种尺寸，默认为 `normal`。
@@ -190,6 +200,8 @@ app.use(Button);
 | disabled | 是否禁用按钮                                                 | Boolean | `false`   |
 | block    | 是否为块级元素                                               | Boolean | `false`   |
 | icon     | 按钮图标，同 Icon 组件 name 属性                             | String  | -         |
+| icon-font-class-name | 自定义 icon 字体基础类名                         | String | `nutui-iconfont` |
+| icon-class-prefix    | 自定义 icon 类名前缀，用于使用自定义图标           | String | `nut-icon`       |
 | loading  | 按钮 loading 状态                                            | Boolean | `false`   |
 
 ### Events
