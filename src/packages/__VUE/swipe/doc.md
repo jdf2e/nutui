@@ -114,6 +114,7 @@ export default {
         return { checked, changSwitch, refSwipe, open, close };
     }
 }
+</script>
 ```
 :::
 
@@ -147,6 +148,7 @@ export default {
         return { number };
     }
 }
+</script>
 ```
 :::
 

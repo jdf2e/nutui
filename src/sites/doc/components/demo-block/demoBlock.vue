@@ -32,6 +32,7 @@ import { compressText, copyCodeHtml, decompressText } from './basedUtil';
 
 import { getParameters } from 'codesandbox/lib/api/define';
 import codesandboxPackage from './demoCodePackage.json'; // 引入josn文件
+import codesandboxtsconfig from './demoCodetsconfig.json'; // 引入ts文件
 
 export default {
   setup(props, ctx) {
@@ -61,6 +62,28 @@ import NutUI from "@nutui/nutui";
 import "@nutui/nutui/dist/style.css";
 createApp(App).use(NutUI).mount("#app");`;
 
+    const codesandboxHtml = `<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"><\/script>
+  </body>
+</html>`;
+
+    const codesandboxVite = `import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue()]
+});`;
+
     const onlineCode = ref(null);
     const sourceMainJs = compressText(sourceMainJsStr);
     const mainJs = ref(sourceMainJs);
@@ -81,7 +104,16 @@ createApp(App).use(NutUI).mount("#app");`;
           'package.json': {
             content: codesandboxPackage
           },
-          'src/main.js': {
+          'tsconfig.json': {
+            content: codesandboxtsconfig
+          },
+          'vite.config.ts': {
+            content: codesandboxVite
+          },
+          'index.html': {
+            content: codesandboxHtml
+          },
+          'src/main.ts': {
             content: MainJsStr
           },
           'src/App.vue': {
