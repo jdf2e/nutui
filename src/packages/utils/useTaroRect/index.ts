@@ -47,7 +47,7 @@ export const useTaroRect = (elementRef: (Element | Window | any) | Ref<Element |
       });
     } else {
       const query = Taro.createSelectorQuery();
-      query.select(`#${(element as any).id}`).boundingClientRect();
+      query.select(`#${(element as any).id}`) && query.select(`#${(element as any).id}`).boundingClientRect();
       query.exec(function (res: any) {
         resolve(res[0]);
       });
