@@ -13,16 +13,16 @@
         :pagination-visible="paginationVisible"
         :pagination-color="paginationColor"
       >
-        <!-- <nut-swiper-item v-for="(item, index) in videos" :key="index">
+        <nut-swiper-item v-for="(item, index) in videos" :key="index">
           <nut-video :source="item.source" :options="item.options"></nut-video>
-        </nut-swiper-item> -->
+        </nut-swiper-item>
         <nut-swiper-item v-for="(item, index) in images" :key="index">
           <img :src="item.src" class="nut-imagepreview-img" />
         </nut-swiper-item>
       </nut-swiper>
     </view>
-    <!-- <view class="nut-imagepreview-index"> {{ active }} / {{ images.length + videos.length }} </view> -->
-    <view class="nut-imagepreview-index"> {{ active }} / {{ images.length }} </view>
+    <view class="nut-imagepreview-index"> {{ active }} / {{ images.length + videos.length }} </view>
+    <!-- <view class="nut-imagepreview-index"> {{ active }} / {{ images.length }} </view> -->
   </nut-popup>
 </template>
 <script lang="ts">
@@ -44,10 +44,10 @@ export default create({
       type: Array,
       default: () => []
     },
-    // videos: {
-    //   type: Array,
-    //   default: () => []
-    // },
+    videos: {
+      type: Array,
+      default: () => []
+    },
     contentClose: {
       type: Boolean,
       default: false
@@ -238,8 +238,8 @@ export default create({
       // 初始化页码
       state.active = props.initNo;
       state.showPop = props.show;
-      // state.maxNo = props.images.length + props.videos.length;
-      state.maxNo = props.images.length;
+      state.maxNo = props.images.length + props.videos.length;
+      // state.maxNo = props.images.length;
     });
 
     return {
