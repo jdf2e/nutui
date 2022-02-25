@@ -1,0 +1,4 @@
+import Demo from '../demo.vue';
+import { snapshotDemo } from '../../../utils/test/demo';
+
+snapshotDemo(Demo);

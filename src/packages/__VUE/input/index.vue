@@ -12,6 +12,7 @@
       :disabled="disabled"
       :readonly="readonly"
       :value="modelValue"
+      :inputmode="inputmode"
       @input="valueChange"
       @focus="valueFocus"
       @blur="valueBlur"
@@ -99,6 +100,10 @@ export default create({
       };
     });
 
+    const inputmode = computed(() => {
+      return props.type === 'digit' ? 'decimal' : props.type === 'number' ? 'numeric' : 'text';
+    });
+
     const styles = computed(() => {
       return {
         textAlign: props.textAlign
@@ -152,6 +157,7 @@ export default create({
       active,
       classes,
       styles,
+      inputmode,
       valueChange,
       valueFocus,
       valueBlur,

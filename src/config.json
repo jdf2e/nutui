@@ -197,7 +197,19 @@
           "taro": false,
           "tarodoc": true,
           "author": "zongyue3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Sticky",
+          "cType": "布局组件",
+          "cName": "粘性布局",
+          "type": "component",
+          "desc": "当组件在屏幕范围内时，会按照正常的布局排列，当组件滚出屏幕范围时，始终会固定在距离屏幕固定的距离处",
+          "show": true,
+          "tarodoc": false,
+          "author": "szg2008"
         }
+        
       ]
     },
     {
@@ -381,7 +393,6 @@
           "version": "3.0.0",
           "name": "Swiper",
           "taro": true,
-          "tarodoc": true,
           "sort": 6,
           "cName": "轮播",
           "type": "component",
@@ -479,6 +490,28 @@
           "sort": 24,
           "show": true,
           "author": "wujia8"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Audio",
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "cName": "音频播放器",
+          "desc": "音频播放器",
+          "sort": 25,
+          "show": true,
+          "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "AudioOperate",
+          "type": "component",
+          "cName": "音频操作按钮",
+          "desc": "音频操作按钮",
+          "sort": 26,
+          "show": false,
+          "author": "yangxiaolu"
         }
       ]
     },
