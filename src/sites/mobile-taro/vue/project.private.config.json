@@ -35,6 +35,18 @@
           "pathName": "feedback/pages/collapse/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "feedback/pages/progress/index",
+          "pathName": "feedback/pages/progress/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "feedback/pages/swiper/index",
+          "pathName": "feedback/pages/swiper/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

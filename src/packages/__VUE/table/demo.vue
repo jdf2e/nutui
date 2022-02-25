@@ -192,7 +192,7 @@ export default createDemo({
                 size: 'small',
                 type: 'primary'
               },
-              'Hello'
+              () => h('div', {}, 'Hello')
             );
           }
         },
@@ -218,7 +218,7 @@ export default createDemo({
                   window.open('https://www.jd.com');
                 }
               },
-              '跳转到京东'
+              () => h('div', {}, '跳转到京东')
             );
           }
         }
