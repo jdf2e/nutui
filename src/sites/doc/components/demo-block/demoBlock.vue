@@ -2,13 +2,15 @@
   <div class="online-code" ref="onlineCode">
     <slot></slot>
     <div class="online-part">
-      <a class="list" :href="jumpHref1" target="_blank">
-        <img
-          class="online-icon"
-          src="https://img11.360buyimg.com/imagetools/jfs/t1/159023/13/28499/5084/620f4c48E244573d5/28bfddee9718336e.png"
-        />
-        <div class="online-tips">codesandbox</div>
-      </a>
+      <template v-if="codeType === 'vue'">
+        <a class="list" :href="jumpHref1" target="_blank">
+          <img
+            class="online-icon"
+            src="https://img11.360buyimg.com/imagetools/jfs/t1/159023/13/28499/5084/620f4c48E244573d5/28bfddee9718336e.png"
+          />
+          <div class="online-tips">codesandbox</div>
+        </a>
+      </template>
       <a class="list" :href="jumpHref" target="_blank">
         <img
           class="online-icon"
@@ -33,6 +35,7 @@ import { compressText, copyCodeHtml, decompressText } from './basedUtil';
 import { getParameters } from 'codesandbox/lib/api/define';
 import codesandboxPackage from './demoCodePackage.json'; // 引入josn文件
 import codesandboxtsconfig from './demoCodetsconfig.json'; // 引入ts文件
+import codesandboxNode from './demoCodetsconfig.json'; // 引入ts文件
 
 export default {
   setup(props, ctx) {
@@ -85,6 +88,7 @@ export default defineConfig({
 });`;
 
     const onlineCode = ref(null);
+    const codeType = ref(``);
     const sourceMainJs = compressText(sourceMainJsStr);
     const mainJs = ref(sourceMainJs);
 
@@ -95,6 +99,7 @@ export default defineConfig({
     const jumpHref1 = ref(``);
     onMounted(() => {
       const sourceValue = decompressText(onlineCode.value.dataset.value);
+      codeType.value = onlineCode.value.dataset.type;
 
       const parameters = getParameters({
         files: {
@@ -103,6 +108,9 @@ export default defineConfig({
           },
           'tsconfig.json': {
             content: codesandboxtsconfig
+          },
+          'tsconfig.node.json': {
+            content: codesandboxNode
           },
           'vite.config.ts': {
             content: codesandboxVite
@@ -119,10 +127,13 @@ export default defineConfig({
         }
       });
 
-      if (onlineCode.value.dataset.type === 'react') {
+      // const query = 'resolutionWidth=414&resolutionHeight=736';
+      const query = 'file=/src/App.vue';
+
+      if (codeType === 'react') {
         jumpHref.value = `https://codehouse.jd.com/?source=share&type=react&mainJs=${mainReactJs.value}&appValue=${onlineCode.value.dataset.value}&scssValue=`;
       } else {
-        jumpHref1.value = `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}`;
+        jumpHref1.value = `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}&query=${query}&resolutionHeight=736`;
         jumpHref.value = `https://codehouse.jd.com/?source=share&type=vue&mainJs=${mainJs.value}&appValue=${onlineCode.value.dataset.value}&scssValue=`;
       }
     });
@@ -136,7 +147,8 @@ export default defineConfig({
       jumpHref,
       jumpHref1,
       onlineCode,
-      copyCode
+      copyCode,
+      codeType
     };
   }
 };
