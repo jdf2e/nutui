@@ -14,10 +14,27 @@
       custom-address-title="请选择所在地区"
     ></nut-address>
 
+    <h2>选中省市区</h2>
+    <nut-cell title="选择地址" :desc="six" is-link @click="showSelected"></nut-cell>
+
+    <nut-address
+      v-model="value"
+      v-model:visible="select"
+      :province="province"
+      :city="city"
+      :country="country"
+      :town="town"
+      @change="(cal) => onChange(cal, 'select')"
+      @close="close6"
+      custom-address-title="请选择所在地区"
+      :columns-placeholder="placeholder"
+    ></nut-address>
+
     <h2>选择自定义地址2</h2>
     <nut-cell title="选择地址" :desc="five" is-link @click="showAddress2"></nut-cell>
 
     <nut-address
+      v-model="value2"
       v-model:visible="normal2"
       type="custom2"
       :province="province"
@@ -27,6 +44,7 @@
       height="270px"
       @change="(cal) => onChange(cal, 'normal2')"
       @close="close5"
+      :columns-placeholder="placeholder"
       custom-address-title="请选择所在地区"
     ></nut-address>
 
@@ -143,12 +161,17 @@ export default createDemo({
       town: []
     });
 
+    const placeholder = ref(['请选择省', '请选择市', '请选择县']);
+    const value = ref([1, 7, 3]);
+    const value2 = ref([1, 7, 3]);
+
     const showPopup = reactive({
       normal: false,
       normal2: false,
       exist: false,
       customImg: false,
-      other: false
+      other: false,
+      select: false
     });
 
     const icon = reactive({
@@ -199,7 +222,8 @@ export default createDemo({
       two: '请选择地址',
       three: '请选择地址',
       four: '请选择地址',
-      five: '请选择地址'
+      five: '北京朝阳区八里庄街道',
+      six: '北京朝阳区八里庄街道'
     });
 
     const showAddress = () => {
@@ -208,6 +232,10 @@ export default createDemo({
 
     const showAddress2 = () => {
       showPopup.normal2 = !showPopup.normal2;
+    };
+
+    const showSelected = () => {
+      showPopup.select = !showPopup.select;
     };
 
     const onChange = (cal: CalBack, tag: string) => {
@@ -222,8 +250,13 @@ export default createDemo({
     };
 
     const close5 = (val: CalResult) => {
-      console.log(val);
       text.five = val.data.addressStr;
+      value2.value = [val.data.province.id, val.data.city.id, val.data.country.id];
+    };
+
+    const close6 = (val: CalResult) => {
+      text.six = val.data.addressStr;
+      value.value = [val.data.province.id, val.data.city.id, val.data.country.id];
     };
 
     const showAddressExist = () => {
@@ -284,6 +317,8 @@ export default createDemo({
     };
 
     return {
+      value,
+      value2,
       showAddress,
       showAddress2,
       showPopup,
@@ -292,7 +327,9 @@ export default createDemo({
       showAddressExist,
       close2,
       close5,
+      close6,
       selected,
+      showSelected,
       existAddress,
       showAddressOther,
       showCustomImg,
@@ -300,6 +337,7 @@ export default createDemo({
       close4,
       switchModule,
       closeMask,
+      placeholder,
       ...toRefs(icon),
       ...toRefs(text),
       ...toRefs(showPopup),

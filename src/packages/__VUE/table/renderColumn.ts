@@ -4,6 +4,6 @@ export default {
     return () => h(`view`, {}, props.slots());
   },
   props: {
-    slots: Object
+    slots: Function
   }
 };
