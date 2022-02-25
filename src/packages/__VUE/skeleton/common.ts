@@ -79,7 +79,7 @@ export const component = {
 
     const getStyle = (): CSSProperties => {
       const style: CSSProperties = {};
-      if (avatarSize?.value) {
+      if (avatarSize.value) {
         return {
           width: avatarSize.value,
           height: avatarSize.value
