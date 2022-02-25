@@ -92,7 +92,7 @@ export const component = {
     };
 
     onMounted(() => {
-      console.log('row', props.row);
+      // console.log('row', props.row);
     });
 
     return {

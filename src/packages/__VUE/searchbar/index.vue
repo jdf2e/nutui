@@ -15,7 +15,6 @@
             :maxlength="maxLength"
             :placeholder="placeholder"
             :value="modelValue"
-            :enterkeyhint="done"
             @input="valueChange"
             @focus="valueFocus"
             @blur="valueBlur"
