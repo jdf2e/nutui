@@ -1,11 +1,11 @@
 import { config, mount } from '@vue/test-utils';
 import Cell from '../index.vue';
-import NutIcon from '../../icon/index.vue';
+import Icon from '../../icon/index.vue';
 import { nextTick } from 'vue';
 
 beforeAll(() => {
   config.global.components = {
-    NutIcon
+    [Icon.name]: Icon
   };
 });
 
