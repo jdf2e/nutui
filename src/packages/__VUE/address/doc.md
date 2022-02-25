@@ -90,6 +90,80 @@ app.use(Elevator);
 ```
 :::
 
+### 选择省市区
+
+如果想选中某个省市区，需要在 model-value 中按照 province、city、country、town 的顺序配置想要展示的地区 id 值，并且保证有能查询到对应的省市区数据即可。
+
+:::demo
+```html
+<template>
+<nut-cell title="选择地址" :desc="text" is-link @click="showAddress"></nut-cell>
+<nut-address
+    v-model="value"
+    v-model:visible="showPopup"
+    :province="province"
+    :city="city"
+    :country="country"
+    :town="town"
+    @change="onChange"
+    @close="close"
+    custom-address-title="请选择所在地区"
+    :columns-placeholder="placeholder"
+></nut-address>
+</template>
+<script>
+  import { ref,reactive,toRefs } from 'vue';
+  export default {
+    setup() {
+        const showPopup = ref(false);
+        const address = reactive({
+          province:[
+            { id: 1, name: '北京' },
+            { id: 2, name: '广西' },
+            { id: 3, name: '江西' },
+            { id: 4, name: '四川' }
+          ],
+          city:[
+            { id: 7, name: '朝阳区' },
+            { id: 8, name: '崇文区' },
+            { id: 9, name: '昌平区' },
+            { id: 6, name: '石景山区' }
+          ],
+          country:[
+            { id: 3, name: '八里庄街道' },
+            { id: 9, name: '北苑' },
+            { id: 4, name: '常营乡' }
+          ],
+          town:[]
+        })
+
+        const text = ref('北京朝阳区八里庄街道')
+        const value = ref([1, 7, 3]);
+
+        const showAddress = () => {
+          showPopup.value = !showPopup.value;
+        };
+
+        const onChange = (cal) => {
+          const name = address[cal.next]
+          if (name.length < 1) {
+            showPopup.value = false;
+          }
+        };
+        const close = val => {
+          console.log(val);
+          text.value = val.data.addressStr;
+          value.value = [val.data.province.id, val.data.city.id, val.data.country.id];
+        };
+
+        return { showPopup, text, showAddress, onChange, close, value, ...toRefs(address) };
+    }
+  }
+</script>
+
+```
+:::
+
 ### 选择自定义地址2
 
 :::demo
@@ -136,7 +210,7 @@ app.use(Elevator);
           town:[]
         })
 
-        const text = ref('请选择地址')
+        const text = ref('北京朝阳区八里庄街道')
 
         const showAddress = () => {
           showPopup.value = !showPopup.value;
@@ -473,6 +547,7 @@ app.use(Elevator);
 | custom-address-title  | 自定义地址选择文案，type='custom' 时生效 | String | '请选择所在地区'
 | exist-address-title| 已有地址文案 ，type=‘exist’ 时生效| String | '配送至'
 | custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| String | '选择其他地址'
+| columns-placeholder | 列提示文字 | String|Array | '请选择'
 
 
   * provinceName 省的名字

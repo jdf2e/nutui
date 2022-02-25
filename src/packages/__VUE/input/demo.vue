@@ -58,7 +58,6 @@ export default createDemo({
     const clear = (value: string | number) => {
       console.log('clear:', value);
     };
-
     return {
       state,
       change,

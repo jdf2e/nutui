@@ -7,7 +7,7 @@
 <script lang="ts">
 import { computed, reactive, inject, getCurrentInstance, watch } from 'vue';
 import { createComponent } from '../../utils/create';
-import { useExpose } from '../swiper/use-expose';
+import { useExpose } from '../../utils/useExpose/index';
 const { create, componentName } = createComponent('swiper-item');
 interface IStyle {
   width?: string;
@@ -34,15 +34,11 @@ export default create({
       const style: IStyle = {};
       const direction = parent?.props.direction;
       if (parent?.size.value) {
-        style[
-          direction === 'horizontal' ? 'width' : 'height'
-        ] = `${parent?.size.value}px`;
+        style[direction === 'horizontal' ? 'width' : 'height'] = `${parent?.size.value}px`;
       }
 
       if (state.offset) {
-        style['transform'] = `translate${
-          direction === 'horizontal' ? 'X' : 'Y'
-        }(${state.offset}px)`;
+        style['transform'] = `translate${direction === 'horizontal' ? 'X' : 'Y'}(${state.offset}px)`;
       }
 
       return style;

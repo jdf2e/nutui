@@ -67,7 +67,7 @@ export default create({
       default: ''
     }
   },
-  emits: ['change', 'update:modelValue'],
+  emits: ['change', 'update:modelValue', 'update:loading'],
   setup(props, { emit }) {
     const isActive = computed(() => props.modelValue === props.activeValue);
     const classes = computed(() => {

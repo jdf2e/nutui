@@ -8,7 +8,10 @@
 
 ```javascript
 import { createApp } from 'vue';
+//vue
 import { Swiper,SwiperItem } from '@nutui/nutui';
+//taro
+import { Swiper,SwiperItem } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Swiper).use(SwiperItem);

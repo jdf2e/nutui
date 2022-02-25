@@ -7,7 +7,10 @@
 ## 安装
 ```javascript
 import { createApp } from 'vue';
-import { Picker,Popup } from '@nutui/nutui';
+// vue
+import { Picker, Popup } from '@nutui/nutui';
+// taro
+import { Picker, Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Picker);

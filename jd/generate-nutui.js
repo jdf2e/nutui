@@ -7,8 +7,8 @@ let importScssStr = `\n`;
 const packages = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name } = element;
-    importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index.vue';\n`;
+    let { name, type } = element;
+    importStr += `import ${name} from './__VUE/${name.toLowerCase()}/index${type === 'methods' ? '' : '.vue'}';\n`;
     importScssStr += `import './__VUE/${name.toLowerCase()}/index.scss';\n`;
     packages.push(name);
   });
@@ -36,6 +36,7 @@ fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.build.ts'), fil
 let fileStrDev = `${importStr}
 ${installFunction}
 ${importScssStr}
+export const testComponents = { ${packages.join(',')}};
 export { install, ${packages.join(',')}  };
 export default { install, version:'${package.version}'};`;
 fs.outputFile(path.resolve(__dirname, '../src/packages/nutui.vue.ts'), fileStrDev, 'utf8', (error) => {
