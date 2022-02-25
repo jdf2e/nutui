@@ -20,11 +20,13 @@
     }
   }
 
-  .input-text {
-    width: 230px;
+  .input-text,
+  &__text--readonly {
+    width: 90%;
     flex: 1;
     padding: 0 10px;
     padding-right: 35px;
+    text-align: left;
     outline: 0 none;
     border: 0;
     text-decoration: none;
