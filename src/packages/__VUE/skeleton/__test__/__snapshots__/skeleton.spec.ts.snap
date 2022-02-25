@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should change avatar shape when using avatar-shape prop 1`] = `"<nut-avatar class=\\"avatarClass avatarClass--square\\" shape=\\"square\\" style=\\"width: 50px; height: 50px;\\" bg-color=\\"rgb(239, 239, 239)\\"></nut-avatar>"`;
+
+exports[`should change avatar size when using avatar-size prop: 20px 1`] = `"20px"`;
+
+exports[`should change avatar size when using avatar-size prop: 20px 2`] = `"20px"`;
+
+exports[`should render with row width array correctly 1`] = `
+"<view class=\\"skeleton\\" rowwidth=\\"100%,30,5rem\\">
+  <view class=\\"skeleton-animation\\"></view>
+  <view class=\\"content\\">
+    <!--v-if-->
+    <!--v-if-->
+    <view class=\\"content-line\\">
+      <view class=\\"title\\"></view>
+      <view class=\\"blockClass\\" style=\\"width: 100px; height: 100px;\\"></view>
+      <view class=\\"blockClass\\" style=\\"width: 100px; height: 100px;\\"></view>
+      <view class=\\"blockClass\\" style=\\"width: 100px; height: 100px;\\"></view>
+      <view class=\\"blockClass\\" style=\\"width: 100px; height: 100px;\\"></view>
+    </view>
+  </view>
+</view>"
+`;
