@@ -44,8 +44,8 @@ test('should render content slot correctly', () => {
 test('should change dot position when using offset prop', () => {
   const wrapper = mount(Badge, {
     props: {
-      top: 4,
-      right: -2
+      top: '4',
+      right: '-2'
     }
   });
 

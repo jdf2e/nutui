@@ -1,5 +1,17 @@
 import Tag from '../index.vue';
-import { mount } from '@vue/test-utils';
+import { mount, config } from '@vue/test-utils';
+
+import NutIcon from '../../icon/index.vue';
+
+beforeAll(() => {
+  config.global.components = {
+    NutIcon
+  };
+});
+
+afterAll(() => {
+  config.global.components = {};
+});
 
 test('should emit close event when clicking the close icon', () => {
   const wrapper = mount(Tag, {
