@@ -3,7 +3,7 @@
     <slot></slot>
   </view>
   <view v-else class="skeleton">
-    <view class="skeleton-animation"></view>
+    <view class="skeleton-animation" v-if="animated"></view>
     <view class="content">
       <nut-avatar
         v-if="avatar"
