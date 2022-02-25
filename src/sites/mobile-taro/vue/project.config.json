@@ -2,7 +2,7 @@
     "miniprogramRoot": "dist/",
     "projectname": "%40nutui%2Fnutui-taro-mobile",
     "description": "nutui-taro-vue",
-    "appid": "wx7a1156d6d5c48a20",
+    "appid": "wxf2b976b67dab3882",
     "setting": {
         "urlCheck": true,
         "es6": false,
