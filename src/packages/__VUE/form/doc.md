@@ -328,6 +328,7 @@ setup(){
     return { formData2, addressModule };
 }
 }
+</script>
 ```
 :::
 

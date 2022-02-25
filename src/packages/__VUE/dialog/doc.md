@@ -82,6 +82,7 @@ export default {
         };
     }
 }
+</script>
 ```
 ::: 
 
@@ -162,6 +163,7 @@ export default {
     return { visible,visible1,componentClick,componentvVrticalClick };
   }
 }
+</script>
 ```
 :::
 

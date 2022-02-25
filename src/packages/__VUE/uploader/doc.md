@@ -68,6 +68,7 @@ export default {
     };
   }
 }
+</script>
 ```
 :::
 ### 基础用法-上传列表展示
@@ -113,6 +114,7 @@ export default {
     };
   }
 }
+</script>
 ```
 :::
 
@@ -158,6 +160,7 @@ export default {
     };
   }
 }
+</script>
 ```
 :::
 
@@ -201,6 +204,7 @@ export default {
     };
   }
 }
+</script>
 ```
 :::
 ### 图片压缩（在 beforeupload 钩子中处理）
@@ -254,6 +258,7 @@ export default {
     };
   }
 }
+</script>
 ```
 :::
 
@@ -278,6 +283,7 @@ export default {
     };
   }
 }
+</script>
 ```
 :::
 ### 选中文件后，通过按钮手动执行上传
@@ -305,6 +311,7 @@ export default {
     };
   }
 }
+</script>
 ```
 :::
 

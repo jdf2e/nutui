@@ -127,6 +127,7 @@ app.use(Icon);
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
 | percentage | 百分比 | Number | 0
+| is-show-percentage | 是否需要展示百分号 | Boolean | true
 | stroke-color | 进度条背景色 | String | #f30
 | stroke-width | 进度条宽度 | String | ''
 | size | 进度条及文字尺寸，可选值small/base/large | String | -

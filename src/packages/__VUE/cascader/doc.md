@@ -113,6 +113,7 @@ export default {
     }
   }
 }
+</script>
 ```
 :::
 
@@ -192,6 +193,7 @@ export default {
     return { state, events };
   }
 }
+</script>
 ```
 :::
 
@@ -266,6 +268,7 @@ export default {
     return { state, events };
   }
 }
+</script>
 ```
 :::
 
@@ -341,6 +344,7 @@ export default {
     return { state, events };
   }
 }
+</script>
 ```
 :::
 
@@ -407,6 +411,7 @@ export default {
     return { state, events };
   }
 }
+</script>
 ```
 :::
 

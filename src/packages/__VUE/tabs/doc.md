@@ -44,6 +44,7 @@ export default {
     return { state };
   }
 };
+</script>
 ```
 :::
 
@@ -73,6 +74,7 @@ export default {
     return { state };
   }
 };
+</script>
 ```
 :::
 
@@ -103,6 +105,7 @@ export default {
     return { state };
   }
 };
+</script>
 ```
 :::
 
@@ -132,6 +135,7 @@ export default {
     return { state };
   }
 };
+</script>
 ```
 :::
 
@@ -157,6 +161,7 @@ export default {
     return { state };
   }
 };
+</script>
 ```
 :::
 
@@ -182,6 +187,7 @@ export default {
     return { state };
   }
 };
+</script>
 ```
 :::
 
@@ -207,6 +213,7 @@ export default {
     return { state };
   }
 };
+</script>
 ```
 :::
 
@@ -240,6 +247,7 @@ export default {
     return { state };
   }
 };
+</script>
 ```
 :::
 
@@ -287,6 +295,7 @@ export default {
     return { state };
   }
 };
+</script>
 ```
 :::
 
