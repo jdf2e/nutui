@@ -456,9 +456,8 @@ export default create({
       state.propEndDate = propEndDate;
       state.startData = splitDate(propStartDate);
       state.endData = splitDate(propEndDate);
-
       // 根据是否存在默认时间，初始化当前日期,
-      if (!props.defaultValue || !(Array.isArray(props.defaultValue) && props.defaultValue.length > 0)) {
+      if (!props.defaultValue || (Array.isArray(props.defaultValue) && props.defaultValue.length <= 0)) {
         state.currDate = state.isRange ? [Utils.date2Str(new Date()), Utils.getDay(1)] : Utils.date2Str(new Date());
       } else {
         state.currDate = state.isRange ? [...props.defaultValue] : props.defaultValue;
