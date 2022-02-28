@@ -1,3 +1,40 @@
+## v3.1.17
+
+`2022-02-25` 此版本依赖 Taro 3.4.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @odex21 @p3psi-boo @gp5251 @deity-wu
+
+* :zap: feat(sticky): 新增粘性布局组件(#627)   @szg2008
+* :zap: feat(audio): 新增音频组件   @yangxiaolu1993
+* :zap: feat(calendar): 日历组件功能扩展(#550 #842 #742 #806)   @lkjh3214
+* :zap: feat: 优化重构 add 命令   @szg2008
+* :zap: chore: support template type check (volar) (#985) @odex21
+* :zap: feat(input): 输入数字时拉起数字键盘 (#999) @odex21
+* :zap: feat(input): 在taro、doc增加无边框 (#995) @ailululu
+* :zap: feat(swiper): 适配小程序(#944 #551 #553) @szg2008
+* :zap: feat(elevator): 暴露 ScrollTo API @szg2008
+* :zap: feat(elevator): 点击之后增加高亮显示(#974) @szg2008
+* :zap: feat(button): add third-party icon support (#1018) @p3psi-boo
+* :zap: feat(layout, row): add support for space-evenly (#1020) @gp5251
+* :zap: feat(address): 新增默认选中功能 (#368) @yangxiaolu1993
+* :bug: docs(indicator): 描述文案修改  @richard1015
+* :bug: fix(cascader): 主题定制不生效bug(#998)   @richard1015
+* :bug: docs(circleprogress): 描述文案修改(#990) @Drjingfubo
+* :bug: fix(tabbar): 微信浏览器下安全适配不生效修改 (#997) @Drjingfubo
+* :bug: docs(drag): 文档样式错乱修复   @richard1015
+* :bug: fix(DatePicker): 修复Taro使用场景报错 (#1014)   @yangxiaolu1993
+* :bug: docs(popup): update destoryOnClose props instruction (#1010)   @szg2008
+* :bug: docs: 组件的文案修改 (#1021)  @yangxiaolu1993
+* :bug: docs(button): 添加对第三方图标支持的文档 (#1026)  @p3psi-boo
+* :bug: docs(tabbar): add import Icon (#1028)   @Drjingfubo
+* :bug: fix(progress): optimization,add new props isShowPercentage (#1016)  @Drjingfubo
+* :bug: fix: fix radio switch checkbox radio warning   @szg2008
+* :bug: fix(searchBar): 搜索栏的 search 事件 在H5中会刷新当前页面 #1025  @JackieScorpio
+* :bug: fix(imagepreview): 引用报错(#1024 #989)   @JackieScorpio
+* :bug: fix: 滚动加载组件，taro版，下拉刷新bug修改 (#1004)  @deity-wu
+* :bug: fix: input组件的readonly属性在taro小程序项目中不生效(#1017)  @ailululu
+
 ## v3.1.16
 
 `2022-01-30` 此版本依赖 Taro 3.4.x
