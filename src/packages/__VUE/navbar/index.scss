@@ -41,6 +41,8 @@
     min-width: 53%;
     margin: 0 auto;
     text-align: center;
+    display: flex;
+    justify-content: center;
     &.icon {
       .icon {
         margin-left: 13px;
