@@ -107,4 +107,4 @@ app.use(Icon);
 
 | 字段             | 说明         | 类型     | 回调参数 |
 | ---------------- | ------------ | -------- | -------- |
-| active-avatarror | 点击触发事件 | Function | event    |
+| active-avatar | 点击触发事件 | Function | event    |
