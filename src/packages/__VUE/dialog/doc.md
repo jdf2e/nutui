@@ -20,29 +20,71 @@ app.use(Dialog).use(Popup).use(OverLay)
 
 ## 函数调用
 
-``` javascript
-Dialog({
-  title: '基础弹框',
-  content: '支持函数调用和组件调用两种方式。'
-});
-
-Dialog({
-  content: '无标题弹框'
-});
-
-Dialog({
-  title: '提示弹框',
-  content: '支持函数调用和组件调用两种方式。',
-  noCancelBtn: true,
-});
-
-Dialog({
-  title: '温馨提示',
-  content: '支持底部按钮纵向排列。',
-  footerDirection:"vertical"
-});
+:::demo
+```html
+<template>
+ <nut-cell-group title="函数式调用">
+  <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
+  <nut-cell title="无标题弹框" @click="noTitleClick"></nut-cell>
+  <nut-cell title="提示弹框" @click="tipsClick"></nut-cell>
+  <nut-cell title="底部按钮 垂直调用" @click="verticalClick"></nut-cell>
+</nut-cell-group>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+import { Dialog } from '@nutui/nutui';
+export default {
+    setup() {
+        const onCancel = () => {
+          console.log('event cancel');
+        };
+        const onOk = () => {
+          console.log('event ok');
+        };
+        const baseClick = (): void => {
+          Dialog({
+            title: '基础弹框',
+            content: '支持函数调用和组件调用两种方式。',
+            onCancel,
+            onOk
+          });
+        };
+        const noTitleClick = () => {
+          Dialog({
+            content: '无标题弹框',
+            onCancel,
+            onOk
+          });
+        };
+        const tipsClick = () => {
+          Dialog({
+            title: '温馨提示',
+            content: '支持函数调用和组件调用两种方式。',
+            noCancelBtn: true,
+            onCancel,
+            onOk
+          });
+        };
+        const verticalClick = () => {
+          Dialog({
+            title: '温馨提示',
+            content: '支持底部按钮纵向排列。',
+            footerDirection: 'vertical',
+            onCancel,
+            onOk
+          });
+        };
+        return {
+          baseClick,
+          noTitleClick,
+          tipsClick,
+          verticalClick
+        };
+    }
+}
+</script>
 ```
-
+::: 
 
 ## teleport 使用，挂载到指定节点
 
@@ -63,35 +105,55 @@ Dialog({
 
 ## 函数调用 proxy.&dialog(...)
 
-``` javascript
+```javascript
+import { ref } from 'vue';
+import { Dialog } from '@nutui/nutui';
 import { getCurrentInstance } from 'vue';
 
-setup(){
-  const { proxy } = getCurrentInstance();
-  proxy.$dialog({
-    title: '基础弹框',
-    content: '支持函数调用和组件调用两种方式。'
-  });
+export default {
+  setup() {
+    const { proxy } = getCurrentInstance();
+    proxy.$dialog({
+      title: '基础弹框',
+      content: '支持函数调用和组件调用两种方式。'
+    });
+  }
 }
 ```
 
 
 ## 标签式组件使用
 
-```html
-<nut-cell title="标签式使用使用" @click="componentClick"></nut-cell>
-<nut-cell title="底部按钮垂直使用" @click="componentvVrticalClick"></nut-cell>
-<nut-dialog title="标签式使用" :close-on-click-overlay="false" content="内容" v-model:visible="visible"></nut-dialog>
-<nut-dialog title="标签式使用" footer-direction="vertical" :close-on-click-overlay="false" content="内容" v-model:visible="visible1"></nut-dialog>
-```
 
-``` javascript
+:::demo
+```html
+<template>
+  <nut-cell-group title="标签式使用">
+    <nut-cell title="组件调用" @click="componentClick"></nut-cell>
+    <nut-dialog
+      teleport="#app"
+      title="组件调用"
+      content="如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。"
+      v-model:visible="visible"
+    >
+    </nut-dialog>
+    <nut-cell title="底部按钮 垂直使用" @click="componentvVrticalClick"></nut-cell>
+    <nut-dialog
+      footer-direction="vertical"
+      teleport="#app"
+      title="组件调用"
+      content="如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。"
+      v-model:visible="visible1"
+    >
+    </nut-dialog>
+  </nut-cell-group>
+</template>
+<script lang="ts">
 import { ref } from 'vue';
-import { Dialog } from '@nutui/nutui';
 export default {
   setup() {
-    const visible = ref(true);
-    const visible1 = ref(true);
+    const visible = ref(false);
+    const visible1 = ref(false);
     const componentClick = () => {
       visible.value = true;
     };
@@ -99,9 +161,11 @@ export default {
       visible1.value = true;
     };
     return { visible,visible1,componentClick,componentvVrticalClick };
-  },
-};
+  }
+}
+</script>
 ```
+:::
 
 ## API
 | 字段                | 说明                                  | 类型     | 默认值   |

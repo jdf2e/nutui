@@ -1,17 +1,9 @@
 <template>
   <view :class="classes">
-    <nut-popup
-      pop-class="popclass"
-      :visible="visible"
-      position="bottom"
-      round
-      @click-overlay="close"
-    >
+    <nut-popup pop-class="popclass" :visible="visible" position="bottom" round @click-overlay="close">
       <view class="nut-actionsheet-panel">
         <view v-if="title" class="nut-actionsheet-title">{{ title }}</view>
-        <view class="nut-actionsheet-item desc" v-if="description">{{
-          description
-        }}</view>
+        <view class="nut-actionsheet-item desc" v-if="description">{{ description }}</view>
         <view class="nut-actionsheet-menu" v-if="menuItems.length">
           <view
             v-for="(item, index) of menuItems"
@@ -20,26 +12,21 @@
             :style="{ color: isHighlight(item) }"
             :key="index"
             @click="chooseItem(item, index)"
-            >{{ item[optionTag]
-            }}<view class="subdesc">{{ item[optionSubTag] }}</view>
+            >{{ item[optionTag] }}<view class="subdesc">{{ item[optionSubTag] }}</view>
           </view>
         </view>
-        <view
-          class="nut-actionsheet-cancel"
-          v-if="cancelTxt"
-          @click="cancelActionSheet"
-        >
+        <view class="nut-actionsheet-cancel" v-if="cancelTxt" @click="cancelActionSheet">
           {{ cancelTxt }}
         </view>
       </view>
     </nut-popup>
   </view>
 </template>
-<script>
+<script lang="ts">
 import { createComponent } from '../../utils/create';
 import { computed } from 'vue';
-const { componentName, create } = createComponent('actionsheet');
 import { popupProps } from '../popup/index.vue';
+const { componentName, create } = createComponent('actionsheet');
 export default create({
   props: {
     ...popupProps,
@@ -76,7 +63,7 @@ export default create({
       default: () => []
     }
   },
-  emits: ['cancel', 'choose', 'update:visible'],
+  emits: ['cancel', 'close', 'choose', 'update:visible'],
 
   setup(props, { emit }) {
     const classes = computed(() => {
@@ -86,11 +73,8 @@ export default create({
       };
     });
 
-    const isHighlight = (item) => {
-      return props.chooseTagValue &&
-        props.chooseTagValue === item[props.optionTag]
-        ? props.color
-        : '#1a1a1a';
+    const isHighlight = (item: { [x: string]: string }) => {
+      return props.chooseTagValue && props.chooseTagValue === item[props.optionTag] ? props.color : '#1a1a1a';
     };
 
     const cancelActionSheet = () => {
@@ -98,7 +82,7 @@ export default create({
       emit('update:visible', false);
     };
 
-    const chooseItem = (item, index) => {
+    const chooseItem = (item: { disable: any }, index: any) => {
       if (!item.disable) {
         emit('choose', item, index);
         emit('update:visible', false);

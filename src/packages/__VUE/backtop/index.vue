@@ -7,14 +7,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  onMounted,
-  onUnmounted,
-  onActivated,
-  onDeactivated,
-  reactive
-} from 'vue';
+import { computed, onMounted, onUnmounted, onActivated, onDeactivated, reactive } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('backtop');
 export default create({
@@ -28,9 +21,10 @@ export default create({
       default: 10
     },
     elId: {
-      type: String,
-      default: ''
+      type: [String, Element],
+      default: 'body'
     },
+
     distance: {
       type: Number,
       default: 200
@@ -92,9 +86,7 @@ export default create({
 
     function scrollAnimation() {
       let cid = requestAniFrame()(function fn() {
-        var t =
-          props.duration -
-          Math.max(0, state.startTime - +new Date() + props.duration);
+        var t = props.duration - Math.max(0, state.startTime - +new Date() + props.duration);
         var y = (t * -state.scrollTop) / props.duration + state.scrollTop;
         scroll(y);
         cid = requestAniFrame()(fn);
@@ -136,9 +128,7 @@ export default create({
 
     function init() {
       if (props.elId && document.getElementById(props.elId)) {
-        state.scrollEl = document.getElementById(props.elId) as
-          | HTMLElement
-          | Window;
+        state.scrollEl = document.getElementById(props.elId) as HTMLElement | Window;
       }
       addEventListener();
       initCancelAniFrame();

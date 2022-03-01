@@ -44,7 +44,7 @@ export default create({
       default: '&yen;'
     },
     decimalDigits: {
-      type: Number,
+      type: [Number, String],
       default: 2
     },
     thousands: {

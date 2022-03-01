@@ -155,24 +155,24 @@ export default createDemo({
       ],
       data2: [
         {
+          address: '北京',
           name: 'Tom',
           sex: '男',
           record: '小学',
-          age: 13,
-          address: '北京'
+          age: 13
         },
         {
+          record: '本科',
           name: 'Lucy',
           sex: '女',
-          record: '本科',
           age: 34,
           address: '上海'
         },
         {
+          age: 4,
           name: 'Jack',
           sex: '男',
           record: '高中',
-          age: 4,
           address: '杭州'
         }
       ],
@@ -192,7 +192,7 @@ export default createDemo({
                 size: 'small',
                 type: 'primary'
               },
-              'Hello'
+              () => h('div', {}, 'Hello')
             );
           }
         },
@@ -218,7 +218,7 @@ export default createDemo({
                   window.open('https://www.jd.com');
                 }
               },
-              '跳转到京东'
+              () => h('div', {}, '跳转到京东')
             );
           }
         }

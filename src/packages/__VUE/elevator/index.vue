@@ -5,6 +5,7 @@
         <view class="nut-elevator__list__item__code">{{ item[acceptKey] }}</view>
         <view
           class="nut-elevator__list__item__name"
+          :class="{ 'nut-elevator__list__item__name--highcolor': currentData.id === subitem.id }"
           v-for="subitem in item.list"
           :key="subitem['id']"
           @click="handleClickItem(item[acceptKey], subitem)"
@@ -32,6 +33,7 @@
 <script lang="ts">
 import { computed, reactive, toRefs, nextTick, ref, Ref } from 'vue';
 import { createComponent } from '../../utils/create';
+import { useExpose } from '../../utils/useExpose/index';
 const { componentName, create } = createComponent('elevator');
 interface ElevatorData {
   name: string;
@@ -68,7 +70,8 @@ export default create({
         y2: 0
       },
       scrollStart: false,
-      currentIndex: 0
+      currentIndex: 0,
+      currentData: {} as ElevatorData
     });
 
     const classes = computed(() => {
@@ -134,7 +137,6 @@ export default create({
       state.touchState.y1 = firstTouch.pageY;
       state.anchorIndex = +index;
       state.currentIndex = +index;
-      console.log(state.currentIndex);
       scrollTo(+index);
     };
 
@@ -152,11 +154,16 @@ export default create({
 
     const handleClickItem = (key: string, item: ElevatorData) => {
       context.emit('click-item', key, item);
+      state.currentData = item;
     };
 
     const handleClickIndex = (key: string) => {
       context.emit('click-index', key);
     };
+
+    useExpose({
+      scrollTo
+    });
 
     return {
       classes,

@@ -23,59 +23,109 @@
   &-loading,
   &-loading1 {
     display: inline-block;
-    animation: rotate 1s infinite linear;
+    animation: rotation 1s infinite linear;
   }
 
+  --animate-duration: 1s;
+  --animate-delay: 0s;
+
+  &-am-infinite {
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
   &-am-jump {
-    animation: jump 1s ease infinite alternate;
+    -webkit-animation-name: nutJumpOne;
+    -webkit-animation-duration: var(--animate-duration);
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-delay: var(--animate-delay);
+
+    animation-name: nutJumpOne;
+    animation-duration: var(--animate-duration);
+    animation-timing-function: ease;
+    animation-delay: var(--animate-delay);
+
+    &.nut-icon-am-infinite {
+      -webkit-animation-name: nutJump;
+      animation-name: nutJump;
+    }
   }
 
   &-am-rotate {
-    animation: rotate 1s infinite linear;
+    -webkit-animation-name: rotation;
+    -webkit-animation-duration: var(--animate-duration);
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: var(--animate-delay);
+
+    animation-name: rotation;
+    animation-duration: var(--animate-duration);
+    animation-timing-function: linear;
+    animation-delay: var(--animate-delay);
+
+    &.nut-icon-am-infinite {
+      -webkit-animation-direction: normal;
+      animation-direction: normal;
+    }
   }
   &-am-blink {
-    animation: blink 1s ease-in-out 0.1s infinite alternate;
-  }
-}
+    -webkit-animation-name: nutBlink;
+    -webkit-animation-duration: var(--animate-duration);
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-delay: var(--animate-delay);
 
-@-webkit-keyframes jump {
-  to {
-    transform: scale3d(0.8, 1, 0.9) translateY(-10px);
+    animation-name: nutBlink;
+    animation-duration: var(--animate-duration);
+    animation-timing-function: linear;
+    animation-delay: var(--animate-delay);
   }
-}
+  &-am-breathe {
+    -webkit-animation-name: nutBreathe;
+    -webkit-animation-duration: var(--animate-duration);
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-delay: var(--animate-delay);
 
-@keyframes jump {
-  to {
-    transform: scale3d(0.8, 1, 0.9) translateY(-10px);
+    animation-name: nutBreathe;
+    animation-duration: var(--animate-duration);
+    animation-timing-function: ease-in-out;
+    animation-delay: var(--animate-delay);
   }
-}
+  &-am-flash {
+    -webkit-animation-name: nutFlash;
+    -webkit-animation-duration: var(--animate-duration);
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-delay: var(--animate-delay);
 
-@-webkit-keyframes rotate {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+    animation-name: nutFlash;
+    animation-duration: var(--animate-duration);
+    animation-timing-function: ease-in-out;
+    animation-delay: var(--animate-delay);
   }
-}
-@keyframes rotate {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
+  &-am-bounce {
+    -webkit-animation-name: nutBounce;
+    -webkit-animation-duration: var(--animate-duration);
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-delay: var(--animate-delay);
+    animation-name: nutBounce;
+    animation-duration: var(--animate-duration);
+    animation-timing-function: ease-in-out;
+    animation-delay: var(--animate-delay);
 
-@-webkit-keyframes blink {
-  0% {
-    opacity: 0;
+    &.nut-icon-am-infinite {
+      -webkit-animation-direction: normal;
+      animation-direction: normal;
+    }
   }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes blink {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
+
+  &-am-shake {
+    -webkit-animation-name: nutShake;
+    -webkit-animation-duration: var(--animate-duration);
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-delay: var(--animate-delay);
+
+    animation-name: nutShake;
+    animation-duration: var(--animate-duration);
+    animation-timing-function: ease-in-out;
+    animation-delay: var(--animate-delay);
   }
 }

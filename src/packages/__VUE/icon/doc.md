@@ -63,31 +63,31 @@ app.use(Icon);
 :::
 ### 通用动态图标
 
-添加指定的 class 类就可以实现图片动态效果
+添加指定的 class 类就可以实现图片动态效果，默认是播放1次，添加 `nut-icon-am-infinite` 类即可实现循环播放。通过设置 css 可实现动画启动前的延迟间隔、动画在多久时间内完成
 
 :::demo
 ```html
 <template>
-  <nut-icon name="dou-arrow-up" class="nut-icon-am-jump"></nut-icon>
-  <nut-icon name="star-fill-n" class="nut-icon-am-blink"></nut-icon>
-  <nut-icon name="refresh2" class="nut-icon-am-rotate"></nut-icon>
+  <nut-icon name="dou-arrow-up" class="nut-icon-am-jump nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="star-fill-n" class="nut-icon-am-blink nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="refresh2" class="nut-icon-am-rotate nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="heart-fill" class="nut-icon-am-breathe nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="microphone" class="nut-icon-am-flash nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="download" class="nut-icon-am-bounce nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="message" class="nut-icon-am-shake nut-icon-am-infinite"></nut-icon>
 </template>
+
+<style>
+  .nut-icon{
+    --animate-duration: 1s ; 
+    --animate-delay: 0s;
+  }
+</style>
 ```
 :::
 
-### 动态图标
 
-与基础图标的使用方式一致，通过 `Icon` 的 `name` 属性传入图标名称
 
-:::demo
-```html
-<template>
-  <nut-icon name="am-loading1" ></nut-icon>
-  <nut-icon name="am-loading2"></nut-icon>
-  <nut-icon name="am-loading7"></nut-icon>
-</template>
-```
-:::
 
 ### 自定义图标
 

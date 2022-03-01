@@ -4,9 +4,12 @@
   padding: 10px 0px 10px 25px;
   display: flex;
   background: $white;
-  border-bottom: 1px solid $input-border-bottom;
   font-size: $input-font-size;
   box-sizing: border-box;
+
+  &.nut-input-border {
+    border-bottom: 1px solid $input-border-bottom;
+  }
 
   &.nut-input-require {
     &::before {
@@ -17,11 +20,13 @@
     }
   }
 
-  .input-text {
-    width: 230px;
+  .input-text,
+  &__text--readonly {
+    width: 90%;
     flex: 1;
     padding: 0 10px;
     padding-right: 35px;
+    text-align: left;
     outline: 0 none;
     border: 0;
     text-decoration: none;

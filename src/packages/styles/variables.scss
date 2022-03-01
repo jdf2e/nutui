@@ -193,7 +193,7 @@ $calendar-disable-color: #d1d0d0 !default;
 $calendar-title-font: $font-size-4 !default;
 $calendar-base-font: $font-size-3 !default;
 $calendar-text-font: $font-size-1 !default;
-$calendar-day-font: 18px !default;
+$calendar-day-font: 16px !default;
 
 //overlay
 $overlay-bg-color: rgba(0, 0, 0, 0.7) !default;
@@ -238,12 +238,12 @@ $tabbar-active-color: $primary-color !default;
 $tabbar-border-color: #eee !default;
 
 //infiniteloading
-$infinite-bottom-color: #c8c8c8 !default;
+$infiniteloading-bottom-color: #c8c8c8 !default;
 
 //range
-$range-max: #333333 !default;
-$rang-bg-color: rgba($primary-color, 0.5) !default;
-$rang-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
+$range-tip-font-color: #333333 !default;
+$range-bg-color: rgba($primary-color, 0.5) !default;
+$range-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
 
 //address
 $address-region-tab-line: linear-gradient(90deg, $primary-color 0%, rgba($primary-color, 0.15) 100%) !default;
@@ -393,26 +393,26 @@ $searchbar-input-background: #f7f7f7 !default;
 $searchbar-right-out-color: $black !default;
 
 // empty
-$empty-padding: 32px 0;
-$empty-image-size: 170px;
-$empty-description-margin-top: 4px;
-$empty-description-color: #666666;
-$empty-description-font-size: 14px;
-$empty-description-line-height: 20px;
-$empty-description-padding: 0 40px;
+$empty-padding: 32px 0 !default;
+$empty-image-size: 170px !default;
+$empty-description-margin-top: 4px !default;
+$empty-description-color: #666666 !default;
+$empty-description-font-size: 14px !default;
+$empty-description-line-height: 20px !default;
+$empty-description-padding: 0 40px !default;
 
 // cascader
-$cascader-font-size: $font-size-2;
-$cascader-line-height: 22px;
-$cascader-tabs-item-padding: 0 10px;
-$cascader-bar-padding: 24px 20px 17px;
-$cascader-bar-font-size: $font-size-4;
-$cascader-bar-line-height: 20px;
-$cascader-bar-color: $title-color;
-$cascader-item-padding: 10px 20px;
-$cascader-item-color: $title-color;
-$cascader-item-font-size: $font-size-2;
-$cascader-item-active-color: $primary-color;
+$cascader-font-size: $font-size-2 !default;
+$cascader-line-height: 22px !default;
+$cascader-tabs-item-padding: 0 10px !default;
+$cascader-bar-padding: 24px 20px 17px !default;
+$cascader-bar-font-size: $font-size-4 !default;
+$cascader-bar-line-height: 20px !default;
+$cascader-bar-color: $title-color !default;
+$cascader-item-padding: 10px 20px !default;
+$cascader-item-color: $title-color !default;
+$cascader-item-font-size: $font-size-2 !default;
+$cascader-item-active-color: $primary-color !default;
 
 // form
 $form-item-error-line-color: $primary-color !default;
@@ -432,10 +432,10 @@ $sku-opetate-bg-buy: linear-gradient(
 ) !default;
 
 // card
-$card-font-size-0: $font-size-0;
-$card-font-size-1: $font-size-1;
-$card-font-size-2: $font-size-2;
-$card-font-size-3: $font-size-3;
+$card-font-size-0: $font-size-0 !default;
+$card-font-size-1: $font-size-1 !default;
+$card-font-size-2: $font-size-2 !default;
+$card-font-size-3: $font-size-3 !default;
 
 // grid
 $grid-border-color: #f5f6f7 !default;
@@ -446,10 +446,10 @@ $grid-item-text-color: $title-color2 !default;
 $grid-item-text-font-size: $font-size-1 !default;
 
 // table
-$table-border-color: #ececec;
-$table-cols-padding: 10px;
-$table-tr-even-bg-color: #f3f3f3;
-$table-tr-odd-bg-color: $white;
+$table-border-color: #ececec !default;
+$table-cols-padding: 10px !default;
+$table-tr-even-bg-color: #f3f3f3 !default;
+$table-tr-odd-bg-color: $white !default;
 
 // sidenavbar
 $sidenavbar-content-bg-color: $white !default;
@@ -460,6 +460,9 @@ $subsidenavbar-title-bg-color: #f6f6f6 !default;
 
 // sidenavbaritem
 $sidenavbaritem-title-color: $white !default;
+
+// elevator
+$elevator-list-item-highcolor: $primary-color !default;
 
 @import './mixins/index';
 @import './animation/index';

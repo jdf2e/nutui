@@ -3,13 +3,14 @@
     <h2>基础用法</h2>
 
     <nut-skeleton width="250px" height="15px" animated> </nut-skeleton>
+    <nut-skeleton width="250px" height="15px"> </nut-skeleton>
 
     <h2>传入多行</h2>
 
     <nut-skeleton width="250px" height="15px" title animated row="3"> </nut-skeleton>
 
     <h2>显示头像</h2>
-    <nut-skeleton width="250px" height="15px" title animated avatar row="3"> </nut-skeleton>
+    <nut-skeleton width="250px" height="15px" title animated avatar avatarSize="100px" row="3"> </nut-skeleton>
 
     <h2>标题段落圆角风格</h2>
     <nut-skeleton width="250px" height="15px" animated round></nut-skeleton>
@@ -56,6 +57,7 @@ export default createDemo({
 <style lang="scss">
 .content {
   .nut-switch {
+    display: flex;
     margin: 0 16px 8px 0;
   }
   .container {

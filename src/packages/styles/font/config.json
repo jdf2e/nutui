@@ -68,7 +68,12 @@
         "horizontal",
         "date",
         "photograph",
-        "more-s"
+        "more-s",
+        "play-stop",
+        "play-start",
+        "play-double-back",
+        "play-double-forward",
+        "voice"
       ]
     },
     {
@@ -123,39 +128,33 @@
     {
       "name": "通用动态样式",
       "icons": [{
-        "name":"locationg3",
-        "am":"am-jump"
+        "name":"dou-arrow-up",
+        "animation-name":"am-jump",
+        "animation-time":"am-infinite"
       },{
-        "name":"star-fill-n",
-        "am":"am-blink"
+        "name":"star",
+        "animation-name":"am-blink",
+        "animation-time":"am-infinite"
       },{
         "name":"refresh2",
-        "am":"am-rotate"
-      }
-      ]
-    }
-  ],
-  "animate":[
-    {
-      "name": "动态图标",
-      "icons": [{
-        "name":"am-loading1"
+        "animation-name":"am-rotate",
+        "animation-time":"am-infinite"
       },{
-        "name":"am-loading2"
+        "name":"heart-fill",
+        "animation-name":"am-breathe",
+        "animation-time":"am-infinite"
       },{
-        "name":"am-loading3"
+        "name":"microphone",
+        "animation-name":"am-flash",
+        "animation-time":"am-infinite"
       },{
-        "name":"am-loading4"
+        "name":"download",
+        "animation-name":"am-bounce",
+        "animation-time":"am-infinite"
       },{
-        "name":"am-loading5"
-      },{
-        "name":"am-loading6"
-      },{
-        "name":"am-loading7"
-      },{
-        "name":"am-loading8"
-      },{
-        "name":"am-loading9"
+        "name":"message",
+        "animation-name":"am-shake",
+        "animation-time":"am-infinite"
       }
       ]
     }
