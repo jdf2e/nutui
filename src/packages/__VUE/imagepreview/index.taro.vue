@@ -26,7 +26,7 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { toRefs, reactive, watch, onMounted, ref } from 'vue';
+import { toRefs, reactive, watch, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 import Popup from '../popup/index.taro.vue';
 // import Video from '../video/index.vue';
@@ -127,7 +127,9 @@ export default create({
     };
 
     const scaleNow = () => {
-      (state.eleImg as any).style.transform = 'scale(' + state.store.scale + ')';
+      if (state.eleImg != null) {
+        (state.eleImg as any).style.transform = 'scale(' + state.store.scale + ')';
+      }
     };
 
     const onTouchStart = (event: any) => {
