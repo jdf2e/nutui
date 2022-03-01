@@ -2,7 +2,7 @@ import { config, DOMWrapper, mount } from '@vue/test-utils';
 import ShortPassword from '../index.vue';
 import { nextTick } from 'vue';
 import NutIcon from '../../icon/index.vue';
-import NutPopup from '../../icon/index.vue';
+import NutPopup from '../../popup/index.vue';
 
 beforeAll(() => {
   config.global.components = {
@@ -18,8 +18,9 @@ afterAll(() => {
 test('should render shortpassword when visible is true', async () => {
   const wrapper = mount(ShortPassword, {
     props: {
-      visible: true,
-      modelValue: '123'
+      visible: false,
+      modelValue: '123',
+      isWrapTeleport: false
     }
   });
   const input: DOMWrapper<Element> = wrapper.find('.nut-input-real');
@@ -36,7 +37,8 @@ test('should render buttonShortpassword and error msg when noButton is false ', 
       errorMsg: '错误信息',
       length: 4,
       modelValue: '123',
-      noButton: false
+      noButton: false,
+      isWrapTeleport: false
     }
   });
   const input = wrapper.find('.nut-input-real');
@@ -60,7 +62,8 @@ test('should change  value when prop changed', async () => {
   const wrapper = mount(ShortPassword, {
     props: {
       visible: true,
-      modelValue: '777'
+      modelValue: '777',
+      isWrapTeleport: false
     }
   });
   expect((wrapper.emitted('update:modelValue') as any)[0][0]).toEqual('777');
@@ -72,7 +75,8 @@ test('should format input value when input', async () => {
   const wrapper = mount(ShortPassword, {
     props: {
       visible: true,
-      modelValue: ''
+      modelValue: '',
+      isWrapTeleport: false
     }
   });
   const div: DOMWrapper<Element> = wrapper.find('.nut-shortpsd-fake');
@@ -95,7 +99,8 @@ test('should output input value when finish', async () => {
   const wrapper = mount(ShortPassword, {
     props: {
       visible: true,
-      modelValue: ''
+      modelValue: '',
+      isWrapTeleport: false
     }
   });
   const div: DOMWrapper<Element> = wrapper.find('.nut-shortpsd-fake');
