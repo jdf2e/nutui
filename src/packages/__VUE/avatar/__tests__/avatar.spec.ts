@@ -12,7 +12,7 @@ afterAll(() => {
   config.global.components = {};
 });
 
-test('size props', () => {
+test('size props', async () => {
   const wrapper = mount(Avatar, {
     props: {
       size: 'small'
@@ -20,12 +20,14 @@ test('size props', () => {
   });
   const avatar: any = wrapper.find('.nut-avatar');
   expect(avatar.classes()).toContain('avatar-small');
+  await wrapper.setProps({ size: 'large' });
+  expect(avatar.classes()).toContain('avatar-large');
 });
 
 test('shape props', () => {
   const wrapper = mount(Avatar, {
     props: {
-      size: 'square'
+      shape: 'square'
     }
   });
   const avatar: any = wrapper.find('.nut-avatar');
