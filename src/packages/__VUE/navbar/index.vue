@@ -5,16 +5,14 @@
       <slot name="left"></slot>
     </view>
 
-    <view class="nut-navbar__title" :class="{ icon }">
+    <view class="nut-navbar__title">
       <view v-if="title" @click="handleCenter">{{ title }}</view>
       <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
       <slot name="content"></slot>
     </view>
 
-    <view class="nut-navbar__right" :class="{ icon }">
-      <view v-if="desc" class="right_text" :style="{ 'text-align': descTextAlign }" @click="handleRight">{{
-        desc
-      }}</view>
+    <view class="nut-navbar__right">
+      <view v-if="desc" class="right_text" @click="handleRight">{{ desc }}</view>
       <slot name="right"></slot>
     </view>
   </view>
