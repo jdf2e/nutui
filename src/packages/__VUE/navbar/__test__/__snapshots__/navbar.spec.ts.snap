@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render left slot correctly 1`] = `"<view class=\\"nut-navbar__left\\"><i class=\\"nutui-iconfont nut-icon nut-icon-left\\" style=\\"color: rgb(151, 151, 151);\\" src=\\"\\"></i>Custom Left</view>"`;
+
+exports[`should render left slot correctly 2`] = `
+"<view class=\\"nut-navbar__right\\">
+  <!--v-if-->Custom Right
+</view>"
+`;
+
+exports[`should render title slot correctly 1`] = `
+"<view class=\\"nut-navbar__title\\">
+  <!--v-if-->
+  <!--v-if-->
+</view>"
+`;
