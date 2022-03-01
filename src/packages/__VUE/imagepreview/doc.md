@@ -168,6 +168,8 @@ app.use(ImagePreview);
 :::
 
 ### 视频、图片预览
+#### taro 场景暂不支持视频预览功能
+
 :::demo
 ```html
 <template>
@@ -243,6 +245,8 @@ app.use(ImagePreview);
 :::
                 
 ### 函数式调用
+#### taro 场景暂不支持此功能
+
 :::demo
 ```html
 <template>
@@ -298,7 +302,7 @@ app.use(ImagePreview);
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | ----- 
 | show | 是否展示预览图片 | Boolean | false
-| videos | 预览的视频数组（视频自动放到图片之前） | Array<`Object`> | []
+| videos | 预览的视频数组（视频自动放到图片之前、taro场景暂不支持） | Array<`Object`> | []
 | images | 预览图片数组 | Array<`String`> | []
 | autoplay | 自动轮播时长，0表示不会自动轮播 | Number、String  | 3000  |
 | init-no | 初始页码 | Number | 1

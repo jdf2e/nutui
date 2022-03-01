@@ -392,6 +392,10 @@ export default create({
       if (Taro.getEnv() === 'WEB') {
         init();
       } else {
+        Taro.nextTick(async () => {
+          state.rect = await useTaroRect(container, Taro);
+          state.rect && init();
+        });
         eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
           init();
         });
