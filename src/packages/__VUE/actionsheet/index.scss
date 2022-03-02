@@ -37,22 +37,23 @@
     display: block;
     //   height: 24px;
     padding: 10px;
-    line-height: 24px;
-    font-size: $font-size-base;
-    color: $title-color;
+    line-height: $actionsheet-item-line-height;
+    font-size: $actionsheet-item-font-size;
+    color: $actionsheet-item-font-color;
     text-align: center;
     background-color: #fff;
+    border-bottom: $actionsheet-item-border-bottom;
     cursor: pointer;
   }
 
   .desc {
-    font-size: $font-size-2;
+    font-size: $actionsheet-item-font-size;
     color: #999;
   }
 
   .subdesc {
     display: block;
-    font-size: $font-size-small;
+    font-size: $actionsheet-item-subdesc-font-size;
     color: #999;
   }
 
@@ -63,6 +64,6 @@
 
   .nut-actionsheet-cancel {
     margin-top: 5px;
-    border-top: 1px solid $actionsheet-light-color;
+    border-top: $actionsheet-item-cancel-border-top;
   }
 }
