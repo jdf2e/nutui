@@ -28,7 +28,6 @@
       title="购物车"
       titIcon="cart2"
       desc="编辑"
-      icon="more-x"
     >
       <template #right>
         <nut-icon class="right" name="more-x"></nut-icon>
@@ -36,13 +35,7 @@
     </nut-navbar>
 
     <h2>自定义导航栏中间内容</h2>
-    <nut-navbar
-      @on-click-back="back"
-      @on-click-title="title"
-      @on-click-right="rightClick"
-      desc="编辑"
-      icon="horizontal-n"
-    >
+    <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-right="rightClick" desc="编辑">
       <template #content>
         <nut-tabs v-model="tab1value" @click="changeTab">
           <nut-tabpane title="商品"> </nut-tabpane>
@@ -56,7 +49,7 @@
     </nut-navbar>
 
     <h2>多tab切换导航</h2>
-    <nut-navbar @on-click-back="back" icon="more-x">
+    <nut-navbar @on-click-back="back">
       <template #content>
         <nut-tabs v-model="tab2value" @click="changeTabList">
           <nut-tabpane title="商品"> </nut-tabpane>
