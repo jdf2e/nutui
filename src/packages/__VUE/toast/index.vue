@@ -17,7 +17,7 @@
         }"
       >
         <view v-if="hasIcon" class="nut-toast-icon-wrapper">
-          <nut-icon size="20" color="#ffffff" :name="icon"></nut-icon>
+          <nut-icon :size="iconSize" color="#ffffff" :name="icon"></nut-icon>
         </view>
         <div v-if="title" class="nut-toast-title">
           {{ title }}
@@ -27,7 +27,7 @@
     </view>
   </Transition>
 </template>
-<script>
+<script lang="ts">
 import { toRefs, toRef, reactive, computed, watch, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('toast');
@@ -56,6 +56,10 @@ export default create({
     size: {
       type: [String, Number],
       default: 'base'
+    },
+    iconSize: {
+      type: String,
+      default: '20'
     },
     icon: String,
     textAlignCenter: {
@@ -89,8 +93,9 @@ export default create({
       default: false
     }
   },
-  setup(props) {
-    let timer;
+  emits: ['close'],
+  setup(props: any, { emit }) {
+    let timer: number | null | undefined;
     const state = reactive({
       mounted: false
     });
@@ -117,6 +122,7 @@ export default create({
     const clickCover = () => {
       if (props.closeOnClickOverlay) {
         hide();
+        emit('close');
       }
     };
 
