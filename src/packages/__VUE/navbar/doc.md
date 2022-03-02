@@ -200,6 +200,8 @@ app.use(TabPane);
 | desc            | 右侧描述                                                                                       | String  | -       |
 | left-show        | 是否展示左侧箭头                                                                               | Boolean | false   |
 | tit-icon         | 标题中插入icon                                                                                    | String  |-|                                          
+| fixed           | 是否固定到顶部                                                                                       | Boolean  | false       |
+| safe-area-inset-top           | 是否开启顶部安全区适配                                                                                       | Boolean  | false       |
 
 ### Event
 | 名称  | 说明     | 回调参数    |
