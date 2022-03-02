@@ -17,8 +17,6 @@ $disable-color: #cccccc !default;
 $white: #fff !default;
 $black: #000 !default;
 
-// padding
-$padding-xs: 12px !default;
 
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif !default;
 
@@ -45,16 +43,21 @@ $button-border-width: 1px !default;
 $button-default-bg-color: $white !default;
 $button-default-border-color: rgba(204, 204, 204, 1) !default;
 $button-default-color: rgba(102, 102, 102, 1) !default;
-$button-small-height: 28px !default;
+$button-default-padding: 0 22px !default;
+$button-mini-padding: 0 12px !default;
+$button-small-padding: 0 16px !default;
+$button-small-height: 32px !default;
 $button-mini-height: 24px !default;
-$button-default-height: 38px !default;
+$button-default-height: 44px !default;
 $button-large-height: 48px !default;
 $button-large-line-height: 46px !default;
 $button-small-line-height: 26px !default;
 $button-block-height: 48px !default;
 $button-default-line-height: 36px !default;
 $button-block-line-height: 46px !default;
-$button-default-font-size: $font-size-2 !default;
+$button-default-font-size: $font-size-3 !default;
+$button-small-font-size: $font-size-2 !default;
+$button-mini-font-size: $font-size-1 !default;
 $button-disabled-opacity: 0.68 !default;
 $button-primary-color: $white !default;
 $button-primary-border-color: $primary-color !default;
@@ -63,27 +66,15 @@ $button-info-color: $white !default;
 $button-info-border-color: rgba(73, 106, 242, 1) !default;
 $button-info-background-color: linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%) !default;
 $button-success-color: $white !default;
-$button-success-border-color: rgba(38, 191, 38, 1) !default;
-$button-success-background-color: linear-gradient(
-  135deg,
-  rgba(38, 191, 38, 1) 0%,
-  rgba(39, 197, 48, 1) 45%,
-  rgba(40, 207, 63, 1) 83%,
-  rgba(41, 212, 70, 1) 100%
-) !default;
+$button-success-border-color: #0ed57d !default;
+$button-success-background-color: #0ed57d !default;
 
 $button-danger-color: $white !default;
 $button-danger-border-color: rgba(250, 44, 25, 1) !default;
 $button-danger-background-color: rgba(250, 44, 25, 1) !default;
 $button-warning-color: $white !default;
-$button-warning-border-color: rgba(255, 158, 13, 1) !default;
-$button-warning-background-color: linear-gradient(
-  135deg,
-  rgba(255, 158, 13, 1) 0%,
-  rgba(255, 167, 13, 1) 45%,
-  rgba(255, 182, 13, 1) 83%,
-  rgba(255, 190, 13, 1) 100%
-) !default;
+$button-warning-border-color: #ff9c00 !default;
+$button-warning-background-color: #ff9c00 !default;
 $button-plain-background-color: #fff !default;
 $button-plain-background-color: $white !default;
 

@@ -8,7 +8,10 @@
     
 ```javascript
 import { createApp } from 'vue';
-import { DatePicker } from '@nutui/nutui';
+// vue
+import { DatePicker, Picker } from '@nutui/nutui';
+// taro
+import { DatePicker, Picker } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(DatePicker);

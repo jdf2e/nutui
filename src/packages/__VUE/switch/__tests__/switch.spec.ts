@@ -1,5 +1,17 @@
-import { mount } from '@vue/test-utils';
+import { mount, config } from '@vue/test-utils';
 import Switch from '../index.vue';
+
+import NutIcon from '../../icon/index.vue';
+
+beforeAll(() => {
+  config.global.components = {
+    NutIcon
+  };
+});
+
+afterAll(() => {
+  config.global.components = {};
+});
 
 test('render ok', () => {
   const wrapper = mount(Switch);
