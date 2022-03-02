@@ -14,7 +14,7 @@
       <nut-collapse-item :title="title3" :name="3" disabled> </nut-collapse-item>
     </nut-collapse>
     <h2>无icon样式</h2>
-    <nut-collapse v-model:active="active4" :accordion="true">
+    <nut-collapse v-model:active="active4" :accordion="true" @change="change">
       <nut-collapse-item :title="title1" :name="1">
         引入Vue3新特性 Composition API、Teleport、Emits 等
       </nut-collapse-item>
