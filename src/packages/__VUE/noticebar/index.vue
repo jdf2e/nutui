@@ -33,7 +33,7 @@
         <view class="horseLamp_list" :style="horseLampStyle">
           <ScrollItem
             v-for="(item, index) in scrollList"
-            v-bind:key="index"
+            :key="index"
             :style="{ height: height + 'px', 'line-height': height + 'px' }"
             :item="item"
           ></ScrollItem>
@@ -144,6 +144,7 @@ export default create({
   components: {
     ScrollItem: function (props) {
       props.item.props.style = props.style;
+      props.item.key = props.key;
       return h(props.item);
     }
   },
