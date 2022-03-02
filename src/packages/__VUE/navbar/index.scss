@@ -53,6 +53,13 @@
     text-align: center;
     display: flex;
     justify-content: center;
+    .title {
+      width: 100px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+    }
     &.icon {
       .icon {
         margin-left: 13px;

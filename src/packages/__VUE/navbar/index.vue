@@ -6,7 +6,7 @@
     </view>
 
     <view class="nut-navbar__title">
-      <view v-if="title" @click="handleCenter">{{ title }}</view>
+      <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
       <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
       <slot name="content"></slot>
     </view>
