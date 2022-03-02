@@ -80,17 +80,21 @@ $button-plain-background-color: $white !default;
 
 // cell
 
-$cell-color: $title-color2 !default;
+$cell-color: rgba(0, 0, 0, 0.85) !default;
 $cell-title-font: $font-size-2 !default;
 $cell-title-desc-font: $font-size-1 !default;
 $cell-desc-font: $font-size-2 !default;
-$cell-desc-color: $disable-color !default;
-$cell-border-radius: 6px !default;
+$cell-desc-color: rgba(0, 0, 0, 0.25) !default;
+$cell-border-radius: 0px !default;
+$cell-padding: 14px 16px !default;
+$cell-line-height: 22px !default;
+$cell-after-right: 0 !default;
+$cell-after-border-bottom: 2px solid rgba(0, 0, 0, 0.1) !default;
 
 // cell-group
 
 $cell-group-title-padding: 0 10px !default;
-$cell-group-title-color: #909ca4 !default;
+$cell-group-title-color: rgba(69, 90, 100, 0.6) !default;
 $cell-group-title-font-size: $font-size-2 !default;
 $cell-group-title-line-height: 20px !default;
 $cell-group-desc-padding: 0 10px !default;
@@ -139,6 +143,12 @@ $inputnumber-icon-size: 20px !default;
 
 // actionsheet
 $actionsheet-light-color: #f6f6f6 !default;
+$actionsheet-item-border-bottom: 1px solid rgba(0, 0, 0, 0.1) !default;
+$actionsheet-item-font-size: $font-size-4 !default;
+$actionsheet-item-subdesc-font-size: $font-size-1 !default;
+$actionsheet-item-cancel-border-top: none !default;
+$actionsheet-item-line-height: 28px !default;
+$actionsheet-item-font-color: #4e5969 !default;
 
 //shortpassword
 $shortpassword-background-color: rgba(245, 245, 245, 1) !default;
@@ -192,7 +202,7 @@ $overlay-bg-color: rgba(0, 0, 0, 0.7) !default;
 
 //popup
 $popup-close-icon-margin: 16px !default;
-$popup-border-radius: 20px !default;
+$popup-border-radius: 8px !default;
 
 // Notify
 $notify-text-color: $white !default;
