@@ -32,7 +32,7 @@ export default create({
     }
   },
   setup(props, { emit, slots }) {
-    let parent: any = inject('parent');
+    let parent: any = inject('parent', null);
 
     const isCurValue = computed(() => {
       return parent.label.value == props.label;

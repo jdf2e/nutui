@@ -1,5 +1,19 @@
-import { mount } from '@vue/test-utils';
+import { mount, config } from '@vue/test-utils';
 import Skeleton from '../index.vue';
+
+import NutAvatar from '../../avatar/index.vue';
+import NutIcon from '../../icon/index.vue';
+
+beforeAll(() => {
+  config.global.components = {
+    NutAvatar,
+    NutIcon
+  };
+});
+
+afterAll(() => {
+  config.global.components = {};
+});
 
 test('should render with row width array correctly', () => {
   const wrapper = mount(Skeleton, {

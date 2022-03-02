@@ -29,31 +29,37 @@ app.use(TabPane);
 :::demo
 ```html
   <template>
-<nut-navbar
-      @on-click-back="back"
-      @on-click-title="title"
-      @on-click-send="send"
-      title="订单详情"
-      icon="share-n"
-    ></nut-navbar>
+    <nut-navbar @on-click-back="back" @on-click-title="title" title="订单详情">
+      <template #left>
+        <div>返回</div>
+      </template>
+      <template #right>
+        <nut-icon class="right" name="share-n"></nut-icon>
+      </template>
+    </nut-navbar>
+
     <nut-navbar
       @on-click-back="back"
       @on-click-title="title"
-      @on-click-clear="clear"
+      @on-click-right="rightClick"
       title="浏览记录"
       desc="清空"
     ></nut-navbar>
+
     <nut-navbar
       :left-show="false"
+      @on-click-back="back"
       @on-click-title="title"
       @on-click-icon="icon"
-      @on-click-clear="edit"
-      @on-click-send="more"
+      @on-click-right="rightClick"
       title="购物车"
       titIcon="cart2"
       desc="编辑"
-      icon="more-x"
-    ></nut-navbar>
+    >
+      <template #right>
+        <nut-icon class="right" name="more-x"></nut-icon>
+      </template>
+    </nut-navbar>
   
   </template>
 
@@ -68,21 +74,9 @@ app.use(TabPane);
       title() {
         alert('header头部， 点击title');
       },
-      icon() {
-        alert('icon');
-      },
-      send() {
-        alert('发送');
-      },
-      edit() {
-        alert('编辑');
-      },
-      more() {
-        alert('更多');
-      },
-      clear() {
-        alert('清空');
-      },
+      rightClick() {
+        alert('右侧点击事件');
+      }
     };
 
     return {
@@ -99,20 +93,22 @@ app.use(TabPane);
 
 :::demo
 ```html
-<template>
- <nut-navbar
+  <template>
+   <nut-navbar
       @on-click-back="back"
       @on-click-title="title"
-      @on-click-clear="edit"
-      @on-click-send="list"
+      @on-click-right="rightClick"
       desc="编辑"
-      icon="horizontal-n"
     >
       <template #content>
         <nut-tabs v-model="tab1value" @click="changeTab">
           <nut-tabpane title="商品"> </nut-tabpane>
           <nut-tabpane title="店铺"> </nut-tabpane>
         </nut-tabs>
+      </template>
+
+      <template #right>
+        <nut-icon class="right" name="more-x"></nut-icon>
       </template>
     </nut-navbar>
   </template>
@@ -129,11 +125,8 @@ app.use(TabPane);
         title () {
           alert('header头部， 点击title');
         },
-        edit () {
-          alert('编辑');
-        },
-        list () {
-          alert('列表');
+        rightClick() {
+          alert('右侧点击事件');
         },
         changeTab(tab: any) {
           tab1value.value = tab.paneKey as number;
@@ -155,8 +148,8 @@ app.use(TabPane);
 
 :::demo
 ```html
-<template>
-   <nut-navbar @on-click-back="back" @on-click-send="list" icon="more-x">
+  <template>
+    <nut-navbar @on-click-back="back" >
       <template #content>
         <nut-tabs v-model="tab2value" @click="changeTabList">
           <nut-tabpane title="商品"> </nut-tabpane>
@@ -166,7 +159,11 @@ app.use(TabPane);
         </nut-tabs>
       </template>
       <template #icons>
-        <nut-icon class="icon" name="share" @on-click-slot-send="morelist"></nut-icon>
+        <nut-icon class="icon" name="share"></nut-icon>
+      </template>
+
+      <template #right>
+        <nut-icon class="right" name="horizontal-n"></nut-icon>
       </template>
     </nut-navbar>
   </template>
@@ -179,12 +176,6 @@ app.use(TabPane);
       const methods = {
         back() {
           alert('header头部， 点击返回');
-        },
-        list() {
-          alert('列表');
-        },
-        morelist () {
-          alert('多个更多');
         },
         changeTabList(tab: any) {
           tab2value.value = tab.paneKey as number;
@@ -207,19 +198,19 @@ app.use(TabPane);
 |-----------------|------------------------------------------------------------------------------------------------|---------|---------|
 | title           | 标题名称                                                                                       | String  | -       |
 | desc            | 右侧描述                                                                                       | String  | -       |
-| left-show        | 是否展示左侧箭头                                                                              | Boolean | false   |
-| icon            | 左侧 [图标名称](#/icon) 或图片链接                                                             | String  | -       |
-| tit-icon         | 标题带icon                                                         | String  | -       |                                          
+| left-show        | 是否展示左侧箭头                                                                               | Boolean | false   |
+| tit-icon         | 标题中插入icon                                                                                    | String  |-|                                          
 
 ### Event
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
 | title | 点击页面标题事件 | event:Event |
-| right | 点击右侧按钮事件 | event:Event |
-| back | 点击返回上一页事件 | event:Event |
+| right-click | 点击右侧按钮事件 | event:Event |
+| back | 左侧图标返回点击事件 | event:Event |
 
 ### Slot
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
-| icons | 增加右侧图标 |  |
+| left | 自定义左侧内容 |  |
+| right | 自定义右侧内容 |  |
 | content |  自定义导航栏中间内容 |  |

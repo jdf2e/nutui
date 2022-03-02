@@ -194,7 +194,6 @@
           "desc": "图片预览",
           "sort": 4,
           "show": true,
-          "taro": true,
           "author": "zongyue3"
         },
         {

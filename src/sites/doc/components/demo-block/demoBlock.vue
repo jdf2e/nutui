@@ -100,7 +100,6 @@ export default defineConfig({
     onMounted(() => {
       const sourceValue = decompressText(onlineCode.value.dataset.value);
       codeType.value = onlineCode.value.dataset.type;
-
       const parameters = getParameters({
         files: {
           'package.json': {
