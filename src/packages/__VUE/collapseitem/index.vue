@@ -127,7 +127,9 @@ export default create({
     // 清除 willChange 减少性能浪费
     const onTransitionEnd = () => {
       const wrapperRefEle: any = document.getElementsByClassName('collapse-wrapper')[0];
-      wrapperRefEle.style.willChange = 'auto';
+      if (wrapperRefEle) {
+        wrapperRefEle.style.willChange = 'auto';
+      }
 
       // const query = wx.createSelectorQuery();
       // query.select('#productServe').boundingClientRect();
