@@ -1,7 +1,7 @@
 <template>
   <Transition name="toast-fade" @after-leave="onAfterLeave">
     <view
-      :class="['popup-top', 'nut-notify', `nut-notify--${type}`, { className }]"
+      :class="['popup-top', 'nut-notify', `nut-notify--${type}`, [className]]"
       :style="{ color: color, background: background }"
       v-show="state.mounted"
       @click="clickCover"
@@ -59,7 +59,9 @@ export default create({
     });
     onMounted(() => {
       state.mounted = true;
+      console.log(props.className);
     });
+
     const clickCover = () => {
       props.onClick && props.onClick();
     };
