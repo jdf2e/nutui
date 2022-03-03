@@ -76,7 +76,6 @@ test('should render initpage', async () => {
   });
 
   await nextTick();
-  await nextTick();
 
   const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement;
 
@@ -114,7 +113,6 @@ test('should render direction', async () => {
   });
 
   await nextTick();
-  await nextTick();
 
   const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement;
 
@@ -151,7 +149,6 @@ test('should render pagination', async () => {
     }
   });
 
-  await nextTick();
   await nextTick();
 
   const swiperPagination = wrapper.find('.nut-swiper-pagination');
@@ -198,7 +195,6 @@ test('should render loop and auto-play', async () => {
     }
   });
 
-  await nextTick();
   await nextTick();
 
   await sleep(200);
@@ -260,7 +256,6 @@ test('should not allow to drag when loop is false', async () => {
     }
   });
 
-  await nextTick();
   await nextTick();
 
   await sleep(2000);

@@ -3,13 +3,13 @@
     <view class="nut-navbar__left">
       <nut-icon v-if="leftShow" color="#979797" name="left" @click="handleLeft"></nut-icon>
     </view>
-    <view class="nut-navbar__title" :class="{ icon }">
+    <view class="nut-navbar__title">
       <view v-if="title" class="text__title" @click="handleCenter">{{ title }}</view>
       <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
       <slot name="content"></slot>
     </view>
-    <view class="nut-navbar__right" :class="{ icon }" v-if="desc || icon">
-      <view v-if="desc" :style="{ 'text-align': descTextAlign }" @click="handleClear">{{ desc }}</view>
+    <view class="nut-navbar__right" v-if="desc || icon">
+      <view v-if="desc" @click="handleClear">{{ desc }}</view>
       <template v-if="icon">
         <view @click="handleSends">
           <slot name="icons"></slot>
