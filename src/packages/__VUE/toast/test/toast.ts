@@ -1,5 +1,5 @@
 import { createVNode, render } from 'vue';
-import Toast from './index.vue';
+import Toast from '../index.vue';
 const defaultOptions = {
   msg: '',
   id: '',
@@ -7,11 +7,11 @@ const defaultOptions = {
   center: true, // 未实现
   type: 'text',
   title: '',
-  customClass: '',
-  bottom: '30px',
-  size: 'base',
+  customClass: '', // 未实现
+  bottom: '30px', // 未实现
+  size: 'base', // 未实现
   iconSize: '20',
-  icon: null,
+  icon: null, // 未实现
   textAlignCenter: true, // 未实现
   loadingRotate: true, // 未实现
   bgColor: 'rgba(0, 0, 0, .8)',

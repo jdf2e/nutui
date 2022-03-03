@@ -81,7 +81,7 @@ test('should render sure choose when use choose-tag-value', async () => {
       menuItems: [{ name: '选项一' }, { name: '选项二' }]
     }
   });
-  let item: any = wrapper.findAll('.nut-actionsheet-item');
+  let item = wrapper.findAll<HTMLElement>('.nut-actionsheet-item');
   expect(item[0].element.style.color).toContain('238, 10, 36');
 });
 
@@ -95,7 +95,7 @@ test('should render sure color when use color', async () => {
       menuItems: [{ name: '选项一' }, { name: '选项二' }]
     }
   });
-  let item: any = wrapper.findAll('.nut-actionsheet-item');
+  let item = wrapper.findAll<HTMLElement>('.nut-actionsheet-item');
   expect(item[0].element.style.color).toContain('green');
 });
 
