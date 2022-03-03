@@ -29,6 +29,7 @@
   text-align: center;
   word-wrap: break-word;
   height: $notify-height;
+  line-height: $notify-line-height;
   &--base {
     background: $notify-base-background-color;
   }
