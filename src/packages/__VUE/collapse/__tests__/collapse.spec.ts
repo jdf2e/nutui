@@ -42,7 +42,7 @@ test('should props active disabled', async () => {
     }
   };
   const wrapper = mount(component);
-  expect(wrapper.findAll('.nut-collapse-item')).toHaveLength(3);
+  expect(wrapper.findAll('.nut-collapse-item')).toHaveLength(2);
   const collapseWrapper = wrapper.findAll('.collapse-item');
   await nextTick();
   expect(collapseWrapper[0].classes()).toContain('item-expanded');
