@@ -1,6 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`render basic correctly 1`] = `
-"<!--teleport start-->
-<!--teleport end-->"
-`;

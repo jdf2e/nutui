@@ -9,6 +9,7 @@ test('prop label', () => {
   });
   expect(wrapper.html()).toMatchSnapshot();
 });
+
 test('prop disabled', () => {
   const wrapper = mount(Checkbox, {
     props: {
@@ -18,6 +19,7 @@ test('prop disabled', () => {
   });
   expect(wrapper.html()).toMatchSnapshot();
 });
+
 test('prop iconSize', () => {
   const wrapper = mount(Checkbox, {
     props: {
@@ -27,6 +29,7 @@ test('prop iconSize', () => {
   });
   expect(wrapper.html()).toMatchSnapshot();
 });
+
 test('prop iconName iconActiveName', () => {
   const wrapper = mount(Checkbox, {
     props: {
