@@ -23,7 +23,7 @@ describe('function toast', () => {
       title: '标题文字'
     });
     await sleep();
-    let textToast: any = document.querySelector('.nut-toast.nut-toast-center');
+    let textToast = document.querySelector('.nut-toast.nut-toast-center') as HTMLElement;
     expect(textToast.innerHTML).toContain('标题文字');
     await sleep(3000);
     expect(textToast.style.display).toEqual('none');
@@ -31,7 +31,7 @@ describe('function toast', () => {
   test('show fail toast', async () => {
     ToastFunction.fail('文案');
     await sleep();
-    let failToast: any = document.querySelector('.nut-icon-failure');
+    let failToast = document.querySelector('.nut-icon-failure') as HTMLElement;
     expect(failToast.style.fontSize).toEqual('20px');
   });
 });
