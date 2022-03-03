@@ -70,8 +70,8 @@ $button-success-border-color: #0ed57d !default;
 $button-success-background-color: #0ed57d !default;
 
 $button-danger-color: $white !default;
-$button-danger-border-color: rgba(250, 44, 25, 1) !default;
-$button-danger-background-color: rgba(250, 44, 25, 1) !default;
+$button-danger-border-color: #f52f3e !default;
+$button-danger-background-color: #f52f3e !default;
 $button-warning-color: $white !default;
 $button-warning-border-color: #ff9c00 !default;
 $button-warning-background-color: #ff9c00 !default;
@@ -183,6 +183,23 @@ $avatar-normal-height: 40px !default;
 //switch
 $switch-close-bg-color: #ebebeb !default;
 $switch-close--cline-bg-color: #f0f0f0 !default;
+$switch-width: 50px !default;
+$switch-height: 27px !default;
+$switch-line-height: 27px !default;
+$switch-border-radius: 27px !default;
+$switch-inside-width: 23px !default;
+$switch-inside-height: 23px !default;
+$switch-inside-open-transform: translateX(100%) !default;
+$switch-inside-close-transform: translateX(10%) !default;
+
+// toast
+$toast-title-font-size: 18px !default;
+$toast-text-font-size: 14px !default;
+$toast-font-color:$white !default;
+$toast-inner-padding: 12px 20px !default;
+$toast-inner-bg-color: rgba(0, 0, 0, 0.65) !default;
+$toast-inner-border-radius: 4px !default;
+$toast-cover-bg-color: rgba(0, 0, 0, 0) !default;
 
 //backtop
 $backtop-border-color: #e0e0e0 !default;
@@ -206,30 +223,15 @@ $popup-border-radius: 8px !default;
 
 // Notify
 $notify-text-color: $white !default;
-$notify-padding: 12px 0 !default;
+$notify-padding: 7px 16px !default;
 $notify-font-size: 14px !default;
-$notify-height: 44px !default;
-$notify-base-background-color: linear-gradient(
-  135deg,
-  rgba(250, 44, 25, 1) 0%,
-  rgba(250, 63, 25, 1) 45%,
-  rgba(250, 89, 25, 1) 83%,
-  rgba(250, 100, 25, 1) 100%
-) !default;
-$notify-primary-background-color: linear-gradient(
-  315deg,
-  rgba(73, 143, 242, 1) 0%,
-  rgba(73, 101, 242, 1) 100%
-) !default;
-$notify-success-background-color: linear-gradient(
-  135deg,
-  rgba(38, 191, 38, 1) 0%,
-  rgba(39, 197, 48, 1) 45%,
-  rgba(40, 207, 63, 1) 83%,
-  rgba(41, 212, 70, 1) 100%
-) !default;
-$notify-danger-background-color: rgba(250, 50, 25, 1) !default;
-$notify-warning-background-color: linear-gradient(135deg, rgba(255, 93, 13, 1) 0%, rgba(255, 154, 13, 1) 100%) !default;
+$notify-height: auto !default;
+$notify-line-height: 22px !default;
+$notify-base-background-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
+$notify-primary-background-color: #2c68ff !default;
+$notify-success-background-color: #0ed57d !default;
+$notify-danger-background-color: #f52f3e !default;
+$notify-warning-background-color: #ff9c00 !default;
 
 // rate
 $rate-icon-color: $primary-color !default;
@@ -244,8 +246,18 @@ $infiniteloading-bottom-color: #c8c8c8 !default;
 
 //range
 $range-tip-font-color: #333333 !default;
-$range-bg-color: rgba($primary-color, 0.5) !default;
+$range-bg-color: rgba(0, 0, 0, 0.15) !default;
 $range-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
+$range-bar-btn-bg-color: $primary-color !default;
+$range-bar-btn-width: 22px !default;
+$range-bar-btn-height: 22px !default;
+$range-bar-btn-border: none !default;
+
+//swiper
+$swiper-pagination-item-width: 5px !default;
+$swiper-pagination-item-height: 5px !default;
+$swiper-pagination-item-margin-right: 6px !default;
+$swiper-pagination-item-border-radius: 50% !default;
 
 //address
 $address-region-tab-line: linear-gradient(90deg, $primary-color 0%, rgba($primary-color, 0.15) 100%) !default;
