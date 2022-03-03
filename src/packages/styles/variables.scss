@@ -96,6 +96,10 @@ $cell-title-desc-font: $font-size-1 !default;
 $cell-desc-font: $font-size-2 !default;
 $cell-desc-color: $disable-color !default;
 $cell-border-radius: 6px !default;
+$cell-padding: 13px 16px !default;
+$cell-line-height: 20px !default;
+$cell-after-right: 16px !default;
+$cell-after-border-bottom: 2px solid #f5f6f7 !default;
 
 // cell-group
 
@@ -149,6 +153,12 @@ $inputnumber-icon-size: 20px !default;
 
 // actionsheet
 $actionsheet-light-color: #f6f6f6 !default;
+$actionsheet-item-border-bottom: none !default;
+$actionsheet-item-font-size: $font-size-2 !default;
+$actionsheet-item-subdesc-font-size: $font-size-1 !default;
+$actionsheet-item-cancel-border-top: 1px solid $actionsheet-light-color !default;
+$actionsheet-item-line-height: 24px !default;
+$actionsheet-item-font-color: $title-color !default;
 
 //shortpassword
 $shortpassword-background-color: rgba(245, 245, 245, 1) !default;
