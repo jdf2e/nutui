@@ -260,7 +260,12 @@ $rate-icon-void-color: $disable-color !default;
 
 // tabbar
 $tabbar-active-color: $primary-color !default;
-$tabbar-border-color: #eee !default;
+$tabbar-unactive-color: $primary-color !default;
+$tabbar-border-top: 1px solid #eee !default;
+$tabbar-border-bottom: 1px solid #eee !default;
+$tabbar-box-shadow: none !default;
+$tabbar-item-text-font-size: $font-size-0 !default;
+$tabbar-item-text-line-height: initial !default;
 
 //infiniteloading
 $infiniteloading-bottom-color: #c8c8c8 !default;
@@ -371,6 +376,26 @@ $popover-disable-color: rgba(154, 155, 157, 1) !default;
 //progress
 $progress-inner-background-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
 $progress-insidetext-background: $primary-color !default;
+$progress-outer-background-color: #f3f3f3 !default;
+$progress-outer-border-radius: 12px !default;
+$progress-insidetext-border-radius: 5px !default;
+$progress-insidetext-padding: 3px 5px 3px 6px !default;
+$progress-insidetext-top: -42% !default;
+$progress-small-height: 5px !default;
+$progress-small-text-font-size: 7px !default;
+$progress-small-text-line-height: 10px !default;
+$progress-small-text-padding: 2px 4px !default;
+$progress-small-text-top: -100% !default;
+$progress-base-height: 10px !default;
+$progress-base-text-font-size: 9px !default;
+$progress-base-text-line-height: 13px !default;
+$progress-base-text-padding: $progress-insidetext-padding !default;
+$progress-base-text-top: $progress-insidetext-top !default;
+$progress-large-height: 15px !default;
+$progress-large-text-font-size: 13px !default;
+$progress-large-text-line-height: 18px !default;
+$progress-large-text-padding: $progress-insidetext-padding !default;
+$progress-large-text-top: $progress-insidetext-top !default;
 
 //pagination
 $pagination-color: $primary-color !default;
@@ -390,6 +415,7 @@ $tabs-titles-item-large-font-size: $font-size-3 !default;
 $tabs-titles-item-font-size: $font-size-2 !default;
 $tabs-titles-item-small-font-size: $font-size-1 !default;
 $tabs-titles-item-color: $title-color !default;
+$tabs-titles-item-active-color: $title-color !default;
 $tabs-titles-background-color: $help-color !default;
 $tabs-horizontal-tab-line-color: linear-gradient(90deg, $primary-color 0%, rgba($primary-color, 0.15) 100%) !default;
 $tabs-horizontal-titles-height: 46px !default;
