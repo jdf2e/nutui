@@ -6,9 +6,7 @@
       <span class="version">{{ version }}</span>
     </div>
     <div class="header-nav">
-      <a href="https://github.com/jdf2e/nutui/tree/theme" target="_blank"
-        >NutUI 主题定制 https://github.com/jdf2e/nutui/tree/theme</a
-      >
+      <a href="https://github.com/jdf2e/nutui/tree/theme" target="_blank">🌈 主题定制 可视化配置组件 </a>
     </div>
   </div>
 </template>

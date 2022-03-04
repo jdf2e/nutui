@@ -239,7 +239,12 @@ $rate-icon-void-color: $disable-color !default;
 
 // tabbar
 $tabbar-active-color: $primary-color !default;
-$tabbar-border-color: #eee !default;
+$tabbar-border-top: 0 !default;
+$tabbar-border-bottom: 0 !default;
+$tabbar-box-shadow: 0 -1.5px 5px rgba(0,0,0,0.04) !default;
+$tabbar-item-text-font-size: 12px !default;
+$tabbar-item-text-line-height: 18px !default;
+
 
 //infiniteloading
 $infiniteloading-bottom-color: #c8c8c8 !default;
@@ -350,6 +355,27 @@ $popover-disable-color: rgba(154, 155, 157, 1) !default;
 //progress
 $progress-inner-background-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
 $progress-insidetext-background: $primary-color !default;
+$progress-outer-background-color: rgba(0, 0, 0, 0.15) !default;
+$progress-outer-border-radius: 0 !default;
+$progress-insidetext-border-radius: 10px !default;
+$progress-insidetext-padding: 3px 5px 3px 6px !default;
+$progress-insidetext-top: -42% !default;
+$progress-small-height: 4px !default;
+$progress-small-text-font-size: 14px !default;
+$progress-small-text-line-height: 1.6 !default;
+$progress-small-text-padding: 0 8px !default;
+$progress-small-text-top: -200% !default;
+$progress-base-height: 10px !default;
+$progress-base-text-font-size: 9px !default;
+$progress-base-text-line-height: 13px !default;
+$progress-base-text-padding: $progress-insidetext-padding !default;
+$progress-base-text-top: $progress-insidetext-top !default;
+$progress-large-height: 15px !default;
+$progress-large-text-font-size: 13px !default;
+$progress-large-text-line-height: 18px !default;
+$progress-large-text-padding: $progress-insidetext-padding !default;
+$progress-large-text-top: $progress-insidetext-top !default;
+
 
 //pagination
 $pagination-color: $primary-color !default;
@@ -365,15 +391,16 @@ $pagination-prev-next-padding: 0 11px !default;
 // tabs
 $tabs-tab-smile-color: $primary-color !default;
 $tabs-titles-border-radius: 0 !default;
-$tabs-titles-item-large-font-size: $font-size-3 !default;
-$tabs-titles-item-font-size: $font-size-2 !default;
-$tabs-titles-item-small-font-size: $font-size-1 !default;
-$tabs-titles-item-color: $title-color !default;
-$tabs-titles-background-color: $help-color !default;
-$tabs-horizontal-tab-line-color: linear-gradient(90deg, $primary-color 0%, rgba($primary-color, 0.15) 100%) !default;
+$tabs-titles-item-large-font-size: $font-size-4 !default;
+$tabs-titles-item-font-size: $font-size-3 !default;
+$tabs-titles-item-small-font-size: $font-size-2 !default;
+$tabs-titles-item-color: rgba(0, 0, 0, 0.45) !default;
+$tabs-titles-item-active-color: $title-color !default;
+$tabs-titles-background-color: #fff !default;
+$tabs-horizontal-tab-line-color: $primary-color !default;
 $tabs-horizontal-titles-height: 46px !default;
 $tabs-horizontal-titles-item-min-width: 50px !default;
-$tabs-horizontal-titles-item-active-line-width: 40px !default;
+$tabs-horizontal-titles-item-active-line-width: 14px !default;
 $tabs-vertical-tab-line-color: linear-gradient(180deg, $primary-color 0%, rgba($primary-color, 0.15) 100%) !default;
 $tabs-vertical-titles-item-height: 40px !default;
 $tabs-vertical-titles-item-active-line-height: 14px !default;
