@@ -8,7 +8,8 @@
   align-items: center;
   &.wrapable {
     height: auto;
-    padding: 8px $noticebar-box-padding-right 8px $noticebar-box-padding-left;
+    padding: $noticebar-wrapable-padding-bottom $noticebar-wrapable-padding-right $noticebar-wrapable-padding-bottom
+      $noticebar-wrapable-padding-left;
     .wrap {
       height: auto;
       .content {
@@ -26,7 +27,8 @@
   .left-icon {
     height: $noticebar-left-icon-width;
     min-width: $noticebar-left-icon-width;
-    margin: 0 10px 0 0px;
+    margin: $noticebar-lefticon-padding-top $noticebar-lefticon-padding-right $noticebar-lefticon-padding-bottom
+      $noticebar-lefticon-padding-left;
     background-size: 100% 100%;
   }
   .right-icon {
@@ -34,7 +36,8 @@
     align-items: center;
     justify-content: center;
     width: $noticebar-right-icon-width;
-    margin: 0 0px 0 10px;
+    margin: $noticebar-righticon-padding-top $noticebar-righticon-padding-right $noticebar-righticon-padding-bottom
+      $noticebar-righticon-padding-left;
   }
   .wrap {
     display: flex;
