@@ -20,27 +20,27 @@ afterAll(() => {
   config.global.components = {};
 });
 
-// test('pull base', async () => {
-//   const wrapper = mount(InfiniteLoading, {
-//     props: {
-//       isOpenRefresh: true
-//     }
-//   });
-//   const track = wrapper.find('.nut-infiniteloading');
-//   // pulling
-//   trigger(track, 'touchstart', 0, 0);
-//   trigger(track, 'touchmove', 0, 20);
-//   expect(wrapper.html()).toMatchSnapshot();
+test('pull base', async () => {
+  const wrapper = mount(InfiniteLoading, {
+    props: {
+      isOpenRefresh: true
+    }
+  });
+  const track = wrapper.find('.nut-infiniteloading');
+  // pulling
+  trigger(track, 'touchstart', 0, 0);
+  trigger(track, 'touchmove', 0, 20);
+  expect(wrapper.html()).toMatchSnapshot();
 
-//   // loading
-//   trigger(track, 'touchend', 0, 100);
-//   expect(wrapper.html()).toMatchSnapshot();
+  // loading
+  trigger(track, 'touchend', 0, 100);
+  expect(wrapper.html()).toMatchSnapshot();
 
-//   // still loading
-//   triggerDrag(track, 0, 100);
+  // still loading
+  triggerDrag(track, 0, 100);
 
-//   expect(wrapper.emitted('refresh')).toBeTruthy();
-// });
+  expect(wrapper.emitted('refresh')).toBeTruthy();
+});
 
 test('infiniteloading base', async () => {
   const wrapper = mount({
