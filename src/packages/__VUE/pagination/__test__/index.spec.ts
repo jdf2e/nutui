@@ -52,7 +52,7 @@ test('should emit change event after clicking visible option', async () => {
 });
 
 //测试 click disable
-test('should emit change event after clicking visible option', async () => {
+test('should not emit change event after clicking disable option', async () => {
   const wrapper = mount(Pagination, {
     props: {
       totalItems: 25,
