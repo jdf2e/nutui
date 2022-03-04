@@ -4,13 +4,13 @@
   display: flex;
   .nut-progress-outer {
     flex: 1;
-    background-color: #f3f3f3;
-    border-radius: 12px;
+    background-color: $progress-outer-background-color;
+    border-radius: $progress-outer-border-radius;
     height: 10px;
     .nut-progress-inner {
       width: 30%;
       height: 100%;
-      border-radius: 12px;
+      border-radius: $progress-outer-border-radius;
       background: $progress-inner-background-color;
       -webkit-transition: all 0.4s;
       transition: all 0.4s;
@@ -30,7 +30,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        border-radius: 10px;
+        border-radius: $progress-outer-border-radius;
         animation: progressActive 2s ease-in-out infinite;
       }
     }
@@ -49,26 +49,30 @@
       }
     }
     &.nut-progress-small {
-      height: 5px;
+      height: $progress-small-height;
       .nut-progress-text {
-        font-size: 7px;
-        line-height: 10px;
-        padding: 2px 4px;
-        top: -100%;
+        font-size: $progress-small-text-font-size;
+        line-height: $progress-small-text-line-height;
+        padding: $progress-small-text-padding;
+        top: $progress-small-text-top;
       }
     }
     &.nut-progress-base {
-      height: 10px;
+      height: $progress-base-height;
       .nut-progress-text {
-        font-size: 9px;
-        line-height: 13px;
+        font-size: $progress-base-text-font-size;
+        line-height: $progress-base-text-line-height;
+        padding: $progress-base-text-padding;
+        top: $progress-base-text-top;
       }
     }
     &.nut-progress-large {
-      height: 15px;
+      height: $progress-large-height;
       .nut-progress-text {
-        font-size: 13px;
-        line-height: 18px;
+        font-size: $progress-large-text-font-size;
+        line-height: $progress-large-text-line-height;
+        padding: $progress-large-text-padding;
+        top: $progress-large-text-top;
       }
     }
   }
@@ -82,9 +86,9 @@
     min-width: 35px;
   }
   .nut-progress-insidetext {
-    padding: 3px 5px 3px 6px;
+    padding: $progress-insidetext-padding;
     background: $progress-insidetext-background;
-    border-radius: 5px;
+    border-radius: $progress-insidetext-border-radius;
     position: absolute;
     transition: all 0.4s;
     top: -42%;

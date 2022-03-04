@@ -35,14 +35,14 @@
 
     &_num {
       line-height: 1;
-      font-size: $font-size-0;
+      font-size: $tabbar-item-text-font-size;
       color: $white;
       padding: 1px 2px 2px 3px;
     }
 
     &_nums {
       line-height: 1;
-      font-size: $font-size-0;
+      font-size: $tabbar-item-text-font-size;
       color: $white;
       padding: 2px 1px 2px 2px;
     }
@@ -52,7 +52,8 @@
       background-position: center center;
     }
     &_nav-word {
-      font-size: $font-size-0;
+      font-size: $tabbar-item-text-font-size;
+      line-height: $tabbar-item-text-line-height;
       display: block;
     }
     &_big-word {
