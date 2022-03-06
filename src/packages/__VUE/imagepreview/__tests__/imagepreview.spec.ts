@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
 import ImagePreview from '../index.vue';
+import { nextTick } from 'vue';
 
 const images = [
   {
@@ -39,18 +40,45 @@ const videos = [
   }
 ];
 
-test('render image correctly', () => {
+test('basic usage test', async () => {
   const wrapper = mount(ImagePreview, {
     props: {
       show: true,
       images
     }
   });
-
-  expect(wrapper.html()).toMatchSnapshot();
+  await nextTick();
+  expect(wrapper.find('.custom-pop').html()).toMatchSnapshot();
 });
 
-test('render video correctly', () => {
+test('init page No.', async () => {
+  const wrapper = mount(ImagePreview, {
+    props: {
+      show: true,
+      images,
+      initNo: 3
+    }
+  });
+  await nextTick();
+  expect(wrapper.find('.nut-imagepreview-index').html()).toMatchSnapshot();
+});
+
+test('customize pagination and color', async () => {
+  const wrapper = mount(ImagePreview, {
+    props: {
+      show: true,
+      images,
+      paginationVisible: true,
+      paginationColor: 'red'
+    }
+  });
+  await nextTick();
+  const swiperPagination = wrapper.find('.nut-swiper-pagination');
+  expect(swiperPagination.exists()).toBe(true);
+  expect(swiperPagination.findAll('i')[0].element.style.backgroundColor).toEqual('red');
+});
+
+test('video surported in H5 env', async () => {
   const wrapper = mount(ImagePreview, {
     props: {
       show: true,
@@ -58,30 +86,20 @@ test('render video correctly', () => {
       videos
     }
   });
-
-  expect(wrapper.html()).toMatchSnapshot();
+  await nextTick();
+  expect(wrapper.find('.custom-pop').html()).toMatchSnapshot();
 });
 
-test('has pagination', () => {
-  const wrapper = mount(ImagePreview, {
-    props: {
-      show: true,
-      images,
-      'pagination-visible': true
-    }
-  });
-
-  expect(wrapper.html()).toMatchSnapshot();
-});
-
-test('click event test', () => {
-  const wrapper = mount(ImagePreview, {
-    props: {
-      show: true,
-      images
-    }
-  });
-
-  wrapper.trigger('click');
-  expect(wrapper.html()).toMatchSnapshot();
-});
+// test('close event trigged', async () => {
+//   const wrapper = mount(ImagePreview, {
+//     props: {
+//       show: true,
+//       images,
+//     }
+//   });
+//   await nextTick();
+//   const overlay: any = wrapper.find('.nut-overlay');
+//   await overlay.trigger('click');
+//   expect(wrapper.emitted('close')).toBeTruthy();
+//   expect(wrapper.emitted('update:show')).toBeFalsy();
+// });

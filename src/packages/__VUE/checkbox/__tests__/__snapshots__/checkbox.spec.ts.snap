@@ -1,25 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`prop disabled 1`] = `
-"<view class=\\"nut-checkbox \\"><i class=\\"nutui-iconfont nut-icon nut-icon-checked nut-checkbox__icon--disable\\" style=\\"font-size: 18px; width: 18px; height: 18px;\\" src=\\"\\"></i>
-  <view class=\\"nut-checkbox__label nut-checkbox__label--disabled\\"></view>
-</view>"
-`;
-
-exports[`prop iconName iconActiveName 1`] = `
-"<view class=\\"nut-checkbox \\"><i class=\\"nutui-iconfont nut-icon nut-icon-check-normal nut-checkbox__icon--unchecked\\" style=\\"font-size: 18px; width: 18px; height: 18px;\\" src=\\"\\"></i>
-  <view class=\\"nut-checkbox__label \\"></view>
-</view>"
-`;
-
-exports[`prop iconSize 1`] = `
-"<view class=\\"nut-checkbox \\"><i class=\\"nutui-iconfont nut-icon nut-icon-checked nut-checkbox__icon\\" style=\\"font-size: 20px; width: 20px; height: 20px;\\" src=\\"\\"></i>
-  <view class=\\"nut-checkbox__label \\"></view>
-</view>"
-`;
-
-exports[`prop label 1`] = `
-"<view class=\\"nut-checkbox \\"><i class=\\"nutui-iconfont nut-icon nut-icon-check-normal nut-checkbox__icon--unchecked\\" style=\\"font-size: 18px; width: 18px; height: 18px;\\" src=\\"\\"></i>
+exports[`basic usage 1`] = `
+"<view class=\\"nut-checkbox \\"><i class=\\"nutui-iconfont nut-icon nut-icon-checked nut-checkbox__icon\\" style=\\"font-size: 18px; width: 18px; height: 18px;\\" src=\\"\\"></i>
   <view class=\\"nut-checkbox__label \\"></view>
 </view>"
 `;
