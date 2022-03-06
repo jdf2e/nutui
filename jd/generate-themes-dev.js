@@ -3,22 +3,17 @@ const path = require('path');
 const fs = require('fs-extra');
 let fileStr = `@import '../variables.scss';\n`;
 let tasks = [];
+let sassStyles = '';
 config.nav.map((item) => {
   item.packages.forEach((element) => {
     let folderName = element.name.toLowerCase();
-    tasks.push(
-      fs
-        .copy(
-          path.resolve(__dirname, `../src/packages/__VUE/${folderName}/index.scss`),
-          path.resolve(__dirname, `../dist/theme/source/packages/${folderName}/index.scss_source`)
-        )
-        .then((success) => {
-          fileStr += `@import '../../packages/${folderName}/index.scss';\n`;
-        })
-        .catch((error) => {})
-    );
+    sassStyles += '\n';
+    sassStyles += fs.readFileSync(path.resolve(__dirname, `../src/packages/__VUE/${folderName}/index.scss`), 'utf8');
+    fileStr += `@import '../../packages/${folderName}/index.scss';\n`;
   });
 });
+
+fs.writeFile(path.resolve(__dirname, `../dist/theme/source/styles/sass-styles.scss_source`), sassStyles, 'utf8');
 
 tasks.push(
   fs.copy(path.resolve(__dirname, '../src/packages/styles'), path.resolve(__dirname, '../dist/theme/source/styles'))

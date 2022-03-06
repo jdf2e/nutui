@@ -10,7 +10,7 @@ type Obj = {
 type Store = {
   variables: Obj[];
   variablesMap: Obj;
-  rawStyles: Obj;
+  rawStyles: string;
   [k: string]: any;
 };
 
@@ -87,7 +87,7 @@ const extractStyle = (style: string) => {
     .filter((str) => !/^(\s+)?@include/.test(str))
     .join('\n');
 
-  style = style.replace(/[\w-]+:([^;{}]|;base64)+;(?!base64)/g, (matched) => {
+  style = style.replace(/(?:({|;|\s|\n))[\w-]+:([^;{}]|;base64)+;(?!base64)/g, (matched) => {
     const matchedKey = matched.match(/\$[\w-]+\b/g);
     if (matchedKey && matchedKey.some((k) => store.variablesMap[k])) {
       return matched;
@@ -135,12 +135,12 @@ const parseSassVariables = (text: string, components: string[]) => {
   return variables;
 };
 
-const cachedStyles: Obj = {};
+let cachedStyles = '';
 const store: Store = reactive({
   init: false,
   variables: [],
   variablesMap: {},
-  rawStyles: {}
+  rawStyles: ''
 });
 
 const getSassVariables = async () => {
@@ -174,11 +174,9 @@ const getSassVariables = async () => {
   store.variablesMap = variablesMap;
 };
 
-export const getRawSassStyle = async (name: string): Promise<void> => {
-  if (!store.rawStyles[name]) {
-    const style = await getRawFileText(`${config.themeUrl}/packages/${name}/index.scss_source`);
-    store.rawStyles[name] = style;
-  }
+export const getRawSassStyle = async (): Promise<void> => {
+  const style = await getRawFileText(`${config.themeUrl}/styles/sass-styles.scss_source`);
+  store.rawStyles = style;
 };
 
 export const useThemeEditor = function (): Obj {
@@ -186,15 +184,8 @@ export const useThemeEditor = function (): Obj {
 
   const cssText = computed(() => {
     const variablesText = store.variables.map(({ key, value }) => `${key}:${value}`).join(';');
-
-    const styleText = Object.keys(store.rawStyles)
-      .map((name) => {
-        cachedStyles[name] = cachedStyles[name] || extractStyle(store.rawStyles[name]);
-        return cachedStyles[name] || '';
-      })
-      .join('');
-
-    return `${variablesText};${styleText}`;
+    cachedStyles = cachedStyles || extractStyle(store.rawStyles);
+    return `${variablesText};${cachedStyles}`;
   });
 
   const formItems = computed(() => {
@@ -205,23 +196,14 @@ export const useThemeEditor = function (): Obj {
 
   onMounted(async () => {
     if (!store.init) {
-      await Promise.all([getSassVariables(), loadScript('https://cdnout.com/sass.js/sass.sync.min.js')]);
+      await Promise.all([
+        getSassVariables(),
+        loadScript('https://cdnout.com/sass.js/sass.sync.min.js'),
+        getRawSassStyle()
+      ]);
       store.init = true;
     }
   });
-
-  watch(
-    () => route.path,
-    (path) => {
-      const name = path.substring(1);
-      if (name !== 'base') {
-        getRawSassStyle(name);
-      }
-    },
-    {
-      immediate: true
-    }
-  );
 
   let timer: any = null;
   onBeforeUnmount(() => {
