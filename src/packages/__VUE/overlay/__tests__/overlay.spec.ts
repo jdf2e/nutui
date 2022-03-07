@@ -4,11 +4,10 @@ import OverLay from '../index.vue';
 test('should change z-index when using z-index prop', () => {
   const wrapper = mount(OverLay, {
     props: {
-      modelValue: true,
+      visible: true,
       zIndex: 99
     }
   });
-
   const overlay: any = wrapper.find('.nut-overlay');
   expect(overlay.element.style.zIndex).toEqual('99');
 });
@@ -16,7 +15,7 @@ test('should change z-index when using z-index prop', () => {
 test('should change animation duration when using duration prop', () => {
   const wrapper = mount(OverLay, {
     props: {
-      modelValue: true,
+      visible: true,
       duration: 1
     }
   });
@@ -28,7 +27,7 @@ test('should change animation duration when using duration prop', () => {
 test('prop overlay-class test', () => {
   const wrapper = mount(OverLay, {
     props: {
-      modelValue: true,
+      visible: true,
       overlayClass: 'testclass'
     }
   });
@@ -40,19 +39,19 @@ test('prop overlay-class test', () => {
 test('prop close-on-click-overlay test', async () => {
   const wrapper = mount(OverLay, {
     props: {
-      modelValue: true,
+      visible: true,
       closeOnClickOverlay: false
     }
   });
-  await wrapper.trigger('click');
   const overlay: any = wrapper.find('.nut-overlay');
-  expect(overlay.element.style.display).toEqual('none');
+  await overlay.trigger('click');
+  expect(overlay.element.style.display).toEqual('');
 });
 
 test('event click test', async () => {
   const wrapper = mount(OverLay, {
     props: {
-      modelValue: true,
+      visible: true,
       closeOnClickOverlay: true
     }
   });
@@ -60,12 +59,13 @@ test('event click test', async () => {
   const overlay: any = wrapper.find('.nut-overlay');
   await overlay.trigger('click');
   expect(wrapper.emitted('click')).toBeTruthy();
+  expect((wrapper.emitted('update:visible') as any)[0][0]).toBe(false);
 });
 
 test('slots test', () => {
   const wrapper = mount(OverLay, {
     props: {
-      modelValue: true
+      visible: true
     },
     slots: {
       default: '这里是正文'
