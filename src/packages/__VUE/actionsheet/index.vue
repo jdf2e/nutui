@@ -1,6 +1,13 @@
 <template>
   <view :class="classes">
-    <nut-popup pop-class="popclass" :visible="visible" position="bottom" round @click-overlay="close">
+    <nut-popup
+      pop-class="popclass"
+      :visible="visible"
+      :isWrapTeleport="isWrapTeleport"
+      position="bottom"
+      round
+      @click-overlay="close"
+    >
       <view class="nut-actionsheet-panel">
         <view v-if="title" class="nut-actionsheet-title">{{ title }}</view>
         <view class="nut-actionsheet-item desc" v-if="description">{{ description }}</view>
@@ -61,6 +68,10 @@ export default create({
     menuItems: {
       type: Array,
       default: () => []
+    },
+    isWrapTeleport: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['cancel', 'close', 'choose', 'update:visible'],
