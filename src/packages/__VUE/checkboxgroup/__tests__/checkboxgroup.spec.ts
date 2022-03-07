@@ -1,43 +1,96 @@
 import { mount } from '@vue/test-utils';
 import Checkboxgroup from '../index.vue';
 import Checkbox from '../../checkbox/index.vue';
-import { h } from '@vue/runtime-core';
+import { reactive, toRefs } from 'vue';
 
-test('prop label', () => {
-  const wrapper = mount(Checkboxgroup, {
-    props: {
-      disabled: true
+test('checkbox-group basic usage', async () => {
+  const wrapper = mount({
+    components: {
+      'nut-checkboxgroup': Checkboxgroup,
+      'nut-checkbox': Checkbox
+    },
+    template: `
+      <template>
+        <nut-checkboxgroup v-model="checkboxgroup1">
+          <nut-checkbox label="1">组合复选框</nut-checkbox>
+          <nut-checkbox label="2">组合复选框</nut-checkbox>
+          <nut-checkbox label="3">组合复选框</nut-checkbox>
+          <nut-checkbox label="4">组合复选框</nut-checkbox>
+        </nut-checkboxgroup>
+      </template>
+    `,
+    setup() {
+      const state = reactive({
+        checkboxgroup1: []
+      });
+      return { ...toRefs(state) };
     }
   });
-  expect(wrapper.html()).toMatchSnapshot();
+
+  const items = wrapper.findAll('.nut-checkbox');
+
+  await items[0].trigger('click');
+  expect(wrapper.vm.checkboxgroup1).toEqual(['1']);
 });
 
-// test('should emit "update:modelValue" event when checkbox is clicked', async () => {
-//   const wrapper = mount(Checkboxgroup, {
-//     slots: {
-//       default: () => {
-//         return h(
-//           'nut-checkbox',
-//           {
-//             modelValue: 'false',
-//             label: '1'
-//           }
-//         )
-//       }
+test('checkbox-group disabled test', async () => {
+  const wrapper = mount({
+    components: {
+      'nut-checkboxgroup': Checkboxgroup,
+      'nut-checkbox': Checkbox
+    },
+    template: `
+      <template>
+        <nut-checkboxgroup v-model="checkboxgroup1" disabled>
+          <nut-checkbox label="1">组合复选框</nut-checkbox>
+          <nut-checkbox label="2">组合复选框</nut-checkbox>
+          <nut-checkbox label="3">组合复选框</nut-checkbox>
+          <nut-checkbox label="4">组合复选框</nut-checkbox>
+        </nut-checkboxgroup>
+      </template>
+    `,
+    setup() {
+      const state = reactive({
+        checkboxgroup1: []
+      });
+      return { ...toRefs(state) };
+    }
+  });
+
+  const items = wrapper.findAll('.nut-checkbox');
+
+  await items[0].trigger('click');
+  expect(wrapper.vm.checkboxgroup1).toEqual([]);
+  expect(wrapper.find('.nut-checkbox__icon--disable')).toBeTruthy();
+});
+
+// test('checkbox-group change event test',async () => {
+//   const wrapper = mount({
+//     components: {
+//       'nut-checkboxgroup': Checkboxgroup,
+//       'nut-checkbox': Checkbox
+//     },
+//     template: `
+//       <template>
+//         <nut-checkboxgroup v-model="checkboxgroup1" @change="">
+//           <nut-checkbox label="1">组合复选框</nut-checkbox>
+//           <nut-checkbox label="2">组合复选框</nut-checkbox>
+//           <nut-checkbox label="3">组合复选框</nut-checkbox>
+//           <nut-checkbox label="4">组合复选框</nut-checkbox>
+//         </nut-checkboxgroup>
+//       </template>
+//     `,
+//     setup() {
+//       const state = reactive({
+//         checkboxgroup1: [],
+//       });
+//       return { ...toRefs(state) };
 //     }
 //   });
 
-//   expect(wrapper.html()).toContain('abc');
+//   const items = wrapper.findAll('.nut-checkbox');
 
-// const items = wrapper.findAll('.nut-checkbox');
-// console.log('blabla', wrapper)
-
-// await items[0].trigger('click');
-// expect(wrapper.vm).toContain('ballll')
-
-// await items[1].trigger('click');
-// expect(wrapper.vm.value).toEqual(['1', '2']);
-
-// await items[0].trigger('click');
-// expect(wrapper.vm.value).toEqual(['2']);
+//   await items[0].trigger('click');
+//   // expect(wrapper.vm.checkboxgroup1).toEqual(['1']);
+//   expect(wrapper.emitted('change')![0]).toEqual(['1']);
 // });
