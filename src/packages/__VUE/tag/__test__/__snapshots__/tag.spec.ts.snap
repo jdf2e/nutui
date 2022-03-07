@@ -11,12 +11,9 @@ exports[`should render border-color correctly 1`] = `
   <!--v-if-->
 </view>"
 `;
-<<<<<<< HEAD
-=======
 
 exports[`should render textColor correctly 1`] = `
 "<view class=\\"nut-tag nut-tag--default nut-tag--plain\\" style=\\"background: red; color: blue;\\">
   <!--v-if-->
 </view>"
 `;
->>>>>>> master/next
