@@ -32,7 +32,7 @@
   }
   .nut-cell {
     &::after {
-      border-bottom: 2px solid #f5f6f7;
+      border-bottom: $cell-after-border-bottom;
     }
   }
 }

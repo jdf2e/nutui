@@ -16,14 +16,7 @@ afterAll(() => {
 test('render ok', () => {
   const wrapper = mount(Switch);
 
-  expect(wrapper.classes()).toContain('nut-switch-base');
-});
-
-test('emit click event', () => {
-  const wrapper = mount(Switch);
-
-  wrapper.trigger('click');
-  expect(wrapper.emitted('change')).toBeTruthy();
+  expect(wrapper.html()).toMatchSnapshot();
 });
 
 test('prop modelValue test', () => {
@@ -44,6 +37,28 @@ test('prop disable test', () => {
   expect(wrapper.classes()).toContain('nut-switch-disable');
 });
 
+test('prop loading test', () => {
+  const wrapper = mount(Switch, {
+    props: {
+      loading: true
+    }
+  });
+  expect(wrapper.find('.nut-icon-loading1')).toBeTruthy();
+});
+
+test('prop  color and size on loading mode', () => {
+  const wrapper = mount(Switch, {
+    props: {
+      loading: true,
+      color: 'blue',
+      size: '16px'
+    }
+  });
+  const style = wrapper.find('.switch-button').findAll('i')[0].element.style;
+  expect(style.color).toEqual('blue');
+  expect(style.fontSize).toEqual('16px');
+});
+
 test('prop activeText test', () => {
   const wrapper = mount(Switch, {
     props: {
@@ -51,4 +66,11 @@ test('prop activeText test', () => {
     }
   });
   expect(wrapper.html()).toContain('test text');
+});
+
+test('emit click event', () => {
+  const wrapper = mount(Switch);
+
+  wrapper.trigger('click');
+  expect(wrapper.emitted('change')).toBeTruthy();
 });
