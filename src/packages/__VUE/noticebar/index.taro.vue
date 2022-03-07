@@ -9,13 +9,13 @@
       v-if="direction == 'across'"
     >
       <view class="left-icon" v-if="iconShow" :style="{ 'background-image': `url(${iconBg})` }">
-        <nut-icon name="notice" size="16" :color="color" v-if="!iconBg"></nut-icon>
+        <slot name="left-icon"><nut-icon name="notice" size="16" :color="color" v-if="!iconBg"></nut-icon></slot>
       </view>
-      <view ref="wrap" class="wrap">
+      <view ref="wrap" :class="`wrap wrap${id}`">
         <view
           ref="content"
           class="content"
-          :class="[animationClass, { 'nut-ellipsis': !scrollable && !wrapable }]"
+          :class="[animationClass, { 'nut-ellipsis': isEllipsis }, `content${id}`]"
           :style="contentStyle"
           @animationend="onAnimationEnd"
           @webkitAnimationEnd="onAnimationEnd"
@@ -23,8 +23,8 @@
           <slot>{{ text }}</slot>
         </view>
       </view>
-      <view v-if="closeMode" class="right-icon" @click.stop="onClickIcon">
-        <nut-icon name="close" size="11" :color="color"></nut-icon>
+      <view v-if="closeMode || rightIcon" class="right-icon" @click.stop="onClickIcon">
+        <slot name="right-icon"> <nut-icon :name="rightIcon ? rightIcon : 'close'" :color="color"></nut-icon></slot>
       </view>
     </view>
 
@@ -121,13 +121,14 @@ export default create({
       default: false
     },
     leftIcon: { type: String, default: '' },
+    rightIcon: { type: String, default: '' },
     color: {
       type: String,
       default: '#F9911B'
     },
     background: {
       type: String,
-      default: 'rgba(254,250,216,1)'
+      default: ''
     },
     delay: {
       type: [String, Number],
@@ -135,7 +136,7 @@ export default create({
     },
     scrollable: {
       type: Boolean,
-      default: true
+      default: null
     },
     speed: {
       type: Number,
@@ -168,7 +169,9 @@ export default create({
       scrollList: [],
       distance: 0,
       timer: null,
-      keepAlive: false
+      keepAlive: false,
+      isCanScroll: null,
+      id: Math.round(Math.random() * 100000)
     });
 
     const classes = computed(() => {
@@ -176,6 +179,14 @@ export default create({
       return {
         [prefixCls]: true
       };
+    });
+
+    const isEllipsis = computed(() => {
+      if (state.isCanScroll == null) {
+        return false && !props.wrapable;
+      } else {
+        return !state.isCanScroll && !props.wrapable;
+      }
     });
 
     const iconShow = computed(() => {
@@ -202,9 +213,9 @@ export default create({
 
     const contentStyle = computed(() => {
       return {
-        paddingLeft: state.firstRound ? 0 : state.wrapWidth + 'px',
         animationDelay: (state.firstRound ? props.delay : 0) + 's',
-        animationDuration: state.duration + 's'
+        animationDuration: state.duration + 's',
+        transform: `translateX(${state.firstRound ? 0 : state.wrapWidth + 'px'})`
       };
     });
 
@@ -258,17 +269,19 @@ export default create({
         let offsetWidth = 0;
 
         Taro.createSelectorQuery()
-          .select('.wrap')
+          .select(`.wrap${state.id}`)
           .boundingClientRect((rect) => {
             if (rect.width > 0) wrapWidth = rect.width;
           })
           .exec();
         Taro.createSelectorQuery()
-          .select(`.content`)
+          .select(`.content${state.id}`)
           .boundingClientRect((rect) => {
             if (rect.width > 0) offsetWidth = rect.width;
 
-            if (props.scrollable && offsetWidth > wrapWidth) {
+            state.isCanScroll = props.scrollable == null ? offsetWidth > wrapWidth : props.scrollable;
+
+            if (state.isCanScroll) {
               state.wrapWidth = wrapWidth;
               state.offsetWidth = offsetWidth;
 
@@ -277,7 +290,6 @@ export default create({
             } else {
               state.animationClass = '';
             }
-            // contentStyle()
           })
           .exec();
       }, 100);
@@ -287,7 +299,9 @@ export default create({
     };
 
     const onClickIcon = (event: Event) => {
-      state.showNoticeBar = !props.closeMode;
+      if (props.closeMode) {
+        state.showNoticeBar = !props.closeMode;
+      }
       emit('close', event);
     };
 
@@ -346,15 +360,12 @@ export default create({
     };
 
     onMounted(() => {
-      // console.log(props.direction);
       if (props.direction == 'vertical') {
         if (slots.default) {
           state.scrollList = [].concat(slots.default()[0].children as any);
         } else {
           state.scrollList = [].concat(props.list as any);
         }
-
-        // console.log(state.scrollList);
 
         setTimeout(() => {
           props.complexAm ? startRoll() : startRollEasy();
@@ -382,6 +393,7 @@ export default create({
     return {
       ...toRefs(props),
       ...toRefs(state),
+      isEllipsis,
       classes,
       iconShow,
       barStyle,

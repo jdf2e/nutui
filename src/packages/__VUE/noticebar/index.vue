@@ -9,13 +9,13 @@
       v-if="direction == 'across'"
     >
       <view class="left-icon" v-if="iconShow" :style="{ 'background-image': `url(${iconBg})` }">
-        <nut-icon name="notice" size="16" :color="color" v-if="!iconBg"></nut-icon>
+        <slot name="left-icon"><nut-icon name="notice" size="16" :color="color" v-if="!iconBg"></nut-icon></slot>
       </view>
       <view ref="wrap" class="wrap">
         <view
           ref="content"
           class="content"
-          :class="[animationClass, { 'nut-ellipsis': !scrollable && !wrapable }]"
+          :class="[animationClass, { 'nut-ellipsis': isEllipsis }]"
           :style="contentStyle"
           @animationend="onAnimationEnd"
           @webkitAnimationEnd="onAnimationEnd"
@@ -23,8 +23,8 @@
           <slot>{{ text }}</slot>
         </view>
       </view>
-      <view v-if="closeMode" class="right-icon" @click.stop="onClickIcon">
-        <nut-icon name="close" :color="color"></nut-icon>
+      <view v-if="closeMode || rightIcon" class="right-icon" @click.stop="onClickIcon">
+        <slot name="right-icon"> <nut-icon :name="rightIcon ? rightIcon : 'close'" :color="color"></nut-icon></slot>
       </view>
     </view>
 
@@ -33,7 +33,7 @@
         <view class="horseLamp_list" :style="horseLampStyle">
           <ScrollItem
             v-for="(item, index) in scrollList"
-            v-bind:key="index"
+            :key="index"
             :style="{ height: height + 'px', 'line-height': height + 'px' }"
             :item="item"
           ></ScrollItem>
@@ -82,6 +82,21 @@ import {
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('noticebar');
 
+interface StateProps {
+  wrapWidth: number;
+  firstRound: boolean;
+  duration: number;
+  offsetWidth: number;
+  showNoticeBar: boolean;
+  animationClass: string;
+
+  animate: boolean;
+  scrollList: [];
+  distance: number;
+  timer: null;
+  keepAlive: boolean;
+  isCanScroll: null | boolean;
+}
 export default create({
   props: {
     // 滚动方向  across 横向 vertical 纵向
@@ -120,6 +135,7 @@ export default create({
       default: false
     },
     leftIcon: { type: String, default: '' },
+    rightIcon: { type: String, default: '' },
     color: {
       type: String,
       default: ''
@@ -134,7 +150,7 @@ export default create({
     },
     scrollable: {
       type: Boolean,
-      default: true
+      default: null
     },
     speed: {
       type: Number,
@@ -144,6 +160,7 @@ export default create({
   components: {
     ScrollItem: function (props) {
       props.item.props.style = props.style;
+      props.item.key = props.key;
       return h(props.item);
     }
   },
@@ -155,7 +172,7 @@ export default create({
     const wrap = ref<null | HTMLElement>(null);
     const content = ref<null | HTMLElement>(null);
 
-    const state = reactive({
+    const state = reactive<StateProps>({
       wrapWidth: 0,
       firstRound: true,
       duration: 0,
@@ -167,7 +184,8 @@ export default create({
       scrollList: [],
       distance: 0,
       timer: null,
-      keepAlive: false
+      keepAlive: false,
+      isCanScroll: null
     });
 
     const classes = computed(() => {
@@ -175,6 +193,14 @@ export default create({
       return {
         [prefixCls]: true
       };
+    });
+
+    const isEllipsis = computed(() => {
+      if (state.isCanScroll == null) {
+        return false && !props.wrapable;
+      } else {
+        return !state.isCanScroll && !props.wrapable;
+      }
     });
 
     const iconShow = computed(() => {
@@ -201,9 +227,9 @@ export default create({
 
     const contentStyle = computed(() => {
       return {
-        paddingLeft: state.firstRound ? 0 : state.wrapWidth + 'px',
         animationDelay: (state.firstRound ? props.delay : 0) + 's',
-        animationDuration: state.duration + 's'
+        animationDuration: state.duration + 's',
+        transform: `translateX(${state.firstRound ? 0 : state.wrapWidth + 'px'})`
       };
     });
     const iconBg = computed(() => {
@@ -257,7 +283,9 @@ export default create({
 
         const offsetWidth = content.value.getBoundingClientRect().width;
 
-        if (props.scrollable && offsetWidth > wrapWidth) {
+        state.isCanScroll = props.scrollable == null ? offsetWidth > wrapWidth : props.scrollable;
+
+        if (state.isCanScroll) {
           state.wrapWidth = wrapWidth;
           state.offsetWidth = offsetWidth;
 
@@ -273,7 +301,9 @@ export default create({
     };
 
     const onClickIcon = (event: Event) => {
-      state.showNoticeBar = !props.closeMode;
+      if (props.closeMode) {
+        state.showNoticeBar = !props.closeMode;
+      }
       emit('close', event);
     };
 
@@ -332,15 +362,12 @@ export default create({
     };
 
     onMounted(() => {
-      // console.log(props.direction);
       if (props.direction == 'vertical') {
         if (slots.default) {
           state.scrollList = [].concat(slots.default()[0].children as any);
         } else {
           state.scrollList = [].concat(props.list as any);
         }
-
-        // console.log(state.scrollList);
 
         setTimeout(() => {
           props.complexAm ? startRoll() : startRollEasy();
@@ -368,6 +395,7 @@ export default create({
     return {
       ...toRefs(props),
       ...toRefs(state),
+      isEllipsis,
       classes,
       iconShow,
       barStyle,
