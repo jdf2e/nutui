@@ -5,7 +5,7 @@ import PopUp from '../index.vue';
 test('should change z-index when using z-index prop', async () => {
   const wrapper = mount(PopUp, {
     props: {
-      modelValue: true,
+      visible: true,
       zIndex: 99,
       isWrapTeleport: false
     }
@@ -18,7 +18,7 @@ test('should change z-index when using z-index prop', async () => {
 test('should change animation duration when using duration prop', () => {
   const wrapper = mount(PopUp, {
     props: {
-      modelValue: true,
+      visible: true,
       isWrapTeleport: false,
       duration: 12
     }
@@ -35,7 +35,7 @@ test('should change animation duration when using duration prop', () => {
 //     });
 //   expect(document.body.classList.contains('van-overflow-hidden')).toBeFalsy();
 
-//   await wrapper.setProps({ modelValue: true });
+//   await wrapper.setProps({ visible: true });
 //   // 这里body拿不到class
 //   expect(document.body.classList.contains('van-overflow-hidden')).toBeTruthy();
 // });
@@ -43,7 +43,7 @@ test('should change animation duration when using duration prop', () => {
 test('should not render overlay when overlay prop is false', () => {
   const wrapper = mount(PopUp, {
     props: {
-      modelValue: true,
+      visible: true,
       isWrapTeleport: false,
       overlay: false
     }
@@ -54,20 +54,20 @@ test('should not render overlay when overlay prop is false', () => {
 test('prop close-on-click-overlay test', async () => {
   const wrapper = mount(PopUp, {
     props: {
-      modelValue: true,
+      visible: true,
       isWrapTeleport: false,
       closeOnClickOverlay: false
     }
   });
   await wrapper.trigger('click');
   const overlay: any = wrapper.find('.nut-overlay');
-  expect(overlay.element.style.display).toEqual('none');
+  expect(overlay.element.style.display).toEqual('');
 });
 
 test('pop from top', async () => {
   const wrapper = mount(PopUp, {
     props: {
-      modelValue: true,
+      visible: true,
       isWrapTeleport: false,
       position: 'top'
     }
@@ -80,7 +80,7 @@ test('pop from top', async () => {
 test('pop from bottom', async () => {
   const wrapper = mount(PopUp, {
     props: {
-      modelValue: true,
+      visible: true,
       isWrapTeleport: false,
       position: 'bottom'
     }
@@ -93,7 +93,7 @@ test('pop from bottom', async () => {
 test('pop from left', async () => {
   const wrapper = mount(PopUp, {
     props: {
-      modelValue: true,
+      visible: true,
       isWrapTeleport: false,
       position: 'left'
     }
@@ -106,7 +106,7 @@ test('pop from left', async () => {
 test('pop from right', async () => {
   const wrapper = mount(PopUp, {
     props: {
-      modelValue: true,
+      visible: true,
       isWrapTeleport: false,
       position: 'right'
     }
@@ -119,7 +119,7 @@ test('pop from right', async () => {
 test('should render close icon when using closeable prop', async () => {
   const wrapper = mount(PopUp, {
     props: {
-      modelValue: true,
+      visible: true,
       isWrapTeleport: false,
       closeable: true
     }
@@ -132,7 +132,7 @@ test('should render close icon when using closeable prop', async () => {
 test('should render correct close icon when using close-icon prop', () => {
   const wrapper = mount(PopUp, {
     props: {
-      modelValue: true,
+      visible: true,
       isWrapTeleport: false,
       closeable: true,
       closeIcon: 'success'
@@ -145,7 +145,7 @@ test('should render correct close icon when using close-icon prop', () => {
 test('should have "van-popup--round" class when setting the round prop', () => {
   const wrapper = mount(PopUp, {
     props: {
-      modelValue: true,
+      visible: true,
       isWrapTeleport: false,
       round: true
     }
@@ -163,7 +163,7 @@ test('should allow to using teleport prop', async () => {
 test('event click test', async () => {
   const wrapper = mount(PopUp, {
     props: {
-      modelValue: true,
+      visible: true,
       isWrapTeleport: false,
       closeOnClickOverlay: true
     }
@@ -177,7 +177,7 @@ test('event click test', async () => {
 test('event click-close-icon test', async () => {
   const wrapper = mount(PopUp, {
     props: {
-      modelValue: true,
+      visible: true,
       isWrapTeleport: false,
       closeable: true
     }
@@ -186,22 +186,22 @@ test('event click-close-icon test', async () => {
   expect(wrapper.emitted('click-close-icon')).toBeTruthy();
 });
 
-// test('should emit open event when prop modelValue is set to true', async () => {
-//   const wrapper = mount(PopUp, {
-//     props: {
-//       modelValue: false,
-//       isWrapTeleport: false,
-//     },
-//   });
+test('should emit open event when prop visible is set to true', async () => {
+  const wrapper = mount(PopUp, {
+    props: {
+      visible: false,
+      isWrapTeleport: false
+    }
+  });
 
-//   await wrapper.setProps({ modelValue: true });
-//   expect(wrapper.emitted('open')).toBeTruthy();
-// });
+  await wrapper.setProps({ visible: true });
+  expect(wrapper.emitted('open')).toBeTruthy();
+});
 
 // test('event close test', async () => {
 //   const wrapper = mount(PopUp, {
 //     props: {
-//       modelValue: true,
+//       visible: true,
 //       isWrapTeleport: false,
 //     },
 //   });
@@ -213,7 +213,7 @@ test('event click-close-icon test', async () => {
 test('event click-overlay test', async () => {
   const wrapper = mount(PopUp, {
     props: {
-      modelValue: true,
+      visible: true,
       isWrapTeleport: false
     }
   });
