@@ -72,7 +72,7 @@ export default create({
     },
     bgColor: {
       type: String,
-      default: 'rgba(0, 0, 0, .8)'
+      default: ''
     },
     onClose: Function,
     unmount: Function,
@@ -82,7 +82,7 @@ export default create({
     },
     coverColor: {
       type: String,
-      default: 'rgba(0, 0, 0, 0)'
+      default: ''
     },
     title: {
       type: String,

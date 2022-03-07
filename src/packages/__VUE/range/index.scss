@@ -40,12 +40,12 @@
 
   &-button {
     display: block;
-    width: 24px;
-    height: 24px;
-    background-color: $white;
+    width: $range-bar-btn-width;
+    height: $range-bar-btn-height;
+    background-color: $range-bar-btn-bg-color;
     border-radius: 50%;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
-    border: 1px solid $primary-color;
+    border: $range-bar-btn-border;
     outline: none;
 
     &-wrapper,
