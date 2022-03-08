@@ -116,17 +116,16 @@ test('blur event test', async () => {
   expect(wrapper.emitted('blur')).toBeTruthy();
 });
 
-test('clear event test', () => {
+test('clear event test', async () => {
   const wrapper = mount(SearchBar, { props: { modelValue: 3 } });
   const input = wrapper.find('input');
   const clear = wrapper.find('.nut-searchbar__input-clear');
   wrapper.find('input').trigger('input');
-  clear.trigger('click');
-
+  expect(input.element.value).toBe('3');
+  await clear.trigger('click');
+  // 修改update:modelValue
+  expect((wrapper.emitted('update:modelValue') as any)[1][0]).toEqual('');
   expect(clear.exists()).toBe(true);
-  setTimeout(() => {
-    expect(input.element.value).toBe('');
-  });
 });
 
 test('slot test', () => {
