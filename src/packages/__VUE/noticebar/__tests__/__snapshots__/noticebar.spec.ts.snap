@@ -24,7 +24,7 @@ exports[`icon custom 1`] = `
       <!--v-if-->
     </view>
     <view class=\\"wrap\\">
-      <view class=\\"content nut-ellipsis\\" style=\\"padding-left: 0px; animation-delay: 1s; animation-duration: 0s;\\"><a href=\\"https://www.jd.com\\">京东商城</a></view>
+      <view class=\\"content\\" style=\\"animation-delay: 1s; animation-duration: 0s; transform: translateX(0);\\"><a href=\\"https://www.jd.com\\">京东商城</a></view>
     </view>
     <!--v-if-->
   </view>
