@@ -4,6 +4,7 @@
     position="bottom"
     :overlay="overlay"
     @click-overlay="closeBoard()"
+    :isWrapTeleport="isWrapTeleport"
     overlay-class="nut-numberkeyboard-overlay"
   >
     <div class="nut-numberkeyboard" ref="root">
@@ -60,7 +61,7 @@
               />
             </div>
           </div>
-          <div class="key-board-wrapper" @click="closeBoard()" v-if="title == ''">
+          <div class="key-board-wrapper key-board-finish" @click="closeBoard()" v-if="title == ''">
             <div :class="['key', 'finish', { activeFinsh: clickKeyIndex == 'finish' }]"> 完成 </div>
           </div>
         </div>
@@ -104,6 +105,10 @@ export default create({
       default: false
     },
     overlay: {
+      type: Boolean,
+      default: true
+    },
+    isWrapTeleport: {
       type: Boolean,
       default: true
     }
