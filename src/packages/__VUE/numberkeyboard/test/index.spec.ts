@@ -37,8 +37,18 @@ test('should shuffle key order when using random-key prop', async () => {
       randomKeys: true
     }
   });
+  //随机数无法跑快照，每次生成都不同
+  //   expect(wrapper.html()).toMatchSnapshot();
+  const keys: number[] = [];
+  const clickKeys: number[] = [];
 
-  expect(wrapper.html()).toMatchSnapshot();
+  for (let i = 0; i < 9; i++) {
+    keys.push(i + 1);
+    clickKey(wrapper.findAll('.key')[i]);
+    clickKeys.push(wrapper.emitted<number[]>('input')![i][0]);
+  }
+
+  expect(keys.every((v, k) => keys[k] === clickKeys[k])).toEqual(false);
 });
 test('should emit delete event after clicking delete key', () => {
   const wrapper = mount(NumberKeyboard, {
