@@ -28,7 +28,7 @@ export default create({
     },
     iconSize: {
       type: [String, Number],
-      default: 18
+      default: ''
     }
   },
   setup(props, { emit, slots }) {
