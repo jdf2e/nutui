@@ -17,24 +17,24 @@ afterAll(() => {
   config.global.components = {};
 });
 
-const simpleColumn = ['1990', '1991', '1992', '1993', '1994', '1995'];
-const columns = [
-  {
-    values: ['vip', 'normal'],
-    className: 'column1'
-  },
-  {
-    values: simpleColumn,
-    className: 'column2'
-  }
-];
+// const simpleColumn = ['1990', '1991', '1992', '1993', '1994', '1995'];
+// const columns = [
+//   {
+//     values: ['vip', 'normal'],
+//     className: 'column1'
+//   },
+//   {
+//     values: simpleColumn,
+//     className: 'column2'
+//   }
+// ];
 
-test('base', async () => {
-  const wrapper = mount(Picker, {
-    props: {
-      modelVisible: true,
-      listData: []
-    }
-  });
-  await nextTick();
-});
+// test('base', async () => {
+//   const wrapper = mount(Picker, {
+//     props: {
+//       modelVisible: true,
+//       listData: []
+//     }
+//   });
+//   await nextTick();
+// });
