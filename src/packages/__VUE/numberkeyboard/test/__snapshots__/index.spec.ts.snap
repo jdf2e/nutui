@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should shuffle key order when using random-key prop 1`] = `
+"<view>
+  <transition-stub class=\\"nut-numberkeyboard-overlay\\">
+    <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000;\\"></view>
+  </transition-stub>
+  <transition-stub>
+    <view class=\\"nut-popup popup-bottom\\" style=\\"z-index: 2000; animation-duration: 0.3s;\\">
+      <div class=\\"nut-numberkeyboard\\">
+        <!--v-if-->
+        <div class=\\"number-board-body\\">
+          <div class=\\"number-board\\">
+            <div class=\\"key-board-wrapper\\">
+              <div class=\\"key\\">3
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </div>
+            <div class=\\"key-board-wrapper\\">
+              <div class=\\"key\\">2
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </div>
+            <div class=\\"key-board-wrapper\\">
+              <div class=\\"key\\">6
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </div>
+            <div class=\\"key-board-wrapper\\">
+              <div class=\\"key\\">1
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </div>
+            <div class=\\"key-board-wrapper\\">
+              <div class=\\"key\\">5
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </div>
+            <div class=\\"key-board-wrapper\\">
+              <div class=\\"key\\">4
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </div>
+            <div class=\\"key-board-wrapper\\">
+              <div class=\\"key\\">7
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </div>
+            <div class=\\"key-board-wrapper\\">
+              <div class=\\"key\\">9
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </div>
+            <div class=\\"key-board-wrapper\\">
+              <div class=\\"key\\">8
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </div>
+            <div class=\\"key-board-wrapper\\">
+              <div class=\\"key lock\\">
+                <!--v-if--><img src=\\"https://img11.360buyimg.com/imagetools/jfs/t1/146371/38/8485/738/5f606425Eca239740/14f4b4f5f20d8a68.png\\">
+                <!--v-if-->
+              </div>
+            </div>
+            <div class=\\"key-board-wrapper\\">
+              <div class=\\"key\\">0
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </div>
+            <div class=\\"key-board-wrapper\\">
+              <div class=\\"key delete\\">
+                <!--v-if-->
+                <!--v-if--><img src=\\"https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png\\">
+              </div>
+            </div>
+          </div>
+          <!--v-if-->
+        </div>
+      </div>
+      <!--v-if-->
+    </view>
+  </transition-stub>
+</view>"
+`;
