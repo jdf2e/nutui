@@ -39,9 +39,7 @@
                     <view class="calendar-curr-tips calendar-curr-tips-bottom" v-if="bottomInfo">
                       <slot name="bottomInfo" :date="day.type == 'curr' ? day : ''"> </slot>
                     </view>
-                    <view class="calendar-curr-tip-curr" v-if="!bottomInfo && showToday && isCurrDay(month, day.day)">
-                      今天
-                    </view>
+                    <view class="calendar-curr-tip-curr" v-if="!bottomInfo && showToday && isCurrDay(day)"> 今天 </view>
                     <view
                       class="calendar-day-tip"
                       :class="{ 'calendar-curr-tips-top': rangeTip(day, month) }"
@@ -500,7 +498,6 @@ export default create({
       setDefaultRange(monthsNum, current);
       state.currentIndex = current;
       state.yearMonthTitle = state.monthsData[state.currentIndex].title;
-
       // 设置当前选中日期
       if (state.isRange) {
         chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
@@ -544,11 +541,7 @@ export default create({
 
     // 是否有开始提示
     const isStartTip = (day: Day, month: MonthInfo) => {
-      if (isActive(day, month)) {
-        return isStart(getCurrDate(day, month));
-      } else {
-        return false;
-      }
+      return isActive(day, month) && isStart(getCurrDate(day, month));
     };
 
     // 是否有结束提示
@@ -565,13 +558,13 @@ export default create({
       }
     };
     // 是否有 当前日期
-    const isCurrDay = (month: any, day: string) => {
-      const date = `${month.curData[0]}-${month.curData[1]}-${day}`;
+    const isCurrDay = (dateInfo: any) => {
+      const date = `${dateInfo.year}-${dateInfo.month}-${dateInfo.day < 10 ? '0' + dateInfo.day : dateInfo.day}`;
       return Utils.isEqual(date, Utils.date2Str(new Date()));
     };
     // 滚动处理事件
     const mothsViewScroll = (e: any) => {
-      var currentScrollTop = e.target.scrollTop;
+      const currentScrollTop = e.target.scrollTop;
       let current = Math.floor(currentScrollTop / state.avgHeight);
       if (current == 0) {
         if (currentScrollTop >= state.monthsData[current + 1].cssScrollHeight) {
@@ -585,16 +578,16 @@ export default create({
           current -= 1;
         }
       } else {
+        const viewPosition = Math.round(currentScrollTop + viewHeight.value);
         if (
-          currentScrollTop + viewHeight.value <
-          state.monthsData[current].cssScrollHeight + state.monthsData[current].cssHeight
+          viewPosition < state.monthsData[current].cssScrollHeight + state.monthsData[current].cssHeight &&
+          currentScrollTop > state.monthsData[current - 1].cssScrollHeight
         ) {
           current -= 1;
         }
         if (
           current + 1 <= state.monthsNum &&
-          currentScrollTop + viewHeight.value >=
-            state.monthsData[current + 1].cssScrollHeight + state.monthsData[current + 1].cssHeight
+          viewPosition >= state.monthsData[current + 1].cssScrollHeight + state.monthsData[current + 1].cssHeight
         ) {
           current += 1;
         }
@@ -602,6 +595,7 @@ export default create({
           current -= 1;
         }
       }
+
       if (state.currentIndex !== current) {
         state.currentIndex = current;
         setDefaultRange(state.monthsNum, current);
