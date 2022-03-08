@@ -75,7 +75,6 @@ $button-danger-background-color: #f52f3e !default;
 $button-warning-color: $white !default;
 $button-warning-border-color: #ff9c00 !default;
 $button-warning-background-color: #ff9c00 !default;
-$button-plain-background-color: #fff !default;
 $button-plain-background-color: $white !default;
 
 // cell
@@ -103,6 +102,16 @@ $cell-group-desc-font-size: $font-size-1 !default;
 $cell-group-desc-line-height: 16px !default;
 $cell-group-background-color: $white !default;
 
+// divider
+
+$divider-margin: 16px 0 !default;
+$divider-text-font-size: 16px !default;
+$divider-text-color: rgba(0,0,0,0.3) !default;
+$divider-line-color: rgba(0,0,0,0.3) !default;
+$divider-line-height  : 2px !default;
+$divider-before-margin-right: 16px !default;
+$divider-after-margin-left: 16px !default;
+
 // icon
 
 $icon-height: 20px !default;
@@ -116,7 +125,19 @@ $uploader-picture-height: 100px !default;
 $uploader-background: #f7f8fa !default;
 
 // picker
-$picker-cancel-color: $primary-color !default;
+$picker-cancel-color: #595959 !default;
+$picker-ok-color: $primary-color !default;
+$picker-bar-cancel-font-size: 16px !default;
+$picker-bar-ok-font-size: 16px !default;
+$picker-bar-button-padding: 0 16px !default;
+$picker-bar-title-font-size: 18px !default;
+$picker-bar-title-color: #323233 !default;
+$picker-bar-title-font-weight: 600 !default;
+$picker-item-height: 36px !default;
+$picker-item-text-color: #808080 !default;
+$picker-item-active-text-color: $primary-color !default;
+$picker-item-text-font-size: 16px !default;
+$picker-item-active-line-border: 1px solid rgba(0, 0, 0, 0.06) !default;
 
 //input
 $input-border-bottom: #eaf0fb !default;
@@ -275,17 +296,26 @@ $step-wait-bg-color: #959fb1 !default;
 $dialog-width: 296px !default;
 
 // checkbox
-$checkbox-label-color: #1d1e1e !default;
+$checkbox-label-color: rgba(0, 0, 0, 0.85) !default;
 $checkbox-label-disable-color: #999 !default;
 $checkbox-icon-disable-color: #d6d6d6 !default;
+$checkbox-label-margin-left: 8px !default;
+$checkbox-label-font-size: 16px !default;
+$checkbox-icon-font-size: 20px !default;
 
 //radio
-$radio-label-font-color: #1d1e1e !default;
+$radio-label-font-color: rgba(0, 0, 0, 0.85) !default;
 $radio-label-font-active-color: $primary-color !default;
 $radio-label-disable-color: #999 !default;
 $radio-icon-disable-color: #d6d6d6 !default;
 $radio-label-button-border-color: $primary-color !default;
 $radio-label-button-background: rgba($primary-color, 0.05) !default;
+$radio-label-margin-left: 8px !default;
+$radio-button-border-radius: 15px !default;
+$radio-label-font-size: 14px !default;
+$radio-button-font-size: 12px !default;
+$radio-button-padding: 5px 18px !default;
+$radio-icon-font-size: 18px !default;
 
 //fixednav
 $fixednav-bg-color: $white !default;

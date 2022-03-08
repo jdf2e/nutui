@@ -215,11 +215,14 @@ export const useThemeEditor = function (): Obj {
       clearTimeout(timer);
       timer = setTimeout(() => {
         const Sass = (window as any).Sass;
+        let beginTime = new Date().getTime();
+        console.log('sass编译开始', beginTime);
         Sass &&
           Sass.compile(css, async (res: Obj) => {
             await awaitIframe();
             const iframe = window.frames[0] as any;
             if (res.text && iframe) {
+              console.log('sass编译成功', new Date().getTime() - beginTime);
               if (!iframe.__styleEl) {
                 const style = iframe.document.createElement('style');
                 style.id = 'theme';
@@ -227,6 +230,9 @@ export const useThemeEditor = function (): Obj {
               }
               iframe.__styleEl.innerHTML = res.text;
               iframe.document.head.appendChild(iframe.__styleEl);
+            } else {
+              console.log('sass编译失败', new Date().getTime() - beginTime);
+              console.error(res);
             }
 
             if (res.status !== 0 && res.message) {
