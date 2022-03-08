@@ -101,6 +101,7 @@ export default create({
     });
 
     const columnList = computed(() => {
+      console.log('初始化', dataType.value);
       if (dataType.value === 'text') {
         return [{ values: state.formattedColumns, defaultIndex: state.defaultIndex }];
       } else if (dataType.value === 'multipleColumns') {

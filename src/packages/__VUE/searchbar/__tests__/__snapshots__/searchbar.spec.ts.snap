@@ -1,8 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should emit search event when enter key is pressed 1`] = `undefined`;
-
-exports[`should render background prop correctly 1`] = `
+exports[`basic usage 1`] = `
 "<view class=\\"nut-searchbar\\">
   <!--v-if-->
   <view class=\\"nut-searchbar__search-input\\">
@@ -17,7 +15,7 @@ exports[`should render background prop correctly 1`] = `
 </view>"
 `;
 
-exports[`should render rightout slot correctly 1`] = `
+exports[`slot test 1`] = `
 "<view class=\\"nut-searchbar\\">
   <!--v-if-->
   <view class=\\"nut-searchbar__search-input\\">
@@ -28,6 +26,6 @@ exports[`should render rightout slot correctly 1`] = `
     </view>
     <!--v-if-->
   </view>
-  <view class=\\"nut-searchbar__search-icon nut-searchbar__right-search-icon\\">搜索</view>
+  <!--v-if-->
 </view>"
 `;
