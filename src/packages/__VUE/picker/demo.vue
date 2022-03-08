@@ -19,7 +19,7 @@
       @close="close"
     >
     </nut-picker>
-    <!-- <nut-picker
+    <nut-picker
       v-model:visible="show1"
       :list-data="listData1"
       title="城市选择"
@@ -38,7 +38,7 @@
       title="地址选择"
       @change="onChange"
       @confirm="(val) => confirm(4, val)"
-    ></nut-picker> -->
+    ></nut-picker>
   </div>
 </template>
 <script lang="ts">
