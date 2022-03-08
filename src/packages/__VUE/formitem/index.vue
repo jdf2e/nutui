@@ -15,7 +15,7 @@
 </template>
 <script lang="ts">
 import { pxCheck } from '../../utils/pxCheck';
-import { computed, inject, PropType, ref } from 'vue';
+import { computed, inject, provide, PropType, ref } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('form-item');
 import { FormItemRule } from './types';
@@ -70,6 +70,10 @@ export default create({
 
   setup(props, { emit }) {
     const parent = inject('formErrorTip') as any;
+
+    provide('form', {
+      props
+    });
 
     const labelStyle = computed(() => {
       return {

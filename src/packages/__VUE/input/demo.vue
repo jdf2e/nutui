@@ -1,27 +1,69 @@
 <template>
   <div class="demo full">
+    <!-- <h2>校验</h2>
+    <nut-form>
+    <nut-form-item label="姓名" prop="name" required :rules="[{ required: true, message: '请填写姓名' }]">
+      <nut-input v-model="state.val0" @change="change" @focus="focus" @blur="blur" label="文本(异步)" />
+    </nut-form-item>
+    </nut-form> -->
     <h2>基础用法</h2>
-    <nut-input v-model="state.val0" @change="change" @focus="focus" @blur="blur" label="文本(异步)" />
-    <nut-input
-      placeholder="请输入文本"
-      @change="change"
-      v-model="state.val1"
-      :require-show="true"
-      label="文本"
-      @clear="clear"
-    />
-    <h2>禁用输入框</h2>
-    <nut-input v-model="state.val2" @change="change" :disabled="true" label="文本" />
-    <nut-input v-model="state.val3" @change="change" :readonly="true" label="文本" />
-    <h2>限制输入长度</h2>
-    <nut-input v-model="state.val4" @change="change" max-length="7" label="限制7" />
+    <nut-input placeholder="请输入文本" v-model="state.val1" label="文本" />
+
     <h2>自定义类型</h2>
-    <nut-input v-model="state.val5" @change="change" type="password" label="密码" />
-    <nut-input v-model="state.val6" @change="change" type="number" label="整数" />
-    <nut-input v-model="state.val7" @change="change" type="digit" placeholder="支持小数点的输入" label="数字" />
+    <nut-input label="文本" v-model="state.text" />
+    <nut-input label="密码" v-model="state.password" type="password" />
+    <nut-input label="数字" v-model="state.number" type="number" placeholder="支持小数点的输入" />
+    <nut-input label="整数" v-model="state.digit" type="digit" />
+    <nut-input label="手机号" v-model="state.tel" type="tel" />
+
+    <h2>禁用输入框</h2>
+    <nut-input v-model="state.readonly" readonly label="文本" placeholder="输入框只读" />
+    <nut-input v-model="state.disabled" disabled label="文本" placeholder="输入框已禁用" />
+
+    <h2>显示图标</h2>
+    <nut-input v-model="state.showIcon" label="文本" left-icon="dongdong" right-icon="ask2" placeholder="显示图标" />
+    <nut-input v-model="state.clear" label="文本" clearable clearSize="14" placeholder="显示清除图标" />
+
+    <h2>错误提示</h2>
+    <nut-input v-model="state.required" label="文本" required placeholder="必填项" />
+    <nut-input v-model="state.error1" label="文本" error placeholder="输入内容标红" />
+    <nut-input v-model="state.error2" label="文本" error-message="底部错误提示文案" placeholder="底部错误提示文案" />
+
+    <h2>插入按钮</h2>
+    <nut-input v-model="state.buttonVal" clearable center label="短信验证码" placeholder="请输入短信验证码">
+      <template #button>
+        <nut-button size="small" type="primary"> 发送验证码 </nut-button>
+      </template>
+    </nut-input>
+
+    <h2>格式化输入内容</h2>
+    <nut-input v-model="state.format1" label="文本" :formatter="formatter" placeholder="在输入时执行格式化" />
+    <nut-input
+      v-model="state.format2"
+      label="文本"
+      :formatter="formatter"
+      format-trigger="onBlur"
+      placeholder="在失焦时执行格式化"
+    />
+
+    <h2>显示字数统计</h2>
+    <nut-input
+      v-model="state.textarea"
+      label="留言"
+      type="textarea"
+      show-word-limit
+      rows="2"
+      maxNum="50"
+      placeholder="请输入留言"
+    />
+
+    <h2>对齐方式</h2>
+    <nut-input v-model="state.align1" label="文本" label-align="right" placeholder="文本内容对齐" />
+    <nut-input v-model="state.align2" label="文本" input-align="right" placeholder="输入框内容对齐" />
+
     <h2>无边框</h2>
-    <nut-input v-model="state.val8" @change="change" :hasBorder="false" label="无边框" />
-    <nut-input v-model="state.val9" @change="change" :hasBorder="false" label="无边框" />
+    <nut-input v-model="state.disabled" @change="change" :border="false" label="无边框" />
+    <nut-input v-model="state.showIcon" @change="change" :border="false" label="无边框" />
   </div>
 </template>
 
@@ -32,19 +74,27 @@ const { createDemo } = createComponent('input');
 export default createDemo({
   setup() {
     const state = reactive({
-      val0: '初始数据',
       val1: '',
-      val2: '禁止修改',
-      val3: 'readonly 只读',
-      val4: '',
-      val5: '',
-      val6: '',
-      val7: '',
-      val8: '',
-      val9: ''
+      text: '',
+      password: '',
+      number: '',
+      digit: '',
+      tel: '',
+      readonly: '',
+      disabled: '',
+      showIcon: '',
+      required: '',
+      error1: '',
+      error2: '',
+      buttonVal: '',
+      format1: '',
+      format2: '',
+      textarea: '',
+      align1: '',
+      align2: ''
     });
     setTimeout(function () {
-      state.val0 = '异步数据';
+      // state.val0 = '异步数据';
     }, 2000);
     const change = (value: string | number, event: Event) => {
       console.log('change: ', value, event);
@@ -58,12 +108,15 @@ export default createDemo({
     const clear = (value: string | number) => {
       console.log('clear:', value);
     };
+    const formatter = (value: string) => value.replace(/\d/g, '');
+
     return {
       state,
       change,
       blur,
       clear,
-      focus
+      focus,
+      formatter
     };
   }
 });
