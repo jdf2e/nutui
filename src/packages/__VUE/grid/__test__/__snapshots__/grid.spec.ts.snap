@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should navifation correctly 1`] = `
+"<view class=\\"nut-grid nut-grid--border\\">
+  <view class=\\"nut-grid-item\\" style=\\"flex-basis: 25%;\\">
+    <view class=\\"nut-grid-item__content nut-grid-item__content--border nut-grid-item__content--center nut-grid-item__content--clickable\\"><i class=\\"nutui-iconfont nut-icon nut-icon-\\" style=\\"font-size: 28px; width: 28px; height: 28px;\\" src=\\"\\"></i>
+      <view class=\\"nut-grid-item__text\\"></view>
+    </view>
+  </view>
+</view>"
+`;
+
 exports[`should render default slot correctly 1`] = `
 "<view class=\\"nut-grid nut-grid--border\\">
   <view class=\\"nut-grid-item\\" style=\\"flex-basis: 25%;\\">
