@@ -1,13 +1,15 @@
 .nut-noticebar-page {
-  width: 100%;
+  // width: 100%;
   display: flex;
+  padding: 0px $noticebar-box-padding-right 0 $noticebar-box-padding-left;
   height: $noticebar-height;
   font-size: $noticebar-font-size;
   position: relative;
   align-items: center;
   &.wrapable {
     height: auto;
-    padding: 8px 16px;
+    padding: $noticebar-wrapable-padding-bottom $noticebar-wrapable-padding-right $noticebar-wrapable-padding-bottom
+      $noticebar-wrapable-padding-left;
     .wrap {
       height: auto;
       .content {
@@ -25,7 +27,8 @@
   .left-icon {
     height: $noticebar-left-icon-width;
     min-width: $noticebar-left-icon-width;
-    margin: 0 5px 0 10px;
+    margin: $noticebar-lefticon-padding-top $noticebar-lefticon-padding-right $noticebar-lefticon-padding-bottom
+      $noticebar-lefticon-padding-left;
     background-size: 100% 100%;
   }
   .right-icon {
@@ -33,9 +36,11 @@
     align-items: center;
     justify-content: center;
     width: $noticebar-right-icon-width;
-    margin: 0 10px 0 5px;
+    margin: $noticebar-righticon-padding-top $noticebar-righticon-padding-right $noticebar-righticon-padding-bottom
+      $noticebar-righticon-padding-left;
   }
   .wrap {
+    display: flex;
     flex: 1;
     height: $noticebar-line-height;
     line-height: $noticebar-line-height;
@@ -72,7 +77,7 @@
 
 @keyframes nut-notice-bar-play-infinite {
   to {
-    transform: translate3d(-100%, 0, 0);
+    transform: translateX(-100%);
   }
 }
 // 垂直方向的滚动
@@ -90,6 +95,7 @@
   height: $noticebar-height;
   font-size: $noticebar-font-size;
   overflow: hidden;
+  padding: 0px $noticebar-box-padding-right 0 $noticebar-box-padding-left;
 
   .horseLamp_list {
     margin: 0;

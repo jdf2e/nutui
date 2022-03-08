@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`slots test 1`] = `
+"<transition-stub>
+  <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000;\\">这里是正文</view>
+</transition-stub>"
+`;
