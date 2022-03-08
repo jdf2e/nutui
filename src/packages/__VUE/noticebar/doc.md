@@ -28,26 +28,37 @@ app.use(NoticeBar);
 
 ```html
 <template>
-  <nut-noticebar text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"></nut-noticebar>
-</template>
-
-```
-:::
-### 禁用滚动
-文字内容多于一行时，可通过scrollable参数控制是否开启滚动
-
-:::demo
-
-```html
-<template>
   <nut-noticebar
       text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
-      :scrollable="false"
+      :background="`rgba(251, 248, 220, 1)`"
+      :color="`#D9500B`"
     ></nut-noticebar>
 </template>
 
 ```
 :::
+
+### 滚动播放
+
+通知栏的内容长度溢出时会自动开启滚动播放，可通过 scrollable 属性可以控制该行为
+
+:::demo
+
+```html
+<template>
+  <nut-noticebar text="华为畅享9新品即将上市" :scrollable="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`"></nut-noticebar>
+
+  <nut-noticebar
+      text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
+      :scrollable="false"
+      :background="`rgba(251, 248, 220, 1)`"
+      :color="`#D9500B`"
+    ></nut-noticebar>
+</template>
+
+```
+:::
+
 
 ### 通告栏模式--关闭模式
 
@@ -55,11 +66,18 @@ app.use(NoticeBar);
 
 ```html
 <template>
+  <nut-noticebar :closeMode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
+    华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！
+  </nut-noticebar>
+ 
   <nut-noticebar
       :closeMode="true"
-      @click="hello"
-    >华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！
-    </nut-noticebar>
+      right-icon="circle-close"
+      :background="`rgba(251, 248, 220, 1)`"
+      :color="`#D9500B`"
+      >
+      华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！
+  </nut-noticebar>
 </template>
 
 ```
@@ -80,11 +98,38 @@ app.use(NoticeBar);
 </template>
 ```
 :::
+
+### 多行展示
+
+文字较长时，可以通过设置 wrapable 属性来开启多行展示。默认为不滚动，可以通过设置 scrollable 控制为滚动。
+
+:::demo
+```html
+<template>
+  <nut-noticebar
+      text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
+      wrapable
+      :background="`rgba(251, 248, 220, 1)`"
+      :color="`#D9500B`"
+    ></nut-noticebar>
+</template>
+```
+:::
+
 ### 纵向滚动
 :::demo
 ```html
 <template>
-    <nut-noticebar direction='vertical' :list="horseLamp1" :speed='10' :standTime='1000'  @click='go' :closeMode="true"></nut-noticebar>
+  <nut-noticebar 
+      direction='vertical' 
+      :list="horseLamp1" 
+      :speed='10' 
+      :standTime='1000' 
+      @click='go' 
+      :closeMode="true" 
+      :background="`rgba(251, 248, 220, 1)`"
+      :color="`#D9500B`">
+  </nut-noticebar>
 </template>
 
 <script>
@@ -108,7 +153,7 @@ app.use(NoticeBar);
 :::demo
 ```html
 <template>
-    <nut-noticebar direction='vertical' :list="horseLamp2" :speed='10' :standTime='2000' :complexAm='true'></nut-noticebar>
+  <nut-noticebar direction='vertical' :list="horseLamp2" :speed='10' :standTime='2000' :complexAm='true' :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`"></nut-noticebar>
 </template>
 
 <script>
@@ -128,7 +173,7 @@ app.use(NoticeBar);
 :::demo
 ```html
 <template>
-    <nut-noticebar direction='vertical' :height='50' :speed='10' :standTime='1000' :list="[]"  @close='go'>
+    <nut-noticebar direction='vertical' :height='50' :speed='10' :standTime='1000' :list="[]"  @close='go' :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
       <div class="custom-item" :data-index='index' v-for="(item,index) in horseLamp3" :key="index">{{item}}</div>
     </nut-noticebar>
 </template>
@@ -150,14 +195,9 @@ app.use(NoticeBar);
 :::demo
 ```html
 <template>
-    <nut-noticebar direction='vertical' :list="horseLamp1" :speed='10' :standTime='1000' >
+    <nut-noticebar direction='vertical' :list="horseLamp1" :speed='10' :standTime='1000' :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
       <template v-slot:rightIcon>
-        <nut-icon 
-          type="trolley" 
-          color="#f0250f"
-        >
-        </nut-icon>
-
+        <nut-icon type="trolley" color="#f0250f"></nut-icon>
       </template>
     </nut-noticebar>
 </template>
@@ -183,6 +223,7 @@ app.use(NoticeBar);
 | text       | 提示的信息                                                 | String        | 空     |
 | closeMode  | 是否启用关闭模式                                           | Boolean       | false  |
 | leftIcon   | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | String        | 空     |
+| rightIcon   | closeMode 模式下，默认为 ‘close’,其他模式下，没有为默认图片 | String        | 空     |
 | color      | 导航栏的文字颜色                                           | String        | 空     |
 | background | 导航栏的背景颜色                                           | String        | 空     |
 | delay      | 延时多少秒                                                 | String/Number | 1      |
@@ -200,6 +241,13 @@ app.use(NoticeBar);
 | height          | 每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值                 | Number | 40              |
 | closeMode  | 是否启用右侧关闭图标，可以通过slot[name=rightIcon]自定义图标                                   | Boolean       | false  |
 
+### Slots
+
+| 参数         | 说明                             | 
+|--------------|----------------------------------|
+| default         | 通知文本的内容               | 
+| right-icon        | 自定义右侧图标    | 
+| left-icon        | 自定义左侧图标    | 
 ### Event
 
 | 字段  | 说明             | 回调参数     |

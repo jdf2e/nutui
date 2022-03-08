@@ -4,7 +4,6 @@
   </div>
 </template>
 <script lang="ts">
-import { login } from '@tarojs/taro';
 import { computed, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('divider');

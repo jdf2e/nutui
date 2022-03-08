@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`base 1`] = `
+"<view class=\\"nut-picker\\" modelvisible=\\"true\\">
+  <!--teleport start-->
+  <!--teleport end-->
+</view>"
+`;
