@@ -32,27 +32,28 @@
     justify-content: center;
     pointer-events: auto;
     height: 100%;
+    background: $toast-cover-bg-color;
   }
   &-inner {
     display: inline-block;
-    font-size: $font-size-base;
+    font-size: $toast-text-font-size;
     min-width: 40%;
     max-width: 65%;
     text-align: center;
-    padding: 24px 30px;
+    padding: $toast-inner-padding;
     word-break: break-all;
-    background: rgba(0, 0, 0, 0);
-    border-radius: 12px;
-    color: $white;
+    background: $toast-inner-bg-color;
+    border-radius: $toast-inner-border-radius;
+    color: $toast-font-color;
   }
   &-text {
-    font-size: 14px;
+    font-size: $toast-text-font-size;
     &:empty {
       margin-bottom: -8px;
     }
   }
   &-title {
-    font-size: 16px;
+    font-size: $toast-title-font-size;
     &:empty {
       margin-bottom: -8px;
     }

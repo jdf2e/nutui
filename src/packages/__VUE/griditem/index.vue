@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { computed, CSSProperties } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRouter } from '@/packages/utils/useRoute';
 import { createComponent } from '../../utils/create';
 import { pxCheck } from '../../utils/pxCheck';
 import { useInject } from '../../utils/useRelation/useInject';

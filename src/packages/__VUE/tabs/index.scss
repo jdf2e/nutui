@@ -149,6 +149,7 @@
       }
       &.active {
         font-weight: 600;
+        color: $tabs-titles-item-active-color;
         .nut-tabs__titles-item__line {
           content: ' ';
           width: $tabs-horizontal-titles-item-active-line-width;

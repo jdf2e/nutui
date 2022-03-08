@@ -77,7 +77,6 @@ test('should render initpage', async () => {
 
   await nextTick();
   await nextTick();
-
   const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement;
 
   expect(swiperItem.style.transform).toEqual(`translateX(-${wrapper.vm.width * wrapper.vm.page}px)`);
@@ -199,7 +198,6 @@ test('should render loop and auto-play', async () => {
   });
 
   await nextTick();
-  await nextTick();
 
   await sleep(200);
   const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement;
@@ -260,7 +258,6 @@ test('should not allow to drag when loop is false', async () => {
     }
   });
 
-  await nextTick();
   await nextTick();
 
   await sleep(2000);
