@@ -26,13 +26,11 @@
     <div class="text-data">我是测试数据23</div>
     <div class="text-data">我是测试数据24</div>
     <nut-backtop @click="handleClick" el-id="elId" :distance="100" :bottom="90">
-      <view>无</view>
+      <view class="backtop-demo"
+        ><nut-icon size="12px" class="nut-backtop-main" name="top"></nut-icon><view class="title">顶部</view></view
+      >
     </nut-backtop>
-    <nut-backtop
-      @click="handleClick"
-      el-id="elId"
-      :distance="200"
-    ></nut-backtop>
+    <nut-backtop @click="handleClick" el-id="elId" :distance="200"></nut-backtop>
   </div>
 </template>
 
@@ -62,7 +60,6 @@ export default createDemo({
     padding-left: 16px;
     display: flex;
     align-items: center;
-    width: 100%;
     height: 46px;
     background: rgba(255, 255, 255, 1);
     border-radius: 7px;
@@ -70,6 +67,14 @@ export default createDemo({
     line-height: 19px;
     font-size: 13px;
     color: rgba(102, 102, 102, 1);
+  }
+  .backtop-demo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .title {
+      font-size: 12px;
+    }
   }
 }
 </style>
