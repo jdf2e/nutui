@@ -1,16 +1,16 @@
 .nut-divider {
   display: flex;
   align-items: center;
-  font-size: 14px;
-  color: #909ca4;
-  margin: 8px 0;
-  width: 100%;
+  font-size: $divider-text-font-size;
+  color: $divider-text-color;
+  margin: $divider-margin;
 
   &::before,
   &::after {
     content: '';
-    border: 1px solid currentColor;
-    border-width: 1px 0 0;
+    border: $divider-line-height solid currentColor;
+    border-width: $divider-line-height 0 0;
+    height: $divider-line-height;
     flex: 1;
   }
 
@@ -18,11 +18,11 @@
   &.nut-divider-left,
   &.nut-divider-right {
     &::before {
-      margin-right: 8px;
+      margin-right: $divider-before-margin-right;
     }
 
     &::after {
-      margin-left: 8px;
+      margin-left: $divider-after-margin-left;
     }
   }
 
