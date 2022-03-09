@@ -8,11 +8,12 @@
       :close-on-click-overlay="closeOnClickOverlay"
       @close="close"
       :round="true"
+      :isWrapTeleport="isWrapTeleport"
     >
       <view class="nut-picker__bar">
-        <view class="nut-picker__left nut-picker__button" @click="close">{{ cancelText }}</view>
+        <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="close">{{ cancelText }}</view>
         <view> {{ title }}</view>
-        <view class="nut-picker__button" @click="confirm()">{{ okText }}</view>
+        <view class="nut-picker__confirm nut-picker__button" @click="confirm()">{{ okText }}</view>
       </view>
 
       <view class="nut-picker__column">
@@ -23,7 +24,6 @@
             :list-data="item"
             :readonly="readonly"
             :default-index="item.defaultIndex"
-            :visible-item-count="visibleItemCount"
             :data-type="dataType"
             @change="
               (dataIndex) => {
@@ -37,7 +37,18 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, watch, computed, toRaw, toRefs } from 'vue';
+import {
+  onMounted,
+  onBeforeMount,
+  onBeforeUnmount,
+  onActivated,
+  onDeactivated,
+  reactive,
+  watch,
+  computed,
+  toRaw,
+  toRefs
+} from 'vue';
 import { createComponent } from '../../utils/create';
 import column from './Column.vue';
 import popup, { popupProps } from '../popup/index.vue';
@@ -65,7 +76,20 @@ export default create({
       type: String,
       default: '确定'
     },
-    ...commonProps
+    listData: {
+      type: Array,
+      default: () => {
+        return [];
+      }
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    defaultIndex: {
+      type: [Number, String],
+      default: 0
+    }
   },
   emits: ['close', 'change', 'confirm', 'update:visible'],
   setup(props, { emit }) {
@@ -101,7 +125,6 @@ export default create({
     });
 
     const columnList = computed(() => {
-      console.log('初始化', dataType.value);
       if (dataType.value === 'text') {
         return [{ values: state.formattedColumns, defaultIndex: state.defaultIndex }];
       } else if (dataType.value === 'multipleColumns') {
@@ -198,6 +221,14 @@ export default create({
 
       emit('update:visible', false);
     };
+
+    onMounted(() => {
+      if (props.visible) state.show = props.visible;
+    });
+
+    onBeforeUnmount(() => {
+      if (props.visible) state.show = false;
+    });
 
     watch(
       () => props.visible,
