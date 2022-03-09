@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-cell title="请选择城市1" :desc="desc" @click="open(0)"></nut-cell>
+    <nut-cell title="请选择城市" :desc="desc" @click="open(0)"></nut-cell>
     <h2>默认选中项</h2>
     <nut-cell title="请选择城市" :desc="desc1" @click="open(1)"></nut-cell>
     <h2>多列样式</h2>
@@ -101,14 +101,14 @@ export default createDemo({
       }
     ]);
 
-    const show = ref(true);
+    const show = ref(false);
     const show1 = ref(false);
     const show2 = ref(false);
     const show3 = ref(false);
     const show4 = ref(false);
     const showList = [show, show1, show2, show3, show4];
-    const desc = ref(listData1[0]);
-    const desc1 = ref(listData1[2]);
+    const desc = ref(listData1.value[0]);
+    const desc1 = ref(listData1.value[2]);
     const desc2 = ref(
       `${listData2[0].values[listData2[0].defaultIndex]} ${listData2[1].values[listData2[1].defaultIndex]}`
     );
