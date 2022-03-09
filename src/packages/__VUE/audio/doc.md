@@ -71,13 +71,13 @@ export default {
 import { reactive, toRefs, onMounted } from 'vue';
 export default {
   setup() {
+    const audioDemo = ref(null);
     const data = reactive({
       muted: false,
       autoplay: false
     });
     const duration = ref(0);
     onMounted(() => {
-      console.log(audioDemo.value);
       setTimeout(() => {
         duration.value = audioDemo.value.second.toFixed();
       }, 500);
@@ -85,7 +85,8 @@ export default {
 
     return {
       ...toRefs(data),
-      duration
+      duration,
+      audioDemo
     };
   }
 };
