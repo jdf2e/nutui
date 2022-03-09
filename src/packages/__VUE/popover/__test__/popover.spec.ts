@@ -68,23 +68,6 @@ test('should close popover when clicking the list', async () => {
   expect(wrapper.emitted('update:visible')![0]).toEqual([false]);
 });
 
-test('should locate to reference element when showed', async () => {
-  const root = document.createElement('div');
-  const wrapper = mount(Popover, {
-    props: {
-      teleport: root
-    }
-  });
-
-  expect(root.innerHTML).toMatchSnapshot();
-
-  await wrapper.setProps({ visible: true });
-  expect(root.innerHTML).toMatchSnapshot();
-
-  await wrapper.setProps({ visible: false });
-  expect(root.innerHTML).toMatchSnapshot();
-});
-
 test('should watch placement prop and update location', async () => {
   const root = document.createElement('div');
   const wrapper = mount(Popover, {

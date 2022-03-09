@@ -4,11 +4,11 @@
     <div class="show-demo">
       <nut-countup :init-num="0" :end-num="200"></nut-countup>
       <nut-countup :init-num="150.0" :end-num="0.0" :speed="6.18" :to-fixed="2"></nut-countup>
-      <nut-countup :init-num="500.0" :end-num="0.0" :speed="17" :to-fixed="2"></nut-countup>
+      <nut-countup :init-num="500.0" :end-num="0.0" :speed="50" :to-fixed="2"></nut-countup>
     </div>
     <h2>数字滚动</h2>
     <div class="show-demo">
-      <nut-countup :scrolling="true" :init-num="18.618" :end-num="18.618" :during="600"></nut-countup>
+      <nut-countup :scrolling="true" :init-num="18.618" :during="600"></nut-countup>
     </div>
     <h2>自定义滚动图片展示</h2>
     <div class="show-demo">

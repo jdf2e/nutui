@@ -93,9 +93,8 @@ export default createDemo({
   flex-wrap: wrap;
 }
 .nut-button {
-  margin-right: 15px;
+  margin-right: 5px;
   &:last-child {
-    margin-bottom: 0;
     margin-right: 0;
   }
 }

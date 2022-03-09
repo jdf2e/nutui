@@ -10,9 +10,9 @@
       :round="true"
     >
       <view class="nut-picker__bar">
-        <view class="nut-picker__left nut-picker__button" @click="close">{{ cancelText }}</view>
-        <view> {{ title }}</view>
-        <view class="nut-picker__button" @click="confirm()">{{ okText }}</view>
+        <view class="nut-picker__button nut-picker__left" @click="close">{{ cancelText }}</view>
+        <view class="nut-picker__title"> {{ title }}</view>
+        <view class="nut-picker__button nut-picker__right" @click="confirm()">{{ okText }}</view>
       </view>
 
       <view class="nut-picker__column">
@@ -101,6 +101,7 @@ export default create({
     });
 
     const columnList = computed(() => {
+      console.log('初始化', dataType.value);
       if (dataType.value === 'text') {
         return [{ values: state.formattedColumns, defaultIndex: state.defaultIndex }];
       } else if (dataType.value === 'multipleColumns') {

@@ -27,7 +27,7 @@ app.use(CountUp);
 <template>
     <nut-countup :init-num='0' :end-num='200'></nut-countup>
     <nut-countup :init-num='150.00' :end-num='0.00' :speed='2.62' :to-fixed='2'></nut-countup>
-    <nut-countup :init-num='1000.00' :end-num='0.00' :speed='6.3' :start-flag='startNum' :to-fixed='2'></nut-countup>
+    <nut-countup :init-num='1000.00' :end-num='0.00' :speed='50' :to-fixed='2'></nut-countup>
 </template>
 ```
 
