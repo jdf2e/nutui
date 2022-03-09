@@ -12,8 +12,8 @@
     >
       <view class="nut-picker__bar">
         <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="close">{{ cancelText }}</view>
-        <view> {{ title }}</view>
-        <view class="nut-picker__confirm nut-picker__button" @click="confirm()">{{ okText }}</view>
+        <view class="nut-picker__title"> {{ title }}</view>
+        <view class="nut-picker__confirm nut-picker__button nut-picker__right" @click="confirm()">{{ okText }}</view>
       </view>
 
       <view class="nut-picker__column">
