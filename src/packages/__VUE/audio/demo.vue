@@ -3,7 +3,7 @@
     <h2>基础用法</h2>
     <nut-audio
       style="margin-left: 20px"
-      url="http://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       :muted="muted"
       :autoplay="autoplay"
       :loop="true"
@@ -13,7 +13,7 @@
     <h2>语音播放</h2>
     <nut-audio
       style="margin-left: 20px"
-      url="http://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       :muted="muted"
       :autoplay="autoplay"
       :loop="false"
@@ -29,7 +29,7 @@
     <h2>进度条展示</h2>
     <nut-audio
       style="margin-left: 20px"
-      url="http://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       :muted="muted"
       :autoplay="autoplay"
       :loop="true"

@@ -23,7 +23,7 @@ app.use(Audio);
 ```html
 <template>
     <nut-audio
-      url="http://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       :muted="muted"
       :autoplay="autoplay"
       :loop="true"
@@ -54,11 +54,12 @@ export default {
 ```html
 <template>
     <nut-audio
-      url="http://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       :muted="muted"
       :autoplay="autoplay"
       :loop="false"
       type="none"
+      ref="audioDemo"
     >
       <div class="nut-voice">
         <div><nut-icon name="voice"></nut-icon></div>
@@ -111,7 +112,7 @@ export default {
 ```html
 <template>
     <nut-audio
-      url="http://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       :muted="muted"
       :autoplay="autoplay"
       :loop="true"
@@ -149,7 +150,7 @@ export default {
 ```html
 <template>
     <nut-audio
-      url="http://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       :muted="muted"
       :autoplay="autoplay"
       :loop="false"
