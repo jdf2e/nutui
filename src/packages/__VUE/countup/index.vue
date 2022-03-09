@@ -209,7 +209,7 @@ export default create({
       type: Number,
       default: 0
     },
-    machineTrunMore: {
+    machineTurnMore: {
       type: Number,
       default: 0
     }
@@ -567,14 +567,14 @@ export default create({
     };
     // 抽奖
     const machineLuck = () => {
-      const machineTrunMoreNum = props.machineTrunMore < 0 ? 0 : props.machineTrunMore;
+      const machineTurnMoreNum = props.machineTurnMore < 0 ? 0 : props.machineTurnMore;
       let distance = props.numHeight * props.machinePrizeNum; // 所有奖品的高度，雪碧图的高度
       if (data.prizeLevelTrun < 0) {
         generateRandom();
       }
       for (let i = 0; i < props.machineNum; i++) {
         setTimeout(() => {
-          let turn = distance * (i + 1 + parseFloat(String(machineTrunMoreNum)));
+          let turn = distance * (i + 1 + parseFloat(String(machineTurnMoreNum)));
           if (data.prizeYPrev.length != 0) {
             // this.machineTransition = 'none';
             // console.log(this.prizeYPrev[i]-(this.numHeight * this.machinePrizeNum));

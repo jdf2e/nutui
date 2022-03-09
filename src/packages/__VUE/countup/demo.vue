@@ -30,6 +30,7 @@
         :machine-num="machineNum"
         :machine-prize-num="5"
         :machine-prize-level="prizeLevel"
+        :machine-turn-more="5"
         :custom-bg-img="bgImage2"
         :num-width="100"
         :num-height="100"
