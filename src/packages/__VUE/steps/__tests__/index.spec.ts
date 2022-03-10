@@ -76,11 +76,11 @@ test('step props', async () => {
 
   const stepItemTitle = wrapper.findAll('.nut-step-title')[0];
 
-  expect(stepItemTitle.element.innerHTML).toEqual('已完成');
+  expect(stepItemTitle.element.innerHTML).toEqual('<span>已完成</span>');
 
   const stepItemContent = wrapper.findAll('.nut-step-content')[1];
 
-  expect(stepItemContent.element.innerHTML).toEqual('您的订单正在配送途中');
+  expect(stepItemContent.element.innerHTML).toEqual('<span>您的订单正在配送途中</span>');
 
   const stepItemIcon = wrapper.findAll('.nutui-iconfont')[2];
   expect(stepItemIcon.classes()).toContain('nut-icon-location2');
@@ -131,4 +131,62 @@ test('should props current changes when trigger click', async () => {
   await button.trigger('click');
   await nextTick();
   expect(wrapper.vm.current).toBe(3);
+});
+
+test('should emited click when step trigger', async () => {
+  const wrapper = mount({
+    components: {
+      'nut-steps': Steps,
+      'nut-step': Step
+    },
+    template: `
+      <nut-steps :current="current">
+        <nut-step title="已完成" content="您的订单已经打包完成，商品已发出">1</nut-step>
+        <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
+        <nut-step title="未开始" content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦">3</nut-step>
+      </nut-steps>
+    `,
+    setup() {
+      const state = reactive({
+        current: 1
+      });
+
+      return { ...toRefs(state) };
+    }
+  });
+
+  await nextTick();
+  await wrapper.vm.$emit('click-step');
+  expect(wrapper.emitted('click-step')).toBeTruthy();
+});
+
+test('render step slot', async () => {
+  const wrapper = mount({
+    components: {
+      'nut-steps': Steps,
+      'nut-step': Step
+    },
+    template: `
+      <nut-steps :current="current">
+        <nut-step title="已完成" content="您的订单已经打包完成，商品已发出"><template v-slot:title>步骤一</template></nut-step>
+        <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
+        <nut-step title="未开始">
+          <template v-slot:content>
+            <p>收货地址为：</p>
+            <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
+          </template>
+        </nut-step>
+      </nut-steps>
+    `,
+    setup() {
+      const state = reactive({
+        current: 1
+      });
+
+      return { ...toRefs(state) };
+    }
+  });
+
+  expect(wrapper.html()).toContain('步骤一');
+  expect(wrapper.html()).toContain('北京市经济技术开发区科创十一街18号院京东大厦');
 });

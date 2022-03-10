@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" :style="getStyle()">
+  <view :class="classes" :style="getStyle()" @click="onClose">
     <slot></slot>
     <nut-icon class="nut-tag--close" v-if="closeable" name="close" size="11" @click="onClose"></nut-icon>
   </view>
@@ -37,7 +37,7 @@ export default create({
       default: false
     }
   },
-  emits: ['close'],
+  emits: ['close', 'click'],
   setup(props, { emit }) {
     const { type, color, plain, round, mark, textColor } = toRefs(props);
 
@@ -78,10 +78,16 @@ export default create({
       emit('close', event);
     };
 
+    const onClick = (event: MouseEvent) => {
+      event.stopPropagation();
+      emit('click', event);
+    };
+
     return {
       classes,
       getStyle,
-      onClose
+      onClose,
+      onClick
     };
   }
 });

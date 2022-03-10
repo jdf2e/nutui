@@ -46,6 +46,35 @@ app.use(OverLay);
 
 :::
 
+### 遮罩样式
+
+:::demo
+
+```html
+<template>
+<nut-button type="primary" @click="state.show = true">显示遮罩层</nut-button>
+<nut-overlay v-model:visible="state.show" :z-index="2000" :overlay-style="state.overlayStyle"></nut-overlay>
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        show: false,
+        overlayStyle: {
+          backgroundColor: 'rgba(0, 0, 0, .2)'
+        }
+      });
+      return {
+        state
+      };
+    }
+  };
+</script>
+```
+
+:::
+
 ### 嵌套内容
 
 :::demo

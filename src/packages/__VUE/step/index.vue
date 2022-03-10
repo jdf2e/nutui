@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view :class="classes" @click="handleClickStep">
     <view class="nut-step-head">
       <view class="nut-step-line"></view>
       <view class="nut-step-icon" :class="[!dot ? (icon ? 'is-icon' : 'is-text') : '']">
@@ -14,9 +14,13 @@
     </view>
     <view class="nut-step-main">
       <view class="nut-step-title">
-        {{ title }}
+        <span v-if="!$slots.title">{{ title }}</span>
+        <slot name="title"></slot>
       </view>
-      <view class="nut-step-content" v-html="content" v-if="content"> </view>
+      <view class="nut-step-content" v-if="content || $slots.content">
+        <span v-if="!$slots.content" v-html="content"></span>
+        <slot name="content"></slot>
+      </view>
     </view>
   </view>
 </template>
@@ -49,6 +53,7 @@ export default create({
       default: '12px'
     }
   },
+  emits: ['click-step'],
 
   setup(props, { emit, slots }) {
     const { proxy } = getCurrentInstance() as ComponentInternalInstance;
@@ -79,10 +84,15 @@ export default create({
       };
     });
 
+    const handleClickStep = () => {
+      parent['onEmit'](index.value);
+    };
+
     return {
       ...toRefs(state),
       index,
-      classes
+      classes,
+      handleClickStep
     };
   }
 });

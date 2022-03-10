@@ -25,8 +25,11 @@ app.use(Steps).use(Step);
 
 ```html
 <template>
-  <nut-steps :current="current1">
-    <nut-step title="进行中">1</nut-step>
+  <nut-steps :current="current1" @click-step="handleClickStep">
+    <nut-step title="步骤一">
+      1
+      <template v-slot:title>步骤一</template>
+    </nut-step>
     <nut-step title="未开始">2</nut-step>
     <nut-step title="未开始">3</nut-step>
     <nut-step title="未开始">4</nut-step>
@@ -39,7 +42,10 @@ app.use(Steps).use(Step);
       const state = reactive({
         current1: 1,
       });
-      return { ...toRefs(state) };
+      const handleClickStep = (index: number) => {
+        console.log(index)
+      };
+      return { ...toRefs(state), handleClickStep };
     }
   };
 </script>
@@ -114,9 +120,13 @@ app.use(Steps).use(Step);
   <nut-steps direction="vertical" progress-dot current="2">
     <nut-step title="已完成" content="您的订单已经打包完成，商品已发出">1</nut-step>
     <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
-    <nut-step title="未开始" content="<p>收货地址为：</p><p>北京市经济技术开发区科创十一街18号院京东大厦</p>"
-      >3</nut-step
-    >
+    <nut-step title="未开始">
+      3
+      <template v-slot:content>
+        <p>收货地址为：</p>
+        <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
+      </template>
+    </nut-step>
   </nut-steps>
 </template>
 ```
@@ -136,7 +146,11 @@ app.use(Steps).use(Step);
 | current	               | 	当前所在的步骤           | Number、String        | '0'      |
 | progress-dot            |  点状步骤条     | Boolean | false         |
 
+#### nut-steps events
 
+| 事件名 | 说明           | 回调参数     |
+|--------|----------------|--------------|
+| click-step  | 点击步骤的标题或图标时触发 | index: number |
 
 #### nut-step
 
@@ -146,3 +160,10 @@ app.use(Steps).use(Step);
 | content          | 流程步骤的描述性文字(支持 html 结构)       | String | 步骤描述 |
 | icon          | 图标       | String | null |
 | icon-color          | 图标颜色       | String | null |
+
+#### nut-step slots
+
+| 参数           | 说明                   |
+| ---------------- | ---------------------- |
+| title            | 步骤标题         |
+| content          | 步骤内容       |
