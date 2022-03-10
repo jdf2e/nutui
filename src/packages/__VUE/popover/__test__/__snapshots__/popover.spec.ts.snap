@@ -7,13 +7,6 @@ exports[`should change icon class prefix when using icon prop 1`] = `
 </view>"
 `;
 
-exports[`should change icon class prefix when using icon-prefix prop 1`] = `
-"<view class=\\"nut-popover nut-popover--light\\">
-  <div></div>
-  <!--v-if-->
-</view>"
-`;
-
 exports[`should locate to reference element when showed 1`] = `""`;
 
 exports[`should locate to reference element when showed 2`] = `""`;

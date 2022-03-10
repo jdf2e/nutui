@@ -18,6 +18,7 @@ export default create({
       default: false
     }
   },
+  emits: ['click-step'],
   setup(props, { emit, slots }) {
     const state = reactive({
       children: [] as ComponentInternalInstance[]
@@ -36,10 +37,15 @@ export default create({
       child && state.children.push(child);
     };
 
+    const onEmit = (index: number) => {
+      emit('click-step', index);
+    };
+
     provide('parent', {
       relation,
       state,
-      props
+      props,
+      onEmit
     });
 
     return () => {

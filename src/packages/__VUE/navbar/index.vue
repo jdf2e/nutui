@@ -6,7 +6,7 @@
     </view>
 
     <view class="nut-navbar__title">
-      <view v-if="title" @click="handleCenter">{{ title }}</view>
+      <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
       <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
       <slot name="content"></slot>
     </view>
@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { computed, ref } from 'vue';
+import { computed, toRefs } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('navbar');
 export default create({
@@ -28,18 +28,24 @@ export default create({
     title: { type: String, default: '' }, //中间  文字标题
     titIcon: { type: String, default: '' }, //中间  标题icon
     desc: { type: String, default: '' }, //右侧   按钮文字
-    defaultIndex: {
-      type: Number,
-      default: 0
+    fixed: {
+      type: Boolean,
+      default: false
+    },
+    safeAreaInsetTop: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['click', 'on-click-back', 'on-click-title', 'on-click-icon', 'on-click-right'],
   setup(props, { emit }) {
-    const activeIndex = ref(props.defaultIndex);
+    const { fixed, safeAreaInsetTop } = toRefs(props);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
-        [prefixCls]: true
+        [prefixCls]: true,
+        [`${prefixCls}--fixed`]: fixed.value,
+        [`${prefixCls}--safe-area-inset-top`]: safeAreaInsetTop.value
       };
     });
 
@@ -63,8 +69,7 @@ export default create({
       handleLeft,
       handleCenter,
       handleCenterIcon,
-      handleRight,
-      activeIndex
+      handleRight
     };
   }
 });
