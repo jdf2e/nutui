@@ -45,6 +45,19 @@ test('should format input value when type is number', () => {
     }
   });
   const input = wrapper.find('input');
+  input.trigger('input');
+  expect((wrapper.emitted('change') as any)[0][0]).toEqual('999');
+  input.element.value = '9999';
+});
+
+test('should format input value when type is number', () => {
+  const wrapper = mount(SearchBar, {
+    props: {
+      type: 'number',
+      modelValue: ''
+    }
+  });
+  const input = wrapper.find('input');
   input.element.value = '1';
   input.trigger('input');
   expect((wrapper.emitted('change') as any)[0][0]).toEqual('1');

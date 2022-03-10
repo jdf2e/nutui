@@ -8,7 +8,7 @@
         <slot name="leftin"></slot>
       </view>
       <view class="nut-searchbar__input-inner">
-        <form action="#" onsubmit="return false">
+        <form action="#" onsubmit="return false" @submit.prevent="handleSubmit">
           <input
             class="nut-searchbar__input-bar"
             :type="inputType"

@@ -2,6 +2,12 @@ import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import PopUp from '../index.vue';
 
+function sleep(delay = 0): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay);
+  });
+}
+
 test('should change z-index when using z-index prop', async () => {
   const wrapper = mount(PopUp, {
     props: {
@@ -28,17 +34,39 @@ test('should change animation duration when using duration prop', () => {
   expect(overlay.element.style.animationDuration).toEqual('12s');
 });
 
-// test('should lock scroll when showed', async () => {
-//   const wrapper = mount(PopUp,
-//     {
-//       isWrapTeleport: false,
-//     });
-//   expect(document.body.classList.contains('van-overflow-hidden')).toBeFalsy();
+test('prop overlay-class test', async () => {
+  const wrapper = mount(PopUp, {
+    props: {
+      visible: true,
+      isWrapTeleport: false,
+      overlayClass: 'testclas'
+    }
+  });
+  const overlay: any = wrapper.find('transition-stub');
+  expect(overlay.classes()).toContain('testclas');
+});
 
-//   await wrapper.setProps({ visible: true });
-//   // 这里body拿不到class
-//   expect(document.body.classList.contains('van-overflow-hidden')).toBeTruthy();
-// });
+test('prop overlay-style test', async () => {
+  const wrapper = mount(PopUp, {
+    props: {
+      visible: true,
+      isWrapTeleport: false,
+      overlayStyle: { color: 'red' }
+    }
+  });
+  const overlay: any = wrapper.find('transition-stub');
+  expect(overlay.element.style.color).toContain('red');
+});
+
+test('should lock scroll when showed', async () => {
+  const wrapper = mount(PopUp, {
+    visible: false,
+    isWrapTeleport: false
+  });
+
+  await wrapper.setProps({ visible: true });
+  expect(document.body.classList.contains('nut-overflow-hidden')).toBeTruthy();
+});
 
 test('should not render overlay when overlay prop is false', () => {
   const wrapper = mount(PopUp, {
@@ -198,17 +226,17 @@ test('should emit open event when prop visible is set to true', async () => {
   expect(wrapper.emitted('open')).toBeTruthy();
 });
 
-// test('event close test', async () => {
-//   const wrapper = mount(PopUp, {
-//     props: {
-//       visible: true,
-//       isWrapTeleport: false,
-//     },
-//   });
-//   await nextTick();
-//   wrapper.find('.nut-popup').trigger('click');
-//   expect(wrapper.emitted('close')!.length).toEqual(1);
-// });
+test('event close test', async () => {
+  const wrapper = mount(PopUp, {
+    props: {
+      visible: true,
+      isWrapTeleport: false
+    }
+  });
+  await wrapper.find('.nut-overlay').trigger('click');
+  await sleep(2000);
+  expect(wrapper.emitted('close')).toBeTruthy();
+});
 
 test('event click-overlay test', async () => {
   const wrapper = mount(PopUp, {
