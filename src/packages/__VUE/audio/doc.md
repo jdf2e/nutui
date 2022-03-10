@@ -23,7 +23,7 @@ app.use(Audio);
 ```html
 <template>
     <nut-audio
-      url="http://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       :muted="muted"
       :autoplay="autoplay"
       :loop="true"
@@ -54,11 +54,12 @@ export default {
 ```html
 <template>
     <nut-audio
-      url="http://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       :muted="muted"
       :autoplay="autoplay"
       :loop="false"
       type="none"
+      ref="audioDemo"
     >
       <div class="nut-voice">
         <div><nut-icon name="voice"></nut-icon></div>
@@ -70,13 +71,13 @@ export default {
 import { reactive, toRefs, onMounted } from 'vue';
 export default {
   setup() {
+    const audioDemo = ref(null);
     const data = reactive({
       muted: false,
       autoplay: false
     });
     const duration = ref(0);
     onMounted(() => {
-      console.log(audioDemo.value);
       setTimeout(() => {
         duration.value = audioDemo.value.second.toFixed();
       }, 500);
@@ -84,7 +85,8 @@ export default {
 
     return {
       ...toRefs(data),
-      duration
+      duration,
+      audioDemo
     };
   }
 };
@@ -111,7 +113,7 @@ export default {
 ```html
 <template>
     <nut-audio
-      url="http://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       :muted="muted"
       :autoplay="autoplay"
       :loop="true"
@@ -149,7 +151,7 @@ export default {
 ```html
 <template>
     <nut-audio
-      url="http://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       :muted="muted"
       :autoplay="autoplay"
       :loop="false"
