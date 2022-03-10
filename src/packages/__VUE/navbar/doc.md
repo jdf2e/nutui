@@ -23,7 +23,6 @@ app.use(TabPane);
 
 ```
 
-#
 ### 基本用法
 
 :::demo
@@ -55,7 +54,6 @@ app.use(TabPane);
       title="购物车"
       titIcon="cart2"
       desc="编辑"
-      icon="more-x"
     >
       <template #right>
         <nut-icon class="right" name="more-x"></nut-icon>
@@ -100,7 +98,6 @@ app.use(TabPane);
       @on-click-title="title"
       @on-click-right="rightClick"
       desc="编辑"
-      icon="horizontal-n"
     >
       <template #content>
         <nut-tabs v-model="tab1value" @click="changeTab">
@@ -151,7 +148,7 @@ app.use(TabPane);
 :::demo
 ```html
   <template>
-    <nut-navbar @on-click-back="back" icon="more-x">
+    <nut-navbar @on-click-back="back" >
       <template #content>
         <nut-tabs v-model="tab2value" @click="changeTabList">
           <nut-tabpane title="商品"> </nut-tabpane>
@@ -202,6 +199,8 @@ app.use(TabPane);
 | desc            | 右侧描述                                                                                       | String  | -       |
 | left-show        | 是否展示左侧箭头                                                                               | Boolean | false   |
 | tit-icon         | 标题中插入icon                                                                                    | String  |-|                                          
+| fixed           | 是否固定到顶部                                                                                       | Boolean  | false       |
+| safe-area-inset-top           | 是否开启顶部安全区适配                                                                                       | Boolean  | false       |
 
 ### Event
 | 名称  | 说明     | 回调参数    |

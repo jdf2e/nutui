@@ -1,7 +1,8 @@
 .nut-tabbar {
   border: 0px;
-  border-bottom: 1px solid $tabbar-border-color;
-  border-top: 1px solid $tabbar-border-color;
+  box-shadow: $tabbar-box-shadow;
+  border-bottom: $tabbar-border-bottom;
+  border-top: $tabbar-border-top;
   width: 100%;
   display: flex;
   padding: 7px 0;

@@ -22,7 +22,7 @@ export default create({
     },
     iconSize: {
       type: [String, Number],
-      default: '18'
+      default: ''
     },
     iconName: {
       type: String,
