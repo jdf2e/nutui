@@ -207,7 +207,7 @@ export default createDemo({
     });
 
     const getData = () => {
-      fetch('http://storage.360buyimg.com/nutui/3x/data.js')
+      fetch('//storage.360buyimg.com/nutui/3x/data.js')
         .then((response) => response.json())
         .then((res) => {
           const { Sku, Goods, imagePathMap } = res;
