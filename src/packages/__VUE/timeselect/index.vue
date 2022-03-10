@@ -3,6 +3,7 @@
     position="bottom"
     closeable
     round
+    :isWrapTeleport="isWrapTeleport"
     :visible="visible"
     :style="popStyle"
     @click-overlay="close"
@@ -52,6 +53,10 @@ export default create({
       default: () => {
         return [];
       }
+    },
+    isWrapTeleport: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['update:visible', 'select'],

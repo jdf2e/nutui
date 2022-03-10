@@ -41,7 +41,7 @@
 </template>
 <script lang="ts">
 import { createComponent } from '../../utils/create';
-import { useRouter } from 'vue-router';
+import { useRouter } from '@/packages/utils/useRoute';
 import { ComponentInternalInstance, computed, getCurrentInstance, inject, onMounted, reactive, watch } from 'vue';
 const { create } = createComponent('tabbar-item');
 export default create({
@@ -119,7 +119,11 @@ export default create({
         }
         if (parent.children[value].to) {
           let to = parent.children[value].to;
-          router.push(to);
+          if (to && router) {
+            router.push(to);
+          } else {
+            location.replace(to);
+          }
         }
       });
     });

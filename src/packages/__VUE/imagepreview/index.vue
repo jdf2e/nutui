@@ -1,5 +1,11 @@
 <template>
-  <nut-popup pop-class="custom-pop" v-model:visible="showPop" @click="onClose" style="width: 100%">
+  <nut-popup
+    pop-class="custom-pop"
+    v-model:visible="showPop"
+    :isWrapTeleport="isWrapTeleport"
+    @click="onClose"
+    style="width: 100%"
+  >
     <view class="nut-imagepreview" @click.stop="closeOnImg" @touchstart.capture="onTouchStart">
       <nut-swiper
         v-if="showPop"
@@ -66,6 +72,10 @@ export default create({
     autoplay: {
       type: [Number, String],
       default: 3000
+    },
+    isWrapTeleport: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['close'],

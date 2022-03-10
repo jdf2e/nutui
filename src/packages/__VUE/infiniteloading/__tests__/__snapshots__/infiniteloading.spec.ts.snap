@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`infiniteloading base 1`] = `
+"<view class=\\"nut-infiniteloading\\">
+  <view class=\\"nut-infinite-top\\" style=\\"height: 0px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);\\">
+    <view class=\\"top-box\\"><img class=\\"nut-icon__img top-img\\" src=\\"https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png\\">
+      <view class=\\"top-text\\">松开刷新</view>
+    </view>
+  </view>
+  <view class=\\"nut-infinite-container\\">
+    <li class=\\"infiniteLi\\">0</li>
+    <li class=\\"infiniteLi\\">1</li>
+    <li class=\\"infiniteLi\\">2</li>
+    <li class=\\"infiniteLi\\">3</li>
+    <li class=\\"infiniteLi\\">4</li>
+    <li class=\\"infiniteLi\\">5</li>
+    <li class=\\"infiniteLi\\">6</li>
+    <li class=\\"infiniteLi\\">7</li>
+    <li class=\\"infiniteLi\\">8</li>
+    <li class=\\"infiniteLi\\">9</li>
+  </view>
+  <view class=\\"nut-infinite-bottom\\">
+    <!--v-if-->
+  </view>
+</view>"
+`;
+
+exports[`pull base 1`] = `
+"<view class=\\"nut-infiniteloading\\">
+  <view class=\\"nut-infinite-top\\" style=\\"height: 0px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);\\">
+    <view class=\\"top-box\\"><img class=\\"nut-icon__img top-img\\" src=\\"https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png\\">
+      <view class=\\"top-text\\">松开刷新</view>
+    </view>
+  </view>
+  <view class=\\"nut-infinite-container\\"></view>
+  <view class=\\"nut-infinite-bottom\\">
+    <!--v-if-->
+  </view>
+</view>"
+`;
+
+exports[`pull base 2`] = `
+"<view class=\\"nut-infiniteloading\\">
+  <view class=\\"nut-infinite-top\\" style=\\"height: 0px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);\\">
+    <view class=\\"top-box\\"><img class=\\"nut-icon__img top-img\\" src=\\"https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png\\">
+      <view class=\\"top-text\\">松开刷新</view>
+    </view>
+  </view>
+  <view class=\\"nut-infinite-container\\"></view>
+  <view class=\\"nut-infinite-bottom\\">
+    <!--v-if-->
+  </view>
+</view>"
+`;
