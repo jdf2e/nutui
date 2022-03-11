@@ -1,10 +1,31 @@
-import { mount } from '@vue/test-utils';
-import { reactive, toRefs, getCurrentInstance } from 'vue';
+import { config, mount } from '@vue/test-utils';
+import { reactive, toRefs, getCurrentInstance, nextTick } from 'vue';
 import TimeSelect from '../index.vue';
 import TimePanel from '../../timepannel/index.vue';
 import TimeDetail from '../../timedetail/index.vue';
+import NutOverLay from '../../overlay/index.vue';
+import NutPopup from '../../popup/index.vue';
+import NutIcon from '../../icon/index.vue';
 
-test('should emit "update:modelValue" and "change" event when radio is clicked', async () => {
+beforeAll(() => {
+  config.global.components = {
+    NutOverLay,
+    NutPopup,
+    NutIcon
+  };
+});
+
+afterAll(() => {
+  config.global.components = {};
+});
+
+function sleep(delay = 0): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay);
+  });
+}
+
+test('props test', async () => {
   const wrapper = mount({
     emits: ['change', 'select'],
     components: {
@@ -14,10 +35,10 @@ test('should emit "update:modelValue" and "change" event when radio is clicked',
     },
     template: `
       <template>
-        <nut-cell @click="handleClick1">
+        <div id="cell" @click="handleClick1">
           <span><label>请选择配送时间</label></span>
-        </nut-cell>
-        <nut-timeselect v-model:visible="visible1" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
+        </div>
+        <nut-timeselect v-model:visible="visible1" title="标题测试" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
           <template #pannel>
             <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-timepannel>
             <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-timepannel>
@@ -31,7 +52,7 @@ test('should emit "update:modelValue" and "change" event when radio is clicked',
     setup() {
       const { proxy } = getCurrentInstance() as any;
       const state = reactive({
-        visible1: false,
+        visible1: true,
         currentKey1: 0,
         currentTime1: [] as any[],
         times1: [
@@ -68,9 +89,7 @@ test('should emit "update:modelValue" and "change" event when radio is clicked',
         }
       };
 
-      const handleSelected1 = (obj: any) => {
-        proxy.$toast.text(`您选择了：${JSON.stringify(obj)}`);
-      };
+      const handleSelected1 = (obj: any) => {};
 
       return {
         ...toRefs(state),
@@ -81,4 +100,18 @@ test('should emit "update:modelValue" and "change" event when radio is clicked',
       };
     }
   });
+  await nextTick();
+  // timeselect prop
+  const popup: any = wrapper.find('.nut-popup');
+  expect(popup).toBeTruthy();
+  expect(popup.element.style.height).toEqual('50%');
+  expect(wrapper.find('.nut-timeselect__title__fixed').html()).toContain('标题测试');
+
+  // timepannel name test
+  expect(wrapper.find('.nut-timepannel').html()).toContain('2月23日(今天)');
+
+  // TimeSelect event test
+  // await wrapper.find('.nut-overlay').trigger('click');
+  // sleep(200);
+  // expect(wrapper.emitted('select')).toBeTruthy();
 });
