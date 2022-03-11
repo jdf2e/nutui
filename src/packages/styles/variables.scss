@@ -237,13 +237,21 @@ $backtop-border-color: #e0e0e0 !default;
 
 // calendar
 $calendar-primary-color: $primary-color !default;
-$calendar-choose-color: #fef6f6 !default;
+$calendar-choose-color: rgba($primary-color, 0.09) !default;
+$calendar-choose-font-color: $primary-color !default;
 $calendar-base-color: #333333 !default;
 $calendar-disable-color: #d1d0d0 !default;
-$calendar-title-font: $font-size-4 !default;
 $calendar-base-font: $font-size-3 !default;
+$calendar-title-font: $font-size-4 !default;
+$calendar-title-font-weight: 500 !default;
+$calendar-sub-title-font: $font-size-2 !default;
 $calendar-text-font: $font-size-1 !default;
 $calendar-day-font: 16px !default;
+$calendar-day-active-border-radius: 0px !default;
+$calendar-day-width: 14.28% !default;
+$calendar-day-height: 64px !default;
+$calendar-day-font-weight: 500 !default;
+$calendar-day67-font-color: $primary-color !default;
 
 //overlay
 $overlay-bg-color: rgba(0, 0, 0, 0.7) !default;
@@ -479,6 +487,7 @@ $indicator-white: $white !default;
 $indicator-size: 18px !default;
 $indicator-dot-size: $indicator-size / 3 !default;
 $indicator-border-size: $indicator-size + 2 !default;
+$indicator-number-font-size: 10px !default;
 
 // menu
 $menu-bar-line-height: 46px !default;
@@ -525,6 +534,16 @@ $cascader-item-active-color: $primary-color !default;
 $form-item-error-line-color: $primary-color !default;
 $form-item-required-color: $primary-color !default;
 $form-item-error-message-color: $primary-color !default;
+$form-item-label-font-size: 14px !default;
+$form-item-label-width: 90px !default;
+$form-item-label-margin-right: 10px !default;
+$form-item-label-text-align: left !default;
+$form-item-required-margin-right: 4px !default;
+$form-item-body-font-size: 14px !default;
+$form-item-body-slots-text-align: left !default;
+$form-item-body-input-text-align: left !default;
+$form-item-tip-font-size: 10px !default;
+$form-item-tip-text-align: left !default;
 
 // sku
 $sku-item-border: 1px solid $primary-color !default;
