@@ -56,11 +56,11 @@ test('backtop style', () => {
 });
 
 test('should allow to use the elId prop', () => {
-  const root = document.createElement('div');
-  mount(BackTop, {
+  const wrapper = mount(BackTop, {
     props: {
-      elId: root
+      elId: () => 'elId'
     }
   });
-  expect(root.innerHTML).toMatchSnapshot();
+
+  expect(wrapper.html()).toMatchSnapshot();
 });

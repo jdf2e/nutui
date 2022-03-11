@@ -3,6 +3,12 @@ import { nextTick, ref, reactive } from 'vue';
 import NoticeBar from '../index.vue';
 import NutIcon from '../../icon/index.vue';
 
+function sleep(delay = 0): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay);
+  });
+}
+
 beforeAll(() => {
   config.global.components = {
     NutIcon
@@ -11,6 +17,10 @@ beforeAll(() => {
 
 afterAll(() => {
   config.global.components = {};
+});
+
+Object.defineProperty(window.HTMLElement.prototype, 'clientWidth', {
+  value: 375
 });
 
 test('close event', async () => {
@@ -24,18 +34,6 @@ test('close event', async () => {
   const closeDom = wrapper.find('.right-icon');
   closeDom.trigger('click');
   expect(wrapper.emitted('close')).toBeTruthy();
-});
-
-test('scrollable props', async () => {
-  const wrapper = mount(NoticeBar, {
-    props: {
-      text: '华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！',
-      direction: 'across',
-      scrollable: false
-    }
-  });
-  const closeDom = wrapper.find('.nut-ellipsis');
-  expect(closeDom.exists()).toBeTruthy();
 });
 
 test('icon custom', async () => {

@@ -28,7 +28,7 @@ export default create({
   props: {
     // 展示的形式   back 倒退   play 开始 or 暂停  forward 快进 mute 静音
     type: {
-      type: Array,
+      type: String,
       default() {
         return 'play';
       }

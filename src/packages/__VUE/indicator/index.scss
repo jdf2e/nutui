@@ -36,7 +36,7 @@
     width: $indicator-size;
     height: $indicator-size;
     text-align: center;
-    font-size: 10px;
+    font-size: $indicator-number-font-size;
     line-height: $indicator-size;
     color: $indicator-white;
     vertical-align: middle;

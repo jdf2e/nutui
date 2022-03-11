@@ -86,7 +86,6 @@ $button-warning-background-color: linear-gradient(
   rgba(255, 182, 13, 1) 83%,
   rgba(255, 190, 13, 1) 100%
 ) !default;
-$button-plain-background-color: #fff !default;
 $button-plain-background-color: $white !default;
 
 // cell
@@ -114,6 +113,15 @@ $cell-group-desc-font-size: $font-size-1 !default;
 $cell-group-desc-line-height: 16px !default;
 $cell-group-background-color: $white !default;
 
+// divider
+
+$divider-margin: 16px 0 !default;
+$divider-text-font-size: $font-size-2 !default;
+$divider-text-color: #909ca4 !default;
+$divider-line-height: 2px !default;
+$divider-before-margin-right: 16px !default;
+$divider-after-margin-left: 16px !default;
+
 // icon
 
 $icon-height: 20px !default;
@@ -128,6 +136,18 @@ $uploader-background: #f7f8fa !default;
 
 // picker
 $picker-cancel-color: $primary-color !default;
+$picker-ok-color: $primary-color !default;
+$picker-bar-cancel-font-size: 16px !default;
+$picker-bar-ok-font-size: 16px !default;
+$picker-bar-button-padding: 0 15px !default;
+$picker-bar-title-font-size: 16px !default;
+$picker-bar-title-color: $title-color !default;
+$picker-bar-title-font-weight: normal !default;
+$picker-item-height: 36px !default;
+$picker-item-text-color: #808080 !default;
+$picker-item-active-text-color: inherit !default;
+$picker-item-text-font-size: 16px !default;
+$picker-item-active-line-border: 1px solid #d8d8d8 !default;
 
 //input
 $input-border-bottom: #eaf0fb !default;
@@ -217,13 +237,21 @@ $backtop-border-color: #e0e0e0 !default;
 
 // calendar
 $calendar-primary-color: $primary-color !default;
-$calendar-choose-color: #fef6f6 !default;
+$calendar-choose-color: rgba($primary-color, 0.09) !default;
+$calendar-choose-font-color: $primary-color !default;
 $calendar-base-color: #333333 !default;
 $calendar-disable-color: #d1d0d0 !default;
-$calendar-title-font: $font-size-4 !default;
 $calendar-base-font: $font-size-3 !default;
+$calendar-title-font: $font-size-4 !default;
+$calendar-title-font-weight: 500 !default;
+$calendar-sub-title-font: $font-size-2 !default;
 $calendar-text-font: $font-size-1 !default;
 $calendar-day-font: 16px !default;
+$calendar-day-active-border-radius: 0px !default;
+$calendar-day-width: 14.28% !default;
+$calendar-day-height: 64px !default;
+$calendar-day-font-weight: 500 !default;
+$calendar-day67-font-color: $primary-color !default;
 
 //overlay
 $overlay-bg-color: rgba(0, 0, 0, 0.7) !default;
@@ -299,6 +327,9 @@ $dialog-width: 296px !default;
 $checkbox-label-color: #1d1e1e !default;
 $checkbox-label-disable-color: #999 !default;
 $checkbox-icon-disable-color: #d6d6d6 !default;
+$checkbox-label-margin-left: 15px !default;
+$checkbox-label-font-size: 14px !default;
+$checkbox-icon-font-size: 18px !default;
 
 //radio
 $radio-label-font-color: #1d1e1e !default;
@@ -307,6 +338,12 @@ $radio-label-disable-color: #999 !default;
 $radio-icon-disable-color: #d6d6d6 !default;
 $radio-label-button-border-color: $primary-color !default;
 $radio-label-button-background: rgba($primary-color, 0.05) !default;
+$radio-label-margin-left: 15px !default;
+$radio-button-border-radius: 15px !default;
+$radio-label-font-size: 14px !default;
+$radio-button-font-size: 12px !default;
+$radio-button-padding: 5px 18px !default;
+$radio-icon-font-size: 18px !default;
 
 //fixednav
 $fixednav-bg-color: $white !default;
@@ -450,6 +487,7 @@ $indicator-white: $white !default;
 $indicator-size: 18px !default;
 $indicator-dot-size: $indicator-size / 3 !default;
 $indicator-border-size: $indicator-size + 2 !default;
+$indicator-number-font-size: 10px !default;
 
 // menu
 $menu-bar-line-height: 46px !default;
@@ -496,6 +534,16 @@ $cascader-item-active-color: $primary-color !default;
 $form-item-error-line-color: $primary-color !default;
 $form-item-required-color: $primary-color !default;
 $form-item-error-message-color: $primary-color !default;
+$form-item-label-font-size: 14px !default;
+$form-item-label-width: 90px !default;
+$form-item-label-margin-right: 10px !default;
+$form-item-label-text-align: left !default;
+$form-item-required-margin-right: 4px !default;
+$form-item-body-font-size: 14px !default;
+$form-item-body-slots-text-align: left !default;
+$form-item-body-input-text-align: left !default;
+$form-item-tip-font-size: 10px !default;
+$form-item-tip-text-align: left !default;
 
 // sku
 $sku-item-border: 1px solid $primary-color !default;

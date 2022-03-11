@@ -1,0 +1,207 @@
+.nut-calendar {
+  position: relative;
+  display: flex;
+  flex: 1;
+  color: #333333;
+  font-size: 16px;
+  background-color: #fff;
+  overflow: hidden;
+  height: 100%;
+  flex-direction: column;
+  &.nut-calendar-tile {
+    .nut-calendar-header {
+      .calendar-title {
+        font-size: $calendar-base-font;
+      }
+    }
+  }
+  .nut-calendar-taro {
+    height: 60vh;
+  }
+  .popup-box {
+    height: 100%;
+  }
+  .nut-calendar-content {
+    overflow-y: auto;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  // 头部导航
+  .nut-calendar-header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 1px;
+    background-color: $white;
+
+    .calendar-title {
+      font-size: $calendar-title-font;
+      line-height: 44px;
+    }
+    .calendar-top-slot {
+      height: 24px;
+    }
+    .calendar-curr-month {
+      padding: 7px 0;
+      line-height: 22px;
+    }
+
+    .calendar-weeks {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      height: 36px;
+      border-radius: 0px 0px 12px 12px;
+      box-shadow: 0px 4px 10px 0px rgba($color: #000000, $alpha: 0.06);
+
+      .calendar-week-item {
+        &:first-of-type,
+        &:last-of-type {
+          color: $calendar-primary-color;
+        }
+      }
+    }
+  }
+
+  // 月份
+  .nut-calendar-content {
+    flex: 1;
+    width: 100%;
+    display: block;
+    .calendar-months-panel {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: block;
+      box-sizing: border-box;
+      .viewArea {
+        display: block;
+      }
+      .calendar-month {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      div:nth-of-type(2) {
+        .calendar-month-title {
+          padding-top: 0;
+        }
+      }
+
+      .calendar-loading-tip {
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        position: absolute;
+        top: -50px;
+        left: 0;
+        right: 0;
+        font-size: $calendar-text-font;
+        color: $text-color;
+      }
+
+      .calendar-month-title {
+        height: 23px;
+        line-height: 23px;
+        margin: 8px 0;
+      }
+
+      .calendar-month-con {
+        overflow: hidden;
+        .calendar-month-item {
+          .calendar-month-day:nth-child(7n + 0),
+          .calendar-month-day:nth-child(7n + 1) {
+            color: $calendar-primary-color;
+          }
+        }
+        .calendar-month-day {
+          float: left;
+          width: 14.28%;
+          height: 64px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          position: relative;
+
+          .calendar-curr-tips {
+            position: absolute;
+            width: 100%;
+          }
+
+          .calendar-curr-tip-curr {
+            position: absolute;
+            bottom: 6px;
+            width: 100%;
+            font-size: 12px;
+            line-height: 14px;
+          }
+          .calendar-day-tip {
+            position: absolute;
+            bottom: 6px;
+            width: 100%;
+            font-size: 12px;
+            line-height: 14px;
+            color: $calendar-primary-color;
+          }
+          .calendar-curr-tips-top {
+            top: 6px;
+          }
+          .calendar-curr-tips-bottom {
+            bottom: 6px;
+          }
+          &-active {
+            background-color: $calendar-primary-color;
+            color: $white !important;
+
+            .calendar-curr-tips {
+              // color: $white !important;
+              visibility: hidden;
+            }
+            .calendar-curr-tip-curr {
+              visibility: hidden;
+            }
+            .calendar-day-tip {
+              color: $white;
+            }
+          }
+
+          &-disabled {
+            color: $calendar-disable-color !important;
+          }
+
+          &-choose {
+            background-color: $calendar-choose-color;
+          }
+
+          .calendar-day {
+            padding: 2px 0;
+            font-size: $calendar-day-font;
+          }
+        }
+      }
+    }
+  }
+
+  // 底部导航
+  .nut-calendar-footer {
+    display: flex;
+    height: 62px;
+    width: 100%;
+    background-color: $white;
+
+    .calendar-confirm-btn {
+      height: 44px;
+      width: 100%;
+      margin: 10px 18px;
+      border-radius: 22px;
+      background: $button-primary-background-color;
+      color: $white;
+      text-align: center;
+      line-height: 44px;
+    }
+  }
+}
