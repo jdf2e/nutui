@@ -318,7 +318,33 @@ $address-region-tab-line: linear-gradient(90deg, $primary-color 0%, rgba($primar
 $address-icon-color: $primary-color !default;
 
 //steps
-$step-wait-bg-color: #959fb1 !default;
+$steps-base-icon-width: 25px !default;
+$steps-base-icon-height: 25px !default;
+$steps-base-icon-line-height: 25px !default;
+$steps-base-icon-font-size: 13px !default;
+$steps-base-title-font-size: 14px !default;
+$steps-base-line-color: #909ca4 !default;
+$steps-base-title-color: #909ca4 !default;
+$steps-base-title-margin-bottom: 10px !default;
+$steps-base-content-font-size: 14px !default;
+$steps-base-content-color: #666 !default;
+
+$steps-wait-icon-bg-color: #959fb1 !default;
+$steps-wait-icon-color: $white !default;
+$steps-wait-head-color: #909ca4 !default;
+$steps-wait-head-border-color: #909ca4 !default;
+$steps-wait-content-color: #909ca4 !default;
+
+$steps-finish-head-color: $primary-color !default;
+$steps-finish-head-border-color: $primary-color !default;
+$steps-finish-title-color: $primary-color !default;
+$steps-finish-line-background: $primary-color !default;
+$steps-finish-icon-text-color: $white !default;
+
+$steps-process-head-color: $white !default;
+$steps-process-head-border-color: $primary-color !default;
+$steps-process-title-color: $primary-color !default;
+$steps-process-icon-text-color: $primary-color !default;
 
 // dialog
 $dialog-width: 296px !default;
@@ -352,28 +378,17 @@ $fixednav-index: 201 !default;
 $fixednav-btn-bg: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
 
 // NoticeBar
+$noticebar-background: rgba(251, 248, 220, 1) !default;
+$noticebar-color: #d9500b !default;
 $noticebar-font-size: 14px !default;
 $noticebar-height: 40px !default;
 $noticebar-line-height: 24px !default;
 $noticebar-left-icon-width: 16px !default;
 $noticebar-right-icon-width: 16px !default;
-$noticebar-box-padding-left: 16px !default;
-$noticebar-box-padding-right: 16px !default;
-
-$noticebar-wrapable-padding-left: 16px !default;
-$noticebar-wrapable-padding-right: 16px !default;
-$noticebar-wrapable-padding-top: 16px !default;
-$noticebar-wrapable-padding-bottom: 16px !default;
-
-$noticebar-lefticon-padding-left: 0px !default;
-$noticebar-lefticon-padding-right: 10px !default;
-$noticebar-lefticon-padding-top: 0px !default;
-$noticebar-lefticon-padding-bottom: 0px !default;
-
-$noticebar-righticon-padding-left: 10px !default;
-$noticebar-righticon-padding-right: 0px !default;
-$noticebar-righticon-padding-top: 0px !default;
-$noticebar-righticon-padding-bottom: 0px !default;
+$noticebar-box-padding: 0 16px !default;
+$noticebar-wrapable-padding: 16px !default;
+$noticebar-lefticon-margin: 0px 10px !default;
+$noticebar-righticon-margin: 0px 10px !default;
 
 // TimeSelect
 $timeselect-title-font-size: $font-size-2 !default;
@@ -490,7 +505,9 @@ $indicator-border-size: $indicator-size + 2 !default;
 $indicator-number-font-size: 10px !default;
 
 // menu
-$menu-bar-line-height: 46px !default;
+$menu-bar-line-height: 48px !default;
+$menu-item-font-size: $font-size-2 !default;
+$menu-item-text-color: $title-color !default;
 $menu-item-active-text-color: $primary-color !default;
 $menu-bar-border-bottom-color: #eaf0fb !default;
 $menu-bar-opened-z-index: 2001 !default;
@@ -502,6 +519,21 @@ $menu-item-content-max-height: 214px !default;
 $menu-item-option-padding-top: 12px !default;
 $menu-item-option-padding-bottom: 12px !default;
 $menu-item-option-i-margin-right: 6px !default;
+$menu-bar-box-shadow: 0 2px 12px rgba(89, 89, 89, 0.12) !default;
+
+// collapse
+$collapse-item-padding: 13px 26px !default;
+$collapse-item-color: #666666 !default;
+$collapse-item-disabled-color: #c8c9cc !default;
+$collapse-item-icon-color: #666666 !default;
+$collapse-item-font-size: $font-size-2 !default;
+$collapse-item-line-height: 24px !default;
+$collapse-item-sub-title-color: #666666 !default;
+$collapse-wrapper-content-padding: 12px 26px !default;
+$collapse-wrapper-content-color: #666666 !default;
+$collapse-wrapper-content-font-size: $font-size-2 !default;
+$collapse-wrapper-content-line-height: 1.5 !default;
+$collapse-wrapper-content-background-color: $white !default;
 
 // searchbar
 $searchbar-background: $white !default;
@@ -576,6 +608,20 @@ $table-border-color: #ececec !default;
 $table-cols-padding: 10px !default;
 $table-tr-even-bg-color: #f3f3f3 !default;
 $table-tr-odd-bg-color: $white !default;
+
+// navbar
+$navbar-height: 44px !default;
+$navbar-margin-bottom: 20px !default;
+$navbar-padding: 13px 16px !default;
+$navbar-background: $white !default;
+$navbar-box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1) !default;
+$navbar-color: $title-color2 !default;
+$navbar-title-base-font: $font-size-2 !default;
+$navbar-title-font: $font-size-2 !default;
+$navbar-title-font-weight: 0 !default;
+$navbar-title-font-color: $navbar-color !default;
+$navbar-title-width: 100px !default;
+$navbar-title-icon-margin: 0 0 0 13px !default;
 
 // sidenavbar
 $sidenavbar-content-bg-color: $white !default;
