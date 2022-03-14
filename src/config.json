@@ -207,7 +207,6 @@
           "tarodoc": false,
           "author": "szg2008"
         }
-        
       ]
     },
     {
@@ -971,6 +970,17 @@
           "show": true,
           "taro": true,
           "author": "dongj0316"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Pickers",
+          "cType": "数据录入",
+          "cName": "选择器",
+          "desc": "选择器",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "yangxiaolu3"
         }
       ]
     },
