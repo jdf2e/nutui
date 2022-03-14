@@ -519,8 +519,15 @@ $collapse-wrapper-content-background-color: $white !default;
 
 // searchbar
 $searchbar-background: $white !default;
-$searchbar-input-background: #f7f7f7 !default;
 $searchbar-right-out-color: $black !default;
+$searchbar-padding: 9px 16px !default;
+$searchbar-width: 100% !default;
+$searchbar-input-background: #f7f7f7 !default;
+$searchbar-input-padding: 0 0 0 13px !default;
+$searchbar-input-height: 32px !default;
+$searchbar-input-width: 100% !default;
+$searchbar-input-border-radius: 16px !default;
+$searchbar-input-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04) !default;
 
 // empty
 $empty-padding: 32px 0 !default;
@@ -617,6 +624,42 @@ $sidenavbaritem-title-color: $white !default;
 
 // elevator
 $elevator-list-item-highcolor: $primary-color !default;
+$elevator-list-item-font-size: 12px !default;
+$elevator-list-item-font-color: #333333 !default;
+$elevator-list-item-name-padding: 0 20px !default;
+$elevator-list-item-name-height: 30px !default;
+$elevator-list-item-name-line-height: 30px !default;
+$elevator-list-item-code-font-size: 14px !default;
+$elevator-list-item-code-font-color: #1a1a1a !default;
+$elevator-list-item-code-font-weight: 500 !default;
+$elevator-list-item-code-padding: 0 20px !default;
+$elevator-list-item-code-height: 35px !default;
+$elevator-list-item-code-line-height: 35px !default;
+$elevator-list-item-code-after-width: 100% !default;
+$elevator-list-item-code-after-height: 1px !default;
+$elevator-list-item-code-after-bg-color: #f5f5f5 !default;
+$elevator-list-item-code-current-box-shadow: 0 3px 3px 1px rgba(240, 240, 240, 1) !default;
+$elevator-list-item-code-current-bg-color: #fff !default;
+$elevator-list-item-code-current-border-radius: 50% !default;
+$elevator-list-item-code-current-width: 45px !default;
+$elevator-list-item-code-current-height: 45px !default;
+$elevator-list-item-code-current-line-height: 45px !default;
+$elevator-list-item-code-current-position: absolute !default;
+$elevator-list-item-code-current-right: 60px !default;
+$elevator-list-item-code-current-top: 50% !default;
+$elevator-list-item-code-current-transform: translateY(-50%) !default;
+$elevator-list-item-code-current-text-align: center !default;
+$elevator-list-item-bars-position: absolute !default;
+$elevator-list-item-bars-right: 8px !default;
+$elevator-list-item-bars-top: 50% !default;
+$elevator-list-item-bars-transform: translateY(-50%) !default;
+$elevator-list-item-bars-padding: 15px 0 !default;
+$elevator-list-item-bars-background-color: #eeeff2 !default;
+$elevator-list-item-bars-border-radius: 6px !default;
+$elevator-list-item-bars-text-align: center !default;
+$elevator-list-item-bars-z-index: 10 !default;
+$elevator-list-item-bars-inner-item-padding: 3px !default;
+$elevator-list-item-bars-inner-item-font-size: 10px !default;
 
 @import './mixins/index';
 @import './animation/index';

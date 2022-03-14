@@ -13,19 +13,18 @@ config.nav.map((item) => {
   });
 });
 
-fs.writeFile(path.resolve(__dirname, `../dist/theme/source/styles/sass-styles.scss_source`), sassStyles, 'utf8');
-
 tasks.push(
   fs.copy(path.resolve(__dirname, '../src/packages/styles'), path.resolve(__dirname, '../dist/theme/source/styles'))
 );
-tasks.push(
+
+Promise.all(tasks).then((res) => {
   fs.copy(
     path.resolve(__dirname, '../src/packages/styles/variables.scss'),
     path.resolve(__dirname, '../dist/theme/source/styles/variables.scss_source')
-  )
-);
+  );
 
-Promise.all(tasks).then((res) => {
+  fs.writeFile(path.resolve(__dirname, `../dist/theme/source/styles/sass-styles.scss_source`), sassStyles, 'utf8');
+
   fs.outputFile(
     path.resolve(__dirname, '../dist/theme/source/styles/themes/default.scss'),
     fileStr,
