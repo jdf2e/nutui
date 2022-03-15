@@ -13,7 +13,7 @@
     </view>
 
     <view class="nut-pickers-content">
-      <view class="nut-pickers-list-panel" ref="list" :style="touchListStyle">
+      <view class="nut-pickers-list-panel" ref="list" :id="'list' + refRandomId" :style="touchListStyle">
         <view
           :class="['nut-pickers-item', 'nut-pickers-item-ref', item.className]"
           v-for="(item, index) in column"
@@ -28,8 +28,10 @@
 <script lang="ts">
 import { reactive, ref, watch, computed, toRefs, onMounted, PropType } from 'vue';
 import { createComponent } from '../../utils/create';
-import { PickerColumnOption, PickerOption, TouchParams } from './types';
+import { PickerOption, TouchParams } from './types';
+import { useTaroRect } from '../../utils/useTaroRect';
 const { create } = createComponent('pickers-column');
+import Taro from '@tarojs/taro';
 
 export default create({
   props: {
@@ -52,7 +54,8 @@ export default create({
 
   emits: ['click', 'change'],
   setup(props, { emit }) {
-    const wrapper = ref();
+    const wrapper = ref<HTMLElement>();
+    const itemref = ref();
     const state = reactive({
       touchParams: {
         startY: 0,
@@ -72,7 +75,7 @@ export default create({
 
     const roller = ref(null);
     const list = ref(null);
-    const listItem = ref(null);
+    const listitem = ref(null);
 
     const touchDeg = ref(0);
     const touchTime = ref(0);
@@ -199,6 +202,12 @@ export default create({
       setMove(-move);
     };
 
+    const getReference = async () => {
+      const refe = await useTaroRect(list, Taro);
+      state.lineSpacing = refe.height / props.column.length;
+      modifyStatus(true);
+    };
+
     watch(
       () => props.column,
       (val) => {
@@ -210,25 +219,45 @@ export default create({
       }
     );
 
+    watch(
+      () => props.itemShow,
+      (val) => {
+        if (val) {
+          setTimeout(() => {
+            getReference();
+          }, 200);
+        }
+      },
+      {
+        deep: true
+      }
+    );
+
     onMounted(() => {
-      modifyStatus(true);
+      setTimeout(() => {
+        getReference();
+      }, 200);
     });
+
+    const refRandomId = Math.random().toString(36).slice(-8);
 
     return {
       ...toRefs(state),
       ...toRefs(props),
       wrapper,
+      itemref,
       setRollerStyle,
       isHidden,
       roller,
       list,
-      listItem,
+      listitem,
       onTouchStart,
       onTouchMove,
       onTouchEnd,
       touchRollerStyle,
       touchListStyle,
-      setMove
+      setMove,
+      refRandomId
     };
   }
 });

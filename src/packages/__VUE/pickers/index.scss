@@ -11,7 +11,8 @@
     padding: $picker-bar-button-padding;
     display: flex;
     align-items: center;
-    height: 100%;
+    justify-content: center;
+    min-width: 50px;
   }
   &__left {
     color: $picker-cancel-color;
@@ -34,6 +35,9 @@
   }
 
   &__title {
+    flex: 1;
+    @include oneline-ellipsis();
+    text-align: center;
     color: $picker-bar-title-color;
     font-size: $picker-bar-title-font-size;
     font-weight: $picker-bar-title-font-weight;
@@ -119,5 +123,6 @@
     line-height: $picker-item-height;
     text-align: center;
     font-size: 16px;
+    color: $picker-columns-item-color;
   }
 }

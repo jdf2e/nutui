@@ -3,7 +3,6 @@ export interface PickerOption {
   value: string | number;
   disabled?: string;
   children?: PickerOption[];
-  defaultValue?: string;
   className?: string | number;
 }
 

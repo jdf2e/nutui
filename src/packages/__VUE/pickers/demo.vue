@@ -1,29 +1,67 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-cell title="请选择城市" :desc="desc" @click="open(0)"></nut-cell>
-    <!-- <nut-pickers v-model:visible="show" :columns="columns" title="城市选择"> </nut-pickers> -->
+    <nut-cell title="请选择城市" :desc="index" @click="open(0)"></nut-cell>
+    <nut-pickers
+      v-model:visible="show"
+      :columns="columns"
+      title="城市选择"
+      @change="change"
+      @confirm="(options) => confirm('index', options)"
+    >
+    </nut-pickers>
 
     <h2>默认选中项</h2>
-    <nut-cell title="请选择城市" :desc="desc" @click="open(0)"></nut-cell>
-    <nut-pickers v-model:visible="show" :columns="columns" title="城市选择"> </nut-pickers>
+    <nut-cell title="请选择城市" :desc="defult" @click="open(1)"></nut-cell>
+    <nut-pickers
+      v-model="selectedValue"
+      v-model:visible="showDefult"
+      :columns="columns"
+      title="城市选择"
+      @confirm="(options) => confirm('defult', options)"
+    >
+    </nut-pickers>
 
     <h2>多列样式</h2>
-    <nut-cell title="请选择时间" :desc="desc" @click="open(2)"></nut-cell>
-    <nut-pickers v-model:visible="showMultiple" :columns="multipleColumns" title="城市选择"> </nut-pickers>
+    <nut-cell title="请选择时间" :desc="multiple" @click="open(2)"></nut-cell>
+    <nut-pickers
+      v-model:visible="showMultiple"
+      :columns="multipleColumns"
+      title="城市选择"
+      @confirm="(options) => confirm('multiple', options)"
+    >
+    </nut-pickers>
 
     <h2>多级联动</h2>
-    <nut-cell title="请选择地址" :desc="desc" @click="open(3)"></nut-cell>
-    <nut-pickers v-model:visible="showCascader" :columns="cascaderColumns" title="城市选择"> </nut-pickers>
+    <nut-cell title="请选择地址" :desc="cascader" @click="open(3)"></nut-cell>
+    <nut-pickers
+      v-model:visible="showCascader"
+      :columns="cascaderColumns"
+      title="城市选择"
+      @confirm="(options) => confirm('cascader', options)"
+    ></nut-pickers>
+
+    <h2>异步获取</h2>
+    <nut-cell title="请选择地址" :desc="async" @click="open(4)"></nut-cell>
+    <nut-pickers
+      v-model="asyncValue"
+      v-model:visible="showAsync"
+      :columns="asyncColumns"
+      title="城市选择"
+      @confirm="(options) => confirm('async', options)"
+    ></nut-pickers>
   </div>
 </template>
 <script lang="ts">
-import { toRefs, ref } from 'vue';
+import { toRefs, ref, onMounted, reactive } from 'vue';
 import { createComponent } from '../../utils/create';
+import { PickerOption } from './types';
 const { createDemo } = createComponent('pickers');
 export default createDemo({
   props: {},
   setup() {
+    const selectedValue = ref(['ZheJiang']);
+    const asyncValue = ref<string[]>([]);
     const columns = ref([
       { text: '南京市', value: 'NanJing' },
       { text: '无锡市', value: 'WuXi' },
@@ -74,6 +112,7 @@ export default createDemo({
       },
       {
         text: '福建',
+        value: 'FuJian',
         children: [
           {
             text: '福州',
@@ -95,25 +134,84 @@ export default createDemo({
       }
     ]);
 
+    const asyncColumns = ref<PickerOption[]>([]);
+
     const show = ref(false);
+    const showDefult = ref(false);
     const showMultiple = ref(false);
     const showCascader = ref(false);
-    const desc = ref('');
+    const showAsync = ref(false);
+
+    const desc = reactive({
+      index: '',
+      defult: '',
+      multiple: '',
+      cascader: '',
+      async: ''
+    });
 
     const open = (index: number) => {
       switch (index) {
         case 0:
           show.value = true;
           break;
+        case 1:
+          showDefult.value = true;
+          break;
         case 2:
           showMultiple.value = true;
+          break;
+        case 3:
+          showCascader.value = true;
+          break;
+        case 4:
+          showAsync.value = true;
           break;
         default:
           showCascader.value = true;
       }
     };
 
-    return { columns, show, desc, showMultiple, showCascader, open, multipleColumns, cascaderColumns };
+    onMounted(() => {
+      setTimeout(() => {
+        asyncColumns.value = [
+          { text: '南京市', value: 'NanJing' },
+          { text: '无锡市', value: 'WuXi' },
+          { text: '海北藏族自治区', value: 'ZangZu' },
+          { text: '北京市', value: 'BeiJing' },
+          { text: '连云港市', value: 'LianYunGang' },
+          { text: '浙江市', value: 'ZheJiang' },
+          { text: '江苏市', value: 'JiangSu' }
+        ];
+
+        asyncValue.value = ['ZangZu'];
+      }, 500);
+    });
+
+    const confirm = (tag: string, { selectedValue }: { selectedValue: string[] }) => {
+      (desc as any)[tag] = selectedValue.join(',');
+    };
+    const change = ({ selectedValue }: { selectedValue: string[] }) => {
+      console.log(selectedValue);
+    };
+
+    return {
+      selectedValue,
+      asyncValue,
+      columns,
+      show,
+      showDefult,
+      showAsync,
+      ...toRefs(desc),
+      showMultiple,
+      showCascader,
+      open,
+      multipleColumns,
+      cascaderColumns,
+      confirm,
+      change,
+      asyncColumns
+    };
   }
 });
 </script>

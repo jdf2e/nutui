@@ -10,23 +10,24 @@
       :round="true"
       :isWrapTeleport="isWrapTeleport"
     >
-      <view class="nut-picker__bar">
-        <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="close">{{ cancelText }}</view>
-        <view class="nut-picker__title"> {{ title }}</view>
-        <view class="nut-picker__confirm nut-picker__button nut-picker__right" @click="confirm()">{{ okText }}</view>
+      <view class="nut-pickers__bar">
+        <view class="nut-pickers__cancel nut-pickers__left nut-pickers__button" @click="close">{{ cancelText }}</view>
+        <view class="nut-pickers__title"> {{ title }}</view>
+        <view class="nut-pickers__confirm nut-pickers__right nut-pickers__button" @click="confirm()">{{ okText }}</view>
       </view>
 
-      <view class="nut-picker__column">
-        <view class="nut-picker__hairline"></view>
-        <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
+      <view class="nut-pickers__column">
+        <view class="nut-pickers__hairline"></view>
+        <view class="nut-pickers__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
           <nut-pickers-column
             :itemShow="show"
             :column="column"
             :readonly="readonly"
             :columnsType="columnsType"
+            :value="defaultValues[columnIndex]"
             @change="
-              (dataIndex) => {
-                changeHandler(columnIndex, dataIndex);
+              (option) => {
+                changeHandler(columnIndex, option);
               }
             "
           ></nut-pickers-column>
@@ -36,7 +37,7 @@
   </view>
 </template>
 <script lang="ts">
-import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRefs } from 'vue';
+import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRefs, PropType } from 'vue';
 import { createComponent } from '../../utils/create';
 import popup, { popupProps } from '../popup/index.vue';
 import column from './Column.vue';
@@ -49,6 +50,10 @@ export default create({
   },
   props: {
     ...popupProps,
+    modelValue: {
+      type: Array as PropType<(string | number)[]>,
+      default: () => []
+    },
     title: {
       type: String,
       default: ''
@@ -72,22 +77,32 @@ export default create({
       default: false
     }
   },
-  emits: ['close', 'change', 'confirm', 'update:visible'],
+  emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],
   setup(props, { emit }) {
-    const childrenKey = ref('children');
-    const valuesKey = ref('values');
     const state = reactive({
       show: false,
       formattedColumns: props.columns as PickerOption[]
     });
 
-    let defaultIndexList: number[] = [];
+    // 选中项
+    let defaultValues = ref<(number | string)[]>(props.modelValue);
 
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
         [prefixCls]: true
       };
+    });
+
+    const selectedOptions = computed(() => {
+      let optins: PickerOption[] = [];
+      (columnsList.value as PickerOption[][]).map((column: PickerOption[], index: number) => {
+        let currOptions = [];
+        currOptions = column.filter((item) => item.value == defaultValues.value[index]);
+        optins.push(currOptions[0]);
+      });
+
+      return optins;
     });
     // 当前类型
     const columnsType = computed(() => {
@@ -109,46 +124,34 @@ export default create({
           return state.formattedColumns;
         case 'cascade':
           // 级联数据处理
-          break;
+          return formatCascade(state.formattedColumns, defaultValues.value);
         default:
           return [state.formattedColumns];
       }
-      return [];
     });
 
-    const addDefaultIndexList = (listData: PickerOption[]) => {
-      defaultIndexList = [];
-      listData.forEach((res) => {
-        defaultIndexList.push((res.defaultIndex as number) || 0);
-      });
-    };
+    const formatCascade = (columns: PickerOption[], defaultValues: (number | string)[]) => {
+      const formatted: PickerOption[][] = [];
+      let cursor: PickerOption = {
+        text: '',
+        value: '',
+        children: columns
+      };
 
-    const formatCascade = (listData: PickerOption[], defaultIndex: number) => {
-      const formatted: PickerOption[] = [];
-      let children = listData as PickerOptions;
-      children.defaultIndex = defaultIndex;
-      while (children) {
-        formatted.push({
-          values: children,
-          defaultIndex: children.defaultIndex || 0
-        });
-        children = children?.[children.defaultIndex || 0].children;
+      let columnIndex = 0;
+
+      while (cursor && cursor.children) {
+        const options: PickerOption[] = cursor.children;
+        const value = defaultValues[columnIndex];
+        let index = options.findIndex((columnItem) => columnItem.value == value);
+        if (index == -1) index = 0;
+        cursor = cursor.children[index];
+
+        columnIndex++;
+        formatted.push(options);
       }
-      addDefaultIndexList(formatted);
+
       return formatted;
-    };
-
-    const getCascadeData = (listData: PickerOption[], defaultIndex: number) => {
-      let arr = listData as PickerOptions;
-      arr.defaultIndex = defaultIndex;
-      const dataList: string[] = [];
-
-      while (arr) {
-        const item = arr[arr.defaultIndex ?? 0];
-        dataList.push(item.text as string);
-        arr = item.children;
-      }
-      return dataList;
     };
 
     const close = () => {
@@ -156,49 +159,35 @@ export default create({
       emit('update:visible', false);
     };
 
-    const changeHandler = (columnIndex: number, dataIndex: number) => {
-      // if (columnsType.value === 'cascade') {
-      //   let cursor = state.formattedColumns as PickerOptions;
-      //   if (columnIndex === 0) {
-      //     state.defaultIndex = dataIndex;
-      //   }
-      //   let i = 0;
-      //   while (cursor) {
-      //     if (i === columnIndex) {
-      //       cursor.defaultIndex = dataIndex;
-      //     } else if (i > columnIndex) {
-      //       cursor.defaultIndex = 0;
-      //     }
-      //     cursor = cursor[cursor.defaultIndex || 0].children;
-      //     i++;
-      //   }
-      // } else if (columnsType.value === 'text') {
-      //   _defaultIndex = dataIndex;
-      // } else if (columnsType.value === 'multipleColumns') {
-      //   defaultIndexList[columnIndex] = dataIndex;
-      //   const val = defaultIndexList.map(
-      //     (res, i) => toRaw(state.formattedColumns as PickerOptions)[i].values[res]
-      //   );
-      //   emit('change', val, columnIndex, dataIndex);
-      // }
+    const changeHandler = (columnIndex: number, option: PickerOption) => {
+      if (option && Object.keys(option).length) {
+        if (columnsType.value === 'cascade') {
+          defaultValues.value[columnIndex] = option.value ? option.value : '';
+          let index = columnIndex;
+          let cursor = option;
+          while (cursor && cursor.children) {
+            defaultValues.value[index + 1] = cursor.children[0].value;
+            index++;
+            cursor = cursor.children[0];
+          }
+        } else {
+          defaultValues.value[columnIndex] = option.value ? option.value : '';
+        }
+
+        emit('change', {
+          columnIndex: columnIndex,
+          selectedValue: defaultValues.value,
+          selectedOptions: selectedOptions.value
+        });
+      }
     };
 
     const confirm = () => {
-      // if (columnsType.value === 'text') {
-      //   state.defaultIndex = _defaultIndex as number;
-      //   emit('confirm', state.formattedColumns[_defaultIndex as number]);
-      // } else if (columnsType.value === 'multipleColumns') {
-      //   for (let i = 0; i < defaultIndexList.length; i++) {
-      //     state.formattedColumns[i].defaultIndex = defaultIndexList[i];
-      //   }
-      //   const checkedArr = toRaw(state.formattedColumns).map(
-      //     (res: PickerOption) => res.values && res.values[res.defaultIndex as number]
-      //   );
-      //   emit('confirm', checkedArr);
-      // } else if (columnsType.value === 'cascade') {
-      //   emit('confirm', getCascadeData(toRaw(state.formattedColumns), state.defaultIndex));
-      // }
-      // emit('update:visible', false);
+      emit('confirm', {
+        selectedValue: defaultValues.value,
+        selectedOptions: selectedOptions.value
+      });
+      emit('update:visible', false);
     };
 
     onMounted(() => {
@@ -210,6 +199,28 @@ export default create({
     });
 
     watch(
+      () => props.modelValue,
+      (newValues) => {
+        const isSameValue = JSON.stringify(newValues) === JSON.stringify(defaultValues.value);
+        if (!isSameValue) {
+          defaultValues.value = newValues;
+        }
+      },
+      { deep: true }
+    );
+
+    watch(
+      defaultValues,
+      (newValues) => {
+        const isSameValue = JSON.stringify(newValues) === JSON.stringify(props.modelValue);
+        if (!isSameValue) {
+          emit('update:modelValue', newValues);
+        }
+      },
+      { immediate: true }
+    );
+
+    watch(
       () => props.visible,
       (val) => {
         state.show = val;
@@ -219,7 +230,7 @@ export default create({
     watch(
       () => props.columns,
       (val) => {
-        state.formattedColumns = val as PickerOptions;
+        if (val.length) state.formattedColumns = val as PickerOption[];
       }
     );
 
@@ -231,7 +242,8 @@ export default create({
       columnsList,
       close,
       changeHandler,
-      confirm
+      confirm,
+      defaultValues
     };
   }
 });
