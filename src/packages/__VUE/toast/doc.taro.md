@@ -93,4 +93,5 @@ export default {
 | close-on-click-overlay | 是否在点击遮罩层后关闭提示                                                    | Boolean       | false                         |
 | toast-style            | 提示框style                                                                   | object        | {}                            |
 | toast-class            | 提示框class                                                                   | String        | ""                            |
+| type                   | 弹框类型 可选值（text、success、fail、warn、loading）                                                                | String        | ""                            |
 
