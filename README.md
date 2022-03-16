@@ -156,6 +156,11 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 
 本项目遵从 [Angular Style Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)，更新日志请查阅 [Release](https://github.com/jdf2e/nutui/releases)。
 
+## github stargazers 
+
+![stargazers](https://starchart.cc/jdf2e/nutui.svg)
+
+
 ## 开源协议
 
 本项目基于 **MIT** 协议
