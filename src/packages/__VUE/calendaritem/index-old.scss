@@ -38,7 +38,6 @@
 
     .calendar-title {
       font-size: $calendar-title-font;
-      font-weight: $calendar-title-font-weight;
       line-height: 44px;
     }
     .calendar-top-slot {
@@ -47,7 +46,6 @@
     .calendar-curr-month {
       padding: 7px 0;
       line-height: 22px;
-      font-size: $calendar-sub-title-font;
     }
 
     .calendar-weeks {
@@ -61,7 +59,7 @@
       .calendar-week-item {
         &:first-of-type,
         &:last-of-type {
-          color: $calendar-day67-font-color;
+          color: $calendar-primary-color;
         }
       }
     }
@@ -116,14 +114,13 @@
         .calendar-month-item {
           .calendar-month-day:nth-child(7n + 0),
           .calendar-month-day:nth-child(7n + 1) {
-            color: $calendar-day67-font-color;
+            color: $calendar-primary-color;
           }
         }
         .calendar-month-day {
           float: left;
-          width: $calendar-day-width;
-          height: $calendar-day-height;
-          font-weight: $calendar-day-font-weight;
+          width: 14.28%;
+          height: 64px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -159,7 +156,6 @@
           &-active {
             background-color: $calendar-primary-color;
             color: $white !important;
-            border-radius: $calendar-day-active-border-radius;
 
             .calendar-curr-tips {
               // color: $white !important;
@@ -179,7 +175,6 @@
 
           &-choose {
             background-color: $calendar-choose-color;
-            color: $calendar-choose-font-color;
           }
 
           .calendar-day {

@@ -6,13 +6,16 @@
     @change="changeHandler"
     :title="title"
     @confirm="confirm"
+    :isWrapTeleport="isWrapTeleport"
   ></nut-picker>
 </template>
 <script lang="ts">
 import { toRefs, watch, computed, reactive, onMounted } from 'vue';
 import picker from '../picker/index.vue';
+import { popupProps } from '../popup/index.vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('datepicker');
+
 const currentYear = new Date().getFullYear();
 function isDate(val: Date): val is Date {
   return Object.prototype.toString.call(val) === '[object Date]' && !isNaN(val.getTime());
@@ -31,11 +34,8 @@ export default create({
     [picker.name]: picker
   },
   props: {
+    ...popupProps,
     modelValue: null,
-    visible: {
-      type: Boolean,
-      default: false
-    },
     title: {
       type: String,
       default: ''

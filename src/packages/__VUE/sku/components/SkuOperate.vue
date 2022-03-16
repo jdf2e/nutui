@@ -62,10 +62,6 @@ export default create({
       return mapD[type];
     };
 
-    onMounted(() => {
-      console.log(slots);
-    });
-
     const getSlots = (name: string) => slots[name];
 
     const clickBtnOperate = (btn: string) => {

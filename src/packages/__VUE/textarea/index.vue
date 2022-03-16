@@ -31,7 +31,7 @@ export default create({
     },
     textAlign: {
       type: String,
-      default: 'left'
+      default: ''
     },
     limitShow: {
       type: Boolean,
