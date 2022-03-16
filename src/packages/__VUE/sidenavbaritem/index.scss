@@ -1,10 +1,10 @@
 .nut-sidenavbaritem {
-  height: 40px;
-  line-height: 40px;
+  height: $sidenavbar-item-height;
+  line-height: $sidenavbar-item-line-height;
   display: block;
-  font-size: 16px;
+  font-size: $sidenavbar-item-font-size;
   &__title {
-    color: $title-color;
-    background-color: $sidenavbaritem-title-color;
+    color: $sidenavbar-item-title-color;
+    background-color: $sidenavbar-item-title-bg-color;
   }
 }
