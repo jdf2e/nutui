@@ -11,7 +11,7 @@
         <nut-step title="步骤三">3</nut-step>
       </nut-steps>
       <div class="steps-button">
-        <nut-button type="primary" @click="handleStep('current1')">下一步</nut-button>
+        <nut-button size="mini" type="primary" @click="handleStep('current1')">下一步</nut-button>
       </div>
     </div>
     <h2>标题和描述信息</h2>
@@ -22,7 +22,7 @@
         <nut-step title="步骤三" content="步骤描述"></nut-step>
       </nut-steps>
       <div class="steps-button" style="margin-top: 10px">
-        <nut-button type="primary" @click="handleStep('current2')">下一步</nut-button>
+        <nut-button size="mini" type="primary" @click="handleStep('current2')">下一步</nut-button>
       </div>
     </div>
     <h2>自定义图标</h2>

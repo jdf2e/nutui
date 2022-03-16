@@ -25,10 +25,10 @@
     display: block;
     width: 100%;
     overflow: hidden;
-    padding: 13px 26px;
-    color: #666666;
-    font-size: 14px;
-    line-height: 24px;
+    padding: $collapse-item-padding;
+    color: $collapse-item-color;
+    font-size: $collapse-item-font-size;
+    line-height: $collapse-item-line-height;
     background-color: #fff;
     box-sizing: border-box;
     .collapse-icon {
@@ -37,6 +37,7 @@
       top: 50%;
       // margin-top: -6px;
       right: 16px;
+      color: $collapse-item-icon-color;
       // width: 24px;
       // height: 12px;
       // line-height: 24px;
@@ -53,7 +54,7 @@
       top: 50%;
       right: 60px;
       margin-top: -12px;
-      color: #999999;
+      color: $collapse-item-sub-title-color;
     }
     .titleIconRight {
       vertical-align: middle;
@@ -72,11 +73,11 @@
     transition: height 0.3s ease-in-out;
     .collapse-content {
       display: block;
-      padding: 12px 26px;
-      color: #666666;
-      font-size: 14px;
-      line-height: 1.5;
-      background-color: #fff;
+      padding: $collapse-wrapper-content-padding;
+      color: $collapse-wrapper-content-color;
+      font-size: $collapse-wrapper-content-font-size;
+      line-height: $collapse-wrapper-content-line-height;
+      background-color: $collapse-wrapper-content-background-color;
     }
   }
   .open-style {
@@ -88,7 +89,7 @@
     // height: 0;
   }
   .nut-collapse-item-disabled {
-    color: #c8c9cc;
+    color: $collapse-item-disabled-color;
     cursor: not-allowed;
     pointer-events: none;
     // .collapse-icon-disabled {
@@ -96,6 +97,9 @@
     //   background-repeat: no-repeat;
     //   background-size: 100% 100%;
     // }
+    .collapse-icon {
+      color: $collapse-item-disabled-color;
+    }
   }
   .titleIconLeft {
     float: left;

@@ -3,7 +3,7 @@
   display: flex;
   line-height: $menu-bar-line-height;
   background-color: $white;
-  border-bottom: 1px solid $menu-bar-border-bottom-color;
+  box-shadow: $menu-bar-box-shadow;
 
   &.opened {
     z-index: $menu-bar-opened-z-index;
@@ -12,8 +12,8 @@
   .nut-menu__item {
     flex: 1;
     text-align: center;
-    font-size: $font-size-2;
-    color: $title-color;
+    font-size: $menu-item-font-size;
+    color: $menu-item-text-color;
     min-width: 0;
 
     &.active {

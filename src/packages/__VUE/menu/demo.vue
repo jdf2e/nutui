@@ -32,7 +32,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { reactive, ref } from 'vue';
 import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('menu');
