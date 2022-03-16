@@ -1,10 +1,8 @@
 <template>
-  <div class="demo">
+  <div class="demo full">
     <h2>默认用法</h2>
     <nut-noticebar
       text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
-      :background="`rgba(251, 248, 220, 1)`"
-      :color="`#D9500B`"
     ></nut-noticebar>
 
     <h2>滚动播放</h2>

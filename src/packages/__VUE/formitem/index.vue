@@ -54,15 +54,15 @@ export default create({
     },
     labelAlign: {
       type: String,
-      default: 'left'
+      default: ''
     },
     errorMessageAlign: {
       type: String,
-      default: 'left'
+      default: ''
     },
     bodyAlign: {
       type: String,
-      default: 'left'
+      default: ''
     }
   },
   components: {},
