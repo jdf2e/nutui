@@ -1,6 +1,6 @@
 import { config, mount } from '@vue/test-utils';
 import Barrage from '../index.vue';
-import { nextTick, reactive, ref, toRefs } from 'vue';
+import { nextTick, ref } from 'vue';
 function sleep(delay = 0): Promise<void> {
   return new Promise((resolve) => {
     setTimeout(resolve, delay);
