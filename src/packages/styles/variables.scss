@@ -167,10 +167,14 @@ $textarea-disabled-color: $disable-color !default;
 
 $inputnumber-icon-color: $title-color !default;
 $inputnumber-icon-void-color: $disable-color !default;
+$inputnumber-icon-size: 20px !default;
+$inputnumber-input-font-size: 12px !default;
+$inputnumber-input-font-color: $title-color !default;
 $inputnumber-input-background-color: $help-color !default;
 $inputnumber-input-border-radius: 4px !default;
 $inputnumber-input-width: 40px !default;
-$inputnumber-icon-size: 20px !default;
+$inputnumber-input-margin: 0 6px !default;
+$inputnumber-input-border: 0 !default;
 
 // actionsheet
 $actionsheet-light-color: #f6f6f6 !default;
@@ -186,6 +190,35 @@ $shortpassword-background-color: rgba(245, 245, 245, 1) !default;
 $shortpassword-border-color: #ddd !default;
 $shortpassword-error: $primary-color !default;
 $shortpassword-forget: rgba(128, 128, 128, 1) !default;
+
+//numberkeyboard
+$numberkeyboard-width: 100% !default;
+$numberkeyboard-padding: 0 0 22px 0 !default;
+$numberkeyboard-background-color: #f2f3f5 !default;
+$numberkeyboard-header-height: 34px !default;
+$numberkeyboard-header-padding: 6px 0 0 0 !default;
+$numberkeyboard-header-color: #646566 !default;
+$numberkeyboard-header-font-size: 16px !default;
+$numberkeyboard-header-close-padding: 0 16px !default;
+$numberkeyboard-header-close-color: #576b95 !default;
+$numberkeyboard-header-close-font-size: 14px !default;
+$numberkeyboard-header-close-background-color: transparent !default;
+$numberkeyboard-key-background-color: #fff !default;
+$numberkeyboard-key-active-background-color: #ebedf0 !default;
+$numberkeyboard-key-height: 48px !default;
+$numberkeyboard-key-line-height: 1.5 !default;
+$numberkeyboard-key-border-radius: 8px !default;
+$numberkeyboard-key-font-size: 28px !default;
+$numberkeyboard-key-font-size-color: #333 !default;
+$numberkeyboard-key-finish-font-size: 16px !default;
+$numberkeyboard-key-finish-font-size-color: #fff !default;
+$numberkeyboard-key-finish-background-color: #1989fa !default;
+$numberkeyboard-key-activeFinsh-background-color: #0570db !default;
+
+// countdown
+$countdown-display: flex !default;
+$countdown-color: inherit !default;
+$countdown-font-size: initial !default;
 
 //large price
 $price-symbol-big-size: 18px !default;
@@ -393,24 +426,34 @@ $noticebar-righticon-margin: 0px 10px !default;
 // TimeSelect
 $timeselect-title-font-size: $font-size-2 !default;
 $timeselect-title-color: $title-color !default;
+$timeselect-title-width: 100% !default;
+$timeselect-title-height: 50px !default;
+$timeselect-title-line-height: 50px !default;
 $timeselect-pannel-bg-color: #f6f7f9 !default;
 
 // TimePannel
-$timepannel-text-color: $title-color2 !default;
-$timepannel-font-size: $font-size-2 !default;
-$timepannel-cur-bg-color: $white !default;
-$timepannel-cur-text-color: #333333 !default;
+$timeselect-timepannel-text-color: $title-color2 !default;
+$timeselect-timepannel-font-size: $font-size-2 !default;
+$timeselect-timepannel-cur-bg-color: $white !default;
+$timeselect-timepannel-cur-text-color: #333333 !default;
+$timeselect-timepannel-width: 140px !default;
+$timeselect-timepannel-height: 40px !default;
+$timeselect-timepannel-padding: 15px !default;
 
 // TimeDetail
-$timedetail-item-bg-color: #f6f7f9 !default;
-$timedetail-item-border-radius: 5px !default;
-$timedetail-item-text-color: #333333 !default;
-$timedetail-item-text-font-size: $font-size-2 !default;
-$timedetail-item-cur-bg-color: rgba($primary-color, 0.15) !default;
-$timedetail-item-cur-border: $primary-color !default;
-$timedetail-item-cur-text-color: $primary-color !default;
-$timedetail-time-text-color: #999 !default;
-$timedetail-time-font-size: $font-size-1 !default;
+$timeselect-timedetail-padding: 0 5px 50px 13px !default;
+$timeselect-timedetail-item-width: 100px !default;
+$timeselect-timedetail-item-height: 50px !default;
+$timeselect-timedetail-item-line-height: 50px !default;
+$timeselect-timedetail-item-bg-color: #f6f7f9 !default;
+$timeselect-timedetail-item-border-radius: 5px !default;
+$timeselect-timedetail-item-text-color: #333333 !default;
+$timeselect-timedetail-item-text-font-size: $font-size-2 !default;
+$timeselect-timedetail-item-cur-bg-color: rgba($primary-color, 0.15) !default;
+$timeselect-timedetail-item-cur-border: $primary-color !default;
+$timeselect-timedetail-item-cur-text-color: $primary-color !default;
+$timeselect-timedetail-time-text-color: #999 !default;
+$timeselect-timedetail-time-font-size: $font-size-1 !default;
 
 //tag
 $tag-font-size: 12px !default;
@@ -432,8 +475,16 @@ $tag-plain-background-color: #fff !default;
 
 //badge
 $badge-background-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
+$badge-color: #fff !default;
 $badge-font-size: $font-size-1 !default;
-$badge-default-background-color: rgba(255, 255, 255, 1) !default;
+$badge-border-radius: 14px !default;
+$badge-padding: 0 5px !default;
+$badge-content-transform: translateY(-50%) translateX(100%) !default;
+$badge-z-index: 1 !default;
+$badge-dot-width: 7px !default;
+$badge-dot-height: 7px !default;
+$badge-dot-border-radius: 7px !default;
+$badge-dot-padding: 0px !default;
 
 //popover
 $popover-white-background-color: rgba(255, 255, 255, 1) !default;
@@ -634,11 +685,22 @@ $navbar-title-icon-margin: 0 0 0 13px !default;
 $sidenavbar-content-bg-color: $white !default;
 
 // subsidenavbar
-$subsidenavbar-title-border-color: #f6f6f6 !default;
-$subsidenavbar-title-bg-color: #f6f6f6 !default;
+$sidenavbar-sub-title-border-color: #f6f6f6 !default;
+$sidenavbar-sub-title-bg-color: #f6f6f6 !default;
+$sidenavbar-sub-title-font-size: $font-size-large !default;
+$sidenavbar-sub-title-radius: 0 !default;
+$sidenavbar-sub-title-border: 0 !default;
+$sidenavbar-sub-title-width: 100% !default;
+$sidenavbar-sub-title-height: 40px !default;
+$sidenavbar-sub-title-text-line-height: 40px !default;
+$sidenavbar-sub-title-text-color: $title-color !default;
 
 // sidenavbaritem
-$sidenavbaritem-title-color: $white !default;
+$sidenavbar-item-title-color: #333 !default;
+$sidenavbar-item-title-bg-color: $white !default;
+$sidenavbar-item-height: 40px !default;
+$sidenavbar-item-line-height: 40px !default;
+$sidenavbar-item-font-size: 16px !default;
 
 // elevator
 $elevator-list-item-highcolor: $primary-color !default;
