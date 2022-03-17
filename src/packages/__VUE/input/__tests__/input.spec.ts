@@ -204,3 +204,11 @@ test('should render clear icon when using clearable prop', async () => {
   // expect((wrapper.emitted('update:modelValue') as any)[0][0]).toEqual('');
   // expect((wrapper.emitted('handleClear') as any)[0][0]).toBeTruthy();
 });
+test('slot test', async () => {
+  const wrapper = mount(Input, {
+    slots: {
+      label: '自定义左侧文案'
+    }
+  });
+  expect(wrapper.html()).toContain('自定义左侧文案');
+});
