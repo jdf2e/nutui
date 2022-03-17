@@ -39,7 +39,20 @@ export default create({
       type: Boolean,
       default: false
     },
-    ...commonProps
+    listData: {
+      type: Object,
+      default: () => {
+        return {};
+      }
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    defaultIndex: {
+      type: [Number, String],
+      default: 0
+    }
   },
 
   emits: ['click', 'change'],
@@ -225,7 +238,8 @@ export default create({
       onTouchMove,
       onTouchEnd,
       touchRollerStyle,
-      touchListStyle
+      touchListStyle,
+      setMove
     };
   }
 });

@@ -5,9 +5,9 @@
   overflow: hidden;
   &__title {
     display: flex;
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
+    width: $timeselect-title-width;
+    height: $timeselect-title-height;
+    line-height: $timeselect-title-line-height;
     margin-bottom: 10px;
     font-size: $timeselect-title-font-size;
     color: $timeselect-title-color;

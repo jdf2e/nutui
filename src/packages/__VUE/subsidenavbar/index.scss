@@ -5,20 +5,22 @@
   position: relative;
   &__title {
     display: block;
-    width: 100%;
-    height: 40px;
+    width: $sidenavbar-sub-title-width;
+    height: $sidenavbar-sub-title-height;
     position: relative;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     box-sizing: border-box;
-    border-bottom: 1px solid $subsidenavbar-title-border-color;
-    color: $title-color;
-    font-size: $font-size-large;
-    background-color: $subsidenavbar-title-bg-color;
+    border-bottom: 1px solid $sidenavbar-sub-title-border-color;
+    color: $sidenavbar-sub-title-text-color;
+    font-size: $sidenavbar-sub-title-font-size;
+    background-color: $sidenavbar-sub-title-bg-color;
+    border-radius: $sidenavbar-sub-title-radius;
+    border: $sidenavbar-sub-title-border;
     &__text {
-      line-height: 40px;
-      color: $title-color;
+      line-height: $sidenavbar-sub-title-text-line-height;
+      color: $sidenavbar-sub-title-text-color;
     }
     &__icon {
       position: absolute;

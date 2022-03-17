@@ -32,7 +32,7 @@
     </view>
   </Transition>
 </template>
-<script>
+<script lang="ts">
 import { computed, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('toast');

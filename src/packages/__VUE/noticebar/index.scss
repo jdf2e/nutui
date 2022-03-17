@@ -1,15 +1,16 @@
 .nut-noticebar-page {
   // width: 100%;
   display: flex;
-  padding: 0px $noticebar-box-padding-right 0 $noticebar-box-padding-left;
+  padding: $noticebar-box-padding;
   height: $noticebar-height;
   font-size: $noticebar-font-size;
   position: relative;
   align-items: center;
+  background: $noticebar-background;
+  color: $noticebar-color;
   &.wrapable {
     height: auto;
-    padding: $noticebar-wrapable-padding-bottom $noticebar-wrapable-padding-right $noticebar-wrapable-padding-bottom
-      $noticebar-wrapable-padding-left;
+    padding: $noticebar-wrapable-padding;
     .wrap {
       height: auto;
       .content {
@@ -27,8 +28,7 @@
   .left-icon {
     height: $noticebar-left-icon-width;
     min-width: $noticebar-left-icon-width;
-    margin: $noticebar-lefticon-padding-top $noticebar-lefticon-padding-right $noticebar-lefticon-padding-bottom
-      $noticebar-lefticon-padding-left;
+    margin: $noticebar-lefticon-margin;
     background-size: 100% 100%;
   }
   .right-icon {
@@ -36,8 +36,7 @@
     align-items: center;
     justify-content: center;
     width: $noticebar-right-icon-width;
-    margin: $noticebar-righticon-padding-top $noticebar-righticon-padding-right $noticebar-righticon-padding-bottom
-      $noticebar-righticon-padding-left;
+    margin: $noticebar-righticon-margin;
   }
   .wrap {
     display: flex;
@@ -95,7 +94,7 @@
   height: $noticebar-height;
   font-size: $noticebar-font-size;
   overflow: hidden;
-  padding: 0px $noticebar-box-padding-right 0 $noticebar-box-padding-left;
+  padding: $noticebar-box-padding;
 
   .horseLamp_list {
     margin: 0;
