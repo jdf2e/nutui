@@ -1,16 +1,16 @@
 .nut-timepannel {
   display: flex;
-  width: 140px;
-  height: 40px;
-  padding: 15px;
+  width: $timeselect-timepannel-width;
+  height: $timeselect-timepannel-height;
+  padding: $timeselect-timepannel-padding;
   align-items: center;
   justify-content: center;
-  color: $timepannel-text-color;
-  font-size: $timepannel-font-size;
+  color: $timeselect-timepannel-text-color;
+  font-size: $timeselect-timepannel-font-size;
   box-sizing: border-box;
   &--curr {
-    background-color: $timepannel-cur-bg-color;
-    color: $timepannel-cur-text-color;
+    background-color: $timeselect-timepannel-cur-bg-color;
+    color: $timeselect-timepannel-cur-text-color;
     font-weight: bold;
   }
 }

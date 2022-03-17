@@ -82,6 +82,7 @@
     "@vue/test-utils": "^2.0.0-rc.18",
     "autoprefixer": "^10.3.4",
     "axios": "^0.21.0",
+    "canvas": "^2.9.0",
     "eslint": "^7.23.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.8.0",
