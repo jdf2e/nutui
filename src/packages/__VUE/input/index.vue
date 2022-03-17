@@ -1,10 +1,10 @@
 <template>
   <view :class="classes">
-    <view v-if="label && !$slots['label']" class="nut-input-label">
-      <view class="label-string">{{ label }}</view>
-    </view>
-    <view v-if="$slots['label']" class="nut-input-label">
+    <view v-if="$slots.label" class="nut-input-label">
       <slot name="label"></slot>
+    </view>
+    <view v-else-if="label" class="nut-input-label">
+      <view class="label-string">{{ label }}</view>
     </view>
     <input
       class="input-text"
