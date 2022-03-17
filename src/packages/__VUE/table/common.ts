@@ -69,8 +69,8 @@ export const component = (componentName: string) => {
       };
 
       const sortDataItem = () => {
-        return props.columns.map((value: any) => {
-          return value.key;
+        return props.columns.map((columns: TableColumnProps) => {
+          return [columns.key, columns.render];
         });
       };
 
