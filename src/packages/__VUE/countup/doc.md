@@ -27,7 +27,7 @@ app.use(CountUp);
 <template>
     <nut-countup :init-num='0' :end-num='200'></nut-countup>
     <nut-countup :init-num='150.00' :end-num='0.00' :speed='2.62' :to-fixed='2'></nut-countup>
-    <nut-countup :init-num='1000.00' :end-num='0.00' :speed='6.3' :start-flag='startNum' :to-fixed='2'></nut-countup>
+    <nut-countup :init-num='1000.00' :end-num='0.00' :speed='50' :to-fixed='2'></nut-countup>
 </template>
 ```
 
@@ -163,7 +163,7 @@ export default {
 | machine-prize-num | 奖品个数，一共多少个奖品，必传 | number | 4
 | machine-num | 抽奖位，即滚动几个，必传 | number | 3
 | machine-prize-level | 中奖图标，图标在雪碧图中的位置 | number | 0
-| machine-trun-more | 滚动圈数 | number | 0
+| machine-turn-more | 滚动圈数 | number | 0
 
 > 说明：抽奖功能需要结合图标位置计算，故需传入雪碧图中单个图标的高度 num-height；中奖奖品根据雪碧图中的奖品位数来定位，从 1 到 N；
 
