@@ -18,7 +18,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, watch } from 'vue';
+import { computed, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 
 const { componentName, create } = createComponent('textarea');
@@ -78,6 +78,12 @@ export default create({
       };
     });
 
+    onMounted(() => {
+      if (props.modelValue) {
+        emitChange(String(props.modelValue));
+      }
+    });
+
     const styles = computed(() => {
       return {
         textAlign: props.textAlign,
@@ -85,7 +91,7 @@ export default create({
       };
     });
 
-    const emitChange = (value: string, event: Event) => {
+    const emitChange = (value: string, event?: Event) => {
       if (props.maxLength && value.length > Number(props.maxLength)) {
         value = value.substring(0, Number(props.maxLength));
       }
