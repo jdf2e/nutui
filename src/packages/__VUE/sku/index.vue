@@ -8,6 +8,8 @@
     @click-overlay="closePopup('overlay')"
     @close="closePopup('close')"
     style="height: 75%"
+    :isWrapTeleport="isWrapTeleport"
+    :teleport="teleport"
   >
     <view class="nut-sku">
       <slot name="sku-header"></slot>
@@ -66,14 +68,12 @@ import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.vue';
 import SkuOperate from './components/SkuOperate.vue';
 import { createComponent } from '../../utils/create';
+import { popupProps } from '../popup/index.vue';
 const { componentName, create } = createComponent('sku');
 
 export default create({
   props: {
-    visible: {
-      type: Boolean,
-      default: false
-    },
+    ...popupProps,
 
     sku: {
       type: Array,

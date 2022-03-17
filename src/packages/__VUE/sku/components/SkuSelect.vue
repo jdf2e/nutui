@@ -36,7 +36,6 @@ export default create({
     watch(
       () => props.sku,
       (value) => {
-        // console.log('发生变化');
         skuInfo.value = [].slice.call(value);
       },
       { deep: true }

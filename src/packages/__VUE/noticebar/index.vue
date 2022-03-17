@@ -14,8 +14,7 @@
       <view ref="wrap" class="wrap">
         <view
           ref="content"
-          class="content"
-          :class="[animationClass, { 'nut-ellipsis': isEllipsis }]"
+          :class="['content', animationClass, { 'nut-ellipsis': isEllipsis }]"
           :style="contentStyle"
           @animationend="onAnimationEnd"
           @webkitAnimationEnd="onAnimationEnd"
@@ -197,7 +196,7 @@ export default create({
 
     const isEllipsis = computed(() => {
       if (state.isCanScroll == null) {
-        return false && !props.wrapable;
+        return props.wrapable;
       } else {
         return !state.isCanScroll && !props.wrapable;
       }
@@ -284,7 +283,7 @@ export default create({
         const offsetWidth = content.value.getBoundingClientRect().width;
 
         state.isCanScroll = props.scrollable == null ? offsetWidth > wrapWidth : props.scrollable;
-
+        console.log(111, state.isCanScroll);
         if (state.isCanScroll) {
           state.wrapWidth = wrapWidth;
           state.offsetWidth = offsetWidth;
@@ -294,7 +293,7 @@ export default create({
         } else {
           state.animationClass = '';
         }
-      });
+      }, 0);
     };
     const handleClick = (event: Event) => {
       emit('click', event);

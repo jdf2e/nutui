@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should change icon class prefix when using icon-class-prefix prop 1`] = `
+"<view class=\\"nut-button nut-button--default nut-button--normal nut-button--round\\">
+  <view class=\\"nut-button__warp\\">
+    <!--v-if--><i class=\\"nutui-iconfont nut-icon my-icon-star-fill\\" src=\\"\\"></i>
+    <!--v-if-->
+  </view>
+</view>"
+`;

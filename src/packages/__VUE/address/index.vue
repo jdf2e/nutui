@@ -5,6 +5,8 @@
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"
     v-model:visible="showPopup"
+    :isWrapTeleport="isWrapTeleport"
+    :teleport="teleport"
   >
     <view class="nut-address">
       <view class="nut-address__header">
@@ -127,6 +129,7 @@
 <script lang="ts">
 import { reactive, ref, toRefs, watch, nextTick, computed, Ref, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
+import { popupProps } from '../popup/index.vue';
 const { componentName, create } = createComponent('address');
 interface RegionData {
   name: string;
@@ -149,13 +152,10 @@ interface AddressList {
 export default create({
   inheritAttrs: false,
   props: {
+    ...popupProps,
     modelValue: {
       type: Array,
       default: () => []
-    },
-    visible: {
-      type: Boolean,
-      default: false
     },
     type: {
       type: String,
@@ -584,6 +584,7 @@ export default create({
       clickOverlay,
       handClose,
       handleElevatorItem,
+      initCustomSelected,
       ...toRefs(props)
     };
   }

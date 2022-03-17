@@ -21,18 +21,19 @@
   }
 
   &__label {
-    font-size: 14px;
+    font-size: $form-item-label-font-size;
     font-weight: normal;
-    width: 90px;
-    margin-right: 10px;
+    width: $form-item-label-width;
+    margin-right: $form-item-label-margin-right;
     flex: none !important;
     display: inline-block;
     word-wrap: break-word;
+    text-align: $form-item-label-text-align;
     &.required {
       &::before {
         content: '*';
         color: $form-item-required-color;
-        margin-right: 4px;
+        margin-right: $form-item-required-margin-right;
       }
     }
   }
@@ -41,8 +42,10 @@
     display: flex;
     flex-direction: column;
     &__slots {
+      text-align: $form-item-body-slots-text-align;
       .nut-input-text {
-        font-size: 14px;
+        font-size: $form-item-body-font-size;
+        text-align: $form-item-body-input-text-align;
         width: 100%;
         outline: 0 none;
         border: 0;
@@ -53,10 +56,14 @@
       }
       .nut-textarea {
         padding: 0 !important;
+        .nut-textarea__textarea {
+          text-align: $form-item-body-input-text-align;
+        }
       }
     }
     &__tips {
-      font-size: 10px;
+      text-align: $form-item-tip-text-align;
+      font-size: $form-item-tip-font-size;
       color: $form-item-error-message-color;
     }
   }

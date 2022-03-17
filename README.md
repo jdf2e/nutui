@@ -159,3 +159,9 @@ NutUI 已经投入了我们的生产环境中使用，业界也在广泛地使�
 ## 开源协议
 
 本项目基于 **MIT** 协议
+
+
+## github stargazers 
+
+![stargazers](https://starchart.cc/jdf2e/nutui.svg)
+

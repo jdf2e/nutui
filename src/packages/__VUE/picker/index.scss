@@ -1,9 +1,4 @@
 .nut-picker {
-  color: #f00;
-
-  view {
-    display: block;
-  }
   &__content {
     display: block;
     position: relative;
@@ -19,8 +14,6 @@
     height: 56px;
     align-items: center;
     justify-content: space-between;
-    padding: 0 15px;
-    font-size: 16px;
   }
   &__column {
     display: flex;
@@ -34,10 +27,25 @@
   }
   &__left {
     color: $picker-cancel-color;
-    font-size: 16px;
+    font-size: $picker-bar-cancel-font-size;
   }
+  &__right {
+    color: $picker-ok-color;
+    font-size: $picker-bar-ok-font-size;
+  }
+
+  &__title {
+    color: $picker-bar-title-color;
+    font-size: $picker-bar-title-font-size;
+    font-weight: $picker-bar-title-font-weight;
+  }
+
   &__button {
     cursor: pointer;
+    padding: $picker-bar-button-padding;
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
   &__wrapper {
     display: block;
@@ -53,7 +61,7 @@
     top: 108px;
     height: 34px;
     width: 100%;
-    border: 1px solid #d8d8d8;
+    border: $picker-item-active-line-border;
     border-left: 0;
     border-right: 0;
   }
@@ -72,7 +80,7 @@
     position: absolute;
     top: 108px;
     width: 100%;
-    height: 36px;
+    height: $picker-item-height;
     z-index: 1;
     transform-style: preserve-3d;
 
@@ -82,10 +90,10 @@
       position: absolute;
       top: 0;
       width: 100%;
-      height: 36px;
-      line-height: 36px;
-      color: #808080;
-      font-size: 16px;
+      height: $picker-item-height;
+      line-height: $picker-item-height;
+      color: $picker-item-text-color;
+      font-size: $picker-item-text-font-size;
 
       &-hidden {
         visibility: hidden;
@@ -99,7 +107,8 @@
     position: absolute;
     top: 108px;
     width: 100%;
-    height: 36px;
+    height: $picker-item-height;
+    color: $picker-item-active-text-color;
     z-index: 2;
     overflow: hidden;
     border-left: 0;
@@ -114,8 +123,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 36px;
-    line-height: 36px;
+    height: $picker-item-height;
+    line-height: $picker-item-height;
     text-align: center;
     font-size: 16px;
   }
