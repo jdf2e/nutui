@@ -24,8 +24,14 @@
             v-for="value in sortDataItem()"
             :key="value"
           >
-            <RenderColumn :slots="item[value]" v-if="typeof item[value] === 'function'"></RenderColumn>
-            <view v-else> {{ item[value] }} </view>
+            <RenderColumn
+              :slots="[render, item[value]]"
+              :record="item"
+              v-if="typeof item[value] === 'function' || typeof render === 'function'"
+            ></RenderColumn>
+            <view v-else>
+              {{ item[value] }}
+            </view>
           </span>
         </view>
       </view>

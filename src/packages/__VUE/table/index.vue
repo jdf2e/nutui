@@ -29,9 +29,9 @@
               :record="item"
               v-if="typeof item[value] === 'function' || typeof render === 'function'"
             ></RenderColumn>
-            <template v-else>
+            <view v-else>
               {{ item[value] }}
-            </template>
+            </view>
           </span>
         </view>
       </view>
