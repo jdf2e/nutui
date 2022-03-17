@@ -3,8 +3,13 @@ import Signature from '../index.vue';
 import NutIcon from '../../icon/index.vue';
 import NutButton from '../../button/index.vue';
 import { nextTick, reactive, toRefs } from 'vue';
-import { Canvas, createCanvas } from 'canvas';
+import { createCanvas } from 'canvas';
 
+function sleep(delay = 0): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay);
+  });
+}
 // 所有的测试用例之前执行一次
 beforeAll(() => {
   config.global.components = {
@@ -25,26 +30,10 @@ test('props custom-class', async () => {
       const data = reactive({
         customClass: 'test',
         lineWidth: 5,
-        strokeStyle: '#333',
-        imgUrl: ''
+        strokeStyle: '#333'
       });
-
-      const confirm = (canvas: any, url: string) => {
-        const img = document.createElement('img');
-        img.src = url;
-        data.imgUrl = url;
-        (document.querySelector('.test') as Element).appendChild(img);
-      };
-      const clear = () => {
-        const img = document.querySelector('.test img');
-        if (img) {
-          img.remove();
-        }
-      };
       return {
-        ...toRefs(data),
-        confirm,
-        clear
+        ...toRefs(data)
       };
     }
   };
