@@ -137,18 +137,9 @@ const store: Store = reactive({
   rawStyles: ''
 });
 
-const getSassVariables = async () => {
-  // 固定自定义主题的访问链接: https://nutui.jd.com/theme/?theme=自定义变量的文件地址#/
-  // e.g. https://nutui.jd.com/theme/?theme=xxx.com%2variables.scss#/
-  // vite issue https://github.com/vitejs/vite/issues/6894
-  const params = new URLSearchParams(window.parent.location.search);
-  const param = params.get('theme') as string;
-  const source = {
-    jdt: 'https://storage.360buyimg.com/nutui-static/source/variables-jdt.scss_source'
-  } as any;
-  const customUrl = param && source[param.replace('/', '')];
-  if (customUrl) {
-    const customVariablesText = await getRawFileText(customUrl);
+const getSassVariables = async (sassFileUrl: string) => {
+  if (sassFileUrl) {
+    const customVariablesText = await getRawFileText(sassFileUrl);
     const customVariables = parseSassVariables(customVariablesText, components);
 
     const variablesMap = customVariables.reduce((map, item) => {
@@ -169,17 +160,28 @@ export const useThemeEditor = function () {
   const cssText = computed(() => {
     const variablesText = store.variables.map(({ key, value }) => `${key}:${value}`).join(';');
     cachedStyles = cachedStyles || extractStyle(store.rawStyles);
-    return `${variablesText};${cachedStyles}`;
+    return variablesText ? `${variablesText};${cachedStyles}` : '';
   });
 
   onMounted(async () => {
     if (!store.init) {
-      await Promise.all([
-        getSassVariables(),
-        loadScript('https://cdnout.com/sass.js/sass.sync.min.js'),
-        getRawSassStyle()
-      ]);
-      store.init = true;
+      // 固定自定义主题的访问链接: https://nutui.jd.com/theme/?theme=自定义变量的文件地址#/
+      // e.g. https://nutui.jd.com/theme/?theme=xxx.com%2variables.scss#/
+      // vite issue https://github.com/vitejs/vite/issues/6894
+      const params = new URLSearchParams(window.parent.location.search);
+      const param = params.get('theme') as string;
+      const source = {
+        jdt: 'https://storage.360buyimg.com/nutui-static/source/variables-jdt.scss_source'
+      } as any;
+      const customUrl = param && source[param.replace('/', '')];
+      if (customUrl) {
+        Promise.all([
+          getSassVariables(customUrl),
+          loadScript('https://cdnout.com/sass.js/sass.sync.min.js'),
+          getRawSassStyle()
+        ]);
+        store.init = true;
+      }
     }
   });
 
@@ -190,6 +192,9 @@ export const useThemeEditor = function () {
   watch(
     () => cssText.value,
     (css: string) => {
+      if (!css) {
+        return;
+      }
       clearTimeout(timer);
       timer = setTimeout(() => {
         const Sass = (window as any).Sass;
@@ -213,10 +218,7 @@ export const useThemeEditor = function () {
                 console.error(error);
               }
             } else {
-              console.log('sass编译失败1s 重新加载', new Date().getTime() - beginTime);
-              setTimeout(() => {
-                window.location.reload();
-              }, 1000);
+              console.log('sass编译失败', new Date().getTime() - beginTime);
               console.error(res);
             }
 
