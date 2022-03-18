@@ -1,12 +1,12 @@
 <template>
   <div class="demo">
-    <h2>每列不显示中文</h2>
-    <nut-cell title="日期选择" :desc="desc1" @click="open(0)"></nut-cell>
-    <h2>限制开始结束时间</h2>
-    <nut-cell title="日期选择" :desc="desc2" @click="open(1)"></nut-cell>
-    <h2>限制开始结束时间（有默认值）</h2>
+    <h2>选择年月日</h2>
+    <nut-cell title="显示中文" :desc="desc1" @click="open(0)"></nut-cell>
+    <h2>选择月日</h2>
+    <nut-cell title="限制开始结束时间" :desc="desc2" @click="open(1)"></nut-cell>
+    <h2>选择年月日时分</h2>
     <nut-cell title="日期时间选择" :desc="desc3" @click="open(2)"></nut-cell>
-    <h2>限制开始结束小时</h2>
+    <h2>选择时分秒</h2>
     <nut-cell title="时间选择" :desc="desc4" @click="open(3)"></nut-cell>
     <h2>分钟数递增步长设置</h2>
     <nut-cell title="时间选择" :desc="desc5" @click="open(4)"></nut-cell>
@@ -19,10 +19,10 @@
         }
       "
       v-model:visible="show"
-      :is-show-chinese="false"
     ></nut-datepicker>
     <nut-datepicker
       v-model="currentDate"
+      type="month-day"
       title="日期选择"
       :min-date="minDate"
       :max-date="maxDate"
@@ -91,7 +91,7 @@ export default createDemo({
     const show5 = ref(false);
 
     const showList = [show, show2, show3, show4, show5];
-    const currentDate = new Date(2020, 0, 1);
+    const currentDate = new Date(2020, 4, 10);
 
     const today = currentDate;
     const desc1 = ref('2020-1-1');
@@ -117,8 +117,11 @@ export default createDemo({
       open: (index: number) => {
         showList[index].value = true;
       },
-      confirm: (index: number, val: string[]) => {
-        descList[index].value = val.join('-');
+      confirm: (
+        index: number,
+        { selectedValue, selectedOptions }: { selectedValue: (string | number)[]; selectedOptions: any }
+      ) => {
+        descList[index].value = selectedValue.join('-');
       }
     };
   }

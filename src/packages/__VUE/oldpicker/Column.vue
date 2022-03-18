@@ -1,52 +1,57 @@
 <template>
-  <view class="nut-pickers__list" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
-    <view class="nut-pickers-roller" ref="roller" :style="touchRollerStyle">
+  <view class="nut-oldpicker__list" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
+    <view class="nut-oldpicker-roller" ref="roller" :style="touchRollerStyle">
       <view
-        class="nut-pickers-roller-item"
-        :class="{ 'nut-pickers-roller-item-hidden': isHidden(index + 1) }"
-        v-for="(item, index) in column"
+        class="nut-oldpicker-roller-item"
+        :class="{ 'nut-oldpicker-roller-item-hidden': isHidden(index + 1) }"
+        v-for="(item, index) in listData.values"
         :style="setRollerStyle(index + 1)"
-        :key="item.value ? item.value : index"
+        :key="item.label ? item.label : index"
       >
-        {{ item.text }}
+        {{ dataType === 'cascade' ? item.text : item }}
       </view>
     </view>
 
-    <view class="nut-pickers-content">
-      <view class="nut-pickers-list-panel" ref="list" :style="touchListStyle">
+    <view class="nut-oldpicker-content">
+      <view class="nut-oldpicker-list-panel" ref="list" :style="touchListStyle">
         <view
-          :class="['nut-pickers-item', 'nut-pickers-item-ref', item.className]"
-          v-for="(item, index) in column"
-          :key="item.value ? item.value : index"
-          >{{ item.text }}
+          class="nut-oldpicker-item nut-oldpicker-item-ref"
+          v-for="(item, index) in listData.values"
+          :key="item.label ? item.label : index"
+          >{{ dataType === 'cascade' ? item.text : item }}
         </view>
-        <view class="nut-pickers-placeholder" v-if="column && column.length === 1"></view>
+        <view class="nut-oldpicker-placeholder" v-if="listData && listData.length === 1"></view>
       </view>
     </view>
   </view>
 </template>
 <script lang="ts">
-import { reactive, ref, watch, computed, toRefs, onMounted, PropType } from 'vue';
+import { reactive, ref, watch, computed, toRefs, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
-import { PickerColumnOption, PickerOption, TouchParams } from './types';
-const { create } = createComponent('pickers-column');
+import { commonProps } from './commonProps';
+import { TouchParams } from './types';
+const { create } = createComponent('oldpicker-column');
 
 export default create({
   props: {
-    // 当前选中项
-    value: [String, Number],
-    columnsType: String,
+    dataType: String,
     itemShow: {
       type: Boolean,
       default: false
     },
-    column: {
-      type: Array as PropType<PickerOption[]>,
-      default: () => []
+    listData: {
+      type: Object,
+      default: () => {
+        return {};
+      }
     },
     readonly: {
       type: Boolean,
       default: false
+    },
+    defaultIndex: {
+      type: [Number, String],
+      default: 0
     }
   },
 
@@ -59,8 +64,7 @@ export default create({
         endY: 0,
         startTime: 0,
         endTime: 0,
-        lastY: 0,
-        lastTime: 0
+        lastY: 0
       },
       currIndex: 1,
       transformY: 0,
@@ -114,7 +118,7 @@ export default create({
 
       let changedTouches = event.changedTouches[0];
       state.touchParams.lastY = changedTouches.pageY;
-      state.touchParams.lastTime = event.timeStamp || Date.now();
+      state.touchParams.lastTime = event.timestamp || Date.now();
       let move = state.touchParams.lastY - state.touchParams.startY;
 
       let moveTime = state.touchParams.lastTime - state.touchParams.startTime;
@@ -157,8 +161,8 @@ export default create({
         if (updateMove > 0) {
           updateMove = 0;
         }
-        if (updateMove < -(props.column.length - 1) * state.lineSpacing) {
-          updateMove = -(props.column.length - 1) * state.lineSpacing;
+        if (updateMove < -(props.listData.values.length - 1) * state.lineSpacing) {
+          updateMove = -(props.listData.values.length - 1) * state.lineSpacing;
         }
 
         // 设置滚动距离为lineSpacing的倍数值
@@ -186,12 +190,11 @@ export default create({
     };
 
     const setChooseValue = () => {
-      emit('change', props.column[state.currIndex - 1]);
+      emit('change', state.currIndex - 1);
     };
 
     const modifyStatus = (type: boolean) => {
-      const { column } = props;
-      let index = column.findIndex((columnItem) => columnItem.value == props.value);
+      let index = props.defaultIndex;
 
       state.currIndex = index === -1 ? 1 : (index as number) + 1;
       let move = index === -1 ? 0 : (index as number) * state.lineSpacing;
@@ -200,13 +203,21 @@ export default create({
     };
 
     watch(
-      () => props.column,
+      () => props.listData,
       (val) => {
         state.transformY = 0;
         modifyStatus(false);
       },
       {
         deep: true
+      }
+    );
+
+    watch(
+      () => props.defaultIndex,
+      (val) => {
+        state.transformY = 0;
+        modifyStatus(false);
       }
     );
 

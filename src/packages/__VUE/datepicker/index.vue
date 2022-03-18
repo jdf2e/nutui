@@ -1,8 +1,11 @@
 <template>
   <nut-picker
+    v-model="selectedValue"
     :visible="show"
+    :okText="okText"
+    :cancelText="cancelText"
     @close="closeHandler"
-    :list-data="columns"
+    :columns="columns"
     @change="changeHandler"
     :title="title"
     @confirm="confirm"
@@ -13,6 +16,7 @@
 import { toRefs, watch, computed, reactive, onMounted } from 'vue';
 import picker from '../picker/index.vue';
 import { popupProps } from '../popup/index.vue';
+import { PickerOption } from '../picker/types';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('datepicker');
 
@@ -40,6 +44,14 @@ export default create({
       type: String,
       default: ''
     },
+    okText: {
+      type: String,
+      default: '确定'
+    },
+    cancelText: {
+      type: String,
+      default: '取消'
+    },
     type: {
       type: String,
       default: 'date'
@@ -63,13 +75,14 @@ export default create({
       validator: isDate
     }
   },
-  emits: ['click', 'update:visible', 'confirm'],
+  emits: ['click', 'update:visible', 'confirm', 'update:moduleValue'],
 
   setup(props, { emit }) {
     const state = reactive({
       show: false,
       currentDate: new Date(),
-      title: props.title
+      title: props.title,
+      selectedValue: []
     });
     const formatValue = (value: Date) => {
       if (!isDate(value)) {
@@ -174,16 +187,28 @@ export default create({
       return result;
     });
 
-    const changeHandler = (val: string[]) => {
+    const columns = computed(() => {
+      const val = ranges.value.map((res, columnIndex) => {
+        return generateValue(res.range[0], res.range[1], getDateIndex(res.type), res.type, columnIndex);
+      });
+
+      return val;
+    });
+
+    const changeHandler = ({
+      columnIndex,
+      selectedValue,
+      selectedOptions
+    }: {
+      columnIndex: number;
+      selectedValue: (string | number)[];
+      selectedOptions: PickerOption[];
+    }) => {
+      console.log('切换', columnIndex, selectedValue, selectedOptions);
+
       if (['date', 'datetime'].includes(props.type)) {
         let formatDate = [];
-        if (props.isShowChinese) {
-          formatDate = val.map((res: string) => {
-            return Number(res.slice(0, res.length - 1));
-          }) as any;
-        } else {
-          formatDate = val;
-        }
+        formatDate = selectedValue;
         let date: Date;
         if (props.type === 'date') {
           state.currentDate = formatValue(
@@ -194,6 +219,7 @@ export default create({
             )
           );
         } else if (props.type === 'datetime') {
+          console.log(formatDate);
           state.currentDate = formatValue(
             new Date(
               formatDate[0],
@@ -207,15 +233,17 @@ export default create({
       }
     };
 
-    const generateValue = (min: number, max: number, val: number, type: string) => {
+    // min 最小值  max 最大值  val  当前显示的值   type 类型（year、month、day、time）
+    const generateValue = (min: number, max: number, val: number | string, type: string, columnIndex: number) => {
       // if (!(max > min)) return;
-      const arr: Array<number | string> = [];
+      const arr: Array<PickerOption> = [];
       let index = 0;
+      let selectedValues = [];
       while (min <= max) {
         if (props.isShowChinese) {
-          arr.push(min + zhCNType[type]);
+          arr.push({ text: min + zhCNType[type], value: min });
         } else {
-          arr.push(min);
+          arr.push({ text: min, value: min });
         }
 
         if (type === 'minute') {
@@ -228,8 +256,9 @@ export default create({
           index++;
         }
       }
-
-      return { values: arr, defaultIndex: index };
+      state.selectedValue[columnIndex] = arr[index].value;
+      // return { values: arr, defaultIndex: index };
+      return arr;
     };
 
     const getDateIndex = (type: string) => {
@@ -249,13 +278,6 @@ export default create({
       return 0;
     };
 
-    const columns = computed(() => {
-      // console.log(ranges.value);
-      const val = ranges.value.map((res) => {
-        return generateValue(res.range[0], res.range[1], getDateIndex(res.type), res.type);
-      });
-      return val;
-    });
     const handleClick = (event: Event) => {
       emit('click', event);
     };

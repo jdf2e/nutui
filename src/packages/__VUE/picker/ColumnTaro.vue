@@ -1,57 +1,61 @@
 <template>
-  <view
-    class="nut-picker__list"
-    @touchstart="onTouchStart"
-    @touchmove="onTouchMove"
-    @touchend="onTouchEnd"
-    v-if="itemShow"
-  >
+  <view class="nut-picker__list" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
     <view class="nut-picker-roller" ref="roller" :style="touchRollerStyle">
       <view
         class="nut-picker-roller-item"
         :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
-        v-for="(item, index) in listData.values"
+        v-for="(item, index) in column"
         :style="setRollerStyle(index + 1)"
-        :key="item.label ? item.label : index"
+        :key="item.value ? item.value : index"
       >
-        {{ dataType === 'cascade' ? item.text : item }}
+        {{ item.text }}
       </view>
     </view>
 
     <view class="nut-picker-content">
-      <view class="nut-picker-list-panel" ref="list" :style="touchListStyle">
+      <view class="nut-picker-list-panel" ref="list" :id="'list' + refRandomId" :style="touchListStyle">
         <view
-          class="nut-picker-item nut-picker-item-ref"
-          v-for="(item, index) in listData.values"
-          :key="item.label ? item.label : index"
-          >{{ dataType === 'cascade' ? item.text : item }}
+          :class="['nut-picker-item', 'nut-picker-item-ref', item.className]"
+          v-for="(item, index) in column"
+          :key="item.value ? item.value : index"
+          >{{ item.text }}
         </view>
-        <view class="nut-picker-placeholder" v-if="listData && listData.length === 1"></view>
+        <view class="nut-picker-placeholder" v-if="column && column.length === 1"></view>
       </view>
     </view>
   </view>
 </template>
 <script lang="ts">
-import { reactive, ref, watch, computed, toRefs, onMounted } from 'vue';
+import { reactive, ref, watch, computed, toRefs, onMounted, PropType } from 'vue';
 import { createComponent } from '../../utils/create';
-import { commonProps } from './commonProps';
+import { PickerOption, TouchParams } from './types';
+import { useTaroRect } from '../../utils/useTaroRect';
 const { create } = createComponent('picker-column');
-import { TouchParams } from './types';
 import Taro from '@tarojs/taro';
 
 export default create({
   props: {
-    dataType: String,
+    // 当前选中项
+    value: [String, Number],
+    columnsType: String,
     itemShow: {
       type: Boolean,
       default: false
     },
-    ...commonProps
+    column: {
+      type: Array as PropType<PickerOption[]>,
+      default: () => []
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    }
   },
 
   emits: ['click', 'change'],
   setup(props, { emit }) {
-    const wrapper = ref();
+    const wrapper = ref<HTMLElement>();
+    const itemref = ref();
     const state = reactive({
       touchParams: {
         startY: 0,
@@ -71,7 +75,7 @@ export default create({
 
     const roller = ref(null);
     const list = ref(null);
-    const listItem = ref(null);
+    const listitem = ref(null);
 
     const touchDeg = ref(0);
     const touchTime = ref(0);
@@ -91,7 +95,6 @@ export default create({
     });
 
     const onTouchStart = (event: TouchEvent) => {
-      console.log(event);
       event.preventDefault();
       let changedTouches = event.changedTouches[0];
       state.touchParams.startY = changedTouches.pageY;
@@ -157,8 +160,8 @@ export default create({
         if (updateMove > 0) {
           updateMove = 0;
         }
-        if (updateMove < -(props.listData.values.length - 1) * state.lineSpacing) {
-          updateMove = -(props.listData.values.length - 1) * state.lineSpacing;
+        if (updateMove < -(props.column.length - 1) * state.lineSpacing) {
+          updateMove = -(props.column.length - 1) * state.lineSpacing;
         }
 
         // 设置滚动距离为lineSpacing的倍数值
@@ -186,11 +189,12 @@ export default create({
     };
 
     const setChooseValue = () => {
-      emit('change', state.currIndex - 1);
+      emit('change', props.column[state.currIndex - 1]);
     };
 
     const modifyStatus = (type: boolean) => {
-      let index = props.defaultIndex;
+      const { column } = props;
+      let index = column.findIndex((columnItem) => columnItem.value == props.value);
 
       state.currIndex = index === -1 ? 1 : (index as number) + 1;
       let move = index === -1 ? 0 : (index as number) * state.lineSpacing;
@@ -198,8 +202,14 @@ export default create({
       setMove(-move);
     };
 
+    const getReference = async () => {
+      const refe = await useTaroRect(list, Taro);
+      state.lineSpacing = refe.height / props.column.length;
+      modifyStatus(true);
+    };
+
     watch(
-      () => props.listData,
+      () => props.column,
       (val) => {
         state.transformY = 0;
         modifyStatus(false);
@@ -214,13 +224,8 @@ export default create({
       (val) => {
         if (val) {
           setTimeout(() => {
-            Taro.createSelectorQuery()
-              .selectAll('.nut-picker-item-ref')
-              .boundingClientRect((rects) => {
-                state.lineSpacing = (rects as any)[0].height;
-              })
-              .exec();
-          }, 100);
+            getReference();
+          }, 200);
         }
       },
       {
@@ -228,32 +233,31 @@ export default create({
       }
     );
 
-    watch(
-      () => props.defaultIndex,
-      (val) => {
-        state.transformY = 0;
-        modifyStatus(false);
-      }
-    );
-
     onMounted(() => {
-      modifyStatus(true);
+      setTimeout(() => {
+        getReference();
+      }, 200);
     });
+
+    const refRandomId = Math.random().toString(36).slice(-8);
 
     return {
       ...toRefs(state),
       ...toRefs(props),
       wrapper,
+      itemref,
       setRollerStyle,
       isHidden,
       roller,
       list,
-      listItem,
+      listitem,
       onTouchStart,
       onTouchMove,
       onTouchEnd,
       touchRollerStyle,
-      touchListStyle
+      touchListStyle,
+      setMove,
+      refRandomId
     };
   }
 });

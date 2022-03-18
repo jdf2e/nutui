@@ -77,7 +77,7 @@ let subpackages = [
       'pages/popover/index',
       'pages/skeleton/index',
       'pages/cascader/index',
-      'pages/pickers/index'
+      'pages/oldpicker/index'
     ]
   },
   {

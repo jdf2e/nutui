@@ -1,16 +1,18 @@
-export type PickerObjOpt = {
-  text?: string;
-  [key: string]: any;
-};
-
-export type PickerOption = string | PickerObjOpt;
-
-export type PickerObjectColumn = {
-  values?: PickerOption[];
-  defaultIndex?: number;
+export interface PickerOption {
+  text: string | number;
+  value: string | number;
+  disabled?: string;
   children?: PickerOption[];
-  [key: string]: any;
-};
+  className?: string | number;
+}
+
+export interface PickerColumnOption {
+  text: string;
+  value: string;
+  disabled: string;
+  children: PickerOption[];
+  className: string;
+}
 
 export type TouchParams = {
   startY: number;
@@ -20,5 +22,3 @@ export type TouchParams = {
   lastY: number;
   lastTime: number;
 };
-
-export type PickerObjectColumns = PickerObjectColumn & PickerObjOpt[];
