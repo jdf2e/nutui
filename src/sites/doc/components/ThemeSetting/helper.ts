@@ -196,12 +196,10 @@ export const useThemeEditor = function (): Obj {
 
   onMounted(async () => {
     if (!store.init) {
-      await Promise.all([
-        getSassVariables(),
-        loadScript('https://cdnout.com/sass.js/sass.sync.min.js'),
-        getRawSassStyle()
-      ]);
-      store.init = true;
+      loadScript('https://cdnout.com/sass.js/sass.sync.min.js').then(async (res) => {
+        await Promise.all([getSassVariables(), getRawSassStyle()]);
+        store.init = true;
+      });
     }
   });
 
