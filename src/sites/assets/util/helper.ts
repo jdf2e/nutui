@@ -175,11 +175,9 @@ export const useThemeEditor = function () {
       } as any;
       const customUrl = param && source[param.replace('/', '')];
       if (customUrl) {
-        Promise.all([
-          getSassVariables(customUrl),
-          loadScript('https://cdnout.com/sass.js/sass.sync.min.js'),
-          getRawSassStyle()
-        ]);
+        loadScript('https://cdnout.com/sass.js/sass.sync.min.js').then((res) => {
+          Promise.all([getSassVariables(customUrl), getRawSassStyle()]);
+        });
         store.init = true;
       }
     }
