@@ -216,6 +216,7 @@ app.use(Icon);
 | type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `textarea` `number` `digit`     | String         | `text`  |
 | placeholder  | 输入框为空时占位符                      | String         | -       |
 | label        | 左侧文本                              | String         | -       |
+| label-class  | 左侧文本额外类名                        | String | -  |
 | label-width  | 左侧文本宽度，默认单位为 `px`            | String、Number | `80`    |
 | label-align  | 左侧文本对齐方式，可选值 `left`、`center`、`right`   | String | `left` |
 | input-align  | 输入框内容对齐方式，可选值 `left`、`center`、`right` | String | `left` |
@@ -224,6 +225,7 @@ app.use(Icon);
 | border       | 是否显示下边框                         | Boolean        | `true` |
 | disabled     | 是否禁用                              | Boolean        | `false` |
 | readonly     | 是否只读                              | Boolean        | `false` |
+| autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
 | max-num      | 限制最长输入字符                       | String、Number  | -       |
 | clearable    | 展示清除 Icon                         | Boolean        | `false`  |
 | clear-icon   | 清除图标 Icon 名称或图片链接，可参考 Icon 组件的 name 属性           | String        | `mask-close`  |
@@ -237,16 +239,21 @@ app.use(Icon);
 | error-message | 底部错误提示文案，为空时不展示            | String、Number | - |
 | error-message-align | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`          | String | - |
 | formatter      | 输入内容格式化函数    | `(val: string) => string` | - |
-| format-trigger | 格式化函数触发的时机，可选值为  | `onChange`、`onBlur` | String |
+| format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | String | - |
 
 ### Event
 
 | 名称   | 说明           | 回调参数    |
 |--------|----------------|-------------|
-| change | 输入内容时触发 | val ,event  |
-| focus  | 聚焦时触发     | val  ,event |
-| blur   | 失焦时触发     | val ,event  |
-| clear  | 点击清空时触发 | val         |
+| update:model-value | 输入框内容变化时触发 | val  |
+| focus  | 输入框聚焦时触发     | val  ,event |
+| blur   | 输入框失焦时触发     | val ,event  |
+| clear  | 点击清除按钮时触发   | val ,event  |
+| click  | 点击组件时触发      | val ,event  |
+| click-input      | 点击输入区域时触发      | val ,event  |
+| click-left-icon  | 点击左侧图标时触发      | val ,event  |
+| click-right-icon | 点击右侧图标时触发      | val ,event  |
+
 
 
 

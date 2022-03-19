@@ -5,7 +5,7 @@ textarea {
 .nut-input {
   position: relative;
   width: 100%;
-  padding: 10px 15px 10px 25px;
+  padding: 10px 25px;
   display: flex;
   line-height: 24px;
   background: $white;
@@ -22,7 +22,7 @@ textarea {
   &__text--readonly {
     width: 100%;
     padding: 0;
-    padding-right: 35px;
+    // padding-right: 35px;
     line-height: inherit;
     text-align: left;
     outline: 0 none;
@@ -62,21 +62,24 @@ textarea {
     // line-height: var(--van-field-word-limit-line-height);
     text-align: right;
   }
-  .nut-input-left-icon,
-  .nut-input-right-icon {
+  &-left-icon,
+  &-right-icon {
     display: flex;
     align-items: center;
     font-size: 0;
   }
-  .nut-input-left-icon {
+  &-clear,
+  &-right-icon {
+    margin-left: 4px;
+  }
+  &-left-icon {
     margin-right: 4px;
   }
-  .nut-textinput-clear {
+  &-clear {
     width: 16px;
     height: 16px;
-    position: absolute;
-    right: 15px;
     color: #c8c9cc;
+    cursor: pointer;
   }
   &.nut-input-required {
     &::before {

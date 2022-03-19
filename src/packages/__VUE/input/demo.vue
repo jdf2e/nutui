@@ -62,8 +62,26 @@
     <nut-input v-model="state.align2" label="文本" input-align="right" placeholder="输入框内容对齐" />
 
     <h2>无边框</h2>
-    <nut-input v-model="state.disabled" @change="change" :border="false" label="无边框" />
-    <nut-input v-model="state.showIcon" @change="change" :border="false" label="无边框" />
+    <nut-input v-model="state.disabled" :border="false" label="无边框" />
+    <nut-input v-model="state.showIcon" :border="false" label="无边框" />
+
+    <h2>点击事件</h2>
+    <nut-input
+      v-model="state.event2"
+      label="event"
+      left-icon="dongdong"
+      right-icon="ask2"
+      clearable
+      placeholder="显示图标"
+      @update:model-value="change"
+      @focus="focus"
+      @blur="blur"
+      @clear="clear"
+      @click="click"
+      @click-input="clickInput"
+      @click-left-icon="clickLeftIcon"
+      @click-right-icon="clickRightIcon"
+    />
   </div>
 </template>
 
@@ -91,13 +109,15 @@ export default createDemo({
       format2: '',
       textarea: '',
       align1: '',
-      align2: ''
+      align2: '',
+      event1: '',
+      event2: ''
     });
     setTimeout(function () {
       // state.val0 = '异步数据';
     }, 2000);
-    const change = (value: string | number, event: Event) => {
-      console.log('change: ', value, event);
+    const change = (value: string | number) => {
+      console.log('change: ', value);
     };
     const focus = (value: string | number, event: Event) => {
       console.log('focus:', value, event);
@@ -105,8 +125,20 @@ export default createDemo({
     const blur = (value: string | number, event: Event) => {
       console.log('blur:', value, event);
     };
-    const clear = (value: string | number) => {
-      console.log('clear:', value);
+    const clear = (value: string | number, event: Event) => {
+      console.log('clear:', value, event);
+    };
+    const click = (value: string | number) => {
+      console.log('click:', value);
+    };
+    const clickInput = (value: string | number) => {
+      console.log('clickInput:', value);
+    };
+    const clickLeftIcon = (value: string | number) => {
+      console.log('clickLeftIcon:', value);
+    };
+    const clickRightIcon = (value: string | number) => {
+      console.log('clickRightIcon:', value);
     };
     const formatter = (value: string) => value.replace(/\d/g, '');
 
@@ -116,6 +148,10 @@ export default createDemo({
       blur,
       clear,
       focus,
+      click,
+      clickInput,
+      clickLeftIcon,
+      clickRightIcon,
       formatter
     };
   }

@@ -1,11 +1,12 @@
 <template>
   <view :class="classes">
-    <view v-if="leftIcon && leftIcon.length > 0" class="nut-input-left-icon">
+    <view v-if="leftIcon && leftIcon.length > 0" class="nut-input-left-icon" @click="onClickLeftIcon">
       <nut-icon :name="leftIcon" :size="leftIconSize"></nut-icon>
     </view>
     <view
       v-if="label"
       class="nut-input-label"
+      :class="labelClass"
       :style="{
         width: `${labelWidth}px`,
         textAlign: labelAlign
@@ -17,7 +18,7 @@
       </view>
     </view>
     <view class="nut-input-value">
-      <view class="nut-input-inner">
+      <view class="nut-input-inner" @click="onClickInput">
         <textarea
           v-if="type == 'textarea'"
           class="input-text"
@@ -29,8 +30,8 @@
           :readonly="readonly"
           :value="modelValue"
           :formatTrigger="formatTrigger"
+          :autofocus="autofocus"
           @input="onInput"
-          @change="onChange"
           @focus="onFocus"
           @blur="onBlur"
         />
@@ -46,20 +47,21 @@
           :readonly="readonly"
           :value="modelValue"
           :formatTrigger="formatTrigger"
+          :autofocus="autofocus"
           @input="onInput"
-          @change="onChange"
           @focus="onFocus"
           @blur="onBlur"
         />
-        <view
-          @click="handleClear"
-          class="nut-textinput-clear"
+        <nut-icon
+          class="nut-input-clear"
           v-if="clearable && !readonly"
           v-show="active && modelValue.length > 0"
+          :name="clearIcon"
+          :size="clearSize"
+          @click="clear"
         >
-          <nut-icon :name="clearIcon" :size="clearSize"></nut-icon>
-        </view>
-        <view v-if="rightIcon && rightIcon.length > 0" class="nut-input-right-icon">
+        </nut-icon>
+        <view v-if="rightIcon && rightIcon.length > 0" class="nut-input-right-icon" @click="onClickRightIcon">
           <nut-icon :name="rightIcon" :size="rightIconSize"></nut-icon>
         </view>
         <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
@@ -87,7 +89,7 @@ import { formatNumber } from './util';
 
 const { componentName, create } = createComponent('input');
 interface Events {
-  eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
+  eventName: 'focus' | 'blur' | 'clear' | 'change' | 'update:modelValue';
   params: (string | number | Event)[];
 }
 export type InputAlignType = 'left' | 'center' | 'right'; // text-align
@@ -144,6 +146,10 @@ export default create({
       default: '请输入信息'
     },
     label: {
+      type: String,
+      default: ''
+    },
+    labelClass: {
       type: String,
       default: ''
     },
@@ -246,10 +252,24 @@ export default create({
     showWordLimit: {
       type: Boolean,
       default: true
+    },
+    autofocus: {
+      type: Boolean,
+      default: false
     }
   },
 
-  emits: ['change', 'update:modelValue', 'blur', 'focus', 'clear'],
+  emits: [
+    'update:modelValue',
+    'change',
+    'blur',
+    'focus',
+    'clear',
+    'keypress',
+    'click-input',
+    'click-left-icon',
+    'click-right-icon'
+  ],
 
   setup(props, { emit, slots }) {
     const active = ref(false);
@@ -346,6 +366,7 @@ export default create({
 
       if (value !== props.modelValue) {
         emit('update:modelValue', value);
+        emit('change', value);
       }
     };
 
@@ -390,10 +411,10 @@ export default create({
       validateWithTrigger('onBlur');
     };
 
-    const handleClear = (event: Event) => {
+    const clear = (event: Event) => {
       emit('update:modelValue', '', event);
       emit('change', '', event);
-      emit('clear', '');
+      emit('clear', '', event);
     };
 
     // const runRules = (rules: InputRule[]) =>
@@ -470,6 +491,14 @@ export default create({
       }
     };
 
+    const onClickInput = (event: MouseEvent) => {
+      emit('click-input', event);
+    };
+
+    const onClickLeftIcon = (event: MouseEvent) => emit('click-left-icon', event);
+
+    const onClickRightIcon = (event: MouseEvent) => emit('click-right-icon', event);
+
     watch(
       () => props.modelValue,
       () => {
@@ -494,7 +523,10 @@ export default create({
       onInput,
       onFocus,
       onBlur,
-      handleClear
+      clear,
+      onClickInput,
+      onClickLeftIcon,
+      onClickRightIcon
     };
   }
 });
