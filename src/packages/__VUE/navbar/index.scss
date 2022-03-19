@@ -2,15 +2,27 @@
   position: relative;
   display: flex;
   align-items: center;
-  height: 44px;
-  padding: 13px 16px;
-  background: $white;
-  box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
-  font-size: $cell-title-font;
-  color: $cell-color;
-  margin-bottom: 20px;
+  height: $navbar-height;
+  box-sizing: border-box;
+  padding: $navbar-padding;
+  background: $navbar-background;
+  box-shadow: $navbar-box-shadow;
+  font-size: $navbar-title-base-font;
+  color: $navbar-color;
+  margin-bottom: $navbar-margin-bottom;
+  overflow: hidden;
   &:active::before {
     opacity: 0.1;
+  }
+  &--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  &--safe-area-inset-top {
+    padding-top: constant(safe-area-inset-top);
+    padding-top: env(safe-area-inset-top);
   }
   &--clickable {
     &::before {
@@ -39,9 +51,21 @@
     min-width: 53%;
     margin: 0 auto;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    .title {
+      width: $navbar-title-width;
+      font-size: $navbar-title-font;
+      font-weight: $navbar-title-font-weight;
+      color: $navbar-title-font-color;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+    }
     &.icon {
       .icon {
-        margin-left: 13px;
+        margin: $navbar-title-icon-margin;
       }
     }
     .nut-icon {
@@ -54,40 +78,12 @@
       display: inline-block;
     }
 
-    .tab-title {
-      width: 164px;
-      white-space: nowrap;
-      overflow-x: auto;
-      display: flex;
-      .tab-title-box {
-        height: 50px;
-        display: flex;
-        flex: 1;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
-        text-align: center;
-        font-size: 14px;
-        color: rgba(26, 26, 26, 1);
-        margin-left: 10px;
-      }
-      .nut-tab-active {
-        color: #1a1a1a;
-        font-weight: bold;
-        font-size: 16px;
-        position: relative;
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: 7px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 12px;
-          height: 4px;
-          background-image: url('https://img12.360buyimg.com/imagetools/jfs/t1/127200/40/18747/536/5fb36b5aE61cac2d8/638032e8da9b93f4.png');
-          background-size: 100% 100%;
-        }
-      }
+    .nut-tabs__titles {
+      background: $white;
+    }
+
+    .nut-tabpane {
+      display: none;
     }
   }
 

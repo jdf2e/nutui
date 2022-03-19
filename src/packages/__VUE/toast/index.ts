@@ -6,17 +6,19 @@ const defaultOptions = {
   duration: 2000, //显示时间(毫秒)
   center: true, // 未实现
   type: 'text',
-  customClass: '', // 未实现
-  bottom: 30, // 未实现
-  size: 'base', // 未实现
-  icon: null, // 未实现
+  title: '',
+  customClass: '',
+  bottom: '30px',
+  size: 'base',
+  iconSize: '20',
+  icon: null,
   textAlignCenter: true, // 未实现
   loadingRotate: true, // 未实现
-  bgColor: 'rgba(0, 0, 0, .8)',
+  bgColor: '',
   onClose: null, // 未实现
   unmount: null,
   cover: false, //透明遮罩层 // 未实现
-  coverColor: 'rgba(0, 0, 0, 0)', // 未实现
+  coverColor: '', // 未实现
   closeOnClickOverlay: false // 未实现
 };
 

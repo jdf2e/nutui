@@ -9,6 +9,15 @@
     margin-top: 30px;
     margin-bottom: 10px;
   }
+  &__desc {
+    display: inherit;
+    padding: $cell-group-desc-padding;
+    color: $cell-group-desc-color;
+    font-size: $cell-group-desc-font-size;
+    line-height: $cell-group-desc-line-height;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
   &__warp {
     display: inherit;
     border-radius: $cell-border-radius;
@@ -23,7 +32,7 @@
   }
   .nut-cell {
     &::after {
-      border-bottom: 2px solid #f5f6f7;
+      border-bottom: $cell-after-border-bottom;
     }
   }
 }

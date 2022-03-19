@@ -19,140 +19,168 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
 
 ### 基本用法
 
+:::demo
+
 ``` html
-<nut-timeselect v-model:visible="visible1" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
-  <template #pannel>
-    <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-timepannel>
-    <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-timepannel>
-  </template>
-  <template #detail>
-    <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
-  </template>
-</nut-timeselect>
-```
-``` javascript
-setup() {
-    const state = reactive({
-      visible1: false,
-      currentKey1: 0,
-      currentTime1: [] as any[],
-      times1: [
-        {
-          key: 0,
-          list: ['9:00-10:00', '10:00-11:00', '11:00-12:00']
-        },
-        {
-          key: 1,
-          list: ['9:00-10:00', '10:00-11:00']
-        },
-      ],
-    });
-
-    const handleChange1 = (pannelKey: number) => {
-      state.currentKey1 = pannelKey;
-      state.currentTime1 = [];
-      state.currentTime1.push({
-        key: state.currentKey1,
-        list: []
+<template>
+  <nut-cell @click="handleClick1">
+    <span><label>请选择配送时间</label></span>
+  </nut-cell>
+  <nut-timeselect v-model:visible="visible1" height="50%" :current-key="currentKey1" :current-time="currentTime1" @select="handleSelected1">
+    <template #pannel>
+      <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-timepannel>
+      <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-timepannel>
+    </template>
+    <template #detail>
+      <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
+    </template>
+  </nut-timeselect>
+</template>
+<script lang="ts">
+  import { reactive, toRefs, getCurrentInstance } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const { proxy } = getCurrentInstance() as any;
+      const state = reactive({
+        visible1: false,
+        currentKey1: 0,
+        currentTime1: [] as any[],
+        times1: [
+          {
+            key: 0,
+            list: ['9:00-10:00', '10:00-11:00', '11:00-12:00']
+          },
+          {
+            key: 1,
+            list: ['9:00-10:00', '10:00-11:00']
+          },
+        ],
       });
-    };
 
-    const handleClick1 = () => {
-      state.visible1 = true;
-    };
+      const handleChange1 = (pannelKey: number) => {
+        state.currentKey1 = pannelKey;
+        state.currentTime1 = [];
+        state.currentTime1.push({
+          key: state.currentKey1,
+          list: []
+        });
+      };
 
-    const selectTime1 = (item: string) => {
-      let curTimeIndex = state.currentTime1[0]['list'].findIndex((time: string) => time === item);
-      if(curTimeIndex === -1) {
-        state.currentTime1[0]['list'].push(item);
-      } else {
-        state.currentTime1[0]['list'].splice(curTimeIndex, 1);
-      }
-    };
+      const handleClick1 = () => {
+        state.visible1 = true;
+      };
 
-    const handleSelected1 = (obj: any) => {
-      proxy.$toast.text(`您选择了：${JSON.stringify(obj)}`);
-    };
+      const selectTime1 = (item: string) => {
+        let curTimeIndex = state.currentTime1[0]['list'].findIndex((time: string) => time === item);
+        if(curTimeIndex === -1) {
+          state.currentTime1[0]['list'].push(item);
+        } else {
+          state.currentTime1[0]['list'].splice(curTimeIndex, 1);
+        }
+      };
 
-    return { 
-      ...toRefs(state), 
-      handleChange1,
-      handleSelected1,
-      selectTime1,
-      handleClick1, 
-    };
-  }
+      const handleSelected1 = (obj: any) => {
+        proxy.$toast.text(`您选择了：${JSON.stringify(obj)}`);
+      };
+
+      return { 
+        ...toRefs(state), 
+        handleChange1,
+        handleSelected1,
+        selectTime1,
+        handleClick1, 
+      };
+    }
+  };
+</script>
 ```
+
+:::
 
 ### 可选择多个日期时间
 
+:::demo
+
 ``` html
-<nut-timeselect v-model:visible="visible2" height="50%" :current-key="currentKey2" :current-time="currentTime2" @select="handleSelected2">
-  <template #pannel>
-    <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange2"></nut-timepannel>
-    <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange2"></nut-timepannel>
-  </template>
-  <template #detail>
-    <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
-  </template>
-</nut-timeselect>
+<template>
+  <nut-cell @click="handleClick2">
+    <span><label>请选择配送时间</label></span>
+  </nut-cell>
+  <nut-timeselect v-model:visible="visible2" height="50%" :current-key="currentKey2" :current-time="currentTime2" @select="handleSelected2">
+    <template #pannel>
+      <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange2"></nut-timepannel>
+      <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange2"></nut-timepannel>
+    </template>
+    <template #detail>
+      <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
+    </template>
+  </nut-timeselect>
+</template>
+<script lang="ts">
+  import { reactive, toRefs, getCurrentInstance } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const { proxy } = getCurrentInstance() as any;
+      const state = reactive({
+        visible2: false,
+        currentKey2: 0,
+        currentTime2: [] as any[],
+        times2: [
+          {
+            key: 0,
+            list: ['9:00-10:00', '10:00-11:00', '11:00-12:00']
+          },
+          {
+            key: 1,
+            list: ['9:00-10:00', '10:00-11:00']
+          },
+        ]
+      });
+
+      const handleChange2 = (pannelKey: number) => {
+        state.currentKey2 = pannelKey;
+        let curTime = state.currentTime2.find((item: any) => item.key == pannelKey);
+        if(!curTime) {
+          state.currentTime2.push({
+            key: pannelKey,
+            list: []
+          });
+        }
+      };
+
+      const handleClick2 = () => {
+        state.visible2 = true;
+      };
+
+      const selectTime2 = (item: string) => {
+        let findIndex = state.currentTime2.findIndex((item: any) => item.key == state.currentKey2);
+        let curTimeIndex = state.currentTime2[findIndex]['list'].findIndex((time: string) => time === item);
+        if(curTimeIndex === -1) {
+          state.currentTime2[findIndex]['list'].push(item);
+        } else {
+          state.currentTime2[findIndex]['list'].splice(curTimeIndex, 1);
+        }
+      };
+
+      const handleSelected2 = (obj: any) => {
+        proxy.$toast.text(`您选择了：${JSON.stringify(obj)}`);
+      };
+
+      return { 
+        ...toRefs(state), 
+        handleChange2,
+        handleSelected2,
+        selectTime2,
+        handleClick2, 
+      };
+    }
+  };
+</script>
 ```
-``` javascript
-setup() {
-    const state = reactive({
-      visible2: false,
-      currentKey2: 0,
-      currentTime2: [] as any[],
-      times2: [
-        {
-          key: 0,
-          list: ['9:00-10:00', '10:00-11:00', '11:00-12:00']
-        },
-        {
-          key: 1,
-          list: ['9:00-10:00', '10:00-11:00']
-        },
-      ]
-    });
 
-    const handleChange2 = (pannelKey: number) => {
-      state.currentKey2 = pannelKey;
-      let curTime = state.currentTime2.find((item: any) => item.key == pannelKey);
-      if(!curTime) {
-        state.currentTime2.push({
-          key: pannelKey,
-          list: []
-        });
-      }
-    };
-
-    const handleClick2 = () => {
-      state.visible2 = true;
-    };
-
-    const selectTime2 = (item: string) => {
-      let findIndex = state.currentTime2.findIndex((item: any) => item.key == state.currentKey2);
-      let curTimeIndex = state.currentTime2[findIndex]['list'].findIndex((time: string) => time === item);
-      if(curTimeIndex === -1) {
-        state.currentTime2[findIndex]['list'].push(item);
-      } else {
-        state.currentTime2[findIndex]['list'].splice(curTimeIndex, 1);
-      }
-    };
-
-    const handleSelected2 = (obj: any) => {
-      proxy.$toast.text(`您选择了：${JSON.stringify(obj)}`);
-    };
-
-    return { 
-      ...toRefs(state), 
-      handleChange2,
-      handleSelected2,
-      selectTime2,
-      handleClick2, 
-    };
-  }
-```
+:::
 
 ## API
 

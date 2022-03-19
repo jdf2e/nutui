@@ -21,99 +21,125 @@ app.use(CountUp);
 ## 代码演示
 
 ## 基本用法
+:::demo
 
 ```html
-<nut-countup :init-num='0' :end-num='200'></nut-countup>
-
-<nut-countup :init-num='150.00' :end-num='0.00' :speed='2.62' :to-fixed='2'></nut-countup>
-
-<nut-countup :init-num='1000.00' :end-num='0.00' :speed='6.3' :start-flag='startNum' :to-fixed='2'></nut-countup>
+<template>
+    <nut-countup :init-num='0' :end-num='200'></nut-countup>
+    <nut-countup :init-num='150.00' :end-num='0.00' :speed='2.62' :to-fixed='2'></nut-countup>
+    <nut-countup :init-num='1000.00' :end-num='0.00' :speed='50' :to-fixed='2'></nut-countup>
+</template>
 ```
 
+:::
 ## 数字滚动
+:::demo
 
 ```html
-<nut-countup :scrolling="true" :init-num='17.618' :during="600"></nut-countup>
+<template>
+    <nut-countup :scrolling="true" :init-num='17.618' :during="600"></nut-countup>
+</template>
 ```
+
+:::
 
 ## 自定义数字图片展示
+:::demo
 
 ```html
-<nut-countup
-    :custom-change-num="customNumber"
-    :custom-bg-img="bgImage"
-    :custom-spac-num="11"
-    :num-width="33"
-    :num-height="47"
-    :during="5000"
->
-</nut-countup>
-```
-```javascript
+<template>
+    <nut-countup
+        :custom-change-num="customNumber"
+        :custom-bg-img="bgImage"
+        :custom-spac-num="11"
+        :num-width="33"
+        :num-height="47"
+        :during="5000"
+    >
+    </nut-countup>
+</template>
+<script>
+import { ref, onMounted } from 'vue';
+
 export default {
-    data() {
-        return {
-            customNumber: 618, 
-            bgImage: 'https://img10.360buyimg.com/imagetools/jfs/t1/133024/3/2251/2646/5ee7549aE8dc02d7e/de6901b6c72db396.png'
-        };
-    },
-    methods: {
-        run() {
+    setup() {
+        const customNumber = ref(618);
+        const bgImage = ref('https://img10.360buyimg.com/imagetools/jfs/t1/133024/3/2251/2646/5ee7549aE8dc02d7e/de6901b6c72db396.png');
+        const run = () => {
             let timer = null;
             timer = setInterval(() => {
-                this.customNumber = Math.floor(Math.random() * (700 - 100 + 1) + 100);
-            }, 5000);
+                customNumber.value = Math.floor(Math.random() * (700 - 100 + 1) + 100);
+            }, 5000)
+        };
+        onMounted(() => {
+            run();
+        });
+        return {
+            customNumber,
+            bgImage
         }
-    },
-    mounted() {
-        this.run();
     }
 };
+</script>
 ```
+:::
 
 ## 抽奖
+:::demo
 
 ```html
-<nut-countup
-    ref="countup-machine"
-    type="machine"
-    :machine-num="machineNum"
-    :machine-prize-num="5"
-    :machine-prize-level="prizeLevel"
-    :custom-bg-img="bgImage"
-    :num-width="100"
-    :num-height="100"
-    :during="3000"
-    @scroll-end="scrollAniEnd"
->
-</nut-countup>
-<nut-button @click="startRole" :disabled="startFlag">抽奖</nut-button>
-```
-```javascript
+<template>
+    <nut-countup
+        ref="countupMachineDom"
+        type="machine"
+        :machine-num="machineNum"
+        :machine-prize-num="5"
+        :machine-prize-level="prizeLevel"
+        :custom-bg-img="bgImage"
+        :num-width="100"
+        :num-height="100"
+        :during="3000"
+        @scroll-end="scrollAniEnd"
+    >
+    </nut-countup>
+    <nut-button @click="startRole" :disabled="startFlag">抽奖</nut-button>
+</template>
+<script>
+import { ref, onMounted } from 'vue';
 export default {
-    data() {
-        return {
-            startFlag: false,
-            machineNum: 3,
-            bgImage: 'https://img10.360buyimg.com/imagetools/jfs/t1/121466/20/6784/28830/5f06e7f2Edbb8998c/9bdd9e7b24dff9fe.png',
-            prizeLevel: 0
+    setup() {
+        const countupMachineDom = ref(null);
+        const startFlag = ref(false);
+        const machineNum = ref(3);
+        const bgImage = ref('https://img10.360buyimg.com/imagetools/jfs/t1/121466/20/6784/28830/5f06e7f2Edbb8998c/9bdd9e7b24dff9fe.png');
+        const prizeLevel = ref(0);
+        const startRole = () => {
+            prizeLevel.value = Math.floor(Math.random() * 5 + 1);
+            startFlag.value = true;
+            countupMachineDom.value.machineLuck();
         };
-    },
-    methods: {
-        startRole() {
-            this.prizeLevel = Math.floor(Math.random() * 5 + 1);
-            this.startFlag = true;
-            this.$refs['countup-machine'].machineLuck();
-        },
-        scrollAniEnd() {
-            this.$toast.text('恭喜中奖！！！');
+
+        const scrollAniEnd = () => {
+            console.log('恭喜中奖！！！');
             setTimeout(() => {
-                this.startFlag = false;
+                startFlag.value = false;
             }, 300);
+        }
+
+        return {
+            countupMachineDom,
+            startFlag,
+            machineNum,
+            bgImage,
+            prizeLevel,
+            startRole,
+            scrollAniEnd
         }
     }
 };
+</script>
 ```
+:::
 
 
 ## Prop
@@ -137,7 +163,7 @@ export default {
 | machine-prize-num | 奖品个数，一共多少个奖品，必传 | number | 4
 | machine-num | 抽奖位，即滚动几个，必传 | number | 3
 | machine-prize-level | 中奖图标，图标在雪碧图中的位置 | number | 0
-| machine-trun-more | 滚动圈数 | number | 0
+| machine-turn-more | 滚动圈数 | number | 0
 
 > 说明：抽奖功能需要结合图标位置计算，故需传入雪碧图中单个图标的高度 num-height；中奖奖品根据雪碧图中的奖品位数来定位，从 1 到 N；
 

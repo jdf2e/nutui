@@ -96,8 +96,8 @@ export default create({
 
     const emitChange = (value: string | number, event: Event) => {
       let output_value: number | string = fixedDecimalPlaces(value);
-      emit('change', output_value, event);
       emit('update:modelValue', output_value, event);
+      emit('change', output_value, event);
     };
 
     const addAllow = (value = Number(props.modelValue)): boolean => {

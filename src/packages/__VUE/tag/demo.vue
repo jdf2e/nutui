@@ -3,7 +3,7 @@
     <nut-cell-group title="基础用法">
       <nut-cell title="primary 类型">
         <template v-slot:link>
-          <nut-tag type="primary">标签</nut-tag>
+          <nut-tag type="primary" @click="click">标签</nut-tag>
         </template>
       </nut-cell>
       <nut-cell title="success 类型">
@@ -78,8 +78,13 @@ export default createDemo({
       show.value = false;
     };
 
+    const click = () => {
+      alert('点击事件');
+    };
+
     return {
       close,
+      click,
       show
     };
   }

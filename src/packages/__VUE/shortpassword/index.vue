@@ -11,6 +11,7 @@
       @click-close-icon="closeIcon"
       :close-on-click-overlay="closeOnClickOverlay"
       @click-overlay="close"
+      :isWrapTeleport="isWrapTeleport"
     >
       <view class="nut-shortpsd-title">{{ title }}</view>
       <view class="nut-shortpsd-subtitle">{{ desc }}</view>
@@ -87,6 +88,10 @@ export default create({
     length: {
       type: [String, Number], //4～6
       default: 6
+    },
+    isWrapTeleport: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['update:modelValue', 'update:visible', 'complete', 'change', 'ok', 'tips', 'close', 'cancel'],
@@ -112,7 +117,11 @@ export default create({
       () => props.modelValue,
       (value) => {
         realInput.value = value;
-        console.log('watch', value);
+        emit('update:modelValue', value);
+      },
+      {
+        deep: true,
+        immediate: true
       }
     );
     function changeValue(e: Event) {

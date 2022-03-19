@@ -7,72 +7,50 @@
     }"
   >
     <!-- header -->
-    <view
-      class="nut-calendar-header"
-      :class="{ 'nut-calendar-header-tile': !poppable }"
-    >
-      <template v-if="poppable">
-        <view class="calendar-title">{{ title }}</view>
-        <view class="calendar-curr-month">{{ yearMonthTitle }}</view>
-      </template>
+    <view class="nut-calendar-header" :class="{ 'nut-calendar-header-tile': !poppable }">
+      <view class="calendar-title" v-if="showTitle">{{ title }}</view>
+      <view class="calendar-top-slot" v-if="showTopBtn">
+        <slot name="btn"> </slot>
+      </view>
+      <view class="calendar-curr-month" v-if="showSubTitle">{{ yearMonthTitle }}</view>
       <view class="calendar-weeks" ref="weeksPanel">
-        <view
-          class="calendar-week-item"
-          v-for="(item, index) of weeks"
-          :key="index"
-          >{{ item }}</view
-        >
+        <view class="calendar-week-item" v-for="(item, index) of weeks" :key="index">{{ item }}</view>
       </view>
     </view>
     <!-- content-->
-    <view
-      class="nut-calendar-content"
-      ref="months"
-      @touchstart.stop="touchStart"
-      @touchmove.stop.prevent="touchMove"
-      @touchend.stop="touchEnd"
-    >
+    <view class="nut-calendar-content" ref="months" @scroll="mothsViewScroll">
       <view class="calendar-months-panel" ref="monthsPanel">
-        <view class="calendar-loading-tip">{{
-          !unLoadPrev ? '加载上一个月' : '没有更早月份'
-        }}</view>
-        <view
-          class="calendar-month"
-          v-for="(month, index) of monthsData"
-          :key="index"
-        >
-          <view class="calendar-month-title">{{ month.title }}</view>
-          <view class="calendar-month-con">
-            <view
-              class="calendar-month-item"
-              :class="type === 'range' ? 'month-item-range' : ''"
-            >
-              <template v-for="(day, i) of month.monthData" :key="i">
-                <view
-                  class="calendar-month-day"
-                  :class="getClass(day, month)"
-                  @click="chooseDay(day, month)"
-                >
-                  <view class="calendar-day">{{
-                    day.type == 'curr' ? day.day : ''
-                  }}</view>
-                  <view
-                    class="calendar-curr-tips"
-                    v-if="isCurrDay(month, day.day)"
-                    >今天</view
-                  >
-                  <view
-                    class="calendar-day-tip"
-                    v-if="isStartTip(day, month)"
-                    >{{ '开始' }}</view
-                  >
-                  <view
-                    class="calendar-day-tip"
-                    v-else-if="isEndTip(day, month)"
-                    >{{ '结束' }}</view
-                  >
-                </view>
-              </template>
+        <view class="viewArea" ref="viewArea" :style="{ transform: `translateY(${translateY}px)` }">
+          <view class="calendar-month" v-for="(month, index) of compConthsData" :key="index">
+            <view class="calendar-month-title">{{ month.title }}</view>
+            <view class="calendar-month-con">
+              <view class="calendar-month-item" :class="type === 'range' ? 'month-item-range' : ''">
+                <template v-for="(day, i) of month.monthData" :key="i">
+                  <view class="calendar-month-day" :class="getClass(day, month)" @click="chooseDay(day, month)">
+                    <!-- 日期显示slot -->
+                    <view class="calendar-day">
+                      <slot name="day" :date="day.type == 'curr' ? day : ''">
+                        {{ day.type == 'curr' ? day.day : '' }}
+                      </slot>
+                    </view>
+                    <view class="calendar-curr-tips calendar-curr-tips-top" v-if="topInfo">
+                      <slot name="topInfo" :date="day.type == 'curr' ? day : ''"> </slot>
+                    </view>
+                    <view class="calendar-curr-tips calendar-curr-tips-bottom" v-if="bottomInfo">
+                      <slot name="bottomInfo" :date="day.type == 'curr' ? day : ''"> </slot>
+                    </view>
+                    <view class="calendar-curr-tip-curr" v-if="!bottomInfo && showToday && isCurrDay(day)"> 今天 </view>
+                    <view
+                      class="calendar-day-tip"
+                      :class="{ 'calendar-curr-tips-top': rangeTip(day, month) }"
+                      v-if="isStartTip(day, month)"
+                    >
+                      {{ startText }}
+                    </view>
+                    <view class="calendar-day-tip" v-if="isEndTip(day, month)">{{ endText }}</view>
+                  </view>
+                </template>
+              </view>
             </view>
           </view>
         </view>
@@ -80,12 +58,12 @@
     </view>
     <!-- footer-->
     <view class="nut-calendar-footer" v-if="poppable && !isAutoBackFill">
-      <view class="calendar-confirm-btn" @click="confirm">确定</view>
+      <view class="calendar-confirm-btn" @click="confirm">{{ confirmText }}</view>
     </view>
   </view>
 </template>
 <script lang="ts">
-import { PropType, reactive, ref, watch, toRefs } from 'vue';
+import { PropType, reactive, ref, watch, toRefs, computed } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('calendar-item');
 import Utils from '../../utils/date';
@@ -93,7 +71,10 @@ import requestAniFrame from '../../utils/raf';
 type InputDate = string | string[];
 interface CalendarState {
   yearMonthTitle: string;
-  currDate: InputDate;
+  currDate: any;
+  propStartDate: string;
+  propEndDate: string;
+  currentIndex: number;
   unLoadPrev: boolean;
   touchParams: any;
   transformY: number;
@@ -107,6 +88,9 @@ interface CalendarState {
   endData: InputDate;
   isRange: boolean;
   timer: number;
+  avgHeight: number;
+  monthsNum: number;
+  defaultRange: any[];
 }
 interface Day {
   day: string | number;
@@ -117,6 +101,8 @@ interface MonthInfo {
   curData: string[] | string;
   title: string;
   monthData: Day[];
+  cssHeight?: Number;
+  cssScrollHeight?: Number;
 }
 
 export default create({
@@ -133,12 +119,36 @@ export default create({
       type: Boolean,
       default: true
     },
+    showTitle: {
+      type: Boolean,
+      default: true
+    },
+    showSubTitle: {
+      type: Boolean,
+      default: true
+    },
+    showToday: {
+      type: Boolean,
+      default: true
+    },
     title: {
       type: String,
       default: '日历选择'
     },
+    confirmText: {
+      type: String,
+      default: '确认'
+    },
+    startText: {
+      type: String,
+      default: '开始'
+    },
+    endText: {
+      type: String,
+      default: '结束'
+    },
     defaultValue: {
-      type: String as PropType<InputDate>,
+      type: [String, Array],
       default: null
     },
     startDate: {
@@ -150,19 +160,35 @@ export default create({
       default: Utils.getDay(365)
     }
   },
-  emits: ['choose', 'update', 'close'],
+  emits: ['choose', 'update', 'close', 'select'],
 
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const weeks = ref(['日', '一', '二', '三', '四', '五', '六']);
     // element refs
     const months = ref<null | HTMLElement>(null);
     const monthsPanel = ref<null | HTMLElement>(null);
     const weeksPanel = ref<null | HTMLElement>(null);
+    const viewArea = ref<null | HTMLElement>(null);
+    const viewHeight = ref(0);
+    const compConthsData = computed(() => {
+      return state.monthsData.slice(state.defaultRange[0], state.defaultRange[1]);
+    });
+    const showTopBtn = computed(() => {
+      return slots.btn;
+    });
+    const topInfo = computed(() => {
+      return slots.topInfo;
+    });
+    const bottomInfo = computed(() => {
+      return slots.bottomInfo;
+    });
 
-    // state
     const state: CalendarState = reactive({
       yearMonthTitle: '',
+      defaultRange: [],
       currDate: '',
+      propStartDate: '',
+      propEndDate: '',
       unLoadPrev: false,
       touchParams: {
         startY: 0,
@@ -182,35 +208,27 @@ export default create({
       startData: '',
       endData: '',
       isRange: props.type === 'range',
-      timer: 0
+      timer: 0,
+      currentIndex: 0,
+      avgHeight: 0,
+      monthsNum: 0
     });
-
     // 日期转化成数组
     const splitDate = (date: string) => {
       return date.split('-');
     };
-
+    // 判断是否为开始时间
     const isStart = (currDate: string) => {
       return Utils.isEqual(state.currDate[0], currDate);
     };
-
+    // 判断是否为结束时间
     const isEnd = (currDate: string) => {
       return Utils.isEqual(state.currDate[1], currDate);
     };
 
     // 获取当前数据
     const getCurrDate = (day: Day, month: MonthInfo, isRange?: boolean) => {
-      return isRange
-        ? month.curData[3] +
-            '-' +
-            month.curData[4] +
-            '-' +
-            Utils.getNumTwoBit(+day.day)
-        : month.curData[0] +
-            '-' +
-            month.curData[1] +
-            '-' +
-            Utils.getNumTwoBit(+day.day);
+      return month.curData[0] + '-' + month.curData[1] + '-' + Utils.getNumTwoBit(+day.day);
     };
 
     // 获取样式
@@ -218,14 +236,13 @@ export default create({
       const currDate = getCurrDate(day, month, isRange);
       if (day.type == 'curr') {
         if (
-          (!state.isRange &&
-            Utils.isEqual(state.currDate as string, currDate)) ||
+          (!state.isRange && Utils.isEqual(state.currDate as string, currDate)) ||
           (state.isRange && (isStart(currDate) || isEnd(currDate)))
         ) {
           return `${state.dayPrefix}-active`;
         } else if (
-          (props.startDate && Utils.compareDate(currDate, props.startDate)) ||
-          (props.endDate && Utils.compareDate(props.endDate, currDate))
+          (state.propStartDate && Utils.compareDate(currDate, state.propStartDate)) ||
+          (state.propEndDate && Utils.compareDate(state.propEndDate, currDate))
         ) {
           return `${state.dayPrefix}-disabled`;
         } else if (
@@ -243,7 +260,7 @@ export default create({
         return `${state.dayPrefix}-disabled`;
       }
     };
-
+    // 确认选择时触发
     const confirm = () => {
       if ((state.isRange && state.chooseData.length == 2) || !state.isRange) {
         emit('choose', state.chooseData);
@@ -254,17 +271,10 @@ export default create({
     };
 
     // 选中数据
-    const chooseDay = (
-      day: Day,
-      month: MonthInfo,
-      isFirst: boolean,
-      isRange?: boolean
-    ) => {
+    const chooseDay = (day: Day, month: MonthInfo, isFirst: boolean, isRange?: boolean) => {
       if (getClass(day, month, isRange) != `${state.dayPrefix}-disabled`) {
         let days = [...month.curData];
-        days = isRange ? days.splice(3) : days.splice(0, 3);
-        days[2] =
-          typeof day.day == 'number' ? Utils.getNumTwoBit(day.day) : day.day;
+        days[2] = typeof day.day == 'number' ? Utils.getNumTwoBit(day.day) : day.day;
         days[3] = `${days[0]}-${days[1]}-${days[2]}`;
         days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2]);
         if (!state.isRange) {
@@ -290,19 +300,19 @@ export default create({
             }
           }
         }
-
-        if (props.isAutoBackFill && !isFirst) {
-          confirm();
+        if (!isFirst) {
+          // 点击日期 触发
+          emit('select', state.chooseData);
+          if (props.isAutoBackFill) {
+            confirm();
+          }
         }
       }
     };
 
     // 获取当前月数据
     const getCurrData = (type: string) => {
-      const monthData =
-        type == 'prev'
-          ? state.monthsData[0]
-          : state.monthsData[state.monthsData.length - 1];
+      const monthData = type == 'prev' ? state.monthsData[0] : state.monthsData[state.monthsData.length - 1];
       let year = parseInt(monthData.curData[0]);
       let month = parseInt(monthData.curData[1].toString().replace(/^0/, ''));
       switch (type) {
@@ -315,31 +325,57 @@ export default create({
           month = month == 12 ? 1 : ++month;
           break;
       }
-      return [
-        year,
-        Utils.getNumTwoBit(month),
-        Utils.getMonthDays(String(year), String(month))
-      ];
+      return [year, Utils.getNumTwoBit(month), Utils.getMonthDays(String(year), String(month))];
     };
 
     // 获取日期状态
-    const getDaysStatus = (days: number, type: string) => {
+    const getDaysStatus = (days: number, type: string, dateInfo: any) => {
       // 修复：当某个月的1号是周日时，月份下方会空出来一行
+      let { year, month } = dateInfo;
       if (type == 'prev' && days >= 7) {
         days -= 7;
       }
       return Array.from(Array(days), (v, k) => {
         return {
           day: k + 1,
-          type: type
+          type: type,
+          year,
+          month
         };
       });
     };
-
+    // 获取上一个月的最后一周天数，填充当月空白
+    const getPreDaysStatus = (days: number, type: string, dateInfo: any, preCurrMonthDays: number) => {
+      // 修复：当某个月的1号是周日时，月份下方会空出来一行
+      let { year, month } = dateInfo;
+      if (type == 'prev' && days >= 7) {
+        days -= 7;
+      }
+      let months = Array.from(Array(preCurrMonthDays), (v, k) => {
+        return {
+          day: k + 1,
+          type: type,
+          year,
+          month
+        };
+      });
+      return months.slice(preCurrMonthDays - days);
+    };
     // 获取月数据
-    const getMonth = (curData: string[], type: string) => {
+    const getMonth = (curData: any[], type: string) => {
+      // 一号为周几
       const preMonthDays = Utils.getMonthPreDay(+curData[0], +curData[1]);
+
+      let preMonth = curData[1] - 1;
+      let preYear = curData[0];
+      if (preMonth <= 0) {
+        preMonth = 12;
+        preYear += 1;
+      }
+      //当月天数与上个月天数
       const currMonthDays = Utils.getMonthDays(curData[0], curData[1]);
+      const preCurrMonthDays = Utils.getMonthDays(preYear + '', preMonth + '');
+
       const title = {
         year: curData[0],
         month: curData[1]
@@ -348,24 +384,32 @@ export default create({
         curData: curData,
         title: `${title.year}年${title.month}月`,
         monthData: [
-          ...(getDaysStatus(preMonthDays, 'prev') as Day[]),
-          ...(getDaysStatus(currMonthDays, 'curr') as Day[])
+          ...(getPreDaysStatus(preMonthDays, 'prev', { month: preMonth, year: preYear }, preCurrMonthDays) as Day[]),
+          ...(getDaysStatus(currMonthDays, 'curr', title) as Day[])
         ]
       };
+      monthInfo.cssHeight = 39 + (monthInfo.monthData.length > 35 ? 384 : 320);
+      let cssScrollHeight = 0;
+
+      if (state.monthsData.length > 0) {
+        cssScrollHeight =
+          state.monthsData[state.monthsData.length - 1].cssScrollHeight +
+          state.monthsData[state.monthsData.length - 1].cssHeight;
+      }
+      monthInfo.cssScrollHeight = cssScrollHeight;
       if (type == 'next') {
+        // 判断当前日期 是否大于 最后一天
         if (
           !state.endData ||
           !Utils.compareDate(
-            `${state.endData[0]}-${state.endData[1]}-${Utils.getMonthDays(
-              state.endData[0],
-              state.endData[1]
-            )}`,
+            `${state.endData[0]}-${state.endData[1]}-${Utils.getMonthDays(state.endData[0], state.endData[1])}`,
             `${curData[0]}-${curData[1]}-${curData[2]}`
           )
         ) {
           state.monthsData.push(monthInfo);
         }
       } else {
+        // 判断当前日期 是否小于 第一天
         if (
           !state.startData ||
           !Utils.compareDate(
@@ -383,276 +427,212 @@ export default create({
     // 初始化数据
     const initData = () => {
       // 初始化开始结束数据
-      state.startData = props.startDate ? splitDate(props.startDate) : '';
-      state.endData = props.endDate ? splitDate(props.endDate) : '';
+      let propStartDate = props.startDate ? props.startDate : Utils.getDay(0);
+      let propEndDate = props.endDate ? props.endDate : Utils.getDay(365);
+      state.propStartDate = propStartDate;
+      state.propEndDate = propEndDate;
+      state.startData = splitDate(propStartDate);
+      state.endData = splitDate(propEndDate);
 
-      // 初始化当前日期
-      if (!props.defaultValue) {
-        state.currDate = state.isRange
-          ? [Utils.date2Str(new Date()), Utils.getDay(1)]
-          : Utils.date2Str(new Date());
+      // 根据是否存在默认时间，初始化当前日期,
+      if (!props.defaultValue || (Array.isArray(props.defaultValue) && props.defaultValue.length <= 0)) {
+        state.currDate = state.isRange ? [Utils.date2Str(new Date()), Utils.getDay(1)] : Utils.date2Str(new Date());
       } else {
-        state.currDate = state.isRange
-          ? [...props.defaultValue]
-          : props.defaultValue;
+        state.currDate = state.isRange ? [...props.defaultValue] : props.defaultValue;
       }
 
-      // 日期转化为数组
-      if (state.isRange && Array.isArray(state.currDate)) {
-        if (
-          props.startDate &&
-          Utils.compareDate(state.currDate[0], props.startDate)
-        ) {
-          state.currDate.splice(0, 1, props.startDate);
-        }
-        if (
-          props.endDate &&
-          Utils.compareDate(props.endDate, state.currDate[1])
-        ) {
-          state.currDate.splice(1, 1, props.endDate);
-        }
-        state.defaultData = [
-          ...splitDate(state.currDate[0]),
-          ...splitDate(state.currDate[1])
-        ];
-      } else {
-        if (
-          props.startDate &&
-          Utils.compareDate(state.currDate as string, props.startDate)
-        ) {
-          state.currDate = props.startDate;
-        } else if (
-          props.endDate &&
-          !Utils.compareDate(state.currDate as string, props.endDate)
-        ) {
-          state.currDate = props.endDate;
-        }
-
-        state.defaultData = [...splitDate(state.currDate as string)];
+      // 判断时间范围内存在多少个月
+      const startDate = {
+        year: Number(state.startData[0]),
+        month: Number(state.startData[1])
+      };
+      const endDate = {
+        year: Number(state.endData[0]),
+        month: Number(state.endData[1])
+      };
+      let monthsNum = endDate.month - startDate.month;
+      if (endDate.year - startDate.year > 0) {
+        monthsNum = monthsNum + 12 * (endDate.year - startDate.year);
       }
 
-      getMonth(state.defaultData, 'next');
-      state.yearMonthTitle = state.monthsData[0].title;
+      // 设置月份数据
+      getMonth(state.startData, 'next');
 
       let i = 1;
       do {
         getMonth(getCurrData('next'), 'next');
-      } while (i++ < 4);
+      } while (i++ < monthsNum);
 
-      if (state.isRange) {
-        chooseDay(
-          { day: state.defaultData[2], type: 'curr' },
-          state.monthsData[0],
-          true
-        );
-        chooseDay(
-          { day: state.defaultData[5], type: 'curr' },
-          state.monthsData[0],
-          true,
-          true
-        );
+      state.monthsNum = monthsNum;
+
+      // 日期转化为数组，限制初始日期。判断时间范围
+      if (state.isRange && Array.isArray(state.currDate)) {
+        if (propStartDate && Utils.compareDate(state.currDate[0], propStartDate)) {
+          state.currDate.splice(0, 1, propStartDate);
+        }
+        if (propEndDate && Utils.compareDate(propEndDate, state.currDate[1])) {
+          state.currDate.splice(1, 1, propEndDate);
+        }
+        state.defaultData = [...splitDate(state.currDate[0]), ...splitDate(state.currDate[1])];
       } else {
-        chooseDay(
-          { day: state.defaultData[2], type: 'curr' },
-          state.monthsData[0],
-          true
-        );
+        if (propStartDate && Utils.compareDate(state.currDate as string, propStartDate)) {
+          state.currDate = propStartDate;
+        } else if (propEndDate && !Utils.compareDate(state.currDate as string, propEndDate)) {
+          state.currDate = propEndDate;
+        }
+        state.defaultData = [...splitDate(state.currDate as string)];
       }
-    };
+      // 设置默认可见区域
+      let current = 0;
+      let lastCurrent = 0;
+      state.monthsData.forEach((item, index) => {
+        if (item.title == `${state.defaultData[0]}年${state.defaultData[1]}月`) {
+          current = index;
+        }
+        if (state.isRange) {
+          if (item.title == `${state.defaultData[3]}年${state.defaultData[4]}月`) {
+            lastCurrent = index;
+          }
+        }
+      });
+      setDefaultRange(monthsNum, current);
+      state.currentIndex = current;
+      state.yearMonthTitle = state.monthsData[state.currentIndex].title;
+      // 设置当前选中日期
+      if (state.isRange) {
+        chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
+        chooseDay({ day: state.defaultData[5], type: 'curr' }, state.monthsData[lastCurrent], true, true);
+      } else {
+        chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
+      }
 
+      let lastItem = state.monthsData[state.monthsData.length - 1];
+      let containerHeight = lastItem.cssHeight + lastItem.cssScrollHeight;
+      requestAniFrame(() => {
+        // 初始化 日历位置
+        if (months?.value && monthsPanel?.value && viewArea?.value) {
+          viewHeight.value = months.value.clientHeight;
+          monthsPanel.value.style.height = `${containerHeight}px`;
+          months.value.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
+        }
+      });
+      state.avgHeight = Math.floor(containerHeight / (monthsNum + 1));
+    };
+    // 设置当前可见月份
+    const setDefaultRange = (monthsNum: number, current: number) => {
+      if (monthsNum >= 3) {
+        if (current > 0 && current < monthsNum) {
+          state.defaultRange = [current - 1, current + 3];
+        } else if (current == 0) {
+          state.defaultRange = [current, current + 4];
+        } else if (current == monthsNum) {
+          state.defaultRange = [current - 2, current + 2];
+        }
+      } else {
+        state.defaultRange = [0, monthsNum + 2];
+      }
+      let defaultScrollTop = state.monthsData[state.defaultRange[0]].cssScrollHeight;
+      state.translateY = defaultScrollTop;
+    };
     // 区间选择&&当前月&&选中态
     const isActive = (day: Day, month: MonthInfo) => {
-      return (
-        state.isRange &&
-        day.type == 'curr' &&
-        getClass(day, month) == 'calendar-month-day-active'
-      );
+      return state.isRange && day.type == 'curr' && getClass(day, month) == 'calendar-month-day-active';
     };
 
     // 是否有开始提示
     const isStartTip = (day: Day, month: MonthInfo) => {
-      if (isActive(day, month)) {
-        return isStart(getCurrDate(day, month));
-      } else {
-        return false;
-      }
+      return isActive(day, month) && isStart(getCurrDate(day, month));
     };
 
     // 是否有结束提示
     const isEndTip = (day: Day, month: MonthInfo) => {
-      return isActive(day, month);
+      if (state.currDate.length >= 2 && isEnd(getCurrDate(day, month))) {
+        return isActive(day, month);
+      }
+      return false;
     };
-
-    // 是否有是当前日期
-    const isCurrDay = (month: any, day: string) => {
-      const date = `${month.curData[0]}-${month.curData[1]}-${day}`;
+    // 开始结束时间是否相等
+    const rangeTip = (day: Day, month: MonthInfo) => {
+      if (state.currDate.length >= 2) {
+        return Utils.isEqual(state.currDate[0], state.currDate[1]);
+      }
+    };
+    // 是否有 当前日期
+    const isCurrDay = (dateInfo: any) => {
+      const date = `${dateInfo.year}-${dateInfo.month}-${dateInfo.day < 10 ? '0' + dateInfo.day : dateInfo.day}`;
       return Utils.isEqual(date, Utils.date2Str(new Date()));
     };
-
-    // 监听月份滚动，改变月份标题
-    const loadScroll = () => {
-      if (!props.poppable) {
-        return false;
-      }
-      requestAniFrame(() => {
-        if (weeksPanel?.value && monthsPanel?.value) {
-          const top = weeksPanel?.value.getBoundingClientRect().bottom;
-          const monthsDoms =
-            monthsPanel.value.getElementsByClassName('calendar-month');
-          for (let i = 0; i < monthsDoms.length; i++) {
-            if (
-              monthsDoms[i].getBoundingClientRect().top <= top &&
-              monthsDoms[i].getBoundingClientRect().bottom >= top
-            ) {
-              state.yearMonthTitle = state.monthsData[i].title;
-            } else if (state.scrollDistance === 0) {
-              state.yearMonthTitle = state.monthsData[0].title;
-            }
-          }
+    // 滚动处理事件
+    const mothsViewScroll = (e: any) => {
+      const currentScrollTop = e.target.scrollTop;
+      let current = Math.floor(currentScrollTop / state.avgHeight);
+      if (current == 0) {
+        if (currentScrollTop >= state.monthsData[current + 1].cssScrollHeight) {
+          current += 1;
         }
-      });
-    };
-
-    // 设置月份滚动距离和速度
-    const setTransform = (translateY = 0, type?: string, time = 1000) => {
-      if (monthsPanel?.value) {
-        if (type === 'end') {
-          monthsPanel.value.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`;
-          clearTimeout(state.timer);
-          state.timer = setTimeout(() => {
-            loadScroll();
-          }, time);
-        } else {
-          monthsPanel.value.style.webkitTransition = '';
-          loadScroll();
+      } else if (current > 0 && current < state.monthsNum - 1) {
+        if (currentScrollTop >= state.monthsData[current + 1].cssScrollHeight) {
+          current += 1;
         }
-        monthsPanel.value.style.webkitTransform = `translateY(${translateY}px)`;
-        state.scrollDistance = translateY;
-      }
-    };
-
-    // 计算滚动方向和距离
-    const setMove = (move: number, type?: string, time?: number) => {
-      let updateMove = move + state.transformY;
-      const h = months.value?.offsetHeight || 0;
-      const offsetHeight = monthsPanel.value?.offsetHeight || 0;
-      if (type === 'end') {
-        // 限定滚动距离
-        if (updateMove > 0) {
-          updateMove = 0;
+        if (currentScrollTop < state.monthsData[current].cssScrollHeight) {
+          current -= 1;
         }
-        if (updateMove < 0 && updateMove < -offsetHeight + h) {
-          updateMove = -offsetHeight + h;
-        }
-        if (offsetHeight <= h && state.monthsData.length == 1) {
-          updateMove = 0;
-        }
-        setTransform(updateMove, type, time);
       } else {
-        if (updateMove > 0 && updateMove > 100) {
-          updateMove = 100;
+        const viewPosition = Math.round(currentScrollTop + viewHeight.value);
+        if (
+          viewPosition < state.monthsData[current].cssScrollHeight + state.monthsData[current].cssHeight &&
+          currentScrollTop > state.monthsData[current - 1].cssScrollHeight
+        ) {
+          current -= 1;
         }
         if (
-          updateMove < -offsetHeight + h - 100 &&
-          state.monthsData.length > 1
+          current + 1 <= state.monthsNum &&
+          viewPosition >= state.monthsData[current + 1].cssScrollHeight + state.monthsData[current + 1].cssHeight
         ) {
-          updateMove = -offsetHeight + h - 100;
+          current += 1;
         }
-        if (
-          updateMove < 0 &&
-          updateMove < -100 &&
-          state.monthsData.length == 1
-        ) {
-          updateMove = -100;
-        }
-        setTransform(updateMove);
-      }
-    };
-
-    // 监听touch开始
-    const touchStart = (event: TouchEvent) => {
-      const changedTouches = event.changedTouches[0];
-      state.touchParams.startY = changedTouches.pageY;
-      state.touchParams.startTime = event.timeStamp || Date.now();
-      state.transformY = state.scrollDistance;
-    };
-
-    // 监听touchmove
-    const touchMove = (event: TouchEvent) => {
-      //event.preventDefault();
-      const changedTouches = event.changedTouches[0];
-      state.touchParams.lastY = changedTouches.pageY;
-      state.touchParams.lastTime = event.timeStamp || Date.now();
-      const move = state.touchParams.lastY - state.touchParams.startY;
-      if (Math.abs(move) < 5) {
-        return false;
-      }
-      setMove(move);
-    };
-
-    // 监听touchend
-    const touchEnd = (event: TouchEvent) => {
-      const changedTouches = event.changedTouches[0];
-      state.touchParams.lastY = changedTouches.pageY;
-      state.touchParams.lastTime = event.timeStamp || Date.now();
-      let move = state.touchParams.lastY - state.touchParams.startY;
-      if (Math.abs(move) < 5) {
-        return false;
-      }
-      const updateMove = move + state.transformY;
-      const h = months.value?.offsetHeight || 0;
-      const offsetHeight = monthsPanel.value?.offsetHeight || 0;
-      if (updateMove > 0) {
-        getMonth(getCurrData('prev'), 'prev');
-      } else if (
-        updateMove < 0 &&
-        updateMove <
-          -offsetHeight + (Math.abs(move) > h ? Math.abs(move) : h) * 5
-      ) {
-        getMonth(getCurrData('next'), 'next');
-        if (Math.abs(move) >= 300) {
-          getMonth(getCurrData('next'), 'next');
+        if (currentScrollTop < state.monthsData[current - 1].cssScrollHeight) {
+          current -= 1;
         }
       }
 
-      let moveTime = state.touchParams.lastTime - state.touchParams.startTime;
-      if (moveTime <= 300) {
-        move = move * 2;
-        moveTime = moveTime + 1000;
-        setMove(move, 'end', moveTime);
-      } else {
-        setMove(move, 'end');
+      if (state.currentIndex !== current) {
+        state.currentIndex = current;
+        setDefaultRange(state.monthsNum, current);
       }
+      state.yearMonthTitle = state.monthsData[current].title;
     };
 
     // 重新渲染
     const resetRender = () => {
       state.chooseData.splice(0);
       state.monthsData.splice(0);
-      state.scrollDistance = 0;
-      state.translateY = 0;
-      setTransform(state.scrollDistance);
       initData();
     };
 
     // 初始化数据
     initData();
 
-    //监听 默认值更改
+    // //监听 默认值更改
     watch(
       () => props.defaultValue,
       (val) => {
         if (val) {
-          resetRender();
+          if (props.poppable) {
+            resetRender();
+          }
         }
       }
     );
 
     return {
       weeks,
-      touchStart,
-      touchMove,
-      touchEnd,
+      compConthsData,
+      showTopBtn,
+      topInfo,
+      bottomInfo,
+      rangeTip,
+      mothsViewScroll,
       getClass,
       isStartTip,
       isEndTip,
@@ -662,6 +642,7 @@ export default create({
       monthsPanel,
       months,
       weeksPanel,
+      viewArea,
       ...toRefs(state),
       ...toRefs(props)
     };

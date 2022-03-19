@@ -1,21 +1,10 @@
 <template>
   <div class="demo">
     <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
-    <nut-dialog
-      title="基础弹框"
-      content="这是基础弹框。"
-      v-model:visible="visible1"
-      @cancel="onCancel"
-      @ok="onOk"
-    />
+    <nut-dialog title="基础弹框" content="这是基础弹框。" v-model:visible="visible1" @cancel="onCancel" @ok="onOk" />
 
     <nut-cell title="无标题弹框" @click="noTitleClick"></nut-cell>
-    <nut-dialog
-      content="这是无标题弹框。"
-      v-model:visible="visible2"
-      @cancel="onCancel"
-      @ok="onOk"
-    />
+    <nut-dialog content="这是无标题弹框。" v-model:visible="visible2" @cancel="onCancel" @ok="onOk" />
 
     <nut-cell title="提示弹框" @click="tipsClick"></nut-cell>
     <nut-dialog
@@ -27,14 +16,17 @@
       @ok="onOk"
     />
 
-    <nut-cell title="异步关闭" @click="componentClick"></nut-cell>
+    <nut-cell title="底部按钮 垂直使用" @click="verticalClick"></nut-cell>
     <nut-dialog
-      title="异步关闭"
-      :content="closeContent"
-      :visible="visible4"
-      @cancel="onCancel"
-      @ok="onOkAsync"
+      footer-direction="vertical"
+      teleport="#app"
+      title="温馨提示"
+      content="这是提示弹框。"
+      v-model:visible="visible5"
     />
+
+    <nut-cell title="异步关闭" @click="componentClick"></nut-cell>
+    <nut-dialog title="异步关闭" :content="closeContent" :visible="visible4" @cancel="onCancel" @ok="onOkAsync" />
   </div>
 </template>
 <script lang="ts">
@@ -45,6 +37,7 @@ export default {
     const visible2 = ref(false);
     const visible3 = ref(false);
     const visible4 = ref(false);
+    const visible5 = ref(false);
     const closeContent = ref('');
     const sleep = () => new Promise((resolve) => setTimeout(resolve, 1000));
     const countDown = (second: number) => `倒计时 ${second} 秒`;
@@ -88,11 +81,16 @@ export default {
       visible4.value = true;
     };
 
+    const verticalClick = () => {
+      visible5.value = true;
+    };
+
     return {
       visible1,
       visible2,
       visible3,
       visible4,
+      visible5,
       onCancel,
       onOk,
       closeContent,
@@ -100,7 +98,8 @@ export default {
       baseClick,
       noTitleClick,
       componentClick,
-      tipsClick
+      tipsClick,
+      verticalClick
     };
   }
 };

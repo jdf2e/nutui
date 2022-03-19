@@ -1,3 +1,153 @@
+## v3.1.17
+
+`2022-02-25` 此版本依赖 Taro 3.4.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @odex21 @p3psi-boo @gp5251 @deity-wu
+
+* :zap: feat(sticky): 新增粘性布局组件(#627)   @szg2008
+* :zap: feat(audio): 新增音频组件   @yangxiaolu1993
+* :zap: feat(calendar): 日历组件功能扩展(#550 #842 #742 #806)   @lkjh3214
+* :zap: feat: 优化重构 add 命令   @szg2008
+* :zap: chore: support template type check (volar) (#985) @odex21
+* :zap: feat(input): 输入数字时拉起数字键盘 (#999) @odex21
+* :zap: feat(input): 在taro、doc增加无边框 (#995) @ailululu
+* :zap: feat(swiper): 适配小程序(#944 #551 #553) @szg2008
+* :zap: feat(elevator): 暴露 ScrollTo API @szg2008
+* :zap: feat(elevator): 点击之后增加高亮显示(#974) @szg2008
+* :zap: feat(button): add third-party icon support (#1018) @p3psi-boo
+* :zap: feat(layout, row): add support for space-evenly (#1020) @gp5251
+* :zap: feat(address): 新增默认选中功能 (#368) @yangxiaolu1993
+* :bug: docs(indicator): 描述文案修改  @richard1015
+* :bug: fix(cascader): 主题定制不生效bug(#998)   @richard1015
+* :bug: docs(circleprogress): 描述文案修改(#990) @Drjingfubo
+* :bug: fix(tabbar): 微信浏览器下安全适配不生效修改 (#997) @Drjingfubo
+* :bug: docs(drag): 文档样式错乱修复   @richard1015
+* :bug: fix(DatePicker): 修复Taro使用场景报错 (#1014)   @yangxiaolu1993
+* :bug: docs(popup): update destoryOnClose props instruction (#1010)   @szg2008
+* :bug: docs: 组件的文案修改 (#1021)  @yangxiaolu1993
+* :bug: docs(button): 添加对第三方图标支持的文档 (#1026)  @p3psi-boo
+* :bug: docs(tabbar): add import Icon (#1028)   @Drjingfubo
+* :bug: fix(progress): optimization,add new props isShowPercentage (#1016)  @Drjingfubo
+* :bug: fix: fix radio switch checkbox radio warning   @szg2008
+* :bug: fix(searchBar): 搜索栏的 search 事件 在H5中会刷新当前页面 #1025  @JackieScorpio
+* :bug: fix(imagepreview): 引用报错(#1024 #989)   @JackieScorpio
+* :bug: fix: 滚动加载组件，taro版，下拉刷新bug修改 (#1004)  @deity-wu
+* :bug: fix: input组件的readonly属性在taro小程序项目中不生效(#1017)  @ailululu
+
+## v3.1.16
+
+`2022-01-30` 此版本依赖 Taro 3.4.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @Anberm
+
+* :zap: feat(button): use taro button (#918) @Anberm
+* :zap: feat(uploader): delete 事件增加文件下标字段 @richard1015
+* :zap: chore(navbar): 底层tabs组件替换 (#971) @liqiong-lab
+* :zap: chore(picker): 增加3d滚动效果、支持小程序场景使用 (#981) @yangxiaolu1993
+* :bug: fix(taro env): taro failed resolve component @szg2008
+* :bug: fix(tabbar): taro vue-router warn (#980) @Drjingfubo
+* :bug: fix(icon): loading icon rotate bug @richard1015
+* :bug: fix(input): 修复close 按钮清除延迟bug  @ailululu
+* :bug: fix(uploader): multiple 状态文件限制bug修复 @richard1015
+* :bug: fix(menu): 页面内容过长滑动位置固定 bug @yangjinjun3
+* :bug: fix(price,switch): vue warn  @richard1015
+* :zap: docs: 官网所有组件文档支持在线调试 @teams/nutui
+
+
+## v3.1.15
+
+`2022-01-21` 此版本依赖 Taro 3.4.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @Anberm、@odex21
+
+* :zap: feat(sidenavbar): 新增侧边栏导航组件   @szg2008
+* :zap: feat: 组件增加在线调试、查看功能 @zhenyulei
+* :zap: feat(imagepreview): 增加自动轮播功能；增加放大缩小功能 (#908)   @JackieScorpio
+* :zap: feat(popup): props的closeable支持动态传值(#923)  @szg2008
+* :zap: chore: comp themes attr extract (#934)  @richard1015
+* :zap: feat(tabbar): 新增底部安全区适配属性 #876 (#953)   @Drjingfubo
+* :zap: feat: icon添加动态   @yangxiaolu1993
+* :bug: fix(table): 修复小程序环境下自定义内容样式问题  @szg2008
+* :bug: fix(table): 解决渲染数据顺序不同步的问题  @szg2008
+* :bug: fix(form): form-item v-if submit event error  @richard1015
+* :bug: fix(form-item): add attr empty status warn  @richard1015
+* :bug: docs(video): 播放地址修改 (#911)   @yushuang-d
+* :bug: fix: switch emits loading (#912)   @Anberm
+* :bug: fix(inputnumber、textarea): 调整 change 顺序  @richard1015
+* :bug: chore: fix build method component types ts error (#916)  @richard1015
+* :bug: docs(tabs): 自定义示例代码添加 feedback q2439456344@163.com  @richard1015
+* :bug: style: variables 样式变量标准化调整  @richard1015
+* :bug: docs(switch): 补充文档，说明 size 的含义  @szg2008
+* :bug: docs: cellgroup import desc  @richard1015
+* :bug: docs(form): online editor access  @richard1015
+* :bug: fix(range): remove error parameter in tmeplate (#940)  @odex21
+* :bug: fix(collapse): 数据动态加载时更新问题修复 (#937)  @Ymm0008
+* :bug: fix: circleprogress warring #945 (#949)   @Drjingfubo
+* :bug: docs(address): 修改已有地址数据结构(#952)   @szg2008
+* :bug: fix(form): 动态表单重置状态bug (#932)  @richard1015
+* :bug: revert(icon): 动态图标重置 & 动态图标文档删除  @richard1015
+* :bug: fix: 修改issues textarea自动取焦、rows不生效问题 (#965)   @lzzwoniu
+* :bug: fix: datepicker 组件内容完善 (#961)   @yangxiaolu1993
+
+## v3.1.14
+
+`2021-12-22`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @deity-wu、@297cwrun、@sumy7、@haiweilian
+
+* :zap: feat(indicator): 新增指示器组件 (#900)  @senyawang
+* :zap: feat(table): 新增表格组件  @szg2008
+* :zap: feat(skeleton): 新增骨架屏组件 (#882)  @liqiong-lab
+* :zap: feat(cascader): 新增级联选择器组件 (#856)  @dongj0316
+* :zap: feat(empty): 新增空状态组件 (#899)  @jessjava
+* :zap: feat(grid): 新增宫格组件 (#895)  @haiweilian
+* :zap: feat(uploader): add before-upload in uploader(taro) (#862)  @haiweilian
+* :zap: feat(tabs): props add size  @richard1015
+* :zap: feat: 增加Switch组件value值的类型 (#864)  @deity-wu
+* :zap: chore: website mobile  @richard1015
+* :zap: feat(form): add blur、change validate & fix (#902)  @richard1015
+* :bug: fix(countdown): countdown restTime didn't pass 2s to 1s (#906) @yangxiaolu1993
+* :bug: docs(numberkeyboard): props update (#868) @Drjingfubo
+* :bug: docs(checkbox): checkboxGroup 的 v-model 类型说明错写成 String (#871) @297cwrun
+* :bug: docs(popup): fix quotation mark pairing (#878) @sumy7
+* :bug: fix(uploader): 修复多张图片同时上传时图片类型判断错误 (#872) @haiweilian
+* :bug: docs(dialog&popup): 引用文档修改 @richard1015
+* :bug: fix(searchbar): 小程序下search事件失效 (#885) @297cwrun
+* :bug: fix(noticeBar): speed、height 设置为某些值时，不触发滚动问题 (#894)  @yangxiaolu1993
+
+## v3.1.13
+
+## v3.1.12
+
+`2021-11-27`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @AsherSun、@LeeHarlan、@297cwrun
+
+* :zap: feat: 新增 form 表单校验组件 #846  @richard1015
+* :zap: feat: 新增 menu 菜单组件 #844 @yangjinjun3
+* :zap: feat: 新增 card 商品卡片 @Drjingfubo
+* :zap: feat(imagepreview): 新增函数式调用、视频 (#858) @JackieScorpio
+* :zap: feat(uploader): 新增 ready 状态对应的UI展示 (#837) @AsherSun
+* :zap: feat(button): 新增 mini 尺寸 (#837) @Drjingfubo
+* :zap: feat(numberkeyboard): add overlay props @Drjingfubo
+* :zap: feat(switch、icon): 图标库增加loading，switch组件增加加载中状态 @szg2008
+* :zap: feat(toast): 增加标题属性，调整自定义位置 @Drjingfubo
+* :zap: feat(fixednav): Demo 增加拖拽效果 @richard1015
+* :zap: feat(cellgroup): add desc props & slots @richard1015
+* :zap: feat(dialog): add props footer-direction @richard1015
+* :zap: feat(rate): 支持自定义 icon @richard1015
+* :bug: fix(input): readonly时不显示placeholder (#840) @297cwrun
+* :bug: fix(rate): 半星情况出现颜色差异 #810  @richard1015
+* :bug: fix(timeselect): 修改配送时间组件 style @szg2008
+* :bug: fix(popover): 关闭点击优化 #851 @liqiong-lab
+* :bug: fix(popover): popover list item click error (#843) @LeeHarlan
+* :bug: fix(uploader): 修复小程序端传图后报错问题 (#836) @AsherSun
+
 ## v3.1.11
 
 `2021-11-15`

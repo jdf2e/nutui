@@ -1,5 +1,5 @@
 <script lang="ts">
-import { h, PropType } from 'vue';
+import { h, PropType, ref } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('icon');
 import { pxCheck } from '../../utils/pxCheck';

@@ -5,11 +5,17 @@
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"
     v-model:visible="showPopup"
+    :isWrapTeleport="isWrapTeleport"
+    :teleport="teleport"
   >
     <view class="nut-address">
       <view class="nut-address__header">
         <view class="arrow-back" @click="switchModule">
-          <nut-icon :name="backBtnIcon" color="#cccccc" v-show="privateType == 'custom' && backBtnIcon"></nut-icon>
+          <nut-icon
+            :name="backBtnIcon"
+            color="#cccccc"
+            v-show="type == 'exist' && privateType == 'custom' && backBtnIcon"
+          ></nut-icon>
         </view>
 
         <view class="nut-address__header__title">
@@ -23,16 +29,15 @@
 
       <!-- 请选择 -->
       <view class="custom-address" v-if="privateType == 'custom'">
-        <view class="region-tab">
+        <view class="region-tab" ref="tabRegion">
           <view
             class="tab-item"
             :class="[index == tabIndex ? 'active' : '']"
             v-for="(item, key, index) in selectedRegion"
             :key="index"
-            :ref="key"
             @click="changeRegionTab(item, key, index)"
           >
-            <view>{{ getTabName(item, index) }}</view>
+            <view>{{ getTabName(item, index) }} </view>
           </view>
 
           <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
@@ -51,7 +56,6 @@
                 class="region-item-icon"
                 type="self"
                 :name="selectedIcon"
-                color="#FA2C19"
                 size="13px"
                 v-if="selectedRegion[tabName[tabIndex]].id == item.id"
               ></nut-icon
@@ -63,13 +67,12 @@
 
       <!-- 请选择 -->
       <view class="custom-address" v-else-if="privateType == 'custom2'">
-        <view class="region-tab">
+        <view class="region-tab" ref="tabRegion">
           <view
             class="tab-item"
             :class="[index == tabIndex ? 'active' : '']"
             v-for="(item, key, index) in selectedRegion"
             :key="index"
-            :ref="key"
             @click="changeRegionTab(item, key, index)"
           >
             <view>{{ getTabName(item, index) }}</view>
@@ -100,7 +103,6 @@
                 class="exist-item-icon"
                 type="self"
                 :name="item.selectedAddress ? selectedIcon : defaultIcon"
-                :color="item.selectedAddress ? '#FA2C19' : ''"
                 size="13px"
               ></nut-icon>
               <div class="exist-item-info">
@@ -125,8 +127,9 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, nextTick, computed } from 'vue';
+import { reactive, ref, toRefs, watch, nextTick, computed, Ref, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
+import { popupProps } from '../popup/index.vue';
 const { componentName, create } = createComponent('address');
 interface RegionData {
   name: string;
@@ -149,9 +152,10 @@ interface AddressList {
 export default create({
   inheritAttrs: false,
   props: {
-    visible: {
-      type: Boolean,
-      default: false
+    ...popupProps,
+    modelValue: {
+      type: Array,
+      default: () => []
     },
     type: {
       type: String,
@@ -216,23 +220,24 @@ export default create({
     height: {
       type: [String, Number],
       default: '200px'
+    },
+    columnsPlaceholder: {
+      type: [String, Array],
+      default: '请选择'
     }
   },
-  emits: ['update:visible', 'type', 'change', 'selected', 'close', 'close-mask', 'switch-module'],
+  emits: ['update:visible', 'update:modelValue', 'type', 'change', 'selected', 'close', 'close-mask', 'switch-module'],
 
   setup(props: any, { emit }) {
     const regionLine = ref<null | HTMLElement>(null);
 
-    const tabItemRef = reactive({
-      province: ref<null | HTMLElement>(null),
-      city: ref<null | HTMLElement>(null),
-      country: ref<null | HTMLElement>(null),
-      town: ref<null | HTMLElement>(null)
-    });
+    const tabRegion: Ref<any> = ref(null);
+
     const showPopup = ref(props.visible);
     const privateType = ref(props.type);
     const tabIndex = ref(0);
     const tabName = ref(['province', 'city', 'country', 'town']);
+    const tabNameDefault = ref(['']);
 
     const isCustom2 = computed(() => props.type === 'custom2');
 
@@ -292,6 +297,52 @@ export default create({
 
     const lineDistance = ref(20);
 
+    onMounted(() => {
+      customPlaceholder();
+    });
+
+    // 设置选中省市县
+    const initCustomSelected = () => {
+      if (props.modelValue.length > 0) {
+        tabIndex.value = props.modelValue.length - 1;
+        for (let index = 0; index < props.modelValue.length; index++) {
+          if ((regionList as any)[tabName.value[index]].length == 0) {
+            tabIndex.value = index - 1;
+            break;
+          } else {
+            const val = props.modelValue[index];
+            const arr: [] = (regionList as any)[tabName.value[index]];
+            if (privateType.value == 'custom') {
+              (selectedRegion as any)[tabName.value[index]] = arr.filter((item: RegionData) => item.id == val)[0];
+            } else if (privateType.value == 'custom2') {
+              let sumArr: any = [];
+              arr.map((item) => {
+                sumArr.push(...(item as any).list);
+              });
+              (selectedRegion as any)[tabName.value[index]] = sumArr.filter((item: RegionData) => item.id == val)[0];
+            }
+          }
+        }
+        lineAnimation();
+      }
+    };
+    // 自定义‘请选择’文案
+    const customPlaceholder = () => {
+      let typeD = Object.prototype.toString.call(props.columnsPlaceholder);
+      if (typeD == '[object String]') {
+        tabNameDefault.value = new Array(4).fill(props.columnsPlaceholder);
+      } else if (typeD == '[object Array]') {
+        tabNameDefault.value = new Array(4).fill('');
+        tabNameDefault.value.forEach((val, index) => {
+          if (props.columnsPlaceholder[index]) {
+            tabNameDefault.value[index] = props.columnsPlaceholder[index];
+          } else {
+            tabNameDefault.value[index] = '请选择';
+          }
+        });
+      }
+    };
+
     //获取已选地区列表名称
     const getTabName = (item: RegionData, index: number) => {
       if (item.name) return item.name;
@@ -299,7 +350,7 @@ export default create({
       if (tabIndex.value < index) {
         return item.name;
       } else {
-        return '请选择';
+        return tabNameDefault.value[index];
       }
     };
     // 手动关闭 点击叉号(cross)，或者蒙层(mask)
@@ -316,8 +367,9 @@ export default create({
     };
     // 移动下面的红线
     const lineAnimation = () => {
-      const name = (tabItemRef as any)[tabName.value[tabIndex.value]];
       nextTick(() => {
+        const name = tabRegion.value && tabRegion.value.getElementsByClassName('active')[0];
+
         if (name) {
           const distance = name.offsetLeft;
 
@@ -335,8 +387,11 @@ export default create({
       };
 
       (selectedRegion as any)[tabName.value[tabIndex.value]] = item;
+      // for (let i = tabIndex.value; i < tabIndex.value - 1; i++) {
+      //   (selectedRegion as any)[tabName.value[i + 1]] = {};
+      // }
 
-      for (let i = tabIndex.value; i < tabIndex.value - 1; i++) {
+      for (let i = tabIndex.value; i < 4; i++) {
         (selectedRegion as any)[tabName.value[i + 1]] = {};
       }
 
@@ -351,6 +406,7 @@ export default create({
         emit('change', calBack);
       } else {
         handClose();
+        emit('update:modelValue');
       }
     };
     //切换地区Tab
@@ -464,6 +520,8 @@ export default create({
       (value) => {
         if (value == false) {
           close();
+        } else {
+          initCustomSelected();
         }
       }
     );
@@ -519,14 +577,15 @@ export default create({
       getTabName,
       nextAreaList,
       regionLine,
+      tabRegion,
       lineDistance,
       changeRegionTab,
       selectedExist,
       clickOverlay,
       handClose,
       handleElevatorItem,
-      ...toRefs(props),
-      ...toRefs(tabItemRef)
+      initCustomSelected,
+      ...toRefs(props)
     };
   }
 });

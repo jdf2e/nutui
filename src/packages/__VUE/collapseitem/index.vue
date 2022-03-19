@@ -80,7 +80,7 @@ export default create({
       type: Object
     }
   },
-  setup(props) {
+  setup(props, ctx: any) {
     const collapse: any = inject('collapseParent');
     const parent: any = reactive(collapse);
     const classes = computed(() => {
@@ -127,7 +127,9 @@ export default create({
     // 清除 willChange 减少性能浪费
     const onTransitionEnd = () => {
       const wrapperRefEle: any = document.getElementsByClassName('collapse-wrapper')[0];
-      wrapperRefEle.style.willChange = 'auto';
+      if (wrapperRefEle) {
+        wrapperRefEle.style.willChange = 'auto';
+      }
 
       // const query = wx.createSelectorQuery();
       // query.select('#productServe').boundingClientRect();
@@ -140,7 +142,7 @@ export default create({
       if (!wrapperRefEle || !contentRefEle) {
         return;
       }
-      const offsetHeight = contentRefEle.offsetHeight;
+      const offsetHeight = contentRefEle.offsetHeight || 'auto';
       if (offsetHeight) {
         const contentHeight = `${offsetHeight}px`;
         wrapperRefEle.style.willChange = 'height';
@@ -205,6 +207,15 @@ export default create({
         proxyData.openExpanded = true;
       }
     });
+
+    watch(
+      () => ctx?.slots?.default?.(),
+      () => {
+        setTimeout(() => {
+          animation();
+        }, 300);
+      }
+    );
 
     onMounted(() => {
       const { name } = props;

@@ -112,6 +112,17 @@
           <div class="flex-content">span:6</div>
         </nut-col>
       </nut-row>
+      <nut-row type="flex" justify="space-evenly">
+        <nut-col :span="6">
+          <div class="flex-content">span:6</div>
+        </nut-col>
+        <nut-col :span="6">
+          <div class="flex-content flex-content-light">span:6</div>
+        </nut-col>
+        <nut-col :span="6">
+          <div class="flex-content">span:6</div>
+        </nut-col>
+      </nut-row>
     </div>
   </div>
 </template>

@@ -5,7 +5,7 @@ import config from './package.json';
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
-* (c) 2021 @jdf2e.
+* (c) 2022 @jdf2e.
 * Released under the MIT License.
 */`;
 
@@ -22,7 +22,23 @@ export default defineConfig({
       }
     }
   },
-  plugins: [vue()],
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => {
+            return (
+              tag.startsWith('scroll-view') ||
+              tag.startsWith('swiper') ||
+              tag.startsWith('swiper-item') ||
+              tag.startsWith('picker')
+            );
+          },
+          whitespace: 'preserve'
+        }
+      }
+    })
+  ],
   build: {
     minify: false,
     terserOptions: {

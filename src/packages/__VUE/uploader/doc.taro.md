@@ -141,8 +141,8 @@ setup() {
   const onOversize = (files: File[]) => {
     console.log('oversize 触发 文件大小不能超过 50kb', files);
   };
-  const onDelete = (file: FileItem, fileList: FileItem[]) => {
-    console.log('delete 事件触发', file, fileList);
+  const onDelete = (obj: any) => {
+    console.log('delete 事件触发', obj);
   };
   const onProgress = ({ event, options, percentage }: any) => {
     progressPercentage.value = percentage;
@@ -189,6 +189,7 @@ setup() {
 | xhr-state         | 接口响应的成功状态（status）值                                                                                         | Number                            | 200                       |
 | disabled          | 是否禁用文件上传                                                                                                       | Boolean                           | false                     |
 | timeout           | 超时时间，单位为毫秒                                                                                                   | Number丨String                    | 1000 * 30                 |
+| before-upload     | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                          | null             |
 | before-delete     | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除 | Function(file): boolean 丨Promise | -                         |
 
 
@@ -213,13 +214,13 @@ setup() {
 | success         | 上传成功               | {data,option,fileItem}    |
 | failure         | 上传失败               | {data,option,fileItem}    |
 | change          | 上传文件改变时的状态   | {fileList,event}          |
-| delete          | 文件删除之前的状态     | {files,fileList}          |
+| delete          | 文件删除事件     | {files,fileList,index}          |
 | file-item-click | 文件上传成功后点击触发 | {fileItem}                |
 
 
 ### Methods
 
-通过 [ref](https://v3.cn.vuejs.org/api/special-attributes.html#key) 可以获取到 Uploader 实例并调用实例方法
+通过 [ref](https://v3.cn.vuejs.org/api/special-attributes.html#ref) 可以获取到 Uploader 实例并调用实例方法
 
 | 方法名           | 说明                                                       | 参数 | 返回值 |
 |------------------|------------------------------------------------------------|------|--------|

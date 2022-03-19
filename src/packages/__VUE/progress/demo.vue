@@ -10,12 +10,7 @@
     <h2>线形进度条-设置颜色高度</h2>
     <div>
       <nut-cell>
-        <nut-progress
-          percentage="30"
-          stroke-color=" rgba(250,44,25,0.47)"
-          stroke-width="20"
-          text-color="red"
-        />
+        <nut-progress percentage="30" stroke-color=" rgba(250,44,25,0.47)" stroke-width="20" text-color="red" />
       </nut-cell>
     </div>
     <h2>线形进度条-百分比不显示</h2>
@@ -39,16 +34,13 @@
     <h2>线形进度条-自定义尺寸(内置"small","base","large"三种规格)</h2>
     <div>
       <nut-cell>
-        <nut-progress percentage="30" :text-inside="true" size="small">
-        </nut-progress>
+        <nut-progress percentage="30" :text-inside="true" size="small"> </nut-progress>
       </nut-cell>
       <nut-cell>
-        <nut-progress percentage="50" :text-inside="true" size="base">
-        </nut-progress>
+        <nut-progress percentage="50" :text-inside="true" size="base"> </nut-progress>
       </nut-cell>
       <nut-cell>
-        <nut-progress percentage="70" :text-inside="true" size="large">
-        </nut-progress>
+        <nut-progress percentage="70" :text-inside="true" size="large"> </nut-progress>
       </nut-cell>
     </div>
     <h2>线形进度条-状态显示</h2>
@@ -61,11 +53,7 @@
         />
       </nut-cell>
       <nut-cell>
-        <nut-progress
-          percentage="50"
-          :stroke-width="strokeWidth"
-          status="icon"
-        />
+        <nut-progress percentage="50" status="icon" />
       </nut-cell>
       <nut-cell>
         <nut-progress
@@ -85,7 +73,7 @@
       </nut-cell>
       <nut-cell>
         <nut-button type="default" @click="setReduceVal">减少</nut-button>
-        <nut-button type="danger" @click="setAddVal">增加</nut-button>
+        <nut-button type="primary" @click="setAddVal">增加</nut-button>
       </nut-cell>
     </div>
   </div>

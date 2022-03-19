@@ -24,31 +24,70 @@ app.use(Icon);
 
 `Icon` 的 `name` 属性支持传入图标名称或图片链接。
 
+:::demo
 ```html
-<nut-icon name="dongdong"></nut-icon>
-<nut-icon name="JD"></nut-icon>
-<nut-icon size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"></nut-icon>
+<template>
+  <nut-icon name="dongdong"></nut-icon>
+  <nut-icon name="JD"></nut-icon>
+  <nut-icon size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"></nut-icon>
+</template>
 ```
+:::
 
 ### 图标颜色
 
 `Icon` 的 `color` 属性用来设置图标的颜色。
 
+:::demo
 ```html
-<nut-icon name="dongdong" color="#fa2c19"></nut-icon>
-<nut-icon name="dongdong" color="#64b578"></nut-icon>
-<nut-icon name="JD" color="#fa2c19"></nut-icon>
+<template>
+  <nut-icon name="dongdong" color="#fa2c19"></nut-icon>
+  <nut-icon name="dongdong" color="#64b578"></nut-icon>
+  <nut-icon name="JD" color="#fa2c19"></nut-icon>
+</template>
 ```
+:::
 
 ### 图标大小
 
 `Icon` 的 `size` 属性用来设置图标的尺寸大小，默认单位为 `px`。
 
+:::demo
 ```html
-<nut-icon name="dongdong"></nut-icon>
-<nut-icon name="dongdong" size="24"></nut-icon>
-<nut-icon name="dongdong" size="16"></nut-icon>
+<template>
+  <nut-icon name="dongdong"></nut-icon>
+  <nut-icon name="dongdong" size="24"></nut-icon>
+  <nut-icon name="dongdong" size="16"></nut-icon>
+</template>
 ```
+:::
+### 通用动态图标
+
+添加指定的 class 类就可以实现图片动态效果，默认是播放1次，添加 `nut-icon-am-infinite` 类即可实现循环播放。通过设置 css 可实现动画启动前的延迟间隔、动画在多久时间内完成
+
+:::demo
+```html
+<template>
+  <nut-icon name="dou-arrow-up" class="nut-icon-am-jump nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="star-fill-n" class="nut-icon-am-blink nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="refresh2" class="nut-icon-am-rotate nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="heart-fill" class="nut-icon-am-breathe nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="microphone" class="nut-icon-am-flash nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="download" class="nut-icon-am-bounce nut-icon-am-infinite"></nut-icon>
+  <nut-icon name="message" class="nut-icon-am-shake nut-icon-am-infinite"></nut-icon>
+</template>
+
+<style>
+  .nut-icon{
+    --animate-duration: 1s ; 
+    --animate-delay: 0s;
+  }
+</style>
+```
+:::
+
+
+
 
 ### 自定义图标
 
@@ -116,18 +155,20 @@ import './assets/font/iconfont.css';
 
 ```
 
+自定义 iconfont [Demo示例](https://github.com/jdf2e/nutui-demo/blob/master/vite/src/App.vue#L15) 
+
 ## API
 
 ### Props
 
-| 参数         | 说明                             | 类型             | 默认值           |
-|--------------|----------------------------------|------------------|------------------|
-| name         | 图标名称或图片链接               | String           | -                |
-| color        | 图标颜色                         | String           | -                |
-| size         | 图标大小，如 `20px` `2em` `2rem` | String or Number | -                |
-| font-class-name | 字体基础类名     | String           | `nutui-iconfont` |
-| class-prefix | 类名前缀，用于使用自定义图标     | String           | `nut-icon` |
-| tag          | HTML 标签                        | String           | `i`              |
+| 参数            | 说明                                    | 类型             | 默认值           |
+|-----------------|-----------------------------------------|------------------|------------------|
+| name            | 图标名称或图片链接                      | String           | -                |
+| color           | 图标颜色                                | String           | -                |
+| size            | 图标大小，如 `20px` `2em` `2rem`        | String or Number | -                |
+| font-class-name | 自定义 icon 字体基础类名                | String           | `nutui-iconfont` |
+| class-prefix    | 自定义 icon 类名前缀，用于使用自定义图标 | String           | `nut-icon`       |
+| tag             | HTML 标签                               | String           | `i`              |
 
 ### Events
 

@@ -1,9 +1,9 @@
 <template>
   <view :class="classes">
-    <view class="nut-input-label">
-      <view v-if="label" class="label-string">{{ label }}</view>
+    <view v-if="label" class="nut-input-label">
+      <view class="label-string">{{ label }}</view>
     </view>
-    <view v-if="readonly" class="input-text">
+    <view v-if="readonly" class="nut-input__text--readonly">
       {{ modelValue }}
     </view>
     <input
@@ -13,7 +13,7 @@
       :type="type"
       :maxlength="maxLength"
       :placeholder="placeholder"
-      :disabled="disabled"
+      :disabled="disabled || readonly"
       :readonly="readonly"
       :value="modelValue"
       @input="valueChange"
@@ -111,6 +111,10 @@ export default create({
     clearable: {
       type: Boolean,
       default: true
+    },
+    hasBorder: {
+      type: Boolean,
+      default: true
     }
   },
 
@@ -124,7 +128,8 @@ export default create({
       return {
         [prefixCls]: true,
         [`${prefixCls}-disabled`]: props.disabled,
-        [`${prefixCls}-require`]: props.requireShow
+        [`${prefixCls}-require`]: props.requireShow,
+        [`${prefixCls}-border`]: props.hasBorder
       };
     });
 

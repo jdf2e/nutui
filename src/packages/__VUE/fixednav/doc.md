@@ -21,10 +21,14 @@ app.use(FixedNav);
 
 ### 基础用法
 
-``` html
-<nut-fixednav :position="{top:'70px' }" v-model:visible="visible" :nav-list="navList" />
-```
-``` javascript
+:::demo
+```html
+<template>
+  <nut-fixednav :position="{top:'70px' }" v-model:visible="visible" :nav-list="navList" />
+</template>
+<script lang="ts">
+import { ref,reactive } from 'vue';
+export default {
  setup() {
     const visible = ref(false);
     const navList = reactive([
@@ -55,8 +59,10 @@ app.use(FixedNav);
       navList
     };
  }
+}
+</script>
 ```
-
+:::
 
 ### 左侧效果
 
@@ -71,10 +77,19 @@ app.use(FixedNav);
 <nut-fixednav :overlay="false"  :position="{top:'210px' }" v-model:visible="visible" :nav-list="navList" />
 ```
 
+### 配合 Drag 支持拖拽 , 小程序暂不支持
+
+``` html
+<nut-drag direction="y" :style="{right:'0px',bottom:'240px'}">
+  <nut-fixednav un-active-text="支持拖拽" v-model:visible="visible" :nav-list="navList" />
+</nut-drag>
+```
 
 ### 自定义使用
 
-``` html
+:::demo
+```html
+<template>
 <nut-fixednav :position="{top:'280px' }" type="left" v-model:visible="myActive">
     <template v-slot:list>
         <ul class="nut-fixednav__list">
@@ -91,9 +106,10 @@ app.use(FixedNav);
     <span class="text">{{ myActive ? '自定义开' : '自定义关' }}</span>
 </template>
 </nut-fixednav>
-```
-
-``` javascript
+</template>
+<script lang="ts">
+import { ref,reactive } from 'vue';
+export default {
  setup() {
     const myActive = ref(false);
     const navList = reactive([
@@ -124,7 +140,10 @@ app.use(FixedNav);
       navList
     };
  }
+}
+</script>
 ```
+:::
 
 
 ### Prop

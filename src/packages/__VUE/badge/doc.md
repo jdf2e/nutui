@@ -23,96 +23,192 @@ app.use(Badge);
 
 ### 基本用法
 
+:::demo
 ```html
-<nut-badge :value="8">
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
-<nut-badge :value="76">
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
-<nut-badge value="NEW">
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
-<nut-badge dot>
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
+<template>
+  <div class="demo">
+    <nut-badge :value="8">
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+    <nut-badge :value="76">
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+    <nut-badge value="NEW">
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+    <nut-badge dot>
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.demo{
+  padding: 30px 17px 0 17px;
+}
+.nut-badge {
+  margin-right: 40px;
+}
+</style>
+
 ```
+:::
 
 ### 最大值
 
+:::demo
 ```html
-<nut-badge :value="200" :max="9">
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
-<nut-badge :value="200" :max="20">
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
-<nut-badge :value="200" :max="99">
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
+<template>
+  <div class="demo">
+    <nut-badge :value="200" :max="9">
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+    <nut-badge :value="200" :max="20">
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+    <nut-badge :value="200" :max="99">
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.demo{
+  padding: 30px 17px 0 17px;
+}
+.nut-badge {
+  margin-right: 40px;
+}
+</style>
+
 ```
+:::
 
 ### 自定义颜色
 
+:::demo
 ```html
-<nut-badge :value="8" color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
-<nut-badge :value="76" color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
-<nut-badge value="NEW" color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
-<nut-badge dot color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
+<template>
+  <div class="demo">
+    <nut-badge :value="8" color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+    <nut-badge :value="76" color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+    <nut-badge value="NEW" color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+    <nut-badge dot color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.demo{
+  padding: 30px 17px 0 17px;
+}
+.nut-badge {
+  margin-right: 40px;
+}
+</style>
+
 ```
+:::
 
 ### 自定义徽标内容
 
+:::demo
 ```html
-<nut-badge>
-  <template #icons>
-    <nut-icon name="Check" color="#ffffff" size="12"></nut-icon>
-  </template>
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
-<nut-badge>
-  <template #icons>
-    <nut-icon name="link" color="#ffffff" size="12"></nut-icon>
-  </template>
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
-<nut-badge>
-  <template #icons>
-    <nut-icon name="download" color="#ffffff" size="12"></nut-icon>
-  </template>
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
+<template>
+  <div class="demo">
+    <nut-badge>
+      <template #icons>
+        <nut-icon name="Check" color="#ffffff" size="12"></nut-icon>
+      </template>
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+    <nut-badge>
+      <template #icons>
+        <nut-icon name="link" color="#ffffff" size="12"></nut-icon>
+      </template>
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+    <nut-badge>
+      <template #icons>
+        <nut-icon name="download" color="#ffffff" size="12"></nut-icon>
+      </template>
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.demo{
+  padding: 30px 17px 0 17px;
+}
+.nut-badge {
+  margin-right: 40px;
+}
+</style>
+
 ```
+:::
 
 ### 自定义位置
 
+:::demo
 ```html
-<nut-badge :value="8" top="5" right="5">
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
-<nut-badge :value="76" top="10" right="10">
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
-<nut-badge value="NEW">
-  <nut-avatar icon="my" shape="square"></nut-avatar>
-</nut-badge>
+<template>
+  <div class="demo">
+    <nut-badge :value="8" top="5" right="5">
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+    <nut-badge :value="76" top="10" right="10">
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+    <nut-badge value="NEW">
+      <nut-avatar icon="my" shape="square"></nut-avatar>
+    </nut-badge>
+   </div>
+</template>
+
+<style lang="scss" scoped>
+.demo{
+  padding: 30px 17px 0 17px;
+}
+.nut-badge {
+  margin-right: 40px;
+}
+</style>
+
 ```
+:::
 
 ### 独立展示
 
+:::demo
 ```html
-<nut-badge :value="8"> </nut-badge>
-<nut-badge :value="76"> </nut-badge>
-<nut-badge value="NEW"> </nut-badge>
+<template>
+  <div class="demo">
+    <nut-badge :value="8"> </nut-badge>
+    <nut-badge :value="76"> </nut-badge>
+    <nut-badge value="NEW"> </nut-badge>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.demo{
+  padding: 30px 17px 0 17px;
+}
+.nut-badge {
+  margin-right: 40px;
+}
+</style>
+
 ```
+:::
 
 
 ### Prop  

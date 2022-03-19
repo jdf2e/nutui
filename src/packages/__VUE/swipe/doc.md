@@ -6,46 +6,59 @@
 
 ### 安装
 
-``` javascript
+```javascript
 import { createApp } from 'vue';
 //vue
-import { Swipe } from '@nutui/nutui';
+import { Swipe,Cell,Button } from '@nutui/nutui';
 //taro
-import { Swipe } from '@nutui/nutui-taro';
+import { Swipe,Cell,Button } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Swipe);
+app.use(Cell);
+app.use(Button);
 ```
 
 ## 代码演示
 
 ### 基础用法
 
-``` html
+:::demo
+```html
+<template>
 <nut-swipe>
     <nut-cell round-radius="0" desc="左滑删除" />
     <template #right>
         <nut-button shape="square" style="height:100%" type="danger">删除</nut-button>
     </template>
 </nut-swipe>
+</template>
 ```
+:::
 
 
 ### 禁止滑动
 
-``` html
+
+:::demo
+```html
+<template>
 <nut-swipe disabled>
     <nut-cell round-radius="0" desc="禁止滑动" />
     <template #right>
         <nut-button shape="square" style="height:100%" type="danger">删除</nut-button>
     </template>
 </nut-swipe>
+</template>
 ```
-
+:::
 
 ### 左右滑动
 
-``` html
+
+:::demo
+```html
+<template>
 <nut-swipe>
     <template #left>
         <nut-button shape="square" style="height:100%" type="success">选择</nut-button>
@@ -56,12 +69,17 @@ app.use(Swipe);
         <nut-button shape="square" style="height:100%" type="info">收藏</nut-button>
     </template>
 </nut-swipe>
+</template>
 ```
-
+:::
 
 ### 异步控制
 
-``` html
+按需加载方式需要单独引入`switch`组件
+
+:::demo
+```html
+<template>
 <nut-swipe ref="refSwipe" @open="open" @close="close">
     <nut-cell title="异步打开关闭">
     <template v-slot:link>
@@ -72,8 +90,10 @@ app.use(Swipe);
         <nut-button shape="square" style="height:100%" type="danger">删除</nut-button>
     </template>
 </nut-swipe>
-```
-``` typescript
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
     setup() {
         const refSwipe = ref<HTMLElement>();
         const checked = ref(false);
@@ -93,11 +113,18 @@ app.use(Swipe);
         };
         return { checked, changSwitch, refSwipe, open, close };
     }
+}
+</script>
 ```
+:::
 
 ### 自定义
 
-``` html
+按需加载方式需要单独引入`inputnumber`组件
+
+:::demo
+```html
+<template>
 <nut-swipe>
     <template #left>
         <nut-button shape="square" style="height:100%" type="success">选择</nut-button>
@@ -112,15 +139,18 @@ app.use(Swipe);
         <nut-button shape="square" style="height:100%" type="info">收藏</nut-button>
     </template>
 </nut-swipe>
-```
-
-``` typescript
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+export default {
     setup() {
         const number = ref(0);
         return { number };
     }
+}
+</script>
 ```
-
+:::
 
 
 ### Props

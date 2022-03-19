@@ -1,9 +1,9 @@
 .nut-switch {
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   background-color: $primary-color;
-  border-radius: 21px;
+  border-radius: $switch-border-radius;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center center;
@@ -37,17 +37,17 @@
     opacity: 0.6;
   }
   &.nut-switch-base {
-    width: 36px;
-    height: 21px;
-    line-height: 21px;
+    width: $switch-width;
+    height: $switch-height;
+    line-height: $switch-line-height;
     .switch-button {
-      height: 13px;
-      width: 13px;
-      transform: translateX(30%);
+      height: $switch-inside-width;
+      width: $switch-inside-height;
+      transform: $switch-inside-close-transform;
     }
     &.switch-open {
       .switch-button {
-        transform: translateX(146%);
+        transform: $switch-inside-open-transform;
       }
     }
     &.switch-close {

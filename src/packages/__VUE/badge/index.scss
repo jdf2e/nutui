@@ -4,32 +4,30 @@
   .slot-icons {
     position: absolute;
     background: $badge-background-color;
-    border-radius: 7px;
     top: -20%;
     right: -20%;
-    padding: 0 5px;
+    padding: $badge-padding;
     text-align: center;
-    border-radius: 14px;
-    z-index: 1;
+    border-radius: $badge-border-radius;
+    z-index: $badge-z-index;
   }
   .sup {
     position: absolute;
     background: $badge-background-color;
-    border-radius: 7px;
-    padding: 0 5px;
+    padding: $badge-padding;
     text-align: center;
-    border-radius: 14px;
+    border-radius: $badge-border-radius;
     font-size: $badge-font-size;
     font-weight: normal;
-    color: $badge-default-background-color;
+    color: $badge-color;
   }
   .nut-badge__content {
-    transform: translateY(-50%) translateX(100%);
+    transform: $badge-content-transform;
   }
   .is-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 7px;
-    padding: 0;
+    width: $badge-dot-width;
+    height: $badge-dot-height;
+    border-radius: $badge-dot-border-radius;
+    padding: $badge-dot-padding;
   }
 }

@@ -34,6 +34,23 @@
     width: 100%;
     justify-content: space-around;
 
+    &.horizontal {
+    }
+    &.vertical {
+      flex-direction: column;
+
+      .nut-button {
+        min-width: 100%;
+        margin: 0;
+        &.nut-dialog__footer-cancel {
+          border: 0;
+        }
+        &.nut-dialog__footer-ok {
+          margin-top: 10px;
+        }
+      }
+    }
+
     .nut-button {
       min-width: 100px;
     }

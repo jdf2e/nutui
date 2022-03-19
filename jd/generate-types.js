@@ -4,6 +4,7 @@ const fs = require('fs-extra');
 let importStr = `import { App } from 'vue';
 declare class UIComponent {
   static install(vue: App): void;
+  $props: any;
 }\n`;
 const packages = [];
 config.nav.map((item) => {
@@ -11,9 +12,7 @@ config.nav.map((item) => {
     let { name, show, exportEmpty, type } = element;
     if (show || exportEmpty) {
       importStr +=
-        type == 'methods'
-          ? `declare function ${name}(options: any): void\n`
-          : `declare class ${name} extends UIComponent {}\n`;
+        type == 'methods' ? `declare const ${name}: any;\n` : `declare class ${name} extends UIComponent {}\n`;
       packages.push(name);
     }
   });

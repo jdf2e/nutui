@@ -1,18 +1,18 @@
 <template>
-  <view @click="openPopover" :class="classes">
+  <view @click.stop="openPopover" :class="classes">
     <div ref="reference"> <slot name="reference"></slot></div>
     <template v-if="showPopup">
-      <view class="more-background" @click="closePopover"> </view>
+      <view class="more-background" @click.stop="closePopover"> </view>
       <view :class="popoverContent" :style="getStyle">
         <view :class="popoverArrow" :style="getArrowStyle"> </view>
 
         <slot name="content"></slot>
 
         <view
-          v-for="item in list"
-          :key="item.name"
+          v-for="(item, index) in list"
+          :key="index"
           :class="{ 'title-item': true, disabled: item.disabled }"
-          @click="chooseItem(e, item)"
+          @click.stop="chooseItem(item, index)"
         >
           <slot v-if="item.icon"> <nut-icon class="item-img" :name="item.icon"></nut-icon></slot>
           <view class="title-name">{{ item.name }}</view>
@@ -150,24 +150,21 @@ export default create({
       emit('update:visible', val);
     };
 
-    const openPopover = (event: Event) => {
-      event.stopPropagation();
-      event.preventDefault();
+    const openPopover = () => {
       update(!props.visible);
       emit('open');
     };
 
-    const closePopover = (event: Event) => {
-      event.stopPropagation();
-      event.preventDefault();
+    const closePopover = () => {
       emit('close');
       emit('update:visible', false);
     };
 
-    const chooseItem = (event: Event, item: any) => {
-      event.stopPropagation();
-      event.preventDefault();
-      emit('choose');
+    const chooseItem = (item: any, index: number) => {
+      if (item.disabled) {
+        return;
+      }
+      emit('choose', item, index);
     };
 
     return {

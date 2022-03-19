@@ -1,13 +1,16 @@
 .nut-noticebar-page {
-  width: 100%;
+  // width: 100%;
   display: flex;
-  height: $noticeBar-height;
-  font-size: $noticeBar-font-size;
+  padding: $noticebar-box-padding;
+  height: $noticebar-height;
+  font-size: $noticebar-font-size;
   position: relative;
   align-items: center;
+  background: $noticebar-background;
+  color: $noticebar-color;
   &.wrapable {
     height: auto;
-    padding: 8px 16px;
+    padding: $noticebar-wrapable-padding;
     .wrap {
       height: auto;
       .content {
@@ -23,22 +26,23 @@
     padding-right: 40px;
   }
   .left-icon {
-    height: $noticeBar-left-icon-width;
-    min-width: $noticeBar-left-icon-width;
-    margin: 0 5px 0 10px;
+    height: $noticebar-left-icon-width;
+    min-width: $noticebar-left-icon-width;
+    margin: $noticebar-lefticon-margin;
     background-size: 100% 100%;
   }
   .right-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: $noticeBar-right-icon-width;
-    margin: 0 10px 0 5px;
+    width: $noticebar-right-icon-width;
+    margin: $noticebar-righticon-margin;
   }
   .wrap {
+    display: flex;
     flex: 1;
-    height: $noticeBar-line-height;
-    line-height: $noticeBar-line-height;
+    height: $noticebar-line-height;
+    line-height: $noticebar-line-height;
     overflow: hidden;
     position: relative;
   }
@@ -72,13 +76,13 @@
 
 @keyframes nut-notice-bar-play-infinite {
   to {
-    transform: translate3d(-100%, 0, 0);
+    transform: translateX(-100%);
   }
 }
 // 垂直方向的滚动
 @keyframes nut-notice-bar-play-vertical {
   to {
-    transform: translateY($noticeBar-height);
+    transform: translateY($noticebar-height);
   }
 }
 
@@ -87,9 +91,10 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  height: $noticeBar-height;
-  font-size: $noticeBar-font-size;
+  height: $noticebar-height;
+  font-size: $noticebar-font-size;
   overflow: hidden;
+  padding: $noticebar-box-padding;
 
   .horseLamp_list {
     margin: 0;
@@ -99,7 +104,7 @@
     .horseLamp_list_item {
       display: flex;
       align-items: center;
-      height: $noticeBar-height;
+      height: $noticebar-height;
     }
   }
 

@@ -14,61 +14,124 @@ import { Steps, Step } from '@nutui/nutui';
 import { Steps, Step  } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Steps);
-app.use(Step);
+app.use(Steps).use(Step);
 ```
 
 ## 代码演示
 
 ### 基本用法
 
+:::demo
+
 ```html
-<nut-steps current="1">
-  <nut-step title="进行中">1</nut-step>
-  <nut-step title="未开始">2</nut-step>
-  <nut-step title="未开始">3</nut-step>
-  <nut-step title="未开始">4</nut-step>
-</nut-steps>
+<template>
+  <nut-steps :current="current1" @click-step="handleClickStep">
+    <nut-step title="步骤一">
+      1
+      <template v-slot:title>步骤一</template>
+    </nut-step>
+    <nut-step title="未开始">2</nut-step>
+    <nut-step title="未开始">3</nut-step>
+    <nut-step title="未开始">4</nut-step>
+  </nut-steps>
+</template>
+<script>
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        current1: 1,
+      });
+      const handleClickStep = (index: number) => {
+        console.log(index)
+      };
+      return { ...toRefs(state), handleClickStep };
+    }
+  };
+</script>
 ```
+:::
 
 ### 标题和描述信息
 
+:::demo
+
 ```html
-<nut-steps current="2">
-  <nut-step title="已完成" content="步骤描述" icon="nutui-iconfont nut-icon-wanshangshide">1</nut-step>
-  <nut-step title="进行中" content="步骤描述">2</nut-step>
-  <nut-step title="未开始" content="步骤描述">3</nut-step>
-</nut-steps>
+<template>
+  <nut-steps :current="current2">
+    <nut-step title="已完成" content="步骤描述">1</nut-step>
+    <nut-step title="进行中" content="步骤描述">2</nut-step>
+    <nut-step title="未开始" content="步骤描述">3</nut-step>
+  </nut-steps>
+</template>
+<script>
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        current2: 1,
+      });
+      return { ...toRefs(state) };
+    }
+  };
+</script>
 ```
+
+:::
 
 ### 自定义图标
 
+:::demo
+
 ```html
-<nut-steps current="1">
-  <nut-step title="已完成" icon="nutui-iconfont nut-icon-wanshangshide" status="error">1</nut-step>
-  <nut-step title="进行中" icon="nutui-iconfont nut-icon-notice">2</nut-step> 
-  <nut-step class="nut-step-wait" title="未开始" icon="nutui-iconfont nut-icon-notice">3</nut-step>
-</nut-steps>
+<template>
+  <nut-steps current="1">
+    <nut-step title="已完成" icon="service">1</nut-step>
+    <nut-step title="进行中" icon="people">2</nut-step>
+    <nut-step title="未开始" icon="location2">3</nut-step>
+  </nut-steps>
+</template>
 ```
+
+:::
 
 ### 竖向步骤条
 
+:::demo
+
 ```html
-<nut-steps direction="vertical" current="2">
-  <nut-step title="已完成" icon="nutui-iconfont nut-icon-wanshangshide" content="您的订单已经打包完成，商品已发出" >1</nut-step>
-  <nut-step title="进行中" content="您的订单正在配送途中" >2</nut-step>
-  <nut-step title="未开始" content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦">3</nut-step>
-</nut-steps>
+<template>
+  <nut-steps direction="vertical" current="2">
+    <nut-step title="已完成" content="您的订单已经打包完成，商品已发出">1</nut-step>
+    <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
+    <nut-step title="未开始" content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦">3</nut-step>
+  </nut-steps>
+</template>
 ```
 
+:::
+
 ### 点状步骤和垂直方向
+
+:::demo
+
 ```html
-<nut-steps direction="vertical" progress-dot current="2">
-  <nut-step title="已完成" content="您的订单已经打包完成，商品已发出" >1</nut-step>
-  <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
-  <nut-step title="未开始" content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦">3</nut-step>
-</nut-steps>
+<template>
+  <nut-steps direction="vertical" progress-dot current="2">
+    <nut-step title="已完成" content="您的订单已经打包完成，商品已发出">1</nut-step>
+    <nut-step title="进行中" content="您的订单正在配送途中">2</nut-step>
+    <nut-step title="未开始">
+      3
+      <template v-slot:content>
+        <p>收货地址为：</p>
+        <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
+      </template>
+    </nut-step>
+  </nut-steps>
+</template>
 ```
+
+:::
 
 
 ## API
@@ -83,7 +146,11 @@ app.use(Step);
 | current	               | 	当前所在的步骤           | Number、String        | '0'      |
 | progress-dot            |  点状步骤条     | Boolean | false         |
 
+#### nut-steps events
 
+| 事件名 | 说明           | 回调参数     |
+|--------|----------------|--------------|
+| click-step  | 点击步骤的标题或图标时触发 | index: number |
 
 #### nut-step
 
@@ -93,3 +160,10 @@ app.use(Step);
 | content          | 流程步骤的描述性文字(支持 html 结构)       | String | 步骤描述 |
 | icon          | 图标       | String | null |
 | icon-color          | 图标颜色       | String | null |
+
+#### nut-step slots
+
+| 参数           | 说明                   |
+| ---------------- | ---------------------- |
+| title            | 步骤标题         |
+| content          | 步骤内容       |

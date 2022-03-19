@@ -4,7 +4,7 @@
       :class="toastBodyClass"
       v-show="state.mounted"
       :style="{
-        bottom: center ? 'auto' : bottom + 'px',
+        bottom: center ? 'auto' : bottom,
         'background-color': coverColor
       }"
       @click="clickCover"
@@ -17,14 +17,17 @@
         }"
       >
         <view v-if="hasIcon" class="nut-toast-icon-wrapper">
-          <nut-icon size="20" color="#ffffff" :name="icon"></nut-icon>
+          <nut-icon :size="iconSize" color="#ffffff" :name="icon"></nut-icon>
         </view>
+        <div v-if="title" class="nut-toast-title">
+          {{ title }}
+        </div>
         <view class="nut-toast-text" v-html="msg"></view>
       </view>
     </view>
   </Transition>
 </template>
-<script>
+<script lang="ts">
 import { toRefs, toRef, reactive, computed, watch, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('toast');
@@ -47,12 +50,16 @@ export default create({
     type: String,
     customClass: String,
     bottom: {
-      type: Number,
-      default: 30
+      type: String,
+      default: '30px'
     },
     size: {
       type: [String, Number],
       default: 'base'
+    },
+    iconSize: {
+      type: String,
+      default: '20'
     },
     icon: String,
     textAlignCenter: {
@@ -65,9 +72,8 @@ export default create({
     },
     bgColor: {
       type: String,
-      default: 'rgba(0, 0, 0, .8)'
+      default: ''
     },
-
     onClose: Function,
     unmount: Function,
     cover: {
@@ -76,15 +82,20 @@ export default create({
     },
     coverColor: {
       type: String,
-      default: 'rgba(0, 0, 0, 0)'
+      default: ''
+    },
+    title: {
+      type: String,
+      default: ''
     },
     closeOnClickOverlay: {
       type: Boolean,
       default: false
     }
   },
-  setup(props) {
-    let timer;
+  emits: ['close'],
+  setup(props: any, { emit }) {
+    let timer: number | null | undefined;
     const state = reactive({
       mounted: false
     });
@@ -111,6 +122,7 @@ export default create({
     const clickCover = () => {
       if (props.closeOnClickOverlay) {
         hide();
+        emit('close');
       }
     };
 

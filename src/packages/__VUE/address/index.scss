@@ -37,6 +37,14 @@
           font-weight: bold;
         }
 
+        view {
+          display: block;
+          max-width: 100px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
         span {
           display: inline-block;
           max-width: 100px;
@@ -80,6 +88,7 @@
 
           .region-item-icon {
             margin-right: 6px;
+            color: $address-icon-color !important;
           }
         }
       }
@@ -115,6 +124,7 @@
           }
           .exist-item-icon {
             margin-right: 9px;
+            color: $address-icon-color !important;
           }
           span {
             display: inline-block;

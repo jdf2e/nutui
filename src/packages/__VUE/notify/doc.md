@@ -13,64 +13,104 @@ const app = createApp();
 app.use(Notify);
 ```    
 ## 基本用法
-
-```javascript
+:::demo
+```html
+<template>
+  <nut-cell is-Link @click="baseNotify('基础用法')">基础用法</nut-cell>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+import { Notify } from '@nutui/nutui';
 export default {
-  mounted() {
-      Notify.text('通知内容', {
-        onClosed() {
+  setup() {
+    const baseNotify = (msg: string) => {
+      Notify.text(msg, {
+        onClose: () => {
           console.log('close');
         },
         onClick: () => {
           console.log('click');
         }
       });
+    };
+    return {
+      baseNotify
+    }
   }
 }
+</script>
 ```
+:::
 ## 通知类型
-### 主要通知
-```javascript
-    mounted(){
-      Notify.primary('通知内容');
+:::demo
+```html
+<template>
+   <nut-cell-group title="通知类型">
+      <nut-cell is-Link @click="primaryNotify('主要通知')">主要通知</nut-cell>
+      <nut-cell is-Link @click="successNotify('成功通知')">成功通知</nut-cell>
+      <nut-cell is-Link @click="errorNotify('危险通知')">危险通知</nut-cell>
+      <nut-cell is-Link @click="warningNotify('警告通知')">警告通知</nut-cell>
+    </nut-cell-group>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+import { Notify } from '@nutui/nutui';
+export default {
+  setup() {
+    const primaryNotify = (msg: string) => {
+      Notify.primary(msg);
+    };
+    const successNotify = (msg: string) => {
+      Notify.success(msg);
+    };
+    const errorNotify = (msg: string) => {
+      Notify.danger(msg);
+    };
+    const warningNotify = (msg: string) => {
+      Notify.warn(msg);
+    };
+    return {
+      primaryNotify,
+      successNotify,
+      errorNotify,
+      warningNotify,
     }
+  }
+}
+</script>
 ```
-### 成功通知
-```javascript
-    mounted(){
-      Notify.success('通知内容');
-    }
-```
-### 危险通知
-```javascript
-    mounted(){
-      Notify.danger('通知内容');
-    }
-```
-### 警告通知
-```javascript
-    mounted(){
-      Notify.warn('通知内容');
-    }
-```
+:::
 ## 自定义
-### 自定义样式
-```javascript
-    mounted(){
-      Notify.text(val, {
-        color: '#ad0000',
-        background: '#ffe1e1'
-      });
-    }
+:::demo
+```html
+<template>
+  <nut-cell-group title="自定义样式">
+    <nut-cell is-Link @click="cusBgNotify('自定义背景色和字体颜色')">自定义背景色和字体颜色</nut-cell>
+  </nut-cell-group>
+    <nut-cell-group title="自定义时长">
+      <nut-cell is-Link @click="timeNotify('自定义时长')">自定义时长</nut-cell>
+  </nut-cell-group>
+</template>
+<script lang="ts">
+import { ref } from 'vue';
+import { Notify } from '@nutui/nutui';
+export default {
+  setup() {
+    const cusBgNotify = (msg: string) => {
+      Notify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
+    };
+    const timeNotify = (msg: string) => {
+      Notify.text(msg, { duration: 10000 });
+    };
+    return {
+      cusBgNotify,
+      timeNotify
+    };
+  }
+}
+</script>
 ```
-### 自定义时长
-```javascript
-    mounted(){
-      Notify.text(val, {
-        duration: 10000
-      });
-    }
-```
+:::
     
 ## API
     
