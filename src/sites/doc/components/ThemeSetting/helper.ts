@@ -260,7 +260,7 @@ export const useThemeEditor = function (): Obj {
           return comment + `${key}: ${value};`;
         })
         .join('\n');
-      download(`// NutUI主题定制\n${variablesText}`, 'variables.scss');
+      download(`// NutUI主题定制\n${variablesText}`, 'custom_theme.scss');
     }
   };
 };
