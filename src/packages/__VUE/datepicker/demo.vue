@@ -208,6 +208,7 @@ export default createDemo({
     ) => {
       let date = '';
       let time = '';
+      console.log({ selectedValue, selectedOptions });
       switch (index) {
         case 0:
         case 6:
