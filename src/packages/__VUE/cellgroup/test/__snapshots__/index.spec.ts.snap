@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render title、desc slot correctly 1`] = `
+"<view class=\\"nut-cell-group\\">Custom TitleCustom Desc<view class=\\"nut-cell-group__warp\\"></view>
+</view>"
+`;
