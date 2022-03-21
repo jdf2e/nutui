@@ -1,7 +1,7 @@
 .nut-numberkeyboard {
-  width: 100%;
-  padding-bottom: 22px;
-  background-color: #f2f3f5;
+  width: $numberkeyboard-width;
+  padding: $numberkeyboard-padding;
+  background-color: $numberkeyboard-background-color;
   user-select: none;
 
   .number-board-header {
@@ -10,10 +10,10 @@
     align-items: center;
     justify-content: center;
     box-sizing: content-box;
-    height: 34px;
-    padding-top: 6px;
-    color: #646566;
-    font-size: 16px;
+    height: $numberkeyboard-header-height;
+    padding: $numberkeyboard-header-padding;
+    color: $numberkeyboard-header-color;
+    font-size: $numberkeyboard-header-font-size;
 
     .tit {
       display: inline-block;
@@ -23,10 +23,10 @@
       position: absolute;
       display: block;
       right: 0;
-      padding: 0 16px;
-      color: #576b95;
-      font-size: 14px;
-      background-color: transparent;
+      padding: $numberkeyboard-header-close-padding;
+      color: $numberkeyboard-header-close-color;
+      font-size: $numberkeyboard-header-close-font-size;
+      background-color: $numberkeyboard-header-close-background-color;
       border: none;
       cursor: pointer;
     }
@@ -53,16 +53,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 48px;
-        font-size: 28px;
-        line-height: 1.5;
-        background-color: #fff;
-        border-radius: 8px;
+        height: $numberkeyboard-key-height;
+        font-size: $numberkeyboard-key-font-size;
+        line-height: $numberkeyboard-key-line-height;
+        background-color: $numberkeyboard-key-background-color;
+        color: $numberkeyboard-key-font-size-color;
+        border-radius: $numberkeyboard-key-border-radius;
         cursor: pointer;
       }
 
       .active {
-        background-color: #ebedf0;
+        background-color: $numberkeyboard-key-active-background-color;
       }
 
       img {
@@ -91,13 +92,13 @@
         }
 
         .finish {
-          font-size: 16px;
-          color: #fff;
-          background-color: #1989fa;
+          font-size: $numberkeyboard-key-finish-font-size;
+          color: $numberkeyboard-key-finish-font-size-color;
+          background-color: $numberkeyboard-key-finish-background-color;
         }
 
         .activeFinsh {
-          background-color: #0570db;
+          background-color: $numberkeyboard-key-activeFinsh-background-color;
         }
       }
     }
