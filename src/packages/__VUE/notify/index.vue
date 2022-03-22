@@ -1,7 +1,7 @@
 <template>
   <Transition name="toast-fade" @after-leave="onAfterLeave">
     <view
-      :class="['popup-top', 'nut-notify', `nut-notify--${type}`, [className]]"
+      :class="[`popup-${position}`, 'nut-notify', `nut-notify--${type}`, [className]]"
       :style="{ color: color, background: background }"
       v-show="state.mounted"
       @click="clickCover"
@@ -46,6 +46,10 @@ export default create({
     showPopup: {
       type: Boolean,
       default: false
+    },
+    position: {
+      type: String,
+      default: 'top'
     },
     onClose: Function,
     onClick: Function,

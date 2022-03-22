@@ -7,7 +7,7 @@ describe('Video', () => {
     const rate = wrapper.find('.nut-video');
     expect(rate.exists()).toBe(true);
   });
-  test('should be shown when passing image and description', () => {
+  test('should be displayed after setting the source src and type', () => {
     const wrapper = mount(Video, {
       props: {
         source: {
@@ -23,7 +23,7 @@ describe('Video', () => {
     expect(wrapper.html()).toContain('type');
     expect(wrapper.html()).toContain('controls');
   });
-  test('should be shown when passing image and description', () => {
+  test('should be displayed after setting the options autoplay and muted and loop', () => {
     const wrapper = mount(Video, {
       props: {
         options: {
@@ -37,7 +37,7 @@ describe('Video', () => {
     expect(wrapper.html()).toContain('muted');
     expect(wrapper.html()).toContain('loop');
   });
-  test('should be shown when passing image and description', () => {
+  test('should be displayed after setting the options poster and playsinline', () => {
     const wrapper = mount(Video, {
       props: {
         options: {
@@ -49,7 +49,7 @@ describe('Video', () => {
     expect(wrapper.html()).toContain('xxx.png');
     expect(wrapper.html()).toContain('playsinline');
   });
-  test('should be shown when passing image and description', () => {
+  test('should be displayed after setting the click', () => {
     const wrapper = mount(Video);
     const _html1 = wrapper.find('.show-control');
     expect(_html1.exists()).toBe(true);
