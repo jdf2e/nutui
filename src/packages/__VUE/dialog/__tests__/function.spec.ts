@@ -8,7 +8,6 @@ function sleep(delay = 0): Promise<void> {
 
 describe('function Dialog', () => {
   test('show dialog info ', async () => {
-    console.log(DialogFunction);
     DialogFunction({
       title: 'title',
       content: 'content'
