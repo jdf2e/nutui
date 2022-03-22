@@ -54,13 +54,3 @@ test('backtop style', () => {
   const backtop: any = wrapper.find('.nut-backtop');
   expect(backtop.element.style.zIndex).toBe('100');
 });
-
-test('should allow to use the elId prop', () => {
-  const wrapper = mount(BackTop, {
-    props: {
-      elId: () => 'elId'
-    }
-  });
-
-  expect(wrapper.html()).toMatchSnapshot();
-});
