@@ -3,7 +3,7 @@ import Signature from '../index.vue';
 import NutIcon from '../../icon/index.vue';
 import NutButton from '../../button/index.vue';
 import { nextTick, reactive, toRefs } from 'vue';
-import { createCanvas, loadImage } from 'canvas';
+import { createCanvas } from 'canvas';
 
 function sleep(delay = 0): Promise<void> {
   return new Promise((resolve) => {

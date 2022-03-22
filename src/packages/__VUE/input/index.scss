@@ -1,55 +1,93 @@
+input,
+textarea {
+  font: inherit;
+}
 .nut-input {
   position: relative;
   width: 100%;
-  padding: 10px 0px 10px 25px;
+  padding: 10px 25px;
   display: flex;
+  line-height: 24px;
   background: $white;
   font-size: $input-font-size;
   box-sizing: border-box;
-
+  &.center {
+    align-items: center;
+  }
   &.nut-input-border {
     border-bottom: 1px solid $input-border-bottom;
   }
 
-  &.nut-input-require {
-    &::before {
-      position: absolute;
-      left: 14px;
-      color: $input-require-color;
-      content: '*';
-    }
-  }
-
   .input-text,
   &__text--readonly {
-    width: 90%;
-    flex: 1;
-    padding: 0 10px;
-    padding-right: 35px;
+    width: 100%;
+    padding: 0;
+    // padding-right: 35px;
+    line-height: inherit;
     text-align: left;
     outline: 0 none;
     border: 0;
     text-decoration: none;
+    resize: none;
   }
 
   &-label {
     width: 80px;
     overflow: hidden;
-    display: inline-block;
+    margin-right: 6px;
     text-align: left;
-    display: flex;
-
     .label-string {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      // overflow: hidden;
+      // white-space: nowrap;
+      // text-overflow: ellipsis;
     }
   }
-  .nut-textinput-clear {
+  &-value {
+    flex: 1;
+    vertical-align: middle;
+  }
+  &-inner {
+    display: flex;
+    align-items: center;
+  }
+  &-error-message {
+    color: $input-required-color;
+    font-size: 12px;
+  }
+  &-word-limit {
+    display: block;
+    margin-top: 4px;
+    color: #808080;
+    font-size: 12px;
+    // line-height: var(--van-field-word-limit-line-height);
+    text-align: right;
+  }
+  &-left-icon,
+  &-right-icon {
+    display: flex;
+    align-items: center;
+    font-size: 0;
+  }
+  &-clear,
+  &-right-icon {
+    margin-left: 4px;
+  }
+  &-left-icon {
+    margin-right: 4px;
+  }
+  &-clear {
     width: 16px;
     height: 16px;
-    position: absolute;
-    right: 15px;
+    color: #c8c9cc;
+    cursor: pointer;
+  }
+  &.nut-input-required {
+    &::before {
+      position: absolute;
+      left: 14px;
+      color: $input-required-color;
+      content: '*';
+    }
   }
   &-disabled {
     color: $input-disabled-color !important;
@@ -60,5 +98,10 @@
       opacity: 1;
       -webkit-text-fill-color: $input-disabled-color;
     }
+  }
+  &-error,
+  &-error::placeholder {
+    color: $input-required-color;
+    -webkit-text-fill-color: $input-required-color;
   }
 }
