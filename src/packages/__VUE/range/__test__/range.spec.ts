@@ -31,15 +31,17 @@ test('should set min and max when use min and max props', async () => {
     props: {
       modelValue: 0,
       max: 10,
-      min: -10
+      min: -10,
+      range: true
     }
   });
+
   let min = wrapper.find<HTMLElement>('.min');
   let max = wrapper.find<HTMLElement>('.max');
   let btn = wrapper.find<HTMLElement>('.nut-range-button-wrapper-left .number');
   expect(min.text()).toBe('-10');
   expect(max.text()).toBe('10');
-  expect(btn.text()).toBe('0');
+  expect(btn.text()).toBe('');
 });
 
 test('should change color template when use color props', async () => {
