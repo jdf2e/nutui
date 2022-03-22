@@ -50,16 +50,16 @@
     }
   }
 
+  &__icon {
+    display: flex;
+    flex-direction: row;
+    margin-right: $cell-default-icon-margin;
+  }
+
   &__title {
     display: flex;
     flex-direction: column;
     flex: 1;
-    &.icon {
-      flex-direction: row;
-      .icon {
-        margin-right: 10px;
-      }
-    }
     &-desc {
       font-size: $cell-title-desc-font;
     }

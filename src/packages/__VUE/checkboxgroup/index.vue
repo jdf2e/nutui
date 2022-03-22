@@ -1,13 +1,5 @@
 <script lang="ts">
-import {
-  h,
-  watch,
-  provide,
-  computed,
-  ComponentInternalInstance,
-  reactive,
-  ComponentPublicInstance
-} from 'vue';
+import { h, watch, provide, computed, ComponentInternalInstance, reactive, ComponentPublicInstance } from 'vue';
 import { createComponent } from '../../utils/create';
 import { useExpose } from '../../utils/useExpose/index';
 const { create, componentName } = createComponent('checkboxgroup');
@@ -52,14 +44,14 @@ export default create({
 
     provide('parent', {
       value: computed(() => props.modelValue),
-      disabled: props.disabled,
+      disabled: computed(() => props.disabled),
       updateValue,
       relation
     });
 
     watch(
       () => props.modelValue,
-      value => {
+      (value) => {
         emit('change', value);
       }
     );

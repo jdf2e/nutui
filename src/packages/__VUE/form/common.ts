@@ -80,9 +80,9 @@ export const component = {
 
       // clear tips
       tipMessage({ prop, message: '' });
-
-      while (rules.length) {
-        const { required, validator, regex, message } = rules.shift() as FormItemRule;
+      let _rules = [...rules];
+      while (_rules.length) {
+        const { required, validator, regex, message } = _rules.shift() as FormItemRule;
         const errorMsg = { prop, message };
         if (required) {
           if (!value) {
