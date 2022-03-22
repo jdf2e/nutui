@@ -49,10 +49,10 @@
 
     <h2>垂直方向</h2>
     <nut-cell class="vertical_div">
-      <view>
+      <view class="div">
         <nut-range v-model="value10" @change="onChange" :vertical="true"></nut-range>
       </view>
-      <view>
+      <view class="div">
         <nut-range range v-model="value11" @change="onChange" :vertical="true"></nut-range>
       </view>
     </nut-cell>
@@ -65,10 +65,10 @@
     </nut-cell>
 
     <nut-cell class="vertical_div">
-      <view>
+      <view class="div">
         <nut-range v-model="value14" @change="onChange" :vertical="true" :marks="marks" :hiddenRange="true"></nut-range>
       </view>
-      <view>
+      <view class="div">
         <nut-range
           range
           v-model="value15"
@@ -141,7 +141,7 @@ export default createDemo({
 .vertical_div {
   height: 180px;
   padding: 10px;
-  view {
+  .div {
     width: 150px;
   }
 }

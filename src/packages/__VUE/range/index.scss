@@ -11,7 +11,6 @@
     user-select: none;
   }
   &-vertical {
-    width: 4px;
     height: 100%;
     flex-direction: column;
     padding: 0px 15px;
@@ -195,7 +194,8 @@
     top: -20px;
     width: 11px;
     height: 11px;
-    margin-left: -11px;
+    // margin-left: -11px;
+    left: 0px;
     border-radius: 50%;
     background-color: $range-bg-color-tick;
   }

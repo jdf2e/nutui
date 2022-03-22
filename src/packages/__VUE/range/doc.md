@@ -283,17 +283,17 @@ export default {
 .vertical_div {
   height: 180px;
   padding: 10px;
-  div {
+  .div {
     width: 150px;
   }
 }
 </style>
 <template>
   <nut-cell class="vertical_div">
-    <div>
+    <div class="div">
       <nut-range v-model="value10" @change="onChange" :vertical="true"></nut-range>
     </div>
-    <div>
+    <div class="div">
       <nut-range range v-model="value11" @change="onChange" :vertical="true"></nut-range>
     </div>
   </nut-cell>
@@ -323,7 +323,7 @@ export default {
 .vertical_div {
   height: 180px;
   padding: 10px;
-  div {
+  .div {
     width: 150px;
   }
 }
@@ -337,10 +337,10 @@ export default {
       <nut-range range v-model="value13" @change="onChange" :marks="marks" :hiddenRange="true"></nut-range>
     </nut-cell>
     <nut-cell class="vertical_div">
-      <div>
+      <div class="div">
         <nut-range v-model="value14" @change="onChange" :vertical="true" :marks="marks" :hiddenRange="true"></nut-range>
       </div>
-      <div>
+      <div class="div">
         <nut-range
           range
           v-model="value15"
