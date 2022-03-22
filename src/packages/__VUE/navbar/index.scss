@@ -2,14 +2,14 @@
   position: relative;
   display: flex;
   align-items: center;
-  height: 44px;
+  height: $navbar-height;
   box-sizing: border-box;
-  padding: 13px 16px;
-  background: $white;
-  box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
-  font-size: $cell-title-font;
-  color: $cell-color;
-  margin-bottom: 20px;
+  padding: $navbar-padding;
+  background: $navbar-background;
+  box-shadow: $navbar-box-shadow;
+  font-size: $navbar-title-base-font;
+  color: $navbar-color;
+  margin-bottom: $navbar-margin-bottom;
   overflow: hidden;
   &:active::before {
     opacity: 0.1;
@@ -54,7 +54,10 @@
     display: flex;
     justify-content: center;
     .title {
-      width: 100px;
+      width: $navbar-title-width;
+      font-size: $navbar-title-font;
+      font-weight: $navbar-title-font-weight;
+      color: $navbar-title-font-color;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 1;
@@ -62,7 +65,7 @@
     }
     &.icon {
       .icon {
-        margin-left: 13px;
+        margin: $navbar-title-icon-margin;
       }
     }
     .nut-icon {
