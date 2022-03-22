@@ -46,7 +46,7 @@ test('should format input value when type is number', () => {
   });
   const input = wrapper.find('input');
   input.trigger('input');
-  expect((wrapper.emitted('change') as any)[0][0]).toEqual('999');
+  expect((wrapper.emitted('change') as any)[0][0]).toEqual('');
   input.element.value = '9999';
 });
 
