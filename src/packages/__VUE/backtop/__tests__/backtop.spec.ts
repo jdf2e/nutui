@@ -2,6 +2,7 @@ import { mount, config } from '@vue/test-utils';
 import BackTop from '../index.vue';
 
 import NutIcon from '../../icon/index.vue';
+import { nextTick } from 'vue';
 
 beforeAll(() => {
   config.global.components = {
@@ -45,12 +46,16 @@ test('backtop style', () => {
   expect(backtop.element.style.right).toBe('40px');
 });
 
-test('backtop style', () => {
+test('backtop style', async () => {
   const wrapper = mount(BackTop, {
     props: {
-      zIndex: 100
+      zIndex: 100,
+      distance: 0
     }
   });
+  await nextTick();
   const backtop: any = wrapper.find('.nut-backtop');
+  const show: any = wrapper.find('.show');
   expect(backtop.element.style.zIndex).toBe('100');
+  expect(show.exists()).toBe(true);
 });
