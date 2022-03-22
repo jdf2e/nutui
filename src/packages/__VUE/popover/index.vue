@@ -160,7 +160,10 @@ export default create({
       emit('update:visible', false);
     };
 
-    const chooseItem = (item: unknown, index: number) => {
+    const chooseItem = (item: any, index: number) => {
+      if (item.disabled) {
+        return;
+      }
       emit('choose', item, index);
     };
 

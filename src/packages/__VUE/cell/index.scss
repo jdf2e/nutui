@@ -2,8 +2,8 @@
   position: relative;
   display: flex;
   width: 100%;
-  line-height: 20px;
-  padding: 13px 16px;
+  line-height: $cell-line-height;
+  padding: $cell-padding;
   background: $white;
   border-radius: $cell-border-radius;
   box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
@@ -23,7 +23,7 @@
     box-sizing: border-box;
     content: ' ';
     pointer-events: none;
-    right: 16px;
+    right: $cell-after-right;
     bottom: 0;
     left: 16px;
     transform: scaleY(0.5);
@@ -50,16 +50,16 @@
     }
   }
 
+  &__icon {
+    display: flex;
+    flex-direction: row;
+    margin-right: $cell-default-icon-margin;
+  }
+
   &__title {
     display: flex;
     flex-direction: column;
     flex: 1;
-    &.icon {
-      flex-direction: row;
-      .icon {
-        margin-right: 10px;
-      }
-    }
     &-desc {
       font-size: $cell-title-desc-font;
     }

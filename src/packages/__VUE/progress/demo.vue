@@ -53,7 +53,7 @@
         />
       </nut-cell>
       <nut-cell>
-        <nut-progress percentage="50" :stroke-width="strokeWidth" status="icon" />
+        <nut-progress percentage="50" status="icon" />
       </nut-cell>
       <nut-cell>
         <nut-progress

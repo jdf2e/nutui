@@ -5,6 +5,8 @@
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"
     v-model:visible="showPopup"
+    :isWrapTeleport="isWrapTeleport"
+    :teleport="teleport"
   >
     <view class="nut-address">
       <view class="nut-address__header">
@@ -35,7 +37,7 @@
             :key="index"
             @click="changeRegionTab(item, key, index)"
           >
-            <view>{{ getTabName(item, index) }}</view>
+            <view>{{ getTabName(item, index) }} </view>
           </view>
 
           <view class="region-tab-line" ref="regionLine" :style="{ left: lineDistance + 'px' }"></view>
@@ -125,8 +127,9 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, nextTick, computed, Ref } from 'vue';
+import { reactive, ref, toRefs, watch, nextTick, computed, Ref, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
+import { popupProps } from '../popup/index.vue';
 const { componentName, create } = createComponent('address');
 interface RegionData {
   name: string;
@@ -149,9 +152,10 @@ interface AddressList {
 export default create({
   inheritAttrs: false,
   props: {
-    visible: {
-      type: Boolean,
-      default: false
+    ...popupProps,
+    modelValue: {
+      type: Array,
+      default: () => []
     },
     type: {
       type: String,
@@ -216,9 +220,13 @@ export default create({
     height: {
       type: [String, Number],
       default: '200px'
+    },
+    columnsPlaceholder: {
+      type: [String, Array],
+      default: '请选择'
     }
   },
-  emits: ['update:visible', 'type', 'change', 'selected', 'close', 'close-mask', 'switch-module'],
+  emits: ['update:visible', 'update:modelValue', 'type', 'change', 'selected', 'close', 'close-mask', 'switch-module'],
 
   setup(props: any, { emit }) {
     const regionLine = ref<null | HTMLElement>(null);
@@ -229,6 +237,7 @@ export default create({
     const privateType = ref(props.type);
     const tabIndex = ref(0);
     const tabName = ref(['province', 'city', 'country', 'town']);
+    const tabNameDefault = ref(['']);
 
     const isCustom2 = computed(() => props.type === 'custom2');
 
@@ -288,6 +297,52 @@ export default create({
 
     const lineDistance = ref(20);
 
+    onMounted(() => {
+      customPlaceholder();
+    });
+
+    // 设置选中省市县
+    const initCustomSelected = () => {
+      if (props.modelValue.length > 0) {
+        tabIndex.value = props.modelValue.length - 1;
+        for (let index = 0; index < props.modelValue.length; index++) {
+          if ((regionList as any)[tabName.value[index]].length == 0) {
+            tabIndex.value = index - 1;
+            break;
+          } else {
+            const val = props.modelValue[index];
+            const arr: [] = (regionList as any)[tabName.value[index]];
+            if (privateType.value == 'custom') {
+              (selectedRegion as any)[tabName.value[index]] = arr.filter((item: RegionData) => item.id == val)[0];
+            } else if (privateType.value == 'custom2') {
+              let sumArr: any = [];
+              arr.map((item) => {
+                sumArr.push(...(item as any).list);
+              });
+              (selectedRegion as any)[tabName.value[index]] = sumArr.filter((item: RegionData) => item.id == val)[0];
+            }
+          }
+        }
+        lineAnimation();
+      }
+    };
+    // 自定义‘请选择’文案
+    const customPlaceholder = () => {
+      let typeD = Object.prototype.toString.call(props.columnsPlaceholder);
+      if (typeD == '[object String]') {
+        tabNameDefault.value = new Array(4).fill(props.columnsPlaceholder);
+      } else if (typeD == '[object Array]') {
+        tabNameDefault.value = new Array(4).fill('');
+        tabNameDefault.value.forEach((val, index) => {
+          if (props.columnsPlaceholder[index]) {
+            tabNameDefault.value[index] = props.columnsPlaceholder[index];
+          } else {
+            tabNameDefault.value[index] = '请选择';
+          }
+        });
+      }
+    };
+
     //获取已选地区列表名称
     const getTabName = (item: RegionData, index: number) => {
       if (item.name) return item.name;
@@ -295,7 +350,7 @@ export default create({
       if (tabIndex.value < index) {
         return item.name;
       } else {
-        return '请选择';
+        return tabNameDefault.value[index];
       }
     };
     // 手动关闭 点击叉号(cross)，或者蒙层(mask)
@@ -312,8 +367,6 @@ export default create({
     };
     // 移动下面的红线
     const lineAnimation = () => {
-      // console.log('滑动红线');
-
       nextTick(() => {
         const name = tabRegion.value && tabRegion.value.getElementsByClassName('active')[0];
 
@@ -334,8 +387,11 @@ export default create({
       };
 
       (selectedRegion as any)[tabName.value[tabIndex.value]] = item;
+      // for (let i = tabIndex.value; i < tabIndex.value - 1; i++) {
+      //   (selectedRegion as any)[tabName.value[i + 1]] = {};
+      // }
 
-      for (let i = tabIndex.value; i < tabIndex.value - 1; i++) {
+      for (let i = tabIndex.value; i < 4; i++) {
         (selectedRegion as any)[tabName.value[i + 1]] = {};
       }
 
@@ -350,6 +406,7 @@ export default create({
         emit('change', calBack);
       } else {
         handClose();
+        emit('update:modelValue');
       }
     };
     //切换地区Tab
@@ -463,6 +520,8 @@ export default create({
       (value) => {
         if (value == false) {
           close();
+        } else {
+          initCustomSelected();
         }
       }
     );
@@ -525,6 +584,7 @@ export default create({
       clickOverlay,
       handClose,
       handleElevatorItem,
+      initCustomSelected,
       ...toRefs(props)
     };
   }

@@ -1,13 +1,16 @@
 .nut-noticebar-page {
-  width: 100%;
+  // width: 100%;
   display: flex;
+  padding: $noticebar-box-padding;
   height: $noticebar-height;
   font-size: $noticebar-font-size;
   position: relative;
   align-items: center;
+  background: $noticebar-background;
+  color: $noticebar-color;
   &.wrapable {
     height: auto;
-    padding: 8px 16px;
+    padding: $noticebar-wrapable-padding;
     .wrap {
       height: auto;
       .content {
@@ -25,7 +28,7 @@
   .left-icon {
     height: $noticebar-left-icon-width;
     min-width: $noticebar-left-icon-width;
-    margin: 0 5px 0 10px;
+    margin: $noticebar-lefticon-margin;
     background-size: 100% 100%;
   }
   .right-icon {
@@ -33,9 +36,10 @@
     align-items: center;
     justify-content: center;
     width: $noticebar-right-icon-width;
-    margin: 0 10px 0 5px;
+    margin: $noticebar-righticon-margin;
   }
   .wrap {
+    display: flex;
     flex: 1;
     height: $noticebar-line-height;
     line-height: $noticebar-line-height;
@@ -72,7 +76,7 @@
 
 @keyframes nut-notice-bar-play-infinite {
   to {
-    transform: translate3d(-100%, 0, 0);
+    transform: translateX(-100%);
   }
 }
 // 垂直方向的滚动
@@ -90,6 +94,7 @@
   height: $noticebar-height;
   font-size: $noticebar-font-size;
   overflow: hidden;
+  padding: $noticebar-box-padding;
 
   .horseLamp_list {
     margin: 0;

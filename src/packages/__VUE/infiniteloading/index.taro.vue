@@ -50,6 +50,10 @@ export default create({
       type: Number,
       default: 200
     },
+    upperThreshold: {
+      type: Number,
+      default: 40
+    },
     pullIcon: {
       type: String,
       default: 'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png'
@@ -171,11 +175,6 @@ export default create({
       if (state.scrollTop == 0 && !state.isTouching && props.isOpenRefresh) {
         state.y = event.touches[0].pageY;
         state.isTouching = true;
-        getParentElement('refreshTop')
-          .boundingClientRect((rect) => {
-            state.refreshMaxH = Math.floor(rect.height * 1 + 10);
-          })
-          .exec();
       }
     };
 
@@ -205,6 +204,7 @@ export default create({
     };
 
     onMounted(() => {
+      state.refreshMaxH = props.upperThreshold;
       setTimeout(() => {
         getScrollHeight();
       }, 200);

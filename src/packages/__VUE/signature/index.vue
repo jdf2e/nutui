@@ -1,25 +1,16 @@
 <template>
   <div :class="classes">
     <div class="nut-signature-inner" ref="wrap">
-      <canvas
-        ref="canvas"
-        :height="canvasHeight"
-        :width="canvasWidth"
-        v-if="isCanvasSupported"
-      ></canvas>
+      <canvas ref="canvas" :height="canvasHeight" :width="canvasWidth" v-if="() => isCanvasSupported()"></canvas>
       <p class="nut-signature-unsopport" v-else>{{ unSupportTpl }}</p>
     </div>
 
-    <nut-button class="nut-signature-btn" type="default" @click="clear()"
-      >重签</nut-button
-    >
-    <nut-button class="nut-signature-btn" type="primary" @click="confirm()"
-      >确认</nut-button
-    >
+    <nut-button class="nut-signature-btn" type="default" @click="clear()">重签</nut-button>
+    <nut-button class="nut-signature-btn" type="primary" @click="confirm()">确认</nut-button>
   </div>
 </template>
 <script lang="ts">
-import { ref, reactive, onMounted, computed } from 'vue';
+import { ref, reactive, onMounted, computed, toRefs } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('signature');
 
@@ -50,8 +41,8 @@ export default create({
   emits: ['confirm', 'clear'],
 
   setup(props, { emit }) {
-    const canvas = ref<HTMLElement | null>(null);
-    const wrap = ref<HTMLElement | null>(null);
+    const canvas: any = ref<HTMLElement | null>(null);
+    const wrap: any = ref<HTMLElement | null>(null);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -59,7 +50,7 @@ export default create({
         [`${props.customClass}`]: props.customClass
       };
     });
-    const state = reactive({
+    const state: any = reactive({
       canvasHeight: 0,
       canvasWidth: 0,
       ctx: null,
@@ -103,20 +94,12 @@ export default create({
     const endEventHandler = (event) => {
       event.preventDefault();
 
-      canvas.value.removeEventListener(
-        state.events[1],
-        moveEventHandler,
-        false
-      );
+      canvas.value.removeEventListener(state.events[1], moveEventHandler, false);
       canvas.value.removeEventListener(state.events[2], endEventHandler, false);
     };
     const leaveEventHandler = (event) => {
       event.preventDefault();
-      canvas.value.removeEventListener(
-        state.events[1],
-        moveEventHandler,
-        false
-      );
+      canvas.value.removeEventListener(state.events[1], moveEventHandler, false);
       canvas.value.removeEventListener(state.events[2], endEventHandler, false);
     };
     const clear = () => {
@@ -140,7 +123,7 @@ export default create({
           dataurl = canvas.toDataURL('image/jpeg', 0.8);
           break;
       }
-      clear(true);
+      clear();
       emit('confirm', canvas, dataurl);
     };
 
@@ -153,7 +136,7 @@ export default create({
       }
     });
 
-    return { canvas, wrap, isCanvasSupported, confirm, clear, classes };
+    return { ...toRefs(state), canvas, wrap, isCanvasSupported, confirm, clear, classes };
   }
 });
 </script>

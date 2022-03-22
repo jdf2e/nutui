@@ -3,13 +3,18 @@
     <view v-if="label" class="nut-input-label">
       <view class="label-string">{{ label }}</view>
     </view>
+    <view v-if="readonly" class="nut-input__text--readonly">
+      {{ modelValue }}
+    </view>
     <input
+      v-else
       class="input-text"
       :style="styles"
       :type="type"
       :maxlength="maxLength"
       :placeholder="placeholder"
       :disabled="disabled || readonly"
+      :readonly="readonly"
       :value="modelValue"
       @input="valueChange"
       @focus="valueFocus"

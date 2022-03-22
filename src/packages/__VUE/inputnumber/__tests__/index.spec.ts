@@ -3,12 +3,6 @@ import InputNumber from '../index.vue';
 import { nextTick } from 'vue';
 import NutIcon from '../../icon/index.vue';
 
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
-
 beforeAll(() => {
   config.global.components = {
     NutIcon

@@ -23,7 +23,7 @@ export default create({
     },
     iconSize: {
       type: [String, Number],
-      default: '18'
+      default: ''
     },
     iconName: {
       type: String,
@@ -40,7 +40,7 @@ export default create({
   },
   emits: ['change', 'update:modelValue'],
   setup(props, { emit, slots }) {
-    const parent: any = inject('parent');
+    const parent: any = inject('parent', null);
 
     const hasParent = computed(() => !!parent);
 
@@ -53,7 +53,7 @@ export default create({
     });
 
     const pDisabled = computed(() => {
-      return hasParent.value ? parent.disabled : props.disabled;
+      return hasParent.value ? parent.disabled.value : props.disabled;
     });
 
     const checked = computed(() => !!props.modelValue);
@@ -84,9 +84,7 @@ export default create({
       return h(
         'view',
         {
-          class: `${componentName}__label ${
-            pDisabled.value ? `${componentName}__label--disabled` : ''
-          }`
+          class: `${componentName}__label ${pDisabled.value ? `${componentName}__label--disabled` : ''}`
         },
         slots.default?.()
       );
@@ -116,9 +114,7 @@ export default create({
       return h(
         'view',
         {
-          class: `${componentName} ${
-            props.textPosition === 'left' ? `${componentName}--reverse` : ''
-          }`,
+          class: `${componentName} ${props.textPosition === 'left' ? `${componentName}--reverse` : ''}`,
           onClick: handleClick
         },
         [renderIcon(), renderLabel()]

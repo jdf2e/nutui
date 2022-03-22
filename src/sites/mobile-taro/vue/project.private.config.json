@@ -13,8 +13,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "business/pages/barrage/index",
-          "pathName": "business/pages/barrage/index",
+          "name": "business/pages/address/index",
+          "pathName": "business/pages/address/index",
           "query": "",
           "scene": null
         },
@@ -25,14 +25,26 @@
           "scene": null
         },
         {
-          "name": "dentry/pages/picker/index",
-          "pathName": "dentry/pages/picker/index",
+          "name": "feedback/pages/noticebar/index",
+          "pathName": "feedback/pages/noticebar/index",
           "query": "",
           "scene": null
         },
         {
           "name": "feedback/pages/collapse/index",
           "pathName": "feedback/pages/collapse/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "feedback/pages/progress/index",
+          "pathName": "feedback/pages/progress/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "feedback/pages/swiper/index",
+          "pathName": "feedback/pages/swiper/index",
           "query": "",
           "scene": null
         }

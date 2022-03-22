@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should change icon class prefix when using icon prop 1`] = `
+"<view class=\\"nut-popover nut-popover--light\\">
+  <div></div>
+  <!--v-if-->
+</view>"
+`;
+
+exports[`should locate to reference element when showed 1`] = `""`;
+
+exports[`should locate to reference element when showed 2`] = `""`;
+
+exports[`should locate to reference element when showed 3`] = `""`;
+
+exports[`should watch placement prop and update location 1`] = `""`;

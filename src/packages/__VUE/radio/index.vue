@@ -28,11 +28,11 @@ export default create({
     },
     iconSize: {
       type: [String, Number],
-      default: 18
+      default: ''
     }
   },
   setup(props, { emit, slots }) {
-    let parent: any = inject('parent');
+    let parent: any = inject('parent', null);
 
     const isCurValue = computed(() => {
       return parent.label.value == props.label;

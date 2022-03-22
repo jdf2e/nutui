@@ -1,6 +1,7 @@
 .nut-button {
   position: relative;
   display: inline-block;
+  width: auto;
   flex-shrink: 0;
   height: $button-default-height;
   box-sizing: border-box;
@@ -126,21 +127,21 @@
   }
 
   &--normal {
-    padding: 0 18px;
+    padding: $button-default-padding;
     font-size: $button-default-font-size;
   }
 
   &--small {
     height: $button-small-height;
     line-height: $button-small-line-height;
-    padding: 0 $padding-xs;
-    font-size: $font-size-1;
+    padding: $button-small-padding;
+    font-size: $button-small-font-size;
   }
   &--mini {
     height: $button-mini-height;
     line-height: 1.2;
-    padding: 0 $padding-xs;
-    font-size: $font-size-1;
+    padding: $button-mini-padding;
+    font-size: $button-mini-font-size;
   }
 
   &--block {

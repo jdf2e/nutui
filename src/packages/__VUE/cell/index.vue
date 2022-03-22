@@ -1,13 +1,11 @@
 <template>
   <view :class="classes" :style="baseStyle" @click="handleClick">
     <slot>
-      <view
-        class="nut-cell__title"
-        :class="{ icon: icon || $slots.icon }"
-        v-if="title || subTitle || icon"
-      >
+      <view class="nut-cell__icon" v-if="icon || $slots.icon">
         <slot v-if="$slots.icon" name="icon"></slot>
         <nut-icon v-else-if="icon" class="icon" :name="icon"></nut-icon>
+      </view>
+      <view class="nut-cell__title" v-if="title || subTitle">
         <template v-if="subTitle">
           <view class="title">{{ title }}</view>
           <view class="nut-cell__title-desc">{{ subTitle }}</view>
@@ -16,19 +14,10 @@
           {{ title }}
         </template>
       </view>
-      <view
-        v-if="desc"
-        class="nut-cell__value"
-        :style="{ 'text-align': descTextAlign }"
-        >{{ desc }}</view
-      >
+      <view v-if="desc" class="nut-cell__value" :style="{ 'text-align': descTextAlign }">{{ desc }}</view>
 
       <slot v-if="$slots.link" name="link"></slot>
-      <nut-icon
-        v-else-if="isLink || to"
-        class="nut-cell__link"
-        name="right"
-      ></nut-icon>
+      <nut-icon v-else-if="isLink || to" class="nut-cell__link" name="right"></nut-icon>
     </slot>
   </view>
 </template>
@@ -36,7 +25,7 @@
 <script lang="ts">
 import { computed } from 'vue';
 import { createComponent } from '../../utils/create';
-import { useRouter } from 'vue-router';
+import { useRouter } from '@/packages/utils/useRoute';
 import { pxCheck } from '@/packages/utils/pxCheck';
 const { componentName, create } = createComponent('cell');
 export default create({
@@ -80,9 +69,7 @@ export default create({
         //    router.push(props.to)
         // }
       } else if (props.url) {
-        props.replace
-          ? location.replace(props.url)
-          : (location.href = props.url);
+        props.replace ? location.replace(props.url) : (location.href = props.url);
       }
     };
 

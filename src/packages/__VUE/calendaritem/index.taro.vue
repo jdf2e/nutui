@@ -13,7 +13,7 @@
         <slot name="btn"> </slot>
       </view>
       <view class="calendar-curr-month" v-if="showSubTitle">{{ yearMonthTitle }}</view>
-      <view class="calendar-weeks" ref="weeksPanel">
+      <view class="calendar-weeks">
         <view class="calendar-week-item" v-for="(item, index) of weeks" :key="index">{{ item }}</view>
       </view>
     </view>
@@ -22,12 +22,12 @@
       :scroll-top="scrollTop"
       :scroll-y="true"
       class="nut-calendar-content"
-      ref="months"
       @scroll="mothsViewScroll"
+      ref="months"
     >
-      <view class="calendar-months-panel" ref="monthsPanel">
-        <view class="viewArea" ref="viewArea" :style="{ transform: `translateY(${translateY}px)` }">
-          <view class="calendar-month" v-for="(month, index) of compConthsDatas" :key="index" :id="month.title">
+      <view class="calendar-months-panel" style="{{heihgt:containerHeight}}">
+        <view class="viewArea" :style="{ transform: `translateY(${translateY}px)` }">
+          <view class="calendar-month" v-for="(month, index) of compConthsDatas" :key="index">
             <view class="calendar-month-title">{{ month.title }}</view>
             <view class="calendar-month-con">
               <view class="calendar-month-item" :class="type === 'range' ? 'month-item-range' : ''">
@@ -45,15 +45,9 @@
                     <view class="calendar-curr-tips calendar-curr-tips-bottom" v-if="bottomInfo">
                       <slot name="bottomInfo" :date="day.type == 'curr' ? day : ''"> </slot>
                     </view>
-                    <view class="calendar-curr-tip-curr" v-if="!bottomInfo && showToday && isCurrDay(month, day.day)">
-                      今天
-                    </view>
-                    <view
-                      class="calendar-day-tip"
-                      :class="{ 'calendar-curr-tips-top': rangeTip(day, month) }"
-                      v-if="isStartTip(day, month)"
-                    >
-                      {{ startText }}
+                    <view class="calendar-curr-tip-curr" v-if="!bottomInfo && showToday && isCurrDay(day)"> 今天 </view>
+                    <view :class="{ 'calendar-curr-tips-top': rangeTip(day, month), 'calendar-day-tip': true }">
+                      {{ isStartTip(day, month) ? startText : '' }}
                     </view>
                     <view class="calendar-day-tip" v-if="isEndTip(day, month)">{{ endText }}</view>
                   </view>
@@ -71,16 +65,18 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, reactive, ref, watch, toRefs, computed, onMounted } from 'vue';
+import { PropType, reactive, ref, watch, toRefs, computed, onMounted, nextTick } from 'vue';
 import { createComponent } from '../../utils/create';
 const { create } = createComponent('calendar-item');
 import Taro from '@tarojs/taro';
 import Utils from '../../utils/date';
 import requestAniFrame from '../../utils/raf';
+let TARO_ENV = process.env.TARO_ENV;
 
 type InputDate = string | string[];
 interface CalendarState {
   yearMonthTitle: string;
+  containerHeight: string;
   currDate: any;
   propStartDate: string;
   propEndDate: string;
@@ -177,12 +173,9 @@ export default create({
   setup(props, { emit, slots }) {
     const weeks = ref(['日', '一', '二', '三', '四', '五', '六']);
     // element refs
-    const months = ref<null | HTMLElement>(null);
-    const monthsPanel = ref<null | HTMLElement>(null);
-    const weeksPanel = ref<null | HTMLElement>(null);
-    const viewArea = ref<null | HTMLElement>(null);
     const scalePx = ref(2);
     const viewHeight = ref(0);
+    const months = ref<null | HTMLElement>(null);
 
     const compConthsData = computed(() => {
       return state.monthsData.slice(state.defaultRange[0], state.defaultRange[1]);
@@ -201,7 +194,7 @@ export default create({
       yearMonthTitle: '',
       defaultRange: [0, 1],
       compConthsDatas: [],
-
+      containerHeight: '',
       currDate: '',
       propStartDate: '',
       propEndDate: '',
@@ -407,9 +400,14 @@ export default create({
           ...(getDaysStatus(currMonthDays, 'curr', title) as Day[])
         ]
       };
-
-      let titleHeight = Math.floor(46 * scalePx.value) + Math.floor(16 * scalePx.value) * 2;
-      let itemHeight = Math.floor(128 * scalePx.value);
+      let titleHeight, itemHeight;
+      if (TARO_ENV === 'h5') {
+        titleHeight = 46 * scalePx.value + 16 * scalePx.value * 2;
+        itemHeight = 128 * scalePx.value;
+      } else {
+        titleHeight = Math.floor(46 * scalePx.value) + Math.floor(16 * scalePx.value) * 2;
+        itemHeight = Math.floor(128 * scalePx.value);
+      }
       monthInfo.cssHeight = titleHeight + (monthInfo.monthData.length > 35 ? itemHeight * 6 : itemHeight * 5);
 
       let cssScrollHeight = 0;
@@ -456,9 +454,8 @@ export default create({
       state.propEndDate = propEndDate;
       state.startData = splitDate(propStartDate);
       state.endData = splitDate(propEndDate);
-
       // 根据是否存在默认时间，初始化当前日期,
-      if (!props.defaultValue || !(Array.isArray(props.defaultValue) && props.defaultValue.length > 0)) {
+      if (!props.defaultValue || (Array.isArray(props.defaultValue) && props.defaultValue.length <= 0)) {
         state.currDate = state.isRange ? [Utils.date2Str(new Date()), Utils.getDay(1)] : Utils.date2Str(new Date());
       } else {
         state.currDate = state.isRange ? [...props.defaultValue] : props.defaultValue;
@@ -530,13 +527,24 @@ export default create({
 
       let lastItem = state.monthsData[state.monthsData.length - 1];
       let containerHeight = lastItem.cssHeight + lastItem.cssScrollHeight;
-      if (months?.value && monthsPanel?.value && viewArea?.value) {
-        viewHeight.value = months.value.clientHeight;
-        monthsPanel.value.style.height = `${containerHeight}px`;
 
-        state.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
-      }
+      state.containerHeight = `${containerHeight}px`;
+      state.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
       state.avgHeight = Math.floor(containerHeight / (monthsNum + 1));
+
+      if (months?.value) {
+        viewHeight.value = months.value.clientHeight;
+      }
+      if (TARO_ENV === 'h5') {
+        Taro.nextTick(() => {
+          Taro.createSelectorQuery()
+            .select('.nut-calendar-content')
+            .boundingClientRect((res) => {
+              viewHeight.value = res.height;
+            })
+            .exec();
+        });
+      }
     };
     const setDefaultRange = (monthsNum: number, current: number) => {
       let rangeArr: any[] = [];
@@ -566,11 +574,7 @@ export default create({
 
     // 是否有开始提示
     const isStartTip = (day: Day, month: MonthInfo) => {
-      if (isActive(day, month)) {
-        return isStart(getCurrDate(day, month));
-      } else {
-        return false;
-      }
+      return isActive(day, month) && isStart(getCurrDate(day, month));
     };
 
     // 是否有结束提示
@@ -587,13 +591,13 @@ export default create({
       }
     };
     // 是否有是当前日期
-    const isCurrDay = (month: any, day: string) => {
-      const date = `${month.curData[0]}-${month.curData[1]}-${day}`;
+    const isCurrDay = (dateInfo: any) => {
+      const date = `${dateInfo.year}-${dateInfo.month}-${dateInfo.day < 10 ? '0' + dateInfo.day : dateInfo.day}`;
       return Utils.isEqual(date, Utils.date2Str(new Date()));
     };
 
     const mothsViewScroll = (e: any) => {
-      var currentScrollTop = e.target.scrollTop;
+      const currentScrollTop = e.target.scrollTop;
       let current = Math.floor(currentScrollTop / state.avgHeight);
       if (current == 0) {
         if (currentScrollTop >= state.monthsData[current + 1].cssScrollHeight) {
@@ -607,16 +611,16 @@ export default create({
           current -= 1;
         }
       } else {
+        const viewPosition = Math.round(currentScrollTop + viewHeight.value);
         if (
-          currentScrollTop + viewHeight.value <
-          state.monthsData[current].cssScrollHeight + state.monthsData[current].cssHeight
+          viewPosition < state.monthsData[current].cssScrollHeight + state.monthsData[current].cssHeight &&
+          currentScrollTop < state.monthsData[current].cssScrollHeight
         ) {
           current -= 1;
         }
         if (
           current + 1 <= state.monthsNum &&
-          currentScrollTop + viewHeight.value >=
-            state.monthsData[current + 1].cssScrollHeight + state.monthsData[current + 1].cssHeight
+          viewPosition >= state.monthsData[current + 1].cssScrollHeight + state.monthsData[current + 1].cssHeight
         ) {
           current += 1;
         }
@@ -643,7 +647,11 @@ export default create({
         success(res) {
           let scale = 2;
           let screenWidth = res.screenWidth;
-          scale = Number((screenWidth / 750).toFixed(3));
+          let toFixed = 3;
+          if (TARO_ENV === 'h5') {
+            toFixed = 5;
+          }
+          scale = Number((screenWidth / 750).toFixed(toFixed));
           scalePx.value = scale;
           initData();
         }
@@ -675,10 +683,7 @@ export default create({
       chooseDay,
       isCurrDay,
       confirm,
-      monthsPanel,
       months,
-      weeksPanel,
-      viewArea,
       ...toRefs(state),
       ...toRefs(props)
     };

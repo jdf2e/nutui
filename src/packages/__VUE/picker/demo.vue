@@ -15,8 +15,8 @@
       v-model:visible="show"
       :list-data="listData1"
       title="城市选择"
+      :isWrapTeleport="false"
       @confirm="(val) => confirm(0, val)"
-      @close="close"
     >
     </nut-picker>
     <nut-picker
@@ -25,16 +25,13 @@
       title="城市选择"
       :defaultIndex="2"
       @confirm="(val) => confirm(1, val)"
-      @close="close"
     >
     </nut-picker>
-    <nut-picker v-model:visible="show2" :list-data="listData2" title="多列选择" @confirm="confirm2" @close="close">
-    </nut-picker>
+    <nut-picker v-model:visible="show2" :list-data="listData2" title="多列选择" @confirm="confirm2"></nut-picker>
     <nut-picker v-model:visible="show3" :list-data="listData3" title="地址选择" @confirm="confirm3"></nut-picker>
     <nut-picker
       v-model:visible="show4"
       :list-data="listData4"
-      :demoIndex="demoIndex"
       title="地址选择"
       @change="onChange"
       @confirm="(val) => confirm(4, val)"
@@ -48,7 +45,7 @@ const { createDemo } = createComponent('picker');
 export default createDemo({
   props: {},
   setup() {
-    const listData1 = ['南京市', '无锡市', '海北藏族自治区', '北京市', '连云港市', '浙江市', '江苏市'];
+    const listData1 = ref(['南京市', '无锡市', '海北藏族自治区', '北京市', '连云港市', '浙江市', '江苏市']);
 
     const listData2 = [
       {
@@ -110,8 +107,8 @@ export default createDemo({
     const show3 = ref(false);
     const show4 = ref(false);
     const showList = [show, show1, show2, show3, show4];
-    const desc = ref(listData1[0]);
-    const desc1 = ref(listData1[2]);
+    const desc = ref(listData1.value[0]);
+    const desc1 = ref(listData1.value[2]);
     const desc2 = ref(
       `${listData2[0].values[listData2[0].defaultIndex]} ${listData2[1].values[listData2[1].defaultIndex]}`
     );
@@ -141,6 +138,7 @@ export default createDemo({
         showList[index].value = true;
       },
       confirm: (type: number, res: any) => {
+        console.log(res);
         if (type == 4) {
           descList[type].value = res[0] + ' ' + res[1];
         } else {
@@ -148,6 +146,7 @@ export default createDemo({
         }
       },
       confirm2: (res: any) => {
+        console.log(res);
         desc2.value = res.join(' ');
       },
       confirm3: (res: any) => {
