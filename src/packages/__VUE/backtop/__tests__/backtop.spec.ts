@@ -1,5 +1,6 @@
 import { mount, config } from '@vue/test-utils';
 import BackTop from '../index.vue';
+import { mockScrollTop } from './../../../utils/unit';
 
 import NutIcon from '../../icon/index.vue';
 import { nextTick } from 'vue';
@@ -36,12 +37,15 @@ test('backtop style', () => {
   expect(backtop.element.style.bottom).toBe('50px');
 });
 
-test('backtop style', () => {
+test('backtop style,backtop show', async () => {
   const wrapper = mount(BackTop, {
     props: {
       right: 40
     }
   });
+  await mockScrollTop(1000);
+  const show: any = wrapper.find('.show');
+  expect(show.exists()).toBe(true);
   const backtop: any = wrapper.find('.nut-backtop');
   expect(backtop.element.style.right).toBe('40px');
 });
