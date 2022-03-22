@@ -19,21 +19,8 @@ test('base price', () => {
     }
   });
   const price: any = wrapper.find('.nut-price');
-  console.log('price', price.text());
   expect(price.text()).toBe('¥199.99');
 });
-
-// test('base price', () => {
-//   const wrapper = mount(Price, {
-//     props: {
-//       price: '199.999',
-//       decimalDigits: '2'
-//     }
-//   });
-//   const price: any = wrapper.find('.nut-price');
-//   console.log('price', price.text())
-//   expect(price.text()).toBe('¥199.99');
-// });
 
 test('decimalDigits price', () => {
   const wrapper = mount(Price, {
@@ -43,7 +30,6 @@ test('decimalDigits price', () => {
     }
   });
   const price: any = wrapper.find('.nut-price');
-  console.log('price', price.text());
   expect(price.text()).toBe('¥299.9');
 });
 
@@ -52,15 +38,15 @@ test('default needSymbol props', () => {
   const price: any = wrapper.find('.nut-price');
   expect(price.find('.nut-price--symbol').text()).toBe('¥');
 });
-// test('needSymbol props', () => {
-//   const wrapper = mount(Price, {
-//     props: {
-//       needSymbol: false
-//     }
-//   });
-//   const price: any = wrapper.find('.nut-price');
-//   expect(price.find('.nut-price--symbol')).toBeNull();
-// });
+test('needSymbol props', () => {
+  const wrapper = mount(Price, {
+    props: {
+      needSymbol: false
+    }
+  });
+  const price: any = wrapper.find('.nut-price');
+  expect(price.find('.nut-price--symbol').exists()).toBe(false);
+});
 test('symbol props', () => {
   const wrapper = mount(Price, {
     props: {

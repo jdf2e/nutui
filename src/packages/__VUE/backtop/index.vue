@@ -130,11 +130,15 @@ export default create({
       if (props.elId && document.getElementById(props.elId)) {
         state.scrollEl = document.getElementById(props.elId) as HTMLElement | Window;
       }
+
       addEventListener();
       initCancelAniFrame();
     }
 
     onMounted(() => {
+      if (props.distance == 0) {
+        state.backTop = true;
+      }
       init();
     });
 

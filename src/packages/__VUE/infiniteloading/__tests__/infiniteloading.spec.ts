@@ -23,7 +23,8 @@ afterAll(() => {
 test('pull base', async () => {
   const wrapper = mount(InfiniteLoading, {
     props: {
-      isOpenRefresh: true
+      isOpenRefresh: true,
+      loadMoreTxt: '没有更多'
     }
   });
   const track = wrapper.find('.nut-infiniteloading');
@@ -51,6 +52,7 @@ test('infiniteloading base', async () => {
     template: `
     <nut-infiniteloading
       :has-more="hasMore"
+      load-more-txt="没有啦～"
       @load-more="loadMore">
         <li class="infiniteLi" v-for="(item, index) in defultList" :key="index">{{item}}</li>
     </nut-infiniteloading>

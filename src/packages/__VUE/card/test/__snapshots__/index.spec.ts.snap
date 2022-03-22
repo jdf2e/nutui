@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`normal props 1`] = `
+"<div class=\\"nut-card\\">
+  <div class=\\"nut-card__left\\"><img src=\\"//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg\\" alt=\\"\\"></div>
+  <div class=\\"nut-card__right\\">
+    <div class=\\"nut-card__right__title\\">活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水</div>
+    <div class=\\"nut-card__right__price\\">
+      <view class=\\"nut-price\\">
+        <view class=\\"nut-price--symbol nut-price--symbol-large\\">¥</view>
+        <view class=\\"nut-price--large\\">388</view>
+        <view class=\\"nut-price--decimal-large\\">.</view>
+        <view class=\\"nut-price--decimal-large\\">00</view>
+        <!--v-if-->
+      </view>
+      <view class=\\"nut-price nut-card__right__price__origin\\">
+        <view class=\\"nut-price--symbol nut-price--symbol-large\\">¥</view>
+        <view class=\\"nut-price--large\\">378</view>
+        <view class=\\"nut-price--decimal-large\\">.</view>
+        <view class=\\"nut-price--decimal-large\\">00</view>
+        <!--v-if-->
+      </view>
+    </div>
+    <div class=\\"nut-card__right__other\\">
+      <view class=\\"nut-tag nut-tag--danger\\">自营
+        <!--v-if-->
+      </view>
+      <view class=\\"nut-tag nut-tag--default nut-tag--plain\\" style=\\"color: rgb(250, 36, 0); background: rgb(255, 255, 255); border: 1px solid rgba(250,36,0,1);\\">厂商配送
+        <!--v-if-->
+      </view>
+    </div>
+    <div class=\\"nut-card__right__shop\\">
+      <div class=\\"nut-card__right__shop__name\\">阳澄湖大闸蟹自营店&gt;</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`render prolist and origin slot correctly 1`] = `
+"<div class=\\"nut-card\\">
+  <div class=\\"nut-card__left\\"><img src=\\"\\" alt=\\"\\"></div>
+  <div class=\\"nut-card__right\\">
+    <div class=\\"nut-card__right__title\\"></div>Custom prolist<div class=\\"nut-card__right__price\\">
+      <view class=\\"nut-price\\">
+        <view class=\\"nut-price--symbol nut-price--symbol-large\\">¥</view>
+        <view class=\\"nut-price--large\\">0</view>
+        <view class=\\"nut-price--decimal-large\\">.</view>
+        <view class=\\"nut-price--decimal-large\\">00</view>
+        <!--v-if-->
+      </view>Custom origin
+    </div>
+    <div class=\\"nut-card__right__other\\">
+      <view class=\\"nut-tag nut-tag--danger\\">
+        <!--v-if-->
+      </view>
+      <view class=\\"nut-tag nut-tag--default nut-tag--plain\\" style=\\"color: rgb(250, 36, 0); background: rgb(255, 255, 255); border: 1px solid rgba(250,36,0,1);\\">
+        <!--v-if-->
+      </view>
+    </div>
+    <div class=\\"nut-card__right__shop\\">
+      <div class=\\"nut-card__right__shop__name\\"></div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`render shop-tag and footer slot correctly 1`] = `
+"<div class=\\"nut-card\\">
+  <div class=\\"nut-card__left\\"><img src=\\"\\" alt=\\"\\"></div>
+  <div class=\\"nut-card__right\\">
+    <div class=\\"nut-card__right__title\\"></div>
+    <div class=\\"nut-card__right__price\\">
+      <view class=\\"nut-price\\">
+        <view class=\\"nut-price--symbol nut-price--symbol-large\\">¥</view>
+        <view class=\\"nut-price--large\\">0</view>
+        <view class=\\"nut-price--decimal-large\\">.</view>
+        <view class=\\"nut-price--decimal-large\\">00</view>
+        <!--v-if-->
+      </view>
+      <view class=\\"nut-price nut-card__right__price__origin\\">
+        <view class=\\"nut-price--symbol nut-price--symbol-large\\">¥</view>
+        <view class=\\"nut-price--large\\">0</view>
+        <view class=\\"nut-price--decimal-large\\">.</view>
+        <view class=\\"nut-price--decimal-large\\">00</view>
+        <!--v-if-->
+      </view>
+    </div>
+    <div class=\\"nut-card__right__other\\">
+      <view class=\\"nut-tag nut-tag--danger\\">
+        <!--v-if-->
+      </view>
+      <view class=\\"nut-tag nut-tag--default nut-tag--plain\\" style=\\"color: rgb(250, 36, 0); background: rgb(255, 255, 255); border: 1px solid rgba(250,36,0,1);\\">
+        <!--v-if-->
+      </view>
+    </div>
+    <div class=\\"nut-card__right__shop\\">
+      <div class=\\"nut-card__right__shop__name\\"></div>Custom footer
+    </div>
+  </div>
+</div>"
+`;
