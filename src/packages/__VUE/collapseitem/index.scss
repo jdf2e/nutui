@@ -79,6 +79,9 @@
       line-height: $collapse-wrapper-content-line-height;
       background-color: $collapse-wrapper-content-background-color;
     }
+    .empty {
+      padding: $collapse-wrapper-empty-content-padding;
+    }
   }
   .open-style {
     will-change: height;

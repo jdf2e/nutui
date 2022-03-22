@@ -35,7 +35,7 @@
       ></nut-icon>
     </view>
     <view class="collapse-wrapper" ref="wrapperRef">
-      <view class="collapse-content" ref="contentRef">
+      <view :class="['collapse-content', emptyContent]" ref="contentRef">
         <slot></slot>
       </view>
     </view>
@@ -91,6 +91,7 @@ export default create({
         [`${prefixCls}-icon`]: parent.props.icon
       };
     });
+
     const relation = (child: ComponentInternalInstance): void => {
       if (child.proxy) {
         parent.children.push(child.proxy);
@@ -220,18 +221,18 @@ export default create({
     onMounted(() => {
       const { name } = props;
       const active = parent && parent.props.active;
-
-      if (typeof active == 'number' || typeof active == 'string') {
-        if (name == active) {
-          defaultOpen();
+      nextTick(() => {
+        if (typeof active == 'number' || typeof active == 'string') {
+          if (name == active) {
+            defaultOpen();
+          }
+        } else if (Object.values(active) instanceof Array) {
+          const f = Object.values(active).filter((item) => item == name);
+          if (f.length > 0) {
+            defaultOpen();
+          }
         }
-      } else if (Object.values(active) instanceof Array) {
-        const f = Object.values(active).filter((item) => item == name);
-        if (f.length > 0) {
-          defaultOpen();
-        }
-      }
-
+      });
       // proxyData.classDirection = parent.props.expandIconPosition;
       // if (parent.props.icon && parent.props.icon != 'none') {
       //   proxyData.iconStyle['background-image'] =
@@ -244,9 +245,17 @@ export default create({
       //   proxyData.iconStyle['height'] = parent.props.iconHeight;
       // }
     });
-
+    const emptyContent = computed(() => {
+      let ele = contentRef.value;
+      let _class = '';
+      if (!ele?.innerText) {
+        _class = 'empty';
+      }
+      return _class;
+    });
     return {
       classes,
+      emptyContent,
       ...toRefs(proxyData),
       ...toRefs(parent.props),
       ...toRefs(titleIconStyle),

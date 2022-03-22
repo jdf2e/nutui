@@ -573,7 +573,7 @@ $menu-item-option-i-margin-right: 6px !default;
 $menu-bar-box-shadow: 0 2px 12px rgba(89, 89, 89, 0.12) !default;
 
 // collapse
-$collapse-item-padding: 13px 26px !default;
+$collapse-item-padding: 13px 36px 13px 26px !default;
 $collapse-item-color: #666666 !default;
 $collapse-item-disabled-color: #c8c9cc !default;
 $collapse-item-icon-color: #666666 !default;
@@ -581,6 +581,7 @@ $collapse-item-font-size: $font-size-2 !default;
 $collapse-item-line-height: 24px !default;
 $collapse-item-sub-title-color: #666666 !default;
 $collapse-wrapper-content-padding: 12px 26px !default;
+$collapse-wrapper-empty-content-padding: 0 26px !default;
 $collapse-wrapper-content-color: #666666 !default;
 $collapse-wrapper-content-font-size: $font-size-2 !default;
 $collapse-wrapper-content-line-height: 1.5 !default;
