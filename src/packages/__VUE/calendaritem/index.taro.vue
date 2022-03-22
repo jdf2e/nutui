@@ -633,6 +633,7 @@ export default create({
         state.currentIndex = current;
         setDefaultRange(state.monthsNum, current);
       }
+
       state.yearMonthTitle = state.monthsData[current].title;
     };
     // 重新渲染

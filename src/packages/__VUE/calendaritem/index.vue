@@ -454,6 +454,7 @@ export default create({
       if (endDate.year - startDate.year > 0) {
         monthsNum = monthsNum + 12 * (endDate.year - startDate.year);
       }
+
       // 设置月份数据
       getMonth(state.startData, 'next');
 
@@ -594,6 +595,7 @@ export default create({
           current -= 1;
         }
       }
+
       if (state.currentIndex !== current) {
         state.currentIndex = current;
         setDefaultRange(state.monthsNum, current);
