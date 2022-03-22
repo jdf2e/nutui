@@ -2,17 +2,10 @@
   <div class="demo">
     <nut-cell-group title="基本用法-左右">
       <nut-cell>
-        <nut-checkbox v-model="checkbox1" label="复选框" @change="changeBox1"
-          >复选框</nut-checkbox
-        >
+        <nut-checkbox v-model="checkbox1" label="复选框" @change="changeBox1">复选框</nut-checkbox>
       </nut-cell>
       <nut-cell>
-        <nut-checkbox
-          v-model="checkbox1"
-          text-position="left"
-          @change="changeBox1"
-          >复选框</nut-checkbox
-        >
+        <nut-checkbox v-model="checkbox1" text-position="left" @change="changeBox1">复选框</nut-checkbox>
       </nut-cell>
       <nut-cell>
         <div class="demo-check">当前选中值</div>
@@ -30,31 +23,20 @@
     </nut-cell-group>
     <nut-cell-group title="自定义尺寸">
       <nut-cell>
-        <nut-checkbox v-model="checkbox5" icon-size="25"
-          >自定义尺寸25</nut-checkbox
-        >
+        <nut-checkbox v-model="checkbox5" icon-size="25">自定义尺寸25</nut-checkbox>
       </nut-cell>
       <nut-cell>
-        <nut-checkbox v-model="checkbox6" icon-size="10"
-          >自定义尺寸10</nut-checkbox
-        >
+        <nut-checkbox v-model="checkbox6" icon-size="10">自定义尺寸10</nut-checkbox>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group title="自定义图标">
       <nut-cell>
-        <nut-checkbox
-          v-model="checkbox7"
-          icon-name="checklist"
-          icon-active-name="checklist"
-          >自定义图标</nut-checkbox
-        >
+        <nut-checkbox v-model="checkbox7" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-checkbox>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group title="点击触发change事件">
       <nut-cell>
-        <nut-checkbox v-model="checkbox8" @change="changeBox3"
-          >change复选框</nut-checkbox
-        >
+        <nut-checkbox v-model="checkbox8" @change="changeBox3">change复选框</nut-checkbox>
       </nut-cell>
     </nut-cell-group>
     <nut-cell-group title="checkboxGroup使用">
@@ -83,22 +65,14 @@
     </nut-cell-group>
     <nut-cell-group title="checkboxGroup 全选/取消">
       <nut-cell>
-        <nut-checkboxgroup
-          v-model="checkboxgroup3"
-          ref="group"
-          @change="changeBox4"
-        >
-          <nut-checkbox label="1">组合复选框</nut-checkbox>
-          <nut-checkbox label="2">组合复选框</nut-checkbox>
+        <nut-checkboxgroup v-model="checkboxgroup3" ref="group" @change="changeBox4">
+          <nut-checkbox :key="item.label" v-for="item in checkboxsource" :label="item.label">{{
+            item.value
+          }}</nut-checkbox>
         </nut-checkboxgroup>
       </nut-cell>
       <nut-cell>
-        <nut-button
-          type="primary"
-          @click="toggleAll(true)"
-          style="margin: 0 10px 0 0"
-          >全选</nut-button
-        >
+        <nut-button type="primary" @click="toggleAll(true)" style="margin: 0 10px 0 0">全选</nut-button>
         <nut-button type="info" @click="toggleAll(false)">取消</nut-button>
       </nut-cell>
     </nut-cell-group>
@@ -120,7 +94,11 @@ export default {
       checkbox8: false,
       checkboxgroup1: ['2', '3'],
       checkboxgroup2: ['2'],
-      checkboxgroup3: ['2']
+      checkboxgroup3: ['2'],
+      checkboxsource: [
+        { label: '1', value: '组合复选框' },
+        { label: '2', value: '组合复选框' }
+      ]
     });
     const changeBox1 = (state: boolean, label: string) => {
       console.log(state, label);
@@ -135,7 +113,7 @@ export default {
     };
 
     const changeBox4 = (label: any[]) => {
-      console.log(`${label.length ? '全选' : '取消全选'}`);
+      console.log(`${label.length === data.checkboxsource.length ? '全选' : '取消全选'}`);
     };
 
     const toggleAll = (f: boolean) => {

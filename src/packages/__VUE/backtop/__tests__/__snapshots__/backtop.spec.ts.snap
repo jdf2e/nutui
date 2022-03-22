@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`should allow to use the elId prop 1`] = `"<div class=\\"nut-backtop\\" style=\\"right: 10px; bottom: 20px; z-index: 10;\\"><i class=\\"nutui-iconfont nut-icon nut-icon-top nut-backtop-main\\" style=\\"font-size: 19px; width: 19px; height: 19px;\\" src=\\"\\"></i></div>"`;
