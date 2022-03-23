@@ -51,9 +51,10 @@ describe('FixedNav', () => {
     expect(_html1.exists()).toBe(true);
     const _html = wrapper.find('.nut-fixednav__btn');
     expect(_html.html()).toContain('展开');
+    console.log(_html.html(), '00000');
     wrapper.find('.nut-fixednav__btn').trigger('click');
     await nextTick();
-    // expect(_html.html()).toContain('收起');
+    expect(wrapper.emitted('update:visible')![0]).toEqual([true]);
   });
 
   test('should be displayed after setting the position', () => {
