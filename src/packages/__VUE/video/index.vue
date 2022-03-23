@@ -130,21 +130,24 @@ export default create({
       },
       showTouchMask: false
     });
-    const root = ref<HTMLElement>();
+    const root = ref(null);
     const isDisabled = computed(() => {
       return props.options.disabled;
     });
 
-    watch(props.source, (newValue) => {
-      if (newValue.src) {
-        nextTick(() => {
-          (state.videoElm as any).load();
-        });
+    watch(
+      () => props.source,
+      (newValue) => {
+        if (newValue.src) {
+          nextTick(() => {
+            (state.videoElm as any).load();
+          });
+        }
       }
-    });
+    );
 
     watch(
-      props.options,
+      () => props.options,
       (newValue) => {
         state.state.isMuted = newValue ? newValue.muted : false;
       },
@@ -154,7 +157,9 @@ export default create({
       (state.videoElm as any) = root.value;
 
       if (props.options.autoplay) {
-        (state.videoElm as any).play();
+        setTimeout(() => {
+          (state.videoElm as any).play();
+        }, 200);
       }
 
       if (props.options.touchPlay) {
@@ -209,7 +214,10 @@ export default create({
         // 播放状态
         if (state.state.playing) {
           try {
-            (state.videoElm as any).play();
+            setTimeout(() => {
+              (state.videoElm as any).play();
+            }, 200);
+
             // 监听缓存进度
             (state.videoElm as any).addEventListener('progress', () => {
               getLoadTime();

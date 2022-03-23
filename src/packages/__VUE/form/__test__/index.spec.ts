@@ -164,7 +164,7 @@ describe('Form', () => {
     expect(formitem.length).toBe(2);
     const form1 = wrapper.find('.nut-cell__title');
     expect(form1.classes()).toContain('required');
-    expect((form1.element as HTMLElement).style.textAlign).toEqual('left');
+    expect((form1.element as HTMLElement).style.textAlign).toEqual('');
     expect((form1.element as HTMLElement).style.width).toEqual('90px');
     const form2 = wrapper.find('.nut-form-item__body__slots');
     expect((form2.element as HTMLElement).style.textAlign).toEqual('center');
@@ -270,13 +270,6 @@ describe('Form', () => {
       <nut-form-item label="复选框">
         <nut-checkbox v-model="formData2.checkbox">复选框</nut-checkbox>
       </nut-form-item>
-      <nut-form-item label="单选按钮">
-        <nut-radiogroup direction="horizontal" v-model="formData2.radio">
-          <nut-radio label="1">选项1</nut-radio>
-          <nut-radio disabled label="2">选项2</nut-radio>
-          <nut-radio label="3">选项3</nut-radio>
-        </nut-radiogroup>
-      </nut-form-item>
       <nut-form-item label="评分">
         <nut-rate v-model="formData2.rate" />
       </nut-form-item>
@@ -368,7 +361,7 @@ describe('Form', () => {
     });
     await nextTick();
     const formitem = wrapper.findAll('.nut-form-item');
-    expect(formitem.length).toBe(8);
+    expect(formitem.length).toBe(7);
     const formitem1 = wrapper.find('.nut-switch');
     expect(formitem1.exists()).toBe(true);
     const formitem2 = wrapper.find('.nut-checkbox');
