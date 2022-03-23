@@ -112,3 +112,14 @@ test('should emit "change" event after dragging button', () => {
   triggerDrag(button, 50, 0);
   expect(wrapper.emitted('change')!.pop()).toEqual([100]);
 });
+test('should emit "update:modelValue" event after dragging button', () => {
+  const wrapper = mount(Range, {
+    props: {
+      modelValue: 10
+    }
+  });
+
+  const button = wrapper.find('.nut-range-button');
+  triggerDrag(button, 50, 0);
+  expect(wrapper.emitted('update:modelValue')!.pop()).toEqual([100]);
+});
