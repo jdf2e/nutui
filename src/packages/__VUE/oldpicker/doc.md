@@ -4,7 +4,7 @@
     
 提供多个选项集合供用户选择其中一项。
 
->此组件在 3.2.0 版本后将不再维护，如果需要请使用移步 XXX。
+> `OldPicker`组件在 3.2.0 版本后将不再维护，请移步 [Picker 组件](https://nutui.jd.com/#/picker)。
     
 ### 安装
 ```javascript

@@ -977,7 +977,7 @@
           "cType": "数据录入",
           "cName": "选择器",
           "desc": "3.1.17 版本之前（包括 3.1.17 版本）的选择器",
-          "show": true,
+          "show": false,
           "tarodoc": false,
           "type": "component",
           "author": "yangxiaolu"
