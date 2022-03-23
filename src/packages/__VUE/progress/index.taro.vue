@@ -12,7 +12,7 @@
           class="nut-progress-text nut-progress-insidetext"
           ref="insideText"
           :id="'nut-progress-insidetext-taro-' + randRef"
-          :style="{ lineHeight: height, left: left }"
+          :style="{ lineHeight: height, left: `${percentage}%`, transform: `translate(-${+percentage}%,-50%)` }"
           v-if="showText && textInside"
         >
           <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }}</span>
@@ -87,7 +87,6 @@ export default create({
   setup(props, { emit }) {
     const height = ref(props.strokeWidth + 'px');
     const progressOuter = ref<any>();
-    const left = ref();
     const insideText = ref();
     const refRandomId = Math.random().toString(36).slice(-8);
     const randRef = ref(refRandomId);
@@ -102,49 +101,15 @@ export default create({
         color: props.textColor || ''
       };
     });
-    const slideLeft = async (values: string | number) => {
-      if (Taro.getEnv() === 'WEB') {
-        if (!props.textInside) return;
-        let offsetWidth = progressOuter.value.offsetWidth;
-        let percentageWidth = progressOuter.value.offsetWidth * Number(values) * 0.01;
-        let insideTextWidth = insideText.value.offsetWidth;
-        left.value = percentageWidth - 5 + 'px';
-        if (offsetWidth == percentageWidth) {
-          left.value = percentageWidth - insideTextWidth + 'px';
-        }
-      } else {
-        if (!props.textInside) return;
-        const query = Taro.createSelectorQuery() as any;
-        query.select('#nut-progress-outer-taro-' + randRef.value).boundingClientRect();
-        query.select('#nut-progress-insidetext-taro-' + randRef.value).boundingClientRect();
-        query.exec((res: any) => {
-          let offsetWidth = res[0].width;
-          let percentageWidth = res[0].width * Number(values) * 0.01;
-          let insideTextWidth = res[1].width;
-          left.value = percentageWidth - 4 + 'px';
-          if (offsetWidth == percentageWidth) {
-            left.value = percentageWidth - insideTextWidth + 'px';
-          }
-        });
-      }
-    };
-    watch(
-      () => props.percentage,
-      (values) => {
-        slideLeft(values);
-      }
-    );
+
     onMounted(() => {
-      eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
-        slideLeft(props.percentage);
-      });
+      eventCenter.once((getCurrentInstance() as any).router.onReady, () => {});
     });
     return {
       height,
       bgStyle,
       textStyle,
       progressOuter,
-      left,
       insideText,
       randRef
     };
