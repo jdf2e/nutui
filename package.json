@@ -52,7 +52,7 @@
     "generate:types": "node jd/generate-types.js",
     "generate:themes": "node jd/generate-themes.js",
     "prepare": "husky install",
-    "test": "jest",
+    "test": "jest --watchAll",
     "release": "standard-version -a",
     "codeformat": "prettier --write .",
     "copydocs": "node ./jd/copymd.js"

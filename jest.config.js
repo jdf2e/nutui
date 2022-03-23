@@ -12,5 +12,14 @@ module.exports = {
   // 支持源代码中相同的 `@` -> `src` 别名
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1'
-  }
+  },
+  // 是否开启将测试覆盖率信息输出为报告
+  collectCoverage: true,
+  // 报告应从那些文件中收集
+  collectCoverageFrom: [
+    'src/packages/__VUE/**/*.{js,jsx,ts,tsx,vue}',
+    '!**/node_modules/**',
+    '!**/demo.vue/**',
+    '!**/index.taro.vue/**'
+  ]
 };
