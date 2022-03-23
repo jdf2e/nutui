@@ -311,6 +311,13 @@ export default create({
     });
 
     watch(
+      () => props.modelValue,
+      (value) => {
+        state.currentDate = formatValue(value);
+      }
+    );
+
+    watch(
       () => props.title,
       (val) => {
         state.title = val;
