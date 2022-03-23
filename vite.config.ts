@@ -19,6 +19,11 @@ export default defineConfig({
         target: 'https://nutui.jd.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/devServer/, '')
+      },
+      '/devTheme': {
+        target: 'https://nutui.jd.com/theme/source',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/devTheme/, '')
       }
     }
   },

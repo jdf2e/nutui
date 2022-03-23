@@ -1,11 +1,9 @@
 import { config, mount } from '@vue/test-utils';
 import DialogTemplate from '../index.vue';
-import { Dialog } from '../index';
 import Icon from '../../icon/index.vue';
 import Popup from '../../popup/index.vue';
 import Button from '../../button/index.vue';
 import OverLay from '../../overLay/index.vue';
-import { nextTick } from 'vue';
 
 beforeAll(() => {
   config.global.components = {
@@ -40,13 +38,13 @@ test('should render dialog template', async () => {
   expect(await overLay.find('.nut-dialog__content'));
 });
 
-test('should render dialog methods', async () => {
-  // Dialog({
-  //   title: '基础弹框',
-  //   content: '支持函数调用和组件调用两种方式。',
-  //   onCancel,
-  //   onOk
-  // });
-  // const overLay = wrapper.getComponent(OverLay);
-  // expect(await overLay.find('.nut-dialog__content'))
-});
+// test('should render dialog methods', async () => {
+// Dialog({
+//   title: '基础弹框',
+//   content: '支持函数调用和组件调用两种方式。',
+//   onCancel,
+//   onOk
+// });
+// const overLay = wrapper.getComponent(OverLay);
+// expect(await overLay.find('.nut-dialog__content'))
+// });

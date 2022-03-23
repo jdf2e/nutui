@@ -12,7 +12,7 @@
         @touchmove="moveEventHandler"
         @touchend="endEventHandler"
         @touchleave="leaveEventHandler"
-      />
+      ></canvas>
     </div>
     <nut-button class="nut-signature-btn" type="default" @click="clear()">重签</nut-button>
     <nut-button class="nut-signature-btn" type="primary" @click="confirm()">确认</nut-button>

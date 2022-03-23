@@ -1,5 +1,5 @@
 <template>
-  <form class="nut-form" @submit="onSubmit">
+  <form class="nut-form" action="#" @submit.prevent="onSubmit">
     <nut-cell-group>
       <slot></slot>
     </nut-cell-group>

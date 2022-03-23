@@ -1,6 +1,7 @@
 .nut-button {
   position: relative;
   display: inline-block;
+  width: auto;
   flex-shrink: 0;
   height: $button-default-height;
   box-sizing: border-box;
