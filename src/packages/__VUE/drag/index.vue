@@ -71,8 +71,8 @@ export default create({
       const domElem = document.documentElement;
       state.elWidth = myDrag.value.offsetWidth;
       state.elHeight = myDrag.value.offsetHeight;
-      state.screenWidth = domElem.clientWidth;
-      state.screenHeight = domElem.clientHeight;
+      state.screenWidth = domElem.clientWidth || 375;
+      state.screenHeight = domElem.clientHeight || 667;
     }
 
     function goLeft(target: HTMLElement) {
