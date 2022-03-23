@@ -10,7 +10,12 @@
         <div
           class="nut-progress-text nut-progress-insidetext"
           ref="insideText"
-          :style="{ lineHeight: height, left: `${percentage}%`, transform: `translate(-${+percentage}%,-50%)` }"
+          :style="{
+            lineHeight: height,
+            left: `${percentage}%`,
+            transform: `translate(-${+percentage}%,-50%)`,
+            background: bgStyle.textInsideBackground || bgStyle.background || ''
+          }"
           v-if="showText && textInside"
         >
           <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }} </span>
@@ -56,6 +61,10 @@ export default create({
       type: Boolean,
       default: false
     },
+    textInsideBackground: {
+      type: String,
+      default: ''
+    },
     showText: {
       type: Boolean,
       default: true
@@ -88,7 +97,8 @@ export default create({
     const bgStyle = computed(() => {
       return {
         width: props.percentage + '%',
-        background: props.strokeColor || ''
+        background: props.strokeColor || '',
+        textInsideBackground: props.textInsideBackground || props.strokeColor || ''
       };
     });
     const textStyle = computed(() => {
