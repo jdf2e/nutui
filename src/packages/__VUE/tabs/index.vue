@@ -95,6 +95,7 @@ export default create({
   setup(props, { emit, slots }) {
     provide('activeKey', { activeKey: computed(() => props.modelValue) });
     const titles: Ref<Title[]> = ref([]);
+
     const currentIndex = ref((props.modelValue as number) || 0);
 
     const renderTitles = (vnodes: VNode[]) => {
@@ -116,14 +117,14 @@ export default create({
         }
       });
     };
-    const init = (vnodes: VNode[] = slots.default()) => {
+    const init = (vnodes: VNode[] = slots.default?.()) => {
       titles.value = [];
-      if (vnodes.length) {
+      if (vnodes && vnodes.length) {
         renderTitles(vnodes);
       }
     };
     watch(
-      () => slots.default(),
+      () => slots.default?.(),
       (vnodes: VNode[]) => {
         init(vnodes);
       }
