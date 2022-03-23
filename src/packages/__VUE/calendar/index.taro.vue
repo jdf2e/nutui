@@ -62,6 +62,7 @@
     @select="select"
     :show-title="showTitle"
     :show-sub-title="showSubTitle"
+    :show-today="showToday"
   >
     <template v-slot:btn v-if="showTopBtn">
       <slot name="btn"> </slot>
