@@ -81,6 +81,9 @@ textarea {
     color: #c8c9cc;
     cursor: pointer;
   }
+  .nut-button {
+    margin-left: 10px;
+  }
   &.nut-input-required {
     &::before {
       position: absolute;

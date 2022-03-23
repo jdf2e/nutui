@@ -124,7 +124,6 @@ export type InputRule = {
   pattern?: RegExp;
   message?: string;
   required?: boolean;
-  validator?: FieldRuleValidator; // 通过函数进行校验
 };
 
 export default create({
@@ -277,7 +276,7 @@ export default create({
     const inputRef = ref<HTMLInputElement>();
     const customValue = ref<() => unknown>();
     const getModelValue = () => String(props.modelValue ?? '');
-    const form = inject('form');
+    // const form = inject('form');
 
     const state = reactive({
       focused: false,
@@ -370,18 +369,6 @@ export default create({
       }
     };
 
-    // const limitValueLength = (value: string) => {
-    //   const { maxNum } = props;
-    //   if (isDef(maxNum) && getStringLength(value) > maxNum) {
-    //     const modelValue = getModelValue();
-    //     if (modelValue && getStringLength(modelValue) === +maxNum) {
-    //       return modelValue;
-    //     }
-    //     return cutString(value, +maxLength);
-    //   }
-    //   return value;
-    // };
-
     const onFocus = (event: Event) => {
       const input = event.target as HTMLInputElement;
       let value = input.value;
@@ -408,7 +395,6 @@ export default create({
       }
       updateValue(getModelValue(), 'onBlur');
       emit('blur', value, event);
-      validateWithTrigger('onBlur');
     };
 
     const clear = (event: Event) => {
@@ -417,77 +403,10 @@ export default create({
       emit('clear', '', event);
     };
 
-    // const runRules = (rules: InputRule[]) =>
-    //   rules.reduce(
-    //     (promise, rule) =>
-    //       promise.then(() => {
-    //         console.log('promise', promise, 'rule', rule)
-    //         if (state.validateFailed) {
-    //           return;
-    //         }
-
-    //         let { value } = formValue;
-
-    //         // if (rule.formatter) {
-    //         //   value = rule.formatter(value, rule);
-    //         // }
-
-    //         if (!runSyncRule(value, rule)) {
-    //           state.validateFailed = true;
-    //           state.validateMessage = getRuleMessage(value, rule);
-    //           return;
-    //         }
-
-    //         if (rule.validator) {
-    //           return runRuleValidator(value, rule).then((result) => {
-    //             if (result && typeof result === 'string') {
-    //               state.validateFailed = true;
-    //               state.validateMessage = result;
-    //             } else if (result === false) {
-    //               state.validateFailed = true;
-    //               state.validateMessage = getRuleMessage(value, rule);
-    //             }
-    //           });
-    //         }
-    //       }),
-    //     Promise.resolve()
-    //   );
-
     const resetValidation = () => {
       if (state.validateFailed) {
         state.validateFailed = false;
         state.validateMessage = '';
-      }
-    };
-
-    // const validate = (rules: any) =>
-    //   new Promise<void>((resolve) => {
-    //     console.log('rules122', form.props.rules)
-    //     resetValidation();
-    //     if (rules) {
-    //       console.log('rules233', rules)
-    //       runRules(rules).then(() => {
-    //         if (state.validateFailed) {
-    //           resolve({
-    //             // name: rules,
-    //             message: state.validateMessage
-    //           });
-    //         } else {
-    //           resolve();
-    //         }
-    //       });
-    //     } else {
-    //       resolve();
-    //     }
-    //   });
-
-    const validateWithTrigger = (trigger: InputFormatTrigger) => {
-      if (form && form.props.rules) {
-        const rules = form.props.rules;
-        if (rules) {
-          // console.log('rules', rules)
-          // validate(rules);
-        }
       }
     };
 
@@ -504,7 +423,6 @@ export default create({
       () => {
         updateValue(getModelValue());
         resetValidation();
-        validateWithTrigger('onChange');
       }
     );
 
@@ -519,7 +437,6 @@ export default create({
       styles,
       stylesTextarea,
       inputType,
-      // inputmode,
       onInput,
       onFocus,
       onBlur,

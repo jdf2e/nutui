@@ -146,7 +146,7 @@ export default create({
     watch(
       props.options,
       (newValue) => {
-        state.state.isMuted = newValue.muted ? newValue.muted : false;
+        state.state.isMuted = newValue ? newValue.muted : false;
       },
       { immediate: true }
     );

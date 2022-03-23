@@ -56,3 +56,23 @@ export function sleep(delay = 0): Promise<void> {
     setTimeout(resolve, delay);
   });
 }
+export function triggerDrag(el: any, relativeX = 0, relativeY = 0): void {
+  let x = relativeX;
+  let y = relativeY;
+  let startX = 0;
+  let startY = 0;
+  if (relativeX < 0) {
+    startX = Math.abs(relativeX);
+    x = 0;
+  }
+  if (relativeY < 0) {
+    startY = Math.abs(relativeY);
+    y = 0;
+  }
+  trigger(el, 'touchstart', startX, startY);
+  trigger(el, 'touchmove', x / 4, y / 4);
+  trigger(el, 'touchmove', x / 3, y / 3);
+  trigger(el, 'touchmove', x / 2, y / 2);
+  trigger(el, 'touchmove', x, y);
+  trigger(el, 'touchend', x, y);
+}

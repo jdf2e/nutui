@@ -7,6 +7,15 @@
   transition: transform 0.3s;
   z-index: 9999;
 }
+.popup-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow-y: auto;
+  transition: transform 0.3s;
+  z-index: 9999;
+}
 
 .nut-fade-enter-active {
   transition: opacity 1s;
