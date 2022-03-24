@@ -7,6 +7,8 @@ export class DialogOptions {
   okText?: string = '确定';
   textAlign?: string = 'center';
   teleport?: String | HTMLElement = 'body';
+  id?: string | number = new Date().getTime();
+  footerDirection?: string = 'horizontal'; //使用横纵方向 可选值 horizontal、vertical
 
   // function
   onUpdate?: Function = (value: boolean) => {};
@@ -39,7 +41,7 @@ class DialogFunction {
       }
     }
     const root = document.createElement('view');
-    root.id = 'dialog-' + new Date().getTime();
+    root.id = 'dialog-' + options.id;
     const Wrapper = {
       setup() {
         options.onUpdate = (val: boolean) => {

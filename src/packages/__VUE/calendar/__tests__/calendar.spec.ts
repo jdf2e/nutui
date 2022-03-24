@@ -4,7 +4,7 @@ import { nextTick, toRefs, reactive } from 'vue';
 import Icon from '../../icon/index.vue';
 import PopUp from '../../popup/index.vue';
 import Button from '../../button/index.vue';
-import OverLay from '../../overLay/index.vue';
+import OverLay from '../../overlay/index.vue';
 import CalendarItem from '../../calendaritem/index.vue';
 
 beforeAll(() => {

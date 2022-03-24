@@ -63,7 +63,6 @@ export default create({
     });
     onMounted(() => {
       state.mounted = true;
-      console.log(props.className);
     });
 
     const clickCover = () => {

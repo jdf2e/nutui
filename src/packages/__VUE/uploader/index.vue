@@ -317,7 +317,7 @@ export default create({
           index
         });
       } else {
-        console.log('用户阻止了删除！');
+        // console.log('用户阻止了删除！');
       }
     };
 

@@ -3,11 +3,13 @@ import Swipe from '../index.vue';
 import { nextTick } from 'vue';
 import NutButton from '../../button/index.vue';
 import NutCell from '../../cell/index.vue';
+import NutIcon from '../../icon/index.vue';
 
 beforeAll(() => {
   config.global.components = {
     NutButton,
-    NutCell
+    NutCell,
+    NutIcon
   };
 });
 
