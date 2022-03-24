@@ -12,7 +12,12 @@
           class="nut-progress-text nut-progress-insidetext"
           ref="insideText"
           :id="'nut-progress-insidetext-taro-' + randRef"
-          :style="{ lineHeight: height, left: `${percentage}%`, transform: `translate(-${+percentage}%,-50%)` }"
+          :style="{
+            lineHeight: height,
+            left: `${percentage}%`,
+            transform: `translate(-${+percentage}%,-50%)`,
+            background: textBackground || strokeColor
+          }"
           v-if="showText && textInside"
         >
           <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }}</span>
@@ -68,6 +73,10 @@ export default create({
       default: ''
     },
     textColor: {
+      tyep: String,
+      default: ''
+    },
+    textBackground: {
       tyep: String,
       default: ''
     },
