@@ -60,7 +60,7 @@ test('should close popover when clicking the list', async () => {
   const wrapper = mount(Popover, {
     props: {
       visible: true,
-      actions: baseActions
+      list: baseActions
     }
   });
 
@@ -87,6 +87,15 @@ test('should change icon class prefix when using icon prop', () => {
   const wrapper = mount(Popover, {
     props: {
       list: [{ icon: 'success', name: 'foo' }]
+    }
+  });
+
+  expect(wrapper.html()).toMatchSnapshot();
+});
+test('slots', () => {
+  const wrapper = mount(Popover, {
+    slots: {
+      content: () => 'Custom content'
     }
   });
 

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Video video base info 1`] = `
+"<div class=\\"nut-video\\"><video class=\\"nut-video-player\\" autoplay=\\"\\" loop=\\"\\" controls=\\"\\" playsinline=\\"true\\" webkit-playsinline=\\"true\\" x5-video-player-type=\\"h5-page\\" x5-video-player-fullscreen=\\"false\\">
+    <source src=\\"xxx.mp4\\" type=\\"video/mp4\\">
+  </video>
+  <!--v-if-->
+  <!--v-if-->
+  <div class=\\"nut-video-controller show-control\\" style=\\"display: none;\\">
+    <div class=\\"control-play-btn\\"></div>
+    <div class=\\"current-time\\">00:00</div>
+    <div class=\\"progress-container\\">
+      <div class=\\"progress\\">
+        <div class=\\"buffered\\" style=\\"width: 0%;\\"></div>
+        <div class=\\"video-ball\\" style=\\"transform: translate3d(0px, -50%, 0);\\">
+          <div class=\\"move-handle\\"></div>
+        </div>
+        <div class=\\"played\\"></div>
+      </div>
+    </div>
+    <div class=\\"duration-time\\">00:00</div>
+    <div class=\\"volume muted\\"></div>
+    <div class=\\"fullscreen-icon\\"></div>
+  </div><!-- 错误弹窗 -->
+  <div class=\\"nut-video-error\\" style=\\"display: none;\\">
+    <p class=\\"lose\\">视频加载失败</p>
+    <p class=\\"retry\\">点击重试</p>
+  </div>
+</div>"
+`;

@@ -157,6 +157,7 @@ test('Events test', async () => {
         visible1: true,
         currentKey1: 0,
         currentTime1: [] as any[],
+        key: [],
         times1: [
           {
             key: 0,
@@ -191,7 +192,9 @@ test('Events test', async () => {
         }
       };
 
-      const handleSelected1 = (obj: any) => {};
+      const handleSelected1 = (obj: any) => {
+        state.key = obj;
+      };
 
       return {
         ...toRefs(state),
@@ -204,6 +207,6 @@ test('Events test', async () => {
   });
 
   // event test
-  // await wrapper.find('.nut-overlay').trigger('click');
-  // expect(wrapper.emitted('select')).toBeTruthy();
+  await wrapper.find('.nut-overlay').trigger('click');
+  expect(wrapper.vm.key).toHaveLength(0);
 });

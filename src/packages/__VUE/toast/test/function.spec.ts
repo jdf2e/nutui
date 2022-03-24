@@ -34,4 +34,17 @@ describe('function toast', () => {
     let failToast = document.querySelector('.nut-icon-failure') as HTMLElement;
     expect(failToast.style.fontSize).toEqual('20px');
   });
+  test('show warn toast', async () => {
+    ToastFunction.warn('文案');
+    await sleep();
+    let failToast = document.querySelector('.nut-icon-failure') as HTMLElement;
+    expect(failToast.style.fontSize).toEqual('20px');
+  });
+  test('show fail toast', async () => {
+    ToastFunction.fail('文案');
+    await sleep();
+    let failToast = document.querySelector('.nut-icon-tips') as HTMLElement;
+    expect(failToast.style.fontSize).toEqual('20px');
+    ToastFunction.hide();
+  });
 });
