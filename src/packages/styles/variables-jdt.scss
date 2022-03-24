@@ -471,7 +471,7 @@ $popover-disable-color: rgba(154, 155, 157, 1) !default;
 
 //progress
 $progress-inner-background-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%) !default;
-$progress-insidetext-background: $primary-color !default;
+$progress-insidetext-background: $progress-inner-background-color !default;
 $progress-outer-background-color: rgba(0, 0, 0, 0.15) !default;
 $progress-outer-border-radius: 0 !default;
 $progress-insidetext-border-radius: 10px !default;
