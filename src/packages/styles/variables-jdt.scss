@@ -717,5 +717,8 @@ $elevator-list-item-bars-z-index: 10 !default;
 $elevator-list-item-bars-inner-item-padding: 3px !default;
 $elevator-list-item-bars-inner-item-font-size: 10px !default;
 
+// list
+$list-item-margin: 0 0 10px 0;
+
 @import './mixins/index';
 @import './animation/index';

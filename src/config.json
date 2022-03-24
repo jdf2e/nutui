@@ -207,7 +207,6 @@
           "tarodoc": false,
           "author": "szg2008"
         }
-        
       ]
     },
     {
@@ -510,6 +509,17 @@
           "sort": 26,
           "show": false,
           "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "List",
+          "cType": "操作反馈",
+          "cName": "虚拟列表",
+          "desc": "可在成千上万条数据渲染时只渲染用户最大可见条数，提升页面渲染性能",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "szg2008"
         }
       ]
     },
