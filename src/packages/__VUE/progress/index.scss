@@ -14,7 +14,7 @@
       background: $progress-inner-background-color;
       -webkit-transition: all 0.4s;
       transition: all 0.4s;
-      position: relative;
+      // position: relative;
       .nut-progress-text {
         display: flex;
         flex-direction: column;
@@ -54,7 +54,8 @@
         font-size: $progress-small-text-font-size;
         line-height: $progress-small-text-line-height;
         padding: $progress-small-text-padding;
-        top: $progress-small-text-top;
+        // top: $progress-small-text-top;
+        top: 50%;
       }
     }
     &.nut-progress-base {
@@ -63,7 +64,7 @@
         font-size: $progress-base-text-font-size;
         line-height: $progress-base-text-line-height;
         padding: $progress-base-text-padding;
-        top: $progress-base-text-top;
+        top: 50%;
       }
     }
     &.nut-progress-large {
@@ -72,7 +73,7 @@
         font-size: $progress-large-text-font-size;
         line-height: $progress-large-text-line-height;
         padding: $progress-large-text-padding;
-        top: $progress-large-text-top;
+        top: 50%;
       }
     }
   }
@@ -91,7 +92,7 @@
     border-radius: $progress-insidetext-border-radius;
     position: absolute;
     transition: all 0.4s;
-    top: -42%;
+    top: 50%;
     min-width: 0px;
   }
   .nut-icon-success,
