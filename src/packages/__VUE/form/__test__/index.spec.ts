@@ -132,9 +132,9 @@ describe('Form', () => {
             submit() {
               dynamicRefForm.value.validate().then(({ valid, errors }: any) => {
                 if (valid) {
-                  console.log('success', dynamicForm);
+                  // console.log('success', dynamicForm);
                 } else {
-                  console.log('error submit!!', errors);
+                  // console.log('error submit!!', errors);
                 }
               });
             },
@@ -223,9 +223,9 @@ describe('Form', () => {
         const submit = () => {
           ruleForm.value.validate().then(({ valid, errors }: any) => {
             if (valid) {
-              console.log('success', formData);
+              // console.log('success', formData);
             } else {
-              console.log('error submit!!!', errors);
+              // console.log('error submit!!!', errors);
             }
           });
         };
