@@ -49,7 +49,7 @@ const awaitIframe = async () => {
 };
 const zhKeyDesc = {
   '$primary-color': '全局主题色',
-  '$primary-color-end': '全局主题色结束颜色（主题色渐变，例如 Buton）'
+  '$primary-color-end': '全局主题色结束颜色（主题色渐变，例如 Button）'
 } as any;
 // 提取变量
 const extractVariables = (matched: string[], name: string, lowerCaseName: string) =>
