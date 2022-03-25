@@ -10,7 +10,12 @@
         <div
           class="nut-progress-text nut-progress-insidetext"
           ref="insideText"
-          :style="{ lineHeight: height, left: left }"
+          :style="{
+            lineHeight: height,
+            left: `${percentage}%`,
+            transform: `translate(-${+percentage}%,-50%)`,
+            background: textBackground || strokeColor
+          }"
           v-if="showText && textInside"
         >
           <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }} </span>
@@ -68,6 +73,10 @@ export default create({
       tyep: String,
       default: ''
     },
+    textBackground: {
+      tyep: String,
+      default: ''
+    },
     iconName: {
       type: String,
       default: 'checked'
@@ -85,7 +94,6 @@ export default create({
     const height = ref(props.strokeWidth + 'px');
     const progressOuter = ref();
     const insideText = ref();
-    const left = ref();
     const bgStyle = computed(() => {
       return {
         width: props.percentage + '%',
@@ -97,35 +105,13 @@ export default create({
         color: props.textColor || ''
       };
     });
-
-    const slideLeft = (values: string | number) => {
-      if (props.textInside) {
-        let offsetWidth = progressOuter.value.offsetWidth;
-        let percentageWidth = progressOuter.value.offsetWidth * Number(values) * 0.01;
-        let insideTextWidth = insideText.value.offsetWidth;
-        left.value = percentageWidth - 5 + 'px';
-        if (offsetWidth == percentageWidth) {
-          left.value = percentageWidth - insideTextWidth + 'px';
-        }
-      }
-    };
-
-    watch(
-      () => props.percentage,
-      (values) => {
-        slideLeft(values);
-      }
-    );
-    onMounted(() => {
-      slideLeft(props.percentage);
-    });
+    onMounted(() => {});
     return {
       height,
       bgStyle,
       textStyle,
       progressOuter,
-      insideText,
-      left
+      insideText
     };
   }
 });

@@ -236,6 +236,7 @@ export default {
 | title-icon-position | 标题图标位置 | string | ‘left' |
 | rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | string \ number | 180 |
 
+
 ### CollapseItem Prop
 | 参数 | 说明 | 类型 | 默认值 | 
 |------|------|------|------|
@@ -243,6 +244,7 @@ export default {
 | title | 标题栏左侧内容，支持插槽传入（props传入的优先级更高） | string | - |
 | sub-title | 标题栏副标题，支持插槽传入（props传入的优先级更高） | string | - |
 | disabled | 标题栏是否禁用 | boolean | false |
+
 
 ### Events
 

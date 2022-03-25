@@ -61,6 +61,7 @@ export default createDemo({
     };
     return {
       progressOption,
+      strokeInnerWidth,
       isAuto,
       setAddVal,
       setReduceVal,

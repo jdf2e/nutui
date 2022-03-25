@@ -32,6 +32,21 @@
       color: $white;
       z-index: 1;
     }
+    &_dot {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 7px;
+      padding: 0px;
+      background: $tabbar-active-color;
+      text-align: center;
+      font-size: 12px;
+      font-weight: normal;
+      color: #fff;
+      top: 0;
+      right: 0;
+      transform: translate(50%, -50%);
+    }
 
     &_num {
       line-height: 1;

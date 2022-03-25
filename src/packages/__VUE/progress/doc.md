@@ -134,6 +134,7 @@ app.use(Icon);
 | show-text | 是否显示进度条文字内容 | Boolean | true
 | text-inside | 进度条文字显示位置(false:外显，true:内显) | Boolean | false
 | text-color | 进度条文字颜色设置 | String | #333
+| text-background | 进度条文字背景颜色设置 | String | 同进度条颜色
 | status | 进度条当前状态,active(展示动画效果)/icon(展示icon标签) | String | text
 | icon-name | icon名称 | String | checked
 | icon-color | icon颜色 | String | #439422

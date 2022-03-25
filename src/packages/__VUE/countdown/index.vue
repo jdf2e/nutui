@@ -160,6 +160,8 @@ export default create({
       const diffTime = curr - start;
 
       state.restTime = end - (start + diffTime);
+      clearInterval(state.timer);
+      state.timer = null;
       (state.timer as any) = setInterval(() => {
         if (!props.paused) {
           let restTime = end - (Date.now() - state.p + diffTime);
