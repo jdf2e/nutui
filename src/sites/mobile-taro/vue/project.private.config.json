@@ -25,10 +25,11 @@
           "scene": null
         },
         {
-          "name": "feedback/pages/noticebar/index",
-          "pathName": "feedback/pages/noticebar/index",
+          "name": "dentry/pages/pickers/index",
+          "pathName": "dentry/pages/pickers/index",
           "query": "",
-          "scene": null
+          "scene": null,
+          "launchMode": "default"
         },
         {
           "name": "feedback/pages/collapse/index",
