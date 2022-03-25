@@ -2,12 +2,7 @@
   <div class="demo">
     <h2>基本用法</h2>
     <view class="demo-box">
-      <nut-swiper
-        :init-page="page"
-        :pagination-visible="true"
-        pagination-color="#426543"
-        auto-play="2000"
-      >
+      <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
         <nut-swiper-item v-for="item in list" :key="item">
           <img :src="item" alt="" />
         </nut-swiper-item>
@@ -85,7 +80,7 @@ export default createDemo({
 <style lang="scss" scoped>
 .demo-box {
   .nut-swiper-item {
-    line-height: 150px;
+    height: 150px;
     img {
       width: 100%;
       height: 100%;
