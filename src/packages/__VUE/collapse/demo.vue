@@ -45,7 +45,7 @@
       title-icon="issue"
       title-icon-color="red"
       title-icon-size="20px"
-      title-icon-position="left"
+      title-icon-position="right"
       icon="down-arrow"
       :accordion="true"
     >
