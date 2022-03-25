@@ -80,7 +80,7 @@ export default {
 | max-length  | 限制最长输入字符                                 | String、Number | -              |
 | rows        | textarea的高度                                   | String、Number | `2`            |
 | limit-show  | textarea是否展示输入字符。须配合`max-length`使用 | Boolean        | `false`        |
-| autosize    | 高度是否可拉伸                                   | Boolean        | `false`        |
+| autosize    | 是否自适应内容高度，也可传入对象, 如 { maxHeight: 200, minHeight: 100 }，单位为px | Boolean 、{maxHeight?: number; minHeight?: number}       | `false`        |
 | text-align  | 文本位置,可选值`left`,`center`,`right`           | String         | `left`         |
 | readonly    | 只读属性                                         | Boolean        | `false`        |
 | disabled    | 禁用属性                                         | Boolean        | `false`        |

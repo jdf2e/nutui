@@ -1,7 +1,13 @@
 <template>
-  <view class="nut-range-container">
+  <view :class="containerClasses">
     <view class="min" v-if="!hiddenRange">{{ +min }}</view>
     <view ref="root" :style="wrapperStyle" :class="classes" @click.stop="onClick">
+      <view class="nut-range-mark" v-if="marksList.length > 0">
+        <span v-for="marks in marksList" :key="marks" :class="markClassName(marks)" :style="marksStyle(marks)">
+          {{ marks }}
+          <span class="nut-range-tick" :style="tickStyle(marks)"></span>
+        </span>
+      </view>
       <view class="nut-range-bar" :style="barStyle">
         <template v-if="range">
           <view
@@ -82,10 +88,19 @@ export default create({
       type: Boolean,
       default: false
     },
+
     disabled: Boolean,
     activeColor: String,
     inactiveColor: String,
     buttonColor: String,
+    vertical: {
+      type: Boolean,
+      default: false
+    },
+    marks: {
+      type: Object,
+      default: {}
+    },
     hiddenRange: {
       type: Boolean,
       default: false
@@ -123,6 +138,16 @@ export default create({
     const dragStatus = ref<'start' | 'draging' | ''>();
     const touch = useTouch();
 
+    const marksList = computed(() => {
+      const { marks, max, min } = props;
+      const marksKeys = Object.keys(marks);
+      const range = Number(max) - Number(min);
+      const list = marksKeys
+        .map(parseFloat)
+        .sort((a, b) => a - b)
+        .filter((point) => point >= min && point <= max);
+      return list;
+    });
     const scope = computed(() => Number(props.max) - Number(props.min));
 
     const classes = computed(() => {
@@ -130,10 +155,17 @@ export default create({
       return {
         [prefixCls]: true,
         [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-vertical`]: props.vertical,
         [`${prefixCls}-show-number`]: !props.hiddenRange
       };
     });
-
+    const containerClasses = computed(() => {
+      const prefixCls = 'nut-range-container';
+      return {
+        [prefixCls]: true,
+        [`${prefixCls}-vertical`]: props.vertical
+      };
+    });
     const wrapperStyle = computed(() => {
       return {
         background: props.inactiveColor
@@ -165,14 +197,68 @@ export default create({
     };
 
     const barStyle = computed<CSSProperties>(() => {
-      return {
-        width: calcMainAxis(),
-        left: calcOffset(),
-        background: props.activeColor,
-        transition: dragStatus.value ? 'none' : undefined
-      };
+      if (props.vertical) {
+        return {
+          height: calcMainAxis(),
+          top: calcOffset(),
+          background: props.activeColor,
+          transition: dragStatus.value ? 'none' : undefined
+        };
+      } else {
+        return {
+          width: calcMainAxis(),
+          left: calcOffset(),
+          background: props.activeColor,
+          transition: dragStatus.value ? 'none' : undefined
+        };
+      }
     });
+    const markClassName = (mark: any) => {
+      const classPrefix = 'nut-range-mark';
+      const { modelValue, max, min } = props;
+      let lowerBound: any = Number(min);
+      let upperBound: any = Number(max);
+      if (props.range) {
+        const [left, right] = modelValue as any;
+        lowerBound = left;
+        upperBound = right;
+      } else {
+        upperBound = modelValue;
+      }
+      let isActive = mark <= upperBound && mark >= lowerBound;
+      return {
+        [`${classPrefix}-text`]: true,
+        [`${classPrefix}-text-active`]: isActive
+      };
+    };
+    const marksStyle = (mark: any) => {
+      const { max, min, vertical } = props;
+      let style: any = {
+        left: `${((mark - Number(min)) / scope.value) * 100}%`
+      };
+      if (vertical) {
+        style = {
+          top: `${((mark - Number(min)) / scope.value) * 100}%`
+        };
+      }
+      return style;
+    };
+    const tickStyle = (mark: any) => {
+      const { modelValue, max, min } = props;
+      let lowerBound: any = Number(min);
+      let upperBound: any = Number(max);
+      if (props.range) {
+        const [left, right] = modelValue as any;
+        lowerBound = left;
+        upperBound = right;
+      }
+      let isActive = mark <= upperBound && mark >= lowerBound;
+      let style: any = {
+        background: !isActive ? props.inactiveColor : props.activeColor
+      };
 
+      return style;
+    };
     const format = (value: number) => {
       const { min, max, step } = props;
       value = Math.max(+min, Math.min(value, +max));
@@ -212,8 +298,12 @@ export default create({
 
       const { min, modelValue } = props;
       const rect = useRect(root);
-      const delta = event.clientX - rect.left;
-      const total = rect.width;
+      let delta = event.clientX - rect.left;
+      let total = rect.width;
+      if (props.vertical) {
+        delta = event.clientY - rect.top;
+        total = rect.height;
+      }
       const value = Number(min) + (delta / total) * scope.value;
       if (isRange(modelValue)) {
         const [left, right] = modelValue;
@@ -258,10 +348,14 @@ export default create({
       dragStatus.value = 'draging';
 
       const rect = useRect(root);
-      const delta = touch.deltaX.value;
-      const total = rect.width;
-      const diff = (delta / total) * scope.value;
-
+      let delta = touch.deltaX.value;
+      let total = rect.width;
+      let diff = (delta / total) * scope.value;
+      if (props.vertical) {
+        delta = touch.deltaY.value;
+        total = rect.height;
+        diff = (delta / total) * scope.value;
+      }
       if (isRange(startValue)) {
         (currentValue as number[])[buttonIndex.value] = startValue[buttonIndex.value] + diff;
       } else {
@@ -300,7 +394,12 @@ export default create({
       ...toRefs(props),
       barStyle,
       curValue,
-      buttonIndex
+      buttonIndex,
+      containerClasses,
+      markClassName,
+      marksStyle,
+      marksList,
+      tickStyle
     };
   }
 });
