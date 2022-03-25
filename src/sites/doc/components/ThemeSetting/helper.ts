@@ -47,7 +47,10 @@ const awaitIframe = async () => {
     await new Promise((r) => setTimeout(r, 100));
   }
 };
-
+const zhKeyDesc = {
+  '$primary-color': '全局主题色',
+  '$primary-color-end': '全局主题色结束颜色（主题色渐变，例如 Buton）'
+} as any;
 // 提取变量
 const extractVariables = (matched: string[], name: string, lowerCaseName: string) =>
   matched.reduce((res, str) => {
@@ -60,6 +63,7 @@ const extractVariables = (matched: string[], name: string, lowerCaseName: string
         name, // 组件名
         lowerCaseName, // 组件名小写
         key, // 变量名
+        key_zh: zhKeyDesc[key],
         rawValue: value, // 原始值
         computedRawValue: '', // 计算后的原始值
         value, // 编辑的值

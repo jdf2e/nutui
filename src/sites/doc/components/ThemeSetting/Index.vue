@@ -7,6 +7,7 @@
     <n-divider />
     <ul>
       <li :key="item.key" v-for="item in formItems">
+        <p>{{ item.key_zh }}</p>
         <p
           ><b>{{ item.key }}</b
           >: {{ item.value }} （<del>{{ item.rawValue }}</del

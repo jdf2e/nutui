@@ -1,12 +1,14 @@
 <template>
   <div class="doc-header" :class="themeName()">
     <div class="header-logo">
-      <a class="logo-link" href="#" @click="toHome"></a>
+      <a class="logo-link" href="#/base"></a>
       <span class="logo-border"></span>
       <span class="version">{{ version }}</span>
     </div>
     <div class="header-nav">
-      <a href="https://github.com/jdf2e/nutui/tree/theme" target="_blank">🌈 主题定制 </a>
+      <a href="https://www.bilibili.com/video/BV1fi4y1D7qb" target="_blank"
+        >🌈 &nbsp;&nbsp;视频教程 「一分钟快速实现主题定制」 https://www.bilibili.com/video/BV1fi4y1D7qb</a
+      >
     </div>
   </div>
 </template>

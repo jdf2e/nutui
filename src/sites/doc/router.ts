@@ -35,8 +35,8 @@ for (const path in modulesPageTaro) {
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: '/',
+    path: '/main',
+    name: 'main',
     component: Index,
     children: pagesRouter
   }
@@ -45,7 +45,7 @@ routes.push({
   name: 'notFound',
   path: '/:path(.*)+',
   redirect: {
-    name: '/'
+    name: 'base'
   }
 });
 const router = createRouter({
