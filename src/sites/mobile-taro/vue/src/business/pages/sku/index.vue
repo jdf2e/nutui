@@ -3,8 +3,8 @@
     <h2>基本用法</h2>
     <nut-cell :title="`基本用法`" desc="" @click="base = true"></nut-cell>
 
-    <h2>限购模式</h2>
-    <nut-cell title="设置限购、已购、起购" desc="" @click="openQuota = true"></nut-cell>
+    <h2>不可售</h2>
+    <nut-cell title="不可售" desc="" @click="notSell = true"></nut-cell>
 
     <h2>自定义计步器</h2>
     <nut-cell title="自定义计步器" desc="" @click="customStepper = true"></nut-cell>
@@ -22,29 +22,30 @@
     ></nut-sku>
 
     <nut-sku
-      v-model:visible="openQuota"
+      v-model:visible="notSell"
       :sku="skuData"
       :goods="goodsInfo"
-      :showSaleLimit="true"
-      :showSaleLowest="true"
-      :stepperMax="7"
-      :stepperMin="2"
-      :purchased="2"
+      :btnExtraText="btnExtraText"
+      @changeStepper="changeStepper"
       :btnOptions="['buy', 'cart']"
       @selectSku="selectSku"
-      @clickBtnOperate="clickBtnOperate"
       @close="close"
-    ></nut-sku>
+    >
+      <template #sku-operate>
+        <div class="sku-operate-box">
+          <nut-button class="sku-operate-box-dis" type="warning">查看相似商品</nut-button>
+          <nut-button class="sku-operate-box-dis" type="info">到货通知</nut-button>
+        </div>
+      </template>
+    </nut-sku>
 
     <nut-sku
       v-model:visible="customStepper"
       :sku="skuData"
       :goods="goodsInfo"
-      :showSaleLimit="true"
       :stepperMax="7"
       :stepperMin="2"
-      :saleLowestText="saleLowestText"
-      :saleLimitText="saleLimitText"
+      :stepperExtraText="stepperExtraText"
       @changeStepper="changeStepper"
       @overLimit="overLimit"
       :btnOptions="['buy', 'cart']"
@@ -106,7 +107,7 @@
 
 <script lang="ts">
 import { reactive, ref, toRefs, onMounted, defineComponent } from 'vue';
-import { Sku, Goods } from './data';
+import { Sku, Goods, imagePathMap } from './data';
 
 interface Skus {
   id: number;
@@ -125,13 +126,14 @@ interface SkuItem {
 interface GoodsProps {
   skuId: string | number;
   price: string; // 商品信息展示区，商品价格
-  imagePath: string;
+  imagePath?: string;
   [key: string]: any;
 }
 
 interface Data {
   skuData: Skus[];
-  goodsInfo: GoodsProps;
+  goodsInfo: any;
+  imagePathMap: any;
 }
 
 export default defineComponent({
@@ -139,7 +141,7 @@ export default defineComponent({
   setup() {
     const popup = reactive({
       base: false,
-      openQuota: false,
+      notSell: false,
       customStepper: false,
       customBySlot: false,
 
@@ -148,12 +150,15 @@ export default defineComponent({
 
     const data = reactive<Data>({
       skuData: [],
-      goodsInfo: {}
+      goodsInfo: {},
+      imagePathMap: {}
     });
 
-    const saleLowestText = (min: string) => `${min} 件起售`;
-    const saleLimitText = (max: string) => `最多买${max}件`;
+    const stepperExtraText = () => {
+      return `<view style="width:100%;text-align:right;color:#F00">2 件起售</view>`;
+    };
 
+    const btnExtraText = ref('抱歉，此商品在所选区域暂无存货');
     const addressDesc = ref('(配送地会影响库存，请先确认)');
     const existAddress = ref([
       {
@@ -193,7 +198,6 @@ export default defineComponent({
         townName: ''
       }
     ]);
-
     onMounted(() => {
       getData();
     });
@@ -202,23 +206,28 @@ export default defineComponent({
       setTimeout(() => {
         data.skuData = Sku;
         data.goodsInfo = Goods;
+        data.imagePathMap = imagePathMap;
       }, 500);
     };
     const selectSku = (s: any) => {
-      const { sku, skuIndex, parentSku, parentIndex } = s;
+      const { sku, parentIndex } = s;
 
-      if (sku._disable) return false;
+      if (sku.disable) return false;
 
       data.skuData[parentIndex].list.forEach((s) => {
-        s._active = s.id == sku.id;
+        s.active = s.id == sku.id;
       });
 
       data.goodsInfo = {
         skuId: sku.id,
-        price: '9.10', // 商品信息展示区，商品价格
-        imagePath:
-          'https://img20.360buyimg.com/imagetools/s750x750_jfs/t1/201286/22/5692/60152/6136fb94Eea1a9d48/211f40f9d27e6cea.jpg' // 商品信息展示区，商品图
+        price: '4599.00' // 商品信息展示区，商品价格
       };
+
+      data.skuData[0].list.forEach((el) => {
+        if (el.active && !el.disable) {
+          data.goodsInfo.imagePath = data.imagePathMap[el.id];
+        }
+      });
     };
 
     // stepper 更改
@@ -251,14 +260,13 @@ export default defineComponent({
     return {
       selectSku,
       changeStepper,
-      Goods,
       clickBtnOperate,
       close,
       existAddress,
       selectedAddress,
       addressDesc,
-      saleLowestText,
-      saleLimitText,
+      stepperExtraText,
+      btnExtraText,
       overLimit,
       ...toRefs(popup),
       ...toRefs(data)
@@ -282,7 +290,8 @@ export default defineComponent({
 .sku-operate-box {
   width: 100%;
   display: flex;
-  padding: 8px 0px;
+  padding: 8px 10px;
+  box-sizing: border-box;
 
   .sku-operate-item {
     width: 100%;
@@ -294,6 +303,14 @@ export default defineComponent({
     &:last-child {
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
+    }
+  }
+
+  .sku-operate-box-dis {
+    width: 100%;
+    flex-shrink: 1;
+    &:first-child {
+      margin-right: 18px;
     }
   }
 }

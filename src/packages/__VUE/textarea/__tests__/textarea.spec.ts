@@ -75,7 +75,6 @@ test('props autosize text-align autofocus', async () => {
   const wrapper = mount(component);
   await nextTick();
   const txtWrapper = wrapper.find('.nut-textarea__textarea').element as HTMLTextAreaElement;
-  expect(txtWrapper.style.resize).toBe(wrapper.vm.autosize ? 'vertical' : 'none');
   expect(txtWrapper.style.textAlign).toBe(wrapper.vm.textAlign);
   expect(wrapper.find('.nut-textarea__textarea').attributes('autofocus')).not.toBeUndefined();
 });
