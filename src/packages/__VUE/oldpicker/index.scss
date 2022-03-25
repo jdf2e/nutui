@@ -1,28 +1,20 @@
-.nut-picker {
-  // 标题
+.nut-oldpicker {
+  &__content {
+    display: block;
+    position: relative;
+    text-align: center;
+    overflow-y: hidden;
+    &:hover {
+      cursor: grab;
+    }
+  }
+
   &__bar {
     display: flex;
     height: 56px;
     align-items: center;
     justify-content: space-between;
   }
-  &__button {
-    cursor: pointer;
-    padding: $picker-bar-button-padding;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 50px;
-  }
-  &__left {
-    color: $picker-cancel-color;
-    font-size: $picker-bar-cancel-font-size;
-  }
-  &__right {
-    color: $picker-ok-color;
-    font-size: $picker-bar-ok-font-size;
-  }
-
   &__column {
     display: flex;
     position: relative;
@@ -33,16 +25,28 @@
     flex-grow: 1;
     height: 100%;
   }
+  &__left {
+    color: $picker-cancel-color;
+    font-size: $picker-bar-cancel-font-size;
+  }
+  &__right {
+    color: $picker-ok-color;
+    font-size: $picker-bar-ok-font-size;
+  }
 
   &__title {
-    flex: 1;
-    @include oneline-ellipsis();
-    text-align: center;
     color: $picker-bar-title-color;
     font-size: $picker-bar-title-font-size;
     font-weight: $picker-bar-title-font-weight;
   }
 
+  &__button {
+    cursor: pointer;
+    padding: $picker-bar-button-padding;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
   &__wrapper {
     display: block;
   }
@@ -123,6 +127,5 @@
     line-height: $picker-item-height;
     text-align: center;
     font-size: 16px;
-    color: $picker-columns-item-color;
   }
 }
