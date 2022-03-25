@@ -79,7 +79,7 @@ export default {
 <style lang="scss">
 .demo-box {
   .nut-swiper-item {
-    line-height: 150px;
+    height: 150px;
     img {
       width: 100%;
       height: 100%;
