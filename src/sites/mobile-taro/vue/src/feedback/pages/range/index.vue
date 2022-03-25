@@ -46,6 +46,38 @@
         </template>
       </nut-range>
     </nut-cell>
+    <h2>垂直方向</h2>
+    <nut-cell class="vertical_div">
+      <view class="div">
+        <nut-range v-model="value10" @change="onChange" :vertical="true"></nut-range>
+      </view>
+      <view class="div">
+        <nut-range range v-model="value11" @change="onChange" :vertical="true"></nut-range>
+      </view>
+    </nut-cell>
+    <h2>刻度标记</h2>
+    <nut-cell class="cell">
+      <nut-range v-model="value12" @change="onChange" :marks="marks" :hiddenRange="true"></nut-range>
+    </nut-cell>
+    <nut-cell class="cell">
+      <nut-range range v-model="value13" @change="onChange" :marks="marks" :hiddenRange="true"></nut-range>
+    </nut-cell>
+
+    <nut-cell class="vertical_div">
+      <view class="div">
+        <nut-range v-model="value14" @change="onChange" :vertical="true" :marks="marks" :hiddenRange="true"></nut-range>
+      </view>
+      <view class="div">
+        <nut-range
+          range
+          v-model="value15"
+          @change="onChange"
+          :vertical="true"
+          :marks="marks"
+          :hiddenRange="true"
+        ></nut-range>
+      </view>
+    </nut-cell>
   </div>
 </template>
 
@@ -63,7 +95,21 @@ export default {
       value6: 40,
       value7: 50,
       value8: 40,
-      value9: 60
+      value9: 60,
+      value10: 20,
+      value11: [20, 80],
+      value12: 60,
+      value13: [20, 80],
+      value14: 60,
+      value15: [20, 80],
+      marks: {
+        0: 0,
+        20: 20,
+        40: 40,
+        60: 60,
+        80: 80,
+        100: 100
+      }
     });
     const onChange = (value: number) => console.log('当前值：' + value);
     return {
@@ -86,5 +132,12 @@ export default {
   text-align: center;
   background-color: #ee0a24;
   border-radius: 100px;
+}
+.vertical_div {
+  height: 180px;
+  padding: 10px;
+  .div {
+    width: 150px;
+  }
 }
 </style>
