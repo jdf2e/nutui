@@ -34,7 +34,16 @@ test('Do not display Chinese', async () => {
   expect(wrapper.find('.nut-picker__confirm').exists()).toBeTruthy();
   const confirm = wrapper.find('.nut-picker__confirm');
   confirm.trigger('click');
-  expect(wrapper.emitted().confirm[0]).toEqual([[2020, 1, 1]]);
+  expect(wrapper.emitted().confirm[0]).toEqual([
+    {
+      selectedValue: ['2020', '01', '01'],
+      selectedOptions: [
+        { text: '2020', value: '2020' },
+        { text: '01', value: '01' },
+        { text: '01', value: '01' }
+      ]
+    }
+  ]);
 });
 
 test('min date & max date', async () => {

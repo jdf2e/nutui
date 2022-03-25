@@ -1,10 +1,22 @@
-#  Picker 选择器
+# Picker
 
 ### 介绍
-    
+
 提供多个选项集合供用户选择其中一项。
-    
-## 安装
+
+### 组件重构
+
+Picker 组件在 3.1.18 版本进行重构，调整了之前 API 设计不合理的地方，主要变更如下：
+
+* 支持通过 `v-model` 绑定当前选中的值，移除 `default-index` 属性
+* 重命名选项集合属性 `list-data` 为 `columns` 
+* 重新定义 `columns` 属性的数据格式，是由对象构成的一维或多维数组
+* 重新定义 `confirm`、`close`、`change` 事件的回调参数
+
+同时也对重构前的 Picker 组件进行了保留，如有需要可通过 [OldPicker 组件](https://nutui.jd.com/#/oldpicker) 进行查看。
+
+### 安装
+
 ```javascript
 import { createApp } from 'vue';
 // vue
@@ -16,44 +28,45 @@ const app = createApp();
 app.use(Picker);
 app.use(Popup);
 ```
-    
-## 代码演示
 
-    
 ### 基础用法
 :::demo
 ```html
 <template>
-  <nut-cell title="请选择城市" :desc="desc" @click="open"></nut-cell>
+  <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
   <nut-picker
-      v-model:visible="show"
-      :list-data="listData"
-      title="城市选择"
-      @confirm="confirm" 
-  ></nut-picker>
+    v-model:visible="show"
+    :columns="columns"
+    title="城市选择"
+    @change="change"
+    @confirm="confirm"
+  >
+  </nut-picker>
 </template>
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
       const show = ref(false);
-      const listData = [
-        '南京市',
-        '无锡市',
-        '海北藏族自治区',
-        '北京市',
-        '连云港市',
-        '浙江市',
-        '江苏市'
-      ];
-      const desc = ref(listData[0]);
-      const open = ()=>{
-        show.value = true;
+      const desc = ref('');
+      const columns = ref([
+        { text: '南京市', value: 'NanJing' },
+        { text: '无锡市', value: 'WuXi' },
+        { text: '海北藏族自治区', value: 'ZangZu' },
+        { text: '北京市', value: 'BeiJing' },
+        { text: '连云港市', value: 'LianYunGang' },
+        { text: '浙江市', value: 'ZheJiang' },
+        { text: '江苏市', value: 'JiangSu' }
+      ]);
+    
+      const confirm = ( { selectedValue,selectedOptions })=>{
+        desc.value = selectedValue.join(',');
       }
-      const confirm = (res)=>{
-        desc.value = res;
-      }
-      return {show,desc,listData,open, confirm};
+      const change = ({ selectedValue,selectedOptions }) => {
+        console.log(selectedValue);
+      };
+
+      return {show,desc,columns,change, confirm};
     }
   };
 </script>
@@ -61,101 +74,118 @@ app.use(Popup);
 :::
 
 ### 默认选中项
+
+通过设置 modelValue 实现默认选中项，modelValue 是一个包含每项配置 value 值的数组。
+
 :::demo
 ```html
 <template>
-  <nut-cell title="请选择城市" :desc="desc" @click="open"></nut-cell>
+  <nut-cell title="请选择城市" :desc="desc" @click="() => { show = true;}"></nut-cell>
   <nut-picker
-      v-model:visible="show"
-      :list-data="listData"
-      title="城市选择"
-      @confirm="confirm" 
-      :defaultIndex="2"
-  ></nut-picker>
+    v-model="selectedValue"
+    v-model:visible="show"
+    :columns="columns"
+    title="城市选择"
+    @confirm="confirm"
+  >
+  </nut-picker>
 </template>
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
       const show = ref(false);
-      const listData = [
-        '南京市',
-        '无锡市',
-        '海北藏族自治区',
-        '北京市',
-        '连云港市',
-        '浙江市',
-        '江苏市'
-      ];
-      const desc = ref(listData[2]);
-      const open = ()=>{
-        show.value = true;
+      const desc = ref('');
+      const selectedValue = ref(['ZheJiang']);
+      const columns = ref([
+        { text: '南京市', value: 'NanJing' },
+        { text: '无锡市', value: 'WuXi' },
+        { text: '海北藏族自治区', value: 'ZangZu' },
+        { text: '北京市', value: 'BeiJing' },
+        { text: '连云港市', value: 'LianYunGang' },
+        { text: '浙江市', value: 'ZheJiang' },
+        { text: '江苏市', value: 'JiangSu' }
+      ]);
+    
+      const confirm = ( { selectedValue,selectedOptions })=>{
+        desc.value = selectedValue.join(',');
       }
-      const confirm = (res)=>{
-        desc.value = res;
-      }
-      return {show,desc,listData,open, confirm};
+
+      return {show,desc,columns,selectedValue, confirm};
     }
   };
 </script>
 ```
 :::
 
-### 多列样式
+### 多列展示
+
+columns 属性可以通过二维数组的形式配置多列选择。
 
 :::demo
 ```html
 <template>
-  <nut-cell title="请选择城市" :desc="desc" @click="open"></nut-cell>
-  <nut-picker
+  <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
+    <nut-picker
       v-model:visible="show"
-      :list-data="listData"
+      :columns="multipleColumns"
       title="城市选择"
-      @confirm="confirm" 
-  ></nut-picker>
+      @confirm="confirm"
+      @change="change"
+    >
+    </nut-picker>
 </template>
 <script>
   import { ref } from 'vue';
   export default {
     setup(props) {
       const show = ref(false);
-      const listData = [
-        {
-          values: ['周一', '周二', '周三', '周四', '周五'],
-          defaultIndex: 2
-        },
+      const desc = ref('');
+      const multipleColumns = ref([
+        // 第一列
+        [
+          { text: '周一', value: 'Monday' },
+          { text: '周二', value: 'Tuesday' },
+          { text: '周三', value: 'Wednesday' },
+          { text: '周四', value: 'Thursday' },
+          { text: '周五', value: 'Friday' }
+        ],
         // 第二列
-        {
-          values: ['上午', '下午', '晚上'],
-          defaultIndex: 1
-        }
-      ];
-      const desc = ref(`${listData[0].values[listData[0].defaultIndex]} ${listData[1].values[listData[1].defaultIndex]}`);
-      const open = ()=>{
-        show.value = true;
+        [
+          { text: '上午', value: 'Morning' },
+          { text: '下午', value: 'Afternoon' },
+          { text: '晚上', value: 'Evening' }
+        ]
+      ]);
+    
+      const confirm = ( { selectedValue,selectedOptions })=>{
+        desc.value = selectedValue.join(',');
       }
-      const confirm = (res)=>{
-        desc.value = res.join(' ');
-      }
-      return {show,desc,listData,open, confirm};
+      const change = ({ selectedValue,selectedOptions }) => {
+        console.log(selectedValue);
+      };
+
+      return {show,desc,columns,change, confirm};
     }
   };
 </script>
 ```
 :::
-
 
 ### 多级联动
 
+使用 columns 属性的 children 字段可以实现选项级联的效果。
+
 :::demo
 ```html
 <template>
-  <nut-cell title="地址" :desc="desc" @click="open"></nut-cell>
+  <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
   <nut-picker
-      v-model:visible="show"
-      :list-data="listData"
-      title="地址选择"
-      @confirm="confirm" 
+    v-model:visible="show"
+    :columns="cascaderColumns"
+    title="城市选择"
+    @confirm="confirm"
+    @change="change"
   ></nut-picker>
 </template>
 <script>
@@ -163,107 +193,115 @@ app.use(Popup);
   export default {
     setup(props) {
       const show = ref(false);
-      const listData = [
+      const desc = ref('');
+      const cascaderColumns = ref([
         {
           text: '浙江',
+          value: 'ZheJiang',
           children: [
             {
               text: '杭州',
-              children: [{ text: '西湖区' }, { text: '余杭区' }]
+              value: 'HangZhou',
+              children: [
+                { text: '西湖区', value: 'XiHu' },
+                { text: '余杭区', value: 'YuHang' }
+              ]
             },
             {
               text: '温州',
-              children: [{ text: '鹿城区' }, { text: '瓯海区' }]
+              value: 'WenZhou',
+              children: [
+                { text: '鹿城区', value: 'LuCheng' },
+                { text: '瓯海区', value: 'OuHai' }
+              ]
             }
           ]
         },
         {
           text: '福建',
+          value: 'FuJian',
           children: [
             {
               text: '福州',
-              children: [{ text: '鼓楼区' }, { text: '台江区' }]
+              value: 'FuZhou',
+              children: [
+                { text: '鼓楼区', value: 'GuLou' },
+                { text: '台江区', value: 'TaiJiang' }
+              ]
             },
             {
               text: '厦门',
-              children: [{ text: '思明区' }, { text: '海沧区' }]
+              value: 'XiaMen',
+              children: [
+                { text: '思明区', value: 'SiMing' },
+                { text: '海沧区', value: 'HaiCang' }
+              ]
             }
           ]
         }
-      ];
-
-      const desc = ref(
-        `${listData[0].text}
-        ${listData[0].children[0].text}
-        ${listData[0].children[0].children[0].text}`
-      );
-
-      return {
-        desc,
-        show,
-        listData,
-        open: (index) => {
-          show.value = true;
-        },
-        confirm: (res) => {
-          desc.value = res.join(' ');
-        }
+      ]);
+    
+      const confirm = ( { selectedValue,selectedOptions })=>{
+        desc.value = selectedValue.join(',');
+      }
+      const change = ({ selectedValue,selectedOptions }) => {
+        console.log(selectedValue);
       };
+
+      return {show,desc,cascaderColumns,change, confirm};
     }
   };
 </script>
 ```
 :::
 
-### 动态设置
+### 异步获取
+
+在实际开发中，大部分情况 Columns 属性的数据是通过异步方式获取的。
+
 :::demo
 ```html
 <template>
-  <nut-cell title="请选择时间" :desc="desc" @click="open"></nut-cell>
+  <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
   <nut-picker
-      v-model:visible="show"
-      :list-data="listData"
-      :demoIndex="demoIndex"
-      title="地址选择"
-      @change="onChange"
-      @confirm="confirm"
-    ></nut-picker>
+    v-model="asyncValue"
+    v-model:visible="show"
+    :columns="asyncColumns"
+    title="城市选择"
+    @confirm="confirm"
+  ></nut-picker>
 </template>
 <script>
-  import { ref } from 'vue';
+  import { ref, onMounted } from 'vue';
   export default {
     setup(props) {
       const show = ref(false);
-      const cities = {
-        浙江: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
-        福建: ['福州', '厦门', '莆田', '三明']
-      };
+      const desc = ref('');
+      const asyncColumns = ref([]);
+      const asyncValue = ref<string[]>([]);
 
-      const listData = ref([
-        {
-          values: Object.keys(cities)
-        },
-        {
-          values: cities['浙江']
-        }
-      ]);
-      const desc = ref('浙江 杭州');
+      onMounted(() => {
+        // 用于模拟接口请求
+        setTimeout(() => {
+          asyncColumns.value = [
+            { text: '南京市', value: 'NanJing' },
+            { text: '无锡市', value: 'WuXi' },
+            { text: '海北藏族自治区', value: 'ZangZu' },
+            { text: '北京市', value: 'BeiJing' },
+            { text: '连云港市', value: 'LianYunGang' },
+            { text: '浙江市', value: 'ZheJiang' },
+            { text: '江苏市', value: 'JiangSu' }
+          ];
 
-  
-      return {
-        show,
-        desc,
-        listData,
-        open: (index) => {
-          show.value = true;
-        },
-        confirm: (res) => {
-          desc.value = res[0]+' '+res[1];
-        },
-        onChange: (res, columnIndex, dataIndex) => {
-          listData.value[1].values = cities[res[0]];
-        }
-      };
+          asyncValue.value = ['ZangZu'];
+        }, 500);
+      });
+      
+      const confirm = ( { selectedValue,selectedOptions })=>{
+        desc.value = selectedValue.join(',');
+      }
+
+      return {show,desc,asyncColumns,asyncValue, confirm};
     }
   };
 </script>
@@ -271,36 +309,31 @@ app.use(Popup);
 :::
 
 ## API
-    
+
 ### Props
-    
-| 参数                   | 说明                       | 类型    | 默认值 |
-|------------------------|----------------------------|---------|--------|
-| v-model:visible        | 是否可见                   | Boolean | false  |
+
+| 参数         | 说明                             | 类型   | 默认值           |
+|--------------|----------------------------------|--------|------------------|
+| v-model:value         | 默认选中项               | Array | []              |
+| v-model:visible          | 是否可见               | Boolean | -                |
+| columns         | 对象数组，配置每一列显示的数据               | Array | -                |
 | title                  | 设置标题                   | String  | -      |
 | cancel-text            | 取消按钮文案               | String  | 取消   |
 | ok-text                | 确定按钮文案               | String  | 确定   |
-| list-data              | 列表数据                   | Column[]   | -      |
-| default-index    | 单列选择时，初始选中项的索引，默认为 0 | number  | 0      |
-| teleport               | 指定挂载节点               | String  | "body" |
-| close-on-click-overlay | 点击蒙层是否关闭对话框     | Boolean | false  |
-| lock-scroll            | 背景是否锁定               | Boolean | false  |
-   
-### Column 数据结构
 
-当传入多列时，columns 为一个对象数组，数组中的每一个对象配置每一列
-    
-| 事件名  | 说明             | 回调参数     |
-|---------|------------------|--------------|
-| values   | 列中对应的值   | string |
-| default-index | 初始选中项的索引，默认值 0 | number |
-| children  | 级联选项       | Column |
+### Columns 数据结构
+
+| 参数         | 说明                             | 类型   | 默认值           |
+|--------------|----------------------------------|--------|------------------|
+| text        | 选项的文字内容               | String|Number |               |
+| value          | 选项对应的值，且唯一               | String|Number |            |
+| children         | 用于级联选项               | Array | -                |
+| className                  | 添加额外的类名                   | String  |      |
 
 ### Events
-    
-| 事件名  | 说明             | 回调参数     |
-|---------|------------------|--------------|
-| close   | 关闭弹窗时触发   | event: Event |
-| confirm | 点击确认时候触发 | event: Event |
-| change  | 改变时触发       | 选中的值, 第几列, 第几个 |
-    
+
+| 事件名 | 说明           | 回调参数     |
+|--------|----------------|--------------|
+| confirm  | 点击确定按钮时触发 | { selectedValue, selectedOptions } |
+| close  | 点击取消按钮时触发 | { selectedValue, selectedOptions } |
+| change  | 选项发生改变时触发 | { columnIndex, selectedValue, selectedOptions } |
