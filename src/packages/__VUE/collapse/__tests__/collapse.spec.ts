@@ -20,7 +20,7 @@ beforeAll(() => {
 afterAll(() => {
   config.global.components = {};
 });
-test('should props active disabled', async () => {
+test('should props active', async () => {
   const component = {
     template: `<nut-collapse v-model:active="active" icon="down-arrow">
       <nut-collapse-item :name="1">
@@ -43,8 +43,9 @@ test('should props active disabled', async () => {
   };
   const wrapper = mount(component);
   expect(wrapper.findAll('.nut-collapse-item')).toHaveLength(2);
-  const collapseWrapper = wrapper.findAll('.collapse-item');
   await nextTick();
+  await nextTick();
+  const collapseWrapper = wrapper.findAll('.collapse-item');
   expect(collapseWrapper[0].classes()).toContain('item-expanded');
   expect(collapseWrapper[1].classes()).toContain('item-expanded');
 });
@@ -67,9 +68,11 @@ test('should props accordion', async () => {
   };
   const wrapper = mount(component);
   await nextTick();
+  await nextTick();
   expect(wrapper.findAll('.item-expanded')).toHaveLength(1);
   const collapseWrapper = wrapper.findAll('.collapse-item');
   collapseWrapper[0].trigger('click');
+  await nextTick();
   await nextTick();
   expect(wrapper.findAll('.item-expanded')).toHaveLength(0);
 });
@@ -111,6 +114,7 @@ test('should title props ', async () => {
     }
   });
   await nextTick();
+  await nextTick();
   const collapseIcon = wrapper.findAll('.nut-icon');
   expect(collapseIcon[0].classes()).toContain('nut-icon-issue');
 
@@ -120,7 +124,7 @@ test('should title props ', async () => {
   expect(collapseIcon[0].classes()).toContain('titleIconLeft');
 });
 
-test('should icon props ', async () => {
+test('should icon props', async () => {
   const wrapper = mount({
     template: `
     <nut-collapse
@@ -155,6 +159,7 @@ test('should icon props ', async () => {
       };
     }
   });
+  await nextTick();
   await nextTick();
   const collapseIcon = wrapper.findAll('.nut-icon');
   expect(collapseIcon[0].classes()).toContain('nut-icon-' + wrapper.vm.icon);
@@ -195,6 +200,7 @@ test('should nut-collapse-item props ', async () => {
       };
     }
   });
+  await nextTick();
   await nextTick();
   const collapseItemTitle = wrapper.findAll('.collapse-title-value');
   const collapseIconEle1 = collapseItemTitle[0].element as HTMLElement;
@@ -243,6 +249,7 @@ test('should event change', async () => {
     }
   });
 
+  await nextTick();
   await nextTick();
   const collapseWrapper = wrapper.findAll('.collapse-item');
   collapseWrapper[1].trigger('click');
