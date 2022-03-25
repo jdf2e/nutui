@@ -1,3 +1,44 @@
+## v3.1.18
+
+`2022-03-25` 此版本依赖 Taro 3.4.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @agileago @AsherSun @wuyunkuo @wangrongding
+
+* :zap: feat: [在线主题定制](https://nutui.jd.com/theme/#/base)
+* :zap: feat: 所有组件增加单元测试
+* :zap: feat: picker 与 datePicker 重构 (#1131)  @yangxiaolu1993
+* :zap: feat(list): 新增虚拟列表组件 @szg2008
+* :zap: feat(noticebar): 新增功能(多行展示、关闭按钮可扩展) (#1072) @yangxiaolu1993
+* :zap: feat(address): 功能扩展 (#1083) @yangxiaolu1993
+* :zap: feat(steps): provide click-step event, slot for title and content @szg2008
+* :zap: feat: 日历组件调整 (#1090)  @lkjh3214
+* :zap: feat(input): input部分新增功能 (#1076)  @ailululu
+* :zap: feat(textarea): 组件优化 (#1107)  @Ymm0008
+* :zap: feat(tabbar): add dot props (#1147)  @Drjingfubo
+* :zap: feat: collapse 标题多行展示,无内容不下拉,图标位置配置,textarea 自动撑开，collapse 组件能力 (#1121)  @Ymm0008
+* :zap: feat: range组件，功能完善 (#1129)   @lkjh3214
+* :bug: fix: popover/navbar props and warning (#1044 #1051)  @liqiong-lab
+* :bug: fix(navbar): 文档修复  @richard1015
+* :bug: fix(cell、grid): cdn router warn bug #1070  @richard1015
+* :bug: fix(navbar): 新增顶部固定props及安全区适配 (#1058)  @liqiong-lab
+* :bug: fix(overlay): provide modify style  @szg2008
+* :bug: fix(searchbar): taro-h5环境enter触发无效 (#1088)   @JackieScorpio
+* :bug: fix: 修复tsx下类型错误 (#1097)   @agileago
+* :bug: fix(cell): sub-title icon 并存时样式错乱 #1092   @richard1015
+* :bug: fix(checkbox): 修复checkboxgroup的disabled的属性不是响应式的问题 (#1113)    @AsherSun
+* :bug: fix(checkbox): 修改checkbox文档中的描述错误 (#1112)    @AsherSun
+* :bug: fix: 修复日期选择器modelValue不能双向数据绑定的BUG (#1093)    @wuyunkuo
+* :bug: fix(button): taro h5 width abnormal   @richard1015
+* :bug: fix(form): taro3.4.x submit refresh #1041  @richard1015
+* :bug: fix(uploader): taro h5 3.4.x style cover  @richard1015
+* :bug: fix(form): check rule reference value disconnect #1053 @richard1015
+* :bug: fix: 日历组件字段问题修复 (#1130) @lkjh3214
+* :bug: fix(progress): resolve issue #1138 (#1141) @Drjingfubo
+* :bug: fix(progress): add text-background props,update variables.scss (#1145) @Drjingfubo
+* :bug: fix(countdown): 修复倒计时组件重复更新end-time时的组件更新问题 (#1119) (#1120)  @wangrongding
+* :bug: fix(swiper): 当只有一张图时，高度超出css设置的值(#1109)  @szg2008
+
 ## v3.1.17
 
 `2022-02-25` 此版本依赖 Taro 3.4.x
