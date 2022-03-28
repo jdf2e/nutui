@@ -26,7 +26,7 @@
     width: $form-item-label-width;
     margin-right: $form-item-label-margin-right;
     flex: none !important;
-    display: inline-block;
+    display: inline-block !important;
     word-wrap: break-word;
     text-align: $form-item-label-text-align;
     &.required {
@@ -39,7 +39,7 @@
   }
   &__body {
     flex: 1;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     &__slots {
       text-align: $form-item-body-slots-text-align;

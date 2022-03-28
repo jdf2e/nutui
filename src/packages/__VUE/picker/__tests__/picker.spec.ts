@@ -18,42 +18,70 @@ afterAll(() => {
   config.global.components = {};
 });
 
-const simpleColumns = ['南京市', '无锡市', '海北藏族自治区', '北京市', '连云港市', '浙江市', '江苏市'];
+const simpleColumns = [
+  { text: '南京市', value: 'NanJing' },
+  { text: '无锡市', value: 'WuXi' },
+  { text: '海北藏族自治区', value: 'ZangZu' },
+  { text: '北京市', value: 'BeiJing' },
+  { text: '连云港市', value: 'LianYunGang' }
+];
 const multipleColumns = [
-  {
-    values: ['周一', '周二', '周三', '周四', '周五'],
-    defaultIndex: 2
-  },
+  [
+    { text: '周一', value: 'Monday' },
+    { text: '周二', value: 'Tuesday' },
+    { text: '周三', value: 'Wednesday' },
+    { text: '周四', value: 'Thursday' },
+    { text: '周五', value: 'Friday' }
+  ],
   // 第二列
-  {
-    values: ['上午', '下午', '晚上'],
-    defaultIndex: 1
-  }
+  [
+    { text: '上午', value: 'Morning' },
+    { text: '下午', value: 'Afternoon' },
+    { text: '晚上', value: 'Evening' }
+  ]
 ];
 const multistageColumns = [
   {
     text: '浙江',
+    value: 'ZheJiang',
     children: [
       {
         text: '杭州',
-        children: [{ text: '西湖区' }, { text: '余杭区' }]
+        value: 'HangZhou',
+        children: [
+          { text: '西湖区', value: 'XiHu' },
+          { text: '余杭区', value: 'YuHang' }
+        ]
       },
       {
         text: '温州',
-        children: [{ text: '鹿城区' }, { text: '瓯海区' }]
+        value: 'WenZhou',
+        children: [
+          { text: '鹿城区', value: 'LuCheng' },
+          { text: '瓯海区', value: 'OuHai' }
+        ]
       }
     ]
   },
   {
     text: '福建',
+    value: 'FuJian',
     children: [
       {
         text: '福州',
-        children: [{ text: '鼓楼区' }, { text: '台江区' }]
+        value: 'FuZhou',
+        children: [
+          { text: '鼓楼区', value: 'GuLou' },
+          { text: '台江区', value: 'TaiJiang' }
+        ]
       },
       {
         text: '厦门',
-        children: [{ text: '思明区' }, { text: '海沧区' }]
+        value: 'XiaMen',
+        children: [
+          { text: '思明区', value: 'SiMing' },
+          { text: '海沧区', value: 'HaiCang' }
+        ]
       }
     ]
   }
@@ -76,53 +104,49 @@ test('simple list-data confirm & close event', async () => {
   const wrapper = mount(Picker, {
     props: {
       visible: true,
-      listData: simpleColumns,
+      columns: simpleColumns,
       isWrapTeleport: false
     }
   });
   await nextTick();
   wrapper.find('.nut-picker__cancel').trigger('click');
   wrapper.find('.nut-picker__confirm').trigger('click');
-  expect(wrapper.emitted('confirm')).toEqual([['南京市']]);
-  expect(wrapper.emitted('close')).toEqual([[]]);
+  expect(wrapper.emitted('confirm')![0]).toEqual([
+    {
+      selectedOptions: [{ text: '南京市', value: 'NanJing' }],
+      selectedValue: ['NanJing']
+    }
+  ]);
 });
 
 test('simple columns default checked item', async () => {
   const wrapper = mount(Picker, {
     props: {
+      modelValue: ['WuXi'],
       visible: true,
-      listData: simpleColumns,
-      isWrapTeleport: false,
-      defaultIndex: 2
+      columns: simpleColumns,
+      isWrapTeleport: false
     }
   });
   await nextTick();
   wrapper.find('.nut-picker__confirm').trigger('click');
-  expect(wrapper.emitted('confirm')).toEqual([['海北藏族自治区']]);
+  expect(wrapper.emitted('confirm')![0]).toEqual([
+    {
+      selectedOptions: [{ text: '无锡市', value: 'WuXi' }],
+      selectedValue: ['WuXi']
+    }
+  ]);
 });
 
 test('multiple columns render', async () => {
   const wrapper = mount(Picker, {
     props: {
       visible: true,
-      listData: multipleColumns,
+      columns: multipleColumns,
       isWrapTeleport: false
     }
   });
   await nextTick();
   const columnItems = wrapper.findAll('.nut-picker__columnitem');
   expect(columnItems.length).toEqual(2);
-});
-
-test('Multistage Tandem', async () => {
-  const wrapper = mount(Picker, {
-    props: {
-      visible: true,
-      listData: multistageColumns,
-      isWrapTeleport: false
-    }
-  });
-  await nextTick();
-  wrapper.find('.nut-picker__confirm').trigger('click');
-  expect(wrapper.emitted().confirm[0]).toEqual([['浙江', '杭州', '西湖区']]);
 });

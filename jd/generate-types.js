@@ -4,6 +4,7 @@ const fs = require('fs-extra');
 let importStr = `import { App } from 'vue';
 declare class UIComponent {
   static install(vue: App): void;
+  $props: any;
 }\n`;
 const packages = [];
 config.nav.map((item) => {

@@ -53,7 +53,7 @@ export default create({
     });
 
     const pDisabled = computed(() => {
-      return hasParent.value ? parent.disabled : props.disabled;
+      return hasParent.value ? parent.disabled.value : props.disabled;
     });
 
     const checked = computed(() => !!props.modelValue);

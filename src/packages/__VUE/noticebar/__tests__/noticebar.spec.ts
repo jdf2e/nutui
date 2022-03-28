@@ -28,12 +28,32 @@ test('close event', async () => {
     props: {
       text: '华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！',
       direction: 'across',
-      closeMode: true
+      closeMode: true,
+      color: 'red',
+      background: 'green',
+      delay: 1
     }
   });
   const closeDom = wrapper.find('.right-icon');
   closeDom.trigger('click');
   expect(wrapper.emitted('close')).toBeTruthy();
+  wrapper.setProps({
+    text: '123'
+  });
+  await nextTick();
+  const content = wrapper.find('.content');
+  expect(content.html()).toContain('123');
+});
+
+test('slot event', async () => {
+  const wrapper = mount(NoticeBar, {
+    slots: {
+      default: () => 'Custom Content'
+    }
+  });
+  await nextTick();
+  const content = wrapper.find('.content');
+  expect(content.html()).toContain('Custom Content');
 });
 
 test('icon custom', async () => {

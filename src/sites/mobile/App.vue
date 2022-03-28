@@ -8,9 +8,10 @@
   <router-view />
 </template>
 <script lang="ts">
-import { defineComponent, ref, watch, computed } from 'vue';
+import { defineComponent, ref, watch, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { isMobile } from '@/sites/assets/util';
+import { useThemeEditor } from '@/sites/assets/util/helper';
 export default defineComponent({
   name: 'app',
   setup() {
@@ -18,6 +19,8 @@ export default defineComponent({
     // 获取当前路由
     const route = useRoute();
     const router = useRouter();
+
+    useThemeEditor();
 
     //返回demo页
     const goBack = () => {

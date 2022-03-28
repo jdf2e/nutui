@@ -1,10 +1,11 @@
-<template>
+onMounted, nextTick, , watch, ref<template>
   <view :class="classes">
     <view v-if="readonly" class="nut-textarea__textarea">
       {{ modelValue }}
     </view>
     <textarea
       v-else
+      ref="textareaRef"
       class="nut-textarea__textarea"
       :style="styles"
       :rows="rows"
@@ -22,7 +23,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed } from 'vue';
+import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 
 const { componentName, create } = createComponent('textarea');
@@ -82,10 +83,10 @@ export default create({
       };
     });
 
-    const styles = computed(() => {
+    const styles: any = computed(() => {
       return {
-        textAlign: props.textAlign,
-        resize: props.autosize ? 'vertical' : 'none'
+        textAlign: props.textAlign
+        // resize: props.autosize ? 'vertical' : 'none'
       };
     });
 
@@ -119,7 +120,42 @@ export default create({
       emit('blur', event);
     };
 
+    const textareaRef = ref();
+
+    const getContentHeight = () => {
+      let textarea = textareaRef.value;
+      textarea.style.height = 'auto';
+      let height = textarea.scrollHeight;
+      if (typeof props.autosize === 'object') {
+        const { maxHeight, minHeight } = props.autosize;
+        if (maxHeight !== undefined) {
+          height = Math.min(height, maxHeight);
+        }
+        if (minHeight !== undefined) {
+          height = Math.max(height, minHeight);
+        }
+      }
+      if (height) {
+        textarea.style.height = height + 'px';
+      }
+    };
+    watch(
+      () => props.modelValue,
+      () => {
+        if (props.autosize) {
+          nextTick(getContentHeight);
+        }
+      }
+    );
+
+    onMounted(() => {
+      if (props.autosize) {
+        nextTick(getContentHeight);
+      }
+    });
+
     return {
+      textareaRef,
       classes,
       styles,
       change,

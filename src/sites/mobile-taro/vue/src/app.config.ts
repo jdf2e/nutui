@@ -24,7 +24,8 @@ let subpackages = [
       'pages/infiniteloading/index',
       'pages/progress/index',
       'pages/circleprogress/index',
-      'pages/searchbar/index'
+      'pages/searchbar/index',
+      'pages/list/index'
     ]
   },
   {
@@ -76,7 +77,8 @@ let subpackages = [
       'pages/tag/index',
       'pages/popover/index',
       'pages/skeleton/index',
-      'pages/cascader/index'
+      'pages/cascader/index',
+      'pages/oldpicker/index'
     ]
   },
   {

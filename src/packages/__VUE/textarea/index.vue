@@ -1,6 +1,7 @@
-<template>
+, nextTick<template>
   <view :class="classes">
     <textarea
+      ref="textareaRef"
       class="nut-textarea__textarea"
       :style="styles"
       :rows="rows"
@@ -18,7 +19,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, watch } from 'vue';
+import { watch, ref, computed, onMounted, nextTick } from 'vue';
 import { createComponent } from '../../utils/create';
 
 const { componentName, create } = createComponent('textarea');
@@ -70,6 +71,7 @@ export default create({
   emits: ['update:modelValue', 'change', 'blur', 'focus'],
 
   setup(props, { emit }) {
+    const textareaRef = ref();
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -78,14 +80,50 @@ export default create({
       };
     });
 
-    const styles = computed(() => {
+    onMounted(() => {
+      if (props.modelValue) {
+        emitChange(String(props.modelValue));
+      }
+      if (props.autosize) {
+        nextTick(getContentHeight);
+      }
+    });
+
+    const styles: any = computed(() => {
       return {
-        textAlign: props.textAlign,
-        resize: props.autosize ? 'vertical' : 'none'
+        textAlign: props.textAlign
+        // resize: props.autosize ? 'vertical' : 'none'
       };
     });
 
-    const emitChange = (value: string, event: Event) => {
+    const getContentHeight = () => {
+      let textarea = textareaRef.value;
+      textarea.style.height = 'auto';
+      let height = textarea.scrollHeight;
+      if (typeof props.autosize === 'object') {
+        const { maxHeight, minHeight } = props.autosize;
+        if (maxHeight !== undefined) {
+          height = Math.min(height, maxHeight);
+        }
+        if (minHeight !== undefined) {
+          height = Math.max(height, minHeight);
+        }
+      }
+      if (height) {
+        textarea.style.height = height + 'px';
+      }
+    };
+
+    watch(
+      () => props.modelValue,
+      () => {
+        if (props.autosize) {
+          nextTick(getContentHeight);
+        }
+      }
+    );
+
+    const emitChange = (value: string, event?: Event) => {
       if (props.maxLength && value.length > Number(props.maxLength)) {
         value = value.substring(0, Number(props.maxLength));
       }
@@ -116,6 +154,7 @@ export default create({
     };
 
     return {
+      textareaRef,
       classes,
       styles,
       change,

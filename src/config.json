@@ -207,7 +207,6 @@
           "tarodoc": false,
           "author": "szg2008"
         }
-        
       ]
     },
     {
@@ -510,6 +509,17 @@
           "sort": 26,
           "show": false,
           "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "List",
+          "cType": "操作反馈",
+          "cName": "虚拟列表",
+          "desc": "可在成千上万条数据渲染时只渲染用户最大可见条数，提升页面渲染性能",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "szg2008"
         }
       ]
     },
@@ -971,6 +981,17 @@
           "show": true,
           "taro": true,
           "author": "dongj0316"
+        },
+        {
+          "version": "3.0.0",
+          "name": "OldPicker",
+          "cType": "数据录入",
+          "cName": "选择器",
+          "desc": "3.1.17 版本之前（包括 3.1.17 版本）的选择器",
+          "show": false,
+          "tarodoc": false,
+          "type": "component",
+          "author": "yangxiaolu"
         }
       ]
     },

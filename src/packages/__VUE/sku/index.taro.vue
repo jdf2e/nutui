@@ -43,7 +43,7 @@
           @add="add"
           @reduce="reduce"
           @changeStepper="changeStepper"
-          @stepperOverLimit="stepperOverLimit"
+          @overLimit="stepperOverLimit"
         ></sku-stepper>
 
         <slot name="sku-stepper-bottom"></slot>

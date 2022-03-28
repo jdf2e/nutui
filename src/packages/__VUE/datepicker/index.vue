@@ -1,8 +1,11 @@
 <template>
   <nut-picker
+    v-model="selectedValue"
     :visible="show"
+    :okText="okText"
+    :cancelText="cancelText"
     @close="closeHandler"
-    :list-data="columns"
+    :columns="columns"
     @change="changeHandler"
     :title="title"
     @confirm="confirm"
@@ -10,11 +13,17 @@
   ></nut-picker>
 </template>
 <script lang="ts">
-import { toRefs, watch, computed, reactive, onMounted } from 'vue';
+import { toRefs, watch, computed, reactive, onMounted, onBeforeMount } from 'vue';
+import type { PropType } from 'vue';
 import picker from '../picker/index.vue';
 import { popupProps } from '../popup/index.vue';
+import { PickerOption } from '../picker/types';
 import { createComponent } from '../../utils/create';
+import { padZero } from './utils';
 const { componentName, create } = createComponent('datepicker');
+
+type Formatter = (type: string, option: PickerOption) => PickerOption;
+type Filter = (columnType: string, options: PickerOption[]) => PickerOption[];
 
 const currentYear = new Date().getFullYear();
 function isDate(val: Date): val is Date {
@@ -40,13 +49,21 @@ export default create({
       type: String,
       default: ''
     },
+    okText: {
+      type: String,
+      default: '确定'
+    },
+    cancelText: {
+      type: String,
+      default: '取消'
+    },
     type: {
       type: String,
       default: 'date'
     },
     isShowChinese: {
       type: Boolean,
-      default: true
+      default: false
     },
     minuteStep: {
       type: Number,
@@ -61,15 +78,21 @@ export default create({
       type: Date,
       default: () => new Date(currentYear + 10, 11, 31),
       validator: isDate
-    }
+    },
+    formatter: {
+      type: Function as PropType<Formatter>,
+      default: null
+    },
+    filter: Function as PropType<Filter>
   },
-  emits: ['click', 'update:visible', 'confirm'],
+  emits: ['click', 'update:visible', 'change', 'confirm', 'update:moduleValue'],
 
   setup(props, { emit }) {
     const state = reactive({
       show: false,
       currentDate: new Date(),
-      title: props.title
+      title: props.title,
+      selectedValue: []
     });
     const formatValue = (value: Date) => {
       if (!isDate(value)) {
@@ -88,13 +111,13 @@ export default create({
       const boundary = props[`${type}Date`];
       const year = boundary.getFullYear();
       let month = 1;
-      let date = 1;
+      let day = 1;
       let hour = 0;
       let minute = 0;
 
       if (type === 'max') {
         month = 12;
-        date = getMonthEndDay(value.getFullYear(), value.getMonth() + 1);
+        day = getMonthEndDay(value.getFullYear(), value.getMonth() + 1);
         hour = 23;
         minute = 59;
       }
@@ -102,8 +125,8 @@ export default create({
       if (value.getFullYear() === year) {
         month = boundary.getMonth() + 1;
         if (value.getMonth() + 1 === month) {
-          date = boundary.getDate();
-          if (value.getDate() === date) {
+          day = boundary.getDate();
+          if (value.getDate() === day) {
             hour = boundary.getHours();
             if (value.getHours() === hour) {
               minute = boundary.getMinutes();
@@ -115,7 +138,7 @@ export default create({
       return {
         [`${type}Year`]: year,
         [`${type}Month`]: month,
-        [`${type}Date`]: date,
+        [`${type}Day`]: day,
         [`${type}Hour`]: hour,
         [`${type}Minute`]: minute,
         [`${type}Seconds`]: seconds
@@ -123,9 +146,9 @@ export default create({
     };
 
     const ranges = computed(() => {
-      const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } = getBoundary('max', state.currentDate);
+      const { maxYear, maxDay, maxMonth, maxHour, maxMinute, maxSeconds } = getBoundary('max', state.currentDate);
 
-      const { minYear, minDate, minMonth, minHour, minMinute, minSeconds } = getBoundary('min', state.currentDate);
+      const { minYear, minDay, minMonth, minHour, minMinute, minSeconds } = getBoundary('min', state.currentDate);
 
       let result = [
         {
@@ -138,7 +161,7 @@ export default create({
         },
         {
           type: 'day',
-          range: [minDate, maxDate]
+          range: [minDay, maxDay]
         },
         {
           type: 'hour',
@@ -164,6 +187,9 @@ export default create({
         case 'time':
           result = result.slice(3, 6);
           break;
+        case 'year-month':
+          result = result.slice(0, 2);
+          break;
         case 'month-day':
           result = result.slice(1, 3);
           break;
@@ -174,16 +200,26 @@ export default create({
       return result;
     });
 
-    const changeHandler = (val: string[]) => {
+    const columns = computed(() => {
+      const val = ranges.value.map((res, columnIndex) => {
+        return generateValue(res.range[0], res.range[1], getDateIndex(res.type), res.type, columnIndex);
+      });
+
+      return val;
+    });
+
+    const changeHandler = ({
+      columnIndex,
+      selectedValue,
+      selectedOptions
+    }: {
+      columnIndex: number;
+      selectedValue: (string | number)[];
+      selectedOptions: PickerOption[];
+    }) => {
       if (['date', 'datetime'].includes(props.type)) {
         let formatDate = [];
-        if (props.isShowChinese) {
-          formatDate = val.map((res: string) => {
-            return Number(res.slice(0, res.length - 1));
-          }) as any;
-        } else {
-          formatDate = val;
-        }
+        formatDate = selectedValue;
         let date: Date;
         if (props.type === 'date') {
           state.currentDate = formatValue(
@@ -205,18 +241,30 @@ export default create({
           );
         }
       }
+
+      emit('change', { columnIndex, selectedValue, selectedOptions });
     };
 
-    const generateValue = (min: number, max: number, val: number, type: string) => {
-      // if (!(max > min)) return;
-      const arr: Array<number | string> = [];
+    const formatterOption = (type, value) => {
+      const { filter, formatter, isShowChinese } = props;
+      let fOption = null;
+      if (formatter) {
+        fOption = formatter(type, { text: padZero(value, 2), value: padZero(value, 2) });
+      } else {
+        const padMin = padZero(value, 2);
+        const fatter = isShowChinese ? zhCNType[type] : '';
+        fOption = { text: padMin + fatter, value: padMin };
+      }
+
+      return fOption;
+    };
+
+    // min 最小值  max 最大值  val  当前显示的值   type 类型（year、month、day、time）
+    const generateValue = (min: number, max: number, val: number | string, type: string, columnIndex: number) => {
+      const arr: Array<PickerOption> = [];
       let index = 0;
       while (min <= max) {
-        if (props.isShowChinese) {
-          arr.push(min + zhCNType[type]);
-        } else {
-          arr.push(min);
-        }
+        arr.push(formatterOption(type, min));
 
         if (type === 'minute') {
           min += props.minuteStep;
@@ -228,8 +276,9 @@ export default create({
           index++;
         }
       }
-
-      return { values: arr, defaultIndex: index };
+      state.selectedValue[columnIndex] = arr[index].value;
+      // return { values: arr, defaultIndex: index };
+      return props.filter ? props.filter(type, arr) : arr;
     };
 
     const getDateIndex = (type: string) => {
@@ -249,17 +298,6 @@ export default create({
       return 0;
     };
 
-    const columns = computed(() => {
-      // console.log(ranges.value);
-      const val = ranges.value.map((res) => {
-        return generateValue(res.range[0], res.range[1], getDateIndex(res.type), res.type);
-      });
-      return val;
-    });
-    const handleClick = (event: Event) => {
-      emit('click', event);
-    };
-
     const closeHandler = () => {
       emit('update:visible', false);
     };
@@ -268,10 +306,16 @@ export default create({
       emit('update:visible', false);
       emit('confirm', val);
     };
-
-    onMounted(() => {
+    onBeforeMount(() => {
       state.currentDate = formatValue(props.modelValue);
     });
+
+    watch(
+      () => props.modelValue,
+      (value) => {
+        state.currentDate = formatValue(value);
+      }
+    );
 
     watch(
       () => props.title,
