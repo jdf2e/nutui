@@ -192,6 +192,10 @@ export default create({
       type: [String, Number],
       default: ''
     },
+    maxLength: {
+      type: [String, Number],
+      default: ''
+    },
     leftIcon: {
       type: String,
       default: ''
