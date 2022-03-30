@@ -1,44 +1,25 @@
 let subpackages = [
   {
     root: 'layout',
-    pages: ['pages/layout/index', 'pages/imagepreview/index', 'pages/sticky/index']
+    pages: ['pages/layout/index', 'pages/divider/index', 'pages/sticky/index', 'pages/grid/index']
   },
   {
     root: 'feedback',
     pages: [
       'pages/swipe/index',
-      'pages/collapse/index',
       'pages/backtop/index',
       'pages/actionsheet/index',
       'pages/dialog/index',
       'pages/toast/index',
       'pages/notify/index',
-      'pages/empty/index',
-      'pages/noticebar/index',
-      'pages/range/index',
-      'pages/popup/index',
       'pages/switch/index',
-      'pages/swiper/index',
       'pages/drag/index',
-      'pages/steps/index',
-      'pages/infiniteloading/index',
-      'pages/progress/index',
-      'pages/circleprogress/index',
-      'pages/searchbar/index',
-      'pages/list/index'
+      'pages/infiniteloading/index'
     ]
   },
   {
     root: 'base',
-    pages: [
-      'pages/cell/index',
-      'pages/icon/index',
-      'pages/price/index',
-      'pages/button/index',
-      'pages/avatar/index',
-      'pages/overlay/index',
-      'pages/divider/index'
-    ]
+    pages: ['pages/cell/index', 'pages/icon/index', 'pages/button/index', 'pages/overlay/index', 'pages/popup/index']
   },
   {
     root: 'nav',
@@ -51,13 +32,13 @@ let subpackages = [
       'pages/menu/index',
       'pages/pagination/index',
       'pages/indicator/index',
-      'pages/grid/index',
       'pages/sidenavbar/index'
     ]
   },
   {
     root: 'dentry',
     pages: [
+      'pages/range/index',
       'pages/inputnumber/index',
       'pages/checkbox/index',
       'pages/input/index',
@@ -70,14 +51,33 @@ let subpackages = [
       'pages/picker/index',
       'pages/datepicker/index',
       'pages/textarea/index',
+      'pages/numberkeyboard/index',
+      'pages/cascader/index',
+      'pages/oldpicker/index',
+      'pages/searchbar/index'
+    ]
+  },
+  {
+    root: 'exhibition',
+    pages: [
+      'pages/avatar/index',
+      'pages/price/index',
+      'pages/imagepreview/index',
+      'pages/collapse/index',
+      'pages/empty/index',
+      'pages/noticebar/index',
+      'pages/steps/index',
+      'pages/progress/index',
+      'pages/circleprogress/index',
+      'pages/list/index',
       'pages/countdown/index',
       'pages/countup/index',
-      'pages/numberkeyboard/index',
       'pages/badge/index',
       'pages/tag/index',
       'pages/popover/index',
       'pages/skeleton/index',
-      'pages/cascader/index'
+      'pages/table/index',
+      'pages/swiper/index'
     ]
   },
   {
@@ -88,8 +88,7 @@ let subpackages = [
       'pages/barrage/index',
       'pages/timeselect/index',
       'pages/sku/index',
-      'pages/card/index',
-      'pages/table/index'
+      'pages/card/index'
     ]
   }
 ];

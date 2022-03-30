@@ -87,6 +87,7 @@ $cell-padding: 14px 16px !default;
 $cell-line-height: 22px !default;
 $cell-after-right: 0 !default;
 $cell-after-border-bottom: 2px solid rgba(0, 0, 0, 0.1) !default;
+$cell-default-icon-margin: 0 4px 0 0px !default;
 
 // cell-group
 
@@ -136,6 +137,7 @@ $picker-item-text-color: #808080 !default;
 $picker-item-active-text-color: $primary-color !default;
 $picker-item-text-font-size: 16px !default;
 $picker-item-active-line-border: 1px solid rgba(0, 0, 0, 0.06) !default;
+$picker-columns-item-color: $title-color !default;
 
 //input
 $input-border-bottom: #eaf0fb !default;
@@ -202,7 +204,7 @@ $numberkeyboard-key-finish-font-size-color: #fff !default;
 $numberkeyboard-key-finish-background-color: #1989fa !default;
 $numberkeyboard-key-activeFinsh-background-color: #0570db !default;
 
-//countdown
+// countdown
 $countdown-display: flex !default;
 $countdown-color: inherit !default;
 $countdown-font-size: initial !default;

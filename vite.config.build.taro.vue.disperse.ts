@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
+const fs = require('fs-extra');
 import config from './package.json';
 import configPkg from './src/config.json';
 
@@ -14,12 +15,9 @@ let input = {};
 
 configPkg.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, show, taro, type, exportEmpty, exportEmptyTaro } = element;
-    if (taro && (show || exportEmpty)) {
-      input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${
-        exportEmpty && !exportEmptyTaro ? '.vue' : '.taro.vue'
-      }`;
-    }
+    let { name } = element;
+    const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
+    input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${fs.existsSync(filePath) ? '.taro' : ''}.vue`;
   });
 });
 

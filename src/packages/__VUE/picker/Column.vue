@@ -4,54 +4,49 @@
       <view
         class="nut-picker-roller-item"
         :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
-        v-for="(item, index) in listData.values"
+        v-for="(item, index) in column"
         :style="setRollerStyle(index + 1)"
-        :key="item.label ? item.label : index"
+        :key="item.value ? item.value : index"
       >
-        {{ dataType === 'cascade' ? item.text : item }}
+        {{ item.text }}
       </view>
     </view>
 
     <view class="nut-picker-content">
       <view class="nut-picker-list-panel" ref="list" :style="touchListStyle">
         <view
-          class="nut-picker-item nut-picker-item-ref"
-          v-for="(item, index) in listData.values"
-          :key="item.label ? item.label : index"
-          >{{ dataType === 'cascade' ? item.text : item }}
+          :class="['nut-picker-item', 'nut-picker-item-ref', item.className]"
+          v-for="(item, index) in column"
+          :key="item.value ? item.value : index"
+          >{{ item.text }}
         </view>
-        <view class="nut-picker-placeholder" v-if="listData && listData.length === 1"></view>
+        <view class="nut-picker-placeholder" v-if="column && column.length === 1"></view>
       </view>
     </view>
   </view>
 </template>
 <script lang="ts">
-import { reactive, ref, watch, computed, toRefs, onMounted } from 'vue';
+import { reactive, ref, watch, computed, toRefs, onMounted, PropType } from 'vue';
 import { createComponent } from '../../utils/create';
-import { commonProps } from './commonProps';
-import { TouchParams } from './types';
+import { PickerColumnOption, PickerOption, TouchParams } from './types';
 const { create } = createComponent('picker-column');
 
 export default create({
   props: {
-    dataType: String,
+    // 当前选中项
+    value: [String, Number],
+    columnsType: String,
     itemShow: {
       type: Boolean,
       default: false
     },
-    listData: {
-      type: Object,
-      default: () => {
-        return {};
-      }
+    column: {
+      type: Array as PropType<PickerOption[]>,
+      default: () => []
     },
     readonly: {
       type: Boolean,
       default: false
-    },
-    defaultIndex: {
-      type: [Number, String],
-      default: 0
     }
   },
 
@@ -64,7 +59,8 @@ export default create({
         endY: 0,
         startTime: 0,
         endTime: 0,
-        lastY: 0
+        lastY: 0,
+        lastTime: 0
       },
       currIndex: 1,
       transformY: 0,
@@ -118,7 +114,7 @@ export default create({
 
       let changedTouches = event.changedTouches[0];
       state.touchParams.lastY = changedTouches.pageY;
-      state.touchParams.lastTime = event.timestamp || Date.now();
+      state.touchParams.lastTime = event.timeStamp || Date.now();
       let move = state.touchParams.lastY - state.touchParams.startY;
 
       let moveTime = state.touchParams.lastTime - state.touchParams.startTime;
@@ -161,8 +157,8 @@ export default create({
         if (updateMove > 0) {
           updateMove = 0;
         }
-        if (updateMove < -(props.listData.values.length - 1) * state.lineSpacing) {
-          updateMove = -(props.listData.values.length - 1) * state.lineSpacing;
+        if (updateMove < -(props.column.length - 1) * state.lineSpacing) {
+          updateMove = -(props.column.length - 1) * state.lineSpacing;
         }
 
         // 设置滚动距离为lineSpacing的倍数值
@@ -190,11 +186,12 @@ export default create({
     };
 
     const setChooseValue = () => {
-      emit('change', state.currIndex - 1);
+      emit('change', props.column[state.currIndex - 1]);
     };
 
     const modifyStatus = (type: boolean) => {
-      let index = props.defaultIndex;
+      const { column } = props;
+      let index = column.findIndex((columnItem) => columnItem.value == props.value);
 
       state.currIndex = index === -1 ? 1 : (index as number) + 1;
       let move = index === -1 ? 0 : (index as number) * state.lineSpacing;
@@ -203,21 +200,13 @@ export default create({
     };
 
     watch(
-      () => props.listData,
+      () => props.column,
       (val) => {
         state.transformY = 0;
         modifyStatus(false);
       },
       {
         deep: true
-      }
-    );
-
-    watch(
-      () => props.defaultIndex,
-      (val) => {
-        state.transformY = 0;
-        modifyStatus(false);
       }
     );
 
