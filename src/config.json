@@ -1,7 +1,8 @@
 {
   "docs": {
     "name": "指南",
-    "packages": [{
+    "packages": [
+      {
         "name": "intro",
         "cName": "介绍",
         "show": true
@@ -53,7 +54,8 @@
   "nav": [{
       "name": "基础组件",
       "enName": "base",
-      "packages": [{
+      "packages": [
+        {
           "version": "3.0.0",
           "name": "Button",
           "taro": true,
@@ -125,7 +127,8 @@
     {
       "name": "布局组件",
       "enName": "layout",
-      "packages": [{
+      "packages": [
+        {
           "version": "3.0.0",
           "name": "Layout",
           "taro": true,
