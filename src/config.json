@@ -1,8 +1,7 @@
 {
   "docs": {
     "name": "指南",
-    "packages": [
-      {
+    "packages": [{
         "name": "intro",
         "cName": "介绍",
         "show": true
@@ -51,23 +50,10 @@
       }
     ]
   },
-  "nav": [
-    {
+  "nav": [{
       "name": "基础组件",
       "enName": "base",
-      "packages": [
-        {
-          "version": "3.0.0",
-          "name": "Avatar",
-          "taro": true,
-          "sort": 7,
-          "cName": "头像",
-          "type": "component",
-          "show": true,
-          "desc": "头像",
-          "author": "ailululu"
-        },
-        {
+      "packages": [{
           "version": "3.0.0",
           "name": "Button",
           "taro": true,
@@ -114,17 +100,6 @@
         },
         {
           "version": "3.0.0",
-          "name": "Price",
-          "taro": true,
-          "sort": 4,
-          "cName": "价格",
-          "type": "component",
-          "show": true,
-          "desc": "价格组件",
-          "author": "ailululu"
-        },
-        {
-          "version": "3.0.0",
           "name": "OverLay",
           "taro": true,
           "type": "component",
@@ -133,25 +108,24 @@
           "sort": 14,
           "show": true,
           "author": "szg2008"
-        },
-        {
+        }, {
           "version": "3.0.0",
-          "name": "Divider",
+          "name": "Popup",
           "taro": true,
+          "sort": 8,
+          "cName": "弹出层",
           "type": "component",
-          "cName": "分割线",
-          "desc": "用于将内容分隔为多个区域。",
-          "sort": 23,
           "show": true,
-          "author": "yangjinjun3"
+          "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
+          "author": "szg2008"
         }
+
       ]
     },
     {
       "name": "布局组件",
       "enName": "layout",
-      "packages": [
-        {
+      "packages": [{
           "version": "3.0.0",
           "name": "Layout",
           "taro": true,
@@ -186,16 +160,7 @@
           "desc": "布局组件Row",
           "author": "undo"
         },
-        {
-          "version": "3.0.0",
-          "name": "ImagePreview",
-          "type": "methods",
-          "cName": "图片预览",
-          "desc": "图片预览",
-          "sort": 4,
-          "show": true,
-          "author": "zongyue3"
-        },
+
         {
           "version": "3.0.0",
           "name": "Sticky",
@@ -206,451 +171,17 @@
           "show": true,
           "tarodoc": false,
           "author": "szg2008"
-        }
-      ]
-    },
-    {
-      "name": "操作反馈",
-      "enName": "feedback",
-      "packages": [
+        },
         {
           "version": "3.0.0",
-          "name": "Swipe",
+          "name": "Divider",
           "taro": true,
           "type": "component",
-          "cName": "滑动手势",
-          "desc": "列表项左滑删除场景使用",
-          "sort": 4,
-          "show": true,
-          "author": "richard1015"
-        },
-        {
-          "version": "3.0.0",
-          "name": "ActionSheet",
-          "taro": true,
-          "sort": "1",
-          "cName": "动作面板",
-          "type": "component",
-          "show": true,
-          "desc": "底部弹出动作菜单面板",
-          "author": "zhangyufei"
-        },
-        {
-          "version": "3.0.0",
-          "name": "BackTop",
-          "taro": true,
-          "tarodoc": true,
-          "sort": "1",
-          "cName": "返回顶部",
-          "type": "component",
-          "show": true,
-          "desc": "较长页面快捷返回顶部",
-          "author": "liqiong43"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Collapse",
-          "taro": true,
-          "sort": 2,
-          "cName": "折叠面板",
-          "type": "component",
-          "show": true,
-          "desc": "折叠面板",
-          "author": "Ymm0008"
-        },
-        {
-          "version": "3.0.0",
-          "name": "CollapseItem",
-          "taro": true,
-          "sort": 3,
-          "cName": "折叠面板-item",
-          "type": "component",
-          "show": false,
-          "exportEmpty": true,
-          "exportEmptyTaro": true,
-          "desc": "折叠面板-item",
-          "author": "Ymm0008"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Drag",
-          "taro": true,
-          "tarodoc": true,
-          "type": "component",
-          "cName": "拖拽",
-          "desc": "拖拽组件",
-          "sort": 16,
-          "show": true,
-          "author": "Drjingfubo"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Dialog",
-          "taro": true,
-          "tarodoc": true,
-          "type": "methods",
-          "cName": "对话框",
-          "desc": "模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。",
-          "sort": 8,
-          "show": true,
-          "author": "dsj"
-        },
-        {
-          "version": "3.0.0",
-          "name": "InfiniteLoading",
-          "taro": true,
-          "tarodoc": true,
-          "type": "component",
-          "cName": "滚动加载",
-          "desc": "列表滚动到底部自动加载更多数据",
-          "sort": 15,
-          "show": true,
-          "author": "yangxiaolu"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Notify",
-          "tarodoc": true,
-          "taro": true,
-          "type": "methods",
-          "cName": "消息通知",
-          "desc": "在页面顶部展示消息提示，支持函数调用和组件调用两种方式",
-          "sort": 4,
-          "show": true,
-          "author": "wangyue217"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Range",
-          "taro": true,
-          "type": "component",
-          "cName": "区间选择器",
-          "desc": "滑动输入条，用于在给定的范围内选择一个值。",
-          "sort": 16,
-          "show": true,
-          "author": "zy19940510"
-        },
-        {
-          "version": "3.0.0",
-          "name": "PullRefresh",
-          "type": "component",
-          "cName": "下拉刷新",
-          "desc": "下拉刷新",
-          "sort": 16,
-          "show": false,
-          "author": "yangxiaolu3"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Video",
-          "type": "component",
-          "cName": "视频播放器",
-          "desc": "视频播放组件",
-          "sort": 20,
-          "taro": false,
-          "show": true,
-          "tarodoc": true,
-          "author": "zy19940510"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Popup",
-          "taro": true,
-          "sort": 8,
-          "cName": "弹出层",
-          "type": "component",
-          "show": true,
-          "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
-          "author": "szg2008"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Steps",
-          "taro": true,
-          "sort": 17,
-          "cName": "步骤条",
-          "type": "component",
-          "show": true,
-          "desc": "步骤条",
-          "author": "ailululu"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Step",
-          "sort": 17,
-          "cName": "步骤条子组件",
-          "type": "component",
-          "show": false,
-          "taro": true,
-          "exportEmpty": true,
-          "desc": "步骤条子组件",
-          "author": "ailululu"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Swiper",
-          "taro": true,
-          "sort": 6,
-          "cName": "轮播",
-          "type": "component",
-          "show": true,
-          "desc": "轮播",
-          "author": "suzigang"
-        },
-        {
-          "version": "3.0.0",
-          "name": "SwiperItem",
-          "sort": 6,
-          "cName": "轮播图子组件",
-          "type": "component",
-          "show": false,
-          "taro": true,
-          "exportEmpty": true,
-          "exportEmptyTaro": true,
-          "desc": "轮播图子组件",
-          "author": "suzigang"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Switch",
-          "taro": true,
-          "type": "component",
-          "cName": "开关",
-          "desc": "用来打开或关闭选项",
-          "sort": 3,
-          "show": true,
-          "author": "zongyue3"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Toast",
-          "taro": true,
-          "tarodoc": true,
-          "sort": "1",
-          "cName": "吐司",
-          "type": "methods",
-          "show": true,
-          "desc": "轻提示",
-          "author": "undo"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Progress",
-          "taro": true,
-          "sort": 8,
-          "cName": "进度条",
-          "type": "component",
-          "show": true,
-          "desc": "用来展示进度",
-          "author": "Drjingubo"
-        },
-        {
-          "version": "3.0.0",
-          "name": "CircleProgress",
-          "taro": true,
-          "sort": 8,
-          "cName": "环形进度条",
-          "type": "component",
-          "show": true,
-          "desc": "用来展示进度",
-          "author": "Drjingubo"
-        },
-        {
-          "version": "3.0.0",
-          "name": "NoticeBar",
-          "type": "component",
-          "cName": "公告栏",
-          "desc": "用于循环播放展示一组消息通知",
-          "sort": 8,
-          "show": true,
-          "taro": true,
-          "author": "yangxiaolu"
-        },
-        {
-          "version": "3.0.0",
-          "name": "SearchBar",
-          "type": "component",
-          "cName": "搜索栏",
-          "desc": "搜索栏",
+          "cName": "分割线",
+          "desc": "用于将内容分隔为多个区域。",
           "sort": 23,
           "show": true,
-          "taro": true,
-          "author": "zongyue3"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Empty",
-          "taro": true,
-          "type": "component",
-          "cName": "空状态",
-          "desc": "空状态时占位提示",
-          "sort": 24,
-          "show": true,
-          "author": "wujia8"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Audio",
-          "taro": true,
-          "tarodoc": true,
-          "type": "component",
-          "cName": "音频播放器",
-          "desc": "音频播放器",
-          "sort": 25,
-          "show": true,
-          "author": "yangxiaolu"
-        },
-        {
-          "version": "3.0.0",
-          "name": "AudioOperate",
-          "type": "component",
-          "cName": "音频操作按钮",
-          "desc": "音频操作按钮",
-          "sort": 26,
-          "show": false,
-          "author": "yangxiaolu"
-        },
-        {
-          "version": "3.0.0",
-          "name": "List",
-          "cType": "操作反馈",
-          "cName": "虚拟列表",
-          "desc": "可在成千上万条数据渲染时只渲染用户最大可见条数，提升页面渲染性能",
-          "show": true,
-          "tarodoc": false,
-          "type": "component",
-          "author": "szg2008"
-        }
-      ]
-    },
-    {
-      "name": "导航组件",
-      "enName": "nav",
-      "packages": [
-        {
-          "version": "3.0.0",
-          "name": "Navbar",
-          "taro": true,
-          "sort": 3,
-          "cName": "头部导航",
-          "type": "componment",
-          "show": true,
-          "desc": "头部导航",
-          "author": "liqiong43"
-        },
-        {
-          "version": "3.0.0",
-          "name": "FixedNav",
-          "type": "component",
-          "cName": "悬浮导航",
-          "desc": "可拖拽的悬浮导航",
-          "taro": true,
-          "sort": 9,
-          "show": true,
-          "author": "richard1015"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Menu",
-          "sort": 2,
-          "cName": "菜单组件",
-          "type": "component",
-          "taro": true,
-          "show": true,
-          "desc": "下拉菜单组件",
           "author": "yangjinjun3"
-        },
-        {
-          "version": "3.0.0",
-          "name": "MenuItem",
-          "sort": 2,
-          "cName": "菜单组件",
-          "type": "component",
-          "taro": true,
-          "exportEmpty": true,
-          "show": false,
-          "desc": "下拉菜单组件",
-          "author": "yangjinjun3"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Tabbar",
-          "taro": true,
-          "sort": 2,
-          "cName": "标签栏",
-          "type": "component",
-          "show": true,
-          "desc": "标签栏",
-          "author": "Drjingfubo"
-        },
-        {
-          "version": "3.0.0",
-          "name": "TabbarItem",
-          "sort": 2,
-          "cName": "标签栏子组件",
-          "type": "component",
-          "show": false,
-          "taro": true,
-          "exportEmpty": true,
-          "exportEmptyTaro": true,
-          "desc": "标签栏子组件",
-          "author": "Drjingfubo"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Elevator",
-          "type": "component",
-          "cName": "电梯楼层",
-          "desc": "用于列表快速定位以及索引的显示",
-          "sort": 5,
-          "show": true,
-          "taro": true,
-          "author": "szg2008"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Pagination",
-          "type": "component",
-          "cName": "分页",
-          "desc": "当数据量较多时，采用分页的形式分隔长列表。",
-          "sort": 10,
-          "show": true,
-          "taro": true,
-          "author": "yushuang24"
-        },
-        {
-          "version": "3.1.9",
-          "name": "Tabs",
-          "type": "component",
-          "cName": "选项卡切换",
-          "desc": "常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式",
-          "sort": 11,
-          "show": true,
-          "taro": true,
-          "author": "richard1015"
-        },
-        {
-          "version": "3.1.9",
-          "name": "TabPane",
-          "type": "component",
-          "cName": "选项卡子组件",
-          "desc": "",
-          "sort": 12,
-          "exportEmpty": true,
-          "taro": true,
-          "show": false,
-          "author": "richard1015"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Indicator",
-          "type": "component",
-          "cName": "指示器",
-          "desc": "显示一个任务或流程的进度，常用语开通流程。",
-          "sort": 11,
-          "taro": true,
-          "show": true,
-          "author": "senyawang"
         },
         {
           "version": "3.1.13",
@@ -675,48 +206,44 @@
           "exportEmpty": true,
           "exportEmptyTaro": true,
           "author": "haiweilian"
-        },
-        {
-          "version": "3.1.15",
-          "name": "SideNavBar",
-          "type": "component",
-          "cName": "侧边栏导航",
-          "desc": "垂直展示的导航栏，用于内容选择和切换",
-          "sort": 14,
-          "taro": true,
-          "show": true,
-          "author": "szg2008"
-        },
-        {
-          "version": "3.1.15",
-          "name": "SideNavBarItem",
-          "type": "component",
-          "cName": "侧边栏导航子组件",
-          "desc": "",
-          "sort": 15,
-          "exportEmpty": true,
-          "taro": true,
-          "show": false,
-          "author": "szg2008"
-        },
-        {
-          "version": "3.1.15",
-          "name": "SubSideNavBar",
-          "type": "component",
-          "cName": "侧边栏导航子组件",
-          "desc": "",
-          "sort": 16,
-          "exportEmpty": true,
-          "taro": true,
-          "show": false,
-          "author": "szg2008"
         }
       ]
     },
     {
       "name": "数据录入",
       "enName": "dentry",
-      "packages": [
+      "packages": [{
+          "version": "3.0.0",
+          "name": "Range",
+          "taro": true,
+          "type": "component",
+          "cName": "区间选择器",
+          "desc": "滑动输入条，用于在给定的范围内选择一个值。",
+          "sort": 16,
+          "show": true,
+          "author": "zy19940510"
+        },
+        {
+          "version": "3.0.0",
+          "name": "SearchBar",
+          "type": "component",
+          "cName": "搜索栏",
+          "desc": "搜索栏",
+          "sort": 23,
+          "show": true,
+          "taro": true,
+          "author": "zongyue3"
+        },
+        {
+          "name": "Cascader",
+          "type": "component",
+          "cName": "级联选择",
+          "desc": "级联选择，用于多层级数据的选择，典型场景为省市区选择.",
+          "sort": 23,
+          "show": true,
+          "taro": true,
+          "author": "dongj0316"
+        },
         {
           "version": "3.0.0",
           "taro": true,
@@ -873,17 +400,7 @@
           "desc": "上传文件、图片",
           "author": "richard1015"
         },
-        {
-          "version": "3.0.0",
-          "name": "CountUp",
-          "taro": true,
-          "sort": 12,
-          "cName": "数字滚动",
-          "type": "component",
-          "show": true,
-          "desc": "数字滚动组件，动态变化展示",
-          "author": "Ymm0008"
-        },
+
         {
           "version": "3.0.0",
           "name": "NumberKeyboard",
@@ -894,6 +411,353 @@
           "show": true,
           "desc": "虚拟数字键盘",
           "author": "Drjingfubo"
+        },
+
+        {
+          "version": "3.0.0",
+          "name": "Form",
+          "type": "component",
+          "cName": "表单",
+          "desc": "1",
+          "sort": 21,
+          "show": true,
+          "taro": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "FormItem",
+          "type": "component",
+          "cName": "表单Item",
+          "desc": "表单Item",
+          "sort": 22,
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "author": "richard1015"
+        },
+
+        {
+          "version": "3.0.0",
+          "name": "OldPicker",
+          "cName": "选择器",
+          "desc": "3.1.17 版本之前（包括 3.1.17 版本）的选择器",
+          "show": false,
+          "tarodoc": false,
+          "exportEmpty": true,
+          "type": "component",
+          "author": "yangxiaolu"
+        }
+      ]
+    },
+    {
+      "name": "操作反馈",
+      "enName": "feedback",
+      "packages": [{
+          "version": "3.0.0",
+          "name": "Swipe",
+          "taro": true,
+          "type": "component",
+          "cName": "滑动手势",
+          "desc": "列表项左滑删除场景使用",
+          "sort": 4,
+          "show": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "ActionSheet",
+          "taro": true,
+          "sort": "1",
+          "cName": "动作面板",
+          "type": "component",
+          "show": true,
+          "desc": "底部弹出动作菜单面板",
+          "author": "zhangyufei"
+        },
+        {
+          "version": "3.0.0",
+          "name": "BackTop",
+          "taro": true,
+          "tarodoc": true,
+          "sort": "1",
+          "cName": "返回顶部",
+          "type": "component",
+          "show": true,
+          "desc": "较长页面快捷返回顶部",
+          "author": "liqiong43"
+        },
+
+        {
+          "version": "3.0.0",
+          "name": "Drag",
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "cName": "拖拽",
+          "desc": "拖拽组件",
+          "sort": 16,
+          "show": true,
+          "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Dialog",
+          "taro": true,
+          "tarodoc": true,
+          "type": "methods",
+          "cName": "对话框",
+          "desc": "模态对话框，在浮层中显示，引导用户进行相关操作，支持图片对话框。",
+          "sort": 8,
+          "show": true,
+          "author": "dsj"
+        },
+        {
+          "version": "3.0.0",
+          "name": "InfiniteLoading",
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "cName": "滚动加载",
+          "desc": "列表滚动到底部自动加载更多数据",
+          "sort": 15,
+          "show": true,
+          "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Notify",
+          "tarodoc": true,
+          "taro": true,
+          "type": "methods",
+          "cName": "消息通知",
+          "desc": "在页面顶部展示消息提示，支持函数调用和组件调用两种方式",
+          "sort": 4,
+          "show": true,
+          "author": "wangyue217"
+        },
+
+        {
+          "version": "3.0.0",
+          "name": "PullRefresh",
+          "type": "component",
+          "cName": "下拉刷新",
+          "desc": "下拉刷新",
+          "sort": 16,
+          "show": false,
+          "author": "yangxiaolu3"
+        },
+
+        {
+          "version": "3.0.0",
+          "name": "Switch",
+          "taro": true,
+          "type": "component",
+          "cName": "开关",
+          "desc": "用来打开或关闭选项",
+          "sort": 3,
+          "show": true,
+          "author": "zongyue3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Toast",
+          "taro": true,
+          "tarodoc": true,
+          "sort": "1",
+          "cName": "吐司",
+          "type": "methods",
+          "show": true,
+          "desc": "轻提示",
+          "author": "undo"
+        },
+
+        {
+          "version": "3.0.0",
+          "name": "Audio",
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "cName": "音频播放器",
+          "desc": "音频播放器",
+          "sort": 25,
+          "show": true,
+          "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "AudioOperate",
+          "type": "component",
+          "cName": "音频操作按钮",
+          "desc": "音频操作按钮",
+          "sort": 26,
+          "show": false,
+          "author": "yangxiaolu"
+        }
+
+      ]
+    },
+    {
+      "name": "展示组件",
+      "enName": "exhibition",
+      "packages": [{
+          "version": "3.0.0",
+          "name": "List",
+          "cType": "操作反馈",
+          "cName": "虚拟列表",
+          "desc": "可在成千上万条数据渲染时只渲染用户最大可见条数，提升页面渲染性能",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Progress",
+          "taro": true,
+          "sort": 8,
+          "cName": "进度条",
+          "type": "component",
+          "show": true,
+          "desc": "用来展示进度",
+          "author": "Drjingubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CircleProgress",
+          "taro": true,
+          "sort": 8,
+          "cName": "环形进度条",
+          "type": "component",
+          "show": true,
+          "desc": "用来展示进度",
+          "author": "Drjingubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "NoticeBar",
+          "type": "component",
+          "cName": "公告栏",
+          "desc": "用于循环播放展示一组消息通知",
+          "sort": 8,
+          "show": true,
+          "taro": true,
+          "author": "yangxiaolu"
+        },
+
+        {
+          "version": "3.0.0",
+          "name": "Empty",
+          "taro": true,
+          "type": "component",
+          "cName": "空状态",
+          "desc": "空状态时占位提示",
+          "sort": 24,
+          "show": true,
+          "author": "wujia8"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Video",
+          "type": "component",
+          "cName": "视频播放器",
+          "desc": "视频播放组件",
+          "sort": 20,
+          "taro": false,
+          "show": true,
+          "tarodoc": true,
+          "author": "zy19940510"
+        },
+
+        {
+          "version": "3.0.0",
+          "name": "Steps",
+          "taro": true,
+          "sort": 17,
+          "cName": "步骤条",
+          "type": "component",
+          "show": true,
+          "desc": "步骤条",
+          "author": "ailululu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Step",
+          "sort": 17,
+          "cName": "步骤条子组件",
+          "type": "component",
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "desc": "步骤条子组件",
+          "author": "ailululu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Swiper",
+          "taro": true,
+          "sort": 6,
+          "cName": "轮播",
+          "type": "component",
+          "show": true,
+          "desc": "轮播",
+          "author": "suzigang"
+        },
+        {
+          "version": "3.0.0",
+          "name": "SwiperItem",
+          "sort": 6,
+          "cName": "轮播图子组件",
+          "type": "component",
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "exportEmptyTaro": true,
+          "desc": "轮播图子组件",
+          "author": "suzigang"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Avatar",
+          "taro": true,
+          "sort": 7,
+          "cName": "头像",
+          "type": "component",
+          "show": true,
+          "desc": "头像",
+          "author": "ailululu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Price",
+          "taro": true,
+          "sort": 4,
+          "cName": "价格",
+          "type": "component",
+          "show": true,
+          "desc": "价格组件",
+          "author": "ailululu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "ImagePreview",
+          "type": "methods",
+          "cName": "图片预览",
+          "desc": "图片预览",
+          "sort": 4,
+          "show": true,
+          "author": "zongyue3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "CountUp",
+          "taro": true,
+          "sort": 12,
+          "cName": "数字滚动",
+          "type": "component",
+          "show": true,
+          "desc": "数字滚动组件，动态变化展示",
+          "author": "Ymm0008"
         },
         {
           "name": "CountDown",
@@ -940,29 +804,6 @@
         },
         {
           "version": "3.0.0",
-          "name": "Form",
-          "type": "component",
-          "cName": "表单",
-          "desc": "1",
-          "sort": 21,
-          "show": true,
-          "taro": true,
-          "author": "richard1015"
-        },
-        {
-          "version": "3.0.0",
-          "name": "FormItem",
-          "type": "component",
-          "cName": "表单Item",
-          "desc": "表单Item",
-          "sort": 22,
-          "show": false,
-          "taro": true,
-          "exportEmpty": true,
-          "author": "richard1015"
-        },
-        {
-          "version": "3.0.0",
           "name": "Skeleton",
           "type": "component",
           "cName": "骨架屏",
@@ -973,33 +814,212 @@
           "author": "liqiong"
         },
         {
-          "name": "Cascader",
-          "type": "component",
-          "cName": "级联选择",
-          "desc": "级联选择，用于多层级数据的选择，典型场景为省市区选择.",
-          "sort": 23,
-          "show": true,
+          "version": "3.0.0",
+          "name": "Collapse",
           "taro": true,
-          "author": "dongj0316"
+          "sort": 2,
+          "cName": "折叠面板",
+          "type": "component",
+          "show": true,
+          "desc": "折叠面板",
+          "author": "Ymm0008"
         },
         {
           "version": "3.0.0",
-          "name": "OldPicker",
-          "cName": "选择器",
-          "desc": "3.1.17 版本之前（包括 3.1.17 版本）的选择器",
-          "show": false,
-          "tarodoc": false,
-          "exportEmpty": true,
+          "name": "CollapseItem",
+          "taro": true,
+          "sort": 3,
+          "cName": "折叠面板-item",
           "type": "component",
-          "author": "yangxiaolu"
+          "show": false,
+          "exportEmpty": true,
+          "exportEmptyTaro": true,
+          "desc": "折叠面板-item",
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "taro": true,
+          "name": "Table",
+          "type": "component",
+          "cName": "表格",
+          "desc": "用于展示多条结构类似的数据，并具有一定的操作功能",
+          "sort": 9,
+          "show": true,
+          "author": "szg2008"
         }
       ]
     },
     {
+      "name": "导航组件",
+      "enName": "nav",
+      "packages": [{
+          "version": "3.0.0",
+          "name": "Navbar",
+          "taro": true,
+          "sort": 3,
+          "cName": "头部导航",
+          "type": "componment",
+          "show": true,
+          "desc": "头部导航",
+          "author": "liqiong43"
+        },
+        {
+          "version": "3.0.0",
+          "name": "FixedNav",
+          "type": "component",
+          "cName": "悬浮导航",
+          "desc": "可拖拽的悬浮导航",
+          "taro": true,
+          "sort": 9,
+          "show": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Menu",
+          "sort": 2,
+          "cName": "菜单",
+          "type": "component",
+          "taro": true,
+          "show": true,
+          "desc": "下拉菜单组件",
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "MenuItem",
+          "sort": 2,
+          "cName": "菜单",
+          "type": "component",
+          "taro": true,
+          "exportEmpty": true,
+          "show": false,
+          "desc": "下拉菜单组件",
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Tabbar",
+          "taro": true,
+          "sort": 2,
+          "cName": "标签栏",
+          "type": "component",
+          "show": true,
+          "desc": "标签栏",
+          "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "TabbarItem",
+          "sort": 2,
+          "cName": "标签栏子组件",
+          "type": "component",
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "exportEmptyTaro": true,
+          "desc": "标签栏子组件",
+          "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Elevator",
+          "type": "component",
+          "cName": "电梯楼层",
+          "desc": "用于列表快速定位以及索引的显示",
+          "sort": 5,
+          "show": true,
+          "taro": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Pagination",
+          "type": "component",
+          "cName": "分页",
+          "desc": "当数据量较多时，采用分页的形式分隔长列表。",
+          "sort": 10,
+          "show": true,
+          "taro": true,
+          "author": "yushuang24"
+        },
+        {
+          "version": "3.1.9",
+          "name": "Tabs",
+          "type": "component",
+          "cName": "选项卡切换",
+          "desc": "常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式",
+          "sort": 11,
+          "show": true,
+          "taro": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.1.9",
+          "name": "TabPane",
+          "type": "component",
+          "cName": "选项卡子组件",
+          "desc": "",
+          "sort": 12,
+          "exportEmpty": true,
+          "taro": true,
+          "show": false,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Indicator",
+          "type": "component",
+          "cName": "指示器",
+          "desc": "显示一个任务或流程的进度，常用语开通流程。",
+          "sort": 11,
+          "taro": true,
+          "show": true,
+          "author": "senyawang"
+        },
+        {
+          "version": "3.1.15",
+          "name": "SideNavBar",
+          "type": "component",
+          "cName": "侧边栏导航",
+          "desc": "垂直展示的导航栏，用于内容选择和切换",
+          "sort": 14,
+          "taro": true,
+          "show": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.1.15",
+          "name": "SideNavBarItem",
+          "type": "component",
+          "cName": "侧边栏导航子组件",
+          "desc": "",
+          "sort": 15,
+          "exportEmpty": true,
+          "taro": true,
+          "show": false,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.1.15",
+          "name": "SubSideNavBar",
+          "type": "component",
+          "cName": "侧边栏导航子组件",
+          "desc": "",
+          "sort": 16,
+          "exportEmpty": true,
+          "taro": true,
+          "show": false,
+          "author": "szg2008"
+        }
+      ]
+    },
+
+    {
       "name": "特色组件",
       "enName": "business",
-      "packages": [
-        {
+      "packages": [{
           "version": "3.0.0",
           "taro": true,
           "name": "Address",
@@ -1089,18 +1109,8 @@
           "sort": 1,
           "show": true,
           "author": "Drjingfubo"
-        },
-        {
-          "version": "3.0.0",
-          "taro": true,
-          "name": "Table",
-          "type": "component",
-          "cName": "表格",
-          "desc": "用于展示多条结构类似的数据，并具有一定的操作功能",
-          "sort": 9,
-          "show": true,
-          "author": "szg2008"
         }
+
       ]
     }
   ]
