@@ -213,6 +213,171 @@
       ]
     },
     {
+      "name": "导航组件",
+      "enName": "nav",
+      "packages": [{
+          "version": "3.0.0",
+          "name": "Navbar",
+          "taro": true,
+          "sort": 3,
+          "cName": "头部导航",
+          "type": "componment",
+          "show": true,
+          "desc": "头部导航",
+          "author": "liqiong43"
+        },
+        {
+          "version": "3.0.0",
+          "name": "FixedNav",
+          "type": "component",
+          "cName": "悬浮导航",
+          "desc": "可拖拽的悬浮导航",
+          "taro": true,
+          "sort": 9,
+          "show": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Menu",
+          "sort": 2,
+          "cName": "菜单",
+          "type": "component",
+          "taro": true,
+          "show": true,
+          "desc": "下拉菜单组件",
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "MenuItem",
+          "sort": 2,
+          "cName": "菜单",
+          "type": "component",
+          "taro": true,
+          "exportEmpty": true,
+          "show": false,
+          "desc": "下拉菜单组件",
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Tabbar",
+          "taro": true,
+          "sort": 2,
+          "cName": "标签栏",
+          "type": "component",
+          "show": true,
+          "desc": "标签栏",
+          "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "TabbarItem",
+          "sort": 2,
+          "cName": "标签栏子组件",
+          "type": "component",
+          "show": false,
+          "taro": true,
+          "exportEmpty": true,
+          "exportEmptyTaro": true,
+          "desc": "标签栏子组件",
+          "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Elevator",
+          "type": "component",
+          "cName": "电梯楼层",
+          "desc": "用于列表快速定位以及索引的显示",
+          "sort": 5,
+          "show": true,
+          "taro": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Pagination",
+          "type": "component",
+          "cName": "分页",
+          "desc": "当数据量较多时，采用分页的形式分隔长列表。",
+          "sort": 10,
+          "show": true,
+          "taro": true,
+          "author": "yushuang24"
+        },
+        {
+          "version": "3.1.9",
+          "name": "Tabs",
+          "type": "component",
+          "cName": "选项卡切换",
+          "desc": "常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式",
+          "sort": 11,
+          "show": true,
+          "taro": true,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.1.9",
+          "name": "TabPane",
+          "type": "component",
+          "cName": "选项卡子组件",
+          "desc": "",
+          "sort": 12,
+          "exportEmpty": true,
+          "taro": true,
+          "show": false,
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Indicator",
+          "type": "component",
+          "cName": "指示器",
+          "desc": "显示一个任务或流程的进度，常用语开通流程。",
+          "sort": 11,
+          "taro": true,
+          "show": true,
+          "author": "senyawang"
+        },
+        {
+          "version": "3.1.15",
+          "name": "SideNavBar",
+          "type": "component",
+          "cName": "侧边栏导航",
+          "desc": "垂直展示的导航栏，用于内容选择和切换",
+          "sort": 14,
+          "taro": true,
+          "show": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.1.15",
+          "name": "SideNavBarItem",
+          "type": "component",
+          "cName": "侧边栏导航子组件",
+          "desc": "",
+          "sort": 15,
+          "exportEmpty": true,
+          "taro": true,
+          "show": false,
+          "author": "szg2008"
+        },
+        {
+          "version": "3.1.15",
+          "name": "SubSideNavBar",
+          "type": "component",
+          "cName": "侧边栏导航子组件",
+          "desc": "",
+          "sort": 16,
+          "exportEmpty": true,
+          "taro": true,
+          "show": false,
+          "author": "szg2008"
+        }
+      ]
+    },
+    {
       "name": "数据录入",
       "enName": "dentry",
       "packages": [{
@@ -849,171 +1014,6 @@
           "desc": "用于展示多条结构类似的数据，并具有一定的操作功能",
           "sort": 9,
           "show": true,
-          "author": "szg2008"
-        }
-      ]
-    },
-    {
-      "name": "导航组件",
-      "enName": "nav",
-      "packages": [{
-          "version": "3.0.0",
-          "name": "Navbar",
-          "taro": true,
-          "sort": 3,
-          "cName": "头部导航",
-          "type": "componment",
-          "show": true,
-          "desc": "头部导航",
-          "author": "liqiong43"
-        },
-        {
-          "version": "3.0.0",
-          "name": "FixedNav",
-          "type": "component",
-          "cName": "悬浮导航",
-          "desc": "可拖拽的悬浮导航",
-          "taro": true,
-          "sort": 9,
-          "show": true,
-          "author": "richard1015"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Menu",
-          "sort": 2,
-          "cName": "菜单",
-          "type": "component",
-          "taro": true,
-          "show": true,
-          "desc": "下拉菜单组件",
-          "author": "yangjinjun3"
-        },
-        {
-          "version": "3.0.0",
-          "name": "MenuItem",
-          "sort": 2,
-          "cName": "菜单",
-          "type": "component",
-          "taro": true,
-          "exportEmpty": true,
-          "show": false,
-          "desc": "下拉菜单组件",
-          "author": "yangjinjun3"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Tabbar",
-          "taro": true,
-          "sort": 2,
-          "cName": "标签栏",
-          "type": "component",
-          "show": true,
-          "desc": "标签栏",
-          "author": "Drjingfubo"
-        },
-        {
-          "version": "3.0.0",
-          "name": "TabbarItem",
-          "sort": 2,
-          "cName": "标签栏子组件",
-          "type": "component",
-          "show": false,
-          "taro": true,
-          "exportEmpty": true,
-          "exportEmptyTaro": true,
-          "desc": "标签栏子组件",
-          "author": "Drjingfubo"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Elevator",
-          "type": "component",
-          "cName": "电梯楼层",
-          "desc": "用于列表快速定位以及索引的显示",
-          "sort": 5,
-          "show": true,
-          "taro": true,
-          "author": "szg2008"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Pagination",
-          "type": "component",
-          "cName": "分页",
-          "desc": "当数据量较多时，采用分页的形式分隔长列表。",
-          "sort": 10,
-          "show": true,
-          "taro": true,
-          "author": "yushuang24"
-        },
-        {
-          "version": "3.1.9",
-          "name": "Tabs",
-          "type": "component",
-          "cName": "选项卡切换",
-          "desc": "常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式",
-          "sort": 11,
-          "show": true,
-          "taro": true,
-          "author": "richard1015"
-        },
-        {
-          "version": "3.1.9",
-          "name": "TabPane",
-          "type": "component",
-          "cName": "选项卡子组件",
-          "desc": "",
-          "sort": 12,
-          "exportEmpty": true,
-          "taro": true,
-          "show": false,
-          "author": "richard1015"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Indicator",
-          "type": "component",
-          "cName": "指示器",
-          "desc": "显示一个任务或流程的进度，常用语开通流程。",
-          "sort": 11,
-          "taro": true,
-          "show": true,
-          "author": "senyawang"
-        },
-        {
-          "version": "3.1.15",
-          "name": "SideNavBar",
-          "type": "component",
-          "cName": "侧边栏导航",
-          "desc": "垂直展示的导航栏，用于内容选择和切换",
-          "sort": 14,
-          "taro": true,
-          "show": true,
-          "author": "szg2008"
-        },
-        {
-          "version": "3.1.15",
-          "name": "SideNavBarItem",
-          "type": "component",
-          "cName": "侧边栏导航子组件",
-          "desc": "",
-          "sort": 15,
-          "exportEmpty": true,
-          "taro": true,
-          "show": false,
-          "author": "szg2008"
-        },
-        {
-          "version": "3.1.15",
-          "name": "SubSideNavBar",
-          "type": "component",
-          "cName": "侧边栏导航子组件",
-          "desc": "",
-          "sort": 16,
-          "exportEmpty": true,
-          "taro": true,
-          "show": false,
           "author": "szg2008"
         }
       ]
