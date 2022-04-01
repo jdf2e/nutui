@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import ImagePreview from '../index.vue';
-import { nextTick } from 'vue';
+import { nextTick, reactive, toRefs } from 'vue';
+// import { trigger } from '@/packages/utils/unit';
 
 const images = [
   {
@@ -48,7 +49,25 @@ test('basic usage test', async () => {
     }
   });
   await nextTick();
-  expect(wrapper.find('.custom-pop').html()).toMatchSnapshot();
+  expect((wrapper.find('.custom-pop').element as any).style.display).toEqual('');
+});
+
+test('test autoplay', async () => {
+  const wrapper = mount(ImagePreview, {
+    props: {
+      show: true,
+      images,
+      autoplay: 3000
+    }
+  });
+
+  await nextTick();
+
+  expect(wrapper.vm.active).toBe(1);
+
+  setTimeout(() => {
+    expect(wrapper.vm.active).toBe(2);
+  }, 3000);
 });
 
 test('init page No.', async () => {
@@ -77,6 +96,22 @@ test('customize pagination and color', async () => {
   expect(swiperPagination.exists()).toBe(true);
   expect(swiperPagination.findAll('i')[0].element.style.backgroundColor).toEqual('red');
 });
+
+// test('test content-close', async () => {
+//   const wrapper = mount(ImagePreview, {
+//     props: {
+//       show: true,
+//       images,
+//       autoplay: 0,
+//       contentClose: true
+//     }
+//   });
+//   await nextTick();
+
+//   // const key = wrapper.find('.nut-imagepreview');
+//   // await key.trigger('click');
+//   // expect((wrapper.find('.custom-pop').element as any).style.display).toEqual('none');
+// });
 
 test('video surported in H5 env', async () => {
   const wrapper = mount(ImagePreview, {
