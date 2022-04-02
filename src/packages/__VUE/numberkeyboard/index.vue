@@ -34,7 +34,7 @@
               ]"
               @touchstart="(event) => onTouchstart(item, event)"
               @touchmove="(event) => onTouchMove(item, event)"
-              @touchend="onTouchEnd"
+              @touchend="(event) => onTouchEnd(event)"
             >
               <template v-if="item.type == 'number' || item.type == 'custom'">{{ item.id }}</template>
               <img
@@ -201,7 +201,8 @@ export default create({
     function onTouchMove(id: any, event: any) {
       event.stopPropagation();
     }
-    function onTouchEnd() {
+    function onTouchEnd(event: any) {
+      event.preventDefault();
       clickKeyIndex.value = undefined;
     }
 
