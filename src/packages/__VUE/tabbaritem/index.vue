@@ -40,8 +40,10 @@
       ></div>
       <view
         :class="['nut-tabbar-item_icon-box_nav-word', { 'nut-tabbar-item_icon-box_big-word': !icon && !activeImg }]"
-        >{{ tabTitle }}</view
       >
+        <view v-if="tabTitle">{{ tabTitle }}</view>
+        <slot v-if="!tabTitle"></slot>
+      </view>
     </view>
   </div>
 </template>
