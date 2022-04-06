@@ -36,6 +36,14 @@ export default create({
     label: {
       type: String,
       default: ''
+    },
+    iconClassPrefix: {
+      type: String,
+      default: 'nut-icon'
+    },
+    iconFontClassName: {
+      type: String,
+      default: 'nutui-iconfont'
     }
   },
   emits: ['change', 'update:modelValue'],
@@ -72,11 +80,13 @@ export default create({
     };
 
     const renderIcon = () => {
-      const { iconName, iconSize, iconActiveName } = props;
+      const { iconName, iconSize, iconActiveName, iconClassPrefix, iconFontClassName } = props;
       return h(nutIcon, {
         name: !pValue.value ? iconName : iconActiveName,
         size: iconSize,
-        class: color.value
+        class: color.value,
+        classPrefix: iconClassPrefix,
+        fontClassName: iconFontClassName
       });
     };
 
