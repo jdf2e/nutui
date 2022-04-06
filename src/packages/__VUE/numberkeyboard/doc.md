@@ -69,6 +69,7 @@ export default{
       type="rightColumn"
       v-model:visible="visible"
       :custom-key="customKey"
+      :confirm-text="支付"
       @input="input"
       @close="close"
     >
@@ -252,6 +253,7 @@ export default{
 | overlay | 是否显示遮罩  | Boolean| true |
 | v-model:value | 当前输入值		 | String | - |
 | maxlength  | 输入值最大长度，结合 v-model 使用 | number <br> String| 6 |
+| confirm-text  | 自定义完成按钮文字，如"支付"，"下一步"，"提交"等 | String | 完成 |
 
 
 ### Event
