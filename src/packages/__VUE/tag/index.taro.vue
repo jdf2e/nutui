@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" :style="getStyle()" @click="onClose">
+  <view :class="classes" :style="getStyle()" @click="onClick">
     <slot></slot>
     <nut-icon class="nut-tag--close" v-if="closeable" name="close" size="11" @click="onClose"></nut-icon>
   </view>
