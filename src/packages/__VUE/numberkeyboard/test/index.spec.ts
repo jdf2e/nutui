@@ -94,6 +94,20 @@ test('should render title and close button correctly', () => {
   let title = wrapper.find('.tit');
   expect(title.html()).toContain('默认键盘');
 });
+
+test('should render finish button correctly', () => {
+  const wrapper = mount(NumberKeyboard, {
+    props: {
+      visible: true,
+      isWrapTeleport: false,
+      type: 'rightColumn',
+      confirmText: '支付'
+    }
+  });
+  let title = wrapper.find('.finish');
+  expect(title.html()).toContain('支付');
+});
+
 test('should emit "update:modelValue" event after clicking key', () => {
   const wrapper = mount(NumberKeyboard, {
     props: {
