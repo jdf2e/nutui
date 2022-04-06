@@ -1,6 +1,5 @@
 const fse = require('fs-extra');
 const config = require('../src/config.json');
-const escodegen = require('escodegen');
 const targetBaseUrl = `${process.cwd()}/src`;
 const taroConfig = `${targetBaseUrl}/sites/mobile-taro/vue/src/app.config.ts`;
 
