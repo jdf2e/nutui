@@ -34,7 +34,7 @@
               ]"
               @touchstart="(event) => onTouchstart(item, event)"
               @touchmove="(event) => onTouchMove(item, event)"
-              @touchend="onTouchEnd"
+              @touchend="(event) => onTouchEnd(event)"
             >
               <template v-if="item.type == 'number' || item.type == 'custom'">{{ item.id }}</template>
               <img
@@ -62,7 +62,7 @@
             </div>
           </div>
           <div class="key-board-wrapper key-board-finish" @click="closeBoard()" v-if="title == ''">
-            <div :class="['key', 'finish', { activeFinsh: clickKeyIndex == 'finish' }]"> 完成 </div>
+            <div :class="['key', 'finish', { activeFinsh: clickKeyIndex == 'finish' }]"> {{ confirmText }} </div>
           </div>
         </div>
       </div>
@@ -76,6 +76,10 @@ import { createComponent } from '../../utils/create';
 const { create } = createComponent('numberkeyboard');
 export default create({
   props: {
+    confirmText: {
+      type: String,
+      default: '完成'
+    },
     title: {
       type: String,
       default: ''
@@ -201,7 +205,8 @@ export default create({
     function onTouchMove(id: any, event: any) {
       event.stopPropagation();
     }
-    function onTouchEnd() {
+    function onTouchEnd(event: any) {
+      event.preventDefault();
       clickKeyIndex.value = undefined;
     }
 
