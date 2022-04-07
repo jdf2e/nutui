@@ -71,7 +71,7 @@ export default create({
     }
   },
   components: {},
-  emits: ['input', 'on-end', 'on-restart', 'on-paused'],
+  emits: ['input', 'on-end', 'on-restart', 'on-paused', 'update:modelValue'],
 
   setup(props, { emit, slots }) {
     // console.log('componentName', componentName);

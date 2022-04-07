@@ -750,6 +750,8 @@
           "desc": "音频播放器",
           "sort": 25,
           "show": true,
+          "exportEmpty":false,
+          "exportEmptyTaro":false,
           "author": "yangxiaolu"
         },
         {
@@ -760,6 +762,8 @@
           "desc": "音频操作按钮",
           "sort": 26,
           "show": false,
+          "exportEmpty":false,
+          "exportEmptyTaro":false,
           "author": "yangxiaolu"
         }
 
@@ -834,6 +838,8 @@
           "taro": false,
           "show": true,
           "tarodoc": true,
+          "exportEmpty":false,
+          "exportEmptyTaro":false,
           "author": "zy19940510"
         },
 
