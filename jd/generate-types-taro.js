@@ -6,7 +6,10 @@ const packages = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
     let { name } = element;
-    importStr += `import ${name} from './__VUE/${name.toLowerCase()}';\n`;
+    const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
+    importStr += `import ${name} from './__VUE/${name.toLowerCase()}/${
+      fs.existsSync(filePath) ? 'index.taro' : 'index'
+    }';\n`;
 
     packages.push(name);
   });
