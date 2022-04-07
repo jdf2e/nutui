@@ -42,7 +42,7 @@
     "checked": "npm run generate:file && tsc",
     "checked:taro:vue": "npm run generate:file:taro:vue",
     "dev": "npm run checked && vite --open --force",
-    "dev:taro:vue": "npm run checked:taro:vue && cd src/sites/mobile-taro/vue/ && npm run dev:weapp",
+    "dev:taro:vue": "npm run createTaroConfig && npm run checked:taro:vue && cd src/sites/mobile-taro/vue/ && npm run dev:weapp",
     "dev:taro:h5": "npm run checked:taro:vue && cd src/sites/mobile-taro/vue/ && npm run dev:h5",
     "build:site": "npm run checked && vite build",
     "build:site:oss": "npm run checked && vite build --base=/nutui/3x/",
@@ -62,7 +62,8 @@
     "test": "jest",
     "release": "standard-version -a",
     "codeformat": "prettier --write .",
-    "copydocs": "node ./jd/copymd.js"
+    "copydocs": "node ./jd/copymd.js",
+    "createTaroConfig": "node ./jd/generate-taro-route.js"
   },
   "standard-version": {
     "scripts": {
