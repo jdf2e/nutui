@@ -182,7 +182,6 @@ export default create({
         } else {
           deg = `${(-updateMove / state.lineSpacing + 1) * state.rotation}deg`;
         }
-
         setTransform(updateMove, null, undefined, deg);
         state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
       }
@@ -226,6 +225,8 @@ export default create({
           setTimeout(() => {
             getReference();
           }, 200);
+        } else {
+          state.transformY = 0;
         }
       },
       {
