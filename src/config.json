@@ -60,11 +60,23 @@
           "version": "3.0.0",
           "name": "Avatar",
           "taro": true,
-          "sort": 7,
+          "sort": 1,
           "cName": "头像",
           "type": "component",
           "show": true,
           "desc": "头像",
+          "author": "ailululu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "AvatarGroup",
+          "taro": true,
+          "sort": 1,
+          "cName": "头像组件",
+          "type": "component",
+          "show": false,
+          "exportEmpty": true,
+          "desc": "头像组合组件",
           "author": "ailululu"
         },
         {
