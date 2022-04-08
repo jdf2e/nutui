@@ -16,44 +16,44 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('toast');
 import { Toast } from '@/packages/nutui.vue';
 export default createDemo({
   setup() {
-    const textToast = (msg) => {
+    const textToast = (msg: string) => {
       Toast.text(msg);
     };
-    const titleToast = (msg) => {
+    const titleToast = (msg: string) => {
       Toast.text(msg, {
         title: '标题文字'
       });
     };
-    const successToast = (msg) => {
+    const successToast = (msg: string) => {
       Toast.success(msg);
     };
-    const errorToast = (msg) => {
+    const errorToast = (msg: string) => {
       Toast.fail(msg);
     };
-    const warningToast = (msg) => {
+    const warningToast = (msg: string) => {
       Toast.warn(msg);
     };
-    const loadingToast = (msg) => {
+    const loadingToast = (msg: string) => {
       Toast.loading(msg);
     };
-    const NoToast = (msg) => {
+    const NoToast = (msg: string) => {
       Toast.text(msg, {
         duration: 0
       });
     };
-    const BottomToast = (msg) => {
+    const BottomToast = (msg: string) => {
       Toast.text(msg, {
         center: false,
         bottom: '10%'
       });
     };
-    const NoLoading = (msg) => {
+    const NoLoading = (msg: string) => {
       Toast.loading(msg, {
         cover: true
       });

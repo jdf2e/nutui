@@ -58,3 +58,11 @@ export const isObject = (val: unknown): val is Record<any, any> => val !== null 
 export const isPromise = <T = any>(val: unknown): val is Promise<T> => {
   return isObject(val) && isFunction(val.then) && isFunction(val.catch);
 };
+
+export const getPropByPath = (obj: any, keyPath: string) => {
+  try {
+    return keyPath.split('.').reduce((prev, curr) => prev[curr], obj);
+  } catch (error) {
+    return '';
+  }
+};

@@ -51,8 +51,8 @@
     </div>
     <!-- 错误弹窗 -->
     <div class="nut-video-error" v-show="state.isError">
-      <p class="lose">视频加载失败</p>
-      <p class="retry" @click="retry">点击重试</p>
+      <p class="lose">{{ translate('errorTip') }}</p>
+      <p class="retry" @click="retry">{{ translate('clickRetry') }}</p>
     </div>
   </div>
 </template>
@@ -60,7 +60,7 @@
 import { computed, reactive, ref, toRefs, watch, nextTick, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 import { throttle } from '../../utils/throttle.js';
-const { create } = createComponent('video');
+const { create, translate } = createComponent('video');
 
 export default create({
   props: {
@@ -364,7 +364,8 @@ export default create({
       touchSlidMove,
       touchSlidEnd,
       retry,
-      fullScreen
+      fullScreen,
+      translate
     };
   }
 });

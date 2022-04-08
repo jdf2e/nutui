@@ -36,7 +36,7 @@
     <view class="nut-table__nodata" v-if="!curData.length">
       <div class="nut-table__nodata" :class="{ 'nut-table__nodata--border': bordered }">
         <slot name="nodata"></slot>
-        <div v-if="!$slots.nodata" class="nut-table__nodata__text"> 暂无数据 </div>
+        <div v-if="!$slots.nodata" class="nut-table__nodata__text"> {{ translate('noData') }} </div>
       </div>
     </view>
   </view>
@@ -44,7 +44,7 @@
 
 <script lang="ts">
 import { createComponent } from '../../utils/create';
-const { componentName, create } = createComponent('table');
+const { componentName, create, translate } = createComponent('table');
 import { component } from './common';
-export default create(component(componentName));
+export default create(component(componentName, translate));
 </script>

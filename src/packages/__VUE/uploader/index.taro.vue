@@ -71,12 +71,12 @@
 import { computed, PropType, reactive } from 'vue';
 import { createComponent } from '../../utils/create';
 import { Uploader, UploadOptions } from './uploader';
-const { componentName, create } = createComponent('uploader');
+const { componentName, create, translate } = createComponent('uploader');
 import Taro from '@tarojs/taro';
 export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error';
 export class FileItem {
   status: FileItemStatus = 'ready';
-  message: string = '准备完成';
+  message: string = translate('ready');
   uid: string = new Date().getTime().toString();
   url?: string;
   path?: string;
@@ -184,20 +184,20 @@ export default create({
       uploadOption.taroFilePath = fileItem.path;
       uploadOption.onStart = (option: UploadOptions) => {
         fileItem.status = 'ready';
-        fileItem.message = '准备上传';
+        fileItem.message = translate('readyUpload');
         clearUploadQueue(index);
         emit('start', option);
       };
       uploadOption.onProgress = (event: any, option: UploadOptions) => {
         fileItem.status = 'uploading';
-        fileItem.message = '上传中';
+        fileItem.message = translate('uploading');
         fileItem.percentage = event.progress;
         emit('progress', { event, option, percentage: fileItem.percentage });
       };
 
       uploadOption.onSuccess = (data: Taro.uploadFile.SuccessCallbackResult, option: UploadOptions) => {
         fileItem.status = 'success';
-        fileItem.message = '上传成功';
+        fileItem.message = translate('success');
         emit('success', {
           data,
           option,
@@ -207,7 +207,7 @@ export default create({
       };
       uploadOption.onFailure = (data: Taro.uploadFile.SuccessCallbackResult, option: UploadOptions) => {
         fileItem.status = 'error';
-        fileItem.message = '上传失败';
+        fileItem.message = translate('error');
         emit('failure', {
           data,
           option,
@@ -250,7 +250,7 @@ export default create({
         fileItem.path = file.path;
         fileItem.name = file.path;
         fileItem.status = 'ready';
-        fileItem.message = '等待上传';
+        fileItem.message = translate('waitingUpload');
         fileItem.type = fileType;
         if (props.isPreview) {
           fileItem.url = file.path;
@@ -291,7 +291,7 @@ export default create({
           index
         });
       } else {
-        console.log('用户阻止了删除！');
+        // console.log('用户阻止了删除！');
       }
     };
 
