@@ -15,8 +15,8 @@
       <ol v-for="_nav in nav" :key="_nav">
         <li>{{ _nav.name }}</li>
         <ul>
-          <template v-for="_package in _nav.packages" :key="_package">
-            <li v-if="_package.show">
+          <template v-for="_package in reorder(_nav.packages)" :key="_package">
+            <li v-if="_package.show && _package.exportEmpty !== false">
               <a @click="navigateTo(_package.name.toLowerCase(), _nav.enName)">
                 {{ _package.name }}
                 &nbsp;&nbsp;
@@ -55,6 +55,12 @@ export default {
       nav
     });
 
+    const reorder = (packages: any) => {
+      return packages.sort(function (x: any, y: any) {
+        return x['name'].toLowerCase().localeCompare(y['name'].toLowerCase());
+      });
+    };
+
     const navigateTo = (name, enName) => {
       Taro.navigateTo({
         url: `/${enName}/pages/${name}/index`
@@ -63,6 +69,7 @@ export default {
 
     return {
       ...toRefs(state),
+      reorder,
       navigateTo
     };
   }

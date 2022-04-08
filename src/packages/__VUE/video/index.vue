@@ -51,8 +51,8 @@
     </div>
     <!-- 错误弹窗 -->
     <div class="nut-video-error" v-show="state.isError">
-      <p class="lose">视频加载失败</p>
-      <p class="retry" @click="retry">点击重试</p>
+      <p class="lose">{{ translate('errorTip') }}</p>
+      <p class="retry" @click="retry">{{ translate('clickRetry') }}</p>
     </div>
   </div>
 </template>
@@ -60,7 +60,7 @@
 import { computed, reactive, ref, toRefs, watch, nextTick, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 import { throttle } from '../../utils/throttle.js';
-const { create } = createComponent('video');
+const { create, translate } = createComponent('video');
 
 export default create({
   props: {
@@ -130,23 +130,26 @@ export default create({
       },
       showTouchMask: false
     });
-    const root = ref<HTMLElement>();
+    const root = ref(null);
     const isDisabled = computed(() => {
       return props.options.disabled;
     });
 
-    watch(props.source, (newValue) => {
-      if (newValue.src) {
-        nextTick(() => {
-          (state.videoElm as any).load();
-        });
+    watch(
+      () => props.source,
+      (newValue) => {
+        if (newValue.src) {
+          nextTick(() => {
+            (state.videoElm as any).load();
+          });
+        }
       }
-    });
+    );
 
     watch(
-      props.options,
+      () => props.options,
       (newValue) => {
-        state.state.isMuted = newValue.muted ? newValue.muted : false;
+        state.state.isMuted = newValue ? newValue.muted : false;
       },
       { immediate: true }
     );
@@ -154,7 +157,9 @@ export default create({
       (state.videoElm as any) = root.value;
 
       if (props.options.autoplay) {
-        (state.videoElm as any).play();
+        setTimeout(() => {
+          (state.videoElm as any).play();
+        }, 200);
       }
 
       if (props.options.touchPlay) {
@@ -209,7 +214,10 @@ export default create({
         // 播放状态
         if (state.state.playing) {
           try {
-            (state.videoElm as any).play();
+            setTimeout(() => {
+              (state.videoElm as any).play();
+            }, 200);
+
             // 监听缓存进度
             (state.videoElm as any).addEventListener('progress', () => {
               getLoadTime();
@@ -356,7 +364,8 @@ export default create({
       touchSlidMove,
       touchSlidEnd,
       retry,
-      fullScreen
+      fullScreen,
+      translate
     };
   }
 });

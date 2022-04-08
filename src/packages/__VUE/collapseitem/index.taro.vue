@@ -20,21 +20,9 @@
             <template v-else>
               <view v-html="title" class="collapse-icon-title"></view>
             </template>
-            <!-- <view
-              v-html="title"
-              class="collapse-icon-title"
-              v-if="title"
-            ></view>
-            <mTitle v-else>
-              <slot name="mTitle"></slot>
-            </mTitle> -->
           </view>
         </view>
       </view>
-      <!-- <view v-if="subTitle" v-html="subTitle" class="subTitle"></view>
-      <view class="subTitle" v-else>
-        <slot name="sTitle"></slot>
-      </view> -->
       <view v-if="$slots.sTitle" class="subTitle">
         <slot name="sTitle"></slot>
       </view>

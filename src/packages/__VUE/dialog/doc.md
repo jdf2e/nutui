@@ -171,6 +171,7 @@ export default {
 | 字段                | 说明                                  | 类型     | 默认值   |
 |---------------------|---------------------------------------|----------|----------|
 | title               | 标题                                  | String   | -        |
+| id               | 标识符，相同者共用一个实例<br>loading类型默认使用一个实例，其他类型默认不共用 | String/Number   | new Date().getTime()        |
 | content             | 内容，支持HTML                        | String   | -        |
 | teleport            | 指定挂载节点                          | String   | "body"   |
 | closeOnClickOverlay | 点击蒙层是否关闭对话框                | Boolean  | false    |

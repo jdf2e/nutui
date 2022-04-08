@@ -25,7 +25,7 @@
           ref="inputRef"
           :style="stylesTextarea"
           :maxlength="maxLength"
-          :placeholder="placeholder"
+          :placeholder="placeholder || translate('placeholder')"
           :disabled="disabled"
           :readonly="readonly"
           :value="modelValue"
@@ -41,8 +41,8 @@
           ref="inputRef"
           :style="styles"
           :type="inputType(type)"
-          :maxNum="maxNum"
-          :placeholder="placeholder"
+          :maxLength="maxLength"
+          :placeholder="placeholder || translate('placeholder')"
           :disabled="disabled"
           :readonly="readonly"
           :value="modelValue"
@@ -66,9 +66,9 @@
         </view>
         <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
       </view>
-      <view v-if="showWordLimit && maxNum" class="nut-input-word-limit">
+      <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
         <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
-        >/{{ maxNum }}
+        >/{{ maxLength }}
       </view>
       <view
         v-if="errorMessage"
@@ -87,7 +87,7 @@ import { PropType, ref, reactive, computed, onMounted, watch, nextTick, inject }
 import { createComponent } from '../../utils/create';
 import { formatNumber } from './util';
 
-const { componentName, create } = createComponent('input');
+const { componentName, create, translate } = createComponent('input');
 interface Events {
   eventName: 'focus' | 'blur' | 'clear' | 'change' | 'update:modelValue';
   params: (string | number | Event)[];
@@ -142,7 +142,7 @@ export default create({
     },
     placeholder: {
       type: String,
-      default: '请输入信息'
+      default: ''
     },
     label: {
       type: String,
@@ -188,16 +188,16 @@ export default create({
       type: Boolean,
       default: false
     },
-    maxNum: {
+    maxLength: {
+      type: [String, Number],
+      default: ''
+    },
+    leftIconSize: {
       type: [String, Number],
       default: ''
     },
     leftIcon: {
       type: String,
-      default: ''
-    },
-    leftIconSize: {
-      type: [String, Number],
       default: ''
     },
     rightIcon: {
@@ -355,8 +355,8 @@ export default create({
         value = props.formatter(value);
       }
 
-      // if (props.maxNum && value.length > Number(props.maxNum)) {
-      //   value = value.slice(0, Number(props.maxNum));
+      // if (props.maxLength && value.length > Number(props.maxLength)) {
+      //   value = value.slice(0, Number(props.maxLength));
       // }
 
       if (inputRef.value && inputRef.value.value !== value) {
@@ -390,8 +390,8 @@ export default create({
 
       const input = event.target as HTMLInputElement;
       let value = input.value;
-      if (props.maxNum && value.length > Number(props.maxNum)) {
-        value = value.slice(0, Number(props.maxNum));
+      if (props.maxLength && value.length > Number(props.maxLength)) {
+        value = value.slice(0, Number(props.maxLength));
       }
       updateValue(getModelValue(), 'onBlur');
       emit('blur', value, event);
@@ -443,7 +443,8 @@ export default create({
       clear,
       onClickInput,
       onClickLeftIcon,
-      onClickRightIcon
+      onClickRightIcon,
+      translate
     };
   }
 });

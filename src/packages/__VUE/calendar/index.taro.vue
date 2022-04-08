@@ -62,6 +62,7 @@
     @select="select"
     :show-title="showTitle"
     :show-sub-title="showSubTitle"
+    :show-today="showToday"
   >
     <template v-slot:btn v-if="showTopBtn">
       <slot name="btn"> </slot>
@@ -118,19 +119,19 @@ export default create({
     },
     title: {
       type: String,
-      default: '日历选择'
+      default: ''
     },
     confirmText: {
       type: String,
-      default: '确认'
+      default: ''
     },
     startText: {
       type: String,
-      default: '开始'
+      default: ''
     },
     endText: {
       type: String,
-      default: '结束'
+      default: ''
     },
     defaultValue: {
       type: [String, Array]

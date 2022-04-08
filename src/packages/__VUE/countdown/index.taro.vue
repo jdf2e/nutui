@@ -9,7 +9,7 @@
     <template v-else>
       <template v-if="resttime.d >= 0 && showDays">
         <view class="nut-cd-block">{{ resttime.d }}</view>
-        <view class="nut-cd-dot">天</view>
+        <view class="nut-cd-dot">{{ translate('day') }}</view>
       </template>
       <view class="nut-cd-block">{{ resttime.h }}</view
       ><view class="nut-cd-dot">:</view><view class="nut-cd-block">{{ resttime.m }}</view
@@ -32,7 +32,7 @@ import {
   vModelText
 } from 'vue';
 import { createComponent } from '../../utils/create';
-const { componentName, create } = createComponent('countdown');
+const { componentName, create, translate } = createComponent('countdown');
 
 export default create({
   props: {
@@ -71,7 +71,7 @@ export default create({
     }
   },
   components: {},
-  emits: ['input', 'on-end', 'on-restart', 'on-paused'],
+  emits: ['input', 'on-end', 'on-restart', 'on-paused', 'update:modelValue'],
 
   setup(props, { emit, slots }) {
     // console.log('componentName', componentName);
@@ -96,7 +96,9 @@ export default create({
     const plainText = computed(() => {
       const { d, h, m, s } = resttime.value;
 
-      return `${d > 0 && props.showDays ? d + '天' + h : h}小时${m}分${s}秒`;
+      return `${d > 0 && props.showDays ? d + translate('day') + h : h}${translate('hour')}${m}${translate(
+        'minute'
+      )}${s}${translate('second')}`;
     });
 
     watch(
@@ -162,6 +164,8 @@ export default create({
       const diffTime = curr - start;
 
       state.restTime = end - (start + diffTime);
+      clearInterval(state.timer);
+      state.timer = null;
       (state.timer as any) = setInterval(() => {
         if (!props.paused) {
           let restTime = end - (Date.now() - state.p + diffTime);
@@ -227,7 +231,8 @@ export default create({
       getTimeStamp,
       initTimer,
       resttime,
-      plainText
+      plainText,
+      translate
     };
   }
 });

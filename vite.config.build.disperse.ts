@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import config from './package.json';
@@ -14,10 +15,8 @@ let input = {};
 
 configPkg.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, show, type, exportEmpty } = element;
-    if (show || exportEmpty) {
-      input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${type === 'methods' ? '.ts' : '.vue'}`;
-    }
+    let { name, type } = element;
+    input[name] = `./src/packages/__VUE/${name.toLowerCase()}/index${type === 'methods' ? '.ts' : '.vue'}`;
   });
 });
 
@@ -25,7 +24,40 @@ export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: path.resolve(__dirname, './src') }]
   },
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    dts({
+      insertTypesEntry: true,
+      copyDtsFiles: false,
+      cleanVueFileName: true,
+      outputDir: path.resolve(__dirname, './dist/types'),
+      include: path.resolve(__dirname, './src/packages/__VUE'),
+      beforeWriteFile: (filePath: string, content: string) => {
+        const fileContent = `import { App } from 'vue';
+declare type Install<T> = T & {
+  install(app: App): void;
+};
+`;
+        const start = 'declare const _default:';
+        const end = ';\nexport default _default;\n';
+        const remain = `
+declare module 'vue' {
+  interface GlobalComponents {
+      Nut${Object.keys(input).find(
+        (item: string) => item.toLowerCase() === filePath.split('/').slice(-2)[0]
+      )}: typeof _default;
+  }
+}     
+      `;
+        const inputs = content.match(RegExp(`${start}([\\s\\S]*?)${end}`));
+        const changeContent = inputs && inputs.length ? `${start} Install<${inputs[1]}>${end}${remain}` : content;
+        return {
+          filePath,
+          content: fileContent + changeContent
+        };
+      }
+    })
+  ],
   build: {
     minify: false,
     terserOptions: {

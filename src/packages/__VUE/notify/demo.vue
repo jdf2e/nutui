@@ -10,14 +10,11 @@
       <nut-cell is-Link @click="warningNotify('警告通知')">警告通知</nut-cell>
     </nut-cell-group>
     <nut-cell-group title="自定义样式">
-      <nut-cell is-Link @click="cusBgNotify('自定义背景色和字体颜色')">
-        自定义背景色和字体颜色
-      </nut-cell>
+      <nut-cell is-Link @click="cusBgNotify('自定义背景色和字体颜色')"> 自定义背景色和字体颜色 </nut-cell>
     </nut-cell-group>
     <nut-cell-group title="自定义时长">
-      <nut-cell is-Link @click="timeNotify('自定义时长')">
-        自定义时长
-      </nut-cell>
+      <nut-cell is-Link @click="timeNotify('自定义时长')"> 自定义时长 </nut-cell>
+      <nut-cell is-Link @click="positionNotify('自定义位置')"> 自定义位置 </nut-cell>
     </nut-cell-group>
   </div>
 </template>
@@ -56,6 +53,9 @@ export default createDemo({
     const timeNotify = (msg: string) => {
       Notify.text(msg, { duration: 10000 });
     };
+    const positionNotify = (msg: string) => {
+      Notify.text(msg, { position: 'bottom' });
+    };
     return {
       baseNotify,
       primaryNotify,
@@ -63,7 +63,8 @@ export default createDemo({
       errorNotify,
       warningNotify,
       cusBgNotify,
-      timeNotify
+      timeNotify,
+      positionNotify
     };
   }
 });

@@ -8,12 +8,18 @@
     @click="change(state.index)"
   >
     <view class="nut-tabbar-item_icon-box">
-      <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_num" v-if="num && num <= 99">
-        {{ num }}
-      </view>
-      <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_nums" v-else-if="num && num > 100">{{
-        '99+'
-      }}</view>
+      <template v-if="!dot">
+        <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_num" v-if="num && num <= 99">
+          {{ num }}
+        </view>
+        <view class="nut-tabbar-item_icon-box_tips nut-tabbar-item_icon-box_nums" v-else-if="num && num > 100">{{
+          '99+'
+        }}</view>
+      </template>
+      <template v-if="dot">
+        <div class="nut-tabbar-item_icon-box_dot"></div>
+      </template>
+
       <view v-if="icon">
         <nut-icon
           class="nut-tabbar-item_icon-box_icon"
@@ -34,8 +40,10 @@
       ></div>
       <view
         :class="['nut-tabbar-item_icon-box_nav-word', { 'nut-tabbar-item_icon-box_big-word': !icon && !activeImg }]"
-        >{{ tabTitle }}</view
       >
+        <view v-if="tabTitle">{{ tabTitle }}</view>
+        <slot v-if="!tabTitle"></slot>
+      </view>
     </view>
   </div>
 </template>
@@ -77,6 +85,10 @@ export default create({
     classPrefix: {
       type: String,
       default: 'nut-icon'
+    },
+    dot: {
+      type: Boolean,
+      default: false
     },
     fontClassName: {
       type: String,

@@ -111,11 +111,11 @@
 import { computed, reactive } from 'vue';
 import { createComponent } from '../../utils/create';
 import { Uploader, UploadOptions } from './uploader';
-const { componentName, create } = createComponent('uploader');
+const { componentName, create, translate } = createComponent('uploader');
 export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error';
 export class FileItem {
   status: FileItemStatus = 'ready';
-  message: string = '准备完成';
+  message: string = translate('ready');
   uid: string = new Date().getTime().toString();
   name?: string;
   url?: string;
@@ -203,20 +203,20 @@ export default create({
       uploadOption.withCredentials = props.withCredentials;
       uploadOption.onStart = (option: UploadOptions) => {
         fileItem.status = 'ready';
-        fileItem.message = '准备上传';
+        fileItem.message = translate('readyUpload');
         clearUploadQueue(index);
         emit('start', option);
       };
       uploadOption.onProgress = (event: ProgressEvent<XMLHttpRequestEventTarget>, option: UploadOptions) => {
         fileItem.status = 'uploading';
-        fileItem.message = '上传中';
+        fileItem.message = translate('uploading');
         fileItem.percentage = ((event.loaded / event.total) * 100).toFixed(0);
         emit('progress', { event, option, percentage: fileItem.percentage });
       };
 
       uploadOption.onSuccess = (responseText: XMLHttpRequest['responseText'], option: UploadOptions) => {
         fileItem.status = 'success';
-        fileItem.message = '上传成功';
+        fileItem.message = translate('success');
         emit('success', {
           responseText,
           option,
@@ -226,7 +226,7 @@ export default create({
       };
       uploadOption.onFailure = (responseText: XMLHttpRequest['responseText'], option: UploadOptions) => {
         fileItem.status = 'error';
-        fileItem.message = '上传失败';
+        fileItem.message = translate('error');
         emit('failure', {
           responseText,
           option,
@@ -270,7 +270,7 @@ export default create({
         fileItem.status = 'ready';
         fileItem.type = file.type;
         fileItem.formData = formData;
-        fileItem.message = '等待上传';
+        fileItem.message = translate('waitingUpload');
         executeUpload(fileItem, index);
 
         if (props.isPreview && file.type.includes('image')) {
@@ -317,7 +317,7 @@ export default create({
           index
         });
       } else {
-        console.log('用户阻止了删除！');
+        // console.log('用户阻止了删除！');
       }
     };
 
