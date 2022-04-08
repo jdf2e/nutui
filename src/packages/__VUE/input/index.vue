@@ -41,7 +41,7 @@
           ref="inputRef"
           :style="styles"
           :type="inputType(type)"
-          :maxNum="maxNum"
+          :maxlength="maxLength"
           :placeholder="placeholder || translate('placeholder')"
           :disabled="disabled"
           :readonly="readonly"
@@ -66,9 +66,9 @@
         </view>
         <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
       </view>
-      <view v-if="showWordLimit && maxNum" class="nut-input-word-limit">
+      <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
         <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
-        >/{{ maxNum }}
+        >/{{ maxLength }}
       </view>
       <view
         v-if="errorMessage"
@@ -188,7 +188,7 @@ export default create({
       type: Boolean,
       default: false
     },
-    maxNum: {
+    maxLength: {
       type: [String, Number],
       default: ''
     },
@@ -355,8 +355,8 @@ export default create({
         value = props.formatter(value);
       }
 
-      // if (props.maxNum && value.length > Number(props.maxNum)) {
-      //   value = value.slice(0, Number(props.maxNum));
+      // if (props.maxLength && value.length > Number(props.maxLength)) {
+      //   value = value.slice(0, Number(props.maxLength));
       // }
 
       if (inputRef.value && inputRef.value.value !== value) {
@@ -390,8 +390,8 @@ export default create({
 
       const input = event.target as HTMLInputElement;
       let value = input.value;
-      if (props.maxNum && value.length > Number(props.maxNum)) {
-        value = value.slice(0, Number(props.maxNum));
+      if (props.maxLength && value.length > Number(props.maxLength)) {
+        value = value.slice(0, Number(props.maxLength));
       }
       updateValue(getModelValue(), 'onBlur');
       emit('blur', value, event);

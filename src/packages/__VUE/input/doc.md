@@ -226,7 +226,7 @@ app.use(Icon);
 | disabled     | 是否禁用                              | Boolean        | `false` |
 | readonly     | 是否只读                              | Boolean        | `false` |
 | autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
-| max-num      | 限制最长输入字符                       | String、Number  | -       |
+| max-length      | 限制最长输入字符                       | String、Number  | -       |
 | clearable    | 展示清除 Icon                         | Boolean        | `false`  |
 | clear-icon   | 清除图标 Icon 名称或图片链接，可参考 Icon 组件的 name 属性           | String        | `mask-close`  |
 | clear-size   | 清除图标的 `font-size` 大小           | String        | `14`  |
@@ -234,7 +234,7 @@ app.use(Icon);
 | right-icon   | 右侧 Icon 名称或图片链接，可参考 Icon 组件的 name 属性 | String        | - |
 | left-size    | 左侧 Icon 的 `font-size` 大小           | String        | `14`  |
 | right-size   | 右侧 Icon 的 `font-size` 大小           | String        | `14`  |
-| show-word-limit | 是否显示限制最长输入字符，需要设置 `max-num` 属性 | Boolean | `false`  |
+| show-word-limit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | Boolean | `false`  |
 | error         | 是否标红                                | Boolean | `false`  |
 | error-message | 底部错误提示文案，为空时不展示            | String、Number | - |
 | error-message-align | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`          | String | - |
