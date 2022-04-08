@@ -187,6 +187,9 @@ export default create({
         case 'time':
           result = result.slice(3, 6);
           break;
+        case 'year-month':
+          result = result.slice(0, 2);
+          break;
         case 'month-day':
           result = result.slice(1, 3);
           break;
