@@ -7,10 +7,17 @@ import {
   RenderFunction,
   Component
 } from 'vue';
+import locale from '../../locale';
+import { getPropByPath, isFunction } from '../util';
 export function createComponent(name: string) {
+  const languages = locale.languages();
   const componentName = 'nut-' + name;
   return {
     componentName,
+    translate(keyPath: string, ...args: unknown[]) {
+      const text = getPropByPath(languages, `${name.replace('-', '')}.${keyPath}`) || getPropByPath(languages, keyPath);
+      return isFunction(text) ? text(...args) : text;
+    },
     create: function <
       PropsOptions extends Readonly<ComponentPropsOptions>,
       Props extends Readonly<ExtractPropTypes<PropsOptions>>

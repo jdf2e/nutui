@@ -30,7 +30,7 @@
             v-if="!noCancelBtn"
             @click="onCancel"
           >
-            {{ cancelText }}
+            {{ cancelText || translate('cancel') }}
           </nut-button>
           <nut-button
             v-if="!noOkBtn"
@@ -41,7 +41,7 @@
             :disabled="okBtnDisabled"
             @click="onOk"
           >
-            {{ okText }}
+            {{ okText || translate('confirm') }}
           </nut-button>
         </template>
       </view>
@@ -51,7 +51,7 @@
 <script lang="ts">
 import { onMounted, computed, watch, ref } from 'vue';
 import { createComponent } from '../../utils/create';
-const { componentName, create } = createComponent('dialog');
+const { componentName, create, translate } = createComponent('dialog');
 import Popup, { popupProps } from '../popup/index.vue';
 import Button from '../button/index.vue';
 export default create({
@@ -88,11 +88,11 @@ export default create({
     },
     cancelText: {
       type: String,
-      default: '取消'
+      default: ''
     },
     okText: {
       type: String,
-      default: '确定'
+      default: ''
     },
     okBtnDisabled: {
       type: Boolean,
@@ -166,7 +166,8 @@ export default create({
       classes,
       onCancel,
       onOk,
-      showPopup
+      showPopup,
+      translate
     };
   }
 });

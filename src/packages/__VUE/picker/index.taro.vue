@@ -10,10 +10,12 @@
       :round="true"
     >
       <view class="nut-picker__bar">
-        <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="close">{{ cancelText }}</view>
+        <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="close">{{
+          cancelText || translate('cancel')
+        }}</view>
         <view class="nut-picker__title"> {{ title }}</view>
         <view class="nut-picker__confirm nut-picker__right nut-picker__button" @click="confirmHandler()">{{
-          okText
+          okText || translate('confirm')
         }}</view>
       </view>
 
@@ -43,7 +45,7 @@ import { createComponent } from '../../utils/create';
 import { popupProps } from '../popup/index.taro.vue';
 import column from './ColumnTaro.vue';
 import { PickerOption } from './types';
-const { componentName, create } = createComponent('picker');
+const { componentName, create, translate } = createComponent('picker');
 export default create({
   components: {
     [column.name]: column
@@ -60,11 +62,11 @@ export default create({
     },
     cancelText: {
       type: String,
-      default: '取消'
+      default: ''
     },
     okText: {
       type: String,
-      default: '确定'
+      default: ''
     },
     columns: {
       type: Array,
@@ -243,7 +245,8 @@ export default create({
       close,
       changeHandler,
       confirmHandler,
-      defaultValues
+      defaultValues,
+      translate
     };
   }
 });
