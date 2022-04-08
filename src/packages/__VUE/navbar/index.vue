@@ -37,7 +37,7 @@ export default create({
       default: false
     }
   },
-  emits: ['click', 'on-click-back', 'on-click-title', 'on-click-icon', 'on-click-right'],
+  emits: ['on-click-back', 'on-click-title', 'on-click-icon', 'on-click-right'],
   setup(props, { emit }) {
     const { fixed, safeAreaInsetTop } = toRefs(props);
     const classes = computed(() => {

@@ -205,9 +205,10 @@ app.use(TabPane);
 ### Event
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
-| title | 点击页面标题事件 | event:Event |
-| right-click | 点击右侧按钮事件 | event:Event |
-| back | 左侧图标返回点击事件 | event:Event |
+| on-click-title | 点击页面标题事件 | event:Event |
+| on-click-icon | 点击页面标题icon事件 | event:Event |
+| on-click-right | 点击右侧按钮事件 | event:Event |
+| on-click-back | 左侧图标返回点击事件 | event:Event |
 
 ### Slot
 | 名称  | 说明     | 回调参数    |
