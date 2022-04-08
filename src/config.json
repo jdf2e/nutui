@@ -51,7 +51,8 @@
       }
     ]
   },
-  "nav": [{
+  "nav": [
+    {
       "name": "基础组件",
       "enName": "base",
       "packages": [
@@ -110,7 +111,8 @@
           "sort": 14,
           "show": true,
           "author": "szg2008"
-        }, {
+        },
+        {
           "version": "3.0.0",
           "name": "Popup",
           "taro": true,
@@ -121,7 +123,6 @@
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008"
         }
-
       ]
     },
     {
@@ -163,7 +164,6 @@
           "desc": "布局组件Row",
           "author": "undo"
         },
-
         {
           "version": "3.0.0",
           "name": "Sticky",
@@ -215,7 +215,8 @@
     {
       "name": "导航组件",
       "enName": "nav",
-      "packages": [{
+      "packages": [
+        {
           "version": "3.0.0",
           "name": "Navbar",
           "taro": true,
@@ -380,7 +381,8 @@
     {
       "name": "数据录入",
       "enName": "dentry",
-      "packages": [{
+      "packages": [
+        {
           "version": "3.0.0",
           "name": "Range",
           "taro": true,
@@ -568,7 +570,6 @@
           "desc": "上传文件、图片",
           "author": "richard1015"
         },
-
         {
           "version": "3.0.0",
           "name": "NumberKeyboard",
@@ -580,7 +581,6 @@
           "desc": "虚拟数字键盘",
           "author": "Drjingfubo"
         },
-
         {
           "version": "3.0.0",
           "name": "Form",
@@ -604,7 +604,6 @@
           "exportEmpty": true,
           "author": "richard1015"
         },
-
         {
           "version": "3.0.0",
           "name": "OldPicker",
@@ -621,7 +620,8 @@
     {
       "name": "操作反馈",
       "enName": "feedback",
-      "packages": [{
+      "packages": [
+        {
           "version": "3.0.0",
           "name": "Swipe",
           "taro": true,
@@ -655,7 +655,6 @@
           "desc": "较长页面快捷返回顶部",
           "author": "liqiong43"
         },
-
         {
           "version": "3.0.0",
           "name": "Drag",
@@ -704,7 +703,6 @@
           "show": true,
           "author": "wangyue217"
         },
-
         {
           "version": "3.0.0",
           "name": "PullRefresh",
@@ -715,7 +713,6 @@
           "show": false,
           "author": "yangxiaolu3"
         },
-
         {
           "version": "3.0.0",
           "name": "Switch",
@@ -739,7 +736,6 @@
           "desc": "轻提示",
           "author": "undo"
         },
-
         {
           "version": "3.0.0",
           "name": "Audio",
@@ -750,8 +746,8 @@
           "desc": "音频播放器",
           "sort": 25,
           "show": true,
-          "exportEmpty":false,
-          "exportEmptyTaro":false,
+          "exportEmpty": false,
+          "exportEmptyTaro": false,
           "author": "yangxiaolu"
         },
         {
@@ -762,17 +758,17 @@
           "desc": "音频操作按钮",
           "sort": 26,
           "show": false,
-          "exportEmpty":false,
-          "exportEmptyTaro":false,
+          "exportEmpty": false,
+          "exportEmptyTaro": false,
           "author": "yangxiaolu"
         }
-
       ]
     },
     {
       "name": "展示组件",
       "enName": "exhibition",
-      "packages": [{
+      "packages": [
+        {
           "version": "3.0.0",
           "name": "List",
           "cType": "操作反馈",
@@ -816,7 +812,6 @@
           "taro": true,
           "author": "yangxiaolu"
         },
-
         {
           "version": "3.0.0",
           "name": "Empty",
@@ -838,11 +833,10 @@
           "taro": false,
           "show": true,
           "tarodoc": true,
-          "exportEmpty":false,
-          "exportEmptyTaro":false,
+          "exportEmpty": false,
+          "exportEmptyTaro": false,
           "author": "zy19940510"
         },
-
         {
           "version": "3.0.0",
           "name": "Steps",
@@ -1024,11 +1018,11 @@
         }
       ]
     },
-
     {
       "name": "特色组件",
       "enName": "business",
-      "packages": [{
+      "packages": [
+        {
           "version": "3.0.0",
           "taro": true,
           "name": "Address",
@@ -1118,8 +1112,18 @@
           "sort": 1,
           "show": true,
           "author": "Drjingfubo"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Ecard",
+          "cType": "特色组件",
+          "cName": "虚拟电子卡",
+          "desc": "虚拟电子卡选择",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "yangxiaolu"
         }
-
       ]
     }
   ]

@@ -5,7 +5,13 @@
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
   "style": "dist/style.css",
-  "typings": "dist/index.d.ts",
+  "typings": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/nutui.es.js",
+      "require": "./dist/nutui.umd.js"
+    }
+  },
   "keywords": [
     "nutui",
     "nutui2",
@@ -41,7 +47,7 @@
     "build:site": "npm run checked && vite build",
     "build:site:oss": "npm run checked && vite build --base=/nutui/3x/",
     "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts",
-    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts",
+    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:types:taro && npm run generate:themes && vite build --config vite.config.build.css.ts",
     "serve": "vite preview",
     "upload": "yarn build:site:oss && node ./jd/upload.js",
     "add": "node jd/createComponentMode.js",
@@ -50,6 +56,7 @@
     "generate:file": "node jd/generate-nutui.js",
     "generate:file:taro:vue": "node jd/generate-nutui-taro-vue.js",
     "generate:types": "node jd/generate-types.js",
+    "generate:types:taro": "node jd/generate-types-taro.js",
     "generate:themes": "node jd/generate-themes.js",
     "prepare": "husky install",
     "test": "jest",
@@ -104,6 +111,7 @@
     "ts-jest": "^26.5.5",
     "typescript": "^4.1.5",
     "vite": "^2.7.13",
+    "vite-plugin-dts": "^1.0.5",
     "vite-plugin-md": "^0.11.8",
     "vue": "^3.2.30",
     "vue-jest": "^5.0.0-alpha.7"

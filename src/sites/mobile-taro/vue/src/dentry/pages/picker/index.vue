@@ -14,7 +14,7 @@
     <h2>默认选中项</h2>
     <nut-cell title="请选择城市" :desc="defult" @click="open(1)"></nut-cell>
     <nut-picker
-      v-model="selectedValue"
+      v-model="selectedVal"
       v-model:visible="showDefult"
       :columns="columns"
       title="城市选择"
@@ -58,7 +58,7 @@ import { PickerOption } from '../../../../../../../packages/__VUE/picker/types';
 export default {
   props: {},
   setup() {
-    const selectedValue = ref(['ZheJiang']);
+    const selectedVal = ref(['ZheJiang']);
     const asyncValue = ref<string[]>([]);
     const columns = ref([
       { text: '南京市', value: 'NanJing' },
@@ -187,6 +187,7 @@ export default {
     });
 
     const confirm = (tag: string, { selectedValue }: { selectedValue: string[] }) => {
+      console.log('确定', selectedVal.value);
       desc[tag] = selectedValue.join(',');
     };
     const change = ({ selectedValue }: { selectedValue: string[] }) => {
@@ -194,7 +195,7 @@ export default {
     };
 
     return {
-      selectedValue,
+      selectedVal,
       asyncValue,
       columns,
       show,
