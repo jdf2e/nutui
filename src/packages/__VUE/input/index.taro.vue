@@ -25,7 +25,7 @@
           ref="inputRef"
           :style="stylesTextarea"
           :maxlength="maxLength"
-          :placeholder="placeholder"
+          :placeholder="placeholder || translate('placeholder')"
           :disabled="disabled"
           :readonly="readonly"
           :value="modelValue"
@@ -42,7 +42,7 @@
           :style="styles"
           :type="inputType(type)"
           :maxNum="maxNum"
-          :placeholder="placeholder"
+          :placeholder="placeholder || translate('placeholder')"
           :disabled="disabled"
           :readonly="readonly"
           :value="modelValue"
@@ -87,7 +87,7 @@ import { PropType, ref, reactive, computed, onMounted, watch, nextTick, inject }
 import { createComponent } from '../../utils/create';
 import { formatNumber } from './util';
 
-const { componentName, create } = createComponent('input');
+const { componentName, create, translate } = createComponent('input');
 interface Events {
   eventName: 'focus' | 'blur' | 'clear' | 'change' | 'update:modelValue';
   params: (string | number | Event)[];
@@ -142,7 +142,7 @@ export default create({
     },
     placeholder: {
       type: String,
-      default: '请输入信息'
+      default: ''
     },
     label: {
       type: String,
@@ -443,7 +443,8 @@ export default create({
       clear,
       onClickInput,
       onClickLeftIcon,
-      onClickRightIcon
+      onClickRightIcon,
+      translate
     };
   }
 });
