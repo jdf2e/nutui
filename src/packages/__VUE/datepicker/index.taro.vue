@@ -51,11 +51,11 @@ export default create({
     },
     okText: {
       type: String,
-      default: '确定'
+      default: ''
     },
     cancelText: {
       type: String,
-      default: '取消'
+      default: ''
     },
     type: {
       type: String,

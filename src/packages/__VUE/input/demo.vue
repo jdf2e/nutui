@@ -53,7 +53,7 @@
       type="textarea"
       show-word-limit
       rows="2"
-      maxNum="50"
+      maxLength="50"
       placeholder="请输入留言"
     />
 

@@ -31,7 +31,7 @@
 <script lang="ts">
 import { watch, ref, Ref, computed } from 'vue';
 import { createComponent } from '../../utils/create';
-const { create } = createComponent('cascader-item');
+const { create, translate } = createComponent('cascader-item');
 import { convertListToOptions } from './helper';
 import { CascaderPane, CascaderOption, CascaderValue, convertConfig } from './types';
 import Tree from './tree';
@@ -273,7 +273,7 @@ export default create({
         tabsCursor.value = tab.paneKey as number;
       },
       formatTabTitle(pane: CascaderPane) {
-        return pane.selectedNode ? pane.selectedNode.text : '请选择';
+        return pane.selectedNode ? pane.selectedNode.text : translate('select');
       },
       isSelected(pane: CascaderPane, node: CascaderOption) {
         return pane.selectedNode && pane.selectedNode.value === node.value;

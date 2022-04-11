@@ -58,9 +58,9 @@ export default createDemo({
     const refreshHasMore = ref(true);
 
     const data = reactive({
-      defultList: [''],
-      customList: [''],
-      refreshList: ['']
+      defultList: [],
+      customList: [],
+      refreshList: []
     });
 
     const loadMore = (done) => {
