@@ -12,7 +12,9 @@ exports[`should render sure actionsheet when use custom props 1`] = `
           <!--v-if-->
           <!--v-if-->
           <view class=\\"nut-actionsheet-menu\\">
-            <view class=\\"nut-actionsheet-item\\" style=\\"color: rgb(26, 26, 26);\\">选项一<view class=\\"subdesc\\">描述信息</view>
+            <view class=\\"nut-actionsheet-item\\">
+              <view>选项一</view>
+              <view class=\\"subdesc\\">描述信息</view>
             </view>
           </view>
           <!--v-if-->
