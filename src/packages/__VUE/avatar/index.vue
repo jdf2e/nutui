@@ -1,5 +1,11 @@
 <template>
-  <view :style="styles" :class="classes" @click="activeAvatar(e)">
+  <view
+    :style="styles"
+    :class="classes"
+    @click="activeAvatar(e)"
+    ref="avatarRef"
+    v-if="!avatarGroup?.props?.maxCount || state.index <= avatarGroup?.props?.maxCount"
+  >
     <template v-if="url">
       <img :src="url" :alt="alt" @error="onError" />
     </template>
@@ -10,16 +16,21 @@
       <slot></slot>
     </view>
   </view>
+  <template v-if="avatarGroup?.props?.maxCount && state.showMax">
+    <view :style="maxStyles" :class="classes" @click="activeMax(e)">
+      <slot v-if="$slots.maxContent" name="maxContent"></slot>
+    </view>
+  </template>
 </template>
 <script lang="ts">
-import { toRefs, computed } from 'vue';
+import { toRefs, onMounted, computed, inject, reactive, ref } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('avatar');
 export default create({
   props: {
     size: {
       type: String,
-      default: 'normal'
+      default: ''
     },
     shape: {
       type: String,
@@ -46,16 +57,36 @@ export default create({
       default: ''
     }
   },
-  emits: ['active-avatar', 'onError'],
+  emits: ['active-avatar', 'active-max', 'onError'],
   setup(props, { emit, slots }) {
     const { size, shape, bgColor, color, icon } = toRefs(props);
     const sizeValue = ['large', 'normal', 'small'];
+    const avatarGroup: any = inject('avatarGroup', null);
+    const avatarRef = ref(null);
+    const visible = reactive({
+      lightTheme: false
+    });
+    const state = reactive({
+      index: 1,
+      showMax: false, // 是否显示的最大头像个数
+      maxIndex: 0 // avatarGroup里的avatar的个数
+    });
+
+    onMounted(() => {
+      const children = avatarGroup?.avatarGroupRef?.value?.children;
+      if (children) {
+        console.log('parent', avatarGroup);
+        console.log('avatarChildren', children);
+        avatarLength(children);
+      }
+    });
+
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        ['avatar-' + size.value]: true,
-        ['avatar-' + shape.value]: true
+        [`nut-avatar-${size.value || avatarGroup?.props?.size || 'normal'}`]: true,
+        [`nut-avatar-${shape.value || avatarGroup?.props?.shape || 'normal'}`]: true
       };
     });
 
@@ -64,7 +95,16 @@ export default create({
         width: sizeValue.indexOf(size.value) > -1 ? '' : `${size.value}px`,
         height: sizeValue.indexOf(size.value) > -1 ? '' : `${size.value}px`,
         backgroundColor: `${bgColor.value}`,
-        color: `${color.value}`
+        color: `${color.value}`,
+        marginLeft: state.index != 1 && (avatarGroup?.props?.span ? `${avatarGroup?.props?.span}px` : ''),
+        zIndex: avatarGroup?.props?.zIndex == 'right' ? `${Math.abs(state.maxIndex - state.index)}` : ''
+      };
+    });
+
+    const maxStyles = computed(() => {
+      return {
+        backgroundColor: `${avatarGroup?.props?.maxBgColor}`,
+        color: `${avatarGroup?.props?.maxColor}`
       };
     });
 
@@ -76,8 +116,26 @@ export default create({
       return slots.default;
     });
 
+    const avatarLength = (children: any) => {
+      state.maxIndex = children.length;
+      for (let i = 0; i < children.length; i++) {
+        if (children[i] && children[i].classList && children[i].classList[0] == 'nut-avatar') {
+          children[i].setAttribute('data-index', i + 1);
+          console.log('state.index', state.index);
+        }
+      }
+      state.index = avatarRef?.value?.dataset?.index;
+      if (state.index == state.maxIndex && state.index != avatarGroup?.props?.maxCount) {
+        state.showMax = true;
+      }
+    };
+
     const activeAvatar = (event: any) => {
       emit('active-avatar', event);
+    };
+
+    const activeMax = (event: any) => {
+      emit('active-max', event);
     };
 
     const onError = (event: any) => {
@@ -89,8 +147,14 @@ export default create({
       styles,
       iconStyles,
       isShowText,
+      maxStyles,
       activeAvatar,
-      onError
+      onError,
+      avatarGroup,
+      visible,
+      avatarRef,
+      state,
+      activeMax
     };
   }
 });

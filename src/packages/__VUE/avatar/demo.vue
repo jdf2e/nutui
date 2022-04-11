@@ -37,13 +37,6 @@
       <nut-avatar class="demo-avatar" icon="my" color="#fff" bg-color="#FA2C19"></nut-avatar>
       <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">U</nut-avatar>
     </nut-cell>
-    <h2>修改背景图片</h2>
-    <nut-cell>
-      <nut-avatar
-        url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
-      >
-      </nut-avatar>
-    </nut-cell>
     <h2>带徽标的头像</h2>
     <nut-cell>
       <nut-badge value="8">
@@ -54,14 +47,48 @@
       </nut-badge>
     </nut-cell>
     <h2>头像组合展现</h2>
-    <nut-avatar-group>
-      <nut-avatar
-        url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
-      >
-      </nut-avatar>
-      <nut-avatar icon="my"></nut-avatar>
-      <nut-avatar>N</nut-avatar>
-    </nut-avatar-group>
+    <nut-cell>
+      <nut-avatar-group span="-4">
+        <nut-avatar
+          url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
+        >
+        </nut-avatar>
+        <nut-avatar icon="my"></nut-avatar>
+        <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">U</nut-avatar>
+      </nut-avatar-group>
+    </nut-cell>
+
+    <nut-cell>
+      <nut-avatar-group max-count="3" max-color="#fff" max-bgColor="#498ff2">
+        <nut-avatar
+          url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
+        >
+        </nut-avatar>
+        <nut-avatar icon="my"></nut-avatar>
+        <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">U</nut-avatar>
+        <nut-avatar icon="my"></nut-avatar>
+
+        <nut-avatar icon="my">
+          <template #maxContent>+2</template>
+        </nut-avatar>
+      </nut-avatar-group>
+    </nut-cell>
+    <h2>组合头像可控制层级方向</h2>
+    <nut-cell>
+      <nut-avatar-group max-count="3" zIndex="right">
+        <nut-avatar
+          url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
+        >
+        </nut-avatar>
+        <nut-avatar icon="my"></nut-avatar>
+        <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">U</nut-avatar>
+        <nut-avatar icon="my"></nut-avatar>
+
+        <nut-avatar icon="my">
+          <template #maxContent>...</template>
+        </nut-avatar>
+      </nut-avatar-group>
+    </nut-cell>
 
     <h2>点击头像触发事件</h2>
     <nut-cell>
@@ -85,7 +112,7 @@ export default createDemo({
   }
 });
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .nut-cell {
   align-items: flex-end;
   border-radius: 0;
