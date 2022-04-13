@@ -45,6 +45,11 @@ const lang: BaseLang = {
     hour: ' Hour ',
     minute: ' Minute ',
     second: ' Second '
+  },
+  address: {
+    selectRegion: 'Select Region',
+    deliveryTo: 'Delivery To',
+    chooseAnotherAddress: 'Choose Another Address'
   }
 };
 export default lang;

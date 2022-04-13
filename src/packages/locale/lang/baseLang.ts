@@ -45,4 +45,9 @@ export interface BaseLang {
     minute: string;
     second: string;
   };
+  address: {
+    selectRegion: string;
+    deliveryTo: string;
+    chooseAnotherAddress: string;
+  };
 }
