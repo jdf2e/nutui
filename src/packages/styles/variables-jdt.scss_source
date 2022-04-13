@@ -87,6 +87,7 @@ $cell-padding: 14px 16px !default;
 $cell-line-height: 22px !default;
 $cell-after-right: 0 !default;
 $cell-after-border-bottom: 2px solid rgba(0, 0, 0, 0.1) !default;
+$cell-default-icon-margin: 0 4px 0 0px !default;
 
 // cell-group
 
@@ -203,7 +204,7 @@ $numberkeyboard-key-finish-font-size-color: #fff !default;
 $numberkeyboard-key-finish-background-color: #1989fa !default;
 $numberkeyboard-key-activeFinsh-background-color: #0570db !default;
 
-//countdown
+// countdown
 $countdown-display: flex !default;
 $countdown-color: inherit !default;
 $countdown-font-size: initial !default;
@@ -722,6 +723,9 @@ $elevator-list-item-bars-inner-item-font-size: 10px !default;
 
 // list
 $list-item-margin: 0 0 10px 0;
+
+//Ecard
+$ecard-bg-color: #f0f2f5 !default;
 
 @import './mixins/index';
 @import './animation/index';
