@@ -76,7 +76,6 @@ export default create({
       const children = avatarGroup?.avatarGroupRef?.value?.children;
       if (children) {
         console.log('parent', avatarGroup);
-        console.log('avatarChildren', children);
         avatarLength(children);
       }
     });
@@ -121,9 +120,10 @@ export default create({
       for (let i = 0; i < children.length; i++) {
         if (children[i] && children[i].classList && children[i].classList[0] == 'nut-avatar') {
           children[i].setAttribute('data-index', i + 1);
-          console.log('state.index', state.index);
         }
+        console.log('console', i, children[i]);
       }
+
       state.index = avatarRef?.value?.dataset?.index;
       if (state.index == state.maxIndex && state.index != avatarGroup?.props?.maxCount) {
         state.showMax = true;

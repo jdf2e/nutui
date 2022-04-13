@@ -223,8 +223,13 @@ Icon 和字符型可以自定义图标颜色及背景色
 | max-bgColor  | 设置 Icon、字符类型头像的背景色                    | String | #eee   |
 | max-color    | 设置 Icon、字符类型头像的颜色                   | String | #666 |
 | span         | 设置头像之间的间距               | String | -8   |
-| zIndex       | 头像之间的层级关系，可选值为：left、right  | String | 'left'     |
+| zIndex       | 头像之间的层级关系，可选值为：left、right  | String | left     |
 
+### Slots
+
+| 名称    | 说明         |
+|---------|--------------|
+| maxContent | 多余头像显示内容 |
 
 ### Events
 
