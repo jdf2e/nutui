@@ -408,8 +408,8 @@ app.use(Icon);
 | clear-size   | 清除图标的 `font-size` 大小           | String        | `14`  |
 | left-icon    | 左侧 Icon 名称或图片链接，可参考 Icon 组件的 name 属性 | String        | - |
 | right-icon   | 右侧 Icon 名称或图片链接，可参考 Icon 组件的 name 属性 | String        | - |
-| left-size    | 左侧 Icon 的 `font-size` 大小           | String        | `14`  |
-| right-size   | 右侧 Icon 的 `font-size` 大小           | String        | `14`  |
+| left-icon-size    | 左侧 Icon 的 `font-size` 大小           | String        | `14`  |
+| right-icon-size   | 右侧 Icon 的 `font-size` 大小           | String        | `14`  |
 | show-word-limit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | Boolean | `false`  |
 | error         | 是否标红                                | Boolean | `false`  |
 | error-message | 底部错误提示文案，为空时不展示            | String、Number | - |
