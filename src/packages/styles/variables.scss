@@ -100,7 +100,7 @@ $cell-padding: 13px 16px !default;
 $cell-line-height: 20px !default;
 $cell-after-right: 16px !default;
 $cell-after-border-bottom: 2px solid #f5f6f7 !default;
-$cell-default-icon-margin: 0 4px 0 0px;
+$cell-default-icon-margin: 0 4px 0 0px !default;
 
 // cell-group
 
@@ -747,6 +747,9 @@ $elevator-list-item-bars-inner-item-font-size: 10px !default;
 
 // list
 $list-item-margin: 0 0 10px 0;
+
+//Ecard
+$ecard-bg-color: #f0f2f5 !default;
 
 @import './mixins/index';
 @import './animation/index';

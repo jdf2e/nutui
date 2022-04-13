@@ -8,7 +8,7 @@
   >
     <!-- header -->
     <view class="nut-calendar-header" :class="{ 'nut-calendar-header-tile': !poppable }">
-      <view class="calendar-title" v-if="showTitle">{{ title }}</view>
+      <view class="calendar-title" v-if="showTitle">{{ title || translate('title') }}</view>
       <view class="calendar-top-slot" v-if="showTopBtn">
         <slot name="btn"> </slot>
       </view>
@@ -45,11 +45,13 @@
                     <view class="calendar-curr-tips calendar-curr-tips-bottom" v-if="bottomInfo">
                       <slot name="bottomInfo" :date="day.type == 'curr' ? day : ''"> </slot>
                     </view>
-                    <view class="calendar-curr-tip-curr" v-if="!bottomInfo && showToday && isCurrDay(day)"> 今天 </view>
-                    <view :class="{ 'calendar-curr-tips-top': rangeTip(day, month), 'calendar-day-tip': true }">
-                      {{ isStartTip(day, month) ? startText : '' }}
+                    <view class="calendar-curr-tip-curr" v-if="!bottomInfo && showToday && isCurrDay(day)">
+                      {{ translate('today') }}
                     </view>
-                    <view class="calendar-day-tip" v-if="isEndTip(day, month)">{{ endText }}</view>
+                    <view :class="{ 'calendar-curr-tips-top': rangeTip(day, month), 'calendar-day-tip': true }">
+                      {{ isStartTip(day, month) ? startText || translate('start') : '' }}
+                    </view>
+                    <view class="calendar-day-tip" v-if="isEndTip(day, month)">{{ endText || translate('end') }}</view>
                   </view>
                 </template>
               </view>
@@ -60,14 +62,14 @@
     </scroll-view>
     <!-- footer-->
     <view class="nut-calendar-footer" v-if="poppable && !isAutoBackFill">
-      <view class="calendar-confirm-btn" @click="confirm">{{ confirmText }}</view>
+      <view class="calendar-confirm-btn" @click="confirm">{{ confirmText || translate('confirm') }}</view>
     </view>
   </view>
 </template>
 <script lang="ts">
 import { PropType, reactive, ref, watch, toRefs, computed, onMounted, nextTick } from 'vue';
 import { createComponent } from '../../utils/create';
-const { create } = createComponent('calendar-item');
+const { create, translate } = createComponent('calendar-item');
 import Taro from '@tarojs/taro';
 import Utils from '../../utils/date';
 import requestAniFrame from '../../utils/raf';
@@ -141,19 +143,19 @@ export default create({
     },
     title: {
       type: String,
-      default: '日历选择'
+      default: ''
     },
     confirmText: {
       type: String,
-      default: '确认'
+      default: ''
     },
     startText: {
       type: String,
-      default: '开始'
+      default: ''
     },
     endText: {
       type: String,
-      default: '结束'
+      default: ''
     },
     defaultValue: {
       type: [String, Array],
@@ -171,7 +173,7 @@ export default create({
   emits: ['choose', 'update', 'close', 'select'],
 
   setup(props, { emit, slots }) {
-    const weeks = ref(['日', '一', '二', '三', '四', '五', '六']);
+    const weeks = ref(translate('weekdays'));
     // element refs
     const scalePx = ref(2);
     const viewHeight = ref(0);
@@ -394,7 +396,7 @@ export default create({
       };
       const monthInfo: MonthInfo = {
         curData: curData,
-        title: `${title.year}年${title.month}月`,
+        title: translate('monthTitle', title.year, title.month),
         monthData: [
           ...(getPreDaysStatus(preMonthDays, 'prev', { month: preMonth, year: preYear }, preCurrMonthDays) as Day[]),
           ...(getDaysStatus(currMonthDays, 'curr', title) as Day[])
@@ -504,11 +506,11 @@ export default create({
       let current = 0;
       let lastCurrent = 0;
       state.monthsData.forEach((item, index) => {
-        if (item.title == `${state.defaultData[0]}年${state.defaultData[1]}月`) {
+        if (item.title == translate('monthTitle', state.defaultData[0], state.defaultData[1])) {
           current = index;
         }
         if (state.isRange) {
-          if (item.title == `${state.defaultData[3]}年${state.defaultData[4]}月`) {
+          if (item.title == translate('monthTitle', state.defaultData[3], state.defaultData[4])) {
             lastCurrent = index;
           }
         }
@@ -686,7 +688,8 @@ export default create({
       confirm,
       months,
       ...toRefs(state),
-      ...toRefs(props)
+      ...toRefs(props),
+      translate
     };
   }
 });

@@ -248,6 +248,8 @@ app.use(Checkbox).use(CheckboxGroup).use(Icon);
 | icon-size | [图标尺寸](#/icon) | String、Number | `18`
 | icon-name | [图标名称](#/icon)，选中前(建议和`icon-active-name`一起修改) | String | `'check-normal'`
 | icon-active-name | [图标名称](#/icon)，选中后(建议和`icon-name`一起修改) | String | `'checked'`
+| icon-class-prefix | 自定义 icon 类名前缀，用于使用自定义图标        | String                  | `nut-icon` |
+| icon-font-class-name | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
 | label | 复选框的文本内容 | String | -
 
 

@@ -265,17 +265,27 @@ export default {
 
 | 字段             | 说明                                   | 类型    | 默认值    |
 |------------------|----------------------------------------|---------|-----------|
-| cancel-txt       | 取消文案                               | String  | '取消'    |
+| v-model:visible       | 遮罩层可见                             | Boolean | false|
 | menu-items       | 列表项                                 | Array   | [ ]       |
-| option-tag       | 设置列表项展示使用参数                 | String  | 'name'    |
-| v-model:visible       | 遮罩层可见                             | Boolean | false     |
-| option-sub-tag   | 设置列表项描述展示使用参数             | String  | 'subname' |
+| option-tag       | 设置列表项标题展示使用参数                 | String  | 'name'    |
+| option-sub-tag   | 设置列表项二级标题展示使用参数             | String  | 'subname' |
 | choose-tag-value | 设置选中项的值，和'option-tag'的值对应 | String  | ''        |
+| color            | 选中项颜色，当 choose-tag-value == option-tag的值 生效  | String  | '#ee0a24' |
 | title            | 设置列表项标题                         | String  | ''        |
 | description      | 设置列表项副标题/描述                  | String  | ''        |
-| color            | 高亮颜色                               | String  | '#ee0a24' |
+| cancel-txt       | 取消文案                               | String  | '取消'   |
 | close-abled      | 遮罩层是否可关闭                       | Boolean | true      |
+|safe-area-inset-bottom	|是否开启iphone系列全面屏底部安全区适配|	Boolean	|false
 
+## menu-items数据结构
+
+| 字段   | 说明               | 类型                          |
+|--------|--------------------|-----------------------------------|
+| name | 标题      | String    |
+| subname | 二级标题 | String          |
+| color | 选项字体颜色（选中项颜色层级>选项字体颜色） | String          |
+| loading | 是否为loading状态 | Boolean          |
+| disable | 是否为禁用状态 | Boolean       |
 
 ## Event
 
@@ -283,3 +293,4 @@ export default {
 |--------|--------------------|-----------------------------------|
 | choose | 选择之后触发       | 选中列表项item, 选中的索引值index |
 | cancel | 点击取消文案时触发 | 无                                |
+| close | 点击遮罩层时触发 | event: Event                              |

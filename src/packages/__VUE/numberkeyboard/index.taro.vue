@@ -9,7 +9,7 @@
     <div class="nut-numberkeyboard" ref="root">
       <div class="number-board-header" v-if="title">
         <h3 class="tit">{{ title }}</h3>
-        <span class="keyboard-close" @click="closeBoard()">完成</span>
+        <span class="keyboard-close" @click="closeBoard()">{{ translate('done') }}</span>
       </div>
       <div class="number-board-body">
         <div class="number-board">
@@ -61,7 +61,9 @@
             </div>
           </div>
           <div class="key-board-wrapper" @click="closeBoard()" v-if="title == ''">
-            <div :class="['key', 'finish', { activeFinsh: clickKeyIndex == 'finish' }]"> 完成 </div>
+            <div :class="['key', 'finish', { activeFinsh: clickKeyIndex == 'finish' }]">
+              {{ confirmText || translate('done') }}
+            </div>
           </div>
         </div>
       </div>
@@ -72,9 +74,13 @@
 <script lang="ts">
 import { computed, onMounted, provide, reactive, nextTick, ref, watch, Ref } from 'vue';
 import { createComponent } from '../../utils/create';
-const { create } = createComponent('numberkeyboard');
+const { create, translate } = createComponent('numberkeyboard');
 export default create({
   props: {
+    confirmText: {
+      type: String,
+      default: ''
+    },
     title: {
       type: String,
       default: ''
@@ -214,7 +220,8 @@ export default create({
       genCustomKeys,
       getBasicKeys,
       root,
-      show
+      show,
+      translate
     };
   }
 });

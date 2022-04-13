@@ -51,11 +51,11 @@ export default create({
     },
     okText: {
       type: String,
-      default: '确定'
+      default: ''
     },
     cancelText: {
       type: String,
-      default: '取消'
+      default: ''
     },
     type: {
       type: String,
@@ -186,6 +186,9 @@ export default create({
           break;
         case 'time':
           result = result.slice(3, 6);
+          break;
+        case 'year-month':
+          result = result.slice(0, 2);
           break;
         case 'month-day':
           result = result.slice(1, 3);
