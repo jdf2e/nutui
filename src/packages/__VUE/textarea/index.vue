@@ -109,7 +109,7 @@ export default create({
           height = Math.max(height, minHeight);
         }
       }
-      if (height && props.rows == '') {
+      if (height) {
         textarea.style.height = height + 'px';
       }
     };
