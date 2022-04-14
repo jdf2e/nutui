@@ -45,6 +45,11 @@ const lang: BaseLang = {
     hour: '时',
     minute: '分',
     second: '秒'
+  },
+  address: {
+    selectRegion: '请选择所在地区',
+    deliveryTo: '配送至',
+    chooseAnotherAddress: '选择其他地址'
   }
 };
 export default lang;
