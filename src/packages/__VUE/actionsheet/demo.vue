@@ -20,8 +20,20 @@
       <div class="selected-option" v-html="state.val4"></div>
     </nut-cell>
 
+    <h2>自定义</h2>
+
+    <nut-cell :isLink="true" @click="switchActionSheet('isVisible5')">
+      <span><label>自定义内容</label></span>
+      <div class="selected-option"></div>
+    </nut-cell>
+
     <!-- demo 基础用法 -->
-    <nut-actionsheet v-model:visible="state.isVisible1" :menu-items="menuItemsOne" @choose="chooseItem">
+    <nut-actionsheet
+      :safe-area-inset-bottom="true"
+      v-model:visible="state.isVisible1"
+      :menu-items="menuItemsOne"
+      @choose="chooseItem"
+    >
     </nut-actionsheet>
     <!-- demo(带取消按钮） -->
     <nut-actionsheet
@@ -34,6 +46,7 @@
     <!-- 展示描述信息 -->
     <nut-actionsheet
       v-model:visible="state.isVisible3"
+      title="标题"
       :description="state.desc"
       :menu-items="menuItemsTwo"
       @choose="chooseItemThree"
@@ -48,6 +61,10 @@
       @choose="chooseItemFour"
       :choose-tag-value="state.chooseTagValue"
     ></nut-actionsheet>
+    <!-- 自定义面板-->
+    <nut-actionsheet v-model:visible="state.isVisible5" title="标题">
+      <div class="custom-content">自定义内容</div>
+    </nut-actionsheet>
   </div>
 </template>
 
@@ -56,7 +73,9 @@ import { reactive } from 'vue';
 interface Item {
   name: string;
   subname?: string;
+  color?: string;
   disable?: boolean;
+  loading?: boolean;
 }
 export default {
   props: {},
@@ -72,7 +91,7 @@ export default {
       val3: '',
       val4: '',
       desc: '这是一段描述信息',
-      chooseTagValue: '着色选项'
+      chooseTagValue: '选中选项'
     });
     const menuItemsOne: Item[] = [
       {
@@ -94,16 +113,21 @@ export default {
       },
       {
         name: '选项三',
+        color: 'red',
         subname: '描述信息'
       }
     ];
     const menuItemsThree: Item[] = [
       {
-        name: '着色选项'
+        name: '选中选项'
       },
       {
         name: '禁用选项',
         disable: true
+      },
+      {
+        name: '加载选项',
+        loading: true
       }
     ];
     const switchActionSheet = (param: 'isVisible1' | 'isVisible2' | 'isVisible3' | 'isVisible4') => {
@@ -148,7 +172,7 @@ export default {
 .nut-cell {
   justify-content: space-between;
 }
-.myContent {
+.custom-content {
   padding: 10px 10px 160px;
 }
 </style>

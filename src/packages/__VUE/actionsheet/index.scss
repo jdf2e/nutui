@@ -1,5 +1,9 @@
 .nut-actionsheet-panel {
   display: block;
+  &.nut-actionsheet-safebottom {
+    margin-bottom: constant(safe-area-inset-bottom);
+    margin-bottom: env(safe-area-inset-bottom);
+  }
   .nut-actionsheet-title {
     display: block;
     padding: 10px;
@@ -49,6 +53,7 @@
   .desc {
     font-size: $actionsheet-item-font-size;
     color: #999;
+    cursor: default;
   }
 
   .subdesc {
@@ -60,6 +65,9 @@
   .nut-actionsheet-item-disabled {
     color: #e1e1e1 !important;
     cursor: not-allowed;
+  }
+  .nut-actionsheet-item-loading {
+    cursor: default;
   }
 
   .nut-actionsheet-cancel {
