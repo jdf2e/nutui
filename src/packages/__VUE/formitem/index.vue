@@ -1,5 +1,9 @@
 <template>
-  <nut-cell class="nut-form-item" :class="{ error: parent[prop], line: showErrorLine }">
+  <nut-cell
+    class="nut-form-item"
+    :class="[{ error: parent[prop], line: showErrorLine }, $attrs.class]"
+    :style="$attrs.style"
+  >
     <view class="nut-cell__title nut-form-item__label" :style="labelStyle" v-if="label" :class="{ required: required }">
       {{ label }}</view
     >

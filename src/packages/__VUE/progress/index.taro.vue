@@ -11,16 +11,27 @@
         <div
           class="nut-progress-text nut-progress-insidetext"
           ref="insideText"
-          :id="'nut-progress-insidetext-taro-' + randRef"
           :style="{
             lineHeight: height,
             left: `${percentage}%`,
             transform: `translate(-${+percentage}%,-50%)`,
             background: textBackground || strokeColor
           }"
-          v-if="showText && textInside"
+          v-if="showText && textInside && !slotDefault"
         >
           <span :style="textStyle">{{ percentage }}{{ isShowPercentage ? '%' : '' }}</span>
+        </div>
+        <div
+          ref="insideText"
+          :style="{
+            position: `absolute`,
+            top: `50%`,
+            left: `${percentage}%`,
+            transform: `translate(-${+percentage}%,-50%)`
+          }"
+          v-if="showText && textInside && slotDefault"
+        >
+          <slot></slot>
         </div>
       </div>
     </div>
@@ -36,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, provide, reactive, nextTick, ref, watch } from 'vue';
+import { computed, onMounted, useSlots, ref, watch } from 'vue';
 import { createComponent } from '../../utils/create';
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 import { log } from 'lzutf8';
@@ -94,6 +105,7 @@ export default create({
     }
   },
   setup(props, { emit }) {
+    const slotDefault = !!useSlots().default;
     const height = ref(props.strokeWidth + 'px');
     const progressOuter = ref<any>();
     const insideText = ref();
@@ -120,7 +132,8 @@ export default create({
       textStyle,
       progressOuter,
       insideText,
-      randRef
+      randRef,
+      slotDefault
     };
   }
 });
