@@ -5,7 +5,7 @@
     <h2>显示字数统计</h2>
     <nut-textarea v-model="value2" limit-show max-length="20" />
     <h2>高度自定义，拉伸</h2>
-    <nut-textarea v-model="value3" autosize />
+    <nut-textarea v-model="value3" />
     <h2>只读</h2>
     <nut-textarea readonly model-value="textarea只读状态" />
     <h2>禁用</h2>

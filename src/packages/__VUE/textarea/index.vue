@@ -59,7 +59,7 @@ export default create({
       default: false
     },
     autosize: {
-      type: Boolean,
+      type: [Boolean, Object],
       default: false
     },
     autofocus: {
@@ -109,7 +109,7 @@ export default create({
           height = Math.max(height, minHeight);
         }
       }
-      if (height) {
+      if (height && props.rows == '') {
         textarea.style.height = height + 'px';
       }
     };
