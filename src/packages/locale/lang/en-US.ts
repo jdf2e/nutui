@@ -59,6 +59,9 @@ const lang: BaseLang = {
     chooseText: 'Select',
     otherValueText: 'Other Value',
     placeholder: 'Placeholder'
+  },
+  timeselect: {
+    pickupTime: 'Pickup Time'
   }
 };
 export default lang;

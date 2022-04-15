@@ -59,6 +59,9 @@ const lang: BaseLang = {
     chooseText: '请选择电子卡面值',
     otherValueText: '其他面值',
     placeholder: '请输入1-5000整数'
+  },
+  timeselect: {
+    pickupTime: '取件时间'
   }
 };
 export default lang;
