@@ -62,4 +62,12 @@ export interface BaseLang {
   timeselect: {
     pickupTime: string;
   };
+  sku: {
+    buyNow: string;
+    buyNumber: string;
+    addToCard: string;
+  };
+  skuheader: {
+    skuId: string;
+  };
 }
