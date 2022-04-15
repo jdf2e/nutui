@@ -60,14 +60,14 @@
       </template>
     </swipe-shell>
     <div class="nut-addresslist__bottom" v-if="showBottomButton" @click="addAddress">
-      <nut-button block type="danger">+新建收获地址</nut-button>
+      <nut-button block type="danger">{{ translate('addAddress') }}</nut-button>
     </div>
   </div>
 </template>
 <script lang="ts">
 import { toRefs, reactive, onMounted, ref } from 'vue';
 import { createComponent } from '../../utils/create';
-const { componentName, create } = createComponent('addresslist');
+const { componentName, create, translate } = createComponent('addresslist');
 import LongPressShell from './components/LongPressShell.vue';
 import SwipeShell from './components/SwipeShell.vue';
 import GeneralShell from './components/GeneralShell.vue';
@@ -173,12 +173,9 @@ export default create({
       clickLongDel,
       clickSwipeDel,
       addAddress,
-      dataArray
+      dataArray,
+      translate
     };
   }
 });
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-</style>

@@ -70,4 +70,7 @@ export interface BaseLang {
   skuheader: {
     skuId: string;
   };
+  addresslist: {
+    addAddress: string;
+  };
 }
