@@ -751,6 +751,14 @@ $list-item-margin: 0 0 10px 0;
 //Ecard
 $ecard-bg-color: #f0f2f5 !default;
 
+//category
+$category-bg-color: rgba(255, 255, 255, 1);
+$cateListLeft-bg-color: rgba(246, 247, 249, 1);
+$cateListItem-color: rgba(51, 51, 51, 1);
+$cateListItemChecked-color: rgba(255, 255, 255, 1);
+$cateListItem-color: rgba(51, 51, 51, 1);
+$cateListItemChecked-img-bg-color: rgba(240, 37, 15, 1);
+
 // circleProgress
 $circle-progress-primary-color: $primary-color !default;
 $circle-progress-path-color: #e5e9f2 !default;

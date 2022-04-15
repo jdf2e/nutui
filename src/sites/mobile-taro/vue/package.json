@@ -36,7 +36,7 @@
   "author": "",
   "dependencies": {
     "@babel/runtime": "^7.7.7",
-    "@nutui/nutui-taro": "^3.0.2",
+    "@nutui/nutui-taro": "^3.1.18",
     "@tarojs/components": "^3.4.0",
     "@tarojs/mini-runner": "^3.4.0",
     "@tarojs/runtime": "^3.4.0",
