@@ -62,6 +62,14 @@ const lang: BaseLang = {
   },
   timeselect: {
     pickupTime: 'Pickup Time'
+  },
+  sku: {
+    buyNow: 'Buy Now',
+    buyNumber: 'Buy Number',
+    addToCard: 'Add to Card'
+  },
+  skuheader: {
+    skuId: 'Sku Number'
   }
 };
 export default lang;
