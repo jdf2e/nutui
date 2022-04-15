@@ -83,7 +83,7 @@ export class FileItem {
   name?: string;
   type?: string;
   percentage: string | number = 0;
-  formData: FormData = new FormData();
+  formData: any = {};
 }
 export type SizeType = 'original' | 'compressed';
 export type SourceType = 'album' | 'camera' | 'user' | 'environment';
@@ -253,8 +253,8 @@ export default create({
         fileItem.status = 'ready';
         fileItem.message = translate('waitingUpload');
         fileItem.type = fileType;
-        const formData = new FormData();
         if (Taro.getEnv() == 'WEB') {
+          const formData = new FormData();
           for (const [key, value] of Object.entries(props.data)) {
             formData.append(key, value);
           }
