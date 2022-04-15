@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" :style="style">
+  <view :class="classes" :style="style" @click="handleClick">
     <slot></slot>
   </view>
 </template>
@@ -19,7 +19,8 @@ export default create({
       default: '0'
     }
   },
-  setup(props) {
+  emits: ['click'],
+  setup(props, { emit }) {
     const prefixCls = componentName;
     const gutter = inject('gutter') as number;
     const classes = computed(() => {
@@ -36,9 +37,14 @@ export default create({
         paddingRight: gutter / 2 + 'px'
       };
     });
+    const handleClick = (evt: MouseEvent) => {
+      evt.stopPropagation();
+      emit('click', evt);
+    };
     return {
       classes,
-      style
+      style,
+      handleClick
     };
   }
 });

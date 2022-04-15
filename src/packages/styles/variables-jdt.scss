@@ -530,7 +530,7 @@ $indicator-color: $primary-color !default;
 $indicator-dot-color: $disable-color !default;
 $indicator-white: $white !default;
 $indicator-size: 18px !default;
-$indicator-dot-size: $indicator-size / 3 !default;
+$indicator-dot-size: calc($indicator-size / 3) !default;
 $indicator-border-size: $indicator-size + 2 !default;
 $indicator-number-font-size: 10px !default;
 
