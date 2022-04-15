@@ -3,7 +3,6 @@
     <h2>基础用法</h2>
     <nut-cell>
       <nut-ecard
-        chooseText="请选择电子卡面值"
         @inputChange="inputChange"
         @change="change"
         @changeStep="changeStep"
