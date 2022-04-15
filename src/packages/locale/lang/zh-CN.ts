@@ -50,6 +50,10 @@ const lang: BaseLang = {
     selectRegion: '请选择所在地区',
     deliveryTo: '配送至',
     chooseAnotherAddress: '选择其他地址'
+  },
+  signature: {
+    reSign: '重签',
+    unSupportTpl: '对不起，当前浏览器不支持Canvas，无法使用本控件！'
   }
 };
 export default lang;

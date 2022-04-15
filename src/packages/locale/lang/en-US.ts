@@ -50,6 +50,10 @@ const lang: BaseLang = {
     selectRegion: 'Select Region',
     deliveryTo: 'Delivery To',
     chooseAnotherAddress: 'Choose Another Address'
+  },
+  signature: {
+    reSign: 're-sign',
+    unSupportTpl: `Sorry, the current browser doesn't support canvas, so we can't use this control!`
   }
 };
 export default lang;
