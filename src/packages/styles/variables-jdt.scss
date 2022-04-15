@@ -530,7 +530,7 @@ $indicator-color: $primary-color !default;
 $indicator-dot-color: $disable-color !default;
 $indicator-white: $white !default;
 $indicator-size: 18px !default;
-$indicator-dot-size: $indicator-size / 3 !default;
+$indicator-dot-size: calc($indicator-size / 3) !default;
 $indicator-border-size: $indicator-size + 2 !default;
 $indicator-number-font-size: 10px !default;
 
@@ -726,6 +726,12 @@ $list-item-margin: 0 0 10px 0;
 
 //Ecard
 $ecard-bg-color: #f0f2f5 !default;
+
+// circleProgress
+$circle-progress-primary-color: $primary-color !default;
+$circle-progress-path-color: #e5e9f2 !default;
+$circle-progress-text-color: #000000 !default;
+$circle-progress-text-size: $font-size-3 !default;
 
 @import './mixins/index';
 @import './animation/index';
