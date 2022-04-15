@@ -45,6 +45,31 @@ const lang: BaseLang = {
     hour: '时',
     minute: '分',
     second: '秒'
+  },
+  address: {
+    selectRegion: '请选择所在地区',
+    deliveryTo: '配送至',
+    chooseAnotherAddress: '选择其他地址'
+  },
+  signature: {
+    reSign: '重签',
+    unSupportTpl: '对不起，当前浏览器不支持Canvas，无法使用本控件！'
+  },
+  ecard: {
+    chooseText: '请选择电子卡面值',
+    otherValueText: '其他面值',
+    placeholder: '请输入1-5000整数'
+  },
+  timeselect: {
+    pickupTime: '取件时间'
+  },
+  sku: {
+    buyNow: '立即购买',
+    buyNumber: '购买数量',
+    addToCard: '加入购物车'
+  },
+  skuheader: {
+    skuId: '商品编号'
   }
 };
 export default lang;

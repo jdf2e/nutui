@@ -14,15 +14,15 @@
         @touchleave="leaveEventHandler"
       ></canvas>
     </div>
-    <nut-button class="nut-signature-btn" type="default" @click="clear()">重签</nut-button>
-    <nut-button class="nut-signature-btn" type="primary" @click="confirm()">确认</nut-button>
+    <nut-button class="nut-signature-btn" type="default" @click="clear()">{{ translate('reSign') }}</nut-button>
+    <nut-button class="nut-signature-btn" type="primary" @click="confirm()">{{ translate('confirm') }}</nut-button>
   </div>
 </template>
 <script lang="ts">
 import Taro from '@tarojs/taro';
 import { ref, reactive, onMounted, computed } from 'vue';
 import { createComponent } from '../../utils/create';
-const { componentName, create } = createComponent('signature');
+const { componentName, create, translate } = createComponent('signature');
 
 export default create({
   props: {
@@ -44,7 +44,7 @@ export default create({
     },
     unSupportTpl: {
       type: String,
-      default: '对不起，当前浏览器不支持Canvas，无法使用本控件！'
+      default: ''
     }
   },
   components: {},
@@ -151,7 +151,8 @@ export default create({
       startEventHandler,
       moveEventHandler,
       endEventHandler,
-      leaveEventHandler
+      leaveEventHandler,
+      translate
     };
   }
 });

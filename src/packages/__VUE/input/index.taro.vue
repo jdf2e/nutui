@@ -252,7 +252,7 @@ export default create({
     },
     showWordLimit: {
       type: Boolean,
-      default: true
+      default: false
     },
     autofocus: {
       type: Boolean,

@@ -11,7 +11,6 @@
       :town="town"
       @change="(cal) => onChange(cal, 'normal')"
       @close="close1"
-      custom-address-title="请选择所在地区"
     ></nut-address>
 
     <h2>选中省市区</h2>
@@ -26,7 +25,6 @@
       :town="town"
       @change="(cal) => onChange(cal, 'select')"
       @close="close6"
-      custom-address-title="请选择所在地区"
       :columns-placeholder="placeholder"
     ></nut-address>
 
@@ -45,7 +43,6 @@
       @change="(cal) => onChange(cal, 'normal2')"
       @close="close5"
       :columns-placeholder="placeholder"
-      custom-address-title="请选择所在地区"
     ></nut-address>
 
     <h2>选择已有地址</h2>
@@ -59,7 +56,6 @@
       @close="close2"
       :is-show-custom-address="false"
       @selected="selected"
-      exist-address-title="配送至"
     ></nut-address>
 
     <h2>自定义图标</h2>
@@ -93,7 +89,6 @@
       @change="(cal) => onChange(cal, 'other')"
       @close="close4"
       @selected="selected"
-      custom-and-exist-title="选择其他地址"
       @switch-module="switchModule"
       @close-mask="closeMask"
     ></nut-address>

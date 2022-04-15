@@ -12,6 +12,13 @@
     <h2>标题段落圆角风格</h2>
     <nut-skeleton width="250px" height="15px" animated round></nut-skeleton>
 
+    <h2>图片组合</h2>
+
+    <div class="pic-compose">
+      <nut-skeleton width="250px" height="15px" title animated row="3" class="item"> </nut-skeleton>
+      <nut-skeleton width="250px" height="15px" title animated row="3" class="item"> </nut-skeleton>
+    </div>
+
     <h2>显示子组件</h2>
     <view class="content">
       <nut-switch v-model="checked" size="15px" />
@@ -69,6 +76,13 @@ export default {
         color: rgba(154, 155, 157, 1);
       }
     }
+  }
+}
+.pic-compose {
+  display: flex;
+  justify-content: space-between;
+  .item {
+    width: 47%;
   }
 }
 </style>
