@@ -59,4 +59,7 @@ export interface BaseLang {
     otherValueText: string;
     placeholder: string;
   };
+  timeselect: {
+    pickupTime: string;
+  };
 }
