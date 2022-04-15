@@ -2,7 +2,7 @@ import { ref, reactive } from 'vue';
 import lang from './lang/zh-CN';
 import defaultLang from './lang/zh-CN';
 import enUSLang from './lang/en-US';
-const currentLang = ref('zh-CN');
+const currentLang = ref('en-US');
 
 type lang = Record<string, any>;
 const langs = reactive<lang>({
