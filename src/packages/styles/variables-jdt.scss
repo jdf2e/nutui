@@ -727,5 +727,11 @@ $list-item-margin: 0 0 10px 0;
 //Ecard
 $ecard-bg-color: #f0f2f5 !default;
 
+// circleProgress
+$circle-progress-primary-color: $primary-color !default;
+$circle-progress-path-color: #e5e9f2 !default;
+$circle-progress-text-color: #000000 !default;
+$circle-progress-text-size: $font-size-3 !default;
+
 @import './mixins/index';
 @import './animation/index';
