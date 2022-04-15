@@ -52,8 +52,13 @@ const lang: BaseLang = {
     chooseAnotherAddress: 'Choose Another Address'
   },
   signature: {
-    reSign: 're-sign',
+    reSign: 'Re Sign',
     unSupportTpl: `Sorry, the current browser doesn't support canvas, so we can't use this control!`
+  },
+  ecard: {
+    chooseText: 'Select',
+    otherValueText: 'Other Value',
+    placeholder: 'Placeholder'
   }
 };
 export default lang;

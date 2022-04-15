@@ -54,4 +54,9 @@ export interface BaseLang {
     reSign: string;
     unSupportTpl: string;
   };
+  ecard: {
+    chooseText: string;
+    otherValueText: string;
+    placeholder: string;
+  };
 }
