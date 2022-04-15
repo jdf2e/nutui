@@ -50,4 +50,24 @@ export interface BaseLang {
     deliveryTo: string;
     chooseAnotherAddress: string;
   };
+  signature: {
+    reSign: string;
+    unSupportTpl: string;
+  };
+  ecard: {
+    chooseText: string;
+    otherValueText: string;
+    placeholder: string;
+  };
+  timeselect: {
+    pickupTime: string;
+  };
+  sku: {
+    buyNow: string;
+    buyNumber: string;
+    addToCard: string;
+  };
+  skuheader: {
+    skuId: string;
+  };
 }

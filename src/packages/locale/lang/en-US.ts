@@ -50,6 +50,26 @@ const lang: BaseLang = {
     selectRegion: 'Select Region',
     deliveryTo: 'Delivery To',
     chooseAnotherAddress: 'Choose Another Address'
+  },
+  signature: {
+    reSign: 'Re Sign',
+    unSupportTpl: `Sorry, the current browser doesn't support canvas, so we can't use this control!`
+  },
+  ecard: {
+    chooseText: 'Select',
+    otherValueText: 'Other Value',
+    placeholder: 'Placeholder'
+  },
+  timeselect: {
+    pickupTime: 'Pickup Time'
+  },
+  sku: {
+    buyNow: 'Buy Now',
+    buyNumber: 'Buy Number',
+    addToCard: 'Add to Card'
+  },
+  skuheader: {
+    skuId: 'Sku Number'
   }
 };
 export default lang;
