@@ -50,4 +50,13 @@ export interface BaseLang {
     deliveryTo: string;
     chooseAnotherAddress: string;
   };
+  signature: {
+    reSign: string;
+    unSupportTpl: string;
+  };
+  ecard: {
+    chooseText: string;
+    otherValueText: string;
+    placeholder: string;
+  };
 }
