@@ -26,6 +26,7 @@
           :style="stylesTextarea"
           :maxlength="maxLength"
           :placeholder="placeholder || translate('placeholder')"
+          placeholder-class="nut-placeholder"
           :disabled="disabled"
           :readonly="readonly"
           :value="modelValue"
@@ -43,6 +44,7 @@
           :type="inputType(type)"
           :maxLength="maxLength"
           :placeholder="placeholder || translate('placeholder')"
+          placeholder-class="nut-placeholder"
           :disabled="disabled"
           :readonly="readonly"
           :value="modelValue"
@@ -192,12 +194,12 @@ export default create({
       type: [String, Number],
       default: ''
     },
-    leftIcon: {
-      type: String,
-      default: ''
-    },
     leftIconSize: {
       type: [String, Number],
+      default: ''
+    },
+    leftIcon: {
+      type: String,
       default: ''
     },
     rightIcon: {
