@@ -70,6 +70,9 @@ const lang: BaseLang = {
   },
   skuheader: {
     skuId: 'Sku Number'
+  },
+  addresslist: {
+    addAddress: 'Add New Address'
   }
 };
 export default lang;
