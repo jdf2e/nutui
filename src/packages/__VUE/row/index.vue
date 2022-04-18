@@ -1,5 +1,5 @@
 <template>
-  <view :class="getClasses()">
+  <view :class="getClasses()" @click="handleClick">
     <slot></slot>
   </view>
 </template>
@@ -31,15 +31,12 @@ export default create({
       default: 'nowrap'
     }
   },
-  setup(props) {
+  emits: ['click'],
+  setup(props, { emit }) {
     const prefixCls = componentName;
     provide('gutter', props.gutter);
     const getClass = (prefix: string, type: string) => {
-      return prefix
-        ? type
-          ? `nut-row-${prefix}-${type}`
-          : ''
-        : `nut-row-${type}`;
+      return prefix ? (type ? `nut-row-${prefix}-${type}` : '') : `nut-row-${type}`;
     };
     const getClasses = () => {
       return `
@@ -50,9 +47,13 @@ export default create({
               ${prefixCls}
               `;
     };
-
+    const handleClick = (evt: MouseEvent) => {
+      evt.stopPropagation();
+      emit('click', evt);
+    };
     return {
-      getClasses
+      getClasses,
+      handleClick
     };
   }
 });
