@@ -73,4 +73,9 @@ export interface BaseLang {
   addresslist: {
     addAddress: string;
   };
+  comment: {
+    complaintsText: string;
+    additionalReview: Function;
+    additionalImages: Function;
+  };
 }
