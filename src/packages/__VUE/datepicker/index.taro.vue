@@ -10,6 +10,7 @@
     :title="title"
     @confirm="confirm"
     :isWrapTeleport="isWrapTeleport"
+    ><slot></slot
   ></nut-picker>
 </template>
 <script lang="ts">

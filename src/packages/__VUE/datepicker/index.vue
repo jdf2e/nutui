@@ -10,7 +10,9 @@
     :title="title"
     @confirm="confirm"
     :isWrapTeleport="isWrapTeleport"
-  ></nut-picker>
+  >
+    <slot></slot>
+  </nut-picker>
 </template>
 <script lang="ts">
 import { toRefs, watch, computed, reactive, onMounted, onBeforeMount } from 'vue';

@@ -16,8 +16,7 @@
       title="城市选择"
       @change="change"
       @confirm="(options) => confirm('index', options)"
-    >
-    </nut-picker>
+    ></nut-picker>
 
     <h2>默认选中项</h2>
     <nut-cell
@@ -90,6 +89,25 @@
       title="城市选择"
       @confirm="(options) => confirm('async', options)"
     ></nut-picker>
+
+    <h2>自定义按钮</h2>
+    <nut-cell
+      title="请选择有效日期"
+      :desc="effect"
+      @click="
+        () => {
+          showEffect = true;
+        }
+      "
+    ></nut-cell>
+    <nut-picker
+      v-model:visible="showEffect"
+      :columns="effectColumns"
+      title="日期选择"
+      @confirm="(options) => confirm('effect', options)"
+    >
+      <nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-picker
+    >
   </div>
 </template>
 <script lang="ts">
@@ -174,6 +192,20 @@ export default createDemo({
       }
     ]);
 
+    const effectColumns = ref([
+      { text: '2022-01', value: 'January' },
+      { text: '2022-02', value: 'February' },
+      { text: '2022-03', value: 'March' },
+      { text: '2022-04', value: 'April' },
+      { text: '2022-05', value: 'May' },
+      { text: '2022-06', value: 'June' },
+      { text: '2022-07', value: 'July' },
+      { text: '2022-08', value: 'August' },
+      { text: '2022-09', value: 'September' },
+      { text: '2022-10', value: 'October' },
+      { text: '2022-11', value: 'November' },
+      { text: '2022-12', value: 'December' }
+    ]);
     const asyncColumns = ref<PickerOption[]>([]);
 
     const show = ref(false);
@@ -181,13 +213,15 @@ export default createDemo({
     const showMultiple = ref(false);
     const showCascader = ref(false);
     const showAsync = ref(false);
+    const showEffect = ref(false);
 
     const desc = reactive({
       index: '',
       defult: '',
       multiple: '',
       cascader: '',
-      async: ''
+      async: '',
+      effect: ''
     });
 
     const open = (index: number) => {
@@ -235,6 +269,10 @@ export default createDemo({
       console.log(selectedValue);
     };
 
+    const alwaysFun = () => {
+      showEffect.value = false;
+      desc.effect = '永远有效';
+    };
     return {
       selectedValue,
       asyncValue,
@@ -250,12 +288,12 @@ export default createDemo({
       cascaderColumns,
       confirm,
       change,
-      asyncColumns
+      asyncColumns,
+      effectColumns,
+      showEffect,
+      alwaysFun
     };
   }
 });
 </script>
-<style lang="scss" scoped>
-.demo {
-}
-</style>
+<style lang="scss" scoped></style>

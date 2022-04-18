@@ -83,7 +83,8 @@
         }
       "
       v-model:visible="show5"
-    ></nut-datepicker>
+      ><nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-datepicker
+    >
     <!-- 分钟数递增步长设置 -->
     <nut-datepicker
       v-model="currentDate6"
@@ -161,7 +162,7 @@ export default createDemo({
           option.text += '月';
           break;
         case 'day':
-          option.text += '月';
+          option.text += '日';
           break;
         case 'hour':
           option.text += '时';
@@ -184,7 +185,7 @@ export default createDemo({
           option.text += '月';
           break;
         case 'day':
-          option.text += '月';
+          option.text += '日';
           break;
         case 'hour':
           option.text += '时';
@@ -238,6 +239,11 @@ export default createDemo({
           descList[index].value = selectedValue.join('-');
       }
     };
+
+    const alwaysFun = () => {
+      show5.value = false;
+      desc5.value = '永久有效';
+    };
     return {
       show,
       show2,
@@ -259,7 +265,8 @@ export default createDemo({
       confirm,
       formatter,
       formatter1,
-      filter
+      filter,
+      alwaysFun
     };
   }
 });
