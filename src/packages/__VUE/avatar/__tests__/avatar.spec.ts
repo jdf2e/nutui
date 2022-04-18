@@ -19,9 +19,11 @@ test('size props', async () => {
     }
   });
   const avatar: any = wrapper.find('.nut-avatar');
-  expect(avatar.classes()).toContain('avatar-small');
+  expect(avatar.classes()).toContain('nut-avatar-small');
   await wrapper.setProps({ size: 'large' });
-  expect(avatar.classes()).toContain('avatar-large');
+  expect(avatar.classes()).toContain('nut-avatar-large');
+  await wrapper.setProps({ size: '30' });
+  expect(avatar.element.style.width).toBe('30px');
 });
 
 test('shape props', () => {
@@ -31,10 +33,10 @@ test('shape props', () => {
     }
   });
   const avatar: any = wrapper.find('.nut-avatar');
-  expect(avatar.classes()).toContain('avatar-square');
+  expect(avatar.classes()).toContain('nut-avatar-square');
 });
 
-test('shape props', () => {
+test('bgColor props', () => {
   const wrapper = mount(Avatar, {
     props: {
       bgColor: '#000000'
@@ -42,6 +44,16 @@ test('shape props', () => {
   });
   const avatar: any = wrapper.find('.nut-avatar');
   expect(avatar.element.style.backgroundColor).toBe('rgb(0, 0, 0)');
+});
+
+test('color props', async () => {
+  const wrapper = mount(Avatar, {
+    props: {
+      color: 'rgb(153, 153, 153)'
+    }
+  });
+  const avatar: any = wrapper.find('.nut-avatar');
+  expect(avatar.element.style.color).toBe('rgb(153, 153, 153)');
 });
 
 test('icon props', () => {
@@ -54,9 +66,44 @@ test('icon props', () => {
   expect(icon.classes()).toContain('nut-icon-my');
 });
 
+test('url props', () => {
+  const wrapper = mount(Avatar, {
+    props: {
+      url: 'https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png'
+    }
+  });
+  const img: any = wrapper.find('img');
+  expect(img.attributes().src).toBe(
+    'https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png'
+  );
+});
+
+test('alt props', () => {
+  const wrapper = mount(Avatar, {
+    props: {
+      url: 'https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png',
+      alt: '我是alt'
+    }
+  });
+  const img: any = wrapper.find('img');
+  expect(img.attributes().alt).toBe('我是alt');
+});
+
 // 点击事件
 test('should emit active-avatarror event', () => {
   const wrapper = mount(Avatar);
-  wrapper.trigger('click');
+  const avatar: any = wrapper.find('.nut-avatar');
+  avatar.trigger('click');
   expect(wrapper.emitted('click')).toHaveLength(1);
 });
+
+// test('should emit onError event', () => {
+//   const wrapper = mount(Avatar, {
+//     props: {
+//       url: 'https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/413809774888998',
+//     }
+//   });
+//   const avatar: any = wrapper.find('.nut-avatar');
+//   avatar.trigger('click');
+//   expect(wrapper.emitted('error')).toHaveLength(1);
+// });

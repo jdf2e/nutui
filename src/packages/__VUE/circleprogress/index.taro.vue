@@ -1,205 +1,170 @@
 <template>
-  <div :class="classes" :style="pieStyle">
-    <div :style="mobileStyle" v-if="!isMobile">
-      <div class="nut-circleprogress__right">
-        <div class="nut-circleprogress__line nut-circleprogress__r">
-          <div class="nut-circleprogress__line__c" :style="RightStyle"></div>
-        </div>
-      </div>
-      <div class="nut-circleprogress__progress">
-        <template v-if="!isAuto">
-          <slot>{{ progress }}%</slot>
-        </template>
-        <template v-else><slot></slot></template>
-      </div>
-
-      <div class="nut-circleprogress__left">
-        <div class="nut-circleprogress__line nut-circleprogress__l">
-          <div class="nut-circleprogress__line__c" :style="LeftStyle"></div>
-        </div>
-      </div>
-    </div>
-    <div v-else>
-      <svg :height="option.size" :width="option.size" x-mlns="http://www.w3.org/200/svg">
-        <circle
-          :r="option.radius"
-          :cx="option.cx"
-          :cy="option.cy"
-          :stroke="option.backColor"
-          :stroke-width="option.strokeOutWidth"
-          fill="none"
-        />
-        <circle
-          :r="option.radius"
-          :cx="option.cx"
-          :cy="option.cy"
-          :stroke="option.progressColor"
-          :stroke-dasharray="arcLength"
-          :stroke-width="strokeInnerWidth"
-          fill="none"
-          :transform="option.startPosition"
-          stroke-linecap="round"
-          style="transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s"
-        />
-      </svg>
-      <div class="nut-circleprogress__progress">
-        <template v-if="!isAuto">
-          <slot>{{ progress }}%</slot>
-        </template>
-        <template v-else><slot></slot></template>
-      </div>
+  <div :class="classes" :style="{ height: radius * 2 + 'px', width: radius * 2 + 'px' }">
+    <view :style="style"></view>
+    <div class="nut-circleprogress-text">
+      <slot></slot>
+      <span v-if="!slotDefault">{{ progress }}%</span>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Taro from '@tarojs/taro';
-import { computed, nextTick, onMounted, reactive, ref, watch } from 'vue';
+import { computed, ref, watch, useSlots } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('circleprogress');
-
-interface progressOption {
-  radius: string | number;
-  strokeOutWidth: string | number;
-  backColor: string;
-  progressColor: string;
+interface Item {
+  key?: string;
+  value?: string;
 }
-
 export default create({
   props: {
     progress: {
       type: [Number, String],
       required: true
     },
-    strokeInnerWidth: {
+    strokeWidth: {
       type: [Number, String],
-      default: 10
+      default: 5
     },
-    isAuto: {
-      tyep: Boolean,
-      default: false
+    radius: {
+      type: [Number, String],
+      default: 50
     },
-    progressOption: {
-      type: Object,
-      default: () => {}
+    strokeLinecap: {
+      type: String,
+      default: 'round'
+    },
+    color: {
+      type: [String, Object],
+      default: '#FF673E'
+    },
+    pathColor: {
+      type: String,
+      default: '#d9d9d9'
+    },
+    clockwise: {
+      type: Boolean,
+      default: true
     }
   },
+  emits: ['update:progress'],
   setup(props, { emit }) {
-    const rotateLeft = ref();
-    const rotateRight = ref();
-    const InnerWidth = ref(props.strokeInnerWidth);
-    const isMobile = ref(false);
-    const cricleData = reactive({
-      radius: 50,
-      strokeOutWidth: 10,
-      backColor: '#d9d9d9',
-      progressColor: 'red'
-    });
-    const loadPercent = (x: number, y: number) => {
-      let rotate = (x / y) * 360;
-      let rotateRc = 0;
-      let rotateLc = 0;
-      if (rotate < 180) {
-        rotateRc = rotate + -45;
-      } else {
-        rotateRc = 135;
-        rotateLc = rotate - 180 - 45;
-        rotateLeft.value = rotateLc;
-      }
-      rotateRight.value = rotateRc;
-    };
-    watch(
-      () => props.progress,
-      (value) => {
-        loadPercent(value as number, 100);
-      }
-    );
-    onMounted(() => {
-      if (Taro.getEnv() === 'WEB') {
-        isMobile.value = true;
-      } else {
-        isMobile.value = false;
-        loadPercent(props.progress as number, 100);
-        Object.assign(cricleData, props.progressOption as progressOption);
-      }
-    });
+    const slotDefault = !!useSlots().default;
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
         [prefixCls]: true
       };
     });
-    const pieStyle = computed(() => {
-      return {
-        width: (cricleData.radius + cricleData.strokeOutWidth) * 2 + 'px',
-        height: (cricleData.radius + cricleData.strokeOutWidth) * 2 + 'px'
-      };
-    });
-    const mobileStyle = computed(() => {
-      return {
-        width: '100%',
-        height: '100%'
-      };
-    });
-    const RightStyle = computed(() => {
-      // taro转的h5不支持使用border-top这种边框属性，目前解决方案，taro转的h5使用svg实现
-      return {
-        transform: `rotate(${rotateRight.value + 'deg'})`,
-        transition: `all 0.3s`,
-        borderTop: `${InnerWidth.value + 'px'} solid ${cricleData.backColor};`,
-        borderLeft: `${InnerWidth.value + 'px'} solid  ${cricleData.backColor};`,
-        borderBottom: `${InnerWidth.value + 'px'} solid ${cricleData.progressColor};`,
-        borderRight: `${InnerWidth.value + 'px'} solid ${cricleData.progressColor};`
-      };
-    });
-    const LeftStyle = computed(() => {
-      // taro转的h5不支持使用border-top这种边框属性
-      return {
-        transform: `rotate(${rotateLeft.value + 'deg'})`,
-        transition: `all 0.3s`,
-        borderTop: `${InnerWidth.value + 'px'} solid ${cricleData.backColor};`,
-        borderLeft: `${InnerWidth.value + 'px'} solid  ${cricleData.backColor};`,
-        borderBottom: `${InnerWidth.value + 'px'} solid ${cricleData.progressColor};`,
-        borderRight: `${InnerWidth.value + 'px'} solid ${cricleData.progressColor};`
-      };
-    });
-    const option = computed(() => {
-      // 所有进度条的可配置项
-      let baseOption = {
-        radius: 50,
-        strokeOutWidth: 10,
-        backColor: '#d9d9d9',
-        progressColor: 'red',
-        cy: 1,
-        cx: 1,
-        size: 1,
-        startPosition: ''
-      };
-      Object.assign(baseOption, props.progressOption);
-      // 圆心位置自动生成
-      baseOption.cy = baseOption.cx = baseOption.radius + baseOption.strokeOutWidth;
-      baseOption.size = (baseOption.radius + baseOption.strokeOutWidth) * 2;
-      baseOption.startPosition = 'rotate(-90,' + baseOption.cx + ',' + baseOption.cy + ')';
-      return baseOption;
-    });
-    const arcLength = computed(() => {
-      let circleLength = Math.floor(2 * Math.PI * option.value.radius);
-      let progressLength = ((props as any).progress / 100) * circleLength;
-      return `${progressLength},${circleLength}`;
-    });
+    const currentRate = ref(props.progress);
+    const refRandomId = Math.random().toString(36).slice(-8);
+    const isObject = (val: unknown): val is Record<any, any> => val !== null && typeof val === 'object';
 
+    const transColor = (color: string | undefined) => {
+      return color && color.replace('#', '%23');
+    };
+    const stop = () => {
+      if (!isObject(props.color)) {
+        return [];
+      }
+      let color = props.color;
+      const colorArr = Object.keys(color).sort((a, b) => parseFloat(a) - parseFloat(b));
+
+      let stopArr: object[] = [];
+      colorArr.map((item) => {
+        let obj = {
+          key: '',
+          value: ''
+        };
+        obj.key = item;
+        obj.value = color[item];
+        stopArr.push(obj);
+      });
+      return stopArr;
+    };
+
+    const style = computed(() => {
+      let { strokeWidth } = props;
+
+      let stopArr: Array<object> = stop();
+      let stopDom: string[] = [];
+      if (stopArr) {
+        stopArr.map((item: Item) => {
+          let obj = '';
+          obj = `%3Cstop offset='${item.key}' stop-color='${transColor(item.value)}'/%3E`;
+          stopDom.push(obj);
+        });
+      }
+      let perimeter = 283;
+      let progress = +currentRate.value;
+      let offset = (perimeter * Number(format(parseFloat(progress.toFixed(1))))) / 100;
+      const isWise = props.clockwise ? 1 : 0;
+      const color = isObject(props.color) ? `url(%23${refRandomId})` : transColor(props.color);
+      let d = `M 50 50 m -45 0 a 45 45 0 1 ${isWise} 90 0  a 45 45 0 1 ${isWise} -90 0`;
+      const pa = `%3Cdefs%3E%3ClinearGradient id='${refRandomId}' x1='100%25' y1='0%25' x2='0%25' y2='0%25'%3E${stopDom}%3C/linearGradient%3E%3C/defs%3E`;
+      const path = `%3Cpath d='${d}' stroke-width='${strokeWidth}' stroke='${transColor(
+        props.pathColor
+      )}' fill='none'/%3E`;
+      const path1 = `%3Cpath d='${d}' stroke-width='${strokeWidth}' stroke-dasharray='${offset},${perimeter}' stroke-linecap='round' stroke='${color}' fill='none'/%3E`;
+
+      return {
+        background: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100'  xmlns='http://www.w3.org/2000/svg'%3E${pa}${path}${path1}%3C/svg%3E")`,
+        width: '100%',
+        height: '100%',
+        transform: 'rotate(90deg)',
+        transformOrigin: '50% 50%'
+      };
+    });
+    const format = (progress: string | number) => Math.min(Math.max(+progress, 0), 100);
+    const requestAnimationFrame = function (callback: Function, lastTime: any) {
+      var lastTime;
+      if (typeof lastTime === 'undefined') {
+        lastTime = 0;
+      }
+      var currTime = new Date().getTime();
+      var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
+      lastTime = currTime + timeToCall;
+      var id = setTimeout(function () {
+        callback(currTime + timeToCall, lastTime);
+      }, timeToCall);
+      return id;
+    };
+
+    const cancelAnimationFrame = function (id: any) {
+      clearTimeout(id);
+    };
+
+    watch(
+      () => props.progress,
+      (value, oldvalue) => {
+        let rafId: number | undefined;
+        const startTime = Date.now();
+        const startRate = Number(oldvalue);
+        const endRate = Number(value);
+        const duration = Math.abs(((startRate - endRate) * 1000) / +100);
+        const animate = () => {
+          const now = Date.now();
+          const progress = Math.min((now - startTime) / duration, 1);
+          const rate = progress * (endRate - startRate) + startRate;
+          currentRate.value = Math.min(Math.max(+rate, 0), 100);
+          emit('update:progress', format(parseFloat(rate.toFixed(1))));
+          if (endRate > startRate ? rate < endRate : rate > endRate) {
+            rafId = requestAnimationFrame(animate, 0);
+          }
+        };
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+        }
+        rafId = requestAnimationFrame(animate, 0);
+      }
+    );
     return {
-      isMobile,
-      rotateLeft,
-      InnerWidth,
-      rotateRight,
+      slotDefault,
+      style,
+      currentRate,
+      refRandomId,
       classes,
-      pieStyle,
-      RightStyle,
-      LeftStyle,
-      option,
-      arcLength,
-      mobileStyle
+      stop
     };
   }
 });

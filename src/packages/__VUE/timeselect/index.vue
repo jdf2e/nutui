@@ -12,7 +12,7 @@
     <view :class="classes">
       <view class="nut-timeselect__title">
         <view class="nut-timeselect__title__fixed">
-          {{ title }}
+          {{ title || translate('pickupTime') }}
         </view>
       </view>
       <view class="nut-timeselect__content">
@@ -29,7 +29,7 @@
 <script lang="ts">
 import { computed, provide } from 'vue';
 import { createComponent } from '../../utils/create';
-const { componentName, create } = createComponent('timeselect');
+const { componentName, create, translate } = createComponent('timeselect');
 export default create({
   props: {
     visible: {
@@ -42,7 +42,7 @@ export default create({
     },
     title: {
       type: String,
-      default: '取件时间'
+      default: ''
     },
     currentKey: {
       type: [Number, String],
@@ -90,7 +90,8 @@ export default create({
     return {
       classes,
       popStyle,
-      close
+      close,
+      translate
     };
   }
 });
