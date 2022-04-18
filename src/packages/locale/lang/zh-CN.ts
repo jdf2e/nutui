@@ -50,6 +50,11 @@ const lang: BaseLang = {
     selectRegion: '请选择所在地区',
     deliveryTo: '配送至',
     chooseAnotherAddress: '选择其他地址'
+  },
+  comment: {
+    complaintsText: '我要投诉',
+    additionalReview: (day: number) => `购买${day}天后追评`,
+    additionalImages: (length: number) => `${length}张追评图片`
   }
 };
 export default lang;

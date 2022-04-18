@@ -50,4 +50,9 @@ export interface BaseLang {
     deliveryTo: string;
     chooseAnotherAddress: string;
   };
+  comment: {
+    complaintsText: string;
+    additionalReview: Function;
+    additionalImages: Function;
+  };
 }
