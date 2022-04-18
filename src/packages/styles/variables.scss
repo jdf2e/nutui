@@ -751,5 +751,12 @@ $list-item-margin: 0 0 10px 0;
 //Ecard
 $ecard-bg-color: #f0f2f5 !default;
 
+// Comment
+
+$cmt-header-user-name-color: rgba(51, 51, 51, 1) !default;
+$cmt-header-time-color: rgba(153, 153, 153, 1) !default;
+$cmt-bottom-label-color: rgba(153, 153, 153, 1) !default;
+$cmt-shop-color: $primary-color;
+
 @import './mixins/index';
 @import './animation/index';
