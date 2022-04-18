@@ -21,20 +21,95 @@ app.use(Button);
 
 ### 基础用法
 
+:::demo
+
 ```html
-<nutbiz-addresslist
-  :data="data"
-  @handelDelIcon="delClick"
-  @handelEditIcon="editClick"
-  @handelItem="itemClick"
-  :show-bottom-button="false"
-  :dataMapOptions="dataMapOptions"
->
-</nutbiz-addresslist>
+<template>
+  <nut-addresslist
+    :data="data"
+    @handelDelIcon="delClick"
+    @handelEditIcon="editClick"
+    @handelItem="itemClick"
+    :show-bottom-button="false"
+    :dataMapOptions="dataMapOptions"
+  >
+  </nut-addresslist>
+</template>
+<script lang="ts">
+import { ref, reactive } from 'vue';
+export default {
+  setup() {
+    const data = ref([
+      {
+        testid:3,
+        testaddressName:'姓名',
+        phone:'123****4567',
+        defaultAddress:false,
+        fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
+      },
+      {
+        testid:4,
+        testaddressName:'姓名',
+        phone:'123****4567',
+        defaultAddress:true,
+        fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
+      },
+    ]);
+    const dataMapOptions = reactive({
+      id: 'testid',
+      addressDetail:'testaddressDetail',
+      addressName:'testaddressName'
+    });
+    const itemClick = ()=>{
+      Toast.text('点击了地址哦～');
+    }
+    const delClick = ()=>{
+      Toast.text('点击了删除哦～');
+    }
+    const editClick = ()=>{
+      Toast.text('点击了编辑哦～');
+    }
+    return {
+      itemClick,
+      holdDownClick,
+      data,
+      delClick,
+      editClick,
+      copyClick,
+      setClick,
+      addAddress,
+      dataMapOptions
+    };
+  }
+};
+</script>
 ```
 
-```javascript
-setup() {
+:::
+### 长按功能
+
+:::demo
+
+```html
+<template>
+  <nut-addresslist
+    :data="data"
+    long-press-edition
+    :show-bottom-button="false"
+    @handelDelIcon="delClick"
+    @handelEditIcon="editClick"
+    @handelItem="itemClick"
+    @longPressCopyClick="copyClick"
+    @longPressSetClick="setClick"
+    @longPressDelClick="delClick"
+    :dataMapOptions="dataMapOptions"
+  >
+  </nut-addresslist>
+</template>
+<script lang="ts">
+import { ref, reactive } from 'vue';
+export default {
+  setup() {
     const data = ref([
         {
           testid:3,
@@ -89,43 +164,83 @@ setup() {
         dataMapOptions
       };
     }
+  };
+</script>
 ```
-
-### 长按功能
-
-```html
-<nutbiz-addresslist
-  :data="data"
-  long-press-edition
-  :show-bottom-button="false"
-  @handelDelIcon="delClick"
-  @handelEditIcon="editClick"
-  @handelItem="itemClick"
-  @longPressCopyClick="copyClick"
-  @longPressSetClick="setClick"
-  @longPressDelClick="delClick"
-  :dataMapOptions="dataMapOptions"
->
-</nutbiz-addresslist>
-```
-
+:::
 ### 滑动功能
 
+:::demo
+
 ```html
-<nutbiz-addresslist
-  :data="data"
-  swipe-edition
-  show-bottom-button
-  @handelDelIcon="delClick"
-  @handelEditIcon="editClick"
-  @handelItem="itemClick"
-  @swipeDelClick="delClick"
-  @addAddressClick="addAddress"
-  :dataMapOptions="dataMapOptions"
->
-</nutbiz-addresslist>
+<template>
+  <nut-addresslist
+    :data="data"
+    swipe-edition
+    show-bottom-button
+    @handelItem="itemClick"
+    @handelEditIcon="editClick"
+    @handelDelIcon="delClick"
+    @swipeDelClick="delClick"
+    @addAddressClick="addAddress"
+    :dataMapOptions="dataMapOptions"
+  >
+  </nut-addresslist>
+</template>
+<script lang="ts">
+import { ref, reactive } from 'vue';
+export default {
+  setup() {
+    const data = ref([
+        {
+          testid:3,
+          testaddressName:'姓名',
+          phone:'123****4567',
+          defaultAddress:false,
+          fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
+        },
+        {
+          testid:4,
+          testaddressName:'姓名',
+          phone:'123****4567',
+          defaultAddress:true,
+          fullAddress:'北京市通州区测试测试测试测试测试测试测试测试测试'
+        },
+      ]);
+      const dataMapOptions = reactive({
+        id: 'testid',
+        addressDetail:'testaddressDetail',
+        addressName:'testaddressName'
+      });
+      const itemClick = ()=>{
+        Toast.text('点击了地址哦～');
+      }
+      const editClick = ()=>{
+        Toast.text('点击了编辑哦～');
+      }
+      const delClick = ()=>{
+        Toast.text('点击了删除哦～');
+      }
+      const addAddress = ()=>{
+        Toast.text('添加新地址～');
+      }
+      return {
+        itemClick,
+        holdDownClick,
+        data,
+        delClick,
+        editClick,
+        copyClick,
+        setClick,
+        addAddress,
+        dataMapOptions
+      };
+    }
+  };
+</script>
 ```
 
+:::
 ## API
 
 ### Props
