@@ -13,7 +13,7 @@
     />
     <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
       <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
-        <slot v-if="showSlot"></slot>
+        <div v-show="showSlot"><slot></slot></div>
         <view
           v-if="closed"
           @click="onClickCloseIcon"

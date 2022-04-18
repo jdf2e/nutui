@@ -175,10 +175,11 @@ export default create({
       const uploadOption = new UploadOptions();
       uploadOption.name = props.name;
       uploadOption.url = props.url;
-      for (const [key, value] of Object.entries(props.data)) {
-        fileItem.formData[key] = value;
-      }
+
       uploadOption.formData = fileItem.formData;
+      uploadOption.timeout = (props.timeout as number) * 1;
+      uploadOption.method = props.method;
+      uploadOption.xhrState = props.xhrState as number;
       uploadOption.method = props.method;
       uploadOption.headers = props.headers;
       uploadOption.taroFilePath = fileItem.path;
@@ -216,7 +217,7 @@ export default create({
       };
       let task = new Uploader(uploadOption);
       if (props.autoUpload) {
-        task.uploadTaro(Taro.uploadFile);
+        task.uploadTaro(Taro.uploadFile, Taro.getEnv());
       } else {
         uploadQueue.push(
           new Promise((resolve, reject) => {
@@ -235,7 +236,7 @@ export default create({
     };
     const submit = () => {
       Promise.all(uploadQueue).then((res) => {
-        res.forEach((i) => i.uploadTaro(Taro.uploadFile));
+        res.forEach((i) => i.uploadTaro(Taro.uploadFile, Taro.getEnv()));
       });
     };
 
@@ -252,6 +253,18 @@ export default create({
         fileItem.status = 'ready';
         fileItem.message = translate('waitingUpload');
         fileItem.type = fileType;
+        if (Taro.getEnv() == 'WEB') {
+          const formData = new FormData();
+          for (const [key, value] of Object.entries(props.data)) {
+            formData.append(key, value);
+          }
+          formData.append(props.name, file.originalFileObj as Blob);
+          fileItem.name = file.originalFileObj?.name;
+          fileItem.type = file.originalFileObj?.type;
+          fileItem.formData = formData;
+        } else {
+          fileItem.formData = props.data as FormData;
+        }
         if (props.isPreview) {
           fileItem.url = file.path;
         }

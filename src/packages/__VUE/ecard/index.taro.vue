@@ -1,6 +1,6 @@
 <template>
   <view class="nut-ecard">
-    <view class="nut-ecard__title">{{ chooseText }}</view>
+    <view class="nut-ecard__title">{{ chooseText || translate('chooseText') }}</view>
     <view class="nut-ecard__list">
       <view
         v-for="(item, index) in dataList"
@@ -11,9 +11,14 @@
         {{ item.price }}
       </view>
       <view :class="['nut-ecard__list__input', currentIndex == 'input' ? 'active' : '']" @click="inputClick">
-        <view>{{ otherValueText }}</view>
+        <view>{{ otherValueText || translate('otherValueText') }}</view>
         <view class="nut-ecard__list__input--con">
-          <input type="text" :value="inputValue" @input="change" :placeholder="placeholder" />
+          <input
+            type="text"
+            v-model="inputValue"
+            @input="change"
+            :placeholder="placeholder || translate('placeholder')"
+          />
           {{ suffix }}
         </view>
       </view>
@@ -27,16 +32,16 @@
 <script lang="ts">
 import { Ref, ref, watch } from 'vue';
 import { createComponent } from '../../utils/create';
-const { componentName, create } = createComponent('ecard');
+const { componentName, create, translate } = createComponent('ecard');
 export default create({
   props: {
     chooseText: {
       type: String,
-      default: '请选择电子卡面值'
+      default: ''
     },
     otherValueText: {
       type: String,
-      default: '其他面值'
+      default: ''
     },
     dataList: {
       type: [Object, Array],
@@ -66,7 +71,7 @@ export default create({
     },
     placeholder: {
       type: String,
-      default: '请输入1-5000整数'
+      default: ''
     },
     suffix: {
       type: String,
@@ -122,7 +127,8 @@ export default create({
       stepValue,
       currentIndex,
       inputValue,
-      money
+      money,
+      translate
     };
   }
 });

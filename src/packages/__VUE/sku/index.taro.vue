@@ -31,7 +31,7 @@
         <sku-stepper
           v-if="!getSlots('sku-stepper')"
           :goods="goods"
-          :stepperTitle="stepperTitle"
+          :stepperTitle="stepperTitle || translate('buyNumber')"
           :stepperMax="stepperMax"
           :stepperMin="stepperMin"
           :purchased="purchased"
@@ -53,9 +53,9 @@
       <sku-operate
         v-if="!getSlots('sku-operate')"
         :btnOptions="btnOptions"
-        :buyText="buyText"
-        :addCartText="addCartText"
-        :confirmText="confirmText"
+        :buyText="buyText || translate('buyNow')"
+        :addCartText="addCartText || translate('addToCard')"
+        :confirmText="confirmText || translate('confirm')"
         @clickBtnOperate="clickBtnOperate"
       ></sku-operate>
     </view>
@@ -68,7 +68,7 @@ import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.vue';
 import SkuOperate from './components/SkuOperate.vue';
 import { createComponent } from '../../utils/create';
-const { componentName, create } = createComponent('sku');
+const { componentName, create, translate } = createComponent('sku');
 
 export default create({
   props: {
@@ -125,7 +125,7 @@ export default create({
     // 数量选择左侧文案
     stepperTitle: {
       type: String,
-      default: '购买数量'
+      default: ''
     },
 
     // 起购文案提示
@@ -149,19 +149,19 @@ export default create({
     // 立即购买文案
     buyText: {
       type: String,
-      default: '立即购买'
+      default: ''
     },
 
     // 加入购物车文案
     addCartText: {
       type: String,
-      default: '加入购物车'
+      default: ''
     },
 
     // 确定文案
     confirmText: {
       type: String,
-      default: '确定'
+      default: ''
     }
   },
   emits: [
@@ -271,7 +271,8 @@ export default create({
       clickBtnOperate,
       add,
       reduce,
-      getSlots
+      getSlots,
+      translate
     };
   }
 });

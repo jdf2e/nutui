@@ -2,17 +2,17 @@
   <div :class="classes">
     <div class="nut-signature-inner" ref="wrap">
       <canvas ref="canvas" :height="canvasHeight" :width="canvasWidth" v-if="() => isCanvasSupported()"></canvas>
-      <p class="nut-signature-unsopport" v-else>{{ unSupportTpl }}</p>
+      <p class="nut-signature-unsopport" v-else>{{ unSupportTpl || translate('unSupportTpl') }}</p>
     </div>
 
-    <nut-button class="nut-signature-btn" type="default" @click="clear()">重签</nut-button>
-    <nut-button class="nut-signature-btn" type="primary" @click="confirm()">确认</nut-button>
+    <nut-button class="nut-signature-btn" type="default" @click="clear()">{{ translate('reSign') }}</nut-button>
+    <nut-button class="nut-signature-btn" type="primary" @click="confirm()">{{ translate('confirm') }}</nut-button>
   </div>
 </template>
 <script lang="ts">
 import { ref, reactive, onMounted, computed, toRefs } from 'vue';
 import { createComponent } from '../../utils/create';
-const { componentName, create } = createComponent('signature');
+const { componentName, create, translate } = createComponent('signature');
 
 export default create({
   props: {
@@ -34,7 +34,7 @@ export default create({
     },
     unSupportTpl: {
       type: String,
-      default: '对不起，当前浏览器不支持Canvas，无法使用本控件！'
+      default: ''
     }
   },
   components: {},
@@ -136,7 +136,7 @@ export default create({
       }
     });
 
-    return { ...toRefs(state), canvas, wrap, isCanvasSupported, confirm, clear, classes };
+    return { ...toRefs(state), canvas, wrap, isCanvasSupported, confirm, clear, classes, translate };
   }
 });
 </script>
