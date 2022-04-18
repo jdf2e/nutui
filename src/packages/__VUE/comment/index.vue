@@ -20,11 +20,11 @@
 
     <view class="nut-comment__follow" v-if="follow && follow.days > 0" @click="handleClick">
       <view class="nut-comment__follow-title"
-        ><nut-icon size="14" name="joy-smile" />购买{{ follow.days }}天后追评</view
+        ><nut-icon size="14" name="joy-smile" />{{ translate('additionalReview', follow.days) }}</view
       >
       <view class="nut-comment__follow-com">{{ follow.content }}</view>
       <view class="nut-comment__follow-img" v-if="follow.images && follow.images.length > 0"
-        >{{ follow.images.length }} 张追评图片 <nut-icon size="12" name="right"
+        >{{ translate('additionalImages', follow.images.length) }} <nut-icon size="12" name="right"
       /></view>
     </view>
 
@@ -42,7 +42,7 @@
 <script lang="ts">
 import { ref, onMounted, computed, watch } from 'vue';
 import { createComponent } from '../../utils/create';
-const { componentName, create } = createComponent('comment');
+const { componentName, create, translate } = createComponent('comment');
 
 import CommentHeader from './components/CmtHeader.vue';
 import CommentImages from './components/CmtImages.vue';
@@ -126,7 +126,7 @@ export default create({
       emit('clickImages', value);
     };
 
-    return { classes, conEllipsis, clickOperate, handleClick, clickImages };
+    return { classes, conEllipsis, clickOperate, handleClick, clickImages, translate };
   }
 });
 </script>

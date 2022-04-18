@@ -13,9 +13,9 @@
           </template>
           <template v-if="name == 'more'">
             <nut-icon name="more-x"></nut-icon>
-            <view class="nut-comment-bottom__cpx-item-popover" v-if="showPopver" @click="operate('popover')">
-              我要投诉
-            </view>
+            <view class="nut-comment-bottom__cpx-item-popover" v-if="showPopver" @click="operate('popover')">{{
+              translate('complaintsText')
+            }}</view>
           </template>
         </view>
       </template>
@@ -26,7 +26,7 @@
 import { ref, watch, onMounted } from 'vue';
 
 import { createComponent } from '../../../utils/create';
-const { componentName, create } = createComponent('comment-bottom');
+const { componentName, create, translate } = createComponent('comment-bottom');
 
 export default create({
   props: {
@@ -76,7 +76,7 @@ export default create({
       emit('handleClick');
     };
 
-    return { showPopver, operate, mergeOp, handleClick };
+    return { showPopver, operate, mergeOp, handleClick, translate };
   }
 });
 </script>
