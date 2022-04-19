@@ -1,83 +1,83 @@
 import { BaseLang } from './baseLang';
-const lang: BaseLang = {
-  save: 'Save',
-  confirm: 'Confirm',
-  cancel: 'Cancel',
-  done: 'Done',
-  noData: 'No Data',
-  placeholder: 'Placeholder',
-  select: 'Select',
-  video: {
+class Lang extends BaseLang {
+  save = 'Save';
+  confirm = 'Confirm';
+  cancel = 'Cancel';
+  done = 'Done';
+  noData = 'No Data';
+  placeholder = 'Placeholder';
+  select = 'Select';
+  video = {
     errorTip: 'Error Tip',
     clickRetry: 'Click Retry'
-  },
-  fixednav: {
+  };
+  fixednav = {
     activeText: 'Close Nav',
     unActiveText: 'Open Nav'
-  },
-  pagination: {
+  };
+  pagination = {
     prev: 'Previous',
     next: 'Next'
-  },
-  calendaritem: {
+  };
+  calendaritem = {
     weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     end: 'End',
     start: 'Start',
     title: 'Calendar',
     monthTitle: (year: number, month: number) => `${year}/${month}`,
     today: 'Today'
-  },
-  shortpassword: {
+  };
+  shortpassword = {
     title: 'Please input a password',
     desc: 'Verify',
     tips: 'Forget password'
-  },
-  uploader: {
+  };
+  uploader = {
     ready: 'Ready',
     readyUpload: 'Ready to upload',
     waitingUpload: 'Waiting for upload',
     uploading: 'Uploading',
     success: 'Upload successful',
     error: 'Upload failed'
-  },
-  countdown: {
+  };
+  countdown = {
     day: ' Day ',
     hour: ' Hour ',
     minute: ' Minute ',
     second: ' Second '
-  },
-  address: {
+  };
+  address = {
     selectRegion: 'Select Region',
     deliveryTo: 'Delivery To',
     chooseAnotherAddress: 'Choose Another Address'
-  },
-  signature: {
+  };
+  signature = {
     reSign: 'Re Sign',
     unSupportTpl: `Sorry, the current browser doesn't support canvas, so we can't use this control!`
-  },
-  ecard: {
+  };
+  ecard = {
     chooseText: 'Select',
     otherValueText: 'Other Value',
     placeholder: 'Placeholder'
-  },
-  timeselect: {
+  };
+  timeselect = {
     pickupTime: 'Pickup Time'
-  },
-  sku: {
+  };
+  sku = {
     buyNow: 'Buy Now',
     buyNumber: 'Buy Number',
     addToCard: 'Add to Card'
-  },
-  skuheader: {
+  };
+  skuheader = {
     skuId: 'Sku Number'
-  },
-  addresslist: {
+  };
+  addresslist = {
     addAddress: 'Add New Address'
-  },
-  comment: {
+  };
+  comment = {
     complaintsText: 'I have a complaint',
     additionalReview: (day: number) => `Review after ${day} days of purchase`,
     additionalImages: (length: number) => `There are ${length} follow-up comments`
-  }
-};
-export default lang;
+  };
+}
+export default Lang;
