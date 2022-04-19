@@ -10,7 +10,7 @@
 </template>
 <script lang="ts">
 import { reactive, toRefs, computed, ref, Ref, watch } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('list');
 export default create({
   props: {

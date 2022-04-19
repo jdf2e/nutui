@@ -48,7 +48,7 @@
   </div>
 </template>
 <script lang="ts">
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { useRouter } from '@/packages/utils/useRoute';
 import { ComponentInternalInstance, computed, getCurrentInstance, inject, onMounted, reactive, watch } from 'vue';
 const { create } = createComponent('tabbar-item');

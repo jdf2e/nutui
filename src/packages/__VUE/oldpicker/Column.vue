@@ -27,7 +27,7 @@
 </template>
 <script lang="ts">
 import { reactive, ref, watch, computed, toRefs, onMounted } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { commonProps } from './commonProps';
 import { TouchParams } from './types';
 const { create } = createComponent('oldpicker-column');

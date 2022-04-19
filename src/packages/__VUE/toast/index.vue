@@ -29,7 +29,7 @@
 </template>
 <script lang="ts">
 import { toRefs, toRef, reactive, computed, watch, onMounted } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('toast');
 import Icon from '../icon/index.vue';
 export default create({

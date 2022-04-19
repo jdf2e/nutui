@@ -31,7 +31,7 @@ import {
   watch,
   vModelText
 } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('countdown');
 
 export default create({

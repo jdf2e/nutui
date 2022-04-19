@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { provide, reactive, watch } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('tabbar');
 export default create({
   props: {

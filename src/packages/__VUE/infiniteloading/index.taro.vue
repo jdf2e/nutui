@@ -36,7 +36,7 @@
 </template>
 <script lang="ts">
 import { toRefs, onMounted, reactive, computed, CSSProperties } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('infiniteloading');
 import Icon from '../icon/index.taro.vue';
 import Taro from '@tarojs/taro';

@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { reactive, computed, toRefs } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('backtop');
 export default create({
   props: {

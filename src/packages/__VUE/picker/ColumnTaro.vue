@@ -27,9 +27,9 @@
 </template>
 <script lang="ts">
 import { reactive, ref, watch, computed, toRefs, onMounted, PropType } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { PickerOption, TouchParams } from './types';
-import { useTaroRect } from '../../utils/useTaroRect';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { create } = createComponent('picker-column');
 import Taro from '@tarojs/taro';
 

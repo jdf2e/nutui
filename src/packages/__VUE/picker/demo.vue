@@ -94,7 +94,7 @@
 </template>
 <script lang="ts">
 import { toRefs, ref, onMounted, reactive } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { PickerOption } from './types';
 const { createDemo } = createComponent('picker');
 export default createDemo({

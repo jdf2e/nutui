@@ -20,8 +20,8 @@
 </template>
 <script lang="ts">
 import { reactive, provide, computed, ref, Ref, unref } from 'vue';
-import { createComponent } from '../../utils/create';
-import { useRect } from '../../utils/useRect';
+import { createComponent } from '@/packages/utils/create';
+import { useRect } from '@/packages/utils/useRect';
 const { componentName, create } = createComponent('menu');
 export default create({
   props: {

@@ -75,7 +75,7 @@
 
 <script lang="ts">
 import { reactive } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('tabs');
 export default createDemo({
   props: {},
