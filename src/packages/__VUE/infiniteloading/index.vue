@@ -36,7 +36,7 @@ import {
   onDeactivated,
   ref
 } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('infiniteloading');
 export default create({
   props: {
@@ -117,7 +117,9 @@ export default create({
           : `height 0.2s cubic-bezier(0.25,0.1,0.25,1)`
       };
     });
-
+    const getParentElement = (el: HTMLElement) => {
+      return !!props.containerId ? document.querySelector(`#${props.containerId}`) : el && el.parentNode;
+    };
     const requestAniFrame = () => {
       return (
         window.requestAnimationFrame ||
@@ -194,9 +196,7 @@ export default create({
     };
 
     const touchStart = (event: TouchEvent) => {
-      console.log('touch Start');
       if (state.beforeScrollTop == 0 && !state.isTouching && props.isOpenRefresh) {
-        console.log('下拉刷新');
         state.y = event.touches[0].pageY;
         state.isTouching = true;
 

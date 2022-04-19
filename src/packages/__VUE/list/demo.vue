@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
 import { onMounted, reactive, toRefs } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('list');
 export default createDemo({
   props: {},

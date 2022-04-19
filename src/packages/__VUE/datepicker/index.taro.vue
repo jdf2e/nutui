@@ -19,7 +19,7 @@ import type { PropType } from 'vue';
 import nutPicker from '../picker/index.taro.vue';
 import { popupProps } from '../popup/index.vue';
 import { PickerOption } from '../picker/types';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { padZero } from './utils';
 const { componentName, create } = createComponent('datepicker');
 

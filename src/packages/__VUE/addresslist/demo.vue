@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { toRefs, reactive, onMounted, ref } from 'vue';
 const { createDemo } = createComponent('addresslist');
 export default createDemo({

@@ -20,7 +20,7 @@ import type { PropType } from 'vue';
 import picker from '../picker/index.vue';
 import { popupProps } from '../popup/index.vue';
 import { PickerOption } from '../picker/types';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { padZero } from './utils';
 const { componentName, create } = createComponent('datepicker');
 

@@ -36,7 +36,7 @@
   </view>
 </template>
 <script lang="ts">
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { computed, useSlots } from 'vue';
 import { popupProps } from '../popup/index.vue';
 const { componentName, create } = createComponent('actionsheet');

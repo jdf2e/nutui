@@ -31,7 +31,7 @@
 </template>
 <script lang="ts">
 import { Ref, ref, watch } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('ecard');
 export default create({
   props: {
@@ -82,40 +82,45 @@ export default create({
 
   setup(props, { emit }) {
     const currentIndex: Ref<number | null | string> = ref(null);
+    const currentValue: Ref<number | null | string> = ref(null);
     const inputValue: Ref<string | undefined | number> = ref();
     const stepValue: Ref<number> = ref(props.cardAmountMin);
     const money: Ref<number | string | undefined> = ref(props.modelValue);
     const handleClick = (item: { price: number | string }, index: number) => {
       currentIndex.value = index;
       inputValue.value = '';
+      stepValue.value = props.cardAmountMin;
+      currentValue.value = item.price;
       emit('change', item);
     };
     const change = (event: Event) => {
       let input = event.target as HTMLInputElement;
       let val = input.value.replace(/[^\d]/g, '');
-
       inputValue.value = val;
+      currentValue.value = val;
       if (Number(val) > props.cardAmountMax) {
         inputValue.value = props.cardAmountMax;
+        currentValue.value = props.cardAmountMax;
       }
       if (Number(val) < props.cardAmountMin) {
         inputValue.value = props.cardAmountMin;
+        currentValue.value = props.cardAmountMin;
       }
       emit('inputChange', Number(inputValue.value));
     };
     const inputClick = () => {
       currentIndex.value = 'input';
+      stepValue.value = props.cardAmountMin;
       emit('update:modelValue', 0);
       emit('inputClick');
     };
     const changeStep = (value: number) => {
       stepValue.value = value;
-      emit('changeStep', stepValue.value); // 返回数量
+      emit('changeStep', stepValue.value, currentValue.value); // 返回数量, 返回当前选中值
     };
     watch(
       () => props.modelValue,
       (value) => {
-        console.log('value', value);
         money.value = value;
       }
     );

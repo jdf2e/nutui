@@ -3,21 +3,20 @@
     <h2>基础用法</h2>
     <nut-cell>
       <nut-ecard
+        v-model="money"
         @inputChange="inputChange"
         @change="change"
         @changeStep="changeStep"
         :data-list="dataList"
-        v-model="money"
       ></nut-ecard>
     </nut-cell>
   </div>
 </template>
 <script lang="ts">
 import { reactive, ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('ecard');
 export default createDemo({
-  props: {},
   setup() {
     const dataList = reactive([
       {
@@ -34,20 +33,15 @@ export default createDemo({
       }
     ]);
     const money = ref(0);
-    const inputChange = (val: any) => {
+    const inputChange = (val: number) => {
       money.value = val;
     };
-    const change = (item: any) => {
-      console.log(item);
+    const change = (item: { price: number }) => {
       money.value = item.price;
     };
-    const changeStep = (num) => {
-      const val = money.value * num;
-      if (val > 100) {
-        money.value = val * 0.9;
-      } else {
-        money.value = val;
-      }
+    const changeStep = (num: number, price: number) => {
+      const val = price * num;
+      money.value = val;
     };
     return {
       dataList,

@@ -11,7 +11,7 @@
 </template>
 <script lang="ts">
 import { ref, reactive, onMounted, computed, toRefs } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('signature');
 
 export default create({

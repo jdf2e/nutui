@@ -1,4 +1,4 @@
-, nextTick<template>
+<template>
   <view :class="classes">
     <textarea
       ref="textareaRef"
@@ -20,7 +20,7 @@
 </template>
 <script lang="ts">
 import { watch, ref, computed, onMounted, nextTick } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 
 const { componentName, create, translate } = createComponent('textarea');
 
@@ -44,7 +44,7 @@ export default create({
     },
     rows: {
       type: [String, Number],
-      default: ''
+      default: '2'
     },
     placeholder: {
       type: String,
@@ -109,7 +109,7 @@ export default create({
           height = Math.max(height, minHeight);
         }
       }
-      if (height && props.rows == '') {
+      if (height) {
         textarea.style.height = height + 'px';
       }
     };

@@ -44,7 +44,7 @@
 
 <script lang="ts">
 import { ref, getCurrentInstance } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('switch');
 export default createDemo({
   setup() {

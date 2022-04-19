@@ -68,11 +68,11 @@
 </template>
 <script lang="ts">
 import { PropType, reactive, ref, watch, toRefs, computed, onMounted, nextTick } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('calendar-item');
 import Taro from '@tarojs/taro';
-import Utils from '../../utils/date';
-import requestAniFrame from '../../utils/raf';
+import Utils from '@/packages/utils/date';
+import requestAniFrame from '@/packages/utils/raf';
 let TARO_ENV = process.env.TARO_ENV;
 
 type InputDate = string | string[];
