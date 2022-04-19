@@ -10,7 +10,7 @@
 | 简体中文     | zh-CN  | `v3.1.19` |
 | 繁體中文     | zh-TW  | `v3.1.19` |
 
-> 在 [这里](https://github.com/jdf2e/nutui/tree/next/src/vant/src/packages/locale/lang) 查看所有的语言包源文件。
+> 在 [这里](https://github.com/jdf2e/nutui/tree/next/src/packages/locale/lang) 查看所有的语言包源文件。
 
 ## 常见问题
 
