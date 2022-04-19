@@ -90,6 +90,7 @@ export default createDemo({
 
     const refreshLoadMore = (done) => {
       setTimeout(() => {
+        console.log('demo 加载更多');
         const curLen = data.refreshList.length;
         for (let i = curLen; i < curLen + 10; i++) {
           data.refreshList.push(`${i}`);
@@ -102,6 +103,8 @@ export default createDemo({
     const refresh = (done) => {
       setTimeout(() => {
         proxy.$toast.text('刷新成功');
+        data.refreshList = data.refreshList.slice(0, 10);
+        refreshHasMore.value = true;
         done();
       }, 1000);
     };
