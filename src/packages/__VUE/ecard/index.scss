@@ -27,7 +27,7 @@
 
       &.active {
         background: $white;
-        border: 1px solid $primary-color;
+        outline: 1px solid $primary-color;
         border-radius: 4px;
       }
     }
@@ -61,7 +61,7 @@
 
       &.active {
         background: $white;
-        border: 1px solid $primary-color;
+        outline: 1px solid $primary-color;
 
         > view > input {
           background: $white;
