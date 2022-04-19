@@ -1,11 +1,5 @@
 <template>
-  <view
-    :class="classes"
-    ref="scroller"
-    @touchstart="touchStart"
-    @touchmove="touchMove"
-    @touchend="touchEnd"
-  >
+  <view :class="classes" ref="scroller" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
     <view class="nut-infinite-top" ref="refreshTop" :style="getStyle">
       <view class="top-box">
         <nut-icon class="top-img" :name="pullIcon"></nut-icon>
@@ -56,8 +50,7 @@ export default create({
     },
     pullIcon: {
       type: String,
-      default:
-        'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png'
+      default: 'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png'
     },
     pullTxt: {
       type: String,
@@ -65,8 +58,7 @@ export default create({
     },
     loadIcon: {
       type: String,
-      default:
-        'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png'
+      default: 'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png'
     },
     loadTxt: {
       type: String,
@@ -126,12 +118,6 @@ export default create({
       };
     });
 
-    const getParentElement = (el: HTMLElement) => {
-      return !!props.containerId
-        ? document.querySelector(`#${props.containerId}`)
-        : el && el.parentNode;
-    };
-
     const requestAniFrame = () => {
       return (
         window.requestAnimationFrame ||
@@ -145,17 +131,11 @@ export default create({
     const getWindowScrollTop = () => {
       return window.pageYOffset !== undefined
         ? window.pageYOffset
-        : (
-            document.documentElement ||
-            document.body.parentNode ||
-            document.body
-          ).scrollTop;
+        : (document.documentElement || document.body.parentNode || document.body).scrollTop;
     };
 
     const calculateTopPosition = (el: HTMLElement): number => {
-      return !el
-        ? 0
-        : el.offsetTop + calculateTopPosition(el.offsetParent as HTMLElement);
+      return !el ? 0 : el.offsetTop + calculateTopPosition(el.offsetParent as HTMLElement);
     };
 
     const isScrollAtBottom = () => {
@@ -166,15 +146,11 @@ export default create({
       if (props.useWindow) {
         if (state.scroller) {
           offsetDistance =
-            calculateTopPosition(state.scroller) +
-            state.scroller.offsetHeight -
-            windowScrollTop -
-            window.innerHeight;
+            calculateTopPosition(state.scroller) + state.scroller.offsetHeight - windowScrollTop - window.innerHeight;
         }
         resScrollTop = windowScrollTop;
       } else {
-        const { scrollHeight, clientHeight, scrollTop } =
-          state.scrollEl as HTMLElement;
+        const { scrollHeight, clientHeight, scrollTop } = state.scrollEl as HTMLElement;
 
         offsetDistance = scrollHeight - clientHeight - scrollTop;
         resScrollTop = scrollTop;
@@ -218,17 +194,13 @@ export default create({
     };
 
     const touchStart = (event: TouchEvent) => {
-      if (
-        state.beforeScrollTop == 0 &&
-        !state.isTouching &&
-        props.isOpenRefresh
-      ) {
+      console.log('touch Start');
+      if (state.beforeScrollTop == 0 && !state.isTouching && props.isOpenRefresh) {
+        console.log('下拉刷新');
         state.y = event.touches[0].pageY;
         state.isTouching = true;
 
-        const childHeight = (
-          (state.refreshTop as HTMLElement).firstElementChild as HTMLElement
-        ).offsetHeight;
+        const childHeight = ((state.refreshTop as HTMLElement).firstElementChild as HTMLElement).offsetHeight;
         state.refreshMaxH = Math.floor(childHeight * 1 + 10);
       }
     };
@@ -238,8 +210,7 @@ export default create({
 
       if (state.distance > 0 && state.isTouching) {
         event.preventDefault();
-        if (state.distance >= state.refreshMaxH)
-          state.distance = state.refreshMaxH;
+        if (state.distance >= state.refreshMaxH) state.distance = state.refreshMaxH;
       } else {
         state.distance = 0;
         state.isTouching = false;
@@ -247,28 +218,29 @@ export default create({
     };
 
     const touchEnd = () => {
-      if (state.distance < state.refreshMaxH) {
-        state.distance = 0;
-      } else {
-        emit('refresh', refreshDone);
+      if (state.distance) {
+        if (state.distance < state.refreshMaxH) {
+          state.distance = 0;
+        } else {
+          emit('refresh', refreshDone);
+        }
       }
     };
 
+    // 滚动监听对象
+    const getParentElement = (el: HTMLElement) => {
+      return !!props.containerId ? document.querySelector(`#${props.containerId}`) : el && el.parentNode;
+    };
+
     onMounted(() => {
-      const parentElement = getParentElement(
-        state.scroller as HTMLElement
-      ) as Node & ParentNode;
+      const parentElement = getParentElement(state.scroller as HTMLElement) as Node & ParentNode;
       state.scrollEl = props.useWindow ? window : parentElement;
 
       scrollListener();
     });
 
     onUnmounted(() => {
-      state.scrollEl.removeEventListener(
-        'scroll',
-        handleScroll,
-        props.useCapture
-      );
+      state.scrollEl.removeEventListener('scroll', handleScroll, props.useCapture);
     });
 
     const isKeepAlive = ref(false);
@@ -282,11 +254,7 @@ export default create({
 
     onDeactivated(() => {
       isKeepAlive.value = true;
-      state.scrollEl.removeEventListener(
-        'scroll',
-        handleScroll,
-        props.useCapture
-      );
+      state.scrollEl.removeEventListener('scroll', handleScroll, props.useCapture);
     });
 
     return {
