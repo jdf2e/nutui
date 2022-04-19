@@ -37,7 +37,7 @@
     "checked:taro:vue": "npm run generate:file:taro:vue",
     "dev": "npm run checked && vite --open --force",
     "dev:taro:vue": "npm run createTaroConfig && npm run checked:taro:vue && cd src/sites/mobile-taro/vue/ && npm run dev:weapp",
-    "dev:taro:h5": "npm run checked:taro:vue && cd src/sites/mobile-taro/vue/ && npm run dev:h5",
+    "dev:taro:h5": "npm run createTaroConfig && npm run checked:taro:vue && cd src/sites/mobile-taro/vue/ && npm run dev:h5",
     "build:site": "npm run checked && vite build",
     "build:site:oss": "npm run checked && vite build --base=/nutui/3x/",
     "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts",
@@ -65,7 +65,7 @@
     }
   },
   "dependencies": {
-    "sass": "~1.32.0",
+    "sass": "^1.50.0",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {

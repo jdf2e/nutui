@@ -5,6 +5,11 @@
   display: inline-block;
   position: relative;
   flex: 0 0 auto; // 防止被压缩
+  text-align: center;
+  img {
+    width: 100%;
+    height: 100%;
+  }
   .icon {
     background-size: 100% 100%;
     position: absolute;
@@ -24,25 +29,25 @@
     overflow: hidden;
   }
 }
-.avatar-large {
+.nut-avatar-large {
   width: $avatar-large-width;
   height: $avatar-large-height;
   line-height: $avatar-large-height;
 }
-.avatar-small {
+.nut-avatar-small {
   width: $avatar-small-width;
   height: $avatar-small-height;
   line-height: $avatar-small-height;
 }
-.avatar-normal {
+.nut-avatar-normal {
   width: $avatar-normal-width;
   height: $avatar-normal-height;
   line-height: $avatar-normal-height;
 }
-.avatar-round {
+.nut-avatar-round {
   border-radius: 50%;
   overflow: hidden;
 }
-.avatar-square {
+.nut-avatar-square {
   border-radius: $avatar-square;
 }

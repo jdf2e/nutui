@@ -15,10 +15,10 @@
 
 @for $i from 1 through 24 {
   .nut-col-offset-#{$i} {
-    margin-left: 100/ 24 * $i * 1%;
+    margin-left: calc(100 / 24) * $i * 1%;
   }
 
   .nut-col-#{$i} {
-    width: 100/ 24 * $i * 1%;
+    width: calc(100 / 24) * $i * 1%;
   }
 }
