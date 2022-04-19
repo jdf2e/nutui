@@ -70,4 +70,12 @@ export interface BaseLang {
   skuheader: {
     skuId: string;
   };
+  addresslist: {
+    addAddress: string;
+  };
+  comment: {
+    complaintsText: string;
+    additionalReview: Function;
+    additionalImages: Function;
+  };
 }

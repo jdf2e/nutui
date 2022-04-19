@@ -142,7 +142,7 @@ $picker-columns-item-color: $title-color !default;
 //input
 $input-border-bottom: #eaf0fb !default;
 $input-disabled-color: #c8c9cc !default;
-$input-require-color: $primary-color !default;
+$input-required-color: $primary-color !default;
 $input-font-size: $font-size-2 !default;
 
 // textarea
@@ -722,10 +722,18 @@ $elevator-list-item-bars-inner-item-padding: 3px !default;
 $elevator-list-item-bars-inner-item-font-size: 10px !default;
 
 // list
-$list-item-margin: 0 0 10px 0;
+$list-item-margin: 0 0 10px 0 !default;
 
 //Ecard
 $ecard-bg-color: #f0f2f5 !default;
+
+//category
+$category-bg-color: rgba(255, 255, 255, 1) !default;
+$cateListLeft-bg-color: rgba(246, 247, 249, 1) !default;
+$cateListItem-color: rgba(51, 51, 51, 1) !default;
+$cateListItemChecked-color: rgba(255, 255, 255, 1) !default;
+$cateListItem-color: rgba(51, 51, 51, 1) !default;
+$cateListItemChecked-img-bg-color: rgba(240, 37, 15, 1) !default;
 
 // circleProgress
 $circle-progress-primary-color: $primary-color !default;

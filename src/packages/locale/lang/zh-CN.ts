@@ -70,6 +70,14 @@ const lang: BaseLang = {
   },
   skuheader: {
     skuId: '商品编号'
+  },
+  addresslist: {
+    addAddress: '新建地址'
+  },
+  comment: {
+    complaintsText: '我要投诉',
+    additionalReview: (day: number) => `购买${day}天后追评`,
+    additionalImages: (length: number) => `${length}张追评图片`
   }
 };
 export default lang;
