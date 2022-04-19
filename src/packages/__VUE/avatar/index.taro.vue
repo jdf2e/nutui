@@ -1,26 +1,33 @@
 <template>
   <view
-    :style="styles"
+    :style="!showMax ? styles : maxStyles"
     :class="classes"
     @click="activeAvatar(e)"
     ref="avatarRef"
-    v-if="!avatarGroup?.props?.maxCount || state.index <= avatarGroup?.props?.maxCount"
+    v-if="showMax || !avatarGroup?.props?.maxCount || index <= avatarGroup?.props?.maxCount"
   >
-    <template v-if="url">
-      <img :src="url" :alt="alt" @error="onError" />
+    <template v-if="!avatarGroup?.props?.maxCount || index <= avatarGroup?.props?.maxCount">
+      <template v-if="url">
+        <img :src="url" :alt="alt" @error="onError" />
+      </template>
+      <template v-else-if="icon">
+        <nut-icon class="icon" :name="iconStyles"></nut-icon>
+      </template>
+      <view class="text" v-if="isShowText">
+        <slot></slot>
+      </view>
     </template>
-    <template v-else-if="icon">
-      <nut-icon class="icon" :name="iconStyles"></nut-icon>
+    <!-- 折叠头像 -->
+    <template v-if="showMax">
+      <view class="text">
+        {{
+          avatarGroup?.props?.maxContent
+            ? avatarGroup?.props?.maxContent
+            : `+ ${maxIndex - avatarGroup?.props?.maxCount}`
+        }}
+      </view>
     </template>
-    <view class="text" v-if="isShowText">
-      <slot></slot>
-    </view>
   </view>
-  <template v-if="avatarGroup?.props?.maxCount && state.showMax">
-    <view :style="maxStyles" :class="classes" @click="activeMax(e)">
-      <slot v-if="$slots.maxContent" name="maxContent"></slot>
-    </view>
-  </template>
 </template>
 <script lang="ts">
 import { toRefs, onMounted, computed, inject, reactive, ref } from 'vue';
@@ -57,7 +64,7 @@ export default create({
       default: ''
     }
   },
-  emits: ['active-avatar', 'active-max', 'onError'],
+  emits: ['active-avatar', 'onError'],
   setup(props, { emit, slots }) {
     const { size, shape, bgColor, color, icon } = toRefs(props);
     const sizeValue = ['large', 'normal', 'small'];
@@ -75,7 +82,7 @@ export default create({
     onMounted(() => {
       const children = avatarGroup?.avatarGroupRef?.value?.children;
       if (children) {
-        console.log('parent', avatarGroup);
+        // console.log('parent', avatarGroup);
         avatarLength(children);
       }
     });
@@ -118,10 +125,6 @@ export default create({
     const avatarLength = (children: any) => {
       state.maxIndex = children.length;
       for (let i = 0; i < children.length; i++) {
-        // if (children[i] && children[i].classList && children[i].classList[0] == 'nut-avatar') {
-        //   children[i].setAttribute('data-index', i + 1);
-
-        // }
         children[i].setAttribute('data-index', i + 1);
       }
       // state.index = avatarRef?.value?.dataset?.index;
@@ -133,10 +136,6 @@ export default create({
 
     const activeAvatar = (event: any) => {
       emit('active-avatar', event);
-    };
-
-    const activeMax = (event: any) => {
-      emit('active-max', event);
     };
 
     const onError = (event: any) => {
@@ -154,8 +153,7 @@ export default create({
       avatarGroup,
       visible,
       avatarRef,
-      state,
-      activeMax
+      ...toRefs(state)
     };
   }
 });

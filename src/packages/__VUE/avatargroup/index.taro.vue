@@ -9,6 +9,10 @@ import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('avatar-group');
 export default create({
   props: {
+    maxContent: {
+      type: String,
+      default: ''
+    },
     maxCount: {
       type: [Number, String],
       default: ''

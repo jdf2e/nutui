@@ -327,17 +327,10 @@ export default create({
       return props.modelValue;
     });
 
-    // const inputmode = computed(() => {
-    //   return props.type === 'digit' ? 'decimal' : props.type === 'number' ? 'numeric' : 'text';
-    // });
-
     const onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;
       let value = input.value;
 
-      // if (!event.target!.composing) {
-      //   updateValue((event.target as HTMLInputElement).value);
-      // }
       updateValue(value);
     };
 
@@ -357,14 +350,6 @@ export default create({
         value = props.formatter(value);
       }
 
-      // if (props.maxLength && value.length > Number(props.maxLength)) {
-      //   value = value.slice(0, Number(props.maxLength));
-      // }
-
-      if (inputRef.value && inputRef.value.value !== value) {
-        inputRef.value.value = value;
-      }
-
       if (value !== props.modelValue) {
         emit('update:modelValue', value);
         emit('change', value);
@@ -376,19 +361,12 @@ export default create({
       let value = input.value;
       active.value = true;
       emit('focus', value, event);
-      // if (getProp('readonly')) {
-      //   blur();
-      // }
     };
 
     const onBlur = (event: Event) => {
       setTimeout(() => {
         active.value = false;
       }, 200);
-
-      // if (getProp('readonly')) {
-      //   return;
-      // }
 
       const input = event.target as HTMLInputElement;
       let value = input.value;
