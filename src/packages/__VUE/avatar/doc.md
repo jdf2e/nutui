@@ -135,10 +135,6 @@ Icon 和字符型可以自定义图标颜色及背景色
     <nut-avatar icon="my"></nut-avatar>
     <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">U</nut-avatar>
     <nut-avatar icon="my"></nut-avatar>
-  
-    <nut-avatar icon="my">
-      <template #maxContent>+2</template>
-    </nut-avatar>
   </nut-avatar-group>
 </template>
 ```
@@ -154,6 +150,7 @@ Icon 和字符型可以自定义图标颜色及背景色
   <nut-avatar-group
     max-count="3"
     zIndex="right"
+    max-content="..."
   >
     <nut-avatar
       url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
@@ -162,10 +159,6 @@ Icon 和字符型可以自定义图标颜色及背景色
     <nut-avatar icon="my"></nut-avatar>
     <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">U</nut-avatar>
     <nut-avatar icon="my"></nut-avatar>
-  
-    <nut-avatar icon="my">
-      <template #maxContent>...</template>
-    </nut-avatar>
   </nut-avatar-group>
 </template>
 ```
@@ -218,23 +211,16 @@ Icon 和字符型可以自定义图标颜色及背景色
 | 字段     | 说明                                                             | 类型   | 默认值 |
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
 | maxCount     | 显示的最大头像个数   | Number、String | - |
-| size         | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字   | String | normal |
+| max-content  | 头像数量超出时，会出现一个头像折叠元素。该元素内容可为...、more、+N。默认为 +N | 
+| size         | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字   | String | +N |
 | shape        | 设置头像的形状，可选值为：square、round            | String | round  |
 | max-bgColor  | 设置 Icon、字符类型头像的背景色                    | String | #eee   |
 | max-color    | 设置 Icon、字符类型头像的颜色                   | String | #666 |
 | span         | 设置头像之间的间距               | String | -8   |
 | zIndex       | 头像之间的层级关系，可选值为：left、right  | String | left     |
-
-### Slots
-
-| 名称    | 说明         |
-|---------|--------------|
-| maxContent | 多余头像显示内容 |
-
 ### Events
 
 | 字段             | 说明         | 类型     | 回调参数 |
 | ---------------- | ------------ | -------- | -------- |
 | active-avatar | 点击头像触发事件    | Function | event    |
-| active-max    | 点击多余头像触发事件 | Function | event    |
 | onError       | 图片加载失败的事件   | Function | event    |
