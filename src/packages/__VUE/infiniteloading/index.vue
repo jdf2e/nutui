@@ -117,11 +117,9 @@ export default create({
           : `height 0.2s cubic-bezier(0.25,0.1,0.25,1)`
       };
     });
-
     const getParentElement = (el: HTMLElement) => {
       return !!props.containerId ? document.querySelector(`#${props.containerId}`) : el && el.parentNode;
     };
-
     const requestAniFrame = () => {
       return (
         window.requestAnimationFrame ||
@@ -220,11 +218,18 @@ export default create({
     };
 
     const touchEnd = () => {
-      if (state.distance < state.refreshMaxH) {
-        state.distance = 0;
-      } else {
-        emit('refresh', refreshDone);
+      if (state.distance) {
+        if (state.distance < state.refreshMaxH) {
+          state.distance = 0;
+        } else {
+          emit('refresh', refreshDone);
+        }
       }
+    };
+
+    // 滚动监听对象
+    const getParentElement = (el: HTMLElement) => {
+      return !!props.containerId ? document.querySelector(`#${props.containerId}`) : el && el.parentNode;
     };
 
     onMounted(() => {
