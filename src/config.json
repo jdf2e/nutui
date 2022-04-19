@@ -25,7 +25,7 @@
       {
         "name": "international",
         "cName": "国际化",
-        "show": false
+        "show": true
       },
       {
         "name": "resource",
@@ -770,6 +770,29 @@
       "packages": [
         {
           "version": "3.0.0",
+          "name": "Avatar",
+          "taro": true,
+          "sort": 7,
+          "cName": "头像",
+          "type": "component",
+          "show": true,
+          "desc": "头像",
+          "author": "ailululu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "AvatarGroup",
+          "taro": true,
+          "sort": 1,
+          "cName": "头像组件",
+          "type": "component",
+          "show": false,
+          "exportEmpty": true,
+          "desc": "头像组合组件",
+          "author": "ailululu"
+        },
+        {
+          "version": "3.0.0",
           "name": "List",
           "cType": "操作反馈",
           "cName": "虚拟列表",
@@ -883,17 +906,6 @@
           "exportEmptyTaro": true,
           "desc": "轮播图子组件",
           "author": "suzigang"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Avatar",
-          "taro": true,
-          "sort": 7,
-          "cName": "头像",
-          "type": "component",
-          "show": true,
-          "desc": "头像",
-          "author": "ailululu"
         },
         {
           "version": "3.0.0",
@@ -1119,6 +1131,46 @@
           "cType": "特色组件",
           "cName": "虚拟电子卡",
           "desc": "虚拟电子卡选择",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "AddressList",
+          "type": "component",
+          "cName": "地址列表",
+          "desc": "展示收货地址列表",
+          "show": true,
+          "author": "yushuang24",
+          "taro": true
+        },
+        {
+          "version": "3.0.0",
+          "name": "Category",
+          "type": "component",
+          "cName": "商品分类",
+          "desc": "商品分类展示",
+          "show": true,
+          "author": "liqiong43",
+          "taro": true
+        },
+        {
+          "version": "3.0.0",
+          "name": "CategoryPane",
+          "type": "component",
+          "cName": "商品分类面板",
+          "desc": "商品分类面板",
+          "show": false,
+          "exportEmpty": true,
+          "author": "liqiong43",
+          "taro": true
+        },{
+          "name": "Comment",
+          "cType": "特色组件",
+          "cName": "商品评论",
+          "desc": "商品评论",
           "show": true,
           "tarodoc": false,
           "type": "component",

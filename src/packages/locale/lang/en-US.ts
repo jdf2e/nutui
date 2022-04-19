@@ -59,6 +59,25 @@ const lang: BaseLang = {
     chooseText: 'Select',
     otherValueText: 'Other Value',
     placeholder: 'Placeholder'
+  },
+  timeselect: {
+    pickupTime: 'Pickup Time'
+  },
+  sku: {
+    buyNow: 'Buy Now',
+    buyNumber: 'Buy Number',
+    addToCard: 'Add to Card'
+  },
+  skuheader: {
+    skuId: 'Sku Number'
+  },
+  addresslist: {
+    addAddress: 'Add New Address'
+  },
+  comment: {
+    complaintsText: 'I have a complaint',
+    additionalReview: (day: number) => `Review after ${day} days of purchase`,
+    additionalImages: (length: number) => `There are ${length} follow-up comments`
   }
 };
 export default lang;

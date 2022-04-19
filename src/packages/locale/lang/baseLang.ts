@@ -59,4 +59,23 @@ export interface BaseLang {
     otherValueText: string;
     placeholder: string;
   };
+  timeselect: {
+    pickupTime: string;
+  };
+  sku: {
+    buyNow: string;
+    buyNumber: string;
+    addToCard: string;
+  };
+  skuheader: {
+    skuId: string;
+  };
+  addresslist: {
+    addAddress: string;
+  };
+  comment: {
+    complaintsText: string;
+    additionalReview: Function;
+    additionalImages: Function;
+  };
 }

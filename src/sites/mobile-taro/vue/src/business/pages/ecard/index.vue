@@ -32,19 +32,15 @@ export default defineComponent({
       }
     ]);
     const money = ref(0);
-    const inputChange = (val: any) => {
+    const inputChange = (val: number) => {
       money.value = val;
     };
-    const change = (item: any) => {
+    const change = (item: { price: number }) => {
       money.value = item.price;
     };
-    const changeStep = (num: any) => {
-      const val = money.value * num;
-      if (val > 100) {
-        money.value = val * 0.9;
-      } else {
-        money.value = val;
-      }
+    const changeStep = (num: number, price: number) => {
+      const val = price * num;
+      money.value = val;
     };
     return {
       dataList,

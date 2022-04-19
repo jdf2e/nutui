@@ -87,7 +87,8 @@ export default {
         'pages/timeselect/index',
         'pages/sku/index',
         'pages/card/index',
-        'pages/ecard/index'
+        'pages/ecard/index',
+        'pages/comment/index'
       ]
     }
   ],

@@ -59,6 +59,25 @@ const lang: BaseLang = {
     chooseText: '请选择电子卡面值',
     otherValueText: '其他面值',
     placeholder: '请输入1-5000整数'
+  },
+  timeselect: {
+    pickupTime: '取件时间'
+  },
+  sku: {
+    buyNow: '立即购买',
+    buyNumber: '购买数量',
+    addToCard: '加入购物车'
+  },
+  skuheader: {
+    skuId: '商品编号'
+  },
+  addresslist: {
+    addAddress: '新建地址'
+  },
+  comment: {
+    complaintsText: '我要投诉',
+    additionalReview: (day: number) => `购买${day}天后追评`,
+    additionalImages: (length: number) => `${length}张追评图片`
   }
 };
 export default lang;

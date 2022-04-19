@@ -1,0 +1,38 @@
+.nut-category {
+  &__cateList {
+    display: flex;
+    background: $category-bg-color;
+  }
+
+  &__cateListLeft {
+    background: $cateListLeft-bg-color;
+  }
+
+  &__cateListItemChecked,
+  &__cateListItem {
+    width: 100px;
+    height: 50px;
+    font-size: 13px;
+    font-family: PingFangSC;
+    font-weight: normal;
+    color: $cateListItem-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+  }
+  &__cateListItemChecked {
+    background: $cateListItemChecked-color;
+    font-weight: 500;
+    transition: all 0.3s;
+    position: relative;
+    &::before {
+      position: absolute;
+      content: '';
+      left: 0;
+      width: 5px;
+      height: 18px;
+      background: $cateListItemChecked-img-bg-color;
+    }
+  }
+}

@@ -250,7 +250,7 @@ export default create({
     },
     showWordLimit: {
       type: Boolean,
-      default: true
+      default: false
     },
     autofocus: {
       type: Boolean,
@@ -325,17 +325,10 @@ export default create({
       return props.modelValue;
     });
 
-    // const inputmode = computed(() => {
-    //   return props.type === 'digit' ? 'decimal' : props.type === 'number' ? 'numeric' : 'text';
-    // });
-
     const onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;
       let value = input.value;
 
-      // if (!event.target!.composing) {
-      //   updateValue((event.target as HTMLInputElement).value);
-      // }
       updateValue(value);
     };
 
@@ -355,13 +348,9 @@ export default create({
         value = props.formatter(value);
       }
 
-      // if (props.maxLength && value.length > Number(props.maxLength)) {
-      //   value = value.slice(0, Number(props.maxLength));
+      // if (inputRef.value && inputRef.value.value !== value) {
+      //   inputRef.value.value = value;
       // }
-
-      if (inputRef.value && inputRef.value.value !== value) {
-        inputRef.value.value = value;
-      }
 
       if (value !== props.modelValue) {
         emit('update:modelValue', value);
@@ -383,10 +372,6 @@ export default create({
       setTimeout(() => {
         active.value = false;
       }, 200);
-
-      // if (getProp('readonly')) {
-      //   return;
-      // }
 
       const input = event.target as HTMLInputElement;
       let value = input.value;
