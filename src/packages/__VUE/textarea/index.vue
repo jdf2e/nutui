@@ -1,4 +1,4 @@
-, nextTick<template>
+<template>
   <view :class="classes">
     <textarea
       ref="textareaRef"
@@ -44,7 +44,7 @@ export default create({
     },
     rows: {
       type: [String, Number],
-      default: ''
+      default: '2'
     },
     placeholder: {
       type: String,
@@ -109,7 +109,7 @@ export default create({
           height = Math.max(height, minHeight);
         }
       }
-      if (height && props.rows == '') {
+      if (height) {
         textarea.style.height = height + 'px';
       }
     };
