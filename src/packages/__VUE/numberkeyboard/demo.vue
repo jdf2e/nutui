@@ -47,7 +47,7 @@
 
 <script lang="ts">
 import { ref, getCurrentInstance, reactive } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('numberkeyboard');
 export default createDemo({
   props: {},

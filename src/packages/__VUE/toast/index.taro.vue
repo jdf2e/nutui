@@ -34,7 +34,7 @@
 </template>
 <script lang="ts">
 import { computed, watch } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('toast');
 import Icon from '../icon/index.taro.vue';
 export default create({

@@ -84,7 +84,7 @@
 
 <script lang="ts">
 import { toRefs, reactive } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { Toast } from '@/packages/nutui.vue';
 const { createDemo } = createComponent('range');
 export default createDemo({

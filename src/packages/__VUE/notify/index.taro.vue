@@ -15,7 +15,7 @@
 </template>
 <script lang="ts">
 import { watch } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
 const { componentName, create } = createComponent('notify');
 

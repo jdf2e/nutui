@@ -20,7 +20,7 @@
 </template>
 <script lang="ts">
 import { watch, ref, computed, onMounted, nextTick } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 
 const { componentName, create, translate } = createComponent('textarea');
 

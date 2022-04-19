@@ -63,7 +63,7 @@
 </template>
 <script lang="ts">
 import { onMounted, ref } from '@vue/runtime-core';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('comment');
 export default createDemo({
   props: {},

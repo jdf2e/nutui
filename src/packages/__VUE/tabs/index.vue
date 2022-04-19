@@ -35,7 +35,7 @@
 <script lang="ts">
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, PropType } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('tabs');
 class Title {
   title: string = '';

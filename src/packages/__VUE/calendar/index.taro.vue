@@ -80,10 +80,10 @@
 </template>
 <script lang="ts">
 import { ref, watch, computed } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('calendar');
 import CalendarItem from '../calendaritem/index.taro.vue';
-import Utils from '../../utils/date';
+import Utils from '@/packages/utils/date';
 export default create({
   components: {
     [CalendarItem.name]: CalendarItem

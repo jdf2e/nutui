@@ -3,18 +3,10 @@
     <h2>纵向</h2>
     <nut-cell>
       <div class="vertical">
-        <nut-pullrefresh
-          @refresh="refresh"
-          @down-refresh="downRefresh"
-          :useWindow="false"
-          containerId="pull"
-        >
+        <nut-pullrefresh @refresh="refresh" @down-refresh="downRefresh" :useWindow="false" containerId="pull">
           <div class="content" id="pull">
             <div class="main">
-              <div
-                class="pull-data"
-                v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9]"
-                :key="item"
+              <div class="pull-data" v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="item"
                 >我是测试数据 {{ item }}</div
               >
             </div>
@@ -35,10 +27,7 @@
         >
           <div class="contentH" id="pullH">
             <div class="mainH">
-              <div
-                class="pull-data"
-                v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9]"
-                :key="item"
+              <div class="pull-data" v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="item"
                 >我是测试数据 {{ item }}</div
               >
             </div>
@@ -50,7 +39,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('pullrefresh');
 export default createDemo({
   props: {},

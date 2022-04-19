@@ -18,7 +18,7 @@
 </template>
 <script lang="ts">
 import { Ref, ref, toRefs, warn, watch, onMounted } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('category');
 
 //经典分类

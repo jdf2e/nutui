@@ -32,8 +32,8 @@
 </template>
 <script lang="ts">
 import { computed, reactive, toRefs, nextTick, ref, Ref } from 'vue';
-import { createComponent } from '../../utils/create';
-import { useExpose } from '../../utils/useExpose/index';
+import { createComponent } from '@/packages/utils/create';
+import { useExpose } from '@/packages/utils/useExpose/index';
 const { componentName, create } = createComponent('elevator');
 interface ElevatorData {
   name: string;

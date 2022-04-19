@@ -49,7 +49,7 @@
 
 <script lang="ts">
 import { onMounted, reactive, ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('fixednav');
 export default createDemo({
   props: {},
