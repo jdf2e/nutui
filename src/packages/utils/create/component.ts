@@ -7,14 +7,15 @@ import {
   RenderFunction,
   Component
 } from 'vue';
-import locale from '../../locale';
+import locale from '@/packages/locale';
 import { getPropByPath, isFunction } from '../util';
 export function createComponent(name: string) {
-  const languages = locale.languages();
   const componentName = 'nut-' + name;
   return {
     componentName,
     translate(keyPath: string, ...args: unknown[]) {
+      // 依赖响应能力
+      const languages = locale.languages();
       const text = getPropByPath(languages, `${name.replace('-', '')}.${keyPath}`) || getPropByPath(languages, keyPath);
       return isFunction(text) ? text(...args) : text;
     },
