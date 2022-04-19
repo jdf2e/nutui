@@ -31,7 +31,9 @@ function isDate(val: Date): val is Date {
   return Object.prototype.toString.call(val) === '[object Date]' && !isNaN(val.getTime());
 }
 
-const zhCNType = {
+const zhCNType: {
+  [props: string]: string;
+} = {
   day: '日',
   year: '年',
   month: '月',
@@ -202,7 +204,6 @@ export default create({
     });
 
     const columns = computed(() => {
-      // console.log(ranges.value);
       const val = ranges.value.map((res, columnIndex) => {
         return generateValue(res.range[0], res.range[1], getDateIndex(res.type), res.type, columnIndex);
       });
@@ -218,35 +219,33 @@ export default create({
       selectedValue: (string | number)[];
       selectedOptions: PickerOption[];
     }) => {
-      if (['date', 'datetime'].includes(props.type)) {
-        let formatDate = [];
-        formatDate = selectedValue;
-        let date: Date;
-        if (props.type === 'date') {
-          state.currentDate = formatValue(
-            new Date(
-              formatDate[0],
-              formatDate[1] - 1,
-              Math.min(formatDate[2], getMonthEndDay(formatDate[0], formatDate[1]))
-            )
-          );
-        } else if (props.type === 'datetime') {
-          state.currentDate = formatValue(
-            new Date(
-              formatDate[0],
-              formatDate[1] - 1,
-              Math.min(formatDate[2], getMonthEndDay(formatDate[0], formatDate[1])),
-              formatDate[3],
-              formatDate[4]
-            )
-          );
+      if (['date', 'datetime', 'datehour', 'month-day'].includes(props.type)) {
+        let formatDate: (number | string)[] = [];
+        selectedValue.forEach((item) => {
+          formatDate.push(item);
+        });
+        if (props.type == 'month-day') {
+          formatDate.unshift(new Date(props.modelValue || props.minDate || props.maxDate).getFullYear());
         }
+        const year = Number(formatDate[0]);
+        const month = Number(formatDate[1]) - 1;
+        const day = Math.min(Number(formatDate[2]), getMonthEndDay(Number(formatDate[0]), Number(formatDate[1])));
+        let date: Date | null = null;
+
+        if (props.type === 'date' || props.type === 'month-day') {
+          date = new Date(year, month, day);
+        } else if (props.type === 'datetime') {
+          date = new Date(year, month, day, Number(formatDate[3]), Number(formatDate[4]));
+        } else if (props.type === 'datehour') {
+          date = new Date(year, month, day, Number(formatDate[3]));
+        }
+        state.currentDate = formatValue(date as Date);
       }
       emit('change', { columnIndex, selectedValue, selectedOptions });
     };
 
-    const formatterOption = (type, value) => {
-      const { filter, formatter, isShowChinese } = props;
+    const formatterOption = (type: string, value: string | number) => {
+      const { formatter, isShowChinese } = props;
       let fOption = null;
       if (formatter) {
         fOption = formatter(type, { text: padZero(value, 2), value: padZero(value, 2) });
@@ -277,8 +276,7 @@ export default create({
         }
       }
 
-      state.selectedValue[columnIndex] = arr[index].value;
-      // return { values: arr, defaultIndex: index };
+      (state.selectedValue as any)[columnIndex] = arr[index].value;
       return props.filter ? props.filter(type, arr) : arr;
     };
 
