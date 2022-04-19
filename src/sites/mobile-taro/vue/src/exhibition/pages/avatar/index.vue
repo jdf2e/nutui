@@ -68,15 +68,11 @@
         <nut-avatar icon="my"></nut-avatar>
         <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">U</nut-avatar>
         <nut-avatar icon="my"></nut-avatar>
-
-        <nut-avatar icon="my">
-          <template #maxContent>+2</template>
-        </nut-avatar>
       </nut-avatar-group>
     </nut-cell>
     <h2>组合头像可控制层级方向</h2>
     <nut-cell>
-      <nut-avatar-group max-count="3" zIndex="right">
+      <nut-avatar-group max-count="3" zIndex="right" max-content="...">
         <nut-avatar
           url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
         >
@@ -84,10 +80,6 @@
         <nut-avatar icon="my"></nut-avatar>
         <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">U</nut-avatar>
         <nut-avatar icon="my"></nut-avatar>
-
-        <nut-avatar icon="my">
-          <template #maxContent>...</template>
-        </nut-avatar>
       </nut-avatar-group>
     </nut-cell>
 
