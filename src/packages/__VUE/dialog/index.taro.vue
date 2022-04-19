@@ -50,7 +50,7 @@
 </template>
 <script lang="ts">
 import { onMounted, computed, watch, ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('dialog');
 import Popup, { popupProps } from '../popup/index.taro.vue';
 import Button from '../button/index.taro.vue';

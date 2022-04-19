@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import { computed } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { useRouter } from '@/packages/utils/useRoute';
 import { pxCheck } from '@/packages/utils/pxCheck';
 const { componentName, create } = createComponent('cell');

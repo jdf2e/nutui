@@ -31,7 +31,7 @@
 </template>
 <script lang="ts">
 import { toRefs, onMounted, computed, inject, reactive, ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('avatar');
 export default create({
   props: {

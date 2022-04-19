@@ -151,8 +151,8 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
-import { createComponent } from '../../utils/create';
-import Utils from '../../utils/date';
+import { createComponent } from '@/packages/utils/create';
+import Utils from '@/packages/utils/date';
 
 const { createDemo } = createComponent('calendar');
 

@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { computed } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('cell-group');
 export default create({
   props: {

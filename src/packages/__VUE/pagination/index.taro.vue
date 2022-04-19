@@ -35,7 +35,7 @@
 </template>
 <script lang="ts">
 import { toRefs, onMounted, watchEffect, computed } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('pagination');
 
 export default create({

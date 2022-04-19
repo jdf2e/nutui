@@ -25,7 +25,7 @@ import {
   onDeactivated,
   getCurrentInstance
 } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('barrage');
 

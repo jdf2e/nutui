@@ -23,7 +23,7 @@
 </template>
 <script lang="ts">
 import { onMounted, computed, watch, ref, PropType, toRefs, reactive, CSSProperties } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('popover');
 import Popup, { popupProps } from '../popup/index.vue';
 import Button from '../button/index.vue';

@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { PropType, CSSProperties, toRefs, computed } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import Icon from '../icon/index.vue';
 const { componentName, create } = createComponent('button');
 

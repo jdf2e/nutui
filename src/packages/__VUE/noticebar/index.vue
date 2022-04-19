@@ -78,7 +78,7 @@ import {
   watch,
   h
 } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('noticebar');
 
 interface StateProps {

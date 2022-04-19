@@ -12,7 +12,7 @@
 import Taro from '@tarojs/taro';
 
 import { toRefs, computed } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('indicator');
 
 export default create({

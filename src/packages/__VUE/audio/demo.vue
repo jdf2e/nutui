@@ -71,7 +71,7 @@
 <script lang="ts">
 import { reactive, toRefs, ref } from '@vue/reactivity';
 import { onMounted } from '@vue/runtime-core';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('audio');
 export default createDemo({
   props: {},

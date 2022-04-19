@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { inject } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('tabpane');
 
 export default create({

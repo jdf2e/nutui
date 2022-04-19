@@ -62,8 +62,8 @@ import {
   VNode
 } from 'vue';
 import Taro, { eventCenter, getCurrentInstance as getCurrentInstanceTaro } from '@tarojs/taro';
-import { createComponent } from '../../utils/create';
-import { useTaroRect } from '../../utils/useTaroRect';
+import { createComponent } from '@/packages/utils/create';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { create, componentName } = createComponent('collapse-item');
 
 export default create({

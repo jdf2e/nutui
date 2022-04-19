@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { reactive, computed, inject, toRefs, getCurrentInstance, ComponentInternalInstance } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create, componentName } = createComponent('step');
 
 export default create({

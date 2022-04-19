@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { provide } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('collapse');
 export default create({
   props: {
@@ -60,10 +60,7 @@ export default create({
     };
 
     const changeValAry = (name: string) => {
-      const activeItem: any =
-        props.active instanceof Object
-          ? Object.values(props.active)
-          : props.active;
+      const activeItem: any = props.active instanceof Object ? Object.values(props.active) : props.active;
       let index = -1;
       activeItem.forEach((item: string | number, idx: number) => {
         if (String(item) == String(name)) {
@@ -77,9 +74,7 @@ export default create({
     const isExpanded = (name: string | number | Array<string | number>) => {
       const { accordion, active } = props;
       if (accordion) {
-        return typeof active === 'number' || typeof active === 'string'
-          ? active == name
-          : false;
+        return typeof active === 'number' || typeof active === 'string' ? active == name : false;
       }
     };
 
