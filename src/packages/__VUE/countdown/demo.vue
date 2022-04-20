@@ -70,8 +70,8 @@ export default createDemo({
   props: {},
   setup() {
     const state = reactive({
-      serverTime: Date.now() - 30 * 1000,
-      end: Date.now() + 50 * 1000,
+      serverTime: Date.now() - 10 * 1000,
+      end: Date.now() + 10 * 1000,
       asyncEnd: 0,
       paused: false,
       resetTime: {

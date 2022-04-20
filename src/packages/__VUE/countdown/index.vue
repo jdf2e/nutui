@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" @click="handleClick">
+  <view :class="classes">
     <template v-if="slots.default">
       <slot></slot>
     </template>
@@ -18,19 +18,7 @@
   </view>
 </template>
 <script lang="ts">
-import {
-  toRefs,
-  onMounted,
-  onUnmounted,
-  reactive,
-  computed,
-  CSSProperties,
-  onActivated,
-  onDeactivated,
-  ref,
-  watch,
-  vModelText
-} from 'vue';
+import { toRefs, computed, watch, reactive, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create, translate } = createComponent('countdown');
 
@@ -68,6 +56,10 @@ export default create({
         const dateStr = new Date(v).toString().toLowerCase();
         return dateStr !== 'invalid date';
       }
+    },
+    millisecond: {
+      default: false,
+      type: Boolean
     }
   },
   components: {},
@@ -82,10 +74,10 @@ export default create({
     });
 
     const resttime = computed(() => {
-      const rest = restTime(state.restTime);
+      const rest = restTimeFun(state.restTime);
       const { d, h, m, s } = rest;
       if (!props.showDays && d > 0) {
-        rest.h = fill2(Number(rest.h) + d * 24);
+        rest.h = fillZero(Number(rest.h) + d * 24);
         rest.d = 0;
       }
       return rest;
@@ -107,7 +99,7 @@ export default create({
     watch(
       () => state.restTime,
       (value) => {
-        let tranTime = restTime(value);
+        let tranTime = restTimeFun(value);
         emit('update:modelValue', tranTime);
         emit('input', tranTime);
       }
@@ -156,41 +148,38 @@ export default create({
 
     const initTimer = () => {
       const delay = 1000;
+
       const curr = Date.now();
       const start = getTimeStamp(props.startTime || curr);
       const end = getTimeStamp(props.endTime || curr);
-      const diffTime = curr - start;
-
-      state.restTime = end - (start + diffTime);
-      clearInterval(state.timer);
+      const diffTime = curr - start; // 时间差
+      state.restTime = end - (start + diffTime); // 倒计时时间
+      if (state.timer) clearInterval(state.timer);
       state.timer = null;
       (state.timer as any) = setInterval(() => {
         if (!props.paused) {
           let restTime = end - (Date.now() - state.p + diffTime);
           state.restTime = restTime;
-
           if (restTime < 0) {
             state.restTime = 0;
             emit('on-end');
             clearInterval(state.timer as any);
           }
-        } else {
-          // 暂停
         }
       }, delay);
     };
 
-    const fill2 = (v: any) => {
+    const fillZero = (v: number | string) => {
       v += '';
-      while (v.length < 2) {
+      while ((v as string).length < 2) {
         v = '0' + v;
       }
-      return v;
+      return v.toString();
     };
-    const restTime = (t: any) => {
+    const restTimeFun = (t: number) => {
       const ts = t;
       let rest = {
-        d: '-',
+        d: '--',
         h: '--',
         m: '--',
         s: '--'
@@ -204,24 +193,28 @@ export default create({
         };
       }
       if (ts) {
-        const ds = 24 * 60 * 60 * 1000;
-        const hs = 60 * 60 * 1000;
-        const ms = 60 * 1000;
+        const SECOND = 1000;
+        const MINUTE = 60 * SECOND;
+        const HOUR = 60 * MINUTE;
+        const DAY = 24 * HOUR;
 
-        const d = ts >= ds ? parseInt(ts / ds) : 0;
-        const h = ts - d * ds >= hs ? parseInt((ts - d * ds) / hs) : 0;
-        const m = ts - d * ds - h * hs >= ms ? parseInt((ts - d * ds - h * hs) / ms) : 0;
-        const s = Math.round((ts - d * ds - h * hs - m * ms) / 1000);
+        const d = ts >= SECOND ? Math.floor(ts / DAY) : 0;
+        const h = Math.floor((ts % DAY) / HOUR);
+        const m = Math.floor((ts % HOUR) / MINUTE);
+        const s = Math.floor((ts % MINUTE) / SECOND);
+        const ms = Math.floor(ts % SECOND);
 
         if (d >= 0) rest.d = d + '';
-        if (h >= 0) rest.h = fill2(h);
-        if (m >= 0) rest.m = fill2(m);
-        if (s >= 0) rest.s = fill2(s);
+        if (h >= 0) rest.h = fillZero(h);
+        if (m >= 0) rest.m = fillZero(m);
+        if (s >= 0) rest.s = fillZero(s);
       }
       return rest;
     };
 
-    initTimer();
+    onMounted(() => {
+      initTimer();
+    });
 
     return {
       ...toRefs(props),
