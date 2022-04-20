@@ -10,7 +10,7 @@ const langs = reactive<Lang>({
   'en-US': new EnUSLang()
 });
 export class Locale {
-  static currentLang = ref('en-US');
+  static currentLang = ref('zh-CN');
   static languages(): Lang {
     return langs[this.currentLang.value];
   }
