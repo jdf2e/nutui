@@ -25,7 +25,7 @@ export default defineComponent({
       return function (name: string) {
         const currentValue = RefData.getInstance().currentRoute.value;
         let value = currentValue.indexOf('-taro') > -1 ? currentValue.split('-taro')[0] : currentValue;
-        return value == name.toLowerCase();
+        return value.includes(name.toLowerCase());
       };
     });
     return {
