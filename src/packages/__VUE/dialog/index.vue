@@ -32,15 +32,7 @@
           >
             {{ cancelText || translate('cancel') }}
           </nut-button>
-          <nut-button
-            v-if="!noOkBtn"
-            size="small"
-            type="primary"
-            class="nut-dialog__footer-ok"
-            :class="{ disabled: okBtnDisabled }"
-            :disabled="okBtnDisabled"
-            @click="onOk"
-          >
+          <nut-button v-if="!noOkBtn" size="small" type="primary" class="nut-dialog__footer-ok" @click="onOk">
             {{ okText || translate('confirm') }}
           </nut-button>
         </template>
@@ -93,10 +85,6 @@ export default create({
     okText: {
       type: String,
       default: ''
-    },
-    okBtnDisabled: {
-      type: Boolean,
-      default: false
     },
     cancelAutoClose: {
       type: Boolean,
