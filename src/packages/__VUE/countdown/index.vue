@@ -18,8 +18,25 @@
   </view>
 </template>
 <script lang="ts">
+<<<<<<< HEAD
 import { toRefs, computed, watch, reactive, onMounted } from 'vue';
 import { createComponent } from '../../utils/create';
+=======
+import {
+  toRefs,
+  onMounted,
+  onUnmounted,
+  reactive,
+  computed,
+  CSSProperties,
+  onActivated,
+  onDeactivated,
+  ref,
+  watch,
+  vModelText
+} from 'vue';
+import { createComponent } from '@/packages/utils/create';
+>>>>>>> abf7f1ee595464adcf3cc3ec79b1b412b65e52a7
 const { componentName, create, translate } = createComponent('countdown');
 
 export default create({

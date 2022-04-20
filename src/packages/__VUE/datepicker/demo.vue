@@ -121,7 +121,7 @@
 
 <script lang="ts">
 import { toRefs, watch, ref, reactive } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('datepicker');
 export default createDemo({
   props: {},

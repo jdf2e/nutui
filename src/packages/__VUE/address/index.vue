@@ -132,7 +132,7 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, watch, nextTick, computed, Ref, onMounted } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/index.vue';
 const { componentName, create, translate } = createComponent('address');
 interface RegionData {

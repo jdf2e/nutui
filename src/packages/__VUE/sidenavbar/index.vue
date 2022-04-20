@@ -9,7 +9,7 @@
 </template>
 <script lang="ts">
 import { computed, onMounted, reactive, ref, toRefs, Ref, watch } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('sidenavbar');
 export default create({
   props: {

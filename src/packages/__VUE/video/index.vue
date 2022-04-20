@@ -58,8 +58,8 @@
 </template>
 <script lang="ts">
 import { computed, reactive, ref, toRefs, watch, nextTick, onMounted } from 'vue';
-import { createComponent } from '../../utils/create';
-import { throttle } from '../../utils/throttle.js';
+import { createComponent } from '@/packages/utils/create';
+import { throttle } from '@/packages/utils/throttle.js';
 const { create, translate } = createComponent('video');
 
 export default create({

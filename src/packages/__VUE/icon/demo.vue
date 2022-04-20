@@ -57,7 +57,7 @@
 <script lang="ts">
 // import icons from '@/packages/styles/font/iconfont.json';
 import icons from '@/packages/styles/font/config.json';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('icon');
 export default createDemo({
   props: {},

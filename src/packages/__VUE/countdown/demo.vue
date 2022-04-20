@@ -64,7 +64,7 @@
 
 <script lang="ts">
 import { toRefs, onMounted, onUnmounted, reactive } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('countdown');
 export default createDemo({
   props: {},

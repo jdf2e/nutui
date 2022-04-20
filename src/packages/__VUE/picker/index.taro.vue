@@ -42,7 +42,7 @@
 </template>
 <script lang="ts">
 import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRefs, PropType } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/index.taro.vue';
 import column from './ColumnTaro.vue';
 import { PickerOption } from './types';

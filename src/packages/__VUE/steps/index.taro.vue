@@ -1,6 +1,6 @@
 <script lang="ts">
 import { provide, computed, reactive, h, ComponentInternalInstance } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create, componentName } = createComponent('steps');
 
 export default create({

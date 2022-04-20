@@ -1,7 +1,7 @@
 <script lang="ts">
 import { reactive, computed, h, onMounted, onUnmounted, ref, Ref, unref, PropType, watch, CSSProperties } from 'vue';
-import { createComponent } from '../../utils/create';
-import { useRect } from '../../utils/useRect';
+import { createComponent } from '@/packages/utils/create';
+import { useRect } from '@/packages/utils/useRect';
 const { componentName, create } = createComponent('sticky');
 export default create({
   props: {

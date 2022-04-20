@@ -19,79 +19,107 @@ app.use(CategoryPane);
 
 ### 经典分类模式
 
+:::demo
+
 ```html
-<nutbiz-category :category="category" @change="change">
-  <nutbiz-categorypane :categoryChild="categoryChild" @onChange="onChange">
-  </nutbiz-categorypane>
-</nutbiz-category>
-```
+<template>
+  <nut-category :category="category" @change="change">
+    <nut-categorypane :categoryChild="categoryChild" @onChange="onChange">
+    </nut-categorypane>
+  </nut-category>
+</template>
+<script lang="ts">
+import { reactive, toRefs, onMounted } from 'vue';
 
-```javascript
-  // category.js 文件点击右上角‘下载数据结构’下载
-  import { categoryChild, categoryInfo } from "./category";
-
+export default {
   setup() {
     const data = reactive({
+      categoryInfo: {},
       category: [{}],
-      categoryChild: [{}],
+      categoryChild: [{}]
     });
 
     onMounted(() => {
       setTimeout(() => {
-        data.category = categoryInfo.category;
-        data.categoryChild = categoryChild;
+        getData();
       }, 500);
     });
 
+    const getData = () => {
+      fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
+        .then((response) => response.json())
+        .then((res) => {
+          const { categoryInfo, categoryChild } = res;
+          data.categoryInfo = categoryInfo;
+          data.category = categoryInfo.category;
+          data.categoryChild = categoryChild;
+        })
+        .catch((err) => console.log('Oh, error', err)); 
+    };
+
     const change = (index: any) => {
-      data.categoryChild = [].concat(
-        categoryInfo.category[index+1].children as any
-      );
+      data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
     };
     const onChange =()=>{
         console.log("当前分类数据");
     }
     return {
-      onChange，
+      onChange,
       change,
       ...toRefs(data)
     }
+  }
+};
+</script>
 ```
-
+:::
 ### 只显示文字
 
+:::demo
+
 ```html
-<nutbiz-category :category="category" @change="changeText">
-  <nutbiz-categorypane
-    type="text"
-    :categoryChild="categoryChild"
-    @onChange="onChange"
-  >
-  </nutbiz-categorypane
-></nutbiz-category>
-```
+<template>
+  <nut-category :category="category" @change="changeText">
+    <nut-categorypane
+      type="text"
+      :categoryChild="categoryChild"
+      @onChange="onChange"
+    >
+    </nut-categorypane
+  ></nut-category>
+</template>
+<script lang="ts">
+import { reactive, toRefs, onMounted } from 'vue';
 
-```javascript
-  // category.js 文件点击右上角‘下载数据结构’下载
-  import { categoryChild, categoryInfo } from "./category";
-
+export default {
   setup() {
     const data = reactive({
+      categoryInfo: {},
       category: [{}],
-      categoryChild: [{}],
+      categoryChild: [{}]
     });
 
     onMounted(() => {
       setTimeout(() => {
-        data.category = categoryInfo.category;
-        data.categoryChild = categoryChild;
+        getData();
       }, 500);
     });
 
+    const getData = () => {
+      fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
+        .then((response) => response.json())
+        .then((res) => {
+          console.log('res', res)
+          const { categoryInfo, categoryChild } = res;
+          data.categoryInfo = categoryInfo;
+          data.category = categoryInfo.category;
+          data.categoryChild = categoryChild;
+        })
+        .catch((err) => console.log('Oh, error', err)); 
+    };
+
     const changeText = (index: any) => {
-      data.categoryChild = [].concat(
-        categoryInfo.category[index+1].children as any
-      );
+      data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
     };
 
     const onChange =()=>{
@@ -102,33 +130,48 @@ app.use(CategoryPane);
       onChange,
       ...toRefs(data)
     }
+  }
+};
+</script>
 ```
-
+:::
 ### 自定义分类
 
-```html
-<nutbiz-category @change="changeCustom"
-  ><nutbiz-categorypane
-    type="custom"
-    :customCategory="customCategory"
-    @onChange="changeCustom"
-  >
-  </nutbiz-categorypane
-></nutbiz-category>
-```
+:::demo
 
-```javascript
-  // category.js 文件点击右上角‘下载数据结构’下载
-  import { categoryChild, categoryInfo } from "./category";
+```html
+<template>
+  <nut-category @change="changeCustom"
+    ><nut-categorypane
+      type="custom"
+      :customCategory="customCategory"
+      @onChange="changeCustom"
+    >
+    </nut-categorypane
+  ></nut-category>
+</template>
+<script lang="ts">
+import { reactive, toRefs, onMounted } from 'vue';
+
+export default {
   setup() {
     const data = reactive({
        customCategory: [{}],
     });
     onMounted(() => {
       setTimeout(() => {
-         data.customCategory = customCategory;
+         getData();
       }, 500);
     });
+    const getData = () => {
+      fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
+        .then((response) => response.json())
+        .then((res) => {
+          const { customCategory } = res;
+          data.customCategory = customCategory;
+        })
+        .catch((err) => console.log('Oh, error', err)); 
+    };
     const changeCustom = () => {
       console.log('点击分类数据')
     };
@@ -136,8 +179,11 @@ app.use(CategoryPane);
       changeCustom,
       ...toRefs(data)
     }
+  }
+};
+</script>
 ```
-
+:::
 ## API
 
 ### Category Props

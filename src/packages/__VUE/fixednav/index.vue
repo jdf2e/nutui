@@ -27,7 +27,7 @@
 </template>
 <script lang="ts">
 import { computed } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import overlay from '../overlay/index.vue';
 const { componentName, create, translate } = createComponent('fixednav');
 

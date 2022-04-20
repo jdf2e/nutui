@@ -66,12 +66,12 @@
 </template>
 <script lang="ts">
 import { toRefs, reactive, onMounted, ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('addresslist');
 import LongPressShell from './components/LongPressShell.vue';
 import SwipeShell from './components/SwipeShell.vue';
 import GeneralShell from './components/GeneralShell.vue';
-import { floatData } from '../../utils/util';
+import { floatData } from '@/packages/utils/util';
 export default create({
   props: {
     data: {

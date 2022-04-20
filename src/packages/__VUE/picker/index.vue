@@ -46,7 +46,7 @@
 </template>
 <script lang="ts">
 import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRefs, PropType } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import popup, { popupProps } from '../popup/index.vue';
 import column from './Column.vue';
 import { PickerOption } from './types';

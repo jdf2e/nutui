@@ -56,7 +56,7 @@
 </template>
 <script lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('shortpassword');
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 export default create({

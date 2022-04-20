@@ -18,15 +18,15 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '../../utils/create';
-import { categoryInfo, categoryChild, customCategory } from './data';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('cmt');
-import { reactive, ref, toRefs, onMounted } from 'vue';
+import { reactive, toRefs, onMounted } from 'vue';
 
 export default createDemo({
   props: {},
   setup() {
     const data = reactive({
+      categoryInfo: {},
       category: [{}],
       categoryChild: [{}],
       customCategory: [{}]
@@ -34,32 +34,30 @@ export default createDemo({
 
     onMounted(() => {
       setTimeout(() => {
-        // getData();
-        data.category = categoryInfo.category;
-        data.categoryChild = categoryChild;
-        data.customCategory = customCategory;
+        getData();
       }, 500);
     });
 
     const getData = () => {
-      fetch('//storage.360buyimg.com/nutui/3x/categoryData1.js')
+      fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
         .then((response) => response.json())
         .then((res) => {
-          // console.log('res', res)
+          console.log('res', res);
           const { categoryInfo, categoryChild, customCategory } = res;
+          data.categoryInfo = categoryInfo;
           data.category = categoryInfo.category;
           data.categoryChild = categoryChild;
           data.customCategory = customCategory;
-        }) //执行结果是 resolve就调用then方法
-        .catch((err) => console.log('Oh, error', err)); //执行结果是 reject就调用catch方法
+        })
+        .catch((err) => console.log('Oh, error', err));
     };
 
     const change = (index: any) => {
-      data.categoryChild = [].concat(categoryInfo.category[index + 1].children as any);
+      data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
     };
 
     const changeText = (index: any) => {
-      data.categoryChild = [].concat(categoryInfo.category[index + 1].children as any);
+      data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
     };
 
     const changeCustom = () => {

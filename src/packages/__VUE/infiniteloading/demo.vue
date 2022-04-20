@@ -46,7 +46,7 @@
 
 <script lang="ts">
 import { onMounted, ref, reactive, toRefs, getCurrentInstance } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('infiniteloading');
 export default createDemo({
   props: {},

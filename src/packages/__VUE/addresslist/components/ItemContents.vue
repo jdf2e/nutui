@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
 import { toRefs, reactive, onMounted, ref, watch } from 'vue';
-import { createComponent } from '../../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('item-contents');
 
 export default create({
