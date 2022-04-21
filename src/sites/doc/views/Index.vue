@@ -4,6 +4,7 @@
     <doc-nav></doc-nav>
     <div class="doc-content">
       <div class="doc-content-document">
+        <doc-issue></doc-issue>
         <div class="doc-content-tabs" v-if="isShow() && isShowTaroDoc">
           <div
             class="tab-item"
@@ -19,6 +20,8 @@
         </div>
         <router-view />
       </div>
+      <doc-issue class="fixed"></doc-issue>
+      <doc-issue class="vertical"></doc-issue>
       <doc-demo-preview :url="demoUrl"></doc-demo-preview>
     </div>
   </div>
@@ -30,13 +33,15 @@ import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute, useRouter } fro
 import Header from '@/sites/doc/components/Header.vue';
 import Nav from '@/sites/doc/components/Nav.vue';
 import DemoPreview from '@/sites/doc/components/DemoPreview.vue';
+import Issue from '@/sites/doc/components/Issue.vue';
 import { RefData } from '@/sites/assets/util/ref';
 export default defineComponent({
   name: 'doc',
   components: {
     [Header.name]: Header,
     [Nav.name]: Nav,
-    [DemoPreview.name]: DemoPreview
+    [DemoPreview.name]: DemoPreview,
+    [Issue.name]: Issue
   },
   setup() {
     const route = useRoute();

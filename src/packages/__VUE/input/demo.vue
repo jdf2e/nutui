@@ -113,7 +113,7 @@ export default createDemo({
       event: ''
     });
     setTimeout(function () {
-      // state.val0 = '异步数据';
+      // state.val1 = '异步数据';
     }, 2000);
     const change = (value: string | number) => {
       console.log('change: ', value);

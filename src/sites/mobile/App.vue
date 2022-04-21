@@ -6,19 +6,32 @@
     {{ title }}
   </div>
   <router-view />
+  <demo-icon></demo-icon>
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { isMobile } from '@/sites/assets/util';
 import { useThemeEditor } from '@/sites/assets/util/helper';
+import Icon from '@/sites/mobile/components/Icon.vue';
 export default defineComponent({
   name: 'app',
+  components: {
+    [Icon.name]: Icon
+  },
   setup() {
     const title = ref('NutUI');
     // 获取当前路由
     const route = useRoute();
     const router = useRouter();
+    onMounted(() => {
+      // demo转换index
+      const { origin, hash, pathname } = window.top.location;
+      if (!isMobile && pathname.includes('demo')) {
+        window.top.location.href = `${origin}/3x/index.html${hash}`;
+        window.location.href = `${origin}/3x/demo.html${hash}`;
+      }
+    });
 
     useThemeEditor();
 
@@ -104,10 +117,9 @@ body {
     background: #f7f8fa;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 57px 17px 0 17px;
-
+    padding: 57px 17px 46px 17px;
     &.full {
-      padding: 57px 0 0 0;
+      padding: 57px 0 46px 0;
       h2 {
         padding-left: 27px;
       }
