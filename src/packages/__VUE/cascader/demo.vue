@@ -122,7 +122,7 @@
 
 <script lang="ts">
 import { onMounted, reactive, watch } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('cascader');
 
 export default createDemo({

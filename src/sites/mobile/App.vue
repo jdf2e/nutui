@@ -4,6 +4,12 @@
       <nut-icon name="left"></nut-icon>
     </div>
     {{ title }}
+    <div class="translate" @click="translateChange">
+      <nut-icon
+        name="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"
+      >
+      </nut-icon>
+    </div>
   </div>
   <router-view />
 </template>
@@ -12,6 +18,7 @@ import { defineComponent, ref, watch, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { isMobile } from '@/sites/assets/util';
 import { useThemeEditor } from '@/sites/assets/util/helper';
+import { translateChange } from '../assets/util/useTranslate';
 export default defineComponent({
   name: 'app',
   setup() {
@@ -50,7 +57,7 @@ export default defineComponent({
       }
     );
 
-    return { title, isShow, goBack };
+    return { title, isShow, goBack, translateChange };
   }
 });
 </script>
@@ -90,6 +97,17 @@ body {
     .back {
       position: absolute;
       left: 0;
+      height: 100%;
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .translate {
+      position: absolute;
+      top: 0;
+      right: 0;
       height: 100%;
       width: 50px;
       display: flex;

@@ -9,7 +9,7 @@
 </template>
 <script lang="ts">
 import { computed, onMounted, reactive, ref, toRefs, Ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 // import { createIntersectionObserver, IntersectionObserver } from '@tarojs/taro';
 const { componentName, create } = createComponent('sidenavbar');
 export default create({

@@ -32,7 +32,7 @@
 </template>
 <script lang="ts">
 import { Ref, ref, watch } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('ecard');
 
 interface props {

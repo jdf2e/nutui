@@ -67,7 +67,7 @@ import SkuHeader from './components/SkuHeader.vue';
 import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.vue';
 import SkuOperate from './components/SkuOperate.vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/index.vue';
 const { componentName, create, translate } = createComponent('sku');
 

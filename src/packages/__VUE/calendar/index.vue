@@ -82,10 +82,10 @@
 </template>
 <script lang="ts">
 import { PropType, ref, computed } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('calendar');
 import CalendarItem from '../calendaritem/index.vue';
-import Utils from '../../utils/date';
+import Utils from '@/packages/utils/date';
 type InputDate = string | string[];
 export default create({
   components: {

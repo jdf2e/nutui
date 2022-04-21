@@ -18,9 +18,9 @@
   </nut-cell>
 </template>
 <script lang="ts">
-import { pxCheck } from '../../utils/pxCheck';
+import { pxCheck } from '@/packages/utils/pxCheck';
 import { computed, inject, provide, PropType, ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('form-item');
 import { FormItemRule } from './types';
 export default create({

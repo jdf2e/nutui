@@ -47,7 +47,7 @@
 
 <script lang="ts">
 import { computed, onMounted, useSlots, ref, watch } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('progress');
 export default create({
   props: {

@@ -1,12 +1,6 @@
 <template>
   <Transition name="overlay-fade">
-    <view
-      :class="classes"
-      @touchmove.stop="touchmove"
-      @click="onClick"
-      :style="style"
-      v-show="visible"
-    >
+    <view :class="classes" @touchmove.stop="touchmove" @click="onClick" :style="style" v-show="visible">
       <slot></slot>
     </view>
   </Transition>
@@ -23,7 +17,7 @@ import {
   onActivated,
   watchEffect
 } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('overlay');
 const overlayProps = {
   visible: {

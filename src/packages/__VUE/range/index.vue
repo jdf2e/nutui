@@ -75,9 +75,9 @@
 </template>
 <script lang="ts">
 import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
-import { createComponent } from '../../utils/create';
-import { useTouch } from '../../utils/useTouch';
-import { useRect } from '../../utils/useRect';
+import { createComponent } from '@/packages/utils/create';
+import { useTouch } from '@/packages/utils/useTouch';
+import { useRect } from '@/packages/utils/useRect';
 const { componentName, create } = createComponent('range');
 
 type SliderValue = number | number[];

@@ -20,6 +20,8 @@
         }}</view>
       </view>
 
+      <slot name="top"></slot>
+
       <view class="nut-picker__column">
         <view class="nut-picker__hairline"></view>
         <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
@@ -37,12 +39,14 @@
           ></nut-picker-column>
         </view>
       </view>
+
+      <slot name="default"></slot>
     </nut-popup>
   </view>
 </template>
 <script lang="ts">
 import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRefs, PropType } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import popup, { popupProps } from '../popup/index.vue';
 import column from './Column.vue';
 import { PickerOption } from './types';

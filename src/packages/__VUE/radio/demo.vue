@@ -75,7 +75,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { reactive, toRefs } from 'vue';
 const { createDemo } = createComponent('radio');
 export default createDemo({

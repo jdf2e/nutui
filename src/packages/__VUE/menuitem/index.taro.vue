@@ -38,7 +38,7 @@
 </template>
 <script lang="ts">
 import { reactive, PropType, inject, getCurrentInstance, computed } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('menu-item');
 import Icon from '../icon/index.taro.vue';
 import Popup from '../popup/index.taro.vue';

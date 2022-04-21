@@ -17,7 +17,7 @@
 </template>
 <script lang="ts">
 import { ref, onMounted } from 'vue';
-import { createComponent } from '../../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('sku-operate');
 
 export default create({
