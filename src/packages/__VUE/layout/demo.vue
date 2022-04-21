@@ -128,7 +128,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('layout');
 import Row from '../row/index.vue';
 import Col from '../col/index.vue';

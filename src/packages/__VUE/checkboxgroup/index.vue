@@ -1,7 +1,7 @@
 <script lang="ts">
 import { h, watch, provide, computed, ComponentInternalInstance, reactive, ComponentPublicInstance } from 'vue';
-import { createComponent } from '../../utils/create';
-import { useExpose } from '../../utils/useExpose/index';
+import { createComponent } from '@/packages/utils/create';
+import { useExpose } from '@/packages/utils/useExpose/index';
 const { create, componentName } = createComponent('checkboxgroup');
 
 export default create({

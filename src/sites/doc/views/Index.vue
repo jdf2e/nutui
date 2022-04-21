@@ -31,6 +31,7 @@ import Header from '@/sites/doc/components/Header.vue';
 import Nav from '@/sites/doc/components/Nav.vue';
 import DemoPreview from '@/sites/doc/components/DemoPreview.vue';
 import { RefData } from '@/sites/assets/util/ref';
+import { initSiteLang } from '@/sites/assets/util/useTranslate';
 export default defineComponent({
   name: 'doc',
   components: {
@@ -41,6 +42,7 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const router = useRouter();
+    initSiteLang();
     const excludeTaro = ['/intro', '/start', '/theme', '/joinus', '/starttaro', '/contributing'];
     const data = reactive({
       demoUrl: 'demo.html',
@@ -85,8 +87,9 @@ export default defineComponent({
 
     const watchDemoUrl = (router: RouteLocationNormalized) => {
       const { origin, pathname } = window.location;
-      RefData.getInstance().currentRoute.value = router.name as string;
-      data.demoUrl = `${origin}${pathname.replace('index.html', '')}demo.html#${router.path}`;
+      RefData.getInstance().currentRoute.value = router.path as string;
+      let url = `${origin}${pathname.replace('index.html', '')}demo.html#${router.path}`;
+      data.demoUrl = url.replace('/zh-CN', '').replace('/en-US', '');
     };
 
     const watchDocMd = () => {

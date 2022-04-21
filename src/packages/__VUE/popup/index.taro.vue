@@ -13,7 +13,7 @@
     />
     <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
       <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
-        <slot v-if="showSlot"></slot>
+        <div v-show="showSlot"><slot></slot></div>
         <view
           v-if="closed"
           @click="onClickCloseIcon"
@@ -45,7 +45,7 @@ import { useLockScroll } from '../popup/use-lock-scroll';
 import { overlayProps } from '../overlay/index.taro.vue';
 import overlay from '../overlay/index.taro.vue';
 import icon from '../icon/index.taro.vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('popup');
 let _zIndex = 2000;
 export const popupProps = {

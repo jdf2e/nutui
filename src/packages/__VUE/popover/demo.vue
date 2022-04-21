@@ -64,7 +64,7 @@
 </template>
 <script lang="ts">
 import { reactive, ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('popover');
 
 export default createDemo({

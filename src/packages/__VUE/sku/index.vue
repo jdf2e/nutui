@@ -33,7 +33,7 @@
         <sku-stepper
           v-if="!getSlots('sku-stepper')"
           :goods="goods"
-          :stepperTitle="stepperTitle"
+          :stepperTitle="stepperTitle || translate('buyNumber')"
           :stepperMax="stepperMax"
           :stepperMin="stepperMin"
           :stepperExtraText="stepperExtraText"
@@ -49,9 +49,9 @@
       <sku-operate
         :btnOptions="btnOptions"
         :btnExtraText="btnExtraText"
-        :buyText="buyText"
-        :addCartText="addCartText"
-        :confirmText="confirmText"
+        :buyText="buyText || translate('buyNow')"
+        :addCartText="addCartText || translate('addToCard')"
+        :confirmText="confirmText || translate('confirm')"
         @clickBtnOperate="clickBtnOperate"
       >
         <template #operate-btn v-if="getSlots('sku-operate')">
@@ -67,9 +67,9 @@ import SkuHeader from './components/SkuHeader.vue';
 import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.vue';
 import SkuOperate from './components/SkuOperate.vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/index.vue';
-const { componentName, create } = createComponent('sku');
+const { componentName, create, translate } = createComponent('sku');
 
 export default create({
   props: {
@@ -106,7 +106,7 @@ export default create({
     // 数量选择左侧文案
     stepperTitle: {
       type: String,
-      default: '购买数量'
+      default: ''
     },
 
     // stepper 前面文案
@@ -123,19 +123,19 @@ export default create({
     // 立即购买文案
     buyText: {
       type: String,
-      default: '立即购买'
+      default: ''
     },
 
     // 加入购物车文案
     addCartText: {
       type: String,
-      default: '加入购物车'
+      default: ''
     },
 
     // 确定文案
     confirmText: {
       type: String,
-      default: '确定'
+      default: ''
     }
   },
   emits: [
@@ -250,7 +250,8 @@ export default create({
       clickBtnOperate,
       add,
       reduce,
-      getSlots
+      getSlots,
+      translate
     };
   }
 });

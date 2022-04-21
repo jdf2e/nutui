@@ -10,13 +10,15 @@
       :round="true"
     >
       <view class="nut-picker__bar">
-        <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="close">{{ cancelText }}</view>
+        <view class="nut-picker__cancel nut-picker__left nut-picker__button" @click="close">{{
+          cancelText || translate('cancel')
+        }}</view>
         <view class="nut-picker__title"> {{ title }}</view>
         <view class="nut-picker__confirm nut-picker__right nut-picker__button" @click="confirmHandler()">{{
-          okText
+          okText || translate('confirm')
         }}</view>
       </view>
-
+      <slot name="top"></slot>
       <view class="nut-picker__column">
         <view class="nut-picker__hairline"></view>
         <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
@@ -34,16 +36,17 @@
           ></nut-picker-column>
         </view>
       </view>
+      <slot name="default"></slot>
     </nut-popup>
   </view>
 </template>
 <script lang="ts">
 import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRefs, PropType } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/index.taro.vue';
 import column from './ColumnTaro.vue';
 import { PickerOption } from './types';
-const { componentName, create } = createComponent('picker');
+const { componentName, create, translate } = createComponent('picker');
 export default create({
   components: {
     [column.name]: column
@@ -60,11 +63,11 @@ export default create({
     },
     cancelText: {
       type: String,
-      default: '取消'
+      default: ''
     },
     okText: {
       type: String,
-      default: '确定'
+      default: ''
     },
     columns: {
       type: Array,
@@ -243,7 +246,8 @@ export default create({
       close,
       changeHandler,
       confirmHandler,
-      defaultValues
+      defaultValues,
+      translate
     };
   }
 });

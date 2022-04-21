@@ -4,22 +4,27 @@
     <div class="demo__piece">
       <nut-circleprogress :progress="20"> </nut-circleprogress>
     </div>
-
-    <h2>环形进度条自定义样式</h2>
+    <h2>环形进度条自定义宽度</h2>
     <div class="demo__piece">
-      <nut-circleprogress :progress="20" :progress-option="progressOption"> </nut-circleprogress>
+      <nut-circleprogress :progress="50" strokeWidth="10"> </nut-circleprogress>
     </div>
 
+    <h2>环形进度条自定义颜色(支持渐变色)</h2>
+    <div class="demo__piece">
+      <nut-circleprogress :progress="50" color="red" />
+      <nut-circleprogress :progress="100" :color="gradientColor" />
+    </div>
+    <h2>环形进度条自定义大小</h2>
+    <div class="demo__piece">
+      <nut-circleprogress :progress="50" radius="60"></nut-circleprogress>
+    </div>
     <h2>环形进度条自定义内容</h2>
     <div class="demo__piece">
-      <nut-circleprogress :progress="60" :is-auto="isAuto">
-        <div>自定义</div>
-      </nut-circleprogress>
+      <nut-circleprogress :progress="50" radius="60">自定义</nut-circleprogress>
     </div>
     <h2>动态改变环形进度条的进度</h2>
     <div class="demo__piece">
-      <nut-circleprogress :progress="percent" :progress-option="progressOption" :stroke-inner-width="strokeInnerWidth">
-      </nut-circleprogress>
+      <nut-circleprogress :progress="percent"> </nut-circleprogress>
     </div>
     <div class="demo__btn">
       <nut-button type="primary" @click="setReduceVal">减少</nut-button>
@@ -31,19 +36,13 @@
 <script lang="ts">
 import { reactive, ref } from 'vue';
 export default {
-  props: {},
   setup() {
-    const progressOption = reactive({
-      radius: 50,
-      strokeOutWidth: 10,
-      backColor: '#d9d9d9',
-      progressColor: 'blue'
-    });
-    const percent = ref(50);
-    const strokeInnerWidth = ref(10);
-    const isAuto = ref(true);
+    const gradientColor = {
+      '0%': '#FF5E5E',
+      '100%': '#FFA062'
+    };
+    const percent = ref(30);
     const setAddVal = () => {
-      strokeInnerWidth.value = 10;
       if (percent.value >= 100) {
         return;
       }
@@ -51,18 +50,16 @@ export default {
     };
     const setReduceVal = () => {
       if (percent.value - 10 <= 0) {
-        strokeInnerWidth.value = 0;
         percent.value = 0;
         return;
       }
       percent.value -= 10;
     };
     return {
-      progressOption,
-      isAuto,
       setAddVal,
       setReduceVal,
-      percent
+      percent,
+      gradientColor
     };
   }
 };

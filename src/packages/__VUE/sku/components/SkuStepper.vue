@@ -17,8 +17,8 @@
 </template>
 <script lang="ts">
 import { ref, onMounted } from 'vue';
-import { TypeOfFun } from '../../../utils/util';
-import { createComponent } from '../../../utils/create';
+import { TypeOfFun } from '@/packages/utils/util';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('sku-stepper');
 
 export default create({

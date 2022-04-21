@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { computed, toRefs } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('navbar');
 export default create({
   props: {
@@ -36,7 +36,7 @@ export default create({
       default: false
     }
   },
-  emits: ['click', 'on-click-back', 'on-click-title', 'on-click-icon', 'on-click-right'],
+  emits: ['on-click-back', 'on-click-title', 'on-click-icon', 'on-click-right'],
   setup(props, { emit }) {
     const { fixed, safeAreaInsetTop } = toRefs(props);
     const classes = computed(() => {

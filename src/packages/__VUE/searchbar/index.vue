@@ -13,7 +13,7 @@
             class="nut-searchbar__input-bar"
             :type="inputType"
             :maxlength="maxLength"
-            :placeholder="placeholder"
+            :placeholder="placeholder || translate('placeholder')"
             :value="modelValue"
             @input="valueChange"
             @focus="valueFocus"
@@ -36,8 +36,8 @@
 
 <script lang="ts">
 import { toRefs, reactive, computed } from 'vue';
-import { createComponent } from '../../utils/create';
-const { create } = createComponent('searchbar');
+import { createComponent } from '@/packages/utils/create';
+const { create, translate } = createComponent('searchbar');
 interface Events {
   eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
   params: (string | number | Event)[];
@@ -58,7 +58,7 @@ export default create({
     },
     placeholder: {
       type: String,
-      default: '请输入'
+      default: ''
     },
     clearable: {
       type: Boolean,
@@ -141,7 +141,8 @@ export default create({
       handleClear,
       handleSubmit,
       searchbarStyle,
-      inputSearchbarStyle
+      inputSearchbarStyle,
+      translate
     };
   }
 });

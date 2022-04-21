@@ -1,18 +1,33 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-cell title="请选择城市" :desc="index" @click="open(0)"></nut-cell>
+    <nut-cell
+      title="请选择城市"
+      :desc="index"
+      @click="
+        () => {
+          show = true;
+        }
+      "
+    ></nut-cell>
     <nut-picker
       v-model:visible="show"
       :columns="columns"
       title="城市选择"
       @change="change"
       @confirm="(options) => confirm('index', options)"
-    >
-    </nut-picker>
+    ></nut-picker>
 
     <h2>默认选中项</h2>
-    <nut-cell title="请选择城市" :desc="defult" @click="open(1)"></nut-cell>
+    <nut-cell
+      title="请选择城市"
+      :desc="defult"
+      @click="
+        () => {
+          showDefult = true;
+        }
+      "
+    ></nut-cell>
     <nut-picker
       v-model="selectedValue"
       v-model:visible="showDefult"
@@ -23,7 +38,15 @@
     </nut-picker>
 
     <h2>多列样式</h2>
-    <nut-cell title="请选择时间" :desc="multiple" @click="open(2)"></nut-cell>
+    <nut-cell
+      title="请选择时间"
+      :desc="multiple"
+      @click="
+        () => {
+          showMultiple = true;
+        }
+      "
+    ></nut-cell>
     <nut-picker
       v-model:visible="showMultiple"
       :columns="multipleColumns"
@@ -33,7 +56,15 @@
     </nut-picker>
 
     <h2>多级联动</h2>
-    <nut-cell title="请选择地址" :desc="cascader" @click="open(3)"></nut-cell>
+    <nut-cell
+      title="请选择地址"
+      :desc="cascader"
+      @click="
+        () => {
+          showCascader = true;
+        }
+      "
+    ></nut-cell>
     <nut-picker
       v-model:visible="showCascader"
       :columns="cascaderColumns"
@@ -42,7 +73,15 @@
     ></nut-picker>
 
     <h2>异步获取</h2>
-    <nut-cell title="请选择地址" :desc="async" @click="open(4)"></nut-cell>
+    <nut-cell
+      title="请选择地址"
+      :desc="async"
+      @click="
+        () => {
+          showAsync = true;
+        }
+      "
+    ></nut-cell>
     <nut-picker
       v-model="asyncValue"
       v-model:visible="showAsync"
@@ -50,6 +89,25 @@
       title="城市选择"
       @confirm="(options) => confirm('async', options)"
     ></nut-picker>
+
+    <h2>自定义按钮</h2>
+    <nut-cell
+      title="请选择有效日期"
+      :desc="effect"
+      @click="
+        () => {
+          showEffect = true;
+        }
+      "
+    ></nut-cell>
+    <nut-picker
+      v-model:visible="showEffect"
+      :columns="effectColumns"
+      title="日期选择"
+      @confirm="(options) => confirm('effect', options)"
+    >
+      <nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-picker
+    >
   </div>
 </template>
 <script lang="ts">
@@ -132,6 +190,20 @@ export default {
       }
     ]);
 
+    const effectColumns = ref([
+      { text: '2022-01', value: 'January' },
+      { text: '2022-02', value: 'February' },
+      { text: '2022-03', value: 'March' },
+      { text: '2022-04', value: 'April' },
+      { text: '2022-05', value: 'May' },
+      { text: '2022-06', value: 'June' },
+      { text: '2022-07', value: 'July' },
+      { text: '2022-08', value: 'August' },
+      { text: '2022-09', value: 'September' },
+      { text: '2022-10', value: 'October' },
+      { text: '2022-11', value: 'November' },
+      { text: '2022-12', value: 'December' }
+    ]);
     const asyncColumns = ref<PickerOption[]>([]);
 
     const show = ref(false);
@@ -139,13 +211,15 @@ export default {
     const showMultiple = ref(false);
     const showCascader = ref(false);
     const showAsync = ref(false);
+    const showEffect = ref(false);
 
     const desc = reactive({
       index: '',
       defult: '',
       multiple: '',
       cascader: '',
-      async: ''
+      async: '',
+      effect: ''
     });
 
     const open = (index: number) => {
@@ -183,16 +257,20 @@ export default {
         ];
 
         asyncValue.value = ['ZangZu'];
-      }, 1000);
+      }, 500);
     });
 
     const confirm = (tag: string, { selectedValue }: { selectedValue: string[] }) => {
-      desc[tag] = selectedValue.join(',');
+      (desc as any)[tag] = selectedValue.join(',');
     };
     const change = ({ selectedValue }: { selectedValue: string[] }) => {
       console.log(selectedValue);
     };
 
+    const alwaysFun = () => {
+      showEffect.value = false;
+      desc.effect = '永远有效';
+    };
     return {
       selectedValue,
       asyncValue,
@@ -206,9 +284,12 @@ export default {
       open,
       multipleColumns,
       cascaderColumns,
-      asyncColumns,
       confirm,
-      change
+      change,
+      asyncColumns,
+      effectColumns,
+      showEffect,
+      alwaysFun
     };
   }
 };

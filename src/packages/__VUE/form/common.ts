@@ -1,4 +1,4 @@
-import { isPromise } from '../../utils/util';
+import { getPropByPath, isPromise } from '@/packages/utils/util';
 import { computed, provide, reactive, VNode, watch } from 'vue';
 import { FormItemRule } from '../formitem/types';
 import { ErrorMessage, FormRule } from './types';
@@ -66,10 +66,6 @@ export const component = {
           tipMessage(errorMsg);
           resolve(errorMsg);
         });
-      };
-
-      const getPropByPath = (obj: any, keyPath: string) => {
-        return keyPath.split('.').reduce((prev, curr) => prev[curr], obj);
       };
 
       if (!prop) {

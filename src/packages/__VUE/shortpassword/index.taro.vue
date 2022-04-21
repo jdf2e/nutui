@@ -12,8 +12,8 @@
       :close-on-click-overlay="closeOnClickOverlay"
       @click-overlay="close"
     >
-      <view class="nut-shortpsd-title">{{ title }}</view>
-      <view class="nut-shortpsdWx-subtitle">{{ desc }}</view>
+      <view class="nut-shortpsd-title">{{ title || translate('title') }}</view>
+      <view class="nut-shortpsd-subtitle">{{ desc || translate('desc') }}</view>
       <input
         v-if="isWx && visible"
         class="nut-input-real-taro"
@@ -42,36 +42,36 @@
       </view>
       <view class="nut-shortpsd-message">
         <view class="nut-shortpsd-error">{{ errorMsg }}</view>
-        <view class="nut-shortpsd-forget" @click="onTips" v-if="tips">
+        <view class="nut-shortpsd-forget" @click="onTips" v-if="tips || translate('tips')">
           <nut-icon class="icon" size="11px" name="tips"></nut-icon>
-          <view>{{ tips }}</view>
+          <view>{{ tips || translate('tips') }}</view>
         </view>
       </view>
       <view v-if="!noButton" class="nut-shortpsd-footer">
-        <view class="nut-shortpsd-cancle" @click="close">取消</view>
-        <view class="nut-shortpsd-sure" @click="sureClick">确认</view>
+        <view class="nut-shortpsd-cancle" @click="close">{{ translate('cancel') }}</view>
+        <view class="nut-shortpsd-sure" @click="sureClick">{{ translate('confirm') }}</view>
       </view>
     </nut-popup>
   </view>
 </template>
 <script lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
-import { createComponent } from '../../utils/create';
-const { create } = createComponent('shortpassword');
+import { createComponent } from '@/packages/utils/create';
+const { create, translate } = createComponent('shortpassword');
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 export default create({
   props: {
     title: {
       type: String,
-      default: '请输入密码'
+      default: ''
     },
     desc: {
       type: String,
-      default: '您使用了虚拟资产，请进行验证'
+      default: ''
     },
     tips: {
       type: String,
-      default: '忘记密码'
+      default: ''
     },
     visible: {
       type: Boolean,
@@ -197,7 +197,8 @@ export default create({
       closeIcon,
       isWx,
       refRandomId,
-      randRef
+      randRef,
+      translate
     };
   }
 });

@@ -16,7 +16,7 @@
     <nut-input label="整数" v-model="state.digit" type="digit" />
     <nut-input label="手机号" v-model="state.tel" type="tel" />
 
-    <h2>禁用输入框</h2>
+    <h2>禁用和只读</h2>
     <nut-input v-model="state.readonly" readonly label="文本" placeholder="输入框只读" />
     <nut-input v-model="state.disabled" disabled label="文本" placeholder="输入框已禁用" />
 
@@ -53,7 +53,7 @@
       type="textarea"
       show-word-limit
       rows="2"
-      maxNum="50"
+      maxLength="50"
       placeholder="请输入留言"
     />
 
@@ -67,7 +67,7 @@
 
     <h2>点击事件</h2>
     <nut-input
-      v-model="state.event2"
+      v-model="state.event"
       label="event"
       left-icon="dongdong"
       right-icon="ask2"
@@ -87,7 +87,7 @@
 
 <script lang="ts">
 import { reactive } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('input');
 export default createDemo({
   setup() {
@@ -110,8 +110,7 @@ export default createDemo({
       textarea: '',
       align1: '',
       align2: '',
-      event1: '',
-      event2: ''
+      event: ''
     });
     setTimeout(function () {
       // state.val0 = '异步数据';

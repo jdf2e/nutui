@@ -5,7 +5,7 @@
       @click="select(modelValue - 1, true)"
     >
       <slot name="prev-text">
-        {{ prevText }}
+        {{ prevText || translate('prev') }}
       </slot>
     </view>
     <view class="nut-pagination-contain" v-if="mode == 'multi'">
@@ -28,15 +28,15 @@
       @click="select(modelValue + 1, true)"
     >
       <slot name="next-text">
-        {{ nextText }}
+        {{ nextText || translate('next') }}
       </slot>
     </view>
   </view>
 </template>
 <script lang="ts">
 import { toRefs, onMounted, watchEffect, computed } from 'vue';
-import { createComponent } from '../../utils/create';
-const { componentName, create } = createComponent('pagination');
+import { createComponent } from '@/packages/utils/create';
+const { componentName, create, translate } = createComponent('pagination');
 
 export default create({
   props: {
@@ -50,11 +50,11 @@ export default create({
     },
     prevText: {
       type: String,
-      default: '上一页'
+      default: ''
     },
     nextText: {
       type: String,
-      default: '下一页'
+      default: ''
     },
     pageCount: {
       type: [String, Number],
@@ -150,7 +150,8 @@ export default create({
       countRef,
       mode,
       pages,
-      forceEllipses
+      forceEllipses,
+      translate
     };
   }
 });

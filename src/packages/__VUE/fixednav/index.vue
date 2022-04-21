@@ -1,11 +1,6 @@
 <template>
   <view :class="classes" :style="position">
-    <nut-overlay
-      v-if="overlay"
-      :visible="visible"
-      :z-index="200"
-      @click="updateValue(false)"
-    />
+    <nut-overlay v-if="overlay" :visible="visible" :z-index="200" @click="updateValue(false)" />
     <slot name="list">
       <view class="nut-fixednav__list">
         <view
@@ -23,16 +18,18 @@
     <div class="nut-fixednav__btn" @click="updateValue()">
       <slot name="btn">
         <nut-icon name="left" color="#fff" />
-        <view class="text">{{ visible ? activeText : unActiveText }}</view>
+        <view class="text"
+          >{{ visible ? activeText || translate('activeText') : unActiveText || translate('unActiveText') }}
+        </view>
       </slot>
     </div>
   </view>
 </template>
 <script lang="ts">
 import { computed } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import overlay from '../overlay/index.vue';
-const { componentName, create } = createComponent('fixednav');
+const { componentName, create, translate } = createComponent('fixednav');
 
 export default create({
   components: {
@@ -52,11 +49,11 @@ export default create({
       type: Array
     },
     activeText: {
-      default: '收起导航',
+      default: '',
       type: String
     },
     unActiveText: {
-      default: '快速导航',
+      default: '',
       type: String
     },
     position: {
@@ -73,7 +70,6 @@ export default create({
       type: String
     }
   },
-  components: {},
   emits: ['update:visible', 'selected'],
 
   setup(props, { emit }) {
@@ -96,7 +92,7 @@ export default create({
       });
     };
 
-    return { classes, updateValue, selected };
+    return { classes, updateValue, selected, translate };
   }
 });
 </script>

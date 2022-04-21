@@ -3,8 +3,8 @@ import { render, createVNode, h } from 'vue';
 export class DialogOptions {
   title?: string = '';
   content?: string = '';
-  cancelText?: string = '取消';
-  okText?: string = '确定';
+  cancelText?: string = '';
+  okText?: string = '';
   textAlign?: string = 'center';
   teleport?: String | HTMLElement = 'body';
   id?: string | number = new Date().getTime();

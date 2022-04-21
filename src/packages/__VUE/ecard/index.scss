@@ -1,0 +1,83 @@
+.nut-ecard {
+  width: 100%;
+
+  &__title {
+    line-height: 1;
+    font-size: 15px;
+    font-family: PingFangSC;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 15px;
+
+    &__item {
+      width: 48%;
+      height: 46px;
+      background: $ecard-bg-color;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &.active {
+        background: $white;
+        outline: 1px solid $primary-color;
+        border-radius: 4px;
+      }
+    }
+
+    &__input {
+      width: 100%;
+      height: 46px;
+      background: $ecard-bg-color;
+      color: rgba(0, 0, 0, 0.8);
+      border-radius: 4px;
+      display: flex;
+      padding: 0 15px 0 20px;
+      font-size: 14px;
+      justify-content: space-between;
+      align-items: center;
+
+      &--con {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        > input {
+          caret-color: $primary-color; //光标颜色
+          text-align: right;
+          background: $ecard-bg-color;
+          margin-right: 10px;
+          outline: 0 none;
+          border: 0;
+          text-decoration: none;
+        }
+      }
+
+      &.active {
+        background: $white;
+        outline: 1px solid $primary-color;
+
+        > view > input {
+          background: $white;
+        }
+      }
+    }
+
+    &__step {
+      width: 100%;
+      margin-top: 17px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      font-family: PingFangSC;
+      font-weight: normal;
+      color: $primary-color;
+    }
+  }
+}

@@ -27,9 +27,9 @@
 </template>
 <script lang="ts">
 import { reactive, ref, watch, computed, toRefs, onMounted, PropType } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { PickerOption, TouchParams } from './types';
-import { useTaroRect } from '../../utils/useTaroRect';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { create } = createComponent('picker-column');
 import Taro from '@tarojs/taro';
 
@@ -182,7 +182,6 @@ export default create({
         } else {
           deg = `${(-updateMove / state.lineSpacing + 1) * state.rotation}deg`;
         }
-
         setTransform(updateMove, null, undefined, deg);
         state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
       }
@@ -226,6 +225,8 @@ export default create({
           setTimeout(() => {
             getReference();
           }, 200);
+        } else {
+          state.transformY = 0;
         }
       },
       {

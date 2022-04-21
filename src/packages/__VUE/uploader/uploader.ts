@@ -51,36 +51,40 @@ export class Uploader {
       console.warn('浏览器不支持 XMLHttpRequest');
     }
   }
-  uploadTaro(uploadFile: Function) {
+  uploadTaro(uploadFile: Function, env: string) {
     const options = this.options;
-    const uploadTask = uploadFile({
-      url: options.url,
-      filePath: options.taroFilePath,
-      header: {
-        'Content-Type': 'multipart/form-data',
-        ...options.headers
-      }, //
-      formData: options.formData,
-      name: options.name,
-      success(response: { errMsg: any; statusCode: number; data: string }) {
-        if (options.xhrState == response.statusCode) {
-          options.onSuccess?.(response, options);
-        } else {
-          options.onFailure?.(response, options);
+    if (env === 'WEB') {
+      this.upload();
+    } else {
+      const uploadTask = uploadFile({
+        url: options.url,
+        filePath: options.taroFilePath,
+        header: {
+          'Content-Type': 'multipart/form-data',
+          ...options.headers
+        }, //
+        formData: options.formData,
+        name: options.name,
+        success(response: { errMsg: any; statusCode: number; data: string }) {
+          if (options.xhrState == response.statusCode) {
+            options.onSuccess?.(response, options);
+          } else {
+            options.onFailure?.(response, options);
+          }
+        },
+        fail(e: any) {
+          options.onFailure?.(e, options);
         }
-      },
-      fail(e: any) {
-        options.onFailure?.(e, options);
-      }
-    });
-    options.onStart?.(options);
-    uploadTask.progress((res: { progress: any; totalBytesSent: any; totalBytesExpectedToSend: any }) => {
-      options.onProgress?.(res, options);
-      // console.log('上传进度', res.progress);
-      // console.log('已经上传的数据长度', res.totalBytesSent);
-      // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend);
-    });
+      });
+      options.onStart?.(options);
+      uploadTask.progress((res: { progress: any; totalBytesSent: any; totalBytesExpectedToSend: any }) => {
+        options.onProgress?.(res, options);
+        // console.log('上传进度', res.progress);
+        // console.log('已经上传的数据长度', res.totalBytesSent);
+        // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend);
+      });
 
-    // uploadTask.abort(); // 取消上传任务
+      // uploadTask.abort(); // 取消上传任务
+    }
   }
 }

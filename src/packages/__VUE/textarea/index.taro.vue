@@ -16,7 +16,7 @@ onMounted, nextTick, , watch, ref<template>
       @blur="blur"
       @focus="focus"
       :maxlength="maxLength"
-      :placeholder="placeholder"
+      :placeholder="placeholder || translate('placeholder')"
       :auto-focus="autofocus"
     />
     <view class="nut-textarea__limit" v-if="limitShow"> {{ modelValue ? modelValue.length : 0 }}/{{ maxLength }}</view>
@@ -24,9 +24,9 @@ onMounted, nextTick, , watch, ref<template>
 </template>
 <script lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 
-const { componentName, create } = createComponent('textarea');
+const { componentName, create, translate } = createComponent('textarea');
 
 export default create({
   props: {
@@ -52,7 +52,7 @@ export default create({
     },
     placeholder: {
       type: String,
-      default: '请输入内容'
+      default: ''
     },
     readonly: {
       type: Boolean,
@@ -160,7 +160,8 @@ export default create({
       styles,
       change,
       focus,
-      blur
+      blur,
+      translate
     };
   }
 });

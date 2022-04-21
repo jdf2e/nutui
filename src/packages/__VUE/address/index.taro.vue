@@ -17,7 +17,11 @@
         </view>
 
         <view class="nut-address__header__title">
-          {{ privateType == 'custom' ? customAddressTitle : existAddressTitle }}
+          {{
+            privateType == 'custom'
+              ? customAddressTitle || translate('selectRegion')
+              : existAddressTitle || translate('deliveryTo')
+          }}
         </view>
 
         <view class="arrow-close" @click="handClose('cross')">
@@ -115,7 +119,7 @@
           </ul>
         </div>
         <div class="choose-other" @click="switchModule" v-if="isShowCustomAddress">
-          <div class="btn">{{ customAndExistTitle }}</div>
+          <div class="btn">{{ customAndExistTitle || translate('chooseAnotherAddress') }}</div>
         </div>
       </view>
     </view>
@@ -123,10 +127,10 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, watch, computed, onMounted } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 
-const { create, componentName } = createComponent('address');
+const { create, componentName, translate } = createComponent('address');
 
 interface RegionData {
   id: string;
@@ -164,7 +168,7 @@ export default create({
     },
     customAddressTitle: {
       type: String,
-      default: '请选择所在地区'
+      default: ''
     },
     province: {
       type: Array,
@@ -192,11 +196,11 @@ export default create({
     }, // 现存地址列表
     existAddressTitle: {
       type: String,
-      default: '配送至'
+      default: ''
     },
     customAndExistTitle: {
       type: String,
-      default: '选择其他地址'
+      default: ''
     },
     defaultIcon: {
       // 地址选择列表前 - 默认的图标
@@ -224,7 +228,7 @@ export default create({
     },
     columnsPlaceholder: {
       type: [String, Array],
-      default: '请选择'
+      default: ''
     }
   },
   emits: ['update:visible', 'update:modelValue', 'type', 'change', 'selected', 'close', 'close-mask', 'switch-module'],
@@ -342,16 +346,17 @@ export default create({
 
     // 自定义‘请选择’文案
     const customPlaceholder = () => {
-      let typeD = Object.prototype.toString.call(props.columnsPlaceholder);
+      let selectStr = translate('select');
+      let typeD = Object.prototype.toString.call(props.columnsPlaceholder || selectStr);
       if (typeD == '[object String]') {
-        tabNameDefault.value = new Array(4).fill(props.columnsPlaceholder);
+        tabNameDefault.value = new Array(4).fill(props.columnsPlaceholder || selectStr);
       } else if (typeD == '[object Array]') {
         tabNameDefault.value = new Array(4).fill('');
         tabNameDefault.value.forEach((val, index) => {
           if (props.columnsPlaceholder[index]) {
             tabNameDefault.value[index] = props.columnsPlaceholder[index];
           } else {
-            tabNameDefault.value[index] = '请选择';
+            tabNameDefault.value[index] = selectStr;
           }
         });
       }
@@ -364,7 +369,7 @@ export default create({
       if (tabIndex.value < index) {
         return item.name;
       } else {
-        return '请选择';
+        return tabNameDefault.value[index];
       }
     };
     // 手动关闭 点击叉号(cross)，或者蒙层(mask)
@@ -601,7 +606,8 @@ export default create({
       handClose,
       handleElevatorItem,
       ...toRefs(props),
-      ...toRefs(tabItemRef)
+      ...toRefs(tabItemRef),
+      translate
     };
   }
 });

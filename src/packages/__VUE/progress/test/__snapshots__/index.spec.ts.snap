@@ -5,6 +5,7 @@ exports[`should render progress when use props 1`] = `
   <div class=\\"nut-progress-outer nut-progress-outer-part nut-progress-base\\">
     <div class=\\"nut-progress-inner\\" style=\\"width: 100%;\\">
       <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"nut-progress-text\\" style=\\"line-height: px;\\"><span>100%</span></div>

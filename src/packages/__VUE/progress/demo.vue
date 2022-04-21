@@ -31,6 +31,18 @@
         <nut-progress percentage="60" :text-inside="true" />
       </nut-cell>
     </div>
+    <h2>线形进度条-百分比内显自定义</h2>
+    <div>
+      <nut-cell>
+        <nut-progress percentage="60" :text-inside="true">
+          <nut-icon
+            style="display: block"
+            size="30"
+            name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+          ></nut-icon>
+        </nut-progress>
+      </nut-cell>
+    </div>
     <h2>线形进度条-自定义尺寸(内置"small","base","large"三种规格)</h2>
     <div>
       <nut-cell>
@@ -81,7 +93,7 @@
 
 <script lang="ts">
 import { ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('progress');
 export default createDemo({
   props: {},

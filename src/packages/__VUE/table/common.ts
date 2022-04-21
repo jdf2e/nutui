@@ -2,7 +2,7 @@ import { computed, PropType, reactive, toRefs, watch } from 'vue';
 import RenderColumn from './renderColumn';
 import { TableColumnProps } from './types';
 
-export const component = (componentName: string) => {
+export const component = (componentName: string, translate: Function) => {
   return {
     components: {
       RenderColumn
@@ -87,7 +87,8 @@ export const component = (componentName: string) => {
         cellClasses,
         getColumnItem,
         handleSorterClick,
-        sortDataItem
+        sortDataItem,
+        translate
       };
     }
   };

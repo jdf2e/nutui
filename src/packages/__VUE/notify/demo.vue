@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { Notify } from '../../nutui.vue';
 const { createDemo } = createComponent('notify');
 export default createDemo({

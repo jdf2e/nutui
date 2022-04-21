@@ -15,7 +15,7 @@
       <slot name="description"></slot>
     </template>
     <template v-else>
-      <view class="nut-empty-description">{{ description }}</view>
+      <view class="nut-empty-description">{{ description || translate('noData') }}</view>
     </template>
 
     <!-- 自定义slot -->
@@ -26,8 +26,8 @@
 </template>
 <script lang="ts">
 import { toRefs, computed } from 'vue';
-import { createComponent } from '../../utils/create';
-const { componentName, create } = createComponent('empty');
+import { createComponent } from '@/packages/utils/create';
+const { componentName, create, translate } = createComponent('empty');
 
 type statusOptions = {
   [key: string]: string;
@@ -54,7 +54,7 @@ export default create({
     },
     description: {
       type: String, // 文字区
-      default: '无内容'
+      default: ''
     }
   },
 
@@ -81,7 +81,8 @@ export default create({
 
     return {
       imageUrl,
-      imgStyle
+      imgStyle,
+      translate
     };
   }
 });
