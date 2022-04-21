@@ -23,11 +23,11 @@
 </template>
 <script lang="ts">
 import { onMounted, computed, watch, ref, PropType, toRefs, reactive, CSSProperties } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('popover');
 import Popup, { popupProps } from '../popup/index.vue';
 import Button from '../button/index.vue';
-import { useTaroRect } from '../../utils/useTaroRect';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 import Taro from '@tarojs/taro';
 export type PopoverTheme = 'light' | 'dark';
 

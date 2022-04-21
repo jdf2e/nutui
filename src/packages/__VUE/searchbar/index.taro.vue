@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import { toRefs, reactive, computed } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('searchbar');
 interface Events {
   eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';

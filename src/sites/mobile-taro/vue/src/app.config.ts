@@ -58,6 +58,7 @@ export default {
     {
       root: 'exhibition',
       pages: [
+        'pages/avatar/index',
         'pages/list/index',
         'pages/progress/index',
         'pages/circleprogress/index',
@@ -65,7 +66,6 @@ export default {
         'pages/empty/index',
         'pages/steps/index',
         'pages/swiper/index',
-        'pages/avatar/index',
         'pages/price/index',
         'pages/imagepreview/index',
         'pages/countup/index',
@@ -88,6 +88,8 @@ export default {
         'pages/sku/index',
         'pages/card/index',
         'pages/ecard/index',
+        'pages/addresslist/index',
+        'pages/category/index',
         'pages/comment/index'
       ]
     }

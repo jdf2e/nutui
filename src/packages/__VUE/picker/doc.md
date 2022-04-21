@@ -308,6 +308,68 @@ columns 属性可以通过二维数组的形式配置多列选择。
 ```
 :::
 
+### 自定义按钮
+
+Picker 组件在底部和顶部分别设置了插槽，可进行自定义设置
+
+:::demo
+```html
+<template>
+  <nut-cell title="请选择截止时间" :desc="desc" @click="()=>{show=true}"></nut-cell>
+  <nut-picker
+    v-model:visible="show"
+    :columns="asyncColumns"
+    title="日期选择"
+    @confirm="confirm"
+  >
+   <nut-button block  @click="alwaysFun">永远有效</nut-button>
+  </nut-picker>
+</template>
+<script>
+  import { ref, onMounted } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const desc = ref('');
+      const effectColumns = ref([]);
+
+      onMounted(() => {
+        // 用于模拟接口请求
+        setTimeout(() => {
+          effectColumns.value = [
+            { text: '2022-01', value: 'January' },
+            { text: '2022-02', value: 'February' },
+            { text: '2022-03', value: 'March' },
+            { text: '2022-04', value: 'April' },
+            { text: '2022-05', value: 'May' },
+            { text: '2022-06', value: 'June' },
+            { text: '2022-07', value: 'July' },
+            { text: '2022-08', value: 'August' },
+            { text: '2022-09', value: 'September' },
+            { text: '2022-10', value: 'October' },
+            { text: '2022-11', value: 'November' },
+            { text: '2022-12', value: 'December' }
+          ];
+
+        }, 500);
+      });
+      
+      const confirm = ( { selectedValue,selectedOptions })=>{
+        desc.value = selectedValue.join(',');
+      }
+
+      const alwaysFun = () => {
+        showEffect.value = false;
+        desc.effect = '永远有效';
+      };
+
+      return {show,desc,alwaysFun,effectColumns, confirm};
+    }
+  };
+</script>
+```
+:::
+
 ## API
 
 ### Props
@@ -337,3 +399,10 @@ columns 属性可以通过二维数组的形式配置多列选择。
 | confirm  | 点击确定按钮时触发 | { selectedValue, selectedOptions } |
 | close  | 点击取消按钮时触发 | { selectedValue, selectedOptions } |
 | change  | 选项发生改变时触发 | { columnIndex, selectedValue, selectedOptions } |
+
+### Slots
+
+| 事件名 | 说明           | 
+|--------|----------------|
+| default  | 自定义滑动数据底部区域 |
+| top  | 自定义滑动数据顶部区域 |

@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { Notify } from '../../nutui.vue';
 import { ref } from 'vue';
 const { createDemo } = createComponent('notify');
@@ -43,7 +43,7 @@ export default createDemo({
       });
     };
     const primaryNotify = (msg: string) => {
-      Notify.primary(msg, { duration: 1000000 });
+      Notify.primary(msg, { duration: 10000 });
     };
     const successNotify = (msg: string) => {
       Notify.success(msg);

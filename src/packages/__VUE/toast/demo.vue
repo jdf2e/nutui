@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('toast');
 import { Toast } from '@/packages/nutui.vue';
 export default createDemo({

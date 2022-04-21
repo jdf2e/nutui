@@ -74,7 +74,7 @@
 
 <script lang="ts">
 import { computed, onMounted, provide, reactive, nextTick, ref, watch, Ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('numberkeyboard');
 export default create({
   props: {

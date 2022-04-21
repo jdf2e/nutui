@@ -27,7 +27,7 @@
 </template>
 <script lang="ts">
 import { toRefs, reactive, watch, onMounted } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
 // import Video from '../video/index.vue';
 import Swiper from '../swiper/index.taro.vue';

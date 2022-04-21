@@ -21,7 +21,7 @@
 <script lang="ts">
 import Taro from '@tarojs/taro';
 import { ref, reactive, onMounted, computed } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('signature');
 
 export default create({

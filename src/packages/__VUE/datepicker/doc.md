@@ -198,7 +198,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
       :formatter="formatter"
       @confirm="confirm"
       v-model:visible="show"
-  ></nut-datepicker>
+  ><nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-datepicker>
 </template>
 <script>
   import { ref } from 'vue';
@@ -234,12 +234,17 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
         }
         return option;
       };
+      const alwaysFun = () => {
+        show.value = false;
+        desc.value = '永久有效';
+      };
       return {
         show,
         desc,
         currentDate,
         confirm,
-        formatter
+        formatter,
+        alwaysFun
       };
     }
   };
@@ -376,8 +381,6 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 | ok-text           | 确定按钮文案                                          | String  | 确定   |
 | cancel-text           | 取消按钮文案                                          | String  | 取消   |
 
-
-
 ### Events
     
 | 事件名  | 说明               | 回调参数     |
@@ -385,3 +388,10 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 | confirm | 点击确定按钮时触发 | 	{ selectedValue, selectedOptions } |
 | close   | 关闭时触发         | 	{ selectedValue, selectedOptions } |
 | change   | 选项改变时触发         | { columnIndex, selectedValue, selectedOptions } |
+
+### Slots
+
+| 事件名 | 说明           | 
+|--------|----------------|
+| default  | 自定义滑动数据底部区域 |
+| top  | 自定义滑动数据顶部区域 |

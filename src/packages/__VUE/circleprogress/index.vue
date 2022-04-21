@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { computed, useSlots } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { isObject } from '@/packages/utils/util';
 const { componentName, create } = createComponent('circleprogress');
 export default create({

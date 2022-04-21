@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { computed, inject } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('col');
 
 export default create({

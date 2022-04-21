@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('temp');
 export default createDemo({
   props: {},

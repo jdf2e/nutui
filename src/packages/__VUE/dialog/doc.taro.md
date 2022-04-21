@@ -125,7 +125,6 @@ export default {
 | no-cancel-btn          | 是否隐藏取消按钮                         | Boolean | false      |
 | cancel-text            | 取消按钮文案                             | String  | ”取消“     |
 | ok-text                | 确定按钮文案                             | String  | ”确 定“    |
-| ok-btn-disabled        | 禁用确定按钮                             | Boolean | false      |
 | cancel-auto-close      | 取消按钮是否默认关闭弹窗                 | Boolean | true       |
 | text-align             | 文字对齐方向，可选值同css的text-align    | String  | "center"   |
 | close-on-popstate      | 是否在页面回退时自动关闭                 | Boolean | false      |

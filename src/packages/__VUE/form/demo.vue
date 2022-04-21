@@ -149,7 +149,7 @@
 <script lang="ts">
 import { Toast } from '@/packages/nutui.vue';
 import { reactive, ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('form');
 export default createDemo({
   props: {},
