@@ -4,7 +4,7 @@
     <doc-nav></doc-nav>
     <div class="doc-content">
       <div class="doc-content-document">
-        <doc-issue></doc-issue>
+        <!-- <doc-issue></doc-issue> -->
         <div class="doc-content-tabs" v-if="isShow() && isShowTaroDoc">
           <div
             class="tab-item"
@@ -20,7 +20,7 @@
         </div>
         <router-view />
       </div>
-      <doc-issue class="fixed"></doc-issue>
+      <!-- <doc-issue class="fixed"></doc-issue> -->
       <doc-issue class="vertical"></doc-issue>
       <doc-demo-preview :url="demoUrl"></doc-demo-preview>
     </div>
