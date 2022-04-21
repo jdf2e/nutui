@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { reactive, toRefs, onMounted, onUnmounted, h } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { TableColumnProps } from './types';
 import { Toast } from '@/packages/nutui.vue';
 import Button from '@/packages/__VUE/button/index.vue';

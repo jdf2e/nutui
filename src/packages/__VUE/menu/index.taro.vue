@@ -20,7 +20,7 @@
 </template>
 <script lang="ts">
 import { reactive, provide, computed, ref, Ref, unref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('menu');
 export default create({

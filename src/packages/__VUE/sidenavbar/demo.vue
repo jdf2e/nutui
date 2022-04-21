@@ -69,7 +69,7 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('sidenavbar');
 import { Toast } from '@/packages/nutui.vue';
 export default createDemo({

@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { ref, toRefs, reactive, onMounted, computed, CSSProperties } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { useTouch } from './use-touch';
 import { preventDefault } from './util';
 const { componentName, create } = createComponent('pullrefresh');

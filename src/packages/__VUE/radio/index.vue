@@ -1,6 +1,6 @@
 <script lang="ts">
 import { computed, h, inject } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import nutIcon from '../icon/index.vue';
 const { componentName, create } = createComponent('radio');
 

@@ -50,9 +50,9 @@ import {
   ref,
   watch
 } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { useTouch } from './use-touch';
-import { useExpose } from '../../utils/useExpose/index';
+import { useExpose } from '@/packages/utils/useExpose/index';
 const { create, componentName } = createComponent('swiper');
 export default create({
   props: {
@@ -156,22 +156,14 @@ export default create({
       return 0;
     });
 
-    const activePagination = computed(
-      () => (state.active + childCount.value) % childCount.value
-    );
+    const activePagination = computed(() => (state.active + childCount.value) % childCount.value);
 
     const getStyle = () => {
       state.style = {
         transitionDuration: `${state.moving ? 0 : props.duration}ms`,
-        transform: `translate${isVertical.value ? 'Y' : 'X'}(${
-          state.offset
-        }px)`,
-        [isVertical.value ? 'height' : 'width']: `${
-          size.value * childCount.value
-        }px`,
-        [isVertical.value ? 'width' : 'height']: `${
-          isVertical.value ? state.width : state.height
-        }px`
+        transform: `translate${isVertical.value ? 'Y' : 'X'}(${state.offset}px)`,
+        [isVertical.value ? 'height' : 'width']: `${size.value * childCount.value}px`,
+        [isVertical.value ? 'width' : 'height']: `${isVertical.value ? state.width : state.height}px`
       };
     };
 
@@ -225,15 +217,11 @@ export default create({
       if (props.loop) {
         if (state.children[0] && targetOffset !== minOffset.value) {
           const rightBound = targetOffset < minOffset.value;
-          (state.children[0] as any).setOffset(
-            rightBound ? trackSize.value : 0
-          );
+          (state.children[0] as any).setOffset(rightBound ? trackSize.value : 0);
         }
         if (state.children[childCount.value - 1] && targetOffset !== 0) {
           const leftBound = targetOffset > 0;
-          (state.children[childCount.value - 1] as any).setOffset(
-            leftBound ? -trackSize.value : 0
-          );
+          (state.children[childCount.value - 1] as any).setOffset(leftBound ? -trackSize.value : 0);
         }
       }
 
@@ -329,9 +317,7 @@ export default create({
       state.rect = container.value.getBoundingClientRect();
       active = Math.min(childCount.value - 1, active);
       state.width = props.width ? +props.width : (state.rect as DOMRect).width;
-      state.height = props.height
-        ? +props.height
-        : (state.rect as DOMRect).height;
+      state.height = props.height ? +props.height : (state.rect as DOMRect).height;
       state.active = active;
       state.offset = getOffset(state.active);
       state.moving = true;
@@ -364,21 +350,15 @@ export default create({
     const onTouchEnd = (e: TouchEvent) => {
       if (!props.touchable || !state.moving) return;
       const speed = delTa.value / (Date.now() - state.touchTime);
-      const isShouldMove =
-        Math.abs(speed) > 0.3 ||
-        Math.abs(delTa.value) > +(size.value / 2).toFixed(2);
+      const isShouldMove = Math.abs(speed) > 0.3 || Math.abs(delTa.value) > +(size.value / 2).toFixed(2);
 
       if (isShouldMove && isCorrectDirection.value) {
         let pace = 0;
-        const offset = isVertical.value
-          ? touch.state.offsetY
-          : touch.state.offsetX;
+        const offset = isVertical.value ? touch.state.offsetY : touch.state.offsetX;
         if (props.loop) {
           pace = offset > 0 ? (delTa.value > 0 ? -1 : 1) : 0;
         } else {
-          pace = -Math[delTa.value > 0 ? 'ceil' : 'floor'](
-            delTa.value / size.value
-          );
+          pace = -Math[delTa.value > 0 ? 'ceil' : 'floor'](delTa.value / size.value);
         }
         move({
           pace,

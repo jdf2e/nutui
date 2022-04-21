@@ -80,7 +80,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('grid');
 export default createDemo({
   props: {},

@@ -91,3 +91,16 @@ export const floatData = (format: any, dataOp: any, mapOps: any) => {
 
   return format;
 };
+
+export const deepMerge = (target: any, newObj: any) => {
+  Object.keys(newObj).forEach((key) => {
+    let targetValue = target[key];
+    let newObjValue = newObj[key];
+    if (isObject(targetValue) && isObject(newObjValue)) {
+      deepMerge(targetValue, newObjValue);
+    } else {
+      target[key] = newObjValue;
+    }
+  });
+  return target;
+};

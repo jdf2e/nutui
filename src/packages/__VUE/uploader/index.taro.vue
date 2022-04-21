@@ -69,7 +69,7 @@
 
 <script lang="ts">
 import { computed, PropType, reactive } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { Uploader, UploadOptions } from './uploader';
 const { componentName, create, translate } = createComponent('uploader');
 import Taro from '@tarojs/taro';
@@ -201,6 +201,7 @@ export default create({
         fileItem.message = translate('success');
         emit('success', {
           data,
+          responseText: data,
           option,
           fileItem
         });
@@ -211,6 +212,7 @@ export default create({
         fileItem.message = translate('error');
         emit('failure', {
           data,
+          responseText: data,
           option,
           fileItem
         });

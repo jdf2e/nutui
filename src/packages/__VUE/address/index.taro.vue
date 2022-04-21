@@ -127,7 +127,7 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, watch, computed, onMounted } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 
 const { create, componentName, translate } = createComponent('address');

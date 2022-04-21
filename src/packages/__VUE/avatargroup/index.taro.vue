@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { toRefs, onMounted, computed, provide, ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('avatar-group');
 export default create({
   props: {

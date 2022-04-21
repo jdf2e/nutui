@@ -6,7 +6,7 @@
 <script lang="ts">
 import { login } from '@tarojs/taro';
 import { computed, onMounted } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('divider');
 
 export default create({

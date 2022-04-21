@@ -80,7 +80,7 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, onMounted } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { Toast } from '@/packages/nutui.vue';
 const { createDemo } = createComponent('checkbox');
 export default createDemo({

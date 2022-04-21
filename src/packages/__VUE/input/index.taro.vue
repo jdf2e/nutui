@@ -87,7 +87,7 @@
 </template>
 <script lang="ts">
 import { PropType, ref, reactive, computed, onMounted, watch, nextTick, inject } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
 
 const { componentName, create, translate } = createComponent('input');

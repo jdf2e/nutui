@@ -45,7 +45,7 @@
 
 <script lang="ts">
 import { ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { FileItem } from './index.vue';
 const { createDemo } = createComponent('uploader');
 export default createDemo({

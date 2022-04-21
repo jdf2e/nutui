@@ -765,5 +765,11 @@ $circle-progress-path-color: #e5e9f2 !default;
 $circle-progress-text-color: #000000 !default;
 $circle-progress-text-size: $font-size-3 !default;
 
+// Comment
+$cmt-header-user-name-color: rgba(51, 51, 51, 1) !default;
+$cmt-header-time-color: rgba(153, 153, 153, 1) !default;
+$cmt-bottom-label-color: rgba(153, 153, 153, 1) !default;
+$cmt-shop-color: $primary-color !default;
+
 @import './mixins/index';
 @import './animation/index';

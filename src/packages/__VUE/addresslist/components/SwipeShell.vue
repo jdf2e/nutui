@@ -29,7 +29,7 @@
 </template>
 <script lang="ts">
 import { ref, watch, reactive, toRefs, onMounted, useSlots } from 'vue';
-import { createComponent } from '../../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('swipe-shell');
 // import { Swipe } from '@nutui/nutui';
 import ItemContents from './ItemContents.vue';

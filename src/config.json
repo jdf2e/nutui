@@ -1166,6 +1166,15 @@
           "exportEmpty": true,
           "author": "liqiong43",
           "taro": true
+        },{
+          "name": "Comment",
+          "cType": "特色组件",
+          "cName": "商品评论",
+          "desc": "商品评论",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "yangxiaolu"
         }
       ]
     }

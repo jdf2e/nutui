@@ -79,7 +79,7 @@ import {
   watch,
   h
 } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('noticebar');
 import Taro from '@tarojs/taro';
 
