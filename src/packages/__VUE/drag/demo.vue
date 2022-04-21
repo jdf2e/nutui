@@ -12,11 +12,7 @@
       <nut-button type="primary">只能Y轴拖拽</nut-button>
     </nut-drag>
     <h2 style="top: 60px; position: relative">自动吸边</h2>
-    <nut-drag
-      direction="x"
-      :attract="true"
-      :style="{ top: '275px', left: '8px' }"
-    >
+    <nut-drag direction="x" :attract="true" :style="{ top: '275px', left: '8px' }">
       <nut-button type="primary">拖动我</nut-button>
     </nut-drag>
     <h2 style="top: 90px; position: relative">限制拖动边界</h2>
@@ -31,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('drag');
 export default createDemo({
   setup() {

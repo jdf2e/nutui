@@ -1,8 +1,8 @@
 import { h, computed } from 'vue';
 import type { PropType, CSSProperties, ExtractPropTypes, SetupContext, RenderFunction } from 'vue';
-import { createComponent } from '../../utils/create';
-import { pxCheck } from '../../utils/pxCheck';
-import { useProvide } from '../../utils/useRelation/useProvide';
+import { createComponent } from '@/packages/utils/create';
+import { pxCheck } from '@/packages/utils/pxCheck';
+import { useProvide } from '@/packages/utils/useRelation/useProvide';
 
 const { componentName } = createComponent('grid');
 

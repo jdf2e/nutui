@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { computed, reactive } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('badge');
 export default create({
   props: {

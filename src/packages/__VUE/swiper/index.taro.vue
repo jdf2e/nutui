@@ -51,10 +51,10 @@ import {
   ref,
   watch
 } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { useTouch } from './use-touch';
-import { useTaroRect } from '../../utils/useTaroRect';
-import { useExpose } from '../../utils/useExpose/index';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
+import { useExpose } from '@/packages/utils/useExpose/index';
 import Taro, { eventCenter, getCurrentInstance, useReady } from '@tarojs/taro';
 const { create, componentName } = createComponent('swiper');
 export default create({

@@ -242,3 +242,14 @@ app.use(Col);
 | span | 列元素宽度（共分为24份，例如设置一行3个，那么span值为8） | String、Number | 24
 | offset | 列元素偏移距离 | String、Number | 0
 
+### row events
+
+| 字段 | 说明 | 回调参数
+|----- | ----- | ----- 
+| click | 点击时触发 | event: MouseEvent
+
+### col events
+
+| 字段 | 说明 | 回调参数
+|----- | ----- | ----- 
+| click | 点击时触发 | event: MouseEvent

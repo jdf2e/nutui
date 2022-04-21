@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import { computed, toRefs } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('navbar');
 export default create({
   props: {

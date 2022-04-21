@@ -78,9 +78,9 @@
 <script lang="ts">
 import Taro from '@tarojs/taro';
 import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
-import { createComponent } from '../../utils/create';
-import { useTouch } from '../../utils/useTouch';
-import { useTaroRect } from '../../utils/useTaroRect';
+import { createComponent } from '@/packages/utils/create';
+import { useTouch } from '@/packages/utils/useTouch';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { componentName, create } = createComponent('range');
 
 type SliderValue = number | number[];

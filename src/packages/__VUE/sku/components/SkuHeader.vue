@@ -11,7 +11,7 @@
         <slot name="sku-header-extra"></slot>
       </template>
       <view class="nut-sku-header-right-extra" v-if="goods.skuId && !getSlots('sku-header-extra')"
-        >商品编号：{{ goods.skuId }}</view
+        >{{ translate('skuId') }}&nbsp;:&nbsp;{{ goods.skuId }}</view
       >
     </view>
   </view>
@@ -19,8 +19,8 @@
 <script lang="ts">
 import { ref, watch, onMounted } from 'vue';
 
-import { createComponent } from '../../../utils/create';
-const { componentName, create } = createComponent('sku-header');
+import { createComponent } from '@/packages/utils/create';
+const { componentName, create, translate } = createComponent('sku-header');
 
 export default create({
   props: {
@@ -35,7 +35,8 @@ export default create({
     const getSlots = (name: string) => slots[name];
 
     return {
-      getSlots
+      getSlots,
+      translate
     };
   }
 });

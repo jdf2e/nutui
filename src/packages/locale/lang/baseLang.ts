@@ -1,24 +1,24 @@
-export interface BaseLang {
-  save: string;
-  confirm: string;
-  cancel: string;
-  done: string;
-  noData: string;
-  placeholder: string;
-  select: string;
-  video: {
+export abstract class BaseLang {
+  abstract save: string;
+  abstract confirm: string;
+  abstract cancel: string;
+  abstract done: string;
+  abstract noData: string;
+  abstract placeholder: string;
+  abstract select: string;
+  abstract video: {
     errorTip: string;
     clickRetry: string;
   };
-  fixednav: {
+  abstract fixednav: {
     activeText: string;
     unActiveText: string;
   };
-  pagination: {
+  abstract pagination: {
     prev: string;
     next: string;
   };
-  calendaritem: {
+  abstract calendaritem: {
     weekdays: Array<string>;
     end: string;
     start: string;
@@ -26,12 +26,12 @@ export interface BaseLang {
     monthTitle: Function;
     today: string;
   };
-  shortpassword: {
+  abstract shortpassword: {
     title: string;
     desc: string;
     tips: string;
   };
-  uploader: {
+  abstract uploader: {
     ready: string;
     readyUpload: string;
     waitingUpload: string;
@@ -39,10 +39,44 @@ export interface BaseLang {
     success: string;
     error: string;
   };
-  countdown: {
+  abstract countdown: {
     day: string;
     hour: string;
     minute: string;
     second: string;
   };
+  abstract address: {
+    selectRegion: string;
+    deliveryTo: string;
+    chooseAnotherAddress: string;
+  };
+  abstract signature: {
+    reSign: string;
+    unSupportTpl: string;
+  };
+  abstract ecard: {
+    chooseText: string;
+    otherValueText: string;
+    placeholder: string;
+  };
+  abstract timeselect: {
+    pickupTime: string;
+  };
+  abstract sku: {
+    buyNow: string;
+    buyNumber: string;
+    addToCard: string;
+  };
+  abstract skuheader: {
+    skuId: string;
+  };
+  abstract addresslist: {
+    addAddress: string;
+  };
+  abstract comment: {
+    complaintsText: string;
+    additionalReview: Function;
+    additionalImages: Function;
+  };
 }
+export default BaseLang;

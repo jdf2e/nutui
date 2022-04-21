@@ -1,5 +1,9 @@
 <template>
-  <nut-cell class="nut-form-item" :class="{ error: parent[prop], line: showErrorLine }">
+  <nut-cell
+    class="nut-form-item"
+    :class="[{ error: parent[prop], line: showErrorLine }, $attrs.class]"
+    :style="$attrs.style"
+  >
     <view class="nut-cell__title nut-form-item__label" :style="labelStyle" v-if="label" :class="{ required: required }">
       {{ label }}</view
     >
@@ -14,9 +18,9 @@
   </nut-cell>
 </template>
 <script lang="ts">
-import { pxCheck } from '../../utils/pxCheck';
+import { pxCheck } from '@/packages/utils/pxCheck';
 import { computed, inject, provide, PropType, ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('form-item');
 import { FormItemRule } from './types';
 export default create({

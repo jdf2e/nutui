@@ -1,39 +1,36 @@
 <template>
-  <div :class="classes" :style="{ height: option.size + 'px', width: option.size + 'px' }">
-    <svg :height="option.size" :width="option.size" x-mlns="http://www.w3.org/200/svg">
-      <circle
-        :r="option.radius"
-        :cx="option.cx"
-        :cy="option.cy"
-        :stroke="option.backColor"
-        :stroke-width="option.strokeOutWidth"
+  <div :class="classes" :style="{ height: radius * 2 + 'px', width: radius * 2 + 'px' }">
+    <svg viewBox="0 0 100 100">
+      <defs>
+        <linearGradient :id="refRandomId" x1="100%" y1="0%" x2="0%" y2="0%">
+          <stop v-for="(item, index) in stop" :key="index" :offset="item.key" :stop-color="item.value"></stop>
+        </linearGradient>
+      </defs>
+      <path class="nut-circleprogress-path" :style="pathStyle" :d="path" fill="none" :stroke-width="strokeWidth">
+        >
+      </path>
+      <path
+        class="nut-circleprogress-hover"
+        :style="hoverStyle"
+        :d="path"
         fill="none"
-      />
-      <circle
-        :r="option.radius"
-        :cx="option.cx"
-        :cy="option.cy"
-        :stroke="option.progressColor"
-        :stroke-dasharray="arcLength"
-        :stroke-width="strokeInnerWidth"
-        fill="none"
-        :transform="option.startPosition"
-        stroke-linecap="round"
-        style="transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s"
-      />
+        :stroke="hoverColor"
+        :stroke-linecap="strokeLinecap"
+        transform="rotate(90,50,50)"
+        :stroke-width="strokeWidth"
+      ></path>
     </svg>
-    <div class="nut-circleprogress-content">
-      <template v-if="!isAuto">
-        <slot>{{ progress }}%</slot>
-      </template>
-      <template v-else><slot></slot></template>
+    <div class="nut-circleprogress-text">
+      <slot></slot>
+      <div v-if="!slotDefault">{{ progress }}%</div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, onMounted, ref, watch } from 'vue';
-import { createComponent } from '../../utils/create';
+import { computed, useSlots } from 'vue';
+import { createComponent } from '@/packages/utils/create';
+import { isObject } from '@/packages/utils/util';
 const { componentName, create } = createComponent('circleprogress');
 export default create({
   props: {
@@ -41,55 +38,89 @@ export default create({
       type: [Number, String],
       required: true
     },
-    strokeInnerWidth: {
+    strokeWidth: {
       type: [Number, String],
-      default: 10
+      default: 5
     },
-    isAuto: {
-      tyep: Boolean,
-      default: false
+    radius: {
+      type: [Number, String],
+      default: 50
     },
-    progressOption: {
-      type: Object,
-      default: () => {}
+    strokeLinecap: {
+      type: String,
+      default: 'round'
+    },
+    color: {
+      type: [String, Object],
+      default: ''
+    },
+    pathColor: {
+      type: String,
+      default: ''
+    },
+    clockwise: {
+      type: Boolean,
+      default: true
     }
   },
+
   setup(props, { emit }) {
+    const slotDefault = !!useSlots().default;
+    const refRandomId = Math.random().toString(36).slice(-8);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
         [prefixCls]: true
       };
     });
-    const option = computed(() => {
-      // 所有进度条的可配置项
-      let baseOption = {
-        radius: 50,
-        strokeOutWidth: 10,
-        backColor: '#d9d9d9',
-        progressColor: 'red',
-        cy: 1,
-        cx: 1,
-        size: 1,
-        startPosition: ''
-      };
-      Object.assign(baseOption, props.progressOption);
-      // 圆心位置自动生成
-      baseOption.cy = baseOption.cx = baseOption.radius + baseOption.strokeOutWidth;
-      baseOption.size = (baseOption.radius + baseOption.strokeOutWidth) * 2;
-      baseOption.startPosition = 'rotate(-90,' + baseOption.cx + ',' + baseOption.cy + ')';
-      return baseOption;
+    const path = computed(() => {
+      const isWise = props.clockwise ? 1 : 0;
+      return `M 50 50 m -45 0 a 45 45 0 1 ${isWise} 90 0  a 45 45 0 1 ${isWise} -90 0`;
     });
-    const arcLength = computed(() => {
-      let circleLength = Math.floor(2 * Math.PI * option.value.radius);
-      let progressLength = ((props as any).progress / 100) * circleLength;
-      return `${progressLength},${circleLength}`;
+    const hoverColor = computed(() => {
+      return isObject(props.color) ? `url(#${refRandomId})` : props.color;
+    });
+    const hoverStyle = computed(() => {
+      let perimeter = 283;
+      let offset = (perimeter * Number(props.progress)) / 100;
+      return {
+        stroke: isObject(props.color) ? `url(#${refRandomId})` : props.color,
+        strokeDasharray: `${offset}px ${perimeter}px`
+      };
+    });
+    const pathStyle = computed(() => {
+      return {
+        stroke: props.pathColor
+      };
+    });
+    const stop = computed(() => {
+      if (!isObject(props.color)) {
+        return;
+      }
+      let color = props.color;
+      const colorArr = Object.keys(color).sort((a, b) => parseFloat(a) - parseFloat(b));
+      let stopArr: object[] = [];
+      colorArr.map((item, index) => {
+        let obj = {
+          key: '',
+          value: ''
+        };
+        obj.key = item;
+        obj.value = color[item];
+        stopArr.push(obj);
+      });
+      return stopArr;
     });
 
     return {
       classes,
-      option,
-      arcLength
+      hoverStyle,
+      pathStyle,
+      path,
+      hoverColor,
+      stop,
+      slotDefault,
+      refRandomId
     };
   }
 });

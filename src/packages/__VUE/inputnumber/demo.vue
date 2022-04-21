@@ -10,12 +10,7 @@
     </nut-cell>
     <h2>限制输入范围</h2>
     <nut-cell>
-      <nut-inputnumber
-        v-model="state.val3"
-        @overlimit="overlimit"
-        min="10"
-        max="20"
-      />
+      <nut-inputnumber v-model="state.val3" @overlimit="overlimit" min="10" max="20" />
     </nut-cell>
     <h2>禁用操作</h2>
     <nut-cell>
@@ -27,12 +22,7 @@
     </nut-cell>
     <h2>支持小数</h2>
     <nut-cell>
-      <nut-inputnumber
-        v-model="state.val6"
-        step="0.1"
-        decimal-places="1"
-        readonly
-      />
+      <nut-inputnumber v-model="state.val6" step="0.1" decimal-places="1" readonly />
     </nut-cell>
     <h2>支持异步修改</h2>
     <nut-cell>
@@ -47,7 +37,7 @@
 
 <script lang="ts">
 import { reactive, getCurrentInstance } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('inputnumber');
 export default createDemo({
   props: {},

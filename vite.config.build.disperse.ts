@@ -74,10 +74,13 @@ declare module 'vue' {
     },
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
-      external: ['vue', 'vue-router'],
+      external: ['vue', 'vue-router', '@/packages/locale'],
       input,
       output: {
         banner,
+        paths: {
+          '@/packages/locale': '../locale/lang'
+        },
         dir: path.resolve(__dirname, './dist/packages/_es'),
         entryFileNames: '[name].js'
       }

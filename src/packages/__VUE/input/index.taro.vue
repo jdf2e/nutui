@@ -26,6 +26,7 @@
           :style="stylesTextarea"
           :maxlength="maxLength"
           :placeholder="placeholder || translate('placeholder')"
+          placeholder-class="nut-placeholder"
           :disabled="disabled"
           :readonly="readonly"
           :value="modelValue"
@@ -43,6 +44,7 @@
           :type="inputType(type)"
           :maxLength="maxLength"
           :placeholder="placeholder || translate('placeholder')"
+          placeholder-class="nut-placeholder"
           :disabled="disabled"
           :readonly="readonly"
           :value="modelValue"
@@ -84,7 +86,7 @@
 </template>
 <script lang="ts">
 import { PropType, ref, reactive, computed, onMounted, watch, nextTick, inject } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
 
 const { componentName, create, translate } = createComponent('input');
@@ -192,12 +194,12 @@ export default create({
       type: [String, Number],
       default: ''
     },
-    leftIcon: {
-      type: String,
-      default: ''
-    },
     leftIconSize: {
       type: [String, Number],
+      default: ''
+    },
+    leftIcon: {
+      type: String,
       default: ''
     },
     rightIcon: {
@@ -250,7 +252,7 @@ export default create({
     },
     showWordLimit: {
       type: Boolean,
-      default: true
+      default: false
     },
     autofocus: {
       type: Boolean,
@@ -325,17 +327,10 @@ export default create({
       return props.modelValue;
     });
 
-    // const inputmode = computed(() => {
-    //   return props.type === 'digit' ? 'decimal' : props.type === 'number' ? 'numeric' : 'text';
-    // });
-
     const onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;
       let value = input.value;
 
-      // if (!event.target!.composing) {
-      //   updateValue((event.target as HTMLInputElement).value);
-      // }
       updateValue(value);
     };
 
@@ -355,14 +350,6 @@ export default create({
         value = props.formatter(value);
       }
 
-      // if (props.maxLength && value.length > Number(props.maxLength)) {
-      //   value = value.slice(0, Number(props.maxLength));
-      // }
-
-      if (inputRef.value && inputRef.value.value !== value) {
-        inputRef.value.value = value;
-      }
-
       if (value !== props.modelValue) {
         emit('update:modelValue', value);
         emit('change', value);
@@ -374,19 +361,12 @@ export default create({
       let value = input.value;
       active.value = true;
       emit('focus', value, event);
-      // if (getProp('readonly')) {
-      //   blur();
-      // }
     };
 
     const onBlur = (event: Event) => {
       setTimeout(() => {
         active.value = false;
       }, 200);
-
-      // if (getProp('readonly')) {
-      //   return;
-      // }
 
       const input = event.target as HTMLInputElement;
       let value = input.value;

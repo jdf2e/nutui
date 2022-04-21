@@ -21,7 +21,7 @@
 </template>
 <script lang="ts">
 import { toRefs, ref, useSlots, onMounted, reactive, inject } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('audio-operate');
 
 export default create({

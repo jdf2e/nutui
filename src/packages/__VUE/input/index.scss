@@ -1,6 +1,15 @@
 input,
 textarea {
   font: inherit;
+  .nut-placeholder {
+    // font: inherit;
+  }
+}
+textarea {
+  .nut-placeholder {
+    // padding: 0 2px;
+    // font: inherit;
+  }
 }
 .nut-input {
   position: relative;
@@ -55,12 +64,12 @@ textarea {
     font-size: 12px;
   }
   &-word-limit {
-    display: block;
+    display: flex;
+    justify-content: flex-end;
     margin-top: 4px;
     color: #808080;
     font-size: 12px;
     // line-height: var(--van-field-word-limit-line-height);
-    text-align: right;
   }
   &-left-icon,
   &-right-icon {

@@ -19,6 +19,7 @@ import Nav from '@/sites/doc/components/Nav.vue';
 import DemoPreview from '@/sites/doc/components/DemoPreview.vue';
 import ThemeSetting from '@/sites/doc/components/ThemeSetting/Index.vue';
 import { RefData } from '@/sites/assets/util/ref';
+import { initSiteLang } from '@/sites/assets/util/useTranslate';
 export default defineComponent({
   name: 'doc',
   components: {
@@ -30,6 +31,7 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const router = useRouter();
+    initSiteLang();
     const excludeTaro = ['/intro', '/start', '/theme', '/joinus', '/starttaro', '/contributing'];
     const data = reactive({
       demoUrl: 'demo.html',
