@@ -60,7 +60,7 @@
 </template>
 <script lang="ts">
 import { toRefs, ref, onMounted, reactive, watch, provide } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('audio');
 
 export default create({

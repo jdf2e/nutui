@@ -67,6 +67,7 @@
           <nut-icon :name="rightIcon" :size="rightIconSize"></nut-icon>
         </view>
         <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
+        <view v-if="readonly" class="nut-input-disabled-mask"></view>
       </view>
       <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
         <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
@@ -86,7 +87,7 @@
 </template>
 <script lang="ts">
 import { PropType, ref, reactive, computed, onMounted, watch, nextTick, inject } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
 
 const { componentName, create, translate } = createComponent('input');
@@ -348,6 +349,10 @@ export default create({
 
       if (props.formatter && trigger === props.formatTrigger) {
         value = props.formatter(value);
+      }
+
+      if (inputRef && inputRef.value && inputRef.value.value && inputRef.value.value !== value) {
+        inputRef.value.value = value;
       }
 
       if (value !== props.modelValue) {

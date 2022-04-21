@@ -1,8 +1,8 @@
 <script lang="ts">
 import { reactive, computed, h, ref, Ref, unref, PropType, watch, CSSProperties } from 'vue';
 import Taro, { usePageScroll, useReady } from '@tarojs/taro';
-import { createComponent } from '../../utils/create';
-import { useTaroRect } from '../../utils/useTaroRect';
+import { createComponent } from '@/packages/utils/create';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 const { componentName, create } = createComponent('sticky');
 export default create({
   props: {

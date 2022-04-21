@@ -23,7 +23,7 @@
 <script lang="ts">
 import { useTouch } from '@/packages/utils/useTouch';
 import { computed, reactive, Ref, ref } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('swipe');
 
 export type SwipePosition = 'left' | 'right' | '';

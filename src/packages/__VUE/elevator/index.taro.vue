@@ -43,8 +43,8 @@
 </template>
 <script lang="ts">
 import { computed, reactive, toRefs, nextTick, ref, Ref, onMounted } from 'vue';
-import { createComponent } from '../../utils/create';
-import { useExpose } from '../../utils/useExpose/index';
+import { createComponent } from '@/packages/utils/create';
+import { useExpose } from '@/packages/utils/useExpose/index';
 const { componentName, create } = createComponent('elevator');
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 interface ElevatorData {

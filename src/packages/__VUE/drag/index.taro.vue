@@ -18,8 +18,8 @@
 
 <script lang="ts">
 import { onMounted, onDeactivated, onActivated, reactive, ref, computed } from 'vue';
-import { createComponent } from '../../utils/create';
-import requestAniFrame from '../../utils/raf';
+import { createComponent } from '@/packages/utils/create';
+import requestAniFrame from '@/packages/utils/raf';
 const { componentName, create } = createComponent('drag');
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 export default create({

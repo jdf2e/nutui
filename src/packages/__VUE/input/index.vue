@@ -84,7 +84,7 @@
 </template>
 <script lang="ts">
 import { PropType, ref, reactive, computed, onMounted, watch, nextTick, inject } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
 
 const { componentName, create, translate } = createComponent('input');
@@ -348,9 +348,9 @@ export default create({
         value = props.formatter(value);
       }
 
-      // if (inputRef.value && inputRef.value.value !== value) {
-      //   inputRef.value.value = value;
-      // }
+      if (inputRef?.value?.value !== value) {
+        inputRef.value.value = value;
+      }
 
       if (value !== props.modelValue) {
         emit('update:modelValue', value);

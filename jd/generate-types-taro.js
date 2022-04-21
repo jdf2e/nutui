@@ -1,7 +1,7 @@
 const config = require('../src/config.json');
 const path = require('path');
 const fs = require('fs-extra');
-let importStr = ``;
+let importStr = `import Locale from '../packages/locale';\n`;
 const packages = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
@@ -15,7 +15,7 @@ config.nav.map((item) => {
   });
 });
 let installFunction = `
-export { ${packages.join(',')} };`;
+export { Locale,${packages.join(',')} };`;
 let fileStr = importStr + installFunction;
 fs.outputFileSync(path.resolve(__dirname, '../dist/types/nutui.d.ts'), fileStr, 'utf8');
 fs.outputFileSync(

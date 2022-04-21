@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import { ref, reactive, toRefs } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('pagination');
 export default createDemo({
   setup() {

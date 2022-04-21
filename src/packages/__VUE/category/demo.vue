@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('cmt');
 import { reactive, toRefs, onMounted } from 'vue';
 
@@ -42,7 +42,6 @@ export default createDemo({
       fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
         .then((response) => response.json())
         .then((res) => {
-          console.log('res', res);
           const { categoryInfo, categoryChild, customCategory } = res;
           data.categoryInfo = categoryInfo;
           data.category = categoryInfo.category;

@@ -96,7 +96,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 import { reactive, ref, toRefs } from 'vue';
 const { createDemo } = createComponent('address');
 interface CalBack {

@@ -18,9 +18,9 @@
 <script lang="ts">
 import { computed, CSSProperties } from 'vue';
 import { useRouter } from '@/packages/utils/useRoute';
-import { createComponent } from '../../utils/create';
-import { pxCheck } from '../../utils/pxCheck';
-import { useInject } from '../../utils/useRelation/useInject';
+import { createComponent } from '@/packages/utils/create';
+import { pxCheck } from '@/packages/utils/pxCheck';
+import { useInject } from '@/packages/utils/useRelation/useInject';
 import { GRID_KEY, GridProps } from '../grid/common';
 const { create, componentName } = createComponent('grid-item');
 

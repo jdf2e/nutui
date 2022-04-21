@@ -11,7 +11,7 @@
 </template>
 <script lang="ts">
 import { computed, onMounted, reactive, toRefs } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('subsidenavbar');
 export default create({
   props: {

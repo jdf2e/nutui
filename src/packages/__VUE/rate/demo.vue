@@ -7,11 +7,7 @@
     <nut-rate allow-half v-model="state.val1"></nut-rate>
 
     <h2>自定义 icon </h2>
-    <nut-rate
-      checked-icon="heart-fill1"
-      unchecked-icon="heart"
-      v-model="state.val2"
-    ></nut-rate>
+    <nut-rate checked-icon="heart-fill1" unchecked-icon="heart" v-model="state.val2"></nut-rate>
 
     <h2>自定义数量</h2>
     <nut-rate :count="6" v-model="state.val3"></nut-rate>
@@ -34,7 +30,7 @@
 
 <script>
 import { reactive, getCurrentInstance } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('rate');
 export default createDemo({
   setup() {
