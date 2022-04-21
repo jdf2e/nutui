@@ -201,6 +201,7 @@ export default create({
         fileItem.message = translate('success');
         emit('success', {
           data,
+          responseText: data,
           option,
           fileItem
         });
@@ -211,6 +212,7 @@ export default create({
         fileItem.message = translate('error');
         emit('failure', {
           data,
+          responseText: data,
           option,
           fileItem
         });
