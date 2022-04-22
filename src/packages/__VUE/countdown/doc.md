@@ -267,8 +267,8 @@ app.use(CountDown);
 | v-model | 当前时间，自定义展示内容时生效 | Object | {}
 | start-time | 开始时间 | String, Number | Date.now()
 | end-time | 结束时间 | String, Number | Date.now()
-| show-days | 是否显示天 | Boolean | false
-| show-plain-text | 显示为纯文本 | Boolean | false
+| show-days | 是否显示天（废弃） | Boolean | false
+| show-plain-text | 显示为纯文本（废弃） | Boolean | false
 | paused | 是否暂停 | Boolean | false
 
 

@@ -4,28 +4,27 @@
     <nut-cell>
       <nut-countdown :endTime="end" @on-end="onend"></nut-countdown>
     </nut-cell>
-    <h2>显示天</h2>
-
+    <h2>自定义格式</h2>
     <nut-cell>
-      <nut-countdown :endTime="end" showDays />
+      <nut-countdown :endTime="end" format="DD 天 HH 时 mm 分 ss 秒" />
     </nut-cell>
 
-    <h2>以服务端的时间为准</h2>
+    <h2>毫秒级渲染</h2>
+
+    <nut-cell>
+      <nut-countdown :endTime="end" millisecond format="HH:mm:ss:SS" />
+    </nut-cell>
+
+    <!-- <h2>以服务端的时间为准</h2>
 
     <nut-cell>
       <nut-countdown :startTime="serverTime" :endTime="end" />
-    </nut-cell>
-
-    <h2>显示为 天时分秒</h2>
-
-    <nut-cell>
-      <nut-countdown showDays showPlainText :endTime="end" />
-    </nut-cell>
+    </nut-cell> -->
 
     <h2>异步更新结束时间</h2>
 
     <nut-cell>
-      <nut-countdown showPlainText :endTime="asyncEnd" />
+      <nut-countdown :endTime="asyncEnd" />
     </nut-cell>
 
     <h2>控制开始和暂停的倒计时</h2>
@@ -54,24 +53,37 @@
       </span>
     </nut-cell>
 
-    <h2>自定义显示</h2>
-
+    <h2>手动控制</h2>
     <nut-cell>
-      <span>可调用该组件提供的 restTime 方法获取 '天时分秒' 自定义显示</span>
+      <nut-countdown time="20000" ref="CountDown" :autoStart="false" />
     </nut-cell>
+
+    <nut-row>
+      <nut-col :span="8">
+        <nut-button type="primary" @click="start">开始</nut-button>
+      </nut-col>
+      <nut-col :span="8">
+        <nut-button type="primary" @click="pause">暂停</nut-button>
+      </nut-col>
+      <nut-col :span="8">
+        <nut-button type="primary" @click="reset">重置</nut-button>
+      </nut-col>
+    </nut-row>
   </div>
 </template>
 
 <script lang="ts">
-import { toRefs, onMounted, onUnmounted, reactive } from 'vue';
+import { toRefs, onMounted, ref, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('countdown');
 export default createDemo({
   props: {},
   setup() {
+    const CountDown = ref(null);
     const state = reactive({
-      serverTime: Date.now() - 10 * 1000,
-      end: Date.now() + 10 * 1000,
+      serverTime: Date.now() - 20 * 1000,
+      end: Date.now() + 20 * 1000,
+      starttime: Date.now(),
       asyncEnd: 0,
       paused: false,
       resetTime: {
@@ -94,6 +106,20 @@ export default createDemo({
     const onrestart = (v) => {
       console.log('restart: ', v);
     };
+    const start = () => {
+      CountDown.value.start();
+    };
+
+    const pause = () => {
+      CountDown.value.pause();
+    };
+
+    const reset = () => {
+      CountDown.value.reset();
+    };
+    onMounted(() => {
+      console.log(CountDown.value);
+    });
 
     setTimeout(() => {
       state.asyncEnd = Date.now() + 30 * 1000;
@@ -104,7 +130,11 @@ export default createDemo({
       toggle,
       onend,
       onpaused,
-      onrestart
+      onrestart,
+      CountDown,
+      start,
+      pause,
+      reset
     };
   }
 });
