@@ -107,6 +107,8 @@ app.use(Icon);
 
 ### 显示图标
 
+通过 left-icon 和 right-icon 配置输入框两侧的图标，通过设置 clearable 在输入过程中展示清除图标。需要引用 icon 组件
+
 :::demo
 
 ```html
