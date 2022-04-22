@@ -58,7 +58,7 @@ export default createDemo({
       Notify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
     };
     const timeNotify = (msg: string) => {
-      Notify.text(msg, { duration: 10000 });
+      Notify.text(msg, { duration: 1000 });
     };
     const positionNotify = (msg: string) => {
       Notify.text(msg, { position: 'bottom' });
@@ -68,7 +68,7 @@ export default createDemo({
       show.value = true;
       setTimeout(() => {
         show.value = false;
-      }, 200000);
+      }, 2000);
     };
     return {
       baseNotify,
