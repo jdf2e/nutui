@@ -28,8 +28,7 @@
           "name": "dentry/pages/pickers/index",
           "pathName": "dentry/pages/picker/index",
           "query": "",
-          "scene": null,
-          "launchMode": "default"
+          "scene": null
         },
         {
           "name": "feedback/pages/collapse/index",
@@ -46,6 +45,12 @@
         {
           "name": "feedback/pages/swiper/index",
           "pathName": "feedback/pages/swiper/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "dentry/pages/input/index",
+          "pathName": "dentry/pages/input/index",
           "query": "",
           "scene": null
         }
