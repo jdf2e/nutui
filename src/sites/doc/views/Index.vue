@@ -4,6 +4,7 @@
     <doc-nav></doc-nav>
     <div class="doc-content">
       <div class="doc-content-document">
+        <!-- <doc-issue></doc-issue> -->
         <div class="doc-content-tabs" v-if="isShow() && isShowTaroDoc">
           <div
             class="tab-item"
@@ -19,6 +20,8 @@
         </div>
         <router-view />
       </div>
+      <!-- <doc-issue class="fixed"></doc-issue> -->
+      <!-- <doc-issue class="vertical"></doc-issue> -->
       <doc-demo-preview :url="demoUrl"></doc-demo-preview>
     </div>
   </div>
@@ -30,17 +33,21 @@ import { onBeforeRouteUpdate, RouteLocationNormalized, useRoute, useRouter } fro
 import Header from '@/sites/doc/components/Header.vue';
 import Nav from '@/sites/doc/components/Nav.vue';
 import DemoPreview from '@/sites/doc/components/DemoPreview.vue';
+import Issue from '@/sites/doc/components/Issue.vue';
 import { RefData } from '@/sites/assets/util/ref';
+import { initSiteLang } from '@/sites/assets/util/useTranslate';
 export default defineComponent({
   name: 'doc',
   components: {
     [Header.name]: Header,
     [Nav.name]: Nav,
-    [DemoPreview.name]: DemoPreview
+    [DemoPreview.name]: DemoPreview,
+    [Issue.name]: Issue
   },
   setup() {
     const route = useRoute();
     const router = useRouter();
+    initSiteLang();
     const excludeTaro = ['/intro', '/start', '/theme', '/joinus', '/starttaro', '/contributing'];
     const data = reactive({
       demoUrl: 'demo.html',
@@ -85,8 +92,9 @@ export default defineComponent({
 
     const watchDemoUrl = (router: RouteLocationNormalized) => {
       const { origin, pathname } = window.location;
-      RefData.getInstance().currentRoute.value = router.name as string;
-      data.demoUrl = `${origin}${pathname.replace('index.html', '')}demo.html#${router.path}`;
+      RefData.getInstance().currentRoute.value = router.path as string;
+      let url = `${origin}${pathname.replace('index.html', '')}demo.html#${router.path}`;
+      data.demoUrl = url.replace('/zh-CN', '').replace('/en-US', '');
     };
 
     const watchDocMd = () => {

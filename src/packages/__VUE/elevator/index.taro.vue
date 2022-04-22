@@ -184,7 +184,7 @@ export default create({
 
     onMounted(() => {
       if (Taro.getEnv() === 'WEB') {
-        calculateHeight();
+        nextTick(calculateHeight);
       } else {
         eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
           calculateHeight();

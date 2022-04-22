@@ -117,9 +117,7 @@ export default create({
           : `height 0.2s cubic-bezier(0.25,0.1,0.25,1)`
       };
     });
-    const getParentElement = (el: HTMLElement) => {
-      return !!props.containerId ? document.querySelector(`#${props.containerId}`) : el && el.parentNode;
-    };
+
     const requestAniFrame = () => {
       return (
         window.requestAnimationFrame ||

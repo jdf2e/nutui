@@ -1,27 +1,20 @@
 <template>
-  <Transition name="toast-fade" @after-leave="onAfterLeave">
-    <view
-      :class="[`popup-${position}`, 'nut-notify', `nut-notify--${type}`, [className]]"
+  <nut-popup v-model:visible="showPopup" :position="position" :overlay="false">
+    <div
+      :class="['nut-notify', `nut-notify--${type}`, className]"
       :style="{ color: color, background: background }"
-      v-show="state.mounted"
       @click="clickCover"
     >
       <template v-if="$slots.default">
         <slot></slot>
       </template>
       <template v-else>{{ msg }}</template>
-    </view>
-  </Transition>
-  <!-- <nut-popup v-model:visible="state.mounted" position="top" :style="{ color: color, background: background }" :class="['popup-top', 'nut-notify', `nut-notify--${type}`, { className }]" overlay="false">
-    <template v-if="$slots.default">
-      <slot></slot>
-    </template>
-    <template v-else>{{ msg }}</template>
-  </nut-popup> -->
+    </div>
+  </nut-popup>
 </template>
 <script lang="ts">
-import { toRefs, reactive, onMounted, watch } from 'vue';
-import { createComponent } from '@/packages/utils/create';
+import { toRefs, reactive, onMounted, watch, ref } from 'vue';
+import { createComponent } from '../../utils/create';
 import Popup from '../popup/index.vue';
 const { componentName, create } = createComponent('notify');
 
@@ -47,6 +40,10 @@ export default create({
       type: Boolean,
       default: false
     },
+    // visible: {
+    //   type: Boolean,
+    //   default: false
+    // },
     position: {
       type: String,
       default: 'top'
@@ -62,8 +59,10 @@ export default create({
       mounted: false
     });
     onMounted(() => {
-      state.mounted = true;
+      // state.mounted = true;
     });
+
+    const visible = ref(false);
 
     const clickCover = () => {
       props.onClick && props.onClick();
@@ -98,12 +97,19 @@ export default create({
         }
       }
     );
+
+    // watch(
+    //   () => props.visible,
+    //   (val, oldv) => {
+    //     state.mounted = val;
+    //   }
+    // );
     const onAfterLeave = () => {
       clearTimer();
       props.unmount && props.unmount(props.id);
       props.onClose && props.onClose();
     };
-    return { state, hide, onAfterLeave, clickCover };
+    return { state, hide, onAfterLeave, clickCover, visible };
   }
 });
 </script>

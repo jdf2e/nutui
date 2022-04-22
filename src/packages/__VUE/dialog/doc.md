@@ -171,7 +171,7 @@ export default {
 | 字段                | 说明                                  | 类型     | 默认值   |
 |---------------------|---------------------------------------|----------|----------|
 | title               | 标题                                  | String   | -        |
-| id               | 标识符，相同者共用一个实例<br>loading类型默认使用一个实例，其他类型默认不共用 | String/Number   | new Date().getTime()        |
+| id               | 标识符，相同时共用一个实例，默认为多个实例 | String/Number   | new Date().getTime()        |
 | content             | 内容，支持HTML                        | String   | -        |
 | teleport            | 指定挂载节点                          | String   | "body"   |
 | closeOnClickOverlay | 点击蒙层是否关闭对话框                | Boolean  | false    |
@@ -180,14 +180,12 @@ export default {
 | noCancelBtn         | 是否隐藏取消按钮                      | Boolean  | false    |
 | cancelText          | 取消按钮文案                          | String   | ”取消“   |
 | okText              | 确定按钮文案                          | String   | ”确定“   |
-| okBtnDisabled       | 禁用确定按钮                          | Boolean  | false    |
 | cancelAutoClose     | 取消按钮是否默认关闭弹窗              | Boolean  | true     |
 | textAlign           | 文字对齐方向，可选值同css的text-align | String   | "center" |
 | closeOnPopstate     | 是否在页面回退时自动关闭              | Boolean  | false    |
 | onUpdate            | 更新                                  | Boolean  | false    |
 | onOk                | 确定按钮回调                          | Function | -        |
 | onCancel            | 取消按钮回调                          | Function | -        |
-| onOpen              | 背景是否锁定                          | Function | -        |
 | onClosed            | 关闭回调，任何情况关闭弹窗都会触发    | Function | -        |
 
 
@@ -204,7 +202,6 @@ export default {
 | no-cancel-btn          | 是否隐藏取消按钮                         | Boolean | false      |
 | cancel-text            | 取消按钮文案                             | String  | ”取消“     |
 | ok-text                | 确定按钮文案                             | String  | ”确 定“    |
-| ok-btn-disabled        | 禁用确定按钮                             | Boolean | false      |
 | cancel-auto-close      | 取消按钮是否默认关闭弹窗                 | Boolean | true       |
 | text-align             | 文字对齐方向，可选值同css的text-align    | String  | "center"   |
 | close-on-popstate      | 是否在页面回退时自动关闭                 | Boolean | false      |
