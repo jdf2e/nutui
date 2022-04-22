@@ -17,10 +17,12 @@ export default defineComponent({
 .doc {
   &-demo-preview {
     height: 667px;
+    // height: 637px;
     width: 375px;
     position: fixed;
     right: 30px;
     top: 100px;
+    // top: 135px;
     box-shadow: #ebedf0 0 4px 12px;
     border-radius: 12px;
     overflow: hidden;

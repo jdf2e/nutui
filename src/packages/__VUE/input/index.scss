@@ -56,8 +56,15 @@ textarea {
     vertical-align: middle;
   }
   &-inner {
+    position: relative;
     display: flex;
     align-items: center;
+  }
+  &-disabled-mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
   }
   &-error-message {
     color: $input-required-color;
