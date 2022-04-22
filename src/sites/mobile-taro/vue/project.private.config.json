@@ -25,8 +25,8 @@
           "scene": null
         },
         {
-          "name": "dentry/pages/pickers/index",
-          "pathName": "dentry/pages/picker/index",
+          "name": "exhibition/pages/countdown/index",
+          "pathName": "exhibition/pages/countdown/index",
           "query": "",
           "scene": null,
           "launchMode": "default"

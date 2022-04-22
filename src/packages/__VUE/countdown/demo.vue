@@ -15,11 +15,11 @@
       <nut-countdown :endTime="end" millisecond format="HH:mm:ss:SS" />
     </nut-cell>
 
-    <!-- <h2>以服务端的时间为准</h2>
+    <h2>以服务端的时间为准</h2>
 
     <nut-cell>
       <nut-countdown :startTime="serverTime" :endTime="end" />
-    </nut-cell> -->
+    </nut-cell>
 
     <h2>异步更新结束时间</h2>
 
@@ -36,7 +36,7 @@
       </div>
     </nut-cell>
 
-    <h2>自定义展示</h2>
+    <h2>自定义展示样式</h2>
 
     <nut-cell>
       <span>
@@ -55,20 +55,14 @@
 
     <h2>手动控制</h2>
     <nut-cell>
-      <nut-countdown time="20000" ref="CountDown" :autoStart="false" />
+      <nut-countdown time="20000" ref="CountDown" :autoStart="false" format="ss:SS" />
     </nut-cell>
 
-    <nut-row>
-      <nut-col :span="8">
-        <nut-button type="primary" @click="start">开始</nut-button>
-      </nut-col>
-      <nut-col :span="8">
-        <nut-button type="primary" @click="pause">暂停</nut-button>
-      </nut-col>
-      <nut-col :span="8">
-        <nut-button type="primary" @click="reset">重置</nut-button>
-      </nut-col>
-    </nut-row>
+    <nut-grid :column-num="3">
+      <nut-grid-item><nut-button type="primary" @click="start">开始</nut-button></nut-grid-item>
+      <nut-grid-item><nut-button type="primary" @click="pause">暂停</nut-button></nut-grid-item>
+      <nut-grid-item><nut-button type="primary" @click="reset">重置</nut-button></nut-grid-item>
+    </nut-grid>
   </div>
 </template>
 
@@ -82,7 +76,7 @@ export default createDemo({
     const CountDown = ref(null);
     const state = reactive({
       serverTime: Date.now() - 20 * 1000,
-      end: Date.now() + 20 * 1000,
+      end: Date.now() + 60 * 1000,
       starttime: Date.now(),
       asyncEnd: 0,
       paused: false,

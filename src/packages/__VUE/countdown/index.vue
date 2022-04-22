@@ -3,9 +3,6 @@
     <template v-if="slots.default">
       <slot></slot>
     </template>
-    <!-- <template v-else-if="showPlainText">
-      <view class="nut-cd-block">{{ plainText }}</view>
-    </template> -->
     <template v-else>
       <view class="nut-cd-block" v-html="renderTime"></view>
     </template>
@@ -16,7 +13,6 @@ import { toRefs, computed, watch, reactive, onBeforeMount, onMounted } from 'vue
 import { createComponent } from '@/packages/utils/create';
 import { padZero, getTimeStamp } from './util';
 const { componentName, create, translate } = createComponent('countdown');
-const currentTime = new Date();
 export default create({
   props: {
     modelValue: {
@@ -69,17 +65,12 @@ export default create({
   emits: ['input', 'on-end', 'on-restart', 'on-paused', 'update:modelValue'],
 
   setup(props: any, { emit, slots }) {
-    const getInitRemain = () => {
-      return getTimeStamp(props.endTime || currentTime) - getTimeStamp(props.startTime || currentTime);
-    };
     const state = reactive({
       restTime: 0, // 倒计时剩余时间时间
-      p: 0, // 暂停的时间
-      _curr: 0, // 当前时间，用在 暂定时
       timer: null,
       counting: !props.paused && props.autoStart, // 是否处于倒计时中
-
-      handleEndTime: Date.now() // 最终截止时间
+      handleEndTime: Date.now(), // 最终截止时间
+      diffTime: 0 // 设置了 startTime 时，与 date.now() 的差异
     });
 
     const classes = computed(() => {
@@ -96,32 +87,32 @@ export default create({
     // 倒计时 interval
     const initTime = () => {
       state.handleEndTime = props.endTime;
-      // const start = getTimeStamp(props.startTime || currentTime);
-      // const end = getTimeStamp(props.endTime || currentTime);
-      // const diffTime = currentTime - start; // 时间差
-      // state.restTime = Math.max(end - Date.now() + diffTime, 0); // 倒计时时间
+      state.diffTime = Date.now() - getTimeStamp(props.startTime); // 时间差
       if (!state.counting) state.counting = true;
       tick();
     };
 
     const tick = () => {
-      (state.timer as any) = requestAnimationFrame(() => {
-        if (state.counting) {
-          const remainTime = Math.max(state.handleEndTime - Date.now(), 0);
+      if (window !== undefined) {
+        (state.timer as any) = requestAnimationFrame(() => {
+          if (state.counting) {
+            const currentTime = Date.now() - state.diffTime;
+            const remainTime = Math.max(state.handleEndTime - currentTime, 0);
 
-          state.restTime = remainTime;
+            state.restTime = remainTime;
 
-          if (!remainTime) {
-            state.counting = false;
-            pause();
-            emit('on-end');
+            if (!remainTime) {
+              state.counting = false;
+              pause();
+              emit('on-end');
+            }
+
+            if (remainTime > 0) {
+              tick();
+            }
           }
-
-          if (remainTime > 0) {
-            tick();
-          }
-        }
-      });
+        });
+      }
     };
 
     // 将倒计时剩余时间格式化   参数： t  时间戳  type custom 自定义类型
@@ -147,6 +138,7 @@ export default create({
         rest.s = Math.floor((ts % MINUTE) / SECOND);
         rest.ms = Math.floor(ts % SECOND);
       }
+
       return type == 'custom' ? rest : parseFormat({ ...rest });
     };
 
@@ -189,7 +181,6 @@ export default create({
           format = format.replace('SS', msC.slice(0, 1));
         }
       }
-
       return format;
     };
 
