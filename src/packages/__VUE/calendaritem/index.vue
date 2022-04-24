@@ -456,7 +456,9 @@ export default create({
       if (endDate.year - startDate.year > 0) {
         monthsNum = monthsNum + 12 * (endDate.year - startDate.year);
       }
-
+      if (monthsNum <= 0) {
+        monthsNum = 1;
+      }
       // 设置月份数据
       getMonth(state.startData, 'next');
 
@@ -565,7 +567,11 @@ export default create({
       return Utils.isEqual(date, Utils.date2Str(new Date()));
     };
     // 滚动处理事件
+    // 滚动处理事件
     const mothsViewScroll = (e: any) => {
+      if (state.monthsData.length <= 1) {
+        return;
+      }
       const currentScrollTop = e.target.scrollTop;
       let current = Math.floor(currentScrollTop / state.avgHeight);
       if (current == 0) {
@@ -593,7 +599,7 @@ export default create({
         ) {
           current += 1;
         }
-        if (currentScrollTop < state.monthsData[current - 1].cssScrollHeight) {
+        if (current >= 1 && currentScrollTop < state.monthsData[current - 1].cssScrollHeight) {
           current -= 1;
         }
       }

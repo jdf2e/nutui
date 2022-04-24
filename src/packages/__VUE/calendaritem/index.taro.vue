@@ -537,16 +537,16 @@ export default create({
       if (months?.value) {
         viewHeight.value = months.value.clientHeight;
       }
-      if (TARO_ENV === 'h5') {
-        Taro.nextTick(() => {
-          Taro.createSelectorQuery()
-            .select('.nut-calendar-content')
-            .boundingClientRect((res) => {
-              viewHeight.value = res.height;
-            })
-            .exec();
-        });
-      }
+      // if (TARO_ENV === 'h5') {
+      //   Taro.nextTick(() => {
+      //     Taro.createSelectorQuery()
+      //       .select('.nut-calendar-content')
+      //       .boundingClientRect((res) => {
+      //         viewHeight.value = res.height;
+      //       })
+      //       .exec();
+      //   });
+      // }
     };
     const setDefaultRange = (monthsNum: number, current: number) => {
       let rangeArr: any[] = [];
@@ -599,6 +599,9 @@ export default create({
     };
 
     const mothsViewScroll = (e: any) => {
+      if (state.monthsData.length <= 1) {
+        return;
+      }
       const currentScrollTop = e.target.scrollTop;
       let current = Math.floor(currentScrollTop / state.avgHeight);
       if (current == 0) {
@@ -613,6 +616,15 @@ export default create({
           current -= 1;
         }
       } else {
+        if (!viewHeight.value || viewHeight.value < 0) {
+          Taro.createSelectorQuery()
+            .select('.nut-calendar-content')
+            .boundingClientRect((res) => {
+              console.log(res);
+              viewHeight.value = res.height;
+            })
+            .exec();
+        }
         const viewPosition = Math.round(currentScrollTop + viewHeight.value);
         if (
           viewPosition < state.monthsData[current].cssScrollHeight + state.monthsData[current].cssHeight &&
@@ -626,7 +638,7 @@ export default create({
         ) {
           current += 1;
         }
-        if (currentScrollTop < state.monthsData[current - 1].cssScrollHeight) {
+        if (current >= 1 && currentScrollTop < state.monthsData[current - 1].cssScrollHeight) {
           current -= 1;
         }
       }
