@@ -1,7 +1,7 @@
 <template>
   <nut-picker
     v-model="selectedValue"
-    :visible="show"
+    v-model:visible="show"
     :okText="okText"
     :cancelText="cancelText"
     @close="closeHandler"
@@ -93,7 +93,7 @@ export default create({
 
   setup(props, { emit }) {
     const state = reactive({
-      show: false,
+      show: props.visible,
       currentDate: new Date(),
       title: props.title,
       selectedValue: []
@@ -202,7 +202,6 @@ export default create({
           break;
       }
 
-      console.log('result', result);
       return result;
     });
 
@@ -223,7 +222,6 @@ export default create({
       selectedValue: (string | number)[];
       selectedOptions: PickerOption[];
     }) => {
-      console.log('滚动', selectedValue);
       if (['date', 'datetime', 'datehour', 'month-day'].includes(props.type)) {
         let formatDate: (number | string)[] = [];
         selectedValue.forEach((item) => {
@@ -237,7 +235,6 @@ export default create({
         const month = Number(formatDate[1]) - 1;
         const day = Math.min(Number(formatDate[2]), getMonthEndDay(Number(formatDate[0]), Number(formatDate[1])));
         let date: Date | null = null;
-        console.log(year, month, day);
         if (props.type === 'date' || props.type === 'month-day') {
           date = new Date(year, month, day);
         } else if (props.type === 'datetime') {
@@ -246,8 +243,6 @@ export default create({
           date = new Date(year, month, day, Number(formatDate[3]));
         }
         state.currentDate = formatValue(date as Date);
-
-        console.log(state.currentDate);
       }
 
       emit('change', { columnIndex, selectedValue, selectedOptions });
