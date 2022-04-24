@@ -67,6 +67,7 @@
           <nut-icon :name="rightIcon" :size="rightIconSize"></nut-icon>
         </view>
         <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
+        <view v-if="readonly" class="nut-input-disabled-mask"></view>
       </view>
       <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
         <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
@@ -348,6 +349,10 @@ export default create({
 
       if (props.formatter && trigger === props.formatTrigger) {
         value = props.formatter(value);
+      }
+
+      if (inputRef && inputRef.value && inputRef.value.value && inputRef.value.value !== value) {
+        inputRef.value.value = value;
       }
 
       if (value !== props.modelValue) {
