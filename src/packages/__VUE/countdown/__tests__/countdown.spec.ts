@@ -24,15 +24,17 @@ test('endTime props', async () => {
   expect(wrapper.emitted('on-end')).toBeTruthy();
 });
 
-test('show days props', async () => {
+test('format props', async () => {
   const wrapper = mount(CountDown, {
     props: {
-      showDays: true
+      endTime: Date.now() + 1 * 1000,
+      format: 'DD天HH时mm分ss秒'
     }
   });
-  const prevSnapShot = wrapper.find('.nut-cd-dot');
   await nextTick();
-  expect(prevSnapShot.text() == '天').toBe(true);
+  expect(wrapper.find('.nut-cd-block').exists()).toBeTruthy();
+  const prevSnapShot = wrapper.find('.nut-cd-block');
+  expect(prevSnapShot.text() == '00天00时00分00秒').toBe(true);
 });
 
 test('paused props', async () => {

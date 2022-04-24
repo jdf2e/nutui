@@ -1,7 +1,7 @@
 <template>
   <nut-picker
     v-model="selectedValue"
-    :visible="show"
+    v-model:visible="show"
     :okText="okText"
     :cancelText="cancelText"
     @close="closeHandler"
@@ -10,10 +10,12 @@
     :title="title"
     @confirm="confirm"
     :isWrapTeleport="isWrapTeleport"
-  ></nut-picker>
+  >
+    <slot></slot>
+  </nut-picker>
 </template>
 <script lang="ts">
-import { toRefs, watch, computed, reactive, onMounted, onBeforeMount } from 'vue';
+import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
 import picker from '../picker/index.vue';
 import { popupProps } from '../popup/index.vue';
@@ -30,7 +32,9 @@ function isDate(val: Date): val is Date {
   return Object.prototype.toString.call(val) === '[object Date]' && !isNaN(val.getTime());
 }
 
-const zhCNType = {
+const zhCNType: {
+  [props: string]: string;
+} = {
   day: '日',
   year: '年',
   month: '月',
@@ -89,7 +93,7 @@ export default create({
 
   setup(props, { emit }) {
     const state = reactive({
-      show: false,
+      show: props.visible,
       currentDate: new Date(),
       title: props.title,
       selectedValue: []
@@ -197,6 +201,7 @@ export default create({
           result = result.slice(0, 4);
           break;
       }
+
       return result;
     });
 
@@ -217,36 +222,34 @@ export default create({
       selectedValue: (string | number)[];
       selectedOptions: PickerOption[];
     }) => {
-      if (['date', 'datetime'].includes(props.type)) {
-        let formatDate = [];
-        formatDate = selectedValue;
-        let date: Date;
-        if (props.type === 'date') {
-          state.currentDate = formatValue(
-            new Date(
-              formatDate[0],
-              formatDate[1] - 1,
-              Math.min(formatDate[2], getMonthEndDay(formatDate[0], formatDate[1]))
-            )
-          );
-        } else if (props.type === 'datetime') {
-          state.currentDate = formatValue(
-            new Date(
-              formatDate[0],
-              formatDate[1] - 1,
-              Math.min(formatDate[2], getMonthEndDay(formatDate[0], formatDate[1])),
-              formatDate[3],
-              formatDate[4]
-            )
-          );
+      if (['date', 'datetime', 'datehour', 'month-day'].includes(props.type)) {
+        let formatDate: (number | string)[] = [];
+        selectedValue.forEach((item) => {
+          formatDate.push(item);
+        });
+        if (props.type == 'month-day' && formatDate.length < 3) {
+          formatDate.unshift(new Date(props.modelValue || props.minDate || props.maxDate).getFullYear());
         }
+
+        const year = Number(formatDate[0]);
+        const month = Number(formatDate[1]) - 1;
+        const day = Math.min(Number(formatDate[2]), getMonthEndDay(Number(formatDate[0]), Number(formatDate[1])));
+        let date: Date | null = null;
+        if (props.type === 'date' || props.type === 'month-day') {
+          date = new Date(year, month, day);
+        } else if (props.type === 'datetime') {
+          date = new Date(year, month, day, Number(formatDate[3]), Number(formatDate[4]));
+        } else if (props.type === 'datehour') {
+          date = new Date(year, month, day, Number(formatDate[3]));
+        }
+        state.currentDate = formatValue(date as Date);
       }
 
       emit('change', { columnIndex, selectedValue, selectedOptions });
     };
 
-    const formatterOption = (type, value) => {
-      const { filter, formatter, isShowChinese } = props;
+    const formatterOption = (type: string, value: string | number) => {
+      const { formatter, isShowChinese } = props;
       let fOption = null;
       if (formatter) {
         fOption = formatter(type, { text: padZero(value, 2), value: padZero(value, 2) });
@@ -276,8 +279,7 @@ export default create({
           index++;
         }
       }
-      state.selectedValue[columnIndex] = arr[index].value;
-      // return { values: arr, defaultIndex: index };
+      (state.selectedValue as any)[columnIndex] = arr[index].value;
       return props.filter ? props.filter(type, arr) : arr;
     };
 

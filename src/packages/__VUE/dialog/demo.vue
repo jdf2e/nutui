@@ -1,43 +1,71 @@
 <template>
   <div class="demo">
-    <nut-cell-group title="函数式调用">
-      <nut-cell title="基础弹框" @click="baseClick"></nut-cell>
-      <nut-cell title="无标题弹框" @click="noTitleClick"></nut-cell>
-      <nut-cell title="提示弹框" @click="tipsClick"></nut-cell>
-      <nut-cell title="底部按钮 垂直调用" @click="verticalClick"></nut-cell>
+    <nut-cell-group :title="translate('funUse')">
+      <nut-cell :title="translate('basic')" @click="baseClick"></nut-cell>
+      <nut-cell :title="translate('noTitle')" @click="noTitleClick"></nut-cell>
+      <nut-cell :title="translate('tipDialog')" @click="tipsClick"></nut-cell>
+      <nut-cell :title="translate('title')" @click="verticalClick"></nut-cell>
     </nut-cell-group>
-    <nut-cell-group title="标签式使用">
-      <nut-cell title="组件调用" @click="componentClick"></nut-cell>
+    <nut-cell-group :title="translate('title1')">
+      <nut-cell :title="translate('title1')" @click="componentClick"></nut-cell>
       <nut-dialog
         teleport="#app"
-        title="组件调用"
-        content="如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。"
+        :title="translate('title1')"
+        :content="translate('content')"
         v-model:visible="visible"
       >
       </nut-dialog>
-      <nut-cell title="底部按钮 垂直使用" @click="componentvVrticalClick"></nut-cell>
+      <nut-cell :title="translate('title')" @click="componentvVrticalClick"></nut-cell>
       <nut-dialog
         footer-direction="vertical"
         teleport="#app"
-        title="组件调用"
-        content="如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。"
+        :title="translate('title1')"
+        :content="translate('content')"
         v-model:visible="visible1"
       >
       </nut-dialog>
     </nut-cell-group>
-    <nut-cell-group title="teleport 使用，挂载到指定节点">
-      <nut-cell title="body 节点下" @click="teleportClick('body')"></nut-cell>
-      <nut-cell title="#app 节点下" @click="teleportClick('#app')"></nut-cell>
-      <nut-cell title="demo class 元素节点下" @click="teleportClick('.demo')"></nut-cell>
+    <nut-cell-group :title="translate('title2')">
+      <nut-cell title="body element node" @click="teleportClick('body')"></nut-cell>
+      <nut-cell title="#app element node" @click="teleportClick('#app')"></nut-cell>
+      <nut-cell title="demo class element node" @click="teleportClick('.demo')"></nut-cell>
     </nut-cell-group>
   </div>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('dialog');
+const { createDemo, translate } = createComponent('dialog');
 import { Dialog } from '@/packages/nutui.vue';
-
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    funUse: '函数式调用',
+    basic: '基础弹框',
+    noTitle: '无标题弹框',
+    tipDialog: '提示弹框',
+    tips: '提示',
+    title: '底部按钮 垂直使用',
+    title1: '标签式使用',
+    title2: 'Teleport 使用，挂载到指定节点',
+    content: '支持函数调用和组件调用两种方式。',
+    content1: '支持底部按钮纵向排列。',
+    content2: '打开开发者工具看一下 Elements Tab'
+  },
+  'en-US': {
+    funUse: 'Function use',
+    basic: 'Basic Usage',
+    noTitle: 'No Title',
+    tipDialog: 'Tips Dialog',
+    tips: 'Tips',
+    title: 'Bottom button vertical use',
+    title1: 'Template use',
+    title2: 'Teleport use, mount to the specified element node',
+    content: 'Function call and template call are supported.',
+    content1: 'Support vertical arrangement of bottom buttons.',
+    content2: 'Open the developer tool and take a look at the Elements tab'
+  }
+});
 export default createDemo({
   setup() {
     const visible = ref(false);
@@ -52,23 +80,23 @@ export default createDemo({
 
     const baseClick = (): void => {
       Dialog({
-        title: '基础弹框',
-        content: '支持函数调用和组件调用两种方式。',
+        title: translate('basic'),
+        content: translate('content'),
         onCancel,
         onOk
       });
     };
     const noTitleClick = () => {
       Dialog({
-        content: '无标题弹框',
+        content: translate('noTitle'),
         onCancel,
         onOk
       });
     };
     const tipsClick = () => {
       Dialog({
-        title: '温馨提示',
-        content: '支持函数调用和组件调用两种方式。',
+        title: translate('tips'),
+        content: translate('content'),
         noCancelBtn: true,
         onCancel,
         onOk
@@ -76,8 +104,8 @@ export default createDemo({
     };
     const verticalClick = () => {
       Dialog({
-        title: '温馨提示',
-        content: '支持底部按钮纵向排列。',
+        title: translate('tips'),
+        content: translate('content1'),
         footerDirection: 'vertical',
         onCancel,
         onOk
@@ -94,8 +122,8 @@ export default createDemo({
     const teleportClick = (teleport: string) => {
       Dialog({
         teleport,
-        title: '挂载至 ' + teleport,
-        content: '打开开发者工具看一下 Elements Tab',
+        title: 'teleport to ' + teleport,
+        content: translate('content2'),
         noCancelBtn: true,
         onCancel
       });
@@ -110,7 +138,8 @@ export default createDemo({
       componentvVrticalClick,
       tipsClick,
       verticalClick,
-      teleportClick
+      teleportClick,
+      translate
     };
   }
 });

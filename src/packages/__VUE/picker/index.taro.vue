@@ -18,7 +18,7 @@
           okText || translate('confirm')
         }}</view>
       </view>
-
+      <slot name="top"></slot>
       <view class="nut-picker__column">
         <view class="nut-picker__hairline"></view>
         <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
@@ -36,6 +36,7 @@
           ></nut-picker-column>
         </view>
       </view>
+      <slot name="default"></slot>
     </nut-popup>
   </view>
 </template>
