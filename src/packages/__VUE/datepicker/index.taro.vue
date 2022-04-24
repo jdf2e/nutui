@@ -92,7 +92,7 @@ export default create({
 
   setup(props, { emit }) {
     const state = reactive({
-      show: false,
+      show: props.visible,
       currentDate: new Date(),
       title: props.title,
       selectedValue: []
@@ -307,6 +307,7 @@ export default create({
     };
 
     onBeforeMount(() => {
+      console.log('平铺展示');
       state.currentDate = formatValue(props.modelValue);
     });
 

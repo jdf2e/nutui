@@ -9,12 +9,14 @@
 ```javascript
 import { createApp } from 'vue';
 // vue
-import { DatePicker, Picker } from '@nutui/nutui';
+import { DatePicker, Picker, Popup } from '@nutui/nutui';
 // taro
-import { DatePicker, Picker } from '@nutui/nutui-taro';
+import { DatePicker, Picker, Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(DatePicker);
+app.use(Picker);
+app.use(Popup);
 ```
     
 ## 代码演示
@@ -40,6 +42,8 @@ app.use(DatePicker);
     setup(props) {
       const show = ref(false);
       const desc = ref('2022年05月10日');
+      const minDate = new Date(2020, 0, 1),
+      const maxDate = new Date(2025, 10, 1),
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ({ selectedValue, selectedOptions })=>{
         desc.value = selectedOptions.map((option) => option.text).join('');
@@ -48,6 +52,8 @@ app.use(DatePicker);
         currentDate,
         show,
         desc,
+        minDate,
+        maxDate,
         confirm
       };
     }
