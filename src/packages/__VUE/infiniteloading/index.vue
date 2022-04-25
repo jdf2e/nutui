@@ -225,10 +225,10 @@ export default create({
       }
     };
 
-    // // 滚动监听对象
-    // const getParentElement = (el: HTMLElement) => {
-    //   return !!props.containerId ? document.querySelector(`#${props.containerId}`) : el && el.parentNode;
-    // };
+    // 滚动监听对象
+    const getParentElement = (el: HTMLElement) => {
+      return !!props.containerId ? document.querySelector(`#${props.containerId}`) : el && el.parentNode;
+    };
 
     onMounted(() => {
       const parentElement = getParentElement(state.scroller as HTMLElement) as Node & ParentNode;
