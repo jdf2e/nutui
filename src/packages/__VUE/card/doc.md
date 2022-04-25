@@ -155,6 +155,7 @@ app.use(Card);
 | shop-desc  | 店铺介绍                                  | String | -    |
 | delivery     | 配送方式 | String  | -      |
 | shop-name   | 店铺名称| String  | -      |
+| is-need-price  | 是否需要价格展示| Boolean  | true   |
 
 
 ### Slots
