@@ -17,7 +17,7 @@
 <script lang="ts">
 import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
-import picker from '../picker/index.vue';
+import Picker from '../picker/index.vue';
 import { popupProps } from '../popup/index.vue';
 import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
@@ -44,7 +44,7 @@ const zhCNType: {
 };
 export default create({
   components: {
-    [picker.name]: picker
+    [Picker.name]: Picker
   },
   props: {
     ...popupProps,
@@ -137,6 +137,15 @@ export default create({
             }
           }
         }
+      } else {
+        return {
+          [`${type}Year`]: year,
+          [`${type}Month`]: month,
+          [`${type}Day`]: day,
+          [`${type}Hour`]: hour,
+          [`${type}Minute`]: minute,
+          [`${type}Seconds`]: seconds
+        };
       }
 
       return {
