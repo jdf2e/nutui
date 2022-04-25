@@ -1,4 +1,4 @@
-import { createVNode, defineComponent, render, App } from 'vue';
+import { createVNode, defineComponent, render, h, onMounted } from 'vue';
 import Notify from '../index.vue';
 const defaultOptions = {
   type: 'base',
@@ -11,7 +11,7 @@ const defaultOptions = {
   onClosed: null,
   onClick: null,
   onOpened: null,
-  textTimer: null,
+  // textTimer: null,
   unmount: null
 };
 
@@ -67,15 +67,30 @@ const mountNotify = (opts: any) => {
   opts.id = _id;
   idsMap.push(opts.id);
   optsMap.push(opts);
-  const container = document.createElement('view');
-  container.id = opts.id;
-  const instance: any = createVNode(Notify, opts);
-  render(instance, container);
-  document.body.appendChild(container);
-  setTimeout(() => {
-    instance.showPopup = true;
-  }, 0);
-  return instance.component.ctx;
+  const root = document.createElement('view');
+  root.id = 'notify-' + opts.id;
+  const Wrapper = {
+    setup() {
+      // opts.onUpdate = (val: boolean) => {
+      //   console.log(val);
+      //   if (val == false) {
+      //     document.body.removeChild(root);
+      //   }
+      // };
+      opts.teleport = `#notify-${opts.id}`;
+      onMounted(() => {
+        setTimeout(() => {
+          document.body.removeChild(root);
+        }, opts.duration);
+      });
+      return () => {
+        return h(Notify, opts);
+      };
+    }
+  };
+  const instance: any = createVNode(Wrapper);
+  document.body.appendChild(root);
+  render(instance, root);
 };
 
 const errorMsg = (msg: string) => {
@@ -109,7 +124,8 @@ export const NotifyFunction = {
   hide() {
     clearNotify();
   },
-  install(app: App): void {
+  install(app: any): void {
+    app.use(Notify);
     app.config.globalProperties.$notify = NotifyFunction;
   }
 };
