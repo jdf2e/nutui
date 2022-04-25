@@ -43,7 +43,7 @@ export default createDemo({
       });
     };
     const primaryNotify = (msg: string) => {
-      Notify.primary(msg, { duration: 10000 });
+      Notify.primary(msg, { duration: 1000 });
     };
     const successNotify = (msg: string) => {
       Notify.success(msg);
