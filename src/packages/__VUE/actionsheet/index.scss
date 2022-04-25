@@ -1,9 +1,5 @@
 .nut-actionsheet-panel {
   display: block;
-  &.nut-actionsheet-safebottom {
-    margin-bottom: constant(safe-area-inset-bottom);
-    margin-bottom: env(safe-area-inset-bottom);
-  }
   .nut-actionsheet-title {
     display: block;
     padding: 10px;
