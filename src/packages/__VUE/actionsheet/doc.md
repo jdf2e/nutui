@@ -1,6 +1,5 @@
 # ActionSheet 动作面板
 
-
 ### 介绍
 从底部弹出的动作菜单面板。
 
@@ -275,7 +274,6 @@ export default {
 | description      | 设置列表项副标题/描述                  | String  | ''        |
 | cancel-txt       | 取消文案                               | String  | '取消'   |
 | close-abled      | 遮罩层是否可关闭                       | Boolean | true      |
-|safe-area-inset-bottom	|是否开启iphone系列全面屏底部安全区适配|	Boolean	|false
 
 ## menu-items数据结构
 

@@ -29,7 +29,6 @@
       </nut-collapse-item>
     </nut-collapse>
     <h2>自定义折叠图标</h2>
-
     <nut-collapse v-model:active="active3" :accordion="true" icon="arrow-right2" rotate="90">
       <nut-collapse-item :title="title1" :name="1">
         <template v-slot:sTitle> 文本测试 </template>
@@ -54,6 +53,16 @@
         使用 Teleport 新特性重构挂载类组件
       </nut-collapse-item>
     </nut-collapse>
+    <h2>设置固定内容（不折叠）</h2>
+    <nut-collapse v-model:active="active6" icon="down-arrow" :accordion="true">
+      <nut-collapse-item :title="title1" :name="1">
+        <template v-slot:extraRender>固定内容</template>
+        NutUI是一套拥有京东风格的轻量级的 Vue 组件库
+      </nut-collapse-item>
+      <nut-collapse-item :title="title2" :name="2">
+        在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！
+      </nut-collapse-item>
+    </nut-collapse>
   </div>
 </template>
 <script lang="ts">
@@ -68,6 +77,7 @@ export default createDemo({
       active3: 1,
       active4: 1,
       active5: 1,
+      active6: 1,
       title1: '标题1',
       title2: '标题2',
       title3: '标题3',
@@ -83,3 +93,8 @@ export default createDemo({
   }
 });
 </script>
+<style lang="scss">
+.nut-collapse-item .collapse-extraWrapper .collapse-extraRender {
+  color: red;
+}
+</style>

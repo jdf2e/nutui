@@ -50,7 +50,18 @@ export default createDemo({
         },
         {
           title: '性别',
-          key: 'sex'
+          key: 'sex',
+          render: ({ sex }) => {
+            return h(
+              'span',
+              {
+                style: {
+                  color: sex === '女' ? 'blue' : 'green'
+                }
+              },
+              sex
+            );
+          }
         },
         {
           title: '学历',

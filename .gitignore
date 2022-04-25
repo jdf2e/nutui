@@ -11,6 +11,9 @@ package-lock.json
 /src/packages/nutui.vue.build.ts
 /src/packages/nutui.taro.vue.ts
 /src/packages/nutui.taro.vue.build.ts
+src/packages/vscode-extension/node_modules
+src/packages/vscode-extension/*.vsix
+src/packages/vscode-extension/yarn.lock
 /.nyc_output
 /coverage
 /tsc/test
