@@ -23,6 +23,10 @@ export default create({
       default: () => {
         return [];
       }
+    },
+    containerHeight: {
+      type: [Number],
+      default: document.documentElement.clientHeight || document.body.clientHeight || 667
     }
   },
   emits: ['scroll'],
@@ -30,14 +34,13 @@ export default create({
   setup(props, { emit }) {
     const list = ref(null) as Ref;
     const state = reactive({
-      screenHeight: document.documentElement.clientHeight || document.body.clientHeight || 667,
       startOffset: 0,
       start: 0,
       list: props.listData.slice()
     });
 
     const visibleCount = computed(() => {
-      return Math.ceil(state.screenHeight / props.height);
+      return Math.ceil(props.containerHeight / props.height);
     });
 
     const end = computed(() => {

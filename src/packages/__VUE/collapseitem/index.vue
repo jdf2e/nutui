@@ -34,6 +34,11 @@
         :style="iconStyle"
       ></nut-icon>
     </view>
+    <view v-if="$slots.extraRender" class="collapse-extraWrapper">
+      <div class="collapse-extraRender">
+        <slot name="extraRender"></slot>
+      </div>
+    </view>
     <view class="collapse-wrapper" ref="wrapperRef">
       <view :class="['collapse-content', emptyContent]" ref="contentRef">
         <slot></slot>
