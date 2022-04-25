@@ -2,12 +2,12 @@
   position: relative;
 
   &-hover {
-    stroke: $circle-progress-primary-color;
+    stroke: $circleprogress-primary-color;
     transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;
   }
 
   &-path {
-    stroke: $circle-progress-path-color;
+    stroke: $circleprogress-path-color;
   }
 
   &-text {
@@ -18,7 +18,7 @@
     width: 100%;
     transform: translateY(-50%);
     text-align: center;
-    color: $circle-progress-text-color;
-    font-size: $circle-progress-text-size;
+    color: $circleprogress-text-color;
+    font-size: $circleprogress-text-size;
   }
 }

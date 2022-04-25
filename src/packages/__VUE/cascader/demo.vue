@@ -19,6 +19,8 @@
           @change="events.change"
           @path-change="events.pathChange"
           :options="demo1.options"
+          close-icon="heart"
+          close-icon-position="top-left"
         ></nut-cascader>
       </nut-form-item>
     </nut-form>

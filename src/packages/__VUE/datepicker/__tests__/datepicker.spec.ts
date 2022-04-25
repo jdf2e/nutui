@@ -2,6 +2,9 @@ import { config, mount } from '@vue/test-utils';
 import { nextTick, ref, toRefs, reactive, onMounted } from 'vue';
 import NutIcon from '../../icon/index.vue';
 import NutRange from '../../range/index.vue';
+import NutPicker from '../../picker/index.vue';
+import NutPopup from '../../popup/index.vue';
+import NutPickerColumn from '../../picker/Column.vue';
 import DatePicker from '../../datepicker/index.vue';
 
 function sleep(delay = 0): Promise<void> {
@@ -13,7 +16,10 @@ function sleep(delay = 0): Promise<void> {
 beforeAll(() => {
   config.global.components = {
     NutIcon,
-    NutRange
+    NutRange,
+    NutPicker,
+    NutPopup,
+    NutPickerColumn
   };
 });
 
@@ -25,6 +31,7 @@ test('Do not display Chinese', async () => {
   const wrapper = mount(DatePicker, {
     props: {
       modelValue: new Date(2020, 0, 1),
+      type: 'year-month',
       visible: true,
       isWrapTeleport: false,
       isShowChinese: false
@@ -36,10 +43,9 @@ test('Do not display Chinese', async () => {
   confirm.trigger('click');
   expect(wrapper.emitted().confirm[0]).toEqual([
     {
-      selectedValue: ['2020', '01', '01'],
+      selectedValue: ['2020', '01'],
       selectedOptions: [
         { text: '2020', value: '2020' },
-        { text: '01', value: '01' },
         { text: '01', value: '01' }
       ]
     }
@@ -49,6 +55,7 @@ test('Do not display Chinese', async () => {
 test('min date & max date', async () => {
   const wrapper = mount(DatePicker, {
     props: {
+      type: 'year-month',
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2022, 10, 1),
       visible: true,
