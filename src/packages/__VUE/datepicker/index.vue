@@ -1,7 +1,7 @@
 <template>
   <nut-picker
     v-model="selectedValue"
-    :visible="show"
+    v-model:visible="show"
     :okText="okText"
     :cancelText="cancelText"
     @close="closeHandler"
@@ -17,7 +17,7 @@
 <script lang="ts">
 import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
-import picker from '../picker/index.vue';
+import Picker from '../picker/index.vue';
 import { popupProps } from '../popup/index.vue';
 import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
@@ -44,7 +44,7 @@ const zhCNType: {
 };
 export default create({
   components: {
-    [picker.name]: picker
+    [Picker.name]: Picker
   },
   props: {
     ...popupProps,
@@ -93,7 +93,7 @@ export default create({
 
   setup(props, { emit }) {
     const state = reactive({
-      show: false,
+      show: props.visible,
       currentDate: new Date(),
       title: props.title,
       selectedValue: []
@@ -137,6 +137,15 @@ export default create({
             }
           }
         }
+      } else {
+        return {
+          [`${type}Year`]: year,
+          [`${type}Month`]: month,
+          [`${type}Day`]: day,
+          [`${type}Hour`]: hour,
+          [`${type}Minute`]: minute,
+          [`${type}Seconds`]: seconds
+        };
       }
 
       return {
@@ -202,7 +211,6 @@ export default create({
           break;
       }
 
-      console.log('result', result);
       return result;
     });
 
@@ -223,7 +231,6 @@ export default create({
       selectedValue: (string | number)[];
       selectedOptions: PickerOption[];
     }) => {
-      console.log('滚动', selectedValue);
       if (['date', 'datetime', 'datehour', 'month-day'].includes(props.type)) {
         let formatDate: (number | string)[] = [];
         selectedValue.forEach((item) => {
@@ -237,7 +244,6 @@ export default create({
         const month = Number(formatDate[1]) - 1;
         const day = Math.min(Number(formatDate[2]), getMonthEndDay(Number(formatDate[0]), Number(formatDate[1])));
         let date: Date | null = null;
-        console.log(year, month, day);
         if (props.type === 'date' || props.type === 'month-day') {
           date = new Date(year, month, day);
         } else if (props.type === 'datetime') {
@@ -246,8 +252,6 @@ export default create({
           date = new Date(year, month, day, Number(formatDate[3]));
         }
         state.currentDate = formatValue(date as Date);
-
-        console.log(state.currentDate);
       }
 
       emit('change', { columnIndex, selectedValue, selectedOptions });
