@@ -23,6 +23,7 @@ class Tree {
     }
   }
 
+  // for test
   getNodeByValue(value: CascaderOption['value']): CascaderOption | void {
     let foundNode;
     eachTree(this.nodes, (node: CascaderOption) => {
@@ -35,30 +36,26 @@ class Tree {
     return foundNode;
   }
 
-  getPathNodesByNode(node: CascaderOption): CascaderOption[] {
-    const nodes = [];
-
-    while (node) {
-      nodes.unshift(node);
-      node = node._parent;
-    }
-
-    return nodes;
-  }
-
   getPathNodesByValue(value: CascaderValue): CascaderOption[] {
-    if (Array.isArray(value) && !value.length) {
+    if (!value.length) {
       return [];
     }
 
-    const tail = Array.isArray(value) ? value[value.length - 1] : value;
+    const pathNodes = [];
+    let currentNodes: CascaderOption[] | void = this.nodes;
 
-    const node = this.getNodeByValue(tail);
-    if (!node) {
-      return [];
+    while (currentNodes && currentNodes.length) {
+      const foundNode: CascaderOption | void = currentNodes.find((node) => node.value === value[node.level as number]);
+
+      if (!foundNode) {
+        break;
+      }
+
+      pathNodes.push(foundNode);
+      currentNodes = foundNode.children;
     }
 
-    return this.getPathNodesByNode(node);
+    return pathNodes;
   }
 
   isLeaf(node: CascaderOption, lazy: boolean): boolean {
