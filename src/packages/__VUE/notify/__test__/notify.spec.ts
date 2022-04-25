@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
 import Notify from '../index.vue';
+import { nextTick } from 'vue';
 
 describe('Notify', () => {
   test('base notify', () => {
@@ -39,7 +40,7 @@ describe('Notify', () => {
         background: 'rgb(255, 225, 225)'
       }
     });
-    const notify = wrapper.find('.nut-notify').find('.nut-notify');
+    const notify = wrapper.find('.nut-popup').find('.nut-notify');
     expect((notify.element as HTMLElement).style.color).toBe('rgb(173, 0, 0)');
     expect((notify.element as HTMLElement).style.background).toBe('rgb(255, 225, 225)');
   });
