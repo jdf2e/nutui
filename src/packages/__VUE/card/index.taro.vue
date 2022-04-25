@@ -6,7 +6,7 @@
     <div class="nut-card__right">
       <div class="nut-card__right__title">{{ title }}</div>
       <slot name="prolist"></slot>
-      <div class="nut-card__right__price">
+      <div class="nut-card__right__price" v-if="isNeedPrice">
         <nut-price :price="price"></nut-price>
         <template v-if="isHaveSlot('origin')">
           <slot name="origin"></slot>
@@ -66,6 +66,10 @@ export default create({
     shopName: {
       type: String,
       default: ''
+    },
+    isNeedPrice: {
+      type: Boolean,
+      default: true
     }
   },
 
