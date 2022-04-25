@@ -29,7 +29,7 @@
         @include oneline-ellipsis();
         margin-right: 5px;
         font-size: 12px;
-        color: $cmt-header-user-name-color;
+        color: $comment-header-user-name-color;
         width: auto;
         max-width: 80px;
       }
@@ -43,7 +43,7 @@
 
           @include oneline-ellipsis();
           font-size: 12px;
-          color: $cmt-header-user-name-color;
+          color: $comment-header-user-name-color;
 
           > span {
             margin-right: 8px;
@@ -79,7 +79,7 @@
       width: 100px;
       text-align: right;
       font-size: 12px;
-      color: $cmt-header-time-color;
+      color: $comment-header-time-color;
     }
 
     &__complex-score {
@@ -248,7 +248,7 @@
   &-bottom {
     display: flex;
     justify-content: space-between;
-    color: $cmt-bottom-label-color;
+    color: $comment-bottom-label-color;
     margin-right: 5px;
 
     &__lable {
@@ -347,7 +347,7 @@
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     @include moreline-ellipsis(6);
     span {
-      color: $cmt-shop-color;
+      color: $comment-shop-color;
     }
   }
 }

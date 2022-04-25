@@ -89,6 +89,10 @@ export const popupProps = {
   round: {
     type: Boolean,
     default: false
+  },
+  safeAreaInsetBottom: {
+    type: Boolean,
+    default: false
   }
 };
 export default create({
@@ -117,6 +121,7 @@ export default create({
         [prefixCls]: true,
         ['round']: props.round,
         [`popup-${props.position}`]: true,
+        [`popup-${props.position}--safebottom`]: props.position === 'bottom' && props.safeAreaInsetBottom,
         [props.popClass]: true
       };
     });
