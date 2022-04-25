@@ -46,6 +46,16 @@
         快看漫画与全球潮玩集合店X11达成战略合作
       </nut-collapse-item>
     </nut-collapse>
+    <h2>设置固定内容（不折叠部分）</h2>
+    <nut-collapse v-model:active="active6" icon="down-arrow" :accordion="true">
+      <nut-collapse-item :title="title1" :name="1">
+        <template v-slot:extraRender>固定内容</template>
+        NutUI是一套拥有京东风格的轻量级的 Vue 组件库
+      </nut-collapse-item>
+      <nut-collapse-item :title="title2" :name="2">
+        在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！
+      </nut-collapse-item>
+    </nut-collapse>
   </div>
 </template>
 <script lang="ts">
@@ -58,6 +68,7 @@ export default {
       active3: 1,
       active4: 1,
       active5: 1,
+      active6: 1,
       title1: '标题1',
       title2: '标题2',
       title3: '标题3',
