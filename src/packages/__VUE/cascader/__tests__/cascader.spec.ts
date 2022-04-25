@@ -193,30 +193,6 @@ describe('Tree', () => {
 
   const tree = new Tree(mockOptions);
 
-  test('getNodeByValue', () => {
-    const node = tree.getNodeByValue('西湖区');
-    expect(node).toBeTruthy();
-    expect(node).toMatchObject({ text: '西湖区', value: '西湖区' });
-  });
-
-  test('getPathNodesByNode', () => {
-    const node = tree.getNodeByValue('西湖区') as CascaderOption;
-    expect(node).toBeTruthy();
-    expect(node.value).toBe('西湖区');
-
-    const pathNodes = tree.getPathNodesByNode(node as CascaderOption);
-    const mappedPathNodes = pathNodes.map(({ text, value }) => ({
-      text,
-      value
-    }));
-
-    expect(mappedPathNodes).toMatchObject([
-      { text: '浙江', value: '浙江' },
-      { text: '杭州', value: '杭州' },
-      { text: '西湖区', value: '西湖区' }
-    ]);
-  });
-
   test('getPathNodesByValue', () => {
     const pathNodes = tree.getPathNodesByValue(['杭州', '杭州', '西湖区']);
     const mappedPathNodes = pathNodes.map(({ text, value }) => ({
