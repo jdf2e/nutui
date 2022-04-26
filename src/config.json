@@ -28,6 +28,11 @@
         "show": true
       },
       {
+        "name": "ide",
+        "cName": "开发工具支持",
+        "show": true
+      },
+      {
         "name": "resource",
         "cName": "资源",
         "show": true
