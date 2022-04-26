@@ -194,7 +194,7 @@ describe('Tree', () => {
   const tree = new Tree(mockOptions);
 
   test('getPathNodesByValue', () => {
-    const pathNodes = tree.getPathNodesByValue(['杭州', '杭州', '西湖区']);
+    const pathNodes = tree.getPathNodesByValue(['浙江', '杭州', '西湖区']);
     const mappedPathNodes = pathNodes.map(({ text, value }) => ({
       text,
       value

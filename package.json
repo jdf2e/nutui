@@ -1,11 +1,15 @@
 {
   "name": "@nutui/nutui",
-  "version": "3.1.18",
+  "version": "3.1.20",
   "description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）",
   "main": "dist/nutui.umd.js",
   "module": "dist/nutui.es.js",
   "style": "dist/style.css",
   "typings": "dist/types/index.d.ts",
+  "vetur": {
+    "tags": "dist/smartips/tags.json",
+    "attributes": "dist/smartips/attributes.json"
+  },
   "keywords": [
     "nutui",
     "nutui2",
@@ -40,8 +44,8 @@
     "dev:taro:h5": "npm run createTaroConfig && npm run checked:taro:vue && cd src/sites/mobile-taro/vue/ && npm run dev:h5",
     "build:site": "npm run checked && vite build",
     "build:site:oss": "npm run checked && vite build --base=/nutui/3x/",
-    "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts",
-    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:types:taro && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts",
+    "build": "npm run checked && vite build --config vite.config.build.ts && vite build --config vite.config.build.disperse.ts && npm run generate:types && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run attrs",
+    "build:taro:vue": "npm run checked:taro:vue && vite build --config vite.config.build.taro.vue.ts && vite build --config vite.config.build.taro.vue.disperse.ts && npm run generate:types:taro && npm run generate:themes && vite build --config vite.config.build.css.ts && vite build --config vite.config.build.locale.ts && npm run attrs",
     "serve": "vite preview",
     "upload": "yarn build:site:oss && node ./jd/upload.js",
     "add": "node jd/createComponentMode.js",
@@ -57,7 +61,8 @@
     "release": "standard-version -a",
     "codeformat": "prettier --write .",
     "copydocs": "node ./jd/copymd.js",
-    "createTaroConfig": "node ./jd/generate-taro-route.js"
+    "createTaroConfig": "node ./jd/generate-taro-route.js",
+    "attrs": "node ./jd/createAttributes.js"
   },
   "standard-version": {
     "scripts": {
