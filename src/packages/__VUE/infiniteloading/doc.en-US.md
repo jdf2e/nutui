@@ -1,10 +1,10 @@
-#  InfiniteLoading 滚动加载
+# InfiniteLoading
 
-### 介绍
+### Intro
 
-列表滚动到底部自动加载更多数据。
+Scrolling to the bottom of the list automatically loads more data.
 
-### 安装
+### Install
 
 ```javascript
   import { createApp } from 'vue';
@@ -14,8 +14,7 @@
   app.use(InfiniteLoading);
 ```
 
-### 基础用法
-
+### Basic Usage
 
 :::demo
 
@@ -82,8 +81,10 @@
 }
 </style>
 ```
+
 :::
-### 下拉刷新
+
+### Pull to refresh
 
 :::demo
 
@@ -133,7 +134,7 @@
 
       const refresh = (done) => {
         setTimeout(()=>{
-          Toast.success('刷新成功');
+          Toast.success('Refresh success');
           done()
         },1000)
       }
@@ -168,8 +169,11 @@
 }
 </style>
 ```
+
 :::
-### 自定义加载文案
+
+### Custom loading copywriting
+
 :::demo
 
 ```html
@@ -177,7 +181,7 @@
   <ul class="infiniteUl" id="customScroll">
     <nut-infiniteloading
       load-txt="loading"
-      load-more-txt="没有啦～"
+      load-more-txt="No more"
       container-id="customScroll"
       :use-window="false"
       :has-more="customHasMore"
@@ -237,31 +241,31 @@
 }
 </style>
 ```
+
 :::
 
 ## API
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| has-more         | 是否还有更多数据               | Boolean | `true`                |
-| threshold         | 滚动条与底部距离小于 threshold 时触发 loadMore 事件 | Number | `200`               |
-| use-window | 将滚动侦听器添加到 window 否则侦听组件的父节点     | Boolean | `true` |
-| use-capture          | 是否使用捕获模式 true 捕获 false 冒泡                        | Boolean | `false`            |
-| container-id          | 在 useWindow 属性为 false 的时候，自定义设置节点ID                        | String | `''`            |
-| load-more-txt          | “没有更多数”据展示文案                        | String | `'哎呀，这里是底部了啦'`            |
-| is-open-refresh        | 是否开启下拉刷新                         | Boolean | `false`                |
-| pull-icon        | 下拉刷新[图标名称](#/icon)                        | String | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40/>                |
-| pull-txt        | 下拉刷新提示文案                         | String | `松手刷新`                |
-| load-icon        | 上拉加载[图标名称](#/icon)                       | Boolean | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40 />                |
-| load-txt        | 上拉加载提示文案                         | String | `加载中...`                |
+| Attribute        | Description                                                                                                        | Type    | Default          |
+|------------------|--------------------------------------------------------------------------------------------------------------------|---------|------------------|
+| has-more         | Has more data                                                                                                      | Boolean | `true`           |
+| threshold        | The loadMore event will be Emitted when the distance between the scrollbar and the bottom is less than threshold   | Number  | `200`            |
+| use-window       | Add the scroll listener to the window or the parent of the listening component                                     | Boolean | `true`           |
+| use-capture      | Whether to use capture mode                                                                                        | Boolean | `false`          |
+| container-id     | When useWindow is false, set the node ID by default                                                                | String  | `''`             |
+| load-more-txt    | "No more" text                                                                                                     | String  | 'Oops, this is the bottom'|
+| is-open-refresh  | Enable pull refresh                                                                                                | Boolean | `false`          |
+| pull-icon        | Pull refresh[图标名称](#/icon)                                                                                       | String  | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40/>                |
+| pull-txt         | Pull refresh text                                                                                                   | String  |`Loose to refresh`|
+| load-icon        | Pull on loading[图标名称](#/icon)                                                                                    | Boolean | <img src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png" width=40 />                |
+| load-txt         | Pull on loading text                                                                                                | String  | `Loading...`      |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| load-more  | 继续加载的回调函数 | done 函数，用于关闭加载中状态 |
-| scroll-change  | 实时监听滚动高度 | 滚动高度 |
-| refresh  | 下拉刷新事件回调 | done 函数，用于关闭加载中状态 |
-    
+| Event          | Description                         | Arguments      |
+|----------------|-------------------------------------|----------------|
+| load-more      | Emitted when continues to load      | done()         |
+| scroll-change  | Real-time monitoring of roll height | height         |
+| refresh        | Emitted when pull refresh           | done()         |
