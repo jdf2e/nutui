@@ -162,10 +162,19 @@ const getSassVariables = async () => {
     const customVariables = parseSassVariables(customVariablesText, components);
 
     // merge
-    rawVariables.forEach((item) => {
-      const custom = customVariables.find(({ key }) => key === item.key);
-      if (custom) {
-        item.value = custom.value;
+    // rawVariables.forEach((item) => {
+    //   const custom = customVariables.find(({ key }) => key === item.key);
+    //   if (custom) {
+    //     item.value = custom.value;
+    //   }
+    // });
+    // new merge 客户端变量多
+    customVariables.forEach((item) => {
+      const rawVar = rawVariables.find(({ key }) => key === item.key);
+      if (rawVar) {
+        rawVar.value = item.value;
+      } else {
+        rawVariables.unshift(item);
       }
     });
   }
