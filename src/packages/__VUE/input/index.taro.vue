@@ -32,6 +32,7 @@
           :value="modelValue"
           :formatTrigger="formatTrigger"
           :autofocus="autofocus"
+          :adjust-position="adjustPosition"
           @input="onInput"
           @focus="onFocus"
           @blur="onBlur"
@@ -50,6 +51,7 @@
           :value="modelValue"
           :formatTrigger="formatTrigger"
           :autofocus="autofocus"
+          :adjust-position="adjustPosition"
           @input="onInput"
           @focus="onFocus"
           @blur="onBlur"
@@ -258,6 +260,10 @@ export default create({
     autofocus: {
       type: Boolean,
       default: false
+    },
+    adjustPosition: {
+      type: Boolean,
+      default: true
     }
   },
 
