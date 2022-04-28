@@ -15,6 +15,7 @@
             :maxlength="maxLength"
             :placeholder="placeholder || translate('placeholder')"
             :value="modelValue"
+            :confirm-type="confirmType"
             @input="valueChange"
             @focus="valueFocus"
             @blur="valueBlur"
@@ -36,13 +37,15 @@
 </template>
 
 <script lang="ts">
-import { toRefs, reactive, computed } from 'vue';
+import { toRefs, reactive, computed, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('searchbar');
 interface Events {
   eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
   params: (string | number | Event)[];
 }
+export type confirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
+
 export default create({
   props: {
     modelValue: {
@@ -72,6 +75,10 @@ export default create({
     inputBackground: {
       type: String,
       default: ''
+    },
+    confirmType: {
+      type: String as PropType<confirmTextType>,
+      default: 'done'
     }
   },
 

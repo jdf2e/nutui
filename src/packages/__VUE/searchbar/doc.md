@@ -196,7 +196,7 @@ app.use(SearchBar).use(Icon);
 | clearable          | 是否展示清除按钮 | Boolean | true     |
 | background      | 输入框外部背景 | String |   '#fff'   |
 | input-background   | 输入框内部背景 | String |   '#f7f7f7'   |
-
+| confirm-type   | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
 
 
 ### Events

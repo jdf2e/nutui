@@ -50,6 +50,7 @@
           :value="modelValue"
           :formatTrigger="formatTrigger"
           :autofocus="autofocus"
+          :confirm-type="confirmType"
           @input="onInput"
           @focus="onFocus"
           @blur="onBlur"
@@ -122,6 +123,7 @@ export type InputType =
   | 'password'
   | 'textarea'
   | 'datetime-local';
+export type confirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
 
 export type InputRule = {
   pattern?: RegExp;
@@ -258,6 +260,10 @@ export default create({
     autofocus: {
       type: Boolean,
       default: false
+    },
+    confirmType: {
+      type: String as PropType<confirmTextType>,
+      default: 'done'
     }
   },
 
