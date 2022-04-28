@@ -254,8 +254,7 @@ export default createDemo({
       timer: null as number | null,
       summary: () => {
         return {
-          value: '这是总结栏',
-          colspan: 5
+          value: '这是总结栏'
         };
       }
     });
