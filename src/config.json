@@ -412,7 +412,7 @@
         {
           "name": "Cascader",
           "type": "component",
-          "cName": "级联选择",
+          "cName": "级联选择器",
           "desc": "级联选择，用于多层级数据的选择，典型场景为省市区选择.",
           "sort": 23,
           "show": true,
