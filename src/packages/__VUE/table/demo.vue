@@ -22,6 +22,12 @@
     <nut-table :columns="columns3" :data="data5"> </nut-table>
     <h2>支持排序</h2>
     <nut-table :columns="columns6" :data="data6" @sorter="handleSorter"> </nut-table>
+    <h2>支持自定义表头icon</h2>
+    <nut-table :columns="columns1" :data="data1">
+      <template #icon-name>
+        <nut-icon name="people"></nut-icon>
+      </template>
+    </nut-table>
   </div>
 </template>
 
