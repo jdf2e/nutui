@@ -30,7 +30,7 @@
             :key="value"
           >
             {{ typeof item[value] !== 'function' ? item[value] : '' }}
-            <RenderColumn :slots="item[value]" v-if="typeof item[value] === 'function'"></RenderColumn>
+            <RenderColumn :slots="item[value]" :data="item" v-if="typeof item[value] === 'function'"></RenderColumn>
           </span>
         </view>
       </view>
