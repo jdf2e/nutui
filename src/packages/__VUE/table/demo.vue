@@ -104,7 +104,10 @@ export default createDemo({
         {
           title: '姓名',
           key: 'name',
-          align: 'center'
+          align: 'center',
+          render(data) {
+            return `${data.name}(${data.sex})`;
+          }
         },
         {
           title: '性别',
