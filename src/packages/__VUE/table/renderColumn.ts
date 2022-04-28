@@ -1,9 +1,10 @@
 import { h } from 'vue';
 export default {
   setup(props: any) {
-    return () => h(`view`, {}, props.slots());
+    return () => h(`view`, {}, props.slots(props.data));
   },
   props: {
-    slots: Object
+    slots: Object,
+    data: Object
   }
 };
