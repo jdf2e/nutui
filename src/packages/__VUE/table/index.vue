@@ -12,7 +12,12 @@
           >
             {{ item.title }}
             <slot name="icon"></slot>
-            <nut-icon v-if="!$slots.icon && item.sorter" name="down-arrow" size="12px"></nut-icon>
+            <slot :name="`icon-${item.key}`"></slot>
+            <nut-icon
+              v-if="!$slots.icon && !$slots[`icon-${item.key}`] && item.sorter"
+              name="down-arrow"
+              size="12px"
+            ></nut-icon>
           </span>
         </view>
       </view>
