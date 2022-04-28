@@ -188,7 +188,8 @@ export default createDemo({
           name: 'Tom',
           sex: '男',
           record: '小学',
-          render: () => {
+          render: (data) => {
+            console.log(data);
             return h(
               Button,
               {
