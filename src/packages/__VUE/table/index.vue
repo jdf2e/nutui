@@ -31,6 +31,11 @@
           >
             {{ typeof item[value] !== 'function' ? item[value] : '' }}
             <RenderColumn :slots="item[value]" :data="item" v-if="typeof item[value] === 'function'"></RenderColumn>
+            <RenderColumn
+              :slots="getColumnItem(value).render"
+              :data="item"
+              v-else-if="typeof getColumnItem(value).render === 'function'"
+            ></RenderColumn>
           </span>
         </view>
       </view>
