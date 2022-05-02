@@ -68,13 +68,15 @@
   // .extraRender {
   //   display: block;
   // }
-  .collapse-wrapper {
+  .collapse-wrapper,
+  .collapse-extraWrapper {
     display: block;
     position: relative;
     height: 0;
     overflow: hidden;
     transition: height 0.3s ease-in-out;
-    .collapse-content {
+    .collapse-content,
+    .collapse-extraRender {
       display: block;
       padding: $collapse-wrapper-content-padding;
       color: $collapse-wrapper-content-color;
@@ -84,6 +86,14 @@
     }
     .empty {
       padding: $collapse-wrapper-empty-content-padding;
+    }
+  }
+  .collapse-extraWrapper {
+    height: auto;
+    .collapse-extraRender {
+      word-wrap: break-word;
+      word-break: break-all;
+      overflow: hidden;
     }
   }
   .open-style {

@@ -1,37 +1,17 @@
 <template>
-  <view :class="classes" @click="handleClick">
+  <view :class="classes">
     <template v-if="slots.default">
       <slot></slot>
     </template>
-    <template v-else-if="showPlainText">
-      <view class="nut-cd-block">{{ plainText }}</view>
-    </template>
     <template v-else>
-      <template v-if="resttime.d >= 0 && showDays">
-        <view class="nut-cd-block">{{ resttime.d }}</view>
-        <view class="nut-cd-dot">{{ translate('day') }}</view>
-      </template>
-      <view class="nut-cd-block">{{ resttime.h }}</view
-      ><view class="nut-cd-dot">:</view><view class="nut-cd-block">{{ resttime.m }}</view
-      ><view class="nut-cd-dot">:</view><view class="nut-cd-block">{{ resttime.s }}</view>
+      <view class="nut-cd-block" v-html="renderTime"></view>
     </template>
   </view>
 </template>
 <script lang="ts">
-import {
-  toRefs,
-  onMounted,
-  onUnmounted,
-  reactive,
-  computed,
-  CSSProperties,
-  onActivated,
-  onDeactivated,
-  ref,
-  watch,
-  vModelText
-} from 'vue';
+import { toRefs, computed, watch, reactive, onBeforeMount, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { padZero, getTimeStamp } from './util';
 const { componentName, create, translate } = createComponent('countdown');
 
 export default create({
@@ -46,14 +26,7 @@ export default create({
       default: false,
       type: Boolean
     },
-    showDays: {
-      default: false,
-      type: Boolean
-    },
-    showPlainText: {
-      default: false,
-      type: Boolean
-    },
+
     startTime: {
       // 可以是服务器当前时间
       type: [Number, String],
@@ -68,48 +41,186 @@ export default create({
         const dateStr = new Date(v).toString().toLowerCase();
         return dateStr !== 'invalid date';
       }
+    },
+    // 是否开启毫秒
+    millisecond: {
+      default: false,
+      type: Boolean
+    },
+    // 时间格式化
+    format: {
+      type: String,
+      default: 'HH:mm:ss'
+    },
+    autoStart: {
+      type: Boolean,
+      default: true
+    },
+
+    // 倒计时时长，单位毫秒
+    time: {
+      type: [Number, String],
+      default: 0
     }
   },
-  components: {},
   emits: ['input', 'on-end', 'on-restart', 'on-paused', 'update:modelValue'],
 
-  setup(props, { emit, slots }) {
-    // console.log('componentName', componentName);
-
+  setup(props: any, { emit, slots }) {
     const state = reactive({
-      restTime: 0,
-      p: 0,
-      _curr: 0,
-      timer: null
+      restTime: 0, // 倒计时剩余时间时间
+      timer: null,
+      counting: !props.paused && props.autoStart, // 是否处于倒计时中
+      handleEndTime: Date.now(), // 最终截止时间
+      diffTime: 0 // 设置了 startTime 时，与 date.now() 的差异
     });
 
-    const resttime = computed(() => {
-      const rest = restTime(state.restTime);
-      const { d, h, m, s } = rest;
-      if (!props.showDays && d > 0) {
-        rest.h = fill2(Number(rest.h) + d * 24);
-        rest.d = 0;
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true
+      };
+    });
+
+    const renderTime = computed(() => {
+      return formatRemainTime(state.restTime);
+    });
+
+    // 倒计时 interval
+    const initTime = () => {
+      state.handleEndTime = props.endTime;
+      state.diffTime = Date.now() - getTimeStamp(props.startTime); // 时间差
+      if (!state.counting) state.counting = true;
+      tick();
+    };
+
+    const tick = () => {
+      if (window !== undefined) {
+        (state.timer as any) = requestAnimationFrame(() => {
+          if (state.counting) {
+            const currentTime = Date.now() - state.diffTime;
+            const remainTime = Math.max(state.handleEndTime - currentTime, 0);
+
+            state.restTime = remainTime;
+
+            if (!remainTime) {
+              state.counting = false;
+              pause();
+              emit('on-end');
+            }
+
+            if (remainTime > 0) {
+              tick();
+            }
+          }
+        });
       }
-      return rest;
+    };
+
+    // 将倒计时剩余时间格式化   参数： t  时间戳  type custom 自定义类型
+    const formatRemainTime = (t: number, type?: string) => {
+      const ts = t;
+      let rest = {
+        d: 0,
+        h: 0,
+        m: 0,
+        s: 0,
+        ms: 0
+      };
+
+      const SECOND = 1000;
+      const MINUTE = 60 * SECOND;
+      const HOUR = 60 * MINUTE;
+      const DAY = 24 * HOUR;
+
+      if (ts > 0) {
+        rest.d = ts >= SECOND ? Math.floor(ts / DAY) : 0;
+        rest.h = Math.floor((ts % DAY) / HOUR);
+        rest.m = Math.floor((ts % HOUR) / MINUTE);
+        rest.s = Math.floor((ts % MINUTE) / SECOND);
+        rest.ms = Math.floor(ts % SECOND);
+      }
+
+      return type == 'custom' ? rest : parseFormat({ ...rest });
+    };
+
+    const parseFormat = (time: { d: number; h: number; m: number; s: number; ms: number }) => {
+      let { d, h, m, s, ms } = time;
+      let format = props.format;
+
+      if (format.includes('DD')) {
+        format = format.replace('DD', padZero(d));
+      } else {
+        h += Number(d) * 24;
+      }
+
+      if (format.includes('HH')) {
+        format = format.replace('HH', padZero(h));
+      } else {
+        m += Number(h) * 60;
+      }
+
+      if (format.includes('mm')) {
+        format = format.replace('mm', padZero(m));
+      } else {
+        s += Number(m) * 60;
+      }
+
+      if (format.includes('ss')) {
+        format = format.replace('ss', padZero(s));
+      } else {
+        ms += Number(s) * 1000;
+      }
+
+      if (format.includes('S')) {
+        const msC = padZero(ms, 3).toString();
+
+        if (format.includes('SSS')) {
+          format = format.replace('SSS', msC);
+        } else if (format.includes('SS')) {
+          format = format.replace('SS', msC.slice(0, 2));
+        } else if (format.includes('S')) {
+          format = format.replace('SS', msC.slice(0, 1));
+        }
+      }
+      return format;
+    };
+
+    // 开始
+    const start = () => {
+      if (!state.counting && !props.autoStart) {
+        state.counting = true;
+        state.handleEndTime = Date.now() + Number(state.restTime);
+        tick();
+        emit('on-restart', state.restTime);
+      }
+    };
+    // 暂定
+    const pause = () => {
+      cancelAnimationFrame(state.timer as any);
+      state.counting = false;
+      emit('on-paused', state.restTime);
+    };
+
+    //重置
+    const reset = () => {
+      if (!props.autoStart) {
+        pause();
+        state.restTime = props.time;
+      }
+    };
+
+    onBeforeMount(() => {
+      if (props.autoStart) {
+        initTime();
+      } else {
+        state.restTime = props.time;
+      }
     });
-
-    const plainText = computed(() => {
-      const { d, h, m, s } = resttime.value;
-
-      return `${d > 0 && props.showDays ? d + translate('day') + h : h}${translate('hour')}${m}${translate(
-        'minute'
-      )}${s}${translate('second')}`;
-    });
-
-    watch(
-      () => props.value,
-      (value) => {}
-    );
 
     watch(
       () => state.restTime,
       (value) => {
-        let tranTime = restTime(value);
+        let tranTime = formatRemainTime(value, 'custom');
         emit('update:modelValue', tranTime);
         emit('input', tranTime);
       }
@@ -119,10 +230,15 @@ export default create({
       () => props.paused,
       (v, ov) => {
         if (!ov) {
-          state._curr = getTimeStamp();
-          emit('on-paused', state.restTime);
+          if (state.counting) {
+            pause();
+          }
         } else {
-          state.p += getTimeStamp() - state._curr;
+          if (!state.counting) {
+            state.counting = true;
+            state.handleEndTime = Date.now() + Number(state.restTime);
+            tick();
+          }
           emit('on-restart', state.restTime);
         }
       }
@@ -131,108 +247,27 @@ export default create({
     watch(
       () => props.endTime,
       (value) => {
-        initTimer();
+        initTime();
       }
     );
 
     watch(
       () => props.startTime,
       (value) => {
-        initTimer();
+        initTime();
       }
     );
-
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
-    const getTimeStamp = (timeStr?: string | number) => {
-      if (!timeStr) return Date.now();
-      let t = timeStr;
-      t = t > 0 ? +t : t.toString().replace(/\-/g, '/');
-      return new Date(t).getTime();
-    };
-
-    const initTimer = () => {
-      const delay = 1000;
-      const curr = Date.now();
-      const start = getTimeStamp(props.startTime || curr);
-      const end = getTimeStamp(props.endTime || curr);
-      const diffTime = curr - start;
-
-      state.restTime = end - (start + diffTime);
-      clearInterval(state.timer);
-      state.timer = null;
-      (state.timer as any) = setInterval(() => {
-        if (!props.paused) {
-          let restTime = end - (Date.now() - state.p + diffTime);
-          state.restTime = restTime;
-          if (restTime < delay) {
-            state.restTime = 0;
-            emit('on-end');
-            clearInterval(state.timer as any);
-          }
-        } else {
-          // 暂停
-        }
-      }, delay);
-    };
-
-    const fill2 = (v: any) => {
-      v += '';
-      while (v.length < 2) {
-        v = '0' + v;
-      }
-      return v;
-    };
-    const restTime = (t: any) => {
-      const ts = t;
-      let rest = {
-        d: '-',
-        h: '--',
-        m: '--',
-        s: '--'
-      };
-      if (ts === 0) {
-        rest = {
-          d: '0',
-          h: '00',
-          m: '00',
-          s: '00'
-        };
-      }
-      if (ts) {
-        const ds = 24 * 60 * 60 * 1000;
-        const hs = 60 * 60 * 1000;
-        const ms = 60 * 1000;
-
-        const d = ts >= ds ? parseInt(ts / ds) : 0;
-        const h = ts - d * ds >= hs ? parseInt((ts - d * ds) / hs) : 0;
-        const m = ts - d * ds - h * hs >= ms ? parseInt((ts - d * ds - h * hs) / ms) : 0;
-        const s = Math.round((ts - d * ds - h * hs - m * ms) / 1000);
-
-        if (d >= 0) rest.d = d + '';
-        if (h >= 0) rest.h = fill2(h);
-        if (m >= 0) rest.m = fill2(m);
-        if (s >= 0) rest.s = fill2(s);
-      }
-      return rest;
-    };
-
-    initTimer();
 
     return {
       ...toRefs(props),
       slots,
       classes,
       getTimeStamp,
-      initTimer,
-      resttime,
-      plainText,
-      translate
+      start,
+      pause,
+      renderTime,
+      translate,
+      reset
     };
   }
 });

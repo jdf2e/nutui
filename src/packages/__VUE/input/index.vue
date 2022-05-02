@@ -348,9 +348,9 @@ export default create({
         value = props.formatter(value);
       }
 
-      // if (inputRef.value && inputRef.value.value !== value) {
-      //   inputRef.value.value = value;
-      // }
+      if (inputRef?.value?.value !== value) {
+        inputRef.value.value = value;
+      }
 
       if (value !== props.modelValue) {
         emit('update:modelValue', value);

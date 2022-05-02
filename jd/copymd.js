@@ -37,10 +37,16 @@ const copy = async () => {
       if (item.show) {
         let cmpName = item.name.toLowerCase();
         let docpath = `src/packages/__VUE/${cmpName}/doc.md`;
+        let docEnPath = `src/packages/__VUE/${cmpName}/doc.en-US.md`;
         let doctaropath = `src/packages/__VUE/${cmpName}/doc.taro.md`;
         fse.readFile(docpath, (err, data) => {
           if (!err) {
             copyFile(docpath, `${targetBaseUrl}/docs/${cmpName}/doc.md`);
+          }
+        });
+        fse.readFile(docEnPath, (err, data) => {
+          if (!err) {
+            copyFile(docEnPath, `${targetBaseUrl}/docs/${cmpName}/doc.en-US.md`);
           }
         });
         fse.readFile(doctaropath, (err, data) => {
