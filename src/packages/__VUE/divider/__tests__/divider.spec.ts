@@ -58,3 +58,13 @@ test('hairline props: classes should contain nut-divider-hairline default, after
   await wrapper.setProps({ hairline: false });
   expect(wrapper.classes('nut-divider-hairline')).toBe(false);
 });
+
+test('direction props: classes should contain nut-divider-vertical', () => {
+  const wrapper = mount(Divider, {
+    props: {
+      direction: 'vertical'
+    }
+  });
+  const divider: any = wrapper.find('.nut-divider');
+  expect(divider.classes()).toContain('nut-divider-vertical');
+});

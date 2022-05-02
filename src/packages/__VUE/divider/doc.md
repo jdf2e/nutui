@@ -102,6 +102,26 @@ app.use(Divider);
 
 :::
 
+### 垂直分割线
+
+:::demo
+
+``` html
+<template>
+    <nut-cell>
+        <div :style="{fontSize: '14px'}">
+            文本
+            <nut-divider direction="vertical" />
+            <a href="#">文本</a>
+            <nut-divider direction="vertical" />
+            <a href="#">文本</a>
+        </div>
+    </nut-cell>
+</template>
+```
+
+:::
+
 ## API
 
 ### Props
@@ -111,6 +131,7 @@ app.use(Divider);
 | dashed         | 是否使用虚线               | Boolean | false                |
 | hairline        | 是否使用 0.5px 线                         | Boolean | true                |
 | content-position        | 内容位置，可选值为left right                         | String | center                |
+| direction         | 水平还是垂直类型               | String | 'horizontal'                |
 
 ### Slots
 
