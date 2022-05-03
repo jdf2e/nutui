@@ -74,12 +74,12 @@ test('menu item options props: html should contain options3 text', () => {
   expect(wrapper.html()).toContain('全部商品');
 });
 
-test('menu item customer text: nut-menu-item__content html should contain customer text', () => {
+test('menu item custom text: nut-menu-item__content html should contain custom text', () => {
   const component = {
     template: `<nut-menu>
       <nut-menu-item v-model="value1" :options="options1" />
       <nut-menu-item>
-        <div>customer text</div>
+        <div>custom text</div>
       </nut-menu-item>
     </nut-menu>`,
     data() {
@@ -92,7 +92,7 @@ test('menu item customer text: nut-menu-item__content html should contain custom
 
   const wrapper = mount(component);
 
-  expect(wrapper.html()).toContain('customer text');
+  expect(wrapper.html()).toContain('custom text');
 });
 
 test('menu item disabled props: nut-menu__item classes should contain disabled', async () => {
@@ -111,21 +111,21 @@ test('menu item disabled props: nut-menu__item classes should contain disabled',
   expect(barItem.classes()).toContain('disabled');
 });
 
-test('menu item title props: nut-menu__title-text html should contain customer title', async () => {
+test('menu item title props: nut-menu__title-text html should contain custom title', async () => {
   const wrapper = mount(Menu, {
     slots: {
       default: h(MenuItem, {
-        title: 'customer title',
+        title: 'custom title',
         options: options1
       })
     }
   });
   await nextTick();
 
-  expect(wrapper.find('.nut-menu__title-text').html()).toContain('customer title');
+  expect(wrapper.find('.nut-menu__title-text').html()).toContain('custom title');
 });
 
-test('menu item title icon props: nut-menu__title-text html should contain customer title', async () => {
+test('menu item title icon props: nut-menu__title-text html should contain custom title', async () => {
   const wrapper = mount(Menu, {
     slots: {
       default: h(MenuItem, {

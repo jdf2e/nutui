@@ -1,30 +1,30 @@
 <template>
   <div class="demo full">
-    <h2>基础用法</h2>
+    <h2>{{ translate('basic') }}</h2>
     <nut-menu>
       <nut-menu-item v-model="state.value1" :options="state.options1" />
       <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
     </nut-menu>
-    <h2>自定义菜单内容</h2>
+    <h2>{{ translate('customMenuContent') }}</h2>
     <nut-menu>
       <nut-menu-item v-model="state.value1" :options="state.options1" />
-      <nut-menu-item title="筛选" ref="item">
+      <nut-menu-item :title="translate('screen')" ref="item">
         <div :style="{ display: 'flex', flex: 1, 'justify-content': 'space-between', 'align-items': 'center' }">
-          <div>自定义内容</div>
-          <nut-button @click="onConfirm">关闭</nut-button>
+          <div>{{ translate('customContent') }}</div>
+          <nut-button @click="onConfirm">{{ translate('confirm') }}</nut-button>
         </div>
       </nut-menu-item>
     </nut-menu>
-    <h2>一行两列</h2>
+    <h2>{{ translate('twoColsInOneLine') }}</h2>
     <nut-menu>
       <nut-menu-item v-model="state.value3" :cols="2" :options="state.options3" />
     </nut-menu>
-    <h2>自定义选中态颜色</h2>
+    <h2>{{ translate('customActiveColor') }}</h2>
     <nut-menu active-color="green">
       <nut-menu-item v-model="state.value1" :options="state.options1" />
       <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
     </nut-menu>
-    <h2>禁用菜单</h2>
+    <h2>{{ translate('disableMenu') }}</h2>
     <nut-menu>
       <nut-menu-item disabled v-model="state.value1" :options="state.options1" />
       <nut-menu-item disabled v-model="state.value2" @change="handleChange" :options="state.options2" />
@@ -35,7 +35,30 @@
 <script lang="ts">
 import { reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('menu');
+const { createDemo, translate } = createComponent('menu');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    customMenuContent: '自定义菜单内容',
+    customContent: '自定义内容',
+    screen: '筛选',
+    confirm: '确认',
+    twoColsInOneLine: '一行两列',
+    customActiveColor: '自定义选中态颜色',
+    disableMenu: '禁用菜单'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    customMenuContent: 'Custom Menu Content',
+    customContent: 'Custom content',
+    screen: 'Screen',
+    confirm: 'Confirm',
+    twoColsInOneLine: 'Two Cols In One Line',
+    customActiveColor: 'Custom Active Color',
+    disableMenu: 'Disable Menu'
+  }
+});
 export default createDemo({
   props: {},
   setup() {
@@ -89,7 +112,8 @@ export default createDemo({
       state,
       item,
       onConfirm,
-      handleChange
+      handleChange,
+      translate
     };
   }
 });

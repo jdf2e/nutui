@@ -11,7 +11,7 @@
       <nut-menu-item title="筛选" ref="item">
         <div :style="{ display: 'flex', flex: 1, 'justify-content': 'space-between', 'align-items': 'center' }">
           <div>自定义内容</div>
-          <nut-button @click="onConfirm">关闭</nut-button>
+          <nut-button @click="onConfirm">确认</nut-button>
         </div>
       </nut-menu-item>
     </nut-menu>
