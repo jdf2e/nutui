@@ -4,11 +4,13 @@
     position="bottom"
     pop-class="nut-cascader__popup"
     round
-    :closeable="true"
+    :closeable="!closeable"
+    :close-icon="closeIcon"
     :destroy-on-close="false"
+    :close-icon-position="closeIconPosition"
   >
     <template v-if="title">
-      <view class="nut-cascader__bar">{{ title }}</view>
+      <view class="nut-cascader__bar" v-html="title"></view>
     </template>
 
     <nut-cascader-item
@@ -30,6 +32,7 @@
 import { watch, ref, Ref, computed } from 'vue';
 import { CascaderValue, CascaderOption } from './types';
 import { createComponent } from '@/packages/utils/create';
+import { popupProps } from '../popup/index.vue';
 const { create } = createComponent('cascader');
 import CascaderItem from './cascader-item.vue';
 
@@ -38,6 +41,7 @@ export default create({
     [CascaderItem.name]: CascaderItem
   },
   props: {
+    ...popupProps,
     modelValue: Array,
     visible: Boolean,
     title: String,
