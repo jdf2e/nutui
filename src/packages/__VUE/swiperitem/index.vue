@@ -15,7 +15,6 @@ interface IStyle {
   transform?: string;
 }
 export default create({
-  props: {},
   setup(props, { slots }) {
     const parent = inject('parent') as any;
     parent['relation'](getCurrentInstance());
