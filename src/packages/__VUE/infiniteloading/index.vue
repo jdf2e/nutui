@@ -14,12 +14,16 @@
     <view class="nut-infinite-bottom">
       <template v-if="isInfiniting">
         <view class="bottom-box">
-          <nut-icon class="bottom-img" :name="loadIcon"></nut-icon>
-          <view class="bottom-text">{{ loadTxt || translate('loading') }}</view>
+          <template v-if="!slots.loading">
+            <nut-icon class="bottom-img" :name="loadIcon"></nut-icon>
+            <view class="bottom-text">{{ loadTxt || translate('loading') }}</view>
+          </template>
+          <slot name="loading" v-else></slot>
         </view>
       </template>
       <template v-else-if="!hasMore">
-        <view class="tips">{{ loadMoreTxt || translate('loadMoreTxt') }}</view>
+        <view class="tips" v-if="!slots.finished">{{ loadMoreTxt || translate('loadMoreTxt') }}</view>
+        <slot name="finished" v-else></slot>
       </template>
     </view>
   </view>
@@ -236,7 +240,7 @@ export default create({
 
       scrollListener();
 
-      console.log(11, translate('loading'));
+      console.log(slots);
     });
 
     onUnmounted(() => {
@@ -264,7 +268,8 @@ export default create({
       touchMove,
       touchEnd,
       getStyle,
-      translate
+      translate,
+      slots
     };
   }
 });

@@ -269,3 +269,10 @@ Scrolling to the bottom of the list automatically loads more data.
 | load-more      | Emitted when continues to load      | done()         |
 | scroll-change  | Real-time monitoring of roll height | height         |
 | refresh        | Emitted when pull refresh           | done()         |
+
+### Slots
+
+| Attribute | Description  | 
+|--------|----------------|
+| loading  | Loading text |
+| finished  | Finished text |
