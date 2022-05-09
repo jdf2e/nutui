@@ -65,6 +65,7 @@
     :show-today="showToday"
     :show-title="showTitle"
     :show-sub-title="showSubTitle"
+    ref="calendarRef"
   >
     <template v-slot:btn v-if="showTopBtn">
       <slot name="btn"> </slot>
@@ -86,6 +87,8 @@ import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('calendar');
 import CalendarItem from '../calendaritem/index.vue';
 import Utils from '@/packages/utils/date';
+import { useExpose } from '@/packages/utils/useExpose/index';
+
 type InputDate = string | string[];
 export default create({
   components: {
@@ -164,7 +167,13 @@ export default create({
     });
     // element refs
     const calendarRef = ref<null | HTMLElement>(null);
-
+    const scrollToDate = (date: string) => {
+      console.log(calendarRef.value);
+      calendarRef.value?.scrollToDate(date);
+    };
+    useExpose({
+      scrollToDate
+    });
     // methods
     const update = () => {
       emit('update:visible', false);

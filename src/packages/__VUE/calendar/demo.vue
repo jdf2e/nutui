@@ -29,15 +29,21 @@
       >
       </nut-cell>
       <nut-calendar
+        ref="calendarRef"
         v-model:visible="isVisible1"
         :default-value="date1"
-        type="range"
+        type="multiple"
         :start-date="`2019-12-22`"
         :end-date="`2021-01-08`"
         @close="closeSwitch('isVisible1')"
         @choose="setChooseValue1"
         @select="select"
       >
+        <template v-slot:btn>
+          <div class="wrapper">
+            <div class="d_div"> <span class="d_btn" @click="goDate">去某个时间</span></div>
+          </div>
+        </template>
       </nut-calendar>
     </div>
 
@@ -150,7 +156,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Utils from '@/packages/utils/date';
 
@@ -176,11 +182,12 @@ interface TestCalendarState {
 export default createDemo({
   props: {},
   setup() {
+    const calendarRef = ref(null);
     const state: TestCalendarState = reactive({
       isVisible: false,
-      date: '',
+      date: '2022-02-01',
       dateWeek: '',
-      date1: ['2019-12-23', '2019-12-26'],
+      date1: ['2020-01-23', '2020-01-26'],
       date2: '2020-07-08',
       date3: '',
       date4: ['2021-12-23', '2021-12-26'],
@@ -209,8 +216,12 @@ export default createDemo({
     const select = (param: string) => {
       console.log(param);
     };
-    const setChooseValue1 = (param: string) => {
-      state.date1 = [...[param[0][3], param[1][3]]];
+    const setChooseValue1 = (chooseData: any) => {
+      let dateArr = chooseData.map((item: any) => {
+        return item[3];
+      });
+      console.log('changevalue 1 ', chooseData, dateArr);
+      state.date1 = [...dateArr];
     };
 
     const setChooseValue2 = (param: string) => {
@@ -243,6 +254,12 @@ export default createDemo({
       let currMonthDays = Utils.getMonthDays(year + '', month + '');
       state.date5 = [`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`];
     };
+    const goDate = () => {
+      console.log(calendarRef.value);
+      if (calendarRef.value) {
+        calendarRef.value.scrollToDate('2020-04-01');
+      }
+    };
     return {
       ...toRefs(state),
       openSwitch,
@@ -256,6 +273,8 @@ export default createDemo({
       setChooseValue6,
       clickBtn,
       clickBtn1,
+      goDate,
+      calendarRef,
       select
     };
   }
