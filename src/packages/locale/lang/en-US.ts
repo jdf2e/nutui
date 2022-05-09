@@ -79,5 +79,10 @@ class Lang extends BaseLang {
     additionalReview: (day: number) => `Review after ${day} days of purchase`,
     additionalImages: (length: number) => `There are ${length} follow-up comments`
   };
+  infiniteloading = {
+    loading: 'Loading...',
+    pullTxt: 'Loose to refresh',
+    loadMoreTxt: 'Oops, this is the bottom'
+  };
 }
 export default Lang;

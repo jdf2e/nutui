@@ -78,5 +78,10 @@ export abstract class BaseLang {
     additionalReview: Function;
     additionalImages: Function;
   };
+  abstract infiniteloading: {
+    loading: string;
+    pullTxt: string;
+    loadMoreTxt: string;
+  };
 }
 export default BaseLang;
