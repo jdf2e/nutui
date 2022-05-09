@@ -79,5 +79,10 @@ class Lang extends BaseLang {
     additionalReview: (day: number) => `购买${day}天后追评`,
     additionalImages: (length: number) => `${length}张追评图片`
   };
+  infiniteloading = {
+    loading: '加载中...',
+    pullTxt: '松开刷新',
+    loadMoreTxt: '哎呀，这里是底部了啦'
+  };
 }
 export default Lang;
