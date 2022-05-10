@@ -54,7 +54,7 @@
         v-if="!getSlots('sku-operate')"
         :btnOptions="btnOptions"
         :buyText="buyText || translate('buyNow')"
-        :addCartText="addCartText || translate('addToCard')"
+        :addCartText="addCartText || translate('addToCart')"
         :confirmText="confirmText || translate('confirm')"
         @clickBtnOperate="clickBtnOperate"
       ></sku-operate>

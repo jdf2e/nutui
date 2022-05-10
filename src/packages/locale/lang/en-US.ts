@@ -66,7 +66,7 @@ class Lang extends BaseLang {
   sku = {
     buyNow: 'Buy Now',
     buyNumber: 'Buy Number',
-    addToCard: 'Add to Card'
+    addToCart: 'Add to Cart'
   };
   skuheader = {
     skuId: 'Sku Number'

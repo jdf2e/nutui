@@ -66,7 +66,7 @@ class Lang extends BaseLang {
   sku = {
     buyNow: '立即購買',
     buyNumber: '購買數量',
-    addToCard: '加入購物車'
+    addToCart: '加入購物車'
   };
   skuheader = {
     skuId: '商品編號'
