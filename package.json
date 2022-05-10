@@ -71,6 +71,7 @@
   },
   "dependencies": {
     "sass": "^1.50.0",
+    "vscode": "^1.1.37",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {

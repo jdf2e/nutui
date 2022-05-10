@@ -86,7 +86,7 @@ export default defineComponent({
 <style lang="scss">
 .doc {
   &-header {
-    position: fixed;
+    // position: fixed;
     z-index: 2;
     top: 0;
     left: 0;
