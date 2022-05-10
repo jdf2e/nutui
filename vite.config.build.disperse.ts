@@ -33,7 +33,7 @@ export default defineConfig({
       outputDir: path.resolve(__dirname, './dist/types'),
       include: path.resolve(__dirname, './src/packages/__VUE'),
       beforeWriteFile: (filePath: string, content: string) => {
-        const fileContent = `import { App } from 'vue';
+        const fileContent = `import { App, PropType, CSSProperties } from 'vue';
 declare type Install<T> = T & {
   install(app: App): void;
 };

@@ -17,7 +17,6 @@ const app = createApp();
 app.use(Popup).use(OverLay)
 ```
 
-## 代码演示
 
 ### 基础用法
 
