@@ -65,7 +65,7 @@ export abstract class BaseLang {
   abstract sku: {
     buyNow: string;
     buyNumber: string;
-    addToCard: string;
+    addToCart: string;
   };
   abstract skuheader: {
     skuId: string;
