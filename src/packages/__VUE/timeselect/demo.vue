@@ -1,8 +1,10 @@
 <template>
   <div class="demo">
-    <h2>基本用法</h2>
+    <h2>{{ translate('basic') }}</h2>
     <nut-cell @click="handleClick1">
-      <span><label>请选择配送时间</label></span>
+      <span
+        ><label>{{ translate('deliveryTime') }}</label></span
+      >
     </nut-cell>
     <nut-timeselect
       v-model:visible="visible1"
@@ -12,16 +14,18 @@
       @select="handleSelected1"
     >
       <template #pannel>
-        <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange1"></nut-timepannel>
-        <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange1"></nut-timepannel>
+        <nut-timepannel :name="translate('time1')" pannel-key="0" @change="handleChange1"></nut-timepannel>
+        <nut-timepannel :name="translate('time2')" pannel-key="1" @change="handleChange1"></nut-timepannel>
       </template>
       <template #detail>
         <nut-timedetail :times="times1" @select="selectTime1"></nut-timedetail>
       </template>
     </nut-timeselect>
-    <h2>可选择多个日期时间</h2>
+    <h2>{{ translate('title') }}</h2>
     <nut-cell @click="handleClick2">
-      <span><label>请选择配送时间</label></span>
+      <span
+        ><label>{{ translate('deliveryTime') }}</label></span
+      >
     </nut-cell>
     <nut-timeselect
       v-model:visible="visible2"
@@ -31,8 +35,8 @@
       @select="handleSelected2"
     >
       <template #pannel>
-        <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange2"></nut-timepannel>
-        <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange2"></nut-timepannel>
+        <nut-timepannel :name="translate('time1')" pannel-key="0" @change="handleChange2"></nut-timepannel>
+        <nut-timepannel :name="translate('time2')" pannel-key="1" @change="handleChange2"></nut-timepannel>
       </template>
       <template #detail>
         <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
@@ -44,7 +48,26 @@
 <script lang="ts">
 import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('timeselect');
+const { createDemo, translate } = createComponent('timeselect');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    deliveryTime: '请选择配送时间',
+    time1: '2月23日(今天)',
+    time2: '2月24日(星期三)',
+    title: '可选择多个日期时间',
+    content: '您选择了'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    deliveryTime: 'Please select the delivery time',
+    time1: 'February 23rd(Today)',
+    time2: 'February 24th(Wednesday)',
+    title: 'Multiple dates and times can be selected',
+    content: 'Your choose'
+  }
+});
 export default createDemo({
   setup() {
     const { proxy } = getCurrentInstance() as any;
@@ -101,7 +124,7 @@ export default createDemo({
 
     const handleSelected1 = (obj: any) => {
       console.log(123);
-      proxy.$toast.text(`您选择了：${JSON.stringify(obj)}`);
+      proxy.$toast.text(`${translate('content')}：${JSON.stringify(obj)}`);
     };
 
     const handleChange2 = (pannelKey: number) => {
@@ -130,7 +153,7 @@ export default createDemo({
     };
 
     const handleSelected2 = (obj: any) => {
-      proxy.$toast.text(`您选择了：${JSON.stringify(obj)}`);
+      proxy.$toast.text(`${translate('content')}：${JSON.stringify(obj)}`);
     };
 
     onMounted(() => {
@@ -153,7 +176,8 @@ export default createDemo({
       handleChange2,
       handleSelected2,
       selectTime2,
-      handleClick2
+      handleClick2,
+      translate
     };
   }
 });
