@@ -64,9 +64,9 @@ export default defineComponent({
       position: fixed;
       top: 120px;
     }
-
     iframe {
-      height: calc(100% - 40px);
+      // height: calc(100% - 40px);
+      height: 100%;
       width: 100%;
     }
   }
