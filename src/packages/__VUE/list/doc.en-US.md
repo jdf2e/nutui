@@ -1,9 +1,9 @@
-# List 虚拟列表
+# List
 
-### 介绍
-在正常的列表展示以及上拉加载中，我们通常使用 `NutUI` 提供的 [滚动加载](#/zh-CN/infiniteloading) 组件，那如果我们加载的数据量非常大时，则可能会产生严重的性能问题，导致视图无法响应操作一段时间，这时候我们就用到了虚拟列表组件 `List`，它可以保证只渲染当前可视区域，其他部分在用户滚动到可视区域内之后再渲染。保证了页面流程度，提升性能。
+### Intro
+In normal list show and pull-up loading, we usually use the [InfiniteLoading](#/en-US/infiniteloading) component provided by `NutUI`. If we load a large amount of data, serious performance problems may occur, resulting in the view unable to respond to the operation for a period of time. At this time, we use the virtual list component `list`, which can ensure that only the current visual area is rendered, Other parts are rendered after the user scrolls to the visible area. Ensure page flow and improve performance.
 
-### 安装
+### Install
 
 ```javascript
 
@@ -18,14 +18,14 @@ app.use();
 
 ```
 
-### 基础用法
+### Basic Usage
 
 :::demo
 
 ```html
 <template>
   <div class="demo">
-    <h2>基础用法</h2>
+    <h2>Basic Usage</h2>
     <nut-cell>
       <nut-list :height="50" :listData="count" @scroll="handleScroll">
         <template v-slot="{ item }">
@@ -68,21 +68,21 @@ export default {
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| height         | 列表项的高度               | Number | `50`                |
-| list-data         | 列表数据               | any[] | `[]`                |
-| container-height `v3.1.19`        | 容器高度              | Number | `可视区高度`                |
+| height         | The height of the list item               | Number | `50`                |
+| list-data         | List data               | any[] | `[]`                |
+| container-height `v3.1.19`        | Container height              | Number | `Visual area height`                |
 
 ### Slot
 
-| 参数         | 说明                             | 类型   |
+| Attribute         | Description                             | Type   |
 |--------------|----------------------------------|--------|
-| item         | 列表项数据               | Object |
-| index         | 索引               | Number |
+| item         | List item data               | Object |
+| index         | Indexes               | Number |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
+| Event | Description           | Arguments     |
 |--------|----------------|--------------|
-| scroll  | 滚动时触发 | - |
+| scroll  | Triggered when scrolling | - |
