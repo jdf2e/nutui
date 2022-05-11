@@ -1,29 +1,9 @@
 <template>
   <div class="doc-nav" :class="{ fixed: fixed }">
-    <ol>
-      <li>
-        {{ docs.name }}
-      </li>
-      <ul>
-        <li
-          :class="{ active: isActive(_package.name) }"
-          v-for="_package in docs.packages"
-          :key="_package"
-          v-show="_package.show"
-        >
-          <router-link v-if="!_package.isLink" :to="_package.name.toLowerCase()">{{ _package.cName }}</router-link>
-          <a v-else :href="_package.name" target="_blank">{{ _package.cName }}</a>
-        </li>
-      </ul>
-    </ol>
     <ol v-for="_nav in nav" :key="_nav">
       <li>{{ _nav.name }}</li>
       <ul>
-        <template
-          :class="{ active: isActive(_package.name) }"
-          v-for="_package in reorder(_nav.packages)"
-          :key="_package"
-        >
+        <template :class="{ active: isActive(_package.name) }" v-for="_package in _nav.packages" :key="_package">
           <li v-if="_package.show">
             <router-link :to="_package.name.toLowerCase()" :class="{ active: isActive(_package.name) }">
               {{ _package.name }}&nbsp;&nbsp;<b>{{ _package.cName }}</b>
@@ -52,11 +32,6 @@ export default defineComponent({
       };
     });
 
-    const reorder = (packages: any) => {
-      return packages.sort(function (x: any, y: any) {
-        return x['name'].localeCompare(y['name']);
-      });
-    };
     onMounted(() => {
       document.addEventListener('scroll', scrollNav);
     });
@@ -74,8 +49,7 @@ export default defineComponent({
       isActive,
       nav: reactive(nav),
       docs: reactive(docs),
-      currentRoute: RefData.getInstance().currentRoute,
-      reorder
+      currentRoute: RefData.getInstance().currentRoute
     };
   }
 });
