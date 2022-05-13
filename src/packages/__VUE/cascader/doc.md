@@ -9,12 +9,14 @@
 ```js
 import { createApp } from 'vue';
 // vue
-import { Cascader } from '@nutui/nutui';
+import { Cascader, Tabs, TabPane } from '@nutui/nutui';
 // taro
-import { Cascader } from '@nutui/nutui-taro';
+import { Cascader, Tabs, TabPane } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Cascader);
+app.use(Cascader)
+.use(Tabs)
+.use(TabPane);
 ```
 
 ### 基础用法
