@@ -1,10 +1,10 @@
-# OverLay 遮罩层
+# OverLay
 
-### 介绍
+### Intro
 
-创建一个遮罩层，通常用于阻止用户进行其他操作
+Create a mask layer, which is usually used to prevent users from doing other operations
 
-### 安装
+### Install
 
 
 ```javascript
@@ -18,13 +18,14 @@ const app = createApp();
 app.use(OverLay);
 ```
 
-### 基础用法
+
+### Basic Usage
 
 :::demo
 
 ```html
 <template>
-<nut-button type="primary" @click="state.show = true">显示遮罩层</nut-button>
+<nut-button type="primary" @click="state.show = true">Show mask layer</nut-button>
 <nut-overlay v-model:visible="state.show" :z-index="2000"></nut-overlay>
 </template>
 <script lang="ts">
@@ -44,13 +45,13 @@ app.use(OverLay);
 
 :::
 
-### 遮罩样式
+### Mask style
 
 :::demo
 
 ```html
 <template>
-<nut-button type="primary" @click="state.show = true">显示遮罩层</nut-button>
+<nut-button type="primary" @click="state.show = true">Show mask layer</nut-button>
 <nut-overlay v-model:visible="state.show" :z-index="2000" :overlay-style="state.overlayStyle"></nut-overlay>
 </template>
 <script lang="ts">
@@ -73,16 +74,16 @@ app.use(OverLay);
 
 :::
 
-### 嵌套内容
+### Nested content
 
 :::demo
 
 ```html
 <template>
-<nut-button type="success" @click="state.show2 = true">嵌套内容</nut-button>
+<nut-button type="success" @click="state.show2 = true">Nested content</nut-button>
 <nut-overlay v-model:visible="state.show2" :z-index="2000">
   <div class="wrapper">
-    <div class="content">这里是正文</div>
+    <div class="content">Here is the text</div>
   </div>
 </nut-overlay>
 </template>
@@ -125,18 +126,18 @@ app.use(OverLay);
 
 ### Props
 
-| 参数                   | 说明             | 类型           | 默认值 |
+| Attribute | Description | Type   | Default |
 | ---------------------- | ---------------- | -------------- | ------ |
-| v-model:visible                   | 当前组件是否显示 | Boolean        | `false`  |
-| z-index                | 遮罩层级         | String, Number | `2000`   |
-| duration               | 动画时长，单位秒 | String, Number | `0.3`    |
-| overlay-class          | 自定义遮罩类名   | String         | -      |
-| overlay-style          | 自定义遮罩样式   | CSSProperties  | -      |
-| lock-scroll            | 背景是否锁定(`小程序不支持`)     | Boolean        | `false`  |
-| close-on-click-overlay | 是否点击遮罩关闭 | Boolean        | `true`   |
+| v-model:visible                   | Whether the current component is displayed | Boolean        | `false`  |
+| z-index                | Mask level         | String, Number | `2000`   |
+| duration               | Animation duration, Unit second | String, Number | `0.3`    |
+| overlay-class          | Custom mask classname   | String         | -      |
+| overlay-style          | Custom mask styles   | CSSProperties  | -      |
+| lock-scroll            | Whether the background is locked(`MiniProgram not supported`)     | Boolean        | `false`  |
+| close-on-click-overlay | Click to close the mask | Boolean        | `true`   |
 
 ### Events
 
-| 事件名 | 说明       | 回调参数     |
+| Event | Description                  | Arguments   |
 | ------ | ---------- | ------------ |
-| click  | 点击时触发 | event: Event |
+| click  | Triggered when clicked | event: Event |

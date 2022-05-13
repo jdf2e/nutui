@@ -50,7 +50,7 @@
         :btnOptions="btnOptions"
         :btnExtraText="btnExtraText"
         :buyText="buyText || translate('buyNow')"
-        :addCartText="addCartText || translate('addToCard')"
+        :addCartText="addCartText || translate('addToCart')"
         :confirmText="confirmText || translate('confirm')"
         @clickBtnOperate="clickBtnOperate"
       >

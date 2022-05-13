@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <h2>基本用法</h2>
+    <h2>{{ translate('basic') }}</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
         <nut-swiper-item v-for="item in list" :key="item">
@@ -8,7 +8,7 @@
         </nut-swiper-item>
       </nut-swiper>
     </view>
-    <h2>自定义大小</h2>
+    <h2>{{ translate('size') }}</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page2" :loop="false" width="300">
         <nut-swiper-item v-for="item in list" :key="item">
@@ -16,7 +16,7 @@
         </nut-swiper-item>
       </nut-swiper>
     </view>
-    <h2>自定义指示器</h2>
+    <h2>{{ translate('indicator') }}</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page3" :loop="true" @change="change">
         <nut-swiper-item v-for="item in list" :key="item">
@@ -27,7 +27,7 @@
         </template>
       </nut-swiper>
     </view>
-    <h2>垂直方向</h2>
+    <h2>{{ translate('vertical') }}</h2>
     <view class="demo-box">
       <nut-swiper
         :init-page="page4"
@@ -49,7 +49,22 @@
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('swiper');
+const { createDemo, translate } = createComponent('swiper');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    size: '自定义大小',
+    indicator: '自定义指示器',
+    vertical: '垂直方向'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    size: 'Custom size',
+    indicator: 'Custom indicator',
+    vertical: 'Vertical direction'
+  }
+});
 export default createDemo({
   props: {},
   setup() {
@@ -71,7 +86,8 @@ export default createDemo({
     };
     return {
       ...toRefs(state),
-      change
+      change,
+      translate
     };
   }
 });

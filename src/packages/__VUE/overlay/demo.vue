@@ -1,21 +1,21 @@
 <template>
   <div class="demo">
-    <h2>基础用法</h2>
+    <h2>{{ translate('basic') }}</h2>
     <nut-cell>
-      <nut-button type="primary" @click="state.show = true">显示遮罩层</nut-button>
+      <nut-button type="primary" @click="state.show = true">{{ translate('btn1') }}</nut-button>
       <nut-overlay v-model:visible="state.show" :z-index="2000"></nut-overlay>
     </nut-cell>
-    <h2>遮罩样式</h2>
+    <h2>{{ translate('style') }}</h2>
     <nut-cell>
-      <nut-button type="primary" @click="state.show3 = true">显示遮罩层</nut-button>
+      <nut-button type="primary" @click="state.show3 = true">{{ translate('btn1') }}</nut-button>
       <nut-overlay v-model:visible="state.show3" :z-index="2000" :overlay-style="state.overlayStyle"></nut-overlay>
     </nut-cell>
-    <h2>嵌套内容</h2>
+    <h2>{{ translate('content') }}</h2>
     <nut-cell>
-      <nut-button type="success" @click="state.show2 = true">嵌套内容</nut-button>
+      <nut-button type="success" @click="state.show2 = true">{{ translate('btn2') }}</nut-button>
       <nut-overlay v-model:visible="state.show2" :z-index="2000">
         <div class="wrapper">
-          <div class="content">这里是正文</div>
+          <div class="content">{{ translate('text') }}</div>
         </div>
       </nut-overlay>
     </nut-cell>
@@ -25,7 +25,26 @@
 <script lang="ts">
 import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('overlay');
+const { createDemo, translate } = createComponent('overlay');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    style: '遮罩样式',
+    content: '嵌套内容',
+    btn1: '显示遮罩层',
+    btn2: '嵌套内容',
+    text: '这里是正文'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    style: 'Mask style',
+    content: 'Nested content',
+    btn1: 'Show mask layer',
+    btn2: 'Nested content',
+    text: 'Here is the text'
+  }
+});
 export default createDemo({
   props: {},
   setup() {
@@ -38,7 +57,8 @@ export default createDemo({
       }
     });
     return {
-      state
+      state,
+      translate
     };
   }
 });
