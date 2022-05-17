@@ -192,6 +192,48 @@ export default{
 </script>
 ```
 :::
+### 身份证键盘
+
+:::demo
+```html
+<template>
+     <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="身份证键盘"></nut-cell>
+    <nut-numberkeyboard
+      v-model:visible="visible"
+      :custom-key="customKey"
+      @input="input"
+      @close="close"
+    >
+    </nut-numberkeyboard>
+</template>
+<script>
+import { ref,reactive } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default{
+  setup() {
+    const visible = ref(false);
+    const customKey = reactive(['X']);
+    function showKeyBoard() {
+      visible.value = true;
+    }
+    function input(number) {
+      Toast.text(`输入：${number}`);
+    }
+    function close() {
+      visible.value = false;
+    }
+    return {
+      visible,
+      customKey,
+      input,
+      showKeyBoard,
+      close,
+    };
+  }
+  }
+</script>
+```
+:::
 
 ### 双向绑定：
 
