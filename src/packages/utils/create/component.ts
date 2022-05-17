@@ -13,7 +13,7 @@ export function createComponent(name: string) {
   const componentName = 'nut-' + name;
   return {
     componentName,
-    translate(keyPath: string, ...args: unknown[]) {
+    translate(keyPath: string, ...args: unknown[]): string {
       // 依赖响应能力
       const languages = locale.languages();
       const text = getPropByPath(languages, `${name.replace('-', '')}.${keyPath}`) || getPropByPath(languages, keyPath);
