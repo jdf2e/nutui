@@ -3,7 +3,7 @@
   <view style="display: inline-block" :class="customClass" @click.stop="openPopover" ref="reference">
     <slot name="reference"></slot
   ></view>
-  <!-- <view class="more-background" @click.stop="closePopover" v-if="showPopup"></view> -->
+
   <nut-popup
     ref="popoverRef"
     :pop-class="classes"
@@ -12,14 +12,14 @@
     @clickOverlay="clickOverlay"
   >
     <!-- 气泡弹出层  箭头 -->
-    <view :class="popoverArrow"> </view>
+    <view :class="popoverArrow" v-if="showArrow"> </view>
     <!-- 气泡弹出层  内容 -->
     <slot name="content"></slot>
     <view class="popover-menu" :class="popoverContent" ref="popoverMenu">
       <view
         v-for="(item, index) in list"
         :key="index"
-        :class="{ 'popover-menu-item': true, disabled: item.disabled }"
+        :class="[item.className, { 'popover-menu-item': true, disabled: item.disabled }]"
         @click.stop="chooseItem(item, index)"
       >
         <slot v-if="item.icon"> <nut-icon class="item-img" :name="item.icon"></nut-icon></slot>
@@ -29,7 +29,7 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, ref, PropType, toRefs, reactive, CSSProperties, nextTick } from 'vue';
+import { onMounted, computed, watch, ref, PropType, toRefs, unref, nextTick, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('popover');
 import Popup, { popupProps } from '../popup/index.vue';
@@ -66,23 +66,24 @@ export default create({
     },
     // 位置出现的偏移量
     offset: {
-      type: [Number, Number],
+      type: Array,
       default: [0, 12]
     },
     customClass: {
       type: String,
       default: ''
+    },
+    showArrow: {
+      type: Boolean,
+      default: true
     }
   },
-  emits: ['update', 'update:visible', 'close', 'choose', 'openPopover'],
+  emits: ['update', 'update:visible', 'close', 'choose', 'open'],
   setup(props, { emit }) {
     let popper: Instance | null;
     const reference = ref();
     const popoverRef = ref();
-    const state = reactive({
-      elWidth: 0,
-      elHeight: 0
-    });
+
     const showPopup = ref(props.visible);
 
     const { theme, location } = toRefs(props);
@@ -141,7 +142,6 @@ export default create({
         if (!showPopup.value) return;
         if (!popper) {
           popper = createPopperInstance();
-          console.log(popper);
         } else {
           popper.setOptions({
             placement: props.location
@@ -149,8 +149,19 @@ export default create({
         }
       });
     };
+
+    const clickAway = (event: any) => {
+      const element = reference.value;
+      if (element && !element.contains(event.target as Node)) {
+        closePopover();
+      }
+    };
     onMounted(() => {
-      console.log(props);
+      window.addEventListener('click', clickAway, true);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('click', clickAway, true);
     });
 
     watch(
