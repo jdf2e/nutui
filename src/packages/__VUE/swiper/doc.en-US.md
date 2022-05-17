@@ -1,10 +1,10 @@
-# Swiper 轮播
+# Swiper
 
-### 介绍
+### Intro
 
-常用于一组图片或卡片轮播。
+Often used in a group of pictures or card rotation.
 
-### 安装
+### Install
 
 ```javascript
 import { createApp } from 'vue';
@@ -17,12 +17,12 @@ const app = createApp();
 app.use(Swiper).use(SwiperItem);
 ```
 
-### 基础用法
+### Basic Usage
 
-`auto-play` 自动轮播的时长
-`init-page` 初始索引值
-`pagination-visible` 是否显示分页指示器
-`pagination-color` 指示器颜色自定义
+`auto-play` Duration of automatic rotation
+`init-page` Initial index value
+`pagination-visible` Show paging indicator
+`pagination-color` Indicator color customization
 
 :::demo
 
@@ -67,9 +67,9 @@ app.use(Swiper).use(SwiperItem);
 
 :::
 
-### 自定义大小
+### Custom size
 
-`width` 自定义轮播大小
+`width` Custom rotation size
 
 :::demo
 
@@ -114,9 +114,9 @@ app.use(Swiper).use(SwiperItem);
 
 :::
 
-### 自定义分页指示器
+### Custom paging indicator
 
-`v-slot:page` 表示自定义指示器
+`v-slot:page` Represents a custom indicator
 
 :::demo
 
@@ -180,9 +180,9 @@ app.use(Swiper).use(SwiperItem);
 
 :::
 
-### 垂直方向
+### Vertical direction
 
-`direction` 自定义轮播方向
+`direction` Custom rotation direction
 
 :::demo
 
@@ -232,35 +232,35 @@ app.use(Swiper).use(SwiperItem);
 
 ### Props
 
-| 参数                   | 说明                                                        | 类型           | 默认值      |
+| Attribute                   | Description                                                        | Type           | Default      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| width                   | 轮播卡片的宽度           | Number、String        | window.innerWidth       |
-| height                | 轮播卡片的高度                                                    | String、Number | 0        |
-| direction               | 轮播方向,可选值`horizontal`,`vertical`     | String | 'horizontal'         |
-| pagination-visible          | 分页指示器是否展示                                              | Boolean         | false           |
-| pagination-color         | 分页指示器选中的颜色                                              | String  | '#fff'           |
-| loop           | 是否循环轮播                                                | Boolean        | true       |
-| duration                | 动画时长（单位是ms）                                                | Number、String        | 500        |
-| auto-play | 自动轮播时长，0表示不会自动轮播                                          | Number、String        | 0        |
-| init-page               | 初始化索引值                   | Number、String         | 0    |
-| touchable             | 是否可触摸滑动                                                      | Boolean         | true          |
-| is-preventDefault                  | 滑动过程中是否禁用默认事件                                              | Boolean  | true           |
-| is-stopPropagation               | 滑动过程中是否禁止冒泡                    | Boolean         | true    |
+| width                   | Width of rotation card           | Number、String        | window.innerWidth       |
+| height                | Height of rotation card                                                    | String、Number | 0        |
+| direction               | Rotation direction, optional value：`horizontal`,`vertical`     | String | 'horizontal'         |
+| pagination-visible          | Is the paging indicator displayed                                           | Boolean         | false           |
+| pagination-color         | The color selected by the pagination indicator                                              | String  | '#fff'           |
+| loop           | Whether to rotate                                             | Boolean        | true       |
+| duration                | Animation duration（Unit ms）                            | Number、String        | 500        |
+| auto-play | Automatic rotation duration, 0 means no automatic rotation                                          | Number、String        | 0        |
+| init-page               | Initialize index value                   | Number、String         | 0    |
+| touchable             | if touchable to slide                                                      | Boolean         | true          |
+| is-preventDefault                  | Disable default events during sliding                                              | Boolean  | true           |
+| is-stopPropagation               | Is bubbling prohibited during sliding                    | Boolean         | true    |
 
 
 
 ### Events
 
-| 事件名           | 说明                   | 回调参数     |
+| Event           | Description                   | Arguments     |
 | ---------------- | ---------------------- | ------------ |
-| change            | 滑动之后的回调         | 当前索引值index |
+| change            | Callback after sliding        |  Current index value |
 
 
 
 ### API
 
-| 事件名           | 说明                   | 参数     |
+| Event           | Description                   | Arguments     |
 | ---------------- | ---------------------- | ------------ |
-| prev            | 切换到上一页         | - |
-| next            | 切换到下一页         | - |
-| to            | 切换到指定轮播         | index:number |
+| prev            | Switch to previous page         | - |
+| next            | Switch to next page         | - |
+| to            | Switch to the specified rotation         | index:number |

@@ -1,13 +1,11 @@
 <template>
   <div class="demo full">
-    <h2>默认用法</h2>
-    <nut-noticebar
-      text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
-    ></nut-noticebar>
+    <h2>{{ translate('basic') }}</h2>
+    <nut-noticebar :text="translate('text')"></nut-noticebar>
 
-    <h2>滚动播放</h2>
+    <h2>{{ translate('scrollable') }}</h2>
     <nut-noticebar
-      text="华为畅享9新品即将上市"
+      :text="translate('textShort')"
       :scrollable="true"
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
@@ -15,15 +13,15 @@
     </nut-noticebar>
     <p />
     <nut-noticebar
-      text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
+      :text="translate('text')"
       :scrollable="false"
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
     ></nut-noticebar>
 
-    <h2>通告栏模式--关闭模式</h2>
+    <h2>{{ translate('mode') }}</h2>
     <nut-noticebar :closeMode="true" @click="hello" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`"
-      >华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！
+      >{{ translate('text') }}
     </nut-noticebar>
     <p />
     <nut-noticebar
@@ -32,27 +30,26 @@
       @click="hello"
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
-      >华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！
+      >{{ translate('text') }}
     </nut-noticebar>
-
-    <h2>通告栏模式--链接模式</h2>
+    <p />
     <nut-noticebar
       left-icon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
     >
-      <a href="https://www.jd.com">京东商城</a>
+      <a href="https://www.jd.com">{{ translate('jd') }}</a>
     </nut-noticebar>
 
-    <h2>多行展示</h2>
+    <h2>{{ translate('multiline') }}</h2>
     <nut-noticebar
-      text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
+      :text="translate('text')"
       wrapable
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
     ></nut-noticebar>
 
-    <h2>纵向滚动</h2>
+    <h2>{{ translate('vertical') }}</h2>
     <div class="interstroll-list">
       <nut-noticebar
         direction="vertical"
@@ -66,7 +63,7 @@
       ></nut-noticebar>
     </div>
 
-    <h2>纵向复杂滚动动画</h2>
+    <h2>{{ translate('complexAm') }}</h2>
     <div class="interstroll-list">
       <nut-noticebar
         direction="vertical"
@@ -78,7 +75,7 @@
         :color="`#D9500B`"
       ></nut-noticebar>
     </div>
-    <h2>纵向自定义滚动内容</h2>
+    <h2>{{ translate('customAm') }}</h2>
     <div class="interstroll-list">
       <nut-noticebar
         direction="vertical"
@@ -101,7 +98,7 @@
       </nut-noticebar>
     </div>
 
-    <h2>纵向自定义右侧图标</h2>
+    <h2>{{ translate('customRightIcon') }}</h2>
     <div class="interstroll-list">
       <nut-noticebar
         direction="vertical"
@@ -122,15 +119,48 @@
 <script lang="ts">
 import { onMounted, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('noticebar');
+const { createDemo, translate } = createComponent('noticebar');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+
+useTranslate({
+  'zh-CN': {
+    basic: '基础使用',
+    scrollable: '滚动播放',
+    mode: '通告栏--关闭模式',
+    multiline: '多行展示',
+    vertical: '垂直滚动',
+    complexAm: '纵向--复杂滚动动画',
+    customAm: '纵向--自定义滚动内容',
+    customRightIcon: '纵向--自定义右侧图标',
+    text: 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
+    textShort: 'NutUI 是移动端组件库',
+    horseLamp: ['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮'],
+    jd: '京东商城'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    scrollable: 'Scrollable',
+    mode: 'Mode',
+    multiline: 'Wrapable',
+    vertical: 'Vertical Scroll',
+    complexAm: 'Vertical Scroll Complex Animation',
+    customAm: 'Vertical Scroll Custom Style',
+    customRightIcon: 'Vertical Scroll Custom Right Icon',
+    text: 'Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.',
+    textShort: 'Nutui is a mobile terminal component library.',
+    horseLamp: ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox'],
+    jd: 'Jingdong'
+  }
+});
+
 export default createDemo({
   props: {},
   setup() {
     const state = reactive({
-      horseLamp1: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
-      horseLamp2: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
-      horseLamp3: ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
-      text: '华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！'
+      horseLamp1: translate('horseLamp'),
+      horseLamp2: translate('horseLamp'),
+      horseLamp3: translate('horseLamp'),
+      text: translate('text')
     });
 
     const hello = () => {
@@ -143,7 +173,8 @@ export default createDemo({
     return {
       ...toRefs(state),
       hello,
-      go
+      go,
+      translate
     };
   }
 });
