@@ -2,7 +2,6 @@
 
 ### 介绍 
 
-
 提供导航功能。
 
 ### 安装
@@ -20,49 +19,47 @@ app.use(Navbar);
 app.use(Icon);
 app.use(Tabs);
 app.use(TabPane);
-
 ```
 
 ### 基本用法
 
 :::demo
 ```html
-  <template>
-    <nut-navbar @on-click-back="back" @on-click-title="title" title="订单详情">
-      <template #left>
-        <div>返回</div>
-      </template>
-      <template #right>
-        <nut-icon class="right" name="share-n"></nut-icon>
-      </template>
-    </nut-navbar>
+<template>
+  <nut-navbar @on-click-back="back" @on-click-title="title" title="订单详情">
+    <template #left>
+      <div>返回</div>
+    </template>
+    <template #right>
+      <nut-icon class="right" name="share-n"></nut-icon>
+    </template>
+  </nut-navbar>
 
-    <nut-navbar
-      @on-click-back="back"
-      @on-click-title="title"
-      @on-click-right="rightClick"
-      title="浏览记录"
-      desc="清空"
-    ></nut-navbar>
+  <nut-navbar
+    @on-click-back="back"
+    @on-click-title="title"
+    @on-click-right="rightClick"
+    title="浏览记录"
+    desc="清空"
+  ></nut-navbar>
 
-    <nut-navbar
-      :left-show="false"
-      @on-click-back="back"
-      @on-click-title="title"
-      @on-click-icon="icon"
-      @on-click-right="rightClick"
-      title="购物车"
-      titIcon="cart2"
-      desc="编辑"
-    >
-      <template #right>
-        <nut-icon class="right" name="more-x"></nut-icon>
-      </template>
-    </nut-navbar>
-  
-  </template>
+  <nut-navbar
+    :left-show="false"
+    @on-click-back="back"
+    @on-click-title="title"
+    @on-click-icon="icon"
+    @on-click-right="rightClick"
+    title="购物车"
+    titIcon="cart2"
+    desc="编辑"
+  >
+    <template #right>
+      <nut-icon class="right" name="more-x"></nut-icon>
+    </template>
+  </nut-navbar>
+</template>
 
-  <script lang="ts">
+<script lang="ts">
   import { ref } from 'vue';
   export default {
   setup() {
@@ -92,45 +89,45 @@ app.use(TabPane);
 
 :::demo
 ```html
-  <template>
-   <nut-navbar
-      @on-click-back="back"
-      @on-click-title="title"
-      @on-click-right="rightClick"
-      desc="编辑"
-    >
-      <template #content>
-        <nut-tabs v-model="tab1value" @click="changeTab">
-          <nut-tabpane title="商品"> </nut-tabpane>
-          <nut-tabpane title="店铺"> </nut-tabpane>
-        </nut-tabs>
-      </template>
+<template>
+  <nut-navbar
+    @on-click-back="back"
+    @on-click-title="title"
+    @on-click-right="rightClick"
+    desc="编辑"
+  >
+    <template #content>
+      <nut-tabs v-model="tab1value" @click="changeTab">
+        <nut-tabpane title="商品"> </nut-tabpane>
+        <nut-tabpane title="店铺"> </nut-tabpane>
+      </nut-tabs>
+    </template>
 
-      <template #right>
-        <nut-icon class="right" name="more-x"></nut-icon>
-      </template>
-    </nut-navbar>
-  </template>
+    <template #right>
+      <nut-icon class="right" name="more-x"></nut-icon>
+    </template>
+  </nut-navbar>
+</template>
 
-  <script lang="ts">
-    import { ref } from 'vue';
-    export default {
-    setup() {
-      const tab1value = ref(0);
-      const methods = {
-        back () {
-          alert('header头部， 点击返回');
-        },
-        title () {
-          alert('header头部， 点击title');
-        },
-        rightClick() {
-          alert('右侧点击事件');
-        },
-        changeTab(tab: any) {
-          tab1value.value = tab.paneKey as number;
-        },
-      };
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+  setup() {
+    const tab1value = ref(0);
+    const methods = {
+      back () {
+        alert('header头部， 点击返回');
+      },
+      title () {
+        alert('header头部， 点击title');
+      },
+      rightClick() {
+        alert('右侧点击事件');
+      },
+      changeTab(tab: any) {
+        tab1value.value = tab.paneKey as number;
+      },
+    };
 
     return {
       tab1value,
@@ -139,7 +136,6 @@ app.use(TabPane);
   }
 }
 </script>
-
 ```
 :::
 
@@ -147,44 +143,44 @@ app.use(TabPane);
 
 :::demo
 ```html
-  <template>
-    <nut-navbar @on-click-back="back" >
-      <template #content>
-        <nut-tabs v-model="tab2value" @click="changeTabList">
-          <nut-tabpane title="商品"> </nut-tabpane>
-          <nut-tabpane title="评价"> </nut-tabpane>
-          <nut-tabpane title="详情"> </nut-tabpane>
-          <nut-tabpane title="推荐"> </nut-tabpane>
-        </nut-tabs>
-      </template>
-      <template #icons>
-        <nut-icon class="icon" name="share"></nut-icon>
-      </template>
+<template>
+  <nut-navbar @on-click-back="back" >
+    <template #content>
+      <nut-tabs v-model="tab2value" @click="changeTabList">
+        <nut-tabpane title="商品"> </nut-tabpane>
+        <nut-tabpane title="评价"> </nut-tabpane>
+        <nut-tabpane title="详情"> </nut-tabpane>
+        <nut-tabpane title="推荐"> </nut-tabpane>
+      </nut-tabs>
+    </template>
+    <template #icons>
+      <nut-icon class="icon" name="share"></nut-icon>
+    </template>
 
-      <template #right>
-        <nut-icon class="right" name="horizontal-n"></nut-icon>
-      </template>
-    </nut-navbar>
-  </template>
+    <template #right>
+      <nut-icon class="right" name="horizontal-n"></nut-icon>
+    </template>
+  </nut-navbar>
+</template>
 
-  <script lang="ts">
-    import { ref } from 'vue';
-    export default {
-      setup() {
-      const tab2value = ref(0);
-      const methods = {
-        back() {
-          alert('header头部， 点击返回');
-        },
-        changeTabList(tab: any) {
-          tab2value.value = tab.paneKey as number;
-        }
-      };
-      return {
-        tab2value,
-        ...methods
-      };
-    }
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    setup() {
+    const tab2value = ref(0);
+    const methods = {
+      back() {
+        alert('header头部， 点击返回');
+      },
+      changeTabList(tab: any) {
+        tab2value.value = tab.paneKey as number;
+      }
+    };
+    return {
+      tab2value,
+      ...methods
+    };
+  }
 }
 </script>
 

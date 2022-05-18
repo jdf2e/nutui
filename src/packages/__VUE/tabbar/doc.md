@@ -8,14 +8,13 @@
 ``` javascript
 import { createApp } from 'vue';
 //vue
-import { Tabbar,TabbarItem,Icon } from '@nutui/nutui';
+import { Tabbar, TabbarItem, Icon } from '@nutui/nutui';
 //taro
-import { Tabbar,TabbarItem,Icon } from '@nutui/nutui-taro';
+import { Tabbar, TabbarItem, Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Tabbar);
 app.use(TabbarItem);
-
 ```
 
 
@@ -25,13 +24,13 @@ app.use(TabbarItem);
 :::demo
 ```html
 <template>
-<nut-tabbar @tab-switch="tabSwitch">
-  <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
-  <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
-  <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
-  <nut-tabbar-item tab-title="购物车" icon="cart"></nut-tabbar-item>
-  <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
-</nut-tabbar>
+  <nut-tabbar @tab-switch="tabSwitch">
+    <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="购物车" icon="cart"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
+  </nut-tabbar>
 </template>
 <script>
   export default{
@@ -44,7 +43,6 @@ app.use(TabbarItem);
       };
     },
   }
-  
 </script>
 ```
 :::
@@ -54,33 +52,33 @@ app.use(TabbarItem);
 :::demo
 ```html
 <template>
-<nut-tabbar @tab-switch="tabSwitch">
-      <nut-tabbar-item
-        tab-title="首页"
-        img="http://img13.360buyimg.com/uba/jfs/t1/29316/38/1115/3203/5c0f3d61E35d0c7da/9e557f2cb5c9dab6.jpg"
-        activeImg="http://img20.360buyimg.com/uba/jfs/t1/9996/36/8646/4833/5c0f3d61E7c1b7e0f/c98ad61124172e93.jpg"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        tab-title="分类"
-        img="http://img12.360buyimg.com/uba/jfs/t1/25443/23/1062/4600/5c0f3d61E2e9f1360/c9b3421fe18614e2.jpg"
-        activeImg="http://img20.360buyimg.com/uba/jfs/t1/19241/12/1048/8309/5c0f3d61E17ed5a56/c3af0964cade47f8.jpg"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        tab-title="发现"
-        img="http://img13.360buyimg.com/uba/jfs/t1/10361/35/4713/4643/5c0f3d62E437a3c94/273fd0fb90798f03.jpg"
-        activeImg="http://img14.360buyimg.com/uba/jfs/t1/26604/35/1073/7896/5c0f3d61Eb9f5f184/5f01c938abe4216d.jpg"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        tab-title="购物车"
-        img="http://img11.360buyimg.com/uba/jfs/t1/14848/18/1066/3723/5c0f41bdE9f2a38fe/e6ed6768717297fb.jpg"
-        activeImg="http://img30.360buyimg.com/uba/jfs/t1/17538/16/1070/6214/5c0f41bdE4bc9a1db/74cf978e5015454b.jpg"
-      ></nut-tabbar-item>
-      <nut-tabbar-item
-        tab-title="我的"
-        img="http://img20.360buyimg.com/uba/jfs/t1/20004/20/1045/3620/5c0f3d61Eaaec1670/9e59db63983b7b9f.jpg"
-        activeImg="http://img14.360buyimg.com/uba/jfs/t1/23967/14/1072/6714/5c0f3d61E0ad8991e/8f741953f6e38f15.jpg"
-      ></nut-tabbar-item>
-    </nut-tabbar>
+  <nut-tabbar @tab-switch="tabSwitch">
+    <nut-tabbar-item
+      tab-title="首页"
+      img="http://img13.360buyimg.com/uba/jfs/t1/29316/38/1115/3203/5c0f3d61E35d0c7da/9e557f2cb5c9dab6.jpg"
+      activeImg="http://img20.360buyimg.com/uba/jfs/t1/9996/36/8646/4833/5c0f3d61E7c1b7e0f/c98ad61124172e93.jpg"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="分类"
+      img="http://img12.360buyimg.com/uba/jfs/t1/25443/23/1062/4600/5c0f3d61E2e9f1360/c9b3421fe18614e2.jpg"
+      activeImg="http://img20.360buyimg.com/uba/jfs/t1/19241/12/1048/8309/5c0f3d61E17ed5a56/c3af0964cade47f8.jpg"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="发现"
+      img="http://img13.360buyimg.com/uba/jfs/t1/10361/35/4713/4643/5c0f3d62E437a3c94/273fd0fb90798f03.jpg"
+      activeImg="http://img14.360buyimg.com/uba/jfs/t1/26604/35/1073/7896/5c0f3d61Eb9f5f184/5f01c938abe4216d.jpg"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="购物车"
+      img="http://img11.360buyimg.com/uba/jfs/t1/14848/18/1066/3723/5c0f41bdE9f2a38fe/e6ed6768717297fb.jpg"
+      activeImg="http://img30.360buyimg.com/uba/jfs/t1/17538/16/1070/6214/5c0f41bdE4bc9a1db/74cf978e5015454b.jpg"
+    ></nut-tabbar-item>
+    <nut-tabbar-item
+      tab-title="我的"
+      img="http://img20.360buyimg.com/uba/jfs/t1/20004/20/1045/3620/5c0f3d61Eaaec1670/9e59db63983b7b9f.jpg"
+      activeImg="http://img14.360buyimg.com/uba/jfs/t1/23967/14/1072/6714/5c0f3d61E0ad8991e/8f741953f6e38f15.jpg"
+    ></nut-tabbar-item>
+  </nut-tabbar>
 </template>
 <script>
   export default{
@@ -93,7 +91,6 @@ app.use(TabbarItem);
       };
     },
   }
-  
 </script>
 ```
 :::
@@ -102,13 +99,13 @@ app.use(TabbarItem);
 :::demo
 ```html
 <template>
-<nut-tabbar v-model:visible="active" size="18px">
-      <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="购物车" icon="cart"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
-    </nut-tabbar>
+  <nut-tabbar v-model:visible="active" size="18px">
+    <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="购物车" icon="cart"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
+  </nut-tabbar>
 </template>
 ```
 :::
@@ -132,13 +129,13 @@ app.use(TabbarItem);
 :::demo
 ```html
 <template>
- <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
-      <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="购物车" icon="cart"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
-    </nut-tabbar>
+  <nut-tabbar unactive-color="#7d7e80" active-color="#1989fa">
+    <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="购物车" icon="cart"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
+  </nut-tabbar>
 </template>
 ```
 :::
