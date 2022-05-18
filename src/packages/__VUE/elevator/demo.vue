@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <h2>基本用法</h2>
+    <h2>{{ translate('basic') }}</h2>
     <div class="elevator-wrapper">
       <nut-elevator
         :index-list="dataList"
@@ -10,7 +10,7 @@
       ></nut-elevator>
     </div>
 
-    <h2>自定义索引key</h2>
+    <h2>{{ translate('customIndex') }}</h2>
     <div class="elevator-wrapper">
       <nut-elevator
         :index-list="dataList2"
@@ -26,7 +26,76 @@
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('elevator');
+const { createDemo, translate } = createComponent('elevator');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    customIndex: '自定义索引key',
+    anhui: '安徽',
+    beijing: '北京',
+    guangxi: '广西',
+    guangdong: '广东',
+    hunan: '湖南',
+    hubei: '湖北',
+    shanghai: '上海',
+    shenzhen: '深圳',
+    guangzhou: '广州',
+    hangzhou: '杭州',
+    chengdu: '成都',
+    xian: '西安',
+    tianjin: '天津',
+    wuhan: '武汉',
+    changsha: '长沙',
+    chongqin: '重庆',
+    suzhou: '苏州',
+    nanjing: '南京',
+    xining: '西宁',
+    lanzhou: '兰州',
+    shijiazhuang: '石家庄',
+    qinhuangdao: '秦皇岛',
+    dalian: '大连',
+    haerbin: '哈尔滨',
+    changchun: '长春',
+    taiyuan: '太原',
+    one: '一',
+    two: '二',
+    three: '三'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    customIndex: 'Custom index key',
+    anhui: 'AnHui',
+    beijing: 'BeiJing',
+    guangxi: 'GuangXi',
+    guangdong: 'GuangDong',
+    hunan: 'HuNan',
+    hubei: 'HuBei',
+    shanghai: 'ShangHai',
+    shenzhen: 'ShenZhen',
+    guangzhou: 'GuangZhou',
+    hangzhou: 'HangZhou',
+    chengdu: 'ChengDu',
+    xian: 'XiAn',
+    tianjin: 'TianJin',
+    wuhan: 'WuHan',
+    changsha: 'ChangSha',
+    chongqin: 'ChongQin',
+    suzhou: 'SuZhou',
+    nanjing: 'NanJing',
+    xining: 'XiNing',
+    lanzhou: 'LanZhou',
+    shijiazhuang: 'ShiJiaZhuang',
+    qinhuangdao: 'QinHuangDao',
+    dalian: 'DaLian',
+    haerbin: 'HaErBin',
+    changchun: 'ChangChun',
+    taiyuan: 'TaiYuan',
+    one: 'one',
+    two: 'two',
+    three: 'three'
+  }
+});
 export default createDemo({
   setup() {
     const state = reactive({
@@ -36,7 +105,7 @@ export default createDemo({
           title: 'A',
           list: [
             {
-              name: '安徽',
+              name: translate('anhui'),
               id: 1
             }
           ]
@@ -45,7 +114,7 @@ export default createDemo({
           title: 'B',
           list: [
             {
-              name: '北京',
+              name: translate('beijing'),
               id: 2
             }
           ]
@@ -54,11 +123,11 @@ export default createDemo({
           title: 'G',
           list: [
             {
-              name: '广西',
+              name: translate('guangxi'),
               id: 3
             },
             {
-              name: '广东',
+              name: translate('guangdong'),
               id: 4
             }
           ]
@@ -67,11 +136,11 @@ export default createDemo({
           title: 'H',
           list: [
             {
-              name: '湖南',
+              name: translate('hunan'),
               id: 5
             },
             {
-              name: '湖北',
+              name: translate('hubei'),
               id: 6
             }
           ]
@@ -79,100 +148,100 @@ export default createDemo({
       ],
       dataList2: [
         {
-          num: '一',
+          num: translate('one'),
           list: [
             {
-              name: '北京',
+              name: translate('beijing'),
               id: 1
             },
             {
-              name: '上海',
+              name: translate('shanghai'),
               id: 2
             },
             {
-              name: '深圳',
+              name: translate('shenzhen'),
               id: 3
             },
             {
-              name: '广州',
+              name: translate('guangzhou'),
               id: 4
             },
             {
-              name: '杭州',
+              name: translate('hangzhou'),
               id: 5
             }
           ]
         },
         {
-          num: '二',
+          num: translate('two'),
           list: [
             {
-              name: '成都',
+              name: translate('chengdu'),
               id: 6
             },
             {
-              name: '西安',
+              name: translate('xian'),
               id: 7
             },
             {
-              name: '天津',
+              name: translate('tianjin'),
               id: 8
             },
             {
-              name: '武汉',
+              name: translate('wuhan'),
               id: 9
             },
             {
-              name: '长沙',
+              name: translate('changsha'),
               id: 10
             },
             {
-              name: '重庆',
+              name: translate('chongqin'),
               id: 11
             },
             {
-              name: '苏州',
+              name: translate('suzhou'),
               id: 12
             },
             {
-              name: '南京',
+              name: translate('nanjing'),
               id: 13
             }
           ]
         },
         {
-          num: '三',
+          num: translate('three'),
           list: [
             {
-              name: '西宁',
+              name: translate('xining'),
               id: 14
             },
             {
-              name: '兰州',
+              name: translate('lanzhou'),
               id: 15
             },
             {
-              name: '石家庄',
+              name: translate('shijiazhuang'),
               id: 16
             },
             {
-              name: '秦皇岛',
+              name: translate('qinhuangdao'),
               id: 17
             },
             {
-              name: '大连',
+              name: translate('dalian'),
               id: 18
             },
             {
-              name: '哈尔滨',
+              name: translate('haerbin'),
               id: 19
             },
             {
-              name: '长春',
+              name: translate('changchun'),
               id: 20
             },
             {
-              name: '太原',
+              name: translate('taiyuan'),
               id: 21
             }
           ]
@@ -188,7 +257,7 @@ export default createDemo({
       console.log(key);
     };
 
-    return { ...toRefs(state), clickItem, clickIndex };
+    return { ...toRefs(state), clickItem, clickIndex, translate };
   }
 });
 </script>
