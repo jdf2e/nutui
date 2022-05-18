@@ -127,12 +127,19 @@ export default create({
     const show = ref(props.visible);
     const root = ref<HTMLElement>();
     function defaultKey() {
-      return [
-        ...getBasicKeys(),
-        { id: 'lock', type: 'lock' },
-        { id: 0, type: 'number' },
-        { id: 'delete', type: 'delete' }
-      ];
+      const { customKey } = props;
+      let object = {
+        id: 'lock',
+        type: 'lock'
+      };
+      let customKeys = Array.isArray(customKey) ? customKey : [customKey];
+      if (customKeys.length === 1) {
+        object = {
+          id: customKeys[0],
+          type: 'custom'
+        };
+      }
+      return [...getBasicKeys(), object, { id: 0, type: 'number' }, { id: 'delete', type: 'delete' }];
     }
 
     function getBasicKeys() {
