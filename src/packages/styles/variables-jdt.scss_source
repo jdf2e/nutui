@@ -2,6 +2,7 @@
 
 // 主色调
 $primary-color: #2c68ff !default;
+$primary-color-start: $primary-color !default;
 $primary-color-end: #2c68ff !default;
 // 辅助色
 $help-color: #f5f5f5 !default;
