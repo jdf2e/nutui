@@ -1,13 +1,13 @@
 <template>
   <div class="demo full">
     <h2>基础用法</h2>
-    <nut-searchbar v-model="searchValue"> </nut-searchbar>
+    <nut-searchbar v-model="searchValue" label="标签"> </nut-searchbar>
 
     <h2>搜索事件监听</h2>
     <nut-searchbar v-model="searchValue1" @search="search"> </nut-searchbar>
 
     <h2>显示搜索 icon</h2>
-    <nut-searchbar v-model="searchValue2">
+    <nut-searchbar v-model="searchValue2" @click-left-icon="clickLeftIcon">
       <template v-slot:leftin>
         <nut-icon size="14" name="search2"></nut-icon>
       </template>
@@ -27,7 +27,7 @@
     </nut-searchbar>
 
     <h2>显示全部 icon</h2>
-    <nut-searchbar v-model="searchValue5">
+    <nut-searchbar v-model="searchValue5" @click-right-icon="clickRightIcon">
       <template v-slot:leftout>
         <nut-icon @click="clickLeft" size="20" name="left"></nut-icon>
       </template>
@@ -68,9 +68,17 @@ export default createDemo({
     const clickLeft = function () {
       Toast.text('点击回退按钮');
     };
+    const clickLeftIcon = function (a: string, b: any) {
+      console.log(a, b);
+    };
+    const clickRightIcon = function (a: string, b: any) {
+      console.log(a, b);
+    };
 
     return {
       clickLeft,
+      clickLeftIcon,
+      clickRightIcon,
       search,
       ...toRefs(state)
     };

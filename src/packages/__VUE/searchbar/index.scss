@@ -5,6 +5,10 @@
   padding: $searchbar-padding;
   background: $searchbar-background;
   box-sizing: border-box;
+  &__search-label {
+    padding: 0 5px;
+    color: #323233;
+  }
   &__search-input {
     display: flex;
     align-items: center;

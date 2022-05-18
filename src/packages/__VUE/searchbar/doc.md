@@ -190,12 +190,16 @@ app.use(SearchBar).use(Icon);
     
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
+| v-model	         | 当前输入的值   | Number / String | ''      |
+| label | 搜索框左侧文本 | String | '' |
+| shape | 搜索框形状，可选值为 round | String | square |
 | max-length         | 最大输入长度   | [Number,String] | '9999'      |
 | input-type    | 输入框类型   | String | 'text'      |
 | placeholder        | 输入框默认暗纹  | String | '请输入'   |
 | clearable          | 是否展示清除按钮 | Boolean | true     |
 | background      | 输入框外部背景 | String |   '#fff'   |
 | input-background   | 输入框内部背景 | String |   '#f7f7f7'   |
+| disabled | 是否禁用输入框 | boolean | false |
 
 
 
@@ -208,6 +212,8 @@ app.use(SearchBar).use(Icon);
 | blur  | 失焦时触发 | val, event |
 | clear  | 点击清空时触发 | val |
 | search  | 按下 ENTER 键时触发 | val, event |
+| click-left-icon |	点击左侧图标时触发 |	val, event |
+| click-right-icon |	点击右侧图标时触发 |	val, event |
 
 ## Slots
 

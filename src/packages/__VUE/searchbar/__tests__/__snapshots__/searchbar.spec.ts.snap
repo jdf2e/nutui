@@ -3,6 +3,7 @@
 exports[`basic usage 1`] = `
 "<view class=\\"nut-searchbar\\">
   <!--v-if-->
+  <!--v-if-->
   <view class=\\"nut-searchbar__search-input\\">
     <!--v-if-->
     <view class=\\"nut-searchbar__input-inner\\">
@@ -17,6 +18,7 @@ exports[`basic usage 1`] = `
 
 exports[`slot test 1`] = `
 "<view class=\\"nut-searchbar\\">
+  <!--v-if-->
   <!--v-if-->
   <view class=\\"nut-searchbar__search-input\\">
     <!--v-if-->

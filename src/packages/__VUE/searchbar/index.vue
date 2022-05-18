@@ -1,10 +1,15 @@
 <template>
   <view class="nut-searchbar" :style="searchbarStyle">
+    <span class="nut-searchbar__search-label" v-if="label">{{ label }}</span>
     <view v-if="$slots.leftout" class="nut-searchbar__search-icon nut-searchbar__left-search-icon">
       <slot name="leftout"></slot>
     </view>
     <view class="nut-searchbar__search-input" :style="inputSearchbarStyle">
-      <view v-if="$slots.leftin" class="nut-searchbar__search-icon nut-searchbar__iptleft-search-icon">
+      <view
+        v-if="$slots.leftin"
+        class="nut-searchbar__search-icon nut-searchbar__iptleft-search-icon"
+        @click="leftIconClick"
+      >
         <slot name="leftin"></slot>
       </view>
       <view class="nut-searchbar__input-inner">
@@ -24,7 +29,11 @@
           <nut-icon name="circle-close" size="12" color="#555"></nut-icon>
         </view>
       </view>
-      <view v-if="$slots.rightin" class="nut-searchbar__search-icon nut-searchbar__iptright-sarch-icon">
+      <view
+        v-if="$slots.rightin"
+        class="nut-searchbar__search-icon nut-searchbar__iptright-sarch-icon"
+        @click="rightIconClick"
+      >
         <slot name="rightin"></slot>
       </view>
     </view>
@@ -52,6 +61,10 @@ export default create({
       type: String,
       default: 'text'
     },
+    label: {
+      type: String,
+      default: ''
+    },
     maxLength: {
       type: [String, Number],
       default: '9999'
@@ -74,7 +87,7 @@ export default create({
     }
   },
 
-  emits: ['change', 'update:modelValue', 'blur', 'focus', 'clear', 'search'],
+  emits: ['change', 'update:modelValue', 'blur', 'focus', 'clear', 'search', 'clickLeftIcon', 'clickRightIcon'],
 
   setup(props, { emit }) {
     const state = reactive({
@@ -133,6 +146,15 @@ export default create({
       emit('search', props.modelValue);
     };
 
+    const leftIconClick = (event: Event) => {
+      emit('clickLeftIcon', props.modelValue, event);
+    };
+
+    const rightIconClick = (event: Event) => {
+      console.log(123);
+      emit('clickRightIcon', props.modelValue, event);
+    };
+
     return {
       ...toRefs(state),
       valueChange,
@@ -142,7 +164,9 @@ export default create({
       handleSubmit,
       searchbarStyle,
       inputSearchbarStyle,
-      translate
+      translate,
+      leftIconClick,
+      rightIconClick
     };
   }
 });
