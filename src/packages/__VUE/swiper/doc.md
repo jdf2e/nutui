@@ -2,7 +2,7 @@
 
 ### 介绍
 
-常用于一组图片或卡片轮播，当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。
+常用于一组图片或卡片轮播。
 
 ### 安装
 
@@ -16,8 +16,6 @@ import { Swiper,SwiperItem } from '@nutui/nutui-taro';
 const app = createApp();
 app.use(Swiper).use(SwiperItem);
 ```
-
-## 代码演示
 
 ### 基础用法
 

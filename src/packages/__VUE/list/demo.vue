@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <h2>基础用法</h2>
+    <h2>{{ translate('basic') }}</h2>
     <nut-cell>
       <nut-list :height="50" :listData="count" @scroll="handleScroll">
         <template v-slot="{ item }">
@@ -15,7 +15,16 @@
 <script lang="ts">
 import { onMounted, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('list');
+const { createDemo, translate } = createComponent('list');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法'
+  },
+  'en-US': {
+    basic: 'Basic Usage'
+  }
+});
 export default createDemo({
   props: {},
   setup() {
@@ -33,7 +42,7 @@ export default createDemo({
       state.count = state.count.map((item: number, index: number) => index + 1);
     });
 
-    return { ...toRefs(state), handleScroll };
+    return { ...toRefs(state), handleScroll, translate };
   }
 });
 </script>

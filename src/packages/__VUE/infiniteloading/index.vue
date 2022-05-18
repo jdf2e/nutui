@@ -3,7 +3,7 @@
     <view class="nut-infinite-top" ref="refreshTop" :style="getStyle">
       <view class="top-box">
         <nut-icon class="top-img" :name="pullIcon"></nut-icon>
-        <view class="top-text">{{ pullTxt }}</view>
+        <view class="top-text">{{ pullTxt || translate('pullTxt') }}</view>
       </view>
     </view>
 
@@ -14,12 +14,16 @@
     <view class="nut-infinite-bottom">
       <template v-if="isInfiniting">
         <view class="bottom-box">
-          <nut-icon class="bottom-img" :name="loadIcon"></nut-icon>
-          <view class="bottom-text">{{ loadTxt }}</view>
+          <template v-if="!slots.loading">
+            <nut-icon class="bottom-img" :name="loadIcon"></nut-icon>
+            <view class="bottom-text">{{ loadTxt || translate('loading') }}</view>
+          </template>
+          <slot name="loading" v-else></slot>
         </view>
       </template>
       <template v-else-if="!hasMore">
-        <view class="tips">{{ loadMoreTxt }}</view>
+        <view class="tips" v-if="!slots.finished">{{ loadMoreTxt || translate('loadMoreTxt') }}</view>
+        <slot name="finished" v-else></slot>
       </template>
     </view>
   </view>
@@ -37,7 +41,7 @@ import {
   ref
 } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('infiniteloading');
+const { componentName, create, translate } = createComponent('infiniteloading');
 export default create({
   props: {
     hasMore: {
@@ -54,7 +58,7 @@ export default create({
     },
     pullTxt: {
       type: String,
-      default: '松开刷新'
+      default: ''
     },
     loadIcon: {
       type: String,
@@ -62,11 +66,11 @@ export default create({
     },
     loadTxt: {
       type: String,
-      default: '加载中···'
+      default: ''
     },
     loadMoreTxt: {
       type: String,
-      default: '哎呀，这里是底部了啦'
+      default: ''
     },
     useWindow: {
       type: Boolean,
@@ -235,6 +239,8 @@ export default create({
       state.scrollEl = props.useWindow ? window : parentElement;
 
       scrollListener();
+
+      console.log(slots);
     });
 
     onUnmounted(() => {
@@ -261,7 +267,9 @@ export default create({
       touchStart,
       touchMove,
       touchEnd,
-      getStyle
+      getStyle,
+      translate,
+      slots
     };
   }
 });

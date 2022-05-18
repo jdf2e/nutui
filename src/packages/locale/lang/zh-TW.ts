@@ -66,7 +66,7 @@ class Lang extends BaseLang {
   sku = {
     buyNow: '立即購買',
     buyNumber: '購買數量',
-    addToCard: '加入購物車'
+    addToCart: '加入購物車'
   };
   skuheader = {
     skuId: '商品編號'
@@ -78,6 +78,11 @@ class Lang extends BaseLang {
     complaintsText: '我要投訴',
     additionalReview: (day: number) => `購買${day}天後追評`,
     additionalImages: (length: number) => `${length}張追評圖片`
+  };
+  infiniteloading = {
+    loading: '加載中...',
+    pullTxt: '鬆開刷新',
+    loadMoreTxt: '哎呀，這裡是底部了啦'
   };
 }
 export default Lang;

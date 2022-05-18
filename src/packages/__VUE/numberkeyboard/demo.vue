@@ -32,6 +32,10 @@
       @close="close(4)"
     >
     </nut-numberkeyboard>
+
+    <nut-cell :isLink="true" @click="showKeyBoard(6)" :showIcon="true" title="身份证键盘"></nut-cell>
+    <nut-numberkeyboard v-model:visible="visible6" :custom-key="customKey3" @input="input" @close="close(6)">
+    </nut-numberkeyboard>
     <nut-cell
       :isLink="true"
       desc-text-align="left"
@@ -57,11 +61,13 @@ export default createDemo({
     const visible2 = ref(false);
     const visible3 = ref(false);
     const visible4 = ref(false);
+    const visible6 = ref(false);
     const visible5 = ref(false);
     const value = ref('');
     const customKey1 = reactive(['.']);
     const customKey2 = reactive(['.']);
-    const visibleArr = [visible1, visible2, visible3, visible4, visible5];
+    const customKey3 = reactive(['X']);
+    const visibleArr = [visible1, visible2, visible3, visible4, visible5, visible6];
     function input(number: any) {
       proxy.$toast.text(`输入：${number}`);
     }
@@ -82,11 +88,13 @@ export default createDemo({
       showKeyBoard,
       customKey1,
       customKey2,
+      customKey3,
       visible1,
       visible2,
       visible3,
       visible4,
       visible5,
+      visible6,
       value
     };
   }
