@@ -55,6 +55,6 @@ export function createComponent(name: string) {
 
       _component.name = 'demo-' + name;
       return defineComponent(_component as any);
-    }
+    } as typeof defineComponent
   };
 }
