@@ -16,9 +16,10 @@
           "scene": null
         },
         {
-          "name": "exhibition/pages/countdown/index",
-          "pathName": "exhibition/pages/countdown/index",
+          "name": "exhibition/pages/popover/index",
+          "pathName": "exhibition/pages/popover/index",
           "query": "",
+          "launchMode": "default",
           "scene": null
         },
         {

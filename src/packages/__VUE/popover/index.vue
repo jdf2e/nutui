@@ -29,7 +29,7 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, ref, PropType, toRefs, unref, nextTick, onUnmounted } from 'vue';
+import { onMounted, computed, watch, ref, PropType, toRefs, nextTick, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('popover');
 import Popup, { popupProps } from '../popup/index.vue';
@@ -40,7 +40,19 @@ import type { Instance, Placement } from '@popperjs/core';
 
 export type PopoverTheme = 'light' | 'dark';
 
-export type PopoverLocation = 'bottom' | 'top' | 'left' | 'right';
+export type PopoverLocation =
+  | 'bottom'
+  | 'top'
+  | 'left'
+  | 'right'
+  | 'top-start'
+  | 'top-end'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'left-start'
+  | 'left-end'
+  | 'right-start'
+  | 'right-end';
 
 export default create({
   inheritAttrs: false,
@@ -142,6 +154,7 @@ export default create({
         if (!showPopup.value) return;
         if (!popper) {
           popper = createPopperInstance();
+          console.log(popper);
         } else {
           popper.setOptions({
             placement: props.location

@@ -1,21 +1,22 @@
 <template>
   <view @click.stop="openPopover" :class="classes">
-    <div ref="reference" :id="'reference-' + refRandomId"> <slot name="reference"></slot></div>
+    <div ref="reference" :id="'reference-' + refRandomId" :class="customClass"> <slot name="reference"></slot></div>
     <template v-if="showPopup">
       <view class="more-background" @click.stop="closePopover"> </view>
       <view :class="popoverContent" :style="getStyle">
-        <view :class="popoverArrow" :style="getArrowStyle"> </view>
+        <view :class="popoverArrow" v-if="showArrow"> </view>
 
-        <slot name="content"></slot>
-
-        <view
-          v-for="(item, index) in list"
-          :key="index"
-          :class="{ 'title-item': true, disabled: item.disabled }"
-          @click.stop="chooseItem(item, index)"
-        >
-          <slot v-if="item.icon"> <nut-icon class="item-img" :name="item.icon"></nut-icon></slot>
-          <view class="title-name">{{ item.name }}</view>
+        <view class="popover-menu">
+          <slot name="content"></slot>
+          <view
+            v-for="(item, index) in list"
+            :key="index"
+            :class="{ 'popover-menu-item': true, disabled: item.disabled }"
+            @click.stop="chooseItem(item, index)"
+          >
+            <slot v-if="item.icon"> <nut-icon class="item-img" :name="item.icon"></nut-icon></slot>
+            <view class="popover-menu-name">{{ item.name }}</view>
+          </view>
         </view>
       </view>
     </template>
@@ -54,9 +55,22 @@ export default create({
     location: {
       type: String as PropType<PopoverLocation>,
       default: 'bottom'
+    },
+    // 位置出现的偏移量
+    offset: {
+      type: Array,
+      default: [0, 12]
+    },
+    customClass: {
+      type: String,
+      default: ''
+    },
+    showArrow: {
+      type: Boolean,
+      default: true
     }
   },
-  emits: ['update', 'update:visible', 'close', 'choose', 'openPopover'],
+  emits: ['update', 'update:visible', 'close', 'choose', 'open'],
   setup(props, { emit }) {
     const reference = ref<HTMLElement>();
     const state = reactive({
@@ -65,26 +79,26 @@ export default create({
     });
     const showPopup = ref(props.visible);
 
-    const { theme, location } = toRefs(props);
+    const { theme, location, offset } = toRefs(props);
 
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
-        [prefixCls]: true,
-        [`${prefixCls}--${theme.value}`]: theme.value
+        [`${prefixCls}-taro`]: true,
+        [`${prefixCls}-taro--${theme.value}`]: theme.value
       };
     });
 
     const popoverContent = computed(() => {
-      const prefixCls = 'popoverContent';
+      const prefixCls = 'popover-content';
       return {
-        [prefixCls]: true,
+        [`${prefixCls}`]: true,
         [`${prefixCls}--${location.value}`]: location.value
       };
     });
 
     const popoverArrow = computed(() => {
-      const prefixCls = 'popoverArrow';
+      const prefixCls = 'popover-arrow';
       return {
         [prefixCls]: true,
         [`${prefixCls}--${location.value}`]: location.value
@@ -93,41 +107,22 @@ export default create({
 
     const getReference = async () => {
       const refe = await useTaroRect(reference, Taro);
+      console.log(refe);
       state.elWidth = refe.width;
       state.elHeight = refe.height;
     };
 
     const getStyle = computed(() => {
+      console.log(offset);
       const style: CSSProperties = {};
-      if (location.value == 'top') {
-        style.bottom = state.elHeight + 10 + 'px';
-      } else if (location.value == 'right') {
-        style.top = 0 + 'px';
-        style.right = -state.elWidth + 'px';
-      } else if (location.value == 'left') {
-        style.top = 0 + 'px';
-        style.left = -state.elWidth + 'px';
+      if (location.value.indexOf('top') !== -1) {
+        style.bottom = state.elHeight + (offset.value as any)[1] + 'px';
+      } else if (location.value.indexOf('right') !== -1) {
+        style.left = state.elWidth + (offset.value as any)[1] + 'px';
+      } else if (location.value.indexOf('left') !== -1) {
+        style.right = state.elWidth + (offset.value as any)[1] + 'px';
       } else {
-        style.top = state.elHeight + 10 + 'px';
-      }
-
-      return style;
-    });
-
-    const getArrowStyle = computed(() => {
-      const style: CSSProperties = {};
-      if (location.value == 'top') {
-        style.bottom = -20 + 'px';
-        style.left = state.elWidth / 2 + 'px';
-      } else if (location.value == 'right') {
-        style.top = 20 + 'px';
-        style.left = -20 + 'px';
-      } else if (location.value == 'left') {
-        style.top = 20 + 'px';
-        style.right = -20 + 'px';
-      } else {
-        style.left = state.elWidth / 2 + 'px';
-        style.top = -20 + 'px';
+        style.top = state.elHeight + (offset.value as any)[1] + 'px';
       }
 
       return style;
@@ -178,9 +173,29 @@ export default create({
       getReference,
       reference,
       getStyle,
-      getArrowStyle,
       refRandomId
     };
   }
 });
 </script>
+<style lang="scss">
+.self-content {
+  width: 195px;
+  display: flex;
+  flex-wrap: wrap;
+  &-item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  &-desc {
+    margin-top: 5px;
+    width: 60px;
+    font-size: 10px;
+    text-align: center;
+  }
+}
+</style>
