@@ -25,7 +25,8 @@ tasks.push(fs.copy(path.resolve(__dirname, '../src/packages/styles'), path.resol
 Promise.all(tasks).then((res) => {
   let themes = [
     { file: 'default.scss', sourcePath: `@import '../variables.scss';` },
-    { file: 'jdt.scss', sourcePath: `@import '../variables-jdt.scss';` }
+    { file: 'jdt.scss', sourcePath: `@import '../variables-jdt.scss';` },
+    { file: 'jdb.scss', sourcePath: `@import '../variables-jdb.scss';` }
   ];
 
   themes.forEach((item) => {
