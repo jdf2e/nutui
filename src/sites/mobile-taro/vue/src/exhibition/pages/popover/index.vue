@@ -1,33 +1,50 @@
 <template>
   <div class="demo">
     <h2>基础用法</h2>
-    <nut-popover v-model:visible="visible.lightTheme" :list="iconItemList" @choose="chooseItem">
-      <template #reference>
-        <nut-button type="primary" shape="square">明朗风格</nut-button>
-      </template>
-    </nut-popover>
 
-    <nut-popover v-model:visible="visible.darkTheme" theme="dark" :list="iconItemList">
-      <template #reference>
-        <nut-button type="primary" shape="square">暗黑风格</nut-button>
-      </template>
-    </nut-popover>
+    <nut-row type="flex">
+      <nut-col :span="8">
+        <nut-popover
+          v-model:visible="visible.lightTheme"
+          :list="iconItemList"
+          location="bottom-start"
+          @choose="chooseItem"
+        >
+          <template #reference>
+            <nut-button type="primary" shape="square">明朗风格</nut-button>
+          </template>
+        </nut-popover>
+      </nut-col>
+      <nut-col :span="8">
+        <nut-popover v-model:visible="visible.darkTheme" theme="dark" :list="iconItemList">
+          <template #reference>
+            <nut-button type="primary" shape="square">暗黑风格</nut-button>
+          </template>
+        </nut-popover>
+      </nut-col>
+    </nut-row>
 
     <h2>选项配置</h2>
-    <nut-popover v-model:visible="visible.showIcon" theme="dark" :list="itemList">
-      <template #reference>
-        <nut-button type="primary" shape="square">展示图标</nut-button>
-      </template>
-    </nut-popover>
 
-    <nut-popover v-model:visible="visible.disableAction" :list="itemListDisabled">
-      <template #reference>
-        <nut-button type="primary" shape="square">禁用选项</nut-button>
-      </template>
-    </nut-popover>
+    <nut-row type="flex">
+      <nut-col :span="8">
+        <nut-popover v-model:visible="visible.showIcon" theme="dark" location="bottom-start" :list="itemList">
+          <template #reference>
+            <nut-button type="primary" shape="square">展示图标</nut-button>
+          </template>
+        </nut-popover>
+      </nut-col>
+      <nut-col :span="8">
+        <nut-popover v-model:visible="visible.disableAction" :list="itemListDisabled">
+          <template #reference>
+            <nut-button type="primary" shape="square">禁用选项</nut-button>
+          </template>
+        </nut-popover>
+      </nut-col>
+    </nut-row>
 
     <h2>自定义内容</h2>
-    <nut-popover v-model:visible="visible.Customized">
+    <nut-popover v-model:visible="visible.Customized" location="bottom-start">
       <template #reference>
         <nut-button type="primary" shape="square">自定义内容</nut-button>
       </template>
@@ -43,23 +60,22 @@
     </nut-popover>
 
     <h2>位置自定义</h2>
-    <nut-popover v-model:visible="visible.topLocation" location="top" theme="dark" :list="iconItemList">
-      <template #reference>
-        <nut-button type="primary" shape="square">向上弹出</nut-button>
-      </template>
-    </nut-popover>
 
-    <h2></h2>
-    <nut-popover v-model:visible="visible.rightLocation" location="right" theme="dark" :list="iconItemList">
-      <template #reference>
-        <nut-button type="primary" shape="square">向右弹出</nut-button>
-      </template>
-    </nut-popover>
-    <nut-popover v-model:visible="visible.leftLocation" location="left" theme="dark" :list="iconItemList">
-      <template #reference>
-        <nut-button type="primary" shape="square">向左弹出</nut-button>
-      </template>
-    </nut-popover>
+    <nut-row type="flex" justify="center">
+      <nut-col :span="24" style="text-align: center">
+        <view class="brickBox">
+          <nut-popover v-model:visible="visible.customPositon" :location="curPostion" theme="dark" :list="positionList">
+            <template #reference>
+              <div class="brick"></div>
+            </template>
+          </nut-popover>
+        </view>
+      </nut-col>
+    </nut-row>
+
+    <nut-radiogroup v-model="curPostion" direction="horizontal" class="radiogroup">
+      <nut-radio shape="button" :label="pos" v-for="(pos, i) in position" :key="i">{{ pos }}</nut-radio>
+    </nut-radiogroup>
   </div>
 </template>
 <script lang="ts">
@@ -76,8 +92,24 @@ export default {
       disableAction: false,
       topLocation: false, //向上弹出
       rightLocation: false, //向右弹出
-      leftLocation: false //向左弹出
+      leftLocation: false, //向左弹出
+      customPositon: false
     });
+    const curPostion = ref('top');
+    const position = ref([
+      'top',
+      'top-start',
+      'top-end',
+      'right',
+      'right-start',
+      'right-end',
+      'bottom',
+      'bottom-start',
+      'bottom-end',
+      'left',
+      'left-start',
+      'left-end'
+    ]);
 
     const iconItemList = reactive([
       {
@@ -88,6 +120,15 @@ export default {
       },
       {
         name: '选项三'
+      }
+    ]);
+
+    const positionList = reactive([
+      {
+        name: '选项一'
+      },
+      {
+        name: '选项二'
       }
     ]);
 
@@ -147,8 +188,9 @@ export default {
       }
     ]);
 
-    const chooseItem = () => {
-      console.log('选择项');
+    const chooseItem = (item: unknown, index: number) => {
+      console.log(item, index);
+      alert('选择项');
     };
 
     return {
@@ -157,12 +199,45 @@ export default {
       visible,
       itemListDisabled,
       selfContent,
-      chooseItem
+      chooseItem,
+      position,
+      curPostion,
+      positionList
     };
   }
 };
 </script>
 <style lang="scss">
+.demo > h2 {
+  padding: 0;
+}
+.brickBox {
+  margin-top: 80px;
+  .brick {
+    width: 60px;
+    height: 60px;
+    background: #1989fa;
+    border-radius: 10px;
+  }
+}
+
+.radiogroup {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff;
+  padding: 10px 6px;
+
+  > .nut-radio {
+    width: 100px;
+
+    > .nut-radio__button {
+      padding: 5px 8px;
+      border: 1px solid #f6f7f9;
+    }
+  }
+}
+
 .self-content {
   width: 195px;
   display: flex;
