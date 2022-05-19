@@ -19,9 +19,13 @@ import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
 import Picker from '../picker/index.vue';
 import { popupProps } from '../popup/index.vue';
+import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
 import { padZero } from './utils';
-const { componentName, create } = createComponent('datepicker');
+const { componentName, create, translate } = createComponent('datepicker');
+
+type Formatter = (type: string, option: PickerOption) => PickerOption;
+type Filter = (columnType: string, options: PickerOption[]) => PickerOption[];
 
 const currentYear = new Date().getFullYear();
 function isDate(val: Date): val is Date {
@@ -31,12 +35,12 @@ function isDate(val: Date): val is Date {
 const zhCNType: {
   [props: string]: string;
 } = {
-  day: '日',
-  year: '年',
-  month: '月',
-  hour: '时',
-  minute: '分',
-  seconds: '秒'
+  day: translate('day'),
+  year: translate('year'),
+  month: translate('month'),
+  hour: translate('hour'),
+  minute: translate('minute'),
+  seconds: translate('seconds')
 };
 export default create({
   components: {
@@ -80,10 +84,10 @@ export default create({
       validator: isDate
     },
     formatter: {
-      type: Function as PropType<import('./type').Formatter>,
+      type: Function as PropType<Formatter>,
       default: null
     },
-    filter: Function as PropType<import('./type').Filter>
+    filter: Function as PropType<Filter>
   },
   emits: ['click', 'update:visible', 'change', 'confirm', 'update:moduleValue'],
 
@@ -225,7 +229,7 @@ export default create({
     }: {
       columnIndex: number;
       selectedValue: (string | number)[];
-      selectedOptions: import('../picker/types').PickerOption[];
+      selectedOptions: PickerOption[];
     }) => {
       if (['date', 'datetime', 'datehour', 'month-day'].includes(props.type)) {
         let formatDate: (number | string)[] = [];
@@ -269,7 +273,7 @@ export default create({
 
     // min 最小值  max 最大值  val  当前显示的值   type 类型（year、month、day、time）
     const generateValue = (min: number, max: number, val: number | string, type: string, columnIndex: number) => {
-      const arr: Array<import('../picker/types').PickerOption> = [];
+      const arr: Array<PickerOption> = [];
       let index = 0;
       while (min <= max) {
         arr.push(formatterOption(type, min));
