@@ -1,41 +1,63 @@
 <template>
   <div class="demo">
-    <h4>基础用法</h4>
+    <h4>{{ translate('basic') }}</h4>
     <nut-cell class="cell">
       <nut-video :source="source" :options="options" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
-    <h4>自动播放</h4>
+    <h4>{{ translate('title1') }}</h4>
     <nut-cell class="cell">
       <nut-video :source="source" :options="options1" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
-    <h4>初始化静音</h4>
+    <h4>{{ translate('title2') }}</h4>
     <nut-cell class="cell">
       <nut-video :source="source" :options="options2" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
-    <h4>视频封面海报设置</h4>
+    <h4>{{ translate('title3') }}</h4>
     <nut-cell class="cell">
       <nut-video :source="source" :options="options3" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
-    <h4>行内播放</h4>
+    <h4>{{ translate('title4') }}</h4>
     <nut-cell class="cell">
       <nut-video :source="source" :options="options4" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
-    <h4>设置视频为背景图</h4>
+    <h4>{{ translate('title5') }}</h4>
     <nut-cell class="cell">
       <nut-video :source="source" :options="options5" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
-    <h4>视频切换</h4>
+    <h4>{{ translate('title6') }}</h4>
     <nut-cell class="cell">
       <nut-video :source="source1" :options="options" @play="play" @pause="pause" @playend="playend"> </nut-video>
     </nut-cell>
-    <nut-button type="primary" @click="changeVideo" class="m-b">切换视频</nut-button>
+    <nut-button type="primary" @click="changeVideo" class="m-b">{{ translate('title6') }}</nut-button>
   </div>
 </template>
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('video');
+const { createDemo, translate } = createComponent('video');
+
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    title1: '自动播放',
+    title2: '初始化静音',
+    title3: '视频封面海报设置',
+    title4: '行内播放',
+    title5: '设置视频为背景图',
+    title6: '视频切换'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    title1: 'Auto play',
+    title2: 'Initialize mute',
+    title3: 'Video cover poster settings',
+    title4: 'play inline',
+    title5: 'Set video as background',
+    title6: 'Video switching'
+  }
+});
 export default createDemo({
   props: {},
   setup() {
@@ -85,7 +107,7 @@ export default createDemo({
       state.source1.src = 'https://vjs.zencdn.net/v/oceans.mp4';
     };
 
-    return { play, pause, playend, ...toRefs(state), changeVideo };
+    return { play, pause, playend, ...toRefs(state), changeVideo, translate };
   }
 });
 </script>

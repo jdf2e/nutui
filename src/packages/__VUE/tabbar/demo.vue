@@ -113,7 +113,7 @@ export default createDemo({
   props: {},
   setup() {
     const active = ref(2);
-    function tabSwitch(item: object, index: number) {
+    function tabSwitch(item: Record<string, unknown>, index: number) {
       console.log(item, index);
     }
     return {

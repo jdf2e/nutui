@@ -31,7 +31,7 @@ export default defineConfig({
     dts({
       insertTypesEntry: true,
       copyDtsFiles: false,
-      cleanVueFileName: true,
+      cleanVueFileName: false,
       outputDir: path.resolve(__dirname, './dist/types'),
       include: path.resolve(__dirname, './src/packages/__VUE'),
       beforeWriteFile: (filePath: string, content: string) => {
