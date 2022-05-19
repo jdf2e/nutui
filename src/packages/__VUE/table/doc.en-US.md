@@ -1,10 +1,10 @@
-# Table 表格
+# Table
 
-### 介绍
+### Intro
 
-用于展示基础表格
+Used to display the basic table
 
-### 安装
+### Install
 
 ```javascript
 import { createApp } from 'vue';
@@ -17,7 +17,7 @@ const app = createApp();
 app.use(Table);
 ```
 
-### 基础使用
+### Basic Usage
 
 :::demo
 
@@ -33,18 +33,18 @@ app.use(Table);
       const state = reactive({
         columns: [
           {
-            title: '姓名',
+            title: 'name',
             key: 'name'
           },
           {
-            title: '性别',
+            title: 'sex',
             key: 'sex',
             render: (record) => {
               return h(
                 'span',
                 {
                   style: {
-                    color: record.sex === '女' ? 'blue' : 'green'
+                    color: record.sex === 'woman' ? 'blue' : 'green'
                   }
                 },
                 record.sex
@@ -52,25 +52,25 @@ app.use(Table);
             }
           },
           {
-            title: '学历',
+            title: 'education',
             key: 'record'
           }
         ],
         data: [
           {
             name: 'Tom',
-            sex: '男',
-            record: '小学'
+            sex: 'man',
+            record: 'primary school'
           },
           {
             name: 'Lucy',
-            sex: '女',
-            record: '本科'
+            sex: 'woman',
+            record: 'undergraduate'
           },
           {
             name: 'Jack',
-            sex: '男',
-            record: '高中'
+            sex: 'man',
+            record: 'high school'
           }
         ]
       });
@@ -84,7 +84,7 @@ app.use(Table);
 
 :::
 
-### 是否显示边框，文字对齐
+### Whether to display border and align text
 
 :::demo
 
@@ -101,34 +101,34 @@ app.use(Table);
         bordered: false,
         columns: [
           {
-            title: '姓名',
+            title: 'name',
             key: 'name',
             align: 'center'
           },
           {
-            title: '性别',
+            title: 'sex',
             key: 'sex'
           },
           {
-            title: '学历',
+            title: 'education',
             key: 'record'
           }
         ],
         data: [
           {
             name: 'Tom',
-            sex: '男',
-            record: '小学'
+            sex: 'man',
+            record: 'primary school'
           },
           {
             name: 'Lucy',
-            sex: '女',
-            record: '本科'
+            sex: 'woman',
+            record: 'undergraduate'
           },
           {
             name: 'Jack',
-            sex: '男',
-            record: '高中'
+            sex: 'man',
+            record: 'high school'
           }
         ]
       });
@@ -142,7 +142,7 @@ app.use(Table);
 
 :::
 
-### 显示总结栏
+### Show summary bar
 
 :::demo
 
@@ -158,52 +158,52 @@ app.use(Table);
       const state = reactive({
         columns: [
           {
-            title: '姓名',
+            title: 'name',
             key: 'name'
           },
           {
-            title: '性别',
+            title: 'sex',
             key: 'sex'
           },
           {
-            title: '学历',
+            title: 'education',
             key: 'record'
           },
           {
-            title: '年龄',
+            title: 'age',
             key: 'age'
           },
           {
-            title: '地址',
+            title: 'address',
             key: 'address'
           }
         ],
         data: [
           {
             name: 'Tom',
-            sex: '男',
-            record: '小学',
+            sex: 'man',
+            record: 'primary school',
             age: 13,
-            address: '北京'
+            address: 'beijing'
           },
           {
             name: 'Lucy',
-            sex: '女',
-            record: '本科',
+            sex: 'woman',
+            record: 'undergraduate',
             age: 34,
-            address: '上海'
+            address: 'shanghai'
           },
           {
             name: 'Jack',
-            sex: '男',
-            record: '高中',
+            sex: 'man',
+            record: 'high school',
             age: 4,
-            address: '杭州'
+            address: 'hangzhou'
           }
         ],
         summary: () => {
           return {
-            value: '这是总结栏',
+            value: 'This is the summary column',
             colspan: 5
           };
         }
@@ -218,7 +218,7 @@ app.use(Table);
 
 :::
 
-### 条纹、明暗交替
+### Stripes, alternating light and shade
 
 :::demo
 
@@ -235,47 +235,47 @@ app.use(Table);
         striped: true,
         columns3: [
           {
-            title: '姓名',
+            title: 'name',
             key: 'name'
           },
           {
-            title: '性别',
+            title: 'sex',
             key: 'sex'
           },
           {
-            title: '学历',
+            title: 'education',
             key: 'record'
           },
           {
-            title: '年龄',
+            title: 'age',
             key: 'age'
           },
           {
-            title: '地址',
+            title: 'address',
             key: 'address'
           }
         ],
         data2: [
           {
             name: 'Tom',
-            sex: '男',
-            record: '小学',
+            sex: 'man',
+            record: 'primary school',
             age: 13,
-            address: '北京'
+            address: 'beijing'
           },
           {
             name: 'Lucy',
-            sex: '女',
-            record: '本科',
+            sex: 'woman',
+            record: 'undergraduate',
             age: 34,
-            address: '上海'
+            address: 'shanghai'
           },
           {
             name: 'Jack',
-            sex: '男',
-            record: '高中',
+            sex: 'man',
+            record: 'high school',
             age: 4,
-            address: '杭州'
+            address: 'hangzhou'
           }
         ]
       });
@@ -289,7 +289,7 @@ app.use(Table);
 
 :::
 
-### 无数据默认展示，支持自定义
+### No data is displayed by default, and customization is supported
 
 :::demo
 
@@ -298,7 +298,7 @@ app.use(Table);
   <nut-table :columns="columns" :data="data"></nut-table>
   <nut-table :columns="columns3" :data="data3">
     <template #nodata>
-      <div class="no-data"> 这里是自定义展示 </div>
+      <div class="no-data"> Here is the custom display </div>
     </template>
   </nut-table>
 </template>
@@ -309,46 +309,46 @@ app.use(Table);
       const state = reactive({
         columns: [
           {
-            title: '姓名',
+            title: 'name',
             key: 'name'
           },
           {
-            title: '性别',
+            title: 'sex',
             key: 'sex'
           },
           {
-            title: '学历',
+            title: 'education',
             key: 'record'
           },
           {
-            title: '年龄',
+            title: 'age',
             key: 'age'
           },
           {
-            title: '地址',
+            title: 'address',
             key: 'address'
           }
         ],
         data: [],
         columns3: [
           {
-            title: '姓名',
+            title: 'name',
             key: 'name'
           },
           {
-            title: '性别',
+            title: 'sex',
             key: 'sex'
           },
           {
-            title: '学历',
+            title: 'education',
             key: 'record'
           },
           {
-            title: '年龄',
+            title: 'age',
             key: 'age'
           },
           {
-            title: '地址',
+            title: 'address',
             key: 'address'
           }
         ],
@@ -364,7 +364,7 @@ app.use(Table);
 
 :::
 
-### 自定义单元格
+### Custom cell
 
 :::demo
 
@@ -380,28 +380,28 @@ app.use(Table);
       const state = reactive({
         columns: [
           {
-            title: '姓名',
+            title: 'name',
             key: 'name',
             align: 'center'
           },
           {
-            title: '性别',
+            title: 'sex',
             key: 'sex'
           },
           {
-            title: '学历',
+            title: 'education',
             key: 'record'
           },
           {
-            title: '操作',
+            title: 'operation',
             key: 'render'
           }
         ],
         data: [
           {
             name: 'Tom',
-            sex: '男',
-            record: '小学',
+            sex: 'man',
+            record: 'primary school',
             render: () => {
               return h(
                 Button,
@@ -418,16 +418,16 @@ app.use(Table);
           },
           {
             name: 'Lucy',
-            sex: '女',
-            record: '本科',
+            sex: 'woman',
+            record: 'undergraduate',
             render: () => {
               return h(Icon, { name: 'dongdong', size: '14px' });
             }
           },
           {
             name: 'Jack',
-            sex: '男',
-            record: '高中',
+            sex: 'man',
+            record: 'high school',
             render: () => {
               return h(
                 Button,
@@ -438,7 +438,7 @@ app.use(Table);
                     window.open('https://www.jd.com');
                   }
                 },
-                '跳转到京东'
+                'Jump to Jingdong'
               );
             }
           }
@@ -454,13 +454,13 @@ app.use(Table);
 
 :::
 
-### 支持异步渲染
+### Support asynchronous rendering
 
 :::demo
 
 ```html
 <template>
-  <h2>支持异步渲染(5s之后看效果)</h2>
+  <h2>Support asynchronous rendering(See the effect after 5S)</h2>
   <nut-table :columns="columns" :data="data"></nut-table>
 </template>
 <script lang="ts">
@@ -471,48 +471,48 @@ app.use(Table);
       const state = reactive({
         columns: [
           {
-            title: '姓名',
+            title: 'name',
             key: 'name'
           },
           {
-            title: '性别',
+            title: 'sex',
             key: 'sex'
           },
           {
-            title: '学历',
+            title: 'education',
             key: 'record'
           },
           {
-            title: '年龄',
+            title: 'age',
             key: 'age'
           },
           {
-            title: '地址',
+            title: 'address',
             key: 'address'
           }
         ],
         data: [],
         data1: [
           {
-            address: '北京',
+            address: 'beijing',
             name: 'Tom',
-            sex: '男',
-            record: '小学',
+            sex: 'man',
+            record: 'primary school',
             age: 13
           },
           {
-            record: '本科',
+            record: 'undergraduate',
             name: 'Lucy',
-            sex: '女',
+            sex: 'woman',
             age: 34,
-            address: '上海'
+            address: 'shanghai'
           },
           {
             name: 'Jack',
-            sex: '男',
-            record: '高中',
+            sex: 'man',
+            record: 'high school',
             age: 4,
-            address: '杭州'
+            address: 'hangzhou'
           }
         ]
       });
@@ -531,7 +531,7 @@ app.use(Table);
 
 :::
 
-### 支持排序
+### Support sorting
 
 :::demo
 
@@ -547,21 +547,21 @@ app.use(Table);
       const state = reactive({
         columns: [
           {
-            title: '姓名',
+            title: 'name',
             key: 'name',
             align: 'center',
             sorter: true
           },
           {
-            title: '性别',
+            title: 'sex',
             key: 'sex'
           },
           {
-            title: '学历',
+            title: 'education',
             key: 'record'
           },
           {
-            title: '年龄',
+            title: 'age',
             key: 'age',
             sorter: (row1: any, row2: any) => {
               return row1.age - row2.age;
@@ -571,20 +571,20 @@ app.use(Table);
         data: [
           {
             name: 'Tom',
-            sex: '男',
-            record: '小学',
+            sex: 'man',
+            record: 'primary school',
             age: 10
           },
           {
             name: 'Lucy',
-            sex: '女',
-            record: '本科',
+            sex: 'woman',
+            record: 'undergraduate',
             age: 30
           },
           {
             name: 'Jack',
-            sex: '男',
-            record: '高中',
+            sex: 'man',
+            record: 'high school',
             age: 4
           }
         ]
@@ -609,26 +609,26 @@ app.use(Table);
 
 ### Props
 
-| 参数     | 说明             | 类型               | 默认值  |
+| Attribute     | Description             | Type               | Default  |
 | -------- | ---------------- | ------------------ | ------- |
-| bordered | 是否显示边框     | Boolean            | `true`  |
-| columns  | 表头数据         | TableColumnProps[] | `[]`    |
-| data     | 表格数据         | Object[]           | `[]`    |
-| summary  | 是否显示简介     | Function           | -       |
-| striped  | 条纹是否明暗交替 | Boolean            | `false` |
+| bordered | Show border     | Boolean            | `true`  |
+| columns  | Header data         | TableColumnProps[] | `[]`    |
+| data     | Table data         | Object[]           | `[]`    |
+| summary  | Show profile    | Function           | -       |
+| striped  | Whether the stripes alternate light and dark | Boolean            | `false` |
 
 ### TableColumnProps
 
-| 参数   | 说明                                                                                                                                                     | 类型                      | 默认值 |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------ |
-| key    | 列的唯一标识                                                                                                                                             | String                    | ``     |
-| title  | 表头标题                                                                                                                                                 | String                    | ``     |
-| align  | 列的对齐方式，可选值`left`,`center`,`right`                                                                                                              | String                    | `left` |
-| sorter | 排序，可选值有 `true`,`function`, `default`, 其中 `default`表示点击之后可能会依赖接口, `function`可以返回具体的排序函数, `default`表示采用默认的排序算法 | Boolean、Function、String | -      |
-| render | 自定义渲染列数据，优先级高                                                                                                                               | Function(record)          | -      |
+| Attribute   | Description                                                                                                                                                     | Type                      | Default |
+| ------ | ------------------------------------------------------------------ | ------------------------- | ------ |
+| key    | Unique identification of the column                                          | String                    | ``     |
+| title  | Header title                                                                                                                                                 | String                    | ``     |
+| align  | Alignment of columns, optional values`left`,`center`,`right`                                                                                                              | String                    | `left` |
+| sorter | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | Boolean、Function、String | -      |
+| render | Custom render column data, high priority                                                                                                                               | Function(record)          | -      |
 
 ### Events
 
-| 事件名 | 说明             | 回调参数                   |
+| Event | Description             | Arguments                   |
 | ------ | ---------------- | -------------------------- |
-| sorter | 点击排序按钮触发 | item: 当前点击的表头的数据 |
+| sorter | Click the sort button to trigger | item: Data of the currently clicked header |

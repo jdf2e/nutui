@@ -1,10 +1,10 @@
-# Checkbox 复选按钮
+# Checkbox
 
-### 介绍
+### Intro
 
-多选按钮用于选择。
+The multiple selection button is used to select.
 
-### 安装
+### Install
 
 ``` ts
 import { createApp } from 'vue';
@@ -17,14 +17,14 @@ const app = createApp();
 app.use(Checkbox).use(CheckboxGroup).use(Icon);
 ```
 
-## 基本用法
+## Basic Usage
 
 :::demo
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox1" label="复选框">复选框</nut-checkbox>
-  <nut-checkbox v-model="checkbox2" text-position="left">复选框</nut-checkbox>
+  <nut-checkbox v-model="checkbox1" label="check box">check box</nut-checkbox>
+  <nut-checkbox v-model="checkbox2" text-position="left">check box</nut-checkbox>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
@@ -52,14 +52,14 @@ app.use(Checkbox).use(CheckboxGroup).use(Icon);
 
 :::
 
-## 禁用状态
+## Disabled state
 
 :::demo
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox3" disabled>未选时禁用状态</nut-checkbox>
-  <nut-checkbox v-model="checkbox4" disabled>选中时禁用状态</nut-checkbox>
+  <nut-checkbox v-model="checkbox3" disabled>Disabled when not selected</nut-checkbox>
+  <nut-checkbox v-model="checkbox4" disabled>Disabled when selected</nut-checkbox>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
@@ -78,14 +78,14 @@ app.use(Checkbox).use(CheckboxGroup).use(Icon);
 
 :::
 
-## 自定义尺寸
+## Custom size
 
 :::demo
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox5" icon-size="25">自定义尺寸25</nut-checkbox>
-  <nut-checkbox v-model="checkbox6" icon-size="10">自定义尺寸10</nut-checkbox>
+  <nut-checkbox v-model="checkbox5" icon-size="25">Custom size 25</nut-checkbox>
+  <nut-checkbox v-model="checkbox6" icon-size="10">Custom size 10</nut-checkbox>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
@@ -104,15 +104,15 @@ app.use(Checkbox).use(CheckboxGroup).use(Icon);
 
 :::
 
-## 自定义图标
+## Custom icon
 
-这里建议同时设置 `icon-name` 和 `icon-active-name` 属性
+It is recommended to set the `icon-name` and `icon-active-name` attributes at the same time
 
 :::demo
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox7" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-checkbox>
+  <nut-checkbox v-model="checkbox7" icon-name="checklist" icon-active-name="checklist">Custom icon</nut-checkbox>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
@@ -130,15 +130,15 @@ app.use(Checkbox).use(CheckboxGroup).use(Icon);
 
 :::
 
-## change事件
+## change Event
 
-值发生变化时，将触发 `change` 事件
+When the value changes, the `change` event will be triggered
 
 :::demo
 
 ```html
 <template>
-  <nut-checkbox v-model="checkbox" @change="changeBox3">change复选框</nut-checkbox>
+  <nut-checkbox v-model="checkbox" @change="changeBox3">change check box</nut-checkbox>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
@@ -149,7 +149,7 @@ app.use(Checkbox).use(CheckboxGroup).use(Icon);
         checkbox: false,
       });
       const changeBox3= (checked: boolean, label: string) => {
-        console.log('change事件触发' + checked, label);
+        console.log('Change event trigger' + checked, label);
       } 
       return { ...toRefs(state), changeBox3 };
     }
@@ -159,20 +159,20 @@ app.use(Checkbox).use(CheckboxGroup).use(Icon);
 
 :::
 
-## checkboxGroup使用
+## use checkboxGroup
 
 :::demo
 
 ```html
 <template>
   <nut-checkboxgroup v-model="checkboxgroup1">
-    <nut-checkbox label="1">组合复选框</nut-checkbox>
-    <nut-checkbox label="2">组合复选框</nut-checkbox>
-    <nut-checkbox label="3">组合复选框</nut-checkbox>
-    <nut-checkbox label="4">组合复选框</nut-checkbox>
+    <nut-checkbox label="1">Combined check box</nut-checkbox>
+    <nut-checkbox label="2">Combined check box</nut-checkbox>
+    <nut-checkbox label="3">Combined check box</nut-checkbox>
+    <nut-checkbox label="4">Combined check box</nut-checkbox>
   </nut-checkboxgroup>
   <nut-cell>
-    <div class="demo-check">当前选中值</div>
+    <div class="demo-check">Currently selected value</div>
     <div>{{ checkboxgroup1 }}</div>
   </nut-cell>
 </template>
@@ -193,7 +193,7 @@ app.use(Checkbox).use(CheckboxGroup).use(Icon);
 
 :::
 
-## checkboxGroup 全选/取消
+## Checkboxgroup select all / cancel
 
 :::demo
 
@@ -203,8 +203,8 @@ app.use(Checkbox).use(CheckboxGroup).use(Icon);
     <nut-checkbox v-for="item in checkboxsource" :key="item.label" :label="item.label">{{item.value}}</nut-checkbox>
   </nut-checkboxgroup>
   <span class="btn">
-    <nut-button type="primary" @click="toggleAll(true)">全选</nut-button>
-    <nut-button type="primary" @click="toggleAll(false)">取消</nut-button>
+    <nut-button type="primary" @click="toggleAll(true)">Select all</nut-button>
+    <nut-button type="primary" @click="toggleAll(false)">cancel</nut-button>
   </span>
 </template>
 <script lang="ts">
@@ -216,14 +216,14 @@ app.use(Checkbox).use(CheckboxGroup).use(Icon);
       const state = reactive({
         checkboxgroup3: ['2'],
         checkboxsource: [
-          {label: '1', value: '组合复选框'},
-          {label: '2', value: '组合复选框'}
+          {label: '1', value: 'Combined check box'},
+          {label: '2', value: 'Combined check box'}
         ]
       });
 
       const group = ref(null);
       const changeBox4 = (label: any[]) => {
-        Toast.text(`${label.length === state.checkboxsource.length ? '全选' : '取消全选'}`);
+        Toast.text(`${label.length === state.checkboxsource.length ? 'Select all' : 'Cancel select all'}`);
       };
 
       const toggleAll = (f: boolean) => {
@@ -240,36 +240,36 @@ app.use(Checkbox).use(CheckboxGroup).use(Icon);
 
 ## Checkbox
 
-| 字段 | 说明 | 类型 | 默认值
+| Attribute | Description | Type   | Default 
 |----- | ----- | ----- | ----- 
-| v-model | 是否处于选中状态 | Boolean | `false`
-| disabled | 是否禁用选择 | Boolean | `false`
-| text-position | 文本所在的位置，可选值：`left`,`right` | String | `right`
-| icon-size | [图标尺寸](#/icon) | String、Number | `18`
-| icon-name | [图标名称](#/icon)，选中前(建议和`icon-active-name`一起修改) | String | `'check-normal'`
-| icon-active-name | [图标名称](#/icon)，选中后(建议和`icon-name`一起修改) | String | `'checked'`
-| icon-class-prefix | 自定义 icon 类名前缀，用于使用自定义图标        | String                  | `nut-icon` |
-| icon-font-class-name | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
-| label | 复选框的文本内容 | String | -
+| v-model | If selected | Boolean | `false` 
+| disabled | Disable selection | Boolean | `false` 
+| text-position | The position of the text, optional value：`left`,`right` | String | `right` 
+| icon-size | [Icon Size](#/en-US/icon) | String、Number | `18` 
+| icon-name | [Icon Name](#/en-US/icon)，Before selection (it is suggested to modify it together with `icon-active-name`) | String | `'check-normal'` 
+| icon-active-name | [Icon Name](#/en-US/icon)，After selection (it is suggested to modify it together with `icon-name`) | String | `'checked'` 
+| icon-class-prefix | Custom icon class name prefix, used to use custom icons        | String                  | `nut-icon` 
+| icon-font-class-name | Basic class name of custom icon font        | String                  | `nutui-iconfont` 
+| label | Text content of the check box | String | - 
 
 
 ## CheckboxGroup
 
-| 字段 | 说明 | 类型 | 默认值
+| Attribute | Description | Type   | Default 
 |----- | ----- | ----- | ----- 
-| v-model | 当前选中项的标识符，和 `label` 相对应  | Array | -
-| disabled | 是否禁用选择,将用于其下的全部复选框 | Boolean | `false`
+| v-model | Identifier of the currently selected item, corresponding to `label`  | Array | - 
+| disabled | Whether to disable the selection, which will be used for all check boxes under it | Boolean | `false` 
 
 
 
 ## Checkbox Event
 
-| 字段 | 说明 | 回调参数 
+| Event | Description                  | Arguments   
 |----- | ----- | ----- 
-| change | 值变化时触发 | (state, label),`state`代表当前状态，`label`表示当前选中的值
+| change | Triggered when the value changes | (state, label),`state` represents the current state，`label` indicates the currently selected value 
 
 ## CheckboxGroup Event
 
-| 字段 | 说明 | 回调参数 
+| Event | Description                  | Arguments   
 |----- | ----- | ----- 
-| change | 值变化时触发 | label,`label`返回一个数组，表示当前选中项的集合
+| change | Triggered when the value changes | label,`label` returns an array representing the collection of currently selected items 

@@ -31,6 +31,6 @@ assignees: ''
 ## 相关环境信息
 - **操作系统**：
 - **Node 版本**：
-- **NutUI 版本**： @nutui/nutui@2.x.x  or @nutui/nutui-jdl@1.x.x
+- **NutUI 版本**： 查看项目package.json 中 @nutui/* 信息
 - **Vue 版本**：
 - **引用方式**：  CDN / NPM ？

@@ -17,8 +17,6 @@ const app = createApp();
 app.use(Steps).use(Step);
 ```
 
-## 代码演示
-
 ### 基本用法
 
 :::demo
