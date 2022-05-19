@@ -15,7 +15,7 @@
     >
     </nut-shortpassword>
     <nut-cell
-      title="基础用法"
+      :title="translate('basic')"
       is-link
       @click="
         state.visible = true;
@@ -25,7 +25,7 @@
       "
     ></nut-cell>
     <nut-cell
-      title="显示按钮组"
+      :title="translate('showButtonGroup')"
       is-link
       @click="
         state.visible = true;
@@ -35,7 +35,7 @@
       "
     ></nut-cell>
     <nut-cell
-      title="自定义密码长度4"
+      :title="translate('customPasswordLength')"
       is-link
       @click="
         state.visible = true;
@@ -45,7 +45,7 @@
       "
     ></nut-cell>
     <nut-cell
-      title="忘记密码提示语事件回调"
+      :title="translate('forgetPassword')"
       is-link
       @click="
         state.visible = true;
@@ -55,13 +55,13 @@
       "
     ></nut-cell>
     <nut-cell
-      title="错误提示语"
+      :title="translate('errorMessage')"
       is-link
       @click="
         state.visible = true;
         state.length = 6;
         state.noButton = true;
-        state.errorMsg = '请输入正确密码';
+        state.errorMsg = translate('customErrorMsg');
       "
     ></nut-cell>
   </div>
@@ -70,7 +70,32 @@
 <script lang="ts">
 import { reactive, getCurrentInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('shortpassword');
+const { createDemo, translate } = createComponent('shortpassword');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    showButtonGroup: '显示按钮组',
+    customPasswordLength: '自定义密码长度',
+    forgetPassword: '忘记密码',
+    errorMessage: '错误提示语',
+    customErrorMsg: '请输入正确密码',
+    onTips: '执行密码忘记逻辑',
+    close: '点击icon关闭弹窗',
+    cancelTips: '点击取消按钮关闭弹窗'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    showButtonGroup: 'Show Button Group',
+    customPasswordLength: 'Custom Password Length',
+    forgetPassword: 'Forget Password',
+    errorMessage: 'Error Message',
+    customErrorMsg: 'Please enter correct password',
+    onTips: 'Execute forgotten password logic',
+    close: 'Click the icon to close the popup',
+    cancelTips: 'Click the Cancel button to close the popup'
+  }
+});
 export default createDemo({
   setup() {
     let { proxy } = getCurrentInstance() as any;
@@ -92,19 +117,20 @@ export default createDemo({
       },
       onComplete() {},
       onTips() {
-        proxy.$toast.text('执行忘记密码逻辑');
+        proxy.$toast.text(translate('onTips'));
       },
       close() {
-        proxy.$toast.text('点击icon关闭弹窗');
+        proxy.$toast.text(translate('close'));
       },
       cancel() {
-        proxy.$toast.text('点击取消按钮关闭弹窗');
+        proxy.$toast.text(translate('cancelTips'));
       }
     };
 
     return {
       state,
-      methods
+      methods,
+      translate
     };
   }
 });
