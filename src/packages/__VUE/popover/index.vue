@@ -27,11 +27,6 @@ import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('popover');
 import Popup, { popupProps } from '../popup/index.vue';
 import Button from '../button/index.vue';
-
-export type PopoverTheme = 'light' | 'dark';
-
-export type PopoverLocation = 'bottom' | 'top' | 'left' | 'right';
-
 export default create({
   inheritAttrs: false,
   components: {
@@ -46,16 +41,16 @@ export default create({
     },
 
     theme: {
-      type: String as PropType<PopoverTheme>,
+      type: String as PropType<import('./type').PopoverTheme>,
       default: 'light'
     },
 
     location: {
-      type: String as PropType<PopoverLocation>,
+      type: String as PropType<import('./type').PopoverLocation>,
       default: 'bottom'
     }
   },
-  emits: ['update', 'update:visible', 'close', 'choose', 'openPopover'],
+  emits: ['update', 'update:visible', 'close', 'choose', 'openPopover', 'open'],
   setup(props, { emit }) {
     const reference = ref();
     const state = reactive({

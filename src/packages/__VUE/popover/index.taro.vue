@@ -29,9 +29,6 @@ import Popup, { popupProps } from '../popup/index.vue';
 import Button from '../button/index.vue';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import Taro from '@tarojs/taro';
-export type PopoverTheme = 'light' | 'dark';
-
-export type PopoverLocation = 'bottom' | 'top' | 'left' | 'right';
 
 export default create({
   inheritAttrs: false,
@@ -47,16 +44,16 @@ export default create({
     },
 
     theme: {
-      type: String as PropType<PopoverTheme>,
+      type: String as PropType<import('./type').PopoverTheme>,
       default: 'light'
     },
 
     location: {
-      type: String as PropType<PopoverLocation>,
+      type: String as PropType<import('./type').PopoverLocation>,
       default: 'bottom'
     }
   },
-  emits: ['update', 'update:visible', 'close', 'choose', 'openPopover'],
+  emits: ['update', 'update:visible', 'close', 'choose', 'openPopover', 'open'],
   setup(props, { emit }) {
     const reference = ref<HTMLElement>();
     const state = reactive({
