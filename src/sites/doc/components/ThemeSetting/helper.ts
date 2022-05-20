@@ -209,7 +209,7 @@ export const useThemeEditor = function (): Obj {
 
   onMounted(async () => {
     if (!store.init) {
-      loadScript('https://cdnout.com/sass.js/sass.sync.min.js').then(async (res) => {
+      loadScript('https://storage.360buyimg.com/nutui-static/cdn/sass.sync.min.js').then(async (res) => {
         await Promise.all([getSassVariables(), getRawSassStyle()]);
         store.init = true;
       });
