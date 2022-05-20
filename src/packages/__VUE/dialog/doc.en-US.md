@@ -207,6 +207,8 @@ export default {
 | close-on-popstate      | Whether to close when popstate                                                                            | Boolean | false      |
 | lock-scroll            | Whether to lock background scroll                                                                         | Boolean | false      |
 | footer-direction       | The bottom button uses the horizontal and vertical directions. Optional values ​​are horizontal and vertical. | string  | horizontal |
+| overlay-class          | Custom mask classname   | String         | -      |
+| overlay-style          | Custom mask styles   | CSSProperties  | -      |
 
 ## Events
 
