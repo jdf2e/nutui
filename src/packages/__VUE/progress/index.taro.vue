@@ -84,11 +84,11 @@ export default create({
       default: ''
     },
     textColor: {
-      tyep: String,
+      type: String,
       default: ''
     },
     textBackground: {
-      tyep: String,
+      type: String,
       default: ''
     },
     iconName: {

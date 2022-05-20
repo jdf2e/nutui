@@ -84,5 +84,13 @@ class Lang extends BaseLang {
     pullTxt: '鬆開刷新',
     loadMoreTxt: '哎呀，這裡是底部了啦'
   };
+  datepicker = {
+    year: '年',
+    month: '月',
+    day: '日',
+    hour: '時',
+    min: '分',
+    seconds: '秒'
+  };
 }
 export default Lang;

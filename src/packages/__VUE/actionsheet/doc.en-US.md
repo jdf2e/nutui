@@ -1,9 +1,9 @@
-# ActionSheet 动作面板
+# ActionSheet
 
-### 介绍
-从底部弹出的动作菜单面板。
+### Intro
+Action menu panel that pops up from the bottom.
 
-### 安装
+### Install
 
 ``` javascript
 import { createApp } from 'vue';
@@ -16,190 +16,7 @@ const app = createApp();
 app.use(ActionSheet).use(Popup);
 ```
 
-## 基本用法
-
-默认
-:::demo
-``` html
-<template>
-  <div>
-  <nut-cell
-      :show-icon="true"
-      :isLink="true"
-      @click="switchActionSheet('isVisible')"
-     
-    >
-      <span><label>基础用法</label></span>
-      <div v-html="state.val"></div>
-    </nut-cell>
-     <!-- demo 基础用法 -->
-    <nut-actionsheet
-      v-model:visible="state.isVisible"
-      :menu-items="menuItems"
-      @choose="chooseItem"
-    >
-    </nut-actionsheet>
-    </div>
-</template>
-<script>
-import { reactive } from 'vue';
-export default {
-  setup() {
-  const state = reactive({
-      isVisible: false,
-      val: '',
-    });
-     const menuItems = [
-      {
-        name: '选项一'
-      },
-      {
-        name: '选项二'
-      },
-      {
-        name: '选项三'
-      }
-    ];
-    const switchActionSheet = ( param ) => {
-      state.isVisible = !state.isVisible;
-    };
-      const chooseItem = (itemParams) => {
-      state.val = itemParams.name;
-    };
-    return {
-      state,
-      switchActionSheet,
-      menuItems,
-      chooseItem,
-    };
-  }
-}
- </script>
-```
-:::
-
-## 展示取消按钮
-:::demo
-``` html
-<template>
-  <div>
-  <nut-cell
-      :show-icon="true"
-      :isLink="true"
-      @click="switchActionSheet('isVisible')"
-    >
-      <span><label>展示取消按钮</label></span>
-      <div v-html="state.val"></div>
-    </nut-cell>
-     <!-- demo 展示取消按钮 -->
-    <nut-actionsheet
-      v-model:visible="state.isVisible"
-      :menu-items="menuItems"
-      cancel-txt="取消"
-      @choose="chooseItem"
-    >
-    </nut-actionsheet>
-    </div>
-</template>
-<script>
-import { reactive } from 'vue';
-export default {
-  setup() {
-  const state = reactive({
-      isVisible: false,
-      val: '',
-    });
-     const menuItems = [
-      {
-        name: '选项一'
-      },
-      {
-        name: '选项二'
-      },
-      {
-        name: '选项三'
-      }
-    ];
-    const switchActionSheet = ( param ) => {
-      state.isVisible = !state.isVisible;
-    };
-      const chooseItem = (itemParams) => {
-      state.val = itemParams.name;
-    };
-    return {
-      state,
-      switchActionSheet,
-      menuItems,
-      chooseItem,
-    };
-  }
-}
- </script>
-```
-:::
-## 展示描述信息
-:::demo
-``` html
-<template>
-  <div>
-  <nut-cell
-      :show-icon="true"
-      :isLink="true"
-      @click="switchActionSheet('isVisible')"
-    >
-      <span><label>展示描述信息</label></span>
-      <div v-html="state.val"></div>
-    </nut-cell>
-     <!-- demo 展示描述信息 -->
-    <nut-actionsheet
-      v-model:visible="state.isVisible"
-      cancel-txt="取消"
-      description="这是一段展示信息"
-      :menu-items="menuItems"
-      @choose="chooseItem"
-    >
-    </nut-actionsheet>
-    </div>
-</template>
-<script>
-import { reactive } from 'vue';
-export default {
-  setup() {
-  const state = reactive({
-      isVisible: false,
-      val: '',
-    });
-     const menuItems = [
-      {
-        name: '选项一'
-      },
-      {
-        name: '选项二'
-      },
-      {
-        name: '选项三',
-        subname: '描述信息'
-      }
-    ];
-    const switchActionSheet = ( param ) => {
-      state.isVisible = !state.isVisible;
-    };
-      const chooseItem = (itemParams) => {
-      state.val = itemParams.name;
-    };
-    return {
-      state,
-      switchActionSheet,
-      menuItems,
-      chooseItem,
-    };
-  }
-}
- </script>
-```
-:::
-
-## 选项状态
+## Basic Usage
 
 :::demo
 ``` html
@@ -211,16 +28,14 @@ export default {
       @click="switchActionSheet('isVisible')"
      
     >
-      <span><label>选项状态</label></span>
+      <span><label>Basic Usage</label></span>
       <div v-html="state.val"></div>
     </nut-cell>
-     <!-- demo 选项状态 -->
+     <!-- demo Basic Usage -->
     <nut-actionsheet
       v-model:visible="state.isVisible"
       :menu-items="menuItems"
-      choose-tag-value="着色选项"
       @choose="chooseItem"
-       cancel-txt="取消"
     >
     </nut-actionsheet>
     </div>
@@ -235,10 +50,194 @@ export default {
     });
      const menuItems = [
       {
-        name: '着色选项'
+        name: 'option one'
       },
       {
-        name: '禁用选项',
+        name: 'option two'
+      },
+      {
+        name: 'option three'
+      }
+    ];
+    const switchActionSheet = ( param ) => {
+      state.isVisible = !state.isVisible;
+    };
+      const chooseItem = (itemParams) => {
+      state.val = itemParams.name;
+    };
+    return {
+      state,
+      switchActionSheet,
+      menuItems,
+      chooseItem,
+    };
+  }
+}
+ </script>
+```
+:::
+
+## Show Cancel Button
+:::demo
+``` html
+<template>
+  <div>
+  <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+    >
+      <span><label>Show Cancel Button</label></span>
+      <div v-html="state.val"></div>
+    </nut-cell>
+     <!-- demo Show Cancel Button -->
+    <nut-actionsheet
+      v-model:visible="state.isVisible"
+      :menu-items="menuItems"
+      cancel-txt="cancel"
+      @choose="chooseItem"
+    >
+    </nut-actionsheet>
+    </div>
+</template>
+<script>
+import { reactive } from 'vue';
+export default {
+  setup() {
+  const state = reactive({
+      isVisible: false,
+      val: '',
+    });
+     const menuItems = [
+       {
+        name: 'option one'
+      },
+      {
+        name: 'option two'
+      },
+      {
+        name: 'option three'
+      }
+    ];
+    const switchActionSheet = ( param ) => {
+      state.isVisible = !state.isVisible;
+    };
+      const chooseItem = (itemParams) => {
+      state.val = itemParams.name;
+    };
+    return {
+      state,
+      switchActionSheet,
+      menuItems,
+      chooseItem,
+    };
+  }
+}
+ </script>
+```
+:::
+## Show Description
+:::demo
+``` html
+<template>
+  <div>
+  <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+    >
+      <span><label>Show Description</label></span>
+      <div v-html="state.val"></div>
+    </nut-cell>
+     <!-- demo Show Description -->
+    <nut-actionsheet
+      v-model:visible="state.isVisible"
+      cancel-txt="cancel"
+      description="This is a presentation"
+      :menu-items="menuItems"
+      @choose="chooseItem"
+    >
+    </nut-actionsheet>
+    </div>
+</template>
+<script>
+import { reactive } from 'vue';
+export default {
+  setup() {
+  const state = reactive({
+      isVisible: false,
+      val: '',
+    });
+     const menuItems = [
+          {
+        name: 'option one'
+      },
+      {
+        name: 'option two'
+      },
+      {
+        name: 'option three',
+        subname: 'Description'
+      }
+    ];
+    const switchActionSheet = ( param ) => {
+      state.isVisible = !state.isVisible;
+    };
+      const chooseItem = (itemParams) => {
+      state.val = itemParams.name;
+    };
+    return {
+      state,
+      switchActionSheet,
+      menuItems,
+      chooseItem,
+    };
+  }
+}
+ </script>
+```
+:::
+
+## Option Status
+
+:::demo
+``` html
+<template>
+  <div>
+  <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+     
+    >
+      <span><label>Option Status</label></span>
+      <div v-html="state.val"></div>
+    </nut-cell>
+     <!-- demo Option Status -->
+    <nut-actionsheet
+      v-model:visible="state.isVisible"
+      :menu-items="menuItems"
+      choose-tag-value="Shading Options"
+      @choose="chooseItem"
+       cancel-txt="cancel"
+    >
+    </nut-actionsheet>
+    </div>
+</template>
+<script>
+import { reactive } from 'vue';
+export default {
+  setup() {
+  const state = reactive({
+      isVisible: false,
+      val: '',
+    });
+     const menuItems = [
+      {
+        name: 'Shading Options'
+      },
+      {
+        name: 'Disable option',
         disable: true
       }
     ];
@@ -262,33 +261,33 @@ export default {
 
 ## Prop
 
-| 字段             | 说明                                   | 类型    | 默认值    |
+| Attribute            | Description               | Type   | Default  |
 |------------------|----------------------------------------|---------|-----------|
-| v-model:visible       | 是否展示动作面板                             | Boolean | false|
-| menu-items       | 列表项                                 | Array   | [ ]       |
-| option-tag       | 设置列表项标题展示使用参数                 | String  | 'name'    |
-| option-sub-tag   | 设置列表项二级标题展示使用参数             | String  | 'subname' |
-| choose-tag-value | 设置选中项的值，和'option-tag'的值对应 | String  | ''        |
-| color            | 选中项颜色，当 choose-tag-value == option-tag的值 生效  | String  | '#ee0a24' |
-| title            | 设置列表项标题                         | String  | ''        |
-| description      | 设置列表项副标题/描述                  | String  | ''        |
-| cancel-txt       | 取消文案                               | String  | '取消'   |
-| close-abled      | 遮罩层是否可关闭                       | Boolean | true      |
+| v-model:visible       | Whether to show ActionSheet	                             | Boolean | false|
+| menu-items       | Options                                 | Array   | [ ]       |
+| option-tag       | Custom Options tag key                 | String  | 'name'    |
+| option-sub-tag   | Custom Options subtag key                 | String  | 'subname' |
+| choose-tag-value | Set the value of the selected item | String  | ''        |
+| color            | selected item color，when choose-tag-value == option-tag   | String  | '#ee0a24' |
+| title            | set list item title                         | String  | ''        |
+| description      | set list item description                | String  | ''        |
+| cancel-txt       | Text of cancel button                               | String  | '取消'   |
+| close-abled      | Whether the mask layer can be closed                       | Boolean | true      |
 
-## menu-items数据结构
+## menu-items
 
-| 字段   | 说明               | 类型                          |
+| Attribute            | Description               | Type   |
 |--------|--------------------|-----------------------------------|
-| name | 标题      | String    |
-| subname | 二级标题 | String          |
-| color | 选项字体颜色（选中项颜色层级>选项字体颜色） | String          |
-| loading | 是否为loading状态 | Boolean          |
-| disable | 是否为禁用状态 | Boolean       |
+| name | Title      | String    |
+| subname | Subtitle | String          |
+| color | Text color（Check Item Color Hierarchy > Option Font Color） | String          |
+| loading | Whether to be loading status | Boolean          |
+| disable | Whether to be disabled | Boolean       |
 
 ## Event
 
-| 字段   | 说明               | 回调参数                          |
+| Event | Description                  | Arguments    |
 |--------|--------------------|-----------------------------------|
-| choose | 选择之后触发       | 选中列表项item, 选中的索引值index |
-| cancel | 点击取消文案时触发 | 无                                |
-| close | 点击遮罩层时触发 | event: Event                              |
+| choose | Triggered after selection       | item, index |
+| cancel | Triggered when cancel copy is clicked | -                              |
+| close | Triggered when the mask layer is clicked | event: Event                              |

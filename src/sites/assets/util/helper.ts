@@ -171,7 +171,8 @@ export const useThemeEditor = function () {
       const params = new URLSearchParams(window.parent.location.search);
       const param = params.get('theme') as string;
       const source = {
-        jdt: 'https://storage.360buyimg.com/nutui-static/source/variables-jdt.scss_source'
+        jdt: 'https://storage.360buyimg.com/nutui-static/source/variables-jdt.scss_source',
+        jdb: 'https://storage.360buyimg.com/nutui-static/source/variables-jdb.scss_source'
       } as any;
       const customUrl = param && source[param.replace('/', '')];
       if (customUrl) {
