@@ -117,7 +117,7 @@ export default {
 | 字段                   | 说明                                     | 类型    | 默认值     |
 |------------------------|------------------------------------------|---------|------------|
 | title                  | 标题                                     | String  | -          |
-| content                | 内容，支持HTML                           | String  | -          |
+| content                | 内容，支持HTML和组件                       | String/VNode  | -          |
 | teleport               | 指定挂载节点                             | String  | "body"     |
 | close-on-click-overlay | 点击蒙层是否关闭对话框                   | Boolean | false      |
 | no-footer              | 是否隐藏底部按钮栏                       | Boolean | false      |

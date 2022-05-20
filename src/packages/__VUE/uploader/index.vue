@@ -111,18 +111,8 @@
 import { computed, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Uploader, UploadOptions } from './uploader';
+import { FileItem } from './type';
 const { componentName, create, translate } = createComponent('uploader');
-export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error';
-export class FileItem {
-  status: FileItemStatus = 'ready';
-  message: string = translate('ready');
-  uid: string = new Date().getTime().toString();
-  name?: string;
-  url?: string;
-  type?: string;
-  percentage: string | number = 0;
-  formData: FormData = new FormData();
-}
 export default create({
   props: {
     name: { type: String, default: 'file' },
@@ -155,7 +145,7 @@ export default create({
     },
     beforeDelete: {
       type: Function,
-      default: (file: FileItem, files: FileItem[]) => {
+      default: (file: import('./type').FileItem, files: import('./type').FileItem[]) => {
         return true;
       }
     },
@@ -174,7 +164,7 @@ export default create({
     'file-item-click'
   ],
   setup(props, { emit }) {
-    const fileList = reactive(props.fileList) as Array<FileItem>;
+    const fileList: import('./type').FileItem[] = reactive(props.fileList) as Array<import('./type').FileItem>;
     let uploadQueue: Promise<Uploader>[] = [];
 
     const classes = computed(() => {
@@ -188,11 +178,11 @@ export default create({
       el.value = '';
     };
 
-    const fileItemClick = (fileItem: FileItem) => {
+    const fileItemClick = (fileItem: import('./type').FileItem) => {
       emit('file-item-click', { fileItem });
     };
 
-    const executeUpload = (fileItem: FileItem, index: number) => {
+    const executeUpload = (fileItem: import('./type').FileItem, index: number) => {
       const uploadOption = new UploadOptions();
       uploadOption.url = props.url;
       uploadOption.formData = fileItem.formData;
@@ -307,7 +297,7 @@ export default create({
       }
       return files;
     };
-    const onDelete = (file: FileItem, index: number) => {
+    const onDelete = (file: import('./type').FileItem, index: number) => {
       clearUploadQueue(index);
       if (props.beforeDelete(file, fileList)) {
         fileList.splice(index, 1);

@@ -19,6 +19,6 @@ export default defineComponent({
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: $doc-header-height;
+  // padding-top: $doc-header-height;
 }
 </style>

@@ -84,5 +84,13 @@ class Lang extends BaseLang {
     pullTxt: 'Loose to refresh',
     loadMoreTxt: 'Oops, this is the bottom'
   };
+  datepicker = {
+    year: 'Year',
+    month: 'Month',
+    day: 'Day',
+    hour: 'Hour',
+    min: 'Minute',
+    seconds: 'Second'
+  };
 }
 export default Lang;
