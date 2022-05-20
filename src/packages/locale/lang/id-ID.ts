@@ -88,9 +88,9 @@ class Lang extends BaseLang {
     year: 'Tahun',
     month: 'Bulan',
     day: 'Hari',
-    hour: 'Waktu',
+    hour: 'Jam',
     min: 'Menit',
-    seconds: 'Kedua'
+    seconds: 'Detik'
   };
 }
 export default Lang;
