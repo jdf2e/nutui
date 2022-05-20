@@ -10,7 +10,7 @@
 ### 安装
     
 ```javascript
-import { createApp } from 'vue';
+import { createApp,createVNode } from 'vue';
 import { Dialog,Popup,OverLay } from '@nutui/nutui';
 
 const app = createApp();
@@ -44,7 +44,7 @@ export default {
         const baseClick = (): void => {
           Dialog({
             title: '基础弹框',
-            content: '支持函数调用和组件调用两种方式。',
+            content: createVNode('span', { style: { color: 'red' } }, '我可以是一个自定义组件'),
             onCancel,
             onOk
           });
@@ -172,7 +172,7 @@ export default {
 |---------------------|---------------------------------------|----------|----------|
 | title               | 标题                                  | String   | -        |
 | id               | 标识符，相同时共用一个实例，默认为多个实例 | String/Number   | new Date().getTime()        |
-| content             | 内容，支持HTML                        | String   | -        |
+| content             | 内容，支持HTML和组件                     | String/VNode   | -        |
 | teleport            | 指定挂载节点                          | String   | "body"   |
 | closeOnClickOverlay | 点击蒙层是否关闭对话框                | Boolean  | false    |
 | noFooter            | 是否隐藏底部按钮栏                    | Boolean  | false    |
@@ -194,7 +194,7 @@ export default {
 | 字段                   | 说明                                     | 类型    | 默认值     |
 |------------------------|------------------------------------------|---------|------------|
 | title                  | 标题                                     | String  | -          |
-| content                | 内容，支持HTML                           | String  | -          |
+| content                | 内容，支持HTML和组件                       | String/VNode  | -          |
 | teleport               | 指定挂载节点                             | String  | "body"     |
 | close-on-click-overlay | 点击蒙层是否关闭对话框                   | Boolean | false      |
 | no-footer              | 是否隐藏底部按钮栏                       | Boolean | false      |

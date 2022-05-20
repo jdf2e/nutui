@@ -16,7 +16,8 @@
 
       <view class="nut-dialog__content" :style="{ textAlign }">
         <slot v-if="$slots.default" name="default"></slot>
-        <view v-else v-html="content"></view>
+        <view v-else-if="typeof content === 'string'" v-html="content"></view>
+        <component v-else :is="content" />
       </view>
 
       <view class="nut-dialog__footer" :class="{ [footerDirection]: footerDirection }" v-if="!noFooter">
@@ -41,7 +42,7 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, ref } from 'vue';
+import { onMounted, computed, watch, ref, PropType, VNode } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('dialog');
 import Popup, { popupProps } from '../popup/index.taro.vue';
@@ -63,7 +64,7 @@ export default create({
       default: ''
     },
     content: {
-      type: String,
+      type: [String, Object] as PropType<string | VNode>,
       default: ''
     },
     noFooter: {
