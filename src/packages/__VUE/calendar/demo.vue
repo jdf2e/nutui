@@ -15,7 +15,7 @@
         @close="closeSwitch('isVisible')"
         @choose="setChooseValue"
         :start-date="`2022-01-11`"
-        :end-date="`2022-11-11`"
+        :end-date="`2022-11-30`"
       >
       </nut-calendar>
     </div>
@@ -29,21 +29,34 @@
       >
       </nut-cell>
       <nut-calendar
-        ref="calendarRef"
         v-model:visible="isVisible1"
         :default-value="date1"
-        type="multiple"
+        type="range"
         :start-date="`2019-12-22`"
         :end-date="`2021-01-08`"
         @close="closeSwitch('isVisible1')"
         @choose="setChooseValue1"
         @select="select"
       >
-        <template v-slot:btn>
-          <div class="wrapper">
-            <div class="d_div"> <span class="d_btn" @click="goDate">去某个时间</span></div>
-          </div>
-        </template>
+      </nut-calendar>
+    </div>
+    <div>
+      <nut-cell
+        :show-icon="true"
+        title="选择多个日期"
+        :desc="date7 && date7.length ? `已选择${date7.length}个日期` : '请选择'"
+        @click="openSwitch('isVisible7')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible7"
+        :default-value="date7"
+        type="multiple"
+        :start-date="`2022-01-01`"
+        :end-date="`2022-09-10`"
+        @close="closeSwitch('isVisible7')"
+        @choose="setChooseValue7"
+      >
       </nut-calendar>
     </div>
 
@@ -97,6 +110,7 @@
       >
       </nut-cell>
       <nut-calendar
+        ref="calendarRef"
         v-model:visible="isVisible5"
         :default-value="date5"
         type="range"
@@ -107,6 +121,7 @@
       >
         <template v-slot:btn>
           <div class="wrapper">
+            <div class="d_div"> <span class="d_btn" @click="goDate">去某个时间</span></div>
             <div class="d_div"> <span class="d_btn" @click="clickBtn">最近七天</span></div>
             <div class="d_div"> <span class="d_btn" @click="clickBtn1">当月</span></div>
           </div>
@@ -172,12 +187,14 @@ interface TestCalendarState {
   isVisible4: boolean;
   isVisible5: boolean;
   isVisible6: boolean;
+  isVisible7: boolean;
   date1: string[];
   date2: string;
   date3: string;
   date4: string[];
   date5: string[];
   date6: string[];
+  date7: string[];
 }
 export default createDemo({
   props: {},
@@ -193,12 +210,14 @@ export default createDemo({
       date4: ['2021-12-23', '2021-12-26'],
       date5: ['2021-12-23', '2021-12-26'],
       date6: [],
+      date7: [],
       isVisible1: false,
       isVisible2: false,
       isVisible3: false,
       isVisible4: false,
       isVisible5: false,
-      isVisible6: false
+      isVisible6: false,
+      isVisible7: false
     });
     const openSwitch = (param: string) => {
       state[`${param}`] = true;
@@ -216,14 +235,9 @@ export default createDemo({
     const select = (param: string) => {
       console.log(param);
     };
-    const setChooseValue1 = (chooseData: any) => {
-      let dateArr = chooseData.map((item: any) => {
-        return item[3];
-      });
-      console.log('changevalue 1 ', chooseData, dateArr);
-      state.date1 = [...dateArr];
+    const setChooseValue1 = (param: string) => {
+      state.date1 = [...[param[0][3], param[1][3]]];
     };
-
     const setChooseValue2 = (param: string) => {
       state.date2 = param[3];
     };
@@ -241,6 +255,13 @@ export default createDemo({
     const setChooseValue6 = (param: string) => {
       state.date6 = [...[param[0][3], param[1][3]]];
     };
+    const setChooseValue7 = (chooseData: any) => {
+      let dateArr = chooseData.map((item: any) => {
+        return item[3];
+      });
+      console.log('changevalue 7 ', chooseData, dateArr);
+      state.date7 = [...dateArr];
+    };
     const clickBtn = (param: string) => {
       let date = [Utils.date2Str(new Date()), Utils.getDay(6)];
       state.date5 = date;
@@ -257,7 +278,7 @@ export default createDemo({
     const goDate = () => {
       console.log(calendarRef.value);
       if (calendarRef.value) {
-        calendarRef.value.scrollToDate('2020-04-01');
+        calendarRef.value.scrollToDate('2022-04-01');
       }
     };
     return {
@@ -266,6 +287,7 @@ export default createDemo({
       closeSwitch,
       setChooseValue,
       setChooseValue1,
+      setChooseValue7,
       setChooseValue2,
       setChooseValue3,
       setChooseValue4,

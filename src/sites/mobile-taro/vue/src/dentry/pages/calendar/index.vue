@@ -15,7 +15,7 @@
         @close="closeSwitch('isVisible')"
         @choose="setChooseValue"
         :start-date="`2022-01-11`"
-        :end-date="`2022-11-11`"
+        :end-date="`2022-11-30`"
       >
       </nut-calendar>
     </div>
@@ -37,6 +37,26 @@
         @close="closeSwitch('isVisible1')"
         @choose="setChooseValue1"
         @select="select"
+      >
+      </nut-calendar>
+    </div>
+
+    <div>
+      <nut-cell
+        :show-icon="true"
+        title="选择多个日期"
+        :desc="date7 && date7.length ? `已选择${date7.length}个日期` : '请选择'"
+        @click="openSwitch('isVisible7')"
+      >
+      </nut-cell>
+      <nut-calendar
+        v-model:visible="isVisible7"
+        :default-value="date7"
+        type="multiple"
+        :start-date="`2022-01-01`"
+        :end-date="`2022-09-10`"
+        @close="closeSwitch('isVisible7')"
+        @choose="setChooseValue7"
       >
       </nut-calendar>
     </div>
@@ -91,6 +111,7 @@
       >
       </nut-cell>
       <nut-calendar
+        ref="calendarRef"
         v-model:visible="isVisible5"
         :default-value="date5"
         type="range"
@@ -101,6 +122,7 @@
       >
         <template v-slot:btn>
           <view class="wrapper">
+            <div class="d_div"> <span class="d_btn" @click="goDate">去某个时间</span></div>
             <view class="d_div"> <span class="d_btn" @click="clickBtn">最近七天</span></view>
             <view class="d_div"> <span class="d_btn" @click="clickBtn1">当月</span></view>
           </view>
@@ -148,7 +170,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, ref } from 'vue';
 import Utils from '../../../../../../../packages/utils/date';
 
 interface TestCalendarState {
@@ -167,26 +189,30 @@ interface TestCalendarState {
   date4: string[];
   date5: string[];
   date6: string[];
+  date7: string[];
 }
 export default {
   props: {},
   setup() {
+    const calendarRef = ref(null);
     const state: TestCalendarState = reactive({
       isVisible: false,
-      date: '',
+      date: '2022-02-01',
       dateWeek: '',
-      date1: ['2019-12-23', '2019-12-26'],
+      date1: ['2020-01-23', '2020-01-26'],
       date2: '2020-07-08',
       date3: '',
       date4: ['2021-12-23', '2021-12-26'],
       date5: ['2021-12-23', '2021-12-26'],
       date6: [],
+      date7: [],
       isVisible1: false,
       isVisible2: false,
       isVisible3: false,
       isVisible4: false,
       isVisible5: false,
-      isVisible6: false
+      isVisible6: false,
+      isVisible7: false
     });
     const openSwitch = (param: string) => {
       state[`${param}`] = true;
@@ -225,6 +251,13 @@ export default {
     const setChooseValue6 = (param: string) => {
       state.date6 = [...[param[0][3], param[1][3]]];
     };
+    const setChooseValue7 = (chooseData: any) => {
+      let dateArr = chooseData.map((item: any) => {
+        return item[3];
+      });
+      console.log('changevalue 7 ', chooseData, dateArr);
+      state.date7 = [...dateArr];
+    };
     const clickBtn = (param: string) => {
       let date = [Utils.date2Str(new Date()), Utils.getDay(6)];
       state.date5 = date;
@@ -237,6 +270,12 @@ export default {
       let yearMonth = `${year}-${month}`;
       let currMonthDays = Utils.getMonthDays(year + '', month + '');
       state.date5 = [`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`];
+    };
+    const goDate = () => {
+      console.log(calendarRef.value);
+      if (calendarRef.value) {
+        calendarRef.value.calendarRef.scrollToDate('2022-04-01');
+      }
     };
     return {
       ...toRefs(state),
@@ -251,6 +290,9 @@ export default {
       setChooseValue6,
       clickBtn,
       clickBtn1,
+      setChooseValue7,
+      goDate,
+      calendarRef,
       select
     };
   }
