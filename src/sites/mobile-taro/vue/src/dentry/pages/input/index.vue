@@ -49,6 +49,7 @@
       rows="2"
       maxLength="50"
       placeholder="请输入留言"
+      :adjust-position="state.adjustPosition"
     />
 
     <h2>对齐方式</h2>
@@ -67,6 +68,7 @@
       right-icon="ask2"
       clearable
       placeholder="显示图标"
+      :adjust-position="state.adjustPosition"
       @update:model-value="change"
       @focus="focus"
       @blur="blur"
@@ -103,7 +105,8 @@ export default {
       textarea: '',
       align1: '',
       align2: '',
-      event: ''
+      event: '',
+      adjustPosition: false
     });
     setTimeout(function () {
       // state.val1 = '异步数据';

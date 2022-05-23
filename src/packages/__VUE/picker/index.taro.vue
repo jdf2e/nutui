@@ -45,7 +45,6 @@ import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRe
 import { createComponent } from '@/packages/utils/create';
 import { popupProps } from '../popup/index.taro.vue';
 import column from './ColumnTaro.vue';
-import { PickerOption } from './types';
 const { componentName, create, translate } = createComponent('picker');
 export default create({
   components: {
@@ -84,7 +83,7 @@ export default create({
   setup(props, { emit }) {
     const state = reactive({
       show: false,
-      formattedColumns: props.columns as PickerOption[]
+      formattedColumns: props.columns as import('./types').PickerOption[]
     });
 
     // 选中项
@@ -98,18 +97,20 @@ export default create({
     });
 
     const selectedOptions = computed(() => {
-      let optins: PickerOption[] = [];
-      (columnsList.value as PickerOption[][]).map((column: PickerOption[], index: number) => {
-        let currOptions = [];
-        currOptions = column.filter((item) => item.value == defaultValues.value[index]);
-        optins.push(currOptions[0]);
-      });
+      let optins: import('./types').PickerOption[] = [];
+      (columnsList.value as import('./types').PickerOption[][]).map(
+        (column: import('./types').PickerOption[], index: number) => {
+          let currOptions = [];
+          currOptions = column.filter((item) => item.value == defaultValues.value[index]);
+          optins.push(currOptions[0]);
+        }
+      );
 
       return optins;
     });
     // 当前类型
     const columnsType = computed(() => {
-      const firstColumn: PickerOption = state.formattedColumns[0];
+      const firstColumn: import('./types').PickerOption = state.formattedColumns[0];
       if (firstColumn) {
         if (Array.isArray(firstColumn)) {
           return 'multiple';
@@ -133,9 +134,9 @@ export default create({
       }
     });
 
-    const formatCascade = (columns: PickerOption[], defaultValues: (number | string)[]) => {
-      const formatted: PickerOption[][] = [];
-      let cursor: PickerOption = {
+    const formatCascade = (columns: import('./types').PickerOption[], defaultValues: (number | string)[]) => {
+      const formatted: import('./types').PickerOption[][] = [];
+      let cursor: import('./types').PickerOption = {
         text: '',
         value: '',
         children: columns
@@ -144,7 +145,7 @@ export default create({
       let columnIndex = 0;
 
       while (cursor && cursor.children) {
-        const options: PickerOption[] = cursor.children;
+        const options: import('./types').PickerOption[] = cursor.children;
         const value = defaultValues[columnIndex];
         let index = options.findIndex((columnItem) => columnItem.value == value);
         if (index == -1) index = 0;
@@ -162,7 +163,7 @@ export default create({
       emit('update:visible', false);
     };
 
-    const changeHandler = (columnIndex: number, option: PickerOption) => {
+    const changeHandler = (columnIndex: number, option: import('./types').PickerOption) => {
       if (option && Object.keys(option).length) {
         if (columnsType.value === 'cascade') {
           defaultValues.value[columnIndex] = option.value ? option.value : '';
@@ -233,7 +234,7 @@ export default create({
     watch(
       () => props.columns,
       (val) => {
-        if (val.length) state.formattedColumns = val as PickerOption[];
+        if (val.length) state.formattedColumns = val as import('./types').PickerOption[];
       }
     );
 

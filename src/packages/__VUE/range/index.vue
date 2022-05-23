@@ -80,8 +80,6 @@ import { useTouch } from '@/packages/utils/useTouch';
 import { useRect } from '@/packages/utils/useRect';
 const { componentName, create } = createComponent('range');
 
-type SliderValue = number | number[];
-
 export default create({
   props: {
     range: {
@@ -122,7 +120,7 @@ export default create({
       default: 1
     },
     modelValue: {
-      type: [Number, Array] as PropType<SliderValue>,
+      type: [Number, Array] as PropType<import('./type').SliderValue>,
       default: 0
     }
   },
@@ -131,8 +129,8 @@ export default create({
 
   setup(props, { emit, slots }) {
     const buttonIndex = ref(0);
-    let startValue: SliderValue;
-    let currentValue: SliderValue;
+    let startValue: import('./type').SliderValue;
+    let currentValue: import('./type').SliderValue;
 
     const root = ref<HTMLElement>();
     const dragStatus = ref<'start' | 'draging' | ''>();
@@ -265,7 +263,7 @@ export default create({
       return Math.round(value / +step) * +step;
     };
 
-    const isSameValue = (newValue: SliderValue, oldValue: SliderValue) =>
+    const isSameValue = (newValue: import('./type').SliderValue, oldValue: import('./type').SliderValue) =>
       JSON.stringify(newValue) === JSON.stringify(oldValue);
 
     const handleOverlap = (value: number[]) => {
@@ -275,7 +273,7 @@ export default create({
       return value;
     };
 
-    const updateValue = (value: SliderValue, end?: boolean) => {
+    const updateValue = (value: import('./type').SliderValue, end?: boolean) => {
       if (isRange(value)) {
         value = handleOverlap(value).map(format);
       } else {
