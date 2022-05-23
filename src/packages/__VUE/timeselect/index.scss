@@ -20,16 +20,17 @@
   }
   &__content {
     width: 100%;
+    height: calc(100% - $timeselect-title-height - 10px);
     display: flex;
     &__pannel {
       width: 140px;
-      height: 308px;
+      height: 100%;
       overflow: auto;
       background-color: $timeselect-pannel-bg-color;
     }
     &__detail {
       width: calc(100% - 140px);
-      height: 308px;
+      height: 100%;
       overflow-y: auto;
       overflow-x: hidden;
     }
