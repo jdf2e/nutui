@@ -2,7 +2,7 @@
 
 ### Intro
 
-It is used to apply different styles to the parts before and after the decimal point of commodity price values. It also supports the functions of RMB symbol, thousand separator, setting the number of decimal places and so on.
+It is used to apply different styles to the parts before and after the decimal point of the commodity price value, and also supports functions such as the RMB symbol, thousands separator, and setting the number of decimal points.
 
 ### Install
 
@@ -33,7 +33,7 @@ app.use(Price);
 
 :::
 
-### No decimal
+### No decimals
 
 :::demo
 
@@ -45,7 +45,7 @@ app.use(Price);
 
 :::
 
-### There is a RMB symbol without thousands separation
+### With RMB symbol, no thousands separator
 
 :::demo
 
@@ -56,7 +56,7 @@ app.use(Price);
 </template>
 ```
 :::
-### There are RMB symbols, separated by thousands, and three decimal places are reserved
+### With RMB symbol, separated by thousands, keep three decimal places
 
 :::demo
 
@@ -68,7 +68,7 @@ app.use(Price);
 
 :::
 
-### Adjust symbol position
+### Adjust the symbol position
 
 :::demo
 
@@ -79,7 +79,7 @@ app.use(Price);
 ```
 
 :::
-### Asynchronous random change
+### Asynchronous random changes
 
 :::demo
 
@@ -115,5 +115,5 @@ app.use(Price);
 | symbol         | Symbol type                                                | String           | &yen;  |
 | decimal-digits | Decimal digits                                             | Number ｜ String | 2      |
 | thousands      | Thousands separation                                       | Boolean          | false  |
-| position       | The symbol appears before or after price，`before`、`after` | String           | before |
+| position       | The symbol appear before or after the price，`before`、`after` | String           | before |
 | size           | Size，`large`、`normal`、`small`                            | String           | large |

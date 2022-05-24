@@ -50,11 +50,11 @@ useTranslate({
   },
   'en-US': {
     title1: 'Support three sizes：small、normal、large',
-    title2: 'No decimal',
-    title3: 'There is a RMB symbol without thousands separation',
-    title4: 'There is a RMB symbol, separated by thousands, and three decimal places are reserved',
-    title5: 'Adjust symbol position',
-    title6: 'Asynchronous random change'
+    title2: 'No decimals',
+    title3: 'With RMB symbol, no thousands separator',
+    title4: 'With RMB symbol, separated by thousands, keep three decimal places',
+    title5: 'Adjust the symbol position',
+    title6: 'Asynchronous random changes'
   }
 });
 export default createDemo({

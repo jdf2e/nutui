@@ -1,8 +1,8 @@
-# NavBar 头部导航
+# NavBar
 
 ### 介绍 
 
-提供导航功能，常用于页面顶部。
+Provide navigation function, often used at the top of the page.
 
 ### 安装
 
@@ -21,14 +21,14 @@ app.use(Tabs);
 app.use(TabPane);
 ```
 
-### 基本用法
+### Basic Usage
 
 :::demo
 ```html
 <template>
-  <nut-navbar @on-click-back="back" @on-click-title="title" title="订单详情">
+  <nut-navbar @on-click-back="back" @on-click-title="title" title="Order details">
     <template #left>
-      <div>返回</div>
+      <div>Back</div>
     </template>
     <template #right>
       <nut-icon class="right" name="share-n"></nut-icon>
@@ -39,8 +39,8 @@ app.use(TabPane);
     @on-click-back="back"
     @on-click-title="title"
     @on-click-right="rightClick"
-    title="浏览记录"
-    desc="清空"
+    title="Browsing history"
+    desc="Clear"
   ></nut-navbar>
 
   <nut-navbar
@@ -49,9 +49,9 @@ app.use(TabPane);
     @on-click-title="title"
     @on-click-icon="icon"
     @on-click-right="rightClick"
-    title="购物车"
+    title="Cart"
     titIcon="cart2"
-    desc="编辑"
+    desc="Edit"
   >
     <template #right>
       <nut-icon class="right" name="more-x"></nut-icon>
@@ -85,7 +85,7 @@ app.use(TabPane);
 ```
 :::
 
-### 自定义导航栏中间内容
+### Customize the middle content of the navigation bar
 
 :::demo
 ```html
@@ -94,12 +94,12 @@ app.use(TabPane);
     @on-click-back="back"
     @on-click-title="title"
     @on-click-right="rightClick"
-    desc="编辑"
+    desc="Edit"
   >
     <template #content>
       <nut-tabs v-model="tab1value" @click="changeTab">
-        <nut-tabpane title="标题1"> </nut-tabpane>
-        <nut-tabpane title="标题2"> </nut-tabpane>
+        <nut-tabpane title="Title1"> </nut-tabpane>
+        <nut-tabpane title="Title2"> </nut-tabpane>
       </nut-tabs>
     </template>
 
@@ -139,7 +139,7 @@ export default {
 ```
 :::
 
-### 多 tab 切换导航
+### Multi-tab switching navigation
 
 :::demo
 ```html
@@ -147,9 +147,9 @@ export default {
   <nut-navbar @on-click-back="back" >
     <template #content>
       <nut-tabs v-model="tab2value" @click="changeTabList">
-        <nut-tabpane title="标题1"> </nut-tabpane>
-        <nut-tabpane title="标题2"> </nut-tabpane>
-        <nut-tabpane title="标题3"> </nut-tabpane>
+        <nut-tabpane title="Title1"> </nut-tabpane>
+        <nut-tabpane title="Title2"> </nut-tabpane>
+        <nut-tabpane title="Title3"> </nut-tabpane>
       </nut-tabs>
     </template>
     <template #icons>
@@ -188,26 +188,26 @@ export default {
 
 ### Prop  
 
-| 字段            | 说明                                                                                           | 类型    | 默认值  |
-|-----------------|------------------------------------------------------------------------------------------------|---------|---------|
-| title           | 标题名称                                                                                       | String  | -       |
-| desc            | 右侧描述                                                                                       | String  | -       |
-| left-show        | 是否展示左侧箭头                                                                               | Boolean | false   |
-| tit-icon         | 标题中插入icon                                                                                    | String  |-|                                          
-| fixed           | 是否固定到顶部                                                                                       | Boolean  | false       |
-| safe-area-inset-top           | 是否开启顶部安全区适配                                                                                       | Boolean  | false       |
+|  Attribute          | Description                                   | Type    | Default |
+|---------------------|-----------------------------------------------|---------|---------|
+| title               | Title                                         | String  | -       |
+| desc                | Desc                                          | String  | -       |
+| left-show           | Whether to show the left arrow                | Boolean | false   |
+| tit-icon            | Insert icon in title                          | String  | -       | 
+| fixed               | Is it pinned to the top                       | Boolean | false    |
+| safe-area-inset-top | Whether to enable top safety zone adaptation  | Boolean | false    |
 
 ### Event
-| 名称  | 说明     | 回调参数    |
-|-------|----------|-------------|
-| on-click-title | 点击页面标题事件 | event:Event |
-| on-click-icon | 点击页面标题icon事件 | event:Event |
-| on-click-right | 点击右侧按钮事件 | event:Event |
-| on-click-back | 点击左侧图标事件 | event:Event |
+| Attribute       | Description              | Arguments    |
+|-----------------|-------------------------|-------------|
+| on-click-title  | Click page title event  | event:Event |
+| on-click-icon   | Click the page title icon event | event:Event |
+| on-click-right  | Click right button event | event:Event |
+| on-click-back   | Click left Icon event   | event:Event |
 
 ### Slot
-| 名称  | 说明     | 回调参数    |
-|-------|----------|-------------|
-| left | 自定义左侧内容 |  |
-| right | 自定义右侧内容 |  |
-| content |  自定义导航栏中间内容 |  |
+| Attribute  | Description     | 
+|-------|----------|
+| left | 自定义左侧内容 |
+| right | 自定义右侧内容 |
+| content |  自定义导航栏中间内容 |

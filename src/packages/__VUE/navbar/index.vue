@@ -1,10 +1,28 @@
 <template>
-  <view :class="classes">
+  <view v-if="fixed && placeholder" class="nut-navbar--placeholder" ref="navBarWrap">
+    <view :class="classes" ref="navBarHtml">
+      <view class="nut-navbar__left">
+        <nut-icon v-if="leftShow" color="#979797" name="left" @click="handleLeft"></nut-icon>
+        <slot name="left"></slot>
+      </view>
+
+      <view class="nut-navbar__title">
+        <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
+        <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
+        <slot name="content"></slot>
+      </view>
+
+      <view class="nut-navbar__right">
+        <view v-if="desc" class="right_text" @click="handleRight">{{ desc }}</view>
+        <slot name="right"></slot>
+      </view>
+    </view>
+  </view>
+  <view v-else :class="classes" ref="navBar">
     <view class="nut-navbar__left">
       <nut-icon v-if="leftShow" color="#979797" name="left" @click="handleLeft"></nut-icon>
       <slot name="left"></slot>
     </view>
-
     <view class="nut-navbar__title">
       <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
       <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
@@ -19,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import { computed, toRefs } from 'vue';
+import { onMounted, computed, toRefs, ref, nextTick } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('navbar');
 export default create({
@@ -35,11 +53,18 @@ export default create({
     safeAreaInsetTop: {
       type: Boolean,
       default: false
+    },
+    placeholder: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['on-click-back', 'on-click-title', 'on-click-icon', 'on-click-right'],
   setup(props, { emit }) {
-    const { fixed, safeAreaInsetTop } = toRefs(props);
+    const { fixed, safeAreaInsetTop, placeholder } = toRefs(props);
+    const navBarWrap = ref(null);
+    const navBarHtml = ref(null);
+    let navHeight = ref(0);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -47,6 +72,15 @@ export default create({
         [`${prefixCls}--fixed`]: fixed.value,
         [`${prefixCls}--safe-area-inset-top`]: safeAreaInsetTop.value
       };
+    });
+
+    onMounted(() => {
+      if (fixed.value && placeholder.value) {
+        nextTick(() => {
+          navHeight = navBarHtml?.value?.getBoundingClientRect().height;
+          navBarWrap.value.style.height = navHeight + 'px';
+        });
+      }
     });
 
     function handleLeft() {
@@ -65,6 +99,8 @@ export default create({
     }
 
     return {
+      navBarWrap,
+      navBarHtml,
       classes,
       handleLeft,
       handleCenter,
