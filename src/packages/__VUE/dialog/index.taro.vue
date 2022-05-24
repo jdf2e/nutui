@@ -4,6 +4,8 @@
     v-model:visible="showPopup"
     :close-on-click-overlay="closeOnClickOverlay"
     :lock-scroll="lockScroll"
+    :pop-class="overlayClass"
+    :style="overlayStyle"
     round
     @click-overlay="closed"
     @click-close-icon="closed"

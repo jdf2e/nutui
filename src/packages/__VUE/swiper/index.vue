@@ -384,18 +384,6 @@ export default create({
       to
     });
 
-    onMounted(() => {
-      nextTick(() => {
-        init();
-      });
-    });
-
-    onActivated(() => {
-      nextTick(() => {
-        init();
-      });
-    });
-
     onDeactivated(() => {
       stopAutoPlay();
     });
@@ -417,7 +405,8 @@ export default create({
       () => state.children.length,
       () => {
         nextTick(() => {
-          init(state.active);
+          // console.log(state.active)
+          init();
         });
       }
     );
