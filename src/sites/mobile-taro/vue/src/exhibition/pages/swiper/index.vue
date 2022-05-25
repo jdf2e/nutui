@@ -16,6 +16,14 @@
         </nut-swiper-item>
       </nut-swiper>
     </view>
+    <h2>动态加载</h2>
+    <view class="demo-box">
+      <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
+        <nut-swiper-item v-for="item in list2" :key="item">
+          <img :src="item" alt="" />
+        </nut-swiper-item>
+      </nut-swiper>
+    </view>
     <h2>自定义大小</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page2" :loop="false" width="300">
@@ -84,6 +92,12 @@ export default {
         'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
         'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
       ],
+      list2: [
+        'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+        'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+        'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+        'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+      ],
       list1: [] as string[]
     });
     const change = (index: number) => {
@@ -95,6 +109,7 @@ export default {
     onMounted(() => {
       setTimeout(() => {
         state.list1 = state.list.slice();
+        state.list2.splice(1, 1);
       }, 3000);
     });
     return {

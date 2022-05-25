@@ -16,6 +16,14 @@
         </nut-swiper-item>
       </nut-swiper>
     </view>
+    <h2>{{ translate('dynamicDel') }}</h2>
+    <view class="demo-box">
+      <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
+        <nut-swiper-item v-for="item in list2" :key="item">
+          <img :src="item" alt="" />
+        </nut-swiper-item>
+      </nut-swiper>
+    </view>
     <h2>{{ translate('size') }}</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page2" :loop="false" width="300">
@@ -74,6 +82,7 @@ useTranslate({
   'zh-CN': {
     basic: '基本用法',
     asyc: '异步加载(3s)',
+    dynamicDel: '动态删除',
     size: '自定义大小',
     indicator: '自定义指示器',
     indicator1: '自定义指示器(异步3s)',
@@ -82,6 +91,7 @@ useTranslate({
   'en-US': {
     basic: 'Basic Usage',
     asyc: 'Asynchronous loading(3s)',
+    dynamicDel: 'Dynamic deletion',
     size: 'Custom size',
     indicator: 'Custom indicator',
     indicator1: 'Custom indicator(Asynchronous loading(3s))',
@@ -104,6 +114,12 @@ export default createDemo({
         'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
         'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
       ],
+      list2: [
+        'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+        'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+        'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+        'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+      ],
       list1: [] as string[]
     });
     const change = (index: number) => {
@@ -115,6 +131,7 @@ export default createDemo({
     onMounted(() => {
       setTimeout(() => {
         state.list1 = state.list.slice();
+        state.list2.splice(1, 1);
       }, 3000);
     });
     return {

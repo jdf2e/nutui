@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive, inject, getCurrentInstance, watch } from 'vue';
+import { computed, reactive, inject, getCurrentInstance, onUnmounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
 const { create, componentName } = createComponent('swiper-item');
@@ -46,6 +46,10 @@ export default create({
     const setOffset = (offset: number) => {
       state.offset = offset;
     };
+
+    onUnmounted(() => {
+      parent['relation'](getCurrentInstance(), 'unmount');
+    });
 
     useExpose({ setOffset });
 
