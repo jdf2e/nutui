@@ -176,7 +176,7 @@ export const useThemeEditor = function () {
       } as any;
       const customUrl = param && source[param.replace('/', '')];
       if (customUrl) {
-        loadScript('https://cdnout.com/sass.js/sass.sync.min.js').then((res) => {
+        loadScript('https://storage.360buyimg.com/nutui-static/cdn/sass.sync.min.js').then((res) => {
           Promise.all([getSassVariables(customUrl), getRawSassStyle()]);
         });
         store.init = true;

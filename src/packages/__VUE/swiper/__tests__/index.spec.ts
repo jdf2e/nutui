@@ -39,6 +39,7 @@ test('should render width and height', async () => {
   });
 
   await nextTick();
+  await nextTick();
 
   const swiperItem = wrapper.findAll('.nut-swiper-inner')[0].element as HTMLElement;
 
