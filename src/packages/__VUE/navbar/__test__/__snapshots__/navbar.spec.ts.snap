@@ -1,8 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render left slot correctly 1`] = `"<view class=\\"nut-navbar__left\\"><i class=\\"nutui-iconfont nut-icon nut-icon-left\\" style=\\"color: rgb(151, 151, 151);\\" src=\\"\\"></i>Custom Left</view>"`;
+exports[`should render left slot correctly 1`] = `
+"<view class=\\"nut-navbar__left\\"><i class=\\"nutui-iconfont nut-icon nut-icon-left\\" style=\\"color: rgb(151, 151, 151);\\" src=\\"\\"></i>
+  <!--v-if-->Custom Left
+</view>"
+`;
 
-exports[`should render left slot correctly 2`] = `
+exports[`should render placeholder element when using placeholder prop 1`] = `
+"<view class=\\"nut-navbar--placeholder\\">
+  <view class=\\"nut-navbar nut-navbar--fixed\\" style=\\"z-index: 10;\\">
+    <view class=\\"nut-navbar__left\\"><i class=\\"nutui-iconfont nut-icon nut-icon-left\\" style=\\"color: rgb(151, 151, 151);\\" src=\\"\\"></i>
+      <!--v-if-->
+    </view>
+    <view class=\\"nut-navbar__title\\">
+      <!--v-if-->
+      <!--v-if-->
+    </view>
+    <view class=\\"nut-navbar__right\\">
+      <!--v-if-->
+    </view>
+  </view>
+</view>"
+`;
+
+exports[`should render right slot correctly 1`] = `
 "<view class=\\"nut-navbar__right\\">
   <!--v-if-->Custom Right
 </view>"

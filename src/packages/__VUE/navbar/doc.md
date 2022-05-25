@@ -188,14 +188,19 @@ export default {
 
 ### Prop  
 
-| 字段            | 说明                                                                                           | 类型    | 默认值  |
-|-----------------|------------------------------------------------------------------------------------------------|---------|---------|
-| title           | 标题名称                                                                                       | String  | -       |
-| desc            | 右侧描述                                                                                       | String  | -       |
-| left-show        | 是否展示左侧箭头                                                                               | Boolean | false   |
-| tit-icon         | 标题中插入icon                                                                                    | String  |-|                                          
-| fixed           | 是否固定到顶部                                                                                       | Boolean  | false       |
-| safe-area-inset-top           | 是否开启顶部安全区适配                                                                                       | Boolean  | false       |
+| 字段            | 说明                                                    | 类型    | 默认值  |
+|-----------------|--------------------------------------------------------|---------|---------|
+| title           | 标题名称                                                 | String  | -       |
+| left-text       | 左侧文案                                                 | String  | -       |
+| desc            | 右侧描述                                                 | String  | -       |
+| left-show       | 是否展示左侧箭头                                          | Boolean | false   |
+| tit-icon        | 标题中插入icon                                           | String  | -       |
+| border          | 是否显示下边框                                            | Boolean  | false  |
+| fixed           | 是否固定到顶部                                            | Boolean  | false    |
+| placeholder     | 固定在顶部时，是否在标签位置生成一个等高的占位元素              | Boolean  | false   |
+| safe-area-inset-top   | 是否开启顶部安全区适配                                | Boolean  | false   |
+| z-index        | 导航栏 z-index                                            | Number ｜ String  | -       |
+
 
 ### Event
 | 名称  | 说明     | 回调参数    |
