@@ -1,6 +1,7 @@
 import config from '../../config/env';
 import { reactive, watch, onMounted, computed, onBeforeUnmount } from 'vue';
 import { nav } from '../../../config.json';
+import { isJDB, isJDT } from '.';
 
 type Obj = {
   [k: string]: any;
@@ -168,13 +169,13 @@ export const useThemeEditor = function () {
       // 固定自定义主题的访问链接: https://nutui.jd.com/theme/?theme=自定义变量的文件地址#/
       // e.g. https://nutui.jd.com/theme/?theme=xxx.com%2variables.scss#/
       // vite issue https://github.com/vitejs/vite/issues/6894
-      const params = new URLSearchParams(window.parent.location.search);
-      const param = params.get('theme') as string;
-      const source = {
-        jdt: 'https://storage.360buyimg.com/nutui-static/source/variables-jdt.scss_source',
-        jdb: 'https://storage.360buyimg.com/nutui-static/source/variables-jdb.scss_source'
-      } as any;
-      const customUrl = param && source[param.replace('/', '')];
+
+      let customUrl = '';
+      if (isJDT()) {
+        customUrl = 'https://storage.360buyimg.com/nutui-static/source/variables-jdt.scss_source';
+      } else if (isJDB()) {
+        customUrl = 'https://storage.360buyimg.com/nutui-static/source/variables-jdb.scss_source';
+      }
       if (customUrl) {
         loadScript('https://storage.360buyimg.com/nutui-static/cdn/sass.sync.min.js').then((res) => {
           Promise.all([getSassVariables(customUrl), getRawSassStyle()]);
