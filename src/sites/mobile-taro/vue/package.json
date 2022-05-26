@@ -37,18 +37,19 @@
   "dependencies": {
     "@babel/runtime": "^7.7.7",
     "@nutui/nutui-taro": "^3.1.18",
-    "@tarojs/components": "^3.4.0",
-    "@tarojs/mini-runner": "^3.4.0",
-    "@tarojs/runtime": "^3.4.0",
-    "@tarojs/taro": "^3.4.0",
+    "@tarojs/components": "^3.4.10",
+    "@tarojs/mini-runner": "^3.4.10",
+    "@tarojs/runtime": "^3.4.10",
+    "@tarojs/taro": "^3.4.10",
     "vue": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
-    "@tarojs/cli": "^3.4.0",
-    "@tarojs/mini-runner": "^3.4.0",
-    "@tarojs/plugin-html": "^3.4.0",
-    "@tarojs/webpack-runner": "^3.4.0",
+    "@tarojs/cli": "^3.4.10",
+    "@tarojs/mini-runner": "^3.4.10",
+    "@tarojs/plugin-framework-vue3": "^3.4.10",
+    "@tarojs/plugin-html": "^3.4.10",
+    "@tarojs/webpack-runner": "^3.4.10",
     "@types/webpack-env": "^1.13.6",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
@@ -58,7 +59,7 @@
     "eslint-config-taro": "3.2.10",
     "eslint-plugin-vue": "^7.0.0",
     "stylelint": "9.3.0",
-    "typescript": "^4.1.0",
+    "typescript": "4.6.4",
     "vue-loader": "^16.0.0-beta.8"
   }
 }
