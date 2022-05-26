@@ -197,6 +197,7 @@ app.use(SearchBar).use(Icon);
 | clearable          | 是否展示清除按钮 | Boolean | true     |
 | background      | 输入框外部背景 | String |   '#fff'   |
 | input-background   | 输入框内部背景 | String |   '#f7f7f7'   |
+| autofocus `v3.1.21` | 是否自动聚焦 | boolean | false |
 | disabled `v3.1.21` | 是否禁用输入框 | boolean | false |
 | readonly `v3.1.21`| 输入框只读 | boolean | false |
 | input-align `v3.1.21`| 对齐方式，可选`center` `right` | string | `left` |
@@ -212,6 +213,7 @@ app.use(SearchBar).use(Icon);
 | blur  | 失焦时触发 | val, event |
 | clear  | 点击清空时触发 | val |
 | search  | 按下 ENTER 键时触发 | val, event |
+| click-input `v3.1.21`|	点击输入区域时触发	 |	event |
 | click-left-icon `v3.1.21`|	点击左侧图标时触发 |	val, event |
 | click-right-icon `v3.1.21`|	点击右侧图标时触发 |	val, event |
 

@@ -10,6 +10,7 @@
       <view class="nut-searchbar__input-inner">
         <form action="#" onsubmit="return false" @submit.prevent="handleSubmit">
           <input
+            ref="inputsearch"
             class="nut-searchbar__input-bar"
             :type="inputType"
             :maxlength="maxLength"
@@ -17,6 +18,7 @@
             :value="modelValue"
             :disabled="disabled"
             :readonly="readonly"
+            @click="clickInput"
             @input="valueChange"
             @focus="valueFocus"
             @blur="valueBlur"
@@ -39,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { toRefs, reactive, computed } from 'vue';
+import { toRefs, reactive, computed, ref, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('searchbar');
 interface Events {
@@ -76,6 +78,10 @@ export default create({
       type: String,
       default: ''
     },
+    autofocus: {
+      type: Boolean,
+      default: false
+    },
     disabled: {
       type: Boolean,
       default: false
@@ -90,7 +96,17 @@ export default create({
     }
   },
 
-  emits: ['change', 'update:modelValue', 'blur', 'focus', 'clear', 'search', 'click-left-icon', 'click-right-icon'],
+  emits: [
+    'change',
+    'update:modelValue',
+    'blur',
+    'focus',
+    'clear',
+    'search',
+    'click-input',
+    'click-left-icon',
+    'click-right-icon'
+  ],
 
   setup(props, { emit }) {
     const state = reactive({
@@ -149,6 +165,10 @@ export default create({
       emit('search', props.modelValue);
     };
 
+    const clickInput = (event: Event) => {
+      emit('click-input', event);
+    };
+
     const leftIconClick = (event: Event) => {
       emit('click-left-icon', props.modelValue, event);
     };
@@ -162,8 +182,14 @@ export default create({
         'text-align': props.inputAlign
       };
     });
-
+    const inputsearch: any = ref(null);
+    onMounted(() => {
+      if (props.autofocus) {
+        inputsearch.value.focus();
+      }
+    });
     return {
+      inputsearch,
       ...toRefs(state),
       valueChange,
       valueFocus,
@@ -173,6 +199,7 @@ export default create({
       searchbarStyle,
       inputSearchbarStyle,
       translate,
+      clickInput,
       leftIconClick,
       rightIconClick,
       styleSearchbar

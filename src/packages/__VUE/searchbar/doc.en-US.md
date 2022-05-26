@@ -197,6 +197,7 @@ app.use(SearchBar).use(Icon);
 |clear | whether to display the clear button | Boolean | true|
 |background | input box external background | string | '#fff'|
 |input-background | internal background of input box | string | '#f7f7f7'|
+|autofocus `v3.1.21` | Auto focus | boolean | false |
 |disabled `v3.1.21`| disable input box | Boolean | false|
 |readonly `v3.1.21`| input box read only | Boolean | false|
 |input-align `v3.1.21`| alignment, optional ` center ` ` right ` | string | left |
@@ -212,6 +213,7 @@ app.use(SearchBar).use(Icon);
 |blur | Triggered when out of focus | val, event|
 |clear | Triggered when clicking empty | val|
 |search | Triggered when the Enter key is pressed | val, event|
+| click-input `v3.1.21`| Triggered when the input field is clicked| event |
 | click-left-icon `v3.1.21`| Triggered when the icon on the left is clicked| val, event |
 | click-right-icon `v3.1.21`| Triggered when the icon on the right is clicked| val, event |
 
