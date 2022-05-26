@@ -41,7 +41,7 @@
     "@tarojs/mini-runner": "^3.4.10",
     "@tarojs/runtime": "^3.4.10",
     "@tarojs/taro": "^3.4.10",
-    "vue": "^3.0.0"
+    "vue": "3.2.34"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
@@ -53,7 +53,7 @@
     "@types/webpack-env": "^1.13.6",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
-    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/compiler-sfc": "3.2.34",
     "babel-preset-taro": "3.2.10",
     "eslint": "^6.8.0",
     "eslint-config-taro": "3.2.10",
