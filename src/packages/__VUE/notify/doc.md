@@ -124,6 +124,7 @@ export default {
 | color      | 字体颜色                                              | String        | 空       |
 | background | 背景颜色                                              | String        | 空       |
 | class-name | 自定义类名                                            | String/Number | 1        |
+| position | 自定义位置                                           | String | 'top'        |
 
 ### Events
 

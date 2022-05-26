@@ -72,6 +72,18 @@ export default create({
     inputBackground: {
       type: String,
       default: ''
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    inputAlign: {
+      type: String,
+      default: 'left'
     }
   },
 

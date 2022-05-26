@@ -84,10 +84,22 @@ export default create({
     inputBackground: {
       type: String,
       default: ''
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    inputAlign: {
+      type: String,
+      default: 'left'
     }
   },
 
-  emits: ['change', 'update:modelValue', 'blur', 'focus', 'clear', 'search', 'clickLeftIcon', 'clickRightIcon'],
+  emits: ['change', 'update:modelValue', 'blur', 'focus', 'clear', 'search', 'click-left-icon', 'click-right-icon'],
 
   setup(props, { emit }) {
     const state = reactive({
@@ -147,12 +159,11 @@ export default create({
     };
 
     const leftIconClick = (event: Event) => {
-      emit('clickLeftIcon', props.modelValue, event);
+      emit('click-left-icon', props.modelValue, event);
     };
 
     const rightIconClick = (event: Event) => {
-      console.log(123);
-      emit('clickRightIcon', props.modelValue, event);
+      emit('click-right-icon', props.modelValue, event);
     };
 
     return {

@@ -1,11 +1,11 @@
 # Collapse Folding panel
 
 
-### 介绍
+### Intro
 
 Place the content in multiple folded panels, and click the panel title to expand or shrink the content.
 
-### 安装
+### Install
 
 ``` javascript
 import { createApp } from 'vue';
@@ -96,7 +96,7 @@ export default {
 </script>
 ```
 :::
-### 手风琴
+### accordion
 
 You can set accordion mode through 'accordion', and expand up to one panel. At this time, 'activename' is in string format` Subtitle ` you can set the content of a subtitle
 
@@ -137,7 +137,7 @@ export default {
 ```
 
 :::
-### 自定义折叠图标
+### Custom collapse Icon
 
 Set custom icons through icon and rotate to set the rotation angle of icons
 
