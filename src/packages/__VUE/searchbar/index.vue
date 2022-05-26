@@ -20,9 +20,12 @@
             :maxlength="maxLength"
             :placeholder="placeholder || translate('placeholder')"
             :value="modelValue"
+            :disabled="disabled"
+            :readonly="readonly"
             @input="valueChange"
             @focus="valueFocus"
             @blur="valueBlur"
+            :style="styleSearchbar"
           />
         </form>
         <view @click="handleClear" class="nut-searchbar__input-clear" v-if="clearable" v-show="modelValue.length > 0">
@@ -166,6 +169,12 @@ export default create({
       emit('click-right-icon', props.modelValue, event);
     };
 
+    const styleSearchbar: any = computed(() => {
+      return {
+        'text-align': props.inputAlign
+      };
+    });
+
     return {
       ...toRefs(state),
       valueChange,
@@ -177,7 +186,8 @@ export default create({
       inputSearchbarStyle,
       translate,
       leftIconClick,
-      rightIconClick
+      rightIconClick,
+      styleSearchbar
     };
   }
 });

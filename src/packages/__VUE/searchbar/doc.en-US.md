@@ -189,7 +189,7 @@ app.use(SearchBar).use(Icon);
 | Attribute | Description | Type   | Default |
 |--------------|----------------------------------|--------|------------------|
 | v-model | Currently entered value | number / string | ''|
-|label | left text of search box | string | ''|
+|label `v3.1.21`| left text of search box | string | ''|
 |shape | search box shape. The optional value is round | string | square|
 |max-length | maximum input length | [number, string] | '9999'|
 |input-type | input box type | string | 'text'|
@@ -197,9 +197,9 @@ app.use(SearchBar).use(Icon);
 |clear | whether to display the clear button | Boolean | true|
 |background | input box external background | string | '#fff'|
 |input-background | internal background of input box | string | '#f7f7f7'|
-|disabled | disable input box | Boolean | false|
-|readonly | input box read only | Boolean | false|
-|input-align | alignment, optional ` center ` ` right ` | string | left |
+|disabled `v3.1.21`| disable input box | Boolean | false|
+|readonly `v3.1.21`| input box read only | Boolean | false|
+|input-align `v3.1.21`| alignment, optional ` center ` ` right ` | string | left |
 
 
 ### Events
@@ -212,8 +212,8 @@ app.use(SearchBar).use(Icon);
 |blur | Triggered when out of focus | val, event|
 |clear | Triggered when clicking empty | val|
 |search | Triggered when the Enter key is pressed | val, event|
-| click-left-icon | Triggered when the icon on the left is clicked| val, event |
-| click-right-icon | Triggered when the icon on the right is clicked| val, event |
+| click-left-icon `v3.1.21`| Triggered when the icon on the left is clicked| val, event |
+| click-right-icon `v3.1.21`| Triggered when the icon on the right is clicked| val, event |
 
 
 ## Slots

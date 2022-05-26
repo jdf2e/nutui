@@ -15,10 +15,13 @@
             :maxlength="maxLength"
             :placeholder="placeholder || translate('placeholder')"
             :value="modelValue"
+            :disabled="disabled"
+            :readonly="readonly"
             @input="valueChange"
             @focus="valueFocus"
             @blur="valueBlur"
             @confirm="handleSubmit"
+            :style="styleSearchbar"
           />
         </form>
         <view @click="handleClear" class="nut-searchbar__input-clear" v-if="clearable" v-show="modelValue.length > 0">
@@ -87,7 +90,7 @@ export default create({
     }
   },
 
-  emits: ['change', 'update:modelValue', 'blur', 'focus', 'clear', 'search'],
+  emits: ['change', 'update:modelValue', 'blur', 'focus', 'clear', 'search', 'click-left-icon', 'click-right-icon'],
 
   setup(props, { emit }) {
     const state = reactive({
@@ -146,6 +149,20 @@ export default create({
       emit('search', props.modelValue);
     };
 
+    const leftIconClick = (event: Event) => {
+      emit('click-left-icon', props.modelValue, event);
+    };
+
+    const rightIconClick = (event: Event) => {
+      emit('click-right-icon', props.modelValue, event);
+    };
+
+    const styleSearchbar: any = computed(() => {
+      return {
+        'text-align': props.inputAlign
+      };
+    });
+
     return {
       ...toRefs(state),
       valueChange,
@@ -155,7 +172,10 @@ export default create({
       handleSubmit,
       searchbarStyle,
       inputSearchbarStyle,
-      translate
+      translate,
+      leftIconClick,
+      rightIconClick,
+      styleSearchbar
     };
   }
 });

@@ -280,7 +280,7 @@ export default {
 |title | the content on the left side of the title bar supports slot incoming (props incoming has higher priority) | string | -|
 |sub-title | subtitle of title bar, support slot incoming (props incoming has higher priority) | string | -|
 |disabled | whether the title bar is disabled | Boolean | false|
-|slot:extrarender | set the fixed content under the title (no folding) | - | '|
+|slot:extrarender `v3.1.20`| set the fixed content under the title (no folding) | - | '|
 
 
 ### Events
