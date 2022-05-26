@@ -1,10 +1,10 @@
-# Skeleton 骨架屏
+# Skeleton screen
 
-### 介绍
+### Intro
 
-在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。
+Filling gray bitmap in the area to be loaded on the page is essentially the transition effect in the process of interface loading.
 
-### 安装
+### Install
 
 ```javascript
 
@@ -19,9 +19,9 @@ app.use(Skeleton);
 
 ```
 
-### 代码实例
+## Code demonstration
 
-### 基础用法
+### Basic usage
 
 :::demo
 ```html
@@ -32,7 +32,7 @@ app.use(Skeleton);
 ```
 :::
 
-### 传入多行
+### Incoming multiline
 
 :::demo
 ```html
@@ -44,7 +44,7 @@ app.use(Skeleton);
 :::
 
 
-### 显示头像
+### Show Faces
 
 :::demo
 ```html
@@ -55,7 +55,7 @@ app.use(Skeleton);
 :::
 
 
-### 标题段落圆角风格
+### Title paragraph fillet style
 
 :::demo
 ```html
@@ -65,7 +65,7 @@ app.use(Skeleton);
 ```
 :::
 
-### 图片组合
+### Picture combination
 
 :::demo
 ```html
@@ -75,9 +75,7 @@ app.use(Skeleton);
     <nut-skeleton width="250px" height="15px" title animated row="3" class="item"> </nut-skeleton>
   </div>
 </template>
-```
-```css
-<style>
+<style lang="scss">
 .pic-compose {
   display: flex;
   justify-content: space-between;
@@ -89,7 +87,8 @@ app.use(Skeleton);
 ```
 :::
 
-### 显示子组件
+
+### Display subcomponents
 
 :::demo
 ```html
@@ -105,8 +104,7 @@ app.use(Skeleton);
       <div class="right-content">
         <div class="title">NutUI</div>
         <div class="desc"
-            >一套京东风格的轻量级移动端Vue组库，提供丰富的基础组件和业务组件，帮助开发者快速搭建移动应用。</div
-        >
+            >A set of JD style lightweight mobile terminal Vue group library provides rich basic components and business components to help developers quickly build mobile applications.
         </div>
       </div>
     </nut-skeleton>
@@ -161,23 +159,23 @@ export default {
 
 ### Prop  
 
-| 字段       | 说明                                             | 类型    | 默认值    |
+| Attribute | Description | Type   | Default |
 |------------|-------------------------------------------------|---------|----------|
-| loading    | 是否显示骨架屏                                    | Boolean | `true`    | 
-| width       | 每行宽度                                        | String  | `default` |
-| height      | 每行高度                                        | String  | `100px`   |
-| animated    | 是否开启骨架屏动画                                | Boolean  | `false`  |
-| avatar      | 是否显示头像                                     | Boolean | `false`   |
-| avatar-shape      | 头像形状：正方形/圆形                        | String | `round`   |
-| avatar-size       | 头像大小                                   | String | `50px`    |
-| round  | 标题/段落是否采用圆角风格                                | Boolean | `false`  |
-| row    | 设置段落行数                                           | String | `1`       |
-| title  | 是否显示段落标题                                        | Boolean | `true`   |
+| loading    | Whether to display skeleton screen                                    | Boolean | `true`    | 
+| width       | Width per row                                        | String  | `default` |
+| height      | Height of each row                                        | String  | `100px`   |
+| animated    | Whether to turn on skeleton screen animation            | Boolean  | `false`  |
+| avatar      | Show avatar                      | Boolean | `false`   |
+| avatar-shape      | Avatar shape: square / round                       | String | `round`   |
+| avatar-size       | Avatar size                                   | String | `50px`    |
+| round  |         Is the title / paragraph rounded                       | Boolean | `false`  |
+| row    | Set the number of paragraph lines                                           | String | `1`       |
+| title  |           Show paragraph titles                              | Boolean | `true`   |
 
 
 ### Slots
 
-| 名称    | 说明           |
+| Name          | Description        |
 |---------|---------------|
-| default | 骨架屏显示内容  |
+| default | Skeleton screen display content  |
 
