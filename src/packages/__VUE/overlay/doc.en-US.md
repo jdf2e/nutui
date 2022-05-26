@@ -47,6 +47,8 @@ app.use(OverLay);
 
 ### Mask style
 
+It can be set through `overlay-style`
+
 :::demo
 
 ```html

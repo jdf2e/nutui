@@ -46,6 +46,8 @@ app.use(OverLay);
 
 ### 遮罩样式
 
+可以通过 `overlay-style` 进行设置
+
 :::demo
 
 ```html
