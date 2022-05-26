@@ -12,7 +12,7 @@
     </div>
   </div>
   <router-view />
-  <demo-icon></demo-icon>
+  <!-- <demo-icon></demo-icon> -->
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch, computed, onMounted } from 'vue';
@@ -38,7 +38,26 @@ export default defineComponent({
         window.top.location.href = `${origin}/3x/index.html${hash}`;
         window.location.href = `${origin}/3x/demo.html${hash}`;
       }
+      // 接收数据
+      window.addEventListener('message', handledemoFromParent);
     });
+
+    const handledemoFromParent = (event: any) => {
+      var data = event.data;
+      console.log('data', data);
+      switch (data.cmd) {
+        case 'refresh':
+          if (data.params.state) {
+            router.go(0);
+          }
+          break;
+        case 'goHome':
+          if (data.params.state) {
+            router.push('/');
+          }
+          break;
+      }
+    };
 
     useThemeEditor();
 
@@ -131,13 +150,16 @@ body {
   }
 
   .demo {
-    height: 100%;
+    // height: 100%;
+    min-height: 100vh;
     background: #f7f8fa;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 57px 17px 46px 17px;
+    padding: 57px 17px 15px;
+    box-sizing: border-box;
     &.full {
-      padding: 57px 0 46px 0;
+      min-height: 100vh;
+      padding: 57px 0 0;
       h2 {
         padding-left: 27px;
       }

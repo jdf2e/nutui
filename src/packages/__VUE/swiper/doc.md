@@ -67,6 +67,102 @@ app.use(Swiper).use(SwiperItem);
 
 :::
 
+### 异步加载
+
+:::demo
+
+```html
+<template>
+  <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="3000">
+     <nut-swiper-item v-for="item in list" :key="item">
+        <img :src="item" alt="" />
+      </nut-swiper-item>
+  </nut-swiper>
+</template>
+<script lang="ts">
+  import { reactive, toRefs, onMounted } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        page: 2,
+        list: [] as string[]
+      });
+      onMounted(() => {
+        setTimeout(() => {
+          state.list = [
+            'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+            'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+            'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+            'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+          ];
+        }, 3000);
+      });
+      return { ...toRefs(state) };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .nut-swiper-item {
+    line-height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+</style>
+```
+
+:::
+
+### 动态加载
+
+支持动态增加/删除图片
+
+:::demo
+
+```html
+<template>
+  <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="3000">
+     <nut-swiper-item v-for="item in list" :key="item">
+        <img :src="item" alt="" />
+      </nut-swiper-item>
+  </nut-swiper>
+</template>
+<script lang="ts">
+  import { reactive, toRefs, onMounted } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        page: 2,
+        list: [
+          'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+          'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+          'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+        ]
+      });
+      onMounted(() => {
+        setTimeout(() => {
+          state.list.splice(1, 1);
+        }, 3000);
+      });
+      return { ...toRefs(state) };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .nut-swiper-item {
+    line-height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+</style>
+```
+
+:::
+
 ### 自定义大小
 
 `width` 自定义轮播大小
