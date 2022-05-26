@@ -313,13 +313,13 @@ app.use(CountDown);
 | v-model | 当前时间，自定义展示内容时生效 | Object | {}
 | start-time | 开始时间 | String, Number | Date.now()
 | end-time | 结束时间 | String, Number | Date.now()
-| format |  时间格式 | String | HH:mm:ss
-| millisecond |  是否开启毫秒级渲染 | Boolean | false
-| auto-start |  是否自动开始倒计时 | Boolean | true
-| time | 倒计时显示时间，单位是毫秒。autoStart 为 false 时生效 | String，Number | 0
+| format `v3.1.20` |  时间格式 | String | HH:mm:ss
+| millisecond `v3.1.20` |  是否开启毫秒级渲染 | Boolean | false
+| auto-start `v3.1.20` |  是否自动开始倒计时 | Boolean | true
+| time `v3.1.20` | 倒计时显示时间，单位是毫秒。autoStart 为 false 时生效 | String，Number | 0
 | paused | 是否暂停 | Boolean | false
-| show-days | 是否显示天`（废弃）` | Boolean | false
-| show-plain-text | 显示为纯文本`（废弃）` | Boolean | false
+| show-days | 是否显示天`v3.1.20(废弃)` | Boolean | false
+| show-plain-text | 显示为纯文本`v3.1.20(废弃)` | Boolean | false
 
 ### format 格式
 
