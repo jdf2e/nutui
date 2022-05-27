@@ -130,7 +130,7 @@ User can custom divider style with style attribute.
 | dashed         | 	Whether to use dashed border             | Boolean | false                |
 | hairline        | Whether to use hairline                         | Boolean | true                |
 | content-position        | Content position, can be set to left or right                       | String | center                |
-| direction         | The direction of divider             | String | 'horizontal'                |
+| direction `v3.1.21`         | The direction of divider             | String | 'horizontal'                |
 
 ### Slots
 

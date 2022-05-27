@@ -75,7 +75,7 @@ Popup can be closed with toggle method in menu instance.
     <nut-menu-item v-model="state.value1" :options="state.options1" />
     <nut-menu-item title="Screen" ref="item">
       <div :style="{display: 'flex', flex: 1, 'justify-content': 'space-between', 'align-items': 'center'}">
-        <div>Custom content</div>
+        <div :style="{ marginRight: '10px'}">Custom content</div>
         <nut-button @click="onConfirm">Confirm</nut-button>
       </div>
     </nut-menu-item>
@@ -294,7 +294,7 @@ export default {
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | active-color         | Active color of title and option     | String | #F2270C               |
-| close-on-click-overlay        | Whether to close when overlay is clicked     | Boolean | true               |
+| close-on-click-overlay `v3.1.21`        | Whether to close when overlay is clicked     | Boolean | true               |
 
 ### MenuItem Props
 
