@@ -10,7 +10,8 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/jdf2e/nutui.git"
+		"url": "git+https://github.com/jdf2e/nutui.git",
+    "directory": "src/packages/vscode-extension"
 	},
 	"categories": [
 		"Other"

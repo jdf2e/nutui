@@ -100,8 +100,8 @@ const traverseAst = (ast, componentName, componentType) => {
     enter: (node) => {
       if (node.type === 'VariableDeclarator' && node.id.name === 'subpackages') {
         node.init.elements.forEach((item) => {
-          const itemKey = item.properties.find((value) => value.key.name === 'root').value.value;
-          const itemValue = item.properties.find((value) => value.key.name === 'pages').value.elements;
+          const itemKey = item.properties.find((value) => value.key.value === 'root').value.value;
+          const itemValue = item.properties.find((value) => value.key.value === 'pages').value.elements;
           const path = `pages/${componentName}/index`;
           if (itemKey === componentType && !itemValue.find((subItem) => subItem.value === path)) {
             itemValue.push({
@@ -149,12 +149,15 @@ const createDemo = (paths) => {
 };
 
 const createDoc = (paths) => {
-  /**生成doc文档 */
+  /**生成doc,中英文文档 */
   const sourcePath = paths.sourcePath;
   const name = sourcePath.substring(sourcePath.lastIndexOf('/') + 1);
   const doc = demoModel(name).doc;
+  const docEN = demoModel(name).docEN;
   const filePath = path.join(sourcePath, 'doc.md');
+  const filePathEN = path.join(sourcePath, 'doc.en-US.md');
   if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, doc);
+  if (!fs.existsSync(filePathEN)) fs.writeFileSync(filePathEN, docEN);
 };
 
 const createScss = (paths) => {

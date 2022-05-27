@@ -25,12 +25,12 @@
     <div class="text-data">我是测试数据22</div>
     <div class="text-data">我是测试数据23</div>
     <div class="text-data">我是测试数据24</div>
-    <nut-backtop @click="handleClick" el-id="elId" :distance="100" :bottom="90">
-      <view class="backtop-demo"
-        ><nut-icon size="12px" class="nut-backtop-main" name="top"></nut-icon><view class="title">顶部</view></view
-      >
+    <nut-backtop @click="handleClick" el-id="elId" :distance="100" :bottom="110">
+      <view class="backtop-demo">
+        <nut-icon size="12px" class="nut-backtop-main" name="top"></nut-icon><view class="title">顶部</view>
+      </view>
     </nut-backtop>
-    <nut-backtop @click="handleClick" el-id="elId" :distance="200"></nut-backtop>
+    <nut-backtop @click="handleClick" el-id="elId" :distance="200" :bottom="50"></nut-backtop>
   </div>
 </template>
 

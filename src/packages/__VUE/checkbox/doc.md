@@ -132,7 +132,7 @@ app.use(Checkbox).use(CheckboxGroup).use(Icon);
 
 ## change事件
 
-值发生变化时，将触发change事件
+值发生变化时，将触发 `change` 事件
 
 :::demo
 

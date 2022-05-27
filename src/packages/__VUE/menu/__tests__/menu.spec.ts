@@ -181,7 +181,7 @@ test('menu item change props: value2 should be b after click', async () => {
     },
     methods: {
       handleChange(val: any) {
-        this.value2 = val;
+        (this as any).value2 = val;
       }
     }
   });

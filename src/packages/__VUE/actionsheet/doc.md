@@ -88,10 +88,10 @@ export default {
       :isLink="true"
       @click="switchActionSheet('isVisible')"
     >
-      <span><label>基础用法</label></span>
+      <span><label>展示取消按钮</label></span>
       <div v-html="state.val"></div>
     </nut-cell>
-     <!-- demo 基础用法 -->
+     <!-- demo 展示取消按钮 -->
     <nut-actionsheet
       v-model:visible="state.isVisible"
       :menu-items="menuItems"
@@ -147,10 +147,10 @@ export default {
       :isLink="true"
       @click="switchActionSheet('isVisible')"
     >
-      <span><label>基础用法</label></span>
+      <span><label>展示描述信息</label></span>
       <div v-html="state.val"></div>
     </nut-cell>
-     <!-- demo 基础用法 -->
+     <!-- demo 展示描述信息 -->
     <nut-actionsheet
       v-model:visible="state.isVisible"
       cancel-txt="取消"
@@ -211,10 +211,10 @@ export default {
       @click="switchActionSheet('isVisible')"
      
     >
-      <span><label>基础用法</label></span>
+      <span><label>选项状态</label></span>
       <div v-html="state.val"></div>
     </nut-cell>
-     <!-- demo 基础用法 -->
+     <!-- demo 选项状态 -->
     <nut-actionsheet
       v-model:visible="state.isVisible"
       :menu-items="menuItems"
@@ -264,7 +264,7 @@ export default {
 
 | 字段             | 说明                                   | 类型    | 默认值    |
 |------------------|----------------------------------------|---------|-----------|
-| v-model:visible       | 遮罩层可见                             | Boolean | false|
+| v-model:visible       | 是否展示动作面板                             | Boolean | false|
 | menu-items       | 列表项                                 | Array   | [ ]       |
 | option-tag       | 设置列表项标题展示使用参数                 | String  | 'name'    |
 | option-sub-tag   | 设置列表项二级标题展示使用参数             | String  | 'subname' |

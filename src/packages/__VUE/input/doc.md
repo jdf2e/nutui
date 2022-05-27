@@ -418,6 +418,7 @@ app.use(Icon);
 | error-message-align | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`          | String | - |
 | formatter      | 输入内容格式化函数    | `(val: string) => string` | - |
 | format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | String | - |
+| adjust-position| 键盘弹起时，是否自动上推页面，仅支持原生     | Boolean | `true` |
 
 ### Event
 

@@ -10,9 +10,9 @@
 
 import { createApp } from 'vue';
 // vue
-import { Popover } from '@nutui/nutui';
+import { Popover, Popup } from '@nutui/nutui';
 // taro
-import { Popover } from '@nutui/nutui-taro';
+import { Popover, Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Popover);
@@ -33,27 +33,26 @@ Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme �
       <nut-button type="primary" shape="square">明朗风格</nut-button>
     </template>
   </nut-popover>
+
+  <nut-popover v-model:visible="visible.darkTheme" theme="dark" :list="iconItemList">
+    <template #reference>
+      <nut-button type="primary" shape="square">暗黑风格</nut-button>
+    </template>
+  </nut-popover>
 </template>
 <script>
 import { reactive, ref } from 'vue';
 export default {
   setup() {
     const visible = ref({
-     lightTheme: false,
+      darkTheme: false,
+      lightTheme: false,
     });
-
     const iconItemList = reactive([
-      {
-        name: '选项一'
-      },
-      {
-        name: '选项二'
-      },
-      {
-        name: '选项三'
-      }
+      { name: '选项一' },
+      { name: '选项二' },
+      { name: '选项三' }
     ]);
-
     return {
         visible,
         iconItemList,
@@ -61,8 +60,6 @@ export default {
     }
 }
 </script>
-
-
 
 ```
 :::
@@ -100,12 +97,10 @@ export default {
       {
         name: '选项一',
         icon: 'my2'
-      },
-      {
+      },{
         name: '选项二',
         icon: 'cart2'
-      },
-      {
+      },{
         name: '选项三',
         icon: 'location2'
       }
@@ -115,12 +110,10 @@ export default {
       {
         name: '选项一',
         disabled: true
-      },
-      {
+      },{
         name: '选项二',
         disabled: true
-      },
-      {
+      },{
         name: '选项三'
       }
     ]);
@@ -233,26 +226,32 @@ export default {
 
 ### 位置自定义
 
-支持 bottom, top, left, right 四种弹出位置，默认值为 bottom。
+通过 location 属性来控制气泡的弹出位置。可选值
+```
+top           # 顶部中间位置
+left          # 左侧中间位置
+right         # 右侧中间位置
+bottom        # 底部中间位置
+```
+自 `v3.1.21` 起新增
+```
+top-start     # 顶部左侧位置
+top-end       # 顶部右侧位置 
+left-start    # 左侧上方位置
+left-end      # 左侧下方位置
+right-start   # 右侧上方位置
+right-end     # 右侧下方位置
+bottom-start  # 底部左侧位置
+bottom-end    # 底部右侧位置
+```
+
 
 :::demo
 ```html
 <template>
-  <nut-popover v-model:visible="visible.topLocation" location="top" theme="dark" :list="iconItemList">
+  <nut-popover v-model:visible="visible" location="top" theme="dark" :list="iconItemList">
     <template #reference>
-      <nut-button type="primary" shape="square">向上弹出</nut-button>
-    </template>
-  </nut-popover>
-
-  <h2></h2>
-  <nut-popover v-model:visible="visible.rightLocation" location="right" theme="dark" :list="iconItemList">
-    <template #reference>
-      <nut-button type="primary" shape="square">向右弹出</nut-button>
-    </template>
-  </nut-popover>
-  <nut-popover v-model:visible="visible.leftLocation" location="left" theme="dark" :list="iconItemList">
-    <template #reference>
-    <nut-button type="primary" shape="square">向左弹出</nut-button>
+      <div class="brick"></div>
     </template>
   </nut-popover>
 </template>
@@ -261,11 +260,7 @@ export default {
 import { reactive, ref } from 'vue';
 export default {
   setup() {
-    const visible = ref({
-      topLocation: false, 
-      rightLocation: false, 
-      leftLocation: false 
-    });
+    const visible = ref(false);
 
     const iconItemList = reactive([
         {
@@ -273,11 +268,7 @@ export default {
         },
         {
           name: '选项二'
-        },
-        {
-          name: '选项三'
-        }
-      ]);
+        }]);
 
       return {
         iconItemList,
@@ -299,7 +290,10 @@ export default {
 | list          | 选项列表                          | List[]   | []        |
 | visible      | 是否展示气泡弹出层                 | boolean  | false     |
 | theme          | 主题风格，可选值为 dark            | string   | `light`   |
-| location       | 弹出位置，可选值为 top,left,right  | string   | `bottom`  |
+| location       | 弹出位置  | string   | `bottom`  |
+| offset `v3.1.21`       | 出现位置的偏移量  | [number, number]   | [0, 12]  |
+| show-arrow `v3.1.21`       | 是否显示小箭头  | boolean  | true  |
+| custom-class `v3.1.21`       | 自定义 class 值  | string  | ''  |
 
 ### List 数据结构  
 
@@ -310,6 +304,7 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 | name           | 选项文字               | string   | -      |
 | icon           | nut-icon 图标名称      | string   | -      |
 | disabled       | 是否为禁用状态          | boolean  | false  | 
+| className `v3.1.21`      | 为对应选项添加额外的类名          | string/Array/object  | -  | 
 
 
 ### Slots

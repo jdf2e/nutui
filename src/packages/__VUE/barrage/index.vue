@@ -83,7 +83,11 @@ export default create({
 
     const add = (word: string) => {
       const _index = index.value % danmuList.value.length;
-      danmuList.value.splice(_index, 0, word);
+      if (!props.loop && index.value === danmuList.value.length) {
+        danmuList.value.splice(danmuList.value.length, 0, word);
+      } else {
+        danmuList.value.splice(_index, 0, word);
+      }
     };
 
     const run = () => {
@@ -96,6 +100,9 @@ export default create({
     };
 
     const play = () => {
+      if (!props.loop && index.value >= danmuList.value.length) {
+        return;
+      }
       const _index = props.loop ? index.value % danmuList.value.length : index.value;
       let el = document.createElement(`view`);
       el.innerHTML = danmuList.value[_index] as string;

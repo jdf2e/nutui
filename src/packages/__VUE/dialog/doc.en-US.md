@@ -10,7 +10,7 @@ The popup box component supports function call and component call.
 ### Install
     
 ```javascript
-import { createApp } from 'vue';
+import { createApp,createVNode } from 'vue';
 import { Dialog,Popup,OverLay } from '@nutui/nutui';
 
 const app = createApp();
@@ -44,7 +44,7 @@ export default {
         const baseClick = (): void => {
           Dialog({
             title: 'Basic spring frame',
-            content: 'Function call and component call are supported.',
+            content: createVNode('span', { style: { color: 'red' } }, 'I can be a custom component'),
             onCancel,
             onOk
           });
@@ -207,6 +207,8 @@ export default {
 | close-on-popstate      | Whether to close when popstate                                                                            | Boolean | false      |
 | lock-scroll            | Whether to lock background scroll                                                                         | Boolean | false      |
 | footer-direction       | The bottom button uses the horizontal and vertical directions. Optional values ​​are horizontal and vertical. | string  | horizontal |
+| overlay-class          | Custom mask classname   | String         | -      |
+| overlay-style          | Custom mask styles   | CSSProperties  | -      |
 
 ## Events
 

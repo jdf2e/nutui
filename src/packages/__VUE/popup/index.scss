@@ -87,6 +87,9 @@
   background-color: $white;
   transition: transform 0.2s;
   -webkit-overflow-scrolling: touch;
+  .nutui-popup__content-wrapper {
+    height: 100%;
+  }
 }
 
 .nut-overflow-hidden {

@@ -17,8 +17,6 @@ const app = createApp();
 app.use(Table);
 ```
 
-## 代码演示
-
 ### 基础使用
 
 :::demo
