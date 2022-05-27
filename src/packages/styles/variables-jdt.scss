@@ -15,6 +15,7 @@ $text-color: #808080 !default;
 $disable-color: #cccccc !default;
 $white: #fff !default;
 $black: #000 !default;
+$required-color: #fa2c19 !default;
 
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif !default;
 
@@ -142,7 +143,7 @@ $picker-columns-item-color: $title-color !default;
 //input
 $input-border-bottom: #eaf0fb !default;
 $input-disabled-color: #c8c9cc !default;
-$input-required-color: $primary-color !default;
+$input-required-color: $required-color !default;
 $input-font-size: $font-size-2 !default;
 
 // textarea
@@ -601,9 +602,9 @@ $cascader-item-font-size: $font-size-2 !default;
 $cascader-item-active-color: $primary-color !default;
 
 // form
-$form-item-error-line-color: #f52f3e !default;
-$form-item-required-color: #f52f3e !default;
-$form-item-error-message-color: #f52f3e !default;
+$form-item-error-line-color: $required-color !default;
+$form-item-required-color: $required-color !default;
+$form-item-error-message-color: $required-color !default;
 $form-item-label-font-size: 14px !default;
 $form-item-label-width: 90px !default;
 $form-item-label-margin-right: 10px !default;
