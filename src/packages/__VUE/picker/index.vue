@@ -139,6 +139,7 @@ export default create({
       }
     });
 
+    // 级联数据格式化
     const formatCascade = (columns: import('./types').PickerOption[], defaultValues: (number | string)[]) => {
       const formatted: import('./types').PickerOption[][] = [];
       let cursor: import('./types').PickerOption = {
@@ -180,7 +181,8 @@ export default create({
             cursor = cursor.children[0];
           }
         } else {
-          defaultValues.value[columnIndex] = option.value ? option.value : '';
+          console.log('更新', option.value);
+          defaultValues.value[columnIndex] = option.hasOwnProperty('value') ? option.value : '';
         }
 
         emit('change', {
@@ -200,6 +202,7 @@ export default create({
     };
 
     onMounted(() => {
+      console.log(11, props.columns);
       if (props.visible) state.show = props.visible;
     });
 
