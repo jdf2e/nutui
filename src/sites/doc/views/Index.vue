@@ -96,7 +96,7 @@ export default defineComponent({
 
     const isShow = () => {
       // return !excludeTaro.includes(route.path);
-      return route.path != '/zh-CN/';
+      return route.path != 'zh-CN/' || 'zh-TW/' || 'en-US/';
     };
 
     const isShowTaroDoc = computed(() => {
@@ -151,9 +151,17 @@ export default defineComponent({
     // 获得组件名称
     const componentTitle = (to?: any) => {
       if (to?.path) {
-        state.componentName.name = to.path.split('/zh-CN/')[1];
+        ['zh-CN/', 'zh-TW/', 'en-US/'].map((file) => {
+          if (to.path.includes(file)) {
+            state.componentName.name = to.path.split(file)[1];
+          }
+        });
       } else {
-        state.componentName.name = route.path.split('/zh-CN/')[1];
+        ['zh-CN/', 'zh-TW/', 'en-US/'].map((file) => {
+          if (route.path.includes(file)) {
+            state.componentName.name = route.path.split(file)[1];
+          }
+        });
       }
       nav.forEach((item: any) => {
         item.packages.forEach((sItem: any) => {

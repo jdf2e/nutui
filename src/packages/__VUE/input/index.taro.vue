@@ -320,8 +320,8 @@ export default create({
         value = props.formatter(value);
       }
 
-      if (inputRef && inputRef.value && inputRef.value.value && inputRef.value.value !== value) {
-        inputRef.value.value = value;
+      if (inputRef && inputRef.value && inputRef.value !== value) {
+        inputRef.value = value;
       }
 
       if (value !== props.modelValue) {

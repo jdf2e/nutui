@@ -32,7 +32,7 @@
       <nut-avatar icon="my"></nut-avatar>
       <nut-avatar>N</nut-avatar>
     </nut-cell>
-    <h2>Icon 和字符型可以自定义图标颜色及背景色</h2>
+    <h2>Icon 和字符型可以自定义颜色及背景色</h2>
     <nut-cell>
       <nut-avatar class="demo-avatar" icon="my" color="#fff" bg-color="#FA2C19"></nut-avatar>
       <nut-avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">U</nut-avatar>

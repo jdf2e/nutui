@@ -1,11 +1,11 @@
-# Collapse 折叠面板
+# Collapse Folding panel
 
 
-### 介绍
+### Intro
 
-将内容放置在多个折叠面板中，点击面板标题可展开或收缩内容。
+Place the content in multiple folded panels, and click the panel title to expand or shrink the content.
 
-### 安装
+### Install
 
 ``` javascript
 import { createApp } from 'vue';
@@ -19,10 +19,13 @@ app.use(Collapse);
 app.use(CollapseItem);
 ```
 
-## 代码演示
-## 基本用法
+## Code demonstration
 
-通过`v-model`控制展开的面板列表，`activeNames`为数组格式
+
+### Basic Usage
+
+Control the expanded panel list through 'V-model', and 'activenames' is in array format
+
 :::demo
 
 ```html
@@ -32,10 +35,10 @@ app.use(CollapseItem);
     <template v-slot:mTitle>
       {{title1}}
     </template>
-    NutUI是一套拥有京东风格的轻量级的 Vue 组件库
+    Nutui is a lightweight Vue component library with JD style
   </nut-collapse-item>
   <nut-collapse-item :title="title2" :name="2">
-    在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！
+    The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
   </nut-collapse-item>
   <nut-collapse-item :title="title3" :name="3" disabled>
   </nut-collapse-item>
@@ -47,9 +50,9 @@ export default {
   setup() {
     const activeNames = reactive([1, 2]);
     const title = reactive({
-      title1: '标题1',
-      title2: '标题2',
-      title3: '标题3',
+      title1: 'title1',
+      title2: 'title2',
+      title3: 'title3',
     })
     return {
       activeNames,
@@ -60,17 +63,17 @@ export default {
 
 ```
 :::
-### 无icon样式
+### No icon style
 :::demo
 
 ```html
 <template>
   <nut-collapse v-model:active="activeName" :accordion="true">
     <nut-collapse-item :title="title1" :name="1">
-    引入Vue3新特性 Composition API、Teleport、Emits 等
+      Introduce new features of vue3, such as composition API, teleport, emits, etc
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2">
-      全面使用 TypeScipt
+      Full use of typescipt
     </nut-collapse-item>
   </nut-collapse>
 </template>
@@ -80,9 +83,9 @@ export default {
   setup() {
     const activeName = ref(1);
     const title = reactive({
-      title1: '标题1',
-      title2: '标题2',
-      title3: '标题3',
+      title1: 'title1',
+      title2: 'title2',
+      title3: 'title3',
     })
     return {
       activeName,
@@ -93,23 +96,22 @@ export default {
 </script>
 ```
 :::
-### 手风琴
+### accordion
 
-通过`accordion`可以设置为手风琴模式，最多展开一个面板，此时`activeName`为字符串格式；`subTitle`可以设置副标题的内容
+You can set accordion mode through 'accordion', and expand up to one panel. At this time, 'activename' is in string format` Subtitle ` you can set the content of a subtitle
 
 :::demo
-
 ```html
 <template>
   <nut-collapse v-model:active="activeName" :accordion="true" icon="down-arrow">
     <nut-collapse-item :title="title1" :name="1">
-      基于京东设计语言体系，构建场景
+      Build scenes based on JD design language system
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2" :sub-title="subTitle">
-      提高界⾯的模块化通用程度
+      Improve the modularity and generality of the boundary
     </nut-collapse-item>
     <nut-collapse-item :title="title3" :name="3">
-      采用组合式 API Composition 语法重构，结构清晰，功能模块化
+      It adopts combinatorial API composition syntax to reconstruct, with clear structure and modular function
     </nut-collapse-item>
   </nut-collapse>
 </template>
@@ -118,11 +120,11 @@ import { reactive, ref, toRefs } from 'vue';
 export default {
   setup() {
     const activeName = ref(1);
-    const subTitle = '副标题';
+    const subTitle = 'subtitle';
     const title = reactive({
-      title1: '标题1',
-      title2: '标题2',
-      title3: '标题3',
+      title1: 'title1',
+      title2: 'title2',
+      title3: 'title3',
     })
     return {
       activeName,
@@ -135,9 +137,9 @@ export default {
 ```
 
 :::
-### 自定义折叠图标
+### Custom collapse Icon
 
-通过icon设置自定义图标，rotate设置图标旋转的角度
+Set custom icons through icon and rotate to set the rotation angle of icons
 
 :::demo
 
@@ -151,12 +153,12 @@ export default {
   >
     <nut-collapse-item :title="title1" :name="1">
       <template v-slot:sTitle>
-        文本测试
+        text test
       </template>
-      NUTUI3.0重新思考其内在的一致性和可组合性
+      NUTUI3. 0 rethink its internal consistency and composability
     </nut-collapse-item>
-    <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">
-      提⾼产研输出对接的效率，降低输出工作量
+    <nut-collapse-item :title="title2" :name="2" sub-title="text content">
+      Improve the efficiency of production research output docking and reduce the output workload
     </nut-collapse-item>
   </nut-collapse>
 </template>
@@ -166,8 +168,8 @@ export default {
   setup() {
     const activeName = ref(1);
     const title = reactive({
-      title1: '标题1',
-      title2: '标题2',
+      title1: 'title1',
+      title2: 'title2',
     })
     return {
       activeName,
@@ -179,9 +181,9 @@ export default {
 ```
 :::
 
-### 自定义标题图标
+### Custom title Icon
 
-通过icon设置自定义图标，rotate设置图标旋转的角度
+Set custom icons through icon and rotate to set the rotation angle of icons
 :::demo
 
 ```html
@@ -196,10 +198,10 @@ export default {
     :accordion="true"
   >
     <nut-collapse-item :title="title1" :name="1">
-    组件 emits 事件单独提取，增强代码可读性
+      component emits events are extracted separately to enhance code readability
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2" sub-title="文本内容">
-    使用 Teleport 新特性重构挂载类组件
+      reconstruct and mount class components using the new feature of teleport
     </nut-collapse-item>
   </nut-collapse>
 </template>
@@ -209,8 +211,8 @@ export default {
   setup() {
     const activeName = ref(1);
     const title = reactive({
-      title1: '标题1',
-      title2: '标题2',
+      title1: 'title1',
+      title2: 'title2',
     })
     return {
       activeName,
@@ -221,20 +223,19 @@ export default {
 </script>
 ```
 :::
-### 设置固定内容（不折叠）
+### Set fixed content (do not collapse)
 
-通过 slot:extraRender 设置内容
-:::demo
-
+Set content through slot: extrarender
+    
 ```html
 <template>
   <nut-collapse v-model:active="activeName" icon="down-arrow" :accordion="true">
     <nut-collapse-item :title="title1" :name="1">
-      <template v-slot:extraRender>固定内容</template>
-      NutUI是一套拥有京东风格的轻量级的 Vue 组件库
+      <template v-slot:extraRender>fixed content</template>
+      Nutui is a lightweight Vue component library with JD style
     </nut-collapse-item>
     <nut-collapse-item :title="title2" :name="2">
-      在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！
+      The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
     </nut-collapse-item>
   </nut-collapse>
 </template>
@@ -244,8 +245,8 @@ export default {
   setup() {
     const activeName = ref(1);
     const title = reactive({
-      title1: '标题1',
-      title2: '标题2',
+      title1: 'title1',
+      title2: 'title2',
     })
     return {
       activeName,
@@ -258,32 +259,31 @@ export default {
 :::
 ## Collapse Prop
 
-| 字段 | 说明 | 类型 | 默认值
+| Attribute | Description | Type   | Default |
 |----- | ----- | ----- | ----- 
-| v-model | 当前展开面板的 name | 手风琴模式：string \| number<br>非手风琴模式：(string \| number)[] | - |
-| accordion | 是否开启手风琴模式 | boolean | false |
-| icon | 图标链接/或使用 NutUI 的 icon | string | ‘’ |
-| icon-size | 图标大小 | string | 16px |
-| icon-color | 图标颜色 | string | '' |
-| title-icon | 标题图标链接/或使用 NutUI 的 icon | string | ‘’ |
-| title-icon-size | 标题图标大小 | string | 16px |
-| title-icon-color | 标题图标颜色 | string | ’‘ |
-| title-icon-position | 标题图标位置 | string | ‘left' |
-| rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | string \ number | 180 |
+| v-model | Of the currently expanded panel name | Accordion mode：string \| number<br>Non accordion mode：(string \| number)[] | - |
+| accordion | Whether to turn on accordion mode | boolean | false |
+| icon | Icon link and / or icon using nutui | string | ‘’ |
+| icon-size | Icon size | string | 16px |
+| icon-color | Icon color | string | '' |
+| title-icon | Title icon link and / or icon using nutui | string | ‘’ |
+| title-icon-size | Title icon size | string | 16px |
+| title-icon-color | Title icon color | string | ’‘ |
+| title-icon-position | Title icon location | string | ‘left' |
+| rotate | Click the rotation angle of collapse and expansion to take effect in the custom icon mode | string \ number | 180 |
 
 
 ### CollapseItem Prop
-| 参数 | 说明 | 类型 | 默认值 | 
+| Attribute | Description | Type   | Default  | 
 |------|------|------|------|
-| name | 唯一标识符，必填 | string \ number | -1 |
-| title | 标题栏左侧内容，支持插槽传入（props传入的优先级更高） | string | - |
-| sub-title | 标题栏副标题，支持插槽传入（props传入的优先级更高） | string | - |
-| disabled | 标题栏是否禁用 | boolean | false |
-| slot:extraRender `v3.1.20`| 设置标题下固定内容（不折叠） | - | ’‘ |
+|name | unique identifier, required | string \ number | - 1|
+|title | the content on the left side of the title bar supports slot incoming (props incoming has higher priority) | string | -|
+|sub-title | subtitle of title bar, support slot incoming (props incoming has higher priority) | string | -|
+|disabled | whether the title bar is disabled | Boolean | false|
+|slot:extrarender `v3.1.20`| set the fixed content under the title (no folding) | - | '|
 
 
 ### Events
-
-| 事件名 | 说明 | 回调参数 |
+| Attribute | Description | Callback Arguments |
 |------|------|------|
-| change | 切换面板时触发 | 类型与 v-model 绑定的值一致 |
+| change | Triggered when the panel is switched | The type is consistent with the value bound by V-model|

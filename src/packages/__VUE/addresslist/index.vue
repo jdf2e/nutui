@@ -65,7 +65,7 @@
   </div>
 </template>
 <script lang="ts">
-import { toRefs, reactive, onMounted, ref } from 'vue';
+import { toRefs, reactive, onMounted, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('addresslist');
 import LongPressShell from './components/LongPressShell.vue';
@@ -122,12 +122,20 @@ export default create({
     });
     //磨平参数差异
     const trowelData = () => {
+      console.log('props.data', props.data);
       if (Object.keys(props.dataMapOptions).length > 0 && props.data.length > 0) {
         dataArray.value = props.data.map((item, index) => {
           return floatData(dataInfo, item, props.dataMapOptions);
         });
       }
     };
+
+    // 监听props.data的变更重新渲染列表
+    watch(
+      () => props.data,
+      () => trowelData(),
+      { deep: true }
+    );
 
     const clickDelIcon = (event, item) => {
       emit('handelDelIcon', event, item);

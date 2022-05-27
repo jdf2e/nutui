@@ -1,10 +1,10 @@
-# Price 商品价格
+# Price
 
-### 介绍
+### Intro
 
-用来对商品价格数值的小数点前后部分应用不同样式，还支持人民币符号、千位分隔符、设置小数点位数等功能。
+It is used to apply different styles to the parts before and after the decimal point of the commodity price value, and also supports functions such as the RMB symbol, thousands separator, and setting the number of decimal points.
 
-### 安装
+### Install
 
 ```javascript
 import { createApp } from 'vue';
@@ -19,7 +19,7 @@ app.use(Price);
 ```
 
 
-### 基本用法 small normal large
+### Support three sizes：small、normal、large
 
 :::demo
 
@@ -33,7 +33,7 @@ app.use(Price);
 
 :::
 
-### 不保留小数
+### No decimals
 
 :::demo
 
@@ -45,7 +45,7 @@ app.use(Price);
 
 :::
 
-### 有人民币符号，无千位分隔
+### With RMB symbol, no thousands separator
 
 :::demo
 
@@ -56,7 +56,7 @@ app.use(Price);
 </template>
 ```
 :::
-### 带人民币符号，有千位分隔，保留小数点后三位
+### With RMB symbol, separated by thousands, keep three decimal places
 
 :::demo
 
@@ -68,7 +68,7 @@ app.use(Price);
 
 :::
 
-### 调整 symbol 符号位置
+### Adjust the symbol position
 
 :::demo
 
@@ -79,7 +79,7 @@ app.use(Price);
 ```
 
 :::
-### 异步随机变更
+### Asynchronous random changes
 
 :::demo
 
@@ -108,12 +108,12 @@ app.use(Price);
 
 ### Prop
 
-| 字段           | 说明                                    | 类型    | 默认值 |
-|----------------|-----------------------------------------|---------|--------|
-| price          | 价格数量                                | Number ｜ String | 0      |
-| need-symbol    | 是否需要加上 symbol 符号                 | Boolean          | true   |
-| symbol         | 符号类型                                | String           | &yen;  |
-| decimal-digits | 小数位位数                              | Number ｜ String  | 2     |
-| thousands      | 是否按照千分号形式显示                    | Boolean          | false  |
-| position       | 符号显示在价格前或者后，`before`、`after`  | String           | before |
-| size           | 价格尺寸，`large`、`normal`、`small`     | String           | large |
+| Attribute      | Description                                                | Type            | Default |
+|----------------|------------------------------------------------------------|------------------|--------|
+| price          | Price                                                      | Number ｜ String | 0       |
+| need-symbol    | Add symbol                                                 | Boolean          | true   |
+| symbol         | Symbol type                                                | String           | &yen;  |
+| decimal-digits | Decimal digits                                             | Number ｜ String | 2      |
+| thousands      | Thousands separation                                       | Boolean          | false  |
+| position       | The symbol appear before or after the price，`before`、`after` | String           | before |
+| size           | Size，`large`、`normal`、`small`                            | String           | large |

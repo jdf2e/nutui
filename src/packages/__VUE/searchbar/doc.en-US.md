@@ -1,10 +1,10 @@
-# SearchBar 搜索栏
+# SearchBar
 
-### 介绍
+### Intro
 
-搜索栏
+Search bar
     
-### 安装
+### Install
     
 ```javascript
 import { createApp } from 'vue';
@@ -18,7 +18,7 @@ const app = createApp();
 app.use(SearchBar).use(Icon);
 ```    
     
-### 基础用法
+### Basic Usage
 :::demo
 ```html
 <template>
@@ -41,7 +41,7 @@ app.use(SearchBar).use(Icon);
 ```
 :::
 
-### 搜索事件监听
+### Search event listening
 :::demo
 ```html
 <template>
@@ -57,7 +57,7 @@ app.use(SearchBar).use(Icon);
       });
 
       const search = function () {
-        Toast.text('搜索触发');
+        Toast.text('Search trigger');
       };
 
       return {
@@ -70,7 +70,7 @@ app.use(SearchBar).use(Icon);
 ```
 :::
 
-### 显示搜索 icon
+### Display search Icon
 :::demo
 ```html
 <template>
@@ -98,7 +98,7 @@ app.use(SearchBar).use(Icon);
 ```
 :::
 
-### 右侧添加搜索文字
+### Add search text to the right
 :::demo
 ```html
 <template>
@@ -125,7 +125,7 @@ app.use(SearchBar).use(Icon);
 ```
 :::
 
-### 更改输入框内部及外部的背景样式
+### Change the background style inside and outside the input box
 :::demo
 ```html
 <template>
@@ -147,7 +147,7 @@ app.use(SearchBar).use(Icon);
 </script>
 ```
 :::
-### 显示全部 icon
+### Show all icons
 :::demo
 ```html
 <template>
@@ -183,45 +183,46 @@ app.use(SearchBar).use(Icon);
 </script>
 ```
 :::
-    
-### Props
-    
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| v-model	         | 当前输入的值   | Number / String | ''      |
-| label `v3.1.21`| 搜索框左侧文本 | String | '' |
-| shape | 搜索框形状，可选值为 round | String | square |
-| max-length         | 最大输入长度   | [Number,String] | '9999'      |
-| input-type    | 输入框类型   | String | 'text'      |
-| placeholder        | 输入框默认暗纹  | String | '请输入'   |
-| clearable          | 是否展示清除按钮 | Boolean | true     |
-| background      | 输入框外部背景 | String |   '#fff'   |
-| input-background   | 输入框内部背景 | String |   '#f7f7f7'   |
-| autofocus `v3.1.21` | 是否自动聚焦 | boolean | false |
-| disabled `v3.1.21` | 是否禁用输入框 | boolean | false |
-| readonly `v3.1.21`| 输入框只读 | boolean | false |
-| input-align `v3.1.21`| 对齐方式，可选`center` `right` | string | `left` |
 
+### Props
+
+| Attribute | Description | Type   | Default |
+|--------------|----------------------------------|--------|------------------|
+| v-model | Currently entered value | number / string | ''|
+|label `v3.1.21`| left text of search box | string | ''|
+|shape | search box shape. The optional value is round | string | square|
+|max-length | maximum input length | [number, string] | '9999'|
+|input-type | input box type | string | 'text'|
+|placeholder | input box default dark grain | string | 'please enter'|
+|clear | whether to display the clear button | Boolean | true|
+|background | input box external background | string | '#fff'|
+|input-background | internal background of input box | string | '#f7f7f7'|
+|autofocus `v3.1.21` | Auto focus | boolean | false |
+|disabled `v3.1.21`| disable input box | Boolean | false|
+|readonly `v3.1.21`| input box read only | Boolean | false|
+|input-align `v3.1.21`| alignment, optional ` center ` ` right ` | string | left |
 
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
+
+| Event | Description                  | Arguments   |
 |--------|----------------|--------------|
-| change  | 输入内容时触发 | val, event |
-| focus  | 聚焦时触发 | val, event |
-| blur  | 失焦时触发 | val, event |
-| clear  | 点击清空时触发 | val |
-| search  | 按下 ENTER 键时触发 | val, event |
-| click-input `v3.1.21`|	点击输入区域时触发	 |	event |
-| click-left-icon `v3.1.21`|	点击左侧图标时触发 |	val, event |
-| click-right-icon `v3.1.21`|	点击右侧图标时触发 |	val, event |
+|change | Triggered when content is entered | val, event |
+|focus | Triggered when focusing | val, event|
+|blur | Triggered when out of focus | val, event|
+|clear | Triggered when clicking empty | val|
+|search | Triggered when the Enter key is pressed | val, event|
+| click-input `v3.1.21`| Triggered when the input field is clicked| event |
+| click-left-icon `v3.1.21`| Triggered when the icon on the left is clicked| val, event |
+| click-right-icon `v3.1.21`| Triggered when the icon on the right is clicked| val, event |
+
 
 ## Slots
 
-| 名称          | 说明                 |
+| Name          | Description        |
 |---------------|----------------------|
-| leftin      | 输入框内 左icon  |
-| leftout     | 输入框外 左icon |
-| rightin     | 输入框内 右icon |
-| rightout    | 输入框外 右icon |
+|leftIn | left icon in the input box|
+|leftout | left Icon outside the input box|
+|rightin | right icon in the input box|
+|rightout | right icon outside the input box|
