@@ -1,5 +1,5 @@
 <template>
-  <div class="doc-nav">
+  <div class="doc-nav" :class="{ fixed: fixed }">
     <ol v-for="_nav in nav" :key="_nav">
       <li>{{ _nav.name }}</li>
       <ul>
@@ -15,20 +15,37 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, computed, onMounted } from 'vue';
+import { defineComponent, reactive, computed, onMounted, toRefs } from 'vue';
 import { RefData } from '@/sites/assets/util/ref';
 import { nav, docs } from '@/config.json';
 export default defineComponent({
   name: 'doc-nav',
   setup() {
+    const state = reactive({
+      fixed: false
+    });
     const isActive = computed(() => {
       return function (name: string) {
         const currentValue = RefData.getInstance().currentRoute.value;
         let value = currentValue.indexOf('-taro') > -1 ? currentValue.split('-taro')[0] : currentValue;
-        return value.includes(name.toLowerCase());
+        return value == name.toLowerCase();
       };
     });
+
+    onMounted(() => {
+      document.addEventListener('scroll', scrollNav);
+    });
+    const scrollNav = () => {
+      let top = document.documentElement.scrollTop;
+      // console.log('a', top)
+      if (top > 64) {
+        state.fixed = true;
+      } else {
+        state.fixed = false;
+      }
+    };
     return {
+      ...toRefs(state),
       isActive,
       nav: reactive(nav),
       docs: reactive(docs),
@@ -41,16 +58,21 @@ export default defineComponent({
 <style lang="scss">
 .doc {
   &-nav {
-    position: fixed;
-    top: $doc-header-height + 50;
+    position: absolute;
+    top: $doc-header-height;
     left: 0;
     bottom: 0;
     z-index: 1;
     background: $white;
     width: 290px;
+    height: 100vh;
     border-right: 1px solid #eee;
     overflow: auto;
     padding-left: 35px;
+    &.fixed {
+      position: fixed;
+      top: 0;
+    }
     ol {
       &.introduce {
         padding-left: 5px;
@@ -89,6 +111,7 @@ export default defineComponent({
         li {
           padding-left: 29px;
           cursor: pointer;
+
           &:hover {
             a {
               color: $doc-default-color;
@@ -100,15 +123,16 @@ export default defineComponent({
               color: $doc-default-color !important;
             }
 
+            &:link,
+            &:visited {
+              color: $title-color;
+            }
+
             &:hover {
               color: $doc-default-color;
               &:visited {
                 color: $doc-default-color;
               }
-            }
-            &:link,
-            &:visited {
-              color: $title-color;
             }
 
             height: 100%;

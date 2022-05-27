@@ -18,8 +18,6 @@ const app = createApp();
 app.use(OverLay);
 ```
 
-## 代码演示
-
 ### 基础用法
 
 :::demo
@@ -47,6 +45,8 @@ app.use(OverLay);
 :::
 
 ### 遮罩样式
+
+可以通过 `overlay-style` 进行设置
 
 :::demo
 

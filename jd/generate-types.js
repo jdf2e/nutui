@@ -5,8 +5,8 @@ let importStr = `import Locale from '../packages/locale';\n`;
 const packages = [];
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name } = element;
-    importStr += `import ${name} from './__VUE/${name.toLowerCase()}';\n`;
+    let { name, type } = element;
+    importStr += `import ${name} from './__VUE/${name.toLowerCase()}${type === 'methods' ? '' : '/index.vue'}';\n`;
 
     packages.push(name);
   });

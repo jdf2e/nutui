@@ -1,12 +1,12 @@
 import Dialog from './index.vue';
-import { render, createVNode, h } from 'vue';
+import { render, createVNode, h, VNode } from 'vue';
 export class DialogOptions {
   title?: string = '';
-  content?: string = '';
+  content?: string | VNode = '';
   cancelText?: string = '';
   okText?: string = '';
   textAlign?: string = 'center';
-  teleport?: String | HTMLElement = 'body';
+  teleport?: string | HTMLElement = 'body';
   id?: string | number = new Date().getTime();
   footerDirection?: string = 'horizontal'; //使用横纵方向 可选值 horizontal、vertical
 

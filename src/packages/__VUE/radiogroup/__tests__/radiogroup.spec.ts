@@ -20,7 +20,7 @@ test('should emit "update:modelValue" and "change" event when radio is clicked',
         </nut-radiogroup>
       </template>
     `,
-    setup(props, { emit }) {
+    setup(props: any, { emit }: any) {
       const state = reactive({
         radioVal: ''
       });
