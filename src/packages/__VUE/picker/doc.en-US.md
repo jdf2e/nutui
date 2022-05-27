@@ -373,7 +373,7 @@ Slots are arranged at the bottom and top respectively for custom Settings
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | v-model:value         | Default Index               | Array | []              |
 | v-model:visible          | Is Show               | Boolean | -                |
@@ -384,7 +384,7 @@ Slots are arranged at the bottom and top respectively for custom Settings
 
 ### Data Structure of Columns
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | text        | Text of column              | String|Number |               |
 | value          | Value of column               | String|Number |            |
@@ -393,7 +393,7 @@ Slots are arranged at the bottom and top respectively for custom Settings
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
+| Event | Description           | Arguments     |
 |--------|----------------|--------------|
 | confirm  | Emitted when click confirm button. | { selectedValue, selectedOptions } |
 | close  | Emitted when click close button. | { selectedValue, selectedOptions } |
@@ -401,7 +401,7 @@ Slots are arranged at the bottom and top respectively for custom Settings
 
 ### Slots
 
-| 事件名 | 说明           |
+| Event | Description           |
 |--------|----------------|
 | default  | Custom content bottom columns |
 | top  | Custom content top columns |
