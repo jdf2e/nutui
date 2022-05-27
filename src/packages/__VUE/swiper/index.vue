@@ -28,6 +28,7 @@
         :style="{
           backgroundColor: activePagination === index ? paginationColor : '#ddd'
         }"
+        :class="{ active: activePagination === index }"
         v-for="(item, index) in state.children.length"
         :key="index"
       />
