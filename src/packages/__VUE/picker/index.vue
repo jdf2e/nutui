@@ -181,7 +181,6 @@ export default create({
             cursor = cursor.children[0];
           }
         } else {
-          console.log('更新', option.value);
           defaultValues.value[columnIndex] = option.hasOwnProperty('value') ? option.value : '';
         }
 
@@ -235,6 +234,7 @@ export default create({
     watch(
       () => props.visible,
       (val) => {
+        console.log('props更新', props.columns);
         state.show = val;
       }
     );
