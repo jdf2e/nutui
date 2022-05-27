@@ -193,3 +193,25 @@ test('menu item change props: value2 should be b after click', async () => {
 
   expect(wrapper.vm.value2).toBe('b');
 });
+
+test('menu close-on-click-overlay props: ', async () => {
+  const wrapper = mount(Menu, {
+    props: {
+      closeOnClickOverlay: false
+    },
+    slots: {
+      default: h(MenuItem, {
+        modelValue: 0,
+        options: options1
+      })
+    }
+  });
+  await nextTick();
+  wrapper.find('.nut-menu__item').trigger('click');
+  await nextTick();
+
+  wrapper.find('.nut-overlay').trigger('click');
+  await nextTick();
+
+  expect(wrapper.find<HTMLElement>('.nut-overlay').element.style.display).toEqual('none');
+});

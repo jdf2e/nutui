@@ -294,6 +294,7 @@ export default {
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | active-color         | Active color of title and option     | String | #F2270C               |
+| close-on-click-overlay        | Whether to close when overlay is clicked     | Boolean | true               |
 
 ### MenuItem Props
 

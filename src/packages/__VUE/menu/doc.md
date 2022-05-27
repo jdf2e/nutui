@@ -296,6 +296,7 @@ export default {
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | active-color         | 选项的选中态图标颜色     | String | #F2270C               |
+| close-on-click-overlay        | 是否在点击遮罩层后关闭菜单     | Boolean | true               |
 
 ### MenuItem Props
 
