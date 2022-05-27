@@ -332,7 +332,7 @@ Paused and restarted the countdown with the paused attribute
 
 ### Event
 
-| Attribute | Description | Arguments
+| Event | Description | Arguments
 | ----- | ----- | ----- 
 | on-end | Emitted when count down end | Residual Timestamp
 | on-paused | Emitted when count down paused | Residual Timestamp
