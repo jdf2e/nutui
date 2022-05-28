@@ -31,7 +31,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, reactive, toRefs, nextTick, ref, Ref } from 'vue';
+import { computed, reactive, toRefs, nextTick, ref, Ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
 const { componentName, create } = createComponent('elevator');
@@ -121,9 +121,6 @@ export default create({
       if (!index && index !== 0) {
         return;
       }
-      if (!state.listHeight.length) {
-        calculateHeight();
-      }
       if (index < 0) index = 0;
       if (index > state.listHeight.length - 2) index = state.listHeight.length - 2;
       state.currentIndex = index;
@@ -164,6 +161,14 @@ export default create({
     useExpose({
       scrollTo
     });
+
+    watch(
+      () => state.listGroup.length,
+      () => {
+        state.listHeight = [];
+        nextTick(calculateHeight);
+      }
+    );
 
     return {
       classes,
