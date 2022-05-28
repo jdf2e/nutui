@@ -5,7 +5,9 @@
         <view class="nut-elevator__list__item__code">{{ item[acceptKey] }}</view>
         <view
           class="nut-elevator__list__item__name"
-          :class="{ 'nut-elevator__list__item__name--highcolor': currentData.id === subitem.id }"
+          :class="{
+            'nut-elevator__list__item__name--highcolor': currentData.id === subitem.id && currentKey === item[acceptKey]
+          }"
           v-for="subitem in item.list"
           :key="subitem['id']"
           @click="handleClickItem(item[acceptKey], subitem)"
@@ -71,7 +73,8 @@ export default create({
       },
       scrollStart: false,
       currentIndex: 0,
-      currentData: {} as ElevatorData
+      currentData: {} as ElevatorData,
+      currentKey: ''
     });
 
     const classes = computed(() => {
@@ -152,6 +155,7 @@ export default create({
     const handleClickItem = (key: string, item: ElevatorData) => {
       context.emit('click-item', key, item);
       state.currentData = item;
+      state.currentKey = key;
     };
 
     const handleClickIndex = (key: string) => {
