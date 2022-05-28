@@ -27,7 +27,7 @@ app.use();
   <div class="demo">
     <h2>基础用法</h2>
     <nut-cell>
-      <nut-list :height="50" :listData="count" @scroll="handleScroll">
+      <nut-list :height="50" :listData="count" @scroll-bottom="handleScroll">
         <template v-slot="{ item }">
           <div class="list-item">
             {{ item }}
@@ -85,4 +85,5 @@ export default {
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| scroll  | 滚动时触发 | - |
+| scroll(将被废弃), `scroll-bottom` 代替 | 滚动到底部时触发 | - |
+| scroll-bottom `v3.1.21`   | 滚动到底部时触发 | - |

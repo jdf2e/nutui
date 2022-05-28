@@ -2,7 +2,7 @@
   <div class="demo list-demo">
     <h2>基础用法</h2>
     <nut-cell>
-      <nut-list :height="50" :listData="count" @scroll="handleScroll">
+      <nut-list :height="50" :listData="count" @scroll-bottom="handleScroll">
         <template v-slot="{ item }">
           <div class="list-item">
             {{ item }}
