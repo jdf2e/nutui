@@ -276,6 +276,88 @@ app.use(Swiper).use(SwiperItem);
 
 :::
 
+### 手动切换
+
+可通过 `API`(`prev`,`next`)进行手动切换
+
+:::demo
+
+```html
+<template>
+  <view class="demo-box">
+    <nut-swiper :init-page="page" :loop="true" ref="swiper">
+      <nut-swiper-item v-for="item in list" :key="item">
+        <img :src="item" alt="" />
+      </nut-swiper-item>
+    </nut-swiper>
+    <view class="nut-swiper-btns">
+      <span class="nut-swiper-btns__left" @click="handlePrev">
+        <nut-icon name='left'></nut-icon>
+      </span>
+      <span class="nut-swiper-btns__left" @click="handleNext">
+        <nut-icon name='right'></nut-icon>
+      </span>
+    </view>
+  </view>
+</template>
+<script lang="ts">
+  import { reactive, toRefs, ref, Ref } from 'vue';
+  export default {
+    setup() {
+      const swiper = ref(null) as Ref;
+      const state = reactive({
+        page: 2,
+        list: [
+          'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+          'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+          'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+          'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+        ],
+      });
+      const handlePrev = () => {
+        swiper.value.prev();
+      };
+      const handleNext = () => {
+        swiper.value.next();
+      };
+      
+      return { ...toRefs(state), swiper, handlePrev, handleNext };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .demo-box{
+    position: relative;
+  }
+  .nut-swiper-item {
+    line-height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .nut-swiper-btns{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    span{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 30px;
+      background-color: rgba(0,0,0,.2);
+    }
+  }
+</style>
+```
+
+:::
+
 ### 垂直方向
 
 `direction` 自定义轮播方向
@@ -316,6 +398,17 @@ app.use(Swiper).use(SwiperItem);
     img {
       width: 100%;
       height: 100%;
+    }
+    ::v-deep(.nut-swiper-pagination-vertical) {
+      i{
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        &.active{
+          height: 18px;
+          border-radius: 5px;
+        }
+      }
     }
   }
 </style>

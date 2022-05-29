@@ -130,8 +130,8 @@ export default {
 | close-on-popstate      | 是否在页面回退时自动关闭                 | Boolean | false      |
 | lock-scroll            | 背景是否锁定                             | Boolean | false      |
 | footer-direction       | 使用横纵方向 可选值 horizontal、vertical | string  | horizontal |
-| overlay-class          | 自定义遮罩类名   | String         | -      |
-| overlay-style          | 自定义遮罩样式   | CSSProperties  | -      |
+| overlay-class`v3.1.21`          | 自定义遮罩类名   | String         | -      |
+| overlay-style`v3.1.21`          | 自定义遮罩样式   | CSSProperties  | -      |
 
 ## Events
 
