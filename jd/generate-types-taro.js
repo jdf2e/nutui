@@ -24,7 +24,7 @@ fs.outputFileSync(
   `declare namespace _default {
   export { install };
   export { version };
-};
+}
 export function install(app: any): void;
 export const version: '${package.version}';
 export default _default;
