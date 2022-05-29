@@ -197,7 +197,7 @@ test('menu item change props: value2 should be b after click', async () => {
 test('menu close-on-click-overlay props: ', async () => {
   const wrapper = mount(Menu, {
     props: {
-      closeOnClickOverlay: false
+      closeOnClickOverlay: true
     },
     slots: {
       default: h(MenuItem, {
