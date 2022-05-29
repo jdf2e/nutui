@@ -10,8 +10,8 @@
       <nut-menu-item v-model="state.value1" :options="state.options1" />
       <nut-menu-item title="筛选" ref="item">
         <div :style="{ display: 'flex', flex: 1, 'justify-content': 'space-between', 'align-items': 'center' }">
-          <div>自定义内容</div>
-          <nut-button @click="onConfirm">关闭</nut-button>
+          <div :style="{ marginRight: '10px' }">自定义内容</div>
+          <nut-button @click="onConfirm">确认</nut-button>
         </div>
       </nut-menu-item>
     </nut-menu>
