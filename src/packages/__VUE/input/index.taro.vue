@@ -51,6 +51,7 @@
           :value="modelValue"
           :formatTrigger="formatTrigger"
           :autofocus="autofocus"
+          :confirm-type="confirmType"
           :adjust-position="adjustPosition"
           @input="onInput"
           @focus="onFocus"
@@ -93,6 +94,44 @@ import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
 
 const { componentName, create, translate } = createComponent('input');
+interface Events {
+  eventName: 'focus' | 'blur' | 'clear' | 'change' | 'update:modelValue';
+  params: (string | number | Event)[];
+}
+export type InputAlignType = 'left' | 'center' | 'right'; // text-align
+export type InputFormatTrigger = 'onChange' | 'onBlur'; // onChange: 在输入时执行格式化 ; onBlur: 在失焦时执行格式化
+export type InputType =
+  | 'tel'
+  | 'url'
+  | 'date'
+  | 'file'
+  | 'text'
+  | 'time'
+  | 'week'
+  | 'color'
+  | 'digit'
+  | 'email'
+  | 'image'
+  | 'month'
+  | 'radio'
+  | 'range'
+  | 'reset'
+  | 'button'
+  | 'hidden'
+  | 'number'
+  | 'search'
+  | 'submit'
+  | 'checkbox'
+  | 'password'
+  | 'textarea'
+  | 'datetime-local';
+export type confirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
+
+export type InputRule = {
+  pattern?: RegExp;
+  message?: string;
+  required?: boolean;
+};
 
 export default create({
   props: {
@@ -224,6 +263,9 @@ export default create({
       type: Boolean,
       default: false
     },
+    confirmType: {
+      type: String as PropType<confirmTextType>,
+      default: 'done'
     adjustPosition: {
       type: Boolean,
       default: true
