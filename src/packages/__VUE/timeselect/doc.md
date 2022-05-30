@@ -37,7 +37,7 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
   </nut-timeselect>
 </template>
 <script lang="ts">
-  import { reactive, toRefs, getCurrentInstance } from 'vue';
+  import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
   export default {
     props: {},
     setup() {
@@ -84,6 +84,13 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
         proxy.$toast.text(`您选择了：${JSON.stringify(obj)}`);
       };
 
+      onMounted(() => {
+        state.currentTime1.push({
+          key: state.currentKey1,
+          list: []
+        });
+      });
+
       return { 
         ...toRefs(state), 
         handleChange1,
@@ -118,7 +125,7 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
   </nut-timeselect>
 </template>
 <script lang="ts">
-  import { reactive, toRefs, getCurrentInstance } from 'vue';
+  import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
   export default {
     props: {},
     setup() {
@@ -167,6 +174,13 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
       const handleSelected2 = (obj: any) => {
         proxy.$toast.text(`您选择了：${JSON.stringify(obj)}`);
       };
+
+      onMounted(() => {
+        state.currentTime2.push({
+          key: state.currentKey2,
+          list: []
+        });
+      });
 
       return { 
         ...toRefs(state), 

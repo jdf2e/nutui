@@ -65,7 +65,7 @@ export abstract class BaseLang {
   abstract sku: {
     buyNow: string;
     buyNumber: string;
-    addToCard: string;
+    addToCart: string;
   };
   abstract skuheader: {
     skuId: string;
@@ -77,6 +77,11 @@ export abstract class BaseLang {
     complaintsText: string;
     additionalReview: Function;
     additionalImages: Function;
+  };
+  abstract infiniteloading: {
+    loading: string;
+    pullTxt: string;
+    loadMoreTxt: string;
   };
 }
 export default BaseLang;

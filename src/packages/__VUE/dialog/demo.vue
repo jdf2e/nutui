@@ -33,7 +33,7 @@
   </div>
 </template>
 <script lang="ts">
-import { ref } from 'vue';
+import { createVNode, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('dialog');
 import { Dialog } from '@/packages/nutui.vue';
@@ -50,7 +50,8 @@ useTranslate({
     title2: 'Teleport 使用，挂载到指定节点',
     content: '支持函数调用和组件调用两种方式。',
     content1: '支持底部按钮纵向排列。',
-    content2: '打开开发者工具看一下 Elements Tab'
+    content2: '打开开发者工具看一下 Elements Tab',
+    content3: '我可以是一个自定义组件'
   },
   'en-US': {
     funUse: 'Function use',
@@ -63,7 +64,8 @@ useTranslate({
     title2: 'Teleport use, mount to the specified element node',
     content: 'Function call and template call are supported.',
     content1: 'Support vertical arrangement of bottom buttons.',
-    content2: 'Open the developer tool and take a look at the Elements tab'
+    content2: 'Open the developer tool and take a look at the Elements tab',
+    content3: 'I can be a custom component'
   }
 });
 export default createDemo({
@@ -81,7 +83,7 @@ export default createDemo({
     const baseClick = (): void => {
       Dialog({
         title: translate('basic'),
-        content: translate('content'),
+        content: createVNode('span', { style: { color: 'red' } }, translate('content3')),
         onCancel,
         onOk
       });

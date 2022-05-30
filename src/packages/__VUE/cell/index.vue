@@ -39,7 +39,8 @@ export default create({
     replace: { type: Boolean, default: false },
     roundRadius: { type: [String, Number], default: '' },
     url: { type: String, default: '' },
-    icon: { type: String, default: '' }
+    icon: { type: String, default: '' },
+    center: { type: Boolean, default: false }
   },
   emits: ['click'],
   setup(props, { emit }) {
@@ -47,7 +48,8 @@ export default create({
       const prefixCls = componentName;
       return {
         [prefixCls]: true,
-        [`${prefixCls}--clickable`]: props.isLink || props.to
+        [`${prefixCls}--clickable`]: props.isLink || props.to,
+        [`${prefixCls}--center`]: props.center
       };
     });
     const router = useRouter();

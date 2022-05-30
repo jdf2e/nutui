@@ -79,7 +79,7 @@ app.use(Icon);
 
 ### 自定义颜色及背景色
 
-Icon 和字符型可以自定义图标颜色及背景色
+Icon 和字符型可以自定义颜色及背景色
 
 :::demo
 
@@ -194,33 +194,33 @@ Icon 和字符型可以自定义图标颜色及背景色
 :::
 
 
-### Prop
+### avatar Prop
+
+| 字段     | 说明                                                        | 类型   | 默认值 |
+| -------- | --------------------------------------------------------- | ------ | ------ |
+| size     | 头像的大小，可选值为：`large`、`normal`、`small`，支持输入数字   | String ｜ Number | normal |
+| shape    | 头像的形状，可选值为：`square`、`round `                      | String | round  |
+| color    | Icon、字符类型头像的颜色                                     | String | #666   |
+| bg-color | Icon、字符类型头像的背景色                                    | String | #eee   |
+| url      | 图片类型头像的地址                                           | String | -   |
+| alt      | 图片类型头像无法显示时的替代文本                               | String | -   |
+| icon     | Icon 类型头像图标, 类似 Icon 组件的 name 属性                 | String | -     |
+
+### avatarGroup Prop
 
 | 字段     | 说明                                                             | 类型   | 默认值 |
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
-| size     | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字   | String | normal |
-| shape    | 设置头像的形状，可选值为：square、round            | String | round  |
-| bg-color | 设置 Icon、字符类型头像的背景色                    | String | #eee   |
-| color    | 设置 Icon、字符类型头像的颜色                     | String | #666   |
-| url      | 设置图片类型头像的地址                           | String | -   |
-| alt      | 设置图片类型头像无法显示时的替代文本                | String | -   |
-| icon     | 设置 Icon 类型头像图标, 类似 Icon 组件的 name 属性  | String | -     |
+| max-count    | 显示的最大头像个数   | String ｜ Number | - |
+| max-content  | 头像数量超出时，会出现一个头像折叠元素，该元素内容可为`...`、`more`、`+N` | String | +N |
+| size         | 头像的大小，可选值为：`large`、`normal`、`small`，支持直接输入数字   | String ｜ Number | normal |
+| shape        | 头像的形状，可选值为：`square`、`round`        | String | round  |
+| max-color    | Icon、字符类型头像的颜色                   | String | #666 |
+| max-bgColor  | Icon、字符类型头像的背景色                    | String | #eee   |
+| span         | 头像之间的间距               | String | -8   |
+| zIndex       | 组合头像之间的层级方向，可选值为：`left`、`right`  | String | left     |
+### avatar Events
 
-### avatarGroup
-
-| 字段     | 说明                                                             | 类型   | 默认值 |
-| -------- | ---------------------------------------------------------------- | ------ | ------ |
-| maxCount     | 显示的最大头像个数   | Number、String | - |
-| max-content  | 头像数量超出时，会出现一个头像折叠元素。该元素内容可为...、more、+N。默认为 +N | 
-| size         | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字   | String | +N |
-| shape        | 设置头像的形状，可选值为：square、round            | String | round  |
-| max-bgColor  | 设置 Icon、字符类型头像的背景色                    | String | #eee   |
-| max-color    | 设置 Icon、字符类型头像的颜色                   | String | #666 |
-| span         | 设置头像之间的间距               | String | -8   |
-| zIndex       | 头像之间的层级关系，可选值为：left、right  | String | left     |
-### Events
-
-| 字段             | 说明         | 类型     | 回调参数 |
-| ---------------- | ------------ | -------- | -------- |
-| active-avatar | 点击头像触发事件    | Function | event    |
-| onError       | 图片加载失败的事件   | Function | event    |
+| 字段             | 说明         | 回调参数 |
+| ---------------- | ------------ | -------- |
+| active-avatar | 点击头像触发事件    | event    |
+| onError       | 图片加载失败的事件   | event    |

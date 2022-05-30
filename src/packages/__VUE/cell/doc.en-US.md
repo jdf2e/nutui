@@ -144,6 +144,18 @@ app.use(Cell).use(CellGroup).use(Icon);
 </template>
 ```
 
+### Vertical Center
+
+You can center the left and right contents of the cell vertically through the 'center' attribute.
+
+:::demo
+
+```html
+<template>
+  <nut-cell center title="Title" sub-title="Subtitle Description" desc="Desc"></nut-cell>
+</template>
+```
+
 :::
 
 ## API
@@ -169,6 +181,7 @@ app.use(Cell).use(CellGroup).use(Icon);
 | url             | Link URL                                                                                                 | String           | -       |
 | to              | Target route of the link, same as to of vue-router                                                       | String ｜ Object | -       |
 | replace         | If true, the navigation will not leave a history record                                                  | Boolean          | false   |
+| center`v3.1.21` | Whether to center content vertically                                                                     | Boolean          | false   |
 
 ### Cell Event
 

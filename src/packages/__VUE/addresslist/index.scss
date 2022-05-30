@@ -107,10 +107,10 @@
           padding: 0 6px;
           height: 16px;
           line-height: 16px;
-          background: #f2270c;
+          background: $addresslist-contnts-contact-default;
           border-radius: 2px;
           font-size: 12px;
-          color: #fff;
+          color: $addresslist-contnts-contact-color;
         }
       }
       &-handle {

@@ -10,16 +10,21 @@
       <view class="nut-searchbar__input-inner">
         <form action="#" onsubmit="return false" @submit.prevent="handleSubmit">
           <input
+            ref="inputsearch"
             class="nut-searchbar__input-bar"
             :type="inputType"
             :maxlength="maxLength"
             :placeholder="placeholder || translate('placeholder')"
             :value="modelValue"
             :confirm-type="confirmType"
+            :disabled="disabled"
+            :readonly="readonly"
+            @click="clickInput"
             @input="valueChange"
             @focus="valueFocus"
             @blur="valueBlur"
             @confirm="handleSubmit"
+            :style="styleSearchbar"
           />
         </form>
         <view @click="handleClear" class="nut-searchbar__input-clear" v-if="clearable" v-show="modelValue.length > 0">
@@ -37,7 +42,7 @@
 </template>
 
 <script lang="ts">
-import { toRefs, reactive, computed, PropType } from 'vue';
+import { toRefs, reactive, computed, ref, onMounted, PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('searchbar');
 interface Events {
@@ -79,10 +84,36 @@ export default create({
     confirmType: {
       type: String as PropType<confirmTextType>,
       default: 'done'
+    },
+    autofocus: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    inputAlign: {
+      type: String,
+      default: 'left'
     }
   },
 
-  emits: ['change', 'update:modelValue', 'blur', 'focus', 'clear', 'search'],
+  emits: [
+    'change',
+    'update:modelValue',
+    'blur',
+    'focus',
+    'clear',
+    'search',
+    'click-input',
+    'click-left-icon',
+    'click-right-icon'
+  ],
 
   setup(props, { emit }) {
     const state = reactive({
@@ -141,7 +172,31 @@ export default create({
       emit('search', props.modelValue);
     };
 
+    const clickInput = (event: Event) => {
+      emit('click-input', event);
+    };
+
+    const leftIconClick = (event: Event) => {
+      emit('click-left-icon', props.modelValue, event);
+    };
+
+    const rightIconClick = (event: Event) => {
+      emit('click-right-icon', props.modelValue, event);
+    };
+
+    const styleSearchbar: any = computed(() => {
+      return {
+        'text-align': props.inputAlign
+      };
+    });
+    const inputsearch: any = ref(null);
+    onMounted(() => {
+      if (props.autofocus) {
+        inputsearch.value.focus();
+      }
+    });
     return {
+      inputsearch,
       ...toRefs(state),
       valueChange,
       valueFocus,
@@ -150,7 +205,11 @@ export default create({
       handleSubmit,
       searchbarStyle,
       inputSearchbarStyle,
-      translate
+      translate,
+      clickInput,
+      leftIconClick,
+      rightIconClick,
+      styleSearchbar
     };
   }
 });

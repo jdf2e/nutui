@@ -418,7 +418,8 @@ app.use(Icon);
 | error-message-align | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`          | String | - |
 | formatter      | 输入内容格式化函数    | `(val: string) => string` | - |
 | format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | String | - |
-| confirm-type   | 键盘右下角按钮的文字，仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
+| confirm-type   | 键盘右下角按钮的文字（`仅支持小程序`），仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
+| adjust-position| 键盘弹起时，是否自动上推页面，仅支持原生     | Boolean | `true` |
 
 ### Event
 

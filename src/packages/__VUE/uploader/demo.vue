@@ -1,21 +1,21 @@
 <template>
   <div class="demo bg-w">
-    <h2>基础用法</h2>
+    <h2>{{ translate('basic') }}</h2>
     <nut-uploader :url="uploadUrl"></nut-uploader>
-    <h2>上传状态</h2>
+    <h2>{{ translate('title1') }}</h2>
     <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" @delete="onDelete" maximum="3" multiple>
     </nut-uploader>
-    <h2>基础用法-上传列表展示</h2>
+    <h2>{{ translate('title2') }}</h2>
     <nut-uploader :url="uploadUrl" v-model:file-list="defaultFileList" maximum="10" multiple list-type="list">
-      <nut-button type="success" size="small">上传文件</nut-button>
+      <nut-button type="success" size="small">{{ translate('uploadfile') }}</nut-button>
     </nut-uploader>
-    <h2>自定义上传样式</h2>
+    <h2>{{ translate('title3') }}</h2>
     <nut-uploader :url="uploadUrl">
-      <nut-button type="success" size="small">上传文件</nut-button>
+      <nut-button type="success" size="small">{{ translate('uploadfile') }}</nut-button>
     </nut-uploader>
-    <h2>自定义上传使用默认进度条</h2>
+    <h2>{{ translate('title4') }}</h2>
     <nut-uploader :url="uploadUrl" @progress="onProgress">
-      <nut-button type="success" size="small">上传文件</nut-button>
+      <nut-button type="success" size="small">{{ translate('uploadfile') }}</nut-button>
     </nut-uploader>
     <br />
     <nut-progress
@@ -24,30 +24,65 @@
       :status="progressPercentage == 100 ? '' : 'active'"
     >
     </nut-progress>
-    <h2>直接调起摄像头（移动端生效）</h2>
+    <h2>{{ translate('title5') }}</h2>
     <nut-uploader :url="uploadUrl" capture></nut-uploader>
-    <h2>限制上传数量5个</h2>
+    <h2>{{ translate('title6') }}</h2>
     <nut-uploader :url="uploadUrl" multiple maximum="5"></nut-uploader>
-    <h2>限制上传大小（每个文件最大不超过 50kb）</h2>
+    <h2>{{ translate('title7') }}</h2>
     <nut-uploader :url="uploadUrl" multiple :maximize="1024 * 50" @oversize="onOversize"></nut-uploader>
-    <h2>图片压缩（在 beforeupload 钩子中处理）</h2>
+    <h2>{{ translate('title8') }}</h2>
     <nut-uploader :url="uploadUrl" multiple :before-upload="beforeUpload"> </nut-uploader>
-    <h2>自定义数据 FormData 、 headers </h2>
+    <h2>{{ translate('title9') }}</h2>
     <nut-uploader :url="uploadUrl" :data="formData" :headers="formData" :with-credentials="true"></nut-uploader>
-    <h2>选中文件后，通过按钮手动执行上传 </h2>
+    <h2>{{ translate('title10') }}</h2>
     <nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
     <br />
-    <nut-button type="success" size="small" @click="submitUpload">执行上传</nut-button>
-    <h2>禁用状态</h2>
+    <nut-button type="success" size="small" @click="submitUpload">{{ translate('title11') }}</nut-button>
+    <h2>{{ translate('title12') }}</h2>
     <nut-uploader disabled></nut-uploader>
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { FileItem } from './index.vue';
-const { createDemo } = createComponent('uploader');
+const { createDemo, translate } = createComponent('uploader');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    uploadfile: '上传文件',
+    title1: '上传状态',
+    title2: '基础用法-上传列表展示',
+    title3: '自定义上传样式',
+    title4: '自定义上传使用默认进度条',
+    title5: '直接调起摄像头（移动端生效）',
+    title6: '限制上传数量5个',
+    title7: '限制上传大小（每个文件最大不超过 50kb）',
+    title8: '图片压缩（在 beforeupload 钩子中处理）',
+    title9: '自定义数据 FormData 、 headers ',
+    title10: '选中文件后，通过按钮手动执行上传',
+    title11: '执行上传',
+    title12: '禁用状态'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    uploadfile: 'Upload files',
+    title1: 'Upload status',
+    title2: 'Basic usage - upload list display',
+    title3: 'Custom upload style',
+    title4: 'Custom upload uses default progress bar',
+    title5: 'Directly activate the camera (effective on the mobile terminal)',
+    title6: 'Limit the number of uploads to 5',
+    title7: 'Limit upload size (up to 50kb per file)',
+    title8: 'Image compression (handled in the beforeupload hook)',
+    title9: 'Custom data FormData , headers',
+    title10: 'Once the file is selected, manually perform the upload via the button',
+    title11: 'Perform upload',
+    title12: 'Disabled state'
+  }
+});
 export default createDemo({
   setup() {
     const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts';
@@ -55,26 +90,27 @@ export default createDemo({
     const formData = {
       custom: 'test'
     };
-    const defaultFileList = ref([
+
+    const defaultFileList = computed(() => [
       {
-        name: '文件1.png',
+        name: 'file 1.png',
         url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
         status: 'success',
-        message: '上传成功',
+        message: translate('success'),
         type: 'image'
       },
       {
-        name: '文件2.png',
+        name: 'file 2.png',
         url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
         status: 'error',
-        message: '上传失败',
+        message: translate('error'),
         type: 'image'
       },
       {
-        name: '文件3.png',
+        name: 'file 3.png',
         url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
         status: 'uploading',
-        message: '上传中...',
+        message: translate('uploading'),
         type: 'image'
       }
     ]);
@@ -135,7 +171,8 @@ export default createDemo({
       defaultFileList,
       formData,
       uploadRef,
-      submitUpload
+      submitUpload,
+      translate
     };
   }
 });

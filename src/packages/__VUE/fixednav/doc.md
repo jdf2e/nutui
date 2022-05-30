@@ -2,19 +2,20 @@
 
 ### 介绍
 
-悬浮收齐体验交互，用于快捷导航
+悬浮收起体验交互，用于快捷导航
 
 ### 安装
     
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { FixedNav } from '@nutui/nutui';
+import { FixedNav,OverLay } from '@nutui/nutui';
 // taro
-import { FixedNav } from '@nutui/nutui-taro';
+import { FixedNav,OverLay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(FixedNav);
+app.use(OverLay);
 
 ```
 

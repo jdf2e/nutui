@@ -36,6 +36,10 @@ export default create({
     duration: {
       type: [Number, String],
       default: 0
+    },
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: true
     }
   },
   setup(props, { emit, slots }) {

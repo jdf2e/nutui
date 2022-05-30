@@ -9,14 +9,13 @@
 import { PropType, CSSProperties, computed, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('tag');
-export type TagType = 'primary' | 'success' | 'danger' | 'warning';
 
 export default create({
   props: {
     color: { type: String, default: '' },
     textColor: { type: String, default: '' },
     type: {
-      type: String as PropType<TagType>,
+      type: String as PropType<import('./type').TagType>,
       default: 'default'
     },
     plain: {

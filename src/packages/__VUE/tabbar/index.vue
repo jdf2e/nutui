@@ -65,6 +65,7 @@ export default create({
         parentData.modelValue = value;
       }
     );
+
     return {
       changeIndex
     };

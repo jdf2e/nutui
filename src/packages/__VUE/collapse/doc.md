@@ -279,7 +279,7 @@ export default {
 | title | 标题栏左侧内容，支持插槽传入（props传入的优先级更高） | string | - |
 | sub-title | 标题栏副标题，支持插槽传入（props传入的优先级更高） | string | - |
 | disabled | 标题栏是否禁用 | boolean | false |
-| slot:extraRender | 设置标题下固定内容（不折叠） | - | ’‘ |
+| slot:extraRender `v3.1.20`| 设置标题下固定内容（不折叠） | - | ’‘ |
 
 
 ### Events
