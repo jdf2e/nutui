@@ -6,7 +6,9 @@
   padding: 24px 20px;
   box-sizing: border-box;
   overflow: auto;
-  &.active {
-    // overflow: visible;
+  height: 100%;
+  &.inactive {
+    overflow: visible;
+    height: 0;
   }
 }

@@ -38,6 +38,10 @@ export const component = {
       type: Boolean,
       default: true
     },
+    autoHeight: {
+      type: Boolean,
+      default: false
+    },
     background: {
       type: String,
       default: ''
@@ -57,6 +61,7 @@ export const component = {
 
   setup(props: any, { emit, slots }: any) {
     provide('activeKey', { activeKey: computed(() => props.modelValue) });
+    provide('autoHeight', { autoHeight: computed(() => props.autoHeight) });
     const titles: Ref<Title[]> = ref([]);
 
     const renderTitles = (vnodes: VNode[]) => {
@@ -65,9 +70,9 @@ export const component = {
         type = (type as any).name || type;
         if (type == 'nut-tabpane') {
           let title = new Title();
-          if (vnode.props?.title || vnode.props?.['pane-key']) {
+          if (vnode.props?.title || vnode.props?.['pane-key'] || vnode.props?.['paneKey']) {
             title.title = vnode.props?.title;
-            title.paneKey = vnode.props?.['pane-key'] || index;
+            title.paneKey = vnode.props?.['pane-key'] || vnode.props?.['paneKey'] || index;
             title.disabled = vnode.props?.disabled;
           } else {
             // title.titleSlot = vnode.children?.title() as VNode[];
