@@ -157,7 +157,7 @@ exports[`Cascader change tab 3`] = `
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
-          <view class=\\"nut-tabpane active\\">
+          <view class=\\"nut-tabpane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
                 <view class=\\"nut-cascader-item__title\\">浙江</view><i class=\\"nutui-iconfont nut-icon nut-icon-checklist nut-cascader-item__icon-check\\" src=\\"\\"></i>
@@ -170,14 +170,14 @@ exports[`Cascader change tab 3`] = `
               </view>
             </view>
           </view>
-          <view class=\\"nut-tabpane active\\">
+          <view class=\\"nut-tabpane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
                 <view class=\\"nut-cascader-item__title\\">福州</view><i class=\\"nutui-iconfont nut-icon nut-icon-checklist nut-cascader-item__icon-check\\" src=\\"\\"></i>
               </view>
             </view>
           </view>
-          <view class=\\"nut-tabpane active\\">
+          <view class=\\"nut-tabpane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item active\\" aria-checked=\\"true\\" role=\\"menuitemradio\\">
                 <view class=\\"nut-cascader-item__title\\">鼓楼区</view><i class=\\"nutui-iconfont nut-icon nut-icon-checklist nut-cascader-item__icon-check\\" src=\\"\\"></i>
@@ -206,7 +206,7 @@ exports[`Cascader modelValue 1`] = `
       <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\"></view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
-          <view class=\\"nut-tabpane active\\">
+          <view class=\\"nut-tabpane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" role=\\"menuitemradio\\">
                 <view class=\\"nut-cascader-item__title\\">浙江</view><i class=\\"nutui-iconfont nut-icon nut-icon-checklist nut-cascader-item__icon-check\\" src=\\"\\"></i>
@@ -309,7 +309,7 @@ exports[`Cascader modelValue 3`] = `
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
-          <view class=\\"nut-tabpane active\\">
+          <view class=\\"nut-tabpane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" aria-checked=\\"false\\" role=\\"menuitemradio\\">
                 <view class=\\"nut-cascader-item__title\\">浙江</view><i class=\\"nutui-iconfont nut-icon nut-icon-checklist nut-cascader-item__icon-check\\" src=\\"\\"></i>
@@ -347,7 +347,7 @@ exports[`Cascader modelValue 4`] = `
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
-          <view class=\\"nut-tabpane active\\">
+          <view class=\\"nut-tabpane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" role=\\"menuitemradio\\">
                 <view class=\\"nut-cascader-item__title\\">浙江</view><i class=\\"nutui-iconfont nut-icon nut-icon-checklist nut-cascader-item__icon-check\\" src=\\"\\"></i>
@@ -385,7 +385,7 @@ exports[`Cascader modelValue with lazy 1`] = `
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
-          <view class=\\"nut-tabpane active\\">
+          <view class=\\"nut-tabpane\\">
             <view class=\\"nut-cascader-pane\\"></view>
           </view>
         </view>
@@ -658,7 +658,7 @@ exports[`Cascader select 1`] = `
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
-          <view class=\\"nut-tabpane active\\">
+          <view class=\\"nut-tabpane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" role=\\"menuitemradio\\">
                 <view class=\\"nut-cascader-item__title\\">浙江</view><i class=\\"nutui-iconfont nut-icon nut-icon-checklist nut-cascader-item__icon-check\\" src=\\"\\"></i>
@@ -826,7 +826,7 @@ exports[`Cascader select 4`] = `
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
-          <view class=\\"nut-tabpane active\\">
+          <view class=\\"nut-tabpane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" role=\\"menuitemradio\\">
                 <view class=\\"nut-cascader-item__title\\">浙江</view><i class=\\"nutui-iconfont nut-icon nut-icon-checklist nut-cascader-item__icon-check\\" src=\\"\\"></i>
@@ -858,7 +858,7 @@ exports[`Cascader select with lazy 1`] = `
       <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\"></view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
-          <view class=\\"nut-tabpane active\\">
+          <view class=\\"nut-tabpane\\">
             <view class=\\"nut-cascader-pane\\"></view>
           </view>
         </view>
@@ -886,7 +886,7 @@ exports[`Cascader select with lazy 2`] = `
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
-          <view class=\\"nut-tabpane active\\">
+          <view class=\\"nut-tabpane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" role=\\"menuitemradio\\">
                 <view class=\\"nut-cascader-item__title\\">A0</view><i class=\\"nutui-iconfont nut-icon nut-icon-checklist nut-cascader-item__icon-check\\" src=\\"\\"></i>
@@ -1101,7 +1101,7 @@ exports[`Cascader select with lazy 6`] = `
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
-          <view class=\\"nut-tabpane active\\">
+          <view class=\\"nut-tabpane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" role=\\"menuitemradio\\">
                 <view class=\\"nut-cascader-item__title\\">A0</view><i class=\\"nutui-iconfont nut-icon nut-icon-checklist nut-cascader-item__icon-check\\" src=\\"\\"></i>
@@ -1186,7 +1186,7 @@ exports[`Cascader visible 1`] = `
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
-          <view class=\\"nut-tabpane active\\">
+          <view class=\\"nut-tabpane\\">
             <view role=\\"menu\\" class=\\"nut-cascader-pane\\">
               <view class=\\"nut-cascader-item\\" role=\\"menuitemradio\\">
                 <view class=\\"nut-cascader-item__title\\">浙江</view><i class=\\"nutui-iconfont nut-icon nut-icon-checklist nut-cascader-item__icon-check\\" src=\\"\\"></i>
