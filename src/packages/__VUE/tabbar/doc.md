@@ -115,7 +115,7 @@ app.use(TabbarItem);
 <template>
   <nut-tabbar>
     <nut-tabbar-item tab-title="首页" icon="home" num="11"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="分类" icon="category" :dot="true"></nut-tabbar-item>
     <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
     <nut-tabbar-item tab-title="购物车" icon="cart" num="110"></nut-tabbar-item>
     <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>

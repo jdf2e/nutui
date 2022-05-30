@@ -118,7 +118,7 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 <template>
   <nut-tabbar>
     <nut-tabbar-item tab-title="tab" icon="home" num="11"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="tab" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="tab" icon="category" :dot="true"></nut-tabbar-item>
     <nut-tabbar-item tab-title="tab" icon="find"></nut-tabbar-item>
     <nut-tabbar-item tab-title="tab" icon="cart" num="110"></nut-tabbar-item>
     <nut-tabbar-item tab-title="tab" icon="my"></nut-tabbar-item>
