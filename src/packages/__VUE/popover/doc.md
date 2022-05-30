@@ -229,18 +229,22 @@ export default {
 通过 location 属性来控制气泡的弹出位置。可选值
 ```
 top           # 顶部中间位置
-top-start     # 顶部左侧位置
-top-end       # 顶部右侧位置
 left          # 左侧中间位置
+right         # 右侧中间位置
+bottom        # 底部中间位置
+```
+自 `v3.1.21` 起新增
+```
+top-start     # 顶部左侧位置
+top-end       # 顶部右侧位置 
 left-start    # 左侧上方位置
 left-end      # 左侧下方位置
-right         # 右侧中间位置
 right-start   # 右侧上方位置
 right-end     # 右侧下方位置
-bottom        # 底部中间位置
 bottom-start  # 底部左侧位置
 bottom-end    # 底部右侧位置
 ```
+
 
 :::demo
 ```html
@@ -286,10 +290,10 @@ export default {
 | list          | 选项列表                          | List[]   | []        |
 | visible      | 是否展示气泡弹出层                 | boolean  | false     |
 | theme          | 主题风格，可选值为 dark            | string   | `light`   |
-| location       | 弹出位置，可选值为 top,left,right  | string   | `bottom`  |
-| offset       | 出现位置的偏移量  | [number, number]   | [0, 12]  |
-| show-arrow       | 是否显示小箭头  | boolean  | true  |
-| custom-class       | 自定义 class 值  | string  | ''  |
+| location       | 弹出位置  | string   | `bottom`  |
+| offset `v3.1.21`       | 出现位置的偏移量  | [number, number]   | [0, 12]  |
+| show-arrow `v3.1.21`       | 是否显示小箭头  | boolean  | true  |
+| custom-class `v3.1.21`       | 自定义 class 值  | string  | ''  |
 
 ### List 数据结构  
 
@@ -300,7 +304,7 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 | name           | 选项文字               | string   | -      |
 | icon           | nut-icon 图标名称      | string   | -      |
 | disabled       | 是否为禁用状态          | boolean  | false  | 
-| className       | 为对应选项添加额外的类名          | string/Array/object  | -  | 
+| className `v3.1.21`      | 为对应选项添加额外的类名          | string/Array/object  | -  | 
 
 
 ### Slots

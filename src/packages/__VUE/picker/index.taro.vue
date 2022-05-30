@@ -175,7 +175,7 @@ export default create({
             cursor = cursor.children[0];
           }
         } else {
-          defaultValues.value[columnIndex] = option.value ? option.value : '';
+          defaultValues.value[columnIndex] = option.hasOwnProperty('value') ? option.value : '';
         }
 
         emit('change', {
@@ -195,6 +195,7 @@ export default create({
     };
 
     onMounted(() => {
+      console.log('更新');
       if (props.visible) state.show = props.visible;
     });
 

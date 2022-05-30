@@ -431,10 +431,10 @@ export default {
 | text-key            | Customize the fields of `text` in the `options` structure                                                    | String   | -           |
 | children-key        | Customize the fields of `children` in the `options` structure                                                | String   | -           |
 | convert-config      | When options is a flat structure that can be converted into a tree structure, configure the conversion rules | Object   | -           |
-| title               | Title                                                                                                        | String   | ''          |
-| close-icon-position | Cancel the button position and inherit the popup component                                                   | String   | "top-right" |
-| close-icon          | Customize the close button and inherit the popup component                                                   | String   | "close"     |
-| closeable           | Whether to display the close button and inherit the popup component                                          | Boolean  | true        |
+| title `v3.1.21`     | Title                                                                                                        | String   | ''          |
+| close-icon-position `v3.1.21` | Cancel the button position and inherit the popup component                                                   | String   | "top-right" |
+| close-icon `v3.1.21` | Customize the close button and inherit the popup component                                                   | String   | "close"     |
+| closeable `v3.1.21` | Whether to display the close button and inherit the popup component                                          | Boolean  | true        |
 
 ### Events
 

@@ -1,8 +1,8 @@
 <template>
   <div class="demo">
-    <h2>基础用法</h2>
+    <h2>{{ translate('basic') }}</h2>
     <nut-cell
-      title="请选择城市"
+      :title="translate('chooseCity')"
       :desc="index"
       @click="
         () => {
@@ -13,14 +13,14 @@
     <nut-picker
       v-model:visible="show"
       :columns="columns"
-      title="城市选择"
+      :title="translate('chooseCity')"
       @change="change"
       @confirm="(options) => confirm('index', options)"
     ></nut-picker>
 
-    <h2>默认选中项</h2>
+    <h2>{{ translate('defaultSelected') }}</h2>
     <nut-cell
-      title="请选择城市"
+      :title="translate('chooseCity')"
       :desc="defult"
       @click="
         () => {
@@ -32,14 +32,14 @@
       v-model="selectedValue"
       v-model:visible="showDefult"
       :columns="columns"
-      title="城市选择"
+      :title="translate('chooseCity')"
       @confirm="(options) => confirm('defult', options)"
     >
     </nut-picker>
 
-    <h2>多列样式</h2>
+    <h2>{{ translate('multipleColumns') }}</h2>
     <nut-cell
-      title="请选择时间"
+      :title="translate('chooseTime')"
       :desc="multiple"
       @click="
         () => {
@@ -50,14 +50,14 @@
     <nut-picker
       v-model:visible="showMultiple"
       :columns="multipleColumns"
-      title="城市选择"
+      :title="translate('chooseCity')"
       @confirm="(options) => confirm('multiple', options)"
     >
     </nut-picker>
 
-    <h2>多级联动</h2>
+    <h2>{{ translate('cascade') }}</h2>
     <nut-cell
-      title="请选择地址"
+      :title="translate('chooseCity')"
       :desc="cascader"
       @click="
         () => {
@@ -68,13 +68,13 @@
     <nut-picker
       v-model:visible="showCascader"
       :columns="cascaderColumns"
-      title="城市选择"
+      :title="translate('chooseCity')"
       @confirm="(options) => confirm('cascader', options)"
     ></nut-picker>
 
-    <h2>异步获取</h2>
+    <h2>{{ translate('async') }}</h2>
     <nut-cell
-      title="请选择地址"
+      :title="translate('chooseCity')"
       :desc="async"
       @click="
         () => {
@@ -86,13 +86,13 @@
       v-model="asyncValue"
       v-model:visible="showAsync"
       :columns="asyncColumns"
-      title="城市选择"
+      :title="translate('chooseCity')"
       @confirm="(options) => confirm('async', options)"
     ></nut-picker>
 
-    <h2>自定义按钮</h2>
+    <h2>{{ translate('custom') }}</h2>
     <nut-cell
-      title="请选择有效日期"
+      :title="translate('validTime')"
       :desc="effect"
       @click="
         () => {
@@ -103,89 +103,92 @@
     <nut-picker
       v-model:visible="showEffect"
       :columns="effectColumns"
-      title="日期选择"
+      :title="translate('chooseDate')"
       @confirm="(options) => confirm('effect', options)"
     >
-      <nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-picker
+      <nut-button block type="primary" @click="alwaysFun">{{ translate('always') }}</nut-button></nut-picker
     >
   </div>
 </template>
 <script lang="ts">
-import { toRefs, ref, onMounted, reactive } from 'vue';
+import { toRefs, ref, onMounted, reactive, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { PickerOption } from './types';
-const { createDemo } = createComponent('picker');
+const { createDemo, translate } = createComponent('picker');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { Internation } from './doc.en';
+useTranslate(Internation);
 export default createDemo({
   props: {},
   setup() {
     const selectedValue = ref(['ZheJiang']);
     const asyncValue = ref<string[]>([]);
-    const columns = ref([
-      { text: '南京市', value: 'NanJing' },
-      { text: '无锡市', value: 'WuXi' },
-      { text: '海北藏族自治区', value: 'ZangZu' },
-      { text: '北京市', value: 'BeiJing' },
-      { text: '连云港市', value: 'LianYunGang' },
-      { text: '浙江市', value: 'ZheJiang' },
-      { text: '江苏市', value: 'JiangSu' }
+    const columns = computed(() => [
+      { text: translate('nanJing'), value: 'NanJing' },
+      { text: translate('wuXi'), value: 'WuXi' },
+      { text: translate('zangZu'), value: 'ZangZu' },
+      { text: translate('beiJing'), value: 'BeiJing' },
+      { text: translate('lianYunGang'), value: 'LianYunGang' },
+      { text: translate('zheJiang'), value: 'ZheJiang' },
+      { text: translate('jiangSu'), value: 'JiangSu' }
     ]);
 
-    const multipleColumns = ref([
+    const multipleColumns = computed(() => [
       [
-        { text: '周一', value: 'Monday' },
-        { text: '周二', value: 'Tuesday' },
-        { text: '周三', value: 'Wednesday' },
-        { text: '周四', value: 'Thursday' },
-        { text: '周五', value: 'Friday' }
+        { text: translate('monday'), value: 'Monday' },
+        { text: translate('tuesday'), value: 'Tuesday' },
+        { text: translate('wednesday'), value: 'Wednesday' },
+        { text: translate('thursday'), value: 'Thursday' },
+        { text: translate('friday'), value: 'Friday' }
       ],
       [
-        { text: '上午', value: 'Morning' },
-        { text: '下午', value: 'Afternoon' },
-        { text: '晚上', value: 'Evening' }
+        { text: translate('monday'), value: 'Morning' },
+        { text: translate('afternoon'), value: 'Afternoon' },
+        { text: translate('evening'), value: 'Evening' }
       ]
     ]);
 
-    const cascaderColumns = ref([
+    const cascaderColumns = computed(() => [
       {
-        text: '浙江',
+        text: translate('zheJiang'),
         value: 'ZheJiang',
         children: [
           {
-            text: '杭州',
+            text: translate('hangZhou'),
             value: 'HangZhou',
             children: [
-              { text: '西湖区', value: 'XiHu' },
-              { text: '余杭区', value: 'YuHang' }
+              { text: translate('xiHu'), value: 'XiHu' },
+              { text: translate('yuHang'), value: 'YuHang' }
             ]
           },
           {
-            text: '温州',
+            text: translate('wenZhou'),
             value: 'WenZhou',
             children: [
-              { text: '鹿城区', value: 'LuCheng' },
-              { text: '瓯海区', value: 'OuHai' }
+              { text: translate('luCheng'), value: 'LuCheng' },
+              { text: translate('ouHai'), value: 'OuHai' }
             ]
           }
         ]
       },
       {
-        text: '福建',
+        text: translate('fuJian'),
         value: 'FuJian',
         children: [
           {
-            text: '福州',
+            text: translate('fuZhou'),
             value: 'FuZhou',
             children: [
-              { text: '鼓楼区', value: 'GuLou' },
-              { text: '台江区', value: 'TaiJiang' }
+              { text: translate('guLou'), value: 'GuLou' },
+              { text: translate('taiJiang'), value: 'TaiJiang' }
             ]
           },
           {
-            text: '厦门',
+            text: translate('xiaMen'),
             value: 'XiaMen',
             children: [
-              { text: '思明区', value: 'SiMing' },
-              { text: '海沧区', value: 'HaiCang' }
+              { text: translate('siMing'), value: 'SiMing' },
+              { text: translate('haiCang'), value: 'HaiCang' }
             ]
           }
         ]
@@ -247,15 +250,16 @@ export default createDemo({
     };
 
     onMounted(() => {
+      console.log('monted', multipleColumns.value);
       setTimeout(() => {
         asyncColumns.value = [
-          { text: '南京市', value: 'NanJing' },
-          { text: '无锡市', value: 'WuXi' },
-          { text: '海北藏族自治区', value: 'ZangZu' },
-          { text: '北京市', value: 'BeiJing' },
-          { text: '连云港市', value: 'LianYunGang' },
-          { text: '浙江市', value: 'ZheJiang' },
-          { text: '江苏市', value: 'JiangSu' }
+          { text: translate('nanJing'), value: 'NanJing' },
+          { text: translate('wuXi'), value: 'WuXi' },
+          { text: translate('zangZu'), value: 'ZangZu' },
+          { text: translate('beiJing'), value: 'BeiJing' },
+          { text: translate('lianYunGang'), value: 'LianYunGang' },
+          { text: translate('zheJiang'), value: 'ZheJiang' },
+          { text: translate('jiangSu'), value: 'JiangSu' }
         ];
 
         asyncValue.value = ['ZangZu'];
@@ -271,7 +275,7 @@ export default createDemo({
 
     const alwaysFun = () => {
       showEffect.value = false;
-      desc.effect = '永远有效';
+      desc.effect = translate('always');
     };
     return {
       selectedValue,
@@ -291,7 +295,8 @@ export default createDemo({
       asyncColumns,
       effectColumns,
       showEffect,
-      alwaysFun
+      alwaysFun,
+      translate
     };
   }
 });

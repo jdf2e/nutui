@@ -41,6 +41,9 @@
     <nut-cell :title="translate('name')" icon="my" :desc="translate('desc')" isLink> </nut-cell>
     <h2>{{ translate('title6') }}</h2>
     <nut-cell desc-text-align="left" :desc="translate('desc')"></nut-cell>
+
+    <h2>{{ translate('title7') }}</h2>
+    <nut-cell center :title="translate('title')" :sub-title="translate('title1')" :desc="translate('desc')"></nut-cell>
   </div>
 </template>
 
@@ -61,6 +64,7 @@ useTranslate({
     title4: '圆角设置 0',
     title5: '链接 | 分组用法',
     title6: '只展示 desc ，可通过 desc-text-align 调整内容位置',
+    title7: '垂直居中',
     link: '链接',
     urlJump: 'URL 跳转',
     routerJump: '路由跳转 ’/‘ ',
@@ -82,6 +86,7 @@ useTranslate({
     title4: 'Round Radius 0',
     title5: 'Link | CellGroup Usage',
     title6: 'Only display desc , you can adjust the content position through desc-text-align',
+    title7: 'Vertical Center',
     link: 'Link',
     urlJump: 'URL Jump',
     routerJump: 'Router Jump ’/‘ ',

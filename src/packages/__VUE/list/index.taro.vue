@@ -37,7 +37,7 @@ export default create({
       default: Taro.getSystemInfoSync().windowHeight || 667
     }
   },
-  emits: ['scroll'],
+  emits: ['scroll', 'scroll-bottom'],
 
   setup(props, { emit }) {
     const list = ref(null) as Ref;
@@ -75,10 +75,11 @@ export default create({
     });
 
     const handleScrollEvent = async (e: any) => {
-      const scrollTop = e.detail.scrollTop;
+      const scrollTop = e.detail ? e.detail.scrollTop : e.target.scrollTop;
       state.start = Math.floor(scrollTop / props.height);
       if (end.value > state.list.length) {
         emit('scroll');
+        emit('scroll-bottom');
       }
       state.startOffset = scrollTop - (scrollTop % props.height);
     };

@@ -2,7 +2,7 @@
 
 ### 介绍 
 
-提供导航功能。
+提供导航功能，常用于页面顶部。
 
 ### 安装
 
@@ -65,13 +65,13 @@ app.use(TabPane);
   setup() {
     const methods = {
       back() {
-        alert('header头部， 点击返回');
+        alert('Click Back');
       },
       title() {
-        alert('header头部， 点击title');
+        alert('Click Title');
       },
       rightClick() {
-        alert('右侧点击事件');
+        alert('Click Right');
       }
     };
 
@@ -85,7 +85,7 @@ app.use(TabPane);
 ```
 :::
 
-### 设置slot:content可以自定义导航栏中间内容
+### 自定义导航栏中间内容
 
 :::demo
 ```html
@@ -98,8 +98,8 @@ app.use(TabPane);
   >
     <template #content>
       <nut-tabs v-model="tab1value" @click="changeTab">
-        <nut-tabpane title="商品"> </nut-tabpane>
-        <nut-tabpane title="店铺"> </nut-tabpane>
+        <nut-tabpane title="标题1"> </nut-tabpane>
+        <nut-tabpane title="标题2"> </nut-tabpane>
       </nut-tabs>
     </template>
 
@@ -115,14 +115,14 @@ export default {
   setup() {
     const tab1value = ref(0);
     const methods = {
-      back () {
-        alert('header头部， 点击返回');
+      back() {
+        alert('Click Back');
       },
-      title () {
-        alert('header头部， 点击title');
+      title() {
+        alert('Click Title');
       },
       rightClick() {
-        alert('右侧点击事件');
+        alert('Click Right');
       },
       changeTab(tab: any) {
         tab1value.value = tab.paneKey as number;
@@ -139,7 +139,7 @@ export default {
 ```
 :::
 
-### 多tab切换导航及增加右侧按钮
+### 多 tab 切换导航
 
 :::demo
 ```html
@@ -147,10 +147,9 @@ export default {
   <nut-navbar @on-click-back="back" >
     <template #content>
       <nut-tabs v-model="tab2value" @click="changeTabList">
-        <nut-tabpane title="商品"> </nut-tabpane>
-        <nut-tabpane title="评价"> </nut-tabpane>
-        <nut-tabpane title="详情"> </nut-tabpane>
-        <nut-tabpane title="推荐"> </nut-tabpane>
+        <nut-tabpane title="标题1"> </nut-tabpane>
+        <nut-tabpane title="标题2"> </nut-tabpane>
+        <nut-tabpane title="标题3"> </nut-tabpane>
       </nut-tabs>
     </template>
     <template #icons>
@@ -170,7 +169,7 @@ export default {
     const tab2value = ref(0);
     const methods = {
       back() {
-        alert('header头部， 点击返回');
+        alert('Click Back');
       },
       changeTabList(tab: any) {
         tab2value.value = tab.paneKey as number;
@@ -189,14 +188,19 @@ export default {
 
 ### Prop  
 
-| 字段            | 说明                                                                                           | 类型    | 默认值  |
-|-----------------|------------------------------------------------------------------------------------------------|---------|---------|
-| title           | 标题名称                                                                                       | String  | -       |
-| desc            | 右侧描述                                                                                       | String  | -       |
-| left-show        | 是否展示左侧箭头                                                                               | Boolean | false   |
-| tit-icon         | 标题中插入icon                                                                                    | String  |-|                                          
-| fixed           | 是否固定到顶部                                                                                       | Boolean  | false       |
-| safe-area-inset-top           | 是否开启顶部安全区适配                                                                                       | Boolean  | false       |
+| 字段            | 说明                                                    | 类型    | 默认值  |
+|-----------------|--------------------------------------------------------|---------|---------|
+| title           | 标题名称                                                 | String  | -       |
+| left-text `v3.1.21`       | 左侧文案                                                 | String  | -       |
+| desc            | 右侧描述                                                 | String  | -       |
+| left-show       | 是否展示左侧箭头                                          | Boolean | false   |
+| tit-icon        | 标题中插入icon                                           | String  | -       |
+| border `v3.1.21`          | 是否显示下边框                                            | Boolean  | false  |
+| fixed           | 是否固定到顶部                                            | Boolean  | false    |
+| placeholder `v3.1.21`     | 固定在顶部时，是否在标签位置生成一个等高的占位元素              | Boolean  | false   |
+| safe-area-inset-top   | 是否开启顶部安全区适配                                | Boolean  | false   |
+| z-index `v3.1.21` | 导航栏 z-index                                            | Number ｜ String  | -       |
+
 
 ### Event
 | 名称  | 说明     | 回调参数    |
@@ -204,7 +208,7 @@ export default {
 | on-click-title | 点击页面标题事件 | event:Event |
 | on-click-icon | 点击页面标题icon事件 | event:Event |
 | on-click-right | 点击右侧按钮事件 | event:Event |
-| on-click-back | 左侧图标返回点击事件 | event:Event |
+| on-click-back | 点击左侧图标事件 | event:Event |
 
 ### Slot
 | 名称  | 说明     | 回调参数    |
