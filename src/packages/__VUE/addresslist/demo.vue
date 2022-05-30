@@ -47,6 +47,7 @@ const { createDemo } = createComponent('addresslist');
 export default createDemo({
   props: {},
   setup() {
+    // const data = ref([]);
     const data = ref([
       {
         testid: 3,
@@ -68,6 +69,22 @@ export default createDemo({
       addressDetail: 'testaddressDetail',
       addressName: 'testaddressName'
     });
+    // onMounted(() => {
+    //   setTimeout(() => {
+    //     getData();
+    //   }, 500);
+    // });
+
+    // const getData = () => {
+    //   fetch('//storage.360buyimg.com/nutui/3x/addresslist.js')
+    //     .then((response) => response.json())
+    //     .then((res) => {
+    //       console.log('res', res)
+    //       data.value = res.data;
+    //       console.log('data', data.value)
+    //     })
+    //     .catch((err) => console.log('Oh, error', err));
+    // };
     const itemClick = () => {
       console.log('点击了地址哦～');
     };

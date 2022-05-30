@@ -29,7 +29,7 @@ export default create({
       default: document.documentElement.clientHeight || document.body.clientHeight || 667
     }
   },
-  emits: ['scroll'],
+  emits: ['scroll', 'scroll-bottom'],
 
   setup(props, { emit }) {
     const list = ref(null) as Ref;
@@ -71,6 +71,7 @@ export default create({
       state.start = Math.floor(scrollTop / props.height);
       if (end.value > state.list.length) {
         emit('scroll');
+        emit('scroll-bottom');
       }
       state.startOffset = scrollTop - (scrollTop % props.height);
     };

@@ -19,6 +19,7 @@
       :overlay="parent.props.overlay"
       @closed="handleClose"
       :isWrapTeleport="false"
+      :close-on-click-overlay="parent.props.closeOnClickOverlay"
     >
       <view class="nut-menu-item__content">
         <view

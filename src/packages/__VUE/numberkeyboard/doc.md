@@ -192,6 +192,48 @@ export default{
 </script>
 ```
 :::
+### 身份证键盘
+
+:::demo
+```html
+<template>
+     <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="身份证键盘"></nut-cell>
+    <nut-numberkeyboard
+      v-model:visible="visible"
+      :custom-key="customKey"
+      @input="input"
+      @close="close"
+    >
+    </nut-numberkeyboard>
+</template>
+<script>
+import { ref,reactive } from 'vue';
+import { Toast } from '@nutui/nutui';
+export default{
+  setup() {
+    const visible = ref(false);
+    const customKey = reactive(['X']);
+    function showKeyBoard() {
+      visible.value = true;
+    }
+    function input(number) {
+      Toast.text(`输入：${number}`);
+    }
+    function close() {
+      visible.value = false;
+    }
+    return {
+      visible,
+      customKey,
+      input,
+      showKeyBoard,
+      close,
+    };
+  }
+  }
+</script>
+```
+:::
 
 ### 双向绑定：
 
@@ -254,6 +296,8 @@ export default{
 | v-model:value | 当前输入值		 | String | - |
 | maxlength  | 输入值最大长度，结合 v-model 使用 | Number ｜ String| 6 |
 | confirm-text  | 自定义完成按钮文字，如"支付"，"下一步"，"提交"等 | String | 完成 |
+| teleport    | 指定挂载节点(`小程序不支持`)   | String         | `"body"`      |
+| pop-class    | 自定义弹框类名     | String         | -             |
 
 
 ### Event

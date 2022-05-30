@@ -22,7 +22,6 @@ import { pxCheck } from '@/packages/utils/pxCheck';
 import { computed, inject, provide, PropType, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('form-item');
-import { FormItemRule } from './types';
 export default create({
   inheritAttrs: false,
   props: {
@@ -35,7 +34,7 @@ export default create({
       default: ''
     },
     rules: {
-      type: Array as PropType<FormItemRule[]>,
+      type: Array as PropType<import('./types').FormItemRule[]>,
       default: () => {
         return [];
       }

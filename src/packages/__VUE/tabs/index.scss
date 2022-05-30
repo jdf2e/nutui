@@ -16,6 +16,9 @@
       &.scrollable {
         overflow-x: hidden;
         overflow-y: auto;
+        .nut-tabs__titles-item {
+          padding: 0 10px 0 15px;
+        }
       }
       &-item {
         height: $tabs-vertical-titles-item-height;

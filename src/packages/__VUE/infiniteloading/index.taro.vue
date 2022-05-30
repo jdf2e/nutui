@@ -13,7 +13,7 @@
     <view class="nut-infinite-top" :style="getStyle">
       <view class="top-box" id="refreshTop">
         <nut-icon class="top-img" :name="pullIcon"></nut-icon>
-        <view class="top-text">{{ pullTxt }}</view>
+        <view class="top-text">{{ pullTxt || translate('pullTxt') }}</view>
       </view>
     </view>
 
@@ -25,11 +25,11 @@
       <template v-if="isInfiniting">
         <view class="bottom-box">
           <nut-icon class="bottom-img" :name="loadIcon"></nut-icon>
-          <view class="bottom-text">{{ loadTxt }}</view>
+          <view class="bottom-text">{{ loadTxt || translate('loading') }}</view>
         </view>
       </template>
       <template v-else-if="!hasMore">
-        <view class="tips">{{ loadMoreTxt }}</view>
+        <view class="tips">{{ loadMoreTxt || translate('loadMoreTxt') }}</view>
       </template>
     </view>
   </scroll-view>
@@ -37,7 +37,7 @@
 <script lang="ts">
 import { toRefs, onMounted, reactive, computed, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { componentName, create } = createComponent('infiniteloading');
+const { componentName, create, translate } = createComponent('infiniteloading');
 import Icon from '../icon/index.taro.vue';
 import Taro from '@tarojs/taro';
 export default create({
@@ -60,7 +60,7 @@ export default create({
     },
     pullTxt: {
       type: String,
-      default: '松开刷新'
+      default: ''
     },
     loadIcon: {
       type: String,
@@ -68,11 +68,11 @@ export default create({
     },
     loadTxt: {
       type: String,
-      default: '加载中···'
+      default: ''
     },
     loadMoreTxt: {
       type: String,
-      default: '哎呀，这里是底部了啦'
+      default: ''
     },
     useWindow: {
       type: Boolean,
@@ -218,7 +218,8 @@ export default create({
       touchStart,
       touchMove,
       touchEnd,
-      getStyle
+      getStyle,
+      translate
     };
   }
 });

@@ -3,10 +3,11 @@
 exports[`basic usage 1`] = `
 "<view class=\\"nut-searchbar\\">
   <!--v-if-->
+  <!--v-if-->
   <view class=\\"nut-searchbar__search-input\\">
     <!--v-if-->
     <view class=\\"nut-searchbar__input-inner\\">
-      <form action=\\"#\\"><input class=\\"nut-searchbar__input-bar\\" type=\\"text\\" maxlength=\\"9999\\" placeholder=\\"请输入\\"></form>
+      <form action=\\"#\\"><input class=\\"nut-searchbar__input-bar\\" type=\\"textarea\\" maxlength=\\"9999\\" placeholder=\\"请输入\\" style=\\"text-align: left;\\"></form>
       <view class=\\"nut-searchbar__input-clear\\" style=\\"display: none;\\"><i class=\\"nutui-iconfont nut-icon nut-icon-circle-close\\" style=\\"color: rgb(85, 85, 85); font-size: 12px; width: 12px; height: 12px;\\" src=\\"\\"></i></view>
     </view>
     <!--v-if-->
@@ -18,10 +19,11 @@ exports[`basic usage 1`] = `
 exports[`slot test 1`] = `
 "<view class=\\"nut-searchbar\\">
   <!--v-if-->
+  <!--v-if-->
   <view class=\\"nut-searchbar__search-input\\">
     <!--v-if-->
     <view class=\\"nut-searchbar__input-inner\\">
-      <form action=\\"#\\"><input class=\\"nut-searchbar__input-bar\\" type=\\"text\\" maxlength=\\"9999\\" placeholder=\\"请输入\\"></form>
+      <form action=\\"#\\"><input class=\\"nut-searchbar__input-bar\\" type=\\"textarea\\" maxlength=\\"9999\\" placeholder=\\"请输入\\" style=\\"text-align: left;\\"></form>
       <view class=\\"nut-searchbar__input-clear\\" style=\\"display: none;\\"><i class=\\"nutui-iconfont nut-icon nut-icon-circle-close\\" style=\\"color: rgb(85, 85, 85); font-size: 12px; width: 12px; height: 12px;\\" src=\\"\\"></i></view>
     </view>
     <!--v-if-->

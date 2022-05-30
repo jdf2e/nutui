@@ -29,7 +29,7 @@ app.use(NoticeBar);
 ```html
 <template>
   <nut-noticebar
-      text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
+      text="NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。"
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
     ></nut-noticebar>
@@ -49,7 +49,7 @@ app.use(NoticeBar);
   <nut-noticebar text="华为畅享9新品即将上市" :scrollable="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`"></nut-noticebar>
 
   <nut-noticebar
-      text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
+      text="NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。"
       :scrollable="false"
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
@@ -67,7 +67,7 @@ app.use(NoticeBar);
 ```html
 <template>
   <nut-noticebar :closeMode="true" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
-    华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！
+    NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
   </nut-noticebar>
  
   <nut-noticebar
@@ -76,7 +76,7 @@ app.use(NoticeBar);
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
       >
-      华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！
+      NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
   </nut-noticebar>
 </template>
 
@@ -107,7 +107,7 @@ app.use(NoticeBar);
 ```html
 <template>
   <nut-noticebar
-      text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
+      text="NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。"
       wrapable
       :background="`rgba(251, 248, 220, 1)`"
       :color="`#D9500B`"
@@ -136,7 +136,7 @@ app.use(NoticeBar);
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const horseLamp1 = ref(['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']);
+      const horseLamp1 = ref(['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
       const go = (item) => {
         console.log(item)
       }
@@ -160,7 +160,7 @@ app.use(NoticeBar);
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const horseLamp2 = ref(['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']);
+      const horseLamp2 = ref(['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
       return { horseLamp2 };
     }
   }
@@ -182,7 +182,7 @@ app.use(NoticeBar);
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const horseLamp3 = ref(['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']);
+      const horseLamp3 = ref(['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
       return { horseLamp3 };
     }
   }
@@ -206,7 +206,7 @@ app.use(NoticeBar);
   import { ref } from 'vue';
   export default {
     setup(props) {
-      const horseLamp1 = ref(['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']);
+      const horseLamp1 = ref(['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
       return { horseLamp1 };
     }
   }
@@ -229,6 +229,7 @@ app.use(NoticeBar);
 | delay      | 延时多少秒                                                 | String/Number | 1      |
 | scrollable | 是否可以滚动                                               | Boolean       | true   |
 | speed      | 滚动速率 (px/s)                                            | Number        | 50     |
+| wrapable `v3.1.18`  | 是否开启文本换行                                           | Boolean       | false    |
 
 ### Prop（direction=vertical）
 
