@@ -1,13 +1,13 @@
 import { mount } from '@vue/test-utils';
 import Divider from '../index.vue';
 
-test('slot: html should contain customer text', () => {
+test('slot: html should contain custom text', () => {
   const wrapper = mount(Divider, {
     slots: {
-      default: 'customer text'
+      default: 'custom text'
     }
   });
-  expect(wrapper.html()).toContain('customer text');
+  expect(wrapper.html()).toContain('custom text');
   expect(wrapper.html()).toMatchSnapshot();
 });
 
@@ -17,7 +17,7 @@ test('content-position props: classes should contain nut-divider-left', () => {
       contentPosition: 'left'
     },
     slots: {
-      default: 'customer text'
+      default: 'custom text'
     }
   });
   const divider: any = wrapper.find('.nut-divider');
@@ -30,7 +30,7 @@ test('dashed props: classes should contain nut-divider-dashed', () => {
       dashed: true
     },
     slots: {
-      default: 'customer text'
+      default: 'custom text'
     }
   });
 
@@ -38,7 +38,7 @@ test('dashed props: classes should contain nut-divider-dashed', () => {
   expect(divider.classes()).toContain('nut-divider-dashed');
 });
 
-test('customer style: element color should be rgb(25, 137, 250) etc', () => {
+test('custom style: element color should be rgb(25, 137, 250) etc', () => {
   const wrapper = mount(Divider, {
     props: {
       style: { color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }
@@ -57,4 +57,14 @@ test('hairline props: classes should contain nut-divider-hairline default, after
   expect(divider.classes()).toContain('nut-divider-hairline');
   await wrapper.setProps({ hairline: false });
   expect(wrapper.classes('nut-divider-hairline')).toBe(false);
+});
+
+test('direction props: classes should contain nut-divider-vertical', () => {
+  const wrapper = mount(Divider, {
+    props: {
+      direction: 'vertical'
+    }
+  });
+  const divider: any = wrapper.find('.nut-divider');
+  expect(divider.classes()).toContain('nut-divider-vertical');
 });

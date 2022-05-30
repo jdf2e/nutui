@@ -13,7 +13,7 @@
     />
     <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
       <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
-        <div v-show="showSlot"><slot></slot></div>
+        <div class="nutui-popup__content-wrapper" v-show="showSlot"><slot></slot></div>
         <view
           v-if="closed"
           @click="onClickCloseIcon"

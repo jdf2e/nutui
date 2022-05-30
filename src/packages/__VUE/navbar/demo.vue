@@ -1,10 +1,9 @@
 <template>
   <div class="demo full">
-    <h2>基础用法</h2>
-
-    <nut-navbar @on-click-back="back" @on-click-title="title" title="订单详情">
+    <h2>{{ translate('title1') }}</h2>
+    <nut-navbar @on-click-back="back" @on-click-title="title" :title="translate('navTitle1')">
       <template #left>
-        <div>返回</div>
+        <div>{{ translate('back') }}</div>
       </template>
       <template #right>
         <nut-icon class="right" name="share-n"></nut-icon>
@@ -15,8 +14,8 @@
       @on-click-back="back"
       @on-click-title="title"
       @on-click-right="rightClick"
-      title="浏览记录"
-      desc="清空"
+      :title="translate('navTitle2')"
+      :desc="translate('desc1')"
     ></nut-navbar>
 
     <nut-navbar
@@ -25,21 +24,21 @@
       @on-click-title="title"
       @on-click-icon="icon"
       @on-click-right="rightClick"
-      title="购物车"
+      :title="translate('navTitle3')"
       titIcon="cart2"
-      desc="编辑"
+      :desc="translate('desc2')"
     >
       <template #right>
         <nut-icon class="right" name="more-x"></nut-icon>
       </template>
     </nut-navbar>
 
-    <h2>自定义导航栏中间内容</h2>
-    <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-right="rightClick" desc="编辑">
+    <h2>{{ translate('title2') }}</h2>
+    <nut-navbar @on-click-back="back" @on-click-title="title" @on-click-right="rightClick" :desc="translate('desc2')">
       <template #content>
         <nut-tabs v-model="tab1value" @click="changeTab">
-          <nut-tabpane title="商品"> </nut-tabpane>
-          <nut-tabpane title="店铺"> </nut-tabpane>
+          <nut-tabpane :title="translate('tab1')"> </nut-tabpane>
+          <nut-tabpane :title="translate('tab2')"> </nut-tabpane>
         </nut-tabs>
       </template>
 
@@ -48,14 +47,13 @@
       </template>
     </nut-navbar>
 
-    <h2>多tab切换导航</h2>
+    <h2>{{ translate('title3') }}</h2>
     <nut-navbar @on-click-back="back">
       <template #content>
         <nut-tabs v-model="tab2value" @click="changeTabList">
-          <nut-tabpane title="商品"> </nut-tabpane>
-          <nut-tabpane title="评价"> </nut-tabpane>
-          <nut-tabpane title="详情"> </nut-tabpane>
-          <nut-tabpane title="推荐"> </nut-tabpane>
+          <nut-tabpane :title="translate('tab1')"> </nut-tabpane>
+          <nut-tabpane :title="translate('tab2')"> </nut-tabpane>
+          <nut-tabpane :title="translate('tab3')"> </nut-tabpane>
         </nut-tabs>
       </template>
       <template #icons>
@@ -72,7 +70,38 @@
 <script lang="ts">
 import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('navbar');
+const { createDemo, translate } = createComponent('navbar');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    title1: '基础用法',
+    back: '返回',
+    navTitle1: '订单详情',
+    navTitle2: '浏览记录',
+    desc1: '清空',
+    navTitle3: '购物车',
+    desc2: '编辑',
+    title2: '自定义导航栏中间内容',
+    tab1: '标题1',
+    tab2: '标题2',
+    tab3: '标题3',
+    title3: '多 tab 切换导航'
+  },
+  'en-US': {
+    title1: 'Basic Usage',
+    back: 'Back',
+    navTitle1: 'Order details',
+    navTitle2: 'Browsing history',
+    desc1: 'Clear',
+    navTitle3: 'Cart',
+    desc2: 'Edit',
+    title2: 'Customize the middle content of the navigation bar',
+    tab1: 'Title1',
+    tab2: 'Title2',
+    tab3: 'Title3',
+    title3: 'Multi-tab switching navigation'
+  }
+});
 export default createDemo({
   setup({}) {
     const tab1value = ref(0);
@@ -100,6 +129,7 @@ export default createDemo({
     };
 
     return {
+      translate,
       tab1value,
       tab2value,
       ...methods

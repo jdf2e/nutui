@@ -42,12 +42,12 @@ declare type Install<T> = T & {
 `;
         const start = 'declare const _sfc_main:';
         const end = ';\nexport default _sfc_main;\n';
+        let name = Object.keys(input).find((item: string) => item.toLowerCase() === filePath.split('/').slice(-2)[0]);
+        name = name ? name.toLowerCase() : ' ';
         const remain = `
 declare module 'vue' {
   interface GlobalComponents {
-      Nut${Object.keys(input).find(
-        (item: string) => item.toLowerCase() === filePath.split('/').slice(-2)[0]
-      )}: typeof _sfc_main;
+      Nut${name[0].toUpperCase() + name.substr(1)}: typeof _sfc_main;
   }
 }     
       `;

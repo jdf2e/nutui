@@ -13,17 +13,17 @@ exports[`Cascader change tab 1`] = `
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福建</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福州</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">鼓楼区</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">鼓楼区</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-200%, 0, 0); transition-duration: 300ms;\\">
@@ -78,17 +78,17 @@ exports[`Cascader change tab 2`] = `
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福建</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福州</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">鼓楼区</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">鼓楼区</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-100%, 0, 0); transition-duration: 300ms;\\">
@@ -143,17 +143,17 @@ exports[`Cascader change tab 3`] = `
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福建</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福州</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">鼓楼区</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">鼓楼区</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
@@ -240,17 +240,17 @@ exports[`Cascader modelValue 2`] = `
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福建</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福州</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">鼓楼区</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">鼓楼区</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-200%, 0, 0); transition-duration: 300ms;\\">
@@ -305,7 +305,7 @@ exports[`Cascader modelValue 3`] = `
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">湖南</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">湖南</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
@@ -343,7 +343,7 @@ exports[`Cascader modelValue 4`] = `
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">请选择</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
@@ -381,7 +381,7 @@ exports[`Cascader modelValue with lazy 1`] = `
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">Loading...</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">Loading...</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
@@ -409,17 +409,17 @@ exports[`Cascader modelValue with lazy 2`] = `
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">A0</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">A0</view>
           </view>
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">A12</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">A12</view>
           </view>
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">A21</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">A21</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-200%, 0, 0); transition-duration: 300ms;\\">
@@ -477,17 +477,17 @@ exports[`Cascader options 1`] = `
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福建</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福州</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">鼓楼区</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">鼓楼区</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-200%, 0, 0); transition-duration: 300ms;\\">
@@ -542,12 +542,12 @@ exports[`Cascader options with convertConfig 1`] = `
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">广东省</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">广东省</view>
           </view>
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">广州市</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">广州市</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-100%, 0, 0); transition-duration: 300ms;\\">
@@ -589,17 +589,17 @@ exports[`Cascader options with valueKey/textKey/childrenKey 1`] = `
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福建</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福州</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">鼓楼区</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">鼓楼区</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-200%, 0, 0); transition-duration: 300ms;\\">
@@ -654,7 +654,7 @@ exports[`Cascader select 1`] = `
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">请选择</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
@@ -692,17 +692,17 @@ exports[`Cascader select 2`] = `
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福建</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福州</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">请选择</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-200%, 0, 0); transition-duration: 300ms;\\">
@@ -757,17 +757,17 @@ exports[`Cascader select 3`] = `
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福建</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福建</view>
           </view>
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">福州</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">福州</view>
           </view>
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">鼓楼区</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">鼓楼区</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-200%, 0, 0); transition-duration: 300ms;\\">
@@ -822,7 +822,7 @@ exports[`Cascader select 4`] = `
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">请选择</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
@@ -882,7 +882,7 @@ exports[`Cascader select with lazy 2`] = `
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">请选择</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
@@ -917,12 +917,12 @@ exports[`Cascader select with lazy 3`] = `
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">A0</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">A0</view>
           </view>
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">请选择</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-100%, 0, 0); transition-duration: 300ms;\\">
@@ -967,17 +967,17 @@ exports[`Cascader select with lazy 4`] = `
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">A0</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">A0</view>
           </view>
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">A12</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">A12</view>
           </view>
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">请选择</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-200%, 0, 0); transition-duration: 300ms;\\">
@@ -1032,17 +1032,17 @@ exports[`Cascader select with lazy 5`] = `
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">A0</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">A0</view>
           </view>
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">A12</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">A12</view>
           </view>
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">A21</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">A21</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-200%, 0, 0); transition-duration: 300ms;\\">
@@ -1097,7 +1097,7 @@ exports[`Cascader select with lazy 6`] = `
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">请选择</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">
@@ -1132,12 +1132,12 @@ exports[`Cascader select with lazy 7`] = `
           <view class=\\"nut-tabs__titles-item\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">B0</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">B0</view>
           </view>
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">请选择</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-100%, 0, 0); transition-duration: 300ms;\\">
@@ -1182,7 +1182,7 @@ exports[`Cascader visible 1`] = `
           <view class=\\"nut-tabs__titles-item active\\" style=\\"margin-left: 0px; margin-right: 0px;\\">
             <view class=\\"nut-tabs__titles-item__line\\"></view>
             <!--v-if-->
-            <view class=\\"nut-tabs__titles-item__text\\">请选择</view>
+            <view class=\\"nut-tabs__titles-item__text ellipsis\\">请选择</view>
           </view>
         </view>
         <view class=\\"nut-tabs__content\\" style=\\"transform: translate3d(-0%, 0, 0); transition-duration: 300ms;\\">

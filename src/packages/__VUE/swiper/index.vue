@@ -28,6 +28,7 @@
         :style="{
           backgroundColor: activePagination === index ? paginationColor : '#ddd'
         }"
+        :class="{ active: activePagination === index }"
         v-for="(item, index) in state.children.length"
         :key="index"
       />
@@ -37,8 +38,6 @@
 
 <script lang="ts">
 import {
-  onMounted,
-  onActivated,
   onDeactivated,
   onBeforeUnmount,
   provide,
@@ -48,7 +47,8 @@ import {
   computed,
   nextTick,
   ref,
-  watch
+  watch,
+  VNode
 } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTouch } from './use-touch';
@@ -120,6 +120,7 @@ export default create({
       touchTime: 0,
       autoplayTimer: 0 as number | undefined,
       children: [] as ComponentPublicInstance[],
+      childrenVNode: [] as VNode[],
       style: {}
     });
 
@@ -168,8 +169,34 @@ export default create({
     };
 
     const relation = (child: ComponentInternalInstance) => {
-      if (child.proxy) {
-        state.children.push(child.proxy);
+      let children = [] as VNode[];
+      let slot = slots?.default?.() as VNode[];
+      slot = slot.filter((item: VNode) => item.children && Array.isArray(item.children));
+      slot.forEach((item: VNode) => {
+        children = children.concat(item.children as VNode[]);
+      });
+      if (!state.childrenVNode.length) {
+        state.childrenVNode = children.slice();
+        child.proxy && state.children.push(child.proxy);
+      } else {
+        if (state.childrenVNode.length > children.length) {
+          state.children = state.children.filter((item: ComponentPublicInstance) => child.proxy !== item);
+        } else if (state.childrenVNode.length < children.length) {
+          for (let i = 0; i < state.childrenVNode.length; i++) {
+            if ((children[i] as VNode).key !== (state.childrenVNode[i] as VNode).key) {
+              child.proxy && state.children.splice(i, 0, child.proxy);
+              child.vnode && state.childrenVNode.splice(i, 0, child.vnode);
+              break;
+            }
+          }
+          if (state.childrenVNode.length !== children.length) {
+            child.proxy && state.children.push(child.proxy);
+            child.vnode && state.childrenVNode.push(child.vnode);
+          }
+        } else {
+          state.childrenVNode = children.slice();
+          child.proxy && state.children.push(child.proxy);
+        }
       }
     };
 
@@ -384,18 +411,6 @@ export default create({
       to
     });
 
-    onMounted(() => {
-      nextTick(() => {
-        init();
-      });
-    });
-
-    onActivated(() => {
-      nextTick(() => {
-        init();
-      });
-    });
-
     onDeactivated(() => {
       stopAutoPlay();
     });
@@ -417,7 +432,7 @@ export default create({
       () => state.children.length,
       () => {
         nextTick(() => {
-          init(state.active);
+          init();
         });
       }
     );

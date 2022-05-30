@@ -1,10 +1,10 @@
 <template>
   <div class="index">
     <div class="index-header">
-      <img src="../../assets/images/logo-red.png" alt="" srcset="" />
+      <img :src="logo" alt="" srcset="" />
       <div class="info">
-        <h1>NutUI</h1>
-        <p>京东风格的轻量级移动端 Vue 组件库</p>
+        <h1>{{ title }}</h1>
+        <p>{{ desc }}</p>
       </div>
     </div>
     <div class="index-components">
@@ -28,12 +28,26 @@
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
 import { nav } from '@/config.json';
+import { isJDT } from '@/sites/assets/util';
 export default defineComponent({
   name: 'doc',
   setup() {
-    return reactive({
-      nav
-    });
+    let baseInfo = {
+      logo: 'https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png',
+      title: 'NutUI',
+      desc: '京东风格的轻量级移动端 Vue 组件库'
+    };
+    if (isJDT()) {
+      baseInfo.logo =
+        'https://img12.360buyimg.com/imagetools/jfs/t1/101920/21/28459/834912/62870b04E0e1f20ec/17425bea5318a22c.png';
+      baseInfo.title = 'NutUI JDT';
+      baseInfo.desc = '京东科技风格的轻量级移动端 Vue 组件库';
+    }
+
+    return {
+      nav,
+      ...baseInfo
+    };
   }
 });
 </script>

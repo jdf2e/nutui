@@ -20,9 +20,6 @@ import { PropType, CSSProperties, toRefs, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('button');
 import Icon from '../icon/index.taro.vue';
-export type ButtonType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger';
-export type ButtonSize = 'large' | 'normal' | 'small' | 'mini';
-export type ButtonShape = 'square' | 'round';
 export default create({
   components: {
     [Icon.name]: Icon
@@ -30,7 +27,7 @@ export default create({
   props: {
     color: String,
     shape: {
-      type: String as PropType<ButtonShape>,
+      type: String as PropType<import('./type').ButtonShape>,
       default: 'round'
     },
     plain: {
@@ -46,11 +43,11 @@ export default create({
       default: false
     },
     type: {
-      type: String as PropType<ButtonType>,
+      type: String as PropType<import('./type').ButtonType>,
       default: 'default'
     },
     size: {
-      type: String as PropType<ButtonSize>,
+      type: String as PropType<import('./type').ButtonSize>,
       default: 'normal'
     },
     block: {

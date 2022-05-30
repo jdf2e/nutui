@@ -152,12 +152,14 @@ export default create({
       }
     );
 
-    Taro.usePageScroll((res) => {
+    usePageScroll((res) => {
       onScroll(res.scrollTop);
     });
 
-    Taro.useReady(() => {
-      onScroll(0);
+    useReady(() => {
+      Taro.nextTick(() => {
+        onScroll(0);
+      });
     });
 
     return () => {

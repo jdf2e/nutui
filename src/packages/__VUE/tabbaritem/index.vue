@@ -128,6 +128,7 @@ export default create({
       setTimeout(() => {
         if (parent.children[value].href) {
           window.location.href = parent.children[value].href;
+          return;
         }
         if (parent.children[value].to) {
           let to = parent.children[value].to;
