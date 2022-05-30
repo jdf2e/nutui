@@ -13,7 +13,7 @@ let input = {
   index: `./src/packages/locale/index`
 };
 // 动态读取file name
-['zh-CN', 'zh-TW', 'en-US'].map((file) => {
+['zh-CN', 'zh-TW', 'en-US', 'id-ID'].map((file) => {
   input[file] = `./src/packages/locale/lang/${file}`;
 });
 import fs from 'fs-extra';
@@ -28,7 +28,7 @@ export default defineConfig({
       insertTypesEntry: true,
       copyDtsFiles: true,
       cleanVueFileName: true,
-      outputDir: path.resolve(__dirname, './dist/packages/locale'),
+      outputDir: path.resolve(__dirname, './dist/packages/'),
       include: path.resolve(__dirname, './src/packages/locale')
     })
   ],
