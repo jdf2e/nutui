@@ -81,7 +81,7 @@
 <script lang="ts">
 import { computed, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('tabbar');
+const { createDemo, translate } = createComponent('actionsheet');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 useTranslate({
   'zh-CN': {
