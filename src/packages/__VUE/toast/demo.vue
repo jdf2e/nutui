@@ -1,25 +1,56 @@
 <template>
   <div class="demo">
-    <h2>基本用法</h2>
-    <nut-cell title="Text 文字提示" is-link @click="textToast('网络失败，请稍后再试~')"></nut-cell>
-    <nut-cell title="Title 标题展示" is-link @click="titleToast('网络失败，请稍后再试~')"></nut-cell>
-    <nut-cell title="Success 成功提示" is-link @click="successToast('成功提示')"></nut-cell>
-    <nut-cell title="Error 失败提示" is-link @click="errorToast('失败提示')"></nut-cell>
-    <nut-cell title="Warning 警告提示" is-link @click="warningToast('警告提示')"></nut-cell>
-    <nut-cell title="Loading 加载提示" is-link @click="loadingToast('加载中')"></nut-cell>
-    <h2>Toast不消失</h2>
-    <nut-cell title="Toast 文字提示不消失" is-link @click="NoToast('Toast不消失~')"></nut-cell>
-    <h2>Toast自定义距离底部高度</h2>
-    <nut-cell title="Toast 自定义底部高度" is-link @click="BottomToast('自定义距离~')"></nut-cell>
-    <h2>Loading带透明遮罩</h2>
-    <nut-cell title="带文案+带透明遮罩+自动消失" is-link @click="NoLoading('加载中~')"></nut-cell>
+    <h2>{{ translate('basic') }}</h2>
+    <nut-cell :title="translate('toastText')" is-link @click="textToast(translate('toastText'))"></nut-cell>
+    <nut-cell :title="translate('toastTitle')" is-link @click="titleToast(translate('toastText'))"></nut-cell>
+    <nut-cell :title="translate('toastSuccess')" is-link @click="successToast(translate('toastSuccess'))"></nut-cell>
+    <nut-cell :title="translate('toastError')" is-link @click="errorToast(translate('toastError'))"></nut-cell>
+    <nut-cell :title="translate('toastWarning')" is-link @click="warningToast(translate('toastWarning'))"></nut-cell>
+    <nut-cell :title="translate('toastLoading')" is-link @click="loadingToast(translate('toastLoading'))"></nut-cell>
+    <h2>{{ translate('toastAll') }}</h2>
+    <nut-cell :title="translate('toastAll')" is-link @click="NoToast(translate('toastAll'))"></nut-cell>
+    <h2>{{ translate('toastBottom') }}</h2>
+    <nut-cell :title="translate('toastBottom')" is-link @click="BottomToast(translate('toastBottom'))"></nut-cell>
+    <h2>{{ translate('toastTransparent') }}</h2>
+    <nut-cell
+      :title="translate('toastTransparent')"
+      is-link
+      @click="NoLoading(translate('toastTransparent'))"
+    ></nut-cell>
   </div>
 </template>
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('toast');
+const { createDemo, translate } = createComponent('toast');
 import { Toast } from '@/packages/nutui.vue';
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    toastText: '文字提示',
+    toastTitle: '标题展示',
+    toastSuccess: '成功提示',
+    toastError: '错误提示',
+    toastWarning: '警告提示',
+    toastLoading: '加载提示',
+    toastAll: 'Toast 不消失',
+    toastBottom: '自定义底部高度',
+    toastTransparent: '加载状态透明遮罩'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    toastText: 'Text Message',
+    toastTitle: 'Title',
+    toastSuccess: 'Success',
+    toastError: 'Error',
+    toastWarning: 'Warning',
+    toastLoading: 'Loading',
+    toastAll: 'Not Disappear',
+    toastBottom: 'Custom Bottom Height',
+    toastTransparent: 'Loading Transparent Cover'
+  }
+});
 export default createDemo({
   setup() {
     const textToast = (msg: string) => {
@@ -27,7 +58,7 @@ export default createDemo({
     };
     const titleToast = (msg: string) => {
       Toast.text(msg, {
-        title: '标题文字'
+        title: translate('toastTitle')
       });
     };
     const successToast = (msg: string) => {
@@ -67,7 +98,8 @@ export default createDemo({
       loadingToast,
       NoToast,
       NoLoading,
-      BottomToast
+      BottomToast,
+      translate
     };
   }
 });
