@@ -9,7 +9,7 @@ config.nav.map((item) => {
     let { name } = element;
     const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
     importStr += `import ${name} from './__VUE/${name.toLowerCase()}/${
-      fs.existsSync(filePath) ? 'index.taro' : 'index'
+      fs.existsSync(filePath) ? 'index.taro.vue' : 'index.vue'
     }';\n`;
 
     packages.push(name);
@@ -24,7 +24,7 @@ fs.outputFileSync(
   `declare namespace _default {
   export { install };
   export { version };
-};
+}
 export function install(app: any): void;
 export const version: '${package.version}';
 export default _default;

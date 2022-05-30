@@ -2,6 +2,7 @@
   <nut-popup
     v-model:visible="show"
     position="bottom"
+    :popClass="popClass"
     :overlay="overlay"
     @click-overlay="closeBoard()"
     overlay-class="nut-numberkeyboard-overlay"
@@ -112,6 +113,10 @@ export default create({
     overlay: {
       type: Boolean,
       default: true
+    },
+    popClass: {
+      type: String,
+      default: ''
     }
   },
   emits: ['input', 'delete', 'close', 'update:value'],
