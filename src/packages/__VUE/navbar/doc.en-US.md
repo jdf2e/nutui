@@ -1,10 +1,10 @@
 # NavBar
 
-### 介绍 
+### Intro
 
 Provide navigation function, often used at the top of the page.
 
-### 安装
+### Install
 
 ```javascript
 
