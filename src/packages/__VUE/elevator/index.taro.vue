@@ -16,7 +16,9 @@
         <view class="nut-elevator__list__item__code">{{ item[acceptKey] }}</view>
         <view
           class="nut-elevator__list__item__name"
-          :class="{ 'nut-elevator__list__item__name--highcolor': currentData.id === subitem.id }"
+          :class="{
+            'nut-elevator__list__item__name--highcolor': currentData.id === subitem.id && currentKey === item[acceptKey]
+          }"
           v-for="subitem in item.list"
           :key="subitem['id']"
           @click="handleClickItem(item[acceptKey], subitem)"
@@ -42,11 +44,11 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, reactive, toRefs, nextTick, ref, Ref, onMounted } from 'vue';
+import { computed, reactive, toRefs, nextTick, ref, Ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
 const { componentName, create } = createComponent('elevator');
-import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 interface ElevatorData {
   name: string;
   id: number | string;
@@ -85,8 +87,8 @@ export default create({
       currentIndex: 0,
       query: Taro.createSelectorQuery(),
       scrollTop: 0,
-      storageListHeight: [] as number[],
-      currentData: {} as ElevatorData
+      currentData: {} as ElevatorData,
+      currentKey: ''
     });
 
     const classes = computed(() => {
@@ -125,15 +127,14 @@ export default create({
     };
 
     const calculateHeight = () => {
+      state.listHeight = [];
       let height = 0;
       state.listHeight.push(height);
-      state.storageListHeight.push(height);
       for (let i = 0; i < state.listGroup.length; i++) {
         state.query.selectAll(`.elevator__item__${i}`).boundingClientRect();
         state.query.exec((res: any) => {
           height += res[i][0].height;
           state.listHeight.push(height);
-          state.storageListHeight.push(height);
         });
       }
     };
@@ -141,9 +142,6 @@ export default create({
     const scrollTo = (index: number) => {
       if (!index && index !== 0) {
         return;
-      }
-      if (!state.listHeight.length) {
-        state.listHeight = state.storageListHeight.slice();
       }
       if (index < 0) index = 0;
       if (index > state.listHeight.length - 2) index = state.listHeight.length - 2;
@@ -176,25 +174,23 @@ export default create({
     const handleClickItem = (key: string, item: ElevatorData) => {
       context.emit('click-item', key, item);
       state.currentData = item;
+      state.currentKey = key;
     };
 
     const handleClickIndex = (key: string) => {
       context.emit('click-index', key);
     };
 
-    onMounted(() => {
-      if (Taro.getEnv() === 'WEB') {
-        nextTick(calculateHeight);
-      } else {
-        eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
-          calculateHeight();
-        });
-      }
-    });
-
     useExpose({
       scrollTo
     });
+
+    watch(
+      () => state.listGroup.length,
+      () => {
+        Taro.nextTick(calculateHeight);
+      }
+    );
 
     return {
       classes,

@@ -1,4 +1,4 @@
-import { getPropByPath, isPromise } from '@/packages/utils/util';
+import { getPropByPath, isFunction, isObject, isPromise } from '@/packages/utils/util';
 import { computed, provide, reactive, VNode, watch } from 'vue';
 import { FormItemRule } from '../formitem/types';
 import { ErrorMessage, FormRule } from './types';
@@ -46,6 +46,12 @@ export const component = {
           });
         } else if (Array.isArray(vnode.children) && vnode.children?.length) {
           task = task.concat(findFormItem(vnode.children as VNode[]));
+        } else if (isObject(vnode.children) && Object.keys(vnode.children)) {
+          // 异步节点获取
+          if ((vnode.children as any)?.default) {
+            vnode.children = (vnode.children as any).default();
+            task = task.concat(findFormItem(vnode.children as VNode[]));
+          }
         }
       });
       return task;

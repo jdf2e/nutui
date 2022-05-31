@@ -115,7 +115,7 @@ app.use(TabbarItem);
 <template>
   <nut-tabbar>
     <nut-tabbar-item tab-title="首页" icon="home" num="11"></nut-tabbar-item>
-    <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="分类" icon="category" :dot="true"></nut-tabbar-item>
     <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
     <nut-tabbar-item tab-title="购物车" icon="cart" num="110"></nut-tabbar-item>
     <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
@@ -192,7 +192,7 @@ app.use(TabbarItem);
 | class-prefix | 自定义icon 类名前缀，用于使用自定义图标     | string           | `nut-icon` |
 | img      | 标签页显示图片链接 | String | --     |
 | active-img      | 激活以后的标签页显示图片链接（同一个item中icon和img只能选择一个） | string | --     |
-| href      | 标签页的跳转链接                          | string | --     |
+| href      | 标签页的跳转链接；如果同时存在 `to`，优先级高于 `to`    | string | --     |
 | to  `小程序不支持`      | 	标签页的路由对象，等于 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) 属性 | string｜object | --     |
 | num       | 页签右上角的数字角标，超出99之后为99+     | number | --     |
 | dot       | 是否显示图标右上角小红点   | boolean | false    |

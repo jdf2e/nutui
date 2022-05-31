@@ -27,7 +27,7 @@ app.use();
   <div class="demo">
     <h2>Basic Usage</h2>
     <nut-cell>
-      <nut-list :height="50" :listData="count" @scroll="handleScroll">
+      <nut-list :height="50" :listData="count" @scroll-bottom="handleScroll">
         <template v-slot="{ item }">
           <div class="list-item">
             {{ item }}
@@ -85,4 +85,5 @@ export default {
 
 | Event | Description           | Arguments     |
 |--------|----------------|--------------|
-| scroll  | Triggered when scrolling | - |
+| scroll(Will be abandoned), `scroll-bottom` replaced  | Triggered when scrolling to the bottom | - |
+| scroll-bottom `v3.1.21`   | Triggered when scrolling to the bottom | - |

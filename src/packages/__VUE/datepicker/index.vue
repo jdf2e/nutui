@@ -22,7 +22,7 @@ import { popupProps } from '../popup/index.vue';
 import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
 import { padZero } from './utils';
-const { componentName, create } = createComponent('datepicker');
+const { componentName, create, translate } = createComponent('datepicker');
 
 type Formatter = (type: string, option: PickerOption) => PickerOption;
 type Filter = (columnType: string, options: PickerOption[]) => PickerOption[];
@@ -35,12 +35,12 @@ function isDate(val: Date): val is Date {
 const zhCNType: {
   [props: string]: string;
 } = {
-  day: '日',
-  year: '年',
-  month: '月',
-  hour: '时',
-  minute: '分',
-  seconds: '秒'
+  day: translate('day'),
+  year: translate('year'),
+  month: translate('month'),
+  hour: translate('hour'),
+  minute: translate('minute'),
+  seconds: translate('seconds')
 };
 export default create({
   components: {

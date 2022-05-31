@@ -18,13 +18,9 @@ import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
 import nutPicker from '../picker/index.taro.vue';
 import { popupProps } from '../popup/index.vue';
-import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
 import { padZero } from './utils';
 const { componentName, create } = createComponent('datepicker');
-
-type Formatter = (type: string, option: PickerOption) => PickerOption;
-type Filter = (columnType: string, options: PickerOption[]) => PickerOption[];
 
 const currentYear = new Date().getFullYear();
 function isDate(val: Date): val is Date {
@@ -83,10 +79,10 @@ export default create({
       validator: isDate
     },
     formatter: {
-      type: Function as PropType<Formatter>,
+      type: Function as PropType<import('./type').Formatter>,
       default: null
     },
-    filter: Function as PropType<Filter>
+    filter: Function as PropType<import('./type').Filter>
   },
   emits: ['click', 'update:visible', 'change', 'confirm', 'update:moduleValue'],
 
@@ -217,7 +213,7 @@ export default create({
     }: {
       columnIndex: number;
       selectedValue: (string | number)[];
-      selectedOptions: PickerOption[];
+      selectedOptions: import('../picker/types').PickerOption[];
     }) => {
       if (['date', 'datetime', 'datehour', 'month-day'].includes(props.type)) {
         let formatDate: (number | string)[] = [];
@@ -260,7 +256,7 @@ export default create({
 
     const generateValue = (min: number, max: number, val: number | string, type: string, columnIndex: number) => {
       // if (!(max > min)) return;
-      const arr: Array<PickerOption> = [];
+      const arr: Array<import('../picker/types').PickerOption> = [];
       let index = 0;
       while (min <= max) {
         arr.push(formatterOption(type, min));

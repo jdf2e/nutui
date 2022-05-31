@@ -130,6 +130,8 @@ export default {
 | background | Background color                                         | String        | -        |
 | class-name | Custom class name                                        | String/Number | 1        |
 
+> Component call is supported after version 'v3.1.20'.
+
 ### Events
 
 | Event  | Description                    | Arguments |

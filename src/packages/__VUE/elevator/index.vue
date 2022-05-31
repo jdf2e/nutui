@@ -5,7 +5,9 @@
         <view class="nut-elevator__list__item__code">{{ item[acceptKey] }}</view>
         <view
           class="nut-elevator__list__item__name"
-          :class="{ 'nut-elevator__list__item__name--highcolor': currentData.id === subitem.id }"
+          :class="{
+            'nut-elevator__list__item__name--highcolor': currentData.id === subitem.id && currentKey === item[acceptKey]
+          }"
           v-for="subitem in item.list"
           :key="subitem['id']"
           @click="handleClickItem(item[acceptKey], subitem)"
@@ -31,7 +33,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, reactive, toRefs, nextTick, ref, Ref } from 'vue';
+import { computed, reactive, toRefs, nextTick, ref, Ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
 const { componentName, create } = createComponent('elevator');
@@ -71,7 +73,8 @@ export default create({
       },
       scrollStart: false,
       currentIndex: 0,
-      currentData: {} as ElevatorData
+      currentData: {} as ElevatorData,
+      currentKey: ''
     });
 
     const classes = computed(() => {
@@ -121,9 +124,6 @@ export default create({
       if (!index && index !== 0) {
         return;
       }
-      if (!state.listHeight.length) {
-        calculateHeight();
-      }
       if (index < 0) index = 0;
       if (index > state.listHeight.length - 2) index = state.listHeight.length - 2;
       state.currentIndex = index;
@@ -155,6 +155,7 @@ export default create({
     const handleClickItem = (key: string, item: ElevatorData) => {
       context.emit('click-item', key, item);
       state.currentData = item;
+      state.currentKey = key;
     };
 
     const handleClickIndex = (key: string) => {
@@ -164,6 +165,14 @@ export default create({
     useExpose({
       scrollTo
     });
+
+    watch(
+      () => state.listGroup.length,
+      () => {
+        state.listHeight = [];
+        nextTick(calculateHeight);
+      }
+    );
 
     return {
       classes,

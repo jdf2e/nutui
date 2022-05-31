@@ -296,6 +296,8 @@ export default{
 | v-model:value | 当前输入值		 | String | - |
 | maxlength  | 输入值最大长度，结合 v-model 使用 | Number ｜ String| 6 |
 | confirm-text  | 自定义完成按钮文字，如"支付"，"下一步"，"提交"等 | String | 完成 |
+| teleport    | 指定挂载节点(`小程序不支持`)   | String         | `"body"`      |
+| pop-class    | 自定义弹框类名     | String         | -             |
 
 
 ### Event

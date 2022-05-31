@@ -1,6 +1,6 @@
 <template>
   <div :class="classes" :style="{ height: radius * 2 + 'px', width: radius * 2 + 'px' }">
-    <view :style="style"></view>
+    <div :style="style"></div>
     <div class="nut-circleprogress-text">
       <slot></slot>
       <span v-if="!slotDefault">{{ progress }}%</span>

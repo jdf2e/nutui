@@ -12,7 +12,7 @@
       @click="onClickOverlay"
     />
     <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
-      <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
+      <view v-show="visible" :class="classes" :style="popStyle" @click="onClick" ref="popupRef">
         <slot v-if="showSlot"></slot>
         <view
           v-if="closed"
@@ -64,7 +64,8 @@ import {
   reactive,
   PropType,
   CSSProperties,
-  toRefs
+  toRefs,
+  ref
 } from 'vue';
 import { useLockScroll } from './use-lock-scroll';
 import { overlayProps } from './../overlay/index.vue';
@@ -148,6 +149,7 @@ export default create({
   emits: ['click', 'click-close-icon', 'open', 'close', 'opend', 'closed', 'update:visible', 'click-overlay'],
 
   setup(props, { emit }) {
+    const popupRef = ref();
     const state = reactive({
       zIndex: props.zIndex ? (props.zIndex as number) : _zIndex,
       showSlot: true,
@@ -295,7 +297,8 @@ export default create({
       onClickCloseIcon,
       onClickOverlay,
       onOpened,
-      onClosed
+      onClosed,
+      popupRef
     };
   }
 });

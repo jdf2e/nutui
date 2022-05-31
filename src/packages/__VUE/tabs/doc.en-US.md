@@ -109,6 +109,38 @@ export default {
 ```
 :::
 
+### Tabpane height auto
+
+Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tabpane`.
+
+:::demo
+```html
+<template>
+  <nut-tabs v-model="state.tab2value" :auto-height="true">
+    <nut-tabpane title="Tab 1" pane-key="0">
+      <p>Tab 1</p>
+      <p>Tab 1</p>
+      <p>Tab 1</p>
+      <p>Tab 1</p>
+    </nut-tabpane>
+    <nut-tabpane title="Tab 2" pane-key="1"> Tab 2 </nut-tabpane>
+    <nut-tabpane title="Tab 3" pane-key="2"> Tab 3 </nut-tabpane>
+  </nut-tabs>
+</template>
+<script lang="ts">
+import { reactive } from 'vue';
+export default {
+  setup() {
+    const state = reactive({
+      tab2value: '0',
+    });
+    return { state };
+  }
+};
+</script>
+```
+:::
+
 ### Data is rendered asynchronously for 3s
 
 :::demo
@@ -303,18 +335,19 @@ export default {
 
 ### Tabs Props
 
-| Attribute     | Description                                                       | Type          | Default    |
-|---------------|-------------------------------------------------------------------|---------------|------------|
-| v-model       | Index of active tab                                               | number,string | 0          |
-| color         | Label selection color                                             | string        | #1a1a1a    |
-| background    | Tab bar background color                                          | string        | #f5f5f5    |
-| direction     | Use landscape orientation optional value `horizontal`、`vertical` | string        | horizontal |
-| type          | Check the bottom display style optional value `line`、`smile`     | string        | line       |
-| title-scroll  | Is the tab bar scrollable                                         | boolean       | false      |
-| ellipsis      | Whether to omit too long title text                               | boolean       | true       |
-| animated-time | Switch animation duration, unit ms 0 means no animation           | number,string | 300        |
-| title-gutter  | Label gap                                                         | number,string | 0          |
-| size`v3.1.13` | Tab bar font size optional value  `large` `normal` `small`        | string        | normal     |
+| Attribute            | Description                                                                                                                        | Type          | Default    |
+|----------------------|------------------------------------------------------------------------------------------------------------------------------------|---------------|------------|
+| v-model              | Index of active tab                                                                                                                | number,string | 0          |
+| color                | Label selection color                                                                                                              | string        | #1a1a1a    |
+| background           | Tab bar background color                                                                                                           | string        | #f5f5f5    |
+| direction            | Use landscape orientation optional value `horizontal`、`vertical`                                                                  | string        | horizontal |
+| type                 | Check the bottom display style optional value `line`、`smile`                                                                      | string        | line       |
+| title-scroll         | Is the tab bar scrollable                                                                                                          | boolean       | false      |
+| ellipsis             | Whether to omit too long title text                                                                                                | boolean       | true       |
+| animated-time        | Switch animation duration, unit ms 0 means no animation                                                                            | number,string | 300        |
+| title-gutter         | Label gap                                                                                                                          | number,string | 0          |
+| size`v3.1.13`        | Tab bar font size optional value  `large` `normal` `small`                                                                         | string        | normal     |
+| auto-height`v3.1.21` | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tabpane`. | boolean       | false      |
 
 ## Tabs Slots
 

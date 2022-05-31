@@ -56,9 +56,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .doc-content-issue {
-  position: absolute;
-  right: 605px;
-  top: 51px;
+  // position: absolute;
+  // right: 605px;
+  // top: 51px;
   display: flex;
   align-items: center;
   z-index: 1;
@@ -72,7 +72,6 @@ export default defineComponent({
   .issue-item {
     display: flex;
     align-items: center;
-
     border-radius: var(--border-radius);
     transition: all 0.2s ease 0s;
     display: flex;
@@ -93,23 +92,6 @@ export default defineComponent({
     &:hover {
       color: #000;
       background: rgba(64, 69, 82, 0.1);
-    }
-  }
-  &.fixed {
-    position: fixed;
-    right: 30px;
-    top: 80px;
-  }
-  &.vertical {
-    position: fixed;
-    right: 420px;
-    top: 220px;
-    flex-wrap: wrap;
-    width: 100px;
-    z-index: 9;
-    height: auto;
-    .issue-item {
-      width: 100%;
     }
   }
 }
