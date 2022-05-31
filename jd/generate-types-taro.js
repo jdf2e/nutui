@@ -9,7 +9,7 @@ config.nav.map((item) => {
     let { name } = element;
     const filePath = path.join(`./src/packages/__VUE/${name.toLowerCase()}/index.taro.vue`);
     importStr += `import ${name} from './__VUE/${name.toLowerCase()}/${
-      fs.existsSync(filePath) ? 'index.taro' : 'index'
+      fs.existsSync(filePath) ? 'index.taro.vue' : 'index.vue'
     }';\n`;
 
     packages.push(name);
