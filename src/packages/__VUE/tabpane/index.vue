@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-tabpane" :class="{ active: paneKey == activeKey }">
+  <view class="nut-tabpane" :class="{ inactive: paneKey != activeKey && autoHeight }">
     <slot></slot>
   </view>
 </template>
@@ -26,7 +26,11 @@ export default create({
   emits: ['click'],
   setup(props, { emit }) {
     const parent = inject('activeKey') as any;
-    return { activeKey: parent.activeKey };
+    const parentOption = inject('autoHeight') as any;
+    return {
+      activeKey: parent.activeKey,
+      autoHeight: parentOption.autoHeight
+    };
   }
 });
 </script>
