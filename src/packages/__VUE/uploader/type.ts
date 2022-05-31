@@ -10,6 +10,7 @@ export class FileItem {
   name?: string;
   url?: string;
   type?: string;
+  path?: string;
   percentage: string | number = 0;
-  formData: FormData = new FormData();
+  formData: any = {};
 }
