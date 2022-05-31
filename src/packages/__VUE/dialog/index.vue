@@ -66,7 +66,7 @@ export default create({
       default: ''
     },
     content: {
-      type: [String, Object] as PropType<string | VNode>,
+      type: [String, Object] as PropType<string>,
       default: ''
     },
     noFooter: {

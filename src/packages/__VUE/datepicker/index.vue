@@ -24,9 +24,6 @@ import { createComponent } from '@/packages/utils/create';
 import { padZero } from './utils';
 const { componentName, create, translate } = createComponent('datepicker');
 
-type Formatter = (type: string, option: PickerOption) => PickerOption;
-type Filter = (columnType: string, options: PickerOption[]) => PickerOption[];
-
 const currentYear = new Date().getFullYear();
 function isDate(val: Date): val is Date {
   return Object.prototype.toString.call(val) === '[object Date]' && !isNaN(val.getTime());
@@ -84,10 +81,10 @@ export default create({
       validator: isDate
     },
     formatter: {
-      type: Function as PropType<Formatter>,
+      type: Function as PropType<import('./type').Formatter>,
       default: null
     },
-    filter: Function as PropType<Filter>
+    filter: Function as PropType<import('./type').Filter>
   },
   emits: ['click', 'update:visible', 'change', 'confirm', 'update:moduleValue'],
 
@@ -112,7 +109,7 @@ export default create({
       return 32 - new Date(year, month - 1, 32).getDate();
     }
     const getBoundary = (type: string, value: Date) => {
-      const boundary = props[`${type}Date`];
+      const boundary = (props as any)[`${type}Date`];
       const year = boundary.getFullYear();
       let month = 1;
       let day = 1;
