@@ -1,5 +1,5 @@
 import { h, computed } from 'vue';
-import type { PropType, CSSProperties, ExtractPropTypes, SetupContext, RenderFunction } from 'vue';
+import type { ExtractPropTypes, SetupContext, RenderFunction } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '@/packages/utils/pxCheck';
 import { useProvide } from '@/packages/utils/useRelation/useProvide';
@@ -52,7 +52,7 @@ export const gridProps = {
   },
   // 内容排列方向
   direction: {
-    type: String as PropType<GridDirection>
+    type: String as import('vue').PropType<GridDirection>
   },
   // 是否开启点击反馈
   clickable: {
@@ -77,7 +77,7 @@ export const component = {
     });
 
     const rootStyle = computed(() => {
-      const style: CSSProperties = {};
+      const style: import('vue').CSSProperties = {};
 
       if (props.gutter) {
         style.paddingLeft = pxCheck(props.gutter);
