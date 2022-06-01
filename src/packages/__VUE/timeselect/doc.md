@@ -9,9 +9,9 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { TimeSelect, TimePannel, TimeDetail, Popup } from '@nutui/nutui';
+import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, OverLay } from '@nutui/nutui';
 // taro
-import { TimeSelect, TimePannel, TimeDetail, Popup } from '@nutui/nutui-taro';
+import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
