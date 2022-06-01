@@ -183,7 +183,7 @@ app.use(Switch);
 
 ### Events
 
-| Attribute | Description    | Arguments                 |
+| Event | Description    | Arguments                 |
 |--------|----------------|-------------------------------|
 | change | Emitted when check status changed | (value: boolean,event: Event) |
     

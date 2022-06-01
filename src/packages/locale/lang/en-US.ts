@@ -72,7 +72,8 @@ class Lang extends BaseLang {
     skuId: 'Sku Number'
   };
   addresslist = {
-    addAddress: 'Add New Address'
+    addAddress: 'Add New Address',
+    default: 'default'
   };
   comment = {
     complaintsText: 'I have a complaint',

@@ -479,7 +479,7 @@ app.use(Icon);
 
 :::
 
-### Prop
+### Props
 
 | 参数         | 说明                                   | 类型           | 默认值  |
 |--------------|----------------------------------------|----------------|---------|
@@ -514,7 +514,7 @@ app.use(Icon);
 | confirm-type   | 键盘右下角按钮的文字（`仅支持小程序`），仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
 | adjust-position| 键盘弹起时，是否自动上推页面，仅支持原生     | Boolean | `true` |
 
-### Event
+### Events
 
 | 名称   | 说明           | 回调参数    |
 |--------|----------------|-------------|
@@ -527,7 +527,7 @@ app.use(Icon);
 | click-left-icon  | 点击左侧图标时触发      | val ,event  |
 | click-right-icon | 点击右侧图标时触发      | val ,event  |
 
-### Slot
+### Slots
 | 名称  | 说明     | 
 |-------|----------|
 | button | 自定义输入框尾部按钮 |

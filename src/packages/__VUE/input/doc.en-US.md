@@ -478,7 +478,7 @@ The user can enter content in the text box. Configure the icons on both sides of
 
 :::
 
-### Prop
+### Props
 
 | Attribute   | Description               | Type       | Default  |
 |--------------|----------------------------------------|----------------|---------|
@@ -513,9 +513,9 @@ The user can enter content in the text box. Configure the icons on both sides of
 | confirm-type   | The text of the button in the lower right corner of the keyboard (`applets only`), only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String |   `done`   |
 | adjust-position| Whether to automatically push the page up when the keyboard pops up, only native     | Boolean | `true` |
 
-### Event
+### Events
 
-| Attribute   | Description      | Arguments    |
+| Event   | Description      | Arguments    |
 |--------|----------------|-------------|
 | update:model-value | Emitted when input value changed | val  |
 | focus  | Emitted when input is focused     | val  ,event |
@@ -526,8 +526,9 @@ The user can enter content in the text box. Configure the icons on both sides of
 | click-left-icon  | Emitted when the left icon is clicked      | val ,event  |
 | click-right-icon | Emitted when the right icon is clicked      | val ,event  |
 
-### Slot
-| Attribute  | Description     | 
+### Slots
+
+| Name  | Description     | 
 |-------|----------|
 | button | Insert button |
 

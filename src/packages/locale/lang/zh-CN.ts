@@ -72,7 +72,8 @@ class Lang extends BaseLang {
     skuId: '商品编号'
   };
   addresslist = {
-    addAddress: '新建地址'
+    addAddress: '新建地址',
+    default: '默认'
   };
   comment = {
     complaintsText: '我要投诉',
