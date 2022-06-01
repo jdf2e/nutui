@@ -207,6 +207,7 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
 | title                 | Bomb layer title                                                    | String  | `Pickup Time`
 | current-key                 | Unique identification                                                    | String、Number  | `0`
 | current-time                 | The currently selected time, the array element contains:key: string; list: string[]      | Array  | `[]`
+| lock-scroll            | Whether the background is locked                         | Boolean        | `false`       |
 
 ### TimePannel Prop
 

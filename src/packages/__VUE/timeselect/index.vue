@@ -6,6 +6,7 @@
     :isWrapTeleport="isWrapTeleport"
     :visible="visible"
     :style="popStyle"
+    :lock-scroll="lockScroll"
     @click-overlay="close"
     @click-close-icon="close"
   >
@@ -53,6 +54,10 @@ export default create({
       default: () => {
         return [];
       }
+    },
+    lockScroll: {
+      type: [Boolean],
+      default: false
     },
     isWrapTeleport: {
       type: Boolean,
