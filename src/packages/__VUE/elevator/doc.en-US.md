@@ -228,6 +228,151 @@ app.use(Elevator);
 
 :::
 
+### Index ceiling
+
+:::demo
+
+``` html
+<template>
+  <nut-elevator :index-list="dataList3" :height="220"  @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        dataList3: [
+          {
+            title: 'A',
+            list: [
+              {
+                name: 'AnHui',
+                id: 1
+              }
+            ]
+          },
+          {
+            title: 'B',
+            list: [
+              {
+                name: 'BeiJing',
+                id: 2
+              }
+            ]
+          },
+          {
+            title: 'C',
+            list: [
+              {
+                name: 'ChongQin',
+                id: 3
+              }
+            ]
+          },
+          {
+            title: 'F',
+            list: [
+              {
+                name: 'FuJian',
+                id: 4
+              }
+            ]
+          },
+          {
+            title: 'G',
+            list: [
+              {
+                name: 'GuangXi',
+                id: 5
+              },
+              {
+                name: 'GuangDong',
+                id: 6
+              },
+              {
+                name: 'GanSu',
+                id: 7
+              },
+              {
+                name: 'GuiZhou',
+                id: 8
+              }
+            ]
+          },
+          {
+            title: 'H',
+            list: [
+              {
+                name: 'HuNan',
+                id: 9
+              },
+              {
+                name: 'HuBei',
+                id: 10
+              },
+              {
+                name: 'HaiNan',
+                id: 11
+              },
+              {
+                name: 'HeBei',
+                id: 12
+              },
+              {
+                name: 'HeNan',
+                id: 13
+              },
+              {
+                name: 'HeiLongJiang',
+                id: 14
+              }
+            ]
+          },
+          {
+            title: 'J',
+            list: [
+              {
+                name: 'JiLin',
+                id: 15
+              },
+              {
+                name: 'JiangSu',
+                id: 16
+              },
+              {
+                name: 'JiangXi',
+                id: 17
+              }
+            ]
+          },
+          {
+            title: 'L',
+            list: [
+              {
+                name: 'LiaoNing',
+                id: 18
+              }
+            ]
+          }
+        ]
+      });
+
+      const clickItem = (key: string, item: any) => {
+        console.log(key, JSON.stringify(item));
+      };
+
+      const clickIndex = (key: string) => {
+        console.log(key);
+      };
+
+      return { ...toRefs(state), clickItem, clickIndex };
+    }
+  };
+</script>
+```
+
+:::
+
 ## API
 
 ### Prop
@@ -237,6 +382,9 @@ app.use(Elevator);
 | height                 | Height of elevator area                                                    | Number、String  | `200px`
 | accept-key             | Index key value                                                      | String  | `title` |
 | index-list             | Index list                                                         | Array（`item` needs to contain `id` and `name` attributes, and `name` supports passing in `html` structure）  | `[{id: 0, name: ''}]` |
+| is-sticky            | Whether the index is ceiling                                                    | Boolean  | `false` |
+| space-height             | Up and down spacing of right anchor point              | Number  | `23` |
+| title-height             | Height of left index                                                     | Number  | `35` |
 
 ### Event
 
