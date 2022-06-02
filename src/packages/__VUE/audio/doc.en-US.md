@@ -234,5 +234,3 @@ export default {
 | ended  | Emitted when audio ended | —— |
 | mute  | Emitted when audio mute | —— |
 | changeProgress  | Emitted when audio progress change | play time（millisecond） |
-
-    
