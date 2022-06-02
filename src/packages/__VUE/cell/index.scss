@@ -12,6 +12,10 @@
   margin: 10px 0;
   box-sizing: border-box;
 
+  &--center {
+    align-items: center;
+  }
+
   &:last-child {
     &::after {
       border: 0 !important;

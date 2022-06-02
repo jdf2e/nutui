@@ -165,8 +165,8 @@ test('should show sure emitted when click', async () => {
     },
     methods: {
       tabSwitch(item: any, index: number) {
-        this.val = index;
-        this.data = item;
+        (this as any).val = index;
+        (this as any).data = item;
       }
     }
   });

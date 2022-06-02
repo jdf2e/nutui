@@ -31,3 +31,5 @@ export type InputRule = {
   message?: string;
   required?: boolean;
 };
+
+export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';

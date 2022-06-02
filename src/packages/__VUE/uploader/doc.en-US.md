@@ -382,7 +382,7 @@ export default {
 
 ### Methods
 
-Use [ref](https://v3.cn.vuejs.org/api/special-attributes.html#ref) to get Uploader instance and call instance methods.
+Use [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) to get Uploader instance and call instance methods.
 
 | Name             | Description                                                                                 | Arguments | Return value |
 |------------------|---------------------------------------------------------------------------------------------|-----------|--------------|

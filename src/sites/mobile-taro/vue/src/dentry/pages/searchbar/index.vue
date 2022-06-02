@@ -14,7 +14,7 @@
     </nut-searchbar>
 
     <h2>右侧添加搜索文字</h2>
-    <nut-searchbar v-model="searchValue3">
+    <nut-searchbar v-model="searchValue3" :confirm-type="confirmType">
       <template v-slot:rightout> 搜索 </template>
     </nut-searchbar>
 
@@ -55,7 +55,8 @@ export default {
       searchValue2: '',
       searchValue3: '',
       searchValue4: '',
-      searchValue5: ''
+      searchValue5: '',
+      confirmType: 'search',
     });
 
     const search = function (e: any) {

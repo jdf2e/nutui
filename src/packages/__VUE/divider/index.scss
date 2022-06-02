@@ -51,4 +51,13 @@
       transform: scaleY(0.5);
     }
   }
+
+  &.nut-divider-vertical {
+    position: relative;
+    top: $divider-vertical-top;
+    display: inline-block;
+    height: $divider-vertical-height;
+    border-left: 1px solid $divider-vertical-border-left;
+    margin: $divider-vertical-margin;
+  }
 }

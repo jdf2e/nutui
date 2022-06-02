@@ -18,6 +18,17 @@
       <nut-tabpane title="Tab 2" pane-key="1" :disabled="true"> Tab 2 </nut-tabpane>
       <nut-tabpane title="Tab 3" pane-key="2"> Tab 3 </nut-tabpane>
     </nut-tabs>
+    <h2>Tabpane 自动高度</h2>
+    <nut-tabs v-model="state.tab2value" :auto-height="true">
+      <nut-tabpane title="Tab 1" pane-key="0">
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+      </nut-tabpane>
+      <nut-tabpane title="Tab 2" pane-key="1"> Tab 2 </nut-tabpane>
+      <nut-tabpane title="Tab 3" pane-key="2"> Tab 3 </nut-tabpane>
+    </nut-tabs>
     <h2>数据异步渲染 3s</h2>
     <nut-tabs v-model="state.tab3value">
       <nut-tabpane v-for="item in state.list3" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>

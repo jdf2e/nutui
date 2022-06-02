@@ -74,12 +74,12 @@ test('menu item options props: html should contain options3 text', () => {
   expect(wrapper.html()).toContain('全部商品');
 });
 
-test('menu item customer text: nut-menu-item__content html should contain customer text', () => {
+test('menu item custom text: nut-menu-item__content html should contain custom text', () => {
   const component = {
     template: `<nut-menu>
       <nut-menu-item v-model="value1" :options="options1" />
       <nut-menu-item>
-        <div>customer text</div>
+        <div>custom text</div>
       </nut-menu-item>
     </nut-menu>`,
     data() {
@@ -92,7 +92,7 @@ test('menu item customer text: nut-menu-item__content html should contain custom
 
   const wrapper = mount(component);
 
-  expect(wrapper.html()).toContain('customer text');
+  expect(wrapper.html()).toContain('custom text');
 });
 
 test('menu item disabled props: nut-menu__item classes should contain disabled', async () => {
@@ -111,21 +111,21 @@ test('menu item disabled props: nut-menu__item classes should contain disabled',
   expect(barItem.classes()).toContain('disabled');
 });
 
-test('menu item title props: nut-menu__title-text html should contain customer title', async () => {
+test('menu item title props: nut-menu__title-text html should contain custom title', async () => {
   const wrapper = mount(Menu, {
     slots: {
       default: h(MenuItem, {
-        title: 'customer title',
+        title: 'custom title',
         options: options1
       })
     }
   });
   await nextTick();
 
-  expect(wrapper.find('.nut-menu__title-text').html()).toContain('customer title');
+  expect(wrapper.find('.nut-menu__title-text').html()).toContain('custom title');
 });
 
-test('menu item title icon props: nut-menu__title-text html should contain customer title', async () => {
+test('menu item title icon props: nut-menu__title-text html should contain custom title', async () => {
   const wrapper = mount(Menu, {
     slots: {
       default: h(MenuItem, {
@@ -181,7 +181,7 @@ test('menu item change props: value2 should be b after click', async () => {
     },
     methods: {
       handleChange(val: any) {
-        this.value2 = val;
+        (this as any).value2 = val;
       }
     }
   });
@@ -192,4 +192,26 @@ test('menu item change props: value2 should be b after click', async () => {
   tabbarItem[1].trigger('click');
 
   expect(wrapper.vm.value2).toBe('b');
+});
+
+test('menu close-on-click-overlay props: ', async () => {
+  const wrapper = mount(Menu, {
+    props: {
+      closeOnClickOverlay: true
+    },
+    slots: {
+      default: h(MenuItem, {
+        modelValue: 0,
+        options: options1
+      })
+    }
+  });
+  await nextTick();
+  wrapper.find('.nut-menu__item').trigger('click');
+  await nextTick();
+
+  wrapper.find('.nut-overlay').trigger('click');
+  await nextTick();
+
+  expect(wrapper.find<HTMLElement>('.nut-overlay').element.style.display).toEqual('none');
 });

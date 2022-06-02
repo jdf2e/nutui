@@ -51,6 +51,7 @@
           :value="modelValue"
           :formatTrigger="formatTrigger"
           :autofocus="autofocus"
+          :confirm-type="confirmType"
           :adjust-position="adjustPosition"
           @input="onInput"
           @focus="onFocus"
@@ -224,6 +225,10 @@ export default create({
       type: Boolean,
       default: false
     },
+    confirmType: {
+      type: String as PropType<import('./type').ConfirmTextType>,
+      default: 'done'
+    },
     adjustPosition: {
       type: Boolean,
       default: true
@@ -320,8 +325,8 @@ export default create({
         value = props.formatter(value);
       }
 
-      if (inputRef && inputRef.value && inputRef.value.value && inputRef.value.value !== value) {
-        inputRef.value.value = value;
+      if (inputRef && inputRef.value && inputRef.value !== value) {
+        inputRef.value = value;
       }
 
       if (value !== props.modelValue) {

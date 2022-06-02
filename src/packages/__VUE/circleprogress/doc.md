@@ -2,7 +2,7 @@
 
 ### 介绍
 
-展示操作或任务的当前进度。
+圆环形的进度条组件
 
 ### 安装
 
@@ -139,7 +139,7 @@ export default {
 | progress | 百分比 | Number,String | 必传项，无默认值
 | stroke-width | 圆弧的宽度 | Number,String | 5
 | radius | 半径 | Number,String | 50
-| color | 圆环进度条颜色 | Number,String | '#fa2c19'
+| color | 圆环进度条颜色 | String , Object | '#fa2c19'
 | path-color | 圆环轨道颜色| String | '#d9d9d9'
 | stroke-linecap | 圆环进度条端点形状可选值为 square butt| String | 'round'
 | clockwise| 是否顺时针展示| Boolean | true
