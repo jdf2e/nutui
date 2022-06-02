@@ -43,16 +43,11 @@ const { componentName, create } = createComponent('menu-item');
 import Icon from '../icon/index.taro.vue';
 import Popup from '../popup/index.taro.vue';
 
-type MenuItemOption = {
-  text: string;
-  value: number | string;
-};
-
 export default create({
   props: {
     title: String,
     options: {
-      type: Array as PropType<MenuItemOption[]>,
+      type: Array as PropType<import('./type').MenuItemOption[]>,
       default: []
     },
     disabled: {
@@ -137,7 +132,7 @@ export default create({
       return match ? match.text : '';
     };
 
-    const onClick = (option: MenuItemOption) => {
+    const onClick = (option: import('./type').MenuItemOption) => {
       state.showPopup = false;
       state.isShowPlaceholderElement = false;
 
