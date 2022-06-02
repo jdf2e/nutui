@@ -36,14 +36,14 @@ export default {
   setup() {
     const state = reactive({
       options1: [
-        { text: 'Option1', value: 0 },
-        { text: 'Option2', value: 1 },
-        { text: 'Option3', value: 2 }
+        { text: 'All Products', value: 0 },
+        { text: 'New Products', value: 1 },
+        { text: 'Activity Products', value: 2 }
       ],
       options2: [
-        { text: 'Option A', value: 'a' },
-        { text: 'Option B', value: 'b' },
-        { text: 'Option C', value: 'c' },
+        { text: 'Default Sort', value: 'a' },
+        { text: 'Praise Sort', value: 'b' },
+        { text: 'Sales Volume Sort', value: 'c' }
       ],
       value1: 0,
       value2: 'a'
@@ -89,9 +89,9 @@ export default {
   setup() {
     const state = reactive({
       options1: [
-        { text: 'Option1', value: 0 },
-        { text: 'Option2', value: 1 },
-        { text: 'Option3', value: 2 }
+        { text: 'All Products', value: 0 },
+        { text: 'New Products', value: 1 },
+        { text: 'Activity Products', value: 2 }
       ],
       value1: 0
     });
@@ -132,24 +132,24 @@ export default {
   setup() {
     const state = reactive({
       options3: [
-        { text: 'Option1', value: 0 },
-        { text: 'Option2', value: 1 },
-        { text: 'Option3', value: 2 },
-        { text: 'Option4', value: 3 },
-        { text: 'Option5', value: 4 },
-        { text: 'Option6', value: 5 },
-        { text: 'Option7', value: 6 },
-        { text: 'Option8', value: 7 },
-        { text: 'Option9', value: 8 },
-        { text: 'Option10', value: 9 },
-        { text: 'Option11', value: 10 },
-        { text: 'Option12', value: 11 },
-        { text: 'Option13', value: 12 },
-        { text: 'Option14', value: 13 },
-        { text: 'Option15', value: 14 },
-        { text: 'Option16', value: 15 },
-        { text: 'Option17', value: 16 },
-        { text: 'Option18', value: 17 },
+        { text: 'All Products', value: 0 },
+        { text: 'Product1', value: 1 },
+        { text: 'Product2', value: 2 },
+        { text: 'Product3', value: 3 },
+        { text: 'Product4', value: 4 },
+        { text: 'Product5', value: 5 },
+        { text: 'Product6', value: 6 },
+        { text: 'Product7', value: 7 },
+        { text: 'Product8', value: 8 },
+        { text: 'Product9', value: 9 },
+        { text: 'Product10', value: 10 },
+        { text: 'Product11', value: 11 },
+        { text: 'Product12', value: 12 },
+        { text: 'Product13', value: 13 },
+        { text: 'Product14', value: 14 },
+        { text: 'Product15', value: 15 },
+        { text: 'Product16', value: 16 },
+        { text: 'Product17', value: 17 }
       ],
       value3: 0
     });
@@ -183,14 +183,108 @@ export default {
   setup() {
     const state = reactive({
       options1: [
-        { text: 'Option1', value: 0 },
-        { text: 'Option2', value: 1 },
-        { text: 'Option3', value: 2 }
+        { text: 'All Products', value: 0 },
+        { text: 'New Products', value: 1 },
+        { text: 'Activity Products', value: 2 }
       ],
       options2: [
-        { text: 'Option A', value: 'a' },
-        { text: 'Option B', value: 'b' },
-        { text: 'Option C', value: 'c' },
+        { text: 'Default Sort', value: 'a' },
+        { text: 'Praise Sort', value: 'b' },
+        { text: 'Sales Volume Sort', value: 'c' }
+      ],
+      value1: 0,
+      value2: 'a'
+    });
+
+    const handleChange = val => {
+      console.log('val', val);
+    }
+
+    return {
+      state,
+      handleChange
+    };
+  }
+}
+</script>
+```
+
+:::
+
+### Custom Icons
+
+:::demo
+
+```html
+<template>
+  <nut-menu>
+    <nut-menu-item v-model="state.value1" :options="state.options1" titleIcon="joy-smile" />
+    <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" optionIcon="checklist" />
+  </nut-menu>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+
+export default {
+  setup() {
+    const state = reactive({
+      options1: [
+        { text: 'All Products', value: 0 },
+        { text: 'New Products', value: 1 },
+        { text: 'Activity Products', value: 2 }
+      ],
+      options2: [
+        { text: 'Default Sort', value: 'a' },
+        { text: 'Praise Sort', value: 'b' },
+        { text: 'Sales Volume Sort', value: 'c' }
+      ],
+      value1: 0,
+      value2: 'a'
+    });
+
+    const handleChange = val => {
+      console.log('val', val);
+    }
+
+    return {
+      state,
+      handleChange
+    };
+  }
+}
+</script>
+```
+
+:::
+
+### Expand Directions
+
+:::demo
+
+```html
+<template>
+  <nut-menu>
+    <nut-menu-item v-model="state.value1" :options="state.options1" />
+    <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
+  </nut-menu>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+
+export default {
+  setup() {
+    const state = reactive({
+      options1: [
+        { text: 'All Products', value: 0 },
+        { text: 'New Products', value: 1 },
+        { text: 'Activity Products', value: 2 }
+      ],
+      options2: [
+        { text: 'Default Sort', value: 'a' },
+        { text: 'Praise Sort', value: 'b' },
+        { text: 'Sales Volume Sort', value: 'c' }
       ],
       value1: 0,
       value2: 'a'
@@ -230,34 +324,34 @@ export default {
   setup() {
     const state = reactive({
       options1: [
-        { text: 'Option1', value: 0 },
-        { text: 'Option2', value: 1 },
-        { text: 'Option3', value: 2 }
+        { text: 'All Products', value: 0 },
+        { text: 'New Products', value: 1 },
+        { text: 'Activity Products', value: 2 }
       ],
       options2: [
-        { text: 'Option A', value: 'a' },
-        { text: 'Option B', value: 'b' },
-        { text: 'Option C', value: 'c' },
+        { text: 'Default Sort', value: 'a' },
+        { text: 'Praise Sort', value: 'b' },
+        { text: 'Sales Volume Sort', value: 'c' }
       ],
       options3: [
-        { text: 'Option1', value: 0 },
-        { text: 'Option2', value: 1 },
-        { text: 'Option3', value: 2 },
-        { text: 'Option4', value: 3 },
-        { text: 'Option5', value: 4 },
-        { text: 'Option6', value: 5 },
-        { text: 'Option7', value: 6 },
-        { text: 'Option8', value: 7 },
-        { text: 'Option9', value: 8 },
-        { text: 'Option10', value: 9 },
-        { text: 'Option11', value: 10 },
-        { text: 'Option12', value: 11 },
-        { text: 'Option13', value: 12 },
-        { text: 'Option14', value: 13 },
-        { text: 'Option15', value: 14 },
-        { text: 'Option16', value: 15 },
-        { text: 'Option17', value: 16 },
-        { text: 'Option18', value: 17 },
+        { text: 'All Products', value: 0 },
+        { text: 'Product1', value: 1 },
+        { text: 'Product2', value: 2 },
+        { text: 'Product3', value: 3 },
+        { text: 'Product4', value: 4 },
+        { text: 'Product5', value: 5 },
+        { text: 'Product6', value: 6 },
+        { text: 'Product7', value: 7 },
+        { text: 'Product8', value: 8 },
+        { text: 'Product9', value: 9 },
+        { text: 'Product10', value: 10 },
+        { text: 'Product11', value: 11 },
+        { text: 'Product12', value: 12 },
+        { text: 'Product13', value: 13 },
+        { text: 'Product14', value: 14 },
+        { text: 'Product15', value: 15 },
+        { text: 'Product16', value: 16 },
+        { text: 'Product17', value: 17 }
       ],
       value1: 0,
       value2: 'a',
@@ -304,7 +398,9 @@ export default {
 | options         | Options     | Array | -                |
 | disabled         | Whether to disable dropdown item     | Boolean | false                |
 | cols         | Display how many options in one line     | Number | 1                |
-| title-icon         | Custome title icon     | String | 'down-arrow'                |
+| title-icon         | Custome title icon     | String | -                |
+| option-icon         | Custome option icon     | String | 'Check'                |
+| direction         | Expand direction, can be set to up     | String | 'down'                |
 
 ### MenuItem Events
 

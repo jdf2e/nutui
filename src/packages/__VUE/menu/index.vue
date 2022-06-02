@@ -10,7 +10,11 @@
         >
           <view class="nut-menu__title" :class="{ active: item.state.showPopup }">
             <view class="nut-menu__title-text">{{ item.renderTitle() }}</view>
-            <nut-icon :name="item.titleIcon" size="10" class="nut-menu__title-icon"></nut-icon>
+            <nut-icon
+              :name="item.titleIcon || (direction === 'up' ? 'arrow-up' : 'down-arrow')"
+              size="10"
+              class="nut-menu__title-icon"
+            ></nut-icon>
           </view>
         </view>
       </template>
@@ -23,6 +27,7 @@ import { reactive, provide, computed, ref, Ref, unref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useRect } from '@/packages/utils/useRect';
 const { componentName, create } = createComponent('menu');
+
 export default create({
   props: {
     activeColor: {
@@ -40,6 +45,10 @@ export default create({
     closeOnClickOverlay: {
       type: Boolean,
       default: true
+    },
+    direction: {
+      type: String,
+      default: 'down'
     }
   },
   setup(props, { emit, slots }) {
@@ -91,7 +100,12 @@ export default create({
     const updateOffset = () => {
       if (barRef.value) {
         const rect = useRect(barRef);
-        offset.value = rect.bottom;
+
+        if (props.direction === 'down') {
+          offset.value = rect.bottom;
+        } else {
+          offset.value = window.innerHeight - rect.top;
+        }
       }
     };
 

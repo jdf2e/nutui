@@ -24,6 +24,16 @@
       <nut-menu-item v-model="state.value1" :options="state.options1" />
       <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
     </nut-menu>
+    <h2>自定义图标</h2>
+    <nut-menu>
+      <nut-menu-item v-model="state.value1" :options="options1" titleIcon="joy-smile" />
+      <nut-menu-item v-model="state.value2" @change="handleChange" :options="options2" optionIcon="checklist" />
+    </nut-menu>
+    <h2>向上展开</h2>
+    <nut-menu direction="up">
+      <nut-menu-item v-model="state.value1" :options="options1" />
+      <nut-menu-item v-model="state.value2" @change="handleChange" :options="options2" />
+    </nut-menu>
     <h2>禁用菜单</h2>
     <nut-menu>
       <nut-menu-item disabled v-model="state.value1" :options="state.options1" />

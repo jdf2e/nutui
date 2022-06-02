@@ -125,11 +125,11 @@ test('menu item title props: nut-menu__title-text html should contain custom tit
   expect(wrapper.find('.nut-menu__title-text').html()).toContain('custom title');
 });
 
-test('menu item title icon props: nut-menu__title-text html should contain custom title', async () => {
+test('menu item title icon props: nut-menu__title i classes should contain nut-icon-joy-smile', async () => {
   const wrapper = mount(Menu, {
     slots: {
       default: h(MenuItem, {
-        titleIcon: 'plus',
+        titleIcon: 'joy-smile',
         modelValue: 0,
         options: options1
       })
@@ -137,8 +137,44 @@ test('menu item title icon props: nut-menu__title-text html should contain custo
   });
   await nextTick();
 
-  const barItem: any = wrapper.find('.nut-menu__item .nut-menu__title i');
-  expect(barItem.classes()).toContain('nut-icon-plus');
+  const titleIcon: any = wrapper.find('.nut-menu__item .nut-menu__title i');
+  expect(titleIcon.classes()).toContain('nut-icon-joy-smile');
+});
+
+test('menu item option icon props: nut-menu-item__option i classes should contain nut-icon-checklist', async () => {
+  const wrapper = mount(Menu, {
+    slots: {
+      default: h(MenuItem, {
+        optionIcon: 'checklist',
+        modelValue: 0,
+        options: options1
+      })
+    }
+  });
+
+  await nextTick();
+
+  const optionIcon: any = wrapper.find<HTMLElement>('.nut-menu-item__option i');
+  expect(optionIcon.classes()).toContain('nut-icon-checklist');
+});
+
+test('menu direction props: nut-menu__title i classes should contain nut-icon-arrow-up', async () => {
+  const wrapper = mount(Menu, {
+    props: {
+      direction: 'up'
+    },
+    slots: {
+      default: h(MenuItem, {
+        modelValue: 0,
+        options: options1
+      })
+    }
+  });
+
+  await nextTick();
+
+  const titleIcon: any = wrapper.find<HTMLElement>('.nut-menu__title i');
+  expect(titleIcon.classes()).toContain('nut-icon-arrow-up');
 });
 
 test('active color props: i in active nut-menu-item__option color and active nut-menu__item color should be both green', async () => {

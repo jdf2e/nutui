@@ -213,6 +213,100 @@ export default {
 
 :::
 
+### 自定义图标
+
+:::demo
+
+```html
+<template>
+  <nut-menu>
+    <nut-menu-item v-model="state.value1" :options="state.options1" titleIcon="joy-smile" />
+    <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" optionIcon="checklist" />
+  </nut-menu>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+
+export default {
+  setup() {
+    const state = reactive({
+      options1: [
+        { text: '全部商品', value: 0 },
+        { text: '新款商品', value: 1 },
+        { text: '活动商品', value: 2 }
+      ],
+      options2: [
+        { text: '默认排序', value: 'a' },
+        { text: '好评排序', value: 'b' },
+        { text: '销量排序', value: 'c' },
+      ],
+      value1: 0,
+      value2: 'a'
+    });
+
+    const handleChange = val => {
+      console.log('val', val);
+    }
+
+    return {
+      state,
+      handleChange
+    };
+  }
+}
+</script>
+```
+
+:::
+
+### 向上展开
+
+:::demo
+
+```html
+<template>
+  <nut-menu>
+    <nut-menu-item v-model="state.value1" :options="state.options1" />
+    <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
+  </nut-menu>
+</template>
+
+<script>
+import { reactive, ref } from 'vue';
+
+export default {
+  setup() {
+    const state = reactive({
+      options1: [
+        { text: '全部商品', value: 0 },
+        { text: '新款商品', value: 1 },
+        { text: '活动商品', value: 2 }
+      ],
+      options2: [
+        { text: '默认排序', value: 'a' },
+        { text: '好评排序', value: 'b' },
+        { text: '销量排序', value: 'c' },
+      ],
+      value1: 0,
+      value2: 'a'
+    });
+
+    const handleChange = val => {
+      console.log('val', val);
+    }
+
+    return {
+      state,
+      handleChange
+    };
+  }
+}
+</script>
+```
+
+:::
+
 ### 禁用菜单
 
 :::demo
@@ -306,7 +400,9 @@ export default {
 | options         | 选项数组     | Array | -                |
 | disabled         | 是否禁用菜单     | Boolean | false                |
 | cols         | 可以设置一行展示多少列 options     | Number | 1                |
-| title-icon         | 自定义标题图标     | String | 'down-arrow'                |
+| title-icon         | 自定义标题图标     | String | -                |
+| option-icon         | 自定义选项图标     | String | 'Check'                |
+| direction         | 菜单展开方向，可选值为up     | String | 'down'                |
 
 ### MenuItem Events
 

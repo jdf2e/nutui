@@ -28,7 +28,7 @@
           :style="{ 'flex-basis': 100 / cols + '%' }"
           @click="onClick(option)"
         >
-          <nut-icon v-if="option.value === modelValue" name="Check" :color="parent.props.activeColor"></nut-icon>
+          <nut-icon v-if="option.value === modelValue" :name="optionIcon" :color="parent.props.activeColor"></nut-icon>
           <view :style="{ color: option.value === modelValue ? parent.props.activeColor : '' }">{{ option.text }}</view>
         </view>
         <slot></slot>
@@ -67,6 +67,10 @@ export default create({
     titleIcon: {
       type: String,
       default: 'down-arrow'
+    },
+    optionIcon: {
+      type: String,
+      default: 'Check'
     }
   },
   components: {
