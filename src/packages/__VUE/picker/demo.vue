@@ -48,9 +48,10 @@
       "
     ></nut-cell>
     <nut-picker
+      v-model="selectedTime"
       v-model:visible="showMultiple"
       :columns="multipleColumns"
-      :title="translate('chooseCity')"
+      :title="translate('chooseTime')"
       @confirm="(options) => confirm('multiple', options)"
     >
     </nut-picker>
@@ -117,11 +118,13 @@ import { PickerOption } from './types';
 const { createDemo, translate } = createComponent('picker');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Internation } from './doc.en';
+import { convertListToOptions } from '../cascader/helper';
 useTranslate(Internation);
 export default createDemo({
   props: {},
   setup() {
     const selectedValue = ref(['ZheJiang']);
+    const selectedTime = ref(['Wednesday', 'Afternoon']);
     const asyncValue = ref<string[]>([]);
     const columns = computed(() => [
       { text: translate('nanJing'), value: 'NanJing' },
@@ -142,7 +145,7 @@ export default createDemo({
         { text: translate('friday'), value: 'Friday' }
       ],
       [
-        { text: translate('monday'), value: 'Morning' },
+        { text: translate('morning'), value: 'Morning' },
         { text: translate('afternoon'), value: 'Afternoon' },
         { text: translate('evening'), value: 'Evening' }
       ]
@@ -250,7 +253,6 @@ export default createDemo({
     };
 
     onMounted(() => {
-      console.log('monted', multipleColumns.value);
       setTimeout(() => {
         asyncColumns.value = [
           { text: translate('nanJing'), value: 'NanJing' },
@@ -296,7 +298,8 @@ export default createDemo({
       effectColumns,
       showEffect,
       alwaysFun,
-      translate
+      translate,
+      selectedTime
     };
   }
 });
