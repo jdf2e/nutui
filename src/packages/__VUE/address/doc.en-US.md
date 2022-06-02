@@ -530,17 +530,17 @@ If you want to select a province, you need to set the region ID in the order of 
 | Attribute            | Description               | Type   | Default  |
 |----- | ----- | ----- | ----- 
 | v-model:visible | Whether to open address | String | ''
-| type | Choose Type: exist/custom/custom2  | String | 'custom'
-| province | Province Data| Array | []
-| city | City Data | Array | []
-| country | Country Data | Array | []
-| town | Town Data | Array | []
-| height | Popup Height | String、Number | '200px'
-| exist-address | Exist Address List Data | Array | []
-| default-icon | Exist Address Default Icon | String | ''
-| selected-icon | Exist Address Selected Icon | String | ''
-| close-btn-icon | Custom Close Button Icon | string | -
-| back-btn-icon | Custom Back Button Icon | String | -
+| type | Choose type: exist/custom/custom2  | String | 'custom'
+| province | Province data| Array | []
+| city | City data | Array | []
+| country | Country data | Array | []
+| town | Town dta | Array | []
+| height | Popup height | String、Number | '200px'
+| exist-address | Exist address list data | Array | []
+| default-icon | Exist address default icon | String | ''
+| selected-icon | Exist address selected icon | String | ''
+| close-btn-icon | Custom close button icon | string | -
+| back-btn-icon | Custom back button icon | String | -
 | is-show-custom-address | Whether to change custom address | Boolean | true
 | custom-address-title  | Custom address title | String | 'Select Region'
 | exist-address-title|  Exist address title | String | 'Delivery To'
@@ -549,7 +549,7 @@ If you want to select a province, you need to set the region ID in the order of 
 
 
 ## Event
-| Attribute            | Description               | CallBack   |
+| Attribute            | Description               | Arguments   |
 |----- | ----- | ----- 
 | change |  Emitted when to selected custom address |  reference onChange
 | selected |  Emitted when to selected exist address  | reference selected
