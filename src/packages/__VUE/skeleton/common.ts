@@ -1,5 +1,4 @@
-import { h, onMounted, CSSProperties } from 'vue';
-import { computed, PropType, toRefs } from 'vue';
+import { onMounted, computed, toRefs } from 'vue';
 export type avatarShape = 'round' | 'square';
 
 export const component = {
@@ -26,7 +25,7 @@ export const component = {
     },
     //头像形状：正方形/圆形
     avatarShape: {
-      type: String as PropType<avatarShape>,
+      type: String as import('vue').PropType<avatarShape>,
       default: 'round'
     },
     //头像大小
@@ -77,8 +76,8 @@ export const component = {
       };
     });
 
-    const getStyle = (): CSSProperties => {
-      const style: CSSProperties = {};
+    const getStyle = (): import('vue').CSSProperties => {
+      const style: import('vue').CSSProperties = {};
       if (avatarSize.value) {
         return {
           width: avatarSize.value,

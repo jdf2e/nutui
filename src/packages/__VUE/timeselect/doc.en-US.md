@@ -9,9 +9,9 @@ For delivery time selection
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { TimeSelect, TimePannel, TimeDetail, Popup } from '@nutui/nutui';
+import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, OverLay } from '@nutui/nutui';
 // taro
-import { TimeSelect, TimePannel, TimeDetail, Popup } from '@nutui/nutui-taro';
+import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
@@ -207,6 +207,7 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
 | title                 | Bomb layer title                                                    | String  | `Pickup Time`
 | current-key                 | Unique identification                                                    | String、Number  | `0`
 | current-time                 | The currently selected time, the array element contains:key: string; list: string[]      | Array  | `[]`
+| lock-scroll            | Whether the background is locked                         | Boolean        | `false`       |
 
 ### TimePannel Prop
 
