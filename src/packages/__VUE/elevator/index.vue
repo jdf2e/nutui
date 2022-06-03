@@ -37,7 +37,7 @@
   </view>
 </template>
 <script lang="ts">
-import { computed, reactive, toRefs, nextTick, ref, Ref, watch, onMounted, onUnmounted } from 'vue';
+import { computed, reactive, toRefs, nextTick, ref, Ref, watch, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useExpose } from '@/packages/utils/useExpose/index';
 const { componentName, create } = createComponent('elevator');
@@ -198,10 +198,6 @@ export default create({
 
     onMounted(() => {
       listview.value.addEventListener('scroll', listViewScroll);
-    });
-
-    onUnmounted(() => {
-      listview.value.removeEventListener('scroll', listViewScroll);
     });
 
     useExpose({
