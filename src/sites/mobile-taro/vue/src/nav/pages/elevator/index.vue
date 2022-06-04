@@ -4,6 +4,7 @@
     <div class="elevator-wrapper">
       <nut-elevator
         :index-list="dataList"
+        :is-sticky="true"
         height="500px"
         @click-item="clickItem"
         @click-index="clickIndex"

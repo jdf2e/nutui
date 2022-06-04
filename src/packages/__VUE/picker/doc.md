@@ -128,6 +128,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
 <template>
   <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
     <nut-picker
+      v-model="selectedTime"
       v-model:visible="show"
       :columns="multipleColumns"
       title="城市选择"
@@ -141,6 +142,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
   export default {
     setup(props) {
       const show = ref(false);
+      const selectedTime = ref(['Wednesday','Afternoon']);
       const desc = ref('');
       const multipleColumns = ref([
         // 第一列
@@ -166,7 +168,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
         console.log(selectedValue);
       };
 
-      return {show,desc,columns,change, confirm};
+      return {show,desc,columns,change, confirm, selectedTime};
     }
   };
 </script>

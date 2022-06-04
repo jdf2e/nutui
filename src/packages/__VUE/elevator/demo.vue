@@ -2,14 +2,8 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
     <div class="elevator-wrapper">
-      <nut-elevator
-        :index-list="dataList"
-        :height="260"
-        @click-item="clickItem"
-        @click-index="clickIndex"
-      ></nut-elevator>
+      <nut-elevator :index-list="temp" :height="260" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
     </div>
-
     <h2>{{ translate('customIndex') }}</h2>
     <div class="elevator-wrapper">
       <nut-elevator
@@ -20,11 +14,21 @@
         @click-index="clickIndex"
       ></nut-elevator>
     </div>
+    <h2>{{ translate('sticky') }}</h2>
+    <div class="elevator-wrapper">
+      <nut-elevator
+        :index-list="dataList3"
+        :is-sticky="true"
+        :height="220"
+        @click-item="clickItem"
+        @click-index="clickIndex"
+      ></nut-elevator>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { computed, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('elevator');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -32,6 +36,7 @@ useTranslate({
   'zh-CN': {
     basic: '基本用法',
     customIndex: '自定义索引key',
+    sticky: '索引吸顶',
     anhui: '安徽',
     beijing: '北京',
     guangxi: '广西',
@@ -58,6 +63,17 @@ useTranslate({
     haerbin: '哈尔滨',
     changchun: '长春',
     taiyuan: '太原',
+    fujian: '福建',
+    gansu: '甘肃',
+    guizhou: '贵州',
+    hainan: '海南',
+    hebei: '河北',
+    henan: '河南',
+    heilongjiang: '黑龙江',
+    jilin: '吉林',
+    jiangsu: '江苏',
+    jiangxi: '江西',
+    liaoning: '辽宁',
     one: '一',
     two: '二',
     three: '三'
@@ -65,6 +81,7 @@ useTranslate({
   'en-US': {
     basic: 'Basic Usage',
     customIndex: 'Custom index key',
+    sticky: 'Index ceiling',
     anhui: 'AnHui',
     beijing: 'BeiJing',
     guangxi: 'GuangXi',
@@ -91,6 +108,17 @@ useTranslate({
     haerbin: 'HaErBin',
     changchun: 'ChangChun',
     taiyuan: 'TaiYuan',
+    fujian: 'FuJian',
+    gansu: 'GanSu',
+    guizhou: 'GuiZhou',
+    hainan: 'HaiNan',
+    hebei: 'HeBei',
+    henan: 'HeNan',
+    heilongjiang: 'HeiLongJiang',
+    jilin: 'JiLin',
+    jiangsu: 'JiangSu',
+    jiangxi: 'JiangXi',
+    liaoning: 'LiaoNing',
     one: 'one',
     two: 'two',
     three: 'three'
@@ -246,7 +274,125 @@ export default createDemo({
             }
           ]
         }
+      ],
+      dataList3: [
+        {
+          title: 'A',
+          list: [
+            {
+              name: translate('anhui'),
+              id: 1
+            }
+          ]
+        },
+        {
+          title: 'B',
+          list: [
+            {
+              name: translate('beijing'),
+              id: 2
+            }
+          ]
+        },
+        {
+          title: 'C',
+          list: [
+            {
+              name: translate('chongqin'),
+              id: 3
+            }
+          ]
+        },
+        {
+          title: 'F',
+          list: [
+            {
+              name: translate('anhui'),
+              id: 4
+            }
+          ]
+        },
+        {
+          title: 'G',
+          list: [
+            {
+              name: translate('guangxi'),
+              id: 5
+            },
+            {
+              name: translate('guangdong'),
+              id: 6
+            },
+            {
+              name: translate('gansu'),
+              id: 7
+            },
+            {
+              name: translate('guizhou'),
+              id: 8
+            }
+          ]
+        },
+        {
+          title: 'H',
+          list: [
+            {
+              name: translate('hunan'),
+              id: 9
+            },
+            {
+              name: translate('hubei'),
+              id: 10
+            },
+            {
+              name: translate('hainan'),
+              id: 11
+            },
+            {
+              name: translate('hebei'),
+              id: 12
+            },
+            {
+              name: translate('henan'),
+              id: 13
+            },
+            {
+              name: translate('heilongjiang'),
+              id: 14
+            }
+          ]
+        },
+        {
+          title: 'J',
+          list: [
+            {
+              name: translate('jilin'),
+              id: 15
+            },
+            {
+              name: translate('jiangsu'),
+              id: 16
+            },
+            {
+              name: translate('jiangxi'),
+              id: 17
+            }
+          ]
+        },
+        {
+          title: 'L',
+          list: [
+            {
+              name: translate('liaoning'),
+              id: 18
+            }
+          ]
+        }
       ]
+    });
+
+    const temp = computed(() => {
+      return state.dataList;
     });
 
     const clickItem = (key: string, item: any) => {
@@ -257,7 +403,7 @@ export default createDemo({
       console.log(key);
     };
 
-    return { ...toRefs(state), clickItem, clickIndex, translate };
+    return { ...toRefs(state), temp, clickItem, clickIndex, translate };
   }
 });
 </script>

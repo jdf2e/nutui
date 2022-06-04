@@ -100,3 +100,14 @@ test('clickIndex trigger click', async () => {
 
   expect((wrapper.emitted('click-index') as any)[0][0]).toBe('G');
 });
+
+test('index is sticky', async () => {
+  const wrapper = mount(Elevator, {
+    props: {
+      indexList,
+      isSticky: true
+    }
+  });
+
+  expect(wrapper.findAll('.nut-elevator__list__fixed').length).toBe(1);
+});

@@ -210,6 +210,17 @@ export default create({
       }
     );
 
+    watch(
+      () => props.value,
+      (val) => {
+        console.log('列更新', val);
+        modifyStatus(true);
+      },
+      {
+        deep: true
+      }
+    );
+
     onMounted(() => {
       modifyStatus(true);
     });

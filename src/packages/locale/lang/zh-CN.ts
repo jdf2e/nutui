@@ -92,5 +92,12 @@ class Lang extends BaseLang {
     min: '分',
     seconds: '秒'
   };
+  audiooperate = {
+    back: '倒退',
+    start: '开始',
+    pause: '暂停',
+    forward: '快进',
+    mute: '静音'
+  };
 }
 export default Lang;
