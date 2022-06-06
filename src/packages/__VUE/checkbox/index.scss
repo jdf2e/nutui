@@ -24,8 +24,14 @@
   }
   &__icon--unchecked {
     color: $checkbox-icon-disable-color;
+    font-size: $checkbox-icon-font-size;
+  }
+  &__icon--indeterminate {
+    color: $primary-color;
+    font-size: $checkbox-icon-font-size;
   }
   &__icon--disable {
     color: $help-color;
+    font-size: $checkbox-icon-font-size;
   }
 }
