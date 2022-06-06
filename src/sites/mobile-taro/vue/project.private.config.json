@@ -1,6 +1,16 @@
 {
   "setting": {},
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
   "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
     "miniprogram": {
       "list": [
         {
@@ -40,13 +50,13 @@
           "scene": null
         },
         {
-          "name": "dentry/pages/input/index",
-          "pathName": "dentry/pages/input/index",
+          "name": "dentry/pages/textarea/index",
+          "pathName": "dentry/pages/textarea/index",
           "query": "",
-          "scene": null
+          "scene": null,
+          "launchMode": "default"
         }
       ]
     }
-  },
-  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
+  }
 }

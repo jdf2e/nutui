@@ -125,7 +125,7 @@ export type InputType =
   | 'password'
   | 'textarea'
   | 'datetime-local';
-export type confirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
+export type confirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
 
 export type InputRule = {
   pattern?: RegExp;
@@ -266,6 +266,7 @@ export default create({
     confirmType: {
       type: String as PropType<confirmTextType>,
       default: 'done'
+    },
     adjustPosition: {
       type: Boolean,
       default: true
