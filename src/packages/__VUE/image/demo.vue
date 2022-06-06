@@ -69,7 +69,7 @@
         </nut-col>
         <nut-col :span="8">
           <nut-image src="https://x" width="100" height="100" showLoading>
-            <template #error> 加载失败 </template>
+            <nut-icon name="circle-close"></nut-icon>
           </nut-image>
           <div class="text">自定义</div>
         </nut-col>

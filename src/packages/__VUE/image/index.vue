@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" :style="stylebox">
+  <view :class="classes" :style="stylebox" @click="imageClick">
     <img class="nut-img" :src="src" :alt="alt" @load="load" @error="error" :style="styles" />
 
     <view class="nut-img-loading" v-if="loading">
@@ -59,7 +59,7 @@ export default create({
       default: true
     }
   },
-  emits: ['load', 'error'],
+  emits: ['click', 'load', 'error'],
 
   setup(props, { emit }) {
     const state = reactive({
@@ -113,18 +113,22 @@ export default create({
       }
     );
     // 图片加载
-    const load = (event: Event) => {
+    const load = () => {
       state.loading = false;
-      emit('load', event);
+      emit('load');
     };
     // 图片加载失败
     const error = () => {
       state.isError = true;
       state.loading = false;
-      emit('error', event);
+      emit('error');
     };
 
-    return { ...toRefs(state), classes, styles, stylebox, error, load };
+    const imageClick = (event: Event) => {
+      emit('click', event);
+    };
+
+    return { ...toRefs(state), imageClick, classes, styles, stylebox, error, load };
   }
 });
 </script>
