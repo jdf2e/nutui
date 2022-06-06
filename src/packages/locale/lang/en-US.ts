@@ -92,5 +92,12 @@ class Lang extends BaseLang {
     min: 'Minute',
     seconds: 'Second'
   };
+  audiooperate = {
+    back: 'Back',
+    start: 'Start',
+    pause: 'Pause',
+    forward: 'Forward',
+    mute: 'Mute'
+  };
 }
 export default Lang;
