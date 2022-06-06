@@ -40,7 +40,7 @@ app.use(Empty);
 :::demo
 ```html
 <template>
-    <nut-empty description="无优惠券">
+    <nut-empty description="描述文字">
         <template #image>
             <img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" />
         </template>
@@ -74,7 +74,7 @@ app.use(Empty);
 
 ### Slots
 
-| 事件名 | 说明           | 
+| 名称 | 说明           | 
 |--------|----------------|
 | default  | 	自定义底部内容 | 
 | image  | 自定义图片 | 
