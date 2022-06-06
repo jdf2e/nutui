@@ -5,6 +5,7 @@
     round
     :visible="visible"
     :style="popStyle"
+    :lock-scroll="lockScroll"
     @click-overlay="close"
     @click-close-icon="close"
   >
@@ -54,6 +55,10 @@ export default create({
       }
     },
     muti: {
+      type: [Boolean],
+      default: false
+    },
+    lockScroll: {
       type: [Boolean],
       default: false
     }

@@ -9,9 +9,9 @@
 ``` javascript
 import { createApp } from 'vue';
 // vue
-import { TimeSelect, TimePannel, TimeDetail, Popup } from '@nutui/nutui';
+import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, OverLay } from '@nutui/nutui';
 // taro
-import { TimeSelect, TimePannel, TimeDetail, Popup } from '@nutui/nutui-taro';
+import { TimeSelect, TimePannel, TimeDetail, Popup, Icon, Overlay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
@@ -207,6 +207,7 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
 | title                 | 弹层标题                                                    | String  | `取件时间`
 | current-key                 | 唯一标识                                                    | String、Number  | `0`
 | current-time                 | 当前选择的时间，数组元素包含:key: string; list: string[]      | Array  | `[]`
+| lock-scroll            | 背景是否锁定                                                | Boolean        | `false`       |
 
 ### TimePannel Prop
 

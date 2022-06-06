@@ -252,7 +252,7 @@ export default create({
           fileItem.type = file.originalFileObj?.type;
           fileItem.formData = formData;
         } else {
-          fileItem.formData = props.data as FormData;
+          fileItem.formData = props.data;
         }
         if (props.isPreview) {
           fileItem.url = file.path;

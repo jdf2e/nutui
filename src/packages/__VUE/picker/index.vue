@@ -201,7 +201,7 @@ export default create({
     };
 
     onMounted(() => {
-      console.log(11, props.columns);
+      console.log(11, props.modelValue);
       if (props.visible) state.show = props.visible;
     });
 
@@ -212,6 +212,7 @@ export default create({
     watch(
       () => props.modelValue,
       (newValues) => {
+        console.log('change', newValues, defaultValues.value);
         const isSameValue = JSON.stringify(newValues) === JSON.stringify(defaultValues.value);
         if (!isSameValue) {
           defaultValues.value = newValues;
