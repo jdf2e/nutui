@@ -1,5 +1,5 @@
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, PropType } from 'vue';
+import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch } from 'vue';
 export class Title {
   title: string = '';
   titleSlot?: VNode[];
@@ -23,7 +23,7 @@ export const component = {
       default: 'horizontal' //vertical
     },
     size: {
-      type: String as PropType<TabsSize>,
+      type: String as import('vue').PropType<TabsSize>,
       default: 'normal'
     },
     type: {

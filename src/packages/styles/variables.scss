@@ -746,9 +746,13 @@ $elevator-list-item-bars-padding: 15px 0 !default;
 $elevator-list-item-bars-background-color: #eeeff2 !default;
 $elevator-list-item-bars-border-radius: 6px !default;
 $elevator-list-item-bars-text-align: center !default;
-$elevator-list-item-bars-z-index: 10 !default;
+$elevator-list-item-bars-z-index: 1 !default;
 $elevator-list-item-bars-inner-item-padding: 3px !default;
 $elevator-list-item-bars-inner-item-font-size: 10px !default;
+$elevator-list-fixed-color: $primary-color !default;
+$elevator-list-fixed-bg-color: $white !default;
+$elevator-list-fixed-box-shadow: 0 0 10px #eee !default;
+$elevator-list-item-bars-inner-item-active-color: $primary-color !default;
 
 // list
 $list-item-margin: 0 0 10px 0 !default;

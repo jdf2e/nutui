@@ -92,5 +92,12 @@ class Lang extends BaseLang {
     min: 'Menit',
     seconds: 'Detik'
   };
+  audiooperate = {
+    back: 'kembali',
+    start: 'Mulailah',
+    pause: 'berhenti sebentar',
+    forward: 'Maju cepat',
+    mute: 'Bisu'
+  };
 }
 export default Lang;
