@@ -783,5 +783,8 @@ $comment-header-time-color: rgba(153, 153, 153, 1) !default;
 $comment-bottom-label-color: rgba(153, 153, 153, 1) !default;
 $comment-shop-color: $primary-color !default;
 
+// Ellipsis
+$ellipsis-expand-collapse-color: #3460fa !default;
+
 @import './mixins/index';
 @import './animation/index';
