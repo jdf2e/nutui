@@ -28,9 +28,10 @@
           "scene": null
         },
         {
-          "name": "feedback/pages/progress/index",
-          "pathName": "feedback/pages/progress/index",
+          "name": "exhibition/pages/ellipsis/index",
+          "pathName": "exhibition/pages/ellipsis/index",
           "query": "",
+          "launchMode": "default",
           "scene": null
         },
         {

@@ -83,7 +83,8 @@ const subpackages = [
       'pages/popover/index',
       'pages/skeleton/index',
       'pages/collapse/index',
-      'pages/table/index'
+      'pages/table/index',
+      'pages/ellipsis/index'
     ]
   },
   {
