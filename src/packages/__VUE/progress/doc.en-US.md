@@ -1,10 +1,10 @@
-# Progress 进度条
+# Progress
 
-### 介绍
+### Intro
 
-展示操作或任务的当前进度。
+Used to show the current progress of the operation.
 
-### 安装
+### Install
 
 ``` javascript
 import { createApp } from 'vue';
@@ -20,7 +20,7 @@ app.use(Icon);
 ```
 
 
-### 基础用法
+### Basic Usage
 :::demo
 ```html
 <template>
@@ -30,7 +30,7 @@ app.use(Icon);
 </template>
 ```
 :::
-### 设置高度和颜色
+### Custom Style
 
 :::demo
 ```html
@@ -41,7 +41,7 @@ app.use(Icon);
 </template>
 ```
 :::
-### 设置百分比不显示
+### Don't  Show Percentage
 :::demo
 ```html
 <template>
@@ -51,7 +51,7 @@ app.use(Icon);
 </template>
 ```
 :::
-### 设置百分比外显
+### Show Percentage
 
 :::demo
 ```html
@@ -63,7 +63,7 @@ app.use(Icon);
 ```
 :::
 
-### 设置百分比内显
+### Text Inside
 :::demo
 ```html
 <template>
@@ -73,7 +73,7 @@ app.use(Icon);
 </template>
 ```
 :::
-### 设置百分比内显自定义内容
+### Custom Content
 :::demo
 ```html
 <template>
@@ -90,9 +90,9 @@ app.use(Icon);
 ```
 :::
 
-## 自定义尺寸
+## Custom Size
 
-内置 **small**，**base**，**large** 三种规格供使用。
+ **small**，**base**，**large** .
 :::demo
 ```html
 <template>
@@ -108,7 +108,7 @@ app.use(Icon);
 </template>
 ```
 :::
-### 设置状态显示
+### Status Display
 :::demo
 ```html
 <template>
@@ -140,17 +140,17 @@ app.use(Icon);
 
 ## Prop
 
-| 字段 | 说明 | 类型 | 默认值
+| Attribute | Description | Type | Default
 |----- | ----- | ----- | -----
-| percentage | 百分比 | Number | 0
-| is-show-percentage | 是否需要展示百分号 | Boolean | true
-| stroke-color | 进度条背景色 | String | #f30
-| stroke-width | 进度条宽度 | String | ''
-| size | 进度条及文字尺寸，可选值small/base/large | String | -
-| show-text | 是否显示进度条文字内容 | Boolean | true
-| text-inside | 进度条文字显示位置(false:外显，true:内显) | Boolean | false
-| text-color | 进度条文字颜色设置 | String | #333
-| text-background | 进度条文字背景颜色设置 | String | 同进度条颜色
-| status | 进度条当前状态,active(展示动画效果)/icon(展示icon标签) | String | text
-| icon-name | icon名称 | String | checked
-| icon-color | icon颜色 | String | #439422
+| percentage | percentage | Number | 0
+| is-show-percentage | Whether to display the percent sign | Boolean | true
+| stroke-color |Stroke color | String | #f30
+| stroke-width |Stroke width | String | ''
+| size | Progress bar and text size, small/base/large | String | -
+| show-text | Whether to show text | Boolean | true
+| text-inside | Progress bar text display position(false:outside，true:Inside) | Boolean | false
+| text-color | Progress bar text color setting | String | #333
+| text-background | Progress bar text background color setting | String | Same progress bar color
+| status | The current state of the progress bar,active(show animation)/icon(show icon) | String | text
+| icon-name | Icon Name | String | checked
+| icon-color | Icon Color | String | #439422

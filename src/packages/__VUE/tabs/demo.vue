@@ -35,10 +35,8 @@
     </nut-tabs>
 
     <h2>{{ translate('title4') }}</h2>
-    <nut-tabs v-model="state.tab4value" :auto-height="true" title-scroll title-gutter="10">
-      <nut-tabpane v-for="(item, index) in state.list4" :pane-key="index" :title="'Tab ' + item">
-        Tab {{ item }}
-      </nut-tabpane>
+    <nut-tabs v-model="state.tab4value" title-scroll title-gutter="10">
+      <nut-tabpane v-for="item in state.list4" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>
     </nut-tabs>
     <h2>{{ translate('title5') }}</h2>
     <nut-tabs style="height: 300px" v-model="state.tab5value" title-scroll direction="vertical">
@@ -132,7 +130,7 @@ export default createDemo({
       tab5value: '0',
       tab6value: '0',
       tab7value: 'c1',
-      list3: ['1', '2'],
+      list3: Array.from(new Array(2).keys()),
       list4: Array.from(new Array(10).keys()),
       list5: Array.from(new Array(2).keys()),
       list6: computed(() => [
@@ -153,10 +151,7 @@ export default createDemo({
       ])
     });
     setTimeout(() => {
-      state.list3.push(
-        '999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999'
-      );
-      state.tab3value = '2';
+      state.list3.push(999);
     }, 3000);
 
     return { state, translate };

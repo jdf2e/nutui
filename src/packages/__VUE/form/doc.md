@@ -366,7 +366,7 @@ setup(){
 |-----------|------------------------|-----------------------------------------------|
 | required  | 是否为必选字段         | boolean                                       |
 | message   | 错误提示文案           | string                                        |
-| validator | 通过函数进行校验       | (value, rule) => boolean \| string \| Promise |
+| validator | 通过函数进行校验       | (value) => boolean \| string \| Promise |
 | regex     | 通过正则表达式进行校验 | RegExp                                        |
 
 ### Methods

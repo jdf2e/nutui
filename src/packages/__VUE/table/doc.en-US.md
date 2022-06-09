@@ -26,7 +26,7 @@ app.use(Table);
   <nut-table :columns="columns" :data="data"></nut-table>
 </template>
 <script lang="ts">
-  import { reactive, toRefs } from 'vue';
+  import { reactive, toRefs, h } from 'vue';
   export default {
     props: {},
     setup() {
