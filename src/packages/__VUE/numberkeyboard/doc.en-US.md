@@ -1,10 +1,10 @@
-# NumberKeyboard 数字键盘
+# NumberKeyboard
 
-### 介绍
+### Intro
 
-虚拟数字键盘，用于输入支付密码的场景。
+Virtual numeric keypad, used for scenarios where payment passwords are entered.
 
-### 安装
+### Install
 
 ``` javascript
 import { createApp } from 'vue';
@@ -20,12 +20,12 @@ app.use(Popup);
 ```
 
 
-### 基础用法 默认键盘
-在线调试请将浏览器变为手机模式
+### Default Keyboard
+For online debugging, please change the browser to mobile mode
 :::demo
 ```html
 <template>
-    <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="默认键盘"></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="Default Keyboard"></nut-cell>
     <nut-numberkeyboard v-model:visible="visible" @input="input" @delete="onDelete" @close="close"> </nut-numberkeyboard>
 </template>
 <script>
@@ -38,10 +38,10 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`输入：${number}`);
+      Toast.text(`enter：${number}`);
     }
     function onDelete() {
-      Toast.text('删除');
+      Toast.text('delete');
     }
     function close() {
       visible.value = false;
@@ -59,17 +59,17 @@ export default{
 </script>
 ```
 :::
-### 带右侧栏键盘
+### Keyboard With Sidebar
 
 :::demo
 ```html
 <template>
-    <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="带右侧栏键盘"></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="Keyboard With Sidebar"></nut-cell>
      <nut-numberkeyboard
       type="rightColumn"
       v-model:visible="visible"
       :custom-key="customKey"
-      confirm-text="支付"
+      confirm-text="pay"
       @input="input"
       @close="close"
     >
@@ -86,7 +86,7 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`输入：${number}`);
+      Toast.text(`enter${number}`);
     }
     function close() {
       visible.value = false;
@@ -105,12 +105,12 @@ export default{
 </script>
 ```
 :::
-### 随机数键盘
+### Random Key Order
 
 :::demo
 ```html
 <template>
-    <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="随机数键盘"></nut-cell>
+    <nut-cell :isLink="true" @click="showKeyBoard" :showIcon="true" title="Random Key Order"></nut-cell>
     <nut-numberkeyboard
       type="rightColumn"
       v-model:visible="visible"
@@ -132,7 +132,7 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`输入：${number}`);
+      Toast.text(`enter：${number}`);
     }
     function close() {
       visible.value = false;
@@ -149,14 +149,14 @@ export default{
 </script>
 ```
 :::
-### 带标题栏键盘
+### Show Keyboard With Title
 
 :::demo
 ```html
 <template>
-     <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="带标题栏键盘"></nut-cell>
+     <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="Show Keyboard With Title"></nut-cell>
     <nut-numberkeyboard
-      title="默认键盘"
+      title="title"
       v-model:visible="visible"
       :custom-key="customKey"
       @input="input"
@@ -175,7 +175,7 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`输入：${number}`);
+      Toast.text(`enter：${number}`);
     }
     function close() {
       visible.value = false;
@@ -192,12 +192,12 @@ export default{
 </script>
 ```
 :::
-### 身份证键盘
+### Show IdNumber Keyboard
 
 :::demo
 ```html
 <template>
-     <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="身份证键盘"></nut-cell>
+     <nut-cell :isLink="true" @click="showKeyBoard(4)" :showIcon="true" title="IdNumber Keyboard"></nut-cell>
     <nut-numberkeyboard
       v-model:visible="visible"
       :custom-key="customKey"
@@ -217,7 +217,7 @@ export default{
       visible.value = true;
     }
     function input(number) {
-      Toast.text(`输入：${number}`);
+      Toast.text(`enter：${number}`);
     }
     function close() {
       visible.value = false;
@@ -235,7 +235,7 @@ export default{
 ```
 :::
 
-### 双向绑定：
+### Bind Value
 
 :::demo
 ```html
@@ -246,7 +246,7 @@ export default{
       @click="showKeyBoard"
       :desc="value"
       :showIcon="true"
-      title="双向绑定："
+      title="Bind Value"
     ></nut-cell>
      <nut-numberkeyboard 
        v-model:visible="visible" 
@@ -285,26 +285,26 @@ export default{
 
 ### Prop
 
-| 字段 | 说明 | 类型 | 默认值 |
+| Attribute | Description | Type | Default |
 |----- | ----- | ----- | ----- |
-| v-model:visible | 是否显示键盘 | Boolean | false | 
-| title | 键盘标题 | String | - |
-| type | 键盘模式  | String | `default`：默认样式<br>`rightColumn`：带右侧栏 |
-| random-keys | 随机数  | Boolean | false |
-| custom-key | 自定义键盘额外的键  | String [] | 数组形式最多支持添加2个,超出默认取前2项 |
-| overlay | 是否显示遮罩  | Boolean| true |
-| v-model:value | 当前输入值		 | String | - |
-| maxlength  | 输入值最大长度，结合 v-model 使用 | Number ｜ String| 6 |
-| confirm-text  | 自定义完成按钮文字，如"支付"，"下一步"，"提交"等 | String | 完成 |
-| teleport    | 指定挂载节点(`小程序不支持`)   | String         | `"body"`      |
-| pop-class    | 自定义弹框类名     | String         | -             |
+| v-model:visible | Whether to show keyboard | Boolean | false | 
+| v-model:value | 	Current value		 | String | - |
+| title | Keyboard title | String | - |
+| type | Keyboard type  can be set to `rightColumn`   | String | `default` |
+| random-keys | Whether to shuffle the order of keys  | Boolean | false |
+| custom-key | Content of bottom left key  | String [] | Array form supports adding up to two |
+| overlay | Whether to show the mask  | Boolean| true |
+| maxlength  | Value maxlength，Use with v-model | Number ｜ String| 6 |
+| confirm-text  | Custom done button text,Such as "pay", "next", "submit" | String | done |
+| teleport    | Specify the mount node `(not supported by miniProgram)`  | String         | `"body"`      |
+| pop-class    | Custom bullet box classname     | String         | -             |
 
 
-### Event
+### Events
 
-| 字段 | 说明 | 回调参数
+| Event | Description | Arguments
 |----- | ----- | -----
-| input  | 点击按键时触发                 | 按键内容 |
-| delete | 点击删除键时触发               | -             |
-| close  | 点击关闭按钮或非键盘区域时触发  | -             |
+| input  | Emitted when a key is pressed                 | key: string |
+| delete | 	Emitted when the delete key is pressed               | -             |
+| close  | Emitted when the close button or non-keyboard area is clicked is clicked  | -             |
 
