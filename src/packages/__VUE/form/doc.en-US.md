@@ -366,7 +366,7 @@ Use the `rules` attribute of FormItem to define verification rules. The optional
 |-----------|------------------------------------|-----------------------------------------------|
 | required  | Is it a required field             | boolean                                       |
 | message   | Error prompt copy                  | string                                        |
-| validator | Verification by function           | (value, rule) => boolean \| string \| Promise |
+| validator | Verification by function           | (value) => boolean \| string \| Promise |
 | regex     | Verification by regular expression | RegExp                                        |
 
 ### Methods
