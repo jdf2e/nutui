@@ -313,7 +313,7 @@ The user can enter content in the text box. Configure the icons on both sides of
     type="textarea"
     show-word-limit
     rows="2"
-    maxLength="50"
+    max-length="50"
     placeholder="Message"
   />
 </template>

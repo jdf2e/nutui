@@ -314,7 +314,7 @@ app.use(Icon);
     type="textarea"
     show-word-limit
     rows="2"
-    maxLength="50"
+    max-length="50"
     placeholder="请输入留言"
   />
 </template>

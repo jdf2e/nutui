@@ -89,7 +89,7 @@
       type="textarea"
       show-word-limit
       rows="2"
-      maxLength="50"
+      max-length="50"
     />
 
     <h2>{{ translate('title8') }}</h2>
