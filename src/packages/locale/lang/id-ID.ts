@@ -72,7 +72,8 @@ class Lang extends BaseLang {
     skuId: 'Nomor SKU'
   };
   addresslist = {
-    addAddress: 'Tambah Alamat Baru'
+    addAddress: 'Tambah Alamat Baru',
+    default: 'Bawaan'
   };
   comment = {
     complaintsText: 'Saya memiliki komplain',
