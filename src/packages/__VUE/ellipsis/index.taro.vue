@@ -1,21 +1,31 @@
 <template>
-  <view :class="classes" @click="handleClick" ref="root" id="root">
+  <view :class="classes" @click="handleClick" ref="root" :id="'root' + refRandomId">
     <view v-if="!exceeded">{{ content }}</view>
 
-    <view v-if="exceeded && !expanded"> {{ ellipsis.leading }}{{ ellipsis.tailing }} </view>
-    <!-- <view v-if="exceeded && expanded">
+    <view v-if="exceeded && !expanded">
+      {{ ellipsis.leading
+      }}<view class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(1)">{{ expandText }}</view
+      >{{ ellipsis.tailing }}
+    </view>
+    <view v-if="exceeded && expanded">
       {{ content }}
       <span class="nut-ellipsis-text" v-if="expandText" @click.stop="clickHandle(2)">{{ collapseText }}</span>
-    </view> -->
+    </view>
   </view>
 
-  <view class="nut-ellipsis-copy" @click="handleClick" ref="rootContain" id="rootContain">
+  <view
+    class="nut-ellipsis-copy"
+    @click="handleClick"
+    ref="rootContain"
+    :id="'rootContain' + refRandomId"
+    :style="{ width: widthRef }"
+  >
     <view>{{ contantCopy }}</view>
   </view>
 </template>
 
 <script lang="ts">
-import { ref, reactive, toRefs, computed, onMounted, PropType, watch } from 'vue';
+import { ref, reactive, toRefs, computed, onMounted, PropType, watch, unref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
 import Taro from '@tarojs/taro';
@@ -66,6 +76,7 @@ export default create({
     let originHeight = 0; // 原始高度
     const ellipsis = ref<EllipsisedValue>();
     const refRandomId = Math.random().toString(36).slice(-8);
+    let widthRef = ref('auto');
     const state = reactive({
       exceeded: false, //是否超出
       expanded: false //是否折叠
@@ -97,27 +108,30 @@ export default create({
     });
 
     const getReference = async () => {
-      const refe = await useTaroRect(root, Taro);
+      let element = unref(root);
 
-      Taro.createSelectorQuery()
-        .select('#root')
-        .fields(
-          {
-            computedStyle: ['height', 'lineHeight', 'paddingTop', 'paddingBottom']
-          },
-          (res) => {
-            console.log(11, res);
-            lineHeight = pxToNumber(res.lineHeight);
-            maxHeight = Math.floor(
-              lineHeight * (Number(props.rows) + 0.5) + pxToNumber(res.paddingTop) + pxToNumber(res.paddingBottom)
-            );
+      const query = Taro.createSelectorQuery();
+      query.select(`#${(element as any).id}`) &&
+        query
+          .select(`#${(element as any).id}`)
+          .fields(
+            {
+              computedStyle: ['width', 'height', 'lineHeight', 'paddingTop', 'paddingBottom']
+            },
+            (res) => {
+              lineHeight = pxToNumber(res.lineHeight);
+              maxHeight = Math.floor(
+                lineHeight * (Number(props.rows) + 0.5) + pxToNumber(res.paddingTop) + pxToNumber(res.paddingBottom)
+              );
 
-            originHeight = pxToNumber(res.height);
+              originHeight = pxToNumber(res.height);
 
-            calcEllipse();
-          }
-        )
-        .exec();
+              widthRef.value = res.width;
+
+              calcEllipse();
+            }
+          )
+          .exec();
     };
 
     // 计算省略号的位置
@@ -127,41 +141,44 @@ export default create({
       if (refe.height <= maxHeight) {
         state.exceeded = false;
       } else {
-        const end = Math.floor(props.content.length / (originHeight / lineHeight - 1) + 5);
-
-        const middle = Math.floor((0 + end) / 2);
+        const rowNum = Math.floor(props.content.length / (originHeight / lineHeight - 1)); // 每行的字数
 
         if (props.direction === 'middle') {
-          tailorMiddle([0, middle], [middle, end]);
-        } else {
+          const end = props.content.length;
+          tailorMiddle(
+            [0, rowNum * (Number(props.rows) + 0.5)],
+            [props.content.length - rowNum * (Number(props.rows) + 0.5), end]
+          );
+        } else if (props.direction === 'end') {
+          const end = rowNum * (Number(props.rows) + 0.5);
           tailor(0, end);
+        } else {
+          const start = props.content.length - rowNum * (Number(props.rows) + 0.5) - 5;
+
+          tailor(start, props.content.length);
         }
-
-        // const ellipsised = props.direction === 'middle' ? tailorMiddle([0, middle], [middle, end]) : await tailor(0, end);
-
-        // (ellipsis as any).value = ellipsised;
       }
     };
+
     // 计算 start/end 省略
     const tailor = async (left: number, right: number) => {
-      console.log(left, right);
       const actionText = state.expanded ? props.collapseText : props.expandText;
+
+      console.log(actionText);
       const end = props.content.length;
 
       if (right - left <= 1) {
         state.exceeded = true;
         if (props.direction === 'end') {
-          console.log('结果');
           (ellipsis as any).value = {
             leading: props.content.slice(0, left) + props.symbol
           };
-          console.log(ellipsis.value);
-          return false;
         } else {
-          return {
+          (ellipsis as any).value = {
             tailing: props.symbol + props.content.slice(right, end)
           };
         }
+        return false;
       }
       const middle = Math.round((left + right) / 2);
 
@@ -170,8 +187,6 @@ export default create({
       } else {
         contantCopy.value = actionText + props.symbol + props.content.slice(middle, end);
       }
-
-      console.log(contantCopy.value);
       setTimeout(async () => {
         const refe = await useTaroRect(rootContain, Taro);
         if (refe.height <= maxHeight) {
@@ -190,33 +205,35 @@ export default create({
       }, 10);
     };
     // 计算 middle 省略
-    const tailorMiddle: (leftPart: [number, number], rightPart: [number, number]) => EllipsisedValue = (
-      leftPart: [number, number],
-      rightPart: [number, number]
-    ) => {
+    const tailorMiddle = async (leftPart: [number, number], rightPart: [number, number]) => {
       const actionText = state.expanded ? props.collapseText : props.expandText;
       const end = props.content.length;
       if (leftPart[1] - leftPart[0] <= 1 && rightPart[1] - rightPart[0] <= 1) {
-        return {
+        state.exceeded = true;
+        (ellipsis as any).value = {
           leading: props.content.slice(0, leftPart[0]) + props.symbol,
           tailing: props.symbol + props.content.slice(rightPart[1], end)
         };
+        return false;
       }
       const leftPartMiddle = Math.floor((leftPart[0] + leftPart[1]) / 2);
       const rightPartMiddle = Math.ceil((rightPart[0] + rightPart[1]) / 2);
 
-      container.innerText =
+      contantCopy.value =
         props.content.slice(0, leftPartMiddle) +
         props.symbol +
         actionText +
         props.symbol +
         props.content.slice(rightPartMiddle, end);
 
-      if (container.offsetHeight <= maxHeight) {
-        return tailorMiddle([leftPartMiddle, leftPart[1]], [rightPart[0], rightPartMiddle]);
-      } else {
-        return tailorMiddle([leftPart[0], leftPartMiddle], [rightPartMiddle, rightPart[1]]);
-      }
+      setTimeout(async () => {
+        const refe = await useTaroRect(rootContain, Taro);
+        if (refe.height <= maxHeight) {
+          tailorMiddle([leftPartMiddle, leftPart[1]], [rightPart[0], rightPartMiddle]);
+        } else {
+          tailorMiddle([leftPart[0], leftPartMiddle], [rightPartMiddle, rightPart[1]]);
+        }
+      }, 10);
     };
 
     const pxToNumber = (value: string | null) => {
@@ -250,7 +267,8 @@ export default create({
       contantCopy,
       clickHandle,
       handleClick,
-      refRandomId
+      refRandomId,
+      widthRef
     };
   }
 });

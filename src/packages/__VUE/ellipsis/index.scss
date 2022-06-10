@@ -2,11 +2,11 @@
   .nut-ellipsis-text {
     cursor: hand;
     color: $ellipsis-expand-collapse-color;
+    display: inline;
   }
 }
 
 .nut-ellipsis-copy {
   position: absolute;
-  bottom: -300px;
-  width: 310px;
+  top: -999999px;
 }

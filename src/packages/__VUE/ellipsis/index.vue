@@ -31,7 +31,7 @@ export default create({
     },
     direction: {
       type: String as PropType<Direction>,
-      default: 'start'
+      default: 'end'
     },
     rows: {
       type: [Number, String],

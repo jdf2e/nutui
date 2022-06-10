@@ -1,9 +1,34 @@
 <template>
   <div class="demo">
-    <h2>基础用法</h2>
     <h2>头部省略</h2>
     <nut-cell>
+      <nut-ellipsis :content="content" direction="start" class="elli"></nut-ellipsis>
+    </nut-cell>
+
+    <h2>尾部省略</h2>
+    <nut-cell>
       <nut-ellipsis :content="content" direction="end" class="elli"></nut-ellipsis>
+    </nut-cell>
+
+    <h2>中间省略</h2>
+    <nut-cell>
+      <nut-ellipsis :content="content" direction="middle" class="elli"></nut-ellipsis>
+    </nut-cell>
+
+    <h2>多行省略</h2>
+    <nut-cell>
+      <nut-ellipsis :content="content" direction="start" rows="3"></nut-ellipsis>
+    </nut-cell>
+
+    <h2>展开收起</h2>
+    <nut-cell>
+      <nut-ellipsis :content="content" direction="start" expandText="展开" collapseText="收起"></nut-ellipsis>
+    </nut-cell>
+    <nut-cell>
+      <nut-ellipsis :content="content" direction="middle" expandText="展开" collapseText="收起"></nut-ellipsis>
+    </nut-cell>
+    <nut-cell>
+      <nut-ellipsis :content="content" direction="end" rows="3" expandText="展开" collapseText="收起"></nut-ellipsis>
     </nut-cell>
   </div>
 </template>
