@@ -1,10 +1,10 @@
 # NavBar
 
-### 介绍 
+### Intro
 
 Provide navigation function, often used at the top of the page.
 
-### 安装
+### Install
 
 ```javascript
 
@@ -186,7 +186,7 @@ export default {
 ```
 :::
 
-### Prop  
+### Props 
 
 |  Attribute          | Description                                   | Type    | Default |
 |---------------------|-----------------------------------------------|---------|---------|
@@ -201,16 +201,16 @@ export default {
 | safe-area-inset-top | Whether to enable top safety zone adaptation  | Boolean | false    |
 | z-index `v3.1.21` | Z-index                                            | Number ｜ String  | -       |
 
-### Event
-| Attribute       | Description              | Arguments    |
+### Events
+| Event           | Description              | Arguments    |
 |-----------------|-------------------------|-------------|
 | on-click-title  | Click page title event  | event:Event |
 | on-click-icon   | Click the page title icon event | event:Event |
 | on-click-right  | Click right button event | event:Event |
 | on-click-back   | Click left Icon event   | event:Event |
 
-### Slot
-| Attribute  | Description     | 
+### Slots
+| Name  | Description     | 
 |-------|----------|
 | left | 自定义左侧内容 |
 | right | 自定义右侧内容 |
