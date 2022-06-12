@@ -194,7 +194,7 @@ Icon and letter types can have custom colors and background colors
 :::
 
 
-### avatar Prop
+### Avatar Props
 
 | Attribute | Description                                                        | Type   | Default |
 | -------- | ------------------------------------------------------------------- | ------ | ------ |
@@ -206,7 +206,7 @@ Icon and letter types can have custom colors and background colors
 | alt      | This attribute defines the alternative text describing the image     | String | -   |
 | icon     | Custom icon type for an icon avatar, Refer to the name attribute of Icon component  | String | -     |
 
-### avatarGroup Prop
+### AvatarGroup Props
 
 | Attribute     | Description                               | Type   | Default |
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
@@ -219,9 +219,9 @@ Icon and letter types can have custom colors and background colors
 | span         | Distance between avatars            | String | -8   |
 | zIndex       | Hierarchy direction between avatar group，eg `left`、`right`  | String | left     |
 
-### avatar Events
+### Avatar Events
 
-| Attribute     | Description                   | Arguments |
+| Event         | Description                   | Arguments |
 | ------------- | ----------------------------- | --------- |
 | active-avatar | Emitted when cell is clicked  |  event    |
 | onError       | Handler when img load error   |  event    |

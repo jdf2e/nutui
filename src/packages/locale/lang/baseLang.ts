@@ -72,6 +72,7 @@ export abstract class BaseLang {
   };
   abstract addresslist: {
     addAddress: string;
+    default: string;
   };
   abstract comment: {
     complaintsText: string;

@@ -18,59 +18,65 @@
       </view>
     </view>
     <view class="nut-input-value">
-      <view class="nut-input-inner" @click="onClickInput">
-        <textarea
-          v-if="type == 'textarea'"
-          class="input-text"
-          ref="inputRef"
-          :style="stylesTextarea"
-          :maxlength="maxLength"
-          :placeholder="placeholder || translate('placeholder')"
-          placeholder-class="nut-placeholder"
-          :disabled="disabled"
-          :readonly="readonly"
-          :value="modelValue"
-          :formatTrigger="formatTrigger"
-          :autofocus="autofocus"
-          :adjust-position="adjustPosition"
-          @input="onInput"
-          @focus="onFocus"
-          @blur="onBlur"
-        />
-        <input
-          v-else
-          class="input-text"
-          ref="inputRef"
-          :style="styles"
-          :type="inputType(type)"
-          :maxLength="maxLength"
-          :placeholder="placeholder || translate('placeholder')"
-          placeholder-class="nut-placeholder"
-          :disabled="disabled"
-          :readonly="readonly"
-          :value="modelValue"
-          :formatTrigger="formatTrigger"
-          :autofocus="autofocus"
-          :confirm-type="confirmType"
-          :adjust-position="adjustPosition"
-          @input="onInput"
-          @focus="onFocus"
-          @blur="onBlur"
-        />
-        <nut-icon
-          class="nut-input-clear"
-          v-if="clearable && !readonly"
-          v-show="active && modelValue.length > 0"
-          :name="clearIcon"
-          :size="clearSize"
-          @click="clear"
-        >
-        </nut-icon>
+      <view class="nut-input-inner">
+        <div class="nut-input-box">
+          <textarea
+            v-if="type == 'textarea'"
+            class="input-text"
+            ref="inputRef"
+            :style="stylesTextarea"
+            :maxlength="maxLength"
+            :placeholder="placeholder || translate('placeholder')"
+            placeholder-class="nut-placeholder"
+            :disabled="disabled"
+            :readonly="readonly"
+            :value="modelValue"
+            :formatTrigger="formatTrigger"
+            :autofocus="autofocus"
+            :adjust-position="adjustPosition"
+            @input="onInput"
+            @focus="onFocus"
+            @blur="onBlur"
+            @click="onClickInput"
+          />
+          <input
+            v-else
+            class="input-text"
+            ref="inputRef"
+            :style="styles"
+            :type="inputType(type)"
+            :maxlength="maxLength"
+            :placeholder="placeholder || translate('placeholder')"
+            placeholder-class="nut-placeholder"
+            :disabled="disabled"
+            :readonly="readonly"
+            :value="modelValue"
+            :formatTrigger="formatTrigger"
+            :autofocus="autofocus"
+            :confirm-type="confirmType"
+            :adjust-position="adjustPosition"
+            @input="onInput"
+            @focus="onFocus"
+            @blur="onBlur"
+            @click="onClickInput"
+          />
+          <view v-if="readonly" class="nut-input-disabled-mask"></view>
+        </div>
+        <div class="nut-input-clear-box">
+          <nut-icon
+            class="nut-input-clear"
+            v-if="clearable && !readonly"
+            v-show="active && modelValue.length > 0"
+            :name="clearIcon"
+            :size="clearSize"
+            @click="clear"
+          >
+          </nut-icon>
+        </div>
         <view v-if="rightIcon && rightIcon.length > 0" class="nut-input-right-icon" @click="onClickRightIcon">
           <nut-icon :name="rightIcon" :size="rightIconSize"></nut-icon>
         </view>
         <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
-        <view v-if="readonly" class="nut-input-disabled-mask"></view>
       </view>
       <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
         <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
@@ -305,8 +311,12 @@ export default create({
     const onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;
       let value = input.value;
-
+      if (props.maxLength && value.length > Number(props.maxLength)) {
+        value = value.slice(0, Number(props.maxLength));
+      }
       updateValue(value);
+      emit('update:modelValue', value, event);
+      emit('change', value, event);
     };
 
     const blur = () => inputRef.value?.blur();

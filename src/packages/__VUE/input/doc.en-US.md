@@ -1,10 +1,10 @@
-# Input 输入框
+# Input
 
-### 介绍
+### Intro
 
-用户可以在文本框里输入内容。
+The user can enter content in the text box.
 
-### 安装
+### Install
 
 ``` javascript
 import { createApp } from 'vue';
@@ -19,7 +19,7 @@ app.use(Icon);
 
 ```
 
-### 基础用法
+### Basic Usage
 
 :::demo
 
@@ -27,7 +27,7 @@ app.use(Icon);
 <template>
   <nut-input 
     v-model="state.val1" 
-    label="文本" 
+    label="Text" 
     placeholder="Text" 
   />
 </template>
@@ -48,38 +48,38 @@ app.use(Icon);
 
 :::
 
-### 自定义类型
+### Custom Type
 
 :::demo
 
 ```html
 <template>
   <nut-input 
-    label="文本" 
-    placeholder="文本" 
+    label="Text" 
+    placeholder="Text" 
     v-model="state.text" 
   />
   <nut-input 
-    label="密码" 
-    placeholder="密码" 
+    label="Password" 
+    placeholder="Password" 
     v-model="state.password" 
     type="password" 
   />
   <nut-input 
-    label="数字" 
-    placeholder="数字" 
+    label="Number" 
+    placeholder="Number" 
     v-model="state.number" 
     type="number" 
   />
   <nut-input 
-    label="整数" 
-    placeholder="整数" 
+    label="Digit" 
+    placeholder="Digit" 
     v-model="state.digit" 
     type="digit" 
   />
   <nut-input 
-    label="手机号" 
-    placeholder="手机号" 
+    label="Tel" 
+    placeholder="Tel" 
     v-model="state.tel" 
     type="tel" 
   />
@@ -105,21 +105,21 @@ app.use(Icon);
 
 :::
 
-### 禁用和只读
+### Readonly And Disabled
 
 :::demo
 
 ```html
 <template>
   <nut-input 
-    label="文本" 
-    placeholder="输入框只读" 
+    label="Text" 
+    placeholder="Readonly" 
     v-model="state.readonly" 
     readonly 
   />
   <nut-input 
-    label="文本" 
-    placeholder="输入框已禁用" 
+    label="Text" 
+    placeholder="Disabled" 
     v-model="state.disabled" 
     disabled 
   />
@@ -142,9 +142,9 @@ app.use(Icon);
 
 :::
 
-### 显示图标
+### Show Icon
 
-通过 `left-icon` 和 `right-icon` 配置输入框两侧的图标，通过设置 `clearable` 在输入过程中展示清除图标。需要引用 `Icon` 组件
+The user can enter content in the text box. Configure the icons on both sides of the input box through `left-icon` and `right-icon`, and display the clear icon during the input process by setting `clearable`. Need to reference the `Icon` component
 
 :::demo
 
@@ -152,15 +152,15 @@ app.use(Icon);
 <template>
   <nut-input 
     v-model="state.showIcon" 
-    label="文本" 
-    placeholder="显示图标" 
+    label="Text" 
+    placeholder="Show Icon" 
     left-icon="dongdong" 
     right-icon="ask2" 
   />
   <nut-input 
     v-model="state.clear" 
-    label="文本" 
-    placeholder="显示清除图标" 
+    label="Text" 
+    placeholder="Show Clear Icon" 
     clearable
     clearSize="14" 
   />
@@ -182,8 +182,7 @@ app.use(Icon);
 ```
 
 :::
-
-### 错误提示
+### Error Info
 
 :::demo
 
@@ -191,21 +190,21 @@ app.use(Icon);
 <template>
   <nut-input 
     v-model="state.required" 
-    label="文本" 
-    placeholder="必填项" 
+    label="Text" 
+    placeholder="Required" 
     required 
   />
   <nut-input 
     v-model="state.error1" 
-    label="文本" 
-    placeholder="输入内容标红" 
+    label="Text" 
+    placeholder="Error" 
     error 
   />
   <nut-input 
     v-model="state.error2" 
-    label="文本" 
-    placeholder="底部错误提示文案" 
-    error-message="底部错误提示文案" 
+    label="Text" 
+    placeholder="Error Message" 
+    error-message="Error Message" 
   />
 </template>
 <script lang="ts">
@@ -227,7 +226,7 @@ app.use(Icon);
 
 :::
 
-### 插入按钮
+### Insert Button
 
 :::demo
 
@@ -235,13 +234,13 @@ app.use(Icon);
 <template>
   <nut-input 
     v-model="state.buttonVal" 
-    label="短信验证码"
-    placeholder="请输入短信验证码"
+    label="Code"
+    placeholder="Please enter code"
     clearable 
     center 
   >
     <template #button>
-      <nut-button size="small" type="primary">发送验证码</nut-button>
+      <nut-button size="small" type="primary">Send</nut-button>
     </template>
   </nut-input>
 </template>
@@ -262,7 +261,7 @@ app.use(Icon);
 
 :::
 
-### 格式化输入内容
+### Format Value
 
 :::demo
 
@@ -270,14 +269,14 @@ app.use(Icon);
 <template>
   <nut-input 
     v-model="state.format1" 
-    label="文本" 
-    placeholder="在输入时执行格式化" 
+    label="Text" 
+    placeholder="Format On Change" 
     :formatter="formatter" 
   />
   <nut-input
     v-model="state.format2"
-    label="文本"
-    placeholder="在失焦时执行格式化"
+    label="Text"
+    placeholder="Format On Blur"
     :formatter="formatter"
     format-trigger="onBlur"
   />
@@ -302,7 +301,7 @@ app.use(Icon);
 
 :::
 
-### 显示字数统计
+### Show Word Limit
 
 :::demo
 
@@ -310,12 +309,12 @@ app.use(Icon);
 <template>
   <nut-input
     v-model="state.textarea"
-    label="留言"
+    label="Message"
     type="textarea"
     show-word-limit
     rows="2"
     max-length="50"
-    placeholder="请输入留言"
+    placeholder="Message"
   />
 </template>
 <script lang="ts">
@@ -335,7 +334,7 @@ app.use(Icon);
 
 :::
 
-### 对齐方式
+### Input Align
 
 :::demo
 
@@ -343,15 +342,15 @@ app.use(Icon);
 <template>
   <nut-input 
     v-model="state.align1" 
-    label="文本" 
+    label="Text" 
     label-align="right" 
-    placeholder="文本内容对齐" 
+    placeholder="Label Align" 
   />
   <nut-input 
     v-model="state.align2" 
-    label="文本" 
+    label="Text" 
     input-align="right" 
-    placeholder="输入框内容对齐"
+    placeholder="Input Align"
    />
 </template>
 <script lang="ts">
@@ -372,7 +371,7 @@ app.use(Icon);
 
 :::
 
-### 无边框
+### No Border
 
 :::demo
 
@@ -381,12 +380,12 @@ app.use(Icon);
   <nut-input 
     v-model="state.disabled" 
     :border="false" 
-    label="无边框" 
+    label="No Border" 
   />
   <nut-input 
     v-model="state.showIcon" 
     :border="false" 
-    label="无边框" 
+    label="No Border" 
   />
 </template>
 <script lang="ts">
@@ -406,7 +405,7 @@ app.use(Icon);
 ```
 
 :::
-### 点击事件
+### Click Event
 
 :::demo
 
@@ -418,7 +417,7 @@ app.use(Icon);
     left-icon="dongdong"
     right-icon="ask2"
     clearable
-    placeholder="显示图标"
+    placeholder="Show Icon"
     @update:model-value="change"
     @focus="focus"
     @blur="blur"
@@ -481,56 +480,57 @@ app.use(Icon);
 
 ### Props
 
-| 参数         | 说明                                   | 类型           | 默认值  |
+| Attribute   | Description               | Type       | Default  |
 |--------------|----------------------------------------|----------------|---------|
-| v-model      | 输入值，双向绑定                       | String         | -       |
-| type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `textarea` `number` `digit`     | String         | `text`  |
-| placeholder  | 输入框为空时占位符                      | String         | -       |
-| label        | 左侧文本                              | String         | -       |
-| label-class  | 左侧文本额外类名                        | String | -  |
-| label-width  | 左侧文本宽度，默认单位为 `px`            | String、Number | `80`    |
-| label-align  | 左侧文本对齐方式，可选值 `left`、`center`、`right`   | String | `left` |
-| input-align  | 输入框内容对齐方式，可选值 `left`、`center`、`right` | String | `left` |
-| colon        | 是否在 label 后面添加冒号               | Boolean        | `false` |
-| required     | 左侧*号是否展示                        | Boolean        | `false` |
-| border       | 是否显示下边框                         | Boolean        | `true` |
-| disabled     | 是否禁用                              | Boolean        | `false` |
-| readonly     | 是否只读                              | Boolean        | `false` |
-| autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
-| max-length      | 限制最长输入字符                       | String、Number  | -       |
-| clearable    | 展示清除 Icon                         | Boolean        | `false`  |
-| clear-icon   | 清除图标 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon)   | String        | `mask-close`  |
-| clear-size   | 清除图标的 `font-size` 大小           | String        | `14`  |
-| left-icon    | 左侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
-| right-icon   | 右侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
-| left-icon-size    | 左侧 Icon 的 `font-size` 大小           | String        | `14`  |
-| right-icon-size   | 右侧 Icon 的 `font-size` 大小           | String        | `14`  |
-| show-word-limit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | Boolean | `false`  |
-| error         | 是否标红                                | Boolean | `false`  |
-| error-message | 底部错误提示文案，为空时不展示            | String、Number | - |
-| error-message-align | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`          | String | - |
-| formatter      | 输入内容格式化函数    | `(val: string) => string` | - |
-| format-trigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | String | - |
-| confirm-type   | 键盘右下角按钮的文字（`仅支持小程序`），仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
-| adjust-position| 键盘弹起时，是否自动上推页面，仅支持原生     | Boolean | `true` |
+| v-model      | Input value, two-way binding           | String         | -       |
+| type         | Input type, support all native types and `textarea` `number` `digit` type    | String         | `text`  |
+| placeholder  | Placeholder when the input box is empty  | String         | -       |
+| label        | Left text                                | String         | -       |
+| label-class  | Left text extra class name               | String | -  |
+| label-width  | Label width, default unit is `px`        | String、Number | `80`    |
+| label-align  | Label align,  eg `left`、`center`、`right` | String | `left` |
+| input-align  | Input align, eg `left`、`center`、`right` | String | `left` |
+| colon        | Whether to display colon after label     | Boolean        | `false` |
+| required     | Whether to show required mark            | Boolean        | `false` |
+| border       | Whether to show inner borde         | Boolean        | `true` |
+| disabled     | Whether to disable field            | Boolean        | `false` |
+| readonly     | Whether to be readonly              | Boolean        | `false` |
+| autofocus    | Whether to auto focus, unsupported in iOS     | Boolean        | `false` |
+| max-length   | Max length of value                  | String、Number  | -       |
+| clearable    | Whether to be clearable              | Boolean        | `false`  |
+| clear-icon   | Clear Icon name, [name of icon](#/icon)           | String        | `mask-close`  |
+| clear-size   | Clear Icon `font-size`               | String        | `14`  |
+| left-icon    | Left side Icon name, [name of icon](#/icon) | String        | - |
+| right-icon   | Right side Icon name, [name of icon](#/icon) | String        | - |
+| left-icon-size    | Left side Icon `font-size`    | String        | `14`  |
+| right-icon-size   | Right side Icon `font-size`   | String        | `14`  |
+| show-word-limit | Whether to show word limit, need to set the `max-length` prop | Boolean | `false`  |
+| error         | Whether to mark the input content in red   | Boolean | `false`  |
+| error-message | Error message            | String、Number | - |
+| error-message-align | Error message align, eg `left`、`center`、`right`          | String | - |
+| formatter      | Input value formatter    | `(val: string) => string` | - |
+| format-trigger | When to format value, eg `onChange`、`onBlur` | String | - |
+| confirm-type   | The text of the button in the lower right corner of the keyboard (`applets only`), only valid when `type='text'`, eg `send`, `search`, `next`, ` go`, `done` | String |   `done`   |
+| adjust-position| Whether to automatically push the page up when the keyboard pops up, only native     | Boolean | `true` |
 
 ### Events
 
-| 名称   | 说明           | 回调参数    |
+| Event   | Description      | Arguments    |
 |--------|----------------|-------------|
-| update:model-value | 输入框内容变化时触发 | val  |
-| focus  | 输入框聚焦时触发     | val  ,event |
-| blur   | 输入框失焦时触发     | val ,event  |
-| clear  | 点击清除按钮时触发   | val ,event  |
-| click  | 点击组件时触发      | val ,event  |
-| click-input      | 点击输入区域时触发      | val ,event  |
-| click-left-icon  | 点击左侧图标时触发      | val ,event  |
-| click-right-icon | 点击右侧图标时触发      | val ,event  |
+| update:model-value | Emitted when input value changed | val  |
+| focus  | Emitted when input is focused     | val  ,event |
+| blur   | Emitted when input is blurred     | val ,event  |
+| clear  | Emitted when the clear icon is clicked   | val ,event  |
+| click  | Emitted when component is clicked	      | val ,event  |
+| click-input      | Emitted when the input is clicked      | val ,event  |
+| click-left-icon  | Emitted when the left icon is clicked      | val ,event  |
+| click-right-icon | Emitted when the right icon is clicked      | val ,event  |
 
 ### Slots
-| 名称  | 说明     | 
+
+| Name  | Description     | 
 |-------|----------|
-| button | 自定义输入框尾部按钮 |
+| button | Insert button |
 
 
 
