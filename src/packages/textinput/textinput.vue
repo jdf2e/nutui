@@ -80,6 +80,12 @@ export default {
       });
     }
   },
+  
+  watch:{
+    value(newVal,oldVal){
+     this.clearBtnShow = !!newVal;
+    }
+  },
 
   methods: {
     clear() {
