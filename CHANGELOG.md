@@ -1,3 +1,9 @@
+## 2.3.10
+
+`2022-6-13`
+
+* :bug: chore: v2 package.json devDependencies  @richard1015
+* :bug: fix(textinput): 异步清空value值，清空按钮不隐藏 bug (#826) @richard1015
 
 ## 2.3.7~2.3.9
 
