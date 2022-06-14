@@ -16,6 +16,14 @@
     align-items: center;
   }
 
+  &--large {
+    font-size: $cell-large-title-font;
+    padding: $cell-large-padding;
+    .nut-cell__title-desc {
+      font-size: $cell-large-title-desc-font;
+    }
+  }
+
   &:last-child {
     &::after {
       border: 0 !important;
@@ -73,6 +81,9 @@
     text-align: right;
     font-size: $cell-desc-font;
     color: $cell-desc-color;
+    &--alone {
+      color: $cell-color;
+    }
   }
   &__link {
     color: #979797;
