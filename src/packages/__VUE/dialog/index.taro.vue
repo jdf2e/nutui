@@ -4,8 +4,10 @@
     v-model:visible="showPopup"
     :close-on-click-overlay="closeOnClickOverlay"
     :lock-scroll="lockScroll"
-    :pop-class="overlayClass"
-    :style="overlayStyle"
+    :pop-class="popClass"
+    :style="popStyle"
+    :overlay-class="overlayClass"
+    :overlay-style="overlayStyle"
     round
     @click-overlay="closed"
     @click-close-icon="closed"
@@ -44,11 +46,12 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, ref, PropType, VNode } from 'vue';
+import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('dialog');
 import Popup, { popupProps } from '../popup/index.taro.vue';
 import Button from '../button/index.taro.vue';
+import { isPromise } from '@/packages/utils/util';
 export default create({
   inheritAttrs: false,
   components: {
@@ -108,15 +111,21 @@ export default create({
     customClass: {
       type: String,
       default: ''
+    },
+    popStyle: {
+      type: Object as PropType<CSSProperties>
+    },
+    beforeClose: {
+      type: Function
     }
   },
-  emits: ['update', 'update:visible', 'ok', 'cancel', 'open', 'opened', 'close', 'closed'],
+  emits: ['update', 'update:visible', 'ok', 'cancel', 'opened', 'closed'],
   setup(props, { emit }) {
     const showPopup = ref(props.visible);
     onMounted(() => {
       if (props.closeOnPopstate) {
         window.addEventListener('popstate', function () {
-          closed();
+          closed('page');
         });
       }
     });
@@ -125,6 +134,9 @@ export default create({
       () => props.visible,
       (value) => {
         showPopup.value = value;
+        if (value) {
+          emit('opened');
+        }
       }
     );
 
@@ -140,20 +152,34 @@ export default create({
       emit('update:visible', val);
     };
 
-    const closed = () => {
-      update(false);
-      emit('closed');
+    const closed = (action: string) => {
+      if (props.beforeClose) {
+        const result = props.beforeClose(action);
+        if (isPromise(result)) {
+          result.then((bool) => {
+            if (bool) {
+              update(false);
+              emit('closed');
+            } else {
+              // 用户阻止删除
+            }
+          });
+        }
+      } else {
+        update(false);
+        emit('closed');
+      }
     };
 
     const onCancel = () => {
       emit('cancel');
       if (props.cancelAutoClose) {
-        closed();
+        closed('cancel');
       }
     };
 
     const onOk = () => {
-      closed();
+      closed('ok');
       emit('ok');
     };
 
