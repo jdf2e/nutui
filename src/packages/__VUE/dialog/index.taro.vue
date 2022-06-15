@@ -104,6 +104,10 @@ export default create({
     footerDirection: {
       type: String,
       default: 'horizontal' //vertical
+    },
+    customClass: {
+      type: String,
+      default: ''
     }
   },
   emits: ['update', 'update:visible', 'ok', 'cancel', 'open', 'opened', 'close', 'closed'],
@@ -126,7 +130,8 @@ export default create({
 
     const classes = computed(() => {
       return {
-        [componentName]: true
+        [componentName]: true,
+        [props.customClass]: true
       };
     });
 

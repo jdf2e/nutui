@@ -114,24 +114,25 @@ export default {
 
 ## Props
 
-| 字段                   | 说明                                     | 类型    | 默认值     |
-|------------------------|------------------------------------------|---------|------------|
-| title                  | 标题                                     | String  | -          |
-| content                | 内容，支持HTML和组件                       | String/VNode  | -          |
-| teleport               | 指定挂载节点                             | String  | "body"     |
-| close-on-click-overlay | 点击蒙层是否关闭对话框                   | Boolean | false      |
-| no-footer              | 是否隐藏底部按钮栏                       | Boolean | false      |
-| no-ok-btn              | 是否隐藏确定按钮                         | Boolean | false      |
-| no-cancel-btn          | 是否隐藏取消按钮                         | Boolean | false      |
-| cancel-text            | 取消按钮文案                             | String  | ”取消“     |
-| ok-text                | 确定按钮文案                             | String  | ”确 定“    |
-| cancel-auto-close      | 取消按钮是否默认关闭弹窗                 | Boolean | true       |
-| text-align             | 文字对齐方向，可选值同css的text-align    | String  | "center"   |
-| close-on-popstate      | 是否在页面回退时自动关闭                 | Boolean | false      |
-| lock-scroll            | 背景是否锁定                             | Boolean | false      |
-| footer-direction       | 使用横纵方向 可选值 horizontal、vertical | string  | horizontal |
-| overlay-class`v3.1.21`          | 自定义遮罩类名   | String         | -      |
-| overlay-style`v3.1.21`          | 自定义遮罩样式   | CSSProperties  | -      |
+| 字段                   | 说明                                     | 类型          | 默认值     |
+|------------------------|------------------------------------------|---------------|------------|
+| title                  | 标题                                     | String        | -          |
+| content                | 内容，支持HTML和组件                     | String/VNode  | -          |
+| teleport               | 指定挂载节点                             | String        | "body"     |
+| close-on-click-overlay | 点击蒙层是否关闭对话框                   | Boolean       | false      |
+| no-footer              | 是否隐藏底部按钮栏                       | Boolean       | false      |
+| no-ok-btn              | 是否隐藏确定按钮                         | Boolean       | false      |
+| no-cancel-btn          | 是否隐藏取消按钮                         | Boolean       | false      |
+| cancel-text            | 取消按钮文案                             | String        | ”取消“     |
+| ok-text                | 确定按钮文案                             | String        | ”确 定“    |
+| cancel-auto-close      | 取消按钮是否默认关闭弹窗                 | Boolean       | true       |
+| text-align             | 文字对齐方向，可选值同css的text-align    | String        | "center"   |
+| close-on-popstate      | 是否在页面回退时自动关闭                 | Boolean       | false      |
+| lock-scroll            | 背景是否锁定                             | Boolean       | false      |
+| footer-direction       | 使用横纵方向 可选值 horizontal、vertical | string        | horizontal |
+| overlay-class`v3.1.21` | 自定义遮罩类名                           | String        | -          |
+| overlay-style`v3.1.21` | 自定义遮罩样式                           | CSSProperties | -          |
+| custom-class`v3.1.22`  | 自定义class                              | String        | -          |
 
 ## Events
 
