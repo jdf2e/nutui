@@ -5,7 +5,9 @@
         <slot name="contentTop">
           <div class="nut-item-contents__info-contact-name">{{ item.addressName }}</div>
           <div class="nut-item-contents__info-contact-tel">{{ item.phone }}</div>
-          <div class="nut-item-contents__info-contact-default" v-if="item.defaultAddress">默认</div>
+          <div class="nut-item-contents__info-contact-default" v-if="item.defaultAddress">{{
+            translate('default')
+          }}</div>
         </slot>
       </div>
       <div class="nut-item-contents__info-handle">
@@ -26,6 +28,7 @@
 import { toRefs, reactive, onMounted, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('item-contents');
+const { translate } = createComponent('addresslist');
 
 export default create({
   props: {
@@ -59,7 +62,8 @@ export default create({
     return {
       delClick,
       editClick,
-      contentsClick
+      contentsClick,
+      translate
     };
   }
 });

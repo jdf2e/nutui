@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <h2>基础用法</h2>
+    <h2>{{ translate('basic') }}</h2>
     <nut-cell>
       <nut-ecard
         v-model="money"
@@ -15,7 +15,16 @@
 <script lang="ts">
 import { reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('ecard');
+const { createDemo, translate } = createComponent('ecard');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法'
+  },
+  'en-US': {
+    basic: 'Basic Usage'
+  }
+});
 export default createDemo({
   setup() {
     const dataList = reactive([
@@ -32,7 +41,7 @@ export default createDemo({
         price: 40
       }
     ]);
-    const money = ref(0);
+    const money = ref(10);
     const inputChange = (val: number) => {
       money.value = val;
     };
@@ -48,7 +57,8 @@ export default createDemo({
       inputChange,
       change,
       money,
-      changeStep
+      changeStep,
+      translate
     };
   }
 });

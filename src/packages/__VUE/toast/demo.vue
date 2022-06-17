@@ -25,6 +25,7 @@ import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('toast');
 import { Toast } from '@/packages/nutui.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+import { onUnmounted } from 'vue';
 useTranslate({
   'zh-CN': {
     basic: '基本用法',
@@ -73,11 +74,17 @@ export default createDemo({
     const loadingToast = (msg: string) => {
       Toast.loading(msg);
     };
+    let t: any;
     const NoToast = (msg: string) => {
-      Toast.text(msg, {
+      t = Toast.text(msg, {
         duration: 0
       });
     };
+
+    onUnmounted(() => {
+      t && t.hide();
+    });
+
     const BottomToast = (msg: string) => {
       Toast.text(msg, {
         center: false,
