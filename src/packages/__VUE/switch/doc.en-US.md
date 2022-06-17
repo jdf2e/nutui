@@ -2,7 +2,7 @@
 
 ### 介绍
 
-用来打开或关闭选项。
+Used to turn options on or off.
 
 ### 安装
 
@@ -87,7 +87,7 @@ app.use(Switch);
       let { proxy } = getCurrentInstance() as any;
       const checked = ref(true);
       const change = (value: boolean, event: Event) => {
-        proxy.$toast.text(`触发了change事件，开关状态：${value}`);
+        proxy.$toast.text(`value：${value}`);
       };
       return {
         checked,
@@ -111,7 +111,7 @@ app.use(Switch);
       let { proxy } = getCurrentInstance() as any;
       const checkedAsync = ref(true);
       const changeAsync = (value: boolean, event: Event) => {
-        proxy.$toast.text(`2秒后异步触发 ${value}`);
+        proxy.$toast.text(`after 2 second： ${value}`);
         setTimeout(() => {
           checkedAsync.value = value;
         }, 2000);
@@ -147,7 +147,7 @@ app.use(Switch);
 :::demo
 ``` html
 <template>
-  <nut-switch v-model="checked" active-text="开" inactive-text="关" />
+  <nut-switch v-model="checked" active-text="Open" inactive-text="Closed" />
 </template>
 <script lang="ts">
   import { ref } from 'vue';
@@ -165,25 +165,25 @@ app.use(Switch);
 
 ### Props
 
-| 参数           | 说明             | 类型    | 默认值                |
+| Attribute           | Description      | Type    | Default        |
 |----------------|------------------|---------|-----------------------|
-| v-model        | 开关状态         | Boolean ｜ String ｜ Number | `false`               |
-| disable        | 禁用状态         | Boolean | `false`               |
-| loading        | 加载状态         | Boolean | `false`               |
-| name        | [图标名称](#/icon)         | String | `loading`               |
-| color        | [图标颜色](#/icon)，仅在`loading`状态下生效          | String | -               |
-| size        | [图标尺寸](#/icon)，仅在`loading`状态下生效          | String ｜ Number | `12px`               |
-| active-color   | 打开时的背景颜色 | String  | `#fa2c19`    |
-| inactive-color | 关闭时的背景颜色 | String  | `#ebebeb` |
-| active-text    | 打开时文字描述   | String  | -                     |
-| inactive-text  | 关闭时文字描述   | String  | -                     |
-| active-value  | 打开时组件的值   | Boolean ｜ String ｜ Number  | `true`  |
-| inactive-value  | 关闭组件的值   | Boolean ｜ String ｜ Number  | `false`  |
+| v-model        | Status of Switch       | Boolean ｜ String ｜ Number | `false`  |
+| disable        | Disable status         | Boolean | `false`               |
+| loading        | Loading status         | Boolean | `false`               |
+| name           | [Name of icon](#/icon) | String | `loading`               |
+| color          | [Color of icon](#/icon)，only takes effect in `loading` state | String | -     |
+| size           | [Size of icon](#/icon)，only takes effect in `loading` state  | String ｜ Number | `12px`   |
+| active-color   | Background color when active | String  | `#fa2c19`    |
+| inactive-color | Background color when inactive | String  | `#ebebeb` | 
+| active-text    | Word description when active   | String  | -         |
+| inactive-text  | Word description when inactive   | String  | -        |
+| active-value   | Value when active   | Boolean ｜ String ｜ Number  | `true`  |
+| inactive-value | Value when inactive   | Boolean ｜ String ｜ Number  | `false`  |
 
 
 ### Events
 
-| 事件名 | 说明           | 回调参数                      |
+| Event | Description    | Arguments                 |
 |--------|----------------|-------------------------------|
-| change | 切换开关时触发 | (value: boolean,event: Event) |
+| change | Emitted when check status changed | (value: boolean,event: Event) |
     

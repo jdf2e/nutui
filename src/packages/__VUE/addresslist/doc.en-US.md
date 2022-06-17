@@ -1,10 +1,10 @@
-# AddressList 地址列表
+# AddressList
 
-### 介绍
+### Intro
 
-主要用于进行地址列表的展示以及操作。依赖组件：Icon、Swipe、Button。
+It is mainly used to display and operate the address list. Dependent components: Icon, Swipe, Button.
 
-### 安装
+### Install
 
 ```javascript
 import { createApp } from "vue";
@@ -17,9 +17,7 @@ app.use(Swipe);
 app.use(Button);
 ```
 
-## 代码演示
-
-### 基础用法
+### Basic Usage
 
 :::demo
 
@@ -86,7 +84,7 @@ export default {
 ```
 
 :::
-### 长按功能
+### Long Press Function
 
 :::demo
 
@@ -168,7 +166,7 @@ export default {
 </script>
 ```
 :::
-### 滑动功能
+### Swipe Function
 
 :::demo
 
@@ -245,42 +243,42 @@ export default {
 
 ### Props
 
-| 参数               | 说明             | 类型    | 默认值 |
+| Attribute          | Description       | Type   | Default |
 | ------------------ | ---------------- | ------- | ------ |
-| data               | 地址数组         | Array   | -      |
-| long-press-edition | 长按功能         | Boolean | false  |
-| swipe-edition      | 右滑功能         | Boolean | false  |
-| show-bottom-button | 是否展示底部按钮 | Boolean | true   |
+| data               | Address array         | Array   | -      |
+| long-press-edition | Long Press Function   | Boolean | false  |
+| swipe-edition      | Swipe right           | Boolean | false  |
+| show-bottom-button | Whether to show the bottom button | Boolean | true   |
 
 ### Events
 
-| 事件名             | 说明                 | 回调参数          | 备注               |
-| ------------------ | -------------------- | ----------------- | ------------------ |
-| handelDelIcon      | 点击删除图标         | event: Event,item | 公共               |
-| handelEditIcon     | 点击编辑图标         | event: Event,item | 公共               |
-| handelDelIcon      | 点击删除图标         | event: Event,item | 公共               |
-| handelItem         | 点击地址列表每一项   | event: Event,item | 公共               |
-| addAddressClick    | 点击底部添加地址按钮 | event: Event      | 公共               |
-| longPressCopyClick | 点击复制地址按钮     | event: Event,item | 长按功能下点击事件 |
-| longPressSetClick  | 点击设置默认按钮     | event: Event,item | 长按功能下点击事件 |
-| longPressDelClick  | 点击删除地址按钮     | event: Event,item | 长按功能下点击事件 |
-| swipeDelClick      | 默认右滑删除按钮     | event: Event,item | 滑动功能下点击事件 |
+| Event              | Description                  | Arguments         | Remark               |
+| ------------------ | ---------------------------- | ----------------- | ------------------ |
+| handelDelIcon      | Click the delete icon        | event: Event,item | public               |
+| handelEditIcon     | Click the edit icon          | event: Event,item | public               |
+| handelDelIcon      | Click the delete icon        | event: Event,item | public               |
+| handelItem         | Click on each item in the address list | event: Event,item | public     |
+| addAddressClick    | Click the Add Address button at the bottom | event: Event   | public |
+| longPressCopyClick | Click the Copy Address button      | event: Event,item | Click event under long press function |
+| longPressSetClick  | Click the Set Default button       | event: Event,item | Click event under long press function  |
+| longPressDelClick  | Click the Delete Address button    | event: Event,item | Click event under long press function |
+| swipeDelClick      | Default right swipe delete button  | event: Event,item | Click event under swipe function |
 
 ### Slots
 
-`AddressList` 组件默认划分为若干区域，这些区域都定义成了插槽，可以按照需求进行替换
+The `AddressList` component is divided into several areas by default, and these areas are defined as slots, which can be replaced as needed
 
-| 插槽名        | 说明                             | 说明           |
-| ------------- | -------------------------------- | -------------- |
-| iteminfos     | 地址列表项姓名/联系方式/默认一行 | 公共           |
-| itemicon      | 地址列表项图标                   | 公共           |
-| itemaddr      | 地址列表项详细地址               | 公共           |
-| swiperight    | 地址列表项右滑区域               | 滑动功能下使用 |
-| longpressbtns | 地址列表项长按遮罩内容           | 长按功能下使用 |
+| Name          | Description                                     | Illustrate  |
+| ------------- | ----------------------------------------------- | ----------- |
+| iteminfos     | Address list item name/contact/default one line | public      |
+| itemicon      | address list item icon                          | public      |
+| itemaddr      | Address list item detailed address              | public      |
+| swiperight    | Address list item right swipe area              | Use with swipe |
+| longpressbtns | Address list item long press to mask content    | Use with long press |
 
-### data 数组中每一项 与 dataMapOptions 对象的参数磨平
+### Each item in the data array is smoothed with the parameters of the dataMapOptions object
 
-下面是 `data` 数组中每一项 基础数据结构
+Below is the underlying data structure for each item in the `data` array
 
 ```javascript
 const dataInfo = {
@@ -292,7 +290,7 @@ const dataInfo = {
 };
 ```
 
-组件内优先获取基础数据结构中定义的字段，若想自定义 `key` 值，可以通过 `dataMapOptions` 设置映射关系
+In the component, the fields defined in the basic data structure are preferentially obtained. If you want to customize the `key` value, you can set the mapping relationship through `dataMapOptions`
 
 ```javascript
 const dataMapOptions = {

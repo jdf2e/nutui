@@ -1,10 +1,10 @@
-# Category 商品分类
+# Category
 
-### 介绍
+### Intro
 
-用于展示商品分类的组件。
+Component for displaying product categories.
 
-### 安装
+### Install
 
 ```javascript
 import { createApp } from "vue";
@@ -15,9 +15,7 @@ app.use(Category);
 app.use(CategoryPane);
 ```
 
-## 代码演示
-
-### 经典分类模式
+### Classic Classification Mod
 
 :::demo
 
@@ -61,7 +59,7 @@ export default {
       data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
     };
     const onChange =()=>{
-        console.log("当前分类数据");
+        console.log("Click on current category data");
     }
     return {
       onChange,
@@ -73,7 +71,7 @@ export default {
 </script>
 ```
 :::
-### 只显示文字
+### Show Text Only
 
 :::demo
 
@@ -123,7 +121,7 @@ export default {
     };
 
     const onChange =()=>{
-      console.log("当前分类数据");
+        console.log("Click on current category data");
     }
     return {
       changeText,
@@ -135,7 +133,7 @@ export default {
 </script>
 ```
 :::
-### 自定义分类
+### Custom taxonomy
 
 :::demo
 
@@ -173,7 +171,7 @@ export default {
         .catch((err) => console.log('Oh, error', err)); 
     };
     const changeCustom = () => {
-      console.log('点击分类数据')
+      console.log('Click to categorize data')
     };
     return {
       changeCustom,
@@ -188,34 +186,34 @@ export default {
 
 ### Category Props
 
-| 参数     | 说明                             | 类型   | 默认值   |
+| Attribute     | Description                 | Type   | Default   |
 | -------- | -------------------------------- | ------ | -------- |
-| type     | 分类模式：`classify`，`text`，`custom` | String | classify |
-| category | 左侧导航栏数据列表               | Array  | []       |
+| type     | Classification mode: `classify`, `text`, `custom` | String | classify |
+| category | Left navigation bar data list               | Array  | []       |
 
 ### Category Events
 
-| 事件名        | 说明                                             | 回调参数   |
+| Event         | Description                                   | Arguments   |
 | ------------- | ------------------------------------------------ | ---------- |
-| change        | 经典分类，点击左侧导航栏，获取右侧数据列表       | 点击的数据 |
-| change-text   | 文本分类模式，更点击左侧导航栏，获取右侧数据列表 | 输入的数据 |
-| change-custom | 自定义，点击左侧导航栏，获取右侧数据列表         | 当前数量   |
+| change        | Classic classification, click on the left navigation bar to get the data list on the right       | Clicked data |
+| change-text   | In text classification mode, click on the left navigation bar to get the data list on the right | Input data |
+| change-custom | Customize, click the left navigation bar to get the data list on the right       | Current quantity   |
 
 ### CategoryPane Props
 
-| 参数            | 说明                 | 类型  | 默认值 |
+| Attribute       | Description                 | Type  | Default |
 | --------------- | -------------------- | ----- | ------ |
-| category-child  | 右侧展示当前分类数据 | Array | []     |
-| custom-category | 自定义分类数据       | Array | []     |
+| category-child  | The current classification data is displayed on the right | Array | []     |
+| custom-category | Custom categorical data       | Array | []     |
 
 ### CategoryPane Events
 
-| 事件名    | 说明                 | 回调参数   |
+| Event     | Description               | Arguments   |
 | --------- | -------------------- | ---------- |
-| on-change | 点击右侧分类数据触发 | 点击的数据 |
+| on-change | Click on the right classified data trigger | Clicked data |
 
 ## CategoryPane Slots
 
-| 名称    | 说明       |
+| Name    | Description       |
 | ------- | ---------- |
-| default | 自定义内容 |
+| default | Custom content |

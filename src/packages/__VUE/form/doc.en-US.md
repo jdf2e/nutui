@@ -362,12 +362,27 @@ setup(){
 
 Use the `rules` attribute of FormItem to define verification rules. The optional attributes are as follows:
 
-| Attribute | Default                            | Type                                          |
-|-----------|------------------------------------|-----------------------------------------------|
-| required  | Is it a required field             | boolean                                       |
-| message   | Error prompt copy                  | string                                        |
-| validator | Verification by function           | (value, rule) => boolean \| string \| Promise |
-| regex     | Verification by regular expression | RegExp                                        |
+| Attribute | Default                            | Type                                    |
+|-----------|------------------------------------|-----------------------------------------|
+| required  | Is it a required field             | boolean                                 |
+| message   | Error prompt copy                  | string                                  |
+| validator | Verification by function           | (value) => boolean \| string \| Promise |
+| regex     | Verification by regular expression | RegExp                                  |
+
+## FormItem Slots
+
+| Name            | Description         |
+|-----------------|---------------------|
+| default         | Default slot        |
+| label `v3.1.22` | Custom `label` slot |
+
+
+``` html
+  use slot
+  <nut-form-item>
+    <template v-slot:label>slot label</template>
+  </nut-form-item>
+```
 
 ### Methods
 
