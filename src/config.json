@@ -1032,6 +1032,18 @@
           "sort": 9,
           "show": true,
           "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Animate",
+          "cType": "展示组件",
+          "cName": "动画/动效",
+          "desc": "给页面元素添加动画效果",
+          "show": true,
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "author": "lijiamiao"
         }
       ]
     },
@@ -1171,7 +1183,8 @@
           "exportEmpty": true,
           "author": "liqiong43",
           "taro": true
-        },{
+        },
+        {
           "name": "Comment",
           "cType": "特色组件",
           "cName": "商品评论",
