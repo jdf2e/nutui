@@ -1,4 +1,4 @@
-onMounted, nextTick, , watch, ref<template>
+<template>
   <view :class="classes">
     <view v-if="readonly" class="nut-textarea__textarea">
       {{ modelValue }}
