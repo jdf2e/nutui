@@ -1,7 +1,14 @@
 const subPackages = [
   {
     root: 'base',
-    pages: ['pages/button/index', 'pages/cell/index', 'pages/icon/index', 'pages/overlay/index', 'pages/popup/index']
+    pages: [
+      'pages/button/index',
+      'pages/cell/index',
+      'pages/icon/index',
+      'pages/overlay/index',
+      'pages/popup/index',
+      'pages/configprovider/index'
+    ]
   },
   {
     root: 'layout',

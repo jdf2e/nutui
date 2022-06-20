@@ -1,3 +1,10 @@
+.nut-theme-dark {
+  .nut-tabbar-item {
+    &__icon--unactive {
+      color: $dark-color-gray;
+    }
+  }
+}
 .nut-tabbar-item {
   flex: 1;
   text-align: center;

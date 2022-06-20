@@ -17,6 +17,12 @@ $white: #fff !default;
 $black: #000 !default;
 $required-color: #fa2c19 !default;
 
+$dark-background: #1a1919 !default;
+$dark-background2: #1d1b1c !default;
+$dark-background3: #141414 !default;
+$dark-color: $white !default;
+$dark-color-gray: $text-color !default;
+
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif !default;
 
 // ---- Animation ----
@@ -94,6 +100,7 @@ $cell-default-icon-margin: 0 4px 0 0px !default;
 $cell-large-title-font: $font-size-large !default;
 $cell-large-title-desc-font: $font-size-base !default;
 $cell-large-padding: 15px 16px !default;
+$cell-background: $white !default;
 
 // cell-group
 

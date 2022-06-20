@@ -1,3 +1,14 @@
+.nut-theme-dark {
+  .nut-grid-item {
+    &__content {
+      background: $dark-background;
+      color: $dark-color;
+    }
+    &__text {
+      color: $dark-color;
+    }
+  }
+}
 .nut-grid-item {
   position: relative;
   box-sizing: border-box;

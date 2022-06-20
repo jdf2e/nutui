@@ -1,3 +1,22 @@
+.nut-theme-dark {
+  .nut-pagination {
+    &-prev,
+    &-item,
+    &-next {
+      background: $dark-background;
+      border-color: $dark-color-gray;
+    }
+    &-simple {
+      background: $dark-background;
+    }
+    .simple-border {
+      border-color: $dark-color-gray;
+    }
+    .disabled {
+      background: $dark-background;
+    }
+  }
+}
 .nut-pagination {
   display: flex;
   font-size: $pagination-font-size;

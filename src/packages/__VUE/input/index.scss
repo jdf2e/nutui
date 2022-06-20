@@ -1,3 +1,15 @@
+.nut-theme-dark {
+  .nut-input {
+    background: $dark-background;
+    &-label {
+      color: $dark-color;
+    }
+    .input-text,
+    &__text--readonly {
+      color: $dark-color;
+    }
+  }
+}
 input,
 textarea {
   font: inherit;
@@ -37,6 +49,7 @@ textarea {
     outline: 0 none;
     border: 0;
     text-decoration: none;
+    background: transparent;
     resize: none;
   }
 
