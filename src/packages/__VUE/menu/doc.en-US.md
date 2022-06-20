@@ -389,6 +389,9 @@ export default {
 |--------------|----------------------------------|--------|------------------|
 | active-color         | Active color of title and option     | String | #F2270C               |
 | close-on-click-overlay `v3.1.21`        | Whether to close when overlay is clicked     | Boolean | true               |
+| scroll-fixed `v3.1.22`        | Whether to fixed when window is scrolled, fixed position can be set     | Boolean、String、Number | false               |
+| title-class `v3.1.22`        | Custome title class     | String | -               |
+| lock-scroll `v3.1.22`        | Whether the background is locked     | Boolean | true               |
 
 ### MenuItem Props
 
@@ -399,8 +402,8 @@ export default {
 | disabled         | Whether to disable dropdown item     | Boolean | false                |
 | cols         | Display how many options in one line     | Number | 1                |
 | title-icon         | Custome title icon     | String | -                |
-| option-icon         | Custome option icon     | String | 'Check'                |
-| direction         | Expand direction, can be set to up     | String | 'down'                |
+| option-icon `v3.1.22`         | Custome option icon     | String | 'Check'                |
+| direction `v3.1.22`         | Expand direction, can be set to up     | String | 'down'                |
 
 ### MenuItem Events
 

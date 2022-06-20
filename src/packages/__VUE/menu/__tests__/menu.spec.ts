@@ -2,6 +2,7 @@ import { config, mount } from '@vue/test-utils';
 import Menu from '../index.vue';
 import MenuItem from '../../menuitem/index.vue';
 import NutIcon from '../../icon/index.vue';
+import { mockScrollTop } from './../../../utils/unit';
 import { h, nextTick } from 'vue';
 
 const options1 = [
@@ -250,4 +251,42 @@ test('menu close-on-click-overlay props: ', async () => {
   await nextTick();
 
   expect(wrapper.find<HTMLElement>('.nut-overlay').element.style.display).toEqual('none');
+});
+
+test('menu scroll-fixed props: nut-menu classes should contain scroll-fixed', async () => {
+  const wrapper = mount(Menu, {
+    props: {
+      scrollFixed: 50
+    },
+    slots: {
+      default: h(MenuItem, {
+        modelValue: 0,
+        options: options1
+      })
+    }
+  });
+
+  await mockScrollTop(100);
+
+  expect(wrapper.find('.nut-menu').classes()).toContain('scroll-fixed');
+});
+
+test('menu title-class props: nut-menu__title classes should contain custom-title-class', async () => {
+  const wrapper = mount(Menu, {
+    props: {
+      titleClass: 'custom-title-class'
+    },
+    slots: {
+      default: h(MenuItem, {
+        modelValue: 0,
+        options: options1
+      })
+    }
+  });
+
+  await nextTick();
+
+  const menuTitle: any = wrapper.find<HTMLElement>('.nut-menu__title');
+
+  expect(menuTitle.classes()).toContain('custom-title-class');
 });

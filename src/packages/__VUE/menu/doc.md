@@ -391,6 +391,9 @@ export default {
 |--------------|----------------------------------|--------|------------------|
 | active-color         | 选项的选中态图标颜色     | String | #F2270C               |
 | close-on-click-overlay `v3.1.21`        | 是否在点击遮罩层后关闭菜单     | Boolean | true               |
+| scroll-fixed `v3.1.22`        | 滚动后是否固定，可设置固定位置     | Boolean、String、Number | false               |
+| title-class `v3.1.22`        | 自定义标题样式类     | String | -               |
+| lock-scroll `v3.1.22`        | 背景是否锁定     | Boolean | true               |
 
 ### MenuItem Props
 
@@ -401,8 +404,8 @@ export default {
 | disabled         | 是否禁用菜单     | Boolean | false                |
 | cols         | 可以设置一行展示多少列 options     | Number | 1                |
 | title-icon         | 自定义标题图标     | String | -                |
-| option-icon         | 自定义选项图标     | String | 'Check'                |
-| direction         | 菜单展开方向，可选值为up     | String | 'down'                |
+| option-icon `v3.1.22`         | 自定义选项图标     | String | 'Check'                |
+| direction  `v3.1.22`        | 菜单展开方向，可选值为up     | String | 'down'                |
 
 ### MenuItem Events
 

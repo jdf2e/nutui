@@ -23,6 +23,7 @@
       overlayClass="nut-menu__overlay"
       :overlay="parent.props.overlay"
       @closed="handleClose"
+      :lockScroll="parent.props.lockScroll"
       :isWrapTeleport="false"
       :close-on-click-overlay="parent.props.closeOnClickOverlay"
     >
