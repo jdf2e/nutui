@@ -546,6 +546,7 @@ If you want to select a province, you need to set the region ID in the order of 
 | exist-address-title|  Exist address title | String | 'Delivery To'
 | custom-and-exist-title| Custom address and existing address switch button copywriting | String | 'Choose Another Address'
 | columns-placeholder | Columns placeholder text | String|Array | 'Select'
+| lock-scroll   | Whether the background is locked   | Boolean        | `true`       
 
 
 ## Event
