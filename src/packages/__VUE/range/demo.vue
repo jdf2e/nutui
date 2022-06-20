@@ -1,34 +1,34 @@
 <template>
   <div class="demo">
-    <h2>基础用法</h2>
+    <h2>{{ translate('title') }}</h2>
     <nut-cell class="cell">
       <nut-range v-model="value1" @change="onChange"></nut-range>
     </nut-cell>
-    <h2>双滑块</h2>
+    <h2>{{ translate('title1') }}</h2>
     <nut-cell class="cell">
       <nut-range range v-model="value2" @change="onChange"></nut-range>
     </nut-cell>
-    <h2>指定范围</h2>
+    <h2>{{ translate('title2') }}</h2>
     <nut-cell class="cell">
       <nut-range v-model="value3" :max="10" :min="-10" @change="onChange"></nut-range>
     </nut-cell>
-    <h2>设置步长</h2>
+    <h2>{{ translate('title3') }}</h2>
     <nut-cell class="cell">
       <nut-range v-model="value4" :step="5" @change="onChange"></nut-range>
     </nut-cell>
-    <h2>隐藏范围</h2>
+    <h2>{{ translate('title4') }}</h2>
     <nut-cell class="cell">
       <nut-range hidden-range v-model="value5" @change="onChange"></nut-range>
     </nut-cell>
-    <h2>隐藏标签</h2>
+    <h2>{{ translate('title5') }}</h2>
     <nut-cell class="cell">
       <nut-range hidden-tag v-model="value6" @change="onChange"></nut-range>
     </nut-cell>
-    <h2>禁用</h2>
+    <h2>{{ translate('title6') }}</h2>
     <nut-cell class="cell">
       <nut-range disabled v-model="value7"></nut-range>
     </nut-cell>
-    <h2>自定义样式</h2>
+    <h2>{{ translate('title7') }}</h2>
     <nut-cell class="cell">
       <nut-range
         v-model="value8"
@@ -38,7 +38,7 @@
         active-color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
       ></nut-range>
     </nut-cell>
-    <h2>自定义按钮</h2>
+    <h2>{{ translate('title8') }}</h2>
     <nut-cell class="cell">
       <nut-range v-model="value9" @change="onChange">
         <template #button>
@@ -47,7 +47,7 @@
       </nut-range>
     </nut-cell>
 
-    <h2>垂直方向</h2>
+    <h2>{{ translate('title9') }}</h2>
     <nut-cell class="vertical_div">
       <view class="div">
         <nut-range v-model="value10" @change="onChange" :vertical="true"></nut-range>
@@ -56,7 +56,7 @@
         <nut-range range v-model="value11" @change="onChange" :vertical="true"></nut-range>
       </view>
     </nut-cell>
-    <h2>刻度标记</h2>
+    <h2>{{ translate('title10') }}</h2>
     <nut-cell class="cell">
       <nut-range v-model="value12" @change="onChange" :marks="marks" :hiddenRange="true"></nut-range>
     </nut-cell>
@@ -86,7 +86,37 @@
 import { toRefs, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Toast } from '@/packages/nutui.vue';
-const { createDemo } = createComponent('range');
+const { createDemo, translate } = createComponent('range');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+
+useTranslate({
+  'zh-CN': {
+    title: '基础用法',
+    title1: '双滑块',
+    title2: '指定范围',
+    title3: '设置步长',
+    title4: '隐藏范围',
+    title5: '隐藏标签',
+    title6: '禁用',
+    title7: '自定义样式',
+    title8: '自定义按钮',
+    title9: '垂直方向',
+    title10: '刻度标记'
+  },
+  'en-US': {
+    title: 'Basic Usage',
+    title1: 'Dual thumb',
+    title2: 'Range',
+    title3: 'Step Size',
+    title4: 'Hidden Range',
+    title5: 'Hidden Tag',
+    title6: 'Disabled',
+    title7: 'Custom Style',
+    title8: 'Custom Button',
+    title9: 'Vertical',
+    title10: 'Marks'
+  }
+});
 export default createDemo({
   props: {},
   setup() {
@@ -116,10 +146,11 @@ export default createDemo({
       }
     });
 
-    const onChange = (value: number) => Toast.text('当前值：' + value);
+    const onChange = (value: number) => Toast.text('value：' + value);
     return {
       ...toRefs(state),
-      onChange
+      onChange,
+      translate
     };
   }
 });
