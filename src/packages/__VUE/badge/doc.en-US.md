@@ -1,10 +1,10 @@
-# Badge 徽标
+# Badge
 
-### 介绍
+### Intro
 
-出现在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息。
+A red dot, number or text appearing in the upper right corner of the icon or text indicates that there is new content or pending information.
 
-### 安装
+### Install
 
 ```javascript
 
@@ -19,9 +19,8 @@ app.use(Badge);
 
 ```
 
-### 代码实例
 
-### 基础用法
+### Basic Usage
 
 :::demo
 ```html
@@ -54,7 +53,7 @@ app.use(Badge);
 ```
 :::
 
-### 最大值
+### Max
 
 :::demo
 ```html
@@ -84,7 +83,7 @@ app.use(Badge);
 ```
 :::
 
-### 自定义颜色
+### Custom Color
 
 :::demo
 ```html
@@ -117,7 +116,7 @@ app.use(Badge);
 ```
 :::
 
-### 自定义徽标内容
+### Custom Content
 
 :::demo
 ```html
@@ -156,7 +155,7 @@ app.use(Badge);
 ```
 :::
 
-### 自定义位置
+### Custom Position 
 
 :::demo
 ```html
@@ -186,7 +185,7 @@ app.use(Badge);
 ```
 :::
 
-### 独立展示
+### Standalone
 
 :::demo
 ```html
@@ -213,20 +212,20 @@ app.use(Badge);
 
 ### Prop  
 
-| 字段    | 说明                                       | 类型    | 默认值    |
+| Attribute | Description | Type | Default |
 |---------|--------------------------------------------|---------|-----------|
-| value   | 显示的内容                                 | String  | -         |
-| max     | value 为数值时，最大值                     | Number  | `10000`   |
-| z-index | 徽标的 z-index 值                          | Number  | `10`      |
-| dot     | 是否为小点                                 | Boolean | `false`   |
-| hidden  | 是否隐藏                                   | Boolean | `false`   |
-| top     | 上下偏移量，支持单位设置，可设置为：5px 等 | Number  | `0`       |
-| right   | 左右偏移量，支持单位设置，可设置为：5px 等 | Number  | `0`       |
-| color   | 徽标背景颜色                               | String  | `#fa2c19` |
+| value   | content                                 | String  | -         |
+| max     | When value is a numeric value, the maximum value                     | Number  | `10000`   |
+| z-index | badge z-index                          | Number  | `10`      |
+| dot     | whether to dot                                 | Boolean | `false`   |
+| hidden  | whether to hide                                   | Boolean | `false`   |
+| top     | Up and down offset, support unit setting, for example: 5px | Number  | `0`       |
+| right   | Left and right offset, support unit setting, for example: 5px | Number  | `0`       |
+| color   |  badge background color    | String  | `#fa2c19` |
 
 ### Slots
 
-| 名称    | 说明         |
+| Name   | Description           |
 |---------|--------------|
-| default | 	徽标包裹的子元素 |
-| icons | 	徽标自定义 |
+| default | Default slot |
+| icons | 	Icon slot |
