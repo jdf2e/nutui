@@ -138,6 +138,17 @@
           "tarodoc": false,
           "type": "component",
           "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Image",
+          "cType": "基础组件",
+          "cName": "图片",
+          "desc": "图片展示",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "yangxiaolu"
         }
       ]
     },
@@ -1043,6 +1054,17 @@
           "sort": 9,
           "show": true,
           "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Ellipsis",
+          "cType": "展示组件",
+          "cName": "文本省略",
+          "desc": "文本省略",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "yangxiaolu3"
         }
       ]
     },

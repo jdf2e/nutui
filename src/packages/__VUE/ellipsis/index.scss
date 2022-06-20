@@ -1,0 +1,12 @@
+.nut-ellipsis {
+  .nut-ellipsis-text {
+    cursor: hand;
+    color: $ellipsis-expand-collapse-color;
+    display: inline;
+  }
+}
+
+.nut-ellipsis-copy {
+  position: absolute;
+  top: -999999px;
+}
