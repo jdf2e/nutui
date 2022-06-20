@@ -2,6 +2,9 @@
   <div class="demo">
     <nut-cell-group :title="translate('funUse')">
       <nut-cell :title="translate('basic')" @click="baseClick"></nut-cell>
+      <nut-cell :title="translate('transparent')" @click="transparentClick"></nut-cell>
+      <nut-cell :title="translate('html')" @click="htmlClick"></nut-cell>
+      <nut-cell :title="translate('beforeClose')" @click="beforeCloseClick"></nut-cell>
       <nut-cell :title="translate('noTitle')" @click="noTitleClick"></nut-cell>
       <nut-cell :title="translate('tipDialog')" @click="tipsClick"></nut-cell>
       <nut-cell :title="translate('title')" @click="verticalClick"></nut-cell>
@@ -42,6 +45,9 @@ useTranslate({
   'zh-CN': {
     funUse: '函数式调用',
     basic: '基础弹框',
+    transparent: '透明弹框',
+    html: '支持富文本 html',
+    beforeClose: '异步关闭',
     noTitle: '无标题弹框',
     tipDialog: '提示弹框',
     tips: '提示',
@@ -51,11 +57,15 @@ useTranslate({
     content: '支持函数调用和组件调用两种方式。',
     content1: '支持底部按钮纵向排列。',
     content2: '打开开发者工具看一下 Elements Tab',
-    content3: '我可以是一个自定义组件'
+    content3: '我可以是一个自定义组件',
+    content4: '点击确认后，1秒后关闭'
   },
   'en-US': {
     funUse: 'Function use',
     basic: 'Basic Usage',
+    transparent: 'Transparent Dialog',
+    html: 'Use html',
+    beforeClose: 'Before Close',
     noTitle: 'No Title',
     tipDialog: 'Tips Dialog',
     tips: 'Tips',
@@ -65,7 +75,8 @@ useTranslate({
     content: 'Function call and template call are supported.',
     content1: 'Support vertical arrangement of bottom buttons.',
     content2: 'Open the developer tool and take a look at the Elements tab',
-    content3: 'I can be a custom component'
+    content3: 'I can be a custom component',
+    content4: 'Click confirm to close it in 1 second'
   }
 });
 export default createDemo({
@@ -88,6 +99,43 @@ export default createDemo({
         onOk
       });
     };
+
+    const transparentClick = (): void => {
+      Dialog({
+        overlayStyle: { background: 'rgba(0,0,0,0)' },
+        title: translate('transparent'),
+        content: 'Content',
+        onCancel,
+        onOk
+      });
+    };
+
+    const htmlClick = (): void => {
+      Dialog({
+        title: translate('html'),
+        content:
+          "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
+        onCancel,
+        onOk
+      });
+    };
+
+    const beforeCloseClick = (): void => {
+      Dialog({
+        title: translate('beforeClose'),
+        content: translate('content4'),
+        onCancel,
+        onOk,
+        beforeClose: (action: string) => {
+          return new Promise((r) => {
+            setTimeout(() => {
+              r(action == 'ok');
+            }, 1000);
+          });
+        }
+      });
+    };
+
     const noTitleClick = () => {
       Dialog({
         content: translate('noTitle'),
@@ -135,6 +183,9 @@ export default createDemo({
       visible,
       visible1,
       baseClick,
+      transparentClick,
+      htmlClick,
+      beforeCloseClick,
       noTitleClick,
       componentClick,
       componentvVrticalClick,

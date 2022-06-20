@@ -5,8 +5,10 @@
     :style="$attrs.style"
   >
     <view class="nut-cell__title nut-form-item__label" :style="labelStyle" v-if="label" :class="{ required: required }">
-      {{ label }}</view
-    >
+      <slot name="label">
+        {{ label }}
+      </slot>
+    </view>
     <view class="nut-cell__value nut-form-item__body">
       <view class="nut-form-item__body__slots" :style="bodyStyle">
         <slot></slot>
@@ -19,7 +21,7 @@
 </template>
 <script lang="ts">
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { computed, inject, provide, PropType, ref } from 'vue';
+import { computed, inject, provide, PropType, ref, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('form-item');
 export default create({
@@ -82,17 +84,17 @@ export default create({
       return {
         width: pxCheck(props.labelWidth),
         textAlign: props.labelAlign
-      };
+      } as CSSProperties;
     });
     const bodyStyle = computed(() => {
       return {
         textAlign: props.bodyAlign
-      };
+      } as CSSProperties;
     });
     const errorMessageStyle = computed(() => {
       return {
         textAlign: props.errorMessageAlign
-      };
+      } as CSSProperties;
     });
 
     return { parent, labelStyle, bodyStyle, errorMessageStyle };
