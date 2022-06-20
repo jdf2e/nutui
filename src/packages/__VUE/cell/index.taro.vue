@@ -1,26 +1,4 @@
-<template>
-  <view :class="classes" :style="baseStyle" @click="handleClick">
-    <slot>
-      <view class="nut-cell__icon" v-if="icon || $slots.icon">
-        <slot v-if="$slots.icon" name="icon"></slot>
-        <nut-icon v-else-if="icon" class="icon" :name="icon"></nut-icon>
-      </view>
-      <view class="nut-cell__title" v-if="title || subTitle">
-        <template v-if="subTitle">
-          <view class="title">{{ title }}</view>
-          <view class="nut-cell__title-desc">{{ subTitle }}</view>
-        </template>
-        <template v-else>
-          {{ title }}
-        </template>
-      </view>
-      <view v-if="desc" class="nut-cell__value" :style="{ 'text-align': descTextAlign }">{{ desc }}</view>
-
-      <slot v-if="$slots.link" name="link"></slot>
-      <nut-icon v-else-if="isLink || to" class="nut-cell__link" name="right"></nut-icon>
-    </slot>
-  </view>
-</template>
+<template src="./template.html"></template>
 
 <script lang="ts">
 import { computed } from 'vue';
@@ -40,7 +18,8 @@ export default create({
     roundRadius: { type: [String, Number], default: '' },
     url: { type: String, default: '' },
     icon: { type: String, default: '' },
-    center: { type: Boolean, default: false }
+    center: { type: Boolean, default: false },
+    size: { type: String, default: '' } // large
   },
   emits: ['click'],
   setup(props, { emit }) {
@@ -49,7 +28,8 @@ export default create({
       return {
         [prefixCls]: true,
         [`${prefixCls}--clickable`]: props.isLink || props.to,
-        [`${prefixCls}--center`]: props.center
+        [`${prefixCls}--center`]: props.center,
+        [`${prefixCls}--large`]: props.size == 'large'
       };
     });
 

@@ -1,4 +1,4 @@
-const subpackages = [
+const subPackages = [
   {
     root: 'base',
     pages: ['pages/button/index', 'pages/cell/index', 'pages/icon/index', 'pages/overlay/index', 'pages/popup/index']
@@ -98,7 +98,7 @@ const subpackages = [
 
 export default {
   pages: ['pages/index/index'],
-  subpackages,
+  subPackages,
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
