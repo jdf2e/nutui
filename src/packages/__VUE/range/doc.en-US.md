@@ -1,10 +1,10 @@
-# Range 区间选择器
+# Range
 
-### 介绍
+### Intro
   
-滑动输入条，用于在给定的范围内选择一个值。
+Slide the input bar to select a value within a given range.
 
-### 安装
+### Install
 
 ```javascript
 import { createApp } from 'vue';
@@ -17,9 +17,7 @@ const app = createApp();
 app.use(Range);
 ```
 
-## 代码演示
-
-### 基础用法
+### Basic Usage
 :::demo
 
 ```html
@@ -35,7 +33,7 @@ app.use(Range);
   export default {
     setup() {
       const value = ref(40);
-      const onChange = (value) => Toast.text('当前值：' + value);
+      const onChange = (value) => Toast.text('value：' + value);
       return {
         value,
         onChange,
@@ -47,7 +45,7 @@ app.use(Range);
 ```
 :::
 
-### 双滑块
+### Dual thumb
 :::demo
 ```html
 <template>
@@ -62,7 +60,7 @@ import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref([20, 80]);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => Toast.text('value：' + value);
     return {
       value,
       onChange,
@@ -72,7 +70,7 @@ export default {
 </script>
 ```
 :::
-### 指定范围
+### Range
 :::demo
 ```html
 <template>
@@ -87,7 +85,7 @@ import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(0);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => Toast.text('value：' + value);
     return {
       value,
       onChange,
@@ -97,7 +95,7 @@ export default {
 </script>
 ```
 :::
-### 设置步长
+### Step Size
 :::demo
 ```html
 <template>
@@ -112,7 +110,7 @@ import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(20);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => Toast.text('value：' + value);
     return {
       value,
       onChange,
@@ -122,7 +120,7 @@ export default {
 </script>
 ```
 :::
-### 隐藏范围
+### Hidden Range
 :::demo
 ```html
 <template>
@@ -137,7 +135,7 @@ import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(30);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => Toast.text('value：' + value);
     return {
       value,
       onChange,
@@ -147,7 +145,7 @@ export default {
 </script>
 ```
 :::
-### 隐藏标签
+### Hidden Tag
 :::demo
 ```html
 <template>
@@ -162,7 +160,7 @@ import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(40);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => Toast.text('value：' + value);
     return {
       value,
       onChange,
@@ -173,7 +171,7 @@ export default {
 ```
 :::
 
-### 禁用
+### Disabled
 :::demo
 ```html
 <template>
@@ -188,7 +186,7 @@ import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(50);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => Toast.text('value：' + value);
     return {
       value,
       onChange,
@@ -198,7 +196,7 @@ export default {
 </script>
 ```
 :::
-### 自定义样式
+### Custom Style
 :::demo
 ```html
 <template>
@@ -219,7 +217,7 @@ import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(40);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => Toast.text('value：' + value);
     return {
       value,
       onChange,
@@ -230,8 +228,7 @@ export default {
 ```
 :::
 
-### 自定义按钮
-
+### Custom Button
 :::demo
 ```html
 <style>
@@ -261,7 +258,7 @@ import { Toast } from '@nutui/nutui';
 export default {
   setup() {
     const value = ref(60);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => Toast.text('value：' + value);
     return {
       value,
       onChange,
@@ -271,8 +268,7 @@ export default {
 </script>
 ```
 :::
-
-### 垂直方向
+### Vertical
 :::demo
 ```html
 <style>
@@ -303,7 +299,7 @@ export default {
   setup() {
     const value10 = ref(20);
     const value11 = ref([20,80]);
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => Toast.text('value：' + value);
     return {
       value,
       onChange,
@@ -313,7 +309,8 @@ export default {
 </script>
 ```
 :::
-### 刻度标记
+
+### Marks
 :::demo
 ```html
 <style>
@@ -366,7 +363,7 @@ export default {
       80: 80,
       100: 100
     });
-    const onChange = (value) => Toast.text('当前值：' + value);
+    const onChange = (value) => Toast.text('value：' + value);
     return {
       value,
       onChange,
@@ -382,34 +379,34 @@ export default {
   
   ### Props
   
-| 参数 | 说明 | 类型 | 默认值 |
+| Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
-| v-model | 当前进度百分比 | Number、Number[] | `0` |
-| range | 是否开启双滑块模式 | Boolean | `false` |
-| max | 最大值 | Number、String | `100` |
-| min | 最小值 | Number、String | `0` |
-| step | 步长 | Number、String | `1` |
-| disabled | 是否禁用滑块 | Boolean | `false` |
-| vertical | 是否竖向展示 | Boolean | `false` |
-| hidden-range | 是否隐藏范围值 | Boolean | `false` |
-| hidden-tag | 是否隐藏标签 | Boolean | `false` |
-| active-color | 进度条激活态颜色 | String | `rgba(250, 44, 25, 1)` |
-| inactive-color | 进度条非激活态颜色 | String | `rgba(255, 163, 154, 1)` |
-| button-color | 按钮颜色 | String | `rgba(250, 44, 25, 1)` |
-| marks | 刻度标示 | Object{key:number} | {} |
+| v-model | current progress percentage | Number、Number[] | `0` |
+| range | Whether to enable dual slider mode | Boolean | `false` |
+| max | maximum  | Number、String | `100` |
+| min | minimum  | Number、String | `0` |
+| step | step size | Number、String | `1` |
+| disabled | Whether to disable the slider | Boolean | `false` |
+| vertical | Whether to display vertically | Boolean | `false` |
+| hidden-range | whether to hide range values | Boolean | `false` |
+| hidden-tag | whether to hide the label | Boolean | `false` |
+| active-color | progress bar active color | String | `rgba(250, 44, 25, 1)` |
+| inactive-color | Progress bar inactive color | String | `rgba(255, 163, 154, 1)` |
+| button-color | button color | String | `rgba(250, 44, 25, 1)` |
+| marks | scale mark | Object{key:number} | {} |
 
   
 ### Events
 
-| 事件名             | 说明                     | 回调参数        |
+| Event             | Description                     | Arguments        |
 | ------------------ | ------------------------ | --------------- |
-| change             | 进度变化且结束拖动后触发 | value: 当前进度 |
-| drag-start         | 开始拖动时触发           | -               |
-| drag-end           | 结束拖动时触发           | -               |
+| change             | Triggered when the progress changes and the drag is over | value: progress |
+| drag-start         | Triggered when dragging starts           | -               |
+| drag-end           | Triggered when the drag is over           | -               |
 
 ### Slots
 
-| 名称   | 说明           |
+| Name   | Description           |
 | ------ | -------------- |
-| button | 自定义滑动按钮 |
+| button | custom slide button |
 
