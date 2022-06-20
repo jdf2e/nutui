@@ -24,6 +24,7 @@
     border-radius: $radio-button-border-radius;
     color: $radio-label-font-color;
     box-sizing: border-box;
+    border: 1px solid #f6f7f9;
     &--active {
       background: $radio-label-button-background;
       color: $radio-label-font-active-color;

@@ -162,7 +162,7 @@ export default create({
       const uploadOption = new UploadOptions();
       uploadOption.name = props.name;
       uploadOption.url = props.url;
-
+      uploadOption.fileType = fileItem.type;
       uploadOption.formData = fileItem.formData;
       uploadOption.timeout = (props.timeout as number) * 1;
       uploadOption.method = props.method;

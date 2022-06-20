@@ -125,8 +125,10 @@ $button-block-height: 48px !default;
 $button-default-line-height: 36px !default;
 $button-block-line-height: 46px !default;
 $button-default-font-size: $font-size-2 !default;
+$button-large-font-size: $button-default-font-size !default;
 $button-small-font-size: $font-size-1 !default;
 $button-mini-font-size: $font-size-1 !default;
+$button-mini-line-height: 1.2 !default;
 $button-disabled-opacity: $primary-disabled-opacity !default;
 $button-primary-color: $tdd-color-white !default;
 $button-primary-border-color: $tdd-color-brand-normal !default;
@@ -183,6 +185,9 @@ $cell-group-desc-color: #909ca4 !default;
 $cell-group-desc-font-size: $font-size-1 !default;
 $cell-group-desc-line-height: 16px !default;
 $cell-group-background-color: $white !default;
+$cell-large-title-font: $font-size-large !default;
+$cell-large-title-desc-font: $font-size-base !default;
+$cell-large-padding: 15px 16px !default;
 
 // divider
 
