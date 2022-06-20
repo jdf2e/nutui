@@ -4,20 +4,26 @@
       v-show="state.isShowPlaceholderElement"
       @click="handleClickOutside"
       class="placeholder-element"
-      :style="{ height: parent.offset.value + 'px' }"
+      :class="{ up: parent.props.direction === 'up' }"
+      :style="placeholderElementStyle"
     >
     </div>
     <nut-popup
-      :style="{ top: parent.offset.value + 'px' }"
-      :overlayStyle="{ top: parent.offset.value + 'px' }"
+      :style="
+        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
+      "
+      :overlayStyle="
+        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
+      "
       v-bind="$attrs"
       v-model:visible="state.showPopup"
-      position="top"
+      :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
       pop-class="nut-menu__pop"
       overlayClass="nut-menu__overlay"
       :overlay="parent.props.overlay"
       @closed="handleClose"
+      :lockScroll="parent.props.lockScroll"
       :isWrapTeleport="false"
       :close-on-click-overlay="parent.props.closeOnClickOverlay"
     >
@@ -30,7 +36,7 @@
           :style="{ 'flex-basis': 100 / cols + '%' }"
           @click="onClick(option)"
         >
-          <nut-icon v-if="option.value === modelValue" name="Check" :color="parent.props.activeColor"></nut-icon>
+          <nut-icon v-if="option.value === modelValue" :name="optionIcon" :color="parent.props.activeColor"></nut-icon>
           <view :style="{ color: option.value === modelValue ? parent.props.activeColor : '' }">{{ option.text }}</view>
         </view>
         <slot></slot>
@@ -61,9 +67,10 @@ export default create({
       type: Number,
       default: 1
     },
-    titleIcon: {
+    titleIcon: String,
+    optionIcon: {
       type: String,
-      default: 'down-arrow'
+      default: 'Check'
     }
   },
   components: {
@@ -104,6 +111,16 @@ export default create({
       return {
         [prefixCls]: true
       };
+    });
+
+    const placeholderElementStyle = computed(() => {
+      const heightStyle = { height: parent.offset.value + 'px' };
+
+      if (parent.props.direction === 'down') {
+        return heightStyle;
+      } else {
+        return { ...heightStyle, top: 'auto' };
+      }
     });
 
     const toggle = (show = !state.showPopup, options: { immediate?: boolean } = {}) => {
@@ -151,6 +168,7 @@ export default create({
 
     return {
       classes,
+      placeholderElementStyle,
       renderTitle,
       state,
       parent,
