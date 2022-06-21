@@ -196,6 +196,123 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
 
 :::
 
+### Change Title
+
+:::demo
+
+``` html
+<template>
+  <nut-cell @click="handleClick2">
+    <span><label>Please select the delivery time</label></span>
+  </nut-cell>
+  <nut-timeselect v-model:visible="visible2" height="50%" :current-key="currentKey2" :current-time="currentTime2" @select="handleSelected2">
+    <template #title>
+      <div class="timeselect-title">
+        <p class="title">It is title</p>
+        <p class="subtitle">It is subtitle</p>
+      </div>
+    </template>
+    <template #pannel>
+      <nut-timepannel name="February 23rd(Today)" pannel-key="0" @change="handleChange2"></nut-timepannel>
+      <nut-timepannel name="February 24th(Wednesday)" pannel-key="1" @change="handleChange2"></nut-timepannel>
+    </template>
+    <template #detail>
+      <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
+    </template>
+  </nut-timeselect>
+</template>
+<script lang="ts">
+  import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const { proxy } = getCurrentInstance() as any;
+      const state = reactive({
+        visible2: false,
+        currentKey2: 0,
+        currentTime2: [] as any[],
+        times2: [
+          {
+            key: 0,
+            list: ['9:00-10:00', '10:00-11:00', '11:00-12:00']
+          },
+          {
+            key: 1,
+            list: ['9:00-10:00', '10:00-11:00']
+          },
+        ]
+      });
+
+      const handleChange2 = (pannelKey: number) => {
+        state.currentKey2 = pannelKey;
+        let curTime = state.currentTime2.find((item: any) => item.key == pannelKey);
+        if(!curTime) {
+          state.currentTime2.push({
+            key: pannelKey,
+            list: []
+          });
+        }
+      };
+
+      const handleClick2 = () => {
+        state.visible2 = true;
+      };
+
+      const selectTime2 = (item: string) => {
+        let findIndex = state.currentTime2.findIndex((item: any) => item.key == state.currentKey2);
+        let curTimeIndex = state.currentTime2[findIndex]['list'].findIndex((time: string) => time === item);
+        if(curTimeIndex === -1) {
+          state.currentTime2[findIndex]['list'].push(item);
+        } else {
+          state.currentTime2[findIndex]['list'].splice(curTimeIndex, 1);
+        }
+      };
+
+      const handleSelected2 = (obj: any) => {
+        proxy.$toast.text(`Your Choose ：${JSON.stringify(obj)}`);
+      };
+
+      onMounted(() => {
+        state.currentTime2.push({
+          key: state.currentKey2,
+          list: []
+        });
+      });
+
+      return { 
+        ...toRefs(state), 
+        handleChange2,
+        handleSelected2,
+        selectTime2,
+        handleClick2, 
+      };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+.demo {
+  .timeselect-title{
+    height: 50px;
+    p{
+      line-height: 1;
+      padding: 0;
+      margin: 0;
+      &.title{
+        margin: 10px 0;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &.subtitle{
+        color: #999;
+      }
+    }
+  }
+}
+</style>
+```
+
+:::
+
 ## API
 
 ### TimeSelect Prop
@@ -208,6 +325,14 @@ app.use(TimeSelect).use(TimePannel).use(TimeDetail).use(Popup);
 | current-key                 | Unique identification                                                    | String、Number  | `0`
 | current-time                 | The currently selected time, the array element contains:key: string; list: string[]      | Array  | `[]`
 | lock-scroll            | Whether the background is locked                         | Boolean        | `false`       |
+
+### Slot
+
+| Attribute                   | Description                                                             |
+|------------------------|----------------------------------------------------------------|
+| title                 | Change Title                                                    |
+| pannel                 | List for left                                                    |
+| detail                 | Detail Content for right                                                    |
 
 ### TimePannel Prop
 
