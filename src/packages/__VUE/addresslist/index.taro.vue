@@ -65,7 +65,7 @@
   </div>
 </template>
 <script lang="ts">
-import {toRefs, reactive, onMounted, ref, watch} from 'vue';
+import { toRefs, reactive, onMounted, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('addresslist');
 import LongPressShell from './components/LongPressShell.vue';
@@ -130,7 +130,11 @@ export default create({
     };
 
     // 监听props.data的变更重新渲染列表
-    watch(() => props.data, () => trowelData(), {deep:true});
+    watch(
+      () => props.data,
+      () => trowelData(),
+      { deep: true }
+    );
 
     const clickDelIcon = (event, item) => {
       emit('handelDelIcon', event, item);
