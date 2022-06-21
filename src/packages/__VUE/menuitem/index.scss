@@ -27,7 +27,6 @@
 }
 
 .nut-menu__overlay {
-  position: absolute;
   top: auto !important;
 }
 
@@ -44,4 +43,8 @@
   right: 0;
   z-index: $menu-bar-opened-z-index;
   background-color: transparent;
+
+  &.up {
+    bottom: -$menu-bar-line-height;
+  }
 }

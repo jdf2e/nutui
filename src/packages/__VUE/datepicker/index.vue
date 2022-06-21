@@ -1,7 +1,7 @@
 <template>
   <nut-picker
     v-model="selectedValue"
-    :visible="show"
+    v-model:visible="show"
     :okText="okText"
     :cancelText="cancelText"
     @close="closeHandler"
@@ -17,15 +17,12 @@
 <script lang="ts">
 import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
-import picker from '../picker/index.vue';
+import Picker from '../picker/index.vue';
 import { popupProps } from '../popup/index.vue';
 import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
 import { padZero } from './utils';
-const { componentName, create } = createComponent('datepicker');
-
-type Formatter = (type: string, option: PickerOption) => PickerOption;
-type Filter = (columnType: string, options: PickerOption[]) => PickerOption[];
+const { componentName, create, translate } = createComponent('datepicker');
 
 const currentYear = new Date().getFullYear();
 function isDate(val: Date): val is Date {
@@ -35,16 +32,16 @@ function isDate(val: Date): val is Date {
 const zhCNType: {
   [props: string]: string;
 } = {
-  day: '日',
-  year: '年',
-  month: '月',
-  hour: '时',
-  minute: '分',
-  seconds: '秒'
+  day: translate('day'),
+  year: translate('year'),
+  month: translate('month'),
+  hour: translate('hour'),
+  minute: translate('minute'),
+  seconds: translate('seconds')
 };
 export default create({
   components: {
-    [picker.name]: picker
+    [Picker.name]: Picker
   },
   props: {
     ...popupProps,
@@ -84,16 +81,16 @@ export default create({
       validator: isDate
     },
     formatter: {
-      type: Function as PropType<Formatter>,
+      type: Function as PropType<import('./type').Formatter>,
       default: null
     },
-    filter: Function as PropType<Filter>
+    filter: Function as PropType<import('./type').Filter>
   },
   emits: ['click', 'update:visible', 'change', 'confirm', 'update:moduleValue'],
 
   setup(props, { emit }) {
     const state = reactive({
-      show: false,
+      show: props.visible,
       currentDate: new Date(),
       title: props.title,
       selectedValue: []
@@ -112,7 +109,7 @@ export default create({
       return 32 - new Date(year, month - 1, 32).getDate();
     }
     const getBoundary = (type: string, value: Date) => {
-      const boundary = props[`${type}Date`];
+      const boundary = (props as any)[`${type}Date`];
       const year = boundary.getFullYear();
       let month = 1;
       let day = 1;
@@ -137,6 +134,15 @@ export default create({
             }
           }
         }
+      } else {
+        return {
+          [`${type}Year`]: year,
+          [`${type}Month`]: month,
+          [`${type}Day`]: day,
+          [`${type}Hour`]: hour,
+          [`${type}Minute`]: minute,
+          [`${type}Seconds`]: seconds
+        };
       }
 
       return {
@@ -202,7 +208,6 @@ export default create({
           break;
       }
 
-      console.log('result', result);
       return result;
     });
 
@@ -223,7 +228,6 @@ export default create({
       selectedValue: (string | number)[];
       selectedOptions: PickerOption[];
     }) => {
-      console.log('滚动', selectedValue);
       if (['date', 'datetime', 'datehour', 'month-day'].includes(props.type)) {
         let formatDate: (number | string)[] = [];
         selectedValue.forEach((item) => {
@@ -237,7 +241,6 @@ export default create({
         const month = Number(formatDate[1]) - 1;
         const day = Math.min(Number(formatDate[2]), getMonthEndDay(Number(formatDate[0]), Number(formatDate[1])));
         let date: Date | null = null;
-        console.log(year, month, day);
         if (props.type === 'date' || props.type === 'month-day') {
           date = new Date(year, month, day);
         } else if (props.type === 'datetime') {
@@ -246,8 +249,6 @@ export default create({
           date = new Date(year, month, day, Number(formatDate[3]));
         }
         state.currentDate = formatValue(date as Date);
-
-        console.log(state.currentDate);
       }
 
       emit('change', { columnIndex, selectedValue, selectedOptions });

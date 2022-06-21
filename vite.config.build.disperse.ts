@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import config from './package.json';
 import configPkg from './src/config.json';
+import { terser } from 'rollup-plugin-terser';
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
@@ -29,23 +30,23 @@ export default defineConfig({
     dts({
       insertTypesEntry: true,
       copyDtsFiles: false,
-      cleanVueFileName: true,
+      cleanVueFileName: false,
       outputDir: path.resolve(__dirname, './dist/types'),
       include: path.resolve(__dirname, './src/packages/__VUE'),
       beforeWriteFile: (filePath: string, content: string) => {
-        const fileContent = `import { App } from 'vue';
+        const fileContent = `import { App, PropType, CSSProperties } from 'vue';
 declare type Install<T> = T & {
   install(app: App): void;
 };
 `;
-        const start = 'declare const _default:';
-        const end = ';\nexport default _default;\n';
+        const start = 'declare const _sfc_main:';
+        const end = ';\nexport default _sfc_main;\n';
+        let name = Object.keys(input).find((item: string) => item.toLowerCase() === filePath.split('/').slice(-2)[0]);
+        name = name ? name.toLowerCase() : ' ';
         const remain = `
 declare module 'vue' {
   interface GlobalComponents {
-      Nut${Object.keys(input).find(
-        (item: string) => item.toLowerCase() === filePath.split('/').slice(-2)[0]
-      )}: typeof _default;
+      Nut${name[0].toUpperCase() + name.substr(1)}: typeof _sfc_main;
   }
 }     
       `;
@@ -60,12 +61,6 @@ declare module 'vue' {
   ],
   build: {
     minify: false,
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    },
     lib: {
       entry: '',
       name: 'index',
@@ -82,7 +77,15 @@ declare module 'vue' {
           '@/packages/locale': '../locale/lang'
         },
         dir: path.resolve(__dirname, './dist/packages/_es'),
-        entryFileNames: '[name].js'
+        entryFileNames: '[name].js',
+        plugins: [
+          terser({
+            compress: {
+              drop_console: true,
+              drop_debugger: true
+            }
+          })
+        ]
       }
     },
     emptyOutDir: false

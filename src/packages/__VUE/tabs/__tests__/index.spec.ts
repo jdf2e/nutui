@@ -23,7 +23,7 @@ test('base Tabs', () => {
 test('base tabs props', async () => {
   const wrapper = mount(Tabs, {
     props: {
-      'v-model': 0,
+      modelValue: '0',
       background: '#f5f5f5',
       color: '#f5f5f5',
       direction: 'horizontal',

@@ -66,18 +66,39 @@ class Lang extends BaseLang {
   sku = {
     buyNow: '立即购买',
     buyNumber: '购买数量',
-    addToCard: '加入购物车'
+    addToCart: '加入购物车'
   };
   skuheader = {
     skuId: '商品编号'
   };
   addresslist = {
-    addAddress: '新建地址'
+    addAddress: '新建地址',
+    default: '默认'
   };
   comment = {
     complaintsText: '我要投诉',
     additionalReview: (day: number) => `购买${day}天后追评`,
     additionalImages: (length: number) => `${length}张追评图片`
+  };
+  infiniteloading = {
+    loading: '加载中...',
+    pullTxt: '松开刷新',
+    loadMoreTxt: '哎呀，这里是底部了啦'
+  };
+  datepicker = {
+    year: '年',
+    month: '月',
+    day: '日',
+    hour: '时',
+    min: '分',
+    seconds: '秒'
+  };
+  audiooperate = {
+    back: '倒退',
+    start: '开始',
+    pause: '暂停',
+    forward: '快进',
+    mute: '静音'
   };
 }
 export default Lang;

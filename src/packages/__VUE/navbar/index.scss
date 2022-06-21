@@ -1,3 +1,12 @@
+.nut-theme-dark {
+  .nut-navbar {
+    background: $dark-background;
+    color: $dark-color;
+    .title {
+      color: $dark-color;
+    }
+  }
+}
 .nut-navbar {
   position: relative;
   display: flex;
@@ -14,10 +23,17 @@
   &:active::before {
     opacity: 0.1;
   }
+  &--border {
+    border-bottom: 1px solid #eee;
+  }
   &--fixed {
     position: fixed;
     top: 0;
     left: 0;
+    width: 100%;
+  }
+  &--placeholder {
+    display: inline-block;
     width: 100%;
   }
   &--safe-area-inset-top {
@@ -54,7 +70,7 @@
     display: flex;
     justify-content: center;
     .title {
-      width: $navbar-title-width;
+      min-width: $navbar-title-width;
       font-size: $navbar-title-font;
       font-weight: $navbar-title-font-weight;
       color: $navbar-title-font-color;

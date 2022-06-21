@@ -9,12 +9,14 @@
 ```js
 import { createApp } from 'vue';
 // vue
-import { Cascader } from '@nutui/nutui';
+import { Cascader, Tabs, TabPane } from '@nutui/nutui';
 // taro
-import { Cascader } from '@nutui/nutui-taro';
+import { Cascader, Tabs, TabPane } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Cascader);
+app.use(Cascader)
+.use(Tabs)
+.use(TabPane);
 ```
 
 ### 基础用法
@@ -429,6 +431,10 @@ export default {
 | text-key       | 自定义`options`结构中`text`的字段                     | String   | -      |
 | children-key   | 自定义`options`结构中`children`的字段                 | String   | -      |
 | convert-config | 当options为可转换为树形结构的扁平结构时，配置转换规则 | Object   | -      |
+| title `v3.1.21` | 标题 | String   | ''      |
+| close-icon-position `v3.1.21` | 取消按钮位置，继承 Popup 组件 | String   | "top-right"      |
+| close-icon `v3.1.21` | 自定义关闭按钮，继承 Popup 组件 | String   | "close"     |
+| closeable `v3.1.21` | 是否显示关闭按钮，继承 Popup 组件 | Boolean   | true     |
 
 ### Events
 

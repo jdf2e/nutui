@@ -2,7 +2,7 @@
   <scroll-view
     :class="classes"
     :scroll-y="true"
-    :style="{ height: screenHeight + 'px' }"
+    :style="{ height: containerHeight + 'px' }"
     scroll-top="0"
     @scroll="handleScrollEvent"
     ref="list"
@@ -31,21 +31,24 @@ export default create({
       default: () => {
         return [];
       }
+    },
+    containerHeight: {
+      type: [Number],
+      default: Taro.getSystemInfoSync().windowHeight || 667
     }
   },
-  emits: ['scroll'],
+  emits: ['scroll', 'scroll-bottom'],
 
   setup(props, { emit }) {
     const list = ref(null) as Ref;
     const state = reactive({
-      screenHeight: Taro.getSystemInfoSync().windowHeight,
       startOffset: 0,
       start: 0,
       list: props.listData.slice()
     });
 
     const visibleCount = computed(() => {
-      return Math.ceil(state.screenHeight / props.height);
+      return Math.ceil(props.containerHeight / props.height);
     });
 
     const end = computed(() => {
@@ -72,10 +75,11 @@ export default create({
     });
 
     const handleScrollEvent = async (e: any) => {
-      const scrollTop = e.detail.scrollTop;
+      const scrollTop = e.detail ? e.detail.scrollTop : e.target.scrollTop;
       state.start = Math.floor(scrollTop / props.height);
       if (end.value > state.list.length) {
         emit('scroll');
+        emit('scroll-bottom');
       }
       state.startOffset = scrollTop - (scrollTop % props.height);
     };

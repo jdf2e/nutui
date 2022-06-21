@@ -13,20 +13,21 @@ Picker 组件在 3.1.18 版本进行重构，调整了之前 API 设计不合理
 * 重新定义 `columns` 属性的数据格式，是由对象构成的一维或多维数组
 * 重新定义 `confirm`、`close`、`change` 事件的回调参数
 
-同时也对重构前的 Picker 组件进行了保留，如有需要可通过 [OldPicker 组件](https://nutui.jd.com/#/oldpicker) 进行查看。
+同时也对重构前的 Picker 组件进行了保留，如有需要可通过 [OldPicker 组件](https://nutui.jd.com/#/component/oldpicker) 进行查看。
 
 ### 安装
 
 ```javascript
 import { createApp } from 'vue';
 // vue
-import { Picker, Popup } from '@nutui/nutui';
+import { Picker, Popup, OverLay } from '@nutui/nutui';
 // taro
-import { Picker, Popup } from '@nutui/nutui-taro';
+import { Picker, Popup, OverLay } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(Picker);
 app.use(Popup);
+app.use(OverLay);
 ```
 
 ### 基础用法
@@ -127,6 +128,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
 <template>
   <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
     <nut-picker
+      v-model="selectedTime"
       v-model:visible="show"
       :columns="multipleColumns"
       title="城市选择"
@@ -140,6 +142,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
   export default {
     setup(props) {
       const show = ref(false);
+      const selectedTime = ref(['Wednesday','Afternoon']);
       const desc = ref('');
       const multipleColumns = ref([
         // 第一列
@@ -165,7 +168,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
         console.log(selectedValue);
       };
 
-      return {show,desc,columns,change, confirm};
+      return {show,desc,columns,change, confirm, selectedTime};
     }
   };
 </script>

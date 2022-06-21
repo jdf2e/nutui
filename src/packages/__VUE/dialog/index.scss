@@ -34,8 +34,6 @@
     width: 100%;
     justify-content: space-around;
 
-    &.horizontal {
-    }
     &.vertical {
       flex-direction: column;
 
@@ -53,6 +51,7 @@
 
     .nut-button {
       min-width: 100px;
+      overflow: hidden;
     }
 
     &-cancel {

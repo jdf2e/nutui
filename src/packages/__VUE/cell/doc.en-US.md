@@ -41,13 +41,26 @@ app.use(Cell).use(CellGroup).use(Icon);
 
 :::
 
+### Size setting large
+
+:::demo
+
+```html
+<template>
+  <nut-cell size="large" title="Title" desc="Description"></nut-cell>
+  <nut-cell size="large" title="Title" sub-title="Subtitle Description" desc="Desc"></nut-cell>
+</template>
+```
+
+:::
+
 ### Use Slots
 
 :::demo
 
 ```html
 <template>
-  <nut-cell title="Title" desc="Description">
+  <nut-cell>
     <div>Content</div>
   </nut-cell>
 </template>
@@ -55,6 +68,21 @@ app.use(Cell).use(CellGroup).use(Icon);
 
 :::
 
+### Use Slots title
+
+:::demo
+
+```html
+<template>
+  <nut-cell desc="Description">
+      <template v-slot:title>
+        <span>Title <b style="color: red">1</b></span>
+      </template>
+  </nut-cell>
+</template>
+```
+
+:::
 ### Link | CellGroup Usage
 
 :::demo
@@ -146,6 +174,20 @@ app.use(Cell).use(CellGroup).use(Icon);
 
 :::
 
+### Vertical Center
+
+You can center the left and right contents of the cell vertically through the 'center' attribute.
+
+:::demo
+
+```html
+<template>
+  <nut-cell center title="Title" sub-title="Subtitle Description" desc="Desc"></nut-cell>
+</template>
+```
+
+:::
+
 ## API
 
 ### CellGroup Prop
@@ -169,6 +211,8 @@ app.use(Cell).use(CellGroup).use(Icon);
 | url             | Link URL                                                                                                 | String           | -       |
 | to              | Target route of the link, same as to of vue-router                                                       | String ｜ Object | -       |
 | replace         | If true, the navigation will not leave a history record                                                  | Boolean          | false   |
+| center`v3.1.21` | Whether to center content vertically                                                                     | Boolean          | false   |
+| size`v3.1.22`   | Size, can be set to `large`                                                                              | String           | ''      |
 
 ### Cell Event
 
@@ -178,11 +222,12 @@ app.use(Cell).use(CellGroup).use(Icon);
 
 ## Cell Slots
 
-| Name          | Description        |
-|---------------|--------------------|
-| icon `v3.1.4` | Custom Left `icon` |
-| default       | Default slot       |
-| link          | Custom Right`link` |
+| Name            | Description        |
+|-----------------|--------------------|
+| icon `v3.1.4`   | Custom Left `icon` |
+| default         | Default slot       |
+| link            | Custom Right`link` |
+| title `v3.1.22` | Custom`title`slot  |
 
 ## CellGroup Slots
 

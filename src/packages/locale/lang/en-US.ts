@@ -66,18 +66,39 @@ class Lang extends BaseLang {
   sku = {
     buyNow: 'Buy Now',
     buyNumber: 'Buy Number',
-    addToCard: 'Add to Card'
+    addToCart: 'Add to Cart'
   };
   skuheader = {
     skuId: 'Sku Number'
   };
   addresslist = {
-    addAddress: 'Add New Address'
+    addAddress: 'Add New Address',
+    default: 'default'
   };
   comment = {
     complaintsText: 'I have a complaint',
     additionalReview: (day: number) => `Review after ${day} days of purchase`,
     additionalImages: (length: number) => `There are ${length} follow-up comments`
+  };
+  infiniteloading = {
+    loading: 'Loading...',
+    pullTxt: 'Loose to refresh',
+    loadMoreTxt: 'Oops, this is the bottom'
+  };
+  datepicker = {
+    year: 'Year',
+    month: 'Month',
+    day: 'Day',
+    hour: 'Hour',
+    min: 'Minute',
+    seconds: 'Second'
+  };
+  audiooperate = {
+    back: 'Back',
+    start: 'Start',
+    pause: 'Pause',
+    forward: 'Forward',
+    mute: 'Mute'
   };
 }
 export default Lang;

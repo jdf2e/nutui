@@ -1,25 +1,25 @@
 <template>
   <div class="demo">
-    <nut-cell-group title="基础用法">
-      <nut-cell is-Link @click="baseNotify('基础用法')">基础用法</nut-cell>
+    <nut-cell-group :title="translate('basic')">
+      <nut-cell is-Link @click="baseNotify(translate('basic'))">{{ translate('basic') }}</nut-cell>
     </nut-cell-group>
-    <nut-cell-group title="通知类型">
-      <nut-cell is-Link @click="primaryNotify('主要通知')">主要通知</nut-cell>
-      <nut-cell is-Link @click="successNotify('成功通知')">成功通知</nut-cell>
-      <nut-cell is-Link @click="errorNotify('危险通知')">危险通知</nut-cell>
-      <nut-cell is-Link @click="warningNotify('警告通知')">警告通知</nut-cell>
+    <nut-cell-group :title="translate('t1')">
+      <nut-cell is-Link @click="primaryNotify(translate('primaryNotify'))">{{ translate('primaryNotify') }}</nut-cell>
+      <nut-cell is-Link @click="successNotify(translate('successNotify'))">{{ translate('successNotify') }}</nut-cell>
+      <nut-cell is-Link @click="errorNotify(translate('errorNotify'))">{{ translate('errorNotify') }}</nut-cell>
+      <nut-cell is-Link @click="warningNotify(translate('warningNotify'))">{{ translate('warningNotify') }}</nut-cell>
     </nut-cell-group>
-    <nut-cell-group title="自定义样式">
-      <nut-cell is-Link @click="cusBgNotify('自定义背景色和字体颜色')"> 自定义背景色和字体颜色 </nut-cell>
+    <nut-cell-group :title="translate('t2')">
+      <nut-cell is-Link @click="cusBgNotify(translate('cusBgNotify'))"> {{ translate('cusBgNotify') }} </nut-cell>
     </nut-cell-group>
-    <nut-cell-group title="自定义时长">
-      <nut-cell is-Link @click="timeNotify('自定义时长')"> 自定义时长 </nut-cell>
-      <nut-cell is-Link @click="positionNotify('自定义位置')"> 自定义位置 </nut-cell>
+    <nut-cell-group :title="translate('t3')">
+      <nut-cell is-Link @click="timeNotify(translate('t3'))"> {{ translate('t3') }} </nut-cell>
+      <nut-cell is-Link @click="positionNotify(translate('cusPostion'))"> {{ translate('cusPostion') }} </nut-cell>
     </nut-cell-group>
-    <nut-cell-group title="组件调用">
-      <nut-cell is-Link @click="showNotify">组件调用</nut-cell>
+    <nut-cell-group :title="translate('useTemplate')">
+      <nut-cell is-Link @click="showNotify">{{ translate('useTemplate') }}</nut-cell>
       <nut-notify v-model:visible="show">
-        <span>通知内容</span>
+        <span>Content</span>
       </nut-notify>
     </nut-cell-group>
   </div>
@@ -29,7 +29,36 @@
 import { createComponent } from '@/packages/utils/create';
 import { Notify } from '../../nutui.vue';
 import { ref } from 'vue';
-const { createDemo } = createComponent('notify');
+const { createDemo, translate } = createComponent('notify');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    t1: '通知类型',
+    t2: '自定义样式',
+    t3: '自定义时长',
+    cusPostion: '自定义位置',
+    useTemplate: '组件调用',
+    primaryNotify: '主要通知',
+    successNotify: '成功通知',
+    errorNotify: '危险通知',
+    warningNotify: '警告通知',
+    cusBgNotify: '自定义背景色和字体颜色'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    t1: 'Notify Type',
+    t2: 'Custom Style',
+    t3: 'Custom Duration',
+    cusPostion: 'Custom Postion',
+    useTemplate: 'Template use',
+    primaryNotify: 'Primary Notify',
+    successNotify: 'Success Notify',
+    errorNotify: 'Error Notify',
+    warningNotify: 'Warning Notify',
+    cusBgNotify: 'Customize background and font colors'
+  }
+});
 export default createDemo({
   setup() {
     const baseNotify = (msg: string) => {
@@ -43,7 +72,7 @@ export default createDemo({
       });
     };
     const primaryNotify = (msg: string) => {
-      Notify.primary(msg, { duration: 10000 });
+      Notify.primary(msg, { duration: 1000 });
     };
     const successNotify = (msg: string) => {
       Notify.success(msg);
@@ -80,7 +109,8 @@ export default createDemo({
       timeNotify,
       positionNotify,
       show,
-      showNotify
+      showNotify,
+      translate
     };
   }
 });

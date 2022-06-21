@@ -362,16 +362,31 @@ setup(){
 
 使用 FormItem 的`rules`属性可以定义校验规则，可选属性如下:
 
-| 键名      | 说明                   | 类型                                          |
-|-----------|------------------------|-----------------------------------------------|
-| required  | 是否为必选字段         | boolean                                       |
-| message   | 错误提示文案           | string                                        |
-| validator | 通过函数进行校验       | (value, rule) => boolean \| string \| Promise |
-| regex     | 通过正则表达式进行校验 | RegExp                                        |
+| 键名      | 说明                   | 类型                                    |
+|-----------|------------------------|-----------------------------------------|
+| required  | 是否为必选字段         | boolean                                 |
+| message   | 错误提示文案           | string                                  |
+| validator | 通过函数进行校验       | (value) => boolean \| string \| Promise |
+| regex     | 通过正则表达式进行校验 | RegExp                                  |
+
+## FormItem Slots
+
+| 名称            | 说明              |
+|-----------------|-------------------|
+| default         | 自定义内容        |
+| label `v3.1.22` | 自定义`label`区域 |
+
+
+``` html
+  插槽使用方式
+  <nut-form-item>
+    <template v-slot:label>slot label</template>
+  </nut-form-item>
+```
 
 ### Methods
 
-通过 [ref](https://v3.cn.vuejs.org/api/special-attributes.html#ref) 可以获取到 Form 实例并调用实例方法
+通过 [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) 可以获取到 Form 实例并调用实例方法
 
 | 方法名            | 说明                                                               | 参数                | 返回值  |
 |-------------------|--------------------------------------------------------------------|---------------------|---------|

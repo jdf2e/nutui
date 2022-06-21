@@ -9,12 +9,14 @@
 ```javascript
 import { createApp } from 'vue';
 // vue
-import { DatePicker, Picker } from '@nutui/nutui';
+import { DatePicker, Picker, Popup } from '@nutui/nutui';
 // taro
-import { DatePicker, Picker } from '@nutui/nutui-taro';
+import { DatePicker, Picker, Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
 app.use(DatePicker);
+app.use(Picker);
+app.use(Popup);
 ```
     
 ## 代码演示
@@ -40,6 +42,8 @@ app.use(DatePicker);
     setup(props) {
       const show = ref(false);
       const desc = ref('2022年05月10日');
+      const minDate = new Date(2020, 0, 1),
+      const maxDate = new Date(2025, 10, 1),
       const currentDate = new Date(2022, 4, 10, 10, 10);
       const confirm = ({ selectedValue, selectedOptions })=>{
         desc.value = selectedOptions.map((option) => option.text).join('');
@@ -48,6 +52,8 @@ app.use(DatePicker);
         currentDate,
         show,
         desc,
+        minDate,
+        maxDate,
         confirm
       };
     }
@@ -375,8 +381,8 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 | is-show-chinese | 每列是否展示中文                                  | Boolean | `false`  |
 | min-date        | 开始日期                                          | Date    | `十年前` |
 | max-date        | 结束日期                                          | Date    | `十年后` |
-| formatter       | 选项格式化函数                                          | (type: string, option: PickerOption) => PickerOption    |  |
-| filter        | 选项过滤函数                                          | (type: string, option: PickerOption) => PickerOption[]    |  |
+| formatter `v3.1.18`  | 选项格式化函数                                          | (type: string, option: PickerOption) => PickerOption    |  |
+| filter  `v3.1.18`  | 选项过滤函数                                          | (type: string, option: PickerOption) => PickerOption[]    |  |
 | title           | 设置标题                                          | String  | `null`   |
 | ok-text           | 确定按钮文案                                          | String  | 确定   |
 | cancel-text           | 取消按钮文案                                          | String  | 取消   |

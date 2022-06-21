@@ -88,43 +88,6 @@ import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
 
 const { componentName, create, translate } = createComponent('input');
-interface Events {
-  eventName: 'focus' | 'blur' | 'clear' | 'change' | 'update:modelValue';
-  params: (string | number | Event)[];
-}
-export type InputAlignType = 'left' | 'center' | 'right'; // text-align
-export type InputFormatTrigger = 'onChange' | 'onBlur'; // onChange: 在输入时执行格式化 ; onBlur: 在失焦时执行格式化
-export type InputType =
-  | 'tel'
-  | 'url'
-  | 'date'
-  | 'file'
-  | 'text'
-  | 'time'
-  | 'week'
-  | 'color'
-  | 'digit'
-  | 'email'
-  | 'image'
-  | 'month'
-  | 'radio'
-  | 'range'
-  | 'reset'
-  | 'button'
-  | 'hidden'
-  | 'number'
-  | 'search'
-  | 'submit'
-  | 'checkbox'
-  | 'password'
-  | 'textarea'
-  | 'datetime-local';
-
-export type InputRule = {
-  pattern?: RegExp;
-  message?: string;
-  required?: boolean;
-};
 
 export default create({
   props: {
@@ -133,7 +96,7 @@ export default create({
       default: ''
     },
     type: {
-      type: String as PropType<InputType>,
+      type: String as PropType<import('./type').InputType>,
       default: 'text'
     },
     modelValue: {
@@ -157,7 +120,7 @@ export default create({
       default: '80'
     },
     labelAlign: {
-      type: String as PropType<InputAlignType>,
+      type: String as PropType<import('./type').InputAlignType>,
       default: 'left'
     },
     colon: {
@@ -225,7 +188,7 @@ export default create({
       default: true
     },
     formatTrigger: {
-      type: String as PropType<InputFormatTrigger>,
+      type: String as PropType<import('./type').InputFormatTrigger>,
       default: 'onChange'
     },
     formatter: {
@@ -233,7 +196,7 @@ export default create({
       default: null
     },
     rules: {
-      type: Array as PropType<InputRule>,
+      type: Array as PropType<import('./type').InputRule>,
       default: []
     },
     errorMessage: {
@@ -241,7 +204,7 @@ export default create({
       default: ''
     },
     errorMessageAlign: {
-      type: String as PropType<InputAlignType>,
+      type: String as PropType<import('./type').InputAlignType>,
       default: ''
     },
     rows: {
@@ -328,14 +291,16 @@ export default create({
     const onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;
       let value = input.value;
-
+      if (props.maxLength && value.length > Number(props.maxLength)) {
+        value = value.slice(0, Number(props.maxLength));
+      }
       updateValue(value);
     };
 
     const blur = () => inputRef.value?.blur();
     const focus = () => inputRef.value?.focus();
 
-    const updateValue = (value: string, trigger: InputFormatTrigger = 'onChange') => {
+    const updateValue = (value: string, trigger: import('./type').InputFormatTrigger = 'onChange') => {
       if (props.type === 'digit') {
         value = formatNumber(value, false, false);
       }

@@ -5,7 +5,7 @@
   }
 
   &__cateListLeft {
-    background: $cateListLeft-bg-color;
+    background: $category-ListLeft-bg-color;
   }
 
   &__cateListItemChecked,
@@ -15,14 +15,14 @@
     font-size: 13px;
     font-family: PingFangSC;
     font-weight: normal;
-    color: $cateListItem-color;
+    color: $category-ListItem-color;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s;
   }
   &__cateListItemChecked {
-    background: $cateListItemChecked-color;
+    background: $category-ListItemChecked-color;
     font-weight: 500;
     transition: all 0.3s;
     position: relative;
@@ -32,7 +32,7 @@
       left: 0;
       width: 5px;
       height: 18px;
-      background: $cateListItemChecked-img-bg-color;
+      background: $category-ListItemChecked-img-bg-color;
     }
   }
 }

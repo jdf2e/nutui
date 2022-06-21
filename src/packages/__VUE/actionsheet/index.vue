@@ -8,7 +8,7 @@
       round
       @click-overlay="close"
     >
-      <view class="nut-actionsheet-panel" :class="{ 'nut-actionsheet-safebottom': safeAreaInsetBottom }">
+      <view class="nut-actionsheet-panel">
         <view v-if="title" class="nut-actionsheet-title">{{ title }}</view>
         <slot></slot>
         <view v-if="!slotDefault">
@@ -78,10 +78,6 @@ export default create({
     isWrapTeleport: {
       type: Boolean,
       default: true
-    },
-    safeAreaInsetBottom: {
-      type: Boolean,
-      default: false
     }
   },
   emits: ['cancel', 'close', 'choose', 'update:visible'],

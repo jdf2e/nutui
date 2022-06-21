@@ -5,13 +5,15 @@
     round
     :visible="visible"
     :style="popStyle"
+    :lock-scroll="lockScroll"
     @click-overlay="close"
     @click-close-icon="close"
   >
     <view :class="classes">
       <view class="nut-timeselect__title">
         <view class="nut-timeselect__title__fixed">
-          {{ title || translate('pickupTime') }}
+          <span v-if="!$slots.title">{{ title || translate('pickupTime') }}</span>
+          <slot name="title" v-else></slot>
         </view>
       </view>
       <view class="nut-timeselect__content">
@@ -54,6 +56,10 @@ export default create({
       }
     },
     muti: {
+      type: [Boolean],
+      default: false
+    },
+    lockScroll: {
       type: [Boolean],
       default: false
     }

@@ -18,8 +18,6 @@ const app = createApp();
 app.use(OverLay);
 ```
 
-## 代码演示
-
 ### 基础用法
 
 :::demo
@@ -47,6 +45,8 @@ app.use(OverLay);
 :::
 
 ### 遮罩样式
+
+可以通过 `overlay-style` 进行设置
 
 :::demo
 
@@ -134,7 +134,7 @@ app.use(OverLay);
 | duration               | 动画时长，单位秒 | String, Number | `0.3`    |
 | overlay-class          | 自定义遮罩类名   | String         | -      |
 | overlay-style          | 自定义遮罩样式   | CSSProperties  | -      |
-| lock-scroll            | 背景是否锁定(`小程序不支持`)     | Boolean        | `false`  |
+| lock-scroll            | 背景是否锁定(`小程序不支持`)     | Boolean        | `true`  |
 | close-on-click-overlay | 是否点击遮罩关闭 | Boolean        | `true`   |
 
 ### Events

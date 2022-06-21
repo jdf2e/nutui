@@ -1,12 +1,17 @@
 import Dialog from './index.vue';
-import { render, createVNode, h } from 'vue';
+import { render, createVNode, h, VNode, CSSProperties } from 'vue';
 export class DialogOptions {
   title?: string = '';
-  content?: string = '';
+  content?: string | VNode = '';
   cancelText?: string = '';
   okText?: string = '';
   textAlign?: string = 'center';
-  teleport?: String | HTMLElement = 'body';
+  customClass?: string = '';
+  overlayStyle?: CSSProperties = {};
+  overlayClass?: string = '';
+  popStyle?: CSSProperties = {};
+  popClass?: string = '';
+  teleport?: string | HTMLElement = 'body';
   id?: string | number = new Date().getTime();
   footerDirection?: string = 'horizontal'; //使用横纵方向 可选值 horizontal、vertical
 
@@ -14,8 +19,9 @@ export class DialogOptions {
   onUpdate?: Function = (value: boolean) => {};
   onOk?: Function = () => {};
   onCancel?: Function = () => {};
-  onClose?: Function = () => {};
+  onOpened?: Function = () => {};
   onClosed?: Function = () => {};
+  beforeClose?: Function;
 
   visible?: boolean = true;
   noFooter?: boolean = false;
@@ -28,7 +34,7 @@ export class DialogOptions {
 
 class DialogFunction {
   options: DialogOptions = new DialogOptions();
-
+  instance: any;
   constructor(_options: DialogOptions) {
     let options = Object.assign(this.options, _options);
     let elWarp: HTMLElement = document.body;
@@ -49,20 +55,23 @@ class DialogFunction {
             elWarp.removeChild(root);
           }
         };
+        if (options?.onOpened) {
+          options?.onOpened();
+        }
         options.teleport = `#${root.id}`;
         return () => {
           return h(Dialog, options);
         };
       }
     };
-    const instance: any = createVNode(Wrapper);
+    this.instance = createVNode(Wrapper);
     elWarp.appendChild(root);
-    render(instance, root);
+    render(this.instance, root);
   }
 
   close = () => {
-    // if (instance) {
-    //   instance.component.ctx.close();
+    // if (this.instance) {
+    //   this.instance.component.ctx.close();
     // }
   };
 

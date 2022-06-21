@@ -1,41 +1,65 @@
 <template>
   <div class="demo full">
-    <h2>基础用法</h2>
+    <h2>{{ translate('basic') }}</h2>
     <div class="demo__piece">
       <nut-circleprogress :progress="20"> </nut-circleprogress>
     </div>
-    <h2>环形进度条自定义宽度</h2>
+    <h2>{{ translate('customWidth') }}</h2>
     <div class="demo__piece">
       <nut-circleprogress :progress="50" strokeWidth="10"> </nut-circleprogress>
     </div>
 
-    <h2>环形进度条自定义颜色(支持渐变色)</h2>
+    <h2>{{ translate('Gradient') }}</h2>
     <div class="demo__piece">
       <nut-circleprogress :progress="50" color="red" />
       <nut-circleprogress :progress="100" :color="gradientColor" />
     </div>
-    <h2>环形进度条自定义大小</h2>
+    <h2>{{ translate('customSize') }}</h2>
     <div class="demo__piece">
       <nut-circleprogress :progress="50" radius="60"></nut-circleprogress>
     </div>
-    <h2>环形进度条自定义内容</h2>
+    <h2>{{ translate('customContent') }}</h2>
     <div class="demo__piece">
-      <nut-circleprogress :progress="50" radius="60">自定义</nut-circleprogress>
+      <nut-circleprogress :progress="50" radius="60">{{ translate('custom') }}</nut-circleprogress>
     </div>
-    <h2>动态改变环形进度条的进度</h2>
+    <h2>{{ translate('dynamicChange') }}</h2>
     <div class="demo__piece">
       <nut-circleprogress :progress="percent"> </nut-circleprogress>
     </div>
     <div class="demo__btn">
-      <nut-button type="primary" @click="setReduceVal">减少</nut-button>
-      <nut-button type="primary" @click="setAddVal">增加</nut-button>
+      <nut-button type="primary" @click="setReduceVal">{{ translate('reduce') }}</nut-button>
+      <nut-button type="primary" @click="setAddVal">{{ translate('add') }}</nut-button>
     </div>
   </div>
 </template>
 <script lang="ts">
 import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('circleprogress');
+const { createDemo, translate } = createComponent('circleprogress');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    customWidth: '自定义宽度',
+    Gradient: '渐变色',
+    customSize: '自定义尺寸',
+    customContent: '自定义内容',
+    custom: '自定义',
+    dynamicChange: '动态改变',
+    reduce: '减少',
+    add: '增加'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    customWidth: 'Custom Width',
+    Gradient: 'Gradient',
+    custom: 'custom',
+    customContent: 'Custom Content',
+    dynamicChange: 'Dynamic Change',
+    reduce: 'reduce',
+    add: 'add'
+  }
+});
 export default createDemo({
   setup() {
     const gradientColor = {
@@ -60,7 +84,8 @@ export default createDemo({
       setAddVal,
       setReduceVal,
       percent,
-      gradientColor
+      gradientColor,
+      translate
     };
   }
 });

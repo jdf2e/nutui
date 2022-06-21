@@ -28,6 +28,11 @@
         "show": true
       },
       {
+        "name": "ide",
+        "cName": "开发工具支持",
+        "show": true
+      },
+      {
         "name": "resource",
         "cName": "资源",
         "show": true
@@ -122,6 +127,28 @@
           "show": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "ConfigProvider",
+          "cType": "基础组件",
+          "cName": "全局配置",
+          "desc": "用于配置NutUI组件全局",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Image",
+          "cType": "基础组件",
+          "cName": "图片",
+          "desc": "图片展示",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "yangxiaolu"
         }
       ]
     },
@@ -407,7 +434,7 @@
         {
           "name": "Cascader",
           "type": "component",
-          "cName": "级联选择",
+          "cName": "级联选择器",
           "desc": "级联选择，用于多层级数据的选择，典型场景为省市区选择.",
           "sort": 23,
           "show": true,
@@ -1027,6 +1054,17 @@
           "sort": 9,
           "show": true,
           "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Ellipsis",
+          "cType": "展示组件",
+          "cName": "文本省略",
+          "desc": "文本省略",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "yangxiaolu3"
         }
       ]
     },
@@ -1166,7 +1204,8 @@
           "exportEmpty": true,
           "author": "liqiong43",
           "taro": true
-        },{
+        },
+        {
           "name": "Comment",
           "cType": "特色组件",
           "cName": "商品评论",

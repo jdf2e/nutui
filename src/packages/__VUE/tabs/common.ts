@@ -1,5 +1,5 @@
 import { pxCheck } from '@/packages/utils/pxCheck';
-import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch, PropType } from 'vue';
+import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch } from 'vue';
 export class Title {
   title: string = '';
   titleSlot?: VNode[];
@@ -23,7 +23,7 @@ export const component = {
       default: 'horizontal' //vertical
     },
     size: {
-      type: String as PropType<TabsSize>,
+      type: String as import('vue').PropType<TabsSize>,
       default: 'normal'
     },
     type: {
@@ -37,6 +37,10 @@ export const component = {
     ellipsis: {
       type: Boolean,
       default: true
+    },
+    autoHeight: {
+      type: Boolean,
+      default: false
     },
     background: {
       type: String,
@@ -57,6 +61,7 @@ export const component = {
 
   setup(props: any, { emit, slots }: any) {
     provide('activeKey', { activeKey: computed(() => props.modelValue) });
+    provide('autoHeight', { autoHeight: computed(() => props.autoHeight) });
     const titles: Ref<Title[]> = ref([]);
 
     const renderTitles = (vnodes: VNode[]) => {
@@ -65,9 +70,9 @@ export const component = {
         type = (type as any).name || type;
         if (type == 'nut-tabpane') {
           let title = new Title();
-          if (vnode.props?.title || vnode.props?.['pane-key']) {
+          if (vnode.props?.title || vnode.props?.['pane-key'] || vnode.props?.['paneKey']) {
             title.title = vnode.props?.title;
-            title.paneKey = vnode.props?.['pane-key'] || index;
+            title.paneKey = vnode.props?.['pane-key'] || vnode.props?.['paneKey'] || index;
             title.disabled = vnode.props?.disabled;
           } else {
             // title.titleSlot = vnode.children?.title() as VNode[];
@@ -82,7 +87,9 @@ export const component = {
     const currentIndex = ref((props.modelValue as number) || 0);
     const findTabsIndex = (value: string | number) => {
       let index = titles.value.findIndex((item) => item.paneKey == value);
-      if (index == -1) {
+      if (titles.value.length == 0) {
+        console.error('[NutUI] <Tabs> 当前未找到 TabPane 组件元素 , 请检查 .');
+      } else if (index == -1) {
         console.error('[NutUI] <Tabs> 请检查 v-model 值是否为 paneKey ,如 paneKey 未设置，请采用下标控制 .');
       } else {
         currentIndex.value = index;

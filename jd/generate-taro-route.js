@@ -28,20 +28,24 @@ const createConfig = async () => {
 };
 
 const create = async () => {
-  const configTemplate = {
-    pages: ['pages/index/index'],
-    subpackages: '',
-    window: {
-      backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'NutUI',
-      navigationBarTextStyle: 'black'
-    }
-  };
+  const subpackages = await createConfig();
 
-  configTemplate.subpackages = await createConfig();
-
-  fse.writeFileSync(taroConfig, `export default ${JSON.stringify(configTemplate)}`, 'utf8');
+  fse.writeFileSync(
+    taroConfig,
+    `
+const subPackages = ${JSON.stringify(subpackages, null, 2)};\n
+export default {
+  pages: ['pages/index/index'],
+  subPackages,
+  window: {
+    backgroundTextStyle: 'light',
+    navigationBarBackgroundColor: '#fff',
+    navigationBarTitleText: 'NutUI',
+    navigationBarTextStyle: 'black'
+  }
+}`,
+    'utf8'
+  );
 };
 
 create();

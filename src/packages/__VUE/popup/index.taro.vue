@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view :catch-move="lockScroll">
     <nut-overlay
       v-if="overlay"
       :visible="visible"
@@ -13,7 +13,7 @@
     />
     <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
       <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
-        <div v-show="showSlot"><slot></slot></div>
+        <div class="nutui-popup__content-wrapper" v-show="showSlot"><slot></slot></div>
         <view
           v-if="closed"
           @click="onClickCloseIcon"
@@ -89,6 +89,10 @@ export const popupProps = {
   round: {
     type: Boolean,
     default: false
+  },
+  safeAreaInsetBottom: {
+    type: Boolean,
+    default: false
   }
 };
 export default create({
@@ -117,6 +121,7 @@ export default create({
         [prefixCls]: true,
         ['round']: props.round,
         [`popup-${props.position}`]: true,
+        [`popup-${props.position}--safebottom`]: props.position === 'bottom' && props.safeAreaInsetBottom,
         [props.popClass]: true
       };
     });

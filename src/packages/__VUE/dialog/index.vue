@@ -4,6 +4,10 @@
     v-model:visible="showPopup"
     :close-on-click-overlay="closeOnClickOverlay"
     :lock-scroll="lockScroll"
+    :pop-class="popClass"
+    :style="popStyle"
+    :overlay-class="overlayClass"
+    :overlay-style="overlayStyle"
     round
     @click-overlay="closed"
     @click-close-icon="closed"
@@ -16,7 +20,8 @@
 
       <view class="nut-dialog__content" :style="{ textAlign }">
         <slot v-if="$slots.default" name="default"></slot>
-        <view v-else v-html="content"></view>
+        <view v-else-if="typeof content === 'string'" v-html="content"></view>
+        <component v-else :is="content" />
       </view>
 
       <view class="nut-dialog__footer" :class="{ [footerDirection]: footerDirection }" v-if="!noFooter">
@@ -41,11 +46,12 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, ref } from 'vue';
+import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('dialog');
 import Popup, { popupProps } from '../popup/index.vue';
 import Button from '../button/index.vue';
+import { isPromise } from '@/packages/utils/util';
 export default create({
   inheritAttrs: false,
   components: {
@@ -63,7 +69,7 @@ export default create({
       default: ''
     },
     content: {
-      type: String,
+      type: [String, Object] as PropType<string>,
       default: ''
     },
     noFooter: {
@@ -101,15 +107,25 @@ export default create({
     footerDirection: {
       type: String,
       default: 'horizontal' //vertical
+    },
+    customClass: {
+      type: String,
+      default: ''
+    },
+    popStyle: {
+      type: Object as PropType<CSSProperties>
+    },
+    beforeClose: {
+      type: Function
     }
   },
-  emits: ['update', 'update:visible', 'ok', 'cancel', 'open', 'opened', 'close', 'closed'],
+  emits: ['update', 'update:visible', 'ok', 'cancel', 'opened', 'closed'],
   setup(props, { emit }) {
     const showPopup = ref(props.visible);
     onMounted(() => {
       if (props.closeOnPopstate) {
         window.addEventListener('popstate', function () {
-          closed();
+          closed('page');
         });
       }
     });
@@ -118,12 +134,16 @@ export default create({
       () => props.visible,
       (value) => {
         showPopup.value = value;
+        if (value) {
+          emit('opened');
+        }
       }
     );
 
     const classes = computed(() => {
       return {
-        [componentName]: true
+        [componentName]: true,
+        [props.customClass]: true
       };
     });
 
@@ -132,21 +152,35 @@ export default create({
       emit('update:visible', val);
     };
 
-    const closed = () => {
-      update(false);
-      emit('closed');
+    const closed = (action: string) => {
+      if (props.beforeClose) {
+        const result = props.beforeClose(action);
+        if (isPromise(result)) {
+          result.then((bool) => {
+            if (bool) {
+              update(false);
+              emit('closed');
+            } else {
+              // 用户阻止删除
+            }
+          });
+        }
+      } else {
+        update(false);
+        emit('closed');
+      }
     };
 
     const onCancel = () => {
       emit('cancel');
       if (props.cancelAutoClose) {
-        closed();
+        closed('cancel');
       }
     };
 
     const onOk = () => {
       emit('ok');
-      closed();
+      closed('ok');
     };
 
     return {

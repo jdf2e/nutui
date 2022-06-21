@@ -1,0 +1,56 @@
+{
+	"name": "nutui-vscode-extension",
+	"private": true,
+	"displayName": "nutui-vscode-extension",
+	"description": "nutui extension for vscode",
+	"version": "0.0.1",
+	"icon": "src/nutui.png",
+	"engines": {
+		"vscode": "^1.66.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jdf2e/nutui.git",
+    "directory": "src/packages/vscode-extension"
+	},
+	"categories": [
+		"Other"
+	],
+	"publisher": "nutui",
+	"activationEvents": [
+		"onLanguage:vue",
+		"onLanguage:javascript",
+		"onLanguage:typescript"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": []
+	},
+	"scripts": {
+		"build": "webpack --mode production --devtool hidden-source-map",
+		"package": "yarn gen && yarn build && vsce package",
+		"publish": "vsce publish",
+		"unpublish": "vsce unpublish nutui.nutui-vscode-extension",
+		"gen": "node ./scripts/createComponentMap.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"@types/vscode": "^1.65.0",
+		"@typescript-eslint/eslint-plugin": "^5.9.1",
+		"@typescript-eslint/parser": "^5.9.1",
+		"@vscode/test-electron": "^2.0.3",
+		"eslint": "^8.6.0",
+		"glob": "^7.2.0",
+		"markdown-it": "^12.3.2",
+		"mocha": "^9.1.3",
+		"ts-loader": "^9.2.6",
+		"typescript": "^4.5.4",
+		"webpack": "^5.66.0",
+		"webpack-cli": "^4.9.1"
+	},
+	"dependencies": {
+		"vsce": "^2.7.0"
+	}
+}

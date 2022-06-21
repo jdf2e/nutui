@@ -1,3 +1,109 @@
+## v3.1.21
+
+`2022-05-30`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @allan2coder @programmerlgs @websongning @Tnon @xcc1995 @mikasayw @@youngjuning @yangjisen
+
+* :zap: feat: 组件文档和demo支持国际化 
+* :zap: feat: 京东B商城主题样式 (#1298) @programmerlgs @richard1015
+* :zap: feat: 官网顶部结构修改 (#1307) @ailululu
+* :zap: feat: add lang bahasa Indonesia (#1309) @websongning
+* :zap: feat: 优化ts类名声明，支持函数式 @szg2008
+* :zap: feat: 优化add命令，支持国际化 @szg2008
+* :zap: feat: popover功能补全 (#1306) @yangxiaolu1993
+* :zap: feat(dialog): content support CunstomComponent and VNode  @Tnon
+* :zap: feat(input): 新增adjust-position原生属性 (#1255) @mikasayw
+* :zap: feat(dialog): 增加自定义 class / style 功能 #1289 (#1312)  @allan2coder
+* :zap: feat: navbar能力补齐,官网顶部获取组件名称 (#1320)  @ailululu
+* :zap: feat: searchbar 组件能力补充(增加label，点击事件等) @Ymm0008
+* :zap: feat(overlay): 增加修改遮罩样式的说明 @szg2008
+* :zap: feat: variables add $required-color #1267 @richard1015
+* :zap: feat(dialog): add overlay-class、overlay-style #1289 @richard1015
+* :zap: feat(swiper): add async&api demo @szg2008
+* :zap: feat(cell): add props center @richard1015
+* :zap: feat: input、searchBar组件添加confirm-type属性 (#1258) @mikasayw
+* :zap: feat(tabs): add autoHeight #1066 @richard1015
+* :bug: fix(backtop): 修复demo页面按钮被遮挡样式问题 (#1293) @allan2coder
+* :bug: fix: 修复navbar和tabbar组件文档格式问题&tabbar demo ts 声明问题 (#1297) @allan2coder
+* :bug: fix(numberkeyboard): 增加身份证展示和demo @Drjingfubo
+* :bug: fix: demo vue function error @richard1015
+* :bug: fix(circleprogress): 修复taro h5环境下不展示圆环问题 @Drjingfubo
+* :bug: fix(progress): type modification @Drjingfubo
+* :bug: fix(tabbar): solve (to href) priority issues(#1302) @allan2coder
+* :bug: fix: cdn sass edit @richard1015
+* :bug: fix(card): footer 插槽内容 与 shopName 内容水平对齐 (#1251) @xcc1995
+* :bug: fix(popup): taro版本，自定义内容无法获取100%高度问题修复 (#1308) @lkjh3214
+* :bug: fix: Add repository.directoru (#1280) @youngjuning
+* :bug: fix(backtop): modify taro docs for backtop(#1019) @szg2008
+* :bug: fix(timeselect): 第一次渲染样式问题以及样式不全问题修复(#1257 #1253) @szg2008
+* :bug: fix(sticky): 在小程序中报错修复(#1265) @szg2008
+* :bug: fix(form): vnode async children bug #1317 @richard1015
+* :bug: fix(swiper): dynamic rendering error (#1155 #1249) @szg2008
+* :bug: fix(swiper): test modify error @szg2008
+* :bug: fix: jdt theme edit @richard1015
+* :bug: fix: taro build error @szg2008
+* :bug: fix(formitem): input add font color #1272 @richard1015
+* :bug: fix(tabs): type is vertical ellipsis bug @richard1015
+* :bug: fix(elevator): taro click title error(#1281) @szg2008
+* :bug: fix(elevator): click highLight error(#1151) @szg2008
+* :bug: fix(list): taro e.detail error(#1171 #1284) @szg2008
+* :bug: fix: import NutUI ts error @szg2008
+* :bug: fix(tabbar): docs add dot props (#1335) #1292 @Drjingfubo
+* :bug: fix(addresslist): 优化地址列表数据变更重新渲染 (#1270) @yangjisen
+* :bug: fix(popup): 在Taro中遮罩层滑动问题解决 (#1338)  @yangxiaolu1993
+* :bug: fix(tabbar): revise safebottom scss (#1339) @Drjingfubo
+
+
+## v3.1.19
+
+`2022-04-25` 此版本依赖 Taro 3.4.x
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @Sun79 @SpringHgui @rocwong-cn @wlchn @Tnon
+
+* :zap: feat: [所有组件国际化支持](https://nutui.jd.com/#/international) @richard1015
+* :zap: feat: tsx 类型支持、[vscode 插件支持](https://marketplace.visualstudio.com/items?itemName=nutui.nutui-vscode-extension) @szg2008
+* :zap: feat: 新增 Comment、Ecard 特色组件 @yangxiaolu1993
+* :zap: feat: 新增 Category、AddressList 特色组件 @ailululu
+* :zap: feat: 根据config.json自动生成taroConfig.ts (#1181)  @yangxiaolu1993
+* :zap: feat: 单选框和复选框支持外部自定义图标 (#1182) @rocwong-cn
+* :zap: feat(numberkeyboard): add custom btn desc (#1176) @SpringHgui
+* :zap: feat(tabbar): tabbar-item add slot (#1173) @Drjingfubo
+* :zap: feat(actionsheet): add new props (#1194) @Drjingfubo
+* :zap: feat(progress): add custom slot (#1196) @Drjingfubo
+* :zap: refactor(circleprogress): add features (#1204) @Drjingfubo
+* :zap: refactor(CountDown): 新增重置、毫秒级展示、自定义格式等功能 @yangxiaolu1993
+* :zap: feat: avatar能力补齐、input doc文档更新 (#1195) @ailululu
+* :zap: feat: build internationalization config @richard1015
+* :zap: feat: Picker与DatePIcker新增插槽 (#1213) @yangxiaolu1993
+* :zap: feat(notify): 增加组件模板调用方式 (#1220) @Ymm0008
+* :zap: feat: 新增collapse组件自定义内容（不折叠）功能 @Ymm0008
+* :zap: feat(list): 虚拟列表增加列表高度可配置(#1199) @szg2008
+* :zap: feat(card): add new props #1198 (#1237) @Drjingfubo
+* :zap: feat(Cascader): 功能补齐 (#1238)  @yangxiaolu1993
+* :zap: feat(popup): 增加底部iphonex适配(#1009) @szg2008
+* :zap: feat(table): tableData customrender by Columns.render (#1234) @Tnon
+* :bug: fix(Cascader): 传入tree 数据 末级数据有重复时 父路径查询错误 #1233 @dongj0316
+* :bug: fix(datePicker): 组件平铺展示不展示问题修改 (#1229) @yangxiaolu1993
+* :bug: fix(elevator): navbar not working in taro h5 (#1175) @Sun79
+* :bug: fix(input): taro的问题+增加demo的三个icon功能 (#1223) @ailululu
+* :bug: fix(uploader): event success、failure add responseText #1212 @richard1015
+* :bug: fix(tabs): init tabs__content index calc error @richard1015
+* :bug: fix(imagepreview): 单元测试调整 (#1163) @JackieScorpio
+* :bug: fix(popup): 修复popup在Taro转H5下的渲染问题 @szg2008
+* :bug: fix(input): show-word-limit default false (#1203) @wlchn
+* :bug: fix(textarea): demo textarea 自适应 (#1201) @Ymm0008
+* :bug: fix(textarea): add rows defaults (#1216) @Ymm0008
+* :bug: fix: taro 3.4.6 sass calc error #1200 @richard1015
+* :bug: fix(uploader): taro h5 env upload error #1096 @richard1015
+* :bug: fix(formitem): class and style cannot be set on the formitem (#1174) @Sun79
+* :bug: fix(input): maxNum 改为 maxLength,文档修改等 (#1188) @Ymm0008
+* :bug: fix(uploader): taro3.4.x android demo style @richard1015
+* :bug: fix(tag): wrong event handler (#1167) @Sun79
+* :bug: fix(numberkeyboard): resolve issues #1091 (#1168) @Drjingfubo
+* :bug: docs: 组件分类顺序排序修改 @yangxiaolu1993
+
 ## v3.1.18
 
 `2022-03-25` 此版本依赖 Taro 3.4.x

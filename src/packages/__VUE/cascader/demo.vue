@@ -1,41 +1,43 @@
 <template>
   <div class="demo">
-    <h2>基础用法</h2>
+    <h2>{{ translate('basic') }}</h2>
 
     <nut-form>
-      <nut-form-item label="选择地址">
+      <nut-form-item :label="translate('addressTip')">
         <input
           class="nut-input-text"
           @click="demo1.visible = true"
           :value="demo1.value"
           readonly
-          placeholder="请选择地址"
+          :placeholder="translate('addressTip1')"
           type="text"
         />
         <nut-cascader
-          title="地址选择"
+          :title="translate('addressTip')"
           v-model:visible="demo1.visible"
           v-model="demo1.value"
           @change="events.change"
           @path-change="events.pathChange"
           :options="demo1.options"
+          close-icon="heart"
+          close-icon-position="top-left"
         ></nut-cascader>
       </nut-form-item>
     </nut-form>
 
-    <h2>自定义属性名称</h2>
+    <h2>{{ translate('title1') }}</h2>
     <nut-form>
-      <nut-form-item label="选择地址">
+      <nut-form-item :label="translate('addressTip')">
         <input
           class="nut-input-text"
           @click="demo2.visible = true"
           :value="demo2.value"
           readonly
-          placeholder="请选择地址"
+          :placeholder="translate('addressTip1')"
           type="text"
         />
         <nut-cascader
-          title="地址选择"
+          :title="translate('addressTip')"
           v-model:visible="demo2.visible"
           v-model="demo2.value"
           label-key="text"
@@ -48,19 +50,19 @@
       </nut-form-item>
     </nut-form>
 
-    <h2>动态加载</h2>
+    <h2>{{ translate('title2') }}</h2>
     <nut-form>
-      <nut-form-item label="选择地址">
+      <nut-form-item :label="translate('addressTip')">
         <input
           class="nut-input-text"
           @click="demo3.visible = true"
           :value="demo3.value"
           readonly
-          placeholder="请选择地址"
+          :placeholder="translate('addressTip1')"
           type="text"
         />
         <nut-cascader
-          title="地址选择"
+          :title="translate('addressTip')"
           v-model:visible="demo3.visible"
           v-model="demo3.value"
           @change="events.change"
@@ -71,19 +73,19 @@
       </nut-form-item>
     </nut-form>
 
-    <h2>部分数据动态加载</h2>
+    <h2>{{ translate('title3') }}</h2>
     <nut-form>
-      <nut-form-item label="选择地址">
+      <nut-form-item :label="translate('addressTip')">
         <input
           class="nut-input-text"
           @click="demo4.visible = true"
           :value="demo4.value"
           readonly
-          placeholder="请选择地址"
+          :placeholder="translate('addressTip1')"
           type="text"
         />
         <nut-cascader
-          title="地址选择"
+          :title="translate('addressTip')"
           v-model:visible="demo4.visible"
           v-model="demo4.value"
           @change="events.change"
@@ -95,19 +97,19 @@
       </nut-form-item>
     </nut-form>
 
-    <h2>自动转换</h2>
+    <h2>{{ translate('title4') }}</h2>
     <nut-form>
-      <nut-form-item label="选择地址">
+      <nut-form-item :label="translate('addressTip')">
         <input
           class="nut-input-text"
           @click="demo5.visible = true"
           :value="demo5.value"
           readonly
-          placeholder="请选择地址"
+          :placeholder="translate('addressTip1')"
           type="text"
         />
         <nut-cascader
-          title="地址选择"
+          :title="translate('addressTip')"
           v-model:visible="demo5.visible"
           v-model="demo5.value"
           @change="events.change"
@@ -123,8 +125,28 @@
 <script lang="ts">
 import { onMounted, reactive, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('cascader');
-
+const { createDemo, translate } = createComponent('cascader');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    title1: '自定义属性名称',
+    title2: '动态加载',
+    title3: '部分数据动态加载',
+    title4: '自动转换',
+    addressTip: '选择地址',
+    addressTip1: '请选择地址'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    title1: 'Custom attribute name',
+    title2: 'Async loading',
+    title3: 'Async loading of partial data',
+    title4: 'Automatic data conversion',
+    addressTip: 'Select address',
+    addressTip1: 'Please select an address'
+  }
+});
 export default createDemo({
   props: {},
   setup() {
@@ -311,7 +333,8 @@ export default createDemo({
       demo3,
       demo4,
       demo5,
-      events
+      events,
+      translate
     };
   }
 });

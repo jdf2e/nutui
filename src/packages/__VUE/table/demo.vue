@@ -1,26 +1,26 @@
 <template>
   <div class="demo">
-    <h2>基础用法</h2>
+    <h2>{{ translate('basic') }}</h2>
     <nut-table :columns="columns1" :data="data1"></nut-table>
-    <h2>是否显示边框，文字对齐</h2>
+    <h2>{{ translate('title1') }}</h2>
     <nut-table :columns="columns2" :data="data1" :bordered="bordered1"></nut-table>
-    <h2>显示总结栏</h2>
+    <h2>{{ translate('title2') }}</h2>
     <nut-table :columns="columns3" :data="data2" :summary="summary"></nut-table>
-    <h2>条纹、明暗交替</h2>
+    <h2>{{ translate('title3') }}</h2>
     <nut-table :columns="columns3" :data="data2" :striped="striped"></nut-table>
-    <h2>无数据默认展示，支持自定义</h2>
+    <h2>{{ translate('title4') }}</h2>
     <nut-table :columns="columns3" :data="data3"> </nut-table>
     <br />
     <nut-table :columns="columns3" :data="data3">
       <template #nodata>
-        <div class="no-data"> 这里是自定义展示 </div>
+        <div class="no-data"> {{ translate('title5') }} </div>
       </template>
     </nut-table>
-    <h2>自定义单元格</h2>
+    <h2>{{ translate('title6') }}</h2>
     <nut-table :columns="columns4" :data="data4"> </nut-table>
-    <h2>支持异步渲染(5s之后看效果)</h2>
+    <h2>{{ translate('title7') }}</h2>
     <nut-table :columns="columns3" :data="data5"> </nut-table>
-    <h2>支持排序</h2>
+    <h2>{{ translate('title8') }}</h2>
     <nut-table :columns="columns6" :data="data6" @sorter="handleSorter"> </nut-table>
   </div>
 </template>
@@ -32,7 +32,64 @@ import { TableColumnProps } from './types';
 import { Toast } from '@/packages/nutui.vue';
 import Button from '@/packages/__VUE/button/index.vue';
 import Icon from '@/packages/__VUE/icon/index.vue';
-const { createDemo } = createComponent('table');
+const { createDemo, translate } = createComponent('table');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    title1: '是否显示边框，文字对齐',
+    title2: '显示总结栏',
+    title3: '条纹、明暗交替',
+    title4: '无数据默认展示，支持自定义',
+    title5: '这里是自定义展示',
+    title6: '自定义单元格',
+    title7: '支持异步渲染(5s之后看效果)',
+    title8: '支持排序',
+    name: '姓名',
+    age: '年龄',
+    sex: '性别',
+    man: '男',
+    woman: '女',
+    education: '学历',
+    address: '地址',
+    oper: '操作',
+    primary: '小学',
+    high: '高中',
+    undergraduate: '本科',
+    jump: '跳转到京东',
+    summary: '这是总结栏',
+    beijing: '北京',
+    shanghai: '上海',
+    hangzhou: '杭州'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    title1: 'Whether to display border and align text',
+    title2: 'Show summary bar',
+    title3: 'Stripes, alternating light and shade',
+    title4: 'No data is displayed by default, and customization is supported',
+    title5: 'Here is the custom display',
+    title6: 'Custom cell',
+    title7: 'Support asynchronous rendering(See the effect after 5S)',
+    title8: 'Support sorting',
+    name: 'name',
+    age: 'age',
+    sex: 'sex',
+    man: 'man',
+    woman: 'woman',
+    education: 'education',
+    address: 'address',
+    oper: 'operation',
+    primary: 'primary school',
+    high: 'high school',
+    undergraduate: 'undergraduate',
+    jump: 'Jump To Jingdong',
+    summary: 'This is the summary column',
+    beijing: 'beijing',
+    shanghai: 'shanghai',
+    hangzhou: 'hangzhou'
+  }
+});
 export default createDemo({
   components: {
     Button,
@@ -45,91 +102,102 @@ export default createDemo({
       striped: true,
       columns1: [
         {
-          title: '姓名',
+          title: translate('name'),
           key: 'name'
         },
         {
-          title: '性别',
-          key: 'sex'
+          title: translate('sex'),
+          key: 'sex',
+          render: ({ sex }) => {
+            return h(
+              'span',
+              {
+                style: {
+                  color: sex === translate('woman') ? 'blue' : 'green'
+                }
+              },
+              sex
+            );
+          }
         },
         {
-          title: '学历',
+          title: translate('education'),
           key: 'record'
         }
       ],
       columns2: [
         {
-          title: '姓名',
+          title: translate('name'),
           key: 'name',
           align: 'center'
         },
         {
-          title: '性别',
+          title: translate('sex'),
           key: 'sex'
         },
         {
-          title: '学历',
+          title: translate('education'),
           key: 'record'
         }
       ],
       columns3: [
         {
-          title: '姓名',
+          title: translate('name'),
           key: 'name'
         },
         {
-          title: '性别',
+          title: translate('sex'),
           key: 'sex'
         },
         {
-          title: '学历',
+          title: translate('education'),
           key: 'record'
         },
         {
-          title: '年龄',
+          title: translate('age'),
           key: 'age'
         },
         {
-          title: '地址',
+          title: translate('address'),
           key: 'address'
         }
       ],
       columns4: [
         {
-          title: '姓名',
+          title: translate('name'),
           key: 'name',
           align: 'center'
         },
         {
-          title: '性别',
+          title: translate('sex'),
           key: 'sex'
         },
         {
-          title: '学历',
+          title: translate('education'),
           key: 'record'
         },
         {
-          title: '操作',
+          title: translate('oper'),
           key: 'render'
         }
       ],
       columns6: [
         {
-          title: '姓名',
+          title: translate('name'),
           key: 'name',
           align: 'center',
           sorter: true
         },
         {
-          title: '性别',
+          title: translate('sex'),
           key: 'sex'
         },
         {
-          title: '学历',
+          title: translate('education'),
           key: 'record'
         },
         {
-          title: '年龄',
+          title: translate('age'),
           key: 'age',
           sorter: (row1: any, row2: any) => {
             return row1.age - row2.age;
@@ -138,50 +206,50 @@ export default createDemo({
       ],
       data1: [
         {
-          sex: '男',
+          sex: translate('man'),
           name: 'Tom',
-          record: '小学'
+          record: translate('primary')
         },
         {
           name: 'Lucy',
-          sex: '女',
-          record: '本科'
+          sex: translate('woman'),
+          record: translate('undergraduate')
         },
         {
           name: 'Jack',
-          sex: '男',
-          record: '高中'
+          sex: translate('man'),
+          record: translate('high')
         }
       ],
       data2: [
         {
-          address: '北京',
+          address: translate('beijing'),
           name: 'Tom',
-          sex: '男',
-          record: '小学',
+          sex: translate('man'),
+          record: translate('primary'),
           age: 13
         },
         {
-          record: '本科',
+          record: translate('undergraduate'),
           name: 'Lucy',
-          sex: '女',
+          sex: translate('woman'),
           age: 34,
-          address: '上海'
+          address: translate('shanghai')
         },
         {
           age: 4,
           name: 'Jack',
-          sex: '男',
-          record: '高中',
-          address: '杭州'
+          sex: translate('man'),
+          record: translate('high'),
+          address: translate('hangzhou')
         }
       ],
       data3: [],
       data4: [
         {
           name: 'Tom',
-          sex: '男',
-          record: '小学',
+          sex: translate('man'),
+          record: translate('primary'),
           render: () => {
             return h(
               Button,
@@ -198,16 +266,16 @@ export default createDemo({
         },
         {
           name: 'Lucy',
-          sex: '女',
-          record: '本科',
+          sex: translate('woman'),
+          record: translate('undergraduate'),
           render: () => {
             return h(Icon, { name: 'dongdong', size: '14px' });
           }
         },
         {
           name: 'Jack',
-          sex: '男',
-          record: '高中',
+          sex: translate('man'),
+          record: translate('high'),
           render: () => {
             return h(
               Button,
@@ -218,7 +286,7 @@ export default createDemo({
                   window.open('https://www.jd.com');
                 }
               },
-              () => h('div', {}, '跳转到京东')
+              () => h('div', {}, translate('jump'))
             );
           }
         }
@@ -227,27 +295,27 @@ export default createDemo({
       data6: [
         {
           name: 'Tom',
-          sex: '男',
-          record: '小学',
+          sex: translate('man'),
+          record: translate('primary'),
           age: 10
         },
         {
           name: 'Lucy',
-          sex: '女',
-          record: '本科',
+          sex: translate('woman'),
+          record: translate('undergraduate'),
           age: 30
         },
         {
           name: 'Jack',
-          sex: '男',
-          record: '高中',
+          sex: translate('man'),
+          record: translate('high'),
           age: 4
         }
       ],
       timer: null as number | null,
       summary: () => {
         return {
-          value: '这是总结栏',
+          value: translate('summary'),
           colspan: 5
         };
       }
@@ -269,16 +337,14 @@ export default createDemo({
 
     return {
       ...toRefs(state),
-      handleSorter
+      handleSorter,
+      translate
     };
   }
 });
 </script>
 
 <style lang="scss" scoped>
-.demo {
-  padding-bottom: 20px !important;
-}
 ::v-deep(.nut-table) {
   background-color: #fff;
 }

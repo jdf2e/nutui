@@ -14,8 +14,6 @@
   app.use(InfiniteLoading);
 ```
 
-## 代码演示
-    
 ### 基础用法
 
 
@@ -248,7 +246,7 @@
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | has-more         | 是否还有更多数据               | Boolean | `true`                |
-| threshold         | 距离底部多远加载 | Number | `200`               |
+| threshold         | 滚动条与底部距离小于 threshold 时触发 loadMore 事件 | Number | `200`               |
 | use-window | 将滚动侦听器添加到 window 否则侦听组件的父节点     | Boolean | `true` |
 | use-capture          | 是否使用捕获模式 true 捕获 false 冒泡                        | Boolean | `false`            |
 | container-id          | 在 useWindow 属性为 false 的时候，自定义设置节点ID                        | String | `''`            |
@@ -266,4 +264,10 @@
 | load-more  | 继续加载的回调函数 | done 函数，用于关闭加载中状态 |
 | scroll-change  | 实时监听滚动高度 | 滚动高度 |
 | refresh  | 下拉刷新事件回调 | done 函数，用于关闭加载中状态 |
-    
+
+### Slots
+
+| 名称 | 说明           | 
+|--------|----------------|
+| loading  | 自定义底部记载中提示 |
+| finished  | 自定义加载完成后的提示文案 |

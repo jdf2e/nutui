@@ -71,32 +71,19 @@
 import { computed, PropType, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { Uploader, UploadOptions } from './uploader';
+import { FileItem } from './type';
 const { componentName, create, translate } = createComponent('uploader');
 import Taro from '@tarojs/taro';
-export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error';
-export class FileItem {
-  status: FileItemStatus = 'ready';
-  message: string = translate('ready');
-  uid: string = new Date().getTime().toString();
-  url?: string;
-  path?: string;
-  name?: string;
-  type?: string;
-  percentage: string | number = 0;
-  formData: any = {};
-}
-export type SizeType = 'original' | 'compressed';
-export type SourceType = 'album' | 'camera' | 'user' | 'environment';
 export default create({
   props: {
     name: { type: String, default: 'file' },
     url: { type: String, default: '' },
     sizeType: {
-      type: Array as PropType<SizeType[]>,
+      type: Array as PropType<import('./type').SizeType[]>,
       default: () => ['original', 'compressed']
     },
     sourceType: {
-      type: Array as PropType<SourceType[]>,
+      type: Array as PropType<import('./type').SourceType[]>,
       default: () => ['album', 'camera']
     },
     timeout: { type: [Number, String], default: 1000 * 30 },
@@ -125,7 +112,7 @@ export default create({
     },
     beforeDelete: {
       type: Function,
-      default: (file: FileItem, files: FileItem[]) => {
+      default: (file: import('./type').FileItem, files: import('./type').FileItem[]) => {
         return true;
       }
     },
@@ -143,7 +130,7 @@ export default create({
     'file-item-click'
   ],
   setup(props, { emit }) {
-    const fileList = reactive(props.fileList) as Array<FileItem>;
+    const fileList = reactive(props.fileList) as Array<import('./type').FileItem>;
     let uploadQueue: Promise<Uploader>[] = [];
 
     const classes = computed(() => {
@@ -167,15 +154,15 @@ export default create({
       });
     };
 
-    const fileItemClick = (fileItem: FileItem) => {
+    const fileItemClick = (fileItem: import('./type').FileItem) => {
       emit('file-item-click', { fileItem });
     };
 
-    const executeUpload = (fileItem: FileItem, index: number) => {
+    const executeUpload = (fileItem: import('./type').FileItem, index: number) => {
       const uploadOption = new UploadOptions();
       uploadOption.name = props.name;
       uploadOption.url = props.url;
-
+      uploadOption.fileType = fileItem.type;
       uploadOption.formData = fileItem.formData;
       uploadOption.timeout = (props.timeout as number) * 1;
       uploadOption.method = props.method;
@@ -265,7 +252,7 @@ export default create({
           fileItem.type = file.originalFileObj?.type;
           fileItem.formData = formData;
         } else {
-          fileItem.formData = props.data as FormData;
+          fileItem.formData = props.data;
         }
         if (props.isPreview) {
           fileItem.url = file.path;
@@ -296,7 +283,7 @@ export default create({
       }
       return files;
     };
-    const onDelete = (file: FileItem, index: number) => {
+    const onDelete = (file: import('./type').FileItem, index: number) => {
       clearUploadQueue(index);
       if (props.beforeDelete(file, fileList)) {
         fileList.splice(index, 1);
