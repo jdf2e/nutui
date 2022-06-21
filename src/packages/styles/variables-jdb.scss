@@ -87,6 +87,12 @@ $white: #fff !default;
 $black: #000 !default;
 $required-color: #fa2c19 !default;
 
+$dark-background: #1a1919 !default;
+$dark-background2: #1d1b1c !default;
+$dark-background3: #141414 !default;
+$dark-color: $white !default;
+$dark-color-gray: $text-color !default;
+
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif !default;
 
 // ---- Animation ----
@@ -173,6 +179,7 @@ $cell-line-height: 20px !default;
 $cell-after-right: 16px !default;
 $cell-after-border-bottom: 2px solid #f5f6f7 !default;
 $cell-default-icon-margin: 0 4px 0 0px !default;
+$cell-background: $white !default;
 
 // cell-group
 
@@ -653,6 +660,8 @@ $menu-item-option-padding-top: 12px !default;
 $menu-item-option-padding-bottom: 12px !default;
 $menu-item-option-i-margin-right: 6px !default;
 $menu-bar-box-shadow: 0 2px 12px rgba(89, 89, 89, 0.12) !default;
+$nut-menu-scroll-fixed-top: 0 !default;
+$nut-menu-scroll-fixed-z-index: 1000 !default;
 
 // collapse
 $collapse-item-padding: 13px 36px 13px 26px !default;
