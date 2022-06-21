@@ -44,17 +44,18 @@
           "scene": null
         },
         {
-          "name": "feedback/pages/swiper/index",
-          "pathName": "feedback/pages/swiper/index",
+          "name": "exhibition/pages/collapse/index",
+          "pathName": "exhibition/pages/collapse/index",
           "query": "",
-          "scene": null
+          "scene": null,
+          "launchMode": "default"
         },
         {
           "name": "dentry/pages/textarea/index",
           "pathName": "dentry/pages/textarea/index",
           "query": "",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
