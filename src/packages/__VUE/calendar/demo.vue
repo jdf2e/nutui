@@ -1,11 +1,11 @@
 <template>
   <div class="demo">
-    <h2>基础用法</h2>
+    <h2>{{ translate('title') }}</h2>
     <div>
       <nut-cell
         :show-icon="true"
-        title="选择单个日期"
-        :desc="date ? `${date} ${dateWeek}` : '请选择'"
+        :title="translate('single')"
+        :desc="date ? `${date} ${dateWeek}` : translate('please')"
         @click="openSwitch('isVisible')"
       >
       </nut-cell>
@@ -23,8 +23,8 @@
     <div>
       <nut-cell
         :show-icon="true"
-        title="选择日期区间"
-        :desc="date1 ? `${date1[0]}至${date1[1]}` : '请选择'"
+        :title="translate('range')"
+        :desc="date1 ? `${date1[0]}${translate('conjunction')}${date1[1]}` : translate('please')"
         @click="openSwitch('isVisible1')"
       >
       </nut-cell>
@@ -43,8 +43,8 @@
     <div>
       <nut-cell
         :show-icon="true"
-        title="选择多个日期"
-        :desc="date7 && date7.length ? `已选择${date7.length}个日期` : '请选择'"
+        :title="translate('multiple')"
+        :desc="date7 && date7.length ? `${translate('selected')}${date7.length}` : translate('please')"
         @click="openSwitch('isVisible7')"
       >
       </nut-cell>
@@ -60,12 +60,12 @@
       </nut-calendar>
     </div>
 
-    <h2>快捷选择</h2>
+    <h2>{{ translate('title1') }}</h2>
     <div>
       <nut-cell
         :show-icon="true"
-        title="选择单个日期"
-        :desc="date3 ? date3 : '请选择'"
+        :title="translate('single')"
+        :desc="date3 ? date3 : translate('please')"
         @click="openSwitch('isVisible3')"
       >
       </nut-cell>
@@ -83,9 +83,9 @@
     <div>
       <nut-cell
         :show-icon="true"
-        title="选择日期范围"
+        :title="translate('range')"
         @click="openSwitch('isVisible4')"
-        :desc="date4 ? `${date4[0]}至${date4[1]}` : '请选择'"
+        :desc="date4 ? `${date4[0]}${translate('conjunction')}${date4[1]}` : translate('please')"
       >
       </nut-cell>
       <nut-calendar
@@ -100,12 +100,12 @@
       >
       </nut-calendar>
     </div>
-    <h2>自定义日历</h2>
+    <h2>{{ translate('title2') }}</h2>
     <div>
       <nut-cell
         :show-icon="true"
-        title="自定义按钮"
-        :desc="date5 && date5[0] ? `${date5[0]}至${date5[1]}` : '请选择'"
+        :title="translate('custom_btn')"
+        :desc="date5 && date5[0] ? `${date5[0]}${translate('conjunction')}${date5[1]}` : translate('please')"
         @click="openSwitch('isVisible5')"
       >
       </nut-cell>
@@ -121,9 +121,15 @@
       >
         <template v-slot:btn>
           <div class="wrapper">
-            <div class="d_div"> <span class="d_btn" @click="goDate">去某个时间</span></div>
-            <div class="d_div"> <span class="d_btn" @click="clickBtn">最近七天</span></div>
-            <div class="d_div"> <span class="d_btn" @click="clickBtn1">当月</span></div>
+            <div class="d_div">
+              <span class="d_btn" @click="goDate">{{ translate('goDate') }}</span></div
+            >
+            <div class="d_div">
+              <span class="d_btn" @click="clickBtn">{{ translate('seven') }}</span></div
+            >
+            <div class="d_div">
+              <span class="d_btn" @click="clickBtn1">{{ translate('current') }}</span></div
+            >
           </div>
         </template>
         <template v-slot:day="date">
@@ -134,8 +140,8 @@
     <div>
       <nut-cell
         :show-icon="true"
-        title="自定义时间文案"
-        :desc="date6 && date6[0] ? `${date6[0]}至${date6[1]}` : '请选择'"
+        :title="translate('timeText')"
+        :desc="date6 && date6[0] ? `${date6[0]}${translate('conjunction')}${date6[1]}` : translate('please')"
         @click="openSwitch('isVisible6')"
       >
       </nut-cell>
@@ -148,21 +154,21 @@
         :start-date="`2022-01-01`"
         :end-date="`2022-12-31`"
         confirm-text="submit"
-        start-text="入店"
-        end-text="离店"
-        title="日期选择"
+        :start-text="translate('enter')"
+        :end-text="translate('leave')"
+        :title="translate('please')"
       >
         <template v-slot:day="date">
           <span>{{ date.date.day <= 9 ? '0' + date.date.day : date.date.day }}</span>
         </template>
         <template v-slot:bottomInfo="date">
           <span class="info">{{
-            date.date ? (date.date.day <= 10 ? '上旬' : date.date.day <= 20 ? '中旬' : '下旬') : ''
+            date.date ? (date.date.day <= 10 ? '' : date.date.day <= 20 ? translate('mid') : '') : ''
           }}</span>
         </template>
       </nut-calendar>
     </div>
-    <h2>平铺展示</h2>
+    <h2>{{ translate('title3') }}</h2>
     <div class="test-calendar-wrapper">
       <nut-calendar :poppable="false" :default-value="date2" :is-auto-back-fill="true" @choose="setChooseValue2">
       </nut-calendar>
@@ -174,9 +180,57 @@
 import { reactive, toRefs, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Utils from '@/packages/utils/date';
+import { useTranslate } from '@/sites/assets/util/useTranslate';
 
-const { createDemo } = createComponent('calendar');
+const { createDemo, translate } = createComponent('calendar');
+useTranslate({
+  'zh-CN': {
+    title: '基础用法',
+    title1: '快捷选择',
+    title2: '自定义日历',
+    title3: '平铺展示',
 
+    please: '请选择',
+    single: '选择单个日期',
+    range: '选择日期区间',
+    multiple: '选择多个日期',
+
+    conjunction: '至',
+    custom_btn: '自定义按钮',
+    timeText: '自定义时间文案',
+
+    goDate: '去某个月',
+    seven: '最近七天',
+    current: '当月',
+    enter: '入店',
+    leave: '离店',
+    mid: '中旬',
+    selected: '已选择：'
+  },
+  'en-US': {
+    title: 'Basic Usage',
+    title1: 'Quick Select',
+    title2: 'Custom Calendar',
+    title3: 'Tiled Display',
+
+    please: 'Please Select Date',
+    single: 'Select Single Date',
+    range: 'Select Date Range',
+    multiple: 'Select Multiple Date',
+
+    conjunction: '-',
+    custom_btn: 'Custom Button',
+    timeText: 'Custom Date Text',
+
+    goDate: 'Go Date',
+    seven: 'Last Seven Days',
+    current: 'This Month',
+    enter: 'enter',
+    leave: 'leave',
+    mid: 'mid',
+    selected: 'selected:'
+  }
+});
 interface TestCalendarState {
   isVisible: boolean;
   date: string;
@@ -259,7 +313,6 @@ export default createDemo({
       let dateArr = chooseData.map((item: any) => {
         return item[3];
       });
-      console.log('changevalue 7 ', chooseData, dateArr);
       state.date7 = [...dateArr];
     };
     const clickBtn = (param: string) => {
@@ -276,7 +329,6 @@ export default createDemo({
       state.date5 = [`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`];
     };
     const goDate = () => {
-      console.log(calendarRef.value);
       if (calendarRef.value) {
         calendarRef.value.scrollToDate('2022-04-01');
       }
@@ -297,7 +349,8 @@ export default createDemo({
       clickBtn1,
       goDate,
       calendarRef,
-      select
+      select,
+      translate
     };
   }
 });
