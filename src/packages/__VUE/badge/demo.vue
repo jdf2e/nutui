@@ -1,6 +1,6 @@
 <template>
   <view class="demo">
-    <h2>默认用法</h2>
+    <h2>{{ translate('title') }}</h2>
     <nut-row>
       <nut-badge :value="8">
         <nut-avatar icon="my" shape="square"></nut-avatar>
@@ -15,7 +15,7 @@
         <nut-avatar icon="my" shape="square"></nut-avatar>
       </nut-badge>
     </nut-row>
-    <h2>最大值</h2>
+    <h2>{{ translate('title1') }}</h2>
     <nut-row>
       <nut-badge :value="200" :max="9">
         <nut-avatar icon="my" shape="square"></nut-avatar>
@@ -28,7 +28,7 @@
       </nut-badge>
     </nut-row>
 
-    <h2>自定义颜色</h2>
+    <h2>{{ translate('title2') }}</h2>
     <nut-row>
       <nut-badge :value="8" color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
         <nut-avatar icon="my" shape="square"></nut-avatar>
@@ -44,7 +44,7 @@
       </nut-badge>
     </nut-row>
 
-    <h2>自定义徽标内容</h2>
+    <h2>{{ translate('title3') }}</h2>
     <nut-row>
       <nut-badge>
         <template #icons>
@@ -66,7 +66,7 @@
       </nut-badge>
     </nut-row>
 
-    <h2>自定义位置</h2>
+    <h2>{{ translate('title4') }}</h2>
     <nut-row>
       <nut-badge :value="8" top="5" right="5">
         <nut-avatar icon="my" shape="square"></nut-avatar>
@@ -79,7 +79,7 @@
       </nut-badge>
     </nut-row>
 
-    <h2>独立展示</h2>
+    <h2>{{ translate('title5') }}</h2>
     <nut-row>
       <nut-badge :value="8"> </nut-badge>
       <nut-badge :value="76"> </nut-badge>
@@ -90,10 +90,32 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('badge');
-
+const { createDemo, translate } = createComponent('badge');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    title: '基础用法',
+    title1: '最大值',
+    title2: '自定义颜色',
+    title3: '自定义徽标内容',
+    title4: '自定义位置',
+    title5: '独立展示'
+  },
+  'en-US': {
+    title: 'Basic Usage',
+    title1: 'Max',
+    title2: 'Custom Color',
+    title3: 'Custom Content',
+    title4: 'Custom Position ',
+    title5: 'Standalone'
+  }
+});
 export default createDemo({
-  setup() {}
+  setup() {
+    return {
+      translate
+    };
+  }
 });
 </script>
 

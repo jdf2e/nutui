@@ -26,7 +26,7 @@ export default create({
       type: String,
       default: 'flex-start'
     },
-    wrap: {
+    flexWrap: {
       type: String,
       default: 'nowrap'
     }
@@ -43,7 +43,7 @@ export default create({
               ${getClass('', props.type)}
               ${getClass('justify', props.justify)}
               ${getClass('align', props.align)}
-              ${getClass('flex', props.wrap)}
+              ${getClass('flex', props.flexWrap)}
               ${prefixCls}
               `;
     };

@@ -291,7 +291,9 @@ export default create({
     const onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;
       let value = input.value;
-
+      if (props.maxLength && value.length > Number(props.maxLength)) {
+        value = value.slice(0, Number(props.maxLength));
+      }
       updateValue(value);
     };
 

@@ -1,6 +1,6 @@
 <template>
   <div class="demo full">
-    <h2>基础布局</h2>
+    <h2>{{ translate('basic') }}</h2>
     <div class="box-item">
       <nut-row>
         <nut-col :span="24">
@@ -41,7 +41,7 @@
         </nut-col>
       </nut-row>
     </div>
-    <h2>分栏间隔</h2>
+    <h2>{{ translate('desc') }}</h2>
     <div class="box-item">
       <nut-row :gutter="10">
         <nut-col :span="8">
@@ -55,7 +55,7 @@
         </nut-col>
       </nut-row>
     </div>
-    <h2>Flex布局</h2>
+    <h2>{{ translate('flex') }}</h2>
     <div class="box-item">
       <nut-row type="flex" wrap="nowrap">
         <nut-col :span="6">
@@ -129,13 +129,29 @@
 
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('layout');
+const { createDemo, translate } = createComponent('layout');
 import Row from '../row/index.vue';
 import Col from '../col/index.vue';
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    desc: '分栏间隔',
+    flex: 'Flex布局'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    desc: 'Column spacing',
+    flex: 'Flex layout'
+  }
+});
 export default createDemo({
   components: {
     [Row.name]: Row,
     [Col.name]: Col
+  },
+  setup() {
+    return { translate };
   }
 });
 </script>

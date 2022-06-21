@@ -11,6 +11,14 @@
     <nut-divider dashed>文本</nut-divider>
     <h2>自定义样式</h2>
     <nut-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">文本</nut-divider>
+    <h2>垂直分割线</h2>
+    <div :style="{ fontSize: '14px', marginLeft: '27px', color: '#909ca4' }">
+      文本
+      <nut-divider direction="vertical" />
+      <a href="#" :style="{ color: '#1989fa' }">链接</a>
+      <nut-divider direction="vertical" />
+      <a href="#" :style="{ color: '#1989fa' }">链接</a>
+    </div>
   </div>
 </template>
 

@@ -2,7 +2,7 @@
 
 ### 介绍
 
-用于展示商品分类的组件
+用于展示商品分类的组件。
 
 ### 安装
 
@@ -123,7 +123,7 @@ export default {
     };
 
     const onChange =()=>{
-        console.log("当前分类数据");
+      console.log("当前分类数据");
     }
     return {
       changeText,
@@ -190,7 +190,7 @@ export default {
 
 | 参数     | 说明                             | 类型   | 默认值   |
 | -------- | -------------------------------- | ------ | -------- |
-| type     | 分类模式：classify，text，custom | String | classify |
+| type     | 分类模式：`classify`，`text`，`custom` | String | classify |
 | category | 左侧导航栏数据列表               | Array  | []       |
 
 ### Category Events

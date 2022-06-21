@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import config from './package.json';
 import configPkg from './src/config.json';
+import { terser } from 'rollup-plugin-terser';
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
@@ -60,12 +61,6 @@ declare module 'vue' {
   ],
   build: {
     minify: false,
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    },
     lib: {
       entry: '',
       name: 'index',
@@ -82,7 +77,15 @@ declare module 'vue' {
           '@/packages/locale': '../locale/lang'
         },
         dir: path.resolve(__dirname, './dist/packages/_es'),
-        entryFileNames: '[name].js'
+        entryFileNames: '[name].js',
+        plugins: [
+          terser({
+            compress: {
+              drop_console: true,
+              drop_debugger: true
+            }
+          })
+        ]
       }
     },
     emptyOutDir: false

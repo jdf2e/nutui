@@ -1,3 +1,8 @@
+.nut-theme-dark {
+  .nut-tabpane {
+    background: $dark-background2;
+  }
+}
 .nut-tabpane {
   width: 100%;
   flex-shrink: 0;
@@ -6,7 +11,10 @@
   padding: 24px 20px;
   box-sizing: border-box;
   overflow: auto;
-  &.active {
-    // overflow: visible;
+  height: 100%;
+  word-break: break-all;
+  &.inactive {
+    overflow: visible;
+    height: 0;
   }
 }

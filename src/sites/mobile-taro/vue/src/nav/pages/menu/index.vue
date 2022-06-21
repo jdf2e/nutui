@@ -10,8 +10,8 @@
       <nut-menu-item v-model="state.value1" :options="state.options1" />
       <nut-menu-item title="筛选" ref="item">
         <div :style="{ display: 'flex', flex: 1, 'justify-content': 'space-between', 'align-items': 'center' }">
-          <div>自定义内容</div>
-          <nut-button @click="onConfirm">关闭</nut-button>
+          <div :style="{ marginRight: '10px' }">自定义内容</div>
+          <nut-button @click="onConfirm">确认</nut-button>
         </div>
       </nut-menu-item>
     </nut-menu>
@@ -21,6 +21,16 @@
     </nut-menu>
     <h2>自定义选中态颜色</h2>
     <nut-menu active-color="green">
+      <nut-menu-item v-model="state.value1" :options="state.options1" />
+      <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
+    </nut-menu>
+    <h2>自定义图标</h2>
+    <nut-menu>
+      <nut-menu-item v-model="state.value1" :options="state.options1" titleIcon="joy-smile" />
+      <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" optionIcon="checklist" />
+    </nut-menu>
+    <h2>向上展开</h2>
+    <nut-menu direction="up">
       <nut-menu-item v-model="state.value1" :options="state.options1" />
       <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
     </nut-menu>

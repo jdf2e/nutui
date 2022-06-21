@@ -18,6 +18,17 @@
       <nut-tabpane title="Tab 2" pane-key="1" :disabled="true"> Tab 2 </nut-tabpane>
       <nut-tabpane title="Tab 3" pane-key="2"> Tab 3 </nut-tabpane>
     </nut-tabs>
+    <h2>{{ translate('title9') }}</h2>
+    <nut-tabs v-model="state.tab2value" :auto-height="true">
+      <nut-tabpane title="Tab 1" pane-key="0">
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+      </nut-tabpane>
+      <nut-tabpane title="Tab 2" pane-key="1"> Tab 2 </nut-tabpane>
+      <nut-tabpane title="Tab 3" pane-key="2"> Tab 3 </nut-tabpane>
+    </nut-tabs>
     <h2>{{ translate('title3') }}</h2>
     <nut-tabs v-model="state.tab3value">
       <nut-tabpane v-for="item in state.list3" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>
@@ -90,6 +101,7 @@ useTranslate({
     title6: '左右布局-微笑曲线',
     title7: '标签栏字体尺寸 large normal small',
     title8: '自定义标签栏',
+    title9: 'Tabpane 自动高度',
     custom: (val: string) => `自定义 ${1}`
   },
   'en-US': {
@@ -102,6 +114,7 @@ useTranslate({
     title6: 'Left and Right Layout - Smile Curve',
     title7: 'tab bar font size large normal small',
     title8: 'custom tab bar',
+    title9: 'Tabpane auto height',
     custom: (val: string) => `custom ${1}`
   }
 });
@@ -139,7 +152,6 @@ export default createDemo({
     });
     setTimeout(() => {
       state.list3.push(999);
-      state.tab3value = '2';
     }, 3000);
 
     return { state, translate };

@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <h2>基础用法</h2>
+    <h2>{{ translate('basic') }}</h2>
     <nut-audio
       style="margin-left: 20px"
       url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
@@ -10,7 +10,7 @@
       type="icon"
     ></nut-audio>
 
-    <h2>语音播放</h2>
+    <h2>{{ translate('voicePlay') }}</h2>
     <nut-audio
       style="margin-left: 20px"
       url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
@@ -26,7 +26,7 @@
       </div>
     </nut-audio>
 
-    <h2>进度条展示</h2>
+    <h2>{{ translate('progress') }}</h2>
     <nut-audio
       style="margin-left: 20px"
       url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
@@ -43,7 +43,7 @@
       </div>
     </nut-audio>
 
-    <h2>自定义操作按钮</h2>
+    <h2>{{ translate('customControl') }}</h2>
     <nut-audio
       style="margin-left: 20px"
       url="http://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
@@ -72,7 +72,24 @@
 import { reactive, toRefs, ref } from '@vue/reactivity';
 import { onMounted } from '@vue/runtime-core';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('audio');
+const { createDemo, translate } = createComponent('audio');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    voicePlay: '语音播放',
+    progress: '进度条展示',
+    customControl: '自定义操作按钮'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    voicePlay: 'Voice Playing',
+    progress: 'Progress',
+    customControl: 'Custom Control'
+  }
+});
+
 export default createDemo({
   props: {},
   setup() {
@@ -112,7 +129,18 @@ export default createDemo({
       }, 500);
     });
 
-    return { ...toRefs(data), playing, fastBack, forward, changeStatus, audioDemo, ended, duration, changeProgress };
+    return {
+      ...toRefs(data),
+      playing,
+      fastBack,
+      forward,
+      changeStatus,
+      audioDemo,
+      ended,
+      duration,
+      changeProgress,
+      translate
+    };
   }
 });
 </script>

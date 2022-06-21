@@ -162,7 +162,7 @@ export default create({
       const uploadOption = new UploadOptions();
       uploadOption.name = props.name;
       uploadOption.url = props.url;
-
+      uploadOption.fileType = fileItem.type;
       uploadOption.formData = fileItem.formData;
       uploadOption.timeout = (props.timeout as number) * 1;
       uploadOption.method = props.method;
@@ -252,7 +252,7 @@ export default create({
           fileItem.type = file.originalFileObj?.type;
           fileItem.formData = formData;
         } else {
-          fileItem.formData = props.data as FormData;
+          fileItem.formData = props.data;
         }
         if (props.isPreview) {
           fileItem.url = file.path;

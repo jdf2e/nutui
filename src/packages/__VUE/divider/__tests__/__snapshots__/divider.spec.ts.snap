@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`slot: html should contain customer text 1`] = `"<div class=\\"nut-divider nut-divider-center nut-divider-hairline\\">customer text</div>"`;
+exports[`slot: html should contain custom text 1`] = `"<view class=\\"nut-divider nut-divider-center nut-divider-hairline\\">custom text</view>"`;

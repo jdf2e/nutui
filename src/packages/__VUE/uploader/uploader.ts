@@ -1,6 +1,7 @@
 export class UploadOptions {
   url = '';
   name = 'file';
+  fileType? = 'image';
   formData?: FormData;
   method = 'post';
   xhrState = 200;
@@ -59,6 +60,7 @@ export class Uploader {
       const uploadTask = uploadFile({
         url: options.url,
         filePath: options.taroFilePath,
+        fileType: options.fileType,
         header: {
           'Content-Type': 'multipart/form-data',
           ...options.headers

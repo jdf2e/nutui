@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <h2>基础用法</h2>
+    <h2>{{ translate('title1') }}</h2>
 
     <nut-row type="flex">
       <nut-col :span="8">
@@ -11,42 +11,42 @@
           @choose="chooseItem"
         >
           <template #reference>
-            <nut-button type="primary" shape="square">明朗风格</nut-button>
+            <nut-button type="primary" shape="square">{{ translate('light') }}</nut-button>
           </template>
         </nut-popover>
       </nut-col>
       <nut-col :span="8">
         <nut-popover v-model:visible="visible.darkTheme" theme="dark" :list="iconItemList">
           <template #reference>
-            <nut-button type="primary" shape="square">暗黑风格</nut-button>
+            <nut-button type="primary" shape="square">{{ translate('dark') }}</nut-button>
           </template>
         </nut-popover>
       </nut-col>
     </nut-row>
 
-    <h2>选项配置</h2>
+    <h2>{{ translate('title2') }}</h2>
 
     <nut-row type="flex">
       <nut-col :span="8">
         <nut-popover v-model:visible="visible.showIcon" theme="dark" :list="itemList">
           <template #reference>
-            <nut-button type="primary" shape="square">展示图标</nut-button>
+            <nut-button type="primary" shape="square">{{ translate('showIcon') }}</nut-button>
           </template>
         </nut-popover>
       </nut-col>
       <nut-col :span="8">
         <nut-popover v-model:visible="visible.disableAction" :list="itemListDisabled">
           <template #reference>
-            <nut-button type="primary" shape="square">禁用选项</nut-button>
+            <nut-button type="primary" shape="square">{{ translate('disableAction') }}</nut-button>
           </template>
         </nut-popover>
       </nut-col>
     </nut-row>
 
-    <h2>自定义内容</h2>
+    <h2>{{ translate('title3') }}</h2>
     <nut-popover v-model:visible="visible.Customized" location="bottom-start">
       <template #reference>
-        <nut-button type="primary" shape="square">自定义内容</nut-button>
+        <nut-button type="primary" shape="square">{{ translate('content') }}</nut-button>
       </template>
 
       <template #content>
@@ -59,7 +59,7 @@
       </template>
     </nut-popover>
 
-    <h2>位置自定义</h2>
+    <h2>{{ translate('title4') }}</h2>
 
     <nut-row type="flex" justify="center">
       <nut-col :span="24" style="text-align: center">
@@ -85,8 +85,33 @@
 <script lang="ts">
 import { reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('popover');
+const { createDemo, translate } = createComponent('popover');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
 
+useTranslate({
+  'zh-CN': {
+    title: '基础用法',
+    title1: '选项配置',
+    title2: '自定义内容',
+    title3: '位置自定义',
+    light: '明朗风格',
+    dark: '暗黑风格',
+    showIcon: '展示图标',
+    disableAction: '禁用选项',
+    content: '自定义内容'
+  },
+  'en-US': {
+    title: 'Basic Usage',
+    title1: 'Option Configuration',
+    title2: 'Custom Content',
+    title3: 'Custom Location',
+    light: 'light',
+    dark: 'dark',
+    showIcon: 'show icon',
+    disableAction: 'disabled',
+    content: 'custom content'
+  }
+});
 export default createDemo({
   setup() {
     const visible = ref({
@@ -119,84 +144,84 @@ export default createDemo({
 
     const iconItemList = reactive([
       {
-        name: '选项一'
+        name: 'option1'
       },
       {
-        name: '选项二'
+        name: 'option2'
       },
       {
-        name: '选项三'
+        name: 'option3'
       }
     ]);
 
     const positionList = reactive([
       {
-        name: '选项一'
+        name: 'option1'
       },
       {
-        name: '选项二'
+        name: 'option2'
       }
     ]);
 
     const itemList = reactive([
       {
-        name: '选项一',
+        name: 'option1',
         icon: 'my2'
       },
       {
-        name: '选项二',
+        name: 'option2',
         icon: 'cart2'
       },
       {
-        name: '选项三',
+        name: 'option3',
         icon: 'location2'
       }
     ]);
 
     const itemListDisabled = reactive([
       {
-        name: '选项一',
+        name: 'option1',
         disabled: true
       },
       {
-        name: '选项二',
+        name: 'option2',
         disabled: true
       },
       {
-        name: '选项三'
+        name: 'option3'
       }
     ]);
 
     const selfContent = reactive([
       {
         name: 'service',
-        desc: '选项一'
+        desc: 'option1'
       },
       {
         name: 'notice',
-        desc: '选项二'
+        desc: 'option2'
       },
       {
         name: 'location',
-        desc: '选项三'
+        desc: 'option3'
       },
       {
         name: 'category',
-        desc: '选项四'
+        desc: 'option4'
       },
       {
         name: 'scan2',
-        desc: '选项五'
+        desc: 'option5'
       },
       {
         name: 'message',
-        desc: '选项六'
+        desc: 'option6'
       }
     ]);
 
     const chooseItem = (item: unknown, index: number) => {
       console.log(item, index);
-      alert('选择项');
+      alert('selected');
     };
 
     return {
@@ -208,7 +233,8 @@ export default createDemo({
       chooseItem,
       position,
       curPostion,
-      positionList
+      positionList,
+      translate
     };
   }
 });

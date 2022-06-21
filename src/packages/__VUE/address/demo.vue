@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
-    <h2>选择自定义地址</h2>
-    <nut-cell title="选择地址" :desc="one" is-link @click="showAddress"></nut-cell>
+    <h2>{{ translate('customAddress') }}</h2>
+    <nut-cell :title="translate('title')" :desc="one" is-link @click="showAddress"></nut-cell>
 
     <nut-address
       v-model:visible="normal"
@@ -13,8 +13,8 @@
       @close="close1"
     ></nut-address>
 
-    <h2>选中省市区</h2>
-    <nut-cell title="选择地址" :desc="six" is-link @click="showSelected"></nut-cell>
+    <h2>{{ translate('selectCity') }}</h2>
+    <nut-cell :title="translate('title')" :desc="six" is-link @click="showSelected"></nut-cell>
 
     <nut-address
       v-model="value"
@@ -28,8 +28,8 @@
       :columns-placeholder="placeholder"
     ></nut-address>
 
-    <h2>选择自定义地址2</h2>
-    <nut-cell title="选择地址" :desc="five" is-link @click="showAddress2"></nut-cell>
+    <h2>{{ translate('customAddress2') }}</h2>
+    <nut-cell :title="translate('title')" :desc="five" is-link @click="showAddress2"></nut-cell>
 
     <nut-address
       v-model="value2"
@@ -45,8 +45,8 @@
       :columns-placeholder="placeholder"
     ></nut-address>
 
-    <h2>选择已有地址</h2>
-    <nut-cell title="选择地址" :desc="two" is-link @click="showAddressExist"></nut-cell>
+    <h2>{{ translate('existAddress') }}</h2>
+    <nut-cell :title="translate('title')" :desc="two" is-link @click="showAddressExist"></nut-cell>
 
     <nut-address
       v-model:visible="exist"
@@ -58,8 +58,8 @@
       @selected="selected"
     ></nut-address>
 
-    <h2>自定义图标</h2>
-    <nut-cell title="选择地址" :desc="three" is-link @click="showCustomImg"></nut-cell>
+    <h2>{{ translate('icon') }}</h2>
+    <nut-cell :title="translate('title')" :desc="three" is-link @click="showCustomImg"></nut-cell>
 
     <nut-address
       v-model:visible="customImg"
@@ -74,8 +74,8 @@
       :close-btn-icon="closeBtnIcon"
     ></nut-address>
 
-    <h2>自定义地址与已有地址切换</h2>
-    <nut-cell title="选择地址" :desc="four" is-link @click="showAddressOther"></nut-cell>
+    <h2>{{ translate('change') }}</h2>
+    <nut-cell :title="translate('title')" :desc="four" is-link @click="showAddressOther"></nut-cell>
 
     <nut-address
       v-model:visible="other"
@@ -98,7 +98,34 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 import { reactive, ref, toRefs } from 'vue';
-const { createDemo } = createComponent('address');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+const { createDemo, translate } = createComponent('address');
+
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    title: '选择地址',
+    customAddress: '选择自定义地址',
+    selectCity: '选中省市区',
+    customAddress2: '选择自定义地址2',
+    existAddress: '选择已有地址',
+    icon: '自定义图标',
+    change: '自定义地址与已有地址切换',
+    textAddress: '北京朝阳区八里庄街道'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    title: 'Choose Address',
+    customAddress: 'Choose Custom Address',
+    selectCity: 'Choose City',
+    customAddress2: 'Choose Custom Address2',
+    existAddress: 'Choose Exist Address',
+    icon: 'Custom Icon',
+    change: 'Custom Or Exist',
+    textAddress: 'Balizhuang Street, Chaoyang District, Beijing'
+  }
+});
+
 interface CalBack {
   next: string;
   value: string;
@@ -191,7 +218,7 @@ export default createDemo({
       {
         id: 2,
         addressDetail: '',
-        cityName: '钓鱼岛全区',
+        cityName: '钓鱼岛',
         countyName: '',
         provinceName: '钓鱼岛',
         selectedAddress: false,
@@ -213,12 +240,12 @@ export default createDemo({
     ]);
 
     const text = reactive({
-      one: '请选择地址',
-      two: '请选择地址',
-      three: '请选择地址',
-      four: '请选择地址',
-      five: '北京朝阳区八里庄街道',
-      six: '北京朝阳区八里庄街道'
+      one: translate('title'),
+      two: translate('title'),
+      three: translate('title'),
+      four: translate('title'),
+      five: translate('textAddress'),
+      six: translate('textAddress')
     });
 
     const showAddress = () => {
@@ -333,6 +360,7 @@ export default createDemo({
       switchModule,
       closeMask,
       placeholder,
+      translate,
       ...toRefs(icon),
       ...toRefs(text),
       ...toRefs(showPopup),

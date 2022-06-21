@@ -3,8 +3,8 @@
 .doc-content-document {
   position: relative;
   background: #fff;
-  padding-top: 48px;
-  padding-bottom: 48px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   padding-left: 40px;
   padding-right: 445px;
   .card {
@@ -44,6 +44,12 @@
     }
   }
 
+  &.isComponent {
+    h1 {
+      display: none;
+    }
+  }
+
   h1 {
     margin: 0 0 30px;
     font-size: 30px;
@@ -51,6 +57,7 @@
     font-weight: bold;
     position: relative;
     margin-bottom: 56px;
+    // display: none;
     &:after {
       content: '';
       position: absolute;

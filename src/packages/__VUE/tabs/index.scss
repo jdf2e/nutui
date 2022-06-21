@@ -1,3 +1,25 @@
+.nut-theme-dark {
+  .nut-tabs {
+    &__titles {
+      background: $dark-background3;
+      &-item {
+        color: $dark-color-gray;
+        &.active {
+          color: $dark-color;
+        }
+      }
+    }
+    &.vertical {
+      .nut-tabs__titles {
+        &-item {
+          &.active {
+            background-color: $dark-background2;
+          }
+        }
+      }
+    }
+  }
+}
 .nut-tabs {
   display: flex;
   overflow: hidden;
@@ -16,6 +38,9 @@
       &.scrollable {
         overflow-x: hidden;
         overflow-y: auto;
+        .nut-tabs__titles-item {
+          padding: 0 10px 0 15px;
+        }
       }
       &-item {
         height: $tabs-vertical-titles-item-height;

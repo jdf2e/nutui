@@ -2,6 +2,8 @@
   <nut-popup
     v-model:visible="show"
     position="bottom"
+    :teleport="teleport"
+    :popClass="popClass"
     :overlay="overlay"
     @click-overlay="closeBoard()"
     :isWrapTeleport="isWrapTeleport"
@@ -117,6 +119,14 @@ export default create({
     isWrapTeleport: {
       type: Boolean,
       default: true
+    },
+    teleport: {
+      type: [String, Element],
+      default: 'body'
+    },
+    popClass: {
+      type: String,
+      default: ''
     }
   },
   emits: ['input', 'delete', 'close', 'update:value'],

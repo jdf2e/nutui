@@ -47,6 +47,8 @@ app.use(OverLay);
 
 ### Mask style
 
+It can be set through `overlay-style`
+
 :::demo
 
 ```html
@@ -133,7 +135,7 @@ app.use(OverLay);
 | duration               | Animation duration, Unit second | String, Number | `0.3`    |
 | overlay-class          | Custom mask classname   | String         | -      |
 | overlay-style          | Custom mask styles   | CSSProperties  | -      |
-| lock-scroll            | Whether the background is locked(`MiniProgram not supported`)     | Boolean        | `false`  |
+| lock-scroll            | Whether the background is locked(`MiniProgram not supported`)     | Boolean        | `true`  |
 | close-on-click-overlay | Click to close the mask | Boolean        | `true`   |
 
 ### Events

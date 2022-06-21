@@ -13,10 +13,11 @@ let input = {
   index: `./src/packages/locale/index`
 };
 // 动态读取file name
-['zh-CN', 'zh-TW', 'en-US'].map((file) => {
+['zh-CN', 'zh-TW', 'en-US', 'id-ID'].map((file) => {
   input[file] = `./src/packages/locale/lang/${file}`;
 });
 import fs from 'fs-extra';
+import { terser } from 'rollup-plugin-terser';
 // 构建index.scss 兼容插件市场按需加载插件
 fs.outputFile(path.resolve(__dirname, './dist/packages/locale/index.scss'), ' ', 'utf8', (error) => {});
 fs.outputFile(path.resolve(__dirname, './dist/packages/locale/lang/index.scss'), ' ', 'utf8', (error) => {});
@@ -28,18 +29,12 @@ export default defineConfig({
       insertTypesEntry: true,
       copyDtsFiles: true,
       cleanVueFileName: true,
-      outputDir: path.resolve(__dirname, './dist/packages/locale'),
+      outputDir: path.resolve(__dirname, './dist/packages/'),
       include: path.resolve(__dirname, './src/packages/locale')
     })
   ],
   build: {
     minify: true,
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    },
     lib: {
       entry: '',
       name: 'index',
@@ -53,7 +48,15 @@ export default defineConfig({
       output: {
         banner,
         dir: path.resolve(__dirname, './dist/packages/locale/lang'),
-        entryFileNames: '[name].js'
+        entryFileNames: '[name].js',
+        plugins: [
+          terser({
+            compress: {
+              drop_console: true,
+              drop_debugger: true
+            }
+          })
+        ]
       }
     },
     emptyOutDir: false

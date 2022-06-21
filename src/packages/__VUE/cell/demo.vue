@@ -6,10 +6,27 @@
     <nut-cell :title="translate('title3')" @click="testClick"></nut-cell>
     <nut-cell :title="translate('title4')" round-radius="0"></nut-cell>
 
+    <h2>{{ translate('title9') }}</h2>
+    <nut-cell size="large" :title="translate('title')" :desc="translate('desc')"></nut-cell>
+    <nut-cell
+      size="large"
+      :title="translate('title')"
+      :sub-title="translate('title1')"
+      :desc="translate('desc')"
+    ></nut-cell>
+
     <h2>{{ translate('title2') }}</h2>
 
-    <nut-cell :title="translate('title')" :desc="translate('desc')">
+    <nut-cell>
       <div>{{ translate('content') }}</div>
+    </nut-cell>
+
+    <h2>{{ translate('title8') }}</h2>
+
+    <nut-cell :desc="translate('desc')">
+      <template v-slot:title>
+        <span>Title <b style="color: red">1</b></span>
+      </template>
     </nut-cell>
 
     <nut-cell-group :title="translate('title5')" :desc="translate('desc1')">
@@ -41,6 +58,9 @@
     <nut-cell :title="translate('name')" icon="my" :desc="translate('desc')" isLink> </nut-cell>
     <h2>{{ translate('title6') }}</h2>
     <nut-cell desc-text-align="left" :desc="translate('desc')"></nut-cell>
+
+    <h2>{{ translate('title7') }}</h2>
+    <nut-cell center :title="translate('title')" :sub-title="translate('title1')" :desc="translate('desc')"></nut-cell>
   </div>
 </template>
 
@@ -61,6 +81,9 @@ useTranslate({
     title4: '圆角设置 0',
     title5: '链接 | 分组用法',
     title6: '只展示 desc ，可通过 desc-text-align 调整内容位置',
+    title7: '垂直居中',
+    title8: '直接使用插槽(slot title)',
+    title9: '尺寸设置 large',
     link: '链接',
     urlJump: 'URL 跳转',
     routerJump: '路由跳转 ’/‘ ',
@@ -82,6 +105,9 @@ useTranslate({
     title4: 'Round Radius 0',
     title5: 'Link | CellGroup Usage',
     title6: 'Only display desc , you can adjust the content position through desc-text-align',
+    title7: 'Vertical Center',
+    title8: 'Use Slots title',
+    title9: 'Size setting large',
     link: 'Link',
     urlJump: 'URL Jump',
     routerJump: 'Router Jump ’/‘ ',

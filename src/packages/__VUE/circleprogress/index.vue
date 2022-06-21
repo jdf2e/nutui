@@ -16,7 +16,6 @@
         fill="none"
         :stroke="hoverColor"
         :stroke-linecap="strokeLinecap"
-        transform="rotate(90,50,50)"
         :stroke-width="strokeWidth"
       ></path>
     </svg>
@@ -75,7 +74,7 @@ export default create({
     });
     const path = computed(() => {
       const isWise = props.clockwise ? 1 : 0;
-      return `M 50 50 m -45 0 a 45 45 0 1 ${isWise} 90 0  a 45 45 0 1 ${isWise} -90 0`;
+      return `M 50 50 m 0 -45 a 45 45 0 1 ${isWise} 0 90 a 45 45 0 1, ${isWise} 0 -90`;
     });
     const hoverColor = computed(() => {
       return isObject(props.color) ? `url(#${refRandomId})` : props.color;

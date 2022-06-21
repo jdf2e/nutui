@@ -16,6 +16,13 @@ $text-color: #808080 !default;
 $disable-color: #cccccc !default;
 $white: #fff !default;
 $black: #000 !default;
+$required-color: #fa2c19 !default;
+
+$dark-background: #1a1919 !default;
+$dark-background2: #1d1b1c !default;
+$dark-background3: #141414 !default;
+$dark-color: $white !default;
+$dark-color-gray: $text-color !default;
 
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif !default;
 
@@ -55,8 +62,10 @@ $button-block-height: 48px !default;
 $button-default-line-height: 36px !default;
 $button-block-line-height: 46px !default;
 $button-default-font-size: $font-size-2 !default;
+$button-large-font-size: $button-default-font-size !default;
 $button-small-font-size: $font-size-1 !default;
 $button-mini-font-size: $font-size-1 !default;
+$button-mini-line-height: 1.2 !default;
 $button-disabled-opacity: 0.68 !default;
 $button-primary-color: $white !default;
 $button-primary-border-color: $primary-color !default;
@@ -101,6 +110,10 @@ $cell-line-height: 20px !default;
 $cell-after-right: 16px !default;
 $cell-after-border-bottom: 2px solid #f5f6f7 !default;
 $cell-default-icon-margin: 0 4px 0 0px !default;
+$cell-large-title-font: $font-size-large !default;
+$cell-large-title-desc-font: $font-size-base !default;
+$cell-large-padding: 15px 16px !default;
+$cell-background: $white !default;
 
 // cell-group
 
@@ -122,6 +135,10 @@ $divider-text-color: #909ca4 !default;
 $divider-line-height: 2px !default;
 $divider-before-margin-right: 16px !default;
 $divider-after-margin-left: 16px !default;
+$divider-vertical-height: 12px !default;
+$divider-vertical-top: 2px !default;
+$divider-vertical-border-left: rgba(0, 0, 0, 0.06) !default;
+$divider-vertical-margin: 0 8px !default;
 
 // icon
 
@@ -154,7 +171,7 @@ $picker-columns-item-color: $title-color !default;
 //input
 $input-border-bottom: #eaf0fb !default;
 $input-disabled-color: #c8c9cc !default;
-$input-required-color: $primary-color !default;
+$input-required-color: $required-color !default;
 $input-font-size: $font-size-2 !default;
 
 // textarea
@@ -574,6 +591,8 @@ $menu-item-option-padding-top: 12px !default;
 $menu-item-option-padding-bottom: 12px !default;
 $menu-item-option-i-margin-right: 6px !default;
 $menu-bar-box-shadow: 0 2px 12px rgba(89, 89, 89, 0.12) !default;
+$nut-menu-scroll-fixed-top: 0 !default;
+$nut-menu-scroll-fixed-z-index: 1000 !default;
 
 // collapse
 $collapse-item-padding: 13px 36px 13px 26px !default;
@@ -625,9 +644,9 @@ $cascader-item-font-size: $font-size-2 !default;
 $cascader-item-active-color: $primary-color !default;
 
 // form
-$form-item-error-line-color: $primary-color !default;
-$form-item-required-color: $primary-color !default;
-$form-item-error-message-color: $primary-color !default;
+$form-item-error-line-color: $required-color !default;
+$form-item-required-color: $required-color !default;
+$form-item-error-message-color: $required-color !default;
 $form-item-label-font-size: 14px !default;
 $form-item-label-width: 90px !default;
 $form-item-label-margin-right: 10px !default;
@@ -741,9 +760,13 @@ $elevator-list-item-bars-padding: 15px 0 !default;
 $elevator-list-item-bars-background-color: #eeeff2 !default;
 $elevator-list-item-bars-border-radius: 6px !default;
 $elevator-list-item-bars-text-align: center !default;
-$elevator-list-item-bars-z-index: 10 !default;
+$elevator-list-item-bars-z-index: 1 !default;
 $elevator-list-item-bars-inner-item-padding: 3px !default;
 $elevator-list-item-bars-inner-item-font-size: 10px !default;
+$elevator-list-fixed-color: $primary-color !default;
+$elevator-list-fixed-bg-color: $white !default;
+$elevator-list-fixed-box-shadow: 0 0 10px #eee !default;
+$elevator-list-item-bars-inner-item-active-color: $primary-color !default;
 
 // list
 $list-item-margin: 0 0 10px 0 !default;
@@ -751,12 +774,16 @@ $list-item-margin: 0 0 10px 0 !default;
 //Ecard
 $ecard-bg-color: #f0f2f5 !default;
 
+//addresslist
+$addresslist-contnts-contact-default: $primary-color !default;
+$addresslist-contnts-contact-color: $white !default;
+
 //category
 $category-bg-color: rgba(255, 255, 255, 1) !default;
 $category-ListLeft-bg-color: rgba(246, 247, 249, 1) !default;
-$category-ListItem-color: rgba(51, 51, 51, 1) !default;
+$category-ListItem-color: $title-color !default;
 $category-ListItemChecked-color: rgba(255, 255, 255, 1) !default;
-$category-ListItemChecked-img-bg-color: rgba(240, 37, 15, 1) !default;
+$category-ListItemChecked-img-bg-color: $primary-color !default;
 
 // circleProgress
 $circleprogress-primary-color: $primary-color !default;
@@ -769,6 +796,9 @@ $comment-header-user-name-color: rgba(51, 51, 51, 1) !default;
 $comment-header-time-color: rgba(153, 153, 153, 1) !default;
 $comment-bottom-label-color: rgba(153, 153, 153, 1) !default;
 $comment-shop-color: $primary-color !default;
+
+// Ellipsis
+$ellipsis-expand-collapse-color: #3460fa !default;
 
 @import './mixins/index';
 @import './animation/index';

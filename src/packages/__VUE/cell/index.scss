@@ -1,16 +1,34 @@
+.nut-theme-dark {
+  .nut-cell {
+    background: $dark-background;
+    color: $dark-color;
+  }
+}
 .nut-cell {
   position: relative;
   display: flex;
   width: 100%;
   line-height: $cell-line-height;
   padding: $cell-padding;
-  background: $white;
+  background: $cell-background;
   border-radius: $cell-border-radius;
   box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
   font-size: $cell-title-font;
   color: $cell-color;
   margin: 10px 0;
   box-sizing: border-box;
+
+  &--center {
+    align-items: center;
+  }
+
+  &--large {
+    font-size: $cell-large-title-font;
+    padding: $cell-large-padding;
+    .nut-cell__title-desc {
+      font-size: $cell-large-title-desc-font;
+    }
+  }
 
   &:last-child {
     &::after {
@@ -69,6 +87,9 @@
     text-align: right;
     font-size: $cell-desc-font;
     color: $cell-desc-color;
+    &--alone {
+      color: $cell-color;
+    }
   }
   &__link {
     color: #979797;
