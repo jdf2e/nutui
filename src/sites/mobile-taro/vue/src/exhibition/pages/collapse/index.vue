@@ -1,13 +1,5 @@
 <template>
   <div class="demo full">
-    <nut-collapse v-model:active="state.activeName" icon="down-arrow">
-      <nut-collapse-item title="111" :name="1">
-        <nut-button @click="closeCollapse">收起11</nut-button>
-      </nut-collapse-item>
-      <nut-collapse-item title="111" :name="2">
-        <nut-button @click="closeCollapse">收起22</nut-button>
-      </nut-collapse-item>
-    </nut-collapse>
     <h2>基本用法</h2>
     <nut-collapse v-model:active="active1" icon="down-arrow" @change="change">
       <nut-collapse-item :title="title1" :name="1">
@@ -91,15 +83,7 @@ export default {
     //     content.value = "京东到家：教师节期间 创意花束销量增长53倍";
     //   }, 500);
     // })
-    const state = reactive({
-      activeName: [1]
-    });
-    function closeCollapse() {
-      state.activeName = [2];
-    }
     return {
-      state,
-      closeCollapse,
       change,
       ...toRefs(data)
     };
