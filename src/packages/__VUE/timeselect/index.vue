@@ -13,7 +13,8 @@
     <view :class="classes">
       <view class="nut-timeselect__title">
         <view class="nut-timeselect__title__fixed">
-          {{ title || translate('pickupTime') }}
+          <span v-if="!$slots.title">{{ title || translate('pickupTime') }}</span>
+          <slot name="title" v-else></slot>
         </view>
       </view>
       <view class="nut-timeselect__content">
@@ -95,6 +96,7 @@ export default create({
     return {
       classes,
       popStyle,
+      props,
       close,
       translate
     };

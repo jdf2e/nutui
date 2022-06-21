@@ -2,7 +2,7 @@
 
 ### Intro
 
-展示空间不足时，隐去部分内容并用“...”替代。
+Display space is insufficient, hidden part of the content and "..." Alternative.
 
 ### Install
 
