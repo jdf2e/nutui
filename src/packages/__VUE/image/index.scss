@@ -1,0 +1,39 @@
+.nut-image {
+  display: block;
+  position: relative;
+  .nut-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &.nut-image-round {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .nut-img-loading {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f7f8fa;
+  }
+  .nut-img-error {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f7f8fa;
+  }
+}

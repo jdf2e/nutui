@@ -1,3 +1,21 @@
+.nut-theme-dark {
+  .nut-radio {
+    &__label {
+      color: $dark-color;
+      &--disabled {
+        color: $radio-label-disable-color;
+      }
+    }
+    &__button {
+      background: $dark-background;
+      color: $dark-color;
+      &--disabled {
+        color: $radio-label-disable-color;
+        border: 1px solid $radio-label-disable-color;
+      }
+    }
+  }
+}
 .nut-radio {
   display: flex;
   align-items: center;

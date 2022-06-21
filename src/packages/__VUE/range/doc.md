@@ -231,11 +231,7 @@ export default {
 :::
 
 ### 自定义按钮
-```html
 
-
-
-```
 :::demo
 ```html
 <style>
@@ -276,6 +272,7 @@ export default {
 ```
 :::
 
+### 垂直方向
 :::demo
 ```html
 <style>
@@ -316,7 +313,7 @@ export default {
 </script>
 ```
 :::
-
+### 刻度标记
 :::demo
 ```html
 <style>

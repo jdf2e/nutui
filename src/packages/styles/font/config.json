@@ -75,7 +75,9 @@
         "play-start",
         "play-double-back",
         "play-double-forward",
-        "voice"
+        "voice",
+        "image",
+        "image-error"
       ]
     },
     {

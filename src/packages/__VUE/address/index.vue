@@ -1,6 +1,7 @@
 <template>
   <nut-popup
     position="bottom"
+    :lock-scroll="lockScroll"
     @close="close"
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"
