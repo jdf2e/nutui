@@ -542,9 +542,9 @@ export default create({
           state.currDate.forEach((item: string, index: number) => {
             if (
               propStartDate &&
-              Utils.compareDate(propStartDate, item) &&
+              !Utils.compareDate(item, propStartDate) &&
               propEndDate &&
-              Utils.compareDate(item, propEndDate)
+              !Utils.compareDate(propEndDate, item)
             ) {
               if (!obj.hasOwnProperty(item)) {
                 defaultArr.push(item);
