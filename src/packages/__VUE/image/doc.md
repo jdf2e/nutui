@@ -111,7 +111,7 @@ app.use();
 
 ```html
 <template>
-  <nut-image src="https://x" width="100" height="100" showLoading>
+  <nut-image src="https://x" width="100" height="100" showError>
     <template #error> 加载失败 </template>
   </nut-image>
 </template>
