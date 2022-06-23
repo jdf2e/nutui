@@ -81,7 +81,7 @@ export default create({
       default: 9999
     },
     modelValue: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     placeholder: {
@@ -97,13 +97,12 @@ export default create({
 
   setup(props, { emit }) {
     const currentIndex: Ref<number | null | string> = ref(null);
-    const currentValue: Ref<number | null | string> = ref(null);
-    const inputValue: Ref<string | undefined | number> = ref();
+    const currentValue: Ref<number | null | string | undefined> = ref(null);
+    const inputValue: Ref<string | undefined | number> = ref('');
     const stepValue: Ref<number> = ref(props.cardAmountMin);
     const money: Ref<number | string | undefined> = ref(props.modelValue);
     const handleClick = (item: { price: number | string }, index: number) => {
       currentIndex.value = index;
-      inputValue.value = '';
       stepValue.value = props.cardAmountMin;
       currentValue.value = item.price;
       emit('change', item);
@@ -128,7 +127,8 @@ export default create({
     const inputClick = () => {
       currentIndex.value = 'input';
       stepValue.value = props.cardAmountMin;
-      emit('update:modelValue', 0);
+      currentValue.value = inputValue.value;
+      emit('update:modelValue', inputValue.value);
       emit('inputClick');
     };
     const changeStep = (value: number) => {

@@ -72,7 +72,8 @@ class Lang extends BaseLang {
     skuId: 'Sku Number'
   };
   addresslist = {
-    addAddress: 'Add New Address'
+    addAddress: 'Add New Address',
+    default: 'default'
   };
   comment = {
     complaintsText: 'I have a complaint',
@@ -91,6 +92,13 @@ class Lang extends BaseLang {
     hour: 'Hour',
     min: 'Minute',
     seconds: 'Second'
+  };
+  audiooperate = {
+    back: 'Back',
+    start: 'Start',
+    pause: 'Pause',
+    forward: 'Forward',
+    mute: 'Mute'
   };
 }
 export default Lang;

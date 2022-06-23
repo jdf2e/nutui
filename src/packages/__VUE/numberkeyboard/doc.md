@@ -69,7 +69,7 @@ export default{
       type="rightColumn"
       v-model:visible="visible"
       :custom-key="customKey"
-      :confirm-text="支付"
+      confirm-text="支付"
       @input="input"
       @close="close"
     >

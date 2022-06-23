@@ -78,7 +78,7 @@ export default {
 | v-model     | 输入值，支持双向绑定                             | String         | -              |
 | placeholder | 设置占位提示文字                                 | String         | `'请输入内容'` |
 | max-length  | 限制最长输入字符                                 | String、Number | -              |
-| rows        `v3.1.20`| textarea的高度，优先级高于autosize属性                                   | String、Number | `2`            |
+| rows        `v3.1.20`| textarea的高度，优先级高于autosize属性  `仅支持 H5`                                 | String、Number | `2`            |
 | limit-show  | textarea是否展示输入字符。须配合`max-length`使用 | Boolean        | `false`        |
 | autosize    `v3.1.20`| 是否自适应内容高度，也可传入对象, 如 { maxHeight: 200, minHeight: 100 }，单位为px | Boolean 、{maxHeight?: number; minHeight?: number}       | `false`        |
 | text-align  | 文本位置,可选值`left`,`center`,`right`           | String         | `left`         |

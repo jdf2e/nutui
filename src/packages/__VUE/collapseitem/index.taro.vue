@@ -117,7 +117,7 @@ export default create({
       icon: parent.props.icon,
       iconSize: parent.props.iconSize,
       iconColor: parent.props.iconColor,
-      openExpanded: null,
+      openExpanded: false,
       // classDirection: 'right',
       iconStyle: {
         transform: 'rotate(0deg)',
@@ -188,18 +188,30 @@ export default create({
 
     const currentName = computed(() => props.name);
     const toggleOpen = () => {
+      // if (parent.props.accordion) {
+      //   parent.children.forEach((item: any, index: number) => {
+      //     if (currentName.value == item.name) {
+      //       item.changeOpen(!item.openExpanded);
+      //     } else {
+      //       item.changeOpen(false);
+      //       item.animation();
+      //     }
+      //   });
+      //   nextTick(() => {
+      //     parent.changeVal(currentName.value);
+      //     animation();
+      //   });
+      // } else {
+      //   parent.changeValAry(props.name);
+      //   open();
+      // }
       if (parent.props.accordion) {
-        parent.children.forEach((item: any, index: number) => {
-          if (currentName.value == item.name) {
-            item.changeOpen(!item.openExpanded);
-          } else {
-            item.changeOpen(false);
-            item.animation();
-          }
-        });
         nextTick(() => {
-          parent.changeVal(currentName.value);
-          animation();
+          if (currentName.value == parent.props.active) {
+            open();
+          } else {
+            parent.changeVal(currentName.value);
+          }
         });
       } else {
         parent.changeValAry(props.name);

@@ -56,7 +56,7 @@ export default {
       searchValue3: '',
       searchValue4: '',
       searchValue5: '',
-      confirmType: 'search',
+      confirmType: 'search'
     });
 
     const search = function (e: any) {

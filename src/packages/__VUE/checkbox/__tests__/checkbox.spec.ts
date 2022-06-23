@@ -145,15 +145,3 @@ test('should emit "update:modelValue" event when checkbox is clicked', async () 
   wrapper.trigger('click');
   expect(wrapper.emitted('update:modelValue')![1]).toEqual([false]);
 });
-
-// test('should emit change event when modelValue is changed', async () => {
-//   const wrapper = mount(Checkbox);
-
-//   wrapper.trigger('click');
-//   await wrapper.setProps({ modelValue: true });
-//   expect(wrapper.emitted('change')![0]).toEqual([true]);
-
-//   wrapper.trigger('click');
-//   await wrapper.setProps({ modelValue: false });
-//   expect(wrapper.emitted('change')![1]).toEqual([false]);
-// });

@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <h2>基础用法</h2>
+    <h2>{{ translate('basic') }}</h2>
     <nut-addresslist
       :data="data"
       @handelDelIcon="delClick"
@@ -10,7 +10,7 @@
       :dataMapOptions="dataMapOptions"
     >
     </nut-addresslist>
-    <h2>长按功能</h2>
+    <h2>{{ translate('title1') }}</h2>
     <nut-addresslist
       :data="data"
       longPressEdition
@@ -24,7 +24,7 @@
       :dataMapOptions="dataMapOptions"
     >
     </nut-addresslist>
-    <h2>滑动功能</h2>
+    <h2>{{ translate('title1') }}</h2>
     <nut-addresslist
       :data="data"
       swipeEdition
@@ -43,11 +43,25 @@
 <script lang="ts">
 import { createComponent } from '@/packages/utils/create';
 import { toRefs, reactive, onMounted, ref } from 'vue';
-const { createDemo } = createComponent('addresslist');
+const { createDemo, translate } = createComponent('addresslist');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+useTranslate({
+  'zh-CN': {
+    basic: '基本用法',
+    title1: '长按功能',
+    title2: '滑动功能'
+  },
+  'en-US': {
+    basic: 'Basic Usage',
+    title1: 'Long Press Function',
+    title2: 'Swipe Function'
+  }
+});
 export default createDemo({
   props: {},
   setup() {
     // const data = ref([]);
+
     const data = ref([
       {
         testid: 3,
@@ -86,25 +100,25 @@ export default createDemo({
     //     .catch((err) => console.log('Oh, error', err));
     // };
     const itemClick = () => {
-      console.log('点击了地址哦～');
+      console.log('Click To Address');
     };
     const delClick = () => {
-      console.log('点击了删除哦～');
+      console.log('Click To Delete');
     };
     const editClick = () => {
-      console.log('点击了编辑哦～');
+      console.log('Click To Edit');
     };
     const copyClick = () => {
-      console.log('复制成功～');
+      console.log('Click To Copy');
     };
     const holdDownClick = (event: Event, id: number) => {
-      console.log('长按～');
+      console.log('Long Press');
     };
     const setClick = () => {
-      console.log('点击了设置～');
+      console.log('Click On Settings');
     };
     const addAddress = () => {
-      console.log('添加新地址～');
+      console.log('Click To Add');
     };
     return {
       itemClick,
@@ -115,7 +129,8 @@ export default createDemo({
       copyClick,
       setClick,
       addAddress,
-      dataMapOptions
+      dataMapOptions,
+      translate
     };
   }
 });

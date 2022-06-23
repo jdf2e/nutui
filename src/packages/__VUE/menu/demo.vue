@@ -24,6 +24,16 @@
       <nut-menu-item v-model="state.value1" :options="options1" />
       <nut-menu-item v-model="state.value2" @change="handleChange" :options="options2" />
     </nut-menu>
+    <h2>{{ translate('customIcons') }}</h2>
+    <nut-menu>
+      <nut-menu-item v-model="state.value1" :options="options1" titleIcon="joy-smile" />
+      <nut-menu-item v-model="state.value2" @change="handleChange" :options="options2" optionIcon="checklist" />
+    </nut-menu>
+    <h2>{{ translate('expandDirection') }}</h2>
+    <nut-menu direction="up">
+      <nut-menu-item v-model="state.value1" :options="options1" />
+      <nut-menu-item v-model="state.value2" @change="handleChange" :options="options2" />
+    </nut-menu>
     <h2>{{ translate('disableMenu') }}</h2>
     <nut-menu>
       <nut-menu-item disabled v-model="state.value1" :options="options1" />
@@ -46,6 +56,8 @@ useTranslate({
     confirm: '确认',
     twoColsInOneLine: '一行两列',
     customActiveColor: '自定义选中态颜色',
+    customIcons: '自定义图标',
+    expandDirection: '向上展开',
     disableMenu: '禁用菜单',
     allProducts: '全部商品',
     newProducts: '新款商品',
@@ -79,6 +91,8 @@ useTranslate({
     confirm: 'Confirm',
     twoColsInOneLine: 'Two Cols In One Line',
     customActiveColor: 'Custom Active Color',
+    customIcons: 'Custom Icons',
+    expandDirection: 'Expand Direction',
     disableMenu: 'Disable Menu',
     allProducts: 'All Products',
     newProducts: 'New Products',
@@ -87,22 +101,22 @@ useTranslate({
     praiseSort: 'Praise Sort',
     salesVolumeSort: 'Sales Volume Sort',
     product1: 'Product1',
-    product2: 'product2',
-    product3: 'product3',
-    product4: 'product4',
-    product5: 'product5',
-    product6: 'product6',
-    product7: 'product7',
-    product8: 'product8',
-    product9: 'product9',
-    product10: 'product10',
-    product11: 'product11',
-    product12: 'product12',
-    product13: 'product13',
-    product14: 'product14',
-    product15: 'product15',
-    product16: 'Product1',
-    product17: 'Product1'
+    product2: 'Product2',
+    product3: 'Product3',
+    product4: 'Product4',
+    product5: 'Product5',
+    product6: 'Product6',
+    product7: 'Product7',
+    product8: 'Product8',
+    product9: 'Product9',
+    product10: 'Product10',
+    product11: 'Product11',
+    product12: 'Product12',
+    product13: 'Product13',
+    product14: 'Product14',
+    product15: 'Product15',
+    product16: 'Product16',
+    product17: 'Product17'
   }
 });
 export default createDemo({

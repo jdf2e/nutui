@@ -100,5 +100,5 @@ test('input change when less than maxValue', async () => {
   input.trigger('click');
   add.trigger('click');
   await nextTick();
-  expect((wrapper.emitted('update:modelValue') as any)[0][0]).toBe(0);
+  expect((wrapper.emitted('update:modelValue') as any)[0][0]).toBe('');
 });

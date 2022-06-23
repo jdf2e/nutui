@@ -38,6 +38,31 @@
         <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
       </template>
     </nut-timeselect>
+    <h2>更改标题</h2>
+    <nut-cell @click="handleClick3">
+      <span><label>请选择配送时间</label></span>
+    </nut-cell>
+    <nut-timeselect
+      v-model:visible="visible3"
+      height="50%"
+      :current-key="currentKey2"
+      :current-time="currentTime2"
+      @select="handleSelected2"
+    >
+      <template #title>
+        <div class="timeselect-title">
+          <p class="title">我是标题</p>
+          <p class="subtitle">我是副标题</p>
+        </div>
+      </template>
+      <template #pannel>
+        <nut-timepannel name="2月23日(今天)" pannel-key="0" @change="handleChange2"></nut-timepannel>
+        <nut-timepannel name="2月24日(星期三)" pannel-key="1" @change="handleChange2"></nut-timepannel>
+      </template>
+      <template #detail>
+        <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
+      </template>
+    </nut-timeselect>
     <nut-toast :msg="msg" v-model:visible="show" :type="type" :cover="cover" />
   </div>
 </template>
@@ -72,7 +97,8 @@ export default defineComponent({
           key: 1,
           list: ['9:00-10:00', '10:00-11:00']
         }
-      ]
+      ],
+      visible3: false
     });
 
     const toastState = reactive({
@@ -143,6 +169,10 @@ export default defineComponent({
       toastState.cover = false;
     };
 
+    const handleClick3 = () => {
+      state.visible3 = true;
+    };
+
     onMounted(() => {
       state.currentTime1.push({
         key: state.currentKey1,
@@ -164,10 +194,28 @@ export default defineComponent({
       handleChange2,
       handleSelected2,
       selectTime2,
-      handleClick2
+      handleClick2,
+      handleClick3
     };
   }
 });
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.timeselect-title {
+  height: 50px;
+  p {
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    &.title {
+      margin: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    &.subtitle {
+      color: #999;
+    }
+  }
+}
+</style>

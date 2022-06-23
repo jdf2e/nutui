@@ -1,10 +1,10 @@
 <template>
-  <view>
+  <view ref="collapseDom">
     <slot></slot>
   </view>
 </template>
 <script lang="ts">
-import { provide } from 'vue';
+import { provide, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('collapse');
 export default create({
@@ -53,7 +53,36 @@ export default create({
     }
   },
   emits: ['update:active', 'change'],
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
+    const collapseDom: any = ref(null);
+    watch(
+      () => props.active,
+      (newval: any, oldval) => {
+        let domsProps: any = slots?.default?.();
+        let doms: any = collapseDom.value?.children;
+        Array.from(doms).forEach((dom: any, index: number) => {
+          const item = dom['__vueParentComponent']['ctx'];
+          if (typeof newval == 'number' || typeof newval == 'string') {
+            if (newval == domsProps[index].props.name) {
+              item.changeOpen(!item.openExpanded);
+            } else {
+              item.changeOpen(false);
+            }
+          } else if (Object.values(newval) instanceof Array) {
+            if (
+              newval.indexOf(Number(domsProps[index].props.name)) > -1 ||
+              newval.indexOf(String(domsProps[index].props.name)) > -1
+            ) {
+              item.changeOpen(true);
+            } else {
+              item.changeOpen(false);
+            }
+          }
+          item.animation();
+        });
+      }
+    );
+
     const changeVal = (val: string | number | Array<string | number>) => {
       emit('update:active', val);
       emit('change', val);
@@ -85,6 +114,8 @@ export default create({
       changeVal,
       isExpanded
     });
+
+    return { collapseDom };
   }
 });
 </script>

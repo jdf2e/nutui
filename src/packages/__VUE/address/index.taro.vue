@@ -1,6 +1,7 @@
 <template>
   <nut-popup
     position="bottom"
+    :lock-scroll="lockScroll"
     @close="close"
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"
@@ -127,6 +128,7 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, watch, computed, onMounted } from 'vue';
+import { popupProps } from '../popup/index.taro.vue';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 
@@ -154,6 +156,7 @@ interface AddressList {
 export default create({
   inheritAttrs: false,
   props: {
+    ...popupProps,
     modelValue: {
       type: Array,
       default: () => []
