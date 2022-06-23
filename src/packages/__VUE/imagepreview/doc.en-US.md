@@ -309,11 +309,11 @@ app.use(ImagePreview);
 | pagination-visible | Whether to show pagination    | Boolean | false |
 | pagination-color   | Pagination color    | String  | '#fff'  |
 | content-close   | Click image to exit preview    | Boolean  | false  |
-| show-index   | Whether to show index    | Boolean  | true  |
-| closeable   | Whether to show close icon    | Boolean  | false  |
-| close-icon   | Close icon name    | String  | ‘circle-close’  |
-| close-icon-position   |  Close icon position,can be set to `top-left`   | String  | ‘top-right’  |  
-| before-close  | Callback function before close   | (active: number) => boolean | Promise<`boolean`>  | -  | 
+| show-index`v3.1.22`   | Whether to show index    | Boolean  | true  |
+| closeable`v3.1.22`   | Whether to show close icon    | Boolean  | false  |
+| close-icon`v3.1.22`   | Close icon name    | String  | ‘circle-close’  |
+| close-icon-position`v3.1.22`   |  Close icon position,can be set to `top-left`   | String  | ‘top-right’  |  
+| before-close`v3.1.22`  | Callback function before close   | (active: number) => boolean | Promise<`boolean`>  | -  | 
 
 
     
@@ -322,5 +322,5 @@ app.use(ImagePreview);
 |Event|Description|Arguments|
 |--|--|--|
 |close|Emitted when closing ImagePreview|-|
-|change|Emitted when current image changed|无|
+|change`v3.1.22`|Emitted when current image changed|无|
     
