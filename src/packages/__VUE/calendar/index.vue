@@ -168,7 +168,7 @@ export default create({
     // element refs
     const calendarRef = ref<null | HTMLElement>(null);
     const scrollToDate = (date: string) => {
-      console.log(calendarRef.value);
+      // console.log(calendarRef.value);
       calendarRef.value?.scrollToDate(date);
     };
     useExpose({
