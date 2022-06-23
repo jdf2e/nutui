@@ -11,8 +11,10 @@
           v-for="subitem in item.list"
           :key="subitem['id']"
           @click="handleClickItem(item[acceptKey], subitem)"
-          v-html="subitem.name"
-        ></view>
+        >
+          <span v-html="subitem.name" v-if="!$slots.default"></span>
+          <slot :item="subitem" v-else></slot>
+        </view>
       </view>
       <view class="nut-elevator__list__fixed" :style="fixedStyle" v-show="scrollY > 0" v-if="isSticky">
         <span class="fixed-title">{{ indexList[currentIndex][acceptKey] }}</span>
