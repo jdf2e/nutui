@@ -309,6 +309,11 @@ app.use(ImagePreview);
 | pagination-visible | Whether to show pagination    | Boolean | false |
 | pagination-color   | Pagination color    | String  | '#fff'  |
 | content-close   | Click image to exit preview    | Boolean  | false  |
+| show-index   | Whether to show index    | Boolean  | true  |
+| closeable   | Whether to show close icon    | Boolean  | false  |
+| close-icon   | Close icon name    | String  | ‘circle-close’  |
+| close-icon-position   |  Close icon position,can be set to `top-left`   | String  | ‘top-right’  |  
+| before-close  | Callback function before close   | (active: number) => boolean | Promise<`boolean`>  | -  | 
 
 
     
@@ -317,4 +322,5 @@ app.use(ImagePreview);
 |Event|Description|Arguments|
 |--|--|--|
 |close|Emitted when closing ImagePreview|-|
+|change|Emitted when current image changed|无|
     

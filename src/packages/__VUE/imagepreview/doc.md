@@ -309,12 +309,17 @@ app.use(ImagePreview);
 | pagination-visible | 分页指示器是否展示    | Boolean | false |
 | pagination-color   | 分页指示器选中的颜色    | String  | '#fff'  |
 | content-close   | 点击图片可以退出预览    | Boolean  | false  |
+| show-index   | 是否显示页码    | Boolean  | true  |
+| closeable   | 是否显示关闭图标    | Boolean  | false  |
+| close-icon   | 关闭图片名称或图片链接    | String  | ‘circle-close’  |
+| close-icon-position   | 关闭图标位置，可选值：top-left   | String  | ‘top-right’  |  
+| before-close  | 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise   | (active: number) => boolean | Promise<`boolean`>  | -  | 
 
 
-    
 ### Events
 
 |字段|说明|回调参数|
 |--|--|--|
 |close|点击遮罩关闭图片预览时触发|无|
+|change|切换图片时触发| index:当前图片索引|
     
