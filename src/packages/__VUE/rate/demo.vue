@@ -30,10 +30,11 @@
 </template>
 
 <script lang="ts">
-import { reactive, getCurrentInstance } from 'vue';
+import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const { createDemo, translate } = createComponent('rate');
+import { Toast } from '@/packages/nutui.vue';
 useTranslate({
   'zh-CN': {
     basic: '基本用法',
@@ -60,8 +61,6 @@ useTranslate({
 });
 export default createDemo({
   setup() {
-    let { proxy } = getCurrentInstance();
-
     const state = reactive({
       val: 3,
       val1: 3.5,
@@ -73,8 +72,8 @@ export default createDemo({
       val7: 3,
       val8: 3
     });
-    const onChange = (val) => {
-      proxy.$toast.text(val);
+    const onChange = (val: string) => {
+      Toast.text(val);
     };
     return {
       state,
