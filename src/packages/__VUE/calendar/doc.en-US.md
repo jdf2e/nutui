@@ -1,10 +1,10 @@
-# Calendar 日历
+# Calendar
 
-### 介绍
+### Intro
 
-日历，可平铺/弹窗展示
+Calendar, tileable/pop-up display
 
-### 安装
+### Install
 
 ```javascript
 import { createApp } from 'vue';
@@ -19,16 +19,15 @@ app.use(Popup);
 
 ```
 
-## 代码演示
 
-### 基础用法
+### Basic Usage
 :::demo
 ```html
 <template>
   <nut-cell
     :showIcon="true"
-    title="选择单个日期"
-    :desc="date ? `${date} ${dateWeek}` : '请选择'"
+    title="Select Single Date"
+    :desc="date ? `${date} ${dateWeek}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -72,14 +71,14 @@ export default {
 </script>
 ```
 :::
-### 选择日期区间
+### Select Date Range
 :::demo
 ```html
 <template>
   <nut-cell
     :showIcon="true"
-    title="选择日期区间"
-    :desc="date ? `${date[0]}至${date[1]}` : '请选择'"
+    title="Select Date Range"
+    :desc="date ? `${date[0]}-${date[1]}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -128,14 +127,14 @@ export default {
 ```
 :::
 
-### 选择多个日期
+### Select Multiple Date
 :::demo
 ```html
 <template>
  <nut-cell
     :show-icon="true"
-    title="选择多个日期"
-    :desc="date7 && date7.length ? `已选择${date7.length}个日期` : '请选择'"
+    title="Select Multiple Date"
+    :desc="date7 && date7.length ? `${date7.length} dates selected` : 'Please Select Date'"
     @click="openSwitch('isVisible7')"
   >
   </nut-cell>
@@ -185,14 +184,15 @@ export default {
 </script>
 ```
 :::
-### 快捷选择-单选
+
+### Quick Select Single Date
 :::demo
 ```html
 <template>
   <nut-cell
     :showIcon="true"
-    title="选择单个日期"
-    :desc="date ? date : '请选择'"
+    title="Select Single Date"
+    :desc="date ? date : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -236,14 +236,14 @@ export default {
 ```
 :::
 
-### 快捷选择-范围选择
+### Quick Select Date Range
 :::demo
 ```html
 <template>
   <nut-cell
     :showIcon="true"
-    title="选择日期范围"
-    :desc="date ? `${date[0]}至${date[1]}` : '请选择'"
+    title="Select Date Range"
+    :desc="date ? `${date[0]}-${date[1]}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -288,14 +288,14 @@ export default {
 ```
 :::
 
-### 自定义日历按钮
+### Custom Button
 :::demo
 ```html
 <template>
   <nut-cell
     :showIcon="true"
-    title="自定义按钮"
-    :desc="date ? `${date[0]}至${date[1]}` : '请选择'"
+    title="Custom Button"
+    :desc="date ? `${date[0]}-${date[1]}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -310,8 +310,9 @@ export default {
   >
     <template v-slot:btn>
       <div class="wrapper">
-        <div class="d_div"> <span class="d_btn" @click="clickBtn">最近七天</span></div>
-        <div class="d_div"> <span class="d_btn" @click="clickBtn1">当月</span></div>
+        <div class="d_div"> <span class="d_btn" @click="goDate">Go Date</span></div>
+        <div class="d_div"> <span class="d_btn" @click="clickBtn">Last Seven Days</span></div>
+        <div class="d_div"> <span class="d_btn" @click="clickBtn1">This Month</span></div>
       </div>
     </template>
     <template v-slot:day="date">
@@ -324,6 +325,7 @@ export default {
 import { reactive, toRefs } from 'vue';
 export default {
   setup() {
+    const calendarRef = ref(null);
     const state = reactive({
       date: ['2021-12-23', '2021-12-26'],
       isVisible: false
@@ -391,13 +393,19 @@ export default {
       let currMonthDays = getMonthDays(year + '', month + '');
       state.date5 = [`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`];
     };
+    const goDate = () => {
+      if (calendarRef.value) {
+        calendarRef.value.scrollToDate('2022-04-01');
+      }
+    };
     return {
       ...toRefs(state),
       setChooseValue,
       openSwitch,
       closeSwitch,
       clickBtn,
-      clickBtn1
+      clickBtn1,
+      goDate
     };
   }
 }
@@ -425,14 +433,14 @@ export default {
 ```
 :::
 
-### 自定义时间文案
+### Custom Date Text
 :::demo
 ```html
 <template>
   <nut-cell
     :showIcon="true"
-    title="自定义时间文案"
-    :desc="date && date[0] ? `${date[0]}至${date[1]}` : '请选择'"
+    title="Custom Date Text"
+    :desc="date && date[0] ? `${date[0]}-${date[1]}` : 'Please Select Date'"
     @click="openSwitch('isVisible')"
   >
   </nut-cell>
@@ -444,10 +452,10 @@ export default {
     @choose="setChooseValue"
     :start-date="`2022-01-01`"
     :end-date="`2022-12-31`"
-    confirm-text="提交"
-    start-text="入店"
-    end-text="离店"
-    title="日期选择"
+    confirm-text="submit"
+    start-text="Enter"
+    end-text="Leave"
+    title="Select Date"
   >
     <template v-slot:day="date">
       <span>{{ date.date.day <= 9 ? '0' + date.date.day : date.date.day }}</span>
@@ -488,7 +496,7 @@ export default {
 
 ```
 :::
-### 平铺展示
+### Tiled Display
 :::demo
 ```html
 <template>
@@ -532,51 +540,50 @@ export default {
 :::
 
 
-## API
 
 ### Props
 
-| 字段              | 说明                                              | 类型            | 默认值          |
+| Attribute              | Description                                  | Type            | Default  |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
-| v-model:visible   | 是否可见                                          | Boolean         | false           |
-| type              | 类型，日期单择'one'，区间选择'range',日期多选'multiple'    | String          | 'one'           |
-| poppable          | 是否弹窗状态展示                                  | Boolean         | true            |
-| is-auto-back-fill | 自动回填                                          | Boolean         | false           |
-| title             | 显示标题                                          | String          | ‘日期选择’      |
-| default-value     | 默认值，单个日期选择 String，其他为 Array  | String 、 Array | null            |
-| start-date        | 开始日期， 如果不限制开始日期传 null              | String          | 今天            |
-| end-date          | 结束日期，如果不限制结束日期传 null               | String          | 距离今天 365 天 |
-| show-today          | 是否展示今天标记               | Boolean          | true |
-| start-text         | 范围选择，开始信息文案               | String          | ’开始‘ |
-| end-text         | 范围选择，结束信息文案               | String          | ‘结束’ |
-| confirm-text          | 底部确认按钮文案               | String          | ’确认‘ |
-| show-title          | 是否在展示日历标题               | Boolean          | true |
-| show-sub-title          | 是否展示日期标题              | Boolean          | true |
+| v-model:visible   | whether to show                  | Boolean         | false           |
+| type              | Calendar type ：'one' 'range' 'multiple'    | String          | 'one'           |
+| poppable          | Whether to display the pop-up window                                  | Boolean         | true            |
+| is-auto-back-fill | Automatic backfill                                          | Boolean         | false           |
+| title             | whether to show title                                          | String          | ‘Calendar’      |
+| default-value     | Default value, select single date : `String`，other: `Array` | String 、 Array | null            |
+| start-date        | The start date, or null if the start date is not limited             | String          | Today            |
+| end-date          | The end date, or null if the end date is not limited              | String          | 365 days from today |
+| show-today          | Whether to show today's mark               | Boolean          | true |
+| start-text         | Range selection, start part of the text              | String          | Start |
+| end-text         | Range selection, end part of the text            | String          | End |
+| confirm-text          | Bottom confirm button text               | String          | ’Confirm‘ |
+| show-title          | Whether to show the calendar title               | Boolean          | true |
+| show-sub-title          | Whether to display the date title              | Boolean          | true |
 
 ### Events
 
-| 事件名 | 说明                         | 回调参数                     |
+| Event | Description                         | Arguments                     |
 |--------|------------------------------|------------------------------|
-| choose | 选择之后或是点击确认按钮触发 | 日期数组（包含年月日和星期） |
-| close  | 关闭时触发                   | -                            |
-| select  | 点击/选择后触发              |  Day:object                          |
+| choose | Triggered after selection or by clicking the confirm button | Array of dates (including year, month, day and week) |
+| close  | Triggered when closed                   | -                            |
+| select  | Triggered after click/select             |  Day:object                          |
 
 
 
 ### Slots
 
-| 名称    | 说明         |
+| Name    | Description         |
 |---------|--------------|
-| btn | 	自定义日历标题下部，可用以添加自定义操作 |
-| day | 	日期信息 |
-| topInfo | 	日期顶部信息 |
-| bottomInfo | 	日期底部信息 |
+| btn | 	Below the custom calendar header, you can add custom actions |
+| day | 	Date information |
+| topInfo | 	Date top information |
+| bottomInfo | 	Date bottom information |
 
 ### Methods
 
-通过 [ref](https://vuejs.org/guide/essentials/template-refs.html) 可以获取到 Calendar 实例并调用实例方法。
+Through [ref](https://vuejs.org/guide/essentials/template-refs.html), you can get the Calendar instance and call the instance method.
 
 
-| 方法名 | 说明             | 参数          |
+| Name | Description             | Arguments          |
 |--------|------------------|---------------|
-| scrollToDate   | 滚动到指定日期所在月 | string:'2021-12-30' |
+| scrollToDate   | Scroll to the month of the specified date | string:'2021-12-30' |
