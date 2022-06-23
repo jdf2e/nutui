@@ -104,7 +104,6 @@ const subPackages = [
     ]
   }
 ];
-
 export default {
   pages: ['pages/index/index'],
   subPackages,
