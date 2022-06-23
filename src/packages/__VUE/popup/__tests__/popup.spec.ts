@@ -65,7 +65,7 @@ test('should lock scroll when showed', async () => {
   });
 
   await wrapper.setProps({ visible: true });
-  expect(document.body.classList.contains('nut-overflow-hidden')).toBeTruthy();
+  expect(document.body.classList.contains('nut-overflow-hidden')).toBeFalsy();
 });
 
 test('should not render overlay when overlay prop is false', () => {
