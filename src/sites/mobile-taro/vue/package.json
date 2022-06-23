@@ -41,7 +41,7 @@
     "@tarojs/mini-runner": "^3.4.10",
     "@tarojs/runtime": "^3.4.10",
     "@tarojs/taro": "^3.4.10",
-    "vue": "3.2.34"
+    "vue": "3.2.37"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
