@@ -622,12 +622,9 @@ export default create({
       } else if (!Utils.compareDate(date, state.propEndDate)) {
         date = state.propEndDate;
       }
-      console.log(date);
       let dateArr = splitDate(date);
       state.monthsData.forEach((item, index) => {
         if (item.title == translate('monthTitle', dateArr[0], dateArr[1])) {
-          // if (months.value) {
-
           if (props.toDateAnimation) {
             Taro.createSelectorQuery()
               .select('.nut-calendar-content')
@@ -639,8 +636,6 @@ export default create({
                   flag++;
                   if (months.value) {
                     let offset = distance / 10;
-                    console.log('scrolltodate ', distance, offset);
-
                     state.scrollTop = state.scrollTop + offset;
                   }
                   if (flag >= 10) {
@@ -655,7 +650,6 @@ export default create({
           } else {
             state.scrollTop = state.monthsData[index].cssScrollHeight;
           }
-          // }
         }
       });
     };

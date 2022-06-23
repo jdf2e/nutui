@@ -1,6 +1,6 @@
 <template>
   <view class="nut-animate">
-    <view :class='classes' @click='handleClick'>
+    <view :class="classes" @click="handleClick">
       <slot></slot>
     </view>
   </view>
@@ -38,19 +38,18 @@ export default create({
       return {
         'nut-ani-container': true,
         [`${prefixCls}-${type.value}`]: action.value === 'initial' || state.clicked ? type.value : false,
-        'loop': loop.value,
+        loop: loop.value
       };
     });
 
     const handleClick = (event: Event) => {
-
-      state.clicked = true
+      state.clicked = true;
 
       //如果不是无限循环，清除类名
       if (!loop.value) {
         setTimeout(() => {
-          state.clicked = false
-        }, 1000)
+          state.clicked = false;
+        }, 1000);
       }
 
       emit('click', event);
