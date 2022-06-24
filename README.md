@@ -67,7 +67,7 @@
 <p>
   <!--
    <img src="https://img10.360buyimg.com/imagetools/jfs/t1/200153/16/20367/65061/61b87cf5Edd8c846b/0f64b38d096f9ab9.jpg" height="250" alt="NutUI" /> -->
-   <img src="https://img13.360buyimg.com/imagetools/jfs/t1/180247/9/25557/66386/62b57a87E0bfacb11/9c443d69b39bce4f.png" height="250" alt="NutUI" />
+   <img src="https://img14.360buyimg.com/imagetools/jfs/t1/82310/37/20242/66386/62b57bb6Ebcad837d/a57b1fcdcc61dcc7.png" height="250" alt="NutUI" />
 </p>
 
 ## 版本说明
