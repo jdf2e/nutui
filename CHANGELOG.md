@@ -1,3 +1,51 @@
+## v3.1.22
+
+`2022-06-24`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @mushroomli @renbaoshuo @yoyo837 @remxcode
+
+* 🌍 feat: 组件文档支持国际化 @nutui-teams
+* :sparkles: feat: 新增 Animate 动画/动效 组件 @mushroomli
+* :sparkles: feat: 新增 Image 图片展示组件 @yangxiaolu1993
+* :sparkles: feat: 新增 Ellipsis 文本省略 @yangxiaolu1993
+* :sparkles: feat: 新增 ConfigProvider 暗黑模式切换 @richard1015
+* :sparkles: feat(calendar): 日历范围中的开始结束日期在同一月份，日历空白问题 (#1405) @lkjh3214
+* :sparkles: feat(elevator): add index ceiling capacity @szg2008
+* :sparkles: feat(checkbox): 增加选择限制，反选，半选功能  @szg2008
+* :sparkles: feat(cell): add attr size & title slot @richard1015
+* :sparkles: feat(dialog): add popClass、popStyle、beforeClose @richard1015
+* :sparkles: feat(form): add form-item slot label #1361 @richard1015
+* :sparkles: feat(button): 细化两个变量 (#1389) @yoyo837
+* :sparkles: feat(menu): 增加向上弹出和自定义选项图标等新能力 (#1346) @yangjinjun3
+* :sparkles: feat(timeselect): 标题支持html @szg2008
+* :sparkles: feat(rate): add attr touchable @richard1015
+* :sparkles: feat(elevator): add default slot for item(#1379) @szg2008
+* :sparkles: feat: imagepreview 部分功能补齐 (#1412) @yangxiaolu1993
+* :sparkles: feat: input组件新增input slot插槽 (#1418) @ailululu
+* :zap: chore: support highlight for JetBrains web-types @szg2008
+* :zap: chore: fix: d.ts error @szg2008
+* :zap: chore: fix locale types @richard1015
+* :zap: chore: add rollup terser option(drop_console) #1363 @richard1015
+* :bug: fix: collaspe 数据更新问题处理 (#1401) @Ymm0008
+* :bug: fix(address): add lock-scroll props @szg2008
+* :bug: fix(uploader): alipay upload error #1322  @richard1015
+* :bug: fix(form): taro h5 env button submit bug #1350 @richard1015
+* :bug: fix(radio): unactive boder width setting  @richard1015
+* :bug: fix(input): taro升级maxlength问题、部分组件国际化 @ailululu
+* :bug: fix(circleprogress): taro gradient color position error (#1371) @Drjingfubo
+* :bug: fix(tabs): text word-break #1344 @richard1015
+* :bug: fix(timeselect): add lock-scroll props(#1343) @szg2008
+* :bug: fix(uploader): taro env types error @richard1015
+* :bug: fix(tabs): add autoHeight #1066 @richard1015
+* :bug: fix(toast): demo 路由切换时toast 不消失 bug @richard1015
+* 📖docs(overlay): lock-scroll attribute of overlay should be true (#1380) @remxcode
+* 📖docs(form): validator rule attr del  @richard1015
+* 📖doc: calendar 文档修改 (#1410) @lkjh3214
+* 📖docs(elevator): 增加吸顶props @szg2008
+* 🍭style: fix font family of highlighted code (#1354) @renbaoshuo
+
+
 ## v3.1.21
 
 `2022-05-30`
