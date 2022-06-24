@@ -33,6 +33,8 @@
 <script lang="ts">
 import { computed, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import Price from '../price/index.vue';
+import Tag from '../tag/index.vue';
 const { create } = createComponent('card');
 export default create({
   props: {
