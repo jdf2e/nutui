@@ -1,97 +1,120 @@
 <template>
   <view :class="classes">
-    <view v-if="leftIcon && leftIcon.length > 0" class="nut-input-left-icon" @click="onClickLeftIcon">
-      <nut-icon :name="leftIcon" :size="leftIconSize"></nut-icon>
-    </view>
-    <view
-      v-if="label"
-      class="nut-input-label"
-      :class="labelClass"
-      :style="{
-        width: `${labelWidth}px`,
-        textAlign: labelAlign
-      }"
-    >
-      <view class="label-string">
-        {{ label }}
-        {{ colon ? ':' : '' }}
-      </view>
-    </view>
-    <view class="nut-input-value">
-      <view class="nut-input-inner">
-        <div class="nut-input-box">
-          <textarea
-            v-if="type == 'textarea'"
-            class="input-text"
-            ref="inputRef"
-            :style="stylesTextarea"
-            :maxlength="maxLength"
-            :placeholder="placeholder || translate('placeholder')"
-            placeholder-class="nut-placeholder"
-            :disabled="disabled"
-            :readonly="readonly"
-            :value="modelValue"
-            :formatTrigger="formatTrigger"
-            :autofocus="autofocus"
-            :adjust-position="adjustPosition"
-            @input="onInput"
-            @focus="onFocus"
-            @blur="onBlur"
-            @click="onClickInput"
-          />
-          <input
-            v-else
-            class="input-text"
-            ref="inputRef"
-            :style="styles"
-            :type="inputType(type)"
-            :maxlength="maxLength"
-            :placeholder="placeholder || translate('placeholder')"
-            placeholder-class="nut-placeholder"
-            :disabled="disabled"
-            :readonly="readonly"
-            :value="modelValue"
-            :formatTrigger="formatTrigger"
-            :autofocus="autofocus"
-            :confirm-type="confirmType"
-            :adjust-position="adjustPosition"
-            @input="onInput"
-            @focus="onFocus"
-            @blur="onBlur"
-            @click="onClickInput"
-          />
-          <view v-if="readonly" class="nut-input-disabled-mask"></view>
-        </div>
-        <div class="nut-input-clear-box">
-          <nut-icon
-            class="nut-input-clear"
-            v-if="clearable && !readonly"
-            v-show="active && modelValue.length > 0"
-            :name="clearIcon"
-            :size="clearSize"
-            @click="clear"
-          >
-          </nut-icon>
-        </div>
-        <view v-if="rightIcon && rightIcon.length > 0" class="nut-input-right-icon" @click="onClickRightIcon">
-          <nut-icon :name="rightIcon" :size="rightIconSize"></nut-icon>
-        </view>
-        <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
-      </view>
-      <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
-        <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
-        >/{{ maxLength }}
-      </view>
+    <template v-if="$slots.input">
       <view
-        v-if="errorMessage"
-        class="nut-input-error-message"
+        v-if="label"
+        class="nut-input-label"
+        :class="labelClass"
         :style="{
-          textAlign: errorMessageAlign
+          width: `${labelWidth}px`,
+          textAlign: labelAlign
         }"
       >
-        {{ errorMessage }}
+        <view class="label-string">
+          {{ label }}
+          {{ colon ? ':' : '' }}
+        </view>
       </view>
-    </view>
+      <view class="nut-input-value">
+        <view class="nut-input-inner" @click="onClickInput">
+          <slot name="input"></slot>
+        </view>
+      </view>
+    </template>
+    <template v-else>
+      <view v-if="leftIcon && leftIcon.length > 0" class="nut-input-left-icon" @click="onClickLeftIcon">
+        <nut-icon :name="leftIcon" :size="leftIconSize"></nut-icon>
+      </view>
+      <view
+        v-if="label"
+        class="nut-input-label"
+        :class="labelClass"
+        :style="{
+          width: `${labelWidth}px`,
+          textAlign: labelAlign
+        }"
+      >
+        <view class="label-string">
+          {{ label }}
+          {{ colon ? ':' : '' }}
+        </view>
+      </view>
+      <view class="nut-input-value">
+        <view class="nut-input-inner">
+          <div class="nut-input-box">
+            <textarea
+              v-if="type == 'textarea'"
+              class="input-text"
+              ref="inputRef"
+              :style="stylesTextarea"
+              :maxlength="maxLength"
+              :placeholder="placeholder || translate('placeholder')"
+              placeholder-class="nut-placeholder"
+              :disabled="disabled"
+              :readonly="readonly"
+              :value="modelValue"
+              :formatTrigger="formatTrigger"
+              :autofocus="autofocus"
+              :adjust-position="adjustPosition"
+              @input="onInput"
+              @focus="onFocus"
+              @blur="onBlur"
+              @click="onClickInput"
+            />
+            <input
+              v-else
+              class="input-text"
+              ref="inputRef"
+              :style="styles"
+              :type="inputType(type)"
+              :maxlength="maxLength"
+              :placeholder="placeholder || translate('placeholder')"
+              placeholder-class="nut-placeholder"
+              :disabled="disabled"
+              :readonly="readonly"
+              :value="modelValue"
+              :formatTrigger="formatTrigger"
+              :autofocus="autofocus"
+              :confirm-type="confirmType"
+              :adjust-position="adjustPosition"
+              @input="onInput"
+              @focus="onFocus"
+              @blur="onBlur"
+              @click="onClickInput"
+            />
+            <view v-if="readonly" class="nut-input-disabled-mask"></view>
+          </div>
+          <div class="nut-input-clear-box">
+            <nut-icon
+              class="nut-input-clear"
+              v-if="clearable && !readonly"
+              v-show="active && modelValue.length > 0"
+              :name="clearIcon"
+              :size="clearSize"
+              @click="clear"
+            >
+            </nut-icon>
+          </div>
+          <view v-if="rightIcon && rightIcon.length > 0" class="nut-input-right-icon" @click="onClickRightIcon">
+            <nut-icon :name="rightIcon" :size="rightIconSize"></nut-icon>
+          </view>
+          <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
+        </view>
+        <view v-if="showWordLimit && maxLength" class="nut-input-word-limit">
+          <span class="nut-input-word-num">{{ modelValue ? modelValue.length : 0 }}</span
+          >/{{ maxLength }}
+        </view>
+        <view
+          v-if="errorMessage"
+          class="nut-input-error-message"
+          :style="{
+            textAlign: errorMessageAlign
+          }"
+        >
+          {{ errorMessage }}
+        </view>
+      </view>
+    </template>
   </view>
 </template>
 <script lang="ts">
@@ -165,7 +188,7 @@ export default create({
     },
     maxLength: {
       type: [String, Number],
-      default: ''
+      default: '9999'
     },
     leftIconSize: {
       type: [String, Number],
@@ -301,12 +324,12 @@ export default create({
       }
     };
 
-    const formValue = computed(() => {
-      if (customValue.value && slots.input) {
-        return customValue.value();
-      }
-      return props.modelValue;
-    });
+    // const formValue = computed(() => {
+    //   if (customValue.value && slots.input) {
+    //     return customValue.value();
+    //   }
+    //   return props.modelValue;
+    // });
 
     const onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;

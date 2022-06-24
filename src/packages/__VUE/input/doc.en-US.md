@@ -531,6 +531,8 @@ The user can enter content in the text box. Configure the icons on both sides of
 | Name  | Description     | 
 |-------|----------|
 | button | Insert button |
+| input `v3.1.22` | Custom input |
+
 
 
 
