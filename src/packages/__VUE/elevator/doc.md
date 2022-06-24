@@ -234,7 +234,7 @@ app.use(Elevator);
 
 ``` html
 <template>
-  <nut-elevator :index-list="dataList3" :height="220"  @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
+  <nut-elevator :index-list="dataList3" :is-sticky="true" :height="220"  @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
