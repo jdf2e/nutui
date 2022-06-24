@@ -134,7 +134,7 @@ app.use(OverLay);
 | duration               | 动画时长，单位秒 | String, Number | `0.3`    |
 | overlay-class          | 自定义遮罩类名   | String         | -      |
 | overlay-style          | 自定义遮罩样式   | CSSProperties  | -      |
-| lock-scroll            | 背景是否锁定(`小程序不支持`)     | Boolean        | `true`  |
+| lock-scroll            | 背景是否锁定(`小程序不支持`)     | Boolean        | `false`  |
 | close-on-click-overlay | 是否点击遮罩关闭 | Boolean        | `true`   |
 
 ### Events

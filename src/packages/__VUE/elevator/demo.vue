@@ -24,6 +24,15 @@
         @click-index="clickIndex"
       ></nut-elevator>
     </div>
+    <h2>{{ translate('customContent') }}</h2>
+    <div class="elevator-wrapper">
+      <nut-elevator :index-list="temp" :height="260" @click-item="clickItem" @click-index="clickIndex">
+        <template v-slot:default="slotProps">
+          <nut-icon name="JD" size="12"></nut-icon>
+          <span :style="{ marginLeft: '15px' }">{{ slotProps.item.name }}</span>
+        </template>
+      </nut-elevator>
+    </div>
   </div>
 </template>
 
@@ -37,6 +46,7 @@ useTranslate({
     basic: '基本用法',
     customIndex: '自定义索引key',
     sticky: '索引吸顶',
+    customContent: '自定义内容',
     anhui: '安徽',
     beijing: '北京',
     guangxi: '广西',
@@ -82,6 +92,7 @@ useTranslate({
     basic: 'Basic Usage',
     customIndex: 'Custom index key',
     sticky: 'Index ceiling',
+    customContent: 'Custom content',
     anhui: 'AnHui',
     beijing: 'BeiJing',
     guangxi: 'GuangXi',

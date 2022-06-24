@@ -18,19 +18,15 @@ import { reactive, toRefs, computed, PropType, useSlots, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import { pxCheck } from '../../utils/pxCheck';
 const { componentName, create } = createComponent('image');
-
-export type ImageFit = 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
-export type ImagePosition = 'center' | 'top' | 'right' | 'bottom' | 'left' | string;
-
 export default create({
   props: {
     src: String,
     fit: {
-      type: String as PropType<ImageFit>,
+      type: String as PropType<import('./type').ImageFit>,
       default: 'fill'
     },
     position: {
-      type: String as PropType<ImagePosition>,
+      type: String as PropType<import('./type').ImagePosition>,
       default: 'center'
     },
     alt: {

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`image load error 1`] = `
+"<view class=\\"nut-image\\" style=\\"width: 100px; height: 100px;\\"><img class=\\"nut-img\\" src=\\"https://x\\" alt=\\"\\" style=\\"object-fit: fill; object-position: center;\\">
+  <!--v-if-->
+  <view class=\\"nut-img-error\\"><i class=\\"nutui-iconfont nut-icon nut-icon-image-error\\" src=\\"\\"></i></view>
+</view>"
+`;
+
+exports[`image loading 1`] = `
+"<view class=\\"nut-image\\" style=\\"width: 100px; height: 100px;\\"><img class=\\"nut-img\\" src=\\"\\" alt=\\"\\" style=\\"object-fit: fill; object-position: center;\\">
+  <view class=\\"nut-img-loading\\"><i class=\\"nutui-iconfont nut-icon nut-icon-image\\" src=\\"\\"></i></view>
+  <!--v-if-->
+</view>"
+`;
+
+exports[`image render 1`] = `
+"<view class=\\"nut-image\\" style=\\"width: 100px; height: 100px;\\"><img class=\\"nut-img\\" src=\\"//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg\\" alt=\\"\\" style=\\"object-fit: fill; object-position: center;\\">
+  <!--v-if-->
+  <!--v-if-->
+</view>"
+`;
+
+exports[`image render Round 1`] = `
+"<view class=\\"nut-image nut-image-round\\" style=\\"width: 100px; height: 100px;\\"><img class=\\"nut-img\\" src=\\"//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg\\" alt=\\"\\" style=\\"object-fit: fill; object-position: center;\\">
+  <!--v-if-->
+  <!--v-if-->
+</view>"
+`;
