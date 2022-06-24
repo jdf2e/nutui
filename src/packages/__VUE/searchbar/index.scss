@@ -1,3 +1,24 @@
+.nut-theme-dark {
+  .nut-searchbar {
+    background: $dark-background;
+    &__search-label {
+      color: $dark-color;
+    }
+    .nut-searchbar__input-clear {
+      & .nut-searchbar__nut-icon-mask-close {
+        color: $dark-color;
+        &:hover {
+          cursor: pointer;
+          color: $dark-color;
+        }
+      }
+    }
+    &__right-search-icon,
+    &__left-search-icon {
+      color: $dark-color;
+    }
+  }
+}
 .nut-searchbar {
   display: flex;
   align-items: center;

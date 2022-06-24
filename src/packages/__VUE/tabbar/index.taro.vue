@@ -28,7 +28,7 @@ export default create({
     },
     unactiveColor: {
       type: String,
-      default: '#000000'
+      default: ''
     },
     activeColor: {
       type: String,

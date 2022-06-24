@@ -1,3 +1,14 @@
+.nut-theme-dark {
+  .nut-form-item {
+    &__body {
+      &__slots {
+        .nut-input-text {
+          color: $dark-color;
+        }
+      }
+    }
+  }
+}
 .nut-form-item {
   display: flex;
   &::before {
@@ -51,6 +62,7 @@
         outline: 0 none;
         border: 0;
         text-decoration: none;
+        background: transparent;
       }
       .nut-range-container {
         min-height: 24px;

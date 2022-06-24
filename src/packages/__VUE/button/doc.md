@@ -151,7 +151,7 @@ app.use(Button);
   <nut-button size="large" type="primary">大号按钮</nut-button>
   <nut-button type="primary">普通按钮</nut-button>
   <nut-button size="small" type="primary">小型按钮</nut-button>
-  <nut-button size="mini" type="primary">小型按钮</nut-button>
+  <nut-button size="mini" type="primary">迷你按钮</nut-button>
 </template>
 ```
 

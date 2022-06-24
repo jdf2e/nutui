@@ -548,6 +548,7 @@ app.use(Elevator);
 | exist-address-title| 已有地址文案 ，type=‘exist’ 时生效| String | '配送至'
 | custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| String | '选择其他地址'
 | columns-placeholder | 列提示文字 | String|Array | '请选择'
+| lock-scroll  | 背景是否锁定      | Boolean        | `true`       
 
 
   * provinceName 省的名字

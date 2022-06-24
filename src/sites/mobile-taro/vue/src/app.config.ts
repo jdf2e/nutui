@@ -1,7 +1,15 @@
-const subpackages = [
+const subPackages = [
   {
     root: 'base',
-    pages: ['pages/button/index', 'pages/cell/index', 'pages/icon/index', 'pages/overlay/index', 'pages/popup/index']
+    pages: [
+      'pages/button/index',
+      'pages/cell/index',
+      'pages/icon/index',
+      'pages/overlay/index',
+      'pages/popup/index',
+      'pages/configprovider/index',
+      'pages/image/index'
+    ]
   },
   {
     root: 'layout',
@@ -76,7 +84,8 @@ const subpackages = [
       'pages/popover/index',
       'pages/skeleton/index',
       'pages/collapse/index',
-      'pages/table/index'
+      'pages/table/index',
+      'pages/ellipsis/index'
     ]
   },
   {
@@ -98,7 +107,7 @@ const subpackages = [
 
 export default {
   pages: ['pages/index/index'],
-  subpackages,
+  subPackages,
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',

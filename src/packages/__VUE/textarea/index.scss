@@ -1,3 +1,11 @@
+.nut-theme-dark {
+  .nut-textarea {
+    background: $dark-background;
+    &__textarea {
+      color: $dark-color;
+    }
+  }
+}
 .nut-textarea {
   position: relative;
   width: 100%;
