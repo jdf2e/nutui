@@ -1,0 +1,299 @@
+.nut-animate {
+  .nut-ani-container {
+    display: inline-block;
+  }
+
+  /* Animation css */
+  [class*='nut-animate-'] {
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+  }
+
+  //抖动
+  .nut-animate-shake {
+    animation-name: shake;
+  }
+
+  //心跳
+  .nut-animate-ripple {
+    animation-name: ripple;
+  }
+
+  // 漂浮
+
+  .nut-animate-float {
+    position: relative;
+    animation-name: float-pop;
+  }
+
+  //呼吸灯
+  .nut-animate-breath {
+    animation-name: breath;
+    animation-duration: 2700ms;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+  }
+
+  //右侧向左侧划入
+  .nut-animate-slide-right {
+    animation-name: slide-right;
+  }
+
+  //右侧向左侧划入
+  .nut-animate-slide-left {
+    animation-name: slide-left;
+  }
+
+  //上面向下面划入
+  .nut-animate-slide-top {
+    animation-name: slide-top;
+  }
+
+  //下面向上面划入
+  .nut-animate-slide-bottom {
+    animation-name: slide-bottom;
+  }
+
+  .nut-animate-jump {
+    transform-origin: center center;
+    animation: jump 0.7s linear;
+  }
+
+  //循环
+  .loop {
+    animation-iteration-count: infinite;
+  }
+
+  //抖动动画
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+
+    10% {
+      transform: translateX(-9px);
+    }
+
+    20% {
+      transform: translateX(8px);
+    }
+
+    30% {
+      transform: translateX(-7px);
+    }
+
+    40% {
+      transform: translateX(6px);
+    }
+
+    50% {
+      transform: translateX(-5px);
+    }
+
+    60% {
+      transform: translateX(4px);
+    }
+
+    70% {
+      transform: translateX(-3px);
+    }
+
+    80% {
+      transform: translateX(2px);
+    }
+
+    90% {
+      transform: translateX(-1px);
+    }
+  }
+
+  //心跳
+  @keyframes ripple {
+    0% {
+      //box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.4);
+      transform: scale(1);
+    }
+    50% {
+      //box-shadow: 0 1em 1em rgba(0, 0, 0, 0.4);
+      transform: scale(1.1);
+    }
+  }
+
+  //呼吸
+  @keyframes breath {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  //右侧向左侧划入
+  @keyframes slide-right {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  //左侧向右侧划入
+  @keyframes slide-left {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  //上面向下面划入
+  @keyframes slide-top {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  //下面向上面划入
+  @keyframes slide-bottom {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  // 漂浮 float
+  @keyframes float-pop {
+    0% {
+      top: 0px;
+    }
+
+    25% {
+      top: 1px;
+    }
+
+    50% {
+      top: 4px;
+    }
+
+    75% {
+      top: 1px;
+    }
+
+    100% {
+      top: 0px;
+    }
+  }
+
+  //跳跃
+  @keyframes jump {
+    0% {
+      animation-timing-function: ease-in;
+      transform: rotate(0deg) translateY(0);
+    }
+    25% {
+      animation-timing-function: ease-out;
+      transform: rotate(10deg) translateY(20 * 1px);
+    }
+    50% {
+      animation-timing-function: ease-in;
+      transform: rotate(0deg) translateY(-10 * 1px);
+    }
+    75% {
+      animation-timing-function: ease-out;
+      transform: rotate(-10deg) translateY(20 * 1px);
+    }
+    100% {
+      animation-timing-function: ease-in;
+      transform: rotate(0deg) translateY(0);
+    }
+  }
+
+  .nut-animate-twinkle {
+    position: relative;
+    &::after,
+    &::before {
+      width: 60 * 1px;
+      height: 60 * 1px;
+      content: '';
+      box-sizing: border-box;
+      border: 4 * 1px solid rgba(255, 255, 255, 0.6);
+      position: absolute;
+      border-radius: calc(60 / 2) * 1px;
+      right: 50%;
+      margin-top: calc(-30 / 2) * 1px;
+      margin-right: calc(-60 / 2) * 1px;
+      z-index: 1;
+      transform: scale(0);
+      animation: twinkle 2s ease-out infinite;
+    }
+
+    &::after {
+      animation-delay: 0.4s;
+    }
+  }
+
+  // 水波
+  @keyframes twinkle {
+    0% {
+      transform: scale(0);
+    }
+    20% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      transform: scale(1.4);
+      opacity: 0;
+    }
+  }
+
+  .nut-animate-flicker {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      width: 100 * 1px;
+      height: 60 * 1px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0.73;
+      content: '';
+      background-image: linear-gradient(106deg, rgba(232, 224, 255, 0) 24%, #e8e0ff 91%);
+      animation: flicker 1.5s linear infinite;
+      transform: skewX(-20deg);
+      filter: blur(3 * 1px);
+    }
+  }
+
+  @keyframes flicker {
+    0% {
+      transform: translateX(-100 * 1px) skewX(-20deg);
+    }
+    40%,
+    100% {
+      transform: translateX(150 * 1px) skewX(-20deg);
+    }
+  }
+}

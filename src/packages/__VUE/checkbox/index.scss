@@ -1,3 +1,13 @@
+.nut-theme-dark {
+  .nut-checkbox {
+    &__label {
+      color: $dark-color;
+      &--disabled {
+        color: $checkbox-label-disable-color;
+      }
+    }
+  }
+}
 .nut-checkbox {
   display: flex;
   align-items: center;

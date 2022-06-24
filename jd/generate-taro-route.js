@@ -33,10 +33,10 @@ const create = async () => {
   fse.writeFileSync(
     taroConfig,
     `
-const subpackages = ${JSON.stringify(subpackages, null, 2)};\n
+const subPackages = ${JSON.stringify(subpackages, null, 2)};\n
 export default {
   pages: ['pages/index/index'],
-  subpackages,
+  subPackages,
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',

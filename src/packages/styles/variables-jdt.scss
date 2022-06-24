@@ -17,6 +17,12 @@ $white: #fff !default;
 $black: #000 !default;
 $required-color: #fa2c19 !default;
 
+$dark-background: #1a1919 !default;
+$dark-background2: #1d1b1c !default;
+$dark-background3: #141414 !default;
+$dark-color: $white !default;
+$dark-color-gray: $text-color !default;
+
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif !default;
 
 // ---- Animation ----
@@ -55,8 +61,10 @@ $button-block-height: 48px !default;
 $button-default-line-height: 36px !default;
 $button-block-line-height: 46px !default;
 $button-default-font-size: $font-size-3 !default;
+$button-large-font-size: $button-default-font-size !default;
 $button-small-font-size: $font-size-2 !default;
 $button-mini-font-size: $font-size-1 !default;
+$button-mini-line-height: 1.2 !default;
 $button-disabled-opacity: 0.68 !default;
 $button-primary-color: $white !default;
 $button-primary-border-color: $primary-color !default;
@@ -89,6 +97,10 @@ $cell-line-height: 22px !default;
 $cell-after-right: 0 !default;
 $cell-after-border-bottom: 2px solid rgba(0, 0, 0, 0.1) !default;
 $cell-default-icon-margin: 0 4px 0 0px !default;
+$cell-large-title-font: $font-size-large !default;
+$cell-large-title-desc-font: $font-size-base !default;
+$cell-large-padding: 15px 16px !default;
+$cell-background: $white !default;
 
 // cell-group
 
@@ -554,6 +566,8 @@ $menu-item-option-padding-top: 12px !default;
 $menu-item-option-padding-bottom: 12px !default;
 $menu-item-option-i-margin-right: 6px !default;
 $menu-bar-box-shadow: 0 2px 12px rgba(89, 89, 89, 0.12) !default;
+$nut-menu-scroll-fixed-top: 0 !default;
+$nut-menu-scroll-fixed-z-index: 1000 !default;
 
 // collapse
 $collapse-item-padding: 13px 36px 13px 26px !default;

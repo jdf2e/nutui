@@ -38,7 +38,7 @@ const overlayProps = {
   },
   lockScroll: {
     type: Boolean,
-    default: true
+    default: false
   },
   overlayStyle: {
     type: Object as PropType<CSSProperties>

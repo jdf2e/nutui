@@ -127,6 +127,28 @@
           "show": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "ConfigProvider",
+          "cType": "基础组件",
+          "cName": "全局配置",
+          "desc": "用于配置NutUI组件全局",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "richard1015"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Image",
+          "cType": "基础组件",
+          "cName": "图片",
+          "desc": "图片展示",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "yangxiaolu"
         }
       ]
     },
@@ -1032,6 +1054,29 @@
           "sort": 9,
           "show": true,
           "author": "szg2008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Animate",
+          "cType": "展示组件",
+          "cName": "动画/动效",
+          "desc": "给页面元素添加动画效果",
+          "show": true,
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "author": "lijiamiao"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Ellipsis",
+          "cType": "展示组件",
+          "cName": "文本省略",
+          "desc": "文本省略",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "yangxiaolu3"
         }
       ]
     },
@@ -1171,7 +1216,8 @@
           "exportEmpty": true,
           "author": "liqiong43",
           "taro": true
-        },{
+        },
+        {
           "name": "Comment",
           "cType": "特色组件",
           "cName": "商品评论",

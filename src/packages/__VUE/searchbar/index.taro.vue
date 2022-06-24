@@ -49,7 +49,7 @@ interface Events {
   eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
   params: (string | number | Event)[];
 }
-export type confirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
+export type confirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
 
 export default create({
   props: {

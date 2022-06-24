@@ -4,7 +4,7 @@ exports[`prop desc-text-align left 1`] = `
 "<view class=\\"nut-cell\\" style=\\"border-radius: px;\\">
   <!--v-if-->
   <!--v-if-->
-  <view class=\\"nut-cell__value\\" style=\\"text-align: left;\\">张三</view>
+  <view class=\\"nut-cell__value nut-cell__value--alone\\" style=\\"text-align: left;\\">张三</view>
   <!--v-if-->
 </view>"
 `;
