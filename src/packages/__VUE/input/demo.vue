@@ -108,13 +108,13 @@
 
     <h2>{{ translate('title9') }}</h2>
     <nut-input
-      v-model="state.disabled"
+      v-model="state.noBorder1"
       :border="false"
       :label="translate('noBorder')"
       :placeholder="translate('noBorder')"
     />
     <nut-input
-      v-model="state.showIcon"
+      v-model="state.noBorder2"
       :border="false"
       :label="translate('noBorder')"
       :placeholder="translate('noBorder')"
@@ -163,6 +163,8 @@ useTranslate({
     number: '数字',
     digit: '整数',
     tel: '手机号',
+    readonly: '只读',
+    disabled: '禁用',
     icon: '显示图标',
     clear: '显示清除图标',
     required: '必填项',
@@ -238,6 +240,8 @@ export default createDemo({
       textarea: '',
       align1: '',
       align2: '',
+      noBorder1: '',
+      noBorder2: '',
       event: ''
     });
     setTimeout(function () {

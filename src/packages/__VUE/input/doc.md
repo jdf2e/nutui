@@ -26,9 +26,9 @@ app.use(Icon);
 ```html
 <template>
   <nut-input 
-    v-model="state.val1" 
+    v-model="state.text" 
     label="文本" 
-    placeholder="Text" 
+    placeholder="文本" 
   />
 </template>
 <script lang="ts">
@@ -36,7 +36,7 @@ app.use(Icon);
   export default {
     setup() {
       const state = reactive({
-        val1: ''
+        text: ''
       });
       return {
         state
@@ -113,13 +113,13 @@ app.use(Icon);
 <template>
   <nut-input 
     label="文本" 
-    placeholder="输入框只读" 
+    placeholder="只读" 
     v-model="state.readonly" 
     readonly 
   />
   <nut-input 
     label="文本" 
-    placeholder="输入框已禁用" 
+    placeholder="禁用" 
     v-model="state.disabled" 
     disabled 
   />
@@ -379,12 +379,12 @@ app.use(Icon);
 ```html
 <template>
   <nut-input 
-    v-model="state.disabled" 
+    v-model="state.noBorder1" 
     :border="false" 
     label="无边框" 
   />
   <nut-input 
-    v-model="state.showIcon" 
+    v-model="state.noBorder2" 
     :border="false" 
     label="无边框" 
   />
@@ -394,8 +394,8 @@ app.use(Icon);
   export default {
     setup() {
       const state = reactive({
-        disabled: '',
-        showIcon: ''
+        noBorder1: '',
+        noBorder2: ''
       });
       return {
         state
@@ -414,11 +414,11 @@ app.use(Icon);
 <template>
   <nut-input
     v-model="state.event"
-    label="event"
+    label="点击"
     left-icon="dongdong"
     right-icon="ask2"
     clearable
-    placeholder="显示图标"
+    placeholder="点击"
     @update:model-value="change"
     @focus="focus"
     @blur="blur"
