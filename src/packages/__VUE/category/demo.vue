@@ -75,8 +75,8 @@ export default createDemo({
       console.log('点击分类数据');
     };
 
-    const onChange = () => {
-      console.log('当前分类数据');
+    const onChange = (v: any) => {
+      console.log('当前分类数据:'+v);
     };
 
     return {
