@@ -314,7 +314,8 @@ app.use(ImagePreview);
 | close-icon`v3.1.22`   | Close icon name    | String  | ‘circle-close’  |
 | close-icon-position`v3.1.22`   |  Close icon position,can be set to `top-left`   | String  | ‘top-right’  |  
 | before-close`v3.1.22`  | Callback function before close   | (active: number) => boolean | Promise<`boolean`>  | -  | 
-
+| max-zoom`v3.1.23`  | Max zoom`Taro isn't supported`   | Number  | 3  | 
+| min-zoom`v3.1.23`  | Min zoom`Taro isn't supported`   | Number  | 1/3  | 
 
     
 ### Events
