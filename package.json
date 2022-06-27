@@ -80,7 +80,6 @@
   "devDependencies": {
     "@commitlint/cli": "^10.0.0",
     "@commitlint/config-conventional": "^10.0.0",
-    "@jd/upload-oss-tools": "^1.1.21",
     "@popperjs/core": "^2.11.5",
     "@tarojs/taro": "^3.4.0",
     "@types/jest": "^26.0.22",
@@ -110,7 +109,6 @@
     "markdown-it-container": "^3.0.0",
     "prettier": "^2.0.0",
     "remark-codesandbox": "^0.10.1",
-    "rollup-plugin-terser": "^7.0.2",
     "standard-version": "^9.3.0",
     "swiper": "6.5.1",
     "transliteration": "^2.2.0",
