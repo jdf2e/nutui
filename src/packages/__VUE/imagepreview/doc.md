@@ -316,6 +316,7 @@ app.use(ImagePreview);
 | before-close`v3.1.22`  | 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise   | (active: number) => boolean | Promise<`boolean`>  | -  | 
 | max-zoom`v3.1.23`  | 手势缩放时，最大缩放比例`小程序暂不支持`   | Number  | 3  | 
 | min-zoom`v3.1.23`  | 手势缩放时，最小缩放比例`小程序暂不支持`   | Number  | 1/3  | 
+
 ### Events
 
 |字段|说明|回调参数|

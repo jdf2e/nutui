@@ -6,6 +6,7 @@
     @click="onClose"
     style="width: 100%"
   >
+    <!-- @click.stop="closeOnImg" @touchstart.capture="onTouchStart" -->
     <view class="nut-imagepreview" ref="swipeRef">
       <nut-swiper
         v-if="showPop"
@@ -161,6 +162,16 @@ export default create({
       return style;
     });
 
+    const styles = computed(() => {
+      let style = {};
+      if (props.closeIconPosition == 'top-right') {
+        style.right = '10px';
+      } else {
+        style.left = '10px';
+      }
+      return style;
+    });
+
     const slideChangeEnd = function (page: number) {
       state.active = page + 1;
       emit('change', state.active);
@@ -190,6 +201,10 @@ export default create({
       emit('close');
     };
 
+    // 点击关闭按钮
+    const handleCloseIcon = () => {
+      onClose();
+    };
     // 点击关闭按钮
     const handleCloseIcon = () => {
       onClose();

@@ -61,6 +61,9 @@ export default createDemo({
       showPreview4: false,
       imgData: [
         {
+          src: 'https://fastly.jsdelivr.net/npm/@vant/assets/apple-4.jpeg'
+        },
+        {
           src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg'
         },
         {

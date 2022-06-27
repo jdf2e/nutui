@@ -26,7 +26,7 @@ app.use(Icon);
 ```html
 <template>
   <nut-input 
-    v-model="state.val1" 
+    v-model="state.text" 
     label="Text" 
     placeholder="Text" 
   />
@@ -36,7 +36,7 @@ app.use(Icon);
   export default {
     setup() {
       const state = reactive({
-        val1: ''
+        text: ''
       });
       return {
         state
@@ -378,12 +378,12 @@ The user can enter content in the text box. Configure the icons on both sides of
 ```html
 <template>
   <nut-input 
-    v-model="state.disabled" 
+    v-model="state.noBorder1" 
     :border="false" 
     label="No Border" 
   />
   <nut-input 
-    v-model="state.showIcon" 
+    v-model="state.noBorder2" 
     :border="false" 
     label="No Border" 
   />
@@ -393,8 +393,8 @@ The user can enter content in the text box. Configure the icons on both sides of
   export default {
     setup() {
       const state = reactive({
-        disabled: '',
-        showIcon: ''
+        noBorder1: '',
+        noBorder2: ''
       });
       return {
         state
@@ -413,11 +413,11 @@ The user can enter content in the text box. Configure the icons on both sides of
 <template>
   <nut-input
     v-model="state.event"
-    label="event"
+    label="click"
     left-icon="dongdong"
     right-icon="ask2"
     clearable
-    placeholder="Show Icon"
+    placeholder="click"
     @update:model-value="change"
     @focus="focus"
     @blur="blur"
@@ -531,6 +531,8 @@ The user can enter content in the text box. Configure the icons on both sides of
 | Name  | Description     | 
 |-------|----------|
 | button | Insert button |
+| input `v3.1.22` | Custom input |
+
 
 
 

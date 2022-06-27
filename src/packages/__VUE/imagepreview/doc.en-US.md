@@ -317,6 +317,7 @@ app.use(ImagePreview);
 | max-zoom`v3.1.23`  | Max zoom`Taro isn't supported`   | Number  | 3  | 
 | min-zoom`v3.1.23`  | Min zoom`Taro isn't supported`   | Number  | 1/3  | 
 
+
     
 ### Events
 

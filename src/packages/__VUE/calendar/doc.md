@@ -552,6 +552,7 @@ export default {
 | confirm-text          | 底部确认按钮文案               | String          | ’确认‘ |
 | show-title          | 是否在展示日历标题               | Boolean          | true |
 | show-sub-title          | 是否展示日期标题              | Boolean          | true |
+| to-date-animation          | 是否启动滚动动画              | Boolean          | true |
 
 ### Events
 

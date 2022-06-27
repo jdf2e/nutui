@@ -4,7 +4,7 @@
   }
 
   /* Animation css */
-  [class*="nut-animate-"] {
+  [class*='nut-animate-'] {
     animation-duration: 0.5s;
     animation-timing-function: ease-out;
     animation-fill-mode: both;
@@ -235,7 +235,7 @@
     &::before {
       width: 60 * 1px;
       height: 60 * 1px;
-      content: "";
+      content: '';
       box-sizing: border-box;
       border: 4 * 1px solid rgba(255, 255, 255, 0.6);
       position: absolute;
@@ -279,7 +279,7 @@
       left: 0;
       top: 0;
       opacity: 0.73;
-      content: "";
+      content: '';
       background-image: linear-gradient(106deg, rgba(232, 224, 255, 0) 24%, #e8e0ff 91%);
       animation: flicker 1.5s linear infinite;
       transform: skewX(-20deg);

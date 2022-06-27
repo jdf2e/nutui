@@ -559,6 +559,7 @@ export default {
 | confirm-text          | Bottom confirm button text               | String          | ’Confirm‘ |
 | show-title          | Whether to show the calendar title               | Boolean          | true |
 | show-sub-title          | Whether to display the date title              | Boolean          | true |
+| to-date-animation          | Whether to use scroll animation              | Boolean          | true |
 
 ### Events
 
