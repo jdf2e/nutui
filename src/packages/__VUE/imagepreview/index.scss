@@ -59,8 +59,13 @@
   justify-content: center;
   height: 100%;
 
+
+  .nut-imagepreview-box {
+    width: 100%;
+  }
+
   .nut-video {
-    height: auto;
+    // height: auto;
     video {
       object-fit: contain;
     }

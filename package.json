@@ -80,6 +80,7 @@
   "devDependencies": {
     "@commitlint/cli": "^10.0.0",
     "@commitlint/config-conventional": "^10.0.0",
+    "@jd/upload-oss-tools": "^1.1.21",
     "@popperjs/core": "^2.11.5",
     "@tarojs/taro": "^3.4.0",
     "@types/jest": "^26.0.22",
