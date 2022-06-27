@@ -98,6 +98,19 @@
     }
   }
 
+  &-roller-mask {
+    position: absolute;
+    width: 100%;
+    display: block;
+    height: 100%;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),
+      linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4));
+    background-repeat: no-repeat;
+    background-position: top, bottom;
+    background-size: 100% 108px;
+    z-index: 1;
+  }
+
   &-content {
     display: block;
     position: absolute;
