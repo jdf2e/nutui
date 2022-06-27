@@ -102,14 +102,7 @@ export default defineConfig({
         entryFileNames: `demo-${config.version}/[name].js`,
         chunkFileNames: `demo-${config.version}/[name].js`,
         assetFileNames: `demo-${config.version}/[name].[ext]`,
-        plugins: [
-          terser({
-            compress: {
-              drop_console: true,
-              drop_debugger: true
-            }
-          })
-        ]
+        plugins: []
       }
     }
   }
