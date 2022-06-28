@@ -1,10 +1,16 @@
 <template>
-  <view :class="classes" @click="handleClick">
-    <view>{{ data }}</view>
+  <view
+    :class="classes"
+    :style="{
+      zIndex,
+      backgroundSize: `${gapX + width}px`,
+      backgroundImage: `url('${base64Url}')`
+    }"
+  >
   </view>
 </template>
 <script lang="ts">
-import { reactive, toRefs, computed } from 'vue';
+import { reactive, toRefs, computed, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('watermark');
 export default create({
@@ -14,47 +20,102 @@ export default create({
       default: ''
     },
     gapY: {
-      type: String,
-      default: ''
+      type: Number,
+      default: 48
     },
     gapX: {
       type: Number,
+      default: 24
+    },
+    zIndex: {
+      type: Number,
+      default: 2000
+    },
+    width: {
+      type: Number,
+      default: 120
+    },
+    height: {
+      type: Number,
+      default: 64
+    },
+    rotate: {
+      type: Number,
+      default: -22
+    },
+    image: {
+      type: String,
+      default: ''
+    },
+    imageWidth: {
+      type: Number,
+      default: 120
+    },
+    imageHeight: {
+      type: Number,
+      default: 64
+    },
+    content: {
+      type: String,
+      default: ''
+    },
+    fontColor: {
+      type: String,
+      default: 'rgba(0,0,0,.15)'
+    },
+    fontStyle: {
+      type: String,
+      default: 'normal'
+    },
+    fontFamily: {
+      type: String,
+      default: 'PingFang SC'
+    },
+    fontWeight: {
+      type: String,
+      default: 'normal'
+    },
+    fontSize: {
+      type: [String, Number],
+      default: 14
+    },
+    fullPage: {
+      type: Boolean,
       default: ''
     }
-    // gapY?: number
-    // zIndex?: number
-    // width?: number
-    // height?: number
-    // rotate?: number
-    // image?: string
-    // imageWidth?: number
-    // imageHeight?: number
-    // content?: string
-    // fontColor?: string
-    // fontStyle?: 'none' | 'normal' | 'italic' | 'oblique'
-    // fontFamily?: string
-    // fontWeight?: 'normal' | 'light' | 'weight' | number
-    // fontSize?: number | string
-    // fullPage?: boolean
   },
   emits: ['click'],
 
   setup(props, { emit }) {
     const state = reactive({
-      data: 'Welcome to developing components'
+      base64Url: ''
     });
+    const {
+      zIndex,
+      gapX,
+      gapY,
+      width,
+      height,
+      rotate,
+      image,
+      imageWidth,
+      imageHeight,
+      content,
+      fontStyle,
+      fontWeight,
+      fontColor,
+      fontSize,
+      fontFamily
+    } = props;
     const init = () => {
       const canvas = document.createElement('canvas');
       const ratio = window.devicePixelRatio;
-
+      console.log(ratio);
       const ctx = canvas.getContext('2d');
-
       const canvasWidth = `${(gapX + width) * ratio}px`;
       const canvasHeight = `${(gapY + height) * ratio}px`;
-
       const markWidth = width * ratio;
       const markHeight = height * ratio;
-
       canvas.setAttribute('width', canvasWidth);
       canvas.setAttribute('height', canvasHeight);
 
@@ -76,7 +137,8 @@ export default create({
               imageHeight * ratio
             );
             ctx.restore();
-            setBase64Url(canvas.toDataURL());
+            state.base64Url = canvas.toDataURL();
+            console.log(state.base64Url);
           };
         } else if (content) {
           ctx.textBaseline = 'middle';
@@ -91,24 +153,46 @@ export default create({
 
           ctx.fillText(content, 0, 0);
           ctx.restore();
-          setBase64Url(canvas.toDataURL());
+          state.base64Url = canvas.toDataURL();
+          console.log(state.base64Url);
         }
       } else {
         throw new Error('当前环境不支持Canvas');
       }
     };
+    init();
+
+    watch(
+      () => [
+        zIndex,
+        gapX,
+        gapY,
+        width,
+        height,
+        rotate,
+        image,
+        imageWidth,
+        imageHeight,
+        content,
+        fontStyle,
+        fontWeight,
+        fontColor,
+        fontSize,
+        fontFamily
+      ],
+      () => {
+        init();
+      }
+    );
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
-        [prefixCls]: true
+        [prefixCls]: true,
+        [`${prefixCls}-full-page`]: props.fullPage
       };
     });
 
-    const handleClick = (event: Event) => {
-      emit('click', event);
-    };
-
-    return { ...toRefs(state), classes, handleClick };
+    return { ...toRefs(state), classes };
   }
 });
 </script>
