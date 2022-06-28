@@ -1,0 +1,16 @@
+<view :class="classes" @touchstart="onTouchStart" @touchmove="onTouchMove">
+    <view class="nut-rate-item" v-for="n in Number(count)" :key="n" ref="rateRefs" :id="'rateRefs-' + refRandomId + n"
+        :style="{ marginRight: pxCheck(spacing) }">
+        <nut-icon :size="iconSize" class="nut-rate-item__icon" @click="onClick(1, n)"
+            :class="{ 'nut-rate-item__icon--disabled': disabled || n > modelValue }"
+            :color="n <= modelValue ? activeColor : voidColor" :font-class-name="fontClassName"
+            :class-prefix="classPrefix" :name="n <= modelValue ? checkedIcon : uncheckedIcon" />
+        <nut-icon v-if="allowHalf && Number(modelValue) + 1 > n" class="nut-rate-item__icon nut-rate-item__icon--half"
+            @click="onClick(2, n)" :font-class-name="fontClassName" :class-prefix="classPrefix"
+            :color="n <= Number(modelValue) + 1 ? activeColor : voidColor" :size="iconSize" :name="checkedIcon" />
+        <nut-icon v-else-if="allowHalf && Number(modelValue) + 1 < n"
+            class="nut-rate-item__icon nut-rate-item__icon--disabled nut-rate-item__icon--half" @click="onClick(2, n)"
+            :font-class-name="fontClassName" :class-prefix="classPrefix" :color="voidColor" :size="iconSize"
+            :name="uncheckedIcon" />
+    </view>
+</view>

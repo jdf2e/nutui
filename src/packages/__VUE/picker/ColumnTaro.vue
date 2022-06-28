@@ -11,8 +11,8 @@
         {{ item.text }}
       </view>
     </view>
-
-    <view class="nut-picker-content">
+    <view class="nut-picker-roller-mask"></view>
+    <!-- <view class="nut-picker-content">
       <view class="nut-picker-list-panel" ref="list" :id="'list' + refRandomId" :style="touchListStyle">
         <view
           :class="['nut-picker-item', 'nut-picker-item-ref', item.className]"
@@ -22,7 +22,7 @@
         </view>
         <view class="nut-picker-placeholder" v-if="column && column.length === 1"></view>
       </view>
-    </view>
+    </view> -->
   </view>
 </template>
 <script lang="ts">
@@ -177,13 +177,25 @@ export default create({
         state.currIndex = Math.abs(Math.round(endMove / state.lineSpacing)) + 1;
       } else {
         let deg = '0deg';
+        let degNum = 0;
         if (updateMove < 0) {
-          deg = `${(Math.abs(updateMove / state.lineSpacing) + 1) * state.rotation}deg`;
+          degNum = (Math.abs(updateMove / state.lineSpacing) + 1) * state.rotation;
         } else {
-          deg = `${(-updateMove / state.lineSpacing + 1) * state.rotation}deg`;
+          degNum = (-updateMove / state.lineSpacing + 1) * state.rotation;
         }
-        setTransform(updateMove, null, undefined, deg);
-        state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
+
+        // picker 滚动的最大角度
+        const maxDeg = (props.column.length + 1) * state.rotation;
+        const minDeg = 0;
+        if (degNum > maxDeg) {
+          deg = `${maxDeg}deg`;
+        } else if (degNum < minDeg) {
+          deg = `${minDeg}deg`;
+        } else {
+          deg = `${degNum}deg`;
+          setTransform(updateMove, null, undefined, deg);
+          state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
+        }
       }
     };
 
@@ -202,8 +214,8 @@ export default create({
     };
 
     const getReference = async () => {
-      const refe = await useTaroRect(list, Taro);
-      state.lineSpacing = refe.height / props.column.length;
+      // const refe = await useTaroRect(list, Taro);
+      // state.lineSpacing = refe.height / props.column.length;
       modifyStatus(true);
     };
 

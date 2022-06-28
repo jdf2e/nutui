@@ -85,6 +85,7 @@ const subPackages = [
       'pages/skeleton/index',
       'pages/collapse/index',
       'pages/table/index',
+      'pages/animate/index',
       'pages/ellipsis/index'
     ]
   },

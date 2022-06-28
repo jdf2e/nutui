@@ -119,6 +119,10 @@ export default create({
       type: Boolean,
       default: false
     },
+    toDateAnimation: {
+      type: Boolean,
+      default: true
+    },
     poppable: {
       type: Boolean,
       default: true
@@ -230,9 +234,13 @@ export default create({
       return Utils.isEqual(state.currDate[1], currDate);
     };
     const isMultiple = (currDate: string) => {
-      return state.currDate.some((item: any) => {
-        return Utils.isEqual(item, currDate);
-      });
+      if (state.currDate.length > 0) {
+        return state.currDate.some((item: any) => {
+          return Utils.isEqual(item, currDate);
+        });
+      } else {
+        return false;
+      }
     };
     // 获取当前数据
     const getCurrDate = (day: Day, month: MonthInfo) => {
@@ -286,7 +294,6 @@ export default create({
     const chooseDay = (day: Day, month: MonthInfo, isFirst: boolean) => {
       if (getClass(day, month) != `${state.dayPrefix}-disabled`) {
         const { type } = props;
-
         let days = [...month.curData];
         days[2] = typeof day.day == 'number' ? Utils.getNumTwoBit(day.day) : day.day;
         days[3] = `${days[0]}-${days[1]}-${days[2]}`;
@@ -303,7 +310,6 @@ export default create({
               state.chooseData.push([...days]);
             } else {
               if (hasIndex !== '') {
-                console.log('del', hasIndex, state.currDate, JSON.stringify(state.chooseData));
                 state.currDate.splice(hasIndex, 1);
                 state.chooseData.splice(hasIndex, 1);
               } else {
@@ -316,7 +322,8 @@ export default create({
             state.chooseData = [[...days]];
           }
         } else if (type == 'range') {
-          if (Object.values(state.currDate).length == 2) {
+          let curDataLength = Object.values(state.currDate).length;
+          if (curDataLength == 2 || curDataLength == 0) {
             state.currDate = [days[3]];
           } else {
             if (Utils.compareDate(state.currDate[0], days[3])) {
@@ -343,7 +350,7 @@ export default create({
           // 点击日期 触发
           console.log(state.chooseData);
           emit('select', state.chooseData);
-          if (props.isAutoBackFill) {
+          if (props.isAutoBackFill || !props.poppable) {
             confirm();
           }
         }
@@ -475,20 +482,8 @@ export default create({
       state.endData = splitDate(propEndDate);
 
       // 根据是否存在默认时间，初始化当前日期,
-      if (!props.defaultValue || (Array.isArray(props.defaultValue) && props.defaultValue.length <= 0)) {
-        state.currDate =
-          props.type == 'range'
-            ? [Utils.date2Str(new Date()), Utils.getDay(1)]
-            : props.type == 'multiple'
-            ? [Utils.date2Str(new Date())]
-            : Utils.date2Str(new Date());
-      } else {
-        state.currDate =
-          props.type == 'range'
-            ? [...props.defaultValue]
-            : props.type == 'multiple'
-            ? [...props.defaultValue]
-            : props.defaultValue;
+      if (props.defaultValue || (Array.isArray(props.defaultValue) && props.defaultValue.length > 0)) {
+        state.currDate = props.type != 'one' ? [...props.defaultValue] : props.defaultValue;
       }
 
       // 判断时间范围内存在多少个月
@@ -514,69 +509,75 @@ export default create({
       do {
         getMonth(getCurrData('next'), 'next');
       } while (i++ < monthsNum);
-
       state.monthsNum = monthsNum;
 
       // 日期转化为数组，限制初始日期。判断时间范围
       if (props.type == 'range' && Array.isArray(state.currDate)) {
-        if (propStartDate && Utils.compareDate(state.currDate[0], propStartDate)) {
-          state.currDate.splice(0, 1, propStartDate);
-        }
-        if (propEndDate && Utils.compareDate(propEndDate, state.currDate[1])) {
-          state.currDate.splice(1, 1, propEndDate);
-        }
-        state.defaultData = [...splitDate(state.currDate[0]), ...splitDate(state.currDate[1])];
-      } else if (props.type == 'multiple' && Array.isArray(state.currDate)) {
-        let defaultArr: string[] = [];
-        let obj: any = {};
-        state.currDate.forEach((item: string, index: number) => {
-          if (
-            propStartDate &&
-            Utils.compareDate(propStartDate, item) &&
-            propEndDate &&
-            Utils.compareDate(item, propEndDate)
-          ) {
-            if (!obj.hasOwnProperty(item)) {
-              defaultArr.push(item);
-              obj[item] = item;
-            }
+        if (state.currDate.length > 0) {
+          if (propStartDate && Utils.compareDate(state.currDate[0], propStartDate)) {
+            state.currDate.splice(0, 1, propStartDate);
           }
-        });
-        state.currDate = [...defaultArr];
-        state.defaultData = [...splitDate(defaultArr[0])];
-      } else {
-        if (propStartDate && Utils.compareDate(state.currDate as string, propStartDate)) {
-          state.currDate = propStartDate;
-        } else if (propEndDate && !Utils.compareDate(state.currDate as string, propEndDate)) {
-          state.currDate = propEndDate;
+          if (propEndDate && Utils.compareDate(propEndDate, state.currDate[1])) {
+            state.currDate.splice(1, 1, propEndDate);
+          }
+          state.defaultData = [...splitDate(state.currDate[0]), ...splitDate(state.currDate[1])];
         }
-        state.defaultData = [...splitDate(state.currDate as string)];
+      } else if (props.type == 'multiple' && Array.isArray(state.currDate)) {
+        if (state.currDate.length > 0) {
+          let defaultArr: string[] = [];
+          let obj: any = {};
+          state.currDate.forEach((item: string, index: number) => {
+            if (
+              propStartDate &&
+              !Utils.compareDate(item, propStartDate) &&
+              propEndDate &&
+              !Utils.compareDate(propEndDate, item)
+            ) {
+              if (!obj.hasOwnProperty(item)) {
+                defaultArr.push(item);
+                obj[item] = item;
+              }
+            }
+          });
+          state.currDate = [...defaultArr];
+          state.defaultData = [...splitDate(defaultArr[0])];
+        }
+      } else {
+        if (state.currDate) {
+          if (propStartDate && Utils.compareDate(state.currDate as string, propStartDate)) {
+            state.currDate = propStartDate;
+          } else if (propEndDate && !Utils.compareDate(state.currDate as string, propEndDate)) {
+            state.currDate = propEndDate;
+          }
+          state.defaultData = [...splitDate(state.currDate as string)];
+        }
       }
       // 设置默认可见区域
       let current = 0;
       let lastCurrent = 0;
-      state.monthsData.forEach((item, index) => {
-        if (item.title == translate('monthTitle', state.defaultData[0], state.defaultData[1])) {
-          current = index;
-        }
-        if (props.type == 'range') {
-          if (item.title == translate('monthTitle', state.defaultData[3], state.defaultData[4])) {
-            lastCurrent = index;
+      if (state.defaultData.length > 0) {
+        state.monthsData.forEach((item, index) => {
+          if (item.title == translate('monthTitle', state.defaultData[0], state.defaultData[1])) {
+            current = index;
           }
-        }
-      });
+          if (props.type == 'range') {
+            if (item.title == translate('monthTitle', state.defaultData[3], state.defaultData[4])) {
+              lastCurrent = index;
+            }
+          }
+        });
+      }
+
       setDefaultRange(monthsNum, current);
       state.currentIndex = current;
       state.yearMonthTitle = state.monthsData[state.currentIndex].title;
-      // console.log(state.monthsData);
-      // 设置当前选中日期
-      if (props.type == 'range') {
-        chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
-        chooseDay({ day: state.defaultData[5], type: 'curr' }, state.monthsData[lastCurrent], true);
-      } else if (props.type == 'multiple') {
-        if (state.currDate.length > 0) {
+      if (state.defaultData.length > 0) {
+        // 设置当前选中日期
+        if (props.type == 'range') {
+          chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
+          chooseDay({ day: state.defaultData[5], type: 'curr' }, state.monthsData[lastCurrent], true);
+        } else if (props.type == 'multiple') {
           [...state.currDate].forEach((item: any) => {
-            console.log(item);
             let dateArr = splitDate(item);
             let current = state.currentIndex;
             state.monthsData.forEach((item, index) => {
@@ -586,9 +587,9 @@ export default create({
             });
             chooseDay({ day: dateArr[2], type: 'curr' }, state.monthsData[current], true);
           });
+        } else {
+          chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
         }
-      } else {
-        chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
       }
 
       let lastItem = state.monthsData[state.monthsData.length - 1];
@@ -604,40 +605,35 @@ export default create({
       state.avgHeight = Math.floor(containerHeight / (monthsNum + 1));
     };
     const scrollToDate = (date: string) => {
-      console.log('-----', date);
       if (Utils.compareDate(date, state.propStartDate)) {
         date = state.propStartDate;
       } else if (!Utils.compareDate(date, state.propEndDate)) {
         date = state.propEndDate;
       }
       let dateArr = splitDate(date);
-      console.log(state.monthsData);
       state.monthsData.forEach((item, index) => {
         if (item.title == translate('monthTitle', dateArr[0], dateArr[1])) {
-          console.log(index);
-          // state.currentIndex = index;
-          // setDefaultRange(state.monthsNum, index);
           if (months.value) {
-            console.log(state.monthsData[index].cssScrollHeight);
-            console.log(months.value.scrollTop);
             let distance = state.monthsData[index].cssScrollHeight - months.value.scrollTop;
-            // console.log(first)
-            let flag = 0;
-            let interval = setInterval(() => {
-              flag++;
-              if (months.value) {
-                let offset = distance / 10;
-                months.value.scrollTop = months.value.scrollTop + offset;
-              }
-
-              if (flag >= 10) {
-                clearInterval(interval);
+            if (props.toDateAnimation) {
+              let flag = 0;
+              let interval = setInterval(() => {
+                flag++;
                 if (months.value) {
-                  months.value.scrollTop = state.monthsData[index].cssScrollHeight;
+                  let offset = distance / 10;
+                  months.value.scrollTop = months.value.scrollTop + offset;
                 }
-              }
-            }, 40);
-            // months.value.scrollTop = state.monthsData[index].cssScrollHeight;
+
+                if (flag >= 10) {
+                  clearInterval(interval);
+                  if (months.value) {
+                    months.value.scrollTop = state.monthsData[index].cssScrollHeight;
+                  }
+                }
+              }, 40);
+            } else {
+              months.value.scrollTop = state.monthsData[index].cssScrollHeight;
+            }
           }
         }
       });

@@ -1057,6 +1057,18 @@
         },
         {
           "version": "3.0.0",
+          "name": "Animate",
+          "cType": "展示组件",
+          "cName": "动画/动效",
+          "desc": "给页面元素添加动画效果",
+          "show": true,
+          "taro": true,
+          "tarodoc": true,
+          "type": "component",
+          "author": "lijiamiao"
+        },
+        {
+          "version": "3.0.0",
           "name": "Ellipsis",
           "cType": "展示组件",
           "cName": "文本省略",

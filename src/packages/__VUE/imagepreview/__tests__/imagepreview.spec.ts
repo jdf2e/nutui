@@ -97,22 +97,6 @@ test('customize pagination and color', async () => {
   expect(swiperPagination.findAll('i')[0].element.style.backgroundColor).toEqual('red');
 });
 
-// test('test content-close', async () => {
-//   const wrapper = mount(ImagePreview, {
-//     props: {
-//       show: true,
-//       images,
-//       autoplay: 0,
-//       contentClose: true
-//     }
-//   });
-//   await nextTick();
-
-//   // const key = wrapper.find('.nut-imagepreview');
-//   // await key.trigger('click');
-//   // expect((wrapper.find('.custom-pop').element as any).style.display).toEqual('none');
-// });
-
 test('video surported in H5 env', async () => {
   const wrapper = mount(ImagePreview, {
     props: {
@@ -124,17 +108,3 @@ test('video surported in H5 env', async () => {
   await nextTick();
   expect(wrapper.find('.custom-pop').html()).toMatchSnapshot();
 });
-
-// test('close event trigged', async () => {
-//   const wrapper = mount(ImagePreview, {
-//     props: {
-//       show: true,
-//       images,
-//     }
-//   });
-//   await nextTick();
-//   const overlay: any = wrapper.find('.nut-overlay');
-//   await overlay.trigger('click');
-//   expect(wrapper.emitted('close')).toBeTruthy();
-//   expect(wrapper.emitted('update:show')).toBeFalsy();
-// });

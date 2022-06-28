@@ -72,7 +72,7 @@ export default {
 </script>
 ```
 :::
-### 区间选择
+### 选择日期区间
 :::demo
 ```html
 <template>
@@ -111,6 +111,64 @@ export default {
     };
     const setChooseValue= param => {
       state.date = [...[param[0][3], param[1][3]]];
+    };
+    const select = (param: string) => {
+      console.log(param);
+    };
+    return {
+      ...toRefs(state),
+      openSwitch,
+      closeSwitch,
+      setChooseValue,
+      select,
+    };
+  }  
+};
+</script>
+```
+:::
+
+### 选择多个日期
+:::demo
+```html
+<template>
+ <nut-cell
+    :show-icon="true"
+    title="选择多个日期"
+    :desc="date7 && date7.length ? `已选择${date7.length}个日期` : '请选择'"
+    @click="openSwitch('isVisible7')"
+  >
+  </nut-cell>
+  <nut-calendar
+    v-model:visible="isVisible7"
+    :default-value="date7"
+    type="multiple"
+    :start-date="`2022-01-01`"
+    :end-date="`2022-09-10`"
+    @close="closeSwitch('isVisible7')"
+    @choose="setChooseValue7"
+  >
+  </nut-calendar>
+</template>
+<script lang="ts">
+import { reactive, toRefs } from 'vue';
+export default {
+  setup() {
+    const state = reactive({
+      date7: [],
+      isVisible7: false
+    });
+    const openSwitch = param => {
+      state[`${param}`] = true;
+    };
+    const closeSwitch = param => {
+      state[`${param}`] = false;
+    };
+     const setChooseValue7 = (chooseData: any) => {
+      let dateArr = chooseData.map((item: any) => {
+        return item[3];
+      });
+      state.date7 = [...dateArr];
     };
     const select = (param: string) => {
       console.log(param);
@@ -481,11 +539,11 @@ export default {
 | 字段              | 说明                                              | 类型            | 默认值          |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
 | v-model:visible   | 是否可见                                          | Boolean         | false           |
-| type              | 类型，日期选择'one'，区间选择'range'              | String          | 'one'           |
+| type              | 类型，日期单择'one'，区间选择'range',日期多选'multiple'    | String          | 'one'           |
 | poppable          | 是否弹窗状态展示                                  | Boolean         | true            |
 | is-auto-back-fill | 自动回填                                          | Boolean         | false           |
 | title             | 显示标题                                          | String          | ‘日期选择’      |
-| default-value     | 默认值，日期选择 String 格式，区间选择 Array 格式 | String 、 Array | null            |
+| default-value     | 默认值，单个日期选择 String，其他为 Array  | String 、 Array | null            |
 | start-date        | 开始日期， 如果不限制开始日期传 null              | String          | 今天            |
 | end-date          | 结束日期，如果不限制结束日期传 null               | String          | 距离今天 365 天 |
 | show-today          | 是否展示今天标记               | Boolean          | true |
@@ -494,6 +552,7 @@ export default {
 | confirm-text          | 底部确认按钮文案               | String          | ’确认‘ |
 | show-title          | 是否在展示日历标题               | Boolean          | true |
 | show-sub-title          | 是否展示日期标题              | Boolean          | true |
+| to-date-animation          | 是否启动滚动动画              | Boolean          | true |
 
 ### Events
 
@@ -513,3 +572,12 @@ export default {
 | day | 	日期信息 |
 | topInfo | 	日期顶部信息 |
 | bottomInfo | 	日期底部信息 |
+
+### Methods
+
+通过 [ref](https://vuejs.org/guide/essentials/template-refs.html) 可以获取到 Calendar 实例并调用实例方法。
+
+
+| 方法名 | 说明             | 参数          |
+|--------|------------------|---------------|
+| scrollToDate   | 滚动到指定日期所在月 | string:'2021-12-30' |
