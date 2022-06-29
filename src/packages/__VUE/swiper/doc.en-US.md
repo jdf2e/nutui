@@ -416,6 +416,100 @@ You can manually switch through `api` (`prev`, `next`)
 
 :::
 
+### Horizontal center display
+
+`is-center` means that it can be centered and must be passed to `width` at the same time
+
+:::demo
+
+```html
+<template>
+  <nut-swiper :init-page="page" :loop="false" width="280" height="150" :is-center="true" style="height: 150px">
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+    </nut-swiper-item>
+  </nut-swiper>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        page: 0
+      });
+      return { ...toRefs(state) };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .nut-swiper-item {
+    line-height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+</style>
+```
+
+:::
+
+### Vertically centered display
+
+`is-center` means that it can be centered and must be passed to `height` at the same time
+
+:::demo
+
+```html
+<template>
+  <nut-swiper :init-page="page" :loop="false" direction="vertical" height="220" :is-center="true" style="height: 300px">
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+    </nut-swiper-item>
+  </nut-swiper>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        page: 0
+      });
+      return { ...toRefs(state) };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .nut-swiper-item {
+    line-height: 300px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+</style>
+```
+
+:::
+
 
 ## API
 
@@ -435,6 +529,7 @@ You can manually switch through `api` (`prev`, `next`)
 | touchable             | if touchable to slide                                                      | Boolean         | true          |
 | is-preventDefault                  | Disable default events during sliding                                              | Boolean  | true           |
 | is-stopPropagation               | Is bubbling prohibited during sliding                    | Boolean         | true    |
+| is-center| The corresponding `width` and `height` must be passed to determine whether to display in the middle`  | Boolean   | false    |
 
 
 
