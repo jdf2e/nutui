@@ -12,6 +12,8 @@
 <script lang="ts">
 import { reactive, toRefs, computed, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import Taro from '@tarojs/taro';
+
 const { componentName, create } = createComponent('watermark');
 export default create({
   props: {
@@ -107,27 +109,35 @@ export default create({
       fontSize,
       fontFamily
     } = props;
-    const init = () => {
-      const canvas = document.createElement('canvas');
-      const ratio = window.devicePixelRatio;
-      console.log(ratio);
-      const ctx = canvas.getContext('2d');
-      const canvasWidth = `${(gapX + width) * ratio}px`;
-      const canvasHeight = `${(gapY + height) * ratio}px`;
+
+    const init = async () => {
+      let ratio = 1;
+      Taro.getSystemInfo({
+        success(res) {
+          ratio = res.pixelRatio;
+        }
+      });
+      const canvasWidth = `${(gapX + width) * ratio}`;
+      const canvasHeight = `${(gapY + height) * ratio}`;
       const markWidth = width * ratio;
       const markHeight = height * ratio;
-      canvas.setAttribute('width', canvasWidth);
-      canvas.setAttribute('height', canvasHeight);
+      const canvas: any = Taro.createOffscreenCanvas({
+        type: '2d',
+        width: Number(canvasWidth),
+        height: Number(canvasHeight)
+      });
+      const ctx: any = canvas.getContext('2d');
 
       if (ctx) {
         if (image) {
           ctx.translate(markWidth / 2, markHeight / 2);
           ctx.rotate((Math.PI / 180) * Number(rotate));
+          // 创建一个图片
+          const img = canvas.createImage();
 
-          const img = new Image();
           img.crossOrigin = 'anonymous';
           img.referrerPolicy = 'no-referrer';
-          img.src = image;
+          img.src = image; // 要加载的图片 url, 可以是base64
           img.onload = () => {
             ctx.drawImage(
               img,
@@ -137,8 +147,7 @@ export default create({
               imageHeight * ratio
             );
             ctx.restore();
-            state.base64Url = canvas.toDataURL();
-            console.log(state.base64Url);
+            state.base64Url = ctx.canvas.toDataURL();
           };
         } else if (content) {
           ctx.textBaseline = 'middle';
@@ -153,8 +162,7 @@ export default create({
 
           ctx.fillText(content, 0, 0);
           ctx.restore();
-          state.base64Url = canvas.toDataURL();
-          console.log(state.base64Url);
+          state.base64Url = ctx.canvas.toDataURL();
         }
       } else {
         throw new Error('当前环境不支持Canvas');
