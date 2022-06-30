@@ -50,6 +50,12 @@
     <h2>{{ translate('teleport') }}</h2>
     <nut-cell :title="translate('teleport')" is-link @click="state.showTeleport = true"></nut-cell>
     <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" v-model:visible="state.showTeleport">app</nut-popup>
+    <h2>{{ translate('muti') }}</h2>
+    <nut-cell :title="translate('muti')" is-link @click="state.showPop1 = true"></nut-cell>
+    <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="state.showPop1">
+      <div @click="state.showPop2 = true">{{ translate('click') }}</div>
+    </nut-popup>
+    <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="state.showPop2">{{ translate('text') }}</nut-popup>
   </div>
 </template>
 
@@ -72,7 +78,9 @@ useTranslate({
     iposition: '图标位置',
     cicon: '自定义图标',
     circle: '圆角弹框',
-    teleport: '指定挂载节点'
+    teleport: '指定挂载节点',
+    muti: '多层堆叠',
+    click: '点击它'
   },
   'en-US': {
     basic: 'Basic Usage',
@@ -87,7 +95,9 @@ useTranslate({
     iposition: 'Icon location',
     cicon: 'Custom icon',
     circle: 'Rounded bullet frame',
-    teleport: 'Specify mount node'
+    teleport: 'Specify mount node',
+    muti: 'Multi stack',
+    click: 'Click it'
   }
 });
 export default createDemo({
@@ -103,7 +113,9 @@ export default createDemo({
       showIconPosition: false,
       showCloseIcon: false,
       showRound: false,
-      showCombination: false
+      showCombination: false,
+      showPop1: false,
+      showPop2: false
     });
     return { state, translate };
   }

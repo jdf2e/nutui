@@ -149,7 +149,7 @@ $picker-bar-title-font-size: 18px !default;
 $picker-bar-title-color: #323233 !default;
 $picker-bar-title-font-weight: 600 !default;
 $picker-item-height: 36px !default;
-$picker-item-text-color: #808080 !default;
+$picker-item-text-color: $title-color !default;
 $picker-item-active-text-color: $primary-color !default;
 $picker-item-text-font-size: 16px !default;
 $picker-item-active-line-border: 1px solid rgba(0, 0, 0, 0.06) !default;
@@ -771,6 +771,9 @@ $comment-header-user-name-color: rgba(51, 51, 51, 1) !default;
 $comment-header-time-color: rgba(153, 153, 153, 1) !default;
 $comment-bottom-label-color: rgba(153, 153, 153, 1) !default;
 $comment-shop-color: $primary-color !default;
+
+// Ellipsis
+$ellipsis-expand-collapse-color: #3460fa !default;
 
 @import './mixins/index';
 @import './animation/index';

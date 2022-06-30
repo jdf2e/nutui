@@ -234,7 +234,7 @@ app.use(Elevator);
 
 ``` html
 <template>
-  <nut-elevator :index-list="dataList3" :height="220"  @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
+  <nut-elevator :index-list="dataList3" :is-sticky="true" :height="220"  @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
@@ -373,6 +373,89 @@ app.use(Elevator);
 
 :::
 
+### Custom Content
+
+:::demo
+
+``` html
+<template>
+  <nut-elevator :index-list="dataList" :height="260" @click-item="clickItem" @click-index="clickIndex">
+      <template v-slot:default="slotProps">
+        <nut-icon name='JD' size="12"></nut-icon>
+        <span :style="{marginLeft: '15px'}">{{ slotProps.item.name }}</span>
+      </template>
+  </nut-elevator>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        acceptKey: 'num',
+        dataList: [
+          {
+            title: 'A',
+            list: [
+              {
+                name: 'AnHui',
+                id: 1
+              }
+            ]
+          },
+          {
+            title: 'B',
+            list: [
+              {
+                name: 'BeiJing',
+                id: 2
+              }
+            ]
+          },
+          {
+            title: 'G',
+            list: [
+              {
+                name: 'GuangXi',
+                id: 3
+              },
+              {
+                name: 'GuangDong',
+                id: 4
+              }
+            ]
+          },
+          {
+            title: 'H',
+            list: [
+              {
+                name: 'HuNan',
+                id: 5
+              },
+              {
+                name: 'HuBei',
+                id: 6
+              }
+            ]
+          }
+        ]
+      });
+
+      const clickItem = (key: string, item: any) => {
+        console.log(key, JSON.stringify(item));
+      };
+
+      const clickIndex = (key: string) => {
+        console.log(key);
+      };
+
+      return { ...toRefs(state), clickItem, clickIndex };
+    }
+  };
+</script>
+```
+
+:::
+
 ## API
 
 ### Prop
@@ -385,6 +468,12 @@ app.use(Elevator);
 | is-sticky            | Whether the index is ceiling                                                    | Boolean  | `false` |
 | space-height             | Up and down spacing of right anchor point              | Number  | `23` |
 | title-height             | Height of left index                                                     | Number  | `35` |
+
+### Slot
+
+| Attribute                   | Description                                                             |
+|------------------------|----------------------------------------------------------------|
+| default                 | Customize the contents of each data under the left index        |
 
 ### Event
 

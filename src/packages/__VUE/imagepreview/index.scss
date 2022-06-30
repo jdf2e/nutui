@@ -1,6 +1,8 @@
 .nut-imagepreview {
+  height: 100%;
+  width: 100%;
   &-swiper {
-    height: 327px;
+    height: 100%;
     width: 100vw;
     background-color: transparent;
   }
@@ -28,6 +30,13 @@
     }
   }
 
+  &-close-icon {
+    position: fixed;
+    z-index: 2002;
+    top: 50px;
+    right: 15px;
+  }
+
   .popup-bg {
     background: rgba(0, 0, 0, 0.9);
   }
@@ -45,5 +54,19 @@
   align-items: center;
 }
 .nut-imagepreview-swiper .nut-swiper-item {
-  height: 327px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  .nut-imagepreview-box {
+    width: 100%;
+  }
+
+  .nut-video {
+    // height: auto;
+    video {
+      object-fit: contain;
+    }
+  }
 }

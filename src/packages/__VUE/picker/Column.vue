@@ -1,18 +1,20 @@
 <template>
   <view class="nut-picker__list" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
     <view class="nut-picker-roller" ref="roller" :style="touchRollerStyle">
-      <view
-        class="nut-picker-roller-item"
-        :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
-        v-for="(item, index) in column"
-        :style="setRollerStyle(index + 1)"
-        :key="item.value ? item.value : index"
-      >
-        {{ item.text }}
-      </view>
+      <template v-for="(item, index) in column" :key="item.value ? item.value : index">
+        <view
+          class="nut-picker-roller-item"
+          :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
+          :style="setRollerStyle(index + 1)"
+          v-if="item && item.text"
+        >
+          {{ item.text }}
+        </view>
+      </template>
     </view>
+    <view class="nut-picker-roller-mask"></view>
 
-    <view class="nut-picker-content">
+    <!-- <view class="nut-picker-content">
       <view class="nut-picker-list-panel" ref="list" :style="touchListStyle">
         <view
           :class="['nut-picker-item', 'nut-picker-item-ref', item.className]"
@@ -22,7 +24,7 @@
         </view>
         <view class="nut-picker-placeholder" v-if="column && column.length === 1"></view>
       </view>
-    </view>
+    </view> -->
   </view>
 </template>
 <script lang="ts">
@@ -118,6 +120,7 @@ export default create({
       let move = state.touchParams.lastY - state.touchParams.startY;
 
       let moveTime = state.touchParams.lastTime - state.touchParams.startTime;
+      console.log('touchEnd', move, moveTime);
       if (moveTime <= 300) {
         move = move * 2;
         moveTime = moveTime + 1000;
@@ -151,6 +154,7 @@ export default create({
     };
 
     const setMove = (move: number, type?: string, time?: number) => {
+      console.log('setMove');
       let updateMove = move + state.transformY;
       if (type === 'end') {
         // 限定滚动距离
@@ -164,6 +168,7 @@ export default create({
         // 设置滚动距离为lineSpacing的倍数值
         let endMove = Math.round(updateMove / state.lineSpacing) * state.lineSpacing;
         let deg = `${(Math.abs(Math.round(endMove / state.lineSpacing)) + 1) * state.rotation}deg`;
+
         setTransform(endMove, type, time, deg);
 
         let t = time ? time / 2 : 0;
@@ -174,14 +179,25 @@ export default create({
         state.currIndex = Math.abs(Math.round(endMove / state.lineSpacing)) + 1;
       } else {
         let deg = '0deg';
+        let degNum = 0;
         if (updateMove < 0) {
-          deg = `${(Math.abs(updateMove / state.lineSpacing) + 1) * state.rotation}deg`;
+          degNum = (Math.abs(updateMove / state.lineSpacing) + 1) * state.rotation;
         } else {
-          deg = `${(-updateMove / state.lineSpacing + 1) * state.rotation}deg`;
+          degNum = (-updateMove / state.lineSpacing + 1) * state.rotation;
         }
 
-        setTransform(updateMove, null, undefined, deg);
-        state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
+        // picker 滚动的最大角度
+        const maxDeg = (props.column.length + 1) * state.rotation;
+        const minDeg = 0;
+        if (degNum > maxDeg) {
+          deg = `${maxDeg}deg`;
+        } else if (degNum < minDeg) {
+          deg = `${minDeg}deg`;
+        } else {
+          deg = `${degNum}deg`;
+          setTransform(updateMove, null, undefined, deg);
+          state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
+        }
       }
     };
 
@@ -202,6 +218,7 @@ export default create({
     watch(
       () => props.column,
       (val) => {
+        console.log('props.column变化', props.column);
         state.transformY = 0;
         modifyStatus(false);
       },
@@ -210,16 +227,16 @@ export default create({
       }
     );
 
-    watch(
-      () => props.value,
-      (val) => {
-        console.log('列更新', val);
-        modifyStatus(true);
-      },
-      {
-        deep: true
-      }
-    );
+    // watch(
+    //   () => props.value,
+    //   (val) => {
+    //      console.log('props.value变化')
+    //     modifyStatus(true);
+    //   },
+    //   {
+    //     deep: true
+    //   }
+    // );
 
     onMounted(() => {
       modifyStatus(true);
