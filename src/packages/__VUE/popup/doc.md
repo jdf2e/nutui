@@ -161,6 +161,35 @@ app.use(Popup).use(OverLay)
 
 :::
 
+### 多层堆叠
+
+:::demo
+
+```html
+<template>
+  <nut-cell title="多层堆叠" is-link @click="state.showPop1 = true"></nut-cell>
+  <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="state.showPop1">
+    <div @click="state.showPop2 = true">点击它</div>
+  </nut-popup>
+  <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="state.showPop2">正文</nut-popup>
+</template>
+<script lang="ts">
+  import { reactive } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const state = reactive({
+        showPop1: false,
+        showPop2: false
+      });
+      return { state };
+    }
+  };
+</script>
+```
+
+:::
+
 ## API
 
 ### Props
