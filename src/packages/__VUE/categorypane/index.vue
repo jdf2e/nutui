@@ -9,7 +9,7 @@
             v-for="(sku, key) in item.childCateList"
             class="nut-categorypane__childItem"
             :key="key"
-            @click="onChange(sku.catName)"
+            @click="onChange(sku)"
           >
             <img class="nut-categorypane__childImg" :src="sku.backImg" />
             <div class="nut-categorypane__skuImg">{{ sku.catName }}</div>
@@ -28,7 +28,7 @@
             v-for="(sku, key) in item.childCateList"
             class="nut-categorypane__childItem"
             :key="key"
-            @click="onChange(sku.catName)"
+            @click="onChange(sku)"
           >
             <div class="nut-categorypane__skuName">{{ sku.catName }}</div>
           </div>
@@ -77,8 +77,8 @@ export default create({
   },
 
   setup(props, { emit }) {
-    const onChange = (catName: any) => {
-      emit('onChange', catName);
+    const onChange = (sku: any) => {
+      emit('onChange', sku);
     };
 
     return {
