@@ -775,5 +775,7 @@ $comment-shop-color: $primary-color !default;
 // Ellipsis
 $ellipsis-expand-collapse-color: #3460fa !default;
 
+// WaterMark
+$nut-water-mark-z-index: 2000 !default;
 @import './mixins/index';
 @import './animation/index';
