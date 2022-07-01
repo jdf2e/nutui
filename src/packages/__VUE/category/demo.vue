@@ -76,7 +76,7 @@ export default createDemo({
     };
 
     const onChange = (v: any) => {
-      console.log('当前分类数据:'+v);
+      console.log('当前分类数据:' + JSON.stringify(v));
     };
 
     return {
