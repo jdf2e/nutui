@@ -4,6 +4,9 @@
 
 用于轻提示。
 
+>当前组件 Taro 环境暂不支持函数式调用，推荐使用 Taro.API 使用原生组件 https://taro-docs.jd.com/taro/docs/apis/ui/interaction/showToast
+
+
 ### 安装
 
 ``` javascript
