@@ -89,6 +89,13 @@ export const component = (componentName: string, nutIcon: object) => {
         emit('change', value, label);
       };
 
+      watch(
+        () => props.modelValue,
+        (v) => {
+          emit('change', v);
+        }
+      );
+
       const renderIcon = () => {
         const { iconName, iconSize, iconActiveName, iconClassPrefix, iconFontClassName, iconIndeterminateName } = props;
         return h(nutIcon, {

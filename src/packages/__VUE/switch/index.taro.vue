@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('switch');
 
@@ -90,9 +90,15 @@ export default create({
       if (props.disable || props.loading) return;
       const value = isActive.value ? props.inactiveValue : props.activeValue;
       emit('update:modelValue', value);
-      emit('update:loading');
       emit('change', value, event);
     };
+
+    watch(
+      () => props.modelValue,
+      (v) => {
+        emit('change', v);
+      }
+    );
 
     return {
       classes,
