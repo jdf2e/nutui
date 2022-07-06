@@ -4,7 +4,6 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import config from './package.json';
 import configPkg from './src/config.json';
-import { terser } from 'rollup-plugin-terser';
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
@@ -78,14 +77,7 @@ declare module 'vue' {
         },
         dir: path.resolve(__dirname, './dist/packages/_es'),
         entryFileNames: '[name].js',
-        plugins: [
-          terser({
-            compress: {
-              drop_console: true,
-              drop_debugger: true
-            }
-          })
-        ]
+        plugins: []
       }
     },
     emptyOutDir: false
