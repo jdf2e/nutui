@@ -42,6 +42,9 @@
       <template #shop-tag>
         <div>{{ translate('customShop') }}</div>
       </template>
+      <template #price>
+        <span>询价</span>
+      </template>
       <template #origin>
         <img
           class="tag"
