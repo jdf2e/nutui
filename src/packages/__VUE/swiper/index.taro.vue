@@ -7,6 +7,7 @@
     @touchmove="onTouchMove"
     @touchend="onTouchEnd"
     @touchcancel="onTouchEnd"
+    :catch-move="isPreventDefault"
   >
     <view
       :class="{
@@ -105,6 +106,10 @@ export default create({
     isStopPropagation: {
       type: Boolean,
       default: true
+    },
+    isCenter: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['change'],
@@ -163,9 +168,18 @@ export default create({
     const activePagination = computed(() => (state.active + childCount.value) % childCount.value);
 
     const getStyle = () => {
+      let offset = 0;
+      if (!props.isCenter) {
+        offset = state.offset;
+      } else {
+        let val = isVertical.value
+          ? (state.rect as DOMRect).height - size.value
+          : (state.rect as DOMRect).width - size.value;
+        offset = state.offset + (state.active === childCount.value - 1 ? -val / 2 : val / 2);
+      }
       state.style = {
         transitionDuration: `${state.moving ? 0 : props.duration}ms`,
-        transform: `translate${isVertical.value ? 'Y' : 'X'}(${state.offset}px)`,
+        transform: `translate${isVertical.value ? 'Y' : 'X'}(${offset}px)`,
         [isVertical.value ? 'height' : 'width']: `${size.value * childCount.value}px`,
         [isVertical.value ? 'width' : 'height']: `${isVertical.value ? state.width : state.height}px`
       };
@@ -359,7 +373,6 @@ export default create({
     };
 
     const onTouchStart = (e: TouchEvent) => {
-      if (props.isPreventDefault) e.preventDefault();
       if (props.isStopPropagation) e.stopPropagation();
       if (!props.touchable) return;
       touch.start(e);

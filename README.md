@@ -65,10 +65,9 @@
 ## 示例 H5 & 小程序
 
 <p>
-   <!-- <img src="https://img12.360buyimg.com/imagetools/jfs/t1/162421/39/13392/9425/6052ea60E592310a9/264bdff23ef5fe95.png" width="100" alt="NutUI" />
-  <span>  </span>
-   <img src="https://storage.360buyimg.com/jdc-article/gh_f2231eb941be_258.jpg" style="margin-left:40px" width="100" alt="NutUI" />   -->
-   <img src="https://img10.360buyimg.com/imagetools/jfs/t1/200153/16/20367/65061/61b87cf5Edd8c846b/0f64b38d096f9ab9.jpg" height="250" alt="NutUI" />  
+  <!--
+   <img src="https://img10.360buyimg.com/imagetools/jfs/t1/200153/16/20367/65061/61b87cf5Edd8c846b/0f64b38d096f9ab9.jpg" height="250" alt="NutUI" /> -->
+   <img src="https://img14.360buyimg.com/imagetools/jfs/t1/82310/37/20242/66386/62b57bb6Ebcad837d/a57b1fcdcc61dcc7.png" height="250" alt="NutUI" />
 </p>
 
 ## 版本说明

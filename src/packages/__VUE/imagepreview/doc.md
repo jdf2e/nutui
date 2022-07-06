@@ -314,7 +314,8 @@ app.use(ImagePreview);
 | close-icon`v3.1.22`   | 关闭图片名称或图片链接    | String  | ‘circle-close’  |
 | close-icon-position`v3.1.22`   | 关闭图标位置，可选值：top-left   | String  | ‘top-right’  |  
 | before-close`v3.1.22`  | 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise   | (active: number) => boolean | Promise<`boolean`>  | -  | 
-
+| max-zoom`v3.1.23`  | 手势缩放时，最大缩放比例`小程序暂不支持`   | Number  | 3  | 
+| min-zoom`v3.1.23`  | 手势缩放时，最小缩放比例`小程序暂不支持`   | Number  | 1/3  | 
 
 ### Events
 
