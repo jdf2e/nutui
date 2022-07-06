@@ -1,6 +1,6 @@
 <template>
   <view class="nut-picker__list" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
-    <view class="nut-picker-roller" ref="roller" :style="touchRollerStyle">
+    <view class="nut-picker-roller" ref="roller" :style="touchRollerStyle" @transitionend="stopMomentum">
       <view
         class="nut-picker-roller-item"
         :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
@@ -12,17 +12,9 @@
       </view>
     </view>
     <view class="nut-picker-roller-mask"></view>
-    <!-- <view class="nut-picker-content">
-      <view class="nut-picker-list-panel" ref="list" :id="'list' + refRandomId" :style="touchListStyle">
-        <view
-          :class="['nut-picker-item', 'nut-picker-item-ref', item.className]"
-          v-for="(item, index) in column"
-          :key="item.value ? item.value : index"
-          >{{ item.text }}
-        </view>
-        <view class="nut-picker-placeholder" v-if="column && column.length === 1"></view>
-      </view>
-    </view> -->
+    <view class="nut-picker-content">
+      <view class="nut-picker-list-panel" ref="list" :id="'list' + refRandomId" :style="touchListStyle"> </view>
+    </view>
   </view>
 </template>
 <script lang="ts">
@@ -30,6 +22,7 @@ import { reactive, ref, watch, computed, toRefs, onMounted, PropType } from 'vue
 import { createComponent } from '@/packages/utils/create';
 import { PickerOption, TouchParams } from './types';
 import { useTaroRect } from '@/packages/utils/useTaroRect';
+import { useTouch } from '@/packages/utils/useTouch';
 const { create } = createComponent('picker-column');
 import Taro from '@tarojs/taro';
 
@@ -54,6 +47,7 @@ export default create({
 
   emits: ['click', 'change'],
   setup(props, { emit }) {
+    const touch: any = useTouch();
     const wrapper = ref<HTMLElement>();
     const itemref = ref();
     const state = reactive({
@@ -77,61 +71,96 @@ export default create({
     const list = ref(null);
     const listitem = ref(null);
 
+    const moving = ref(false); // 是否处于滚动中
     const touchDeg = ref(0);
     const touchTime = ref(0);
     const touchTranslateY = ref(0);
+
+    // 触发惯性滑动条件:
+    // 在手指离开屏幕时，如果和上一次 move 时的间隔小于 `MOMENTUM_TIME` 且 move
+    // 距离大于 `MOMENTUM_DISTANCE` 时，执行惯性滑动
+    const INERTIA_TIME = 300;
+    const INERTIA_DISTANCE = 15;
+
     const touchListStyle = computed(() => {
       return {
-        transition: `transform ${touchTime.value}ms cubic-bezier(0.19, 1, 0.22, 1)`,
+        transition: `transform ${touchTime.value}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
         transform: `translate3d(0, ${state.scrollDistance}px, 0)`
       };
     });
 
     const touchRollerStyle = computed(() => {
       return {
-        transition: `transform ${touchTime.value}ms cubic-bezier(0.19, 1, 0.22, 1)`,
+        transition: `transform ${touchTime.value}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
         transform: `rotate3d(1, 0, 0, ${touchDeg.value})`
       };
     });
+    const setRollerStyle = (index: number) => {
+      return `transform: rotate3d(1, 0, 0, ${-state.rotation * index}deg) translate3d(0px, 0px, 104px)`;
+    };
 
     const onTouchStart = (event: TouchEvent) => {
-      event.preventDefault();
-      let changedTouches = event.changedTouches[0];
-      state.touchParams.startY = changedTouches.pageY;
-      state.touchParams.startTime = event.timeStamp || Date.now();
+      touch.start(event);
+      if (moving.value) {
+        const { transform } = window.getComputedStyle(list.value as any);
+
+        state.scrollDistance = +parseInt(transform.split(', ')[1]);
+      }
+
+      state.touchParams.startY = touch.deltaY.value;
+      state.touchParams.startTime = Date.now();
       state.transformY = state.scrollDistance;
     };
 
     const onTouchMove = (event: TouchEvent) => {
-      event.preventDefault();
-      let changedTouches = event.changedTouches[0];
-      (state.touchParams as TouchParams).lastY = changedTouches.pageY;
-      (state.touchParams as TouchParams).lastTime = event.timeStamp || Date.now();
+      touch.move(event);
+
+      if ((touch as any).isVertical) {
+        moving.value = true;
+        preventDefault(event, true);
+      }
+
+      (state.touchParams as TouchParams).lastY = touch.deltaY.value;
+      const now = Date.now();
       let move = state.touchParams.lastY - state.touchParams.startY;
 
       setMove(move);
-    };
 
-    const onTouchEnd = (event: TouchEvent) => {
-      event.preventDefault();
-
-      let changedTouches = event.changedTouches[0];
-      state.touchParams.lastY = changedTouches.pageY;
-      state.touchParams.lastTime = event.timeStamp || Date.now();
-      let move = state.touchParams.lastY - state.touchParams.startY;
-
-      let moveTime = state.touchParams.lastTime - state.touchParams.startTime;
-      if (moveTime <= 300) {
-        move = move * 2;
-        moveTime = moveTime + 1000;
-        setMove(move, 'end', moveTime);
-      } else {
-        setMove(move, 'end');
+      if (now - (state.touchParams as TouchParams).startTime > INERTIA_TIME) {
+        (state.touchParams as TouchParams).startTime = now;
+        state.touchParams.startY = (state.touchParams as TouchParams).lastY;
       }
     };
 
-    const setRollerStyle = (index: number) => {
-      return `transform: rotate3d(1, 0, 0, ${-state.rotation * index}deg) translate3d(0px, 0px, 104px)`;
+    const onTouchEnd = (event: TouchEvent) => {
+      state.touchParams.lastY = touch.deltaY.value;
+      state.touchParams.lastTime = Date.now();
+      let move = state.touchParams.lastY - state.touchParams.startY;
+
+      let moveTime = state.touchParams.lastTime - state.touchParams.startTime;
+
+      if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
+        // 惯性滚动
+        const distance = momentum(move, moveTime);
+        setMove(distance, 'end', moveTime + 1000);
+        return;
+      } else {
+        setMove(move, 'end');
+      }
+
+      setTimeout(() => {
+        touch.reset();
+        moving.value = false;
+      }, 0);
+    };
+
+    // 惯性滚动 距离
+    const momentum = (distance: number, duration: number) => {
+      // 惯性滚动的速度
+      const speed = Math.abs(distance / duration);
+      // 惯性滚动的距离
+      distance = (speed / 0.003) * (distance < 0 ? -1 : 1);
+      return distance;
     };
 
     const isHidden = (index: number) => {
@@ -169,33 +198,24 @@ export default create({
         let deg = `${(Math.abs(Math.round(endMove / state.lineSpacing)) + 1) * state.rotation}deg`;
         setTransform(endMove, type, time, deg);
 
-        let t = time ? time / 2 : 0;
-        (state.timer as any) = setTimeout(() => {
-          setChooseValue();
-        }, t);
+        // let t = time ? time / 2 : 0;
+        // (state.timer as any) = setTimeout(() => {
+        //   setChooseValue();
+        // }, t);
 
         state.currIndex = Math.abs(Math.round(endMove / state.lineSpacing)) + 1;
       } else {
         let deg = '0deg';
-        let degNum = 0;
-        if (updateMove < 0) {
-          degNum = (Math.abs(updateMove / state.lineSpacing) + 1) * state.rotation;
-        } else {
-          degNum = (-updateMove / state.lineSpacing + 1) * state.rotation;
-        }
+        let currentDeg = (-updateMove / state.lineSpacing + 1) * state.rotation;
 
         // picker 滚动的最大角度
         const maxDeg = (props.column.length + 1) * state.rotation;
         const minDeg = 0;
-        if (degNum > maxDeg) {
-          deg = `${maxDeg}deg`;
-        } else if (degNum < minDeg) {
-          deg = `${minDeg}deg`;
-        } else {
-          deg = `${degNum}deg`;
-          setTransform(updateMove, null, undefined, deg);
-          state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
-        }
+
+        deg = Math.min(Math.max(currentDeg, minDeg), maxDeg) + 'deg';
+
+        setTransform(updateMove, null, undefined, deg);
+        state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
       }
     };
 
@@ -213,9 +233,25 @@ export default create({
       setMove(-move);
     };
 
+    const preventDefault = (event: Event, isStopPropagation?: boolean) => {
+      /* istanbul ignore else */
+      if (typeof event.cancelable !== 'boolean' || event.cancelable) {
+        event.preventDefault();
+      }
+
+      if (isStopPropagation) {
+        event.stopPropagation();
+      }
+    };
+
+    // 惯性滚动结束
+    const stopMomentum = () => {
+      moving.value = false;
+      console.log('滚动结束');
+      setChooseValue();
+    };
+
     const getReference = async () => {
-      // const refe = await useTaroRect(list, Taro);
-      // state.lineSpacing = refe.height / props.column.length;
       modifyStatus(true);
     };
 
@@ -270,7 +306,8 @@ export default create({
       touchRollerStyle,
       touchListStyle,
       setMove,
-      refRandomId
+      refRandomId,
+      stopMomentum
     };
   }
 });
