@@ -84,7 +84,10 @@ export const component = (componentName: string, nutIcon: object) => {
           : 'nut-checkbox__icon--disable';
       });
 
+      let updateType = '';
+
       const emitChange = (value: string | boolean, label?: string) => {
+        updateType = 'click';
         emit('update:modelValue', value);
         emit('change', value, label);
       };
@@ -92,7 +95,11 @@ export const component = (componentName: string, nutIcon: object) => {
       watch(
         () => props.modelValue,
         (v) => {
-          emit('change', v);
+          if (updateType == 'click') {
+            updateType = '';
+          } else {
+            emit('change', v);
+          }
         }
       );
 

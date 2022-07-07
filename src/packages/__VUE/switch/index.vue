@@ -86,9 +86,12 @@ export default create({
       };
     });
 
+    let updateType = '';
+
     const onClick = (event: Event) => {
       if (props.disable || props.loading) return;
       const value = isActive.value ? props.inactiveValue : props.activeValue;
+      updateType = 'click';
       emit('update:modelValue', value);
       emit('change', value, event);
     };
@@ -96,7 +99,11 @@ export default create({
     watch(
       () => props.modelValue,
       (v) => {
-        emit('change', v);
+        if (updateType == 'click') {
+          updateType = '';
+        } else {
+          emit('change', v);
+        }
       }
     );
 
