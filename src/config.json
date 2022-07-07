@@ -146,7 +146,7 @@
           "cName": "图片",
           "desc": "图片展示",
           "show": true,
-          "tarodoc": false,
+          "tarodoc": true,
           "type": "component",
           "author": "yangxiaolu"
         }

@@ -363,10 +363,17 @@ describe('Cascader', () => {
 
     // 点击叶子节点时关闭popup
     await wrapper.setProps({
-      modelValue: ['福建', '福州', '鼓楼区']
+      modelValue: ['福建', '福州', '台江区']
     });
     await wrapper.findAll('.nut-cascader-pane')[2].find('.nut-cascader-item').trigger('click');
-    expect((wrapper.emitted('update:visible') as any)[0][0]).toBe(false);
+    // expect((wrapper.emitted('update:visible') as any)[0][0]).toBe(false);
+    expect(
+      wrapper
+        .findAll('.nut-cascader-pane')[2]
+        .find('.nut-cascader-item.active')
+        .find('.nut-cascader-item__title')
+        .html()
+    ).toContain('鼓楼区');
   });
 
   it('modelValue', async () => {

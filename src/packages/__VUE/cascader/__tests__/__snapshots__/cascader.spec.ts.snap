@@ -3,10 +3,10 @@
 exports[`Cascader change tab 1`] = `
 "<teleport-stub>
   <transition-stub class=\\"\\">
-    <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000;\\"></view>
+    <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2002;\\"></view>
   </transition-stub>
   <transition-stub>
-    <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s;\\">
+    <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2002; animation-duration: 0.3s;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
@@ -68,10 +68,10 @@ exports[`Cascader change tab 1`] = `
 exports[`Cascader change tab 2`] = `
 "<teleport-stub>
   <transition-stub class=\\"\\">
-    <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000;\\"></view>
+    <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2002;\\"></view>
   </transition-stub>
   <transition-stub>
-    <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s;\\">
+    <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2002; animation-duration: 0.3s;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
@@ -133,10 +133,10 @@ exports[`Cascader change tab 2`] = `
 exports[`Cascader change tab 3`] = `
 "<teleport-stub>
   <transition-stub class=\\"\\">
-    <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000;\\"></view>
+    <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2002;\\"></view>
   </transition-stub>
   <transition-stub>
-    <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s;\\">
+    <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2002; animation-duration: 0.3s;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
@@ -1172,10 +1172,10 @@ exports[`Cascader select with lazy 7`] = `
 exports[`Cascader visible 1`] = `
 "<teleport-stub>
   <transition-stub class=\\"\\">
-    <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2000;\\"></view>
+    <view class=\\"nut-overlay\\" style=\\"animation-duration: 0.3s; z-index: 2001;\\"></view>
   </transition-stub>
   <transition-stub>
-    <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2000; animation-duration: 0.3s;\\">
+    <view class=\\"nut-popup round popup-bottom nut-cascader__popup\\" style=\\"z-index: 2001; animation-duration: 0.3s;\\">
       <!--v-if-->
       <view class=\\"nut-tabs horizontal nut-cascader\\">
         <view class=\\"nut-tabs__titles line scrollable normal\\">
