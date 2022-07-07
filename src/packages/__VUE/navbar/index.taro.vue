@@ -1,6 +1,6 @@
 <template>
   <view v-if="fixed && placeholder" class="nut-navbar--placeholder" :style="{ height: navHeight + 'px' }">
-    <view :class="classes" :style="styles" ref="navBarHtml">
+    <view :class="classes" :style="styles" class="navBarHtml">
       <view class="nut-navbar__left" @click="handleLeft">
         <nut-icon v-if="leftShow" color="#979797" name="left"></nut-icon>
         <view v-if="leftText" class="nut-navbar__text">{{ leftText }}</view>
@@ -37,6 +37,7 @@
 
 <script lang="ts">
 import { onMounted, computed, toRefs, ref } from 'vue';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('navbar');
@@ -71,6 +72,7 @@ export default create({
   },
   emits: ['on-click-back', 'on-click-title', 'on-click-icon', 'on-click-right'],
   setup(props, { emit }) {
+    // const navBarHtml = ref<HTMLElement>();
     const { border, fixed, safeAreaInsetTop, placeholder, zIndex } = toRefs(props);
     let navHeight = ref(0);
     const classes = computed(() => {
@@ -91,15 +93,13 @@ export default create({
 
     onMounted(() => {
       if (fixed.value && placeholder.value) {
-        setTimeout(async () => {
+        setTimeout(() => {
           const query = Taro.createSelectorQuery();
-          query
-            .select('.navBarHtml')
-            .boundingClientRect((rec: any) => {
-              navHeight.value = rec.height;
-              console.log('navBarHtml', navHeight);
-            })
-            .exec();
+          query.select('.navBarHtml').boundingClientRect();
+          query.exec((res) => {
+            navHeight.value = res[0].height;
+            // console.log('navHeight', navHeight.value)
+          });
         }, 100);
       }
     });
