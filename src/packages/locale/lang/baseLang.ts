@@ -49,6 +49,7 @@ export abstract class BaseLang {
     selectRegion: string;
     deliveryTo: string;
     chooseAnotherAddress: string;
+    newCustomBtn: string;
   };
   abstract signature: {
     reSign: string;

@@ -92,6 +92,27 @@
       @switch-module="switchModule"
       @close-mask="closeMask"
     ></nut-address>
+
+    <h2>{{ translate('customBtnAddress') }}</h2>
+    <nut-cell :title="translate('title')" :desc="seven" is-link @click="showAddressCustomBtn"></nut-cell>
+
+    <nut-address
+      v-model:visible="customBtn"
+      type="exist"
+      :exist-address="existAddress"
+      :province="province"
+      :city="city"
+      :country="country"
+      :town="town"
+      :back-btn-icon="backBtnIcon"
+      :is-show-custom-address="false"
+      :is-show-custom-btn-and-exist="true"
+      @change="(cal) => onChange(cal, 'customBtn')"
+      @close="close7"
+      @selected="selected"
+      @custom-switch-module="customSwitchModule"
+      @close-mask="closeMask"
+    ></nut-address>
   </div>
 </template>
 
@@ -111,7 +132,8 @@ useTranslate({
     existAddress: '选择已有地址',
     icon: '自定义图标',
     change: '自定义地址与已有地址切换',
-    textAddress: '北京朝阳区八里庄街道'
+    textAddress: '北京朝阳区八里庄街道',
+    customBtnAddress: '已有地址自定义按钮'
   },
   'en-US': {
     basic: 'Basic Usage',
@@ -122,7 +144,8 @@ useTranslate({
     existAddress: 'Choose Exist Address',
     icon: 'Custom Icon',
     change: 'Custom Or Exist',
-    textAddress: 'Balizhuang Street, Chaoyang District, Beijing'
+    textAddress: 'Balizhuang Street, Chaoyang District, Beijing',
+    customBtnAddress: 'Exist Address Custom Btn'
   }
 });
 
@@ -193,6 +216,7 @@ export default createDemo({
       exist: false,
       customImg: false,
       other: false,
+      customBtn: false,
       select: false
     });
 
@@ -245,7 +269,8 @@ export default createDemo({
       three: translate('title'),
       four: translate('title'),
       five: translate('textAddress'),
-      six: translate('textAddress')
+      six: translate('textAddress'),
+      seven: translate('title')
     });
 
     const showAddress = () => {
@@ -302,6 +327,9 @@ export default createDemo({
     const showAddressOther = () => {
       showPopup.other = true;
     };
+    const showAddressCustomBtn = () => {
+      showPopup.customBtn = true;
+    };
     const showCustomImg = () => {
       showPopup.customImg = true;
     };
@@ -315,7 +343,6 @@ export default createDemo({
         text.three = val.data.addressStr;
       }
     };
-
     const close4 = (val: CalResult) => {
       console.log(val);
       if (val.type == 'exist') {
@@ -325,13 +352,26 @@ export default createDemo({
         text.four = val.data.addressStr;
       }
     };
-
+    const close7 = (val: CalResult) => {
+      console.log(val);
+      if (val.type == 'exist') {
+        const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
+        text.seven = provinceName + cityName + countyName + townName + addressDetail;
+      } else {
+        text.seven = val.data.addressStr;
+      }
+    };
     const switchModule = (val: CalResult) => {
       if (val.type == 'custom') {
         console.log('点击了“选择其他地址”按钮');
       } else {
         console.log('点击了自定义地址左上角的返回按钮');
       }
+    };
+
+    const customSwitchModule = (address: any) => {
+      console.log(address);
+      console.log('点击了自定义按钮');
     };
 
     const closeMask = (val: CalResult) => {
@@ -354,10 +394,13 @@ export default createDemo({
       showSelected,
       existAddress,
       showAddressOther,
+      showAddressCustomBtn,
       showCustomImg,
       close3,
       close4,
+      close7,
       switchModule,
+      customSwitchModule,
       closeMask,
       placeholder,
       translate,

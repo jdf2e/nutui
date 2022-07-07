@@ -92,6 +92,27 @@
       @switch-module="switchModule"
       @close-mask="closeMask"
     ></nut-address>
+
+      <h2>已有地址自定义按钮</h2>
+    <nut-cell title="选择地址" :desc="seven" is-link @click="showAddressCustomBtn"></nut-cell>
+
+    <nut-address
+      v-model:visible="customBtn"
+      type="exist"
+      :exist-address="existAddress"
+      :province="province"
+      :city="city"
+      :country="country"
+      :town="town"
+      :back-btn-icon="backBtnIcon"
+      :is-show-custom-address="false"
+      :is-show-custom-btn-and-exist="true"
+      @change="(cal) => onChange(cal, 'customBtn')"
+      @close="close7"
+      @selected="selected"
+      @custom-switch-module="customSwitchModule"
+      @close-mask="closeMask"
+    ></nut-address>
   </div>
 </template>
 
@@ -165,6 +186,7 @@ export default defineComponent({
       exist: false,
       customImg: false,
       other: false,
+      customBtn: false,
       select: false
     });
 
@@ -217,7 +239,8 @@ export default defineComponent({
       three: '请选择地址',
       four: '请选择地址',
       five: '请选择地址',
-      six: '请选择地址'
+      six: '请选择地址',
+      seven: '请选择地址',
     });
 
     const showAddress = () => {
@@ -274,6 +297,9 @@ export default defineComponent({
     const showAddressOther = () => {
       showPopup.other = true;
     };
+    const showAddressCustomBtn = () => {
+      showPopup.customBtn = true;
+    };
     const showCustomImg = () => {
       showPopup.customImg = true;
     };
@@ -297,7 +323,15 @@ export default defineComponent({
         text.four = val.data.addressStr;
       }
     };
-
+    const close7 = (val: CalResult) => {
+      console.log(val);
+      if (val.type == 'exist') {
+        const { provinceName, cityName, countyName, townName, addressDetail } = val.data;
+        text.seven = provinceName + cityName + countyName + townName + addressDetail;
+      } else {
+        text.seven = val.data.addressStr;
+      }
+    };
     const switchModule = (val: CalResult) => {
       if (val.type == 'custom') {
         console.log('点击了“选择其他地址”按钮');
@@ -305,7 +339,10 @@ export default defineComponent({
         console.log('点击了自定义地址左上角的返回按钮');
       }
     };
-
+    const customSwitchModule = (address: any) => {
+      console.log(address);
+      console.log('点击了自定义按钮');
+    };
     const closeMask = (val: CalResult) => {
       console.log('关闭弹层', val);
     };
@@ -326,10 +363,13 @@ export default defineComponent({
       showSelected,
       existAddress,
       showAddressOther,
+      showAddressCustomBtn,
       showCustomImg,
       close3,
       close4,
+      close7,
       switchModule,
+      customSwitchModule,
       closeMask,
       placeholder,
       ...toRefs(icon),

@@ -49,7 +49,8 @@ class Lang extends BaseLang {
   address = {
     selectRegion: '請選擇所在地區',
     deliveryTo: '配送至',
-    chooseAnotherAddress: '選擇其他地址'
+    chooseAnotherAddress: '選擇其他地址',
+    newCustomBtn: '自定义按钮'
   };
   signature = {
     reSign: '重簽',

@@ -545,6 +545,8 @@ If you want to select a province, you need to set the region ID in the order of 
 | custom-address-title  | Custom address title | String | 'Select Region'
 | exist-address-title|  Exist address title | String | 'Delivery To'
 | custom-and-exist-title| Custom address and existing address switch button copywriting | String | 'Choose Another Address'
+| custom-btn-and-exist-title| Custom Btn and existing address ，type=‘exist’ | String | 'Custom Btn'
+| is-show-custom-btn-and-exist | Whether to change custom Btn，type=‘exist’  | Boolean | false
 | columns-placeholder | Columns placeholder text | String|Array | 'Select'
 | lock-scroll   | Whether the background is locked   | Boolean        | `true`       
 
@@ -557,6 +559,7 @@ If you want to select a province, you need to set the region ID in the order of 
 | close |  Emitted when to close  | reference close
 | close-mask | Emitted when to close mask | {closeWay:'mask'/'cross'}
 | switch-module | Click to select another address or custom address to select the upper left corner of the return button triggered | {type:'exist'/'custom'/'custom2'}
+| custom-switch-module | Click to Custom button event | {type:'exist'/'custom'/'custom2'}
 
 
 ## change 

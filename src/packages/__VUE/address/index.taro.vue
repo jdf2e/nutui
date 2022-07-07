@@ -122,6 +122,9 @@
         <div class="choose-other" @click="switchModule" v-if="isShowCustomAddress">
           <div class="btn">{{ customAndExistTitle || translate('chooseAnotherAddress') }}</div>
         </div>
+        <div class="choose-other" @click="customSwitchModule" v-if="isShowCustomBtnAndExist">
+          <div class="btn">{{ customBtnAndExistTitle || translate('newCustomBtn') }}</div>
+        </div>
       </view>
     </view>
   </nut-popup>
@@ -193,6 +196,10 @@ export default create({
       type: Boolean,
       default: true
     }, // 是否显示‘选择其他地区’按钮 type=‘exist’ 生效
+    isShowCustomBtnAndExist: {
+      type: Boolean,
+      default: false
+    }, // 是否显示一个自定义按钮 type=‘exist’ 生效
     existAddress: {
       type: Array,
       default: () => []
@@ -205,6 +212,10 @@ export default create({
       type: String,
       default: ''
     },
+    customBtnAndExistTitle: {
+      type: String,
+      default: ''
+    }, // 自定义按钮文本
     defaultIcon: {
       // 地址选择列表前 - 默认的图标
       type: String,
@@ -234,7 +245,17 @@ export default create({
       default: ''
     }
   },
-  emits: ['update:visible', 'update:modelValue', 'type', 'change', 'selected', 'close', 'close-mask', 'switch-module'],
+  emits: [
+    'update:visible',
+    'update:modelValue',
+    'type',
+    'change',
+    'selected',
+    'close',
+    'close-mask',
+    'switch-module',
+    'custom-switch-module'
+  ],
 
   setup(props, { emit }) {
     const classes = computed(() => {
@@ -527,7 +548,10 @@ export default create({
 
       emit('switch-module', { type: privateType.value });
     };
-
+    //exist方式下,单独增加一个自定义按钮
+    const customSwitchModule = () => {
+      emit('custom-switch-module', { existAddress: props.existAddress, selectedAddress: selectedExistAddress });
+    };
     const handleElevatorItem = (key: string, item: RegionData | string) => {
       nextAreaList(item);
     };
@@ -584,6 +608,9 @@ export default create({
             selectedExistAddress = item as {};
           }
         });
+      },
+      {
+        immediate: true
       }
     );
 
@@ -597,6 +624,7 @@ export default create({
       selectedRegion,
       selectedExistAddress,
       switchModule,
+      customSwitchModule,
       closeWay,
       close,
       getTabName,

@@ -49,7 +49,8 @@ class Lang extends BaseLang {
   address = {
     selectRegion: 'Pilih Daerah',
     deliveryTo: 'Kirim Ke',
-    chooseAnotherAddress: 'Pilih alamat lain'
+    chooseAnotherAddress: 'Pilih alamat lain',
+    newCustomBtn: 'Tambah Alamat Baru'
   };
   signature = {
     reSign: 'Masuk Kembali',

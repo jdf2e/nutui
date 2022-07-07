@@ -547,6 +547,8 @@ app.use(Elevator);
 | custom-address-title  | 自定义地址选择文案，type='custom' 时生效 | String | '请选择所在地区'
 | exist-address-title| 已有地址文案 ，type=‘exist’ 时生效| String | '配送至'
 | custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| String | '选择其他地址'
+| custom-btn-and-exist-title| 已有地址自定义按钮文案 ，type=‘exist’ 时生效| String | '自定义按钮'
+| is-show-custom-btn-and-exist | 是否显示自定义按钮，type=‘exist’ 时生效 | Boolean | false
 | columns-placeholder | 列提示文字 | String|Array | '请选择'
 | lock-scroll  | 背景是否锁定      | Boolean        | `true`       
 
@@ -566,6 +568,7 @@ app.use(Elevator);
 | close | 地址选择弹框关闭时触发 | 参考 close
 | close-mask |点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'}
 | switch-module | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'/'custom2'}
+| custom-switch-module | 点击‘自定义按钮’触发 | {type:'exist'/'custom'/'custom2'}
 
 
 ## change 回调参数

@@ -49,7 +49,8 @@ class Lang extends BaseLang {
   address = {
     selectRegion: 'Select Region',
     deliveryTo: 'Delivery To',
-    chooseAnotherAddress: 'Choose Another Address'
+    chooseAnotherAddress: 'Choose Another Address',
+    newCustomBtn: 'Custom Btn'
   };
   signature = {
     reSign: 'Re Sign',
