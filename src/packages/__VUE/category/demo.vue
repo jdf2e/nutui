@@ -64,15 +64,15 @@ export default createDemo({
     };
 
     const change = (index: any) => {
-      data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
+      data.categoryChild = [].concat(data?.categoryInfo?.category[index + 1]?.children as any);
     };
 
     const changeText = (index: any) => {
       data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
     };
 
-    const changeCustom = () => {
-      console.log('点击分类数据');
+    const changeCustom = (v: any) => {
+      console.log('点击分类数据:' + JSON.stringify(v));
     };
 
     const onChange = (v: any) => {
