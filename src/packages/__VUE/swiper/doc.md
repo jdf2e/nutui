@@ -417,6 +417,101 @@ app.use(Swiper).use(SwiperItem);
 :::
 
 
+### 水平居中展示
+
+`is-center` 代表可居中，同时必须传 `width`
+
+:::demo
+
+```html
+<template>
+  <nut-swiper :init-page="page" :loop="false" width="280" height="150" :is-center="true" style="height: 150px">
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+    </nut-swiper-item>
+  </nut-swiper>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        page: 0
+      });
+      return { ...toRefs(state) };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .nut-swiper-item {
+    line-height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+</style>
+```
+
+:::
+
+### 垂直居中展示
+
+`is-center` 代表可居中，同时必须传 `height`
+
+:::demo
+
+```html
+<template>
+  <nut-swiper :init-page="page" :loop="false" direction="vertical" height="220" :is-center="true" style="height: 300px">
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+    </nut-swiper-item>
+    <nut-swiper-item>
+      <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+    </nut-swiper-item>
+  </nut-swiper>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        page: 0
+      });
+      return { ...toRefs(state) };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .nut-swiper-item {
+    line-height: 300px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+</style>
+```
+
+:::
+
+
 ## API
 
 ### Props
@@ -435,6 +530,7 @@ app.use(Swiper).use(SwiperItem);
 | touchable             | 是否可触摸滑动                                                      | Boolean         | true          |
 | is-preventDefault                  | 滑动过程中是否禁用默认事件                                              | Boolean  | true           |
 | is-stopPropagation               | 滑动过程中是否禁止冒泡                    | Boolean         | true    |
+| is-center               | 是否居中展示，必须传对应的`width` 和 `height`                    | Boolean         | false    |
 
 
 

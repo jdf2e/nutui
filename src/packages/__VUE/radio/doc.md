@@ -9,12 +9,12 @@
 ``` ts
 import { createApp } from 'vue';
 //vue
-import { Radio,RadioGroup } from '@nutui/nutui';
+import { Radio,RadioGroup,Icon } from '@nutui/nutui';
 //taro
-import { Radio,RadioGroup } from '@nutui/nutui-taro';
+import { Radio,RadioGroup,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Radio).use(RadioGroup);
+app.use(Radio).use(RadioGroup).use(Icon);
 ```
 ## 基本用法
 

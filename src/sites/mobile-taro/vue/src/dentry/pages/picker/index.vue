@@ -12,7 +12,7 @@
     ></nut-cell>
     <nut-picker
       v-model:visible="show"
-      :columns="columns"
+      :columns="columsNum"
       title="城市选择"
       @change="change"
       @confirm="(options) => confirm('index', options)"
@@ -118,6 +118,7 @@ export default {
   setup() {
     const selectedValue = ref(['ZheJiang']);
     const asyncValue = ref<string[]>([]);
+    const columsNum = ref([]);
     const columns = ref([
       { text: '南京市', value: 'NanJing' },
       { text: '无锡市', value: 'WuXi' },
@@ -245,6 +246,10 @@ export default {
     };
 
     onMounted(() => {
+      for (let i = 1; i < 60; i++) {
+        columsNum.value.push({ text: i, value: i });
+      }
+
       setTimeout(() => {
         asyncColumns.value = [
           { text: '南京市', value: 'NanJing' },
@@ -289,7 +294,8 @@ export default {
       asyncColumns,
       effectColumns,
       showEffect,
-      alwaysFun
+      alwaysFun,
+      columsNum
     };
   }
 };

@@ -15,7 +15,7 @@ import { Card,Tag,Price} from '@nutui/nutui';
 import { Card ,Tag,Price} from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Card);
+app.use(Card).use(Tag).use(Price);
 
 ```
 
