@@ -1,21 +1,31 @@
 <template>
   <view class="nut-picker__list" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
-    <view class="nut-picker-roller" ref="roller" :style="touchRollerStyle" @transitionend="stopMomentum">
+    <view
+      class="nut-picker-roller"
+      ref="roller"
+      :style="threeDimensional ? touchRollerStyle : touchTileStyle"
+      @transitionend="stopMomentum"
+    >
       <template v-for="(item, index) in column" :key="item.value ? item.value : index">
+        <!-- 3D 效果 -->
         <view
           class="nut-picker-roller-item"
           :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
           :style="setRollerStyle(index + 1)"
-          v-if="item && item.text"
+          v-if="item && item.text && threeDimensional"
         >
+          {{ item.text }}
+        </view>
+        <!-- 平铺 -->
+        <view class="nut-picker-roller-item-tile" v-if="item && item.text && !threeDimensional">
           {{ item.text }}
         </view>
       </template>
     </view>
     <view class="nut-picker-roller-mask"></view>
-
-    <view class="nut-picker-content"
-      ><view class="nut-picker-list-panel" ref="list" :style="touchListStyle"></view
+    <!-- 3D 效果 时使用 -->
+    <view class="nut-picker-content" v-if="threeDimensional"
+      ><view class="nut-picker-list-panel" ref="list" :style="touchTileStyle"></view
     ></view>
   </view>
 </template>
@@ -42,6 +52,11 @@ export default create({
     readonly: {
       type: Boolean,
       default: false
+    },
+    // 是否开启3D效果
+    threeDimensional: {
+      type: Boolean,
+      default: true
     }
   },
 
@@ -70,7 +85,6 @@ export default create({
 
     const roller = ref(null);
     const list = ref(null);
-    const listItem = ref(null);
 
     const moving = ref(false); // 是否处于滚动中
     const touchDeg = ref(0);
@@ -89,7 +103,7 @@ export default create({
       };
     });
 
-    const touchListStyle = computed(() => {
+    const touchTileStyle = computed(() => {
       return {
         transition: `transform ${touchTime.value}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
         transform: `translate3d(0, ${state.scrollDistance}px, 0)`
@@ -104,7 +118,11 @@ export default create({
       touch.start(event);
 
       if (moving.value) {
-        const { transform } = window.getComputedStyle(list.value as any);
+        let dom = list.value as any;
+        if (!props.threeDimensional) {
+          dom = roller.value as any;
+        }
+        const { transform } = window.getComputedStyle(dom);
         state.scrollDistance = +transform.slice(7, transform.length - 1).split(', ')[5];
       }
 
@@ -127,10 +145,10 @@ export default create({
 
       setMove(move);
 
-      if (now - (state.touchParams as TouchParams).startTime > INERTIA_TIME) {
-        (state.touchParams as TouchParams).startTime = now;
-        state.touchParams.startY = (state.touchParams as TouchParams).lastY;
-      }
+      // if (now - (state.touchParams as TouchParams).startTime > INERTIA_TIME) {
+      //   (state.touchParams as TouchParams).startTime = now;
+      //   state.touchParams.startY = (state.touchParams as TouchParams).lastY;
+      // }
     };
 
     const onTouchEnd = (event: TouchEvent) => {
@@ -207,17 +225,19 @@ export default create({
 
         state.currIndex = Math.abs(Math.round(endMove / state.lineSpacing)) + 1;
       } else {
-        let deg = '0deg';
+        let deg = 0;
         let currentDeg = (-updateMove / state.lineSpacing + 1) * state.rotation;
 
         // picker 滚动的最大角度
         const maxDeg = (props.column.length + 1) * state.rotation;
         const minDeg = 0;
 
-        deg = Math.min(Math.max(currentDeg, minDeg), maxDeg) + 'deg';
+        deg = Math.min(Math.max(currentDeg, minDeg), maxDeg);
 
-        setTransform(updateMove, null, undefined, deg);
-        state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
+        if (minDeg < deg && deg < maxDeg) {
+          setTransform(updateMove, null, undefined, deg + 'deg');
+          state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
+        }
       }
     };
 
@@ -288,12 +308,11 @@ export default create({
       isHidden,
       roller,
       list,
-      listItem,
       onTouchStart,
       onTouchMove,
       onTouchEnd,
       touchRollerStyle,
-      touchListStyle,
+      touchTileStyle,
       setMove,
       stopMomentum
     };
