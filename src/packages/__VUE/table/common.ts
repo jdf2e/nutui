@@ -52,6 +52,13 @@ export const component = (componentName: string, translate: Function) => {
         };
       };
 
+      const stylehead = (item: TableColumnProps) => {
+        return item.stylehead ? item.stylehead : '';
+      };
+      const stylecolumn = (item: TableColumnProps) => {
+        return item.stylecolumn ? item.stylecolumn : '';
+      };
+
       const getColumnItem = (value: string): TableColumnProps => {
         return props.columns.filter((item: TableColumnProps) => item.key === value)[0];
       };
@@ -88,7 +95,9 @@ export const component = (componentName: string, translate: Function) => {
         getColumnItem,
         handleSorterClick,
         sortDataItem,
-        translate
+        translate,
+        stylehead,
+        stylecolumn
       };
     }
   };
