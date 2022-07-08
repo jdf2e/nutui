@@ -69,6 +69,7 @@
     height: 252px;
     overflow: hidden;
     text-align: center;
+    -webkit-overflow-scrolling: touch;
   }
 
   &-roller {

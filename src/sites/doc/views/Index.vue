@@ -3,14 +3,14 @@
     <doc-header></doc-header>
     <doc-nav></doc-nav>
     <div class="doc-content">
-      <div class="doc-title" v-if="isShow()">
+      <div class="doc-title">
         <div class="doc-title-position" :class="{ fixed: fixed, hidden: hidden }">
           <div class="title">{{ componentName.name }}&nbsp;{{ componentName.cName }}</div>
           <doc-issue class=""></doc-issue>
         </div>
       </div>
-      <div class="doc-content-document" :class="{ isComponent: isShow() }">
-        <div class="doc-content-tabs" v-if="isShow() && isShowTaroDoc">
+      <div class="doc-content-document isComponent">
+        <div class="doc-content-tabs" v-if="isShowTaroDoc">
           <div
             class="tab-item"
             :class="{ cur: curKey === item.key }"
@@ -20,12 +20,12 @@
             >{{ item.text }}</div
           >
         </div>
-        <div class="doc-content-tabs single" v-if="isShow() && !isShowTaroDoc">
+        <div class="doc-content-tabs single" v-if="!isShowTaroDoc">
           <div class="tab-item cur">vue / taro</div>
         </div>
         <router-view />
       </div>
-      <doc-demo-preview v-if="isShow()" :url="demoUrl" :class="{ fixed: fixed }"></doc-demo-preview>
+      <doc-demo-preview :url="demoUrl" :class="{ fixed: fixed }"></doc-demo-preview>
     </div>
   </div>
 </template>
@@ -94,13 +94,9 @@ export default defineComponent({
       return router.path.indexOf('taro') > -1;
     };
 
-    const isShow = () => {
-      // return !excludeTaro.includes(route.path);
-      return route.path != 'zh-CN/' || 'zh-TW/' || 'en-US/';
-    };
-
     const isShowTaroDoc = computed(() => {
-      return configNav.value.findIndex((item) => item === route.path.substr(1)) > -1;
+      let routename = route.path.toLocaleLowerCase().split('/').pop() || '';
+      return configNav.value.findIndex((item) => item === routename) > -1;
     });
 
     const watchDemoUrl = (router: RouteLocationNormalized) => {
@@ -184,7 +180,6 @@ export default defineComponent({
       ...toRefs(state),
       ...toRefs(data),
       handleTabs,
-      isShow,
       isShowTaroDoc
     };
   }

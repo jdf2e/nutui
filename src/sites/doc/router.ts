@@ -32,9 +32,13 @@ const modulesPageTaro = import.meta.glob('/src/packages/__VUE/**/*.taro.md');
 for (const path in modulesPageTaro) {
   let name = (/packages\/__VUE\/(.*)\/doc.taro.md/.exec(path) as any[])[1];
   pagesRouter.push({
-    path: `/${name}-taro`,
-    component: modulesPageTaro[path],
-    name: `${name}-taro`
+    path: `/zh-CN//${name}-taro`,
+    component: modulesPageTaro[path]
+    // name: `${name}-taro`
+  });
+  pagesRouter.push({
+    path: `/en-US/${name}-taro`,
+    component: modulesPageTaro[path]
   });
 }
 
