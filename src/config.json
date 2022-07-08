@@ -146,7 +146,7 @@
           "cName": "图片",
           "desc": "图片展示",
           "show": true,
-          "tarodoc": false,
+          "tarodoc": true,
           "type": "component",
           "author": "yangxiaolu"
         }
@@ -1077,6 +1077,17 @@
           "tarodoc": false,
           "type": "component",
           "author": "yangxiaolu3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "WaterMark",
+          "cType": "展示组件",
+          "cName": "水印",
+          "desc": "页面上添加特定的文字或图案。适用于防止信息盗用。",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "liukun"
         }
       ]
     },

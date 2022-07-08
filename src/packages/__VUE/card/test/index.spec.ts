@@ -47,10 +47,11 @@ test('normal props', () => {
   expect(wrapper.html()).toMatchSnapshot();
 });
 
-test('render prolist and origin slot correctly', () => {
+test('render prolist , price and origin slot correctly', () => {
   const wrapper = mount(Card, {
     slots: {
       prolist: () => 'Custom prolist',
+      price: () => 'Custom price',
       origin: () => 'Custom origin'
     }
   });

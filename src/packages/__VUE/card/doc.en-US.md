@@ -15,7 +15,7 @@ import { Card,Tag,Price} from '@nutui/nutui';
 import { Card ,Tag,Price} from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Card);
+app.use(Card).use(Tag).use(Price);
 
 ```
 
@@ -163,6 +163,7 @@ app.use(Card);
 | Name    | Description         |
 |---------|--------------|
 | prolist | 	Custom product introduction |
+| price | 	Custom price |
 | origin | 	Custom content behind the price |
 | shop-tag | 	Custom shop introduction |
 | footer | 	Customize bottom right content |
