@@ -10,9 +10,10 @@
         }
       "
     ></nut-cell>
+
     <nut-picker
       v-model:visible="show"
-      :columns="columsNum"
+      :columns="columns"
       title="城市选择"
       @change="change"
       @confirm="(options) => confirm('index', options)"

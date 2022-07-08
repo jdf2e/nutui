@@ -1,6 +1,7 @@
 <template>
   <view class="nut-picker__list" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
-    <view class="nut-picker-roller" ref="roller" :style="touchRollerStyle" @transitionend="stopMomentum">
+    <view class="nut-picker-roller" ref="roller" :style="touchTileStyle" @transitionend="stopMomentum">
+      <!-- 3D 效果 -->
       <view
         class="nut-picker-roller-item"
         :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
@@ -42,6 +43,11 @@ export default create({
     readonly: {
       type: Boolean,
       default: false
+    },
+    // 是否开启3D效果
+    threeDimensional: {
+      type: Boolean,
+      default: true
     }
   },
 
@@ -89,7 +95,7 @@ export default create({
       };
     });
 
-    const touchRollerStyle = computed(() => {
+    const touchTileStyle = computed(() => {
       return {
         transition: `transform ${touchTime.value}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
         transform: `rotate3d(1, 0, 0, ${touchDeg.value})`
@@ -126,10 +132,10 @@ export default create({
 
       setMove(move);
 
-      if (now - (state.touchParams as TouchParams).startTime > INERTIA_TIME) {
-        (state.touchParams as TouchParams).startTime = now;
-        state.touchParams.startY = (state.touchParams as TouchParams).lastY;
-      }
+      // if (now - (state.touchParams as TouchParams).startTime > INERTIA_TIME) {
+      //   (state.touchParams as TouchParams).startTime = now;
+      //   state.touchParams.startY = (state.touchParams as TouchParams).lastY;
+      // }
     };
 
     const onTouchEnd = (event: TouchEvent) => {
@@ -205,17 +211,19 @@ export default create({
 
         state.currIndex = Math.abs(Math.round(endMove / state.lineSpacing)) + 1;
       } else {
-        let deg = '0deg';
+        let deg = 0;
         let currentDeg = (-updateMove / state.lineSpacing + 1) * state.rotation;
 
         // picker 滚动的最大角度
         const maxDeg = (props.column.length + 1) * state.rotation;
         const minDeg = 0;
 
-        deg = Math.min(Math.max(currentDeg, minDeg), maxDeg) + 'deg';
+        deg = Math.min(Math.max(currentDeg, minDeg), maxDeg);
 
-        setTransform(updateMove, null, undefined, deg);
-        state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
+        if (minDeg < deg && deg < maxDeg) {
+          setTransform(updateMove, null, undefined, deg + 'deg');
+          state.currIndex = Math.abs(Math.round(updateMove / state.lineSpacing)) + 1;
+        }
       }
     };
 
@@ -303,7 +311,7 @@ export default create({
       onTouchStart,
       onTouchMove,
       onTouchEnd,
-      touchRollerStyle,
+      touchTileStyle,
       touchListStyle,
       setMove,
       refRandomId,

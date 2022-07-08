@@ -11,8 +11,12 @@
     <nut-input label="手机号" v-model="state.tel" type="tel" />
 
     <h2>禁用和只读</h2>
-    <nut-input v-model="state.readonly" readonly label="文本" placeholder="输入框只读" />
-    <nut-input v-model="state.disabled" disabled label="文本" placeholder="输入框已禁用" />
+    <nut-form>
+      <nut-form-item>
+        <nut-input v-model="state.readonly" readonly label="文本" placeholder="输入框只读" />
+        <!-- <nut-input v-model="state.disabled" disabled label="文本" placeholder="输入框已禁用" /> -->
+      </nut-form-item>
+    </nut-form>
 
     <h2>显示图标</h2>
     <nut-input v-model="state.showIcon" label="文本" left-icon="dongdong" right-icon="ask2" placeholder="显示图标" />

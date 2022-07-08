@@ -97,6 +97,15 @@
         opacity: 0;
       }
     }
+
+    &-item-tile {
+      display: block;
+      width: 100%;
+      height: $picker-item-height;
+      line-height: $picker-item-height;
+      color: $picker-item-text-color;
+      font-size: $picker-item-text-font-size;
+    }
   }
 
   &-roller-mask {
