@@ -1,6 +1,6 @@
 # Picker
 
-### 介绍
+### Intro
 
 The picker component is usually used with Popup Component.
 

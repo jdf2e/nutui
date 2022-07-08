@@ -16,7 +16,6 @@
       :title="translate('chooseCity')"
       @change="change"
       @confirm="(options) => confirm('index', options)"
-      :threeDimensional="false"
     ></nut-picker>
 
     <h2>{{ translate('defaultSelected') }}</h2>
