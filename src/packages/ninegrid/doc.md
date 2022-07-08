@@ -5,7 +5,7 @@
 ## 基本用法
 
 ```html
-    <nut-magic @click="click" :data="dataArr"></nut-magic>
+    <nut-ninegrid @toDetail="toDetail" @refresh="change" :data="dataArr"></nut-ninegrid>
 ```
 
 ```javascript
@@ -60,7 +60,7 @@ export default {
 
 | 字段 | 说明 | 类型 | 返回值| 默认值
 |----- | ----- | ----- | -----  | ----- 
-| change | 魔方翻转两次触发事件（16个item展示完毕） | function | - | ----- 
+| change | 翻转两次触发事件（16个item展示完毕） | function | - | ----- 
 | toDetail | 点击商品跳转详情 | function | item | ----- 
 
 
