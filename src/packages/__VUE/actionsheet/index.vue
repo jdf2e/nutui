@@ -7,6 +7,7 @@
       position="bottom"
       round
       @click-overlay="close"
+      :closeOnClickOverlay="closeAbled"
     >
       <view class="nut-actionsheet-panel">
         <view v-if="title" class="nut-actionsheet-title">{{ title }}</view>
@@ -76,6 +77,10 @@ export default create({
       default: () => []
     },
     isWrapTeleport: {
+      type: Boolean,
+      default: true
+    },
+    closeAbled: {
       type: Boolean,
       default: true
     }

@@ -1,6 +1,13 @@
 <template>
   <view :class="classes">
-    <nut-popup pop-class="popclass" :visible="visible" position="bottom" round @click-overlay="close">
+    <nut-popup
+      pop-class="popclass"
+      :visible="visible"
+      position="bottom"
+      round
+      @click-overlay="close"
+      :closeOnClickOverlay="closeAbled"
+    >
       <view class="nut-actionsheet-panel">
         <view v-if="title" class="nut-actionsheet-title">{{ title }}</view>
         <slot></slot>
@@ -67,6 +74,10 @@ export default create({
     menuItems: {
       type: Array,
       default: () => []
+    },
+    closeAbled: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['cancel', 'choose', 'update:visible', 'close'],
