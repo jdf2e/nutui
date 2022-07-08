@@ -22,7 +22,7 @@
 
       <slot name="top"></slot>
 
-      <view class="nut-picker__column">
+      <view class="nut-picker__column" ref="wrapHeight">
         <view class="nut-picker__hairline"></view>
         <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
           <nut-picker-column
@@ -93,6 +93,8 @@ export default create({
 
     // 选中项
     let defaultValues = ref<(number | string)[]>(props.modelValue);
+
+    const wrapHeight = ref();
 
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -165,7 +167,10 @@ export default create({
     };
 
     const close = () => {
-      emit('close');
+      emit('close', {
+        selectedValue: defaultValues.value,
+        selectedOptions: selectedOptions.value
+      });
       emit('update:visible', false);
     };
 
@@ -201,7 +206,6 @@ export default create({
     };
 
     onMounted(() => {
-      console.log(11, props.modelValue);
       if (props.visible) state.show = props.visible;
     });
 
@@ -212,7 +216,6 @@ export default create({
     watch(
       () => props.modelValue,
       (newValues) => {
-        console.log('change', newValues, defaultValues.value);
         const isSameValue = JSON.stringify(newValues) === JSON.stringify(defaultValues.value);
         if (!isSameValue) {
           defaultValues.value = newValues;
@@ -235,7 +238,6 @@ export default create({
     watch(
       () => props.visible,
       (val) => {
-        console.log('props更新', props.columns);
         state.show = val;
       }
     );

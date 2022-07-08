@@ -84,10 +84,24 @@ export const component = (componentName: string, nutIcon: object) => {
           : 'nut-checkbox__icon--disable';
       });
 
+      let updateType = '';
+
       const emitChange = (value: string | boolean, label?: string) => {
+        updateType = 'click';
         emit('update:modelValue', value);
         emit('change', value, label);
       };
+
+      watch(
+        () => props.modelValue,
+        (v) => {
+          if (updateType == 'click') {
+            updateType = '';
+          } else {
+            emit('change', v);
+          }
+        }
+      );
 
       const renderIcon = () => {
         const { iconName, iconSize, iconActiveName, iconClassPrefix, iconFontClassName, iconIndeterminateName } = props;

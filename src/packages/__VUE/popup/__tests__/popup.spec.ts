@@ -18,7 +18,7 @@ test('should change z-index when using z-index prop', async () => {
   });
   await nextTick();
   const pop: any = wrapper.find('.nut-popup');
-  expect(pop.element.style.zIndex).toEqual('99');
+  expect(pop.element.style.zIndex).toEqual('100');
 });
 
 test('should change animation duration when using duration prop', () => {

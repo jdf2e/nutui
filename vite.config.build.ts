@@ -3,7 +3,6 @@ import dts from 'vite-plugin-dts';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import config from './package.json';
-import { terser } from 'rollup-plugin-terser';
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
 * (c) 2022 @jdf2e.
@@ -42,14 +41,7 @@ export default defineConfig({
         globals: {
           vue: 'Vue'
         },
-        plugins: [
-          terser({
-            compress: {
-              drop_console: true,
-              drop_debugger: true
-            }
-          })
-        ]
+        plugins: []
       }
     },
     lib: {

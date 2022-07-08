@@ -29,15 +29,21 @@
       >
       </nut-cell>
       <nut-calendar
+        ref="calendarRef"
         v-model:visible="isVisible1"
         :default-value="date1"
-        type="range"
+        type="multiple"
         :start-date="`2019-12-22`"
         :end-date="`2021-01-08`"
         @close="closeSwitch('isVisible1')"
         @choose="setChooseValue1"
         @select="select"
       >
+        <template v-slot:btn>
+          <div class="wrapper">
+            <div class="d_div"> <span class="d_btn" @click="goDate">去某个时间</span></div>
+          </div>
+        </template>
       </nut-calendar>
     </div>
     <div>
@@ -289,8 +295,12 @@ export default createDemo({
     const select = (param: string) => {
       console.log(param);
     };
-    const setChooseValue1 = (param: string) => {
-      state.date1 = [...[param[0][3], param[1][3]]];
+    const setChooseValue1 = (chooseData: any) => {
+      let dateArr = chooseData.map((item: any) => {
+        return item[3];
+      });
+      console.log('changevalue 1 ', chooseData, dateArr);
+      state.date1 = [...dateArr];
     };
     const setChooseValue2 = (param: string) => {
       state.date2 = param[3];

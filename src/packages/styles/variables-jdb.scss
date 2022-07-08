@@ -231,7 +231,7 @@ $picker-bar-title-font-size: 16px !default;
 $picker-bar-title-color: $title-color !default;
 $picker-bar-title-font-weight: normal !default;
 $picker-item-height: 36px !default;
-$picker-item-text-color: #808080 !default;
+$picker-item-text-color: $title-color !default;
 $picker-item-active-text-color: inherit !default;
 $picker-item-text-font-size: 16px !default;
 $picker-item-active-line-border: 1px solid #d8d8d8 !default;
@@ -869,5 +869,7 @@ $comment-shop-color: $primary-color !default;
 // Ellipsis
 $ellipsis-expand-collapse-color: #3460fa !default;
 
+// WaterMark
+$nut-water-mark-z-index: 2000 !default;
 @import './mixins/index';
 @import './animation/index';

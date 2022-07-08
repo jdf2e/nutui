@@ -133,14 +133,12 @@ export default create({
       };
     });
     const open = () => {
-      if (!props.visible) {
-        if (props.zIndex !== undefined) {
-          _zIndex = Number(props.zIndex);
-        }
-        emit('update:visible', true);
-        lockScroll();
-        state.zIndex = ++_zIndex;
+      if (props.zIndex != 2000) {
+        _zIndex = Number(props.zIndex);
       }
+      emit('update:visible', true);
+      lockScroll();
+      state.zIndex = ++_zIndex;
       if (props.destroyOnClose) {
         state.showSlot = true;
       }
