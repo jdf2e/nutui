@@ -2,18 +2,18 @@ import { createVNode, render, h, onMounted } from 'vue';
 import Notify from './index.vue';
 const defaultOptions = {
   type: 'base',
-  showPopup: true,
+  // showPopup: true,
   visible: true,
   msg: '',
   color: undefined,
   background: undefined,
   duration: 3000,
-  className: '',
-  onClosed: null,
-  onClick: null,
-  onOpened: null,
-  textTimer: null,
-  unmount: null
+  className: ''
+  // onClosed: null,
+  // onClick: null,
+  // onOpened: null,
+  // textTimer: null,
+  // unmount: null
 };
 
 let idsMap: string[] = [];
