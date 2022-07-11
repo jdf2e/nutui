@@ -13,4 +13,4 @@ jobs:
         uses: jgehrcke/github-repo-stats@RELEASE
         with:
           repository: jdf2e/nutui
-          ghtoken: ${{ secrets.ghrs_github_api_token }}
+          ghtoken: ${{ secrets.GIT_ACTION }}
