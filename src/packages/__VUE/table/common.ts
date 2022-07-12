@@ -62,7 +62,7 @@ export const component = (componentName: string, translate: Function) => {
       const getColumnItem = (value: string): TableColumnProps => {
         return props.columns.filter((item: TableColumnProps) => item.key === value)[0];
       };
-      const getColumnItemStyle = (value: string): TableColumnProps => {
+      const getColumnItemStyle = (value: string) => {
         const style = props.columns.filter((item: TableColumnProps) => item.key === value);
         return style[0].stylecolumn ? style[0].stylecolumn : '';
       };
