@@ -24,7 +24,7 @@
             :class="cellClasses(getColumnItem(value))"
             v-for="[value, render] in sortDataItem()"
             :key="value"
-            :style="getColumnItem(value).stylecolumn"
+            :style="getColumnItemStyle(value)"
           >
             <RenderColumn
               :slots="[render, item[value]]"
