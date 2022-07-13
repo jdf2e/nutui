@@ -32,8 +32,8 @@
           "scene": null
         },
         {
-          "name": "exhibition/pages/ellipsis/index",
-          "pathName": "exhibition/pages/ellipsis/index",
+          "name": "business/pages/signature/index",
+          "pathName": "business/pages/signature/index",
           "query": "",
           "launchMode": "default",
           "scene": null
