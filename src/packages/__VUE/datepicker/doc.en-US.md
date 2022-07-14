@@ -1,226 +1,395 @@
-# Dialog
-
+#  DatePicker
 
 ### Intro
-
-Modal dialog box is displayed in the floating layer to guide users to carry out relevant operations. It is often used for message prompt, message confirmation, or completing specific interactive operations in the current page.
-
-The popup box component supports function call and component call.
-
+    
+Used to select time, support date and time dimensions, usually used with the Popup component.
+    
 ### Install
     
 ```javascript
 import { createApp } from 'vue';
-import { Dialog,Popup,OverLay } from '@nutui/nutui';
+// vue
+import { DatePicker, Picker, Popup, OverLay } from '@nutui/nutui';
+// taro
+import { DatePicker, Picker, Popup, OverLay } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Dialog).use(Popup).use(OverLay)
+app.use(DatePicker);
+app.use(Picker);
+app.use(Popup);
+app.use(OverLay);
 ```
+    
+### Choose Date
+:::demo
 
+```html
+<template>
+  <nut-cell title="Show Chinese" :desc="desc" @click="show = true"></nut-cell>
+  <nut-datepicker
+      v-model="currentDate"
+      v-model:visible="show"
+      :min-date="minDate"
+      :max-date="maxDate"
+      :is-show-chinese="true"
+      @confirm="confirm"
+  ></nut-datepicker> 
+</template>
 
-## Function use
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const desc = ref('2022-05-10');
+      const minDate = new Date(2020, 0, 1),
+      const maxDate = new Date(2025, 10, 1),
+      const currentDate = new Date(2022, 4, 10, 10, 10);
+      const confirm = ({ selectedValue, selectedOptions })=>{
+        desc.value = selectedOptions.map((option) => option.text).join('');
+      }
+      return {
+        currentDate,
+        show,
+        desc,
+        minDate,
+        maxDate,
+        confirm
+      };
+    }
+  };
+</script>
+
+```
+:::
+
+### Choose Month-Day
 
 :::demo
 ```html
 <template>
- <nut-cell-group title="Function Use">
-  <nut-cell title="Title" @click="baseClick"></nut-cell>
-  <nut-cell title="Title" @click="noTitleClick"></nut-cell>
-  <nut-cell title="Title" @click="tipsClick"></nut-cell>
-  <nut-cell title="Title" @click="verticalClick"></nut-cell>
-</nut-cell-group>
+  <nut-cell title="Limit the start and end time" :desc="desc" @click="show = true"></nut-cell>
+  <nut-datepicker
+      v-model="currentDate"
+      type="month-day"
+      title="Choose Time"
+      :min-date="new Date(2022, 0, 1)"
+      :max-date="new Date(2022, 7, 1)"
+      @confirm="confirm"
+      v-model:visible="show"
+  ></nut-datepicker> 
 </template>
-<script lang="ts">
-import { ref } from 'vue';
-import { Dialog } from '@nutui/nutui';
-export default {
-    setup() {
-        const onCancel = () => {
-          console.log('event cancel');
-        };
-        const onOk = () => {
-          console.log('event ok');
-        };
-        const baseClick = (): void => {
-          Dialog({
-            title: 'Basic spring frame',
-            content: 'Function call and component call are supported.',
-            onCancel,
-            onOk
-          });
-        };
-        const noTitleClick = () => {
-          Dialog({
-            content: 'Content',
-            onCancel,
-            onOk
-          });
-        };
-        const tipsClick = () => {
-          Dialog({
-            title: 'Title',
-            content: 'Function call and component call are supported.',
-            noCancelBtn: true,
-            onCancel,
-            onOk
-          });
-        };
-        const verticalClick = () => {
-          Dialog({
-            title: 'Title',
-            content: 'Support vertical arrangement of bottom buttons.',
-            footerDirection: 'vertical',
-            onCancel,
-            onOk
-          });
-        };
-        return {
-          baseClick,
-          noTitleClick,
-          tipsClick,
-          verticalClick
-        };
+
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const desc = ref('05-10');
+      const currentDate = new Date(2022, 4, 10, 10, 10);
+      const confirm = ( { selectedValue, selectedOptions } )=>{
+        desc.value = selectedValue.join('-');
+      }
+      return {
+        show,
+        desc,
+        currentDate,
+        confirm
+      };
     }
-}
+  };
 </script>
 ```
-::: 
+:::
+### Choose DateTime
 
-## Teleport use, mount to the specified element node
+:::demo
 
-``` html
-<nut-dialog teleport="#app" ... />
+```html
+<template>
+  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
+  <nut-datepicker
+      v-model="currentDate"
+      title="Choose Time"
+      type="datetime"
+      :min-date="minDate"
+      :max-date="maxDate"
+      @confirm="confirm"
+      v-model:visible="show" 
+  ></nut-datepicker> 
+</template>
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const desc = ref('2022-05-10 10:10');
+      const currentDate = new Date(2022, 4, 10, 10, 10);
+      const confirm = ( { selectedValue, selectedOptions } )=>{
+        date = selectedValue.slice(0, 3).join('-');
+        time = selectedValue.slice(3).join(':');
+        desc.value = date + ' ' + time;
+      }
+      return {
+        show,
+        desc,
+        currentDate,
+        minDate: new Date(2020, 0, 1),
+        maxDate: new Date(2025, 10, 1),
+        confirm
+      };
+    }
+  };
+</script>
 ```
+:::
 
-``` javascript
-Dialog({
-  teleport: '#app',
-  ...
-});
-Dialog({
-  teleport: '.demo',
-  ...
-});
+### Choose Time
+:::demo
+```html
+<template>
+  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
+  <nut-datepicker
+      v-model="currentDate"
+      title="Choose Time"
+      type="time"
+      :min-date="minDate"
+      :max-date="maxDate"
+      @confirm="confirm"
+      v-model:visible="show"
+  ></nut-datepicker>
+</template>
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const desc = ref('10:10:00');
+      const currentDate = new Date(2022, 4, 10, 10, 10);
+      const confirm = ( { selectedValue, selectedOptions } )=>{
+        desc.value = selectedValue.join(':');
+      }
+      return {
+        show,
+        desc,
+        currentDate,
+        minDate: new Date(2020, 0, 1),
+        maxDate: new Date(2025, 10, 1),
+        confirm
+      };
+    }
+  };
+</script>
 ```
+:::
 
-## Function use proxy.&dialog(...)
-
-```javascript
-import { ref } from 'vue';
-import { Dialog } from '@nutui/nutui';
-import { getCurrentInstance } from 'vue';
-
-export default {
-  setup() {
-    const { proxy } = getCurrentInstance();
-    proxy.$dialog({
-      title: 'Basic spring frame',
-      content: 'Function call and component call are supported.'
-    });
-  }
-}
+### Option Formatter
+:::demo
+```html
+<template>
+  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
+  <nut-datepicker
+      v-model="currentDate"
+      title="Choose Time"
+      type="datetime"
+      :min-date="new Date(2022, 0, 1)"
+      :max-date="new Date(2022, 10, 1)"
+      :formatter="formatter"
+      @confirm="confirm"
+      v-model:visible="show"
+  ><nut-button block type="primary" @click="alwaysFun">Forever</nut-button></nut-datepicker>
+</template>
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const desc = ref('10:10:00');
+      const currentDate = new Date(2022, 4, 10, 10, 10);
+      const confirm = ( { selectedValue, selectedOptions } )=>{
+        date = selectedOptions.slice(1, 3).map((op) => op.text).join('');
+        time = selectedOptions.slice(3).map((op) => op.value).join(':');
+        desc.value = selectedOptions[0].text + 'Year' + date + ' ' + time;
+      }
+      const formatter = (type: string, option) => {
+        switch (type) {
+          case 'year':
+            option.text += '';
+            break;
+          case 'month':
+            option.text += 'Month';
+            break;
+          case 'day':
+            option.text += 'Day';
+            break;
+          case 'hour':
+            option.text += 'Hour';
+            break;
+          case 'minute':
+            option.text += 'Minute';
+            break;
+          default:
+            option.text += '';
+        }
+        return option;
+      };
+      const alwaysFun = () => {
+        show.value = false;
+        desc.value = 'Forever';
+      };
+      return {
+        show,
+        desc,
+        currentDate,
+        confirm,
+        formatter,
+        alwaysFun
+      };
+    }
+  };
+</script>
 ```
+:::
 
-
-## Template use
-
+### Option Steps
 
 :::demo
 ```html
 <template>
-  <nut-cell-group title="Template use">
-    <nut-cell title="Template use" @click="componentClick"></nut-cell>
-    <nut-dialog
-      teleport="#app"
-      title="Template use"
-      content="Function call and template call are supported."
-      v-model:visible="visible"
-    >
-    </nut-dialog>
-    <nut-cell title="Bottom button vertical use" @click="componentvVrticalClick"></nut-cell>
-    <nut-dialog
-      footer-direction="vertical"
-      teleport="#app"
-      title="Template use"
-      content="Function call and template call are supported."
-      v-model:visible="visible1"
-    >
-    </nut-dialog>
-  </nut-cell-group>
+  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
+  <nut-datepicker
+      v-model="currentDate"
+      type="time"
+      :minute-step="5"
+      :min-date="minDate"
+      :max-date="maxDate"
+      @confirm="confirm"
+      v-model:visible="show"
+  ></nut-datepicker>
 </template>
-<script lang="ts">
-import { ref } from 'vue';
-export default {
-  setup() {
-    const visible = ref(false);
-    const visible1 = ref(false);
-    const componentClick = () => {
-      visible.value = true;
-    };
-    const componentvVrticalClick = () => {
-      visible1.value = true;
-    };
-    return { visible,visible1,componentClick,componentvVrticalClick };
-  }
-}
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const desc = ref('10:10:00');
+      const currentDate = new Date(2022, 4, 10, 10, 10);
+      const confirm = ( { selectedValue, selectedOptions } )=>{
+        desc.value = selectedValue.join(':');
+      }
+      return {
+        show,
+        desc,
+        minDate: new Date(2020, 0, 1),
+        maxDate: new Date(2025, 10, 1),
+        confirm
+      };
+    }
+  };
+</script>
+```
+:::
+
+### Option Filter
+
+:::demo
+```html
+<template>
+  <nut-cell title="Choose Time" :desc="desc" @click="show = true"></nut-cell>
+  <nut-datepicker
+      v-model="currentDate"
+      title="Choose Time"
+      type="datehour"
+      :min-date="minDate"
+      :max-date="maxDate"
+      :filter="filter"
+      :formatter="formatter"
+      @confirm="confirm"
+      v-model:visible="show"
+  ></nut-datepicker>
+</template>
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const desc = ref('2022-05-10 00');
+      const currentDate = new Date(2022, 4, 10, 0, 0);
+      const formatter = (type: string, option) => {
+        switch (type) {
+          case 'year':
+            option.text += 'Year';
+            break;
+          case 'month':
+            option.text += 'Month';
+            break;
+          case 'day':
+            option.text += 'Day';
+            break;
+          case 'hour':
+            option.text += 'Hour';
+            break;
+          default:
+            option.text += '';
+        }
+        return option;
+      };
+
+      const filter = (type: string, options) => {
+        if (type == 'hour') {
+          return options.filter((option) => Number(option.value) % 6 === 0);
+        }
+        return options;
+      };
+      const confirm = ( { selectedValue, selectedOptions } )=>{
+        descList[index].value = selectedOptions.map((option) => option.text).join('');
+      }
+      return {
+        show,
+        desc,
+        minDate: new Date(2020, 0, 1),
+        maxDate: new Date(2025, 10, 1),
+        confirm,
+        formatter,
+        filter
+      };
+    }
+  };
 </script>
 ```
 :::
 
 ## API
-| Attribute           | Description                                                                    | Type             | Default              |
-|---------------------|--------------------------------------------------------------------------------|------------------|----------------------|
-| title               | Title                                                                          | String           | -                    |
-| id                  | Identifier, share one instance at the same time, default to multiple instances | String or Number | new Date().getTime() |
-| content             | Content, support HTML                                                          | String           | -                    |
-| teleport            | Specifies a target element where Dialog will be mounted                        | String           | "body"               |
-| closeOnClickOverlay | Whether to close when overlay is clicked                                       | Boolean          | false                |
-| noFooter            | Hide bottom button bar                                                         | Boolean          | false                |
-| noOkBtn             | Hide OK button                                                                 | Boolean          | false                |
-| noCancelBtn         | Hide cancel button                                                             | Boolean          | false                |
-| cancelText          | Cancel button text                                                             | String           | "Cancel"             |
-| okText              | OK button text                                                                 | String           | "Confirm"            |
-| cancelAutoClose     | Click Cancel to close the popup                                                | Boolean          | true                 |
-| textAlign           | Text alignment direction, the optional value is the same as css text-align     | String           | "center"             |
-| closeOnPopstate     | Whether to close when popstate                                                 | Boolean          | false                |
-| onUpdate            | Update                                                                         | Boolean          | false                |
-| onOk                | Emitted when the confirm button is clicked                                     | Function         | -                    |
-| onCancel            | Emitted when the cancel button is clicked                                      | Function         | -                    |
-| onClosed            | Emitted when Dialog is closed                                                  | Function         | -                    |
+    
+### Props
+    
+| Attribute         | Description                             | Type   | Default           |
+|-----------------|---------------------------------------------------|---------|----------|
+| v-model         | Default Date                                            | Date    | `null`   |
+| v-model:visible | Is Show                    | Boolean | `false`  |
+| type            | Can be set to date time year-month month-day datehour | String  | `'date'` |
+| minute-step     | Option minute step                                        | Number  | `1`      |
+| is-show-chinese | Show Chinese                                  | Boolean | `false`  |
+| min-date        | Start date                                         | Date    | `Ten years ago on January 1` |
+| max-date        | End date                                          | Date    | `Ten years later on December 31` |
+| formatter `v3.1.18`  | Option text formatter                                          | (type: string, option: PickerOption) => PickerOption    |  |
+| filter  `v3.1.18`  | Option filter                                         | (type: string, option: PickerOption) => PickerOption[]    |  |
+| title           | Title                                          | String  | `null`   |
+| ok-text           | Text of confirm button                                      | String  | confirm   |
+| cancel-text           | Text of cancel button                                          | String  | cancel   |
+| three-dimensional  `v3.1.23`          | Turn on 3D effects               | Boolean  | true   |
 
+### Events
 
-## Props
+| Event | Description           | Arguments     |
+|---------|--------------------|--------------|
+| confirm | Emitted when click confirm button. | 	{ selectedValue, selectedOptions } |
+| close   | Emitted when click close button.       | 	{ selectedValue, selectedOptions } |
+| change   |  Emitted when current option changed.       | { columnIndex, selectedValue, selectedOptions } |
 
-| Attribute              | Description                                                                                               | Type    | Default    |
-|------------------------|-----------------------------------------------------------------------------------------------------------|---------|------------|
-| title                  | Title                                                                                                     | String  | -          |
-| content                | Content, support HTML                                                                                     | String  | -          |
-| teleport               | Specifies a target element where Dialog will be mounted                                                   | String  | "body"     |
-| close-on-click-overlay | Whether to close when overlay is clicked                                                                  | Boolean | false      |
-| no-footer              | Hide bottom button bar                                                                                    | Boolean | false      |
-| no-ok-btn              | Hide OK button                                                                                            | Boolean | false      |
-| no-cancel-btn          | Hide cancel button                                                                                        | Boolean | false      |
-| cancel-text            | Cancel button text                                                                                        | String  | "Cancel"   |
-| ok-text                | OK button text                                                                                            | String  | "Confirm"  |
-| cancel-auto-close      | Click Cancel to close the popup                                                                           | Boolean | true       |
-| text-align             | Text alignment direction, the optional value is the same as css text-align                                | String  | "center"   |
-| close-on-popstate      | Whether to close when popstate                                                                            | Boolean | false      |
-| lock-scroll            | Whether to lock background scroll                                                                         | Boolean | false      |
-| footer-direction       | The bottom button uses the horizontal and vertical directions. Optional values ​​are horizontal and vertical. | string  | horizontal |
+### Slots
 
-## Events
-
-| Event  | Description                                | Type     | Default |
-|--------|--------------------------------------------|----------|---------|
-| ok     | Emitted when the confirm button is clicked | Function | -       |
-| cancel | Emitted when the cancel button is clicked  | Function | -       |
-| closed | Emitted when Dialog is closed              | Function | -       |
-
-
-## Slots
-
-| Name    | Description    |
-|---------|----------------|
-| header  | Custom title   |
-| default | Custom default |
-| footer  | Custom footer  |
+| Event | Description           |
+|--------|----------------|
+| default  | Custom content bottom columns |
+| top  | Custom content top columns |

@@ -126,6 +126,7 @@ export default createDemo({
     const selectedValue = ref(['ZheJiang']);
     const selectedTime = ref(['Wednesday', 'Afternoon']);
     const asyncValue = ref<string[]>([]);
+    const columsNum = ref([]);
     const columns = computed(() => [
       { text: translate('nanJing'), value: 'NanJing' },
       { text: translate('wuXi'), value: 'WuXi' },
@@ -253,6 +254,10 @@ export default createDemo({
     };
 
     onMounted(() => {
+      for (let i = 1; i < 60; i++) {
+        columsNum.value.push({ text: i, value: i });
+      }
+
       setTimeout(() => {
         asyncColumns.value = [
           { text: translate('nanJing'), value: 'NanJing' },
@@ -299,7 +304,8 @@ export default createDemo({
       showEffect,
       alwaysFun,
       translate,
-      selectedTime
+      selectedTime,
+      columsNum
     };
   }
 });

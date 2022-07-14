@@ -28,6 +28,7 @@
             :readonly="readonly"
             :columnsType="columnsType"
             :value="defaultValues[columnIndex]"
+            :threeDimensional="threeDimensional"
             @change="
               (option) => {
                 changeHandler(columnIndex, option);
@@ -75,6 +76,11 @@ export default create({
       }
     },
     readonly: {
+      type: Boolean,
+      default: false
+    },
+    // 是否开启3D效果
+    threeDimensional: {
       type: Boolean,
       default: false
     }

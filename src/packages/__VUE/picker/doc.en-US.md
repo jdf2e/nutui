@@ -1,6 +1,6 @@
 # Picker
 
-### 介绍
+### Intro
 
 The picker component is usually used with Popup Component.
 
@@ -381,6 +381,7 @@ Slots are arranged at the bottom and top respectively for custom Settings
 | title                  | Toolbar title                   | String  | -      |
 | cancel-text            | Text of cancel button               | String  | cancel   |
 | ok-text                | Text of confirm button               | String  | confirm   |
+| three-dimensional `v3.1.23`          | Turn on 3D effects      | Boolean  | true   |
 
 ### Data Structure of Columns
 

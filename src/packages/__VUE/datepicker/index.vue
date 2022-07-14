@@ -10,6 +10,7 @@
     :title="title"
     @confirm="confirm"
     :isWrapTeleport="isWrapTeleport"
+    :threeDimensional="threeDimensional"
   >
     <slot></slot>
   </nut-picker>
@@ -83,6 +84,11 @@ export default create({
     formatter: {
       type: Function as PropType<import('./type').Formatter>,
       default: null
+    },
+    // 是否开启3D效果
+    threeDimensional: {
+      type: Boolean,
+      default: true
     },
     filter: Function as PropType<import('./type').Filter>
   },
