@@ -47,6 +47,35 @@ app.use(TabbarItem);
 ```
 :::
 
+### 通过名称匹配
+
+:::demo
+```html
+<template>
+  <nut-tabbar @tab-switch="tabSwitch"  v-model:visible="activeName">
+    <nut-tabbar-item tab-title="首页" name="home" icon="home"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="分类" name="category" icon="category"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="发现" name="find" icon="find"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="购物车" name="cart" icon="cart"></nut-tabbar-item>
+    <nut-tabbar-item tab-title="我的" name="my" icon="my"></nut-tabbar-item>
+  </nut-tabbar>
+</template>
+<script>
+  export default{
+    setup() {
+      const activeName = ref("category");
+      function tabSwitch(item, index) {
+        console.log(item, index);
+      }
+      return {
+        tabSwitch,
+        activeName,
+      };
+    },
+  }
+</script>
+```
+:::
 
 ### 自定义图片链接
 :::demo
@@ -107,6 +136,20 @@ app.use(TabbarItem);
     <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
   </nut-tabbar>
 </template>
+<script>
+  export default{
+    setup() {
+      const active = ref(2);
+      function tabSwitch(item, index) {
+        console.log(item, index);
+      }
+      return {
+        tabSwitch,
+        activeName,
+      };
+    },
+  }
+</script>
 ```
 :::
 ### 徽标提示
@@ -186,7 +229,8 @@ app.use(TabbarItem);
 
 | 字段      | 说明                                      | 类型   | 默认值 |
 |-----------|-------------------------------------------|--------|--------|
-| tab-title | 标签页的标题                              | string | --     |
+| tab-title | 标签页的标题                              | string | --    |
+| name| 标签名称，作为匹配的标识符                             | string | 当前标签的索引值   |
 | icon      | 标签页显示的[图标名称](#/icon)  | string | --     |
 | font-class-name | 自定义icon 字体基础类名     | string           | `nutui-iconfont` |
 | class-prefix | 自定义icon 类名前缀，用于使用自定义图标     | string           | `nut-icon` |
