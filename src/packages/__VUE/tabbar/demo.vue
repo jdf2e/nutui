@@ -9,6 +9,15 @@
       <nut-tabbar-item :tab-title="translate('title')" icon="cart"></nut-tabbar-item>
       <nut-tabbar-item :tab-title="translate('title')" icon="my"></nut-tabbar-item>
     </nut-tabbar>
+    <h2>{{ translate('byName') }}</h2>
+
+    <nut-tabbar @tab-switch="tabSwitch" v-model:visible="activeName">
+      <nut-tabbar-item name="home" :tab-title="translate('title')" icon="home"></nut-tabbar-item>
+      <nut-tabbar-item name="category" :tab-title="translate('title')" icon="category"></nut-tabbar-item>
+      <nut-tabbar-item name="find" :tab-title="translate('title')" icon="find"></nut-tabbar-item>
+      <nut-tabbar-item name="cart" :tab-title="translate('title')" icon="cart"></nut-tabbar-item>
+      <nut-tabbar-item name="my" :tab-title="translate('title')" icon="my"></nut-tabbar-item>
+    </nut-tabbar>
     <h2>{{ translate('customImg') }}</h2>
 
     <nut-tabbar @tab-switch="tabSwitch">
@@ -90,6 +99,7 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 useTranslate({
   'zh-CN': {
     basic: '基本用法',
+    byName: '通过名称匹配',
     customImg: '自定义图片',
     customCheck: '自定义选中',
     showBadge: '徽标提示',
@@ -100,6 +110,7 @@ useTranslate({
   },
   'en-US': {
     basic: 'Basic Usage',
+    byName: 'Match by name',
     customImg: 'Custom Img',
     customCheck: 'Custom Check',
     showBadge: 'Show Badge',
@@ -113,11 +124,13 @@ export default createDemo({
   props: {},
   setup() {
     const active = ref(2);
+    const activeName = ref('category');
     function tabSwitch(item: Record<string, unknown>, index: number) {
       console.log(item, index);
     }
     return {
       active,
+      activeName,
       tabSwitch,
       translate
     };
