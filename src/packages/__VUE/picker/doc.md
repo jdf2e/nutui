@@ -385,6 +385,7 @@ Picker 组件在底部和顶部分别设置了插槽，可进行自定义设置
 | title                  | 设置标题                   | String  | -      |
 | cancel-text            | 取消按钮文案               | String  | 取消   |
 | ok-text                | 确定按钮文案               | String  | 确定   |
+| three-dimensional`小程序不支持` `v3.1.23`          | 是否开启3D效果               | Boolean  | true   |
 
 ### Columns 数据结构
 

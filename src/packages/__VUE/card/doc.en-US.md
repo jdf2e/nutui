@@ -163,6 +163,7 @@ app.use(Card).use(Tag).use(Price);
 | Name    | Description         |
 |---------|--------------|
 | prolist | 	Custom product introduction |
+| price | 	Custom price |
 | origin | 	Custom content behind the price |
 | shop-tag | 	Custom shop introduction |
 | footer | 	Customize bottom right content |
