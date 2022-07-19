@@ -429,9 +429,9 @@ export default create({
       emit('click-right-icon', event);
     };
 
-    const onClick = (e: PointerEvent) => {
+    const onClick = (e: MouseEvent) => {
       if (props.disabled) {
-        e.stopImmediatePropagation();
+        e.stopPropagation();
         return;
       }
     };
