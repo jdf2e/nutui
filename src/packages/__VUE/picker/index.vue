@@ -31,6 +31,7 @@
             :readonly="readonly"
             :columnsType="columnsType"
             :value="defaultValues[columnIndex]"
+            :threeDimensional="threeDimensional"
             @change="
               (option) => {
                 changeHandler(columnIndex, option);
@@ -82,6 +83,11 @@ export default create({
     readonly: {
       type: Boolean,
       default: false
+    },
+    // 是否开启3D效果
+    threeDimensional: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],
@@ -167,7 +173,10 @@ export default create({
     };
 
     const close = () => {
-      emit('close');
+      emit('close', {
+        selectedValue: defaultValues.value,
+        selectedOptions: selectedOptions.value
+      });
       emit('update:visible', false);
     };
 

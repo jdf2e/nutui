@@ -2,121 +2,68 @@
   <div class="demo">
     <h2>基础用法</h2>
 
-    <nut-form>
-      <nut-form-item label="选择地址">
-        <input
-          class="nut-input-text"
-          @click="demo1.visible = true"
-          :value="demo1.value"
-          readonly
-          placeholder="请选择地址"
-          type="text"
-        />
-        <nut-cascader
-          title="地址选择"
-          v-model:visible="demo1.visible"
-          v-model="demo1.value"
-          @change="events.change"
-          @pathChange="events.pathChange"
-          :options="demo1.options"
-        ></nut-cascader>
-      </nut-form-item>
-    </nut-form>
+    <nut-cell title="选择地址" :desc="demo1.value.toString() || '请选择地址'" @click="demo1.visible = true"> </nut-cell>
+    <nut-cascader
+      title="地址选择"
+      v-model:visible="demo1.visible"
+      v-model="demo1.value"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      :options="demo1.options"
+    ></nut-cascader>
 
     <h2>自定义属性名称</h2>
-    <nut-form>
-      <nut-form-item label="选择地址">
-        <input
-          class="nut-input-text"
-          @click="demo2.visible = true"
-          :value="demo2.value"
-          readonly
-          placeholder="请选择地址"
-          type="text"
-        />
-        <nut-cascader
-          title="地址选择"
-          v-model:visible="demo2.visible"
-          v-model="demo2.value"
-          labelKey="text"
-          @change="events.change"
-          @pathChange="events.pathChange"
-          valueKey="text"
-          childrenKey="items"
-          :options="demo2.options"
-        ></nut-cascader>
-      </nut-form-item>
-    </nut-form>
+
+    <nut-cell title="选择地址" :desc="demo2.value.toString() || '请选择地址'" @click="demo2.visible = true"> </nut-cell>
+    <nut-cascader
+      title="地址选择"
+      v-model:visible="demo2.visible"
+      v-model="demo2.value"
+      labelKey="text"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      valueKey="text"
+      childrenKey="items"
+      :options="demo2.options"
+    ></nut-cascader>
 
     <h2>动态加载</h2>
-    <nut-form>
-      <nut-form-item label="选择地址">
-        <input
-          class="nut-input-text"
-          @click="demo3.visible = true"
-          :value="demo3.value"
-          readonly
-          placeholder="请选择地址"
-          type="text"
-        />
-        <nut-cascader
-          title="地址选择"
-          v-model:visible="demo3.visible"
-          v-model="demo3.value"
-          @change="events.change"
-          @pathChange="events.pathChange"
-          lazy
-          :lazyLoad="demo3.lazyLoad"
-        ></nut-cascader>
-      </nut-form-item>
-    </nut-form>
+    <nut-cell title="选择地址" :desc="demo3.value.toString() || '请选择地址'" @click="demo3.visible = true"> </nut-cell>
+    <nut-cascader
+      title="地址选择"
+      v-model:visible="demo3.visible"
+      v-model="demo3.value"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      lazy
+      :lazyLoad="demo3.lazyLoad"
+    ></nut-cascader>
 
     <h2>部分数据动态加载</h2>
-    <nut-form>
-      <nut-form-item label="选择地址">
-        <input
-          class="nut-input-text"
-          @click="demo4.visible = true"
-          :value="demo4.value"
-          readonly
-          placeholder="请选择地址"
-          type="text"
-        />
-        <nut-cascader
-          title="地址选择"
-          v-model:visible="demo4.visible"
-          v-model="demo4.value"
-          @change="events.change"
-          @pathChange="events.pathChange"
-          :options="demo4.options"
-          lazy
-          :lazyLoad="demo4.lazyLoad"
-        ></nut-cascader>
-      </nut-form-item>
-    </nut-form>
+
+    <nut-cell title="选择地址" :desc="demo4.value.toString() || '请选择地址'" @click="demo4.visible = true"> </nut-cell>
+    <nut-cascader
+      title="地址选择"
+      v-model:visible="demo4.visible"
+      v-model="demo4.value"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      :options="demo4.options"
+      lazy
+      :lazyLoad="demo4.lazyLoad"
+    ></nut-cascader>
 
     <h2>自动转换</h2>
-    <nut-form>
-      <nut-form-item label="选择地址">
-        <input
-          class="nut-input-text"
-          @click="demo5.visible = true"
-          :value="demo5.value"
-          readonly
-          placeholder="请选择地址"
-          type="text"
-        />
-        <nut-cascader
-          title="地址选择"
-          v-model:visible="demo5.visible"
-          v-model="demo5.value"
-          @change="events.change"
-          @pathChange="events.pathChange"
-          :options="demo5.options"
-          :convertConfig="demo5.convertConfig"
-        ></nut-cascader>
-      </nut-form-item>
-    </nut-form>
+    <nut-cell title="选择地址" :desc="demo5.value.toString() || '请选择地址'" @click="demo5.visible = true"> </nut-cell>
+    <nut-cascader
+      title="地址选择"
+      v-model:visible="demo5.visible"
+      v-model="demo5.value"
+      @change="events.change"
+      @pathChange="events.pathChange"
+      :options="demo5.options"
+      :convertConfig="demo5.convertConfig"
+    ></nut-cascader>
   </div>
 </template>
 
