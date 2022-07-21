@@ -43,6 +43,13 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://nutui.jd.com/jdl/#/index">京东物流视觉（Vue2）</a>
+  &nbsp;
+  <a href="https://nutui.jd.com/jdt/#/">京东科技视觉（Vue3）</a>
+  &nbsp;
+  <a href="https://nutui.jd.com/theme/#/base">组件级UI定制</a>
+</p>
 
 > Nut[nʌt]，源自电影《冰河世纪》里松鼠 Scrat "执迷不悟"，一生追求，即便引发大灾难也绝不松手的坚果。
 ---
