@@ -1,3 +1,16 @@
+.nut-theme-dark {
+  .nut-cascader__bar {
+    background: $dark-background2;
+    color: $dark-color;
+  }
+  .nut-tabs__titles {
+    background: $dark-background3 !important;
+  }
+  .nut-cascader-item {
+    color: $dark-color-gray;
+  }
+}
+
 .nut-cascader {
   width: 100%;
   font-size: $cascader-font-size;
