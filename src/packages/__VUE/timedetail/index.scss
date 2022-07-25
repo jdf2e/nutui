@@ -1,3 +1,19 @@
+.nut-theme-dark {
+  .nut-timedetail {
+    background-color: $dark-background2;
+    &__detail {
+      &__list {
+        &__item {
+          background-color: $dark-background;
+          color: $dark-color;
+          &--curr {
+            color: $timeselect-timedetail-item-cur-text-color;
+          }
+        }
+      }
+    }
+  }
+}
 .nut-timedetail {
   display: flex;
   width: 100%;
