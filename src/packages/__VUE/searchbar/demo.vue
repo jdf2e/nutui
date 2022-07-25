@@ -50,32 +50,34 @@ import { createComponent } from '@/packages/utils/create';
 import { Toast } from '@/packages/nutui.vue';
 const { createDemo, translate } = createComponent('searchbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic1: '基本用法',
-    basic2: '搜索事件监听',
-    basic3: '显示搜索 icon',
-    basic4: '右侧添加搜索文字',
-    basic5: '更改输入框内部及外部的背景样式',
-    basic6: '显示全部 icon',
-    word1: '标签',
-    word2: '搜索',
-    title3: '标题3'
-  },
-  'en-US': {
-    basic1: 'Basic Usage',
-    basic2: 'Search event listening',
-    basic3: 'Display search Icon',
-    basic4: 'Add search text to the right',
-    basic5: 'Change the background style inside and outside the input box',
-    basic6: 'Show all icons',
-    word1: 'label',
-    word2: 'search'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic1: '基本用法',
+      basic2: '搜索事件监听',
+      basic3: '显示搜索 icon',
+      basic4: '右侧添加搜索文字',
+      basic5: '更改输入框内部及外部的背景样式',
+      basic6: '显示全部 icon',
+      word1: '标签',
+      word2: '搜索',
+      title3: '标题3'
+    },
+    'en-US': {
+      basic1: 'Basic Usage',
+      basic2: 'Search event listening',
+      basic3: 'Display search Icon',
+      basic4: 'Add search text to the right',
+      basic5: 'Change the background style inside and outside the input box',
+      basic6: 'Show all icons',
+      word1: 'label',
+      word2: 'search'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const state = reactive({
       searchValue: '',
       searchValue1: '',

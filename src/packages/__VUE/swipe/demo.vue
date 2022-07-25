@@ -64,43 +64,45 @@ import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('swipe');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    leftDel: '左滑删除',
-    disable: '禁用滑动',
-    swipeLR: '左右滑动',
-    swipeLRDesc: '左滑右滑都可以哦',
-    async: '异步控制',
-    asyncDesc: '异步打开关闭',
-    open: '开',
-    close: '关',
-    custom: '自定义',
-    desc: '商品描述',
-    delete: '删除',
-    select: '选择',
-    collect: '收藏'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    leftDel: 'Swipe left to delete',
-    disable: 'Disable swipe',
-    swipeLR: 'Swipe left and right',
-    swipeLRDesc: 'You can swipe left and right',
-    async: 'Async control swipe',
-    asyncDesc: 'Async on and off',
-    open: 'on',
-    close: 'off',
-    custom: 'Custom',
-    desc: 'product description',
-    delete: 'Delelte',
-    select: 'Select',
-    collect: 'Collect'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      leftDel: '左滑删除',
+      disable: '禁用滑动',
+      swipeLR: '左右滑动',
+      swipeLRDesc: '左滑右滑都可以哦',
+      async: '异步控制',
+      asyncDesc: '异步打开关闭',
+      open: '开',
+      close: '关',
+      custom: '自定义',
+      desc: '商品描述',
+      delete: '删除',
+      select: '选择',
+      collect: '收藏'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      leftDel: 'Swipe left to delete',
+      disable: 'Disable swipe',
+      swipeLR: 'Swipe left and right',
+      swipeLRDesc: 'You can swipe left and right',
+      async: 'Async control swipe',
+      asyncDesc: 'Async on and off',
+      open: 'on',
+      close: 'off',
+      custom: 'Custom',
+      desc: 'product description',
+      delete: 'Delelte',
+      select: 'Select',
+      collect: 'Collect'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const refSwipe = ref<HTMLElement>();
     const checked = ref(false);
     const number = ref(0);

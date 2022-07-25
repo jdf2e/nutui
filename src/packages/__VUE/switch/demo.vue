@@ -58,34 +58,36 @@ import { ref, getCurrentInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('switch');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    title1: '值为字符串',
-    title2: '禁用状态',
-    title3: '加载状态',
-    title4: 'change 事件',
-    title5: '异步控制',
-    title6: '自定义颜色',
-    title7: '支持文字',
-    text1: '开',
-    text2: '关'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    title1: 'Value Is String',
-    title2: 'Disabled',
-    title3: 'Loading',
-    title4: 'Change Event',
-    title5: 'Async Control',
-    title6: 'Custom Color',
-    title7: 'Support Text',
-    text1: 'Open',
-    text2: 'Closed'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      title1: '值为字符串',
+      title2: '禁用状态',
+      title3: '加载状态',
+      title4: 'change 事件',
+      title5: '异步控制',
+      title6: '自定义颜色',
+      title7: '支持文字',
+      text1: '开',
+      text2: '关'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title1: 'Value Is String',
+      title2: 'Disabled',
+      title3: 'Loading',
+      title4: 'Change Event',
+      title5: 'Async Control',
+      title6: 'Custom Color',
+      title7: 'Support Text',
+      text1: 'Open',
+      text2: 'Closed'
+    }
+  });
 export default createDemo({
   setup() {
+    initTranslate();
     let { proxy } = getCurrentInstance() as any;
     const checked = ref(true);
     const checkedAsync = ref(true);

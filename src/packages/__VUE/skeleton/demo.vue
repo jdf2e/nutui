@@ -48,29 +48,31 @@ import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('skeleton');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    title: '传入多行',
-    title1: '显示头像',
-    title2: '标题段落圆角风格',
-    title3: '图片组合',
-    title4: '显示子组件',
-    desc: '一套京东风格的轻量级移动端Vue组库，提供丰富的基础组件和业务组件，帮助开发者快速搭建移动应用。'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    title: 'Incoming multiline',
-    title1: 'Show Faces',
-    title2: 'Title paragraph fillet style',
-    title3: 'Picture combination',
-    title4: 'Display subcomponents',
-    desc: 'A set of JD style lightweight mobile terminal Vue group library provides rich basic components and business components to help developers quickly build mobile applications.'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      title: '传入多行',
+      title1: '显示头像',
+      title2: '标题段落圆角风格',
+      title3: '图片组合',
+      title4: '显示子组件',
+      desc: '一套京东风格的轻量级移动端Vue组库，提供丰富的基础组件和业务组件，帮助开发者快速搭建移动应用。'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title: 'Incoming multiline',
+      title1: 'Show Faces',
+      title2: 'Title paragraph fillet style',
+      title3: 'Picture combination',
+      title4: 'Display subcomponents',
+      desc: 'A set of JD style lightweight mobile terminal Vue group library provides rich basic components and business components to help developers quickly build mobile applications.'
+    }
+  });
 
 export default createDemo({
   setup() {
+    initTranslate();
     const checked = ref(false);
 
     return {

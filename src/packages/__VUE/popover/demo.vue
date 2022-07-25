@@ -88,32 +88,34 @@ import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('popover');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 
-useTranslate({
-  'zh-CN': {
-    title: '基础用法',
-    title1: '选项配置',
-    title2: '自定义内容',
-    title3: '位置自定义',
-    light: '明朗风格',
-    dark: '暗黑风格',
-    showIcon: '展示图标',
-    disableAction: '禁用选项',
-    content: '自定义内容'
-  },
-  'en-US': {
-    title: 'Basic Usage',
-    title1: 'Option Configuration',
-    title2: 'Custom Content',
-    title3: 'Custom Location',
-    light: 'light',
-    dark: 'dark',
-    showIcon: 'show icon',
-    disableAction: 'disabled',
-    content: 'custom content'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      title: '基础用法',
+      title1: '选项配置',
+      title2: '自定义内容',
+      title3: '位置自定义',
+      light: '明朗风格',
+      dark: '暗黑风格',
+      showIcon: '展示图标',
+      disableAction: '禁用选项',
+      content: '自定义内容'
+    },
+    'en-US': {
+      title: 'Basic Usage',
+      title1: 'Option Configuration',
+      title2: 'Custom Content',
+      title3: 'Custom Location',
+      light: 'light',
+      dark: 'dark',
+      showIcon: 'show icon',
+      disableAction: 'disabled',
+      content: 'custom content'
+    }
+  });
 export default createDemo({
   setup() {
+    initTranslate();
     const visible = ref({
       showIcon: false,
       placement: false,

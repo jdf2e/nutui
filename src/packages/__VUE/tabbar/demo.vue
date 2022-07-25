@@ -96,33 +96,35 @@ import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('tabbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    byName: '通过名称匹配',
-    customImg: '自定义图片',
-    customCheck: '自定义选中',
-    showBadge: '徽标提示',
-    customColor: '自定义颜色',
-    customQuantity: '自定义数量',
-    fixedBottom: '固定底部',
-    title: '标签'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    byName: 'Match by name',
-    customImg: 'Custom Img',
-    customCheck: 'Custom Check',
-    showBadge: 'Show Badge',
-    customColor: 'Custom Color',
-    customQuantity: 'Custom Quantity',
-    fixedBottom: 'Fixed Bottom',
-    title: 'tab'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      byName: '通过名称匹配',
+      customImg: '自定义图片',
+      customCheck: '自定义选中',
+      showBadge: '徽标提示',
+      customColor: '自定义颜色',
+      customQuantity: '自定义数量',
+      fixedBottom: '固定底部',
+      title: '标签'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      byName: 'Match by name',
+      customImg: 'Custom Img',
+      customCheck: 'Custom Check',
+      showBadge: 'Show Badge',
+      customColor: 'Custom Color',
+      customQuantity: 'Custom Quantity',
+      fixedBottom: 'Fixed Bottom',
+      title: 'tab'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const active = ref(2);
     const activeName = ref('category');
     function tabSwitch(item: Record<string, unknown>, index: number) {
