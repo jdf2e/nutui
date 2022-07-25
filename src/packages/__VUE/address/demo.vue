@@ -101,30 +101,31 @@ import { reactive, ref, toRefs } from 'vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const { createDemo, translate } = createComponent('address');
 
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    title: '选择地址',
-    customAddress: '选择自定义地址',
-    selectCity: '选中省市区',
-    customAddress2: '选择自定义地址2',
-    existAddress: '选择已有地址',
-    icon: '自定义图标',
-    change: '自定义地址与已有地址切换',
-    textAddress: '北京朝阳区八里庄街道'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    title: 'Choose Address',
-    customAddress: 'Choose Custom Address',
-    selectCity: 'Choose City',
-    customAddress2: 'Choose Custom Address2',
-    existAddress: 'Choose Exist Address',
-    icon: 'Custom Icon',
-    change: 'Custom Or Exist',
-    textAddress: 'Balizhuang Street, Chaoyang District, Beijing'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      title: '选择地址',
+      customAddress: '选择自定义地址',
+      selectCity: '选中省市区',
+      customAddress2: '选择自定义地址2',
+      existAddress: '选择已有地址',
+      icon: '自定义图标',
+      change: '自定义地址与已有地址切换',
+      textAddress: '北京朝阳区八里庄街道'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title: 'Choose Address',
+      customAddress: 'Choose Custom Address',
+      selectCity: 'Choose City',
+      customAddress2: 'Choose Custom Address2',
+      existAddress: 'Choose Exist Address',
+      icon: 'Custom Icon',
+      change: 'Custom Or Exist',
+      textAddress: 'Balizhuang Street, Chaoyang District, Beijing'
+    }
+  });
 
 interface CalBack {
   next: string;
@@ -159,6 +160,7 @@ interface AddressResult extends AddressList {
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const address = reactive({
       province: [
         { id: 1, name: '北京', title: 'B' },
