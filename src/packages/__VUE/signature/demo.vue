@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('signature');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
@@ -36,7 +36,6 @@ export default createDemo({
       lineWidth: 4,
       strokeStyle: 'green'
     });
-
     const confirm = (canvas: any, data: any) => {
       let img = document.createElement('img');
       img.src = data;
@@ -45,6 +44,7 @@ export default createDemo({
     const clear = () => {
       console.log('清除');
     };
+
     return { ...state, confirm, clear, translate };
   }
 });
