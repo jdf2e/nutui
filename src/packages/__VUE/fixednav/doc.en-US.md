@@ -152,6 +152,7 @@ export default {
 |:---------------|:----------------------------------------------------|:--------|:-----------------------------|
 | visible        | visible is                                          | Boolean | false                        |
 | nav-list       | Suspended list content data                         | Array   | []                           |
+| active-color    | list active button color                               | String  | #fa2c19                   |
 | active-text    | Stow list button copy                               | String  | Close Nav                    |
 | un-active-text | Expand list button copy                             | String  | Open Nav                     |
 | type           | Navigation direction, optional value `left` `right` | String  | right                        |

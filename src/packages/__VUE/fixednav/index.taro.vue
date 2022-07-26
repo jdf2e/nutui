@@ -5,12 +5,12 @@
       <view class="nut-fixednav__list">
         <view
           class="nut-fixednav__list-item"
-          v-for="(item, index) in navList"
+          v-for="(item, index) in cloneNavlist"
           @click="selected(item, $event)"
           :key="item.id || index"
         >
-          <img :src="item.icon" />
-          <view class="span">{{ item.text }}</view>
+          <img :src="item.icon" :style="{ color: item.selected ? activeColor : '#000' }" />
+          <view class="span" :style="{ color: item.selected ? activeColor : '#000' }">{{ item.text }}</view>
           <view class="b" v-if="item.num">{{ item.num }}</view>
         </view>
       </view>
@@ -26,10 +26,11 @@
   </view>
 </template>
 <script lang="ts">
-import { computed } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import overlay from '../overlay/index.vue';
 const { componentName, create, translate } = createComponent('fixednav');
-import overlay from '../overlay/index.taro.vue';
+
 export default create({
   components: {
     [overlay.name]: overlay
@@ -67,11 +68,16 @@ export default create({
     type: {
       default: 'right',
       type: String
+    },
+    activeColor: {
+      default: '#fa2c19',
+      type: String
     }
   },
   emits: ['update:visible', 'selected'],
 
   setup(props, { emit }) {
+    const cloneNavlist = ref<any[]>([]);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -85,13 +91,36 @@ export default create({
       emit('update:visible', value);
     };
     const selected = (item: any, event: Event) => {
+      cloneNavlist.value.map((item) => {
+        item.selected = false;
+      });
+      item.selected = true;
+      let selectItem: any = {};
+      for (let i in item) {
+        if (i !== 'selected') {
+          selectItem[i] = item[i];
+        }
+      }
       emit('selected', {
-        item,
+        item: selectItem,
         event
       });
     };
 
-    return { classes, updateValue, selected, translate };
+    watch(
+      () => props.navList,
+      (val) => {
+        cloneNavlist.value = val.map((item: any) => {
+          return {
+            ...item,
+            selected: false
+          };
+        });
+      },
+      { immediate: true, deep: true }
+    );
+
+    return { classes, updateValue, selected, translate, cloneNavlist };
   }
 });
 </script>

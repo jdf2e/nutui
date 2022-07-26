@@ -152,6 +152,7 @@ export default {
 |:---------------|:---------------------------|:--------|:-----------------------------|
 | visible        | 是否打开                   | Boolean | false                        |
 | nav-list       | 悬浮列表内容数据           | Array   | []                           |
+| active-color   | 选中按钮文案颜色           | String  | #fa2c19                     |
 | active-text    | 收起列表按钮文案           | String  | 收起导航                     |
 | un-active-text | 展开列表按钮文案           | String  | 快速导航                     |
 | type           | 导航方向,可选值 left right | String  | right                        |
