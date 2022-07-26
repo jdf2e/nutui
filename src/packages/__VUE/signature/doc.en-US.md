@@ -132,3 +132,4 @@ export default {
 |----- | ----- | ----- 
 | confirm | Click the confirm button to trigger the event callback function | Canvas and data URI displayed by signature image
 | clear | Click the re sign button to trigger the event callback function | -
+| isSignature | Whether to sign or not | value: boolean

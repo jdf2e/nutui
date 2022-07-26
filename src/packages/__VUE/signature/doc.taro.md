@@ -77,3 +77,4 @@ setup() {
 |----- | ----- | ----- 
 | confirm | 点击确认按钮触发事件回调函数 | data URI
 | clear | 点击重签按钮触发事件回调函数 | 无
+| isSignature | 是否签名与否 | value: boolean

@@ -20,7 +20,7 @@
 </template>
 <script lang="ts">
 import Taro from '@tarojs/taro';
-import { ref, reactive, onMounted, computed } from 'vue';
+import { ref, reactive, onMounted, computed, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('signature');
 
@@ -48,7 +48,7 @@ export default create({
     }
   },
   components: {},
-  emits: ['confirm', 'clear'],
+  emits: ['confirm', 'clear', 'isSignature'],
 
   setup(props, { emit }) {
     const classes = computed(() => {
@@ -65,6 +65,8 @@ export default create({
       ctx: null
     });
 
+    const isEmpty = ref<boolean>(false);
+
     const startEventHandler = (event: MouseEvent) => {
       event.preventDefault();
       state.ctx.beginPath();
@@ -80,6 +82,7 @@ export default create({
       let mouseY = evt.y;
       state.ctx.lineTo(mouseX, mouseY);
       state.ctx.stroke();
+      isEmpty.value = true;
     };
 
     const endEventHandler = (event) => {
@@ -91,7 +94,7 @@ export default create({
     const clear = () => {
       state.ctx.clearRect(0, 0, state.canvasWidth, state.canvasHeight);
       state.ctx.closePath();
-
+      isEmpty.value = false;
       emit('clear');
     };
 
@@ -144,6 +147,14 @@ export default create({
           .exec();
       }, 500);
     });
+
+    watch(
+      () => isEmpty.value,
+      (val) => {
+        emit('isSignature', val);
+      },
+      { immediate: true }
+    );
     return {
       confirm,
       clear,

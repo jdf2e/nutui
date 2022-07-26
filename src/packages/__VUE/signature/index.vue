@@ -10,7 +10,7 @@
   </div>
 </template>
 <script lang="ts">
-import { ref, reactive, onMounted, computed, toRefs } from 'vue';
+import { ref, reactive, onMounted, computed, toRefs, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('signature');
 
@@ -38,11 +38,12 @@ export default create({
     }
   },
   components: {},
-  emits: ['confirm', 'clear'],
+  emits: ['confirm', 'clear', 'isSignature'],
 
   setup(props, { emit }) {
     const canvas: any = ref<HTMLElement | null>(null);
     const wrap: any = ref<HTMLElement | null>(null);
+    const isEmpty = ref<boolean>(false);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -89,6 +90,7 @@ export default create({
 
       state.ctx.lineTo(mouseX, mouseY);
       state.ctx.stroke();
+      isEmpty.value = true;
     };
 
     const endEventHandler = (event) => {
@@ -106,6 +108,7 @@ export default create({
       canvas.value.addEventListener(state.events[2], endEventHandler, false);
       state.ctx.clearRect(0, 0, state.canvasWidth, state.canvasHeight);
       state.ctx.closePath();
+      isEmpty.value = false;
       emit('clear');
     };
 
@@ -136,7 +139,24 @@ export default create({
       }
     });
 
-    return { ...toRefs(state), canvas, wrap, isCanvasSupported, confirm, clear, classes, translate };
+    watch(
+      () => isEmpty.value,
+      (val) => {
+        emit('isSignature', val);
+      },
+      { immediate: true }
+    );
+
+    return {
+      ...toRefs(state),
+      canvas,
+      wrap,
+      isCanvasSupported,
+      confirm,
+      clear,
+      classes,
+      translate
+    };
   }
 });
 </script>

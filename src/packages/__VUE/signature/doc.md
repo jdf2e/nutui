@@ -131,3 +131,4 @@ export default {
 |----- | ----- | ----- 
 | confirm | 点击确认按钮触发事件回调函数 | canvas和签名图片展示的 data URI
 | clear | 点击重签按钮触发事件回调函数 | 无
+| isSignature | 是否签名与否 | value: boolean
