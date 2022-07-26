@@ -4,9 +4,8 @@
   </view>
 </template>
 <script lang="ts">
-import { onMounted, provide, ref, watch, getCurrentInstance } from 'vue';
+import { ComponentPublicInstance, provide, reactive, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-import { nextTick } from '@tarojs/taro';
 const { create } = createComponent('collapse');
 export default create({
   props: {
@@ -57,6 +56,29 @@ export default create({
   setup(props, { emit, slots }) {
     const collapseDom: any = ref(null);
 
+    watch(
+      () => props.active,
+      (newval: any) => {
+        state.children.forEach((item: any) => {
+          console.log(item);
+          if (typeof newval == 'number' || typeof newval == 'string') {
+            if (newval == item.name) {
+              item.changeOpen(!item.openExpanded);
+            } else {
+              item.changeOpen(false);
+            }
+          } else if (Object.values(newval) instanceof Array) {
+            if (newval.indexOf(Number(item.name)) > -1 || newval.indexOf(String(item.name)) > -1) {
+              item.changeOpen(true);
+            } else {
+              item.changeOpen(false);
+            }
+          }
+          item.animation();
+        });
+      }
+    );
+
     const changeVal = (val: string | number | Array<string | number>) => {
       emit('update:active', val);
       emit('change', val);
@@ -65,7 +87,6 @@ export default create({
     const changeValAry = (name: string) => {
       const activeItem: any = props.active instanceof Object ? Object.values(props.active) : props.active;
       let index = -1;
-
       activeItem.forEach((item: string | number, idx: number) => {
         if (String(item) == String(name)) {
           index = idx;
@@ -82,71 +103,16 @@ export default create({
       }
     };
 
-    const activeIndex = () => {
-      const activeCollapse: any = props.active;
-      const childrenList: any = slots.default?.();
-      let act: any = [];
-      childrenList.forEach((item: any, index: number) => {
-        if (typeof activeCollapse == 'number' || typeof activeCollapse == 'string') {
-          if (item.props.name == activeCollapse) {
-            act.push(item.flag);
-            return act;
-          }
-        } else {
-          let ary = Array.from(activeCollapse);
-          if (ary.includes(String(item.props.name)) || ary.includes(Number(item.props.name))) {
-            act.push(item.flag);
-          }
-        }
-      });
-      return act;
-    };
-    const childrenDom = ref(null);
-    onMounted(() => {
-      childrenDom.value = (getCurrentInstance() as any).provides.collapseParent.children;
-    });
-
-    watch(
-      () => props.active,
-      (newval: any, oldval) => {
-        nextTick(() => {
-          let domsProps: any = slots?.default?.();
-          let doms: any = childrenDom.value;
-          Array.from(doms).forEach((item: any, index: number) => {
-            if (typeof newval == 'number' || typeof newval == 'string') {
-              if (newval == domsProps[index].props.name) {
-                item.changeOpen(true);
-              } else {
-                item.changeOpen(false);
-              }
-            } else if (Object.values(newval) instanceof Array) {
-              if (
-                newval.indexOf(Number(domsProps[index].props.name)) > -1 ||
-                newval.indexOf(String(domsProps[index].props.name)) > -1
-              ) {
-                item.changeOpen(true);
-              } else {
-                item.changeOpen(false);
-              }
-            }
-            item.animation();
-          });
-        });
-      }
-    );
-
-    const getParentChildren = () => {
-      return slots.default?.();
-    };
-    provide('collapseParent', {
+    const state = reactive({
       children: [],
       props,
       changeValAry,
       changeVal,
-      isExpanded,
-      activeIndex,
-      getParentChildren
+      isExpanded
     });
+
+    provide('collapseParent', state);
+
     return { collapseDom };
   }
 });

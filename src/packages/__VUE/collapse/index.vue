@@ -4,7 +4,7 @@
   </view>
 </template>
 <script lang="ts">
-import { provide, ref, watch } from 'vue';
+import { ComponentPublicInstance, provide, reactive, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create } = createComponent('collapse');
 export default create({
@@ -55,24 +55,20 @@ export default create({
   emits: ['update:active', 'change'],
   setup(props, { emit, slots }) {
     const collapseDom: any = ref(null);
+
     watch(
       () => props.active,
-      (newval: any, oldval) => {
-        let domsProps: any = slots?.default?.();
-        let doms: any = collapseDom.value?.children;
-        Array.from(doms).forEach((dom: any, index: number) => {
-          const item = dom['__vueParentComponent']['ctx'];
+      (newval: any) => {
+        state.children.forEach((item: any) => {
+          console.log(item);
           if (typeof newval == 'number' || typeof newval == 'string') {
-            if (newval == domsProps[index].props.name) {
+            if (newval == item.name) {
               item.changeOpen(!item.openExpanded);
             } else {
               item.changeOpen(false);
             }
           } else if (Object.values(newval) instanceof Array) {
-            if (
-              newval.indexOf(Number(domsProps[index].props.name)) > -1 ||
-              newval.indexOf(String(domsProps[index].props.name)) > -1
-            ) {
+            if (newval.indexOf(Number(item.name)) > -1 || newval.indexOf(String(item.name)) > -1) {
               item.changeOpen(true);
             } else {
               item.changeOpen(false);
@@ -107,13 +103,15 @@ export default create({
       }
     };
 
-    provide('collapseParent', {
+    const state = reactive({
       children: [],
       props,
       changeValAry,
       changeVal,
       isExpanded
     });
+
+    provide('collapseParent', state);
 
     return { collapseDom };
   }
