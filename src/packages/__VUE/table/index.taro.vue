@@ -9,6 +9,7 @@
             v-for="item in columns"
             :key="item.key"
             @click="handleSorterClick(item)"
+            :style="item.stylehead"
           >
             {{ item.title }}
             <slot name="icon"></slot>
@@ -23,6 +24,7 @@
             :class="cellClasses(getColumnItem(value))"
             v-for="[value, render] in sortDataItem()"
             :key="value"
+            :style="getColumnItemStyle(value)"
           >
             <RenderColumn
               :slots="[render, item[value]]"

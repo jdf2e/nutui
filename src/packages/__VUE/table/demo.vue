@@ -105,11 +105,14 @@ export default createDemo({
       columns1: [
         {
           title: translate('name'),
-          key: 'name'
+          key: 'name',
+          stylehead: 'font-size:20px;color:red;font-weight:bolder;',
+          stylecolumn: 'font-size:10px;'
         },
         {
           title: translate('sex'),
           key: 'sex',
+          stylecolumn: 'font-size:20px;',
           render: ({ sex }) => {
             return h(
               'span',
