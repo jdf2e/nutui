@@ -215,7 +215,7 @@ export default create({
       selectedValue: (string | number)[];
       selectedOptions: import('../picker/types').PickerOption[];
     }) => {
-      if (['date', 'datetime', 'datehour', 'month-day'].includes(props.type)) {
+      if (['date', 'datetime', 'datehour', 'month-day', 'year-month'].includes(props.type)) {
         let formatDate: (number | string)[] = [];
         selectedValue.forEach((item) => {
           formatDate.push(item);
@@ -223,12 +223,16 @@ export default create({
         if (props.type == 'month-day') {
           formatDate.unshift(new Date(props.modelValue || props.minDate || props.maxDate).getFullYear());
         }
+        if (props.type == 'year-month' && formatDate.length < 3) {
+          formatDate.push(new Date(props.modelValue || props.minDate || props.maxDate).getDate());
+        }
+
         const year = Number(formatDate[0]);
         const month = Number(formatDate[1]) - 1;
         const day = Math.min(Number(formatDate[2]), getMonthEndDay(Number(formatDate[0]), Number(formatDate[1])));
         let date: Date | null = null;
 
-        if (props.type === 'date' || props.type === 'month-day') {
+        if (props.type === 'date' || props.type === 'month-day' || props.type === 'year-month') {
           date = new Date(year, month, day);
         } else if (props.type === 'datetime') {
           date = new Date(year, month, day, Number(formatDate[3]), Number(formatDate[4]));
