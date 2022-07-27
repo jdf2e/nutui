@@ -41,7 +41,7 @@
       </view>
       <view class="nut-input-value">
         <view class="nut-input-inner">
-          <div class="nut-input-box">
+          <view class="nut-input-box">
             <textarea
               v-if="type == 'textarea'"
               class="input-text"
@@ -82,9 +82,9 @@
               @blur="onBlur"
               @click="onClickInput"
             />
-            <view v-if="readonly" class="nut-input-disabled-mask"></view>
-          </div>
-          <div class="nut-input-clear-box">
+            <view v-if="readonly" class="nut-input-disabled-mask" @click="onClickInput"></view>
+          </view>
+          <view class="nut-input-clear-box">
             <nut-icon
               class="nut-input-clear"
               v-if="clearable && !readonly"
@@ -94,7 +94,7 @@
               @click="clear"
             >
             </nut-icon>
-          </div>
+          </view>
           <view v-if="rightIcon && rightIcon.length > 0" class="nut-input-right-icon" @click="onClickRightIcon">
             <nut-icon :name="rightIcon" :size="rightIconSize"></nut-icon>
           </view>
@@ -390,6 +390,7 @@ export default create({
     };
 
     const clear = (event: Event) => {
+      if (props.disabled) return;
       emit('update:modelValue', '', event);
       emit('change', '', event);
       emit('clear', '', event);
@@ -403,12 +404,19 @@ export default create({
     };
 
     const onClickInput = (event: MouseEvent) => {
+      if (props.disabled) return;
       emit('click-input', event);
     };
 
-    const onClickLeftIcon = (event: MouseEvent) => emit('click-left-icon', event);
+    const onClickLeftIcon = (event: MouseEvent) => {
+      if (props.disabled) return;
+      emit('click-left-icon', event);
+    };
 
-    const onClickRightIcon = (event: MouseEvent) => emit('click-right-icon', event);
+    const onClickRightIcon = (event: MouseEvent) => {
+      if (props.disabled) return;
+      emit('click-right-icon', event);
+    };
 
     watch(
       () => props.modelValue,
