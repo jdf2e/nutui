@@ -1,10 +1,36 @@
+.nut-theme-dark {
+  .nut-calendar {
+    background: $dark-background;
+    color: $dark-color;
+    .nut-calendar-header {
+      background: $dark-background;
+      color: $dark-color;
+    }
+    .nut-calendar-content {
+      .calendar-months-panel {
+        .calendar-month-con {
+          .calendar-month-day {
+            &-choose {
+              background-color: $dark-calendar-choose-color;
+              color: $calendar-choose-font-color;
+            }
+          }
+        }
+      }
+    }
+    .nut-calendar-footer {
+      background: $dark-background2;
+      color: $dark-color;
+    }
+  }
+}
 .nut-calendar {
   position: relative;
   display: flex;
   flex: 1;
   color: #333333;
   font-size: 16px;
-  background-color: #fff;
+  background-color: $white;
   overflow: hidden;
   height: 100%;
   flex-direction: column;
