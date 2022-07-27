@@ -1,3 +1,13 @@
+.nut-theme-dark {
+  .nut-timepannel {
+    background-color: $dark-background3;
+    color: $dark-color-gray;
+    &--curr {
+      background-color: $dark-background2;
+      color: $dark-color;
+    }
+  }
+}
 .nut-timepannel {
   display: flex;
   width: $timeselect-timepannel-width;

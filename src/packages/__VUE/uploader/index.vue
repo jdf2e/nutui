@@ -185,6 +185,9 @@ export default create({
       uploadOption.xhrState = props.xhrState as number;
       uploadOption.headers = props.headers;
       uploadOption.withCredentials = props.withCredentials;
+      try {
+        uploadOption.sourceFile = fileItem.formData.get(props.name);
+      } catch (error) {}
       uploadOption.onStart = (option: UploadOptions) => {
         fileItem.status = 'ready';
         fileItem.message = translate('readyUpload');

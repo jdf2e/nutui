@@ -34,62 +34,63 @@ import Button from '@/packages/__VUE/button/index.vue';
 import Icon from '@/packages/__VUE/icon/index.vue';
 const { createDemo, translate } = createComponent('table');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    title1: '是否显示边框，文字对齐',
-    title2: '显示总结栏',
-    title3: '条纹、明暗交替',
-    title4: '无数据默认展示，支持自定义',
-    title5: '这里是自定义展示',
-    title6: '自定义单元格',
-    title7: '支持异步渲染(5s之后看效果)',
-    title8: '支持排序',
-    name: '姓名',
-    age: '年龄',
-    sex: '性别',
-    man: '男',
-    woman: '女',
-    education: '学历',
-    address: '地址',
-    oper: '操作',
-    primary: '小学',
-    high: '高中',
-    undergraduate: '本科',
-    jump: '跳转到京东',
-    summary: '这是总结栏',
-    beijing: '北京',
-    shanghai: '上海',
-    hangzhou: '杭州'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    title1: 'Whether to display border and align text',
-    title2: 'Show summary bar',
-    title3: 'Stripes, alternating light and shade',
-    title4: 'No data is displayed by default, and customization is supported',
-    title5: 'Here is the custom display',
-    title6: 'Custom cell',
-    title7: 'Support asynchronous rendering(See the effect after 5S)',
-    title8: 'Support sorting',
-    name: 'name',
-    age: 'age',
-    sex: 'sex',
-    man: 'man',
-    woman: 'woman',
-    education: 'education',
-    address: 'address',
-    oper: 'operation',
-    primary: 'primary school',
-    high: 'high school',
-    undergraduate: 'undergraduate',
-    jump: 'Jump To Jingdong',
-    summary: 'This is the summary column',
-    beijing: 'beijing',
-    shanghai: 'shanghai',
-    hangzhou: 'hangzhou'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      title1: '是否显示边框，文字对齐',
+      title2: '显示总结栏',
+      title3: '条纹、明暗交替',
+      title4: '无数据默认展示，支持自定义',
+      title5: '这里是自定义展示',
+      title6: '自定义单元格',
+      title7: '支持异步渲染(5s之后看效果)',
+      title8: '支持排序',
+      name: '姓名',
+      age: '年龄',
+      sex: '性别',
+      man: '男',
+      woman: '女',
+      education: '学历',
+      address: '地址',
+      oper: '操作',
+      primary: '小学',
+      high: '高中',
+      undergraduate: '本科',
+      jump: '跳转到京东',
+      summary: '这是总结栏',
+      beijing: '北京',
+      shanghai: '上海',
+      hangzhou: '杭州'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title1: 'Whether to display border and align text',
+      title2: 'Show summary bar',
+      title3: 'Stripes, alternating light and shade',
+      title4: 'No data is displayed by default, and customization is supported',
+      title5: 'Here is the custom display',
+      title6: 'Custom cell',
+      title7: 'Support asynchronous rendering(See the effect after 5S)',
+      title8: 'Support sorting',
+      name: 'name',
+      age: 'age',
+      sex: 'sex',
+      man: 'man',
+      woman: 'woman',
+      education: 'education',
+      address: 'address',
+      oper: 'operation',
+      primary: 'primary school',
+      high: 'high school',
+      undergraduate: 'undergraduate',
+      jump: 'Jump To Jingdong',
+      summary: 'This is the summary column',
+      beijing: 'beijing',
+      shanghai: 'shanghai',
+      hangzhou: 'hangzhou'
+    }
+  });
 export default createDemo({
   components: {
     Button,
@@ -97,17 +98,21 @@ export default createDemo({
   },
   props: {},
   setup(props, { emit, slot }) {
+    initTranslate();
     const state = reactive({
       bordered1: false,
       striped: true,
       columns1: [
         {
           title: translate('name'),
-          key: 'name'
+          key: 'name',
+          stylehead: 'font-size:20px;color:red;font-weight:bolder;',
+          stylecolumn: 'font-size:10px;'
         },
         {
           title: translate('sex'),
           key: 'sex',
+          stylecolumn: 'font-size:20px;',
           render: ({ sex }) => {
             return h(
               'span',

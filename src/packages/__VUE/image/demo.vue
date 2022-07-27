@@ -82,27 +82,29 @@ import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('image');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    fill: '填充模式',
-    position: '图片位置',
-    circle: '圆形图片',
-    loading: '加载中提示',
-    error: '加载失败'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    fill: 'Object Fill',
-    position: 'Object Position',
-    circle: 'Round',
-    loading: 'Loading',
-    error: 'Error'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      fill: '填充模式',
+      position: '图片位置',
+      circle: '圆形图片',
+      loading: '加载中提示',
+      error: '加载失败'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      fill: 'Object Fill',
+      position: 'Object Position',
+      circle: 'Round',
+      loading: 'Loading',
+      error: 'Error'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const src = ref('//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg');
     const fits = ref(['contain', 'cover', 'fill', 'none', 'scale-down']);
     const position1 = ref(['left', 'center', 'right']);
