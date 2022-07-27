@@ -288,12 +288,12 @@ export default create({
       };
     });
 
-    const styles = computed(() => {
+    const styles: any = computed(() => {
       return {
         textAlign: props.inputAlign
       };
     });
-    const stylesTextarea = computed(() => {
+    const stylesTextarea: any = computed(() => {
       return {
         textAlign: props.inputAlign,
         height: Number(props.rows) * 24 + 'px'
