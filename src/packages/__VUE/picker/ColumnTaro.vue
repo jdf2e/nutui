@@ -275,6 +275,17 @@ export default create({
     );
 
     watch(
+      () => props.value,
+      (val) => {
+        state.transformY = 0;
+        modifyStatus(false);
+      },
+      {
+        deep: true
+      }
+    );
+
+    watch(
       () => props.itemShow,
       (val) => {
         if (val) {
