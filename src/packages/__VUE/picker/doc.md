@@ -119,6 +119,50 @@ app.use(OverLay);
 ```
 :::
 
+### 平铺展示
+
+:::demo
+```html
+<template>
+  <nut-cell title="请选择城市" :desc="desc" @click="() => { show = true;}"></nut-cell>
+  <nut-picker
+    v-model="selectedValue"
+    v-model:visible="show"
+    :columns="columns"
+    title="城市选择"
+    :threeDimensional="false"
+    @confirm="confirm"
+  >
+  </nut-picker>
+</template>
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const desc = ref('');
+      const selectedValue = ref(['ZheJiang']);
+      const columns = ref([
+        { text: '南京市', value: 'NanJing' },
+        { text: '无锡市', value: 'WuXi' },
+        { text: '海北藏族自治区', value: 'ZangZu' },
+        { text: '北京市', value: 'BeiJing' },
+        { text: '连云港市', value: 'LianYunGang' },
+        { text: '浙江市', value: 'ZheJiang' },
+        { text: '江苏市', value: 'JiangSu' }
+      ]);
+    
+      const confirm = ( { selectedValue,selectedOptions })=>{
+        desc.value = selectedValue.join(',');
+      }
+
+      return {show,desc,columns,selectedValue, confirm};
+    }
+  };
+</script>
+```
+:::
+
 ### 多列展示
 
 columns 属性可以通过二维数组的形式配置多列选择。
