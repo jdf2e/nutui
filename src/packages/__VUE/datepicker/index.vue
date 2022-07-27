@@ -12,6 +12,9 @@
     :isWrapTeleport="isWrapTeleport"
     :threeDimensional="threeDimensional"
   >
+    <template #top>
+      <slot name="top"></slot>
+    </template>
     <slot></slot>
   </nut-picker>
 </template>
