@@ -113,6 +113,52 @@ The default selection is implemented by setting `modelValue`, which is an array 
 
 :::
 
+### Tile
+
+:::demo
+
+```html
+<template>
+  <nut-cell title="Choose City" :desc="desc" @click="() => { show = true;}"></nut-cell>
+  <nut-picker
+    v-model="selectedValue"
+    v-model:visible="show"
+    :columns="columns"
+    title="Choose City"
+    :threeDimensional="false"
+    @confirm="confirm"
+  >
+  </nut-picker>
+</template>
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const desc = ref('');
+      const selectedValue = ref(['ZheJiang']);
+      const columns = ref([
+        { text: 'NanJing', value: 'NanJing' },
+        { text: 'WuXi', value: 'WuXi' },
+        { text: 'ZangZu', value: 'ZangZu' },
+        { text: 'BeiJing', value: 'BeiJing' },
+        { text: 'LianYunGang', value: 'LianYunGang' },
+        { text: 'ZheJiang', value: 'ZheJiang' },
+        { text: 'JiangSu', value: 'JiangSu' }
+      ]);
+    
+      const confirm = ( { selectedValue,selectedOptions })=>{
+        desc.value = selectedValue.join(',');
+      }
+
+      return {show,desc,columns,selectedValue, confirm};
+    }
+  };
+</script>
+```
+
+:::
+
 ### Multiple Columns
 
 :::demo
