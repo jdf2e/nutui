@@ -36,14 +36,14 @@ export default create({
       type: String,
       default: 'danger'
     },
-    showPopup: {
-      type: Boolean,
-      default: false
-    },
-    // visible: {
+    // showPopup: {
     //   type: Boolean,
     //   default: false
     // },
+    modelVisible: {
+      type: Boolean,
+      default: false
+    },
     position: {
       type: String,
       default: 'top'
@@ -66,7 +66,7 @@ export default create({
       // state.mounted = true;
     });
 
-    const visible = ref(false);
+    const showPopup = ref(props.modelVisible);
 
     const clickCover = () => {
       props.onClick && props.onClick();
@@ -113,7 +113,7 @@ export default create({
       props.unmount && props.unmount(props.id);
       props.onClose && props.onClose();
     };
-    return { state, hide, onAfterLeave, clickCover, visible };
+    return { state, hide, onAfterLeave, clickCover, showPopup };
   }
 });
 </script>

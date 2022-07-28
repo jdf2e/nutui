@@ -50,26 +50,6 @@ export default {
     }
 }
 </script>
-<script>
-import { reactive } from 'vue';
-export default {
-  props: {},
-  setup() {
-    const confirm = (canvas, data) => {
-        let img = document.createElement('img');
-        img.src = data;
-        document.querySelector('.demo').appendChild(img);
-    };
-    const clear = () => {
-        let img = document.querySelector('.demo img'); 
-        if (img) {
-            img.remove();
-        }
-    }
-    return { confirm, clear };
-  }
-};
-</script>
 ```
 :::
 ### 修改颜色和签字粗细
