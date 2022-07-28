@@ -63,7 +63,7 @@ export default create({
         Array.from(doms).forEach((item: any) => {
           if (typeof newval == 'number' || typeof newval == 'string') {
             if (newval == item.name) {
-              item.changeOpen(!item.openExpanded);
+              item.changeOpen(true);
             } else {
               item.changeOpen(false);
             }
