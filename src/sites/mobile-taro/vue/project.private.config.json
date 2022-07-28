@@ -7,9 +7,10 @@
     "miniprogram": {
       "list": [
         {
-          "name": "business/pages/address/index",
-          "pathName": "business/pages/address/index",
+          "name": "feedback/pages/notify/index",
+          "pathName": "feedback/pages/notify/index",
           "query": "",
+          "launchMode": "default",
           "scene": null
         },
         {
@@ -31,8 +32,8 @@
           "scene": null
         },
         {
-          "name": "exhibition/pages/ellipsis/index",
-          "pathName": "exhibition/pages/ellipsis/index",
+          "name": "business/pages/signature/index",
+          "pathName": "business/pages/signature/index",
           "query": "",
           "launchMode": "default",
           "scene": null
