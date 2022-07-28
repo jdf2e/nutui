@@ -190,6 +190,7 @@ If you need to use more icons based on the existing Icon, please refer to the Ic
 | Attribute      | Description                                      | Type   | Default |
 |-----------|-------------------------------------------|--------|--------|
 | tab-title | title                              | string | --     |
+| name | Identifier                              | string | 	Item index     |
 | icon      | icon name   | string | --     |
 | font-class-name |Custom icon font base class name    | string           | `nutui-iconfont` |
 | class-prefix | Custom icon class name prefix for using custom icons     | string           | `nut-icon` |

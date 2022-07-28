@@ -17,21 +17,23 @@ import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('signature');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    title: '修改颜色和签字粗细',
-    tips: 'Tips: 点击确认按钮,下方显示签名图片'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    title: 'Modify color and signature thickness',
-    tips: 'Tips: click the confirm button, and the signature image is displayed below'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      title: '修改颜色和签字粗细',
+      tips: 'Tips: 点击确认按钮,下方显示签名图片'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title: 'Modify color and signature thickness',
+      tips: 'Tips: click the confirm button, and the signature image is displayed below'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const state = reactive({
       lineWidth: 4,
       strokeStyle: 'green'

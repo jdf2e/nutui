@@ -37,6 +37,26 @@
     >
     </nut-picker>
 
+    <h2>{{ translate('tileDesc') }}</h2>
+    <nut-cell
+      :title="translate('chooseCity')"
+      :desc="defult"
+      @click="
+        () => {
+          showTile = true;
+        }
+      "
+    ></nut-cell>
+    <nut-picker
+      v-model="selectedValue"
+      v-model:visible="showTile"
+      :columns="columns"
+      :title="translate('chooseCity')"
+      :threeDimensional="false"
+      @confirm="(options) => confirm('defult', options)"
+    >
+    </nut-picker>
+
     <h2>{{ translate('multipleColumns') }}</h2>
     <nut-cell
       :title="translate('chooseTime')"
@@ -221,6 +241,7 @@ export default createDemo({
     const showCascader = ref(false);
     const showAsync = ref(false);
     const showEffect = ref(false);
+    const showTile = ref(false);
 
     const desc = reactive({
       index: '',
@@ -305,7 +326,8 @@ export default createDemo({
       alwaysFun,
       translate,
       selectedTime,
-      columsNum
+      columsNum,
+      showTile
     };
   }
 });

@@ -80,45 +80,47 @@ import { toRefs, onMounted, ref, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('countdown');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    format: '自定义格式',
-    millisecond: '毫秒级渲染',
-    serverTime: '以服务端的时间为准',
-    async: '异步更新结束时间',
-    controlTime: '控制开始和暂停的倒计时',
-    customStyle: '自定义展示样式',
-    handleControl: '手动控制',
-    start: '开始',
-    pause: '暂停',
-    reset: '重置',
-    day: '天',
-    hour: '时',
-    minute: '分',
-    second: '秒'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    format: 'Custom Format',
-    millisecond: 'Millisecond',
-    serverTime: 'Server Time Prevails',
-    async: 'End-Time of Asyn Update',
-    controlTime: 'Manual Control',
-    customStyle: 'Custom Style',
-    handleControl: 'Handle Control',
-    start: 'Start',
-    pause: 'Pause',
-    reset: 'Reset',
-    day: 'Day',
-    hour: ':',
-    minute: ':',
-    second: ''
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      format: '自定义格式',
+      millisecond: '毫秒级渲染',
+      serverTime: '以服务端的时间为准',
+      async: '异步更新结束时间',
+      controlTime: '控制开始和暂停的倒计时',
+      customStyle: '自定义展示样式',
+      handleControl: '手动控制',
+      start: '开始',
+      pause: '暂停',
+      reset: '重置',
+      day: '天',
+      hour: '时',
+      minute: '分',
+      second: '秒'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      format: 'Custom Format',
+      millisecond: 'Millisecond',
+      serverTime: 'Server Time Prevails',
+      async: 'End-Time of Asyn Update',
+      controlTime: 'Manual Control',
+      customStyle: 'Custom Style',
+      handleControl: 'Handle Control',
+      start: 'Start',
+      pause: 'Pause',
+      reset: 'Reset',
+      day: 'Day',
+      hour: ':',
+      minute: ':',
+      second: ''
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const CountDown = ref(null);
     const state = reactive({
       serverTime: Date.now() - 20 * 1000,

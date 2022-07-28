@@ -35,23 +35,25 @@
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('Indicator');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    button: '主要按钮',
-    title: 'block用法',
-    title2: '不补0'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    button: 'Main Button',
-    title: 'Block usage',
-    title2: 'Do not make up 0'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      button: '主要按钮',
+      title: 'block用法',
+      title2: '不补0'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      button: 'Main Button',
+      title: 'Block usage',
+      title2: 'Do not make up 0'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     return { translate };
   }
 });

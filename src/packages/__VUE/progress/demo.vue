@@ -96,37 +96,39 @@ import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('progress');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    customStyle: '线形进度条-设置颜色高度',
-    noShowPercentage: '百分比不显示',
-    showPercentage: '百分比外显',
-    showInsidePercentage: '百分比内显',
-    customContent: '百分比内显自定义',
-    customSize: '百分比内显自定义',
-    statusDisplay: '状态显示',
-    dynamicChange: '动态改变',
-    reduce: '减少',
-    add: '增加'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    customStyle: 'Custom Style',
-    noShowPercentage: 'Don’t Show Percentage',
-    showPercentage: 'Percentage displayed outside',
-    showInsidePercentage: 'Percentage displayed inside',
-    customContent: 'Custom Content',
-    customSize: 'Custom Size',
-    statusDisplay: 'Status Display',
-    dynamicChange: 'Dynamic Change',
-    reduce: 'reduce',
-    add: 'add'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      customStyle: '线形进度条-设置颜色高度',
+      noShowPercentage: '百分比不显示',
+      showPercentage: '百分比外显',
+      showInsidePercentage: '百分比内显',
+      customContent: '百分比内显自定义',
+      customSize: '百分比内显自定义',
+      statusDisplay: '状态显示',
+      dynamicChange: '动态改变',
+      reduce: '减少',
+      add: '增加'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      customStyle: 'Custom Style',
+      noShowPercentage: 'Don’t Show Percentage',
+      showPercentage: 'Percentage displayed outside',
+      showInsidePercentage: 'Percentage displayed inside',
+      customContent: 'Custom Content',
+      customSize: 'Custom Size',
+      statusDisplay: 'Status Display',
+      dynamicChange: 'Dynamic Change',
+      reduce: 'reduce',
+      add: 'add'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const val = ref(0);
     const setAddVal = () => {
       if (val.value >= 100) {

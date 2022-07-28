@@ -63,50 +63,52 @@ import { reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('steps');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    step1: '步骤一',
-    step2: '步骤二',
-    step3: '步骤三',
-    desc: '标题和描述信息',
-    stepdesc: '步骤描述',
-    next: '下一步',
-    cicon: '自定义图标',
-    complete: '已完成',
-    progress: '进行中',
-    start: '未开始',
-    content1: '您的订单已经打包完成，商品已发出',
-    content2: '您的订单正在配送途中',
-    content3: '收货地址为：北京市经济技术开发区科创十一街18号院京东大厦',
-    content4: '收货地址为',
-    content5: '北京市经济技术开发区科创十一街18号院京东大厦',
-    verstep: '竖向步骤条'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    step1: 'Step One',
-    step2: 'Step Two',
-    step3: 'Step Three',
-    desc: 'Title and description information',
-    stepdesc: 'Step description',
-    next: 'next step',
-    cicon: 'Custom Icon',
-    complete: 'Completed',
-    progress: 'In progress',
-    start: 'Not started',
-    content1: 'Your order has been packaged and the goods have been delivered',
-    content2: 'Your order is in transit',
-    content3:
-      'The receiving address is Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological Development Zone',
-    content4: 'The receiving address is',
-    content5: 'Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological Development Zone',
-    verstep: 'Vertical step bar'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      step1: '步骤一',
+      step2: '步骤二',
+      step3: '步骤三',
+      desc: '标题和描述信息',
+      stepdesc: '步骤描述',
+      next: '下一步',
+      cicon: '自定义图标',
+      complete: '已完成',
+      progress: '进行中',
+      start: '未开始',
+      content1: '您的订单已经打包完成，商品已发出',
+      content2: '您的订单正在配送途中',
+      content3: '收货地址为：北京市经济技术开发区科创十一街18号院京东大厦',
+      content4: '收货地址为',
+      content5: '北京市经济技术开发区科创十一街18号院京东大厦',
+      verstep: '竖向步骤条'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      step1: 'Step One',
+      step2: 'Step Two',
+      step3: 'Step Three',
+      desc: 'Title and description information',
+      stepdesc: 'Step description',
+      next: 'next step',
+      cicon: 'Custom Icon',
+      complete: 'Completed',
+      progress: 'In progress',
+      start: 'Not started',
+      content1: 'Your order has been packaged and the goods have been delivered',
+      content2: 'Your order is in transit',
+      content3:
+        'The receiving address is Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological Development Zone',
+      content4: 'The receiving address is',
+      content5: 'Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological Development Zone',
+      verstep: 'Vertical step bar'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const state = reactive({
       current1: 1,
       current2: 1,
