@@ -1,3 +1,40 @@
+.nut-theme-dark {
+  .nut-comment {
+    &-header {
+      &__user {
+        &-name {
+          color: $dark-color;
+        }
+
+        &-default {
+          &-name {
+            color: $dark-color;
+          }
+        }
+      }
+    }
+    &__follow {
+      &-title {
+        color: $dark-color;
+      }
+    }
+    &-bottom {
+      &__cpx {
+        color: $dark-color;
+
+        &-item {
+          span {
+            color: $dark-color;
+          }
+        }
+      }
+    }
+
+    .nut-comment-shop {
+      border-top: 1px solid $dark-color;
+    }
+  }
+}
 .nut-comment {
   width: 100%;
   font-size: 12px;
