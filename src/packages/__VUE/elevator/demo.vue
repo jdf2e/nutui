@@ -422,6 +422,11 @@ export default createDemo({
 </script>
 
 <style lang="scss" scoped>
+.nut-theme-dark {
+  .demo {
+    background-color: #000 !important;
+  }
+}
 .demo {
   background-color: #fff !important;
 }
