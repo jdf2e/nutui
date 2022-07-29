@@ -4,50 +4,23 @@
     <nut-noticebar :text="translate('text')"></nut-noticebar>
 
     <h2>{{ translate('scrollable') }}</h2>
-    <nut-noticebar
-      :text="translate('textShort')"
-      :scrollable="true"
-      :background="`rgba(251, 248, 220, 1)`"
-      :color="`#D9500B`"
-    >
-    </nut-noticebar>
+    <nut-noticebar :text="translate('textShort')" :scrollable="true"> </nut-noticebar>
     <p />
-    <nut-noticebar
-      :text="translate('text')"
-      :scrollable="false"
-      :background="`rgba(251, 248, 220, 1)`"
-      :color="`#D9500B`"
-    ></nut-noticebar>
+    <nut-noticebar :text="translate('text')" :scrollable="false"></nut-noticebar>
 
     <h2>{{ translate('mode') }}</h2>
-    <nut-noticebar :closeMode="true" @click="hello" :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`"
-      >{{ translate('text') }}
-    </nut-noticebar>
+    <nut-noticebar :closeMode="true" @click="hello">{{ translate('text') }} </nut-noticebar>
     <p />
-    <nut-noticebar
-      :closeMode="true"
-      right-icon="circle-close"
-      @click="hello"
-      :background="`rgba(251, 248, 220, 1)`"
-      :color="`#D9500B`"
-      >{{ translate('text') }}
-    </nut-noticebar>
+    <nut-noticebar :closeMode="true" right-icon="circle-close" @click="hello">{{ translate('text') }} </nut-noticebar>
     <p />
     <nut-noticebar
       left-icon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
-      :background="`rgba(251, 248, 220, 1)`"
-      :color="`#D9500B`"
     >
       <a href="https://www.jd.com">{{ translate('jd') }}</a>
     </nut-noticebar>
 
     <h2>{{ translate('multiline') }}</h2>
-    <nut-noticebar
-      :text="translate('text')"
-      wrapable
-      :background="`rgba(251, 248, 220, 1)`"
-      :color="`#D9500B`"
-    ></nut-noticebar>
+    <nut-noticebar :text="translate('text')" wrapable></nut-noticebar>
 
     <h2>{{ translate('vertical') }}</h2>
     <div class="interstroll-list">
@@ -58,8 +31,6 @@
         :standTime="1000"
         @click="go"
         :closeMode="true"
-        :background="`rgba(251, 248, 220, 1)`"
-        :color="`#D9500B`"
       ></nut-noticebar>
     </div>
 
@@ -71,22 +42,11 @@
         :speed="10"
         :standTime="2000"
         :complexAm="true"
-        :background="`rgba(251, 248, 220, 1)`"
-        :color="`#D9500B`"
       ></nut-noticebar>
     </div>
     <h2>{{ translate('customAm') }}</h2>
     <div class="interstroll-list">
-      <nut-noticebar
-        direction="vertical"
-        :height="50"
-        :speed="10"
-        :standTime="1000"
-        :list="[]"
-        @close="go"
-        :background="`rgba(251, 248, 220, 1)`"
-        :color="`#D9500B`"
-      >
+      <nut-noticebar direction="vertical" :height="50" :speed="10" :standTime="1000" :list="[]" @close="go">
         <div
           class="custom-item"
           :data-index="index"
@@ -100,14 +60,7 @@
 
     <h2>{{ translate('customRightIcon') }}</h2>
     <div class="interstroll-list">
-      <nut-noticebar
-        direction="vertical"
-        :list="horseLamp1"
-        :speed="10"
-        :standTime="1000"
-        :background="`rgba(251, 248, 220, 1)`"
-        :color="`#D9500B`"
-      >
+      <nut-noticebar direction="vertical" :list="horseLamp1" :speed="10" :standTime="1000">
         <template v-slot:rightIcon>
           <nut-icon name="fabulous" color="#f0250f"> </nut-icon>
         </template>
@@ -183,6 +136,15 @@ export default createDemo({
 </script>
 
 <style lang="scss" scoped>
+.nut-theme-dark {
+  .custom-item {
+    color: $dark-color;
+  }
+
+  a {
+    color: $dark-color;
+  }
+}
 .demo {
   padding-bottom: 30px !important;
 
