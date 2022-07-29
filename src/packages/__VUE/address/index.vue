@@ -124,10 +124,13 @@
             </li>
           </ul>
         </div>
+
         <div class="choose-other" @click="switchModule" v-if="isShowCustomAddress">
           <div class="btn">{{ customAndExistTitle || translate('chooseAnotherAddress') }}</div>
         </div>
       </view>
+
+      <slot name="bottom"></slot>
     </view>
   </nut-popup>
 </template>
