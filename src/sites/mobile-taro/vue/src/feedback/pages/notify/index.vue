@@ -1,9 +1,7 @@
 <template>
   <div class="demo">
     <nut-cell-group :title="baseState.state.desc">
-      <nut-cell is-Link @click="baseState.methods.cellClick">{{
-        baseState.state.desc
-      }}</nut-cell>
+      <nut-cell is-Link @click="baseState.methods.cellClick">{{ baseState.state.desc }}</nut-cell>
       <nut-notify
         @click="onClick"
         @closed="onClosed"
@@ -20,26 +18,10 @@
         v-model:visible="notifyState.state.show"
         :msg="notifyState.state.desc"
       />
-      <nut-cell
-        is-Link
-        @click="notifyState.methods.cellClick('primary', '主要通知')"
-        >主要通知</nut-cell
-      >
-      <nut-cell
-        is-Link
-        @click="notifyState.methods.cellClick('success', '成功通知')"
-        >成功通知</nut-cell
-      >
-      <nut-cell
-        is-Link
-        @click="notifyState.methods.cellClick('danger', '危险通知')"
-        >危险通知</nut-cell
-      >
-      <nut-cell
-        is-Link
-        @click="notifyState.methods.cellClick('warning', '警告通知')"
-        >警告通知</nut-cell
-      >
+      <nut-cell is-Link @click="notifyState.methods.cellClick('primary', '主要通知')">主要通知</nut-cell>
+      <nut-cell is-Link @click="notifyState.methods.cellClick('success', '成功通知')">成功通知</nut-cell>
+      <nut-cell is-Link @click="notifyState.methods.cellClick('danger', '危险通知')">危险通知</nut-cell>
+      <nut-cell is-Link @click="notifyState.methods.cellClick('warning', '警告通知')">警告通知</nut-cell>
     </nut-cell-group>
     <nut-cell-group title="自定义样式">
       <nut-notify
@@ -52,26 +34,24 @@
         :msg="customState.state.desc"
         :duration="customState.state.duration"
       />
-      <nut-cell
-        is-Link
-        @click="
-          customState.methods.cellClick('primary', '自定义背景色和字体颜色')
-        "
-      >
+      <nut-cell is-Link @click="customState.methods.cellClick('primary', '自定义背景色和字体颜色')">
         自定义背景色和字体颜色
       </nut-cell>
-      <nut-cell
-        is-Link
-        @click="customState.methods.cellClick('primary', '自定义时长5s', 5000)"
-      >
+      <nut-cell is-Link @click="customState.methods.cellClick('primary', '自定义时长5s', 5000)">
         自定义时长5s
       </nut-cell>
+    </nut-cell-group>
+    <nut-cell-group title="组件调用">
+      <nut-cell is-Link @click="showNotify">组件调用</nut-cell>
+      <nut-notify v-model:visible="show">
+        <span>Content</span>
+      </nut-notify>
     </nut-cell-group>
   </div>
 </template>
 
 <script lang="ts">
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 export default {
   setup() {
     const onClosed = () => console.log('closed');
@@ -119,12 +99,21 @@ export default {
         }
       }
     };
+    const show = ref(false);
+    const showNotify = () => {
+      show.value = true;
+      setTimeout(() => {
+        show.value = false;
+      }, 2000);
+    };
     return {
       baseState,
       notifyState,
       customState,
       onClosed,
-      onClick
+      onClick,
+      show,
+      showNotify
     };
   }
 };

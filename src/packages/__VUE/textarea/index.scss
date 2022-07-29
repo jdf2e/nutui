@@ -44,5 +44,11 @@
     background-color: transparent;
     border: 0;
     resize: none;
+    line-height: 20px;
+  }
+  .cpoyText {
+    position: absolute;
+    top: -999999px;
+    left: -999999px;
   }
 }

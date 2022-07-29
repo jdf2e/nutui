@@ -34,7 +34,9 @@ app.use(Table);
         columns: [
           {
             title: '姓名',
-            key: 'name'
+            key: 'name',
+            stylehead: 'font-size:20px;color:red;font-weight:bolder;',
+            stylecolumn: 'font-size:10px;color:blue;'
           },
           {
             title: '性别',
@@ -623,6 +625,8 @@ app.use(Table);
 | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------ |
 | key    | 列的唯一标识                                                                                                                                             | String                    | ``     |
 | title  | 表头标题                                                                                                                                                 | String                    | ``     |
+| stylehead  | 表头样式                                                                                                                                                 | String                    | ``     |
+| stylecolumn  | 列样式                                                                                                                                                 | String                    | ``     |
 | align  | 列的对齐方式，可选值`left`,`center`,`right`                                                                                                              | String                    | `left` |
 | sorter | 排序，可选值有 `true`,`function`, `default`, 其中 `default`表示点击之后可能会依赖接口, `function`可以返回具体的排序函数, `default`表示采用默认的排序算法 | Boolean、Function、String | -      |
 | render | 自定义渲染列数据，优先级高                                                                                                                               | Function(record)          | -      |

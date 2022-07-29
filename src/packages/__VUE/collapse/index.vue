@@ -55,7 +55,6 @@ export default create({
   emits: ['update:active', 'change'],
   setup(props, { emit, slots }) {
     const collapseDom: any = ref(null);
-
     watch(
       () => props.active,
       (newval: any) => {
@@ -78,12 +77,10 @@ export default create({
         });
       }
     );
-
     const changeVal = (val: string | number | Array<string | number>) => {
       emit('update:active', val);
       emit('change', val);
     };
-
     const changeValAry = (name: string) => {
       const activeItem: any = props.active instanceof Object ? Object.values(props.active) : props.active;
       let index = -1;
@@ -95,14 +92,12 @@ export default create({
       index > -1 ? activeItem.splice(index, 1) : activeItem.push(name);
       changeVal(activeItem);
     };
-
     const isExpanded = (name: string | number | Array<string | number>) => {
       const { accordion, active } = props;
       if (accordion) {
         return typeof active === 'number' || typeof active === 'string' ? active == name : false;
       }
     };
-
     const state = reactive({
       children: [],
       props,
@@ -110,9 +105,7 @@ export default create({
       changeVal,
       isExpanded
     });
-
     provide('collapseParent', state);
-
     return { collapseDom };
   }
 });

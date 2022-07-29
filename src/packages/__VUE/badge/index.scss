@@ -1,3 +1,11 @@
+.nut-theme-dark {
+  .nut-badge {
+    &.show {
+      background: $dark-background;
+      color: $dark-color;
+    }
+  }
+}
 .nut-badge {
   position: relative;
   display: inline-block;
