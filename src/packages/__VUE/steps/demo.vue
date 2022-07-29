@@ -140,6 +140,11 @@ export default createDemo({
 </script>
 
 <style lang="scss">
+.nut-theme-dark {
+  .steps-wrapper {
+    background-color: #1b1b1b;
+  }
+}
 .padding {
   padding-left: 0 !important;
   padding-right: 0 !important;
