@@ -61,6 +61,13 @@ export default createDemo({
 });
 </script>
 <style lang="scss" scoped>
+.nut-theme-dark {
+  .demo {
+    .sticky-container {
+      background-color: #1b1b1b;
+    }
+  }
+}
 .demo {
   height: 200vh !important;
 }

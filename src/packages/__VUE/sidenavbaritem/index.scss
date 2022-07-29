@@ -1,3 +1,12 @@
+.nut-theme-dark {
+  .nut-sidenavbaritem {
+    background-color: $dark-background2;
+    &__title {
+      background-color: $dark-background2;
+      color: $dark-color;
+    }
+  }
+}
 .nut-sidenavbaritem {
   height: $sidenavbar-item-height;
   line-height: $sidenavbar-item-line-height;
