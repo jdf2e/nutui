@@ -72,7 +72,13 @@
       :default-icon="defaultIcon"
       :selected-icon="selectedIcon"
       :close-btn-icon="closeBtnIcon"
-    ></nut-address>
+    >
+      <template #bottom>
+        <div class="nut-address-custom-buttom">
+          <div class="btn">自定义按钮</div>
+        </div>
+      </template>
+    </nut-address>
 
     <h2>{{ translate('change') }}</h2>
     <nut-cell :title="translate('title')" :desc="four" is-link @click="showAddressOther"></nut-cell>
