@@ -583,5 +583,5 @@ If you want to select a province, you need to set the region ID in the order of 
 ## Slot
 | Attribute | Description | 
 |----- | ----- |  
-| bottom | Bottom slot |  
+| bottom `3.1.23` | Bottom slot |  
     
