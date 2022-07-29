@@ -26,7 +26,15 @@ export default create({
     },
     strokeStyle: {
       type: String,
-      default: '#000'
+      default: () => {
+        let bodyDom: any = document.getElementsByTagName('body');
+        let clsName = bodyDom[0]['className'];
+        if (clsName.indexOf('nut-theme-dark') == -1) {
+          return '#000';
+        } else {
+          return '#fff';
+        }
+      }
     },
     type: {
       type: String,
