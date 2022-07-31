@@ -1,3 +1,45 @@
+.nut-theme-dark {
+  .nut-address {
+    &__header {
+      color: $dark-color;
+
+      &__title {
+        color: $dark-color;
+      }
+    }
+
+    .custom-address {
+      .region-tab {
+        color: $dark-color;
+      }
+      .region-con {
+        .region-group {
+          .region-item {
+            color: $dark-color;
+          }
+        }
+      }
+    }
+
+    .exist-address {
+      .exist-address-group {
+        .exist-ul {
+          .exist-item {
+            color: $dark-color;
+          }
+        }
+      }
+
+      .choose-other {
+        border-top: 1px solid $dark-background;
+      }
+    }
+    &-custom-buttom {
+      border-top: 1px solid $dark-background;
+    }
+  }
+}
+
 .nut-address {
   display: block;
   &__header {
