@@ -24,7 +24,7 @@
       </template>
     </view>
     <view class="nut-picker-roller-mask"></view>
-    <view class="nut-picker-content" ref="listbox" :id="'listbox' + refRandomId">
+    <view class="nut-picker-content" ref="listbox" :id="'listbox' + refRandomId" v-if="threeDimensional">
       <view class="nut-picker-list-panel" ref="list" :id="'list' + refRandomId" :style="touchTileStyle"> </view>
     </view>
   </view>
