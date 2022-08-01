@@ -139,7 +139,11 @@ export default createDemo({
 }
 .show-demo {
   background: #ffffff;
-  padding: 0 20px;
+}
+.nut-theme-dark {
+  .show-demo {
+    background: $dark-background;
+  }
 }
 h2 {
   padding: 0 20px;
