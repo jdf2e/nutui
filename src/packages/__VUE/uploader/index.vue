@@ -137,6 +137,10 @@ export default create({
       type: Function,
       default: null
     },
+    beforeXhrUpload: {
+      type: Function,
+      default: null
+    },
     beforeDelete: {
       type: Function,
       default: (file: import('./type').FileItem, files: import('./type').FileItem[]) => {
@@ -185,6 +189,7 @@ export default create({
       uploadOption.xhrState = props.xhrState as number;
       uploadOption.headers = props.headers;
       uploadOption.withCredentials = props.withCredentials;
+      uploadOption.beforeXhrUpload = props.beforeXhrUpload;
       try {
         uploadOption.sourceFile = fileItem.formData.get(props.name);
       } catch (error) {}

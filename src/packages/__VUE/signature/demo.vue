@@ -2,12 +2,12 @@
   <div class="demo">
     <h2>{{ translate('basic') }}</h2>
     <div>
-      <nut-signature @confirm="confirm" @clear="clear" custom-class="test"></nut-signature>
+      <nut-signature @confirm="confirm" @clear="clear" custom-class="test" @start="start"></nut-signature>
       <p class="demo-tips demo1">{{ translate('tips') }}</p>
     </div>
     <h2>{{ translate('title') }}</h2>
     <div>
-      <nut-signature :lineWidth="lineWidth" :strokeStyle="strokeStyle"></nut-signature>
+      <nut-signature :lineWidth="lineWidth" :strokeStyle="strokeStyle" @end="end"></nut-signature>
     </div>
   </div>
 </template>
@@ -47,7 +47,13 @@ export default createDemo({
     const clear = () => {
       console.log('清除');
     };
-    return { ...state, confirm, clear, translate };
+    const start = () => {
+      console.log('签名开始');
+    };
+    const end = () => {
+      console.log('签名结束');
+    };
+    return { ...state, confirm, clear, translate, start, end };
   }
 });
 </script>
