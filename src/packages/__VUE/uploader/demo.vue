@@ -34,6 +34,8 @@
     <nut-uploader :url="uploadUrl" multiple :before-upload="beforeUpload"> </nut-uploader>
     <h2>{{ translate('title9') }}</h2>
     <nut-uploader :url="uploadUrl" :data="formData" :headers="formData" :with-credentials="true"></nut-uploader>
+    <h2>{{ translate('title13') }}</h2>
+    <nut-uploader :url="uploadUrl" method="put" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
     <h2>{{ translate('title10') }}</h2>
     <nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
     <br />
@@ -65,7 +67,8 @@ const initTranslate = () =>
       title9: '自定义数据 FormData 、 headers ',
       title10: '选中文件后，通过按钮手动执行上传',
       title11: '执行上传',
-      title12: '禁用状态'
+      title12: '禁用状态',
+      title13: '自定义 xhr 上传方式(before-xhr-upload)'
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -81,7 +84,8 @@ const initTranslate = () =>
       title9: 'Custom data FormData , headers',
       title10: 'Once the file is selected, manually perform the upload via the button',
       title11: 'Perform upload',
-      title12: 'Disabled state'
+      title12: 'Disabled state',
+      title13: 'Customize XHR upload (before-xhr-upload)'
     }
   });
 export default createDemo({
@@ -159,6 +163,13 @@ export default createDemo({
       const f = await new File([blob], fileName);
       return [f];
     };
+    const beforeXhrUpload = (xhr: XMLHttpRequest, options: any) => {
+      if (options.method.toLowerCase() == 'put') {
+        xhr.send(options.sourceFile);
+      } else {
+        xhr.send(options.formData);
+      }
+    };
     const uploadRef = ref<any>(null);
     const submitUpload = () => {
       uploadRef.value.submit();
@@ -166,6 +177,7 @@ export default createDemo({
     return {
       onOversize,
       beforeUpload,
+      beforeXhrUpload,
       onDelete,
       onProgress,
       progressPercentage,
