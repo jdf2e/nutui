@@ -234,3 +234,4 @@ export default {
 | ended  | Emitted when audio ended | —— |
 | mute  | Emitted when audio mute | —— |
 | changeProgress  | Emitted when audio progress change | play time（millisecond） |
+| can-play `v3.2.0` | Emitted when the user agent can play the media | `event: Event` |
