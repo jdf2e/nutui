@@ -1,10 +1,17 @@
+.nut-theme-dark {
+  .nut-card {
+    .nut-card__right {
+      color: $dark-color;
+    }
+  }
+}
+
 .nut-card {
   width: 100%;
   display: flex;
 
   .nut-card__left {
     width: 120px;
-    height: 120px;
     flex-shrink: 0;
 
     > img {
