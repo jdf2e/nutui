@@ -7,8 +7,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "feedback/pages/notify/index",
-          "pathName": "feedback/pages/notify/index",
+          "name": "business/pages/signature/index",
+          "pathName": "business/pages/signature/index",
           "query": "",
           "launchMode": "default",
           "scene": null
