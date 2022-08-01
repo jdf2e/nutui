@@ -157,6 +157,11 @@ export default createDemo({
 </script>
 
 <style lang="scss" scoped>
+.nut-theme-dark {
+  .infiniteLi {
+    color: $dark-color;
+  }
+}
 .infiniteUl {
   height: 300px;
   width: 100%;

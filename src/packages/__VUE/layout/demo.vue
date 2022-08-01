@@ -160,7 +160,7 @@ export default createDemo({
 
 <style lang="scss" scoped>
 .box-item {
-  background: #fff;
+  background: $dark-background2;
   margin-bottom: 20px;
   padding: 20px 0;
 }
