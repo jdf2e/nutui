@@ -17,17 +17,19 @@ import { onMounted, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('list');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法'
-  },
-  'en-US': {
-    basic: 'Basic Usage'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法'
+    },
+    'en-US': {
+      basic: 'Basic Usage'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const state = reactive({
       count: new Array(100).fill(0)
     });

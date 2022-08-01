@@ -53,20 +53,21 @@
 
 <script lang="ts">
 import { useTranslate, currentLang } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    imageLink: '图片链接',
-    iconColor: '图标颜色',
-    iconSize: '图标大小'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    imageLink: 'Image Link',
-    iconColor: 'Icon Color',
-    iconSize: 'Icon Size'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      imageLink: '图片链接',
+      iconColor: '图标颜色',
+      iconSize: '图标大小'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      imageLink: 'Image Link',
+      iconColor: 'Icon Color',
+      iconSize: 'Icon Size'
+    }
+  });
 // import icons from '@/packages/styles/font/iconfont.json';
 import icons from '@/packages/styles/font/config.json';
 import { createComponent } from '@/packages/utils/create';
@@ -74,6 +75,7 @@ const { createDemo, translate } = createComponent('icon');
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     return { icons, translate, currentLang };
   }
 });

@@ -1,5 +1,5 @@
 <template>
-  <div class="demo full">
+  <div class="demo">
     <nut-cell :isLink="true" @click="showKeyBoard(1)" :showIcon="true" title="默认键盘"></nut-cell>
     <nut-numberkeyboard v-model:visible="visible1" @input="input" @delete="onDelete" @close="close(1)">
     </nut-numberkeyboard>

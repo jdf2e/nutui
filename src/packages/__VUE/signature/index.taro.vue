@@ -19,7 +19,7 @@
   </div>
 </template>
 <script lang="ts">
-import Taro from '@tarojs/taro';
+import Taro, { eventCenter, getCurrentInstance as getCurrentInstanceTaro } from '@tarojs/taro';
 import { ref, reactive, onMounted, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('signature');
@@ -58,7 +58,7 @@ export default create({
         [`${props.customClass}`]: props.customClass
       };
     });
-    const state = reactive({
+    const state: any = reactive({
       canvas: null,
       canvasHeight: 0,
       canvasWidth: 0,
@@ -124,7 +124,7 @@ export default create({
     };
 
     onMounted(() => {
-      setTimeout(() => {
+      eventCenter.once((getCurrentInstanceTaro() as any).router.onReady, () => {
         Taro.createSelectorQuery()
           .select('#spcanvas')
           .fields(
@@ -142,7 +142,7 @@ export default create({
             }
           )
           .exec();
-      }, 500);
+      });
     });
     return {
       confirm,

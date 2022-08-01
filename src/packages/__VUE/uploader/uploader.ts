@@ -3,6 +3,7 @@ export class UploadOptions {
   name = 'file';
   fileType? = 'image';
   formData?: FormData;
+  sourceFile: any;
   method = 'post';
   xhrState = 200;
   timeout = 30 * 1000;
@@ -47,7 +48,11 @@ export class Uploader {
         xhr.setRequestHeader(key, value as string);
       }
       options.onStart?.(options);
-      xhr.send(options.formData);
+      if (options.method.toLowerCase() == 'put') {
+        xhr.send(options.sourceFile);
+      } else {
+        xhr.send(options.formData);
+      }
     } else {
       console.warn('浏览器不支持 XMLHttpRequest');
     }

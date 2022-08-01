@@ -77,28 +77,30 @@ import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('timeselect');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    deliveryTime: '请选择配送时间',
-    changeTitle: '更改标题',
-    time1: '2月23日(今天)',
-    time2: '2月24日(星期三)',
-    title: '可选择多个日期时间',
-    content: '您选择了'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    deliveryTime: 'Please select the delivery time',
-    changeTitle: 'Change Title',
-    time1: 'February 23rd(Today)',
-    time2: 'February 24th(Wednesday)',
-    title: 'Multiple dates and times can be selected',
-    content: 'Your choose'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      deliveryTime: '请选择配送时间',
+      changeTitle: '更改标题',
+      time1: '2月23日(今天)',
+      time2: '2月24日(星期三)',
+      title: '可选择多个日期时间',
+      content: '您选择了'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      deliveryTime: 'Please select the delivery time',
+      changeTitle: 'Change Title',
+      time1: 'February 23rd(Today)',
+      time2: 'February 24th(Wednesday)',
+      title: 'Multiple dates and times can be selected',
+      content: 'Your choose'
+    }
+  });
 export default createDemo({
   setup() {
+    initTranslate();
     const { proxy } = getCurrentInstance() as any;
     const state = reactive({
       visible1: false,

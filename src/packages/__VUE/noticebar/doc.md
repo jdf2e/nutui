@@ -197,7 +197,7 @@ app.use(NoticeBar);
 <template>
     <nut-noticebar direction='vertical' :list="horseLamp1" :speed='10' :standTime='1000' :background="`rgba(251, 248, 220, 1)`" :color="`#D9500B`">
       <template v-slot:rightIcon>
-        <nut-icon type="trolley" color="#f0250f"></nut-icon>
+        <nut-icon name="fabulous" color="#f0250f"></nut-icon>
       </template>
     </nut-noticebar>
 </template>

@@ -1,3 +1,45 @@
+.nut-theme-dark {
+  .nut-address {
+    &__header {
+      color: $dark-color;
+
+      &__title {
+        color: $dark-color;
+      }
+    }
+
+    .custom-address {
+      .region-tab {
+        color: $dark-color;
+      }
+      .region-con {
+        .region-group {
+          .region-item {
+            color: $dark-color;
+          }
+        }
+      }
+    }
+
+    .exist-address {
+      .exist-address-group {
+        .exist-ul {
+          .exist-item {
+            color: $dark-color;
+          }
+        }
+      }
+
+      .choose-other {
+        border-top: 1px solid $dark-background;
+      }
+    }
+    &-custom-buttom {
+      border-top: 1px solid $dark-background;
+    }
+  }
+}
+
 .nut-address {
   display: block;
   &__header {
@@ -150,6 +192,24 @@
         font-size: 15px;
         color: $white;
       }
+    }
+  }
+
+  &-custom-buttom {
+    width: 100%;
+    height: 54px;
+    padding: 6px 0px 0;
+    border-top: 1px solid #f2f2f2;
+    .btn {
+      width: 90%;
+      height: 42px;
+      line-height: 42px;
+      margin: auto;
+      text-align: center;
+      background: $button-primary-background-color;
+      border-radius: 21px;
+      font-size: 15px;
+      color: $white;
     }
   }
 }

@@ -1,3 +1,21 @@
+.nut-theme-dark {
+  .nut-timeselect {
+    background-color: $dark-background2;
+    &__title {
+      background-color: $dark-background2;
+      color: $dark-color;
+    }
+    &__content {
+      &__pannel {
+        background-color: $dark-background3;
+        color: $dark-color;
+      }
+      &__detail {
+        background-color: $dark-background2;
+      }
+    }
+  }
+}
 .nut-timeselect {
   width: 100%;
   height: 100%;
@@ -8,7 +26,7 @@
     width: $timeselect-title-width;
     height: $timeselect-title-height;
     line-height: $timeselect-title-line-height;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
     font-size: $timeselect-title-font-size;
     color: $timeselect-title-color;
     text-align: center;

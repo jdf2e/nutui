@@ -406,6 +406,8 @@ export default {
 | title-icon         | 自定义标题图标     | String | -                |
 | option-icon `v3.1.22`         | 自定义选项图标     | String | 'Check'                |
 | direction  `v3.1.22`        | 菜单展开方向，可选值为up     | String | 'down'                |
+activeTitleClass | 选项选中时自定义标题样式类 | String | - |
+inactiveTitleClass | 选项非选中时自定义标题样式类 | String | - |
 
 ### MenuItem Events
 

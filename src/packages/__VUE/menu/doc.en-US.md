@@ -404,6 +404,10 @@ export default {
 | title-icon         | Custome title icon     | String | -                |
 | option-icon `v3.1.22`         | Custome option icon     | String | 'Check'                |
 | direction `v3.1.22`         | Expand direction, can be set to up     | String | 'down'                |
+activeTitleClass | Active custome title class | String | - |
+inactiveTitleClass | Inactive custome title class | String | - |
+
+
 
 ### MenuItem Events
 

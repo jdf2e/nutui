@@ -1,3 +1,15 @@
+.nut-theme-dark {
+  .nut-noticebar-page {
+    background: $dark-background2;
+    color: $dark-color;
+  }
+
+  .nut-noticebar-vertical {
+    .horseLamp_list_item {
+      color: $dark-color;
+    }
+  }
+}
 .nut-noticebar-page {
   // width: 100%;
   display: flex;
@@ -110,5 +122,6 @@
 
   .go {
     align-self: center;
+    display: flex;
   }
 }

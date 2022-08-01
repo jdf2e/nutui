@@ -1,3 +1,11 @@
+.nut-theme-dark {
+  .nut-audio-icon {
+    .nut-audio-icon-box {
+      background: $dark-color;
+    }
+  }
+}
+
 .nut-audio {
   padding: 0;
   .progress-wrapper {

@@ -1,3 +1,15 @@
+.nut-theme-dark {
+  .nut-image {
+    .nut-img-loading {
+      background: $dark-background;
+    }
+
+    .nut-img-error {
+      background: $dark-background;
+    }
+  }
+}
+
 .nut-image {
   display: block;
   position: relative;

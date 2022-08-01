@@ -224,37 +224,17 @@ export default create({
     };
 
     const formatSeconds = (value: string) => {
-      let theTime = parseInt(value); // 秒
-      let theTime1 = 0; // 分
-      let theTime2 = 0; // 小时
-      if (theTime > 60) {
-        theTime1 = Math.floor(theTime / 60);
-        theTime = Math.floor(theTime % 60);
-        if (theTime1 > 60) {
-          theTime2 = Math.floor(theTime1 / 60);
-          theTime1 = Math.floor(theTime1 % 60);
-        }
+      if (!value) {
+        return '00:00:00';
       }
+      let time = parseInt(value);
+      let hours = Math.floor(time / 3600);
+      let minutes = Math.floor((time - hours * 3600) / 60);
+      let seconds = time - hours * 3600 - minutes * 60;
       let result = '';
-      if (theTime < 10) {
-        result = '0' + result;
-      }
-      if (theTime1 > 0) {
-        result = '' + theTime1 + ':' + result;
-        if (theTime1 < 10) {
-          result = '0' + result;
-        }
-      } else {
-        result = '00:' + result;
-      }
-      if (theTime2 > 0) {
-        result = '' + theTime2 + ':' + result;
-        if (theTime2 < 10) {
-          result = '0' + result;
-        }
-      } else {
-        result = '00:' + result;
-      }
+      result += ('0' + hours.toString()).slice(-2) + ':';
+      result += ('0' + minutes.toString()).slice(-2) + ':';
+      result += ('0' + seconds.toString()).slice(-2);
       return result;
     };
 

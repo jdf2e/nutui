@@ -113,20 +113,21 @@ import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Toast } from '@/packages/nutui.vue';
 const { createDemo, translate } = createComponent('sku');
 
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    noSell: '不可售',
-    customStepper: '自定义计步器',
-    slots: '自定义插槽'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    noSell: 'Not Sell',
-    customStepper: 'Custom Stepper',
-    slots: 'Custom Slots'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      noSell: '不可售',
+      customStepper: '自定义计步器',
+      slots: '自定义插槽'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      noSell: 'Not Sell',
+      customStepper: 'Custom Stepper',
+      slots: 'Custom Slots'
+    }
+  });
 
 interface Skus {
   id: number;
@@ -158,6 +159,7 @@ interface Data {
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const popup = reactive({
       base: false,
       notSell: false,

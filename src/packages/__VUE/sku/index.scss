@@ -1,3 +1,43 @@
+.nut-theme-dark {
+  .nut-sku {
+    background: $dark-background;
+
+    &-select {
+      &-item {
+        &-title {
+          color: $dark-color;
+        }
+        &-skus {
+          &-sku {
+            color: $dark-color;
+            background: $dark-background2;
+          }
+        }
+      }
+    }
+
+    &-stepper {
+      &-title {
+        color: $dark-color;
+      }
+      &-limit {
+        color: $dark-color;
+      }
+      &-count {
+        &-lowestBuy {
+          color: $primary-color;
+        }
+      }
+    }
+
+    &-operate {
+      &-btn {
+        background: $dark-background2;
+      }
+    }
+  }
+}
+
 .nut-sku {
   height: 100%;
   display: flex;

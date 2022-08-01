@@ -31,25 +31,27 @@ import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('sticky');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    title1: '吸顶距离',
-    title2: '指定容器',
-    title3: '吸底距离',
-    content: '吸顶按钮'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    title1: 'Ceiling distance',
-    title2: 'Specify container',
-    title3: 'Suction distance',
-    content: 'Ceiling button'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      title1: '吸顶距离',
+      title2: '指定容器',
+      title3: '吸底距离',
+      content: '吸顶按钮'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title1: 'Ceiling distance',
+      title2: 'Specify container',
+      title3: 'Suction distance',
+      content: 'Ceiling button'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const container = ref(null);
     return {
       container,
@@ -59,6 +61,13 @@ export default createDemo({
 });
 </script>
 <style lang="scss" scoped>
+.nut-theme-dark {
+  .demo {
+    .sticky-container {
+      background-color: #1b1b1b;
+    }
+  }
+}
 .demo {
   height: 200vh !important;
 }
