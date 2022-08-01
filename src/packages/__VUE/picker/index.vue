@@ -264,7 +264,6 @@ export default create({
     watch(
       () => props.columns,
       (val) => {
-        console.log('更新 columes');
         if (val.length) state.formattedColumns = val as PickerOption[];
       }
     );
