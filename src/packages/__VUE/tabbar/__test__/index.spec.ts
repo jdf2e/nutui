@@ -82,8 +82,6 @@ test('should render custom check and icon size when using visible', async () => 
     `
   });
   await nextTick();
-  const tabbarItem = wrapper.findAll<HTMLElement>('.nut-tabbar-item');
-  expect(tabbarItem[1].element.style.color).toEqual('blue');
   expect(wrapper.find<HTMLElement>('.nut-icon').element.style.fontSize).toEqual('18px');
 });
 

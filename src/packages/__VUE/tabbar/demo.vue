@@ -23,27 +23,27 @@
     <nut-tabbar @tab-switch="tabSwitch">
       <nut-tabbar-item
         :tab-title="translate('title')"
-        img="https://img11.360buyimg.com/imagetools/jfs/t1/94951/33/30429/3158/62e7461aEdda4d5a4/b835c15446d304fc.png"
+        img="https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png"
         activeImg="https://img11.360buyimg.com/imagetools/jfs/t1/70423/4/20553/3652/62e74629E23ba550e/aeeed0e3b9f43ae6.png"
       ></nut-tabbar-item>
       <nut-tabbar-item
         :tab-title="translate('title')"
-        img="https://img12.360buyimg.com/imagetools/jfs/t1/57816/6/20859/4527/62e747acE967629fa/28ff315e3c9beb46.png"
+        img="https://img13.360buyimg.com/imagetools/jfs/t1/202062/32/25149/5246/62e7c353E5a51db17/b82b940e6eb22ec3.png"
         activeImg="https://img11.360buyimg.com/imagetools/jfs/t1/162634/35/26732/5502/62e747a8E5330f029/3ea00a0c140beb38.png"
       ></nut-tabbar-item>
       <nut-tabbar-item
         :tab-title="translate('title')"
-        img="https://img11.360buyimg.com/imagetools/jfs/t1/205437/31/25468/4677/62e7479fE58ffd5b0/d29e45c946d79d76.png"
+        img="https://img12.360buyimg.com/imagetools/jfs/t1/60552/28/20576/5585/62e7c2ddE2e0b48a7/70eefb366b85f3e4.png"
         activeImg="https://img11.360buyimg.com/imagetools/jfs/t1/138362/15/28011/5802/62e747a4E4139ef2f/9a79a1c0f6a273b4.png"
       ></nut-tabbar-item>
       <nut-tabbar-item
         :tab-title="translate('title')"
-        img="https://img14.360buyimg.com/imagetools/jfs/t1/149917/4/28913/3900/62e7479bE6b68da34/bfa3ba96e41b48e1.png"
+        img="https://img14.360buyimg.com/imagetools/jfs/t1/156023/30/29042/4257/62e7c34aE71f32967/690e2db242e2a97f.png"
         activeImg="https://img13.360buyimg.com/imagetools/jfs/t1/144283/8/28420/4851/62e74784Eaa8549fe/80535de2961b812e.png"
       ></nut-tabbar-item>
       <nut-tabbar-item
         :tab-title="translate('title')"
-        img="https://img14.360buyimg.com/imagetools/jfs/t1/35/18/17688/4398/62e74792E568d90c9/98cb20f50eab3fe7.png"
+        img="https://img11.360buyimg.com/imagetools/jfs/t1/74960/7/21199/5299/62e7c34fE81cfb9f0/5805a277d3f6ce06.png"
         activeImg="https://img10.360buyimg.com/imagetools/jfs/t1/48844/30/21079/5550/62e74797E934c4408/da98765cb757fd68.png"
       ></nut-tabbar-item>
     </nut-tabbar>
