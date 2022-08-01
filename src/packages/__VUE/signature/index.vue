@@ -4,7 +4,6 @@
       <canvas ref="canvas" :height="canvasHeight" :width="canvasWidth" v-if="() => isCanvasSupported()"></canvas>
       <p class="nut-signature-unsopport" v-else>{{ unSupportTpl || translate('unSupportTpl') }}</p>
     </div>
-
     <nut-button class="nut-signature-btn" type="default" @click="clear()">{{ translate('reSign') }}</nut-button>
     <nut-button class="nut-signature-btn" type="primary" @click="confirm()">{{ translate('confirm') }}</nut-button>
   </div>
