@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes">
+  <view :class="classes" @click="onClick">
     <template v-if="$slots.input">
       <view
         v-if="label"
@@ -356,6 +356,9 @@ export default create({
     };
 
     const onFocus = (event: Event) => {
+      if (props.disabled || props.readonly) {
+        return;
+      }
       const input = event.target as HTMLInputElement;
       let value = input.value;
       active.value = true;
@@ -363,6 +366,9 @@ export default create({
     };
 
     const onBlur = (event: Event) => {
+      if (props.disabled || props.readonly) {
+        return;
+      }
       setTimeout(() => {
         active.value = false;
       }, 200);
@@ -391,18 +397,31 @@ export default create({
     };
 
     const onClickInput = (event: MouseEvent) => {
-      if (props.disabled) return;
+      if (props.disabled) {
+        return;
+      }
       emit('click-input', event);
     };
 
     const onClickLeftIcon = (event: MouseEvent) => {
-      if (props.disabled) return;
+      if (props.disabled) {
+        return;
+      }
       emit('click-left-icon', event);
     };
 
     const onClickRightIcon = (event: MouseEvent) => {
-      if (props.disabled) return;
+      if (props.disabled) {
+        return;
+      }
       emit('click-right-icon', event);
+    };
+
+    const onClick = (e: MouseEvent) => {
+      if (props.disabled) {
+        e.stopPropagation();
+        return;
+      }
     };
 
     watch(
@@ -434,6 +453,7 @@ export default create({
       onClickInput,
       onClickLeftIcon,
       onClickRightIcon,
+      onClick,
       translate
     };
   }

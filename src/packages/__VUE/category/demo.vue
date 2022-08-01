@@ -22,21 +22,23 @@ import { createComponent } from '@/packages/utils/create';
 import { reactive, toRefs, onMounted } from 'vue';
 const { createDemo, translate } = createComponent('cmt');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    title1: '经典分类模式',
-    title2: '只显示文字',
-    title3: '自定义分类'
-  },
-  'en-US': {
-    title1: 'Classic Classification Mode',
-    title2: 'Show Text Only',
-    title3: 'Custom taxonomy'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      title1: '经典分类模式',
+      title2: '只显示文字',
+      title3: '自定义分类'
+    },
+    'en-US': {
+      title1: 'Classic Classification Mode',
+      title2: 'Show Text Only',
+      title3: 'Custom taxonomy'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const data = reactive({
       categoryInfo: {},
       category: [{}],

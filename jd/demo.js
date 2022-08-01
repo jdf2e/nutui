@@ -51,7 +51,7 @@ export default create({
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('${nameLc}');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
+const initTranslate = () => useTranslate({
   'zh-CN': {
     basic: '基本用法'
   },
@@ -62,6 +62,7 @@ useTranslate({
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     return { translate };
   }
 });

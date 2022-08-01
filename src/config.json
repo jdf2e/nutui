@@ -5,53 +5,63 @@
       {
         "name": "intro",
         "cName": "介绍",
+        "eName": "Introduction",
         "show": true
       },
       {
         "name": "start",
         "cName": "快速上手",
+        "eName": "Quickstart",
         "show": true
       },
       {
         "name": "starttaro",
         "cName": "小程序开发",
+        "eName": "WeChat",
         "show": true
       },
       {
         "name": "theme",
         "cName": "主题定制",
+        "eName": "Customize Theme",
         "show": true
       },
       {
         "name": "international",
         "cName": "国际化",
+        "eName": "Internationalization",
         "show": true
       },
       {
         "name": "ide",
         "cName": "开发工具支持",
-        "show": true
-      },
-      {
-        "name": "resource",
-        "cName": "资源",
+        "eName": "IDE tool support",
         "show": true
       },
       {
         "name": "contributing",
         "cName": "贡献指南",
+        "eName": "Contributing",
         "path": "#/contributing",
         "show": true
       },
       {
         "name": "https://github.com/jdf2e/nutui/releases",
         "cName": "更新日志",
+        "eName": "Changelog",
         "show": true,
         "isLink": true
       },
       {
+        "name": "resource",
+        "cName": "资源",
+        "eName": "Resources",
+        "show": true
+      },
+      {
         "name": "notice",
         "cName": "常见问题",
+        "eName": "FAQ",
         "show": true
       }
     ]

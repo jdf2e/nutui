@@ -37,6 +37,26 @@
     >
     </nut-picker>
 
+    <h2>{{ translate('tileDesc') }}</h2>
+    <nut-cell
+      :title="translate('chooseCity')"
+      :desc="defult"
+      @click="
+        () => {
+          showTile = true;
+        }
+      "
+    ></nut-cell>
+    <nut-picker
+      v-model="selectedValue"
+      v-model:visible="showTile"
+      :columns="columns"
+      :title="translate('chooseCity')"
+      :threeDimensional="false"
+      @confirm="(options) => confirm('defult', options)"
+    >
+    </nut-picker>
+
     <h2>{{ translate('multipleColumns') }}</h2>
     <nut-cell
       :title="translate('chooseTime')"
@@ -109,6 +129,25 @@
     >
       <nut-button block type="primary" @click="alwaysFun">{{ translate('always') }}</nut-button></nut-picker
     >
+
+    <!-- <h2>异步获取</h2>
+    <nut-cell
+      :title="translate('validTime')"
+      :desc="effect"
+      @click="
+        () => {
+          showJK = true;
+        }
+      "
+    ></nut-cell>
+    <nut-picker
+      v-model:visible="showJK"
+      :columns="jkColumns"
+      :title="translate('chooseDate')"
+      @confirm="(options) => confirm('effect', options)"
+      @change="changeJK"
+    ></nut-picker
+    > -->
   </div>
 </template>
 <script lang="ts">
@@ -118,7 +157,7 @@ import { PickerOption } from './types';
 const { createDemo, translate } = createComponent('picker');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Internation } from './doc.en';
-import { convertListToOptions } from '../cascader/helper';
+
 useTranslate(Internation);
 export default createDemo({
   props: {},
@@ -199,6 +238,58 @@ export default createDemo({
       }
     ]);
 
+    const bf = {
+      ZheJiang: [
+        {
+          text: translate('hangZhou'),
+          value: 'HangZhou',
+          children: [
+            { text: translate('xiHu'), value: 'XiHu' },
+            { text: translate('yuHang'), value: 'YuHang' }
+          ]
+        },
+        {
+          text: translate('wenZhou'),
+          value: 'WenZhou',
+          children: [
+            { text: translate('luCheng'), value: 'LuCheng' },
+            { text: translate('ouHai'), value: 'OuHai' }
+          ]
+        }
+      ],
+      FuJian: [
+        {
+          text: translate('fuZhou'),
+          value: 'FuZhou',
+          children: [
+            { text: translate('guLou'), value: 'GuLou' },
+            { text: translate('taiJiang'), value: 'TaiJiang' }
+          ]
+        },
+        {
+          text: translate('xiaMen'),
+          value: 'XiaMen',
+          children: [
+            { text: translate('siMing'), value: 'SiMing' },
+            { text: translate('haiCang'), value: 'HaiCang' }
+          ]
+        }
+      ]
+    };
+
+    const jkColumns = ref([
+      {
+        text: translate('zheJiang'),
+        value: 'ZheJiang',
+        children: []
+      },
+      {
+        text: translate('fuJian'),
+        value: 'FuJian',
+        children: []
+      }
+    ]);
+
     const effectColumns = ref([
       { text: '2022-01', value: 'January' },
       { text: '2022-02', value: 'February' },
@@ -221,6 +312,9 @@ export default createDemo({
     const showCascader = ref(false);
     const showAsync = ref(false);
     const showEffect = ref(false);
+    const showTile = ref(false);
+
+    const showJK = ref(false);
 
     const desc = reactive({
       index: '',
@@ -280,6 +374,18 @@ export default createDemo({
       console.log(selectedValue);
     };
 
+    // change
+    const changeJK = (data) => {
+      const { columnIndex, selectedOptions, selectedValue } = data;
+      if (columnIndex == 0) {
+        jkColumns.value.forEach((colum) => {
+          if (colum.value == selectedValue[columnIndex] && colum.children.length == 0) {
+            colum.children = bf[selectedValue[columnIndex]];
+          }
+        });
+      }
+    };
+
     const alwaysFun = () => {
       showEffect.value = false;
       desc.effect = translate('always');
@@ -305,7 +411,11 @@ export default createDemo({
       alwaysFun,
       translate,
       selectedTime,
-      columsNum
+      columsNum,
+      showTile,
+      showJK,
+      jkColumns,
+      changeJK
     };
   }
 });

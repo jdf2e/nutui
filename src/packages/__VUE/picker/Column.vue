@@ -276,7 +276,19 @@ export default create({
     watch(
       () => props.column,
       (val) => {
-        console.log('props.column变化', props.column);
+        if (props.column && props.column.length > 0) {
+          state.transformY = 0;
+          modifyStatus(false);
+        }
+      },
+      {
+        deep: true
+      }
+    );
+
+    watch(
+      () => props.value,
+      (val) => {
         state.transformY = 0;
         modifyStatus(false);
       },
@@ -284,17 +296,6 @@ export default create({
         deep: true
       }
     );
-
-    // watch(
-    //   () => props.value,
-    //   (val) => {
-    //      console.log('props.value变化')
-    //     modifyStatus(true);
-    //   },
-    //   {
-    //     deep: true
-    //   }
-    // );
 
     onMounted(() => {
       modifyStatus(true);

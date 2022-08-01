@@ -1,8 +1,8 @@
 <template>
   <div :class="classes">
     <div class="nut-signature-inner" ref="wrap">
-      <canvas ref="canvas" :height="canvasHeight" :width="canvasWidth" v-if="() => isCanvasSupported()"></canvas>
-      <p class="nut-signature-unsopport" v-else>{{ unSupportTpl || translate('unSupportTpl') }}</p>
+      <canvas ref="canvas" :height="canvasHeight" :width="canvasWidth" v-show="isCanvasSupported()"></canvas>
+      <p class="nut-signature-unsopport" v-if="!isCanvasSupported()">{{ unSupportTpl || translate('unSupportTpl') }}</p>
     </div>
 
     <nut-button class="nut-signature-btn" type="default" @click="clear()">{{ translate('reSign') }}</nut-button>
@@ -26,7 +26,15 @@ export default create({
     },
     strokeStyle: {
       type: String,
-      default: '#000'
+      default: () => {
+        let bodyDom: any = document.getElementsByTagName('body');
+        let clsName = bodyDom[0]['className'];
+        if (clsName.indexOf('nut-theme-dark') == -1) {
+          return '#000';
+        } else {
+          return '#fff';
+        }
+      }
     },
     type: {
       type: String,

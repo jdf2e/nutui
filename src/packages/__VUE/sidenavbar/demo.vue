@@ -83,56 +83,58 @@ import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('sidenavbar');
 import { Toast } from '@/packages/nutui.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基础用法',
-    title1: '智能城市AI',
-    title2: '人体识别1',
-    title3: '人体检测1',
-    title4: '细粒度人像分割1',
-    title5: '人体检测2',
-    title6: '细粒度人像分割2',
-    title7: '图像理解',
-    title8: '菜品识别',
-    title9: '拍照购',
-    title10: '自然语言处理',
-    title11: '词法分析',
-    title12: '句法分析',
-    title13: '人脸识别',
-    title14: '企业风险预警模型',
-    title15: '水质量检测',
-    title16: '人体识别2',
-    left: '左侧',
-    right: '右侧',
-    show: '显示',
-    nest: '导航嵌套（建议最多三层）,点击第一条回调'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    title1: 'Intelligent City Ai',
-    title2: 'Human body recognition 1',
-    title3: 'Human testing 1',
-    title4: 'Fine grained portrait segment 1',
-    title5: 'Human testing 2',
-    title6: 'Fine grained portrait segment 2',
-    title7: 'image understanding',
-    title8: 'Dish identification',
-    title9: 'Photo shopping',
-    title10: 'natural language processing',
-    title11: 'lexical analysis',
-    title12: 'Syntactic analysis',
-    title13: 'Face recognition',
-    title14: 'Enterprise risk early warning model',
-    title15: 'Water quality inspection',
-    title16: 'Human body recognition 2',
-    left: 'left',
-    right: 'right',
-    show: 'show',
-    nest: 'Navigation nesting (up to three layers are recommended), and click the first callback'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基础用法',
+      title1: '智能城市AI',
+      title2: '人体识别1',
+      title3: '人体检测1',
+      title4: '细粒度人像分割1',
+      title5: '人体检测2',
+      title6: '细粒度人像分割2',
+      title7: '图像理解',
+      title8: '菜品识别',
+      title9: '拍照购',
+      title10: '自然语言处理',
+      title11: '词法分析',
+      title12: '句法分析',
+      title13: '人脸识别',
+      title14: '企业风险预警模型',
+      title15: '水质量检测',
+      title16: '人体识别2',
+      left: '左侧',
+      right: '右侧',
+      show: '显示',
+      nest: '导航嵌套（建议最多三层）,点击第一条回调'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title1: 'Intelligent City Ai',
+      title2: 'Human body recognition 1',
+      title3: 'Human testing 1',
+      title4: 'Fine grained portrait segment 1',
+      title5: 'Human testing 2',
+      title6: 'Fine grained portrait segment 2',
+      title7: 'image understanding',
+      title8: 'Dish identification',
+      title9: 'Photo shopping',
+      title10: 'natural language processing',
+      title11: 'lexical analysis',
+      title12: 'Syntactic analysis',
+      title13: 'Face recognition',
+      title14: 'Enterprise risk early warning model',
+      title15: 'Water quality inspection',
+      title16: 'Human body recognition 2',
+      left: 'left',
+      right: 'right',
+      show: 'show',
+      nest: 'Navigation nesting (up to three layers are recommended), and click the first callback'
+    }
+  });
 export default createDemo({
   setup() {
+    initTranslate();
     const state = reactive({
       show1: false,
       show2: false,

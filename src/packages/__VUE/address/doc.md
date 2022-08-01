@@ -332,7 +332,13 @@ app.use(Elevator);
       :default-icon="defaultIcon"
       :selected-icon="selectedIcon"
       :close-btn-icon="closeBtnIcon"
-  ></nut-address>
+  >
+    <template #bottom>
+        <div class="nut-address-custom-buttom">
+          <div class="btn">自定义按钮</div>
+        </div>
+    </template>
+  </nut-address>
 </template>
 <script>
   import { ref,reactive,toRefs } from 'vue';
@@ -587,4 +593,8 @@ app.use(Elevator);
 |----- | ----- | ----- 
 | type | 地址选择类型 exist/custom/custom2  |  exist/custom/custom2
 | data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | {} 
-    
+
+## Slot
+| 字段 | 说明 | 
+|----- | ----- |  
+| bottom `3.1.23` | 可自定义底部 |  

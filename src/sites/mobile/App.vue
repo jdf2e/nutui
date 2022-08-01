@@ -106,6 +106,12 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+.nut-theme-dark {
+  .demo {
+    background: #131313 !important;
+  }
+}
+
 #app {
   background: #fff;
   height: 100%;

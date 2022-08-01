@@ -109,6 +109,24 @@
     >
       <nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-picker
     >
+
+    <h2>异步获取</h2>
+    <nut-cell
+      title="异步获取"
+      :desc="effect"
+      @click="
+        () => {
+          showPort = true;
+        }
+      "
+    ></nut-cell>
+    <nut-picker
+      v-model:visible="showPort"
+      :columns="portColumns"
+      title="异步获取"
+      @confirm="(options) => confirm('effect', options)"
+      @change="portChange"
+    ></nut-picker>
   </div>
 </template>
 <script lang="ts">
@@ -206,6 +224,19 @@ export default {
       { text: '2022-11', value: 'November' },
       { text: '2022-12', value: 'December' }
     ]);
+
+    const portColumns = ref([
+      {
+        text: '浙江',
+        value: 'ZheJiang',
+        children: []
+      },
+      {
+        text: '福建',
+        value: 'FuJian',
+        children: []
+      }
+    ]);
     const asyncColumns = ref<PickerOption[]>([]);
 
     const show = ref(false);
@@ -214,6 +245,7 @@ export default {
     const showCascader = ref(false);
     const showAsync = ref(false);
     const showEffect = ref(false);
+    const showPort = ref(false);
 
     const desc = reactive({
       index: '',
@@ -273,6 +305,35 @@ export default {
       console.log(selectedValue);
     };
 
+    const portChange = (chooseDate: any) => {
+      const { columnIndex, selectedOptions, selectedValue } = chooseDate;
+      console.log(chooseDate);
+      if (columnIndex == 0) {
+        //  if(portColumns.value[0].children.length == 0){
+
+        //  }
+        console.log('选择后更新');
+        portColumns.value[0].children = ([] as any).concat([
+          {
+            text: '杭州',
+            value: 'HangZhou',
+            children: [
+              { text: '西湖区', value: 'XiHu' },
+              { text: '余杭区', value: 'YuHang' }
+            ]
+          },
+          {
+            text: '温州',
+            value: 'WenZhou',
+            children: [
+              { text: '鹿城区', value: 'LuCheng' },
+              { text: '瓯海区', value: 'OuHai' }
+            ]
+          }
+        ]);
+      }
+    };
+
     const alwaysFun = () => {
       showEffect.value = false;
       desc.effect = '永远有效';
@@ -296,7 +357,10 @@ export default {
       effectColumns,
       showEffect,
       alwaysFun,
-      columsNum
+      columsNum,
+      showPort,
+      portColumns,
+      portChange
     };
   }
 };

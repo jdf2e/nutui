@@ -1,7 +1,7 @@
 <template>
   <Transition name="nut-fade" @after-leave="onAfterLeave">
     <view
-      :class="['popup-top', 'nut-notify', `nut-notify--${type}`, { className }]"
+      :class="[`popup-${position}`, 'nut-notify', `nut-notify--${type}`, className]"
       :style="{ color: color, background: background }"
       v-show="visible"
       @click="onClick"
@@ -40,6 +40,10 @@ export default create({
     visible: {
       type: Boolean,
       default: false
+    },
+    position: {
+      type: String,
+      default: 'top'
     }
   },
   emits: ['update:visible', 'closed', 'click'],

@@ -1,3 +1,19 @@
+.nut-theme-dark {
+  .nut-elevator {
+    background-color: $dark-background2;
+    &__list {
+      &__item {
+        color: $dark-color;
+        &__code {
+          color: $dark-color;
+        }
+      }
+      &__fixed {
+        background-color: $dark-background2;
+      }
+    }
+  }
+}
 .nut-elevator {
   width: 100%;
   display: block;
