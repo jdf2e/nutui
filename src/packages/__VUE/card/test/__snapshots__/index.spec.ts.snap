@@ -36,6 +36,26 @@ exports[`normal props 1`] = `
 </div>"
 `;
 
+exports[`render prolist , price and origin slot correctly 1`] = `
+"<div class=\\"nut-card\\">
+  <div class=\\"nut-card__left\\"><img src=\\"\\" alt=\\"\\"></div>
+  <div class=\\"nut-card__right\\">
+    <div class=\\"nut-card__right__title\\"></div>Custom prolist<div class=\\"nut-card__right__price\\">Custom priceCustom origin</div>
+    <div class=\\"nut-card__right__other\\">
+      <view class=\\"nut-tag nut-tag--danger\\">
+        <!--v-if-->
+      </view>
+      <view class=\\"nut-tag nut-tag--default nut-tag--plain\\" style=\\"color: rgb(250, 36, 0); background: rgb(255, 255, 255); border: 1px solid rgba(250,36,0,1);\\">
+        <!--v-if-->
+      </view>
+    </div>
+    <div class=\\"nut-card__right__shop\\">
+      <div class=\\"nut-card__right__shop__name\\"></div>
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`render prolist and origin slot correctly 1`] = `
 "<div class=\\"nut-card\\">
   <div class=\\"nut-card__left\\"><img src=\\"\\" alt=\\"\\"></div>
