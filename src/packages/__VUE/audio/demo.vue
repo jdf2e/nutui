@@ -147,6 +147,19 @@ export default createDemo({
 });
 </script>
 <style lang="scss" scoped>
+.nut-theme-dark {
+  .demo {
+    .nut-voice {
+      background: $dark-color;
+      border: 1px solid $dark-color;
+      border-radius: 18px;
+    }
+
+    .nut-audio-operate {
+      color: $dark-color;
+    }
+  }
+}
 .demo {
   .nut-voice {
     display: flex;
