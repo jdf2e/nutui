@@ -112,4 +112,11 @@ export default createDemo({
   background: rgba(255, 255, 255, 1);
   padding: 10px 0;
 }
+.nut-theme-dark {
+  .demo__piece,
+  .demo__btn {
+    background: black;
+    border-top: none;
+  }
+}
 </style>
