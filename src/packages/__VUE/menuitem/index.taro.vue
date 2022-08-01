@@ -35,8 +35,17 @@
           :style="{ 'flex-basis': 100 / cols + '%' }"
           @click="onClick(option)"
         >
-          <nut-icon :class="{ activeTitleClass: option.value === modelValue, inactiveTitleClass: option.value !== modelValue }" v-if="option.value === modelValue" :name="optionIcon" :color="parent.props.activeColor"></nut-icon>
-          <view :class="{ activeTitleClass: option.value === modelValue, inactiveTitleClass: option.value !== modelValue }" :style="{ color: option.value === modelValue ? parent.props.activeColor : '' }">{{ option.text }}</view>
+          <nut-icon
+            :class="{ activeTitleClass: option.value === modelValue, inactiveTitleClass: option.value !== modelValue }"
+            v-if="option.value === modelValue"
+            :name="optionIcon"
+            :color="parent.props.activeColor"
+          ></nut-icon>
+          <view
+            :class="{ activeTitleClass: option.value === modelValue, inactiveTitleClass: option.value !== modelValue }"
+            :style="{ color: option.value === modelValue ? parent.props.activeColor : '' }"
+            >{{ option.text }}</view
+          >
         </view>
         <slot></slot>
       </view>
