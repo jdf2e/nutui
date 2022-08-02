@@ -1,3 +1,13 @@
+.nut-theme-dark {
+  .nut-numberkeyboard {
+    background-color: $dark-background4;
+    .number-board-body .key-board-wrapper .key {
+      background-color: $dark-background5;
+      color: $dark-color;
+    }
+  }
+}
+
 .nut-numberkeyboard {
   width: $numberkeyboard-width;
   padding: $numberkeyboard-padding;

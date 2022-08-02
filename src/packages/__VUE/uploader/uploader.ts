@@ -14,6 +14,7 @@ export class UploadOptions {
   onProgress?: Function;
   onSuccess?: Function;
   onFailure?: Function;
+  beforeXhrUpload?: Function;
 }
 export class Uploader {
   options: UploadOptions;
@@ -48,8 +49,8 @@ export class Uploader {
         xhr.setRequestHeader(key, value as string);
       }
       options.onStart?.(options);
-      if (options.method.toLowerCase() == 'put') {
-        xhr.send(options.sourceFile);
+      if (options.beforeXhrUpload) {
+        options.beforeXhrUpload(xhr, options);
       } else {
         xhr.send(options.formData);
       }

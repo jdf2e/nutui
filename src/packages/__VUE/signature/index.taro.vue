@@ -48,7 +48,7 @@ export default create({
     }
   },
   components: {},
-  emits: ['confirm', 'clear'],
+  emits: ['start', 'end', 'signing', 'confirm', 'clear'],
 
   setup(props, { emit }) {
     const classes = computed(() => {
@@ -67,6 +67,7 @@ export default create({
 
     const startEventHandler = (event: MouseEvent) => {
       event.preventDefault();
+      emit('start');
       state.ctx.beginPath();
       state.ctx.lineWidth = props.lineWidth;
       state.ctx.strokeStyle = props.strokeStyle;
@@ -76,6 +77,7 @@ export default create({
       event.preventDefault();
 
       let evt = event.changedTouches[0];
+      emit('signing', evt);
       let mouseX = evt.x;
       let mouseY = evt.y;
       state.ctx.lineTo(mouseX, mouseY);
@@ -84,6 +86,7 @@ export default create({
 
     const endEventHandler = (event) => {
       event.preventDefault();
+      emit('end');
     };
     const leaveEventHandler = (event) => {
       event.preventDefault();
