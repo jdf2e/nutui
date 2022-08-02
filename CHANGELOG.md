@@ -1,3 +1,44 @@
+## v3.2.0
+
+`2022-08-01`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @LadyChatterleyLover @Zhengqbbb @zjyau @hydraZty
+
+* :sparkles: 暗黑模式适配支持 @nutui-teams
+* :sparkles: feat: 新增 WaterMark 水印组件 @lkjh3214
+* :sparkles: feat: imagepreview 缩放功能 (#1425) @yangxiaolu1993
+* :sparkles: feat(popup): support muti stacks @szg2008
+* :sparkles: feat(swiper): support show center @szg2008
+* :sparkles: feat(category): onchange add (sku) (#1440) @zjyau
+* :sparkles: feat(picker): 惯性滚动与性能优化 (#1453) & 平铺功能 @yangxiaolu1993
+* :sparkles: feat(card): add price slot (#1452) @zjyau
+* :sparkles: feat(tabbar): add new props name#1449 (#1471) @Drjingfubo
+* :sparkles: feat(uploader): add props before-xhr-upload @richard1015
+* :sparkles: feat(Table): 增加标题,列表样式参数 (#1460) @zjyau
+* :sparkles: feat(audio): 新增can-play事件 (#1515) @eiinu
+* :sparkles: feat(menuitem): 增加自定义titleClass属性和优化input组件disabled和readonly状态下的事件处理 (#1480) @LadyChatterleyLover
+* :sparkles: feat(address): address 新增底部插槽 (#1509) @yangxiaolu1993
+* :sparkles: feat(signature): 组件增加签名开始、结束、进行中回调函数 (#1520) @Ymm0008
+* :zap: chore: use cz-git commitizen adapter (#1424) @Zhengqbbb
+* :bug: fix(navbar): taro init height error @ailululu
+* :bug: fix(textarea): 支付宝小程序限制重影问题 #1514 @richard1015
+* :bug: fix(picker): 小程序重影问题 #1514 @richard1015
+* :bug: fix(checkbox、switch): async change value , emit change fn @richard1015
+* :bug: fix(actionsheet): add new props #1395 (#1456) @Drjingfubo
+* :bug: fix(datepicker): top 插槽未生效问题 (#1501) @eiinu
+* :bug: fix(noticebar、swiper): md文档问题；修复noticebar右侧图标垂直居中问题；修复audio显示时长问题 (#1510)  @eiinu
+* :bug: fix: 修复折叠面板手风琴模式；  @Ymm0008
+* :bug: fix: 修复notify标签式展示报错问题及class类名问题；  @Ymm0008
+* :bug: fix: 解决签名组件(Signat…  @Ymm0008
+* :bug: fix: 类型声明文件命名错误修复(#1442) @szg2008
+* :bug: fix: addresslist datalist清空后不同步问题 (#1483) @zjyau
+* 📖docs: Update README.md @snandy
+* 📖docs(radio): install add icon @richard1015
+* 📖docs(card): add install desc @richard1015
+* 📖docs(toast): taro env eidt @richard1015
+* 🍭style: fix Picker options partially overlap in older versions of Safa… @hydraZty
+
 ## v3.1.22
 
 `2022-06-24`
@@ -44,7 +85,6 @@ NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
 * 📖doc: calendar 文档修改 (#1410) @lkjh3214
 * 📖docs(elevator): 增加吸顶props @szg2008
 * 🍭style: fix font family of highlighted code (#1354) @renbaoshuo
-
 
 ## v3.1.21
 

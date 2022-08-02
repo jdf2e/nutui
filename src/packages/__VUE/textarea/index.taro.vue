@@ -15,6 +15,7 @@
       @input="change"
       @blur="blur"
       @focus="focus"
+      :show-count="false"
       :maxlength="maxLength"
       :placeholder="placeholder || translate('placeholder')"
       :auto-focus="autofocus"
