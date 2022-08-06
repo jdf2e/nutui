@@ -19,7 +19,7 @@
   </div>
 </template>
 <script lang="ts">
-import Taro from '@tarojs/taro';
+import Taro, { eventCenter, getCurrentInstance as getCurrentInstanceTaro } from '@tarojs/taro';
 import { ref, reactive, onMounted, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create, translate } = createComponent('signature');
@@ -48,7 +48,7 @@ export default create({
     }
   },
   components: {},
-  emits: ['confirm', 'clear'],
+  emits: ['start', 'end', 'signing', 'confirm', 'clear'],
 
   setup(props, { emit }) {
     const classes = computed(() => {
@@ -58,7 +58,7 @@ export default create({
         [`${props.customClass}`]: props.customClass
       };
     });
-    const state = reactive({
+    const state: any = reactive({
       canvas: null,
       canvasHeight: 0,
       canvasWidth: 0,
@@ -67,6 +67,7 @@ export default create({
 
     const startEventHandler = (event: MouseEvent) => {
       event.preventDefault();
+      emit('start');
       state.ctx.beginPath();
       state.ctx.lineWidth = props.lineWidth;
       state.ctx.strokeStyle = props.strokeStyle;
@@ -76,6 +77,7 @@ export default create({
       event.preventDefault();
 
       let evt = event.changedTouches[0];
+      emit('signing', evt);
       let mouseX = evt.x;
       let mouseY = evt.y;
       state.ctx.lineTo(mouseX, mouseY);
@@ -84,6 +86,7 @@ export default create({
 
     const endEventHandler = (event) => {
       event.preventDefault();
+      emit('end');
     };
     const leaveEventHandler = (event) => {
       event.preventDefault();
@@ -124,7 +127,7 @@ export default create({
     };
 
     onMounted(() => {
-      setTimeout(() => {
+      eventCenter.once((getCurrentInstanceTaro() as any).router.onReady, () => {
         Taro.createSelectorQuery()
           .select('#spcanvas')
           .fields(
@@ -142,7 +145,7 @@ export default create({
             }
           )
           .exec();
-      }, 500);
+      });
     });
     return {
       confirm,

@@ -67,24 +67,26 @@ import { createComponent } from '@/packages/utils/create';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 const { createDemo, translate } = createComponent('comment');
 
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    single: '评论图片单行展示',
-    multiRow: '评论图片多行展示',
-    additionalReview: '追评展示'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    single: 'Single Line Image',
-    multiRow: 'Multi Line Image ',
-    review: 'Additional Review'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      single: '评论图片单行展示',
+      multiRow: '评论图片多行展示',
+      additionalReview: '追评展示'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      single: 'Single Line Image',
+      multiRow: 'Multi Line Image ',
+      review: 'Additional Review'
+    }
+  });
 
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     let cmt = ref({});
     const labels = () => {
       return '<nut-icon name="dongdong" color="#fa2c19"></nut-icon>';

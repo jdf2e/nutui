@@ -12,7 +12,7 @@
     <div class="nut-numberkeyboard" ref="root">
       <div class="number-board-header" v-if="title">
         <h3 class="tit">{{ title }}</h3>
-        <span class="keyboard-close" @click="closeBoard()">{{ translate('done') }}</span>
+        <span class="keyboard-close" v-if="type == 'default'" @click="closeBoard()">{{ translate('done') }}</span>
       </div>
       <div class="number-board-body">
         <div class="number-board">
@@ -63,7 +63,7 @@
               />
             </div>
           </div>
-          <div class="key-board-wrapper key-board-finish" @click="closeBoard()" v-if="title == ''">
+          <div class="key-board-wrapper key-board-finish" @click="closeBoard()">
             <div :class="['key', 'finish', { activeFinsh: clickKeyIndex == 'finish' }]">
               {{ confirmText || translate('done') }}
             </div>
@@ -171,8 +171,11 @@ export default create({
       if (customKeys.length > 2) {
         customKeys = [customKeys[0], customKeys[1]];
       }
+      if (customKeys.length == 2 && props.title && props.type != 'rightColumn') {
+        customKeys = [customKeys[0]];
+      }
       if (customKeys.length === 1) {
-        if (props.title) {
+        if (props.title && props.type != 'rightColumn') {
           keys.push({ id: customKeys[0], type: 'custom' }, { id: 0, type: 'number' }, { id: 'delete', type: 'delete' });
         } else {
           keys.push({ id: 0, type: 'number' }, { id: customKeys[0], type: 'custom' });
@@ -183,11 +186,6 @@ export default create({
           { id: 0, type: 'number' },
           { id: customKeys[1], type: 'custom' }
         );
-        if (props.title) {
-          keys.push({ id: 'delete', type: 'delete' });
-        }
-      } else {
-        keys.push({ id: 0, type: 'number' });
       }
       return keys;
     }

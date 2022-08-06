@@ -32,9 +32,7 @@ export default create({
     // 展示的形式   back 倒退   play 开始 or 暂停  forward 快进 mute 静音
     type: {
       type: String,
-      default() {
-        return 'play';
-      }
+      default: () => 'play'
     }
   },
   components: {},

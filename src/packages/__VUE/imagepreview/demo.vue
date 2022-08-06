@@ -33,27 +33,29 @@ import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('imagepreview');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { ImagePreview } from '@/packages/nutui.vue';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    withInitNo: '设置初始页码',
-    showPreview: '展示图片预览',
-    withPagination: '设置轮播指示器及颜色',
-    withVideos: '视频、图片预览',
-    functionalCall: '函数式调用'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    withInitNo: 'With Init No',
-    showPreview: 'Show Preview',
-    withPagination: 'With Pagination',
-    withVideos: 'With Videos',
-    functionalCall: 'Functional Call'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      withInitNo: '设置初始页码',
+      showPreview: '展示图片预览',
+      withPagination: '设置轮播指示器及颜色',
+      withVideos: '视频、图片预览',
+      functionalCall: '函数式调用'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      withInitNo: 'With Init No',
+      showPreview: 'Show Preview',
+      withPagination: 'With Pagination',
+      withVideos: 'With Videos',
+      functionalCall: 'Functional Call'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const resData = reactive({
       showPreview1: false,
       showPreview2: false,

@@ -1,3 +1,23 @@
+.nut-theme-dark {
+  .nut-shortpsd-title {
+    color: $dark-color;
+  }
+  .nut-input-normalw {
+    .nut-input-real {
+      background: $dark-background3;
+    }
+    .nut-shortpsd-fake {
+      border: none;
+      background: $dark-background3;
+      .nut-shortpsd-li {
+        .nut-shortpsd-icon {
+          background: $dark-color;
+        }
+      }
+    }
+  }
+}
+
 .nut-shortpsd-title {
   line-height: 1;
   font-size: $font-size-3;

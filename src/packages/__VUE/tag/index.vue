@@ -50,25 +50,23 @@ export default create({
       };
     });
 
+    // 综合考虑 textColor、color、plain 组合使用时的效果
     const getStyle = (): CSSProperties => {
       const style: CSSProperties = {};
-      if (color?.value) {
-        return {
-          background: color.value,
-          color: textColor.value
-        };
+      // 标签内字体颜色
+      if (textColor.value) {
+        style.color = textColor.value;
+      } else if (color.value && plain.value) {
+        style.color = color.value;
       }
+      // 标签背景与边框颜色
       if (plain.value) {
-        return {
-          color: '#FA2400',
-          background: '#fff',
-          border: '1px solid rgba(250,36,0,1)'
-        };
+        style.background = '#fff';
+        style['border-color'] = color.value;
+      } else if (color.value) {
+        style.background = color.value;
       }
-      return {
-        color: '',
-        background: ''
-      };
+      return style;
     };
 
     const onClose = (event: MouseEvent) => {

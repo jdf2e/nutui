@@ -82,7 +82,7 @@ export default create({
     // 是否开启3D效果
     threeDimensional: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],
@@ -178,10 +178,15 @@ export default create({
           defaultValues.value[columnIndex] = option.value ? option.value : '';
           let index = columnIndex;
           let cursor = option;
-          while (cursor && cursor.children) {
+          while (cursor && cursor.children && cursor.children[0]) {
             defaultValues.value[index + 1] = cursor.children[0].value;
             index++;
             cursor = cursor.children[0];
+          }
+
+          // 当前改变列 的 下一列 children 值为空
+          if (cursor && cursor.children && cursor.children.length == 0) {
+            defaultValues.value = defaultValues.value.slice(0, index + 1);
           }
         } else {
           defaultValues.value[columnIndex] = option.hasOwnProperty('value') ? option.value : '';

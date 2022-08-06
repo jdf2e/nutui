@@ -136,54 +136,56 @@ import { createComponent } from '@/packages/utils/create';
 import { Toast } from '@/packages/nutui.vue';
 const { createDemo, translate } = createComponent('checkbox');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法-左右',
-    semi: '半选状态',
-    disable: '禁用状态',
-    size: '自定义尺寸',
-    icon: '自定义图标',
-    change: '点击触发change事件',
-    useGroup: 'checkboxGroup使用',
-    useGroupLimit: 'checkboxGroup使用，限制最大可选数（2个）',
-    disableGroup: 'checkboxGroup禁用',
-    selectGroup: 'checkboxGroup 全选/取消',
-    selectAll: '全选',
-    cancel: '取消',
-    selectReverse: '反选',
-    combine: '组合复选框',
-    selected: '当前选中值',
-    select: '选中',
-    checkbox: '复选框',
-    selectedDisable: '选中时禁用状态',
-    unselectDisable: '未选时禁用状态',
-    useGroupInte: '全选/半选/取消'
-  },
-  'en-US': {
-    basic: 'Basic usage - left and right',
-    semi: 'Semi selective',
-    disable: 'Disabled state',
-    size: 'Custom size',
-    icon: 'Custom icon',
-    change: 'Click to trigger the change event',
-    useGroup: 'use checkboxGroup',
-    useGroupLimit: 'use checkboxGroup, Limit the maximum number of options (2)',
-    disableGroup: 'disable checkboxGroup',
-    selectGroup: 'Checkboxgroup select all / cancel',
-    selectAll: 'selectAll',
-    cancel: 'cancel',
-    selectReverse: 'reverse',
-    combine: 'Combined check box',
-    selected: 'Currently selected value',
-    select: 'selected value',
-    checkbox: 'check box',
-    selectedDisable: 'Disabled when selected',
-    unselectDisable: 'Disabled when not selected',
-    useGroupInte: 'Select all / half / cancel'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法-左右',
+      semi: '半选状态',
+      disable: '禁用状态',
+      size: '自定义尺寸',
+      icon: '自定义图标',
+      change: '点击触发change事件',
+      useGroup: 'checkboxGroup使用',
+      useGroupLimit: 'checkboxGroup使用，限制最大可选数（2个）',
+      disableGroup: 'checkboxGroup禁用',
+      selectGroup: 'checkboxGroup 全选/取消',
+      selectAll: '全选',
+      cancel: '取消',
+      selectReverse: '反选',
+      combine: '组合复选框',
+      selected: '当前选中值',
+      select: '选中',
+      checkbox: '复选框',
+      selectedDisable: '选中时禁用状态',
+      unselectDisable: '未选时禁用状态',
+      useGroupInte: '全选/半选/取消'
+    },
+    'en-US': {
+      basic: 'Basic usage - left and right',
+      semi: 'Semi selective',
+      disable: 'Disabled state',
+      size: 'Custom size',
+      icon: 'Custom icon',
+      change: 'Click to trigger the change event',
+      useGroup: 'use checkboxGroup',
+      useGroupLimit: 'use checkboxGroup, Limit the maximum number of options (2)',
+      disableGroup: 'disable checkboxGroup',
+      selectGroup: 'Checkboxgroup select all / cancel',
+      selectAll: 'selectAll',
+      cancel: 'cancel',
+      selectReverse: 'reverse',
+      combine: 'Combined check box',
+      selected: 'Currently selected value',
+      select: 'selected value',
+      checkbox: 'check box',
+      selectedDisable: 'Disabled when selected',
+      unselectDisable: 'Disabled when not selected',
+      useGroupInte: 'Select all / half / cancel'
+    }
+  });
 export default createDemo({
   setup(props, context) {
+    initTranslate();
     const group = ref(null) as Ref;
     const group2 = ref(null) as Ref;
     const data = reactive({

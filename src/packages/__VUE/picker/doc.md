@@ -119,6 +119,52 @@ app.use(OverLay);
 ```
 :::
 
+### 平铺展示
+
+`threeDimensional` 可关闭 3D 滚动效果。
+
+:::demo
+```html
+<template>
+  <nut-cell title="请选择城市" :desc="desc" @click="() => { show = true;}"></nut-cell>
+  <nut-picker
+    v-model="selectedValue"
+    v-model:visible="show"
+    :columns="columns"
+    title="城市选择"
+    :threeDimensional="false"
+    @confirm="confirm"
+  >
+  </nut-picker>
+</template>
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const desc = ref('');
+      const selectedValue = ref(['ZheJiang']);
+      const columns = ref([
+        { text: '南京市', value: 'NanJing' },
+        { text: '无锡市', value: 'WuXi' },
+        { text: '海北藏族自治区', value: 'ZangZu' },
+        { text: '北京市', value: 'BeiJing' },
+        { text: '连云港市', value: 'LianYunGang' },
+        { text: '浙江市', value: 'ZheJiang' },
+        { text: '江苏市', value: 'JiangSu' }
+      ]);
+    
+      const confirm = ( { selectedValue,selectedOptions })=>{
+        desc.value = selectedValue.join(',');
+      }
+
+      return {show,desc,columns,selectedValue, confirm};
+    }
+  };
+</script>
+```
+:::
+
 ### 多列展示
 
 columns 属性可以通过二维数组的形式配置多列选择。
@@ -385,7 +431,7 @@ Picker 组件在底部和顶部分别设置了插槽，可进行自定义设置
 | title                  | 设置标题                   | String  | -      |
 | cancel-text            | 取消按钮文案               | String  | 取消   |
 | ok-text                | 确定按钮文案               | String  | 确定   |
-| three-dimensional`小程序不支持` `v3.1.23`          | 是否开启3D效果               | Boolean  | true   |
+| three-dimensional`v3.1.23`          | 是否开启3D效果               | Boolean  | true   |
 
 ### Columns 数据结构
 

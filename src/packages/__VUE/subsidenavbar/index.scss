@@ -1,3 +1,15 @@
+.nut-theme-dark {
+  .nut-subsidenavbar {
+    background-color: $dark-background2;
+    &__title {
+      background-color: $dark-background3;
+      color: $dark-color;
+      &__text {
+        color: $dark-color;
+      }
+    }
+  }
+}
 .nut-subsidenavbar {
   display: grid;
   float: left;

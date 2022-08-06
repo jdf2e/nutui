@@ -17,11 +17,18 @@ $white: #fff !default;
 $black: #000 !default;
 $required-color: #fa2c19 !default;
 
-$dark-background: #1a1919 !default;
-$dark-background2: #1d1b1c !default;
+$dark-background: #131313 !default;
+$dark-background2: #1b1b1b !default;
 $dark-background3: #141414 !default;
+$dark-background4: #323233 !default;
+$dark-background5: #646566 !default;
+$dark-background6: #380e08 !default;
+$dark-background7: #707070 !default;
 $dark-color: $white !default;
+$dark-color2: #f2270c !default;
+$dark-color3: rgba(232, 230, 227, 0.8) !default;
 $dark-color-gray: $text-color !default;
+$dark-calendar-choose-color: rgba(227, 227, 227, 0.2) !default;
 
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif !default;
 
@@ -95,7 +102,7 @@ $cell-border-radius: 0px !default;
 $cell-padding: 14px 16px !default;
 $cell-line-height: 22px !default;
 $cell-after-right: 0 !default;
-$cell-after-border-bottom: 2px solid rgba(0, 0, 0, 0.1) !default;
+$cell-after-border-bottom: 1px solid rgba(0, 0, 0, 0.1) !default;
 $cell-default-icon-margin: 0 4px 0 0px !default;
 $cell-large-title-font: $font-size-large !default;
 $cell-large-title-desc-font: $font-size-base !default;
@@ -151,7 +158,7 @@ $picker-bar-title-font-weight: 600 !default;
 $picker-item-height: 36px !default;
 $picker-item-text-color: $title-color !default;
 $picker-item-active-text-color: $primary-color !default;
-$picker-item-text-font-size: 16px !default;
+$picker-item-text-font-size: 14px !default;
 $picker-item-active-line-border: 1px solid rgba(0, 0, 0, 0.06) !default;
 $picker-columns-item-color: $title-color !default;
 
@@ -463,6 +470,7 @@ $tag-danger-background-color: linear-gradient(
   rgba(232, 34, 14, 1) 69.83950099728881%,
   rgba(242, 77, 12, 1) 100%
 ) !default;
+$tag-danger-background-color-plain: #df3526 !default;
 $tag-warning-background-color: #f3812e !default;
 $tag-default-color: #ffffff !default;
 $tag-border-width: 1px !default;

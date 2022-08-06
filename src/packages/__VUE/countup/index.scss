@@ -1,7 +1,28 @@
+.nut-theme-dark {
+  .nut-countup {
+    background: $dark-background;
+    color: $dark-color;
+    box-shadow: none;
+  }
+  .nut-collapse-item {
+    .collapse-wrapper {
+      .collapse-content,
+      .collapse-extraRender {
+        background: $dark-background;
+        color: $dark-color;
+      }
+    }
+    .collapse-extraWrapper {
+      .collapse-extraRender {
+        background: $dark-background;
+      }
+    }
+  }
+}
 .nut-countup {
-  display: inline-block;
-  width: 100%;
-  padding: 5px;
+  display: block;
+  // width: 100%;
+  padding: 5px 20px;
   color: #000;
   font-weight: bold;
   font-family: PingFangSC-Regular;

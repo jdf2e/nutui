@@ -234,5 +234,6 @@ export default {
 | ended  | 语音播放完成，当loop设置为false时生效 | —— |
 | mute  | 触发静音 | —— |
 | changeProgress  | 当进度条改变时触发 | 返回当前播放时长（单位：毫秒） |
+| can-play `v3.2.0` | 当可以播放媒体文件时触发 | `event: Event` |
 
     

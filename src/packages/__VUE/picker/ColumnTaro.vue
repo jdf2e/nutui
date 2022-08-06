@@ -1,20 +1,31 @@
 <template>
   <view class="nut-picker__list" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
-    <view class="nut-picker-roller" ref="roller" :style="touchTileStyle" @transitionend="stopMomentum">
-      <!-- 3D 效果 -->
-      <view
-        class="nut-picker-roller-item"
-        :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
-        v-for="(item, index) in column"
-        :style="setRollerStyle(index + 1)"
-        :key="item.value ? item.value : index"
-      >
-        {{ item.text }}
-      </view>
+    <view
+      class="nut-picker-roller"
+      ref="roller"
+      :id="'roller' + refRandomId"
+      :style="threeDimensional ? touchRollerStyle : touchTileStyle"
+      @transitionend="stopMomentum"
+    >
+      <template v-for="(item, index) in column" :key="item.value ? item.value : index">
+        <!-- 3D 效果 -->
+        <view
+          class="nut-picker-roller-item"
+          :class="{ 'nut-picker-roller-item-hidden': isHidden(index + 1) }"
+          :style="setRollerStyle(index + 1)"
+          v-if="item && item.text && threeDimensional"
+        >
+          {{ item.text }}
+        </view>
+        <!-- 平铺 -->
+        <view class="nut-picker-roller-item-tile" v-if="item && item.text && !threeDimensional">
+          {{ item.text }}
+        </view>
+      </template>
     </view>
     <view class="nut-picker-roller-mask"></view>
-    <view class="nut-picker-content">
-      <view class="nut-picker-list-panel" ref="list" :id="'list' + refRandomId" :style="touchListStyle"> </view>
+    <view class="nut-picker-content" ref="listbox" :id="'listbox' + refRandomId" v-if="threeDimensional">
+      <view class="nut-picker-list-panel" ref="list" :id="'list' + refRandomId" :style="touchTileStyle"> </view>
     </view>
   </view>
 </template>
@@ -76,6 +87,7 @@ export default create({
     const roller = ref(null);
     const list = ref(null);
     const listitem = ref(null);
+    const listbox = ref(null);
 
     const moving = ref(false); // 是否处于滚动中
     const touchDeg = ref(0);
@@ -88,14 +100,14 @@ export default create({
     const INERTIA_TIME = 300;
     const INERTIA_DISTANCE = 15;
 
-    const touchListStyle = computed(() => {
+    const touchTileStyle = computed(() => {
       return {
         transition: `transform ${touchTime.value}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
         transform: `translate3d(0, ${state.scrollDistance}px, 0)`
       };
     });
 
-    const touchTileStyle = computed(() => {
+    const touchRollerStyle = computed(() => {
       return {
         transition: `transform ${touchTime.value}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
         transform: `rotate3d(1, 0, 0, ${touchDeg.value})`
@@ -108,8 +120,12 @@ export default create({
     const onTouchStart = (event: TouchEvent) => {
       touch.start(event);
       if (moving.value) {
-        const { transform } = window.getComputedStyle(list.value as any);
+        let dom = list.value as any;
+        if (!props.threeDimensional) {
+          dom = roller.value as any;
+        }
 
+        const { transform } = window.getComputedStyle(dom);
         state.scrollDistance = +parseInt(transform.split(', ')[1]);
       }
 
@@ -255,16 +271,28 @@ export default create({
     // 惯性滚动结束
     const stopMomentum = () => {
       moving.value = false;
-      console.log('滚动结束');
       setChooseValue();
     };
 
     const getReference = async () => {
+      const refe = await useTaroRect(listbox, Taro);
+      state.lineSpacing = refe.height ? refe.height : 36;
       modifyStatus(true);
     };
 
     watch(
       () => props.column,
+      (val) => {
+        state.transformY = 0;
+        modifyStatus(false);
+      },
+      {
+        deep: true
+      }
+    );
+
+    watch(
+      () => props.value,
       (val) => {
         state.transformY = 0;
         modifyStatus(false);
@@ -308,11 +336,12 @@ export default create({
       roller,
       list,
       listitem,
+      listbox,
       onTouchStart,
       onTouchMove,
       onTouchEnd,
       touchTileStyle,
-      touchListStyle,
+      touchRollerStyle,
       setMove,
       refRandomId,
       stopMomentum
