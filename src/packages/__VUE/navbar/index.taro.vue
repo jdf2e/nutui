@@ -1,5 +1,9 @@
 <template>
-  <view v-if="fixed && placeholder" class="nut-navbar--placeholder" :style="{ height: navHeight + 'px' }">
+  <view
+    v-if="fixed && placeholder"
+    class="nut-navbar--placeholder nut-navbar--xcx"
+    :style="{ height: navHeight + 'px' }"
+  >
     <view :class="classes" :style="styles" class="navBarHtml">
       <view class="nut-navbar__left" @click="handleLeft">
         <nut-icon v-if="leftShow" color="#979797" name="left"></nut-icon>
