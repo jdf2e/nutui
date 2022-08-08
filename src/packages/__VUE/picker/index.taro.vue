@@ -82,7 +82,7 @@ export default create({
     // 是否开启3D效果
     threeDimensional: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],

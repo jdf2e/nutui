@@ -17,6 +17,7 @@
       :muted="muted"
       :autoplay="autoplay"
       :loop="false"
+      @can-play="onCanplay"
       type="none"
       ref="audioDemo"
     >
@@ -124,11 +125,12 @@ export default createDemo({
       console.log('改变进度条', val);
     };
 
+    const onCanplay = (e: Event) => {
+      duration.value = audioDemo.value.second.toFixed();
+    };
+
     onMounted(() => {
       console.log(audioDemo.value);
-      setTimeout(() => {
-        duration.value = audioDemo.value.second.toFixed();
-      }, 500);
     });
 
     return {
@@ -141,7 +143,8 @@ export default createDemo({
       ended,
       duration,
       changeProgress,
-      translate
+      translate,
+      onCanplay
     };
   }
 });

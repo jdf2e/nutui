@@ -46,7 +46,7 @@ export default create({
     }
   },
   components: {},
-  emits: ['confirm', 'clear'],
+  emits: ['start', 'end', 'signing', 'confirm', 'clear'],
 
   setup(props, { emit }) {
     const canvas: any = ref<HTMLElement | null>(null);
@@ -81,7 +81,7 @@ export default create({
       state.ctx.beginPath();
       state.ctx.lineWidth = props.lineWidth;
       state.ctx.strokeStyle = props.strokeStyle;
-
+      emit('start');
       canvas.value.addEventListener(state.events[1], moveEventHandler, false);
       canvas.value.addEventListener(state.events[2], endEventHandler, false);
       canvas.value.addEventListener(state.events[3], leaveEventHandler, false);
@@ -91,6 +91,7 @@ export default create({
       event.preventDefault();
 
       let evt = state.isSupportTouch ? event.touches[0] : event;
+      emit('signing', evt);
       let coverPos = canvas.value.getBoundingClientRect();
       let mouseX = evt.clientX - coverPos.left;
       let mouseY = evt.clientY - coverPos.top;
@@ -101,7 +102,7 @@ export default create({
 
     const endEventHandler = (event) => {
       event.preventDefault();
-
+      emit('end');
       canvas.value.removeEventListener(state.events[1], moveEventHandler, false);
       canvas.value.removeEventListener(state.events[2], endEventHandler, false);
     };

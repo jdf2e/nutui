@@ -100,7 +100,7 @@ export default create({
             navHeight.value = res[0].height;
             // console.log('navHeight', navHeight.value)
           });
-        }, 100);
+        }, 500);
       }
     });
 
