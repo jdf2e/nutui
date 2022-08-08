@@ -100,7 +100,8 @@ export default defineConfig({
       output: {
         entryFileNames: `demo-${config.version}/[name].js`,
         chunkFileNames: `demo-${config.version}/[name].js`,
-        assetFileNames: `demo-${config.version}/[name].[ext]`
+        assetFileNames: `demo-${config.version}/[name].[ext]`,
+        plugins: []
       }
     }
   }

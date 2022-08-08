@@ -1,3 +1,6 @@
 .nut-swiper-item {
   height: 100%;
+  img {
+    pointer-events: none;
+  }
 }

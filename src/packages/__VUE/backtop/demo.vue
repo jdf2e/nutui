@@ -1,33 +1,34 @@
 <template>
   <div class="demo" id="elId">
-    <h2>基本用法</h2>
-    <div class="text-data">我是测试数据1</div>
-    <div class="text-data">我是测试数据2</div>
-    <div class="text-data">我是测试数据3</div>
-    <div class="text-data">我是测试数据4</div>
-    <div class="text-data">我是测试数据5</div>
-    <div class="text-data">我是测试数据6</div>
-    <div class="text-data">我是测试数据7</div>
-    <div class="text-data">我是测试数据8</div>
-    <div class="text-data">我是测试数据9</div>
-    <div class="text-data">我是测试数据10</div>
-    <div class="text-data">我是测试数据11</div>
-    <div class="text-data">我是测试数据12</div>
-    <div class="text-data">我是测试数据13</div>
-    <div class="text-data">我是测试数据14</div>
-    <div class="text-data">我是测试数据15</div>
-    <div class="text-data">我是测试数据16</div>
-    <div class="text-data">我是测试数据17</div>
-    <div class="text-data">我是测试数据18</div>
-    <div class="text-data">我是测试数据19</div>
-    <div class="text-data">我是测试数据20</div>
-    <div class="text-data">我是测试数据21</div>
-    <div class="text-data">我是测试数据22</div>
-    <div class="text-data">我是测试数据23</div>
-    <div class="text-data">我是测试数据24</div>
+    <h2>{{ translate('title') }}</h2>
+    <div class="text-data">{{ translate('content') }}1</div>
+    <div class="text-data">{{ translate('content') }}2</div>
+    <div class="text-data">{{ translate('content') }}3</div>
+    <div class="text-data">{{ translate('content') }}4</div>
+    <div class="text-data">{{ translate('content') }}5</div>
+    <div class="text-data">{{ translate('content') }}6</div>
+    <div class="text-data">{{ translate('content') }}7</div>
+    <div class="text-data">{{ translate('content') }}8</div>
+    <div class="text-data">{{ translate('content') }}9</div>
+    <div class="text-data">{{ translate('content') }}10</div>
+    <div class="text-data">{{ translate('content') }}11</div>
+    <div class="text-data">{{ translate('content') }}12</div>
+    <div class="text-data">{{ translate('content') }}13</div>
+    <div class="text-data">{{ translate('content') }}14</div>
+    <div class="text-data">{{ translate('content') }}15</div>
+    <div class="text-data">{{ translate('content') }}16</div>
+    <div class="text-data">{{ translate('content') }}17</div>
+    <div class="text-data">{{ translate('content') }}18</div>
+    <div class="text-data">{{ translate('content') }}19</div>
+    <div class="text-data">{{ translate('content') }}20</div>
+    <div class="text-data">{{ translate('content') }}21</div>
+    <div class="text-data">{{ translate('content') }}22</div>
+    <div class="text-data">{{ translate('content') }}23</div>
+    <div class="text-data">{{ translate('content') }}24</div>
     <nut-backtop @click="handleClick" el-id="elId" :distance="100" :bottom="110">
       <view class="backtop-demo">
-        <nut-icon size="12px" class="nut-backtop-main" name="top"></nut-icon><view class="title">顶部</view>
+        <nut-icon size="12px" class="nut-backtop-main" name="top"></nut-icon
+        ><view class="title">{{ translate('backText') }}</view>
       </view>
     </nut-backtop>
     <nut-backtop @click="handleClick" el-id="elId" :distance="200" :bottom="50"></nut-backtop>
@@ -36,16 +37,23 @@
 
 <script>
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('backtop');
-
+const { createDemo, translate } = createComponent('backtop');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': { title: '基本用法', clg: '触发返回顶部', content: '我是测试数据', backText: '顶部' },
+    'en-US': { title: 'Basic Usage', clg: 'backtop', content: 'test data', backText: 'Top' }
+  });
 export default createDemo({
   setup(props, { emit }) {
+    initTranslate();
     const handleClick = () => {
-      console.log('触发返回顶部');
+      console.log(translate('clg'));
     };
 
     return {
-      handleClick
+      handleClick,
+      translate
     };
   }
 });

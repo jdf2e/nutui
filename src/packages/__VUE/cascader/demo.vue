@@ -127,29 +127,31 @@ import { onMounted, reactive, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('cascader');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    title1: '自定义属性名称',
-    title2: '动态加载',
-    title3: '部分数据动态加载',
-    title4: '自动转换',
-    addressTip: '选择地址',
-    addressTip1: '请选择地址'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    title1: 'Custom attribute name',
-    title2: 'Async loading',
-    title3: 'Async loading of partial data',
-    title4: 'Automatic data conversion',
-    addressTip: 'Select address',
-    addressTip1: 'Please select an address'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      title1: '自定义属性名称',
+      title2: '动态加载',
+      title3: '部分数据动态加载',
+      title4: '自动转换',
+      addressTip: '选择地址',
+      addressTip1: '请选择地址'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title1: 'Custom attribute name',
+      title2: 'Async loading',
+      title3: 'Async loading of partial data',
+      title4: 'Automatic data conversion',
+      addressTip: 'Select address',
+      addressTip1: 'Please select an address'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     // 基础用法
     const demo1 = reactive({
       visible: false,

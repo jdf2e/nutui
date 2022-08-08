@@ -42,6 +42,33 @@
         <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
       </template>
     </nut-timeselect>
+    <h2>{{ translate('changeTitle') }}</h2>
+    <nut-cell @click="handleClick3">
+      <span
+        ><label>{{ translate('deliveryTime') }}</label></span
+      >
+    </nut-cell>
+    <nut-timeselect
+      v-model:visible="visible3"
+      height="50%"
+      :current-key="currentKey2"
+      :current-time="currentTime2"
+      @select="handleSelected2"
+    >
+      <template #title>
+        <div class="timeselect-title">
+          <p class="title">我是标题</p>
+          <p class="subtitle">我是副标题</p>
+        </div>
+      </template>
+      <template #pannel>
+        <nut-timepannel :name="translate('time1')" pannel-key="0" @change="handleChange2"></nut-timepannel>
+        <nut-timepannel :name="translate('time2')" pannel-key="1" @change="handleChange2"></nut-timepannel>
+      </template>
+      <template #detail>
+        <nut-timedetail :times="times2" @select="selectTime2"></nut-timedetail>
+      </template>
+    </nut-timeselect>
   </div>
 </template>
 
@@ -50,26 +77,30 @@ import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('timeselect');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    deliveryTime: '请选择配送时间',
-    time1: '2月23日(今天)',
-    time2: '2月24日(星期三)',
-    title: '可选择多个日期时间',
-    content: '您选择了'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    deliveryTime: 'Please select the delivery time',
-    time1: 'February 23rd(Today)',
-    time2: 'February 24th(Wednesday)',
-    title: 'Multiple dates and times can be selected',
-    content: 'Your choose'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      deliveryTime: '请选择配送时间',
+      changeTitle: '更改标题',
+      time1: '2月23日(今天)',
+      time2: '2月24日(星期三)',
+      title: '可选择多个日期时间',
+      content: '您选择了'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      deliveryTime: 'Please select the delivery time',
+      changeTitle: 'Change Title',
+      time1: 'February 23rd(Today)',
+      time2: 'February 24th(Wednesday)',
+      title: 'Multiple dates and times can be selected',
+      content: 'Your choose'
+    }
+  });
 export default createDemo({
   setup() {
+    initTranslate();
     const { proxy } = getCurrentInstance() as any;
     const state = reactive({
       visible1: false,
@@ -97,7 +128,8 @@ export default createDemo({
           key: 1,
           list: ['9:00-10:00', '10:00-11:00']
         }
-      ]
+      ],
+      visible3: false
     });
 
     const handleChange1 = (pannelKey: number) => {
@@ -123,7 +155,6 @@ export default createDemo({
     };
 
     const handleSelected1 = (obj: any) => {
-      console.log(123);
       proxy.$toast.text(`${translate('content')}：${JSON.stringify(obj)}`);
     };
 
@@ -156,6 +187,10 @@ export default createDemo({
       proxy.$toast.text(`${translate('content')}：${JSON.stringify(obj)}`);
     };
 
+    const handleClick3 = () => {
+      state.visible3 = true;
+    };
+
     onMounted(() => {
       state.currentTime1.push({
         key: state.currentKey1,
@@ -177,6 +212,7 @@ export default createDemo({
       handleSelected2,
       selectTime2,
       handleClick2,
+      handleClick3,
       translate
     };
   }
@@ -185,5 +221,21 @@ export default createDemo({
 
 <style lang="scss" scoped>
 .demo {
+  .timeselect-title {
+    height: 50px;
+    p {
+      line-height: 1;
+      padding: 0;
+      margin: 0;
+      &.title {
+        margin: 10px 0;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &.subtitle {
+        color: #999;
+      }
+    }
+  }
 }
 </style>

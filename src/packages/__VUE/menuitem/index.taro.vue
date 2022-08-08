@@ -4,32 +4,48 @@
       v-show="state.isShowPlaceholderElement"
       @click="handleClickOutside"
       class="placeholder-element"
-      :style="{ height: parent.offset.value + 'px' }"
+      :class="{ up: parent.props.direction === 'up' }"
+      :style="placeholderElementStyle"
     >
     </div>
     <nut-popup
-      :style="{ top: parent.offset.value + 'px' }"
-      :overlayStyle="{ top: parent.offset.value + 'px' }"
+      :style="
+        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
+      "
+      :overlayStyle="
+        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
+      "
       v-bind="$attrs"
       v-model:visible="state.showPopup"
-      position="top"
+      :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
       :duration="parent.props.duration"
       pop-class="nut-menu__pop"
       overlayClass="nut-menu__overlay"
       :overlay="parent.props.overlay"
+      :lockScroll="parent.props.lockScroll"
       @closed="handleClose"
+      :close-on-click-overlay="parent.props.closeOnClickOverlay"
     >
       <view class="nut-menu-item__content">
         <view
           v-for="(option, index) in options"
           :key="index"
           class="nut-menu-item__option"
-          :class="{ active: option.value === modelValue }"
+          :class="[{ active: option.value === modelValue }]"
           :style="{ 'flex-basis': 100 / cols + '%' }"
           @click="onClick(option)"
         >
-          <nut-icon v-if="option.value === modelValue" name="Check" :color="parent.props.activeColor"></nut-icon>
-          <view :style="{ color: option.value === modelValue ? parent.props.activeColor : '' }">{{ option.text }}</view>
+          <nut-icon
+            :class="{ activeTitleClass: option.value === modelValue, inactiveTitleClass: option.value !== modelValue }"
+            v-if="option.value === modelValue"
+            :name="optionIcon"
+            :color="parent.props.activeColor"
+          ></nut-icon>
+          <view
+            :class="{ activeTitleClass: option.value === modelValue, inactiveTitleClass: option.value !== modelValue }"
+            :style="{ color: option.value === modelValue ? parent.props.activeColor : '' }"
+            >{{ option.text }}</view
+          >
         </view>
         <slot></slot>
       </view>
@@ -43,16 +59,11 @@ const { componentName, create } = createComponent('menu-item');
 import Icon from '../icon/index.taro.vue';
 import Popup from '../popup/index.taro.vue';
 
-type MenuItemOption = {
-  text: string;
-  value: number | string;
-};
-
 export default create({
   props: {
     title: String,
     options: {
-      type: Array as PropType<MenuItemOption[]>,
+      type: Array as PropType<import('./type').MenuItemOption[]>,
       default: []
     },
     disabled: {
@@ -64,9 +75,12 @@ export default create({
       type: Number,
       default: 1
     },
-    titleIcon: {
+    titleIcon: String,
+    activeTitleClass: String,
+    inactiveTitleClass: String,
+    optionIcon: {
       type: String,
-      default: 'down-arrow'
+      default: 'Check'
     }
   },
   components: {
@@ -109,6 +123,16 @@ export default create({
       };
     });
 
+    const placeholderElementStyle = computed(() => {
+      const heightStyle = { height: parent.offset.value + 'px' };
+
+      if (parent.props.direction === 'down') {
+        return heightStyle;
+      } else {
+        return { ...heightStyle, top: 'auto' };
+      }
+    });
+
     const toggle = (show = !state.showPopup, options: { immediate?: boolean } = {}) => {
       if (show === state.showPopup) {
         return;
@@ -133,7 +157,7 @@ export default create({
       return match ? match.text : '';
     };
 
-    const onClick = (option: MenuItemOption) => {
+    const onClick = (option: import('./type').MenuItemOption) => {
       state.showPopup = false;
       state.isShowPlaceholderElement = false;
 
@@ -154,6 +178,7 @@ export default create({
 
     return {
       classes,
+      placeholderElementStyle,
       renderTitle,
       state,
       parent,

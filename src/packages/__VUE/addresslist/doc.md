@@ -2,7 +2,7 @@
 
 ### 介绍
 
-主要用于进行地址列表的展示以及操作。依赖组件：Icon、Swipe、Button
+主要用于进行地址列表的展示以及操作。依赖组件：Icon、Swipe、Button。
 
 ### 安装
 
@@ -61,13 +61,13 @@ export default {
       addressName:'testaddressName'
     });
     const itemClick = ()=>{
-      Toast.text('点击了地址哦～');
+      Toast.text('Click To Address');
     }
     const delClick = ()=>{
-      Toast.text('点击了删除哦～');
+      Toast.text('Click To Delete');
     }
     const editClick = ()=>{
-      Toast.text('点击了编辑哦～');
+      Toast.text('Click To Edit');
     }
     return {
       itemClick,
@@ -132,25 +132,25 @@ export default {
         addressName:'testaddressName'
       });
       const itemClick = ()=>{
-        Toast.text('点击了地址哦～');
+        Toast.text('Click To Address');
       }
       const delClick = ()=>{
-        Toast.text('点击了删除哦～');
+        Toast.text('Click To Delete');
       }
       const editClick = ()=>{
-        Toast.text('点击了编辑哦～');
+        Toast.text('Click To Edit');
       }
       const copyClick = ()=>{
-        Toast.text('复制成功～');
+        Toast.text('Click To Copy');
       }
       const holdDownClick = (event: Event,id:number)=>{
-        Toast.text('长按～');
+        Toast.text('Long Press');
       }
       const setClick = ()=>{
-        Toast.text('点击了设置～');
+        Toast.text('Click On Settings');
       }
       const addAddress = ()=>{
-        Toast.text('添加新地址～');
+        Toast.text('Click To Add');
       }
       return {
         itemClick,
@@ -213,16 +213,16 @@ export default {
         addressName:'testaddressName'
       });
       const itemClick = ()=>{
-        Toast.text('点击了地址哦～');
+        Toast.text('Click To Address');
       }
       const editClick = ()=>{
-        Toast.text('点击了编辑哦～');
+        Toast.text('Click To Edit');
       }
       const delClick = ()=>{
-        Toast.text('点击了删除哦～');
+        Toast.text('Click To Delete');
       }
       const addAddress = ()=>{
-        Toast.text('添加新地址～');
+        Toast.text('Click To Add');
       }
       return {
         itemClick,
@@ -268,7 +268,7 @@ export default {
 
 ### Slots
 
-AddressList 组件默认划分为若干区域，这些区域都定义成了插槽，可以按照需求进行替换。
+`AddressList` 组件默认划分为若干区域，这些区域都定义成了插槽，可以按照需求进行替换
 
 | 插槽名        | 说明                             | 说明           |
 | ------------- | -------------------------------- | -------------- |
@@ -280,7 +280,7 @@ AddressList 组件默认划分为若干区域，这些区域都定义成了插�
 
 ### data 数组中每一项 与 dataMapOptions 对象的参数磨平
 
-下面是 data 数组中每一项 基础数据结构
+下面是 `data` 数组中每一项 基础数据结构
 
 ```javascript
 const dataInfo = {
@@ -292,7 +292,7 @@ const dataInfo = {
 };
 ```
 
-组件内优先获取基础数据结构中定义的字段，若想自定义 key 值，可以通过 dataMapOptions 设置映射关系。
+组件内优先获取基础数据结构中定义的字段，若想自定义 `key` 值，可以通过 `dataMapOptions` 设置映射关系
 
 ```javascript
 const dataMapOptions = {

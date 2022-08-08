@@ -1,6 +1,6 @@
 <template>
   <view class="demo">
-    <h2>默认用法</h2>
+    <h2>{{ translate('basic') }}</h2>
     <nut-card
       :img-url="state.imgUrl"
       :title="state.title"
@@ -11,25 +11,7 @@
       :shopName="state.shopName"
     >
     </nut-card>
-    <h2>自定义商品标签</h2>
-    <nut-card
-      :img-url="state.imgUrl"
-      :title="state.title"
-      :price="state.price"
-      :vipPrice="state.vipPrice"
-      :shopDesc="state.shopDesc"
-      :delivery="state.delivery"
-      :shopName="state.shopName"
-    >
-      <template #prolist>
-        <div class="search_prolist_attr">
-          <span class="word">活鲜</span>
-          <span class="word">礼盒</span>
-          <span class="word">国产</span>
-        </div>
-      </template>
-    </nut-card>
-    <h2>价格后自定义标签</h2>
+    <h2>{{ translate('customProduct') }}</h2>
     <nut-card
       :img-url="state.imgUrl"
       :title="state.title"
@@ -41,13 +23,13 @@
     >
       <template #prolist>
         <div class="search_prolist_attr">
-          <span class="word">活鲜</span>
-          <span class="word">礼盒</span>
-          <span class="word">国产</span>
+          <span class="word">{{ translate('customPro1') }}</span>
+          <span class="word">{{ translate('customPro2') }}</span>
+          <span class="word">{{ translate('customPro3') }}</span>
         </div>
       </template>
     </nut-card>
-    <h2>商家介绍自定义</h2>
+    <h2>{{ translate('customShop') }}</h2>
     <nut-card
       :img-url="state.imgUrl"
       :title="state.title"
@@ -58,7 +40,10 @@
       :shopName="state.shopName"
     >
       <template #shop-tag>
-        <div>这里是自定义区域</div>
+        <div>{{ translate('customShop') }}</div>
+      </template>
+      <template #price>
+        <span>询价</span>
       </template>
       <template #origin>
         <img
@@ -68,7 +53,7 @@
         />
       </template>
     </nut-card>
-    <h2>自定义右下角内容</h2>
+    <h2>{{ translate('customFooter') }}</h2>
     <nut-card
       :img-url="state.imgUrl"
       :title="state.title"
@@ -79,31 +64,64 @@
       :shopName="state.shopName"
     >
       <template #footer>
-        <div class="customize">自定义</div>
+        <div class="customize">{{ translate('customContent') }}</div>
       </template>
     </nut-card>
   </view>
 </template>
 
 <script lang="ts">
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('card');
-
+const { createDemo, translate } = createComponent('card');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      customProduct: '自定义商品标签',
+      customPro1: '活鲜',
+      customPro2: '礼盒',
+      customPro3: '国产',
+      title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+      customShop: '自定义店铺介绍',
+      customFooter: '自定义右下角内容',
+      customContent: '自定义',
+      desc: '自营',
+      delivery: '厂商配送',
+      shopName: '阳澄湖大闸蟹自营店>'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      customProduct: 'Custom prolist',
+      customPro1: 'tag',
+      customPro2: 'tag',
+      customPro3: 'tag',
+      title: 'title',
+      customShop: 'Custom Content',
+      customFooter: 'Customize bottom right content',
+      customContent: 'custom',
+      desc: 'desc',
+      delivery: 'delivery',
+      shopName: 'shopName>'
+    }
+  });
 export default createDemo({
   setup() {
+    initTranslate();
     const state = reactive({
       imgUrl:
         '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-      title: '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+      title: computed(() => translate('title')),
       price: '388',
       vipPrice: '378',
-      shopDesc: '自营',
-      delivery: '厂商配送',
-      shopName: '阳澄湖大闸蟹自营店>'
+      shopDesc: computed(() => translate('desc')),
+      delivery: computed(() => translate('delivery')),
+      shopName: computed(() => translate('shopName'))
     });
     return {
-      state
+      state,
+      translate
     };
   }
 });

@@ -332,7 +332,13 @@ app.use(Elevator);
       :default-icon="defaultIcon"
       :selected-icon="selectedIcon"
       :close-btn-icon="closeBtnIcon"
-  ></nut-address>
+  >
+    <template #bottom>
+        <div class="nut-address-custom-buttom">
+          <div class="btn">自定义按钮</div>
+        </div>
+    </template>
+  </nut-address>
 </template>
 <script>
   import { ref,reactive,toRefs } from 'vue';
@@ -548,6 +554,7 @@ app.use(Elevator);
 | exist-address-title| 已有地址文案 ，type=‘exist’ 时生效| String | '配送至'
 | custom-and-exist-title| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| String | '选择其他地址'
 | columns-placeholder | 列提示文字 | String|Array | '请选择'
+| lock-scroll  | 背景是否锁定      | Boolean        | `true`       
 
 
   * provinceName 省的名字
@@ -586,4 +593,8 @@ app.use(Elevator);
 |----- | ----- | ----- 
 | type | 地址选择类型 exist/custom/custom2  |  exist/custom/custom2
 | data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | {} 
-    
+
+## Slot
+| 字段 | 说明 | 
+|----- | ----- |  
+| bottom `3.1.23` | 可自定义底部 |  

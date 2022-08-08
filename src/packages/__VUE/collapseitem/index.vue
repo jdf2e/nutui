@@ -179,20 +179,25 @@ export default create({
     const currentName = computed(() => props.name);
     const toggleOpen = () => {
       if (parent.props.accordion) {
-        parent.children.forEach((item: any, index: number) => {
-          if (currentName.value == item.name) {
-            item.changeOpen(!item.openExpanded);
-          } else {
-            item.changeOpen(false);
-            item.animation();
-          }
-        });
+        // parent.children.forEach((item: any, index: number) => {
+        //   if (currentName.value == item.name) {
+        //     item.changeOpen(!item.openExpanded);
+        //   } else {
+        //     item.changeOpen(false);
+        //     item.animation();
+        //   }
+        // });
         nextTick(() => {
-          parent.changeVal(currentName.value);
-          animation();
+          if (currentName.value == parent.props.active) {
+            open();
+          } else {
+            parent.changeVal(currentName.value);
+          }
+          // parent.changeVal(currentName.value);
+          // animation();
         });
       } else {
-        parent.changeValAry(props.name);
+        parent.changeValAry(String(props.name));
         open();
       }
     };
@@ -223,7 +228,7 @@ export default create({
       }
     );
 
-    onMounted(() => {
+    const init = () => {
       const { name } = props;
       const active = parent && parent.props.active;
       nextTick(() => {
@@ -238,6 +243,9 @@ export default create({
           }
         }
       });
+    };
+    onMounted(() => {
+      init();
       // proxyData.classDirection = parent.props.expandIconPosition;
       // if (parent.props.icon && parent.props.icon != 'none') {
       //   proxyData.iconStyle['background-image'] =

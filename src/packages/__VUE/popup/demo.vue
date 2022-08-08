@@ -50,6 +50,12 @@
     <h2>{{ translate('teleport') }}</h2>
     <nut-cell :title="translate('teleport')" is-link @click="state.showTeleport = true"></nut-cell>
     <nut-popup :style="{ padding: '30px 50px' }" teleport="#app" v-model:visible="state.showTeleport">app</nut-popup>
+    <h2>{{ translate('muti') }}</h2>
+    <nut-cell :title="translate('muti')" is-link @click="state.showPop1 = true"></nut-cell>
+    <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="state.showPop1">
+      <div @click="state.showPop2 = true">{{ translate('click') }}</div>
+    </nut-popup>
+    <nut-popup :style="{ padding: '30px 50px' }" v-model:visible="state.showPop2">{{ translate('text') }}</nut-popup>
   </div>
 </template>
 
@@ -58,41 +64,47 @@ import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('popup');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    cell1: '展示弹出层',
-    text: '正文',
-    position: '弹出位置',
-    cell2: '顶部弹出',
-    cell3: '底部弹出',
-    cell4: '左侧弹出',
-    cell5: '右侧弹出',
-    close: '关闭图标',
-    iposition: '图标位置',
-    cicon: '自定义图标',
-    circle: '圆角弹框',
-    teleport: '指定挂载节点'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    cell1: 'Show pop-up layer',
-    text: 'text',
-    position: 'Eject position',
-    cell2: 'Top pop-up',
-    cell3: 'Bottom pop-up',
-    cell4: 'Left pop-up',
-    cell5: 'Right pop-up',
-    close: 'Close icon',
-    iposition: 'Icon location',
-    cicon: 'Custom icon',
-    circle: 'Rounded bullet frame',
-    teleport: 'Specify mount node'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      cell1: '展示弹出层',
+      text: '正文',
+      position: '弹出位置',
+      cell2: '顶部弹出',
+      cell3: '底部弹出',
+      cell4: '左侧弹出',
+      cell5: '右侧弹出',
+      close: '关闭图标',
+      iposition: '图标位置',
+      cicon: '自定义图标',
+      circle: '圆角弹框',
+      teleport: '指定挂载节点',
+      muti: '多层堆叠',
+      click: '点击它'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      cell1: 'Show pop-up layer',
+      text: 'text',
+      position: 'Eject position',
+      cell2: 'Top pop-up',
+      cell3: 'Bottom pop-up',
+      cell4: 'Left pop-up',
+      cell5: 'Right pop-up',
+      close: 'Close icon',
+      iposition: 'Icon location',
+      cicon: 'Custom icon',
+      circle: 'Rounded bullet frame',
+      teleport: 'Specify mount node',
+      muti: 'Multi stack',
+      click: 'Click it'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const state = reactive({
       showBasic: false,
       showTop: false,
@@ -103,7 +115,9 @@ export default createDemo({
       showIconPosition: false,
       showCloseIcon: false,
       showRound: false,
-      showCombination: false
+      showCombination: false,
+      showPop1: false,
+      showPop2: false
     });
     return { state, translate };
   }

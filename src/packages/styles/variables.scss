@@ -19,6 +19,19 @@ $white: #fff !default;
 $black: #000 !default;
 $required-color: #fa2c19 !default;
 
+$dark-background: #131313 !default;
+$dark-background2: #1b1b1b !default;
+$dark-background3: #141414 !default;
+$dark-background4: #323233 !default;
+$dark-background5: #646566 !default;
+$dark-background6: #380e08 !default;
+$dark-background7: #707070 !default;
+$dark-color: $white !default;
+$dark-color2: #f2270c !default;
+$dark-color3: rgba(232, 230, 227, 0.8) !default;
+$dark-color-gray: $text-color !default;
+$dark-calendar-choose-color: rgba(227, 227, 227, 0.2) !default;
+
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif !default;
 
 // ---- Animation ----
@@ -57,8 +70,10 @@ $button-block-height: 48px !default;
 $button-default-line-height: 36px !default;
 $button-block-line-height: 46px !default;
 $button-default-font-size: $font-size-2 !default;
+$button-large-font-size: $button-default-font-size !default;
 $button-small-font-size: $font-size-1 !default;
 $button-mini-font-size: $font-size-1 !default;
+$button-mini-line-height: 1.2 !default;
 $button-disabled-opacity: 0.68 !default;
 $button-primary-color: $white !default;
 $button-primary-border-color: $primary-color !default;
@@ -101,8 +116,12 @@ $cell-border-radius: 6px !default;
 $cell-padding: 13px 16px !default;
 $cell-line-height: 20px !default;
 $cell-after-right: 16px !default;
-$cell-after-border-bottom: 2px solid #f5f6f7 !default;
+$cell-after-border-bottom: 1px solid #f5f6f7 !default;
 $cell-default-icon-margin: 0 4px 0 0px !default;
+$cell-large-title-font: $font-size-large !default;
+$cell-large-title-desc-font: $font-size-base !default;
+$cell-large-padding: 15px 16px !default;
+$cell-background: $white !default;
 
 // cell-group
 
@@ -151,9 +170,9 @@ $picker-bar-title-font-size: 16px !default;
 $picker-bar-title-color: $title-color !default;
 $picker-bar-title-font-weight: normal !default;
 $picker-item-height: 36px !default;
-$picker-item-text-color: #808080 !default;
+$picker-item-text-color: $title-color !default;
 $picker-item-active-text-color: inherit !default;
-$picker-item-text-font-size: 16px !default;
+$picker-item-text-font-size: 14px !default;
 $picker-item-active-line-border: 1px solid #d8d8d8 !default;
 $picker-columns-item-color: $title-color !default;
 
@@ -477,6 +496,7 @@ $tag-danger-background-color: linear-gradient(
   rgba(232, 34, 14, 1) 69.83950099728881%,
   rgba(242, 77, 12, 1) 100%
 ) !default;
+$tag-danger-background-color-plain: #df3526 !default;
 $tag-warning-background-color: #f3812e !default;
 $tag-default-color: #ffffff !default;
 $tag-border-width: 1px !default;
@@ -580,6 +600,8 @@ $menu-item-option-padding-top: 12px !default;
 $menu-item-option-padding-bottom: 12px !default;
 $menu-item-option-i-margin-right: 6px !default;
 $menu-bar-box-shadow: 0 2px 12px rgba(89, 89, 89, 0.12) !default;
+$nut-menu-scroll-fixed-top: 0 !default;
+$nut-menu-scroll-fixed-z-index: 1000 !default;
 
 // collapse
 $collapse-item-padding: 13px 36px 13px 26px !default;
@@ -747,9 +769,13 @@ $elevator-list-item-bars-padding: 15px 0 !default;
 $elevator-list-item-bars-background-color: #eeeff2 !default;
 $elevator-list-item-bars-border-radius: 6px !default;
 $elevator-list-item-bars-text-align: center !default;
-$elevator-list-item-bars-z-index: 10 !default;
+$elevator-list-item-bars-z-index: 1 !default;
 $elevator-list-item-bars-inner-item-padding: 3px !default;
 $elevator-list-item-bars-inner-item-font-size: 10px !default;
+$elevator-list-fixed-color: $primary-color !default;
+$elevator-list-fixed-bg-color: $white !default;
+$elevator-list-fixed-box-shadow: 0 0 10px #eee !default;
+$elevator-list-item-bars-inner-item-active-color: $primary-color !default;
 
 // list
 $list-item-margin: 0 0 10px 0 !default;
@@ -779,6 +805,12 @@ $comment-header-user-name-color: rgba(51, 51, 51, 1) !default;
 $comment-header-time-color: rgba(153, 153, 153, 1) !default;
 $comment-bottom-label-color: rgba(153, 153, 153, 1) !default;
 $comment-shop-color: $primary-color !default;
+
+// Ellipsis
+$ellipsis-expand-collapse-color: #3460fa !default;
+
+// WaterMark
+$nut-water-mark-z-index: 2000 !default;
 
 @import './mixins/index';
 @import './animation/index';

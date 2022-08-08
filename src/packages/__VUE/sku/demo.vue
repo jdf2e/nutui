@@ -1,16 +1,16 @@
 <template>
   <div class="demo">
-    <h2>基本用法</h2>
-    <nut-cell :title="`基本用法`" desc="" @click="base = true"></nut-cell>
+    <h2>{{ translate('basic') }}</h2>
+    <nut-cell :title="translate('basic')" desc="" @click="base = true"></nut-cell>
 
-    <h2>不可售</h2>
-    <nut-cell title="不可售" desc="" @click="notSell = true"></nut-cell>
+    <h2>{{ translate('noSell') }}</h2>
+    <nut-cell :title="translate('noSell')" desc="" @click="notSell = true"></nut-cell>
 
-    <h2>自定义计步器</h2>
-    <nut-cell title="自定义计步器" desc="" @click="customStepper = true"></nut-cell>
+    <h2>{{ translate('customStepper') }}</h2>
+    <nut-cell :title="translate('customStepper')" desc="" @click="customStepper = true"></nut-cell>
 
-    <h2>自定义插槽</h2>
-    <nut-cell title="通过插槽自定义设置" desc="" @click="customBySlot = true"></nut-cell>
+    <h2>{{ translate('slots') }}</h2>
+    <nut-cell :title="translate('slots')" desc="" @click="customBySlot = true"></nut-cell>
 
     <nut-sku
       v-model:visible="base"
@@ -109,8 +109,25 @@
 import { reactive, ref, toRefs, onMounted } from 'vue';
 
 import { createComponent } from '@/packages/utils/create';
+import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Toast } from '@/packages/nutui.vue';
-const { createDemo } = createComponent('sku');
+const { createDemo, translate } = createComponent('sku');
+
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      noSell: '不可售',
+      customStepper: '自定义计步器',
+      slots: '自定义插槽'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      noSell: 'Not Sell',
+      customStepper: 'Custom Stepper',
+      slots: 'Custom Slots'
+    }
+  });
 
 interface Skus {
   id: number;
@@ -142,6 +159,7 @@ interface Data {
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const popup = reactive({
       base: false,
       notSell: false,
@@ -276,6 +294,7 @@ export default createDemo({
       stepperExtraText,
       btnExtraText,
       overLimit,
+      translate,
       ...toRefs(popup),
       ...toRefs(data)
     };

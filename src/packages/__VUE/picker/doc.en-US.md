@@ -1,6 +1,6 @@
 # Picker
 
-### 介绍
+### Intro
 
 The picker component is usually used with Popup Component.
 
@@ -80,6 +80,52 @@ The default selection is implemented by setting `modelValue`, which is an array 
     v-model:visible="show"
     :columns="columns"
     title="Choose City"
+    @confirm="confirm"
+  >
+  </nut-picker>
+</template>
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const desc = ref('');
+      const selectedValue = ref(['ZheJiang']);
+      const columns = ref([
+        { text: 'NanJing', value: 'NanJing' },
+        { text: 'WuXi', value: 'WuXi' },
+        { text: 'ZangZu', value: 'ZangZu' },
+        { text: 'BeiJing', value: 'BeiJing' },
+        { text: 'LianYunGang', value: 'LianYunGang' },
+        { text: 'ZheJiang', value: 'ZheJiang' },
+        { text: 'JiangSu', value: 'JiangSu' }
+      ]);
+    
+      const confirm = ( { selectedValue,selectedOptions })=>{
+        desc.value = selectedValue.join(',');
+      }
+
+      return {show,desc,columns,selectedValue, confirm};
+    }
+  };
+</script>
+```
+
+:::
+
+### Tile
+
+:::demo
+
+```html
+<template>
+  <nut-cell title="Choose City" :desc="desc" @click="() => { show = true;}"></nut-cell>
+  <nut-picker
+    v-model="selectedValue"
+    v-model:visible="show"
+    :columns="columns"
+    title="Choose City"
+    :threeDimensional="false"
     @confirm="confirm"
   >
   </nut-picker>
@@ -381,6 +427,7 @@ Slots are arranged at the bottom and top respectively for custom Settings
 | title                  | Toolbar title                   | String  | -      |
 | cancel-text            | Text of cancel button               | String  | cancel   |
 | ok-text                | Text of confirm button               | String  | confirm   |
+| three-dimensional `v3.1.23`          | Turn on 3D effects      | Boolean  | true   |
 
 ### Data Structure of Columns
 

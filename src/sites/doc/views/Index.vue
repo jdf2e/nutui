@@ -80,9 +80,9 @@ export default defineComponent({
       // return !excludeTaro.includes(route.path);
       return route.path != 'zh-CN/' || 'zh-TW/' || 'en-US/';
     };
-
     const isShowTaroDoc = computed(() => {
-      return configNav.value.findIndex((item) => item === route.path.substr(1)) > -1;
+      let routename = route.path.toLocaleLowerCase().split('/').pop() || '';
+      return configNav.value.findIndex((item) => item === routename) > -1;
     });
 
     const watchDemoUrl = (router: RouteLocationNormalized) => {
@@ -166,8 +166,8 @@ export default defineComponent({
       ...toRefs(state),
       ...toRefs(data),
       handleTabs,
-      isShow,
-      isShowTaroDoc
+      isShowTaroDoc,
+      isShow
     };
   }
 });

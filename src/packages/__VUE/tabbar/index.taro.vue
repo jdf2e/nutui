@@ -28,7 +28,7 @@ export default create({
     },
     unactiveColor: {
       type: String,
-      default: '#000000'
+      default: ''
     },
     activeColor: {
       type: String,
@@ -45,10 +45,10 @@ export default create({
       val: props.visible,
       children: []
     });
-    function changeIndex(active: number) {
+    function changeIndex(index: number, active: any) {
       emit('update:visible', active);
       parentData.modelValue = active;
-      emit('tab-switch', parentData.children[active], active);
+      emit('tab-switch', parentData.children[index], active);
     }
     let parentData = reactive({
       children: mdValue.children,

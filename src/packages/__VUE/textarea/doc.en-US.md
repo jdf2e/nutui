@@ -78,7 +78,7 @@ export default {
 |v-model | input value, support two-way binding | string | -|
 |placeholder | set placeholder prompt text | string | ` 'please enter content' `|
 |max-length | limit the maximum input characters | string, number | -|
-|rows | height of textarea, with priority higher than autosize attribute | string and number | ` 2 `|
+|rows | height of textarea, with priority higher than autosize attribute `Only H5 is supported`| string and number | ` 2 `|
 |limit-show | whether textarea displays the input characters. Use | Boolean | ` false` |
 |autosize | whether to adapt the content height. You can also pass in objects, such as {maxheight: 200, minheight: 100}. The unit is PX | Boolean, {maxheight?: number; minheight?: number} | ` false `|
 |text-align | text position, optional values ` left ,  center,  right `| string |  `left`|

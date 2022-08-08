@@ -72,7 +72,8 @@ class Lang extends BaseLang {
     skuId: '商品編號'
   };
   addresslist = {
-    addAddress: '新建地址'
+    addAddress: '新建地址',
+    default: '默认'
   };
   comment = {
     complaintsText: '我要投訴',
@@ -91,6 +92,13 @@ class Lang extends BaseLang {
     hour: '時',
     min: '分',
     seconds: '秒'
+  };
+  audiooperate = {
+    back: '倒退',
+    start: '開始',
+    pause: '暫停',
+    forward: '快進',
+    mute: '靜音'
   };
 }
 export default Lang;

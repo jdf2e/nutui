@@ -37,12 +37,13 @@
     opacity: 0.6;
   }
   &.nut-switch-base {
-    width: $switch-width;
+    min-width: $switch-width;
     height: $switch-height;
     line-height: $switch-line-height;
+    overflow: hidden;
     .switch-button {
-      height: $switch-inside-width;
-      width: $switch-inside-height;
+      height: $switch-inside-height;
+      width: $switch-inside-width;
       transform: $switch-inside-close-transform;
     }
     &.switch-open {

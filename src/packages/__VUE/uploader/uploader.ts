@@ -1,7 +1,9 @@
 export class UploadOptions {
   url = '';
   name = 'file';
+  fileType? = 'image';
   formData?: FormData;
+  sourceFile: any;
   method = 'post';
   xhrState = 200;
   timeout = 30 * 1000;
@@ -12,6 +14,7 @@ export class UploadOptions {
   onProgress?: Function;
   onSuccess?: Function;
   onFailure?: Function;
+  beforeXhrUpload?: Function;
 }
 export class Uploader {
   options: UploadOptions;
@@ -46,7 +49,11 @@ export class Uploader {
         xhr.setRequestHeader(key, value as string);
       }
       options.onStart?.(options);
-      xhr.send(options.formData);
+      if (options.beforeXhrUpload) {
+        options.beforeXhrUpload(xhr, options);
+      } else {
+        xhr.send(options.formData);
+      }
     } else {
       console.warn('浏览器不支持 XMLHttpRequest');
     }
@@ -59,6 +66,7 @@ export class Uploader {
       const uploadTask = uploadFile({
         url: options.url,
         filePath: options.taroFilePath,
+        fileType: options.fileType,
         header: {
           'Content-Type': 'multipart/form-data',
           ...options.headers

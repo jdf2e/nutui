@@ -138,51 +138,53 @@ import { toRefs, watch, ref, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('datepicker');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '选择日期',
-    showChinese: '显示中文',
-    mmdd: '选择月日',
-    showAll: '选择年月日时分',
-    time: '选择时分秒',
-    format: '格式化选项',
-    stepMins: '分钟数递增步长设置',
-    filter: '过滤选项',
-    setStartEnd: '限制开始结束时间',
-    chooseDate: '日期时间选择',
-    chooseTime: '时间选择',
-    forever: '永远有效',
-    year: '年',
-    month: '月',
-    day: '日',
-    hour: '时',
-    min: '分',
-    seconds: '秒'
-  },
-  'en-US': {
-    basic: 'Choose Date',
-    showChinese: 'Show Chinese',
-    mmdd: 'Choose Month-Day',
-    showAll: 'Choose DateTime',
-    time: 'Choose Time',
-    format: 'Option Formatter',
-    stepMins: 'Option Steps',
-    filter: 'Option Filter',
-    setStartEnd: 'Limit the start and end time',
-    chooseDate: 'Choose Time',
-    chooseTime: 'Choose Time',
-    forever: 'Forever',
-    year: 'Year',
-    month: 'Month',
-    day: 'Day',
-    hour: 'Hour',
-    min: 'Minute',
-    seconds: 'Second'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '选择日期',
+      showChinese: '显示中文',
+      mmdd: '选择月日',
+      showAll: '选择年月日时分',
+      time: '选择时分秒',
+      format: '格式化选项',
+      stepMins: '分钟数递增步长设置',
+      filter: '过滤选项',
+      setStartEnd: '限制开始结束时间',
+      chooseDate: '日期时间选择',
+      chooseTime: '时间选择',
+      forever: '永远有效',
+      year: '年',
+      month: '月',
+      day: '日',
+      hour: '时',
+      min: '分',
+      seconds: '秒'
+    },
+    'en-US': {
+      basic: 'Choose Date',
+      showChinese: 'Show Chinese',
+      mmdd: 'Choose Month-Day',
+      showAll: 'Choose DateTime',
+      time: 'Choose Time',
+      format: 'Option Formatter',
+      stepMins: 'Option Steps',
+      filter: 'Option Filter',
+      setStartEnd: 'Limit the start and end time',
+      chooseDate: 'Choose Time',
+      chooseTime: 'Choose Time',
+      forever: 'Forever',
+      year: 'Year',
+      month: 'Month',
+      day: 'Day',
+      hour: 'Hour',
+      min: 'Minute',
+      seconds: 'Second'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const show = ref(false);
     const show2 = ref(false);
     const show3 = ref(false);

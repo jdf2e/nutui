@@ -1,4 +1,4 @@
-onMounted, nextTick, , watch, ref<template>
+<template>
   <view :class="classes">
     <view v-if="readonly" class="nut-textarea__textarea">
       {{ modelValue }}
@@ -15,17 +15,19 @@ onMounted, nextTick, , watch, ref<template>
       @input="change"
       @blur="blur"
       @focus="focus"
+      :show-count="false"
       :maxlength="maxLength"
       :placeholder="placeholder || translate('placeholder')"
       :auto-focus="autofocus"
     />
     <view class="nut-textarea__limit" v-if="limitShow"> {{ modelValue ? modelValue.length : 0 }}/{{ maxLength }}</view>
+    <view class="cpoyText" :style="copyTxtStyle" v-if="autosize">{{ modelValue }}</view>
   </view>
 </template>
 <script lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-
+import Taro, { eventCenter, getCurrentInstance as getCurrentInstanceTaro } from '@tarojs/taro';
 const { componentName, create, translate } = createComponent('textarea');
 
 export default create({
@@ -63,7 +65,7 @@ export default create({
       default: false
     },
     autosize: {
-      type: Boolean,
+      type: [Boolean, Object],
       default: false
     },
     autofocus: {
@@ -85,9 +87,15 @@ export default create({
 
     const styles: any = computed(() => {
       return {
-        textAlign: props.textAlign
+        textAlign: props.textAlign,
+        height: props.autosize ? heightSet.value : 'null'
         // resize: props.autosize ? 'vertical' : 'none'
       };
+    });
+
+    const copyTxtStyle: any = ref({
+      'word-break': 'break-all',
+      width: '0'
     });
 
     const emitChange = (value: string, event: Event) => {
@@ -120,12 +128,15 @@ export default create({
       emit('blur', event);
     };
 
-    const textareaRef = ref();
-
+    const textareaRef = ref<any>(null);
+    const textareaHeight = ref();
+    const heightSet = ref('auto');
     const getContentHeight = () => {
-      let textarea = textareaRef.value;
-      textarea.style.height = 'auto';
-      let height = textarea.scrollHeight;
+      heightSet.value = 'auto';
+      let height = textareaHeight.value;
+      // let textarea = textareaRef.value;
+      // textarea.style.height = 'auto';
+      // let height = textarea.scrollHeight;
       if (typeof props.autosize === 'object') {
         const { maxHeight, minHeight } = props.autosize;
         if (maxHeight !== undefined) {
@@ -136,21 +147,59 @@ export default create({
         }
       }
       if (height) {
-        textarea.style.height = height + 'px';
+        // textarea.style.height = height + 'px';
+        heightSet.value = height + 'px';
       }
     };
     watch(
       () => props.modelValue,
       () => {
         if (props.autosize) {
-          nextTick(getContentHeight);
+          copyHeight();
         }
       }
     );
 
+    const copyHeight = () => {
+      const query = Taro.createSelectorQuery();
+      query.select('.cpoyText').boundingClientRect();
+      query.exec((res) => {
+        if (res[0]) {
+          if (props.modelValue == '') {
+            textareaHeight.value = 20;
+          } else {
+            textareaHeight.value = res[0]['height'] || 20;
+          }
+          setTimeout(() => {
+            getContentHeight();
+          }, 400);
+        }
+      });
+    };
+
+    const getRefHeight = () => {
+      const query = Taro.createSelectorQuery();
+      // const query = Taro.createSelectorQuery();
+      query.selectAll('.nut-textarea__textarea').boundingClientRect();
+      let uid = textareaRef.value ? textareaRef.value.uid : '0';
+      query.exec((res) => {
+        if (res[0] && textareaRef.value) {
+          let _item: any = Array.from(res[0]).filter((item: any) => item.id == uid);
+          textareaHeight.value = _item[0]['height'] || 20;
+          copyTxtStyle.value.width = _item[0]['width'] + 'px';
+          nextTick(getContentHeight);
+        }
+      });
+    };
+
     onMounted(() => {
       if (props.autosize) {
-        nextTick(getContentHeight);
+        eventCenter.once((getCurrentInstanceTaro() as any).router.onReady, () => {
+          getRefHeight();
+          // setTimeout(() => {
+          //   nextTick(getContentHeight);
+          // }, 300);
+        });
       }
     });
 
@@ -161,7 +210,8 @@ export default create({
       change,
       focus,
       blur,
-      translate
+      translate,
+      copyTxtStyle
     };
   }
 });

@@ -186,7 +186,7 @@ export default {
 ```
 :::
 
-### Prop  
+### Props
 
 | 字段            | 说明                                                    | 类型    | 默认值  |
 |-----------------|--------------------------------------------------------|---------|---------|
@@ -202,7 +202,7 @@ export default {
 | z-index `v3.1.21` | 导航栏 z-index                                            | Number ｜ String  | -       |
 
 
-### Event
+### Events
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
 | on-click-title | 点击页面标题事件 | event:Event |
@@ -210,7 +210,7 @@ export default {
 | on-click-right | 点击右侧按钮事件 | event:Event |
 | on-click-back | 点击左侧图标事件 | event:Event |
 
-### Slot
+### Slots
 | 名称  | 说明     | 回调参数    |
 |-------|----------|-------------|
 | left | 自定义左侧内容 |  |

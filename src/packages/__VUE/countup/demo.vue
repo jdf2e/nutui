@@ -53,27 +53,29 @@ import { reactive, toRefs } from '@vue/reactivity';
 import { onMounted } from '@vue/runtime-core';
 const { createDemo, translate } = createComponent('countup');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    title: '数字滚动',
-    title1: '自定义滚动图片展示',
-    title2: '抽奖（模拟滚动抽奖）',
-    btn1: '抽奖',
-    btn2: '不中奖'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    title: 'Digital scrolling',
-    title1: 'Custom scrolling picture display',
-    title2: 'Lottery (simulated rolling lottery)',
-    btn1: 'luck draw',
-    btn2: 'Not winning'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      title: '数字滚动',
+      title1: '自定义滚动图片展示',
+      title2: '抽奖（模拟滚动抽奖）',
+      btn1: '抽奖',
+      btn2: '不中奖'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title: 'Digital scrolling',
+      title1: 'Custom scrolling picture display',
+      title2: 'Lottery (simulated rolling lottery)',
+      btn1: 'luck draw',
+      btn2: 'Not winning'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const data = reactive({
       customNumber: 618,
       bgImage:
@@ -137,7 +139,11 @@ export default createDemo({
 }
 .show-demo {
   background: #ffffff;
-  padding: 0 20px;
+}
+.nut-theme-dark {
+  .show-demo {
+    background: $dark-background;
+  }
 }
 h2 {
   padding: 0 20px;

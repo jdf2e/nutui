@@ -6,73 +6,128 @@
       <nut-input v-model="state.val0" @change="change" @focus="focus" @blur="blur" label="文本(异步)" />
     </nut-form-item>
     </nut-form> -->
-    <h2>基础用法</h2>
-    <nut-input placeholder="请输入文本" v-model="state.val1" label="文本" />
+    <h2>{{ translate('basic') }}</h2>
+    <nut-input v-model="state.val1" :label="translate('text')" :placeholder="translate('text')" />
 
-    <h2>自定义类型</h2>
-    <nut-input label="文本" v-model="state.text" />
-    <nut-input label="密码" v-model="state.password" type="password" />
-    <nut-input label="数字" v-model="state.number" type="number" placeholder="支持小数点的输入" />
-    <nut-input label="整数" v-model="state.digit" type="digit" />
-    <nut-input label="手机号" v-model="state.tel" type="tel" />
+    <h2>{{ translate('title1') }}</h2>
+    <nut-input v-model="state.text" :label="translate('text')" :placeholder="translate('text')" />
+    <nut-input
+      v-model="state.password"
+      :label="translate('password')"
+      :placeholder="translate('password')"
+      type="password"
+    />
+    <nut-input :label="translate('number')" :placeholder="translate('number')" v-model="state.number" type="number" />
+    <nut-input :label="translate('digit')" :placeholder="translate('digit')" v-model="state.digit" type="digit" />
+    <nut-input :label="translate('tel')" :placeholder="translate('tel')" v-model="state.tel" type="tel" />
 
-    <h2>禁用和只读</h2>
-    <nut-input v-model="state.readonly" readonly label="文本" placeholder="输入框只读" />
-    <nut-input v-model="state.disabled" disabled label="文本" placeholder="输入框已禁用" />
+    <h2>{{ translate('title2') }}</h2>
+    <nut-input :label="translate('text')" :placeholder="translate('readonly')" v-model="state.readonly" readonly />
+    <nut-input :label="translate('text')" :placeholder="translate('disabled')" v-model="state.disabled" disabled />
 
-    <h2>显示图标</h2>
-    <nut-input v-model="state.showIcon" label="文本" left-icon="dongdong" right-icon="ask2" placeholder="显示图标" />
-    <nut-input v-model="state.clear" label="文本" clearable clearSize="14" placeholder="显示清除图标" />
+    <h2>{{ translate('title3') }}</h2>
+    <nut-input
+      v-model="state.showIcon"
+      :label="translate('text')"
+      :placeholder="translate('icon')"
+      left-icon="dongdong"
+      right-icon="ask2"
+    />
+    <nut-input
+      v-model="state.clear"
+      :label="translate('text')"
+      :placeholder="translate('clear')"
+      clearable
+      clearSize="14"
+    />
 
-    <h2>错误提示</h2>
-    <nut-input v-model="state.required" label="文本" required placeholder="必填项" />
-    <nut-input v-model="state.error1" label="文本" error placeholder="输入内容标红" />
-    <nut-input v-model="state.error2" label="文本" error-message="底部错误提示文案" placeholder="底部错误提示文案" />
+    <h2>{{ translate('title4') }}</h2>
+    <nut-input v-model="state.required" :label="translate('text')" :placeholder="translate('required')" required />
+    <nut-input v-model="state.error1" :label="translate('text')" :placeholder="translate('error')" error />
+    <nut-input
+      v-model="state.error2"
+      :label="translate('text')"
+      :placeholder="translate('errorBottom')"
+      :error-message="translate('errorBottom')"
+    />
 
-    <h2>插入按钮</h2>
-    <nut-input v-model="state.buttonVal" clearable center label="短信验证码" placeholder="请输入短信验证码">
+    <h2>{{ translate('title5') }}</h2>
+    <nut-input
+      v-model="state.buttonVal"
+      :label="translate('code')"
+      :placeholder="translate('codeplaceholder')"
+      clearable
+      center
+    >
       <template #button>
-        <nut-button size="small" type="primary"> 发送验证码 </nut-button>
+        <nut-button size="small" type="primary">
+          {{ translate('sendCode') }}
+        </nut-button>
       </template>
     </nut-input>
 
-    <h2>格式化输入内容</h2>
-    <nut-input v-model="state.format1" label="文本" :formatter="formatter" placeholder="在输入时执行格式化" />
+    <h2>{{ translate('title6') }}</h2>
+    <nut-input
+      v-model="state.format1"
+      :label="translate('text')"
+      :placeholder="translate('placeholder1')"
+      :formatter="formatter"
+    />
     <nut-input
       v-model="state.format2"
-      label="文本"
+      :label="translate('text')"
+      :placeholder="translate('placeholder2')"
       :formatter="formatter"
       format-trigger="onBlur"
-      placeholder="在失焦时执行格式化"
     />
 
-    <h2>显示字数统计</h2>
+    <h2>{{ translate('title7') }}</h2>
     <nut-input
       v-model="state.textarea"
-      label="留言"
+      :label="translate('message')"
+      :placeholder="translate('message')"
       type="textarea"
       show-word-limit
       rows="2"
-      maxLength="50"
-      placeholder="请输入留言"
+      max-length="50"
     />
 
-    <h2>对齐方式</h2>
-    <nut-input v-model="state.align1" label="文本" label-align="right" placeholder="文本内容对齐" />
-    <nut-input v-model="state.align2" label="文本" input-align="right" placeholder="输入框内容对齐" />
+    <h2>{{ translate('title8') }}</h2>
+    <nut-input
+      v-model="state.align1"
+      :label="translate('text')"
+      :placeholder="translate('placeholder4')"
+      label-align="right"
+    />
+    <nut-input
+      v-model="state.align2"
+      :label="translate('text')"
+      :placeholder="translate('placeholder5')"
+      input-align="right"
+    />
 
-    <h2>无边框</h2>
-    <nut-input v-model="state.disabled" :border="false" label="无边框" />
-    <nut-input v-model="state.showIcon" :border="false" label="无边框" />
+    <h2>{{ translate('title9') }}</h2>
+    <nut-input
+      v-model="state.noBorder1"
+      :border="false"
+      :label="translate('noBorder')"
+      :placeholder="translate('noBorder')"
+    />
+    <nut-input
+      v-model="state.noBorder2"
+      :border="false"
+      :label="translate('noBorder')"
+      :placeholder="translate('noBorder')"
+    />
 
-    <h2>点击事件</h2>
+    <h2>{{ translate('title10') }}</h2>
     <nut-input
       v-model="state.event"
-      label="event"
+      :label="translate('click')"
+      :placeholder="translate('click')"
       left-icon="dongdong"
       right-icon="ask2"
       clearable
-      placeholder="显示图标"
       @update:model-value="change"
       @focus="focus"
       @blur="blur"
@@ -88,9 +143,86 @@
 <script lang="ts">
 import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('input');
+const { createDemo, translate } = createComponent('input');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      title1: '自定义类型',
+      title2: '禁用和只读',
+      title3: '显示图标',
+      title4: '错误提示',
+      title5: '插入按钮',
+      title6: '格式化输入内容',
+      title7: '显示字数统计',
+      title8: '对齐方式',
+      title9: '无边框',
+      title10: '点击事件',
+      text: '文本',
+      password: '密码',
+      number: '数字',
+      digit: '整数',
+      tel: '手机号',
+      readonly: '只读',
+      disabled: '禁用',
+      icon: '显示图标',
+      clear: '显示清除图标',
+      required: '必填项',
+      error: '输入内容标红',
+      errorBottom: '底部错误提示文案',
+      code: '短信验证码',
+      codeplaceholder: '请输入短信验证码',
+      sendCode: '发送验证码',
+      message: '留言',
+      noBorder: '无边框',
+      click: '点击',
+      placeholder1: '在输入时执行格式化',
+      placeholder2: '在失焦时执行格式化',
+      placeholder3: '请输入留言',
+      placeholder4: '文本内容对齐',
+      placeholder5: '输入框内容对齐'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title1: 'Custom Type',
+      title2: 'Readonly And Disabled',
+      title3: 'Show Icon',
+      title4: 'Error Info',
+      title5: 'Insert Button',
+      title6: 'Format Value',
+      title7: 'Show Word Limit',
+      title8: 'Input Align',
+      title9: 'No Border',
+      title10: 'Click Event',
+      text: 'Text',
+      password: 'Password',
+      number: 'Number',
+      digit: 'Digit',
+      tel: 'Tel',
+      readonly: 'Readonly',
+      disabled: 'Disabled',
+      icon: 'Show Icon',
+      clear: 'Show Clear Icon',
+      required: 'Required',
+      error: 'Error',
+      errorBottom: 'Error Message',
+      code: 'Code',
+      codeplaceholder: 'Please enter code',
+      sendCode: 'Send',
+      message: 'Message',
+      noBorder: 'No Border',
+      click: 'Click',
+      placeholder1: 'Format On Change',
+      placeholder2: 'Format On Blur',
+      placeholder3: 'Message',
+      placeholder4: 'Label Align',
+      placeholder5: 'Input Align'
+    }
+  });
 export default createDemo({
   setup() {
+    initTranslate();
     const state = reactive({
       val1: '',
       text: '',
@@ -110,6 +242,8 @@ export default createDemo({
       textarea: '',
       align1: '',
       align2: '',
+      noBorder1: '',
+      noBorder2: '',
       event: ''
     });
     setTimeout(function () {
@@ -151,7 +285,8 @@ export default createDemo({
       clickInput,
       clickLeftIcon,
       clickRightIcon,
-      formatter
+      formatter,
+      translate
     };
   }
 });

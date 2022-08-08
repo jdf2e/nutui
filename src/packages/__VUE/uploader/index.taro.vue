@@ -16,13 +16,7 @@
           <nut-icon color="#fff" :name="item.status == 'error' ? 'failure' : 'loading'"></nut-icon>
           <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
         </view>
-        <nut-icon
-          v-if="isDeletable"
-          color="rgba(0,0,0,0.6)"
-          @click="onDelete(item, index)"
-          class="close"
-          name="failure"
-        ></nut-icon>
+        <nut-icon v-if="isDeletable" @click="onDelete(item, index)" class="close" name="failure"></nut-icon>
         <img
           class="nut-uploader__preview-img__c"
           @click="fileItemClick(item)"
@@ -162,7 +156,7 @@ export default create({
       const uploadOption = new UploadOptions();
       uploadOption.name = props.name;
       uploadOption.url = props.url;
-
+      uploadOption.fileType = fileItem.type;
       uploadOption.formData = fileItem.formData;
       uploadOption.timeout = (props.timeout as number) * 1;
       uploadOption.method = props.method;
@@ -252,7 +246,7 @@ export default create({
           fileItem.type = file.originalFileObj?.type;
           fileItem.formData = formData;
         } else {
-          fileItem.formData = props.data as FormData;
+          fileItem.formData = props.data;
         }
         if (props.isPreview) {
           fileItem.url = file.path;

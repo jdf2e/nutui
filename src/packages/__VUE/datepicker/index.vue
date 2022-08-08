@@ -10,7 +10,11 @@
     :title="title"
     @confirm="confirm"
     :isWrapTeleport="isWrapTeleport"
+    :threeDimensional="threeDimensional"
   >
+    <template #top>
+      <slot name="top"></slot>
+    </template>
     <slot></slot>
   </nut-picker>
 </template>
@@ -23,9 +27,6 @@ import { PickerOption } from '../picker/types';
 import { createComponent } from '@/packages/utils/create';
 import { padZero } from './utils';
 const { componentName, create, translate } = createComponent('datepicker');
-
-type Formatter = (type: string, option: PickerOption) => PickerOption;
-type Filter = (columnType: string, options: PickerOption[]) => PickerOption[];
 
 const currentYear = new Date().getFullYear();
 function isDate(val: Date): val is Date {
@@ -84,10 +85,15 @@ export default create({
       validator: isDate
     },
     formatter: {
-      type: Function as PropType<Formatter>,
+      type: Function as PropType<import('./type').Formatter>,
       default: null
     },
-    filter: Function as PropType<Filter>
+    // 是否开启3D效果
+    threeDimensional: {
+      type: Boolean,
+      default: true
+    },
+    filter: Function as PropType<import('./type').Filter>
   },
   emits: ['click', 'update:visible', 'change', 'confirm', 'update:moduleValue'],
 
@@ -112,7 +118,7 @@ export default create({
       return 32 - new Date(year, month - 1, 32).getDate();
     }
     const getBoundary = (type: string, value: Date) => {
-      const boundary = props[`${type}Date`];
+      const boundary = (props as any)[`${type}Date`];
       const year = boundary.getFullYear();
       let month = 1;
       let day = 1;
@@ -231,7 +237,7 @@ export default create({
       selectedValue: (string | number)[];
       selectedOptions: PickerOption[];
     }) => {
-      if (['date', 'datetime', 'datehour', 'month-day'].includes(props.type)) {
+      if (['date', 'datetime', 'datehour', 'month-day', 'year-month'].includes(props.type)) {
         let formatDate: (number | string)[] = [];
         selectedValue.forEach((item) => {
           formatDate.push(item);
@@ -240,11 +246,15 @@ export default create({
           formatDate.unshift(new Date(props.modelValue || props.minDate || props.maxDate).getFullYear());
         }
 
+        if (props.type == 'year-month' && formatDate.length < 3) {
+          formatDate.push(new Date(props.modelValue || props.minDate || props.maxDate).getDate());
+        }
+
         const year = Number(formatDate[0]);
         const month = Number(formatDate[1]) - 1;
         const day = Math.min(Number(formatDate[2]), getMonthEndDay(Number(formatDate[0]), Number(formatDate[1])));
         let date: Date | null = null;
-        if (props.type === 'date' || props.type === 'month-day') {
+        if (props.type === 'date' || props.type === 'month-day' || props.type === 'year-month') {
           date = new Date(year, month, day);
         } else if (props.type === 'datetime') {
           date = new Date(year, month, day, Number(formatDate[3]), Number(formatDate[4]));

@@ -100,7 +100,7 @@ export default create({
       let offset = (perimeter * Number(format(parseFloat(progress.toFixed(1))))) / 100;
       const isWise = props.clockwise ? 1 : 0;
       const color = isObject(props.color) ? `url(%23${refRandomId})` : transColor(props.color);
-      let d = `M 50 50 m -45 0 a 45 45 0 1 ${isWise} 90 0  a 45 45 0 1 ${isWise} -90 0`;
+      let d = `M 50 50 m 0 -45 a 45 45 0 1 ${isWise} 0 90 a 45 45 0 1, ${isWise} 0 -90`;
       const pa = `%3Cdefs%3E%3ClinearGradient id='${refRandomId}' x1='100%25' y1='0%25' x2='0%25' y2='0%25'%3E${stopDom}%3C/linearGradient%3E%3C/defs%3E`;
       const path = `%3Cpath d='${d}' stroke-width='${strokeWidth}' stroke='${transColor(
         props.pathColor
@@ -110,23 +110,19 @@ export default create({
       return {
         background: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100'  xmlns='http://www.w3.org/2000/svg'%3E${pa}${path}${path1}%3C/svg%3E")`,
         width: '100%',
-        height: '100%',
-        transform: 'rotate(90deg)',
-        transformOrigin: '50% 50%'
+        height: '100%'
       };
     });
     const format = (progress: string | number) => Math.min(Math.max(+progress, 0), 100);
-    const requestAnimationFrame = function (callback: Function, lastTime: any) {
-      var lastTime;
-      if (typeof lastTime === 'undefined') {
-        lastTime = 0;
-      }
+    var lastTime = 0;
+    const requestAnimationFrame = function (callback: Function) {
       var currTime = new Date().getTime();
       var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
       lastTime = currTime + timeToCall;
       var id = setTimeout(function () {
         callback(currTime + timeToCall, lastTime);
       }, timeToCall);
+      lastTime = currTime + timeToCall;
       return id;
     };
 
@@ -149,7 +145,7 @@ export default create({
           currentRate.value = Math.min(Math.max(+rate, 0), 100);
           emit('update:progress', format(parseFloat(rate.toFixed(1))));
           if (endRate > startRate ? rate < endRate : rate > endRate) {
-            rafId = requestAnimationFrame(animate, 0);
+            rafId = requestAnimationFrame(animate);
           }
         };
         if (rafId) {

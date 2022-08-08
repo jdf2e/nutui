@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <h2>评论图片单行展示</h2>
+    <h2>{{ translate('single') }}</h2>
     <nut-cell>
       <nut-comment
         :images="cmt.images"
@@ -20,7 +20,7 @@
       </nut-comment>
     </nut-cell>
 
-    <h2>评论图片多行展示</h2>
+    <h2>{{ translate('multiRow') }}</h2>
     <nut-cell>
       <nut-comment
         headerType="complex"
@@ -48,7 +48,7 @@
       </nut-comment>
     </nut-cell>
 
-    <h2>追评展示</h2>
+    <h2>{{ translate('additionalReview') }}</h2>
     <nut-cell>
       <nut-comment
         imagesRows="multi"
@@ -64,10 +64,29 @@
 <script lang="ts">
 import { onMounted, ref } from '@vue/runtime-core';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo } = createComponent('comment');
+import { useTranslate } from '@/sites/assets/util/useTranslate';
+const { createDemo, translate } = createComponent('comment');
+
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      single: '评论图片单行展示',
+      multiRow: '评论图片多行展示',
+      additionalReview: '追评展示'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      single: 'Single Line Image',
+      multiRow: 'Multi Line Image ',
+      review: 'Additional Review'
+    }
+  });
+
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     let cmt = ref({});
     const labels = () => {
       return '<nut-icon name="dongdong" color="#fa2c19"></nut-icon>';
@@ -98,7 +117,8 @@ export default createDemo({
       cmt,
       labels,
       handleclick,
-      clickImages
+      clickImages,
+      translate
     };
   }
 });

@@ -34,12 +34,6 @@ export default defineConfig({
   ],
   build: {
     minify: true,
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    },
     lib: {
       entry: '',
       name: 'index',
@@ -53,7 +47,8 @@ export default defineConfig({
       output: {
         banner,
         dir: path.resolve(__dirname, './dist/packages/locale/lang'),
-        entryFileNames: '[name].js'
+        entryFileNames: '[name].js',
+        plugins: []
       }
     },
     emptyOutDir: false

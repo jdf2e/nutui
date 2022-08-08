@@ -54,23 +54,18 @@ export default create({
 
     const getStyle = (): CSSProperties => {
       const style: CSSProperties = {};
-      if (color?.value) {
-        return {
-          background: color.value,
-          color: textColor.value
-        };
+      if (textColor.value) {
+        style.color = textColor.value;
+      } else if (color.value && plain.value) {
+        style.color = color.value;
       }
       if (plain.value) {
-        return {
-          color: '#FA2400',
-          background: '#fff',
-          border: '1px solid rgba(250,36,0,1)'
-        };
+        style.background = '#fff';
+        style['border-color'] = color.value;
+      } else if (color.value) {
+        style.background = color.value;
       }
-      return {
-        color: '',
-        background: ''
-      };
+      return style;
     };
 
     const onClose = (event: MouseEvent) => {

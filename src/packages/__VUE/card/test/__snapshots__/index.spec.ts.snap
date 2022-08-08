@@ -25,7 +25,7 @@ exports[`normal props 1`] = `
       <view class=\\"nut-tag nut-tag--danger\\">自营
         <!--v-if-->
       </view>
-      <view class=\\"nut-tag nut-tag--default nut-tag--plain\\" style=\\"color: rgb(250, 36, 0); background: rgb(255, 255, 255); border: 1px solid rgba(250,36,0,1);\\">厂商配送
+      <view class=\\"nut-tag nut-tag--default nut-tag--plain\\" style=\\"background: rgb(255, 255, 255);\\">厂商配送
         <!--v-if-->
       </view>
     </div>
@@ -36,24 +36,16 @@ exports[`normal props 1`] = `
 </div>"
 `;
 
-exports[`render prolist and origin slot correctly 1`] = `
+exports[`render prolist , price and origin slot correctly 1`] = `
 "<div class=\\"nut-card\\">
   <div class=\\"nut-card__left\\"><img src=\\"\\" alt=\\"\\"></div>
   <div class=\\"nut-card__right\\">
-    <div class=\\"nut-card__right__title\\"></div>Custom prolist<div class=\\"nut-card__right__price\\">
-      <view class=\\"nut-price\\">
-        <view class=\\"nut-price--symbol nut-price--symbol-large\\">¥</view>
-        <view class=\\"nut-price--large\\">0</view>
-        <view class=\\"nut-price--decimal-large\\">.</view>
-        <view class=\\"nut-price--decimal-large\\">00</view>
-        <!--v-if-->
-      </view>Custom origin
-    </div>
+    <div class=\\"nut-card__right__title\\"></div>Custom prolist<div class=\\"nut-card__right__price\\">Custom priceCustom origin</div>
     <div class=\\"nut-card__right__other\\">
       <view class=\\"nut-tag nut-tag--danger\\">
         <!--v-if-->
       </view>
-      <view class=\\"nut-tag nut-tag--default nut-tag--plain\\" style=\\"color: rgb(250, 36, 0); background: rgb(255, 255, 255); border: 1px solid rgba(250,36,0,1);\\">
+      <view class=\\"nut-tag nut-tag--default nut-tag--plain\\" style=\\"background: rgb(255, 255, 255);\\">
         <!--v-if-->
       </view>
     </div>
@@ -89,7 +81,7 @@ exports[`render shop-tag and footer slot correctly 1`] = `
       <view class=\\"nut-tag nut-tag--danger\\">
         <!--v-if-->
       </view>
-      <view class=\\"nut-tag nut-tag--default nut-tag--plain\\" style=\\"color: rgb(250, 36, 0); background: rgb(255, 255, 255); border: 1px solid rgba(250,36,0,1);\\">
+      <view class=\\"nut-tag nut-tag--default nut-tag--plain\\" style=\\"background: rgb(255, 255, 255);\\">
         <!--v-if-->
       </view>
     </div>

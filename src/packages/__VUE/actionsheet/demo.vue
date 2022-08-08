@@ -83,42 +83,43 @@ import { computed, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('actionsheet');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    showCancelButton: '展示取消按钮',
-    showDescription: '展示描述信息',
-    optionStatus: '选项状态',
-    customContent: '自定义内容',
-    cancelTxt: '取消',
-    title: '标题',
-    optionOne: '选项一',
-    optionTwo: '选项二',
-    optionThree: '选项三',
-    showDesc: '这是一段描述信息',
-    checkOption: '选中选项',
-    desc: '描述信息',
-    disableOption: '禁用选项',
-    loadOptions: '加载选项'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    showCancelButton: 'Show Cancel Button',
-    showDescription: 'Show Description',
-    optionStatus: 'Option Status',
-    customContent: 'Custom Content',
-    cancelTxt: 'cancle',
-    title: 'title',
-    optionOne: 'option one',
-    optionTwo: 'option two',
-    optionThree: 'option three',
-    showDesc: 'This is a description',
-    checkOption: 'Check option',
-    desc: 'Description',
-    disableOption: 'Disable option',
-    loadOptions: 'Load options'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      showCancelButton: '展示取消按钮',
+      showDescription: '展示描述信息',
+      optionStatus: '选项状态',
+      customContent: '自定义内容',
+      cancelTxt: '取消',
+      title: '标题',
+      optionOne: '选项一',
+      optionTwo: '选项二',
+      optionThree: '选项三',
+      showDesc: '这是一段描述信息',
+      checkOption: '选中选项',
+      desc: '描述信息',
+      disableOption: '禁用选项',
+      loadOptions: '加载选项'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      showCancelButton: 'Show Cancel Button',
+      showDescription: 'Show Description',
+      optionStatus: 'Option Status',
+      customContent: 'Custom Content',
+      cancelTxt: 'cancle',
+      title: 'title',
+      optionOne: 'option one',
+      optionTwo: 'option two',
+      optionThree: 'option three',
+      showDesc: 'This is a description',
+      checkOption: 'Check option',
+      desc: 'Description',
+      disableOption: 'Disable option',
+      loadOptions: 'Load options'
+    }
+  });
 interface Item {
   name: string;
   subname?: string;
@@ -129,6 +130,7 @@ interface Item {
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const state = reactive({
       isVisible1: false,
       isVisible2: false,
@@ -225,5 +227,10 @@ export default createDemo({
 }
 .custom-content {
   padding: 10px 10px 160px;
+}
+.nut-theme-dark {
+  .custom-content {
+    color: white;
+  }
 }
 </style>

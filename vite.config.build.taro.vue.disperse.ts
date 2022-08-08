@@ -27,7 +27,21 @@ export default defineConfig({
     alias: [{ find: '@', replacement: path.resolve(__dirname, './src') }]
   },
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => {
+            return (
+              tag.startsWith('scroll-view') ||
+              tag.startsWith('swiper') ||
+              tag.startsWith('swiper-item') ||
+              tag.startsWith('picker')
+            );
+          },
+          whitespace: 'preserve'
+        }
+      }
+    }),
     dts({
       insertTypesEntry: true,
       copyDtsFiles: false,
@@ -43,11 +57,11 @@ declare type Install<T> = T & {
         const start = 'declare const _sfc_main:';
         const end = ';\nexport default _sfc_main;\n';
         let name = Object.keys(input).find((item: string) => item.toLowerCase() === filePath.split('/').slice(-2)[0]);
-        name = name ? name.toLowerCase() : ' ';
+        name = name ? name : ' ';
         const remain = `
 declare module 'vue' {
   interface GlobalComponents {
-      Nut${name[0].toUpperCase() + name.substr(1)}: typeof _sfc_main;
+      Nut${name}: typeof _sfc_main;
   }
 }     
       `;
@@ -62,12 +76,6 @@ declare module 'vue' {
   ],
   build: {
     minify: false,
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    },
     lib: {
       entry: '',
       name: 'index',
@@ -84,7 +92,8 @@ declare module 'vue' {
           '@/packages/locale': '../locale/lang'
         },
         dir: path.resolve(__dirname, './dist/packages/_es'),
-        entryFileNames: '[name].js'
+        entryFileNames: '[name].js',
+        plugins: []
       }
     },
     emptyOutDir: false

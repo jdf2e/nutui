@@ -18,7 +18,7 @@ test('should change z-index when using z-index prop', async () => {
   });
   await nextTick();
   const pop: any = wrapper.find('.nut-popup');
-  expect(pop.element.style.zIndex).toEqual('99');
+  expect(pop.element.style.zIndex).toEqual('100');
 });
 
 test('should change animation duration when using duration prop', () => {
@@ -65,7 +65,7 @@ test('should lock scroll when showed', async () => {
   });
 
   await wrapper.setProps({ visible: true });
-  expect(document.body.classList.contains('nut-overflow-hidden')).toBeTruthy();
+  expect(document.body.classList.contains('nut-overflow-hidden')).toBeFalsy();
 });
 
 test('should not render overlay when overlay prop is false', () => {

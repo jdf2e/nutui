@@ -1,12 +1,16 @@
 {
-  "setting": {},
+  "setting": {
+    "compileHotReLoad": true
+  },
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
   "condition": {
     "miniprogram": {
       "list": [
         {
-          "name": "business/pages/address/index",
-          "pathName": "business/pages/address/index",
+          "name": "business/pages/signature/index",
+          "pathName": "business/pages/signature/index",
           "query": "",
+          "launchMode": "default",
           "scene": null
         },
         {
@@ -28,25 +32,28 @@
           "scene": null
         },
         {
-          "name": "feedback/pages/progress/index",
-          "pathName": "feedback/pages/progress/index",
+          "name": "business/pages/signature/index",
+          "pathName": "business/pages/signature/index",
           "query": "",
+          "launchMode": "default",
           "scene": null
         },
         {
-          "name": "feedback/pages/swiper/index",
-          "pathName": "feedback/pages/swiper/index",
+          "name": "exhibition/pages/collapse/index",
+          "pathName": "exhibition/pages/collapse/index",
           "query": "",
+          "launchMode": "default",
           "scene": null
         },
         {
-          "name": "dentry/pages/input/index",
-          "pathName": "dentry/pages/input/index",
+          "name": "dentry/pages/textarea/index",
+          "pathName": "dentry/pages/textarea/index",
           "query": "",
+          "launchMode": "default",
           "scene": null
         }
       ]
     }
   },
-  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
+  "projectname": "NutUI-Taro"
 }

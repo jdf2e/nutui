@@ -72,7 +72,8 @@ class Lang extends BaseLang {
     skuId: 'Nomor SKU'
   };
   addresslist = {
-    addAddress: 'Tambah Alamat Baru'
+    addAddress: 'Tambah Alamat Baru',
+    default: 'Bawaan'
   };
   comment = {
     complaintsText: 'Saya memiliki komplain',
@@ -91,6 +92,13 @@ class Lang extends BaseLang {
     hour: 'Jam',
     min: 'Menit',
     seconds: 'Detik'
+  };
+  audiooperate = {
+    back: 'kembali',
+    start: 'Mulailah',
+    pause: 'berhenti sebentar',
+    forward: 'Maju cepat',
+    mute: 'Bisu'
   };
 }
 export default Lang;

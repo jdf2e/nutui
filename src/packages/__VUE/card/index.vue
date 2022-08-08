@@ -7,7 +7,10 @@
       <div class="nut-card__right__title">{{ title }}</div>
       <slot name="prolist"></slot>
       <div class="nut-card__right__price" v-if="isNeedPrice">
-        <nut-price :price="price"></nut-price>
+        <template v-if="isHaveSlot('price')">
+          <slot name="price"></slot>
+        </template>
+        <nut-price v-else :price="price"></nut-price>
         <template v-if="isHaveSlot('origin')">
           <slot name="origin"></slot>
         </template>

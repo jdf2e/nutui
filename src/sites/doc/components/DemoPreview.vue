@@ -1,7 +1,7 @@
 <template>
   <div class="doc-demo-preview">
     <iframe :src="url" frameborder="0" ref="demoIframe"></iframe>
-    <demo-icon @refresh="onRefresh()" @goHome="onGoHome()"></demo-icon>
+    <!-- <demo-icon @refresh="onRefresh()" @goHome="onGoHome()"></demo-icon> -->
   </div>
 </template>
 <script lang="ts">

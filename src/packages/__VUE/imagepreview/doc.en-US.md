@@ -309,6 +309,13 @@ app.use(ImagePreview);
 | pagination-visible | Whether to show pagination    | Boolean | false |
 | pagination-color   | Pagination color    | String  | '#fff'  |
 | content-close   | Click image to exit preview    | Boolean  | false  |
+| show-index`v3.1.22`   | Whether to show index    | Boolean  | true  |
+| closeable`v3.1.22`   | Whether to show close icon    | Boolean  | false  |
+| close-icon`v3.1.22`   | Close icon name    | String  | ‘circle-close’  |
+| close-icon-position`v3.1.22`   |  Close icon position,can be set to `top-left`   | String  | ‘top-right’  |  
+| before-close`v3.1.22`  | Callback function before close   | (active: number) => boolean | Promise<`boolean`>  | -  | 
+| max-zoom`v3.1.23`  | Max zoom`Taro isn't supported`   | Number  | 3  | 
+| min-zoom`v3.1.23`  | Min zoom`Taro isn't supported`   | Number  | 1/3  | 
 
 
     
@@ -317,4 +324,5 @@ app.use(ImagePreview);
 |Event|Description|Arguments|
 |--|--|--|
 |close|Emitted when closing ImagePreview|-|
+|change`v3.1.22`|Emitted when current image changed|无|
     
