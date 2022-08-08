@@ -104,6 +104,10 @@ export default create({
       type: Function,
       default: null
     },
+    beforeXhrUpload: {
+      type: Function,
+      default: null
+    },
     beforeDelete: {
       type: Function,
       default: (file: import('./type').FileItem, files: import('./type').FileItem[]) => {
@@ -164,6 +168,7 @@ export default create({
       uploadOption.method = props.method;
       uploadOption.headers = props.headers;
       uploadOption.taroFilePath = fileItem.path;
+      uploadOption.beforeXhrUpload = props.beforeXhrUpload;
       uploadOption.onStart = (option: UploadOptions) => {
         fileItem.status = 'ready';
         fileItem.message = translate('readyUpload');
