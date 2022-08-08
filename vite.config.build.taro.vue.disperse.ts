@@ -27,7 +27,21 @@ export default defineConfig({
     alias: [{ find: '@', replacement: path.resolve(__dirname, './src') }]
   },
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => {
+            return (
+              tag.startsWith('scroll-view') ||
+              tag.startsWith('swiper') ||
+              tag.startsWith('swiper-item') ||
+              tag.startsWith('picker')
+            );
+          },
+          whitespace: 'preserve'
+        }
+      }
+    }),
     dts({
       insertTypesEntry: true,
       copyDtsFiles: false,
