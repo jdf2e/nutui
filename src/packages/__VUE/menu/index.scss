@@ -1,3 +1,15 @@
+.nut-theme-dark {
+  .nut-menu {
+    .nut-menu__bar {
+      background-color: $dark-background;
+
+      .nut-menu__item {
+        color: $dark-color;
+      }
+    }
+  }
+}
+
 .nut-menu {
   &.scroll-fixed {
     position: fixed;
