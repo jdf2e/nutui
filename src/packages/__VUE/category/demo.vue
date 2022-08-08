@@ -4,7 +4,6 @@
     <nut-category :category="category" @change="change">
       <nut-categorypane :categoryChild="categoryChild" @onChange="onChange"> </nut-categorypane>
     </nut-category>
-
     <h2>{{ translate('title2') }}</h2>
     <nut-category :category="category" @change="changeText">
       <nut-categorypane type="text" :categoryChild="categoryChild" @onChange="onChange"> </nut-categorypane

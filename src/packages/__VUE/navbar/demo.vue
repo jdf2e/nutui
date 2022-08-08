@@ -16,6 +16,8 @@
       @on-click-right="rightClick"
       :title="translate('navTitle2')"
       :desc="translate('desc1')"
+      safe-area-inset-top
+      fixed
     ></nut-navbar>
 
     <nut-navbar
