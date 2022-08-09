@@ -1,3 +1,11 @@
+.nut-theme-dark {
+  .nut-menu-item__content {
+    .nut-menu-item__option {
+      color: $dark-color;
+    }
+  }
+}
+
 .nut-menu-item {
   .active {
     font-weight: 500;

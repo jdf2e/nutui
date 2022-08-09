@@ -40,6 +40,8 @@
     <nut-uploader :url="uploadUrl" :maximize="1024 * 50" @oversize="onOversize"></nut-uploader>
     <h2>自定义数据 FormData 、 headers </h2>
     <nut-uploader :url="uploadUrl" :data="formData" :headers="formData" :with-credentials="true"></nut-uploader>
+    <h2>自定义 Taro.uploadFile 上传方式(before-xhr-upload) </h2>
+    <nut-uploader :url="uploadUrl" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
     <h2>选中文件后，通过按钮手动执行上传 </h2>
     <nut-uploader :url="uploadUrl" maximum="5" :auto-upload="false" ref="uploadRef"></nut-uploader>
     <br />
@@ -96,6 +98,39 @@ export default {
       uploadRef.value.submit();
     };
 
+    const beforeXhrUpload = (taroUploadFile: any, options: any) => {
+      //taroUploadFile  是 Taro.uploadFile ， 你也可以自定义设置其它函数
+      const uploadTask = taroUploadFile({
+        url: options.url,
+        filePath: options.taroFilePath,
+        fileType: options.fileType,
+        header: {
+          'Content-Type': 'multipart/form-data',
+          ...options.headers
+        }, //
+        formData: options.formData,
+        name: options.name,
+        success(response: { errMsg: any; statusCode: number; data: string }) {
+          if (options.xhrState == response.statusCode) {
+            options.onSuccess?.(response, options);
+          } else {
+            options.onFailure?.(response, options);
+          }
+        },
+        fail(e: any) {
+          options.onFailure?.(e, options);
+        }
+      });
+      options.onStart?.(options);
+      uploadTask.progress((res: { progress: any; totalBytesSent: any; totalBytesExpectedToSend: any }) => {
+        options.onProgress?.(res, options);
+        // console.log('上传进度', res.progress);
+        // console.log('已经上传的数据长度', res.totalBytesSent);
+        // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend);
+      });
+      // uploadTask.abort(); // 取消上传任务
+    };
+
     return {
       onOversize,
       onDelete,
@@ -105,7 +140,8 @@ export default {
       defaultFileList,
       formData,
       uploadRef,
-      submitUpload
+      submitUpload,
+      beforeXhrUpload
     };
   }
 };

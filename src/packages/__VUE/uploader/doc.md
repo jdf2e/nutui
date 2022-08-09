@@ -287,7 +287,7 @@ export default {
 ```
 :::
 
-### 自定义上传方式(before-xhr-upload h5支持)
+### 自定义上传方式(before-xhr-upload)
 
 :::demo
 ```html
@@ -383,7 +383,7 @@ export default {
 | disabled          | 是否禁用文件上传                                                                                                                                                                       | Boolean                           | false            |
 | timeout           | 超时时间，单位为毫秒                                                                                                                                                                   | Number丨String                    | 1000 * 30        |
 | before-upload     | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                          | null             |
-| before-xhr-upload`v3.2.0 小程序暂不支持` | 执行 XHR 上传时，自定义方式                                                                                                                                                                          | Function(xhr，option)                          | null             |
+| before-xhr-upload`v3.2.1` | 执行 XHR 上传时，自定义方式                                                                                                                                                                          | Function(xhr，option)                          | null             |
 | before-delete     | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除                                                                 | Function(file): boolean 丨Promise | -                |
 
 

@@ -1,8 +1,20 @@
+.nut-theme-dark {
+  .nut-menu {
+    .nut-menu__bar {
+      background-color: $dark-background;
+
+      .nut-menu__item {
+        color: $dark-color;
+      }
+    }
+  }
+}
+
 .nut-menu {
   &.scroll-fixed {
     position: fixed;
-    top: $nut-menu-scroll-fixed-top;
-    z-index: $nut-menu-scroll-fixed-z-index;
+    top: $menu-scroll-fixed-top;
+    z-index: $menu-scroll-fixed-z-index;
     width: 100%;
   }
 

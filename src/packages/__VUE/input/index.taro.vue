@@ -41,7 +41,7 @@
       </view>
       <view class="nut-input-value">
         <view class="nut-input-inner">
-          <div class="nut-input-box">
+          <view class="nut-input-box">
             <textarea
               v-if="type == 'textarea'"
               class="input-text"
@@ -54,7 +54,6 @@
               :readonly="readonly"
               :value="modelValue"
               :formatTrigger="formatTrigger"
-              :autofocus="autofocus"
               :adjust-position="adjustPosition"
               @input="onInput"
               @focus="onFocus"
@@ -74,7 +73,6 @@
               :readonly="readonly"
               :value="modelValue"
               :formatTrigger="formatTrigger"
-              :autofocus="autofocus"
               :confirm-type="confirmType"
               :adjust-position="adjustPosition"
               @input="onInput"
@@ -82,9 +80,9 @@
               @blur="onBlur"
               @click="onClickInput"
             />
-            <view v-if="readonly" class="nut-input-disabled-mask"></view>
-          </div>
-          <div class="nut-input-clear-box">
+            <view v-if="readonly" class="nut-input-disabled-mask" @click="onClickInput"></view>
+          </view>
+          <view class="nut-input-clear-box">
             <nut-icon
               class="nut-input-clear"
               v-if="clearable && !readonly"
@@ -94,7 +92,7 @@
               @click="clear"
             >
             </nut-icon>
-          </div>
+          </view>
           <view v-if="rightIcon && rightIcon.length > 0" class="nut-input-right-icon" @click="onClickRightIcon">
             <nut-icon :name="rightIcon" :size="rightIconSize"></nut-icon>
           </view>
@@ -279,8 +277,7 @@ export default create({
   setup(props, { emit, slots }) {
     const active = ref(false);
 
-    const inputRef = ref<HTMLInputElement>();
-    const customValue = ref<() => unknown>();
+    const inputRef: any = ref(null);
     const getModelValue = () => String(props.modelValue ?? '');
     // const form = inject('form');
 
@@ -302,12 +299,12 @@ export default create({
       };
     });
 
-    const styles = computed(() => {
+    const styles: any = computed(() => {
       return {
         textAlign: props.inputAlign
       };
     });
-    const stylesTextarea = computed(() => {
+    const stylesTextarea: any = computed(() => {
       return {
         textAlign: props.inputAlign,
         height: Number(props.rows) * 24 + 'px'
@@ -324,13 +321,6 @@ export default create({
       }
     };
 
-    // const formValue = computed(() => {
-    //   if (customValue.value && slots.input) {
-    //     return customValue.value();
-    //   }
-    //   return props.modelValue;
-    // });
-
     const onInput = (event: Event) => {
       const input = event.target as HTMLInputElement;
       let value = input.value;
@@ -341,9 +331,6 @@ export default create({
       emit('update:modelValue', value, event);
       emit('change', value, event);
     };
-
-    const blur = () => inputRef.value?.blur();
-    const focus = () => inputRef.value?.focus();
 
     const updateValue = (value: string, trigger: import('./type').InputFormatTrigger = 'onChange') => {
       if (props.type === 'digit') {
@@ -396,6 +383,7 @@ export default create({
     };
 
     const clear = (event: Event) => {
+      if (props.disabled) return;
       emit('update:modelValue', '', event);
       emit('change', '', event);
       emit('clear', '', event);
@@ -445,6 +433,9 @@ export default create({
     );
 
     onMounted(() => {
+      if (props.autofocus) {
+        inputRef.value.focus();
+      }
       updateValue(getModelValue(), props.formatTrigger);
     });
 
