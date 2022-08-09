@@ -328,7 +328,7 @@ export default create({
 
     // 设置选中省市县
     const initCustomSelected = () => {
-      console.log(props.modelValue);
+      // console.log(props.modelValue);
       if (props.modelValue.length > 0) {
         tabIndex.value = props.modelValue.length - 1;
         for (let index = 0; index < props.modelValue.length; index++) {
@@ -399,7 +399,7 @@ export default create({
         Taro.createSelectorQuery()
           .selectAll(`.${tabName.value[tabIndex.value]}`)
           .boundingClientRect((rects) => {
-            console.log(rects);
+            // console.log(rects);
             (rects as any).forEach((rect) => {
               if (rect.width > 0) lineDistance.value = rect.left;
             });

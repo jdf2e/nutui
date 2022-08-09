@@ -47,7 +47,7 @@ export default create({
   setup(props, { emit }) {
     const delClick = (event: Event) => {
       emit('delIconClick', event, props.item);
-      console.log(123);
+      // console.log(123);
       event.stopPropagation();
     };
     const editClick = (event: Event) => {

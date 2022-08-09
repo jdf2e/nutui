@@ -107,7 +107,7 @@ export default create({
     });
 
     const createPopperInstance = () => {
-      console.log(reference.value, popoverRef.value);
+      // console.log(reference.value, popoverRef.value);
       if (reference.value && popoverRef.value) {
         return createPopper(reference.value, popoverRef.value.popupRef, {
           placement: props.location,
@@ -131,7 +131,7 @@ export default create({
     };
 
     const clickOverlay = () => {
-      console.log('关闭');
+      // console.log('关闭');
     };
 
     const uploadLocation = () => {
@@ -139,7 +139,7 @@ export default create({
         if (!showPopup.value) return;
         if (!popper) {
           popper = createPopperInstance();
-          console.log(popper);
+          // console.log(popper);
         } else {
           popper.setOptions({
             placement: props.location

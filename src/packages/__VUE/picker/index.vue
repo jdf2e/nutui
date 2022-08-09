@@ -217,11 +217,9 @@ export default create({
     };
 
     const confirmHandler = () => {
-      console.log('确定选择项', columnsList.value);
-
       if (defaultValues.value && !defaultValues.value.length) {
         columnsList.value.forEach((columns) => {
-          console.log(columns);
+          // console.log(columns);
           defaultValues.value.push(columns[0].value);
           selectedOptions.value.push(columns[0]);
         });
