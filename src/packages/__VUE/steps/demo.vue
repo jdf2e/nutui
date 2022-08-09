@@ -14,15 +14,26 @@
         <nut-button size="mini" type="primary" @click="handleStep('current1')">{{ translate('next') }}</nut-button>
       </div>
     </div>
+    <h2>{{ translate('basicDot') }}</h2>
+    <div class="steps-wrapper">
+      <nut-steps :current="current2" progress-dot>
+        <nut-step></nut-step>
+        <nut-step></nut-step>
+        <nut-step></nut-step>
+      </nut-steps>
+      <div class="steps-button">
+        <nut-button size="mini" type="primary" @click="handleStep('current2')">{{ translate('next') }}</nut-button>
+      </div>
+    </div>
     <h2>{{ translate('desc') }}</h2>
     <div class="steps-wrapper">
-      <nut-steps :current="current2">
-        <nut-step :title="translate('step1')" :content="translate('stepdesc')">1</nut-step>
-        <nut-step :title="translate('step2')" :content="translate('stepdesc')"></nut-step>
-        <nut-step :title="translate('step3')" :content="translate('stepdesc')"></nut-step>
+      <nut-steps :current="current3">
+        <nut-step :content="translate('stepdesc')" :title="translate('step1')">1</nut-step>
+        <nut-step :content="translate('stepdesc')" :title="translate('step2')"></nut-step>
+        <nut-step :content="translate('stepdesc')" :title="translate('step3')"></nut-step>
       </nut-steps>
       <div class="steps-button" style="margin-top: 10px">
-        <nut-button size="mini" type="primary" @click="handleStep('current2')">{{ translate('next') }}</nut-button>
+        <nut-button size="mini" type="primary" @click="handleStep('current3')">{{ translate('next') }}</nut-button>
       </div>
     </div>
     <h2>{{ translate('cicon') }}</h2>
@@ -35,17 +46,17 @@
     </div>
     <h2>{{ translate('verstep') }}</h2>
     <div class="steps-wrapper" style="height: 300px; padding: 15px 30px">
-      <nut-steps direction="vertical" current="2">
-        <nut-step :title="translate('complete')" :content="translate('content1')">1</nut-step>
-        <nut-step :title="translate('progress')" :content="translate('content2')">2</nut-step>
-        <nut-step :title="translate('start')" :content="translate('content3')">3</nut-step>
+      <nut-steps current="2" direction="vertical">
+        <nut-step :content="translate('content1')" :title="translate('complete')">1</nut-step>
+        <nut-step :content="translate('content2')" :title="translate('progress')">2</nut-step>
+        <nut-step :content="translate('content3')" :title="translate('start')">3</nut-step>
       </nut-steps>
     </div>
     <h2>{{ translate('verstep') }}</h2>
     <div class="steps-wrapper" style="height: 350px; padding: 15px 40px">
-      <nut-steps direction="vertical" progress-dot current="2">
-        <nut-step :title="translate('complete')" :content="translate('content1')">1</nut-step>
-        <nut-step :title="translate('progress')" :content="translate('content2')">2</nut-step>
+      <nut-steps current="2" direction="vertical" progress-dot>
+        <nut-step :content="translate('content1')" :title="translate('complete')">1</nut-step>
+        <nut-step :content="translate('content2')" :title="translate('progress')">2</nut-step>
         <nut-step :title="translate('start')"
           >3
           <template v-slot:content>
@@ -61,12 +72,14 @@
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('steps');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
+
+const { createDemo, translate } = createComponent('steps');
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
       basic: '基本用法',
+      basicDot: '基本用法（点状）',
       step1: '步骤一',
       step2: '步骤二',
       step3: '步骤三',
@@ -86,6 +99,7 @@ const initTranslate = () =>
     },
     'en-US': {
       basic: 'Basic Usage',
+      basicDot: 'Basic Usage(Dot)',
       step1: 'Step One',
       step2: 'Step Two',
       step3: 'Step Three',
