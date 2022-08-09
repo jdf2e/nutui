@@ -1,9 +1,5 @@
 <template>
-  <view
-    v-if="fixed && placeholder"
-    class="nut-navbar--placeholder nut-navbar--xcx"
-    :style="{ height: navHeight + 'px' }"
-  >
+  <view v-if="fixed && placeholder" class="nut-navbar--placeholder" :style="{ height: navHeight + 'px' }">
     <view :class="classes" :style="styles" class="navBarHtml">
       <view class="nut-navbar__left" @click="handleLeft">
         <nut-icon v-if="leftShow" color="#979797" name="left"></nut-icon>
@@ -76,7 +72,6 @@ export default create({
   },
   emits: ['on-click-back', 'on-click-title', 'on-click-icon', 'on-click-right'],
   setup(props, { emit }) {
-    // const navBarHtml = ref<HTMLElement>();
     const { border, fixed, safeAreaInsetTop, placeholder, zIndex } = toRefs(props);
     let navHeight = ref(0);
     const classes = computed(() => {

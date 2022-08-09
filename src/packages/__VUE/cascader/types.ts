@@ -17,6 +17,8 @@ export type CascaderOption = {
   leaf?: boolean;
   level?: number;
   loading?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: PropertyKey]: any;
 };
 
 export type CascaderValue = CascaderOption['value'][];
