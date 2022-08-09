@@ -1,3 +1,24 @@
+.nut-theme-dark {
+  .nut-category {
+    &__cateList {
+      background: $dark-background2;
+    }
+
+    &__cateListLeft {
+      background: $dark-background4;
+    }
+    &__cateListItem {
+      color: $dark-color-gray;
+    }
+    &__cateListItemChecked {
+      color: $dark-color;
+      background: $dark-background2;
+      &::before {
+        background: $category-ListItemChecked-img-bg-color;
+      }
+    }
+  }
+}
 .nut-category {
   &__cateList {
     display: flex;

@@ -37,6 +37,7 @@
 
 <script lang="ts">
 import { onMounted, computed, toRefs, ref } from 'vue';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('navbar');
