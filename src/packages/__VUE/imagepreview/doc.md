@@ -303,7 +303,7 @@ app.use(ImagePreview);
 |----- | ----- | ----- | ----- 
 | show | 是否展示预览图片 | Boolean | false
 | videos | 预览的视频数组（视频自动放到图片之前、taro场景暂不支持） | Array<`Object`> | []
-| images | 预览图片数组 | Array<`String`> | []
+| images | 预览图片数组 | { src: String }[] | []
 | autoplay | 自动轮播时长，0表示不会自动轮播 | Number、String  | 3000  |
 | init-no | 初始页码 | Number | 1
 | pagination-visible | 分页指示器是否展示    | Boolean | false |
