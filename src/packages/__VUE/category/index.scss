@@ -14,7 +14,7 @@
       color: $dark-color;
       background: $dark-background2;
       &::before {
-        background: $category-ListItemChecked-img-bg-color;
+        background: $category-list-item-checked-img-bg-color;
       }
     }
   }
@@ -26,7 +26,7 @@
   }
 
   &__cateListLeft {
-    background: $category-ListLeft-bg-color;
+    background: $category-list-left-bg-color;
   }
 
   &__cateListItemChecked,
@@ -36,14 +36,14 @@
     font-size: 13px;
     font-family: PingFangSC;
     font-weight: normal;
-    color: $category-ListItem-color;
+    color: $category-list-item-color;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s;
   }
   &__cateListItemChecked {
-    background: $category-ListItemChecked-color;
+    background: $category-list-item-checked-color;
     font-weight: 500;
     transition: all 0.3s;
     position: relative;
@@ -53,7 +53,7 @@
       left: 0;
       width: 5px;
       height: 18px;
-      background: $category-ListItemChecked-img-bg-color;
+      background: $category-list-item-checked-img-bg-color;
     }
   }
 }

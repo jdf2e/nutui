@@ -1,5 +1,8 @@
 .nut-theme-dark {
   .nut-categorypane {
+    &__childTitle {
+      color: $white;
+    }
     &__cateListRight {
       background: $dark-background2;
     }
@@ -16,7 +19,7 @@
     font-size: 13px;
     font-family: PingFangSC;
     font-weight: 500;
-    color: $categorypane-title-color;
+    color: $category-pane-title-color;
   }
 
   &__childItemList {
@@ -39,12 +42,12 @@
     margin-right: 10px;
     width: 75px;
     height: 40px;
-    border: 1px solid $categorypane-border-color;
+    border: 1px solid $category-pane-border-color;
     border-radius: 5px;
     font-size: 12px;
     font-family: PingFangSC;
     font-weight: normal;
-    color: $categorypane-gray-color;
+    color: $category-pane-gray-color;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,7 +64,7 @@
     font-size: 12px;
     font-family: PingFangSC;
     font-weight: normal;
-    color: $categorypane-gray-color;
+    color: $category-pane-gray-color;
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
