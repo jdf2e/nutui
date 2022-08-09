@@ -55,7 +55,7 @@
       :class="[listType]"
       v-if="listType == 'picture' && !$slots.default && maximum - fileList.length"
     >
-      <nut-icon :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
+      <nut-icon v-bind="$attrs" :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
       <nut-button class="nut-uploader__input" @click="chooseImage" />
     </view>
   </view>

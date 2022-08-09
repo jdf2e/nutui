@@ -25,7 +25,7 @@
     <!-- <view class="nut-imagepreview-index"> {{ active }} / {{ images.length + videos.length }} </view> -->
     <view class="nut-imagepreview-index" v-if="showIndex"> {{ active }} / {{ images.length }} </view>
     <view class="nut-imagepreview-close-icon" @click="handleCloseIcon" :style="styles" v-if="closeable"
-      ><nut-icon :name="closeIcon" color="#ffffff"></nut-icon
+      ><nut-icon :name="closeIcon" v-bind="$attrs" color="#ffffff"></nut-icon
     ></view>
   </nut-popup>
 </template>

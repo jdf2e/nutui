@@ -23,7 +23,7 @@
     </template>
     <template v-else>
       <view v-if="leftIcon && leftIcon.length > 0" class="nut-input-left-icon" @click="onClickLeftIcon">
-        <nut-icon :name="leftIcon" :size="leftIconSize"></nut-icon>
+        <nut-icon :name="leftIcon" v-bind="$attrs" :size="leftIconSize"></nut-icon>
       </view>
       <view
         v-if="label"
@@ -40,51 +40,58 @@
         </view>
       </view>
       <view class="nut-input-value">
-        <view class="nut-input-inner" @click="onClickInput">
-          <textarea
-            v-if="type == 'textarea'"
-            class="input-text"
-            ref="inputRef"
-            :style="stylesTextarea"
-            :maxlength="maxLength"
-            :placeholder="placeholder || translate('placeholder')"
-            :disabled="disabled"
-            :readonly="readonly"
-            :value="modelValue"
-            :formatTrigger="formatTrigger"
-            :autofocus="autofocus"
-            @input="onInput"
-            @focus="onFocus"
-            @blur="onBlur"
-          />
-          <input
-            v-else
-            class="input-text"
-            ref="inputRef"
-            :style="styles"
-            :type="inputType(type)"
-            :maxlength="maxLength"
-            :placeholder="placeholder || translate('placeholder')"
-            :disabled="disabled"
-            :readonly="readonly"
-            :value="modelValue"
-            :formatTrigger="formatTrigger"
-            :autofocus="autofocus"
-            @input="onInput"
-            @focus="onFocus"
-            @blur="onBlur"
-          />
-          <nut-icon
-            class="nut-input-clear"
-            v-if="clearable && !readonly"
-            v-show="active && modelValue.length > 0"
-            :name="clearIcon"
-            :size="clearSize"
-            @click="clear"
-          >
-          </nut-icon>
+        <view class="nut-input-inner">
+          <view class="nut-input-box">
+            <textarea
+              v-if="type == 'textarea'"
+              class="input-text"
+              ref="inputRef"
+              :style="stylesTextarea"
+              :maxlength="maxLength"
+              :placeholder="placeholder || translate('placeholder')"
+              :disabled="disabled"
+              :readonly="readonly"
+              :value="modelValue"
+              :formatTrigger="formatTrigger"
+              :autofocus="autofocus"
+              @input="onInput"
+              @focus="onFocus"
+              @blur="onBlur"
+              @click="onClickInput"
+            />
+            <input
+              v-else
+              class="input-text"
+              ref="inputRef"
+              :style="styles"
+              :type="inputType(type)"
+              :maxlength="maxLength"
+              :placeholder="placeholder || translate('placeholder')"
+              :disabled="disabled"
+              :readonly="readonly"
+              :value="modelValue"
+              :formatTrigger="formatTrigger"
+              :autofocus="autofocus"
+              @input="onInput"
+              @focus="onFocus"
+              @blur="onBlur"
+              @click="onClickInput"
+            />
+          </view>
+          <view class="nut-input-clear-box">
+            <nut-icon
+              class="nut-input-clear"
+              v-if="clearable && !readonly"
+              v-show="active && modelValue.length > 0"
+              :name="clearIcon"
+              v-bind="$attrs"
+              :size="clearSize"
+              @click="clear"
+            >
+            </nut-icon>
+          </view>
           <view v-if="rightIcon && rightIcon.length > 0" class="nut-input-right-icon" @click="onClickRightIcon">
-            <nut-icon :name="rightIcon" :size="rightIconSize"></nut-icon>
+            <nut-icon :name="rightIcon" v-bind="$attrs" :size="rightIconSize"></nut-icon>
           </view>
           <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
         </view>
@@ -282,12 +289,12 @@ export default create({
       };
     });
 
-    const styles = computed(() => {
+    const styles: any = computed(() => {
       return {
         textAlign: props.inputAlign
       };
     });
-    const stylesTextarea = computed(() => {
+    const stylesTextarea: any = computed(() => {
       return {
         textAlign: props.inputAlign,
         height: Number(props.rows) * 24 + 'px'
@@ -319,9 +326,6 @@ export default create({
       }
       updateValue(value);
     };
-
-    const blur = () => inputRef.value?.blur();
-    const focus = () => inputRef.value?.focus();
 
     const updateValue = (value: string, trigger: import('./type').InputFormatTrigger = 'onChange') => {
       if (props.type === 'digit') {
@@ -377,6 +381,7 @@ export default create({
     };
 
     const clear = (event: Event) => {
+      if (props.disabled) return;
       emit('update:modelValue', '', event);
       emit('change', '', event);
       emit('clear', '', event);

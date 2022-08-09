@@ -5,6 +5,7 @@
       <nut-icon
         v-if="icon && !loading"
         :name="icon"
+        v-bind="$attrs"
         :class-prefix="iconClassPrefix"
         :font-class-name="iconFontClassName"
       ></nut-icon>

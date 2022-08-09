@@ -24,7 +24,9 @@
         </view>
       </view>
       <view v-if="closeMode || rightIcon" class="right-icon" @click.stop="onClickIcon">
-        <slot name="right-icon"> <nut-icon :name="rightIcon ? rightIcon : 'close'" :color="color"></nut-icon></slot>
+        <slot name="right-icon">
+          <nut-icon v-bind="$attrs" :name="rightIcon ? rightIcon : 'close'" :color="color"></nut-icon
+        ></slot>
       </view>
     </view>
 

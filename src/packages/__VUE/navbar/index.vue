@@ -8,7 +8,7 @@
       </view>
       <view class="nut-navbar__title">
         <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
-        <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
+        <nut-icon v-if="titIcon" class="icon" v-bind="$attrs" :name="titIcon" @click="handleCenterIcon"></nut-icon>
         <slot name="content"></slot>
       </view>
       <view class="nut-navbar__right" @click="handleRight">
@@ -25,7 +25,7 @@
     </view>
     <view class="nut-navbar__title">
       <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
-      <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
+      <nut-icon v-if="titIcon" class="icon" v-bind="$attrs" :name="titIcon" @click="handleCenterIcon"></nut-icon>
       <slot name="content"></slot>
     </view>
     <view class="nut-navbar__right" @click="handleRight">

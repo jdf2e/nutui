@@ -217,6 +217,14 @@ export default create({
     };
 
     const confirmHandler = () => {
+      if (defaultValues.value && !defaultValues.value.length) {
+        columnsList.value.forEach((columns) => {
+          // console.log(columns);
+          defaultValues.value.push(columns[0].value);
+          selectedOptions.value.push(columns[0]);
+        });
+      }
+
       emit('confirm', {
         selectedValue: defaultValues.value,
         selectedOptions: selectedOptions.value

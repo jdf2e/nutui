@@ -21,7 +21,7 @@
           }"
         >
           <view v-if="hasIcon" class="nut-toast-icon-wrapper">
-            <nut-icon size="20" color="#ffffff" :name="iconName"></nut-icon>
+            <nut-icon size="20" color="#ffffff" v-bind="$attrs" :name="iconName"></nut-icon>
           </view>
           <div v-if="title" class="nut-toast-title">
             {{ title }}
