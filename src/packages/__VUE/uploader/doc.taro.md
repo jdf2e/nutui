@@ -76,6 +76,62 @@ app.use(Progress);
 ``` html
 <nut-uploader :url="uploadUrl" :data="formData" :headers="formData" :with-Credentials="true"></nut-uploader>
 ```
+
+### 自定义上传方式(before-xhr-upload)
+
+:::demo
+```html
+<template>
+  <nut-uploader url="https://xxxx" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
+</template>
+
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+  setup() {
+    // source file https://github.com/jdf2e/nutui/blob/next/src/packages/__VUE/uploader/uploader.ts#L6
+    const beforeXhrUpload = (taroUploadFile: any, options: any) => {
+      //taroUploadFile  是 Taro.uploadFile ， 你也可以自定义设置其它函数
+      const uploadTask = taroUploadFile({
+        url: options.url,
+        filePath: options.taroFilePath,
+        fileType: options.fileType,
+        header: {
+          'Content-Type': 'multipart/form-data',
+          ...options.headers
+        }, //
+        formData: options.formData,
+        name: options.name,
+        success(response: { errMsg: any; statusCode: number; data: string }) {
+          if (options.xhrState == response.statusCode) {
+            options.onSuccess?.(response, options);
+          } else {
+            options.onFailure?.(response, options);
+          }
+        },
+        fail(e: any) {
+          options.onFailure?.(e, options);
+        }
+      });
+      options.onStart?.(options);
+      uploadTask.progress((res: { progress: any; totalBytesSent: any; totalBytesExpectedToSend: any }) => {
+        options.onProgress?.(res, options);
+        // console.log('上传进度', res.progress);
+        // console.log('已经上传的数据长度', res.totalBytesSent);
+        // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend);
+      });
+      // uploadTask.abort(); // 取消上传任务
+    };
+     return {
+      beforeXhrUpload
+    };
+  }
+}
+</script>
+```
+:::
+
+
 ### 选中文件后，通过按钮手动执行上传
     
 ``` html 
@@ -190,6 +246,7 @@ setup() {
 | disabled          | 是否禁用文件上传                                                                                                       | Boolean                           | false                     |
 | timeout           | 超时时间，单位为毫秒                                                                                                   | Number丨String                    | 1000 * 30                 |
 | before-upload     | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                          | null             |
+| before-xhr-upload`v3.2.1` | 执行 Taro.uploadFile 上传时，自定义方式                                                                                                                                                                          | Function(Taro.uploadFile，option)                          | null             |
 | before-delete     | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除 | Function(file): boolean 丨Promise | -                         |
 
 
