@@ -39,10 +39,6 @@
   &--safe-area-inset-top {
     padding-top: constant(safe-area-inset-top);
     padding-top: env(safe-area-inset-top);
-    &.nutui-navbar--xcx {
-      padding-top: calc(constant(safe-area-inset-top + 10px));
-      padding-top: calc(env(safe-area-inset-top) + 10px);
-    }
   }
   &--clickable {
     &::before {
