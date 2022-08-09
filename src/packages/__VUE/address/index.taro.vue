@@ -11,6 +11,7 @@
       <view class="nut-address__header">
         <view class="arrow-back" @click="switchModule">
           <nut-icon
+            v-bind="$attrs"
             :name="backBtnIcon"
             color="#cccccc"
             v-show="type == 'exist' && privateType == 'custom' && backBtnIcon"
@@ -26,7 +27,7 @@
         </view>
 
         <view class="arrow-close" @click="handClose('cross')">
-          <nut-icon v-if="closeBtnIcon" :name="closeBtnIcon" color="#cccccc" size="18px"></nut-icon>
+          <nut-icon v-bind="$attrs" v-if="closeBtnIcon" :name="closeBtnIcon" color="#cccccc" size="18px"></nut-icon>
         </view>
       </view>
 
@@ -56,6 +57,7 @@
               <nut-icon
                 class="region-item-icon"
                 type="self"
+                v-bind="$attrs"
                 :name="selectedIcon"
                 size="13px"
                 v-if="selectedRegion[tabName[tabIndex]].id == item.id"
@@ -102,6 +104,7 @@
               <nut-icon
                 class="exist-item-icon"
                 type="self"
+                v-bind="$attrs"
                 :name="item.selectedAddress ? selectedIcon : defaultIcon"
                 size="13px"
               ></nut-icon>

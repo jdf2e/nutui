@@ -39,6 +39,7 @@
             :class="{ activeTitleClass: option.value === modelValue, inactiveTitleClass: option.value !== modelValue }"
             v-if="option.value === modelValue"
             :name="optionIcon"
+            v-bind="$attrs"
             :color="parent.props.activeColor"
           ></nut-icon>
           <view
@@ -75,7 +76,6 @@ export default create({
       type: Number,
       default: 1
     },
-    titleIcon: String,
     activeTitleClass: String,
     inactiveTitleClass: String,
     optionIcon: {

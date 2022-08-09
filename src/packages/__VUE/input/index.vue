@@ -23,7 +23,7 @@
     </template>
     <template v-else>
       <view v-if="leftIcon && leftIcon.length > 0" class="nut-input-left-icon" @click="onClickLeftIcon">
-        <nut-icon :name="leftIcon" :size="leftIconSize"></nut-icon>
+        <nut-icon :name="leftIcon" v-bind="$attrs" :size="leftIconSize"></nut-icon>
       </view>
       <view
         v-if="label"
@@ -84,13 +84,14 @@
               v-if="clearable && !readonly"
               v-show="active && modelValue.length > 0"
               :name="clearIcon"
+              v-bind="$attrs"
               :size="clearSize"
               @click="clear"
             >
             </nut-icon>
           </view>
           <view v-if="rightIcon && rightIcon.length > 0" class="nut-input-right-icon" @click="onClickRightIcon">
-            <nut-icon :name="rightIcon" :size="rightIconSize"></nut-icon>
+            <nut-icon :name="rightIcon" v-bind="$attrs" :size="rightIconSize"></nut-icon>
           </view>
           <slot v-if="$slots.button" name="button" class="nut-input-button"></slot>
         </view>

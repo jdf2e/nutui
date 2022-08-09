@@ -4,7 +4,7 @@
       <view class="nut-step-line"></view>
       <view class="nut-step-icon" :class="[!dot ? (icon ? 'is-icon' : 'is-text') : '']">
         <template v-if="icon">
-          <nut-icon class="nut-step-icon-inner" :color="iconColor" :name="icon" :size="size" />
+          <nut-icon class="nut-step-icon-inner" v-bind="$attrs" :color="iconColor" :name="icon" :size="size" />
         </template>
         <template v-else-if="dot"></template>
         <template v-else>
