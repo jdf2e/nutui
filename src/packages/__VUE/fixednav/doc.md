@@ -148,15 +148,16 @@ export default {
 
 
 ### Prop
-| 字段           | 说明                       | 类型    | 默认值                       |
-|:---------------|:---------------------------|:--------|:-----------------------------|
-| visible        | 是否打开                   | Boolean | false                        |
-| nav-list       | 悬浮列表内容数据           | Array   | []                           |
-| active-text    | 收起列表按钮文案           | String  | 收起导航                     |
-| un-active-text | 展开列表按钮文案           | String  | 快速导航                     |
-| type           | 导航方向,可选值 left right | String  | right                        |
-| overlay        | 展开时是否显示遮罩         | Boolean | true                         |
-| position       | fixed 垂直位置             | Object  | {top: 'auto',bottom: 'auto'} |
+| 字段                | 说明                       | 类型    | 默认值                       |
+|:--------------------|:---------------------------|:--------|:-----------------------------|
+| visible             | 是否打开                   | Boolean | false                        |
+| nav-list            | 悬浮列表内容数据           | Array   | []                           |
+| active-color`3.2.1` | 选中按钮文案颜色           | String  | #fa2c19 默认集成主题色       |
+| active-text         | 收起列表按钮文案           | String  | 收起导航                     |
+| un-active-text      | 展开列表按钮文案           | String  | 快速导航                     |
+| type                | 导航方向,可选值 left right | String  | right                        |
+| overlay             | 展开时是否显示遮罩         | Boolean | true                         |
+| position            | fixed 垂直位置             | Object  | {top: 'auto',bottom: 'auto'} |
 
 
 ### Event

@@ -83,6 +83,13 @@
       align-items: center;
       min-width: 50px;
       flex-shrink: 0;
+
+      &.active {
+        > .span {
+          color: $fixednav-item-active-color;
+        }
+      }
+
       > img {
         width: 20px;
         height: 20px;
