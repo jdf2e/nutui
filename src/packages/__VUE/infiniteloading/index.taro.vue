@@ -12,7 +12,7 @@
   >
     <view class="nut-infinite-top" :style="getStyle">
       <view class="top-box" id="refreshTop">
-        <nut-icon class="top-img" :name="pullIcon"></nut-icon>
+        <nut-icon class="top-img" v-bind="$attrs" :name="pullIcon"></nut-icon>
         <view class="top-text">{{ pullTxt || translate('pullTxt') }}</view>
       </view>
     </view>
@@ -24,7 +24,7 @@
     <view class="nut-infinite-bottom">
       <template v-if="isInfiniting">
         <view class="bottom-box">
-          <nut-icon class="bottom-img" :name="loadIcon"></nut-icon>
+          <nut-icon class="bottom-img" v-bind="$attrs" :name="loadIcon"></nut-icon>
           <view class="bottom-text">{{ loadTxt || translate('loading') }}</view>
         </view>
       </template>

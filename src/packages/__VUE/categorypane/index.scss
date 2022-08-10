@@ -1,44 +1,25 @@
+.nut-theme-dark {
+  .nut-categorypane {
+    &__childTitle {
+      color: $white;
+    }
+    &__cateListRight {
+      background: $dark-background2;
+    }
+  }
+}
 .nut-categorypane {
-  &__cateList {
-    display: flex;
-    background: rgba(255, 255, 255, 1);
-  }
-
-  &__cateListLeft {
-    background: rgba(246, 247, 249, 1);
-  }
-
-  &__cateListItemChecked,
-  &__cateListItem {
-    width: 100px;
-    height: 50px;
-    font-size: 13px;
-    font-family: PingFangSC;
-    font-weight: normal;
-    color: rgba(51, 51, 51, 1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s;
-  }
-  &__cateListItemChecked {
-    background: rgba(255, 255, 255, 1);
-    font-weight: 500;
-    transition: all 0.3s;
-  }
-
   &__cateListRight {
     padding-left: 15px;
-    background: rgba(255, 255, 255, 1);
+    background: $category-bg-color;
   }
-
   &__childTitle {
     margin-top: 15px;
     margin-bottom: 15px;
     font-size: 13px;
     font-family: PingFangSC;
     font-weight: 500;
-    color: rgba(51, 51, 51, 1);
+    color: $category-pane-title-color;
   }
 
   &__childItemList {
@@ -56,18 +37,21 @@
   }
 
   &__skuName {
+    margin-left: 15px;
+    margin-top: 15px;
     margin-right: 10px;
     width: 75px;
     height: 40px;
-    border: 1px solid rgba(153, 153, 153, 1);
+    border: 1px solid $category-pane-border-color;
     border-radius: 5px;
     font-size: 12px;
     font-family: PingFangSC;
     font-weight: normal;
-    color: rgba(102, 102, 102, 1);
+    color: $category-pane-gray-color;
     display: flex;
     justify-content: center;
     align-items: center;
+
     &:nth-child(3n) {
       margin-right: 0;
     }
@@ -80,7 +64,7 @@
     font-size: 12px;
     font-family: PingFangSC;
     font-weight: normal;
-    color: rgba(102, 102, 102, 1);
+    color: $category-pane-gray-color;
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
@@ -89,36 +73,5 @@
   &__selfItemList {
     display: flex;
     flex-wrap: wrap;
-  }
-  &__selfskuName {
-    margin-left: 15px;
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 75px;
-    height: 40px;
-    border: 1px solid rgba(153, 153, 153, 1);
-    border-radius: 5px;
-    font-size: 12px;
-    font-family: PingFangSC;
-    font-weight: normal;
-    color: rgba(102, 102, 102, 1);
-  }
-
-  &__skuName {
-    margin-left: 15px;
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 75px;
-    height: 40px;
-    border: 1px solid rgba(153, 153, 153, 1);
-    border-radius: 5px;
-    font-size: 12px;
-    font-family: PingFangSC;
-    font-weight: normal;
-    color: rgba(102, 102, 102, 1);
   }
 }

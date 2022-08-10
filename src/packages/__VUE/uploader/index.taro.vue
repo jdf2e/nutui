@@ -55,7 +55,7 @@
       :class="[listType]"
       v-if="listType == 'picture' && !$slots.default && maximum - fileList.length"
     >
-      <nut-icon :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
+      <nut-icon v-bind="$attrs" :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
       <nut-button class="nut-uploader__input" @click="chooseImage" />
     </view>
   </view>
@@ -101,6 +101,10 @@ export default create({
     disabled: { type: Boolean, default: false },
     autoUpload: { type: Boolean, default: true },
     beforeUpload: {
+      type: Function,
+      default: null
+    },
+    beforeXhrUpload: {
       type: Function,
       default: null
     },
@@ -164,6 +168,7 @@ export default create({
       uploadOption.method = props.method;
       uploadOption.headers = props.headers;
       uploadOption.taroFilePath = fileItem.path;
+      uploadOption.beforeXhrUpload = props.beforeXhrUpload;
       uploadOption.onStart = (option: UploadOptions) => {
         fileItem.status = 'ready';
         fileItem.message = translate('readyUpload');

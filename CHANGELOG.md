@@ -1,3 +1,25 @@
+## v3.2.1
+
+`2022-08-09`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @LadyChatterleyLover @zjyau @sushi-su
+
+* :sparkles: 暗黑模式所有组件适配完成 @nutui-teams
+* :sparkles: feat(uploader): taro env before-xhr-upload #1535 @richard1015
+* :sparkles: chore(fixednav): add props active-color #1393 @LadyChatterleyLover @richard1015
+* :sparkles: feat(steps): 横向缺少点状步骤条样式 (#1540) @sushi-su
+* :sparkles: feat(cell、step、menu...): add props font-class-name、class-prefix (#1372) # @richard1015
+* :bug: fix: 🔥 Vue warn Failed to resolve component scroll-view  (#1523) @yangxiaolu1993
+* :bug: fix(picker): 首次弹起点击确定无返回值bug @yangxiaolu1993
+* :bug: fix(numberkeyboard): props conflict issue #1486 (#1526) @Drjingfubo
+* :bug: fix(audiooperate): 修复打包结果d.ts中props的类型错误 (#1534) @eiinu
+* :bug: fix(tag): 修复 plain 与其他 prop 组合使用时未生效问题 #1472 (#1530) @eiinu
+* :bug: fix(swiper): 解决PC端轮播图滑动失效问题 #1217 (#1531) @eiinu
+* :bug: fix: card nut-pric错误 (#1536) @zjyau
+* 📖docs(menu): add install OverLay, Popup #1485 @richard1015
+* 🍭style(watermark、category、menu): edit sass @richard1015
+
 ## v3.2.0
 
 `2022-08-01`

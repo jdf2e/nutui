@@ -148,15 +148,16 @@ export default {
 
 
 ### Prop
-| Attribute      | Description                                         | Type    | Default                      |
-|:---------------|:----------------------------------------------------|:--------|:-----------------------------|
-| visible        | visible is                                          | Boolean | false                        |
-| nav-list       | Suspended list content data                         | Array   | []                           |
-| active-text    | Stow list button copy                               | String  | Close Nav                    |
-| un-active-text | Expand list button copy                             | String  | Open Nav                     |
-| type           | Navigation direction, optional value `left` `right` | String  | right                        |
-| overlay        | Whether to display the mask when expanding          | Boolean | true                         |
-| position       | `fixed` Vertical position                           | Object  | {top: 'auto',bottom: 'auto'} |
+| Attribute           | Description                                         | Type    | Default                      |
+|:--------------------|:----------------------------------------------------|:--------|:-----------------------------|
+| visible             | visible is                                          | Boolean | false                        |
+| nav-list            | Suspended list content data                         | Array   | []                           |
+| active-color`3.2.1` | list active button color                            | String  | #fa2c19 Inherit theme color  |
+| active-text         | Stow list button copy                               | String  | Close Nav                    |
+| un-active-text      | Expand list button copy                             | String  | Open Nav                     |
+| type                | Navigation direction, optional value `left` `right` | String  | right                        |
+| overlay             | Whether to display the mask when expanding          | Boolean | true                         |
+| position            | `fixed` Vertical position                           | Object  | {top: 'auto',bottom: 'auto'} |
 
 
 ### Event

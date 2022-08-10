@@ -119,6 +119,58 @@
     }
   }
 }
+.nut-steps-horizontal {
+  &.nut-steps-dot {
+    .nut-step-head {
+      margin-top: 7px;
+      margin-bottom: 0;
+    }
+    .nut-step-line {
+      top: 50%;
+      bottom: -50%;
+    }
+    .nut-step-icon {
+      width: 8px;
+      height: 8px;
+      background: $primary-color;
+      border-radius: 50%;
+      box-sizing: content-box;
+    }
+    .nut-step-wait {
+      .nut-step-icon {
+        background-color: $steps-wait-icon-bg-color;
+      }
+      .nut-step-content {
+        color: $steps-wait-content-color;
+      }
+    }
+    .nut-step-finish {
+      .nut-step-icon {
+        background-color: $primary-color;
+      }
+    }
+    .nut-step-process {
+      .nut-step-icon {
+        position: relative;
+        background-color: $primary-color;
+        &:before {
+          content: '';
+          display: inline-block;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin-left: -7px;
+          margin-top: -7px;
+          width: 14px;
+          height: 14px;
+          background-color: $primary-color-end;
+          border-radius: 50%;
+          opacity: 0.23;
+        }
+      }
+    }
+  }
+}
 .nut-steps-vertical {
   .nut-step {
     display: flex;

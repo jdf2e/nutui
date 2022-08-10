@@ -5,6 +5,8 @@
   transition-property: transform;
   box-sizing: content-box;
   overflow: hidden;
+  cursor: grab;
+  user-select: none;
   &-inner {
     display: flex;
     height: 100%;
