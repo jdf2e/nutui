@@ -31,6 +31,7 @@
       :show-today="showToday"
       :show-title="showTitle"
       :show-sub-title="showSubTitle"
+      :to-date-animation="toDateAnimation"
     >
       <template v-slot:btn v-if="showTopBtn">
         <slot name="btn"> </slot>
@@ -65,6 +66,7 @@
     :show-today="showToday"
     :show-title="showTitle"
     :show-sub-title="showSubTitle"
+    :to-date-animation="toDateAnimation"
     ref="calendarRef"
   >
     <template v-slot:btn v-if="showTopBtn">
@@ -102,6 +104,10 @@ export default create({
     isAutoBackFill: {
       type: Boolean,
       default: false
+    },
+    toDateAnimation: {
+      type: Boolean,
+      default: true
     },
     poppable: {
       type: Boolean,
