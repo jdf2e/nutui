@@ -32,6 +32,7 @@
             :columnsType="columnsType"
             :value="defaultValues[columnIndex]"
             :threeDimensional="threeDimensional"
+            :swipeDuration="swipeDuration"
             @change="
               (option) => {
                 changeHandler(columnIndex, option);
@@ -98,6 +99,11 @@ export default create({
     threeDimensional: {
       type: Boolean,
       default: true
+    },
+    // 惯性滚动 时长
+    swipeDuration: {
+      type: [Number, String],
+      default: 1000
     }
   },
   emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],
@@ -217,6 +223,14 @@ export default create({
     };
 
     const confirmHandler = () => {
+      if (defaultValues.value && !defaultValues.value.length) {
+        columnsList.value.forEach((columns) => {
+          // console.log(columns);
+          defaultValues.value.push(columns[0].value);
+          selectedOptions.value.push(columns[0]);
+        });
+      }
+
       emit('confirm', {
         selectedValue: defaultValues.value,
         selectedOptions: selectedOptions.value

@@ -272,9 +272,8 @@ export default {
       state.date5 = [`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`];
     };
     const goDate = () => {
-      console.log(calendarRef.value);
       if (calendarRef.value) {
-        calendarRef.value.calendarRef.scrollToDate('2022-04-01');
+        calendarRef.value.scrollToDate('2022-04-01');
       }
     };
     return {

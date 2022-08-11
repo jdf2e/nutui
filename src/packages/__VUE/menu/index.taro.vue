@@ -11,7 +11,8 @@
           <view class="nut-menu__title" :class="getClasses(item.state.showPopup)">
             <view class="nut-menu__title-text">{{ item.renderTitle() }}</view>
             <nut-icon
-              :name="item.titleIcon || (direction === 'up' ? 'arrow-up' : 'down-arrow')"
+              v-bind="$attrs"
+              :name="titleIcon || (direction === 'up' ? 'arrow-up' : 'down-arrow')"
               size="10"
               class="nut-menu__title-icon"
             ></nut-icon>
@@ -45,6 +46,8 @@ export default create({
       type: [Number, String],
       default: 0.3
     },
+    titleIcon: String,
+
     closeOnClickOverlay: {
       type: Boolean,
       default: true

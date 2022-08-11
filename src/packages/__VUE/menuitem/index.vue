@@ -37,6 +37,7 @@
           @click="onClick(option)"
         >
           <nut-icon
+            v-bind="$attrs"
             :class="{ activeTitleClass: option.value === modelValue, inactiveTitleClass: option.value !== modelValue }"
             v-if="option.value === modelValue"
             :name="optionIcon"
@@ -76,7 +77,6 @@ export default create({
       type: Number,
       default: 1
     },
-    titleIcon: String,
     activeTitleClass: String,
     inactiveTitleClass: String,
     optionIcon: {

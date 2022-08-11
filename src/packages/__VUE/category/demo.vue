@@ -4,7 +4,6 @@
     <nut-category :category="category" @change="change">
       <nut-categorypane :categoryChild="categoryChild" @onChange="onChange"> </nut-categorypane>
     </nut-category>
-
     <h2>{{ translate('title2') }}</h2>
     <nut-category :category="category" @change="changeText">
       <nut-categorypane type="text" :categoryChild="categoryChild" @onChange="onChange"> </nut-categorypane
@@ -66,15 +65,15 @@ export default createDemo({
     };
 
     const change = (index: any) => {
-      data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
+      data.categoryChild = [].concat(data?.categoryInfo?.category[index + 1]?.children as any);
     };
 
     const changeText = (index: any) => {
       data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
     };
 
-    const changeCustom = () => {
-      console.log('点击分类数据');
+    const changeCustom = (v: any) => {
+      console.log('点击分类数据:' + JSON.stringify(v));
     };
 
     const onChange = (v: any) => {

@@ -66,7 +66,7 @@ import { ref } from 'vue';
 export default {
   setup() {
     const testClick = (event: Event) => {
-      console.log('点击事件');
+      // console.log('点击事件');
     };
     const switchChecked = ref(true);
     return { testClick, switchChecked };
