@@ -140,11 +140,9 @@ export default create({
           return item.name == value;
         });
       }
-      setTimeout(() => {
-        if (parent.children[index].href) {
-          window.location.href = parent.children[index].href;
-        }
-      });
+      if (parent.children[index]?.href) {
+        window.location.href = parent.children[index].href;
+      }
     });
     return {
       state,
