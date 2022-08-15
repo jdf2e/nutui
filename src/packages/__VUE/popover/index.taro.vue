@@ -14,7 +14,7 @@
             :class="{ 'popover-menu-item': true, disabled: item.disabled }"
             @click.stop="chooseItem(item, index)"
           >
-            <slot v-if="item.icon"> <nut-icon class="item-img" :name="item.icon"></nut-icon></slot>
+            <slot v-if="item.icon"> <nut-icon v-bind="$attrs" class="item-img" :name="item.icon"></nut-icon></slot>
             <view class="popover-menu-name">{{ item.name }}</view>
           </view>
         </view>
