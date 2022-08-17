@@ -168,14 +168,12 @@ test('should render icon when iconLeft and iconRight props setted', async () => 
   const wrapper = mount(InputNumber, {
     props: {
       iconLeft: 'left',
-      iconRight: 'right',
-      fontClassName: 'n-nutui-iconfont',
-      classPrefix: 'n-nut-icon'
+      iconRight: 'right'
     }
   });
 
   const iconList = wrapper.findAll('.nut-icon');
   expect(iconList.length).toBe(2);
-  expect(iconList[0].html()).toContain('n-nut-icon-left');
-  expect(iconList[1].html()).toContain('n-nut-icon-right');
+  expect(iconList[0].html()).toContain('nut-icon-left');
+  expect(iconList[1].html()).toContain('nut-icon-right');
 });

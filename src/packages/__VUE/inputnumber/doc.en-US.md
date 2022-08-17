@@ -255,8 +255,6 @@ Asynchronous modification through `change` event and `model-value`
 | readonly       | Read only status disables input box operation behavior | Boolean        | false      |
 | icon-left`v3.2.2`  | Left icon name             | String         | `minus`     |
 | icon-right`v3.2.2` | Right icon name             | String         | `plus`      |
-| font-class-name `v3.2.2` | Custom icon font base class name | String   | `plus` |
-| class-prefix `v3.2.2` | Custom icon class name prefix for using custom icons | String   | `plus`  |
 
 ### Events
 
