@@ -216,6 +216,27 @@ Asynchronous modification through `change` event and `model-value`
 ```
 
 :::
+### Custsom icon name 
+
+:::demo
+
+```html
+<template>
+  <nut-inputnumber icon-left="left" icon-right="right" v-model="value" />
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const value = ref(1);
+      return { value };
+    },
+  };
+</script>
+```
+
+:::
 
 ## API
 
@@ -232,6 +253,8 @@ Asynchronous modification through `change` event and `model-value`
 | decimal-places | Set reserved decimal places           | String、Number | `0`        |
 | disabled       | Disable all features               | Boolean        | false      |
 | readonly       | Read only status disables input box operation behavior | Boolean        | false      |
+| icon-left`v3.2.2`  | Left icon name             | String         | `minus`     |
+| icon-right`v3.2.2` | Right icon name             | String         | `plus`      |
 
 ### Events
 
