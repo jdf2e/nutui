@@ -5,6 +5,7 @@
       class="nut-inputnumber__icon"
       :class="{ 'nut-inputnumber__icon--disabled': !reduceAllow() }"
       :size="buttonSize"
+      v-bind="$attrs"
       @click="reduce"
     >
     </nut-icon>
@@ -25,6 +26,7 @@
       class="nut-inputnumber__icon"
       :class="{ 'nut-inputnumber__icon--disabled': !addAllow() }"
       :size="buttonSize"
+      v-bind="$attrs"
       @click="add"
     >
     </nut-icon>
