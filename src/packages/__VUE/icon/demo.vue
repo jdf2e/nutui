@@ -30,7 +30,7 @@
     <nut-cell-group v-for="item in icons.data" :title="currentLang == 'zh-CN' ? item.name : item.nameEn" :key="item">
       <nut-cell>
         <ul>
-          <li v-for="item in item.icons" :key="item" @click="copyText(item)">
+          <li v-for="item in item.icons" :key="item" @click="copyTag(item)">
             <nut-icon :name="item"></nut-icon>
             <span>{{ item }}</span>
           </li>
@@ -40,7 +40,7 @@
     <nut-cell-group v-for="item in icons.style" :title="currentLang == 'zh-CN' ? item.name : item.nameEn" :key="item">
       <nut-cell>
         <ul>
-          <li v-for="it in item.icons" :key="it" @click="copyText(it['animation-name'])">
+          <li v-for="it in item.icons" :key="it" @click="copyTag(it['animation-name'])">
             <nut-icon :name="it.name" :class="`nut-icon-${it['animation-name']} nut-icon-${it['animation-time']}`">
             </nut-icon>
             <span>{{ it['animation-name'] }}</span>
@@ -79,18 +79,19 @@ export default createDemo({
   props: {},
   setup() {
     initTranslate();
-    const copyText = (text: string) => {
+    const copyTag = (name: string) => {
+      const text = `&lt;nut-icon name="${name}"&gt;&lt;/nut-icon&gt;`;
       const input = document.createElement('input');
       document.body.appendChild(input);
       input.setAttribute('value', text);
       input.select();
       if (document.execCommand('copy')) {
         document.execCommand('copy');
-        Toast.text(translate('copyToast'));
+        Toast.text(`${translate('copyToast')}: <br/>${text}`);
       }
       document.body.removeChild(input);
     };
-    return { icons, translate, currentLang, copyText };
+    return { icons, translate, currentLang, copyTag };
   }
 });
 </script>
