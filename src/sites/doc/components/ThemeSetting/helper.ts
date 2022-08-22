@@ -43,7 +43,7 @@ const loadScript = async (url: string) =>
     document.head.appendChild(script);
   });
 const awaitIframe = async () => {
-  while (!window.frames[0] || !window.frames[0].document.querySelector('#nav')) {
+  while (!window.frames[0]) {
     await new Promise((r) => setTimeout(r, 100));
   }
 };
