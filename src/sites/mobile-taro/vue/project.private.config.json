@@ -51,9 +51,16 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "dentry/pages/picker/index",
+          "pathName": "dentry/pages/picker/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
   },
-  "projectname": "NutUI-Taro"
+  "projectname": "vue"
 }
