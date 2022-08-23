@@ -275,6 +275,7 @@ export default create({
     // 惯性滚动结束
     const stopMomentum = () => {
       moving.value = false;
+      touchTime.value = 0;
       setChooseValue();
     };
 
