@@ -18,7 +18,12 @@
           {{ item.text }}
         </view>
         <!-- 平铺 -->
-        <view class="nut-picker-roller-item-tile" v-if="item && item.text && !threeDimensional">
+        <view
+          class="nut-picker-roller-item-tile"
+          ref="listbox"
+          :id="'listbox' + refRandomId"
+          v-if="item && item.text && !threeDimensional"
+        >
           {{ item.text }}
         </view>
       </template>

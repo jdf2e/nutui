@@ -38,6 +38,25 @@
     >
     </nut-picker>
 
+    <h2>平铺展示</h2>
+    <nut-cell
+      title="请选择城市"
+      :desc="title"
+      @click="
+        () => {
+          showTitle = true;
+        }
+      "
+    ></nut-cell>
+    <nut-picker
+      v-model:visible="showTitle"
+      :columns="columns"
+      title="城市选择"
+      :three-dimensional="false"
+      @confirm="(options) => confirm('title', options)"
+    >
+    </nut-picker>
+
     <h2>多列样式</h2>
     <nut-cell
       title="请选择时间"
@@ -246,6 +265,7 @@ export default {
     const showAsync = ref(false);
     const showEffect = ref(false);
     const showPort = ref(false);
+    const showTitle = ref(false);
 
     const desc = reactive({
       index: '',
@@ -253,7 +273,8 @@ export default {
       multiple: '',
       cascader: '',
       async: '',
-      effect: ''
+      effect: '',
+      title: ''
     });
 
     const open = (index: number) => {
@@ -359,6 +380,7 @@ export default {
       alwaysFun,
       columsNum,
       showPort,
+      showTitle,
       portColumns,
       portChange
     };

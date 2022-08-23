@@ -1,10 +1,11 @@
 <template>
   <view :class="classes" :style="{ height: pxCheck(buttonSize) }">
     <nut-icon
-      name="minus"
+      :name="iconLeft"
       class="nut-inputnumber__icon"
       :class="{ 'nut-inputnumber__icon--disabled': !reduceAllow() }"
       :size="buttonSize"
+      v-bind="$attrs"
       @click="reduce"
     >
     </nut-icon>
@@ -21,10 +22,11 @@
       @focus="focus"
     />
     <nut-icon
-      name="plus"
+      :name="iconRight"
       class="nut-inputnumber__icon"
       :class="{ 'nut-inputnumber__icon--disabled': !addAllow() }"
       :size="buttonSize"
+      v-bind="$attrs"
       @click="add"
     >
     </nut-icon>
@@ -72,6 +74,14 @@ export default create({
     readonly: {
       type: Boolean,
       default: false
+    },
+    iconLeft: {
+      type: String,
+      default: 'minus'
+    },
+    iconRight: {
+      type: String,
+      default: 'plus'
     }
   },
   emits: ['update:modelValue', 'change', 'blur', 'focus', 'reduce', 'add', 'overlimit'],

@@ -32,7 +32,7 @@
         ref="calendarRef"
         v-model:visible="isVisible1"
         :default-value="date1"
-        type="multiple"
+        type="range"
         :start-date="`2019-12-22`"
         :end-date="`2021-01-08`"
         @close="closeSwitch('isVisible1')"
