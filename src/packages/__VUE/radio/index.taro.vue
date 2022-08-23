@@ -15,7 +15,7 @@ export default create({
       default: 'round' // button
     },
     label: {
-      type: [String, Number],
+      type: [String, Number, Boolean],
       default: ''
     },
     iconName: {
