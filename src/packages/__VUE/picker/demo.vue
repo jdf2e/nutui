@@ -129,25 +129,6 @@
     >
       <nut-button block type="primary" @click="alwaysFun">{{ translate('always') }}</nut-button></nut-picker
     >
-
-    <!-- <h2>异步获取</h2>
-    <nut-cell
-      :title="translate('validTime')"
-      :desc="effect"
-      @click="
-        () => {
-          showJK = true;
-        }
-      "
-    ></nut-cell>
-    <nut-picker
-      v-model:visible="showJK"
-      :columns="jkColumns"
-      :title="translate('chooseDate')"
-      @confirm="(options) => confirm('effect', options)"
-      @change="changeJK"
-    ></nut-picker
-    > -->
   </div>
 </template>
 <script lang="ts">
