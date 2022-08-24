@@ -1247,6 +1247,18 @@
           "tarodoc": false,
           "type": "component",
           "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Invoice",
+          "cType": "特色组件",
+          "cName": "发票",
+          "desc": "发票",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "ailululu",
+          "taro": true
         }
       ]
     }
