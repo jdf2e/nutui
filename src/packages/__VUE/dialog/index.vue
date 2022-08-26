@@ -13,7 +13,7 @@
     @click-close-icon="closed"
   >
     <view :class="classes">
-      <view v-if="title" class="nut-dialog__header">
+      <view v-if="$slots.header || title" class="nut-dialog__header">
         <slot v-if="$slots.header" name="header"></slot>
         <template v-else>{{ title }}</template>
       </view>
