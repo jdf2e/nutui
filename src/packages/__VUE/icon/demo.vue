@@ -80,14 +80,15 @@ export default createDemo({
   setup() {
     initTranslate();
     const copyTag = (name: string) => {
-      const text = `&lt;nut-icon name="${name}"&gt;&lt;/nut-icon&gt;`;
+      const text = `<nut-icon name="${name}"></nut-icon>`;
+      const displayText = `&lt;nut-icon name="${name}"&gt;&lt;/nut-icon&gt;`;
       const input = document.createElement('input');
       document.body.appendChild(input);
       input.setAttribute('value', text);
       input.select();
       if (document.execCommand('copy')) {
         document.execCommand('copy');
-        Toast.text(`${translate('copyToast')}: <br/>${text}`);
+        Toast.text(`${translate('copyToast')}: <br/>${displayText}`);
       }
       document.body.removeChild(input);
     };

@@ -18,7 +18,12 @@
           {{ item.text }}
         </view>
         <!-- 平铺 -->
-        <view class="nut-picker-roller-item-tile" v-if="item && item.text && !threeDimensional">
+        <view
+          class="nut-picker-roller-item-tile"
+          ref="listbox"
+          :id="'listbox' + refRandomId"
+          v-if="item && item.text && !threeDimensional"
+        >
           {{ item.text }}
         </view>
       </template>
@@ -278,6 +283,7 @@ export default create({
     // 惯性滚动结束
     const stopMomentum = () => {
       moving.value = false;
+      touchTime.value = 0;
       setChooseValue();
     };
 
@@ -290,8 +296,10 @@ export default create({
     watch(
       () => props.column,
       (val) => {
-        state.transformY = 0;
-        modifyStatus(false);
+        if (props.column && props.column.length > 0) {
+          state.transformY = 0;
+          modifyStatus(false);
+        }
       },
       {
         deep: true
@@ -303,22 +311,6 @@ export default create({
       (val) => {
         state.transformY = 0;
         modifyStatus(false);
-      },
-      {
-        deep: true
-      }
-    );
-
-    watch(
-      () => props.itemShow,
-      (val) => {
-        if (val) {
-          setTimeout(() => {
-            getReference();
-          }, 200);
-        } else {
-          state.transformY = 0;
-        }
       },
       {
         deep: true
