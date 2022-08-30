@@ -87,7 +87,7 @@ export const component = {
         const { required, validator, regex, message } = _rules.shift() as FormItemRule;
         const errorMsg = { prop, message };
         if (required) {
-          if (!value) {
+          if (value === '' || value === undefined || value === null) {
             return _Promise(errorMsg);
           }
         }
