@@ -48,6 +48,8 @@
   &nbsp;
   <a href="https://nutui.jd.com/jdt/#/">京东科技视觉（Vue3）</a>
   &nbsp;
+  <a href="https://nutui.jd.com/?jdb#/zh-CN/component/button">京东零售B商城视觉（Vue3）</a>
+  &nbsp;
   <a href="https://nutui.jd.com/theme/#/base">组件级UI定制</a>
 </p>
 
