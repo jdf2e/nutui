@@ -307,6 +307,20 @@ export default create({
     );
 
     watch(
+      () => props.itemShow,
+      (val) => {
+        if (val) {
+          setTimeout(() => {
+            getReference();
+          }, 200);
+        }
+      },
+      {
+        deep: true
+      }
+    );
+
+    watch(
       () => props.value,
       (val) => {
         state.transformY = 0;

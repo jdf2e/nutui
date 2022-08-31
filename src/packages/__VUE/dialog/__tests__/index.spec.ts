@@ -38,6 +38,17 @@ test('should render dialog template', async () => {
   expect(await overLay.find('.nut-dialog__content'));
 });
 
+test('header slot', async () => {
+  const wrapper = mount(DialogTemplate, {
+    slots: {
+      header: 'test-title'
+    }
+  });
+
+  const overLay = wrapper.getComponent(OverLay);
+  expect(await overLay.find('.nut-dialog__header'));
+});
+
 // test('should render dialog methods', async () => {
 // Dialog({
 //   title: '基础弹框',
