@@ -79,6 +79,9 @@ export const component = {
           }
           titles.value.push(title);
         } else {
+          if (vnode.children == ' ') {
+            return;
+          }
           renderTitles(vnode.children as VNode[]);
         }
       });
