@@ -81,6 +81,9 @@
     .nut-toast-icon-wrapper {
       animation: rotation 2s linear infinite;
     }
+    .nut-toast-icon-no-animation {
+      animation: none;
+    }
   }
 }
 
