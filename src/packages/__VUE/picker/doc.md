@@ -231,6 +231,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
   <nut-cell title="请选择城市" :desc="desc" @click="()=>{show=true}"></nut-cell>
   <nut-picker
     v-model:visible="show"
+    v-model="selectedCascader"
     :columns="cascaderColumns"
     title="城市选择"
     @confirm="confirm"
@@ -243,6 +244,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
     setup(props) {
       const show = ref(false);
       const desc = ref('');
+      const selectedCascader = ref(['FuJian', 'FuZhou','TaiJiang']);
       const cascaderColumns = ref([
         {
           text: '浙江',
@@ -297,7 +299,7 @@ columns 属性可以通过二维数组的形式配置多列选择。
         console.log(selectedValue);
       };
 
-      return {show,desc,cascaderColumns,change, confirm};
+      return {show,desc,selectedCascader,cascaderColumns,change, confirm};
     }
   };
 </script>

@@ -260,6 +260,7 @@ export default create({
     };
 
     const modifyStatus = (type: boolean) => {
+      console.log('modifyStatus', props.value);
       const { column } = props;
       let index = column.findIndex((columnItem) => columnItem.value == props.value);
 
@@ -290,7 +291,7 @@ export default create({
     const getReference = async () => {
       const refe = await useTaroRect(listbox, Taro);
       state.lineSpacing = refe.height ? refe.height : 36;
-      modifyStatus(true);
+      modifyStatus(false);
     };
 
     watch(
