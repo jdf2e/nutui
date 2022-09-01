@@ -216,6 +216,27 @@ app.use(InputNumber).use(Icon);
 ```
 
 :::
+### 自定义按钮图标
+
+:::demo
+
+```html
+<template>
+  <nut-inputnumber icon-left="left" icon-right="right" v-model="value" />
+</template>
+<script lang="ts">
+  import { ref } from 'vue';
+  export default {
+    props: {},
+    setup() {
+      const value = ref(1);
+      return { value };
+    },
+  };
+</script>
+```
+
+:::
 
 ## API
 
@@ -232,6 +253,10 @@ app.use(InputNumber).use(Icon);
 | decimal-places | 设置保留的小数位           | String、Number | `0`        |
 | disabled       | 禁用所有功能               | Boolean        | false      |
 | readonly       | 只读状态禁用输入框操作行为 | Boolean        | false      |
+| icon-left `v3.2.2`  | 左侧操作符图标名，同 Icon 组件 name 属性 | String  | `minus` |
+| icon-right `v3.2.2` | 右侧操作符图标名，同 Icon 组件 name 属性 | String  | `plus`  |
+| font-class-name `v3.2.2` | 自定义icon 字体基础类名 | String   | `nutui-iconfont` |
+| class-prefix `v3.2.2` | 自定义icon 类名前缀，用于使用自定义图标 | String   | `nut-icon`  |
 
 ### Events
 

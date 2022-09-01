@@ -128,9 +128,11 @@ test('menu item title props: nut-menu__title-text html should contain custom tit
 
 test('menu item title icon props: nut-menu__title i classes should contain nut-icon-joy-smile', async () => {
   const wrapper = mount(Menu, {
+    props: {
+      titleIcon: 'joy-smile'
+    },
     slots: {
       default: h(MenuItem, {
-        titleIcon: 'joy-smile',
         modelValue: 0,
         options: options1
       })

@@ -55,6 +55,7 @@
   }
 
   &__label {
+    flex: 1;
     margin-left: $radio-label-margin-left;
     font-size: $radio-label-font-size;
     color: $radio-label-font-color;

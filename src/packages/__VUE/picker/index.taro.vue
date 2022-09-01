@@ -23,6 +23,7 @@
         <view class="nut-picker__hairline"></view>
         <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
           <nut-picker-column
+            :ref="swipeRef"
             :itemShow="show"
             :column="column"
             :readonly="readonly"
@@ -100,6 +101,14 @@ export default create({
 
     // 选中项
     let defaultValues = ref<(number | string)[]>(props.modelValue);
+
+    const pickerColumn = ref<any[]>([]);
+
+    const swipeRef = (el: any) => {
+      if (el && pickerColumn.value.length < columnsList.value.length) {
+        pickerColumn.value.push(el);
+      }
+    };
 
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -207,6 +216,11 @@ export default create({
     };
 
     const confirmHandler = () => {
+      pickerColumn.value.length > 0 &&
+        pickerColumn.value.forEach((column) => {
+          column.stopMomentum();
+        });
+
       if (defaultValues.value && !defaultValues.value.length) {
         columnsList.value.forEach((columns) => {
           defaultValues.value.push(columns[0].value);
@@ -222,7 +236,6 @@ export default create({
     };
 
     onMounted(() => {
-      console.log('更新');
       if (props.visible) state.show = props.visible;
     });
 
@@ -256,6 +269,8 @@ export default create({
       () => props.visible,
       (val) => {
         state.show = val;
+        console.log(defaultValues.value);
+        if (val) pickerColumn.value = [];
       }
     );
 
@@ -276,7 +291,9 @@ export default create({
       changeHandler,
       confirmHandler,
       defaultValues,
-      translate
+      translate,
+      pickerColumn,
+      swipeRef
     };
   }
 });
