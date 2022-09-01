@@ -10,6 +10,8 @@
     :title="title"
     @confirm="confirm"
     :isWrapTeleport="isWrapTeleport"
+    :threeDimensional="threeDimensional"
+    :swipeDuration="swipeDuration"
   >
     <template #top>
       <slot name="top"></slot>
@@ -86,6 +88,16 @@ export default create({
       type: Function as PropType<import('./type').Formatter>,
       default: null
     },
+    // 是否开启3D效果
+    threeDimensional: {
+      type: Boolean,
+      default: true
+    },
+    // 惯性滚动 时长
+    swipeDuration: {
+      type: [Number, String],
+      default: 1000
+    },
     filter: Function as PropType<import('./type').Filter>
   },
   emits: ['click', 'update:visible', 'change', 'confirm', 'update:moduleValue'],
@@ -137,7 +149,6 @@ export default create({
           }
         }
       }
-
       return {
         [`${type}Year`]: year,
         [`${type}Month`]: month,
