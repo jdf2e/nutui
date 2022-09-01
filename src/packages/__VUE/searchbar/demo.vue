@@ -1,10 +1,10 @@
 <template>
   <div class="demo full">
     <h2>{{ translate('basic1') }}</h2>
-    <nut-searchbar v-model="searchValue" :label="translate('word1')"> </nut-searchbar>
+    <nut-searchbar v-model="searchValue" :label="translate('word1')" :clear-icon="icon"> </nut-searchbar>
 
     <h2>{{ translate('basic2') }}</h2>
-    <nut-searchbar v-model="searchValue1" @search="search"> </nut-searchbar>
+    <nut-searchbar v-model="searchValue1" @search="search" :clear-icon="icon2"> </nut-searchbar>
 
     <h2>{{ translate('basic3') }}</h2>
     <nut-searchbar v-model="searchValue2" @click-left-icon="clickLeftIcon">
@@ -77,10 +77,13 @@ const initTranslate = () =>
 export default createDemo({
   props: {},
   setup() {
+    const icon = 'close';
+    const icon2 =
+      'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
     initTranslate();
     const state = reactive({
-      searchValue: '',
-      searchValue1: '',
+      searchValue: '1',
+      searchValue1: '2',
       searchValue2: '',
       searchValue3: '',
       searchValue4: '',
@@ -102,6 +105,8 @@ export default createDemo({
     };
 
     return {
+      icon,
+      icon2,
       clickLeft,
       clickLeftIcon,
       clickRightIcon,
