@@ -21,7 +21,7 @@ export default create({
       default: 10
     },
     elId: {
-      type: [String, Element],
+      type: [String],
       default: 'body'
     },
 

@@ -113,13 +113,13 @@ app.use(Watermark);
 | height      | Height of watermark               | `number`           | `64`                 |
 | rotate      | Rotation angle when drawing watermark   | `number`           | `-22`                |
 | image       | Image source, it is recommended to export 2x or 3x images, and the image rendering watermark is preferred | `string`           | -                    |
-| imageWidth  | Width of image                                             | `number`           | `120`                |
-| imageHeight | Height of image                                             | `number`           | `64`                 |
-| zIndex      | Z-index of the appended watermark element                             | `number`           | `2000`               |
+| image-width  | Width of image                                             | `number`           | `120`                |
+| image-height | Height of image                                             | `number`           | `64`                 |
+| z-index      | Z-index of the appended watermark element                             | `number`           | `2000`               |
 | content     | Watermark text content                                         | `string`           | -                    |
-| fontColor   | Watermark text color                                         | `string`           | `rgba(0, 0, 0, .15)` |
-| fontSize    | Watermark text font size                                             | `string \| number` | `16`                 |
-| gapX        | Horizontal spacing between watermarks                                   | `number`           | `24`                 |
-| gapY        | Vertical spacing between watermarks                                   | `number`           | `48`                 |
-| fullPage    | Overwrite entire page                                     | `boolean`          | `true`               |
-| fontFamily  | Watermark text font family                  | `boolean`          | `true`               |
+| font-color   | Watermark text color                                         | `string`           | `rgba(0, 0, 0, .15)` |
+| font-size    | Watermark text font size                                             | `string \| number` | `16`                 |
+| gap-x        | Horizontal spacing between watermarks                                   | `number`           | `24`                 |
+| gap-y        | Vertical spacing between watermarks                                   | `number`           | `48`                 |
+| full-page    | Overwrite entire page                                     | `boolean`          | `true`               |
+| font-family  | Watermark text font family                  | `boolean`          | `true`               |
