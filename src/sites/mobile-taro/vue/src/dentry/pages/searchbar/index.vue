@@ -1,7 +1,7 @@
 <template>
   <div class="demo full">
     <h2>基础用法</h2>
-    <nut-searchbar v-model="searchValue"> </nut-searchbar>
+    <nut-searchbar v-model="searchValue" :focus-style="{ border: '1px solid red' }"> </nut-searchbar>
 
     <h2>搜索事件监听</h2>
     <nut-searchbar v-model="searchValue1" @search="search"> </nut-searchbar>
@@ -26,6 +26,9 @@
     >
     </nut-searchbar>
 
+    <h2>自定义清除按钮 icon</h2>
+    <nut-searchbar v-model="searchValue6" :clear-icon="icon"> </nut-searchbar>
+
     <h2>显示全部 icon</h2>
     <nut-searchbar v-model="searchValue5">
       <template v-slot:leftout>
@@ -49,6 +52,9 @@ import { toRefs, reactive } from 'vue';
 export default {
   props: {},
   setup() {
+    const icon =
+      'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
+
     const state = reactive({
       searchValue: '',
       searchValue1: '',
@@ -56,10 +62,11 @@ export default {
       searchValue3: '',
       searchValue4: '',
       searchValue5: '',
+      searchValue6: '',
       confirmType: 'search'
     });
 
-    const search = function (e: any) {
+    const search = function () {
       console.log('搜索触发');
     };
 
@@ -68,6 +75,7 @@ export default {
     };
 
     return {
+      icon,
       clickLeft,
       search,
       ...toRefs(state)

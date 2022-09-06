@@ -129,7 +129,7 @@ app.use(SearchBar).use(Icon);
 :::demo
 ```html
 <template>
-  <nut-searchbar v-model="searchValue4" background="linear-gradient(to right, #9866F0, #EB4D50)" input-background="#fff"> </nut-searchbar>
+  <nut-searchbar v-model="searchValue" background="linear-gradient(to right, #9866F0, #EB4D50)" input-background="#fff"> </nut-searchbar>
 </template>
 <script lang="ts">
   import { toRefs, reactive } from 'vue';
@@ -147,6 +147,33 @@ app.use(SearchBar).use(Icon);
 </script>
 ```
 :::
+
+### 自定义清除按钮 icon
+:::demo
+```html
+<template>
+  <nut-searchbar v-model="searchValue" :clear-icon="icon"> </nut-searchbar>
+</template>
+<script lang="ts">
+  import { toRefs, reactive } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        searchValue: ""
+      });
+      const icon =
+      'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
+
+      return {
+        ...toRefs(state),
+        icon
+      };
+    }
+  };
+</script>
+```
+:::
+
 ### 显示全部 icon
 :::demo
 ```html
@@ -195,11 +222,13 @@ app.use(SearchBar).use(Icon);
 | input-type    | 输入框类型   | String | 'text'      |
 | placeholder        | 输入框默认暗纹  | String | '请输入'   |
 | clearable          | 是否展示清除按钮 | Boolean | true     |
+| close-icon `v3.2.2`     | 自定义关闭图标 | String | 'circle-close'   |
 | background      | 输入框外部背景 | String |   '#fff'   |
 | input-background   | 输入框内部背景 | String |   '#f7f7f7'   |
 | confirm-type   | 键盘右下角按钮的文字（`仅支持小程序`），仅在`type='text'`时生效,可选值 `send`：发送、`search`：搜索、`next`：下一个、`go`：前往、`done`：完成 | String |   `done`   |
 | input-background   | 输入框内部背景 | String |   '#f7f7f7'   |
 | autofocus `v3.1.21` | 是否自动聚焦 | boolean | false |
+| focus-style `v3.2.2` | 聚焦时搜索框样式 | Object | - |
 | disabled `v3.1.21` | 是否禁用输入框 | boolean | false |
 | readonly `v3.1.21`| 输入框只读 | boolean | false |
 | input-align `v3.1.21`| 对齐方式，可选`center` `right` | string | `left` |

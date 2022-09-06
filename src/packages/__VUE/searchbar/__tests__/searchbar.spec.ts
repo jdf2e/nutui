@@ -141,6 +141,17 @@ test('clear event test', async () => {
   expect(clear.exists()).toBe(true);
 });
 
+test('custom clear icon', async () => {
+  const wrapper = mount(SearchBar, {
+    props: {
+      clearIcon: 'close',
+      modelValue: 'test'
+    }
+  });
+  const input = wrapper.find('.nut-searchbar__input-clear i');
+  expect(input.classes()).toContain('nut-icon-close');
+});
+
 test('slot test', () => {
   const wrapper = mount(SearchBar, {
     props: { modelValue: '' },
@@ -163,5 +174,6 @@ test('slot test', () => {
       }
     }
   });
+
   expect(wrapper.html()).toMatchSnapshot();
 });

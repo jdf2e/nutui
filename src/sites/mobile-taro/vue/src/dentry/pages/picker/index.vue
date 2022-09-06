@@ -68,6 +68,7 @@
       "
     ></nut-cell>
     <nut-picker
+      v-model="selectedTime"
       v-model:visible="showMultiple"
       :columns="multipleColumns"
       title="城市选择"
@@ -86,6 +87,7 @@
       "
     ></nut-cell>
     <nut-picker
+      v-model="selectedCascader"
       v-model:visible="showCascader"
       :columns="cascaderColumns"
       title="城市选择"
@@ -129,7 +131,7 @@
       <nut-button block type="primary" @click="alwaysFun">永远有效</nut-button></nut-picker
     >
 
-    <h2>异步获取</h2>
+    <!-- <h2>异步获取</h2>
     <nut-cell
       title="异步获取"
       :desc="effect"
@@ -145,7 +147,7 @@
       title="异步获取"
       @confirm="(options) => confirm('effect', options)"
       @change="portChange"
-    ></nut-picker>
+    ></nut-picker> -->
   </div>
 </template>
 <script lang="ts">
@@ -155,6 +157,8 @@ export default {
   props: {},
   setup() {
     const selectedValue = ref(['ZheJiang']);
+    const selectedTime = ref(['Wednesday', 'Afternoon']);
+    const selectedCascader = ref(['FuJian', 'FuZhou', 'TaiJiang']);
     const asyncValue = ref<string[]>([]);
     const columsNum = ref([]);
     const columns = ref([
@@ -361,6 +365,8 @@ export default {
     };
     return {
       selectedValue,
+      selectedTime,
+      selectedCascader,
       asyncValue,
       columns,
       show,

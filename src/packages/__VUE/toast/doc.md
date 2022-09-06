@@ -275,15 +275,15 @@ toast.hide();
 | title            | 标题     | String        |           -             |
 | center              | 是否展示在页面中部（为false时展示在底部）                                     | Boolean       | true                          |
 | bottom              | 距页面底部的距离（像素或者百分比），option.center为false时生效                          | String       | 30px                    |
-| textAlignCenter     | 多行文案是否居中                                                              | Boolean       | true                          |
-| bgColor             | 背景颜色（透明度）                                                            | String        | rgba(0, 0, 0, 0.8)      |
-| customClass         | 自定义类名                                                                    | String        |          -                   |
+| text-align-center     | 多行文案是否居中                                                              | Boolean       | true                          |
+| bg-color             | 背景颜色（透明度）                                                            | String        | rgba(0, 0, 0, 0.8)      |
+| custom-class         | 自定义类名                                                                    | String        |          -                   |
 | icon                | 自定义图标，**支持图片链接或base64格式**                                        | String        |         -                   |
-| iconSize                | 自定义图标尺寸                                      | String        | 20                           |
+| icon-size                | 自定义图标尺寸                                      | String        | 20                           |
 | size                | 文案尺寸，**small**/**base**/**large**三选一                                                  | String        | base                      |
 | cover               | 是否显示遮罩层                                          | Boolean       | false |
 | cover-color          | 遮罩层颜色，默认透明                                                          | String        | rgba(0,0,0,0)             |
-| loadingRotate       | loading图标是否旋转，仅对loading类型生效                                      | Boolean       | true                          |
+| loading-rotate       | loading图标是否旋转，仅对loading类型生效                                      | Boolean       | true                          |
 | close             | 关闭时触发的事件                                                              | function      | null                          |
 | close-on-click-overlay | 是否在点击遮罩层后关闭提示                                                    | Boolean       | false                         |
 | custom-class          | 提示框class                                                        | String       |               -          |
