@@ -279,7 +279,7 @@ toast.hide();
 | bg-color             | 背景颜色（透明度）                                                            | String        | rgba(0, 0, 0, 0.8)      |
 | custom-class         | 自定义类名                                                                    | String        |          -                   |
 | icon                | 自定义图标，**支持图片链接或base64格式**                                        | String        |         -                   |
-| iconsize                | 自定义图标尺寸                                      | String        | 20                           |
+| icon-size                | 自定义图标尺寸                                      | String        | 20                           |
 | size                | 文案尺寸，**small**/**base**/**large**三选一                                                  | String        | base                      |
 | cover               | 是否显示遮罩层                                          | Boolean       | false |
 | cover-color          | 遮罩层颜色，默认透明                                                          | String        | rgba(0,0,0,0)             |
