@@ -32,6 +32,7 @@ app.use(OverLay);
       :min-date="minDate"
       :max-date="maxDate"
       :is-show-chinese="true"
+      :three-dimensional="false"
       @confirm="confirm"
   ></nut-datepicker> 
 </template>
@@ -378,6 +379,7 @@ app.use(OverLay);
 | ok-text           | Text of confirm button                                      | String  | confirm   |
 | cancel-text           | Text of cancel button                                          | String  | cancel   |
 | three-dimensional  `v3.1.23`          | Turn on 3D effects               | Boolean  | true   |
+| swipe-duration `v3.2.2`          | Duration of the momentum animation        | Number、String  | 1000   |
 
 ### Events
 

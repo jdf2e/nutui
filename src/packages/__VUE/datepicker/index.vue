@@ -11,6 +11,7 @@
     @confirm="confirm"
     :isWrapTeleport="isWrapTeleport"
     :threeDimensional="threeDimensional"
+    :swipeDuration="swipeDuration"
   >
     <template #top>
       <slot name="top"></slot>
@@ -92,6 +93,11 @@ export default create({
     threeDimensional: {
       type: Boolean,
       default: true
+    },
+    // 惯性滚动 时长
+    swipeDuration: {
+      type: [Number, String],
+      default: 1000
     },
     filter: Function as PropType<import('./type').Filter>
   },
