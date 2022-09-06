@@ -33,6 +33,7 @@ app.use(OverLay);
       :min-date="minDate"
       :max-date="maxDate"
       :is-show-chinese="true"
+      :three-dimensional="false"
       @confirm="confirm"
   ></nut-datepicker> 
 </template>
@@ -387,7 +388,8 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 | title           | 设置标题                                          | String  | `null`   |
 | ok-text           | 确定按钮文案                                          | String  | 确定   |
 | cancel-text           | 取消按钮文案                                          | String  | 取消   |
-| three-dimensional`小程序不支持` `v3.1.23`          | 是否开启3D效果               | Boolean  | true   |
+| three-dimensional `v3.1.23`          | 是否开启3D效果               | Boolean  | true   |
+| swipe-duration `v3.2.2`          | 惯性滚动时长               | Number、String  | 1000    |
 
 ### Events
     
