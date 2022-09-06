@@ -26,6 +26,7 @@
   padding: $searchbar-padding;
   background: $searchbar-background;
   box-sizing: border-box;
+
   &__search-label {
     padding: 0 5px;
     color: #323233;
@@ -40,6 +41,7 @@
     border-radius: $searchbar-input-border-radius;
     box-shadow: $searchbar-input-box-shadow;
     background: $searchbar-input-background;
+    box-sizing: border-box;
 
     .nut-searchbar__input-inner {
       display: flex;
