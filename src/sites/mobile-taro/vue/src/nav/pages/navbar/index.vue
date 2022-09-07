@@ -2,7 +2,7 @@
   <div class="demo full">
     <h2>基础用法</h2>
 
-    <nut-navbar fixed placeholder @on-click-back="back" @on-click-title="title" title="订单详情">
+    <nut-navbar @on-click-back="back" @on-click-title="title" title="订单详情">
       <template #left>
         <div>返回</div>
       </template>
