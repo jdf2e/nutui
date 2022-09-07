@@ -210,7 +210,7 @@ app.use(Badge);
 :::
 
 
-### Prop  
+### Props 
 
 | Attribute | Description | Type | Default |
 |---------|--------------------------------------------|---------|-----------|

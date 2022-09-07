@@ -26,20 +26,38 @@
       @closed="handleClose"
       :close-on-click-overlay="parent.props.closeOnClickOverlay"
     >
-      <view class="nut-menu-item__content">
-        <view
-          v-for="(option, index) in options"
-          :key="index"
-          class="nut-menu-item__option"
-          :class="{ active: option.value === modelValue }"
-          :style="{ 'flex-basis': 100 / cols + '%' }"
-          @click="onClick(option)"
-        >
-          <nut-icon v-if="option.value === modelValue" :name="optionIcon" :color="parent.props.activeColor"></nut-icon>
-          <view :style="{ color: option.value === modelValue ? parent.props.activeColor : '' }">{{ option.text }}</view>
+      <scroll-view :scroll-y="true" style="height: 100%">
+        <view class="nut-menu-item__content">
+          <view
+            v-for="(option, index) in options"
+            :key="index"
+            class="nut-menu-item__option"
+            :class="[{ active: option.value === modelValue }]"
+            :style="{ 'flex-basis': 100 / cols + '%' }"
+            @click="onClick(option)"
+          >
+            <nut-icon
+              :class="{
+                activeTitleClass: option.value === modelValue,
+                inactiveTitleClass: option.value !== modelValue
+              }"
+              v-if="option.value === modelValue"
+              :name="optionIcon"
+              v-bind="$attrs"
+              :color="parent.props.activeColor"
+            ></nut-icon>
+            <view
+              :class="{
+                activeTitleClass: option.value === modelValue,
+                inactiveTitleClass: option.value !== modelValue
+              }"
+              :style="{ color: option.value === modelValue ? parent.props.activeColor : '' }"
+              >{{ option.text }}</view
+            >
+          </view>
+          <slot></slot>
         </view>
-        <slot></slot>
-      </view>
+      </scroll-view>
     </nut-popup>
   </view>
 </template>
@@ -66,7 +84,8 @@ export default create({
       type: Number,
       default: 1
     },
-    titleIcon: String,
+    activeTitleClass: String,
+    inactiveTitleClass: String,
     optionIcon: {
       type: String,
       default: 'Check'

@@ -9,33 +9,42 @@
       <nut-tabbar-item :tab-title="translate('title')" icon="cart"></nut-tabbar-item>
       <nut-tabbar-item :tab-title="translate('title')" icon="my"></nut-tabbar-item>
     </nut-tabbar>
+    <h2>{{ translate('byName') }}</h2>
+
+    <nut-tabbar @tab-switch="tabSwitch" v-model:visible="activeName">
+      <nut-tabbar-item name="home" :tab-title="translate('title')" icon="home"></nut-tabbar-item>
+      <nut-tabbar-item name="category" :tab-title="translate('title')" icon="category"></nut-tabbar-item>
+      <nut-tabbar-item name="find" :tab-title="translate('title')" icon="find"></nut-tabbar-item>
+      <nut-tabbar-item name="cart" :tab-title="translate('title')" icon="cart"></nut-tabbar-item>
+      <nut-tabbar-item name="my" :tab-title="translate('title')" icon="my"></nut-tabbar-item>
+    </nut-tabbar>
     <h2>{{ translate('customImg') }}</h2>
 
     <nut-tabbar @tab-switch="tabSwitch">
       <nut-tabbar-item
         :tab-title="translate('title')"
-        img="http://img13.360buyimg.com/uba/jfs/t1/29316/38/1115/3203/5c0f3d61E35d0c7da/9e557f2cb5c9dab6.jpg"
-        activeImg="http://img20.360buyimg.com/uba/jfs/t1/9996/36/8646/4833/5c0f3d61E7c1b7e0f/c98ad61124172e93.jpg"
+        img="https://img13.360buyimg.com/imagetools/jfs/t1/23319/19/18329/3084/62e7c346E957c54ef/6c3e8a49e52b76f2.png"
+        activeImg="https://img11.360buyimg.com/imagetools/jfs/t1/70423/4/20553/3652/62e74629E23ba550e/aeeed0e3b9f43ae6.png"
       ></nut-tabbar-item>
       <nut-tabbar-item
         :tab-title="translate('title')"
-        img="http://img12.360buyimg.com/uba/jfs/t1/25443/23/1062/4600/5c0f3d61E2e9f1360/c9b3421fe18614e2.jpg"
-        activeImg="http://img20.360buyimg.com/uba/jfs/t1/19241/12/1048/8309/5c0f3d61E17ed5a56/c3af0964cade47f8.jpg"
+        img="https://img13.360buyimg.com/imagetools/jfs/t1/202062/32/25149/5246/62e7c353E5a51db17/b82b940e6eb22ec3.png"
+        activeImg="https://img11.360buyimg.com/imagetools/jfs/t1/162634/35/26732/5502/62e747a8E5330f029/3ea00a0c140beb38.png"
       ></nut-tabbar-item>
       <nut-tabbar-item
         :tab-title="translate('title')"
-        img="http://img13.360buyimg.com/uba/jfs/t1/10361/35/4713/4643/5c0f3d62E437a3c94/273fd0fb90798f03.jpg"
-        activeImg="http://img14.360buyimg.com/uba/jfs/t1/26604/35/1073/7896/5c0f3d61Eb9f5f184/5f01c938abe4216d.jpg"
+        img="https://img12.360buyimg.com/imagetools/jfs/t1/60552/28/20576/5585/62e7c2ddE2e0b48a7/70eefb366b85f3e4.png"
+        activeImg="https://img11.360buyimg.com/imagetools/jfs/t1/138362/15/28011/5802/62e747a4E4139ef2f/9a79a1c0f6a273b4.png"
       ></nut-tabbar-item>
       <nut-tabbar-item
         :tab-title="translate('title')"
-        img="http://img11.360buyimg.com/uba/jfs/t1/14848/18/1066/3723/5c0f41bdE9f2a38fe/e6ed6768717297fb.jpg"
-        activeImg="http://img30.360buyimg.com/uba/jfs/t1/17538/16/1070/6214/5c0f41bdE4bc9a1db/74cf978e5015454b.jpg"
+        img="https://img14.360buyimg.com/imagetools/jfs/t1/156023/30/29042/4257/62e7c34aE71f32967/690e2db242e2a97f.png"
+        activeImg="https://img13.360buyimg.com/imagetools/jfs/t1/144283/8/28420/4851/62e74784Eaa8549fe/80535de2961b812e.png"
       ></nut-tabbar-item>
       <nut-tabbar-item
         :tab-title="translate('title')"
-        img="http://img20.360buyimg.com/uba/jfs/t1/20004/20/1045/3620/5c0f3d61Eaaec1670/9e59db63983b7b9f.jpg"
-        activeImg="http://img14.360buyimg.com/uba/jfs/t1/23967/14/1072/6714/5c0f3d61E0ad8991e/8f741953f6e38f15.jpg"
+        img="https://img11.360buyimg.com/imagetools/jfs/t1/74960/7/21199/5299/62e7c34fE81cfb9f0/5805a277d3f6ce06.png"
+        activeImg="https://img10.360buyimg.com/imagetools/jfs/t1/48844/30/21079/5550/62e74797E934c4408/da98765cb757fd68.png"
       ></nut-tabbar-item>
     </nut-tabbar>
 
@@ -87,37 +96,43 @@ import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('tabbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    customImg: '自定义图片',
-    customCheck: '自定义选中',
-    showBadge: '徽标提示',
-    customColor: '自定义颜色',
-    customQuantity: '自定义数量',
-    fixedBottom: '固定底部',
-    title: '标签'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    customImg: 'Custom Img',
-    customCheck: 'Custom Check',
-    showBadge: 'Show Badge',
-    customColor: 'Custom Color',
-    customQuantity: 'Custom Quantity',
-    fixedBottom: 'Fixed Bottom',
-    title: 'tab'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      byName: '通过名称匹配',
+      customImg: '自定义图片',
+      customCheck: '自定义选中',
+      showBadge: '徽标提示',
+      customColor: '自定义颜色',
+      customQuantity: '自定义数量',
+      fixedBottom: '固定底部',
+      title: '标签'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      byName: 'Match by name',
+      customImg: 'Custom Img',
+      customCheck: 'Custom Check',
+      showBadge: 'Show Badge',
+      customColor: 'Custom Color',
+      customQuantity: 'Custom Quantity',
+      fixedBottom: 'Fixed Bottom',
+      title: 'tab'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const active = ref(2);
+    const activeName = ref('category');
     function tabSwitch(item: Record<string, unknown>, index: number) {
       console.log(item, index);
     }
     return {
       active,
+      activeName,
       tabSwitch,
       translate
     };

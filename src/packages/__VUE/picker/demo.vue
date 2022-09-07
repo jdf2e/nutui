@@ -37,6 +37,26 @@
     >
     </nut-picker>
 
+    <h2>{{ translate('tileDesc') }}</h2>
+    <nut-cell
+      :title="translate('chooseCity')"
+      :desc="defult"
+      @click="
+        () => {
+          showTile = true;
+        }
+      "
+    ></nut-cell>
+    <nut-picker
+      v-model="selectedValue"
+      v-model:visible="showTile"
+      :columns="columns"
+      :title="translate('chooseCity')"
+      :threeDimensional="false"
+      @confirm="(options) => confirm('defult', options)"
+    >
+    </nut-picker>
+
     <h2>{{ translate('multipleColumns') }}</h2>
     <nut-cell
       :title="translate('chooseTime')"
@@ -68,6 +88,7 @@
     ></nut-cell>
     <nut-picker
       v-model:visible="showCascader"
+      v-model="selectedCascader"
       :columns="cascaderColumns"
       :title="translate('chooseCity')"
       @confirm="(options) => confirm('cascader', options)"
@@ -118,14 +139,16 @@ import { PickerOption } from './types';
 const { createDemo, translate } = createComponent('picker');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
 import { Internation } from './doc.en';
-import { convertListToOptions } from '../cascader/helper';
+
 useTranslate(Internation);
 export default createDemo({
   props: {},
   setup() {
     const selectedValue = ref(['ZheJiang']);
     const selectedTime = ref(['Wednesday', 'Afternoon']);
+    const selectedCascader = ref(['FuJian', 'FuZhou', 'TaiJiang']);
     const asyncValue = ref<string[]>([]);
+    const columsNum = ref([]);
     const columns = computed(() => [
       { text: translate('nanJing'), value: 'NanJing' },
       { text: translate('wuXi'), value: 'WuXi' },
@@ -198,6 +221,58 @@ export default createDemo({
       }
     ]);
 
+    const bf = {
+      ZheJiang: [
+        {
+          text: translate('hangZhou'),
+          value: 'HangZhou',
+          children: [
+            { text: translate('xiHu'), value: 'XiHu' },
+            { text: translate('yuHang'), value: 'YuHang' }
+          ]
+        },
+        {
+          text: translate('wenZhou'),
+          value: 'WenZhou',
+          children: [
+            { text: translate('luCheng'), value: 'LuCheng' },
+            { text: translate('ouHai'), value: 'OuHai' }
+          ]
+        }
+      ],
+      FuJian: [
+        {
+          text: translate('fuZhou'),
+          value: 'FuZhou',
+          children: [
+            { text: translate('guLou'), value: 'GuLou' },
+            { text: translate('taiJiang'), value: 'TaiJiang' }
+          ]
+        },
+        {
+          text: translate('xiaMen'),
+          value: 'XiaMen',
+          children: [
+            { text: translate('siMing'), value: 'SiMing' },
+            { text: translate('haiCang'), value: 'HaiCang' }
+          ]
+        }
+      ]
+    };
+
+    const jkColumns = ref([
+      {
+        text: translate('zheJiang'),
+        value: 'ZheJiang',
+        children: []
+      },
+      {
+        text: translate('fuJian'),
+        value: 'FuJian',
+        children: []
+      }
+    ]);
+
     const effectColumns = ref([
       { text: '2022-01', value: 'January' },
       { text: '2022-02', value: 'February' },
@@ -220,6 +295,9 @@ export default createDemo({
     const showCascader = ref(false);
     const showAsync = ref(false);
     const showEffect = ref(false);
+    const showTile = ref(false);
+
+    const showJK = ref(false);
 
     const desc = reactive({
       index: '',
@@ -253,6 +331,10 @@ export default createDemo({
     };
 
     onMounted(() => {
+      for (let i = 1; i < 60; i++) {
+        columsNum.value.push({ text: i, value: i });
+      }
+
       setTimeout(() => {
         asyncColumns.value = [
           { text: translate('nanJing'), value: 'NanJing' },
@@ -273,6 +355,18 @@ export default createDemo({
     };
     const change = ({ selectedValue }: { selectedValue: string[] }) => {
       console.log(selectedValue);
+    };
+
+    // change
+    const changeJK = (data) => {
+      const { columnIndex, selectedOptions, selectedValue } = data;
+      if (columnIndex == 0) {
+        jkColumns.value.forEach((colum) => {
+          if (colum.value == selectedValue[columnIndex] && colum.children.length == 0) {
+            colum.children = bf[selectedValue[columnIndex]];
+          }
+        });
+      }
     };
 
     const alwaysFun = () => {
@@ -299,7 +393,13 @@ export default createDemo({
       showEffect,
       alwaysFun,
       translate,
-      selectedTime
+      selectedTime,
+      selectedCascader,
+      columsNum,
+      showTile,
+      showJK,
+      jkColumns,
+      changeJK
     };
   }
 });

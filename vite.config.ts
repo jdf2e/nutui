@@ -6,7 +6,6 @@ import path from 'path';
 import config from './package.json';
 const hljs = require('highlight.js'); // https://highlightjs.org/
 import { compressText } from './src/sites/doc/components/demo-block/basedUtil';
-import { terser } from 'rollup-plugin-terser';
 const resolve = path.resolve;
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -102,14 +101,7 @@ export default defineConfig({
         entryFileNames: `demo-${config.version}/[name].js`,
         chunkFileNames: `demo-${config.version}/[name].js`,
         assetFileNames: `demo-${config.version}/[name].[ext]`,
-        plugins: [
-          terser({
-            compress: {
-              drop_console: true,
-              drop_debugger: true
-            }
-          })
-        ]
+        plugins: []
       }
     }
   }

@@ -85,7 +85,9 @@ const subPackages = [
       'pages/skeleton/index',
       'pages/collapse/index',
       'pages/table/index',
-      'pages/ellipsis/index'
+      'pages/animate/index',
+      'pages/ellipsis/index',
+      'pages/watermark/index'
     ]
   },
   {
@@ -100,7 +102,8 @@ const subPackages = [
       'pages/ecard/index',
       'pages/addresslist/index',
       'pages/category/index',
-      'pages/comment/index'
+      'pages/comment/index',
+      'pages/invoice/index'
     ]
   }
 ];

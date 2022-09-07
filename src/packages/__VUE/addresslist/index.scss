@@ -1,3 +1,43 @@
+.nut-theme-dark {
+  .nut-addresslist {
+    .nut-long-press-shell {
+      &__contain {
+        background-color: $dark-background2;
+        border-bottom: 1px solid $dark-color-gray;
+        color: $dark-color;
+        &-mask {
+          background-color: $dark-color3;
+          &-copy {
+            color: $dark-color-gray;
+            background-color: $dark-color;
+          }
+        }
+      }
+    }
+    .nut-swipe-shell,
+    .nut-general-shell {
+      background-color: $dark-background2;
+      border-bottom: 1px solid $dark-color-gray;
+      color: $dark-color;
+    }
+    .nut-item-contents {
+      &__info {
+        &-contact {
+          &-default {
+            background: $addresslist-contnts-contact-default;
+            color: $addresslist-contnts-contact-color;
+          }
+        }
+      }
+      &__addr {
+        color: $dark-color-gray;
+      }
+    }
+    &__bottom {
+      background-color: $dark-background2;
+    }
+  }
+}
 .nut-addresslist {
   overflow: hidden;
   .nut-long-press-shell {
@@ -5,10 +45,10 @@
       width: 100%;
       min-height: 76px;
       padding: 5px 10px;
-      background-color: #fff;
-      border-bottom: 1px solid #f0f0f0;
-      color: #333333;
-      font-size: 16px;
+      background-color: $addresslist-bg;
+      border-bottom: 1px solid $addresslist-border;
+      color: $addresslist-font-color;
+      font-size: $addresslist-font-size;
       display: flex;
       align-items: center;
       position: relative;
@@ -19,7 +59,7 @@
         left: 0;
         bottom: 0;
         right: 0;
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: $addresslist-mask-bg;
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -32,19 +72,19 @@
           width: 55px;
           border-radius: 50%;
           text-align: center;
-          background-color: #fff;
+          background-color: $white;
           font-size: 14px;
           display: flex;
           justify-content: center;
           align-items: center;
         }
         &-set {
-          color: #fff;
-          background-color: #f5a623;
+          color: $white;
+          background-color: $addresslist-set-bg;
         }
         &-del {
-          color: #fff;
-          background-color: #e1251b;
+          color: $white;
+          background-color: $addresslist-del-bg;
         }
       }
     }
@@ -69,10 +109,10 @@
     // width:100%;
     min-height: 76px;
     padding: 5px 10px;
-    background-color: #fff;
-    border-bottom: 1px solid #f0f0f0;
-    color: #333333;
-    font-size: 16px;
+    background-color: $addresslist-bg;
+    border-bottom: 1px solid $addresslist-border;
+    color: $addresslist-font-color;
+    font-size: $addresslist-font-size;
     display: flex;
     align-items: center;
     position: relative;
@@ -120,8 +160,8 @@
       }
     }
     &__addr {
-      color: #666666;
-      font-size: 12px;
+      color: $addresslist-addr-font-color;
+      font-size: $addresslist-addr-font-size;
       margin-top: 5px;
     }
   }
@@ -135,7 +175,7 @@
     width: 100%;
     padding: 12px 18px 24px;
     z-index: 100000;
-    background-color: #fff;
+    background-color: $addresslist-bg;
     box-sizing: border-box;
   }
 }

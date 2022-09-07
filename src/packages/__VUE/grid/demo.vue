@@ -83,39 +83,41 @@
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('grid');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    text: '文字',
-    columnNum: '自定义列数',
-    square: '正方形格子',
-    gutter: '格子间距',
-    reverse: '内容翻转',
-    Horizontal: '内容横向',
-    iconStyle: '图标颜色/大小',
-    route: '页面导航',
-    customContent: '自定义内容',
-    vueRouter: '路由跳转',
-    url: '链接跳转'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    text: 'text',
-    columnNum: 'Column Num',
-    square: 'Square',
-    gutter: 'Gutter',
-    reverse: 'Reverse',
-    horizontal: 'Horizontal',
-    iconStyle: 'Icon Style',
-    route: 'Route',
-    customContent: 'Custom Content',
-    vueRouter: 'Vue Router',
-    url: 'Url'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      text: '文字',
+      columnNum: '自定义列数',
+      square: '正方形格子',
+      gutter: '格子间距',
+      reverse: '内容翻转',
+      Horizontal: '内容横向',
+      iconStyle: '图标颜色/大小',
+      route: '页面导航',
+      customContent: '自定义内容',
+      vueRouter: '路由跳转',
+      url: '链接跳转'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      text: 'text',
+      columnNum: 'Column Num',
+      square: 'Square',
+      gutter: 'Gutter',
+      reverse: 'Reverse',
+      horizontal: 'Horizontal',
+      iconStyle: 'Icon Style',
+      route: 'Route',
+      customContent: 'Custom Content',
+      vueRouter: 'Vue Router',
+      url: 'Url'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     let a = new Map([
       ['Michael', 95],
       ['Bob', 75],

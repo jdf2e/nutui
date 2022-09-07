@@ -60,6 +60,32 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+body {
+  width: 100%;
+  height: 100vh;
+}
+#app {
+  width: 100%;
+  height: 100%;
+}
+.demo {
+  height: 100%;
+  .nut-cell {
+    height: 100%;
+  }
+  .list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    background-color: #f4a8b6;
+    border-radius: 10px;
+  }
+}
+</style>
 ```
 
 :::

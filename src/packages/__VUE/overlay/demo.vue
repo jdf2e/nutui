@@ -27,27 +27,29 @@ import { reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('overlay');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    style: '遮罩样式',
-    content: '嵌套内容',
-    btn1: '显示遮罩层',
-    btn2: '嵌套内容',
-    text: '这里是正文'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    style: 'Mask style',
-    content: 'Nested content',
-    btn1: 'Show mask layer',
-    btn2: 'Nested content',
-    text: 'Here is the text'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      style: '遮罩样式',
+      content: '嵌套内容',
+      btn1: '显示遮罩层',
+      btn2: '嵌套内容',
+      text: '这里是正文'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      style: 'Mask style',
+      content: 'Nested content',
+      btn1: 'Show mask layer',
+      btn2: 'Nested content',
+      text: 'Here is the text'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const state = reactive({
       show: false,
       show2: false,

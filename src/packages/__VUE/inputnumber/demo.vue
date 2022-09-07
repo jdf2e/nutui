@@ -24,13 +24,17 @@
     <nut-cell>
       <nut-inputnumber v-model="state.val6" step="0.1" decimal-places="1" readonly />
     </nut-cell>
-    <h2>{{ translate('asyc') }}</h2>
+    <h2>{{ translate('async') }}</h2>
     <nut-cell>
       <nut-inputnumber :model-value="state.val8" @change="onChange" />
     </nut-cell>
     <h2>{{ translate('size') }}</h2>
     <nut-cell>
       <nut-inputnumber v-model="state.val7" button-size="30" input-width="50" />
+    </nut-cell>
+    <h2>{{ translate('icon') }}</h2>
+    <nut-cell>
+      <nut-inputnumber icon-left="left" icon-right="right" v-model="state.val9" />
     </nut-cell>
   </div>
 </template>
@@ -40,35 +44,39 @@ import { reactive, getCurrentInstance } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('inputnumber');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    step: '步长设置',
-    limit: '限制输入范围',
-    disable: '禁用操作',
-    readonly: '只读禁用输入框',
-    decimal: '支持小数',
-    asyn: '支持异步修改',
-    size: '自定义按钮大小',
-    content1: '异步演示 2 秒后更改',
-    content2: '超出限制事件触发'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    step: 'Step size setting',
-    limit: 'Limit input range',
-    disable: 'Disable operation',
-    readonly: 'Read only disable input box',
-    decimal: 'Support decimal',
-    asyc: 'Support asynchronous modification',
-    size: 'Custom button size',
-    content1: 'Asynchronous presentation changes in 2 seconds',
-    content2: 'Trigger of limit exceeding event'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      step: '步长设置',
+      limit: '限制输入范围',
+      disable: '禁用操作',
+      readonly: '只读禁用输入框',
+      decimal: '支持小数',
+      async: '支持异步修改',
+      size: '自定义按钮大小',
+      icon: '自定义图标',
+      content1: '异步演示 2 秒后更改',
+      content2: '超出限制事件触发'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      step: 'Step size setting',
+      limit: 'Limit input range',
+      disable: 'Disable operation',
+      readonly: 'Read only disable input box',
+      decimal: 'Support decimal',
+      async: 'Support asynchronous modification',
+      size: 'Custom button size',
+      icon: 'Custom icon name',
+      content1: 'Asynchronous presentation changes in 2 seconds',
+      content2: 'Trigger of limit exceeding event'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     let { proxy } = getCurrentInstance();
 
     const state = reactive({
@@ -80,6 +88,7 @@ export default createDemo({
       val6: 5.5,
       val7: 1,
       val8: 1,
+      val9: 1,
       step: 1.1
     });
 

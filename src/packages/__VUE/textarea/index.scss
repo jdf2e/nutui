@@ -42,7 +42,16 @@
     color: $textarea-text-color;
     text-align: left;
     background-color: transparent;
-    border: 0;
+    border: none;
     resize: none;
+    line-height: 20px;
+  }
+  &__ali {
+    line-height: 17px;
+  }
+  .cpoyText {
+    position: absolute;
+    top: -999999px;
+    left: -999999px;
   }
 }

@@ -45,23 +45,24 @@ import { createComponent } from '@/packages/utils/create';
 import { toRefs, reactive, onMounted, ref } from 'vue';
 const { createDemo, translate } = createComponent('addresslist');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    title1: '长按功能',
-    title2: '滑动功能'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    title1: 'Long Press Function',
-    title2: 'Swipe Function'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      title1: '长按功能',
+      title2: '滑动功能'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title1: 'Long Press Function',
+      title2: 'Swipe Function'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
     // const data = ref([]);
-
+    initTranslate();
     const data = ref([
       {
         testid: 3,

@@ -11,6 +11,7 @@
       <view class="nut-address__header">
         <view class="arrow-back" @click="switchModule">
           <nut-icon
+            v-bind="$attrs"
             :name="backBtnIcon"
             color="#cccccc"
             v-show="type == 'exist' && privateType == 'custom' && backBtnIcon"
@@ -26,7 +27,7 @@
         </view>
 
         <view class="arrow-close" @click="handClose('cross')">
-          <nut-icon v-if="closeBtnIcon" :name="closeBtnIcon" color="#cccccc" size="18px"></nut-icon>
+          <nut-icon v-bind="$attrs" v-if="closeBtnIcon" :name="closeBtnIcon" color="#cccccc" size="18px"></nut-icon>
         </view>
       </view>
 
@@ -56,6 +57,7 @@
               <nut-icon
                 class="region-item-icon"
                 type="self"
+                v-bind="$attrs"
                 :name="selectedIcon"
                 size="13px"
                 v-if="selectedRegion[tabName[tabIndex]].id == item.id"
@@ -102,6 +104,7 @@
               <nut-icon
                 class="exist-item-icon"
                 type="self"
+                v-bind="$attrs"
                 :name="item.selectedAddress ? selectedIcon : defaultIcon"
                 size="13px"
               ></nut-icon>
@@ -122,6 +125,9 @@
         <div class="choose-other" @click="switchModule" v-if="isShowCustomAddress">
           <div class="btn">{{ customAndExistTitle || translate('chooseAnotherAddress') }}</div>
         </div>
+        <template v-if="!isShowCustomAddress">
+          <slot name="bottom"></slot>
+        </template>
       </view>
     </view>
   </nut-popup>
@@ -322,7 +328,7 @@ export default create({
 
     // 设置选中省市县
     const initCustomSelected = () => {
-      console.log(props.modelValue);
+      // console.log(props.modelValue);
       if (props.modelValue.length > 0) {
         tabIndex.value = props.modelValue.length - 1;
         for (let index = 0; index < props.modelValue.length; index++) {
@@ -393,7 +399,7 @@ export default create({
         Taro.createSelectorQuery()
           .selectAll(`.${tabName.value[tabIndex.value]}`)
           .boundingClientRect((rects) => {
-            console.log(rects);
+            // console.log(rects);
             (rects as any).forEach((rect) => {
               if (rect.width > 0) lineDistance.value = rect.left;
             });

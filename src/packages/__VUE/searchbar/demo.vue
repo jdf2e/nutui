@@ -1,7 +1,8 @@
 <template>
   <div class="demo full">
     <h2>{{ translate('basic1') }}</h2>
-    <nut-searchbar v-model="searchValue" :label="translate('word1')"> </nut-searchbar>
+    <nut-searchbar v-model="searchValue" :label="translate('word1')" :focus-style="{ border: '1px solid red' }">
+    </nut-searchbar>
 
     <h2>{{ translate('basic2') }}</h2>
     <nut-searchbar v-model="searchValue1" @search="search"> </nut-searchbar>
@@ -25,6 +26,9 @@
       input-background="#fff"
     >
     </nut-searchbar>
+
+    <h2>{{ translate('basic7') }}</h2>
+    <nut-searchbar v-model="searchValue6" :clear-icon="icon2"> </nut-searchbar>
 
     <h2>{{ translate('basic6') }}</h2>
     <nut-searchbar v-model="searchValue5" @click-right-icon="clickRightIcon">
@@ -50,56 +54,66 @@ import { createComponent } from '@/packages/utils/create';
 import { Toast } from '@/packages/nutui.vue';
 const { createDemo, translate } = createComponent('searchbar');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic1: '基本用法',
-    basic2: '搜索事件监听',
-    basic3: '显示搜索 icon',
-    basic4: '右侧添加搜索文字',
-    basic5: '更改输入框内部及外部的背景样式',
-    basic6: '显示全部 icon',
-    word1: '标签',
-    word2: '搜索',
-    title3: '标题3'
-  },
-  'en-US': {
-    basic1: 'Basic Usage',
-    basic2: 'Search event listening',
-    basic3: 'Display search Icon',
-    basic4: 'Add search text to the right',
-    basic5: 'Change the background style inside and outside the input box',
-    basic6: 'Show all icons',
-    word1: 'label',
-    word2: 'search'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic1: '基本用法',
+      basic2: '搜索事件监听',
+      basic3: '显示搜索 icon',
+      basic4: '右侧添加搜索文字',
+      basic5: '更改输入框内部及外部的背景样式',
+      basic6: '显示全部 icon',
+      basic7: '自定义清除按钮 icon',
+      word1: '标签',
+      word2: '搜索',
+      title3: '标题3'
+    },
+    'en-US': {
+      basic1: 'Basic Usage',
+      basic2: 'Search event listening',
+      basic3: 'Display search Icon',
+      basic4: 'Add search text to the right',
+      basic5: 'Change the background style inside and outside the input box',
+      basic6: 'Show all icons',
+      basic7: 'custom clear button icons',
+      word1: 'label',
+      word2: 'search'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    const icon = 'close';
+    const icon2 =
+      'https://img10.360buyimg.com/imagetools/jfs/t1/170133/30/22902/10546/61833626E32d7ccde/a7c373ba30de9a89.png';
+    initTranslate();
     const state = reactive({
       searchValue: '',
       searchValue1: '',
       searchValue2: '',
       searchValue3: '',
       searchValue4: '',
-      searchValue5: ''
+      searchValue5: '',
+      searchValue6: ''
     });
 
-    const search = function (e: any) {
+    const search = function () {
       Toast.text('搜索触发');
     };
 
     const clickLeft = function () {
       Toast.text('点击回退按钮');
     };
-    const clickLeftIcon = function (a: string, b: any) {
+    const clickLeftIcon = function (a: string, b: Event) {
       console.log(a, b);
     };
-    const clickRightIcon = function (a: string, b: any) {
+    const clickRightIcon = function (a: string, b: Event) {
       console.log(a, b);
     };
 
     return {
+      icon,
+      icon2,
       clickLeft,
       clickLeftIcon,
       clickRightIcon,

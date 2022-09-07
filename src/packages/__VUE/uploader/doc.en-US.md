@@ -286,6 +286,37 @@ export default {
 </script>
 ```
 :::
+
+### Customize XHR upload(before-xhr-upload）
+
+:::demo
+```html
+<!-- When the upload method is put, upload the source file stream directly -->
+<template>
+  <nut-uploader url="https://xxxx" method="put" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
+</template>
+
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+  setup() {
+      // source file https://github.com/jdf2e/nutui/blob/next/src/packages/__VUE/uploader/uploader.ts#L51
+     const beforeXhrUpload=(xhr:XMLHttpRequest,options:any)=>{
+        if (options.method.toLowerCase() == 'put') {
+          xhr.send(options.sourceFile);
+        }else{
+          xhr.send(options.formData);
+        }
+     }
+     return {
+      beforeXhrUpload
+    };
+  }
+}
+</script>
+```
+:::
+
 ### Once the file is selected, manually perform the upload via the button
     
 :::demo
@@ -352,6 +383,7 @@ export default {
 | disabled          | Whether to disable file upload                                                                                                                   | Boolean                           | false            |
 | timeout           | timeout, in milliseconds                                                                                                                         | Number丨String                    | 1000 * 30        |
 | before-upload     | Hook before reading the file, return false to stop reading the file, can return Promise                                                          | Function                          | null             |
+| before-xhr-upload`v3.2.1` | Customize the method when uploading XHR                                                                                                                                                                          | Function(xhr，option)                          | null             |
 | before-delete     | Hook before delete the file, return false to stop reading the file, can return Promise                                                           | Function(file): boolean 丨Promise | -                |
 
 

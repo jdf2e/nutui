@@ -1,8 +1,8 @@
 <template>
   <div :class="classes">
     <div class="nut-signature-inner" ref="wrap">
-      <canvas ref="canvas" :height="canvasHeight" :width="canvasWidth" v-if="() => isCanvasSupported()"></canvas>
-      <p class="nut-signature-unsopport" v-else>{{ unSupportTpl || translate('unSupportTpl') }}</p>
+      <canvas ref="canvas" :height="canvasHeight" :width="canvasWidth" v-show="isCanvasSupported()"></canvas>
+      <p class="nut-signature-unsopport" v-if="!isCanvasSupported()">{{ unSupportTpl || translate('unSupportTpl') }}</p>
     </div>
 
     <nut-button class="nut-signature-btn" type="default" @click="clear()">{{ translate('reSign') }}</nut-button>
@@ -26,7 +26,15 @@ export default create({
     },
     strokeStyle: {
       type: String,
-      default: '#000'
+      default: () => {
+        let bodyDom: any = document.getElementsByTagName('body');
+        let clsName = bodyDom[0]['className'];
+        if (clsName.indexOf('nut-theme-dark') == -1) {
+          return '#000';
+        } else {
+          return '#fff';
+        }
+      }
     },
     type: {
       type: String,
@@ -38,7 +46,7 @@ export default create({
     }
   },
   components: {},
-  emits: ['confirm', 'clear'],
+  emits: ['start', 'end', 'signing', 'confirm', 'clear'],
 
   setup(props, { emit }) {
     const canvas: any = ref<HTMLElement | null>(null);
@@ -73,7 +81,7 @@ export default create({
       state.ctx.beginPath();
       state.ctx.lineWidth = props.lineWidth;
       state.ctx.strokeStyle = props.strokeStyle;
-
+      emit('start');
       canvas.value.addEventListener(state.events[1], moveEventHandler, false);
       canvas.value.addEventListener(state.events[2], endEventHandler, false);
       canvas.value.addEventListener(state.events[3], leaveEventHandler, false);
@@ -83,6 +91,7 @@ export default create({
       event.preventDefault();
 
       let evt = state.isSupportTouch ? event.touches[0] : event;
+      emit('signing', evt);
       let coverPos = canvas.value.getBoundingClientRect();
       let mouseX = evt.clientX - coverPos.left;
       let mouseY = evt.clientY - coverPos.top;
@@ -93,7 +102,7 @@ export default create({
 
     const endEventHandler = (event) => {
       event.preventDefault();
-
+      emit('end');
       canvas.value.removeEventListener(state.events[1], moveEventHandler, false);
       canvas.value.removeEventListener(state.events[2], endEventHandler, false);
     };

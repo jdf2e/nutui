@@ -4,7 +4,6 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import config from './package.json';
 import configPkg from './src/config.json';
-import { terser } from 'rollup-plugin-terser';
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
@@ -42,11 +41,11 @@ declare type Install<T> = T & {
         const start = 'declare const _sfc_main:';
         const end = ';\nexport default _sfc_main;\n';
         let name = Object.keys(input).find((item: string) => item.toLowerCase() === filePath.split('/').slice(-2)[0]);
-        name = name ? name.toLowerCase() : ' ';
+        name = name ? name : ' ';
         const remain = `
 declare module 'vue' {
   interface GlobalComponents {
-      Nut${name[0].toUpperCase() + name.substr(1)}: typeof _sfc_main;
+      Nut${name}: typeof _sfc_main;
   }
 }     
       `;
@@ -78,14 +77,7 @@ declare module 'vue' {
         },
         dir: path.resolve(__dirname, './dist/packages/_es'),
         entryFileNames: '[name].js',
-        plugins: [
-          terser({
-            compress: {
-              drop_console: true,
-              drop_debugger: true
-            }
-          })
-        ]
+        plugins: []
       }
     },
     emptyOutDir: false

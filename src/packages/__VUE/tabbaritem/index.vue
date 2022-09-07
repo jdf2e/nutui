@@ -1,11 +1,11 @@
 <template>
   <div
     class="nut-tabbar-item"
-    :class="{ 'nut-tabbar-item__icon--unactive': state.active != state.index }"
+    :class="{ 'nut-tabbar-item__icon--unactive': !active }"
     :style="{
-      color: state.active == state.index ? state.activeColor : state.unactiveColor
+      color: active ? state.activeColor : state.unactiveColor
     }"
-    @click="change(state.index)"
+    @click="change()"
   >
     <view class="nut-tabbar-item_icon-box">
       <template v-if="!dot">
@@ -33,7 +33,7 @@
         v-if="!icon && activeImg"
         class="nut-tabbar-item_icon-box_icon"
         :style="{
-          backgroundImage: `url(${state.active == state.index ? activeImg : img})`,
+          backgroundImage: `url(${active ? activeImg : img})`,
           width: state.size,
           height: state.size
         }"
@@ -58,6 +58,9 @@ export default create({
       // 标签页的标题
       type: String,
       default: ''
+    },
+    name: {
+      type: String
     },
     icon: {
       // 标签页显示的icon
@@ -108,14 +111,23 @@ export default create({
     const router = useRouter();
     const relation = (child: ComponentInternalInstance): void => {
       if (child.proxy) {
-        let index = parent.children.length;
-        state.index = index;
         parent.children.push(child.proxy);
+        const index = computed(() => parent.children.indexOf(child.proxy));
+        state.index = props.name ?? index.value;
       }
     };
     relation(getCurrentInstance() as ComponentInternalInstance);
-    function change(index: Number) {
-      parent.changeIndex(index);
+    const active = computed(() => state.index === state.active);
+
+    function change() {
+      let key = props.name ?? state.index;
+      let index = null;
+      if (props.name) {
+        index = parent.children.findIndex((item: any) => {
+          return item.name == key;
+        });
+      }
+      parent.changeIndex(index ?? key, state.index);
     }
     const choosed = computed(() => {
       if (parent) {
@@ -125,23 +137,28 @@ export default create({
     });
     watch(choosed, (value, oldValue) => {
       state.active = value;
-      setTimeout(() => {
-        if (parent.children[value].href) {
-          window.location.href = parent.children[value].href;
-          return;
+      let index = value;
+      if (props.name) {
+        index = parent.children.findIndex((item: { name: string | number }) => {
+          return item.name == value;
+        });
+      }
+      if (parent.children[index]?.href) {
+        window.location.href = parent.children[index].href;
+        return;
+      }
+      if (parent.children[index]?.to) {
+        let to = parent.children[index].to;
+        if (to && router) {
+          router.push(to);
+        } else {
+          location.replace(to);
         }
-        if (parent.children[value].to) {
-          let to = parent.children[value].to;
-          if (to && router) {
-            router.push(to);
-          } else {
-            location.replace(to);
-          }
-        }
-      });
+      }
     });
     return {
       state,
+      active,
       change
     };
   }

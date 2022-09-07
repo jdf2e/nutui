@@ -44,7 +44,7 @@
                     >
                     <view
                       class="calendar-day-tip"
-                      :class="{ 'calendar-curr-tips-top': rangeTip(day, month) }"
+                      :class="{ 'calendar-curr-tips-top': rangeTip() }"
                       v-if="isStartTip(day, month)"
                     >
                       {{ startText || translate('start') }}
@@ -65,7 +65,7 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, reactive, ref, watch, toRefs, computed } from 'vue';
+import { reactive, ref, watch, toRefs, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('calendar-item');
 import Utils from '@/packages/utils/date';
@@ -105,8 +105,8 @@ interface MonthInfo {
   curData: string[] | string;
   title: string;
   monthData: Day[];
-  cssHeight?: Number;
-  cssScrollHeight?: Number;
+  cssHeight?: number;
+  cssScrollHeight?: number;
 }
 
 export default create({
@@ -348,6 +348,7 @@ export default create({
         }
         if (!isFirst) {
           // 点击日期 触发
+          console.log(state.chooseData);
           emit('select', state.chooseData);
           if (props.isAutoBackFill || !props.poppable) {
             confirm();
@@ -524,15 +525,15 @@ export default create({
       } else if (props.type == 'multiple' && Array.isArray(state.currDate)) {
         if (state.currDate.length > 0) {
           let defaultArr: string[] = [];
-          let obj: any = {};
-          state.currDate.forEach((item: string, index: number) => {
+          let obj: Record<string, unknown> = {};
+          state.currDate.forEach((item: string) => {
             if (
               propStartDate &&
               !Utils.compareDate(item, propStartDate) &&
               propEndDate &&
               !Utils.compareDate(propEndDate, item)
             ) {
-              if (!obj.hasOwnProperty(item)) {
+              if (!Object.hasOwnProperty.call(obj, item)) {
                 defaultArr.push(item);
                 obj[item] = item;
               }
@@ -674,7 +675,7 @@ export default create({
       return false;
     };
     // 开始结束时间是否相等
-    const rangeTip = (day: Day, month: MonthInfo) => {
+    const rangeTip = () => {
       if (state.currDate.length >= 2) {
         return Utils.isEqual(state.currDate[0], state.currDate[1]);
       }

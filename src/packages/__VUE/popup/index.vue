@@ -20,7 +20,7 @@
           class="nutui-popup__close-icon"
           :class="'nutui-popup__close-icon--' + closeIconPosition"
         >
-          <nut-icon :name="closeIcon" size="12px" />
+          <nut-icon v-bind="$attrs" :name="closeIcon" size="12px" />
         </view>
       </view>
     </Transition>
@@ -151,7 +151,7 @@ export default create({
   setup(props, { emit }) {
     const popupRef = ref();
     const state = reactive({
-      zIndex: props.zIndex ? (props.zIndex as number) : _zIndex,
+      zIndex: props.zIndex,
       showSlot: true,
       transitionName: `popup-fade-${props.position}`,
       overLayCount: 1,
@@ -181,14 +181,12 @@ export default create({
     });
 
     const open = () => {
-      if (!props.visible) {
-        if (props.zIndex !== undefined) {
-          _zIndex = Number(props.zIndex);
-        }
-        emit('update:visible', true);
-        lockScroll();
-        state.zIndex = ++_zIndex;
+      if (props.zIndex != 2000) {
+        _zIndex = Number(props.zIndex);
       }
+      emit('update:visible', true);
+      lockScroll();
+      state.zIndex = ++_zIndex;
       if (props.destroyOnClose) {
         state.showSlot = true;
       }
@@ -196,15 +194,13 @@ export default create({
     };
 
     const close = () => {
-      if (props.visible) {
-        unlockScroll();
-        emit('update:visible', false);
-        if (props.destroyOnClose) {
-          setTimeout(() => {
-            state.showSlot = false;
-            emit('close');
-          }, +props.duration * 1000);
-        }
+      unlockScroll();
+      emit('update:visible', false);
+      if (props.destroyOnClose) {
+        setTimeout(() => {
+          state.showSlot = false;
+          emit('close');
+        }, +props.duration * 1000);
       }
     };
 

@@ -234,7 +234,7 @@ app.use(Elevator);
 
 ``` html
 <template>
-  <nut-elevator :index-list="dataList3" :height="220"  @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
+  <nut-elevator :index-list="dataList3" :is-sticky="true" :height="220"  @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
 </template>
 <script lang="ts">
   import { reactive, toRefs } from 'vue';
@@ -373,6 +373,89 @@ app.use(Elevator);
 
 :::
 
+### 自定义内容
+
+:::demo
+
+``` html
+<template>
+  <nut-elevator :index-list="dataList" :height="260" @click-item="clickItem" @click-index="clickIndex">
+      <template v-slot:default="slotProps">
+        <nut-icon name='JD' size="12"></nut-icon>
+        <span :style="{marginLeft: '15px'}">{{ slotProps.item.name }}</span>
+      </template>
+  </nut-elevator>
+</template>
+<script lang="ts">
+  import { reactive, toRefs } from 'vue';
+  export default {
+    setup() {
+      const state = reactive({
+        acceptKey: 'num',
+        dataList: [
+          {
+            title: 'A',
+            list: [
+              {
+                name: '安徽',
+                id: 1
+              }
+            ]
+          },
+          {
+            title: 'B',
+            list: [
+              {
+                name: '北京',
+                id: 2
+              }
+            ]
+          },
+          {
+            title: 'G',
+            list: [
+              {
+                name: '广西',
+                id: 3
+              },
+              {
+                name: '广东',
+                id: 4
+              }
+            ]
+          },
+          {
+            title: 'H',
+            list: [
+              {
+                name: '湖南',
+                id: 5
+              },
+              {
+                name: '湖北',
+                id: 6
+              }
+            ]
+          }
+        ]
+      });
+
+      const clickItem = (key: string, item: any) => {
+        console.log(key, JSON.stringify(item));
+      };
+
+      const clickIndex = (key: string) => {
+        console.log(key);
+      };
+
+      return { ...toRefs(state), clickItem, clickIndex };
+    }
+  };
+</script>
+```
+
+:::
+
 ## API
 
 ### Prop
@@ -385,6 +468,13 @@ app.use(Elevator);
 | is-sticky            | 索引是否吸顶                                                    | Boolean  | `false` |
 | space-height             | 右侧锚点的上下间距                                                   | Number  | `23` |
 | title-height             | 左侧索引的高度                                                     | Number  | `35` |
+
+
+### Slot
+
+| 字段                   | 说明                                                             |
+|------------------------|----------------------------------------------------------------|
+| default                 | 自定义左侧索引下每条数据的内容                                     |
 
 ### Event
 

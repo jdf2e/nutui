@@ -286,6 +286,37 @@ export default {
 </script>
 ```
 :::
+
+### 自定义上传方式(before-xhr-upload)
+
+:::demo
+```html
+<!-- 当上传方式为put时，直接上传源文件file流 -->
+<template>
+  <nut-uploader url="https://xxxx" method="put" @before-xhr-upload="beforeXhrUpload"></nut-uploader>
+</template>
+
+<script lang="ts">
+import { ref } from 'vue';
+export default {
+  setup() {
+    // source file https://github.com/jdf2e/nutui/blob/next/src/packages/__VUE/uploader/uploader.ts#L51
+     const beforeXhrUpload=(xhr:XMLHttpRequest,options:any)=>{
+        if (options.method.toLowerCase() == 'put') {
+          xhr.send(options.sourceFile);
+        }else{
+          xhr.send(options.formData);
+        }
+     }
+     return {
+      beforeXhrUpload
+    };
+  }
+}
+</script>
+```
+:::
+
 ### 选中文件后，通过按钮手动执行上传
     
 :::demo
@@ -352,6 +383,7 @@ export default {
 | disabled          | 是否禁用文件上传                                                                                                                                                                       | Boolean                           | false            |
 | timeout           | 超时时间，单位为毫秒                                                                                                                                                                   | Number丨String                    | 1000 * 30        |
 | before-upload     | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                          | null             |
+| before-xhr-upload`v3.2.1` | 执行 XHR 上传时，自定义方式                                                                                                                                                                          | Function(xhr，option)                          | null             |
 | before-delete     | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除                                                                 | Function(file): boolean 丨Promise | -                |
 
 
@@ -377,7 +409,7 @@ export default {
 | success         | 上传成功               | {responseText,option,fileItem} |
 | failure         | 上传失败               | {responseText,option,fileItem} |
 | change          | 上传文件改变时的状态   | {fileList,event}               |
-| delete          | 文件删除事件     | {files,fileList,index}               |
+| delete          | 文件删除事件           | {files,fileList,index}         |
 | file-item-click | 文件上传成功后点击触发 | {fileItem}                     |
 
 ### Methods

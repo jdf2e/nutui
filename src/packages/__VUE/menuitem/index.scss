@@ -1,3 +1,11 @@
+.nut-theme-dark {
+  .nut-menu-item__content {
+    .nut-menu-item__option {
+      color: $dark-color;
+    }
+  }
+}
+
 .nut-menu-item {
   .active {
     font-weight: 500;
@@ -8,9 +16,11 @@
 .nut-menu-item__content {
   padding: $menu-item-content-padding;
   max-height: $menu-item-content-max-height;
-  overflow-y: auto;
   display: flex;
   flex-wrap: wrap;
+  &.nut-menu-item__overflow {
+    overflow-y: auto;
+  }
 
   .nut-menu-item__option {
     color: $title-color;

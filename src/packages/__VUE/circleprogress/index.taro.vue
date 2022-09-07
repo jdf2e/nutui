@@ -114,17 +114,15 @@ export default create({
       };
     });
     const format = (progress: string | number) => Math.min(Math.max(+progress, 0), 100);
-    const requestAnimationFrame = function (callback: Function, lastTime: any) {
-      var lastTime;
-      if (typeof lastTime === 'undefined') {
-        lastTime = 0;
-      }
+    var lastTime = 0;
+    const requestAnimationFrame = function (callback: Function) {
       var currTime = new Date().getTime();
       var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
       lastTime = currTime + timeToCall;
       var id = setTimeout(function () {
         callback(currTime + timeToCall, lastTime);
       }, timeToCall);
+      lastTime = currTime + timeToCall;
       return id;
     };
 
@@ -147,7 +145,7 @@ export default create({
           currentRate.value = Math.min(Math.max(+rate, 0), 100);
           emit('update:progress', format(parseFloat(rate.toFixed(1))));
           if (endRate > startRate ? rate < endRate : rate > endRate) {
-            rafId = requestAnimationFrame(animate, 0);
+            rafId = requestAnimationFrame(animate);
           }
         };
         if (rafId) {

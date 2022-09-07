@@ -1,3 +1,12 @@
+.nut-theme-dark {
+  .nut-uploader__preview-list {
+    background: $dark-background2;
+    color: $dark-color;
+  }
+  .close {
+    color: $dark-color !important;
+  }
+}
 .nut-uploader {
   position: relative;
   display: flex;
@@ -101,6 +110,7 @@
         position: absolute;
         right: 0;
         top: 0;
+        color: rgba(0, 0, 0, 0.6);
         transform: translate(50%, -50%);
       }
       .tips {

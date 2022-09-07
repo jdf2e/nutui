@@ -20,7 +20,7 @@
           class="nutui-popup__close-icon"
           :class="'nutui-popup__close-icon--' + closeIconPosition"
         >
-          <nut-icon :name="closeIcon" size="12px" />
+          <nut-icon v-bind="$attrs" :name="closeIcon" size="12px" />
         </view>
       </view>
     </Transition>
@@ -133,14 +133,12 @@ export default create({
       };
     });
     const open = () => {
-      if (!props.visible) {
-        if (props.zIndex !== undefined) {
-          _zIndex = Number(props.zIndex);
-        }
-        emit('update:visible', true);
-        lockScroll();
-        state.zIndex = ++_zIndex;
+      if (props.zIndex != 2000) {
+        _zIndex = Number(props.zIndex);
       }
+      emit('update:visible', true);
+      lockScroll();
+      state.zIndex = ++_zIndex;
       if (props.destroyOnClose) {
         state.showSlot = true;
       }

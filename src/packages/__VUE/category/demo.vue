@@ -4,7 +4,6 @@
     <nut-category :category="category" @change="change">
       <nut-categorypane :categoryChild="categoryChild" @onChange="onChange"> </nut-categorypane>
     </nut-category>
-
     <h2>{{ translate('title2') }}</h2>
     <nut-category :category="category" @change="changeText">
       <nut-categorypane type="text" :categoryChild="categoryChild" @onChange="onChange"> </nut-categorypane
@@ -22,21 +21,23 @@ import { createComponent } from '@/packages/utils/create';
 import { reactive, toRefs, onMounted } from 'vue';
 const { createDemo, translate } = createComponent('cmt');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    title1: '经典分类模式',
-    title2: '只显示文字',
-    title3: '自定义分类'
-  },
-  'en-US': {
-    title1: 'Classic Classification Mode',
-    title2: 'Show Text Only',
-    title3: 'Custom taxonomy'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      title1: '经典分类模式',
+      title2: '只显示文字',
+      title3: '自定义分类'
+    },
+    'en-US': {
+      title1: 'Classic Classification Mode',
+      title2: 'Show Text Only',
+      title3: 'Custom taxonomy'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const data = reactive({
       categoryInfo: {},
       category: [{}],
@@ -64,19 +65,19 @@ export default createDemo({
     };
 
     const change = (index: any) => {
-      data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
+      data.categoryChild = [].concat(data?.categoryInfo?.category[index + 1]?.children as any);
     };
 
     const changeText = (index: any) => {
       data.categoryChild = [].concat(data.categoryInfo.category[index + 1].children as any);
     };
 
-    const changeCustom = () => {
-      console.log('点击分类数据');
+    const changeCustom = (v: any) => {
+      console.log('点击分类数据:' + JSON.stringify(v));
     };
 
-    const onChange = () => {
-      console.log('当前分类数据');
+    const onChange = (v: any) => {
+      console.log('当前分类数据:' + JSON.stringify(v));
     };
 
     return {

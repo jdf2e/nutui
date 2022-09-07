@@ -5,53 +5,63 @@
       {
         "name": "intro",
         "cName": "介绍",
+        "eName": "Introduction",
         "show": true
       },
       {
         "name": "start",
         "cName": "快速上手",
+        "eName": "Quickstart",
         "show": true
       },
       {
         "name": "starttaro",
         "cName": "小程序开发",
+        "eName": "WeChat",
         "show": true
       },
       {
         "name": "theme",
         "cName": "主题定制",
+        "eName": "Customize Theme",
         "show": true
       },
       {
         "name": "international",
         "cName": "国际化",
+        "eName": "Internationalization",
         "show": true
       },
       {
         "name": "ide",
         "cName": "开发工具支持",
-        "show": true
-      },
-      {
-        "name": "resource",
-        "cName": "资源",
+        "eName": "IDE tool support",
         "show": true
       },
       {
         "name": "contributing",
         "cName": "贡献指南",
+        "eName": "Contributing",
         "path": "#/contributing",
         "show": true
       },
       {
         "name": "https://github.com/jdf2e/nutui/releases",
         "cName": "更新日志",
+        "eName": "Changelog",
         "show": true,
         "isLink": true
       },
       {
+        "name": "resource",
+        "cName": "资源",
+        "eName": "Resources",
+        "show": true
+      },
+      {
         "name": "notice",
         "cName": "常见问题",
+        "eName": "FAQ",
         "show": true
       }
     ]
@@ -146,7 +156,7 @@
           "cName": "图片",
           "desc": "图片展示",
           "show": true,
-          "tarodoc": false,
+          "tarodoc": true,
           "type": "component",
           "author": "yangxiaolu"
         }
@@ -1077,6 +1087,17 @@
           "tarodoc": false,
           "type": "component",
           "author": "yangxiaolu3"
+        },
+        {
+          "version": "3.0.0",
+          "name": "WaterMark",
+          "cType": "展示组件",
+          "cName": "水印",
+          "desc": "页面上添加特定的文字或图案。适用于防止信息盗用。",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "liukun"
         }
       ]
     },
@@ -1226,6 +1247,18 @@
           "tarodoc": false,
           "type": "component",
           "author": "yangxiaolu"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Invoice",
+          "cType": "特色组件",
+          "cName": "发票",
+          "desc": "发票",
+          "show": true,
+          "tarodoc": false,
+          "type": "component",
+          "author": "ailululu",
+          "taro": true
         }
       ]
     }

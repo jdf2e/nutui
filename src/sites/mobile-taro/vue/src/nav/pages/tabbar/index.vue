@@ -37,12 +37,12 @@
       ></nut-tabbar-item>
     </nut-tabbar>
     <h2>自定义选中</h2>
-    <nut-tabbar v-model:visible="active">
-      <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="发现" icon="find"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="购物车" icon="cart"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
+    <nut-tabbar v-model:visible="active" @tab-switch="tabSwitch">
+      <nut-tabbar-item tab-title="首页" name="home" icon="home"></nut-tabbar-item>
+      <nut-tabbar-item tab-title="分类" name="home1" icon="category"></nut-tabbar-item>
+      <nut-tabbar-item tab-title="发现" name="home2" icon="find"></nut-tabbar-item>
+      <nut-tabbar-item tab-title="购物车" name="home3" icon="cart"></nut-tabbar-item>
+      <nut-tabbar-item tab-title="我的" name="home4" icon="my"></nut-tabbar-item>
     </nut-tabbar>
 
     <h2>徽标提示</h2>
@@ -84,7 +84,7 @@ import { ref } from 'vue';
 export default {
   props: {},
   setup() {
-    const active = ref(2);
+    const active = ref('home1');
     function tabSwitch(item: object, index: number) {
       console.log(item, index);
     }

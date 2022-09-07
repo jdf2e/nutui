@@ -1,3 +1,113 @@
+## v3.2.1
+
+`2022-08-09`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @LadyChatterleyLover @zjyau @sushi-su
+
+* :sparkles: 暗黑模式所有组件适配完成 @nutui-teams
+* :sparkles: feat(uploader): taro env before-xhr-upload #1535 @richard1015
+* :sparkles: chore(fixednav): add props active-color #1393 @LadyChatterleyLover @richard1015
+* :sparkles: feat(steps): 横向缺少点状步骤条样式 (#1540) @sushi-su
+* :sparkles: feat(cell、step、menu...): add props font-class-name、class-prefix (#1372) # @richard1015
+* :bug: fix: 🔥 Vue warn Failed to resolve component scroll-view  (#1523) @yangxiaolu1993
+* :bug: fix(picker): 首次弹起点击确定无返回值bug @yangxiaolu1993
+* :bug: fix(numberkeyboard): props conflict issue #1486 (#1526) @Drjingfubo
+* :bug: fix(audiooperate): 修复打包结果d.ts中props的类型错误 (#1534) @eiinu
+* :bug: fix(tag): 修复 plain 与其他 prop 组合使用时未生效问题 #1472 (#1530) @eiinu
+* :bug: fix(swiper): 解决PC端轮播图滑动失效问题 #1217 (#1531) @eiinu
+* :bug: fix: card nut-pric错误 (#1536) @zjyau
+* 📖docs(menu): add install OverLay, Popup #1485 @richard1015
+* 🍭style(watermark、category、menu): edit sass @richard1015
+
+## v3.2.0
+
+`2022-08-01`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @LadyChatterleyLover @Zhengqbbb @zjyau @hydraZty
+
+* :sparkles: 暗黑模式适配支持 @nutui-teams
+* :sparkles: feat: 新增 WaterMark 水印组件 @lkjh3214
+* :sparkles: feat: imagepreview 缩放功能 (#1425) @yangxiaolu1993
+* :sparkles: feat(popup): support muti stacks @szg2008
+* :sparkles: feat(swiper): support show center @szg2008
+* :sparkles: feat(category): onchange add (sku) (#1440) @zjyau
+* :sparkles: feat(picker): 惯性滚动与性能优化 (#1453) & 平铺功能 @yangxiaolu1993
+* :sparkles: feat(card): add price slot (#1452) @zjyau
+* :sparkles: feat(tabbar): add new props name#1449 (#1471) @Drjingfubo
+* :sparkles: feat(uploader): add props before-xhr-upload @richard1015
+* :sparkles: feat(Table): 增加标题,列表样式参数 (#1460) @zjyau
+* :sparkles: feat(audio): 新增can-play事件 (#1515) @eiinu
+* :sparkles: feat(menuitem): 增加自定义titleClass属性和优化input组件disabled和readonly状态下的事件处理 (#1480) @LadyChatterleyLover
+* :sparkles: feat(address): address 新增底部插槽 (#1509) @yangxiaolu1993
+* :sparkles: feat(signature): 组件增加签名开始、结束、进行中回调函数 (#1520) @Ymm0008
+* :zap: chore: use cz-git commitizen adapter (#1424) @Zhengqbbb
+* :bug: fix(navbar): taro init height error @ailululu
+* :bug: fix(textarea): 支付宝小程序限制重影问题 #1514 @richard1015
+* :bug: fix(picker): 小程序重影问题 #1514 @richard1015
+* :bug: fix(checkbox、switch): async change value , emit change fn @richard1015
+* :bug: fix(actionsheet): add new props #1395 (#1456) @Drjingfubo
+* :bug: fix(datepicker): top 插槽未生效问题 (#1501) @eiinu
+* :bug: fix(noticebar、swiper): md文档问题；修复noticebar右侧图标垂直居中问题；修复audio显示时长问题 (#1510)  @eiinu
+* :bug: fix: 修复折叠面板手风琴模式；  @Ymm0008
+* :bug: fix: 修复notify标签式展示报错问题及class类名问题；  @Ymm0008
+* :bug: fix: 解决签名组件(Signat…  @Ymm0008
+* :bug: fix: 类型声明文件命名错误修复(#1442) @szg2008
+* :bug: fix: addresslist datalist清空后不同步问题 (#1483) @zjyau
+* 📖docs: Update README.md @snandy
+* 📖docs(radio): install add icon @richard1015
+* 📖docs(card): add install desc @richard1015
+* 📖docs(toast): taro env eidt @richard1015
+* 🍭style: fix Picker options partially overlap in older versions of Safa… @hydraZty
+
+## v3.1.22
+
+`2022-06-24`
+
+NutUI 非常感谢您对开源事业做出的贡献！🌷🌷🌷
+本次社区贡献者 @mushroomli @renbaoshuo @yoyo837 @remxcode
+
+* 🌍 feat: 组件文档支持国际化 @nutui-teams
+* :sparkles: feat: 新增 Animate 动画/动效 组件 @mushroomli
+* :sparkles: feat: 新增 Image 图片展示组件 @yangxiaolu1993
+* :sparkles: feat: 新增 Ellipsis 文本省略 @yangxiaolu1993
+* :sparkles: feat: 新增 ConfigProvider 暗黑模式切换 @richard1015
+* :sparkles: feat(calendar): 日历范围中的开始结束日期在同一月份，日历空白问题 (#1405) @lkjh3214
+* :sparkles: feat(elevator): add index ceiling capacity @szg2008
+* :sparkles: feat(checkbox): 增加选择限制，反选，半选功能  @szg2008
+* :sparkles: feat(cell): add attr size & title slot @richard1015
+* :sparkles: feat(dialog): add popClass、popStyle、beforeClose @richard1015
+* :sparkles: feat(form): add form-item slot label #1361 @richard1015
+* :sparkles: feat(button): 细化两个变量 (#1389) @yoyo837
+* :sparkles: feat(menu): 增加向上弹出和自定义选项图标等新能力 (#1346) @yangjinjun3
+* :sparkles: feat(timeselect): 标题支持html @szg2008
+* :sparkles: feat(rate): add attr touchable @richard1015
+* :sparkles: feat(elevator): add default slot for item(#1379) @szg2008
+* :sparkles: feat: imagepreview 部分功能补齐 (#1412) @yangxiaolu1993
+* :sparkles: feat: input组件新增input slot插槽 (#1418) @ailululu
+* :zap: chore: support highlight for JetBrains web-types @szg2008
+* :zap: chore: fix: d.ts error @szg2008
+* :zap: chore: fix locale types @richard1015
+* :zap: chore: add rollup terser option(drop_console) #1363 @richard1015
+* :bug: fix: collaspe 数据更新问题处理 (#1401) @Ymm0008
+* :bug: fix(address): add lock-scroll props @szg2008
+* :bug: fix(uploader): alipay upload error #1322  @richard1015
+* :bug: fix(form): taro h5 env button submit bug #1350 @richard1015
+* :bug: fix(radio): unactive boder width setting  @richard1015
+* :bug: fix(input): taro升级maxlength问题、部分组件国际化 @ailululu
+* :bug: fix(circleprogress): taro gradient color position error (#1371) @Drjingfubo
+* :bug: fix(tabs): text word-break #1344 @richard1015
+* :bug: fix(timeselect): add lock-scroll props(#1343) @szg2008
+* :bug: fix(uploader): taro env types error @richard1015
+* :bug: fix(tabs): add autoHeight #1066 @richard1015
+* :bug: fix(toast): demo 路由切换时toast 不消失 bug @richard1015
+* 📖docs(overlay): lock-scroll attribute of overlay should be true (#1380) @remxcode
+* 📖docs(form): validator rule attr del  @richard1015
+* 📖doc: calendar 文档修改 (#1410) @lkjh3214
+* 📖docs(elevator): 增加吸顶props @szg2008
+* 🍭style: fix font family of highlighted code (#1354) @renbaoshuo
+
 ## v3.1.21
 
 `2022-05-30`

@@ -6,6 +6,9 @@
       :strokeStyle="strokeStyle"
       @confirm="confirm"
       @clear="clear"
+      @start="start"
+      @signing="signing"
+      @end="end"
     />
   </div>
 </template>
@@ -40,7 +43,16 @@ export default {
         }
       });
     };
-    return { ...state, confirm, clear };
+    const start = () => {
+      console.log('签名开始');
+    };
+    const signing = (e) => {
+      console.log('签名进行中', e);
+    };
+    const end = () => {
+      console.log('签名结束');
+    };
+    return { ...state, confirm, clear, start, signing, end };
   }
 };
 </script>

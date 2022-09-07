@@ -42,6 +42,9 @@
       <template #shop-tag>
         <div>{{ translate('customShop') }}</div>
       </template>
+      <template #price>
+        <span>询价</span>
+      </template>
       <template #origin>
         <img
           class="tag"
@@ -72,38 +75,40 @@ import { computed, reactive } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('card');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    customProduct: '自定义商品标签',
-    customPro1: '活鲜',
-    customPro2: '礼盒',
-    customPro3: '国产',
-    title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
-    customShop: '自定义店铺介绍',
-    customFooter: '自定义右下角内容',
-    customContent: '自定义',
-    desc: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    customProduct: 'Custom prolist',
-    customPro1: 'tag',
-    customPro2: 'tag',
-    customPro3: 'tag',
-    title: 'title',
-    customShop: 'Custom Content',
-    customFooter: 'Customize bottom right content',
-    customContent: 'custom',
-    desc: 'desc',
-    delivery: 'delivery',
-    shopName: 'shopName>'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      customProduct: '自定义商品标签',
+      customPro1: '活鲜',
+      customPro2: '礼盒',
+      customPro3: '国产',
+      title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+      customShop: '自定义店铺介绍',
+      customFooter: '自定义右下角内容',
+      customContent: '自定义',
+      desc: '自营',
+      delivery: '厂商配送',
+      shopName: '阳澄湖大闸蟹自营店>'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      customProduct: 'Custom prolist',
+      customPro1: 'tag',
+      customPro2: 'tag',
+      customPro3: 'tag',
+      title: 'title',
+      customShop: 'Custom Content',
+      customFooter: 'Customize bottom right content',
+      customContent: 'custom',
+      desc: 'desc',
+      delivery: 'delivery',
+      shopName: 'shopName>'
+    }
+  });
 export default createDemo({
   setup() {
+    initTranslate();
     const state = reactive({
       imgUrl:
         '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',

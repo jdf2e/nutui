@@ -15,19 +15,21 @@ import { onMounted, ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('barrage');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    btn1: '随机添加'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    btn1: 'Random addition'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      btn1: '随机添加'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      btn1: 'Random addition'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const inputVal = ref<any>('');
     const danmu = ref<any>(null);
     let list = ref(['画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结']);

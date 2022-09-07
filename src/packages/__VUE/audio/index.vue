@@ -52,6 +52,7 @@
       :autoplay="autoplay"
       :loop="loop"
       @timeupdate="onTimeupdate"
+      @canplay="onCanplay"
       @ended="audioEnd"
       :muted="hanMuted"
     >
@@ -104,7 +105,7 @@ export default create({
     }
   },
   components: {},
-  emits: ['fastBack', 'play', 'forward', 'ended', 'changeProgress', 'mute'],
+  emits: ['fastBack', 'play', 'forward', 'ended', 'changeProgress', 'mute', 'can-play'],
 
   setup(props, { emit }) {
     const audioRef = ref(null);
@@ -144,20 +145,23 @@ export default create({
       } catch (e) {
         console.log((e as any).message);
       }
-
-      // 获取当前音频播放时长
-      setTimeout(() => {
-        const audioR = audioRef.value as any;
-        // 自动播放
-        if (props.autoplay) {
-          if (audioR && audioR.paused) {
-            audioR.play();
-          }
-        }
-        audioData.second = audioR.duration;
-        audioData.duration = formatSeconds(audioR.duration);
-      }, 500);
     });
+
+    // audio canplay 事件触发时
+    const onCanplay = (e: Event) => {
+      const audioR = audioRef.value as any;
+      // 自动播放
+      if (props.autoplay) {
+        if (audioR && audioR.paused) {
+          audioR.play();
+        }
+      }
+      // 获取当前音频播放时长
+      audioData.second = audioR.duration;
+      audioData.duration = formatSeconds(audioR.duration);
+
+      emit('can-play', e);
+    };
 
     //播放时间
     const onTimeupdate = (e: any) => {
@@ -166,7 +170,9 @@ export default create({
 
     //后退
     const fastBack = () => {
-      audioData.currentTime--;
+      if (audioData.currentTime > 0) {
+        audioData.currentTime--;
+      }
       (audioRef.value as any).currentTime = audioData.currentTime;
 
       emit('fastBack', audioData.currentTime);
@@ -224,37 +230,17 @@ export default create({
     };
 
     const formatSeconds = (value: string) => {
-      let theTime = parseInt(value); // 秒
-      let theTime1 = 0; // 分
-      let theTime2 = 0; // 小时
-      if (theTime > 60) {
-        theTime1 = Math.floor(theTime / 60);
-        theTime = Math.floor(theTime % 60);
-        if (theTime1 > 60) {
-          theTime2 = Math.floor(theTime1 / 60);
-          theTime1 = Math.floor(theTime1 % 60);
-        }
+      if (!value) {
+        return '00:00:00';
       }
+      let time = parseInt(value);
+      let hours = Math.floor(time / 3600);
+      let minutes = Math.floor((time - hours * 3600) / 60);
+      let seconds = time - hours * 3600 - minutes * 60;
       let result = '';
-      if (theTime < 10) {
-        result = '0' + result;
-      }
-      if (theTime1 > 0) {
-        result = '' + theTime1 + ':' + result;
-        if (theTime1 < 10) {
-          result = '0' + result;
-        }
-      } else {
-        result = '00:' + result;
-      }
-      if (theTime2 > 0) {
-        result = '' + theTime2 + ':' + result;
-        if (theTime2 < 10) {
-          result = '0' + result;
-        }
-      } else {
-        result = '00:' + result;
-      }
+      result += ('0' + hours.toString()).slice(-2) + ':';
+      result += ('0' + minutes.toString()).slice(-2) + ':';
+      result += ('0' + seconds.toString()).slice(-2);
       return result;
     };
 
@@ -285,7 +271,8 @@ export default create({
       progressChange,
       audioEnd,
       onTimeupdate,
-      handleMute
+      handleMute,
+      onCanplay
     };
   }
 });

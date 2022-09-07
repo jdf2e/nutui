@@ -1,6 +1,7 @@
 <template>
   <nut-popup pop-class="custom-pop" v-model:visible="showPop" @click="onClose" style="width: 100%">
-    <view class="nut-imagepreview" @click.stop="closeOnImg" @touchstart.capture="onTouchStart">
+    <!-- @click.stop="closeOnImg" -->
+    <view class="nut-imagepreview" @touchstart.capture="onTouchStart">
       <nut-swiper
         v-if="showPop"
         :auto-play="autoplay"
@@ -17,21 +18,26 @@
           <nut-video :source="item.source" :options="item.options"></nut-video>
         </nut-swiper-item> -->
         <nut-swiper-item v-for="(item, index) in images" :key="index">
-          <img :src="item.src" class="nut-imagepreview-img" />
+          <image mode="aspectFit" :src="item.src" class="nut-imagepreview-img" />
         </nut-swiper-item>
       </nut-swiper>
     </view>
     <!-- <view class="nut-imagepreview-index"> {{ active }} / {{ images.length + videos.length }} </view> -->
-    <view class="nut-imagepreview-index"> {{ active }} / {{ images.length }} </view>
+    <view class="nut-imagepreview-index" v-if="showIndex"> {{ active }} / {{ images.length }} </view>
+    <view class="nut-imagepreview-close-icon" @click="handleCloseIcon" :style="styles" v-if="closeable"
+      ><nut-icon :name="closeIcon" v-bind="$attrs" color="#ffffff"></nut-icon
+    ></view>
   </nut-popup>
 </template>
 <script lang="ts">
-import { toRefs, reactive, watch, onMounted } from 'vue';
+import { toRefs, reactive, watch, onMounted, computed } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.taro.vue';
 // import Video from '../video/index.vue';
 import Swiper from '../swiper/index.taro.vue';
 import SwiperItem from '../swiperitem/index.taro.vue';
+import Icon from '../icon/index.taro.vue';
+import { isPromise } from '@/packages/utils/util.ts';
 const { componentName, create } = createComponent('imagepreview');
 
 export default create({
@@ -67,14 +73,32 @@ export default create({
     autoplay: {
       type: [Number, String],
       default: 3000
-    }
+    },
+    showIndex: {
+      type: Boolean,
+      default: true
+    },
+    closeable: {
+      type: Boolean,
+      default: false
+    },
+    closeIcon: {
+      type: String,
+      default: 'circle-close'
+    },
+    closeIconPosition: {
+      type: String,
+      default: 'top-right' // top-right  top-left
+    },
+    beforeClose: Function
   },
-  emits: ['close'],
+  emits: ['close', 'change'],
   components: {
     [Popup.name]: Popup,
     // [Video.name]: Video,
     [Swiper.name]: Swiper,
-    [SwiperItem.name]: SwiperItem
+    [SwiperItem.name]: SwiperItem,
+    [Icon.name]: Icon
   },
 
   setup(props, { emit }) {
@@ -100,8 +124,19 @@ export default create({
       lastTouchEndTime: 0 // 用来辅助监听双击
     });
 
+    const styles = computed(() => {
+      let style = {};
+      if (props.closeIconPosition == 'top-right') {
+        style.right = '10px';
+      } else {
+        style.left = '10px';
+      }
+      return style;
+    });
+
     const slideChangeEnd = function (page: number) {
       state.active = page + 1;
+      emit('change', state.active);
     };
 
     const closeOnImg = () => {
@@ -112,6 +147,24 @@ export default create({
     };
 
     const onClose = () => {
+      if (props.beforeClose) {
+        const returnVal = props.beforeClose.apply(null, state.active);
+
+        if (isPromise(returnVal)) {
+          returnVal.then((value) => {
+            if (value) {
+              closeDone();
+            }
+          });
+        } else if (returnVal) {
+          closeDone();
+        }
+      } else {
+        closeDone();
+      }
+    };
+    // 执行关闭
+    const closeDone = () => {
       state.showPop = false;
       state.store.scale = 1;
       scaleNow();
@@ -236,6 +289,11 @@ export default create({
       }
     );
 
+    // 点击关闭按钮
+    const handleCloseIcon = () => {
+      onClose();
+    };
+
     onMounted(() => {
       // 初始化页码
       state.active = props.initNo;
@@ -253,7 +311,9 @@ export default create({
       onTouchMove,
       onTouchEnd,
       getDistance,
-      scaleNow
+      scaleNow,
+      styles,
+      handleCloseIcon
     };
   }
 });

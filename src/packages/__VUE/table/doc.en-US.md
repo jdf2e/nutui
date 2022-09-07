@@ -34,7 +34,9 @@ app.use(Table);
         columns: [
           {
             title: 'name',
-            key: 'name'
+            key: 'name',
+            stylehead: 'font-size:20px;color:red;font-weight:bolder;',
+            stylecolumn: 'font-size:10px;color:blue;'
           },
           {
             title: 'sex',
@@ -623,6 +625,8 @@ app.use(Table);
 | ------ | ------------------------------------------------------------------ | ------------------------- | ------ |
 | key    | Unique identification of the column                                          | String                    | ``     |
 | title  | Header title                                                                                                                                                 | String                    | ``     |
+| stylehead  | Header style                                                                                                                                                 | String                    | ``     |
+| stylecolumn  | Column style                                                                                                                                                 | String                    | ``     |
 | align  | Alignment of columns, optional values`left`,`center`,`right`                                                                                                              | String                    | `left` |
 | sorter | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | Boolean、Function、String | -      |
 | render | Custom render column data, high priority                                                                                                                               | Function(record)          | -      |

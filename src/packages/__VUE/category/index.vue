@@ -7,7 +7,7 @@
             :class="[checkIndex == index ? 'nut-category__cateListItemChecked' : 'nut-category__cateListItem']"
             @click="getChildList(index)"
           >
-            {{ item.catName }}
+            {{ item?.catName }}
           </div>
         </div>
       </div>

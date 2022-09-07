@@ -79,33 +79,35 @@ import { createComponent } from '@/packages/utils/create';
 import { reactive, toRefs } from 'vue';
 const { createDemo, translate } = createComponent('radio');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    option1: '选项1',
-    option2: '选项2',
-    option3: '选项3',
-    vertical: '水平使用',
-    size: '自定义尺寸',
-    icon: '自定义图标',
-    trigger: '触发事件',
-    current: '当前选中值'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    option1: 'Option 1',
-    option2: 'Option 2',
-    option3: 'Option 3',
-    vertical: 'Horizontal use',
-    size: 'Custom size',
-    icon: 'Custom icon',
-    trigger: 'Trigger event',
-    current: 'Currently selected value'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      option1: '选项1',
+      option2: '选项2',
+      option3: '选项3',
+      vertical: '水平使用',
+      size: '自定义尺寸',
+      icon: '自定义图标',
+      trigger: '触发事件',
+      current: '当前选中值'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      option1: 'Option 1',
+      option2: 'Option 2',
+      option3: 'Option 3',
+      vertical: 'Horizontal use',
+      size: 'Custom size',
+      icon: 'Custom icon',
+      trigger: 'Trigger event',
+      current: 'Currently selected value'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const data = reactive({
       radioVal: 1,
       radioVal2: 2,

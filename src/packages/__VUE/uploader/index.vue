@@ -36,13 +36,7 @@
           <nut-icon color="#fff" :name="item.status == 'error' ? 'failure' : 'loading'"></nut-icon>
           <view class="nut-uploader__preview__progress__msg">{{ item.message }}</view>
         </view>
-        <nut-icon
-          v-if="isDeletable"
-          color="rgba(0,0,0,0.6)"
-          @click="onDelete(item, index)"
-          class="close"
-          name="failure"
-        ></nut-icon>
+        <nut-icon v-if="isDeletable" @click="onDelete(item, index)" class="close" name="failure"></nut-icon>
         <img
           class="nut-uploader__preview-img__c"
           @click="fileItemClick(item)"
@@ -81,7 +75,7 @@
       :class="[listType]"
       v-if="listType == 'picture' && !$slots.default && maximum - fileList.length"
     >
-      <nut-icon :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
+      <nut-icon v-bind="$attrs" :size="uploadIconSize" color="#808080" :name="uploadIcon"></nut-icon>
       <input
         class="nut-uploader__input"
         v-if="capture"
@@ -143,6 +137,10 @@ export default create({
       type: Function,
       default: null
     },
+    beforeXhrUpload: {
+      type: Function,
+      default: null
+    },
     beforeDelete: {
       type: Function,
       default: (file: import('./type').FileItem, files: import('./type').FileItem[]) => {
@@ -191,6 +189,10 @@ export default create({
       uploadOption.xhrState = props.xhrState as number;
       uploadOption.headers = props.headers;
       uploadOption.withCredentials = props.withCredentials;
+      uploadOption.beforeXhrUpload = props.beforeXhrUpload;
+      try {
+        uploadOption.sourceFile = fileItem.formData.get(props.name);
+      } catch (error) {}
       uploadOption.onStart = (option: UploadOptions) => {
         fileItem.status = 'ready';
         fileItem.message = translate('readyUpload');

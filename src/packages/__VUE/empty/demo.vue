@@ -45,37 +45,39 @@ import { ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('empty');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    noData: '无数据',
-    noContent: '无内容',
-    noNetWork: '无网络',
-    error: '加载失败/错误',
-    imageType: '图片类型',
-    description: '描述文字',
-    customImg: '自定义图片',
-    bottomContent: '底部内容',
-    fail: '加载失败',
-    retry: '重试'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    noData: 'no data',
-    noContent: 'no content',
-    noNetWork: 'no network',
-    error: 'error',
-    imageType: 'Image Type',
-    description: 'description',
-    customImg: 'Custom Image',
-    bottomContent: 'Bottom Content',
-    fail: 'Failed to load',
-    retry: 'Retry'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      noData: '无数据',
+      noContent: '无内容',
+      noNetWork: '无网络',
+      error: '加载失败/错误',
+      imageType: '图片类型',
+      description: '描述文字',
+      customImg: '自定义图片',
+      bottomContent: '底部内容',
+      fail: '加载失败',
+      retry: '重试'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      noData: 'no data',
+      noContent: 'no content',
+      noNetWork: 'no network',
+      error: 'error',
+      imageType: 'Image Type',
+      description: 'description',
+      customImg: 'Custom Image',
+      bottomContent: 'Bottom Content',
+      fail: 'Failed to load',
+      retry: 'Retry'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const tabValue = ref(0);
     return {
       tabValue,

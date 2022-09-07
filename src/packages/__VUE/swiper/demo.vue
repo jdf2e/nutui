@@ -86,6 +86,29 @@
         </nut-swiper-item>
       </nut-swiper>
     </view>
+    <h2>{{ translate('horizontalCenter') }}</h2>
+    <view class="demo-box">
+      <nut-swiper :init-page="page4" :loop="false" width="280" height="150" :is-center="true" style="height: 150px">
+        <nut-swiper-item v-for="item in list" :key="item">
+          <img :src="item" alt="" />
+        </nut-swiper-item>
+      </nut-swiper>
+    </view>
+    <h2>{{ translate('verticalCenter') }}</h2>
+    <view class="demo-box vertical-center">
+      <nut-swiper
+        :init-page="page4"
+        :loop="false"
+        direction="vertical"
+        height="220"
+        :is-center="true"
+        style="height: 300px"
+      >
+        <nut-swiper-item v-for="item in list" :key="item">
+          <img :src="item" alt="" />
+        </nut-swiper-item>
+      </nut-swiper>
+    </view>
   </div>
 </template>
 
@@ -94,31 +117,37 @@ import { reactive, toRefs, onMounted, ref, Ref } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('swiper');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    asyc: '异步加载(3s)',
-    dynamicDel: '动态加载',
-    size: '自定义大小',
-    indicator: '自定义指示器',
-    indicator1: '自定义指示器(异步3s)',
-    btns: '手动切换',
-    vertical: '垂直方向'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    asyc: 'Asynchronous loading(3s)',
-    dynamicDel: 'Dynamic loading',
-    size: 'Custom size',
-    indicator: 'Custom indicator',
-    indicator1: 'Custom indicator(Asynchronous loading(3s))',
-    btns: 'Manual switching',
-    vertical: 'Vertical direction'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      asyc: '异步加载(3s)',
+      dynamicDel: '动态加载',
+      size: '自定义大小',
+      indicator: '自定义指示器',
+      indicator1: '自定义指示器(异步3s)',
+      btns: '手动切换',
+      vertical: '垂直方向',
+      horizontalCenter: '水平居中展示',
+      verticalCenter: '垂直居中展示'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      asyc: 'Asynchronous loading(3s)',
+      dynamicDel: 'Dynamic loading',
+      size: 'Custom size',
+      indicator: 'Custom indicator',
+      indicator1: 'Custom indicator(Asynchronous loading(3s))',
+      btns: 'Manual switching',
+      vertical: 'Vertical direction',
+      horizontalCenter: 'Horizontal center display',
+      verticalCenter: 'Vertical center display'
+    }
+  });
 export default createDemo({
   props: {},
   setup() {
+    initTranslate();
     const swiper = ref(null) as Ref;
     const state = reactive({
       page: 2,
@@ -180,6 +209,15 @@ export default createDemo({
     img {
       width: 100%;
       height: 100%;
+    }
+  }
+  &.vertical-center {
+    .nut-swiper-item {
+      height: 300px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
   ::v-deep(.nut-swiper-pagination-vertical) {

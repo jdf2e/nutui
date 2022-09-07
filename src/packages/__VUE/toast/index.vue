@@ -16,8 +16,8 @@
           'background-color': bgColor
         }"
       >
-        <view v-if="hasIcon" class="nut-toast-icon-wrapper">
-          <nut-icon :size="iconSize" color="#ffffff" :name="icon"></nut-icon>
+        <view v-if="hasIcon" :class="toastIconWrapperClass">
+          <nut-icon :size="iconSize" v-bind="$attrs" color="#ffffff" :name="icon"></nut-icon>
         </view>
         <div v-if="title" class="nut-toast-title">
           {{ title }}
@@ -157,7 +157,9 @@ export default create({
         'nut-toast-' + props.size
       ];
     });
-
+    const toastIconWrapperClass = computed(() => {
+      return ['nut-toast-icon-wrapper', { 'nut-toast-icon-no-animation': !props.loadingRotate }];
+    });
     const onAfterLeave = () => {
       clearTimer();
       props.unmount(props.id);
@@ -170,6 +172,7 @@ export default create({
       clickCover,
       hasIcon,
       toastBodyClass,
+      toastIconWrapperClass,
       onAfterLeave
     };
   }

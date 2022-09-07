@@ -22,15 +22,18 @@
 
       <slot name="top"></slot>
 
-      <view class="nut-picker__column">
+      <view class="nut-picker__column" ref="wrapHeight">
         <view class="nut-picker__hairline"></view>
         <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
           <nut-picker-column
+            :ref="swipeRef"
             :itemShow="show"
             :column="column"
             :readonly="readonly"
             :columnsType="columnsType"
             :value="defaultValues[columnIndex]"
+            :threeDimensional="threeDimensional"
+            :swipeDuration="swipeDuration"
             @change="
               (option) => {
                 changeHandler(columnIndex, option);
@@ -50,6 +53,15 @@ import { createComponent } from '@/packages/utils/create';
 import popup, { popupProps } from '../popup/index.vue';
 import column from './Column.vue';
 const { componentName, create, translate } = createComponent('picker');
+
+export interface PickerOption {
+  text: string | number;
+  value: string | number;
+  disabled?: string;
+  children?: PickerOption[];
+  className?: string | number;
+}
+
 export default create({
   components: {
     [column.name]: column,
@@ -74,7 +86,7 @@ export default create({
       default: ''
     },
     columns: {
-      type: Array,
+      type: Array as PropType<(PickerOption | PickerOption[])[]>,
       default: () => {
         return [];
       }
@@ -82,17 +94,35 @@ export default create({
     readonly: {
       type: Boolean,
       default: false
+    },
+    // 是否开启3D效果
+    threeDimensional: {
+      type: Boolean,
+      default: true
+    },
+    // 惯性滚动 时长
+    swipeDuration: {
+      type: [Number, String],
+      default: 1000
     }
   },
   emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],
   setup(props, { emit }) {
     const state = reactive({
       show: false,
-      formattedColumns: props.columns as import('./types').PickerOption[]
+      formattedColumns: props.columns
     });
 
     // 选中项
     let defaultValues = ref<(number | string)[]>(props.modelValue);
+
+    const pickerColumn = ref<any[]>([]);
+
+    const swipeRef = (el: any) => {
+      if (el && pickerColumn.value.length < columnsList.value.length) {
+        pickerColumn.value.push(el);
+      }
+    };
 
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -102,20 +132,18 @@ export default create({
     });
 
     const selectedOptions = computed(() => {
-      let optins: import('./types').PickerOption[] = [];
-      (columnsList.value as import('./types').PickerOption[][]).map(
-        (column: import('./types').PickerOption[], index: number) => {
-          let currOptions = [];
-          currOptions = column.filter((item) => item.value == defaultValues.value[index]);
-          optins.push(currOptions[0]);
-        }
-      );
+      let optins: PickerOption[] = [];
+      (columnsList.value as PickerOption[][]).map((column: PickerOption[], index: number) => {
+        let currOptions = [];
+        currOptions = column.filter((item) => item.value == defaultValues.value[index]);
+        optins.push(currOptions[0]);
+      });
 
       return optins;
     });
     // 当前类型
     const columnsType = computed(() => {
-      const firstColumn: import('./types').PickerOption = state.formattedColumns[0];
+      const firstColumn: PickerOption | PickerOption[] = state.formattedColumns[0];
       if (firstColumn) {
         if (Array.isArray(firstColumn)) {
           return 'multiple';
@@ -130,19 +158,19 @@ export default create({
     const columnsList = computed(() => {
       switch (columnsType.value) {
         case 'multiple':
-          return state.formattedColumns;
+          return state.formattedColumns as PickerOption[][];
         case 'cascade':
           // 级联数据处理
-          return formatCascade(state.formattedColumns, defaultValues.value);
+          return formatCascade(state.formattedColumns as PickerOption[], defaultValues.value);
         default:
-          return [state.formattedColumns];
+          return [state.formattedColumns] as PickerOption[][];
       }
     });
 
     // 级联数据格式化
-    const formatCascade = (columns: import('./types').PickerOption[], defaultValues: (number | string)[]) => {
-      const formatted: import('./types').PickerOption[][] = [];
-      let cursor: import('./types').PickerOption = {
+    const formatCascade = (columns: PickerOption[], defaultValues: (number | string)[]) => {
+      const formatted: PickerOption[][] = [];
+      let cursor: PickerOption = {
         text: '',
         value: '',
         children: columns
@@ -151,7 +179,7 @@ export default create({
       let columnIndex = 0;
 
       while (cursor && cursor.children) {
-        const options: import('./types').PickerOption[] = cursor.children;
+        const options: PickerOption[] = cursor.children;
         const value = defaultValues[columnIndex];
         let index = options.findIndex((columnItem) => columnItem.value == value);
         if (index == -1) index = 0;
@@ -165,20 +193,28 @@ export default create({
     };
 
     const close = () => {
-      emit('close');
+      emit('close', {
+        selectedValue: defaultValues.value,
+        selectedOptions: selectedOptions.value
+      });
       emit('update:visible', false);
     };
 
-    const changeHandler = (columnIndex: number, option: import('./types').PickerOption) => {
+    const changeHandler = (columnIndex: number, option: PickerOption) => {
       if (option && Object.keys(option).length) {
         if (columnsType.value === 'cascade') {
           defaultValues.value[columnIndex] = option.value ? option.value : '';
           let index = columnIndex;
           let cursor = option;
-          while (cursor && cursor.children) {
+          while (cursor && cursor.children && cursor.children[0]) {
             defaultValues.value[index + 1] = cursor.children[0].value;
             index++;
             cursor = cursor.children[0];
+          }
+
+          // 当前改变列 的 下一列 children 值为空
+          if (cursor && cursor.children && cursor.children.length == 0) {
+            defaultValues.value = defaultValues.value.slice(0, index + 1);
           }
         } else {
           defaultValues.value[columnIndex] = option.hasOwnProperty('value') ? option.value : '';
@@ -193,6 +229,18 @@ export default create({
     };
 
     const confirmHandler = () => {
+      pickerColumn.value.length > 0 &&
+        pickerColumn.value.forEach((column) => {
+          column.stopMomentum();
+        });
+
+      if (defaultValues.value && !defaultValues.value.length) {
+        columnsList.value.forEach((columns) => {
+          defaultValues.value.push(columns[0].value);
+          selectedOptions.value.push(columns[0]);
+        });
+      }
+
       emit('confirm', {
         selectedValue: defaultValues.value,
         selectedOptions: selectedOptions.value
@@ -201,7 +249,6 @@ export default create({
     };
 
     onMounted(() => {
-      console.log(11, props.modelValue);
       if (props.visible) state.show = props.visible;
     });
 
@@ -212,7 +259,6 @@ export default create({
     watch(
       () => props.modelValue,
       (newValues) => {
-        console.log('change', newValues, defaultValues.value);
         const isSameValue = JSON.stringify(newValues) === JSON.stringify(defaultValues.value);
         if (!isSameValue) {
           defaultValues.value = newValues;
@@ -235,15 +281,15 @@ export default create({
     watch(
       () => props.visible,
       (val) => {
-        console.log('props更新', props.columns);
         state.show = val;
+        if (val) pickerColumn.value = [];
       }
     );
 
     watch(
       () => props.columns,
       (val) => {
-        if (val.length) state.formattedColumns = val as import('./types').PickerOption[];
+        if (val.length) state.formattedColumns = val as PickerOption[];
       }
     );
 
@@ -257,7 +303,9 @@ export default create({
       changeHandler,
       confirmHandler,
       defaultValues,
-      translate
+      translate,
+      pickerColumn,
+      swipeRef
     };
   }
 });

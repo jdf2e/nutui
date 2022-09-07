@@ -9,6 +9,7 @@
             v-for="item in columns"
             :key="item.key"
             @click="handleSorterClick(item)"
+            :style="item.stylehead"
           >
             {{ item.title }}
             <slot name="icon"></slot>
@@ -23,6 +24,7 @@
             :class="cellClasses(getColumnItem(value))"
             v-for="[value, render] in sortDataItem()"
             :key="value"
+            :style="getColumnItemStyle(value)"
           >
             <RenderColumn
               :slots="[render, item[value]]"
@@ -36,14 +38,14 @@
         </view>
       </view>
     </view>
-    <view class="nut-table__summary" v-if="summary">
-      <span class="nut-table__summary__text" v-html="summary().value"></span>
-    </view>
     <view class="nut-table__nodata" v-if="!curData.length">
       <div class="nut-table__nodata" :class="{ 'nut-table__nodata--border': bordered }">
         <slot name="nodata"></slot>
         <div v-if="!$slots.nodata" class="nut-table__nodata__text"> {{ translate('noData') }} </div>
       </div>
+    </view>
+    <view class="nut-table__summary" v-if="summary">
+      <span class="nut-table__summary__text" v-html="summary().value"></span>
     </view>
   </view>
 </template>

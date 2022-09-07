@@ -133,24 +133,26 @@ const { createDemo, translate } = createComponent('layout');
 import Row from '../row/index.vue';
 import Col from '../col/index.vue';
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    desc: '分栏间隔',
-    flex: 'Flex布局'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    desc: 'Column spacing',
-    flex: 'Flex layout'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      desc: '分栏间隔',
+      flex: 'Flex布局'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      desc: 'Column spacing',
+      flex: 'Flex layout'
+    }
+  });
 export default createDemo({
   components: {
     [Row.name]: Row,
     [Col.name]: Col
   },
   setup() {
+    initTranslate();
     return { translate };
   }
 });
@@ -158,7 +160,6 @@ export default createDemo({
 
 <style lang="scss" scoped>
 .box-item {
-  background: #fff;
   margin-bottom: 20px;
   padding: 20px 0;
 }

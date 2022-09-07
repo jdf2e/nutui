@@ -1,22 +1,16 @@
 {
-  "setting": {},
+  "setting": {
+    "compileHotReLoad": true
+  },
   "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
   "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
     "miniprogram": {
       "list": [
         {
-          "name": "business/pages/address/index",
-          "pathName": "business/pages/address/index",
+          "name": "business/pages/signature/index",
+          "pathName": "business/pages/signature/index",
           "query": "",
+          "launchMode": "default",
           "scene": null
         },
         {
@@ -38,8 +32,8 @@
           "scene": null
         },
         {
-          "name": "exhibition/pages/ellipsis/index",
-          "pathName": "exhibition/pages/ellipsis/index",
+          "name": "business/pages/signature/index",
+          "pathName": "business/pages/signature/index",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -48,8 +42,8 @@
           "name": "exhibition/pages/collapse/index",
           "pathName": "exhibition/pages/collapse/index",
           "query": "",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "dentry/pages/textarea/index",
@@ -57,8 +51,16 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "dentry/pages/picker/index",
+          "pathName": "dentry/pages/picker/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
-  }
+  },
+  "projectname": "vue"
 }

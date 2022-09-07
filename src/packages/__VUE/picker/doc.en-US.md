@@ -1,6 +1,6 @@
 # Picker
 
-### 介绍
+### Intro
 
 The picker component is usually used with Popup Component.
 
@@ -113,6 +113,52 @@ The default selection is implemented by setting `modelValue`, which is an array 
 
 :::
 
+### Tile
+
+:::demo
+
+```html
+<template>
+  <nut-cell title="Choose City" :desc="desc" @click="() => { show = true;}"></nut-cell>
+  <nut-picker
+    v-model="selectedValue"
+    v-model:visible="show"
+    :columns="columns"
+    title="Choose City"
+    :threeDimensional="false"
+    @confirm="confirm"
+  >
+  </nut-picker>
+</template>
+<script>
+  import { ref } from 'vue';
+  export default {
+    setup(props) {
+      const show = ref(false);
+      const desc = ref('');
+      const selectedValue = ref(['ZheJiang']);
+      const columns = ref([
+        { text: 'NanJing', value: 'NanJing' },
+        { text: 'WuXi', value: 'WuXi' },
+        { text: 'ZangZu', value: 'ZangZu' },
+        { text: 'BeiJing', value: 'BeiJing' },
+        { text: 'LianYunGang', value: 'LianYunGang' },
+        { text: 'ZheJiang', value: 'ZheJiang' },
+        { text: 'JiangSu', value: 'JiangSu' }
+      ]);
+    
+      const confirm = ( { selectedValue,selectedOptions })=>{
+        desc.value = selectedValue.join(',');
+      }
+
+      return {show,desc,columns,selectedValue, confirm};
+    }
+  };
+</script>
+```
+
+:::
+
 ### Multiple Columns
 
 :::demo
@@ -178,6 +224,7 @@ Use the children field of the Columns attribute to cascade options
   <nut-cell title="Choose City" :desc="desc" @click="()=>{show=true}"></nut-cell>
   <nut-picker
     v-model:visible="show"
+    v-model="selectedCascader"
     :columns="cascaderColumns"
     title="Choose City"
     @confirm="confirm"
@@ -190,6 +237,7 @@ Use the children field of the Columns attribute to cascade options
     setup(props) {
       const show = ref(false);
       const desc = ref('');
+      const selectedCascader = ref(['FuJian', 'FuZhou','TaiJiang']);
       const cascaderColumns = ref([
         {
           text: 'ZheJiang',
@@ -244,7 +292,7 @@ Use the children field of the Columns attribute to cascade options
         console.log(selectedValue);
       };
 
-      return {show,desc,cascaderColumns,change, confirm};
+      return {show,desc,selectedCascader,cascaderColumns,change, confirm};
     }
   };
 </script>
@@ -381,6 +429,8 @@ Slots are arranged at the bottom and top respectively for custom Settings
 | title                  | Toolbar title                   | String  | -      |
 | cancel-text            | Text of cancel button               | String  | cancel   |
 | ok-text                | Text of confirm button               | String  | confirm   |
+| three-dimensional `v3.1.23`          | Turn on 3D effects      | Boolean  | true   |
+| swipe-duration`v3.2.2`          | Duration of the momentum animation        | Number、String  | 1000   |
 
 ### Data Structure of Columns
 

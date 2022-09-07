@@ -1,6 +1,6 @@
 <template>
   <view v-if="fixed && placeholder" class="nut-navbar--placeholder" :style="{ height: navHeight + 'px' }">
-    <view :class="classes" :style="styles" ref="navBarHtml">
+    <view :class="classes" :style="styles" class="navBarHtml">
       <view class="nut-navbar__left" @click="handleLeft">
         <nut-icon v-if="leftShow" color="#979797" name="left"></nut-icon>
         <view v-if="leftText" class="nut-navbar__text">{{ leftText }}</view>
@@ -8,7 +8,7 @@
       </view>
       <view class="nut-navbar__title">
         <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
-        <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
+        <nut-icon v-if="titIcon" class="icon" v-bind="$attrs" :name="titIcon" @click="handleCenterIcon"></nut-icon>
         <slot name="content"></slot>
       </view>
       <view class="nut-navbar__right" @click="handleRight">
@@ -25,7 +25,7 @@
     </view>
     <view class="nut-navbar__title">
       <view v-if="title" class="title" @click="handleCenter">{{ title }}</view>
-      <nut-icon v-if="titIcon" class="icon" :name="titIcon" @click="handleCenterIcon"></nut-icon>
+      <nut-icon v-if="titIcon" class="icon" :name="titIcon" v-bind="$attrs" @click="handleCenterIcon"></nut-icon>
       <slot name="content"></slot>
     </view>
     <view class="nut-navbar__right" @click="handleRight">
@@ -37,6 +37,7 @@
 
 <script lang="ts">
 import { onMounted, computed, toRefs, ref } from 'vue';
+import { useTaroRect } from '@/packages/utils/useTaroRect';
 import { createComponent } from '@/packages/utils/create';
 import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('navbar');
@@ -91,16 +92,14 @@ export default create({
 
     onMounted(() => {
       if (fixed.value && placeholder.value) {
-        setTimeout(async () => {
+        setTimeout(() => {
           const query = Taro.createSelectorQuery();
-          query
-            .select('.navBarHtml')
-            .boundingClientRect((rec: any) => {
-              navHeight.value = rec.height;
-              console.log('navBarHtml', navHeight);
-            })
-            .exec();
-        }, 100);
+          query.select('.navBarHtml').boundingClientRect();
+          query.exec((res) => {
+            navHeight.value = res[0].height;
+            // console.log('navHeight', navHeight.value)
+          });
+        }, 500);
       }
     });
 

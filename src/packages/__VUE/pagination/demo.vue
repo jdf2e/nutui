@@ -26,22 +26,24 @@ import { ref, reactive, toRefs } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { createDemo, translate } = createComponent('pagination');
 import { useTranslate } from '@/sites/assets/util/useTranslate';
-useTranslate({
-  'zh-CN': {
-    basic: '基本用法',
-    simpleMode: '简单模式',
-    showEllipses: '显示省略号',
-    customButton: '自定义按钮'
-  },
-  'en-US': {
-    basic: 'Basic Usage',
-    simpleMode: 'Simple Mode',
-    showEllipses: 'Show ellipses',
-    customButton: 'Custom Button'
-  }
-});
+const initTranslate = () =>
+  useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      simpleMode: '简单模式',
+      showEllipses: '显示省略号',
+      customButton: '自定义按钮'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      simpleMode: 'Simple Mode',
+      showEllipses: 'Show ellipses',
+      customButton: 'Custom Button'
+    }
+  });
 export default createDemo({
   setup() {
+    initTranslate();
     const state = reactive({
       currentPage: 1,
       currentPage1: 1,
