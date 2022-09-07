@@ -9,6 +9,9 @@
 .nut-invoice {
   width: 100%;
   position: relative;
+  .nut-cell {
+    align-items: center;
+  }
   &__submit {
     position: fixed;
     bottom: 0;
@@ -21,5 +24,10 @@
     box-sizing: border-box;
     bottom: constant(safe-area-inset-bottom);
     bottom: env(safe-area-inset-bottom);
+  }
+  .nut-radio {
+    display: inline-block;
+    margin-right: 6px;
+    margin-bottom: 0;
   }
 }

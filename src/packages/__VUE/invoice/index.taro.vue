@@ -9,12 +9,26 @@
         :rules="item.rules"
         :prop="item.formItemProp"
       >
-        <input
-          class="nut-input-text"
-          :placeholder="item.placeholder"
-          v-model="formValue[item.formItemProp]"
-          type="text"
-        />
+        <template v-if="item.type === 'radio'">
+          <nut-radiogroup v-model="item.radioModel">
+            <nut-radio
+              v-for="(radioItem, radioIndex) of item.radioLabel"
+              :key="radioIndex"
+              shape="button"
+              :label="radioItem.label"
+            >
+              {{ radioItem.label }}
+            </nut-radio>
+          </nut-radiogroup>
+        </template>
+        <template v-else>
+          <input
+            class="nut-input-text"
+            :placeholder="item.placeholder"
+            v-model="formValue[item.formItemProp]"
+            type="text"
+          />
+        </template>
       </nut-form-item>
     </nut-form>
     <div v-if="submit" class="nut-invoice__submit">
@@ -32,23 +46,9 @@ export default create({
       type: Array,
       default: () => []
     },
-    required: {
-      type: Boolean,
-      default: false
-    },
     formValue: {
       type: Object,
       default: {}
-    },
-    rules: {
-      type: Array as PropType<import('./types').FormItemRule[]>,
-      default: () => {
-        return [];
-      }
-    },
-    formItemProp: {
-      type: String,
-      default: ''
     },
     submit: {
       type: Boolean,
@@ -68,7 +68,6 @@ export default create({
 
     const classes = computed(() => {
       const prefixCls = componentName;
-      console.log('prefixCls', prefixCls);
       return {
         [prefixCls]: true
       };
@@ -83,9 +82,7 @@ export default create({
     };
 
     const submit = () => {
-      console.log('11');
       formRef.value.validate().then(({ valid, errors }: any) => {
-        console.log('22', valid, errors);
         emit('onSubmit', valid, errors);
       });
     };
