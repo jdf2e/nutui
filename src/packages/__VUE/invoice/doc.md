@@ -52,7 +52,6 @@ export default {
       {
         type: 'radio',
         label: '发票类型',
-        radioModel: '企业',
         radioLabel: [
           {
             label: '企业'
@@ -61,8 +60,7 @@ export default {
             label: '个人或事业单位'
           }
         ],
-        formItemProp: 'name',
-        rules: [{ required: true, message: '请输入发票抬头' }],
+        formItemProp: 'type',
         required: true
       },
       {
@@ -108,6 +106,7 @@ export default {
     ]);
 
     const formValue = reactive({
+      type: '企业',
       name: '',
       num: '',
       adress: '',
@@ -157,7 +156,6 @@ export default {
 | type  | 类型，可选值有 `input`、`radio` | string                                 |
 | label  | 表单项 label         | string                                 |
 | placeholder   | 输入框 placeholder           | string                                  |
-| radioModel   | 单选 modal           | string                                  |
 | radioLabel   | 单选 label           | string                                  |
 | formItemProp | 表单域 v-model 字段， 在使用表单校验功能的情况下，该属性是必填的 | string | -
 | rules | 校验规则，[可参考 FormItem Rule 数据结构](#/form) | array | []

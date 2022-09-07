@@ -10,7 +10,7 @@
         :prop="item.formItemProp"
       >
         <template v-if="item.type === 'radio'">
-          <nut-radiogroup v-model="item.radioModel">
+          <nut-radiogroup v-model="formValue[item.formItemProp]">
             <nut-radio
               v-for="(radioItem, radioIndex) of item.radioLabel"
               :key="radioIndex"

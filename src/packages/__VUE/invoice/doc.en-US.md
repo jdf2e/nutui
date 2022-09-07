@@ -53,7 +53,7 @@ export default {
       {
         type: 'radio',
         label: '发票类型',
-        radioModel: '企业',
+        
         radioLabel: [
           {
             label: '企业'
@@ -62,8 +62,7 @@ export default {
             label: '个人或事业单位'
           }
         ],
-        formItemProp: 'name',
-        rules: [{ required: true, message: '请输入发票抬头' }],
+        formItemProp: 'type',
         required: true
       },
       {
@@ -109,6 +108,7 @@ export default {
     ]);
 
     const formValue = reactive({
+      type: '企业',
       name: '',
       num: '',
       adress: '',
@@ -157,7 +157,6 @@ The optional attributes are as follows:
 | type  | Type, eg `input`、`radio` | string                                 |
 | label  | Label         | string                                 |
 | placeholder   | Input placeholder           | string                                  |
-| radioModel   | Radio modal           | string                                  |
 | radioLabel   | Radio label           | string                                  |
 | formItemProp | The v-model field of the form field is required | string | -
 | rules | Check rules，[Refer to FormItem Rule data structure](#/form) | array | []

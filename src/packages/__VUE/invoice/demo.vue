@@ -26,6 +26,7 @@ export default createDemo({
   setup() {
     initTranslate();
     const formValue = reactive({
+      type: '企业',
       name: '',
       num: '',
       adress: '',
@@ -50,7 +51,6 @@ export default createDemo({
       {
         type: 'radio',
         label: '发票类型',
-        radioModel: '企业',
         radioLabel: [
           {
             label: '企业'
@@ -59,8 +59,7 @@ export default createDemo({
             label: '个人或事业单位'
           }
         ],
-        formItemProp: 'name',
-        rules: [{ required: true, message: '请输入发票抬头' }],
+        formItemProp: 'type',
         required: true
       },
       {
