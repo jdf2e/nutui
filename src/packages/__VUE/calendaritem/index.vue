@@ -348,7 +348,6 @@ export default create({
         }
         if (!isFirst) {
           // 点击日期 触发
-          console.log(state.chooseData);
           emit('select', state.chooseData);
           if (props.isAutoBackFill || !props.poppable) {
             confirm();
