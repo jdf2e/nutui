@@ -14,7 +14,8 @@ import { Swiper,SwiperItem } from '@nutui/nutui';
 import { Swiper,SwiperItem } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Swiper).use(SwiperItem);
+app.use(Swiper);
+app.use(SwiperItem);
 ```
 
 ### Basic Usage
