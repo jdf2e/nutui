@@ -13,7 +13,8 @@ import { ActionSheet, Popup } from '@nutui/nutui';
 import { ActionSheet, Popup } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(ActionSheet).use(Popup);
+app.use(ActionSheet);
+app.use(Popup);
 ```
 
 ## 基本用法
@@ -260,7 +261,56 @@ export default {
 ```
 :::
 
-## Prop
+
+
+## 自定义内容
+
+:::demo
+``` html
+<template>
+  <div>
+  <nut-cell
+      :show-icon="true"
+      :isLink="true"
+      @click="switchActionSheet('isVisible')"
+     
+    >
+      <span><label>自定义内容</label></span>
+    </nut-cell>
+     <nut-actionsheet v-model:visible="state.isVisible" title="标题">
+      <div class="custom-content">自定义内容</div>
+    </nut-actionsheet>
+    </div>
+</template>
+<script>
+import { reactive } from 'vue';
+export default {
+  setup() {
+  const state = reactive({
+      isVisible: false,
+      val: '',
+    });
+    const switchActionSheet = ( param ) => {
+      state.isVisible = !state.isVisible;
+    };
+    return {
+      state,
+      switchActionSheet,
+    };
+  }
+}
+ </script>
+ <style lang="scss" scoped>
+.custom-content {
+  padding: 10px 10px 160px;
+}
+</style>
+
+```
+:::
+
+
+## Props
 
 | 字段             | 说明                                   | 类型    | 默认值    |
 |------------------|----------------------------------------|---------|-----------|
@@ -285,7 +335,7 @@ export default {
 | loading | 是否为loading状态 | Boolean          |
 | disable | 是否为禁用状态 | Boolean       |
 
-## Event
+## Events
 
 | 字段   | 说明               | 回调参数                          |
 |--------|--------------------|-----------------------------------|

@@ -4,7 +4,6 @@ export const useTranslate = (object: Record<string, any>) => {
   for (const [key, value] of Object.entries(object)) {
     Locale.merge(key, value);
   }
-  console.log('merge res > ', Locale.languages());
 };
 
 export const translateChange = () => {
