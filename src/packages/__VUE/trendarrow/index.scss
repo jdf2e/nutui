@@ -1,0 +1,10 @@
+.nut-trendarrow {
+  display: inline-block;
+  font-size: 14px;
+  &-icon-before {
+    margin-right: 4px;
+  }
+  &-icon-after {
+    margin-left: 4px;
+  }
+}
