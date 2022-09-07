@@ -14,7 +14,8 @@ import { Steps, Step } from '@nutui/nutui';
 import { Steps, Step  } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(Steps).use(Step);
+app.use(Steps);
+app.use(Step);
 ```
 
 ### 基本用法
