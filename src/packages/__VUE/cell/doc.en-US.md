@@ -11,7 +11,9 @@ import { createApp } from 'vue';
 import { Cell, CellGroup, Icon } from '@nutui/nutui';
 
 const app = createApp();
-app.use(Cell).use(CellGroup).use(Icon);
+app.use(Cell);
+app.use(CellGroup);
+app.use(Icon)
 ```
 
 ### Basic Usage

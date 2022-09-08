@@ -88,6 +88,7 @@
     ></nut-cell>
     <nut-picker
       v-model:visible="showCascader"
+      v-model="selectedCascader"
       :columns="cascaderColumns"
       :title="translate('chooseCity')"
       @confirm="(options) => confirm('cascader', options)"
@@ -145,6 +146,7 @@ export default createDemo({
   setup() {
     const selectedValue = ref(['ZheJiang']);
     const selectedTime = ref(['Wednesday', 'Afternoon']);
+    const selectedCascader = ref(['FuJian', 'FuZhou', 'TaiJiang']);
     const asyncValue = ref<string[]>([]);
     const columsNum = ref([]);
     const columns = computed(() => [
@@ -392,6 +394,7 @@ export default createDemo({
       alwaysFun,
       translate,
       selectedTime,
+      selectedCascader,
       columsNum,
       showTile,
       showJK,

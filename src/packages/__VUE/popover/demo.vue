@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <h2>{{ translate('title1') }}</h2>
+    <h2>{{ translate('title') }}</h2>
 
     <nut-row type="flex">
       <nut-col :span="8">
@@ -24,7 +24,7 @@
       </nut-col>
     </nut-row>
 
-    <h2>{{ translate('title2') }}</h2>
+    <h2>{{ translate('title1') }}</h2>
 
     <nut-row type="flex">
       <nut-col :span="8">
@@ -43,7 +43,7 @@
       </nut-col>
     </nut-row>
 
-    <h2>{{ translate('title3') }}</h2>
+    <h2>{{ translate('title2') }}</h2>
     <nut-popover v-model:visible="visible.Customized" location="bottom-start">
       <template #reference>
         <nut-button type="primary" shape="square">{{ translate('content') }}</nut-button>
@@ -59,7 +59,7 @@
       </template>
     </nut-popover>
 
-    <h2>{{ translate('title4') }}</h2>
+    <h2>{{ translate('title3') }}</h2>
 
     <nut-row type="flex" justify="center">
       <nut-col :span="24" style="text-align: center">

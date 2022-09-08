@@ -134,7 +134,7 @@ export default {
 
 
 
-### Prop  
+### Props  
 
 | Attribute | Description | Type | Default |
 |------------|--------------------------------------------------|---------|-----------|
@@ -153,7 +153,7 @@ export default {
 |---------|--------------|
 | default | Label display content |
 
-### Event
+### Events
 
 | Event             | Description                     | Arguments        |
 |----------|----------|----------|

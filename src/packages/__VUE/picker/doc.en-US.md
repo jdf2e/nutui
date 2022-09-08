@@ -224,6 +224,7 @@ Use the children field of the Columns attribute to cascade options
   <nut-cell title="Choose City" :desc="desc" @click="()=>{show=true}"></nut-cell>
   <nut-picker
     v-model:visible="show"
+    v-model="selectedCascader"
     :columns="cascaderColumns"
     title="Choose City"
     @confirm="confirm"
@@ -236,6 +237,7 @@ Use the children field of the Columns attribute to cascade options
     setup(props) {
       const show = ref(false);
       const desc = ref('');
+      const selectedCascader = ref(['FuJian', 'FuZhou','TaiJiang']);
       const cascaderColumns = ref([
         {
           text: 'ZheJiang',
@@ -290,7 +292,7 @@ Use the children field of the Columns attribute to cascade options
         console.log(selectedValue);
       };
 
-      return {show,desc,cascaderColumns,change, confirm};
+      return {show,desc,selectedCascader,cascaderColumns,change, confirm};
     }
   };
 </script>

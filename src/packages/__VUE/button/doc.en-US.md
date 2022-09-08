@@ -189,7 +189,7 @@ The color of the button can be customized through the color property.
 
 ## API
 
-### Prop
+### Props
 
 | Attribute     | Description                                                         | Type    | Default    |
 | -------- | ------------------------------------------------------------ | ------- | --------- |
@@ -205,7 +205,7 @@ The color of the button can be customized through the color property.
 | icon-class-prefix `v3.1.17`   | Custom icon class name prefix for using custom icons           | String | `nut-icon`       |
 | loading  | Whether to show loading status     | Boolean | `false`   |
 
-### Event
+### Events
 
 | Event | Description           | Arguments          |
 | ------ | -------------- | ----------------- |

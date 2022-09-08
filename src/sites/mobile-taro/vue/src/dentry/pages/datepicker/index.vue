@@ -25,6 +25,7 @@
         }
       "
       v-model:visible="show"
+      :threeDimensional="false"
       :is-show-chinese="true"
     ></nut-datepicker>
     <!-- 选择月日 -->

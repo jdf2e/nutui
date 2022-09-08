@@ -47,17 +47,17 @@
       <nut-tabpane v-for="item in state.list5" :title="'Tab ' + item"> Tab {{ item }} </nut-tabpane>
     </nut-tabs>
     <h2>{{ translate('title7') }}</h2>
-    <nut-tabs v-model="state.tab1value" size="large">
+    <nut-tabs v-model="state.tab8value" size="large">
       <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
       <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
       <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
     </nut-tabs>
-    <nut-tabs v-model="state.tab1value" size="normal">
+    <nut-tabs v-model="state.tab8value" size="normal">
       <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
       <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
       <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
     </nut-tabs>
-    <nut-tabs v-model="state.tab1value" size="small">
+    <nut-tabs v-model="state.tab8value" size="small">
       <nut-tabpane title="Tab 1"> Tab 1 </nut-tabpane>
       <nut-tabpane title="Tab 2"> Tab 2 </nut-tabpane>
       <nut-tabpane title="Tab 3"> Tab 3 </nut-tabpane>
@@ -132,6 +132,7 @@ export default createDemo({
       tab5value: '0',
       tab6value: '0',
       tab7value: 'c1',
+      tab8value: '0',
       list3: Array.from(new Array(2).keys()),
       list4: Array.from(new Array(10).keys()),
       list5: Array.from(new Array(2).keys()),

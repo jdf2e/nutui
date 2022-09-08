@@ -27,7 +27,7 @@
       :isWrapTeleport="false"
       :close-on-click-overlay="parent.props.closeOnClickOverlay"
     >
-      <view class="nut-menu-item__content">
+      <view class="nut-menu-item__content nut-menu-item__overflow">
         <view
           v-for="(option, index) in options"
           :key="index"
