@@ -27,14 +27,14 @@
             @input="valueChange"
             @focus="valueFocus"
             @blur="valueBlur"
-            :style="(styleSearchbar as CSSProperties)"
+            :style="styleSearchbar"
           />
         </form>
         <view
           @click="handleClear"
           class="nut-searchbar__input-clear"
           v-if="clearable"
-          v-show="(modelValue as string).length > 0"
+          v-show="String(modelValue).length > 0"
         >
           <nut-icon :name="clearIcon" size="12" color="#555"></nut-icon>
         </view>
@@ -56,6 +56,7 @@
 <script lang="ts">
 import { toRefs, reactive, computed, onMounted, ref, Ref, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
+import { TextAlignProperty } from 'csstype';
 const { create, translate } = createComponent('searchbar');
 // interface Events {
 //   eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
@@ -207,9 +208,10 @@ export default create({
     };
 
     const styleSearchbar = computed(() => {
-      return {
-        textAlign: props.inputAlign
+      const style: CSSProperties = {
+        textAlign: props.inputAlign as TextAlignProperty
       };
+      return style;
     });
     const inputsearch: Ref<HTMLElement | null> = ref(null);
     onMounted(() => {
