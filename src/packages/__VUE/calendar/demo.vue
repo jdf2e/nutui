@@ -39,11 +39,6 @@
         @choose="setChooseValue1"
         @select="select"
       >
-        <template v-slot:btn>
-          <div class="wrapper">
-            <div class="d_div"> <span class="d_btn" @click="goDate">去某个时间</span></div>
-          </div>
-        </template>
       </nut-calendar>
     </div>
     <div>
@@ -301,7 +296,6 @@ export default createDemo({
       let dateArr = chooseData.map((item: any) => {
         return item[3];
       });
-      console.log('changevalue 1 ', chooseData, dateArr);
       state.date1 = [...dateArr];
     };
     const setChooseValue2 = (param: string) => {

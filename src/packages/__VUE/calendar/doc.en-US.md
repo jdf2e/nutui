@@ -551,8 +551,8 @@ export default {
 | is-auto-back-fill | Automatic backfill                                          | Boolean         | false           |
 | title             | whether to show title                                          | String          | ‘Calendar’      |
 | default-value     | Default value, select single date : `String`，other: `Array` | String 、 Array | null            |
-| start-date        | The start date, or null if the start date is not limited             | String          | Today            |
-| end-date          | The end date, or null if the end date is not limited              | String          | 365 days from today |
+| start-date        | The start date            | String          | Today            |
+| end-date          | The end date            | String          | 365 days from today |
 | show-today          | Whether to show today's mark               | Boolean          | true |
 | start-text         | Range selection, start part of the text              | String          | Start |
 | end-text         | Range selection, end part of the text            | String          | End |
