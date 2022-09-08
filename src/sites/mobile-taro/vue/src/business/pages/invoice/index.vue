@@ -11,6 +11,7 @@ import { ref, reactive } from 'vue';
 export default {
   setup() {
     const formValue = reactive({
+      type: '企业',
       name: '',
       num: '',
       adress: '',
@@ -32,10 +33,23 @@ export default {
 
     let data: any = ref([
       {
+        type: 'radio',
+        label: '发票类型',
+        radioLabel: [
+          {
+            label: '企业'
+          },
+          {
+            label: '个人或事业单位'
+          }
+        ],
+        formItemProp: 'type',
+        required: true
+      },
+      {
         label: '发票抬头',
         placeholder: '请输入发票抬头',
         formItemProp: 'name',
-        rules: [{ required: true, message: '请输入发票抬头' }],
         required: true
       },
       {

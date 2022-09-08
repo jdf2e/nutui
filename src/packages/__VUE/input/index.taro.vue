@@ -48,7 +48,7 @@
               ref="inputRef"
               :style="stylesTextarea"
               :maxlength="maxLength"
-              :placeholder="placeholder || translate('placeholder')"
+              :placeholder="placeholder"
               placeholder-class="nut-placeholder"
               :disabled="disabled"
               :readonly="readonly"
@@ -67,7 +67,7 @@
               :style="styles"
               :type="inputType(type)"
               :maxlength="maxLength"
-              :placeholder="placeholder || translate('placeholder')"
+              :placeholder="placeholder"
               placeholder-class="nut-placeholder"
               :disabled="disabled"
               :readonly="readonly"
@@ -121,7 +121,7 @@ import { PropType, ref, reactive, computed, onMounted, watch, nextTick, inject }
 import { createComponent } from '@/packages/utils/create';
 import { formatNumber } from './util';
 
-const { componentName, create, translate } = createComponent('input');
+const { componentName, create } = createComponent('input');
 
 export default create({
   props: {
@@ -454,8 +454,7 @@ export default create({
       onClickInput,
       onClickLeftIcon,
       onClickRightIcon,
-      onClick,
-      translate
+      onClick
     };
   }
 });
