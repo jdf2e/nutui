@@ -13,10 +13,10 @@
   </nut-popup>
 </template>
 <script lang="ts">
-import { toRefs, reactive, onMounted, watch, ref } from 'vue';
+import { reactive, onMounted, watch, ref } from 'vue';
 import { createComponent } from '../../utils/create';
 import Popup from '../popup/index.vue';
-const { componentName, create } = createComponent('notify');
+const { create } = createComponent('notify');
 
 export default create({
   components: {
@@ -57,7 +57,7 @@ export default create({
     unmount: Function
   },
 
-  setup(props, { slots }) {
+  setup(props) {
     let timer: null | number = null;
     const state = reactive({
       mounted: false
