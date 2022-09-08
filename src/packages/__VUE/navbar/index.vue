@@ -41,7 +41,7 @@ import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('navbar');
 export default create({
   props: {
-    leftShow: { type: Boolean, default: true }, //左侧  是否显示返回icon
+    leftShow: { type: Boolean, default: false }, //左侧  是否显示返回icon
     title: { type: String, default: '' }, //中间  文字标题
     titIcon: { type: String, default: '' }, //中间  标题icon
     leftText: { type: String, default: '' }, //左侧文字
