@@ -702,7 +702,7 @@ $table-tr-odd-bg-color: $white !default;
 // navbar
 $navbar-height: 44px !default;
 $navbar-margin-bottom: 20px !default;
-$navbar-padding: 13px 16px !default;
+$navbar-padding: 0 16px !default;
 $navbar-background: $white !default;
 $navbar-box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1) !default;
 $navbar-color: $title-color2 !default;
@@ -823,6 +823,9 @@ $ellipsis-expand-collapse-color: #3460fa !default;
 
 // WaterMark
 $watermark-z-index: 2000 !default;
+
+// invoice
+$invoice-padding: 10px 10px 20px !default;
 
 @import './mixins/index';
 @import './animation/index';
