@@ -1,36 +1,36 @@
 <template>
-  <div class="demo">
-    <h2>{{ translate('basic') }}</h2>
+  <div class="trendarrow-demo demo">
+    <h2>基本用法</h2>
     <nut-cell>
       <nut-trendarrow :sync-text-color="false" :rate="1" />
       <nut-trendarrow :sync-text-color="false" :rate="-0.2535" />
     </nut-cell>
-    <view class="title">{{ translate('title1') }}</view>
+    <view class="title">改变文字颜色</view>
     <nut-cell>
       <nut-trendarrow :rate="10.2365" />
       <nut-trendarrow :rate="-0.2535" />
     </nut-cell>
-    <view class="title">{{ translate('title2') }}</view>
+    <view class="title">指定小数位</view>
     <nut-cell>
       <nut-trendarrow :digits="0" :rate="10.2365" />
       <nut-trendarrow :digits="0" :rate="-0.2535" />
     </nut-cell>
-    <view class="title">{{ translate('title3') }}</view>
+    <view class="title">箭头在前面</view>
     <nut-cell>
       <nut-trendarrow arrowLeft :rate="0.2535" />
       <nut-trendarrow arrowLeft :rate="-0.2535" />
     </nut-cell>
-    <view class="title">{{ translate('title4') }}</view>
+    <view class="title">显示正负号</view>
     <nut-cell>
       <nut-trendarrow showSign :rate="1" />
       <nut-trendarrow showSign :rate="-0.2535" />
     </nut-cell>
-    <view class="title">{{ translate('title5') }}</view>
+    <view class="title">是否展示0</view>
     <nut-cell>
       <nut-trendarrow showSign :rate="0" />
       <nut-trendarrow showSign showZero :rate="0" />
     </nut-cell>
-    <view class="title">{{ translate('title6') }}</view>
+    <view class="title">自定义颜色</view>
     <nut-cell>
       <nut-trendarrow :rate="10.2365" rise-color="rgb(73,143,242)" />
       <nut-trendarrow :rate="-0.2535" showSign drop-color="rgb(255, 190, 13)" />
@@ -45,41 +45,16 @@
   </div>
 </template>
 <script lang="ts">
-import { createComponent } from '@/packages/utils/create';
-const { createDemo, translate } = createComponent('trendarrow');
-import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue';
-import { useTranslate } from '@/sites/assets/util/useTranslate';
-const initTranslate = () =>
-  useTranslate({
-    'zh-CN': {
-      basic: '基本用法',
-      title1: '改变文字颜色',
-      title2: '指定小数位',
-      title3: '箭头在前面',
-      title4: '显示正负号',
-      title5: '是否展示0',
-      title6: '自定义颜色'
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      title1: 'Change text color',
-      title2: 'Specify decimal places',
-      title3: 'Arrow ahead',
-      title4: 'show sign',
-      title5: 'Whether to show 0',
-      title6: 'Custom color'
-    }
-  });
-export default createDemo({
+import { defineComponent } from 'vue';
+export default defineComponent({
   props: {},
   setup() {
-    initTranslate();
-    return { translate };
+    return {};
   }
 });
 </script>
-<style lang="scss" scoped>
-.demo {
+<style lang="scss">
+.trendarrow-demo {
   .title {
     font-size: 14px;
     color: rgb(144, 156, 164);

@@ -1,18 +1,15 @@
 <template>
-  <view :class="classes" @click="handleClick" :style="calcStyle">
+  <view :class="classes" @click="handleClick">
     <nut-icon
       v-if="arrowLeft && Number(rate) !== 0"
-      font-class-name="iconfont"
-      class-prefix="icon"
-      :size="calcIconProps.size"
       class="nut-trendarrow-icon-before"
+      :size="calcIconProps.size"
       :name="calcIconProps.name"
       :color="calcIconProps.color"
-    />{{ calcRate
-    }}<nut-icon
+    />
+    <span :style="calcStyle" class="nut-trendarrow-rate">{{ calcRate }}</span
+    ><nut-icon
       v-if="!arrowLeft && Number(rate) !== 0"
-      font-class-name="iconfont"
-      class-prefix="icon"
       class="nut-trendarrow-icon-after"
       :size="calcIconProps.size"
       :name="calcIconProps.name"
@@ -21,10 +18,11 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, toRefs, computed } from 'vue';
+import { reactive, toRefs, computed, watch } from 'vue';
+import { myFixed } from '@/packages/utils/util';
 import { createComponent } from '@/packages/utils/create';
 const { componentName, create } = createComponent('trendarrow');
-import './font/iconfont.css';
+
 export default create({
   props: {
     rate: {
@@ -47,7 +45,7 @@ export default create({
       type: Boolean,
       default: false
     },
-    showTextColor: {
+    syncTextColor: {
       type: Boolean,
       default: true
     },
@@ -62,6 +60,10 @@ export default create({
     dropColor: {
       type: String,
       default: '#64b578'
+    },
+    iconSize: {
+      type: String,
+      default: '12px'
     }
   },
   emits: ['click'],
@@ -84,27 +86,27 @@ export default create({
       if (!showZero && rate === 0) {
         return '--';
       }
-      let resultRate = `${showSign && rate !== 0 ? (state.rateTrend ? '+' : '-') : ''}${Number(absRate).toFixed(
+      let resultRate = `${showSign && rate !== 0 ? (state.rateTrend ? '+' : '-') : ''}${myFixed(
+        Number(absRate),
         digits
       )}%`;
 
       return resultRate;
     });
     const calcStyle = computed(() => {
-      const { dropColor, riseColor, showTextColor, textColor, rate } = props;
+      const { dropColor, riseColor, syncTextColor, textColor, rate } = props;
       let style = {
-        color: rate === 0 ? textColor : showTextColor ? (state.rateTrend ? riseColor : dropColor) : textColor
+        color: rate === 0 ? textColor : syncTextColor ? (state.rateTrend ? riseColor : dropColor) : textColor
       };
       return style;
     });
-
     const calcIconProps = computed(() => {
-      const { dropColor, riseColor } = props;
+      const { dropColor, riseColor, iconSize } = props;
 
       let iconProps = {
-        name: state.rateTrend ? 'shangjiantou' : 'xiajiantou',
+        name: state.rateTrend ? 'triangle-up' : 'triangle-down',
         color: state.rateTrend ? riseColor : dropColor,
-        size: '8px'
+        size: iconSize
       };
       return iconProps;
     });
