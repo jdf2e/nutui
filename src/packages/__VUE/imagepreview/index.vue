@@ -55,7 +55,7 @@
 </template>
 <script lang="ts">
 import { toRefs, reactive, watch, onMounted, ref, computed } from 'vue';
-import type { PropType } from 'vue'
+import type { PropType } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 import Popup from '../popup/index.vue';
 import Video from '../video/index.vue';
@@ -64,7 +64,7 @@ import SwiperItem from '../swiperitem/index.vue';
 import Icon from '../icon/index.vue';
 import { isPromise } from '@/packages/utils/util.ts';
 import ImagePreviewItem from './imagePreviewItem.vue';
-import { ImageInterface } from './types'
+import { ImageInterface } from './types';
 const { componentName, create } = createComponent('imagepreview');
 
 export default create({
