@@ -14,7 +14,8 @@ import { InputNumber,Icon } from '@nutui/nutui';
 import { InputNumber,Icon } from '@nutui/nutui-taro';
 
 const app = createApp();
-app.use(InputNumber).use(Icon);
+app.use(InputNumber);
+app.use(Icon);
 
 ```
 
