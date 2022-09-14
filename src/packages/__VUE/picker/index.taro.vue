@@ -19,27 +19,6 @@
         }}</view>
       </view>
       <slot name="top"></slot>
-      <view class="nut-picker__column" v-if="false">
-        <view class="nut-picker__hairline" ref="pickerline" :id="'pickerline' + refRandomId"></view>
-        <view class="nut-picker__columnitem" v-for="(column, columnIndex) in columnsList" :key="columnIndex">
-          <nut-picker-column
-            :ref="swipeRef"
-            :itemShow="show"
-            :column="column"
-            :readonly="readonly"
-            :columnsType="columnsType"
-            :value="defaultValues[columnIndex]"
-            :threeDimensional="threeDimensional"
-            :swipeDuration="swipeDuration"
-            :lineSpacing="lineSpacing"
-            @change="
-              (option) => {
-                changeHandler(columnIndex, option);
-              }
-            "
-          ></nut-picker-column>
-        </view>
-      </view>
 
       <picker-view
         indicator-style="height: 34px;"
