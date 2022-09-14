@@ -24,15 +24,10 @@
             @focus="valueFocus"
             @blur="valueBlur"
             @confirm="handleSubmit"
-            :style="(styleSearchbar as CSSProperties)"
+            :style="styleSearchbar"
           />
         </form>
-        <view
-          @click="handleClear"
-          class="nut-searchbar__input-clear"
-          v-if="clearable"
-          v-show="(modelValue as string).length > 0"
-        >
+        <view @click="handleClear" class="nut-searchbar__input-clear" v-if="clearable" v-show="modelValue.length > 0">
           <nut-icon :name="clearIcon" size="12" color="#555"></nut-icon>
         </view>
       </view>
@@ -50,10 +45,6 @@
 import { toRefs, reactive, computed, ref, onMounted, PropType, Ref, CSSProperties } from 'vue';
 import { createComponent } from '@/packages/utils/create';
 const { create, translate } = createComponent('searchbar');
-// interface Events {
-//   eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
-//   params: (string | number | Event)[];
-// }
 export type confirmTextType = 'send' | 'search' | 'next' | 'go' | 'done';
 
 export default create({
@@ -202,12 +193,12 @@ export default create({
     };
 
     const styleSearchbar = computed(() => {
-      return {
-        style: {
-          textAlign: props.inputAlign
-        }
+      const style: CSSProperties = {
+        textAlign: props.inputAlign as import('./type').TextAlign
       };
+      return style;
     });
+
     const inputsearch: Ref<HTMLElement | null> = ref(null);
     onMounted(() => {
       if (props.autofocus) {
