@@ -139,7 +139,7 @@ export default {
       title="地址选择"
       v-model:visible="state.visible"
       v-model="state.value"
-      label-key="text"
+      text-key="text"
       @change="events.change"
       @path-change="events.pathChange"
       value-key="text"

@@ -139,7 +139,7 @@ use `textKey`、`valueKey`、`childrenKey`Specify the property name.
       title="Select address"
       v-model:visible="state.visible"
       v-model="state.value"
-      label-key="text"
+      text-key="text"
       @change="events.change"
       @path-change="events.pathChange"
       value-key="text"
