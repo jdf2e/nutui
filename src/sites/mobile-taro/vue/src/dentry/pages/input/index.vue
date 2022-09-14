@@ -1,22 +1,18 @@
 <template>
   <div class="demo full">
     <h2>基础用法</h2>
-    <nut-input placeholder="请输入文本" v-model="state.val1" label="文本" />
+    <nut-input placeholder="文本" v-model="state.val1" label="文本" />
 
     <h2>自定义类型</h2>
-    <nut-input label="文本" v-model="state.text" />
-    <nut-input label="密码" v-model="state.password" type="password" />
-    <nut-input label="数字" v-model="state.number" type="number" placeholder="支持小数点的输入" />
-    <nut-input label="整数" v-model="state.digit" type="digit" />
-    <nut-input label="手机号" v-model="state.tel" type="tel" />
+    <nut-input label="文本" v-model="state.text" placeholder="文本" />
+    <nut-input label="密码" v-model="state.password" type="password" placeholder="密码" />
+    <nut-input label="数字" v-model="state.number" type="number" placeholder="数字" />
+    <nut-input label="整数" v-model="state.digit" type="digit" placeholder="整数" />
+    <nut-input label="手机号" v-model="state.tel" type="tel" placeholder="手机号" />
 
     <h2>禁用和只读</h2>
-    <nut-form>
-      <nut-form-item>
-        <nut-input v-model="state.readonly" readonly label="文本" placeholder="输入框只读" />
-        <!-- <nut-input v-model="state.disabled" disabled label="文本" placeholder="输入框已禁用" /> -->
-      </nut-form-item>
-    </nut-form>
+    <nut-input v-model="state.readonly" readonly label="文本" placeholder="只读" />
+    <nut-input v-model="state.disabled" disabled label="文本" placeholder="禁用" />
 
     <h2>显示图标</h2>
     <nut-input v-model="state.showIcon" label="文本" left-icon="dongdong" right-icon="ask2" placeholder="显示图标" />
@@ -52,7 +48,7 @@
       show-word-limit
       rows="2"
       maxLength="50"
-      placeholder="请输入留言"
+      placeholder="留言"
       :adjust-position="state.adjustPosition"
     />
 
@@ -61,17 +57,17 @@
     <nut-input v-model="state.align2" label="文本" input-align="right" placeholder="输入框内容对齐" />
 
     <h2>无边框</h2>
-    <nut-input v-model="state.disabled" :border="false" label="无边框" />
-    <nut-input v-model="state.showIcon" :border="false" label="无边框" />
+    <nut-input v-model="state.disabled" :border="false" label="无边框" placeholder="无边框" />
+    <nut-input v-model="state.showIcon" :border="false" label="无边框" placeholder="无边框" />
 
     <h2>点击事件</h2>
     <nut-input
       v-model="state.event"
       label="event"
+      placeholder="点击"
       left-icon="dongdong"
       right-icon="ask2"
       clearable
-      placeholder="显示图标"
       :adjust-position="state.adjustPosition"
       @update:model-value="change"
       @focus="focus"
@@ -157,4 +153,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.demo {
+  .nut-placeholder {
+    color: #ccc;
+  }
+}
+</style>

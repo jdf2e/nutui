@@ -1,4 +1,5 @@
 import { pxCheck } from '@/packages/utils/pxCheck';
+import { TypeOfFun } from '@/packages/utils/util';
 import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch } from 'vue';
 export class Title {
   title: string = '';
@@ -71,14 +72,23 @@ export const component = {
         if (type == 'nut-tabpane') {
           let title = new Title();
           if (vnode.props?.title || vnode.props?.['pane-key'] || vnode.props?.['paneKey']) {
+            let paneKeyType = TypeOfFun(vnode.props?.['pane-key']);
+            let paneIndex =
+              paneKeyType == 'number' || paneKeyType == 'string' ? String(vnode.props?.['pane-key']) : null;
+            let camelPaneKeyType = TypeOfFun(vnode.props?.['paneKey']);
+            let camelPaneIndex =
+              camelPaneKeyType == 'number' || camelPaneKeyType == 'string' ? String(vnode.props?.['paneKey']) : null;
             title.title = vnode.props?.title;
-            title.paneKey = vnode.props?.['pane-key'] || vnode.props?.['paneKey'] || index;
+            title.paneKey = paneIndex || camelPaneIndex || String(index);
             title.disabled = vnode.props?.disabled;
           } else {
             // title.titleSlot = vnode.children?.title() as VNode[];
           }
           titles.value.push(title);
         } else {
+          if (vnode.children == ' ') {
+            return;
+          }
           renderTitles(vnode.children as VNode[]);
         }
       });

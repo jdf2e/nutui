@@ -140,7 +140,7 @@ export default create({
     const onTouchMove = (event: TouchEvent) => {
       touch.move(event);
 
-      if ((touch as any).isVertical) {
+      if ((touch as any).isVertical()) {
         moving.value = true;
         preventDefault(event, true);
       }

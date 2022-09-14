@@ -127,6 +127,9 @@
       line-height: $picker-item-height;
       color: $picker-item-text-color;
       font-size: $picker-item-text-font-size;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
       &-hidden {
         visibility: hidden;
@@ -141,6 +144,11 @@
       line-height: $picker-item-height;
       color: $picker-item-text-color;
       font-size: $picker-item-text-font-size;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: center;
     }
   }
 

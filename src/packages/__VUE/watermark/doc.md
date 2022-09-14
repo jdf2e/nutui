@@ -118,15 +118,15 @@ app.use(Watermark);
 | height      | 水印的高度                                           | `number`           | `64`                 |
 | rotate      | 水印绘制时，旋转的角度                  | `number`           | `-22`                |
 | image       | 图片源，建议导出 2 倍或 3 倍图，优先使用图片渲染水印 | `string`           | -                    |
-| imageWidth  | 图片宽度                                             | `number`           | `120`                |
-| imageHeight | 图片高度                                             | `number`           | `64`                 |
-| zIndex      | 追加的水印元素的 z-index                             | `number`           | `2000`               |
+| image-width  | 图片宽度                                             | `number`           | `120`                |
+| image-height | 图片高度                                             | `number`           | `64`                 |
+| z-index      | 追加的水印元素的 z-index                             | `number`           | `2000`               |
 | content     | 水印文字内容                                         | `string`           | -                    |
-| fontColor   | 水印文字颜色                                         | `string`           | `rgba(0, 0, 0, .15)` |
-| fontSize    | 文字大小                                             | `string \| number` | `16`                 |
-| gapX        | 水印之间的水平间距                                   | `number`           | `24`                 |
-| gapY        | 水印之间的垂直间距                                   | `number`           | `48`                 |
-| fullPage    | 是否覆盖整个页面                                     | `boolean`          | `true`               |
-| fontFamily  | 水印文字字体                                     | `boolean`          | `true`               |
+| font-color   | 水印文字颜色                                         | `string`           | `rgba(0, 0, 0, .15)` |
+| font-size    | 文字大小                                             | `string \| number` | `16`                 |
+| gap-x        | 水印之间的水平间距                                   | `number`           | `24`                 |
+| gap-y       | 水印之间的垂直间距                                   | `number`           | `48`                 |
+| full-page    | 是否覆盖整个页面                                     | `boolean`          | `true`               |
+| font-family  | 水印文字字体                                     | `boolean`          | `true`               |
 
 

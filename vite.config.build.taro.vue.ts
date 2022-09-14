@@ -31,7 +31,9 @@ export default defineConfig({
               tag.startsWith('scroll-view') ||
               tag.startsWith('swiper') ||
               tag.startsWith('swiper-item') ||
-              tag.startsWith('picker')
+              tag.startsWith('picker') ||
+              tag.startsWith('picker-view') ||
+              tag.startsWith('picker-view-column')
             );
           },
           whitespace: 'preserve'
